@@ -1,6 +1,6 @@
 ---
-title: Azure 'da IaaS iş yükleri için en iyi güvenlik yöntemleri | Microsoft Docs
-description: " İş yüklerinin Azure IaaS 'ye geçirilmesi, tasarımlarımızın yeniden değerlendirilme fırsatlarını getirir "
+title: Security best practices for IaaS workloads in Azure | Microsoft Docs
+description: " The migration of workloads to Azure IaaS brings opportunities to reevaluate our designs "
 services: security
 documentationcenter: na
 author: barclayn
@@ -15,174 +15,174 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: barclayn
-ms.openlocfilehash: 7558ad2e5a4404db140daff89171af92c6072ef6
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 3368f72aeb7909c3e0a8653bb5b094729c4c45ed
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73805986"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228030"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure'da IaaS iş yükleri için en iyi güvenlik yöntemleri
-Bu makalede, VM 'Ler ve işletim sistemleri için en iyi güvenlik uygulamaları açıklanmaktadır.
+This article describes security best practices for VMs and operating systems.
 
-En iyi uygulamalar, görüşlerden oluşan yarışmaları temel alır ve geçerli Azure platformu özellikleri ve özellik kümeleriyle çalışır. Zamanla ve teknolojiler zaman içinde değişeceğinden, bu makale bu değişiklikleri yansıtacak şekilde güncelleştirilir.
+The best practices are based on a consensus of opinion, and they work with current Azure platform capabilities and feature sets. Because opinions and technologies can change over time,  this article will be updated to reflect those changes.
 
-Hizmet olarak altyapı (IaaS) senaryolarında [Azure sanal makineleri (VM 'ler)](/azure/virtual-machines/) , bulut bilgi işlem kullanan kuruluşlar için ana iş yüküdür. Bu olgu, kuruluşların iş yüklerini buluta yavaş bir şekilde geçirmek istediği [karma senaryolara](https://social.technet.microsoft.com/wiki/contents/articles/18120.hybrid-cloud-infrastructure-design-considerations.aspx) karşı daha da çalışır. Bu tür senaryolarda, [IaaS için genel güvenlik konularını](https://social.technet.microsoft.com/wiki/contents/articles/3808.security-considerations-for-infrastructure-as-a-service-iaas.aspx)izleyin ve tüm sanal makinelerinize en iyi güvenlik uygulamalarını uygulayın.
+In most infrastructure as a service (IaaS) scenarios, [Azure virtual machines (VMs)](/azure/virtual-machines/) are the main workload for organizations that use cloud computing. This fact is evident in [hybrid scenarios](https://social.technet.microsoft.com/wiki/contents/articles/18120.hybrid-cloud-infrastructure-design-considerations.aspx) where organizations want to slowly migrate workloads to the cloud. In such scenarios, follow the [general security considerations for IaaS](https://social.technet.microsoft.com/wiki/contents/articles/3808.security-considerations-for-infrastructure-as-a-service-iaas.aspx), and apply security best practices to all your VMs.
 
-## <a name="protect-vms-by-using-authentication-and-access-control"></a>Kimlik doğrulama ve erişim denetimi kullanarak VM 'Leri koruma
-VM 'lerinizi korumanın ilk adımı yalnızca yetkili kullanıcıların yeni VM 'Leri ayarlayave VM 'Lere erişim izni sağlamaktır.
-
-> [!NOTE]
-> Azure 'da Linux VM 'lerinin güvenliğini artırmak için Azure AD kimlik doğrulamasıyla tümleştirebilirsiniz. [Linux VM 'ler Için Azure AD kimlik doğrulaması](/azure/virtual-machines/linux/login-using-aad)kullandığınızda, sanal makinelere erişime izin veren veya erişimi reddeden ilkeleri merkezi olarak kontrol edin ve zorlayabilirsiniz.
->
->
-
-**En iyi yöntem**: VM erişimini denetleyin.   
-**Ayrıntı**: kuruluşunuzdaki kaynaklara yönelik kurallar oluşturmak ve özelleştirilmiş ilkeler oluşturmak için [Azure ilkelerini](/azure/azure-policy/azure-policy-introduction) kullanın. Bu ilkeleri [kaynak grupları](/azure/azure-resource-manager/resource-group-overview)gibi kaynaklara uygulayın. Bir kaynak grubuna ait olan VM 'Ler ilkelerini alırlar.
-
-Kuruluşunuzun birçok aboneliği varsa, bu abonelikler için erişimi, ilkeleri ve uyumluluğu verimli bir şekilde yönetmeniz için bir yol gerekebilir. [Azure Yönetim grupları](/azure/azure-resource-manager/management-groups-overview) , aboneliklerin üzerinde bir kapsam düzeyi sağlar. Abonelikleri yönetim grupları (kapsayıcılar) halinde düzenler ve idare koşullarınızı bu gruplara uygularsınız. Bir yönetim grubu içindeki tüm abonelikler, gruba uygulanan koşulları otomatik olarak devralınır. Yönetim grupları, sahip olabileceğiniz abonelik türüne bakılmaksızın kurumsal düzeyde yönetimi büyük ölçekte sunar.
-
-**En iyi yöntem**: VM 'lerin kurulumunda ve dağıtımında değişkenlik azaltma.   
-**Ayrıntı**: dağıtım seçimlerinizi güçlendirmek ve ortamınızdaki VM 'leri daha kolay anlamak ve stoklanmasını kolaylaştırmak için [Azure Resource Manager](/azure/azure-resource-manager/resource-group-authoring-templates) şablonlarını kullanın.
-
-**En iyi yöntem**: güvenli ayrıcalıklı erişim.   
-**Ayrıntı**: kullanıcıların VM 'lere erişmesini ve bunları kurmasını sağlamak için [en az ayrıcalık yaklaşımı](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models) ve yerleşik Azure rolleri kullanın:
-
-- [Sanal makine katılımcısı](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor): VM 'leri yönetebilir, ancak bağlı oldukları sanal ağ veya depolama hesabını yönetemez.
-- [Klasik sanal makine katılımcısı](../../role-based-access-control/built-in-roles.md#classic-virtual-machine-contributor): klasik dağıtım modeli kullanılarak oluşturulan VM 'leri yönetebilir, ancak VM 'lerin bağlı olduğu sanal ağ veya depolama hesabı değildir.
-- [Güvenlik Yöneticisi](../../role-based-access-control/built-in-roles.md#security-admin): yalnızca güvenlik merkezi 'nde: güvenlik ilkelerini görüntüleyebilir, güvenlik durumlarını görüntüleyebilir, güvenlik ilkelerini düzenleyebilir, uyarıları ve önerileri görüntüleyebilir, uyarıları ve önerileri kapatabilir.
-- [DevTest Labs kullanıcısı](../../role-based-access-control/built-in-roles.md#devtest-labs-user): her şeyi görüntüleyebilir, sanal makineleri yükleyebilir, başlatabilir, yeniden başlatabilir ve kapatabilir.
-
-Abonelik yöneticileri ve coyöneticileri bu ayarı değiştirebilir ve bu ayarı, bir abonelikteki tüm VM 'lerin yöneticilerini yapabilir. Herhangi bir makinelerinizde oturum açmak için tüm abonelik yöneticilerinizi ve ortak yöneticilerine güvendiğinizden emin olun.
+## <a name="protect-vms-by-using-authentication-and-access-control"></a>Protect VMs by using authentication and access control
+The first step in protecting your VMs is to ensure that only authorized users can set up new VMs and access VMs.
 
 > [!NOTE]
-> Aynı yaşam döngüsüne sahip VM 'Leri aynı kaynak grubuyla birleştirmeniz önerilir. Kaynak gruplarını kullanarak kaynaklarınız için faturalandırma maliyetlerini dağıtabilir, izleyebilir ve izleyebilirsiniz.
+> To improve the security of Linux VMs on Azure, you can integrate with Azure AD authentication. When you use [Azure AD authentication for Linux VMs](/azure/virtual-machines/linux/login-using-aad), you centrally control and enforce policies that allow or deny access to the VMs.
 >
 >
 
-VM erişimini ve kurulumunu denetleyen kuruluşlar, genel VM güvenliğini artırır.
+**Best practice**: Control VM access.   
+**Detail**: Use [Azure policies](/azure/azure-policy/azure-policy-introduction) to establish conventions for resources in your organization and create customized policies. Apply these policies to resources, such as [resource groups](/azure/azure-resource-manager/resource-group-overview). VMs that belong to a resource group inherit its policies.
 
-## <a name="use-multiple-vms-for-better-availability"></a>Daha iyi kullanılabilirlik için birden çok VM kullanma
-VM 'niz yüksek kullanılabilirliğe sahip olması gereken kritik uygulamalar çalıştırıyorsa, birden çok VM kullanmanızı önemle tavsiye ederiz. Daha iyi kullanılabilirlik için bir [kullanılabilirlik kümesi](../../virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) veya kullanılabilirlik [alanları](../../availability-zones/az-overview.md)kullanın.
+If your organization has many subscriptions, you might need a way to efficiently manage access, policies, and compliance for those subscriptions. [Azure management groups](/azure/azure-resource-manager/management-groups-overview) provide a level of scope above subscriptions. You organize subscriptions into management groups (containers) and apply your governance conditions to those groups. All subscriptions within a management group automatically inherit the conditions applied to the group. Yönetim grupları, sahip olabileceğiniz abonelik türüne bakılmaksızın kurumsal düzeyde yönetimi büyük ölçekte sunar.
 
-Kullanılabilirlik kümesi, Azure 'da yerleştirdiğiniz VM kaynaklarının bir Azure veri merkezinde dağıtıldıklarında birbirinden yalıtılmış olmasını sağlamak için Azure 'da kullanabileceğiniz mantıksal bir gruplandırmadır. Azure, bir kullanılabilirlik kümesine yerleştirdiğiniz VM 'Lerin birden çok fiziksel sunucuda, bilgi işlem raflarının, depolama biriminde ve ağ anahtarlarında çalıştırılmasını sağlar. Bir donanım veya Azure yazılım hatası oluşursa, sanal makinelerinizin yalnızca bir alt kümesi etkilenir ve genel uygulamanız müşterilerinizin kullanımına açık olmaya devam eder. Kullanılabilirlik kümeleri, güvenilir bulut çözümleri oluşturmak istediğinizde önemli bir yetenektir.
+**Best practice**: Reduce variability in your setup and deployment of VMs.   
+**Detail**: Use [Azure Resource Manager](/azure/azure-resource-manager/resource-group-authoring-templates) templates to strengthen your deployment choices and make it easier to understand and inventory the VMs in your environment.
+
+**Best practice**: Secure privileged access.   
+**Detail**: Use a [least privilege approach](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models) and built-in Azure roles to enable users to access and set up VMs:
+
+- [Virtual Machine Contributor](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor): Can manage VMs, but not the virtual network or storage account to which they are connected.
+- [Classic Virtual Machine Contributor](../../role-based-access-control/built-in-roles.md#classic-virtual-machine-contributor): Can manage VMs created by using the classic deployment model, but not the virtual network or storage account to which the VMs are connected.
+- [Security Admin](../../role-based-access-control/built-in-roles.md#security-admin): In Security Center only: Can view security policies, view security states, edit security policies, view alerts and recommendations, dismiss alerts and recommendations.
+- [DevTest Labs User](../../role-based-access-control/built-in-roles.md#devtest-labs-user): Can view everything and connect, start, restart, and shut down VMs.
+
+Your subscription admins and coadmins can change this setting, making them administrators of all the VMs in a subscription. Be sure that you trust all of your subscription admins and coadmins to log in to any of your machines.
+
+> [!NOTE]
+> We recommend that you consolidate VMs with the same lifecycle into the same resource group. By using resource groups, you can deploy, monitor, and roll up billing costs for your resources.
+>
+>
+
+Organizations that control VM access and setup improve their overall VM security.
+
+## <a name="use-multiple-vms-for-better-availability"></a>Use multiple VMs for better availability
+If your VM runs critical applications that need to have high availability, we strongly recommend that you use multiple VMs. For better availability, use an [availability set](../../virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) or availability [zones](../../availability-zones/az-overview.md).
+
+An availability set is a logical grouping that you can use in Azure to ensure that the VM resources you place within it are isolated from each other when they’re deployed in an Azure datacenter. Azure ensures that the VMs you place in an availability set run across multiple physical servers, compute racks, storage units, and network switches. If a hardware or Azure software failure occurs, only a subset of your VMs are affected, and your overall application continues to be available to your customers. Availability sets are an essential capability when you want to build reliable cloud solutions.
 
 ## <a name="protect-against-malware"></a>Kötü amaçlı yazılımlardan korunun
-Virüslerin, casus yazılımların ve diğer kötü amaçlı yazılımların tanımlanmasına ve kaldırılmasına yardımcı olması için kötü amaçlı yazılımdan koruma koruması kurmanız gerekir. [Microsoft kötü amaçlı yazılımdan](antimalware.md) koruma veya bir Microsoft iş ortağının Endpoint Protection çözümünü ([Trend Micro](https://help.deepsecurity.trendmicro.com/azure-marketplace-getting-started-with-deep-security.html), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://www.microsoft.com/windows/comprehensive-security)ve [System Center Endpoint Protection](/configmgr/protect/deploy-use/endpoint-protection)) yükleyebilirsiniz.
+You should install antimalware protection to help identify and remove viruses, spyware, and other malicious software. You can install [Microsoft Antimalware](antimalware.md) or a Microsoft partner’s endpoint protection solution ([Trend Micro](https://help.deepsecurity.trendmicro.com/Welcome.html), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://www.microsoft.com/windows/comprehensive-security), and [System Center Endpoint Protection](/configmgr/protect/deploy-use/endpoint-protection)).
 
-Microsoft Antimalware gerçek zamanlı koruma, zamanlanmış tarama, kötü amaçlı yazılım düzeltme, imza güncelleştirmeleri, altyapı güncelleştirmeleri, örnek raporlama ve dışlama olay toplama gibi özellikler içerir. Üretim ortamınızdan ayrı olarak barındırılan ortamlar için, VM 'lerinizin ve bulut hizmetlerinizin korunmasına yardımcı olmak üzere bir kötü amaçlı yazılımdan koruma uzantısı kullanabilirsiniz.
+Microsoft Antimalware includes features like real-time protection, scheduled scanning, malware remediation, signature updates, engine updates, samples reporting, and exclusion event collection. For environments that are hosted separately from your production environment, you can use an antimalware extension to help protect your VMs and cloud services.
 
-Microsoft kötü amaçlı yazılımdan koruma ve iş ortağı çözümlerini, dağıtım kolaylığı ve yerleşik algılamalar (Uyarılar ve olaylar) için [Azure Güvenlik Merkezi](../../security-center/index.yml) ile tümleştirebilirsiniz.
+You can integrate Microsoft Antimalware and partner solutions with [Azure Security Center](../../security-center/index.yml) for ease of deployment and built-in detections (alerts and incidents).
 
-**En iyi yöntem**: kötü amaçlı yazılımlara karşı koruma için kötü amaçlı yazılımdan koruma çözümü yükler   
-**Ayrıntı**: [bir Microsoft iş ortağı çözümü veya Microsoft Antimalware yüklemesi](../../security-center/security-center-install-endpoint-protection.md)
+**Best practice**: Install an antimalware solution to protect against malware.   
+**Detail**: [Install a Microsoft partner solution or Microsoft Antimalware](../../security-center/security-center-install-endpoint-protection.md)
 
-**En iyi yöntem**: korumanızla ilgili durumu izlemek için kötü amaçlı yazılımdan koruma çözümünüzü Güvenlik Merkezi ile tümleştirin.   
-**Ayrıntı**: [Güvenlik Merkezi ile Endpoint Protection sorunlarını yönetme](../../security-center/security-center-partner-integration.md)
+**Best practice**: Integrate your antimalware solution with Security Center to monitor the status of your protection.   
+**Detail**: [Manage endpoint protection issues with Security Center](../../security-center/security-center-partner-integration.md)
 
-## <a name="manage-your-vm-updates"></a>VM güncelleştirmelerinizi yönetin
-Tüm şirket içi VM 'Ler gibi Azure sanal makineleri, Kullanıcı tarafından yönetilmek üzere tasarlanmıştır. Azure, Windows güncelleştirmelerini bunlara göndermiyor. VM güncelleştirmelerinizi yönetmeniz gerekir.
+## <a name="manage-your-vm-updates"></a>Manage your VM updates
+Azure VMs, like all on-premises VMs, are meant to be user managed. Azure doesn't push Windows updates to them. You need to manage your VM updates.
 
-**En iyi yöntem**: VM 'lerinizi güncel tutun.   
-**Ayrıntı**: Azure 'da, şirket içi ortamlarda veya diğer bulut sağlayıcılarında dağıtılan Windows ve Linux bilgisayarlarınıza yönelik işletim sistemi güncelleştirmelerini yönetmek Için Azure otomasyonu 'nda [güncelleştirme yönetimi](../../automation/automation-update-management.md) çözümünü kullanın. Tüm aracı bilgisayarlardaki kullanılabilir güncelleştirmelerin durumunu hızla değerlendirebilir ve sunucular için gerekli güncelleştirmeleri yükleme işlemini yönetebilirsiniz.
+**Best practice**: Keep your VMs current.   
+**Detail**: Use the [Update Management](../../automation/automation-update-management.md) solution in Azure Automation to manage operating system updates for your Windows and Linux computers that are deployed in Azure, in on-premises environments, or in other cloud providers. Tüm aracı bilgisayarlardaki kullanılabilir güncelleştirmelerin durumunu hızla değerlendirebilir ve sunucular için gerekli güncelleştirmeleri yükleme işlemini yönetebilirsiniz.
 
-Güncelleştirme Yönetimi tarafından yönetilen bilgisayarlar, değerlendirme ve güncelleştirme dağıtımları gerçekleştirmek için aşağıdaki konfigürasyonları kullanır:
+Güncelleştirme Yönetimi tarafından yönetilen bilgisayarlar değerlendirme ve güncelleştirme dağıtımı yapmak için aşağıdaki yapılandırmaları kullanır:
 
 - Windows veya Linux için Microsoft Monitoring Agent (MMA)
 - Linux için PowerShell İstenen Durum Yapılandırması (DSC)
 - Otomasyon Karma Runbook Çalışanı
-- Windows bilgisayarlar için Microsoft Update veya Windows Server Update Services (WSUS)
+- Windows bilgisayarları için Microsoft Update veya Windows Server Update Services (WSUS)
 
-Windows Update kullanırsanız, otomatik Windows Update ayarını etkin bırakın.
+If you use Windows Update, leave the automatic Windows Update setting enabled.
 
-**En iyi yöntem**: oluşturduğunuz görüntülerin Windows güncelleştirmelerinin en son hepsini içerdiğinden emin olun.   
-**Ayrıntı**: tüm Windows güncelleştirmelerini denetleyin ve her dağıtımın ilk adımı olarak yükler. Bu ölçü, sizin veya kendi kitaplığınızdan gelen görüntüleri dağıtırken uygulanması özellikle önemlidir. Azure Marketi 'ndeki görüntüler varsayılan olarak otomatik olarak güncellense de, genel bir sürümden sonra bir gecikme süresi (birkaç hafta kadar) olabilir.
+**Best practice**: Ensure at deployment that images you built include the most recent round of Windows updates.   
+**Detail**: Check for and install all Windows updates as a first step of every deployment. This measure is especially important to apply when you deploy images that come from either you or your own library. Although images from the Azure Marketplace are updated automatically by default, there can be a lag time (up to a few weeks) after a public release.
 
-**En iyi yöntem**: işletim sisteminin yeni bir sürümünü zorlamak için sanal makinelerinizi düzenli olarak yeniden dağıtın.   
-**Ayrıntı**: daha kolay bir şekilde DAĞıTMAK için VM 'nizi bir [Azure Resource Manager şablonuyla](../../azure-resource-manager/resource-group-authoring-templates.md) tanımlayın. Bir şablon kullanmak gerektiğinde düzeltme eki uygulanmış ve güvenli bir VM sağlar.
+**Best practice**: Periodically redeploy your VMs to force a fresh version of the OS.   
+**Detail**: Define your VM with an [Azure Resource Manager template](../../azure-resource-manager/resource-group-authoring-templates.md) so you can easily redeploy it. Using a template gives you a patched and secure VM when you need it.
 
-**En iyi yöntem**: sanal makinelere güvenlik güncelleştirmelerini hızlıca uygulayın.   
-**Ayrıntı**: [eksik güvenlik güncelleştirmelerini tanımlamak ve bunları uygulamak](../../security-center/security-center-apply-system-updates.md)için Azure Güvenlik Merkezi 'ni (ücretsiz katman veya Standart katman) etkinleştirin.
+**Best practice**: Rapidly apply security updates to VMs.   
+**Detail**: Enable Azure Security Center (Free tier or Standard tier) to [identify missing security updates and apply them](../../security-center/security-center-apply-system-updates.md).
 
-**En iyi yöntem**: en son güvenlik güncelleştirmelerini yükler.   
-**Ayrıntı**: müşterilerin Azure 'a taşımadığı ilk iş yüklerinden bazıları Labs ve dışarıdan yönelik sistemlerdir. Azure VM 'leriniz, internet erişimine açık olması gereken uygulamaları veya hizmetleri barındıralıyorsa, düzeltme eki hakkında dikkatli olun. İşletim sisteminin ötesinde Düzeltme Eki. İş ortağı uygulamalarında düzeltme eki yüklenmemiş güvenlik açıkları, iyi bir düzeltme eki yönetimi gerçekleşirken kaçınıyabileceği sorunlara da yol açabilir.
+**Best practice**: Install the latest security updates.   
+**Detail**: Some of the first workloads that customers move to Azure are labs and external-facing systems. If your Azure VMs host applications or services that need to be accessible to the internet, be vigilant about patching. Patch beyond the operating system. Unpatched vulnerabilities on partner applications can also lead to problems that can be avoided if good patch management is in place.
 
-**En iyi yöntem**: bir yedekleme çözümünü dağıtın ve test edin.   
-**Ayrıntı**: bir yedeklemenin, başka bir işlemi idare ettiğiniz şekilde işlenmesi gerekir. Bu, üretim ortamınızın bir parçası olan ve buluta genişleyen sistemlerdir.
+**Best practice**: Deploy and test a backup solution.   
+**Detail**: A backup needs to be handled the same way that you handle any other operation. This is true of systems that are part of your production environment extending to the cloud.
 
-Test ve geliştirme sistemleri, kullanıcıların şirket içi ortamlarıyla karşılaşmalarına bağlı olarak ne kadar büyümekle benzer geri yükleme özellikleri sağlayan yedekleme stratejilerini izlemelidir. Azure 'a taşınan üretim iş yükleri mümkün olduğunda mevcut yedekleme çözümleriyle tümleştirmelidir. Veya, yedekleme gereksinimlerinizi karşılamak için [Azure Backup](../../backup/backup-azure-vms-first-look-arm.md) kullanabilirsiniz.
+Test and dev systems must follow backup strategies that provide restore capabilities that are similar to what users have grown accustomed to, based on their experience with on-premises environments. Production workloads moved to Azure should integrate with existing backup solutions when possible. Or, you can use [Azure Backup](../../backup/backup-azure-vms-first-look-arm.md) to help address your backup requirements.
 
-Yazılım güncelleştirme ilkelerini zorlayamayan kuruluşlar, bilinen ve önceden düzeltilen güvenlik açıklarından yararlanan tehditlere açıktır. Sektör düzenlemelerine uymak için şirketlerin, bulutta bulunan iş yüklerinin güvenliğini sağlamaya yardımcı olmak için doğru güvenlik denetimlerini kullandığını kanıtlamaları gerekir.
+Organizations that don't enforce software-update policies are more exposed to threats that exploit known, previously fixed vulnerabilities. To comply with industry regulations, companies must prove that they are diligent and using correct security controls to help ensure the security of their workloads located in the cloud.
 
-Yazılım-geleneksel bir veri merkezinde en iyi uygulamaları güncelleştirme ve Azure IaaS birçok benzerlikler vardır. Azure 'da bulunan VM 'Leri dahil etmek için geçerli yazılım güncelleştirme ilkelerinizi değerlendirmenizi öneririz.
+Software-update best practices for a traditional datacenter and Azure IaaS have many similarities. We recommend that you evaluate your current software update policies to include VMs located in Azure.
 
-## <a name="manage-your-vm-security-posture"></a>VM Güvenlik duruşunuzu yönetin
-Siber tehditler gelişiyor. VM 'lerinizi koruma, tehditleri hızlı bir şekilde tespit etmek, Kaynaklarınıza yetkisiz erişimi engellemek, uyarıları tetiklemek ve hatalı pozitif sonuçları azaltmak için bir izleme yeteneği gerektirir.
+## <a name="manage-your-vm-security-posture"></a>Manage your VM security posture
+Cyberthreats are evolving. Safeguarding your VMs requires a monitoring capability that can quickly detect threats, prevent unauthorized access to your resources, trigger alerts, and reduce false positives.
 
-[Windows](../../security-center/security-center-virtual-machine.md) ve [Linux sanal](../../security-center/security-center-linux-virtual-machine.md)makinelerinizin güvenlik duruşunu Izlemek için [Azure Güvenlik Merkezi](../../security-center/security-center-intro.md)'ni kullanın. Güvenlik Merkezi 'nde, aşağıdaki özelliklerden yararlanarak sanal makinelerinizi koruyun:
+To monitor the security posture of your [Windows](../../security-center/security-center-virtual-machine.md) and [Linux VMs](../../security-center/security-center-linux-virtual-machine.md), use [Azure Security Center](../../security-center/security-center-intro.md). In Security Center, safeguard your VMs by taking advantage of the following capabilities:
 
-- Önerilen yapılandırma kuralları ile işletim sistemi güvenlik ayarlarını uygulayın.
-- Eksik olabilecek sistem güvenliğini ve kritik güncelleştirmeleri belirleyip indirin.
-- Endpoint antimalware koruması için öneriler dağıtın.
-- Disk şifrelemeyi doğrulayın.
-- Güvenlik açıklarını değerlendirin ve düzeltin.
-- Tehditleri algılayın.
+- Apply OS security settings with recommended configuration rules.
+- Identify and download system security and critical updates that might be missing.
+- Deploy recommendations for endpoint antimalware protection.
+- Validate disk encryption.
+- Assess and remediate vulnerabilities.
+- Detect threats.
 
-Güvenlik Merkezi tehditleri etkin bir şekilde izleyebilir ve olası tehditler güvenlik uyarıları 'nda kullanıma sunulur. Bağıntılı tehditler, güvenlik olayı adlı tek bir görünümde toplanır.
+Security Center can actively monitor for threats, and potential threats are exposed in security alerts. Correlated threats are aggregated in a single view called a security incident.
 
-Güvenlik Merkezi, verileri [Azure izleyici günlüklerinde](/azure/log-analytics/log-analytics-overview)depolar. Azure Izleyici günlükleri, uygulama ve kaynaklarınızın çalışması hakkında Öngörüler sunan bir sorgu dili ve analiz altyapısı sağlar. Veriler ayrıca [Azure izleyici](../../batch/monitoring-overview.md), yönetim çözümleri ve bulutta veya Şirket içindeki sanal makinelere yüklenen aracılardan da toplanır. Bu paylaşılan işlevsellik, ortamınızın eksiksiz bir resmini oluşturmanıza yardımcı olur.
+Security Center stores data in [Azure Monitor logs](/azure/log-analytics/log-analytics-overview). Azure Monitor logs provides a query language and analytics engine that gives you insights into the operation of your applications and resources. Data is also collected from [Azure Monitor](../../batch/monitoring-overview.md), management solutions, and agents installed on virtual machines in the cloud or on-premises. Bu paylaşılan işlevsellik, ortamınızın eksiksiz bir resmini oluşturmanıza yardımcı olur.
 
-VM 'Ler için güçlü güvenlik zorlaması olmayan kuruluşlar, yetkisiz kullanıcıların güvenlik denetimlerini atlamalarını sağlayan olası denemelerden haberdar olmaya devam eder.
+Organizations that don't enforce strong security for their VMs remain unaware of potential attempts by unauthorized users to circumvent security controls.
 
-## <a name="monitor-vm-performance"></a>VM performansını izleme
-Kaynak kötüye kullanımı, VM işlemlerinde gerekenden daha fazla kaynak tükettiği zaman bir sorun olabilir. Bir VM ile ilgili performans sorunları, hizmetin kesintiye uğramasına neden olabilir ve bu da kullanılabilirliği güvenlik ilkesini ihlal eder. Yüksek CPU veya bellek kullanımı bir hizmet reddi (DoS) saldırısı belirtebileceğinden, bu özellikle IIS veya diğer Web sunucularını barındıran VM 'Ler için önemlidir. Yalnızca bir sorun oluştuğu sırada VM erişiminin yeniden etkin olmaması, ancak normal işlem sırasında ölçülen taban çizgisi performansına karşı önlem olarak izlenmesi zorunludur.
+## <a name="monitor-vm-performance"></a>Monitor VM performance
+Resource abuse can be a problem when VM processes consume more resources than they should. Performance issues with a VM can lead to service disruption, which violates the security principle of availability. This is particularly important for VMs that are hosting IIS or other web servers, because high CPU or memory usage might indicate a denial of service (DoS) attack. It’s imperative to monitor VM access not only reactively while an issue is occurring, but also proactively against baseline performance as measured during normal operation.
 
-Kaynağınızın sistem durumu hakkında görünürlük elde etmek için [Azure izleyicisini](/azure/monitoring-and-diagnostics/monitoring-overview-metrics) kullanmanızı öneririz. Azure Izleyici özellikleri:
+We recommend that you use [Azure Monitor](/azure/monitoring-and-diagnostics/monitoring-overview-metrics) to gain visibility into your resource’s health. Azure Monitor features:
 
-- [Kaynak tanılama günlük dosyaları](../../azure-monitor/platform/resource-logs-overview.md): VM kaynaklarınızı izler ve performansı ve kullanılabilirliği tehlikeye atabilecek olası sorunları tanımlar.
-- [Azure tanılama uzantısı](/azure/azure-monitor/platform/diagnostics-extension-overview): Windows VM 'lerinde izleme ve tanılama özellikleri sağlar. Uzantıyı [Azure Resource Manager şablonun](/azure/virtual-machines/windows/extensions-diagnostics-template)bir parçası olarak ekleyerek bu özellikleri etkinleştirebilirsiniz.
+- [Resource diagnostic log files](../../azure-monitor/platform/resource-logs-overview.md): Monitors your VM resources and identifies potential issues that might compromise performance and availability.
+- [Azure Diagnostics extension](/azure/azure-monitor/platform/diagnostics-extension-overview): Provides monitoring and diagnostics capabilities on Windows VMs. You can enable these capabilities by including the extension as part of the [Azure Resource Manager template](/azure/virtual-machines/windows/extensions-diagnostics-template).
 
-VM performansını izleyen kuruluşlar, performans desenlerindeki belirli değişikliklerin normal veya olağan dışı olup olmadığını belirleyemez. Normalden daha fazla kaynak kullanan bir VM, bir dış kaynaktan veya VM 'de çalışan güvenliği aşılmış bir işlemden saldırı anlamına gelebilir.
+Organizations that don't monitor VM performance can’t determine whether certain changes in performance patterns are normal or abnormal. A VM that’s consuming more resources than normal might indicate an attack from an external resource or a compromised process running in the VM.
 
-## <a name="encrypt-your-virtual-hard-disk-files"></a>Sanal sabit disk dosyalarınızı şifreleyin
-Şifreleme anahtarlarınızla ve gizli dizilerinizle birlikte, depolamada bekleyen önyükleme hacimlerinizi ve veri hacimlerini korumanıza yardımcı olması için sanal sabit disklerinizi (VHD) şifrelemenizi öneririz.
+## <a name="encrypt-your-virtual-hard-disk-files"></a>Encrypt your virtual hard disk files
+We recommend that you encrypt your virtual hard disks (VHDs) to help protect your boot volume and data volumes at rest in storage, along with your encryption keys and secrets.
 
-[Azure disk şifrelemesi](../azure-security-disk-encryption-overview.md) , Windows ve Linux IaaS sanal makine disklerinizi şifrelemenize yardımcı olur. Azure disk şifrelemesi, işletim sistemi ve veri diskleri için birim şifrelemesi sağlamak üzere Windows 'un sektör standardı [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) özelliğini ve Linux 'un [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) özelliğini kullanır. Çözüm, Anahtar Kasası aboneliğinizdeki disk şifreleme anahtarlarını ve gizli dizileri denetlemenize ve yönetmenize yardımcı olmak üzere [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) ile tümleşiktir. Çözüm Ayrıca, sanal makine disklerindeki tüm verilerin Azure Storage 'da bekleyen olarak şifrelenmesini de sağlar.
+[Azure Disk Encryption](../azure-security-disk-encryption-overview.md) helps you encrypt your Windows and Linux IaaS virtual machine disks. Azure Disk Encryption uses the industry-standard [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) feature of Windows and the [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) feature of Linux to provide volume encryption for the OS and the data disks. The solution is integrated with [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) to help you control and manage the disk-encryption keys and secrets in your key vault subscription. The solution also ensures that all data on the virtual machine disks are encrypted at rest in Azure Storage.
 
-Aşağıda, Azure disk şifrelemesi 'ni kullanmaya yönelik en iyi yöntemler verilmiştir:
+Following are best practices for using Azure Disk Encryption:
 
-**En iyi yöntem**: VM 'lerde şifrelemeyi etkinleştirin.   
-**Ayrıntı**: Azure disk şifrelemesi, şifreleme anahtarlarını oluşturup anahtar kasanıza yazar. Anahtar Kasanızda şifreleme anahtarlarını yönetmek için Azure AD kimlik doğrulaması gerekir. Bu amaçla bir Azure AD uygulaması oluşturun. Kimlik doğrulama amacıyla, istemci gizli tabanlı kimlik doğrulaması veya [istemci sertifikası tabanlı Azure AD kimlik doğrulaması](../../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md)kullanabilirsiniz.
+**Best practice**: Enable encryption on VMs.   
+**Detail**: Azure Disk Encryption generates and writes the encryption keys to your key vault. Managing encryption keys in your key vault requires Azure AD authentication. Create an Azure AD application for this purpose. For authentication purposes, you can use either client secret-based authentication or [client certificate-based Azure AD authentication](../../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md).
 
-**En iyi yöntem**: şifreleme anahtarları için ek bir güvenlik katmanı için anahtar şifreleme anahtarı (kek) kullanın. Anahtar kasanıza bir KEK ekleyin.   
-**Ayrıntı**: anahtar kasasında anahtar şifreleme anahtarı oluşturmak için [Add-azkeyvaultkey](/powershell/module/az.keyvault/add-azkeyvaultkey) cmdlet 'ini kullanın. Ayrıca, anahtar yönetimi için şirket içi donanım güvenlik modülünüzü (HSM) bir KEK içeri aktarabilirsiniz. Daha fazla bilgi için [Key Vault belgelerine](../../key-vault/key-vault-hsm-protected-keys.md)bakın. Anahtar şifreleme anahtarı belirtildiğinde Azure disk şifrelemesi, Key Vault yazmadan önce şifreleme gizli dizilerini kaydırmak için bu anahtarı kullanır. Bu anahtarın bir şirket içi anahtar yönetimi HSM 'de bir kopyasını tutmak, anahtarların yanlışlıkla silinmesine karşı ek koruma sağlar.
+**Best practice**: Use a key encryption key (KEK) for an additional layer of security for encryption keys. Add a KEK to your key vault.   
+**Detail**: Use the [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) cmdlet to create a key encryption key in the key vault. You can also import a KEK from your on-premises hardware security module (HSM) for key management. For more information, see the [Key Vault documentation](../../key-vault/key-vault-hsm-protected-keys.md). When a key encryption key is specified, Azure Disk Encryption uses that key to wrap the encryption secrets before writing to Key Vault. Keeping an escrow copy of this key in an on-premises key management HSM offers additional protection against accidental deletion of keys.
 
-**En iyi yöntem**: diskler şifrelenmeden önce bir [anlık görüntü](../../virtual-machines/windows/snapshot-copy-managed-disk.md) ve/veya yedekleme yapın. Yedeklemeler, şifreleme sırasında beklenmeyen bir hata oluşursa bir kurtarma seçeneği sağlar.   
-**Ayrıntı**: yönetilen disklere sahip VM 'ler şifreleme gerçekleşmeden önce bir yedekleme gerektirir. Bir yedekleme yapıldıktan sonra, *-skipvmbackup* parametresini belirterek yönetilen diskleri şifrelemek için **set-AzVMDiskEncryptionExtension** cmdlet 'ini kullanabilirsiniz. Şifrelenmiş VM 'Leri yedekleme ve geri yükleme hakkında daha fazla bilgi için [Azure Backup](../../backup/backup-azure-vms-encryption.md) makalesine bakın.
+**Best practice**: Take a [snapshot](../../virtual-machines/windows/snapshot-copy-managed-disk.md) and/or backup before disks are encrypted. Backups provide a recovery option if an unexpected failure happens during encryption.   
+**Detail**: VMs with managed disks require a backup before encryption occurs. After a backup is made, you can use the **Set-AzVMDiskEncryptionExtension** cmdlet to encrypt managed disks by specifying the *-skipVmBackup* parameter. For more information about how to back up and restore encrypted VMs, see the [Azure Backup](../../backup/backup-azure-vms-encryption.md) article.
 
-**En iyi yöntem**: şifreleme gizli dizileri arasında bölge dizileri olmadığından emin olmak Için, Azure disk şifrelemesi, anahtar kasasının ve VM 'lerin aynı bölgede bulunmasını gerektirir.   
-**Ayrıntı**: şifrelenecek VM ile aynı bölgede yer alan bir Anahtar Kasası oluşturun ve kullanın.
+**Best practice**: To make sure the encryption secrets don’t cross regional boundaries, Azure Disk Encryption needs the key vault and the VMs to be located in the same region.   
+**Detail**: Create and use a key vault that is in the same region as the VM to be encrypted.
 
-Azure disk şifrelemesi 'ni uyguladığınızda, aşağıdaki iş ihtiyaçlarını karşılamanız gerekir:
+When you apply Azure Disk Encryption, you can satisfy the following business needs:
 
-- IaaS VM 'Leri, kurumsal güvenlik ve uyumluluk gereksinimlerini karşılamak için sektör standardı şifreleme teknolojisi aracılığıyla geri kalanıyla korunmaktadır.
-- IaaS VM 'Leri, müşteri denetimli anahtarlar ve ilkeler altında başlar ve Anahtar Kasanızda kullanımlarını denetleyebilirsiniz.
+- IaaS VMs are secured at rest through industry-standard encryption technology to address organizational security and compliance requirements.
+- IaaS VMs start under customer-controlled keys and policies, and you can audit their usage in your key vault.
 
-## <a name="restrict-direct-internet-connectivity"></a>Doğrudan internet bağlantısını kısıtla
-VM doğrudan internet bağlantısını izleyin ve kısıtlayın. Saldırganlar açık yönetim bağlantı noktaları için ortak bulut IP aralıklarını sürekli tarar ve ortak parolalar ve bilinen düzeltme eki yüklenmemiş güvenlik açıkları gibi "kolay" saldırıları dener. Aşağıdaki tabloda, bu saldırılara karşı korunmaya yardımcı olacak en iyi uygulamalar listelenmektedir:
+## <a name="restrict-direct-internet-connectivity"></a>Restrict direct internet connectivity
+Monitor and restrict VM direct internet connectivity. Attackers constantly scan public cloud IP ranges for open management ports and attempt “easy” attacks like common passwords and known unpatched vulnerabilities. The following table lists best practices to help protect against these attacks:
 
-**En iyi yöntem**: ağ yönlendirmeye ve güvenliğe yanlışlıkla engel olma.   
-**Ayrıntı**: yalnızca merkezi ağ grubunun ağ kaynaklarına erişim izni olduğundan emin olmak için RBAC kullanın.
+**Best practice**: Prevent inadvertent exposure to network routing and security.   
+**Detail**: Use RBAC to ensure that only the central networking group has permission to networking resources.
 
-**En iyi yöntem**: "Any" kaynak IP adresinden erişime izin veren, sunulan VM 'leri tanımla ve düzelt.   
-**Ayrıntı**: Azure Güvenlik Merkezi 'ni kullanın. Güvenlik Merkezi, ağ güvenlik gruplarınızı "Any" kaynak IP adresinden erişime izin veren bir veya daha fazla gelen kurala sahipse, internet 'e yönelik uç noktalar aracılığıyla erişimi kısıtlamanız önerilir. Güvenlik Merkezi, gerçekte erişmesi gereken kaynak IP adreslerine [erişimi kısıtlamak](../../security-center/security-center-network-recommendations.md) için bu gelen kuralları düzenlemenizi önerir.
+**Best practice**: Identify and remediate exposed VMs that allow access from “any” source IP address.   
+**Detail**: Use Azure Security Center. Security Center will recommend that you restrict access through internet-facing endpoints if any of your network security groups has one or more inbound rules that allow access from “any” source IP address. Security Center will recommend that you edit these inbound rules to [restrict access](../../security-center/security-center-network-recommendations.md) to source IP addresses that actually need access.
 
-**En iyi yöntem**: yönetim bağlantı noktalarını kısıtla (RDP, SSH).   
-**Ayrıntı**: [tam zamanında (JIT) VM erişimi](../../security-center/security-center-just-in-time.md) , Azure VM 'lerinize gelen trafiği kilitlemek için kullanılabilir, ancak gerektiğinde VM 'lere bağlanmak için kolay erişim sağlarken saldırılara maruz kalma olasılığını azaltır. JıT etkinleştirildiğinde, güvenlik merkezi bir ağ güvenlik grubu kuralı oluşturarak Azure VM 'lerinize gelen trafiği kilitler. Gelen trafiğin kilitlenebileceği sanal makine üzerindeki bağlantı noktalarını seçersiniz. Bu bağlantı noktaları JıT çözümü tarafından denetlenir.
+**Best practice**: Restrict management ports (RDP, SSH).   
+**Detail**: [Just-in-time (JIT) VM access](../../security-center/security-center-just-in-time.md) can be used to lock down inbound traffic to your Azure VMs, reducing exposure to attacks while providing easy access to connect to VMs when needed. When JIT is enabled, Security Center locks down inbound traffic to your Azure VMs by creating a network security group rule. You select the ports on the VM to which inbound traffic will be locked down. These ports are controlled by the JIT solution.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure 'u kullanarak bulut çözümlerinizi tasarlarken, dağıttığınızda ve yönetirken en iyi güvenlik uygulamaları için bkz. [Azure Güvenlik en iyi uygulamaları ve desenleri](best-practices-and-patterns.md) .
+See [Azure security best practices and patterns](best-practices-and-patterns.md) for more security best practices to use when you’re designing, deploying, and managing your cloud solutions by using Azure.
 
-Aşağıdaki kaynaklar, Azure güvenliği ve ilgili Microsoft hizmetleri hakkında daha genel bilgiler sağlamak için kullanılabilir:
-* Azure [güvenlik ekibi blogu](https://blogs.msdn.microsoft.com/azuresecurity/) -Azure güvenliği ile ilgili en son bilgiler için
-* [Microsoft Güvenlik](https://technet.microsoft.com/library/dn440717.aspx) açıkları, Azure ile ilgili sorunlar da dahil olmak üzere Microsoft güvenlik açıklarına secure@microsoft.com bildirilebilir veya e-posta ile gönderebilirsiniz.
+The following resources are available to provide more general information about Azure security and related Microsoft services:
+* [Azure Security Team Blog](https://blogs.msdn.microsoft.com/azuresecurity/) - for up to date information on the latest in Azure Security
+* [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx) - where Microsoft security vulnerabilities, including issues with Azure, can be reported or via email to secure@microsoft.com

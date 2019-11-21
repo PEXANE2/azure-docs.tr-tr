@@ -1,111 +1,111 @@
 ---
-title: Öğretici-optimizasyon önerileriyle Azure maliyetlerini azaltma | Microsoft Docs
-description: Bu öğretici, iyileştirme önerilerine göre hareket ettirmeniz durumunda Azure maliyetlerini azaltmanıza yardımcı olur.
+title: Tutorial - Reduce Azure costs with optimization recommendations | Microsoft Docs
+description: This tutorial helps you reduce Azure costs when you act on optimization recommendations.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 10/24/2019
 ms.topic: conceptual
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 603de4d9bed936ecb91f130b0e30f6d1383a9092
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: a9dbb121cab49024aaf0dc65bbac938764d9f8b2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935790"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229843"
 ---
-# <a name="tutorial-optimize-costs-from-recommendations"></a>Öğretici: önerilerin maliyetlerini Iyileştirme
+# <a name="tutorial-optimize-costs-from-recommendations"></a>Tutorial: Optimize costs from recommendations
 
-Azure Maliyet Yönetimi, Azure Danışmanı ile birlikte çalışarak maliyet iyileştirme önerileri sunar. Azure Danışmanı boşta olan ve az kullanılan kaynakları belirleyerek verimliliği iyileştirmenize ve geliştirmenize yardımcı olur. Bu öğreticide, az kullanılan Azure kaynaklarını tespit ettiğiniz ve maliyetleri azaltmak için işlem yaptığınız bir örnek adım adım gösterilmektedir.
+Azure Maliyet Yönetimi, Azure Danışmanı ile birlikte çalışarak maliyet iyileştirme önerileri sunar. Azure Danışmanı boşta olan ve az kullanılan kaynakları belirleyerek verimliliği iyileştirmenize ve geliştirmenize yardımcı olur. This tutorial walks you through an example where you identify underutilized Azure resources and then you take action to reduce costs.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Potansiyel kullanım verimsizlikleri görüntülemek için maliyet iyileştirme önerilerini görüntüleyin
-> * Bir sanal makineyi daha uygun maliyetli bir seçeneğe göre yeniden boyutlandırma önerisi üzerinde işlem yapın
-> * Sanal makinenin başarıyla yeniden boyutlandırıldığından emin olmak için eylemi doğrulayın
+> * View cost optimization recommendations to view potential usage inefficiencies
+> * Act on a recommendation to resize a virtual machine to a more cost-effective option
+> * Verify the action to ensure that the virtual machine was successfully resized
 
 ## <a name="prerequisites"></a>Önkoşullar
-Çeşitli kapsamlar ve Azure hesap türleri için öneriler mevcuttur. Desteklenen hesap türlerinin tam listesini görüntülemek için bkz. [maliyet yönetimi verilerini anlama](understand-cost-mgt-data.md). Maliyet verilerini görüntülemek için aşağıdaki kapsamlardan birine veya daha fazlasına en azından yazma erişiminiz olmalıdır. Kapsamlar hakkında daha fazla bilgi için bkz. [kapsamları anlama ve bunlarla çalışma](understand-work-scopes.md).
+Recommendations are available for a variety of scopes and Azure account types. To view the full list of supported account types, see [Understand Cost Management data](understand-cost-mgt-data.md). Maliyet verilerini görüntülemek için aşağıdaki kapsamlardan birine veya daha fazlasına en azından yazma erişiminiz olmalıdır. For more information about scopes, see [Understand and work with scopes](understand-work-scopes.md).
 
 - Abonelik
 - Kaynak grubu
 
-En az 14 günlük etkinlik içeren etkin sanal makinelere sahip olmanız gerekir.
+You must have active virtual machines with at least 14 days of activity.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açın
 [https://portal.azure.com](https://portal.azure.com/) adresinden Azure portalında oturum açın.
 
-## <a name="view-cost-optimization-recommendations"></a>Maliyet iyileştirme önerilerini görüntüleme
+## <a name="view-cost-optimization-recommendations"></a>View cost optimization recommendations
 
-Bir aboneliğin maliyet iyileştirme önerilerini görüntülemek için Azure portal istenen kapsamı açın ve **danışman önerileri**' ni seçin.
+To view cost optimization recommendations for a subscription, open the desired scope in the Azure portal and select **Advisor recommendations**.
 
-Bir yönetim grubunun önerilerini görüntülemek için, istenen kapsamı Azure portal açın ve menüden **Maliyet Analizi** ' ni seçin. Yönetim grubu gibi farklı bir kapsama geçiş yapmak için **kapsam** hap ' i kullanın. Menüdeki **danışman önerilerini** seçin. Kapsamlar hakkında daha fazla bilgi için bkz. [kapsamları anlama ve bunlarla çalışma](understand-work-scopes.md).
+To view recommendations for a management group, open the desired scope in the Azure portal and select **Cost analysis** in the menu. Use the **Scope** pill to switch to a different scope, such as a management group. Select **Advisor recommendations** in the menu. For more information about scopes, see [Understand and work with scopes](understand-work-scopes.md).
 
-![Azure portal gösterilen maliyet yönetimi Danışmanı önerileri](./media/tutorial-acm-opt-recommendations/advisor-recommendations.png)
+![Cost Management Advisor recommendations shown in the Azure portal](./media/tutorial-acm-opt-recommendations/advisor-recommendations.png)
 
-Önerilerin listesi kullanım verimsizlikleri tanımlar veya ek para tasarrufu yapmanıza yardımcı olabilecek satın alma önerilerini gösterir. Toplanan **olası yıllık tasarruflar** , öneri kurallarını karşılayan tüm VM 'lerinizi kapatırsanız veya serbest bırakırsanız kaydedebilmeniz gereken toplam miktarı gösterir. Onları kapatmak istemiyorsanız, bunları daha az maliyetli bir VM SKU 'SU olarak yeniden boyutlandırmayı göz önünde bulundurmanız gerekir.
+The list of recommendations identifies usage inefficiencies or shows purchase recommendations that can help you save additional money. The totaled **Potential yearly savings** shows the total amount that you can save if you shut down or deallocate all of your VMs that meet recommendation rules. If you don't want to shut them down, you should consider resizing them to a less expensive VM SKU.
 
-Olası **yıllık tasarruflarla**birlikte **etki** kategorisi, mümkün olduğunca tasarruf etme potansiyeli olan önerileri belirlemenize yardımcı olmak için tasarlanmıştır.
+The **Impact** category, along with the **Potential yearly savings**, are designed to help identify recommendations that have the potential to save as much as possible.
 
-Yüksek etki önerileri şunlardır:
-- [Kullandıkça Öde maliyetlerinden tasarruf etmek için ayrılmış sanal makine örnekleri satın alın](../advisor/advisor-cost-recommendations.md#buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs)
-- [Az kullanılan örnekleri yeniden boyutlandırarak veya kapatarak sanal makineyi harcamayı iyileştirin](../advisor/advisor-cost-recommendations.md#optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances)
-- [Yönetilen disk anlık görüntülerini depolamak için standart depolama kullanma](../advisor/advisor-cost-recommendations.md#use-standard-snapshots-for-managed-disks)
+High impact recommendations include:
+- [Buy reserved virtual machine instances to save money over pay-as-you-go costs](../advisor/advisor-cost-recommendations.md#buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs)
+- [Optimize virtual machine spend by resizing or shutting down underutilized instances](../advisor/advisor-cost-recommendations.md#optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances)
+- [Use Standard Storage to store Managed Disks snapshots](../advisor/advisor-cost-recommendations.md#use-standard-snapshots-for-managed-disks)
 
-Orta etki önerileri şunlardır:
-- [Başarısız olan Azure Data Factory işlem hatlarını silme](../advisor/advisor-cost-recommendations.md#delete-azure-data-factory-pipelines-that-are-failing)
-- [Sağlanmamış ExpressRoute devreleri ortadan kaldırarak maliyetleri düşürün](../advisor/advisor-cost-recommendations.md#reduce-costs-by-eliminating-unprovisioned-expressroute-circuits)
-- [Boştaki Sanal ağ geçitlerini silerek veya yeniden yapılandırarak maliyetleri azaltın](../advisor/advisor-cost-recommendations.md#reduce-costs-by-deleting-or-reconfiguring-idle-virtual-network-gateways)
+Medium impact recommendations include:
+- [Delete Azure Data Factory pipelines that are failing](../advisor/advisor-cost-recommendations.md#delete-azure-data-factory-pipelines-that-are-failing)
+- [Reduce costs by eliminating un-provisioned ExpressRoute circuits](../advisor/advisor-cost-recommendations.md#reduce-costs-by-eliminating-unprovisioned-expressroute-circuits)
+- [Reduce costs by deleting or reconfiguring idle virtual network gateways](../advisor/advisor-cost-recommendations.md#reduce-costs-by-deleting-or-reconfiguring-idle-virtual-network-gateways)
 
-## <a name="act-on-a-recommendation"></a>Öneri üzerinde işlem yapın
+## <a name="act-on-a-recommendation"></a>Act on a recommendation
 
-Azure Danışmanı, sanal makine kullanımınızı yedi gün boyunca izler ve daha sonra az kullanılan sanal makineleri tanımlar. CPU kullanımı yüzde beş veya daha az olan sanal makineler ve ağ kullanımı, dört veya daha fazla gün için yedi MB veya daha az gündür ve düşük kullanım sanal makineler olarak değerlendirilir.
+Azure Advisor monitors your virtual machine usage for seven days and then identifies underutilized virtual machines. Virtual machines whose CPU utilization is five percent or less and network usage is seven MB or less for four or more days are considered low-utilization virtual machines.
 
-%5 veya daha az CPU kullanımı ayarı varsayılandır ancak ayarları ayarlayabilirsiniz. Ayarı ayarlama hakkında daha fazla bilgi için, [Ortalama CPU kullanımı kuralını yapılandırma veya düşük kullanım sanal makine önerisi](../advisor/advisor-get-started.md#configure-low-usage-vm-recommendation)bölümüne bakın.
+The 5% or less CPU utilization setting is the default, but you can adjust the settings. For more information about adjusting the setting, see the [Configure the average CPU utilization rule or the low usage virtual machine recommendation](../advisor/advisor-get-started.md#configure-low-usage-vm-recommendation).
 
-Bazı senaryolar tasarıma göre düşük kullanıma yol açabilir, ancak sanal makinelerinizin boyutunu daha ucuz boyutlara değiştirerek genellikle tasarruf edebilirsiniz. Yeniden boyutlandırma eylemi seçerseniz gerçek tasarruflarınız farklılık gösterebilir. Bir sanal makineyi yeniden boyutlandırma örneği hakkında yol açalım.
+Although some scenarios can result in low utilization by design, you can often save money by changing the size of your virtual machines to less expensive sizes. Your actual savings might vary if you choose a resize action. Let's walk through an example of resizing a virtual machine.
 
-Öneriler listesinde, **doğru boyut ' a tıklayın veya kapalı sanal makineler** önerisi ' ne tıklayın. Sanal makine adayları listesinde, yeniden boyutlandırmak için bir sanal makine seçin ve ardından sanal makineye tıklayın. Kullanım ölçümlerini doğrulayabilmeniz için sanal makinenin ayrıntıları gösterilir. **Olası yıllık tasarruf** değeri, sanal makineyi kapatırsanız veya kaldırırsanız kaydedebilecekleri şeydir. Bir VM 'nin yeniden boyutlandırılması muhtemelen paradan tasarruf etmenizi sağlar, ancak olası yıllık tasarruflarının tamamını kaydedemezsiniz.
+In the list of recommendations, click the **Right-size or shutdown underutilized virtual machines** recommendation. In the list of virtual machine candidates, choose a virtual machine to resize and then click the virtual machine. The virtual machine's details are shown so that you can verify the utilization metrics. The **potential yearly savings** value is what you can save if you shut down or remove the VM. Resizing a VM will probably save you money, but you won't save the full amount of the potential yearly savings.
 
-![Öneri ayrıntıları örneği](./media/tutorial-acm-opt-recommendations/recommendation-details.png)
+![Example of Recommendation details](./media/tutorial-acm-opt-recommendations/recommendation-details.png)
 
-VM ayrıntılarında, sanal makinenin uygun bir yeniden boyutlandırma adayı olduğunu doğrulamak için kullanımını kontrol edin.
+In the VM details, check the utilization of the virtual machine to confirm that it's a suitable resize candidate.
 
-![Geçmiş kullanımı gösteren örnek VM ayrıntıları](./media/tutorial-acm-opt-recommendations/vm-details.png)
+![Example VM details showing historical utilization](./media/tutorial-acm-opt-recommendations/vm-details.png)
 
-Geçerli sanal makinenin boyutunu aklınızda edin. Sanal makinenin yeniden boyutlandırılması gerektiğini doğruladıktan sonra, sanal makinelerin listesini görmeniz için VM ayrıntılarını kapatın.
+Note the current virtual machine's size. After you've verified that the virtual machine should be resized, close the VM details so that you see the list of virtual machines.
 
-Kapatılacak veya yeniden boyutlandırılacak aday listesinde, * * yeniden boyutlandır *&lt;Fromvirtualdeninesku&gt;* "&lt;Tovirtual, inesku&gt;* * * olarak belirleyin.
-sanal makineyi yeniden boyutlandırma seçeneğiyle ![örnek önerisi](./media/tutorial-acm-opt-recommendations/resize-vm.png)
+In the list of candidates to shut down or resize, select **Resize *&lt;FromVirtualMachineSKU&gt;* to *&lt;ToVirtualMachineSKU&gt;***.
+![Example recommendation with the option to resize the virtual machine](./media/tutorial-acm-opt-recommendations/resize-vm.png)
 
-Ardından, kullanılabilir yeniden boyutlandırma seçeneklerinin bir listesi sunulur. Senaryonuz için en iyi performansı ve maliyet verimliliğini sağlayacak olanı seçin. Aşağıdaki örnekte, seçilen seçenek **Standard_D8s_v3** iken **Standard_D2s_v3**olarak yeniden boyutlandırılır.
+Next, you're presented with a list of available resize options. Choose the one that will give the best performance and cost-effectiveness for your scenario. In the following example, the option chosen resizes from **Standard_D8s_v3** to **Standard_D2s_v3**.
 
-![Kullanılabilir VM boyutlarının bir boyut seçebileceği örnek listesi](./media/tutorial-acm-opt-recommendations/choose-size.png)
+![Example list of available VM sizes where you can choose a size](./media/tutorial-acm-opt-recommendations/choose-size.png)
 
-Uygun bir boyut seçtikten sonra yeniden boyutlandır eylemini başlatmak için yeniden **Boyutlandır** ' ı tıklatın.
+After you choose a suitable size, click **Resize** to start the resize action.
 
-Yeniden boyutlandırma için etkin olarak çalışan bir sanal makinenin yeniden başlatılması gerekir. Sanal makine bir üretim ortamındaysanız, çalışma saatlerinden sonra yeniden boyutlandırma işlemini çalıştırmanızı öneririz. Yeniden başlatmanın zamanlanması, geçici olarak kullanım dışı kalması nedeniyle oluşan kesintilere engel olabilir.
+Resizing requires an actively running virtual machine to restart. If the virtual machine is in a production environment, we recommend that you run the resize operation after business hours. Scheduling the restart can reduce disruptions caused by momentarily unavailability.
 
-## <a name="verify-the-action"></a>Eylemi doğrulama
+## <a name="verify-the-action"></a>Verify the action
 
-VM yeniden boyutlandırma işlemi başarıyla tamamlandığında, bir Azure bildirimi gösterilir.
+When the VM resizing completes successfully, an Azure notification is shown.
 
-![Başarılı yeniden boyutlandırılan sanal makine bildirimi](./media/tutorial-acm-opt-recommendations/resized-notification.png)
+![Successful resized virtual machine notification](./media/tutorial-acm-opt-recommendations/resized-notification.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 
 > [!div class="checklist"]
-> * Potansiyel kullanım verimsizlikleri görüntülemek için maliyet iyileştirme önerilerini görüntüleyin
-> * Bir sanal makineyi daha uygun maliyetli bir seçeneğe göre yeniden boyutlandırma önerisi üzerinde işlem yapın
-> * Sanal makinenin başarıyla yeniden boyutlandırıldığından emin olmak için eylemi doğrulayın
+> * View cost optimization recommendations to view potential usage inefficiencies
+> * Act on a recommendation to resize a virtual machine to a more cost-effective option
+> * Verify the action to ensure that the virtual machine was successfully resized
 
-Maliyet yönetimi en iyi yöntemler makalesini henüz okumadıysanız, maliyetlerin yönetilmesine yardımcı olmak için göz önünde bulundurmanız gereken üst düzey kılavuz ve ilkeler sağlar.
+If you haven't already read the Cost Management best practices article, it provides high-level guidance and principles to consider to help manage costs.
 
 > [!div class="nextstepaction"]
-> [Maliyet yönetimi en iyi uygulamaları](cost-mgt-best-practices.md)
+> [Cost Management best practices](cost-mgt-best-practices.md)

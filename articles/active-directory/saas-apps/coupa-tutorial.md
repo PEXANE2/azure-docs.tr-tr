@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory ile tümleştirme Microsoft Docs'
-description: Azure Active Directory ve kupona arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
+title: 'Tutorial: Azure Active Directory integration with Coupa | Microsoft Docs'
+description: Learn how to configure single sign-on between Azure Active Directory and Coupa.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,244 +16,244 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 031a88bb8a8832fbe7acb124436cce6aaeb02e21
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 709f3a5b66db660ade482660cd9b3930ff0b7141
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159320"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227641"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-coupa"></a>Öğretici: bağa ile tümleştirme Azure Active Directory
+# <a name="tutorial-azure-active-directory-integration-with-coupa"></a>Tutorial: Azure Active Directory integration with Coupa
 
-Bu öğreticide, Azure Active Directory (Azure AD) ile bir bağa tümleştirmeyi öğreneceksiniz.
-Kupona 'nın Azure AD ile tümleştirilmesi aşağıdaki avantajları sağlar:
+In this tutorial, you learn how to integrate Coupa with Azure Active Directory (Azure AD).
+Integrating Coupa with Azure AD provides you with the following benefits:
 
-* Azure AD 'de, bir kupona erişimi olan denetim yapabilirsiniz.
-* Kullanıcılarınızın Azure AD hesaplarıyla otomatik olarak (çoklu oturum açma) bağlayıp oturum açmasını sağlayabilirsiniz.
-* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
+* You can control in Azure AD who has access to Coupa.
+* You can enable your users to be automatically signed-in to Coupa (Single Sign-On) with their Azure AD accounts.
+* You can manage your accounts in one central location - the Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Azure AD tümleştirmesini bir kupona ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
+To configure Azure AD integration with Coupa, you need the following items:
 
-* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü edinebilirsiniz
-* Tek bir oturum açma etkin aboneliği
+* An Azure AD subscription. If you don't have an Azure AD environment, you can get one-month trial [here](https://azure.microsoft.com/pricing/free-trial/)
+* Coupa single sign-on enabled subscription
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
+In this tutorial, you configure and test Azure AD single sign-on in a test environment.
 
-* Kupona, **SP** tarafından başlatılan SSO 'yu destekler
+* Coupa supports **SP** initiated SSO
 
-## <a name="adding-coupa-from-the-gallery"></a>Galeriden bir Kuponya ekleme
+## <a name="adding-coupa-from-the-gallery"></a>Adding Coupa from the gallery
 
-Kupona 'nın bir Azure AD ile tümleştirilmesini yapılandırmak için, galerinizden yönetilen SaaS uygulamaları listenize bir Kupone eklemeniz gerekir.
+To configure the integration of Coupa into Azure AD, you need to add Coupa from the gallery to your list of managed SaaS apps.
 
-**Galeriden bir Kupone eklemek için aşağıdaki adımları uygulayın:**
+**To add Coupa from the gallery, perform the following steps:**
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
+1. In the **[Azure portal](https://portal.azure.com)** , on the left navigation panel, click **Azure Active Directory** icon.
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+    ![The Azure Active Directory button](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
+2. Navigate to **Enterprise Applications** and then select the **All Applications** option.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![The Enterprise applications blade](common/enterprise-applications.png)
 
-3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
+3. To add new application, click **New application** button on the top of dialog.
 
-    ![Yeni uygulama düğmesi](common/add-new-app.png)
+    ![The New application button](common/add-new-app.png)
 
-4. Arama kutusuna, **bir**başvuru yazın, bir sonuç panelinden **bir kupona** seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. In the search box, type **Coupa**, select **Coupa** from result panel then click **Add** button to add the application.
 
-     ![Sonuçlar listesinde bir kupona](common/search-new-app.png)
+     ![Coupa in the results list](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Configure and test Azure AD single sign-on
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına bağlı olarak, kupona ile yapılandırıp test edersiniz.
-Çoklu oturum açma 'nın çalışması için, bir Azure AD kullanıcısı ile ilişkili kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
+In this section, you configure and test Azure AD single sign-on with Coupa based on a test user called **Britta Simon**.
+For single sign-on to work, a link relationship between an Azure AD user and the related user in Coupa needs to be established.
 
-Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için, aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
+To configure and test Azure AD single sign-on with Coupa, you need to complete the following building blocks:
 
-1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için, tek **[bir oturum açmayı yapılandırın](#configure-coupa-single-sign-on)** .
-3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
-5. Kullanıcının Azure AD gösterimine bağlı olan bir kupona 'da Britta Simon 'a sahip olmak için, bir **[bağa test kullanıcısı oluşturun](#create-coupa-test-user)** .
-6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
+1. **[Configure Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)** - to enable your users to use this feature.
+2. **[Configure Coupa Single Sign-On](#configure-coupa-single-sign-on)** - to configure the Single Sign-On settings on application side.
+3. **[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
+4. **[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
+5. **[Create Coupa test user](#create-coupa-test-user)** - to have a counterpart of Britta Simon in Coupa that is linked to the Azure AD representation of user.
+6. **[Test single sign-on](#test-single-sign-on)** - to verify whether the configuration works.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
+### <a name="configure-azure-ad-single-sign-on"></a>Configure Azure AD single sign-on
 
-Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
+In this section, you enable Azure AD single sign-on in the Azure portal.
 
-Azure AD çoklu oturum açmayı, kupona ile yapılandırmak için aşağıdaki adımları uygulayın:
+To configure Azure AD single sign-on with Coupa, perform the following steps:
 
-1. [Azure Portal](https://portal.azure.com/), **bağa** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
+1. In the [Azure portal](https://portal.azure.com/), on the **Coupa** application integration page, select **Single sign-on**.
 
-    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
+    ![Configure single sign-on link](common/select-sso.png)
 
-2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
+2. On the **Select a Single sign-on method** dialog, select **SAML/WS-Fed** mode to enable single sign-on.
 
-    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
+    ![Single sign-on select mode](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. On the **Set up Single Sign-On with SAML** page, click **Edit** icon to open **Basic SAML Configuration** dialog.
 
-    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+    ![Edit Basic SAML Configuration](common/edit-urls.png)
 
-4. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
+4. On the **Basic SAML Configuration** section, perform the following steps:
 
-    ![Bağa etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/sp-identifier-reply.png)
+    ![Coupa Domain and URLs single sign-on information](common/sp-identifier-reply.png)
 
-    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://<companyname>.coupahost.com`
+    a. In the **Sign-on URL** text box, type a URL using the following pattern: `https://<companyname>.coupahost.com`
 
     > [!NOTE]
-    > Oturum açma URL 'SI değeri gerçek değil. Bu değeri, gerçek oturum açma URL 'siyle güncelleştirin. Bu değeri almak için, [bir istemci desteği ekibine](https://success.coupa.com/Support/Contact_Us?) başvurun.
+    > The Sign-on URL value is not real. Update this value with the actual Sign-On URL. Contact [Coupa Client support team](https://success.coupa.com/Support/Contact_Us?) to get this value.
 
-    b. **Tanımlayıcı** kutusuna bir URL yazın:
+    b. In the **Identifier** box, type a URL:
 
     | Ortam  | URL |
     |:-------------|----|
-    | Alanda | `sso-stg1.coupahost.com`|
+    | Sandbox | `sso-stg1.coupahost.com`|
     | Üretim | `sso-prd1.coupahost.com`|
     | | |
 
-    c. **Yanıt URL** 'si metin kutusuna bir URL yazın:
+    c. In the **Reply URL** text box, type a URL:
 
     | Ortam | URL |
     |------------- |----|
-    | Alanda | `https://sso-stg1.coupahost.com/sp/ACS.saml2`|
+    | Sandbox | `https://sso-stg1.coupahost.com/sp/ACS.saml2`|
     | Üretim | `https://sso-prd1.coupahost.com/sp/ACS.saml2`|
     | | |
 
-4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+4. On the **Set up Single Sign-On with SAML** page, in the **SAML Signing Certificate** section, click **Download** to download the **Federation Metadata XML** from the given options as per your requirement and save it on your computer.
 
-    ![Sertifika indirme bağlantısı](common/metadataxml.png)
+    ![The Certificate download link](common/metadataxml.png)
 
-6. **Set up bağa** bölümünde uygun URL 'leri gereksiniminize göre kopyalayın.
+6. On the **Set up Coupa** section, copy the appropriate URL(s) as per your requirement.
 
-    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
+    ![Copy configuration URLs](common/copy-configuration-urls.png)
 
-    a. Oturum açma URL 'SI
+    a. Login URL
 
-    b. Azure AD tanımlayıcısı
+    b. Azure Ad Identifier
 
-    c. Oturum kapatma URL 'SI
+    c. Logout URL
 
-### <a name="configure-coupa-single-sign-on"></a>Bağa çoklu oturum açmayı yapılandırma
+### <a name="configure-coupa-single-sign-on"></a>Configure Coupa Single Sign-On
 
-1. Bir yönetici olarak, bağa şirket sitenizde oturum açın.
+1. Sign on to your Coupa company site as an administrator.
 
-2. **Kurulum \> güvenlik denetimi**' ne gidin.
+2. Go to **Setup \> Security Control**.
 
-    ![Güvenlik denetimleri](./media/coupa-tutorial/ic791900.png "Güvenlik denetimleri")
+    ![Security Controls](./media/coupa-tutorial/ic791900.png "Security Controls")
 
-3. Bu **kimlik bilgilerini kullanarak oturum açın** bölümünde aşağıdaki adımları uygulayın:
+3. In the **Log in using Coupa credentials** section, perform the following steps:
 
-    ![Bağa SP meta verileri](./media/coupa-tutorial/ic791901.png "Bağa SP meta verileri")
+    ![Coupa SP metadata](./media/coupa-tutorial/ic791901.png "Coupa SP metadata")
 
-    a. **SAML kullanarak oturum aç '** ı seçin.
+    a. Select **Log in using SAML**.
 
-    b. Azure portal indirilen meta verileri karşıya yüklemek için, **Araştır** ' a tıklayın.
+    b. Click **Browse** to upload the metadata downloaded from the Azure portal.
 
     c. **Kaydet** düğmesine tıklayın.
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
+### <a name="create-an-azure-ad-test-user"></a>Create an Azure AD test user 
 
-Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
+The objective of this section is to create a test user in the Azure portal called Britta Simon.
 
-1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. In the Azure portal, in the left pane, select **Azure Active Directory**, select **Users**, and then select **All users**.
 
-    !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
+    ![The "Users and groups" and "All users" links](common/users.png)
 
-2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+2. Select **New user** at the top of the screen.
 
-    ![Yeni Kullanıcı düğmesi](common/new-user.png)
+    ![New user Button](common/new-user.png)
 
-3. Kullanıcı Özellikleri ' nde aşağıdaki adımları gerçekleştirin.
+3. In the User properties, perform the following steps.
 
-    ![Kullanıcı iletişim kutusu](common/user-properties.png)
+    ![The User dialog box](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. In the **Name** field enter **BrittaSimon**.
   
-    b. **Kullanıcı adı** alanında **brittasıon\@yourşirketnotlarıetki alanı. Extension** yazın  
+    b. In the **User name** field type **brittasimon\@yourcompanydomain.extension**  
     Örneğin, BrittaSimon@contoso.com
 
-    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
+    c. Select **Show password** check box, and then write down the value that's displayed in the Password box.
 
     d. **Oluştur**’a tıklayın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
+### <a name="assign-the-azure-ad-test-user"></a>Assign the Azure AD test user
 
-Bu bölümde, kupona 'ya erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
+In this section, you enable Britta Simon to use Azure single sign-on by granting access to Coupa.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin, sonra da **kupona**' yı seçin.
+1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **Coupa**.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Enterprise applications blade](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **kupona**' yı seçin.
+2. In the applications list, select **Coupa**.
 
-    ![Uygulamalar listesinde bir bağa bağlantısı](common/all-applications.png)
+    ![The Coupa link in the Applications list](common/all-applications.png)
 
-3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
+3. In the menu on the left, select **Users and groups**.
 
-    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
+    ![The "Users and groups" link](common/users-groups-blade.png)
 
-4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+4. Click the **Add user** button, then select **Users and groups** in the **Add Assignment** dialog.
 
-    ![Atama Ekle bölmesi](common/add-assign-user.png)
+    ![The Add Assignment pane](common/add-assign-user.png)
 
-5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+5. In the **Users and groups** dialog select **Britta Simon** in the Users list, then click the **Select** button at the bottom of the screen.
 
-6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+6. If you are expecting any role value in the SAML assertion then in the **Select Role** dialog select the appropriate role for the user from the list, then click the **Select** button at the bottom of the screen.
 
-7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+7. In the **Add Assignment** dialog click the **Assign** button.
 
-### <a name="create-coupa-test-user"></a>Bağa test kullanıcısı oluşturma
+### <a name="create-coupa-test-user"></a>Create Coupa test user
 
-Azure AD kullanıcılarının bir kupona 'da oturum açmasını sağlamak için, bunların bir kupona içinde sağlanması gerekir.  
+In order to enable Azure AD users to log into Coupa, they must be provisioned into Coupa.  
 
-* Kupona durumunda, sağlama el ile gerçekleştirilen bir görevdir.
+* In the case of Coupa, provisioning is a manual task.
 
-**Kullanıcı sağlamayı yapılandırmak için aşağıdaki adımları uygulayın:**
+**To configure user provisioning, perform the following steps:**
 
-1. **Bağa** şirket sitenizde yönetici olarak oturum açın.
+1. Log in to your **Coupa** company site as administrator.
 
-2. Üstteki menüde, **Kurulum**' a ve ardından **Kullanıcılar**' a tıklayın.
+2. In the menu on the top, click **Setup**, and then click **Users**.
 
     ![Kullanıcılar](./media/coupa-tutorial/ic791908.png "Kullanıcılar")
 
 3. **Oluştur**’a tıklayın.
 
-    ![Kullanıcı Oluşturma](./media/coupa-tutorial/ic791909.png "Kullanıcı Oluştur")
+    ![Kullanıcı Oluşturma](./media/coupa-tutorial/ic791909.png "Create Users")
 
-4. **Kullanıcı oluştur** bölümünde aşağıdaki adımları uygulayın:
+4. In the **User Create** section, perform the following steps:
 
-    ![Kullanıcı ayrıntıları](./media/coupa-tutorial/ic791910.png "Kullanıcı ayrıntıları")
+    ![User Details](./media/coupa-tutorial/ic791910.png "User Details")
 
-    a. İlgili metin kutularına sağlamak istediğiniz geçerli bir Azure Active Directory hesabının **oturum açma**, **ad**, **SOYADı**, **Çoklu oturum açma kimliği**, **e-posta** özniteliklerini yazın.
+    a. Type the **Login**, **First name**, **Last Name**, **Single Sign-On ID**, **Email** attributes of a valid Azure Active Directory account you want to provision into the related textboxes.
 
     b. **Oluştur**’a tıklayın.
 
     >[!NOTE]
-    >Azure Active Directory hesap sahibi, hesabı etkin olmadan önce onaylamaya yönelik bir bağlantı içeren bir e-posta alır.
+    >The Azure Active Directory account holder will get an email with a link to confirm the account before it becomes active.
     >
 
 >[!NOTE]
->AAD Kullanıcı hesapları sağlamak için, herhangi bir diğer bağa Kullanıcı hesabı oluşturma aracını veya bir bağa tarafından sunulan API 'Leri kullanabilirsiniz.
+>You can use any other Coupa user account creation tools or APIs provided by Coupa to provision Azure AD user accounts.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+In this section, you test your Azure AD single sign-on configuration using the Access Panel.
 
-Erişim panelinde bir kupone Kutucuğa tıkladığınızda, SSO 'yu ayarladığınız kupona 'da otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+When you click the Coupa tile in the Access Panel, you should be automatically signed in to the Coupa for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

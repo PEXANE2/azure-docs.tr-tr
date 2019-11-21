@@ -1,23 +1,22 @@
 ---
-title: "Öğretici: Azure IoT Hub cihaz sağlama hizmeti 'ni kullanarak cihaz sağlama (.NET)"
-description: "Öğretici: Azure IoT Hub cihaz sağlama hizmeti 'ni (.NET) kullanarak cihazınızı tek bir IoT Hub 'ına sağlama"
+title: Provision device using Azure IoT Hub Device Provisioning Service (.NET)
+description: Tutorial - Provision your device to a single IoT hub using the Azure IoT Hub Device Provisioning Service (.NET)
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 02995549590f6f53feff92fe45bfb6cc3d543334
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: a19774a163c8725e0232e955a7be907420ce8249
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112806"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229492"
 ---
-# <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Öğretici: Azure IoT Hub sağlama hizmeti Istemcisini (.NET) kullanarak bir IoT Hub 'ına cihaz kaydetme
+# <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Tutorial: Enroll the device to an IoT hub using the Azure IoT Hub Provisioning Service Client (.NET)
 
 Önceki öğreticide, Cihaz Sağlama hizmetine bağlanmak için bir cihazın nasıl ayarlanacağını öğrendiniz. Bu öğreticide, hem **_Tek Kayıt_** hem de **_Kayıt Grupları_** kullanarak cihazınızı tek bir IoT hub’a sağlamak için bu hizmetin nasıl kullanılacağını öğreneceksiniz. Bu öğretici şunların nasıl yapıldığını gösterir:
 
@@ -28,7 +27,7 @@ ms.locfileid: "74112806"
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Devam etmeden önce, *Azure IoT Hub Cihazı Sağlama Hizmeti’ni kullanarak bir cihazı sağlamak üzere ayarlama* öğreticisinde açıklandığı gibi cihazınızı ve [Donanım Güvenliği Modülünü](./tutorial-set-up-device.md) yapılandırdığınızdan emin olun.
+Devam etmeden önce, [Azure IoT Hub Cihazı Sağlama Hizmeti’ni kullanarak bir cihazı sağlamak üzere ayarlama](./tutorial-set-up-device.md) öğreticisinde açıklandığı gibi cihazınızı ve *Donanım Güvenliği Modülünü* yapılandırdığınızdan emin olun.
 
 * Visual Studio
 
@@ -47,7 +46,7 @@ Bu adım, cihazın benzersiz güvenlik yapılarının Cihaz Sağlama Hizmeti’n
     - Ad alanındaki/kapsamdaki bir cihazı benzersiz şekilde tanımlamak için kullanılan *Kayıt Kimliği*. Bu anahtar, cihaz kimliğiyle aynı olabilir veya olmayabilir. Kimlik her cihaz için zorunludur. TPM tabanlı cihazlar için kayıt kimliği, TPM’den türetilebilir; örneğin, TPM Onay Anahtarının SHA-256 karması.
 
 - X.509 tabanlı cihazlar için:
-    - Bir [.pem](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx) veya *.cer* dosyası biçiminde *cihaza verilen X.509 sertifikası*. Tek kayıtta, X.509 sisteminiz için *yaprak sertifikayı* kullanmanız, kayıt grupları içinse *kök sertifika* veya eşdeğer bir *imzalayan sertifikası* kullanmanız gerekir.
+    - Bir *.pem* veya *.cer* dosyası biçiminde [cihaza verilen X.509 sertifikası](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx). Tek kayıtta, X.509 sisteminiz için *yaprak sertifikayı* kullanmanız, kayıt grupları içinse *kök sertifika* veya eşdeğer bir *imzalayan sertifikası* kullanmanız gerekir.
     - Ad alanındaki/kapsamdaki bir cihazı benzersiz şekilde tanımlamak için kullanılan *Kayıt Kimliği*. Bu anahtar, cihaz kimliğiyle aynı olabilir veya olmayabilir. Kimlik her cihaz için zorunludur. X.509 tabanlı cihazlar için kayıt kimliği, sertifikanın ortak adından (CN) türetilir. Bu gereksinimler hakkında daha fazla bilgi için bkz. [Cihaz kavramları](https://docs.microsoft.com/azure/iot-dps/concepts-device).
 
 Cihaz Sağlama Hizmeti’ne cihazı kaydetmenin iki yolu vardır:
@@ -64,7 +63,7 @@ Cihaz Sağlama Hizmeti’ne cihazı kaydetmenin iki yolu vardır:
 
 1. **NuGet Paket Yöneticisi** penceresinde **Göz At**’ı seçin ve **microsoft.azure.devices.provisioning.service** araması yapın. Girişi seçin ve **Yükle**’ye tıklayarak **Microsoft.Azure.Devices.Provisioning.Service** paketini yükleyin ve kullanım koşullarını kabul edin. Bu yordam ile [Azure IoT Cihaz Sağlama Hizmeti SDK'sı](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) NuGet paketi ve bağımlılıkları indirilir, yüklenir ve bu pakete bir başvuru eklenir.
 
-1. Aşağıdaki `using` deyimlerini **Program.cs** dosyasının üst kısmına ekleyin:
+1. Aşağıdaki `using` deyimlerini **Program.cs** dosyasının en üst kısmına ekleyin:
    
     ```csharp
     using Microsoft.Azure.Devices.Provisioning.Service;
@@ -130,7 +129,7 @@ Cihaz Sağlama Hizmeti’ne cihazı kaydetmenin iki yolu vardır:
     Console.ReadLine();
     ```
         
-1. Visual Studio Çözüm Gezgini çözümünüze sağ tıklayın ve ardından **Başlangıç projelerini ayarla...** öğesine tıklayın. **Tek bir başlangıç projesi**' ni seçin ve ardından açılan menüden **devicesağlamasını** proje ' yi seçin.  
+1. In the Visual Studio Solution Explorer, right-click your solution, and then click **Set StartUp Projects...** . Select **Single startup project**, and then select the **DeviceProvisioning** project in the dropdown menu.  
 
 1. **DeviceProvisiong** adlı .NET cihaz uygulamasını çalıştırın. Cihaz sağlamasını ayarlaması gerekir: 
 
@@ -147,7 +146,7 @@ Cihaz başarıyla kaydedildiğinde cihazın portalda şu şekilde görüntülend
 
 1. Visual Studio Çözüm Gezgini'nde, yukarıda oluşturduğunuz **DeviceProvisioning** projesini açın. 
 
-1. Aşağıdaki `using` deyimlerini **Program.cs** dosyasının üst kısmına ekleyin:
+1. Aşağıdaki `using` deyimlerini **Program.cs** dosyasının en üst kısmına ekleyin:
     
     ```csharp
     using System.Security.Cryptography.X509Certificates;

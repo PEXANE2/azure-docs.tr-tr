@@ -1,5 +1,5 @@
 ---
-title: "Hızlı başlangıç: node. js kullanarak X. 509.952 cihazlarını Azure cihaz sağlama hizmeti 'ne kaydetme"
+title: Enroll X.509 devices to Azure Device Provisioning Service using Node.js
 description: Bu hızlı başlangıçta grup kayıtları kullanılmaktadır. Bu hızlı başlangıçta Node.js hizmet SDK'sı kullanarak X.509 cihazlarını Azure IoT Hub Cihaz Sağlama Hizmeti'ne kaydedeceksiniz
 author: wesmc7777
 ms.author: wesmc
@@ -7,15 +7,14 @@ ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: philmea
 ms.devlang: nodejs
 ms.custom: mvc
-ms.openlocfilehash: 3b2c27b8fc595dae39ed7374ec3647e6b4ba6f23
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: b2995c6ba031e71cba9068b691cbedc1cf80c457
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903422"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228560"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-nodejs"></a>Hızlı başlangıç: Node.js kullanarak X.509 cihazlarını Cihaz Sağlama Hizmeti'ne kaydetme
 
@@ -140,7 +139,7 @@ Bu test araçlarını kullanarak sertifika üretmek için aşağıdaki adımlar�
 Node.js hizmeti örneklerini keşfetmeye devam etmeyi planlıyorsanız, bu Hızlı Başlangıçta oluşturulan kaynakları temizlemeyin. Devam etmeyi planlamıyorsanız, bu hızlı başlangıç ile oluşturulan tüm Azure kaynaklarını silmek için aşağıdaki adımları kullanın.
  
 1. Makinenizdeki Node.js örnek çıktı penceresini kapatın.
-2. Azure portal cihaz sağlama hizmetine gidin, kayıtları **Yönet**' e tıklayın ve ardından **kayıt grupları** sekmesini seçin. bu hızlı başlangıç kullanarak oluşturduğunuz kayıt girişinin *kayıt kimliğini* seçin ve dikey pencerenin en üstündeki **Sil** düğmesine tıklayın.  
+2. Navigate to your Device Provisioning service in the Azure portal, click **Manage enrollments**, and then select the **Enrollment Groups** tab. Select the *Registration ID* for the enrollment entry you created using this Quickstart and click the **Delete** button at the top of the blade.  
 3. Azure portalında Cihaz Sağlama Hizmeti'nden **Sertifikalar**'a, bu Hızlı Başlangıç için yüklediğiniz sertifikaya ve **Sertifika Ayrıntıları** penceresinin en üstünde bulunan **Sil** düğmesine tıklayın.  
  
 ## <a name="next-steps"></a>Sonraki adımlar

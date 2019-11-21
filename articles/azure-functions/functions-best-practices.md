@@ -1,114 +1,110 @@
 ---
-title: Azure Işlevleri için en iyi uygulamalar | Microsoft Docs
-description: Azure Işlevleri için en iyi uygulamaları ve desenleri öğrenin.
-author: ggailey777
-manager: gwallace
+title: Best Practices for Azure Functions
+description: Learn best practices and patterns for Azure Functions.
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/16/2017
-ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 87071b8e1102067110baae70c424aa74a5e0702c
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: fa85f636233a067713d127938d674b359bd03696
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73570818"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227378"
 ---
-# <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Azure Işlevlerinin performansını ve güvenilirliğini iyileştirin
+# <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optimize the performance and reliability of Azure Functions
 
-Bu makale, [sunucusuz](https://azure.microsoft.com/solutions/serverless/) işlev uygulamalarınızın performansını ve güvenilirliğini artırmaya yönelik rehberlik sağlar.  
+This article provides guidance to improve the performance and reliability of your [serverless](https://azure.microsoft.com/solutions/serverless/) function apps.  
 
 ## <a name="general-best-practices"></a>Genel en iyi uygulamalar
 
-Azure Işlevleri 'ni kullanarak sunucusuz çözümlerinizi oluşturma ve mimarinizi geliştirme konusunda en iyi yöntemler aşağıda verilmiştir.
+The following are best practices in how you build and architect your serverless solutions using Azure Functions.
 
-### <a name="avoid-long-running-functions"></a>Uzun süre çalışan işlevlerden kaçının
+### <a name="avoid-long-running-functions"></a>Avoid long running functions
 
-Büyük ve uzun süre çalışan işlevler, beklenmeyen zaman aşımı sorunlarına neden olabilir. Belirli bir barındırma planının zaman aşımları hakkında daha fazla bilgi edinmek için bkz. [işlev uygulaması zaman aşımı süresi](functions-scale.md#timeout). 
+Large, long-running functions can cause unexpected timeout issues. To learn more about the timeouts for a given hosting plan, see [function app timeout duration](functions-scale.md#timeout). 
 
-Birçok Node. js bağımlılığı nedeniyle bir işlev büyük olabilir. Bağımlılıkları içeri aktarmak, beklenmedik zaman aşımları ile sonuçlanan daha fazla yükleme süresi de oluşmasına neden olabilir. Bağımlılıklar hem açık hem de örtük olarak yüklenir. Kodunuz tarafından yüklenen tek bir modül kendi ek modüllerini yükleyebilir. 
+A function can become large because of many Node.js dependencies. Importing dependencies can also cause increased load times that result in unexpected timeouts. Dependencies are loaded both explicitly and implicitly. A single module loaded by your code may load its own additional modules. 
 
-Mümkün olduğunda, büyük işlevleri birlikte çalışarak daha küçük işlev kümelerine yeniden düzenleyin ve yanıtları hızlı bir şekilde geri döndürün. Örneğin, bir Web kancası veya HTTP tetikleyici işlevi belirli bir zaman sınırı içinde bir bildirim yanıtı gerektirebilir; Web kancalarının anında yanıt gerektirmesi için yaygındır. HTTP tetikleyici yükünü bir kuyruk tetikleyicisi işlevi tarafından işlenmek üzere bir kuyruğa geçirebilirsiniz. Bu yaklaşım, gerçek işi ertelemenizi ve anında yanıt döndürmenizi sağlar.
-
-
-### <a name="cross-function-communication"></a>Çapraz işlev iletişimi
-
-[Dayanıklı işlevler](durable/durable-functions-overview.md) ve [Azure Logic Apps](../logic-apps/logic-apps-overview.md) , durum geçişlerini ve birden çok işlev arasındaki iletişimi yönetmek için oluşturulmuştur.
-
-Birden çok işlevle tümleştirilecek Dayanıklı İşlevler veya Logic Apps kullanmıyorsanız, bu işlemler arası iletişim için depolama kuyruklarını kullanmak en iyisidir. Ana neden, depolama sıralarının diğer depolama seçeneklerinden daha kolay sağlanması ve sağlanması çok daha kolaydır. 
-
-Depolama sırasındaki tek tek mesajlar boyut olarak 64 KB ile sınırlıdır. İşlevler arasında daha büyük iletiler geçirmeniz gerekiyorsa, Standart katmanda 256 KB 'ye kadar olan ileti boyutlarını desteklemek için bir Azure Service Bus kuyruğu ve Premium katmanında en fazla 1 MB kullanılabilir.
-
-Service Bus konular, işlemeden önce ileti filtrelemesini gerekli kıldıysanız yararlıdır.
-
-Olay Hub 'ları, yüksek hacimli iletişimleri desteklemek için faydalıdır.
+Whenever possible, refactor large functions into smaller function sets that work together and return responses fast. For example, a webhook or HTTP trigger function might require an acknowledgment response within a certain time limit; it's common for webhooks to require an immediate response. You can pass the HTTP trigger payload into a queue to be processed by a queue trigger function. This approach lets you defer the actual work and return an immediate response.
 
 
-### <a name="write-functions-to-be-stateless"></a>İşlevleri durum bilgisiz olacak şekilde yaz 
+### <a name="cross-function-communication"></a>Cross function communication
 
-İşlevler, mümkünse durum bilgisiz ve ıdempotent olmalıdır. Gerekli durum bilgilerini verileriniz ile ilişkilendirin. Örneğin, işlenmekte olan bir sıra ilişkili bir `state` üyesine sahip olabilir. İşlev durum bilgisiz olmaya devam ederken bir işlev bu duruma göre bir sırayı işleyebilir. 
+[Durable Functions](durable/durable-functions-overview.md) and [Azure Logic Apps](../logic-apps/logic-apps-overview.md) are built to manage state transitions and communication between multiple functions.
 
-Idempotent işlevleri, özellikle Zamanlayıcı tetikleyicilerle önerilir. Örneğin, her gün bir kez çalışması gereken bir şeydir varsa, aynı sonuçlarla her zaman çalışacak şekilde bu şekilde yazın. Belirli bir gün için iş olmadığında işlev çıkabilir. Ayrıca, önceki bir çalıştırmanın tamamlanmadıysa, sonraki çalıştırmanın kaldığınız yerden devam etmesi gerekir.
+If not using Durable Functions or Logic Apps to integrate with multiple functions, it's best to use storage queues for cross-function communication. The main reason is that storage queues are cheaper and much easier to provision than other storage options. 
+
+Individual messages in a storage queue are limited in size to 64 KB. If you need to pass larger messages between functions, an Azure Service Bus queue could be used to support message sizes up to 256 KB in the Standard tier, and up to 1 MB in the Premium tier.
+
+Service Bus topics are useful if you require message filtering before processing.
+
+Event hubs are useful to support high volume communications.
 
 
-### <a name="write-defensive-functions"></a>Savunma işlevlerini yaz
+### <a name="write-functions-to-be-stateless"></a>Write functions to be stateless 
 
-İşlevinizin istediğiniz zaman bir özel durumla karşılaşdığını varsayın. Bir sonraki yürütme sırasında işlevlerinizi önceki bir başarısızlık noktasından devam etme özelliğiyle tasarlayın. Aşağıdaki eylemleri gerektiren bir senaryo düşünün:
+Functions should be stateless and idempotent if possible. Associate any required state information with your data. For example, an order being processed would likely have an associated `state` member. A function could process an order based on that state while the function itself remains stateless. 
 
-1. Veritabanında 10.000 satırı sorgulayın.
-2. Bu satırların her biri için çizgi üzerinde daha fazla işlem yapmak üzere bir kuyruk iletisi oluşturun.
+Idempotent functions are especially recommended with timer triggers. For example, if you have something that absolutely must run once a day, write it so it can run anytime during the day with the same results. The function can exit when there's no work for a particular day. Also if a previous run failed to complete, the next run should pick up where it left off.
+
+
+### <a name="write-defensive-functions"></a>Write defensive functions
+
+Assume your function could encounter an exception at any time. Design your functions with the ability to continue from a previous fail point during the next execution. Consider a scenario that requires the following actions:
+
+1. Query for 10,000 rows in a database.
+2. Create a queue message for each of those rows to process further down the line.
  
-Sisteminizin ne kadar karmaşıkdığına bağlı olarak, bu durum, hatalı, ağ kesintileri veya kota limitlerinin ulaştığı, vb. gibi davranan aşağı akış Hizmetleri olabilir. Tüm bunlar, işlevinizi dilediğiniz zaman etkileyebilir. İşlevlerinizi hazırlanmakta olacak şekilde tasarlamanız gerekir.
+Depending on how complex your system is, you may have: involved downstream services behaving badly, networking outages, or quota limits reached, etc. All of these can affect your function at any time. You need to design your functions to be prepared for it.
 
-İşlenmek üzere bu öğelerin 5.000 ' i bir sıraya ekledikten sonra bir hata oluşursa, kodunuz nasıl tepki veriyor? Tamamladığınız bir küme içindeki öğeleri izleyin. Aksi halde, bir dahaki sefer yeniden ekleyebilirsiniz. Bu çift ekleme iş akışınız üzerinde ciddi bir etkiye sahip olabilir, bu nedenle [işlevlerinizi ıdempotent yapın](functions-idempotent.md). 
+How does your code react if a failure occurs after inserting 5,000 of those items into a queue for processing? Track items in a set that you’ve completed. Otherwise, you might insert them again next time. This double-insertion can have a serious impact on your work flow, so [make your functions idempotent](functions-idempotent.md). 
 
-Bir kuyruk öğesi zaten işlendiyse, işlevinizin işlem dışı çalışmasına izin verin.
+If a queue item was already processed, allow your function to be a no-op.
 
-Azure Işlevleri platformunda kullandığınız bileşenler için zaten sağlanmış olan savunma ölçülerinin avantajlarından yararlanın. Örneğin, bkz. [Azure depolama kuyruğu Tetikleyicileri ve bağlamaları](functions-bindings-storage-queue.md#trigger---poison-messages)belgelerinde **Poison Queue iletilerini işleme** . 
+Take advantage of defensive measures already provided for components you use in the Azure Functions platform. For example, see **Handling poison queue messages** in the documentation for [Azure Storage Queue triggers and bindings](functions-bindings-storage-queue.md#trigger---poison-messages). 
 
-## <a name="scalability-best-practices"></a>Ölçeklenebilirlik en iyi uygulamaları
+## <a name="scalability-best-practices"></a>Scalability best practices
 
-İşlev uygulamanızın nasıl ölçeklenmesi etkileyebilecek bir dizi etken vardır. Ayrıntılar, [işlev ölçeklendirmeyle](functions-scale.md)ilgili belgelerde verilmiştir.  Aşağıda, bir işlev uygulamasının en iyi şekilde ölçeklenebilirliğini sağlamak için bazı en iyi yöntemler verilmiştir.
+There are a number of factors that impact how instances of your function app scale. The details are provided in the documentation for [function scaling](functions-scale.md).  The following are some best practices to ensure optimal scalability of a function app.
 
-### <a name="share-and-manage-connections"></a>Bağlantıları paylaşma ve yönetme
+### <a name="share-and-manage-connections"></a>Share and manage connections
 
-Mümkün olduğunda dış kaynaklarla bağlantıları yeniden kullanın.  Bkz. [Azure işlevlerinde bağlantıları yönetme](./manage-connections.md).
+Reuse connections to external resources whenever possible.  See [how to manage connections in Azure Functions](./manage-connections.md).
 
-### <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>Aynı işlev uygulamasında test ve üretim kodunu karıştırmayın
+### <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>Don't mix test and production code in the same function app
 
-İşlev uygulaması içindeki işlevler kaynakları paylaşır. Örneğin, bellek paylaşılır. Üretimde bir işlev uygulaması kullanıyorsanız, bu uygulamaya test ile ilgili işlevler ve kaynaklar eklemeyin. Üretim kodu yürütme sırasında beklenmeyen yüke neden olabilir.
+Functions within a function app share resources. For example, memory is shared. If you're using a function app in production, don't add test-related functions and resources to it. It can cause unexpected overhead during production code execution.
 
-Üretim işlevi uygulamalarınızda ne yüklediklerinizi dikkatli olun. Uygulamadaki her bir işlevde bellek ortalaması.
+Be careful what you load in your production function apps. Memory is averaged across each function in the app.
 
-Çoklu .NET işlevlerinde başvurulan paylaşılan bir derlemeniz varsa, bunu ortak bir paylaşılan klasöre koyun. Aksi halde, işlevler arasında farklı şekilde davranan aynı ikilinin yanlışlıkla birden çok sürümünü dağıtabilirsiniz.
+If you have a shared assembly referenced in multiple .NET functions, put it in a common shared folder. Otherwise, you could accidentally deploy multiple versions of the same binary that behave differently between functions.
 
-Üretim kodunda, olumsuz bir performans etkisi olan ayrıntılı günlük kullanmayın.
+Don't use verbose logging in production code, which has a negative performance impact.
 
-### <a name="use-async-code-but-avoid-blocking-calls"></a>Zaman uyumsuz kod kullan ancak çağrı engellemeyi önleyin
+### <a name="use-async-code-but-avoid-blocking-calls"></a>Use async code but avoid blocking calls
 
-Zaman uyumsuz programlama önerilen en iyi uygulamadır. Ancak, her zaman `Result` özelliğine başvurmaktan kaçının veya bir `Task` örneğine `Wait` metodunu çağırarak. Bu yaklaşım iş parçacığı tükenmesine yol açabilir.
+Asynchronous programming is a recommended best practice. However, always avoid referencing the `Result` property or calling `Wait` method on a `Task` instance. This approach can lead to thread exhaustion.
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
-### <a name="receive-messages-in-batch-whenever-possible"></a>Mümkün olduğunda toplu iş içinde ileti alma
+### <a name="receive-messages-in-batch-whenever-possible"></a>Receive messages in batch whenever possible
 
-Olay Hub 'ı gibi bazı Tetikleyiciler tek bir çağrıdan bir toplu ileti almayı sağlar.  Toplu işlem iletilerinin çok daha iyi performansı vardır.  `host.json` dosyasındaki en büyük toplu iş boyutunu [Host. JSON başvuru belgelerinde](functions-host-json.md) açıklandığı gibi yapılandırabilirsiniz.
+Some triggers like Event Hub enable receiving a batch of messages on a single invocation.  Batching messages has much better performance.  You can configure the max batch size in the `host.json` file as detailed in the [host.json reference documentation](functions-host-json.md)
 
-İşlevler C# için türü türü kesin belirlenmiş bir dizi olarak değiştirebilirsiniz.  Örneğin, `EventData sensorEvent` değil Yöntem imzası `EventData[] sensorEvent`olabilir.  Diğer diller için, [burada gösterildiği gibi](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10), toplu işi etkinleştirmek için `function.json` kardinalite özelliğini `many` olarak ayarlamanız gerekir.
+For C# functions, you can change the type to a strongly-typed array.  For example, instead of `EventData sensorEvent` the method signature could be `EventData[] sensorEvent`.  For other languages, you'll need to explicitly set the cardinality property in your `function.json` to `many` in order to enable batching [as shown here](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10).
 
-### <a name="configure-host-behaviors-to-better-handle-concurrency"></a>Eşzamanlılık daha iyi işlemek için konak davranışlarını yapılandırın
+### <a name="configure-host-behaviors-to-better-handle-concurrency"></a>Configure host behaviors to better handle concurrency
 
-İşlev uygulamasındaki `host.json` dosyası, ana bilgisayar çalışma zamanı ve tetikleyici davranışları yapılandırmasına izin verir.  İşleme davranışlarına ek olarak, bir dizi tetikleyici için eşzamanlılık yönetebilirsiniz. Genellikle bu seçeneklerdeki değerlerin ayarlanması, her bir örneğin, çağrılan işlevlerin taleplerine uygun şekilde ölçeklendirilmesine yardımcı olabilir.
+The `host.json` file in the function app allows for configuration of host runtime and trigger behaviors.  In addition to batching behaviors, you can manage concurrency for a number of triggers. Often adjusting the values in these options can help each instance scale appropriately for the demands of the invoked functions.
 
-Host. JSON dosyasındaki ayarlar, işlevin *tek bir örneği* içinde, uygulamadaki tüm işlevler arasında geçerlidir. Örneğin, iki HTTP işlevi olan bir işlev uygulamanız varsa ve [`maxConcurrentRequests`](functions-bindings-http-webhook.md#hostjson-settings) istekleri 25 olarak AYARLANDıYSA, http tetikleyicisine yönelik bir istek paylaşılan 25 eşzamanlı istek için doğru sayılır.  Bu işlev uygulaması 10 örneğe ölçeklenirse, iki işlev 250 eşzamanlı istek (10 örnek * örnek başına 25 eşzamanlı istek) etkin bir şekilde izin verir. 
+Settings in the host.json file apply across all functions within the app, within a *single instance* of the function. For example, if you had a function app with two HTTP functions and [`maxConcurrentRequests`](functions-bindings-http-webhook.md#hostjson-settings) requests set to 25, a request to either HTTP trigger would count towards the shared 25 concurrent requests.  When that function app is scaled to 10 instances, the two functions effectively allow 250 concurrent requests (10 instances * 25 concurrent requests per instance). 
 
-Diğer konak yapılandırma seçenekleri [Host. JSON yapılandırma makalesinde](functions-host-json.md)bulunur.
+Other host configuration options are found in the [host.json configuration article](functions-host-json.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Daha fazla bilgi için aşağıdaki kaynaklara bakın:
 
-* [Azure Işlevlerinde bağlantıları yönetme](manage-connections.md)
-* [En iyi Azure App Service uygulamalar](../app-service/app-service-best-practices.md)
+* [How to manage connections in Azure Functions](manage-connections.md)
+* [Azure App Service best practices](../app-service/app-service-best-practices.md)

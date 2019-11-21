@@ -1,6 +1,6 @@
 ---
-title: Azure Güvenlik Merkezi ve Azure Container Registry
-description: Azure Güvenlik Merkezi 'nin Azure Container Registry ile tümleştirmesi hakkında bilgi edinin
+title: Azure Security Center and Azure Container Registry
+description: Learn about Azure Security Center's integration with Azure Container Registry
 services: security-center
 documentationcenter: na
 author: memildin
@@ -12,37 +12,42 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/19/2019
 ms.author: memildin
-ms.openlocfilehash: f2a07774fa23173738bc33907dd00017ca260fd9
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
-ms.translationtype: HT
+ms.openlocfilehash: 0ca7bfb276f49da720264305a92d31e81857cfd5
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196374"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229311"
 ---
-# <a name="azure-container-registry-integration-with-security-center-preview"></a>Güvenlik Merkezi ile tümleştirme Azure Container Registry (Önizleme)
+# <a name="azure-container-registry-integration-with-security-center-preview"></a>Azure Container Registry integration with Security Center (Preview)
 
-Azure Container Registry (ACR), Azure dağıtımları için kapsayıcı görüntülerinizi merkezi bir kayıt defterinde depolayan ve yöneten, yönetilen ve özel bir Docker kayıt defteri hizmetidir. Bu, açık kaynaklı Docker kayıt defteri 2,0 ' i temel alır.
+Azure Container Registry (ACR) is a managed, private Docker registry service that stores and manages your container images for Azure deployments in a central registry. It's based on the open-source Docker Registry 2.0.
 
-Kayıt defteriniz ve görüntülerinizin güvenlik açıklarına daha derin görünürlük sağlamak için Azure Güvenlik Merkezi 'nin standart katmanının kullanıcıları isteğe bağlı kapsayıcı kayıt defterleri paketini etkinleştirebilir. Daha fazla bilgi için bkz. [Fiyatlandırma](security-center-pricing.md). Paket etkinken, Güvenlik Merkezi, kayıt defterine her bir görüntü gönderildiğinde ACR hizmetinizdeki görüntüleri otomatik olarak tarar. Tarama tamamlandığında (genellikle yaklaşık 10 dakika sonra), bulgular Güvenlik Merkezi 'nde aşağıdakine benzer önerilere sunulmaktadır:
+For deeper visibility into your registry and images' vulnerabilities, users of Azure Security Center's standard tier can enable the optional Container Registries bundle. Daha fazla bilgi için bkz. [Fiyatlandırma](security-center-pricing.md). With the bundle enabled, Security Center automatically scans images in your registry whenever an image is pushed to the registry.
 
-[Azure Container Registry (ACR) barındırılan görüntüde bulunan güvenlik açıklarına ilişkin ![örnek Azure Güvenlik Merkezi önerisi](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
+> [!NOTE]
+> Security Center's first scan of a registry will only occur after the Container Registries bundle is enabled and an image is pushed to the registry.
 
-## <a name="benefits-of-integration"></a>Tümleştirmenin avantajları
+When the scan completes (typically after approximately 10 minutes), findings are available in Security Center recommendations like this:
 
-Güvenlik Merkezi aboneliğinizdeki ACR kayıt defterlerini tanımlar ve şunları sorunsuzca sağlar:
+[![Sample Azure Security Center recommendation about vulnerabilities discovered in an Azure Container Registry (ACR) hosted image](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
 
-* Tüm gönderilen Linux görüntüleri için **Azure yerel güvenlik açığı taraması** . Güvenlik Merkezi, sektör lideri güvenlik açığı tarama satıcısı, Qualys 'den bir tarayıcı kullanarak görüntüyü tarar. Bu yerel çözüm, varsayılan olarak sorunsuzca tümleşiktir.
+## <a name="benefits-of-integration"></a>Benefits of integration
 
-* Bilinen güvenlik açıklarına sahip Linux görüntüleri için **güvenlik önerileri** . Güvenlik Merkezi, bildirilen her güvenlik açığının ayrıntılarını ve önem derecesini sağlar. Ayrıca, kayıt defterine gönderilen her görüntüde bulunan belirli güvenlik açıklarının nasıl düzeltileceğine ilişkin yönergeler sağlar.
+Security Center identifies ACR registries in your subscription and seamlessly provides:
 
-![Azure Güvenlik Merkezi ve Azure Container Registry (ACR) üst düzey genel bakış](./media/azure-container-registry-integration/aks-acr-integration-detailed.png)
+* **Azure-native vulnerability scanning** for all pushed Linux images. Security Center scans the image using a scanner from the industry-leading vulnerability scanning vendor, Qualys. This native solution is seamlessly integrated by default.
+
+* **Security recommendations** for Linux images with known vulnerabilities. Security Center provides details of each reported vulnerability and a  severity classification. Additionally, it gives guidance for how to  remediate the specific vulnerabilities found on each image pushed to registry.
+
+![Azure Security Center and Azure Container Registry (ACR) high-level overview](./media/azure-container-registry-integration/aks-acr-integration-detailed.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Güvenlik Merkezi 'nin kapsayıcı güvenlik özellikleri hakkında daha fazla bilgi edinmek için bkz.:
+To learn more about Security Center's container security features, see:
 
-* [Azure Güvenlik Merkezi ve kapsayıcı güvenliği](container-security.md)
+* [Azure Security Center and container security](container-security.md)
 
-* [Azure Kubernetes hizmeti ile tümleştirme](azure-kubernetes-service-integration.md)
+* [Integration with Azure Kubernetes Service](azure-kubernetes-service-integration.md)
 
-* [Sanal makine koruması](security-center-virtual-machine-protection.md) -Güvenlik Merkezi 'nin önerilerini açıklar
+* [Virtual Machine protection](security-center-virtual-machine-protection.md) - Describes Security Center's recommendations

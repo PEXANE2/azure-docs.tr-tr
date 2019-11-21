@@ -1,6 +1,6 @@
 ---
-title: Azure sanal makineleri için genişletilmiş ölçümler ekleme | Microsoft Docs
-description: Bu makale, Azure VM 'leriniz için genişletilmiş tanılama ölçümlerini etkinleştirmenize ve yapılandırmanıza yardımcı olur.
+title: Add extended metrics for Azure virtual machines | Microsoft Docs
+description: This article helps you enable and configure extended diagnostics metrics for your Azure VMs.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -8,82 +8,82 @@ manager: vitavor
 ms.author: banders
 ms.date: 05/21/2019
 ms.topic: conceptual
-ms.service: cost-management
+ms.service: cost-management-billing
 ms.custom: seodec18
-ms.openlocfilehash: e1d0beb6ced0d582166d556c1ae2fc17b375dddf
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: ebbdd89d3ef41d4fb40197cbd83038b5cbc02073
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695357"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230154"
 ---
-# <a name="add-extended-metrics-for-azure-virtual-machines"></a>Azure sanal makineleri için genişletilmiş ölçümler ekleme
+# <a name="add-extended-metrics-for-azure-virtual-machines"></a>Add extended metrics for Azure virtual machines
 
-Cloudyn, kaynakları hakkındaki ayrıntılı bilgileri göstermek için Azure sanal makinelerinizdeki Azure ölçüm verilerini kullanır. Performans sayaçları olarak da bilinen ölçüm verileri, rapor oluşturmak için Cloudyn tarafından kullanılır. Ancak, Cloudyn tüm Azure ölçüm verilerini Konuk VM 'lerden otomatik olarak toplamaz; ölçüm toplamayı etkinleştirmeniz gerekir. Bu makale, Azure VM 'leriniz için ek tanılama ölçümlerini etkinleştirmenize ve yapılandırmanıza yardımcı olur.
+Cloudyn uses Azure metric data from your Azure VMs to show you detailed information about their resources. Metric data, also called performance counters, is used by Cloudyn to generate reports. However, Cloudyn does not automatically gather all Azure metric data from guest VMs — you must enable metric collection. This article helps you enable and configure additional diagnostics metrics for your Azure VMs.
 
-Ölçüm toplamayı etkinleştirdikten sonra şunları yapabilirsiniz:
+After you enable metric collection, you can:
 
-- Sanal makinelerinizin bellek, disk ve CPU sınırlarına ne zaman ulaşmakta olduğunu öğrenin.
-- Kullanım eğilimlerini ve anormallerini algılayın.
-- Kullanıma göre boyutlandırarak maliyetlerinizi kontrol edin.
-- Cloudyn 'in maliyet açısından etkili boyut iyileştirme önerilerini alın.
+- Know when your VMs are reaching their memory, disk, and CPU limits.
+- Detect usage trends and anomalies.
+- Control your costs by sizing according to usage.
+- Get cost effective sizing optimization recommendations from Cloudyn.
 
-Örneğin, Azure sanal makinelerinizin CPU% ve bellek boyutunu izlemek isteyebilirsiniz. Azure VM ölçümleri, _Yüzde CPU_ ve _\bellek @ No__t-2 kaydedilmiş bayt kullanımı_' na karşılık gelir.
+For example, you might want to monitor the CPU % and Memory % of your Azure VMs. The Azure VM metrics correspond to _Percentage CPU_ and _\Memory\% Committed Bytes In Use_.
 
 > [!NOTE]
-> Genişletilmiş ölçüm verileri toplama yalnızca Azure Konuk düzeyinde izleme ile desteklenir. Cloudyn [Log Analytics aracısıyla](../azure-monitor/platform/agents-overview.md)uyumlu değildir. 
+> Extended metric data collection is only supported with Azure guest-level monitoring. Cloudyn is not compatible with the [Log Analytics agent](../azure-monitor/platform/agents-overview.md). 
 
-## <a name="determine-whether-extended-metrics-are-enabled"></a>Genişletilmiş ölçümlerin etkinleştirilip etkinleştirilmeyeceğini belirleme
+## <a name="determine-whether-extended-metrics-are-enabled"></a>Determine whether extended metrics are enabled
 
-1. Azure portal https://portal.azure.com ' da oturum açın.
-2. **Sanal makineler**altında bir VM seçip **izleme**altında **ölçümler**' i seçin. Kullanılabilir ölçümlerin bir listesi gösterilir.
-3. Bazı ölçümler ' i ve bir grafik için verileri görüntüler.  
-    ![Örnek ölçüm – ana bilgisayar yüzdesi CPU](./media/azure-vm-extended-metrics/metric01.png)
+1. https://portal.azure.com adresinden Azure portalında oturum açın.
+2. Under **Virtual machines**, select a VM and then under **Monitoring**, select **Metrics**. A list of available metrics is shown.
+3. Select some metrics and a graph displays data for them.  
+    ![Example metric – host percentage CPU](./media/azure-vm-extended-metrics/metric01.png)
 
-Yukarıdaki örnekte, ana bilgisayarınız için sınırlı bir standart ölçüm kümesi vardır, ancak bellek ölçümleri değildir. Bellek ölçümleri, genişletilmiş ölçümlerin bir parçasıdır. Bu durumda, sanal makine için genişletilmiş ölçümler etkinleştirilmez. Genişletilmiş ölçümleri etkinleştirmek için bazı ek adımlar gerçekleştirmeniz gerekir. Aşağıdaki bilgiler, bunları etkinleştirme sırasında size rehberlik eder.
+In the preceding example, a limited set of standard metrics are available for your hosts, but memory metrics are not. Memory metrics are part of extended metrics. In this case, extended metrics are not enabled for the VM. You must perform some additional steps to enable extended metrics. The following information guides you through enabling them.
 
-## <a name="enable-extended-metrics-in-the-azure-portal"></a>Azure portal genişletilmiş ölçümleri etkinleştirin
+## <a name="enable-extended-metrics-in-the-azure-portal"></a>Enable extended metrics in the Azure portal
 
-Standart ölçümler ana bilgisayar ölçümleridir. _CPU Ölçümü yüzdesi_ bir örnektir. Konuk VM 'Ler için de temel ölçümler vardır ve bunlar da genişletilmiş ölçümler olarak adlandırılırlar. Genişletilmiş ölçümlere örnek olarak, _Kullanımdaki \Memory @ no__t-1 kaydedilmiş bayt_ ve _\Memory\available Byte_verilebilir.
+Standard metrics are host computer metrics. The _Percentage CPU_ metric is one example. There are also basic metrics for guest VMs and they're also called extended metrics. Examples of extended metrics include _\Memory\% Committed Bytes In Use_ and _\Memory\Available Bytes_.
 
-Genişletilmiş ölçümlerin etkinleştirilmesi basittir. Her VM için, Konuk düzeyinde izlemeyi etkinleştirin. Konuk düzeyinde izlemeyi etkinleştirdiğinizde, Azure tanılama Aracısı VM 'ye yüklenir. Varsayılan olarak, temel bir genişletilmiş ölçümler kümesi eklenir. Aşağıdaki işlem, klasik ve normal VM 'Ler için aynıdır ve Windows ve Linux VM 'Leri için aynıdır.
+Enabling extended metrics is straightforward. For each VM, enable guest-level monitoring. When you enable guest-level monitoring, the Azure diagnostics agent is installed on the VM. By default, a basic set of extended metrics are added. The following process is the same for classic and regular VMs and the same for Windows and Linux VMs.
 
-Hem Azure hem de Linux konuk düzeyinde izlemenin bir depolama hesabı gerektirdiğini aklınızda bulundurun. Konuk düzeyinde izlemeyi etkinleştirdiğinizde, var olan bir depolama hesabını seçmezseniz, bir tane sizin için oluşturulur.
+Keep in mind that both Azure and Linux guest-level monitoring require a storage account. When you enable guest-level monitoring, if you don't choose an existing storage account, then one is created for you.
 
-### <a name="enable-guest-level-monitoring-on-existing-vms"></a>Mevcut VM 'lerde Konuk düzeyinde izlemeyi etkinleştir
+### <a name="enable-guest-level-monitoring-on-existing-vms"></a>Enable guest-level monitoring on existing VMs
 
-1. **Sanal makinelerde**VM 'nizin listesini görüntüleyin ve ardından bir VM seçin.
-2. **İzleme**altında **Tanılama ayarları**' nı seçin.
-3. Tanılama Ayarları sayfasında, **Konuk düzeyinde Izlemeyi etkinleştir**' e tıklayın.  
-    ![ Genel Bakış sayfasında Konuk düzeyinde izlemeyi etkinleştir @ no__t-1
-4. Birkaç dakika sonra, VM 'ye Azure tanılama Aracısı yüklenir. Temel bir ölçüm kümesi eklendi. Sayfayı yenileyin. Eklenen performans sayaçları Genel Bakış sekmesinde görünür.
-5. Izleme altında **ölçümler**' i seçin.
-6. **Ölçüm ad alanı**altındaki ölçümler grafiğinde **Konuk (klasik)** seçeneğini belirleyin.
-7. Ölçüm listesinde, Konuk VM için tüm kullanılabilir performans sayaçlarını görüntüleyebilirsiniz.  
-    ![örnek genişletilmiş ölçümler listesi](./media/azure-vm-extended-metrics/extended-metrics.png)
+1. In **Virtual Machines**, view your list of your VMs and then select a VM.
+2. Under **Monitoring**, select **Diagnostic settings**.
+3. On the Diagnostics settings page, click **Enable guest-level monitoring**.  
+    ![Enable guest level monitoring on the Overview page](./media/azure-vm-extended-metrics/enable-guest-monitoring.png)
+4. After a few minutes, the Azure diagnostics agent is installed on the VM. A basic set of metrics are added. Sayfayı yenileyin. The added performance counters appear on the Overview tab.
+5. Under Monitoring, select **Metrics**.
+6. In the metrics chart under **Metric Namespace**, select **Guest (Classic)** .
+7. In the Metric list, you can view all of the available performance counters for the guest VM.  
+    ![list of example extended metrics](./media/azure-vm-extended-metrics/extended-metrics.png)
 
-### <a name="enable-guest-level-monitoring-on-new-vms"></a>Yeni VM 'lerde Konuk düzeyinde izlemeyi etkinleştir
+### <a name="enable-guest-level-monitoring-on-new-vms"></a>Enable guest-level monitoring on new VMs
 
-Yeni VM 'Ler oluşturduğunuzda, Yönetim sekmesinde **Işletim sistemi Konuk tanılama**için **Açık** ' ı seçin.
+When you create new VMs, on the Management tab, select **On** for **OS guest diagnostics**.
 
-![Konuk işletim sistemi tanılamayı açık olarak ayarla](./media/azure-vm-extended-metrics/new-enable-diag.png)
+![set Guest OS diagnostics to On](./media/azure-vm-extended-metrics/new-enable-diag.png)
 
-Azure sanal makineleri için genişletilmiş ölçümleri etkinleştirme hakkında daha fazla bilgi için bkz. [Azure Linux aracısını anlama ve kullanma](../virtual-machines/extensions/agent-linux.md) ve [Azure sanal makine aracısına genel bakış](../virtual-machines/extensions/agent-windows.md).
+For more information about enabling extended metrics for Azure virtual machines, see [Understanding and using the Azure Linux agent](../virtual-machines/extensions/agent-linux.md) and [Azure Virtual Machine Agent overview](../virtual-machines/extensions/agent-windows.md).
 
-## <a name="resource-manager-credentials"></a>Kaynak Yöneticisi kimlik bilgileri
+## <a name="resource-manager-credentials"></a>Resource Manager credentials
 
-Genişletilmiş ölçümleri etkinleştirdikten sonra Cloudyn 'ın [Kaynak Yöneticisi kimlik bilgilerine](activate-subs-accounts.md)erişimi olduğundan emin olun. Cloudyn 'in sanal makinelerinize ilişkin performans verilerini toplaması ve görüntülemesi için kimlik bilgileriniz gereklidir. Maliyet iyileştirme önerilerini oluşturmak için de kullanılır. Cloudyn, bir örnekten aşağı boyutlandırma önerisi için bir aday olup olmadığını tespit etmek üzere bir örnekten en az üç günlük performans verisi gerektirir.
+After you enable extended metrics, ensure that Cloudyn has access to your [Resource Manager credentials](activate-subs-accounts.md). Your credentials are required for Cloudyn to collect and display performance data for your VMs. They're also used to create cost optimization recommendations. Cloudyn needs at least three days of performance data from an instance to determine if it is a candidate for a downsizing recommendation.
 
-## <a name="enable-vm-metrics-with-a-script"></a>Bir komut dosyası ile VM ölçümlerini etkinleştirme
+## <a name="enable-vm-metrics-with-a-script"></a>Enable VM metrics with a script
 
-VM ölçümlerini Azure PowerShell betiklerle etkinleştirebilirsiniz. Üzerinde ölçümleri etkinleştirmek istediğiniz çok sayıda sanal makine varsa, işlemi otomatikleştirmek için bir komut dosyası kullanabilirsiniz. [Azure 'Da tanılama 'Yı etkinleştirmek](https://github.com/Cloudyn/azure-enable-diagnostics)için örnek betikler GitHub 'da bulunmaktadır.
+You can enable VM metrics with Azure PowerShell scripts. When you have many VMs that you want to enable metrics on, you can use a script to automate the process. Example scripts are on GitHub at [Azure Enable Diagnostics](https://github.com/Cloudyn/azure-enable-diagnostics).
 
-## <a name="view-azure-performance-metrics"></a>Azure performans ölçümlerini görüntüleme
+## <a name="view-azure-performance-metrics"></a>View Azure performance metrics
 
-Cloudyn portalındaki Azure örneklerinizde performans ölçümlerini görüntülemek için **varlıklar** > **işlem** > **örnek Gezgini**' ne gidin. VM örnekleri listesinde bir örneği genişletin ve sonra ayrıntıları görüntülemek için bir kaynağı genişletin.
+To view performance metrics on your Azure Instances in the Cloudyn portal, navigate to **Assets** > **Compute** > **Instance Explorer**. In the list of VM instances, expand an instance and then expand a resource to view details.
 
-![örnek Gezgininde gösterilen örnek bilgiler](./media/azure-vm-extended-metrics/instance-explorer.png)
+![example information shown in Instance Explorer](./media/azure-vm-extended-metrics/instance-explorer.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Hesaplarınız için Azure Resource Manager API erişimi henüz etkinleştirilmemişse, [Azure aboneliklerini ve hesaplarını etkinleştirme](activate-subs-accounts.md)adımına geçin.
+- If you haven't already enabled Azure Resource Manager API access for your accounts, proceed to [Activate Azure subscriptions and accounts](activate-subs-accounts.md).

@@ -1,5 +1,5 @@
 ---
-title: Azure geliştirme alanları nasıl çalışır ve olan yapılandırılmış
+title: How Azure Dev Spaces works and is configured
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
@@ -7,146 +7,146 @@ author: zr-msft
 ms.author: zarhoads
 ms.date: 03/04/2019
 ms.topic: conceptual
-description: İşlemler, güç Azure geliştirme alanları ve azds.yaml yapılandırma dosyasında nasıl yapılandırılacağı açıklanmaktadır.
-keywords: azds.yaml, Azure geliştirme alanları, geliştirme alanları, Docker, Kubernetes, Azure, AKS, kapsayıcılar, Azure Kubernetes hizmeti
-ms.openlocfilehash: 83034dd3c99cc030ed770995bf00a6ad9fb57bdc
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
-ms.translationtype: MT
+description: Describes the processes that power Azure Dev Spaces and how they are configured in the azds.yaml configuration file
+keywords: azds.yaml, Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
+ms.openlocfilehash: 74a95af18556a7f95f8784ee67ad8d8240bb2df0
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67670811"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229073"
 ---
-# <a name="how-azure-dev-spaces-works-and-is-configured"></a>Azure geliştirme alanları nasıl çalışır ve olan yapılandırılmış
+# <a name="how-azure-dev-spaces-works-and-is-configured"></a>How Azure Dev Spaces works and is configured
 
-Kubernetes uygulamasını geliştirmek zor olabilir. Docker ve Kubernetes yapılandırma dosyaları ihtiyacınız vardır. Uygulamanızı yerel olarak test etmek ve diğer bağımlı hizmetleri ile etkileşim kurmak nasıl ekleyeceğimi gerekir. Geliştirme ve test üzerinde aynı anda birden çok hizmet ve geliştiricilerin bir ekip ile işlemek gerekebilir.
+Developing a Kubernetes application can be challenging. You need Docker and Kubernetes configuration files. You need to figure out how to test your application locally and interact with other dependent services. You might need to handle developing and testing on multiple services at once and with a team of developers.
 
-Azure geliştirme alanları, geliştirmek, dağıtmak ve Kubernetes uygulamaları doğrudan Azure Kubernetes Service (AKS) hata ayıklama yardımcı olur. Azure geliştirme alanları takım geliştirme boşlukla paylaşmak de sağlar. Bir takımda geliştirme alanı paylaşımı, çoğaltma veya bağımlılıkları veya kümedeki diğer uygulamalar sahte zorunda kalmadan yalıtım modunda geliştirmek bireysel takım üyelerinin sağlar.
+Azure Dev Spaces helps you develop, deploy, and debug Kubernetes applications directly in Azure Kubernetes Service (AKS). Azure Dev Spaces also allows a team to share a dev space. Sharing a dev space across a team allows individual team members to develop in isolation without having to replicate or mock up dependencies or other applications in the cluster.
 
-Azure geliştirme alanları oluşturur ve dağıtma, çalıştırma ve hata ayıklama aks'deki Kubernetes uygulamalarınız için bir yapılandırma dosyası kullanır. Bu yapılandırma dosyası ile uygulama kodu bulunur ve sürüm denetimi sisteminiz eklenebilir.
+Azure Dev Spaces creates and uses a configuration file for deploying, running, and debugging your Kubernetes applications in AKS. This configuration file resides with your application's code and can be added to your version control system.
 
-Bu makalede, işlemler, güç Azure geliştirme alanları ve bu işlemleri Azure geliştirme alanları yapılandırma dosyasında nasıl yapılandırılacağını açıklanır. Azure geliştirme hızlıca çalışmaya alanları alın ve uygulamada görmek için hızlı başlangıçları birini tamamlayın:
+This article describes the processes that power Azure Dev Spaces and how those processes are configured in the Azure Dev Spaces configuration file. To get Azure Dev Spaces running quickly and see it in practice, complete one of the quickstarts:
 
-* [CLI ve Visual Studio Code ile Java](quickstart-java.md)
-* [.NET core CLI ve Visual Studio Code ile](quickstart-netcore.md)
-* [Visual Studio ile .NET core](quickstart-netcore-visualstudio.md)
-* [CLI ve Visual Studio Code ile node.js](quickstart-nodejs.md)
+* [Java with CLI and Visual Studio Code](quickstart-java.md)
+* [.NET Core with CLI and Visual Studio Code](quickstart-netcore.md)
+* [.NET Core with Visual Studio](quickstart-netcore-visualstudio.md)
+* [Node.js with CLI and Visual Studio Code](quickstart-nodejs.md)
 
-## <a name="how-azure-dev-spaces-works"></a>Azure geliştirme alanları nasıl çalışır?
+## <a name="how-azure-dev-spaces-works"></a>Azure Dev Spaces nasıl çalışır?
 
-Azure geliştirme alanları ile etkileşimde bulunan iki farklı bileşene sahiptir: denetleyicisi ve istemci tarafı araçları.
+Azure Dev Spaces has two distinct components that you interact with: the controller and the client-side tooling.
 
-![Azure geliştirme alanları bileşenleri](media/how-dev-spaces-works/components.svg)
+![Azure Dev Spaces components](media/how-dev-spaces-works/components.svg)
 
-Denetleyici, aşağıdaki eylemleri gerçekleştirir:
+The controller performs the following actions:
 
-* Geliştirme alanı oluşturma ve seçim yönetir.
-* Uygulamanızın Helm grafiği yükler ve Kubernetes nesnelerini oluşturur.
-* Uygulamanızın kapsayıcı görüntüsü oluşturur.
-* AKS uygulamanıza dağıtır.
-* Artımlı derlemeleri duraklatmıyor ve kaynak kodunuz değiştiğinde yeniden başlatır.
-* Günlükleri ve HTTP izlemeleri yönetir.
-* STDOUT ve stderr istemci tarafı araçları iletir.
-* Türetilmiş üst geliştirme alanından alt geliştirme alanları oluşturmak takım üyelerinin verir.
-* Bir alanı içinde yanı sıra üst ve alt alanları genelinde uygulamalar için yönlendirme yapılandırır.
+* Manages dev space creation and selection.
+* Installs your application's Helm chart and creates Kubernetes objects.
+* Builds your application's container image.
+* Deploys your application to AKS.
+* Does incremental builds and restarts when your source code changes.
+* Manages logs and HTTP traces.
+* Forwards stdout and stderr to the client-side tooling.
+* Allows team members to create child dev spaces derived from a parent dev space.
+* Configures routing for applications within a space as well as across parent and child spaces.
 
-Denetleyici AKS dışında yer alıyor. Bu davranış ve iletişim istemci tarafı araçları ve AKS kümesi arasında sürücüleri. Azure geliştirme alanları kullanmak için küme hazırlama sırasında Azure CLI kullanarak denetleyici etkinleştirilir. Bu etkinleştirildikten sonra istemci tarafı araçları kullanarak onunla etkileşim kurabilir.
+The controller resides outside AKS. It drives the behavior and communication between the client-side tooling and the AKS cluster. The controller is enabled using the Azure CLI when you prepare your cluster to use Azure Dev Spaces. Once it is enabled, you can interact with it using the client-side tooling.
 
-İstemci tarafı araçları kullanıcının izin verir:
-* Oluşturmak bir Dockerfile, Helm grafiği ve uygulama için Azure geliştirme alanları yapılandırma dosyası.
-* Üst ve alt geliştirme alanları oluşturun.
-* Derleme ve uygulamanızı başlatmak için denetleyici söyleyin.
+The client-side tooling allows the user to:
+* Generate a Dockerfile, Helm chart, and Azure Dev Spaces configuration file for the application.
+* Create parent and child dev spaces.
+* Tell the controller to build and start your application.
 
-Uygulamanız, istemci tarafı araçları ayrıca çalışırken:
-* Alır ve stdout ve stderr AKS'de çalışan uygulamanızdan görüntüler.
-* Kullanan [bağlantı noktası iletme](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/) web http kullanarak uygulamanıza erişmesine izin vermek için:\//localhost.
-* AKS çalışan uygulamanızda bir hata ayıklayıcı ekler.
-* Artımlı derlemeleri, hızlı yineleme için izin vermek için bir değişiklik algıladığında eşitlemeler kaynak kodu geliştirme alanınıza.
+While your application is running, the client-side tooling also:
+* Receives and displays stdout and stderr from your application running in AKS.
+* Uses [port-forward](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/) to allow web access to your application using http:\//localhost.
+* Attaches a debugger to your running application in AKS.
+* Syncs source code to your dev space when a change is detected for incremental builds, allowing for rapid iteration.
 
-İstemci tarafı komut satırından bir parçası olarak tooling kullanabileceğiniz `azds` komutu. İstemci tarafı ile araçları da kullanabilirsiniz:
+You can use the client-side tooling from the command line as part of the `azds` command. You can also use the client-side tooling with:
 
-* Visual Studio Code kullanarak [Azure geliştirme alanları uzantısı](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds).
-* Visual Studio ile [Kubernetes için Visual Studio Araçları](https://aka.ms/get-vsk8stools).
+* Visual Studio Code using the [Azure Dev Spaces extension](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds).
+* Visual Studio with [Visual Studio Tools for Kubernetes](https://aka.ms/get-vsk8stools).
 
-Ayarlama ve Azure Dev boşluklarla temel akışı şu şekildedir:
-1. AKS kümenizi Azure geliştirme alanları için hazırlama
-1. Kodunuzu Azure geliştirme alanları üzerinde çalıştırmak için hazırlama
-1. Kodunuzu geliştirme boşluk çalıştırın
-1. Kodunuzu geliştirme alanındaki hata ayıklama
-1. Geliştirme boşlukla paylaşın
+Here's the basic flow for setting up and using Azure Dev Spaces:
+1. Prepare your AKS cluster for Azure Dev Spaces
+1. Prepare your code for running on Azure Dev Spaces
+1. Run your code on a dev space
+1. Debug your code on a dev space
+1. Share a dev space
 
-Azure geliştirme alanları her biri işleyişi hakkında daha fazla ayrıntı şu konulara değineceğiz bölümler altında.
+We'll cover more details of how Azure Dev Spaces works in each of the below sections.
 
-## <a name="prepare-your-aks-cluster"></a>AKS kümenizi hazırlama
+## <a name="prepare-your-aks-cluster"></a>Prepare your AKS cluster
 
-AKS kümenizi hazırlama içerir:
-* Küme bir bölgede olduğu, AKS doğrulanıyor [Azure geliştirme alanları tarafından desteklenen][supported-regions].
-* Kubernetes 1.10.3 çalıştığını doğrulama veya üzeri.
-* Azure geliştirme alanları, küme kullanarak etkinleştirme `az aks use-dev-spaces`
+Preparing your AKS cluster involves:
+* Verifying your AKS cluster is in a region [supported by Azure Dev Spaces][supported-regions].
+* Verifying you are running Kubernetes 1.10.3 or later.
+* Enabling Azure Dev Spaces on your cluster using `az aks use-dev-spaces`
 
-Oluşturma ve Azure Dev alanları için bir AKS kümesi yapılandırma hakkında daha fazla bilgi için Başlarken kılavuzları birine bakın:
-* [Java ile Azure geliştirme alanlarında çalışmaya başlama](get-started-java.md)
-* [Azure geliştirme alanları .NET Core ve Visual Studio ile çalışmaya başlama](get-started-netcore-visualstudio.md)
-* [Azure geliştirme alanlarında .NET Core ile çalışmaya başlama](get-started-netcore.md)
-* [Node.js ile Azure geliştirme alanlarında çalışmaya başlama](get-started-nodejs.md)
+For more information on how to create and configure an AKS cluster for Azure Dev Spaces, see one of the getting started guides:
+* [Get Started on Azure Dev Spaces with Java](get-started-java.md)
+* [Get Started on Azure Dev Spaces with .NET Core and Visual Studio](get-started-netcore-visualstudio.md)
+* [Get Started on Azure Dev Spaces with .NET Core](get-started-netcore.md)
+* [Get Started on Azure Dev Spaces with Node.js](get-started-nodejs.md)
 
-Azure geliştirme alanları AKS kümenizde etkinleştirildiğinde, kümeniz için denetleyici yükler. Denetleyici, küme dışındaki ayrı bir Azure kaynağı ve kaynaklara, kümenizdeki aşağıdakileri yapar:
+When Azure Dev Spaces is enabled on your AKS cluster, it installs the controller for your cluster. The controller is a separate Azure resource outside of your cluster and does the following to resources in your cluster:
 
-* Oluşturur veya bir geliştirme boşluk olarak kullanılacak bir Kubernetes ad alanı belirler.
-* Tüm Kubernetes ad alanı adlı kaldırır *azds*, varsa ve yeni bir tane oluşturur.
-* Kubernetes Web kancası yapılandırma dağıtır.
-* Bir Web kancası giriş sunucuya dağıtır.
+* Creates or designates a Kubernetes namespace to use as a dev space.
+* Removes any Kubernetes namespace named *azds*, if it exists, and creates a new one.
+* Deploys a Kubernetes webhook configuration.
+* Deploys a webhook admission server.
     
 
-Ayrıca, diğer Azure geliştirme alanları bileşenleri hizmeti çağrı yapmak için AKS kümenizi kullanan aynı hizmet sorumlusu kullanır.
+It also uses the same service principal that your AKS cluster uses to make service calls to other Azure Dev Spaces components.
 
-![Azure geliştirme alanları küme hazırlama](media/how-dev-spaces-works/prepare-cluster.svg)
+![Azure Dev Spaces prepare cluster](media/how-dev-spaces-works/prepare-cluster.svg)
 
-Azure geliştirme alanları kullanmak için en az bir geliştirme alanı olmalıdır. Azure geliştirme alanları AKS kümenizi içinde Kubernetes ad alanları için geliştirme alanları kullanır. Bir denetleyici yüklendikten sonra ilk geliştirme alanınızı kullanmak için mevcut bir ad alanı seçin veya yeni bir Kubernetes ad alanı oluşturma ister. Bir ad alanı bir geliştirme boşluk olarak belirlenmişse, denetleyici ekler *azds.io/space=true* geliştirme boşluk olarak tanımlamak için bu ad alanı için etiketi. Kümenizi hazırladıktan sonra ilk geliştirme alanı oluşturun veya belirleyin, varsayılan olarak seçilidir. Bir alan seçildiğinde, Azure geliştirme boşluklarla yeni iş yükleri oluşturmak için kullanılır.
+In order to use Azure Dev Spaces, there must be at least one dev space. Azure Dev Spaces uses Kubernetes namespaces within your AKS cluster for dev spaces. When a controller is being installed, it prompts you to create a new Kubernetes namespace or choose an existing namespace to use as your first dev space. When a namespace is designated as a dev space, the controller adds the *azds.io/space=true* label to that namespace to identify it as a dev space. The initial dev space you create or designate is selected by default after you prepare your cluster. When a space is selected, it is used by Azure Dev Spaces for creating new workloads.
 
-Varsayılan olarak, adlı bir geliştirme alanı denetleyiciyi oluşturur *varsayılan* varolan yükselterek *varsayılan* Kubernetes ad alanı. Yeni geliştirme alanları oluşturmak ve mevcut geliştirme alanları kaldırmak için istemci tarafı Araçları'nı kullanabilirsiniz. Kubernetes, ilgili bir sınırlama nedeniyle *varsayılan* geliştirme alan kaldırılamaz. Denetleyici adlı mevcut tüm Kubernetes ad alanları da kaldırır *azds* ile çakışmalarını önlemek için `azds` istemci tarafı araçları tarafından kullanılan komutu.
+By default, the controller creates a dev space named *default* by upgrading the existing *default* Kubernetes namespace. You can use the client-side tooling to create new dev spaces and remove existing dev spaces. Due to a limitation in Kubernetes, the *default* dev space cannot be removed. The controller also removes any existing Kubernetes namespaces named *azds* to avoid conflicts with the `azds` command used by the client-side tooling.
 
-Kubernetes Web kancası giriş sunucu pod'ları üç kapsayıcı ile izleme için dağıtım sırasında eklemesine kullanılır: proxy devspaces kapsayıcı devspaces proxy init kapsayıcı ve devspaces derleme kapsayıcı. **Bu kapsayıcıların üç AKS kümenizde kök erişimi ile çalıştırın.** Ayrıca, AKS kümenizin diğer Azure geliştirme alanları bileşenleri hizmeti çağrı yapmak için kullandığı aynı hizmet sorumlusu kullanırlar.
+The Kubernetes webhook admission server is used to inject pods with three containers during deployment for instrumentation: a devspaces-proxy container, a devspaces-proxy-init container, and a devspaces-build container. **All three of these containers run with root access on your AKS cluster.** They also use the same service principal that your AKS cluster uses to make service calls to other Azure Dev Spaces components.
 
-![Azure geliştirme alanları Kubernetes Web kancası giriş sunucusu](media/how-dev-spaces-works/kubernetes-webhook-admission-server.svg)
+![Azure Dev Spaces Kubernetes webhook admission server](media/how-dev-spaces-works/kubernetes-webhook-admission-server.svg)
 
-İçine ve dışına uygulama kapsayıcısı tüm TCP trafiği işleyen bir sepet kapsayıcısı devspaces proxy kapsayıcısıdır ve yönlendirme yardımcı gerçekleştirin. Belirli alanları kullanılıyorsa, proxy devspaces kapsayıcı HTTP iletileri yeniden yönlendirmeler. Örneğin, üst ve alt alanları uygulamalar arasında HTTP iletileri yönlendirmek yardımcı olabilir. Tüm HTTP olmayan trafiği devspaces değiştirilmemiş proxy geçirir. Proxy devspaces kapsayıcı ayrıca tüm gelen ve giden HTTP iletileri günlüğe kaydeder ve istemci tarafı araçları izlemeler olarak gönderir. Bu izlemeler, ardından uygulamanın davranışını denetlemek için geliştirici tarafından görüntülenebilir.
+The devspaces-proxy container is a sidecar container that handles all TCP traffic into and out of the application container and helps perform routing. The devspaces-proxy container reroutes HTTP messages if certain spaces are being used. For example, it can help route HTTP messages between applications in parent and child spaces. All non-HTTP traffic passes through devspaces-proxy unmodified. The devspaces-proxy container also logs all inbound and outbound HTTP messages and sends them to the client-side tooling as traces. These traces can then be viewed by the developer to inspect the behavior of the application.
 
-Devspaces proxy init kapsayıcı bir [init kapsayıcı](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/) uygulamanızın kapsayıcı alanı hiyerarşiye göre ek yönlendirme kuralları ekler. Uygulama kapsayıcının güncelleştirerek yönlendirme kuralları ekler */etc/resolv.conf* başlamadan önce dosya ve iptables yapılandırma. Güncelleştirmeleri */etc/resolv.conf* üst alanları Hizmetleri'nde DNS çözümlemesini sağlamak. İptables yapılandırma güncelleştirmeleri tüm TCP trafiği halinde olun ve uygulamanın kapsayıcının dışına ancak yönlendirilen devspaces proxy. Tüm güncelleştirmeleri devspaces proxy başlangıç Kubernetes ekler kurallara ek olarak gerçekleşir.
+The devspaces-proxy-init container is an [init container](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/) that adds additional routing rules based on the space hierarchy to your application's container. It adds routing rules by updating the application container's */etc/resolv.conf* file and iptables configuration before it starts. The updates to */etc/resolv.conf* allow for DNS resolution of services in parent spaces. The iptables configuration updates ensure all TCP traffic into and out of the application's container are routed though devspaces-proxy. All updates from devspaces-proxy-init happen in addition to the rules that Kubernetes adds.
 
-Devspaces derleme kapsayıcısı init kapsayıcı ve proje kaynak kodu ve takılı Docker yuva vardır. Proje kaynak kodu ve Docker erişim, doğrudan pod tarafından oluşturulacak uygulama kapsayıcısı sağlar.
+The devspaces-build container is an init container and has the project source code and Docker socket mounted. The project source code and access to Docker allows the application container to be built directly by the pod.
 
 > [!NOTE]
-> Azure geliştirme alanları aynı düğüm, uygulamanızın kapsayıcısı oluşturmak ve çalıştırmak için kullanır. Sonuç olarak, Azure geliştirme alanları bir dış kapsayıcı kayıt defteri oluşturmak ve uygulamanızı çalıştırmak için gerekli değildir.
+> Azure Dev Spaces uses the same node to build your application's container and run it. As a result, Azure Dev Spaces does not need an external container registry for building and running your application.
 
-Kubernetes Web kancası giriş sunucusu AKS kümesinde oluşturulan tüm yeni pod dinler. Bu pod herhangi bir ad alanı ile dağıtılırsa *azds.io/space=true* etiketi ek kapsayıcılar ile pod yerleştirir. İstemci tarafı araçları kullanarak uygulamanın kapsayıcı çalıştırırsanız devspaces derleme kapsayıcısı yalnızca eklenmiş olur.
+The Kubernetes webhook admission server listens for any new pod that's created in the AKS cluster. If that pod is deployed to any namespace with the *azds.io/space=true* label, it injects that pod with the additional containers. The devspaces-build container is only injected if the application's container is run using the client-side tooling.
 
-AKS kümenizi hazırlandıktan sonra hazırlama ve geliştirme alanınızda kodunuzu çalıştırmak için istemci tarafı Araçları'nı kullanabilirsiniz.
+Once you have prepared your AKS cluster, you can use the client-side tooling to prepare and run your code in your dev space.
 
-## <a name="prepare-your-code"></a>Kodunuzu hazırlama
+## <a name="prepare-your-code"></a>Prepare your code
 
-Bir geliştirme alanında uygulamanızı çalıştırmak için kapsayıcıya alınmış gerekir ve Kubernetes için nasıl dağıtılacağını tanımlamak gerekir. Uygulamanızı kapsayıcılı hale getirme için bir Dockerfile gerekir. Kubernetes için uygulamanızı nasıl dağıtılacağını tanımlar için ihtiyacınız bir [Helm grafiği](https://docs.helm.sh/). Uygulamanız için Dockerfile ve Helm grafiği oluştururken yardımcı olması için istemci tarafı araçları sağlayan `prep` komutu:
+In order to run your application in a dev space, it needs to be containerized, and you need to define how it should be deployed to Kubernetes. To containerize your application, you need a Dockerfile. To define how your application is deployed to Kubernetes, you need a [Helm chart](https://docs.helm.sh/). To assist in creating both the Dockerfile and Helm chart for your application, the client-side tools provide the `prep` command:
 
 ```cmd
 azds prep --public
 ```
 
-`prep` Komut dosyaları, projenizdeki bakmak ve Kubernetes'te uygulamanızı çalıştırmak için docker dosyası ve Helm grafiği oluşturmayı deneyin. Şu anda `prep` komut bir docker dosyası ve Helm grafiği aşağıdaki dilleri ile üretir:
+The `prep` command will look at the files in your project and try to create the Dockerfile and Helm chart for running your application in Kubernetes. Currently, the `prep` command will generate a Dockerfile and Helm chart with the following languages:
 
 * Java
 * Node.js
 * .NET Core
 
-*Gerekir* çalıştırma `prep` kaynak kodu içeren bir dizine komutu. Çalışan `prep` komutu doğru dizininden dil belirleyin ve uygulamanızı kapsayıcılı hale getirme için uygun bir Dockerfile oluşturmak istemci tarafı araçları sağlar. Ayrıca çalıştırabileceğiniz `prep` içeren bir dizine komutunu bir *pom.xml* Java projeleri için dosya.
+You *must* run the `prep` command from a directory that contains source code. Running the `prep` command from the correct directory allows the client-side tooling to identify the language and create an appropriate Dockerfile to containerize your application. You can also run the `prep` command from a directory that contains a *pom.xml* file for Java projects.
 
-Çalıştırırsanız `prep` komut kaynak kodu, istemci tarafı araçları içermiyor dizinden bir Dockerfile üretmez. Ayrıca, bir hata bildiren da görüntülenir: *Dockerfile, desteklenmeyen dil nedeniyle üretilemedi*. İstemci tarafı araçları proje türünü tanımıyor değilse de bu hata oluşur.
+If you run the `prep` command from directory that does not contain source code, the client-side tooling will not generate a Dockerfile. It will also display an error saying: *Dockerfile could not be generated due to unsupported language*. This error also occurs if the client-side tooling does not recognize the project type.
 
-Çalıştırdığınızda `prep` komutunu belirtme seçeneğiniz `--public` bayrağı. Bu bayrak, bu hizmet için İnternet'ten erişilebilen bir uç nokta oluşturmak için denetleyici söyler. Bu bayrak belirtmezseniz, hizmet yalnızca küme içinde erişilebilir veya localhost tünel kullanarak istemci tarafı araçları tarafından oluşturuldu. Etkinleştirebilir veya çalıştırdıktan sonra bu davranışı devre dışı bırakmak `prep` oluşturulan Helm grafiği güncelleştirerek komutu.
+When you run the `prep` command, you have the option of specifying the `--public` flag. This flag tells the controller to create an internet-accessible endpoint for this service. If you do not specify this flag, the service is only accessible from within the cluster or using the localhost tunnel created by the client-side tooling. You can enable or disable this behavior after running the `prep` command by updating the generated Helm chart.
 
-`prep` Komut değil projenizde sahip tüm mevcut dockerfile'ları veya Helm grafikleri değiştirin. Varolan bir Dockerfile veya Helm grafiği tarafından oluşturulan dosyalar olarak adlandırma kuralını kullanıyorsa `prep` komutu `prep` komut dosyaları üretme atlar. Aksi takdirde, `prep` komutu, kendi Dockerfile oluşturacağını veya Helm grafik tarafında var olan dosyaları.
+The `prep` command will not replace any existing Dockerfiles or Helm charts you have in your project. If an existing Dockerfile or Helm chart uses the same naming convention as the files generated by the `prep` command, the `prep` command will skip generating those files. Otherwise, the `prep` command will generate its own Dockerfile or Helm chart along side the existing files.
 
-`prep` Komut da oluşturacağını bir `azds.yaml` projenizin kök dosya. Azure geliştirme alanları, derleme, yükleme, yapılandırma ve uygulamanızı çalıştırmak için bu dosyayı kullanır. Bu yapılandırma dosyası, Dockerfile ve Helm grafiği konumunu listeler ve bu yapıtlar üstünde ek yapılandırma sağlar.
+The `prep` command will also generate a `azds.yaml` file at the root of your project. Azure Dev Spaces uses this file to build, install, configure, and run your application. This configuration file lists the location of your Dockerfile and Helm chart and also provides additional configuration on top of those artifacts.
 
-İşte bir örnek azds.yaml dosyası kullanılarak oluşturulan [.NET Core örnek uygulaması](https://github.com/Azure/dev-spaces/tree/master/samples/dotnetcore/getting-started/webfrontend):
+Here is an example azds.yaml file created using [.NET Core sample application](https://github.com/Azure/dev-spaces/tree/master/samples/dotnetcore/getting-started/webfrontend):
 
 ```yaml
 kind: helm-release
@@ -193,114 +193,114 @@ configurations:
         - [dotnet, build, --no-restore, -c, "${BUILD_CONFIGURATION:-Debug}"]
 ```
 
-`azds.yaml` Tarafından oluşturulan dosya `prep` komut basit, tek proje geliştirme senaryosu için düzgün çalışmalıdır. Belirli projenize karmaşıklık arttı, bu dosyayı çalıştırdıktan sonra güncelleştirmeniz gerekebilir `prep` komutu. Örneğin, projeniz gerektiren bazı derleme ince ayarlar yapma veya geliştirme tabanlı veya gereksinimlerini hata ayıklama işlemini başlatın. Birden çok derleme işlem ya da farklı bir derleme içeriği gerektirir, projenizdeki birden çok uygulama da olabilir.
+The `azds.yaml` file generated by the `prep` command should work fine for a simple, single project development scenario. If your specific project has increased complexity, you may need to update this file after running the `prep` command. For example, your project may require some tweaking to your build or launch process based on your development or debugging needs. You also might have multiple applications in your project, which require multiple build processes or a different build content.
 
-## <a name="run-your-code"></a>Kodunuzu çalıştırmak
+## <a name="run-your-code"></a>Run your code
 
-Bir geliştirme alanında kodunuzu çalıştırmak için sorunu `up` komutu aynı dizinde, `azds.yaml` dosyası:
+To run your code in a dev space, issue the `up` command in the same directory as your `azds.yaml` file:
 
 ```cmd
 azds up
 ```
 
-`up` Komutu, uygulamanızın kaynak dosyalarını ve derleme ve geliştirme alana projenizi çalıştırmak için gereken diğer yapıtları yükler. Burada, geliştirme alanınıza denetleyicisi:
+The `up` command uploads your application source files and other artifacts needed to build and run your project to the dev space. From there, the controller in your dev space:
 
-1. Uygulamanızı dağıtmak için Kubernetes nesnelerini oluşturur.
-1. Uygulamanız için bir kapsayıcı oluşturur.
-1. Uygulamanızı geliştirme alanı dağıtır.
-1. Yapılandırılmışsa, uygulama uç noktası için ortak olarak erişilebilen bir DNS adı oluşturur.
-1. Kullanan *bağlantı noktası iletme* uç nokta kullanarak uygulamanızı erişim sağlamak için http://localhost.
-1. STDOUT ve stderr istemci tarafı araçları iletir.
+1. Creates the Kubernetes objects to deploy your application.
+1. Builds the container for your application.
+1. Deploys your application to the dev space.
+1. Creates a publicly accessible DNS name for your application endpoint if configured.
+1. Uses *port-forward* to provide access to your application endpoint using http://localhost.
+1. Forwards stdout and stderr to the client-side tooling.
 
 
-### <a name="starting-a-service"></a>Bir hizmeti başlatılıyor
+### <a name="starting-a-service"></a>Starting a service
 
-Bir geliştirme alanında bir hizmeti başlattığınızda, denetleyici ve istemci tarafı araçları, kaynak dosyaları eşitlemek, kapsayıcı ve Kubernetes nesnelerini oluşturur ve uygulamanızı çalıştırmak için işbirliği içinde çalışın.
+When you start a service in a dev space, the client-side tooling and controller work in coordination to synchronize your source files, create your container and Kubernetes objects, and run your application.
 
-Daha ayrıntılı bir düzeyde çalıştırdığınızda şunlar olur `azds up`:
+At a more granular level, here is what happens when you run `azds up`:
 
-1. Dosyalar, kullanıcının AKS kümesi için benzersiz bir Azure dosya depolama alanına kullanıcının makineden eşitlenir. Kaynak kodu, Helm grafiği ve yapılandırma dosyalarını karşıya yüklenir. Eşitleme işlemi hakkında daha fazla ayrıntı, sonraki bölümde kullanılabilir.
-1. Denetleyici, yeni bir oturum başlatmak için bir istek oluşturur. Bu istek, benzersiz bir kimlik, ad alanı, kaynak kodu yoluna ve hata ayıklama bayrağı dahil olmak üzere çeşitli özellikler içerir.
-1. Denetleyici değiştirir *$(tag)* hizmetiniz için Helm grafik yükler ve benzersiz bir oturum kimliği ile Helm grafiği yer tutucusu. Kapsayıcı Helm grafiği için benzersiz bir oturum kimliği için bir başvuru sağlar oturumu isteğine birbirine bağlanması bu belirli bir oturum için AKS kümeye dağıtılan ekleyip bilgi ilişkili.
-1. Helm grafiği yüklenmesi sırasında Kubernetes Web kancası giriş sunucu araçları ve projenizin kaynak koduna erişmeniz için uygulamanızın pod ek kapsayıcıları ekler. HTTP izleme ve yönlendirme alanı sağlamak için devspaces proxy init kapsayıcılar ve devspaces proxy eklenir. Pod proje kaynak kodu ve Docker örneği için uygulamanızın kapsayıcıyı erişim sağlamak için derleme devspaces kapsayıcısı eklenir.
-1. Uygulamanın pod başlatıldığında devspaces derleme kapsayıcısı ve devspaces proxy init kapsayıcı uygulama kapsayıcısı oluşturmak için kullanılır. Uygulama kapsayıcısı ve devspaces proxy kapsayıcıları sonra başlatılır.
-1. Uygulama kapsayıcısı başlatıldıktan sonra istemci tarafı işlevleri Kubernetes kullanan *bağlantı noktası iletme* üzerinden uygulamanızın HTTP erişim sağlamak için işlevsellik http://localhost. Bu bağlantı noktası iletme geliştirme makinenize geliştirme alanınıza hizmetine bağlanır.
-1. Pod tüm kapsayıcılarda başlatıldığında hizmeti çalışıyor. Bu noktada, istemci tarafı işlevleri HTTP izlemeleri, stdout ve stderr akışı başlar. Bu bilgiler, istemci tarafı işlevleri geliştirici için görüntülenir.
+1. Files are synchronized from the user’s machine to an Azure file storage that is unique to the user’s AKS cluster. The source code, Helm chart, and configuration files are uploaded. More details on the synchronization process are available in the next section.
+1. The controller creates a request to start a new session. This request contains several properties, including a unique ID, space name, path to source code, and a debugging flag.
+1. The controller replaces the *$(tag)* placeholder in the Helm chart with the unique session ID and installs the Helm chart for your service. Adding a reference to the unique session ID to the Helm chart allows the container deployed to the AKS cluster for this specific session to be tied back to the session request and associated information.
+1. During the installation of the Helm chart, the Kubernetes webhook admission server adds additional containers to your application's pod for instrumentation and access to your project's source code. The devspaces-proxy and devspaces-proxy-init containers are added to provide HTTP tracing and space routing. The devspaces-build container is added to provide the pod with access to the Docker instance and project source code for building your application's container.
+1. When the application's pod is started, the devspaces-build container and devspaces-proxy-init container are used to build the application container. The application container and devspaces-proxy containers are then started.
+1. After the application container has started, the client-side functionality uses the Kubernetes *port-forward* functionality to provide HTTP access to your application over http://localhost. This port forwarding connects your development machine to the service in your dev space.
+1. When all containers in the pod have started, the service is running. At this point, the client-side functionality begins to stream the HTTP traces, stdout, and stderr. This information is displayed by the client-side functionality for the developer.
 
-### <a name="updating-a-running-service"></a>Çalışan bir hizmeti güncelleştirme
+### <a name="updating-a-running-service"></a>Updating a running service
 
-Hizmet çalışırken, Azure geliştirme alanları proje kaynak dosyalarının değiştirirseniz, bu hizmeti güncelleştirmek için özelliğine sahiptir. Değiştirilen dosya türüne bağlı olarak farklı hizmet güncelleştirme geliştirme alanları da işler. Çalışan bir hizmete geliştirme alanları güncelleştirebilirsiniz üç yolu vardır:
+While a service is running, Azure Dev Spaces has the ability to update that service if any of the project source files change. Dev Spaces also handles updating the service differently depending on the type of file that is changed. There are three ways Dev Spaces can update a running service:
 
-* Doğrudan bir dosyası güncelleştiriliyor
-* Yeniden oluşturma ve çalışan uygulamanın kapsayıcının içinde uygulamanın işlem yeniden başlatılıyor
-* Yeniden oluşturma ve uygulama kapsayıcı yeniden dağıtılıyor
+* Directly updating a file
+* Rebuilding and restarting the application's process inside the running application's container
+* Rebuilding and redeploying the application's container
 
-![Azure geliştirme alanları dosya eşitleme](media/how-dev-spaces-works/file-sync.svg)
+![Azure Dev Spaces file sync](media/how-dev-spaces-works/file-sync.svg)
 
-Cshtml dosyaları, html ve css gibi statik varlıklar bazı proje dosyaları, her şeyi yeniden başlatmadan doğrudan uygulama kapsayıcısında güncelleştirilebilir. Statik bir varlık değişirse, yeni dosya geliştirme alanına eşitlenir ve ardından çalışmakta olan kapsayıcıyı tarafından kullanılan.
+Certain project files that are static assets, such as html, css, and cshtml files, can be updated directly in the application's container without restarting anything. If a static asset changes, the new file is synchronized to the dev space and then used by the running container.
 
-Değişiklikleri gibi kaynak kodu dosyaları ya da uygulama yapılandırma dosyaları, uygulamanın işlemi içinde çalışmakta olan kapsayıcıyı yeniden başlatarak uygulanabilir. Bu dosyaların eşitlenmesini sonra uygulamanın işlem içinde çalışan kullanarak kapsayıcıdaki yeniden *devhostagent* işlem. Denetleyici başlangıçta uygulamanın kapsayıcı oluştururken, uygulama için başlangıç komutu adlı başka bir işlem ile değiştirir. *devhostagent*. Ardından uygulamanın gerçek işlem altında bir alt işlemi olarak çalıştırılır *devhostagent*, ve çıktısını kullanarak yöneltilen *devhostagent*çıktı. *Devhostagent* işlemi ayrıca geliştirme alanları parçasıdır ve komutları içinde çalışmakta olan kapsayıcıyı geliştirme alanları adına çalıştırabilirsiniz. Bir restart gerçekleştirirken *devhostagent*:
+Changes to files such as source code or application configuration files can be applied by restarting the application's process within the running container. Once these files are synchronized, the application's process is restarted within the running container using the *devhostagent* process. When initially creating the application's container, the controller replaces the startup command for the application with a different process called *devhostagent*. The application's actual process is then run as a child process under *devhostagent*, and its output is piped out using *devhostagent*'s output. The *devhostagent* process is also part of Dev Spaces and can execute commands in the running container on behalf of Dev Spaces. When performing a restart, *devhostagent*:
 
-* Geçerli işlem ya da uygulama ile ilişkili işlemler durdurur
-* Uygulamayı yeniden oluşturur
-* İşlem ya da uygulama ile ilişkili işlemler yeniden başlatır.
+* Stops the current process or processes associated with the application
+* Rebuilds the application
+* Restarts the process or processes associated with the application
 
-Yol *devhostagent* yürütür önceki adımları yapılandırılmıştır `azds.yaml` yapılandırma dosyası. Bu yapılandırma bir sonraki bölümde ayrıntılı olarak verilmiştir.
+The way *devhostagent* executes the preceding steps is configured in the `azds.yaml` configuration file. This configuration is detailed in a later section.
 
-Dockerfile'ları, csproj dosyalarına veya herhangi bir bölümünü Helm grafiği gibi proje dosyalarına güncelleştirme uygulama yeniden derlenmediği ve kapsayıcı gerektirir. Bu dosyalardan biri dev alana eşitlendiğinde, denetleyiciyi çalıştırır [helm yükseltme](https://helm.sh/docs/helm/#helm-upgrade) komut ve uygulamanın kapsayıcı yeniden ve yeniden dağıtıldı.
+Updates to project files such as Dockerfiles, csproj files, or any part of the Helm chart require the application's container to be rebuilt and redeployed. When one of these files is synchronized to the dev space, the controller runs the [helm upgrade](https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure) command and the application's container is rebuilt and redeployed.
 
-### <a name="file-synchronization"></a>Dosya eşitleme
+### <a name="file-synchronization"></a>File Synchronization
 
-Bir geliştirme alanında bir uygulama başlatıldığında ilk kez uygulamanın tüm kaynak dosyalar yüklenir. Uygulama çalışırken ve daha sonra yeniden başlatma işlemlerinde yalnızca değiştirilen dosyaların yüklenir. Bu işlem koordine etmek için kullanılan iki dosya: bir istemci-tarafı dosyası ve bir denetleyicisi tarafı dosyası.
+The first time an application is started in a dev space, all the application's source files are uploaded. While the application is running and on later restarts, only the changed files are uploaded. Two files are used to coordinate this process: a client-side file and a controller-side file.
 
-İstemci tarafı dosya geçici dizinde depolanır ve bir karma geliştirme alanlarında kullanmakta olduğunuz proje dizininin göre adlandırılır. Örneğin, Windows üzerinde dosyası gibi olurdu *Users\USERNAME\AppData\Local\Temp\1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef.synclog* projeniz için. Linux'ta, istemci tarafındaki dosyada depolanan */tmp* dizin. MacOS üzerinde dizin çalıştırarak bulabilirsiniz `echo $TMPDIR` komutu.
+The client-side file is stored in a temporary directory and is named based on a hash of the project directory you are running in Dev Spaces. For example, on Windows you would have a file like *Users\USERNAME\AppData\Local\Temp\1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef.synclog* for your project. On Linux, the client-side file is stored in the */tmp* directory. You can find the directory on macOS by running the `echo $TMPDIR` command.
 
-Bu dosya JSON biçiminde ve içerir:
+This file is in JSON format and contains:
 
-* Geliştirme boşluk ile eşitlenen her proje dosyası için bir giriş
-* Bir eşitleme kimliği
-* Son eşitleme işlemi zaman damgası
+* An entry for each project file that is synchronized with the dev space
+* A synchronization ID
+* The timestamp of the last sync operation
 
-Her proje dosyası girişi bir dosyasının yolunu ve kendi zaman damgası içerir.
+Each project file entry contains a path to the file and its timestamp.
 
-Denetleyici tarafı dosyası, AKS kümesinde depolanır. Bu, eşitleme kimliği ve zaman damgası, son eşitlemeden içerir.
+The controller-side file is stored on the AKS cluster. It contains the synchronization ID and the timestamp of the last synchronization.
 
-İstemci tarafı denetleyicisi tarafı dosyaları arasında eşitleme zaman damgaları eşleşmediği durumlarda eşitleme gerçekleşir. Bir eşitleme sırasında istemci tarafı araçları üzerinden istemci-tarafı dosyasında dosyası girdileri yinelenir. Eşitleme zaman damgasından sonraki dosya zaman damgası ise bu dosya geliştirme alanına eşitlenir. Eşitleme tamamlandıktan sonra eşitleme zaman damgaları hem istemci tarafı ve denetleyicisi tarafı dosyalarını güncelleştirilir.
+A sync happens when the synchronization timestamps do not match between the client-side and the controller-side files. During a sync, the client-side tooling iterates over the file entries in the client-side file. If the file's timestamp is after the sync timestamp, that file is synced to the dev space. Once the sync is complete, the sync timestamps are updated on both the client-side and controller-side files.
 
-Tüm proje dosyaları, istemci tarafı dosya mevcut değilse eşitlenir. Bu davranış, istemci tarafındaki dosyada silerek bir tam eşitleme zorlamanızı sağlar.
+All of the project files are synced if the client-side file is not present. This behavior allows you to force a full sync by deleting the client-side file.
 
-### <a name="how-routing-works"></a>Yönlendirmenin nasıl çalışır?
+### <a name="how-routing-works"></a>How routing works
 
-Geliştirme boşlukla AKS üzerine kurulmuştur ve aynı kullanır [kavramları ağ](../aks/concepts-network.md). Azure geliştirme alanları da sahip merkezi bir *ingressmanager* hizmet ve kendi giriş denetleyicisine AKS kümeye dağıtır. *İngressmanager* hizmeti izleyicileri AKS kümeleri ile geliştirme alanları ve Azure Dev alanları giriş denetleyicisine uygulama pods yönlendirme giriş nesnelerle kümedeki artırmaktadır. Her pod devspaces proxy kapsayıcısında ekler bir `azds-route-as` HTTP üstbilgisi geliştirme alanı için HTTP trafiği için temel URL'yi. Örneğin, bir URL isteği *http://azureuser.s.default.serviceA.fedcba09...azds.io* bir HTTP üst bilgisi ile elde edebileceğiniz `azds-route-as: azureuser`. Devspaces proxy kapsayıcı olmayan ekleyecek bir `azds-route-as` zaten var olan üstbilgi.
+A dev space is built on top of AKS and uses the same [networking concepts](../aks/concepts-network.md). Azure Dev Spaces also has a centralized *ingressmanager* service and deploys its own Ingress Controller to the AKS cluster. The *ingressmanager* service monitors AKS clusters with dev spaces and augments the Azure Dev Spaces Ingress Controller in the cluster with Ingress objects for routing to application pods. The devspaces-proxy container in each pod adds an `azds-route-as` HTTP header for HTTP traffic to a dev space based on the URL. For example, a request to the URL *http://azureuser.s.default.serviceA.fedcba09...azds.io* would get an HTTP header with `azds-route-as: azureuser`. The devspaces-proxy container will not add an `azds-route-as` header if one is already present.
 
-Küme dışında bir hizmetten bir HTTP isteği yapıldığında, istek giriş denetleyicisine gider. Giriş denetleyicisine doğrudan kendi giriş nesneleri ve kurallara dayanan uygun pod isteği yönlendirir. Pod devspaces proxy kapsayıcısında isteği aldığında, ekler `azds-route-as` üstbilgi URL'sini temel alarak ve ardından isteği için uygulama kapsayıcısı yönlendirir.
+When an HTTP request is made to a service from outside the cluster, the request goes to the Ingress controller. The Ingress controller routes the request directly to the appropriate pod based on its Ingress objects and rules. The devspaces-proxy container in the pod receives the request, adds the `azds-route-as` header based on the URL, and then routes the request to the application container.
 
-Bir HTTP isteği, küme içindeki başka bir hizmetten hizmete yapıldığında, istek ilk arama hizmetin devspaces proxy kapsayıcı gider. HTTP isteği ve denetimleri devspaces proxy kapsayıcı arar `azds-route-as` başlığı. Başlığa göre üst bilgi değeri ile ilişkili hizmeti IP adresi devspaces proxy kapsayıcı görünecektir. Bir IP adresi bulunursa devspaces proxy kapsayıcı bu IP adresi isteği yeniden yönlendirmeler. Bir IP adresi bulunmazsa devspaces proxy kapsayıcı için üst uygulama kapsayıcısı isteği yönlendirir.
+When an HTTP request is made to a service from another service within the cluster, the request first goes through the calling service's devspaces-proxy container. The devspaces-proxy container looks at the HTTP request and checks the `azds-route-as` header. Based on the header, the devspaces-proxy container will look up the IP address of the service associated with the header value. If an IP address is found, the devspaces-proxy container reroutes the request to that IP address. If an IP address is not found, the devspaces-proxy container routes the request to the parent application container.
 
-Örneğin, uygulamaları *serviceA* ve *serviceB* denilen bir üst geliştirme alana dağıtılan *varsayılan*. *serviceA* dayanan *serviceB* ve HTTP çağrıları yapar. Azure kullanıcı oluşturur göre alt geliştirme boşlukla *varsayılan* adında boşluk *azureuser*. Azure kullanıcı aynı zamanda kendi sürümünü dağıtır *serviceA* kendi alt alan. Ne zaman bir isteği yapılır *http://azureuser.s.default.serviceA.fedcba09...azds.io* :
+For example, the applications *serviceA* and *serviceB* are deployed to a parent dev space called *default*. *serviceA* relies on *serviceB* and makes HTTP calls to it. Azure User creates a child dev space based on the *default* space called *azureuser*. Azure User also deploys their own version of *serviceA* to their child space. When a request is made to *http://azureuser.s.default.serviceA.fedcba09...azds.io* :
 
-![Azure geliştirme yönlendirme alanları](media/how-dev-spaces-works/routing.svg)
+![Azure Dev Spaces routing](media/how-dev-spaces-works/routing.svg)
 
-1. IP olan URL'si ile ilişkili pod için giriş denetleyicisini arar *serviceA.azureuser*.
-1. Giriş denetleyicisine IP pod Azure kullanıcının geliştirme alanında bulur ve isteği yönlendirir *serviceA.azureuser* pod.
-1. Proxy devspaces kapsayıcısında *serviceA.azureuser* pod isteği alır ve ekler `azds-route-as: azureuser` bir HTTP üst bilgisi olarak.
-1. Proxy devspaces kapsayıcısında *serviceA.azureuser* pod isteğe yönlendiren *serviceA* uygulama kapsayıcısında *serviceA.azureuser* pod.
-1. *ServiceA* uygulama *serviceA.azureuser* pod çağrı yapar *serviceB*. *ServiceA* uygulamasını da içeren varolan korumak için kod `azds-route-as` üst bilgisi bu durumda `azds-route-as: azureuser`.
-1. Proxy devspaces kapsayıcısında *serviceA.azureuser* pod isteği alır ve IP arar *serviceB* değerine göre `azds-route-as` başlığı.
-1. Proxy devspaces kapsayıcısında *serviceA.azureuser* pod için bir IP bulamazsa *serviceB.azureuser*.
-1. Proxy devspaces kapsayıcısında *serviceA.azureuser* IP'sini şuna pod *serviceB* üst alanında olduğu *serviceB.default*.
-1. Proxy devspaces kapsayıcısında *serviceA.azureuser* pod bulur IP'sini *serviceB.default* ve isteği yönlendiren *serviceB.default* pod.
-1. Proxy devspaces kapsayıcısında *serviceB.default* pod isteği alır ve isteğe yönlendiren *serviceB* uygulama kapsayıcısında *serviceB.default*pod.
-1. *ServiceB* uygulama *serviceB.default* pod için bir yanıt döndürür *serviceA.azureuser* pod.
-1. Proxy devspaces kapsayıcısında *serviceA.azureuser* pod yanıtı alır ve yanıtı yönlendiren *serviceA* uygulama kapsayıcısında *serviceA.azureuser* pod.
-1. *ServiceA* uygulama yanıtı alır ve kendi yanıt verir.
-1. Devspaces proxy kapsayıcısında *serviceA.azureuser* pod yanıtı aldığında *serviceA* uygulama kapsayıcı ve küme dışındaki özgün çağırana yanıt yönlendirir.
+1. The Ingress controller looks up the IP for the pod associated with the URL, which is *serviceA.azureuser*.
+1. The Ingress controller finds the IP for the pod in Azure User's dev space and routes the request to the *serviceA.azureuser* pod.
+1. The devspaces-proxy container in the *serviceA.azureuser* pod receives the request and adds `azds-route-as: azureuser` as an HTTP header.
+1. The devspaces-proxy container in the *serviceA.azureuser* pod routes the request to the *serviceA* application container in the *serviceA.azureuser* pod.
+1. The *serviceA* application in the *serviceA.azureuser* pod makes a call to *serviceB*. The *serviceA* application also contains code to preserve the existing `azds-route-as` header, which in this case is `azds-route-as: azureuser`.
+1. The devspaces-proxy container in the *serviceA.azureuser* pod receives the request and looks up the IP of *serviceB* based on the value of the `azds-route-as` header.
+1. The devspaces-proxy container in the *serviceA.azureuser* pod does not find an IP for *serviceB.azureuser*.
+1. The devspaces-proxy container in the *serviceA.azureuser* pod looks up the IP for *serviceB* in the parent space, which is *serviceB.default*.
+1. The devspaces-proxy container in the *serviceA.azureuser* pod finds the IP for *serviceB.default* and routes the request to the *serviceB.default* pod.
+1. The devspaces-proxy container in the *serviceB.default* pod receives the request and routes the request to the *serviceB* application container in the *serviceB.default* pod.
+1. The *serviceB* application in the *serviceB.default* pod returns a response to the *serviceA.azureuser* pod.
+1. The devspaces-proxy container in the *serviceA.azureuser* pod receives the response and routes the response to the *serviceA* application container in the *serviceA.azureuser* pod.
+1. The *serviceA* application receives the response and then returns its own response.
+1. The devspaces-proxy container in the *serviceA.azureuser* pod receives the response from the *serviceA* application container and routes the response to the original caller outside of the cluster.
 
-HTTP olmayan diğer tüm TCP trafiği giriş denetleyicisine ve üzerinde değişiklik yapılmadan devspaces proxy kapsayıcılar geçirir.
+All other TCP traffic that is not HTTP passes through the Ingress controller and devspaces-proxy containers unmodified.
 
-### <a name="how-running-your-code-is-configured"></a>Kodunuzu çalıştıran yapılandırılmış nasıl
+### <a name="how-running-your-code-is-configured"></a>How running your code is configured
 
-Azure geliştirme alanları kullanan `azds.yaml` dosya yükleme ve hizmetinizi yapılandırın. Denetleyici kullandığı `install` özelliğinde `azds.yaml` Helm grafiği yükle ve Kubernetes nesnelerini oluşturmak için dosya:
+Azure Dev Spaces uses the `azds.yaml` file to install and configure your service. The controller uses the `install` property in the `azds.yaml` file to install the Helm chart and create the Kubernetes objects:
 
 ```yaml
 ...
@@ -326,25 +326,25 @@ install:
 ...
 ```
 
-Varsayılan olarak, `prep` komutu Helm Grafiği Oluştur. Ayrıca ayarlar *install.chart* Helm grafiği dizininin özelliği. Farklı konumlarda Helm grafiği kullanmak istediyseniz, bu özellik, bu konumu kullanmak üzere güncelleştirebilirsiniz.
+By default, the `prep` command will generate the Helm chart. It also sets the *install.chart* property to the directory of the Helm chart. If you wanted to use a Helm chart in a different location, you can update this property to use that location.
 
-Helm grafikleri yükleme sırasında Azure geliştirme alanları Helm grafiği değerleri geçersiz kılmak için bir yol sağlar. Helm grafiği için varsayılan değerleri bulunan `charts/APP_NAME/values.yaml`.
+When installing the Helm charts, Azure Dev Spaces provides a way to override values in the Helm chart. The default values for the Helm chart are in `charts/APP_NAME/values.yaml`.
 
-Kullanarak *install.values* özelliği, değiştirilen Helm grafiği değerleri tanımlayan bir veya daha fazla dosyalar yeniden sıralayabilir. Örneğin, özellikle uygulamanızı geliştirme boşluk çalıştıran bir konak adı veya veritabanı yapılandırması istediyseniz, bu geçersiz kılma işlevini kullanabilirsiniz. Ayrıca bir *?* sonunda herhangi bir dosya adları, isteğe bağlı olarak ayarlanacak.
+Using the *install.values* property, you can list one or more files that define values you want replaced in the Helm chart. For example, if you wanted a hostname or database configuration specifically when running your application in a dev space, you can use this override functionality. You can also add a *?* at the end of any of the file names to set it as optional.
 
-*İnstall.set* özelliği değiştirildi Helm grafiğinde gösterilmesini istediğiniz bir veya daha fazla değerleri yapılandırmanıza olanak tanır. Yapılandırılan tüm değerleri *install.set* listelenen dosyalarında yapılandırılmış değerler geçersiz kılınır *install.values*. Özellikleri altında *install.set* bağımlı Helm grafiği değerleri ve oluşturulan Helm grafiği bağlı olarak farklı olabilir.
+The *install.set* property allows you to configure one or more values you want replaced in the Helm chart. Any values configured in *install.set* will override values configured in files listed in *install.values*. The properties under *install.set* are dependent on the values in the Helm chart and may be different depending on the generated Helm chart.
 
-Yukarıdaki örnekte, *install.set.replicaCount* özellik geliştirme alanınızda çalışması için uygulamanızı kaç örneklerini denetleyici söyler. Kendi senaryonuza bağlı olarak bu değeri artırabilirsiniz, ancak bir Haya ayıklayıcı için uygulamanızın pod üzerinde bir etkisi olacaktır. Daha fazla bilgi için [sorunlarını giderme makalesine](troubleshooting.md).
+In the above example, the *install.set.replicaCount* property tells the controller how many instances of your application to run in your dev space. Depending on your scenario, you can increase this value, but it will have an impact on attaching a debugger to your application's pod. For more information, see the [troubleshooting article](troubleshooting.md).
 
-Kapsayıcı görüntüsünü oluşturulan Helm grafiği kümesine *{{. Values.image.Repository}} :{{. Values.image.Tag}}* . `azds.yaml` Dosyası tanımlar *install.set.image.tag* özelliği olarak *$(tag)* varsayılan olarak kullanılan değeri olarak *{{. Values.image.Tag}}* . Ayarlayarak *install.set.image.tag* özelliği bu şekilde, ayrı bir şekilde Azure geliştirme alanları çalıştırırken etiketlenmesine izin uygulamanız için kapsayıcı görüntüsü sağlar. Bu belirli durumda görüntü olarak etiketlenmiş  *\<image.repository değerden >: $(tag)* . Kullanmalısınız *$(tag)* değeri olarak değişken *install.set.image.tag* geliştirme alanları için sırayla tanımak ve AKS kümesinde kapsayıcıyı bulun.
+In the generated Helm chart, the container image is set to *{{ .Values.image.repository }}:{{ .Values.image.tag }}* . The `azds.yaml` file defines *install.set.image.tag* property as *$(tag)* by default, which is used as the value for *{{ .Values.image.tag }}* . By setting the *install.set.image.tag* property in this way, it allows the container image for your application to be tagged in a distinct way when running Azure Dev Spaces. In this specific case, the image is tagged as *\<value from image.repository>:$(tag)* . You must use the *$(tag)* variable as the value of   *install.set.image.tag* in order for Dev Spaces recognize and locate the container in the AKS cluster.
 
-Yukarıdaki örnekte, `azds.yaml` tanımlar *install.set.ingress.hosts*. *İnstall.set.ingress.hosts* özelliği genel uç noktaları için bir konak adı biçimi tanımlar. Ayrıca bu özelliği kullanan *$(spacePrefix)* , *$(rootSpacePrefix)* , ve *$(hostSuffix)* , denetleyici tarafından sağlanan değerleri şunlardır. 
+In the above example, `azds.yaml` defines *install.set.ingress.hosts*. The *install.set.ingress.hosts* property defines a host name format for public endpoints. This property also uses *$(spacePrefix)* , *$(rootSpacePrefix)* , and *$(hostSuffix)* , which are values provided by the controller. 
 
-*$(SpacePrefix)* adı biçimini alır alt geliştirme alanı *SPACENAME.s*. *$(RootSpacePrefix)* üst alanın adıdır. Örneğin, varsa *azureuser* bir alt alanı *varsayılan*, değeri *$(rootSpacePrefix)* olduğu *varsayılan* değeri *$(spacePrefix)* olduğu *azureuser.s*. Alan bir alt alanı değilse *$(spacePrefix)* boştur. Örneğin, varsa *varsayılan* alana sahip üst boşluk değeri *$(rootSpacePrefix)* olduğu *varsayılan* değeri *$(spacePrefix)* boştur. *$(HostSuffix)* AKS kümenizde çalışan Azure geliştirme alanları giriş denetleyicisine işaret eden bir DNS soneki eklenir. Bu DNS soneki için bir joker karakter DNS girişi, örneğin karşılık gelen  *\*. RANDOM_VALUE.eus.azds.io*, Azure geliştirme alanları denetleyicisi AKS kümenizi eklendiğinde oluşturuldu.
+The *$(spacePrefix)* is the name of the child dev space, which takes the form of *SPACENAME.s*. The *$(rootSpacePrefix)* is the name of the parent space. For example, if *azureuser* is a child space of *default*, the value for *$(rootSpacePrefix)* is *default* and the value of *$(spacePrefix)* is *azureuser.s*. If the space is not a child space, *$(spacePrefix)* is blank. For example, if the *default* space has no parent space, the value for *$(rootSpacePrefix)* is *default* and the value of *$(spacePrefix)* is blank. The *$(hostSuffix)* is a DNS suffix that points to the Azure Dev Spaces Ingress Controller that runs in your AKS cluster. This DNS suffix corresponds to a wildcard DNS entry, for example *\*.RANDOM_VALUE.eus.azds.io*, that was created when the Azure Dev Spaces controller was added to your AKS cluster.
 
-Yukarıdaki içinde `azds.yaml` dosyası da güncelleştirmeniz *install.set.ingress.hosts* uygulamanızın ana bilgisayar adını değiştirmek için. Örneğin, ana bilgisayar adını uygulamanızdan kolaylaştırmak istedik *$(spacePrefix)$(rootSpacePrefix)webfrontend$(hostSuffix)* için *$(spacePrefix)$(rootSpacePrefix)web$(hostSuffix)* .
+In the above `azds.yaml` file, you could also update *install.set.ingress.hosts* to change the host name of your application. For example, if you wanted to simplify the hostname of your application from *$(spacePrefix)$(rootSpacePrefix)webfrontend$(hostSuffix)* to *$(spacePrefix)$(rootSpacePrefix)web$(hostSuffix)* .
 
-Uygulamanız için bir kapsayıcı oluşturmak için denetleyici kullanan aşağıdaki bölümlerini `azds.yaml` yapılandırma dosyası:
+To build the container for your application, the controller uses the below sections of the `azds.yaml` configuration file:
 
 ```yaml
 build:
@@ -361,13 +361,13 @@ configurations:
 ...
 ```
 
-Denetleyicinin oluşturup uygulamanızı çalıştırmak için bir Dockerfile kullanır.
+The controller uses a Dockerfile to build and run your application.
 
-*Build.context* özellik listelerini dockerfile'ları bulunduğu dizin. *Build.dockerfile* özelliği uygulamanın üretim sürümü oluşturmaya yönelik bir Dockerfile adını tanımlar. *Configurations.develop.build.dockerfile* özelliği için uygulama geliştirme sürümünü Dockerfile adını yapılandırır.
+The *build.context* property lists the directory where the Dockerfiles exist. The *build.dockerfile* property defines the name of the Dockerfile for building the production version of the application. The *configurations.develop.build.dockerfile* property configures the name of the Dockerfile for the development version of the application.
 
-Geliştirme ve üretim için farklı dockerfile'ları belirli geliştirme sırasında etkinleştirmek ve üretim dağıtımları için bu öğeleri devre dışı bırakmak sağlar. Örneğin, etkinleştirebilirsiniz hata ayıklama veya geliştirme ve üretim ortamında devre dışı bırakma sırasında daha ayrıntılı günlük kaydı. Bu özellikler, dockerfile'ları farklı şekilde adlandırılmış veya farklı bir konumda da güncelleştirebilirsiniz.
+Having different Dockerfiles for development and production allows you to enable certain things during development and disable those items for production deployments. For example, you can enable debugging or more verbose logging during development and disable in a production environment. You can also update these properties if your Dockerfiles are named differently or are in a different location.
 
-Geliştirme sırasında hızla yineleme yardımcı olmak için Azure geliştirme alanları yaptığınız değişiklikleri yerel projenizden eşitleyin ve uygulamanızı artımlı olarak güncelleştirme. Aşağıdaki bölümde `azds.yaml` yapılandırma dosyası, eşitleme yapılandırmak ve güncelleştirmek için kullanılır:
+To help you rapidly iterate during development, Azure Dev Spaces will sync changes from your local project and incrementally update your application. The below section in the `azds.yaml` configuration file is used to configure the sync and update:
 
 ```yaml
 ...
@@ -388,59 +388,59 @@ configurations:
 ...
 ```
 
-Değişiklikleri eşitler dizinleri ve dosyaları listelenen *configurations.develop.container.sync* özelliği. Programını çalıştırdığınızda bu dizinler başlangıçta eşitlenen `up` değişiklikler ne zaman algılanır yanı sıra komutu. Geliştirme alanınıza eşitlenmesini istediğiniz ek veya bunlardan farklı dizinleri varsa, bu özellik değiştirebilirsiniz.
+The files and directories that will sync changes are listed in the *configurations.develop.container.sync* property. These directories are synced initially when you run the `up` command as well as when changes are detected. If there are additional or different directories you would like synced to your dev space, you can change this property.
 
-*Configurations.develop.container.iterate.buildCommands* özellik geliştirme senaryosunda uygulamanın nasıl oluşturulacağını belirtir. *Configurations.develop.container.command* özelliği, bir geliştirme senaryosunda uygulama çalıştırmak için komutu sağlar. Ek derleme veya çalışma zamanı bayrakları veya geliştirme sırasında kullanmak istediğiniz parametreleri varsa bu özelliklerden güncelleştirmek isteyebilirsiniz.
+The *configurations.develop.container.iterate.buildCommands* property specifies how to build the application in a development scenario. The *configurations.develop.container.command* property provides the command for running the application in a development scenario. You may want to update either of these properties if there are additional build or runtime flags or parameters you would like to use during development.
 
-*Configurations.develop.container.iterate.processesToKill* uygulamayı durdurmak için KILL işlemleri listeler. Geliştirme sırasında uygulamanızın yeniden başlatma davranışını değiştirmek istiyorsanız bu özelliği güncelleştirmek isteyebilirsiniz. Örneğin, güncel *configurations.develop.container.iterate.buildCommands* veya *configurations.develop.container.command* uygulamanın nasıl oluşturulduğunu değiştirmek için özellikler veya başlatıldı, hangi işlemleri durduruldu değiştirmeniz gerekebilir.
+The *configurations.develop.container.iterate.processesToKill* lists the processes to kill to stop the application. You may want to update this property if you want to change the restart behavior of your application during development. For example, if you updated the *configurations.develop.container.iterate.buildCommands* or *configurations.develop.container.command* properties to change how the application is built or started, you may need to change what processes are stopped.
 
-Kod kullanarak hazırlanırken `azds prep` komut ekleme seçeneğiniz `--public` bayrağı. Ekleme `--public` bayrağı, uygulamanız için genel olarak erişilebilir bir URL oluşturur. Bu bayrak atlarsanız, uygulama yalnızca kümenin veya localhost tünel kullanarak içinde erişilebilir. Çalıştırdıktan sonra `azds prep` komutu, bu ayarı değiştirerek değiştirebilirsiniz *ingress.enabled* özelliğinde `charts/APPNAME/values.yaml`:
+When preparing your code using the `azds prep` command, you have the option of adding the `--public` flag. Adding the `--public` flag creates a publicly accessible URL for your application. If you omit this flag, the application is only accessible within the cluster or using the localhost tunnel. After you run the `azds prep` command, you can change this setting modifying the *ingress.enabled* property in `charts/APPNAME/values.yaml`:
 
 ```yaml
 ingress:
   enabled: true
 ```
 
-## <a name="debug-your-code"></a>Kodunuzdaki hataları ayıklamanıza
+## <a name="debug-your-code"></a>Debug your code
 
-Java, .NET ve Node.js uygulamaları için doğrudan Visual Studio Code veya Visual Studio kullanarak, geliştirme alanında çalışan uygulamanızın hatalarını ayıklayabilirsiniz. Visual Studio Code ve Visual Studio geliştirme alanınızı bağlamak, uygulamanızı başlatın ve bir hata ayıklayıcının için araçlar sağlar. Çalıştırdıktan sonra `azds prep`, projenizi Visual Studio Code veya Visual Studio'da açabilirsiniz. Visual Studio Code veya Visual Studio çalışmasını ayrıdır bağlanmak için kendi yapılandırma dosyaları oluşturacağını `azds prep`. Gelen Visual Studio Code veya Visual Studio içinde kesme noktaları ayarlayabilir ve uygulamanızı geliştirme alanınızı başlatın.
+For Java, .NET and Node.js applications, you can debug your application running directly in your dev space using Visual Studio Code or Visual Studio. Visual Studio Code and Visual Studio provide tooling to connect to your dev space, launch your application, and attach a debugger. After running `azds prep`, you can open your project in Visual Studio Code or Visual Studio. Visual Studio Code or Visual Studio will generate their own configuration files for connecting which is separate from running `azds prep`. From within Visual Studio Code or Visual Studio, you can set breakpoints and launch your application to your dev space.
 
-![Kodunuzun hatalarını ayıklama](media/get-started-node/debug-configuration-nodejs2.png)
+![Debugging your code](media/get-started-node/debug-configuration-nodejs2.png)
 
-Başlatma ve çalışan aynı şekilde geliştirme alanınıza bağlanarak hata ayıklamak için Visual Studio Code veya Visual Studio kullanarak, uygulamanız başlatıldığında, işledikleri `azds up`. Visual Studio Code ve Visual Studio içinde istemci tarafı araçları da ek bir parametre ile hata ayıklama için belirli bilgi sağlar. Parametresi, hata ayıklayıcı görüntü hata ayıklayıcısı içinde hata ayıklayıcı'nın görüntüdeki konumunu ve hata ayıklayıcı klasörü bağlamak için uygulamanın kapsayıcı içindeki hedef konum adı içerir.
+When you launch your application using Visual Studio Code or Visual Studio for debugging, they handle launching and connecting to your dev space in the same way as running `azds up`. The client-side tooling in Visual Studio Code and Visual Studio also provide an additional parameter with specific information for debugging. The parameter contains the name of debugger image, the location of the debugger within in the debugger's image, and the destination location within the application's container to mount the debugger folder.
 
-Hata ayıklayıcı görüntü otomatik olarak istemci tarafı araçları tarafından belirlenir. Dockerfile sırasında kullanılan benzer bir yöntem kullanır ve Helm grafiği çalıştırırken oluşturmak `azds prep`. Hata ayıklayıcının uygulamanın görüntüde takılı sonra kullanarak çalıştırılan `azds exec`.
+The debugger image is automatically determined by the client-side tooling. It uses a method similar to the one used during Dockerfile and Helm chart generate when running `azds prep`. After the debugger is mounted in the application's image, it is run using `azds exec`.
 
-## <a name="sharing-a-dev-space"></a>Geliştirme yer paylaşımı
+## <a name="sharing-a-dev-space"></a>Sharing a dev space
 
-Bir takım ile çalışırken, şunları yapabilirsiniz [geliştirme boşluk bir takımın tamamı arasında paylaşmak](how-to/share-dev-spaces.md) ve türetilmiş geliştirme alanları oluşturun. Geliştirme boşlukla geliştirme alanı ait kaynak grubuna katkıda bulunan erişimi olan herkes tarafından kullanılabilir.
+When working with a team, you can [share a dev space across an entire team](how-to/share-dev-spaces.md) and create derived dev spaces. A dev space can be used by anyone with contributor access to the dev space's resource group.
 
-Başka bir geliştirme alanından türetilmiş yeni bir geliştirme alanı da oluşturabilirsiniz. Bir türetilmiş geliştirme alanı oluşturduğunuzda *azds.io/üst-alan üst-alanı-NAME =* etiket türetilmiş geliştirme alan kişinin ad alanına eklenir. Ayrıca, tüm uygulamaları üst geliştirme alanından türetilmiş geliştirme boşluk ile paylaşılır. Türetilmiş geliştirme alanına uygulamanın güncelleştirilmiş bir sürümü dağıtırsanız, yalnızca türetilmiş geliştirme alanında bulunur ve üst geliştirme alanı etkilenmeyen kalır. En çok türetilen geliştirme alanları üç düzeyde olabilir veya *dizinleriyle* alanları.
+You can also create a new dev space that is derived from another dev space. When you create a derived dev space, the *azds.io/parent-space=PARENT-SPACE-NAME* label is added to the derived dev space's namespace. Also, all applications from the parent dev space are shared with the derived dev space. If you deploy an updated version of an application to the derived dev space, it will only exist in the derived dev space and the parent dev space will remain unaffected. You can have a maximum of three levels of derived dev spaces or *grandparent* spaces.
 
-Türetilmiş geliştirme alanı, kendi uygulamaları ve üst öğesinden paylaşılan uygulamaları arasındaki istekleri de akıllı bir şekilde yönlendirir. Yönlendirme türetilmiş geliştirme alanında bir uygulama için rota istek girişimi ve paylaşılan uygulamaya üst geliştirme alanından dönülüyor çalışır. Uygulama üst alanında değilse, üretim dizinleriyle alanı paylaşılan uygulamaya döner.
+The derived dev space will also intelligently route requests between its own applications and the applications shared from its parent. The routing works by attempting to route request to an application in the derived dev space and falling back to the shared application from the parent dev space. The routing will fall back to the shared application in the grandparent space if the application is not in the parent space.
 
-Örneğin:
-* Geliştirme alanı *varsayılan* uygulamalar içeren *serviceA* ve *serviceB* .
-* Geliştirme alanı *azureuser* türetilir *varsayılan*.
-* Güncelleştirilmiş bir sürümünü *serviceA* dağıtılır *azureuser*.
+Örnek:
+* The dev space *default* has applications *serviceA* and *serviceB* .
+* The dev space *azureuser* is derived from *default*.
+* An updated version of *serviceA* is deployed to *azureuser*.
 
-Kullanırken *azureuser*, tüm istekleri *serviceA* güncelleştirilmiş sürüme fabrikamserverpool'a yönlendirilebilir *azureuser*. Bir istek *serviceB* ilk için yönlendirilmesini deneyecek *azureuser* sürümünü *serviceB*. Bunu mevcut olmadığından için yönlendirileceğini *varsayılan* sürümünü *serviceB*. Varsa *azureuser* sürümünü *serviceA* kaldırılır, tüm istekleri *serviceA* kullanmaya geri döner *varsayılan* sürümü *serviceA*.
+When using *azureuser*, all requests to *serviceA* will be routed to the updated version in *azureuser*. A request to *serviceB* will first try to be routed to the *azureuser* version of *serviceB*. Since it does not exist, it will be routed to the *default* version of *serviceB*. If the *azureuser* version of *serviceA* is removed, all requests to *serviceA* will fall back to using the *default* version of *serviceA*.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure geliştirme alanları ile çalışmaya başlamak için şu hızlı başlangıçlarda bakın:
+To get started using Azure Dev Spaces, see the following quickstarts:
 
-* [CLI ve Visual Studio Code ile Java](quickstart-java.md)
-* [.NET core CLI ve Visual Studio Code ile](quickstart-netcore.md)
-* [Visual Studio ile .NET core](quickstart-netcore-visualstudio.md)
-* [CLI ve Visual Studio Code ile node.js](quickstart-nodejs.md)
+* [Java with CLI and Visual Studio Code](quickstart-java.md)
+* [.NET Core with CLI and Visual Studio Code](quickstart-netcore.md)
+* [.NET Core with Visual Studio](quickstart-netcore-visualstudio.md)
+* [Node.js with CLI and Visual Studio Code](quickstart-nodejs.md)
 
-Takım geliştirme ile çalışmaya başlamak için aşağıdaki yapılır makalelerine bakın:
+To get started with team development, see the following how-to articles:
 
-* [Takım geliştirme - CLI ve Visual Studio Code ile Java](team-development-java.md)
-* [Takım geliştirme - ile .NET Core CLI ve Visual Studio kodu](team-development-netcore.md)
-* [Takım geliştirme - Visual Studio ile .NET Core](team-development-netcore-visualstudio.md)
-* [Takım geliştirme - CLI ve Visual Studio Code ile Node.js](team-development-nodejs.md)
+* [Team Development - Java with CLI and Visual Studio Code](team-development-java.md)
+* [Team Development - .NET Core with CLI and Visual Studio Code](team-development-netcore.md)
+* [Team Development - .NET Core with Visual Studio](team-development-netcore-visualstudio.md)
+* [Team Development - Node.js with CLI and Visual Studio Code](team-development-nodejs.md)
 
 
 

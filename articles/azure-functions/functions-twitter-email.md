@@ -1,22 +1,18 @@
 ---
 title: Azure Logic Apps ile tümleşen bir işlev oluşturma
 description: Tweet duyarlılığını kategorilere ayırmak ve duyarlılık düşük olduğunda bildirim göndermek için Azure Logic Apps ve Azure Bilişsel Hizmetler ile tümleşen bir işlev oluşturun.
-services: functions, logic-apps, cognitive-services
-keywords: iş akışı, bulut uygulamaları, bulut hizmetleri, iş süreçleri, sistem tümleştirme, kuruluş uygulaması tümleştirme, EAI
 author: craigshoemaker
-manager: gwallace
 ms.assetid: 60495cc5-1638-4bf0-8174-52786d227734
-ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: cshoe
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 11e0170464d8ed901253925eb62cce12d42c0008
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: c7b8e41cc09137ee06e975d136dd999ba146731b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67480024"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226619"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Azure Logic Apps ile tümleşen bir işlev oluşturma
 
@@ -47,7 +43,7 @@ Daha önce yapmadıysanız işlev uygulamanızı oluşturmak için bu adımları
 
 Bilişsel Hizmetler API'leri Azure’da tek kaynaklar halinde kullanılabilir. İzlenmekte olan tweetlerin duyarlılığını algılamak için Metin Analizi API’sini kullanın.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 2. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** öğesine tıklayın.
 
@@ -57,8 +53,8 @@ Bilişsel Hizmetler API'leri Azure’da tek kaynaklar halinde kullanılabilir. �
 
     | Ayar      |  Önerilen değer   | Açıklama                                        |
     | --- | --- | --- |
-    | **Ad** | MyCognitiveServicesAccnt | Benzersiz bir hesap adı seçin. |
-    | **Location** | Batı ABD | Size en yakın konumu kullanın. |
+    | **Adı** | MyCognitiveServicesAccnt | Benzersiz bir hesap adı seçin. |
+    | **Konum** | Batı ABD | Size en yakın konumu kullanın. |
     | **Fiyatlandırma katmanı** | F0 | En düşük katman ile başlayın. Çağrılarınız biterse daha yüksek bir katmana ölçeklendirin.|
     | **Kaynak grubu** | myResourceGroup | Bu öğreticideki tüm hizmetler için aynı kaynak grubunu kullanın.|
 
@@ -125,7 +121,7 @@ Bilişsel Hizmetler API'leri Azure’da tek kaynaklar halinde kullanılabilir. �
     ```
     Bu işlev kodu, istekte alınan duyarlılık puanına göre bir renk kategorisi döndürür. 
 
-4. İşlevi test etmek için en sağdaki **Test** seçeneğine tıklayarak Test sekmesini genişletin. **İstek gövdesi** `0.2` değerini girip **Çalıştır**’a tıklayın. Yanıtın gövdesinde **RED** değeri döndürülür. 
+4. To test the function, click **Test** at the far right to expand the Test tab. Type a value of `0.2` for the **Request body**, and then click **Run**. Yanıtın gövdesinde **RED** değeri döndürülür. 
 
     ![İşlevi Azure portalında test etme](./media/functions-twitter-email/07-function-test.png)
 
@@ -143,9 +139,9 @@ Artık duyarlılık puanlarını kategorilere ayıran bir işleviniz vardır. bu
 
     | Ayar      |  Önerilen değer   | Açıklama                                        |
     | ----------------- | ------------ | ------------- |
-    | **Ad** | TweetSentiment | Uygulamanız için uygun bir ad seçin. |
+    | **Adı** | TweetSentiment | Uygulamanız için uygun bir ad seçin. |
     | **Kaynak grubu** | myResourceGroup | Daha önceki ile aynı mevcut kaynak grubunu seçin. |
-    | **Location** | Doğu ABD | Size yakın bir konum seçin. |    
+    | **Konum** | Doğu ABD | Size yakın bir konum seçin. |    
 
 4. Uygun ayar değerlerini girdikten sonra mantıksal uygulamanızı oluşturmak için **Oluştur**’a tıklayın. 
 
@@ -242,7 +238,7 @@ Artık mantıksal uygulamadan bir duyarlılık puanı gönderildiğinde işlevin
 | **Konu** | Olumsuz tweet duyarlılığı algılandı  | E-posta bildiriminin konu satırı.  |
 | **Gövde** | Tweet metni, Konum | **Tweet metni** ve **Konum** parametrelerine tıklayın. |
 
-1. **Kaydet**’e tıklayın.
+1. **Kaydet** düğmesine tıklayın.
 
 İş akışı tamamlandığına göre mantıksal uygulamayı etkinleştirip işlevin nasıl çalıştığını görebilirsiniz.
 

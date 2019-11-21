@@ -8,14 +8,14 @@ ms.author: banders
 ms.date: 05/20/2019
 ms.topic: quickstart
 ms.custom: seodec18
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: benshy
-ms.openlocfilehash: 95d1292374e1ec408c107245cde4cd1e12270f50
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: f35541d01b9463112caf48bd8249469f97158c9f
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967224"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229948"
 ---
 # <a name="register-an-azure-enterprise-agreement-and-view-cost-data"></a>Azure Kurumsal Anlaşma kaydetme ve maliyet verilerini görüntüleme
 
@@ -23,24 +23,24 @@ Cloudyn’e kaydolmak için Azure Kurumsal Anlaşmanızı kullanırsınız. Kayd
 
 Azure Maliyet Yönetimi, Cloudyn'e benzer işlevler sunar. Azure Maliyet Yönetimi, yerel Azure maliyet yönetimi çözümüdür. Maliyet analizi yapmanıza, bütçe oluşturup yönetmenize, verileri dışarı aktarmanıza ve tasarruf önerilerini gözden geçirip gerekli eylemleri gerçekleştirmenize yardımcı olur. Daha fazla bilgi için bkz. [Azure Maliyet Yönetimi](overview-cost-mgt.md).
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+## <a name="sign-in-to-azure"></a>Azure'da oturum açın
 
-- [https://portal.azure.com](https://portal.azure.com ) adresinden Azure portalında oturum açın.
+- https://portal.azure.com adresinden Azure portalında oturum açın.
 
-## <a name="register-with-cloudyn"></a>Cloudyn’e kaydolma
+## <a name="register-with-cloudyn"></a>Cloudyn ile kaydetme
 
 1. Azure portalında, hizmetler listesinde **Maliyet Yönetimi + Faturalama**’ya tıklayın.
 2. **Genel Bakış** altında, **Cloudyn**’e tıklayın  
-    ![Azure portalında gösterilen Cloudyn sayfası](./media/quick-register-ea/cost-mgt-billing-service.png)
+    ![Cloudyn page shown in the Azure portal](./media/quick-register-ea/cost-mgt-billing-service.png)
 3. **Cloudyn** sayfasında, Cloudyn kayıt sayfasını yeni bir pencerede açmak için **Cloudyn’e git**’e tıklayın.
 4. Cloudyn portal deneme kayıt sayfasında, şirketinizin adını yazıp **Azure Kuruluş Kayıt Yöneticisi**’ni seçin.  
 5. Kurumsal Portal kayıt API anahtarınızı girin. Anahtarınız elinizin altında değilse, [Kurumsal Portal](https://ea.azure.com) bağlantısına tıklayıp aşağıdaki adımları uygulayın:  
-    ![Faturalandırma sekmesinde API anahtarınızı yapıştırın](./media/quick-register-ea/trial-reg.png)
+    ![Paste your API key on the Billing tab](./media/quick-register-ea/trial-reg.png)
    1. Azure Kurumsal web sitesinde oturum açıp **Raporlar**’a ve ardından **API Erişim Anahtarı**’na tıklayın ve birincil anahtarınızı kopyalayın.  
-    ![EA API anahtarı EA portalında örneği](./media/quick-register-ea/ea-key.png)
+    ![Example of an EA API key in the EA portal](./media/quick-register-ea/ea-key.png)
    3. Kayıt sayfasına dönüp API anahtarınızı yapıştırın.
 6. Kullanım Koşulları’nı kabul edip anahtarınızı doğrulayın. Cloudyn’i Azure kaynak verilerini toplamak için yetkilendirmek üzere **İleri**’ye tıklayın. Toplanan veriler aboneliklerinizden kullanım, performans, faturalama ve etiket verilerini içerir.  
-    ![Başarılı bir EA API anahtar doğrulaması örneği](./media/quick-register-ea/ea-key-validated.png)
+    ![Example of a successful EA API key validation](./media/quick-register-ea/ea-key-validated.png)
 7. **Diğer paydaşları davet et** altında, e-posta adreslerini yazarak kullanıcıları ekleyebilirsiniz. İşlem tamamlandığında **İleri**’ye tıklayın. Azure kaydınızın boyutuna bağlı olarak, tüm faturalandırma verilerinizin Cloudyn’e eklenmesi 24 saat kadar sürebilir.
 8. Cloudyn portalını açmak için **Cloudyn’e git**’e tıklayın, **Bulut Hesap Yönetimi** sayfasında, kayıtlı EA hesap bilgilerinizi görmeniz gerekir.
 

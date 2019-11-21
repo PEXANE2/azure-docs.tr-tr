@@ -1,22 +1,16 @@
 ---
-title: İşlevleri kullanarak bir Azure Depolama kuyruğuna ileti ekleme | Microsoft Docs
+title: İşlevleri kullanarak bir Azure Depolama kuyruğuna ileti ekleme
 description: Bir HTTP isteği tarafından çağrılan ve bir Azure Depolama kuyruğunda iletiler oluşturan sunucusuz işlev oluşturmak için Azure İşlevlerini kullanın.
-services: azure-functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
 ms.assetid: 0b609bc0-c264-4092-8e3e-0784dcc23b5d
-ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 09/19/2017
-ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 1d24eb81361a337ed00d719a7fb5895e73583030
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fb5fc2fadf4087ebc42253cf568af424a80cb9d5
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096308"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226878"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>İşlevleri kullanarak bir Azure Depolama kuyruğuna ileti ekleme
 
@@ -42,7 +36,7 @@ Bu bölümde, daha önce oluşturduğunuz işleve bir kuyruk depolama çıkış 
 
 1. **Tümleştir > Yeni çıkış > Azure Kuyruk depolama**’yı seçin.
 
-1. Tıklayın **seçin**.
+1. **Seç**'e tıklayın.
 
     ![Azure portalındaki bir işleve Kuyruk depolama çıkış bağlaması ekleyin.](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding.png)
 
@@ -66,7 +60,7 @@ Bir çıkış bağlaması tanımladığınıza göre, bir kuyruğa ileti eklemek
 
 ## <a name="add-code-that-uses-the-output-binding"></a>Çıkış bağlaması kullanan kod ekleme
 
-Bu bölümde, çıkış kuyruğuna bir ileti yazan kodu ekleyeceksiniz. İleti, sorgu dizesinde HTTP tetikleyicisine geçirilen değeri içerir. Örneğin, sorgu dizesi içeriyorsa `name=Azure`, kuyruk iletisi işleve geçirilen *ad olur: Azure*.
+Bu bölümde, çıkış kuyruğuna bir ileti yazan kodu ekleyeceksiniz. İleti, sorgu dizesinde HTTP tetikleyicisine geçirilen değeri içerir. Örneğin, sorgu dizesi `name=Azure` değerini içeriyorsa, kuyruk iletisi *İşleve geçirilen ad: Azure* şeklinde olur.
 
 1. İşlev kodunu düzenleyicide görüntülemek için işlevinizi seçin.
 
@@ -149,7 +143,7 @@ Depolama Gezgini’ni zaten yüklediyseniz ve bu hızlı başlangıçla birlikte
 
 1. **Kuyruklar** düğümünü genişletin ve sonra **outqueue** adlı kuyruğu seçin. 
 
-   Kuyruk, HTTP ile tetiklenen işlevi çalıştırdığınızda kuyruk çıkış bağlamasının oluşturduğu iletiyi içerir. İşlevi varsayılan `name` *Azure*değeriyle çağırdıysanız, kuyruk iletisi *işleve geçirilir: Azure*.
+   Kuyruk, HTTP ile tetiklenen işlevi çalıştırdığınızda kuyruk çıkış bağlamasının oluşturduğu iletiyi içerir. İşlevi varsayılan `name` *Azure* değeri ile çağırdıysanız, kuyruk iletisi *İşleve geçirilen ad: Azure* şeklinde olur.
 
     ![Depolama Gezgini'nde gösterilen kuyruk iletisi](./media/functions-integrate-storage-queue-output-binding/function-queue-storage-output-view-queue.png)
 

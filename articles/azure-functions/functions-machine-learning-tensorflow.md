@@ -1,69 +1,65 @@
 ---
-title: 'Öğretici: makine öğrenimini oluşturmak için Azure Işlevlerinde Python ve TensorFlow kullanın | Microsoft Docs'
-description: Bu öğreticide, Azure Işlevleri 'nde TensorFlow makine öğrenimi modellerinin nasıl uygulanacağı gösterilmektedir
-services: functions
+title: Use Python and TensorFlow in Azure Functions to make machine learning inferences
+description: This tutorial demonstrates how to apply TensorFlow machine learning models in Azure Functions
 author: anthonychu
-manager: gwallace
-ms.service: azure-functions
-ms.devlang: python
 ms.topic: tutorial
 ms.date: 07/29/2019
 ms.author: antchu
 ms.custom: mvc
-ms.openlocfilehash: 491adb2719dc7c05a2943634e83027376c9327c3
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: e7c4e1bbd23d43d5e11ab8b26c3d4e1215b4946b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082739"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230500"
 ---
-# <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Öğretici: Python ve TensorFlow ile Azure Işlevleri 'nde makine öğrenimi modellerini uygulama
+# <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Tutorial: Apply machine learning models in Azure Functions with Python and TensorFlow
 
-Bu makalede, Azure Işlevlerinin, bir görüntüyü içeriğine göre sınıflandırmak için bir makine öğrenimi modeliyle Python ve TensorFlow 'u nasıl kullanabileceğinizi gösterir.
+This article demonstrates how Azure Functions allows you to use Python and TensorFlow with a machine learning model to classify an image based on its contents.
 
 Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz: 
 
 > [!div class="checklist"]
-> * Python 'da Azure Işlevleri geliştirmek için yerel bir ortam başlatma
-> * Özel bir TensorFlow makine öğrenimi modelini bir işlev uygulamasına aktarma
-> * Fotoğrafın bir köpek veya kedi içerip içermediğini tahmin etmek için sunucusuz bir HTTP API 'SI oluşturun
-> * API 'YI bir Web uygulamasından tüketme
+> * Initialize a local environment for developing Azure Functions in Python
+> * Import a custom TensorFlow machine learning model into a function app
+> * Build a serverless HTTP API for predicting whether a photo contains a dog or a cat
+> * Consume the API from a web application
 
-![Tamamlanmış projenin ekran görüntüsü](media/functions-machine-learning-tensorflow/functions-machine-learning-tensorflow-screenshot.png)
+![Screenshot of finished project](media/functions-machine-learning-tensorflow/functions-machine-learning-tensorflow-screenshot.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Önkoşullar 
 
-Python 'da Azure Işlevleri oluşturmak için birkaç araç yüklemeniz gerekir.
+To create Azure Functions in Python, you need to install a few tools.
 
-- [Python 3,6](https://www.python.org/downloads/release/python-360/)
+- [Python 3.6](https://www.python.org/downloads/release/python-360/)
 - [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools)
-- [Visual Studio Code](https://code.visualstudio.com/) gibi bir kod Düzenleyicisi
+- A code editor such as [Visual Studio Code](https://code.visualstudio.com/)
 
-## <a name="clone-the-tutorial-repository"></a>Öğretici deposunu Kopyala
+## <a name="clone-the-tutorial-repository"></a>Clone the tutorial repository
 
-Başlamak için bir Terminal açın ve git kullanarak aşağıdaki depoyu kopyalayın:
+To begin, open a terminal and clone the following repository using Git:
 
 ```console
 git clone https://github.com/Azure-Samples/functions-python-tensorflow-tutorial.git
 cd functions-python-tensorflow-tutorial
 ```
 
-Depo birkaç klasör içerir.
+The repository contains a few folders.
 
-- *Başlangıç*: Bu öğretici için çalışma klasörünüzdir
-- *son*: Bu, başvurağınız için nihai sonuç ve tam uygulama
-- *kaynaklar*: Machine Learning modelini ve yardımcı kitaplıklarını içerir
-- *ön uç*: işlev uygulamasını çağıran bir Web sitesi
+- *start*:  This is your working folder for the tutorial
+- *end*: This is the final result and full implementation for your reference
+- *resources*: Contains the machine learning model and helper libraries
+- *frontend*: A website that calls the function app
 
-## <a name="create-and-activate-a-python-virtual-environment"></a>Python sanal ortamı oluşturma ve etkinleştirme
+## <a name="create-and-activate-a-python-virtual-environment"></a>Create and activate a Python virtual environment
 
-Azure Işlevleri Python 3.6. x gerektirir. Gerekli Python sürümünü kullandığınızdan emin olmak için bir sanal ortam oluşturacaksınız.
+Azure Functions requires Python 3.6.x. You'll create a virtual environment to ensure you're using the required Python version.
 
-Geçerli çalışma dizinini *Başlangıç* klasörüyle değiştirin. Ardından *. venv*adlı bir sanal ortam oluşturun ve etkinleştirin. Python yüklemenize bağlı olarak, Python 3,6 sanal ortamı oluşturmaya yönelik komutlar aşağıdaki yönergelerden farklı olabilir.
+Change the current working directory to the *start* folder. Then create and activate a virtual environment named *.venv*. Depending on your Python installation, the commands to create a Python 3.6 virtual environment may differ from the following instructions.
 
-#### <a name="linux-and-macos"></a>Linux ve macOS:
+#### <a name="linux-and-macos"></a>Linux and macOS:
 
 ```bash
 cd start
@@ -79,70 +75,70 @@ py -3.6 -m venv .venv
 .venv\scripts\activate
 ```
 
-Terminal istemi artık sanal ortamı başarıyla etkinleştirmiş olduğunu belirten `(.venv)` ön ekine sahiptir. Sanal ortamdaki `python` gerçekten Python 3.6. x olduğunu doğrulayın.
+The terminal prompt is now prefixed with `(.venv)` which indicates you have successfully activated the virtual environment. Confirm that `python` in the virtual environment is indeed Python 3.6.x.
 
 ```console
 python --version
 ```
 
 > [!NOTE]
-> Öğreticinin geri kalanı için, komutları sanal ortamda çalıştırırsınız. Bir terminalde sanal ortamı yeniden etkinleştirmeniz gerekiyorsa, işletim sisteminiz için uygun etkinleştirme komutunu yürütün.
+> For the remainder of the tutorial, you run commands in the virtual environment. If you need to reactivate the virtual environment in a terminal, execute the appropriate activate command for your operating system.
 
 ## <a name="create-an-azure-functions-project"></a>Azure İşlevleri projesi oluşturma
 
-*Başlangıç* klasöründe, bir Python işlev uygulamasını başlatmak için Azure Functions Core Tools kullanın.
+In the *start* folder, use the Azure Functions Core Tools to initialize a Python function app.
 
 ```console
 func init --worker-runtime python
 ```
 
-Bir işlev uygulaması, bir veya daha fazla Azure Işlevi içerebilir. Bir düzenleyicide *Başlangıç* klasörünü açın ve içeriğini inceleyin.
+A function app can contain one or more Azure Functions. Open the *start* folder in an editor and examine the contents.
 
-- [*Local. Settings. JSON*](functions-run-local.md#local-settings-file): yerel geliştirme için kullanılan uygulama ayarlarını içerir
-- [*Host. JSON*](functions-host-json.md): Azure işlevleri Konağı ve uzantıları için ayarları içerir
-- [*requirements. txt*](functions-reference-python.md#package-management): Bu uygulama Için gereken Python paketlerini içerir
+- [*local.settings.json*](functions-run-local.md#local-settings-file): Contains application settings used for local development
+- [*host.json*](functions-host-json.md): Contains settings for the Azure Functions host and extensions
+- [*requirements.txt*](functions-reference-python.md#package-management): Contains Python packages required by this application
 
-## <a name="create-an-http-function"></a>HTTP işlevi oluşturma
+## <a name="create-an-http-function"></a>Create an HTTP function
 
-Uygulama, giriş olarak bir görüntü URL 'SI alan ve görüntünün bir köpek veya kedi içerip içermediğini tahmin eden tek bir HTTP API uç noktası gerektirir.
+The application requires a single HTTP API endpoint that takes an image URL as the input and returns a prediction of whether the image contains a dog or a cat.
 
-Terminalde Azure Functions Core Tools, *Sınıflandırma*adlı yenı bir http işlevini kullanmak için kullanın.
+In the terminal, use the Azure Functions Core Tools to scaffold a new HTTP function named *classify*.
 
 ```console
 func new --language python --template HttpTrigger --name classify
 ```
 
-İki dosya içeren *Sınıflandırma* adlı yeni bir klasör oluşturulur.
+A new folder named *classify* is created, containing two files.
 
-- *\_\_init\_\_. Kopyala*: Main işlevi için bir dosya
-- *function. JSON*: işlevin tetikleyicisini ve giriş ve çıkış bağlamalarını açıklayan bir dosya
+- *\_\_init\_\_.py*: A file for the main function
+- *function.json*:  A file describing the function's trigger and its input and output bindings
 
-### <a name="run-the-function"></a>İşlevi çalıştırın
+### <a name="run-the-function"></a>Run the function
 
-Python sanal ortamının etkinleştirildiği terminalde, işlev uygulamasını başlatın.
+In the terminal with the Python virtual environment activated, start the function app.
 
 ```console
 func start
 ```
 
-Bir tarayıcı açın ve aşağıdaki URL 'ye gidin. İşlev, *Merhaba Azure* 'un yürütülmesi ve döndürülmesi gerekir!
+Open a browser and navigate to the following URL. The function should execute and return *Hello Azure!*
 
 ```
 http://localhost:7071/api/classify?name=Azure
 ```
 
-İşlev uygulamasını durdurmak için `Ctrl-C` kullanın.
+Use `Ctrl-C` to stop the function app.
 
-## <a name="import-the-tensorflow-model"></a>TensorFlow modelini içeri aktarma
+## <a name="import-the-tensorflow-model"></a>Import the TensorFlow model
 
-Azure Özel Görüntü İşleme Hizmeti ile eğitilen ve verilen önceden oluşturulmuş bir TensorFlow modeli kullanacaksınız.
+You'll use a pre-built TensorFlow model that was trained with and exported from Azure Custom Vision Service.
 
 > [!NOTE]
-> Özel Görüntü İşleme Hizmeti ücretsiz katmanını kullanarak kendinizinkini derlemek isterseniz, [örnek proje deposundaki yönergeleri](https://github.com/Azure-Samples/functions-python-tensorflow-tutorial/blob/master/train-custom-vision-model.md)izleyebilirsiniz.
+> If you want to build your own using Custom Vision Service's free tier, you can follow the [instructions in the sample project repository](https://github.com/Azure-Samples/functions-python-tensorflow-tutorial/blob/master/train-custom-vision-model.md).
 
-Model, *< REPOSITORY_ROOT >/Resources/model* klasöründe bulunan iki dosyadan oluşur: *model. PB* ve *labels. txt*. Onları *sınıflandır* işlevinin klasörüne kopyalayın.
+The model consists of two files in the *<REPOSITORY_ROOT>/resources/model* folder: *model.pb* and *labels.txt*. Copy them into the *classify* function's folder.
 
-#### <a name="linux-and-macos"></a>Linux ve macOS:
+#### <a name="linux-and-macos"></a>Linux and macOS:
 
 ```bash
 cp ../resources/model/* classify
@@ -154,13 +150,13 @@ cp ../resources/model/* classify
 copy ..\resources\model\* classify
 ```
 
-Yukarıdaki komutuna \* eklediğinizden emin olun. *Sınıflandırın* şimdi *model. PB* ve *labels. txt*adlı dosyaları içerdiğini doğrulayın.
+Be sure to include the \* in the above command. Confirm that *classify* now contains files named *model.pb* and *labels.txt*.
 
-## <a name="add-the-helper-functions-and-dependencies"></a>Yardımcı işlevleri ve bağımlılıkları ekleme
+## <a name="add-the-helper-functions-and-dependencies"></a>Add the helper functions and dependencies
 
-Giriş görüntüsünü hazırlamaya ve TensorFlow kullanarak tahmin yapmaya yönelik bazı yardımcı işlevler, *Resources* klasöründeki *Predict.py* adlı bir dosyadır. Bu dosyayı *sınıflandır* işlevinin klasörüne kopyalayın.
+Some helper functions for preparing the input image and making a prediction using TensorFlow are in a file named *predict.py* in the *resources* folder. Copy this file into the *classify* function's folder.
 
-#### <a name="linux-and-macos"></a>Linux ve macOS:
+#### <a name="linux-and-macos"></a>Linux and macOS:
 
 ```bash
 cp ../resources/predict.py classify
@@ -172,11 +168,11 @@ cp ../resources/predict.py classify
 copy ..\resources\predict.py classify
 ```
 
-*Sınıflandırın* şimdi *Predict.py*adlı bir dosya içerdiğini doğrulayın.
+Confirm that *classify* now contains a file named *predict.py*.
 
 ### <a name="install-dependencies"></a>Bağımlılıkları yükleme
 
-Yardımcı kitaplığı, yüklenmesi gereken bazı bağımlılıklara sahiptir. Düzenleyicinizde *Start/requirements. txt* dosyasını açın ve aşağıdaki bağımlılıkları dosyaya ekleyin.
+The helper library has some dependencies that need to be installed. Open *start/requirements.txt* in your editor and add the following dependencies to the file.
 
 ```txt
 tensorflow==1.14
@@ -186,28 +182,28 @@ requests
 
 Dosyayı kaydedin.
 
-Sanal ortamı etkinleştirilen terminalde, bağımlılıkları yüklemek için *Başlangıç* klasöründe aşağıdaki komutu çalıştırın. Bazı yükleme adımlarının tamamlanması birkaç dakika sürebilir.
+In the terminal with the virtual environment activated, run the following command in the *start* folder to install the dependencies. Some installation steps may take a few minutes to complete.
 
 ```console
 pip install --no-cache-dir -r requirements.txt
 ```
 
-### <a name="caching-the-model-in-global-variables"></a>Modeli genel değişkenlerde önbelleğe alma
+### <a name="caching-the-model-in-global-variables"></a>Caching the model in global variables
 
-Düzenleyicide *Predict.py* ' ı açın ve dosyanın en üstündeki `_initialize` işlevine bakın. İlk kez çalıştırıldığında ve genel değişkenlere kaydedildiğinde, TensorFlow modelinin diskten yüklendiğine dikkat edin. Diskten yükleme `_initialize` işlevinin sonraki yürütmeleri sırasında atlanır. Modeli bu teknikle bellekte önbelleğe almak, daha sonraki tahminlere hızlanır.
+In the editor, open *predict.py* and look at the `_initialize` function near the top of the file. Notice that the TensorFlow model is loaded from disk the first time the function is executed and saved to global variables. The loading from disk is skipped in subsequent executions of the `_initialize` function. Caching the model in memory with this technique speeds up later predictions.
 
-Genel değişkenler hakkında daha fazla bilgi için [Azure Işlevleri Python Geliştirici Kılavuzu](functions-reference-python.md#global-variables)' na bakın.
+For more information on global variables, refer to the [Azure Functions Python developer guide](functions-reference-python.md#global-variables).
 
-## <a name="update-function-to-run-predictions"></a>Tahminleri çalıştırmak için işlevi Güncelleştir
+## <a name="update-function-to-run-predictions"></a>Update function to run predictions
 
-Düzenleyicinizde *Sınıflandırma/\_\_init\_\_. Kopyala* ' yı açın. Daha önce eklediğiniz *tahmin* kitaplığını aynı klasöre aktarın. Aşağıdaki `import` deyimlerini, dosyasında zaten bulunan diğer içeri aktarmaları altına ekleyin.
+Open *classify/\_\_init\_\_.py* in your editor. Import the *predict* library that you added to the same folder earlier. Add the following `import` statements below the other imports already in the file.
 
 ```python
 import json
 from .predict import predict_image_from_url
 ```
 
-İşlev şablonu kodunu aşağıdaki kodla değiştirin.
+Replace the function template code with the following.
 
 ```python
 def main(req: func.HttpRequest) -> func.HttpResponse:
@@ -221,38 +217,38 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     return func.HttpResponse(json.dumps(results), headers = headers)
 ```
 
-Değişikliklerinizi kaydettiğinizden emin olun.
+Make sure to save your changes.
 
-Bu işlev, `img`adlı bir sorgu dizesi parametresinde bir görüntü URL 'SI alır. Görüntüyü indirir ve TensorFlow modelini kullanarak bir tahmin döndüren yardımcı kitaplığından `predict_image_from_url` çağırır. İşlev daha sonra sonuçlarıyla bir HTTP yanıtı döndürür.
+This function receives an image URL in a query string parameter named `img`. It calls `predict_image_from_url` from the helper library that downloads the image and returns a prediction using the TensorFlow model. The function then returns an HTTP response with the results.
 
-HTTP uç noktası, başka bir etki alanında barındırılan bir Web sayfası tarafından çağrıldığından, HTTP yanıtı tarayıcının çıkış noktaları arası kaynak paylaşımı (CORS) gereksinimlerini karşılamak için bir `Access-Control-Allow-Origin` üst bilgisi içerir.
+Since the HTTP endpoint is called by a web page hosted on another domain, the HTTP response includes an `Access-Control-Allow-Origin` header to satisfy the browser's Cross-Origin Resource Sharing (CORS) requirements.
 
 > [!NOTE]
-> Bir üretim uygulamasında, ek güvenlik için `*` Web sayfasının belirli bir kaynağına değiştirin.
+> In a production application, change `*` to the web page's specific origin for added security.
 
-### <a name="run-the-function-app"></a>İşlev uygulamasını çalıştırma
+### <a name="run-the-function-app"></a>Run the function app
 
-Python sanal ortamının hala etkinleştirildiğinden emin olun ve aşağıdaki komutu kullanarak işlev uygulamasını başlatın.
+Ensure the Python virtual environment is still activated and start the function app using the following command.
 
 ```console
 func start
 ```
 
-Bir tarayıcıda, bir kedi fotoğrafı URL 'SI ile işlevinizi çağıran bu URL 'YI açın. Geçerli bir tahmin sonucu döndürüldüğünden emin olun.
+In a browser, open this URL that calls your function with the URL of a cat photo. Confirm that a valid prediction result is returned.
 
 ```
 http://localhost:7071/api/classify?img=https://raw.githubusercontent.com/Azure-Samples/functions-python-tensorflow-tutorial/master/resources/assets/samples/cat1.png
 ```
 
-İşlev uygulamasını çalışır durumda tutun.
+Keep the function app running.
 
 ### <a name="run-the-web-app"></a>Web uygulamasını çalıştırma
 
-*Ön uç* klasöründe, Işlev UYGULAMASıNDAKI HTTP API 'sini tüketen basit bir Web uygulaması vardır.
+There's a simple web app in the *frontend* folder that consumes the HTTP API in the function app.
 
-*Ayrı* bir Terminal açın ve *ön uç* klasörüne geçin. Python 3,6 ile bir HTTP sunucusu başlatın.
+Open a *separate* terminal and change to the *frontend* folder. Start an HTTP server with Python 3.6.
 
-#### <a name="linux-and-macos"></a>Linux ve macOS:
+#### <a name="linux-and-macos"></a>Linux and macOS:
 
 ```bash
 cd <FRONT_END_FOLDER>
@@ -266,25 +262,25 @@ cd <FRONT_END_FOLDER>
 py -3.6  -m http.server
 ```
 
-Bir tarayıcıda, terminalde görüntülenen HTTP sunucusunun URL 'sine gidin. Bir Web uygulaması görünmelidir. Metin kutusuna aşağıdaki fotoğraf URL 'Lerinden birini girin. Ayrıca, herkese açık bir kedi veya köpek fotoğrafının URL 'sini de kullanabilirsiniz.
+In a browser, navigate to the HTTP server's URL that is displayed in the terminal. A web app should appear. Enter one of the following photo URLs into the textbox. You may also use a URL of a publicly accessible cat or dog photo.
 
 - `https://raw.githubusercontent.com/Azure-Samples/functions-python-tensorflow-tutorial/master/resources/assets/samples/cat1.png`
 - `https://raw.githubusercontent.com/Azure-Samples/functions-python-tensorflow-tutorial/master/resources/assets/samples/cat2.png`
 - `https://raw.githubusercontent.com/Azure-Samples/functions-python-tensorflow-tutorial/master/resources/assets/samples/dog1.png`
 - `https://raw.githubusercontent.com/Azure-Samples/functions-python-tensorflow-tutorial/master/resources/assets/samples/dog2.png`
 
-Gönder ' e tıkladığınızda, işlev uygulaması çağrılır ve sayfada bir sonuç görüntülenir.
+When you click submit, the function app is called and a result is displayed on the page.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
-Bu öğreticinin tamamı makinenizde yerel olarak çalışarak temizleyebilmek için hiçbir Azure kaynağı veya hizmeti yoktur.
+The entirety of this tutorial runs locally on your machine, so there are no Azure resources or services to clean up.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, bir TensorFlow modeli kullanarak tahmine dayalı hale getirmek için Azure Işlevleri ile bir HTTP API 'SI oluşturup özelleştirmeyi öğrendiniz. Ayrıca, API 'nin bir Web uygulamasından nasıl çağrılacağını öğrenirsiniz.
+In this tutorial, you learned how to build and customize an HTTP API with Azure Functions to make predictions using a TensorFlow model. You also learned how to call the API from a web application.
 
-Azure Işlevleri tarafından sunulan sunucusuz işlem modelinde çalışırken her türlü karmaşıklığın API 'Lerini oluşturmak için bu öğreticideki teknikleri kullanabilirsiniz.
+You can use the techniques in this tutorial to build out APIs of any complexity, all while running on the serverless compute model provided by Azure Functions.
 
-İşlev uygulamasını Azure 'a dağıtmak için [Azure Functions Core Tools](./functions-run-local.md#publish) veya [Visual Studio Code](https://code.visualstudio.com/docs/python/tutorial-azure-functions)kullanın.
+To deploy the function app to Azure, use the [Azure Functions Core Tools](./functions-run-local.md#publish) or [Visual Studio Code](https://code.visualstudio.com/docs/python/tutorial-azure-functions).
 
 > [!div class="nextstepaction"]
-> [Azure Işlevleri Python Geliştirici Kılavuzu](./functions-reference-python.md)
+> [Azure Functions Python Developer Guide](./functions-reference-python.md)

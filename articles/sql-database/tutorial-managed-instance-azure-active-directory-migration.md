@@ -1,6 +1,6 @@
 ---
-title: T-SQL kullanarak SQL Server Windows kullanıcılarını ve gruplarını yönetilen örneğe geçirme
-description: Şirket içi Windows kullanıcılarını ve gruplarını yönetilen örneğe SQL Server geçirme hakkında bilgi edinin
+title: Migrate SQL ServerWindows users and groups to managed instance using T-SQL
+description: Learn about how to migrate SQL Server on-premises Windows users and groups to managed instance
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -10,48 +10,48 @@ author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 10/30/2019
-ms.openlocfilehash: 3ed4e4b1d37a9705378281ca74b53a6b60713d97
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 2c8d7252b4e4ca8caa465727c0d2328c4aafaefb
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73807169"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227918"
 ---
-# <a name="tutorial-migrate-sql-server-on-premises-windows-users-and-groups-to-azure-sql-database-managed-instance-using-t-sql-ddl-syntax"></a>Öğretici: T-SQL DDL sözdizimini kullanarak şirket içi Windows kullanıcılarını ve gruplarını Azure SQL veritabanı yönetilen örneği 'ne SQL Server geçirme
+# <a name="tutorial-migrate-sql-server-on-premises-windows-users-and-groups-to-azure-sql-database-managed-instance-using-t-sql-ddl-syntax"></a>Tutorial: Migrate SQL Server on-premises Windows users and groups to Azure SQL Database managed instance using T-SQL DDL syntax
 
 > [!NOTE]
-> Bu makaledeki kullanıcıları ve grupları yönetilen örneğe geçirmek için kullanılan söz dizimi **genel önizlemededir**.
+> The syntax used to migrate users and groups to managed instance in this article is in **public preview**.
 
-Bu makale, SQL Server şirket içi Windows kullanıcılarınızı ve gruplarınızı T-SQL söz dizimini kullanarak mevcut bir Azure SQL veritabanı yönetilen örneğine geçirme sürecinde size kılavuzluk ediyor.
+This article takes you through the process of migrating your on-premises Windows users and groups in your SQL Server to an existing Azure SQL Database managed instance using T-SQL syntax.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> - SQL Server için oturum açma bilgileri oluşturma
-> - Geçiş için bir test veritabanı oluşturma
-> - Oturum açma bilgileri, kullanıcılar ve roller oluşturma
-> - Veritabanınızı yönetilen örneğe yedekleme ve geri yükleme (mı)
-> - Kullanıcıları ALTER USER söz dizimini kullanarak el ile MI?
-> - Yeni eşlenen kullanıcılarla kimlik doğrulamasını test etme
+> - Create logins for SQL Server
+> - Create a test database for migration
+> - Create logins, users, and roles
+> - Backup and restore your database to managed instance (MI)
+> - Manually migrate users to MI using ALTER USER syntax
+> - Testing authentication with the new mapped users
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticiyi tamamlayabilmeniz için aşağıdaki önkoşullar geçerlidir:
+To complete this tutorial, the following prerequisites apply:
 
-- Windows etki alanı Azure Active Directory (Azure AD) ile federe olur.
-- Kullanıcı/Grup oluşturmak için Active Directory erişim.
-- Şirket içi ortamınızda mevcut bir SQL Server.
-- Mevcut bir yönetilen örnek. Bkz. [hızlı başlangıç: Azure SQL veritabanı yönetilen örneği oluşturma](sql-database-managed-instance-get-started.md).
-  - Yönetilen örnekteki bir `sysadmin` Azure AD oturum açmaları oluşturmak için kullanılmalıdır.
-- [Yönetilen örnek için bir Azure AD yöneticisi oluşturun](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance).
-- Ağınız içindeki yönetilen örneğinize bağlanabilirsiniz. Daha fazla bilgi için aşağıdaki makalelere bakın: 
-    - [Uygulamanızı Azure SQL veritabanı yönetilen örneğine bağlama](sql-database-managed-instance-connect-app.md)
-    - [Hızlı başlangıç: şirket içi Azure SQL veritabanı yönetilen örneği ile noktadan siteye bağlantı yapılandırma](sql-database-managed-instance-configure-p2s.md)
+- The Windows domain is federated with Azure Active Directory (Azure AD).
+- Access to Active Directory to create users/groups.
+- An existing SQL Server in your on-premises environment.
+- An existing managed instance. See [Quickstart: Create an Azure SQL Database managed instance](sql-database-managed-instance-get-started.md).
+  - A `sysadmin` in the managed instance must be used to create Azure AD logins.
+- [Create an Azure AD admin for managed instance](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance).
+- You can connect to your managed instance within your network. See the following articles for additional information: 
+    - [Connect your application to Azure SQL Database managed instance](sql-database-managed-instance-connect-app.md)
+    - [Quickstart: Configure a point-to-site connection to an Azure SQL Database Managed Instance from on-premises](sql-database-managed-instance-configure-p2s.md)
     - [Azure SQL Veritabanı yönetilen örneğinde genel uç noktayı yapılandırma](sql-database-managed-instance-public-endpoint-configure.md)
 
-## <a name="t-sql-ddl-syntax"></a>T-SQL DDL sözdizimi
+## <a name="t-sql-ddl-syntax"></a>T-SQL DDL syntax
 
-Aşağıda, Azure AD kimlik doğrulamasıyla yönetilen örneğe geçiş SQL Server şirket içi Windows kullanıcılarını ve gruplarını desteklemek için kullanılan T-SQL DDL sözdizimi aşağıda verilmiştir.
+Below are the T-SQL DDL syntax used to support SQL Server on-premises Windows users and groups migration to managed instance with Azure AD authentication.
 
 ```sql
 -- For individual Windows users with logins 
@@ -63,26 +63,26 @@ ALTER USER [domainName\groupName] WITH LOGIN=[groupName]
 
 ## <a name="arguments"></a>Bağımsız Değişkenler
 
-_Etki_</br>
-Kullanıcının etki alanı adını belirtir.
+_domainName_</br>
+Specifies the domain name of the user.
 
-_Nitelen_</br>
-Veritabanı içinde tanımlanan kullanıcının adını belirtir.
+_userName_</br>
+Specifies the name of the user identified inside the database.
 
 _= loginName\@domainName.com_</br>
-Bir kullanıcıyı Azure AD oturum açmayla yeniden eşler
+Remaps a user to the Azure AD login
 
-_adýdýr_</br>
-Veritabanı içinde tanımlanan grubun adını belirtir.
+_groupName_</br>
+Specifies the name of the group identified inside the database.
 
-## <a name="part-1-create-logins-for-sql-server-on-premises-users-and-groups"></a>1\. kısım: şirket içi kullanıcılar ve gruplar SQL Server için oturum açma oluşturma
+## <a name="part-1-create-logins-for-sql-server-on-premises-users-and-groups"></a>Part 1: Create logins for SQL Server on-premises users and groups
 
 > [!IMPORTANT]
-> Aşağıdaki sözdizimi SQL Server bir Kullanıcı ve grup oturumu oluşturur. Aşağıdaki sözdizimini yürütmeden önce, Kullanıcı ve grubun Active Directory (AD) içinde mevcut olduğundan emin olmanız gerekir. </br> </br>
-> Kullanıcılar: testUser1, testGroupUser </br>
-> Grup: geçiş-testGroupUser 'ın AD içindeki geçiş grubuna ait olması gerekir
+> The following syntax creates a user and a group login in your SQL Server. You'll need to make sure that the user and group exist inside your Active Directory (AD) before executing the below syntax. </br> </br>
+> Users: testUser1, testGroupUser </br>
+> Group: migration - testGroupUser needs to belong to the migration group in AD
 
-Aşağıdaki örnek, _aadsqlmı_etki alanı altında _testUser1_ adlı bir hesap için SQL Server bir oturum açma oluşturur. 
+The example below creates a login in SQL Server for an account named _testUser1_ under the domain _aadsqlmi_. 
 
 ```sql
 -- Sign into SQL Server as a sysadmin or a user that can create logins and databases
@@ -106,7 +106,7 @@ select * from sys.server_principals;
 go; 
 ```
 
-Bu test için bir veritabanı oluşturun.
+Create a database for this test.
 
 ```sql
 -- Create a database called [migration]
@@ -114,9 +114,9 @@ create database migration
 go
 ```
 
-## <a name="part-2-create-windows-users-and-groups-then-add-roles-and-permissions"></a>2\. Bölüm: Windows kullanıcıları ve grupları oluşturun, ardından Roller ve izinler ekleyin
+## <a name="part-2-create-windows-users-and-groups-then-add-roles-and-permissions"></a>Part 2: Create Windows users and groups, then add roles and permissions
 
-Test kullanıcısını oluşturmak için aşağıdaki sözdizimini kullanın.
+Use the following syntax to create the test user.
 
 ```sql
 use migration;  
@@ -127,7 +127,7 @@ create user [aadsqlmi\testUser1] from login [aadsqlmi\testUser1];
 go 
 ```
 
-Kullanıcı izinlerini denetleyin:
+Check the user permissions:
 
 ```sql
 -- Check the user in the Metadata 
@@ -139,7 +139,7 @@ select user_name(grantee_principal_id), * from sys.database_permissions;
 go
 ```
 
-Bir rol oluşturun ve test kullanıcısını bu role atayın:
+Create a role and assign your test user to this role:
 
 ```sql 
 -- Create a role with some permissions and assign the user to the role
@@ -153,7 +153,7 @@ alter role UserMigrationRole add member [aadsqlmi\testUser1];
 go 
 ``` 
 
-Belirli bir role atanan kullanıcı adlarını göstermek için aşağıdaki sorguyu kullanın:
+Use the following query to display user names assigned to a specific role:
 
 ```sql
 -- Display user name assigned to a specific role 
@@ -168,7 +168,7 @@ WHERE DP1.type = 'R'
 ORDER BY DP1.name; 
 ```
 
-Bir grup oluşturmak için aşağıdaki sözdizimini kullanın. Ardından grubu `db_owner`role ekleyin.
+Use the following syntax to create a group. Then add the group to the role `db_owner`.
 
 ```sql
 -- Create Windows group
@@ -185,7 +185,7 @@ go
 -- Output  ( 1 means YES) 
 ```
 
-Aşağıdaki sözdizimini kullanarak bir test tablosu oluşturun ve bazı verileri ekleyin:
+Create a test table and add some data using the following syntax:
 
 ```sql
 -- Create a table and add data 
@@ -200,9 +200,9 @@ select * from test;
 go
 ```
 
-## <a name="part-3-backup-and-restore-the-individual-user-database-to-managed-instance"></a>3\. kısım: bireysel kullanıcı veritabanını yönetilen örneğe yedekleme ve geri yükleme
+## <a name="part-3-backup-and-restore-the-individual-user-database-to-managed-instance"></a>Part 3: Backup and restore the individual user database to managed instance
 
-[Yedekleme ve geri yükleme Ile veritabanlarını kopyalama](/sql/relational-databases/databases/copy-databases-with-backup-and-restore)makalesini kullanarak geçiş veritabanının bir yedeğini oluşturun veya aşağıdaki sözdizimini kullanın:
+Create a backup of the migration database using the article [Copy Databases with Backup and Restore](/sql/relational-databases/databases/copy-databases-with-backup-and-restore), or use the following syntax:
 
 ```sql
 use master; 
@@ -211,16 +211,16 @@ backup database migration to disk = 'C:\Migration\migration.bak';
 go
 ```
 
-[Hızlı başlangıç: veritabanını yönetilen bir örneğe geri yükleme](sql-database-managed-instance-get-started-restore.md).
+Follow our [Quickstart: Restore a database to a managed instance](sql-database-managed-instance-get-started-restore.md).
 
-## <a name="part-4-migrate-users-to-managed-instance"></a>4\. Bölüm: kullanıcıları yönetilen örneğe geçirme
+## <a name="part-4-migrate-users-to-managed-instance"></a>Part 4: Migrate users to managed instance
 
 > [!NOTE]
-> Oluşturulduktan sonra yönetilen örnek işlevselliği için Azure AD yöneticisi değişti. Daha fazla bilgi için bkz. [mı Için yeni Azure AD yönetici işlevselliği](sql-database-aad-authentication-configure.md#new-azure-ad-admin-functionality-for-mi).
+> The Azure AD admin for managed instance functionality after creation has changed. For more information, see [New Azure AD admin functionality for MI](sql-database-aad-authentication-configure.md#new-azure-ad-admin-functionality-for-mi).
 
-Yönetilen örnekteki geçiş işlemini gerçekleştirmek için ALTER USER komutunu yürütün.
+Execute the ALTER USER command to complete the migration process on managed instance.
 
-1. Yönetilen örnek için Azure AD yönetici hesabını kullanarak yönetilen Örneğinizde oturum açın. Ardından, aşağıdaki sözdizimini kullanarak yönetilen örnekte Azure AD oturum açma bilgilerinizi oluşturun. Daha fazla bilgi için bkz. [öğretici: Azure ad sunucu sorumlularını (oturumlar) kullanarak Azure SQL veritabanı 'Nda yönetilen örnek güvenliği](sql-database-managed-instance-aad-security-tutorial.md).
+1. Sign into your managed instance using the Azure AD admin account for managed instance. Then create your Azure AD login in the managed instance using the following syntax. For more information, see [Tutorial: Managed instance security in Azure SQL Database using Azure AD server principals (logins)](sql-database-managed-instance-aad-security-tutorial.md).
 
     ```sql
     use master 
@@ -239,7 +239,7 @@ Yönetilen örnekteki geçiş işlemini gerçekleştirmek için ALTER USER komut
     go
     ```
 
-1. Doğru veritabanı, tablo ve sorumlular için geçişinizi denetleyin.
+1. Check your migration for the correct database, table, and principals.
 
     ```sql
     -- Switch to the database migration that is already restored for MI 
@@ -250,14 +250,14 @@ Yönetilen örnekteki geçiş işlemini gerçekleştirmek için ALTER USER komut
     select * from test; 
     go 
      
-    -- Check that the SQL on-premise Windows user/group exists  
+    -- Check that the SQL on-premises Windows user/group exists  
     select * from sys.database_principals; 
     go 
     -- the old user aadsqlmi\testUser1 should be there 
     -- the old group aadsqlmi\migration should be there
     ```
 
-1. Şirket içi kullanıcıyı Azure AD oturum açma ile eşlemek için ALTER USER sözdizimini kullanın.
+1. Use the ALTER USER syntax to map the on-premises user to the Azure AD login.
 
     ```sql
     /** Execute the ALTER USER command to alter the Windows user [aadsqlmi\testUser1]
@@ -288,7 +288,7 @@ Yönetilen örnekteki geçiş işlemini gerçekleştirmek için ALTER USER komut
     ORDER BY DP1.name;
     ```
 
-1. Şirket içi grubu Azure AD oturum açma ile eşlemek için ALTER USER sözdizimini kullanın.
+1. Use the ALTER USER syntax to map the on-premises group to the Azure AD login.
 
     ```sql
     /** Execute ALTER USER command to alter the Windows group [aadsqlmi\migration]
@@ -312,26 +312,26 @@ Yönetilen örnekteki geçiş işlemini gerçekleştirmek için ALTER USER komut
     -- Output 1 means 'YES'
     ```
 
-## <a name="part-5-testing-azure-ad-user-or-group-authentication"></a>5\. Bölüm: Azure AD Kullanıcı veya grup kimlik doğrulamasını test etme
+## <a name="part-5-testing-azure-ad-user-or-group-authentication"></a>Part 5: Testing Azure AD user or group authentication
 
-Daha önce ALTER USER söz dizimini kullanarak Azure AD oturum açma bilgilerine eşlenmiş kullanıcıyı kullanarak yönetilen örneğe kimlik doğrulamayı test edin.
+Test authenticating to managed instance using the user previously mapped to the Azure AD login using the ALTER USER syntax.
  
-1. Mı aboneliğinizi `aadsqlmi\testUser1` olarak kullanarak Federasyon VM 'de oturum açın
-1. SQL Server Management Studio (SSMS) kullanarak yönetilen Örneğinizde oturum açarak, **Active Directory tümleşik** kimlik doğrulaması, veritabanına bağlanma `migration`kullanın.
-    1. Ayrıca, SSMS seçeneğiyle testUser1@aadsqlmi.net kimlik bilgilerini kullanarak da oturum açabilirsiniz **: MFA desteğiyle Universal Active Directory**. Ancak, bu durumda çoklu oturum açma mekanizmasını kullanamazsınız ve bir parola yazmanız gerekir. Yönetilen örneğiniz üzerinde oturum açmak için bir Federasyon VM 'si kullanmanız gerekmez.
-1. Rol üyesi **Seç**bölümünde, `test` tablosundan seçim yapabilirsiniz
+1. Log into the federated VM using your MI subscription as  `aadsqlmi\testUser1`
+1. Using SQL Server Management Studio (SSMS), sign into your managed instance using **Active Directory Integrated** authentication, connecting to the database `migration`.
+    1. You can also sign in using the testUser1@aadsqlmi.net credentials with the SSMS option **Active Directory – Universal with MFA support**. However, in this case, you can't use the Single Sign On mechanism and you must type a password. You won't need to use a federated VM to log in to your managed instance.
+1. As part of the role member **SELECT**, you can select from the `test` table
 
     ```sql
     Select * from test  --  and see one row (1,10)
     ```
 
 
-Windows grubunun bir üyesini kullanarak yönetilen bir örneğe kimlik doğrulaması testi `migration`. Kullanıcı `aadsqlmi\testGroupUser` geçişten önce gruba `migration` eklenmiş olmalıdır.
+Test authenticating to a managed instance using a member of a Windows group `migration`. The user `aadsqlmi\testGroupUser` should have been added to the group `migration` before the migration.
 
-1. Mı aboneliğinizi `aadsqlmi\testGroupUser` olarak kullanarak Federasyon VM 'de oturum açın 
-1. SSMS 'yi **Active Directory tümleşik** kimlik doğrulamasıyla kullanma, mı sunucusuna ve veritabanına bağlanın `migration`
-    1. Ayrıca, SSMS seçeneğiyle testGroupUser@aadsqlmi.net kimlik bilgilerini kullanarak da oturum açabilirsiniz **: MFA desteğiyle Universal Active Directory**. Ancak, bu durumda çoklu oturum açma mekanizmasını kullanamazsınız ve bir parola yazmanız gerekir. Yönetilen Örneğinizde oturum açmak için bir Federasyon VM 'si kullanmanız gerekmez. 
-1. `db_owner` rolünün bir parçası olarak yeni bir tablo oluşturabilirsiniz.
+1. Log into the federated VM using your MI subscription as  `aadsqlmi\testGroupUser` 
+1. Using SSMS with **Active Directory Integrated** authentication, connect to the MI server and the database `migration`
+    1. You can also sign in using the testGroupUser@aadsqlmi.net credentials with the SSMS option **Active Directory – Universal with MFA support**. However, in this case, you can't use the Single Sign On mechanism and you must type a password. You won't need to use a federated VM to log into your managed instance. 
+1. As part of the `db_owner` role, you can create a new table.
 
     ```sql
     -- Create table named 'new' with a default schema
@@ -339,11 +339,11 @@ Windows grubunun bir üyesini kullanarak yönetilen bir örneğe kimlik doğrula
     ```
                              
 > [!NOTE] 
-> Azure SQL DB 'nin bilinen bir tasarım sorunu nedeniyle, bir grubun üyesi olarak yürütülen tablo oluşturma deyimlerinin aşağıdaki hatayla başarısız olması gerekir: </br> </br>
+> Due to a known design issue for Azure SQL DB, a create a table statement executed as a member of a group will fail with the following error: </br> </br>
 > `Msg 2760, Level 16, State 1, Line 4 
 The specified schema name "testGroupUser@aadsqlmi.net" either does not exist or you do not have permission to use it.` </br> </br>
-> Geçerli geçici çözüm, yukarıdaki < dbo. New > var olan bir şemaya sahip bir tablo oluşturmaktır.
+> The current workaround is to create a table with an existing schema in the case above <dbo.new>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Öğretici: DMS kullanarak SQL Server Azure SQL veritabanı yönetilen örneğine çevrimdışı geçirme](../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/sql-database/toc.json)
+- [Tutorial: Migrate SQL Server to an Azure SQL Database managed instance offline using DMS](../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/sql-database/toc.json)

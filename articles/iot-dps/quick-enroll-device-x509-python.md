@@ -1,5 +1,5 @@
 ---
-title: "Hızlı başlangıç: Python kullanarak X. 509.952 cihazlarını Azure cihaz sağlama hizmeti 'ne kaydetme"
+title: Enroll X.509 devices to Azure Device Provisioning Service using Python
 description: Bu hızlı başlangıçta grup kayıtları kullanılmaktadır. Bu hızlı başlangıçta Python kullanarak X.509 cihazlarını Azure IoT Hub Cihazı Sağlama Hizmeti'ne kaydedeceksiniz
 author: wesmc7777
 ms.author: wesmc
@@ -7,15 +7,14 @@ ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: philmea
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: 23ae0bd9e66cbb592db0ec9adea5e4332a9aa19b
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 5be204b49611c47519c3fa9bbfa1e81dbedc0ca0
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904733"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229508"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-python"></a>Hızlı başlangıç: Python kullanarak X.509 cihazlarını Cihaz Sağlama Hizmeti'ne kaydetme
 
@@ -131,7 +130,7 @@ Bu bölümde örnek koda X.509 cihazınızın sağlama ayrıntılarını nasıl 
 
 3. Kaydın başarılı olup olmadığını görmek için çıktıyı gözlemleyin.
 
-4. Azure portalında sağlama hizmetinize gidin. **Kayıtları yönetme**'ye tıklayın. X.509 cihaz grubunuzun daha önce oluşturulmuş **adıyla**Kayıt Grupları`registrationid` sekmesi altında göründüğüne dikkat edin. 
+4. Azure portalında sağlama hizmetinize gidin. **Kayıtları yönetme**'ye tıklayın. X.509 cihaz grubunuzun daha önce oluşturulmuş `registrationid` adıyla **Kayıt Grupları** sekmesi altında göründüğüne dikkat edin. 
 
     ![Portalda X.509 kaydının başarılı olup olmadığını doğrulama](./media/quick-enroll-device-x509-python/1.png)  
 
@@ -141,7 +140,7 @@ Java hizmeti örneğini keşfetmeye devam etmeyi planlıyorsanız, bu Hızlı Ba
 
 1. Makinenizdeki Java örnek çıktı penceresini kapatın.
 1. Makinenizde _X509 Cert Generator_ penceresini kapatın.
-1. Azure portal cihaz sağlama hizmetine gidin, kayıtları **Yönet**' e tıklayın ve ardından **kayıt grupları** sekmesini seçin. bu hızlı başlangıcı kullanarak kaydettiğiniz X. 509.440 cihazları için *Grup adını* seçin ve dikey pencerenin en üstündeki **Sil** düğmesine tıklayın.  
+1. Navigate to your Device Provisioning service in the Azure portal, click **Manage enrollments**, and then select the **Enrollment Groups** tab. Select the *GROUP NAME* for the X.509 devices you enrolled using this Quickstart, and click the **Delete** button at the top of the blade.  
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -1,6 +1,6 @@
 ---
-title: Azure portal bir Azure Cosmos hesabı, kapsayıcısı ve öğeleri oluşturun.
-description: Azure portal bir Azure Cosmos hesabı, kapsayıcısı ve öğeleri oluşturun.
+title: Create an Azure Cosmos database from the Azure portal.
+description: Create an Azure Cosmos database, container, and items by using the Azure portal.
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
@@ -8,17 +8,17 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 09/01/2019
-ms.openlocfilehash: e0a9f4fa6ca5ff7447d2ffaef3eab2f3c54fdeae
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: b42a442564812f4386eb94b9bd7b7c9aff9e9f29
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241252"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74220724"
 ---
-# <a name="quickstart-create-an-azure-cosmos-account-container-and-items-with-the-azure-portal"></a>Hızlı Başlangıç: Azure portal ile bir Azure Cosmos hesabı, kapsayıcısı ve öğeleri oluşturun
+# <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>Quickstart: Create an Azure Cosmos account, database, container, and items from the Azure portal
 
 > [!div class="op_single_selector"]
-> * [Azure portal](create-cosmosdb-resources-portal.md)
+> * [Azure portalda](create-cosmosdb-resources-portal.md)
 > * [.NET](create-sql-api-dotnet.md)
 > * [Java](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
@@ -26,13 +26,13 @@ ms.locfileid: "70241252"
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 >  
 
-Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Azure Cosmos DB, bir bütün olarak genel dağıtım ve yatay Azure Cosmos DB ölçek özelliğinden yararlanan anahtar/değer veritabanlarını, belge veritabanlarını ve grafik veritabanlarını hızlıca oluşturmak ve sorgulamak için kullanabilirsiniz. 
+Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. You can use Azure Cosmos DB to quickly create and query key/value databases, document databases, and graph databases, all of which benefit from the global distribution and horizontal scale capabilities at the core of Azure Cosmos DB. 
 
-Bu hızlı başlangıçta Azure portal kullanarak Azure Cosmos DB bir [SQL API](sql-api-introduction.md) hesabı oluşturma, bir belge veritabanı ve kapsayıcı oluşturma ve kapsayıcıya veri ekleme işlemlerinin nasıl yapılacağı gösterilmiştir. 
+This quickstart demonstrates how to use the Azure portal to create an Azure Cosmos DB [SQL API](sql-api-introduction.md) account, create a document database and container, and add data to the container. 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bir Azure aboneliği veya ücretsiz Azure Cosmos DB deneme hesabı
+An Azure subscription or free Azure Cosmos DB trial account
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 
 - [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]  
@@ -43,39 +43,39 @@ Bir Azure aboneliği veya ücretsiz Azure Cosmos DB deneme hesabı
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
 <a id="create-container-database"></a>
-## <a name="add-a-database-and-a-container"></a>Veritabanı ve kapsayıcı ekleme 
+## <a name="add-a-database-and-a-container"></a>Add a database and a container 
 
-Veritabanı ve kapsayıcı oluşturmak için Azure portal Veri Gezgini kullanabilirsiniz. 
+You can use the Data Explorer in the Azure portal to create a database and container. 
 
-1.  Azure Cosmos DB hesabı sayfanızda sol gezinti **Veri Gezgini** seçin ve ardından **yeni kapsayıcı**' yı seçin. 
+1.  Select **Data Explorer** from the left navigation on your Azure Cosmos DB account page, and then select **New Container**. 
     
-    **Kapsayıcı Ekle** penceresini görmek için sağa kaydırmanız gerekebilir.
+    You may need to scroll right to see the **Add Container** window.
     
-    ![Azure portal Veri Gezgini, kapsayıcı bölmesi Ekle](./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-dotnet.png)
+    ![The Azure portal Data Explorer, Add Container pane](./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-dotnet.png)
     
-1.  **Kapsayıcı Ekle** bölmesinde, yeni kapsayıcının ayarlarını girin.
+1.  In the **Add container** pane, enter the settings for the new container.
     
     |Ayar|Önerilen değer|Açıklama
     |---|---|---|
-    |**Veritabanı Kimliği**|ToDoList|Yeni veritabanının adı olarak *ToDoList* girin. Veritabanı adı 1 ila 255 karakter içermeli ve içeremezler `/, \\, #, ?`, veya bir boşluk. Veritabanı **Işleme sağlama** seçeneğini kontrol edin, veritabanı içindeki tüm kapsayıcılar üzerinde veritabanı için sağlanan aktarım hızını paylaşmanıza olanak sağlar. Bu seçenek maliyet tasarruflarıyla de yardımcı olur. |
-    |**Aktarım hızı**|400|Aktarım hızını saniyede 400 istek birimi (RU/s) olarak bırakın. Daha sonra gecikme süresini azaltmak isterseniz aktarım hızının ölçeğini artırabilirsiniz.| 
-    |**Kapsayıcı KIMLIĞI**|Öğeler|*Öğeleri* yeni kapsayıcının adı olarak girin. Kapsayıcı kimlikleri, veritabanı adlarıyla aynı karakter gereksinimlerine sahiptir.|
-    |**Bölüm anahtarı**| /kategori| Bu makalede açıklanan örnek, bölüm anahtarı olarak */category* kullanır.|
+    |**Veritabanı Kimliği**|ToDoList|Enter *ToDoList* as the name for the new database. Database names must contain from 1 through 255 characters, and they cannot contain `/, \\, #, ?`, or a trailing space. Check the **Provision database throughput** option, it allows you to share the throughput provisioned to the database across all the containers within the database. This option also helps with cost savings. |
+    |**Aktarım hızı**|400|Leave the throughput at 400 request units per second (RU/s). Daha sonra gecikme süresini azaltmak isterseniz aktarım hızının ölçeğini artırabilirsiniz.| 
+    |**Container ID**|Öğeler|Enter *Items* as the name for your new container. Container IDs have the same character requirements as database names.|
+    |**Partition key**| /kategori| The sample described in this article uses */category* as the partition key.|
 
     
-    Bu örnek için **benzersiz anahtarlar** eklemeyin. Benzersiz anahtarlar, bölüm anahtarı başına bir veya daha fazla değerin benzersizliğini sağlayarak veritabanına veri bütünlüğü katmanı eklemenizi sağlar. Daha fazla bilgi için bkz. [Azure Cosmos DB Içindeki benzersiz anahtarlar](unique-keys.md).
+    Don't add **Unique keys** for this example. Unique keys let you add a layer of data integrity to the database by ensuring the uniqueness of one or more values per partition key. For more information, see [Unique keys in Azure Cosmos DB](unique-keys.md).
     
-1.  **Tamam**’ı seçin. Veri Gezgini yeni veritabanını ve oluşturduğunuz kapsayıcıyı görüntüler.
+1.  **Tamam**’ı seçin. The Data Explorer displays the new database and the container that you created.
 
-## <a name="add-data-to-your-database"></a>Veritabanınıza veri ekleme
+## <a name="add-data-to-your-database"></a>Add data to your database
 
-Veri Gezgini kullanarak yeni veritabanınıza veri ekleyin.
+Add data to your new database using Data Explorer.
 
-1. **Veri Gezgini**' de, **ToDoList** veritabanını genişletin ve **öğeler** kapsayıcısını genişletin. Sonra, **öğeler**' i ve sonra **Yeni öğe**' yi seçin. 
+1. In **Data Explorer**, expand the **ToDoList** database, and expand the **Items** container. Next, select **Items**, and then select **New Item**. 
    
    ![Azure portalındaki Veri Gezgini'nde yeni belge oluşturma](./media/create-sql-api-dotnet/azure-cosmosdb-new-document.png)
    
-1. **Belgeler** bölmesinin sağ tarafındaki belgeye aşağıdaki yapıyı ekleyin:
+1. Add the following structure to the document on the right side of the **Documents** pane:
 
      ```json
      {
@@ -89,9 +89,9 @@ Veri Gezgini kullanarak yeni veritabanınıza veri ekleyin.
 
 1. **Kaydet**’i seçin.
    
-   ![JSON verilerini kopyalayın ve Azure portal Veri Gezgini Kaydet ' i seçin](./media/create-sql-api-dotnet/azure-cosmosdb-save-document.png)
+   ![Copy in json data and select Save in Data Explorer in the Azure portal](./media/create-sql-api-dotnet/azure-cosmosdb-save-document.png)
    
-1. **Yeni belge** ' yi yeniden seçin ve benzersiz `id`ve istediğiniz diğer özellikleri ve değerleri içeren başka bir belge oluşturun ve kaydedin. Azure Cosmos DB verileriniz üzerinde herhangi bir şema uygulamayan, belgeleriniz herhangi bir yapıya sahip olabilir.
+1. Select **New Document** again, and create and save another document with a unique `id`, and any other properties and values you want. Your documents can have any structure, because Azure Cosmos DB doesn't impose any schema on your data.
 
 ## <a name="query-your-data"></a>Verilerinizi sorgulayın
 
@@ -103,7 +103,7 @@ Veri Gezgini kullanarak yeni veritabanınıza veri ekleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, Veri Gezgini kullanarak bir Azure Cosmos DB hesabı oluşturmayı, veritabanı ve kapsayıcı oluşturmayı öğrendiniz. Şimdi Azure Cosmos DB hesabınıza ek veriler aktarabilirsiniz. 
+In this quickstart, you learned how to create an Azure Cosmos DB account, create a database and container using the Data Explorer. Şimdi Azure Cosmos DB hesabınıza ek veriler aktarabilirsiniz. 
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB hesabınıza veri aktarma](import-data.md)

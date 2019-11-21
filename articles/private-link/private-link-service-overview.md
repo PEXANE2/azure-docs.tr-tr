@@ -1,110 +1,110 @@
 ---
-title: Azure özel bağlantı hizmeti nedir?
-description: Azure özel bağlantı hizmeti hakkında bilgi edinin.
+title: What is Azure Private Link service?
+description: Learn about Azure Private Link service.
 services: private-link
-author: KumudD
+author: asudbring
 ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
-ms.author: kumud
-ms.openlocfilehash: cad8e3e4f32a8773fe914362b637d39765a23c21
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.author: allensu
+ms.openlocfilehash: 8ac93e7ed1638137e70086ac22fa9bb97606830e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672525"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228057"
 ---
-# <a name="what-is-azure-private-link-service"></a>Azure özel bağlantı hizmeti nedir?
+# <a name="what-is-azure-private-link-service"></a>What is Azure Private Link service?
 
-Azure özel bağlantı hizmeti, Azure özel bağlantısı tarafından desteklenen kendi hizmetinize yapılan başvurudur. [Azure Standart Load Balancer](../load-balancer/load-balancer-standard-overview.md) arkasında çalışan hizmetiniz, özel bağlantı erişimi için etkinleştirilebilir ve böylece hizmetinize ait tüketiciler kendi sanal ağlarına özel olarak erişebilir. Müşterileriniz, sanal ağı içinde özel bir uç nokta oluşturabilir ve bu hizmetle eşleşmekte olabilir. Bu makalede hizmet sağlayıcı tarafı ile ilgili kavramlar açıklanmaktadır. 
+Azure Private Link service is the reference to your own service that is powered by Azure Private Link. Your service that is running behind [Azure Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md) can be enabled for Private Link access so that consumers to your service can access it privately from their own VNets. Your customers can create a private endpoint inside their VNet and map it to this service. This article explains concepts related to the service provider side. 
 
-## <a name="workflow"></a>İş akışı
+## <a name="workflow"></a>İş Akışı
 
-![Özel bağlantı hizmeti iş akışı](media/private-link-service-overview/private-link-service-workflow.png)
+![Private Link service workflow](media/private-link-service-overview/private-link-service-workflow.png)
 
-### <a name="create-your-private-link-service"></a>Özel bağlantı hizmetinizi oluşturma
+### <a name="create-your-private-link-service"></a>Create your Private Link Service
 
-- Uygulamanızı sanal ağınızda standart yük dengeleyici arkasında çalışacak şekilde yapılandırın. Uygulamanız zaten standart yük dengeleyici 'nin arkasında yapılandırılmışsa, bu adımı atlayabilirsiniz.   
-- Yukarıdaki yük dengeleyiciye başvuran bir özel bağlantı hizmeti oluşturun. Yük dengeleyici seçim sürecinde, trafiği almak istediğiniz ön uç IP yapılandırmasını seçin. Özel bağlantı hizmeti için NAT IP adresleri için bir alt ağ seçin. Alt ağda en az sekiz NAT IP adresinin kullanılabilir olması önerilir. Tüm tüketici trafiği, bu özel IP adresi havuzundan hizmet sağlayıcısına geliyor gibi görünür. Özel bağlantı hizmeti için uygun özellikleri/ayarları seçin.    
+- Configure your application to run behind a standard load balancer in your virtual network. If you already have your application configured behind a standard load balancer, you can skip this step.   
+- Create a Private Link Service referencing the load balancer above. In the load balancer selection process, choose the frontend IP configuration where you want to receive the traffic. Choose a subnet for NAT IP addresses for the Private Link Service. It is recommended to have at least eight NAT IP addresses available in the subnet. All consumer traffic will appear to originate from this pool of private IP addresses to the service provider. Choose the appropriate properties/settings for the Private Link Service.    
 
     > [!NOTE]
-    > Azure özel bağlantı hizmeti yalnızca Standart Load Balancer desteklenir. 
+    > Azure Private Link Service is only supported on Standard Load Balancer. 
     
-### <a name="share-your-service"></a>Hizmetinizi paylaşma
+### <a name="share-your-service"></a>Share your service
 
-Özel bir bağlantı hizmeti oluşturduktan sonra Azure, hizmetiniz için sağladığınız adı temel alan "diğer ad" adlı bir genel benzersiz adlı bilinen ad oluşturur. Müşterilerinizin diğer adını veya Kaynak URI 'sini müşterilerinizle çevrimdışı olarak paylaşabilirsiniz. Tüketiciler, diğer adı veya Kaynak URI 'sini kullanarak bir özel bağlantı bağlantısı başlatabilir.
+After you create a Private Link service, Azure will generate a globally unique named moniker called "alias" based on the name you provide for your service. You can share either the alias or resource URI of your service with your customers offline. Consumers can start a Private Link connection using the alias or the resource URI.
  
-### <a name="manage-your-connection-requests"></a>Bağlantı isteklerinizi yönetme
+### <a name="manage-your-connection-requests"></a>Manage your connection requests
 
-Bir tüketici bir bağlantıyı başlattıktan sonra, hizmet sağlayıcı bağlantı isteğini kabul edebilir veya reddedebilir. Tüm bağlantı istekleri özel bağlantı hizmetindeki **privateendpointconnections** özelliği altında listelenecektir.
+After a consumer initiates a connection, the service provider can accept or reject the connection request. All connection requests will be listed under the **privateendpointconnections** property on the Private Link service.
  
-### <a name="delete-your-service"></a>Hizmetinizi silme
+### <a name="delete-your-service"></a>Delete your service
 
-Özel bağlantı hizmeti artık kullanımda değilse, bunu silebilirsiniz. Ancak, hizmeti silmeden önce kendisiyle ilişkili özel uç nokta bağlantısı olmadığından emin olun. Tüm bağlantıları reddedebilir ve hizmeti silebilirsiniz.
+If the Private Link service is no longer in use, you can delete it. However, before your delete the service, ensure that there are no private endpoint connections associated with it. You can reject all connections and delete the service.
 
-## <a name="properties"></a>properties
+## <a name="properties"></a>Özellikler
 
-Özel bir bağlantı hizmeti aşağıdaki özellikleri belirtir: 
+A Private Link service specifies the following properties: 
 
 |Özellik |Açıklama  |
 |---------|---------|
-|Sağlama durumu (provisioningState)  |Özel bağlantı hizmeti için geçerli sağlama durumunu listeleyen salt okunurdur bir özellik. İlgili sağlama durumları şunlardır: Silinmesinden Başaramadı Baarı Güncelleştiriliyor ". Sağlama durumu "başarılı" olduğunda, özel bağlantı hizmetinizi başarıyla sağlamış olursunuz.        |
-|Diğer ad (diğer ad)     | Diğer ad, hizmetiniz için genel olarak benzersiz bir salt okuma dizesidir. Hizmetiniz için müşteri verilerini maskelemenize yardımcı olur ve aynı zamanda hizmetiniz için kolay paylaşılan bir ad oluşturur. Özel bir bağlantı hizmeti oluşturduğunuzda, Azure hizmetinizin sizinle paylaşabileceğiniz diğer adını oluşturur. Müşterileriniz, hizmetinize bir bağlantı istemek için bu diğer adı kullanabilir.          |
-|Görünürlük (görünürlük)     | Görünürlük, özel bağlantı hizmetiniz için pozlama ayarlarını denetleyen özelliktir. Hizmet sağlayıcıları rol tabanlı erişim denetimi (RBAC) izinleri, kısıtlı bir abonelik kümesi veya tüm Azure abonelikleri ile hizmetleri ile olan Aboneliklerle ilgili pozlamayı tercih edebilir.          |
-|Otomatik onay (otomatik onay)    |   Otomatik onay, özel bağlantı hizmetine otomatik erişimi denetler. Otomatik onay listesinde belirtilen abonelikler, bu aboneliklerdeki özel uç noktalardan bir bağlantı istendiğinde otomatik olarak onaylanır.          |
-|Load Balancer ön uç IP yapılandırması (Loadbalancerfrontendıpconfigurations)    |    Özel bağlantı hizmeti bir Standart Load Balancer ön uç IP adresine bağlıdır. Hizmete yönelik tüm trafik, SLB 'nın ön ucunda iletişime geçecektir. Bu trafiği, uygulamalarınızın çalıştığı uygun arka uç havuzlarına yönlendirmek için SLB kurallarını yapılandırabilirsiniz. Yük dengeleyici ön uç IP yapılandırması NAT IP yapılandırmasından farklı.      |
-|NAT IP yapılandırması (ipConfigurations)    |    Bu özellik, özel bağlantı hizmeti için NAT (ağ adresi çevirisi) IP yapılandırmasını ifade eder. NAT IP 'si, bir hizmet sağlayıcısının sanal ağındaki herhangi bir alt ağdan seçilebilir. Özel bağlantı hizmeti, özel bağlantı trafiği üzerinde hedef tarafı NAT kullanır. Bu, kaynak (tüketici tarafı) ve hedef (hizmet sağlayıcı) adres alanı arasında bir IP çakışması olmamasını sağlar. Hedef tarafta (hizmet sağlayıcı tarafı), NAT IP adresi, hizmetiniz tarafından gönderilen tüm paketler için hizmetinize ve hedef IP 'niz tarafından alınan tüm paketlerin kaynak IP 'si olarak görünür.       |
-|Özel uç nokta bağlantıları (privateEndpointConnections)     |  Bu özellik, özel bağlantı hizmetine bağlanan özel uç noktaları listeler. Birden çok özel uç nokta aynı özel bağlantı hizmetine bağlanabilir ve hizmet sağlayıcısı tek özel uç noktaların durumunu denetleyebilir.        |
+|Provisioning State (provisioningState)  |A read-only property that lists the current provisioning state for Private Link service. Applicable provisioning states are: "Deleting; Failed; Succeeded; Updating". When the provisioning state is "Succeeded", you have successfully provisioned your Private Link service.        |
+|Alias (alias)     | Alias is a globally unique read-only string for your service. It helps you mask the customer data for your service and at the same time creates an easy-to-share name for your service. When you create a Private Link service, Azure generates the alias for your service that you can share with your customers. Your customers can use this alias to request a connection to your service.          |
+|Visibility (visibility)     | Visibility is the property that controls the exposure settings for your Private Link service. Service providers can choose to limit the exposure to their service to subscriptions with role-based access control (RBAC) permissions, a restricted set of subscriptions, or all Azure subscriptions.          |
+|Auto Approval (autoApproval)    |   Auto-approval controls the automated access to the Private Link service. The subscriptions specified in the auto-approval list are approved automatically when a connection is requested from private endpoints in those subscriptions.          |
+|Load Balancer Frontend IP Configuration (loadBalancerFrontendIpConfigurations)    |    Private Link service is tied to the frontend IP address of a Standard Load Balancer. All traffic destined for the service will reach the frontend of the SLB. You can configure SLB rules to direct this traffic to appropriate backend pools where your applications are running. Load balancer frontend IP configurations are different than NAT IP configurations.      |
+|NAT IP Configuration (ipConfigurations)    |    This property refers to the NAT (Network Address Translation) IP configuration for the Private Link service. The NAT IP can be chosen from any subnet in a service provider's virtual network. Private Link service performs destination side NAT-ing on the Private Link traffic. This ensures that there is no IP conflict between source (consumer side) and destination (service provider) address space. On the destination side (service provider side), the NAT IP address will show up as Source IP for all packets received by your service and destination IP for all packets sent by your service.       |
+|Private endpoint connections (privateEndpointConnections)     |  This property lists the private endpoints connecting to Private Link service. Multiple private endpoints can connect to the same Private Link service and the service provider can control the state for individual private endpoints.        |
 |||
 
 
 ### <a name="details"></a>Ayrıntılar
 
-- Özel bağlantı hizmetine aynı bölgedeki onaylanan özel uç noktalardan erişilebilir. Özel uç noktaya, bölgesel olarak eşlenmiş VNET 'ler, genel olarak eşlenmiş sanal ağlar ve özel VPN veya ExpressRoute bağlantıları kullanan şirket içi sanal ağ üzerinden erişilebilir. 
+- Private Link service can be accessed from approved private endpoints in the same region. The private endpoint can be reached from the same virtual network, regionally peered VNets, globally peered VNets and on premises using private VPN or ExpressRoute connections. 
  
-- Özel bir bağlantı hizmeti oluştururken, kaynağın yaşam döngüsü için bir ağ arabirimi oluşturulur. Bu arabirim müşteri tarafından yönetilemez.
+- When creating a Private Link Service, a network interface is created for the lifecycle of the resource. This interface is not manageable by the customer.
  
-- Özel bağlantı hizmetinin, sanal ağla aynı bölgede ve Standart Load Balancer dağıtılması gerekir.  
+- The Private Link Service must be deployed in the same region as the virtual network and the Standard Load Balancer.  
  
-- Tek bir özel bağlantı hizmetine, farklı VNET 'ler, abonelikler ve/veya Active Directory kiracılarına ait birden çok özel uç noktasından erişilebilir. Bağlantı, bağlantı iş akışıyla oluşturulur. 
+- A single Private Link Service can be accessed from multiple Private Endpoints belonging to different VNets, subscriptions and/or Active Directory tenants. The connection is established through a connection workflow. 
  
-- Birden çok özel bağlantı hizmeti, farklı ön uç IP yapılandırması kullanılarak aynı Standart Load Balancer oluşturulabilir. Standart Load Balancer ve abonelik başına oluşturabileceğiniz özel bağlantı Hizmetleri sayısı için sınırlar vardır. Ayrıntılar için bkz. [Azure Limitleri](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
+- Multiple Private Link services can be created on the same Standard Load Balancer using different front-end IP configurations. There are limits to the number of Private Link services you can create per Standard Load Balancer and per subscription. For details, see [Azure limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
  
-- Özel bağlantı hizmeti ile bağlantılı birden fazla NAT IP yapılandırması olabilir. Birden fazla NAT IP yapılandırması seçilmesi hizmet sağlayıcılarının ölçeklendirilmesine yardımcı olabilir. Günümüzde, hizmet sağlayıcıları özel bağlantı hizmeti başına en fazla sekiz NAT IP adresi atayabilir. Her NAT IP adresi ile TCP bağlantılarınız için daha fazla bağlantı noktası atayabilir ve böylece ölçeği değiştirebilirsiniz. Bir özel bağlantı hizmetine birden çok NAT IP adresi ekledikten sonra NAT IP adreslerini silemezsiniz. Bu, NAT IP adreslerini silerken etkin bağlantıların etkilenmemesini sağlamak için yapılır.
+- Private Link service can have more than one NAT IP configurations linked to it. Choosing more than one NAT IP configurations can help service providers to scale. Today, service providers can assign up to eight NAT IP addresses per Private Link service. With each NAT IP address, you can assign more ports for your TCP connections and thus scale out. After you add multiple NAT IP addresses to a Private Link service, you can't delete the NAT IP addresses. This is done to ensure that active connections are not impacted while deleting the NAT IP addresses.
 
 
-## <a name="alias"></a>Alias
+## <a name="alias"></a>Diğer ad
 
-**Diğer ad** hizmetiniz için genel olarak benzersiz bir addır. Hizmetiniz için müşteri verilerini maskelemenize yardımcı olur ve aynı zamanda hizmetiniz için kolay paylaşılan bir ad oluşturur. Özel bir bağlantı hizmeti oluşturduğunuzda, Azure hizmetiniz için müşterilerinizle paylaşabileceğiniz bir diğer ad oluşturur. Müşterileriniz, hizmetinize bir bağlantı istemek için bu diğer adı kullanabilir.
+**Alias** is a globally unique name for your service. It helps you mask the customer data for your service and at the same time creates an easy-to-share name for your service. When you create a Private Link service, Azure generates an alias for your service that you can share with your customers. Your customers can use this alias to request a connection to your service.
 
-Diğer ad üç bölümden oluşur: *Ön ek*. *GUID*. *Son ek*
+The alias is composed of three parts: *Prefix*.*GUID*.*Suffix*
 
-- Ön ek, hizmet adıdır. Size ait ön ekinizi seçebilirsiniz. "Diğer ad" oluşturulduktan sonra, bunu değiştiremezsiniz, bu nedenle öneğinizi uygun şekilde seçin.  
-- GUID, platform tarafından sağlanacak. Bu, adın genel olarak benzersiz olmasına yardımcı olur. 
-- Son ek Azure: *Region*. Azure. privatelinkservice tarafından eklendi 
+- Prefix is the service name. You can pick you own prefix. After "Alias" is created, you can't change it, so select your prefix appropriately.  
+- GUID will be provided by platform. This helps make the name globally unique. 
+- Suffix is appended by Azure: *region*.azure.privatelinkservice 
 
-Tüm diğer ad:  *Ön ek*. {GUıD}. *Region*. Azure. privatelinkservice  
+Complete alias:  *Prefix*. {GUID}.*region*.azure.privatelinkservice  
 
-## <a name="control-service-exposure"></a>Hizmet pozlamasını denetleme
+## <a name="control-service-exposure"></a>Control service exposure
 
-Özel bağlantı hizmeti, "görünürlük" ayarı aracılığıyla hizmetinizin görünürlüğünü denetlemeye yönelik seçenekler sağlar. Hizmeti, sahip olduğunuz farklı sanal ağlardan tüketim için özel hale getirebilirsiniz (yalnızca RBAC izinleri), güvendiğiniz sınırlı bir abonelik kümesiyle pozlamayı kısıtlayabilir veya tüm Azure aboneliklerinin özel bağlantı üzerinde bağlantı isteyebilmesi için ortak hale getirebilirsiniz hizmetle. Görünürlük ayarlarınızda, bir tüketicinin hizmetinize bağlanıp bağlanamacağına karar verirsiniz. 
+Private Link service provides you options to control the exposure of your service through "Visibility" setting. You can make the service private for consumption from different VNets you own (RBAC permissions only), restrict the exposure to a limited set of subscriptions that you trust, or make it public so that all Azure subscriptions can request connections on the Private Link service. Your visibility settings decide whether a consumer can connect to your service or not. 
 
-## <a name="control-service-access"></a>Denetim hizmeti erişimi
+## <a name="control-service-access"></a>Control service access
 
-Özel bağlantı hizmetinize pozlama (görünürlük ayarı denetimli) olan tüketiciler, sanal ağlarında özel bir uç nokta oluşturabilir ve özel bağlantı hizmetinize bağlantı isteğinde bulunabilir. Özel uç nokta bağlantısı özel bağlantı hizmeti nesnesi üzerinde "beklemede" durumunda oluşturulur. Hizmet sağlayıcısı, bağlantı isteğine göre davranmasından sorumludur. Bağlantıyı onaylayabilir, bağlantıyı reddedebilir veya bağlantıyı silebilirsiniz. Yalnızca onaylanan bağlantılar özel bağlantı hizmetine trafik gönderebilir.
+Consumers having exposure (controlled by visibility setting) to your Private Link service can create a private endpoint in their VNets and request a connection to your Private Link service. The private endpoint connection will be created in a "Pending" state on the Private Link service object. The service provider is responsible for acting on the connection request. You can either approve the connection, reject the connection, or delete the connection. Only connections that are approved can send traffic to the Private Link service.
 
-Bağlantıları onaylama eylemi, özel bağlantı hizmetindeki otomatik onaylama özelliği kullanılarak otomatikleştirilebilir. Otomatik onay, hizmet sağlayıcılarının, hizmetine otomatik erişim için bir abonelik kümesini önceden onaylamasını sağlar. Müşterilerin otomatik onay listesine eklemesi için aboneliklerini, hizmet sağlayıcılarının çevrimdışı olarak paylaşması gerekecektir. Otomatik onay, görünürlük dizisinin bir alt kümesidir. Görünürlük, pozlama ayarlarını denetler, ancak otomatik onay, hizmetinizin onay ayarlarını denetler. Bir müşteri otomatik onay listesindeki bir abonelikten bağlantı isterse bağlantı otomatik olarak onaylanır ve bağlantı oluşturulur. Hizmet sağlayıcılarının isteği artık el ile onaylaması gerekmez. Öte yandan, bir müşteri otomatik onaylama dizisinde değil görünürlük dizisindeki bir abonelikten bağlantı isterse, istek hizmet sağlayıcısına ulaşır, ancak hizmet sağlayıcının bağlantıları el ile onaylaması gerekir.
+The action of approving the connections can be automated by using the auto-approval property on the Private Link service. Auto-Approval is an ability for service providers to preapprove a set of subscriptions for automated access to their service. Customers will need to share their subscriptions offline for service providers to add to the auto-approval list. Auto-approval is a subset of the visibility array. Visibility controls the exposure settings whereas auto-approval controls the approval settings for your service. If a customer requests a connection from a subscription in the auto-approval list, the connection is automatically approved and the connection is established. Service providers don’t need to manually approve the request anymore. On the other hand, if a customer requests a connection from a subscription in the visibility array and not in the auto-approval array, the request will reach the service provider but the service provider has to manually approve the connections.
 
 ## <a name="limitations"></a>Sınırlamalar
 
-Özel bağlantı hizmeti kullanılırken aşağıdakiler bilinen sınırlamalar aşağıda verilmiştir:
-- Yalnızca Standart Load Balancer destekleniyor 
-- Yalnızca IPv4 trafiğini destekler
-- Yalnızca TCP trafiğini destekler
-- Yalnızca aynı bölgedeki özel uç noktalardan erişilebilir
-- Azure portal deneyim oluşturma ve yönetme desteklenmez
-- Proxy protokolünü kullanan istemci bağlantı bilgileri servis sağlayıcısına kullanılamıyor
+The following are the known limitations when using the Private Link service:
+- Supported only on Standard Load Balancer 
+- Supports IPv4 traffic only
+- Supports TCP traffic only
+- Only reachable from private endpoints in the same region
+- Create and Manage experience from Azure portal is not supported
+- Clients connection information using proxy protocol is not available to service provider
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Azure PowerShell kullanarak özel bir bağlantı hizmeti oluşturma](create-private-link-service-powershell.md)
-- [Azure CLı kullanarak özel bağlantı hizmeti oluşturma](create-private-link-service-cli.md)
+- [Create a private link service using Azure PowerShell](create-private-link-service-powershell.md)
+- [Create a private link service using Azure CLI](create-private-link-service-cli.md)

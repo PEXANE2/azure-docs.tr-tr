@@ -1,6 +1,6 @@
 ---
-title: Ortak uç nokta ile yönetilen örneği yapılandırma
-description: Yönetilen örnek için genel bir uç nokta yapılandırmayı öğrenin
+title: Configure public endpoint - managed instance
+description: Learn how to configure a public endpoint for managed instance
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -10,46 +10,46 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/07/2019
-ms.openlocfilehash: a35176770a3100a288ad3da52cd89870e0110f63
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 1acd7d6a3b203997e3acd8d7959b1572e09845f3
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73828024"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227993"
 ---
-# <a name="configure-public-endpoint-in-azure-sql-database-managed-instance"></a>Azure SQL veritabanı yönetilen örneği 'nde ortak uç noktayı yapılandırma
+# <a name="configure-public-endpoint-in-azure-sql-database-managed-instance"></a>Configure public endpoint in Azure SQL Database managed instance
 
-[Yönetilen](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index) örnek için genel uç nokta, yönetilen örneğiniz için [sanal ağ](../virtual-network/virtual-networks-overview.md)dışından veri erişimi sağlar. Yönetilen örneğinize Power BI, Azure App Service veya şirket içi ağ gibi çok kiracılı Azure hizmetlerinden erişebilirsiniz. Yönetilen bir örnekteki ortak uç noktayı kullanarak, VPN işleme sorunlarından kaçınmanıza yardımcı olabilecek bir VPN kullanmanız gerekmez.
+Public endpoint for a [managed instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index) enables data access to your managed instance from outside the [virtual network](../virtual-network/virtual-networks-overview.md). You are able to access your managed instance from multi-tenant Azure services like Power BI, Azure App Service, or an on-premises network. By using the public endpoint on a managed instance, you do not need to use a VPN, which can help avoid VPN throughput issues.
 
-Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
+In this article, you'll learn how to:
 
 > [!div class="checklist"]
-> - Azure portal yönetilen örneğiniz için ortak uç noktayı etkinleştirin
-> - PowerShell kullanarak yönetilen örneğiniz için ortak uç noktayı etkinleştirme
-> - Yönetilen örnek ağ güvenlik grubunuzu yönetilen örnek genel uç noktasına giden trafiğe izin verecek şekilde yapılandırın
-> - Yönetilen örnek genel uç nokta bağlantı dizesi al
+> - Enable public endpoint for your managed instance in the Azure portal
+> - Enable public endpoint for your managed instance using PowerShell
+> - Configure your managed instance network security group to allow traffic to the managed instance public endpoint
+> - Obtain the managed instance public endpoint connection string
 
 ## <a name="permissions"></a>İzinler
 
-Yönetilen örnekteki verilerin duyarlılığı nedeniyle, yönetilen örnek genel uç noktasını etkinleştirme yapılandırması iki adımlı bir işlem gerektirir. Bu güvenlik ölçüsü, görev ayrımı (SoD) olarak uyar:
+Due to the sensitivity of data that is in a managed instance, the configuration to enable managed instance public endpoint requires a two-step process. This security measure adheres to separation of duties (SoD):
 
-- Yönetilen örnek üzerinde genel bitiş noktasının etkinleştirilmesi, yönetilen örnek Yöneticisi tarafından yapılmalıdır. Yönetilen örnek Yöneticisi, SQL yönetilen örnek kaynağınızın **genel bakış** sayfasında bulunabilir.
-- Ağ Yöneticisi tarafından gerçekleştirilmesi gereken bir ağ güvenlik grubu kullanılarak trafiğe izin verme. Daha fazla bilgi için bkz. [ağ güvenlik grubu izinleri](../virtual-network/manage-network-security-group.md#permissions).
+- Enabling public endpoint on a managed instance needs to be done by the managed instance admin. The managed instance admin can be found on **Overview** page of your SQL managed instance resource.
+- Allowing traffic using a network security group that needs to be done by a network admin. For more information, see [network security group permissions](../virtual-network/manage-network-security-group.md#permissions).
 
-## <a name="enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal"></a>Azure portal yönetilen bir örnek için genel uç noktayı etkinleştirme
+## <a name="enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal"></a>Enabling public endpoint for a managed instance in the Azure portal
 
-1. <https://portal.azure.com/.> Azure portal başlatın
-1. Yönetilen örnekle birlikte kaynak grubunu açın ve üzerinde genel uç noktasını yapılandırmak istediğiniz **SQL yönetilen örneğini** seçin.
-1. **Güvenlik** ayarları ' na, **sanal ağ** sekmesini seçin.
-1. Sanal ağ yapılandırması sayfasında, yapılandırmayı güncelleştirmek için **Etkinleştir** ' i ve ardından **Kaydet** simgesini seçin.
+1. Launch the Azure portal at <https://portal.azure.com/.>
+1. Open the resource group with the managed instance, and select the **SQL managed instance** that you want to configure public endpoint on.
+1. On the **Security** settings, select the **Virtual network** tab.
+1. In the Virtual network configuration page, select **Enable** and then the **Save** icon to update the configuration.
 
-![mi-VNET-config. png](media/sql-database-managed-instance-public-endpoint-configure/mi-vnet-config.png)
+![mi-vnet-config.png](media/sql-database-managed-instance-public-endpoint-configure/mi-vnet-config.png)
 
-## <a name="enabling-public-endpoint-for-a-managed-instance-using-powershell"></a>PowerShell kullanarak yönetilen örnek için genel uç noktayı etkinleştirme
+## <a name="enabling-public-endpoint-for-a-managed-instance-using-powershell"></a>Enabling public endpoint for a managed instance using PowerShell
 
-### <a name="enable-public-endpoint"></a>Ortak uç noktayı etkinleştir
+### <a name="enable-public-endpoint"></a>Enable public endpoint
 
-Aşağıdaki PowerShell komutlarını çalıştırın. **Abonelik** KIMLIĞINI abonelik Kimliğinizle değiştirin. Ayrıca, **RG-Name** öğesini yönetilen örneğinizin kaynak grubuyla değiştirin ve **mı-adını** yönetilen örneğinizin adıyla değiştirin.
+Run the following PowerShell commands. Replace **subscription-id** with your subscription ID. Also replace **rg-name** with the resource group for your managed instance, and replace **mi-name** with the name of your managed instance.
 
 ```powershell
 Install-Module -Name Az
@@ -70,50 +70,50 @@ $mi = Get-AzSqlInstance -ResourceGroupName {rg-name} -Name {mi-name}
 $mi = $mi | Set-AzSqlInstance -PublicDataEndpointEnabled $true -force
 ```
 
-### <a name="disable-public-endpoint"></a>Ortak uç noktayı devre dışı bırak
+### <a name="disable-public-endpoint"></a>Disable public endpoint
 
-PowerShell kullanarak genel uç noktasını devre dışı bırakmak için aşağıdaki komutu yürütür (Ayrıca, yapılandırdıysanız gelen bağlantı noktası 3342 için NSG 'yi kapatmayı unutmayın):
+To disable the public endpoint using PowerShell, you would execute the following command (and also do not forget to close the NSG for the inbound port 3342 if you have it configured):
 
 ```powershell
 Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 ```
 
-## <a name="allow-public-endpoint-traffic-on-the-network-security-group"></a>Ağ güvenlik grubunda genel uç nokta trafiğine izin ver
+## <a name="allow-public-endpoint-traffic-on-the-network-security-group"></a>Allow public endpoint traffic on the network security group
 
-1. Yönetilen örneğin yapılandırma sayfası hala açıksa **genel bakış** sekmesine gidin. Aksi takdirde, **SQL yönetilen örnek** kaynağına geri dönün. Sanal ağ **/alt ağ** bağlantısını seçin, bu Işlem sizi sanal ağ yapılandırması sayfasına götürür.
+1. If you have the configuration page of the managed instance still open, navigate to the **Overview** tab. Otherwise, go back to your **SQL managed instance** resource. Select the **Virtual network/subnet** link, which will take you to the Virtual network configuration page.
 
-    ![mi-Overview. png](media/sql-database-managed-instance-public-endpoint-configure/mi-overview.png)
+    ![mi-overview.png](media/sql-database-managed-instance-public-endpoint-configure/mi-overview.png)
 
-1. Sanal ağınızın sol Yapılandırma bölmesinde **alt ağlar** sekmesini seçin ve yönetilen ÖRNEĞINIZIN **güvenlik grubunu** aklınızda olun.
+1. Select the **Subnets** tab on the left configuration pane of your Virtual network, and make note of the **SECURITY GROUP** for your managed instance.
 
-    ![mi-VNET-subnet. png](media/sql-database-managed-instance-public-endpoint-configure/mi-vnet-subnet.png)
+    ![mi-vnet-subnet.png](media/sql-database-managed-instance-public-endpoint-configure/mi-vnet-subnet.png)
 
-1. Yönetilen örneğinizi içeren kaynak grubunuza geri dönün. Yukarıda belirtilen **ağ güvenlik grubu** adını görmeniz gerekir. Ağ güvenlik grubu yapılandırma sayfasına gidilecek adı seçin.
+1. Go back to your resource group that contains your managed instance. You should see the **Network security group** name noted above. Select the name to go into the network security group configuration page.
 
-1. **Gelen güvenlik kuralları** sekmesini seçin ve aşağıdaki ayarlarla **deny_all_inbound** kuralından daha yüksek önceliğe sahip bir kural **ekleyin** : </br> </br>
+1. Select the **Inbound security rules** tab, and **Add** a rule that has higher priority than the **deny_all_inbound** rule with the following settings: </br> </br>
 
     |Ayar  |Önerilen değer  |Açıklama  |
     |---------|---------|---------|
-    |**Kaynak**     |Herhangi bir IP adresi veya hizmet etiketi         |<ul><li>Power BI gibi Azure hizmetleri için Azure Cloud Service etiketini seçin</li> <li>Bilgisayarınız veya Azure sanal makinesi için NAT IP adresi kullanın</li></ul> |
-    |**Kaynak bağlantı noktası aralıkları**     |*         |Kaynak bağlantı noktaları genellikle dinamik olarak ayrıldığı ve bu şekilde tahmin edilemeyen |
-    |**Hedefine**     |Herhangi biri         |Yönetilen örnek alt ağına gelen trafiğe izin vermek için hedeften ayrılmaya |
-    |**Hedef bağlantı noktası aralıkları**     |3342         |Yönetilen örnek genel TDS uç noktası olan 3342 öğesine kapsam hedef bağlantı noktası |
-    |**Protokol**     |TCP         |Yönetilen örnek TDS için TCP protokolünü kullanır |
-    |**Eylem**     |Allow         |Ortak uç nokta aracılığıyla yönetilen örneğe gelen trafiğe izin ver |
-    |**Öncelik**     |1300         |Bu kuralın **deny_all_inbound** kuralından daha yüksek öncelikli olduğundan emin olun |
+    |**Kaynak**     |Any IP address or Service tag         |<ul><li>For Azure services like Power BI, select the Azure Cloud Service Tag</li> <li>For your computer or Azure VM, use NAT IP address</li></ul> |
+    |**Source port ranges**     |*         |Leave this to * (any) as source ports are usually dynamically allocated and as such, unpredictable |
+    |**Destination**     |Herhangi biri         |Leaving destination as Any to allow traffic into the managed instance subnet |
+    |**Destination port ranges**     |3342         |Scope destination port to 3342, which is the managed instance public TDS endpoint |
+    |**Protokol**     |TCP         |Managed instance uses TCP protocol for TDS |
+    |**Eylem**     |Allow         |Allow inbound traffic to managed instance through the public endpoint |
+    |**Öncelik**     |1300         |Make sure this rule is higher priority than the **deny_all_inbound** rule |
 
-    ![mi-NSG-Rules. png](media/sql-database-managed-instance-public-endpoint-configure/mi-nsg-rules.png)
+    ![mi-nsg-rules.png](media/sql-database-managed-instance-public-endpoint-configure/mi-nsg-rules.png)
 
     > [!NOTE]
-    > Bağlantı noktası 3342, yönetilen örneğe yönelik genel uç nokta bağlantıları için kullanılır ve bu noktada değiştirilemez.
+    > Port 3342 is used for public endpoint connections to managed instance, and cannot be changed at this point.
 
-## <a name="obtaining-the-managed-instance-public-endpoint-connection-string"></a>Yönetilen örnek genel uç nokta bağlantı dizesi alınıyor
+## <a name="obtaining-the-managed-instance-public-endpoint-connection-string"></a>Obtaining the managed instance public endpoint connection string
 
-1. Genel uç nokta için etkinleştirilen SQL yönetilen örnek yapılandırma sayfasına gidin. **Ayarlar** Yapılandırması altındaki **bağlantı dizeleri** sekmesini seçin.
-1. Genel uç nokta ana bilgisayar adının < mi_name > biçiminde geldiğini unutmayın. **Public**. < dns_zone >. Database. Windows. net ve bağlantı için kullanılan bağlantı noktası 3342.
+1. Navigate to the SQL managed instance configuration page that has been enabled for public endpoint. Select the **Connection strings** tab under the **Settings** configuration.
+1. Note that the public endpoint host name comes in the format <mi_name>.**public**.<dns_zone>.database.windows.net and that the port used for the connection is 3342.
 
-    ![mi-public-Endpoint-Conn-String. png](media/sql-database-managed-instance-public-endpoint-configure/mi-public-endpoint-conn-string.png)
+    ![mi-public-endpoint-conn-string.png](media/sql-database-managed-instance-public-endpoint-configure/mi-public-endpoint-conn-string.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Genel uç nokta Ile Azure SQL veritabanı yönetilen örneğini güvenli bir şekilde kullanma](sql-database-managed-instance-public-endpoint-securely.md)hakkında bilgi edinin.
+- Learn about [using Azure SQL Database managed instance securely with public endpoint](sql-database-managed-instance-public-endpoint-securely.md).

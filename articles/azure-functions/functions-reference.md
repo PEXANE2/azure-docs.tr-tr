@@ -1,30 +1,25 @@
 ---
-title: Azure Işlevleri geliştirmeye yönelik kılavuz | Microsoft Docs
-description: Tüm programlama dillerinde ve bağlamalarda Azure 'da işlevleri geliştirmek için ihtiyacınız olan Azure Işlevleri kavramlarını ve tekniklerini öğrenin.
-author: ggailey777
-manager: gwallace
-keywords: Geliştirici Kılavuzu, Azure işlevleri, işlevler, olay işleme, Web kancaları, dinamik işlem, sunucusuz mimari
+title: Guidance for developing Azure Functions
+description: Learn the Azure Functions concepts and techniques that you need to develop functions in Azure, across all programming languages and bindings.
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.author: glenga
-ms.openlocfilehash: c60fedfe855cc803ee2f4b1c463e2b0614239c04
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 4aa42e8aef2e2205523be0536cb5aceafd1aa829
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982645"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226669"
 ---
-# <a name="azure-functions-developers-guide"></a>Azure Işlevleri Geliştirici Kılavuzu
-Azure Işlevlerinde belirli işlevler, kullandığınız dil veya bağlama ne olursa olsun, birkaç temel teknik kavram ve bileşeni paylaşır. Belirli bir dile veya bağlamaya özgü öğrenme ayrıntılarına geçmeden önce, tüm bunlar için geçerli olan bu genel bakışı okuduğunuzdan emin olun.
+# <a name="azure-functions-developers-guide"></a>Azure Functions developers guide
+In Azure Functions, specific functions share a few core technical concepts and components, regardless of the language or binding you use. Before you jump into learning details specific to a given language or binding, be sure to read through this overview that applies to all of them.
 
-Bu makalede, [Azure işlevlerine genel bakış ' ı](functions-overview.md)okuduğunuzu varsaymış olursunuz.
+This article assumes that you've already read the [Azure Functions overview](functions-overview.md).
 
-## <a name="function-code"></a>İşlev kodu
-Bir *işlev* , Azure işlevlerinde birincil kavramdır. Bir işlev, çeşitli dillerde yazılmış ve bazı config, function. JSON dosyası olmak üzere iki önemli parça içerir. Derlenen diller için, bu yapılandırma dosyası kodunuzdaki ek açıklamalardan otomatik olarak oluşturulur. Komut dosyası dilleri için yapılandırma dosyasını kendiniz sağlamanız gerekir.
+## <a name="function-code"></a>Function code
+A *function* is the primary concept in Azure Functions. A function contains two important pieces - your code, which can be written in a variety of languages, and some config, the function.json file. For compiled languages, this config file is generated automatically from annotations in your code. For scripting languages, you must provide the config file yourself.
 
-Function. JSON dosyası işlevin tetikleyicisini, bağlamalarını ve diğer yapılandırma ayarlarını tanımlar. Her işlevde bir ve yalnızca bir tetikleyici vardır. Çalışma zamanı, izlenecek olayları ve bir işlev yürütmesindeki verilerin içine nasıl geçirileceğini ve geri döneceğini öğrenmek için bu yapılandırma dosyasını kullanır. Aşağıda örnek bir Function. JSON dosyası verilmiştir.
+The function.json file defines the function's trigger, bindings, and other configuration settings. Every function has one and only one trigger. The runtime uses this config file to determine the events to monitor and how to pass data into and return data from a function execution. The following is an example function.json file.
 
 ```json
 {
@@ -41,70 +36,70 @@ Function. JSON dosyası işlevin tetikleyicisini, bağlamalarını ve diğer yap
 }
 ```
 
-Daha fazla bilgi için bkz. [Azure işlevleri Tetikleyicileri ve bağlamaları kavramları](functions-triggers-bindings.md).
+For more information, see [Azure Functions triggers and bindings concepts](functions-triggers-bindings.md).
 
-`bindings` Özelliği, hem Tetikleyicileri hem de bağlamaları yapılandırdığınız yerdir. Her bağlama birkaç ortak ayarı ve belirli bir bağlama türüne özgü bazı ayarları paylaşır. Her bağlama için aşağıdaki ayarlar gereklidir:
+The `bindings` property is where you configure both triggers and bindings. Each binding shares a few common settings and some settings which are specific to a particular type of binding. Every binding requires the following settings:
 
-| Özellik | Değerler/türler | Açıklamalar |
+| Özellik | Values/Types | Yorumlar |
 | --- | --- | --- |
-| `type` |dize |Bağlama türü. Örneğin: `queueTrigger`. |
-| `direction` |' ın ', ' Out ' |Bağlamanın işleve veri almak veya işlevden veri göndermek için olup olmadığını gösterir. |
-| `name` |dize |İşlevdeki bağlantılı veriler için kullanılan ad. İçin C#bu bir bağımsız değişken adıdır; JavaScript için anahtar/değer listesindeki anahtardır. |
+| `type` |string |Binding type. Örneğin, `queueTrigger`. |
+| `direction` |'in', 'out' |Indicates whether the binding is for receiving data into the function or sending data from the function. |
+| `name` |string |The name that is used for the bound data in the function. For C#, this is an argument name; for JavaScript, it's the key in a key/value list. |
 
 ## <a name="function-app"></a>İşlev uygulaması
-Bir işlev uygulaması, Azure 'da işlevlerinizin çalıştırıldığı bir yürütme bağlamı sağlar. Bu nedenle, işlevleriniz için dağıtım ve yönetim birimidir. İşlev uygulaması, yönetilen, dağıtılan ve birlikte ölçeklenen bir veya daha fazla bağımsız işlevden oluşur. Bir işlev uygulamasındaki tüm işlevler aynı fiyatlandırma planı, dağıtım yöntemi ve çalışma zamanı sürümünü paylaşır. İşlev uygulamasını, işlevlerinizi düzenlemek ve topluca yönetmek için bir yol olarak düşünün. Daha fazla bilgi için bkz. [bir işlev uygulamasını yönetme](functions-how-to-use-azure-function-app-settings.md). 
+A function app provides an execution context in Azure in which your functions run. As such, it is the unit of deployment and management for your functions. A function app is comprised of one or more individual functions that are managed, deployed, and scaled together. All of the functions in a function app share the same pricing plan, deployment method, and runtime version. Think of a function app as a way to organize and collectively manage your functions. To learn more, see [How to manage a function app](functions-how-to-use-azure-function-app-settings.md). 
 
 > [!NOTE]
-> Bir işlev uygulamasındaki tüm işlevlerin aynı dilde yazılması gerekir. Azure Işlevleri çalışma zamanının [önceki sürümlerinde](functions-versions.md) bu gerekli değildir.
+> All functions in a function app must be authored in the same language. In [previous versions](functions-versions.md) of the Azure Functions runtime, this wasn't required.
 
-## <a name="folder-structure"></a>Klasör yapısı
+## <a name="folder-structure"></a>Folder structure
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
-Yukarıdaki, bir Işlev uygulaması için varsayılan (ve önerilen) klasör yapısıdır. Bir işlevin kodunun dosya konumunu değiştirmek istiyorsanız, `scriptFile` _function. JSON_ dosyasının bölümünü değiştirin. Ayrıca, Azure 'daki işlev uygulamanıza projenizi dağıtmak için [paket dağıtımı](deployment-zip-push.md) kullanmanızı öneririz. Ayrıca, [sürekli tümleştirme ve dağıtım](functions-continuous-deployment.md) ve Azure DevOps gibi mevcut araçları da kullanabilirsiniz.
+The above is the default (and recommended) folder structure for a Function app. If you wish to change the file location of a function's code, modify the `scriptFile` section of the _function.json_ file. We also recommend using [package deployment](deployment-zip-push.md) to deploy your project to your function app in Azure. You can also use existing tools like [continuous integration and deployment](functions-continuous-deployment.md) and Azure DevOps.
 
 > [!NOTE]
-> Bir paketi el ile dağıtıyorsanız, _Host. JSON_ dosyanızı ve işlev klasörlerinizi doğrudan `wwwroot` klasörüne dağıttığınızdan emin olun. Dağıtımlarınıza `wwwroot` klasörü eklemeyin. Aksi takdirde, klasörler ile `wwwroot\wwwroot` biter.
+> If deploying a package manually, make sure to deploy your _host.json_ file and function folders directly to the `wwwroot` folder. Do not include the `wwwroot` folder in your deployments. Otherwise, you end up with `wwwroot\wwwroot` folders.
 
-#### <a name="use-local-tools-and-publishing"></a>Yerel araçları ve yayımlamayı kullanma
-İşlev uygulamaları [Visual Studio](./functions-develop-vs.md), [Visual Studio Code](functions-create-first-function-vs-code.md), [ıntellij](./functions-create-maven-intellij.md), [tutulma](./functions-create-maven-eclipse.md)ve [Azure Functions Core Tools](./functions-develop-local.md)gibi çeşitli araçlar kullanılarak yazılabilir ve yayımlanabilir. Daha fazla bilgi için bkz. [Azure işlevlerini yerel olarak kod ve test](./functions-develop-local.md)etme.
+#### <a name="use-local-tools-and-publishing"></a>Use local tools and publishing
+Function apps can be authored and published using a variety of tools, including [Visual Studio](./functions-develop-vs.md), [Visual Studio Code](functions-create-first-function-vs-code.md), [IntelliJ](./functions-create-maven-intellij.md), [Eclipse](./functions-create-maven-eclipse.md), and the [Azure Functions Core Tools](./functions-develop-local.md). For more information, see [Code and test Azure Functions locally](./functions-develop-local.md).
 
 <!--NOTE: I've removed documentation on FTP, because it does not sync triggers on the consumption plan --glenga -->
 
-## <a id="fileupdate"></a>Azure portal işlevleri düzenleme
-Azure portal yerleşik Işlevler Düzenleyicisi kodunuzu ve *function. JSON* dosyanızı doğrudan satır içinde güncelleştirmenize olanak tanır. Bu yalnızca küçük değişiklikler veya kavram provaları için önerilir-en iyi yöntem, VS Code gibi bir yerel geliştirme aracı kullanmaktır.
+## <a id="fileupdate"></a> How to edit functions in the Azure portal
+The Functions editor built into the Azure portal lets you update your code and your *function.json* file directly inline. This is recommended only for small changes or proofs of concept - best practice is to use a local development tool like VS Code.
 
-## <a name="parallel-execution"></a>Paralel yürütme
-Çoklu iş parçacıklı bir işlev çalışma zamanının daha hızlı bir şekilde tetiklenmesi durumunda, çalışma zamanı işlevi paralel olarak birden çok kez çağırabilir.  Bir işlev uygulaması [Tüketim barındırma planını](functions-scale.md#how-the-consumption-and-premium-plans-work)kullanıyorsa, işlev uygulaması otomatik olarak ölçeklendirebilir.  İşlev uygulamasının her örneği, uygulamanın tüketim barındırma planı üzerinde mi yoksa düzenli bir [App Service barındırma planı](../app-service/overview-hosting-plans.md)üzerinde mi çalıştığı, birden çok iş parçacığı kullanarak eşzamanlı işlev çağrılarını paralel olarak işleyebilir.  Her işlev uygulama örneğindeki maksimum eşzamanlı işlev çağırma sayısı, kullanılan tetikleyici türüne ve işlev uygulamasındaki diğer işlevler tarafından kullanılan kaynaklara göre değişir.
+## <a name="parallel-execution"></a>Parallel execution
+When multiple triggering events occur faster than a single-threaded function runtime can process them, the runtime may invoke the function multiple times in parallel.  If a function app is using the [Consumption hosting plan](functions-scale.md#how-the-consumption-and-premium-plans-work), the function app could scale out automatically.  Each instance of the function app, whether the app runs on the Consumption hosting plan or a regular [App Service hosting plan](../app-service/overview-hosting-plans.md), might process concurrent function invocations in parallel using multiple threads.  The maximum number of concurrent function invocations in each function app instance varies based on the type of trigger being used as well as the resources used by other functions within the function app.
 
-## <a name="functions-runtime-versioning"></a>İşlevler çalışma zamanı sürümü oluşturma
+## <a name="functions-runtime-versioning"></a>Functions runtime versioning
 
-`FUNCTIONS_EXTENSION_VERSION` Uygulama ayarını kullanarak işlevler çalışma zamanının sürümünü yapılandırabilirsiniz. Örneğin, "~ 2" değeri İşlev Uygulaması, ana sürümü olarak 2. x kullanacağınızı gösterir. İşlev uygulamaları, yayımlandıklarında her yeni küçük sürüme yükseltilir. İşlev uygulamanızın tam sürümünün nasıl görüntüleneceği dahil olmak üzere daha fazla bilgi için bkz. [Azure işlevleri çalışma zamanı sürümlerini hedefleme](set-runtime-version.md).
+You can configure the version of the Functions runtime using the `FUNCTIONS_EXTENSION_VERSION` app setting. For example, the value "~2" indicates that your Function App will use 2.x as its major version. Function Apps are upgraded to each new minor version as they are released. For more information, including how to view the exact version of your function app, see [How to target Azure Functions runtime versions](set-runtime-version.md).
 
-## <a name="repositories"></a>Depoları
-Azure Işlevleri için kod açık kaynaktır ve GitHub depolarında depolanır:
+## <a name="repositories"></a>Depolar
+The code for Azure Functions is open source and stored in GitHub repositories:
 
 * [Azure İşlevleri](https://github.com/Azure/Azure-Functions)
-* [Azure Işlevleri ana bilgisayarı](https://github.com/Azure/azure-functions-host/)
-* [Azure Işlevleri portalı](https://github.com/azure/azure-functions-ux)
-* [Azure Işlevleri şablonları](https://github.com/azure/azure-functions-templates)
-* [Azure Web Işleri SDK 'Sı](https://github.com/Azure/azure-webjobs-sdk/)
-* [Azure WebJobs SDK uzantıları](https://github.com/Azure/azure-webjobs-sdk-extensions/)
+* [Azure Functions host](https://github.com/Azure/azure-functions-host/)
+* [Azure Functions portal](https://github.com/azure/azure-functions-ux)
+* [Azure Functions templates](https://github.com/azure/azure-functions-templates)
+* [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/)
+* [Azure WebJobs SDK Extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/)
 
 ## <a name="bindings"></a>Bağlamalar
-Desteklenen tüm bağlamaların bir tablosu aşağıda verilmiştir.
+Here is a table of all supported bindings.
 
 [!INCLUDE [dynamic compute](../../includes/functions-bindings.md)]
 
-Bağlamalardan gelen hatalarla ilgili sorun mu yaşıyorsunuz? [Azure Işlevleri bağlama hata kodları](functions-bindings-error-pages.md) belgelerini gözden geçirin.
+Having issues with errors coming from the bindings? Review the [Azure Functions Binding Error Codes](functions-bindings-error-pages.md) documentation.
 
-## <a name="reporting-issues"></a>Raporlama sorunları
+## <a name="reporting-issues"></a>Reporting Issues
 [!INCLUDE [Reporting Issues](../../includes/functions-reporting-issues.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Daha fazla bilgi için aşağıdaki kaynaklara bakın:
 
-* [Azure Işlevleri Tetikleyicileri ve bağlamaları](functions-triggers-bindings.md)
+* [Azure Functions triggers and bindings](functions-triggers-bindings.md)
 * [Azure İşlevleri’ni yerel olarak kodlama ve test etme](./functions-develop-local.md)
 * [Azure İşlevleri için En İyi Uygulamalar](functions-best-practices.md)
-* [Azure Işlevleri C# geliştirici başvurusu](functions-dotnet-class-library.md)
-* [Azure Işlevleri NodeJS geliştirici başvurusu](functions-reference-node.md)
+* [Azure Functions C# developer reference](functions-dotnet-class-library.md)
+* [Azure Functions NodeJS developer reference](functions-reference-node.md)

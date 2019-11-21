@@ -1,39 +1,39 @@
 ---
 author: rothja
-ms.service: billing
+ms.service: cost-management-billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 4bd890adcaa4982c52366faed0f2975729290360
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: fb77682bce0d9faef8f9ac8197afd8751560d515
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73612194"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224490"
 ---
-Aşağıdaki tabloda, Azure IoT Hub cihaz sağlama hizmeti kaynakları için uygulanan sınırlar listelenmektedir.
+The following table lists the limits that apply to Azure IoT Hub Device Provisioning Service resources.
 
 | Kaynak | Sınır |
 | --- | --- |
-| Azure aboneliği başına maksimum cihaz sağlama hizmeti | 10 |
-| En fazla kayıt sayısı | 1\.000.000 |
-| En fazla kayıt sayısı | 1\.000.000 |
-| En fazla kayıt grubu sayısı | 100 |
-| CA sayısı üst sınırı | 25 |
-| En fazla bağlantılı IoT Hub sayısı | 50 |
-| En büyük ileti boyutu | 96 KB|
+| Maximum device provisioning services per Azure subscription | 10 |
+| Maximum number of enrollments | 1\.000.000 |
+| Maximum number of registrations | 1\.000.000 |
+| Maximum number of enrollment groups | 100 |
+| Maximum number of CAs | 25 |
+| Maximum number of linked IoT hubs | 50 |
+| Maximum size of message | 96 KB|
 
 
 > [!NOTE]
-> Aboneliğinizdeki örneklerin sayısını artırmak için [Microsoft desteği](https://azure.microsoft.com/support/options/)başvurun.
+> To increase the number of instances in your subscription, contact [Microsoft Support](https://azure.microsoft.com/support/options/).
 
 > [!NOTE]
-> Sağlama hizmetinizdeki kayıt ve kayıt sayısını artırmak için [Microsoft desteği](https://azure.microsoft.com/support/options/)başvurun.
+> To increase the number of enrollments and registrations on your provisioning service, contact [Microsoft Support](https://azure.microsoft.com/support/options/).
 
-Cihaz sağlama hizmeti, aşağıdaki kotalar aşıldığında istekleri kısıtlar.
+The Device Provisioning Service throttles requests when the following quotas are exceeded.
 
-| Kısıtlama | Birim başına değer |
+| Kısıtlama | Per-unit value |
 | --- | --- |
-| İşlemler | 200/dk/hizmet |
-| Cihaz kayıtları | 200/dk/hizmet |
-| Cihaz yoklama işlemi | 5/10 sn/cihaz |
+| Operations | 200/min/service |
+| Cihaz kayıtları | 200/min/service |
+| Device polling operation | 5/10 sec/device |
