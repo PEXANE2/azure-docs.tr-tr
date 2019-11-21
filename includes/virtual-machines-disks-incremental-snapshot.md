@@ -8,44 +8,44 @@ ms.topic: include
 ms.date: 09/23/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a7e9e36f75d0b0638fadbf92e713a924e816807d
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: adc4a894f4617f681cefbc8049e453d004ce417e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012388"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74260906"
 ---
-Artımlı anlık görüntüler (Önizleme), alınan yönetilen diskler için zaman içinde son anlık görüntüden bu yana yapılan tüm değişikliklerden oluşur. Artımlı bir anlık görüntüyü indirmeye veya başka bir şekilde kullanmaya çalıştığınızda, tam VHD kullanılır. Yönetilen disk anlık görüntülerinin bu yeni özelliği, siz tercih etmediğiniz müddetçe her bir anlık görüntü ile tüm diski depolamak için artık gerekli olmadığından daha fazla maliyetli olabilir. Düzenli anlık görüntülerle olduğu gibi, artımlı anlık görüntüler tam yönetilen disk oluşturmak için veya düzenli bir anlık görüntü oluşturmak için kullanılabilir.
+Incremental snapshots (preview) are point in time backups for managed disks that, when taken, consist only of all the changes since the last snapshot. When you attempt to download or otherwise use an incremental snapshot, the full VHD is used. This new capability for managed disk snapshots can potentially allow them to be more cost effective, since you are no longer required to store the entire disk with each individual snapshot, unless you choose to. Just like regular snapshots, incremental snapshots can be used to create a full managed disk or, to make a regular snapshot.
 
-Artımlı anlık görüntü ve normal anlık görüntü arasında birkaç fark vardır. Artımlı anlık görüntüler, diskin depolama türünden bağımsız olarak her zaman standart HDD depolamayı kullanır, ancak normal anlık görüntüler Premium SSD 'Ler kullanabilir. VM dağıtımlarını ölçeklendirmek için Premium depolamada düzenli anlık görüntüler kullanıyorsanız, [paylaşılan görüntü galerisinde](../articles/virtual-machines/linux/shared-image-galleries.md)standart depolamada özel görüntüler kullanmanızı öneririz. Daha düşük maliyetle daha büyük ölçekli bir ölçek elde etmenize yardımcı olur. Ayrıca, artımlı anlık görüntüler, bölgesel olarak [yedekli depolama](../articles/storage/common/storage-redundancy-zrs.md) (ZRS) ile daha iyi güvenilirlik sunar. ZRS seçili bölgede kullanılabiliyorsa, artımlı bir anlık görüntü, ZRS 'yi otomatik olarak kullanır. ZRS bölgede yoksa, anlık görüntü varsayılan [olarak yerel olarak yedekli depolama](../articles/storage/common/storage-redundancy-lrs.md) (LRS) olarak değişir. Bu davranışı geçersiz kılabilir ve bir el ile seçebilirsiniz ancak bunun için önerilmez.
+There are a few differences between an incremental snapshot and a regular snapshot. Incremental snapshots will always use standard HDDs storage, irrespective of the storage type of the disk, whereas regular snapshots can use premium SSDs. If you are using regular snapshots on Premium Storage to scale up VM deployments, we recommend you use custom images on standard storage in the [Shared Image Gallery](../articles/virtual-machines/linux/shared-image-galleries.md). It will help you to achieve a more massive scale with lower cost. Additionally, incremental snapshots potentially offer better reliability with [zone-redundant storage](../articles/storage/common/storage-redundancy-zrs.md) (ZRS). If ZRS is available in the selected region, an incremental snapshot will use ZRS automatically. If ZRS is not available in the region, then the snapshot will default to [locally-redundant storage](../articles/storage/common/storage-redundancy-lrs.md) (LRS). You can override this behavior and select one manually but, we do not recommend that.
 
-Artımlı anlık görüntüler, yönetilen diskler için benzersiz olarak kullanılabilen bir fark özelliği de sunar. Bunlar, blok düzeyine kadar, aynı yönetilen disklerin iki artımlı anlık görüntüsü arasında değişiklik almanızı sağlar. Bu özelliği, anlık görüntüleri bölgeler arasında kopyalarken veri parmak izini azaltmak için kullanabilirsiniz.
+Incremental snapshots also offer a differential capability, which is uniquely available to managed disks. They enable you to get the changes between two incremental snapshots of the same managed disks, down to the block level. You can use this capability to reduce your data footprint when copying snapshots across regions.
 
-Henüz önizlemeye kaydolmadıysanız ve artımlı anlık görüntüleri kullanmaya başlamak istiyorsanız, genel önizlemeye erişim sağlamak için AzureDisks@microsoft.com adresinden e-posta gönderin.
+If you haven't yet signed up for the preview and you'd like to start using incremental snapshots, email us at AzureDisks@microsoft.com to get access to the public preview.
 
 ## <a name="restrictions"></a>Kısıtlamalar
 
-- Artımlı anlık görüntüler şu anda yalnızca Orta Batı ABD ve Kuzey Avrupa kullanılabilir.
-- Bir diskin boyutunu değiştirdikten sonra Artımlı anlık görüntüler şu anda oluşturulamaz.
-- Artımlı anlık görüntüler şu anda abonelikler arasında taşınamaz.
-- Şu anda, belirli bir anda belirli bir anlık görüntü ailesinin en fazla beş anlık görüntüsüne sahip SAS URI 'Leri oluşturabilirsiniz.
-- Bu diskin aboneliği dışındaki belirli bir disk için artımlı bir anlık görüntü oluşturamazsınız.
-- Her beş dakikada bir disk başına en fazla yedi Artımlı anlık görüntü oluşturulabilir.
-- Tek bir disk için toplam 200 Artımlı anlık görüntü oluşturulabilir.
+- Incremental snapshots are currently only available in West Central US and North Europe.
+- Incremental snapshots currently cannot be created after you've changed the size of a disk.
+- Incremental snapshots currently cannot be moved between subscriptions.
+- You can currently only generate SAS URIs of up to five snapshots of a particular snapshot family at any given time.
+- You cannot create an incremental snapshot for a particular disk outside of that disk's subscription.
+- Up to seven incremental snapshots per disk can be created every five minutes.
+- A total of 200 incremental snapshots can be created for a single disk.
 
 ## <a name="powershell"></a>PowerShell
 
-Artımlı bir anlık görüntü oluşturmak için Azure PowerShell kullanabilirsiniz. Azure PowerShell en son sürümü gerekir, aşağıdaki komut bunu yükleyecek veya mevcut yüklemenizi en son sürümüne güncelleştirecek:
+You can use Azure PowerShell to create an incremental snapshot. You will need the latest version of Azure PowerShell, the following command will either install it or update your existing installation to latest:
 
 ```PowerShell
 Install-Module -Name Az -AllowClobber -Scope CurrentUser
 ```
 
-Yüklendikten sonra, `az login`PowerShell oturumunda oturum açın.
+Once that is installed, login to your PowerShell session with `az login`.
 
-Azure PowerShell ile artımlı bir anlık görüntü oluşturmak için, [New-AzSnapShotConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) ile yapılandırmayı `-Incremental` parametresiyle ayarlayın ve ardından bunu `-Snapshot` parametresi aracılığıyla [New-azsnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) öğesine bir değişken olarak geçirin.
+To create an incremental snapshot with Azure PowerShell, set the configuration with [New-AzSnapShotConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) with the `-Incremental` parameter and then pass that as a variable to [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) through the `-Snapshot` parameter.
 
-`<yourDiskNameHere>`, `<yourResourceGroupNameHere>`ve `<yourDesiredSnapShotNameHere>` değerlerini değerlerinizle değiştirin, ardından artımlı bir anlık görüntü oluşturmak için aşağıdaki betiği kullanabilirsiniz:
+Replace `<yourDiskNameHere>`, `<yourResourceGroupNameHere>`, and `<yourDesiredSnapShotNameHere>` with your values, then you can use the following script to create an incremental snapshot:
 
 ```PowerShell
 # Get the disk that you need to backup by creating an incremental snapshot
@@ -56,9 +56,9 @@ $snapshotConfig=New-AzSnapshotConfig -SourceUri $yourDisk.Id -Location $yourDisk
 New-AzSnapshot -ResourceGroupName <yourResourceGroupNameHere> -SnapshotName <yourDesiredSnapshotNameHere> -Snapshot $snapshotConfig 
 ```
 
-`SourceResourceId` ve anlık görüntülerin `SourceUniqueId` özellikleriyle aynı diskten Artımlı anlık görüntüleri tanımlayabilirsiniz. `SourceResourceId`, üst diskin Azure Resource Manager kaynak KIMLIĞIDIR. `SourceUniqueId`, diskin `UniqueId` özelliğinden devralınan değerdir. Bir diski silip aynı ada sahip yeni bir disk oluşturursanız, `UniqueId` özelliğinin değeri değişir.
+You can identify incremental snapshots from the same disk with the `SourceResourceId` and the `SourceUniqueId` properties of snapshots. `SourceResourceId` is the Azure Resource Manager resource ID of the parent disk. `SourceUniqueId` is the value inherited from the `UniqueId` property of the disk. If you were to delete a disk and then create a new disk with the same name, the value of the `UniqueId` property changes.
 
-Belirli bir diskle ilişkili tüm anlık görüntülerin listesini oluşturmak için `SourceResourceId` ve `SourceUniqueId` kullanabilirsiniz. `<yourResourceGroupNameHere>` değerini değer ile değiştirin ve ardından mevcut Artımlı anlık görüntülerinizi listelemek için aşağıdaki örneği kullanabilirsiniz:
+You can use `SourceResourceId` and `SourceUniqueId` to create a list of all snapshots associated with a particular disk. Replace `<yourResourceGroupNameHere>` with your value and then you can use the following example to list your existing incremental snapshots:
 
 ```PowerShell
 $snapshots = Get-AzSnapshot -ResourceGroupName <yourResourceGroupNameHere>
@@ -78,15 +78,15 @@ $incrementalSnapshots
 
 ## <a name="cli"></a>CLI
 
-Azure CLı ile artımlı bir anlık görüntü oluşturabilirsiniz. Azure CLı 'nin en son sürümüne ihtiyacınız olacaktır. Aşağıdaki komut, mevcut yüklemenizi en son sürüme yükler veya güncelleştirir:
+You can create an incremental snapshot with the Azure CLI, you will need the latest version of Azure CLI. The following command will either install or update your existing installation to the latest version:
 
 ```PowerShell
 Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'
 ```
 
-Artımlı bir anlık görüntü oluşturmak için, `--incremental` parametresiyle [az Snapshot Create](https://docs.microsoft.com/cli/azure/snapshot?view=azure-cli-latest#az-snapshot-create) kullanın.
+To create an incremental snapshot, use [az snapshot create](https://docs.microsoft.com/cli/azure/snapshot?view=azure-cli-latest#az-snapshot-create) with the `--incremental` parameter.
 
-Aşağıdaki örnek, artımlı bir anlık görüntü oluşturur, `<yourDesiredSnapShotNameHere>`, `<yourResourceGroupNameHere>`,`<exampleDiskName>`ve `<exampleLocation>` kendi değerlerinizle değiştirin, ardından örneği çalıştırın:
+The following example creates an incremental snapshot, replace `<yourDesiredSnapShotNameHere>`, `<yourResourceGroupNameHere>`,`<exampleDiskName>`, and `<exampleLocation>` with your own values, then run the example:
 
 ```bash
 sourceResourceId=$(az disk show -g <yourResourceGroupNameHere> -n <exampleDiskName> --query '[id]' -o tsv)
@@ -98,13 +98,13 @@ az snapshot create -g <yourResourceGroupNameHere> \
 --incremental
 ```
 
-`SourceResourceId` ve anlık görüntülerin `SourceUniqueId` özellikleriyle aynı diskten Artımlı anlık görüntüleri tanımlayabilirsiniz. `SourceResourceId`, üst diskin Azure Resource Manager kaynak KIMLIĞIDIR. `SourceUniqueId`, diskin `UniqueId` özelliğinden devralınan değerdir. Bir diski silip aynı ada sahip yeni bir disk oluşturursanız, `UniqueId` özelliğinin değeri değişir.
+You can identify incremental snapshots from the same disk with the `SourceResourceId` and the `SourceUniqueId` properties of snapshots. `SourceResourceId` is the Azure Resource Manager resource ID of the parent disk. `SourceUniqueId` is the value inherited from the `UniqueId` property of the disk. If you were to delete a disk and then create a new disk with the same name, the value of the `UniqueId` property changes.
 
-Belirli bir diskle ilişkili tüm anlık görüntülerin listesini oluşturmak için `SourceResourceId` ve `SourceUniqueId` kullanabilirsiniz. Aşağıdaki örnekte belirli bir diskle ilişkili tüm artımlı anlık görüntüler listelenir, ancak bazı ayarlar gereklidir.
+You can use `SourceResourceId` and `SourceUniqueId` to create a list of all snapshots associated with a particular disk. The following example will list all incremental snapshots associated with a particular disk but, it requires some setup.
 
-Bu örnek, verileri sorgulamak için JQ kullanır. Örneği çalıştırmak için [JQ 'yı yüklemelisiniz](https://stedolan.github.io/jq/download/).
+This example uses jq for querying the data. To run the example, you must [install jq](https://stedolan.github.io/jq/download/).
 
-`<yourResourceGroupNameHere>` ve `<exampleDiskName>` değerlerini değerlerinizle değiştirin, ardından JQ 'yi de yüklediğiniz sürece mevcut Artımlı anlık görüntülerinizi listelemek için aşağıdaki örneği kullanabilirsiniz:
+Replace `<yourResourceGroupNameHere>` and `<exampleDiskName>` with your values, then you can use the following example to list your existing incremental snapshots, as long as you've also installed jq:
 
 ```bash
 sourceUniqueId=$(az disk show -g <yourResourceGroupNameHere> -n <exampleDiskName> --query '[uniqueId]' -o tsv)
@@ -118,7 +118,7 @@ az snapshot list -g <yourResourceGroupNameHere> -o json \
 
 ## <a name="resource-manager-template"></a>Resource Manager şablonu
 
-Artımlı bir anlık görüntü oluşturmak için Azure Resource Manager şablonlarını da kullanabilirsiniz. ApiVersion 'ın **2019-03-01** olarak ayarlandığından ve artımlı özelliğinin de true olarak ayarlandığından emin olmanız gerekir. Aşağıdaki kod parçacığı, Kaynak Yöneticisi şablonlarıyla artımlı bir anlık görüntü oluşturma örneğidir:
+You can also use Azure Resource Manager templates to create an incremental snapshot. You'll need to make sure the apiVersion is set to **2019-03-01** and that the incremental property is also set to true. The following snippet is an example of how to create an incremental snapshot with Resource Manager templates:
 
 ```json
 {
@@ -154,4 +154,8 @@ Artımlı bir anlık görüntü oluşturmak için Azure Resource Manager şablon
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Henüz önizlemeye kaydolmadıysanız ve artımlı anlık görüntüleri kullanmaya başlamak istiyorsanız, genel önizlemeye erişim sağlamak için AzureDisks@microsoft.com adresinden e-posta gönderin.
+1. If you haven't yet signed up for the preview and you'd like to start using incremental snapshots, email us at AzureDisks@microsoft.com to get access to the public preview. 
+
+2. Explore the following samples for cross-region copy of incremental snapshots using differential capability   
+
+    - [Using Azure .Net SDKs](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots)

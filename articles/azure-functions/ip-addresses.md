@@ -1,68 +1,62 @@
 ---
-title: Azure Işlevlerinde IP adresleri
-description: İşlev uygulamaları için gelen ve giden IP adreslerini bulmayı ve bunların değişmesine neden olduğunu öğrenin.
-services: functions
-documentationcenter: ''
-author: ggailey777
-manager: jeconnoc
-ms.service: azure-functions
+title: IP addresses in Azure Functions
+description: Learn how to find inbound and outbound IP addresses for function apps, and what causes them to change.
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.author: glenga
-ms.openlocfilehash: d8b6a342dd32d430f7a40a1e0a0a17a482a0816d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 327d616c36bcbbb1562349afffd529efb2b5d27f
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469059"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230337"
 ---
-# <a name="ip-addresses-in-azure-functions"></a>Azure Işlevlerinde IP adresleri
+# <a name="ip-addresses-in-azure-functions"></a>IP addresses in Azure Functions
 
-Bu makalede, işlev uygulamalarının IP adresleriyle ilgili aşağıdaki konular açıklanmaktadır:
+This article explains the following topics related to IP addresses of function apps:
 
-* Bir işlev uygulaması tarafından kullanılmakta olan IP adreslerini bulma.
-* İşlev uygulamasının IP adreslerinin değiştirilmesine neden olan durum.
-* Bir işlev uygulamasına erişebilen IP adreslerini kısıtlama.
-* İşlev uygulaması için ayrılmış IP adresleri alma.
+* How to find the IP addresses currently in use by a function app.
+* What causes a function app's IP addresses to be changed.
+* How to restrict the IP addresses that can access a function app.
+* How to get dedicated IP addresses for a function app.
 
-IP adresleri, bağımsız işlevlerle değil işlev uygulamalarıyla ilişkilendirilir. Gelen HTTP istekleri bağımsız işlevleri çağırmak için gelen IP adresini kullanamaz; Varsayılan etki alanı adını (functionappname.azurewebsites.net) veya özel bir etki alanı adını kullanmaları gerekir.
+IP addresses are associated with function apps, not with individual functions. Incoming HTTP requests can't use the inbound IP address to call individual functions; they must use the default domain name (functionappname.azurewebsites.net) or a custom domain name.
 
-## <a name="function-app-inbound-ip-address"></a>İşlev uygulaması gelen IP adresi
+## <a name="function-app-inbound-ip-address"></a>Function app inbound IP address
 
-Her işlev uygulamasının tek bir gelen IP adresi vardır. Bu IP adresini bulmak için:
+Each function app has a single inbound IP address. To find that IP address:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
-2. İşlev uygulamasına gidin.
-3. **Platform özellikleri**' ni seçin.
-4. **Özellikler**' i seçin ve **sanal IP adresı**altında gelen IP adresi görüntülenir.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+2. Navigate to the function app.
+3. Select **Platform features**.
+4. Select **Properties**, and the inbound IP address appears under **Virtual IP address**.
 
-## <a name="find-outbound-ip-addresses"></a>İşlev uygulaması giden IP adresleri
+## <a name="find-outbound-ip-addresses"></a>Function app outbound IP addresses
 
-Her işlev uygulamasının kullanılabilir bir giden IP adresleri kümesi vardır. Bir arka uç veritabanı gibi bir işlevden gelen giden bağlantılar, kaynak IP adresi olarak kullanılabilir giden IP adreslerinden birini kullanır. Belirli bir bağlantının kullanacağı IP adresini önceden kullanacağınızı bilemezsiniz. Bu nedenle, arka uç hizmetinizin güvenlik duvarını tüm işlev uygulamasının giden IP adreslerine açması gerekir.
+Each function app has a set of available outbound IP addresses. Any outbound connection from a function, such as to a back-end database, uses one of the available outbound IP addresses as the origin IP address. You can't know beforehand which IP address a given connection will use. For this reason, your back-end service must open its firewall to all of the function app's outbound IP addresses.
 
-Bir işlev uygulaması için kullanılabilir giden IP adreslerini bulmak için:
+To find the outbound IP addresses available to a function app:
 
-1. [Azure Kaynak Gezgini](https://resources.azure.com)oturum açın.
-2. **Microsoft. Web > siteleri > > {aboneliğiniz} > sağlayıcıları**' nı seçin.
-3. JSON panelinde, işlev uygulamanızın adında sonlanan bir `id` özelliğine sahip siteyi bulun.
-4. Bkz. `outboundIpAddresses` ve `possibleOutboundIpAddresses`. 
+1. Sign in to the [Azure Resource Explorer](https://resources.azure.com).
+2. Select **subscriptions > {your subscription} > providers > Microsoft.Web > sites**.
+3. In the JSON panel, find the site with an `id` property that ends in the name of your function app.
+4. See `outboundIpAddresses` and `possibleOutboundIpAddresses`. 
 
-`outboundIpAddresses` kümesi, işlev uygulaması tarafından şu anda kullanılabilir. `possibleOutboundIpAddresses` kümesi, yalnızca işlev uygulaması [diğer fiyatlandırma katmanlarına ölçeklenirken](#outbound-ip-address-changes)KULLANILABILIR olacak IP adreslerini içerir.
+The set of `outboundIpAddresses` is currently available to the function app. The set of `possibleOutboundIpAddresses` includes IP addresses that will be available only if the function app [scales to other pricing tiers](#outbound-ip-address-changes).
 
-Kullanılabilir giden IP adreslerini bulmanın alternatif bir yolu [Cloud Shell](../cloud-shell/quickstart.md)kullanmaktır:
+An alternative way to find the available outbound IP addresses is by using the [Cloud Shell](../cloud-shell/quickstart.md):
 
 ```azurecli-interactive
 az webapp show --resource-group <group_name> --name <app_name> --query outboundIpAddresses --output tsv
 az webapp show --resource-group <group_name> --name <app_name> --query possibleOutboundIpAddresses --output tsv
 ```
 > [!NOTE]
-> [Tüketim planında](functions-scale.md#consumption-plan) çalışan bir işlev uygulaması ölçeklendirilirse, yeni BIR giden IP adresi aralığı atanabilir. Tüketim planında çalışırken, tüm veri merkezini beyaz listeye almanız gerekebilir.
+> When a function app that runs on the [Consumption plan](functions-scale.md#consumption-plan) is scaled, a new range of outbound IP addresses may be assigned. When running on the Consumption plan, you may need to whitelist the entire data center.
 
-## <a name="data-center-outbound-ip-addresses"></a>Veri merkezi giden IP adresleri
+## <a name="data-center-outbound-ip-addresses"></a>Data center outbound IP addresses
 
-İşlev uygulamalarınız tarafından kullanılan giden IP adreslerini beyaz listeye almanız gerekiyorsa, uygulamanın veri merkezi (Azure bölgesi) işlevini beyaz bir şekilde listeleyerek başka bir seçenek vardır. [Tüm Azure veri MERKEZLERININ IP adreslerini listeleyen BIR JSON dosyası indirebilirsiniz](https://www.microsoft.com/en-us/download/details.aspx?id=56519). Ardından, işlev uygulamanızın çalıştırıldığı bölge için geçerli olan JSON parçasını bulun.
+If you need to whitelist the outbound IP addresses used by your function apps, another option is to whitelist the function apps' data center (Azure region). You can [download a JSON file that lists IP addresses for all Azure data centers](https://www.microsoft.com/en-us/download/details.aspx?id=56519). Then find the JSON fragment that applies to the region that your function app runs in.
 
-Örneğin, Batı Avrupa JSON parçası şöyle görünebilir:
+For example, this is what the Western Europe JSON fragment might look like:
 
 ```
 {
@@ -84,56 +78,56 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 }
 ```
 
- Bu dosyanın ne zaman güncelleştirildiği ve IP adreslerinin ne zaman değiştirileceği hakkında bilgi için [Indirme Merkezi sayfasının](https://www.microsoft.com/en-us/download/details.aspx?id=56519) **Ayrıntılar** bölümünü genişletin.
+ For information about when this file is updated and when the IP addresses change, expand the **Details** section of the [Download Center page](https://www.microsoft.com/en-us/download/details.aspx?id=56519).
 
-## <a name="inbound-ip-address-changes"></a>Gelen IP adresi değişiklikleri
+## <a name="inbound-ip-address-changes"></a>Inbound IP address changes
 
-Şu durumlarda gelen IP **adresi değişebilir** :
+The inbound IP address **might** change when you:
 
-- Bir işlev uygulamasını silip farklı bir kaynak grubunda yeniden oluşturun.
-- Bir kaynak grubu ve bölge birleşiminde son işlev uygulamasını silin ve yeniden oluşturun.
-- [Sertifika yenileme](../app-service/configure-ssl-certificate.md#renew-certificate)sırasında olduğu gıbı bir SSL bağlamasını silin.
+- Delete a function app and recreate it in a different resource group.
+- Delete the last function app in a resource group and region combination, and re-create it.
+- Delete an SSL binding, such as during [certificate renewal](../app-service/configure-ssl-certificate.md#renew-certificate)).
 
-İşlev uygulamanız bir [Tüketim planında](functions-scale.md#consumption-plan)çalıştığında, listede listelenenler gibi herhangi bir eylem gerçekleştirmemeniz durumunda gelen IP adresi de değişebilir.
+When your function app runs in a [Consumption plan](functions-scale.md#consumption-plan), the inbound IP address might also change when you haven't taken any actions such as the ones listed.
 
-## <a name="outbound-ip-address-changes"></a>Giden IP adresi değişiklikleri
+## <a name="outbound-ip-address-changes"></a>Outbound IP address changes
 
-Bir işlev uygulaması için kullanılabilir giden IP adresleri kümesi şunları yaptığınızda değişebilir:
+The set of available outbound IP addresses for a function app might change when you:
 
-* Gelen IP adresini değiştirecek herhangi bir işlem yapın.
-* App Service planı fiyatlandırma katmanınızı değiştirin. Uygulamanızın kullanabileceği tüm olası giden IP adreslerinin listesi, tüm fiyatlandırma katmanları için `possibleOutboundIPAddresses` özellikte. Bkz. [giden IP 'Leri bulma](#find-outbound-ip-addresses).
+* Take any action that can change the inbound IP address.
+* Change your App Service plan pricing tier. The list of all possible outbound IP addresses your app can use, for all pricing tiers, is in the `possibleOutboundIPAddresses` property. See [Find outbound IPs](#find-outbound-ip-addresses).
 
-İşlev uygulamanız bir [Tüketim planında](functions-scale.md#consumption-plan)çalıştığında, listede listelenenler gibi herhangi bir eylem gerçekleştirmediyse giden IP adresi de değişebilir.
+When your function app runs in a [Consumption plan](functions-scale.md#consumption-plan), the outbound IP address might also change when you haven't taken any actions such as the ones listed.
 
-Giden IP adresi değişikliğini kasıtlı olarak zorlamak için:
+To deliberately force an outbound IP address change:
 
-1. Standart ve Premium v2 fiyatlandırma katmanları arasında App Service planınızı yukarı veya aşağı ölçeklendirin.
-2. 10 dakika bekleyin.
-3. Başlattığınız yere doğru ölçeklendirin.
+1. Scale your App Service plan up or down between Standard and Premium v2 pricing tiers.
+2. Wait 10 minutes.
+3. Scale back to where you started.
 
-## <a name="ip-address-restrictions"></a>IP adresi kısıtlamaları
+## <a name="ip-address-restrictions"></a>IP address restrictions
 
-Bir işlev uygulamasına izin vermek veya erişimi reddetmek istediğiniz IP adreslerinin bir listesini yapılandırabilirsiniz. Daha fazla bilgi için bkz. [Azure App Service STATIK IP kısıtlamaları](../app-service/app-service-ip-restrictions.md).
+You can configure a list of IP addresses that you want to allow or deny access to a function app. For more information, see [Azure App Service Static IP Restrictions](../app-service/app-service-ip-restrictions.md).
 
-## <a name="dedicated-ip-addresses"></a>Ayrılmış IP adresleri
+## <a name="dedicated-ip-addresses"></a>Dedicated IP addresses
 
-Statik, ayrılmış IP adreslerine ihtiyacınız varsa [App Service ortamlar](../app-service/environment/intro.md) (App Service planlarının [yalıtılmış katmanı](https://azure.microsoft.com/pricing/details/app-service/) ) önerilir. Daha fazla bilgi için bkz. [App SERVICE ORTAMı IP adresleri](../app-service/environment/network-info.md#ase-ip-addresses) ve [gelen trafiği bir App Service ortamı denetleme](../app-service/environment/app-service-app-service-environment-control-inbound-traffic.md).
+If you need static, dedicated IP addresses, we recommend [App Service Environments](../app-service/environment/intro.md) (the [Isolated tier](https://azure.microsoft.com/pricing/details/app-service/) of App Service plans). For more information, see [App Service Environment IP addresses](../app-service/environment/network-info.md#ase-ip-addresses) and [How to control inbound traffic to an App Service Environment](../app-service/environment/app-service-app-service-environment-control-inbound-traffic.md).
 
-İşlev uygulamanızın bir App Service Ortamı çalışıp çalışmamasından daha fazla bilgi edinmek için:
+To find out if your function app runs in an App Service Environment:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
-2. İşlev uygulamasına gidin.
-3. **Genel bakış** sekmesini seçin.
-4. App Service planı katmanı **App Service plan/fiyatlandırma katmanı**altında görünür. App Service Ortamı fiyatlandırma katmanı **yalıtılmıştır**.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+2. Navigate to the function app.
+3. Select the **Overview** tab.
+4. The App Service plan tier appears under **App Service plan/pricing tier**. The App Service Environment pricing tier is **Isolated**.
  
-Alternatif olarak, [Cloud Shell](../cloud-shell/quickstart.md)kullanabilirsiniz:
+As an alternative, you can use the [Cloud Shell](../cloud-shell/quickstart.md):
 
 ```azurecli-interactive
 az webapp show --resource-group <group_name> --name <app_name> --query sku --output tsv
 ```
 
-App Service Ortamı `sku` `Isolated`.
+The App Service Environment `sku` is `Isolated`.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-IP değişikliklerinin yaygın bir nedeni, işlev uygulama ölçeği değişikdir. [İşlev uygulaması Ölçeklendirmesi hakkında daha fazla bilgi edinin](functions-scale.md).
+A common cause of IP changes is function app scale changes. [Learn more about function app scaling](functions-scale.md).

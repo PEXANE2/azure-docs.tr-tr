@@ -1,6 +1,6 @@
 ---
-title: Cloudead kullanarak özel bulutta iş yükü sanal makinelerini CloudSimple ile Azure VMware çözümü
-description: Veeam B & R 9,5 kullanarak Azure tabanlı CloudSimple özel bulutu 'nda çalışan sanal makinelerinizi nasıl yedekleyebileceğinizi açıklar.
+title: Azure VMware Solution by CloudSimple - Back up workload virtual machines on Private Cloud using Veeam
+description: Describes how you can back up your virtual machines that are running in an Azure-based CloudSimple Private Cloud using Veeam B&R 9.5
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/16/2019
@@ -8,171 +8,171 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 3414cc54e5023bdeebb2d5536c1408f981e68f19
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 3262841efb9109b1de24fe501ea0a7bea0dd612d
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891393"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232360"
 ---
-# <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>Jeam B & R kullanarak CloudSimple özel bulutunda iş yükü VM 'lerini yedekleme
+# <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>Back up workload VMs on CloudSimple Private Cloud using Veeam B&R
 
-Bu kılavuzda, Veeam B & R 9,5 kullanarak Azure tabanlı CloudSimple özel bulutu 'nda çalışan sanal makinelerinizi nasıl yedekleyebileceğiniz açıklanmaktadır.
+This guide describes how you can back up your virtual machines that are running in an Azure-based CloudSimple Private Cloud by using Veeam B&R 9.5.
 
-## <a name="about-the-veeam-back-up-and-recovery-solution"></a>Veead yedekleme ve kurtarma çözümü hakkında
+## <a name="about-the-veeam-back-up-and-recovery-solution"></a>About the Veeam back up and recovery solution
 
-Veeab çözümü aşağıdaki bileşenleri içerir.
+The Veeam solution includes the following components.
 
-**Yedekleme sunucusu**
+**Backup Server**
 
-Yedekleme sunucusu, Veead için Denetim Merkezi görevi gören bir Windows Server (VM) ve şu işlevleri gerçekleştirir: 
+The backup server is a Windows server (VM) that serves as the control center for Veeam and performs these functions: 
 
-* Yedekleme, çoğaltma, kurtarma doğrulama ve geri yükleme görevlerini düzenler
-* İş zamanlama ve kaynak ayırmayı denetler
-* Yedekleme altyapısı bileşenlerini ayarlamanıza ve yönetmenize ve yedekleme altyapısının genel ayarlarını belirtmenize olanak tanır
+* Coordinates backup, replication, recovery verification, and restore tasks
+* Controls job scheduling and resource allocation
+* Allows you to set up and manage backup infrastructure components and specify global settings for the backup infrastructure
 
-**Proxy sunucular**
+**Proxy Servers**
 
-Yedekleme sunucusu ve yedekleme altyapısının diğer bileşenleri arasında proxy sunucular yüklenir. Aşağıdaki işlevleri yönetir:
+Proxy servers are installed between the backup server and other components of the backup infrastructure. They manage the following functions:
 
-* Üretim depolamadan VM verilerini alma
+* Retrieval of VM data from the production storage
 * Sıkıştırma
 * Yinelenenleri kaldırma
 * Şifreleme
-* Yedekleme deposuna veri iletimi
+* Transmission of data to the backup repository
 
-**Yedekleme deposu**
+**Backup repository**
 
-Yedekleme deposu, Veead 'nin çoğaltılan VM 'Ler için yedekleme dosyalarını, VM kopyalarını ve meta verileri sakladığı depolama konumudur.  Depo, yerel diskler (veya bağlı NFS/SMB) veya bir donanım depolama yinelenenleri kaldırma gereci olan bir Windows veya Linux sunucusu olabilir.
+The backup repository is the storage location where Veeam keeps backup files, VM copies, and metadata for replicated VMs.  The repository can be a Windows or Linux server with local disks (or mounted NFS/SMB) or a hardware storage deduplication appliance.
 
-### <a name="veeam-deployment-scenarios"></a>Veead dağıtım senaryoları
-Bir yedekleme deposu ve uzun süreli yedekleme ve arşivleme için bir depolama hedefi sağlamak üzere Azure 'dan yararlanabilirsiniz. Özel buluttaki ve Azure 'daki yedekleme deposundaki VM 'Ler arasındaki tüm yedekleme ağ trafiği, yüksek bant genişliğine sahip düşük gecikme süreli bir bağlantı üzerinden hareket eder. Bölgeler arasında çoğaltma trafiği, kullanıcılar için bant genişliği maliyetlerini düşürür.
+### <a name="veeam-deployment-scenarios"></a>Veeam deployment scenarios
+You can leverage Azure to provide a backup repository and a storage target for long term backup and archiving. All the backup network traffic between VMs in the Private Cloud and the backup repository in Azure travels over a high bandwidth, low latency link. Replication traffic across regions travels over the internal Azure backplane network, which lowers bandwidth costs for users.
 
-**Temel dağıtım**
+**Basic deployment**
 
-Yedeklenme için 30 TB 'den az olan ortamlarda CloudSimple aşağıdaki yapılandırmayı önerir:
+For environments with less than 30 TB to back up, CloudSimple recommends the following configuration:
 
-* Veeab yedekleme sunucusu ve proxy sunucusu özel buluttaki aynı VM 'ye yüklendi.
-* Azure 'da yedekleme işleri için hedef olarak yapılandırılmış Linux tabanlı birincil yedekleme deposu.
-* `azcopy`, verileri birincil yedekleme deposundan başka bir bölgeye çoğaltılan bir Azure Blob kapsayıcısına kopyalamak için kullanılır.
+* Veeam backup server and proxy server installed on the same VM in the Private Cloud.
+* A Linux based primary backup repository in Azure configured as a target for backup jobs.
+* `azcopy` used to copy the data from the primary backup repository to an Azure blob container that is replicated to another region.
 
-![Temel dağıtım senaryoları](media/veeam-basicdeployment.png)
+![Basic deployment scenarios](media/veeam-basicdeployment.png)
 
-**Gelişmiş dağıtım**
+**Advanced deployment**
 
-Yedeklenme için 30 TB 'tan fazla olan ortamlarda CloudSimple aşağıdaki yapılandırmayı önerir:
+For environments with more than 30 TB to back up, CloudSimple recommends the following configuration:
 
-* Veead tarafından önerildiği şekilde, vSAN kümesindeki düğüm başına bir ara sunucu.
-* Hızlı geri yüklemeler için beş günlük veriyi önbelleğe almak üzere özel buluttaki Windows tabanlı birincil yedekleme deposu.
-* Azure 'daki Linux yedekleme deposu, daha uzun süreli saklama için yedekleme kopyalama işlerinin hedefi olarak. Bu depo, genişleme yedekleme deposu olarak yapılandırılmalıdır.
-* `azcopy`, verileri birincil yedekleme deposundan başka bir bölgeye çoğaltılan bir Azure Blob kapsayıcısına kopyalamak için kullanılır.
+* One proxy server per node in the vSAN cluster, as recommended by Veeam.
+* Windows based primary backup repository in the Private Cloud to cache five days of data for fast restores.
+* Linux backup repository in Azure as a target for backup copy jobs for longer duration retention. This repository should be configured as a scale-out backup repository.
+* `azcopy` used to copy the data from the primary backup repository to an Azure blob container that is replicated to another region.
 
-![Temel dağıtım senaryoları](media/veeam-advanceddeployment.png)
+![Basic deployment scenarios](media/veeam-advanceddeployment.png)
 
-Önceki şekilde, yedekleme proxy 'sinin, vSAN veri deposundaki iş yükü VM disklerine sık erişimli ekleme erişimi olan bir VM olduğuna dikkat edin. Veead, vSAN için Sanal Gereç yedekleme proxy 'si aktarım modunu kullanır.
+In the previous figure, notice that the backup proxy is a VM with Hot Add access to workload VM disks on the vSAN datastore. Veeam uses Virtual Appliance backup proxy transport mode for vSAN.
 
-## <a name="requirements-for-veeam-solution-on-cloudsimple"></a>CloudSimple 'da Veead çözümü için gereksinimler
+## <a name="requirements-for-veeam-solution-on-cloudsimple"></a>Requirements for Veeam solution on CloudSimple
 
-Veeab çözümü şunları yapmanızı gerektirir:
+The Veeam solution requires you to do the following:
 
-* Kendi Veead lisanslarınızı sağlayın.
-* CloudSimple özel bulutu 'nda çalışan iş yüklerini yedeklemek için Veead 'yi dağıtın ve yönetin.
+* Provide your own Veeam licenses.
+* Deploy and manage Veeam to backup the workloads running in the CloudSimple Private Cloud.
 
-Bu çözüm, Veead yedekleme aracı üzerinde tam denetim sağlar ve VM yedekleme işlerini yönetmek için yerel Veead arabirimini veya Veead vCenter eklentisini kullanma seçeneği sunar.
+This solution provides you with full control over the Veeam backup tool and offers the choice to use the native Veeam interface or the Veeam vCenter plug-in to manage VM backup jobs.
 
-Var olan bir Veeab kullanıcısı varsa, Veead Çözüm bileşenlerinde bulunan bölümü atlayabilir ve doğrudan [Veead dağıtım senaryolarına](#veeam-deployment-scenarios)devam edebilirsiniz.
+If you are an existing Veeam user, you can skip the section on Veeam Solution Components and directly proceed to [Veeam Deployment Scenarios](#veeam-deployment-scenarios).
 
-## <a name="install-and-configure-veeam-backups-in-your-cloudsimple-private-cloud"></a>CloudSimple özel bulutunuzda Veead yedeklemelerini yükleyip yapılandırın
+## <a name="install-and-configure-veeam-backups-in-your-cloudsimple-private-cloud"></a>Install and configure Veeam backups in your CloudSimple Private Cloud
 
-Aşağıdaki bölümlerde, CloudSimple özel bulutunuz için bir Veead yedekleme çözümünün nasıl yükleneceği ve yapılandırılacağı açıklanır.
+The following sections describe how to install and configure a Veeam backup solution for your CloudSimple Private Cloud.
 
-Dağıtım işlemi aşağıdaki adımlardan oluşur:
+The deployment process consists of these steps:
 
-1. [vCenter Kullanıcı arabirimi: özel bulutunuzda altyapı hizmetleri ayarlama](#vcenter-ui-set-up-infrastructure-services-in-your-private-cloud)
-2. [CloudSimple Portalı: Veead için özel bulut ağını ayarlama](#cloudsimple-private-cloud-set-up-private-cloud-networking-for-veeam)
-3. [CloudSimple Portalı: Ilerleme ayrıcalıkları](#cloudsimple-private-cloud-escalate-privileges-for-cloudowner)
-4. [Azure portal: Sanal ağınızı özel buluta bağlayın](#azure-portal-connect-your-virtual-network-to-the-private-cloud)
-5. [Azure portal: Azure 'da bir yedekleme deposu oluşturun](#azure-portal-connect-your-virtual-network-to-the-private-cloud)
-6. [Azure portal: uzun süreli veri saklama için Azure Blob depolamayı yapılandırma](#configure-azure-blob-storage-for-long-term-data-retention)
-7. [Özel bulutun vCenter Kullanıcı arabirimi: Install Veeam B & R](#vcenter-console-of-private-cloud-install-veeam-br)
-8. [Veeamconsole: Veead Backup & kurtarma yazılımını yapılandırma](#veeam-console-install-veeam-backup-and-recovery-software)
-9. [CloudSimple Portal: Veead erişimi ayarlama ve bu ayrıcalıkları serbest bırakma](#cloudsimple-portal-set-up-veeam-access-and-de-escalate-privileges)
+1. [vCenter UI: Set up infrastructure services in your Private Cloud](#vcenter-ui-set-up-infrastructure-services-in-your-private-cloud)
+2. [CloudSimple portal: Set up Private Cloud networking for Veeam](#cloudsimple-private-cloud-set-up-private-cloud-networking-for-veeam)
+3. [CloudSimple portal: Escalate Privileges](#cloudsimple-private-cloud-escalate-privileges-for-cloudowner)
+4. [Azure portal: Connect your virtual network to the Private Cloud](#azure-portal-connect-your-virtual-network-to-the-private-cloud)
+5. [Azure portal: Create a backup repository in Azure](#azure-portal-connect-your-virtual-network-to-the-private-cloud)
+6. [Azure portal: Configure Azure blob storage for long term data retention](#configure-azure-blob-storage-for-long-term-data-retention)
+7. [vCenter UI of Private Cloud: Install Veeam B&R](#vcenter-console-of-private-cloud-install-veeam-br)
+8. [Veeam Console: Configure Veeam Backup & Recovery software](#veeam-console-install-veeam-backup-and-recovery-software)
+9. [CloudSimple portal: Set up Veeam access and de-escalate privileges](#cloudsimple-portal-set-up-veeam-access-and-de-escalate-privileges)
 
 ### <a name="before-you-begin"></a>Başlamadan önce
 
-Veead dağıtımına başlamadan önce aşağıdakiler gereklidir:
+The following are required before you begin Veeam deployment:
 
-* Size ait bir Azure aboneliği
-* Önceden oluşturulmuş bir Azure Kaynak grubu
-* Aboneliğinizdeki bir Azure sanal ağı
-* Bir Azure depolama hesabı
-* CloudSimple Portalı kullanılarak oluşturulan [özel bir bulut](create-private-cloud.md) .  
+* An Azure subscription owned by you
+* A pre-created Azure resource group
+* An Azure virtual network in your subscription
+* An Azure storage account
+* A [Private Cloud](create-private-cloud.md) created using the CloudSimple portal.  
 
-Uygulama aşamasında aşağıdaki öğeler gereklidir:
+The following items are needed during the implementation phase:
 
-* Windows için VMware şablonları Veead (Windows Server 2012 R2-64 bit görüntü gibi)
-* Yedekleme ağı için tanımlanan bir kullanılabilir VLAN
-* Yedekleme ağına atanacak alt ağın CıDR 'i
-* Veeaz 9,5 U3 yüklenebilen medya (ISO) özel bulutun vSAN veri deposuna yüklendi
+* VMware templates for Windows to install Veeam (such as Windows Server 2012 R2 - 64 bit image)
+* One available VLAN identified for the backup network
+* CIDR of the subnet to be assigned to the backup network
+* Veeam 9.5 u3 installable media (ISO) uploaded to the vSAN datastore of the Private Cloud
 
-### <a name="vcenter-ui-set-up-infrastructure-services-in-your-private-cloud"></a>vCenter Kullanıcı arabirimi: özel bulutunuzda altyapı hizmetleri ayarlama
+### <a name="vcenter-ui-set-up-infrastructure-services-in-your-private-cloud"></a>vCenter UI: Set up infrastructure services in your Private Cloud
 
-İş yüklerinizi ve araçlarınızı yönetmeyi kolaylaştırmak için özel buluttaki altyapı hizmetlerini yapılandırın.
+Configure infrastructure services in the Private Cloud to make it easy to manage your workloads and tools.
 
-* Aşağıdakilerden biri varsa [Active Directory kullanmak Için vCenter Identity kaynaklarını ayarlama](set-vcenter-identity.md) bölümünde açıklandığı gibi bir dış kimlik sağlayıcısı ekleyebilirsiniz:
+* You can add an external identity provider as described in [Set up vCenter identity sources to use Active Directory](set-vcenter-identity.md) if any of the following apply:
 
-  * Şirket içi Active Directory (AD) kullanıcılarını özel bulutunuzda tanımlamak istiyorsunuz.
-  * Tüm kullanıcılar için özel bulutunuzda bir AD ayarlamak istiyorsunuz.
-  * Azure AD 'yi kullanmak istiyorsunuz.
-* Özel buluttaki iş yükleriniz için IP adresi araması, IP adresi yönetimi ve ad çözümleme hizmetleri sağlamak istiyorsanız, [CloudSimple özel BULUTUNUZDA DNS ve DHCP uygulamalarını ve iş yüklerini ayarlama](dns-dhcp-setup.md)bölümünde açıklandığı gıbı bir DHCP ve DNS sunucusu ayarlayın.
+  * You want to identify users from your on-premises Active Directory (AD) in your Private Cloud.
+  * You want to set up an AD in your Private Cloud for all users.
+  * You want to use Azure AD.
+* To provide IP address lookup, IP address management, and name resolution services for your workloads in the Private Cloud, set up a DHCP and DNS server as described in [Set up DNS and DHCP applications and workloads in your CloudSimple Private Cloud](dns-dhcp-setup.md).
 
-### <a name="cloudsimple-private-cloud-set-up-private-cloud-networking-for-veeam"></a>CloudSimple özel bulutu: Veead için özel bulut ağını ayarlama
+### <a name="cloudsimple-private-cloud-set-up-private-cloud-networking-for-veeam"></a>CloudSimple Private Cloud: Set up Private Cloud networking for Veeam
 
-Veead çözümü için özel bulut ağı ayarlamak üzere CloudSimple portalına erişin.
+Access the CloudSimple portal to set up Private Cloud networking for the Veeam solution.
 
-Yedekleme ağı için bir VLAN oluşturun ve bir alt ağ CıDR atayın. Yönergeler için bkz. [VLAN/alt ağlar oluşturma ve yönetme](create-vlan-subnet.md).
+Create a VLAN for the backup network and assign it a subnet CIDR. For instructions, see [Create and manage VLANs/Subnets](create-vlan-subnet.md).
 
-Veead tarafından kullanılan bağlantı noktalarında ağ trafiğine izin vermek için yönetim alt ağı ve yedekleme ağı arasında güvenlik duvarı kuralları oluşturun. Bkz. Veeab konusunda [kullanılan bağlantı noktaları](https://helpcenter.veeam.com/docs/backup/vsphere/used_ports.html?ver=95). Güvenlik duvarı kuralı oluşturma yönergeleri için bkz. [güvenlik duvarı tablolarını ve kurallarını ayarlama](firewall.md).
+Create firewall rules between the management subnet and the backup network to allow network traffic on ports used by Veeam. See the Veeam topic [Used Ports](https://helpcenter.veeam.com/docs/backup/vsphere/used_ports.html?ver=95). For instructions on firewall rule creation, see [Set up firewall tables and rules](firewall.md).
 
-Aşağıdaki tabloda bir bağlantı noktası listesi verilmiştir.
+The following table provides a port list.
 
-| simg | Açıklama | simg | Açıklama |
+| Icon | Açıklama | Icon | Açıklama |
 | ------------ | ------------- | ------------ | ------------- |
-| Backup Sunucusu  | vCenter  | HTTPS/TCP  | 443 |
-| Backup Sunucusu <br> *Veead yedeklemesini dağıtmak için gerekli & çoğaltma bileşenleri* | Yedekleme proxy 'Si  | TCP/UDP  | 135, 137-139 ve 445 |
-    | Backup Sunucusu   | DNS  | PROTOKOLLERINDEN  | 53  | 
-    | Backup Sunucusu   | Veeab güncelleştirme bildirimi sunucusu  | TCP  | 80  | 
-    | Backup Sunucusu   | Veeab lisans güncelleştirme sunucusu  | TCP  | 443  | 
-    | Yedekleme proxy 'Si   | vCenter |   |   | 
-    | Yedekleme proxy 'Si  | Linux yedekleme deposu   | TCP  | 22  | 
-    | Yedekleme proxy 'Si  | Windows yedekleme deposu  | TCP  | 49152-65535   | 
-    | Yedekleme deposu  | Yedekleme proxy 'Si  | TCP  | 2500-5000  | 
-    | Kaynak yedekleme deposu<br> *Yedekleme Kopyalama işleri için kullanılır*  | Hedef yedekleme deposu  | TCP  | 2500-5000  | 
+| Backup Sunucusu  | vCenter  | HTTPS / TCP  | 443 |
+| Backup Sunucusu <br> *Required for deploying Veeam Backup & Replication components* | Backup Proxy  | TCP/UDP  | 135, 137 to 139 and 445 |
+    | Backup Sunucusu   | DNS  | UDP  | 53  | 
+    | Backup Sunucusu   | Veeam Update Notification Server  | TCP  | 80  | 
+    | Backup Sunucusu   | Veeam License Update Server  | TCP  | 443  | 
+    | Backup Proxy   | vCenter |   |   | 
+    | Backup Proxy  | Linux Backup Repository   | TCP  | 22  | 
+    | Backup Proxy  | Windows Backup Repository  | TCP  | 49152 - 65535   | 
+    | Backup Repository  | Backup Proxy  | TCP  | 2500 -5000  | 
+    | Source Backup Repository<br> *Used for backup copy jobs*  | Target Backup Repository  | TCP  | 2500 - 5000  | 
 
-[Güvenlik duvarı tablolarını ve kurallarını ayarlama](firewall.md)bölümünde açıklandığı gibi iş yükü alt ağı ve yedekleme ağı arasında güvenlik duvarı kuralları oluşturun.  Uygulamayla uyumlu yedekleme ve geri yükleme için, belirli uygulamaları barındıran iş yükü VM 'lerinde [ek bağlantı noktaları](https://helpcenter.veeam.com/docs/backup/vsphere/used_ports.html?ver=95) açılmalıdır.
+Create firewall rules between the workload subnet and the backup network as described in [Set up firewall tables and rules](firewall.md).  For application aware backup and restore, [additional ports](https://helpcenter.veeam.com/docs/backup/vsphere/used_ports.html?ver=95) must be opened on the workload VMs that host specific applications.
 
-Varsayılan olarak, CloudSimple, 1Gbps ExpressRoute bağlantısı sağlar. Daha büyük ortam boyutları için daha yüksek bir bant genişliği bağlantısı gerekebilir. Daha yüksek bant genişliği bağlantıları hakkında daha fazla bilgi için Azure desteğine başvurun.
+By default, CloudSimple provides a 1Gbps ExpressRoute link. For larger environment sizes, a higher bandwidth link may be required. Contact Azure support for more information about higher bandwidth links.
 
-Kuruluma devam etmek için yetkilendirme anahtarı ve eş devre URI 'sine ve Azure aboneliğinize erişmeniz gerekir.  Bu bilgiler, CloudSimple portalındaki sanal ağ bağlantısı sayfasında bulunur. Yönergeler için bkz. [Azure sanal ağı Için CloudSimple bağlantısı için eşleme bilgileri alma](virtual-network-connection.md). Bilgileri alırken sorun yaşarsanız [desteğe başvurun](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+To continue the setup, you need the authorization key and peer circuit URI and access to your Azure Subscription.  This information is available on the Virtual Network Connection page in the CloudSimple portal. For instructions, see [Obtain peering information for Azure virtual network to CloudSimple connection](virtual-network-connection.md). If you have any trouble obtaining the information, [contact support](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
-### <a name="cloudsimple-private-cloud-escalate-privileges-for-cloudowner"></a>CloudSimple özel bulutu: cloudowner için Ilerletin ayrıcalıkları
+### <a name="cloudsimple-private-cloud-escalate-privileges-for-cloudowner"></a>CloudSimple Private Cloud: Escalate privileges for cloudowner
 
-Varsayılan ' cloudowner ' kullanıcısı, VEEAD 'yi yüklemek için özel bulut vCenter 'da yeterli ayrıcalıklara sahip değil, bu nedenle kullanıcının vCenter ayrıcalıkları ilerletilmiş olmalıdır. Daha fazla bilgi için bkz. [ayrıcalıkları Yükselt](escalate-private-cloud-privileges.md).
+The default 'cloudowner' user doesn't have sufficient privileges in the Private Cloud vCenter to install VEEAM, so the user's vCenter privileges must be escalated. For more information, see [Escalate privileges](escalate-private-cloud-privileges.md).
 
-### <a name="azure-portal-connect-your-virtual-network-to-the-private-cloud"></a>Azure portal: Sanal ağınızı özel buluta bağlayın
+### <a name="azure-portal-connect-your-virtual-network-to-the-private-cloud"></a>Azure portal: Connect your virtual network to the Private Cloud
 
-[ExpressRoute kullanarak Azure sanal ağ bağlantısı](azure-expressroute-connection.md)'ndaki yönergeleri izleyerek sanal ağınızı özel buluta bağlayın.
+Connect your virtual network to the Private Cloud by following the instructions in [Azure Virtual Network Connection using ExpressRoute](azure-expressroute-connection.md).
 
-### <a name="azure-portal-create-a-backup-repository-vm"></a>Azure portal: yedekleme deposu VM 'si oluşturma
+### <a name="azure-portal-create-a-backup-repository-vm"></a>Azure portal: Create a backup repository VM
 
-1. (2 vCPU ve 8 GB bellek) ile standart bir D2 v3 VM oluşturun.
-2. CentOS 7,4 tabanlı görüntüsünü seçin.
-3. VM için bir ağ güvenlik grubu (NSG) yapılandırın. VM 'nin genel IP adresi olmadığından ve genel İnternet 'ten ulaşılamadiğini doğrulayın.
-4. Yeni VM için bir Kullanıcı adı ve parola tabanlı kullanıcı hesabı oluşturun. Yönergeler için, bkz. [Azure Portal Linux sanal makinesi oluşturma](../virtual-machines/linux/quick-create-portal.md).
-5. 1x512 GiB standart HDD oluşturun ve depo VM 'sine bağlayın.  Yönergeler için bkz. [Azure Portal bir WINDOWS sanal makinesine yönetilen veri diski iliştirme](../virtual-machines/windows/attach-managed-disk-portal.md).
-6. [Yönetilen diskte BIR XFS birimi oluşturun](https://www.digitalocean.com/docs/volumes/how-to/). Daha önce belirtilen kimlik bilgilerini kullanarak VM 'de oturum açın. Bir mantıksal birim oluşturmak için aşağıdaki betiği yürütün, diski buna ekleyin, bir XFS FileSystem [bölümü](https://www.digitalocean.com/docs/volumes/how-to/partition/) oluşturun ve bölümü/backup1 yolu altına [bağlayın](https://www.digitalocean.com/docs/volumes/how-to/mount/) .
+1. Create a standard D2 v3 VM with (2 vCPUs and 8 GB memory).
+2. Select the CentOS 7.4 based image.
+3. Configure a network security group (NSG) for the VM. Verify that the VM does not have a public IP address and is not reachable from the public internet.
+4. Create a username and password based user account for the new VM. For instructions, see [Create a Linux virtual machine in the Azure portal](../virtual-machines/linux/quick-create-portal.md).
+5. Create 1x512 GiB standard HDD and attach it to the repository VM.  For instructions, see [How to attach a managed data disk to a Windows VM in the Azure portal](../virtual-machines/windows/attach-managed-disk-portal.md).
+6. [Create an XFS volume on the managed disk](https://www.digitalocean.com/docs/volumes/how-to/). Log in to the VM using the previously mentioned credentials. Execute the following script to create a logical volume, add the disk to it, create an XFS filesystem [partition](https://www.digitalocean.com/docs/volumes/how-to/partition/) and [mount](https://www.digitalocean.com/docs/volumes/how-to/mount/) the partition under the /backup1 path.
 
-    Örnek komut dosyası:
+    Example script:
 
     ```
     sudo pvcreate /dev/sdc
@@ -185,18 +185,18 @@ Varsayılan ' cloudowner ' kullanıcısı, VEEAD 'yi yüklemek için özel bulut
     sudo mount -t xfs /dev/mapper/backup1-backup1 /backup1
     ```
 
-7. /Backup1 ' i özel bulutta çalışan Veead yedekleme sunucusuna NFS bağlama noktası olarak kullanıma sunun. Yönergeler için, [CentOS 6 ' da NFS bağlama ayarlama](https://www.digitalocean.com/community/tutorials/how-to-set-up-an-nfs-mount-on-centos-6)başlıklı dijital okyanus makalesine bakın. Bu NFS paylaşımının adını, Veead yedekleme sunucusunda Yedekleme deposunu yapılandırırken kullanın.
+7. Expose /backup1 as an NFS mount point to the Veeam backup server that is running in the Private Cloud. For instructions, see the Digital Ocean article [How To Set Up an NFS Mount on CentOS 6](https://www.digitalocean.com/community/tutorials/how-to-set-up-an-nfs-mount-on-centos-6). Use this NFS share name when you configure the backup repository in the Veeam backup server.
 
-8. Yedekleme deposu sanal makinesi için NSG 'de filtreleme kurallarını, VM 'ye ve VM 'ye giden tüm ağ trafiğine açıkça izin verecek şekilde yapılandırın.
+8. Configure filtering rules in the NSG for the backup repository VM to explicitly allow all network traffic to and from the VM.
 
 > [!NOTE]
-> Veeab Backup & çoğaltma, Linux yedekleme depolarıyla iletişim kurmak için SSH protokolünü kullanır ve Linux depolarında SCP yardımcı programını gerektirir. SSH arka plan programının düzgün yapılandırıldığını ve bu SCP 'nin Linux ana bilgisayarında kullanılabilir olduğunu doğrulayın.
+> Veeam Backup & Replication uses the SSH protocol to communicate with Linux backup repositories and requires the SCP utility on Linux repositories. Verify that the SSH daemon is properly configured and that SCP is available on the Linux host.
 
-### <a name="configure-azure-blob-storage-for-long-term-data-retention"></a>Uzun süreli veri saklama için Azure Blob depolamayı yapılandırma
+### <a name="configure-azure-blob-storage-for-long-term-data-retention"></a>Configure Azure blob storage for long term data retention
 
-1. Microsoft videosunda [Azure Storage Ile çalışmaya başlama](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage)bölümünde açıklandığı gibi standart türde ve bir blob kapsayıcısının genel amaçlı depolama hesabı (GPv2) oluşturun.
-2. [Kapsayıcı oluşturma](https://docs.microsoft.com/rest/api/storageservices/create-container) başvurusunda açıklandığı gibi bir Azure depolama kapsayıcısı oluşturun.
-2. Microsoft 'tan Linux için `azcopy` komut satırı yardımcı programını indirin. CentOS 7,5 ' de bash kabuğu 'nda aşağıdaki komutları kullanabilirsiniz.
+1. Create a general purpose storage account (GPv2) of standard type and a blob container as described in the Microsoft video [Getting Started with Azure Storage](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage).
+2. Create an Azure storage container, as described in the [Create Container](https://docs.microsoft.com/rest/api/storageservices/create-container) reference.
+2. Download the `azcopy` command line utility for Linux from Microsoft. You can use the following commands in the bash shell in CentOS 7.5.
 
     ```
     wget -O azcopy.tar.gz https://aka.ms/downloadazcopylinux64
@@ -206,100 +206,100 @@ Varsayılan ' cloudowner ' kullanıcısı, VEEAD 'yi yüklemek için özel bulut
     sudo yum -y install icu
     ```
 
-3. Yedekleme dosyalarını blob kapsayıcısından ve öğesinden kopyalamak için `azcopy` komutunu kullanın.  Ayrıntılı komutlar için bkz. [Linux üzerinde AzCopy ile veri aktarma](../storage/common/storage-use-azcopy-linux.md) .
+3. Use the `azcopy` command to copy backup files to and from the blob container.  See [Transfer data with AzCopy on Linux](../storage/common/storage-use-azcopy-linux.md) for detailed commands.
 
-### <a name="vcenter-console-of-private-cloud-install-veeam-br"></a>Özel bulutun vCenter konsolu: Install Veeam B & R
+### <a name="vcenter-console-of-private-cloud-install-veeam-br"></a>vCenter console of Private Cloud: Install Veeam B&R
 
-Özel bulutunuzun vCenter 'a erişerek bir Veeam hizmet hesabı oluşturun, Veeam B & R 9,5 ' yi yükleyip hizmet hesabını kullanarak Veeam 'yi yapılandırın.
+Access vCenter from your Private Cloud to create a Veeam service account, install Veeam B&R 9.5, and configure Veeam using the service account.
 
-1. ' Veeam Backup role ' adlı yeni bir rol oluşturun ve gerekli izinleri Veeam tarafından önerilen şekilde atayın. Ayrıntılar için bkz. Veeab konusu [gerekli izinler](https://helpcenter.veeam.com/docs/backup/vsphere/required_permissions.html?ver=95).
-2. VCenter 'da yeni bir ' Veeam Kullanıcı grubu ' grubu oluşturun ve bunu ' Veeam yedekleme rolü ' olarak atayın.
-3. Yeni bir ' Veeamservice hesabı ' kullanıcısı oluşturun ve ' Veeae kullanıcı grubuna ekleyin.
+1. Create a new role named ‘Veeam Backup Role’ and assign it necessary permissions as recommended by Veeam. For details see the Veeam topic [Required Permissions](https://helpcenter.veeam.com/docs/backup/vsphere/required_permissions.html?ver=95).
+2. Create a new ‘Veeam User Group’ group in vCenter and assign it the ‘Veeam Backup Role’.
+3. Create a new ‘Veeam Service Account’ user and add it to the ‘Veeam User Group’.
 
-    ![Veead hizmet hesabı oluşturma](media/veeam-vcenter01.png)
+    ![Creating a Veeam service account](media/veeam-vcenter01.png)
 
-4. VCenter 'da yedek ağ VLAN 'ıNı kullanarak dağıtılmış bir bağlantı noktası grubu oluşturun. Ayrıntılar için, [vSphere Web Istemcisinde dağıtılmış bir bağlantı noktası grubu oluşturan](https://www.youtube.com/watch?v=wpCd5ZbPOpA)VMware videosunu görüntüleyin.
-5. Veead yedekleme ve proxy sunucuları için VM 'Leri, [veead sistem gereksinimlerine](https://helpcenter.veeam.com/docs/backup/vsphere/system_requirements.html?ver=95)göre vCenter 'da oluşturun. Windows 2012 R2 veya Linux 'u kullanabilirsiniz. Daha fazla bilgi için bkz. [Linux yedek depoları kullanma gereksinimleri](https://www.veeam.com/kb2216).
-6. Veead yedekleme sunucusu VM 'sinde bir CDROM cihazı olarak yüklenebilir Veead ISO takın.
-7. Windows 2012 R2 makinesinde bir RDP oturumu kullanarak (Veeam yüklemesi için hedef), bir Windows 2012 R2 sanal makinesine [Veeam B & R 9.5 U3 'yi yükleme](https://helpcenter.veeam.com/docs/backup/vsphere/install_vbr.html?ver=95) .
-8. Veeab yedekleme sunucusu VM 'sinin iç IP adresini bulun ve IP adresini DHCP sunucusunda statik olacak şekilde yapılandırın. Bunu yapmak için gereken tam adımlar DHCP sunucusuna bağlıdır. Örnek olarak, <a href="https://www.netgate.com/docs/pfsense/dhcp/dhcp-server.html" target="_blank">STATIK DHCP eşlemeleri</a> NETGATE MAKALESINDE bir DHCP sunucusunun bir PFSense yönlendiricisi kullanılarak nasıl yapılandırılacağı açıklanmaktadır.
+4. Create a distributed port group in vCenter using the backup network VLAN. For details, view the VMware video [Creating a Distributed Port Group in the vSphere Web Client](https://www.youtube.com/watch?v=wpCd5ZbPOpA).
+5. Create the VMs for the Veeam backup and proxy servers in vCenter as per the [Veeam system requirements](https://helpcenter.veeam.com/docs/backup/vsphere/system_requirements.html?ver=95). You can use Windows 2012 R2 or Linux. For more information see [Requirements for using Linux backup repositories](https://www.veeam.com/kb2216).
+6. Mount the installable Veeam ISO as a CDROM device in the Veeam backup server VM.
+7. Using an RDP session to the Windows 2012 R2 machine (the target for the Veeam installation), [install Veeam B&R 9.5u3](https://helpcenter.veeam.com/docs/backup/vsphere/install_vbr.html?ver=95) in a Windows 2012 R2 VM.
+8. Find the internal IP address of the Veeam backup server VM and configure the IP address to be static in the DHCP server. The exact steps required to do this depend on the DHCP server. As an example, the Netgate article <a href="https://www.netgate.com/docs/pfsense/dhcp/dhcp-server.html" target="_blank">static DHCP mappings</a> explains how to configure a DHCP server using a pfSense router.
 
-### <a name="veeam-console-install-veeam-backup-and-recovery-software"></a>Veead konsolu: Veead yedekleme ve kurtarma yazılımlarını yükler
+### <a name="veeam-console-install-veeam-backup-and-recovery-software"></a>Veeam console: Install Veeam backup and recovery software
 
-Veead konsolunu kullanarak Veead yedekleme ve kurtarma yazılımlarını yapılandırın. Ayrıntılar için bkz. [Veead Backup & çoğaltma v9-yükleme ve dağıtım](https://www.youtube.com/watch?v=b4BqC_WXARk).
+Using the Veeam console, configure Veeam backup and recovery software. For details, see [Veeam Backup & Replication v9 - Installation and Deployment](https://www.youtube.com/watch?v=b4BqC_WXARk).
 
-1. VMware vSphere yönetilen sunucu ortamı olarak ekleyin. İstendiğinde, özel bulutun vCenter konsolunun başlangıcında oluşturduğunuz Veeam hizmet hesabının kimlik bilgilerini sağlayın [: Veeam B & R 'Yi yükler](#vcenter-console-of-private-cloud-install-veeam-br).
+1. Add VMware vSphere as a managed server environment. When prompted, provide  the credentials of the Veeam Service Account that you created at the beginning of [vCenter Console of Private Cloud: Install Veeam B&R](#vcenter-console-of-private-cloud-install-veeam-br).
 
-    * Yükleme denetimi ve varsayılan Gelişmiş ayarlar için varsayılan ayarları kullanın.
-    * Bağlama sunucusunun konumunu yedekleme sunucusu olacak şekilde ayarlayın.
-    * Veead sunucusu için yapılandırma yedekleme konumunu uzak depoya değiştirin.
+    * Use default settings for load control and default advanced settings.
+    * Set the mount server location  to be the backup server.
+    * Change the configuration backup location for the Veeam server to the remote repository.
 
-2. Azure 'da Linux sunucusunu yedekleme deposu olarak ekleyin.
+2. Add the Linux server in Azure as the backup repository.
 
-    * Yükleme denetimi ve Gelişmiş ayarlar için varsayılan ayarları kullanın. 
-    * Bağlama sunucusunun konumunu yedekleme sunucusu olacak şekilde ayarlayın.
-    * Veead sunucusu için yapılandırma yedekleme konumunu uzak depoya değiştirin.
+    * Use default settings for load control and for the advanced settings. 
+    * Set the mount server location to be the backup server.
+    * Change the configuration backup location for the Veeam server to the remote repository.
 
-3. **Ana > yapılandırma yedekleme ayarlarını**kullanarak yapılandırma yedeklemesi şifrelemesini etkinleştirin.
+3. Enable encryption of configuration backup using **Home> Configuration Backup Settings**.
 
-4. VMware ortamı için proxy sunucusu olarak bir Windows Server VM 'si ekleyin. Bir ara sunucu için ' trafik kuralları ' ' nı kullanarak, yedekleme verilerini kablo üzerinden şifreleyin.
+4. Add a Windows server VM as a proxy server for VMware environment. Using ‘Traffic Rules’ for a proxy, encrypt backup data over the wire.
 
-5. Yedekleme işlerini yapılandırın.
-    * Yedekleme işlerini yapılandırmak için, [yedekleme Işi oluşturma](https://www.youtube.com/watch?v=YHxcUFEss4M)bölümündeki yönergeleri izleyin.
-    * **Gelişmiş ayarlar altında depolama >** yedekleme dosyalarının şifrelenmesini etkinleştirin.
+5. Configure backup jobs.
+    * To configure backup jobs, follow the instructions in [Creating a Backup Job](https://www.youtube.com/watch?v=YHxcUFEss4M).
+    * Enable encryption of backup files under **Advanced Settings > Storage**.
 
-6. Yedekleme Kopyalama işlerini yapılandırın.
+6. Configure backup copy jobs.
 
-    * Yedek kopya işlerini yapılandırmak için, video [Yedekleme Kopyalama oluşturma Işi oluşturma](https://www.youtube.com/watch?v=LvEHV0_WDWI&t=2s)içindeki yönergeleri izleyin.
-    * **Gelişmiş ayarlar altında depolama >** yedekleme dosyalarının şifrelenmesini etkinleştirin.
+    * To configure backup copy jobs, follow the instructions in the video [Creating a Backup Copy Job](https://www.youtube.com/watch?v=LvEHV0_WDWI&t=2s).
+    * Enable encryption of backup files under **Advanced Settings > Storage**.
 
-### <a name="cloudsimple-portal-set-up-veeam-access-and-de-escalate-privileges"></a>CloudSimple Portal: Veead erişimi ayarlama ve bu ayrıcalıkları serbest bırakma
-Veead yedekleme ve kurtarma sunucusu için genel bir IP adresi oluşturun. Yönergeler için bkz. [genel IP adresleri ayırma](public-ips.md).
+### <a name="cloudsimple-portal-set-up-veeam-access-and-de-escalate-privileges"></a>CloudSimple portal: Set up Veeam access and de-escalate privileges
+Create a public IP address for the Veeam backup and recovery server. For instructions, see [Allocate public IP addresses](public-ips.md).
 
-Veeab yedekleme sunucusunun, TCP bağlantı noktası 80 ' de güncelleştirmeleri/düzeltme eklerini indirmek üzere bir giden bağlantı oluşturmasına izin vermek için kullanarak bir güvenlik duvarı kuralı oluşturun. Yönergeler için bkz. [güvenlik duvarı tablolarını ve kurallarını ayarlama](firewall.md).
+Create a firewall rule using to allow the Veeam backup server to create an outbound connection to Veeam website for downloading updates/patches on TCP port 80. For instructions, see [Set up firewall tables and rules](firewall.md).
 
-Ayrıcalıkları devre dışı bırakmak için bkz. [yükseltme ayrıcalıkları](escalate-private-cloud-privileges.md#de-escalate-privileges).
+To de-escalate privileges, see [De-escalate privileges](escalate-private-cloud-privileges.md#de-escalate-privileges).
 
 ## <a name="references"></a>Başvurular
 
-### <a name="cloudsimple-references"></a>CloudSimple başvuruları
+### <a name="cloudsimple-references"></a>CloudSimple references
 
 * [Özel Bulut oluşturma](create-private-cloud.md)
-* [VLAN/alt ağlar oluşturma ve yönetme](create-vlan-subnet.md)
-* [vCenter Identity kaynakları](set-vcenter-identity.md)
-* [İş yükü DNS ve DHCP kurulumu](dns-dhcp-setup.md)
-* [Ayrıcalıkları ilerlet](escalate-privileges.md)
-* [Güvenlik Duvarı tablolarını ve kurallarını ayarlama](firewall.md)
-* [Özel bulut izinleri](learn-private-cloud-permissions.md)
-* [Genel IP adreslerini ayır](public-ips.md)
+* [Create and manage VLANs/Subnets](create-vlan-subnet.md)
+* [vCenter Identity Sources](set-vcenter-identity.md)
+* [Workload DNS and DHCP Setup](dns-dhcp-setup.md)
+* [Escalate privileges](escalate-privileges.md)
+* [Set up firewall tables and rules](firewall.md)
+* [Private Cloud permissions](learn-private-cloud-permissions.md)
+* [Allocate public IP Addresses](public-ips.md)
 
-### <a name="veeam-references"></a>Veeay başvuruları
+### <a name="veeam-references"></a>Veeam References
 
-* [Kullanılan bağlantı noktaları](https://helpcenter.veeam.com/docs/backup/vsphere/used_ports.html?ver=95)
-* [Gerekli Izinler](https://helpcenter.veeam.com/docs/backup/vsphere/required_permissions.html?ver=95)
-* [Sistem gereksinimleri](https://helpcenter.veeam.com/docs/backup/vsphere/system_requirements.html?ver=95)
-* [Veead yedekleme & çoğaltma yükleniyor](https://helpcenter.veeam.com/docs/backup/vsphere/install_vbr.html?ver=95)
-* [Linux için birden çok işletim sistemi FLR ve depo desteği için gerekli modüller ve izinler](https://www.veeam.com/kb2216)
-* [Veead Backup & çoğaltma v9-yükleme ve dağıtım-video](https://www.youtube.com/watch?v=b4BqC_WXARk)
-* [Veeab v9 yedekleme Işi oluşturma-video](https://www.youtube.com/watch?v=YHxcUFEss4M)
-* [Veead v9 bir yedekleme kopyalama Işi oluşturma-video](https://www.youtube.com/watch?v=LvEHV0_WDWI&t=2s)
+* [Used Ports](https://helpcenter.veeam.com/docs/backup/vsphere/used_ports.html?ver=95)
+* [Required Permissions](https://helpcenter.veeam.com/docs/backup/vsphere/required_permissions.html?ver=95)
+* [System Requirements](https://helpcenter.veeam.com/docs/backup/vsphere/system_requirements.html?ver=95)
+* [Installing Veeam Backup & Replication](https://helpcenter.veeam.com/docs/backup/vsphere/install_vbr.html?ver=95)
+* [Required modules and permissions for Multi-OS FLR and Repository support for Linux](https://www.veeam.com/kb2216)
+* [Veeam Backup & Replication v9 - Installation and Deployment - Video](https://www.youtube.com/watch?v=b4BqC_WXARk)
+* [Veeam v9 Creating a Backup Job - Video](https://www.youtube.com/watch?v=YHxcUFEss4M)
+* [Veeam v9 Creating a Backup Copy Job - Video](https://www.youtube.com/watch?v=LvEHV0_WDWI&t=2s)
 
-### <a name="azure-references"></a>Azure başvuruları
+### <a name="azure-references"></a>Azure references
 
-* [Azure portal kullanarak ExpressRoute için sanal ağ geçidi yapılandırma](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)
-* [VNet 'i devre dışı bir aboneliğe bağlama](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md#connect-a-vnet-to-a-circuit---different-subscription)
-* [Azure portal bir Linux sanal makinesi oluşturun](../virtual-machines/linux/quick-create-portal.md)
-* [Azure portal bir Windows sanal makinesine yönetilen veri diski iliştirme](../virtual-machines/windows/attach-managed-disk-portal.md)
-* [Azure depolama ile çalışmaya başlama-video](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage)
-* [Kapsayıcı oluştur](https://docs.microsoft.com/rest/api/storageservices/create-container)
+* [Configure a virtual network gateway for ExpressRoute using the Azure portal](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)
+* [Connect a VNet to a circuit - different subscription](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md#connect-a-vnet-to-a-circuit---different-subscription)
+* [Create a Linux virtual machine in the Azure portal](../virtual-machines/linux/quick-create-portal.md)
+* [How to attach a managed data disk to a Windows VM in the Azure portal](../virtual-machines/windows/attach-managed-disk-portal.md)
+* [Getting Started with Azure Storage - Video](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage)
+* [Create Container](https://docs.microsoft.com/rest/api/storageservices/create-container)
 * [Linux üzerinde AzCopy ile veri aktarma](../storage/common/storage-use-azcopy-linux.md)
 
-### <a name="vmware-references"></a>VMware başvuruları
+### <a name="vmware-references"></a>VMware references
 
-* [VSphere Web Istemcisinde dağıtılmış bir bağlantı noktası grubu oluşturma-video](https://www.youtube.com/watch?v=wpCd5ZbPOpA)
+* [Creating a Distributed Port Group in the vSphere Web Client - Video](https://www.youtube.com/watch?v=wpCd5ZbPOpA)
 
-### <a name="other-references"></a>Diğer başvurular
+### <a name="other-references"></a>Other references
 
-* [Yönetilen disk-RedHat üzerinde bir XFS birimi oluşturun](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/ch-xfs)
-* [CentOS 7 ' de bir NFS bağlama ayarlama-HowToForge](https://www.howtoforge.com/nfs-server-and-client-on-centos-7)
-* [DHCP sunucusu-NETGATE yapılandırma](https://www.netgate.com/docs/pfsense/dhcp/dhcp-server.html)
+* [Create an XFS volume on the managed disk - RedHat](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/ch-xfs)
+* [How To Set Up an NFS Mount on CentOS 7 - HowToForge](https://www.howtoforge.com/nfs-server-and-client-on-centos-7)
+* [Configuring the DHCP Server - Netgate](https://www.netgate.com/docs/pfsense/dhcp/dhcp-server.html)

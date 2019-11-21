@@ -1,6 +1,6 @@
 ---
-title: Cloudby CloudSimple tarafından Azure VMware çözümü-şirket içi bir katman 2 ağını özel buluta uzat
-description: CloudSimple özel bulutu ve şirket içi tek başına NSX Edge istemcisinde NSX-T arasında bir katman 2 VPN ayarlamayı açıklar
+title: Azure VMware Solution by CloudSimple - Stretch a Layer 2 network on-premises to Private Cloud
+description: Describes how to set up a Layer 2 VPN between NSX-T on a CloudSimple Private Cloud and an on-premises standalone NSX Edge client
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/19/2019
@@ -8,174 +8,174 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 37f337f158c3ca53170d963f1304801a12b732da
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 2ddfa9611143d5c3f823539e018c8afc885c6a46
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053881"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232375"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>Katman 2 esnetilmiş ağlarını kullanarak iş yüklerini geçirme
 
-Bu kılavuzda, katman 2 VPN 'yi (L2VPN) kullanarak şirket içi ortamınızdan CloudSimple özel bulutuna bir katman 2 ağını nasıl uzatılacağınızı öğreneceksiniz. Bu çözüm, şirket içi VMware ortamınızda çalışan iş yüklerinizin, iş yüklerinize yeniden IP adresleri olmadan aynı alt ağ adres alanı içinde Azure 'daki özel buluta geçirilmesini sağlar.
+In this guide, you will learn how to use Layer 2 VPN (L2VPN) to stretch a Layer 2 network from your on-premises environment to your CloudSimple Private Cloud. This solution enables migration of workloads running in your on-premises VMware environment to the Private Cloud in Azure within the same subnet address space without having to re-IP your workloads.
 
-Katman 2 ağlarının L2VPN tabanlı uzatma, şirket içi VMware ortamınızda NSX tabanlı ağlarla veya bu ağlar olmadan çalışabilir. Şirket içi iş yükleri için NSX tabanlı ağlarınız yoksa, tek başına NSX Edge Hizmetleri ağ geçidi kullanabilirsiniz.
+L2VPN based stretching of Layer 2 networks can work with or without NSX-based networks in your on-premises VMware environment. If you don't have NSX-based networks for workloads on-premises, you can use a standalone NSX Edge Services Gateway.
 
 > [!NOTE]
-> Bu kılavuzda, şirket içi ve özel bulut veri merkezlerinin siteden siteye VPN üzerinden bağlandığı senaryo ele alınmaktadır.
+> This guide covers the scenario where on-premises and the Private Cloud datacenters are connected over Site-to-Site VPN.
 
-## <a name="deployment-scenario"></a>Dağıtım senaryosu
+## <a name="deployment-scenario"></a>Deployment scenario
 
-L2VPN kullanarak şirket içi ağınızı uzatmak için bir L2VPN sunucusu (hedef NSX-T Tier0 yönlendirici) ve bir L2VPN istemcisi (kaynak tek başına istemci) yapılandırmanız gerekir.  
+To stretch your on-premises network using L2VPN, you must configure an L2VPN server (destination NSX-T Tier0 router) and an L2VPN client (source standalone client).  
 
-Bu dağıtım senaryosunda, özel bulut, şirket içi yönetim ve vMotion alt ağlarının özel bulut yönetimi ve vMotion alt ağları ile iletişim kurmasına olanak tanıyan bir siteden siteye VPN tüneli aracılığıyla şirket içi ortamınıza bağlanır. Bu düzenleme, Cross vCenter vMotion (xVC-vMotion) için gereklidir. NSX-T Tier0 yönlendiricisi, özel bulutta bir L2VPN sunucusu olarak dağıtılır.
+In this deployment scenario, your Private Cloud is connected to your on-premises environment via a Site-to-Site VPN tunnel that allows on-premises management and vMotion subnets to communicate with the Private Cloud management and vMotion subnets. This arrangement is necessary for Cross vCenter vMotion (xVC-vMotion). A NSX-T Tier0 router is deployed as an L2VPN server in the Private Cloud.
 
-Tek başına NSX Edge, şirket içi ortamınızda bir L2VPN istemcisi olarak dağıtılır ve daha sonra L2VPN sunucusuyla eşleştirilmiştir. Her tarafta bir GRE tüneli bitiş noktası oluşturulur ve şirket içi katman 2 ağını özel bulutunuzun ' esnetmek üzere yapılandırılır. Bu yapılandırma aşağıdaki şekilde gösterilmiştir.
+Standalone NSX Edge is deployed in your on-premises environment as an L2VPN client and subsequently paired with the L2VPN server. A GRE tunnel endpoint is created on each side and configured to 'stretch' the on-premises Layer 2 network to your Private Cloud. This configuration is depicted in the following figure.
 
-![Dağıtım senaryosu](media/l2vpn-deployment-scenario.png)
+![Deployment scenario](media/l2vpn-deployment-scenario.png)
 
-L2 VPN kullanarak geçiş hakkında daha fazla bilgi edinmek için bkz. VMware belgelerindeki [sanal özel ağlar](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-A8B113EC-3D53-41A5-919E-78F1A3705F58.html#GUID-A8B113EC-3D53-41A5-919E-78F1A3705F58__section_44B4972B5F12453B90625D98F86D5704) .
+To learn more about migration using L2 VPN, see [Virtual Private Networks](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-A8B113EC-3D53-41A5-919E-78F1A3705F58.html#GUID-A8B113EC-3D53-41A5-919E-78F1A3705F58__section_44B4972B5F12453B90625D98F86D5704) in the VMware documentation.
 
-## <a name="prerequisites-for-deploying-the-solution"></a>Çözümü dağıtmaya yönelik önkoşullar
+## <a name="prerequisites-for-deploying-the-solution"></a>Prerequisites for deploying the solution
 
-Çözümü dağıtmadan ve yapılandırmadan önce aşağıdakilerin yerinde olduğundan emin olun:
+Verify that the following are in place before deploying and configuring the solution:
 
-* Şirket içi vSphere sürümü 6.7 U1 + veya 6.5 P03 + ' dır.
-* Şirket içi vSphere lisansı kurumsal artı düzeyindedir (vSphere dağıtılmış anahtarı için).
-* Özel bulutunuzun esnetilbilmesi için iş yükü katman 2 ağını belirler.
-* Şirket içi ortamınızda L2VPN istemci gerecinizi dağıtmaya yönelik bir katman 2 ağı belirler.
-* [Özel bir bulut zaten oluşturuldu](create-private-cloud.md).
-* Tek başına NSX-T Edge gereci sürümü, özel bulut ortamınızda kullanılan NSX-T Manager sürümü (NSX-T 2.3.0) ile uyumludur.
-* Şirket içi vCenter 'da, sahte aktarımlar etkinleştirilmiş bir santral bağlantı noktası grubu oluşturulmuştur.
-* NSX-T tek başına istemci yukarı IP adresi için kullanılmak üzere bir genel IP adresi ayrılmış ve iki adres arasındaki çeviri için 1:1 NAT yerinde.
-* DNS iletme, az.cloudsimple.io etki alanı için şirket içi DNS sunucularında, özel bulut DNS sunucularını işaret etmek üzere ayarlanır.
-* VMotion 'in iki sitede çalışması için, RTT gecikmesi 150 MS 'den az veya buna eşittir.
+* The on-premises vSphere version is 6.7U1+ or 6.5P03+.
+* The on-premises vSphere license is at the Enterprise Plus level (for vSphere Distributed Switch).
+* Identify the workload Layer 2 network to be stretched to your Private Cloud.
+* Identify a Layer 2 network in your on-premises environment for deploying your L2VPN client appliance.
+* [A Private Cloud is already created](create-private-cloud.md).
+* The version of the standalone NSX-T Edge appliance is compatible with the NSX-T Manager version (NSX-T 2.3.0) used in your Private Cloud environment.
+* A trunk port group has been created in the on-premises vCenter with forged transmits enabled.
+* A public IP address has been reserved to use for the NSX-T standalone client uplink IP  address, and 1:1 NAT is in place for translation between the two addresses.
+* DNS forwarding is set on the on-premises DNS servers for the az.cloudsimple.io domain to point to the Private Cloud DNS servers.
+* RTT latency is less than or equal to 150 ms, as required for vMotion to work across the two sites.
 
-## <a name="limitations-and-considerations"></a>Sınırlamalar ve önemli noktalar
+## <a name="limitations-and-considerations"></a>Limitations and considerations
 
-Aşağıdaki tabloda desteklenen vSphere sürümleri ve ağ bağdaştırıcısı türleri listelenmektedir.  
+The following table lists supported vSphere versions and network adaptor types.  
 
-| vSphere sürümü | Kaynak vSwitch türü | Sanal NIC sürücüsü | Hedef vSwitch türü | Destekleniyor mu? |
+| vSphere version | Source vSwitch type | Virtual NIC driver | Target vSwitch Type | Destekleniyor mu? |
 ------------ | ------------- | ------------ | ------------- | ------------- 
-| Tümü | BÖLGENIZDE | Tümü | BÖLGENIZDE | Yes |
-| vSphere 6.7 Kullanıcı arabirimi veya üzeri, 6.5 P03 veya üzeri | BÖLGENIZDE | VMXNET3 | N-VDS | Yes |
-| vSphere 6.7 Kullanıcı arabirimi veya üzeri, 6.5 P03 veya üzeri | BÖLGENIZDE | E1000 | N-VDS | [, Her bir](https://kb.vmware.com/s/article/56991) |
-| vSphere 6.7 UI veya 6.5 P03, NSX-V veya NSX-T 2.2, 6.5 P03 veya üzeri sürümlerindeki sürümler | Tümü | Tümü | N-VDS | [, Her bir](https://kb.vmware.com/s/article/56991) |
+| Tümü | DVS | Tümü | DVS | Yes |
+| vSphere 6.7UI or higher, 6.5P03 or higher | DVS | VMXNET3 | N-VDS | Yes |
+| vSphere 6.7UI or higher, 6.5P03 or higher | DVS | E1000 | N-VDS | [Not supported per VWware](https://kb.vmware.com/s/article/56991) |
+| vSphere 6.7UI or 6.5P03, NSX-V or versions below NSX-T2.2, 6.5P03 or higher | Tümü | Tümü | N-VDS | [Not supported per VWware](https://kb.vmware.com/s/article/56991) |
 
-VMware NSX-T 2,3 sürümünden itibaren:
+As of the VMware NSX-T 2.3 release:
 
-* L2VPN üzerinden şirket içi olarak uzatılmış özel bulut tarafındaki mantıksal anahtar aynı anda yönlendirilemez. Uzatılmış mantıksal anahtar bir mantıksal yönlendiriciye bağlanamaz.
-* L2VPN ve rota tabanlı ıPSEC VPN 'Leri yalnızca API çağrıları kullanılarak yapılandırılabilir.
+* The logical switch on the Private Cloud side that is stretched to on-premises over L2VPN can't be routed at the same time. The stretched logical switch can't be connected to a logical router.
+* L2VPN and route-based IPSEC VPNs can only be configured using API calls.
 
-Daha fazla bilgi için bkz. VMware belgelerindeki [sanal özel ağlar](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-A8B113EC-3D53-41A5-919E-78F1A3705F58.html#GUID-A8B113EC-3D53-41A5-919E-78F1A3705F58__section_44B4972B5F12453B90625D98F86D5704) .
+For more information, see [Virtual Private Networks](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-A8B113EC-3D53-41A5-919E-78F1A3705F58.html#GUID-A8B113EC-3D53-41A5-919E-78F1A3705F58__section_44B4972B5F12453B90625D98F86D5704) in the VMware documentation.
 
-### <a name="sample-l2-vpn-deployment-addressing"></a>Örnek L2 VPN dağıtımı adresleme
+### <a name="sample-l2-vpn-deployment-addressing"></a>Sample L2 VPN deployment addressing
 
-### <a name="on-premises-network-where-the-standalone-esg-l2-vpn-client-is-deployed"></a>Tek başına ESG 'nin (L2 VPN istemcisi) dağıtıldığı şirket içi ağ
+### <a name="on-premises-network-where-the-standalone-esg-l2-vpn-client-is-deployed"></a>On-premises network where the standalone ESG (L2 VPN client) is deployed
 
 | **Öğe** | **Değer** |
 |------------|-----------------|
-| Ağ adı | MGMT_NET_VLAN469 |
+| Network name | MGMT_NET_VLAN469 |
 | VLAN | 469 |
-| CıDR| 10.250.0.0/24 |
-| Tek başına uç gereç IP adresi | 10.250.0.111 |
-| Tek başına uç gereç NAT IP adresi | 192.227.85.167 |
+| CIDR| 10.250.0.0/24 |
+| Standalone Edge appliance IP address | 10.250.0.111 |
+| Standalone Edge appliance NAT IP address | 192.227.85.167 |
 
-### <a name="on-premises-network-to-be-stretched"></a>Uzatılmak üzere şirket içi ağ
+### <a name="on-premises-network-to-be-stretched"></a>On-premises network to be stretched
 
 | **Öğe** | **Değer** |
 |------------|-----------------|
 | VLAN | 472 |
-| CıDR| 10.250.3.0/24 |
+| CIDR| 10.250.3.0/24 |
 
-### <a name="private-cloud-ip-schema-for-nsx-t-tier0-router-l2-vpn-serve"></a>NSX-T Tier0 yönlendirici için özel bulut IP şeması (L2 VPN hizmeti)
+### <a name="private-cloud-ip-schema-for-nsx-t-tier0-router-l2-vpn-serve"></a>Private Cloud IP schema for NSX-T Tier0 Router (L2 VPN serve)
 
 | **Öğe** | **Değer** |
 |------------|-----------------|
-| Geri döngü arabirimi | 192.168.254.254/32 |
-| Tünel arabirimi | 5.5.5.1/29 |
-| Mantıksal anahtar (uzatılmış) | Stretch_LS |
-| Geri döngü arabirimi (NAT IP adresi) | 104.40.21.81 |
+| Loopback interface | 192.168.254.254/32 |
+| Tunnel interface | 5.5.5.1/29 |
+| Logical switch (stretched) | Stretch_LS |
+| Loopback interface (NAT IP address) | 104.40.21.81 |
 
-### <a name="private-cloud-network-to-be-mapped-to-the-stretched-network"></a>Uzatılmış ağa eşlenecek özel bulut ağı
+### <a name="private-cloud-network-to-be-mapped-to-the-stretched-network"></a>Private Cloud network to be mapped to the stretched network
 
 | **Öğe** | **Değer** |
 |------------|-----------------|
 | VLAN | 712 |
-| CıDR| 10.200.15.0/24 |
+| CIDR| 10.200.15.0/24 |
 
-## <a name="fetch-the-logical-router-id-needed-for-l2vpn"></a>L2VPN için gereken mantıksal yönlendirici KIMLIĞINI getir
+## <a name="fetch-the-logical-router-id-needed-for-l2vpn"></a>Fetch the logical router ID needed for L2VPN
 
-Aşağıdaki adımlarda, IPSec ve L2VPN Hizmetleri için Tier0 DR mantıksal yönlendirici örneğinin mantıksal yönlendirici KIMLIĞINI nasıl getirileceği gösterilmektedir. L2VPN uygularken mantıksal yönlendirici KIMLIĞI daha sonra gerekir.
+The following steps show how to fetch the logical-router ID of Tier0 DR logical router instance for the IPsec and L2VPN services. The logical-router ID is needed later when implementing the L2VPN.
 
-1. NSX-T Manager https://*NSX-t-Manager-IP adresi* ' nde oturum açın ve **ağ** > **yönlendiricileri** > **sağlayıcı-LR** > **genel bakış**' ı seçin. **Yüksek kullanılabilirlik modu**Için **Etkin bekleme**' yı seçin. Bu eylem, Tier0 yönlendiricisinin etkin olduğu uç VM 'yi gösteren bir açılır pencere açar.
+1. Sign in to NSX-T Manager https://*nsx-t-manager-ip-address* and select **Networking** > **Routers** > **Provider-LR** > **Overview**. For **High Availability Mode**, select **Active-Standby**. This action opens a pop-up window that shows the Edge VM on which the Tier0 router is currently active.
 
-    ![Etkin bekleme seçin](media/l2vpn-fetch01.png)
+    ![Select active-standby](media/l2vpn-fetch01.png)
 
-2. **Doku** > **düğümleri** > **kenarları**' nı seçin. Önceki adımda tanımlanan etkin uç VM 'nin (Edge VM1) yönetim IP adresini bir yere göz önüne alın.
+2. Select **Fabric** > **Nodes** > **Edges**. Make a note of the management IP address of the active Edge VM (Edge VM1) identified in the previous step.
 
-    ![Note yönetim IP 'si](media/l2vpn-fetch02.png)
+    ![Note management IP](media/l2vpn-fetch02.png)
 
-3. Uç VM 'nin Yönetim IP adresine bir SSH oturumu açın. Kullanıcı adı **yönetici** ve parola **cloudsimple 123!** ile ```get logical-router``` komutunu çalıştırın.
+3. Open an SSH session to the management IP address of the Edge VM. Run the ```get logical-router``` command with username **admin** and password **CloudSimple 123!** .
 
-    ![mantıksal yönlendirici çıkışı al](media/l2vpn-fetch03.png)
+    ![get logical-router output](media/l2vpn-fetch03.png)
 
-4. ' DR-Provider-LR ' girişi görmüyorsanız aşağıdaki adımları izleyin.
+4. If you don't see an entry 'DR-Provider-LR', complete the following steps.
 
-5. İki kaplama ile desteklenen mantıksal anahtar oluşturun. Bir mantıksal anahtar, geçişi yapılan iş yüklerinin bulunduğu şirket içi olarak uzatılır. Başka bir mantıksal anahtar, bir kukla anahtardır. Yönergeler için bkz. VMware belgelerinde [mantıksal anahtar oluşturma](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-23194F9A-416A-40EA-B9F7-346B391C3EF8.html) .
+5. Create two overlay-backed logical switches. One logical switch is stretched to on-premises where the migrated workloads reside. Another logical switch is a dummy switch. For instructions, see [Create a Logical Switch](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-23194F9A-416A-40EA-B9F7-346B391C3EF8.html) in the VMware documentation.
 
-    ![Mantıksal anahtar oluştur](media/l2vpn-fetch04.png)
+    ![Create logical switch](media/l2vpn-fetch04.png)
 
-6. Bir bağlantı yerel IP adresi veya şirket içi veya özel bulutunuzun çakışmayan bir alt ağı olan Katman1 yönlendiricisine kukla anahtarı ekleyin. VMware belgelerindeki [Katman 1 mantıksal yönlendirici üzerinde downlink bağlantı noktası ekleme](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-E7EA867C-604C-4224-B61D-2A8EF41CB7A6.html) bölümüne bakın.
+6. Attach the dummy switch to the Tier1 router with a link local IP address or any non-overlapping subnet from on-premises or your Private Cloud. See [Add a Downlink Port on a Tier-1 Logical Router](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-E7EA867C-604C-4224-B61D-2A8EF41CB7A6.html) in the VMware documentation.
 
-    ![Kukla anahtar Ekle](media/l2vpn-fetch05.png)
+    ![Attach dummy switch](media/l2vpn-fetch05.png)
 
-7. Uç VM 'nin SSH oturumunda `get logical-router` komutunu yeniden çalıştırın. ' DR-Provider-LR ' mantıksal yönlendiricisinin UUID 'SI görüntülenir. L2VPN yapılandırılırken gereken UUID 'yi bir yere unutmayın.
+7. Run the `get logical-router` command again on the SSH session of the Edge VM. The UUID of the 'DR-Provider-LR' logical router is displayed. Make a note of the UUID, which is required when configuring the L2VPN.
 
-    ![mantıksal yönlendirici çıkışı al](media/l2vpn-fetch06.png)
+    ![get logical-router output](media/l2vpn-fetch06.png)
 
-## <a name="fetch-the-logical-switch-id-needed-for-l2vpn"></a>L2VPN için gereken mantıksal anahtar KIMLIĞINI getir
+## <a name="fetch-the-logical-switch-id-needed-for-l2vpn"></a>Fetch the logical-switch ID needed for L2VPN
 
-1. [NSX-T Manager](https://nsx-t-manager-ip-address)'da oturum açın.
-2. **Ağ** > **anahtarlama** > **anahtarlar** >  **< \Mantıksal anahtar\>** **Genel Bakış ' ı**seçin.
-3. L2VPN yapılandırılırken gerekli olan Esnetme mantıksal anahtarının UUID 'sini bir yere unutmayın.
+1. Sign in to [NSX-T Manager](https://nsx-t-manager-ip-address).
+2. Select **Networking** > **Switching** > **Switches** >  **<\Logical switch\>**  > **Overview**.
+3. Make a note of the UUID of the stretch logical switch, which is required when configuring the L2VPN.
 
-    ![mantıksal yönlendirici çıkışı al](media/l2vpn-fetch-switch01.png)
+    ![get logical-router output](media/l2vpn-fetch-switch01.png)
 
-## <a name="routing-and-security-considerations-for-l2vpn"></a>L2VPN için Yönlendirme ve güvenlik değerlendirmeleri
+## <a name="routing-and-security-considerations-for-l2vpn"></a>Routing and security considerations for L2VPN
 
-NSX-T Tier0 yönlendiricisi ve tek başına NSX Edge istemcisi arasında IPSec rota tabanlı bir VPN oluşturmak için NSX-T Tier0 yönlendiricisinin geri döngü arabirimi UDP 500/4500 üzerinden şirket içi NSX tek başına istemcisinin genel IP adresi ile iletişim kurabilmelidir.
+To establish an IPsec route-based VPN between the NSX-T Tier0 router and the standalone NSX Edge client, the loopback interface of the NSX-T Tier0 router must be able to communicate with the public IP address of NSX standalone client on-premises over UDP 500/4500.
 
-### <a name="allow-udp-5004500-for-ipsec"></a>IPSec için UDP 500/4500 'ye izin ver
+### <a name="allow-udp-5004500-for-ipsec"></a>Allow UDP 500/4500 for IPsec
 
-1. CloudSimple portalında NSX-T Tier0 geri döngü arabirimi için [Genel BIR IP adresi oluşturun](public-ips.md) .
+1. [Create a public IP address](public-ips.md) for the NSX-T Tier0 loopback interface in the CloudSimple portal.
 
-2. UDP 500/4500 gelen trafiğe izin veren ve güvenlik duvarı tablosunu NSX-T HostTransport alt ağına bağlayan durum bilgisi olan kurallar içeren [bir güvenlik duvarı tablosu oluşturun](firewall.md) .
+2. [Create a firewall table](firewall.md) with stateful rules that allow UDP 500/ 4500 inbound traffic and attach the firewall table to the NSX-T HostTransport subnet.
 
-### <a name="advertise-the-loopback-interface-ip-to-the-underlay-network"></a>Geri döngü arabirimi IP 'sini düşük düzenleme ağına bildirme
+### <a name="advertise-the-loopback-interface-ip-to-the-underlay-network"></a>Advertise the loopback interface IP to the underlay network
 
-1. Geri döngü arabirimi ağı için bir boş yol oluşturun. NSX-T Manager 'da oturum açın ve **ağ** > **yönlendirme** > **yönlendirici** > **sağlayıcı-LR** > **yönlendirme** > **statik yolları**' nı seçin. **Ekle**'ye tıklayın. **Ağ**için geri döngü arabirimi IP adresini girin. **Sonraki atlamalar**Için, **Ekle**' ye tıklayın, sonraki atlama için ' null ' belirtin ve varsayılan 1 ' i yönetici uzaklığı olarak tutun.
+1. Create a null route for the loopback interface network. Sign in to NSX-T Manager and select **Networking** > **Routing** > **Routers** > **Provider-LR** > **Routing** > **Static Routes**. **Ekle**'ye tıklayın. For **Network**, enter the loopback interface IP address. For **Next Hops**, click **Add**, specify 'Null' for the next hop, and keep the default of 1 for Admin Distance.
 
-    ![Statik yol Ekle](media/l2vpn-routing-security01.png)
+    ![Add static route](media/l2vpn-routing-security01.png)
 
-2. Bir IP ön eki listesi oluşturun. NSX-T Manager 'da oturum açın ve **ağ** > **yönlendirme** > **yönlendirici** > **sağlayıcı-LR** > **yönlendirme** > **IP öneki listeleri**' ni seçin. **Ekle**'ye tıklayın. Listeyi tanımlamak için bir ad girin. **Ön**ekler için Iki kez **Ekle** ' ye tıklayın. İlk satırda, **ağ** için ' 0.0.0.0/0 ' ve **eylem**için ' Reddet ' girin. İkinci satırda, **ağ** ve **eyleme** **izin ver** ' **i seçin.**
-3. IP öneki listesini hem BGP komşuları 'na (TOR) ekleyin. IP öneki listesini BGP komşusuyla eklemek, varsayılan yolun BGP 'de TOR anahtarlarına tanıtılmasını önler. Ancak, null yolu içeren diğer tüm yollar TOR anahtarlarına geri döngü arabirimi IP adresini duyuracaktır.
+2. Create an IP prefix list. Sign in to NSX-T Manager and select **Networking** > **Routing** > **Routers** > **Provider-LR** > **Routing** > **IP Prefix Lists**. **Ekle**'ye tıklayın. Enter a name to identify the list. For **Prefixes**, click **Add** twice. In the first line, enter '0.0.0.0/0' for **Network** and 'Deny' for **Action**. In the second line, select **Any** for **Network** and **Permit** for **Action**.
+3. Attach the IP prefix list to both BGP neighbors (TOR). Attaching the IP prefix list to the BGP neighbor prevents the default route from being advertised in BGP to the TOR switches. However, any other route that includes the null route will advertise the loopback interface IP address to the TOR switches.
 
-    ![IP ön eki listesi oluştur](media/l2vpn-routing-security02.png)
+    ![Create IP prefix list](media/l2vpn-routing-security02.png)
 
-4. NSX-T Manager 'da oturum açın ve **ağ** > **yönlendirme** > **yönlendirici** > **sağlayıcı-LR** > **yönlendirme** > **BGP**1**komşuları**' nı seçin. İlk komşuyu seçin.  > **adresi ailelerini** **Düzenle** ' ye tıklayın. IPv4 ailesi için, **Çıkış filtresi** sütununu düzenleyin ve oluşturduğunuz IP öneki listesini seçin. **Kaydet** düğmesine tıklayın. İkinci komşu için bu adımı tekrarlayın.
+4. Sign in to NSX-T Manager and select **Networking** > **Routing** > **Routers** > **Provider-LR** > **Routing** > **BGP** > **Neighbors**. Select the first neighbor. Click **Edit** > **Address Families**. For the IPv4 family, Edit the **Out Filter** column and select the IP prefix list that you created. **Kaydet** düğmesine tıklayın. Repeat this step for the second neighbor.
 
-    ![IP ön eki listesi 1](media/l2vpn-routing-security03.png) Ekle ![IP ön eki listesi 2](media/l2vpn-routing-security04.png)
+    ![Attach IP prefix list 1](media/l2vpn-routing-security03.png) ![Attach IP prefix list 2](media/l2vpn-routing-security04.png)
 
-5. Null statik yolu BGP 'ye yeniden dağıtın. Geri döngü arabirimi yolunu alt tabloya tanıtmak için null statik yolunu BGP 'ye yeniden dağıtmanız gerekir. NSX-T Manager 'da oturum açın ve **ağ** > **yönlendirme** > **yönlendirici** > **sağlayıcı-LR** > **yönlendirme** >  yönlendirme yeniden**dağıtımı**1**komşuları**' nı seçin. **Sağlayıcı-LR-Route_Redistribution** ' ı seçin ve **Düzenle**' ye tıklayın. **Statik** onay kutusunu seçin ve **Kaydet**' e tıklayın.
+5. Redistribute the null static route into BGP. To advertise the loopback interface route to the underlay, you must redistribute the null static route into BGP. Sign in to NSX-T Manager and select **Networking** > **Routing** > **Routers** > **Provider-LR** > **Routing** > **Route Redistribution** > **Neighbors**. Select **Provider-LR-Route_Redistribution** and click **Edit**. Select the **Static** checkbox and click **Save**.
 
-    ![Null statik yolu BGP 'ye yeniden Dağıt](media/l2vpn-routing-security05.png)
+    ![Redistribute null static route into BGP](media/l2vpn-routing-security05.png)
 
-## <a name="configure-a-route-based-vpn-on-the-nsx-t-tier0-router"></a>NSX-T Tier0 yönlendiricisinde rota tabanlı bir VPN yapılandırma
+## <a name="configure-a-route-based-vpn-on-the-nsx-t-tier0-router"></a>Configure a route-based VPN on the NSX-T Tier0 router
 
-NSX-T Tier0 yönlendiricisinde rota tabanlı bir VPN yapılandırma ayrıntılarını doldurmanız için aşağıdaki şablonu kullanın. Sonraki göndermelerde, her GÖNDERI çağrısındaki UUID 'ler gereklidir. L2VPN için geri döngü ve tünel arabirimleri için IP adresleri benzersiz olmalıdır ve şirket içi veya özel bulut ağları ile çakışmamalıdır.
+Use the following template to fill in all the details for configuring a route-based VPN on the NSX-T Tier0 router. The UUIDs in each POST call are required in subsequent POST calls. The IP addresses for the loopback and tunnel interfaces for L2VPN must be unique and not overlap with the on-premises or Private Cloud networks.
 
-L2VPN için kullanılan geri döngü ve tünel arabirimi için seçilen IP adreslerinin benzersiz olması ve şirket içi veya özel bulut ağları ile çakışmamak gerekir. Geri döngü arabirimi ağı her zaman/32 olmalıdır.
+The IP addresses chosen for loopback and tunnel interface used for L2VPN must be unique and not overlap with the on-premises or Private Cloud networks. The loopback interface network must always be /32.
 
 ```
 Loopback interface ip : 192.168.254.254/32
@@ -195,9 +195,9 @@ Logical-Port ID :
 Peer Code :
 ```
 
-Aşağıdaki API çağrılarının tümünde IP adresini NSX-T Yöneticisi IP adresiniz ile değiştirin. Tüm bu API çağrılarını POSTMAN istemcisinden veya `curl` komutlarını kullanarak çalıştırabilirsiniz.
+For all of the following API calls, replace the IP address with your NSX-T Manager IP address. You can run all these API calls from the POSTMAN client or by using `curl` commands.
 
-### <a name="enable-the-ipsec-vpn-service-on-the-logical-router"></a>Mantıksal yönlendiricide IPSec VPN hizmetini etkinleştirin
+### <a name="enable-the-ipsec-vpn-service-on-the-logical-router"></a>Enable the IPSec VPN service on the logical router
 
 ```
 POST   https://192.168.110.201/api/v1/vpn/ipsec/services/
@@ -211,7 +211,7 @@ POST   https://192.168.110.201/api/v1/vpn/ipsec/services/
 }
 ```
 
-### <a name="create-profiles-ike"></a>Profil oluşturma: ıKE
+### <a name="create-profiles-ike"></a>Create profiles: IKE
 
 ```
 POST https://192.168.110.201/api/v1/vpn/ipsec/ike-profiles
@@ -228,7 +228,7 @@ POST https://192.168.110.201/api/v1/vpn/ipsec/ike-profiles
 }
 ```
 
-### <a name="create-profiles-dpd"></a>Profil oluşturma: DPD
+### <a name="create-profiles-dpd"></a>Create profiles: DPD
 
 ```
 POST  https://192.168.110.201/api/v1/vpn/ipsec/dpd-profiles  
@@ -240,7 +240,7 @@ POST  https://192.168.110.201/api/v1/vpn/ipsec/dpd-profiles
 }
 ```
 
-### <a name="create-profiles-tunnel"></a>Profil oluşturma: tünel
+### <a name="create-profiles-tunnel"></a>Create profiles: Tunnel
 
 ```
 POST  https://192.168.110.201/api/v1/vpn/ipsec/tunnel-profiles
@@ -259,7 +259,7 @@ POST  https://192.168.110.201/api/v1/vpn/ipsec/tunnel-profiles
 }
 ```
 
-### <a name="create-a-local-endpoint"></a>Yerel uç nokta oluşturma
+### <a name="create-a-local-endpoint"></a>Create a local endpoint
 
 ``` 
 POST https://192.168.110.201/api/v1/vpn/ipsec/local-endpoints
@@ -277,7 +277,7 @@ POST https://192.168.110.201/api/v1/vpn/ipsec/local-endpoints
 }
 ```
 
-### <a name="create-a-peer-endpoint"></a>Eş uç noktası oluşturma
+### <a name="create-a-peer-endpoint"></a>Create a peer endpoint
 
 ```
 POST https://192.168.110.201/api/v1/vpn/ipsec/peer-endpoints
@@ -297,7 +297,7 @@ POST https://192.168.110.201/api/v1/vpn/ipsec/peer-endpoints
 }
 ```
 
-### <a name="create-a-route-based-vpn-session"></a>Rota tabanlı VPN oturumu oluşturma
+### <a name="create-a-route-based-vpn-session"></a>Create a route-based VPN session
 
 ```
 POST :  https://192.168.110.201/api/v1/vpn/ipsec/sessions
@@ -323,9 +323,9 @@ POST :  https://192.168.110.201/api/v1/vpn/ipsec/sessions
 }
 ```
 
-## <a name="configure-l2vpn-on-nsx-t-tier0-router"></a>NSX-T Tier0 yönlendiricisinde L2VPN yapılandırma
+## <a name="configure-l2vpn-on-nsx-t-tier0-router"></a>Configure L2VPN on NSX-T Tier0 router
 
-Her GÖNDERI çağrısından sonra aşağıdaki bilgileri girin. Sonraki GÖNDERI çağrılarında kimlikler gereklidir.
+Fill in the following information after every POST call. The IDs are required in subsequent POST calls.
 
 ```
 L2VPN Service ID:
@@ -333,15 +333,15 @@ L2VPN Session ID:
 Logical Port ID:
 ```
 
-### <a name="create-the-l2vpn-service"></a>L2VPN hizmetini oluşturma
+### <a name="create-the-l2vpn-service"></a>Create the L2VPN service
 
-Yapılandırma henüz tamamlanmadığından, aşağıdaki GET komutunun çıktısı boş olacaktır.
+The output of the following GET command will be blank, because the configuration is not complete yet.
 
 ```
 GET : https://192.168.110.201/api/v1/vpn/l2vpn/services
 ```
 
-Aşağıdaki POST komutu için mantıksal yönlendirici KIMLIĞI, daha önce edinilen Tier0 DR mantıksal yönlendiricisinin UUID 'si olur.
+For the following POST command, the logical router ID is the UUID of the Tier0 DR logical router obtained earlier.
 
 ```
 POST : https://192.168.110.201/api/v1/vpn/l2vpn/services
@@ -352,9 +352,9 @@ POST : https://192.168.110.201/api/v1/vpn/l2vpn/services
 }
 ```
 
-### <a name="create-the-l2vpn-session"></a>L2VPN oturumu oluşturma
+### <a name="create-the-l2vpn-session"></a>Create the L2VPN session
 
-Aşağıdaki POST komutu için, L2VPN hizmet KIMLIĞI, az önce edindiğiniz KIMLIK ve IPSec VPN oturum KIMLIĞI, önceki bölümde elde edilen KIMLIĞIDIR.
+For the following POST command, the L2VPN service ID is the ID that you just obtained and the IPsec VPN session ID is the ID obtained in the previous section.
 
 ``` 
 POST: https://192.168.110.201/api/v1/vpn/l2vpn/sessions
@@ -368,7 +368,7 @@ POST: https://192.168.110.201/api/v1/vpn/l2vpn/sessions
 }
 ```
 
-Bu çağrılar bir GRE tüneli uç noktası oluşturur. Durumu denetlemek için aşağıdaki komutu çalıştırın.
+These calls create a GRE tunnel endpoint. To check the status, run the following command.
 
 ```
 edge-2> get tunnel-port
@@ -391,7 +391,7 @@ REMOTE      : 192.168.140.156
 ENCAP       : GENEVE
 ```
 
-### <a name="create-logical-port-with-the-tunnel-id-specified"></a>Belirtilen tünel KIMLIĞIYLE mantıksal bağlantı noktası oluştur
+### <a name="create-logical-port-with-the-tunnel-id-specified"></a>Create logical port with the tunnel ID specified
 
 ```
     POST https://192.168.110.201/api/v1/logical-ports/
@@ -412,70 +412,70 @@ ENCAP       : GENEVE
         }
 ```
 
-## <a name="obtain-the-peer-code-for-l2vpn-on-the-nsx-t-side"></a>NSX-T tarafında L2VPN için eşdüzey kodu alma
+## <a name="obtain-the-peer-code-for-l2vpn-on-the-nsx-t-side"></a>Obtain the peer code for L2VPN on the NSX-T side
 
-NSX-T uç noktasının eş kodunu alın. Uzak uç nokta yapılandırılırken eş kod gereklidir. L2VPN < oturum kimliği > önceki bölümden elde edilebilir. Daha fazla bilgi için bkz. [NSX-T 2,3 API Kılavuzu](https://www.vmware.com/support/nsxt/doc/nsxt_23_api.html).
+Obtain the peer code of the NSX-T endpoint. The peer code is required when configuring the remote endpoint. The L2VPN <session-id> can be obtained from the previous section. For more information, see the [NSX-T 2.3 API Guide](https://www.vmware.com/support/nsxt/doc/nsxt_23_api.html).
 
 ```
 GET https://192.168.110.201/api/v1/vpn/l2vpn/sessions/<session-id>/peer-codes
 ```
 
-## <a name="deploy-the-nsx-t-standalone-client-on-premises"></a>NSX-T tek başına istemcisini (Şirket içi) dağıtma
+## <a name="deploy-the-nsx-t-standalone-client-on-premises"></a>Deploy the NSX-T standalone client (on-premises)
 
-Dağıtım öncesinde, şirket içi güvenlik duvarı kurallarınızın gelen ve giden UDP 500/4500 trafiğine, daha önce NSX-T T0 yönlendirici geri döngü arabirimi için ayrılmış olan CloudSimple genel IP adresine izin verildiğini doğrulayın. 
+Before deploying, verify that your on-premises firewall rules allow inbound and outbound UDP 500/4500 traffic from/to the CloudSimple public IP address that was reserved earlier for the NSX-T T0 router loopback interface. 
 
-1. [Tek başına NSX Edge Istemcisini indirin](https://my.vmware.com/group/vmware/details?productId=673&rPId=33945&downloadGroup=NSX-T-230) OVF ve indirilen paketteki dosyaları bir klasöre ayıklayın.
+1. [Download the Standalone NSX Edge Client](https://my.vmware.com/group/vmware/details?productId=673&rPId=33945&downloadGroup=NSX-T-230) OVF and Extract the files from the downloaded bundle into a folder.
 
-    ![Tek başına NSX Edge istemcisini indirin](media/l2vpn-deploy-client01.png)
+    ![Download standalone NSX Edge client](media/l2vpn-deploy-client01.png)
 
-2. Tüm ayıklanan dosyaların bulunduğu klasöre gidin. Büyük gereç boyutu veya NSX-l2t-Client-xlarge. MF ve NSX-l2t-client-Xlarge. ovf için tüm VMDK (NSX-l2t-Client-Large. MF ve NSX-l2t-client-large. ovf 'yi seçerek daha büyük boyutlu gereç boyutu için. **İleri**’ye tıklayın.
+2. Go to the folder with all the extracted files. Select all the vmdks (NSX-l2t-client-large.mf and NSX-l2t-client-large.ovf for large appliance size or NSX-l2t-client-Xlarge.mf and NSX-l2t-client-Xlarge.ovf for extra large size appliance size). **İleri**’ye tıklayın.
 
-    Şablon](media/l2vpn-deploy-client02.png) ![seçin ![şablon seçin](media/l2vpn-deploy-client03.png)
+    ![Select template](media/l2vpn-deploy-client02.png) ![Select template](media/l2vpn-deploy-client03.png)
 
-3. NSX-T bağımsız istemcisi için bir ad girin ve **İleri**' ye tıklayın.
+3. Enter a name for the NSX-T standalone client and click **Next**.
 
-    ![Şablon adı girin](media/l2vpn-deploy-client04.png)
+    ![Enter template name](media/l2vpn-deploy-client04.png)
 
-4. Veri deposu ayarlarına ulaşmak için gerektiğinde **İleri** ' ye tıklayın. NSX-T tek başına istemcisi için uygun veri deposunu seçin ve **İleri**' ye tıklayın.
+4. Click **Next** as needed to reach the datastore settings. Select the appropriate datastore for NSX-T standalone client and click **Next**.
 
-    ![Veri deposu Seç](media/l2vpn-deploy-client06.png)
+    ![Select datastore](media/l2vpn-deploy-client06.png)
 
-5. NSX-T tek başına istemcisine yönelik doğru bağlantı noktası gruplarını (santral PG), genel (yukarı bağlantı) ve HA arabirimini (yukarı bağlantı) seçin. **İleri**’ye tıklayın.
+5. Select the correct port groups for Trunk (Trunk PG), Public (Uplink PG) and HA interface (Uplink PG) for the NSX-T standalone client. **İleri**’ye tıklayın.
 
-    ![Bağlantı noktası gruplarını seçin](media/l2vpn-deploy-client07.png)
+    ![Select port groups](media/l2vpn-deploy-client07.png)
 
-6. **Şablonu Özelleştir** ekranında aşağıdaki ayrıntıları girin ve **İleri**' ye tıklayın:
+6. Fill the following details in the **Customize template** screen and click **Next**:
 
-    L2T Genişlet:
+    Expand L2T:
 
-    * **Eş adresi**. NSX-T Tier0 geri döngü arabirimi için Azure CloudSimple portalında ayrılmış IP adresini girin.
-    * **Eş kod**. L2VPN Server dağıtımının son adımından elde edilen eşdüzey kodu yapıştırın.
-    * **Alt ARABIRIMLER VLAN (tünel kimliği)** . Esnetilmiş VLAN KIMLIĞINI girin. Parantez () içinde, daha önce yapılandırılmış olan tünel KIMLIĞINI girin.
+    * **Peer Address**. Enter the IP address reserved on Azure CloudSimple portal for NSX-T Tier0 Loopback interface.
+    * **Peer Code**. Paste the peer code obtained from the last step of L2VPN Server deployment.
+    * **Sub Interfaces VLAN (Tunnel ID)** . Enter the VLAN ID to be stretched. In parentheses (), enter the tunnel ID that was previously configured.
 
-    Yukarı bağlantı arabirimini Genişlet:
+    Expand Uplink Interface:
 
-    * **DNS IP adresi**. Şirket içi DNS IP adresini girin.
-    * **Varsayılan ağ geçidi**.  Bu istemci için varsayılan ağ geçidi olarak görev yapacak olan VLAN 'ın varsayılan ağ geçidini girin.
-    * **IP adresi**. Tek başına istemcinin yukarı bağlantı IP adresini girin.
-    * **Ön ek uzunluğu**. Yukarı bağlantı VLAN/alt ağının ön ek uzunluğunu girin.
-    * **CLI Yöneticisi/etkinleştir/kök kullanıcı parolası**. Admin/Enable/root hesabının parolasını ayarlayın.
+    * **DNS IP Address**. Enter the on-premises DNS IP address.
+    * **Default Gateway**.  Enter the default gateway of the VLAN that will act as a default gateway for this client.
+    * **IP Address**. Enter the uplink IP address of the standalone client.
+    * **Prefix Length**. Enter the prefix length of the uplink VLAN/subnet.
+    * **CLI admin/enable/root User Password**. Set the password for admin /enable /root account.
 
-      Şablon](media/l2vpn-deploy-client08.png)
-      ![özelleştirme![şablonu özelleştirme-daha fazla](media/l2vpn-deploy-client09.png)
+      ![Customize template](media/l2vpn-deploy-client08.png)
+      ![Customize template - more](media/l2vpn-deploy-client09.png)
 
-7. Ayarları gözden geçirin ve **son**' a tıklayın.
+7. Review the settings and click **Finish**.
 
-    ![Yapılandırmayı Tamam](media/l2vpn-deploy-client10.png)
+    ![Complete configuration](media/l2vpn-deploy-client10.png)
 
-## <a name="configure-an-on-premises-sink-port"></a>Şirket içi havuz bağlantı noktası yapılandırma
+## <a name="configure-an-on-premises-sink-port"></a>Configure an on-premises sink port
 
-VPN sitelerinden birinde NSX dağıtılmamışsa, bu sitede tek başına NSX Edge dağıtarak bir L2 VPN yapılandırabilirsiniz. Tek başına NSX Edge, NSX tarafından yönetilmeyen bir konakta OVF dosyası kullanılarak dağıtılır. Bu, bir NSX Edge Hizmetleri ağ geçidi gerecini bir L2 VPN istemcisi olarak çalışacak şekilde dağıtır.
+If one of the VPN sites doesn't have NSX deployed, you can configure an L2 VPN by deploying a standalone NSX Edge at that site. A standalone NSX Edge is deployed using an OVF file on a host that is not managed by NSX. This deploys an NSX Edge Services Gateway appliance to function as an L2 VPN client.
 
-Tek başına bir uç santral vNIC, vSphere dağıtılmış anahtarına bağlandıysa, L2 VPN işlevi için karışık mod veya bir havuz bağlantı noktası gerekir. Karışık mod kullanılması yinelenen pingler ve yinelenen yanıtlar oluşmasına neden olabilir. Bu nedenle, L2 VPN tek başına NSX Edge yapılandırmasında havuz bağlantı noktası modu ' nu kullanın. VMware belgelerindeki [Havuz bağlantı noktası yapılandırma](https://docs.vmware.com/en/VMware-NSX-Data-Center-for-vSphere/6.4/com.vmware.nsx.admin.doc/GUID-3CDA4346-E692-4592-8796-ACBEEC87C161.html) bölümüne bakın.
+If a standalone edge trunk vNIC is connected to a vSphere Distributed Switch, either promiscuous mode or a sink port is required for L2 VPN function. Using promiscuous mode can cause duplicate pings and duplicate responses. For this reason, use sink port mode in the L2 VPN standalone NSX Edge configuration. See the [Configure a sink port](https://docs.vmware.com/en/VMware-NSX-Data-Center-for-vSphere/6.4/com.vmware.nsx.admin.doc/GUID-3CDA4346-E692-4592-8796-ACBEEC87C161.html) in the VMware documentation.
 
-## <a name="ipsec-vpn-and-l2vpn-verification"></a>IPSec VPN ve L2VPN doğrulaması
+## <a name="ipsec-vpn-and-l2vpn-verification"></a>IPsec VPN and L2VPN verification
 
-IPSec ve L2VPN oturumlarını tek başına NSX-T kenarından doğrulamak için aşağıdaki komutları kullanın.
+Use the following commands to verify IPsec and L2VPN sessions from standalone NSX-T Edge.
 
 ```
 nsx-l2t-edge> show service ipsec
@@ -502,7 +502,7 @@ SITENAME                       IPSECSTATUS          VTI                  GRE
 1ecb00fb-a538-4740-b788-c9049e8cb6c6 UP                   vti-100              l2t-1
 ```
 
-NSX-T Tier0 yönlendiricisinde IPSec ve L2VPN oturumlarını doğrulamak için aşağıdaki komutları kullanın.
+Use the following commands to verify IPsec and L2VPN sessions from the NSX-T Tier0 router.
 
 ```
 edge-2> get ipsecvpn session
@@ -531,7 +531,7 @@ IPSEC Session : 1ecb00fb-a538-4740-b788-c9049e8cb6c6
 Status        : UP
 ```
 
-NSX-T tek başına istemci VM 'sinin şirket içi ortamda bulunduğu ESXi konağındaki havuz bağlantı noktasını doğrulamak için aşağıdaki komutları kullanın.
+Use the following commands to verify the sink port on the ESXi host where the NSX-T standalone client VM resides in the on-premises environment.
 
 ```
  [root@esxi02:~] esxcfg-vswitch -l |grep NSX

@@ -9,25 +9,25 @@ ms.topic: include
 ms.date: 06/10/2018
 ms.author: raynew
 ms.custom: include file
-ms.openlocfilehash: d77269c1e965d5bca1e32b756ef26e2c694e5c81
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 7baa2dbd1583ebbccbf9b21df3531404bd839e10
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747866"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74260911"
 ---
-**Yapılandırma ve işlem sunucusu gereksinimleri**
+**Configuration and process server requirements**
 
 
-## <a name="hardware-requirements"></a>Donanım gereksinimleri
+## <a name="hardware-requirements"></a>Hardware requirements
 
 **Bileşen** | **Gereksinim** 
 --- | ---
 CPU çekirdekleri | 8 
 RAM | 16 GB
-Disk sayısı | 3, işletim sistemi diski, işlem sunucusu önbellek diski ve yeniden çalışma için bekletme sürücüsü dahil 
-Boş disk alanı (işlem sunucusu önbelleği) | 600 GB
-Boş disk alanı (bekletme diski) | 600 GB
+Disk sayısı | 3, including the OS disk, process server cache disk, and retention drive for failback 
+Free disk space (process server cache) | 600 GB
+Free disk space (retention disk) | 600 GB
  | 
 
 ## <a name="software-requirements"></a>Yazılım gereksinimleri
@@ -36,10 +36,11 @@ Boş disk alanı (bekletme diski) | 600 GB
 --- | ---
 İşletim sistemi | Windows Server 2012 R2 <br> Windows Server 2016
 İşletim sistemi yerel ayarı | İngilizce (en-us)
-Windows Server rolleri | Bu rolleri etkinleştirmeyin: <br> - Active Directory Domain Services <br>- İnternet Bilgi Hizmetleri <br> - Hyper-V 
-Grup ilkeleri | Bu grup ilkelerini etkinleştirmeyin: <br> -Komut istemine erişimi engelleyin. <br> -Kayıt defteri düzenlemesi araçlarına erişimi engelleyin. <br> -Dosya ekleri için güven mantığı. <br> -Betik yürütmeyi açın. <br> [Daha fazla bilgi](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
-IIS | -Önceden varolan varsayılan Web sitesi yok. <br> -Önceden tanımlı bir Web sitesi veya uygulama, 443 bağlantı noktasını dinliyor. <br>- [Anonim kimlik doğrulamasını](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx)etkinleştirin. <br> - [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) ayarını etkinleştirin.
-| 
+Windows Server rolleri | Don't enable these roles: <br> - Active Directory Domain Services <br>- İnternet Bilgi Hizmetleri <br> - Hyper-V 
+Group policies | Don't enable these group policies: <br> - Prevent access to the command prompt. <br> - Prevent access to registry editing tools. <br> - Trust logic for file attachments. <br> - Turn on Script Execution. <br> [Daha fazla bilgi](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
+IIS | - No pre-existing default website <br> - No pre-existing website/application listening on port 443 <br>- Enable  [anonymous authentication](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> - Enable [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) setting 
+FIPS (Federal Information Processing Standards) | Do not enable FIPS mode
+|
 
 ## <a name="network-requirements"></a>Ağ gereksinimleri
 
@@ -47,36 +48,38 @@ IIS | -Önceden varolan varsayılan Web sitesi yok. <br> -Önceden tanımlı bir
 --- | --- 
 IP adresi türü | Statik 
 Bağlantı Noktaları | 443 (Denetim kanalı düzenleme)<br>9443 (Veri aktarımı) 
-NIC türü | VMXNET3 (yapılandırma sunucusu bir VMware sanal makinesi ise)
+NIC type | VMXNET3 (if the configuration server is a VMware VM)
  |
-**Internet erişimi** (sunucunun doğrudan veya proxy aracılığıyla aşağıdaki URL 'lere erişmesi gerekir):|
-\*.backup.windowsazure.com | Çoğaltılan veri aktarımı ve düzenlemesi için kullanılır
-\*.store.core.windows.net | Çoğaltılan veri aktarımı ve düzenlemesi için kullanılır
-\*.blob.core.windows.net | Çoğaltılan verileri depolayan depolama hesabına erişmek için kullanılır
-\*.hypervrecoverymanager.windowsazure.com | Çoğaltma yönetimi işlemleri ve düzenlemesi için kullanılır
-https:\//management.azure.com | Çoğaltma yönetimi işlemleri ve düzenlemesi için kullanılır 
-*.services.visualstudio.com | Telemetri amaçları için kullanılır (isteğe bağlı)
-time.nist.gov | Sistem ve genel saat arasındaki saat eşitlemesini denetlemek için kullanılır
-time.windows.com | Sistem ve genel saat arasındaki saat eşitlemesini denetlemek için kullanılır
-| <ul> <li> https:\//login.microsoftonline.com </li><li> https:\//secure.aadcdn.microsoftonline-p.com </li><li> https:\//login.live.com </li><li> https:\//graph.windows.net </li><li> https:\//login.windows.net </li><li> https:\//www.live.com </li><li> https:\//www.microsoft.com </li></ul> | OVF kurulumunun bu URL 'lere erişmesi gerekiyor. Erişim denetimi ve kimlik yönetimi için Azure Active Directory tarafından kullanılır.
-https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi  | MySQL indirme işleminin tamamlanmasını sağlar. </br> Birkaç bölgede, indirme CDN URL 'sine yeniden yönlendirilebilir. Gerekirse CDN URL 'sinin da beyaz listeye eklendiğinden emin olun.
+**Internet access**  (the server needs access to the following URLs, directly or via proxy):|
+\*.backup.windowsazure.com | Used for replicated data transfer and coordination
+\*.store.core.windows.net | Used for replicated data transfer and coordination
+\*.blob.core.windows.net | Used to access storage account that stores replicated data
+\*.hypervrecoverymanager.windowsazure.com | Used for replication management operations and coordination
+https:\//management.azure.com | Used for replication management operations and coordination 
+*.services.visualstudio.com | Used for telemetry purposes (optional)
+time.nist.gov | Used to check time synchronization between system and global time
+time.windows.com | Used to check time synchronization between system and global time
+| <ul> <li> https:\//login.microsoftonline.com </li><li> https:\//secure.aadcdn.microsoftonline-p.com </li><li> https:\//login.live.com </li><li> https:\//graph.windows.net </li><li> https:\//login.windows.net </li><li> https:\//www.live.com </li><li> https:\//www.microsoft.com </li></ul> | OVF setup needs access to these URLs. They're used for access control and identity management by Azure Active Directory.
+https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi  | To complete MySQL download. </br> In a few regions, the download might be redirected to the CDN URL. Ensure that the CDN URL is also whitelisted, if necessary.
 |
 
-## <a name="required-software"></a>Gerekli yazılım
+## <a name="required-software"></a>Required software
 
 **Bileşen** | **Gereksinim** 
 --- | ---
-PowerCLI VMware vSphere | Yapılandırma sunucusu bir VMware VM üzerinde çalışıyorsa [PowerCLI sürüm 6,0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) 'nin yüklenmesi gerekir.
-MySQL | MySQL yüklenmelidir. Uygulamasını el ile yükleyebilir veya Azure Site Recovery yükleyebilirsiniz. (Daha fazla bilgi için bkz. [ayarları yapılandırma](../articles/site-recovery/vmware-azure-deploy-configuration-server.md#configure-settings).)
+VMware vSphere PowerCLI | [PowerCLI version 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) should be installed if the Configuration Server is running on a VMware VM.
+MYSQL | MySQL should be installed. You can install manually, or Site Recovery can install it. (Refer to [configure settings](../articles/site-recovery/vmware-azure-deploy-configuration-server.md#configure-settings) for more information)
+|
 
-## <a name="sizing-and-capacity-requirements"></a>Boyutlandırma ve kapasite gereksinimleri
+## <a name="sizing-and-capacity-requirements"></a>Sizing and capacity requirements
 
-Aşağıdaki tabloda yapılandırma sunucusu için kapasite gereksinimleri özetlenmektedir. Birden çok VMware VM 'yi çoğaltırken, [Kapasite Planlama konuları](../articles/site-recovery/site-recovery-plan-capacity-vmware.md) ' nı gözden geçirin ve [Azure Site Recovery dağıtım planlayıcısı aracını](../articles/site-recovery/site-recovery-deployment-planner.md)çalıştırın.
+The following table summarizes capacity requirements for the configuration server. If you're replicating multiple VMware VMs, review the [capacity planning considerations](../articles/site-recovery/site-recovery-plan-capacity-vmware.md) and run the [Azure Site Recovery Deployment Planner tool](../articles/site-recovery/site-recovery-deployment-planner.md).
 
 
-**'SUNA** | **Bellek** | **Önbellek diski** | **Veri değişim oranı** | **Çoğaltılan makineler**
+**CPU** | **Memory** | **Cache disk** | **Data change rate** | **Çoğaltılan makineler**
 --- | --- | --- | --- | ---
-8 vCPU<br/><br/> 2 yuva * 4 çekirdek \@ 2,5 GHz | 16 GB | 300 GB | 500 GB veya daha az | < 100 makine
-12 vCPU<br/><br/> 2 SOCKS * 6 çekirdek \@ 2,5 GHz | 18 GB | 600 GB | 500 GB ila 1 TB | 100-150 makine
-16 vCPU<br/><br/> 2 SOCKS * 8 çekirdek \@ 2,5 GHz | 32 GB | 1 TB | 1-2 TB | 150-200 makine
+8 vCPUs<br/><br/> 2 sockets * 4 cores \@ 2.5 GHz | 16 GB | 300 GB | 500 GB or less | < 100 machines
+12 vCPUs<br/><br/> 2 socks  * 6 cores \@ 2.5 GHz | 18 GB | 600 GB | 500 GB-1 TB | 100 to 150 machines
+16 vCPUs<br/><br/> 2 socks  * 8 cores \@ 2.5 GHz | 32 GB | 1 TB | 1-2 TB | 150 -200 machines
+|
 

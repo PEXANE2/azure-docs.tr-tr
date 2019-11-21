@@ -1,253 +1,253 @@
 ---
-title: Azure dosyaları dağıtımını planlama | Microsoft Docs
-description: Azure dosyaları dağıtımı için planlama yaparken göz önünde bulundurmanız gerekenler hakkında bilgi edinin.
+title: Planning for an Azure Files deployment | Microsoft Docs
+description: Learn what to consider when planning for an Azure Files deployment.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d0dd2ca35453859dcc16ef78ef4845a4198aad95
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 7d11dc70a78fcec62032c2a6af168bd306c9d416
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74066354"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227878"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Dosyaları dağıtımı planlama
 
-[Azure dosyaları](storage-files-introduction.md) tam olarak yönetilen dosya paylaşımları endüstri standardı SMB protokolünü erişilebilen bulutta sunar. Azure dosyaları tam olarak yönetildiğinden, üretim senaryolarında dağıtmak bir dosya sunucusu veya NAS cihazını dağıtmaktan ve yönetmekten çok daha kolaydır. Bu makalede, kuruluşunuzda üretim kullanımı için bir Azure dosya paylaşımının dağıtılmasında dikkate alınması gereken konular ele alınmaktadır.
+[Azure Files](storage-files-introduction.md) offers fully managed file shares in the cloud that are accessible via the industry standard SMB protocol. Because Azure Files is fully managed, deploying it in production scenarios is much easier than deploying and managing a file server or NAS device. This article addresses the topics to consider when deploying an Azure file share for production use within your organization.
 
-## <a name="management-concepts"></a>Yönetim kavramları
+## <a name="management-concepts"></a>Management concepts
 
- Aşağıdaki diyagramda Azure dosya yönetimi yapıları gösterilmektedir:
+ The following diagram illustrates the Azure Files management constructs:
 
 ![Dosya Yapısı](./media/storage-files-introduction/files-concepts.png)
 
 * **Depolama Hesabı**: Tüm Azure Depolama erişimi bir depolama hesabı üzerinden yapılır. Depolama hesabı kapasitesi hakkında ayrıntılı bilgi için, [Ölçeklenebilirlik ve Performans Hedefleri](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) konusuna bakın.
 
-* **Paylaşım**: Dosya Depolama paylaşımı Azure’daki bir SMB dosyası paylaşımıdır. Tüm dizinler ve dosyalar üst paylaşımda oluşturulmalıdır. Hesap sınırsız sayıda paylaşım içerebilir ve bir paylaşım, dosya paylaşımının toplam kapasitesine kadar sınırsız sayıda dosyayı depolayabilirler. Premium ve standart dosya paylaşımlarının toplam kapasitesi 100 TiB 'dir.
+* **Paylaşım**: Dosya Depolama paylaşımı Azure’daki bir SMB dosyası paylaşımıdır. Tüm dizinler ve dosyalar üst paylaşımda oluşturulmalıdır. An account can contain an unlimited number of shares and a share can store an unlimited number of files, up to the total capacity of the file share. The total capacity for premium and standard file shares is 100 TiB.
 
 * **Dizin:** Dizinlerin isteğe bağlı hiyerarşisi.
 
-* **Dosya**: Paylaşımdaki bir dosya. Dosya boyutu en fazla 1 TiB olabilir.
+* **Dosya**: Paylaşımdaki bir dosya. A file may be up to 1 TiB in size.
 
-* **URL biçimi**: Dosya REST protokolüyle yapılan bir Azure dosya paylaşımıyla ilgili istekler için, dosyalar aşağıdaki URL biçimi kullanılarak adreslenebilir:
+* **URL format**: For requests to an Azure file share made with the File REST protocol, files are addressable using the following URL format:
 
     ```
     https://<storage account>.file.core.windows.net/<share>/<directory>/<file>
     ```
 
-## <a name="data-access-method"></a>Veri erişim yöntemi
+## <a name="data-access-method"></a>Data access method
 
-Azure dosyaları, verilerinize erişmek için ayrı olarak veya birbirleriyle birlikte kullanabileceğiniz iki, yerleşik, uygun veri erişim yöntemleri sunar:
+Azure Files offers two, built-in, convenient data access methods that you can use separately, or in combination with each other, to access your data:
 
-1. **Doğrudan bulut erişimi**: herhangi bir Azure dosya paylaşımının, sektör standart sunucu ileti bloğu (SMB) protokolü veya Dosya REST API aracılığıyla [Windows](storage-how-to-use-files-windows.md), [MacOS](storage-how-to-use-files-mac.md)ve/veya [Linux](storage-how-to-use-files-linux.md) tarafından bağlanabilir. SMB, paylaşımdaki dosyalara okuma ve yazma işlemleri doğrudan Azure 'daki dosya paylaşımında yapılır. Azure 'daki bir VM tarafından bağlamak için, işletim sistemindeki SMB istemcisinin en az SMB 2,1 ' i desteklemesi gerekir. Örneğin, bir kullanıcının iş istasyonunda olduğu gibi şirket içi bağlamak için, iş istasyonu tarafından desteklenen SMB istemcisinin en az SMB 3,0 (şifreleme ile) desteklemesi gerekir. SMB 'nin yanı sıra, yeni uygulamalar veya hizmetler, yazılım geliştirme için kolay ve ölçeklenebilir bir uygulama programlama arabirimi sağlayan Dosya REST aracılığıyla dosya paylaşımının doğrudan erişimine sahip olabilir.
-2. **Azure dosya eşitleme**: Azure dosya eşitleme ile paylaşımlar, şirket Içinde veya Azure 'Da Windows sunucularına çoğaltılabilir. Kullanıcılarınız, bir SMB veya NFS paylaşımından olduğu gibi, Windows Server aracılığıyla dosya paylaşımıyla erişebilirler. Bu, şube senaryosunda olduğu gibi verilerin bir Azure veri merkezinde erişildiği ve değiştirildiği senaryolar için yararlıdır. Veriler, birden fazla şube ofisi gibi birden çok Windows Server uç noktası arasında çoğaltılabilir. Son olarak, veriler Azure dosyaları ile katmanlanmış olabilir, bu nedenle tüm veriler sunucu aracılığıyla erişilebilir olur ancak sunucu, verilerin tam bir kopyasına sahip değildir. Bunun yerine, verileriniz Kullanıcı tarafından açıldığında sorunsuz bir şekilde geri çekilir.
+1. **Direct cloud access**: Any Azure file share can be mounted by [Windows](storage-how-to-use-files-windows.md), [macOS](storage-how-to-use-files-mac.md), and/or [Linux](storage-how-to-use-files-linux.md) with the industry standard Server Message Block (SMB) protocol or via the File REST API. With SMB, reads and writes to files on the share are made directly on the file share in Azure. To mount by a VM in Azure, the SMB client in the OS must support at least SMB 2.1. To mount on-premises, such as on a user's workstation, the SMB client supported by the workstation must support at least SMB 3.0 (with encryption). In addition to SMB, new applications or services may directly access the file share via File REST, which provides an easy and scalable application programming interface for software development.
+2. **Azure File Sync**: With Azure File Sync, shares can be replicated to Windows Servers on-premises or in Azure. Your users would access the file share through the Windows Server, such as through an SMB or NFS share. This is useful for scenarios in which data will be accessed and modified far away from an Azure datacenter, such as in a branch office scenario. Data may be replicated between multiple Windows Server endpoints, such as between multiple branch offices. Finally, data may be tiered to Azure Files, such that all data is still accessible via the Server, but the Server does not have a full copy of the data. Rather, data is seamlessly recalled when opened by your user.
 
-Aşağıdaki tabloda, kullanıcılarınızın ve uygulamalarınızın Azure dosya paylaşımınıza nasıl erişebileceği gösterilmektedir:
+The following table illustrates how your users and applications can access your Azure file share:
 
-| | Doğrudan bulut erişimi | Azure Dosya Eşitleme |
+| | Direct cloud access | Azure Dosya Eşitleme |
 |------------------------|------------|-----------------|
-| Hangi protokollerin kullanılması gerekir? | Azure dosyaları SMB 2,1, SMB 3,0 ve Dosya REST API destekler. | Azure dosya paylaşımınıza Windows Server (SMB, NFS, FTPS, vb.) üzerinde desteklenen herhangi bir protokol aracılığıyla erişin |  
-| İş yükünüzü nerede çalıştırıyorsunuz? | **Azure 'da**: Azure dosyaları verilerinize doğrudan erişim sağlar. | **Yavaş ağ ile şirket içi**: Windows, Linux ve MacOS istemcileri, yerel bir şirket Içi Windows dosya paylaşımından Azure dosya paylaşımınızın hızlı bir önbelleği olarak bağlanabilir. |
-| Hangi ACL düzeyine ihtiyacınız var? | Paylaşma ve dosya düzeyi. | Paylaşma, dosya ve Kullanıcı düzeyi. |
+| What protocols do you need to use? | Azure Files supports SMB 2.1, SMB 3.0, and File REST API. | Access your Azure file share via any supported protocol on Windows Server (SMB, NFS, FTPS, etc.) |  
+| Where are you running your workload? | **In Azure**: Azure Files offers direct access to your data. | **On-premises with slow network**: Windows, Linux, and macOS clients can mount a local on-premises Windows File share as a fast cache of your Azure file share. |
+| What level of ACLs do you need? | Share and file level. | Share, file, and user level. |
 
 ## <a name="data-security"></a>Veri güvenliği
 
-Azure dosyaları, veri güvenliğini sağlamaya yönelik çeşitli yerleşik seçeneklere sahiptir:
+Azure Files has several built-in options for ensuring data security:
 
-* Her iki hat üzeri protokolde şifreleme desteği: SMB 3,0 şifreleme ve HTTPS üzerinden dosya geri kalanı. Varsayılan olarak: 
-    * SMB 3,0 şifrelemesini destekleyen istemciler şifreli bir kanal üzerinden veri gönderme ve alma.
-    * Şifreleme ile SMB 3,0 ' i desteklemeyen istemciler, şifreleme olmadan SMB 2,1 veya SMB 3,0 üzerinden veri merkezi olarak iletişim kurabilir. SMB istemcilerinin, şifreleme olmadan, SMB 2,1 veya SMB 3,0 üzerinden veri merkezine iletişim kurmasına izin verilmez.
-    * İstemciler, HTTP veya HTTPS ile dosya geri kalanı üzerinden iletişim kurabilir.
-* Bekleyen şifreleme ([Azure depolama hizmeti şifrelemesi](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)): tüm depolama hesapları için depolama HIZMETI ŞIFRELEMESI (SSE) etkin. Rest verileri, tam olarak yönetilen anahtarlarla şifrelenir. Bekleyen şifreleme, depolama maliyetlerini artırmaz veya performansı düşürür. 
-* Geçiş sırasında isteğe bağlı şifreli veri gereksinimi: seçildiğinde, Azure dosyaları şifrelenmemiş kanallar üzerinden verilere erişimi reddeder. Özellikle, şifreleme bağlantılarıyla yalnızca HTTPS ve SMB 3,0 kullanılabilir.
+* Support for encryption in both over-the-wire protocols: SMB 3.0 encryption and File REST over HTTPS. By default: 
+    * Clients that support SMB 3.0 encryption send and receive data over an encrypted channel.
+    * Clients that do not support SMB 3.0 with encryption can communicate intra-datacenter over SMB 2.1 or SMB 3.0 without encryption. SMB clients are not allowed to communicate inter-datacenter over SMB 2.1 or SMB 3.0 without encryption.
+    * Clients can communicate over File REST with either HTTP or HTTPS.
+* Encryption at-rest ([Azure Storage Service Encryption](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)): Storage Service Encryption (SSE) is enabled for all storage accounts. Data at-rest is encrypted with fully-managed keys. Encryption at-rest does not increase storage costs or reduce performance. 
+* Optional requirement of encrypted data in-transit: when selected, Azure Files rejects access to the data over unencrypted channels. Specifically, only HTTPS and SMB 3.0 with encryption connections are allowed.
 
     > [!Important]  
-    > Verilerin güvenli aktarılmasını istemek, eski SMB istemcilerinin şifreleme ile SMB 3,0 ile iletişim kurmamasına neden olur. Daha fazla bilgi için bkz. [Windows 'A bağlama](storage-how-to-use-files-windows.md), [Linux 'Ta bağlama](storage-how-to-use-files-linux.md)ve [MacOS 'a bağlama](storage-how-to-use-files-mac.md).
+    > Requiring secure transfer of data will cause older SMB clients not capable of communicating with SMB 3.0 with encryption to fail. For more information, see [Mount on Windows](storage-how-to-use-files-windows.md), [Mount on Linux](storage-how-to-use-files-linux.md), and [Mount on macOS](storage-how-to-use-files-mac.md).
 
-En yüksek güvenlik için, her iki şifrelemeyi de her zaman bekleyen bir şekilde etkinleştirmenizi ve verilerinize erişmek için modern istemciler kullandığınızda aktarım sırasında veri şifrelemeyi etkinleştirmenizi kesinlikle öneririz. Örneğin, yalnızca SMB 2,1 ' yi destekleyen bir Windows Server 2008 R2 sanal makinesine bir paylaşma bağlamanız gerekiyorsa, SMB 2,1 şifrelemeyi desteklemediğinden depolama hesabınıza şifrelenmemiş trafiğe izin vermeniz gerekir.
+For maximum security, we strongly recommend always enabling both encryption at-rest and enabling encryption of data in-transit whenever you are using modern clients to access your data. For example, if you need to mount a share on a Windows Server 2008 R2 VM, which only supports SMB 2.1, you need to allow unencrypted traffic to your storage account since SMB 2.1 does not support encryption.
 
-Azure dosya paylaşımınıza erişmek için Azure Dosya Eşitleme kullanıyorsanız, bekleyen verilerin şifrelenmesini gerektirmeden bağımsız olarak, verilerinizi Windows Server 'ınızla eşitlemek için şifreleme ile her zaman HTTPS ve SMB 3,0 kullanacağız.
+If you are using Azure File Sync to access your Azure file share, we will always use HTTPS and SMB 3.0 with encryption to sync your data to your Windows Servers, regardless of whether you require encryption of data at-rest.
 
-## <a name="file-share-performance-tiers"></a>Dosya paylaşımının performans katmanları
+## <a name="file-share-performance-tiers"></a>File share performance tiers
 
-Azure dosyaları iki performans katmanı sunar: Standart ve Premium.
+Azure Files offers two performance tiers: standard and premium.
 
-### <a name="standard-file-shares"></a>Standart dosya paylaşımları
+### <a name="standard-file-shares"></a>Standard file shares
 
-Standart dosya paylaşımları sabit disk sürücüleri (HDD 'Ler) tarafından desteklenir. Standart dosya paylaşımları, genel amaçlı dosya paylaşımları ve geliştirme/test ortamları gibi performans çeşitliliğine daha az duyarlı olan GÇ iş yükleri için güvenilir performans sağlar. Standart dosya paylaşımları yalnızca Kullandıkça Öde faturalandırma modelinde kullanılabilir.
-
-> [!IMPORTANT]
-> 5 TiB 'den büyük dosya paylaşımlarını kullanmak istiyorsanız, ekleme adımları ve bölgesel kullanılabilirlik ve kısıtlamalar için [daha büyük dosya paylaşımlarına (Standart katman)](#onboard-to-larger-file-shares-standard-tier) ekleme bölümüne bakın.
-
-### <a name="premium-file-shares"></a>Premium dosya paylaşımları
-
-Premium dosya paylaşımları, katı hal sürücüleri (SSD 'Ler) tarafından desteklenir. Premium dosya paylaşımları, GÇ yoğun iş yükleri için çoğu GÇ işlemleri için tek basamaklı milisaniye içinde tutarlı yüksek performans ve düşük gecikme sağlar. Bu, veritabanları, Web sitesi barındırma ve geliştirme ortamları gibi çok çeşitli iş yükleri için uygun hale getirir. Premium dosya paylaşımları yalnızca sağlanan faturalandırma modelinde kullanılabilir. Premium dosya paylaşımları standart dosya paylaşımlarından ayrı bir dağıtım modeli kullanır.
-
-Azure Backup Premium dosya paylaşımları için kullanılabilir ve Azure Kubernetes hizmeti sürüm 1,13 ve üzeri sürümlerde Premium dosya paylaşımlarını destekler.
-
-Premium dosya paylaşımının nasıl oluşturulduğunu öğrenmek isterseniz, konudaki makalemize bakın: [Azure Premium dosya depolama hesabı oluşturma](storage-how-to-create-premium-fileshare.md).
-
-Şu anda standart bir dosya paylaşımından ve Premium dosya paylaşımında doğrudan dönüştüremezsiniz. Her iki katmana geçmek istiyorsanız, o katmanda yeni bir dosya paylaşma oluşturmanız ve verileri özgün paylaşımınızdan oluşturduğunuz yeni paylaşıma el ile kopyalamanız gerekir. Bunu, Robocopy veya AzCopy gibi Azure dosyaları tarafından desteklenen kopyalama araçlarından herhangi birini kullanarak yapabilirsiniz.
+Standard file shares are backed by hard disk drives (HDDs). Standard file shares provide reliable performance for IO workloads that are less sensitive to performance variability such as general-purpose file shares and dev/test environments. Standard file shares are only available in a pay-as-you-go billing model.
 
 > [!IMPORTANT]
-> Premium dosya paylaşımları, depolama hesapları sunan ve bölgelerin daha küçük bir alt kümesindeki ZRS ile birlikte LRS ile kullanılabilir. Premium dosya paylaşımlarının bölgede şu anda kullanılabilir olup olmadığını öğrenmek için bkz. Azure için [bölgeye göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/?products=storage) sayfası. ZRS 'nin desteklediği bölgeleri öğrenmek için bkz. [Destek kapsamı ve bölgesel kullanılabilirlik](../common/storage-redundancy-zrs.md#support-coverage-and-regional-availability).
+> If you want to use file shares larger than 5 TiB, see the [Onboard to larger file shares (standard tier)](#onboard-to-larger-file-shares-standard-tier) section for steps to onboard, as well as regional availability and restrictions.
+
+### <a name="premium-file-shares"></a>Premium file shares
+
+Premium file shares are backed by solid-state drives (SSDs). Premium file shares provide consistent high performance and low latency, within single-digit milliseconds for most IO operations, for IO-intensive workloads. This makes them suitable for a wide variety of workloads like databases, web site hosting, and development environments. Premium file shares are only available in a provisioned billing model. Premium file shares use a deployment model separate from standard file shares.
+
+Azure Backup is available for premium file shares and Azure Kubernetes Service supports premium file shares in version 1.13 and above.
+
+If you'd like to learn how to create a premium file share, see our article on the subject: [How to create an Azure premium file storage account](storage-how-to-create-premium-fileshare.md).
+
+Currently, you cannot directly convert between a standard file share and a premium file share. If you would like to switch to either tier, you must create a new file share in that tier and manually copy the data from your original share to the new share you created. You can do this using any of the Azure Files supported copy tools, such as Robocopy or AzCopy.
+
+> [!IMPORTANT]
+> Premium file shares are available with LRS in most regions that offer storage accounts and with ZRS in a smaller subset of regions. To find out if premium file shares are currently available in your region, see the [products available by region](https://azure.microsoft.com/global-infrastructure/services/?products=storage) page for Azure. To find out what regions support ZRS, see [Support coverage and regional availability](../common/storage-redundancy-zrs.md#support-coverage-and-regional-availability).
 >
-> Yeni bölgelerin ve Premium katman özelliklerinin önceliklendirmemize yardımcı olmak için lütfen bu [anketi](https://aka.ms/pfsfeedback)doldurun.
+> To help us prioritize new regions and premium tier features, please fill out this [survey](https://aka.ms/pfsfeedback).
 
-#### <a name="provisioned-shares"></a>Sağlanan paylaşımlar
+#### <a name="provisioned-shares"></a>Provisioned shares
 
-Premium dosya paylaşımları, sabit bir GiB/ıOPS/verimlilik oranına göre sağlanır. Sağlanan her GiB için, paylaşıma tek bir ıOPS ve 0,1 MIB/s aktarım hızı, her bir paylaşıma göre en fazla sınırlara verilecek. İzin verilen en düşük sağlama, minimum ıOPS/aktarım hızı ile 100 GiB 'dir.
+Premium file shares are provisioned based on a fixed GiB/IOPS/throughput ratio. For each GiB provisioned, the share will be issued one IOPS and 0.1 MiB/s throughput up to the max limits per share. The minimum allowed provisioning is 100 GiB with min IOPS/throughput.
 
-En iyi çaba temelinde, tüm paylaşımlar, 60 dakika veya daha uzun bir süre için, paylaşımın boyutuna bağlı olarak, sağlanan depolama alanına göre üç ıOPS 'ye kadar veri alabilir. Yeni paylaşımlar, sağlanan kapasiteye göre tam patlama kredisi ile başlar.
+On a best effort basis, all shares can burst up to three IOPS per GiB of provisioned storage for 60 minutes or longer depending on the size of the share. New shares start with the full burst credit based on the provisioned capacity.
 
-Paylaşımlar 1 GiB artışlarla sağlanmalıdır. Minimum boyut 100 GiB, sonraki boyut 101 GiB ve bu şekilde devam eder.
+Shares must be provisioned in 1 GiB increments. Minimum size is 100 GiB, next size is 101 GiB and so on.
 
 > [!TIP]
-> Taban çizgisi ıOPS = 1 * sağlanan GiB. (En fazla 100.000 ıOPS).
+> Baseline IOPS = 1 * provisioned GiB. (Up to a max of 100,000 IOPS).
 >
-> Patlama sınırı = 3 * temel ıOPS. (En fazla 100.000 ıOPS).
+> Burst Limit = 3 * Baseline IOPS. (Up to a max of 100,000 IOPS).
 >
-> çıkış oranı = 60 MIB/s + 0,06 * sağlanan GiB
+> egress rate = 60 MiB/s + 0.06 * provisioned GiB
 >
-> Giriş oranı = 40 MIB/s + 0,04 * sağlanan GiB
+> ingress rate = 40 MiB/s + 0.04 * provisioned GiB
 
-Sağlanan paylaşma boyutu, paylaşma kotası ile belirtilir. Paylaşılan kota herhangi bir zamanda artırılabilir, ancak son artışdan bu yana yalnızca 24 saat sonra azaltılabilir. Kota artışı olmadan 24 saat bekledikten sonra, yeniden artırana kadar, paylaşma kotasını istediğiniz kadar azaltabilirsiniz. IOPS/verimlilik ölçeği değişiklikleri, boyut değişikliğinden sonra birkaç dakika içinde geçerli olacaktır.
+Provisioned share size is specified by share quota. Share quota can be increased at any time but can be decreased only after 24 hours since the last increase. After waiting for 24 hours without a quota increase, you can decrease the share quota as many times as you like, until you increase it again. IOPS/Throughput scale changes will be effective within a few minutes after the size change.
 
-Kullandığınız paylaşımın boyutunu, kullanılan GiB 'nizin altında azaltmak mümkündür. Bunu yaparsanız, verileri kaybetmezsiniz, ancak kullanılan boyutun performansını (temel ıOPS, aktarım hızı ve veri bloğu ıOPS) elde edersiniz ve bu boyut kullanılır.
+It is possible to decrease the size of your provisioned share below your used GiB. If you do this, you will not lose data but, you will still be billed for the size used and receive the performance (baseline IOPS, throughput, and burst IOPS) of the provisioned share, not the size used.
 
-Aşağıdaki tabloda sağlanan paylaşma boyutları için bu formüle birkaç örnek gösterilmektedir:
+The following table illustrates a few examples of these formulae for the provisioned share sizes:
 
-|Kapasite (GiB) | Temel IOPS | Veri bloğu ıOPS | Çıkış (MIB/s) | Giriş (MIB/s) |
+|Capacity (GiB) | Temel IOPS | Burst IOPS | Egress (MiB/s) | Ingress (MiB/s) |
 |---------|---------|---------|---------|---------|
-|100         | 100     | 300 kadar     | 66   | 44   |
-|500         | 500     | 1\.500 kadar   | 90   | 60   |
-|1,024       | 1,024   | 3\.072 kadar   | 122   | 81   |
-|5\.120       | 5\.120   | 15.360 kadar  | 368   | 245   |
-|10.240      | 10.240  | 30.720 kadar  | 675 | 450   |
-|33.792      | 33.792  | 100.000 kadar | 2\.088 | 1\.392   |
-|51.200      | 51.200  | 100.000 kadar | 3\.132 | 2\.088   |
-|102.400     | 100.000 | 100.000 kadar | 6\.204 | 4\.136   |
+|100         | 100     | Up to 300     | 66   | 44   |
+|500         | 500     | Up to 1,500   | 90   | 60   |
+|1,024       | 1,024   | Up to 3,072   | 122   | 81   |
+|5,120       | 5,120   | Up to 15,360  | 368   | 245   |
+|10,240      | 10,240  | Up to 30,720  | 675 | 450   |
+|33,792      | 33,792  | Up to 100,000 | 2,088 | 1,392   |
+|51,200      | 51,200  | Up to 100,000 | 3,132 | 2,088   |
+|102,400     | 100.000 | Up to 100,000 | 6,204 | 4,136   |
 
 > [!NOTE]
-> Dosya paylaşımları performansı, diğer birçok etken arasında makine ağ sınırlarına, kullanılabilir ağ bant genişliğine, GÇ boyutlarına ve paralellik özelliklerine tabidir. En yüksek performans ölçeğini elde etmek için, yükü birden çok VM arasında yayın. Bazı yaygın performans sorunları ve geçici çözümler için lütfen [sorun giderme kılavuzuna](storage-troubleshooting-files-performance.md) bakın.
+> File shares performance is subject to machine network limits, available network bandwidth, IO sizes, parallelism, among many other factors. For example, based on internal testing with 8 KiB read/write IO sizes, a single Windows virtual machine, *Standard F16s_v2*, connected to premium file share over SMB could achieve 20K read IOPS and 15K write IOPS. With 512 MiB read/write IO sizes, the same VM could achieve 1.1 GiB/s egress and 370 MiB/s ingress throughput. To achieve maximum performance scale, spread the load across multiple VMs. Please refer [troubleshooting guide](storage-troubleshooting-files-performance.md) for some common performance issues and workarounds.
 
-#### <a name="bursting"></a>Patlaması
+#### <a name="bursting"></a>Bursting
 
-Premium dosya paylaşımları, ıOPS 'yi üç etmene kadar alabilir. Burdıya otomatik ve bir kredi sistemine göre çalışır. Burdıya en iyi çaba temelinde çalışır ve veri bloğu sınırı bir garanti değildir; dosya paylaşımları sınıra *kadar* veri bloğu alabilir.
+Premium file shares can burst their IOPS up to a factor of three. Bursting is automated and operates based on a credit system. Bursting works on a best effort basis and the burst limit is not a guarantee, file shares can burst *up to* the limit.
 
-Krediler, dosya paylaşımınız için trafik temel ıOPS 'nin altında olduğunda bir patlama demetini biriktir. Örneğin, 100 GiB paylaşımında 100 temel ıOPS vardır. Paylaşımdaki gerçek trafik belirli bir 1 saniyelik Aralık için 40 ıOPS ise 60, kullanılmayan ıOPS, bir patlama demetine alacaklandırılır. Bu krediler daha sonra, işlemler temel IOPS 'yi aştığında kullanılacaktır.
+Credits accumulate in a burst bucket whenever traffic for your file share is below baseline IOPS. For example, a 100 GiB share has 100 baseline IOPS. If actual traffic on the share was 40 IOPS for a specific 1-second interval, then the 60 unused IOPS are credited to a burst bucket. These credits will then be used later when operations would exceed the baseline IOPs.
 
 > [!TIP]
-> Patlama demetini = taban çizgisi ıOPS * 2 * 3600.
+> Size of the burst bucket = Baseline IOPS * 2 * 3600.
 
-Bir paylaşımın temel ıOPS 'yi aşması ve bir patlama demeti içinde krediler olması durumunda, bu, veri bloğu olur. Krediler kaldığı sürece paylaşımlar aşırı denemeye devam edebilir, ancak 50 TiB 'den küçük paylaşımlar yalnızca bir saate kadar olan patlama sınırında kalır. 50 TiB 'den büyük paylaşımlar, bu saat sınırını en fazla iki saate kadar sürebilir, ancak bu, tahakkuk eden patlama kredilerinin sayısına bağlıdır. Taban çizgisi ıOPS 'nin ötesindeki her GÇ bir kredi kullanır ve tüm krediler tüketildikten sonra paylaşımın taban ıOPS değerine geri döneirdi.
+Whenever a share exceeds the baseline IOPS and has credits in a burst bucket, it will burst. Shares can continue to burst as long as credits are remaining, though shares smaller than 50 TiB will only stay at the burst limit for up to an hour. Shares larger than 50 TiB can technically exceed this one hour limit, up to two hours but, this is based on the number of burst credits accrued. Each IO beyond baseline IOPS consumes one credit and once all credits are consumed the share would return to baseline IOPS.
 
-Paylaşılan kredilerin üç durumu vardır:
+Share credits have three states:
 
-- Dosya paylaşımının taban çizgisi ıOPS 'den az kullanıldığı durumlarda tahakkuk edin.
-- Dosya paylaşımının ne zaman olduğu reddediliyor.
-- Kalan sabit, hiçbir kredi yoksa veya temel ıOPS kullanımda olduğunda.
+- Accruing, when the file share is using less than the baseline IOPS.
+- Declining, when the file share is bursting.
+- Remaining constant, when there are either no credits or baseline IOPS are in use.
 
-Yeni dosya paylaşımları, veri bloğu demetini içinde tam kredi sayısı ile başlar. Sunucu tarafından azaltma nedeniyle, paylaşılan ıOPS, temel ıOPS 'nin altında olursa patlama kredileri tahakkuk ettirilmeyecektir.
+New file shares start with the full number of credits in its burst bucket. Burst credits will not be accrued if the share IOPS fall below baseline IOPS due to throttling by the server.
 
-## <a name="file-share-redundancy"></a>Dosya paylaşma artıklığı
+## <a name="file-share-redundancy"></a>File share redundancy
 
-Azure dosyaları standart paylaşımları dört veri artıklığı seçeneğini destekler: yerel olarak yedekli depolama (LRS), bölgesel olarak yedekli depolama (ZRS), coğrafi olarak yedekli depolama (GRS) ve coğrafi bölge yedekli depolama (GZRS) (Önizleme).
+Azure Files standard shares supports four data redundancy options: locally redundant storage (LRS), zone redundant storage (ZRS), geo-redundant storage (GRS), and geo-zone-redundant storage (GZRS) (preview).
 
-Azure Files Premium paylaşımları hem LRS hem de ZRS 'yi destekler, ZRS Şu anda bölgelerin daha küçük bir alt kümesinde mevcuttur.
+Azure Files premium shares support both LRS and ZRS, ZRS is currently available in a smaller subset of regions.
 
-Aşağıdaki bölümlerde, farklı artıklık seçenekleri arasındaki farklar açıklanır:
+The following sections describe the differences between the different redundancy options:
 
 ### <a name="locally-redundant-storage"></a>Yerel olarak yedekli depolama
 
 [!INCLUDE [storage-common-redundancy-LRS](../../../includes/storage-common-redundancy-LRS.md)]
 
-### <a name="zone-redundant-storage"></a>Bölge yedekli depolama
+### <a name="zone-redundant-storage"></a>Zone redundant storage
 
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-ZRS.md)]
 
-### <a name="geo-redundant-storage"></a>Coğrafi olarak yedekli depolama
+### <a name="geo-redundant-storage"></a>Coğrafi Olarak Yedekli Depolama
 
 > [!Warning]  
-> Azure dosya paylaşımınızı bir GRS depolama hesabında bulut uç noktası olarak kullanıyorsanız, depolama hesabı yük devretmesini başlatmamanız gerekir. Bunun yapılması eşitlemenin durmasına neden olur ve yeni katmanlı dosyalar söz konusu olduğunda beklenmedik veri kaybına neden olabilir. Azure bölgesinin kaybedilmesi durumunda, Microsoft, depolama hesabı yük devretmesini Azure Dosya Eşitleme ile uyumlu bir şekilde tetikleyecektir.
+> If you are using your Azure file share as a cloud endpoint in a GRS storage account, you shouldn't initiate storage account failover. Doing so will cause sync to stop working and may also cause unexpected data loss in the case of newly tiered files. In the case of loss of an Azure region, Microsoft will trigger the storage account failover in a way that is compatible with Azure File Sync.
 
-Coğrafi olarak yedekli depolama (GRS), verilerinizi birincil bölgeden yüzlerce mil uzakta olan ikincil bir bölgeye çoğaltarak belirli bir yıl boyunca en az% 99.99999999999999 (16 9) nesne dayanıklılığı sağlamak üzere tasarlanmıştır. Depolama hesabınızda GRS etkinse, tüm bölgesel bir kesinti veya birincil bölgenin kurtarılamaz bir olağanüstü durum durumunda bile verileriniz dayanıklı olur.
+Geo-redundant storage (GRS) is designed to provide at least 99.99999999999999% (16 9's) durability of objects over a given year by replicating your data to a secondary region that is hundreds of miles away from the primary region. If your storage account has GRS enabled, then your data is durable even in the case of a complete regional outage or a disaster in which the primary region isn't recoverable.
 
-Okuma Erişimli Coğrafi olarak yedekli depolamayı (RA-GRS) kabul ediyorsanız Azure dosyasının şu anda herhangi bir bölgede Okuma Erişimli Coğrafi olarak yedekli depolamayı (RA-GRS) desteklemediğini bilmeniz gerekir. RA-GRS depolama hesabındaki dosya paylaşımları, GRS hesaplarında göründükleri gibi çalışır ve GRS fiyatları üzerinden ücretlendirilir.
+If you opt for read-access geo-redundant storage (RA-GRS), you should know that Azure File does not support read-access geo-redundant storage (RA-GRS) in any region at this time. File shares in the RA-GRS storage account work like they would in GRS accounts and are charged GRS prices.
 
-GRS, verilerinizi ikincil bölgedeki başka bir veri merkezine çoğaltır, ancak Microsoft birincil ve ikincil bölgeye bir yük devretme işlemi başlattığında bu veriler okunabilir.
+GRS replicates your data to another data center in a secondary region, but that data is available to be read only if Microsoft initiates a failover from the primary to secondary region.
 
-GRS özellikli bir depolama hesabı için tüm veriler önce yerel olarak yedekli depolama (LRS) ile çoğaltılır. Bir güncelleştirme öncelikle birincil konuma kaydedilir ve LRS kullanılarak çoğaltılır. Güncelleştirme daha sonra GRS kullanarak ikincil bölgeye zaman uyumsuz olarak çoğaltılır. Veriler ikincil konuma yazıldığında, LRS kullanarak bu konumda da çoğaltılır.
+For a storage account with GRS enabled, all data is first replicated with locally redundant storage (LRS). An update is first committed to the primary location and replicated using LRS. The update is then replicated asynchronously to the secondary region using GRS. When data is written to the secondary location, it's also replicated within that location using LRS.
 
-Birincil ve ikincil bölgeler, ayrı hata etki alanları genelinde çoğaltmaları yönetir ve depolama ölçek birimi içindeki etki alanlarını yükseltir. Depolama ölçek birimi, veri merkezi içindeki temel çoğaltma birimidir. Bu düzeyde çoğaltma, LRS tarafından sağlanır; daha fazla bilgi için bkz. [yerel olarak yedekli depolama (LRS): Azure depolama Için düşük maliyetli veri artıklığı](../common/storage-redundancy-lrs.md).
+Both the primary and secondary regions manage replicas across separate fault domains and upgrade domains within a storage scale unit. The storage scale unit is the basic replication unit within the datacenter. Replication at this level is provided by LRS; for more information, see [Locally redundant storage (LRS): Low-cost data redundancy for Azure Storage](../common/storage-redundancy-lrs.md).
 
-Hangi çoğaltma seçeneğinin kullanılacağına karar verirken bu noktaları göz önünde bulundurun:
+Keep these points in mind when deciding which replication option to use:
 
-* Coğrafi bölge yedekli depolama (GZRS) (Önizleme), üç Azure kullanılabilirlik alanında verileri eşzamanlı olarak çoğaltarak ve ardından verileri zaman uyumsuz olarak ikincil bölgeye çoğaltırken maksimum dayanıklılık ile birlikte yüksek kullanılabilirlik sağlar. İkincil bölgeye okuma erişimini de etkinleştirebilirsiniz. GZRS belirli bir yıl boyunca nesnelerin en az% 99.99999999999999 (16 9) oranında dayanıklılığını sağlamak üzere tasarlanmıştır. GZRS hakkında daha fazla bilgi için bkz. [coğrafi bölge yedekli depolama, yüksek oranda kullanılabilirlik ve en yüksek dayanıklılık (Önizleme) için](../common/storage-redundancy-gzrs.md).
-* Bölgesel olarak yedekli depolama (ZRS), zaman uyumlu çoğaltma ile yüksek kullanılabilirlik sağlar ve GRS 'den bazı senaryolar için daha iyi bir seçenek olabilir. ZRS hakkında daha fazla bilgi için bkz. [ZRS](../common/storage-redundancy-zrs.md).
-* Zaman uyumsuz çoğaltma, verilerin birincil bölgeye yazıldığı zamandan, ikincil bölgeye çoğaltılmasıyla ilgili bir gecikme içerir. Bölgesel bir olağanüstü durum durumunda, bu veriler birincil bölgeden kurtarılamazsa, ikincil bölgeye henüz çoğaltılmamış değişiklikler kaybolabilir.
-* GRS ile Microsoft, ikincil bölgede bir yük devretme işlemi başlatmadığı takdirde okuma veya yazma erişimi için kullanılamaz. Yük devretme durumunda, yük devretme tamamlandıktan sonra bu verilere okuma ve yazma erişiminiz olacaktır. Daha fazla bilgi için lütfen bkz. [olağanüstü durum kurtarma Kılavuzu](../common/storage-disaster-recovery-guidance.md).
+* Geo-zone-redundant storage (GZRS) (preview) provides high availability together with maximum durability by replicating data synchronously across three Azure availability zones and then replicating data asynchronously to the secondary region. You can also enable read access to the secondary region. GZRS is designed to provide at least 99.99999999999999% (16 9's) durability of objects over a given year. For more information on GZRS, see [Geo-zone-redundant storage for highly availability and maximum durability (preview)](../common/storage-redundancy-gzrs.md).
+* Zone-redundant storage (ZRS) provides highly availability with synchronous replication and may be a better choice for some scenarios than GRS. For more information on ZRS, see [ZRS](../common/storage-redundancy-zrs.md).
+* Asynchronous replication involves a delay from the time that data is written to the primary region, to when it is replicated to the secondary region. In the event of a regional disaster, changes that haven't yet been replicated to the secondary region may be lost if that data can't be recovered from the primary region.
+* With GRS, the replica isn't available for read or write access unless Microsoft initiates a failover to the secondary region. In the case of a failover, you'll have read and write access to that data after the failover has completed. For more information, please see [Disaster recovery guidance](../common/storage-disaster-recovery-guidance.md).
 
-## <a name="onboard-to-larger-file-shares-standard-tier"></a>Daha büyük dosya paylaşımlarına ekleme (Standart katman)
+## <a name="onboard-to-larger-file-shares-standard-tier"></a>Onboard to larger file shares (standard tier)
 
-Bu bölüm yalnızca standart dosya paylaşımları için geçerlidir. Tüm Premium dosya paylaşımları 100 TiB kapasitesinde kullanılabilir.
+This section only applies to the standard file shares. All premium file shares are available with 100 TiB capacity.
 
 ### <a name="restrictions"></a>Kısıtlamalar
 
-- Büyük dosya paylaşımları etkin olan herhangi bir depolama hesabı için LRS/ZRS 'den GRS/GZRS hesabı dönüştürme mümkün olmayacaktır.
+- LRS/ZRS to GRS/GZRS account conversion will not be possible for any storage account with large file shares enabled.
 
 ### <a name="regional-availability"></a>Bölgesel kullanılabilirlik
 
-Standart dosya paylaşımları, 5 TiB 'ye kadar tüm bölgelerde kullanılabilir. Belirli bölgelerde, bunlar 100 TiB sınırı ile kullanılabilir, bu bölgeler aşağıdaki tabloda listelenmiştir:
+Standard file shares are available in all regions up to 5 TiB. In certain regions, they are available with a 100 TiB limit, those regions are listed in the following table:
 
-|Bölge |Desteklenen artıklık |
+|Bölge |Supported redundancy |
 |-------|---------|
-|Avustralya Doğu |LRS     |
-|Avustralya Güneydoğu|LRS |
-|Orta Kanada  |LRS     |
-|Doğu Kanada     |LRS     |
+|Doğu Avustralya |LRS     |
+|Güneydoğu Avustralya|LRS |
+|Kanada Orta  |LRS     |
+|Kanada Doğu     |LRS     |
 |Orta Hindistan  |LRS     |
-|Orta ABD *   |LRS     |
+|Central US*   |LRS     |
 |Doğu Asya      |LRS     |
-|Doğu ABD *        |LRS     |
-|Doğu ABD 2 *      |LRS     |
+|East US*        |LRS     |
+|East US 2*      |LRS     |
 |Fransa Orta |LRS, ZRS|
 |Fransa Güney   |LRS     |
 |Kuzey Avrupa   |LRS     |
 |Güney Hindistan    |LRS     |
 |Güneydoğu Asya |LRS, ZRS|
-|Batı Orta ABD|LRS     |
-|Batı Avrupa *    |LRS, ZRS|
-|Batı ABD *        |LRS     |
+|Orta Batı ABD|LRS     |
+|West Europe*    |LRS, ZRS|
+|West US*        |LRS     |
 |Batı ABD 2      |LRS, ZRS|
 
-Yeni hesaplar için desteklenen \*, tüm mevcut hesaplar yükseltme işlemini tamamlamamıştı. [Büyük dosya paylaşımlarını etkinleştirmeye](storage-files-how-to-create-large-file-share.md)çalışırken, mevcut depolama hesaplarınızın yükseltme işlemini tamamlayıp tamamlamadığınızı kontrol edebilirsiniz.
+\* Supported for new accounts, not all existing accounts have completed the upgrade process. You can check if your existing storage accounts have completed the upgrade process by attempting to [Enable large file shares](storage-files-how-to-create-large-file-share.md).
 
-Yeni bölgelerin ve özelliklerin önceliklendirmemize yardımcı olmak için lütfen bu [anketi](https://aka.ms/azurefilesatscalesurvey)doldurun.
+To help us prioritize new regions and features, please fill out this [survey](https://aka.ms/azurefilesatscalesurvey).
 
-### <a name="enable-and-create-larger-file-shares"></a>Daha büyük dosya paylaşımları etkinleştirin ve oluşturun
+### <a name="enable-and-create-larger-file-shares"></a>Enable and create larger file shares
 
-Daha büyük dosya paylaşımlarını kullanmaya başlamak için, [büyük dosya paylaşımlarını etkinleştirme ve oluşturma](storage-files-how-to-create-large-file-share.md)makalemize bakın.
+To begin using larger file shares, see our article [How to enable and create large file shares](storage-files-how-to-create-large-file-share.md).
 
-## <a name="data-growth-pattern"></a>Veri büyüme kriteri
+## <a name="data-growth-pattern"></a>Data growth pattern
 
-Bugün, bir Azure dosya paylaşımının en büyük boyutu 100 TiB 'dir. Bu geçerli sınırlama nedeniyle, bir Azure dosya paylaşımından dağıtım yaparken beklenen verilerin büyümesini göz önünde bulundurmanız gerekir.
+Today, the maximum size for an Azure file share is 100 TiB. Because of this current limitation, you must consider the expected data growth when deploying an Azure file share.
 
-Birden çok Azure dosya paylaşımını Azure Dosya Eşitleme ile tek bir Windows dosya sunucusu ile eşitlemek mümkündür. Bu, şirket içinde sahip olduğunuz eski, büyük dosya paylaşımlarının Azure Dosya Eşitleme olarak getirilebilir olmasını güvence altına almanıza olanak tanır. Daha fazla bilgi için bkz. [Azure dosya eşitleme dağıtım planlaması](storage-files-planning.md).
+It is possible to sync multiple Azure file shares to a single Windows File Server with Azure File Sync. This allows you to ensure that older, large file shares that you may have on-premises can be brought into Azure File Sync. For more information, see [Planning for an Azure File Sync Deployment](storage-files-planning.md).
 
-## <a name="data-transfer-method"></a>Veri aktarımı yöntemi
+## <a name="data-transfer-method"></a>Data transfer method
 
-Şirket içi dosya paylaşımından mevcut bir dosya paylaşımından verileri Azure dosyalarına toplu olarak aktarmaya yönelik birçok kolay seçenek vardır. Popüler olanlar şunlardır: (ayrıntılı olmayan liste):
+There are many easy options to bulk transfer data from an existing file share, such as an on-premises file share, into Azure Files. A few popular ones include (non-exhaustive list):
 
-* **Azure dosya eşitleme**: bir Azure dosya paylaşımıyla ("bulut uç noktası") ve bir Windows Dizin ad alanı ("sunucu uç noktası") arasındaki ilk eşitlemenin bir parçası olarak, Azure dosya eşitleme var olan dosya paylaşımındaki tüm verileri Azure dosyaları 'na çoğaltacaktır.
-* **[Azure içeri/dışarı aktarma](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** : Azure Içeri/dışarı aktarma hizmeti, sabit disk sürücülerinin bir Azure veri merkezine göndererek büyük miktarlardaki verileri bir Azure dosya paylaşımında güvenli bir şekilde aktarmanıza olanak tanır. 
-* **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)** : Robocopy, Windows ve Windows Server ile birlikte gelen iyi bilinen bir kopyalama aracıdır. Robocopy, dosya paylaşımının yerel olarak bağlanması ve ardından Robocopy komutunda hedef olarak bağlı konumu kullanarak Azure dosyalarına veri aktarmak için kullanılabilir.
-* **[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** : AzCopy, Azure dosyalarını ve Azure Blob Storage 'a veri kopyalamak için tasarlanan bir komut satırı yardımcı programıdır ve en iyi performansla basit komutlar kullanmaktır.
+* **Azure File Sync**: As part of a first sync between an Azure file share (a "Cloud Endpoint") and a Windows directory namespace (a "Server Endpoint"), Azure File Sync will replicate all data from the existing file share to Azure Files.
+* **[Azure Import/Export](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** : The Azure Import/Export service allows you to securely transfer large amounts of data into an Azure file share by shipping hard disk drives to an Azure datacenter. 
+* **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)** : Robocopy is a well known copy tool that ships with Windows and Windows Server. Robocopy may be used to transfer data into Azure Files by mounting the file share locally, and then using the mounted location as the destination in the Robocopy command.
+* **[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** : AzCopy is a command-line utility designed for copying data to and from Azure Files, as well as Azure Blob storage, using simple commands with optimal performance.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Azure Dosya Eşitleme dağıtımı için planlama yapma](storage-sync-files-planning.md)
-* [Azure dosyalarını dağıtma](storage-files-deployment-guide.md)
-* [Azure Dosya Eşitleme dağıtma](storage-sync-files-deployment-guide.md)
+* [Planning for an Azure File Sync Deployment](storage-sync-files-planning.md)
+* [Deploying Azure Files](storage-files-deployment-guide.md)
+* [Deploying Azure File Sync](storage-sync-files-deployment-guide.md)
