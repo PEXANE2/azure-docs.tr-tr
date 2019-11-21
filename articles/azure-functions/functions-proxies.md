@@ -1,125 +1,121 @@
 ---
-title: Azure işlevleri proxy'leri ile çalışma | Microsoft Docs
-description: Azure işlev proxy'lerini kullanmaya nasıl genel bakış
-services: functions
+title: Work with proxies in Azure Functions
+description: Overview of how to use Azure Functions Proxies
 author: alexkarcher-msft
-manager: jeconnoc
-ms.assetid: ''
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 72e359cf5cfef2072d3511990297f67fc4df92bb
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: dffdffdfa80d940c4a50d0a6630c665164f24d5c
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773049"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230449"
 ---
-# <a name="work-with-azure-functions-proxies"></a>Azure işlev proxy'leri ile çalışma
+# <a name="work-with-azure-functions-proxies"></a>Work with Azure Functions Proxies
 
-Bu makalede, yapılandırma ve Azure işlev proxy'lerini ile çalışmak açıklanmaktadır. Bu özellik ile başka bir kaynak tarafından uygulanan işlev uygulamanız üzerindeki uç noktaları belirtebilirsiniz. İstemciler için hala tek bir API yüzeyi sunarken büyük API birden fazla işlev uygulaması (olduğu gibi bir mikro Hizmet Mimarisi) uygulamasına ayırmak için bu proxy'ler kullanabilirsiniz.
+This article explains how to configure and work with Azure Functions Proxies. With this feature, you can specify endpoints on your function app that are implemented by another resource. You can use these proxies to break a large API into multiple function apps (as in a microservice architecture), while still presenting a single API surface for clients.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 > [!NOTE] 
-> Faturalama standart işlevleri, proxy yürütme için geçerlidir. Daha fazla bilgi için [Azure işlevleri fiyatlandırması](https://azure.microsoft.com/pricing/details/functions/).
+> Standard Functions billing applies to proxy executions. For more information, see [Azure Functions pricing](https://azure.microsoft.com/pricing/details/functions/).
 
-## <a name="create"></a>Bir ara sunucu oluşturma
+## <a name="create"></a>Create a proxy
 
-Bu bölümde bir ara sunucu işlevleri Portalı'nda oluşturma işlemini gösterir.
+This section shows you how to create a proxy in the Functions portal.
 
-1. Açık [Azure portal]ve ardından işlev uygulamanıza gidin.
-2. Sol bölmede seçin **yeni proxy**.
-3. Ara sunucunuz için bir ad belirtin.
-4. Sunulan uç noktası belirterek bu işlev uygulamasını yapılandırma **rota şablonu** ve **HTTP yöntemleri**. Bu parametreler için kurallara göre davranır [HTTP Tetikleyicileri].
-5. Ayarlama **arka uç URL'si** başka bir uç nokta için. Bu uç nokta, başka bir işlev uygulaması bir işlevde olabilir veya başka bir API olabilir. Değer statik olması gerekmez ve ona başvuran [uygulama ayarları] ve [Özgün istemci İstek parametreleri].
+1. Open the [Azure portalda], and then go to your function app.
+2. In the left pane, select **New proxy**.
+3. Provide a name for your proxy.
+4. Configure the endpoint that's exposed on this function app by specifying the **route template** and **HTTP methods**. These parameters behave according to the rules for [HTTP triggers].
+5. Set the **backend URL** to another endpoint. This endpoint could be a function in another function app, or it could be any other API. The value does not need to be static, and it can reference [application settings] and [parameters from the original client request].
 6. **Oluştur**’a tıklayın.
 
-İşlev uygulamanız üzerinde yeni bir uç nokta olarak ara sunucunuz artık yok. İstemci açısından bakıldığında, Azure işlevleri'nde bir HttpTrigger eşdeğerdir. Proxy URL'si kopyalayarak ve sık kullanılan HTTP istemci ile test, yeni proxy deneyebilirsiniz.
+Your proxy now exists as a new endpoint on your function app. From a client perspective, it is equivalent to an HttpTrigger in Azure Functions. You can try out your new proxy by copying the Proxy URL and testing it with your favorite HTTP client.
 
-## <a name="modify-requests-responses"></a>İsteklerin ve yanıtların değiştirme
+## <a name="modify-requests-responses"></a>Modify requests and responses
 
-Azure işlev proxy'lerini ile isteklerini ve arka uç alınan yanıtları değiştirebilirsiniz. Bu dönüştürmeler sınıfında tanımlandığı gibi değişkenleri kullanabilirsiniz [değişkenlerini kullanma].
+With Azure Functions Proxies, you can modify requests to and responses from the back-end. These transformations can use variables as defined in [Use variables].
 
-### <a name="modify-backend-request"></a>Arka uç istek değiştirme
+### <a name="modify-backend-request"></a>Modify the back-end request
 
-Varsayılan olarak, özgün istek bir kopyası olarak arka uç isteği başlatıldı. Arka uç URL'si ayarlamanın yanı sıra HTTP yöntemi, üst bilgiler ve sorgu dizesi parametreleri değişiklik yapabilirsiniz. Değiştirilmiş değerlere başvurabilirsiniz [uygulama ayarları] ve [Özgün istemci İstek parametreleri].
+By default, the back-end request is initialized as a copy of the original request. In addition to setting the back-end URL, you can make changes to the HTTP method, headers, and query string parameters. The modified values can reference [application settings] and [parameters from the original client request].
 
-Arka uç istekleri portalda, proxy ayrıntısı sayfasının *istek geçersiz kılma* bölümüne genişleterek değişiklik yapılabilir. 
+Back-end requests can be modified in the portal by expanding the *request override* section of the proxy detail page. 
 
-### <a name="modify-response"></a>Yanıtı değiştirebilir
+### <a name="modify-response"></a>Modify the response
 
-Varsayılan olarak, istemci yanıtı arka uç yanıtı bir kopyası olarak başlatılır. Yanıtın durum kodu, neden ifadesini, üstbilgi ve gövde değişiklik yapabilirsiniz. Değiştirilmiş değerlere başvurabilirsiniz [uygulama ayarları], [Özgün istemci İstek parametreleri], ve [arka uç yanıtı Parametreler].
+By default, the client response is initialized as a copy of the back-end response. You can make changes to the response's status code, reason phrase, headers, and body. The modified values can reference [application settings], [parameters from the original client request], and [parameters from the back-end response].
 
-Arka uç istekleri portalda, proxy ayrıntısı sayfasının *yanıt geçersiz kılma* bölümüne genişleterek değişiklik yapılabilir. 
+Back-end requests can be modified in the portal by expanding the *response override* section of the proxy detail page. 
 
-## <a name="using-variables"></a>Değişkenlerini kullanma
+## <a name="using-variables"></a>Use variables
 
-Bir ara sunucu yapılandırmasını statik olması gerekmez. Değişkenler özgün istemci isteği, arka uç yanıtı ya da uygulama ayarları kullanacak şekilde koşul.
+The configuration for a proxy does not need to be static. You can condition it to use variables from the original client request, the back-end response, or application settings.
 
-### <a name="reference-localhost"></a>Başvuru yerel işlevler
-Kullanabileceğiniz `localhost` bir işlev aynı işlev uygulamasında bir gidiş dönüş proxy isteği doğrudan başvurmak için.
+### <a name="reference-localhost"></a>Reference local functions
+You can use `localhost` to reference a function inside the same function app directly, without a roundtrip proxy request.
 
-`"backendurl": "https://localhost/api/httptriggerC#1"` bir yerel yol HTTP ile tetiklenen işlevi başvurur. `/api/httptriggerC#1`
+`"backendurl": "https://localhost/api/httptriggerC#1"` will reference a local HTTP triggered function at the route `/api/httptriggerC#1`
 
  
 >[!Note]  
->İşlevinizi kullanıyorsa *işlevi, yönetici veya sys* yetkilendirme düzeyleri, kod ve ClientID, orijinal işlev URL'sini göre sağlamak gerekir. Bu durumda, başvurunun şöyle görünmesi gerekir: `"backendurl": "https://localhost/api/httptriggerC#1?code=<keyvalue>&clientId=<keyname>"`Bu anahtarların [Uygulama ayarları] depolanmasını ve proxy 'leriniz ile başvurmayı öneririz. Bu, kaynak kodunuzda gizli dizileri depolamayı önler. 
+>If your function uses *function, admin or sys* authorization levels, you will need to provide the code and clientId, as per the original function URL. In this case the reference would look like: `"backendurl": "https://localhost/api/httptriggerC#1?code=<keyvalue>&clientId=<keyname>"` We recommend storing these keys in [application settings] and referencing those in your proxies. This avoids storing secrets in your source code. 
 
-### <a name="request-parameters"></a>Başvuru İstek parametreleri
+### <a name="request-parameters"></a>Reference request parameters
 
-İstek parametreleri, giriş olarak arka uç URL'si özelliği veya isteklerini ve yanıtlarını değiştirme işleminin parçası olarak kullanabilirsiniz. Temel Ara sunucu yapılandırmasında belirtilen rota şablondaki bazı parametreler bağlanabilir ve diğerleri gelen istek özelliklerinden gelebilir.
+You can use request parameters as inputs to the back-end URL property or as part of modifying requests and responses. Some parameters can be bound from the route template that's specified in the base proxy configuration, and others can come from properties of the incoming request.
 
-#### <a name="route-template-parameters"></a>Şablon parametreleri yolu
-Yol şablonunda kullanılan parametreleri adı tarafından başvurulan kullanılabilir. Parametre adları ayraç içine alınır ({}).
+#### <a name="route-template-parameters"></a>Route template parameters
+Parameters that are used in the route template are available to be referenced by name. The parameter names are enclosed in braces ({}).
 
-Örneğin, bir proxy gibi bir rota şablonuna sahip `/pets/{petId}`, arka uç URL'si değerini içerebilir `{petId}`, olarak `https://<AnotherApp>.azurewebsites.net/api/pets/{petId}`. Rota şablonu bir joker karakter olarak gibi kesilip kesilmediğini `/api/{*restOfPath}`, değer `{restOfPath}` kalan yol kesimleri gelen istek dize gösterimidir.
+For example, if a proxy has a route template, such as `/pets/{petId}`, the back-end URL can include the value of `{petId}`, as in `https://<AnotherApp>.azurewebsites.net/api/pets/{petId}`. If the route template terminates in a wildcard, such as `/api/{*restOfPath}`, the value `{restOfPath}` is a string representation of the remaining path segments from the incoming request.
 
-#### <a name="additional-request-parameters"></a>Ek İstek parametreleri
-Rota şablonu parametrelerine ek olarak, yapılandırma değerleri aşağıdaki değerler kullanılabilir:
+#### <a name="additional-request-parameters"></a>Additional request parameters
+In addition to the route template parameters, the following values can be used in config values:
 
-* **{Request. Method}** : Özgün istekte kullanılan HTTP yöntemi.
-* **{Request. Headers.\< HeaderName\>}** : Özgün istekten okunabilecek bir üst bilgi. Değiştirin *\<HeaderName\>* okumak istediğiniz üst bilgi adı. İstek üst bilgisi dahil edilmemişse, değer boş dize olacaktır.
-* **{Request. QueryString.\< ParameterName\>}** : Özgün istekten okunabilecek bir sorgu dizesi parametresi. Değiştirin *\<ParameterName\>* ile okumak istediğiniz parametrenin adı. İstek parametre dahil edilmezse, boş bir dize değeri olacaktır.
+* **{request.method}** : The HTTP method that's used on the original request.
+* **{request.headers.\<HeaderName\>}** : A header that can be read from the original request. Replace *\<HeaderName\>* with the name of the header that you want to read. If the header is not included on the request, the value will be the empty string.
+* **{request.querystring.\<ParameterName\>}** : A query string parameter that can be read from the original request. Replace *\<ParameterName\>* with the name of the parameter that you want to read. If the parameter is not included on the request, the value will be the empty string.
 
-### <a name="response-parameters"></a>Başvuru arka uç yanıtı parametreleri
+### <a name="response-parameters"></a>Reference back-end response parameters
 
-Yanıt parametrelerinin, yanıtı istemciye değiştirme işleminin parçası olarak kullanılabilir. Yapılandırma değerleri aşağıdaki değerler kullanılabilir:
+Response parameters can be used as part of modifying the response to the client. The following values can be used in config values:
 
-* **{arka uç. Response. StatusCode}** : Arka uç yanıtında döndürülen HTTP durum kodu.
-* **{arka uç. Response. statusReason}** : Arka uç yanıtında döndürülen HTTP neden tümceciği.
-* **{arka uç. Response. Headers\< . HeaderName\>}** : Arka uç yanıtından okunabilecek bir üst bilgi. Değiştirin *\<HeaderName\>* okumak istediğiniz üst bilgi adı. Yanıt üst bilgisi dahil edilmemişse değeri boş dize olacaktır.
+* **{backend.response.statusCode}** : The HTTP status code that's returned on the back-end response.
+* **{backend.response.statusReason}** : The HTTP reason phrase that's returned on the back-end response.
+* **{backend.response.headers.\<HeaderName\>}** : A header that can be read from the back-end response. Replace *\<HeaderName\>* with the name of the header you want to read. If the header is not included on the response, the value will be the empty string.
 
-### <a name="use-appsettings"></a>Uygulama ayarları başvurusu
+### <a name="use-appsettings"></a>Reference application settings
 
-Ayrıca başvurabilirsiniz [uygulama ayarları işlev uygulaması için tanımlanan](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings) yüzde işaretleri (%) ayarı adıyla çevreleyen tarafından.
+You can also reference [application settings defined for the function app](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings) by surrounding the setting name with percent signs (%).
 
-Örneğin, bir arka uç URL'si *https://%ORDER_PROCESSING_HOST%/api/orders* "% ORDER_PROCESSING_HOST % ORDER_PROCESSING_HOST ayarının değeri ile değiştirilmiştir" gerekir.
+For example, a back-end URL of *https://%ORDER_PROCESSING_HOST%/api/orders* would have "%ORDER_PROCESSING_HOST%" replaced with the value of the ORDER_PROCESSING_HOST setting.
 
 > [!TIP] 
-> Birden çok dağıtım olduğunda uygulama ayarları için arka uç ana bilgisayarları kullanın veya test ortamları. Bu şekilde, her zaman bu ortam için doğru arka uca varsayılır, emin olabilirsiniz.
+> Use application settings for back-end hosts when you have multiple deployments or test environments. That way, you can make sure that you are always talking to the right back-end for that environment.
 
-## <a name="debugProxies"></a>Proxy'leri sorunlarını giderme
+## <a name="debugProxies"></a>Troubleshoot Proxies
 
-Bayrağı ekleyerek `"debug":true` herhangi proxy'sine, `proxies.json` hata ayıklama günlük kaydını etkinleştirir. Günlükleri depolanır `D:\home\LogFiles\Application\Proxies\DetailedTrace` ve Gelişmiş araçlar (kudu) üzerinden erişilebilir. HTTP yanıtları de içeren bir `Proxy-Trace-Location` üstbilgi günlük dosyasına erişmek için bir URL.
+By adding the flag `"debug":true` to any proxy in your `proxies.json` you will enable debug logging. Logs are stored in `D:\home\LogFiles\Application\Proxies\DetailedTrace` and accessible through the advanced tools (kudu). Any HTTP responses will also contain a `Proxy-Trace-Location` header with a URL to access the log file.
 
-İstemci tarafında bir ara sunucuya ekleyerek ayıklayabilirsiniz bir `Proxy-Trace-Enabled` başlığı ayarlayın `true`. Bu da dosya sistemine bir izleme günlüğü ve yanıt üst bilgi olarak izleme URL'sini döndürür.
+You can debug a proxy from the client side by adding a `Proxy-Trace-Enabled` header set to `true`. This will also log a trace to the file system, and return the trace URL as a header in the response.
 
-### <a name="block-proxy-traces"></a>Blok proxy izlemeleri
+### <a name="block-proxy-traces"></a>Block proxy traces
 
-Güvenlik nedenleriyle herkesin bir izleme oluşturmak için hizmetinizi çağırmadan istemeyebilirsiniz. Bunlar olmadan oturum açma kimlik bilgilerinizi izleme içeriğine erişmek mümkün olmayacaktır, ancak izleme oluşturma kaynaklarını tüketir ve işlev proxy'lerini kullandığınızı gösterir.
+For security reasons you may not want to allow anyone calling your service to generate a trace. They will not be able to access the trace contents without your login credentials, but generating the trace consumes resources and exposes that you are using Function Proxies.
 
-Ekleyerek izlemeleri tamamen devre dışı `"debug":false` herhangi belirli proxy'sine, `proxies.json`.
+Disable traces altogether by adding `"debug":false` to any particular proxy in your `proxies.json`.
 
 ## <a name="advanced-configuration"></a>Gelişmiş yapılandırma
 
-Yapılandırdığınız proxy depolanan bir *proxies.json* bir işlev uygulaması dizin kök dizininde bulunan dosya. El ile bu dosyasını düzenleyin ve herhangi birini kullandığınızda, uygulamanızın bir parçası olarak dağıtma [dağıtım yöntemleri](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment) bu işlevleri destekler. 
+The proxies that you configure are stored in a *proxies.json* file, which is located in the root of a function app directory. You can manually edit this file and deploy it as part of your app when you use any of the [deployment methods](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment) that Functions supports. 
 
 > [!TIP] 
-> Dağıtım yöntemlerinden birini ayarlamadıysanız, ayrıca çalışabileceğiniz *proxies.json* Portalı'nda dosya. İşlevi uygulamanızı seçin Git **Platform özellikleri**ve ardından **App Service Düzenleyicisi**. Bunu yaptığınızda, işlev uygulamanızın tüm dosya yapısı görüntüleyebilir ve ardından değişiklikleri yapın.
+> If you have not set up one of the deployment methods, you can also work with the *proxies.json* file in the portal. Go to your function app, select **Platform features**, and then select **App Service Editor**. By doing so, you can view the entire file structure of your function app and then make changes.
 
-*Proxies.JSON* adlandırılmış proxy ve bunların tanımlarının oluşan bir proxy nesnesi tarafından tanımlanır. İsteğe bağlı olarak, düzenleyici destekliyorsa, başvurabileceğiniz bir [JSON şeması](http://json.schemastore.org/proxies) için kod tamamlama. Bir örnek dosyası aşağıdakine benzeyebilir:
+*Proxies.json* is defined by a proxies object, which is composed of named proxies and their definitions. Optionally, if your editor supports it, you can reference a [JSON schema](http://json.schemastore.org/proxies) for code completion. An example file might look like the following:
 
 ```json
 {
@@ -136,21 +132,21 @@ Yapılandırdığınız proxy depolanan bir *proxies.json* bir işlev uygulamas�
 }
 ```
 
-Her bir proxy gibi bir kolay ad sahip *proxy1* önceki örnekte. Karşılık gelen proxy tanım nesnesi, aşağıdaki özellikleri tarafından tanımlanır:
+Each proxy has a friendly name, such as *proxy1* in the preceding example. The corresponding proxy definition object is defined by the following properties:
 
-* **Matchcondition**: Gerekli--bu proxy 'nin yürütülmesini tetikleyen istekleri tanımlayan nesne. İle paylaşılan iki özellik içeriyor [HTTP Tetikleyicileri]:
-    * _Yöntemler_: Proxy 'nin yanıt verdiği HTTP yöntemlerinin dizisi. Belirtilmezse, proxy tüm HTTP yöntemleri rotadaki yanıt verir.
-    * _yol_: Gerekli--proxy 'nizin hangi istek URL 'Lerine yanıt vereceğini denetleyen yol şablonunu tanımlar. Aksine HTTP tetikleyicileri, varsayılan değer yoktur.
-* **Backenduri**: İsteğin proxy olması gereken arka uç kaynağının URL 'SI. Bu değer, uygulama ayarları ve parametreleri özgün istemci istekten başvurabilirsiniz. Bu özellik dahil edilmezse, Azure işlevleri, bir HTTP 200 OK ile yanıt verir.
-* **requestOverrides**: Arka uç isteğine dönüştürmeleri tanımlayan bir nesne. Bkz: [requestOverrides nesnesi tanımlayın].
-* **Responsekılmalar**: İstemci yanıtına dönüştürmeleri tanımlayan nesne. Bkz: [responseOverrides nesnesi tanımlayın].
+* **matchCondition**: Required--an object defining the requests that trigger the execution of this proxy. It contains two properties that are shared with [HTTP triggers]:
+    * _methods_: An array of the HTTP methods that the proxy responds to. If it is not specified, the proxy responds to all HTTP methods on the route.
+    * _route_: Required--defines the route template, controlling which request URLs your proxy responds to. Unlike in HTTP triggers, there is no default value.
+* **backendUri**: The URL of the back-end resource to which the request should be proxied. This value can reference application settings and parameters from the original client request. If this property is not included, Azure Functions responds with an HTTP 200 OK.
+* **requestOverrides**: An object that defines transformations to the back-end request. See [Define a requestOverrides object].
+* **responseOverrides**: An object that defines transformations to the client response. See [Define a responseOverrides object].
 
 > [!NOTE] 
-> *Rota* Azure işlev proxy'lerini bir özellik değil dikkate *routeprefix öğesi* işlevi uygulama konağı Yapılandırma özelliği. Bir önek gibi dahil etmek istiyorsanız `/api`, içinde eklenmelidir *rota* özelliği.
+> The *route* property in Azure Functions Proxies does not honor the *routePrefix* property of the Function App host configuration. If you want to include a prefix such as `/api`, it must be included in the *route* property.
 
-### <a name="disableProxies"></a> Bireysel proxy'leri devre dışı bırak
+### <a name="disableProxies"></a> Disable individual proxies
 
-Ekleyerek bireysel proxy'leri devre dışı bırakabilirsiniz `"disabled": true` proxy'sine `proxies.json` dosya. Bu, matchCondition 'a uyan isteklerin 404 döndürmesini sağlar.
+You can disable individual proxies by adding `"disabled": true` to the proxy in the `proxies.json` file. This will cause any requests meeting the matchCondition to return 404.
 ```json
 {
     "$schema": "http://json.schemastore.org/proxies",
@@ -166,34 +162,34 @@ Ekleyerek bireysel proxy'leri devre dışı bırakabilirsiniz `"disabled": true`
 }
 ```
 
-### <a name="applicationSettings"></a> Uygulama ayarları
+### <a name="applicationSettings"></a> Application Settings
 
-Birçok uygulama ayarları tarafından proxy davranışı denetlenebilir. Bunların tümü özetlenen [işlevler uygulama ayarları başvurusu](./functions-app-settings.md)
+The proxy behavior can be controlled by several app settings. They are all outlined in the [Functions App Settings reference](./functions-app-settings.md)
 
 * [AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL](./functions-app-settings.md#azure_function_proxy_disable_local_call)
 * [AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES](./functions-app-settings.md#azure_function_proxy_backend_url_decode_slashes)
 
-### <a name="reservedChars"></a> Ayrılmış karakterleri (biçimlendirme dizesi)
+### <a name="reservedChars"></a> Reserved Characters (string formatting)
 
-Proxy 'ler, bir JSON dosyasının dışında tüm dizeleri okur ve bunu çıkış simgesi olarak kullanın. Proxy 'ler Ayrıca küme ayraçları da yorumlayabilir. Aşağıdaki örnek bir dizi örneğe bakın.
+Proxies read all strings out of a JSON file, using \ as an escape symbol. Proxies also interpret curly braces. See a full set of examples below.
 
-|Karakter|Kaçan karakter|Örnek|
+|Character|Escaped Character|Örnek|
 |-|-|-|
-|{veya}|{{veya}}|`{{ example }}` --> `{ example }`
+|{ or }|{{ or }}|`{{ example }}` --> `{ example }`
 | \ | \\\\ | `example.com\\text.html` --> `example.com\text.html`
-|"|\\\"| `\"example\"` --> `"example"`
+|depolama hesabında ayarlanan Yaşam Döngüsü Yönetimi İlkesinden dolayı otomatik olarak arşiv katmanına geri geçirilecek"|\\\"| `\"example\"` --> `"example"`
 
-### <a name="requestOverrides"></a>RequestOverrides nesnesi tanımlayın
+### <a name="requestOverrides"></a>Define a requestOverrides object
 
-RequestOverrides nesne isteği arka uç kaynağa çağrıldığında yapılan değişiklikleri tanımlar. Nesne, aşağıdaki özellikleri tarafından tanımlanır:
+The requestOverrides object defines changes made to the request when the back-end resource is called. The object is defined by the following properties:
 
-* **arka uç. istek. yöntemi**: Arka ucu çağırmak için kullanılan HTTP yöntemi.
-* **arka uç. Request. QueryString. ParameterName:\> \<** Arka uca çağrı için ayarlanabilir bir sorgu dizesi parametresi. Değiştirin *\<ParameterName\>* ile belirlemek istediğiniz parametrenin adı. Boş dize sağlanmazsa, parametre arka uç isteği dahil edilmez.
-* **arka uç. Request. Headers. HeaderName\>: \<** Arka uca çağrı için ayarlanabilir bir üst bilgi. Değiştirin *\<HeaderName\>* ayarlamak istediğiniz üst bilgi adı. Boş bir dize sağlayın, üst bilgi arka uç isteği dahil edilmez.
+* **backend.request.method**: The HTTP method that's used to call the back-end.
+* **backend.request.querystring.\<ParameterName\>** : A query string parameter that can be set for the call to the back-end. Replace *\<ParameterName\>* with the name of the parameter that you want to set. If the empty string is provided, the parameter is not included on the back-end request.
+* **backend.request.headers.\<HeaderName\>** : A header that can be set for the call to the back-end. Replace *\<HeaderName\>* with the name of the header that you want to set. If you provide the empty string, the header is not included on the back-end request.
 
-Değerleri uygulama ayarları ve parametreleri özgün istemci istekten başvurabilirsiniz.
+Values can reference application settings and parameters from the original client request.
 
-Örnek bir yapılandırma aşağıdaki gibi görünebilir:
+An example configuration might look like the following:
 
 ```json
 {
@@ -214,18 +210,18 @@ Değerleri uygulama ayarları ve parametreleri özgün istemci istekten başvura
 }
 ```
 
-### <a name="responseOverrides"></a>ResponseOverrides nesnesi tanımlayın
+### <a name="responseOverrides"></a>Define a responseOverrides object
 
-İstemciye geri geçirilen yanıta yapılan değişiklikleri requestOverrides nesneyi tanımlar. Nesne, aşağıdaki özellikleri tarafından tanımlanır:
+The requestOverrides object defines changes that are made to the response that's passed back to the client. The object is defined by the following properties:
 
-* **Response. StatusCode**: İstemciye döndürülecek HTTP durum kodu.
-* **Response. statusReason**: İstemciye döndürülecek HTTP neden tümceciği.
-* **Response. Body**: İstemciye döndürülecek gövdenin dize temsili.
-* **Response. Headers. HeaderName\>: \<** İstemciye yanıt olarak ayarlanabilir bir üst bilgi. Değiştirin *\<HeaderName\>* ayarlamak istediğiniz üst bilgi adı. Boş bir dize sağlayın, üst bilgi yanıtta dahil edilmez.
+* **response.statusCode**: The HTTP status code to be returned to the client.
+* **response.statusReason**: The HTTP reason phrase to be returned to the client.
+* **response.body**: The string representation of the body to be returned to the client.
+* **response.headers.\<HeaderName\>** : A header that can be set for the response to the client. Replace *\<HeaderName\>* with the name of the header that you want to set. If you provide the empty string, the header is not included on the response.
 
-Uygulama ayarları, özgün istemci İstek parametreleri ve parametre değerlerini arka uç yanıtı başvuruda bulunabilir.
+Values can reference application settings, parameters from the original client request, and parameters from the back-end response.
 
-Örnek bir yapılandırma aşağıdaki gibi görünebilir:
+An example configuration might look like the following:
 
 ```json
 {
@@ -245,15 +241,15 @@ Uygulama ayarları, özgün istemci İstek parametreleri ve parametre değerleri
 }
 ```
 > [!NOTE] 
-> Bu örnekte, yanıt gövdesi doğrudan, dolayısıyla no ayarlanmış `backendUri` özelliği gereklidir. Örnek API sahte işlem için Azure işlevleri proxy'leri nasıl kullanacağınızı gösterir.
+> In this example, the response body is set directly, so no `backendUri` property is needed. The example shows how you might use Azure Functions Proxies for mocking APIs.
 
-[Azure portal]: https://portal.azure.com
-[HTTP Tetikleyicileri]: https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook
+[Azure portalda]: https://portal.azure.com
+[HTTP triggers]: https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook
 [Modify the back-end request]: #modify-backend-request
 [Modify the response]: #modify-response
-[RequestOverrides nesnesi tanımlayın]: #requestOverrides
-[ResponseOverrides nesnesi tanımlayın]: #responseOverrides
-[Uygulama ayarları]: #use-appsettings
-[Değişkenlerini kullanma]: #using-variables
-[Özgün istemci İstek parametreleri]: #request-parameters
-[arka uç yanıtı Parametreler]: #response-parameters
+[Define a requestOverrides object]: #requestOverrides
+[Define a responseOverrides object]: #responseOverrides
+[application settings]: #use-appsettings
+[Use variables]: #using-variables
+[parameters from the original client request]: #request-parameters
+[parameters from the back-end response]: #response-parameters

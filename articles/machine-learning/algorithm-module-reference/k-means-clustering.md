@@ -1,144 +1,144 @@
 ---
-title: 'K-, kümeleme: modül başvurusu'
+title: 'K-Means Clustering: Module Reference'
 titleSuffix: Azure Machine Learning
-description: Kümeleme modellerini eğitmek için Azure Machine Learning K-anlamı kümeleme modülünü nasıl kullanacağınızı öğrenin.
+description: Learn how to use the K-Means Clustering module in the Azure Machine Learning to train clustering models.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/06/2019
-ms.openlocfilehash: 4634519f55582a3184472d28acfd98fa849be86a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/19/2019
+ms.openlocfilehash: 135b425ca87a309bc171e252d8ff04b2027a3c50
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497759"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74213907"
 ---
-# <a name="module-k-means-clustering"></a>Modül: K-kümeleme anlamına gelir
+# <a name="module-k-means-clustering"></a>Module: K-Means Clustering
 
-Bu makalede, eğitilen bir kümeleme modeli oluşturmak için Azure Machine Learning tasarımcısında (Önizleme) *k-bit kümeleme* modülünün nasıl kullanılacağı açıklanır. 
+This article describes how to use the *K-Means Clustering* module in Azure Machine Learning designer (preview) to create an untrained K-means clustering model. 
  
-K-anlamı en basit ve en *iyi bilinen öğrenme* algoritmalarından biridir. Algoritmayı çeşitli makine öğrenimi görevleri için kullanabilirsiniz, örneğin: 
+K-means is one of the simplest and the best known *unsupervised* learning algorithms. You can use the algorithm for a variety of machine learning tasks, such as: 
 
-* [Olağan dışı veriler algılanıyor](https://msdn.microsoft.com/magazine/jj891054.aspx).
-* Kümeleme metin belgeleri.
-* Diğer sınıflandırma veya regresyon yöntemlerini kullanmadan önce veri kümelerini çözümleme. 
+* [Detecting abnormal data](https://msdn.microsoft.com/magazine/jj891054.aspx).
+* Clustering text documents.
+* Analyzing datasets before you use other classification or regression methods. 
 
-Bir kümeleme modeli oluşturmak için şunları yapın:
+To create a clustering model, you:
 
-* Bu modülü ardışık düzene ekleyin.
-* Bir veri kümesini bağlayın.
-* Tahmin ettiğiniz küme sayısı, küme oluştururken kullanılacak mesafe ölçümü ve benzeri parametreleri ayarlayın. 
+* Add this module to your pipeline.
+* Connect a dataset.
+* Set parameters, such as the number of clusters you expect, the distance metric to use in creating the clusters, and so forth. 
   
-Modül hiper parametrelerini yapılandırdıktan sonra, eğitilen modeli [tren Kümelemesi modeline](train-clustering-model.md)bağlayın. K-anlamı algoritması, denetimli bir öğrenme yöntemi olduğundan, bir etiket sütunu isteğe bağlıdır. 
+After you've configured the module hyperparameters, you connect the untrained model to the [Train Clustering Model](train-clustering-model.md). Because the K-means algorithm is an unsupervised learning method, a label column is optional. 
 
-+ Verileriniz bir etiket içeriyorsa, kümelerin seçimine kılavuzluk etmek ve modeli iyileştirmek için etiket değerlerini kullanabilirsiniz. 
++ If your data includes a label, you can use the label values to guide selection of the clusters and optimize the model. 
 
-+ Verilerinizde etiket yoksa, algoritma yalnızca verileri temel alan olası kategorileri temsil eden kümeler oluşturur.  
++ If your data has no label, the algorithm creates clusters representing possible categories, based solely on the data.  
 
-##  <a name="understand-k-means-clustering"></a>K-anlama, kümeleme
+##  <a name="understand-k-means-clustering"></a>Understand K-means clustering
  
-Genellikle kümeleme, bir veri kümesindeki durumları benzer özelliklere sahip kümeler halinde gruplamak için yinelemeli teknikler kullanır. Bu gruplandırmalar, verileri keşfetmek, verilerdeki bozuklukları belirlemek ve tahmin yapmak için son olarak faydalıdır. Kümeleme modelleri Ayrıca, göz atma veya basit gözlemlemeye göre mantıksal olarak türeteceğiniz bir veri kümesindeki ilişkileri tanımlamanızı da yardımcı olabilir. Bu nedenlerden dolayı kümeleme genellikle makine öğrenimi görevlerinin erken aşamalarında kullanılır, verileri keşfeder ve beklenmeyen correlations 'ı bulur.  
+In general, clustering uses iterative techniques to group cases in a dataset into clusters that possess similar characteristics. These groupings are useful for exploring data, identifying anomalies in the data, and eventually for making predictions. Clustering models can also help you identify relationships in a dataset that you might not logically derive by browsing or simple observation. For these reasons, clustering is often used in the early phases of machine learning tasks, to explore the data and discover unexpected correlations.  
   
- K-Ortalamalar yöntemini kullanarak bir kümeleme modeli yapılandırdığınızda, modelde istediğiniz *centroıd* sayısını gösteren bir hedef numarası ( *k* ) belirtmeniz gerekir. Centroıd, her kümenin temsili olan bir noktasıdır. K-Ortalamalar algoritması, her bir gelen veri noktasını kümelerden birine atar ve bu da kare içi Karelerin toplamını en aza indirir. 
+ When you configure a clustering model by using the K-means method, you must specify a target number *k* that indicates the number of *centroids* you want in the model. The centroid is a point that's representative of each cluster. The K-means algorithm assigns each incoming data point to one of the clusters by minimizing the within-cluster sum of squares. 
  
-Eğitim verilerini işlediğinde, K-Ortalamalar algoritması rastgele seçilmiş centroıd 'ler kümesiyle başlar. Centroıds, kümeler için başlangıç noktaları olarak görev yapar ve konumlarını yinelemeli olarak daraltmak için Lloyd algoritması uygular. K-anlamı algoritması, bu koşullardan bir veya daha fazlasını karşıladığında kümeleri oluşturmayı ve iyileştirmasını durduruyor:  
+When it processes the training data, the K-means algorithm begins with an initial set of randomly chosen centroids. Centroids serve as starting points for the clusters, and they apply Lloyd's algorithm to iteratively refine their locations. The K-means algorithm stops building and refining clusters when it meets one or more of these conditions:  
   
--   Centroıds, tek tek noktaların küme atamalarının artık değişmeyeceği ve algoritmanın bir çözüme yakınsamış olduğu anlamına gelir.  
+-   The centroids stabilize, meaning that the cluster assignments for individual points no longer change and the algorithm has converged on a solution.  
   
--   Algoritma, belirtilen sayıda yineleme çalıştırmayı tamamladı.  
+-   The algorithm completed running the specified number of iterations.  
   
- Eğitim aşamasını tamamladıktan sonra, K-ortalamalar algoritmasını kullanarak bulduğunuz kümelerden birine yeni durumlar atamak için [verileri kümeye ata](assign-data-to-clusters.md) modülünü kullanırsınız. Yeni durum ve her kümenin centroıd arasındaki mesafeyi hesaplayarak küme atamasını gerçekleştirirsiniz. Her yeni durum, en yakın centroıd ile kümeye atanır.  
+ After you've completed the training phase, you use the [Assign Data to Clusters](assign-data-to-clusters.md) module to assign new cases to one of the clusters that you found by using the K-means algorithm. You perform cluster assignment by computing the distance between the new case and the centroid of each cluster. Each new case is assigned to the cluster with the nearest centroid.  
 
-## <a name="configure-the-k-means-clustering-module"></a>K-anlamı kümeleme modülünü yapılandırma
+## <a name="configure-the-k-means-clustering-module"></a>Configure the K-Means Clustering module
   
-1.  İşlem hattınızda **K-anlamı kümeleme** modülünü ekleyin.  
+1.  Add the **K-Means Clustering** module to your pipeline.  
   
-2.  Modelin nasıl eğitilme etmek istediğinizi belirtmek için, **eğitmen modunu oluştur** seçeneğini belirleyin.  
+2.  To specify how you want the model to be trained, select the **Create trainer mode** option.  
   
-    -   **Tek parametre**: kümeleme modelinde kullanmak istediğiniz tam parametreleri biliyorsanız bağımsız değişken olarak belirli bir değer kümesi sağlayabilirsiniz.  
+    -   **Single Parameter**: If you know the exact parameters you want to use in the clustering model, you can provide a specific set of values as arguments.  
   
-3.  **Centroıds sayısı**için, algoritmanın başlamasını istediğiniz küme sayısını yazın.  
+3.  For **Number of centroids**, type the number of clusters you want the algorithm to begin with.  
   
-     Modelin tam olarak bu sayıda küme üretmesi garanti edilmez. Algoritma, bu sayıda veri noktasıyla başlar ve en iyi yapılandırmayı bulmak için yinelenir.  
+     The model isn't guaranteed to produce exactly this number of clusters. The algorithm starts with this number of data points and iterates to find the optimal configuration.  
   
-4.  Özellikler **başlatma** , ilk küme yapılandırmasını tanımlamak için kullanılan algoritmayı belirtmek için kullanılır.  
+4.  The properties **Initialization** is used to specify the algorithm that's used to define the initial cluster configuration.  
   
-    -   **Ilk N**: veri noktalarının bazı ilk sayısı, veri kümesinden seçilir ve ilk anlamı olarak kullanılır. 
+    -   **First N**: Some initial number of data points are chosen from the dataset and used as the initial means. 
     
-         Bu yöntem, *Forgy yöntemi*olarak da adlandırılır.  
+         This method is also called the *Forgy method*.  
   
-    -   **Rastgele**: algoritma bir kümeye rastgele bir veri noktası koyar ve sonra kümenin Rastgele atanan noktalarının centroıd değeri olacak şekilde ilk ortalaması hesaplar. 
+    -   **Random**: The algorithm randomly places a data point in a cluster and then computes the initial mean to be the centroid of the cluster's randomly assigned points. 
 
-         Bu yöntem, *rastgele bölüm* yöntemi olarak da adlandırılır.  
+         This method is also called the *random partition* method.  
   
-    -   **K-Ortalamalar + +** : Bu, kümeleri başlatmak için varsayılan yöntemdir.  
+    -   **K-Means++** : This is the default method for initializing clusters.  
   
-         **K-ortalamalar + +** algoritması, standart K-Ortalamalar algoritması tarafından zayıf kümelemeyi önlemek Için David Arthur ve Sergei Vassilvıtskii tarafından 2007 ' de önerdi. **K-** ilk küme merkezlerini seçmek için farklı bir yöntem kullanarak standart K-Ortalamalar üzerinde + + artar.  
+         The **K-means++** algorithm was proposed in 2007 by David Arthur and Sergei Vassilvitskii to avoid poor clustering by the standard K-means algorithm. **K-means++** improves upon standard K-means by using a different method for choosing the initial cluster centers.  
   
     
-5.  **Rastgele sayı çekirdek**için, isteğe bağlı olarak, küme başlatma için çekirdek olarak kullanılacak bir değer yazın. Bu değer, küme seçiminde önemli bir etkiye sahip olabilir.  
+5.  For **Random number seed**, optionally type a value to use as the seed for the cluster initialization. This value can have a significant effect on cluster selection.  
   
-6.  **Ölçüm**için, küme vektörlerine veya yeni veri noktalarıyla rastgele seçilmiş centroıd arasındaki mesafeyi ölçmek için kullanılacak işlevi seçin. Azure Machine Learning aşağıdaki küme uzaklık ölçümlerini destekler:  
+6.  For **Metric**, choose the function to use for measuring the distance between cluster vectors, or between new data points and the randomly chosen centroid. Azure Machine Learning supports the following cluster distance metrics:  
   
-    -   **Euclidean**: Euclidean, genellikle K-anlamı Kümelemesi için küme dağılım ölçüsü olarak kullanılır. Bu ölçüm, noktaları ve centroıd 'ler arasındaki ortalama mesafeyi en aza indirecek için tercih edilir.
+    -   **Euclidean**: The Euclidean distance is commonly used as a measure of cluster scatter for K-means clustering. This metric is preferred because it minimizes the mean distance between points and the centroids.
   
-7.  **Yinelemeler**için, algoritmanın, centroıd 'leri seçimini sonlandırmadan önce eğitim verilerini kaç kez yinelemelidir? yazın.  
+7.  For **Iterations**, type the number of times the algorithm should iterate over the training data before it finalizes the selection of centroids.  
   
-     Bu parametreyi, eğitim süresine göre doğruluğu dengelemek için ayarlayabilirsiniz.  
+     You can adjust this parameter to balance accuracy against training time.  
   
-8.  **Etiket Atama modu**için, veri kümesinde varsa, bir etiket sütununun nasıl işleneceğini belirten bir seçenek belirleyin.  
+8.  For **Assign label mode**, choose an option that specifies how a label column, if it's present in the dataset, should be handled.  
   
-     K-kümeleme, denetimli bir makine öğrenimi yöntemi olduğu için Etiketler isteğe bağlıdır. Ancak, veri kümeniz zaten bir etiket sütunu içeriyorsa, kümelerin seçimine yol göstermek için bu değerleri kullanabilir veya değerlerin yok sayılmasını belirtebilirsiniz.  
+     Because K-means clustering is an unsupervised machine learning method, labels are optional. However, if your dataset already has a label column, you can use those values to guide the selection of the clusters, or you can specify that the values be ignored.  
   
-    -   **Etiket sütununu yoksay**: etiket sütunundaki değerler yok sayılır ve model oluşturulurken kullanılmaz.
+    -   **Ignore label column**: The values in the label column are ignored and are not used in building the model.
   
-    -   **Eksik değerleri doldur**: Etiket sütun değerleri, kümeleri oluşturmaya yardımcı olacak özellikler olarak kullanılır. Herhangi bir satırda etiket eksikse, bu değer diğer özellikler kullanılarak belirlenir.  
+    -   **Fill missing values**: The label column values are used as features to help build the clusters. If any rows are missing a label, the value is imputed by using other features.  
   
-    -   **En yakın üzerine yaz**: Etiket sütun değerleri, geçerli centroıd 'ye en yakın noktanın etiketi kullanılarak tahmin edilen etiket değerleriyle değiştirilmiştir.  
+    -   **Overwrite from closest to center**: The label column values are replaced with predicted label values, using the label of the point that is closest to the current centroid.  
 
-8.  Eğitim öncesi özellikleri normalleştirmek istiyorsanız **özellikleri Normalleştir** seçeneğini belirleyin.
+8.  Select the **Normalize features** option if you want to normalize features before training.
   
-     Normalleştirme uygularsanız, öğreticmadan önce veri noktaları MinMaxNormalizer tarafından `[0,1]` normalleştirilir.
+     If you apply normalization, before training, the data points are normalized to `[0,1]` by MinMaxNormalizer.
 
-10. Modeli eğitme.  
+10. Train the model.  
   
-    -   **Tek parametreye** **oluşturma eğitmen modu** ' nu ayarlarsanız, etiketli bir veri kümesi ekleyin ve modeli [eğitme model](train-clustering-model.md) modülünü kullanarak modeli eğitme.  
+    -   If you set **Create trainer mode** to **Single Parameter**, add a tagged dataset and train the model by using the [Train Clustering Model](train-clustering-model.md) module.  
   
 ### <a name="results"></a>Sonuçlar
 
-Modeli yapılandırmayı ve eğitimi tamamladıktan sonra, puanlar oluşturmak için kullanabileceğiniz bir modeliniz vardır. Ancak, modeli eğitmek için birden çok yol ve sonuçları görüntülemenin ve kullanmanın birden çok yolu vardır: 
+After you've finished configuring and training the model, you have a model that you can use to generate scores. However, there are multiple ways to train the model, and multiple ways to view and use the results: 
 
-#### <a name="capture-a-snapshot-of-the-model-in-your-workspace"></a>Çalışma alanınızda modelin anlık görüntüsünü yakalama
+#### <a name="capture-a-snapshot-of-the-model-in-your-workspace"></a>Capture a snapshot of the model in your workspace
 
-[Tren kümeleme modeli](train-clustering-model.md) modülünü kullandıysanız:
+If you used the [Train Clustering Model](train-clustering-model.md) module:
 
-1. **Tren kümeleme modeli** modülüne sağ tıklayın.
+1. Right-click the **Train Clustering Model** module.
 
-2. **Eğitim modeli**' ni seçin ve ardından **eğitilen model olarak kaydet**' i seçin.
+2. Select **Trained model**, and then select **Save as Trained Model**.
 
-Kaydedilen model, modeli kaydettiğiniz sırada eğitim verilerini temsil eder. İşlem hattında kullanılan eğitim verilerini daha sonra güncelleştirirseniz, kaydedilen modeli güncelleştirmez. 
+The saved model represents the training data at the time you saved the model. If you later update the training data used in the pipeline, it doesn't update the saved model. 
 
-#### <a name="see-the-clustering-result-dataset"></a>Kümeleme sonucu veri kümesine bakın 
+#### <a name="see-the-clustering-result-dataset"></a>See the clustering result dataset 
 
-[Tren kümeleme modeli](train-clustering-model.md) modülünü kullandıysanız:
+If you used the [Train Clustering Model](train-clustering-model.md) module:
 
-1. **Tren kümeleme modeli** modülüne sağ tıklayın.
+1. Right-click the **Train Clustering Model** module.
 
-2. **Sonuçlar veri kümesini**seçin ve ardından **Görselleştir**' i seçin.
+2. Select **Results dataset**, and then select **Visualize**.
 
-### <a name="tips-for-generating-the-best-clustering-model"></a>En iyi kümeleme modelini oluşturmaya yönelik ipuçları  
+### <a name="tips-for-generating-the-best-clustering-model"></a>Tips for generating the best clustering model  
 
-Kümeleme sırasında kullanılan *dengeli dağıtım* işleminin modeli önemli ölçüde etkileyebileceğini bilinir. Dengeli dağıtım, noktaların ilk olarak olası centroıds 'a yerleştirilme anlamına gelir.
+It is known that the *seeding* process that's used during clustering can significantly affect the model. Seeding means the initial placement of points into potential centroids.
  
-Örneğin, veri kümesi çok sayıda mantıksal dizi içeriyorsa ve kümelerin çekirdeğini oluşturmak için bir mantıksal değer seçilirse, başka hiçbir veri noktası bu kümeye uygun olmaz ve küme tek bir değer olabilir. Yani, tek bir noktası olabilir.  
+For example, if the dataset contains many outliers, and an outlier is chosen to seed the clusters, no other data points would fit well with that cluster, and the cluster could be a singleton. That is, it might have only one point.  
   
-Bu sorundan birkaç yolla kaçınabilirsiniz:  
+You can avoid this problem in a couple of ways:  
   
--   Centroıds sayısını değiştirin ve birden çok çekirdek değeri deneyin.  
+-   Change the number of centroids and try multiple seed values.  
   
--   Ölçüyü değiştirerek veya daha fazlasını yineleirken birden çok model oluşturun.  
+-   Create multiple models, varying the metric or iterating more.  
   
-Genellikle, kümeleme modelleriyle, belirli bir yapılandırmanın yerel olarak iyileştirilmiş kümeler kümesine neden olacağı olasıdır. Diğer bir deyişle, model tarafından döndürülen kümeler kümesi yalnızca geçerli veri noktalarına uygun değildir ve diğer verilere genelleştirilebilir. Farklı bir başlangıç yapılandırması kullanırsanız, K-Ortalamalar yöntemi farklı, belki de farklı bir yapılandırma bulabilir. 
+In general, with clustering models, it's possible that any given configuration will result in a locally optimized set of clusters. In other words, the set of clusters that's returned by the model suits only the current data points and isn't generalizable to other data. If you use a different initial configuration, the K-means method might find a different, superior, configuration. 

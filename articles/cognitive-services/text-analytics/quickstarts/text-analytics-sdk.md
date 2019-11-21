@@ -1,33 +1,33 @@
 ---
-title: 'Hızlı başlangıç: Metin Analizi istemci kitaplığı | Microsoft Docs'
+title: 'Quickstart: Text Analytics client library | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, Azure bilişsel hizmetler 'deki Metin Analizi API'si kullanarak dili algılayın.
+description: In this quickstart, detect language by using the Text Analytics API from Azure Cognitive Services.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 11/06/2019
+ms.date: 11/19/2019
 ms.author: aahi
 zone_pivot_groups: programming-languages-set-five
-ms.openlocfilehash: 8b07e6b08e34e701aa4c3b254aee7245926085b6
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 93912ef93ab1065bf3b7c5010c485f99229a06a6
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73750221"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74220774"
 ---
-# <a name="quickstart-use-the-text-analytics-client-library-for-detecting-language"></a>Hızlı başlangıç: dili saptamak için Metin Analizi istemci kitaplığını kullanın
+# <a name="quickstart-use-the-text-analytics-client-library"></a>Quickstart: Use the Text Analytics client library
 
-Metin Analizi istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin.
+Get started with the Text Analytics client library. Follow these steps to install the package and try out the example code for basic tasks.
 
-Şunları yapmak için Metin Analizi istemci kitaplığını kullanın:
+Use the Text Analytics client library to perform:
 
-* Yaklaşım analizi
+* Duygu analizi
 * Dil algılama
 * Varlık tanıma
-* Anahtar ifade ayıklama
+* Anahtar tümcecik ayıklama
 
 ::: zone pivot="programming-language-csharp"
 
@@ -61,7 +61,7 @@ Metin Analizi istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağı veya kaynak grubunu silebilirsiniz. Kaynak grubunun silinmesi, onunla ilişkili diğer tüm kaynakları da siler.
+If you want to clean up and remove a Cognitive Services subscription, you can delete the resource or resource group. Deleting the resource group also deletes any other resources associated with it.
 
 * [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
@@ -73,7 +73,7 @@ Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağ
 
 
 * [Metin Analizine genel bakış](../overview.md)
-* [Yaklaşım Analizi](../how-tos/text-analytics-how-to-sentiment-analysis.md)
-* [Varlık tanıma](../how-tos/text-analytics-how-to-entity-linking.md)
-* [Dili algıla](../how-tos/text-analytics-how-to-keyword-extraction.md)
-* [Dil tanıma](../how-tos/text-analytics-how-to-language-detection.md)
+* [Sentiment analysis](../how-tos/text-analytics-how-to-sentiment-analysis.md)
+* [Entity recognition](../how-tos/text-analytics-how-to-entity-linking.md)
+* [Detect language](../how-tos/text-analytics-how-to-keyword-extraction.md)
+* [Language recognition](../how-tos/text-analytics-how-to-language-detection.md)

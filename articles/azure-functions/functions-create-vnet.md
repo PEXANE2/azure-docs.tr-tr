@@ -1,170 +1,168 @@
 ---
-title: Azure Işlevlerini Azure sanal ağıyla tümleştirme
-description: Bir Azure sanal ağına bir işlev bağlamayı gösteren adım adım öğretici
+title: Integrate Azure Functions with an Azure virtual network
+description: A step-by-step tutorial that shows you how to connect a function to an Azure virtual network
 author: alexkarcher-msft
-manager: gwallace
-ms.service: azure-functions
 ms.topic: article
 ms.date: 5/03/2019
 ms.author: alkarche
 ms.reviewer: glenga
-ms.openlocfilehash: bc6c87a28078d25a212a681206258d6d369f2867
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 12815d3ca0136cec8af294118ff192a4f31df6a0
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73575536"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227096"
 ---
-# <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>Öğretici: Işlevleri bir Azure sanal ağı ile tümleştirme
+# <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>Tutorial: integrate Functions with an Azure virtual network
 
-Bu öğreticide, Azure sanal ağındaki kaynaklara bağlanmak için Azure Işlevlerinin nasıl kullanılacağı gösterilmektedir. hem İnternet hem de sanal ağda WordPress çalıştıran bir VM 'ye erişimi olan bir işlev oluşturacaksınız.
+This tutorial shows you how to use Azure Functions to connect to resources in an Azure virtual network. you'll create a function that has access to both the internet and to a VM running WordPress in virtual network.
 
 > [!div class="checklist"]
-> * Premium planda bir işlev uygulaması oluşturma
-> * Sanal ağdaki VM 'ye bir WordPress sitesi dağıtma
-> * İşlev uygulamasını sanal ağa bağlama
-> * WordPress kaynaklarına erişmek için bir işlev ara sunucusu oluşturma
-> * Sanal ağın içinden bir WordPress dosyası iste
+> * Create a function app in the Premium plan
+> * Deploy a WordPress site to VM in a virtual network
+> * Connect the function app to the virtual network
+> * Create a function proxy to access WordPress resources
+> * Request a WordPress file from inside the virtual network
 
 ## <a name="topology"></a>Topoloji
 
-Aşağıdaki diyagramda, oluşturduğunuz çözümün mimarisi gösterilmektedir:
+The following diagram shows the architecture of the solution that you create:
 
- ![Sanal Ağ tümleştirmesi için Kullanıcı arabirimi](./media/functions-create-vnet/topology.png)
+ ![UI for virtual network integration](./media/functions-create-vnet/topology.png)
 
-Premium planda çalışan işlevler, VNet tümleştirme özelliği de dahil olmak üzere Azure App Service Web Apps ile aynı barındırma özelliklerine sahiptir. Sorun giderme ve gelişmiş yapılandırma dahil VNet tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [uygulamanızı bir Azure sanal ağı Ile tümleştirme](../app-service/web-sites-integrate-with-vnet.md).
+Functions running in the Premium plan have the same hosting capabilities as web apps in Azure App Service, which includes the VNet Integration feature. To learn more about VNet Integration, including troubleshooting and advanced configuration, see [Integrate your app with an Azure virtual network](../app-service/web-sites-integrate-with-vnet.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticide IP adresleme ve alt ağ oluşturma hakkında bilgi almanız önemlidir. [Bu makaleyle, adresleme ve alt ağ oluşturma temellerini kapsayan bir](https://support.microsoft.com/help/164015/understanding-tcp-ip-addressing-and-subnetting-basics)başlangıç yapabilirsiniz. Daha birçok makale ve video çevrimiçi olarak kullanılabilir.
+For this tutorial, it's important that you understand IP addressing and subnetting. You can start with [this article that covers the basics of addressing and subnetting](https://support.microsoft.com/help/164015/understanding-tcp-ip-addressing-and-subnetting-basics). Many more articles and videos are available online.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="create-a-function-app-in-a-premium-plan"></a>Premium planda bir işlev uygulaması oluşturma
+## <a name="create-a-function-app-in-a-premium-plan"></a>Create a function app in a Premium plan
 
-İlk olarak, [Premium plan]bir işlev uygulaması oluşturursunuz. Bu plan, sanal ağ tümleştirmesini desteklerken sunucusuz ölçek sağlar.
+First, you create a function app in the [Premium plan]. This plan provides serverless scale while supporting virtual network integration.
 
 [!INCLUDE [functions-premium-create](../../includes/functions-premium-create.md)]  
 
-Sağ üst köşedeki sabitleme simgesini seçerek işlev uygulamasını panoya sabitleyebilirsiniz. Sabitleme, VM 'nizi oluşturduktan sonra bu işlev uygulamasına döndürülmesini kolaylaştırır.
+You can pin the function app to the dashboard by selecting the pin icon in the upper right-hand corner. Pinning makes it easier to return to this function app after you create your VM.
 
-## <a name="create-a-vm-inside-a-virtual-network"></a>Sanal ağ içinde VM oluşturma
+## <a name="create-a-vm-inside-a-virtual-network"></a>Create a VM inside a virtual network
 
-Daha sonra, bir sanal ağ içinde WordPress çalıştıran önceden yapılandırılmış bir VM oluşturun (bkz., Jetware tarafından[WordPress LEMP7 maksimum performansı](https://jetware.io/appliances/jetware/wordpress4_lemp7-170526/profile?us=azure) ). Düşük maliyetli ve rahatlığı nedeniyle bir WordPress sanal makinesi kullanılır. Aynı senaryo, bir sanal ağdaki REST API 'Leri, App Service ortamları ve diğer Azure hizmetleri gibi tüm kaynaklar ile birlikte kullanılabilir. 
+Next, create a preconfigured VM that runs WordPress inside a virtual network ([WordPress LEMP7 Max Performance](https://jetware.io/appliances/jetware/wordpress4_lemp7-170526/profile?us=azure) by Jetware). A WordPress VM is used because of its low cost and convenience. This same scenario works with any resource in a virtual network, such as REST APIs, App Service Environments, and other Azure services. 
 
-1. Portalda, sol gezinti bölmesinde **+ kaynak oluştur** ' u seçin, arama alanı türü `WordPress LEMP7 Max Performance`yazın ve ENTER tuşuna basın.
+1. In the portal, choose **+ Create a resource** on the left navigation pane, in the search field type `WordPress LEMP7 Max Performance`, and press Enter.
 
-1. Arama sonuçlarında **WordPress LEMP Max performansı** ' nı seçin. **Yazılım planı** olarak **CentOS IÇIN WordPress Permp maksimum performansının** yazılım planını seçin ve **Oluştur**' u seçin.
+1. Choose **Wordpress LEMP Max Performance** in the search results. Select a software plan of **Wordpress LEMP Max Performance for CentOS** as the **Software Plan** and select **Create**.
 
-1. **Temel bilgiler** sekmesinde, görüntünün altındaki tabloda belirtilen VM ayarlarını kullanın:
+1. In the **Basics** tab, use the VM settings as specified in the table below the image:
 
-    ![VM oluşturmak için temel bilgiler sekmesi](./media/functions-create-vnet/create-vm-1.png)
-
-    | Ayar      | Önerilen değer  | Açıklama      |
-    | ------------ | ---------------- | ---------------- |
-    | **Abonelik** | Aboneliğiniz | Kaynaklarınızın oluşturulduğu abonelik. | 
-    | **[Kaynak grubu](../azure-resource-manager/resource-group-overview.md)**  | myResourceGroup | `myResourceGroup`veya işlev uygulamanız ile oluşturduğunuz kaynak grubunu seçin. İşlev uygulaması, WordPress VM ve barındırma planı için aynı kaynak grubunu kullanmak, bu öğreticiyle işiniz bittiğinde kaynakları temizlemeyi kolaylaştırır. |
-    | **Sanal makine adı** | VNET-WordPress | VM adının kaynak grubunda benzersiz olması gerekir |
-    | **[Geli](https://azure.microsoft.com/regions/)** | (Avrupa) Batı Avrupa | Size yakın veya sanal makineye erişen işlevlerin yakınında bir bölge seçin. |
-    | **Boyut** | B1S | **Boyutu Değiştir** ' i seçin ve ardından 1 vCPU ve 1 GB belleği olan B1S standart görüntüsünü seçin. |
-    | **Kimlik doğrulama türü** | Parola | Parola kimlik doğrulamasını kullanmak için bir **Kullanıcı adı**, güvenli bir **parola**belirtmeniz ve ardından **parolayı onaylamanız**gerekir. Bu öğreticide, sorun gidermenize gerek olmadığı takdirde VM 'de oturum açmanız gerekmez. |
-
-1. **Ağ** sekmesini seçin ve sanal ağları Yapılandır altında **Yeni oluştur**' u seçin.
-
-1. **Sanal ağ oluştur**' da, görüntünün altındaki tabloda bulunan ayarları kullanın:
-
-    ![VM oluşturma Ağ sekmesi](./media/functions-create-vnet/create-vm-2.png)
+    ![Basics tab for creating a VM](./media/functions-create-vnet/create-vm-1.png)
 
     | Ayar      | Önerilen değer  | Açıklama      |
     | ------------ | ---------------- | ---------------- |
-    | **Ad** | MyResourceGroup-VNET | Sanal ağınız için oluşturulan varsayılan adı kullanabilirsiniz. |
-    | **Adres aralığı** | 10.10.0.0/16 | Sanal ağ için tek bir adres aralığı kullanın. |
-    | **Alt ağ adı** | Öğretici-net | Alt ağın adı. |
-    | **Adres aralığı** (alt ağ) | 10.10.1.0/24   | Alt ağ boyutu, alt ağa kaç arabirim eklenebileceğini tanımlar. Bu alt ağ WordPress sitesi tarafından kullanılır.  Bir `/24` alt ağı 254 ana bilgisayar adresi sağlar. |
+    | **Abonelik** | Aboneliğiniz | The subscription under which your resources are created. | 
+    | **[Resource group](../azure-resource-manager/resource-group-overview.md)**  | myResourceGroup | Choose `myResourceGroup`, or the resource group you created with your function app. Using the same resource group for the function app, WordPress VM, and hosting plan makes it easier to clean up resources when you are done with this tutorial. |
+    | **Virtual machine name** | VNET-Wordpress | The VM name needs to be unique in the resource group |
+    | **[Region](https://azure.microsoft.com/regions/)** | (Avrupa) Batı Avrupa | Choose a region near you or near the functions that access the VM. |
+    | **Boyut** | B1s | Choose **Change size** and then select the B1s standard image, which has 1 vCPU and 1 GB of memory. |
+    | **Authentication type** | Parola | To use password authentication, you must also specify a **Username**, a secure **Password**, and then **Confirm password**. For this tutorial, you won't need to sign in to the VM unless you need to troubleshoot. |
 
-1. Sanal ağı oluşturmak için **Tamam ' ı** seçin.
+1. Choose the **Networking** tab and under Configure virtual networks select **Create new**.
 
-1. **Ağ** sekmesine geri döndüğünüzde **genel IP**için **yok** ' u seçin.
+1. In **Create virtual network**, use the settings in the table below the image:
 
-1. **Yönetim** sekmesini seçin ve ardından **Tanılama depolama hesabı**' nda, işlev uygulamanızla oluşturduğunuz depolama hesabını seçin.
-
-1. **İncele ve oluştur**’u seçin. Doğrulama tamamlandıktan sonra **Oluştur**' u seçin. VM oluşturma işlemi birkaç dakika sürer. Oluşturulan VM yalnızca sanal ağa erişebilir.
-
-1. VM oluşturulduktan sonra, yeni VM 'nizin sayfasını görüntülemek için **Kaynağa Git** ' i seçin ve ardından **Ayarlar**altında **ağ** ' ı seçin.
-
-1. **Genel IP**bulunmadığından emin olun. İşlev uygulamanızdan sanal makineye bağlanmak için kullandığınız **özel IP**'yi bir yere unutmayın.
-
-    ![VM 'deki ağ ayarları](./media/functions-create-vnet/vm-networking.png)
-
-Artık sanal ağınız içinde tamamen dağıtılan bir WordPress siteniz var. Bu siteye genel İnternet 'ten erişilemiyor.
-
-## <a name="connect-your-function-app-to-the-virtual-network"></a>İşlev uygulamanızı sanal ağa bağlama
-
-Bir sanal ağdaki VM 'de çalışan bir WordPress sitesi ile artık işlev uygulamanızı bu sanal ağa bağlayabilirsiniz.
-
-1. Yeni işlev uygulamanızda, **ağ** > **platform özellikleri** ' ni seçin.
-
-    ![İşlev uygulamasındaki ağı seçin](./media/functions-create-vnet/networking-0.png)
-
-1. **VNET tümleştirmesi**altında, **yapılandırmak Için buraya tıklayın ' ı**seçin.
-
-    ![Ağ özelliği yapılandırma durumu](./media/functions-create-vnet/Networking-1.png)
-
-1. Sanal ağ tümleştirme sayfasında **VNET Ekle (Önizleme)** öğesini seçin.
-
-    ![VNet tümleştirme önizlemesini ekleyin](./media/functions-create-vnet/networking-2.png)
-
-1. **Ağ özelliği durumu**' nda, görüntünün altındaki tabloda bulunan ayarları kullanın:
-
-    ![App Virtual Network işlevini tanımlayın](./media/functions-create-vnet/networking-3.png)
+    ![Networking tab of create VM](./media/functions-create-vnet/create-vm-2.png)
 
     | Ayar      | Önerilen değer  | Açıklama      |
     | ------------ | ---------------- | ---------------- |
-    | **Sanal Ağ** | MyResourceGroup-VNET | Bu sanal ağ, daha önce oluşturduğunuz bir tane. |
-    | **Alt ağ** | Yeni alt ağ oluştur | İşlev uygulamanızın kullanması için sanal ağda bir alt ağ oluşturun. VNet tümleştirmesi boş bir alt ağ kullanacak şekilde yapılandırılmalıdır. İşlevlerinizin sanal makinenizin dışında farklı bir alt ağ kullanması fark etmez. Sanal ağ iki alt ağ arasındaki trafiği otomatik olarak yönlendirir. |
-    | **Alt ağ adı** | İşlev-net | Yeni alt ağın adı. |
-    | **Sanal ağ adres bloğu** | 10.10.0.0/16 | WordPress sitesi tarafından kullanılan aynı adres bloğunu seçin. Yalnızca bir adres bloğu tanımlanmış olmalıdır. |
-    | **Adres aralığı** | 10.10.2.0/24   | Alt ağ boyutu, Premium plan işlev uygulamanızın ölçeklenebilmesini sağlayan toplam örnek sayısını kısıtlar. Bu örnek, 254 kullanılabilir ana bilgisayar adresiyle bir `/24` alt ağı kullanır. Bu alt ağ daha fazla sağlanmış, ancak hesaplama kolaydır. |
+    | **Adı** | myResourceGroup-vnet | You can use the default name generated for your virtual network. |
+    | **Adres aralığı** | 10.10.0.0/16 | Use a single address range for the virtual network. |
+    | **Alt ağ adı** | Tutorial-Net | Name of the subnet. |
+    | **Address range** (subnet) | 10.10.1.0/24   | The subnet size defines how many interfaces can be added to the subnet. This subnet is used by the WordPress site.  A `/24` subnet provides 254 host addresses. |
 
-1. Alt ağı eklemek için **Tamam ' ı** seçin. İşlev uygulaması sayfanıza dönmek için VNet tümleştirme ve ağ özelliği durum sayfalarını kapatın.
+1. Select **OK** to create the virtual network.
 
-İşlev uygulaması artık WordPress sitesinin çalıştığı sanal ağa erişebilir. Ardından, WordPress sitesinden bir dosya döndürmek için [Azure işlev proxy'leri](functions-proxies.md) kullanırsınız.
+1. Back in the **Networking** tab, choose **None** for **Public IP**.
 
-## <a name="create-a-proxy-to-access-vm-resources"></a>VM kaynaklarına erişmek için bir proxy oluşturma
+1. Choose the **Management** tab, then in **Diagnostics storage account**, choose the Storage account you created with your function app.
 
-VNet tümleştirmesi etkinken, sanal ağda çalışan VM 'ye istekleri iletmek için işlev uygulamanızda bir ara sunucu oluşturabilirsiniz.
+1. **İncele ve oluştur**’u seçin. After validation completes, select **Create**. The VM create process takes a few minutes. The created VM can only access the virtual network.
 
-1. İşlev uygulamanızda **proxy** >  **+** seçin ve ardından görüntünün altındaki tabloda bulunan proxy ayarlarını kullanın:
+1. After the VM is created, choose **Go to resource** to view the page for your new VM, then choose **Networking** under **Settings**.
 
-    ![Proxy ayarlarını tanımlama](./media/functions-create-vnet/create-proxy.png)
+1. Verify that there's no **Public IP**. Make a note the **Private IP**, which you use to connect to the VM from your function app.
+
+    ![Networking settings in the VM](./media/functions-create-vnet/vm-networking.png)
+
+You now have a WordPress site deployed entirely within your virtual network. This site isn't accessible from the public internet.
+
+## <a name="connect-your-function-app-to-the-virtual-network"></a>Connect your function app to the virtual network
+
+With a WordPress site running in a VM in a virtual network, you can now connect your function app to that virtual network.
+
+1. In your new function app, select **Platform features** > **Networking**.
+
+    ![Choose networking in the function app](./media/functions-create-vnet/networking-0.png)
+
+1. Under **VNet Integration**, select **Click here to configure**.
+
+    ![Status for configuring a network feature](./media/functions-create-vnet/Networking-1.png)
+
+1. On the virtual network integration page, select **Add VNet (preview)** .
+
+    ![Add the VNet Integration preview](./media/functions-create-vnet/networking-2.png)
+
+1. In **Network Feature Status**, use the settings in the table below the image:
+
+    ![Define the function app virtual network](./media/functions-create-vnet/networking-3.png)
+
+    | Ayar      | Önerilen değer  | Açıklama      |
+    | ------------ | ---------------- | ---------------- |
+    | **Sanal Ağ** | MyResourceGroup-vnet | This virtual network is the one you created earlier. |
+    | **Alt ağ** | Create New Subnet | Create a subnet in the virtual network for your function app to use. VNet Integration must be configured to use an empty subnet. It doesn't matter that your functions use a different subnet than your VM. The virtual network automatically routes traffic between the two subnets. |
+    | **Alt ağ adı** | Function-Net | Yeni alt ağın adı. |
+    | **Virtual network address block** | 10.10.0.0/16 | Choose the same address block used by the WordPress site. You should only have one address block defined. |
+    | **Adres aralığı** | 10.10.2.0/24   | The subnet size restricts the total number of instances that your Premium plan function app can scale out to. This example uses a `/24` subnet with 254 available host addresses. This subnet is over-provisioned, but easy to calculate. |
+
+1. Select **OK** to add the subnet. Close the VNet Integration and Network Feature Status pages to return to your function app page.
+
+The function app can now access the virtual network where the WordPress site is running. Next, you use [Azure Functions Proxies](functions-proxies.md) to return a file from the WordPress site.
+
+## <a name="create-a-proxy-to-access-vm-resources"></a>Create a proxy to access VM resources
+
+With VNet Integration enabled, you can create a proxy in your function app to forward requests to the VM running in the virtual network.
+
+1. In your function app, select  **Proxies** >  **+** , then use the proxy settings in the table below the image:
+
+    ![Define the proxy settings](./media/functions-create-vnet/create-proxy.png)
 
     | Ayar  | Önerilen değer  | Açıklama      |
     | -------- | ---------------- | ---------------- |
-    | **Ad** | Bit | Ad herhangi bir değer olabilir. Proxy 'yi tanımlamak için kullanılır. |
-    | **Rota şablonu** | /bitki | Bir VM kaynağıyla eşleşen rota. |
-    | **Arka uç URL 'SI** | http://< YOUR_VM_IP >/wp-content/themes/twentyseventeen/Assets/images/header.jpg | `<YOUR_VM_IP>`, daha önce oluşturduğunuz WordPress sanal makinenizin IP adresi ile değiştirin. Bu eşleme, siteden tek bir dosya döndürüyor. |
+    | **Adı** | Plant | The name can be any value. It's used to identify the proxy. |
+    | **Route Template** | /plant | Route that maps to a VM resource. |
+    | **Backend URL** | http://<YOUR_VM_IP>/wp-content/themes/twentyseventeen/assets/images/header.jpg | Replace `<YOUR_VM_IP>` with the IP address of your WordPress VM that you created earlier. This mapping returns a single file from the site. |
 
-1. Proxy 'yi işlev uygulamanıza eklemek için **Oluştur** ' u seçin.
+1. Select **Create** to add the proxy to your function app.
 
 ## <a name="try-it-out"></a>Deneyin
 
-1. Tarayıcınızda, **arka uç URL 'si**olarak kullandığınız URL 'ye erişmeyi deneyin. Beklendiği gibi, istek zaman aşımına uğrar. WordPress siteniz internet 'e değil yalnızca sanal ağınıza bağlı olduğundan zaman aşımı oluşur.
+1. In your browser, try to access the URL you used as the **Backend URL**. As expected, the request times out. A timeout occurs because your WordPress site is connected only to your virtual network and not the internet.
 
-1. **Proxy URL 'si** değerini yeni proxy 'nizden kopyalayıp tarayıcınızın adres çubuğuna yapıştırın. Döndürülen görüntü, sanal ağınızın içinde çalışan WordPress sitesinden yapılır.
+1. Copy the **Proxy URL** value from your new proxy and paste it into the address bar of your browser. The returned image is from the WordPress site running inside your virtual network.
 
-    ![WordPress sitesinden döndürülen tesis görüntü dosyası](./media/functions-create-vnet/plant.png)
+    ![Plant image file returned from the WordPress site](./media/functions-create-vnet/plant.png)
 
-İşlev uygulamanız hem İnternet hem de sanal ağınıza bağlı. Proxy, genel İnternet üzerinden bir istek alıyor ve sonra bu isteği bağlı sanal ağa iletmek için basit bir HTTP proxy 'si olarak hareket etmektedir. Daha sonra proxy, yanıtı internet üzerinden herkese açık bir şekilde geçirir.
+Your function app is connected to both the internet and your virtual network. The proxy is receiving a request over the public internet, and then acting as a simple HTTP proxy to forward that request to the connected virtual network. The proxy then relays the response back to you publicly over the internet.
 
 [!INCLUDE [clean-up-section-portal](../../includes/clean-up-section-portal.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, WordPress sitesi, işlev uygulamasında bir proxy kullanılarak çağrılan bir API işlevi görür. Bu senaryo, kolayca ayarlanması ve görselleştirilmesi için iyi bir öğretici sağlar. Bir sanal ağ içinde dağıtılan diğer API 'leri kullanabilirsiniz. Ayrıca, sanal ağ içinde dağıtılan API 'Leri çağıran kodla bir işlev oluşturmuş olabilirsiniz. Daha gerçekçi bir senaryo, sanal ağda dağıtılan bir SQL Server örneğini çağırmak için veri istemcisi API 'Lerini kullanan bir işlevdir.
+In this tutorial, the WordPress site serves as an API that is called by using a proxy in the function app. This scenario makes a good tutorial because it's easy to set up and visualize. You could use any other API deployed within a virtual network. You could also have created a function with code that calls APIs deployed within the virtual network. A more realistic scenario is a function that uses data client APIs to call a SQL Server instance deployed in the virtual network.
 
-Premium planda çalışan işlevler, PremiumV2 planlarındaki Web Apps ile aynı temel App Service altyapısını paylaşır. [Azure App Service içindeki Web uygulamalarına](../app-service/overview.md) yönelik tüm belgeler Premium plan işlevleriniz için geçerlidir.
+Functions running in a Premium plan share the same underlying App Service infrastructure as web apps on PremiumV2 plans. All the documentation for [web apps in Azure App Service](../app-service/overview.md) applies to your Premium plan functions.
 
 > [!div class="nextstepaction"]
-> [Işlevlerde ağ seçenekleri hakkında daha fazla bilgi edinin](./functions-networking-options.md)
+> [Learn more about the networking options in Functions](./functions-networking-options.md)
 
 [Premium plan]: functions-scale.md#premium-plan

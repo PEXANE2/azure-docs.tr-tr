@@ -1,6 +1,6 @@
 ---
-title: Python 'da Azure kuyruk depolama kullanma-Azure depolama
-description: Sıraları oluşturmak ve silmek ve iletileri eklemek, almak ve silmek için Python 'dan Azure Kuyruk hizmeti kullanmayı öğrenin.
+title: How to use Azure Queue storage v2.1 from Python - Azure Storage
+description: Learn how to use the Azure Queue service v2.1 from Python to create and delete queues, and insert, get, and delete messages.
 author: mhopkins-msft
 ms.service: storage
 ms.author: mhopkins
@@ -9,61 +9,61 @@ ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
 ms.custom: seo-javascript-october2019
-ms.openlocfilehash: 242ba7dbe4bfcc003899e95e76dc57d809dbc95a
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: b5382a6a1ea381d57a026e9d42190152e38f7696
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72427979"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74209535"
 ---
-# <a name="how-to-use-azure-queue-storage-from-python"></a>Python 'da Azure kuyruk depolama kullanma
+# <a name="how-to-use-azure-queue-storage-v21-from-python"></a>How to use Azure Queue storage v2.1 from Python
 
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
-Bu makalede, Azure kuyruk depolama hizmetini kullanan yaygın senaryolar gösterilmektedir. Kapsanan senaryolar sıra iletilerini ekleme, göz atma, alma ve silme, kuyrukları oluşturma ve silme içerir.
+This article demonstrates common scenarios using the Azure Queue storage service. The scenarios covered include inserting, peeking, getting, and deleting queue messages, and creating and deleting queues.
 
 [!INCLUDE [storage-try-azure-tools-queues](../../../includes/storage-try-azure-tools-queues.md)]
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu makaledeki örnekler Python 'da yazılmıştır ve [Python için SDK Microsoft Azure Depolama]kullanır. Kuyruklar hakkında daha fazla bilgi için [sonraki adımlar](#next-steps) bölümüne bakın.
+The samples in this article are written in Python and use the [Microsoft Azure Storage SDK for Python]. For more information on queues, see the [Next steps](#next-steps) section.
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
-## <a name="download-and-install-azure-storage-sdk-for-python"></a>Python için Azure depolama SDK 'sını indirme ve yükleme
+## <a name="download-and-install-azure-storage-sdk-for-python"></a>Download and install Azure Storage SDK for Python
 
-[Python Için Azure depolama SDK 'sı](https://github.com/azure/azure-storage-python) , python sürüm 2,7, 3,3 veya üstünü gerektirir.
+The [Azure Storage SDK for Python](https://github.com/azure/azure-storage-python) requires Python version 2.7, 3.3, or later.
  
-### <a name="install-via-pypi"></a>PyPi aracılığıyla yüklemesi
+### <a name="install-via-pypi"></a>Install via PyPi
 
-Python paket dizini (Pypı) aracılığıyla yüklemek için şunu yazın:
+To install via the Python Package Index (PyPI), type:
 
 ```bash
-pip install azure-storage-queue
+pip install azure-storage-blob==2.1.0
 ```
 
 > [!NOTE]
-> Python sürüm 0,36 veya önceki bir sürümü için Azure Storage SDK 'dan yükseltiyorsanız, en son paketi yüklemeden önce `pip uninstall azure-storage` kullanarak eski SDK 'Yı kaldırın.
+> If you are upgrading from the Azure Storage SDK for Python version 0.36 or earlier, uninstall the older SDK using `pip uninstall azure-storage` before installing the latest package.
 
-Alternatif yükleme yöntemleri için bkz. [Python Için Azure Storage SDK](https://github.com/Azure/azure-storage-python/).
+For alternative installation methods, see [Azure Storage SDK for Python](https://github.com/Azure/azure-storage-python/).
 
-## <a name="view-the-sample-application"></a>Örnek uygulamayı görüntüleme
+## <a name="view-the-sample-application"></a>View the sample application
 
-Azure kuyrukları ile Python 'un nasıl kullanılacağını gösteren örnek bir uygulamayı görüntülemek ve çalıştırmak için bkz. [Azure Storage: Python 'Da Azure Kuyrukları Ile çalışmaya](https://github.com/Azure-Samples/storage-queue-python-getting-started)başlama. 
+To view and run a sample application that shows how to use Python with Azure Queues, see [Azure Storage: Getting Started with Azure Queues in Python](https://github.com/Azure-Samples/storage-queue-python-getting-started). 
 
-Örnek uygulamayı çalıştırmak için hem `azure-storage-queue` hem de `azure-storage-common` paketlerini yüklediğinizden emin olun.
+To run the sample application, make sure you have installed both the `azure-storage-queue` and `azure-storage-common` packages.
 
 ## <a name="create-a-queue"></a>Bir kuyruk oluşturma
 
-[QueueService](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice) nesnesi kuyruklarla çalışmanıza olanak sağlar. Aşağıdaki kod `QueueService` nesnesi oluşturur. Azure Storage 'a programlı bir şekilde erişmek istediğiniz herhangi bir Python dosyasının en üstüne aşağıdakileri ekleyin:
+The [QueueService](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice) object lets you work with queues. The following code creates a `QueueService` object. Add the following near the top of any Python file in which you wish to programmatically access Azure Storage:
 
 ```python
 from azure.storage.queue import QueueService
 ```
 
-Aşağıdaki kod, depolama hesabı adını ve hesap anahtarını kullanarak bir `QueueService` nesnesi oluşturur. *Myaccount* ve *MyKey* değerini hesap adınızla ve anahtarınızla değiştirin.
+The following code creates a `QueueService` object using the storage account name and account key. Replace *myaccount* and *mykey* with your account name and key.
 
 ```python
 queue_service = QueueService(account_name='myaccount', account_key='mykey')
@@ -73,13 +73,13 @@ queue_service.create_queue('taskqueue')
 
 ## <a name="insert-a-message-into-a-queue"></a>Kuyruğa bir ileti yerleştirme
 
-Bir kuyruğa ileti eklemek için, [put_message](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#put-message-queue-name--content--visibility-timeout-none--time-to-live-none--timeout-none-) yöntemini kullanarak yeni bir ileti oluşturun ve kuyruğa ekleyin.
+To insert a message into a queue, use the [put_message](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#put-message-queue-name--content--visibility-timeout-none--time-to-live-none--timeout-none-) method to create a new message and add it to the queue.
 
 ```python
 queue_service.put_message('taskqueue', u'Hello World')
 ```
 
-Azure kuyruk iletileri metin olarak depolanır. İkili verileri depolamak istiyorsanız, kuyruğa bir ileti koymadan önce, kuyruk hizmeti nesnesinde Base64 kodlama ve kod çözme işlevleri ayarlayın.
+Azure queue messages are stored as text. If you want to store binary data, setup Base64 encoding and decoding functions on the queue service object before putting a message in the queue.
 
 ```python
 # setup queue Base64 encoding and decoding functions
@@ -89,7 +89,7 @@ queue_service.decode_function = QueueMessageFormat.binary_base64decode
 
 ## <a name="peek-at-the-next-message"></a>Sonraki iletiye gözatın
 
-[Peek_messages](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#peek-messages-queue-name--num-messages-none--timeout-none-) yöntemini çağırarak sıradan kaldırmadan bir kuyruğun önündeki iletiye göz atmayı sağlayabilirsiniz. Varsayılan olarak, `peek_messages` tek bir iletiye göz atar.
+You can peek at the message in the front of a queue without removing it from the queue by calling the [peek_messages](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#peek-messages-queue-name--num-messages-none--timeout-none-) method. By default, `peek_messages` peeks at a single message.
 
 ```python
 messages = queue_service.peek_messages('taskqueue')
@@ -97,9 +97,9 @@ for message in messages:
     print(message.content)
 ```
 
-## <a name="dequeue-messages"></a>İletileri sıradan çıkarma
+## <a name="dequeue-messages"></a>Dequeue messages
 
-Kodunuz bir iletiyi iki adımda kuyruktan kaldırır. [Get_messages](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#get-messages-queue-name--num-messages-none--visibility-timeout-none--timeout-none-)çağırdığınızda, sıradaki iletiyi varsayılan olarak bir sıraya alırsınız. @No__t-0 ' dan döndürülen bir ileti, bu kuyruktaki diğer kod okuma iletileri için görünmez hale gelir. Varsayılan olarak bu ileti 30 saniye görünmez kalır. İletiyi kuyruktan kaldırma işleminin tamamlanabilmesi için, [delete_message](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#delete-message-queue-name--message-id--pop-receipt--timeout-none-)öğesini de çağırmanız gerekir. Bir iletiyi kaldırmanın bu iki adımlı işlemi, kodunuz, donanım veya yazılım arızasından kaynaklanan bir iletiyi işleyemediğinde, kodunuzun başka bir örneğinin aynı mesajı almasını ve yeniden denemesini sağlar. İleti işlendikten sonra kodunuz `delete_message` ' a çağrı yapılır.
+Your code removes a message from a queue in two steps. When you call [get_messages](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#get-messages-queue-name--num-messages-none--visibility-timeout-none--timeout-none-), you get the next message in a queue by default. A message returned from `get_messages` becomes invisible to any other code reading messages from this queue. Varsayılan olarak bu ileti 30 saniye görünmez kalır. To finish removing the message from the queue, you must also call [delete_message](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#delete-message-queue-name--message-id--pop-receipt--timeout-none-). This two-step process of removing a message assures that when your code fails to process a message due to hardware or software failure, another instance of your code can get the same message and try again. Your code calls `delete_message` right after the message has been processed.
 
 ```python
 messages = queue_service.get_messages('taskqueue')
@@ -108,7 +108,7 @@ for message in messages:
     queue_service.delete_message('taskqueue', message.id, message.pop_receipt)
 ```
 
-İletilerin bir kuyruktan alınma şeklini iki yöntemle özelleştirebilirsiniz. İlk olarak toplu iletiler alabilirsiniz (en fazla 32). İkinci olarak daha uzun veya daha kısa bir görünmezlik süresi ayarlayarak kodunuzun her iletiyi tamamen işlemesi için daha az veya daha fazla zaman tanıyabilirsiniz. Aşağıdaki kod örneği, tek bir çağrıda 16 ileti almak için `get_messages` yöntemini kullanır. Sonra her iletiyi bir for döngüsü kullanarak işler. Ayrıca her ileti için görünmezlik zaman aşımı beş dakika olarak ayarlanır.
+İletilerin bir kuyruktan alınma şeklini iki yöntemle özelleştirebilirsiniz. İlk olarak toplu iletiler alabilirsiniz (en fazla 32). İkinci olarak daha uzun veya daha kısa bir görünmezlik süresi ayarlayarak kodunuzun her iletiyi tamamen işlemesi için daha az veya daha fazla zaman tanıyabilirsiniz. The following code example uses the `get_messages` method to get 16 messages in one call. Then it processes each message using a for loop. Ayrıca her ileti için görünmezlik zaman aşımı beş dakika olarak ayarlanır.
 
 ```python
 messages = queue_service.get_messages(
@@ -120,7 +120,7 @@ for message in messages:
 
 ## <a name="change-the-contents-of-a-queued-message"></a>Kuyruğa alınan iletinin içeriğini değiştirme
 
-Kuyrukta yer alan bir iletinin içeriğini değiştirebilirsiniz. Eğer ileti bir iş görevini temsil ediyorsa, bu özelliği kullanarak iş görevinin durumunu güncelleştirebilirsiniz. Aşağıdaki kod, bir iletiyi güncelleştirmek için [update_message](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#update-message-queue-name--message-id--pop-receipt--visibility-timeout--content-none--timeout-none-) yöntemini kullanır. Görünürlük zaman aşımı 0 olarak ayarlanır, yani ileti hemen görünür ve içerik güncellenir.
+Kuyrukta yer alan bir iletinin içeriğini değiştirebilirsiniz. Eğer ileti bir iş görevini temsil ediyorsa, bu özelliği kullanarak iş görevinin durumunu güncelleştirebilirsiniz. The code below uses the [update_message](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#update-message-queue-name--message-id--pop-receipt--visibility-timeout--content-none--timeout-none-) method to update a message. The visibility timeout is set to 0, meaning the message appears immediately and the content is updated.
 
 ```python
 messages = queue_service.get_messages('taskqueue')
@@ -131,7 +131,7 @@ for message in messages:
 
 ## <a name="get-the-queue-length"></a>Kuyruk uzunluğu alma
 
-Bir kuyruktaki ileti sayısı ile ilgili bir tahmin alabilirsiniz. [Get_queue_metadata](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#get-queue-metadata-queue-name--timeout-none-) yöntemi kuyruk hizmetinin kuyruğa ilişkin meta verileri ve `approximate_message_count` döndürmesini ister. Sonuç yalnızca, kuyruk hizmeti isteğinize yanıt verdikten sonra iletiler eklenebildiğinden veya kaldırılacağından yaklaşık olur.
+Bir kuyruktaki ileti sayısı ile ilgili bir tahmin alabilirsiniz. The [get_queue_metadata](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#get-queue-metadata-queue-name--timeout-none-) method asks the queue service to return metadata about the queue, and the `approximate_message_count`. The result is only approximate because messages can be added or removed after the queue service responds to your request.
 
 ```python
 metadata = queue_service.get_queue_metadata('taskqueue')
@@ -140,7 +140,7 @@ count = metadata.approximate_message_count
 
 ## <a name="delete-a-queue"></a>Bir kuyruk silme
 
-Bir kuyruğu ve içerdiği tüm iletileri silmek için [delete_queue](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#delete-queue-queue-name--fail-not-exist-false--timeout-none-) yöntemini çağırın.
+To delete a queue and all the messages contained in it, call the [delete_queue](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#delete-queue-queue-name--fail-not-exist-false--timeout-none-) method.
 
 ```python
 queue_service.delete_queue('taskqueue')
@@ -148,11 +148,11 @@ queue_service.delete_queue('taskqueue')
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sıra depolamanın temellerini öğrendiğinize göre, daha fazla bilgi edinmek için bu bağlantıları izleyin.
+Now that you've learned the basics of queue storage, follow these links to learn more.
 
-* [Azure Kuyrukları Python API başvurusu](/python/api/azure-storage-queue)
+* [Azure Queues Python API reference](/python/api/azure-storage-queue)
 * [Python Geliştirici Merkezi](https://azure.microsoft.com/develop/python/)
 * [Azure Depolama Hizmetleri REST API'si](https://msdn.microsoft.com/library/azure/dd179355)
 
 [Azure Storage Team Blog]: https://blogs.msdn.com/b/windowsazurestorage/
-[Python için SDK Microsoft Azure Depolama]: https://github.com/Azure/azure-storage-python
+[Microsoft Azure Storage SDK for Python]: https://github.com/Azure/azure-storage-python

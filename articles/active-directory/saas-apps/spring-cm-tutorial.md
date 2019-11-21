@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory Tümleştirmesi ile SpringCM | Microsoft Docs'
-description: Azure Active Directory ve SpringCM arasında çoklu oturum açmayı yapılandırmayı öğrenin.
+title: 'Tutorial: Azure Active Directory integration with SpringCM | Microsoft Docs'
+description: Learn how to configure single sign-on between Azure Active Directory and SpringCM.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,228 +16,228 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e1d1973dd51068e6f3e0746ee988a51f375899f
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 9bd9ea5565ea64415c00a458236456bed04b6c38
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67588012"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233376"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-springcm"></a>Öğretici: SpringCM ile Azure Active Directory Tümleştirme
+# <a name="tutorial-azure-active-directory-integration-with-springcm"></a>Tutorial: Azure Active Directory integration with SpringCM
 
-Bu öğreticide, Azure Active Directory (Azure AD) ile SpringCM tümleştirme konusunda bilgi edinin.
-Azure AD ile SpringCM tümleştirme ile aşağıdaki avantajları sağlar:
+In this tutorial, you learn how to integrate SpringCM with Azure Active Directory (Azure AD).
+Integrating SpringCM with Azure AD provides you with the following benefits:
 
-* SpringCM erişimi, Azure AD'de kontrol edebilirsiniz.
-* Otomatik olarak (çoklu oturum açma) SpringCM için kendi Azure AD hesapları ile oturum açmış, kullanıcıların etkinleştirebilirsiniz.
-* Hesaplarınız bir merkezi konumda - Azure portalında yönetebilir.
+* You can control in Azure AD who has access to SpringCM.
+* You can enable your users to be automatically signed-in to SpringCM (Single Sign-On) with their Azure AD accounts.
+* You can manage your accounts in one central location - the Azure portal.
 
-Azure AD SaaS uygulama tümleştirmesi hakkında daha fazla ayrıntı bilmek istiyorsanız, bkz. [uygulama erişimi ve Azure Active Directory ile çoklu oturum açma nedir](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Azure AD Tümleştirmesi ile SpringCM yapılandırmak için aşağıdaki öğeler gerekir:
+To configure Azure AD integration with SpringCM, you need the following items:
 
-* Azure AD aboneliğiniz. Bir Azure AD ortamını yoksa alabileceğiniz bir [ücretsiz hesap](https://azure.microsoft.com/free/)
-* Abonelik SpringCM çoklu oturum açma etkin
+* An Azure AD subscription. If you don't have an Azure AD environment, you can get a [free account](https://azure.microsoft.com/free/)
+* SpringCM single sign-on enabled subscription
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, yapılandırma ve Azure AD çoklu oturum açma bir test ortamında test edin.
+In this tutorial, you configure and test Azure AD single sign-on in a test environment.
 
-* SpringCM destekler **SP** tarafından başlatılan
+* SpringCM supports **SP** initiated SSO
 
-## <a name="adding-springcm-from-the-gallery"></a>Galeriden SpringCM ekleme
+## <a name="adding-springcm-from-the-gallery"></a>Adding SpringCM from the gallery
 
-Azure AD'de SpringCM tümleştirmesini yapılandırmak için SpringCM Galeriden yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
+To configure the integration of SpringCM into Azure AD, you need to add SpringCM from the gallery to your list of managed SaaS apps.
 
-**Galeriden SpringCM eklemek için aşağıdaki adımları gerçekleştirin:**
+**To add SpringCM from the gallery, perform the following steps:**
 
-1. İçinde  **[Azure portalında](https://portal.azure.com)** , sol gezinti panelinde tıklayın **Azure Active Directory** simgesi.
+1. In the **[Azure portal](https://portal.azure.com)** , on the left navigation panel, click the **Azure Active Directory** icon.
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+    ![The Azure Active Directory button](common/select-azuread.png)
 
-2. Gidin **kurumsal uygulamalar** seçip **tüm uygulamaları** seçeneği.
+2. Navigate to **Enterprise Applications** and then select the **All Applications** option.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![The Enterprise applications blade](common/enterprise-applications.png)
 
-3. Yeni bir uygulama eklemek için tıklatın **yeni uygulama** iletişim kutusunun üstündeki düğmesi.
+3. To add a new application, click the **New application** button at the top of the dialog.
 
-    ![Yeni Uygulama düğmesi](common/add-new-app.png)
+    ![The New application button](common/add-new-app.png)
 
-4. Arama kutusuna **SpringCM**seçin **SpringCM** sonucu panelinden ardından **Ekle** uygulama eklemek için Ekle düğmesine.
+4. In the search box, type **SpringCM**, select **SpringCM** from the result panel then click the **Add** button to add the application.
 
-    ![Sonuç listesinde SpringCM](common/search-new-app.png)
+    ![SpringCM in the results list](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Configure and test Azure AD single sign-on
 
-Bu bölümde, yapılandırma ve Azure AD çoklu oturum açma SpringCM adlı bir test kullanıcı tabanlı test **Britta Simon**.
-Tek iş için oturum açma için bir Azure AD kullanıcısının SpringCM ilgili kullanıcı arasında bir bağlantı ilişkisi kurulması gerekir.
+In this section, you configure and test Azure AD single sign-on with SpringCM based on a test user called **Britta Simon**.
+For single sign-on to work, a link relationship between an Azure AD user and the related user in SpringCM needs to be established.
 
-Yapılandırma ve Azure AD çoklu oturum açma SpringCM ile test etmek için aşağıdaki yapı taşlarını tamamlanması gerekir:
+To configure and test Azure AD single sign-on with SpringCM, you need to complete the following building blocks:
 
-1. **[Azure AD çoklu oturum açmayı yapılandırmayı](#configure-azure-ad-single-sign-on)**  - bu özelliği kullanmak, kullanıcılarınızın etkinleştirmek için.
-2. **[SpringCM çoklu oturum açmayı yapılandırma](#configure-springcm-single-sign-on)**  - uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-3. **[Bir Azure AD test kullanıcısı oluşturma](#create-an-azure-ad-test-user)**  - Azure AD çoklu oturum açma Britta Simon ile test etmek için.
-4. **[Azure AD test kullanıcı atama](#assign-the-azure-ad-test-user)**  - Azure AD çoklu oturum açmayı kullanmak Britta Simon etkinleştirmek için.
-5. **[SpringCM test kullanıcısı oluşturma](#create-springcm-test-user)**  - kullanıcı Azure AD gösterimini bağlı SpringCM Britta simon'un bir karşılığı vardır.
-6. **[Çoklu oturum açmayı test](#test-single-sign-on)**  - yapılandırma çalışıp çalışmadığını doğrulayın.
+1. **[Configure Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)** - to enable your users to use this feature.
+2. **[Configure SpringCM Single Sign-On](#configure-springcm-single-sign-on)** - to configure the Single Sign-On settings on application side.
+3. **[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
+4. **[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
+5. **[Create SpringCM test user](#create-springcm-test-user)** - to have a counterpart of Britta Simon in SpringCM that is linked to the Azure AD representation of user.
+6. **[Test single sign-on](#test-single-sign-on)** - to verify whether the configuration works.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırın
+### <a name="configure-azure-ad-single-sign-on"></a>Configure Azure AD single sign-on
 
-Bu bölümde, Azure AD çoklu oturum açma Azure portalında etkinleştirin.
+In this section, you enable Azure AD single sign-on in the Azure portal.
 
-Azure AD çoklu oturum açma ile SpringCM yapılandırmak için aşağıdaki adımları gerçekleştirin:
+To configure Azure AD single sign-on with SpringCM, perform the following steps:
 
-1. İçinde [Azure portalında](https://portal.azure.com/), **SpringCM** uygulama tümleştirme sayfasında **çoklu oturum açma**.
+1. In the [Azure portal](https://portal.azure.com/), on the **SpringCM** application integration page, select **Single sign-on**.
 
-    ![Çoklu oturum açma bağlantısı yapılandırma](common/select-sso.png)
+    ![Configure single sign-on link](common/select-sso.png)
 
-2. Üzerinde **tek bir oturum açma yönteminizi seçmeniz** iletişim kutusunda, **SAML/WS-Federasyon** modu, çoklu oturum açmayı etkinleştirmek için.
+2. On the **Select a Single sign-on method** dialog, select **SAML/WS-Fed** mode to enable single sign-on.
 
-    ![Çoklu oturum açma seçim modu](common/select-saml-option.png)
+    ![Single sign-on select mode](common/select-saml-option.png)
 
-3. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **Düzenle** açmak için simgeyi **temel SAML yapılandırma** iletişim.
+3. On the **Set up Single Sign-On with SAML** page, click **Edit** icon to open **Basic SAML Configuration** dialog.
 
-    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+    ![Edit Basic SAML Configuration](common/edit-urls.png)
 
-4. Üzerinde **temel SAML yapılandırma** bölümünde, aşağıdaki adımları gerçekleştirin:
+4. On the **Basic SAML Configuration** section, perform the following steps:
 
-    ![SpringCM etki alanı ve URL'ler tek oturum açma bilgileri](common/sp-signonurl.png)
+    ![SpringCM Domain and URLs single sign-on information](common/sp-signonurl.png)
 
-    İçinde **oturum açma URL'si** metin kutusuna şu biçimi kullanarak bir URL yazın:  `https://na11.springcm.com/atlas/SSO/SSOEndpoint.ashx?aid=<identifier>`
+    In the **Sign-on URL** text box, type a URL using the following pattern:  `https://na11.springcm.com/atlas/SSO/SSOEndpoint.ashx?aid=<identifier>`
 
     > [!NOTE]
-    > Değer, gerçek değil. Değerini gerçek oturum açma URL'si ile güncelleştirin. İlgili kişi [SpringCM istemci Destek ekibine](https://knowledge.springcm.com/support) değeri alınamıyor. Gösterilen desenleri de başvurabilirsiniz **temel SAML yapılandırma** bölümünde Azure portalında.
+    > The value is not real. Update the value with the actual Sign-On URL. Contact [SpringCM Client support team](https://knowledge.springcm.com/support) to get the value. You can also refer to the patterns shown in the **Basic SAML Configuration** section in the Azure portal.
 
-4. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **SAML imzalama sertifikası** bölümünde **indirme** indirmek için **sertifika (ham)** bilgisayarınızdaki belirli seçenekler ihtiyacınıza göre ve kaydedin.
+4. On the **Set up Single Sign-On with SAML** page, in the **SAML Signing Certificate** section, click **Download** to download the **Certificate (Raw)** from the given options as per your requirement and save it on your computer.
 
-    ![Sertifika indirme bağlantısı](common/certificateraw.png)
+    ![The Certificate download link](common/certificateraw.png)
 
-6. Üzerinde **SpringCM kümesi** bölümünde, ihtiyacınıza göre uygun URL'lerini kopyalayın.
+6. On the **Set up SpringCM** section, copy the appropriate URL(s) as per your requirement.
 
-    ![Yapılandırma URL'leri kopyalayın](common/copy-configuration-urls.png)
+    ![Copy configuration URLs](common/copy-configuration-urls.png)
 
-    a. Oturum Açma URL'si:
+    a. Login URL
 
-    b. Azure AD Tanımlayıcısı
+    b. Azure AD Identifier
 
-    c. Oturum Kapatma URL'si
+    c. Logout URL
 
-### <a name="configure-springcm-single-sign-on"></a>SpringCM tek oturum açmayı yapılandırın
+### <a name="configure-springcm-single-sign-on"></a>Configure SpringCM Single Sign-On
 
-1. Farklı bir web tarayıcı penceresinde oturum açın, **SpringCM** şirketinizin sitesi yöneticisi olarak.
+1. In a different web browser window, sign on to your **SpringCM** company site as administrator.
 
-1. Üstteki menüden **Git**, tıklayın **tercihleri**ve ardından **hesap tercihleri** bölümünde **SAML SSO**.
+1. In the menu on the top, click **GO TO**, click **Preferences**, and then, in the **Account Preferences** section, click **SAML SSO**.
    
     ![SAML SSO](./media/spring-cm-tutorial/ic797051.png "SAML SSO")
 
-1. Kimlik sağlayıcısı Yapılandırması bölümünde aşağıdaki adımları gerçekleştirin:
+1. In the Identity Provider Configuration section, perform the following steps:
    
-    ![Kimlik sağlayıcısı Yapılandırması](./media/spring-cm-tutorial/ic797052.png "kimlik sağlayıcı yapılandırması")
+    ![Identity Provider Configuration](./media/spring-cm-tutorial/ic797052.png "Identity Provider Configuration")
     
-    a. İndirilen Azure Active Directory sertifikanızı karşıya yüklemek için tıklayın **veren sertifika Seç** veya **değişiklik sertifikayı**.
+    a. To upload your downloaded Azure Active Directory certificate, click **Select Issuer Certificate** or **Change Issuer Certificate**.
     
-    b. İçinde **veren** metin kutusu, yapıştırma **Azure AD tanımlayıcısı** Azure Portalı'ndan kopyaladığınız değeri.
+    b. In the **Issuer** textbox, paste **Azure AD Identifier** value, which you have copied from Azure portal.
     
-    c. İçinde **hizmet sağlayıcısı (SP) tarafından başlatılan Endpoint** metin kutusu, yapıştırma **oturum açma URL'si** Azure portaldan kopyaladığınız değeri.
+    c. In the **Service Provider (SP) Initiated Endpoint** textbox, paste **Login URL** value, which you have copied from the Azure portal.
             
-    d. Seçin **SAML etkin** olarak **etkinleştirme**.
+    d. Select **SAML Enabled** as **Enable**.
 
-    e. **Kaydet**’e tıklayın.
+    e. **Kaydet** düğmesine tıklayın.
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma 
+### <a name="create-an-azure-ad-test-user"></a>Create an Azure AD test user 
 
-Bu bölümün amacı, Britta Simon adlı Azure portalında bir test kullanıcısı oluşturmaktır.
+The objective of this section is to create a test user in the Azure portal called Britta Simon.
 
-1. Azure portalında, sol bölmede seçin **Azure Active Directory**seçin **kullanıcılar**ve ardından **tüm kullanıcılar**.
+1. In the Azure portal, in the left pane, select **Azure Active Directory**, select **Users**, and then select **All users**.
 
-    !["Kullanıcılar ve Gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
+    ![The "Users and groups" and "All users" links](common/users.png)
 
-2. Seçin **yeni kullanıcı** ekranın üstünde.
+2. Select **New user** at the top of the screen.
 
-    ![Yeni kullanıcı düğmesi](common/new-user.png)
+    ![New user Button](common/new-user.png)
 
-3. Kullanıcı özellikleri, aşağıdaki adımları gerçekleştirin.
+3. In the User properties, perform the following steps.
 
-    ![Kullanıcı iletişim kutusu](common/user-properties.png)
+    ![The User dialog box](common/user-properties.png)
 
-    a. İçinde **adı** alana **BrittaSimon**.
+    a. In the **Name** field enter **BrittaSimon**.
   
-    b. İçinde **kullanıcı adı** alan türü `brittasimon@yourcompanydomain.extension`. Örneğin, BrittaSimon@contoso.com
+    b. In the **User name** field type `brittasimon@yourcompanydomain.extension`. Örneğin, BrittaSimon@contoso.com
 
-    c. Seçin **Show parola** onay kutusunu işaretleyin ve ardından parola kutusunda görüntülenen değeri yazın.
+    c. Select **Show password** check box, and then write down the value that's displayed in the Password box.
 
     d. **Oluştur**’a tıklayın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Assign the Azure AD test user
 
-Bu bölümde, Azure çoklu oturum açma kullanmak için SpringCM erişim vererek Britta Simon etkinleştirin.
+In this section, you enable Britta Simon to use Azure single sign-on by granting access to SpringCM.
 
-1. Azure portalında **kurumsal uygulamalar**seçin **tüm uygulamaları**, ardından **SpringCM**.
+1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **SpringCM**.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Enterprise applications blade](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **SpringCM**.
+2. In the applications list, select **SpringCM**.
 
-    ![Uygulamalar listesinde SpringCM bağlantı](common/all-applications.png)
+    ![The SpringCM link in the Applications list](common/all-applications.png)
 
-3. Soldaki menüde **kullanıcılar ve gruplar**.
+3. In the menu on the left, select **Users and groups**.
 
-    !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+    ![The "Users and groups" link](common/users-groups-blade.png)
 
-4. Tıklayın **Kullanıcı Ekle** düğmesine ve ardından **kullanıcılar ve gruplar** içinde **atama Ekle** iletişim.
+4. Click the **Add user** button, then select **Users and groups** in the **Add Assignment** dialog.
 
-    ![Atama Ekle bölmesi](common/add-assign-user.png)
+    ![The Add Assignment pane](common/add-assign-user.png)
 
-5. İçinde **kullanıcılar ve gruplar** iletişim kutusunda **Britta Simon** 'a tıklayın kullanıcı listesinde **seçin** ekranın alt kısmındaki düğmesi.
+5. In the **Users and groups** dialog select **Britta Simon** in the Users list, then click the **Select** button at the bottom of the screen.
 
-6. SAML onaylaması ardından içinde herhangi bir rolü değer bekleniyor durumunda **rolü Seç** 'a tıklayın listeden bir kullanıcı için uygun rolü Seç iletişim kutusu **seçin** ekranın alt kısmındaki düğmesi.
+6. If you are expecting any role value in the SAML assertion then in the **Select Role** dialog select the appropriate role for the user from the list, then click the **Select** button at the bottom of the screen.
 
-7. İçinde **atama Ekle** iletişim tıklatın **atama** düğmesi.
+7. In the **Add Assignment** dialog click the **Assign** button.
 
-### <a name="create-springcm-test-user"></a>SpringCM test kullanıcısı oluşturma
+### <a name="create-springcm-test-user"></a>Create SpringCM test user
 
-Azure Active Directory Kullanıcıları için SpringCM oturum açmak etkinleştirmek için bunlar SpringCM sağlanması gerekir. SpringCM söz konusu olduğunda, sağlama bir el ile gerçekleştirilen bir görevdir.
+To enable Azure Active Directory users to sign in to SpringCM, they must be provisioned into SpringCM. In the case of SpringCM, provisioning is a manual task.
 
 > [!NOTE]
-> Daha fazla bilgi için [oluşturma ve düzenleme SpringCM kullanıcı](https://knowledge.springcm.com/create-and-edit-a-springcm-user). 
+> For more information, see [Create and Edit a SpringCM User](https://knowledge.springcm.com/create-and-edit-a-springcm-user). 
 
-**Bir kullanıcı hesabına SpringCM sağlamak için aşağıdaki adımları gerçekleştirin:**
+**To provision a user account to SpringCM, perform the following steps:**
 
-1. Oturum açın, **SpringCM** şirketinizin sitesi yöneticisi olarak.
+1. Sign in to your **SpringCM** company site as administrator.
 
-1. Tıklayın **GOTO**ve ardından **adres defteri**.
+1. Click **GOTO**, and then click **ADDRESS BOOK**.
    
-    ![Kullanıcı oluşturma](./media/spring-cm-tutorial/ic797054.png "kullanıcı oluşturma")
+    ![Create User](./media/spring-cm-tutorial/ic797054.png "Create User")
 
-1. Tıklayın **oluşturacağı**.
+1. Click **Create User**.
 
-1. Seçin bir **kullanıcı rolü**.
+1. Select a **User Role**.
 
-1. Seçin **etkinleştirme e-posta Gönder**.
+1. Select **Send Activation Email**.
 
-1. Ad, Soyadı ve ilgili metin kutularına zbilgisayarlar istediğiniz geçerli bir Azure Active Directory kullanıcı hesabının e-posta adresini yazın.
+1. Type the first name, last name, and email address of a valid Azure Active Directory user account you want to provision into the related textboxes.
 
-1. Kullanıcıyı eklemek bir **güvenlik grubu**.
+1. Add the user to a **Security group**.
 
-1. **Kaydet**’e tıklayın.
+1. **Kaydet** düğmesine tıklayın.
 
    > [!NOTE]
-   > Herhangi diğer SpringCM kullanıcı hesabı oluşturma araçları kullanabilir veya API'leri için AAD kullanıcı hesapları sağlamak SpringCM tarafından sağlanan.
+   > You can use any other SpringCM user account creation tools or APIs provided by SpringCM to provision Azure AD user accounts.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+In this section, you test your Azure AD single sign-on configuration using the Access Panel.
 
-Erişim paneli SpringCM kutucuğa tıkladığınızda, size otomatik olarak SSO'yu ayarlama SpringCM için oturum açmanız. Erişim paneli hakkında daha fazla bilgi için bkz: [erişim Paneli'ne giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+When you click the SpringCM tile in the Access Panel, you should be automatically signed in to the SpringCM for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

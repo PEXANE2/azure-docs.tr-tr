@@ -1,23 +1,22 @@
 ---
-title: "Hızlı başlangıç: Java kullanarak TPM cihazını Azure cihaz sağlama hizmeti 'ne kaydetme"
-description: Azure Hızlı Başlangıç - Java hizmeti SDK'sını kullanarak TPM cihazını Azure IoT Hub Cihazı Sağlama Hizmeti'ne kaydetme. Bu hızlı başlangıçta bireysel kayıtlar kullanılmaktadır.
+title: Enroll TPM device to Azure Device Provisioning Service using Java
+description: Quickstart - Enroll TPM device to Azure IoT Hub Device Provisioning Service using Java service SDK. Bu hızlı başlangıçta bireysel kayıtlar kullanılmaktadır.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 88ce16a658e760f69cdf17c9bb4de78fceca927a
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: e1ef20b8e4ef865c93c31265d4b036c34b4b1aee
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903460"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229547"
 ---
-# <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>Hızlı başlangıç: Java hizmeti SDK 'sını kullanarak cihaz sağlama hizmeti IoT Hub TPM cihazı kaydetme
+# <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>Quickstart: Enroll TPM device to IoT Hub Device Provisioning Service using Java service SDK
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-tpm](../../includes/iot-dps-selector-quick-enroll-device-tpm.md)]
 
@@ -79,8 +78,8 @@ Bu bölümde örnek koda TPM cihazınızın sağlama ayrıntılarını nasıl ek
            ```
 
    2. TPM cihazı ayrıntıları ekleyin:
-       1. *TPM cihazını benzetme* bölümündeki adımları izleyerek TPM cihazı benzetmesinin *Kayıt Kimliği* ve [TPM onay anahtarı](quick-create-simulated-device.md#simulatetpm) değerlerini alın.
-       2. Önceki adımda aldığınız **_Kayıt Kimliği_** ve **_Onay Anahtarı_** değerlerini `[RegistrationId]``[TPM Endorsement Key]`ServiceEnrollmentSample.java **_örnek kod dosyasındaki_ ve**  değerlerinin yerine yazın:
+       1. [TPM cihazını benzetme](quick-create-simulated-device.md#simulatetpm) bölümündeki adımları izleyerek TPM cihazı benzetmesinin *Kayıt Kimliği* ve *TPM onay anahtarı* değerlerini alın.
+       2. Önceki adımda aldığınız **_Kayıt Kimliği_** ve **_Onay Anahtarı_** değerlerini **_ServiceEnrollmentSample.java_** örnek kod dosyasındaki `[RegistrationId]` ve `[TPM Endorsement Key]` değerlerinin yerine yazın:
         
            ```Java
            private static final String REGISTRATION_ID = "[RegistrationId]";
@@ -136,7 +135,7 @@ Bu bölümde örnek koda TPM cihazınızın sağlama ayrıntılarını nasıl ek
 
 4. Kaydın başarılı olup olmadığını görmek için çıktı penceresini izleyin. 
 
-5. Azure portalında sağlama hizmetinize gidin. Kayıtları **Yönet**' e tıklayın ve **bireysel** kayıtlar SEKMESINI seçin. sanal TPM cihazınızın *kayıt kimliğinin* artık listelendiğini unutmayın. 
+5. Azure portalında sağlama hizmetinize gidin. Click **Manage enrollments**, and select the **Individual Enrollments** tab. Notice that the *Registration ID* of your simulated TPM device is now listed. 
 
     ![Portalda TPM kaydının başarılı olup olmadığını doğrulama](./media/quick-enroll-device-tpm-java/verify-tpm-enrollment.png)  
 
@@ -145,7 +144,7 @@ Java hizmeti örneğini keşfetmeye devam etmeyi planlıyorsanız, bu Hızlı Ba
 
 1. Makinenizdeki Java örnek çıktı penceresini kapatın.
 1. TPM cihazınızı benzetmek için oluşturmuş olabileceğiniz TPM simülatörü penceresini kapatın.
-1. Azure portal cihaz sağlama hizmetine gidin, kayıtları **Yönet**' e tıklayın ve sonra **bireysel** kayıtlar sekmesini seçin. bu hızlı başlangıcı kullanarak kaydettiğiniz cihazın *kayıt kimliğini* seçin ve dikey pencerenin en üstündeki **Sil** düğmesine tıklayın. 
+1. Navigate to your Device Provisioning service in the Azure portal, click **Manage enrollments**, and then select the **Individual Enrollments** tab. Select the *Registration ID* of the device you enrolled using this Quickstart, and click the **Delete** button at the top of the blade. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu Hızlı Başlangıçta sanal bir TPM cihazını Cihaz Sağlama hizmetinize kaydettiniz. Cihaz sağlama hakkında ayrıntılı bilgi edinmek için Azure portalında Cihaz Sağlama Hizmeti ayarları öğreticisine geçin. 

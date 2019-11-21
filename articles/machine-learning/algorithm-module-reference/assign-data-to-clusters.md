@@ -1,52 +1,51 @@
 ---
-title: 'Kümeye veri ata: modül başvurusu'
+title: 'Assign Data to Cluster: Module Reference'
 titleSuffix: Azure Machine Learning
-description: Kümeleme modeline puan vermek için Azure Machine Learning ' de verileri kümeye ata modülünü kullanmayı öğrenin.
+description: Learn how to use the Assign Data to Cluster module in Azure Machine Learning to score clustering model.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/06/2019
-ms.openlocfilehash: 75a547a26057ad05444753253666dceea160d714
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/19/2019
+ms.openlocfilehash: dd8b23f92f5b24101a7d42ca65f5835a8d4e9ff2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493866"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74214566"
 ---
-# <a name="module-assign-data-to-clusters"></a>Modül: kümelere veri atama
+# <a name="module-assign-data-to-clusters"></a>Module: Assign Data to Clusters
 
-Bu makalede Azure Machine Learning tasarımcısında *kümelenecek veri atama* modülünün nasıl kullanılacağı açıklanmaktadır (Önizleme). Modül, *K-anlamı kümeleme* algoritması ile eğitilen bir kümeleme modeli aracılığıyla tahmin oluşturur.
+This article describes how to use the *Assign Data to Clusters* module in Azure Machine Learning designer (preview). The module generates predictions through a clustering model that was trained with the *K-means clustering* algorithm.
 
-Kümelere veri ata modülü, her yeni veri noktası için olası atamaları içeren bir veri kümesi döndürür. 
+The Assign Data to Clusters module returns a dataset that contains the probable assignments for each new data point. 
 
-
-## <a name="how-to-use-assign-data-to-clusters"></a>Kümelere veri atama kullanımı
+## <a name="how-to-use-assign-data-to-clusters"></a>How to use Assign Data to Clusters
   
-1. Azure Machine Learning tasarımcısında, daha önce eğitilen bir kümeleme modeli bulun. Aşağıdaki yöntemlerden birini kullanarak bir kümeleme modeli oluşturabilir ve eğitebilirsiniz:  
+1. In Azure Machine Learning designer, locate a previously trained clustering model. You can create and train a clustering model by using either of the following methods:  
   
-    - K- [ortalamalar kümeleme modülünü kullanarak](k-means-clustering.md) k-bit kümeleme algoritmasını yapılandırın ve bir veri kümesi ve bir veri kümesi (Bu makale) Ile eğitme modeli kullanarak modeli eğitme.  
+    - Configure the K-means clustering algorithm by using the [K-Means Clustering](k-means-clustering.md) module, and train the model by using a dataset and the Train Clustering Model module (this article).  
   
-    - Ayrıca, çalışma alanınızdaki **kaydedilmiş modeller** grubundan mevcut bir eğitimli kümeleme modeli ekleyebilirsiniz.
+    - You can also add an existing trained clustering model from the **Saved Models** group in your workspace.
 
-2. Eğitilen modeli, **kümeler Için veri ata**'nın sol giriş bağlantı noktasına ekleyin.  
+2. Attach the trained model to the left input port of **Assign Data to Clusters**.  
 
-3. Giriş olarak yeni bir veri kümesi iliştirin. 
+3. Attach a new dataset as input. 
 
-   Bu veri kümesinde, Etiketler isteğe bağlıdır. Genellikle kümeleme, denetimli bir öğrenme yöntemidir. Kategorileri önceden bilmeniz beklenmez. Ancak, giriş sütunlarının, kümeleme modeliyle eğitiminde kullanılan sütunlarla aynı olması gerekir veya bir hata oluşur.
+   In this dataset, labels are optional. Generally, clustering is an unsupervised learning method. You are not expected to know the categories in advance. However, the input columns must be the same as the columns that were used in training the clustering model, or an error occurs.
 
     > [!TIP]
-    > Küme tahminlerinin tasarımcıya yazılan sütunların sayısını azaltmak için, [veri kümesindeki sütunları seç](select-columns-in-dataset.md)' i kullanın ve sütunların bir alt kümesini seçin. 
+    > To reduce the number of columns that are written to the designer from the cluster predictions, use [Select columns in the dataset](select-columns-in-dataset.md), and select a subset of the columns. 
     
-4. Sonuçların, sonuçları görüntüleyen bir sütun da dahil olmak üzere tam giriş veri kümesini içermesini istiyorsanız **yalnızca sonuç için ekleme veya onay işaretini kaldır** onay kutusunu seçili bırakın.
+4. Leave the **Check for append or uncheck for result only** check box selected if you want the results to contain the full input dataset, including a column that displays the results (cluster assignments).
   
-    Bu onay kutusunu temizlerseniz yalnızca sonuçlar döndürülür. Bu seçenek, bir Web hizmetinin parçası olarak tahmin oluştururken yararlı olabilir.
+    If you clear this check box, only the results are returned. This option might be useful when you create predictions as part of a web service.
   
 5.  İşlem hattını çalıştırma.  
   
 ### <a name="results"></a>Sonuçlar
 
-+  Veri kümesindeki değerleri görüntülemek için modüle sağ tıklayın, **sonuç veri kümeleri**' ni seçin ve ardından **Görselleştir**' i seçin.
++  To view the values in the dataset, right-click the module, select **Result datasets**, and then select **Visualize**.
 

@@ -1,16 +1,16 @@
 ---
-title: Azure CLı kullanarak ilk sorgunuzu çalıştırma
-description: Bu makale, Azure CLI için Kaynak Grafiği uzantısını etkinleştirmek ve ilk sorgunuzu çalıştırmak için gereken adımları incelemenizi sağlar.
+title: 'Quickstart: Your first Azure CLI query'
+description: In this quickstart, you follow the steps to enable the Resource Graph extension for Azure CLI and run your first query.
 ms.date: 10/18/2019
 ms.topic: quickstart
-ms.openlocfilehash: b74e4314a7755bb067831f955ca02d62485abe4f
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: a3ef32b2c2dcaa7a043bbb3e1e859ee295f02f2f
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958962"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74216603"
 ---
-# <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak ilk kaynak grafik sorgunuzu çalıştırma
+# <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>Quickstart: Run your first Resource Graph query using Azure CLI
 
 Azure Kaynak Grafı’nı kullanmada ilk adım, [Azure CLI](/cli/azure/) uzantısının yüklü olup olmadığını kontrol etmektir. Bu hızlı başlangıç, Azure CLI yüklemenize uzantı ekleme işlemini incelemenizi sağlar. Uzantıyı Azure CLI ile, yerel veya [Azure Cloud Shell](https://shell.azure.com) aracılığıyla yüklü olarak kullanabilirsiniz.
 
@@ -31,7 +31,7 @@ Azure CLI’sinin Azure Kaynak Grafiği’ni sorgulamasını etkinleştirmek iç
    az extension add --name resource-graph
    ```
 
-1. Uzantının yüklendiğini ve beklenen sürüm (en az **1.0.0**) olduğunu doğrulayın:
+1. Validate that the extension has been installed and is the expected version (at least **1.0.0**):
 
    ```azurecli-interactive
    # Check the extension list (note that you may have other extensions installed)
@@ -87,10 +87,10 @@ az extension remove -n resource-graph
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Sorgu dili](./concepts/query-language.md)hakkında daha fazla bilgi alın.
-- [Kaynakları araştırma](./concepts/explore-resources.md)hakkında daha fazla bilgi edinin.
-- [Azure Portal](first-query-portal.md)kullanarak ilk sorgunuzu çalıştırın.
-- [Azure PowerShell](first-query-powershell.md)ile ilk sorgunuzu çalıştırın.
-- Bkz. [Başlangıç sorguları](./samples/starter.md)örnekleri.
-- [Gelişmiş sorguların](./samples/advanced.md)örneklerine bakın.
-- [UserVoice](https://feedback.azure.com/forums/915958-azure-governance)hakkında geri bildirim sağlayın.
+- Get more information about the [query language](./concepts/query-language.md).
+- Learn more about how to [explore resources](./concepts/explore-resources.md).
+- Run your first query by using the [Azure portal](first-query-portal.md).
+- Run your first query with [Azure PowerShell](first-query-powershell.md).
+- See samples of [Starter queries](./samples/starter.md).
+- See samples of [Advanced queries](./samples/advanced.md).
+- Provide feedback on [UserVoice](https://feedback.azure.com/forums/915958-azure-governance).

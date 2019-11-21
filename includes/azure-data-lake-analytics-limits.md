@@ -1,21 +1,21 @@
 ---
 author: rothja
-ms.service: billing
+ms.service: cost-management-billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 7f89dc33c105a82646c8f12422f88a06efdca18b
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 2ce75624d2f03943c3d722a1f3a34102e70c698f
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67188763"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224409"
 ---
-Azure Data Lake Analytics dağıtılmış altyapıyı ve karmaşık kodu yönetme karmaşık görevini kolaylaştırır. Kaynakları dinamik olarak sağlar ve eksabaytlarca veri üzerinde analiz yapmak için kullanabilirsiniz. İş tamamlandığında, kaynakları otomatik olarak kapatır. Yalnızca kullanılan işlem gücü için ödeme yaparsınız. Depolanan verilerin veya kullanılan hesaplamanın boyutunu artırdıkça veya azalttıkça kodu yeniden yazmanız gerekmez. Aboneliğiniz için varsayılan sınırları yükseltmek üzere desteğe başvurun.
+Azure Data Lake Analytics makes the complex task of managing distributed infrastructure and complex code easy. It dynamically provisions resources, and you can use it to do analytics on exabytes of data. When the job completes, it winds down resources automatically. You pay only for the processing power that was used. Depolanan verilerin boyutunu veya kullanılan bilgi işlemin miktarını artırır veya azaltırsanız, yeniden kod yazmak zorunda kalmazsınız. To raise the default limits for your subscription, contact support.
 
-| **Kaynak** | **Varsayılan sınır** | **Yorumlar** |
+| **Kaynak** | **Varsayılan sınır** | **Açıklamalar** |
 | --- | --- | --- |
-| En fazla eşzamanlı iş sayısı |20 | |
-| Hesap başına en fazla analiz birimi (Avustralya) sayısı |250 | 20 iş üzerinde en fazla 250 Avustralya birleşimini kullanın. Bu sınırı artırmak için Microsoft Desteği başvurun. |
-| İş gönderimi için en büyük betik boyutu | 3 MB | |
-| Her abonelik için bölge başına en fazla Data Lake Analytics hesabı sayısı | 5 | Bu sınırı artırmak için Microsoft Desteği başvurun. |
+| Maximum number of concurrent jobs |20 | |
+| Maximum number of analytics units (AUs) per account |250 | Use any combination of up to a maximum of 250 AUs across 20 jobs. To increase this limit, contact Microsoft Support. |
+| Maximum script size for job submission | 3 MB | |
+| Maximum number of Data Lake Analytics accounts per region per subscription | 5 | To increase this limit, contact Microsoft Support. |

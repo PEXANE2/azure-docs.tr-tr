@@ -1,188 +1,183 @@
 ---
-title: Azure Işlevleri ölçeklendirme ve barındırma | Microsoft Docs
-description: Azure Işlevleri tüketim planı ve Premium plan arasında seçim yapma hakkında bilgi edinin.
-author: ggailey777
-manager: gwallace
-keywords: Azure işlevleri, işlevler, tüketim planı, Premium plan, olay işleme, Web kancaları, dinamik işlem, sunucusuz mimari
+title: Azure Functions scale and hosting
+description: Learn how to choose between Azure Functions Consumption plan and Premium plan.
 ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/27/2019
-ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bf713029f26ac7ec0b6c043fb887fa5190083888
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: b9644e89591d7d8b7642b5f381434357191d1711
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73576070"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226594"
 ---
-# <a name="azure-functions-scale-and-hosting"></a>Azure Işlevleri ölçeklendirme ve barındırma
+# <a name="azure-functions-scale-and-hosting"></a>Azure Functions scale and hosting
 
-Azure 'da bir işlev uygulaması oluşturduğunuzda, uygulamanız için bir barındırma planı seçmeniz gerekir. Azure Işlevleri için kullanılabilen üç barındırma planı vardır: [Tüketim planı](#consumption-plan), [Premium plan](#premium-plan)ve [App Service planı](#app-service-plan).
+When you create a function app in Azure, you must choose a hosting plan for your app. There are three hosting plans available for Azure Functions: [Consumption plan](#consumption-plan), [Premium plan](#premium-plan), and [App Service plan](#app-service-plan).
 
-Seçtiğiniz barındırma planı aşağıdaki davranışları belirler:
+The hosting plan you choose dictates the following behaviors:
 
-* İşlev uygulamanız nasıl ölçeklendirilir.
-* Her işlev uygulaması örneği için kullanılabilir kaynaklar.
-* VNET bağlantısı gibi gelişmiş özellikler için destek.
+* How your function app is scaled.
+* The resources available to each function app instance.
+* Support for advanced features, such as VNET connectivity.
 
-Hem tüketim hem de Premium planlar, kodunuz çalışırken otomatik olarak işlem gücü ekler. Uygulamanız, yükü işlemek için gerektiğinde ölçeklendirilir ve kod çalışmayı durdurduktan sonra ölçeklenir. Tüketim planı için, boş VM 'Ler için ödeme yapmak veya kapasiteyi önceden ayırmak zorunda kalmazsınız.  
+Both Consumption and Premium plans automatically add compute power when your code is running. Your app is scaled out when needed to handle load, and scaled down when code stops running. For the Consumption plan, you also don't have to pay for idle VMs or reserve capacity in advance.  
 
-Premium plan, Premium işlem örnekleri gibi ek özellikler sağlar, örneklerin sonsuza kadar sıcak kalmasına ve VNet bağlantısına sahip olmasını sağlar.
+Premium plan provides additional features, such as premium compute instances, the ability to keep instances warm indefinitely, and VNet connectivity.
 
-App Service planı, yönettiğiniz özel altyapıdan yararlanmanızı sağlar. İşlev uygulamanız olaylara göre ölçeklendirilmez, yani hiçbir şekilde sıfıra ölçeklenmez. ( [Her zaman açık](#always-on) özelliğinin etkinleştirilmesini gerektirir.)
+App Service plan allows you to take advantage of dedicated infrastructure, which you manage. Your function app doesn't scale based on events, which means is never scales down to zero. (Requires that [Always on](#always-on) is enabled.)
 
 > [!NOTE]
-> İşlev uygulaması kaynağının plan özelliğini değiştirerek tüketim ve Premium planlar arasında geçiş yapabilirsiniz.
+> You can switch between Consumption and Premium plans by changing the plan property of the function app resource.
 
-## <a name="hosting-plan-support"></a>Barındırma planı desteği
+## <a name="hosting-plan-support"></a>Hosting plan support
 
-Özellik desteği aşağıdaki iki kategoriye denk gelir:
+Feature support falls into the following two categories:
 
-* _Genel olarak kullanılabilir (GA)_ : üretim kullanımı için tam olarak desteklenir ve onaylanır.
-* _Önizleme_: üretim kullanımı için henüz tam olarak desteklenmemiştir ve onaylanmamıştır.
+* _Generally available (GA)_ : fully supported and approved for production use.
+* _Preview_: not yet fully supported and approved for production use.
 
-Aşağıdaki tablo, Windows veya Linux üzerinde çalışırken üç barındırma planına yönelik desteğin geçerli olan düzeyini gösterir:
+The following table indicates the current level of support for the three hosting plans, when running on either Windows or Linux:
 
-| | Tüketim planı | Premium planı | Adanmış plan |
+| | Tüketim planı | Premium planı | Dedicated plan |
 |-|:----------------:|:------------:|:----------------:|
 | Windows | Genel Kullanım | Genel Kullanım | Genel Kullanım |
 | Linux | Genel Kullanım | Genel Kullanım | Genel Kullanım |
 
 ## <a name="consumption-plan"></a>Tüketim planı
 
-Tüketim planını kullanırken, Azure Işlevleri ana bilgisayarının örnekleri, gelen olayların sayısına göre dinamik olarak eklenir ve kaldırılır. Bu sunucusuz plan otomatik olarak ölçeklendirilir ve yalnızca işlevleriniz çalışırken işlem kaynakları için ücretlendirilirsiniz. Tüketim planında, yapılandırılabilir bir süre sonra bir işlev yürütme zaman aşımına uğrar.
+When you're using the Consumption plan, instances of the Azure Functions host are dynamically added and removed based on the number of incoming events. This serverless plan scales automatically, and you're charged for compute resources only when your functions are running. On a Consumption plan, a function execution times out after a configurable period of time.
 
-Faturalandırma, yürütme süresi ve kullanılan bellek sayısını temel alır. Faturalandırma, bir işlev uygulaması içindeki tüm işlevler arasında toplanır. Daha fazla bilgi için bkz. [Azure işlevleri fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/functions/).
+Billing is based on number of executions, execution time, and memory used. Billing is aggregated across all functions within a function app. For more information, see the [Azure Functions pricing page](https://azure.microsoft.com/pricing/details/functions/).
 
-Tüketim planı varsayılan barındırma plandır ve aşağıdaki avantajları sunar:
+The Consumption plan is the default hosting plan and offers the following benefits:
 
-* Yalnızca işlevleriniz çalışırken ödeyin
-* Yüksek yük dönemlerinde bile otomatik olarak ölçeği genişletme
+* Pay only when your functions are running
+* Scale out automatically, even during periods of high load
 
-Aynı bölgedeki işlev uygulamaları aynı tüketim planına atanabilir. Aynı tüketim planında çalışan birden çok uygulamayı kullanmanın bir kısmı veya etkisi yoktur. Aynı tüketim planına birden fazla uygulamanın atanması, her uygulamanın esnekliği, ölçeklenebilirlik veya güvenilirliğini etkilemez.
+Function apps in the same region can be assigned to the same Consumption plan. There's no downside or impact to having multiple apps running in the same Consumption plan. Assigning multiple apps to the same consumption plan has no impact on resilience, scalability, or reliability of each app.
 
-Tüketim planında çalışırken maliyetleri tahmin etme hakkında daha fazla bilgi edinmek için bkz. [Tüketim planı maliyetlerini anlama](functions-consumption-costs.md).
+To learn more about how to estimate costs when running in a Consumption plan, see [Understanding Consumption plan costs](functions-consumption-costs.md).
 
 ## <a name="premium-plan"></a>Premium plan
 
-Premium planı kullanırken, Azure Işlevleri ana bilgisayarının örnekleri, tüketim planı gibi gelen olayların sayısına göre eklenir ve kaldırılır.  Premium plan aşağıdaki özellikleri destekler:
+When you're using the Premium plan, instances of the Azure Functions host are added and removed based on the number of incoming events just like the Consumption plan.  Premium plan supports the following features:
 
-* Soğuk başlangıçtan kaçınmak için adet sürekli sıcak örnekler
-* VNet bağlantısı
-* Sınırsız yürütme süresi
-* Premium örnek boyutları (bir çekirdek, iki çekirdek ve dört temel örnek)
-* Daha öngörülebilir fiyatlandırma
-* Birden çok işlev uygulaması olan planlar için yüksek yoğunluklu uygulama ayırma
+* Perpetually warm instances to avoid any cold start
+* VNet connectivity
+* Unlimited execution duration
+* Premium instance sizes (one core, two core, and four core instances)
+* More predictable pricing
+* High-density app allocation for plans with multiple function apps
 
-Bu seçenekleri nasıl yapılandırabileceğiniz hakkında bilgiler, [Azure işlevleri Premium plan belgesinde](functions-premium-plan.md)bulunabilir.
+Information on how you can configure these options can be found in the [Azure Functions premium plan document](functions-premium-plan.md).
 
-Yürütme başına faturalandırılması ve tüketilen bellek yerine, Premium plan için faturalandırma, gerekli ve önceden çarpımış örneklerde kullanılan çekirdek saniyelik ve belleğin sayısını temel alır. Plan başına en az bir örnek her zaman sıcak olmalıdır. Bu, yürütmelerin sayısından bağımsız olarak etkin plan başına en az aylık maliyet olduğu anlamına gelir. Premium planındaki tüm işlev uygulamalarının, önceden çarpımış ve etkin örnekleri paylaştığı göz önünde bulundurun.
+Instead of billing per execution and memory consumed, billing for the Premium plan is based on the number of core seconds and memory used across needed and pre-warmed instances. At least one instance must be warm at all times per plan. This means that there is a minimum monthly cost per active plan, regardless of the number of executions. Keep in mind that all function apps in a Premium plan share pre-warmed and active instances.
 
-Aşağıdaki durumlarda Azure Işlevleri Premium planını göz önünde bulundurun:
+Consider the Azure Functions premium plan in the following situations:
 
-* İşlev uygulamalarınız sürekli veya neredeyse sürekli çalışır.
-* Çok sayıda küçük yürütmeler ve yüksek bir yürütme faturanız, ancak tüketim planında düşük GB ikinci faturanız vardır.
-* Tüketim planı tarafından sağlandıkından daha fazla CPU veya bellek seçeneği gerekir.
-* Kodunuzun, tüketim planında [izin verilen maksimum yürütme süresinden](#timeout) daha uzun çalışması gerekir.
-* Yalnızca Premium bir planda kullanılabilen, VNET/VPN bağlantısı gibi özellikleri gereklidir.
+* Your function apps run continuously, or nearly continuously.
+* You have a high number of small executions and have a high execution bill but low GB second bill in the consumption plan.
+* You need more CPU or memory options than what is provided by the Consumption plan.
+* Your code needs to run longer than the [maximum execution time allowed](#timeout) on the Consumption plan.
+* You require features that are only available on a Premium plan, such as VNET/VPN connectivity.
 
-Premium bir planda JavaScript işlevlerini çalıştırırken, daha az vCPU içeren bir örnek seçmeniz gerekir. Daha fazla bilgi için bkz. [tek çekirdekli Premium planları seçme](functions-reference-node.md#considerations-for-javascript-functions).  
+When running JavaScript functions on a Premium plan, you should choose an instance that has fewer vCPUs. For more information, see the [Choose single-core Premium plans](functions-reference-node.md#considerations-for-javascript-functions).  
 
-## <a name="app-service-plan"></a>Adanmış (App Service) plan
+## <a name="app-service-plan"></a>Dedicated (App Service) plan
 
-İşlev uygulamalarınız aynı zamanda diğer App Service uygulamalarla aynı ayrılmış VM 'lerde da çalıştırılabilir (temel, standart, Premium ve yalıtılmış SKU 'Lar).
+Your function apps can also run on the same dedicated VMs as other App Service apps (Basic, Standard, Premium, and Isolated SKUs).
 
-Aşağıdaki durumlarda bir App Service planı düşünün:
+Consider an App Service plan in the following situations:
 
-* Zaten başka App Service örnekleri çalıştıran, az önce kullanılan VM 'Ler var.
-* İşlevlerinizin çalıştırılacağı özel bir görüntü sağlamak istiyorsunuz.
+* You have existing, underutilized VMs that are already running other App Service instances.
+* You want to provide a custom image on which to run your functions.
 
-Aynı şekilde, Web Apps gibi diğer App Service kaynaklarda yaptığınız gibi App Service planındaki işlev uygulamaları için de aynı ödeme yaparsınız. App Service planının nasıl çalıştığı hakkında daha fazla bilgi için bkz. [ayrıntılı genel bakış Azure App Service planları](../app-service/overview-hosting-plans.md).
+You pay the same for function apps in an App Service Plan as you would for other App Service resources, like web apps. For details about how the App Service plan works, see the [Azure App Service plans in-depth overview](../app-service/overview-hosting-plans.md).
 
-App Service planıyla, daha fazla VM örneği ekleyerek ölçeği el ile değiştirebilirsiniz. Otomatik ölçeklendirme özelliğini de etkinleştirebilirsiniz. Daha fazla bilgi için bkz. [örnek sayısını el ile veya otomatik olarak ölçeklendirme](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json). Ayrıca, farklı bir App Service planı seçerek ölçeği genişletebilirsiniz. Daha fazla bilgi için bkz. [Azure 'da bir uygulamayı ölçeklendirme](../app-service/manage-scale-up.md). 
+With an App Service plan, you can manually scale out by adding more VM instances. You can also enable autoscale. For more information, see [Scale instance count manually or automatically](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json). You can also scale up by choosing a different App Service plan. For more information, see [Scale up an app in Azure](../app-service/manage-scale-up.md). 
 
-JavaScript işlevlerini bir App Service planında çalıştırırken, daha az vCPU içeren bir plan seçmelisiniz. Daha fazla bilgi için bkz. [tek çekirdekli App Service planlarını seçme](functions-reference-node.md#choose-single-vcpu-app-service-plans). 
+When running JavaScript functions on an App Service plan, you should choose a plan that has fewer vCPUs. For more information, see [Choose single-core App Service plans](functions-reference-node.md#choose-single-vcpu-app-service-plans). 
 <!-- Note: the portal links to this section via fwlink https://go.microsoft.com/fwlink/?linkid=830855 --> 
 
-### <a name="always-on"></a>Her zaman açık
+### <a name="always-on"></a> Always On
 
-App Service bir planda çalıştırırsanız, işlev uygulamanızın doğru çalışması için **Always on** ayarını etkinleştirmeniz gerekir. Bir App Service planında, işlevler çalışma zamanı birkaç dakikadan sonra boş kalır, bu nedenle yalnızca HTTP Tetikleyicileri "uyandırır" olur. Her zaman açık, yalnızca bir App Service planında kullanılabilir. Tüketim planında, platform işlev uygulamalarını otomatik olarak etkinleştirir.
+If you run on an App Service plan, you should enable the **Always on** setting so that your function app runs correctly. On an App Service plan, the functions runtime goes idle after a few minutes of inactivity, so only HTTP triggers will "wake up" your functions. Always on is available only on an App Service plan. On a Consumption plan, the platform activates function apps automatically.
 
 [!INCLUDE [Timeout Duration section](../../includes/functions-timeout-duration.md)]
 
 
-Her zaman etkinleştirilmiş olsa bile, tek tek işlevlerde yürütme zaman aşımı, [Host. JSON](functions-host-json.md#functiontimeout) proje dosyasındaki `functionTimeout` ayarıyla denetlenir.
+Even with Always On enabled, the execution timeout for individual functions is controlled by the `functionTimeout` setting in the [host.json](functions-host-json.md#functiontimeout) project file.
 
-## <a name="determine-the-hosting-plan-of-an-existing-application"></a>Mevcut bir uygulamanın barındırma planını belirleme
+## <a name="determine-the-hosting-plan-of-an-existing-application"></a>Determine the hosting plan of an existing application
 
-İşlev uygulamanız tarafından kullanılan barındırma planını öğrenmek için, [Azure Portal](https://portal.azure.com)işlev uygulaması Için **genel bakış** sekmesinde **App Service plan/fiyatlandırma katmanı** ' na bakın. App Service planlar için, fiyatlandırma katmanı da belirtilir.
+To determine the hosting plan used by your function app, see **App Service plan / pricing tier** in the **Overview** tab for the function app in the [Azure portal](https://portal.azure.com). For App Service plans, the pricing tier is also indicated.
 
-![Portalda ölçeklendirme planını görüntüleme](./media/functions-scale/function-app-overview-portal.png)
+![View scaling plan in the portal](./media/functions-scale/function-app-overview-portal.png)
 
-Planı aşağıdaki gibi öğrenmek için Azure CLı de kullanabilirsiniz:
+You can also use the Azure CLI to determine the plan, as follows:
 
 ```azurecli-interactive
 appServicePlanId=$(az functionapp show --name <my_function_app_name> --resource-group <my_resource_group> --query appServicePlanId --output tsv)
 az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output tsv
 ```  
 
-Bu komutun çıktısı `dynamic`olduğunda, işlev uygulamanız tüketim planınızdan olur. Bu komutun çıktısı `ElasticPremium`olduğunda, işlev uygulamanız Premium plandır. Diğer tüm değerler App Service planının farklı katmanlarını gösterir.
+When the output from this command is `dynamic`, your function app is in the Consumption plan. When the output from this command is `ElasticPremium`, your function app is in the Premium plan. All other values indicate different tiers of an App Service plan.
 
 ## <a name="storage-account-requirements"></a>Depolama hesabı gereksinimleri
 
-Herhangi bir planda, bir işlev uygulaması Azure blob, kuyruk, dosyalar ve tablo depolamayı destekleyen genel bir Azure depolama hesabı gerektirir. Bunun nedeni, Işlevlerin Tetikleyicileri yönetme ve işlev yürütmelerini yönetme gibi işlemler için Azure Storage 'ı temel aldığından, ancak bazı depolama hesapları kuyrukları ve tabloları desteklemezler. Yalnızca BLOB depolama hesapları (Premium Depolama dahil) ve bölgesel olarak yedekli depolama **çoğaltması olan genel** amaçlı depolama hesapları dahil olmak üzere bu hesaplar, bir işlev uygulaması.
+On any plan, a function app requires a general Azure Storage account, which supports Azure Blob, Queue, Files, and Table storage. This is because Functions relies on Azure Storage for operations such as managing triggers and logging function executions, but some storage accounts do not support queues and tables. These accounts, which include blob-only storage accounts (including premium storage) and general-purpose storage accounts with zone-redundant storage replication, are filtered-out from your existing **Storage Account** selections when you create a function app.
 
-İşlev uygulamanız tarafından kullanılan depolama hesabı, Tetikleyiciniz ve bağlamalarınız tarafından, uygulama verilerinizi depolamak için de kullanılabilir. Ancak, depolama yoğun işlemler için ayrı bir depolama hesabı kullanmanız gerekir.   
+The same storage account used by your function app can also be used by your triggers and bindings to store your application data. However, for storage-intensive operations, you should use a separate storage account.   
 
 <!-- JH: Does using a Premium Storage account improve perf? -->
 
-Depolama hesabı türleri hakkında daha fazla bilgi edinmek için bkz. [Azure Storage Services 'A giriş](../storage/common/storage-introduction.md#azure-storage-services).
+To learn more about storage account types, see [Introducing the Azure Storage services](../storage/common/storage-introduction.md#azure-storage-services).
 
-## <a name="how-the-consumption-and-premium-plans-work"></a>Tüketim ve Premium planlar nasıl çalışır?
+## <a name="how-the-consumption-and-premium-plans-work"></a>How the consumption and premium plans work
 
-Tüketim ve Premium planlarında, Azure Işlevleri altyapısı, işlevlerinin tetiklendiği olay sayısına göre Işlevler ana bilgisayarının ek örneklerini ekleyerek CPU ve bellek kaynaklarını ölçeklendirir. Tüketim planında Işlevlerin ana bilgisayarının her örneği 1,5 GB bellek ve bir CPU ile sınırlıdır.  Ana bilgisayarın bir örneği, bir işlev uygulamasının tüm işlevleri bir örnek içinde kaynak paylaşır ve aynı anda ölçeklendirin. Aynı tüketim planını paylaşan işlev uygulamaları bağımsız olarak ölçeklendirilir.  Premium planda, plan boyutunuz söz konusu örnekteki plandaki tüm uygulamalar için kullanılabilir bellek ve CPU 'YU tespit edecektir.  
+In the consumption and premium plans, the Azure Functions infrastructure scales CPU and memory resources by adding additional instances of the Functions host, based on the number of events that its functions are triggered on. Each instance of the Functions host in the consumption plan is limited to 1.5 GB of memory and one CPU.  An instance of the host is the entire function app, meaning all functions within a function app share resource within an instance and scale at the same time. Function apps that share the same consumption plan are scaled independently.  In the premium plan, your plan size will determine the available memory and CPU for all apps in that plan on that instance.  
 
-İşlev kodu dosyaları, işlevin ana depolama hesabındaki Azure dosya paylaşımlarında depolanır. İşlev uygulamasının ana depolama hesabını sildiğinizde, işlev kodu dosyaları silinir ve kurtarılamaz.
+Function code files are stored on Azure Files shares on the function's main storage account. When you delete the main storage account of the function app, the function code files are deleted and cannot be recovered.
 
-### <a name="runtime-scaling"></a>Çalışma zamanı ölçeklendirme
+### <a name="runtime-scaling"></a>Runtime scaling
 
-Azure Işlevleri, olayların oranını izlemek ve ölçeğini genişletmek veya ölçeklendirmek için *Ölçek denetleyicisi* adlı bir bileşen kullanır. Ölçek denetleyicisi her tetikleyici türü için buluşsal yöntemler kullanır. Örneğin, bir Azure kuyruk depolama tetikleyicisi kullanırken, sıra uzunluğuna ve en eski sıra iletisinin yaşa göre ölçeklendirilir.
+Azure Functions uses a component called the *scale controller* to monitor the rate of events and determine whether to scale out or scale in. The scale controller uses heuristics for each trigger type. For example, when you're using an Azure Queue storage trigger, it scales based on the queue length and the age of the oldest queue message.
 
-Azure Işlevleri için ölçek birimi, işlev uygulamasıdır. İşlev uygulaması ölçeklenirse, Azure Işlevleri ana bilgisayarının birden çok örneğini çalıştırmak için ek kaynaklar ayrılır. Buna karşılık, işlem talebi azaltıldı, ölçek denetleyicisi işlev ana bilgisayar örneklerini kaldırır. İşlev uygulaması içinde hiçbir işlev çalışmadığı zaman örneklerin sayısı sonunda sıfıra ölçeklendirilir.
+The unit of scale for Azure Functions is the function app. When the function app is scaled out, additional resources are allocated to run multiple instances of the Azure Functions host. Conversely, as compute demand is reduced, the scale controller removes function host instances. The number of instances is eventually scaled down to zero when no functions are running within a function app.
 
-![Denetleyici izleme olaylarını ölçeklendirme ve örnek oluşturma](./media/functions-scale/central-listener.png)
+![Scale controller monitoring events and creating instances](./media/functions-scale/central-listener.png)
 
-### <a name="understanding-scaling-behaviors"></a>Ölçeklendirme davranışlarını anlama
+### <a name="understanding-scaling-behaviors"></a>Understanding scaling behaviors
 
-Ölçeklendirme, bir dizi etkene göre farklılık gösterebilir ve seçilen tetikleyici ve dile göre farklı şekilde ölçeklendirebilir. ' Nin farkında olması için ölçeklendirmenin bazı çok karmaşık özellikleri vardır:
+Scaling can vary on a number of factors, and scale differently based on the trigger and language selected. There are a few intricacies of scaling behaviors to be aware of:
 
-* Tek bir işlev uygulaması en fazla 200 örneğe ölçeklendirilebilir. Tek bir örnek aynı anda birden fazla ileti veya isteği işleyebilir, bu nedenle eşzamanlı yürütmeler sayısında bir küme sınırı yoktur.
-* HTTP Tetikleyicileri için, yeni örnekler yalnızca her 1 saniyede bir en çok olacak şekilde ayrılacaktır.
-* HTTP olmayan Tetikleyiciler için, yeni örnekler her 30 saniyede bir en fazla olacak şekilde ayrılacaktır.
+* Tek bir işlev uygulaması en fazla 200 örneğe ölçeklendirilebilir. A single instance may process more than one message or request at a time though, so there isn't a set limit on number of concurrent executions.
+* For HTTP triggers, new instances will only be allocated at most once every 1 second.
+* For non-HTTP triggers, new instances will only be allocated at most once every 30 seconds.
 
-Farklı tetikleyiciler Ayrıca aşağıda belgelenen farklı ölçekleme sınırlarına de sahip olabilir:
+Different triggers may also have different scaling limits as well as documented below:
 
 * [Olay Hub’ı](functions-bindings-event-hubs.md#trigger---scaling)
 
-### <a name="best-practices-and-patterns-for-scalable-apps"></a>Ölçeklenebilir uygulamalar için en iyi uygulamalar ve desenler
+### <a name="best-practices-and-patterns-for-scalable-apps"></a>Best practices and patterns for scalable apps
 
-Konak yapılandırması, çalışma zamanı kaplama ve kaynak verimliliği dahil, ne kadar iyi ölçeklendirilemeyeceğini etkileyecek bir işlev uygulamasının birçok yönü vardır.  Daha fazla bilgi için [performans konuları makalesinin ölçeklenebilirlik bölümüne](functions-best-practices.md#scalability-best-practices)bakın. Ayrıca, işlev uygulamanız ölçeklenirken bağlantıların nasıl davranacağını de bilmelisiniz. Daha fazla bilgi için bkz. [Azure işlevlerinde bağlantıları yönetme](manage-connections.md).
+There are many aspects of a function app that will impact how well it will scale, including host configuration, runtime footprint, and resource efficiency.  For more information, see the [scalability section of the performance considerations article](functions-best-practices.md#scalability-best-practices). You should also be aware of how connections behave as your function app scales. For more information, see [How to manage connections in Azure Functions](manage-connections.md).
 
 ### <a name="billing-model"></a>Faturalandırma modeli
 
-Farklı planların [faturalandırılması, Azure işlevleri fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/functions/)ayrıntılı olarak açıklanmıştır. Kullanım işlevi uygulama düzeyinde toplanır ve yalnızca işlev kodunun yürütüldüğü süreyi sayar. Faturalandırma için birimler aşağıda verilmiştir:
+Billing for the different plans is described in detail on the [Azure Functions pricing page](https://azure.microsoft.com/pricing/details/functions/). Usage is aggregated at the function app level and counts only the time that function code is executed. The following are units for billing:
 
-* **Gigabayt-saniye cinsinden kaynak tüketimi (GB-s)** . Bir işlev uygulaması içindeki tüm işlevler için bellek boyutu ve yürütme süresinin birleşimi olarak hesaplanır. 
-* **Yürütmeler**. Bir olay tetikleyicisine yanıt olarak bir işlev yürütüldüğünde her seferinde sayılır.
+* **Resource consumption in gigabyte-seconds (GB-s)** . Computed as a combination of memory size and execution time for all functions within a function app. 
+* **Executions**. Counted each time a function is executed in response to an event trigger.
 
-Tüketim faturanızı nasıl anlayacağınızı öğrenmek için faydalı sorgular ve bilgiler [faturalandırma hakkında SSS bölümünde](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ)bulunabilir.
+Useful queries and information on how to understand your consumption bill can be found [on the billing FAQ](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ).
 
 [Azure Functions pricing page]: https://azure.microsoft.com/pricing/details/functions
 
 ## <a name="service-limits"></a>Hizmet sınırlamaları
 
-Aşağıdaki tablo çeşitli barındırma planlarında çalışırken işlev uygulamalarına uygulanan limitleri gösterir:
+The following table indicates the limits that apply to function apps when running in the various hosting plans:
 
 [!INCLUDE [functions-limits](../../includes/functions-limits.md)]

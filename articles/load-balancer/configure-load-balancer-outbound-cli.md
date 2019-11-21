@@ -1,7 +1,7 @@
 ---
-title: Azure CLı kullanarak yük dengelemeyi ve giden kuralları yapılandırma
-titlesuffix: Azure Load Balancer
-description: Bu makalede, Azure CLı kullanarak bir Standart Load Balancer yük dengelemesinin ve giden kuralların nasıl yapılandırılacağı gösterilmektedir.
+title: Configure load balancing and outbound rules using Azure CLI
+titleSuffix: Azure Load Balancer
+description: This article shows how to configure load balancing and outbound rules in a Standard Load Balancer using the Azure CLI.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: allensu
-ms.openlocfilehash: 503c8f71b7e26cfe6803a6df1d3fec9ef55cd5c3
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 7230b0c2b80137b068bbeacf43ab2133491a69b0
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571125"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225480"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-using-azure-cli"></a>Azure CLI’yi kullanarak Standart Load Balancer’da yük dengelemeyi ve giden kurallarını yapılandırma
 
-Bu hızlı başlangıçta, Azure CLı kullanarak Standart Load Balancer giden kuralların nasıl yapılandırılacağı gösterilmektedir.  
+This quickstart shows you how to configure outbound rules in Standard Load Balancer using Azure CLI.  
 
-İşiniz bittiğinde Load Balancer kaynak iki ön uç ve bununla ilişkili kuralları içerir: biri gelen ve çıkış için bir tane.  Her ön uç, genel IP adresine bir başvuruya sahiptir ve bu senaryo gelen ve giden trafik için farklı bir genel IP adresi kullanır.   Yük Dengeleme kuralı yalnızca gelen yük dengelemeyi sağlar ve giden kuralı VM için sağlanan giden NAT 'yi denetler.  Bu hızlı başlangıç, bir diğeri gelen ve giden için bir tane olmak üzere iki ayrı arka uç havuzu kullanır, bu senaryo için yetenek ve esneklik sağlar.
+When you are done, the Load Balancer resource contains two frontends and rules associated with them: one for inbound and another for outbound.  Each frontend has a reference to a public IP address and this scenario uses a different public IP address for inbound versus outbound.   The load balancing rule provides only inbound load balancing and the outbound rule controls the outbound NAT provided for the VM.  This quickstart uses two separate backend pools, one for inbound and one for outbound, to illustrate capability and allow for flexibility for this scenario.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
@@ -34,7 +34,7 @@ CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için A
 
 [az group create](https://docs.microsoft.com/cli/azure/group) ile bir kaynak grubu oluşturun. Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
 
-Aşağıdaki örnek *eastus2* konumunda *myresourcegroupoutbağlanmadı* adlı bir kaynak grubu oluşturur:
+The following example creates a resource group named *myresourcegroupoutbound* in the *eastus2* location:
 
 ```azurecli-interactive
   az group create \
@@ -42,7 +42,7 @@ Aşağıdaki örnek *eastus2* konumunda *myresourcegroupoutbağlanmadı* adlı b
     --location eastus2
 ```
 ## <a name="create-virtual-network"></a>Sanal ağ oluşturma
-[Az Network VNET Create](https://docs.microsoft.com/cli/azure/network/vnet)kullanılarak *myresourcegroupoutbağlanmadı* adlı alt ağ ile *myvnetoutbağlanmadı* *adlı bir* sanal ağ oluşturun.
+Create a virtual network named *myvnetoutbound* with a subnet named *mysubnetoutbound* in the *myresourcegroupoutbound* using [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet).
 
 ```azurecli-interactive
   az network vnet create \
@@ -53,35 +53,35 @@ Aşağıdaki örnek *eastus2* konumunda *myresourcegroupoutbağlanmadı* adlı b
     --subnet-prefix 192.168.0.0/24
 ```
 
-## <a name="create-inbound-public-ip-address"></a>Gelen genel IP adresi oluştur 
+## <a name="create-inbound-public-ip-address"></a>Create inbound Public IP address 
 
-Web uygulamanıza İnternet’ten erişmek için yük dengeleyicinin genel IP adresi gereklidir. Standart Yük Dengeleyici yalnızca Standart Genel IP adreslerini destekler. *Myresourcegroupoutbound*içinde *mypublicipınbound* ADLı standart bir genel IP adresi oluşturmak için [az Network public-ip Create](https://docs.microsoft.com/cli/azure/network/public-ip) komutunu kullanın.
+Web uygulamanıza İnternet’ten erişmek için yük dengeleyicinin genel IP adresi gereklidir. Standart Yük Dengeleyici yalnızca Standart Genel IP adreslerini destekler. Use [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip) to create a Standard Public IP address named *mypublicipinbound* in *myresourcegroupoutbound*.
 
 ```azurecli-interactive
   az network public-ip create --resource-group myresourcegroupoutbound --name mypublicipinbound --sku standard
 ```
 
-## <a name="create-outbound-public-ip-address"></a>Giden genel IP adresi oluştur 
+## <a name="create-outbound-public-ip-address"></a>Create outbound public IP address 
 
-[Az Network public-IP Create](https://docs.microsoft.com/cli/azure/network/public-ip)kullanılarak Load Balancer ön uç giden yapılandırması için standart bir IP adresi oluşturun.
+Create a Standard IP address for Load Balancer's frontend outbound configuration using [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip).
 
 ```azurecli-interactive
   az network public-ip create --resource-group myresourcegroupoutbound --name mypublicipoutbound --sku standard
 ```
 
-## <a name="create-azure-load-balancer"></a>Azure Load Balancer oluştur
+## <a name="create-azure-load-balancer"></a>Create Azure Load Balancer
 
 Bu bölümde yük dengeleyicinin aşağıdaki bileşenlerini nasıl oluşturabileceğiniz ve yapılandırabileceğiniz açıklanmaktadır:
-  - Yük dengeleyicide gelen ağ trafiğini alan bir ön uç IP 'si.
-  - Ön uç IP 'nin yük dengeli ağ trafiğini gönderdiği bir arka uç Havuzu.
-  - Giden bağlantı için bir arka uç Havuzu. 
-  - Arka uç sanal makine örneklerinin sistem durumunu belirleyen bir sistem durumu araştırması.
-  - Trafiğin VM 'lere nasıl dağıtıldığını tanımlayan yük dengeleyici gelen kuralı.
-  - Trafiğin VM 'lerden nasıl dağıtıldığını tanımlayan yük dengeleyici giden kuralı.
+  - A frontend IP that receives the incoming network traffic on the load balancer.
+  - A backend pool where the frontend IP sends the load balanced network traffic.
+  - A backend pool for outbound connectivity. 
+  - A health probe that determines health of the backend VM instances.
+  - A load balancer inbound rule that defines how traffic is distributed to the VMs.
+  - A load balancer outbound rule that defines how traffic is distributed from the VMs.
 
-### <a name="create-load-balancer"></a>Load Balancer oluştur
+### <a name="create-load-balancer"></a>Create Load Balancer
 
-Gelen IP adresi ile bir Load Balancer oluşturun [az Network lb Create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) adlı *lb* ve genel IP adresiyle *ilişkili olan bir arka uç havuzu olan bir arka uç havuzunu içerir önceki adımda oluşturduğunuz mypublicipınbound* .
+Create a Load Balancer with the inbound IP address using [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) named *lb* that includes an inbound frontend IP configuration and a backend pool *bepoolinbound* that is associated with the public IP address *mypublicipinbound* that you created in the preceding step.
 
 ```azurecli-interactive
   az network lb create \
@@ -94,9 +94,9 @@ Gelen IP adresi ile bir Load Balancer oluşturun [az Network lb Create](https://
     --public-ip-address mypublicipinbound   
   ```
 
-### <a name="create-outbound-pool"></a>Giden Havuz oluştur
+### <a name="create-outbound-pool"></a>Create outbound pool
 
-[Az Network lb Address-Pool Create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) , *Bepooloutbound*adıyla bir VM havuzu için giden bağlantıyı tanımlamak üzere ek bir arka uç adres havuzu oluşturun.  Ayrı bir giden havuzun oluşturulması en yüksek esnekliği sağlar, ancak bu adımı atlayabilir ve yalnızca gelen *bepoolınas* 'yı kullanabilirsiniz.
+Create an additional backend address pool to define outbound connectivity for a pool of VMs with [az network lb address-pool create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) with the name *bepooloutbound*.  Creating a separate outbound pool provides maximum flexibility, but you can omit this step and only use the inbound *bepoolinbound* as well.
 
 ```azurecli-interactive
   az network lb address-pool create \
@@ -105,8 +105,8 @@ Gelen IP adresi ile bir Load Balancer oluşturun [az Network lb Create](https://
     --name bepooloutbound
 ```
 
-### <a name="create-outbound-frontend-ip"></a>Giden ön uç IP 'si oluştur
-Load Balancer için giden ön uç IP yapılandırmasını oluşturun [az Network lb ön uç-IP oluşturma](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) ve genel IP adresiyle *ilişkili MYFRONTENDOUTBOUND adlı giden ön uç IP yapılandırması dahildir mypublicıpoıb utbağımlıdır*
+### <a name="create-outbound-frontend-ip"></a>Create outbound frontend IP
+Create the outbound frontend IP configuration for the Load Balancer with [az network lb frontend-ip create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) that includes and outbound frontend IP configuration named *myfrontendoutbound* that is associated to the public IP address *mypublicipoutbound*
 
 ```azurecli-interactive
   az network lb frontend-ip create \
@@ -116,7 +116,7 @@ Load Balancer için giden ön uç IP yapılandırmasını oluşturun [az Network
     --public-ip-address mypublicipoutbound 
   ```
 
-### <a name="create-health-probe"></a>Durum araştırması oluştur
+### <a name="create-health-probe"></a>Create health probe
 
 Sistem durumu araştırması tüm sanal makine örneklerini denetleyerek ağ trafiği gönderdiklerinden emin olur. Sistem durumu denetimi başarısız olan sanal makine örnekleri tekrar çevrimiçi olana ve sistem durumu denetimi iyi olduğuna karar verene kadar yük dengeleyiciden kaldırılır. Sanal makinelerin durumunu izlemek için [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest) ile bir durum araştırması oluşturun. 
 
@@ -130,12 +130,12 @@ Sistem durumu araştırması tüm sanal makine örneklerini denetleyerek ağ tra
     --path /  
 ```
 
-### <a name="create-load-balancing-rule"></a>Yük Dengeleme kuralı oluştur
+### <a name="create-load-balancing-rule"></a>Create load balancing rule
 
-Yük dengeleyici kuralı, gelen trafik için ön uç IP yapılandırmasını ve trafiği almak için arka uç havuzunu, gerekli kaynak ve hedef bağlantı noktasını tanımlar. Ön *uç havuzundaki 80* numaralı bağlantı noktasını dinlemek için [az Network lb Rule Create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) *ile bir* yük dengeleyici kuralı oluşturun ve arka uç adres havuzu *beyana* yük dengeli ağ trafiği gönderir 80 numaralı bağlantı noktasını kullanma. 
+A load balancer rule defines the frontend IP configuration for the incoming traffic and the backend pool to receive the traffic, along with the required source and destination port. Create a load balancer rule *myinboundlbrule* with [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) for listening to port 80 in the frontend pool *myfrontendinbound* and sending load-balanced network traffic to the backend address pool *bepool* also using port 80. 
 
 >[!NOTE]
->Bu yük dengeleme kuralı,--Disable-giden-SNAT parametresiyle bu kuralın bir sonucu olarak otomatik giden NAT 'yi devre dışı bırakır. Giden NAT yalnızca giden kural tarafından sağlanır.
+>This load balancing rule disables automatic outbound (S)NAT as a result of this rule with the --disable-outbound-snat parameter. Outbound NAT is only provided by the outbound rule.
 
 ```azurecli-interactive
 az network lb rule create \
@@ -151,9 +151,9 @@ az network lb rule create \
 --disable-outbound-snat
 ```
 
-### <a name="create-outbound-rule"></a>Giden kuralı oluştur
+### <a name="create-outbound-rule"></a>Create outbound rule
 
-Giden bir kural, tüm giden NAT trafiği ve bu kuralın uygulandığı arka uç havuzu için kullanılacak ön uç *myfrontendoutbound*tarafından temsil edilen ön uç genel IP 'yi tanımlar.  *Bepool* arka uç havuzundaki tüm sanal MAKINELERIN (NIC IP yapılandırması) giden ağ çevirisi için *mdeni boundrule* çıkış kuralını oluşturun.  Aşağıdaki komut Ayrıca, çıkış boşta kalma zaman aşımını 4 ' ten 15 dakikaya değiştirir ve 1024 yerine 10000 SNAT bağlantı noktasını ayırır.  Daha fazla ayrıntı için [giden kurallarını](https://aka.ms/lboutboundrules) gözden geçirin.
+An outbound rule defines the frontend public IP, represented by the frontend *myfrontendoutbound*, which will be used for all outbound NAT traffic as well as the backend pool to which this rule applies.  Create an outbound rule *myoutboundrule* for outbound network translation of all virtual machines (NIC IP configurations) in *bepool* backend pool.  The command below also changes the outbound idle timeout from 4 to 15 minutes and allocates 10000 SNAT ports instead of 1024.  Review [outbound rules](https://aka.ms/lboutboundrules) for more details.
 
 ```azurecli-interactive
 az network lb outbound-rule create \
@@ -167,9 +167,9 @@ az network lb outbound-rule create \
  --address-pool bepooloutbound
 ```
 
-Ayrı bir giden havuz kullanmak istemiyorsanız, bunun yerine *bepoolınbound* öğesini belirtmek için önceki komutta adres havuzu bağımsız değişkenini değiştirebilirsiniz.  Elde edilen yapılandırmanın esneklik ve okunabilirlik için ayrı havuzlar kullanmanız önerilir.
+If you do not want to use a separate outbound pool, you can change the address pool argument in the preceding command to specify *bepoolinbound* instead.  We recommend to use separate pools for flexibility and readability of the resulting configuration.
 
-Bu noktada, [az Network NIC IP-Config Address-Pool Add](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest)komutunu kullanarak ilgili NIC kaynaklarının IP YAPıLANDıRMASıNı güncelleştirerek sanal makinenizin *bpoolınbound* __ve__ *bepooloutbound* arka uç havuzuna eklenmesine devam edebilirsiniz.
+At this point, you can proceed with adding your VM's to the backend pool *bepoolinbound* __and__ *bepooloutbound* by updating the IP configuration of the respective NIC resources using [az network nic ip-config address-pool add](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest).
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -180,7 +180,7 @@ Artık gerekli değilse, [az group delete](/cli/azure/group#az-group-delete) kom
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu makalede, arka uç havuzundaki VM 'Ler için hem gelen yük dengeleyici trafik kuralları, hem de yapılandırılan durum araştırması yapılandırılmış Standart Load Balancer oluşturdunuz. Azure Load Balancer hakkında daha fazla bilgi almak için Azure Load Balancer öğreticisine devam edin.
+In this article, you created Standard Load Balancer, configured both inbound load balancer traffic rules, configured and health probe for the VMs in the backend pool. Azure Load Balancer hakkında daha fazla bilgi almak için Azure Load Balancer öğreticisine devam edin.
 
 > [!div class="nextstepaction"]
 > [Azure Load Balancer öğreticileri](tutorial-load-balancer-standard-public-zone-redundant-portal.md)

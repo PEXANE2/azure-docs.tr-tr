@@ -1,7 +1,7 @@
 ---
-title: 'Tasarımcı: araba fiyatlarını tahmin etme (Gelişmiş) örneği'
+title: 'Designer: Predict car prices (advanced) example'
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning Designer ile teknik özelliklere göre bir otomobil fiyatını tahmin etmek için, birden çok ML regresyon modeli oluşturun & karşılaştırın.
+description: Build & compare multiple ML regression models to predict an automobile's price  based on technical features with Azure Machine Learning designer.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,79 +10,79 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 5eb701af90125e2654d6f908b28512aba3ad37aa
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
-ms.translationtype: HT
+ms.openlocfilehash: 60baf2229b6c704f951e6cc54949109d5e403bc0
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196075"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225028"
 ---
-# <a name="train--compare-multiple-regression-models-to-predict-car-prices-with-azure-machine-learning-designer"></a>Azure Machine Learning Designer ile otomobil fiyatlarını tahmin etmek için birden çok gerileme modelini karşılaştırın & eğitme
+# <a name="train--compare-multiple-regression-models-to-predict-car-prices-with-azure-machine-learning-designer"></a>Train & compare multiple regression models to predict car prices with Azure Machine Learning designer
 
-**Tasarımcı (Önizleme) örnek 2**
+**Designer (preview) sample 2**
 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
-Tasarımcı (Önizleme) kullanarak tek bir kod satırı yazmadan makine öğrenimi ardışık düzeni oluşturmayı öğrenin. Bu örnek, bir arabasının teknik özelliklerine göre fiyatını tahmin etmek için birden çok regresyon modelini karşılaştırır. Kendi makine öğrenimi sorunlarınızı ortadan kaldırmak için bu işlem hattında yapılan seçenekler için ktionale sağlayacağız.
+Learn how to build a  machine learning pipeline without writing a single line of code using the designer (preview). This sample trains and compares multiple regression models to predict a car's price based on its technical features. We'll provide the rationale for the choices made in this pipeline so you can tackle your own machine learning problems.
 
-Machine Learning 'i kullanmaya yeni başladıysanız, bu işlem hattının [temel sürümüne](how-to-designer-sample-regression-automobile-price-basic.md) göz atın.
+If you're just getting started with machine learning, take a look at the [basic version](how-to-designer-sample-regression-automobile-price-basic.md) of this pipeline.
 
-Bu işlem hattı için tamamlanan grafik aşağıda verilmiştir:
+Here's the completed graph for this pipeline:
 
-[işlem hattının ![grafiği](media/how-to-ui-sample-regression-predict-automobile-price-compare-algorithms/graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
+[![Graph of the pipeline](media/how-to-designer-sample-regression-predict-automobile-price-compare-algorithms/graph.png)](media/how-to-designer-sample-regression-predict-automobile-price-compare-algorithms/graph.png#lightbox)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. Açmak için örnek 2 ' ye tıklayın. 
+4. Click sample 2 to open it. 
 
-## <a name="pipeline-summary"></a>Ardışık düzen Özeti
+## <a name="pipeline-summary"></a>Pipeline summary
 
-Makine öğrenimi ardışık düzeni oluşturmak için aşağıdaki adımları kullanın:
+Use following steps to build the machine learning pipeline:
 
-1. Verileri alın.
-1. Verileri önceden işleyin.
-1. Modeli eğitme.
-1. Modelleri test edin, değerlendirin ve karşılaştırın.
+1. Get the data.
+1. Pre-process the data.
+1. Train the model.
+1. Test, evaluate, and compare the models.
 
 ## <a name="get-the-data"></a>Verileri alma
 
-Bu örnek, UCI Machine Learning deposundan olan **otomobil fiyat verileri (ham)** veri kümesini kullanır. Bu veri kümesi, marka, model, Fiyat, araç özellikleri (silindir sayısı gibi), MPG ve sigorta risk puanı dahil olmak üzere otomobil 'ler hakkında bilgi içeren 26 sütun içerir.
+This sample uses the **Automobile price data (Raw)** dataset, which is from the UCI Machine Learning Repository. This dataset contains 26 columns that contain information about automobiles, including make, model, price, vehicle features (like the number of cylinders), MPG, and an insurance risk score.
 
-## <a name="pre-process-the-data"></a>Verileri önceden işleme
+## <a name="pre-process-the-data"></a>Pre-process the data
 
-Ana veri hazırlama görevleri, veri temizleme, tümleştirme, dönüştürme, azaltma ve ayırma ya da değerleştirme dahil olmak üzere. Tasarımcıda, bu işlemleri gerçekleştirmek için modüller ve sol paneldeki **veri dönüştürme** grubundaki diğer veri ön işleme görevlerini bulabilirsiniz.
+The main data preparation tasks include data cleaning, integration, transformation, reduction, and discretization or quantization. In the designer, you can find modules to perform these operations and other data pre-processing tasks in the **Data Transformation** group in the left panel.
 
-Birçok eksik değeri olan normalleştirilmiş zararları hariç tutmak için **veri kümesinde sütunları seçme** modülünü kullanın. Daha sonra eksik değerleri olan satırları kaldırmak için **eksik verileri temizle** seçeneğini kullanıyoruz. Bu, temiz bir eğitim verisi kümesi oluşturulmasına yardımcı olur.
+Use the **Select Columns in Dataset** module to exclude normalized-losses that have many missing values. We then use **Clean Missing Data** to remove the rows that have missing values. This helps to create a clean set of training data.
 
-![Verileri önceden işleme](media/how-to-ui-sample-regression-predict-automobile-price-compare-algorithms/data-processing.png)
+![Data pre-processing](media/how-to-designer-sample-regression-predict-automobile-price-compare-algorithms/data-processing.png)
 
 ## <a name="train-the-model"></a>Modeli eğitme
 
-Machine Learning sorunları farklılık gösterir. Ortak makine öğrenimi görevleri, her biri farklı bir algoritma gerektirebilecek sınıflandırma, kümeleme, gerileme ve öneren sistemleri içerir. Algoritma seçiminiz genellikle kullanım durumunun gereksinimlerine bağlıdır. Bir algoritma seçtikten sonra, daha doğru bir modeli eğitmek için parametrelerini ayarlamanız gerekir. Daha sonra doğruluk, intelligibility ve verimlilik gibi ölçümlere göre tüm modelleri değerlendirmelisiniz.
+Machine learning problems vary. Common machine learning tasks include classification, clustering, regression, and recommender systems, each of which might require a different algorithm. Your choice of algorithm often depends on the requirements of the use case. After you pick an algorithm, you need to tune its parameters to train a more accurate model. You then need to evaluate all models based on metrics like accuracy, intelligibility, and efficiency.
 
-Bu işlem hattının hedefi, otomobil fiyatlarını tahmin etmek ve etiket sütunu (fiyat) gerçek sayılar içerdiğinden, regresyon modeli iyi bir seçimdir. Özellik sayısının nispeten küçük (100 ' den az) olduğunu ve bu özelliklerin seyrek olmadığı düşünüldüğünde, karar sınırının doğrusal olması olasıdır.
+Because the goal of this pipeline is to predict automobile prices, and because the label column (price) contains real numbers, a regression model is a good choice. Considering that the number of features is relatively small (less than 100) and these features aren't sparse, the decision boundary is likely to be nonlinear.
 
-Farklı algoritmaların performansını karşılaştırmak için, modellerden oluşan iki doğrusal algoritma kullanıyoruz, **karar ağacı gerileme** ve **karar ormanı gerilemesini**kullanırız. Her iki algoritmaların de değiştirebileceğiniz parametreleri vardır, ancak bu örnek bu işlem hattı için varsayılan değerleri kullanır.
+To compare the performance of different algorithms, we use two nonlinear algorithms, **Boosted Decision Tree Regression** and **Decision Forest Regression**, to build models. Both algorithms have parameters that you can change, but this sample uses the default values for this pipeline.
 
-Eğitim veri kümesinin orijinal verilerin %70 ' i içermesi ve test veri kümesinin özgün verilerin %30 ' ü içermesi için, **verileri ayırmak Için bölünmüş veri** modülünü kullanın.
+Use the **Split Data** module to randomly divide the input data so that the training dataset contains 70% of the original data and the testing dataset contains 30% of the original data.
 
-## <a name="test-evaluate-and-compare-the-models"></a>Modelleri test edin, değerlendirin ve karşılaştırın
+## <a name="test-evaluate-and-compare-the-models"></a>Test, evaluate, and compare the models
 
-Önceki bölümde açıklandığı gibi, modeli eğitmek ve test etmek için iki farklı rastgele seçilmiş veri kümesi kullanırsınız. Modeli eğitme ve test etmek için modeli geliştirmek ve test etmek için veri kümesini bölme ve farklı veri kümeleri kullanma.
+You use two different sets of randomly chosen data to train and then test the model, as described in the previous section. Split the dataset and use different datasets to train and test the model to make the evaluation of the model more objective.
 
-Model eğitilirken, **puan modeli** ' ni kullanın ve tahmin edilen sonuçlar oluşturmak ve modelleri değerlendirmek için **model modüllerini değerlendirin** . **Puan modeli** , eğitilen modeli kullanarak test veri kümesi için tahminler oluşturur. Ardından değerlendirme ölçümleri oluşturmak üzere **modeli değerlendirmek** için puanları geçirin.
+After the model is trained, use the **Score Model** and **Evaluate Model** modules to generate predicted results and evaluate the models. **Score Model** generates predictions for the test dataset by using the trained model. Then pass the scores to **Evaluate Model** to generate evaluation metrics.
 
 
 
-Sonuçlar şunlardır:
+Here are the results:
 
-![Sonuçları karşılaştırın](media/how-to-ui-sample-regression-predict-automobile-price-compare-algorithms/result.png)
+![Compare the results](media/how-to-designer-sample-regression-predict-automobile-price-compare-algorithms/result.png)
 
-Bu sonuçlar, **Artırılmış karar ağacı gerileme** ile oluşturulan modelin, **karar ormanı gerilemesi**üzerine inşa edilen modelden daha düşük bir kök ortalama kare hatası olduğunu gösterir.
+These results show that the model built with **Boosted Decision Tree Regression** has a lower root mean squared error than the model built on **Decision Forest Regression**.
 
-Her iki algoritmadaki eğitim veri kümesinde görülmeyen test veri kümesinden daha düşük bir hata vardır.
+Both algorithms have a lower error on the training dataset than on the unseen testing dataset.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -90,11 +90,11 @@ Her iki algoritmadaki eğitim veri kümesinde görülmeyen test veri kümesinden
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Tasarımcı için kullanılabilen diğer örnekleri keşfet:
+Explore the other samples available for the designer:
 
-- [Örnek 1-gerileme: bir otomobil fiyatını tahmin edin](how-to-designer-sample-regression-automobile-price-basic.md)
-- [Örnek 3-Özellik seçimi ile sınıflandırma: gelir tahmini](how-to-designer-sample-classification-predict-income.md)
-- [Örnek 4-sınıflandırma: kredi riskini tahmin etme (maliyet duyarlı)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
-- [Örnek 5-sınıflandırma: karmaşıklığı tahmin etme](how-to-designer-sample-classification-churn.md)
-- [Örnek 6-sınıflandırma: uçuş gecikmelerini tahmin etme](how-to-designer-sample-classification-flight-delay.md)
-- [Örnek 7-metin sınıflandırması: Vikipedi SP 500 veri kümesi](how-to-designer-sample-text-classification.md)
+- [Sample 1 - Regression: Predict an automobile's price](how-to-designer-sample-regression-automobile-price-basic.md)
+- [Sample 3 - Classification with feature selection: Income Prediction](how-to-designer-sample-classification-predict-income.md)
+- [Sample 4 - Classification: Predict credit risk (cost sensitive)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
+- [Sample 5 - Classification: Predict churn](how-to-designer-sample-classification-churn.md)
+- [Sample 6 - Classification: Predict flight delays](how-to-designer-sample-classification-flight-delay.md)
+- [Sample 7 - Text Classification: Wikipedia SP 500 Dataset](how-to-designer-sample-text-classification.md)

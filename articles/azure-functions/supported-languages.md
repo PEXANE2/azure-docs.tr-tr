@@ -1,57 +1,53 @@
 ---
-title: Azure Işlevlerinde desteklenen diller
-description: Hangi dillerin desteklendiğini (GA) ve hangilerinin önizlemede olduğunu öğrenin.
-author: ggailey777
-manager: gwallace
-ms.service: azure-functions
+title: Supported languages in Azure Functions
+description: Learn which languages are supported (GA) and which are experimental or in preview.
 ms.topic: conceptual
 ms.date: 08/02/2018
-ms.author: glenga
-ms.openlocfilehash: eac67c43915edb0aed273df40e7b08ca846062bf
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 3b61dd83e481d42dd15f089247d016c6b71ff0de
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802463"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230276"
 ---
-# <a name="supported-languages-in-azure-functions"></a>Azure Işlevlerinde desteklenen diller
+# <a name="supported-languages-in-azure-functions"></a>Supported languages in Azure Functions
 
-Bu makalede, Azure Işlevleri ile kullanabileceğiniz diller için sunulan destek düzeyleri açıklanmaktadır.
+This article explains the levels of support offered for languages that you can use with Azure Functions.
 
-## <a name="levels-of-support"></a>Destek düzeyleri
+## <a name="levels-of-support"></a>Levels of support
 
-Üç destek düzeyi vardır:
+There are three levels of support:
 
-* **Genel olarak kullanılabilir (GA)** -üretim kullanımı için tam olarak desteklenir ve onaylanır.
-* **Önizleme** -henüz desteklenmiyor, ancak gelecekte GA durumuna ulaşması bekleniyor.
-* **Deneysel** -desteklenmez ve gelecekte bırakılmış olabilir; Son önizleme veya GA durumu garantisi yoktur.
+* **Generally available (GA)** - Fully supported and approved for production use.
+* **Preview** - Not yet supported but is expected to reach GA status in the future.
+* **Experimental** - Not supported and might be abandoned in the future; no guarantee of eventual preview or GA status.
 
-## <a name="languages-by-runtime-version"></a>Çalışma zamanı sürümüne göre diller 
+## <a name="languages-by-runtime-version"></a>Languages by runtime version 
 
-[Azure işlevleri çalışma zamanının iki sürümü](functions-versions.md) kullanılabilir. Aşağıdaki tabloda, her çalışma zamanı sürümünde hangi dillerin desteklendiği gösterilmektedir.
+[Two versions of the Azure Functions runtime](functions-versions.md) are available. The following table shows which languages are supported in each runtime version.
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
-### <a name="experimental-languages"></a>Deneysel diller
+### <a name="experimental-languages"></a>Experimental languages
 
-1\. x sürümündeki deneysel diller iyi ölçeklendirmez ve tüm bağlamaları desteklemez.
+The experimental languages in version 1.x don't scale well and don't support all bindings.
 
-Sizin için herhangi bir resmi destek bulunmadığından, sizin kullandığınız her şey için deneysel özellikleri kullanmayın. Deneysel dillerle ilgili sorunlar için destek durumları açılmamalıdır. 
+Don't use experimental features for anything that you rely on, as there is no official support for them. Support cases should not be opened for problems with experimental languages. 
 
-Sürüm 2. x çalışma zamanı deneysel dilleri desteklemez. Yeni diller için destek yalnızca dilin üretimde desteklenme sırasında eklenir. 
+The version 2.x runtime doesn't support experimental languages. Support for new languages is added only when the language can be supported in production. 
 
-### <a name="language-extensibility"></a>Dil genişletilebilirliği
+### <a name="language-extensibility"></a>Language extensibility
 
-Sürüm 2. x ile başlayarak, çalışma zamanı [dil genişletilebilirliği](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Language-Extensibility)sunacak şekilde tasarlanmıştır. 2\. x çalışma zamanının JavaScript ve Java dilleri, bu genişletilebilirlik ile oluşturulmuştur.
+Starting with version 2.x, the runtime is designed to offer [language extensibility](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Language-Extensibility). The JavaScript and Java languages in the 2.x runtime are built with this extensibility.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Desteklenen dillerde işlevleri geliştirme hakkında daha fazla bilgi edinmek için aşağıdaki kaynaklara bakın:
+To learn more about how to develop functions in the supported languages, see the following resources:
 
-+ [C#sınıf kitaplığı Geliştirici Başvurusu](functions-dotnet-class-library.md)
-+ [C#betik geliştirici başvurusu](functions-reference-csharp.md)
-+ [Java geliştirici başvurusu](functions-reference-java.md)
-+ [JavaScript geliştirici başvurusu](functions-reference-node.md)
-+ [PowerShell geliştirici başvurusu](functions-reference-powershell.md)
-+ [Python geliştirici başvurusu](functions-reference-python.md)
-+ [TypeScript geliştirici başvurusu](functions-reference-node.md#typescript)
++ [C# class library developer reference](functions-dotnet-class-library.md)
++ [C# script developer reference](functions-reference-csharp.md)
++ [Java developer reference](functions-reference-java.md)
++ [JavaScript developer reference](functions-reference-node.md)
++ [PowerShell developer reference](functions-reference-powershell.md)
++ [Python developer reference](functions-reference-python.md)
++ [TypeScript developer reference](functions-reference-node.md#typescript)

@@ -1,85 +1,85 @@
 ---
-title: Uzak Masaüstü Windows sanal masaüstü-Azure sorunlarını giderme
-description: Windows sanal masaüstü kiracı ortamında istemci bağlantılarını ayarlarken oluşan sorunları çözme.
+title: Troubleshoot Remote Desktop Windows Virtual Desktop - Azure
+description: How to resolve issues when you set up client connections in a Windows Virtual Desktop tenant environment.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 04/08/2019
 ms.author: helohr
-ms.openlocfilehash: 3aae74a4fed499674f015ed0adb59016877583f3
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 9fcc65768db3029461a5823034336bc883379292
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607385"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227681"
 ---
 # <a name="remote-desktop-client-connections"></a>Uzak Masaüstü istemcisi bağlantıları
 
-Windows sanal masaüstü istemci bağlantılarıyla ilgili sorunları gidermek için bu makaleyi kullanın.
+Use this article to resolve issues with Windows Virtual Desktop client connections.
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geri bildirim sağlayın
 
-Windows Sanal Masaüstü hizmetini ürün ekibi ve etkin topluluk üyeleriyle tartışmak için [Windows sanal masaüstü teknoloji Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) 'yi ziyaret edin.
+Visit the [Windows Virtual Desktop Tech Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) to discuss the Windows Virtual Desktop service with the product team and active community members.
 
-## <a name="you-cant-open-a-web-client"></a>Bir Web istemcisi açamazsınız
+## <a name="you-cant-open-a-web-client"></a>You can't open a web client
 
-Başka bir Web sitesi açarak internet bağlantısı olduğunu onaylayın; Örneğin, [www.Bing.com](https://www.bing.com).
+Confirm there's internet connectivity by opening another web site; for example, [www.Bing.com](https://www.bing.com).
 
-DNS 'in FQDN 'yi çözediğini onaylamak için **nslookup** kullanın:
+Use **nslookup** to confirm DNS can resolve the FQDN:
 
 ```cmd
 nslookup rdweb.wvd.microsoft.com
 ```
 
-Windows 7 veya Windows 10 için Uzak Masaüstü istemcisi gibi başka bir istemciyle bağlanmayı deneyin ve Web istemcisini açıp açmediğinizi denetleyin.
+Try connecting with another client, like Remote Desktop client for Windows 7 or Windows 10, and check to see if you can open the web client.
 
-### <a name="error-opening-another-site-fails"></a>Hata: başka bir site açma başarısız
+### <a name="error-opening-another-site-fails"></a>Error: Opening another site fails
 
-**Neden:** Ağ sorunları ve/veya kesintiler.
+**Cause:** Network issues and/or outages.
 
-**Çözüm:** Ağ desteğiyle iletişim kurun.
+**Fix:** Contact network support.
 
-### <a name="error-nslookup-cannot-resolve-the-name"></a>Hata: Nslookup adı çözümleyemiyor
+### <a name="error-nslookup-cannot-resolve-the-name"></a>Error: Nslookup cannot resolve the name
 
-**Neden:** Ağ sorunları ve/veya kesintiler.
+**Cause:** Network issues and/or outages.
 
-**Çözüm:** Ağ desteğiyle iletişim kurun
+**Fix:** Contact network support
 
-### <a name="error-you-cant-connect-but-other-clients-can-connect"></a>Hata: bağlanamazsınız, ancak diğer istemciler bağlanabilir
+### <a name="error-you-cant-connect-but-other-clients-can-connect"></a>Error: You can't connect but other clients can connect
 
-**Neden:** Tarayıcı beklenildiği gibi çalışmıyor ve çalışmayı durdurdu.
+**Cause:** The browser isn't behaving as expected and stopped working.
 
-**Çözüm:** Tarayıcıda sorun gidermek için bu yönergeleri izleyin.
+**Fix:** Follow these instructions to troubleshoot the browser.
 
-1. Tarayıcıyı yeniden başlatın.
-2. Tarayıcı tanımlama bilgilerini temizleyin. Bkz. [Internet Explorer 'da tanımlama bilgisi dosyalarını silme](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
-3. Tarayıcı önbelleğini temizleyin. [Tarayıcınızın tarayıcı önbelleğini temizleme](https://binged.it/2RKyfdU)bölümüne bakın.
-4. Tarayıcıyı özel modda açın.
+1. Restart the browser.
+2. Clear browser cookies. See [How to delete cookie files in Internet Explorer](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
+3. Tarayıcı önbelleğini temizleyin. See [clear browser cache for your browser](https://binged.it/2RKyfdU).
+4. Open browser in Private mode.
 
-## <a name="web-client-stops-responding-or-disconnects"></a>Web istemcisi yanıt vermeyi durduruyor veya bağlantıyı keser
+## <a name="web-client-stops-responding-or-disconnects"></a>Web client stops responding or disconnects
 
-Başka bir tarayıcı veya istemci kullanarak bağlanmayı deneyin.
+Try connecting using another browser or client.
 
-### <a name="error-other-browsers-and-clients-also-malfunction-or-fail-to-open"></a>Hata: diğer tarayıcılar ve istemciler de hatalı veya açılmayabilir
+### <a name="error-other-browsers-and-clients-also-malfunction-or-fail-to-open"></a>Error: Other browsers and clients also malfunction or fail to open
 
-**Neden:** Ağ ve/veya işlem sistemi sorunları veya kesintiler
+**Cause:** Network and/or operation system issues or outages
 
-**Çözüm:** Destek ekipleriyle iletişim kurun.
+**Fix:** Contact support teams.
 
-## <a name="web-client-keeps-prompting-for-credentials"></a>Web istemcisi kimlik bilgileri istemini tutar
+## <a name="web-client-keeps-prompting-for-credentials"></a>Web client keeps prompting for credentials
 
-Web istemcisi kimlik bilgilerini sormaya devam ederse, bu yönergeleri izleyin.
+If the Web client keeps prompting for credentials, follow these instructions.
 
-1. Web istemcisi URL 'sinin doğru olduğundan emin olun.
-2. Kimlik bilgilerinin, URL 'ye bağlı Windows sanal masaüstü ortamı için olduğunu doğrulayın.
-3. Tarayıcı tanımlama bilgilerini temizleyin. Bkz. [Internet Explorer 'da tanımlama bilgisi dosyalarını silme](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
-4. Tarayıcı önbelleğini temizleyin. [Tarayıcınızın tarayıcı önbelleğini temizleme](https://binged.it/2RKyfdU)bölümüne bakın.
-5. Tarayıcıyı özel modda açın.
+1. Confirm web client URL is correct.
+2. Confirm that credentials are for the Windows Virtual Desktop environment tied to the URL.
+3. Clear browser cookies. See [How to delete cookie files in Internet Explorer](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
+4. Tarayıcı önbelleğini temizleyin. See [Clear browser cache for your browser](https://binged.it/2RKyfdU).
+5. Open browser in Private mode.
 
-## <a name="remote-desktop-client-for-windows-7-or-windows-10-stops-responding-or-cannot-be-opened"></a>Windows 7 veya Windows 10 için Uzak Masaüstü istemcisi yanıt vermeyi durduruyor veya açılamıyor
+## <a name="remote-desktop-client-for-windows-7-or-windows-10-stops-responding-or-cannot-be-opened"></a>Remote Desktop client for Windows 7 or Windows 10 stops responding or cannot be opened
 
-Bant dışı (OOB) istemci kayıt defterlerini temizlemek için aşağıdaki PowerShell cmdlet 'lerini kullanın.
+Use the following PowerShell cmdlets to clean up out-of-band (OOB) client registries.
 
 ```PowerShell
 Remove-ItemProperty 'HKCU:\Software\Microsoft\Terminal Server Client\Default' - Name FeedURLs
@@ -91,38 +91,38 @@ Remove-Item 'HKCU:\Software\Microsoft\RdClientRadc' -Recurse
 Remove-Item C:\Users\pavithir\AppData\Roaming\RdClientRadc\* -Recurse
 ```
 
-**%AppData%\RdClientRadc** adresine gidin ve tüm içeriği silin.
+Navigate to **%AppData%\RdClientRadc** and delete all content.
 
-Windows 7 ve Windows 10 için uzak masaüstü istemcisini kaldırın ve yeniden yükleyin.
+Uninstall and reinstall Remote Desktop client for Windows 7 and Windows 10.
 
-## <a name="troubleshooting-end-user-connectivity"></a>Son Kullanıcı bağlantısı sorunlarını giderme
+## <a name="troubleshooting-end-user-connectivity"></a>Troubleshooting end-user connectivity
 
-Bazen kullanıcılar kendi akışına ve yerel kaynaklarına erişebilir, ancak yine de uzak kaynaklara erişmesini önleyen yapılandırma, kullanılabilirlik veya performans sorunlarına sahip olabilir. Bu durumlarda, Kullanıcı şuna benzer iletileri alır:
+Sometimes users can access their feed and local resources, but still have configuration, availability, or performance issues that prevent them from accessing remote resources. In these cases, the user gets messages similar to these:
 
-![Uzak Masaüstü Bağlantısı hata iletisi.](media/eb76b666808bddb611448dfb621152ce.png)
+![Remote Desktop Connection error message.](media/eb76b666808bddb611448dfb621152ce.png)
 
-![Ağ Geçidi hata iletisine bağlanılamıyor.](media/a8fbb9910d4672147335550affe58481.png)
+![Can't connect to the gateway error message.](media/a8fbb9910d4672147335550affe58481.png)
 
-İstemci bağlantı hata kodları için bu genel sorun giderme yönergelerini izleyin.
+Follow these general troubleshooting instructions for client connection error codes.
 
-1. Sorun yaşandığında Kullanıcı adını ve saatini onaylayın.
-2. **PowerShell** 'i açın ve sorunun bildirildiği Windows sanal masaüstü kiracısıyla bağlantı kurun.
-3. **Get-RdsTenant** ile doğru kiracıya bağlantıyı onaylayın.
-4. **Get-RdsHostPool** ve **Get-RdsSessionHost** cmdlet 'lerini kullanarak, sorun gidermenin doğru konak havuzunda yapıldığını onaylayın.
-5. Belirtilen zaman penceresi için bağlantı türü başarısız olan tüm etkinliklerin listesini almak için aşağıdaki komutu yürütün:
+1. Confirm user name and time when issue was experienced.
+2. Open **PowerShell** and establish connection to the Windows Virtual Desktop tenant where the issue was reported.
+3. Confirm connection to the correct tenant with **Get-RdsTenant.**
+4. Using **Get-RdsHostPool** and **Get-RdsSessionHost** cmdlets, confirm that troubleshooting is being done on the correct host pool.
+5. Execute the command below to get a list of all failed activities of type connection for the specified time window:
 
     ```PowerShell
      Get-RdsDiagnosticActivities -TenantName <TenantName> -username <UPN> -StartTime
      "11/21/2018 1:07:03 PM" -EndTime "11/21/2018 1:27:03 PM" -Outcome Failure -ActivityType Connection
     ```
 
-6. Önceki cmdlet çıktısından **ActivityId** kullanarak aşağıdaki komutu çalıştırın:
+6. Using the **ActivityId** from the previous cmdlet output, run the command below:
 
     ```PowerShell
-    (Get-RdsDiagnosticActivities -TenantName $tenant -ActivityId <ActivityId> -Detailed).Errors
+    (Get-RdsDiagnosticActivities -TenantName <TenantName> -ActivityId <ActivityId> -Detailed).Errors
     ```
 
-7. Komut aşağıda gösterilen çıktıya benzer bir çıktı üretir. Kök nedenin sorunlarını gidermek için **Errorcodesembolik** ve **ErrorMessage** kullanın.
+7. The command produces output similar to the output shown below. Use **ErrorCodeSymbolic** and **ErrorMessage** to troubleshoot the root cause.
 
     ```PowerShell
     ErrorSource       : <Source>
@@ -135,47 +135,47 @@ Bazen kullanıcılar kendi akışına ve yerel kaynaklarına erişebilir, ancak 
     Time              : <Timestampt>
     ```
 
-### <a name="error-o_add_user_to_group_failed--failed-to-add-user--username-to-group--remote-desktop-users-reason-win32error_no_such_member"></a>Hata: O_ADD_USER_TO_GROUP_FAILED/Kullanıcı = ≤ Kullanıcı adı ≥, Grup = uzak masaüstü kullanıcıları 'na eklenemedi. Neden: Win32. ERROR_NO_SUCH_MEMBER
+### <a name="error-o_add_user_to_group_failed--failed-to-add-user--username-to-group--remote-desktop-users-reason-win32error_no_such_member"></a>Error: O_ADD_USER_TO_GROUP_FAILED / Failed to add user = ≤username≥ to group = Remote Desktop Users. Reason: Win32.ERROR_NO_SUCH_MEMBER
 
-**Neden:** VM, Kullanıcı nesnesinin bulunduğu etki alanına katılmadı.
+**Cause:** VM has not been joined to the domain where user object is.
 
-**Çözüm:** Sanal makineyi doğru etki alanına ekleyin. Bkz. [Windows Server sanal makinesini yönetilen bir etki alanına katma](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-join-windows-vm-portal).
+**Fix:** Add VM to the correct domain. See [Join a Windows Server virtual machine to a managed domain](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-join-windows-vm-portal).
 
-### <a name="error-nslookup-cannot-resolve-the-name"></a>Hata: Nslookup adı çözümleyemiyor
+### <a name="error-nslookup-cannot-resolve-the-name"></a>Error: Nslookup cannot resolve the name
 
-**Neden:** Ağ sorunları veya kesintiler.
+**Cause:** Network issues or outages.
 
-**Çözüm:** Ağ desteğiyle iletişim kurun
+**Fix:** Contact network support
 
-### <a name="error-connectionfailedclientprotocolerror"></a>Hata: ConnectionFailedClientProtocolError
+### <a name="error-connectionfailedclientprotocolerror"></a>Error: ConnectionFailedClientProtocolError
 
-**Neden:** Kullanıcının bağlanmaya çalışan sanal makineler, etki alanına katılmış değildir.
+**Cause:** VMs that user is attempting to connect to are not domain joined.
 
-**Çözüm:** Bir konak havuzunun parçası olan tüm VM 'Leri etki alanı denetleyicisine ekleyin.
+**Fix:** Join all VMs that are part of a host pool to the domain controller.
 
-### <a name="error-connectionfailedusersidinformationmismatch"></a>Hata: Connectionfailedusersıınformationuyuşmazlığıdır
-**Neden:** Kullanıcının Azure Active Directory (AD) belirtecinden SID 'SI, Kullanıcı uzaktan oturum açma için etkinleştirilmeye çalışılırken etki alanı denetleyicisi tarafından döndürülen SID ile eşleşmiyor. Bu hata genellikle bir Windows Server AD 'den bir kullanıcı tarafından kaynak olarak bir Azure Active Directory Domain Services (Azure AD DS) ortamında oturum açmaya çalışırken meydana gelir.
+### <a name="error-connectionfailedusersidinformationmismatch"></a>Error: ConnectionFailedUserSIDInformationMismatch
+**Cause:** The SID from the user's Azure Active Directory (AD) token doesn't match the SID returned by the domain controller when attempting to enable the user for remote sign in. This error typically happens when attempting to sign in to an Azure Active Directory Domain Services (Azure AD DS) environment with a user originally sourced from a Windows Server AD.
 
-**Çözüm:** Bu senaryo şu anda desteklenmiyor. Yalnızca Azure Active Directory kaynaklı kullanıcılar Azure AD DS bağlı Windows sanal masaüstü VM 'lerinde oturum açabilir.
+**Fix:** This scenario isn't supported at this time. Only users sourced from Azure Active Directory can sign in to Windows Virtual Desktop VMs connected to Azure AD DS.
 
-## <a name="user-connects-but-nothing-is-displayed-no-feed"></a>Kullanıcı bağlanıyor, ancak hiçbir şey görüntülenmiyor (akış yok)
+## <a name="user-connects-but-nothing-is-displayed-no-feed"></a>User connects but nothing is displayed (no feed)
 
-Kullanıcı, uzak masaüstü istemcileri başlatabilir ve kimlik doğrulaması yapabilir, ancak kullanıcı Web bulma akışında herhangi bir simge görmez.
+A user can start Remote Desktop clients and is able to authenticate, however the user doesn't see any icons in the web discovery feed.
 
-Bu komut satırını kullanarak, sorunları raporlayan kullanıcının uygulama gruplarına atandığını doğrulayın:
+Confirm that the user reporting the issues has been assigned to application groups by using this command line:
 
 ```PowerShell
 Get-RdsAppGroupUser <tenantname> <hostpoolname> <appgroupname>
 ```
 
-Kullanıcının doğru kimlik bilgileriyle oturum açmasını onaylayın.
+Confirm that the user is logging in with the correct credentials.
 
-Web istemcisi kullanılıyorsa, önbelleğe alınmış kimlik bilgileri sorunları olduğunu doğrulayın.
+If the web client is being used, confirm that there are no cached credentials issues.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Windows sanal masaüstü ve yükseltme izlemelerinin sorunlarını giderme hakkında genel bilgi için bkz. [sorun giderme genel bakış, geri bildirim ve destek](troubleshoot-set-up-overview.md).
-- Bir Windows sanal masaüstü ortamında kiracı ve konak havuzu oluştururken oluşan sorunları gidermek için bkz. [kiracı ve konak havuzu oluşturma](troubleshoot-set-up-issues.md).
-- Windows sanal masaüstündeki bir sanal makineyi (VM) yapılandırırken oluşan sorunları gidermek için bkz. [oturum ana bilgisayarı sanal makine yapılandırması](troubleshoot-vm-configuration.md).
-- Windows sanal masaüstü ile PowerShell kullanırken karşılaşılan sorunları gidermek için bkz. [Windows sanal masaüstü PowerShell](troubleshoot-powershell.md).
-- Sorun giderme öğreticisini öğrenmek için bkz. [öğretici: Kaynak Yöneticisi şablonu dağıtımlarının sorunlarını giderme](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot).
+- For an overview on troubleshooting Windows Virtual Desktop and the escalation tracks, see [Troubleshooting overview, feedback, and support](troubleshoot-set-up-overview.md).
+- To troubleshoot issues while creating a tenant and host pool in a Windows Virtual Desktop environment, see [Tenant and host pool creation](troubleshoot-set-up-issues.md).
+- To troubleshoot issues while configuring a virtual machine (VM) in Windows Virtual Desktop, see [Session host virtual machine configuration](troubleshoot-vm-configuration.md).
+- To troubleshoot issues when using PowerShell with Windows Virtual Desktop, see [Windows Virtual Desktop PowerShell](troubleshoot-powershell.md).
+- To go through a troubleshoot tutorial, see [Tutorial: Troubleshoot Resource Manager template deployments](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot).

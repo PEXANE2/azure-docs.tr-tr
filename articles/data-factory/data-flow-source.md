@@ -1,188 +1,190 @@
 ---
-title: Eşleme veri akışı 'nda kaynak dönüştürme-Azure Data Factory
-description: Eşleme veri akışında bir kaynak dönüştürmeyi ayarlamayı öğrenin.
+title: Source transformation in mapping data flow
+description: Learn how to set up a source transformation in mapping data flow.
 author: kromerm
 ms.author: makromer
+manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 09/06/2019
-ms.openlocfilehash: 5889d96057d4b028e8716e407819d17938f58b3c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 33a63b8a887594747aba03e19c107653e438853f
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73675948"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74217740"
 ---
-# <a name="source-transformation-for-mapping-data-flow"></a>Eşleme veri akışı için kaynak dönüşümü 
+# <a name="source-transformation-for-mapping-data-flow"></a>Source transformation for mapping data flow 
 
-Kaynak dönüştürmesi veri akışı için veri kaynağınızı yapılandırır. Veri akışları tasarlarken, ilk adımınız her zaman bir kaynak dönüşümü yapılandıracaktır. Kaynak eklemek için veri akışı tuvalindeki **Kaynak Ekle** kutusuna tıklayın.
+A source transformation configures your data source for the data flow. When designing data flows, your first step will always be configuring a source transformation. To add a source, click on the **Add Source** box in the data flow canvas.
 
-Her veri akışı için en az bir kaynak dönüştürmesi gerekir, ancak veri dönüştürmelerinizi tamamlayabilmeniz için gereken sayıda kaynak ekleyebilirsiniz. Bu kaynakları bir birleştirme, arama veya birleşim dönüşümle birlikte birleştirebilirsiniz.
+Every data flow requires at least one source transformation, but you can add as many sources as necessary to complete your data transformations. You can join those sources together with a join, lookup, or a union transformation.
 
-Her kaynak dönüştürmesi, tam olarak bir Data Factory veri kümesiyle ilişkilendirilir. Veri kümesi, yazmak veya okumak istediğiniz verilerin şeklini ve konumunu tanımlar. Dosya tabanlı veri kümesi kullanılıyorsa, aynı anda birden fazla dosyayla çalışmak için kaynağınızdan joker karakterler ve dosya listelerini kullanabilirsiniz.
+Each source transformation is associated with exactly one Data Factory dataset. The dataset defines the shape and location of the data you want to write to or read from. If using a file-based dataset, you can use wildcards and file lists in your source to work with more than one file at a time.
 
-## <a name="supported-connectors-in-mapping-data-flow"></a>Eşleme veri akışında desteklenen bağlayıcılar
+## <a name="supported-connectors-in-mapping-data-flow"></a>Supported connectors in mapping data flow
 
-Veri akışı eşleme, bir Ayıkla, yükle, Dönüştür (ELT) yaklaşımını izler ve Azure 'da tümü olan *hazırlama* veri kümeleri ile birlikte kullanılır. Şu anda aşağıdaki veri kümeleri bir kaynak dönüşümünde kullanılabilir:
+Mapping Data Flow follows an extract, load, transform (ELT) approach and works with *staging* datasets that are all in Azure. Currently the following datasets can be used in a source transformation:
     
-* Azure Blob depolama (JSON, avro, metin, Parquet)
-* Azure Data Lake Storage 1. (JSON, avro, metin, Parquet)
-* Azure Data Lake Storage 2. (JSON, avro, metin, Parquet)
+* Azure Blob Storage (JSON, Avro, Text, Parquet)
+* Azure Data Lake Storage Gen1 (JSON, Avro, Text, Parquet)
+* Azure Data Lake Storage Gen2 (JSON, Avro, Text, Parquet)
 * Azure SQL Veri Ambarı
 * Azure SQL Veritabanı
 * Azure CosmosDB
 
-Azure Data Factory, 80 yerel bağlayıcı üzerinde erişime sahiptir. Veri akışınız içindeki diğer kaynaklardan verileri dahil etmek için kopyalama etkinliğini kullanarak bu verileri desteklenen hazırlama alanlarından birine yükleyin.
+Azure Data Factory has access to over 80 native connectors. To include data from those other sources in your data flow, use the Copy Activity to load that data into one of the supported staging areas.
 
 ## <a name="source-settings"></a>Kaynak ayarları
 
-Kaynak eklendikten sonra **kaynak ayarları** sekmesini kullanarak yapılandırın. Burada kaynak noktalarınızın veri kümesini seçebilirsiniz veya oluşturabilirsiniz. Verileriniz için şema ve örnekleme seçeneklerini de belirleyebilirsiniz.
+Once you have added a source, configure via the **Source Settings** tab. Here you can pick or create the dataset your source points at. You can also select schema and sampling options for your data.
 
-![Kaynak ayarları sekmesi](media/data-flow/source1.png "Kaynak ayarları sekmesi")
+![Source settings tab](media/data-flow/source1.png "Source settings tab")
 
-**Şema DRFT:** [şema drını](concepts-data-flow-schema-drift.md) , veri akışlarınızda, sütun değişikliklerini açıkça tanımlamaya gerek kalmadan, esnek şemaları yerel olarak işleyebilme yeteneğidir.
+**Schema drift:** [Schema Drift](concepts-data-flow-schema-drift.md) is data factory's ability to natively handle flexible schemas in your data flows without needing to explicitly define column changes.
 
-* Kaynak sütunlar sıklıkla **değişeyorsa şema Drçıkmasına Izin ver** kutusunu işaretleyin. Bu ayar tüm gelen kaynak alanlarının, iç dönüşümlerdeki dönüşümlere akmasını sağlar.
+* Check the **Allow schema drift** box if the source columns will change often. This setting allows all incoming source fields to flow through the transformations to the sink.
 
-* **Düzeltebilecekler sütun türlerini** çıkar seçeneğinin belirlenmesi, Data Factory 'nin bulunan her yeni sütun için veri türlerini algılamasını ve tanımlamasını sağlar. Bu özellik kapatılmış durumdayken tüm düzeltebilecekler sütunları dize türünde olacaktır.
+* Choosing **Infer drifted column types** will instruct data factory to detect and define data types for each new column discovered. With this feature turned off, all drifted columns will be of type string.
 
-**Şemayı doğrula:** Şemayı doğrula seçilirse, gelen kaynak verileri veri kümesinin tanımlı şemasıyla eşleşmiyorsa veri akışı çalıştırılamaz.
+**Validate schema:** If validate schema is selected, the data flow will fail to run if the incoming source data doesn't match the defined schema of the dataset.
 
-**Atlama satırı sayısı:** Satırı atla sayısı alanı, veri kümesinin başlangıcında göz ardı edilecek satır sayısını belirtir.
+**Skip line count:** The skip line count field specifies how many lines to ignore at the beginning of the dataset.
 
-**Örnekleme:** Kaynağınızdaki satır sayısını sınırlamak için örnekleme 'yi etkinleştirin. Hata ayıklama amacıyla kaynağınızdan verileri test ettiğinizde veya örnekleyebilirsiniz bu ayarı kullanın.
+**Sampling:** Enable sampling to limit the number of rows from your source. Use this setting when you test or sample data from your source for debugging purposes.
 
-**Çok satırlı satırlar:** Kaynak metin dosyanız birden çok satıra yayılan dize değerleri içeriyorsa (örneğin, bir değer içindeki newlines) çok satırlı satırlar ' ı seçin.
+**Multiline rows:** Select multiline rows if your source text file contains string values that span multiple rows, i.e. newlines inside a value.
 
-Kaynağınızın doğru yapılandırıldığını doğrulamak için hata ayıklama modunu açın ve bir veri önizlemesi getirin. Daha fazla bilgi için bkz. [hata ayıklama modu](concepts-data-flow-debug-mode.md).
+To validate your source is configured correctly, turn on debug mode and fetch a data preview. For more information, see [Debug mode](concepts-data-flow-debug-mode.md).
 
 > [!NOTE]
-> Hata ayıklama modu açıldığında, hata ayıklama ayarlarındaki satır sınırı yapılandırması, veri önizlemesi sırasında kaynaktaki örnekleme ayarının üzerine yazar.
+> When debug mode is turned on, the row limit configuration in debug settings will overwrite the sampling setting in the source during data preview.
 
-## <a name="file-based-source-options"></a>Dosya tabanlı kaynak seçenekleri
+## <a name="file-based-source-options"></a>File-based source options
 
-Azure Blob depolama veya Azure Data Lake Storage gibi dosya tabanlı bir veri kümesi kullanıyorsanız, **kaynak seçenekleri** sekmesi kaynağınızın dosyaları okuduğunu yönetmenizi sağlar.
+If you're using a file-based dataset such as Azure Blob Storage or Azure Data Lake Storage, the **Source options** tab lets you manage how your source reads files.
 
-![Kaynak seçenekleri](media/data-flow/sourceOPtions1.png "Kaynak seçenekleri")
+![Source options](media/data-flow/sourceOPtions1.png "Source options")
 
-**Joker karakter yolu:** Bir joker karakter deseninin kullanılması, ADF 'nin eşleşen her klasör ve dosyada tek bir kaynak dönüşümünde döngüye girmesine neden olur. Bu, tek bir akış içinde birden çok dosyayı işlemek için etkili bir yoldur. Mevcut joker karakter deseniniz üzerine getirildiğinde görüntülenen + işaretiyle birden çok joker karakter eşleştirme deseni ekleyin.
+**Wildcard path:** Using a wildcard pattern will instruct ADF to loop through each matching folder and file in a single Source transformation. This is an effective way to process multiple files within a single flow. Add multiple wildcard matching patterns with the + sign that appears when hovering over your existing wildcard pattern.
 
-Kaynak kapsayıcısından bir düzeniyle eşleşen bir dosya serisi seçin. Yalnızca kapsayıcı, veri kümesinde belirtilebilir. Bu nedenle, joker karakter yolunuzda Ayrıca, kök klasörden klasör yolunuzdan de yer verilmelidir.
+From your source container, choose a series of files that match a pattern. Only container can be specified in the dataset. Your wildcard path must therefore also include your folder path from the root folder.
 
-Joker karakter örnekleri:
+Wildcard examples:
 
-* ```*``` herhangi bir karakter kümesini temsil eder
-* ```**``` özyinelemeli dizin iç içe geçirmeyi temsil eder
-* ```?``` bir karakter değiştirir
-* ```[]``` parantez içindeki daha fazla karakterden biriyle eşleşiyor
+* ```*``` Represents any set of characters
+* ```**``` Represents recursive directory nesting
+* ```?``` Replaces one character
+* ```[]``` Matches one of more characters in the brackets
 
-* ```/data/sales/**/*.csv```/Data/Sales altındaki tüm CSV dosyalarını alır
-* ```/data/sales/20??/**``` 20. yüzyıl içindeki tüm dosyaları alır
-* ```/data/sales/2004/*/12/[XY]1?.csv```, iki basamaklı bir sayı tarafından önekli X veya Y ile başlayan Aralık içinde 2004 içindeki tüm CSV dosyalarını alır
+* ```/data/sales/**/*.csv``` Gets all csv files under /data/sales
+* ```/data/sales/20??/**``` Gets all files in the 20th century
+* ```/data/sales/2004/*/12/[XY]1?.csv``` Gets all csv files in 2004 in December starting with X or Y prefixed by a two-digit number
 
-**Bölüm kök yolu:** Dosya kaynağınızda bir ```key=value``` biçimiyle bölümlenmiş klasörler varsa (örneğin, Year = 2019), bu bölüm klasör ağacının en üst düzeyini veri akışı veri akışınızdaki bir sütun adına atayabilirsiniz.
+**Partition Root Path:** If you have partitioned folders in your file source with  a ```key=value``` format (for example, year=2019), then you can assign the top level of that partition folder tree to a column name in your data flow data stream.
 
-İlk olarak, bölümlenmiş klasörler ve okumak istediğiniz yaprak dosyaları olan tüm yolları içerecek şekilde bir joker karakter ayarlayın.
+First, set a wildcard to include all paths that are the partitioned folders plus the leaf files that you wish to read.
 
-![Bölüm kaynak dosyası ayarları](media/data-flow/partfile2.png "Bölüm dosyası ayarı")
+![Partition source file settings](media/data-flow/partfile2.png "Partition file setting")
 
-Klasör yapısının en üst düzeyinin ne olduğunu tanımlamak için bölüm kök yolu ayarını kullanın. Veri önizleme aracılığıyla verilerinizin içeriğini görüntülediğinizde, ADF 'nin klasör düzeylerinizde bulunan çözümlenmiş bölümleri eklemesini görürsünüz.
+Use the Partition Root Path setting to define what the top level of the folder structure is. When you view the contents of your data via a data preview, you'll see that ADF will add the resolved partitions found in each of your folder levels.
 
-![Bölüm kök yolu](media/data-flow/partfile1.png "Bölüm kök yolu önizlemesi")
+![Partition root path](media/data-flow/partfile1.png "Partition root path preview")
 
-**Dosya listesi:** Bu bir dosya kümesidir. İşlemek için göreli yol dosyalarının bir listesini içeren bir metin dosyası oluşturun. Bu metin dosyasına işaret edin.
+**List of files:** This is a file set. Create a text file that includes a list of relative path files to process. Point to this text file.
 
-**Depolanacak sütun dosya adı:** Kaynak dosyanın adını verilerinizin bir sütununda depolayın. Dosya adı dizesini depolamak için buraya yeni bir sütun adı girin.
+**Column to store file name:** Store the name of the source file in a column in your data. Enter a new column name here to store the file name string.
 
-**Tamamlandıktan sonra:** Veri akışı çalıştıktan sonra kaynak dosyayla ilgili hiçbir şey yapma seçeneğini belirleyin, kaynak dosyayı silin veya kaynak dosyayı taşıyın. Taşımanın yolları görelidir.
+**After completion:** Choose to do nothing with the source file after the data flow runs, delete the source file, or move the source file. The paths for the move are relative.
 
-Kaynak dosyalarını başka bir konuma işleme sonrası taşımak için, önce dosya işlemi için "taşı" yı seçin. Sonra, "Kimden" dizinini ayarlayın. Yolunuzda herhangi bir joker karakter kullanmıyorsanız, "Kimden" ayarı kaynak klasörünüzün bulunduğu klasör olacaktır.
+To move source files to another location post-processing, first select "Move" for file operation. Then, set the "from" directory. If you're not using any wildcards for your path, then the "from" setting will be the same folder as your source folder.
 
-Joker karakter içeren bir kaynak yolunuz varsa söz dizinizin aşağıdaki gibi görünmesi gerekir:
+If you have a source path with wildcard, your syntax will look like this below:
 
 ```/data/sales/20??/**/*.csv```
 
-"Kimden" olarak belirtebilirsiniz
+You can specify "from" as
 
 ```/data/sales```
 
-Ve "to" as
+And "to" as
 
 ```/backup/priorSales```
 
-Bu durumda,/Data/Sales altında kaynağı bulunan tüm dosyalar/Backup/priorsales' a taşınır.
+In this case, all files that were sourced under /data/sales are moved to /backup/priorSales.
 
 > [!NOTE]
-> Dosya işlemleri, bir işlem hattındaki veri akışını Yürüt etkinliğini kullanan bir işlem hattı çalıştırmasıyla (bir işlem hattı hata ayıklaması veya yürütme çalıştırması) veri akışını başlattığınızda çalışır. Dosya işlemleri veri akışı hata ayıklama *modunda çalışmaz.*
+> File operations run only when you start the data flow from a pipeline run (a pipeline debug or execution run) that uses the Execute Data Flow activity in a pipeline. File operations *do not* run in Data Flow debug mode.
 
-**Son değiştirme ölçütü:** Son değiştirilme tarihi için bir tarih aralığı belirterek hangi dosyaları işleyeistediğinizi filtreleyebilirsiniz. Tüm tarih zamanları UTC olarak. 
+**Filter by last modified:** You can filter which files you process by specifying a date range of when they were last modified. All date-times are in UTC. 
 
-### <a name="add-dynamic-content"></a>Dinamik içerik Ekle
+### <a name="add-dynamic-content"></a>Add dynamic content
 
-Tüm kaynak ayarları, [eşleme veri akışının dönüştürme ifade dili](data-flow-expression-functions.md)kullanılarak ifade olarak belirtilebilir. Dinamik içerik eklemek için Ayarlar panelinde alanların içine tıklayın veya üzerine gelin. **Dinamik Içerik eklemek**için köprüye tıklayın. Bu işlem, ifadeleri ifadeler, statik değişmez değerler veya parametreler kullanarak dinamik olarak ayarlayabileceğiniz ifade oluşturucuyu başlatır.
+All source settings can be specified as expressions using the [Mapping Data flow's transformation expression language](data-flow-expression-functions.md). To add dynamic content, click or hover inside of the fields in the settings panel. Click the hyperlink for **Add dynamic content**. This will launch the expression builder where you can set values dynamically using expressions, static literal values, or parameters.
 
 ![Parametreler](media/data-flow/params6.png "Parametreler")
 
-## <a name="sql-source-options"></a>SQL kaynağı seçenekleri
+## <a name="sql-source-options"></a>SQL source options
 
-Kaynağınız SQL veritabanı veya SQL veri ambarı 'nda ise, **kaynak seçenekleri** sekmesinde SQL 'e özgü ek ayarlar bulunur. 
+If your source is in SQL Database or SQL Data Warehouse, additional SQL-specific settings are available in the **Source Options** tab. 
 
-**Giriş:** Kaynağınızı bir tabloya mi işaret etmeyeceğinizi (```Select * from <table-name>```eşdeğerini) seçin veya özel bir SQL sorgusu girin.
+**Input:** Select whether you point your source at a table (equivalent of ```Select * from <table-name>```) or enter a custom SQL query.
 
-**Sorgu**: giriş alanında sorgu ' yı seçerseniz, kaynağınız IÇIN bir SQL sorgusu girin. Bu ayar, veri kümesinde seçtiğiniz tüm tabloları geçersiz kılar. **Order by** yan tümceleri burada desteklenmez, ancak BIR tam select from ifadesini ayarlayabilirsiniz. Kullanıcı tanımlı tablo işlevleri de kullanabilirsiniz. **select * from udfGetData ()** , bir tablo döndüren SQL 'de bir UDF 'dir. Bu sorgu, veri akışınızda kullanabileceğiniz bir kaynak tablosu oluşturur. Sorguların kullanılması, test veya aramalar için satırları azaltmanın harika bir yoludur. Örnek: ```Select * from MyTable where customerId > 1000 and customerId < 2000```
+**Query**: If you select Query in the input field, enter a SQL query for your source. This setting overrides any table that you've chosen in the dataset. **Order By** clauses aren't supported here, but you can set a full SELECT FROM statement. You can also use user-defined table functions. **select * from udfGetData()** is a UDF in SQL that returns a table. This query will produce a source table that you can use in your data flow. Using queries is also a great way to reduce rows for testing or for lookups. Örnek: ```Select * from MyTable where customerId > 1000 and customerId < 2000```
 
-**Toplu iş boyutu**: büyük verileri okuma işleminde öbek için bir toplu iş boyutu girin.
+**Batch size**: Enter a batch size to chunk large data into reads.
 
-**Yalıtım düzeyi**: eşleme VERI akışındaki SQL kaynakları için varsayılan değer read UNCOMMITTED ' dır. Yalıtım düzeyini buradaki değerlerden birine değiştirebilirsiniz:
-* Okuma Işlendi
-* Kaydedilmeyen oku
-* Yinelenebilir okuma
-* Seri hale getirilebilir
-* Hiçbiri (yalıtım düzeyini yoksay)
+**Isolation Level**: The default for SQL sources in mapping data flow is read uncommitted. You can change the isolation level here to one of these values:
+* Read Committed
+* Read Uncommitted
+* Repeatable Read
+* Serializable
+* None (ignore isolation level)
 
-![Yalıtım düzeyi](media/data-flow/isolationlevel.png "Yalıtım düzeyi")
+![Isolation Level](media/data-flow/isolationlevel.png "Isolation Level")
 
 ## <a name="projection"></a>Yansıtma
 
-Veri kümelerinde bulunan şemalar gibi, bir kaynaktaki projeksiyon, kaynak verilerden veri sütunlarını, türlerini ve biçimlerini tanımlar. SQL ve Parquet gibi çoğu veri kümesi türü için bir kaynaktaki projeksiyon, veri kümesinde tanımlanan şemayı yansıtacak şekilde düzeltilir. Kaynak dosyalarınız kesin olarak türsüz (örneğin, Parquet dosyaları yerine düz CSV dosyaları), kaynak dönüşümünde her bir alan için veri türlerini tanımlayabilirsiniz.
+Like schemas in datasets, the projection in a source defines the data columns, types, and formats from the source data. For most dataset types such as SQL and Parquet, the projection in a source is fixed to reflect the schema defined in a dataset. When your source files aren't strongly typed (for example, flat csv files rather than Parquet files), you can define the data types for each field in the source transformation.
 
-![Projeksiyon sekmesindeki ayarlar](media/data-flow/source3.png "Yansıtma")
+![Settings on the Projection tab](media/data-flow/source3.png "Yansıtma")
 
-Metin dosyanızda tanımlı bir şema yoksa, Data Factory veri türlerini ve çıkarması için veri **türünü Algıla** ' yı seçin. Varsayılan veri biçimlerini otomatik algıla için **varsayılan biçimi tanımla** ' yı seçin. 
+If your text file has no defined schema, select **Detect data type** so that Data Factory will sample and infer the data types. Select **Define default format** to autodetect the default data formats. 
 
-Sütun veri türlerini bir aşağı akış türetilmiş sütunlu dönüşümde değiştirebilirsiniz. Sütun adlarını değiştirmek için bir seçme dönüşümü kullanın.
+You can modify the column data types in a down-stream derived-column transformation. Use a select transformation to modify the column names.
 
-### <a name="import-schema"></a>Şemayı içeri aktar
+### <a name="import-schema"></a>Import schema
 
-Karmaşık veri yapılarını destekleyen avro ve CosmosDB gibi veri kümeleri, şema tanımlarının veri kümesinde mevcut olmasını gerektirmez. Bu nedenle, bu tür kaynaklar için Izdüşüm sekmesine "şemayı Içeri aktar" düğmesine tıklayabilirsiniz.
+Datasets like Avro and CosmosDB that support complex data structures do not require schema definitions to exist in the dataset. Therefore, you will be able to click the "Import Schema" button the Projection tab for these types of sources.
 
-## <a name="cosmosdb-specific-settings"></a>CosmosDB 'ye özgü ayarlar
+## <a name="cosmosdb-specific-settings"></a>CosmosDB specific settings
 
-CosmosDB 'yi kaynak türü olarak kullanırken göz önünde bulundurmanız gereken birkaç seçenek vardır:
+When using CosmosDB as a source type, there are a few options to consider:
 
-* Sistem sütunlarını dahil et: bunu belirlerseniz, ```id```, ```_ts```ve diğer sistem sütunları CosmosDB 'den veri akışı meta verilerinize dahil edilir. Koleksiyonları güncelleştirirken, mevcut satır kimliğini elde edebilmeniz için bunu dahil etmek önemlidir.
-* Sayfa boyutu: Sorgu sonucunun sayfa başına belge sayısı. Varsayılan değer, hizmet dinamik sayfasını 1000 ' e kadar kullanan "-1" ' dir.
-* Aktarım hızı: okuma işlemi sırasında bu veri akışının her yürütmesi için CosmosDB koleksiyonunuza uygulamak istediğiniz ru sayısı için isteğe bağlı bir değer ayarlayın. Minimum değer 400 ' dir.
-* Tercih edilen bölgeler: Bu işlem için tercih edilen okuma bölgelerini seçebilirsiniz.
+* Include system columns: If you check this, ```id```, ```_ts```, and other system columns will be included in your data flow metadata from CosmosDB. When updating collections, it is important to include this so that you can grab the existing row id.
+* Page size: The number of documents per page of the query result. Default is "-1" which uses the service dynamic page up to 1000.
+* Throughput: Set an optional value for the number of RUs you'd like to apply to your CosmosDB collection for each execution of this data flow during the read operation. Minimum is 400.
+* Preferred regions: You can choose the preferred read regions for this process.
 
-## <a name="optimize-the-source-transformation"></a>Kaynak dönüşümünü iyileştirme
+## <a name="optimize-the-source-transformation"></a>Optimize the source transformation
 
-Kaynak dönüştürmesi için **en iyileştirme** sekmesinde bir **kaynak** bölüm türü görebilirsiniz. Bu seçenek yalnızca kaynağınız Azure SQL veritabanı olduğunda kullanılabilir. Bunun nedeni, Data Factory SQL veritabanı kaynağınıza karşı büyük sorgular çalıştırmak için bağlantıları paralel hale geçirmeye çalışır.
+On the **Optimize** tab for the source transformation, you might see a **Source** partition type. This option is available only when your source is Azure SQL Database. This is because Data Factory tries to make connections parallel to run large queries against your SQL Database source.
 
-![Kaynak bölüm ayarları](media/data-flow/sourcepart3.png "Leme")
+![Source partition settings](media/data-flow/sourcepart3.png "partitioning")
 
-SQL veritabanı kaynağınızdaki verileri bölümlememeniz gerekmez, ancak bölümler büyük sorgularda yararlıdır. Bölümünüzü bir sütun veya sorgu üzerinde temel alabilirsiniz.
+You don't have to partition data on your SQL Database source, but partitions are useful for large queries. You can base your partition on a column or a query.
 
-### <a name="use-a-column-to-partition-data"></a>Verileri bölümlemek için bir sütun kullanma
+### <a name="use-a-column-to-partition-data"></a>Use a column to partition data
 
-Kaynak tablonuzda, bölümlemek için bir sütun seçin. Bölüm sayısını da ayarlayın.
+From your source table, select a column to partition on. Also set the number of partitions.
 
-### <a name="use-a-query-to-partition-data"></a>Verileri bölümlemek için bir sorgu kullanma
+### <a name="use-a-query-to-partition-data"></a>Use a query to partition data
 
-Bir sorguya bağlı olarak bağlantıları bölümleyebilirsiniz seçeneğini belirleyebilirsiniz. Bir WHERE koşulun içeriğini girin. Örneğin Year > 1980 yazın.
+You can choose to partition the connections based on a query. Enter the contents of a WHERE predicate. For example, enter year > 1980.
 
-Eşleme veri akışı içinde iyileştirme hakkında daha fazla bilgi için, [optimizasyon sekmesine](concepts-data-flow-overview.md#optimize)bakın.
+For more information on optimization within mapping data flow, see the [Optimize tab](concepts-data-flow-overview.md#optimize).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Türetilmiş sütun dönüşümü](data-flow-derived-column.md) ve [seçim dönüştürmesi](data-flow-select.md)oluşturmaya başlayın.
+Begin building a [derived-column transformation](data-flow-derived-column.md) and a [select transformation](data-flow-select.md).

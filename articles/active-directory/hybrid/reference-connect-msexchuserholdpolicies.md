@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: msExchUserHoldPolicies ve cloudMsExchUserHoldPolicies | Microsoft Docs'
-description: Bu konuda, msExchUserHoldPolicies ve cloudMsExchUserHoldPolicies özniteliklerinin öznitelik davranışı açıklanmaktadır
+title: 'Azure AD Connect: msExchUserHoldPolicies and cloudMsExchUserHoldPolicies | Microsoft Docs'
+description: This topic describes attribute behavior of the msExchUserHoldPolicies and cloudMsExchUserHoldPolicies attributes
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -14,61 +14,61 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d371ba2a09dda933bf14208a00535b757afea85
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: f4c637a01825616334cda8faa594efd08f29de8d
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70014340"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74213087"
 ---
-# <a name="azure-ad-connect---msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>Azure AD Connect-msExchUserHoldPolicies ve cloudMsExchUserHoldPolicies
-Aşağıdaki başvuru belgesi, Exchange tarafından kullanılan bu öznitelikleri ve varsayılan eşitleme kurallarını düzenlemenin doğru yolunu açıklar.
+# <a name="azure-ad-connect---msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>Azure AD Connect - msExchUserHoldPolicies and cloudMsExchUserHoldPolicies
+The following reference document describes these attributes used by Exchange and the proper way to edit the default sync rules.
 
-## <a name="what-are-msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>MsExchUserHoldPolicies ve cloudMsExchUserHoldPolicies nedir?
-Bir Exchange sunucusu için kullanılabilecek iki tür [saklama](https://docs.microsoft.com/Exchange/policy-and-compliance/holds/holds?view=exchserver-2019) vardır: Dava tutma ve yerinde saklama. Dava bekletme etkin olduğunda tüm posta kutusu tüm öğeler beklemeye yerleştirilir.  Yerinde saklama, yalnızca yerinde eBulma aracını kullanarak tanımladığınız bir arama sorgusunun ölçütlerine uyan öğeleri korumak için kullanılır.
+## <a name="what-are-msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>What are msExchUserHoldPolicies and cloudMsExchUserHoldPolicies?
+There are two types of [holds](https://docs.microsoft.com/Exchange/policy-and-compliance/holds/holds?view=exchserver-2019) available for an Exchange Server: Litigation Hold and In-Place Hold. When Litigation Hold is enabled, all mailbox all items are placed on hold.  An In-Place Hold is used to preserve only those items that meet the criteria of a search query that you defined by using the In-Place eDiscovery tool.
 
-Msexchuserholdpolleve cloudMsExchUserHoldPolicies öznitelikleri şirket içi AD ve Azure AD 'ye, şirket içi Exchange veya Exchange 'in çevrimiçi mi olduğunu bağlı olarak hangi kullanıcıların bir bekletme kapsamında olduğunu belirlemesini sağlar.
+The MsExchUserHoldPolcies and cloudMsExchUserHoldPolicies attributes allow on-premises AD and Azure AD to determine which users are under a hold depending on whether they are using on-premises Exchange or Exchange on-line.
 
-## <a name="msexchuserholdpolicies-synchronization-flow"></a>msExchUserHoldPolicies eşitleme akışı
-Varsayılan olarak, Msexchuserholdpoli, meta veri deposundaki msExchUserHoldPolicies özniteliği ve sonra Azure AD 'deki Msexchuserholdpolicies özniteliğine Azure AD Connect tarafından eşitlenir
+## <a name="msexchuserholdpolicies-synchronization-flow"></a>msExchUserHoldPolicies synchronization flow
+By default MsExchUserHoldPolcies is synchronized by Azure AD Connect directly to the msExchUserHoldPolicies attribute in the metaverse and then to the msExchUserHoldPolices attribute in Azure AD
 
-Aşağıdaki tablolar akışı anlatmaktadır:
+The following tables describe the flow:
 
-Şirket içi Active Directory gelen:
+Inbound from on-premises Active Directory:
 
-|Active Directory özniteliği|Öznitelik adı|Akış türü|Metaverse özniteliği|Eşitleme kuralı|
+|Active Directory attribute|Attribute name|Flow type|Metaverse attribute|Sync Rule|
 |-----|-----|-----|-----|-----|
-|Şirket içi Active Directory|msExchUserHoldPolicies|Doğrudan|Msexchuserholdilkeleri|AD 'den Kullanıcı değişimi ' nde|
+|Şirket içi Active Directory|msExchUserHoldPolicies|Doğrudan|msExchUserHoldPolices|In from AD - User Exchange|
 
-Azure AD 'ye giden:
+Outbound to Azure AD:
 
-|Metaverse özniteliği|Öznitelik adı|Akış türü|Azure AD özniteliği|Eşitleme kuralı|
+|Metaverse attribute|Attribute name|Flow type|Azure AD attribute|Sync Rule|
 |-----|-----|-----|-----|-----|
-|Azure Active Directory|msExchUserHoldPolicies|Doğrudan|msExchUserHoldPolicies|AAD 'ye kadar – Kullanıcıexchangeonline|
+|Azure Active Directory|msExchUserHoldPolicies|Doğrudan|msExchUserHoldPolicies|Out to AAD – UserExchangeOnline|
 
-## <a name="cloudmsexchuserholdpolicies-synchronization-flow"></a>cloudMsExchUserHoldPolicies eşitleme akışı
-Varsayılan olarak cloudMsExchUserHoldPolicies, meta veri deposundaki cloudMsExchUserHoldPolicies özniteliğine doğrudan Azure AD Connect tarafından eşitlenir. Daha sonra, meta veri deposunda Msexchuserholdilkeleri null değilse, Active Directory dışarı aktarılan öznitelik.
+## <a name="cloudmsexchuserholdpolicies-synchronization-flow"></a>cloudMsExchUserHoldPolicies synchronization flow
+By default cloudMsExchUserHoldPolicies is synchronized by Azure AD Connect directly to the cloudMsExchUserHoldPolicies attribute in the metaverse. Then, if msExchUserHoldPolices is not null in the metaverse, the attribute in flowed out to Active Directory.
 
-Aşağıdaki tablolar akışı anlatmaktadır:
+The following tables describe the flow:
 
-Azure AD 'den gelen:
+Inbound from Azure AD:
 
-|Active Directory özniteliği|Öznitelik adı|Akış türü|Metaverse özniteliği|Eşitleme kuralı|
+|Active Directory attribute|Attribute name|Flow type|Metaverse attribute|Sync Rule|
 |-----|-----|-----|-----|-----|
-|Şirket içi Active Directory|cloudMsExchUserHoldPolicies|Doğrudan|cloudMsExchUserHoldPolicies|AAD 'den içinde-Kullanıcı değişimi|
+|Şirket içi Active Directory|cloudMsExchUserHoldPolicies|Doğrudan|cloudMsExchUserHoldPolicies|In from AAD - User Exchange|
 
-Şirket içi Active Directory giden:
+Outbound to on-premises Active Directory:
 
-|Metaverse özniteliği|Öznitelik adı|Akış türü|Azure AD özniteliği|Eşitleme kuralı|
+|Metaverse attribute|Attribute name|Flow type|Azure AD attribute|Sync Rule|
 |-----|-----|-----|-----|-----|
-|Azure Active Directory|cloudMsExchUserHoldPolicies|IF (NULL DEĞIL)|msExchUserHoldPolicies|AD – UserExchangeOnline|
+|Azure Active Directory|cloudMsExchUserHoldPolicies|IF(NOT NULL)|msExchUserHoldPolicies|Out to AD – UserExchangeOnline|
 
-## <a name="information-on-the-attribute-behavior"></a>Öznitelik davranışı hakkında bilgi
-MsExchangeUserHoldPolicies tek bir yetkili özniteliğidir.  Tek bir yetkili özniteliği, şirket içi dizindeki veya bulut dizinindeki bir nesne (Bu durumda, Kullanıcı nesnesi) üzerinde ayarlanabilir.  Yetki başlangıcı kuralları, özniteliği Şirket içinden eşitlendiğinde, Azure AD 'nin bu özniteliği güncelleştirmesine izin verilmeyeceğini belirler.
+## <a name="information-on-the-attribute-behavior"></a>Information on the attribute behavior
+The msExchangeUserHoldPolicies is a single authority attribute.  A single authority attribute can be set on an object (in this case, user object) in the on-premises directory or in the cloud directory.  The Start of Authority rules dictate, that if the attribute is synchronized from on-premises, then Azure AD will not be allowed to update this attribute.
 
-Kullanıcıların buluttaki bir kullanıcı nesnesi üzerinde bir saklama ilkesi ayarlamaya izin vermek için, cloudMSExchangeUserHoldPolicies özniteliği kullanılır. Bu öznitelik, Azure AD yukarıda açıklanan kurallara göre doğrudan msExchangeUserHoldPolicies ayarlayamadığından kullanılır.  Bu öznitelik daha sonra, msExchangeUserHoldPolicies null değil ve msExchangeUserHoldPolicies geçerli değerini değiştirmek için şirket içi dizine geri eşitlenir.
+To allow users to set a hold policy on a user object in the cloud, the cloudMSExchangeUserHoldPolicies attribute is used. This attribute is used because Azure AD cannot set msExchangeUserHoldPolicies directly based on the rules explained above.  This attribute will then synchronize back to the on-premises directory if, the msExchangeUserHoldPolicies is not null and replace the current value of msExchangeUserHoldPolicies.
 
-Belirli koşullarda, örneğin, her ikisi de şirket içinde ve Azure 'da aynı anda değiştirildiyse, bu bazı sorunlara neden olabilir.  
+Under certain circumstances, for instance, if both were changed on-premises and in Azure at the same time, this could cause some issues.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Şirket içi kimliklerinizi Azure Active Directory ile tümleştirme](whatis-hybrid-identity.md) hakkında daha fazla bilgi edinin.

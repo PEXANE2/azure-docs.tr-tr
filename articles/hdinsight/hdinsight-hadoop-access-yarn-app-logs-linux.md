@@ -1,6 +1,6 @@
 ---
-title: Erişim Apache Hadoop YARN uygulama günlükleri-Azure HDInsight
-description: Hem komut satırı hem de bir Web tarayıcısı kullanarak Linux tabanlı HDInsight (Apache Hadoop) kümesinde YARN uygulama günlüklerine erişmeyi öğrenin.
+title: Access Apache Hadoop YARN application logs - Azure HDInsight
+description: Learn how to access YARN application logs on a Linux-based HDInsight (Apache Hadoop) cluster using both the command-line and a web browser.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,67 +8,71 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/22/2018
-ms.openlocfilehash: 263456769ab391cbc0588eed1a714a1ea5788154
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b6a1e63688714b0a799714c1a7448b8cbd2d05eb
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494887"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74216014"
 ---
-# <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>Linux tabanlı HDInsight 'ta YARN uygulama günlüklerine erişim Apache Hadoop
+# <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>Access Apache Hadoop YARN application logs on Linux-based HDInsight
 
-Azure HDInsight 'ta bir [Apache Hadoop](https://hadoop.apache.org/) kümesindeki [Apache Hadoop Yarn](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) (henüz başka bir kaynak Negotiator) uygulamaları için günlüklere erişmeyi öğrenin.
+Learn how to access the logs for [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) (Yet Another Resource Negotiator) applications on an [Apache Hadoop](https://hadoop.apache.org/) cluster in Azure HDInsight.
 
-## <a name="YARNTimelineServer"></a>YARN zaman çizelgesi sunucusu
+## <a name="what-is-apache-yarn"></a>What is Apache YARN?
 
-[Apache Hadoop YARN zaman çizelgesi sunucusu](https://hadoop.apache.org/docs/r2.7.3/hadoop-yarn/hadoop-yarn-site/TimelineServer.html) , tamamlanan uygulamalarla ilgili genel bilgiler sağlar
+YARN supports multiple programming models ([Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html)  being one of them) by decoupling resource management from application scheduling/monitoring. YARN uses a global *ResourceManager* (RM), per-worker-node *NodeManagers* (NMs), and per-application *ApplicationMasters* (AMs). The per-application AM negotiates resources (CPU, memory, disk, network) for running your application with the RM. The RM works with NMs to grant these resources, which are granted as *containers*. The AM is responsible for tracking the progress of the containers assigned to it by the RM. An application may require many containers depending on the nature of the application.
 
-YARN zaman çizelgesi sunucusu aşağıdaki veri türlerini içerir:
+Each application may consist of multiple *application attempts*. If an application fails, it may be retried as a new attempt. Each attempt runs in a container. In a sense, a container provides the context for basic unit of work performed by a YARN application. All work that is done within the context of a container is performed on the single worker node on which the container was allocated. See [Hadoop: Writing YARN Applications](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html), or [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) for further reference.
 
-* Uygulama KIMLIĞI, bir uygulamanın benzersiz tanımlayıcısı
-* Uygulamayı başlatan Kullanıcı
-* Uygulamayı tamamlamaya yönelik denemelere ilişkin bilgiler
-* Belirli bir uygulama denemesi tarafından kullanılan kapsayıcılar
+To scale your cluster to support greater processing throughput, you can use [Autoscale](hdinsight-autoscale-clusters.md) or [Scale your clusters manually using a few different languages](hdinsight-scaling-best-practices.md#utilities-to-scale-clusters).
 
-## <a name="YARNAppsAndLogs"></a>YARN uygulamaları ve günlükleri
+## <a name="YARNTimelineServer"></a>YARN Timeline Server
 
-YARN, kaynak yönetimini uygulama zamanlama/izlemeye ayırarak birden çok programlama modelini ([Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) ) destekler. YARN, küresel bir *ResourceManager* (RM), Worker-node *nodeyöneticileri* (NMS) ve uygulama başına *applicationmaster* (AMS) kullanır. Uygulama başına, uygulamanızı RM ile çalıştırmaya yönelik kaynaklar (CPU, bellek, disk, ağ) tarafından anlaşma yapılır. RM, *kapsayıcılar*olarak verilen bu kaynakları vermek Için NMS ile birlikte çalışmaktadır. Bu, kendisine atanan kapsayıcıların, RM tarafından ilerlemesini izlemekten sorumludur. Uygulama, uygulamanın yapısına bağlı olarak çok sayıda kapsayıcı gerektirebilir.
+The [Apache Hadoop YARN Timeline Server](https://hadoop.apache.org/docs/r2.7.3/hadoop-yarn/hadoop-yarn-site/TimelineServer.html) provides generic information on completed applications
 
-Her uygulama birden çok *uygulama denemesinden*oluşabilir. Bir uygulama başarısız olursa, yeni bir deneme olarak yeniden denenebilir. Her deneme bir kapsayıcıda çalışır. Bir kapsayıcı, bir YARN uygulaması tarafından gerçekleştirilen temel çalışma birimi için bağlam sağlar. Bir kapsayıcı bağlamı içinde gerçekleştirilen tüm işler, kapsayıcının ayrıldığı tek çalışan düğümünde gerçekleştirilir. Daha fazla başvuru için [Apache Hadoop YARN kavramlarını](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html) inceleyin.
+YARN Timeline Server includes the following type of data:
 
-Uygulama günlükleri (ve ilişkili kapsayıcı günlükleri), sorunlu Hadoop uygulamalarında hata ayıklama açısından kritik öneme sahiptir. YARN, uygulama günlüklerinin toplanması, toplanması ve [günlük toplama](https://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/) özelliği ile depolanması için iyi bir çerçeve sağlar. Günlük toplama özelliği, uygulama günlüklerine daha belirleyici bir şekilde erişmenizi sağlar. Bir çalışan düğümündeki tüm kapsayıcılar üzerinde günlükleri toplar ve bunları çalışan düğümü başına bir toplu günlük dosyası olarak depolar. Bir uygulama bittikten sonra günlük varsayılan dosya sisteminde depolanır. Uygulamanız yüzlerce veya binlerce kapsayıcı kullanabilir, ancak tek bir çalışan düğümünde çalıştırılan tüm kapsayıcılar için Günlükler her zaman tek bir dosyaya toplanır. Bu nedenle, uygulamanız tarafından kullanılan her çalışan düğümü için yalnızca 1 günlük vardır. Günlük toplama, HDInsight kümeleri sürüm 3,0 ve üzerinde varsayılan olarak etkindir. Toplanan Günlükler, küme için varsayılan depolamada bulunur. Aşağıdaki yol, günlüklerin bir yolu olarak verilmiştir:
+* The application ID, a unique identifier of an application
+* The user who started the application
+* Information on attempts made to complete the application
+* The containers used by any given application attempt
+
+## <a name="YARNAppsAndLogs"></a>YARN applications and logs
+
+Application logs (and the associated container logs) are critical in debugging problematic Hadoop applications. YARN provides a nice framework for collecting, aggregating, and storing application logs with the [Log Aggregation](https://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/) feature. The Log Aggregation feature makes accessing application logs more deterministic. It aggregates logs across all containers on a worker node and stores them as one aggregated log file per worker node. The log is stored on the default file system after an application finishes. Your application may use hundreds or thousands of containers, but logs for all containers run on a single worker node are always aggregated to a single file. So there is only 1 log per worker node used by your application. Log Aggregation is enabled by default on HDInsight clusters version 3.0 and above. Aggregated logs are located in default storage for the cluster. The following path is the HDFS path to the logs:
 
     /app-logs/<user>/logs/<applicationId>
 
-Yolda, uygulamayı başlatan kullanıcının adı `user`. `applicationId`, YARN RM tarafından bir uygulamaya atanan benzersiz tanıtıcıdır.
+In the path, `user` is the name of the user who started the application. The `applicationId` is the unique identifier assigned to an application by the YARN RM.
 
-Toplanan Günlükler, bir [tfile][T-file]dosyasında yazıldığı gibi doğrudan okunamaz, kapsayıcı tarafından dizine alınmış [ikili biçimdedir][binary-format] . Bu günlükleri uygulamalar veya ilgilendiğiniz kapsayıcılar için düz metin olarak görüntülemek üzere YARN ResourceManager günlüklerini veya CLı araçlarını kullanın.
+The aggregated logs are not directly readable, as they are written in a [TFile][T-file], [binary format][binary-format] indexed by container. Use the YARN ResourceManager logs or CLI tools to view these logs as plain text for applications or containers of interest.
 
-## <a name="yarn-cli-tools"></a>YARN CLı araçları
+## <a name="yarn-cli-tools"></a>YARN CLI tools
 
-YARN CLı araçlarını kullanmak için önce SSH kullanarak HDInsight kümesine bağlanmanız gerekir. Bilgi için bkz. [HDInsight ile SSH kullanma](hdinsight-hadoop-linux-use-ssh-unix.md).
+To use the YARN CLI tools, you must first connect to the HDInsight cluster using SSH. Bilgi için bkz. [HDInsight ile SSH kullanma](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-Aşağıdaki komutlardan birini çalıştırarak, bu günlükleri düz metin olarak görüntüleyebilirsiniz:
+You can view these logs as plain text by running one of the following commands:
 
     yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application>
     yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application> -containerId <containerId> -nodeAddress <worker-node-address>
 
-Bu komutları çalıştırırken &lt;ApplicationId >, &lt;Kullanıcı tarafından başlatılan-uygulama >, &lt;Containerıd > ve &lt;çalışan düğümü-adresi > bilgilerini belirtin.
+Specify the &lt;applicationId>, &lt;user-who-started-the-application>, &lt;containerId>, and &lt;worker-node-address> information when running these commands.
 
-## <a name="yarn-resourcemanager-ui"></a>YARN ResourceManager Kullanıcı arabirimi
+## <a name="yarn-resourcemanager-ui"></a>YARN ResourceManager UI
 
-YARN ResourceManager Kullanıcı arabirimi küme headnode üzerinde çalışır. Bu, ambarı Web Kullanıcı arabirimi üzerinden erişilir. YARN günlüklerini görüntülemek için aşağıdaki adımları kullanın:
+The YARN ResourceManager UI runs on the cluster headnode. It is accessed through the Ambari web UI. Use the following steps to view the YARN logs:
 
-1. Web tarayıcınızda https://CLUSTERNAME.azurehdinsight.net' a gidin. CLUSTERNAME değerini HDInsight kümenizin adıyla değiştirin.
-2. Soldaki hizmetler listesinden **Yarn**' yi seçin.
+1. In your web browser, navigate to https://CLUSTERNAME.azurehdinsight.net. Replace CLUSTERNAME with the name of your HDInsight cluster.
+2. From the list of services on the left, select **YARN**.
 
-    ![Apache ambarı Yarn hizmeti seçildi](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarn-service-selected.png)
+    ![Apache Ambari Yarn service selected](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarn-service-selected.png)
 
-3. **Hızlı bağlantılar** açılan listesinden küme baş düğümlerinden birini seçip **ResourceManager günlüğü**' nü seçin.
+3. From the **Quick Links** dropdown, select one of the cluster head nodes and then select **ResourceManager Log**.
 
-    ![Apache ambarı Yarn hızlı bağlantıları](./media/hdinsight-hadoop-access-yarn-app-logs-linux/hdi-yarn-quick-links.png)
+    ![Apache Ambari Yarn quick links](./media/hdinsight-hadoop-access-yarn-app-logs-linux/hdi-yarn-quick-links.png)
 
-    YARN günlüklerine bağlantıların bir listesi sunulur.
+    You are presented with a list of links to YARN logs.
 
 [YARN-timeline-server]:https://hadoop.apache.org/docs/r2.4.0/hadoop-yarn/hadoop-yarn-site/TimelineServer.html
 [T-file]:https://issues.apache.org/jira/secure/attachment/12396286/TFile%20Specification%2020081217.pdf

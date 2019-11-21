@@ -1,32 +1,27 @@
 ---
-title: Dayanıklı İşlevler hataları işleme-Azure
-description: Azure Işlevleri için Dayanıklı İşlevler uzantısı 'ndaki hataların nasıl işleneceğini öğrenin.
-services: functions
-author: ggailey777
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
+title: Handling errors in Durable Functions - Azure
+description: Learn how to handle errors in the Durable Functions extension for Azure Functions.
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: adc23cad4ad7c55ce81096b1550520c496f744c1
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 0900e3f3b76f4a82e06fe3c0e6d9bbe63b545f56
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614865"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231415"
 ---
-# <a name="handling-errors-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler hataları işleme (Azure Işlevleri)
+# <a name="handling-errors-in-durable-functions-azure-functions"></a>Handling errors in Durable Functions (Azure Functions)
 
-Dayanıklı Işlev düzenlemeleri kodda uygulanır ve programlama dilinin yerleşik hata işleme özelliklerini kullanabilir. Organize etmeniz için hata işleme ve dengeleme eklemek için öğrenmeniz gereken yeni kavramlar aslında yoktur. Ancak, bilmeniz gereken birkaç davranış vardır.
+Durable Function orchestrations are implemented in code and can use the programming language's built-in error-handling features. There really aren't any new concepts you need to learn to add error handling and compensation into your orchestrations. However, there are a few behaviors that you should be aware of.
 
-## <a name="errors-in-activity-functions"></a>Etkinlik işlevlerinde hatalar
+## <a name="errors-in-activity-functions"></a>Errors in activity functions
 
-Bir etkinlik işlevinde oluşturulan herhangi bir özel durum Orchestrator işlevine geri hazırlanır ve bir `FunctionFailedException`olarak oluşturulur. Orchestrator işlevindeki gereksinimlerinize uyan hata işleme ve dengeleme kodu yazabilirsiniz.
+Any exception that is thrown in an activity function is marshaled back to the orchestrator function and thrown as a `FunctionFailedException`. You can write error handling and compensation code that suits your needs in the orchestrator function.
 
-Örneğin, bir hesaptan diğerine fonları aktaran aşağıdaki Orchestrator işlevini göz önünde bulundurun:
+For example, consider the following orchestrator function that transfers funds from one account to another:
 
-### <a name="precompiled-c"></a>DerlemesiC#
+### <a name="precompiled-c"></a>Precompiled C#
 
 ```csharp
 [FunctionName("TransferFunds")]
@@ -64,7 +59,7 @@ public static async Task Run([OrchestrationTrigger] IDurableOrchestrationContext
 }
 ```
 
-### <a name="c-script"></a>C#SCRIPT
+### <a name="c-script"></a>C# Script
 
 ```csharp
 #r "Microsoft.Azure.WebJobs.Extensions.DurableTask"
@@ -104,9 +99,9 @@ public static async Task Run(IDurableOrchestrationContext context)
 ```
 
 > [!NOTE]
-> Önceki C# örnekler dayanıklı işlevler 2. x içindir. Dayanıklı İşlevler 1. x için `IDurableOrchestrationContext`yerine `DurableOrchestrationContext` kullanmanız gerekir. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
+> The previous C# examples are for Durable Functions 2.x. For Durable Functions 1.x, you must use `DurableOrchestrationContext` instead of `IDurableOrchestrationContext`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
 
-### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
+### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
 
 ```javascript
 const df = require("durable-functions");
@@ -142,13 +137,13 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-İlk **alacaklı Taccount** işlev çağrısı başarısız olursa, Orchestrator işlevi fontları kaynak hesaba geri alacak şekilde dengeler.
+If the first **CreditAccount** function call fails, the orchestrator function compensates by crediting the funds back to the source account.
 
-## <a name="automatic-retry-on-failure"></a>Hata durumunda otomatik yeniden deneme
+## <a name="automatic-retry-on-failure"></a>Automatic retry on failure
 
-Etkinlik işlevlerini veya alt düzenleme işlevlerini çağırdığınızda otomatik yeniden deneme ilkesi belirtebilirsiniz. Aşağıdaki örnek, bir işlevi üç kez çağırmaya çalışır ve her yeniden deneme arasında 5 saniye bekler:
+When you call activity functions or sub-orchestration functions, you can specify an automatic retry policy. The following example attempts to call a function up to three times and waits 5 seconds between each retry:
 
-### <a name="precompiled-c"></a>DerlemesiC#
+### <a name="precompiled-c"></a>Precompiled C#
 
 ```csharp
 [FunctionName("TimerOrchestratorWithRetry")]
@@ -164,7 +159,7 @@ public static async Task Run([OrchestrationTrigger] IDurableOrchestrationContext
 }
 ```
 
-### <a name="c-script"></a>C#SCRIPT
+### <a name="c-script"></a>C# Script
 
 ```csharp
 public static async Task Run(IDurableOrchestrationContext context)
@@ -180,9 +175,9 @@ public static async Task Run(IDurableOrchestrationContext context)
 ```
 
 > [!NOTE]
-> Önceki C# örnekler dayanıklı işlevler 2. x içindir. Dayanıklı İşlevler 1. x için `IDurableOrchestrationContext`yerine `DurableOrchestrationContext` kullanmanız gerekir. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
+> The previous C# examples are for Durable Functions 2.x. For Durable Functions 1.x, you must use `DurableOrchestrationContext` instead of `IDurableOrchestrationContext`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
 
-### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
+### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
 
 ```javascript
 const df = require("durable-functions");
@@ -196,22 +191,22 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-`CallActivityWithRetryAsync` (.NET) veya `callActivityWithRetry` (JavaScript) API 'SI bir `RetryOptions` parametresi alır. `CallSubOrchestratorWithRetryAsync` (.NET) veya `callSubOrchestratorWithRetry` (JavaScript) API 'sini kullanan alt düzenleme çağrıları aynı yeniden deneme ilkelerini kullanabilir.
+The `CallActivityWithRetryAsync` (.NET) or `callActivityWithRetry` (JavaScript) API takes a `RetryOptions` parameter. Sub-orchestration calls using the `CallSubOrchestratorWithRetryAsync` (.NET) or `callSubOrchestratorWithRetry` (JavaScript) API can use these same retry policies.
 
-Otomatik yeniden deneme ilkesini özelleştirmek için çeşitli seçenekler vardır:
+There are several options for customizing the automatic retry policy:
 
-* **Deneme sayısı**üst sınırı: en fazla yeniden deneme denemesi sayısı.
-* **İlk yeniden deneme aralığı**: ilk yeniden deneme girişiminden önce beklenecek süre.
-* **Geri dönüşlü katsayı**: geri alma artışının oranını belirlemede kullanılan katsayı. Varsayılan değer 1 ' dir.
-* **En fazla yeniden deneme aralığı**: yeniden deneme girişimleri arasında beklenecek en uzun süre.
-* **Yeniden deneme zaman aşımı**: yeniden denemeler yapmak için harcayabileceğiniz en uzun süre. Varsayılan davranış süresiz olarak yeniden denenecektir.
-* **Tanıtıcı**: bir işlevin yeniden denenip denenmeyeceğini anlamak için Kullanıcı tanımlı geri çağırma belirtilebilir.
+* **Max number of attempts**: The maximum number of retry attempts.
+* **First retry interval**: The amount of time to wait before the first retry attempt.
+* **Backoff coefficient**: The coefficient used to determine rate of increase of backoff. Defaults to 1.
+* **Max retry interval**: The maximum amount of time to wait in between retry attempts.
+* **Retry timeout**: The maximum amount of time to spend doing retries. The default behavior is to retry indefinitely.
+* **Handle**: A user-defined callback can be specified to determine whether a function should be retried.
 
-## <a name="function-timeouts"></a>İşlev zaman aşımları
+## <a name="function-timeouts"></a>Function timeouts
 
-Bir Orchestrator işlevi içindeki bir işlev çağrısını, tamamlanamayacak kadar uzun sürerse iptal etmek isteyebilirsiniz. Bunu bugün yapmanın doğru yolu, aşağıdaki örnekte olduğu gibi `Task.WhenAny` (.NET) veya `context.df.Task.any` (JavaScript) ile birlikte `context.CreateTimer` (.NET) veya `context.df.createTimer` (JavaScript) kullanarak [dayanıklı bir Zamanlayıcı](durable-functions-timers.md) oluşturmaktır:
+You might want to abandon a function call within an orchestrator function if it's taking too long to complete. The proper way to do this today is by creating a [durable timer](durable-functions-timers.md) using `context.CreateTimer` (.NET) or `context.df.createTimer` (JavaScript) in conjunction with `Task.WhenAny` (.NET) or `context.df.Task.any` (JavaScript), as in the following example:
 
-### <a name="precompiled-c"></a>DerlemesiC#
+### <a name="precompiled-c"></a>Precompiled C#
 
 ```csharp
 [FunctionName("TimerOrchestrator")]
@@ -241,7 +236,7 @@ public static async Task<bool> Run([OrchestrationTrigger] IDurableOrchestrationC
 }
 ```
 
-### <a name="c-script"></a>C#SCRIPT
+### <a name="c-script"></a>C# Script
 
 ```csharp
 public static async Task<bool> Run(IDurableOrchestrationContext context)
@@ -271,9 +266,9 @@ public static async Task<bool> Run(IDurableOrchestrationContext context)
 ```
 
 > [!NOTE]
-> Önceki C# örnekler dayanıklı işlevler 2. x içindir. Dayanıklı İşlevler 1. x için `IDurableOrchestrationContext`yerine `DurableOrchestrationContext` kullanmanız gerekir. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
+> The previous C# examples are for Durable Functions 2.x. For Durable Functions 1.x, you must use `DurableOrchestrationContext` instead of `IDurableOrchestrationContext`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
 
-### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
+### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
 
 ```javascript
 const df = require("durable-functions");
@@ -298,16 +293,16 @@ module.exports = df.orchestrator(function*(context) {
 ```
 
 > [!NOTE]
-> Bu mekanizma, devam eden etkinlik işlevi yürütmeyi gerçekten sonlandırır. Bunun yerine, Orchestrator işlevinin sonucu yok saymasına ve üzerinde hareket etmesine izin verir. Daha fazla bilgi için bkz. [zamanlayıcılar](durable-functions-timers.md#usage-for-timeout) belgeleri.
+> This mechanism does not actually terminate in-progress activity function execution. Rather, it simply allows the orchestrator function to ignore the result and move on. For more information, see the [Timers](durable-functions-timers.md#usage-for-timeout) documentation.
 
 ## <a name="unhandled-exceptions"></a>İşlenmeyen özel durumlar
 
-Orchestrator işlevi işlenmeyen bir özel durumla başarısız olursa, özel durumun ayrıntıları günlüğe kaydedilir ve örnek `Failed` durumuyla tamamlanır.
+If an orchestrator function fails with an unhandled exception, the details of the exception are logged and the instance completes with a `Failed` status.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Dış düzenlemeleri hakkında bilgi edinin](durable-functions-eternal-orchestrations.md)
+> [Learn about eternal orchestrations](durable-functions-eternal-orchestrations.md)
 
 > [!div class="nextstepaction"]
-> [Sorunları tanılamayı öğrenin](durable-functions-diagnostics.md)
+> [Learn how to diagnose problems](durable-functions-diagnostics.md)

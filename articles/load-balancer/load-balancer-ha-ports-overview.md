@@ -1,7 +1,7 @@
 ---
-title: Azure yüksek kullanılabilirlik bağlantı noktaları genel bakış
-titlesuffix: Azure Load Balancer
-description: İç yük dengeleyici üzerinde yüksek kullanılabilirlik bağlantı noktaları yük dengelemeyi hakkında bilgi edinin.
+title: High availability ports overview in Azure
+titleSuffix: Azure Load Balancer
+description: Learn about high availability ports load balancing on an internal load balancer.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -13,95 +13,95 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: 350c6ae2e62a88477ce67132b56d9253166d13ec
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: c6529e2585a7fca2d160d093d303afa02e6f9379
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130439"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74215071"
 ---
-# <a name="high-availability-ports-overview"></a>Yüksek kullanılabilirlik bağlantı noktaları genel bakış
+# <a name="high-availability-ports-overview"></a>High availability ports overview
 
-İç yük dengeleyici kullanıldığında azure standart Load Balancer, tüm bağlantı noktalarındaki Yük Dengeleme TCP ve UDP akışlar aynı anda yardımcı olur. 
+Azure Standard Load Balancer helps you load-balance TCP and UDP flows on all ports simultaneously when you're using an internal load balancer. 
 
-Yüksek kullanılabilirlik (HA) bağlantı noktaları Yük Dengeleme kuralı, iç Standart Load Balancer yapılandırılan bir yük dengeleme kuralının bir varyantıdır. Tek bir kural yük dengelemek için bir iç standart Load Balancer'ın tüm bağlantı noktalarında gelen tüm TCP ve UDP akışlar sağlayarak bir yük dengeleyicinin kullanılmasını kolaylaştırabilirsiniz. Yük Dengeleme karar akış yapılır. Bu eylem, şu beş demet bağlantısına dayanır: kaynak IP adresi, kaynak bağlantı noktası, hedef IP adresi, hedef bağlantı noktası ve protokol
+A high availability (HA) ports load-balancing rule is a variant of a load-balancing rule, configured on an internal Standard Load Balancer. You can simplify the use of a load balancer by providing a single rule to load-balance all TCP and UDP flows that arrive on all ports of an internal Standard Load Balancer. The load-balancing decision is made per flow. This action is based on the following five-tuple connection: source IP address, source port, destination IP address, destination port, and protocol
 
-HA bağlantı noktaları Yük Dengeleme kuralları, sanal ağların içindeki ağ sanal gereçleri (NVA 'lar) için yüksek kullanılabilirlik ve ölçek gibi kritik senaryolarda size yardımcı olur. Özellik bağlantı noktaları, çok sayıda yük dengeli olması gerektiğinde de yardımcı olabilir. 
+The HA ports load-balancing rules help you with critical scenarios, such as high availability and scale for network virtual appliances (NVAs) inside virtual networks. The feature can also help when a large number of ports must be load-balanced. 
 
-HA bağlantı noktaları Yük Dengeleme kuralları, ön uç ve arka uç bağlantı noktalarını **0** ' a ve Protokolü **tümüne**ayarladığınızda yapılandırılır. İç yük dengeleyici kaynağı, bağlantı noktası numarasından bağımsız olarak tüm TCP ve UDP akışlarını dengeler
+The HA ports load-balancing rules is configured when you set the front-end and back-end ports to **0** and the protocol to **All**. The internal load balancer resource then balances all TCP and UDP flows, regardless of port number
 
-## <a name="why-use-ha-ports"></a>HA bağlantı noktaları neden kullanmalısınız?
+## <a name="why-use-ha-ports"></a>Why use HA ports?
 
-### <a name="nva"></a>Ağ sanal Gereçleri
+### <a name="nva"></a>Network virtual appliances
 
-Azure İş yükünüzün güvenlik tehditlerini birden çok tür güvenliğini sağlamaya yardımcı olmak için nva'ları kullanabilirsiniz. Bu senaryolarda nva'ları kullandığınızda, güvenilir ve yüksek oranda kullanılabilir olması gerekir ve bunlar için isteğe bağlı ölçeği gerekir.
+You can use NVAs to help secure your Azure workload from multiple types of security threats. When you use NVAs in these scenarios, they must be reliable and highly available, and they must scale out for demand.
 
-İç load balancer arka uç havuzuna yalnızca NVA örneklerinin ekleyerek bu hedeflere elde edebileceğiniz ve yük dengeleyici kuralı yapılandırma bir HA bağlantı noktaları.
+You can achieve these goals simply by adding NVA instances to the back-end pool of your internal load balancer and configuring an HA ports load-balancer rule.
 
-NVA HA senaryoları için HA bağlantı noktaları aşağıdaki avantajları sağlar:
-- Hızlı yük devretmeyi sağlıklı örnekleri için örnek başına sistem durumu araştırmaları ile sağlayın
-- Ölçek genişletme ile daha yüksek performans sağlamak *n*-etkin örnekler
-- Sağlamak *n*-etkin ve Aktif-Pasif senaryoları
-- Cihazları izleme için Apache ZooKeeper düğümleri gibi karmaşık çözümleri gerekmemesi
+For NVA HA scenarios, HA ports offer the following advantages:
+- Provide fast failover to healthy instances, with per-instance health probes
+- Ensure higher performance with scale-out to *n*-active instances
+- Provide *n*-active and active-passive scenarios
+- Eliminate the need for complex solutions, such as Apache ZooKeeper nodes for monitoring appliances
 
-Aşağıdaki diyagramda bir merkez ve uç sanal ağ dağıtımı sunar. Uçlar zorlamalı tünel hub sanal ağa ve güvenilen alanı çıkmadan önce NVA aracılığıyla trafiği. HA bağlantı noktaları yapılandırmaya sahip bir iç standart yük dengeleyici arkasında nva'ları var. Tüm trafiği, işlenen ve buna göre iletilir. Aşağıdaki diyagramda göster olarak yapılandırıldığında, bir HA bağlantı noktaları Yük Dengeleme kuralı ek olarak giriş ve çıkış trafiği için Flow simetri sağlar.
+The following diagram presents a hub-and-spoke virtual network deployment. The spokes force-tunnel their traffic to the hub virtual network and through the NVA, before leaving the trusted space. The NVAs are behind an internal Standard Load Balancer with an HA ports configuration. All traffic can be processed and forwarded accordingly. When configured as show in the following diagram, an HA Ports load-balancing rule additionally provides flow symmetry for ingress and egress traffic.
 
 <a node="diagram"></a>
-![NVA 'lar, HA modunda dağıtılan merkez ve bağlı sanal ağın diyagramı](./media/load-balancer-ha-ports-overview/nvaha.png)
+![Diagram of hub-and-spoke virtual network, with NVAs deployed in HA mode](./media/load-balancer-ha-ports-overview/nvaha.png)
 
 >[!NOTE]
-> Nva'ları kullanıyorsanız sağlayıcıları ile HA bağlantı noktaları en iyi şekilde kullanmak ve hangi senaryolar desteklenir öğrenmek için onaylayın.
+> If you are using NVAs, confirm with their providers how to best use HA ports and to learn which scenarios are supported.
 
-### <a name="load-balancing-large-numbers-of-ports"></a>Bağlantı noktalarını çok sayıda Yük Dengeleme
+### <a name="load-balancing-large-numbers-of-ports"></a>Load-balancing large numbers of ports
 
-HA bağlantı noktalarını bağlantı noktalarının çok sayıda Yük Dengeleme gerektiren uygulamalar için de kullanabilirsiniz. Bir iç kullanarak bu senaryolar basit hale getirebileceğinizi [Standard Load Balancer](load-balancer-standard-overview.md) HA bağlantı noktaları. Tek bir yük dengeleyici kuralı, birden fazla bireysel Yük Dengeleme kuralları, her bağlantı noktası için bir tane yerine geçer.
+You can also use HA ports for applications that require load balancing of large numbers of ports. You can simplify these scenarios by using an internal [Standard Load Balancer](load-balancer-standard-overview.md) with HA ports. A single load-balancing rule replaces multiple individual load-balancing rules, one for each port.
 
-## <a name="region-availability"></a>Bölge kullanılabilirliği
+## <a name="region-availability"></a>Bölgelere göre kullanılabilirlik
 
-HA bağlantı noktaları özelliğini tüm genel Azure bölgelerinde kullanılabilir.
+The HA ports feature is available in all the global Azure regions.
 
-## <a name="supported-configurations"></a>Desteklenen yapılandırmalar
+## <a name="supported-configurations"></a>Supported configurations
 
-### <a name="a-single-non-floating-ip-non-direct-server-return-ha-ports-configuration-on-an-internal-standard-load-balancer"></a>Standart bir iç yük dengeleyici üzerindeki tek, değişken olmayan bir IP (olmayan - doğrudan sunucu dönüşü) HA bağlantı noktaları yapılandırma
+### <a name="a-single-non-floating-ip-non-direct-server-return-ha-ports-configuration-on-an-internal-standard-load-balancer"></a>A single, non-floating IP (non-Direct Server Return) HA-ports configuration on an internal Standard Load Balancer
 
-Bu yapılandırma bir temel HA bağlantı noktaları yapılandırmadır. Yapılandırabileceğiniz bir HA bağlantı noktaları Yük Dengeleme kuralı üzerinde tek bir ön uç IP adresi aşağıdakileri yaparak:
-1. Standard Load Balancer'ı yapılandırırken, seçin **HA bağlantı noktaları** onay kutusuna yük dengeleyici kuralı yapılandırması.
-2. İçin **kayan IP**seçin **devre dışı bırakılmış**.
+This configuration is a basic HA ports configuration. You can configure an HA ports load-balancing rule on a single front-end IP address by doing the following:
+1. While configuring Standard Load Balancer, select the **HA ports** check box in the Load Balancer rule configuration.
+2. For **Floating IP**, select **Disabled**.
 
-Bu yapılandırma diğer Yük Dengeleme kuralı yapılandırma geçerli yük dengeleyici kaynağına izin vermez. İç yük dengeleyici kaynağı için başka bir yapılandırma arka uç örneklerinin verilen kümesine izin verir.
+This configuration does not allow any other load-balancing rule configuration on the current load balancer resource. It also allows no other internal load balancer resource configuration for the given set of back-end instances.
 
-Ancak, genel bir Standard Load Balancer arka uç örneklerinin HA bağlantı noktaları kuralın ek olarak yapılandırabilirsiniz.
+However, you can configure a public Standard Load Balancer for the back-end instances in addition to this HA ports rule.
 
-### <a name="a-single-floating-ip-direct-server-return-ha-ports-configuration-on-an-internal-standard-load-balancer"></a>Standart bir iç yük dengeleyici üzerindeki bir tek, kayan IP (doğrudan sunucu dönüşü) HA bağlantı noktaları yapılandırma
+### <a name="a-single-floating-ip-direct-server-return-ha-ports-configuration-on-an-internal-standard-load-balancer"></a>A single, floating IP (Direct Server Return) HA-ports configuration on an internal Standard Load Balancer
 
-Benzer şekilde, bir Yük Dengeleme kuralı ile kullanmak için yük dengeleyici yapılandırabilirsiniz **HA bağlantı noktası** ayarlayarak, tek bir ön uç ile **kayan IP** için **etkin**. 
+You can similarly configure your load balancer to use a load-balancing rule with **HA Port** with a single front end by setting the **Floating IP** to **Enabled**. 
 
-Bu yapılandırmayı kullanarak kayan IP yük dengeleyici kuralları ve/veya herkese açık yük dengeleyici ekleyebilirsiniz. Ancak, HA bağlantı noktaları bir değişken olmayan IP kullanamazsınız. Bu yapılandırma üzerinde Yük Dengeleme yapılandırma.
+By using this configuration, you can add more floating IP load-balancing rules and/or a public load balancer. However, you cannot use a non-floating IP, HA-ports load-balancing configuration on top of this configuration.
 
-### <a name="multiple-ha-ports-configurations-on-an-internal-standard-load-balancer"></a>Standart bir iç yük dengeleyici birden çok yapılandırmada HA bağlantı noktaları
+### <a name="multiple-ha-ports-configurations-on-an-internal-standard-load-balancer"></a>Multiple HA-ports configurations on an internal Standard Load Balancer
 
-Birden fazla HA bağlantı noktası ön uç için aynı arka uç havuzunu yapılandırma senaryonuz gerektiriyorsa, bunu yapabilirsiniz: 
-- Birden fazla ön uç özel IP adresi tek bir iç standart yük dengeleyici kaynağı için yapılandırın.
-- Her kural seçilen tek benzersiz bir ön uç IP adresine sahip olduğu birden çok Yük Dengeleme kuralları yapılandırın.
-- Seçin **HA bağlantı noktaları** seçeneğini ve ardından **kayan IP** için **etkin** tüm Yük Dengeleme kuralları.
+If your scenario requires that you configure more than one HA port front end for the same back-end pool, you can do the following: 
+- Configure more than one front-end private IP address for a single internal Standard Load Balancer resource.
+- Configure multiple load-balancing rules, where each rule has a single unique front-end IP address selected.
+- Select the **HA ports** option, and then set **Floating IP** to **Enabled** for all the load-balancing rules.
 
-### <a name="an-internal-load-balancer-with-ha-ports-and-a-public-load-balancer-on-the-same-back-end-instance"></a>HA bağlantı noktaları ve aynı arka uç örneğinde bir genel yük dengeleyici ile iç yük dengeleyici
+### <a name="an-internal-load-balancer-with-ha-ports-and-a-public-load-balancer-on-the-same-back-end-instance"></a>An internal load balancer with HA ports and a public load balancer on the same back-end instance
 
-Yapılandırabileceğiniz *bir* tek iç standart yük dengeleyici HA bağlantı noktaları ile birlikte arka uç kaynakları için genel bir Standard Load Balancer kaynağı.
+You can configure *one* public Standard Load Balancer resource for the back-end resources, along with a single internal Standard Load Balancer with HA ports.
 
 >[!NOTE]
->Bu özellik şu anda Azure Resource Manager şablonları kullanılabilir, ancak Azure portalı üzerinden kullanılabilir değil.
+>This capability is currently available via Azure Resource Manager templates, but it is not available via the Azure portal.
 
 ## <a name="limitations"></a>Sınırlamalar
 
-- HA bağlantı noktaları Yük Dengeleme kuralları yalnızca iç Standart Load Balancer için kullanılabilir.
-- Birleştirme, bir HA bağlantı noktaları Yük Dengeleme kuralı ve bir HA olmayan bağlantı noktaları Yük Dengeleme kuralı desteklenmiyor.
-- Mevcut IP parçaları, ilk paket ile aynı hedefe HA bağlantı noktaları Yük Dengeleme kuralları tarafından iletilir.  IP fragmenting bir UDP veya TCP paketi desteklenmez.
-- HA bağlantı noktaları Yük Dengeleme kuralları IPv6 için kullanılamaz.
-- Akış simetrileri (öncelikli olarak NVA senaryolarında), yalnızca Yukarıdaki diyagramda gösterildiği gibi kullanıldığında ve HA bağlantı noktaları Yük Dengeleme kuralları kullanıldığında, arka uç örneği ve tek bir NIC (ve tek IP yapılandırması) ile desteklenir. Başka hiçbir senaryoda sağlanmaz. Bu, iki veya daha fazla Load Balancer kaynağı ve ilgili kuralları bağımsız kararlar verirken ve hiçbir şekilde koordine etmediği anlamına gelir. Açıklamasına bakın ve için diyagram [ağ sanal Gereçleri](#nva). Birden çok NIC kullandığınızda veya bir ortak ve dahili Load Balancer arasında NVA 'yı kullanarak, Flow simetri kullanılamıyor.  Yanıtların aynı NVA 'ya ulaşmasına izin vermek için, giriş akışını gereç IP 'si ile çözmek için kaynak tarafından geçici bir çözüm bulabilirsiniz.  Ancak, tek bir NIC kullanmanız ve Yukarıdaki diyagramda gösterilen başvuru mimarisini kullanmanız önemle önerilir.
+- HA ports load-balancing rules are available only for internal Standard Load Balancer.
+- The combining of an HA ports load-balancing rule and a non-HA ports load-balancing rule is not supported.
+- Existing IP fragments will be forwarded by HA Ports load-balancing rules to same destination as first packet.  IP fragmenting a UDP or TCP packet is not supported.
+- The HA ports load-balancing rules are not available for IPv6.
+- Flow symmetry (primarily for NVA scenarios) is supported with backend instance and a single NIC (and single IP configuration) only when used as shown in the diagram above and using HA Ports load-balancing rules. It is not provided in any other scenario. This means that two or more Load Balancer resources and their respective rules make independent decisions and are never coordinated. See the description and diagram for [network virtual appliances](#nva). When you are using multiple NICs or sandwiching the NVA between a public and internal Load Balancer, flow symmetry is not available.  You may be able to work around this by source NAT'ing the ingress flow to the IP of the appliance to allow replies to arrive on the same NVA.  However, we strongly recommend using a single NIC and using the reference architecture shown in the diagram above.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [HA bağlantı noktaları üzerinde iç standart Load Balancer yapılandırma](load-balancer-configure-ha-ports.md)
-- [Standart Load Balancer hakkında bilgi edinin](load-balancer-standard-overview.md)
+- [Configure HA ports on an internal Standard Load Balancer](load-balancer-configure-ha-ports.md)
+- [Learn about Standard Load Balancer](load-balancer-standard-overview.md)

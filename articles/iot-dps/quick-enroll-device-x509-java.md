@@ -1,5 +1,5 @@
 ---
-title: "Hızlı başlangıç: Java kullanarak X. 509.952 cihazlarını Azure cihaz sağlama hizmeti 'ne kaydetme"
+title: Enroll X.509 devices to Azure Device Provisioning Service using Java
 description: Bu hızlı başlangıçta hem grup kayıtları hem de bireysel kayıtlar kullanılmaktadır. Bu hızlı başlangıçta Java kullanarak X.509 cihazlarını Azure IoT Hub Cihaz Sağlama Hizmeti'ne kaydedeceksiniz.
 author: wesmc7777
 ms.author: wesmc
@@ -7,15 +7,14 @@ ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 8a1accf232b022bc3028f91d2151c00b98969f1f
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 076e1e10a704451d657e4d18afedb6bd388f7686
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904775"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229517"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>Hızlı başlangıç: Java kullanarak X.509 cihazlarını Cihaz Sağlama Hizmeti'ne kaydetme
 
@@ -109,7 +108,7 @@ Aşağıdaki adımlarda örnek koda X.509 cihazınızın sağlama ayrıntıları
                         "-----END CERTIFICATE-----\n";
                 ```
 
-        9. Komut penceresini kapatın veya **Verification Code** (Doğrulama Kodu) istendiğinde *n* girin. 
+        9. Komut penceresini kapatın veya *Verification Code* (Doğrulama Kodu) istendiğinde **n** girin. 
  
     3. İsteğe bağlı olarak örnek kod aracılığıyla sağlama hizmetinizi de yapılandırabilirsiniz:
         - Örneğe bu yapılandırmayı eklemek için aşağıdaki adımları izleyin:
@@ -167,16 +166,16 @@ Aşağıdaki adımlarda örnek koda X.509 cihazınızın sağlama ayrıntıları
 
 ## <a name="modifications-to-enroll-a-single-x509-device"></a>Tek bir X.509 cihazını kaydetmek için yapmanız gereken değişiklikler
 
-Tek bir X.509 cihazını kaydetmek için *Java hizmet SDK'sını kullanarak TPM cihazını IoT Hub Cihaz Sağlama Hizmeti'ne kaydetme* bölümünde kullanılan [bireysel kayıt](quick-enroll-device-tpm-java.md#javasample) örnek kodunu aşağıdaki şekilde değiştirin:
+Tek bir X.509 cihazını kaydetmek için [Java hizmet SDK'sını kullanarak TPM cihazını IoT Hub Cihaz Sağlama Hizmeti'ne kaydetme](quick-enroll-device-tpm-java.md#javasample) bölümünde kullanılan *bireysel kayıt* örnek kodunu aşağıdaki şekilde değiştirin:
 
-1. X.509 istemci sertifikanızın *Ortak Ad* değerini panoya kopyalayın. _Yukarıdaki örnek kod bölümünde_ gösterilen [X.509 certificate generator](#javasample) aracını kullanmak isterseniz sertifikanız için bir _Ortak Ad_ girin veya varsayılan **microsoftriotcore** değerini kullanın. Bu **Ortak Ad** değerini *REGISTRATION_ID* değişkeni için kullanın. 
+1. X.509 istemci sertifikanızın *Ortak Ad* değerini panoya kopyalayın. [Yukarıdaki örnek kod bölümünde](#javasample) gösterilen _X.509 certificate generator_ aracını kullanmak isterseniz sertifikanız için bir _Ortak Ad_ girin veya varsayılan **microsoftriotcore** değerini kullanın. Bu **Ortak Ad** değerini *REGISTRATION_ID* değişkeni için kullanın. 
 
     ```Java
     // Use common name of your X.509 client certificate
     private static final String REGISTRATION_ID = "[RegistrationId]";
     ```
 
-2. *TPM_ENDORSEMENT_KEY* değişkeninin adını *PUBLIC_KEY_CERTIFICATE_STRING* olarak değiştirin. İstemci sertifikanızı veya **X.509 certificate generator** aracının oluşturduğu _Client Cert_ değerini kopyalayıp *PUBLIC_KEY_CERTIFICATE_STRING* değişkeninin değeri olarak kullanın. 
+2. *TPM_ENDORSEMENT_KEY* değişkeninin adını *PUBLIC_KEY_CERTIFICATE_STRING* olarak değiştirin. İstemci sertifikanızı veya _X.509 certificate generator_ aracının oluşturduğu **Client Cert** değerini kopyalayıp *PUBLIC_KEY_CERTIFICATE_STRING* değişkeninin değeri olarak kullanın. 
 
     ```Java
     // Rename the variable *TPM_ENDORSEMENT_KEY* as *PUBLIC_KEY_CERTIFICATE_STRING*
@@ -207,7 +206,7 @@ Java hizmeti örneğini keşfetmeye devam etmeyi planlıyorsanız, bu Hızlı Ba
 
 1. Makinenizdeki Java örnek çıktı penceresini kapatın.
 1. Makinenizde _X509 Cert Generator_ penceresini kapatın.
-1. Azure portal cihaz sağlama hizmetine gidin, kayıtları **Yönet**' e tıklayın ve ardından **kayıt grupları** sekmesini seçin. bu hızlı başlangıcı kullanarak kaydettiğiniz X. 509.440 cihazları için *Grup adını* seçin ve dikey pencerenin en üstündeki **Sil** düğmesine tıklayın.  
+1. Navigate to your Device Provisioning service in the Azure portal, click **Manage enrollments**, and then select the **Enrollment Groups** tab. Select the *GROUP NAME* for the X.509 devices you enrolled using this Quickstart, and click the **Delete** button at the top of the blade.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu Hızlı Başlangıçta sanal X.509 cihazlarından oluşan bir grubu Cihaz Sağlama hizmetinize kaydettiniz. Cihaz sağlama hakkında ayrıntılı bilgi edinmek için Azure portalında Cihaz Sağlama Hizmeti ayarları öğreticisine geçin. 

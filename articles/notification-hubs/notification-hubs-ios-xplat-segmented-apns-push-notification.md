@@ -1,6 +1,6 @@
 ---
-title: Azure Notification Hubs kullanarak belirli iOS cihazlarına anında iletme bildirimleri gönderin | Microsoft Docs
-description: Bu öğreticide, belirli iOS cihazlarına anında iletme bildirimleri göndermek için Azure Notification Hubs kullanmayı öğreneceksiniz.
+title: Push notifications to specific iOS devices using Azure Notification Hubs | Microsoft Docs
+description: In this tutorial, you learn how to use Azure Notification Hubs to send push notifications to specific iOS devices.
 services: notification-hubs
 documentationcenter: ios
 author: sethmanheim
@@ -12,56 +12,57 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 07/28/2019
+ms.date: 11/07/2019
 ms.author: sethm
 ms.reviewer: jowargo
-ms.lastreviewed: 07/28/2019
-ms.openlocfilehash: 8299725cf6977ca309d57b40f4792ff9b074a8cb
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.lastreviewed: 11/07/2019
+ms.openlocfilehash: 0cf593ce4ab9e0ba299d10b34422ee30661f38a9
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213220"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228154"
 ---
-# <a name="tutorial-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>Öğretici: Azure Notification Hubs kullanarak belirli iOS cihazlarına anında iletme bildirimleri gönderin
+# <a name="tutorial-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>Tutorial: Push notifications to specific iOS devices using Azure Notification Hubs
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu öğreticide, bir iOS uygulamasına uyarı haber bildirimleri yayınlamak için Azure Notification Hubs 'nin nasıl kullanılacağı gösterilmektedir. Bu tamamlandığında, ilgilendiğiniz son haber kategorilerine kaydolabilir ve yalnızca bu kategorilerin anında iletme bildirimlerini alabilirsiniz. Bu senaryo, daha önce ilgisini belirtmiş kullanıcı gruplarına bildirim gönderilmesi gereken RSS okuyucu, müzik hayranlarına yönelik uygulamalar vb. birçok uygulama için ortak düzendir.
+This tutorial shows you how to use Azure Notification Hubs to broadcast breaking news notifications to an iOS app. When complete, you are able to register for breaking news categories you are interested in, and receive only push notifications for those categories. Bu senaryo, daha önce ilgisini belirtmiş kullanıcı gruplarına bildirim gönderilmesi gereken RSS okuyucu, müzik hayranlarına yönelik uygulamalar vb. birçok uygulama için ortak düzendir.
 
-Yayın senaryoları, bildirim hub’ında bir kayıt oluştururken bir veya daha fazla *etiket* dahil edilerek etkinleştirilir. Bildirimler bir etikete gönderildiğinde, etiket için kaydedilen cihazlar bildirimi alır. Etiketler basitçe birer dize olduğundan, önceden hazırlanması gerekmez. Etiketler hakkında daha fazla bilgi için bkz. [Notification Hubs Yönlendirme ve Etiket İfadeleri](notification-hubs-tags-segment-push-message.md).
+Yayın senaryoları, bildirim hub’ında bir kayıt oluştururken bir veya daha fazla *etiket* dahil edilerek etkinleştirilir. When notifications are sent to a tag, devices that have registered for the tag receive the notification. Etiketler basitçe birer dize olduğundan, önceden hazırlanması gerekmez. Etiketler hakkında daha fazla bilgi için bkz. [Notification Hubs Yönlendirme ve Etiket İfadeleri](notification-hubs-tags-segment-push-message.md).
 
 Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 
 > [!div class="checklist"]
-> * Uygulamaya kategori seçimi ekleme
+> * Add a category selection to the app
 > * Etiketli bildirimler gönderme
-> * Cihazdan bildirim gönder
+> * Send notifications from the device
 > * Uygulamayı çalıştırma ve bildirimler oluşturma
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu konu, [öğreticide oluşturduğunuz uygulamayı oluşturur: Azure Notification Hubs][get-started]kullanarak iOS uygulamalarına anında iletme bildirimleri gönderin. Bu öğreticiye başlamadan önce, zaten öğreticiyi tamamlamış [olmanız gerekir: Azure Notification Hubs][get-started]kullanarak iOS uygulamalarına anında iletme bildirimleri gönderin.
+This topic builds on the app you created in [Tutorial: Push notifications to iOS apps using Azure Notification Hubs][get-started]. Before starting this tutorial, you must have already completed [Tutorial: Push notifications to iOS apps using Azure Notification Hubs][get-started].
 
 ## <a name="add-category-selection-to-the-app"></a>Uygulamaya kategori seçimi ekleme
 
-İlk adım, kullanıcı ARABIRIMI öğelerini, kullanıcının kaydedileceği kategorileri seçmesini sağlayan mevcut görsel taslağınızı eklemektir. Bir kullanıcı tarafından seçilen kategoriler cihazda depolanır. Uygulama başlatıldığında, etiketler olarak seçilen kategorilerle bildirim hub’ınızda bir cihaz kaydı oluşturulur.
+The first step is to add the UI elements to your existing storyboard that enable the user to select categories to register. Bir kullanıcı tarafından seçilen kategoriler cihazda depolanır. Uygulama başlatıldığında, etiketler olarak seçilen kategorilerle bildirim hub’ınızda bir cihaz kaydı oluşturulur.
 
-1. **MainStoryboard_iPhone. görsel taslağınızdan** , nesne kitaplığından aşağıdaki bileşenleri ekleyin:
+1. In your **MainStoryboard_iPhone.storyboard** add the following components from the object library:
 
-   * "Son haberler" metni olan bir etiket,
-   * Kategori metinleri "Dünya", "siyatik", "Iş", "teknoloji", "bilim", "spor", "spor" içeren Etiketler
-   * Her kategori için bir adet olmak üzere altı anahtar, her anahtar **durumunu** varsayılan olarak **kapalı** olacak şekilde ayarlar.
-   * "Abone ol" etiketli bir düğme
+   * A label with "Breaking News" text,
+   * Labels with category texts "World", "Politics", "Business", "Technology", "Science", "Sports",
+   * Six switches, one per category, set each switch **State** to be **Off** by default.
+   * One button labeled "Subscribe"
 
-     Görsel taslağınızı aşağıdaki gibi görünmelidir:
+     Your storyboard should look as follows:
 
-     ![Xcode arabirim Oluşturucusu][3]
+     ![Xcode interface builder][3]
 
-2. Yardımcı düzenleyicide tüm anahtarlar için bir dış grup oluşturun ve bunları "WorldSwitch", "PoliticsSwitch", "BusinessSwitch", "TechnologySwitch", "ScienceSwitch", "SportsSwitch" olarak çağırın
-3. Düğme adlı `subscribe` `ViewController.h` düğmelisiniz için bir eylem oluşturun; aşağıdaki kodu içermelidir:
+2. In the assistant editor, create outlets for all the switches and call them "WorldSwitch", "PoliticsSwitch", "BusinessSwitch", "TechnologySwitch", "ScienceSwitch", "SportsSwitch"
+
+3. Create an Action for your button called `subscribe`; your `ViewController.h` should contain the following code:
 
     ```objc
     @property (weak, nonatomic) IBOutlet UISwitch *WorldSwitch;
@@ -74,7 +75,7 @@ Bu konu, [öğreticide oluşturduğunuz uygulamayı oluşturur: Azure Notificati
     - (IBAction)subscribe:(id)sender;
     ```
 
-4. Adlı`Notifications`yeni bir **Cocoa Touch sınıfı** oluşturun. Aşağıdaki kodu, Notifications. h dosyasının interface bölümüne kopyalayın:
+4. Create a new **Cocoa Touch Class** called `Notifications`. Copy the following code in the interface section of the file Notifications.h:
 
     ```objc
     @property NSData* deviceToken;
@@ -89,13 +90,13 @@ Bu konu, [öğreticide oluşturduğunuz uygulamayı oluşturur: Azure Notificati
     - (void)subscribeWithCategories:(NSSet*)categories completion:(void (^)(NSError *))completion;
     ```
 
-5. Aşağıdaki import yönergesini bildirimlere ekleyin. d:
+5. Add the following import directive to Notifications.m:
 
     ```objc
     #import <WindowsAzureMessaging/WindowsAzureMessaging.h>
     ```
 
-6. Aşağıdaki kodu, bildirimler. d dosyasının uygulama bölümüne kopyalayın.
+6. Copy the following code in the implementation section of the file Notifications.m.
 
     ```objc
     SBNotificationHub* hub;
@@ -135,9 +136,9 @@ Bu konu, [öğreticide oluşturduğunuz uygulamayı oluşturur: Azure Notificati
     }
     ```
 
-    Bu sınıf, bu cihazın aldığı haber kategorilerini depolamak ve almak için yerel depolama alanını kullanır. Ayrıca, bir [şablon](notification-hubs-templates-cross-platform-push-messages.md) kaydı kullanarak bu kategorilere kaydolmak için bir yöntem içerir.
+    This class uses local storage to store and retrieve the categories of news that this device receives. Also, it contains a method to register for these categories using a [Template](notification-hubs-templates-cross-platform-push-messages.md) registration.
 
-7. Dosyasında, için `Notifications.h` bir içeri aktarma açıklaması ekleyin ve `Notifications` sınıfın bir örneği için bir özellik ekleyin: `AppDelegate.h`
+7. In the `AppDelegate.h` file, add an import statement for `Notifications.h` and add a property for an instance of the `Notifications` class:
 
     ```objc
     #import "Notifications.h"
@@ -145,8 +146,8 @@ Bu konu, [öğreticide oluşturduğunuz uygulamayı oluşturur: Azure Notificati
     @property (nonatomic) Notifications* notifications;
     ```
 
-8. `didFinishLaunchingWithOptions` İçindeki`AppDelegate.m`yönteminde, yönteminin başındaki bildirimler örneğini başlatmak için kodu ekleyin.  
-    `HUBNAME`ve `HUBLISTENACCESS` (içinde `hubinfo.h`tanımlanan), `<hub name>` Bildirim Hub 'ı adı `<connection string with listen access>` ve aldığınız *defaultlistensharedaccesssignature* bağlantı dizesi ile değiştirilmiş olan ve yer tutucuları zaten olmalıdır öncesiyle
+8. In the `didFinishLaunchingWithOptions` method in `AppDelegate.m`, add the code to initialize the notifications instance at the beginning of the method.  
+    `HUBNAME` and `HUBLISTENACCESS` (defined in `hubinfo.h`) should already have the `<hub name>` and `<connection string with listen access>` placeholders replaced with your notification hub name and the connection string for *DefaultListenSharedAccessSignature* that you obtained earlier
 
     ```objc
     self.notifications = [[Notifications alloc] initWithConnectionString:HUBLISTENACCESS HubName:HUBNAME];
@@ -155,10 +156,10 @@ Bu konu, [öğreticide oluşturduğunuz uygulamayı oluşturur: Azure Notificati
     > [!NOTE]
     > Bir istemci uygulaması ile dağıtılmış kimlik bilgileri genellikle güvenli olmadığından yalnızca istemci uygulamanızla dinleme erişimi için anahtarı dağıtmanız gerekir. Dinleme erişimi, uygulamanızın bildirimlere kaydolmasını sağlar, ancak mevcut kayıtlar değiştirilemez ve bildirimler gönderilemez. Tam erişim anahtarı, güvenli bir arka uç hizmetinde bildirimler göndermek ve mevcut kayıtları değiştirmek için kullanılır.
 
-9. `notifications` İçindeki `didRegisterForRemoteNotificationsWithDeviceToken` yönteminde,yöntemiiçindekikoduaşağıdakikodladeğiştirinvecihazbelirtecinisınıfageçirin.`AppDelegate.m` `notifications` Sınıfı, kategoriler ile bildirimler için kayıt işlemini gerçekleştirir. Kullanıcı kategori seçimlerini değiştirirse, güncelleştirmek için `subscribeWithCategories` **abone ol** düğmesine yanıt olarak yöntemi çağırın.
+9. In the `didRegisterForRemoteNotificationsWithDeviceToken` method in `AppDelegate.m`, replace the code in the method with the following code to pass the device token to the `notifications` class. The `notifications` class performs the registering for notifications with the categories. If the user changes category selections, call the `subscribeWithCategories` method in response to the **subscribe** button to update them.
 
     > [!NOTE]
-    > Apple Anında İletilen Bildirim Servisi (APNS) tarafından atanan cihaz belirteci herhangi bir zamanda şans sağladığından, bildirim hatalarından kaçınmak için sık sık bildirimlere kaydolmanız gerekir. Bu örnek, uygulama her başlatıldığında bildirimlere kaydolur. Sık sık çalıştırılan uygulamalar için, önceki kayıttan bu yana bir günden az zaman geçtiyse bant genişliğini korumak için günde birkaç kere kaydı atlayabilirsiniz.
+    > Because the device token assigned by the Apple Push Notification Service (APNS) can chance at any time, you should register for notifications frequently to avoid notification failures. Bu örnek, uygulama her başlatıldığında bildirimlere kaydolur. Sık sık çalıştırılan uygulamalar için, önceki kayıttan bu yana bir günden az zaman geçtiyse bant genişliğini korumak için günde birkaç kere kaydı atlayabilirsiniz.
 
     ```objc
     self.notifications.deviceToken = deviceToken;
@@ -174,9 +175,9 @@ Bu konu, [öğreticide oluşturduğunuz uygulamayı oluşturur: Azure Notificati
     }];
     ```
 
-    Bu noktada, `didRegisterForRemoteNotificationsWithDeviceToken` yönteminde başka kod olmaması gerekir.
+    At this point, there should be no other code in the `didRegisterForRemoteNotificationsWithDeviceToken` method.
 
-10. Aşağıdaki yöntemlerin ' de `AppDelegate.m` zaten mevcut olması gerekir [Notification Hubs öğreticisiyle çalışmaya başlama][get-started] . Aksi takdirde, bunları ekleyin.
+10. The following methods should already be present in `AppDelegate.m` from completing the [Get started with Notification Hubs][get-started] tutorial. If not, add them.
 
     ```objc
     - (void)MessageBox:(NSString *)title message:(NSString *)messageText
@@ -194,9 +195,9 @@ Bu konu, [öğreticide oluşturduğunuz uygulamayı oluşturur: Azure Notificati
      }
     ```
 
-    Bu yöntem, uygulama çalışırken bir basit **Uıalert**görüntüleyerek alınan bildirimleri işler.
+    This method handles notifications received when the app is running by displaying a simple **UIAlert**.
 
-11. İçinde `ViewController.m`, için `import` `subscribe` bir ifade ekleyin ve aşağıdaki kodu Xcode tarafından oluşturulan yönteme kopyalayın. `AppDelegate.h` Bu kod, kullanıcının Kullanıcı arabiriminde seçtiği yeni kategori etiketlerini kullanmak için bildirim kaydını güncelleştirir.
+11. In `ViewController.m`, add an `import` statement for `AppDelegate.h` and copy the following code into the XCode-generated `subscribe` method. This code updates the notification registration to use the new category tags the user has chosen in the user interface.
 
     ```objc
     #import "Notifications.h"
@@ -223,9 +224,9 @@ Bu konu, [öğreticide oluşturduğunuz uygulamayı oluşturur: Azure Notificati
     }];
     ```
 
-    Bu yöntem, bir `NSMutableArray` kategoriler oluşturur ve bu `Notifications` sınıfı, listeyi yerel depolama alanında depolamak için kullanır ve karşılık gelen etiketleri Bildirim Hub 'ınızla kaydeder. Kategoriler değiştirildiğinde kayıt yeni kategorilerle yeniden oluşturulur.
+    This method creates an `NSMutableArray` of categories and uses the `Notifications` class to store the list in the local storage and registers the corresponding tags with your notification hub. Kategoriler değiştirildiğinde kayıt yeni kategorilerle yeniden oluşturulur.
 
-12. İçinde `ViewController.m`, daha önce kaydedilen kategorilere göre Kullanıcı `viewDidLoad` arabirimini ayarlamak için yöntemine aşağıdaki kodu ekleyin.
+12. In `ViewController.m`, add the following code in the `viewDidLoad` method to set the user interface based on the previously saved categories.
 
     ```objc
     // This updates the UI on startup based on the status of previously saved categories.
@@ -242,19 +243,19 @@ Bu konu, [öğreticide oluşturduğunuz uygulamayı oluşturur: Azure Notificati
     if ([categories containsObject:@"Sports"]) self.SportsSwitch.on = true;
     ```
 
-Uygulama artık uygulama başlatıldığında bildirim hub 'ına kaydolmak için kullanılan cihaz yerel depolama alanında bir kategori kümesini saklayabilir. Kullanıcı çalışma zamanında kategorilerin seçimini değiştirebilir ve cihaz kaydını güncelleştirmek için `subscribe` yönteme tıklayabilirsiniz. Ardından uygulamayı, son haber bildirimlerini doğrudan uygulamanın kendisinde gönderecek şekilde güncelleştirebilirsiniz.
+The app can now store a set of categories in the device local storage used to register with the notification hub whenever the app starts. The user can change the selection of categories at runtime and click the `subscribe` method to update the registration for the device. Next, you update the app to send the breaking news notifications directly in the app itself.
 
-## <a name="optional-send-tagged-notifications"></a>seçim Etiketli bildirimler gönder
+## <a name="optional-send-tagged-notifications"></a>(optional) Send tagged notifications
 
-Visual Studio 'ya erişiminiz yoksa, sonraki bölüme atlayabilir ve uygulamanın kendisinden bildirim gönderebilirsiniz. Ayrıca, Bildirim Hub 'ınızın hata ayıklama sekmesini kullanarak [Azure Portal] uygun şablon bildirimini de gönderebilirsiniz.
+If you don't have access to Visual Studio, you can skip to the next section and send notifications from the app itself. You can also send the proper template notification from the [Azure portalda] using the debug tab for your notification hub.
 
 [!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
-## <a name="optional-send-notifications-from-the-device"></a>seçim Cihazdan bildirim gönder
+## <a name="optional-send-notifications-from-the-device"></a>(optional) Send notifications from the device
 
-Normalde bildirimler bir arka uç hizmeti tarafından gönderilebilir, ancak uygulamadan doğrudan haber bildirimleri gönderebilirsiniz. Bunu yapmak için, `SendNotificationRESTAPI` [Notification Hubs ile çalışmaya başlama][get-started] öğreticisinde tanımladığınız yöntemi güncelleştirin.
+Normally notifications would be sent by a backend service but, you can send breaking news notifications directly from the app. To do so, you update the `SendNotificationRESTAPI` method that you defined in the [Get started with Notification Hubs][get-started] tutorial.
 
-1. İçinde `ViewController.m`, category etiketi `SendNotificationRESTAPI` için bir parametre kabul etmek ve uygun [şablon](notification-hubs-templates-cross-platform-push-messages.md) bildirimini göndermesi için yöntemini aşağıdaki gibi güncelleştirin.
+1. In `ViewController.m`, update the `SendNotificationRESTAPI` method as follows so that it accepts a parameter for the category tag and sends the proper [template](notification-hubs-templates-cross-platform-push-messages.md) notification.
 
     ```objc
     - (void)SendNotificationRESTAPI:(NSString*)categoryTag
@@ -315,7 +316,7 @@ Normalde bildirimler bir arka uç hizmeti tarafından gönderilebilir, ancak uyg
     }
     ```
 
-2. İçinde `ViewController.m`, aşağıdaki kodda `Send Notification` gösterildiği gibi eylemi güncelleştirin. Her bir etiketi kullanarak bildirimleri tek tek ve birden çok platforma gönderecek şekilde gönderir.
+2. In `ViewController.m`, update the `Send Notification` action as shown in the code that follows. So that it sends the notifications using each tag individually and sends to multiple platforms.
 
     ```objc
     - (IBAction)SendNotificationMessage:(id)sender
@@ -334,25 +335,25 @@ Normalde bildirimler bir arka uç hizmeti tarafından gönderilebilir, ancak uyg
     }
     ```
 
-3. Projenizi yeniden derleyin ve derleme hatası olmadığından emin olun.
+3. Rebuild your project and make sure you have no build errors.
 
 ## <a name="run-the-app-and-generate-notifications"></a>Uygulamayı çalıştırma ve bildirimler oluşturma
 
-1. Projeyi derlemek ve uygulamayı başlatmak için Çalıştır düğmesine basın. Abone olmak ve **abone ol** düğmesine basın için bazı önemli haber seçeneklerini belirleyin. Abone olunan bildirimleri belirten bir iletişim kutusu görmeniz gerekir.
+1. Press the Run button to build the project and start the app. Select some breaking news options to subscribe to and then press the **Subscribe** button. You should see a dialog indicating the notifications have been subscribed to.
 
-    ![İOS üzerinde örnek bildirim][1]
+    ![Example notification on iOS][1]
 
-    **Abone ol**' u seçtiğinizde, uygulama seçilen kategorileri etiketlere dönüştürür ve Bildirim Hub 'ından seçilen Etiketler için yeni bir cihaz kaydı ister.
+    When you choose **Subscribe**, the app converts the selected categories into tags and requests a new device registration for the selected tags from the notification hub.
 
-2. Son Haberler olarak gönderilecek bir ileti girin ve ardından **bildirim gönder** düğmesine basın. Alternatif olarak, bildirimler oluşturmak için .NET konsol uygulamasını çalıştırın.
+2. Enter a message to be sent as breaking news then press the **Send Notification** button. Alternatively, run the .NET console app to generate notifications.
 
-    ![İOS 'da bildirim tercihlerini değiştirme][2]
+    ![Change notification preferences in iOS][2]
 
-3. Son haberlere abone olan her cihaz, gönderdiğiniz son haber bildirimlerini alır.
+3. Each device subscribed to breaking news receives the breaking news notifications you just sent.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, Kategoriler için kayıtlı olan belirli iOS cihazlarına yayın bildirimleri gönderdiniz. Yerelleştirilmiş bildirimleri gönderme hakkında bilgi edinmek için aşağıdaki öğreticiye ilerleyin:
+In this tutorial, you sent broadcast notifications to specific iOS devices that have registered for the categories. To learn how to push localized notifications, advance to the following tutorial:
 
 > [!div class="nextstepaction"]
 >[Yerelleştirilmiş anında iletme bildirimleri gönderme](notification-hubs-ios-xplat-localized-apns-push-notification.md)
@@ -370,4 +371,4 @@ Bu öğreticide, Kategoriler için kayıtlı olan belirli iOS cihazlarına yayı
 [Notification Hubs Guidance]: https://msdn.microsoft.com/library/dn530749.aspx
 [Notification Hubs How-To for iOS]: https://msdn.microsoft.com/library/jj927168.aspx
 [get-started]: notification-hubs-ios-apple-push-notification-apns-get-started.md
-[Azure portal]: https://portal.azure.com
+[Azure portalda]: https://portal.azure.com

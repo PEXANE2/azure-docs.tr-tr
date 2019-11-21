@@ -1,130 +1,130 @@
 ---
-title: Öğretici - Azure bütçelerini yönetin ve oluşturun | Microsoft Docs
-description: Bu öğretici, plan ve hesap Fiyatlar, kullandığınız Azure Hizmetleri için yardımcı olur.
+title: Tutorial - Create and manage Azure budgets | Microsoft Docs
+description: This tutorial helps plan and account for the costs of Azure services that you consume.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 11/12/2019
 ms.topic: conceptual
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: adwise
 ms.custom: seodec18
-ms.openlocfilehash: c4de8b0d78d66709d13526c69f9d33b16dbad1dc
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: edb46bc361c515439a93d9c3d0b9987bebe4b1b1
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74010231"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229869"
 ---
-# <a name="tutorial-create-and-manage-azure-budgets"></a>Öğretici: Oluşturma ve Azure bütçelerini yönetin
+# <a name="tutorial-create-and-manage-azure-budgets"></a>Tutorial: Create and manage Azure budgets
 
-Maliyet Yönetimi hizmetindeki bütçe işlevi, kuruluşunuzda sorumluluk kültürünü planlamanıza ve güçlendirmenize yardımcı olur. Bütçeleri kullanarak belirli bir dönem içinde kullandığınız veya abone olduğunuz Azure hizmetlerini takip edebilirsiniz. Diğerleri kendi proaktif olarak maliyetleri yönetmek ve harcama zaman içinde nasıl ilerledikçe izlemek için harcama hakkında bildirmenize yardımcı olurlar. Oluşturduğunuz bütçe eşikleri aşıldığında yalnızca bildirimleri tetiklenir. Kaynaklarınızı hiçbiri etkilenir ve tüketiminiz durduruldu değil. Bütçe karşılaştırın ve maliyetleri analiz ederken harcama izlemek için kullanabilirsiniz.
+Maliyet Yönetimi hizmetindeki bütçe işlevi, kuruluşunuzda sorumluluk kültürünü planlamanıza ve güçlendirmenize yardımcı olur. Bütçeleri kullanarak belirli bir dönem içinde kullandığınız veya abone olduğunuz Azure hizmetlerini takip edebilirsiniz. They help you inform others about their spending to proactively manage costs, and to monitor how spending progresses over time. When the budget thresholds you've created are exceeded, only notifications are triggered. None of your resources are affected and your consumption isn't stopped. You can use budgets to compare and track spending as you analyze costs.
 
-Maliyet ve kullanım verileri genellikle 12-16 saat içinde kullanılabilir ve bütçeler her dört saatte bir bu maliyetlere göre değerlendirilir. E-posta bildirimleri normalde 12-16 saat içinde alınır.
+Cost and usage data is typically available within 12-16 hours and budgets are evaluated against these costs every four hours. Email notifications are normally received within 12-16 hours.
 
-Bütçe gelecekte bir sona erme tarihi seçtiğinizde aynı bütçe tutarını (aylık, üç aylık veya yıllık) bir süre sonunda otomatik olarak sıfırlama. Bütçelenen zaman ayrı bütçelerini oluşturmanıza gerek bunlar ile aynı bütçe miktarını sıfırlamak için para birimi tutarlar gelecek dönemlere ait farklı.
+Budgets reset automatically at the end of a period (monthly, quarterly, or annually) for the same budget amount when you select an expiration date in the future. Because they reset with the same budget amount, you need to create separate budgets when budgeted currency amounts differ for future periods.
 
-Bu öğreticideki örneklerde oluşturmak ve düzenlemek için Azure Kurumsal Anlaşma (EA) aboneliğiniz bir bütçe size yol gösterir.
+The examples in this tutorial walk you through creating and editing a budget for an Azure Enterprise Agreement (EA) subscription.
 
-Azure 'da harcamalarınızı izlemek için Azure [maliyet yönetimi videosunun nasıl bütçe oluşturulacağını](https://www.youtube.com/watch?v=ExIVG_Gr45A) izleyin.
+Watch the [How to create a budget to monitor your spending with Azure Cost Management](https://www.youtube.com/watch?v=ExIVG_Gr45A) video to see how you can create budgets in Azure to monitor spending.
 
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Azure portalında bir bütçe oluşturun
-> * Bütçe Düzenle
+> * Create a budget in the Azure portal
+> * Edit a budget
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bütçeler, çeşitli Azure hesap türleri için desteklenir. Desteklenen hesap türlerinin tam listesini görüntülemek için bkz. [maliyet yönetimi verilerini anlama](understand-cost-mgt-data.md). Bütçeleri görüntülemek için, Azure hesabınız için en azından okuma erişiminizin olması gerekir.
+Budgets are supported for a variety of Azure account types. To view the full list of supported account types, see [Understand Cost Management data](understand-cost-mgt-data.md). To view budgets, you need at least read access for your Azure account.
 
- Azure EA abonelikleri için, bütçeleri görüntülemek için okuma erişiminizin olması gerekir. Oluşturma ve bütçelerini yönetmek için katkıda bulunan izni olmalıdır. EA aboneliklerinde ve kaynak gruplarınız için ayrı ayrı bütçeden oluşturabilirsiniz. Ancak, EA hesapları faturalama bütçelerini oluşturulamıyor.
+ For Azure EA subscriptions, you must have read access to view budgets. To create and manage budgets, you must have contributor permission. You can create individual budgets for EA subscriptions and resource groups. However, you cannot create budgets for EA billing accounts.
 
-Aşağıdaki Azure izinleri veya kapsamları, Kullanıcı ve grup bütçeleri için abonelik başına desteklenir. Kapsamlar hakkında daha fazla bilgi için bkz. [kapsamları anlama ve bunlarla çalışma](understand-work-scopes.md).
+The following Azure permissions, or scopes, are supported per subscription for budgets by user and group. For more information about scopes, see [Understand and work with scopes](understand-work-scopes.md).
 
 - Sahip – Bir abonelik için bütçe oluşturabilir, değiştirebilir veya silebilir.
-- Katkıda bulunan ve maliyet Yönetimi katkıda bulunan – oluşturmak, değiştirmek veya kendi bütçelerini silin. Başkaları tarafından oluşturulan bütçelerin miktarlarını değiştirebilir.
-- Okuyucu ve maliyet Yönetimi okuyucu – iznine sahip oldukları bütçelerini görüntüleyebilirsiniz.
+- Contributor and Cost Management contributor – Can create, modify, or delete their own budgets. Başkaları tarafından oluşturulan bütçelerin miktarlarını değiştirebilir.
+- Reader and Cost Management reader – Can view budgets that they have permission to.
 
-Maliyet Yönetimi verilerine izin atama hakkında daha fazla bilgi için bkz. [maliyet Yönetimi verilerine erişim atama](assign-access-acm-data.md).
+For more information about assigning permission to Cost Management data, see [Assign access to Cost Management data](assign-access-acm-data.md).
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+## <a name="sign-in-to-azure"></a>Azure'da oturum açın
 
 - https://portal.azure.com adresinden Azure portalında oturum açın.
 
-## <a name="create-a-budget-in-the-azure-portal"></a>Azure portalında bir bütçe oluşturun
+## <a name="create-a-budget-in-the-azure-portal"></a>Create a budget in the Azure portal
 
-Aylık, üç aylık veya yıllık bir dönem için bir Azure aboneliği bütçe oluşturabilirsiniz. Azure portal gezinti içeriğiniz, bir abonelik veya bir yönetim grubu için bir bütçe oluşturup oluşturamayacağını belirler.
+You can create an Azure subscription budget for a monthly, quarterly, or annual period. Your navigational content in the Azure portal determines whether you create a budget for a subscription or for a management group.
 
-Bir bütçe oluşturmak veya görüntülemek için, Azure portal istenen kapsamı açın ve menüdeki **bütçeler** ' ı seçin. Örneğin, **abonelikler**' e gidin, listeden bir abonelik seçin ve ardından menüdeki **bütçeler** ' ı seçin. Bütçeleri bir yönetim grubu gibi farklı bir kapsama geçmek için **kapsam** hap 'i kullanın. Kapsamlar hakkında daha fazla bilgi için bkz. [kapsamları anlama ve bunlarla çalışma](understand-work-scopes.md).
+To create or view a budget, open the desired scope in the Azure portal and select **Budgets** in the menu. For example, navigate to **Subscriptions**, select a subscription from the list, and then select **Budgets** in the menu. Use the **Scope** pill to switch to a different scope, like a management group, in Budgets. For more information about scopes, see [Understand and work with scopes](understand-work-scopes.md).
 
-Bütçe oluşturduktan sonra bunlar geçerli bunlara karşı harcamalarınızı basit bir görünümü gösterir.
+After you create budgets, they show a simple view of your current spending against them.
 
 **Ekle**'ye tıklayın.
 
-![Zaten oluşturulan bütçelerin listesini gösteren örnek](./media/tutorial-acm-create-budgets/budgets01.png)
+![Example showing a list of budgets already created](./media/tutorial-acm-create-budgets/budgets01.png)
 
-**Bütçe oluştur** penceresinde, gösterilen kapsamın doğru olduğundan emin olun. Eklemek istediğiniz filtreleri seçin. Filtreler, bir abonelikteki kaynak grupları veya sanal makineler gibi bir hizmet gibi belirli maliyetlerde bütçeler oluşturmanızı sağlar. Maliyet analizinde kullanabileceğiniz herhangi bir filtre de bir bütçeye uygulanabilir.
+In the **Create budget** window, make sure that the scope shown is correct. Choose any filters that you want to add. Filters allow you to create budgets on specific costs, such as resource groups in a subscription or a service like virtual machines. Any filter you can use in cost analysis can also be applied to a budget.
 
-Kapsamınızı ve filtrelerinizi tanımladıktan sonra bir bütçe adı yazın. Ardından, aylık, üç aylık veya yıllık bir bütçe sıfırlama dönemi seçin. Bu sıfırlama süresi, bütçe tarafından çözümlenen zaman penceresini belirler. Bütçe tarafından değerlendirilen maliyet her yeni dönemin başlangıcında sıfırdan başlar. Üç aylık bir bütçe oluşturduğunuzda, bir aylık bütçe aynı şekilde çalışır. Üç aylık dönem arasında üç aylık üç aylık dönem için bütçe miktarını şekilde eşit bölünür farktır. Yıllık bir bütçe miktarı, takvim yılının 12 ay boyunca eşit olarak bölünür.
+After you've identified your scope and filters, type a budget name. Then, choose a monthly, quarterly or annual budget reset period. This reset period determines the time window that's analyzed by the budget. The cost evaluated by the budget starts at zero at the beginning of each new period. When you create a quarterly budget, it works in the same way as a monthly budget. The difference is that the budget amount for the quarter is evenly divided among the three months of the quarter. An annual budget amount is evenly divided among all 12 months of the calendar year.
 
-Kullandıkça öde, MSDN veya Visual Studio aboneliğiniz varsa faturanızda fatura dönemi takvim ayına hizalanmayabilir. Bu abonelik türleri ve kaynak grupları için, fatura döneminize veya takvim aylarınıza göre hizalanan bir bütçe oluşturabilirsiniz. Fatura döneminize hizalanmış bir bütçe oluşturmak için fatura **ayı**, **Fatura çeyreği**veya **Fatura yılından**bir sıfırlama dönemi seçin. Takvim aya hizalanmış bir bütçe oluşturmak için **aylık**, **üç aylık**veya **yıllık**bir sıfırlama dönemi seçin.
+If you have a Pay-As-You-Go, MSDN, or Visual Studio subscription, your invoice billing period might not align to the calendar month. For those subscription types and resource groups, you can create a budget that's aligned to your invoice period or to calendar months. To create a budget aligned to your invoice period, select a reset period of **Billing month**, **Billing quarter**, or **Billing year**. To create a budget aligned to the calendar month, select a reset period of **Monthly**, **Quarterly**, or **Annually**.
 
-Ardından, bütçenin geçersiz hale geldiği ve maliyetlerinizi değerlendirmeyi durdurduğu sona erme tarihini belirleyebilirsiniz.
+Next, identify the expiration date when the budget becomes invalid and stops evaluating your costs.
 
-Bütçeye şu ana kadar seçtiğiniz alanlara bağlı olarak, bütçeniz için kullanılacak bir eşik seçmenize yardımcı olacak bir grafik gösterilir. Önerilen bütçe, gelecekteki dönemlerde tabi olabileceğiniz en yüksek tahmini maliyeti temel alır. Bütçe tutarını değiştirebilirsiniz.
+Based on the fields chosen in the budget so far, a graph is shown to help you select a threshold to use for your budget. The suggested budget is based on the highest forecasted cost that you might incur in future periods. You can change the budget amount.
 
-![Aylık maliyet verileriyle bütçe oluşturmayı gösteren örnek ](./media/tutorial-acm-create-budgets/monthly-budget01.png)
+![Example showing budget creation with monthly cost data ](./media/tutorial-acm-create-budgets/monthly-budget01.png)
 
-Bütçe tutarını yapılandırdıktan sonra, bütçe uyarılarını yapılandırmak için **İleri** ' ye tıklayın. Bütçe en az bir maliyet eşiği (% bütçe) ve karşılık gelen e-posta adresi gerektirir. İsteğe bağlı olarak, en fazla beş eşikleri ve tek bir bütçe içinde beş e-posta adresi ekleyebilirsiniz. Bir bütçe eşiği karşılandığında, e-posta bildirimleri genellikle 20 saatten az bir sürede alınır. Bildirimler hakkında daha fazla bilgi için bkz. [kullanım maliyeti uyarıları](cost-mgt-alerts-monitor-usage-spending.md). Aşağıdaki örnekte, bütçenin %90 ' ına ulaşıldığında bir e-posta uyarısı oluşturulur. Bütçeler API 'SI ile bir bütçe oluşturursanız, kullanıcılara uyarı almak için roller de atayabilirsiniz. Kişilere rol atama Azure portal desteklenmez. Azure bütçeleri API 'SI hakkında daha fazla bilgi için bkz. [Bütçe API 'si](/rest/api/consumption/budgets).
+After you configure the budget amount, click **Next** to configure budget alerts. Budgets require at least one cost threshold (% of budget) and a corresponding email address. You can optionally include up to five thresholds and five email addresses in a single budget. When a budget threshold is met, email notifications are normally received in less than 20 hours. For more information about notifications, see [Use cost alerts](cost-mgt-alerts-monitor-usage-spending.md). In the example below, an email alert gets generated when 90% of the budget is reached. If you create a budget with the Budgets API, you can also assign roles to people to receive alerts. Assigning roles to people isn't supported in the Azure portal. For more about the Azure budgets API, see [Budgets API](/rest/api/consumption/budgets).
 
-![Uyarı koşullarını gösteren örnek](./media/tutorial-acm-create-budgets/monthly-budget-alert.png)
+![Example showing alert conditions](./media/tutorial-acm-create-budgets/monthly-budget-alert.png)
 
-Bütçe oluşturduktan sonra maliyet analizi gösterilmektedir. Bütçenize göre harcama eğilimi görüntüleme olduğunda ilk adımlarından biri için başlangıç [maliyetlerinizi analiz edin ve harcama](quick-acm-cost-analysis.md).
+After you create a budget, it is shown in cost analysis. Viewing your budget in relation to your spending trend is one of the first steps when you start to [analyze your costs and spending](quick-acm-cost-analysis.md).
 
-![Örnek bütçe ve maliyet analizi gösterilen harcama](./media/tutorial-acm-create-budgets/cost-analysis.png)
+![Example budget and spending shown in cost analysis](./media/tutorial-acm-create-budgets/cost-analysis.png)
 
-Önceki örnekte, bir abonelik için bir bütçe oluşturuldu. Ancak, bir kaynak grubu için bütçe oluşturabilirsiniz. Bir kaynak grubu için bütçe oluşturmak istiyorsanız, gitmek **maliyet Yönetimi + faturalandırma** &gt; **abonelikleri** &gt; bir aboneliği seçin > **kaynak grupları** > bir kaynak grubu seçin > **bütçelerini** > ardından **Ekle** bütçe.
+In the preceding example, you created a budget for a subscription. However, you can also create a budget for a resource group. If you want to create a budget for a resource group, navigate to **Cost Management + Billing** &gt; **Subscriptions** &gt; select a subscription > **Resource groups** > select a resource group > **Budgets** > and then **Add** a budget.
 
-## <a name="trigger-an-action-group"></a>Bir eylem grubu tetikleyin
+## <a name="trigger-an-action-group"></a>Trigger an action group
 
-Bir abonelik veya kaynak grubu kapsamı için bir bütçe oluşturduğunuzda ya da düzenlediğinizde, bir eylem grubu çağırmak için yapılandırabilirsiniz. Bütçe eşiğiniz karşılandığında eylem grubu çeşitli farklı eylemler gerçekleştirebilir. Eylem grupları Şu anda yalnızca abonelik ve kaynak grubu kapsamları için desteklenir. Eylem grupları hakkında daha fazla bilgi için [Azure Portal eylem grupları oluşturma ve yönetme](../azure-monitor/platform/action-groups.md)konusuna bakın. İşlem gruplarıyla bütçe tabanlı Otomasyon kullanma hakkında daha fazla bilgi için bkz. [Azure bütçeleriyle maliyetleri yönetme](../billing/billing-cost-management-budget-scenario.md).
-
-
-
-Eylem grupları oluşturmak veya güncelleştirmek için, bir bütçe oluştururken veya düzenlenirken **eylem gruplarını yönet** ' e tıklayın.
-
-![Eylem gruplarını yönetme göstermek için bir bütçe oluşturma örneği](./media/tutorial-acm-create-budgets/manage-action-groups01.png)
+When you create or edit a budget for a subscription or resource group scope, you can configure it to call an action group. The action group can perform a variety of different actions when your budget threshold is met. Action Groups are currently only supported for subscription and resource group scopes. For more information about Action Groups, see [Create and manage action groups in the Azure portal](../azure-monitor/platform/action-groups.md). For more information about using budget-based automation with action groups, see [Manage costs with Azure budgets](../billing/billing-cost-management-budget-scenario.md).
 
 
-Sonra, **eylem grubu Ekle** ' ye tıklayın ve eylem grubunu oluşturun.
+
+To create or update action groups, click **Manage action groups** while you're creating or editing a budget.
+
+![Example of creating a budget to show Manage action groups](./media/tutorial-acm-create-budgets/manage-action-groups01.png)
 
 
-![Eylem Ekle Grup kutusunun görüntüsü](./media/tutorial-acm-create-budgets/manage-action-groups02.png)
+Next, click **Add action group** and create the action group.
 
-Eylem grubu oluşturulduktan sonra, bütçenize geri dönmek için kutuyu kapatın.
 
-Tek bir eşik karşılandığında, bütçenizi eylem grubunuzu kullanacak şekilde yapılandırın. En fazla beş farklı eşik desteklenir.
+![Image of the Add action group box](./media/tutorial-acm-create-budgets/manage-action-groups02.png)
 
-![Uyarı koşulunun eylem grubu seçimini gösteren örnek](./media/tutorial-acm-create-budgets/manage-action-groups03.png)
+After the action group is created, close the box to return to your budget.
 
-Aşağıdaki örnek, %50, 75% ve %100 olarak ayarlanan bütçe eşiklerini gösterir. Her biri belirlenen eylem grubu içinde belirtilen eylemleri tetiklemek üzere yapılandırılır.
+Configure your budget to use your action group when an individual threshold is met. Up to five different thresholds are supported.
 
-![Çeşitli eylem gruplarıyla ve eylem türüyle yapılandırılan uyarı koşullarını gösteren örnek](./media/tutorial-acm-create-budgets/manage-action-groups04.png)
+![Example showing action group selection for an alert condition](./media/tutorial-acm-create-budgets/manage-action-groups03.png)
 
-Eylem gruplarıyla bütçe tümleştirmesi yalnızca ortak uyarı şeması devre dışı olan eylem grupları için geçerlidir. Şemayı devre dışı bırakma hakkında daha fazla bilgi için, bkz [. nasıl yaparım? ortak uyarı şemasını etkinleştirmek istiyor musunuz?](../azure-monitor/platform/alerts-common-schema.md#how-do-i-enable-the-common-alert-schema)
+The following example shows budget thresholds set to 50%, 75% and 100%. Each is configured to trigger the specified actions within the designated action group.
+
+![Example showing alert conditions configured with various action groups and type of actions](./media/tutorial-acm-create-budgets/manage-action-groups04.png)
+
+Budget integration with action groups only works for action groups that have the common alert schema disabled. For more information about disabling the schema, see [How do I enable the common alert schema?](../azure-monitor/platform/alerts-common-schema.md#how-do-i-enable-the-common-alert-schema)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 
 > [!div class="checklist"]
-> * Azure portalında bir bütçe oluşturun
-> * Bütçe Düzenle
+> * Create a budget in the Azure portal
+> * Edit a budget
 
-Yinelenen bir dışarı aktarma, maliyet Yönetimi verilerine için oluşturmak için sonraki öğreticiye ilerleyin.
+Advance to the next tutorial to create a recurring export for your cost management data.
 
 > [!div class="nextstepaction"]
-> [Oluşturma ve dışarı aktarılan verileri yönetme](tutorial-export-acm-data.md)
+> [Create and manage exported data](tutorial-export-acm-data.md)

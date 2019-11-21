@@ -1,156 +1,152 @@
 ---
-title: Azure Functions Core Tools çalışma | Microsoft Docs
-description: Azure işlevleri 'nde çalıştırmadan önce yerel bilgisayarınızdaki komut isteminden veya terminalden Azure işlevlerini nasıl kodleyeceğinizi ve test leyeceğinizi öğrenin.
-author: ggailey777
-manager: gwallace
+title: Work with Azure Functions Core Tools
+description: Learn how to code and test Azure functions from the command prompt or terminal on your local computer before you run them on Azure Functions.
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 72abfef1f86fe47eb7817241a674741f56817f24
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 8604df894367ccc25d7e9ffae4453a6b3080b7d8
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082717"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226692"
 ---
-# <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools çalışın
+# <a name="work-with-azure-functions-core-tools"></a>Work with Azure Functions Core Tools
 
-Azure Functions Core Tools, komut isteminden veya terminalden yerel bilgisayarınızda işlevlerinizi geliştirmenize ve test etmenize olanak tanır. Yerel işlevleriniz canlı Azure hizmetlerine bağlanabilir ve tüm Işlevler çalışma zamanını kullanarak işlevlerinizi yerel bilgisayarınızdaki hata ayıklaması yapabilirsiniz. Hatta, Azure aboneliğinize bir işlev uygulaması dağıtabilirsiniz.
+Azure Functions Core Tools lets you develop and test your functions on your local computer from the command prompt or terminal. Your local functions can connect to live Azure services, and you can debug your functions on your local computer using the full Functions runtime. You can even deploy a function app to your Azure subscription.
 
 [!INCLUDE [Don't mix development environments](../../includes/functions-mixed-dev-environments.md)]
 
-Yerel bilgisayarınızda işlevleri geliştirme ve temel araçları kullanarak bunları Azure 'da yayımlama aşağıdaki temel adımları izler:
+Developing functions on your local computer and publishing them to Azure using Core Tools follows these basic steps:
 
 > [!div class="checklist"]
-> * [Çekirdek araçları ve bağımlılıklarını yükler.](#v2)
-> * [Dile özgü şablondan bir işlev uygulama projesi oluşturun.](#create-a-local-functions-project)
-> * [Tetikleyici ve bağlama uzantılarını kaydedin.](#register-extensions)
-> * [Depolama ve diğer bağlantıları tanımlayın.](#local-settings-file)
-> * [Bir tetikleyiciden ve dile özgü şablondan bir işlev oluşturun.](#create-func)
-> * [İşlevi yerel olarak çalıştırın](#start)
-> * [Projeyi Azure 'da yayımlayın](#publish)
+> * [Install the Core Tools and dependencies.](#v2)
+> * [Create a function app project from a language-specific template.](#create-a-local-functions-project)
+> * [Register trigger and binding extensions.](#register-extensions)
+> * [Define Storage and other connections.](#local-settings-file)
+> * [Create a function from a trigger and language-specific template.](#create-func)
+> * [Run the function locally](#start)
+> * [Publish the project to Azure](#publish)
 
-## <a name="core-tools-versions"></a>Temel araçlar sürümleri
+## <a name="core-tools-versions"></a>Core Tools versions
 
-Azure Functions Core Tools iki sürümü vardır. Kullandığınız sürüm yerel geliştirme ortamınıza, [dil seçimine](supported-languages.md)ve gerekli destek düzeyine bağlıdır:
+There are two versions of Azure Functions Core Tools. The version you use depends on your local development environment, [choice of language](supported-languages.md), and level of support required:
 
-+ Sürüm 1. x: çalışma zamanının sürüm 1. x ' i destekler. Araçların bu sürümü yalnızca Windows bilgisayarlarda desteklenir ve bir [NPM paketinden](https://docs.npmjs.com/getting-started/what-is-npm)yüklenir. Bu sürümle birlikte, resmi olarak desteklenmeyen deneysel dillerde işlevler oluşturabilirsiniz. Daha fazla bilgi için bkz. [Azure Işlevlerinde desteklenen diller](supported-languages.md)
++ Version 1.x: supports version 1.x of the runtime. This version of the tools is only supported on Windows computers and is installed from an [npm package](https://docs.npmjs.com/getting-started/what-is-npm). With this version, you can create functions in experimental languages that are not officially supported. For more information, see [Supported languages in Azure Functions](supported-languages.md)
 
-+ [Sürüm 2. x](#v2): [çalışma zamanının sürüm 2. x](functions-versions.md)' i destekler. Bu sürüm [Windows](#windows-npm), [MacOS](#brew)ve [Linux](#linux)'u destekler. Yükleme için platforma özgü paket yöneticilerini veya NPM 'yi kullanır.
++ [Version 2.x](#v2): supports [version 2.x of the runtime](functions-versions.md). This version supports [Windows](#windows-npm), [macOS](#brew), and [Linux](#linux). Uses platform-specific package managers or npm for installation.
 
-Aksi belirtilmediği takdirde, bu makaledeki örnekler 2. x sürümü içindir.
+Unless otherwise noted, the examples in this article are for version 2.x.
 
 ## <a name="install-the-azure-functions-core-tools"></a>Azure Functions Core Tools’u Yükleme
 
-[Azure Functions Core Tools] , yerel geliştirme bilgisayarınızda çalıştırabileceğiniz Azure işlevleri çalışma zamanını destekleyen aynı çalışma zamanının bir sürümünü içerir. Ayrıca işlevler oluşturmak, Azure 'a bağlanmak ve işlev projelerini dağıtmak için komutlar sağlar.
+[Azure Functions Core Tools] includes a version of the same runtime that powers Azure Functions runtime that you can run on your local development computer. It also provides commands to create functions, connect to Azure, and deploy function projects.
 
-### <a name="v2"></a>Sürüm 2. x
+### <a name="v2"></a>Version 2.x
 
-Araçların sürüm 2. x, .NET Core üzerinde oluşturulan Azure Işlevleri çalışma zamanı 2. x 'i kullanır. Bu sürüm, [Windows](#windows-npm), [MacOS](#brew)ve [Linux](#linux)dahil tüm platformlarda .NET Core 2. x desteği için desteklenir. 
+Version 2.x of the tools uses the Azure Functions runtime 2.x that is built on .NET Core. This version is supported on all platforms .NET Core 2.x supports, including [Windows](#windows-npm), [macOS](#brew), and [Linux](#linux). 
 
 > [!IMPORTANT]
-> [Uzantı demeti]kullanarak .NET Core 2. x SDK 'yı yükleme gereksinimini atlayabilirsiniz.
+> You can bypass the requirement for installing the .NET Core 2.x SDK by using [extension bundles].
 
-#### <a name="windows-npm"></a>Pencerelerin
+#### <a name="windows-npm"></a>Windows
 
-Aşağıdaki adımlarda, Windows 'a temel araçları yüklemek için NPM kullanılır. [Chocolatey](https://chocolatey.org/)de kullanabilirsiniz. Daha fazla bilgi için bkz. [temel araçlar Benioku](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows).
+The following steps use npm to install Core Tools on Windows. You can also use [Chocolatey](https://chocolatey.org/). For more information, see the [Core Tools readme](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows).
 
-1. NPM içeren [Node.js]' yi yükler. Araçların sürüm 2. x için yalnızca Node. js 8,5 ve üzeri sürümleri desteklenir.
+1. Install [Node.js], which includes npm. For version 2.x of the tools, only Node.js 8.5 and later versions are supported.
 
-1. Temel Araçlar paketini yükler:
+1. Install the Core Tools package:
 
     ```bash
     npm install -g azure-functions-core-tools
     ```
 
-   NPM 'nin temel araçlar paketini indirmesi ve yüklemesi birkaç dakika sürebilir.
+   It may take a few minutes for npm to download and install the Core Tools package.
 
-1. [Uzantı demeti]kullanmayı planlamıyorsanız, [Windows için .NET Core 2. x SDK 'sını](https://www.microsoft.com/net/download/windows)yükleyebilirsiniz.
+1. If you do not plan to use [extension bundles], install the [.NET Core 2.x SDK for Windows](https://www.microsoft.com/net/download/windows).
 
-#### <a name="brew"></a>Homebrew ile MacOS
+#### <a name="brew"></a>MacOS with Homebrew
 
-Aşağıdaki adımlarda, macOS 'a çekirdek araçları yüklemek için homebrew kullanılır.
+The following steps use Homebrew to install the Core Tools on macOS.
 
-1. Zaten yüklenmemişse [homebrew](https://brew.sh/)'ı yükleme.
+1. Install [Homebrew](https://brew.sh/), if it's not already installed.
 
-1. Temel Araçlar paketini yükler:
+1. Install the Core Tools package:
 
     ```bash
     brew tap azure/functions
     brew install azure-functions-core-tools
     ```
 
-1. [Uzantı demeti]kullanmayı planlamıyorsanız, [MacOS için .NET Core 2. x SDK](https://www.microsoft.com/net/download/macos)'yı yükleyebilirsiniz.
+1. If you do not plan to use [extension bundles], install [.NET Core 2.x SDK for macOS](https://www.microsoft.com/net/download/macos).
 
 
-#### <a name="linux"></a>APT ile Linux (Ubuntu/dekim)
+#### <a name="linux"></a> Linux (Ubuntu/Debian) with APT
 
-Aşağıdaki adımlarda, Ubuntu/de, Linux dağıtımına çekirdek araçları yüklemek için [apt](https://wiki.debian.org/Apt) kullanılır. Diğer Linux dağıtımları için bkz. [temel araçlar Benioku dosyası](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux).
+The following steps use [APT](https://wiki.debian.org/Apt) to install Core Tools on your Ubuntu/Debian Linux distribution. For other Linux distributions, see the [Core Tools readme](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux).
 
-1. Paket bütünlüğünü doğrulamak için Microsoft paket deposu GPG anahtarını yükler:
+1. Install the Microsoft package repository GPG key, to validate package integrity:
 
     ```bash
     curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
     sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
     ```
 
-1. Bir APT güncelleştirmesi yapmadan önce .NET geliştirme kaynak listesini ayarlayın.
+1. Set up the .NET development source list before doing an APT update.
 
-   Ubuntu için APT kaynak listesini ayarlamak için şu komutu çalıştırın:
+   To set up the APT source list for Ubuntu, run this command:
 
     ```bash
     sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-$(lsb_release -cs)-prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
     ```
 
-   Dekim için APT kaynak listesini ayarlamak için şu komutu çalıştırın:
+   To set up the APT source list for Debian, run this command:
 
     ```bash
     sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/debian/$(lsb_release -rs)/prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
     ```
 
-1. Aşağıda listelenen uygun Linux sürümü dizelerinden biri için `/etc/apt/sources.list.d/dotnetdev.list` dosyasını denetleyin:
+1. Check the `/etc/apt/sources.list.d/dotnetdev.list` file for one of the appropriate Linux version strings listed below:
 
-    | Linux dağıtım | Sürüm |
+    | Linux distribution | Sürüm |
     | --------------- | ----------- |
     | Debian 10 | `buster` |
     | Debian 9 | `stretch` |
     | Debian 8 | `jessie` |
-    | Ubuntu 18,10    | `cosmic`    |
+    | Ubuntu 18.10    | `cosmic`    |
     | Ubuntu 18.04    | `bionic`    |
-    | Ubuntu 17,04    | `zesty`     |
+    | Ubuntu 17.04    | `zesty`     |
     | Ubuntu 16.04/Linux Mint 18    | `xenial`  |
 
-1. APT kaynak güncelleştirmesini başlatın:
+1. Start the APT source update:
 
     ```bash
     sudo apt-get update
     ```
 
-1. Temel Araçlar paketini yükler:
+1. Install the Core Tools package:
 
     ```bash
     sudo apt-get install azure-functions-core-tools
     ```
 
-1. [Uzantı demeti]kullanmayı planlamıyorsanız, [Linux için .NET Core 2. x SDK](https://www.microsoft.com/net/download/linux)'yı yükleyebilirsiniz.
+1. If you do not plan to use [extension bundles], install [.NET Core 2.x SDK for Linux](https://www.microsoft.com/net/download/linux).
 
-## <a name="create-a-local-functions-project"></a>Bir yerel işlevler projesi oluşturma
+## <a name="create-a-local-functions-project"></a>Create a local Functions project
 
-Bir işlevler proje dizini, [Host. JSON](functions-host-json.md) ve [Local. Settings. JSON](#local-settings-file)dosyalarını, tek tek işlevlerin kodunu içeren alt klasörlerle birlikte içerir. Bu dizin, Azure 'daki bir işlev uygulamasının eşdeğeridir. Işlevler klasör yapısı hakkında daha fazla bilgi edinmek için bkz. [Azure işlevleri Geliştirici Kılavuzu](functions-reference.md#folder-structure).
+A functions project directory contains the files [host.json](functions-host-json.md) and [local.settings.json](#local-settings-file), along with subfolders that contain the code for individual functions. This directory is the equivalent of a function app in Azure. To learn more about the Functions folder structure, see the [Azure Functions developers guide](functions-reference.md#folder-structure).
 
-Sürüm 2. x, başlatıldığında projeniz için varsayılan bir dil seçmenizi ve tüm işlevlerin varsayılan dil şablonlarını kullanmasını gerektirir. 1\. x sürümünde, her bir işlev oluşturduğunuzda dili belirtirsiniz.
+Version 2.x requires you to select a default language for your project when it is initialized, and all functions added use default language templates. In version 1.x, you specify the language each time you create a function.
 
-Terminal penceresinde veya bir komut isteminden, projeyi ve yerel Git deposunu oluşturmak için aşağıdaki komutu çalıştırın:
+In the terminal window or from a command prompt, run the following command to create the project and local Git repository:
 
 ```bash
 func init MyFunctionProj
 ```
 
-Bir proje adı sağladığınızda, bu ada sahip yeni bir klasör oluşturulur ve başlatılır. Aksi takdirde, geçerli klasör başlatılır.  
-Sürüm 2. x içinde, komutunu çalıştırdığınızda projeniz için bir çalışma zamanı seçmeniz gerekir. 
+When you provide a project name, a new folder with that name is created and initialized. Otherwise, the current folder is initialized.  
+In version 2.x, when you run the command you must choose a runtime for your project. 
 
 ```output
 Select a worker runtime:
@@ -160,9 +156,9 @@ python
 powershell
 ```
 
-Yukarı/aşağı ok tuşlarını kullanarak bir dil seçin ve ENTER tuşuna basın. JavaScript veya TypeScript işlevleri geliştirmeyi planlıyorsanız **düğüm**' yi seçin ve ardından dili seçin. TypeScript [bazı ek gereksinimlere](functions-reference-node.md#typescript)sahiptir. 
+Use the up/down arrow keys to choose a language, then press Enter. If you plan to develop JavaScript or TypeScript functions, choose **node**, and then select the language. TypeScript has [some additional requirements](functions-reference-node.md#typescript). 
 
-Çıktı bir JavaScript projesi için aşağıdaki örneğe benzer şekilde görünür:
+The output looks like the following example for a JavaScript project:
 
 ```output
 Select a worker runtime: node
@@ -173,82 +169,82 @@ Writing C:\myfunctions\myMyFunctionProj\.vscode\extensions.json
 Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 ```
 
-`func init`, aksi belirtilmediği takdirde yalnızca sürüm 2. x olan aşağıdaki seçenekleri destekler:
+`func init` supports the following options, which are version 2.x-only, unless otherwise noted:
 
 | Seçenek     | Açıklama                            |
 | ------------ | -------------------------------------- |
-| **`--csharp`**<br/> **`--dotnet`** | Bir [ C# sınıf kitaplığı (. cs) projesi](functions-dotnet-class-library.md)başlatır. |
-| **`--csx`** | Bir [ C# betik (. CSX) projesi](functions-reference-csharp.md)başlatır. Sonraki komutlarda `--csx` belirtmelisiniz. |
-| **`--docker`** | Seçilen `--worker-runtime`temel bir görüntü kullanarak kapsayıcı için bir Dockerfile oluşturun. Özel bir Linux kapsayıcısına yayımlamayı planlarken bu seçeneği kullanın. |
-| **`--docker-only`** |  Mevcut bir projeye Dockerfile ekler. Belirtilmemişse veya Local. Settings. JSON içinde ayarlanmamışsa çalışan çalışma zamanı için sorar. Mevcut bir projeyi özel bir Linux kapsayıcısına yayımlamayı planlarken bu seçeneği kullanın. |
-| **`--force`** | Projede var olan dosyalar olduğunda bile projeyi başlatın. Bu ayar aynı ada sahip varolan dosyaların üzerine yazar. Proje klasöründeki diğer dosyalar etkilenmez. |
-| **`--java`**  | Bir [Java projesi](functions-reference-java.md)başlatır. |
-| **`--javascript`**<br/>**`--node`**  | Bir [JavaScript projesi](functions-reference-node.md)başlatır. |
-| **`--no-source-control`**<br/>**`-n`** | 1\. x sürümünde bir git deposunun varsayılan oluşturulmasını engeller. Sürüm 2. x içinde git deposu varsayılan olarak oluşturulmaz. |
-| **`--powershell`**  | Bir [PowerShell projesi](functions-reference-powershell.md)başlatır. |
-| **`--python`**  | Bir [Python projesi](functions-reference-python.md)başlatır. |
-| **`--source-control`** | Git deposunun oluşturulup oluşturulmayacağını denetler. Varsayılan olarak, bir depo oluşturulmaz. `true`, bir depo oluşturulur. |
-| **`--typescript`**  | Bir [TypeScript projesi](functions-reference-node.md#typescript)başlatır. |
-| **`--worker-runtime`** | Projenin dil çalışma zamanını ayarlar. Desteklenen değerler şunlardır: `csharp`, `dotnet`, `java`, `javascript`,`node` (JavaScript), `powershell`, `python`ve `typescript`. Ayarlanmaması durumunda, başlatma sırasında çalışma zamanını seçmeniz istenir. |
+| **`--csharp`**<br/> **`--dotnet`** | Initializes a [C# class library (.cs) project](functions-dotnet-class-library.md). |
+| **`--csx`** | Initializes a [C# script (.csx) project](functions-reference-csharp.md). You must specify `--csx` in subsequent commands. |
+| **`--docker`** | Create a Dockerfile for a container using a base image that is based on the chosen `--worker-runtime`. Use this option when you plan to publish to a custom Linux container. |
+| **`--docker-only`** |  Adds a Dockerfile to an existing project. Prompts for the worker-runtime if not specified or set in local.settings.json. Use this option when you plan to publish an existing project to a custom Linux container. |
+| **`--force`** | Initialize the project even when there are existing files in the project. This setting overwrites existing files with the same name. Other files in the project folder aren't affected. |
+| **`--java`**  | Initializes a [Java project](functions-reference-java.md). |
+| **`--javascript`**<br/>**`--node`**  | Initializes a [JavaScript project](functions-reference-node.md). |
+| **`--no-source-control`**<br/>**`-n`** | Prevents the default creation of a Git repository in version 1.x. In version 2.x, the git repository isn't created by default. |
+| **`--powershell`**  | Initializes a [PowerShell project](functions-reference-powershell.md). |
+| **`--python`**  | Initializes a [Python project](functions-reference-python.md). |
+| **`--source-control`** | Controls whether a git repository is created. By default, a repository isn't created. When `true`, a repository is created. |
+| **`--typescript`**  | Initializes a [TypeScript project](functions-reference-node.md#typescript). |
+| **`--worker-runtime`** | Sets the language runtime for the project. Supported values are: `csharp`, `dotnet`, `java`, `javascript`,`node` (JavaScript), `powershell`, `python`, and `typescript`. When not set, you are prompted to choose your runtime during initialization. |
 
 > [!IMPORTANT]
-> Varsayılan olarak, temel araçların sürüm 2. x 'i, .NET çalışma zamanına yönelik işlev uygulaması projelerini [ C# sınıf projeleri](functions-dotnet-class-library.md) (. csproj) olarak oluşturur. Visual C# Studio veya Visual Studio Code ile kullanılabilen bu projeler, test sırasında ve Azure 'a yayımlarken derlenir. Bunun yerine, 1. x sürümünde oluşturulan aynı C# komut dosyası (. CSX) dosyalarını oluşturmak ve bunlarla çalışmak istiyorsanız, işlevleri oluştururken ve dağıtırken`--csx`parametresini eklemeniz gerekir.
+> By default, version 2.x of the Core Tools creates function app projects for the .NET runtime as [C# class projects](functions-dotnet-class-library.md) (.csproj). These C# projects, which can be used with Visual Studio or Visual Studio Code, are compiled during testing and when publishing to Azure. If you instead want to create and work with the same C# script (.csx) files created in version 1.x and in the portal, you must include the `--csx` parameter when you create and deploy functions.
 
 [!INCLUDE [functions-core-tools-install-extension](../../includes/functions-core-tools-install-extension.md)]
 
 [!INCLUDE [functions-local-settings-file](../../includes/functions-local-settings-file.md)]
 
-Varsayılan olarak, bu ayarlar proje Azure 'da yayımlandığında otomatik olarak geçirilmez. Bu ayarların Azure 'daki işlev uygulamasına eklendiğinden emin olmak için [yayımlarken](#publish) `--publish-local-settings` anahtarını kullanın. **ConnectionString** içindeki değerlerin hiçbir şekilde yayımlanmadığını unutmayın.
+By default, these settings are not migrated automatically when the project is published to Azure. Use the `--publish-local-settings` switch [when you publish](#publish) to make sure these settings are added to the function app in Azure. Note that values in **ConnectionStrings** are never published.
 
-İşlev uygulaması ayarları değerleri, kodunuzda ortam değişkenleri olarak da okunabilir. Daha fazla bilgi için, bu dile özgü başvuru konularının ortam değişkenleri bölümüne bakın:
+The function app settings values can also be read in your code as environment variables. For more information, see the Environment variables section of these language-specific reference topics:
 
-* [C#derlemesi](functions-dotnet-class-library.md#environment-variables)
-* [C# betiği (.csx)](functions-reference-csharp.md#environment-variables)
+* [C# precompiled](functions-dotnet-class-library.md#environment-variables)
+* [C# script (.csx)](functions-reference-csharp.md#environment-variables)
 * [Java](functions-reference-java.md#environment-variables)
 * [JavaScript](functions-reference-node.md#environment-variables)
 
-[`AzureWebJobsStorage`] için geçerli bir depolama bağlantı dizesi ayarlanmamışsa ve öykünücü kullanılmıyorsa, aşağıdaki hata iletisi görüntülenir:
+When no valid storage connection string is set for [`AzureWebJobsStorage`] and the emulator isn't being used, the following error message is shown:
 
-> Yerel. Settings. JSON içinde AzureWebJobsStorage için eksik değer. HTTP dışındaki tüm tetikleyiciler için bu gereklidir. ' Func Azure functionapp Fetch-App-settings \<functionAppName\>' çalıştırabilir veya yerel. Settings. JSON içinde bir bağlantı dizesi belirtebilirsiniz.
+> Missing value for AzureWebJobsStorage in local.settings.json. This is required for all triggers other than HTTP. You can run 'func azure functionapp fetch-app-settings \<functionAppName\>' or specify a connection string in local.settings.json.
 
-### <a name="get-your-storage-connection-strings"></a>Depolama bağlantı dizelerinizi alın
+### <a name="get-your-storage-connection-strings"></a>Get your storage connection strings
 
-Geliştirme için depolama öykünücüsü kullanılırken bile gerçek bir depolama bağlantısıyla test etmek isteyebilirsiniz. Zaten [bir depolama hesabı oluşturmuş](../storage/common/storage-create-storage-account.md)olduğunuz varsayılarak, aşağıdaki yollarla geçerli bir depolama bağlantı dizesi alabilirsiniz:
+Even when using the storage emulator for development, you may want to test with an actual storage connection. Assuming you have already [created a storage account](../storage/common/storage-create-storage-account.md), you can get a valid storage connection string in one of the following ways:
 
-- [Azure Portal], **depolama hesaplarını**arayıp seçin. 
-  Azure portal ![Storagea hesaplarını seçin](./media/functions-run-local/select-storage-accounts.png)
+- From the [Azure portalda], search for and select **Storage accounts**. 
+  ![Select Storagea accounts from Azure portal](./media/functions-run-local/select-storage-accounts.png)
   
-  Depolama hesabınızı seçin, **Ayarlar**' da **erişim tuşları** ' nı seçin, sonra **bağlantı dizesi** değerlerinden birini kopyalayın.
-  Azure portal](./media/functions-run-local/copy-storage-connection-portal.png) bağlantı dizesini ![Kopyala
+  Select your storage account, select **Access keys** in **Settings**, then copy one of the **Connection string** values.
+  ![Copy connection string from Azure portal](./media/functions-run-local/copy-storage-connection-portal.png)
 
-- Azure hesabınıza bağlanmak için [Azure Depolama Gezgini](https://storageexplorer.com/) kullanın. **Gezgin**'de aboneliğinizi genişletin, depolama hesabınızı seçin ve birincil veya ikincil bağlantı dizesini kopyalayın.
+- Use [Azure Storage Explorer](https://storageexplorer.com/) to connect to your Azure account. In the **Explorer**, expand your subscription, select your storage account, and copy the primary or secondary connection string.
 
-  ![Bağlantı dizesini Depolama Gezgini Kopyala](./media/functions-run-local/storage-explorer.png)
+  ![Copy connection string from Storage Explorer](./media/functions-run-local/storage-explorer.png)
 
-+ Azure 'dan bağlantı dizesini aşağıdaki komutlardan biriyle indirmek için temel araçları kullanın:
++ Use Core Tools to download the connection string from Azure with one of the following commands:
 
-  + Var olan bir işlev uygulamasından tüm ayarları indir:
+  + Download all settings from an existing function app:
 
     ```bash
     func azure functionapp fetch-app-settings <FunctionAppName>
     ```
-  + Belirli bir depolama hesabı için bağlantı dizesini al:
+  + Get the Connection string for a specific storage account:
 
     ```bash
     func azure storage fetch-connection-string <StorageAccountName>
     ```
 
-    Azure 'da henüz oturum açmadıysanız, bunu yapmanız istenir.
+    When you are not already signed in to Azure, you are prompted to do so.
 
-## <a name="create-func"></a>İşlev oluşturma
+## <a name="create-func"></a>Create a function
 
-Bir işlev oluşturmak için aşağıdaki komutu çalıştırın:
+To create a function, run the following command:
 
 ```bash
 func new
 ```
 
-Sürüm 2. x ' de `func new` çalıştırdığınızda, işlev uygulamanızın varsayılan dilinde bir şablon seçmeniz istenir. Ayrıca, işleviniz için bir ad seçmeniz istenir. 1\. x sürümünde de dili seçmeniz istenir.
+In version 2.x, when you run `func new` you are prompted to choose a template in the default language of your function app, then you are also prompted to choose a name for your function. In version 1.x, you are also prompted to choose the language.
 
 ```output
 Select a language: Select a template:
@@ -263,7 +259,7 @@ Service Bus Topic trigger
 Timer trigger
 ```
 
-İşlev kodu, aşağıdaki kuyruk tetikleyicisi çıktısında görebileceğiniz gibi, belirtilen işlev adına sahip bir alt klasörde oluşturulur:
+Function code is generated in a subfolder with the provided function name, as you can see in the following queue trigger output:
 
 ```output
 Select a language: Select a template: Queue trigger
@@ -274,34 +270,34 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\sample.dat
 Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 ```
 
-Ayrıca, aşağıdaki bağımsız değişkenleri kullanarak komutta bu seçenekleri belirtebilirsiniz:
+You can also specify these options in the command using the following arguments:
 
 | Bağımsız Değişken     | Açıklama                            |
 | ------------------------------------------ | -------------------------------------- |
-| **`--csx`** | (Sürüm 2. x) 1. x C# sürümünde ve portalda kullanılan aynı komut dosyası (. CSX) şablonlarını üretir. |
-| **`--language -l`**| ,, Veya JavaScript gibi şablon programlama C#dili F#. Bu seçenek, 1. x sürümünde gereklidir. Sürüm 2. x içinde bu seçeneği kullanmayın veya çalışan çalışma zamanıyla eşleşen bir dil seçin. |
-| **`--name -n`** | İşlev adı. |
-| **`--template -t`** | Desteklenen her dil için kullanılabilir şablonların tüm listesini görmek için `func templates list` komutunu kullanın.   |
+| **`--csx`** | (Version 2.x) Generates the same C# script (.csx) templates used in version 1.x and in the portal. |
+| **`--language -l`**| The template programming language, such as C#, F#, or JavaScript. This option is required in version 1.x. In version 2.x, do not use this option or choose a language that matches the worker runtime. |
+| **`--name -n`** | The function name. |
+| **`--template -t`** | Use the `func templates list` command to see the complete list of available templates for each supported language.   |
 
-Örneğin, tek bir komutta bir JavaScript HTTP tetikleyicisi oluşturmak için şunu çalıştırın:
+For example, to create a JavaScript HTTP trigger in a single command, run:
 
 ```bash
 func new --template "Http Trigger" --name MyHttpTrigger
 ```
 
-Tek bir komutta kuyruk tetiklemeli bir işlev oluşturmak için şunu çalıştırın:
+To create a queue-triggered function in a single command, run:
 
 ```bash
 func new --template "Queue Trigger" --name QueueTriggerJS
 ```
 
-## <a name="start"></a>İşlevleri yerel olarak çalıştır
+## <a name="start"></a>Run functions locally
 
-Bir Işlevler projesi çalıştırmak için, Işlevler ana bilgisayarını çalıştırın. Konak, projedeki tüm işlevler için Tetikleyicileri mümkün. 
+To run a Functions project, run the Functions host. The host enables triggers for all functions in the project. 
 
-### <a name="version-2x"></a>Sürüm 2. x
+### <a name="version-2x"></a>Version 2.x
 
-Çalışma zamanının 2. x sürümünde, başlangıç komutu Proje dilinize bağlı olarak değişir.
+In version 2.x of the runtime, the start command varies, depending on your project language.
 
 #### <a name="c"></a>C\#
 
@@ -322,32 +318,32 @@ npm install
 npm start     
 ```
 
-### <a name="version-1x"></a>Sürüm 1. x
+### <a name="version-1x"></a>Version 1.x
 
-Işlevler çalışma zamanının sürüm 1. x, aşağıdaki örnekte olduğu gibi `host` komutunu gerektirir:
+Version 1.x of the Functions runtime requires the `host` command, as in the following example:
 
 ```command
 func host start
 ```
 
-`func start` aşağıdaki seçenekleri destekler:
+`func start` supports the following options:
 
 | Seçenek     | Açıklama                            |
 | ------------ | -------------------------------------- |
-| **`--no-build`** | Çalıştırmadan önce derleme geçerli projesi yok. Yalnızca DotNet projeleri için. Varsayılan değer false olarak ayarlanmıştır. Yalnızca sürüm 2. x. |
-| **`--cert`** | Özel anahtar içeren bir. pfx dosyasının yolu. Yalnızca `--useHttps`ile kullanılır. Yalnızca sürüm 2. x. |
-| **`--cors-credentials`** | Yalnızca çıkış noktaları arası kimlik doğrulamalı isteklere (yani, tanımlama bilgileri ve kimlik doğrulama üstbilgisi) sürüm 2. x 'e izin verin. |
-| **`--cors`** | CORS kaynakları için boşluk olmadan virgülle ayrılmış bir liste. |
-| **`--language-worker`** | Dil çalışanını yapılandırmak için bağımsız değişkenler. Yalnızca sürüm 2. x. |
-| **`--nodeDebugPort -n`** | Kullanılacak düğüm hata ayıklayıcı bağlantı noktası. Varsayılan: Launch. JSON veya 5858 değeri. Yalnızca sürüm 1. x. |
-| **`--password`** | Bir. pfx dosyasının parolasını içeren parola veya dosya. Yalnızca `--cert`ile kullanılır. Yalnızca sürüm 2. x. |
-| **`--port -p`** | Dinlenecek yerel bağlantı noktası. Varsayılan değer: 7071. |
-| **`--pause-on-error`** | İşlemden çıkmadan önce ek giriş için duraklatın. Yalnızca tümleşik geliştirme ortamından (IDE) temel araçlar başlatılırken kullanılır.|
-| **`--script-root --prefix`** | Çalıştırılacak veya dağıtılacak işlev uygulamasının köküne ait yolu belirtmek için kullanılır. Bu, bir alt klasöre proje dosyaları üreten derlenmiş projeler için kullanılır. Örneğin, bir C# sınıf kitaplığı projesi oluşturduğunuzda, Host. JSON, Local. Settings. JSON ve function. json dosyaları `MyProject/bin/Debug/netstandard2.0`gibi bir yol içeren bir *kök* alt klasörde oluşturulur. Bu durumda, ön eki `--script-root MyProject/bin/Debug/netstandard2.0`olarak ayarlayın. Bu, Azure 'da çalışırken işlev uygulamasının köküdür. |
-| **`--timeout -t`** | Işlevlerin başlaması için gereken zaman aşımı (saniye cinsinden). Varsayılan: 20 saniye.|
-| **`--useHttps`** | `http://localhost:{port}`yerine `https://localhost:{port}` bağlayın. Varsayılan olarak, bu seçenek bilgisayarınızda güvenilir bir sertifika oluşturur.|
+| **`--no-build`** | Do no build current project before running. For dotnet projects only. Default is set to false. Version 2.x only. |
+| **`--cert`** | The path to a .pfx file that contains a private key. Only used with `--useHttps`. Version 2.x only. |
+| **`--cors-credentials`** | Allow cross-origin authenticated requests (i.e. cookies and the Authentication header) Version 2.x only. |
+| **`--cors`** | A comma-separated list of CORS origins, with no spaces. |
+| **`--language-worker`** | Arguments to configure the language worker. Version 2.x only. |
+| **`--nodeDebugPort -n`** | The port for the node debugger to use. Default: A value from launch.json or 5858. Version 1.x only. |
+| **`--password`** | Either the password or a file that contains the password for a .pfx file. Only used with `--cert`. Version 2.x only. |
+| **`--port -p`** | The local port to listen on. Default value: 7071. |
+| **`--pause-on-error`** | Pause for additional input before exiting the process. Used only when launching Core Tools from an integrated development environment (IDE).|
+| **`--script-root --prefix`** | Used to specify the path to the root of the function app that is to be run or deployed. This is used for compiled projects that generate project files into a subfolder. For example, when you build a C# class library project, the host.json, local.settings.json, and function.json files are generated in a *root* subfolder with a path like `MyProject/bin/Debug/netstandard2.0`. In this case, set the prefix as `--script-root MyProject/bin/Debug/netstandard2.0`. This is the root of the function app when running in Azure. |
+| **`--timeout -t`** | The timeout for the Functions host to start, in seconds. Default: 20 seconds.|
+| **`--useHttps`** | Bind to `https://localhost:{port}` rather than to `http://localhost:{port}`. By default, this option creates a trusted certificate on your computer.|
 
-Işlevler ana bilgisayarı başlatıldığında, HTTP ile tetiklenen işlevlerin URL 'sini verir:
+When the Functions host starts, it outputs the URL of HTTP-triggered functions:
 
 ```output
 Found the following functions:
@@ -358,48 +354,48 @@ Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 ```
 
 >[!IMPORTANT]
->Yerel olarak çalışırken, HTTP uç noktaları için kimlik doğrulama zorlanmaz. Bu, tüm yerel HTTP isteklerinin `authLevel = "anonymous"`olarak işlendiği anlamına gelir. Daha fazla bilgi için bkz. [http bağlama makalesi](functions-bindings-http-webhook.md#authorization-keys).
+>When running locally, authentication isn't enforced for HTTP endpoints. This means that all local HTTP requests are handled as `authLevel = "anonymous"`. For more information, see the [HTTP binding article](functions-bindings-http-webhook.md#authorization-keys).
 
-### <a name="passing-test-data-to-a-function"></a>Test verilerini bir işleve geçirme
+### <a name="passing-test-data-to-a-function"></a>Passing test data to a function
 
-İşlevlerinizi yerel olarak test etmek için, [işlevleri ana bilgisayarı başlatır](#start) ve http isteklerini kullanarak yerel sunucuda uç noktaları çağırabilirsiniz. Çağırdığınız uç nokta, işlevin türüne bağlıdır.
+To test your functions locally, you [start the Functions host](#start) and call endpoints on the local server using HTTP requests. The endpoint you call depends on the type of function.
 
 >[!NOTE]
-> Bu konudaki örnekler, Terminal veya komut isteminden HTTP istekleri göndermek için kıvrımlı aracı kullanır. Yerel sunucuya HTTP istekleri göndermek için tercih ettiğiniz bir aracı kullanabilirsiniz. , Linux tabanlı sistemlerde ve Windows 10 derleme 17063 ve sonraki sürümlerde kıvrımlı aracı varsayılan olarak kullanılabilir. Daha eski Windows 'ta, önce [kıvrımlı aracını](https://curl.haxx.se/)indirip yüklemeniz gerekir.
+> Examples in this topic use the cURL tool to send HTTP requests from the terminal or a command prompt. You can use a tool of your choice to send HTTP requests to the local server. The cURL tool is available by default on Linux-based systems and Windows 10 build 17063 and later. On older Windows, you must first download and install the [cURL tool](https://curl.haxx.se/).
 
-Test işlevleri hakkında daha fazla genel bilgi için bkz. [Azure işlevlerinde kodunuzu test etme stratejileri](functions-test-a-function.md).
+For more general information on testing functions, see [Strategies for testing your code in Azure Functions](functions-test-a-function.md).
 
-#### <a name="http-and-webhook-triggered-functions"></a>HTTP ve Web kancası tarafından tetiklenen işlevler
+#### <a name="http-and-webhook-triggered-functions"></a>HTTP and webhook triggered functions
 
-HTTP ve Web kancası tarafından tetiklenen işlevleri yerel olarak çalıştırmak için aşağıdaki uç noktayı çağırın:
+You call the following endpoint to locally run HTTP and webhook triggered functions:
 
     http://localhost:{port}/api/{function_name}
 
-Işlevlerin barındırın dinlediği sunucu adını ve bağlantı noktasını kullandığınızdan emin olun. Bunu, Işlev Konağı başlatılırken oluşturulan çıktıda görürsünüz. Tetikleyici tarafından desteklenen herhangi bir HTTP yöntemini kullanarak bu URL 'YI çağırabilirsiniz.
+Make sure to use the same server name and port that the Functions host is listening on. You see this in the output generated when starting the Function host. You can call this URL using any HTTP method supported by the trigger.
 
-Aşağıdaki kıvrımlı komutu, sorgu dizesinde geçirilen _Name_ parametresine sahıp bir GET isteğinden `MyHttpTrigger` hızlı başlangıç işlevini tetikler.
+The following cURL command triggers the `MyHttpTrigger` quickstart function from a GET request with the _name_ parameter passed in the query string.
 
 ```bash
 curl --get http://localhost:7071/api/MyHttpTrigger?name=Azure%20Rocks
 ```
 
-Aşağıdaki örnek, istek gövdesinde bir POST isteği geçirme _adından_ çağrılan aynı fonksiyondır:
+The following example is the same function called from a POST request passing _name_ in the request body:
 
 ```bash
 curl --request POST http://localhost:7071/api/MyHttpTrigger --data '{"name":"Azure Rocks"}'
 ```
 
-Sorgu dizesindeki verileri geçirerek tarayıcıdan GET istekleri yapabilirsiniz. Diğer tüm HTTP yöntemleri için kıvrımlı, Fiddler, Postman veya benzer bir HTTP test aracı kullanmanız gerekir.
+You can make GET requests from a browser passing data in the query string. For all other HTTP methods, you must use cURL, Fiddler, Postman, or a similar HTTP testing tool.
 
-#### <a name="non-http-triggered-functions"></a>HTTP dışı tetiklenen işlevler
+#### <a name="non-http-triggered-functions"></a>Non-HTTP triggered functions
 
-HTTP Tetikleyicileri ve Web kancaları dışındaki tüm işlev türlerinde, bir yönetim uç noktası çağırarak işlevlerinizi yerel olarak test edebilirsiniz. Bu uç noktanın yerel sunucuda bir HTTP POST isteğiyle çağrılması işlevi tetikler. İsteğe bağlı olarak, POST isteğinin gövdesinde test verilerini yürütmeye geçirebilirsiniz. Bu işlev, Azure portal **Test** sekmesine benzerdir.
+For all kinds of functions other than HTTP triggers and webhooks, you can test your functions locally by calling an administration endpoint. Calling this endpoint with an HTTP POST request on the local server triggers the function. You can optionally pass test data to the execution in the body of the POST request. This functionality is similar to the **Test** tab in the Azure portal.
 
-HTTP olmayan işlevleri tetiklemek için aşağıdaki yönetici uç noktasını çağırın:
+You call the following administrator endpoint to trigger non-HTTP functions:
 
     http://localhost:{port}/admin/functions/{function_name}
 
-Test verilerini bir işlevin yönetici uç noktasına geçirmek için, verileri bir POST isteği iletisinin gövdesinde belirtmeniz gerekir. İleti gövdesinin aşağıdaki JSON biçimine sahip olması gerekir:
+To pass test data to the administrator endpoint of a function, you must supply the data in the body of a POST request message. The message body is required to have the following JSON format:
 
 ```JSON
 {
@@ -407,128 +403,128 @@ Test verilerini bir işlevin yönetici uç noktasına geçirmek için, verileri 
 }
 ```
 
-`<trigger_input>` değeri, işlevi tarafından beklenen bir biçimde veriler içeriyor. Aşağıdaki kıvrımlı örnek bir `QueueTriggerJS` işlevinin GÖNDERISINI sağlar. Bu durumda, giriş sırada bulunması beklenen iletiyle eşdeğer bir dizedir.
+The `<trigger_input>` value contains data in a format expected by the function. The following cURL example is a POST to a `QueueTriggerJS` function. In this case, the input is a string that is equivalent to the message expected to be found in the queue.
 
 ```bash
 curl --request POST -H "Content-Type:application/json" --data '{"input":"sample queue data"}' http://localhost:7071/admin/functions/QueueTriggerJS
 ```
 
-#### <a name="using-the-func-run-command-in-version-1x"></a>1\. x sürümünde `func run` komutu kullanma
+#### <a name="using-the-func-run-command-in-version-1x"></a>Using the `func run` command in version 1.x
 
 >[!IMPORTANT]
-> `func run` komutu, araçların 2. x sürümünde desteklenmez. Daha fazla bilgi için bkz. [Azure işlevleri çalışma zamanı sürümlerini hedefleme](set-runtime-version.md)konusu.
+> The `func run` command is not supported in version 2.x of the tools. For more information, see the topic [How to target Azure Functions runtime versions](set-runtime-version.md).
 
-Ayrıca, `func run <FunctionName>` kullanarak doğrudan bir işlevi çağırabilir ve işlev için giriş verileri sağlayabilirsiniz. Bu komut, Azure portal **Test** sekmesini kullanarak bir işlevi çalıştırmaya benzer.
+You can also invoke a function directly by using `func run <FunctionName>` and provide input data for the function. This command is similar to running a function using the **Test** tab in the Azure portal.
 
-`func run` aşağıdaki seçenekleri destekler:
+`func run` supports the following options:
 
 | Seçenek     | Açıklama                            |
 | ------------ | -------------------------------------- |
-| **`--content -c`** | Satır içi içerik. |
-| **`--debug -d`** | İşlevi çalıştırmadan önce konak işlemine bir hata ayıklayıcı ekleyin.|
-| **`--timeout -t`** | Yerel Işlevlerin barındırmaya hazırlanana kadar beklenecek süre (saniye cinsinden).|
-| **`--file -f`** | İçerik olarak kullanılacak dosya adı.|
-| **`--no-interactive`** | Girişi istemez. Otomasyon senaryoları için faydalıdır.|
+| **`--content -c`** | Inline content. |
+| **`--debug -d`** | Attach a debugger to the host process before running the function.|
+| **`--timeout -t`** | Time to wait (in seconds) until the local Functions host is ready.|
+| **`--file -f`** | The file name to use as content.|
+| **`--no-interactive`** | Does not prompt for input. Useful for automation scenarios.|
 
-Örneğin, HTTP ile tetiklenen bir işlev çağırmak ve içerik gövdesini geçirmek için aşağıdaki komutu çalıştırın:
+For example, to call an HTTP-triggered function and pass content body, run the following command:
 
 ```bash
 func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 ```
 
-## <a name="publish"></a>Azure 'da yayımlama
+## <a name="publish"></a>Publish to Azure
 
-Azure Functions Core Tools iki tür dağıtımı destekler: işlev projesi dosyalarını [ZIP dağıtımı](functions-deployment-technologies.md#zip-deploy) ve [dağıtım](functions-deployment-technologies.md#docker-container)aracılığıyla doğrudan işlev uygulamanıza dağıtma. Kodunuzu dağıtacağınız [Azure aboneliğinizde zaten bir işlev uygulaması oluşturmuş](functions-cli-samples.md#create)olmanız gerekir. İkililerin dağıtılması için derleme gerektiren projeler oluşturulmalıdır.
+The Azure Functions Core Tools supports two types of deployment: deploying function project files directly to your function app via [Zip Deploy](functions-deployment-technologies.md#zip-deploy) and [deploying a custom Docker container](functions-deployment-technologies.md#docker-container). You must have already [created a function app in your Azure subscription](functions-cli-samples.md#create), to which you'll deploy your code. Projects that require compilation should be built so that the binaries can be deployed.
 
-Proje klasörü, yayınlanmaması gereken dile özgü dosyalar ve dizinler içerebilir. Dışlanan öğeler kök proje klasöründeki bir. funcignore dosyasında listelenir.     
+A project folder may contain language-specific files and directories that shouldn't be published. Excluded items are listed in a .funcignore file in the root project folder.     
 
-### <a name="project-file-deployment"></a>Dağıtım (proje dosyaları)
+### <a name="project-file-deployment"></a>Deployment (project files)
 
-Yerel kodunuzu Azure 'da bir işlev uygulamasına yayımlamak için `publish` komutunu kullanın:
+To publish your local code to a function app in Azure, use the `publish` command:
 
 ```bash
 func azure functionapp publish <FunctionAppName>
 ```
 
-Bu komut, Azure 'da var olan bir işlev uygulamasına yayınlar. Aboneliğinizde mevcut olmayan bir `<FunctionAppName>` yayımlamaya çalışırsanız hata alırsınız. Azure CLı kullanarak komut isteminden veya Terminal penceresinde bir işlev uygulaması oluşturmayı öğrenmek için bkz. [sunucusuz yürütme için işlev uygulaması oluşturma](./scripts/functions-cli-create-serverless.md). Varsayılan olarak, bu komut, [uzak derlemeyi](functions-deployment-technologies.md#remote-build) kullanır ve uygulamanızı [dağıtım paketinden çalıştırmak](run-functions-from-deployment-package.md)üzere dağıtır. Bu önerilen dağıtım modunu devre dışı bırakmak için `--nozip` seçeneğini kullanın.
+This command publishes to an existing function app in Azure. You'll get an error if you try to publish to a `<FunctionAppName>` that doesn't exist in your subscription. To learn how to create a function app from the command prompt or terminal window using the Azure CLI, see [Create a Function App for serverless execution](./scripts/functions-cli-create-serverless.md). By default, this command uses [remote build](functions-deployment-technologies.md#remote-build) and deploys your app to [run from the deployment package](run-functions-from-deployment-package.md). To disable this recommended deployment mode, use the `--nozip` option.
 
 >[!IMPORTANT]
-> Azure portal bir işlev uygulaması oluşturduğunuzda, varsayılan olarak Işlev çalışma zamanının 2. x sürümünü kullanır. İşlev uygulamasının çalışma zamanının sürüm 1. x ' i kullanmasını sağlamak için [Sürüm 1. x üzerinde Çalıştır](functions-versions.md#creating-1x-apps)' daki yönergeleri izleyin.
-> Mevcut işlevlere sahip bir işlev uygulamasının çalışma zamanı sürümünü değiştiremezsiniz.
+> When you create a function app in the Azure portal, it uses version 2.x of the Function runtime by default. To make the function app use version 1.x of the runtime, follow the instructions in [Run on version 1.x](functions-versions.md#creating-1x-apps).
+> You can't change the runtime version for a function app that has existing functions.
 
-Aşağıdaki yayımlama seçenekleri, 1. x ve 2. x sürümleri için geçerlidir:
-
-| Seçenek     | Açıklama                            |
-| ------------ | -------------------------------------- |
-| **`--publish-local-settings -i`** |  Ayarları yerel. Settings. json ' da Azure 'a yayımlayın, bu ayar zaten varsa üzerine yazma isteminde bulunur. Depolama öykünücüsünü kullanıyorsanız, önce uygulama ayarını [gerçek bir depolama bağlantısı](#get-your-storage-connection-strings)olarak değiştirin. |
-| **`--overwrite-settings -y`** | `--publish-local-settings -i` kullanıldığında uygulama ayarlarının üzerine yazma istemi 'ni gizleyin.|
-
-Aşağıdaki yayımlama seçenekleri yalnızca sürüm 2. x içinde desteklenir:
+The following publish options apply for both versions, 1.x and 2.x:
 
 | Seçenek     | Açıklama                            |
 | ------------ | -------------------------------------- |
-| **`--publish-settings-only -o`** |  Yalnızca ayarları yayımlayın ve içeriği atlayın. Varsayılan istem. |
-|**`--list-ignored-files`** | Yayımlama sırasında yoksayılan,. funcignore dosyasını temel alan dosyaların listesini görüntüler. |
-| **`--list-included-files`** | Yayımlanan dosyaların bir listesini görüntüler, bu,. funcignore dosyasını temel alır. |
-| **`--nozip`** | Varsayılan `Run-From-Package` modunu kapatır. |
-| **`--build-native-deps`** | Python işlev uygulamaları yayımlanırken. tekerlek klasörü oluşturmayı atlar. |
-| **`--build`**<br/>**`-b`** | Bir Linux işlev uygulamasına dağıtım yaparken derleme eylemi gerçekleştirir. Kabul eder: `remote` ve `local`. |
-| **`--additional-packages`** | Yerel bağımlılıklar oluşturulurken yüklenecek paketlerin listesi. Örneğin: `python3-dev libevent-dev`. |
-| **`--force`** | Belirli senaryolarda yayımlama öncesi doğrulamayı yoksayın. |
-| **`--csx`** | Bir C# betik (. CSX) projesi yayımlayın. |
-| **`--no-build`** | .NET sınıf kitaplığı işlevleri oluşturmayın. |
-| **`--dotnet-cli-params`** | Derlenen C# (. csproj) işlevleri yayımlandığında, temel Araçlar ' DotNet Build--output bin/Publish ' yöntemini çağırır. Buna geçirilen parametreler komut satırına eklenecektir. |
+| **`--publish-local-settings -i`** |  Publish settings in local.settings.json to Azure, prompting to overwrite if the setting already exists. If you are using the storage emulator, first change the app setting to an [actual storage connection](#get-your-storage-connection-strings). |
+| **`--overwrite-settings -y`** | Suppress the prompt to overwrite app settings when `--publish-local-settings -i` is used.|
 
-### <a name="deployment-custom-container"></a>Dağıtım (özel kapsayıcı)
+The following publish options are only supported in version 2.x:
 
-Azure Işlevleri, işlev projenizi [özel bir Docker kapsayıcısına](functions-deployment-technologies.md#docker-container)dağıtmanızı sağlar. Daha fazla bilgi için bkz. [özel bir görüntü kullanarak Linux 'ta Işlev oluşturma](functions-create-function-linux-custom-image.md). Özel kapsayıcılar bir Dockerfile içermelidir. Dockerfile ile bir uygulama oluşturmak için, `func init`üzerinde--dockerfile seçeneğini kullanın.
+| Seçenek     | Açıklama                            |
+| ------------ | -------------------------------------- |
+| **`--publish-settings-only -o`** |  Only publish settings and skip the content. Default is prompt. |
+|**`--list-ignored-files`** | Displays a list of files that are ignored during publishing, which is based on the .funcignore file. |
+| **`--list-included-files`** | Displays a list of files that are published, which is based on the .funcignore file. |
+| **`--nozip`** | Turns the default `Run-From-Package` mode off. |
+| **`--build-native-deps`** | Skips generating .wheels folder when publishing python function apps. |
+| **`--build`**<br/>**`-b`** | Performs build action when deploying to a Linux function app. Accepts: `remote` and `local`. |
+| **`--additional-packages`** | List of packages to install when building native dependencies. Örneğin: `python3-dev libevent-dev`. |
+| **`--force`** | Ignore pre-publishing verification in certain scenarios. |
+| **`--csx`** | Publish a C# script (.csx) project. |
+| **`--no-build`** | Don't build .NET class library functions. |
+| **`--dotnet-cli-params`** | When publishing compiled C# (.csproj) functions, the core tools calls 'dotnet build --output bin/publish'. Any parameters passed to this will be appended to the command line. |
+
+### <a name="deployment-custom-container"></a>Deployment (custom container)
+
+Azure Functions lets you deploy your function project in a [custom Docker container](functions-deployment-technologies.md#docker-container). For more information, see [Create a function on Linux using a custom image](functions-create-function-linux-custom-image.md). Custom containers must have a Dockerfile. To create an app with a Dockerfile, use the --dockerfile option on `func init`.
 
 ```bash
 func deploy
 ```
 
-Aşağıdaki özel kapsayıcı dağıtım seçenekleri kullanılabilir:
+The following custom container deployment options are available:
 
 | Seçenek     | Açıklama                            |
 | ------------ | -------------------------------------- |
-| **`--registry`** | Geçerli kullanıcının oturum açan bir Docker kayıt defterinin adı. |
-| **`--platform`** | İşlev uygulaması için platform barındırma. Geçerli seçenekler şunlardır `kubernetes` |
-| **`--name`** | İşlev uygulaması adı. |
-| **`--max`**  | İsteğe bağlı olarak, dağıtılacak maksimum işlev uygulaması örneği sayısını ayarlar. |
-| **`--min`**  | İsteğe bağlı olarak, dağıtılacak en düşük işlev uygulaması örneği sayısını ayarlar. |
-| **`--config`** | İsteğe bağlı bir dağıtım yapılandırma dosyası ayarlar. |
+| **`--registry`** | The name of a Docker Registry the current user signed-in to. |
+| **`--platform`** | Hosting platform for the function app. Valid options are `kubernetes` |
+| **`--name`** | Function app name. |
+| **`--max`**  | Optionally, sets the maximum number of function app instances to deploy to. |
+| **`--min`**  | Optionally, sets the minimum number of function app instances to deploy to. |
+| **`--config`** | Sets an optional deployment configuration file. |
 
-## <a name="monitoring-functions"></a>İzleme işlevleri
+## <a name="monitoring-functions"></a>Monitoring functions
 
-İşlevlerinizin yürütülmesini izlemek için önerilen yol, Azure Application Insights ile tümleştirilmesine göre yapılır. Ayrıca, yürütme günlüklerini yerel bilgisayarınıza da akışla aktarabilirsiniz. Daha fazla bilgi için bkz. [Azure Işlevlerini izleme](functions-monitoring.md).
+The recommended way to monitor the execution of your functions is by integrating with Azure Application Insights. You can also stream execution logs to your local computer. To learn more, see [Monitor Azure Functions](functions-monitoring.md).
 
-### <a name="enable-application-insights-integration"></a>Application Insights tümleştirmeyi etkinleştir
+### <a name="enable-application-insights-integration"></a>Enable Application Insights integration
 
-Azure portal bir işlev uygulaması oluşturduğunuzda, Application Insights tümleştirmesi varsayılan olarak sizin için yapılır. Ancak, Azure CLı kullanarak işlev uygulamanızı oluşturduğunuzda, Azure 'daki işlev uygulamanızda tümleştirme yapılmaz.
+When you create a function app in the Azure portal, the Application Insights integration is done for you by default. However, when you create your function app by using the Azure CLI, the integration in your function app in Azure isn't done.
 
 [!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
 
-### <a name="enable-streaming-logs"></a>Akış günlüklerini etkinleştir
+### <a name="enable-streaming-logs"></a>Enable streaming logs
 
-İşlevleriniz tarafından oluşturulan günlük dosyalarının akışını, yerel bilgisayarınızdaki bir komut satırı oturumunda görüntüleyebilirsiniz. 
+You can view a stream of log files being generated by your functions in a command-line session on your local computer. 
 
-#### <a name="native-streaming-logs"></a>Yerel akış günlükleri
+#### <a name="native-streaming-logs"></a>Native streaming logs
 
 [!INCLUDE [functions-streaming-logs-core-tools](../../includes/functions-streaming-logs-core-tools.md)]
 
-Bu tür akış günlükleri, işlev uygulamanız için [Application Insights tümleştirmeyi etkinleştirmenizi](#enable-application-insights-integration) gerektirir.   
+This type of streaming logs requires that you [enable Application Insights integration](#enable-application-insights-integration) for your function app.   
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Functions Core Tools [açık kaynaktır ve GitHub üzerinde barındırılır](https://github.com/azure/azure-functions-cli).  
-Bir hata veya özellik isteğini dosyabir [GitHub sorunu açın](https://github.com/azure/azure-functions-cli/issues).
+Azure Functions Core Tools is [open source and hosted on GitHub](https://github.com/azure/azure-functions-cli).  
+To file a bug or feature request, [open a GitHub issue](https://github.com/azure/azure-functions-cli/issues).
 
 <!-- LINKS -->
 
 [Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
-[Azure Portal]: https://portal.azure.com 
+[Azure portalda]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 [`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
-[AzureWebJobsStorage]: functions-app-settings.md#azurewebjobsstorage
-[Uzantı demeti]: functions-bindings-register.md#extension-bundles
+[`AzureWebJobsStorage`]: functions-app-settings.md#azurewebjobsstorage
+[extension bundles]: functions-bindings-register.md#extension-bundles

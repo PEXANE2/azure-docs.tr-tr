@@ -1,139 +1,135 @@
 ---
-title: Yükleme Azure İşlevleri Çalışma Zamanı | Microsoft Docs
-description: Azure İşlevleri Çalışma Zamanı Preview 2 ' ye nasıl yüklenir
-services: functions
+title: Azure Functions Runtime Installation
+description: How to Install the Azure Functions Runtime preview 2
 author: apwestgarth
-manager: stefsch
-ms.assetid: ''
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
-ms.openlocfilehash: 0fbc76f3cb3fea84347ef55e40e1b2bed9b98152
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7ad748aa9a5b45af10121648a668344548484cf7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70085506"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226732"
 ---
-# <a name="install-the-azure-functions-runtime-preview-2"></a>Azure İşlevleri Çalışma Zamanı Preview 2 ' i yükler
+# <a name="install-the-azure-functions-runtime-preview-2"></a>Install the Azure Functions Runtime preview 2
 
 [!INCLUDE [intro](../../includes/functions-runtime-preview-note.md)]
 
-Azure İşlevleri Çalışma Zamanı Preview 2 ' yi yüklemek istiyorsanız aşağıdaki adımları izleyin:
+If you would like to install the Azure Functions Runtime preview 2, follow these steps:
 
-1. Makinenizin en düşük gereksinimleri geçirdiğinden emin olun.
-1. [Azure işlevleri çalışma zamanı Preview yükleyicisini](https://aka.ms/azafrv2)indirin.
-1. Azure İşlevleri Çalışma Zamanı Preview 1 ' i kaldırın.
-1. Azure İşlevleri Çalışma Zamanı Preview 2 ' i yükler.
-1. Azure İşlevleri Çalışma Zamanı Preview 2 yapılandırmasını doldurun.
-1. Azure İşlevleri Çalışma Zamanı önizlemede ilk işlevinizi oluşturma
+1. Ensure your machine passes the minimum requirements.
+1. Download the [Azure Functions Runtime Preview Installer](https://aka.ms/azafrv2).
+1. Uninstall the Azure Functions Runtime preview 1.
+1. Install the Azure Functions Runtime preview 2.
+1. Complete the configuration of the Azure Functions Runtime preview 2.
+1. Create your first function in Azure Functions Runtime Preview
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Azure İşlevleri Çalışma Zamanı Önizlemeyi yüklemeden önce aşağıdaki kaynaklara sahip olmanız gerekir:
+Before you install the Azure Functions Runtime preview, you must have the following resources available:
 
-1. Microsoft Windows Server 2016 veya Microsoft Windows 10 Creators Update (Professional veya Enterprise Edition) çalıştıran bir makine.
-1. Ağınız içinde çalışan bir SQL Server örneği.  Gerekli en düşük sürüm SQL Server Express.
+1. A machine running Microsoft Windows Server 2016 or Microsoft Windows 10 Creators Update (Professional or Enterprise Edition).
+1. A SQL Server instance running within your network.  Minimum edition required is SQL Server Express.
 
-## <a name="uninstall-previous-version"></a>Önceki sürümü kaldır
+## <a name="uninstall-previous-version"></a>Uninstall Previous Version
 
-Azure İşlevleri Çalışma Zamanı önizlemesini daha önce yüklediyseniz, en son sürümü yüklemeden önce ' yi kaldırmanız gerekir.  Windows 'daki Program Ekle/Kaldır bölümünde programı kaldırarak Azure İşlevleri Çalışma Zamanı önizlemeyi kaldırın.
+If you have previously installed the Azure Functions Runtime preview, you must uninstall before installing the latest release.  Uninstall the Azure Functions Runtime preview by removing the program in Add/Remove Programs in Windows.
 
-## <a name="install-the-azure-functions-runtime-preview"></a>Azure İşlevleri Çalışma Zamanı önizlemeyi yükler
+## <a name="install-the-azure-functions-runtime-preview"></a>Install the Azure Functions Runtime Preview
 
-Azure İşlevleri Çalışma Zamanı Preview yükleyicisi, Azure İşlevleri Çalışma Zamanı önizleme yönetimi ve çalışan rollerinin yüklenmesinde size kılavuzluk eder.  Yönetim ve çalışan rolünü aynı makineye yüklemek mümkündür.  Ancak, daha fazla işlev uygulaması eklediğinizde, işlevlerinizi birden çok çalışana ölçeklendirebilmek için ek makinelere daha fazla çalışan rolü dağıtmanız gerekir.
+The Azure Functions Runtime Preview Installer guides you through the installation of the Azure Functions Runtime preview Management and Worker Roles.  It is possible to install the Management and Worker role on the same machine.  However, as you add more function apps, you must deploy more worker roles on additional machines to be able to scale your functions onto multiple workers.
 
-## <a name="install-the-management-and-worker-role-on-the-same-machine"></a>Yönetim ve çalışan rolünü aynı makineye yükler
+## <a name="install-the-management-and-worker-role-on-the-same-machine"></a>Install the Management and Worker Role on the same machine
 
-1. Azure İşlevleri Çalışma Zamanı Preview yükleyicisini çalıştırın.
+1. Run the Azure Functions Runtime Preview Installer.
 
-    ![Azure İşlevleri Çalışma Zamanı Preview yükleyicisi][1]
+    ![Azure Functions Runtime preview installer][1]
 
-1. **İleri**'ye tıklayın.
-1. **EULA**'nın koşullarını okuduktan sonra, koşulları kabul etmek için **kutuyu işaretleyin** ve **İleri** ' ye tıklayın.
-1. Bu makine **Işlevleri yönetim rolü** ve/veya **işlevleri çalışan rolü** üzerine yüklemek Istediğiniz rolleri seçin ve **İleri**' ye tıklayın.
+1. **İleri**’ye tıklayın.
+1. Once you have read the terms of the **EULA**, **check the box** to accept the terms and click **Next** to advance.
+1. Select the roles you want to install on this machine **Functions Management Role** and/or **Functions Worker Role** and click **Next**.
 
-    ![Azure İşlevleri Çalışma Zamanı Preview yükleyicisi-rol seçimi][3]
-
-    > [!NOTE]
-    > **Işlevlerin çalışan rolünü** diğer birçok makineye yükleyebilirsiniz. Bunu yapmak için, bu yönergeleri izleyin ve yalnızca yükleyicideki **Işlevler çalışan rolü** ' nü seçin.
-
-1. **Azure işlevleri çalışma zamanı Kurulum sihirbazının** makinenizde yükleme işlemini başlatmak için **İleri** ' ye tıklayın.
-1. Tamamlandıktan sonra, Kurulum Sihirbazı **Azure işlevleri çalışma zamanı** yapılandırma aracını başlatır.
-
-    ![Azure İşlevleri Çalışma Zamanı Preview yükleyicisi Tamam][6]
+    ![Azure Functions Runtime preview installer - role selection][3]
 
     > [!NOTE]
-    > **Windows 10** ' a yüklüyorsanız ve **kapsayıcı** özelliği daha önce etkinleştirilmemişse, **Azure işlevleri çalışma zamanı kurulum** , yüklemeyi tamamlaması için makinenizi yeniden başlatmanızı ister.
+    > You can install the **Functions Worker Role** on many other machines. To do so, follow these instructions, and only select **Functions Worker Role** in the installer.
 
-## <a name="configure-the-azure-functions-runtime"></a>Azure İşlevleri Çalışma Zamanı yapılandırma
+1. Click **Next** to have the **Azure Functions Runtime Setup Wizard** begin the installation process on your machine.
+1. Once complete, the setup wizard launches the **Azure Functions Runtime** configuration tool.
 
-Azure İşlevleri Çalışma Zamanı yüklemesini gerçekleştirmek için, yapılandırmayı tamamlamalısınız.
+    ![Azure Functions Runtime preview installer complete][6]
 
-1. **Azure işlevleri çalışma zamanı** yapılandırma aracı, makinenizde hangi rollerin yüklü olduğunu gösterir.
+    > [!NOTE]
+    > If you are installing on **Windows 10** and the **Container** feature has not been previously enabled, the **Azure Functions Runtime Setup** prompts you to reboot your machine to complete the install.
 
-    ![Azure İşlevleri Çalışma Zamanı Preview yapılandırma aracı][7]
+## <a name="configure-the-azure-functions-runtime"></a>Configure the Azure Functions Runtime
 
-1. **Veritabanı** sekmesine tıklayın, bir [veritabanı ana anahtarı](https://docs.microsoft.com/sql/relational-databases/security/encryption/sql-server-and-database-encryption-keys-database-engine)belirtme dahil SQL Server Örneğiniz için bağlantı ayrıntılarını girin ve **Uygula**' ya tıklayın.  Azure İşlevleri Çalışma Zamanı çalışma zamanını destekleyecek bir veritabanı oluşturmak için bir SQL Server örneğine bağlantı gerekir.
+To complete the Azure Functions Runtime installation, you must complete the configuration.
 
-    ![Azure İşlevleri Çalışma Zamanı Preview veritabanı yapılandırması][8]
+1. The **Azure Functions Runtime** configuration tool shows which roles are installed on your machine.
 
-1. **Kimlik bilgileri** sekmesine tıklayın.  Burada, tüm işlev uygulamalarınızı barındırmak için bir dosya paylaşımıyla birlikte kullanmak üzere iki yeni kimlik bilgisi oluşturmalısınız.  **Dosya paylaşımının sahibi** ve **dosya paylaşma kullanıcısı**Için **Kullanıcı adı** ve **parola** birleşimlerini belirtip **Uygula**' ya tıklayın.
+    ![Azure Functions Runtime preview configuration tool][7]
 
-    ![Azure İşlevleri Çalışma Zamanı Preview kimlik bilgileri][9]
+1. Click the **Database** tab, enter the connection details for your SQL Server instance, including specifying a [Database master key](https://docs.microsoft.com/sql/relational-databases/security/encryption/sql-server-and-database-encryption-keys-database-engine), and click **Apply**.  Connectivity to a SQL Server instance is required in order for the Azure Functions Runtime to create a database to support the Runtime.
 
-1. **Dosya paylaşma** sekmesine tıklayın.  Burada dosya paylaşma konumunun ayrıntılarını belirtmeniz gerekir.  Dosya paylaşma sizin için oluşturulabilir veya var olan bir dosya paylaşımından kullanılabilir ve **Uygula**' ya tıklayabilirsiniz.  Yeni bir dosya paylaşma konumu seçerseniz, Azure İşlevleri Çalışma Zamanı tarafından kullanılacak bir dizin belirtmeniz gerekir.
+    ![Azure Functions Runtime preview database configuration][8]
 
-    ![Azure İşlevleri Çalışma Zamanı Preview dosya paylaşma][10]
+1. Click the **Credentials** tab.  Here, you must create two new credentials for use with a file share for hosting all your function apps.  Specify **User name** and **Password** combinations for the **file share owner** and for the **file share user**, then click **Apply**.
 
-1. **IIS** sekmesine tıklayın.  Bu sekmede, Azure İşlevleri Çalışma Zamanı yapılandırma aracının oluşturduğu IIS 'deki Web sitelerinin ayrıntıları gösterilmektedir.  Azure İşlevleri Çalışma Zamanı Preview Portal için burada özel bir DNS adı belirtebilirsiniz.  Tamam ' a tıklayarak Tamam 'a tıklayın.
+    ![Azure Functions Runtime preview credentials][9]
 
-    ![Azure İşlevleri Çalışma Zamanı Preview IIS][11]
+1. Click the **File Share** tab.  Here you must specify the details of the file share  location.  The file share can be created for you or you can use an existing File Share and click **Apply**.  If you select a new File Share location, you must specify a directory for use by the Azure Functions Runtime.
 
-1. **Hizmetler** sekmesine tıklayın.  Bu sekmede Azure İşlevleri Çalışma Zamanı yapılandırma aracdaki hizmetlerin durumu gösterilmektedir.  **Azure Işlevleri ana bilgisayar etkinleştirme hizmeti** ilk yapılandırmadan sonra çalışmıyorsa, **Hizmeti Başlat**' a tıklayın.
+    ![Azure Functions Runtime preview file share][10]
 
-    ![Azure İşlevleri Çalışma Zamanı Preview Yapılandırması Tamam][12]
+1. Click the **IIS** tab.  This tab shows the details of the websites in IIS that the Azure Functions Runtime configuration tool creates.  You may specify a custom DNS name here for the Azure Functions Runtime preview portal.  Click **Apply** to complete.
 
-1. **Azure işlevleri çalışma zamanı portalına** `https://<machinename>.<domain>/`gidin.
+    ![Azure Functions Runtime preview IIS][11]
 
-    ![Azure İşlevleri Çalışma Zamanı Preview Portal][13]
+1. Click the **Services** tab.  This tab shows the status of the services in your Azure Functions Runtime configuration tool.  If the  **Azure Functions Host Activation Service** is not running after initial configuration, click **Start Service**.
 
-## <a name="create-your-first-function-in-azure-functions-runtime-preview"></a>Azure İşlevleri Çalışma Zamanı önizlemede ilk işlevinizi oluşturma
+    ![Azure Functions Runtime preview configuration complete][12]
 
-Azure İşlevleri Çalışma Zamanı önizlemede ilk işlevinizi oluşturmak için
+1. Browse to the **Azure Functions Runtime Portal** as `https://<machinename>.<domain>/`.
 
-1. Örneğin `https://<machinename>.<domain>` Azureişlevleriçalışmazamanıportalına`https://mycomputer.mydomain.com`gidin.
+    ![Azure Functions Runtime preview portal][13]
 
-1. Bir etki alanında dağıtılmışsa etki alanı hesabınızın Kullanıcı adı ve parolasını kullanıyorsanız **oturum açmanız**istenir, aksi takdirde portalda oturum açmak için yerel hesap Kullanıcı adınızı ve parolanızı kullanın.
+## <a name="create-your-first-function-in-azure-functions-runtime-preview"></a>Create your first function in Azure Functions Runtime preview
 
-    ![Azure İşlevleri Çalışma Zamanı Preview Portal oturum açma][14]
+To create your first function in Azure Functions Runtime preview
 
-1. İşlev uygulamaları oluşturmak için bir abonelik oluşturmanız gerekir.  Portalın sol üst köşesinde, abonelikler ' in yanındaki **+** seçeneğe tıklayın.
+1. Browse to the **Azure Functions Runtime Portal** as `https://<machinename>.<domain>` for example `https://mycomputer.mydomain.com`.
 
-    ![Azure İşlevleri Çalışma Zamanı Preview Portal abonelikleri][15]
+1. You are prompted to **Log in**, if deployed in a domain use your domain account username and password, otherwise use your local account username and password to log in to the portal.
 
-1. **Defaultplan**' ı seçin, aboneliğiniz için bir ad girin ve **Oluştur**' a tıklayın.
+    ![Azure Functions Runtime preview portal login][14]
 
-    ![Azure İşlevleri Çalışma Zamanı Preview Portal abonelik planı ve adı][16]
+1. To create function apps, you must create a Subscription.  In the top left-hand corner of the portal, click the **+** option next to the subscriptions.
 
-1. Tüm işlev uygulamalarınız portalın sol bölmesinde listelenir.  Yeni bir işlev uygulaması oluşturmak için, **uygulama başlık işlevini** seçin ve **+** seçeneğe tıklayın.
+    ![Azure Functions Runtime preview portal subscriptions][15]
 
-1. İşlev uygulamanız için bir ad girin, doğru aboneliği seçin, hangi Azure Işlevleri çalışma zamanının Programlaştırmak istediğinizi seçin ve **Oluştur** ' a tıklayın.
+1. Choose **DefaultPlan**, enter a name for your Subscription, and click **Create**.
 
-    ![Azure İşlevleri Çalışma Zamanı Preview Portal yeni işlev uygulaması][17]
+    ![Azure Functions Runtime preview portal subscription plan and name][16]
 
-1. Yeni işlev uygulamanız portalın sol bölmesinde listelenir.  Işlevler ' i seçin ve ardından portalda orta bölmenin en üstündeki **yeni işlev** ' ı tıklatın.
+1. All of your function apps are listed in the left-hand pane of the portal.  To create a new Function App, select the heading **Function Apps** and click the **+** option.
 
-    ![Azure İşlevleri Çalışma Zamanı önizleme şablonları][18]
+1. Enter a name for your function app, select the correct Subscription, choose which version of the Azure Functions runtime you wish to program against and click **Create**
 
-1. Zamanlayıcı tetikleyicisi işlevini seçin, sağ taraftaki açılır menüdeki işlevinizi adlandırın ve zamanlamayı olarak `*/5 * * * * *` değiştirin (bu cron ifadesi Zamanlayıcı işlevinizin beş saniyede bir yürütmesine neden olur) ve **Oluştur** ' a tıklayın.
+    ![Azure Functions Runtime preview portal new function app][17]
 
-    ![Yeni zamanlayıcı işlev yapılandırması Azure İşlevleri Çalışma Zamanı Önizleme][19]
+1. Your new function app is listed in the left-hand pane of the portal.  Select Functions and then click **New Function** at the top of the center pane in the portal.
 
-1. İşleviniz şimdi oluşturuldu.  Portalın alt kısmındaki **günlük** bölmesini genişleterek işlev uygulamanızın yürütme günlüğünü görüntüleyebilirsiniz.
+    ![Azure Functions Runtime preview templates][18]
 
-    ![Azure İşlevleri Çalışma Zamanı Preview işlevi yürütülüyor][20]
+1. Select the Timer Trigger function, in the right-hand flyout name your function and change the Schedule to `*/5 * * * * *` (this cron expression causes your timer function to execute every five seconds), and click **Create**
+
+    ![Azure Functions Runtime preview new timer function configuration][19]
+
+1. Your function has now been created.  You can view the execution log of your Function app by expanding the **log** pane at the bottom of the portal.
+
+    ![Azure Functions Runtime preview function executing][20]
 
 <!--Image references-->
 [1]: ./media/functions-runtime-install/AzureFunctionsRuntime_Installer1.png

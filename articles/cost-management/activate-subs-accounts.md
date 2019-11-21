@@ -7,15 +7,15 @@ author: bandersmsft
 ms.author: banders
 ms.date: 09/19/2019
 ms.topic: quickstart
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: 53ac79c257e88380d462e5ef69ed494ae9967c07
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 77ea61d6aafad556a90b934d77569b8166aeafef
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155178"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230184"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-cloudyn"></a>Azure aboneliklerini ve hesaplarını Cloudyn ile etkinleştirme
 
@@ -41,7 +41,7 @@ Hesabınıza **Katkıda Bulunan** rolü atandıysa, uygulamayı atamak için yet
 3. Azure Active Directory’de **Kullanıcı ayarları**’nı seçin.
 4. **Uygulama kayıtları** seçeneğini işaretleyin.
     - Bu **Evet** olarak ayarlanırsa, yönetici olmayan kullanıcılar AD uygulamalarını kaydedebilir. Bu ayar, Azure AD kiracısı içindeki herhangi bir kullanıcının bir uygulamayı kaydedebileceği anlamına gelir.  
-    ![Kullanıcı Ayarları'nda uygulama kayıtları seçin](./media/activate-subs-accounts/app-register.png)
+    ![select App registrations in User settings](./media/activate-subs-accounts/app-register.png)
     - **Uygulama kayıtları** seçeneği **Hayır** olarak ayarlanırsa, yalnızca kiracı yönetici kullanıcıları Azure Active Directory uygulamalarını kaydedebilir. Kiracı yöneticinizin, CloudynCollector uygulamasını kaydetmesi gerekir.
 
 
@@ -53,14 +53,14 @@ Bir aboneliğe hesap güncelleştirme eklediğinizde, Cloudyn'e Azure verilerini
 
 1. Cloudyn portalında, sağ üst kısımdaki dişli simgesine tıklayın ve **Bulut Hesapları**'nı seçin.
 2. **Yeni hesap ekle**’ye tıklayın, böylece **Yeni hesap ekle** kutusu görüntülenir. Gerekli bilgileri girin.  
-    ![Ekleme yeni hesap kutusunda gerekli bilgileri girin](./media/activate-subs-accounts/add-new-account.png)
+    ![enter required information in the Add new account box](./media/activate-subs-accounts/add-new-account.png)
 
 ### <a name="update-a-subscription"></a>Aboneliği güncelleştirme
 
 1. Cloudyn’de önceden mevcut olan _etkinleştirilmemiş_ bir aboneliği güncelleştirmek istiyorsanız, üst _kiracı GUID'si_'nin sağındaki düzenleme kalemi simgesine tıklayın. Abonelikler bir üst kiracı altında gruplanır, bu nedenle abonelikleri tek tek etkinleştirmekten kaçının.
-    ![Kiracı Kimliğinizi Rediscover abonelik kutuya seçin](./media/activate-subs-accounts/existing-sub.png)
+    ![select your tenant ID in the Rediscover subscriptions box](./media/activate-subs-accounts/existing-sub.png)
 2. Gerekirse Kiracı Kimliğini girin. Kiracı Kimliğinizi bilmiyorsanız, bulmak için aşağıdaki adımları kullanın:
-    1. [Azure Portal](https://portal.azure.com) oturum açın.
+    1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
     2. Azure portalında **Azure Active Directory** seçeneğini belirleyin.
     3. Kiracı kimliğini almak için Azure AD kiracınızda **Özellikler**'i seçin.
     4. Dizin Kimliği GUID’ini kopyalayın. Bu değer kiracı kimliğinizdir.
@@ -87,7 +87,7 @@ Cloudyn portalını ilk kullandığınızda, Kurumsal Anlaşma veya Bulut Çöz�
 
 - **Cloudyn'i Kurma** sihirbazında *Belirtilen API anahtarı, üst düzey bir kayıt anahtarı değil* iletisi görüntülenir.
 - Kurumsal Anlaşma portalında *Doğrudan Kayıt - Hayır* görüntülenir.
-- Azure Maliyet Yönetimi portalında *Son 30 gün için kullanım verisi bulunamadı. Cloudyn portalında, Azure hesabınız için işaretlemenin etkinleştirildiğinden emin olmak için lütfen dağıtımcınızla görüşün* iletisi görüntülenir.
+- *No usage data was found for the last 30 days. Please contact your distributor to make sure markup was enabled for your Azure account* displayed in the Cloudyn portal.
 
 Önceki ileti, bir kurumsal bayi veya CSP aracılığıyla Azure Kurumsal Anlaşma satın aldığınızı belirtir. Cloudyn'de verilerinizi görüntüleyebilmeniz için satıcınızın veya CSP’nin Azure hesabınız için _işaretlemeyi_ etkinleştirmesi gerekir.
 

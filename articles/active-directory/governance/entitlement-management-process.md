@@ -1,6 +1,6 @@
 ---
-title: Azure AD Yetkilendirme Yönetimi 'nde işlem ve e-posta bildirimleri isteme-Azure Active Directory
-description: Erişim paketi için istek süreci ve Azure Active Directory yetkilendirme yönetimi 'nde e-posta bildirimleri gönderildiğinde öğrenin.
+title: Request process and email notifications in Azure AD entitlement management - Azure Active Directory
+description: Learn about the request process for an access package and when email notifications are sent in Azure Active Directory entitlement management.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -12,121 +12,147 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 10/30/2019
+ms.date: 11/11/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e34d2c69cc808552a3b0c604804f3cd2597b379b
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: f336e9f2bdf1553a72bdc35fecc1b0b735fad274
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200010"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74206853"
 ---
-# <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde işlem ve e-posta bildirimleri iste
+# <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management"></a>Request process and email notifications in Azure AD entitlement management
 
-Bir Kullanıcı bir erişim paketine istek gönderdiğinde, bir işlem o erişim isteğini sunmaya başlar. Azure AD Yetkilendirme Yönetimi, işlem sırasında önemli olaylar gerçekleştiğinde onaylayanlara ve istek Lara e-posta bildirimleri gönderir. Bu makalede, istek işlemi ve gönderilen e-posta bildirimleri açıklanmaktadır.
+When a user submits a request to an access package, a process begins to deliver that access request. Azure AD entitlement management sends email notifications to approvers and requestors when key events occur during the process. This article describes the request process and the email notifications that are sent.
 
-## <a name="request-process"></a>İstek işlemi
+## <a name="request-process"></a>Request process
 
-Erişim paketine erişmesi gereken bir Kullanıcı, erişim isteği gönderebilir. İlkenin yapılandırmasına bağlı olarak istek için onay gerekebilir. Bir istek onaylandığında bir işlem, erişim paketindeki her kaynağa Kullanıcı erişimini atamaya başlar. Aşağıdaki diyagramda, işleme ve farklı durumlara genel bir bakış gösterilmektedir:
+A user that needs access to an access package can submit an access request. Depending on the configuration of the policy, the request might require an approval. When a request is approved, a process begins to assign the user access to each resource in the access package. The following diagram shows an overview of the process and the different states:
 
-![Onay işlemi diyagramı](./media/entitlement-management-process/request-process.png)
+![Approval process diagram](./media/entitlement-management-process/request-process.png)
 
 | Eyalet | Açıklama |
 | --- | --- |
-| Gönderme | Kullanıcı bir istek gönderir. |
-| Onay bekleniyor | Bir erişim paketinin ilkesi onay gerektiriyorsa, bir istek bekleyen onaya gider. |
-| Süresi doldu | Onay isteği zaman aşımı içinde bir onaylayan isteği onaylamadıysanız, isteğin süresi dolar. Yeniden denemek için, kullanıcının isteklerini yeniden göndermek zorunda kalır. |
-| Reddedildiğinde | Onaylayan bir isteği reddeder. |
-| Onaylandı | Onaylayan bir isteği onaylar. |
-| Sunma | Kullanıcıya erişim paketindeki tüm kaynaklara **erişim atanmamış.** Bu bir dış Kullanıcı ise, Kullanıcı henüz kaynak dizinine erişmemiş ve onay isteğini kabul etmiş olabilir. |
-| Teslim Edildi | Kullanıcıya erişim paketindeki tüm kaynaklara erişim atandı. |
-| Genişletilmiş erişim | İlkede uzantılara izin veriliyorsa Kullanıcı atamayı genişletti. |
-| Erişim zaman aşımına uğradı | Kullanıcının erişim paketine erişiminin süresi doldu. Yeniden erişim sağlamak için kullanıcının bir istek göndermesi gerekir. |
+| Submitted | User submits a request. |
+| Pending approval | If the policy for an access package requires approval, a request moves to pending approval. |
+| Süresi doldu | If no approvers approve a request within the approval request timeout, the request expires. To try again, the user will have to resubmit their request. |
+| Denied | Approver denies a request. |
+| Onaylandı | Approver approves a request. |
+| Delivering | User has **not** been assigned access to all the resources in the access package. If this is an external user, the user may not have accessed the resource directory yet. They also may not have accepted the consent prompt. |
+| Teslim Edildi | User has been assigned access to all the resources in the access package. |
+| Access extended | If extensions are allowed in the policy, the user extended the assignment. |
+| Access expired | User's access to the access package has expired. To get access again, the user will have to submit a request. |
 
 ## <a name="email-notifications"></a>E-posta bildirimleri
 
-Bir onaylıyorsanız, bir erişim isteğini onaylamanız gerektiğinde ve bir erişim isteği tamamlandığında e-posta bildirimleri gönderilir. İstek sahibi olduğunuzda, isteğiniz durumunu belirten e-posta bildirimleri gönderilir.
+If you're an approver, you're sent email notifications when you need to approve an access request. You also receive notifications when an access request has been completed. You're also sent email notifications that indicate the status of your request if you're a requestor.
 
-Aşağıdaki diyagramlarda, bu e-posta bildirimlerinin onaylayanlara veya istek sahibine ne zaman gönderildiği gösterilmektedir. Diyagramda görüntülenecek e-posta bildirimlerine karşılık gelen sayıyı bulmak için [e-posta bildirimleri tablosuna](entitlement-management-process.md#email-notifications-table) başvurun.
+The following diagrams show when these email notifications are sent to either the approvers or the requestor. Reference the [email notifications table](entitlement-management-process.md#email-notifications-table) to find the corresponding number to the email notifications displayed in the diagrams.
 
-### <a name="primary-approvers-and-alternate-approvers"></a>Birincil onaylayanlar ve alternatif onaylayanlar
-Aşağıdaki diyagramda, birincil onaylayanlar ve alternatif onaylayanlar deneyimi ve istek işlemi sırasında aldıkları e-posta bildirimleri gösterilmektedir:
+### <a name="first-approvers-and-alternate-approvers"></a>First approvers and alternate approvers
+The following diagram shows the experience of first approvers and alternate approvers, and the email notifications they receive during the request process:
 
-![Birincil ve alternatif onaylayanlar işlem akışı](./media/entitlement-management-process/primary-approvers-and-alternate-with-escalation-flow.png)
+![First and alternate approvers process flow](./media/entitlement-management-process/first-approvers-and-alternate-with-escalation-flow.png)
 
 ### <a name="requestors"></a>İstek sahipleri
-Aşağıdaki diyagramda istek süreci sırasında istek sahipleri ve aldıkları e-posta bildirimleri gösterilmektedir:
+The following diagram shows the experience of requestors and the email notifications they receive during the request process:
 
-![İstek sahibi işlem akışı](./media/entitlement-management-process/requestor-approval-and-expiration-request-flow.png)
+![Requestor process flow](./media/entitlement-management-process/requestor-approval-request-flow.png)
 
-### <a name="email-notifications-table"></a>E-posta bildirimleri tablosu
-Aşağıdaki tabloda, bu e-posta bildirimlerinin her biri hakkında daha ayrıntılı bilgi verilmektedir. Bu e-postaları yönetmek için kurallarını kullanabilirsiniz. Örneğin, Outlook 'ta, konu bu tablodan sözcükler içeriyorsa e-postaları bir klasöre taşımak için kurallar oluşturabilirsiniz:
+### <a name="2-stage-approval"></a>2-stage approval
+The following diagram shows the experience of stage-1 and stage-2 approvers and the email notifications they receive during the request process:
 
-| # | E-posta konusu | Gönderildiğinde | Gönderildiği yer |
+![2-stage approval process flow](./media/entitlement-management-process/2stage-approval-with-request-timeout-flow.png)
+
+### <a name="email-notifications-table"></a>Email notifications table
+The following table provides more detail about each of these email notifications. To manage these emails, you can use rules. For example, in Outlook, you can create rules to move the emails to a folder if the subject contains words from this table:
+
+| # | Email subject | When sent | Sent to |
 | --- | --- | --- | --- |
-| 1 | Eylem gerekiyor: iletilen isteği *[Date]* tarafından onayla veya Reddet | Bu e-posta, 1. aşama (isteğin ilerletilmiş olduktan sonra) işlem yapması için gönderilir. | Aşama-1 alternatif onaylayan |
-| 2 | Eylem gerekli: *[Date]* tarafından istekleri onaylama veya reddetme | Bu e-posta, yükseltme devre dışı bırakılmışsa, işlem yapmak için, 1. aşama birincil onaylayanlara gönderilir. | Aşama-1 birincil onaylayan |
-| 3 | Anımsatıcı: [ *istek sahibi]* için *[Date]* isteği onaylama veya reddetme | Bu anımsatıcı e-postası, yükseltme devre dışı bırakılmışsa, yalnızca henüz eylem gerçekleştirmedikleri zaman gerçekleştirilecek şekilde, Aşama 1 birincil onaylayanlara gönderilir. | Aşama-1 birincil onaylayan |
-| 4 | [ *Date* ] tarihinde *[Time]* isteği onayla veya Reddet | Bu e-posta, 1. aşama birincil onaylayanlara (yükseltme etkinse) işlem yapması için gönderilir. | Aşama-1 birincil onaylayan |
-| 5 | Eylem gerekiyor anımsatıcı: *[istek sahibi]* için *[Date]* isteği onaylama veya reddetme | Bu anımsatıcı e-postası, yükseltme etkinse, yalnızca henüz eylem gerçekleştirmedikleri zaman, işlem yapmak için, Aşama 1 birincil onaylayanlara gönderilir. | Aşama-1 birincil onaylayan |
-| 6 | *[Access_package]* için isteğin süresi doldu | Bu e-posta, isteğin süresi dolduktan sonra tek aşamalı veya çok aşamalı bir isteğin Aşama 1 birincil onaylayanlara ve/veya Aşama 1 alternatif onaylayanlara gönderilir. | Aşama-1 birincil onaylayan, Aşama 1 alternatif onaylayan |
-| 7 | *[İstek sahibi]* için *[access_package]* için onaylanmış istek | Bu e-posta, bir isteğin tamamlanmasından sonra Aşama 1 birincil onaylayanlara ve/veya Aşama 1 alternatif onaylayanlara gönderilir. | Aşama-1 birincil onaylayan, Aşama 1 alternatif onaylayan |
-| 8 | *[İstek sahibi]* için *[access_package]* için onaylanmış istek | Bu e-posta, 1. Aşama-1 birincil onaylayanlara ve/veya Aşama 1 alternatif onaylayanlara, yalnızca Aşama-1 onaylandığında, 2 aşamalı bir istek olarak gönderilir. | Aşama-1 birincil onaylayan, Aşama 1 alternatif onaylayan |
-| 9 | *[Access_package]* isteği reddedildi | Bu e-posta yalnızca isteği reddedildiğinde istek sahibine gönderilir | Sahibinin |
-| 10 | *[Access_package]* için isteğinizin süresi doldu | Bu e-posta, isteğin süresi dolduktan sonra tek aşamalı veya çok aşamalı bir isteğin sonunda 1. aşamada istek sahibine gönderilir. | Sahibinin |
-| 18 | Artık *[access_package]* erişimi var | Bu e-posta, erişimini kullanmaya başlamak için son kullanıcılara gönderilir. | Sahibinin |
-| 19 | [ *Access_package]* için erişimi *[Date] tarihine* kadar uzat | Bu e-posta, erişiminin süresi dolmadan önce son kullanıcılara gönderilir. | Sahibinin |
-| 20 | *[Access_package]* için erişim sona erdi | Bu e-posta, erişiminin süresi dolduktan sonra son kullanıcılara gönderilir. | Sahibinin |
+| 1 | Action required: Approve or deny forwarded request by *[date]* | This email will be sent to Stage-1 alternate approvers (after the request has been escalated) to take action. | Stage-1 alternate approvers |
+| 2 | Action required: Approve or deny request by *[date]* | This email will be sent to the first approver, if escalation is disabled, to take action. | First approver |
+| 3 | Reminder: Approve or deny the request by *[date]* for *[requestor]* | This reminder email will be sent to the first approver, if escalation is disabled. The email asks them to take action if they haven't. | First approver |
+| 4 | Approve or deny the request by *[time]* on *[date]* | This email will be sent to the first approver (if escalation is enabled) to take action. | First approver |
+| 5 | Action required reminder: Approve or deny the request by *[date]* for *[requestor]* | This reminder email will be sent to the first approver, if escalation is enabled. The email asks them to take action if they haven't. | First approver |
+| 6 | Request has expired for *[access_package]* | This email will be sent to the first approver and stage-1 alternate approvers after the request has expired. | First approver, stage-1 alternate approvers |
+| 7 | Request approved for *[requestor]* to *[access_package]* | This email will be sent to the first approver and stage-1 alternate approvers upon request completion. | First approver, stage-1 alternate approvers |
+| 8 | Request approved for *[requestor]* to *[access_package]* | This email will be sent to the first approver and stage-1 alternate approvers of a 2-stage request when the stage-1 request is approved. | First approver, stage-1 alternate approvers |
+| 9 | Request denied to *[access_package]* | This email will be sent to the requestor when their request is denied | Requestor |
+| 10 | Your request has expired for *[access_package]* | This email will be sent to the requestor at the end of a single or 2-stage request. The email notifies the requestor that the request expired. | Requestor |
+| 11 | Action required: Approve or deny request by *[date]* | This email will be sent to the second approver, if escalation is disabled, to take action. | Second approver |
+| 12 | Action required reminder: Approve or deny the request by *[date]* | This reminder email will be sent to the second approver, if escalation is disabled. The notification asks them to take action if they haven't yet. | Second approver |
+| 13 | Action required: Approve or deny the request by *[date]* for *[requestor]* | This email will be sent to second approver, if escalation is enabled, to take action. | Second approver |
+| 14 | Action required reminder: Approve or deny the request by *[date]* for *[requestor]* | This reminder email will be sent to the second approver, if escalation is enabled. The notification asks them to take action if they haven't yet. | Second approver |
+| 15 | Action required: Approve or deny forwarded request by *[date]* | This email will be sent to stage-2 alternate approvers, if escalation is enabled, to take action. | Stage-2 alternate approvers |
+| 16 | Request approved for *[requestor]* to *[access_package]* | This email will be sent to the second approver and stage-2 alternate approvers upon approving the request. | Second approver, Stage-2 alternate approvers |
+| 17 | A request has expired for *[access_package]* | This email will be sent to the second approver or alternate approvers, after the request expires. | Second approver, stage-2 alternate approvers |
+| 18 | You now have access to *[access_package]* | This email will be sent to the end users to start using their access. | Requestor |
+| 19 | Extend access for *[access_package]* by *[date]* | This email will be sent to the end users before their access expires. | Requestor |
+| 20 | Access has ended for *[access_package]* | This email will be sent to the end users after their access expires. | Requestor |
 
-### <a name="access-request-emails"></a>Erişim isteği e-postaları
+### <a name="access-request-emails"></a>Access request emails
 
-Bir istek sahibi onay gerektirecek şekilde yapılandırılmış bir erişim paketi için erişim isteği gönderdiğinde, ilkeye eklenen tüm onaylayanlar isteğin ayrıntılarını içeren bir e-posta bildirimi alır. Ayrıntılar, istek sahibinin adını, kuruluşunu, erişim başlangıç ve bitiş tarihini (sağlanmışsa), iş gerekçe, isteğin gönderildiği ve isteğin ne zaman dolacağını içerir.
+When a requestor submits an access request for an access package configured to require approval, all approvers added to the policy will receive an email notification with details of the request. The details in the email include: requestor's name organization, and business justification; and the requested access start and end date (if provided). The details will also include when the request was submitted and when the request will expire.
 
-E-posta, erişim isteğini onaylamak veya reddetmek için Myaccess ' a tıklayarak bir bağlantı onaylayıcıları içerir. İstek sahibi bir erişim isteği gönderdiğinde bir onaylayana gönderilen örnek bir e-posta bildirimi aşağıda verilmiştir:
+The email includes a link approvers can click on to go to My Access to approve or deny the access request. Here is a sample email notification that is sent to the first approver or second approver (if 2-stage approval is enabled) to complete an access request:
 
-![Paket e-postasına erişim isteğini onayla](./media/entitlement-management-shared/approver-request-email.png)
+![Approve request to access package email](./media/entitlement-management-shared/approver-request-email.png)
 
-Birincil onaylayanlar de bir e-posta bildirimine bir işlem yapması ve isteğe yönelik bir karar vermek için bir anımsatıcı gönderilir. Aşağıda, bir işlem yapması için hatırlatmak üzere birincil onaylayanlara ait alma bildirimi örnek bir e-postası verilmiştir:
+Approvers can also receive a reminder email. The email asks the approver to make a decision on the request. Here is a sample email notification the approver receives to remind them to take action:
 
-![Anımsatıcı erişim isteği e-postası](./media/entitlement-management-process/approver-access-request-reminder-email.png)
+![Reminder access request email](./media/entitlement-management-process/approver-access-request-reminder-email.png)
 
-### <a name="alternate-approver-request-emails"></a>Alternatif onaylayan istek e-postaları
+### <a name="alternate-approvers-request-emails"></a>Alternate approvers request emails
 
-Alternatif onaylayanlara iletim etkinse, iletme ilkesi başına, istek hala beklendiğinde istek iletilir. Alternatif onaylayan, isteği onaylamak veya reddetmek için bir bildirim e-postası alır. Diğer onaylayanların aldığı bildirimin örnek bir e-postası aşağıda verilmiştir:
+If the alternate approvers setting is enabled and the request is still pending, it will be forwarded. Alternate approvers will receive an email to approve or deny the request. You can enable alternate approvers in stage-1 and stage-2. Here is a sample email of the notification the alternate approvers receive:
 
-![Alternatif onaylayan isteği e-postası](./media/entitlement-management-process/alternate-approver-email-fwd-request.png)
+![Alternate approvers request email](./media/entitlement-management-process/alternate-approver-email-fwd-request.png)
 
-Her ikisi de, birincil onaylayanlar ve alternatif onaylayanlar isteği onaylayabilir veya reddedebilir.
+Both the approver and the alternate approvers can approve or deny the request.
 
-### <a name="approved-or-denied-emails"></a>Onaylanan veya reddedilen e-postalar
+### <a name="approved-or-denied-emails"></a>Approved or denied emails
 
-İstek sahipleri, erişim istekleri onaylandığında veya erişim için kullanılabilir olduğunda veya erişim istekleri reddedildiğinde bilgilendirilir. Bir onaylayan, istek sahibi tarafından gönderilen bir erişim isteği aldığında, erişim isteğini onaylayabilir veya reddedebilirler. Onaylayanın kararlarına yönelik bir iş gerekçe eklemesi gerekir. Bir istek onaylandıktan sonra birincil veya alternatif onaylayanlara gönderilen örnek bir e-posta aşağıda verilmiştir:
+ When an approver receives an access request submitted by a requestor, they can approve or deny the access request. The approver needs to add a business justification for their decision. Here is a sample email sent to the approvers and alternate approvers after a request is approved:
 
-![Erişim isteği e-postasını gözden geçir](./media/entitlement-management-process/approver-request-email-approved.png)
+![Approved request to access package email](./media/entitlement-management-process/approver-request-email-approved.png)
 
-Bir erişim isteği onaylandığında ve erişimleri sağlandığında, istek sahibine artık erişim paketine erişimi olan bir e-posta bildirimi gönderilir. Bir erişim paketine erişim verildiğinde bir istek sahibine gönderilen örnek bir e-posta bildirimi aşağıda verilmiştir:
+When an access request is approved, and their access is provisioned, an email notification is sent to the requestor that they now have access to the access package. Here is a sample email notification that is sent to a requestor when they're granted access to an access package:
 
-![Son erişim isteği e-postası](./media/entitlement-management-process/requestor-email-approved.png)
+![Approved requestor access request email](./media/entitlement-management-process/requestor-email-approved.png)
 
-Erişim isteği reddedildiğinde, istek sahibine bir e-posta bildirimi gönderilir. Erişim istekleri reddedildiğinde bir istek sahibine gönderilen örnek bir e-posta bildirimi aşağıda verilmiştir:
+When an access request is denied, an email notification is sent to the requestor. Here is a sample email notification that is sent to a requestor when their access request is denied:
 
-![İstek sahibi isteği reddedildi e-postası](./media/entitlement-management-process/requestor-email-denied.png)
+![Requestor request denied email](./media/entitlement-management-process/requestor-email-denied.png)
 
-### <a name="expired-access-request-emails"></a>Son erişim isteği e-postaları
+### <a name="2-stage-approval-access-request-emails"></a>2-stage approval access request emails
 
-Bir onaylayan, isteği onaylamamışsa veya reddetmezse erişim istekleri zaman sona erecektir. 
+If 2-stage approval is enabled, at least two approvers must approve the request, one from each stage, before the requestor can receive access.
 
-İstek, yapılandırılan süre sonu tarihine ulaştığında ve süresi dolduğunda, bu, artık onaylayanlar tarafından onaylanamaz veya reddedilmez. Tüm birincil ve alternatif onaylayanlara gönderilen bildirimin örnek bir e-postası aşağıda verilmiştir:
+During stage-1, the first approver will receive the access request email and make a decision. If they approve the request, all first approvers and alternate approvers in stage-1 (if escalation is enabled) will receive notification that stage-1 is complete. Here is a sample email of the notification that is sent when stage-1 is complete:
 
- ![Onaylayanların süre dolma erişimi isteği e-postası](./media/entitlement-management-process/approver-request-email-expired.png)
+![2-stage access request email](./media/entitlement-management-process/approver-request-email-2stage.png)
 
- Ayrıca, istek sahibine bir e-posta bildirimi gönderilir, bunlara erişim istekleri sona ermiştir ve erişim isteğini yeniden gönderebilmeleri gerekir. Erişim istekleri süresi dolduğunda, istek sahibine gönderilen örnek bir e-posta bildirimi aşağıda verilmiştir:
+After the first or alternate approvers approve the request in stage-1, stage-2 begins. During stage-2, the second approver will receive the access request notification email. After the second approver or alternate approvers in stage-2 (if escalation is enabled) decide to approve or deny the request, notification emails are sent to the first and second approvers, and all alternate approvers in stage-1 and stage-2, as well as the requestor.
 
-![İstek sahibinin süre dolduğunda erişim isteği e-postası](./media/entitlement-management-process/requestor-email-request-expired.png)
+### <a name="expired-access-request-emails"></a>Expired access request emails
+
+Access requests could expire if no approver has approved or denied the request. 
+
+When the request reaches its configured expiration date and expires, it can no longer be approved or denied by the approvers. Here is a sample email of the notification sent to all of the first, second (if 2-stage approval is enabled), and alternate approvers:
+
+![Approvers expired access request email](./media/entitlement-management-process/approver-request-email-expired.png)
+
+An email notification is also sent to the requestor, notifying them that their access request has expired, and that they need to resubmit the access request. The following diagram shows the experience of the requestor and the email notifications they receive when they request to extend access:
+
+![Requestor extend access process flow](./media/entitlement-management-process/requestor-expiration-request-flow.png) 
+
+Here is a sample email notification that is sent to a requestor when their access request has expired:
+
+![Requestor expired access request email](./media/entitlement-management-process/requestor-email-request-expired.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Erişim paketine erişim isteme](entitlement-management-request-access.md)
-- [Erişim isteklerini onaylama veya reddetme](entitlement-management-request-approve.md)
+- [Request access to an access package](entitlement-management-request-access.md)
+- [Approve or deny access requests](entitlement-management-request-approve.md)

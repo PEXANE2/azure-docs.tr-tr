@@ -3,12 +3,12 @@ title: IRS 1075 şema örneği - Genel Bakış
 description: IRS 1075 şema örneğine genel bakış. Bu şema örneği, müşterilerin belirli IRS 1075 denetimlerini değerlendirmesine yardımcı olur.
 ms.date: 11/19/2019
 ms.topic: sample
-ms.openlocfilehash: f713f6a59f439b2d5cb9df0860d16ff761304b4b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1d2fdac47c590e663a51c11f54a3a135a7a0ed3d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74210184"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267368"
 ---
 # <a name="overview-of-the-irs-1075-blueprint-sample"></a>IRS 1075 şema örneğine genel bakış
 
@@ -23,7 +23,8 @@ Denetim eşlemesi bölümünde bu şemaya dahil edilen ilkelerin ayrıntıları 
 IRS 1075 şema örneğine genel bakış bilgilerini gözden geçirdiniz. Şimdi, denetim eşlemesi ve bu örneğin nasıl dağıtılacağı hakkında bilgi edinmek için şu makaleleri ziyaret edin:
 
 > [!div class="nextstepaction"]
-> [IRS 1075 şeması - Denetim eşleme](./control-mapping.md)
+> [IRS 1075 şeması - Denetim eşlemesi](./control-mapping.md)
+> [IRS 1075 şeması - Dağıtım adımları](./deploy.md)
 
 Şemalar ve bunların kullanımı hakkındaki diğer makaleler:
 

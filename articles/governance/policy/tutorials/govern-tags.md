@@ -1,49 +1,49 @@
 ---
-title: Etiket idaresini yönetme
-description: Yeni ve mevcut kaynaklarda bir etiket idare modeli oluşturmak ve zorlamak için Azure Ilkesinin değiştirme efektini kullanın.
+title: 'Tutorial: Manage tag governance'
+description: In this tutorial, you use the Modify effect of Azure Policy to create and enforce a tag governance model on new and existing resources.
 ms.date: 11/04/2019
 ms.topic: tutorial
-ms.openlocfilehash: edb74bce5758ae040a6170a8e73be75fc228b001
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 59de9d6ff03e160f83e2f2ad8b8b697109f31cd7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74069670"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74216677"
 ---
-# <a name="tutorial-manage-tag-governance-with-azure-policy"></a>Öğretici: Azure Ilkesiyle etiket yönetimini yönetme
+# <a name="tutorial-manage-tag-governance-with-azure-policy"></a>Tutorial: Manage tag governance with Azure Policy
 
-[Etiketler](../../../azure-resource-manager/resource-group-using-tags.md) , Azure kaynaklarınızı bir taksonomi halinde düzenlemenin önemli bir parçasıdır. [Etiket yönetimi için en iyi yöntemleri](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources)takip eden Etiketler, Azure ilkesi ile iş ilkelerinizi uygulamak veya [maliyet yönetimi ile maliyetleri izlemek](../../../cost-management/cost-mgt-best-practices.md#organize-and-tag-your-resources)için temel olabilir.
-Etiketlerin nasıl veya neden kullanıldığı önemli değildir. bu etiketleri Azure kaynaklarınıza hızlıca ekleyebilir, değiştirebilir ve kaldırabilirsiniz.
+[Tags](../../../azure-resource-manager/resource-group-using-tags.md) are a crucial part of organizing your Azure resources into a taxonomy. When following [best practices for tag management](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources), tags can be the basis for applying your business policies with Azure Policy or [tracking costs with Cost Management](../../../cost-management/cost-mgt-best-practices.md#organize-and-tag-your-resources).
+No matter how or why you use tags, it's important that you can quickly add, change, and remove those tags on your Azure resources.
 
-Azure Ilkesinin [değişiklik](../concepts/effects.md#modify) etkisi, hangi kaynak İdaresi aşamasına bakılmaksızın etiketlerin tasarlanmasına yardımcı olmak için tasarlanmıştır. **Değiştirme** şu durumlarda yardımcı olur:
+Azure Policy's [Modify](../concepts/effects.md#modify) effect is designed to aid in the governance of tags no matter what stage of resource governance you are in. **Modify** helps when:
 
-- Buluta yeni başladıysanız ve hiçbir etiket yönetimi yok
-- Etiket yönetimi olmayan binlerce kaynak zaten var
-- Zaten değiştirmeniz gereken bir taksonominin var
+- You're new to the cloud and have no tag governance
+- Already have thousands of resources with no tag governance
+- Already have an existing taxonomy that you need changed
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-## <a name="identify-requirements"></a>Gereksinimleri tanımla
+## <a name="identify-requirements"></a>Identify requirements
 
-İdare denetimlerinin iyi uygulamaları gibi, gereksinimler iş gereksiniminizden gelmelidir ve teknik denetimler oluşturmadan önce iyi anlaşılmalıdır. Bu senaryo öğreticisinde, şu öğeler iş gereksinimlerimiz:
+Like any good implementation of governance controls, the requirements should come from your business needs and be well understood before creating technical controls. For this scenario tutorial, the following items are our business requirements:
 
-- Tüm kaynaklarda gerekli iki etiket: _Costcenter_ ve _env_
-- Tüm kapsayıcılarda ve tek kaynaklarda _Costcenter_ bulunmalıdır
-  - Kaynaklar içindeki kapsayıcılardan devralınır, ancak bağımsız olarak geçersiz kılınabilen
-- _Env_ tüm kapsayıcılarda ve tek tek kaynaklarda bulunmalıdır
-  - Kaynaklar, kapsayıcıyı kapsayıcı adlandırma şemasına göre belirlenir ve geçersiz kılınmayabilir
-  - Bir kapsayıcıdaki tüm kaynaklar aynı ortamın bir parçası
+- Two required tags on all resources: _CostCenter_ and _Env_
+- _CostCenter_ must exist on all containers and individual resources
+  - Resources inherit from the container they're in, but may be individually overridden
+- _Env_ must exist on all containers and individual resources
+  - Resources determine environment by container naming scheme and may not be overridden
+  - All resources in a container are part of the same environment
 
-## <a name="configure-the-costcenter-tag"></a>CostCenter etiketini yapılandırma
+## <a name="configure-the-costcenter-tag"></a>Configure the CostCenter tag
 
-Azure Ilkesi tarafından yönetilen bir Azure ortamına özgü şartlar altında, _Costcenter_ etiket gereksinimleri aşağıdakileri çağırır:
+In terms specific to an Azure environment managed by Azure Policy, the _CostCenter_ tag requirements call for the following:
 
-- _Costcenter_ etiketini eksik kaynak gruplarını reddetme
-- Eksik olduğunda üst kaynak grubundan _Costcenter_ etiketini eklemek için kaynakları değiştirin
+- Deny resource groups missing the _CostCenter_ tag
+- Modify resources to add the _CostCenter_ tag from the parent resource group when missing
 
-### <a name="deny-resource-groups-missing-the-costcenter-tag"></a>CostCenter etiketini eksik kaynak gruplarını reddetme
+### <a name="deny-resource-groups-missing-the-costcenter-tag"></a>Deny resource groups missing the CostCenter tag
 
-Kaynak grubunun _Costcenter_ 'ı kaynak grubunun adı tarafından belirlenemediğinden, kaynak grubunu oluşturmak için istekte tanımlanmış etikete sahip olmalıdır. [Reddetme](../concepts/effects.md#deny) etkisi olan aşağıdaki ilke kuralı, _costcenter_ etiketine sahip olmayan kaynak gruplarının oluşturulmasını veya güncelleştirilmesini engeller:
+Since the _CostCenter_ for a resource group can't be determined by the name of the resource group, it must have the tag defined on the request to create the resource group. The following policy rule with the [Deny](../concepts/effects.md#deny) effect prevents the creation or updating of resource groups that don't have the _CostCenter_ tag:
 
 ```json
 "if": {
@@ -63,11 +63,11 @@ Kaynak grubunun _Costcenter_ 'ı kaynak grubunun adı tarafından belirlenemedi�
 ```
 
 > [!NOTE]
-> Bu ilke kuralı bir kaynak grubunu hedeflediğinden, ilke tanımındaki _mod_ ' Indexed ' yerine ' All ' olmalıdır.
+> As this policy rule targets a resource group, the _mode_ on the policy definition must be 'All' instead of 'Indexed'.
 
-### <a name="modify-resources-to-inherit-the-costcenter-tag-when-missing"></a>Eksik olduğunda CostCenter etiketini devralacak kaynakları değiştirme
+### <a name="modify-resources-to-inherit-the-costcenter-tag-when-missing"></a>Modify resources to inherit the CostCenter tag when missing
 
-İkinci _Costcenter_ gereksinimi, eksik olduğunda üst kaynak grubundaki etiketi devralması için tüm kaynaklara yöneliktir. Etiket zaten kaynak üzerinde tanımlanmışsa, üst kaynak grubundan farklı olsa bile, tek başına bırakılması gerekir. Aşağıdaki ilke kuralı [değiştirme](../concepts/effects.md#modify)kullanır:
+The second _CostCenter_ need is for any resources to inherit the tag from the parent resource group when it's missing. If the tag is already defined on the resource, even if different from the parent resource group, it must be left alone. The following policy rule uses [Modify](../concepts/effects.md#modify):
 
 ```json
 "policyRule": {
@@ -91,21 +91,21 @@ Kaynak grubunun _Costcenter_ 'ı kaynak grubunun adı tarafından belirlenemedi�
 }
 ```
 
-Bu ilke kuralı, mevcut [kaynakları düzeltirken etiket](../how-to/remediate-resources.md) değerini değiştirmek Istediğimiz Için **addorreplace** yerine **Add** işlemini kullanır. Ayrıca, üst kaynak grubundan etiket değerini almak için `[resourcegroup()]` şablonu işlevini kullanır.
+This policy rule uses the **add** operation instead of **addOrReplace** as we don't want to alter the tag value if it's present when [remediating](../how-to/remediate-resources.md) existing resources. It also uses the `[resourcegroup()]` template function to get the tag value from the parent resource group.
 
 > [!NOTE]
-> Bu ilke kuralı, etiketleri destekleyen kaynakları hedeflediğinden, ilke tanımındaki _mod_ ' dizinli ' olmalıdır. Bu yapılandırma ayrıca bu ilkenin kaynak gruplarını atmasını de sağlar.
+> As this policy rule targets resources that support tags, the _mode_ on the policy definition must be 'Indexed'. This configuration also ensures this policy skips resource groups.
 
-## <a name="configure-the-env-tag"></a>Env etiketini yapılandırma
+## <a name="configure-the-env-tag"></a>Configure the Env tag
 
-Azure Ilkesi tarafından yönetilen bir Azure ortamına özgü şartlar altında, _env_ etiketi gereksinimleri aşağıdakileri çağırır:
+In terms specific to an Azure environment managed by Azure Policy, the _Env_ tag requirements call for the following:
 
-- Kaynak grubunun adlandırma şemasına bağlı olarak kaynak grubundaki _env_ etiketini değiştirme
-- Kaynak grubundaki tüm kaynaklardaki _env_ etiketini üst kaynak grubuyla aynı olacak şekilde değiştirin
+- Modify the _Env_ tag on the resource group based on the naming scheme of the resource group
+- Modify the _Env_ tag on all resources in the resource group to the same as the parent resource group
 
-### <a name="modify-resource-groups-env-tag-based-on-name"></a>Kaynak gruplarını ad temelinde env etiketini değiştirme
+### <a name="modify-resource-groups-env-tag-based-on-name"></a>Modify resource groups Env tag based on name
 
-Azure ortamınızda bulunan her ortam için bir [değiştirme](../concepts/effects.md#modify) ilkesi gerekir. Her biri için değiştirme ilkesi, bu ilke tanımına benzer bir şekilde görünür:
+A [Modify](../concepts/effects.md#modify) policy is required for each environment that exists in your Azure environment. The Modify policy for each looks something like this policy definition:
 
 ```json
 "policyRule": {
@@ -137,13 +137,13 @@ Azure ortamınızda bulunan her ortam için bir [değiştirme](../concepts/effec
 ```
 
 > [!NOTE]
-> Bu ilke kuralı bir kaynak grubunu hedeflediğinden, ilke tanımındaki _mod_ ' Indexed ' yerine ' All ' olmalıdır.
+> As this policy rule targets a resource group, the _mode_ on the policy definition must be 'All' instead of 'Indexed'.
 
-Bu ilke yalnızca `prd-`üretim kaynakları için kullanılan örnek adlandırma düzenine sahip kaynak gruplarıyla eşleşir. Daha karmaşık adlandırma düzenleri, bu örnekte **olduğu gibi** birkaç **eşleşme** koşullarıyla elde edilebilir.
+This policy only matches resource groups with the sample naming scheme used for production resources of `prd-`. More complex naming scheme's can be achieved with several **match** conditions instead of the single **like** in this example.
 
-### <a name="modify-resources-to-inherit-the-env-tag"></a>Env etiketini devralacak kaynakları değiştirme
+### <a name="modify-resources-to-inherit-the-env-tag"></a>Modify resources to inherit the Env tag
 
-İş gereksinimi, tüm kaynakların üst kaynak grubunun yaptığı _env_ etiketine sahip olacak şekilde çağrı yapar. Bu etiket geçersiz kılınamıyor, bu yüzden [değiştirme](../concepts/effects.md#modify) efektiyle **addorreplace** işlemini kullanacağız. Örnek değiştirme ilkesi aşağıdaki kurala benzer şekilde görünür:
+The business requirement calls for all resources to have the _Env_ tag that their parent resource group does. This tag can't be overridden, so we'll use the **addOrReplace** operation with the [Modify](../concepts/effects.md#modify) effect. The sample Modify policy looks like the following rule:
 
 ```json
 "policyRule": {
@@ -175,24 +175,24 @@ Bu ilke yalnızca `prd-`üretim kaynakları için kullanılan örnek adlandırma
 ```
 
 > [!NOTE]
-> Bu ilke kuralı, etiketleri destekleyen kaynakları hedeflediğinden, ilke tanımındaki _mod_ ' dizinli ' olmalıdır. Bu yapılandırma ayrıca bu ilkenin kaynak gruplarını atmasını de sağlar.
+> As this policy rule targets resources that support tags, the _mode_ on the policy definition must be 'Indexed'. This configuration also ensures this policy skips resource groups.
 
-Bu ilke kuralı, _env_ etiketi için üst kaynak grupları değerine sahip olmayan veya _env_ etiketi eksik olan herhangi bir kaynağı arar. Etiket, kaynak üzerinde zaten var olsa da farklı bir değerle, eşleşen kaynakların _env_ etiketi, üst kaynak grupları değeri olarak ayarlanmıştır.
+This policy rule looks for any resource that doesn't have its parent resource groups value for the _Env_ tag or is missing the _Env_ tag. Matching resources have their _Env_ tag set to the parent resource groups value, even if the tag already existed on the resource but with a different value.
 
-## <a name="assign-the-initiative-and-remediate-resources"></a>Girişimi ata ve kaynakları düzelt
+## <a name="assign-the-initiative-and-remediate-resources"></a>Assign the initiative and remediate resources
 
-Yukarıdaki etiket ilkeleri oluşturulduktan sonra, etiket yönetimi için tek bir girişimde birleştirin ve bunları bir yönetim grubuna veya aboneliğine atayın. Girişim ve dahil olan ilkeler, var olan kaynakların uyumluluğunu değerlendirir ve ilke kuralındaki **IF** özelliği ile eşleşen yeni veya güncelleştirilmiş kaynaklar için istekleri değiştirir. Ancak, ilke, mevcut uyumlu olmayan kaynakları tanımlanan etiket değişiklikleriyle otomatik olarak güncelleştirmez.
+Once the tag policies above are created, join them into a single initiative for tag governance and assign them to a management group or subscription. The initiative and included policies then evaluate compliance of existing resources and alters requests for new or updated resources that match the **if** property in the policy rule. However, the policy doesn't automatically update existing non-compliant resources with the defined tag changes.
 
-[Deployifnotexists](../concepts/effects.md#deployifnotexists) ilkeleri gibi, **değiştirme** ilkesi, var olan uyumlu olmayan kaynakları değiştirmek için düzeltme görevlerini kullanır. Uyumlu olmayan **değişiklik** kaynaklarınızı belirlemek için [kaynakları](../how-to/remediate-resources.md) düzeltme yönergelerini izleyin ve etiketleri tanımlanan taksonominiz için düzeltin.
+Like [deployIfNotExists](../concepts/effects.md#deployifnotexists) policies, the **Modify** policy uses remediation tasks to alter existing non-compliant resources. Follow the directions on [How-to remediate resources](../how-to/remediate-resources.md) to identify your non-compliant **Modify** resources and correct the tags to your defined taxonomy.
 
-## <a name="review"></a>Gözden geçirme
+## <a name="review"></a>Gözden Geçir
 
-Bu öğreticide, aşağıdaki görevler hakkında bilgi edindiniz:
+In this tutorial, you learned about the following tasks:
 
 > [!div class="checklist"]
-> - İş gereksinimlerinizi tanımladı
-> - Her gereksinimi bir ilke tanımına eşlendi
-> - Etiket ilkeleri bir girişim olarak gruplandırılır
+> - Identified your business requirements
+> - Mapped each requirement to a policy definition
+> - Grouped the tag policies into an initiative
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

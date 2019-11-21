@@ -1,7 +1,7 @@
 ---
-title: 'Tasarımcı: dalgalanma örneğini tahmin etme'
+title: 'Designer: Predict churn example'
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning tasarımcı ile dalgalanma karar ağaçları & karmaşıklığı tahmin etmek için bu sınıflandırma örneğini izleyin.
+description: Follow this classification example to predict churn with Azure Machine Learning designer & boosted decision trees.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,68 +10,68 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: 5cf61d3446f960b65eb85538be9ea020671cced2
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
-ms.translationtype: HT
+ms.openlocfilehash: 1fe3598fd15424ab2593e3d236146c7566493743
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196032"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225081"
 ---
-# <a name="use-boosted-decision-tree-to-predict-churn-with-azure-machine-learning-designer"></a>Azure Machine Learning Designer ile dalgalanma tahmin etmek için önceden artırılmış karar ağacını kullanın
+# <a name="use-boosted-decision-tree-to-predict-churn-with-azure-machine-learning-designer"></a>Use boosted decision tree to predict churn with Azure Machine Learning designer
 
-**Tasarımcı (Önizleme) örnek 5**
+**Designer (preview) sample 5**
 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
-Tasarımcı (Önizleme) kullanarak tek bir kod satırı yazmadan karmaşık makine öğrenimi ardışık düzeni oluşturmayı öğrenin.
+Learn how to build a complex machine learning pipeline without writing a single line of code using the designer (preview).
 
-Bu işlem hattı, müşteri ilişkileri yönetimi (CRM) sistemleri için ortak görevleri tahmin etmek üzere 2 **iki sınıf önceden artırılmış karar ağacı** sınıflandırmasını sağlar. Veri değerleri ve Etiketler birden çok veri kaynağına ayrılır ve Anonimleştir müşteri bilgilerine göre karıştırır; ancak, tasarımcı 'yı yine de veri kümelerini birleştirmek ve örtülü değerleri kullanarak bir modeli geliştirmek için kullanabiliriz.
+This pipeline trains 2 **two-class boosted decision tree** classifiers to predict common tasks for customer relationship management (CRM) systems - customer churn. The data values and labels are split across multiple data sources and scrambled to anonymize customer information, however, we can still use the designer to combine data sets and train a model using the obscured values.
 
-"Bir tane mi?" sorusunu yanıtlamaya çalıştığınız için Bu bir sınıflandırma sorunu olarak adlandırılır, ancak bu örnekte gösterilen aynı mantığı, regresyon, sınıflandırma, kümeleme gibi her türlü makine öğrenimi sorununu çözmek için de uygulayabilirsiniz.
+Because you're trying to answer the question "Which one?" this is called a classification problem, but you can apply the same logic shown in this sample to tackle any type of machine learning problem whether it be regression, classification, clustering, and so on.
 
-Bu işlem hattı için tamamlanan grafik aşağıda verilmiştir:
+Here's the completed graph for this pipeline:
 
-![Ardışık düzen grafiği](./media/how-to-ui-sample-classification-predict-churn/pipeline-graph.png)
+![Pipeline graph](./media/how-to-designer-sample-classification-predict-churn/pipeline-graph.png)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. Örnek 5 ' e tıklayarak açın. 
+4. Click sample 5 to open it. 
 
 ## <a name="data"></a>Veriler
 
-Bu işlem hattının verileri, KDD Kupa 2009 ' dir. 50.000 satır ve 230 Özellik sütunları vardır. Bu görev, bu özellikleri kullanan müşteriler için dalgalanma, uygulama ve BT satışı tahmin etmeye yöneliktir. Veriler ve görev hakkında daha fazla bilgi için, bkz. [kdd Web sitesi](https://www.kdd.org/kdd-cup/view/kdd-cup-2009).
+The data for this pipeline is from KDD Cup 2009. It has 50,000 rows and 230 feature columns. The task is to predict churn, appetency, and up-selling for customers who use these features. For more information about the data and the task, see the [KDD website](https://www.kdd.org/kdd-cup/view/kdd-cup-2009).
 
-## <a name="pipeline-summary"></a>Ardışık düzen Özeti
+## <a name="pipeline-summary"></a>Pipeline summary
 
-Tasarımcıda Bu örnek işlem hattı, müşteri ilişkileri yönetimi (CRM) için ortak bir görev olan değişim, uygulama ve iş satışı için ikili sınıflandırıcı tahminini gösterir.
+This sample pipeline in the designer shows binary classifier prediction of churn, appetency, and up-selling, a common task for customer relationship management (CRM).
 
-Birincisi, bazı basit veri işlemleri.
+First, some simple data processing.
 
-- Ham veri kümesinde birçok eksik değer vardır. Eksik değerleri 0 ile değiştirmek için **Temizleme eksik veri** modülünü kullanın.
+- The raw dataset has many missing values. Use the **Clean Missing Data** module to replace the missing values with 0.
 
-    ![Veri kümesini Temizleme](./media/how-to-ui-sample-classification-predict-churn/cleaned-dataset.png)
+    ![Clean the dataset](./media/how-to-designer-sample-classification-predict-churn/cleaned-dataset.png)
 
-- Özellikler ve karşılık gelen karmaşıklık farklı veri kümelerinde bulunur. Etiket sütunlarını Özellik sütunlarına eklemek için **sütun Ekle** modülünü kullanın. İlk sütun olan **Sütun1**, etiket sütunudur. Görselleştirme sonucundan veri kümesinin dengesiz olduğunu görebiliriz. Pozitif örneklere (+ 1) göre daha negatif (-1) örnek vardır. Daha sonra, daha sonra temsil edilen durumları artırmak için **Smote** modülünü kullanacağız.
+- The features and the corresponding churn are in different datasets. Use the **Add Columns** module to append the label columns to the feature columns. The first column, **Col1**, is the label column. From the visualization result we can see the dataset is unbalanced. There way more negative (-1) examples than positive examples (+1). We will use **SMOTE** module to increase underrepresented cases later.
 
-    ![Sütun veri kümesini ekleme](./media/how-to-ui-sample-classification-predict-churn/added-column1.png)
+    ![Add the column dataset](./media/how-to-designer-sample-classification-predict-churn/added-column1.png)
 
 
 
-- Veri kümesini eğitme ve test kümelerine bölmek için **verileri Böl** modülünü kullanın.
+- Use the **Split Data** module to split the dataset into train and test sets.
 
-- Daha sonra, tahmin modellerini derlemek için varsayılan parametrelerle birlikte, daha önce artırılmış karar ağacı ikili sınıflandırıcısını kullanın. Her görev için bir model oluşturun, diğer bir deyişle, her biri için bir model oluşturun ve bunları tahmin edin, etkili bir şekilde ve karmaşıklığı tahmin edin.
+- Then use the Boosted Decision Tree binary classifier with the default parameters to build the prediction models. Build one model per task, that is, one model each to predict up-selling, appetency, and churn.
 
-- Ardışık düzenin sağ bölümünde, pozitif örneklerin yüzdesini artırmak için **Smote** modülünü kullanırız. SMOTE yüzdesi, pozitif örneklere çift 100 olarak ayarlanmıştır. SMOTE modülünün [Reference0 smome modülü](../././algorithm-module-reference/SMOTE.md)ile nasıl çalıştığı hakkında daha fazla bilgi edinin.
+- In the right part of the pipeline, we use **SMOTE** module to increase the percentage of positive examples. The SMOTE percentage is set to 100 to double the positive examples. Learn more on how SMOTE module works with [SMOTE module reference0](../././algorithm-module-reference/SMOTE.md).
 
 ## <a name="results"></a>Sonuçlar
 
-Test kümesinde modelin performansını görmek için **modeli değerlendir** modülünün çıkışını görselleştirin. 
+Visualize the output of the **Evaluate Model** module to see the performance of the model on the test set. 
 
-![Sonuçları değerlendirin](./media/how-to-ui-sample-classification-predict-churn/evaluate-result.png)
+![Evaluate the results](./media/how-to-designer-sample-classification-predict-churn/evaluate-result.png)
 
- **Eşik** kaydırıcısını taşıyabilir ve ikili sınıflandırma görevi için ölçüm değişikliğini görebilirsiniz. 
+ You can move the **Threshold** slider and see the metrics change for the binary classification task. 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -79,11 +79,11 @@ Test kümesinde modelin performansını görmek için **modeli değerlendir** mo
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Tasarımcı için kullanılabilen diğer örnekleri keşfet:
+Explore the other samples available for the designer:
 
-- [Örnek 1-gerileme: bir otomobil fiyatını tahmin edin](how-to-designer-sample-regression-automobile-price-basic.md)
-- [Örnek 2-gerileme: otomobil fiyatlandırma için algoritmaları karşılaştırın](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
-- [Örnek 3-Özellik seçimi ile sınıflandırma: gelir tahmini](how-to-designer-sample-classification-predict-income.md)
-- [Örnek 4-sınıflandırma: kredi riskini tahmin etme (maliyet duyarlı)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
-- [Örnek 6-sınıflandırma: uçuş gecikmelerini tahmin etme](how-to-designer-sample-classification-flight-delay.md)
-- [Örnek 7-metin sınıflandırması: Vikipedi SP 500 veri kümesi](how-to-designer-sample-text-classification.md)
+- [Sample 1 - Regression: Predict an automobile's price](how-to-designer-sample-regression-automobile-price-basic.md)
+- [Sample 2 - Regression: Compare algorithms for automobile price prediction](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
+- [Sample 3 - Classification with feature selection: Income Prediction](how-to-designer-sample-classification-predict-income.md)
+- [Sample 4 - Classification: Predict credit risk (cost sensitive)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
+- [Sample 6 - Classification: Predict flight delays](how-to-designer-sample-classification-flight-delay.md)
+- [Sample 7 - Text Classification: Wikipedia SP 500 Dataset](how-to-designer-sample-text-classification.md)

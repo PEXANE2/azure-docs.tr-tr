@@ -1,6 +1,6 @@
 ---
-title: Azure portalını kullanarak bir kullanıcı tarafından atanan yönetilen kimlik yönetme
-description: Adım adım yönergeler, listesi oluşturmak silin ve kullanıcı tarafından atanan bir yönetilen kimlik bir rol atayın.
+title: Manage a user-assigned managed identity in the Azure portal - Azure AD
+description: Step by step instructions on how to create, list, delete and assign a role to a user-assigned managed identity.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,77 +15,77 @@ ms.workload: identity
 ms.date: 04/16/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18a15b8039322fc5e43a2b9dfed8a9bd3fc8b5fb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 06d25604ca1e8a59ca1da3c8e290d9052856b769
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60441643"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224635"
 ---
-# <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>Oluşturma, listeleme, silme veya Azure portalını kullanarak bir kullanıcı tarafından atanan yönetilen kimlik için rol atama
+# <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>Create, list, delete or assign a role to a user-assigned managed identity using the Azure portal
 
 [!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
-Azure kaynakları için yönetilen kimlikleri Azure Active Directory'deki yönetilen bir kimlikle Azure hizmetleri sağlar. Bu kimlik, kimlik bilgileri, kodunuzda gerek kalmadan Azure AD kimlik doğrulaması, Destek Hizmetleri kimlik doğrulaması için kullanabilirsiniz. 
+Managed identities for Azure resources provides Azure services with a managed identity in Azure Active Directory. You can use this identity to authenticate to services that support Azure AD authentication, without needing credentials in your code. 
 
-Bu makalede, oluşturma, listesinde, silmek veya Azure portalını kullanarak bir kullanıcı tarafından atanan yönetilen kimlik için rol atama öğrenin.
+In this article, you learn how to create, list, delete or assign a role to a user-assigned managed identity using the Azure Portal.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Azure kaynakları için yönetilen kimliklerle bilmiyorsanız kullanıma [genel bakış bölümünde](overview.md). **Gözden geçirmeyi unutmayın [sistem tarafından atanan ve kullanıcı tarafından atanan bir yönetilen kimlik arasındaki farkı](overview.md#how-does-it-work)** .
+- If you're unfamiliar with managed identities for Azure resources, check out the [overview section](overview.md). **Be sure to review the [difference between a system-assigned and user-assigned managed identity](overview.md#how-does-it-work)** .
 - Henüz bir Azure hesabınız yoksa, devam etmeden önce [ücretsiz bir hesaba kaydolun](https://azure.microsoft.com/free/).
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Kullanıcı tarafından atanan yönetilen kimlik oluşturma
 
-Kullanıcı tarafından atanan bir yönetilen kimlik oluşturmak için hesabınızın gerekli [yönetilen kimlik Katılımcısı](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) rol ataması.
+To create a user-assigned managed identity, your account needs the [Managed Identity Contributor](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) role assignment.
 
-1. Oturum [Azure portalında](https://portal.azure.com) kullanıcı tarafından atanan bir yönetilen kimlik oluşturmak için Azure aboneliği ile ilişkili bir hesap kullanarak.
-2. Arama kutusuna *yönetilen kimlikleri*, altında **Hizmetleri**, tıklayın **yönetilen kimlikleri**.
-3. Tıklayın **Ekle** altında aşağıdaki alanlarda değerleri girin **oluşturma kullanıcı tarafından atanan yönetilen** kimlik bölmesi:
-   - **Kaynak adı**: Bu kullanıcı tarafından atanan yönetilen kimliğinizi, örneğin UAI1 adıdır.
-   - **Abonelik**: Kullanıcı tarafından atanan yönetilen kimlik altında oluşturulacağı aboneliği seçin
-   - **Kaynak grubu**: Kullanıcı tarafından atanan yönetilen kimliğinizi içeren veya seçmek için yeni bir kaynak grubu oluşturma **var olanı kullan** kullanıcı tarafından atanan bir yönetilen kimlik mevcut bir kaynak grubu oluşturmak için.
-   - **Konum**: Kullanıcı tarafından atanan yönetilen kimlik, örneğin dağıtmak için bir konum seçin **Batı ABD**.
+1. Sign in to the [Azure portal](https://portal.azure.com) using an account associated with the Azure subscription to create the user-assigned managed identity.
+2. In the search box, type *Managed Identities*, and under **Services**, click **Managed Identities**.
+3. Click **Add** and enter values in the following fields under **Create user assigned managed** identity pane:
+   - **Resource Name**: This is the name for your user-assigned managed identity, for example UAI1.
+   - **Subscription**: Choose the subscription to create the user-assigned managed identity under
+   - **Resource Group**: Create a new resource group to contain your user-assigned managed identity or choose **Use existing** to create the user-assigned managed identity in an existing resource group.
+   - **Location**: Choose a location to deploy the user-assigned managed identity,for example **West US**.
 4. **Oluştur**’a tıklayın.
 
 ![Kullanıcı tarafından atanan yönetilen kimlik oluşturma](./media/how-to-manage-ua-identity-portal/create-user-assigned-managed-identity-portal.png)
 
-## <a name="list-user-assigned-managed-identities"></a>Kullanıcı tarafından atanan yönetilen kimlikleri listesi
+## <a name="list-user-assigned-managed-identities"></a>List user-assigned managed identities
 
-Kullanıcı tarafından atanan bir yönetilen kimlik listesi/okuma için hesabınızın gerekir [yönetilen kimlik işleci](/azure/role-based-access-control/built-in-roles#managed-identity-operator) veya [yönetilen kimlik Katılımcısı](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) rol ataması.
+To list/read a user-assigned managed identity, your account needs the [Managed Identity Operator](/azure/role-based-access-control/built-in-roles#managed-identity-operator) or [Managed Identity Contributor](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) role assignment.
 
-1. Oturum [Azure portalında](https://portal.azure.com) kullanıcı tarafından atanan yönetilen kimlikleri listelemek için Azure aboneliği ile ilişkili bir hesap kullanarak.
-2. Arama kutusuna *yönetilen kimlikleri*ve Hizmetleri altında **yönetilen kimlikleri**.
-3. Aboneliğiniz için kullanıcı tarafından atanan yönetilen kimliklerinin bir listesi döndürülür.  Kullanıcı tarafından atanan bir yönetilen kimlik adına tıklayın ayrıntılarını görmek için.
+1. Sign in to the [Azure portal](https://portal.azure.com) using an account associated with the Azure subscription to list the user-assigned managed identities.
+2. In the search box, type *Managed Identities*, and under Services, click **Managed Identities**.
+3. A list of the user-assigned managed identities for your subscription is returned.  To see the details of a user-assigned managed identity click its name.
 
-![Kullanıcı tarafından atanan yönetilen kimlik listesi](./media/how-to-manage-ua-identity-portal/list-user-assigned-managed-identity-portal.png)
+![List user-assigned managed identity](./media/how-to-manage-ua-identity-portal/list-user-assigned-managed-identity-portal.png)
 
-## <a name="delete-a-user-assigned-managed-identity"></a>Kullanıcı tarafından atanan bir yönetilen kimlik Sil
+## <a name="delete-a-user-assigned-managed-identity"></a>Delete a user-assigned managed identity
 
-Kullanıcı tarafından atanan bir yönetilen kimlik silmek için hesabınızın gerekli [yönetilen kimlik Katılımcısı](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) rol ataması.
+To delete a user-assigned managed identity, your account needs the [Managed Identity Contributor](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) role assignment.
 
-Bir kullanıcı tarafından atanan kimliği siliniyor, bu VM veya kaynağı atanmış kaldırmaz.  Bir VM bakın, kullanıcı tarafından atanan kimlik kaldırmak için [kullanıcı tarafından atanan bir yönetilen kimlik bir sanal makineden kaldırın](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#remove-a-user-assigned-managed-identity-from-a-vm).
+Deleting a user assigned identity does not remove it from the VM or resource it was assigned to.  To remove the user assigned identity from a VM see, [Remove a user-assigned managed identity from a VM](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#remove-a-user-assigned-managed-identity-from-a-vm).
 
-1. Oturum [Azure portalında](https://portal.azure.com) kullanıcı tarafından atanan bir yönetilen kimlik silmek için Azure aboneliği ile ilişkili bir hesap kullanarak.
-2. Kullanıcı tarafından atanan bir yönetilen kimlik seçip tıklayın **Sil**.
-3. Onay kutusunu seçin, **Evet**.
+1. Sign in to the [Azure portal](https://portal.azure.com) using an account associated with the Azure subscription to delete a user-assigned managed identity.
+2. Select the user-assigned managed identity and click **Delete**.
+3. Under the confirmation box choose, **Yes**.
 
-![Kullanıcı tarafından atanan yönetilen kimlik Sil](./media/how-to-manage-ua-identity-portal/delete-user-assigned-managed-identity-portal.png)
+![Delete user-assigned managed identity](./media/how-to-manage-ua-identity-portal/delete-user-assigned-managed-identity-portal.png)
 
-## <a name="assign-a-role-to-a-user-assigned-managed-identity"></a>Kullanıcı tarafından atanan bir yönetilen kimlik rol atama 
+## <a name="assign-a-role-to-a-user-assigned-managed-identity"></a>Assign a role to a user-assigned managed identity 
 
-Kullanıcı tarafından atanan bir yönetilen kimlik bir rol atamak için hesabınızın gerekli [kullanıcı erişimi Yöneticisi](/azure/role-based-access-control/built-in-roles#user-access-administrator) rol ataması.
+To assign a role to a user-assigned managed identity, your account needs the [User Access Administrator](/azure/role-based-access-control/built-in-roles#user-access-administrator) role assignment.
 
-1. Oturum [Azure portalında](https://portal.azure.com) kullanıcı tarafından atanan yönetilen kimlikleri listelemek için Azure aboneliği ile ilişkili bir hesap kullanarak.
-2. Arama kutusuna *yönetilen kimlikleri*ve Hizmetleri altında **yönetilen kimlikleri**.
-3. Aboneliğiniz için kullanıcı tarafından atanan yönetilen kimliklerinin bir listesi döndürülür.  Kullanıcı tarafından atanan ve bir rol atamak istediğiniz yönetilen kimlik seçin.
-4. Seçin **erişim denetimi (IAM)** seçip **rol ataması Ekle**.
+1. Sign in to the [Azure portal](https://portal.azure.com) using an account associated with the Azure subscription to list the user-assigned managed identities.
+2. In the search box, type *Managed Identities*, and under Services, click **Managed Identities**.
+3. A list of the user-assigned managed identities for your subscription is returned.  Select the user-assigned managed identity that you want to assign a role.
+4. Select **Access control (IAM)** and then select **Add role assignment**.
 
-   ![Kullanıcı tarafından atanan yönetilen kimlik Başlat](./media/how-to-manage-ua-identity-portal/assign-role-screenshot1.png)
+   ![User-assigned managed identity start](./media/how-to-manage-ua-identity-portal/assign-role-screenshot1.png)
 
-5. Ekle rol atama dikey penceresinde, aşağıdaki değerleri yapılandırın ve ardından **Kaydet**:
-   - **Rol** -rol atamak için
-   - **Erişim Ata** -kullanıcı tarafından atanan atamak için kaynak yönetilen kimlik
-   - **Seçin** -üye erişimi atamak için
+5. In the Add role assignment blade, configure the following values and then click **Save**:
+   - **Role** - the role to assign
+   - **Assign access to**  - the resource to assign the user-assigned managed identity
+   - **Select** - the member to assign access
    
-   ![Kullanıcı tarafından atanan yönetilen kimlik IAM](./media/how-to-manage-ua-identity-portal/assign-role-screenshot2.png)  
+   ![User-assigned managed identity IAM](./media/how-to-manage-ua-identity-portal/assign-role-screenshot2.png)  

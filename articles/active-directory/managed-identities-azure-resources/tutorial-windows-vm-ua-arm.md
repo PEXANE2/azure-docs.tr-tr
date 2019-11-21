@@ -1,5 +1,5 @@
 ---
-title: Azure Resource Manager’a erişmek için Windows VM kullanıcı tarafından atanan yönetilen kimliği kullanma
+title: Tutorial`:` Use a managed identity to access Azure Resource Manager - Windows - Azure AD
 description: Windows VM üzerinde bir kullanıcı tarafından atanan yönetilen kimliği kullanarak Azure Resource Manager'a erişme işleminde size yol gösteren bir öğretici.
 services: active-directory
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 04/10/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6fc7e13cf5ea3991f81d53edcabe0980d799cb0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0999492f0d9c7d28da3ac896792fb2d7b898fd18
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60443509"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224212"
 ---
-# <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>Öğretici: Yönetilen bir kullanıcı tarafından atanan kimliği, Azure Resource Manager'a erişmek için bir Windows VM'de kullanın.
+# <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>Tutorial: Use a user-assigned managed identity on a Windows VM to access Azure Resource Manager
 
 [!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
@@ -48,15 +48,15 @@ Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 - [Windows sanal makinesi oluşturma](/azure/virtual-machines/windows/quick-create-portal)
 
 - Bu öğreticideki gerekli kaynak oluşturma ve rol yönetimini adımlarını gerçekleştirmek için hesabınız uygun kapsamda (aboneliğiniz veya kaynak grubunuz) "Sahip" izinlerini gerektiriyor. Rol atamayla ilgili yardıma ihtiyacınız varsa bkz. [Azure abonelik kaynaklarınıza erişimi yönetmek için Rol Tabanlı Erişim Denetimi kullanma](/azure/role-based-access-control/role-assignments-portal).
-- [Azure PowerShell modülünün en son sürümü yükleyin](/powershell/azure/install-az-ps). 
+- [Install the latest version of the Azure PowerShell module](/powershell/azure/install-az-ps). 
 - Azure ile bağlantı oluşturmak için `Connect-AzAccount` komutunu çalıştırın.
-- [PowerShellGet'in en son sürümünü](/powershell/gallery/installing-psget#for-systems-with-powershell-50-or-newer-you-can-install-the-latest-powershellget) yükleyin.
+- [PowerShellGet'in en son sürümünü](/powershell/scripting/gallery/installing-psget#for-systems-with-powershell-50-or-newer-you-can-install-the-latest-powershellget) yükleyin.
 - `Install-Module -Name PowerShellGet -AllowPrerelease` komutunu çalıştırarak `PowerShellGet` modülünün yayın öncesi sürümünü alın (`Az.ManagedServiceIdentity` modülünü yüklemek için bu komutu çalıştırdıktan sonra geçerli PowerShell oturumundan `Exit` ile çıkmanız gerekebilir).
 - Bu makaledeki kullanıcı tarafından atanan kimlik işlemlerini gerçekleştirmek için `Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease` komutunu çalıştırarak `Az.ManagedServiceIdentity` modülünün yayın öncesi sürümünü yükleyin.
 
 ## <a name="create-a-user-assigned-identity"></a>Kullanıcı tarafından atanan kimlik oluşturma
 
-Kullanıcı tarafından atanan kimlik, tek başına bir Azure kaynağı olarak oluşturulur. Kullanarak [yeni AzUserAssignedIdentity](/powershell/module/az.managedserviceidentity/get-azuserassignedidentity), Azure, Azure AD kiracınızdaki bir veya daha fazla Azure hizmeti örnekleri atanabilir bir kimlik oluşturur.
+Kullanıcı tarafından atanan kimlik, tek başına bir Azure kaynağı olarak oluşturulur. Using the [New-AzUserAssignedIdentity](/powershell/module/az.managedserviceidentity/get-azuserassignedidentity),  Azure creates an identity in your Azure AD tenant that can be assigned to one or more Azure service instances.
 
 [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
@@ -149,7 +149,7 @@ Yanıtta, aşağıdaki örneğe benzer belirli Kaynak Grubu bilgileri yer alır:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, bir kullanıcı tarafından atanan kimliği oluşturma ve Azure Resource Manager API'si erişmek için Azure sanal makinesi için ekleme öğrendiniz.  Azure Resource Manager hakkında daha fazla bilgi edinmek için bkz:
+In this tutorial, you learned how to create a user-assigned identity and attach it to an Azure Virtual Machine to access the Azure Resource Manager API.  Azure Resource Manager hakkında daha fazla bilgi edinmek için bkz:
 
 > [!div class="nextstepaction"]
 >[Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview)

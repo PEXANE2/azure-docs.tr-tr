@@ -1,116 +1,116 @@
 ---
-title: Azure maliyet yönetimi 'nde ortak maliyet analizi kullanımları
-description: Bu makalede, Azure maliyet yönetimi 'nde ortak maliyet analizi görevlerinin sonuçlarını nasıl alabileceğiniz açıklanmaktadır.
+title: Common cost analysis uses in Azure Cost Management
+description: This article explains how you can get results for common cost analysis tasks in Azure Cost Management.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 10/16/2019
 ms.topic: conceptual
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: adwise
 ms.custom: ''
-ms.openlocfilehash: cc133a75506dcbe552d380e2a6de219a47aca3d8
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 01087f3e40e278490abb87d0ab3b7b6ab5052b6b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72600195"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74219484"
 ---
-# <a name="common-cost-analysis-uses"></a>Ortak maliyet analizi kullanımları
+# <a name="common-cost-analysis-uses"></a>Common cost analysis uses
 
-Azure maliyet yönetimi kullanıcıları genellikle pek çok sorduğu soruların yanıtlarını ister. Bu makalede, maliyet yönetiminde ortak maliyet analizi görevlerinin sonuçları elde edersiniz.
+Azure Cost Management users often want answers to questions that many others ask. This article walks you through getting results for common cost analysis tasks in Cost Management.
 
-## <a name="view-cost-breakdown-by-azure-service"></a>Azure hizmetine göre maliyet dökümünü görüntüleme
+## <a name="view-cost-breakdown-by-azure-service"></a>View cost breakdown by Azure service
 
-Azure hizmetine göre maliyetleri görüntülemek, altyapınızın en fazla maliyetli parçalarını daha iyi anlamanıza yardımcı olabilir. Örneğin, VM işlem maliyetleri küçük olabilir. Ancak, VM 'lerden alınan bilgi miktarı nedeniyle önemli ağ maliyetleri de tahakkuk edebilir. Azure hizmetlerinizin birincil maliyet sürücülerini anlamak, gerektiğinde hizmet kullanımını ayarlayabilmeniz için gereklidir.
+Viewing costs by an Azure service can help you to better understand the parts of your infrastructure that cost the most. For example, VM compute costs might be small. Yet you might accrue significant networking costs because of the amount of information emitting from the VMs. Understanding the primary cost drivers of your Azure services is essential so that you can adjust service usage, as needed.
 
-1. Azure portal kapsamınız için maliyet analizi ' ne gidin. Örneğin: maliyet **yönetimi + faturalandırma**  >  maliyet**yönetimi**  > **Maliyet Analizi**.
-1. **Hizmete göre maliyet** ' i ve ardından **hizmet katmanına**göre Gruplandır ' ı seçin.
-1. Görünümü **tablo**olarak değiştirin.
+1. In the Azure portal, navigate to cost analysis for your scope. For example: **Cost Management + Billing** > **Cost Management** > **Cost analysis**.
+1. Select **Cost by service** and then group by **Service tier**.
+1. Change the view to **Table**.
 
-![Azure hizmetine göre maliyet dökümü](./media/cost-analysis-common-uses/breakdown-by-service.png)
+![Cost breakdown by Azure service](./media/cost-analysis-common-uses/breakdown-by-service.png)
 
-## <a name="view-cost-breakdown-by-azure-resource"></a>Azure kaynağına göre maliyet dökümünü görüntüleme
+## <a name="view-cost-breakdown-by-azure-resource"></a>View cost breakdown by Azure resource
 
-Hizmetleriniz Azure kaynaklarıyla oluşturulmuştur. Kaynaklara göre maliyetleri gözden geçirmek, birincil maliyetlerinizi hızlı bir şekilde tanımanıza yardımcı olabilir. Bir hizmette çok pahalı kaynaklar varsa, maliyetlerinizi azaltmak için değişiklikler yapmayı deneyin.
+Your services are built with Azure resources. Reviewing costs based on resources can help you quickly identify your primary cost contributors. If a service has resources that are too expensive, consider making changes to reduce your costs.
 
-1. Azure portal kapsamınız için maliyet analizi ' ne gidin. Örneğin: maliyet **yönetimi + faturalandırma**  >  maliyet**yönetimi**  > **Maliyet Analizi**.
-1. **Kaynağa göre maliyet**' i seçin.
-1. Görünümü **tablo**olarak değiştirin.
+1. In the Azure portal, navigate to cost analysis for your scope. For example: **Cost Management + Billing** > **Cost Management** > **Cost analysis**.
+1. Select **Cost by resource**.
+1. Change the view to **Table**.
 
-![Azure kaynağına göre maliyet dökümünü görüntüleme](./media/cost-analysis-common-uses/cost-by-resource.png)
+![View cost breakdown by Azure resource](./media/cost-analysis-common-uses/cost-by-resource.png)
 
-## <a name="view-cost-breakdown-by-selected-dimensions"></a>Seçilen boyutlara göre maliyet dökümünü görüntüle
+## <a name="view-cost-breakdown-by-selected-dimensions"></a>View cost breakdown by selected dimensions
 
-Boyutlar, maliyetlerinizi ücretlendirmekte gösterilen çeşitli meta veri değerlerine göre düzenlemenizi sağlar. Örneğin, maliyetlerinizi konuma göre gruplandırabilirsiniz.
+Dimensions allow you to organize your costs based on various metadata values shown in your charges. For example, you could group your costs by location.
 
-1. Azure portal kapsamınız için maliyet analizi ' ne gidin. Örneğin: maliyet **yönetimi + faturalandırma**  >  maliyet**yönetimi**  > **Maliyet Analizi**.
-1. **Gruplandırma ölçütü** filtresi ' ni seçin.  
-    öğe grubuna göre bir grup ![Select ](./media/cost-analysis-common-uses/group-by.png)
-1. İsterseniz, daha sonra kullanmak üzere görünümü kaydedersiniz.
-1. Daha ayrıntılı verileri görüntülemek için grafiğin altındaki bir pasta grafiğine tıklayın.  
-    ![Seçilen boyutlara göre maliyet dökümünü görüntüle](./media/cost-analysis-common-uses/drill-down.png)
+1. In the Azure portal, navigate to cost analysis for your scope. For example: **Cost Management + Billing** > **Cost Management** > **Cost analysis**.
+1. Select the **Group by** filter.  
+    ![Select a Group by item](./media/cost-analysis-common-uses/group-by.png)
+1. Optionally, you save the view for later use.
+1. Click a pie chart below the graph to view more detailed data.  
+    ![View cost breakdown by selected dimensions](./media/cost-analysis-common-uses/drill-down.png)
 
-## <a name="view-costs-per-day-or-by-month"></a>Günde veya aya göre maliyetleri görüntüleme
+## <a name="view-costs-per-day-or-by-month"></a>View costs per day or by month
 
-Günlük ve aylık maliyetlere bakarak, maliyetlerinizin daha yüksek olduğu hafta veya yılda bir saat olup olmadığını daha iyi anlamanıza yardımcı olabilir. Bir tatil döneminde daha fazla müşteri trafiğine sahipseniz, bu, Azure maliyetlerinizin karşılık gelen bir artışla sonuçlansın mı? Pazartesi 'tan daha pahalı bir gün mı?
+Looking at daily and monthly costs can help you to better understand if there’s a time of the week or year where your costs are higher. If you have more customer traffic in a holiday period, does that lead to a corresponding increase in your Azure costs? Is Friday a more costly day than Monday?
 
-1. Azure portal kapsamınız için maliyet analizi ' ne gidin. Örneğin: maliyet **yönetimi + faturalandırma**  >  maliyet**yönetimi**  > **Maliyet Analizi**.
-1. **Ayrıntı düzeyini** **aylık** veya **günlük**olarak ayarlayın.
+1. In the Azure portal, navigate to cost analysis for your scope. For example: **Cost Management + Billing** > **Cost Management** > **Cost analysis**.
+1. Set the **Granularity** to **Monthly** or **Daily**.
 
-![Günlük maliyetlerini görüntüleme](./media/cost-analysis-common-uses/daily-granularity.png)
+![View costs per day](./media/cost-analysis-common-uses/daily-granularity.png)
 
-## <a name="view-costs-for-a-specific-tag"></a>Belirli bir etiketin maliyetlerini görüntüleme
+## <a name="view-costs-for-a-specific-tag"></a>View costs for a specific tag
 
-Birçok Azure kullanıcısı, ücretleri daha iyi kategorilere ayırmak için maliyet merkezi veya geliştirme ortamı (üretim ve test) gibi kaynaklarına ait Etiketler uygular. Etiketler, maliyet analizinde bir boyut olarak görünür. Özel etiketleme kategorisimleriniz hakkında öngörüler elde etmek için boyutu kullanabilirsiniz.
+Many Azure users apply tags to their resources such as a cost center or development environment (production and test) to better categorize charges. Tags appear as a dimension in cost analysis. You can use the dimension to gain insights into your custom tagging categorizations.
 
-1. Azure portal kapsamınız için maliyet analizi ' ne gidin. Örneğin: maliyet **yönetimi + faturalandırma**  >  maliyet**yönetimi**  > **Maliyet Analizi**.
-1. Etiketinize **göre Gruplandır** ' ı seçin.
+1. In the Azure portal, navigate to cost analysis for your scope. For example: **Cost Management + Billing** > **Cost Management** > **Cost analysis**.
+1. Select **Group by** for your tag.
 
-![Belirli bir etiketin maliyetlerini görüntüleme](./media/cost-analysis-common-uses/tag.png)
+![View costs for a specific tag](./media/cost-analysis-common-uses/tag.png)
 
-## <a name="download-your-usage-details"></a>Kullanım ayrıntılarınızı indirin
+## <a name="download-your-usage-details"></a>Download your usage details
 
-Kullanım ayrıntıları rapor dosyanız, CSV biçiminde, bir faturaya yönelik olarak tahakkuk eden tüm ücretler için bir döküm sağlar. Raporunuzu, faturanızı karşılaştırmak ve daha iyi anlayabilmek için kullanabilirsiniz. Faturanızda faturalandırılan her bir ücret, kullanım raporundaki, kesilen ücretlere karşılık gelir.
+Your usage details report file, in CSV format, provides a breakdown of all the charges that accrued towards an invoice. You can use the report to compare it to, and better understand, your invoice. Each billed charge on your invoice corresponds to broken-down charges in the usage report.
 
-1. Azure portal, bir faturalandırma hesabı veya aboneliği için **kullanım ve ücretler** sekmesine gidin. Örneğin: **maliyet yönetimi + faturalandırma**  > **faturalandırma**  > **kullanım + ücretlidir**.
-1. İndirilecek satır öğesini seçin ve ardından indir simgesine tıklayın.  
-    ![Kullanım ve ücretleri indirin](./media/cost-analysis-common-uses/download1.png)
-1.  İndirilecek kullanım dosyasını seçin.  
-    ![İndirilecek bir kullanım dosyası seçin](./media/cost-analysis-common-uses/download2.png)
+1. In the Azure portal, navigate to the **Usage and Charges** tab for a billing account or subscription. For example: **Cost Management + Billing** > **Billing** > **Usage + charges**.
+1. Select the line item to download from and then click the download symbol.  
+    ![Download usage and charges](./media/cost-analysis-common-uses/download1.png)
+1.  Select the usage file to download.  
+    ![Choose a usage file to download](./media/cost-analysis-common-uses/download2.png)
 
-## <a name="view-monthly-ea-cost-breakdown"></a>Aylık EA maliyet dökümünü görüntüle
+## <a name="view-monthly-ea-cost-breakdown"></a>View monthly EA cost breakdown
 
-EA kaydınız, kuruluşunuzun tamamına yönelik maliyetlerinizi ücreteder. Maliyetlerin zaman içinde nasıl tahakkuk ve faturalandırılır olduğunu anlamak, maliyetlerin yönetilip yönetilmemesini sağlamak için uygun paydaşlara sahip olmanıza yardımcı olur.
+Your EA enrollment accrues costs for your entire organization. Understanding how costs accrue and are invoiced over time helps you to engage the appropriate stakeholders to ensure that costs are managed responsibly.
 
-1. Azure portal **maliyet yönetimi + faturalandırma**  > **Genel Bakış ' a**gidin.
-1. Geçerli ay için **döküm** ' ye tıklayın ve parasal taahhüdünüzü aşağı yazmayı görüntüleyin.  
-    ![EA maliyetlere genel bakış-döküm Özeti ](./media/cost-analysis-common-uses/breakdown1.png)
-1.  **Kullanım ve ücretler** sekmesine tıklayın ve seçilen TimeSpan 'de önceki ayın dökümünü görüntüleyin.  
-    ![Usage ve ücretler sekmesi ](./media/cost-analysis-common-uses/breakdown2.png)
+1. In the Azure portal, navigate to **Cost Management + Billing** > **Overview**.
+1. Click **Breakdown** for the current month and view your monetary commitment burn down.  
+    ![EA costs overview - breakdown summary](./media/cost-analysis-common-uses/breakdown1.png)
+1.  Click the **Usage and Charges** tab and view the prior month’s breakdown in the chosen timespan.  
+    ![Usage and charges tab](./media/cost-analysis-common-uses/breakdown2.png)
 
-## <a name="view-enrollment-monthly-cost-by-term"></a>Kayda göre kayıt aylık maliyetini görüntüleyin
+## <a name="view-enrollment-monthly-cost-by-term"></a>View enrollment monthly cost by term
 
-Belirli bir döneme ait maliyet eğilimlerini ve Faturalanan tutarları anlamak için kaydınızın aylık maliyetlerinin grafik görünümünü kullanın.
+Use a graphical view of your enrollment’s monthly costs to understand the cost trends and invoiced amounts for a given period.
 
-1. Azure portal kapsamınız için maliyet analizi ' ne gidin. Örneğin: maliyet **yönetimi + faturalandırma**  >  maliyet**yönetimi**  > **Maliyet Analizi**.
-1. Kaydınız ' ni seçin ve kayıt terimini ayarlayın.
-1. Ayrıntı düzeyini aylık olarak ayarlayın ve görünümü **sütun (yığılmış)** olarak ayarlayın.
+1. In the Azure portal, navigate to cost analysis for your scope. For example: **Cost Management + Billing** > **Cost Management** > **Cost analysis**.
+1. Select your enrollment and set the enrollment term.
+1. Set the granularity to monthly and then set the view to **Column     (stacked)** .
 
-Daha ayrıntılı bir analize göre gruplandırabilirsiniz ve verilerinize filtre uygulayabilirsiniz.
+You can group by and filter your data for a more detailed analysis.
 
-![Terime göre aylık kayıt maliyeti](./media/cost-analysis-common-uses/enrollment-term1.png)
+![Monthly enrollment cost by term](./media/cost-analysis-common-uses/enrollment-term1.png)
 
-## <a name="view-ea-enrollment-accumulated-costs"></a>EA kaydı birikmiş maliyetlerini görüntüle
+## <a name="view-ea-enrollment-accumulated-costs"></a>View EA enrollment accumulated costs
 
-Belirli bir dönem için kuruluşunuzun genel harcamalarını anlamak için zaman içinde net birikmiş ücretleri görüntüleyin.
+View the net accumulated charges over time to understand overall expenditures for your organization for a given period.
 
-1. Azure portal kapsamınız için maliyet analizi ' ne gidin. Örneğin: maliyet **yönetimi + faturalandırma**  >  maliyet**yönetimi**  > **Maliyet Analizi**.
-1. Kaydınız ' ni seçin ve ardından geçerli birikmiş maliyetlerinizi görüntüleyin.
+1. In the Azure portal, navigate to cost analysis for your scope. For example: **Cost Management + Billing** > **Cost Management** > **Cost analysis**.
+1. Select your enrollment and then view your current accumulated costs.
 
-![Kayıt birikmiş maliyetleri](./media/cost-analysis-common-uses/cost-analysis-enrollment.png)
+![Enrollment accumulated costs](./media/cost-analysis-common-uses/cost-analysis-enrollment.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Maliyet yönetimi için ilk hızlı başlangıcı Henüz tamamlamadıysanız, [maliyetleri çözümlemeye başlamak](quick-acm-cost-analysis.md)için bunu okuyun.
-- [Maliyet yönetimi belgelerini](index.yml)okuyun.
+- If you haven't already completed the first quickstart for Cost Management, read it at [Start analyzing costs](quick-acm-cost-analysis.md).
+- Read the [Cost Management documentation](index.yml).

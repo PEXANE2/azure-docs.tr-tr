@@ -1,6 +1,6 @@
 ---
-title: Azure portalı ile cihaz kayıtlarını yönetme | Microsoft Docs
-description: Azure portalında cihaz sağlama hizmeti için cihaz kayıtlarını yönetme
+title: Manage device enrollments for Azure IoT Hub Device Provisioning Service in the Azure portal
+description: How to manage device enrollments for your Device Provisioning Service in the Azure Portal
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/05/2018
@@ -8,69 +8,69 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 51b072bfd0827528a5504133dff8c1cdd7a7ca86
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 03559183e46182c4f80fe3d16ec542add9b1692b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62122786"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229725"
 ---
-# <a name="how-to-manage-device-enrollments-with-azure-portal"></a>Azure portalı ile cihaz kayıtlarını yönetme
+# <a name="how-to-manage-device-enrollments-with-azure-portal"></a>How to manage device enrollments with Azure Portal
 
-A *cihaz kaydı* tek bir cihaz veya bir grubun belirli bir noktada Azure IOT Hub cihazı sağlama hizmeti ile kaydedebilir cihazların bir kayıt oluşturur. Kayıt için istenen IOT hub'ı dahil olmak üzere, bu kayıt işleminin bir parçası olarak cihaz ilk istenen yapılandırmayı içerir. Bu makalede, sağlama hizmetinizin cihaz kayıtlarını yönetme işlemini göstermektedir.
+A *device enrollment* creates a record of a single device or a group of devices that may at some point register with the Azure IoT Hub Device Provisioning Service. The enrollment record contains the initial desired configuration for the device(s) as part of that enrollment, including the desired IoT hub. This article shows you how to manage device enrollments for your provisioning service.
 
 
-## <a name="create-a-device-enrollment"></a>Cihaz kaydı oluşturma
+## <a name="create-a-device-enrollment"></a>Create a device enrollment
 
-Sağlama hizmeti ile cihazlarınızı kaydedebilirsiniz iki yolu vardır:
+There are two ways you can enroll your devices with the provisioning service:
 
-* Bir **kayıt grubu** olabilen aynı imza sertifikası tarafından imzalanmış X.509 Sertifika, ortak bir kanıtlama mekanizmasını paylaşan cihazlar grubu için bir giriş [kök sertifika](https://docs.microsoft.com/azure/iot-dps/concepts-security#root-certificate) veya [ara sertifika](https://docs.microsoft.com/azure/iot-dps/concepts-security#intermediate-certificate)fiziksel cihazda cihaz sertifikası oluşturmak için kullanılır. Aynı kiracıya giden tüm cihazlar veya çok sayıda istenen bir ilk yapılandırmayı paylaşan cihazlar için kayıt grubu kullanılması önerilir. Yalnızca X.509 kanıtlama mekanizması olarak kullanan cihazları kaydedebilmeniz için Not *kayıt grupları*. 
+* An **Enrollment group** is an entry for a group of devices that share a common attestation mechanism of X.509 certificates, signed by the same signing certificate, which can be the [root certificate](https://docs.microsoft.com/azure/iot-dps/concepts-security#root-certificate) or the [intermediate certificate](https://docs.microsoft.com/azure/iot-dps/concepts-security#intermediate-certificate), used to produce device certificate on physical device. We recommend using an enrollment group for a large number of devices which share a desired initial configuration, or for devices all going to the same tenant. Note that you can only enroll devices that use the X.509 attestation mechanism as *enrollment groups*. 
 
-    Kayıt grubu portalında aşağıdaki adımları kullanarak cihazları bir grup oluşturabilirsiniz:
+    You can create an enrollment group in the portal for a group of devices using the following steps:
 
-  1. Azure portalında oturum açın ve tıklayın **tüm kaynakları** sol taraftaki menüden.  
-  1. Cihazınıza kaynakları listesinden kaydetmek istediğiniz cihaz sağlama hizmetine tıklayın.  
-  1. Sağlama hizmetinize:  
-     a. Tıklayın **kayıtları Yönet**, ardından **kayıt grupları** sekmesi.  
+  1. Log in to the Azure portal and click **All resources** from the left-hand menu.  
+  1. Click the Device Provisioning service you want to enroll your device to from the list of resources.  
+  1. In your provisioning service:  
+     a. Click **Manage enrollments**, then select the **Enrollment Groups** tab.  
      b. Üstteki **Ekle** düğmesine tıklayın.  
-     c. "Kayıt grubu Ekle" panelini göründüğünde, kayıt listesi girişi bilgilerini girin.  **Grup adı** gereklidir. Ayrıca "CA veya Ara" seçin **sertifika türü**ve kök karşıya **birincil sertifika** cihaz grubu için.  
-     d. **Kaydet**’e tıklayın. Oluşturma başarılı kayıt grubunuzun, grup adı altında gösterildiğini görmelisiniz **kayıt grupları** sekmesi.  
+     c. When the "Add Enrollment Group" panel appears, enter the information for the enrollment list entry.  **Group name** is required. Also select "CA or Intermediate" for **Certificate type**, and upload the root **Primary certificate** for the group of devices.  
+     d. **Kaydet** düğmesine tıklayın. On successful creation of your enrollment group, you should see the group name appear under the **Enrollment Groups** tab.  
 
-     [![Portalda kayıt grubu](./media/how-to-manage-enrollments/group-enrollment.png)](./media/how-to-manage-enrollments/group-enrollment.png#lightbox)
+     [![Enrollment group in the portal](./media/how-to-manage-enrollments/group-enrollment.png)](./media/how-to-manage-enrollments/group-enrollment.png#lightbox)
     
 
-* Bir **bireysel kayıt** kaydedebilir, tek bir cihaz için bir giriş. Bireysel kayıtlar, ya da x509 kullanabilir sertifikalarını veya SAS belirteçlerini (bir fiziksel veya sanal'nden TPM) kanıtlama mekanizması olarak. Benzersiz ilk yapılandırma gerektiren cihazlar için veya kanıtlama mekanizması olarak TPM ya da sanal TPM aracılığıyla SAS belirteçleri yalnızca kullanabileceğiniz cihazlar için bireysel kayıtların kullanılmasını öneririz. Bireysel kayıtlar için istenen IoT hub cihazı kimliği belirtilmiş olabilir.
+* An **Individual enrollment** is an entry for a single device that may register. Individual enrollments may use either x509 certificates or SAS tokens (from a physical or virtual TPM) as attestation mechanisms. We recommend using individual enrollments for devices which require unique initial configurations, or for devices which can only use SAS tokens via TPM or virtual TPM as the attestation mechanism. Bireysel kayıtlar için istenen IoT hub cihazı kimliği belirtilmiş olabilir.
 
-    Bireysel kayıt portalında aşağıdaki adımları izleyerek oluşturabilirsiniz:
+    You can create an individual enrollment in the portal using the following steps:
 
-    1. Azure portalında oturum açın ve tıklayın **tüm kaynakları** sol taraftaki menüden.
-    1. Cihazınıza kaynakları listesinden kaydetmek istediğiniz cihaz sağlama hizmetine tıklayın.
-    1. Sağlama hizmetinize:  
-       a. Tıklayın **kayıtları Yönet**, ardından **bireysel kayıtlar** sekmesi.  
+    1. Log in to the Azure portal and click **All resources** from the left-hand menu.
+    1. Click the Device Provisioning service you want to enroll your device to from the list of resources.
+    1. In your provisioning service:  
+       a. Click **Manage enrollments**, then select the **Individual Enrollments** tab.  
        b. Üstteki **Ekle** düğmesine tıklayın.   
-       c. "Kayıt Ekle" panelini göründüğünde, kayıt listesi girişi bilgilerini girin. İlk kanıtlama seçin **mekanizması** cihazın (X.509 veya TPM). X.509 kanıtlama yaprak karşıya gerektirir **birincil sertifika** aygıt için. TPM girmenizi gerektirir **kanıtlama anahtarı** ve **kayıt kimliği** aygıt için.  
-       d. **Kaydet**’e tıklayın. Oluşturma başarılı kayıt grubunuzun, Cihazınızı altında gösterildiğini görmelisiniz **bireysel kayıtlar** sekmesi.  
+       c. When the "Add Enrollment" panel appears, enter the information for the enrollment list entry. First select the attestation **Mechanism** for the device (X.509 or TPM). X.509 attestation requires you to upload the leaf **Primary certificate** for the device. TPM requires you to enter the **Attestation Key** and **Registration ID** for the device.  
+       d. **Kaydet** düğmesine tıklayın. On successful creation of your enrollment group, you should see your device appear under the **Individual Enrollments** tab.  
 
-       [![Bireysel kayıt Portalı'nda](./media/how-to-manage-enrollments/individual-enrollment.png)](./media/how-to-manage-enrollments/individual-enrollment.png#lightbox)
+       [![Individual enrollment in the portal](./media/how-to-manage-enrollments/individual-enrollment.png)](./media/how-to-manage-enrollments/individual-enrollment.png#lightbox)
 
-## <a name="update-an-enrollment-entry"></a>Güncelleştirme kayıt girişi
-Portalında aşağıdaki adımları kullanarak mevcut bir kayıt girişi güncelleştirebilirsiniz:
+## <a name="update-an-enrollment-entry"></a>Update an enrollment entry
+You can update an existing enrollment entry in the portal using the following steps:
 
-1. Azure portalında cihaz sağlama hizmetinizi açın ve tıklayın **kayıtları yönetme**. 
-1. Değiştirmek istediğiniz kayıt girişine gidin. Bir özet bilgilerini cihaz kaydı sorunlarınızı açılır girdiye tıklayın. 
-1. Bu sayfadaki öğeleri dışındaki güvenlik türü değiştirebilirsiniz ve IOT hub cihazı gibi bir kimlik, cihaz kimliğini yanı sıra bağlantılı olması gerekir Ayrıca ilk cihaz ikizi durumu değiştirebilir. 
-1. Tamamlandığında, tıklayın **Kaydet** cihaz kaydı sorunlarınızı güncelleştirilecek. 
+1. Open your Device Provisioning service in the Azure portal and click **Manage Enrollments**. 
+1. Navigate to the enrollment entry you want to modify. Click the entry, which opens a summary information about your device enrollment. 
+1. On this page, you can modify items other than the security type and credentials, such as the IoT hub the device should be linked to, as well as the device ID. You may also modify the initial device twin state. 
+1. Once completed, click **Save** to update your device enrollment. 
 
-    ![Kayıt Portalı'nda güncelleştirme](./media/how-to-manage-enrollments/update-enrollment.png)
+    ![Update enrollment in the portal](./media/how-to-manage-enrollments/update-enrollment.png)
 
-## <a name="remove-a-device-enrollment"></a>Cihaz kaydı Kaldır
-Burada yandan cihazlarınıza düzenlenen tüm IOT hub'ına sağlanması gerekmez durumlarda, ilgili kayıt girişi portalında aşağıdaki adımları kullanarak kaldırabilirsiniz:
+## <a name="remove-a-device-enrollment"></a>Remove a device enrollment
+In cases where your device(s) do not need to be provisioned to any IoT hub, you can remove the related enrollment entry in the portal using the following steps:
 
-1. Azure portalında cihaz sağlama hizmetinizi açın ve tıklayın **kayıtları yönetme**. 
-1. Gidin ve kaldırmak istediğiniz kayıt girişi seçin. 
-1. Tıklayın **Sil** üstünde düğmesine ve ardından **Evet** onaylamanız istendiğinde. 
-1. İşlem tamamlandıktan sonra cihaz kayıtlarını listesinden kaldırılsa giriş görürsünüz. 
+1. Open your Device Provisioning service in the Azure portal and click **Manage Enrollments**. 
+1. Navigate to and select the enrollment entry you want to remove. 
+1. Click the **Delete** button at the top and then select **Yes** when prompted to confirm. 
+1. Once the action is completed, you will see your entry removed from the list of device enrollments. 
  
-    ![Kayıt Portalı'nda Kaldır](./media/how-to-manage-enrollments/remove-enrollment.png)
+    ![Remove enrollment in the portal](./media/how-to-manage-enrollments/remove-enrollment.png)
 
 

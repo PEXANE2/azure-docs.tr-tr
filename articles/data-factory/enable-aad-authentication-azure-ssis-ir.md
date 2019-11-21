@@ -1,51 +1,50 @@
 ---
-title: Azure-SSIS Integration Runtime için Azure Active Directory kimlik doğrulamasını etkinleştir
-description: Bu makalede Azure-SSIS Integration Runtime oluşturmak için Azure Data Factory yönetilen kimlikle Azure Active Directory kimlik doğrulamasının nasıl etkinleştirileceği açıklanır.
+title: Enable Azure Active Directory for Azure-SSIS Integration Runtime
+description: This article describes how to enable Azure Active Directory authentication with the managed identity for Azure Data Factory to create Azure-SSIS Integration Runtime.
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 5/14/2019
 author: swinarko
 ms.author: sawinark
-manager: craigg
-ms.openlocfilehash: 5f867126762924906aefada558a65cb68e884f6f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: mflasko
+ms.date: 5/14/2019
+ms.openlocfilehash: 6973e72b06d51241e883038936270fd0931365d7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73675660"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74217706"
 ---
-# <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Azure-SSIS Integration Runtime için Azure Active Directory kimlik doğrulamasını etkinleştir
+# <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Enable Azure Active Directory authentication for Azure-SSIS Integration Runtime
 
-Bu makalede, Azure Active Directory (Azure AD) kimlik doğrulamasının Azure Data Factory (ADF) için yönetilen kimlikle nasıl etkinleştirileceği ve geleneksel kimlik doğrulama yöntemleri yerine (SQL kimlik doğrulaması gibi) kullanılması gösterilmektedir:
+This article shows you how to enable Azure Active Directory (Azure AD) authentication with the managed identity for your Azure Data Factory (ADF) and use it instead of conventional authentication methods (like SQL authentication) to:
 
-- Sizin adınıza Azure SQL veritabanı sunucusu/yönetilen örneği ' nde SSIS Katalog veritabanı 'nı (SSSıSDB) sağlayacak bir Azure-SSIS Integration Runtime (IR) oluşturun.
+- Create an Azure-SSIS Integration Runtime (IR) that will in turn provision SSIS catalog database (SSISDB) in Azure SQL Database server/Managed Instance on your behalf.
 
-- Azure-SSIS IR üzerinde SSIS paketlerini çalıştırırken çeşitli Azure kaynaklarına bağlanın.
+- Connect to various Azure resources when running SSIS packages on Azure-SSIS IR.
 
-ADF 'nizin yönetilen kimliği hakkında daha fazla bilgi için bkz. [Managed identiy for Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity).
+For more info about the managed identity for your ADF, see [Managed identiy for Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity).
 
 > [!NOTE]
->-  Bu senaryoda, ADF 'niz için yönetilen kimliğe sahip Azure AD kimlik doğrulaması yalnızca, SSIS IR 'nizin oluşturulması ve sonraki başlangıç işlemlerinde ve SSıSDB 'nin sağlaması ve SSD 'ye bağlanması için kullanılır. SSIS paketi yürütmeleri için SSIS IR 'niz, SSıSDB sağlama sırasında oluşturulan tam olarak yönetilen hesaplarla SQL kimlik doğrulaması kullanarak SSSıSDB 'ye bağlanmaya devam edecektir.
->-  SSIS IR 'nizi SQL kimlik doğrulaması kullanarak zaten oluşturduysanız, bunu şu anda PowerShell aracılığıyla Azure AD kimlik doğrulaması kullanacak şekilde yeniden yapılandıramazsınız, ancak bunu Azure portal/ADF uygulaması aracılığıyla yapabilirsiniz. 
+>-  In this scenario, Azure AD authentication with the managed identity for your ADF is only used in the creation and subsequent starting operations of your SSIS IR that will in turn provision and connect to SSISDB. For SSIS package executions, your SSIS IR will still connect to SSISDB using SQL authentication with fully managed accounts that are created during SSISDB provisioning.
+>-  If you have already created your SSIS IR using SQL authentication, you can not reconfigure it to use Azure AD authentication via PowerShell at this time, but you can do so via Azure portal/ADF app. 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="enable-azure-ad-on-azure-sql-database"></a>Azure SQL veritabanı 'nda Azure AD 'yi etkinleştirme
+## <a name="enable-azure-ad-on-azure-sql-database"></a>Enable Azure AD on Azure SQL Database
 
-Azure SQL veritabanı sunucusu, bir Azure AD kullanıcısı ile veritabanı oluşturmayı destekler. İlk olarak, ADF 'niz için yönetilen kimliğe sahip bir Azure AD grubu oluşturmanız gerekir. Daha sonra, Azure SQL veritabanı sunucunuz için Active Directory yöneticisi olarak bir Azure AD kullanıcısı ayarlamanız ve bu kullanıcıyı kullanarak SQL Server Management Studio (SSMS) üzerinde bu sunucuya bağlanmanız gerekir. Son olarak, Azure AD grubunu temsil eden bir kapsanan Kullanıcı oluşturmanız gerekir, böylece ADF 'nizin yönetilen kimliği, sizin adınıza SSıSDB oluşturmak için Azure-SSIS IR tarafından kullanılabilir.
+Azure SQL Database server supports creating a database with an Azure AD user. First, you need to create an Azure AD group with the managed identity for your ADF as a member. Next, you need to set an Azure AD user as the Active Directory admin for your Azure SQL Database server and then connect to it on SQL Server Management Studio (SSMS) using that user. Finally, you need to create a contained user representing the Azure AD group, so the managed identity for your ADF can be used by Azure-SSIS IR to create SSISDB on your behalf.
 
-### <a name="create-an-azure-ad-group-with-the-managed-identity-for-your-adf-as-a-member"></a>ADF 'niz için yönetilen kimlikle bir üye olarak bir Azure AD grubu oluşturun
+### <a name="create-an-azure-ad-group-with-the-managed-identity-for-your-adf-as-a-member"></a>Create an Azure AD group with the managed identity for your ADF as a member
 
-Azure AD PowerShell kullanarak mevcut bir Azure AD grubunu kullanabilir veya yeni bir tane oluşturabilirsiniz.
+You can use an existing Azure AD group or create a new one using Azure AD PowerShell.
 
-1.  [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) modülünü yükler.
+1.  Install the [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) module.
 
-2.   `Connect-AzureAD`kullanarak oturum açın, bir grup oluşturmak için aşağıdaki cmdlet 'i çalıştırın ve bir değişkende kaydedin:
+2.  Sign in using `Connect-AzureAD`, run the following cmdlet to create a group, and save it in a variable:
 
     ```powershell
     $Group = New-AzureADGroup -DisplayName "SSISIrGroup" `
@@ -54,7 +53,7 @@ Azure AD PowerShell kullanarak mevcut bir Azure AD grubunu kullanabilir veya yen
                               -MailNickName "NotSet"
     ```
 
-    Sonuç aşağıdaki örneğe benzer şekilde görünür ve aynı zamanda değişken değerini de görüntüler:
+    The result looks like the following example, which also displays the variable value:
 
     ```powershell
     $Group
@@ -64,107 +63,107 @@ Azure AD PowerShell kullanarak mevcut bir Azure AD grubunu kullanabilir veya yen
     6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 SSISIrGroup
     ```
 
-3.  ADF 'niz için yönetilen kimliği gruba ekleyin. Asıl yönetilen kimlik nesne KIMLIĞINI (ör. 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc) almak için [Data Factory yönetilen identiy](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) makalesini takip edebilirsiniz.
+3.  Add the managed identity for your ADF to the group. You can follow the article [Managed identiy for Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) to get the principal Managed Identity Object ID (e.g. 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc, but do not use Managed Identity Application ID for this purpose).
 
     ```powershell
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
     ```
 
-    Grup üyeliğini daha sonra da denetleyebilirsiniz.
+    You can also check the group membership afterwards.
 
     ```powershell
     Get-AzureAdGroupMember -ObjectId $Group.ObjectId
     ```
 
-### <a name="configure-azure-ad-authentication-for-azure-sql-database-server"></a>Azure SQL veritabanı sunucusu için Azure AD kimlik doğrulamasını yapılandırma
+### <a name="configure-azure-ad-authentication-for-azure-sql-database-server"></a>Configure Azure AD authentication for Azure SQL Database server
 
-Aşağıdaki adımları kullanarak, [SQL Ile Azure AD kimlik doğrulamasını yapılandırabilir ve yönetebilirsiniz](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure) :
+You can [Configure and manage Azure AD authentication with SQL](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure) using the following steps:
 
-1.  Azure portal ' de, sol taraftaki gezinden **SQL server** -> **tüm hizmetler** ' i seçin.
+1.  In Azure portal, select **All services** -> **SQL servers** from the left-hand navigation.
 
-2.  Azure AD kimlik doğrulamasıyla yapılandırılacak Azure SQL veritabanı sunucunuzu seçin.
+2.  Select your Azure SQL Database server to be configured with Azure AD authentication.
 
-3.  Dikey pencerenin **Ayarlar** bölümünde **yönetici Active Directory**' yi seçin.
+3.  In the **Settings** section of the blade, select **Active Directory admin**.
 
-4.  Komut çubuğunda **yönetici ayarla**' yı seçin.
+4.  In the command bar, select **Set admin**.
 
-5.  Sunucu Yöneticisi yapmak için bir Azure AD Kullanıcı hesabı seçin ve ardından Seç ' i seçin **.**
+5.  Select an Azure AD user account to be made administrator of the server, and then select **Select.**
 
-6.  Komut çubuğunda Kaydet ' i seçin **.**
+6.  In the command bar, select **Save.**
 
-### <a name="create-a-contained-user-in-azure-sql-database-server-representing-the-azure-ad-group"></a>Azure AD grubunu temsil eden Azure SQL veritabanı sunucusu 'nda kapsanan Kullanıcı oluşturma
+### <a name="create-a-contained-user-in-azure-sql-database-server-representing-the-azure-ad-group"></a>Create a contained user in Azure SQL Database server representing the Azure AD group
 
-Bu sonraki adım için [Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) gerekir.
+For this next step, you need [Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS).
 
-1. SSMS 'yi başlatın.
+1. Start SSMS.
 
-2. **Sunucuya Bağlan** iletişim kutusunda, **sunucu adı** alanına Azure SQL veritabanı sunucunuzun adını girin.
+2. In the **Connect to Server** dialog, enter your Azure SQL Database server name in the **Server name** field.
 
-3. **Kimlik doğrulama** alanında **MFA desteğiyle Active Directory-Universal** ' i seçin (diğer iki Active Directory kimlik doğrulama türünü de KULLANABILIRSINIZ, bkz. [SQL Ile Azure AD kimlik doğrulamasını yapılandırma ve yönetme](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure)).
+3. In the **Authentication** field, select **Active Directory - Universal with MFA support** (you can also use the other two Active Directory authentication types, see [Configure and manage Azure AD authentication with SQL](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure)).
 
-4. **Kullanıcı adı** alanına, sunucu yöneticisi olarak AYARLADıĞıNıZ Azure AD hesabının adını girin, örneğin testuser@xxxonline.com.
+4. In the **User name** field, enter the name of Azure AD account that you set as the server administrator, e.g. testuser@xxxonline.com.
 
-5. **Bağlan** ' ı seçin ve oturum açma işlemini doldurun.
+5. select **Connect** and complete the sign-in process.
 
-6. **Nesne Gezgini**, **veritabanları** -> **sistem veritabanları** klasörünü genişletin.
+6. In the **Object Explorer**, expand the **Databases** -> **System Databases** folder.
 
-7. **Ana** veritabanına sağ tıklayın ve **Yeni sorgu**' yı seçin.
+7. Right-click on **master** database and select **New query**.
 
-8. Sorgu penceresinde, aşağıdaki T-SQL komutunu girin ve araç çubuğunda **Yürüt** ' ü seçin.
+8. In the query window, enter the following T-SQL command, and select **Execute** on the toolbar.
 
    ```sql
    CREATE USER [SSISIrGroup] FROM EXTERNAL PROVIDER
    ```
 
-   Komutun, grubu temsil eden bir kapsanan Kullanıcı oluşturması başarıyla tamamlanır.
+   The command should complete successfully, creating a contained user to represent the group.
 
-9. Sorgu penceresini temizleyin, aşağıdaki T-SQL komutunu girin ve araç çubuğunda **Yürüt** ' ü seçin.
+9. Clear the query window, enter the following T-SQL command, and select **Execute** on the toolbar.
 
    ```sql
    ALTER ROLE dbmanager ADD MEMBER [SSISIrGroup]
    ```
 
-   Komutun, içerilen kullanıcıya bir veritabanı (SSSıSDB) oluşturma özelliği verilerek başarıyla tamamlanmalıdır.
+   The command should complete successfully, granting the contained user the ability to create a database (SSISDB).
 
-10. SSSıSDB 'niz SQL kimlik doğrulaması kullanılarak oluşturulduysa ve erişmek için Azure-SSIS IR Azure AD kimlik doğrulamasını kullanmak istiyorsanız, **SSISDB** veritabanına sağ tıklayıp **Yeni sorgu**' yı seçin.
+10. If your SSISDB was created using SQL authentication and you want to switch to use Azure AD authentication for your Azure-SSIS IR to access it, right-click on **SSISDB** database and select **New query**.
 
-11. Sorgu penceresinde, aşağıdaki T-SQL komutunu girin ve araç çubuğunda **Yürüt** ' ü seçin.
+11. In the query window, enter the following T-SQL command, and select **Execute** on the toolbar.
 
     ```sql
     CREATE USER [SSISIrGroup] FROM EXTERNAL PROVIDER
     ```
 
-    Komutun, grubu temsil eden bir kapsanan Kullanıcı oluşturması başarıyla tamamlanır.
+    The command should complete successfully, creating a contained user to represent the group.
 
-12. Sorgu penceresini temizleyin, aşağıdaki T-SQL komutunu girin ve araç çubuğunda **Yürüt** ' ü seçin.
+12. Clear the query window, enter the following T-SQL command, and select **Execute** on the toolbar.
 
     ```sql
     ALTER ROLE db_owner ADD MEMBER [SSISIrGroup]
     ```
 
-    Komutun, bulunan kullanıcıya SSSıSDB 'ye erişme özelliği verilerek başarıyla tamamlanmalıdır.
+    The command should complete successfully, granting the contained user the ability to access SSISDB.
 
-## <a name="enable-azure-ad-on-azure-sql-database-managed-instance"></a>Azure SQL veritabanı yönetilen örneği üzerinde Azure AD 'yi etkinleştirme
+## <a name="enable-azure-ad-on-azure-sql-database-managed-instance"></a>Enable Azure AD on Azure SQL Database Managed Instance
 
-Azure SQL veritabanı yönetilen örneği, ADF 'niz için yönetilen kimliğe sahip bir veritabanı oluşturmayı destekler. ADF 'niz için yönetilen kimliğe bir Azure AD grubuna katılmanız veya yönetilen örnekte bu grubu temsil eden kapsanan bir kullanıcı oluşturmanız gerekir.
+Azure SQL Database Managed Instance supports creating a database with the managed identity for your ADF directly. You need not join the managed identity for your ADF to an Azure AD group nor create a contained user representing that group in your Managed Instance.
 
-### <a name="configure-azure-ad-authentication-for-azure-sql-database-managed-instance"></a>Azure SQL veritabanı yönetilen örneği için Azure AD kimlik doğrulamasını yapılandırma
+### <a name="configure-azure-ad-authentication-for-azure-sql-database-managed-instance"></a>Configure Azure AD authentication for Azure SQL Database Managed Instance
 
-[Yönetilen örneğiniz için Azure Active Directory Yöneticisi sağlama](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure#provision-an-azure-active-directory-administrator-for-your-managed-instance)bölümündeki adımları izleyin.
+Follow the steps in [Provision an Azure Active Directory administrator for your Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure#provision-an-azure-active-directory-administrator-for-your-managed-instance).
 
-### <a name="add-the-managed-identity-for-your-adf-as-a-user-in-azure-sql-database-managed-instance"></a>ADF 'niz için yönetilen kimliği Azure SQL veritabanı yönetilen örneği 'nde Kullanıcı olarak ekleyin
+### <a name="add-the-managed-identity-for-your-adf-as-a-user-in-azure-sql-database-managed-instance"></a>Add the managed identity for your ADF as a user in Azure SQL Database Managed Instance
 
-Bu sonraki adım için [Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) gerekir.
+For this next step, you need [Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS).
 
-1.  SSMS 'yi başlatın.
+1.  Start SSMS.
 
-2.  **Sysadmin**olan SQL Server bir hesabı kullanarak yönetilen örneğe bağlanın. Bu, Azure SQL veritabanı yönetilen örneği için Azure AD Server sorumluları (oturum açmalar) GA olduktan sonra kaldırılacak geçici bir kısıtlamadır. Oturum açmayı oluşturmak için bir Azure AD yönetici hesabı kullanmayı denerseniz şu hatayı görürsünüz: Msg 15247, Level 16, State 1, 1. satır, kullanıcının bu eylemi gerçekleştirme izni yok.
+2.  Connect to your Managed Instance using a SQL Server account that is a **sysadmin**. This is a temporary limitation that will be removed once Azure AD server principals (logins) for Azure SQL Database Managed Instance becomes GA. You will see the following error if you try to use an Azure AD admin account to create the login: Msg 15247, Level 16, State 1, Line 1 User does not have permission to perform this action.
 
-3.  **Nesne Gezgini**, **veritabanları** -> **sistem veritabanları** klasörünü genişletin.
+3.  In the **Object Explorer**, expand the **Databases** -> **System Databases** folder.
 
-4.  **Ana** veritabanına sağ tıklayın ve **Yeni sorgu**' yı seçin.
+4.  Right-click on **master** database and select **New query**.
 
-5.  Sorgu penceresinde, ADF 'nizin yönetilen kimliğini Kullanıcı olarak eklemek için aşağıdaki T-SQL betiğini yürütün
+5.  In the query window, execute the following T-SQL script to add the managed identity for your ADF as a user
 
     ```sql
     CREATE LOGIN [{your ADF name}] FROM EXTERNAL PROVIDER
@@ -172,34 +171,34 @@ Bu sonraki adım için [Microsoft SQL Server Management Studio](https://docs.mi
     ALTER SERVER ROLE [securityadmin] ADD MEMBER [{your ADF name}]
     ```
     
-    Komut, ADF 'niz için yönetilen kimliğe (SSSıSDB) bir veritabanı oluşturma özelliği verilerek başarıyla tamamlanır.
+    The command should complete successfully, granting the managed identity for your ADF the ability to create a database (SSISDB).
 
-6.  SSSıSDB 'niz SQL kimlik doğrulaması kullanılarak oluşturulduysa ve erişmek için Azure-SSIS IR Azure AD kimlik doğrulamasını kullanmak istiyorsanız, **SSISDB** veritabanına sağ tıklayıp **Yeni sorgu**' yı seçin.
+6.  If your SSISDB was created using SQL authentication and you want to switch to use Azure AD authentication for your Azure-SSIS IR to access it, right-click on **SSISDB** database and select **New query**.
 
-7.  Sorgu penceresinde, aşağıdaki T-SQL komutunu girin ve araç çubuğunda **Yürüt** ' ü seçin.
+7.  In the query window, enter the following T-SQL command, and select **Execute** on the toolbar.
 
     ```sql
     CREATE USER [{your ADF name}] FOR LOGIN [{your ADF name}] WITH DEFAULT_SCHEMA = dbo
     ALTER ROLE db_owner ADD MEMBER [{your ADF name}]
     ```
 
-    Komutun, ADF 'niz için SSıSDB 'ye erişme özelliği için yönetilen kimliğe izin veren başarıyla tamamlanmalıdır.
+    The command should complete successfully, granting the managed identity for your ADF the ability to access SSISDB.
 
-## <a name="provision-azure-ssis-ir-in-azure-portaladf-app"></a>Azure portal/ADF uygulamasında Azure-SSIS IR sağlama
+## <a name="provision-azure-ssis-ir-in-azure-portaladf-app"></a>Provision Azure-SSIS IR in Azure portal/ADF app
 
-Azure-SSIS IR Azure portal/ADF uygulamasında sağladığınızda, **SQL ayarları** SAYFASıNDA, **ADF 'niz IÇIN yönetilen kimlikle AAD kimlik doğrulaması kullan** seçeneğini belirleyin. Aşağıdaki ekran görüntüsünde, SSıSDB barındıran Azure SQL veritabanı sunucusu ile IR ayarları gösterilmektedir. SSSıSDB barındıran yönetilen örnek ile IR için, **Katalog veritabanı hizmet katmanı** ve **Azure hizmetlerinin erişime izin ver** ayarları geçerli değildir.
+When you provision your Azure-SSIS IR in Azure portal/ADF app, on **SQL Settings** page, select **Use AAD authentication with the managed identity for your ADF** option. The following screenshot shows the settings for IR with Azure SQL Database server hosting SSISDB. For IR with Managed Instance hosting SSISDB, the **Catalog Database Service Tier** and **Allow Azure services to access** settings are not applicable, while other settings are the same.
 
-Azure-SSIS IR oluşturma hakkında daha fazla bilgi için, bkz. [Azure Data Factory Azure-SSIS tümleştirme çalışma zamanı oluşturma](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
+For more info about how to create an Azure-SSIS IR, see [Create an Azure-SSIS integration runtime in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
 
-![Azure-SSIS tümleştirme çalışma zamanı ayarları](media/enable-aad-authentication-azure-ssis-ir/enable-aad-authentication.png)
+![Settings for the Azure-SSIS integration runtime](media/enable-aad-authentication-azure-ssis-ir/enable-aad-authentication.png)
 
-## <a name="provision-azure-ssis-ir-with-powershell"></a>PowerShell ile Azure-SSIS IR sağlama
+## <a name="provision-azure-ssis-ir-with-powershell"></a>Provision Azure-SSIS IR with PowerShell
 
-PowerShell ile Azure-SSIS IR sağlamak için aşağıdaki işlemleri yapın:
+To provision your Azure-SSIS IR with PowerShell, do the following things:
 
-1.  [Azure PowerShell](https://github.com/Azure/azure-powershell/releases/tag/v5.5.0-March2018) modülünü yükler.
+1.  Install [Azure PowerShell](https://github.com/Azure/azure-powershell/releases/tag/v5.5.0-March2018) module.
 
-2.  Betiğinizdeki `CatalogAdminCredential` parametre ayarlamayın. Örneğin:
+2.  In your script, do not set `CatalogAdminCredential` parameter. Örnek:
 
     ```powershell
     Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
@@ -220,12 +219,12 @@ PowerShell ile Azure-SSIS IR sağlamak için aşağıdaki işlemleri yapın:
                                                  -Name $AzureSSISName
     ```
 
-## <a name="run-ssis-packages-with-managed-identity-authentication"></a>SSIS paketlerini yönetilen kimlik doğrulaması ile çalıştırma
+## <a name="run-ssis-packages-with-managed-identity-authentication"></a>Run SSIS Packages with Managed Identity Authentication
 
-Azure-SSIS IR üzerinde SSIS paketlerini çalıştırdığınızda, çeşitli Azure kaynaklarına bağlanmak için yönetilen kimlik kimlik doğrulamasını kullanabilirsiniz. Şu anda aşağıdaki bağlantı yöneticilerinde yönetilen kimlik kimlik doğrulamasını zaten destekliyoruz.
+When you run SSIS packages on Azure-SSIS IR, you can use managed identity authentication to connect to various Azure resources. Currently we have already supported managed identity authentication in the following connection managers.
 
-- [OLE DB bağlantı Yöneticisi](https://docs.microsoft.com/sql/integration-services/connection-manager/ole-db-connection-manager#managed-identities-for-azure-resources-authentication)
+- [OLE DB Connection Manager](https://docs.microsoft.com/sql/integration-services/connection-manager/ole-db-connection-manager#managed-identities-for-azure-resources-authentication)
 
-- [ADO.NET Bağlantı Yöneticisi](https://docs.microsoft.com/sql/integration-services/connection-manager/ado-net-connection-manager#managed-identities-for-azure-resources-authentication)
+- [ADO.NET Connection Manager](https://docs.microsoft.com/sql/integration-services/connection-manager/ado-net-connection-manager#managed-identities-for-azure-resources-authentication)
 
-- [Azure depolama bağlantı Yöneticisi](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-storage-connection-manager#managed-identities-for-azure-resources-authentication)
+- [Azure Storage Connection Manager](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-storage-connection-manager#managed-identities-for-azure-resources-authentication)

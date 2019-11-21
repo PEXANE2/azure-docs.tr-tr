@@ -1,39 +1,34 @@
 ---
-title: PowerShell Azure Işlevlerini yerel olarak hata ayıklama
-description: PowerShell kullanarak işlevleri geliştirmeyi anlayın.
-services: functions
-documentationcenter: na
+title: Debug PowerShell Azure Functions locally
+description: Understand how to develop functions by using PowerShell.
 author: tylerleonhardt
-manager: jeconnoc
-ms.service: azure-functions
-ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: 5b396ef6b00d53a313ed4fb426685c12e2c1549d
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 36d15858e1fb535189891303a89b00021027f1e8
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981838"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227031"
 ---
-# <a name="debug-powershell-azure-functions-locally"></a>PowerShell Azure Işlevlerini yerel olarak hata ayıklama
+# <a name="debug-powershell-azure-functions-locally"></a>Debug PowerShell Azure Functions locally
 
-Azure Işlevleri, işlevlerinizi PowerShell betikleri olarak geliştirmenize olanak sağlar.
+Azure Functions lets you develop your functions as PowerShell scripts.
 
 [!INCLUDE [functions-powershell-preview-note](../../includes/functions-powershell-preview-note.md)]
 
-PowerShell işlevlerinizde, aşağıdaki standart geliştirme araçlarını kullanarak herhangi bir PowerShell komut dosyası gibi yerel olarak hata ayıklaması yapabilirsiniz:
+You can debug your PowerShell functions locally as you would any PowerShell scripts using the following standard development tools:
 
-* [Visual Studio Code](https://code.visualstudio.com/): Microsoft 'un tam PowerShell geliştirme deneyimi sunan PowerShell uzantısıyla ücretsiz, hafif ve açık kaynaklı metin düzenleyici.
-* Bir PowerShell konsolu: başka bir PowerShell işleminde hata ayıklamak için kullandığınız komutları kullanarak hata ayıklayın.
+* [Visual Studio Code](https://code.visualstudio.com/): Microsoft's free, lightweight, and open-source text editor with the PowerShell extension that offers a full PowerShell development experience.
+* A PowerShell console: Debug using the same commands you would use to debug any other PowerShell process.
 
-[Azure Functions Core Tools](functions-run-local.md) , PowerShell işlevleri dahil olmak üzere Azure işlevlerinde yerel hata ayıklamayı destekler.
+[Azure Functions Core Tools](functions-run-local.md) supports local debugging of Azure Functions, including PowerShell functions.
 
-## <a name="example-function-app"></a>Örnek işlev uygulaması
+## <a name="example-function-app"></a>Example function app
 
-Bu makalede kullanılan işlev uygulamasının tek bir HTTP ile tetiklenen işlevi vardır ve aşağıdaki dosyalara sahiptir:
+The function app used in this article has a single HTTP triggered function and has the following files:
 
 ```
 PSFunctionApp
@@ -45,9 +40,9 @@ PSFunctionApp
  | - profile.ps1
 ```
 
-Bu işlev uygulaması, [PowerShell hızlı](functions-create-first-function-powershell.md)başlangıcını tamamladığınızda aldığınız birine benzer.
+This function app is similar to the one you get when you complete the [PowerShell quickstart](functions-create-first-function-powershell.md).
 
-@No__t-0 ' daki işlev kodu aşağıdaki komut dosyası gibi görünür:
+The function code in `run.ps1` looks like the following script:
 
 ```powershell
 param($Request)
@@ -69,11 +64,11 @@ Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
 })
 ```
 
-## <a name="set-the-attach-point"></a>İliştirme noktasını ayarlama
+## <a name="set-the-attach-point"></a>Set the attach point
 
-Herhangi bir PowerShell işlevinde hata ayıklamak için, hata ayıklayıcının eklenmesi için işlevin durdurulması gerekir. @No__t-0 cmdlet 'i yürütmeyi durduruyor ve hata ayıklayıcıyı bekler.
+To debug any PowerShell function, the function needs to stop for the debugger to be attached. The `Wait-Debugger` cmdlet stops execution and waits for the debugger.
 
-Tek yapmanız gereken, `if` ifadesinin hemen üzerinde `Wait-Debugger` cmdlet 'ine aşağıdaki gibi bir çağrı eklemektir:
+All you need to do is add a call to the `Wait-Debugger` cmdlet just above the `if` statement, as follows:
 
 ```powershell
 param($Request)
@@ -90,103 +85,103 @@ if($name) {
 # ...
 ```
 
-Hata ayıklama `if` ifadesinde başlar. 
+Debugging starts at the `if` statement. 
 
-@No__t-0 ile, artık Visual Studio Code veya PowerShell konsolunu kullanarak işlevlerde hata ayıklaması yapabilirsiniz.
+With `Wait-Debugger` in place, you can now debug the functions using either Visual Studio Code or a PowerShell console.
 
-## <a name="debug-in-visual-studio-code"></a>Visual Studio Code hata ayıkla
+## <a name="debug-in-visual-studio-code"></a>Debug in Visual Studio Code
 
-Visual Studio Code PowerShell işlevlerinizi hata ayıklaması yapmak için aşağıdakilerin yüklü olması gerekir:
+To debug your PowerShell functions in Visual Studio Code, you must have the following installed:
 
-* [Visual Studio Code için PowerShell uzantısı](/powershell/scripting/components/vscode/using-vscode)
+* [PowerShell extension for Visual Studio Code](/powershell/scripting/components/vscode/using-vscode)
 * [Visual Studio Code için Azure İşlevleri uzantısı](functions-create-first-function-vs-code.md)
-* [PowerShell Core 6,2 veya üzeri](/powershell/scripting/install/installing-powershell-core-on-windows)
+* [PowerShell Core 6.2 or higher](/powershell/scripting/install/installing-powershell-core-on-windows)
 
-Bu bağımlılıkları yükledikten sonra var olan bir PowerShell Işlevleri projesini yükleyin veya [Ilk PowerShell işlevleri projenizi oluşturun](functions-create-first-function-powershell.md).
-
->[!NOTE]
-> Projenizde gerekli yapılandırma dosyaları yoksa, bunları eklemeniz istenir.
-
-### <a name="set-the-powershell-version"></a>PowerShell sürümünü ayarlama
-
-PowerShell Core, Windows PowerShell ile yan yana yüklenir. PowerShell uzantısını, Visual Studio Code için PowerShell Uzantısı ile kullanılacak PowerShell sürümü olarak ayarlayın.
-
-1. Komut paleti ' ni göstermek için F1 ' e basın, sonra `Session` ' ı arayın.
-
-1. **PowerShell: oturum menüsünü göster**' i seçin.
-
-1. **Geçerli oturumunuz** **PowerShell Core 6**değilse, **geçiş yap: PowerShell Core 6**' ı seçin.
-
-Açık bir PowerShell dosyanız olduğunda, pencerenin sağ alt tarafında yeşil renkte görüntülendiğini görürsünüz. Bu metnin seçilmesi oturum menüsünü de görüntüler. Daha fazla bilgi edinmek için, [Uzantısı ile kullanılacak PowerShell 'in bir sürümünü seçme](/powershell/scripting/components/vscode/using-vscode#choosing-a-version-of-powershell-to-use-with-the-extension)bölümüne bakın.
-
-### <a name="start-the-function-app"></a>İşlev uygulamasını başlatma
-
-Hata ayıklayıcıyı iliştirmek istediğiniz işlevde `Wait-Debugger` ' ın ayarlandığını doğrulayın.  @No__t-0 eklendikten sonra, Visual Studio Code kullanarak işlev uygulamanızda hata ayıklaması yapabilirsiniz.
-
-**Hata Ayıkla** bölmesini seçin ve ardından **PowerShell işlevine ekleyin**.
-
-![sý](https://user-images.githubusercontent.com/2644648/56166073-8a7b3780-5f89-11e9-85ce-36ed38e221a2.png)
-
-Hata ayıklamayı başlatmak için F5 tuşuna da basabilirsiniz.
-
-Hata ayıklamayı Başlat işlemi aşağıdaki görevleri yapar:
-
-* İşlev uygulamanız tarafından istenen tüm Azure Işlevleri uzantılarını yüklemek için terminalde `func extensions install` ' i çalıştırır.
-* İşlev uygulamasını Işlevler ana bilgisayarında başlatmak için terminalde `func host start` ' i çalıştırır.
-* PowerShell hata ayıklayıcısını, Işlevler çalışma zamanı içindeki PowerShell çalışma alanına ekleyin.
+After installing these dependencies, load an existing PowerShell Functions project, or [create your first PowerShell Functions project](functions-create-first-function-powershell.md).
 
 >[!NOTE]
-> Visual Studio Code doğru hata ayıklama deneyimini sağlamak için PSWorkerInProcConcurrencyUpperBound 'in 1 olarak ayarlandığından emin olmanız gerekir. Bu varsayılandır.
+> Should your project not have the needed configuration files, you are prompted to add them.
 
-İşlev uygulamanız çalışırken, HTTP ile tetiklenen işlevi çağırmak için ayrı bir PowerShell konsoluna ihtiyacınız vardır.
+### <a name="set-the-powershell-version"></a>Set the PowerShell version
 
-Bu durumda, PowerShell konsolu istemcdir. @No__t-0 işlevi tetiklemek için kullanılır.
+PowerShell Core installs side by side with Windows PowerShell. Set PowerShell Core as the PowerShell version to use with the PowerShell extension for Visual Studio Code.
 
-Bir PowerShell konsolunda aşağıdaki komutu çalıştırın:
+1. Press F1 to display the command pallet, then search for `Session`.
+
+1. Choose **PowerShell: Show Session Menu**.
+
+1. If your **Current session** isn't **PowerShell Core 6**, choose **Switch to: PowerShell Core 6**.
+
+When you have a PowerShell file open, you see the version displayed in green at the bottom right of the window. Selecting this text also displays the session menu. To learn more, see the [Choosing a version of PowerShell to use with the extension](/powershell/scripting/components/vscode/using-vscode#choosing-a-version-of-powershell-to-use-with-the-extension).
+
+### <a name="start-the-function-app"></a>Start the function app
+
+Verify that `Wait-Debugger` is set in the function where you want to attach the debugger.  With `Wait-Debugger` added, you can debug your function app using Visual Studio Code.
+
+Choose the **Debug** pane and then **Attach to PowerShell function**.
+
+![debugger](https://user-images.githubusercontent.com/2644648/56166073-8a7b3780-5f89-11e9-85ce-36ed38e221a2.png)
+
+You can also press the F5 key to start debugging.
+
+The start debugging operation does the following tasks:
+
+* Runs `func extensions install` in the terminal to install any Azure Functions extensions required by your function app.
+* Runs `func host start` in the terminal to start the function app in the Functions host.
+* Attach the PowerShell debugger to the PowerShell runspace within the Functions runtime.
+
+>[!NOTE]
+> You need to ensure PSWorkerInProcConcurrencyUpperBound is set to 1 to ensure correct debugging experience in Visual Studio Code. This is the default.
+
+With your function app running, you need a separate PowerShell console to call the HTTP triggered function.
+
+In this case, the PowerShell console is the client. The `Invoke-RestMethod` is used to trigger the function.
+
+In a PowerShell console, run the following command:
 
 ```powershell
 Invoke-RestMethod "http://localhost:7071/api/HttpTrigger?Name=Functions"
 ```
 
-Yanıtın hemen döndürülmeyeceğini fark edeceksiniz. Çünkü `Wait-Debugger`, hata ayıklayıcıyı iliştirmiştir ve PowerShell yürütmesi, daha kısa sürede kesme moduna geçti. Bunun nedeni, daha sonra açıklanacak olan [Breakall kavramıdır](#breakall-might-cause-your-debugger-to-break-in-an-unexpected-place). @No__t-0 düğmesine bastıktan sonra, hata ayıklayıcı artık `Wait-Debugger` ' den sonra satırı keser.
+You'll notice that a response isn't immediately returned. That's because `Wait-Debugger` has attached the debugger and PowerShell execution went into break mode as soon as it could. This is because of the [BreakAll concept](#breakall-might-cause-your-debugger-to-break-in-an-unexpected-place), which is explained later. After you press the `continue` button, the debugger now breaks on the line right after `Wait-Debugger`.
 
-Bu noktada, hata ayıklayıcı iliştirilir ve tüm normal hata ayıklayıcı işlemlerini yapabilirsiniz. Visual Studio Code hata ayıklayıcıyı kullanma hakkında daha fazla bilgi için [resmi belgelere](https://code.visualstudio.com/Docs/editor/debugging#_debug-actions)bakın.
+At this point, the debugger is attached and you can do all the normal debugger operations. For more information on using the debugger in Visual Studio Code, see [the official documentation](https://code.visualstudio.com/Docs/editor/debugging#_debug-actions).
 
-Devam ettikten ve komut dosyanızı tamamen çağırdığınızda şunu görürsünüz:
+After you continue and fully invoke your script, you'll notice that:
 
-* @No__t-0 olan PowerShell konsolu bir sonuç döndürdü
-* Visual Studio Code 'de PowerShell Tümleşik konsolu bir betiğin yürütülmesini bekliyor
+* The PowerShell console that did the `Invoke-RestMethod` has returned a result
+* The PowerShell Integrated Console in Visual Studio Code is waiting for a script to be executed
 
-Daha sonra aynı işlevi çağırdığınızda, PowerShell uzantısında hata ayıklayıcı `Wait-Debugger` ' dan sonra kesilir.
+Later when you invoke the same function, the debugger in PowerShell extension breaks right after the `Wait-Debugger`.
 
-## <a name="debugging-in-a-powershell-console"></a>PowerShell konsolunda hata ayıklama
+## <a name="debugging-in-a-powershell-console"></a>Debugging in a PowerShell Console
 
 >[!NOTE]
-> Bu bölümde [Azure Functions Core Tools belgeleri](functions-run-local.md) okuduğunuzu ve işlev uygulamanızı başlatmak için `func host start` komutunun nasıl kullanılacağını bildiğiniz varsayılmaktadır.
+> This section assumes you have read the [Azure Functions Core Tools docs](functions-run-local.md) and know how to use the `func host start` command to start your function app.
 
-Bir konsolu açın, işlev uygulamanızın dizinine `cd` ' ı açın ve şu komutu çalıştırın:
+Open up a console, `cd` into the directory of your function app, and run the following command:
 
 ```sh
 func host start
 ```
 
-İşlev uygulaması çalışır ve `Wait-Debugger` yerinde, işleme ekleyebilirsiniz. İki PowerShell konsolundan daha ihtiyacınız vardır.
+With the function app running and the `Wait-Debugger` in place, you can attach to the process. You do need two more PowerShell consoles.
 
-Konsollardan biri istemci gibi davranır. Bundan sonra, işlevi tetiklemek için `Invoke-RestMethod` ' ı çağırın. Örneğin, aşağıdaki komutu çalıştırabilirsiniz:
+One of the consoles acts as the client. From this, you call `Invoke-RestMethod` to trigger the function. For example, you can run the following command:
 
 ```powershell
 Invoke-RestMethod "http://localhost:7071/api/HttpTrigger?Name=Functions"
 ```
 
-@No__t-0 sonucu bir yanıt döndürmediğine dikkat edin. PowerShell çalışma şimdi bir hata ayıklayıcının eklenmesini bekliyor. Şimdi bu iliştirilme.
+You'll notice that it doesn't return a response, which is a result of the `Wait-Debugger`. The PowerShell runspace is now waiting for a debugger to be attached. Let's get that attached.
 
-Diğer PowerShell konsolunda aşağıdaki komutu çalıştırın:
+In the other PowerShell console, run the following command:
 
 ```powershell
 Get-PSHostProcessInfo
 ```
 
-Bu cmdlet aşağıdaki çıktı gibi görünen bir tablo döndürür:
+This cmdlet returns a table that looks like the following output:
 
 ```output
 ProcessName ProcessId AppDomainName
@@ -201,9 +196,9 @@ pwsh            32071 None
 pwsh            88785 None
 ```
 
-Tablodaki öğe için `ProcessId` ' a `dotnet` olarak `ProcessName` ' i unutmayın. Bu işlem, işlev uygulamanız.
+Make note of the `ProcessId` for the item in the table with the `ProcessName` as `dotnet`. This process is your function app.
 
-Sonra, aşağıdaki kod parçacığını çalıştırın:
+Next, run the following snippet:
 
 ```powershell
 # This enters into the Azure Functions PowerShell process.
@@ -214,7 +209,7 @@ Enter-PSHostProcess -Id $ProcessId
 Debug-Runspace 1
 ```
 
-Başlatıldıktan sonra, hata ayıklayıcı kesilir ve aşağıdaki çıktıya benzer bir şey gösterir:
+Once started, the debugger breaks and shows something like the following output:
 
 ```
 Debugging Runspace: Runspace1
@@ -227,29 +222,29 @@ At /Path/To/PSFunctionApp/HttpTriggerFunction/run.ps1:13 char:1
 [DBG]: [Process:49988]: [Runspace1]: PS /Path/To/PSFunctionApp>>
 ```
 
-Bu noktada, [PowerShell hata ayıklayıcısında](/powershell/module/microsoft.powershell.core/about/about_debuggers)bir kesme noktasında duruyoruz. Buradan, tüm olağan hata ayıklama işlemlerini, adım adım, adımla, devam etme, çıkış ve diğer diğer işlemleri yapabilirsiniz. Konsolda kullanılabilen hata ayıklama komutlarının tam kümesini görmek için `h` veya `?` komutlarını çalıştırın.
+At this point, you're stopped at a breakpoint in the [PowerShell debugger](/powershell/module/microsoft.powershell.core/about/about_debuggers). From here, you can do all of the usual debug operations,  step over, step into, continue, quit, and others. To see the complete set of debug commands available in the console, run the `h` or `?` commands.
 
-@No__t-0 cmdlet 'ini kullanarak bu düzeyde kesme noktaları da ayarlayabilirsiniz.
+You can also set breakpoints at this level with the `Set-PSBreakpoint` cmdlet.
 
-Devam edip komut dosyanızı tamamen çağırdığınızda şunu görürsünüz:
+Once you continue and fully invoke your script, you'll notice that:
 
-* @No__t (0) çalıştırdığınız PowerShell konsolu artık bir sonuç döndürdü.
-* @No__t çalıştırdığınız PowerShell konsolu, bir betiğin yürütülmesini bekliyor.
+* The PowerShell console where you executed `Invoke-RestMethod` has now returned a result.
+* The PowerShell console where you executed `Debug-Runspace` is waiting for a script to be executed.
 
-Aynı işlevi yeniden çağırabilirsiniz (örneğin `Invoke-RestMethod` kullanarak) ve hata ayıklayıcı, `Wait-Debugger` komutundan hemen sonra kesilir.
+You can invoke the same function again (using `Invoke-RestMethod` for example) and the debugger breaks in right after the `Wait-Debugger` command.
 
-## <a name="considerations-for-debugging"></a>Hata ayıklama konuları
+## <a name="considerations-for-debugging"></a>Considerations for debugging
 
-Işlev kodunuzda hata ayıklarken aşağıdaki sorunları aklınızda bulundurun.
+Keep in mind the following issues when debugging your Functions code.
 
-### <a name="breakall-might-cause-your-debugger-to-break-in-an-unexpected-place"></a>`BreakAll`, hata ayıklayıcının beklenmedik bir yerde kesintiye neden olabilir
+### <a name="breakall-might-cause-your-debugger-to-break-in-an-unexpected-place"></a>`BreakAll` might cause your debugger to break in an unexpected place
 
-PowerShell uzantısı, `Debug-Runspace` kullanır ve bu da PowerShell 'in `BreakAll` özelliğine bağımlıdır. Bu özellik, PowerShell 'in yürütülen ilk komutta durmasını söyler. Bu davranış, hata ayıklanan çalışma alanı içinde kesme noktaları ayarlama fırsatı sağlar.
+The PowerShell extension uses `Debug-Runspace`, which in turn relies on PowerShell's `BreakAll` feature. This feature tells PowerShell to stop at the first command that is executed. This behavior gives you the opportunity to set breakpoints within the debugged runspace.
 
-Azure Işlevleri çalışma zamanı, `run.ps1` betiğinizi gerçekten çağırmadan önce birkaç komut çalıştırır, bu nedenle hata ayıklayıcı `Microsoft.Azure.Functions.PowerShellWorker.psm1` veya `Microsoft.Azure.Functions.PowerShellWorker.psd1` ' den sonra sona erecek olabilir.
+The Azure Functions runtime runs a few commands before actually invoking your `run.ps1` script, so it's possible that the debugger ends up breaking within the `Microsoft.Azure.Functions.PowerShellWorker.psm1` or `Microsoft.Azure.Functions.PowerShellWorker.psd1`.
 
-Bu kesme gerçekleşmelidir, bu kesme noktasını atlamak için `continue` veya `c` komutunu çalıştırın. Ardından, beklenen kesme noktasında durursunuz.
+Should this break happen,  run the `continue` or `c` command to skip over this breakpoint. You then stop at the expected breakpoint.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-PowerShell kullanarak Işlevleri geliştirme hakkında daha fazla bilgi için bkz. [Azure Işlevleri PowerShell Geliştirici Kılavuzu](functions-reference-powershell.md).
+To learn more about developing Functions using PowerShell, see [Azure Functions PowerShell developer guide](functions-reference-powershell.md).

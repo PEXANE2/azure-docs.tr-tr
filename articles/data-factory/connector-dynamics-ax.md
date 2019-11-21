@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory kullanarak Dynamics AX 'ten veri kopyalama
-description: Azure Data Factory bir işlem hattındaki kopyalama etkinliğini kullanarak Dynamics AX 'ten desteklenen havuz veri depolarına veri kopyalamayı öğrenin.
+title: Copy data from Dynamics AX
+description: Learn how to copy data from Dynamics AX to supported sink data stores by using a copy activity in an Azure Data Factory pipeline.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,62 +12,62 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 07edc284c29ca209ee20e5de390e8126993f4ce3
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 555293492a37b9c635cb11087c08d52aa4b4d8c4
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681012"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74218617"
 ---
-# <a name="copy-data-from-dynamics-ax-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Dynamics AX 'ten veri kopyalama
+# <a name="copy-data-from-dynamics-ax-by-using-azure-data-factory"></a>Copy data from Dynamics AX by using Azure Data Factory
 
-Bu makalede, Dynamics AX kaynağından veri kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. Makale, kopyalama etkinliğine genel bir bakış sunan [Azure Data Factory kopyalama etkinliği](copy-activity-overview.md)üzerinde oluşturulur.
+This article outlines how to use Copy Activity in Azure Data Factory to copy data from Dynamics AX source. The article builds on [Copy Activity in Azure Data Factory](copy-activity-overview.md), which presents a general overview of Copy Activity.
 
-## <a name="supported-capabilities"></a>Desteklenen yetenekler
+## <a name="supported-capabilities"></a>Supported capabilities
 
-Bu Dynamics AX Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
+This Dynamics AX connector is supported for the following activities:
 
-- [Desteklenen kaynak/havuz matrisi](copy-activity-overview.md) ile [kopyalama etkinliği](copy-activity-overview.md)
+- [Copy activity](copy-activity-overview.md) with [supported source/sink matrix](copy-activity-overview.md)
 - [Arama etkinliği](control-flow-lookup-activity.md)
 
-Dynamics AX 'ten desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsiniz. Kopyalama etkinliğinin kaynak ve havuz olarak desteklediği veri depolarının bir listesi için bkz. [desteklenen veri depoları ve biçimleri](copy-activity-overview.md#supported-data-stores-and-formats).
+You can copy data from Dynamics AX to any supported sink data store. For a list of data stores that Copy Activity supports as sources and sinks, see [Supported data stores and formats](copy-activity-overview.md#supported-data-stores-and-formats).
 
-Özellikle, bu Dynamics AX Connector, **hizmet sorumlusu kimlik doğrulamasıyla** **OData protokolünü** kullanarak Dynamics AX 'ten veri kopyalamayı destekler.
+Specifically, this Dynamics AX connector supports copying data from Dynamics AX using **OData protocol** with **Service Principal authentication**.
 
 >[!TIP]
->Ayrıca, bu bağlayıcıyı **Dynamics 365 finans ve işlemlerinden**veri kopyalamak için de kullanabilirsiniz. Dynamics 365 ' in [OData desteği](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/data-entities/odata) ve [kimlik doğrulama yöntemi](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/data-entities/services-home-page#authentication)' ne bakın.
+>You can also use this connector to copy data from **Dynamics 365 Finance and Operations**. Refer to Dynamics 365's [OData support](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/data-entities/odata) and [Authentication method](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/data-entities/services-home-page#authentication).
 
-## <a name="get-started"></a>Başlarken
+## <a name="get-started"></a>Kullanmaya Başlayın
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Aşağıdaki bölümlerde, Dynamics AX bağlayıcısına özgü Data Factory varlıkları tanımlamak için kullanabileceğiniz özellikler hakkında ayrıntılı bilgi sağlanmaktadır.
+The following sections provide details about properties you can use to define Data Factory entities that are specific to Dynamics AX connector.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Hizmet sorumlusu kimlik doğrulamasını kullanmak için şu adımları izleyin:
+To use service principal authentication, follow these steps:
 
-1. Uygulamanızı [bir Azure AD kiracısıyla](../storage/common/storage-auth-aad-app.md#register-your-application-with-an-azure-ad-tenant)kaydederek Azure Active Directory (Azure AD) uygulamasına bir uygulama varlığı kaydedin. Bağlı hizmeti tanımlamak için kullandığınız aşağıdaki değerleri unutmayın:
+1. Register an application entity in Azure Active Directory (Azure AD) by following [Register your application with an Azure AD tenant](../storage/common/storage-auth-aad-app.md#register-your-application-with-an-azure-ad-tenant). Make note of the following values, which you use to define the linked service:
 
     - Uygulama Kimliği
-    - Uygulama anahtarı
+    - Application key
     - Kiracı Kimliği
 
-2. Dynamics AX 'e gidin ve Dynamics AX 'e erişmek için bu hizmete asıl uygun izni verin.
+2. Go to Dynamics AX, and grant this service principal proper permission to access your Dynamics AX.
 
-## <a name="linked-service-properties"></a>Bağlı hizmet özellikleri
+## <a name="linked-service-properties"></a>Linked service properties
 
-Dynamics AX bağlı hizmeti için aşağıdaki özellikler desteklenir:
+The following properties are supported for Dynamics AX linked service:
 
-| Özellik | Açıklama | Gerekli |
+| Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | **Type** özelliği **DynamicsAx**olarak ayarlanmalıdır. |Evet |
-| url | Dynamics AX (veya Dynamics 365 finans ve Operations) örneği OData uç noktası. |Evet |
-| Serviceprincipalıd | Uygulamanın istemci KIMLIĞINI belirtin. | Evet |
-| Servicesprincipalkey | Uygulamanın anahtarını belirtin. Data Factory güvenli bir şekilde depolamak için bu alanı **SecureString** olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Evet |
-| Kiracı | Uygulamanızın altında bulunduğu kiracı bilgilerini (etki alanı adı veya kiracı KIMLIĞI) belirtin. Fareyi, Azure portal sağ üst köşesine getirerek alın. | Evet |
-| Aadresourceıd | Yetkilendirme için istediğiniz AAD kaynağını belirtin. Örneğin, Dynamics URL 'niz `https://sampledynamics.sandbox.operations.dynamics.com/data/`, karşılık gelen AAD kaynağı genellikle `https://sampledynamics.sandbox.operations.dynamics.com`. | Evet |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . Azure Integration Runtime veya şirket içinde barındırılan Integration Runtime (veri depolubir özel ağda bulunuyorsa) seçeneğini belirleyebilirsiniz. Belirtilmemişse, varsayılan Azure Integration Runtime kullanılır. |Hayır |
+| type | The **type** property must be set to **DynamicsAX**. |Yes |
+| url | The Dynamics AX (or Dynamics 365 Finance and Operations) instance OData endpoint. |Yes |
+| servicePrincipalId | Specify the application's client ID. | Yes |
+| servicePrincipalKey | Specify the application's key. Mark this field as a **SecureString** to store it securely in Data Factory, or [reference a secret stored in Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| tenant | Specify the tenant information (domain name or tenant ID) under which your application resides. Retrieve it by hovering the mouse in the top-right corner of the Azure portal. | Yes |
+| aadResourceId | Specify the AAD resource you are requesting for authorization. For example, if your Dynamics URL is `https://sampledynamics.sandbox.operations.dynamics.com/data/`, the corresponding AAD resource is usually `https://sampledynamics.sandbox.operations.dynamics.com`. | Yes |
+| connectVia | The [Integration Runtime](concepts-integration-runtime.md) to use to connect to the data store. You can choose Azure Integration Runtime or a self-hosted Integration Runtime (if your data store is located in a private network). If not specified, the default Azure Integration Runtime is used. |Hayır |
 
 **Örnek**
 
@@ -95,18 +95,18 @@ Dynamics AX bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 ```
 
-## <a name="dataset-properties"></a>Veri kümesi özellikleri
+## <a name="dataset-properties"></a>Dataset properties
 
-Bu bölüm, Dynamics AX veri kümesinin desteklediği özelliklerin bir listesini sağlar.
+This section provides a list of properties that the Dynamics AX dataset supports.
 
-Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri ve bağlı hizmetler](concepts-datasets-linked-services.md). 
+For a full list of sections and properties that are available for defining datasets, see [Datasets and linked services](concepts-datasets-linked-services.md). 
 
-Dynamics AX 'ten veri kopyalamak için veri kümesinin **Type** özelliğini **Dynamicsaxresource**olarak ayarlayın. Aşağıdaki özellikler desteklenir:
+To copy data from Dynamics AX, set the **type** property of the dataset to **DynamicsAXResource**. The following properties are supported:
 
-| Özellik | Açıklama | Gerekli |
+| Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | Veri kümesinin **Type** özelliği **Dynamicsaxresource**olarak ayarlanmalıdır. | Evet |
-| Yolun | Dynamics AX OData varlığının yolu. | Evet |
+| type | The **type** property of the dataset must be set to **DynamicsAXResource**. | Yes |
+| path | The path to the Dynamics AX OData entity. | Yes |
 
 **Örnek**
 
@@ -127,20 +127,20 @@ Dynamics AX 'ten veri kopyalamak için veri kümesinin **Type** özelliğini **D
 }
 ```
 
-## <a name="copy-activity-properties"></a>Kopyalama etkinliği özellikleri
+## <a name="copy-activity-properties"></a>Copy Activity properties
 
-Bu bölüm, Dynamics AX kaynağının desteklediği özelliklerin bir listesini sağlar.
+This section provides a list of properties that the Dynamics AX source supports.
 
-Etkinlikleri tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi için bkz. işlem [hatları](concepts-pipelines-activities.md). 
+For a full list of sections and properties that are available for defining activities, see [Pipelines](concepts-pipelines-activities.md). 
 
-### <a name="dynamics-ax-as-source"></a>Kaynak olarak Dynamics AX
+### <a name="dynamics-ax-as-source"></a>Dynamics AX as source
 
-Dynamics AX 'ten veri kopyalamak için kopyalama etkinliğindeki **kaynak** türünü **Dynamicsaxsource**olarak ayarlayın. Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde desteklenir:
+To copy data from Dynamics AX, set the **source** type in Copy Activity to **DynamicsAXSource**. The following properties are supported in the Copy Activity **source** section:
 
-| Özellik | Açıklama | Gerekli |
+| Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağının **Type** özelliği **Dynamicsaxsource**olarak ayarlanmalıdır. | Evet |
-| sorgu | Verileri filtrelemek için OData sorgu seçenekleri. Örnek: `"?$select=Name,Description&$top=5"`.<br/><br/>**Note**: bağlayıcı, VERILERI birleştirilmiş URL 'den kopyalar: `[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`. Daha fazla bilgi için bkz. [OData URL bileşenleri](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Hayır |
+| type | The **type** property of the Copy Activity source must be set to **DynamicsAXSource**. | Yes |
+| sorgu | OData query options for filtering data. Example: `"?$select=Name,Description&$top=5"`.<br/><br/>**Note**: The connector copies data from the combined URL: `[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`. For more information, see [OData URL components](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Hayır |
 
 **Örnek**
 
@@ -175,10 +175,10 @@ Dynamics AX 'ten veri kopyalamak için kopyalama etkinliğindeki **kaynak** tür
 ```
 
 
-## <a name="lookup-activity-properties"></a>Arama etkinliği özellikleri
+## <a name="lookup-activity-properties"></a>Lookup activity properties
 
-Özelliklerle ilgili ayrıntıları öğrenmek için [arama etkinliğini](control-flow-lookup-activity.md)denetleyin.
+To learn details about the properties, check [Lookup activity](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kopyalama etkinliğinin Azure Data Factory kaynak ve havuz olarak desteklediği veri depolarının listesi için bkz. [desteklenen veri depoları ve biçimleri](copy-activity-overview.md##supported-data-stores-and-formats).
+For a list of data stores that Copy Activity supports as sources and sinks in Azure Data Factory, see [Supported data stores and formats](copy-activity-overview.md##supported-data-stores-and-formats).

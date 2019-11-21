@@ -1,6 +1,6 @@
 ---
-title: Azure ön kapısı hizmet arka uçlar ve arka uç havuzlarına | Microsoft Docs
-description: Bu makalede, hangi arka uçlar ve arka uç havuzları kapı yapılandırma önde olan açıklanır.
+title: Backends and backend pools in Azure Front Door Service | Microsoft Docs
+description: This article describes what backends and backend pools are in Front Door configuration.
 services: front-door
 documentationcenter: ''
 author: sharad4u
@@ -11,85 +11,85 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 543e237a4a8390a8ebf74d0eb2a1f4be41dcd911
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b764799d3f40cef24a0412ac950026af650d4ec7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60193722"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229027"
 ---
-# <a name="backends-and-backend-pools-in-azure-front-door-service"></a>Azure ön kapısı hizmetinde arka uçlar ve arka uç havuzları
-Bu makalede, Azure ön kapısı hizmet uygulaması dağıtımınızı eşlemek hakkında kavramlarını açıklar. Ayrıca, geçici uygulama arka uçları ön kapısı yapılandırmasında farklı koşullar da açıklanır.
+# <a name="backends-and-backend-pools-in-azure-front-door-service"></a>Backends and backend pools in Azure Front Door Service
+This article describes concepts about how to map your app deployment with Azure Front Door Service. It also explains the different terms in Front Door configuration around app backends.
 
 ## <a name="backends"></a>Arka Uçlar
-Bir arka uç bir bölgede bir uygulamanın dağıtım örneği eşittir. Ön kapısı hizmeti, hem Azure hem de Azure olmayan arka uçları, bölge yalnızca Azure bölgeler ile kısıtlı değildir şekilde destekler. Ayrıca, şirket içi veri merkezinizde veya başka bir bulut uygulama örneğinde olabilir.
+A backend is equal to an app's deployment instance in a region. Front Door Service supports both Azure and non-Azure backends, so the region isn't only restricted to Azure regions. Also, it can be your on-premises datacenter or an app instance in another cloud.
 
-Konak adı veya istemci isteklerine hizmet verebilen uygulamanızın genel IP için ön kapı hizmet arka uçları bakın. Arka uçları, veritabanı katmanı, depolama katmanı ve benzeri yanıltıcı olmamalıdır. Arka uçları uygulama arka ucunuzu genel uç noktası olarak görüntülenmesi. Bir arka uç bir ön kapısı arka uç havuzuna eklediğinizde, ayrıca aşağıdakileri eklemeniz gerekir:
+Front Door Service backends refer to the host name or public IP of your app, which can serve client requests. Backends shouldn't be confused with your database tier, storage tier, and so on. Backends should be viewed as the public endpoint of your app backend. When you add a backend in a Front Door backend pool, you must also add the following:
 
-- **Arka uç ana bilgisayar türü**. Eklemek istediğiniz kaynak türü. Otomatik bulma, app service, bulut hizmeti ya da depolama, uygulama arka uçları ön kapısı hizmeti destekler. Azure'da veya Azure dışı arka farklı bir kaynak istiyorsanız belirleyin **özel konak**.
+- **Backend host type**. The type of resource you want to add. Front Door Service supports autodiscovery of your app backends from app service, cloud service, or storage. If you want a different resource in Azure or even a non-Azure backend, select **Custom host**.
 
     >[!IMPORTANT]
-    >Arka uca ön ortamlardan erişilemez durumdaysa yapılandırması sırasında API'leri doğrulamaz. Ön ucunuzu erişebildiğinden emin olun.
+    >During configuration, APIs don't validate if the backend is inaccessible from Front Door environments. Make sure that Front Door can reach your backend.
 
-- **Abonelik ve arka uç ana bilgisayar adı**. Henüz seçtiyseniz **özel konak** arka uç ana bilgisayar türü için uygun aboneliği ve karşılık gelen arka uç ana bilgisayar adı kullanıcı Arabiriminde seçerek arka ucunuzu seçin.
+- **Subscription and Backend host name**. If you haven't selected **Custom host** for backend host type, select your backend by choosing the appropriate subscription and the corresponding backend host name in the UI.
 
-- **Arka uç ana bilgisayar üstbilgisi**. Her istek için bir arka uca gönderilen ana bilgisayar üstbilgisi değeri. Daha fazla bilgi için [arka uç ana bilgisayar üstbilgisi](#hostheader).
+- **Backend host header**. The host header value sent to the backend for each request. For more information, see [Backend host header](#hostheader).
 
-- **Öncelik**. Tüm trafiği için bir birincil hizmet arka ucu kullanmak istediğinizde farklı uçlarınıza öncelikler atayın. Ayrıca, birincil veya yedek arka uçları kullanılamıyorsa yedeklemeler sağlar. Daha fazla bilgi için [öncelik](front-door-routing-methods.md#priority).
+- **Priority**. Assign priorities to your different backends when you want to use a primary service backend for all traffic. Also, provide backups if the primary or the backup backends are unavailable. For more information, see [Priority](front-door-routing-methods.md#priority).
 
-- **Ağırlık**. Eşit ya da ağırlığı katsayıları göre bir dizi arka uçları trafiği dağıtmak için farklı uçlarınıza ağırlıkları atayın. Daha fazla bilgi için [ağırlıkları](front-door-routing-methods.md#weighted).
+- **Weight**. Assign weights to your different backends to distribute traffic across a set of backends, either evenly or according to weight coefficients. For more information, see [Weights](front-door-routing-methods.md#weighted).
 
-### <a name = "hostheader"></a>Arka uç ana bilgisayar üstbilgisi
+### <a name = "hostheader"></a>Backend host header
 
-Arka uca ön kapısı tarafından iletilen istekler hedef kaynak almak için arka uç kullanan bir konak üstbilgisi alanı içerir. Bu alan için değer, genellikle arka uç URI gelir ve konak ve bağlantı noktası vardır.
+Requests forwarded by Front Door to a backend include a host header field that the backend uses to retrieve the targeted resource. The value for this field typically comes from the backend URI and has the host and port.
 
-Örneğin, www için yapılan bir istek\.contoso.com, ana bilgisayar üst bilgisi www olacaktır\.contoso.com. Arka ucunuzu yapılandırmak için Azure portalını kullanıyorsanız, bu alan için varsayılan değer arka uç ana bilgisayar adıdır. Azure portalında contoso-westus.azurewebsites.net arka uç ise arka uç ana bilgisayar üstbilgisi girdiğinizde değeri contoso westus.azurewebsites.net olacaktır. Açıkça bu alanı ayarlamadan, Azure Resource Manager şablonları ya da başka bir yöntem kullanmanız durumunda, ancak ön kapı hizmet gelen konak adı değeri olarak için barındırma üstbilgisini gönderir. İstek için www yapıldıysa\.contoso.com ve arka uç ise bir boş üstbilgi alanı olan contoso westus.azurewebsites.net, ön kapısı hizmet www ana bilgisayar üst bilgisini ayarlar\.contoso.com.
+For example, a request made for www\.contoso.com will have the host header www\.contoso.com. If you use Azure portal to configure your backend, the default value for this field is the host name of the backend. If your backend is contoso-westus.azurewebsites.net, in the Azure portal, the autopopulated value for the backend host header will be contoso-westus.azurewebsites.net. However, if you use Azure Resource Manager templates or another method without explicitly setting this field, Front Door Service will send the incoming host name as the value for the host header. If the request was made for www\.contoso.com, and your backend is contoso-westus.azurewebsites.net that has an empty header field, Front Door Service will set the host header as www\.contoso.com.
 
-Çoğu uygulama arka uçları (Azure Web Apps, Blob Depolama ve Cloud Services) arka uç etki alanını eşleştirmek için ana bilgisayar üst bilgisi gerektirir. Ancak arka ucunuza yönlendiren frontend ana bilgisayar farklı bir ana bilgisayar adı www gibi kullanırsınız\.contoso.azurefd.net.
+Most app backends (Azure Web Apps, Blob storage, and Cloud Services) require the host header to match the domain of the backend. However, the frontend host that routes to your backend will use a different hostname such as www\.contoso.azurefd.net.
 
-Arka uç arka uç ana bilgisayar adı ile eşleşmesi için ana bilgisayar üstbilgisi gerektiriyorsa, arka uç ana bilgisayar üstbilgisi'nın ana bilgisayar adı arka uç içerdiğinden emin olun.
+If your backend requires the host header to match the backend host name, make sure that the backend host header includes the host name backend.
 
-#### <a name="configuring-the-backend-host-header-for-the-backend"></a>Arka uç ana bilgisayar üstbilgisi arka uç için yapılandırma
+#### <a name="configuring-the-backend-host-header-for-the-backend"></a>Configuring the backend host header for the backend
 
-Yapılandırmak için **arka uç ana bilgisayar üstbilgisi** alan için bir arka uç arka uç havuzu bölümünde:
+To configure the **backend host header** field for a backend in the backend pool section:
 
-1. Ön kapısı kaynağınızı açın ve yapılandırmak için arka ucu ile arka uç havuzunu seçin.
+1. Open your Front Door resource and select the backend pool with the backend to configure.
 
-2. Bu işlemi yapmadıysanız ya da mevcut bir düzen, bir arka uç ekleyin.
+2. Add a backend if you haven't done so, or edit an existing one.
 
-3. Arka uç ana üstbilgi alanı özel bir değere ayarlamak veya boş bırakın. Gelen istek için ana bilgisayar adı, ana bilgisayar üstbilgisi değeri kullanılır.
+3. Set the backend host header field to a custom value or leave it blank. The hostname for the incoming request will be used as the host header value.
 
-## <a name="backend-pools"></a>Arka uç havuzları
-Arka uç havuzu önde kapı hizmet uygulamalarına yönelik benzer trafiğinin yönlendirildiği arka uçları kümesini ifade eder. Diğer bir deyişle, aynı trafiği almak ve beklenen davranışlar ile yanıt veren dünya genelinde uygulama örneklerinizi mantıksal bir gruplandırması olan. Bu arka uçları farklı bölgeler arasında ya da aynı bölgede dağıtılır. Tüm arka uçlar, dağıtım modu aktif/aktif veya Aktif/Pasif yapılandırmayı olarak tanımlanmış olabilir.
+## <a name="backend-pools"></a>Backend pools
+A backend pool in Front Door Service refers to the set of backends that receive similar traffic for their app. In other words, it's a logical grouping of your app instances across the world that receive the same traffic and respond with expected behavior. These backends are deployed across different regions or within the same region. All backends can be in Active/Active deployment mode or what is defined as Active/Passive configuration.
 
-Arka uç havuzu farklı arka uçları sistem durumu araştırmaları nasıl değerlendirilmesi gerektiğini tanımlar. Ayrıca, nasıl Yük Dengeleme aralarında gerçekleştiğinden tanımlar.
+A backend pool defines how the different backends should be evaluated via health probes. It also defines how load balancing occurs between them.
 
 ### <a name="health-probes"></a>Sistem durumu araştırmaları
-Ön kapısı hizmeti düzenli aralıklarla HTTP/HTTPS araştırma isteklerine her yapılandırılmış uçlarınıza gönderir. Araştırma isteklerine yakınlık ve yüklenecek her bir arka uç sistem durumu, son kullanıcı isteklerini Bakiye belirleyin. Arka uç havuzu için sistem durumu araştırması ayarları nasıl biz uygulama arka uçları sistem durumunu yoklamak tanımlayın. Aşağıdaki ayarlar kullanılabilir yük dengeleyici yapılandırması:
+Front Door Service sends periodic HTTP/HTTPS probe requests to each of your configured backends. Probe requests determine the proximity and health of each backend to load balance your end-user requests. Health probe settings for a backend pool define how we poll the health status of app backends. The following settings are available for load-balancing configuration:
 
-- **Yol**. Araştırma istekleri arka uç havuzundaki tüm arka uçlar için kullanılan URL. Örneğin, contoso westus.azurewebsites.net uçlarınıza biridir ve yolu için /probe/test.aspx ayarlanır, ardından Protokolü HTTP için ayarlanmış olduğu varsayılırsa, ön kapısı Service ortamları sistem durumu araştırma isteklerine http gönderir\:/ / contoso-westus.azurewebsites.net/probe/test.aspx.
+- **Path**. The URL used for probe requests for all the backends in the backend pool. For example, if one of your backends is contoso-westus.azurewebsites.net and the path is set to /probe/test.aspx, then Front Door Service environments, assuming the protocol is set to HTTP, will send health probe requests to http\://contoso-westus.azurewebsites.net/probe/test.aspx.
 
-- **Protokol**. Sistem durumu araştırma isteklerine uçlarınıza HTTP veya HTTPS protokolü için ön kapı hizmetinden gönderilip gönderilmeyeceğini tanımlar.
+- **Protocol**. Defines whether to send the health probe requests from Front Door Service to your backends with HTTP or HTTPS protocol.
 
-- **Aralık (saniye)** . Sistem durumu araştırmaları sıklığını uçlarınıza veya ön kapısı ortamların her birinde bir araştırma gönderir aralıklarını tanımlar.
+- **Interval (seconds)** . Defines the frequency of health probes to your backends, or the intervals in which each of the Front Door environments sends a probe.
 
     >[!NOTE]
-    >Daha hızlı yük devretme işlemleri için aralığı daha düşük bir değere ayarlayın. Düşük değeri, yüksek sistem durumu araştırması birim uçlarınıza alırsınız. Aralığı 30 saniye 90 ön kapısı ortamları veya POP'ları ile bir genel olarak ayarlanırsa, örneğin, her arka uç hakkında alırsınız saniyede 3-5 yoklama istek.
+    >For faster failovers, set the interval to a lower value. The lower the value, the higher the health probe volume your backends receive. For example, if the interval is set to 30 seconds with 90 Front Door environments or POPs globally, each backend will receive about 3-5 probe requests per second.
 
-Daha fazla bilgi için [sistem durumu araştırmalarının](front-door-health-probes.md).
+For more information, see [Health probes](front-door-health-probes.md).
 
-### <a name="load-balancing-settings"></a>Yük Dengeleme ayarları
-Yük Dengeleyici arka uç havuzu ayarlarını nasıl biz sistem durumu araştırmaları değerlendirmek tanımlayın. Bu ayarlar, arka uç sağlam olup olmadığını belirler. Ayrıca onlar iade arka uç havuzundaki farklı arka uçlar arasında trafik yükünü dengele öğreneceksiniz. Aşağıdaki ayarlar kullanılabilir yük dengeleyici yapılandırması:
+### <a name="load-balancing-settings"></a>Load-balancing settings
+Load-balancing settings for the backend pool define how we evaluate health probes. These settings determine if the backend is healthy or unhealthy. They also check how to load-balance traffic between different backends in the backend pool. The following settings are available for load-balancing configuration:
 
-- **Örnek boyutu**. Arka uç sistem durumu değerlendirme için göz önünde bulundurmanız gereken sistem durumu araştırmaları kaç örnekleri biz tanımlar.
+- **Sample size**. Identifies how many samples of health probes we need to consider for backend health evaluation.
 
-- **Başarılı örnek boyutu**. Daha önce belirtildiği gibi örnek boyutu arka uç sağlıklı çağırmanın başarılı örneklerin sayısını tanımlar. Örneğin, bir ön kapısı sistem durumu araştırma aralığı 30 saniyedir, örnek boyutu 5'tir ve başarılı örnek boyutu 3 varsayalım. Arka ucunuz için biz durumunu değerlendirme her zaman araştırmaları, 150 saniye (5 x 30) son beş samples umuyoruz. En az üç başarılı araştırmaları, arka uç sağlıklı olarak bildirmek için gereklidir.
+- **Successful sample size**. Defines the sample size as previously mentioned, the number of successful samples needed to call the backend healthy. For example, assume a Front Door health probe interval is 30 seconds, sample size is 5, and successful sample size is 3. Each time we evaluate the health probes for your backend, we look at the last five samples over 150 seconds (5 x 30). At least three successful probes are required to declare the backend as healthy.
 
-- **Gecikme süresi duyarlılık (ek gecikme)** . Arka uçları gecikme ölçüm Duyarlılık aralık içinde istek göndermek veya yakın arka uç isteği iletmek için ön kapı isteyip istemediğinizi tanımlar.
+- **Latency sensitivity (additional latency)** . Defines whether you want Front Door to send the request to backends within the latency measurement sensitivity range or forward the request to the closest backend.
 
-Daha fazla bilgi için [en az gecikme göre yönlendirme yöntemini](front-door-routing-methods.md#latency).
+For more information, see [Least latency based routing method](front-door-routing-methods.md#latency).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Bir ön kapısı profili oluşturma](quickstart-create-front-door.md)
-- [Ön kapısı işleyişi](front-door-routing-architecture.md)
+- [Create a Front Door profile](quickstart-create-front-door.md)
+- [How Front Door works](front-door-routing-architecture.md)

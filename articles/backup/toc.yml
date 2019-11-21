@@ -168,6 +168,12 @@
               href: backup-azure-vms-encryption.md
             - name: Şifrelenmiş VM’ler için anahtarları ve gizli dizileri geri yükleme
               href: backup-azure-restore-key-secret.md
+    - name: Kurtarma Hizmetleri Kasaları için Tanılama Olayları
+      items:
+        - name: Kurtarma Hizmetleri Kasaları için Tanılama Olaylarını kullanma
+          href: backup-azure-diagnostic-events.md
+        - name: Kaynağa Özgü Tanılama Olayları için Log Analytics Veri Modeli
+          href: backup-azure-log-analytics-new-data-model.md
     - name: Azure Backup raporlarını yapılandırma
       items:
         - name: Azure Backup raporlarını yapılandırma

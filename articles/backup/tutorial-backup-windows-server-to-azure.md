@@ -1,15 +1,15 @@
 ---
-title: Öğretici-Windows Server 'ı Azure 'a yedekleme
+title: Tutorial - Back up Windows Server to Azure
 description: Bu öğretici, şirket içi Windows Server’ların bir Kurtarma Hizmetleri kasasında yedeklenmesi işlemini açıklar.
 ms.topic: tutorial
 ms.date: 08/22/2018
 ms.custom: mvc
-ms.openlocfilehash: d29983bec7dbe379bfb2898e0f068a02b01ae726
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 906901ce4792e8b363a3a9b77c9bf6bb4b59aec5
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171825"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226473"
 ---
 # <a name="back-up-windows-server-to-azure"></a>Windows Server’ı Azure’da Yedekleme
 
@@ -19,11 +19,11 @@ Windows Server'ınızı bozulmalara, saldırılara ve olağanüstü durumlara ka
 >
 > * MARS Aracısını indirip ayarlama
 > * Sunucunuzun yedeklemeleri için yedekleme zamanlarını ve bekletme zamanlamasını yapılandırma
-> * İsteğe bağlı yedekleme gerçekleştirin
+> * Perform an on-demand back up
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+## <a name="sign-in-to-azure"></a>Azure'da oturum açın
 
-<https://portal.azure.com.> Azure portal oturum açın
+https://portal.azure.com adresinden Azure portalında oturum açın.
 
 ## <a name="create-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasası oluşturma
 
@@ -39,7 +39,7 @@ Windows Server’ı yedekleyebilmeniz için önce yedeklemelerin veya geri yükl
 
 3. **Kurtarma Hizmetleri kasası** menüsünde,
 
-    * *Ad* alanına **myRecoveryServicesVault** yazın.
+    * **Ad** alanına *myRecoveryServicesVault* yazın.
     * **Abonelik** bölümünde geçerli abonelik kimliği görüntülenir.
     * **Kaynak grubu** için **Var olanı kullan**’ı seçin ve sonra *myResourceGroup* seçeneğini belirleyin. *myResourceGroup* yoksa **Yeni Oluştur**’u seçin ve *myResourceGroup* yazın.
     * **Konum** açılır menüsünden *Batı Avrupa*’yı seçin.
@@ -59,7 +59,7 @@ Microsoft Azure Kurtarma Hizmetleri (MARS) aracısı, Windows Server ile Kurtarm
 
 3. **Yedekleme Hedefi** menüsünde:
 
-   * **iş yükünüz nerede çalışıyor?** için **Şirket içi** ' i seçin
+   * for **Where is your workload running?** , select **On-premises**
    * **Neleri yedeklemek istiyorsunuz?** için **Dosyalar ve klasörler**'i ve **Sistem Durumu**’nu seçin
 
    ![kasa için bilgileri sağlama](./media/tutorial-backup-windows-server-to-azure/backup-goal.png)

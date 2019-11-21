@@ -1,126 +1,126 @@
 ---
-title: Azure yay bulutu hakkında sık sorulan sorular | Microsoft Docs
-description: Bu makalede, Azure Spring Cloud hakkında sık sorulan sorular yanıtlanmaktadır.
+title: Frequently asked questions about Azure Spring Cloud | Microsoft Docs
+description: This article answers frequently asked questions about Azure Spring Cloud.
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 40275b3f643517236db26be8c2784144526fb7a1
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 6835132192040b4b943b156fb78ae1547522be0c
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151753"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229246"
 ---
-# <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud hakkında SSS
+# <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud FAQ
 
-Bu makalede, Azure Spring Cloud hakkında sık sorulan sorular yanıtlanmaktadır. 
+This article answers frequently asked questions about Azure Spring Cloud. 
 
 ## <a name="general"></a>Genel
 
-### <a name="why-azure-spring-cloud"></a>Neden Azure yay bulutu?
+### <a name="why-azure-spring-cloud"></a>Why Azure Spring Cloud?
 
-Azure Spring Cloud, Spring Cloud geliştiricileri için hizmet olarak platform (PaaS) sağlar. Azure Spring Cloud, uygulama altyapınızı, uygulama kodu ve iş mantığına odaklanabilmeniz için yönetir. Azure yay bulutu 'nda yerleşik olarak bulunan temel özellikler Eureka, config Server, hizmet kayıt defteri sunucusu, özetleme oluşturma hizmeti, mavi-yeşil dağıtımlar ve daha fazlasını içerir. Bu hizmet, geliştiricilerin uygulamalarını Azure Cosmos DB, MySQL için Azure veritabanı ve Redsıs için Azure önbelleği gibi diğer Azure hizmetleriyle bağlamasını da sağlar.
+Azure Spring Cloud provides a platform as a service (PaaS) for Spring Cloud developers. Azure Spring Cloud manages your application infrastructure so that you can focus on application code and business logic. Core features built into Azure Spring Cloud include Eureka, Config Server, Service Registry Server, Pivotal Build Service, Blue-green deployments, and more. This service also enables developers to bind their applications with other Azure services, such as Azure Cosmos DB, Azure Database for MySQL, and Azure Cache for Redis.
 
-Azure Spring Cloud, Azure Izleyici, Application Insights ve Log Analytics tümleştirerek geliştiriciler ve işleçler için uygulama tanılama deneyimini geliştirir.
+Azure Spring Cloud enhances the application diagnostics experience for developers and operators by integrating Azure Monitor, Application Insights, and Log Analytics.
 
-### <a name="what-service-plans-does-azure-spring-cloud-offer"></a>Azure yay bulutu hangi hizmet planlarını sunuyor?
+### <a name="what-service-plans-does-azure-spring-cloud-offer"></a>What service plans does Azure Spring Cloud offer?
 
-Azure yay bulutu, önizleme döneminde bir hizmet planı sunar.  Bir yay bulutu dağıtımı 16 vCPU çekirdeği ve 32 gigabayt (GB) bellek içerir.  Bir dağıtım içindeki her mikro hizmet örneği için üst sınır 8 GB bellek içeren 4 vCPU çekirdekdir.
+Azure Spring Cloud offers one service plan during the preview period.  A Spring Cloud deployment contains 16 vCPU cores and 32 gigabytes (GB) of memory.  The upper bound for each microservice instance within a deployment is 4 vCPU cores with 8 GB of memory.
 
 Kaynak | Miktar
 ------- | -------
-Yay bulut uygulaması başına uygulama örnekleri | 20
-Azure yay bulut hizmeti örneği başına toplam uygulama örnekleri | 50 *
-Abonelik başına bölge başına Azure yay bulut hizmeti örnekleri | iki
-Kalıcı birimler | 10 x 50 GB
+App instances per Spring application | 20
+Total app instances per Azure Spring Cloud service instance | 500
+Azure Spring Cloud service instances per region per subscription | 10
+Persistent volumes | 10 x 50 GBytes
 
-_limiti yükseltmek için \* bir [destek bileti](https://azure.microsoft.com/support/faq/)açın._
+\* _To raise the limit, open a [support ticket](https://azure.microsoft.com/support/faq/)._
 
-Daha fazla bilgi için bkz. [Azure DESTEĞI SSS](https://azure.microsoft.com/support/faq/).
+For more information, see [Azure Support FAQ](https://azure.microsoft.com/support/faq/).
 
-### <a name="how-secure-is-azure-spring-cloud"></a>Azure yay bulutu ne kadar güvenlidir?
+### <a name="how-secure-is-azure-spring-cloud"></a>How secure is Azure Spring Cloud?
 
-Güvenlik ve gizlilik, Azure ve Azure Spring bulut müşterileri için en önemli önceliklerdir. Azure, tüm bu verileri güvenli bir şekilde şifreleyerek yalnızca müşterilerin uygulama verilerine, günlüklerine veya yapılandırmasına erişmesini sağlamaya yardımcı olur. Azure Spring Cloud 'daki tüm hizmet örnekleri birbirinden yalıtılmıştır.
+Security and privacy are among the top priorities for Azure and Azure Spring Cloud customers. Azure helps ensure that only customers have access to application data, logs, or configurations by securely encrypting all of this data. All the service instances in Azure Spring Cloud are isolated from each other.
 
-Azure yay bulutu, tüm SSL ve sertifika yönetimi sağlar.
+Azure Spring Cloud provides complete SSL and certificate management.
 
-OpenJDK ve Spring Cloud çalışma zamanları için kritik güvenlik düzeltme ekleri, Azure Spring Cloud 'a mümkün olan en kısa sürede uygulanır.
+Critical security patches for OpenJDK and Spring Cloud runtimes are applied to Azure Spring Cloud as soon as possible.
 
-### <a name="in-which-regions-is-azure-spring-cloud-available"></a>Azure yay bulutu hangi bölgelerde kullanılabilir?
+### <a name="in-which-regions-is-azure-spring-cloud-available"></a>In which regions is Azure Spring Cloud available?
 
-Doğu ABD, Batı ABD 2, Batı Avrupa ve Güneydoğu Asya.
+East US, West US 2, West Europe, and Southeast Asia.
 
-### <a name="what-are-the-known-limitations-of-azure-spring-cloud"></a>Azure Spring Cloud 'ın bilinen sınırlamaları nelerdir?
+### <a name="what-are-the-known-limitations-of-azure-spring-cloud"></a>What are the known limitations of Azure Spring Cloud?
 
-Önizleme sürümü sırasında, Azure yay bulutu aşağıdaki bilinen sınırlamalara sahiptir:
+During preview release, Azure Spring Cloud has the following known limitations:
 
-* `spring.application.name`, her uygulamayı oluşturmak için kullanılan uygulama adı tarafından geçersiz kılınır.
-* Git deposundan yapılandırma dosyasında `server.port` izin verilmez. Bunu yapılandırma dosyasına eklemek, büyük olasılıkla uygulamanızı diğer uygulamalardan veya internet 'ten ulaşılamaz hale işleyecek.
-* Azure portal ve Azure Resource Manager şablonları uygulama paketlerinin yüklenmesini desteklemez. Uygulama paketlerini yalnızca uygulamayı Azure CLı aracılığıyla dağıtarak yükleyebilirsiniz.
-* Kota sınırlamaları hakkında bilgi edinmek için bkz. [Azure yay bulutu hangi hizmet planlarına sunuyor?](#what-service-plans-does-azure-spring-cloud-offer).
+* `spring.application.name` will be overridden by the application name that's used to create each application.
+* `server.port` is not allowed in the configuration file from the Git repo. Adding it to the configuration file will likely render your application unreachable from other applications or the internet.
+* The Azure portal and Azure Resource Manager templates do not support uploading application packages. You can upload application packages only by deploying the application via the Azure CLI.
+* To learn about quota limitations, see [What service plans does Azure Spring Cloud offer?](#what-service-plans-does-azure-spring-cloud-offer).
 
-### <a name="how-can-i-provide-feedback-and-report-issues"></a>Nasıl geri bildirimde bulunabilirim ve rapor sorunları verebilir?
+### <a name="how-can-i-provide-feedback-and-report-issues"></a>How can I provide feedback and report issues?
 
-Azure Spring Cloud ile ilgili herhangi bir sorunla karşılaşırsanız bir [Azure destek isteği](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)oluşturun. Bir özellik isteği göndermek veya geri bildirim sağlamak için [Azure geri bildirimi](https://feedback.azure.com/forums/34192--general-feedback)' ne gidin.
+If you encounter any issues with Azure Spring Cloud, create an [Azure Support Request](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). To submit a feature request or provide feedback, go to [Azure Feedback](https://feedback.azure.com/forums/34192--general-feedback).
 
 ## <a name="development"></a>Geliştirme
 
-### <a name="i-am-a-spring-cloud-developer-but-new-to-azure-what-is-the-quickest-way-for-me-to-learn-how-to-develop-an-azure-spring-cloud-application"></a>Ben bir yay bulut geliştiricisiyim, ancak Azure 'da yeni. Azure yay bulut uygulaması geliştirmeyi öğrenmenin en hızlı yolu nedir?
+### <a name="i-am-a-spring-cloud-developer-but-new-to-azure-what-is-the-quickest-way-for-me-to-learn-how-to-develop-an-azure-spring-cloud-application"></a>I am a Spring Cloud developer but new to Azure. What is the quickest way for me to learn how to develop an Azure Spring Cloud application?
 
-Azure Spring Cloud ile çalışmaya başlamanın en hızlı yolu için [hızlı başlangıç: Azure Portal kullanarak bir Azure Spring Cloud uygulaması başlatma](spring-cloud-quickstart-launch-app-portal.md)' daki yönergeleri izleyin.
+For the quickest way to get started with Azure Spring Cloud, follow the instructions in [Quickstart: Launch an Azure Spring Cloud application by using the Azure portal](spring-cloud-quickstart-launch-app-portal.md).
 
-### <a name="what-java-runtime-does-azure-spring-cloud-support"></a>Azure yay bulutu hangi Java çalışma zamanına destekler?
+### <a name="what-java-runtime-does-azure-spring-cloud-support"></a>What Java runtime does Azure Spring Cloud support?
 
-Azure yay bulutu, Java 8 ve 11 ' i destekler.
+Azure Spring Cloud supports Java 8 and 11.
 
-### <a name="where-can-i-view-my-spring-cloud-application-logs-and-metrics"></a>Yay bulutu uygulama Günlüklerimi ve ölçümlerini nereden görüntüleyebilirim?
+### <a name="where-can-i-view-my-spring-cloud-application-logs-and-metrics"></a>Where can I view my Spring Cloud application logs and metrics?
 
-Uygulama Genel Bakış sekmesinde ve [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics#interacting-with-azure-monitor-metrics) sekmesinde ölçümleri bulun.
+Find metrics in the App Overview tab and the [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics#interacting-with-azure-monitor-metrics) tab.
 
-Azure Spring Cloud, Azure depolama, EventHub ve [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs#log-queries)yay bulut uygulaması günlüklerini ve ölçümlerini vermeyi destekler. Log Analytics tablo adı *Appplatformlogsforspring*' dir. Nasıl etkinleştireceğinizi öğrenmek için bkz. [Tanılama Hizmetleri](diagnostic-services.md).
+Azure Spring Cloud supports exporting Spring Cloud application logs and metrics to Azure Storage, EventHub, and [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs#log-queries). The table name in Log Analytics is *AppPlatformLogsforSpring*. To learn how to enable it, see [Diagnostic services](diagnostic-services.md).
 
-### <a name="does-azure-spring-cloud-support-distributed-tracing"></a>Azure yay bulutu dağıtılmış izlemeyi destekliyor mu?
+### <a name="does-azure-spring-cloud-support-distributed-tracing"></a>Does Azure Spring Cloud support distributed tracing?
 
-Evet. Daha fazla bilgi için bkz. [öğretici: Azure Spring Cloud Ile dağıtılmış Izleme kullanma](spring-cloud-tutorial-distributed-tracing.md).
+Evet. For more information, see [Tutorial: Use Distributed Tracing with Azure Spring Cloud](spring-cloud-tutorial-distributed-tracing.md).
 
-### <a name="what-resource-types-does-service-binding-support"></a>Hizmet bağlama hangi kaynak türlerini destekler?
+### <a name="what-resource-types-does-service-binding-support"></a>What resource types does Service Binding support?
 
-Şu anda üç hizmet desteklenmektedir: Azure Cosmos DB, MySQL için Azure veritabanı ve Redsıs için Azure önbelleği.
+Three services are currently supported: Azure Cosmos DB, Azure Database for MySQL, and Azure Cache for Redis.
 
-### <a name="can-i-view-add-or-move-persistent-volumes-from-inside-my-applications"></a>Uygulamalarım içinden kalıcı birimleri görüntüleyebilir, ekleyebilir veya taşıyabilir miyim?
+### <a name="can-i-view-add-or-move-persistent-volumes-from-inside-my-applications"></a>Can I view, add, or move persistent volumes from inside my applications?
 
 Evet.
 
-## <a name="deployment"></a>Dağıtım
+## <a name="deployment"></a>Kurulum
 
-### <a name="does-azure-spring-cloud-support-blue-green-deployment"></a>Azure yay bulutu mavi yeşil dağıtımı destekliyor mu?
-Evet. Daha fazla bilgi için bkz. [hazırlama ortamı ayarlama](spring-cloud-howto-staging-environment.md).
+### <a name="does-azure-spring-cloud-support-blue-green-deployment"></a>Does Azure Spring Cloud support blue-green deployment?
+Evet. For more information, see [Set up a staging environment](spring-cloud-howto-staging-environment.md).
 
-### <a name="can-i-access-kubernetes-to-manipulate-my-application-containers"></a>Uygulama kapsayıcılarımı değiştirmek için Kubernetes 'e erişebilir miyim?
+### <a name="can-i-access-kubernetes-to-manipulate-my-application-containers"></a>Can I access Kubernetes to manipulate my application containers?
 
-Hayır.  Azure Spring Cloud, geliştirici temel mimariden soyutlar, uygulama kodu ve iş mantığına odaklanmanızı sağlar.
+Hayır.  Azure Spring Cloud abstracts the developer from the underlying architecture, allowing you to concentrate on application code and business logic.
 
-### <a name="does-azure-spring-cloud-support-building-containers-from-source"></a>Azure yay bulutu, kaynaktan kapsayıcılar oluşturmayı destekliyor mu?
+### <a name="does-azure-spring-cloud-support-building-containers-from-source"></a>Does Azure Spring Cloud support building containers from source?
 
-Evet. Daha fazla bilgi için bkz. [Spring Cloud uygulamanızı kaynak koddan başlatma](spring-cloud-launch-from-source.md).
+Evet. For more information, see [Launch your Spring Cloud application from source code](spring-cloud-launch-from-source.md).
 
-### <a name="does-azure-spring-cloud-support-autoscaling-in-app-instances"></a>Azure yay bulutu, uygulama örneklerinde otomatik ölçeklendirmeyi destekliyor mu?
+### <a name="does-azure-spring-cloud-support-autoscaling-in-app-instances"></a>Does Azure Spring Cloud support autoscaling in app instances?
 
 Hayır.
 
-### <a name="what-are-the-best-practices-for-migrating-existing-spring-cloud-microservices-to-azure-spring-cloud"></a>Mevcut yay bulutu mikro hizmetlerini Azure Spring Cloud 'a geçirmek için en iyi uygulamalar nelerdir?
+### <a name="what-are-the-best-practices-for-migrating-existing-spring-cloud-microservices-to-azure-spring-cloud"></a>What are the best practices for migrating existing Spring Cloud microservices to Azure Spring Cloud?
 
-Mevcut yay bulutu mikro hizmetlerini Azure Spring buluta geçirirken, aşağıdaki en iyi yöntemleri gözlemlemek iyi bir fikirdir:
-* Tüm uygulama bağımlılıklarının çözülmesi gerekir.
-* Yapılandırma girdilerinizi, ortam değişkenlerinizi ve JVM parametrelerinizi Azure Spring Cloud 'daki dağıtımla karşılaştırabilmeniz için hazırlayın.
-* Hizmet bağlamayı kullanmak istiyorsanız, Azure hizmetlerinizi gözden geçirdiğinizden ve uygun erişim izinlerini ayarlamış olduğunuzdan emin olun.
-* Hizmet bulma hizmeti, yapılandırma sunucusu gibi Azure Spring Cloud tarafından yönetilen hizmetlerle çakışabilecek gömülü Hizmetleri kaldırmanızı veya devre dışı bırakmanızı öneririz.
-* Resmi, kararlı özette yay kitaplıklarını kullanmanızı öneririz. Özet Ilkelerin kitaplıklarının resmi olmayan, beta veya çatallı sürümlerinin hizmet düzeyi anlaşması (SLA) desteği yoktur.
+As you're migrating existing Spring Cloud microservices to Azure Spring Cloud, it's a good idea to observe the following best practices:
+* All application dependencies need to be resolved.
+* Prepare your configuration entries, environment variables, and JVM parameters so that you can compare them with the deployment in Azure Spring Cloud.
+* If you want to use Service Binding, go through your Azure services and ensure that you've set the appropriate access permissions.
+* We recommend that you remove or disable any embedded services that might conflict with services that are managed by Azure Spring Cloud, such as our Service Discovery service, Config Server, and so on.
+* We recommend that you use official, stable Pivotal Spring libraries. Unofficial, beta, or forked versions of Pivotal Spring libraries have no service-level agreement (SLA) support.
 
-Geçişten sonra, uygulama örneklerinin uygun şekilde ölçeklendirdiğinden emin olmak için CPU/RAM ölçümleri ve ağ trafiğinizi izleyin.
+After the migration, monitor your CPU/RAM metrics and network traffic to ensure that the application instances are scaled appropriately.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Başka sorularınız varsa bkz. [Azure yay bulutu sorun giderme kılavuzu](spring-cloud-troubleshoot.md).
+If you have further questions, see the [Azure Spring Cloud troubleshooting guide](spring-cloud-troubleshoot.md).

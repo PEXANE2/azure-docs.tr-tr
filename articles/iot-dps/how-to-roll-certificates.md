@@ -1,217 +1,216 @@
 ---
-title: Azure IOT Hub cihazı sağlama hizmeti içinde nasıl dağıtılacağıdır X.509 sertifikaları | Microsoft Docs
-description: Cihaz sağlama hizmeti örneğinizi X.509 sertifikalarıyla sunma
+title: Roll X.509 certificates in Azure IoT Hub Device Provisioning Service
+description: How to roll X.509 certificates with your Device Provisioning service instance
 author: wesmc7777
 ms.author: wesmc
 ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
-ms.openlocfilehash: 8cf5f262a758efe08ad73e2d8066ad4b736e76d1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 55ed99c434028b9761ef53fc09a01481bbd184e1
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60627037"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228747"
 ---
-# <a name="how-to-roll-x509-device-certificates"></a>X.509 cihaz sertifikaları sunma
+# <a name="how-to-roll-x509-device-certificates"></a>How to roll X.509 device certificates
 
-IOT çözümünüzü yaşam döngüsü boyunca, sertifikaları alma gerekecektir. İki sertifikaları çalışırken ana nedeni, güvenlik ihlali ve sertifika süre sonu olacaktır. 
+During the lifecycle of your IoT solution, you'll need to roll certificates. Two of the main reasons for rolling certificates would be a security breach, and certificate expirations. 
 
-Sertifikaları sıralı bir ihlal durumunda sisteminizde güvenli hale getirmek için bir güvenlik en iyi uygulamadır. Bir parçası olarak [varsayar ihlal Metodoloji](https://download.microsoft.com/download/C/1/9/C1990DBA-502F-4C2A-848D-392B93D9B9C3/Microsoft_Enterprise_Cloud_Red_Teaming.pdf), Microsoft sorunlarınızda reaktif güvenlik işlemleri önleyici ölçüler yanı sıra yerinde olması gereksinimini. Cihaz sertifikalarınızı çalışırken bu güvenlik işlemleri bir parçası olarak dahil edilecek. Sertifikalarınızı geri alma sıklığı, çözümünüzün güvenlik gereksinimlerine bağlıdır. Çok gizli veriler içeren çözümler müşterilerle diğerleri sertifikalarını her birkaç yılda geri alma sırasında sertifika günlük, döküm.
+Rolling certificates is a security best practice to help secure your system in the event of a breach. As part of [Assume Breach Methodology](https://download.microsoft.com/download/C/1/9/C1990DBA-502F-4C2A-848D-392B93D9B9C3/Microsoft_Enterprise_Cloud_Red_Teaming.pdf), Microsoft advocates the need for having reactive security processes in place along with preventative measures. Rolling your device certificates should be included as part of these security processes. The frequency in which you roll your certificates will depend on the security needs of your solution. Customers with solutions involving highly sensitive data may roll certificate daily, while others roll their certificates every couple years.
 
-Cihaz sertifikaları çalışırken cihaz ve IOT hub'ı üzerinde depolanan sertifika güncelleştirme içerir. Daha sonra cihaz normal kendini IOT hub'ı kullanarak yeniden sağlamak [otomatik sağlama](concepts-auto-provisioning.md) cihaz sağlama hizmeti ile.
+Rolling device certificates will involve updating the certificate stored on the device and the IoT hub. Afterwards, the device can reprovision itself with the IoT hub using normal [auto-provisioning](concepts-auto-provisioning.md) with the Device Provisioning Service.
 
 
-## <a name="obtain-new-certificates"></a>Yeni sertifika alın
+## <a name="obtain-new-certificates"></a>Obtain new certificates
 
-IOT cihazları için yeni sertifikalar almak için birçok yolu vardır. Kendi sertifikalarınızı oluşturma ve üçüncü taraf sahip sertifika oluşturma, yönetme, bu cihaz fabrikasından sertifikaları edinme içerir. 
+There are many ways to obtain new certificates for your IoT devices. These include obtaining certificates from the device factory, generating your own certificates, and having a third party manage certificate creation for you. 
 
-Otomatik olarak imzalanan sertifikalar birbiri tarafından bir kök CA sertifikası için güven zinciri oluşturmak için bir [yaprak sertifikayı](concepts-security.md#end-entity-leaf-certificate). İmzalama sertifikası yaprak sertifika güven zinciri sonunda imzalamak için kullanılan bir sertifikadır. İmzalama sertifikası, bir kök CA sertifikasını veya ara sertifika güven zinciri de olabilir. Daha fazla bilgi için [X.509 sertifikaları](concepts-security.md#x509-certificates).
+Certificates are signed by each other to form a chain of trust from a root CA certificate to a [leaf certificate](concepts-security.md#end-entity-leaf-certificate). A signing certificate is the certificate used to sign the leaf certificate at the end of the chain of trust. A signing certificate can be a root CA certificate, or an intermediate certificate in chain of trust. For more information, see [X.509 certificates](concepts-security.md#x509-certificates).
  
-İmzalama sertifikası almak için iki farklı yolu vardır. Üretim sistemleri için önerilen, ilk yol, bir kök sertifika yetkilisinden (CA) bir imza sertifikası satın almaktır. Bu şekilde güvenilir bir kaynaktan güvenlik bağlanır. 
+There are two different ways to obtain a signing certificate. The first way, which is recommended for production systems, is to purchase a signing certificate from a root certificate authority (CA). This way chains security down to a trusted source. 
 
-İkinci yol OpenSSL gibi bir araç kullanarak kendi X.509 sertifikaları oluşturmaktır. Bu yaklaşım için test X.509 sertifikaları mükemmeldir ancak güvenlik etrafında birkaç garantileri sağlar. Yalnızca kendi CA sağlayıcısı olarak görev yapacak hazırladığınız sürece test etmek için bu yaklaşımı kullanmanız önerilir.
+The second way is to create your own X.509 certificates using a tool like OpenSSL. This approach is great for testing X.509 certificates but provides few guarantees around security. We recommend you only use this approach for testing unless you prepared to act as your own CA provider.
  
 
-## <a name="roll-the-certificate-on-the-device"></a>Cihazda sertifika alma
+## <a name="roll-the-certificate-on-the-device"></a>Roll the certificate on the device
 
-Bir cihazdaki sertifikaları her zaman depolanması gibi güvenli bir yerde bir [donanım güvenlik modülü (HSM)](concepts-device.md#hardware-security-module). Cihaz sertifikaları alma şeklini nasıl oluşturulmuş ve cihazların ilk başta yüklü üzerinde bağlıdır. 
+Certificates on a device should always be stored in a safe place like a [hardware security module (HSM)](concepts-device.md#hardware-security-module). The way you roll device certificates will depend on how they were created and installed in the devices in the first place. 
 
-Üçüncü bir taraftan sertifikalarınızı geldiyseniz, bunlar sertifikalarını nasıl geri içine aramanız gerekir. İşlem, düzenlemeyle eklenebilir veya ayrı bir hizmet sunulup olabilir. 
+If you got your certificates from a third party, you must look into how they roll their certificates. The process may be included in your arrangement with them, or it may be a separate service they offer. 
 
-Kendi cihaz sertifikaları yönetiyorsanız, sertifikalar güncelleştirmek için kendi işlem hattınızı gerekecektir. Her iki eski ve yeni bir yaprak sertifikanın ortak adı (CN) aynı olduğundan emin olun. Aynı CN sağlayarak, cihazın kendisi yinelenen bir kayıt oluşturmadan yeniden sağlamak. 
+If you're managing your own device certificates, you'll have to build your own pipeline for updating certificates. Make sure both old and new leaf certificates have the same common name (CN). By having the same CN, the device can reprovision itself without creating a duplicate registration record. 
 
 
-## <a name="roll-the-certificate-in-the-iot-hub"></a>IOT hub'ında sertifika alma
+## <a name="roll-the-certificate-in-the-iot-hub"></a>Roll the certificate in the IoT hub
 
-Cihaz sertifikasını el ile bir IOT hub'ına eklenebilir. Sertifika bir cihaz sağlama hizmeti örneği kullanarak otomatik olarak da yapılabilir. Bu makalede, bir cihaz sağlama hizmeti örneği otomatik sağlamayı desteklemek için kullanılıyor varsayacağız.
+The device certificate can be manually added to an IoT hub. The certificate can also be automated using a Device Provisioning service instance. In this article, we'll assume a Device Provisioning service instance is being used to support auto-provisioning.
 
-Ne zaman bir cihaz, başlangıçta otomatik sağlama yoluyla, onu başlatır-up, sağlanan ve sağlama hizmeti ile iletişim kurar. Sağlama hizmeti içinde kimlik bilgisi olarak cihazın yaprak sertifikayı kullanarak bir IOT hub'a bir cihaz kimliği oluşturmadan önce bir kimlik denetimi gerçekleştirerek yanıt verir. Sağlama hizmeti, cihazın hangi IOT hub'a atanır ve cihaz kimlik doğrulaması ve IOT hub'ına bağlanmak için kendi yaprak sertifikayı ardından kullanır. daha sonra bildirir. 
+When a device is initially provisioned through auto-provisioning, it boots-up, and contacts the provisioning service. The provisioning service responds by performing an identity check before creating a device identity in an IoT hub using the device’s leaf certificate as the credential. The provisioning service then tells the device which IoT hub it's assigned to, and the device then uses its leaf certificate to authenticate and connect to the IoT hub. 
 
-Yeni bir yaprak sertifikayı cihaza alındı sonra bağlanmak için yeni bir sertifika kullandığından, artık IOT hub'ına bağlanabilir. IOT hub'ı yalnızca eski sertifika cihazla tanır. Cihazın bağlantı denemesi sonucunu bir "yetkisiz" bağlantı hatası olacaktır. Bu hatayı gidermek için hesabı cihazın yeni Yaprak sertifikası için cihaz kayıt girişini güncelleştirmeniz gerekir. Daha sonra sağlama hizmeti, cihaz sağlama, gerektiği gibi IOT Hub cihaz kayıt defteri bilgilerini güncelleştirebilirsiniz. 
+Once a new leaf certificate has been rolled to the device, it can no longer connect to the IoT hub because it’s using a new certificate to connect. The IoT hub only recognizes the device with the old certificate. The result of the device's connection attempt will be an "unauthorized" connection error. To resolve this error, you must update the enrollment entry for the device to account for the device's new leaf certificate. Then the provisioning service can update the IoT Hub device registry information as needed when the device is reprovisioned. 
 
-Bu bağlantı hatası için olası istisnalardan biri, burada oluşturduğunuz bir senaryo olacak bir [kayıt grubu](concepts-service.md#enrollment-group) cihaz sağlama hizmeti. Cihazın sertifikanın güven zincirinde kök veya ara sertifika sıralı değil, yeni sertifika kayıt grubundaki tanımlanan güven zinciri parçası ise bu durumda, ardından cihaz tanınır. Bir güvenlik ihlali için tepki olarak bu senaryo ortaya çıkarsa, ihlal olarak kabul edilir belirli cihaz sertifikaları grubunda en az bloke listeye almalıdır. Daha fazla bilgi için [kara belirli cihazlara bir kayıt grubundaki](https://docs.microsoft.com/azure/iot-dps/how-to-revoke-device-access-portal#blacklist-specific-devices-in-an-enrollment-group).
+One possible exception to this connection failure would be a scenario where you've created an [Enrollment Group](concepts-service.md#enrollment-group) for your device in the provisioning service. In this case, if you aren't rolling the root or intermediate certificates in the device's certificate chain of trust, then the device will be recognized if the new certificate is part of the chain of trust defined in the enrollment group. If this scenario arises as a reaction to a security breach, you should at least blacklist the specific device certificates in the group that are considered to be breached. For more information, see [Blacklist specific devices in an enrollment group](https://docs.microsoft.com/azure/iot-dps/how-to-revoke-device-access-portal#blacklist-specific-devices-in-an-enrollment-group).
 
-Toplu sertifika için kayıt girişlerini güncelleştirme üzerinde gerçekleştirilir **kayıtları Yönet** sayfası. Bu sayfaya erişmek için şu adımları izleyin:
+Updating enrollment entries for rolled certificates is accomplished on the **Manage enrollments** page. To access that page, follow these steps:
 
-1. Oturum [Azure portalında](https://portal.azure.com) ve kayıt girdisi cihazınız için IOT Hub cihazı sağlama hizmeti örneğine gidin.
+1. Sign in to the [Azure portal](https://portal.azure.com) and navigate to the IoT Hub Device Provisioning Service instance that has the enrollment entry for your device.
 
 2. **Kayıtları yönetme**'ye tıklayın.
 
-    ![Kayıtları yönetme](./media/how-to-roll-certificates/manage-enrollments-portal.png)
+    ![Manage enrollments](./media/how-to-roll-certificates/manage-enrollments-portal.png)
 
 
-Nasıl kayıt girişi güncelleştirme işlemek, bireysel kayıtlar ya da grup kayıtları kullanmakta olduğunuz üzerinde bağlıdır. Ayrıca önerdiği yordamları olup, sertifikalar bir güvenlik ihlali ya da sertifika süre sonu nedeniyle bölgelerimizde bağlı olarak farklılık gösterir. Aşağıdaki bölümlerde, bu güncelleştirmeleri nasıl ele alınacağını açıklar.
+How you handle updating the enrollment entry will depend on whether you're using individual enrollments, or group enrollments. Also the recommended procedures differ depending on whether you're rolling certificates because of a security breach, or certificate expiration. The following sections describe how to handle these updates.
 
 
-## <a name="individual-enrollments-and-security-breaches"></a>Bireysel kayıtlar ve güvenlik ihlallerini
+## <a name="individual-enrollments-and-security-breaches"></a>Individual enrollments and security breaches
 
-Yanıt olarak bir güvenlik ihlali sertifikaları bölgelerimizde, geçerli sertifika hemen silen aşağıdaki yaklaşımı kullanmanız gerekir:
+If you're rolling certificates in response to a security breach, you should use the following approach that deletes the current certificate immediately:
 
-1. Tıklayın **bireysel kayıtlar**, listesinde kayıt kimliği girişine tıklayın. 
+1. Click **Individual Enrollments**, and click the registration ID entry in the list. 
 
-2. Tıklayın **silme geçerli sertifika** düğmesine tıklayın ve ardından kayıt girişini yüklenmek üzere yeni bir sertifika seçmek için klasör simgesine tıklayın. Tıklayın **Kaydet** bittiğinde.
+2. Click the **Delete current certificate** button and then, click the folder icon to select the new certificate to be uploaded for the enrollment entry. Click **Save** when finished.
 
-    Her ikisi de aşılırsa birincil ve ikincil sertifika için şu adımları tamamlanmalıdır.
+    These steps should be completed for the primary and secondary certificate, if both are compromised.
 
-    ![Bireysel kayıtlar yönetme](./media/how-to-roll-certificates/manage-individual-enrollments-portal.png)
+    ![Manage individual enrollments](./media/how-to-roll-certificates/manage-individual-enrollments-portal.png)
 
-3. Güvenliği aşılmış sertifikanın sağlama hizmetinden kaldırıldıktan sonra onun için bir cihaz kaydı var olduğu sürece IOT hub'ına cihaz bağlantılarını yapmak için sertifika hala kullanılabilir. Bu iki yolla karşılayabilirsiniz: 
+3. Once the compromised certificate has been removed from the provisioning service, the certificate can still be used to make device connections to the IoT hub as long as a device registration for it exists there. You can address this two ways: 
 
-    İlk yol, el ile IOT hub'ınıza gidin ve hemen güvenliği aşılmış sertifikayla ilişkili cihaz kaydını kaldırmak için olacaktır. Cihaz güncelleştirilmiş bir sertifika ile yeniden sağlar, yeni bir cihaz kaydı oluşturulur.     
+    The first way would be to manually navigate to your IoT hub and immediately remove the device registration associated with the compromised certificate. Then when the device provisions again with an updated certificate, a new device registration will be created.     
 
-    ![IOT hub cihaz kaydı Kaldır](./media/how-to-roll-certificates/remove-hub-device-registration.png)
+    ![Remove IoT hub device registration](./media/how-to-roll-certificates/remove-hub-device-registration.png)
 
-    İkinci yol aynı IOT hub'a cihazı yeniden sağlamak için destek çıkış kullanmak olabilir. Bu yaklaşım, IOT hub'ında cihaz kaydı için sertifikayı değiştirmek için kullanılabilir. Daha fazla bilgi için [cihazları yeniden sağlamak nasıl](how-to-reprovision.md).
+    The second way would be to use reprovisioning support to reprovision the device to the same IoT hub. This approach can be used to replace the certificate for the device registration on the IoT hub. For more information, see [How to reprovision devices](how-to-reprovision.md).
 
-## <a name="individual-enrollments-and-certificate-expiration"></a>Bireysel kayıtlar ve sertifika süre sonu
+## <a name="individual-enrollments-and-certificate-expiration"></a>Individual enrollments and certificate expiration
 
-Sertifika süre sonu işlemek için sertifikaları bölgelerimizde, ikincil sertifika yapılandırması gibi sağlama girişiminde cihazlar için kapalı kalma süresini azaltmak için kullanmanız gerekir.
+If you're rolling certificates to handle certificate expirations, you should use the secondary certificate configuration as follows to reduce downtime for devices attempting to provision.
 
-Daha sonra ikincil sertifika aynı zamanda, süre sonu yaklaştığında ve geri alınması gerekir, birincil yapılandırması kullanarak döndürebilirsiniz. Bu şekilde birincil ve ikincil sertifikaları arasında döndürme sağlama girişiminde cihazlar için kapalı kalma süresini azaltır.
+Later when the secondary certificate also nears expiration, and needs to be rolled, you can rotate to using the primary configuration. Rotating between the primary and secondary certificates in this way reduces downtime for devices attempting to provision.
 
 
-1. Tıklayın **bireysel kayıtlar**, listesinde kayıt kimliği girişine tıklayın. 
+1. Click **Individual Enrollments**, and click the registration ID entry in the list. 
 
-2. Tıklayın **ikincil sertifika** ve ardından kayıt girişini yüklenmek üzere yeni bir sertifika seçmek için klasör simgesine tıklayın. **Kaydet**’e tıklayın.
+2. Click **Secondary Certificate** and then, click the folder icon to select the new certificate to be uploaded for the enrollment entry. **Kaydet** düğmesine tıklayın.
 
-    ![İkincil sertifika kullanılarak tek tek kayıtları Yönet](./media/how-to-roll-certificates/manage-individual-enrollments-secondary-portal.png)
+    ![Manage individual enrollments using the secondary certificate](./media/how-to-roll-certificates/manage-individual-enrollments-secondary-portal.png)
 
-3. Daha sonra birincil sertifikanın süresi dolduğunda, geri dönün ve birincil bu sertifikayı silmek **silme geçerli sertifika** düğmesi.
+3. Later when the primary certificate has expired, come back and delete that primary certificate by clicking the **Delete current certificate** button.
 
-## <a name="enrollment-groups-and-security-breaches"></a>Kayıt grupları ve güvenlik ihlallerini
+## <a name="enrollment-groups-and-security-breaches"></a>Enrollment groups and security breaches
 
-Yanıt olarak bir güvenlik ihlali bir grup kaydı güncelleştirmek için geçerli bir kök CA veya ara sertifika hemen siler aşağıdaki yaklaşımlardan birini kullanmanız gerekir.
+To update a group enrollment in response to a security breach, you should use one of the following approaches that will delete the current root CA, or intermediate certificate immediately.
 
-#### <a name="update-compromised-root-ca-certificates"></a>Güvenliği aşılmış kök CA sertifikaları güncelleştirme
+#### <a name="update-compromised-root-ca-certificates"></a>Update compromised root CA certificates
 
-1. Tıklayın **sertifikaları** cihaz sağlama hizmeti örneğinizi için sekmesinde.
+1. Click the **Certificates** tab for your Device Provisioning service instance.
 
-2. Güvenliği aşılmış sertifika listesinde tıklayın ve ardından **Sil** düğmesi. Sertifika adı girerek silme işlemini onaylamak ve tıklayın **Tamam**. Bu işlem, tüm riskli sertifikaları için yineleyin.
+2. Click the compromised certificate in the list, and then click the **Delete** button. Confirm the delete by entering the certificate name and click **OK**. Repeat this process for all compromised certificates.
 
-    ![Kök CA sertifikasını Sil](./media/how-to-roll-certificates/delete-root-cert.png)
+    ![Delete root CA certificate](./media/how-to-roll-certificates/delete-root-cert.png)
 
-3. Özetlenen adımları [doğrulanmış CA sertifikalarını yapılandırma](how-to-verify-certificates.md) ekleme ve yeni bir kök CA sertifika doğrulama.
+3. Follow steps outlined in [Configure verified CA certificates](how-to-verify-certificates.md) to add and verify new root CA certificates.
 
-4. Tıklayın **kayıtları Yönet** cihaz sağlama hizmeti örneğinizi için sekmesinde ve tıklayın **kayıt grupları** listesi. Kayıt grubu adınız listede tıklayın.
+4. Click the **Manage enrollments** tab for your Device Provisioning service instance, and click the **Enrollment Groups** list. Click your enrollment group name in the list.
 
-5. Tıklayın **CA sertifikası**ve yeni kök CA sertifikanızı seçin. Daha sonra **Kaydet**'e tıklayın. 
+5. Click **CA Certificate**, and select your new root CA certificate. Daha sonra **Kaydet**'e tıklayın. 
 
-    ![Yeni kök CA sertifikasını seçin](./media/how-to-roll-certificates/select-new-root-cert.png)
+    ![Select the new root CA certificate](./media/how-to-roll-certificates/select-new-root-cert.png)
 
-6. Güvenliği aşılmış sertifikanın sağlama hizmetinden kaldırıldıktan sonra sertifikayı IOT hub'ına cihaz bağlantılarını cihaz kayıtları için mevcut olduğu sürece var. olmak için hala kullanılabilir. Bu iki yolla karşılayabilirsiniz: 
+6. Once the compromised certificate has been removed from the provisioning service, the certificate can still be used to make device connections to the IoT hub as long as device registrations for it exists there. You can address this two ways: 
 
-    İlk yol, el ile IOT hub'ınıza gidin ve hemen güvenliği aşılmış sertifikayla ilişkili cihaz kaydını kaldırmak için olacaktır. Cihazlarınızı tekrar güncelleştirilmiş sertifikalarla sağladığınızda, her biri için yeni bir cihaz kaydı oluşturulur.     
+    The first way would be to manually navigate to your IoT hub and immediately remove the device registration associated with the compromised certificate. Then when your devices provision again with updated certificates, a new device registration will be created for each one.     
 
-    ![IOT hub cihaz kaydı Kaldır](./media/how-to-roll-certificates/remove-hub-device-registration.png)
+    ![Remove IoT hub device registration](./media/how-to-roll-certificates/remove-hub-device-registration.png)
 
-    İkinci yol aynı IOT hub'ına cihazlarınızı yeniden sağlamak için destek çıkış kullanmak olabilir. Bu yaklaşım, IOT hub'ında cihaz kayıtları için sertifikaları değiştirmek için kullanılabilir. Daha fazla bilgi için [cihazları yeniden sağlamak nasıl](how-to-reprovision.md).
+    The second way would be to use reprovisioning support to reprovision your devices to the same IoT hub. This approach can be used to replace certificates for device registrations on the IoT hub. For more information, see [How to reprovision devices](how-to-reprovision.md).
 
 
 
-#### <a name="update-compromised-intermediate-certificates"></a>Güvenliği aşılmış Ara sertifikaları güncelleştirme
+#### <a name="update-compromised-intermediate-certificates"></a>Update compromised intermediate certificates
 
-1. Tıklayın **kayıt grupları**ve ardından listedeki grubunun adına tıklayın. 
+1. Click **Enrollment Groups**, and then click the group name in the list. 
 
-2. Tıklayın **ara sertifika**, ve **silme geçerli sertifika**. Kayıt grubu için yüklenmek üzere yeni Ara Sertifika gitmek için klasör simgesine tıklayın. Tıklayın **Kaydet** işiniz bittiğinde. Her ikisi de aşılırsa hem birincil ve ikincil sertifika için şu adımları tamamlanmalıdır.
+2. Click **Intermediate Certificate**, and **Delete current certificate**. Click the folder icon to navigate to the new intermediate certificate to be uploaded for the enrollment group. Click **Save** when you're finished. These steps should be completed for both the primary and secondary certificate, if both are compromised.
 
-    Bu yeni Ara Sertifika sağlama hizmeti zaten eklenmiş bir doğrulanmış kök CA sertifikası tarafından imzalanması gerekir. Daha fazla bilgi için [X.509 sertifikaları](concepts-security.md#x509-certificates).
+    This new intermediate certificate should be signed by a verified root CA certificate that has already been added into provisioning service. For more information, see [X.509 certificates](concepts-security.md#x509-certificates).
 
-    ![Bireysel kayıtlar yönetme](./media/how-to-roll-certificates/enrollment-group-delete-intermediate-cert.png)
+    ![Manage individual enrollments](./media/how-to-roll-certificates/enrollment-group-delete-intermediate-cert.png)
 
 
-3. Güvenliği aşılmış sertifikanın sağlama hizmetinden kaldırıldıktan sonra sertifikayı IOT hub'ına cihaz bağlantılarını cihaz kayıtları için mevcut olduğu sürece var. olmak için hala kullanılabilir. Bu iki yolla karşılayabilirsiniz: 
+3. Once the compromised certificate has been removed from the provisioning service, the certificate can still be used to make device connections to the IoT hub as long as device registrations for it exists there. You can address this two ways: 
 
-    İlk yol, el ile IOT hub'ınıza gidin ve hemen güvenliği aşılmış sertifikayla ilişkili cihaz kaydını kaldırmak için olacaktır. Cihazlarınızı tekrar güncelleştirilmiş sertifikalarla sağladığınızda, her biri için yeni bir cihaz kaydı oluşturulur.     
+    The first way would be to manually navigate to your IoT hub and immediately remove the device registration associated with the compromised certificate. Then when your devices provision again with updated certificates, a new device registration will be created for each one.     
 
-    ![IOT hub cihaz kaydı Kaldır](./media/how-to-roll-certificates/remove-hub-device-registration.png)
+    ![Remove IoT hub device registration](./media/how-to-roll-certificates/remove-hub-device-registration.png)
 
-    İkinci yol aynı IOT hub'ına cihazlarınızı yeniden sağlamak için destek çıkış kullanmak olabilir. Bu yaklaşım, IOT hub'ında cihaz kayıtları için sertifikaları değiştirmek için kullanılabilir. Daha fazla bilgi için [cihazları yeniden sağlamak nasıl](how-to-reprovision.md).
+    The second way would be to use reprovisioning support to reprovision your devices to the same IoT hub. This approach can be used to replace certificates for device registrations on the IoT hub. For more information, see [How to reprovision devices](how-to-reprovision.md).
 
 
-## <a name="enrollment-groups-and-certificate-expiration"></a>Kayıt grupları ve sertifika süre sonu
+## <a name="enrollment-groups-and-certificate-expiration"></a>Enrollment groups and certificate expiration
 
-Sertifika süre sonu işlemek için sertifikaları sunuyoruz, ikincil sertifika yapılandırmasını gibi sağlama girişiminde cihazlar için kesinti süresi olmaksızın emin olmak için kullanmanız gerekir.
+If you are rolling certificates to handle certificate expirations, you should use the secondary certificate configuration as follows to ensure no downtime for devices attempting to provision.
 
-Daha sonra ikincil sertifika aynı zamanda, süre sonu yaklaştığında ve geri alınması gerekir, birincil yapılandırması kullanarak döndürebilirsiniz. Bu şekilde birincil ve ikincil sertifikaları arasında döndürme sağlama girişiminde cihazlar için kapalı kalma süresi sağlar. 
+Later when the secondary certificate also nears expiration, and needs to be rolled, you can rotate to using the primary configuration. Rotating between the primary and secondary certificates in this way ensures no downtime for devices attempting to provision. 
 
-#### <a name="update-expiring-root-ca-certificates"></a>Süresi dolan kök CA sertifikaları güncelleştirme
+#### <a name="update-expiring-root-ca-certificates"></a>Update expiring root CA certificates
 
-1. Özetlenen adımları [doğrulanmış CA sertifikalarını yapılandırma](how-to-verify-certificates.md) ekleme ve yeni bir kök CA sertifika doğrulama.
+1. Follow steps outlined in [Configure verified CA certificates](how-to-verify-certificates.md) to add and verify new root CA certificates.
 
-2. Tıklayın **kayıtları Yönet** cihaz sağlama hizmeti örneğinizi için sekmesinde ve tıklayın **kayıt grupları** listesi. Kayıt grubu adınız listede tıklayın.
+2. Click the **Manage enrollments** tab for your Device Provisioning service instance, and click the **Enrollment Groups** list. Click your enrollment group name in the list.
 
-3. Tıklayın **CA sertifikası**ve altında yeni kök CA sertifikanızı seçin **ikincil sertifika** yapılandırma. Daha sonra **Kaydet**'e tıklayın. 
+3. Click **CA Certificate**, and select your new root CA certificate under the **Secondary Certificate** configuration. Daha sonra **Kaydet**'e tıklayın. 
 
-    ![Yeni kök CA sertifikasını seçin](./media/how-to-roll-certificates/select-new-root-secondary-cert.png)
+    ![Select the new root CA certificate](./media/how-to-roll-certificates/select-new-root-secondary-cert.png)
 
-4. Daha sonra birincil sertifikasının süresi doldu, tıklayın **sertifikaları** cihaz sağlama hizmeti örneğinizi için sekmesinde. Süresi dolan sertifikanın listesinde tıklayın ve ardından **Sil** düğmesi. Sertifika adı girerek silme işlemini onaylamak ve tıklayın **Tamam**.
+4. Later when the primary certificate has expired, click the **Certificates** tab for your Device Provisioning service instance. Click the expired certificate in the list, and then click the **Delete** button. Confirm the delete by entering the certificate name, and click **OK**.
 
-    ![Kök CA sertifikasını Sil](./media/how-to-roll-certificates/delete-root-cert.png)
+    ![Delete root CA certificate](./media/how-to-roll-certificates/delete-root-cert.png)
 
 
 
-#### <a name="update-expiring-intermediate-certificates"></a>Süresi dolan Ara sertifikaları güncelleştirme
+#### <a name="update-expiring-intermediate-certificates"></a>Update expiring intermediate certificates
 
 
-1. Tıklayın **kayıt grupları**ve listedeki grubunun adına tıklayın. 
+1. Click **Enrollment Groups**, and click the group name in the list. 
 
-2. Tıklayın **ikincil sertifika** ve ardından kayıt girişini yüklenmek üzere yeni bir sertifika seçmek için klasör simgesine tıklayın. **Kaydet**’e tıklayın.
+2. Click **Secondary Certificate** and then, click the folder icon to select the new certificate to be uploaded for the enrollment entry. **Kaydet** düğmesine tıklayın.
 
-    Bu yeni Ara Sertifika sağlama hizmeti zaten eklenmiş bir doğrulanmış kök CA sertifikası tarafından imzalanması gerekir. Daha fazla bilgi için [X.509 sertifikaları](concepts-security.md#x509-certificates).
+    This new intermediate certificate should be signed by a verified root CA certificate that has already been added into provisioning service. For more information, see [X.509 certificates](concepts-security.md#x509-certificates).
 
-   ![İkincil sertifika kullanılarak tek tek kayıtları Yönet](./media/how-to-roll-certificates/manage-enrollment-group-secondary-portal.png)
+   ![Manage individual enrollments using the secondary certificate](./media/how-to-roll-certificates/manage-enrollment-group-secondary-portal.png)
 
-3. Daha sonra birincil sertifikanın süresi dolduğunda, geri dönün ve birincil bu sertifikayı silmek **silme geçerli sertifika** düğmesi.
+3. Later when the primary certificate has expired, come back and delete that primary certificate by clicking the **Delete current certificate** button.
 
 
-## <a name="reprovision-the-device"></a>Cihaz yeniden hazırlayın
+## <a name="reprovision-the-device"></a>Reprovision the device
 
-Hem cihaz hem de cihaz sağlama hizmeti sertifikası alınıyor sonra cihazın kendisi cihaz sağlama hizmeti iletişim kurarak yeniden sağlamak. 
+Once the certificate is rolled on both the device and the Device Provisioning Service, the device can reprovision itself by contacting the Device Provisioning service. 
 
-Yeniden sağlamak için bir kolayca programlama cihazların cihaz IOT hub'a bağlanmaya çalışmasını "yetkisiz" hatası alırsa sağlama akışını gitmek için sağlama hizmetiyle bağlantı kurmak için cihaz programı için yoludur.
+One easy way of programming devices to reprovision is to program the device to contact the provisioning service to go through the provisioning flow if the device receives an “unauthorized” error from attempting to connect to the IoT hub.
 
-Eski ve yeni sertifikalar için kısa bir çakışma için geçerli ve cihazlara komut gönderme için IOT hub'ı kullanmak sağlama hizmetine yeniden kaydetmek IOT Hub bağlantı bilgilerini güncelleştirmek bunun başka bir yoludur. Her cihaz komutları farklı işleyebileceğinden komutu çağrılan ne yapılacağını bildiğiniz için cihaz programı gerekecektir. Cihazınızı IOT hub'ı aracılığıyla komutu birkaç yolu vardır ve kullanmanızı öneririz [doğrudan yöntemler](../iot-hub/iot-hub-devguide-direct-methods.md) veya [işleri](../iot-hub/iot-hub-devguide-jobs.md) işlemini başlatmak için.
+Another way is for both the old and the new certificates to be valid for a short overlap, and use the IoT hub to send a command to devices to have them re-register via the provisioning service to update their IoT Hub connection information. Because each device can process commands differently, you will have to program your device to know what to do when the command is invoked. There are several ways you can command your device via IoT Hub, and we recommend using [direct methods](../iot-hub/iot-hub-devguide-direct-methods.md) or [jobs](../iot-hub/iot-hub-devguide-jobs.md) to initiate the process.
 
-Çıkış tamamlandıktan sonra cihazları yeni sertifikalarını kullanarak IOT hub'a bağlanmak mümkün olacaktır.
+Once reprovisioning is complete, devices will be able to connect to IoT Hub using their new certificates.
 
 
-## <a name="blacklist-certificates"></a>Kara liste sertifikaları
+## <a name="blacklist-certificates"></a>Blacklist certificates
 
-Bir güvenlik ihlali yanıt olarak, bir cihaz sertifika kara gerekebilir. Bir cihaz sertifika kara listeye hedef cihaz/sertifika kayıt girişini devre dışı bırakın. Cihazları kara daha fazla bilgi için bkz. [Yönet kayıt silmeyi](how-to-revoke-device-access-portal.md) makalesi.
+In response to a security breach, you may need to blacklist a device certificate. To blacklist a device certificate, disable the enrollment entry for the target device/certificate. For more information, see blacklisting devices in the [Manage disenrollment](how-to-revoke-device-access-portal.md) article.
 
-Başka bir kayıt girişi bir parçası olarak etkinleştirilse bile sertifikalar bölümü devre dışı kayıt girdisi, bir IOT hub'ı kullanarak kaydetme girişimleri başarısız olur gibi bir sertifika dahil olduktan sonra.
+Once a certificate is included as part of a disabled enrollment entry, any attempts to register with an IoT hub using that certificates will fail even if it is enabled as part of another enrollment entry.
  
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Cihaz sağlama hizmeti X.509 sertifikaları hakkında daha fazla bilgi için bkz: [güvenlik](concepts-security.md) 
-- Kavram, elinde Azure IOT Hub cihazı sağlama hizmeti ile X.509 CA sertifikalarının yapma hakkında bilgi edinmek için [sertifikalarını doğrulama](how-to-verify-certificates.md)
-- Kayıt grubu oluşturmak için portalı kullanma hakkında bilgi edinmek için [Azure portalı ile cihaz kayıtlarını yönetme](how-to-manage-enrollments.md).
+- To learn more about X.509 certificates in the Device Provisioning Service, see [Security](concepts-security.md) 
+- To learn about how to do proof-of-possession for X.509 CA certificates with the Azure IoT Hub Device Provisioning Service, see [How to verify certificates](how-to-verify-certificates.md)
+- To learn about how to use the portal to create an enrollment group, see [Managing device enrollments with Azure portal](how-to-manage-enrollments.md).
 
 
 

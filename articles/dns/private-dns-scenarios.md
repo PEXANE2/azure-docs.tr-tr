@@ -1,58 +1,58 @@
 ---
-title: Azure DNS Özel Bölgeleri için senaryolar
-description: Azure DNS Özel Bölgeleri kullanmaya yönelik genel senaryolara genel bakış.
+title: Scenarios for Private Zones - Azure DNS
+description: In this article, learn about common scenarios for using Azure DNS Private Zones.
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: article
 ms.date: 10/05/2019
-ms.author: victorh
-ms.openlocfilehash: 3ac4db3a2d98e761183360c268d23efcc313cf09
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.author: allensu
+ms.openlocfilehash: 2eb7e9e4df5bdf0f8eb047cc8594bd862245770d
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048492"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74210468"
 ---
-# <a name="azure-dns-private-zones-scenarios"></a>Azure DNS özel bölgeler senaryoları
+# <a name="azure-dns-private-zones-scenarios"></a>Azure DNS Private zones scenarios
 
-Bir sanal ağ içinde ve sanal ağlar arasında ad çözümlemesi sağlamak Azure DNS Özel Bölgeleri. Bu makalede, bu özellik kullanılarak gerçekleştirilen bazı yaygın senaryolara bakacağız.
+Azure DNS Private Zones provide name resolution within a virtual network as well as between virtual networks. In this article, we look at some common scenarios that can be realized using this feature.
 
-## <a name="scenario-name-resolution-scoped-to-a-single-virtual-network"></a>Senaryo: tek bir sanal ağın kapsamına alınmış ad çözümlemesi
-Bu senaryoda, Azure 'da sanal makineler (VM 'Ler) dahil olmak üzere çok sayıda Azure kaynağına sahip bir sanal ağınız vardır. Belirli bir etki alanı adı (DNS bölgesi) ile sanal ağ içinden kaynakları çözümlemek istiyorsunuz ve ad çözümlemesinin özel olması ve internet 'ten erişilebilir olmaması gerekir. Ayrıca, VNET içindeki VM 'Ler için Azure 'un otomatik olarak DNS bölgesine kaydolmaları gerekir. 
+## <a name="scenario-name-resolution-scoped-to-a-single-virtual-network"></a>Scenario: Name Resolution scoped to a single virtual network
+In this scenario, you have a virtual network in Azure that has a number of Azure resources in it, including virtual machines (VMs). You want to resolve the resources from within the virtual network via a specific domain name (DNS zone), and you need the name resolution to be private and not accessible from the internet. Furthermore, for the VMs within the VNET, you need Azure to automatically register them into the DNS zone. 
 
-Bu senaryo aşağıda gösterilmiştir. "A" adlı sanal ağ iki VM içerir (VNETA-VM1 ve VNETA-VM2). Bunların her birinin ilişkili özel IP 'Ler vardır. Contoso.com adlı bir özel bölge oluşturduktan ve bu sanal ağı bir kayıt sanal ağı olarak bağladığınızda Azure DNS, otomatik olarak bölgede gösterildiği gibi iki bir kayıt oluşturur. Şimdi, VNETA-VM1 ile VNETA-VM2.contoso.com çözümlemek için DNS sorguları VNETA-VM2 özel IP 'sini içeren bir DNS yanıtı alacaktır. Ayrıca, vneta-VM2 ' den çıkarılan VNETA-VM1 (10.0.0.1) özel IP 'si için ters DNS sorgusu (PTR), beklenen şekilde VNETA-VM1 adını içeren bir DNS yanıtı alacaktır. 
+This scenario is depicted below. Virtual Network named "A" contains two VMs (VNETA-VM1 and VNETA-VM2). Each of these have Private IPs associated. Once you create a Private Zone named contoso.com and link this virtual network as a Registration virtual network, Azure DNS will automatically create two A records in the zone as depicted. Now, DNS queries from VNETA-VM1 to resolve VNETA-VM2.contoso.com will receive a DNS response that contains the Private IP of VNETA-VM2. Furthermore, a Reverse DNS query (PTR) for the Private IP of VNETA-VM1 (10.0.0.1) issued from VNETA-VM2 will receive a DNS response that contains the name of VNETA-VM1, as expected. 
 
-![Tek sanal ağ çözünürlüğü](./media/private-dns-scenarios/single-vnet-resolution.png)
+![Single Virtual network resolution](./media/private-dns-scenarios/single-vnet-resolution.png)
 
-## <a name="scenario-name-resolution-across-virtual-networks"></a>Senaryo: sanal ağlar arasında ad çözümlemesi
+## <a name="scenario-name-resolution-across-virtual-networks"></a>Scenario: Name Resolution across virtual networks
 
-Bu senaryo, özel bir bölgeyi birden çok sanal ağla ilişkilendirmeniz gereken daha yaygın bir durumdur. Bu senaryo, hub ve bağlı bileşen modeli gibi mimarilerin, birden fazla başka bağlı sanal ağın bağlandığı bir merkezi hub sanal ağı olduğu mimarilere uyum sağlayabilir. Merkezi hub sanal ağı, kayıt sanal ağı olarak bir özel bölgeye bağlanabilir ve bağlı sanal ağlar, çözümleme sanal ağları olarak bağlanabilir. 
+This scenario is the more common case where you need to associate a Private Zone with multiple virtual networks. This scenario can fit architectures such as the Hub-and-Spoke model where there is a central Hub virtual network to which multiple other Spoke virtual networks are connected. The central Hub virtual network can be linked as the Registration virtual network to a private zone, and the Spoke virtual networks can be linked as Resolution virtual networks. 
 
-Aşağıdaki diyagramda, bu senaryonun yalnızca iki sanal ağı (A ve B) bulunduğu basit bir sürümü gösterilmektedir. Bir kayıt sanal ağı olarak atanır ve B bir çözümleme sanal ağı olarak atanır. Amaç, her iki sanal ağın da ortak bir bölge contoso.com paylaşmasına yöneliktir. Bölge oluşturulduğunda ve çözümleme ve kayıt sanal ağları bölgeye bağlandığında, Azure VM 'Ler (VNETA-VM1 ve VNETA-VM2) için DNS kayıtlarını A sanal ağından otomatik olarak kaydeder. Ayrıca, çözümleme sanal ağı B 'deki VM 'Ler için DNS kayıtlarını bölgeye el ile ekleyebilirsiniz. Bu kurulumla, ileri ve ters DNS sorguları için aşağıdaki davranışı gözlemleyeceksiniz:
-* VNETA-VM1.contoso.com için çözümleme sanal ağı 'ndaki VNETB-VM1 ' t a bir DNS sorgusu, VNETA-VM1 özel IP 'sini içeren bir DNS yanıtı alacaktır.
-* 10.1.0.1 için sanal ağ B 'deki VNETB-VM2 ' y a ters DNS (PTR) sorgusu, için, FQDN VNETB-VM1.contoso.com içeren bir DNS yanıtı alacaktır.  
-* Sanal ağ B 'deki VNETB-VM3 öğesinden bir ters DNS (PTR) sorgusu, 10.0.0.1 için, NXDOMAIN alır. Bunun nedeni, ters DNS sorgularının yalnızca aynı sanal ağın kapsamına alınır. 
+The following diagram shows a simple version of this scenario where there are only two virtual networks - A and B. A is designated as a Registration virtual network and B is designated as a Resolution virtual network. The intent is for both virtual networks to share a common zone contoso.com. When the zone is created and the Resolution and Registration virtual networks are linked to the zone, Azure will automatically register DNS records for the VMs (VNETA-VM1 and VNETA-VM2) from the virtual network A. You can also manually add DNS records into the zone for VMs in the Resolution virtual network B. With this setup, you will observe the following behavior for forward and reverse DNS queries:
+* A DNS query from VNETB-VM1 in the Resolution virtual network B, for VNETA-VM1.contoso.com, will receive a DNS response containing the Private IP of VNETA-VM1.
+* A Reverse DNS (PTR) query from VNETB-VM2 in the Resolution virtual network B, for 10.1.0.1, will receive a DNS response containing the FQDN VNETB-VM1.contoso.com.  
+* A Reverse DNS (PTR) query from VNETB-VM3 in the Resolution virtual network B, for 10.0.0.1, will receive NXDOMAIN. The reason is that Reverse DNS queries are only scoped to the same virtual network. 
 
 
-![Birden çok sanal ağ çözünürlüğü](./media/private-dns-scenarios/multi-vnet-resolution.png)
+![Multiple Virtual network resolutions](./media/private-dns-scenarios/multi-vnet-resolution.png)
 
-## <a name="scenario-split-horizon-functionality"></a>Senaryo: bölünmüş ufuk işlevselliği
+## <a name="scenario-split-horizon-functionality"></a>Scenario: Split-Horizon functionality
 
-Bu senaryoda, aynı DNS bölgesi için istemcinin bulunduğu yere (Azure 'un içinden veya Internet 'te) bağlı olarak farklı DNS çözümleme davranışı sağlamak istediğiniz bir kullanım örneğine sahipsiniz. Örneğin, uygulamanızın farklı işlevselliği veya davranışı olan özel ve genel bir sürümüne sahip olabilirsiniz, ancak her iki sürüm için aynı etki alanı adını kullanmak istersiniz. Bu senaryo, aynı ada sahip bir genel DNS bölgesi ve bir özel bölge oluşturularak Azure DNS ile gerçekleştirilebilir.
+In this scenario, you have a use case where you want to realize different DNS resolution behavior depending on where the client sits (inside of Azure or out on the internet), for the same DNS zone. For example, you may have a private and public version of your application that has different functionality or behavior, but you want to use the same domain name for both versions. This scenario can be realized with Azure DNS by creating a Public DNS zone as well as a Private Zone, with the same name.
 
-Aşağıdaki diyagramda bu senaryo gösterilmektedir. Hem özel IP 'ler hem de genel IP 'leri ayrılmış iki VM 'ye (VNETA-VM1 ve VNETA-VM2) sahip bir sanal ağınız vardır. Contoso.com adlı bir genel DNS bölgesi oluşturur ve bu VM 'Ler için genel IP 'Leri bölge içinde DNS kayıtları olarak kaydedersiniz. Ayrıca, kayıt sanal ağı olarak bir olarak belirterek contoso.com adlı bir Özel DNS bölgesi de oluşturursunuz. Azure, VM 'Leri otomatik olarak özel bir bölgeye bir kayıt olarak kaydeder ve bunlara özel IP 'Leri işaret eder.
+The following diagram depicts this scenario. You have a virtual network A that has two VMs (VNETA-VM1 and VNETA-VM2) which have both Private IPs and Public IPs allocated. You create a Public DNS zone called contoso.com and register the Public IPs for these VMs as DNS records within the zone. You also create a Private DNS zone also called contoso.com specifying A as the Registration virtual network. Azure automatically registers the VMs as A records into the Private Zone, pointing to their Private IPs.
 
-Artık bir İnternet istemcisi VNETA-VM1.contoso.com aramak için bir DNS sorgusu yaparken, Azure genel IP kaydını ortak bölgeden döndürür. Aynı DNS sorgusu aynı sanal ağdaki başka bir VM 'den (örneğin: VNETA-VM2) verildiyse, Azure özel IP kaydını özel bölgeden döndürür. 
+Now when an internet client issues a DNS query to look up VNETA-VM1.contoso.com, Azure will return the Public IP record from the public zone. If the same DNS query is issued from another VM (for example: VNETA-VM2) in the same virtual network A, Azure will return the Private IP record from the private zone. 
 
-![Brian çözümlemeyi Böl](./media/private-dns-scenarios/split-brain-resolution.png)
+![Split Brian resolution](./media/private-dns-scenarios/split-brain-resolution.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Özel DNS bölgeleri hakkında daha fazla bilgi için bkz. [Özel etki alanları için Azure DNS'i kullanma](private-dns-overview.md).
 
-Azure DNS [Özel BIR DNS bölgesi oluşturmayı](./private-dns-getstarted-powershell.md) öğrenin.
+Learn how to [create a private DNS zone](./private-dns-getstarted-powershell.md) in Azure DNS.
 
-Ziyaret ederek DNS bölgeleri ve kayıtları hakkında bilgi edinin: [DNS bölgeleri ve kayıtlarına genel bakış](dns-zones-records.md).
+Learn about DNS zones and records by visiting: [DNS zones and records overview](dns-zones-records.md).
 
 Azure'un diğer önemli [ağ özelliklerinden](../networking/networking-overview.md) bazıları hakkında bilgi edinin.
 

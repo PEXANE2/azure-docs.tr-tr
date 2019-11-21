@@ -1,89 +1,89 @@
 ---
-title: Azure cihaz sağlama hizmeti SDK 'larını kullanarak cihaz kayıtlarını yönetme | Microsoft Docs
-description: Hizmet SDK 'larını kullanarak cihaz kayıtlarını IoT Hub cihaz sağlama hizmeti 'nde yönetme
+title: Manage device enrollments using Azure DPS SDKs
+description: How to manage device enrollments in the IoT Hub Device Provisioning Service using the Service SDKs
 author: robinsh
 ms.author: robinsh
 ms.date: 04/04/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 438cb579180458fcdeb75516a7c98b3ab2886366
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 75a24fd6b8cafe03ae8090e6f8bf71a27459c7eb
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883373"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228812"
 ---
-# <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>Azure cihaz sağlama hizmeti SDK 'Ları ile cihaz kayıtlarını yönetme
-Bir *cihaz kaydı* , tek bir cihazın veya bazı noktada cihaz sağlama hizmeti 'ne kaydolabileceği bir cihaz grubunun kaydını oluşturur. Kayıt kaydı, istenen IoT Hub 'ı da dahil olmak üzere, bu kayıt kapsamında cihaz (ler) için ilk istenen yapılandırmayı içerir. Bu makalede, Azure IoT sağlama hizmeti SDK 'larını kullanarak sağlama hizmetiniz için cihaz kayıtlarını nasıl yöneteceğiniz gösterilmektedir.  SDK 'lar, Azure IoT SDK 'Ları ile aynı depoda GitHub 'da kullanılabilir.
+# <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>How to manage device enrollments with Azure Device Provisioning Service SDKs
+A *device enrollment* creates a record of a single device or a group of devices that may at some point register with the Device Provisioning Service. The enrollment record contains the initial desired configuration for the device(s) as part of that enrollment, including the desired IoT hub. This article shows you how to manage device enrollments for your provisioning service programmatically using the Azure IoT Provisioning Service SDKs.  The SDKs are available on GitHub in the same repository as Azure IoT SDKs.
 
 ## <a name="prerequisites"></a>Önkoşullar
-* Cihaz sağlama hizmeti örneğinden bağlantı dizesini edinin.
-* Kullanılan [kanıtlama mekanizması](concepts-security.md#attestation-mechanism) için cihaz güvenlik yapılarını edinin:
-    * [**Güvenilir Platform Modülü (TPM)** ](/azure/iot-dps/concepts-security#trusted-platform-module):
-        * Bireysel kayıt: Fiziksel bir cihazdan veya TPM Benzeticisinde kayıt KIMLIĞI ve TPM onay anahtarı.
-        * Kayıt grubu TPM kanıtlama için uygulanmıyor.
-    * [**X. 509.440**](/azure/iot-dps/concepts-security):
-        * Bireysel kayıt: Fiziksel cihazdan veya SDK [zar](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) öykünücüsünde [yaprak sertifikası](/azure/iot-dps/concepts-security) .
-        * Kayıt grubu: Fiziksel bir cihazda cihaz sertifikası oluşturmak için kullanılan [CA/kök sertifika](/azure/iot-dps/concepts-security#root-certificate) veya [Ara Sertifika](/azure/iot-dps/concepts-security#intermediate-certificate).  Ayrıca, SDK zar öykünücüden da oluşturulabilir.
-* Dil farklılıkları nedeniyle tam API çağrıları farklı olabilir. Ayrıntılar için lütfen GitHub 'da sağlanan örnekleri gözden geçirin:
-   * [Java sağlama hizmeti Istemci örnekleri](https://github.com/Azure/azure-iot-sdk-java/tree/master/provisioning/provisioning-samples)
-   * [Node. js sağlama hizmeti Istemci örnekleri](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/service/samples)
-   * [.NET sağlama hizmeti Istemci örnekleri](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples)
+* Obtain the connection string from your Device Provisioning Service instance.
+* Obtain the device security artifacts for the [attestation mechanism](concepts-security.md#attestation-mechanism) used:
+    * [**Trusted Platform Module (TPM)** ](/azure/iot-dps/concepts-security#trusted-platform-module):
+        * Individual enrollment: Registration ID and TPM Endorsement Key from a physical device or from TPM Simulator.
+        * Enrollment group does not apply to TPM attestation.
+    * [**X.509**](/azure/iot-dps/concepts-security):
+        * Individual enrollment: The [Leaf certificate](/azure/iot-dps/concepts-security) from physical device or from the SDK [DICE](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) Emulator.
+        * Enrollment group: The [CA/root certificate](/azure/iot-dps/concepts-security#root-certificate) or the [intermediate certificate](/azure/iot-dps/concepts-security#intermediate-certificate), used to produce device certificate on a physical device.  It can also be generated from the SDK DICE emulator.
+* Exact API calls may be different due to language differences. Please review the samples provided on GitHub for details:
+   * [Java Provisioning Service Client samples](https://github.com/Azure/azure-iot-sdk-java/tree/master/provisioning/provisioning-samples)
+   * [Node.js Provisioning Service Client samples](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/service/samples)
+   * [.NET Provisioning Service Client samples](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples)
 
-## <a name="create-a-device-enrollment"></a>Cihaz kaydı oluşturma
-Cihazları sağlama hizmeti ile kaydedebilmeniz için iki yol vardır:
+## <a name="create-a-device-enrollment"></a>Create a device enrollment
+There are two ways you can enroll your devices with the provisioning service:
 
-* **Kayıt grubu** , [kök sertifika](https://docs.microsoft.com/azure/iot-dps/concepts-security#root-certificate) veya [Ara Sertifika](https://docs.microsoft.com/azure/iot-dps/concepts-security#intermediate-certificate)tarafından imzalanan bir X. 509.440 sertifikaları ortak kanıtlama mekanizmasını paylaşan bir cihaz grubu için giriştir. İstenen ilk yapılandırmayı paylaşan çok sayıda cihaz için veya hepsi aynı kiracıya giden cihazlar için bir kayıt grubu kullanmanızı öneririz. Yalnızca X. 509.440 kanıtlama mekanizmasını kullanan cihazları *kayıt grupları*olarak kaydedebileceğinizi unutmayın. 
+* An **Enrollment group** is an entry for a group of devices that share a common attestation mechanism of X.509 certificates, signed by the [root certificate](https://docs.microsoft.com/azure/iot-dps/concepts-security#root-certificate) or the [intermediate certificate](https://docs.microsoft.com/azure/iot-dps/concepts-security#intermediate-certificate). We recommend using an enrollment group for a large number of devices that share a desired initial configuration, or for devices all going to the same tenant. Note that you can only enroll devices that use the X.509 attestation mechanism as *enrollment groups*. 
 
-    Bu iş akışını izleyen SDK 'lara sahip bir kayıt grubu oluşturabilirsiniz:
+    You can create an enrollment group with the SDKs following this workflow:
 
-    1. Kayıt grubu için, kanıtlama mekanizması X. 509.440 kök sertifikasını kullanır.  Kayıt için kanıtlama oluşturmak ```X509Attestation.createFromRootCertificate``` üzere kök sertifika ile Service SDK API 'sini çağırın.  X. 509.440 kök sertifikası bir ped dosyasında ya da bir dize olarak sağlanır.
-    1. ```attestation``` Oluşturulan ve benzersiz ```EnrollmentGroup``` kullanarak```enrollmentGroupId```yeni bir değişken oluşturun.  İsteğe bağlı olarak,, ```Device ID``` ```IoTHubHostName```, ```ProvisioningStatus```gibi parametreleri ayarlayabilirsiniz.
-    2. Kayıt grubu oluşturmak için ```createOrUpdateEnrollmentGroup``` ile ```EnrollmentGroup``` arka uç uygulamanızda Service SDK API 'sini çağırın.
+    1. For enrollment group, the attestation mechanism uses X.509 root certificate.  Call Service SDK API ```X509Attestation.createFromRootCertificate``` with root certificate to create attestation for enrollment.  X.509 root certificate is provided in either a PEM file or as a string.
+    1. Create a new ```EnrollmentGroup``` variable using the ```attestation``` created and a unique ```enrollmentGroupId```.  Optionally, you can set parameters like ```Device ID```, ```IoTHubHostName```, ```ProvisioningStatus```.
+    2. Call Service SDK API ```createOrUpdateEnrollmentGroup``` in your backend application with ```EnrollmentGroup``` to create an enrollment group.
 
-* **Tek bir kayıt** , kaydedebilen tek bir cihaz için giriştir. Bireysel kayıtlar, kanıtlama mekanizması olarak X. 509.440 sertifikalarını veya SAS belirteçlerini (fiziksel veya sanal TPM 'den) kullanabilir. Benzersiz ilk yapılandırma gerektiren cihazlar için veya kanıtlama mekanizması olarak TPM veya sanal TPM aracılığıyla yalnızca SAS belirteçlerini kullanan cihazlar için ayrı kayıtlar kullanmanızı öneririz. Bireysel kayıtlar için istenen IoT hub cihazı kimliği belirtilmiş olabilir.
+* An **Individual enrollment** is an entry for a single device that may register. Individual enrollments may use either X.509 certificates or SAS tokens (from a physical or virtual TPM) as attestation mechanisms. We recommend using individual enrollments for devices that require unique initial configurations, or for devices which can only use SAS tokens via TPM or virtual TPM as the attestation mechanism. Bireysel kayıtlar için istenen IoT hub cihazı kimliği belirtilmiş olabilir.
 
-    Bu iş akışını izleyen SDK 'lar ile bireysel bir kayıt oluşturabilirsiniz:
+    You can create an individual enrollment with the SDKs following this workflow:
     
-    1. TPM veya ```attestation``` X. 509.440 olabilecek mekanizmanızı seçin.
-        1. **TPM**: Fiziksel bir cihazdan veya TPM benzeticisinde giriş olarak onay anahtarını kullanarak, kayıt için kanıtlama oluşturmak üzere Service SDK API ```TpmAttestation``` 'sini çağırabilirsiniz. 
-        2. **X. 509.440**: İstemci sertifikasını girdi olarak kullanarak, kayıt için kanıtlama oluşturmak üzere Service SDK API ```X509Attestation.createFromClientCertificate``` 'sini çağırabilirsiniz.
-    2. Cihazınızda bulunan veya ```IndividualEnrollment``` TPM benzeticisinde ```attestation``` oluşturulan, oluşturulan ve ```registrationId``` benzersiz olarak giriş olarak kullanılan yeni bir değişken oluşturun.  İsteğe bağlı olarak,, ```Device ID``` ```IoTHubHostName```, ```ProvisioningStatus```gibi parametreleri ayarlayabilirsiniz.
-    3. Tek bir kayıt oluşturmak ```createOrUpdateIndividualEnrollment``` için ile ```IndividualEnrollment``` arka uç uygulamanızda Service SDK API 'sini çağırın.
+    1. Choose your ```attestation``` mechanism, which can be TPM or X.509.
+        1. **TPM**: Using the Endorsement Key from a physical device or from TPM Simulator as the input, you can call Service SDK API ```TpmAttestation``` to create attestation for enrollment. 
+        2. **X.509**: Using the client certificate as the input, you can call Service SDK API ```X509Attestation.createFromClientCertificate``` to create attestation for enrollment.
+    2. Create a new ```IndividualEnrollment``` variable with using the ```attestation``` created and a unique ```registrationId``` as input, which is on your device or generated from the TPM Simulator.  Optionally, you can set parameters like ```Device ID```, ```IoTHubHostName```, ```ProvisioningStatus```.
+    3. Call Service SDK API ```createOrUpdateIndividualEnrollment``` in your backend application with ```IndividualEnrollment``` to create an individual enrollment.
 
-Bir kaydı başarıyla oluşturduktan sonra, cihaz sağlama hizmeti bir kayıt sonucu döndürür. Bu iş akışı, [daha önce bahsedilen](#prerequisites)örneklerde gösterilmiştir.
+After you have successfully created an enrollment, the Device Provisioning Service returns an enrollment result. This workflow is demonstrated in the samples [mentioned previously](#prerequisites).
 
-## <a name="update-an-enrollment-entry"></a>Kayıt girişini güncelleştirme
+## <a name="update-an-enrollment-entry"></a>Update an enrollment entry
 
-Bir kayıt girişi oluşturduktan sonra, kaydı güncelleştirmek isteyebilirsiniz.  Olası senaryolar, istenen özelliğin güncelleştirilmesini, kanıtlama yöntemini güncelleştirmeyi veya cihaz erişimini iptal etmeyi içerir.  Bireysel kayıt ve grup kaydı için farklı API 'Ler vardır, ancak kanıtlama mekanizması için ayrım yoktur.
+After you have created an enrollment entry, you may want to update the enrollment.  Potential scenarios include updating the desired property, updating the attestation method, or revoking device access.  There are different APIs for individual enrollment and group enrollment, but no distinction for attestation mechanism.
 
-Bu iş akışını izleyerek bir kayıt girişini güncelleştirebilirsiniz:
+You can update an enrollment entry following this workflow:
 * **Bireysel kayıt**:
-    1. Service SDK API 'SI ```getIndividualEnrollment```ile ilk olarak sağlama hizmetinden en son kaydı alın.
-    2. En son kayıt parametresini gereken şekilde değiştirin. 
-    3. En son kaydı kullanarak kayıt girdinizi güncelleştirmek için Service ```createOrUpdateIndividualEnrollment``` SDK API 'sini çağırın.
-* **Grup kaydı**:
-    1. Service SDK API 'SI ```getEnrollmentGroup```ile ilk olarak sağlama hizmetinden en son kaydı alın.
-    2. En son kayıt parametresini gereken şekilde değiştirin.
-    3. En son kaydı kullanarak kayıt girdinizi güncelleştirmek için Service ```createOrUpdateEnrollmentGroup``` SDK API 'sini çağırın.
+    1. Get the latest enrollment from the provisioning service first with Service SDK API ```getIndividualEnrollment```.
+    2. Modify the parameter of the latest enrollment as necessary. 
+    3. Using the latest enrollment, call Service SDK API ```createOrUpdateIndividualEnrollment``` to update your enrollment entry.
+* **Group enrollment**:
+    1. Get the latest enrollment from the provisioning service first with Service SDK API ```getEnrollmentGroup```.
+    2. Modify the parameter of the latest enrollment as necessary.
+    3. Using the latest enrollment, call Service SDK API ```createOrUpdateEnrollmentGroup``` to update your enrollment entry.
 
-Bu iş akışı, [daha önce bahsedilen](#prerequisites)örneklerde gösterilmiştir.
+This workflow is demonstrated in the samples [mentioned previously](#prerequisites).
 
-## <a name="remove-an-enrollment-entry"></a>Kayıt girişini kaldırma
+## <a name="remove-an-enrollment-entry"></a>Remove an enrollment entry
 
-* **Bireysel kayıt** , kullanılarak ```deleteIndividualEnrollment``` ```registrationId```Service SDK API 'si çağırarak silinebilir.
-* **Grup kaydı** , kullanılarak ```deleteEnrollmentGroup``` ```enrollmentGroupId```Service SDK API 'si çağırarak silinebilir.
+* **Individual enrollment** can be deleted by calling Service SDK API ```deleteIndividualEnrollment``` using ```registrationId```.
+* **Group enrollment** can be deleted by calling Service SDK API ```deleteEnrollmentGroup``` using ```enrollmentGroupId```.
 
-Bu iş akışı, [daha önce bahsedilen](#prerequisites)örneklerde gösterilmiştir.
+This workflow is demonstrated in the samples [mentioned previously](#prerequisites).
 
-## <a name="bulk-operation-on-individual-enrollments"></a>Bireysel kayıtlar üzerinde toplu işlem
+## <a name="bulk-operation-on-individual-enrollments"></a>Bulk operation on individual enrollments
 
-Bu iş akışını takip eden birden çok bireysel kayıt oluşturmak, güncelleştirmek veya kaldırmak için toplu işlem yapabilirsiniz:
+You can perform bulk operation to create, update, or remove multiple individual enrollments following this workflow:
 
-1. Birden çok ```IndividualEnrollment```içeren bir değişken oluşturun.  Bu değişkenin uygulanması her dil için farklıdır.  Ayrıntılar için GitHub 'daki toplu işlem örneğini gözden geçirin.
-2. Service SDK API 'sini ```runBulkOperation``` istenen bir ```BulkOperationMode``` işlem ve bireysel kayıtlar için değişkeniniz ile çağırın. Dört mod desteklenir: Create, Update, updateIfMatchEtag ve delete.
+1. Create a variable that contains multiple ```IndividualEnrollment```.  Implementation of this variable is different for every language.  Review the bulk operation sample on GitHub for details.
+2. Call Service SDK API ```runBulkOperation``` with a ```BulkOperationMode``` for desired operation and your variable for individual enrollments. Four modes are supported: create, update, updateIfMatchEtag, and delete.
 
-Bir işlemi başarıyla gerçekleştirdikten sonra, cihaz sağlama hizmeti bir toplu işlem sonucu döndürür.
+After you have successfully performed an operation, the Device Provisioning Service would return a bulk operation result.
 
-Bu iş akışı, [daha önce bahsedilen](#prerequisites)örneklerde gösterilmiştir.
+This workflow is demonstrated in the samples [mentioned previously](#prerequisites).

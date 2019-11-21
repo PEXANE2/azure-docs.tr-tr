@@ -1,28 +1,28 @@
 ---
-title: Tepesinde bölgesinde yük dengeli Azure Web uygulamaları barındırın
-description: Tepesinde bölgesinde yük dengeli Web uygulamaları barındırmak için bir Azure DNS diğer ad kaydı kullanın
+title: Host load-balanced Azure web apps at the zone apex
+description: Use an Azure DNS alias record to host load-balanced web apps at the zone apex
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: article
 ms.date: 08/10/2019
-ms.author: victorh
-ms.openlocfilehash: 4f9a42f3d054becfed0b0a6acbf92cdf1e421c16
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.author: allensu
+ms.openlocfilehash: a673a74f8f6f919e7ebb7fc3b065ee0742ab3a10
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946940"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74212362"
 ---
-# <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>Tepesinde bölgesinde yük dengeli Azure Web uygulamaları barındırın
+# <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>Host load-balanced Azure web apps at the zone apex
 
-DNS protokolü, tepesinde bölgesinde bir veya AAAA kaydı dışında herhangi bir şeyin atanmasını engeller. Örnek bir bölge tepesinde contoso.com. Bu kısıtlama, Traffic Manager arkasındaki yük dengeli uygulamalara sahip olan uygulama sahipleri için bir sorun gösterir. Bölge tepesinde kaydından Traffic Manager profile işaret etmek mümkün değildir. Sonuç olarak, uygulama sahiplerinin geçici bir çözüm kullanması gerekir. Uygulama katmanında yeniden yönlendirme, Zone tepesinde 'tan başka bir etki alanına yeniden yönlendirmelidir. Örnek, contoso.com 'ten www\.contoso.com 'e yeniden yönlendirme örneğidir. Bu düzenleme, yeniden yönlendirme işlevi için tek bir hata noktası sunar.
+The DNS protocol prevents the assignment of anything other than an A or AAAA record at the zone apex. An example zone apex is contoso.com. This restriction presents a problem for application owners who have load-balanced applications behind Traffic Manager. It isn't possible to point at the Traffic Manager profile from the zone apex record. As a result, application owners must use a workaround. A redirect at the application layer must redirect from the zone apex to another domain. An example is a redirect from contoso.com to www\.contoso.com. This arrangement presents a single point of failure for the redirect function.
 
-Diğer ad kayıtlarıyla, bu sorun artık yok. Artık uygulama sahipleri, bölge tepesinde kayıtlarını dış uç noktalara sahip bir Traffic Manager profiline işaret edebilir. Uygulama sahipleri, DNS bölgesi içindeki diğer etki alanı için kullanılan aynı Traffic Manager profilini işaret edebilir.
+With alias records, this problem no longer exists. Now application owners can point their zone apex record to a Traffic Manager profile that has external endpoints. Application owners can point to the same Traffic Manager profile that's used for any other domain within their DNS zone.
 
-Örneğin, contoso.com ve www\.contoso.com aynı Traffic Manager profilini işaret edebilir. Traffic Manager profilinin yalnızca yapılandırılmış dış uç noktaları olduğu sürece bu durum geçerlidir.
+For example, contoso.com and www\.contoso.com can point to the same Traffic Manager profile. This is the case as long as the Traffic Manager profile has only external endpoints configured.
 
-Bu makalede, etki alanı tepesinde için bir diğer ad kaydı oluşturmayı ve Web uygulamalarınız için Traffic Manager profili uç noktalarınızı yapılandırmayı öğreneceksiniz.
+In this article, you learn how to create an alias record for your domain apex, and configure your Traffic Manager profile end points for your web apps.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -30,134 +30,134 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Birlikte test edilecek Azure DNS içinde barındırabileceğiniz bir etki alanı adınızın olması gerekir. Bu etki alanı üzerinde tam denetime sahip olmanız gerekir. Tam denetim, etki alanı için ad sunucusu (NS) kayıtlarını ayarlama olanağını kapsar.
 
-Etki alanınızı Azure DNS barındırmanıza yönelik yönergeler için bkz [. Öğretici: Etki alanınızı Azure DNS](dns-delegate-domain-azure-dns.md)barındırın.
+Azure DNS’te etki alanınızı barındırma yönergeleri için bkz. [Öğretici: Azure DNS’te etki alanınızı barındırma](dns-delegate-domain-azure-dns.md).
 
 Bu öğreticide örnek olarak contoso.com etki alanı kullanılmaktadır ancak sizin kendi etki alanı adınızı kullanmanız gerekir.
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Bu makalede kullanılan tüm kaynakları barındıracak bir kaynak grubu oluşturun.
+Create a resource group to hold all the resources used in this article.
 
-## <a name="create-app-service-plans"></a>App Service planları oluşturma
+## <a name="create-app-service-plans"></a>Create App Service plans
 
-Yapılandırma bilgileri için aşağıdaki tabloyu kullanarak kaynak grubunuzda iki Web App Service planı oluşturun. App Service planı oluşturma hakkında daha fazla bilgi için bkz. [Azure 'da App Service planını yönetme](../app-service/app-service-plan-manage.md).
+Create two Web App Service plans in your resource group using the following table for configuration information. For more information about creating an App Service plan, see [Manage an App Service plan in Azure](../app-service/app-service-plan-manage.md).
 
 
-|Ad  |İşletim sistemi  |Location  |Fiyatlandırma Katmanı  |
+|Adı  |İşletim Sistemi  |Konum  |Fiyatlandırma Katmanı  |
 |---------|---------|---------|---------|
-|ASP-01     |Windows|East US|Geliştirme/test D1-paylaşılan|
-|ASP-02     |Windows|Orta ABD|Geliştirme/test D1-paylaşılan|
+|ASP-01     |Windows|Doğu ABD|Dev/Test D1-Shared|
+|ASP-02     |Windows|Orta ABD|Dev/Test D1-Shared|
 
-## <a name="create-app-services"></a>Uygulama hizmetleri oluşturma
+## <a name="create-app-services"></a>Create App Services
 
-Her bir App Service planında bir tane olmak üzere iki Web uygulaması oluşturun.
+Create two web apps, one in each App Service plan.
 
-1. Azure portal sayfanın sol üst köşesinde **kaynak oluştur**' u seçin.
-2. Arama çubuğuna **Web uygulaması** yazın ve ENTER tuşuna basın.
-3. **Web uygulaması**' nı seçin.
-4. **Oluştur**’u seçin.
-5. Varsayılan değerleri kabul edin ve iki Web uygulaması yapılandırmak için aşağıdaki tabloyu kullanın:
+1. On upper left corner of the Azure portal page, select **Create a resource**.
+2. Type **Web app** in the search bar and press Enter.
+3. Select **Web App**.
+4. **Oluştur**'u seçin.
+5. Accept the defaults, and use the following table to configure the two web apps:
 
-   |Ad<br>(. azurewebsites.net içinde benzersiz olmalıdır)|Kaynak Grubu |Çalışma zamanı yığını|Bölge|Plan/konum App Service
+   |Adı<br>(must be unique within .azurewebsites.net)|Kaynak Grubu |Runtime stack|Bölge|App Service Plan/Location
    |---------|---------|-|-|-------|
-   |Uygulama-01|Mevcut olanı kullan<br>Kaynak grubunuzu seçin|.NET Core 2.2|East US|ASP-01 (D1)|
-   |Uygulama-02|Mevcut olanı kullan<br>Kaynak grubunuzu seçin|.NET Core 2.2|Orta ABD|ASP-02 (D1)|
+   |App-01|Use existing<br>Select your resource group|.NET Core 2.2|Doğu ABD|ASP-01(D1)|
+   |App-02|Use existing<br>Select your resource group|.NET Core 2.2|Orta ABD|ASP-02(D1)|
 
-### <a name="gather-some-details"></a>Bazı ayrıntılar toplayın
+### <a name="gather-some-details"></a>Gather some details
 
-Şimdi Web Apps için IP adresi ve ana bilgisayar adı ' nı aklınızda olmanız gerekir.
+Now you need to note the IP address and host name for the web apps.
 
-1. Kaynak grubunuzu açın ve ilk Web uygulamanızı (Bu örnekte**App-01** ) seçin.
-2. Sol sütunda **Özellikler**' i seçin.
-3. **URL 'nin**altındaki adresi ve **giden IP adresleri** altındaki listedeki ilk IP adresini aklınızda yapın. Traffic Manager bitiş noktalarınızı yapılandırırken bu bilgileri daha sonra kullanacaksınız.
-4. **App-02**için yineleyin.
+1. Open your resource group and select your first web app (**App-01** in this example).
+2. In the left column, select **Properties**.
+3. Note the address under **URL**, and under **Outbound IP Addresses** note the first IP address in the list. You'll use this information later when you configure your Traffic Manager end points.
+4. Repeat for **App-02**.
 
 ## <a name="create-a-traffic-manager-profile"></a>Traffic Manager profili oluşturma
 
-Kaynak grubunuzda bir Traffic Manager profili oluşturun. Varsayılan değerleri kullanın ve trafficmanager.net ad alanı içinde benzersiz bir ad yazın.
+Create a Traffic Manager profile in your resource group. Use the defaults and type a unique name within the trafficmanager.net namespace.
 
-Traffic Manager profili oluşturma hakkında daha fazla bilgi için bkz [. hızlı başlangıç: Yüksek oranda kullanılabilir bir Web uygulaması](../traffic-manager/quickstart-create-traffic-manager-profile.md)için Traffic Manager profili oluşturun.
+For information about creating a Traffic Manager profile, see [Quickstart: Create a Traffic Manager profile for a highly available web application](../traffic-manager/quickstart-create-traffic-manager-profile.md).
 
 ### <a name="create-endpoints"></a>Uç noktalar oluşturma
 
-Artık iki Web uygulaması için uç noktalar oluşturabilirsiniz.
+Now you can create the endpoints for the two web apps.
 
-1. Kaynak grubunuzu açın ve Traffic Manager profilinizi seçin.
-2. Sol sütunda **bitiş noktaları**' nı seçin.
+1. Open your resource group and select your Traffic Manager profile.
+2. In the left column, select **Endpoints**.
 3. **Add (Ekle)** seçeneğini belirleyin.
-4. Uç noktaları yapılandırmak için aşağıdaki tabloyu kullanın:
+4. Use the following table to configure the endpoints:
 
-   |Type  |Ad  |Hedef  |Location  |Özel Üstbilgi ayarları|
+   |Tür  |Adı  |Hedefleyin  |Konum  |Custom Header settings|
    |---------|---------|---------|---------|---------|
-   |Harici uç nokta     |Son-01|Uygulama için kaydettiğiniz IP adresi-01|East US|Ana bilgisayar\<: App-01 için kaydettiğiniz URL\><br>Örnek: **Host: App-01.azurewebsites.net**|
-   |Harici uç nokta     |End-02|App-02 için kaydettiğiniz IP adresi|Orta ABD|Ana bilgisayar\<: App-02 için kaydettiğiniz URL\><br>Örnek: **Host: App-02.azurewebsites.net**
+   |External endpoint     |End-01|IP address you recorded for App-01|Doğu ABD|host:\<the URL you recorded for App-01\><br>Example: **host:app-01.azurewebsites.net**|
+   |External endpoint     |End-02|IP address you recorded for App-02|Orta ABD|host:\<the URL you recorded for App-02\><br>Example: **host:app-02.azurewebsites.net**
 
-## <a name="create-dns-zone"></a>DNS bölgesi oluşturma
+## <a name="create-dns-zone"></a>Create DNS zone
 
-Test için varolan bir DNS bölgesi kullanabilir veya yeni bir bölge oluşturabilirsiniz. Azure 'da yeni bir DNS bölgesi oluşturup atamak için bkz [. Öğretici: Etki alanınızı Azure DNS](dns-delegate-domain-azure-dns.md)barındırın.
+You can either use an existing DNS zone for testing, or you can create a new zone. To create and delegate a new DNS zone in Azure, see [Tutorial: Host your domain in Azure DNS](dns-delegate-domain-azure-dns.md).
 
-## <a name="add-a-txt-record-for-custom-domain-validation"></a>Özel etki alanı doğrulaması için bir TXT kaydı ekleme
+## <a name="add-a-txt-record-for-custom-domain-validation"></a>Add a TXT record for custom domain validation
 
-Web uygulamalarınıza özel bir ana bilgisayar adı eklediğinizde, etki alanınızı doğrulamak üzere belirli bir TXT kaydına bakar.
+When you add a custom hostname to your web apps, it will look for a specific TXT record to validate your domain.
 
-1. Kaynak grubunuzu açın ve DNS bölgesini seçin.
+1. Open your resource group and select the DNS zone.
 2. **Kayıt kümesi**’ni seçin.
-3. Aşağıdaki tabloyu kullanarak kayıt kümesini ekleyin. Değer için, daha önce kaydettiğiniz gerçek Web uygulaması URL 'sini kullanın:
+3. Add the record set using the following table. For the value, use the actual web app URL that you previously recorded:
 
-   |Ad  |Tür  |Value|
+   |Adı  |Tür  |Değer|
    |---------|---------|-|
    |@     |TXT|App-01.azurewebsites.net|
 
 
-## <a name="add-a-custom-domain"></a>Özel etki alanı ekle
+## <a name="add-a-custom-domain"></a>Özel etki alanı ekleme
 
-Her iki Web uygulaması için özel bir etki alanı ekleyin.
+Add a custom domain for both web apps.
 
-1. Kaynak grubunuzu açın ve ilk Web uygulamanızı seçin.
-2. Sol sütunda **özel etki alanları**' nı seçin.
-3. **Özel etki alanları**altında **özel etki alanı Ekle**' yi seçin.
-4. **Özel etki alanı**altında, özel etki alanı adınızı yazın. Örneğin, contoso.com.
+1. Open your resource group and select your first web app.
+2. In the left column, select **Custom domains**.
+3. Under **Custom Domains**, select **Add custom domain**.
+4. Under **Custom domain**, type your custom domain name. For example, contoso.com.
 5. **Doğrula**'yı seçin.
 
-   Etki alanınız, **ana bilgisayar adı kullanılabilirliği** ve **etki alanı sahipliğinin**yanında doğrulamayı geçmelidir ve yeşil onay işaretlerini göstermelidir.
+   Your domain should pass validation and show green check marks next to **Hostname availability** and **Domain ownership**.
 5. **Özel etki alanı ekle**'yi seçin.
-6. **Siteye atanan ana bilgisayar adları**altındaki yeni ana bilgisayar adını görmek için tarayıcınızı yenileyin. Sayfadaki yenileme her zaman değişiklikleri hemen göstermez.
-7. İkinci Web uygulamanız için bu yordamı tekrarlayın.
+6. To see the new hostname under **Hostnames assigned to site**, refresh your browser. The refresh on the page doesn't always show changes right away.
+7. Repeat this procedure for your second web app.
 
-## <a name="add-the-alias-record-set"></a>Diğer ad kayıt kümesini ekleme
+## <a name="add-the-alias-record-set"></a>Add the alias record set
 
-Şimdi bölge tepesinde için bir diğer ad kaydı ekleyin.
+Now add an alias record for the zone apex.
 
-1. Kaynak grubunuzu açın ve DNS bölgesini seçin.
+1. Open your resource group and select the DNS zone.
 2. **Kayıt kümesi**’ni seçin.
-3. Aşağıdaki tabloyu kullanarak kayıt kümesini ekleyin:
+3. Add the record set using the following table:
 
-   |Ad  |Type  |Diğer ad kayıt kümesi  |Diğer ad türü  |Azure kaynağı|
+   |Adı  |Tür  |Alias record set  |Alias type  |Azure resource|
    |---------|---------|---------|---------|-----|
-   |@     |A|Evet|Azure kaynağı|Traffic Manager-profiliniz|
+   |@     |A|Yes|Azure resource|Traffic Manager - your profile|
 
 
-## <a name="test-your-web-apps"></a>Web uygulamalarınızı test etme
+## <a name="test-your-web-apps"></a>Test your web apps
 
-Artık Web uygulamanıza ulaşabildiğinizden ve yük dengeli olduğundan emin olmak için test edebilirsiniz.
+Now you can test to make sure you can reach your web app and that it's being load balanced.
 
-1. Bir Web tarayıcısı açın ve etki alanına gidin. Örneğin, contoso.com. Varsayılan Web uygulaması sayfasını görmeniz gerekir.
-2. İlk Web uygulamanızı durdurun.
-3. Web tarayıcınızı kapatın ve birkaç dakika bekleyin.
-4. Web tarayıcınızı başlatın ve etki alanına gidin. Yine de varsayılan Web uygulaması sayfasını görmeniz gerekir.
-5. İkinci Web uygulamanızı durdurun.
-6. Web tarayıcınızı kapatın ve birkaç dakika bekleyin.
-7. Web tarayıcınızı başlatın ve etki alanına gidin. Web uygulamasının durdurulduğunu belirten 403 hatasını görmeniz gerekir.
-8. İkinci Web uygulamanızı başlatın.
-9. Web tarayıcınızı kapatın ve birkaç dakika bekleyin.
-10. Web tarayıcınızı başlatın ve etki alanına gidin. Varsayılan Web uygulaması sayfasını yeniden görmeniz gerekir.
+1. Open a web browser and browse to your domain. For example, contoso.com. You should see the default web app page.
+2. Stop your first web app.
+3. Close your web browser, and wait a few minutes.
+4. Start your web browser and browse to your domain. You should still see the default web app page.
+5. Stop your second web app.
+6. Close your web browser, and wait a few minutes.
+7. Start your web browser and browse to your domain. You should see Error 403, indicating that the web app is stopped.
+8. Start your second web app.
+9. Close your web browser, and wait a few minutes.
+10. Start your web browser and browse to your domain. You should see the default web app page again.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Diğer ad kayıtları hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
+To learn more about alias records, see the following articles:
 
-- [Öğretici: Azure genel IP adresine başvurmak için bir diğer ad kaydı yapılandırma](tutorial-alias-pip.md)
-- [Öğretici: Traffic Manager ile tepesinde etki alanı adlarını desteklemek için bir diğer ad kaydı yapılandırma](tutorial-alias-tm.md)
+- [Tutorial: Configure an alias record to refer to an Azure public IP address](tutorial-alias-pip.md)
+- [Tutorial: Configure an alias record to support apex domain names with Traffic Manager](tutorial-alias-tm.md)
 - [DNS SSS](https://docs.microsoft.com/azure/dns/dns-faq#alias-records)
 
-Etkin bir DNS adını nasıl geçirebileceğinizi öğrenmek için bkz. [Azure App Service için etkin BIR DNS adı geçirme](../app-service/manage-custom-dns-migrate-domain.md).
+To learn how to migrate an active DNS name, see [Migrate an active DNS name to Azure App Service](../app-service/manage-custom-dns-migrate-domain.md).

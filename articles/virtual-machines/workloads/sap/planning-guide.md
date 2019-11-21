@@ -1,6 +1,6 @@
 ---
-title: SAP NetWeaver için Azure sanal makineleri planlama ve uygulama | Microsoft Docs
-description: SAP NetWeaver için Azure sanal makineleri planlama ve uygulama
+title: Azure Virtual Machines planning and implementation for SAP NetWeaver | Microsoft Docs
+description: Azure Virtual Machines planning and implementation for SAP NetWeaver
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: MSSedusch
@@ -16,14 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 09/16/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d9b9476d8cc62585be7e7003d837607b502c8566
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 1b791ac58ada84ac0c2087f266d29bff4bd9c6fe
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067855"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224702"
 ---
-# <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver için Azure sanal makineleri planlama ve uygulama
+# <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines planning and implementation for SAP NetWeaver
 
 [767598]:https://launchpad.support.sap.com/#/notes/767598
 [773830]:https://launchpad.support.sap.com/#/notes/773830
@@ -313,614 +313,614 @@ ms.locfileid: "71067855"
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-Microsoft Azure, şirketlerin işlem ve depolama kaynaklarını uzun tedarik döngüleri olmadan en az sürede almasına olanak sağlar. Azure sanal makine hizmeti, şirketlerin SAP NetWeaver tabanlı uygulamalar gibi klasik uygulamaları Azure 'a dağıtmasını ve şirket içinde kullanılabilir kaynak olmadan güvenilirliğini ve kullanılabilirliğini genişletmelerini sağlar. Azure sanal makine Hizmetleri, şirketlerin Azure sanal makinelerini şirket içi etki alanları, özel bulutları ve SAP sistem Yatağuna etkin bir şekilde tümleştirmelerini sağlayan şirketler arası bağlantıyı da destekler.
-Bu teknik incelemeye Microsoft Azure sanal makinenin temelleri açıklanmakta ve Azure 'daki SAP NetWeaver yüklemelerine yönelik planlama ve uygulama konuları ve gerçek başlatmadan önce okunan belge olması gerekir. Azure 'da SAP NetWeaver dağıtımları.
-Kağıda, belirtilen platformlarda SAP yazılımının yüklemeleri ve dağıtımları için birincil kaynakları temsil eden SAP yükleme belgeleri ve SAP notları da bu şekilde tamamlar.
+Microsoft Azure enables companies to acquire compute and storage resources in minimal time without lengthy procurement cycles. Azure Virtual Machine service allows companies to deploy classical applications, like SAP NetWeaver based applications into Azure and extend their reliability and availability without having further resources available on-premises. Azure Virtual Machine Services also supports cross-premises connectivity, which enables companies to actively integrate Azure Virtual Machines into their on-premises domains, their Private Clouds and their SAP System Landscape.
+This white paper describes the fundamentals of Microsoft Azure Virtual Machine and provides a walk-through of planning and implementation considerations for SAP NetWeaver installations in Azure and as such should be the document to read before starting actual deployments of SAP NetWeaver on Azure.
+The paper complements the SAP Installation Documentation and SAP Notes, which represent the primary resources for installations and deployments of SAP software on given platforms.
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 ## <a name="summary"></a>Özet
-Bulut bilgi Işlem, küçük şirketlerin büyük ve çok uluslu şirketlere kadar çok daha fazla ve BT sektörü dahilinde daha fazla önem elde eden yaygın olarak kullanılan bir terimdir.
+Cloud Computing is a widely used term, which is gaining more and more importance within the IT industry, from small companies up to large and multinational corporations.
 
-Microsoft Azure, Microsoft 'un sunduğu, geniş bir yeni olanaklar sunan Cloud Services platformudur. Artık müşteriler, uygulamaları bulutta bir hizmet olarak hızlı bir şekilde temin edebilir ve serbest verebilir, böylece teknik veya bütçeleme kısıtlamalarıyla sınırlı değildir. Şirketler, donanım altyapısına zaman ve bütçe harcamak yerine uygulama, iş süreçlerine ve müşterilere ve kullanıcılara yönelik avantajlara odaklanabilirler.
+Microsoft Azure is the Cloud Services Platform from Microsoft, which offers a wide spectrum of new possibilities. Now customers are able to rapidly provision and de-provision applications as a service in the cloud, so they are not limited to technical or budgeting restrictions. Instead of investing time and budget into hardware infrastructure, companies can focus on the application, business processes, and its benefits for customers and users.
 
-Microsoft, Microsoft Azure Sanal Makine Hizmetleri ile kapsamlı bir Hizmet Olarak Altyapı (IaaS) platformu sunmaktadır. SAP NetWeaver tabanlı uygulamalar, Azure Sanal Makinelerinde (IaaS) desteklenmektedir. Bu Teknik İnceleme, Microsoft Azure içinde SAP NetWeaver tabanlı uygulamaların seçim platformu olarak nasıl planlanıp uygulanacağını açıklar.
+Microsoft, Microsoft Azure Sanal Makine Hizmetleri ile kapsamlı bir Hizmet Olarak Altyapı (IaaS) platformu sunmaktadır. SAP NetWeaver tabanlı uygulamalar, Azure Sanal Makinelerinde (IaaS) desteklenmektedir. This whitepaper describes how to plan and implement SAP NetWeaver based applications within Microsoft Azure as the platform of choice.
 
-Kağıdın kendisi iki ana yönüyle odaklanır:
+The paper itself focuses on two main aspects:
 
-* İlk bölümde, Azure 'da SAP NetWeaver tabanlı uygulamalar için desteklenen iki dağıtım modeli açıklanmaktadır. Ayrıca, Azure 'un SAP dağıtımlarını göz önünde bulundurarak genel işleme de açıklanmaktadır.
-* İkinci bölüm, ilk bölümünde açıklanan iki farklı senaryoyu uygulayan ayrıntılar.
+* The first part describes two supported deployment patterns for SAP NetWeaver based applications on Azure. It also describes general handling of Azure with SAP deployments in mind.
+* The second part details implementing the two different scenarios described in the first part.
 
-Ek kaynaklar için, bu belgedeki bölüm [kaynakları][planning-guide-1.2] bölümüne bakın.
+For additional resources, see chapter [Resources][planning-guide-1.2] in this document.
 
-### <a name="definitions-upfront"></a>Ön tanım tanımları
-Belge boyunca aşağıdaki terimleri kullanırız:
+### <a name="definitions-upfront"></a>Definitions upfront
+Throughout the document, we use the following terms:
 
-* IaaS Hizmet olarak altyapı
-* PaaS Hizmet olarak Platform
-* SaaS Hizmet olarak yazılım
-* SAP bileşeni: ECC, siyah beyaz, çözüm Yöneticisi veya S/4HANA gibi tek bir SAP uygulaması.  SAP bileşenleri geleneksel ABAP veya Java teknolojilerine veya Iş nesneleri gibi NetWeaver tabanlı olmayan bir uygulamaya dayalı olabilir.
-* SAP Ortamı: geliştirme, QAS, eğitim, DR veya üretim gibi bir iş işlevi gerçekleştirmek üzere mantıksal olarak gruplandırılan bir veya daha fazla SAP bileşeni.
-* SAP yatay: Bu terim, bir müşterinin BT yatay içindeki tüm SAP varlıklarını ifade eder. SAP yatay, tüm üretim ve üretim dışı ortamları içerir.
-* SAP sistemi: Örneğin, bir SAP ERP geliştirme sistemi, SAP BW test sistemi, SAP CRM üretim sistemi vb. için DBMS katmanının ve uygulama katmanının birleşimi. Azure dağıtımlarında, bu iki katmanın şirket içi ve Azure arasında bölmek desteklenmez. SAP sisteminin şirket içinde dağıtıldığı ya da Azure 'da dağıtıldığı anlamına gelir. Ancak, SAP 'nin farklı sistemlerini Azure 'da veya şirket içinde dağıtabilirsiniz. Örneğin, Azure 'da SAP CRM geliştirme ve test sistemlerini, şirket içi SAP CRM üretim sistemine dağıtabilirsiniz.
-* Şirketler arası veya karma: VM 'Lerin şirket içi veri merkezleri ve Azure arasında siteden siteye, çok siteli veya ExpressRoute bağlantısına sahip bir Azure aboneliğine dağıtıldığı bir senaryoyu açıklar. Yaygın Azure belgelerinde, bu tür dağıtımlar şirket içi veya hibrit senaryolar olarak da açıklanmaktadır. Bağlantının nedeni şirket içi etki alanlarını, şirket içi Active Directory/OpenLDAP ve şirket içi DNS 'yi Azure 'a genişletmenin nedenidir. Şirket içi yatay, aboneliğin Azure varlıklarına genişletilir. Bu uzantıya sahip olan VM 'Ler, şirket içi etki alanının bir parçası olabilir. Şirket içi etki alanının etki alanı kullanıcıları sunuculara erişebilir ve bu VM 'lerde (DBMS hizmetleri gibi) Hizmetleri çalıştırabilir. Şirket içinde dağıtılan ve Azure tarafından dağıtılan VM 'Ler arasındaki iletişim ve ad çözümlemesi mümkündür. Bu, SAP varlıklarını Azure 'a dağıtmanın en yaygın ve neredeyse dışlamalı durumdur. Daha fazla bilgi için bu [makaleye ve][vpn-gateway-cross-premises-options] [Bu][vpn-gateway-site-to-site-create]makaleye bakın.
-* SAP için Azure Izleme uzantısı, gelişmiş Izleme ve Azure uzantısı: Bir ve aynı öğeyi açıkla. SAP konak aracısına Azure altyapısı hakkında bazı temel veriler sağlamak için, sizin tarafınızdan dağıtılması gereken bir VM uzantısını açıklar. SAP 'de SAP notları, Izleme uzantısı veya Gelişmiş izleme olarak bu şekilde ifade edebilir. Azure 'da **SAP Için Azure uzantısı**olarak buna başvuruyoruz.
+* IaaS: Infrastructure as a Service
+* PaaS: Platform as a Service
+* SaaS: Software as a Service
+* SAP Component: an individual SAP application such as ECC, BW, Solution Manager, or S/4HANA.  SAP components can be based on traditional ABAP or Java technologies or a non-NetWeaver based application such as Business Objects.
+* SAP Environment: one or more SAP components logically grouped to perform a business function such as Development, QAS, Training, DR, or Production.
+* SAP Landscape: This term refers to the entire SAP assets in a customer's IT landscape. The SAP landscape includes all production and non-production environments.
+* SAP System: The combination of DBMS layer and application layer of, for example, an SAP ERP development system, SAP BW test system, SAP CRM production system, etc. In Azure deployments, it is not supported to divide these two layers between on-premises and Azure. Means an SAP system is either deployed on-premises or it is deployed in Azure. However, you can deploy the different systems of an SAP landscape into either Azure or on-premises. For example, you could deploy the SAP CRM development and test systems in Azure but the SAP CRM production system on-premises.
+* Cross-premises or hybrid: Describes a scenario where VMs are deployed to an Azure subscription that has site-to-site, multi-site, or ExpressRoute connectivity between the on-premises datacenter(s) and Azure. In common Azure documentation, these kinds of deployments are also described as cross-premises or hybrid scenarios. The reason for the connection is to extend on-premises domains, on-premises Active Directory/OpenLDAP, and on-premises DNS into Azure. The on-premises landscape is extended to the Azure assets of the subscription. Having this extension, the VMs can be part of the on-premises domain. Domain users of the on-premises domain can access the servers and can run services on those VMs (like DBMS services). Communication and name resolution between VMs deployed on-premises and Azure deployed VMs is possible. This is the most common and nearly exclusive case deploying SAP assets into Azure. For more information, see [this][vpn-gateway-cross-premises-options] article and [this][vpn-gateway-site-to-site-create].
+* Azure Monitoring Extension, Enhanced Monitoring and Azure Extension for SAP: Describe one and the same item. It describes a VM extension that needs to be deployed by you to provide some basic data about the Azure infrastructure to the SAP Host Agent. SAP in SAP notes might refer to it as Monitoring Extension or Enhanced monitoring. In Azure, we are referring to it as **Azure Extension for SAP**.
 
 > [!NOTE]
-> SAP sistemleri çalıştıran Azure sanal makinelerinin, şirket içi bir etki alanının üyesi olduğu SAP sistemlerinin şirket içi veya karma dağıtımları, üretim SAP sistemlerinde desteklenir. Şirket içi veya karma Yapılandırma parçaları dağıtmak veya Azure 'a tam SAP landscapes desteği için desteklenir. Azure 'da tam SAP 'nin tamamen çalıştırılması, bu VM 'Lerin şirket içi etki alanı ve ADS/OpenLDAP kapsamında olmasını gerektirir. 
+> Cross-premises or hybrid deployments of SAP systems where Azure Virtual Machines running SAP systems are members of an on-premises domain are supported for production SAP systems. Cross-premises  or hybrid configurations are supported for deploying parts or complete SAP landscapes into Azure. Even running the complete SAP landscape in Azure requires having those VMs being part of on-premises domain and ADS/OpenLDAP. 
 >
 >
 
 
 
-### <a name="e55d1e22-c2c8-460b-9897-64622a34fdff"></a>Kaynakların
-Azure belgelerindeki SAP iş yükünün giriş noktası [burada](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)bulunur. Bu giriş noktasıyla başlayarak, şu konuları kapsayan birçok makaleyi bulabilirsiniz:
+### <a name="e55d1e22-c2c8-460b-9897-64622a34fdff"></a>Resources
+The entry point for SAP workload on Azure documentation is found [here](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started). Starting with this entry point you find many articles that cover the topics of:
 
-- Azure 'da SAP NetWeaver ve Business One
-- Azure 'da çeşitli DBMS sistemleri için SAP DBMS Kılavuzu
-- Azure 'da SAP iş yükü için yüksek kullanılabilirlik ve olağanüstü durum kurtarma
-- Azure 'da SAP HANA çalıştırmak için özel kılavuz
-- SAP HANA DBMS için Azure HANA büyük örneklerine özgü rehberlik 
+- SAP NetWeaver and Business One on Azure
+- SAP DBMS guides for various DBMS systems in Azure
+- High availability and disaster recovery for SAP workload on Azure
+- Specific guidance for running SAP HANA on Azure
+- Guidance specific to Azure HANA Large Instances for the SAP HANA DBMS 
 
 
 > [!IMPORTANT]
-> Başvurulan SAP yükleme kılavuzlarından veya diğer SAP belgelerinin bir bağlantısı kullanıldığında (başvuru ınstguide-01, bkz <http://service.sap.com/instguides>.). Önkoşul, yükleme işlemi veya belirli SAP işlevselliğinin ayrıntılarına geldiğinde, Microsoft belgeleri yalnızca SAP yazılımının yüklü olduğu ve bir üzerinde çalıştığı belirli görevleri kapsadığından, SAP belgelerinin ve kılavuzların her zaman dikkatle okunmalıdır. Sanal makine Microsoft Azure.
+> Wherever possible a link to the referring SAP Installation Guides or other SAP documentation is used (Reference InstGuide-01, see <http://service.sap.com/instguides>). When it comes to the prerequisites, installation process, or details of specific SAP functionality the SAP documentation and guides should always be read carefully, as the Microsoft documents only covers specific tasks for SAP software installed and operated in a Microsoft Azure Virtual Machine.
 >
 >
 
-Aşağıdaki SAP notları, Azure 'daki SAP konusuyla ilgilidir:
+The following SAP Notes are related to the topic of SAP on Azure:
 
-| Dekont numarası | Başlık |
+| Note number | Başlık |
 | --- | --- |
-| [1928533] |Azure 'da SAP uygulamaları: Desteklenen Ürünler ve boyutlandırma |
-| [2015553] |Microsoft Azure SAP: Destek önkoşulları |
-| [1999351] |SAP için gelişmiş Azure Izleme sorunlarını giderme |
-| [2178632] |Microsoft Azure üzerinde SAP için anahtar Izleme ölçümleri |
-| [1409604] |Windows 'da sanallaştırma: Gelişmiş Izleme |
-| [2191498] |Azure ile Linux üzerinde SAP: Gelişmiş Izleme |
-| [2243692] |Microsoft Azure Linux (IaaS) sanal makinesi: SAP lisans sorunları |
-| [1984787] |SUSE LINUX Enterprise Server 12: Yükleme notları |
-| [2002167] |Red Hat Enterprise Linux 7. x: Yükleme ve yükseltme |
-| [2069760] |Oracle Linux 7. x SAP yüklemesi ve yükseltmesi |
-| [1597355] |Linux için takas boşluğu önerisi |
+| [1928533] |SAP Applications on Azure: Supported Products and Sizing |
+| [2015553] |SAP on Microsoft Azure: Support Prerequisites |
+| [1999351] |Troubleshooting Enhanced Azure Monitoring for SAP |
+| [2178632] |Key Monitoring Metrics for SAP on Microsoft Azure |
+| [1409604] |Virtualization on Windows: Enhanced Monitoring |
+| [2191498] |SAP on Linux with Azure: Enhanced Monitoring |
+| [2243692] |Linux on Microsoft Azure (IaaS) VM: SAP license issues |
+| [1984787] |SUSE LINUX Enterprise Server 12: Installation notes |
+| [2002167] |Red Hat Enterprise Linux 7.x: Installation and Upgrade |
+| [2069760] |Oracle Linux 7.x SAP Installation and Upgrade |
+| [1597355] |Swap-space recommendation for Linux |
 
-Ayrıca, Linux için tüm SAP notlarını içeren [SCN wiki](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) 'yi de okuyun.
+Also read the [SCN Wiki](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) that contains all SAP Notes for Linux.
 
-[Bu makalede][azure-subscription-service-limits-subscription], genel varsayılan sınırlamalar ve Azure aboneliklerinin en yüksek sınırlamaları bulunabilir.
+General default limitations and maximum limitations of Azure subscriptions can be found in [this article][azure-subscription-service-limits-subscription].
 
-## <a name="possible-scenarios"></a>Olası senaryolar
-SAP, genellikle kuruluşlar içindeki en önemli iş uygulamalarından biri olarak görülür. Bu uygulamaların mimarisi ve işlemleri çok karmaşıktır ve kullanılabilirlik ve performans açısından gereksinimleri karşıladığınızdan emin olmanızı sağlar.
+## <a name="possible-scenarios"></a>Possible Scenarios
+SAP is often seen as one of the most mission-critical applications within enterprises. The architecture and operations of these applications is mostly complex and ensuring that you meet requirements on availability and performance is important.
 
-Böylece kuruluşlar, üzerinde iş açısından kritik iş süreçlerini çalıştırmak için hangi bulut sağlayıcısının seçeceğini dikkatle düşünmeleri gerekir. Azure, iş açısından kritik SAP uygulamaları ve iş süreçlerine yönelik ideal genel bulut platformudur. Çok çeşitli Azure altyapısı söz konusu olduğunda, neredeyse tüm mevcut SAP NetWeaver ve S/4HANA sistemleri, bugün Azure 'da barındırılabilir. Azure, çok sayıda terabayt belleği ve 200 ' den fazla CPU içeren VM 'Ler sağlar. Azure 'un ötesinde, 24 TB 'a varan ve en fazla 120 TB 'LıK genişleme ANA dağıtımları için genişleme HANA dağıtımlarına izin veren [Hana büyük örnekleri](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)sunmaktadır. 
-
-
-SAP sistemlerini genel olarak Azure IaaS veya IaaS 'e başarıyla dağıtmak için geleneksel outsourcers veya barındırıcıların ve IaaS tekliflerinin teklifleri arasındaki önemli farklılıkları anlamak önemlidir. Geleneksel barındırıcı veya dış kaynaklar bir müşterinin barındırmak istediği iş yüküne (ağ, depolama ve sunucu türü) göre, müşterinin veya iş ortağının iş yükünü niteleyen ve doğru Azure 'u seçmesi sorumluluğunu karşılarken IaaS dağıtımları için VM 'Ler, depolama ve ağ bileşenleri.
-
-İlk adım olarak, müşterilerin aşağıdaki öğeleri doğrulaması gerekir:
-
-* Azure 'un desteklenen SAP VM türleri
-* Azure 'da desteklenen SAP ürünleri/yayınları
-* Azure 'da belirli SAP sürümleri için desteklenen işletim sistemi ve DBMS yayınları
-* Farklı Azure SKU 'Ları tarafından sunulan SAPS işleme
-
-Bu soruların yanıtları SAP Note [1928533]' de okunabilir.
-
-İkinci bir adım olarak, Azure Kaynak ve bant genişliği sınırlarının şirket içi sistemlerin gerçek kaynak tüketimine kıyasla olması gerekir. Bu nedenle, müşterilerin alanında SAP ile desteklenen Azure türlerinin farklı yeteneklerini hakkında bilgi sahibi olmaları gerekir:
-
-* Farklı VM türlerindeki CPU ve bellek kaynakları ve
-* Farklı VM türlerindeki ıOPS bant genişliği ve
-* Farklı VM türlerinin ağ özellikleri.
-
-Bu verilerin çoğu [burada (Linux)][virtual-machines-sizes-linux] ve [burada (Windows)][virtual-machines-sizes-windows]bulunabilir.
-
-Yukarıdaki bağlantıda listelenen limitlerin üst sınırlar olduğunu aklınızda bulundurun. Bu, kaynakların herhangi birine yönelik limitlerin tüm koşullarda sağlanabileceğine anlamına gelmez. Özel durumlar da, seçilen bir VM türünün CPU ve bellek kaynaklarıdır. SAP tarafından desteklenen VM türleri için CPU ve bellek kaynakları, sanal makine içinde tüketim için herhangi bir zamanda kullanılabilir ve bu şekilde ayrılır.
-
-Microsoft Azure platformu çok kiracılı bir platformdur. Sonuç olarak, depolama, ağ ve diğer kaynaklar kiracılar arasında paylaşılır. Akıllı daraltma ve kota mantığı, bir kiracının başka bir kiracının (gürültülü komşu) performansını farklı bir şekilde etkileyerek engel olmak için kullanılır. Özellikle SAP HANA için Azure platformunu sertifikalamak için, Microsoft 'un, birden çok VM 'nin aynı konakta SAP 'ye düzenli olarak çalıştırılabileceği durumlarda kaynak yalıtımını kanıtlamasını sağlaması gerekir. Azure 'daki mantığın bant genişliğine karşı küçük, çok az paylaşılan platformlar, kaynakların şirket içi dağıtımlarıyla karşılaşabileceğine göre kaynak/bant genişliği kullanılabilirliği bölümünde daha büyük farklar ortaya çıkaracak şekilde çalışır. Azure üzerindeki bir SAP sisteminin, şirket içi bir sistem tarafından daha büyük farklar yaşayabileceğiniz, hesaba alınması olasılığı vardır.
-
-Son bir adım, kullanılabilirlik gereksinimlerini değerlendirmelidir. Bu durum, temel alınan Azure altyapısının güncelleştirilmesi ve VM 'Leri çalıştıran konaklarının yeniden başlatılmasını gerektirir. Microsoft, [Azure 'daki sanal makineler Için bakımda](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates)farklı durumları belgelemektedir. VM 'Lerin yeniden başlatmaya zorlanmasının, ancak Konuk işletim sistemine veya DBMS bileşenlerine yama yapmanız gereken durumlarda daha da önemli olan durumlarda, üretim SAP sistemleriniz için geçerli bir yüksek kullanılabilirlik kavramları geliştirmeniz gerekir. Bu gereksinim, şirket içi yüz yüze sahip olduğunuz gereksinimlerinden farklı değildir. Microsoft, platform değişikliklerinden kaynaklanan kapalı kalma süresini azaltmak için Azure platformunu artmasıyla. 
-
-SAP sistemini Azure 'a başarıyla dağıtmak için, şirket içi SAP sistemi, veritabanı ve SAP uygulamaları, Azure altyapısının sağlayabileceği ve çalışabilecek kaynaklara sığacak şekilde SAP Azure destek matrisi 'nde görünmelidir Kullanılabilirlik SLA 'Ları Microsoft Azure sunar. Bu sistemler tanımlandıkları için aşağıdaki iki dağıtım senaryosundan birine karar vermeniz gerekir.
+Thus enterprises have to think carefully about which cloud provider to choose for running such business critical business processes on. Azure is the ideal public cloud platform for business critical SAP applications and business processes. Given the wide variety of Azure infrastructure,  nearly all existing SAP NetWeaver and S/4HANA systems can be hosted in Azure today. Azure provides VMs with many Terabytes of memory and more than 200 CPUs. Beyond that Azure offers [HANA Large Instances](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture), which allow scale-out HANA deployments of up to 24TB and scale-out ANA deployments of up to 120TB. 
 
 
+In order to successfully deploy SAP systems into either Azure IaaS or IaaS in general, it is important to understand the significant differences between the offerings of traditional outsourcers or hosters and IaaS offerings. Whereas the traditional hoster or outsourcer adapts infrastructure (network, storage and server type) to the workload a customer wants to host, it is instead the customer's  or partner's responsibility to characterize the workload and choose the correct Azure components of VMs, storage and network for IaaS deployments.
+
+As a first step, customers need to verify the following items:
+
+* The SAP supported VM types of Azure
+* The SAP supported products/releases on Azure
+* The supported OS and DBMS releases for the specific SAP releases in Azure
+* SAPS throughput provided by different Azure SKUs
+
+The answers to these questions can be read in SAP Note [1928533].
+
+As a second step, Azure resource and bandwidth limitations need to be compared to actual resource consumption of on-premises systems. Therefore, customers need to be familiar with the different capabilities of the Azure types supported with SAP in the area of:
+
+* CPU and memory resources of different VM types and
+* IOPS bandwidth of different VM types and
+* Network capabilities of different VM types.
+
+Most of that data can be found [here (Linux)][virtual-machines-sizes-linux] and [here (Windows)][virtual-machines-sizes-windows].
+
+Keep in mind that the limits listed in the link above are upper limits. It does not mean that the limits for any of the resources, for example IOPS can be provided under all circumstances. The exceptions though are the CPU and memory resources of a chosen VM type. For the VM types supported by SAP, the CPU and memory resources are reserved and as such available at any point in time for consumption within the VM.
+
+The Microsoft Azure platform is a multi-tenant platform. As a result storage, network, and other resources are shared between tenants. Intelligent throttling and quota logic is used to prevent one tenant from impacting the performance of another tenant (noisy neighbor) in a drastic way. Especially for certifying the Azure platform for SAP HANA, Microsoft needs to prove the resource isolation for cases where multiple VMs can run on the same host on a regular basis to SAP. Though logic in Azure tries to keep variances in bandwidth experienced small, highly shared platforms tend to introduce larger variances in resource/bandwidth availability than customers might experience in their on-premises deployments. The probability that an SAP system on Azure could experience larger variances than in an on-premises system needs to be taken into account.
+
+A last step is to evaluate availability requirements. It can happen, that the underlying Azure infrastructure needs to get updated and requires the hosts running VMs to be rebooted. Microsoft documents the different cases in [Maintenance for virtual machines in Azure](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates). To mitigate the rare cases where VMs are forced to reboot, but even more important for the cases you need to patch guest OS or DBMS components, you need to develop a valid high availability concepts for your production SAP systems. This requirement is not any different than the requirements you face on-premises. Microsoft is steadily advancing the Azure platform to reduce downtime caused by platform changes. 
+
+In order to successfully deploy an SAP system onto Azure, the on-premises SAP system(s) Operating System, Database, and SAP applications must appear on the SAP Azure support matrix, fit within the resources the Azure infrastructure can provide and which can work with the Availability SLAs Microsoft Azure offers. As those systems are identified, you need to decide on one of the following two deployment scenarios.
 
 
 
-### <a name="f5b3b18c-302c-4bd8-9ab2-c388f1ab3d10"></a>Şirket içi ağla tam olarak tümleştirildiği gereksinimle, tek veya birden çok SAP VM 'lerinin Azure 'a çapraz şirket Içi dağıtımı
-![Siteden siteye bağlantısı olan VPN (Şirket içi)][planning-guide-figure-300]
 
-Bu senaryo, olası birçok dağıtım deseni içeren bir şirket içi senaryosudur. Azure 'da SAP yatay 'ın şirket içi ve diğer bölümlerinin bazı parçalarını çalıştırıyor olarak açıklanabilir. SAP bileşenlerinin bir kısmının Azure üzerinde çalıştığı olgunun tüm yönleri, son kullanıcılar için saydam olmalıdır. Bu nedenle, SAP taşıma düzeltme sistemi (STMS), RFC Iletişimi, yazdırma, güvenlik (SSO gibi), vb. Azure üzerinde çalışan SAP sistemleri için sorunsuz bir şekilde çalışır. Ancak şirketler arası senaryo, Azure 'da müşterinin etki alanı ve DNS ile Azure 'da genişletilmiş tam SAP 'nin çalıştığı bir senaryoyu da açıklar.
+
+### <a name="f5b3b18c-302c-4bd8-9ab2-c388f1ab3d10"></a>Cross-Premises - Deployment of single or multiple SAP VMs into Azure with the requirement of being fully integrated into the on-premises network
+![VPN with Site-To-Site Connectivity (cross-premises)][planning-guide-figure-300]
+
+This scenario is a cross-premises scenario with many possible deployment patterns. It can be described as running some parts of the SAP landscape on-premises and other parts of the SAP landscape on Azure. All aspects of the fact that part of the SAP components are running on Azure should be transparent for end users. Hence the SAP Transport Correction System (STMS), RFC Communication, Printing, Security (like SSO), etc. work seamlessly for the SAP systems running on Azure. But the cross-premises scenario also describes a scenario where the complete SAP landscape runs in Azure with the customer's domain and DNS extended into Azure.
 
 > [!NOTE]
-> Bu, üretken SAP sistemlerini çalıştırmak için desteklenen dağıtım senaryosudur.
+> This is the deployment scenario, which is supported for running productive SAP systems.
 >
 >
 
-Şirket içi ağınızı Microsoft Azure 'ye bağlama hakkında daha fazla bilgi için [Bu makaleyi][vpn-gateway-create-site-to-site-rm-powershell] okuyun
+Read [this article][vpn-gateway-create-site-to-site-rm-powershell] for more information on how to connect your on-premises network to Microsoft Azure
 
 > [!IMPORTANT]
-> Azure ile şirket içi müşteri dağıtımları arasındaki şirketler arası senaryolar hakkında konuşduğumuz zaman, tüm SAP sistemlerinin ayrıntı düzeyine bakıyoruz. Şirketler arası senaryolar için *Desteklenmeyen* senaryolar şunlardır:
+> When we are talking about cross-premises scenarios between Azure and on-premises customer deployments, we are looking at the granularity of whole SAP systems. Scenarios which are *not supported* for cross-premises scenarios are:
 >
-> * Farklı dağıtım yöntemlerinde farklı SAP uygulaması katmanları çalıştırma. Örneğin, şirket içi DBMS katmanını çalıştıran, ancak VM 'lerde Azure VM 'Ler olarak dağıtılan SAP uygulama katmanı veya tam tersi de geçerlidir.
-> * Azure 'da ve bazı şirket içi SAP katmanının bazı bileşenleri. Örneğin, şirket içi ve Azure VM 'Ler arasındaki SAP uygulama katmanının örneklerini bölmek.
-> * Birden çok Azure bölgesi üzerinde bir sistemin SAP örneklerini çalıştıran VM 'lerin dağıtımı desteklenmez.
+> * Running different layers of SAP applications in different deployment methods. For example running the DBMS layer on-premises, but the SAP application layer in VMs deployed as Azure VMs or vice versa.
+> * Some components of an SAP layer in Azure and some on-premises. For example splitting Instances of the SAP application layer between on-premises and Azure VMs.
+> * Distribution of VMs running SAP instances of one system over multiple Azure Regions is not supported.
 >
-> Bu kısıtlamaların nedeni, özellikle uygulama örnekleri ve SAP sisteminin DBMS katmanı arasında bir SAP sisteminde düşük gecikmeli yüksek performanslı ağın gereksinimidir.
+> The reason for these restrictions is the requirement for a low latency high-performance network within one SAP system, especially between the application instances and the DBMS layer of an SAP system.
 >
-> Büyük ölçüde tümleşik olan birden çok SAP sistemi kullanılırken sistemleri ve bölgeleri özel olarak planlama gerçekleşmelidir. Ağ gecikmesini en aza indirmek için bu sistemleri birbirlerine olabildiğince yakın bir şekilde dağıttığınızdan emin olun. Son derece tümleştirilmiş SAP sistemlerine örnek olarak şunlar verilebilir:
-> * ERP veya CRM ya da SRM gibi SAP OLTP sistemlerinden veri okuma SAP BW veya
-> * SAP SLT, birden çok SPA sistemi arasında veya SAP ile SAP olmayan sistemler arasında veri çoğaltmak için kullanılır; veya
-> * SAP ERP sistemine bağlı SAP S/4; benzerlerini.
+> Special planning of the systems and regions must occur when using multiple SAP systems which are highly integrated. Make sure to deploy these systems as close as possible to each other to minimize network latency. Examples of highly integrated SAP systems are:
+> * SAP BW reading data from SAP OLTP systems like ERP or CRM or SRM; or
+> * SAP SLT being used to replicate data between multiple SPA systems or even between SAP and non-SAP systems; or
+> * SAP S/4 connected to an SAP ERP system; etc.
 
 
-### <a name="supported-os-and-database-releases"></a>Desteklenen işletim sistemi ve veritabanı sürümleri
-* Azure sanal makine Hizmetleri için desteklenen Microsoft sunucu yazılımları bu makalede listelenmiştir: <https://support.microsoft.com/kb/2721672>.
-* Desteklenen işletim sistemi sürümleri, SAP Software ile birlikte Azure sanal makine hizmetlerinde desteklenen veritabanı sistemi sürümleri, SAP Note [1928533]' de belgelenmiştir.
-* Azure sanal makine hizmetlerinde desteklenen SAP uygulamaları ve sürümleri SAP Note [1928533]' de belgelenmiştir.
-* SAP senaryolarında Azure 'da Konuk VM olarak çalıştırmak için yalnızca 64Bit bit görüntüleri desteklenir. Sonuç olarak, yalnızca 64 bitlik SAP uygulamaları ve veritabanları desteklenir.
+### <a name="supported-os-and-database-releases"></a>Supported OS and Database Releases
+* Microsoft server software supported for Azure Virtual Machine Services is listed in this article: <https://support.microsoft.com/kb/2721672>.
+* Supported operating system releases, database system releases supported on Azure Virtual Machine Services in conjunction with SAP software are documented in SAP Note [1928533].
+* SAP applications and releases supported on Azure Virtual Machine Services are documented in SAP Note [1928533].
+* Only 64Bit images are supported to run as Guest VMs in Azure for SAP scenarios. As a result, only 64-bit SAP applications and databases are supported.
 
-## <a name="microsoft-azure-virtual-machine-services"></a>Microsoft Azure sanal makine Hizmetleri
-Microsoft Azure platformu, Microsoft veri merkezlerinde barındırılan ve çalıştırılan bir İnternet ölçekli bulut hizmetleri platformudur. Platform Microsoft Azure sanal makine Hizmetleri (hizmet olarak altyapı veya IaaS) ve bir dizi zengin hizmet olarak platform (PaaS) özelliği içerir.
+## <a name="microsoft-azure-virtual-machine-services"></a>Microsoft Azure Virtual Machine Services
+The Microsoft Azure platform is an internet-scale cloud services platform hosted and operated in Microsoft data centers. The platform includes the Microsoft Azure Virtual Machine Services (Infrastructure as a Service, or IaaS) and a set of rich Platform as a Service (PaaS) capabilities.
 
-Azure platformu, ön teknoloji ve altyapı satın alma ihtiyacını azaltır. Web uygulamasını ve bağlı uygulamaları barındırmak, ölçeklendirmek ve yönetmek için isteğe bağlı bilgi işlem ve depolama sağlayarak uygulamaları sürdürmeyi ve işletim sistemlerini basitleştirir. Altyapı yönetimi, bir Kullandıkça Öde fiyatlandırma modeli seçeneğiyle, kullanım ihtiyaçlarını karşılamak için yüksek kullanılabilirlik ve dinamik ölçeklendirme için tasarlanan bir platform ile otomatiktir.
+The Azure platform reduces the need for up-front technology and infrastructure purchases. It simplifies maintaining and operating applications by providing on-demand compute and storage to host, scale, and manage web application and connected applications. Infrastructure management is automated with a platform that is designed for high availability and dynamic scaling to match usage needs with the option of a pay-as-you-go pricing model.
 
-![Microsoft Azure sanal makine Hizmetleri 'nin konumlandırması][planning-guide-figure-400]
+![Positioning of Microsoft Azure Virtual Machine Services][planning-guide-figure-400]
 
-Microsoft, Azure sanal makine Hizmetleri ile IaaS örnekleri olarak Azure 'a özel sunucu görüntüleri dağıtmanızı sağlar (bkz. Şekil 4). Azure 'daki sanal makineler Hyper-V sanal sabit sürücülerine (VHD) dayanır ve konuk işletim sistemi olarak farklı işletim sistemlerini çalıştırabilir.
+With Azure Virtual Machine Services, Microsoft is enabling you to deploy custom server images to Azure as IaaS instances (see Figure 4). The Virtual Machines in Azure are based on Hyper-V virtual hard drives (VHD) and are able to run different operating systems as Guest OS.
 
-Azure sanal makine hizmeti, işlemsel bir perspektiften, şirket içinde dağıtılan sanal makineler gibi benzer deneyimler sağlar. Ancak, altyapıyı temin etmeniz, yönetmeniz ve yönetmeniz önemli ölçüde avantajlıdır. Geliştiriciler ve Yöneticiler, bu sanal makineler içindeki işletim sistemi görüntüsü üzerinde tam denetime sahiptir. Yöneticiler, yazılım dağıtım görevlerinin yanı sıra bakım ve sorun giderme görevlerini gerçekleştirmek için bu sanal makinelerde uzaktan oturum açabilir. Dağıtımın yanı sıra, Azure VM 'lerinin boyutları ve becerileri tek kısıtlamalardır. Bu boyutlar, şirket içinde yapıladıkça yapılandırmada ince bir ayrıntılı olmayabilir. Bir bileşimini temsil eden bir sanal makine türleri seçeneği vardır:
+From an operational perspective, the Azure Virtual Machine Service offers similar experiences as virtual machines deployed on premises. However, it has the significant advantage that you don't need to procure, administer, and manage the infrastructure. Developers and Administrators have full control of the operating system image within these virtual machines. Administrators can sign in remotely in to those virtual machines to perform maintenance and troubleshooting tasks as well as software deployment tasks. In regard to deployment, the only restrictions are the sizes and capabilities of Azure VMs. These sizes may not be as fine granular in configuration as it could be done on premises. There is a choice of VM types that represent a combination of:
 
-* VCPU sayısı
-* Bellek
-* İliştirilebilecek VHD sayısı
-* Ağ ve depolama bant genişlikleri
+* Number of vCPUs
+* Hafıza
+* Number of VHDs that can be attached
+* Network and Storage bandwidths
 
-Sunulan çeşitli farklı sanal makine boyutlarının boyut ve sınırlamaları, [Bu makaledeki (Linux)][virtual-machines-sizes-linux] ve [Bu makaledeki (Windows)][virtual-machines-sizes-windows]bir tabloda görülebilir.
+The size and limitations of various different virtual machines sizes offered can be seen in a table in [this article (Linux)][virtual-machines-sizes-linux] and [this article (Windows)][virtual-machines-sizes-windows].
 
-Azure bölgelerinin her birinde farklı VM Serisi sunulmayabilir (Azure bölgeleri için bir sonraki bölüme bakın). Ayrıca, tüm VM 'Lerin veya VM dizilerinin SAP için sertifikalı olmadığı farkında olun.
+Not all different VM series might be offered in each one of the Azure Regions (for Azure Regions see next chapter). Also be aware that not all VMs or VM-Series are certified for SAP.
 
 > [!IMPORTANT]
-> SAP NetWeaver tabanlı uygulamaların kullanımı için, yalnızca SAP Note [1928533] ' de listelenen VM türlerinin ve yapılandırmaların alt kümesi desteklenir.
+> For the use of SAP NetWeaver based applications, only the subset of VM types and configurations listed in SAP Note [1928533] are supported.
 >
 >
 
-### <a name="be80d1b9-a463-4845-bd35-f4cebdb5424a"></a>Azure bölgeleri
-Sanal makineler, *Azure bölgeleri*olarak adlandırılan bir uygulamasına dağıtılır. Bir Azure bölgesi yakın bir yerde bulunan bir veya birden çok veri merkezi olabilir. Microsoft, dünyanın en az iki Azure bölgesine sahiptir. Örneğin, Avrupa 'da *Kuzey Avrupa* Azure bölgesi ve *Batı Avrupa*biridir. Bir coğrafi bölge içindeki bu iki Azure bölgesi, doğal veya teknik felaketler aynı coğrafi bölgede her iki Azure bölgesini de etkilememesi için yeterince önemli ölçüde ayrılır. Microsoft, yeni Azure bölgelerini küresel olarak farklı coğrafi bölgelerde artmasıyla bir şekilde kullanıma sunduğundan, bu bölgelerin sayısı artmasıyla artmıştır ve 2015 Aralık itibariyle daha önce duyurulan ek bölgelere sahip 20 Azure bölgesinin sayısına ulaşıldı. Bir müşteri olarak, Çin 'deki iki Azure bölgesi de dahil olmak üzere, bu bölgelere SAP sistemleri dağıtabilirsiniz. Azure bölgeleri hakkındaki güncel güncel bilgiler için şu Web sitesine bakın:<https://azure.microsoft.com/regions/>
+### <a name="be80d1b9-a463-4845-bd35-f4cebdb5424a"></a>Azure Regions
+Virtual Machines are deployed into so called *Azure Regions*. An Azure Region may be one or multiple data centers that are located in close proximity. For most of the geopolitical regions in the world, Microsoft has at least two Azure Regions. For example, in Europe there is an Azure Region of *North Europe* and one of *West Europe*. Such two Azure Regions within a geopolitical region are separated by significant enough distance so that natural or technical disasters do not affect both Azure Regions in the same geopolitical region. Since Microsoft is steadily building out new Azure Regions in different geopolitical regions globally, the number of these regions is steadily growing and as of Dec 2015 reached the number of 20 Azure Regions with additional Regions announced already. You as a customer can deploy SAP systems into all these regions, including the two Azure Regions in China. For current up-to-date information about Azure regions see this website: <https://azure.microsoft.com/regions/>
 
-### <a name="8d8ad4b8-6093-4b91-ac36-ea56d80dbf77"></a>Microsoft Azure sanal makine kavramı
-Microsoft Azure, bir hizmet olarak altyapı (IaaS) çözümü sunarak benzer işlevlere sahip sanal makineleri şirket içi bir sanallaştırma çözümü olarak barındırır. Dağıtım ve yönetim özelliklerini de sunan Azure portal, PowerShell veya CLı içinden sanal makineler oluşturabilirsiniz.
+### <a name="8d8ad4b8-6093-4b91-ac36-ea56d80dbf77"></a>The Microsoft Azure Virtual Machine Concept
+Microsoft Azure offers an Infrastructure as a Service (IaaS) solution to host Virtual Machines with similar functionalities as an on-premises virtualization solution. You are able to create Virtual Machines from within the Azure portal, PowerShell or CLI, which also offer deployment and management capabilities.
 
-Azure Resource Manager, uygulamalarınızı bildirim temelli bir şablon aracılığıyla sağlamanıza olanak tanır. Tek bir şablonda birden çok hizmeti bağımlılıklarıyla birlikte dağıtabilirsiniz. Uygulama yaşam döngüsünün her aşamasında uygulamanızı tekrar tekrar dağıtmak için aynı şablonu kullanırsınız.
+Azure Resource Manager bildirim temelli bir şablon kullanarak uygulamalarınıza kaynak sağlamanıza olanak tanır. Tek bir şablonda birden çok hizmeti bağımlılıklarıyla birlikte dağıtabilirsiniz. You use the same template to repeatedly deploy your application during every stage of the application life cycle.
 
-Kaynak Yöneticisi şablonları kullanma hakkında daha fazla bilgiye buradan ulaşabilirsiniz:
+More information about using Resource Manager templates can be found here:
 
-* [Azure Resource Manager şablonları ve Azure CLı kullanarak sanal makineleri dağıtma ve yönetme](../../linux/create-ssh-secured-vm-from-template.md)
-* [Azure Resource Manager ve PowerShell kullanarak sanal makineleri yönetme][virtual-machines-deploy-rmtemplates-powershell]
+* [Deploy and manage virtual machines by using Azure Resource Manager templates and the Azure CLI](../../linux/create-ssh-secured-vm-from-template.md)
+* [Manage virtual machines using Azure Resource Manager and PowerShell][virtual-machines-deploy-rmtemplates-powershell]
 * <https://azure.microsoft.com/documentation/templates/>
 
-Diğer ilginç bir özellik, sanal makinelerden görüntü oluşturma olanağıdır. bu sayede, gereksinimlerinizi karşılayan sanal makine örneklerini hızlı bir şekilde dağıtabileceğiniz belirli depolar hazırlanabilirsiniz.
+Another interesting feature is the ability to create images from Virtual Machines, which allows you to prepare certain repositories from which you are able to quickly deploy Virtual machine instances, which meet your requirements.
 
-Sanal makinelerden görüntü oluşturma hakkında daha fazla bilgi, [Bu makalede (Linux)][virtual-machines-linux-capture-image-resource-manager] ve [Bu makalede (Windows)][virtual-machines-windows-capture-image-resource-manager]bulunabilir.
+More information about creating images from Virtual Machines can be found in [this article (Linux)][virtual-machines-linux-capture-image-resource-manager] and [this article (Windows)][virtual-machines-windows-capture-image-resource-manager].
 
-#### <a name="df49dc09-141b-4f34-a4a2-990913b30358"></a>Hata etki alanları
-Hata etki alanları, veri merkezlerinde bulunan fiziksel altyapıyla yakından ilişkili olan fiziksel bir hata birimini temsil eder ve bir fiziksel dikey pencere veya raf bir hata etki alanı olarak kabul edildiğinde, ikisi arasında doğrudan bire bir eşleme yoktur.
+#### <a name="df49dc09-141b-4f34-a4a2-990913b30358"></a>Fault Domains
+Fault Domains represent a physical unit of failure, closely related to the physical infrastructure contained in data centers, and while a physical blade or rack can be considered a Fault Domain, there is no direct one-to-one mapping between the two.
 
-Birden çok sanal makineyi Microsoft Azure sanal makine Hizmetleri ' nde bir SAP sisteminin bir parçası olarak dağıttığınızda, uygulamanızı farklı hata etki alanlarına dağıtmak için Azure yapı denetleyicisi 'ni etkileyebilir ve böylece SLA Microsoft Azure. Ancak, bir Azure ölçek birimi (yüzlerce Işlem düğümü veya depolama düğümü ve ağ koleksiyonu) üzerinden hata etki alanlarının dağıtılması veya VM 'lerin belirli bir hata etki alanına atanması, doğrudan denetime sahip olduğunuz bir şeydir. Azure yapı denetleyicisi 'ni farklı hata etki alanları üzerinden bir VM kümesi dağıtmak üzere yönlendirmek için, dağıtım zamanında VM 'lere bir Azure kullanılabilirlik kümesi atamanız gerekir. Azure kullanılabilirlik kümeleri hakkında daha fazla bilgi için bu belgedeki bölüm [Azure kullanılabilirlik kümeleri][planning-guide-3.2.3] bölümüne bakın.
+When you deploy multiple Virtual Machines as part of one SAP system in Microsoft Azure Virtual Machine Services, you can influence the Azure Fabric Controller to deploy your application into different Fault Domains, thereby meeting the requirements of the Microsoft Azure SLA. However, the distribution of Fault Domains over an Azure Scale Unit (collection of hundreds of Compute nodes or Storage nodes and networking) or the assignment of VMs to a specific Fault Domain is something over which you do not have direct control. In order to direct the Azure fabric controller to deploy a set of VMs over different Fault Domains, you need to assign an Azure Availability Set to the VMs at deployment time. For more information on Azure Availability Sets, see chapter [Azure Availability Sets][planning-guide-3.2.3] in this document.
 
-#### <a name="fc1ac8b2-e54a-487c-8581-d3cc6625e560"></a>Yükseltme etki alanları
-Yükseltme etki alanları, birden çok VM 'de çalışan SAP örneklerinden oluşan SAP sistemi içindeki bir VM 'nin nasıl güncelleştirileceğini belirlemede yardımcı olan bir mantıksal birimi temsil eder. Bir yükseltme gerçekleştiğinde Microsoft Azure, bu yükseltme etki alanlarını tek tek güncelleştirme sürecindedir. VM 'Leri dağıtım zamanında farklı yükseltme etki alanları üzerinden yayarak, SAP sisteminizi kısmen olası kapalı kalma süresinden koruyabilirsiniz. Azure 'u, farklı yükseltme etki alanları üzerinden SAP sisteminin sanal makinelerini dağıtmaya zorlamak için, her bir VM 'nin dağıtım zamanında belirli bir öznitelik ayarlamanız gerekir. Hata etki alanlarına benzer şekilde, Azure ölçek birimi birden fazla yükseltme etki alanına bölünmüştür. Azure yapı denetleyicisi 'ni farklı yükseltme etki alanları üzerinden bir VM kümesi dağıtmak üzere yönlendirmek için, dağıtım zamanında VM 'lere bir Azure kullanılabilirlik kümesi atamanız gerekir. Azure kullanılabilirlik kümeleri hakkında daha fazla bilgi için aşağıdaki bölüm [Azure kullanılabilirlik kümeleri][planning-guide-3.2.3] bölümüne bakın.
+#### <a name="fc1ac8b2-e54a-487c-8581-d3cc6625e560"></a>Upgrade Domains
+Upgrade Domains represent a logical unit that helps to determine how a VM within an SAP system, that consists of SAP instances running in multiple VMs, is updated. When an upgrade occurs, Microsoft Azure goes through the process of updating these Upgrade Domains one by one. By spreading VMs at deployment time over different Upgrade Domains, you can protect your SAP system partly from potential downtime. In order to force Azure to deploy the VMs of an SAP system spread over different Upgrade Domains, you need to set a specific attribute at deployment time of each VM. Similar to Fault Domains, an Azure Scale Unit is divided into multiple Upgrade Domains. In order to direct the Azure fabric controller to deploy a set of VMs over different Upgrade Domains, you need to assign an Azure Availability Set to the VMs at deployment time. For more information on Azure Availability Sets, see chapter [Azure Availability Sets][planning-guide-3.2.3] below.
 
-#### <a name="18810088-f9be-4c97-958a-27996255c665"></a>Azure kullanılabilirlik kümeleri
-Tek bir Azure kullanılabilirlik kümesindeki Azure sanal makineleri, farklı hata ve yükseltme etki alanları üzerinden Azure yapı denetleyicisi tarafından dağıtılır. Farklı hata ve yükseltme etki alanları üzerinden dağıtımın amacı, bir SAP sisteminin tüm VM 'lerinin altyapı bakımı veya bir hata etki alanındaki bir hata durumunda kapatılmasını önlemektir. Varsayılan olarak, VM 'Ler bir kullanılabilirlik kümesinin parçası değildir. Bir VM 'nin bir kullanılabilirlik kümesinde katılımı, bir VM 'nin yeniden yapılandırılması ve yeniden dağıtılması ile dağıtım sırasında veya sonrasında tanımlanır.
+#### <a name="18810088-f9be-4c97-958a-27996255c665"></a>Azure Availability Sets
+Azure Virtual Machines within one Azure Availability Set are distributed by the Azure Fabric Controller over different Fault and Upgrade Domains. The purpose of the distribution over different Fault and Upgrade Domains is to prevent all VMs of an SAP system from being shut down in the case of infrastructure maintenance or a failure within one Fault Domain. By default, VMs are not part of an Availability Set. The participation of a VM in an Availability Set is defined at deployment time or later on by a reconfiguration and redeployment of a VM.
 
-Azure kullanılabilirlik kümeleri kavramını ve kullanılabilirlik kümelerinin hata ve yükseltme etki alanlarıyla ilişkisini anlamak için [Bu makaleyi][virtual-machines-manage-availability] okuyun
+To understand the concept of Azure Availability Sets and the way Availability Sets relate to Fault and Upgrade Domains, read [this article][virtual-machines-manage-availability]
 
-Bir JSON şablonu aracılığıyla Azure Resource Manager kullanılabilirlik kümelerini tanımlamak için [REST API özelliklerine](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-compute/2015-06-15/swagger/compute.json) bakın ve "kullanılabilirlik" araması yapın.
+To define availability sets for Azure Resource Manager via a json template, see [the rest-api specs](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-compute/2015-06-15/swagger/compute.json) and search for "availability".
 
-### <a name="a72afa26-4bf4-4a25-8cf7-855d6032157f"></a>Depo Microsoft Azure Depolama ve veri diskleri
-Microsoft Azure Sanal Makineler farklı depolama türlerini kullanır. SAP 'yi Azure sanal makine Hizmetleri 'nde uygularken, bu iki ana depolama türü arasındaki farklılıkları anlamak önemlidir:
+### <a name="a72afa26-4bf4-4a25-8cf7-855d6032157f"></a>Storage: Microsoft Azure Storage and Data Disks
+Microsoft Azure Virtual Machines utilize different storage types. When implementing SAP on Azure Virtual Machine Services, it is important to understand the differences between these two main types of storage:
 
-* Kalıcı olmayan, geçici depolama.
-* Kalıcı depolama alanı.
+* Non-Persistent, volatile storage.
+* Persistent storage.
 
-VM dağıtıldıktan sonra Azure VM 'Ler kalıcı olmayan diskler sunar. VM 'nin yeniden başlatılması durumunda, bu sürücülerdeki tüm içerikler silinir. Bu nedenle, veri dosyaları ve veritabanlarının günlük/yineleme dosyalarının, kalıcı olmayan sürücülerde hiçbir koşul olmaması gerekir. Bu kalıcı olmayan sürücülerin tempdb ve temp Tablespaces için uygun olabileceği bazı veritabanları için özel durumlar olabilir. Ancak, bu diskleri kalıcı olmayan bir VM 'Ler için kullanmaktan kaçının çünkü bu kalıcı olmayan sürücüler bu VM ailesiyle üretilen iş ile sınırlıdır. Daha fazla ayrıntı için, [Azure 'Da Windows VM 'lerinde geçici sürücüyü anlama](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/) makalesini okuyun.
+Azure VMs offer non-persistent disks after a VM is deployed. In case of a VM reboot, all content on those drives will be wiped out. Hence, it is a given that data files and log/redo files of databases should under no circumstances be located on those non-persisted drives. There might be exceptions for some of the databases, where these non-persisted drives could be suitable for tempdb and temp tablespaces. However, avoid using those drives for A-Series VMs since those non-persisted drives are limited in throughput with that VM family. For further details, read the article [Understanding the temporary drive on Windows VMs in Azure](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
 
 ---
 > ![Windows][Logo_Windows] Windows
 > 
-> Sürücü D:\ Azure VM 'de, Azure işlem düğümündeki bazı yerel diskler tarafından desteklenen kalıcı olmayan bir sürücüdür. Kalıcı olmadığı için bu, D:\ ' deki içerikte yapılan tüm değişikliklerin yapıldığı anlamına gelir. VM yeniden başlatıldığında sürücü kaybedilir. "Tüm değişiklikler", depolanan dosyalar, oluşturulan dizinler, yüklü uygulamalar vb. gibi.
+> Drive D:\ in an Azure VM is a non-persisted drive, which is backed by some local disks on the Azure compute node. Because it is non-persisted, this means that any changes made to the content on the D:\ drive is lost when the VM is rebooted. By "any changes",  like files stored, directories created, applications installed, etc.
 > 
 > ![Linux][Logo_Linux] Linux
 > 
-> Linux Azure VM 'Leri, Azure işlem düğümündeki yerel disklerle desteklenen kalıcı olmayan bir sürücü olan/mnt/Resource dizininde otomatik olarak bir sürücü bağlayabilir. Kalıcı olmadığı için bu,/mnt/Resource dosyasındaki içerikte yapılan tüm değişikliklerin VM yeniden başlatıldığında kaybedildiği anlamına gelir. Depolanan dosyalar, oluşturulan dizinler, yüklü uygulamalar vb. gibi değişiklikler tarafından yapılır.
+> Linux Azure VMs automatically mount a drive at /mnt/resource that is a non-persisted drive backed by local disks on the Azure compute node. Because it is non-persisted, this means that any changes made to content in /mnt/resource are lost when the VM is rebooted. By any changes, like files stored, directories created, applications installed, etc.
 > 
 > 
 
 ---
 
-Microsoft Azure Depolama kalıcı depolama ve SAN depolamada görülen tipik koruma ve artıklık düzeyleri sağlar. Azure Storage tabanlı diskler, Azure Storage hizmetlerinde bulunan sanal sabit disktir (VHD). Yerel işletim sistemi-disk (Windows C:\, Linux/dev/sda1), Azure depolama 'da depolanır ve VM 'ye bağlanan ek birimler/diskler de burada depolanır.
+Microsoft Azure Storage provides persisted storage and the typical levels of protection and redundancy seen on SAN storage. Disks based on Azure Storage are virtual hard disk (VHDs) located in the Azure Storage Services. The local OS-Disk (Windows C:\, Linux /dev/sda1) is stored on the Azure Storage, and additional Volumes/Disks mounted to the VM get stored there, too.
 
-Mevcut bir VHD 'yi şirket içinde karşıya yüklemek veya Azure içinden boş olanları oluşturmak ve bunları dağıtılan VM 'lere eklemek mümkündür.
+It is possible to upload an existing VHD from on-premises or create empty ones from within Azure and attach those to deployed VMs.
 
-Bir VHD 'YI Azure depolama 'ya oluşturduktan veya karşıya yükledikten sonra, var olan bir sanal makineye bunları bağlamak ve var olan (çıkarılmış) VHD 'YI kopyalamak mümkündür.
+After creating or uploading a VHD into Azure Storage, it is possible to mount and attach those to an existing Virtual Machine and to copy existing (unmounted) VHD.
 
-Bu VHD 'ler kalıcı olduğu için, bir sanal makine örneğini yeniden başlatma ve yeniden oluşturma sırasında bunlar içindeki veriler ve değişiklikler güvenlidir. Bir örnek silinmiş olsa da, bu VHD 'Ler güvende kalır ve işletim sistemi dışındaki disklerin diğer VM 'lere bağlanması durumunda yeniden dağıtılabilir.
+As those VHDs are persisted, data and changes within those are safe when rebooting and recreating a Virtual Machine instance. Even if an instance is deleted, these VHDs stay safe and can be redeployed or in case of non-OS disks can be mounted to other VMs.
 
-Azure depolama hakkında daha fazla bilgiyi şurada bulabilirsiniz:
+More information about Azure Storage can be found here:
 
 * <https://azure.microsoft.com/documentation/services/storage/>
 * <https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>
 * <https://blogs.msdn.com/b/azuresecurity/archive/2015/11/17/azure-disk-encryption-for-linux-and-windows-virtual-machines-public-preview.aspx>
 
-#### <a name="azure-standard-storage"></a>Azure Standart depolama
-Azure Standart depolama, Azure IaaS yayınlandığında kullanılabilen depolama türüdür. Tek disk başına uygulanan ıOPS kotası vardı. Karşılaşılan gecikme süresi, genellikle şirket içinde barındırılan yüksek kaliteli SAP sistemleri için dağıtılan SAN/NAS cihazlarıyla aynı sınıfta değildi. Bununla birlikte, Azure Standart depolama, Azure 'da dağıtılan birçok yüzlerce SAP sistemi için yeterince uzun süre boyunca kullanıma yöneliktir.
+#### <a name="azure-standard-storage"></a>Azure Standard Storage
+Azure Standard storage was the type of storage available when Azure IaaS was released. There were IOPS quotas enforced per single disk. Latency experienced was not in the same class as SAN/NAS devices typically deployed for high-end SAP systems hosted on-premises. Nevertheless, the Azure Standard Storage proved sufficient for many hundreds SAP systems meanwhile deployed in Azure.
 
-Azure Standart depolama hesaplarında depolanan diskler, depolanan gerçek veriler, depolama işlemleri hacmi, giden veri aktarımları ve artıklık seçeneği temelinde ücretlendirilir. Birçok disk, en fazla 1 TB boyutunda oluşturulabilir, ancak boş kaldığı sürece hiçbir ücret alınmaz. Bir VHD 'yi 100 GB ile doldurursanız, VHD 'nin ile oluşturduğu Nominal boyut için değil, 100 GB depolama için ücretlendirilirsiniz.
+Disks that are stored on Azure Standard Storage Accounts are charged based on the actual data that is stored, the volume of storage transactions, outbound data transfers, and redundancy option chosen. Many disks can be created at the maximum 1TB in size, but as long as those remain empty there is no charge. If you then fill one VHD with 100GB each, you are charged for storing 100GB and not for the nominal size the VHD got created with.
 
-#### <a name="ff5ad0f9-f7f4-4022-9102-af07aef3bc92"></a>Azure Premium Depolama
-Azure Premium Depolama, şunları sağlamak için hedefle tanıtılmıştır:
+#### <a name="ff5ad0f9-f7f4-4022-9102-af07aef3bc92"></a>Azure Premium Storage
+Azure Premium Storage got introduced with the goal to provide:
 
-* Daha iyi g/ç gecikmesi.
-* Daha iyi üretilen iş.
-* G/ç gecikmede daha az değişkenlik.
+* Better I/O latency.
+* Better throughput.
+* Less variability in I/O latency.
 
-Bu amaçla, en önemli iki değişikliğin bulunduğu birçok değişiklik yapılmıştır:
+For that purpose, many changes were introduced of which the two most significant are:
 
-* Azure depolama düğümlerinde SSD disklerinin kullanımı
-* Bir Azure işlem düğümünün yerel SSD 'si tarafından desteklenen yeni bir okuma önbelleği
+* Usage of SSD disks in the Azure Storage nodes
+* A new read cache that is backed by the local SSD of an Azure compute node
 
-Yeteneklerin disk (veya VHD) boyutuna bağlı olarak değişmediği standart depolamanın tersine, Premium Depolama şu anda bu makalede gösterilen üç farklı disk kategorisine sahiptir:<https://azure.microsoft.com/pricing/details/storage/unmanaged-disks/>
+In opposite to Standard storage where capabilities did not change dependent on the size of the disk (or VHD), Premium Storage currently has three different disk categories, which are shown in this article: <https://azure.microsoft.com/pricing/details/storage/unmanaged-disks/>
 
-IOPS/disk ve disk işleme/disk 'in disklerin boyut kategorisine bağlı olduğunu görürsünüz
+You see that IOPS/disk and disk throughput/disk are dependent on the size category of the disks
 
-Premium Depolama söz konusu olduğunda maliyet temeli, bu tür disklerde depolanan gerçek veri hacmi değildir, ancak bu tür bir diskin disk içinde depolanan veri miktarından bağımsız olarak boyut kategorisi olur.
+Cost basis in the case of Premium Storage is not the actual data volume stored in such disks, but the size category of such a disk, independent of the amount of the data that is stored within the disk.
 
-Ayrıca, gösterilen boyut kategorilerine doğrudan eşlenmemiş Premium depolamada diskler oluşturabilirsiniz. Özellikle, diskler standart depolamadan Premium depolamaya kopyalanırken bu durum olabilir. Bu gibi durumlarda, bir sonraki en büyük Premium Depolama diski ile eşleme yapılır.
+You also can create disks on Premium Storage that are not directly mapping into the size categories shown. This may be the case, especially when copying disks from Standard Storage into Premium Storage. In such cases a mapping to the next largest Premium Storage disk option is performed.
 
-SAP ile sertifikalı Azure VM ailelerinin birçoğu, Premium Depolama ile veya Azure Standard ile Premium Depolama arasında bir karışımta çalışabilir.
+Most of the Azure VM families certified with SAP are able to work with Premium Storage and or a mixture between Azure standard and Premium Storage.
 
-[Bu makalede (Linux)][virtual-machines-sizes-linux] ve [Bu makalede (Windows)][virtual-machines-sizes-windows]DS serisi VM 'lerinin bir bölümünü kullanıma Sundıysanız, Premium Depolama disklerinin VM düzeyinin ayrıntı düzeyi üzerinde veri hacmi sınırlamaları olduğunu fark etmiş olursunuz. Farklı DS serisi veya GS serisi VM 'lerinin Ayrıca, bağlanalabilen veri disklerinin sayısına göre farklı sınırlamaları vardır. Bu sınırlar yukarıda bahsedilen makalede da belgelenmiştir. Ancak, örneğin, 32 x P30 disklerini tek bir DS14 sanal makinesine bağlarsanız, P30 diskinin en yüksek aktarım hızını 32 x alamaz. Bunun yerine, makalede belgelendiği gibi VM düzeyindeki en yüksek aktarım hızı, veri üretimini sınırlar.
+If you are checking out the part of the DS-series VMs in [this article (Linux)][virtual-machines-sizes-linux] and [this article (Windows)][virtual-machines-sizes-windows], you realize that there are data volume limitations to Premium Storage disks on the granularity of the VM level. Different DS-series or GS-series VMs also have different limitations in regards to the number of data disks that can be mounted. These limits are documented in the article mentioned above as well. But in essence it means that if you, for example, mount 32 x P30 disks to a single DS14 VM you can NOT get 32 x the maximum throughput of a P30 disk. Instead the maximum throughput on VM level as documented in the article limits data throughput.
 
-Premium depolama hakkında daha fazla bilgi için şurada bulunabilir:<https://azure.microsoft.com/blog/2015/04/16/azure-premium-storage-now-generally-available-2>
+More information on Premium Storage can be found here: <https://azure.microsoft.com/blog/2015/04/16/azure-premium-storage-now-generally-available-2>
 
 #### <a name="azure-storage-accounts"></a>Azure Depolama Hesapları
 
-Azure 'da hizmet veya VM 'Leri dağıttığınızda, VHD 'lerin ve VM görüntülerinin dağıtımı, Azure depolama hesapları adlı birimlerde düzenlenebilir. Bir Azure dağıtımı planlarken, Azure 'un kısıtlamalarını dikkatle göz önünde bulundurmanız gerekir. Bir tarafta, Azure aboneliği başına sınırlı sayıda depolama hesabı vardır. Her Azure depolama hesabı çok sayıda VHD dosyası tutabilecek olsa da, depolama hesabı başına toplam ıOPS üzerinde sabit bir sınır vardır. DBMS sistemleri ile yüzlerce SAP VM dağıtırken, önemli GÇ çağrıları oluşturan çok sayıda Azure depolama hesabı arasında yüksek ıOPS DBMS VM 'Leri dağıtmanız önerilir. Her abonelik için Azure depolama hesaplarının geçerli limitini aşmamak için dikkatli olunması gerekir. Depolama alanı, bir SAP sistemi için veritabanı dağıtımının önemli bir parçası olduğundan, bu kavram zaten başvurulan [DBMS dağıtım kılavuzunda][dbms-guide]daha ayrıntılı bir şekilde ele alınmıştır.
+When deploying services or VMs in Azure, deployment of VHDs and VM Images can be organized in units called Azure Storage Accounts. When planning an Azure deployment, you need to carefully consider the restrictions of Azure. On the one side, there is a limited number of Storage Accounts per Azure subscription. Although each Azure Storage Account can hold a large number of VHD files, there is a fixed limit on the total IOPS per Storage Account. When deploying hundreds of SAP VMs with DBMS systems creating significant IO calls, it is recommended to distribute high IOPS DBMS VMs between multiple Azure Storage Accounts. Care must be taken not to exceed the current limit of Azure Storage Accounts per subscription. Because storage is a vital part of the database deployment for an SAP system, this concept is discussed in more detail in the already referenced [DBMS Deployment Guide][dbms-guide].
 
-[Bu makalede][storage-scalability-targets]Azure depolama hesapları hakkında daha fazla bilgi bulabilirsiniz. Bu makaleyi okuyarak, Azure Standart depolama hesapları ve Premium Depolama hesapları arasındaki sınırlamalarla ilgili farklılıklar olduğunu fark etmiş olursunuz. Önemli farklılıklar, böyle bir depolama hesabı içinde depolanabilecek veri birimidir. Standart depolamada, birim, Premium depolamayla daha büyük bir büyüklük. Diğer taraftan, standart depolama hesabı ıOPS 'de ciddi ölçüde sınırlıdır (bkz. sütun **Toplam Istek oranı**), ancak Azure Premium depolama hesabının böyle bir sınırlaması yoktur. SAP sistemlerinin, özellikle de DBMS sunucularının dağıtımlarını ele alırken bu farklılıkların ayrıntılarını ve sonuçlarını tartışacağız.
+More information about Azure Storage Accounts can be found in [this article][storage-scalability-targets]. Reading this article, you realize that there are differences in the limitations between Azure Standard Storage Accounts and Premium Storage Accounts. Major differences are the volume of data that can be stored within such a Storage Account. In Standard Storage the volume is a magnitude larger than with Premium Storage. On the other side, the Standard Storage Account is severely limited in IOPS (see column **Total Request Rate**), whereas the Azure Premium Storage Account has no such limitation. We will discuss details and results of these differences when discussing the deployments of SAP systems, especially the DBMS servers.
 
-Bir depolama hesabı içinde, farklı VHD 'leri düzenlemek ve kategorilere ayırmak amacıyla farklı kapsayıcılar oluşturma olanağına sahip olursunuz. Bu kapsayıcılar, örneğin farklı VM 'lerin ayrı VHD 'Leri için kullanılır. Tek bir kapsayıcı veya birden çok kapsayıcıyı tek bir Azure depolama hesabı altında kullanmanın hiçbir performans etkileri yoktur.
+Within a Storage Account, you have the possibility to create different containers for the purpose of organizing and categorizing different VHDs. These containers are used to, for example, separate VHDs of different VMs. There are no performance implications in using just one container or multiple containers underneath a single Azure Storage Account.
 
-Azure 'da bir VHD adı, Azure 'da VHD için benzersiz bir ad sağlaması gereken aşağıdaki adlandırma bağlantısını izler:
+Within Azure a VHD name follows the following naming connection that needs to provide a unique name for the VHD within Azure:
 
     http(s)://<storage account name>.blob.core.windows.net/<container name>/<vhd name>
 
-Yukarıdaki dize, Azure depolama 'da depolanan VHD 'YI benzersiz şekilde tanımlamalıdır.
+The string above needs to uniquely identify the VHD that is stored on Azure Storage.
 
-#### <a name="c55b2c6e-3ca1-4476-be16-16c81927550f"></a>Yönetilen diskler
+#### <a name="c55b2c6e-3ca1-4476-be16-16c81927550f"></a>Managed Disks
 
-Yönetilen diskler, Azure depolama hesaplarında depolanan VHD 'ler yerine kullanılabilecek Azure Resource Manager yeni bir kaynak türüdür. Yönetilen diskler, bağlı oldukları sanal makine kullanılabilirlik kümesiyle otomatik olarak hizalanır ve bu nedenle sanal makinenizin ve sanal makinede çalışan hizmetlerin kullanılabilirliğini arttırır. Daha fazla bilgi için [genel bakış makalesini](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview)okuyun.
+Managed Disks are a new resource type in Azure Resource Manager that can be used instead of VHDs that are stored in Azure Storage Accounts. Managed Disks automatically align with the Availability Set of the virtual machine they are attached to and therefore increase the availability of your virtual machine and the services that are running on the virtual machine. For more information, read the [overview article](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview).
 
-Sanal makinelerinizin dağıtımını ve yönetimini basitleştireceğiz için yönetilen disk kullanmanızı öneririz.
-SAP Şu anda yalnızca Premium yönetilen diskleri destekler. Daha fazla bilgi için SAP Note [1928533]makalesini okuyun.
+We recommend to you use Managed disk, because they simplify the deployment and management of your virtual machines.
+SAP currently only supports Premium Managed Disks. For more information, read SAP Note [1928533].
 
-#### <a name="microsoft-azure-storage-resiliency"></a>Microsoft Azure Depolama dayanıklılık
+#### <a name="microsoft-azure-storage-resiliency"></a>Microsoft Azure Storage resiliency
 
-Microsoft Azure Depolama, temel VHD 'yi (işletim sistemi) ve bağlı diskleri veya Blobları en az üç ayrı depolama düğümüne depolar. Bu olgu yerel yedekli depolama (LRS) olarak adlandırılır. LRS, Azure 'daki tüm depolama türleri için varsayılandır. 
+Microsoft Azure Storage stores the base VHD (with OS) and attached disks or BLOBs on at least three separate storage nodes. This fact is called Local Redundant Storage (LRS). LRS is default for all types of storage in Azure. 
 
-[Azure Storage çoğaltma](https://docs.microsoft.com/azure/storage/common/storage-redundancy?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)makalesinde açıklanan, daha birçok artıklık yöntemi vardır.
-
-> [!NOTE]
->Azure Premium Depolama itibariyle, DBMS VM 'Ler için önerilen depolama türü ve veritabanı ve günlük/yineleme dosyalarını depolayan diskler, kullanılabilir tek yöntem ise LRS 'dir. Sonuç olarak, veritabanı veri çoğaltmasını başka bir Azure bölgesine veya başka bir Azure kullanılabilirlik bölgesine etkinleştirmek için SQL Server Always on, Oracle Data Guard veya HANA sistem çoğaltması gibi veritabanı yöntemlerini yapılandırmanız gerekir.
-
+There are several more redundancy methods, which are all described in the article [Azure Storage replication](https://docs.microsoft.com/azure/storage/common/storage-redundancy?toc=%2fazure%2fstorage%2fqueues%2ftoc.json).
 
 > [!NOTE]
-> DBMS dağıtımları için, coğrafi olarak yedekli depolamanın Azure Standart depolama ile kullanılabilir olarak kullanılması önerilmez çünkü bu, önemli performans etkisine sahiptir ve bir VM 'ye bağlı farklı VHD 'lerde yazma sırasını dikkate almaz. Veritabanı ve günlük/yineleme dosyaları, kaynak VM tarafında birden çok VHD 'ye yayıldığında (büyük olasılıkla durum olarak), çoğaltma hedefi tarafında, farklı VHD 'lerde yazma sırasının dayanmasının büyük bir olasılığı vardır.
+>As of Azure Premium Storage, which is the recommended type of storage for DBMS VMs and disks that store database and log/redo files, the only available method is LRS. As a result, you need to configure database methods, like SQL Server Always On, Oracle Data Guard or HANA System Replication to enable database data replication into another Azure Region or another Azure Availability Zone.
 
 
-### <a name="61678387-8868-435d-9f8c-450b2424f5bd"></a>Microsoft Azure ağı
+> [!NOTE]
+> For DBMS deployments, the usage of Geo Redundant Storage as available with Azure Standard Storage is not recommended since it has severe performance impact and does not honor the write order across different VHDs that are attached to a VM. The fact of not honoring the write order across different VHDs bears a high potential to end up in inconsistent databases on the replication target side if database and log/redo files are spread across multiple VHDs (as mostly the case) on the source VM side.
 
-Microsoft Azure, SAP yazılımıyla ilgili tüm senaryoların eşlenmesinin yapılmasına izin veren bir ağ altyapısı sağlar. Özellikleri şunlardır:
 
-* Windows Terminal Hizmetleri veya SSH/VNC aracılığıyla dışından doğrudan VM 'lere erişim
-* VM 'Ler içindeki uygulamalar tarafından kullanılan hizmetlere ve belirli bağlantı noktalarına erişim
-* Azure VM 'Leri olarak dağıtılan bir VM grubu arasındaki iç Iletişim ve ad çözümlemesi
-* Müşterinin Şirket içi ağı ve Azure ağı arasındaki şirketler arası bağlantı
-* Azure siteleri arasında çapraz Azure bölgesi veya veri merkezi bağlantısı
+### <a name="61678387-8868-435d-9f8c-450b2424f5bd"></a>Microsoft Azure Networking
+
+Microsoft Azure provides a network infrastructure, which allows the mapping of all scenarios, which we want to realize with SAP software. The capabilities are:
+
+* Access from the outside, directly to the VMs via Windows Terminal Services or ssh/VNC
+* Access to services and specific ports used by applications within the VMs
+* Internal Communication and Name Resolution between a group of VMs deployed as Azure VMs
+* Cross-premises Connectivity between a customer's on-premises network and the Azure network
+* Cross Azure Region or data center connectivity between Azure sites
 
 Buradan daha fazla bilgi bulabilirsiniz: <https://azure.microsoft.com/documentation/services/virtual-network/>
 
-Azure 'da ad ve IP çözümlemesini yapılandırmak için birçok farklı olasılık vardır. Ayrıca, kendi DNS sunucunuzu kurmak yerine kullanılabilecek bir Azure DNS hizmeti de vardır. [Bu makalede][virtual-networks-manage-dns-in-vnet] ve [Bu sayfada](https://azure.microsoft.com/services/dns/)daha fazla bilgi bulunabilir.
+There are many different possibilities to configure name and IP resolution in Azure. There is also an Azure DNS service, which can be used instead of setting up your own DNS server. More information can be found in [this article][virtual-networks-manage-dns-in-vnet] and on [this page](https://azure.microsoft.com/services/dns/).
 
-Şirketler arası veya Karma senaryolar için şirket içi AD/OpenLDAP/DNS 'in VPN veya özel Azure bağlantısı aracılığıyla genişletildiğinden emin olun. Burada belgelenen bazı senaryolar için, Azure 'da bir AD/OpenLDAP çoğaltmasının yüklü olması gerekebilir.
+For cross-premises or hybrid scenarios, we are relying on the fact that the on-premises AD/OpenLDAP/DNS has been extended via VPN or private connection to Azure. For certain scenarios as documented here, it might be necessary to have an AD/OpenLDAP replica installed in Azure.
 
-Ağ ve ad çözümlemesi bir SAP sistemi için veritabanı dağıtımının önemli bir parçası olduğundan, bu kavram [DBMS dağıtım kılavuzunda][dbms-guide]daha ayrıntılı olarak ele alınmıştır.
+Because networking and name resolution is a vital part of the database deployment for an SAP system, this concept is discussed in more detail in the [DBMS Deployment Guide][dbms-guide].
 
 ##### <a name="azure-virtual-networks"></a>Azure Sanal Ağları
 
-Azure sanal ağını oluşturarak Azure DHCP işlevselliği tarafından ayrılan özel IP adreslerinin adres aralığını tanımlayabilirsiniz. Şirketler arası senaryolarda, tanımlanan IP adresi aralığı yine de Azure tarafından DHCP kullanılarak ayrılır. Bununla birlikte, etki alanı adı çözümlemesi şirket içinde yapılır (VM 'Lerin şirket içi etki alanının bir parçası olduğu varsayıldığında) ve bu nedenle farklı Azure Cloud Services dışındaki adresleri çözebilirler.
+By building up an Azure Virtual Network, you can define the address range of the private IP addresses allocated by Azure DHCP functionality. In cross-premises scenarios, the IP address range defined is still allocated using DHCP by Azure. However, Domain Name resolution is done on-premises (assuming that the VMs are a part of an on-premises domain) and hence can resolve addresses beyond different Azure Cloud Services.
 
-Azure 'daki her sanal makinenin bir sanal ağa bağlanması gerekir.
+Every Virtual Machine in Azure needs to be connected to a Virtual Network.
 
-[Bu makalede][resource-groups-networking] ve [Bu sayfada](https://azure.microsoft.com/documentation/services/virtual-network/)daha fazla ayrıntı bulabilirsiniz.
+More details can be found in [this article][resource-groups-networking] and on [this page](https://azure.microsoft.com/documentation/services/virtual-network/).
 
-
-> [!NOTE]
-> Varsayılan olarak, bir VM dağıtıldıktan sonra sanal ağ yapılandırmasını değiştiremezsiniz. TCP/IP ayarlarının Azure DHCP sunucusuna bırakılması gerekir. Varsayılan davranış dinamik IP atamasıdır.
->
->
-
-Sanal ağ kartının MAC adresi değişebilir, örneğin yeniden boyutlandırdıktan sonra Windows veya Linux konuk işletim sistemi yeni ağ kartını seçer ve bu durumda IP ve DNS adreslerini atamak için DHCP 'yi otomatik olarak kullanır.
-
-##### <a name="static-ip-assignment"></a>Statik IP ataması
-Bir Azure sanal ağı içindeki VM 'lere sabit veya ayrılmış IP adresleri atamak mümkündür. VM 'Leri bir Azure sanal ağında çalıştırmak, bazı senaryolar için gerektiğinde bu işlevden yararlanmak için harika bir olasılık açar. VM 'nin çalışıyor veya kapalı olmasından bağımsız olarak, IP ataması VM 'nin varlığı boyunca geçerli kalır. Sonuç olarak, sanal ağ için IP adresi aralığını tanımlarken VM 'lerin genel sayısını (çalışıyor ve durdurulmuş VM 'Ler) hesaba getirmeniz gerekir. IP adresi, VM ve ağ arabirimi silinene veya IP adresi yeniden atanana kadar atanmış olarak kalır. Daha fazla bilgi için [Bu makaleyi][virtual-networks-static-private-ip-arm-pportal]okuyun.
 
 > [!NOTE]
-> Ayrı sanal NIC 'ler için Azure aracılığıyla statik IP adresleri atamanız gerekir. Konuk işletim sistemi içinde bir vNIC 'e statik IP adresleri atamamalısınız. Azure Backup hizmeti gibi bazı Azure Hizmetleri, en azından birincil vNIC 'nin statik IP adreslerine değil, DHCP olarak ayarlandığı gerçeğini temel alır. Ayrıca bkz. belge [Azure sanal makine yedeklemesi sorunlarını giderme](https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot#networking).
+> By default, once a VM is deployed you cannot change the Virtual Network configuration. The TCP/IP settings must be left to the Azure DHCP server. Default behavior is Dynamic IP assignment.
 >
 >
 
-##### <a name="multiple-nics-per-vm"></a>VM başına birden çok NIC
+The MAC address of the virtual network card may change, for example after resize and the Windows or Linux guest OS picks up the new network card and automatically uses DHCP to assign the IP and DNS addresses in this case.
 
-Bir Azure sanal makinesi için birden çok sanal ağ arabirim kartı (vNIC) tanımlayabilirsiniz. Birden çok vNIC 'ye sahip olmak için, örneğin, istemci trafiği bir vNIC üzerinden yönlendirildiği ve arka uç trafiği ikinci bir vNIC üzerinden yönlendirildiği ağ trafiği ayırmayı ayarlamaya başlayabilirsiniz. Sanal makine türüne bağlı olarak, vNIC sayısına göre farklılık açmış farklı sınırlamalar vardır. Aşağıdaki makalelerde tam ayrıntılar, işlevler ve kısıtlamalar bulunabilir:
+##### <a name="static-ip-assignment"></a>Static IP Assignment
+It is possible to assign fixed or reserved IP addresses to VMs within an Azure Virtual Network. Running the VMs in an Azure Virtual Network opens a great possibility to leverage this functionality if needed or required for some scenarios. The IP assignment remains valid throughout the existence of the VM, independent of whether the VM is running or shutdown. As a result, you need to take the overall number of VMs (running and stopped VMs) into account when defining the range of IP addresses for the Virtual Network. The IP address remains assigned either until the VM and its Network Interface is deleted or until the IP address gets de-assigned again. For more information, read [this article][virtual-networks-static-private-ip-arm-pportal].
 
-* [Birden çok NIC ile Windows VM oluşturma][virtual-networks-multiple-nics-windows]
-* [Birden çok NIC ile Linux VM oluşturma][virtual-networks-multiple-nics-linux]
-* [Şablon kullanarak çoklu NIC VM 'Leri dağıtma][virtual-network-deploy-multinic-arm-template]
-* [PowerShell kullanarak çoklu NIC VM 'Leri dağıtma][virtual-network-deploy-multinic-arm-ps]
-* [Azure CLı kullanarak çoklu NIC VM 'Leri dağıtma][virtual-network-deploy-multinic-arm-cli]
+> [!NOTE]
+> You should assign static IP addresses through Azure means to individual vNICs. You should not assign static IP addresses within the guest OS to a vNIC. Some Azure services like Azure Backup Service rely on the fact that at least the primary vNIC is set to DHCP and not to static IP addresses. See also the document [Troubleshoot Azure virtual machine backup](https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot#networking).
+>
+>
 
-#### <a name="site-to-site-connectivity"></a>Siteden siteye bağlantı
+##### <a name="multiple-nics-per-vm"></a>Multiple NICs per VM
 
-Şirketler arası, Azure VM 'Leri ve bir saydam ve kalıcı VPN bağlantısıyla bağlanmış şirket Içi bir işlemdir. Azure 'da en yaygın SAP dağıtım deseninin olması beklenmektedir. Varsayım, Azure 'daki SAP örneklerine sahip işlem yordamlarının ve işlemlerin saydam bir şekilde çalışmasını sağlamalıdır. Bu, Azure 'daki bir geliştirme sisteminden, şirket içinde dağıtılan bir test sistemine yapılan değişiklikleri aktarmak için, bu sistemlerden ve SAP aktarım yönetimi sistemi 'ni (TMS) kullanmanın yanı sıra bu sistemlerden de yazdırabilmeniz gerektiği anlamına gelir. Siteden siteye geçici olarak [Bu makalede][vpn-gateway-create-site-to-site-rm-powershell] daha fazla belge bulabilirsiniz
+You can define multiple virtual network interface cards (vNIC) for an Azure Virtual Machine. With the ability to have multiple vNICs you can start to set up network traffic separation where, for example, client traffic is routed through one vNIC and backend traffic is routed through a second vNIC. Dependent on the type of VM there are different limitations in regards to the number of vNICs. Exact details, functionality, and restrictions can be found in these articles:
 
-##### <a name="vpn-tunnel-device"></a>VPN tüneli cihazı
+* [Create a Windows VM with multiple NICs][virtual-networks-multiple-nics-windows]
+* [Create a Linux VM with multiple NICs][virtual-networks-multiple-nics-linux]
+* [Deploy multi NIC VMs using a template][virtual-network-deploy-multinic-arm-template]
+* [Deploy multi NIC VMs using PowerShell][virtual-network-deploy-multinic-arm-ps]
+* [Deploy multi NIC VMs using the Azure CLI][virtual-network-deploy-multinic-arm-cli]
 
-Siteden siteye bağlantı oluşturmak için (Azure veri merkezi 'ne şirket içi veri merkezi), bir VPN cihazı edinip yapılandırmanız ya da Windows Server 2012 ile bir yazılım bileşeni olarak tanıtılan yönlendirme ve uzaktan erişim hizmeti (RRAS) kullanmanız gerekir.
+#### <a name="site-to-site-connectivity"></a>Site-to-Site Connectivity
 
-* [PowerShell kullanarak siteden siteye VPN bağlantısı olan bir sanal ağ oluşturma][vpn-gateway-create-site-to-site-rm-powershell]
+Cross-premises is Azure VMs and On-Premises linked with a transparent and permanent VPN connection. It is expected to become the most common SAP deployment pattern in Azure. The assumption is that operational procedures and processes with SAP instances in Azure should work transparently. This means you should be able to print out of these systems as well as use the SAP Transport Management System (TMS) to transport changes from a development system in Azure to a test system, which is deployed on-premises. More documentation around site-to-site can be found in [this article][vpn-gateway-create-site-to-site-rm-powershell]
+
+##### <a name="vpn-tunnel-device"></a>VPN Tunnel Device
+
+In order to create a site-to-site connection (on-premises data center to Azure data center), you need to either obtain and configure a VPN device, or use Routing and Remote Access Service (RRAS) which was introduced as a software component with Windows Server 2012.
+
+* [Create a virtual network with a site-to-site VPN connection using PowerShell][vpn-gateway-create-site-to-site-rm-powershell]
 * [Siteden Siteye VPN Gateway bağlantıları için VPN cihazları hakkında][vpn-gateway-about-vpn-devices]
 * [VPN Gateway ile ilgili SSS][vpn-gateway-vpn-faq]
 
-![Şirket içi ve Azure arasında siteden siteye bağlantı][planning-guide-figure-600]
+![Site-to-site connection between on-premises and Azure][planning-guide-figure-600]
 
-Yukarıdaki şekilde iki Azure aboneliği, Azure 'daki sanal ağlarda kullanılmak üzere ayrılmış IP adresi alt aralıklarının olduğunu gösterir. Şirket içi ağdan Azure 'a bağlantı VPN aracılığıyla oluşturulur.
+The Figure above shows two Azure subscriptions have IP address subranges reserved for usage in Virtual Networks in Azure. The connectivity from the on-premises network to Azure is established via VPN.
 
-#### <a name="point-to-site-vpn"></a>Noktadan siteye VPN
+#### <a name="point-to-site-vpn"></a>Point-to-Site VPN
 
-Noktadan siteye VPN, her istemci makinenin Azure 'a kendi VPN ile bağlanmasını gerektirir. SAP senaryolarında, Noktadan siteye bağlantı, pratik değildir. Bu nedenle, Noktadan siteye VPN bağlantısına başka bir başvuru verilmez.
+Point-to-site VPN requires every client machine to connect with its own VPN into Azure. For the SAP scenarios, we are looking at, point-to-site connectivity is not practical. Therefore, no further references are given to point-to-site VPN connectivity.
 
-Daha fazla bilgiyi burada bulabilirsiniz
+More information can be found here
 * [Azure portal’ı kullanarak bir sanal ağa yönelik Noktadan Siteye bağlantı yapılandırma](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal)
 * [PowerShell'i kullanarak bir sanal ağa yönelik bir Noktadan Siteye bağlantı yapılandırma](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps)
 
-#### <a name="multi-site-vpn"></a>Çok siteli VPN
+#### <a name="multi-site-vpn"></a>Multi-Site VPN
 
-Azure Ayrıca günümüzde, bir Azure aboneliği için çok siteli VPN bağlantısı oluşturma olanağı sunar. Daha önce tek bir abonelik, bir siteden siteye VPN bağlantısıyla sınırlandırıldı. Bu sınırlama, tek bir abonelik için çok siteli VPN bağlantılarıyla kapandı. Bu, şirket içi yapılandırmalarda belirli bir abonelik için birden fazla Azure bölgesinin kullanılmasını mümkün kılar.
+Azure also nowadays offers the possibility to create Multi-Site VPN connectivity for one Azure subscription. Previously a single subscription was limited to one site-to-site VPN connection. This limitation went away with Multi-Site VPN connections for a single subscription. This makes it possible to leverage more than one Azure Region for a specific subscription through cross-premises configurations.
 
-Daha fazla belge için [Bu makaleye][vpn-gateway-create-site-to-site-rm-powershell] bakın
+For more documentation, see [this article][vpn-gateway-create-site-to-site-rm-powershell]
 
-#### <a name="vnet-to-vnet-connection"></a>VNet 'ten VNet 'e bağlantı
+#### <a name="vnet-to-vnet-connection"></a>VNet to VNet Connection
 
-Çok siteli VPN kullanarak, her bir bölgenin ayrı bir Azure Sanal Ağa gelen yapılandırmanız gerekir. Ancak, genellikle farklı bölgelerdeki yazılım bileşenlerinin birbirleriyle iletişim kurması gerekir. İdeal olarak, bu iletişimin bir Azure bölgesinden şirket içine ve diğer Azure bölgesine yönlendirilmemelidir. Azure 'un kısayolu, bir Azure Sanal Ağa gelen bir bölgeden başka bir bölgede barındırılan başka bir Azure sanal ağı arasında bağlantı yapılandırma olanağı sunar. Bu işlevsellik, VNet-VNet bağlantısı olarak adlandırılır. Bu işlevlerle ilgili daha fazla ayrıntı için Buradan bulunabilir: <https://azure.microsoft.com/documentation/articles/vpn-gateway-vnet-vnet-rm-ps/>.
+Using Multi-Site VPN, you need to configure a separate Azure Virtual Network in each of the regions. However often you have the requirement that the software components in the different regions should communicate with each other. Ideally this communication should not be routed from one Azure Region to on-premises and from there to the other Azure Region. To shortcut, Azure offers the possibility to configure a connection from one Azure Virtual Network in one region to another Azure Virtual Network hosted in another region. This functionality is called VNet-to-VNet connection. More details on this functionality can be found here: <https://azure.microsoft.com/documentation/articles/vpn-gateway-vnet-vnet-rm-ps/>.
 
-#### <a name="private-connection-to-azure-expressroute"></a>Azure ExpressRoute 'a özel bağlantı
+#### <a name="private-connection-to-azure-expressroute"></a>Private Connection to Azure ExpressRoute
 
-Microsoft Azure ExpressRoute, Azure veri merkezleri ve müşterinin Şirket içi altyapısı ile ya da bir ortak konum ortamında özel bağlantılar oluşturulmasına izin verir. ExpressRoute, çeşitli MPLS (paket anahtarlamalı) VPN sağlayıcıları veya diğer ağ hizmeti sağlayıcıları tarafından sunulur. ExpressRoute bağlantıları ortak İnternet üzerinden geçmemektedir. ExpressRoute bağlantıları, Internet üzerinden tipik bağlantılardan çok sayıda paralel devre, daha hızlı ve düşük gecikme süreleriyle daha yüksek güvenlik, daha fazla güvenilirlik sunar.
+Microsoft Azure ExpressRoute allows the creation of private connections between Azure data centers and either the customer's on-premises infrastructure or in a co-location environment. ExpressRoute is offered by various MPLS (packet switched) VPN providers or other Network Service Providers. ExpressRoute bağlantıları ortak İnternet üzerinden geçmemektedir. ExpressRoute connections offer higher security, more reliability through multiple parallel circuits, faster speeds, and lower latencies than typical connections over the Internet.
 
-Azure ExpressRoute ve teklifleriyle ilgili daha fazla ayrıntıyı burada bulabilirsiniz:
+Find more details on Azure ExpressRoute and offerings here:
 
 * <https://azure.microsoft.com/documentation/services/expressroute/>
 * <https://azure.microsoft.com/pricing/details/expressroute/>
 * <https://azure.microsoft.com/documentation/articles/expressroute-faqs/>
 
-Express Route, burada belgelenen bir ExpressRoute devresi üzerinden birden çok Azure aboneliğine izin verebilir
+Express Route enables multiple Azure subscriptions through one ExpressRoute circuit as documented here
 
 * <https://azure.microsoft.com/documentation/articles/expressroute-howto-linkvnet-arm/>
 * <https://azure.microsoft.com/documentation/articles/expressroute-howto-circuit-arm/>
 
-#### <a name="forced-tunneling-in-case-of-cross-premises"></a>Şirketler arası durumlarda Zorlamalı tünel
-Şirket içi etki alanlarına siteden siteye, Noktadan siteye veya ExpressRoute aracılığıyla katılan VM 'Ler için, Internet proxy ayarlarının bu VM 'lerdeki tüm kullanıcılar için de dağıtıldığından emin olmanız gerekir. Varsayılan olarak, bu sanal makinelerde çalışan veya internet 'e erişmek için bir tarayıcı kullanan kullanıcılar şirket proxy 'sine gitmez, ancak doğrudan Azure üzerinden İnternet 'e bağlanır. Ancak, proxy ayarı, proxy 'yi denetlemek için yazılım ve hizmetlerin sorumluluğunda olduğundan, trafiği şirket proxy 'si üzerinden yönlendirmek için de% 100 çözümü değildir. VM 'de çalışan yazılım bu işlemleri yapmadığından veya bir yöneticinin ayarları yaptığı takdirde, Internet 'e giden trafik doğrudan Azure üzerinden Internet üzerinden yeniden ayarlanabilir.
+#### <a name="forced-tunneling-in-case-of-cross-premises"></a>Forced tunneling in case of cross-premises
+For VMs joining on-premises domains through site-to-site, point-to-site or ExpressRoute, you need to make sure that the Internet proxy settings are getting deployed for all the users in those VMs as well. By default, software running in those VMs or users using a browser to access the internet would not go through the company proxy, but would connect straight through Azure to the internet. But even the proxy setting is not a 100% solution to direct the traffic through the company proxy since it is responsibility of software and services to check for the proxy. If software running in the VM is not doing that or an administrator manipulates the settings, traffic to the Internet can be detoured again directly through Azure to the Internet.
 
-Bu tür bir doğrudan internet bağlantısını önlemek için, şirket içi ve Azure arasında siteden siteye bağlantı ile Zorlamalı tünel oluşturmayı yapılandırabilirsiniz. Zorlamalı tünel özelliğinin ayrıntılı açıklaması burada yayımlanır<https://azure.microsoft.com/documentation/articles/vpn-gateway-forced-tunneling-rm/>
+In order to avoid such a direct internet connectivity, you can configure Forced Tunneling with site-to-site connectivity between on-premises and Azure. The detailed description of the Forced Tunneling feature is published here <https://azure.microsoft.com/documentation/articles/vpn-gateway-forced-tunneling-rm/>
 
-ExpressRoute ile Zorlamalı tünel, ExpressRoute BGP eşleme oturumları aracılığıyla varsayılan bir yol tanıtan müşteriler tarafından etkinleştirilir.
+Forced Tunneling with ExpressRoute is enabled by customers advertising a default route via the ExpressRoute BGP peering sessions.
 
-#### <a name="summary-of-azure-networking"></a>Azure ağ Özeti
+#### <a name="summary-of-azure-networking"></a>Summary of Azure Networking
 
-Bu bölümde, Azure ağı hakkında birçok önemli nokta bulunmaktadır. Ana noktaların özeti aşağıda verilmiştir:
+This chapter contained many important points about Azure Networking. Here is a summary of the main points:
 
-* Azure sanal ağları, Azure dağıtımınıza bir ağ yapısı eklemenize olanak tanır. Sanal ağlar birbirlerine karşı yalıtılabilir veya ağ güvenlik grupları yardımı ile VNET 'ler arasındaki trafik denetlenebilir.
-* VM 'lere IP adres aralıkları atamak veya VM 'lere sabit IP adresleri atamak için Azure sanal ağları yararlanılabilir olabilir
-* Siteden siteye veya Noktadan siteye bağlantı kurmak için önce bir Azure sanal ağı oluşturmanız gerekir
-* Bir sanal makine dağıtıldıktan sonra, VM 'ye atanan sanal ağı değiştirmek artık mümkün değildir
+* Azure Virtual Networks allow you to put a network structure into your Azure deployment. VNets can be isolated against each other or with the help of Network Security Groups traffic between VNets can be controlled.
+* Azure Virtual Networks can be leveraged to assign IP address ranges to VMs or assign fixed IP addresses to VMs
+* To set up a Site-To-Site or Point-To-Site connection you need to create an Azure Virtual Network first
+* Once a virtual machine has been deployed, it is no longer possible to change the Virtual Network assigned to the VM
 
-### <a name="quotas-in-azure-virtual-machine-services"></a>Azure sanal makine hizmetlerindeki kotalar
-Depolama ve ağ altyapısının Azure altyapısında çeşitli hizmetler çalıştıran VM 'Ler arasında paylaşıldığından emin olmanız gerekir. Müşterinin kendi veri merkezlerinde olduğu gibi, bazı altyapı kaynaklarından bazılarının sağlanması bir dereceye kadar gerçekleşecektir. Microsoft Azure platformu, kaynak tüketimini sınırlamak ve tutarlı ve belirleyici performansı korumak için disk, CPU, ağ ve diğer kotaları kullanır.  Farklı VM türlerinin (A5, A6, vb.) disk sayısı, CPU, RAM ve ağ için farklı kotalar vardır.
+### <a name="quotas-in-azure-virtual-machine-services"></a>Quotas in Azure Virtual Machine Services
+We need to be clear about the fact that the storage and network infrastructure is shared between VMs running a variety of services in the Azure infrastructure. And just as in the customer's own data centers, over-provisioning of some of the infrastructure resources does take place to a degree. The Microsoft Azure Platform uses disk, CPU, network, and other quotas to limit the resource consumption and to preserve consistent and deterministic performance.  The different VM types (A5, A6, etc.) have different quotas for the number of disks, CPU, RAM, and Network.
 
 > [!NOTE]
-> SAP tarafından desteklenen VM türlerinin CPU ve bellek kaynakları, konak düğümlerinde önceden ayrılır. Bu, VM dağıtıldıktan sonra konaktaki kaynakların VM türü tarafından tanımlanan şekilde kullanılabilir olduğu anlamına gelir.
+> CPU and memory resources of the VM types supported by SAP are pre-allocated on the host nodes. This means that once the VM is deployed, the resources on the host are available as defined by the VM type.
 >
 >
 
-Azure çözümlerinde SAP planlama ve boyutlandırma sırasında, her bir sanal makine boyutu için kotalar göz önünde bulundurulmalıdır. VM kotaları [burada (Linux)][virtual-machines-sizes-linux] ve [burada (Windows)][virtual-machines-sizes-windows]açıklanmaktadır.
+When planning and sizing SAP on Azure solutions, the quotas for each virtual machine size must be considered. The VM quotas are described [here (Linux)][virtual-machines-sizes-linux] and [here (Windows)][virtual-machines-sizes-windows].
 
-Tanımlanan kotalar teorik en yüksek değerleri temsil eder.  Disk başına ıOPS sınırı, küçük IOs (8kb) ile sağlanabilir, ancak büyük olasılıkla büyük IOs (1Mb) ile birlikte ulaşılmayabilir.  IOPS sınırı, tek disk ayrıntı düzeyi üzerinde zorlanır.
+The quotas described represent the theoretical maximum values.  The limit of IOPS per disk may be achieved with small IOs (8kb) but possibly may not be achieved with large IOs (1Mb).  The IOPS limit is enforced on the granularity of single disk.
 
-Bir SAP sisteminin Azure sanal makine Hizmetleri 'ne uygun olup olmadığını veya mevcut bir sistemin Azure üzerinde sistem dağıtmak üzere farklı şekilde yapılandırılması gerekip gerekmediğini belirlemek için kaba bir karar ağacı olarak, aşağıdaki karar ağacının kullanılması gerekir:
+As a rough decision tree to decide whether an SAP system fits into Azure Virtual Machine Services and its capabilities or whether an existing system needs to be configured differently in order to deploy the system on Azure, the decision tree below can be used:
 
-![Azure 'da SAP dağıtma olanağı için karar ağacı][planning-guide-figure-700]
+![Decision tree to decide ability to deploy SAP on Azure][planning-guide-figure-700]
 
-**1. adım**: İle başlamak için en önemli bilgiler, belirli bir SAP sistemine yönelik SAPS gereksinimidir. SAP sistemi 2 katmanlı bir yapılandırmada şirket içinde zaten dağıtılmış olsa bile, SAPS gereksinimlerinin DBMS bölümüne ve SAP uygulama bölümüne ayrılması gerekir. Mevcut sistemlerde, kullanılan donanımla ilgili olan SAPS 'ler, mevcut SAP kıyaslamaları temelinde belirlenebilir veya tahmin edilebilir. Sonuçlar şurada bulunabilir: <https://sap.com/about/benchmark.html>.
-Yeni dağıtılan SAP sistemlerinde, sistemin SAPS gereksinimlerini belirleyecek bir boyutlandırma alıştırması yapmanız gerekir.
-Ayrıca bkz. Azure 'da SAP boyutlandırma için bu blog ve ekli belge:<https://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx>
+**Step 1**: The most important information to start with is the SAPS requirement for a given SAP system. The SAPS requirements need to be separated out into the DBMS part and the SAP application part, even if the SAP system is already deployed on-premises in a 2-tier configuration. For existing systems, the SAPS related to the hardware in use often can be determined or estimated based on existing SAP benchmarks. The results can be found here: <https://sap.com/about/benchmark.html>.
+For newly deployed SAP systems, you should have gone through a sizing exercise, which should determine the SAPS requirements of the system.
+See also this blog and attached document for SAP sizing on Azure: <https://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx>
 
-**2. adım**: Mevcut sistemlerde, DBMS sunucusunda g/ç birimi ve saniye başına g/ç işlemleri ölçülmelidir. Yeni planlanmış sistemlerde, yeni sistem için boyutlandırma alıştırması, DBMS tarafında g/ç gereksinimlerine ilişkin kaba fikirler de vermelidir. Emin değilseniz, sonunda bir kavram kanıtı uygulamanız gerekir.
+**Step 2**: For existing systems, the I/O volume and I/O operations per second on the DBMS server should be measured. For newly planned systems, the sizing exercise for the new system also should give rough ideas of the I/O requirements on the DBMS side. If unsure, you eventually need to conduct a Proof of Concept.
 
-**Adım 3**: DBMS sunucusunun SAPS gereksinimini Azure 'un sağladığı farklı VM türleri ile karşılaştırın. Farklı Azure VM türlerinin SAPS 'si ile ilgili bilgiler SAP Note [1928533]' de belgelenmiştir. Veritabanı katmanı, dağıtımların çoğunda ölçeklendirolmayan bir SAP NetWeaver sistemindeki katman olduğundan, odak DBMS VM 'sinde olmalıdır. Buna karşılık, SAP uygulama katmanı da genişletilebilir. SAP tarafından desteklenen Azure VM türlerinden hiçbiri gerekli SAPS 'leri sunabiliyorsa, planlı SAP sisteminin iş yükü Azure üzerinde çalıştırılamaz. Sistemi şirket içinde dağıtmanız ya da sistem için iş yükü birimini değiştirmeniz gerekir.
+**Step 3**: Compare the SAPS requirement for the DBMS server with the SAPS the different VM types of Azure can provide. The information on SAPS of the different Azure VM types is documented in SAP Note [1928533]. The focus should be on the DBMS VM first since the database layer is the layer in an SAP NetWeaver system that does not scale out in the majority of deployments. In contrast, the SAP application layer can be scaled out. If none of the SAP supported Azure VM types can deliver the required SAPS, the workload of the planned SAP system can't be run on Azure. You either need to deploy the system on-premises or you need to change the workload volume for the system.
 
-**4. adım**: [Burada (Linux)][virtual-machines-sizes-linux] ve [burada (Windows)][virtual-machines-sizes-windows]belgelendiği gibi, Azure Standart depolama veya Premium Depolama kullanıp kullanmayacağınızı bağımsız olarak disk başına bir IOPS kotası uygular. VM türüne bağlı olarak, birbirine bağlanan veri disklerinin sayısı farklılık gösterir. Sonuç olarak, her farklı VM türüyle elde edilebilir maksimum ıOPS numarasını hesaplayabilirsiniz. Veritabanı dosyası düzenine bağlı olarak, Konuk işletim sisteminde tek bir birim olacak şekilde disk şeridi oluşturabilirsiniz. Ancak, dağıtılmış bir SAP sisteminin geçerli ıOPS birimi, Azure 'un en büyük VM türüne ait hesaplanan sınırları aşarsa ve daha fazla bellekle telafi şansı yoksa, SAP sisteminin iş yükü ciddi bir şekilde etkilenebilir. Bu gibi durumlarda, Azure 'da sistemi dağıtmayan bir noktaya basabilirsiniz.
+**Step 4**: As documented [here (Linux)][virtual-machines-sizes-linux] and [here (Windows)][virtual-machines-sizes-windows], Azure enforces an IOPS quota per disk independent whether you use Standard Storage or Premium Storage. Dependent on the VM type, the number of data disks, which can be mounted varies. As a result, you can calculate a maximum IOPS number that can be achieved with each of the different VM types. Dependent on the database file layout, you can stripe disks to become one volume in the guest OS. However, if the current IOPS volume of a deployed SAP system exceeds the calculated limits of the largest VM type of Azure and if there is no chance to compensate with more memory, the workload of the SAP system can be impacted severely. In such cases, you can hit a point where you should not deploy the system on Azure.
 
-**5. adım**: Özellikle, 2 katmanlı yapılandırmalarda şirket içinde dağıtılan SAP sistemlerinde, sistemin Azure 'da 3 katmanlı bir yapılandırmada yapılandırılması gerekebilir. Bu adımda, SAP uygulama katmanında bir bileşen olup olmadığını denetlemeniz gerekir, bu, genişleme ve farklı Azure VM türleri sunan CPU ve bellek kaynaklarına sığmıyor. Böyle bir bileşen varsa, SAP sistemi ve iş yükü Azure 'a dağıtılamaz. Ancak SAP uygulama bileşenlerini birden çok Azure VM 'ye ölçeklendirebiliyorsanız, sistem Azure 'a dağıtılabilir.
+**Step 5**: Especially in SAP systems, which are deployed on-premises in 2-Tier configurations, the chances are that the system might need to be configured on Azure in a 3-Tier configuration. In this step, you need to check whether there is a component in the SAP application layer, which can't be scaled out and which would not fit into the CPU and memory resources the different Azure VM types offer. If there indeed is such a component, the SAP system and its workload can't be deployed into Azure. But if you can scale out the SAP application components into multiple Azure VMs, the system can be deployed into Azure.
 
-**Adım 6**: DBMS ve SAP uygulama katmanı bileşenleri Azure VM 'lerinde çalıştırılabiliyorsanız, yapılandırmanın şu şekilde tanımlanması gerekir:
+**Step 6**: If the DBMS and SAP application layer components can be run in Azure VMs, the configuration needs to be defined with regard to:
 
-* Azure VM sayısı
-* Bireysel bileşenler için VM türleri
-* DBMS VM 'de yeterli ıOPS sağlamak için VHD sayısı
+* Number of Azure VMs
+* VM types for the individual components
+* Number of VHDs in DBMS VM to provide enough IOPS
 
-## <a name="managing-azure-assets"></a>Azure varlıklarını yönetme
+## <a name="managing-azure-assets"></a>Managing Azure Assets
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
-Azure portal, Azure VM dağıtımlarını yönetmek için üç arabirimden biridir. Görüntülerden VM dağıtımı gibi temel yönetim görevleri, Azure portal aracılığıyla yapılabilir. Ayrıca, depolama hesapları, sanal ağlar ve diğer Azure bileşenlerinin oluşturulması de Azure portal görevlerdir. Ancak, VHD 'leri Şirket içinden Azure 'a yükleme veya Azure 'da bir VHD kopyalama gibi işlevler, üçüncü taraf araçlar ya da PowerShell veya CLı aracılığıyla yönetim gerektiren görevlerdir.
+The Azure portal is one of three interfaces to manage Azure VM deployments. The basic management tasks, like deploying VMs from images, can be done through the Azure portal. In addition, the creation of Storage Accounts, Virtual Networks, and other Azure components are also tasks the Azure portal can handle well. However, functionality like uploading VHDs from on-premises to Azure or copying a VHD within Azure are tasks, which require either third-party tools or administration through PowerShell or CLI.
 
-![Microsoft Azure portal-sanal makineye genel bakış][planning-guide-figure-800]
-
-
-Sanal makine örneği için yönetim ve yapılandırma görevlerinin Azure portal içinden mümkündür.
-
-Bir sanal makineyi yeniden başlatma ve kapatma yanında, sanal makine örneği için veri diskleri ekleyebilir, ayırabilir ve oluşturabilir, görüntü hazırlığı örneğini yakalayabilir ve sanal makine örneğinin boyutunu yapılandırabilirsiniz.
-
-Azure portal, VM 'Leri ve diğer birçok Azure hizmetini dağıtmak ve yapılandırmak için temel işlevleri sağlar. Ancak, Azure portal tüm kullanılabilir işlevler kapsamında değildir. Azure portal, şunun gibi görevleri gerçekleştirmek mümkün değildir:
-
-* VHD 'leri Azure 'a yükleme
-* VM 'Leri kopyalama
+![Microsoft Azure portal - Virtual Machine overview][planning-guide-figure-800]
 
 
-### <a name="management-via-microsoft-azure-powershell-cmdlets"></a>Microsoft Azure PowerShell cmdlet 'leri aracılığıyla yönetim
+Administration and configuration tasks for the Virtual Machine instance are possible from within the Azure portal.
 
-Windows PowerShell, Azure 'da daha fazla sayıda sistem dağıtan müşteriler tarafından yaygın olarak benimsenen güçlü ve genişletilebilir bir çerçevedir. PowerShell cmdlet 'lerinin bir masaüstü, dizüstü bilgisayar veya adanmış Yönetim istasyonuna yüklenmesinden sonra, PowerShell cmdlet 'leri uzaktan çalıştırılabilir.
+Besides restarting and shutting down a Virtual Machine you can also attach, detach, and create data disks for the Virtual Machine instance, to capture the instance for image preparation, and configure the size of the Virtual Machine instance.
 
-Azure PowerShell cmdlet 'lerinin kullanımı için yerel bir masaüstü/dizüstü bilgisayar etkinleştirme ve [Bu makalede][powershell-install-configure]bunların Azure abonelikleri ile kullanım için nasıl yapılandırılacağı açıklanmaktadır.
+The Azure portal provides basic functionality to deploy and configure VMs and many other Azure services. However not all available functionality is covered by the Azure portal. In the Azure portal, it's not possible to perform tasks like:
 
-Azure PowerShell cmdlet 'lerinin nasıl yükleneceği, güncelleştirilmesi ve yapılandırılacağına ilişkin daha ayrıntılı adımlar, [Dağıtım Kılavuzu 'nun bu][deployment-guide-4.1]bölümünde bulunabilir.
-
-Şimdiye kadar müşteri deneyimi, PowerShell 'in (PS) VM 'Leri dağıtmaya ve VM dağıtımında özel adımlar oluşturmaya yönelik daha güçlü bir araçtır. Azure 'da SAP örnekleri çalıştıran tüm müşteriler, Azure portal yönetim görevlerini tamamlamak için PS cmdlet 'lerini kullanıyor ya da Azure 'da dağıtımlarını yönetmek için yalnızca PS cmdlet 'lerini kullanıyor. Azure 'a özgü cmdlet 'ler, Windows yöneticilerinin 2000 ' den fazla cmdlet 'i ile aynı adlandırma kuralını paylaştığından, bu cmdlet 'lerin bu cmdlet 'leri kullanması kolay bir görevdir.
-
-Bkz. örnek:<https://blogs.technet.com/b/keithmayer/archive/2015/07/07/18-steps-for-end-to-end-iaas-provisioning-in-the-cloud-with-azure-resource-manager-arm-powershell-and-desired-state-configuration-dsc.aspx>
+* Uploading VHDs to Azure
+* Copying VMs
 
 
-SAP için Azure uzantısı 'nın dağıtımı (Bu belgedeki [SAP Için Azure uzantısı][planning-guide-9.1] bölümüne bakın) yalnızca POWERSHELL veya CLI aracılığıyla yapılabilir. Bu nedenle, Azure 'da SAP NetWeaver sistemi dağıtma veya yönetme sırasında PowerShell veya CLı 'yi ayarlamak ve yapılandırmak zorunludur.  
+### <a name="management-via-microsoft-azure-powershell-cmdlets"></a>Management via Microsoft Azure PowerShell cmdlets
 
-Azure daha fazla işlevsellik sağladığından cmdlet 'lerin güncelleştirilmesini gerektiren yeni PS cmdlet 'leri eklenecektir. Bu nedenle, cmdlet 'lerin yeni bir sürümü için ayda <https://azure.microsoft.com/downloads/> en az bir kez Azure indirme sitesini denetlemek mantıklı olur. Yeni sürüm eski sürümün üzerine yüklenir.
+Windows PowerShell is a powerful and extensible framework that has been widely adopted by customers deploying larger numbers of systems in Azure. After the installation of PowerShell cmdlets on a desktop, laptop or dedicated management station, the PowerShell cmdlets can be run remotely.
 
-Azure ile ilgili PowerShell komutlarının genel listesi için buraya bakın: <https://docs.microsoft.com/powershell/azure/overview>.
+The process to enable a local desktop/laptop for the usage of Azure PowerShell cmdlets and how to configure those for the usage with the Azure subscription(s) is described in [this article][powershell-install-configure].
 
-### <a name="management-via-microsoft-azure-cli-commands"></a>Microsoft Azure CLı komutları aracılığıyla yönetim
+More detailed steps on how to install, update, and configure the Azure PowerShell cmdlets can also be found in [this chapter of the Deployment Guide][deployment-guide-4.1].
 
-Linux kullanan ve Azure kaynaklarını yönetmek isteyen müşteriler için bir seçenek olmayabilir. Microsoft, Azure CLı 'yi alternatif olarak sunmaktadır.
-Azure CLı, Azure platformuyla çalışmaya yönelik bir dizi açık kaynak ve platformlar arası komut sunar. Azure CLı, Azure portal bulunan işlevlerin çoğunu sağlar.
+Customer experience so far has been that PowerShell (PS) is certainly the more powerful tool to deploy VMs and to create custom steps in the deployment of VMs. All of the customers running SAP instances in Azure are using PS cmdlets to supplement management tasks they do in the Azure portal or are even using PS cmdlets exclusively to manage their deployments in Azure. Since the Azure-specific cmdlets share the same naming convention as the more than 2000 Windows-related cmdlets, it is an easy task for Windows administrators to leverage those cmdlets.
 
-Yükleme, yapılandırma ve Azure görevlerini gerçekleştirmek için CLı komutlarının nasıl kullanılacağı hakkında bilgi için bkz.
+See example here: <https://blogs.technet.com/b/keithmayer/archive/2015/07/07/18-steps-for-end-to-end-iaas-provisioning-in-the-cloud-with-azure-resource-manager-arm-powershell-and-desired-state-configuration-dsc.aspx>
 
-* [Azure klasik CLı 'yı yükler][xplat-cli]
-* [Dağıtmak ve Azure Resource Manager şablonları ve Azure CLI kullanarak sanal makineleri yönetme] [../../linux/create-ssh-secured-vm-from-template.md]
-* [Azure Resource Manager ile Mac, Linux ve Windows için klasik Azure CLı 'yi kullanma][xplat-cli-azure-resource-manager]
 
-Ayrıca, Azure CLı 'yı kullanarak SAP için Azure uzantısı 'nı dağıtmak üzere [dağıtım kılavuzundaki][planning-guide] [Linux VM 'LERI için Azure CLI][deployment-guide-4.5.2] bölümünü okuyun.
+Deployment of the Azure Extension for SAP (see chapter [Azure Extension for SAP][planning-guide-9.1] in this document) is only possible via PowerShell or CLI. Therefore it is mandatory to set up and configure PowerShell or CLI when deploying or administering an SAP NetWeaver system in Azure.  
 
-## <a name="different-ways-to-deploy-vms-for-sap-in-azure"></a>Azure 'da SAP için VM 'Leri dağıtmanın farklı yolları
+As Azure provides more functionality, new PS cmdlets are going to be added that requires an update of the cmdlets. Therefore it makes sense to check the Azure Download site at least once the month <https://azure.microsoft.com/downloads/> for a new version of the cmdlets. The new version is installed on top of the older version.
 
-Bu bölümde, Azure 'da VM dağıtmanın farklı yollarını öğreneceksiniz. Ek hazırlık yordamları ve Azure 'da VHD 'lerin ve VM 'lerin işlenmesi bu bölümde ele alınmıştır.
+For a general list of Azure-related PowerShell commands check here: <https://docs.microsoft.com/powershell/azure/overview>.
 
-### <a name="deployment-of-vms-for-sap"></a>SAP için VM dağıtımı
+### <a name="management-via-microsoft-azure-cli-commands"></a>Management via Microsoft Azure CLI commands
 
-Microsoft Azure, VM 'Leri ve ilişkili diskleri dağıtmanın birden çok yolunu sunar. Bu nedenle, VM 'lerin hazırlıkları dağıtım yöntemine bağlı olarak farklı olabileceğinden farklılıkları anlamak önemlidir. Genel olarak, aşağıdaki senaryolara göz atalım:
+For customers who use Linux and want to manage Azure resources Powershell might not be an option. Microsoft offers Azure CLI as an alternative.
+The Azure CLI provides a set of open source, cross-platform commands for working with the Azure Platform. The Azure CLI provides much of the same functionality found in the Azure portal.
 
-#### <a name="4d175f1b-7353-4137-9d2f-817683c26e53"></a>Bir VM 'yi Şirket içinden, genelleştirilmiş olmayan bir disk ile Azure 'a taşıma
+For information about installation, configuration and how to use CLI commands to accomplish Azure tasks see
 
-Belirli bir SAP sistemini Şirket içinden Azure 'a taşımayı planlarsınız. Bu işlem, işletim sistemini, SAP Ikililerini ve DBMS ikililerini içeren VHD 'yi, DBMS 'nin veri ve günlük dosyalarıyla Azure 'a karşıya yükleyerek yapılabilir. [Aşağıdaki senaryo #2][planning-guide-5.1.2]aksine, Azure VM 'de ana bilgisayar adı, SAP SID 'SI ve SAP Kullanıcı hesaplarını şirket içi ortamda yapılandırıldıklarında saklayın. Bu nedenle, görüntüyü genelleştirerek gerekli değildir. Şirket içi hazırlama adımları ve genelleştirilmiş VM 'Ler ya da VHD 'lerin Azure 'a yüklenmesi için, [BIR VM 'yi Şirket içinden bu belgenin Genelleştirilmiş olmayan bir disketiyle Azure 'a taşımaya yönelik bölüm hazırlama][planning-guide-5.2.1] bölümüne bakın. Bölüm [senaryosunu okuyun 3: Azure 'da böyle bir görüntüyü dağıtmanın ayrıntılı adımları için][deployment-guide-3.4] [dağıtım kılavuzunda][deployment-guide] SAP ile Genelleştirilmiş bir Azure VHD kullanarak bir VM 'yi Şirket içinden taşıma.
+* [Install the Azure classic CLI][xplat-cli]
+* [Deploy and manage virtual machines by using Azure Resource Manager templates and the Azure CLI][../../linux/create-ssh-secured-vm-from-template.md]
+* [Use the Azure classic CLI for Mac, Linux, and Windows with Azure Resource Manager][xplat-cli-azure-resource-manager]
 
-#### <a name="e18f7839-c0e2-4385-b1e6-4538453a285c"></a>Müşteriye özgü bir görüntüyle VM dağıtma
+Also read chapter [Azure CLI for Linux VMs][deployment-guide-4.5.2] in the [Deployment Guide][planning-guide] on how to use Azure CLI to deploy the Azure  Extension for SAP.
 
-İşletim sistemi veya DBMS sürümünüzün belirli düzeltme eki gereksinimleri nedeniyle, Azure Marketi 'ndeki sunulan görüntüler gereksinimlerinize uygun olmayabilir. Bu nedenle, daha sonra birkaç kez dağıtılabilecek özel işletim sistemi/DBMS VM görüntünüzü kullanarak bir VM oluşturmanız gerekebilir. Bu tür özel bir görüntüyü yineleme için hazırlamak üzere aşağıdaki öğelerin göz önünde bulundurulması gerekir:
+## <a name="different-ways-to-deploy-vms-for-sap-in-azure"></a>Different ways to deploy VMs for SAP in Azure
+
+In this chapter, you learn the different ways to deploy a VM in Azure. Additional preparation procedures, as well as handling of VHDs and VMs in Azure are covered in this chapter.
+
+### <a name="deployment-of-vms-for-sap"></a>Deployment of VMs for SAP
+
+Microsoft Azure offers multiple ways to deploy VMs and associated disks. Thus it is important to understand the differences since preparations of the VMs might differ depending on the method of deployment. In general, we take a look at the following scenarios:
+
+#### <a name="4d175f1b-7353-4137-9d2f-817683c26e53"></a>Moving a VM from on-premises to Azure with a non-generalized disk
+
+You plan to move a specific SAP system from on-premises to Azure. This can be done by uploading the VHD, which contains the OS, the SAP Binaries, and DBMS binaries plus the VHDs with the data and log files of the DBMS to Azure. In contrast to [scenario #2 below][planning-guide-5.1.2], you keep the hostname, SAP SID, and SAP user accounts in the Azure VM as they were configured in the on-premises environment. Therefore, generalizing the image is not necessary. See chapters [Preparation for moving a VM from on-premises to Azure with a non-generalized disk][planning-guide-5.2.1] of this document for on-premises preparation steps and upload of non-generalized VMs or VHDs to Azure. Read chapter [Scenario 3: Moving a VM from on-premises using a non-generalized Azure VHD with SAP][deployment-guide-3.4] in the [Deployment Guide][deployment-guide] for detailed steps of deploying such an image in Azure.
+
+#### <a name="e18f7839-c0e2-4385-b1e6-4538453a285c"></a>Deploying a VM with a customer-specific image
+
+Due to specific patch requirements of your OS or DBMS version, the provided images in the Azure Marketplace might not fit your needs. Therefore, you might need to create a VM using your own private OS/DBMS VM image, which can be deployed several times afterwards. To prepare such a private image for duplication, the following items have to be considered:
 
 ---
 > ![Windows][Logo_Windows] Windows
 >
-> Daha fazla ayrıntı için buraya bakın: <https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed>Windows ayarları (Windows SID ve ana bilgisayar adı gibi), Sysprep komutu aracılığıyla şirket içi VM 'de soyut/Genelleştirilmiş olmalıdır.
+> See more details here: <https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed> The Windows settings (like Windows SID and hostname) must be abstracted/generalized on the on-premises VM via the sysprep command.
 >
 >
 > ![Linux][Logo_Linux] Linux
 >
-> Bir VHD 'yi Azure 'a yüklenecek şekilde hazırlamak için [SUSE][virtual-machines-linux-create-upload-vhd-suse], [Red Hat][virtual-machines-linux-redhat-create-upload-vhd]veya [Oracle Linux][virtual-machines-linux-create-upload-vhd-oracle]için bu makalelerde açıklanan adımları izleyin.
+> Follow the steps described in these articles for [SUSE][virtual-machines-linux-create-upload-vhd-suse], [Red Hat][virtual-machines-linux-redhat-create-upload-vhd], or [Oracle Linux][virtual-machines-linux-create-upload-vhd-oracle], to prepare a VHD to be uploaded to Azure.
 >
 >
 
 ---
-SAP içeriğini şirket içi sanal makinenize zaten yüklediyseniz (özellikle de 2 katmanlı sistemler için), SAP yazılım sağlama Yöneticisi (SAP) tarafından desteklenen örnek yeniden adlandırma yordamı aracılığıyla Azure VM dağıtımı sonrasında SAP sistem ayarlarını uyarlayabilirsiniz. Note [1619720]). Şirket içi hazırlama adımları ve genelleştirilmiş bir VM 'yi Azure 'a yüklemek için, [BIR VM 'yi müşterilere özgü bir görüntüyle dağıtmak][planning-guide-5.2.2] ve şirket [içinden bir VHD][planning-guide-5.3.2] 'yi bu belgenin Azure 'A yüklemek için bölüm hazırlığı konusuna bakın. Bölüm [senaryosunu okuyun 2: Azure 'da böyle bir görüntüyü dağıtmaya yönelik ayrıntılı adımlar][deployment-guide-3.3] için [dağıtım kılavuzunda][deployment-guide] bir VM 'yi özel bir görüntüyle dağıtma.
+If you have already installed SAP content in your on-premises VM (especially for 2-Tier systems), you can adapt the SAP system settings after the deployment of the Azure VM through the instance rename procedure supported by the SAP Software Provisioning Manager (SAP Note [1619720]). See chapters [Preparation for deploying a VM with a customer-specific image for SAP][planning-guide-5.2.2] and [Uploading a VHD from on-premises to Azure][planning-guide-5.3.2] of this document for on-premises preparation steps and upload of a generalized VM to Azure. Read chapter [Scenario 2: Deploying a VM with a custom image for SAP][deployment-guide-3.3] in the [Deployment Guide][deployment-guide] for detailed steps of deploying such an image in Azure.
 
-#### <a name="deploying-a-vm-out-of-the-azure-marketplace"></a>Azure Marketi 'Nden bir VM dağıtma
+#### <a name="deploying-a-vm-out-of-the-azure-marketplace"></a>Deploying a VM out of the Azure Marketplace
 
-VM 'nizi dağıtmak için Azure Marketi 'nden bir Microsoft veya üçüncü taraf tarafından sağlanmış bir VM görüntüsü kullanmak istersiniz. VM 'nizi Azure 'da dağıttıktan sonra, SAP yazılımını ve/veya DBMS 'yi şirket içi bir ortamda yaptığınız gibi VM 'nizin içine yüklemek için aynı kılavuz ve araçları izleyin. Daha ayrıntılı dağıtım açıklaması için bkz. bölüm [senaryosu 1: ][deployment-guide-3.2] [Dağıtım kılavuzunda][deployment-guide]SAP için Azure Marketi 'nden bir VM dağıtma.
+You would like to use a Microsoft or third-party provided VM image from the Azure Marketplace to deploy your VM. After you deployed your VM in Azure, you follow the same guidelines and tools to install the SAP software and/or DBMS inside your VM as you would do in an on-premises environment. For more detailed deployment description, see chapter [Scenario 1: Deploying a VM out of the Azure Marketplace for SAP][deployment-guide-3.2] in the [Deployment Guide][deployment-guide].
 
-### <a name="6ffb9f41-a292-40bf-9e70-8204448559e7"></a>Azure için SAP ile VM 'Leri hazırlama
+### <a name="6ffb9f41-a292-40bf-9e70-8204448559e7"></a>Preparing VMs with SAP for Azure
 
-VM 'Leri Azure 'a yüklemeden önce VM 'Lerin ve VHD 'lerin belirli gereksinimleri karşıladıklarından emin olmanız gerekir. Kullanılan dağıtım yöntemine bağlı olarak küçük farklılıklar vardır.
+Before uploading VMs into Azure, you need to make sure the VMs and VHDs fulfill certain requirements. There are small differences depending on the deployment method that is used.
 
-#### <a name="1b287330-944b-495d-9ea7-94b83aff73ef"></a>Genelleştirilmiş olmayan bir diskle bir VM 'yi Şirket içinden Azure 'a taşımaya yönelik hazırlık
+#### <a name="1b287330-944b-495d-9ea7-94b83aff73ef"></a>Preparation for moving a VM from on-premises to Azure with a non-generalized disk
 
-Ortak dağıtım yöntemi, şirket içi bir SAP sistemini çalıştıran mevcut bir VM 'yi Azure 'a taşımadır. VM 'deki bu VM ve SAP sisteminin aynı ana bilgisayar adını ve olasılıkla aynı SAP SID 'sini kullanarak Azure 'da çalışması gerekir. Bu durumda, VM 'nin Konuk işletim sistemi birden çok dağıtım için genelleştirilmemelidir. Şirket içi ağ Azure 'a genişletilmişse (bkz. [tek veya birden fazla sap VM 'lerinin, bu belgedeki şirket içi ağla tam olarak tümleştirildiği gereksinimle][planning-guide-2.2] ), aynı etki alanı bile hesaplar, şirket içinde daha önce kullanılan VM 'ler dahilinde kullanılabilir.
+A common deployment method is to move an existing VM, which runs an SAP system from on-premises to Azure. That VM and the SAP system in the VM just should run in Azure using the same hostname and likely the same SAP SID. In this case, the guest OS of VM should not be generalized for multiple deployments. If the on-premises network got extended into Azure (see chapter [cross-premises - Deployment of single or multiple SAP VMs into Azure with the requirement of being fully integrated into the on-premises network][planning-guide-2.2] in this document), then even the same domain accounts can be used within the VM as those were used before on-premises.
 
-Kendi Azure VM diskinizi hazırlarken gereksinimler şunlardır:
+Requirements when preparing your own Azure VM Disk are:
 
-* Başlangıçta işletim sistemini içeren VHD en fazla 127GB boyutunda olabilir. Bu sınırlama Mart 2015 ' ün sonunda ortadan kaldırıldı. Artık işletim sistemini içeren VHD, diğer Azure Storage barındırılan VHD 'ler gibi en fazla 1 TB boyutunda olabilir.
-* Sabit VHD biçiminde olması gerekir. VHDx biçimindeki Dinamik VHD 'ler veya VHD 'ler henüz Azure 'da desteklenmiyor. VHD 'yi PowerShell Command, veya CLı ile karşıya yüklediğinizde Dinamik VHD 'ler statik VHD 'lere dönüştürülecek
-* VM 'ye bağlanan ve VM 'nin Azure 'da yeniden bağlanması gereken VHD 'ler, aynı zamanda bir sabit VHD biçiminde olmalıdır. Veri disklerinin boyut sınırları için [Bu makaleyi (Linux)](../../linux/managed-disks-overview.md) ve [Bu makaleyi (Windows)](../../windows/managed-disks-overview.md)okuyun. VHD 'yi PowerShell Command, veya CLı ile karşıya yüklediğinizde Dinamik VHD 'ler statik VHD 'lere dönüştürülecek
-* Yönetim ayrıcalıklarına sahip başka bir yerel hesap ekleyin, bu, Microsoft desteği tarafından kullanılabilen veya VM dağıtılmadan ve daha uygun kullanıcıların kullanılabilmesi için içinde çalışacağı hizmet ve uygulamaların bağlamı olarak atanabileceği bir yerel hesap ekleyin.
-* Belirli dağıtım senaryosu için gerekli olabilecek diğer yerel hesapları ekleyin.
+* Originally the VHD containing the operating system could have a maximum size of 127GB only. This limitation got eliminated at the end of March 2015. Now the VHD containing the operating system can be up to 1TB in size as any other Azure Storage hosted VHD as well.
+* It needs to be in the fixed VHD format. Dynamic VHDs or VHDs in VHDx format are not yet supported on Azure. Dynamic VHDs will be converted to static VHDs when you upload the VHD with PowerShell commandlets or CLI
+* VHDs, which are mounted to the VM and should be mounted again in Azure to the VM need to be in a fixed VHD format as well. Read [this article (Linux)](../../linux/managed-disks-overview.md) and [this article (Windows)](../../windows/managed-disks-overview.md)) for size limits of data disks. Dynamic VHDs will be converted to static VHDs when you upload the VHD with PowerShell commandlets or CLI
+* Add another local account with administrator privileges, which can be used by Microsoft support or which can be assigned as context for services and applications to run in until the VM is deployed and more appropriate users can be used.
+* Add other local accounts as those might be needed for the specific deployment scenario.
 
 ---
 > ![Windows][Logo_Windows] Windows
 >
-> Bu senaryoda VM 'yi karşıya yüklemek ve Azure 'a dağıtmak için VM 'nin Genelleştirme (Sysprep) gerekmez.
-> D:\ sürücüsünün olduğundan emin olun kullanılmaz.
-> Bu belgedeki [ekli diskler için otomatik bağlama ayarı][planning-guide-5.5.3] bölümünde açıklandığı gibi ekli diskler için disk otomatik bağlama ayarlayın.
+> In this scenario no generalization (sysprep) of the VM is required to upload and deploy the VM on Azure.
+> Make sure that drive D:\ is not used.
+> Set disk automount for attached disks as described in chapter [Setting automount for attached disks][planning-guide-5.5.3] in this document.
 >
 > ![Linux][Logo_Linux] Linux
 >
-> Bu senaryoda VM 'yi karşıya yüklemek ve Azure 'a dağıtmak için VM 'nin Genelleştirme (waagent-deprovision) gerekmez.
-> /Mnt/Resource ' ın kullanılmadığından ve tüm disklerin UUID aracılığıyla bağlandığından emin olun. İşletim sistemi diski için, önyükleme yükleyicisi girişinin UUID tabanlı bağlama de yansıttığından emin olun.
+> In this scenario no generalization (waagent -deprovision) of the VM is required to upload and deploy the VM on Azure.
+> Make sure that /mnt/resource is not used and that ALL disks are mounted via uuid. For the OS disk, make sure that the bootloader entry also reflects the uuid-based mount.
 >
 >
 
 ---
-#### <a name="57f32b1c-0cba-4e57-ab6e-c39fe22b6ec3"></a>SAP için müşteriye özgü bir görüntüyle VM dağıtmaya hazırlanma
+#### <a name="57f32b1c-0cba-4e57-ab6e-c39fe22b6ec3"></a>Preparation for deploying a VM with a customer-specific image for SAP
 
-Genelleştirilmiş bir işletim sistemi içeren VHD dosyaları, Azure depolama hesaplarındaki kapsayıcılar veya yönetilen disk görüntüleri olarak depolanır. Bu tür bir görüntüden yeni bir VM 'yi, bölüm [senaryosu 2 ' de açıklandığı gibi, dağıtım şablonu dosyalarınızda bir kaynak olarak VHD veya yönetilen disk görüntüsüne başvurarak dağıtabilirsiniz: ][deployment-guide-3.3] [Dağıtım kılavuzunun][deployment-guide]SAP için özel bir görüntüyle VM dağıtma.
+VHD files that contain a generalized OS are stored in containers on Azure Storage Accounts or as Managed Disk images. You can deploy a new VM from such an image by referencing the VHD or Managed Disk image as a source in your deployment template files as described in chapter [Scenario 2: Deploying a VM with a custom image for SAP][deployment-guide-3.3] of the [Deployment Guide][deployment-guide].
 
-Kendi Azure VM görüntünüzü hazırlarken gereksinimler şunlardır:
+Requirements when preparing your own Azure VM Image are:
 
-* Başlangıçta işletim sistemini içeren VHD en fazla 127GB boyutunda olabilir. Bu sınırlama Mart 2015 ' ün sonunda ortadan kaldırıldı. Artık işletim sistemini içeren VHD, diğer Azure Storage barındırılan VHD 'ler gibi en fazla 1 TB boyutunda olabilir.
-* Sabit VHD biçiminde olması gerekir. VHDx biçimindeki Dinamik VHD 'ler veya VHD 'ler henüz Azure 'da desteklenmiyor. VHD 'yi PowerShell Command, veya CLı ile karşıya yüklediğinizde Dinamik VHD 'ler statik VHD 'lere dönüştürülecek
-* VM 'ye bağlanan ve VM 'nin Azure 'da yeniden bağlanması gereken VHD 'ler, aynı zamanda bir sabit VHD biçiminde olmalıdır. Veri disklerinin boyut sınırları için lütfen [Bu makaleyi (Linux)](../../windows/managed-disks-overview.md) ve [Bu makaleyi (Windows)](../../linux/managed-disks-overview.md) okuyun. VHD 'yi PowerShell Command, veya CLı ile karşıya yüklediğinizde Dinamik VHD 'ler statik VHD 'lere dönüştürülecek
-* Belirli dağıtım senaryosu için gerekli olabilecek diğer yerel hesapları ekleyin.
-* Görüntüde bir SAP NetWeaver yüklemesi varsa ve Azure dağıtımı noktasındaki asıl adından ana bilgisayar adının yeniden adlandırılması büyük olasılıkla, SAP yazılım sağlama Yöneticisi DVD 'sinin en son sürümlerini şablona kopyalamanız önerilir. Bu, değiştirilen ana bilgisayar adını uyarlamak ve/veya yeni bir kopya başlatıldıktan hemen sonra dağıtılan VM görüntüsü içindeki SAP sisteminin SID 'sini değiştirmek için SAP tarafından girilen yeniden adlandırma işlevselliğini kolayca kullanmanıza imkan sağlar.
+* Originally the VHD containing the operating system could have a maximum size of 127GB only. This limitation got eliminated at the end of March 2015. Now the VHD containing the operating system can be up to 1TB in size as any other Azure Storage hosted VHD as well.
+* It needs to be in the fixed VHD format. Dynamic VHDs or VHDs in VHDx format are not yet supported on Azure. Dynamic VHDs will be converted to static VHDs when you upload the VHD with PowerShell commandlets or CLI
+* VHDs, which are mounted to the VM and should be mounted again in Azure to the VM need to be in a fixed VHD format as well. Please read [this article (Linux)](../../windows/managed-disks-overview.md) and [this article (Windows)](../../linux/managed-disks-overview.md) for size limits of data disks. Dynamic VHDs will be converted to static VHDs when you upload the VHD with PowerShell commandlets or CLI
+* Add other local accounts as those might be needed for the specific deployment scenario.
+* If the image contains an installation of SAP NetWeaver and renaming of the host name from the original name at the point of the Azure deployment is likely, it is recommended to copy the latest versions of the SAP Software Provisioning Manager DVD into the template. This will enable you to easily use the SAP provided rename functionality to adapt the changed hostname and/or change the SID of the SAP system within the deployed VM image as soon as a new copy is started.
 
 ---
 > ![Windows][Logo_Windows] Windows
 >
-> D:\ sürücüsünün olduğundan emin olun , bu belgedeki [ekli diskler için otomatik bağlama ayarı][planning-guide-5.5.3] bölümünde açıklandığı gibi ekli diskler için disk otomatik bağlama ayarla kullanılmaz.
+> Make sure that drive D:\ is not used Set disk automount for attached disks as described in chapter [Setting automount for attached disks][planning-guide-5.5.3] in this document.
 >
 > ![Linux][Logo_Linux] Linux
 >
-> /Mnt/Resource ' ın kullanılmadığından ve tüm disklerin UUID aracılığıyla bağlandığından emin olun. İşletim sistemi diski için, önyükleme yükleyicisi girişinin UUID tabanlı bağlama de yansıttığından emin olun.
+> Make sure that /mnt/resource is not used and that ALL disks are mounted via uuid. For the OS disk, make sure the bootloader entry also reflects the uuid-based mount.
 >
 >
 
 ---
-* SAP GUI (Yönetim ve kurulum amaçları için) bu tür bir şablonda önceden yüklenmiş olabilir.
-* Bu yazılım VM 'nin yeniden adlandırılmasına çalışabilecek sürece VM 'Leri şirketler arası senaryolarda başarıyla çalıştırmak için gereken diğer yazılımlar yüklenebilir.
+* SAP GUI (for administrative and setup purposes) can be pre-installed in such a template.
+* Other software necessary to run the VMs successfully in cross-premises scenarios can be installed as long as this software can work with the rename of the VM.
 
-VM 'nin genel olması yeterince hazırlanmışsa ve son olarak, hedeflenen Azure dağıtım senaryosunda hesap/kullanıcılardan bağımsız olarak, bu tür bir görüntüyü genelleştirmeye yönelik son hazırlık adımı yürütülür.
+If the VM is prepared sufficiently to be generic and eventually independent of accounts/users not available in the targeted Azure deployment scenario, the last preparation step of generalizing such an image is conducted.
 
-##### <a name="generalizing-a-vm"></a>VM 'yi Genelleştirme
+##### <a name="generalizing-a-vm"></a>Generalizing a VM
 ---
 > ![Windows][Logo_Windows] Windows
 >
-> Son adım, bir yönetici hesabıyla bir VM 'de oturum açmak için kullanılır. *Yönetici*olarak bir Windows komut penceresi açın. %Windir%\Windows\System32\Sysprep adresine gidin ve Sysprep. exe ' yi yürütün.
-> Küçük bir pencere görünür. **Genelleştir** seçeneğini denetlemek önemlidir (varsayılan olarak işaretli değildir) ve varsayılan ' reboot ' olan ' reboot ' olan kapalı seçeneğini ' kapalı ' olarak değiştirir. Bu yordam, Sysprep işleminin bir VM 'nin Konuk işletim sisteminde şirket içinde yürütüldüğünü varsayar.
-> Yordamı Azure 'da zaten çalışan bir VM ile gerçekleştirmek istiyorsanız, [Bu makalede](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource)açıklanan adımları izleyin.
+> The last step is to sign in to a VM with an Administrator account. Open a Windows command window as *administrator*. Go to %windir%\windows\system32\sysprep and execute sysprep.exe.
+> A small window will appear. It is important to check the **Generalize** option (the default is unchecked) and change the Shutdown Option from its default of 'Reboot' to 'shutdown'. This procedure assumes that the sysprep process is executed on-premises in the Guest OS of a VM.
+> If you want to perform the procedure with a VM already running in Azure, follow the steps described in [this article](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource).
 >
 > ![Linux][Logo_Linux] Linux
 >
@@ -929,82 +929,82 @@ VM 'nin genel olması yeterince hazırlanmışsa ve son olarak, hedeflenen Azure
 >
 
 ---
-### <a name="transferring-vms-and-vhds-between-on-premises-to-azure"></a>VM 'Leri ve VHD 'Leri Şirket içinden Azure 'a aktarma
-VM görüntülerini ve disklerini Azure 'a yükleme Azure portal aracılığıyla mümkün olmadığından, Azure PowerShell cmdlet 'lerini veya CLı 'yi kullanmanız gerekir. ' AzCopy ' aracının kullanılması başka bir olasılık. Araç, VHD 'leri şirket içi ve Azure arasında (her iki yönde) kopyalayabilir. Ayrıca, VHD 'leri Azure bölgeleri arasında kopyalayabilir. AzCopy 'in indirilmesi ve kullanımı için lütfen [Bu belgelere][storage-use-azcopy] bakın.
+### <a name="transferring-vms-and-vhds-between-on-premises-to-azure"></a>Transferring VMs and VHDs between on-premises to Azure
+Since uploading VM images and disks to Azure is not possible via the Azure portal, you need to use Azure PowerShell cmdlets or CLI. Another possibility is the use of the tool 'AzCopy'. The tool can copy VHDs between on-premises and Azure (in both directions). It also can copy VHDs between Azure Regions. Please consult [this documentation][storage-use-azcopy] for download and usage of AzCopy.
 
-Üçüncü bir alternatif, çeşitli üçüncü taraf GUI odaklı araçları kullanmaktır. Ancak, bu araçların Azure sayfa Bloblarını desteklemesini sağlayın. Bizim amaçlarımız için, Azure Sayfa Blobu deposu kullanmamız gerekir (farklar burada açıklanmıştır: <https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>). Ayrıca, Azure tarafından sunulan araçlar, karşıya yüklenmesi gereken VM 'Leri ve VHD 'Leri sıkıştırmak için etkilidir. Bu, sıkıştırmanın içindeki bu verimlilik karşıya yükleme süresini azalttığından (aynı zamanda şirket içi tesis ve hedeflenen Azure dağıtım bölgesinden internet 'e karşıya yükleme bağlantısına bağlı olarak farklılık gösterir) önemlidir. Avrupa konumundan ABD tabanlı Azure veri merkezlerine bir VM veya VHD 'yi karşıya yüklemek, Avrupa Azure veri merkezlerine aynı VM 'Leri/VHD 'Leri karşıya yüklemeden daha uzun sürer.
+A third alternative would be to use various third-party GUI-oriented tools. However, make sure that these tools are supporting Azure Page Blobs. For our purposes, we need to use Azure Page Blob store (the differences are described here: <https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>). Also the tools provided by Azure are efficient in compressing the VMs and VHDs, which need to be uploaded. This is important because this efficiency in compression reduces the upload time (which varies anyway depending on the upload link to the internet from the on-premises facility and the Azure deployment region targeted). It is a fair assumption that uploading a VM or VHD from European location to the U.S.-based Azure data centers will take longer than uploading the same VMs/VHDs to the European Azure data centers.
 
-#### <a name="a43e40e6-1acc-4633-9816-8f095d5a7b6a"></a>Şirket içinden Azure 'a VHD yükleme
-Mevcut bir VM veya VHD 'yi, şirket içi ağdan, bu belgenin [Genelleştirilmiş olmayan bir disketiyle BIR VM 'yi şirket Içinden Azure 'a taşımaya yönelik bölüm hazırlığı][planning-guide-5.2.1] bölümünde listelenen gereksinimlere uyması gerekir.
+#### <a name="a43e40e6-1acc-4633-9816-8f095d5a7b6a"></a>Uploading a VHD from on-premises to Azure
+To upload an existing VM or VHD from the on-premises network such a VM or VHD needs to meet the requirements as listed in chapter [Preparation for moving a VM from on-premises to Azure with a non-generalized disk][planning-guide-5.2.1] of this document.
 
-Bu tür bir VM 'nin genelleştirilmesi gerekmez ve şirket içi tarafında kapatıldıktan sonra sahip olduğu durum ve şekle yüklenebilir. Aynı işlem, herhangi bir işletim sistemi içermeyen ek VHD 'ler için de geçerlidir.
+Such a VM does NOT need to be generalized and can be uploaded in the state and shape it has after shutdown on the on-premises side. The same is true for additional VHDs, which don't contain any operating system.
 
-##### <a name="uploading-a-vhd-and-making-it-an-azure-disk"></a>Bir VHD 'YI karşıya yükleme ve bir Azure diski yapma
-Bu durumda, bir VHD 'yi bir işletim sistemi ile veya olmadan karşıya yüklemek ve bir sanal makineye bir veri diski olarak bağlamak veya işletim sistemi diski olarak kullanmak istiyoruz. Bu, çok adımlı bir işlemdir
+##### <a name="uploading-a-vhd-and-making-it-an-azure-disk"></a>Uploading a VHD and making it an Azure Disk
+In this case we want to upload a VHD, either with or without an OS in it, and mount it to a VM as a data disk or use it as OS disk. This is a multi-step process
 
 **PowerShell**
 
-* *Connect-AzAccount* ile aboneliğinizde oturum açın
-* *Set-azcontext* ve, SubscriptionID veya subscriptionName parametreleri ile bağlamınızın aboneliğini ayarlayın-bkz.<https://docs.microsoft.com/powershell/module/az.accounts/set-Azcontext>
-* *Add-azvhd* ile VHD 'Yi bir Azure depolama hesabına yükleyin-bkz.<https://docs.microsoft.com/powershell/module/az.compute/add-Azvhd>
-* Seçim *New-AzDisk* ile VHD 'Den yönetilen disk oluşturma-Bkz.<https://docs.microsoft.com/powershell/module/az.compute/new-Azdisk>
-* Yeni bir VM yapılandırmasının işletim sistemi diskini, *set-AzVMOSDisk* ile VHD veya yönetilen diske ayarlama-Bkz.<https://docs.microsoft.com/powershell/module/az.compute/set-Azvmosdisk>
-* *New-azvm* ile VM yapılandırmadan yenı bir VM oluşturma-Bkz.<https://docs.microsoft.com/powershell/module/az.compute/new-Azvm>
-* *Add-AzVMDataDisk* ile yenı bir VM 'ye veri diski ekleme-Bkz.<https://docs.microsoft.com/powershell/module/az.compute/add-Azvmdatadisk>
+* Sign in to your subscription with *Connect-AzAccount*
+* Set the subscription of your context with *Set-AzContext* and parameter SubscriptionId or SubscriptionName - see <https://docs.microsoft.com/powershell/module/az.accounts/set-Azcontext>
+* Upload the VHD with *Add-AzVhd* to an Azure Storage Account - see <https://docs.microsoft.com/powershell/module/az.compute/add-Azvhd>
+* (Optional) Create a Managed Disk from the VHD with *New-AzDisk*  - see <https://docs.microsoft.com/powershell/module/az.compute/new-Azdisk>
+* Set the OS disk of a new VM config to the VHD or Managed Disk with *Set-AzVMOSDisk* - see <https://docs.microsoft.com/powershell/module/az.compute/set-Azvmosdisk>
+* Create a new VM from the VM config with *New-AzVM* - see <https://docs.microsoft.com/powershell/module/az.compute/new-Azvm>
+* Add a data disk to a new VM with *Add-AzVMDataDisk* - see <https://docs.microsoft.com/powershell/module/az.compute/add-Azvmdatadisk>
 
 **Azure CLI**
 
-* *Az Login* ile aboneliğinizde oturum açın
-* *Az Account set- `<subscription name or id` -Subscription >*  ile aboneliğinizi seçin
-* VHD 'YI *az Storage blob upload* ile karşıya yükleme-bkz [. Azure CLI ile Azure depolama ile kullanma][storage-azure-cli]
-* Seçim VHD 'den bir yönetilen disk oluşturma *az disk Create* -See https://docs.microsoft.com/cli/azure/disk
-* Karşıya yüklenen VHD veya yönetilen diski işletim sistemi diski olarak belirterek *az VM Create* ve Parameter *--Attach-OS-disk* olan yeni bir VM oluşturun
-* *Az VM disk Attach* ve Parameter ile yenı bir VM 'ye veri diski ekleme *--Yeni*
+* Sign in to your subscription with *az login*
+* Select your subscription with *az account set --subscription `<subscription name or id`>*
+* Upload the VHD with *az storage blob upload* - see [Using the Azure CLI with Azure Storage][storage-azure-cli]
+* (Optional) Create a Managed Disk from the VHD with *az disk create* - see https://docs.microsoft.com/cli/azure/disk
+* Create a new VM specifying the uploaded VHD or Managed Disk as OS disk with *az vm create* and parameter *--attach-os-disk*
+* Add a data disk to a new VM with *az vm disk attach* and parameter *--new*
 
 **Şablon**
 
-* VHD 'YI PowerShell veya Azure CLı ile karşıya yükleme
-* Seçim PowerShell, Azure CLı veya Azure portal ile VHD 'den yönetilen disk oluşturma
-* VM 'yi [Bu örnek JSON](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-specialized-vhd-new-or-existing-vnet/azuredeploy.json) şablonunda gösterildiği gıbı, VHD 'ye başvuran bir JSON şablonuyla veya [Bu örnek JSON şablonunda](https://github.com/Azure/azure-quickstart-templates/blob/master/sap-2-tier-user-image-md/azuredeploy.json)gösterildiği gibi yönetilen diskleri kullanarak dağıtın.
+* Upload the VHD with Powershell or Azure CLI
+* (Optional) Create a Managed Disk from the VHD with Powershell, Azure CLI, or the Azure portal
+* Deploy the VM with a JSON template referencing the VHD as shown in [this example JSON template](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-specialized-vhd-new-or-existing-vnet/azuredeploy.json) or using Managed Disks as shown in [this example JSON template](https://github.com/Azure/azure-quickstart-templates/blob/master/sap-2-tier-user-image-md/azuredeploy.json).
 
-#### <a name="deployment-of-a-vm-image"></a>VM görüntüsü dağıtımı
-Mevcut bir VM 'yi veya VHD 'yi, şirket içi ağdan yüklemek için, bir VM veya VHD 'nin bu belgenin [SAP için müşteriye özgü bir görüntüyle BIR VM dağıtmaya yönelik bölüm hazırlığı][planning-guide-5.2.2] bölümünde listelenen gereksinimleri karşılaması gerekir.
+#### <a name="deployment-of-a-vm-image"></a>Deployment of a VM Image
+To upload an existing VM or VHD from the on-premises network, in order to use it as an Azure VM image such a VM or VHD need to meet the requirements listed in chapter [Preparation for deploying a VM with a customer-specific image for SAP][planning-guide-5.2.2] of this document.
 
-* VM 'nizi genelleştirmek için Windows 'ta *Sysprep* veya Linux 'ta *waagent-deprovision* komutunu kullanın-bkz. Windows için [Sysprep teknik başvurusu](https://technet.microsoft.com/library/cc766049.aspx) veya Linux Için [Kaynak Yöneticisi şablonu olarak kullanılacak bir Linux sanal makinesini yakalama][capture-image-linux-step-2-create-vm-image]
-* *Connect-AzAccount* ile aboneliğinizde oturum açın
-* *Set-azcontext* ve, SubscriptionID veya subscriptionName parametreleri ile bağlamınızın aboneliğini ayarlayın-bkz.<https://docs.microsoft.com/powershell/module/az.accounts/set-Azcontext>
-* *Add-azvhd* ile VHD 'Yi bir Azure depolama hesabına yükleyin-bkz.<https://docs.microsoft.com/powershell/module/az.compute/add-Azvhd>
-* Seçim *New-Azımage* ile VHD 'Den yönetilen disk görüntüsü oluşturma-Bkz.<https://docs.microsoft.com/powershell/module/az.compute/new-Azimage>
-* Yeni bir VM yapılandırmasının işletim sistemi diskini şu şekilde ayarlayın
-  * *Set-AzVMOSDisk-Sourceımageuri-CreateOption FromImage* ile VHD-bkz.<https://docs.microsoft.com/powershell/module/az.compute/set-Azvmosdisk>
-  * Yönetilen disk görüntüsü *set-Azvmsourceımage* -bkz.<https://docs.microsoft.com/powershell/module/az.compute/set-Azvmsourceimage>
-* *New-azvm* ile VM yapılandırmadan yenı bir VM oluşturma-Bkz.<https://docs.microsoft.com/powershell/module/az.compute/new-Azvm>
+* Use *sysprep* on Windows or *waagent -deprovision* on Linux to generalize your VM - see [Sysprep Technical Reference](https://technet.microsoft.com/library/cc766049.aspx) for Windows or [How to capture a Linux virtual machine to use as a Resource Manager template][capture-image-linux-step-2-create-vm-image] for Linux
+* Sign in to your subscription with *Connect-AzAccount*
+* Set the subscription of your context with *Set-AzContext* and parameter SubscriptionId or SubscriptionName - see <https://docs.microsoft.com/powershell/module/az.accounts/set-Azcontext>
+* Upload the VHD with *Add-AzVhd* to an Azure Storage Account - see <https://docs.microsoft.com/powershell/module/az.compute/add-Azvhd>
+* (Optional) Create a Managed Disk Image from the VHD with *New-AzImage*  - see <https://docs.microsoft.com/powershell/module/az.compute/new-Azimage>
+* Set the OS disk of a new VM config to the
+  * VHD with *Set-AzVMOSDisk -SourceImageUri -CreateOption fromImage* - see <https://docs.microsoft.com/powershell/module/az.compute/set-Azvmosdisk>
+  * Managed Disk Image *Set-AzVMSourceImage* - see <https://docs.microsoft.com/powershell/module/az.compute/set-Azvmsourceimage>
+* Create a new VM from the VM config with *New-AzVM* - see <https://docs.microsoft.com/powershell/module/az.compute/new-Azvm>
 
 **Azure CLI**
 
-* VM 'nizi genelleştirmek için Windows 'ta *Sysprep* veya Linux 'ta *waagent-deprovision* komutunu kullanın-bkz. Windows için [Sysprep teknik başvurusu](https://technet.microsoft.com/library/cc766049.aspx) veya Linux Için [Kaynak Yöneticisi şablonu olarak kullanılacak bir Linux sanal makinesini yakalama][capture-image-linux-step-2-create-vm-image]
-* *Az Login* ile aboneliğinizde oturum açın
-* *Az Account set- `<subscription name or id` -Subscription >*  ile aboneliğinizi seçin
-* VHD 'YI *az Storage blob upload* ile karşıya yükleme-bkz [. Azure CLI ile Azure depolama ile kullanma][storage-azure-cli]
-* Seçim *Az Image Create* -See ile VHD 'Den yönetilen disk görüntüsü oluşturma https://docs.microsoft.com/cli/azure/image
-* Karşıya yüklenen VHD veya yönetilen disk görüntüsünü *az VM Create* ve Parameter *--Image* ile işletim sistemi diski olarak belirten yeni bir VM oluşturun
+* Use *sysprep* on Windows or *waagent -deprovision* on Linux to generalize your VM - see [Sysprep Technical Reference](https://technet.microsoft.com/library/cc766049.aspx) for Windows or [How to capture a Linux virtual machine to use as a Resource Manager template][capture-image-linux-step-2-create-vm-image] for Linux
+* Sign in to your subscription with *az login*
+* Select your subscription with *az account set --subscription `<subscription name or id`>*
+* Upload the VHD with *az storage blob upload* - see [Using the Azure CLI with Azure Storage][storage-azure-cli]
+* (Optional) Create a Managed Disk Image from the VHD with *az image create* - see https://docs.microsoft.com/cli/azure/image
+* Create a new VM specifying the uploaded VHD or Managed Disk Image as OS disk with *az vm create* and parameter *--image*
 
 **Şablon**
 
-* VM 'nizi genelleştirmek için Windows 'ta *Sysprep* veya Linux 'ta *waagent-deprovision* komutunu kullanın-bkz. Windows için [Sysprep teknik başvurusu](https://technet.microsoft.com/library/cc766049.aspx) veya Linux Için [Kaynak Yöneticisi şablonu olarak kullanılacak bir Linux sanal makinesini yakalama][capture-image-linux-step-2-create-vm-image]
-* VHD 'YI PowerShell veya Azure CLı ile karşıya yükleme
-* Seçim PowerShell, Azure CLı veya Azure portal ile VHD 'den yönetilen bir disk görüntüsü oluşturun
-* [Bu örnek JSON](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-specialized-vhd-new-or-existing-vnet/azuredeploy.json) şablonunda gösterildiği gibi, görüntü VHD 'sine başvuran bir JSON şablonuyla VM 'yi dağıtın veya [Bu örnek JSON şablonunda](https://github.com/Azure/azure-quickstart-templates/blob/master/sap-2-tier-user-image-md/azuredeploy.json)gösterildiği gibi yönetilen disk görüntüsünü kullanın.
+* Use *sysprep* on Windows or *waagent -deprovision* on Linux to generalize your VM - see [Sysprep Technical Reference](https://technet.microsoft.com/library/cc766049.aspx) for Windows or [How to capture a Linux virtual machine to use as a Resource Manager template][capture-image-linux-step-2-create-vm-image] for Linux
+* Upload the VHD with Powershell or Azure CLI
+* (Optional) Create a Managed Disk Image from the VHD with Powershell, Azure CLI, or the Azure portal
+* Deploy the VM with a JSON template referencing the image VHD as shown in [this example JSON template](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-specialized-vhd-new-or-existing-vnet/azuredeploy.json) or using the Managed Disk Image as shown in [this example JSON template](https://github.com/Azure/azure-quickstart-templates/blob/master/sap-2-tier-user-image-md/azuredeploy.json).
 
-#### <a name="downloading-vhds-or-managed-disks-to-on-premises"></a>VHD 'leri veya yönetilen diskleri şirket içine indirme
-Hizmet olarak Azure altyapısı, yalnızca VHD 'leri ve SAP sistemlerini karşıya yükleyebilecekler için tek yönlü bir cadde değildir. SAP sistemlerini Azure 'dan şirket içi dünyaya geri taşıyabilirsiniz.
+#### <a name="downloading-vhds-or-managed-disks-to-on-premises"></a>Downloading VHDs or Managed Disks to on-premises
+Azure Infrastructure as a Service is not a one-way street of only being able to upload VHDs and SAP systems. You can move SAP systems from Azure back into the on-premises world as well.
 
-İndirme sırasında VHD 'ler veya yönetilen diskler etkin olamaz. VM 'lere bağlanan diskler indirilirken bile, sanal makinenin kapatılması ve serbest bırakılmasının olması gerekir. Yalnızca bir veritabanı içeriğini indirmek istiyorsanız, şirket içinde yeni bir sistem kurmak ve indirme sırasında ve Azure 'daki sistemin sistemde hala çalışır durumda olduğu kabul edilebilir olması durumunda kullanılması gerekir , bir diskte sıkıştırılmış bir veritabanı yedeklemesi gerçekleştirerek ve işletim sistemi temel VM 'yi indirmek yerine yalnızca o diski indirerek uzun bir kesinti yaşamadan kaçınabilirsiniz.
+During the time of the download the VHDs or Managed Disks can't be active. Even when downloading disks, which are mounted to VMs, the VM needs to be shut down and deallocated. If you only want to download the database content which, then should be used to set up a new system on-premises and if it is acceptable that during the time of the download and the setup of the new system that the system in Azure can still be operational, you could avoid a long downtime by performing a compressed database backup into a disk and just download that disk instead of also downloading the OS base VM.
 
 #### <a name="powershell"></a>Powershell
 
-* Yönetilen disk indiriliyor  
-  Önce yönetilen diskin temel blobuna erişim almanız gerekir. Ardından, temel alınan blobu yeni bir depolama hesabına kopyalayabilir ve blobu bu depolama hesabından indirebilirsiniz.
+* Downloading a Managed Disk  
+  You first need to get access to the underlying blob of the Managed Disk. Then you can copy the underlying blob to a new storage account and download the blob from this storage account.
 
   ```powershell
   $access = Grant-AzDiskAccess -ResourceGroupName <resource group> -DiskName <disk name> -Access Read -DurationInSecond 3600
@@ -1018,52 +1018,52 @@ Hizmet olarak Azure altyapısı, yalnızca VHD 'leri ve SAP sistemlerini karşı
   Revoke-AzDiskAccess -ResourceGroupName <resource group> -DiskName <disk name>
   ```
 
-* VHD indirme  
-  SAP sistemi durdurulduğunda ve VM kapatıldıktan sonra, VHD disklerini şirket içi dünyaya geri yüklemek için şirket içi hedefte Save-AzVhd PowerShell cmdlet 'ini kullanabilirsiniz. Bunu yapmak için, Azure portal ' depolama bölümünde bulabileceğiniz VHD 'nin URL 'SI gerekir (depolama hesabına ve VHD 'nin oluşturulduğu depolama kapsayıcısına gitmeniz gerekir) ve VHD 'nin nereye kopyalanabilmesi gerektiğini bilmeniz gerekir.
+* Downloading a VHD  
+  Once the SAP system is stopped and the VM is shut down, you can use the PowerShell cmdlet Save-AzVhd on the on-premises target to download the VHD disks back to the on-premises world. In order to do that, you need the URL of the VHD, which you can find in the 'storage Section' of the Azure portal (need to navigate to the Storage Account and the storage container where the VHD was created) and you need to know where the VHD should be copied to.
 
-  Ardından, kaynak URI 'sini indirmek üzere VHD 'nin URL 'si olarak ve LocalFilePath öğesini VHD 'nin fiziksel konumu (adı dahil) olarak tanımlayarak komutunu kullanabilirsiniz. Komut şu şekilde görünebilir:
+  Then you can leverage the command by defining the parameter SourceUri as the URL of the VHD to download and the LocalFilePath as the physical location of the VHD (including its name). The command could look like:
 
   ```powerhell
   Save-AzVhd -ResourceGroupName <resource group name of storage account> -SourceUri http://<storage account name>.blob.core.windows.net/<container name>/sapidedata.vhd -LocalFilePath E:\Azure_downloads\sapidesdata.vhd
   ```
 
-  Save-AzVhd cmdlet 'i hakkında daha fazla bilgi için buraya <https://docs.microsoft.com/powershell/module/az.compute/save-Azvhd>bakın.
+  For more details of the Save-AzVhd cmdlet, check here <https://docs.microsoft.com/powershell/module/az.compute/save-Azvhd>.
 
 #### <a name="azure-cli"></a>Azure CLI
-* Yönetilen disk indiriliyor  
-  Önce yönetilen diskin temel blobuna erişim almanız gerekir. Ardından, temel alınan blobu yeni bir depolama hesabına kopyalayabilir ve blobu bu depolama hesabından indirebilirsiniz.
+* Downloading a Managed Disk  
+  You first need to get access to the underlying blob of the Managed Disk. Then you can copy the underlying blob to a new storage account and download the blob from this storage account.
   ```
   az disk grant-access --ids "/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Compute/disks/<disk name>" --duration-in-seconds 3600
   az storage blob download --sas-token "<sas token>" --account-name <account name> --container-name <container name> --name <blob name> --file <local file>
   az disk revoke-access --ids "/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Compute/disks/<disk name>"
   ```
 
-* VHD indirme   
-  SAP sistemi durdurulduğunda ve VM kapatıldıktan sonra, VHD disklerini şirket içi dünyaya geri yüklemek için Azure CLı komutu _Azure Storage blob indirme_ 'yi şirket içi hedefte kullanabilirsiniz. Bunu yapmak için, VHD 'nin adı ve kapsayıcısına ihtiyacınız vardır. Bu, Azure portal ' depolama bölümünde ve VHD 'nin oluşturulduğu depolama kapsayıcısına gitmeniz gerekir) ve VHD 'nin COP olması gereken yeri bilmeniz gerekir. .
+* Downloading a VHD   
+  Once the SAP system is stopped and the VM is shut down, you can use the Azure CLI command _azure storage blob download_ on the on-premises target to download the VHD disks back to the on-premises world. In order to do that, you need the name and the container of the VHD, which you can find in the 'Storage Section' of the Azure portal (need to navigate to the Storage Account and the storage container where the VHD was created) and you need to know where the VHD should be copied to.
 
-  Ardından, indirilecek VHD 'nin kapsayıcısını ve kapsayıcısını ve hedefi VHD 'nin fiziksel hedef konumu (adı dahil) olarak tanımlayarak komutunu kullanabilirsiniz. Komut şu şekilde görünebilir:
+  Then you can leverage the command by defining the parameters blob and container of the VHD to download and the destination as the physical target location of the VHD (including its name). The command could look like:
 
   ```
   az storage blob download --name <name of the VHD to download> --container-name <container of the VHD to download> --account-name <storage account name of the VHD to download> --account-key <storage account key> --file <destination of the VHD to download>
   ```
 
-### <a name="transferring-vms-and-disks-within-azure"></a>Azure 'da VM 'Leri ve diskleri aktarma
+### <a name="transferring-vms-and-disks-within-azure"></a>Transferring VMs and disks within Azure
 
-#### <a name="copying-sap-systems-within-azure"></a>Azure 'da SAP sistemlerini kopyalama
+#### <a name="copying-sap-systems-within-azure"></a>Copying SAP systems within Azure
 
-SAP sistemi veya SAP uygulama katmanını destekleyen adanmış bir DBMS sunucusu, büyük olasılıkla, ikili dosyaları içeren işletim sistemini veya SAP veritabanının veri ve günlük dosyalarını içeren birkaç diskten oluşur. Diskleri kopyalamanın ve Azure işlevselliğinin yerel bir diske kaydedilmesi için Azure işlevselliği, birden çok diskin tutarlı bir şekilde anlık görüntüsünü veren bir eşitleme mekanizmasına sahip değildir. Bu nedenle, aynı VM 'ye karşı bağlansalar bile kopyalanmış veya kaydedilmiş disklerin durumu farklı olabilir. Diğer bir deyişle farklı disklerde farklı veri ve günlük dosyası (ler) dahil olmak üzere, sonundaki veritabanı tutarsız olur.
+An SAP system or even a dedicated DBMS server supporting an SAP application layer will likely consist of several disks, which contain either the OS with the binaries or the data and log file(s) of the SAP database. Neither the Azure functionality of copying disks nor the Azure functionality of saving disks to a local disk has a synchronization mechanism, which snapshots multiple disks in a consistent manner. Therefore, the state of the copied or saved disks even if those are mounted against the same VM would be different. This means that in the concrete case of having different data and logfile(s) contained in the different disks, the database in the end would be inconsistent.
 
-**İşleminin SAP sistem yapılandırmasının bir parçası olan diskleri kopyalamak veya kaydetmek için SAP sistemini durdurmanız ve ayrıca dağıtılan VM 'yi kapatmanız gerekir. Yalnızca Azure 'da veya şirket içinde SAP sisteminin bir kopyasını oluşturmak için disk kümesini kopyalayabilir veya indirebilirsiniz.**
+**Conclusion: In order to copy or save disks, which are part of an SAP system configuration you need to stop the SAP system and also need to shut down the deployed VM. Only then you can copy or download the set of disks to either create a copy of the SAP system in Azure or on-premises.**
 
-Veri diskleri, bir Azure depolama hesabında VHD dosyaları olarak depolanabilir ve doğrudan bir sanal makineye bağlanabilir veya görüntü olarak kullanılabilir. Bu durumda, VHD sanal makineye iliştirilmeden önce başka bir konuma kopyalanır. Azure 'da VHD dosyasının tam adı Azure içinde benzersiz olmalıdır. Daha önce belirtildiği gibi, adı şu şekilde görünen üç bölümden oluşan bir ad türü olmalıdır:
+Data disks can be stored as VHD files in an Azure Storage Account and can be directly attached to a virtual machine or be used as an image. In this case, the VHD is copied to another location before being attached to the virtual machine. The full name of the VHD file in Azure must be unique within Azure. As mentioned earlier already, the name is kind of a three-part name that looks like:
 
     http(s)://<storage account name>.blob.core.windows.net/<container name>/<vhd name>
 
-Veri diskleri de yönetilen diskler olabilir. Bu durumda, yönetilen disk, sanal makineye iliştirilmeden önce yeni bir yönetilen disk oluşturmak için kullanılır. Yönetilen diskin adı bir kaynak grubu içinde benzersiz olmalıdır.
+Data disks can also be Managed Disks. In this case, the Managed Disk is used to create a new Managed Disk before being attached to the virtual machine. The name of the Managed Disk must be unique within a resource group.
 
 ##### <a name="powershell"></a>Powershell
 
-Azure PowerShell cmdlet 'lerini, [Bu makalede][storage-powershell-guide-full-copy-vhd]gösterildiği gibi bir VHD 'yi kopyalamak için kullanabilirsiniz. Yeni bir yönetilen disk oluşturmak için aşağıdaki örnekte gösterildiği gibi New-AzDiskConfig ve New-AzDisk ' i kullanın.
+You can use Azure PowerShell cmdlets to copy a VHD as shown in [this article][storage-powershell-guide-full-copy-vhd]. To create a new Managed Disk, use New-AzDiskConfig and New-AzDisk as shown in the following example.
 
 ```powershell
 $config = New-AzDiskConfig -CreateOption Copy -SourceUri "/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Compute/disks/<disk name>" -Location <location>
@@ -1072,22 +1072,22 @@ New-AzDisk -ResourceGroupName <resource group name> -DiskName <disk name> -Disk 
 
 ##### <a name="azure-cli"></a>Azure CLI
 
-[Bu makalede][storage-azure-cli-copy-blobs]gösterildiği gibi, BIR VHD 'yi kopyalamak IÇIN Azure CLI kullanabilirsiniz. Yeni bir yönetilen disk oluşturmak için aşağıdaki örnekte gösterildiği gibi *az disk Create* kullanın.
+You can use Azure CLI to copy a VHD as shown in [this article][storage-azure-cli-copy-blobs]. To create a new Managed Disk, use *az disk create* as shown in the following example.
 
 ```
 az disk create --source "/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Compute/disks/<disk name>" --name <disk name> --resource-group <resource group name> --location <location>
 ```
 
-##### <a name="azure-storage-tools"></a>Azure depolama araçları
+##### <a name="azure-storage-tools"></a>Azure Storage tools
 
 * <https://storageexplorer.com/>
 
-Azure depolama gezginlerine yönelik profesyonel sürümler şurada bulunabilir:
+Professional editions of Azure Storage Explorers can be found here:
 
 * <https://www.cerebrata.com/>
 * <https://clumsyleaf.com/products/cloudxplorer>
 
-Bir VHD 'nin bir depolama hesabı içindeki kopyası bir işlemdir. Bu işlem yalnızca birkaç saniye sürer (SAN donanımına benzer bir şekilde, yavaş kopyalama ve yazma sırasında kopyalama ile anlık görüntü oluşturma). VHD dosyasının bir kopyasına sahip olduktan sonra, VHD 'nin kopyalarını sanal makinelere eklemek için bir sanal makineye ekleyebilir veya bir görüntü olarak kullanabilirsiniz.
+The copy of a VHD itself within a storage account is a process, which takes only a few seconds (similar to SAN hardware creating snapshots with lazy copy and copy on write). After you have a copy of the VHD file, you can attach it to a virtual machine or use it as an image to attach copies of the VHD to virtual machines.
 
 ##### <a name="powershell"></a>Powershell
 
@@ -1132,72 +1132,72 @@ az disk create --name <new disk name> --resource-group <resource group name> --l
 az vm disk attach --disk <new disk name or managed disk id> --resource-group <resource group name> --vm-name <vm name> --caching <caching option> --lun <lun, for example 0>
 ```
 
-#### <a name="9789b076-2011-4afa-b2fe-b07a8aba58a1"></a>Azure depolama hesapları arasında diskleri kopyalama
-Bu görev Azure portal gerçekleştirilemiyor. Azure PowerShell cmdlet 'lerini, Azure CLı 'yi veya bir üçüncü taraf depolama tarayıcısını kullanabilirsiniz. PowerShell cmdlet 'leri veya CLı komutları, blob 'ları depolama hesapları arasında ve Azure aboneliğindeki bölgeler arasında zaman uyumsuz olarak kopyalamak için blob 'lar oluşturabilir ve yönetebilir.
+#### <a name="9789b076-2011-4afa-b2fe-b07a8aba58a1"></a>Copying disks between Azure Storage Accounts
+This task cannot be performed on the Azure portal. You can use Azure PowerShell cmdlets, Azure CLI, or a third-party storage browser. The PowerShell cmdlets or CLI commands can create and manage blobs, which include the ability to asynchronously copy blobs across Storage Accounts and across regions within the Azure subscription.
 
 ##### <a name="powershell"></a>Powershell
-Ayrıca, VHD 'leri abonelikler arasında kopyalayabilirsiniz. Daha fazla bilgi için [Bu makaleyi][storage-powershell-guide-full-copy-vhd]okuyun.
+You can also copy VHDs between subscriptions. For more information, read [this article][storage-powershell-guide-full-copy-vhd].
 
-PS cmdlet mantığının temel akışı şöyle görünür:
+The basic flow of the PS cmdlet logic looks like this:
 
-* *New-AzStorageContext* ile **kaynak** depolama hesabı için depolama hesabı bağlamı oluşturma-Bkz.<https://docs.microsoft.com/powershell/module/az.storage/new-AzStoragecontext>
-* *New-AzStorageContext* ile **hedef** depolama hesabı için depolama hesabı bağlamı oluşturma-Bkz.<https://docs.microsoft.com/powershell/module/az.storage/new-AzStoragecontext>
-* Kopyayı ile Başlat
+* Create a storage account context for the **source** storage account with *New-AzStorageContext* - see <https://docs.microsoft.com/powershell/module/az.storage/new-AzStoragecontext>
+* Create a storage account context for the **target** storage account with *New-AzStorageContext* - see <https://docs.microsoft.com/powershell/module/az.storage/new-AzStoragecontext>
+* Start the copy with
 
 ```powershell
 Start-AzStorageBlobCopy -SrcBlob <source blob name> -SrcContainer <source container name> -SrcContext <variable containing context of source storage account> -DestBlob <target blob name> -DestContainer <target container name> -DestContext <variable containing context of target storage account>
 ```
 
-* İle bir döngüde kopyanın durumunu kontrol edin
+* Check the status of the copy in a loop with
 
 ```powershell
 Get-AzStorageBlobCopyState -Blob <target blob name> -Container <target container name> -Context <variable containing context of target storage account>
 ```
 
-* Yukarıda açıklandığı gibi yeni VHD 'yi bir sanal makineye ekleyin.
+* Attach the new VHD to a virtual machine as described above.
 
-Örnekler için [Bu makaleye][storage-powershell-guide-full-copy-vhd]bakın.
+For examples see [this article][storage-powershell-guide-full-copy-vhd].
 
 ##### <a name="azure-cli"></a>Azure CLI
-* Kopyayı ile Başlat
+* Start the copy with
 
 ```
 az storage blob copy start --source-blob <source blob name> --source-container <source container name> --source-account-name <source storage account name> --source-account-key <source storage account key> --destination-container <target container name> --destination-blob <target blob name> --account-name <target storage account name> --account-key <target storage account name>
 ```
 
-* Kopyaya sahip bir döngüde hala varsa durumu denetle
+* Check the status if the copy is still in a loop with
 
 ```
 az storage blob show --name <target blob name> --container <target container name> --account-name <target storage account name> --account-key <target storage account name>
 ```
 
-* Yukarıda açıklandığı gibi yeni VHD 'yi bir sanal makineye ekleyin.
+* Attach the new VHD to a virtual machine as described above.
 
-Örnekler için [Bu makaleye][storage-azure-cli-copy-blobs]bakın.
+For examples see [this article][storage-azure-cli-copy-blobs].
 
-### <a name="disk-handling"></a>Disk Işleme
+### <a name="disk-handling"></a>Disk Handling
 
-#### <a name="4efec401-91e0-40c0-8e64-f2dceadff646"></a>SAP dağıtımları için VM/disk yapısı
+#### <a name="4efec401-91e0-40c0-8e64-f2dceadff646"></a>VM/disk structure for SAP deployments
 
-İdeal olarak, bir VM yapısının ve ilişkili disklerin işlenmesi basit olmalıdır. Şirket içi yüklemelerde, müşteriler bir sunucu yüklemesi yapılandırmak için birçok yol geliştirmiştir.
+Ideally the handling of the structure of a VM and the associated disks should be simple. In on-premises installations, customers developed many ways of structuring a server installation.
 
-* DBMS ve/veya SAP 'nin işletim sistemini ve tüm ikililerini içeren bir temel disk. Mart 2015 ' den itibaren bu disk, en fazla 1 GB boyutunda, daha önceki kısıtlamalar yerine 127GB ile sınırlıdır.
-* SAP veritabanının DBMS günlük dosyasını ve DBMS geçici depolama alanının günlük dosyasını içeren bir veya birden çok disk (DBMS bunu destekliyorsa). Veritabanı günlüğü ıOPS gereksinimleri yüksekse, gereken ıOPS hacmine ulaşmak için birden çok disk oluşturmanız gerekir.
-* SAP veritabanının bir veya iki veritabanı dosyasını ve DBMS geçici veri dosyalarını (DBMS bunu destekliyorsa) içeren birçok disk.
+* One base disk, which contains the OS and all the binaries of the DBMS and/or SAP. Since March 2015, this disk can be up to 1TB in size instead of earlier restrictions that limited it to 127GB.
+* One or multiple disks, which contains the DBMS log file of the SAP database and the log file of the DBMS temp storage area (if the DBMS supports this). If the database log IOPS requirements are high, you need to stripe multiple disks in order to reach the IOPS volume required.
+* A number of disks containing one or two database files of the SAP database and the DBMS temp data files as well (if the DBMS supports this).
 
-![SAP için Azure IaaS VM 'sinin başvuru yapılandırması][planning-guide-figure-1300]
+![Reference Configuration of Azure IaaS VM for SAP][planning-guide-figure-1300]
 
 
 ---
 > ![Windows][Logo_Windows] Windows
 >
-> Birçok müşteri sayesinde, örneğin, SAP ve DBMS ikili dosyalarının c:\ ' da yüklü olmadığı durumlarda yapılandırma gördük. işletim sisteminin yüklendiği sürücü. Bunun çeşitli nedenleri vardı, ancak köke geri döndüğünüzde, genellikle sürücülerin küçük ve işletim sistemi yükseltmeleri gereken ek alanı 10-15 yıl önce gerekiyordu. Her iki koşul de bu günler çok sık uygulanmaz. Bugün c:\ Sürücü, büyük birim disklerinde veya VM 'lerde eşlenebilir. Dağıtımların yapısıyla basit kalmasını sağlamak için, Azure 'da SAP NetWeaver sistemleri için aşağıdaki dağıtım modelini izlemeniz önerilir
+> With many customers we saw configurations where, for example, SAP and DBMS binaries were not installed on the c:\ drive where the OS was installed. There were various reasons for this, but when we went back to the root, it usually was that the drives were small and OS upgrades needed additional space 10-15 years ago. Both conditions do not apply these days too often anymore. Today the c:\ drive can be mapped on large volume disks or VMs. In order to keep deployments simple in their structure, it is recommended to follow the following deployment pattern for SAP NetWeaver systems in Azure
 >
-> Windows işletim sistemi disk belleği dosyası D: sürücüsünde (kalıcı olmayan disk) olmalıdır
+> The Windows operating system pagefile should be on the D: drive (non-persistent disk)
 >
 > ![Linux][Logo_Linux] Linux
 >
-> Linux takas dosyasını [Bu makalede][virtual-machines-linux-agent-user-guide]açıklandığı gibi Linux üzerinde/mnt/mnt/Resource altına yerleştirin. Takas dosyası, Linux Aracısı/etc/waagent.exe yapılandırma dosyasında yapılandırılabilir. Aşağıdaki ayarları ekleyin veya değiştirin:
+> Place the Linux swapfile under /mnt /mnt/resource on Linux as described in [this article][virtual-machines-linux-agent-user-guide]. The swap file can be configured in the configuration file of the Linux Agent /etc/waagent.conf. Add or change the following settings:
 >
 >
 
@@ -1206,20 +1206,20 @@ ResourceDisk.EnableSwap=y
 ResourceDisk.SwapSizeMB=30720
 ```
 
-Değişiklikleri etkinleştirmek için Linux aracısını ile yeniden başlatmanız gerekir
+To activate the changes, you need to restart the Linux Agent with
 
 ```
 sudo service waagent restart
 ```
 
-Önerilen takas dosyası boyutu hakkında daha fazla bilgi için lütfen SAP Note [1597355] makalesini okuyun
+Please read SAP Note [1597355] for more details on the recommended swap file size
 
 ---
-DBMS veri dosyaları için kullanılan disk sayısı ve bu disklerin üzerinde barındırıldığı Azure depolama türü, ıOPS gereksinimlerine ve gerekli gecikme süresine göre belirlenir. Tam kotalar [Bu makalede (Linux)][virtual-machines-sizes-linux] ve [Bu makalede (Windows)][virtual-machines-sizes-windows]açıklanmaktadır.
+The number of disks used for the DBMS data files and the type of Azure Storage these disks are hosted on should be determined by the IOPS requirements and the latency required. Exact quotas are described in [this article (Linux)][virtual-machines-sizes-linux] and [this article (Windows)][virtual-machines-sizes-windows].
 
-Son iki yıl içinde SAP dağıtımları deneyimi, şu şekilde özetlenebilir bazı derslere sahiptir:
+Experience of SAP deployments over the last two years taught us some lessons, which can be summarized as:
 
-* Mevcut müşteri sistemleri, SAP veritabanlarını temsil eden farklı boyutlardaki veri dosyalarına sahip olabileceğinden, farklı veri dosyalarına yönelik ıOPS trafiği her zaman aynı değildir. Sonuç olarak, veri dosyaları LUN 'larını bunların dışına koymak için birden çok disk üzerinden bir RAID yapılandırması kullanılması daha iyi hale gelir. Özellikle de bir ıOPS oranının, DBMS işlem günlüğüne göre tek bir diskin kotasına isabet ettiği Azure Standart depolama ile birlikte durumlar vardı. Bu senaryolarda, Premium depolamanın kullanılması önerilir veya bir yazılım Stripe ile birden çok standart depolama diskini daha da toplayarak bir araya getirin.
+* IOPS traffic to different data files is not always the same since existing customer systems might have differently sized data files representing their SAP database(s). As a result it turned out to be better using a RAID configuration over multiple disks to place the data files LUNs carved out of those. There were situations, especially with Azure Standard Storage where an IOPS rate hit the quota of a single disk against the DBMS transaction log. In such scenarios, the use of Premium Storage is recommended or alternatively aggregating multiple Standard Storage disks with a software stripe.
 
 ---
 > ![Windows][Logo_Windows] Windows
@@ -1228,168 +1228,168 @@ Son iki yıl içinde SAP dağıtımları deneyimi, şu şekilde özetlenebilir b
 >
 > ![Linux][Logo_Linux] Linux
 >
-> * [Linux 'ta yazılım RAID yapılandırma][virtual-machines-linux-configure-raid]
-> * [Azure 'da bir Linux VM 'de LVM 'yi yapılandırma][virtual-machines-linux-configure-lvm]
-> * [Azure depolama gizli dizileri ve Linux g/ç iyileştirmeleri](https://blogs.msdn.com/b/igorpag/archive/2014/10/23/azure-storage-secrets-and-linux-i-o-optimizations.aspx)
+> * [Configure Software RAID on Linux][virtual-machines-linux-configure-raid]
+> * [Configure LVM on a Linux VM in Azure][virtual-machines-linux-configure-lvm]
+> * [Azure Storage secrets and Linux I/O optimizations](https://blogs.msdn.com/b/igorpag/archive/2014/10/23/azure-storage-secrets-and-linux-i-o-optimizations.aspx)
 >
 >
 
 ---
-* Premium Depolama, özellikle kritik işlem günlüğü yazmaları için önemli ölçüde daha iyi performans gösterir. Performansa benzer bir üretim sunması beklenen SAP senaryolarında, Azure Premium Depolama 'yı kullanan VM Serisi kullanımı kesinlikle önerilir.
+* Premium Storage is showing significant better performance, especially for critical transaction log writes. For SAP scenarios that are expected to deliver production like performance, it is highly recommended to use VM-Series that can leverage Azure Premium Storage.
 
-İşletim sistemini içeren diskin ve önerdiğimiz gibi, SAP ve veritabanının (Temel VM) ikili dosyalarının de artık 127GB ile sınırlı olmadığından emin olmanız gerekir. Artık en fazla 1 TB boyutunda olabilir. Bu, örneğin SAP Batch iş günlükleri gibi tüm gerekli dosyaları tutmak için yeterli alan olmalıdır.
+Keep in mind that the disk, which contains the OS, and as we recommend, the binaries of SAP and the database (base VM) as well, is not anymore limited to 127GB. It now can have up to 1TB in size. This should be enough space to keep all the necessary file including, for example, SAP batch job logs.
 
-Özellikle de DBMS VM 'Leri için daha fazla öneri ve daha ayrıntılı bilgi için, [DBMS dağıtım kılavuzuna][dbms-guide] başvurun
+For more suggestions and more details, specifically for DBMS VMs, consult the [DBMS Deployment Guide][dbms-guide]
 
-#### <a name="disk-handling"></a>Disk Işleme
+#### <a name="disk-handling"></a>Disk Handling
 
-Çoğu senaryoda SAP veritabanını sanal makineye dağıtmak için ek diskler oluşturmanız gerekir. Bu belgenin [SAP dağıtımları için bölüm VM/disk yapısındaki][planning-guide-5.5.1] disk sayısı ile ilgili dikkat edilecek noktalar ele alındık. Azure portal, temel VM dağıtıldıktan sonra diskleri eklemek ve ayırmak için izin verir. Diskler, sanal makine çalışır duruma geldiğinde ve durdurulduğunda da eklenebilir/ayrılabilir. Bir disk iliştirilirken, Azure portal boş bir disk veya mevcut bir disk ekleme olanağı sunar. bu zaman içinde bu noktada başka bir sanal makineye bağlı değildir.
+In most scenarios, you need to create additional disks in order to deploy the SAP database into the VM. We talked about the considerations on number of disks in chapter [VM/disk structure for SAP deployments][planning-guide-5.5.1] of this document. The Azure portal allows to attach and detach disks once a base VM is deployed. The disks can be attached/detached when the VM is up and running as well as when it is stopped. When attaching a disk, the Azure portal offers to attach an empty disk or an existing disk, which at this point in time is not attached to another VM.
 
-**Not**: Diskler, belirli bir zamanda yalnızca bir VM 'ye iliştirilebilir.
+**Note**: Disks can only be attached to one VM at any given time.
 
-![Azure Standart depolama ile diskleri iliştirme/ayır][planning-guide-figure-1400]
+![Attach / detach disks with Azure Standard Storage][planning-guide-figure-1400]
 
-Yeni bir sanal makinenin dağıtımı sırasında, yönetilen diskleri kullanmak isteyip istemediğinize karar verebilir veya disklerinizi Azure Storage hesaplarına yerleştirebilirsiniz. Premium Depolama kullanmak istiyorsanız, yönetilen diskleri kullanmanızı öneririz.
+During the deployment of a new virtual machine, you can decide whether you want to use Managed Disks or place your disks on Azure Storage Accounts. If you want to use Premium Storage, we recommend using Managed Disks.
 
-Ardından, yeni ve boş bir disk oluşturmak isteyip istemediğinizi ya da daha önce karşıya yüklenen mevcut bir diski seçip sanal makineye şimdi bağlı olup olmayacağını belirlemeniz gerekir.
+Next, you need to decide whether you want to create a new and empty disk or whether you want to select an existing disk that was uploaded earlier and should be attached to the VM now.
 
-**ÖNEMLİ**: Azure Standart depolama ile konak önbelleği **kullanmak istemezsiniz.** Ana bilgisayar önbelleği tercihini varsayılan değer olan NONE olarak bırakmanız gerekir. Azure Premium Depolama ile, g/ç özelliği genellikle veritabanı veri dosyalarında tipik g/ç trafiği gibi okunmısam, okuma önbelleğini etkinleştirmeniz gerekir. Veritabanı işlem günlük dosyası olması durumunda, önbelleğe alma önerilmez.
+**IMPORTANT**: You **DO NOT** want to use Host Caching with Azure Standard Storage. You should leave the Host Cache preference at the default of NONE. With Azure Premium Storage, you should enable Read Caching if the I/O characteristic is mostly read like typical I/O traffic against database data files. In case of database transaction log file, no caching is recommended.
 
 ---
 > ![Windows][Logo_Windows] Windows
 >
-> [Azure portal veri diski iliştirme][virtual-machines-linux-attach-disk-portal]
+> [How to attach a data disk in the Azure portal][virtual-machines-linux-attach-disk-portal]
 >
-> Diskler iliştirilmişse, Windows Disk Yöneticisi 'Ni açmak için VM 'de oturum açmanız gerekir. [Ekli diskler için otomatik bağlama][planning-guide-5.5.3]bölümünde önerilen otomatik bağlama etkinleştirilmemişse, yeni eklenen birimin çevrimiçi alınması ve başlatılması gerekir.
+> If disks are attached, you need to sign in to the VM to open the Windows Disk Manager. If automount is not enabled as recommended in chapter [Setting automount for attached disks][planning-guide-5.5.3], the newly attached volume needs to be taken online and initialized.
 >
 > ![Linux][Logo_Linux] Linux
 >
-> Diskler iliştirilmişse, sanal makinede oturum açmanız ve [Bu makalede][virtual-machines-linux-how-to-attach-disk-how-to-initialize-a-new-data-disk-in-linux] açıklandığı gibi diskleri başlatmak gerekir
+> If disks are attached, you need to sign in to the VM and initialize the disks as described in [this article][virtual-machines-linux-how-to-attach-disk-how-to-initialize-a-new-data-disk-in-linux]
 >
 >
 
 ---
-Yeni disk boş bir diskdir, diski de biçimlendirmeniz gerekir. Biçimlendirme için özellikle DBMS verileri ve günlük dosyaları için, DBMS 'nin çıplak dağıtımlarıyla aynı öneriler geçerlidir.
+If the new disk is an empty disk, you need to format the disk as well. For formatting, especially for DBMS data and log files the same recommendations as for bare-metal deployments of the DBMS apply.
 
-[Microsoft Azure sanal makine kavramı][planning-guide-3.2]bölümünde zaten belirtildiği gibi, bir Azure Storage hesabı g/ç BIRIMI, IOPS ve veri hacmi bakımından sonsuz kaynaklar sağlamaz. Genellikle DBMS VM 'Leri bundan en çok etkilendi. Azure depolama hesabı birimi sınırının içinde kalmak için birkaç yüksek g/ç birimi sanal makinesi varsa, her VM için ayrı bir depolama hesabı kullanılması en iyi yöntem olabilir. Aksi takdirde, her bir depolama hesabının sınırına vurmadan bu VM 'Leri farklı depolama hesapları arasında nasıl dengeleyebilirsiniz. Daha fazla ayrıntı, [DBMS dağıtım kılavuzunda][dbms-guide]ele alınmıştır. Ayrıca, saf SAP uygulama sunucusu VM 'Leri veya diğer VM 'ler için bu sınırlamaları aklınızda tutmanız gerekir. bu durum sonunda ek VHD 'Ler gerektirebilir. Yönetilen disk kullanıyorsanız bu kısıtlamalar uygulanmaz. Premium Depolama kullanmayı planlıyorsanız, yönetilen disk kullanmanızı öneririz.
+As already mentioned in chapter [The Microsoft Azure Virtual Machine Concept][planning-guide-3.2], an Azure Storage account does not provide infinite resources in terms of I/O volume, IOPS, and data volume. Usually DBMS VMs are most affected by this. It might be best to use a separate Storage Account for each VM if you have few high I/O volume VMs to deploy in order to stay within the limit of the Azure Storage Account volume. Otherwise, you need to see how you can balance these VMs between different Storage accounts without hitting the limit of each single Storage Account. More details are discussed in the [DBMS Deployment Guide][dbms-guide]. You should also keep these limitations in mind for pure SAP application server VMs or other VMs, which eventually might require additional VHDs. These restrictions do not apply if you use Managed Disk. If you plan to use Premium Storage, we recommend using Managed Disk.
 
-Depolama hesapları için uygun olan başka bir konu, bir depolama hesabındaki VHD 'Lerin coğrafi olarak çoğaltılma edilip edilmeyeceğini belirtir. Coğrafi çoğaltma, VM düzeyinde değil, depolama hesabı düzeyinde etkin veya devre dışı bırakıldı. Coğrafi çoğaltma etkinse, depolama hesabı içindeki VHD 'ler aynı bölgedeki başka bir Azure veri merkezine çoğaltılır. Buna karar vermeden önce, aşağıdaki kısıtlamayı düşünmeniz gerekir:
+Another topic, which is relevant for Storage Accounts is whether the VHDs in a Storage Account are getting Geo-replicated. Geo-replication is enabled or disabled on the Storage Account level and not on the VM level. If geo-replication is enabled, the VHDs within the Storage Account would be replicated into another Azure data center within the same region. Before deciding on this, you should think about the following restriction:
 
-Azure coğrafi çoğaltma, bir VM 'deki her VHD üzerinde yerel olarak çalışarak, bir VM 'de birden çok VHD üzerinde IOs 'u kronolojik sırada çoğaltmaz. Bu nedenle, temel VM 'yi temsil eden VHD 'nin yanı sıra VM 'ye bağlı ek VHD 'ler birbirinden bağımsız olarak çoğaltılır. Bu, farklı VHD 'lerde yapılan değişiklikler arasında eşitleme olmadığı anlamına gelir. IOs 'un yazıldığı sırada bağımsız olarak çoğaltılırsa, coğrafi çoğaltmanın, veritabanlarının veritabanları birden çok VHD üzerinde dağıtılmış olan veritabanı sunucuları için değer olmadığı anlamına gelir. DBMS 'ye ek olarak, işlemlerin farklı VHD 'lerde veri yazacağı veya işlediği ve değişikliklerin sırasını korumak için önemli olduğu diğer uygulamalar da olabilir. Bu bir gereksinimle, Azure 'da coğrafi çoğaltma etkinleştirilmemelidir. Bir VM kümesi için coğrafi çoğaltma isteyip istememe ya da tercih etmeksizin, ancak başka bir küme için, VM 'Leri ve bunlarla ilgili VHD 'Leri, coğrafi çoğaltmanın etkin veya devre dışı olduğu farklı depolama hesaplarına önceden kategorilere ayırabilirsiniz.
+Azure Geo-replication works locally on each VHD in a VM and does not replicate the IOs in chronological order across multiple VHDs in a VM. Therefore, the VHD that represents the base VM as well as any additional VHDs attached to the VM are replicated independent of each other. This means there is no synchronization between the changes in the different VHDs. The fact that the IOs are replicated independently of the order in which they are written means that geo-replication is not of value for database servers that have their databases distributed over multiple VHDs. In addition to the DBMS, there also might be other applications where processes write or manipulate data in different VHDs and where it is important to keep the order of changes. If that is a requirement, geo-replication in Azure should not be enabled. Dependent on whether you need or want geo-replication for a set of VMs, but not for another set, you can already categorize VMs and their related VHDs into different Storage Accounts that have geo-replication enabled or disabled.
 
-#### <a name="17e0d543-7e8c-4160-a7da-dd7117a1ad9d"></a>İliştirilmiş diskler için otomatik bağlama ayarlama
+#### <a name="17e0d543-7e8c-4160-a7da-dd7117a1ad9d"></a>Setting automount for attached disks
 ---
 > ![Windows][Logo_Windows] Windows
 >
-> Kendi görüntülerinden veya disklerden oluşturulan VM 'Ler için otomatik bağlama parametresini denetlemeniz ve muhtemelen ayarlamanız gerekir. Bu parametrenin ayarlanması, Azure 'daki yeniden başlatma veya yeniden dağıtım sonrasında bağlı/bağlı sürücüleri otomatik olarak yeniden bağlamak için VM 'nin izin verir.
-> Parametresi, Azure Market 'te Microsoft tarafından sunulan görüntüler için ayarlanır.
+> For VMs, which are created from own Images or Disks, it is necessary to check and possibly set the automount parameter. Setting this parameter will allow the VM after a restart or redeployment in Azure to mount the attached/mounted drives again automatically.
+> The parameter is set for the images provided by Microsoft in the Azure Marketplace.
 >
-> Otomatik bağlama ayarlamak için DiskPart. exe ' nin komut satırı yürütülebilir dosyasının belgelerine bakın:
+> In order to set the automount, check the documentation of the command-line executable diskpart.exe here:
 >
-> * [DiskPart komut satırı seçenekleri](https://technet.microsoft.com/library/bb490893.aspx)
-> * [Otomatik bağlama](https://technet.microsoft.com/library/cc753703.aspx)
+> * [DiskPart Command-Line Options](https://technet.microsoft.com/library/bb490893.aspx)
+> * [Automount](https://technet.microsoft.com/library/cc753703.aspx)
 >
-> Windows komut satırı penceresi yönetici olarak açılmalıdır.
+> The Windows command-line window should be opened as administrator.
 >
-> Diskler iliştirilmişse, Windows Disk Yöneticisi 'Ni açmak için VM 'de oturum açmanız gerekir. Otomatik bağlama, [eklenen diskler için otomatik bağlama][planning-guide-5.5.3]bölümünde önerilen şekilde etkinleştirilmemişse, yeni eklenen birimin > çevrimiçi olarak alınması ve başlatılması gerekir.
+> If disks are attached, you need to sign in to the VM to open the Windows Disk Manager. If automount is not enabled as recommended in chapter [Setting automount for attached disks][planning-guide-5.5.3],  the newly attached volume >needs to be taken online and initialized.
 >
 > ![Linux][Logo_Linux] Linux
 >
-> [Bu makalede][virtual-machines-linux-how-to-attach-disk-how-to-initialize-a-new-data-disk-in-linux]açıklandığı gibi yeni eklenen boş diski başlatmalısınız.
-> Ayrıca,/etc/fstabna yeni diskler eklemeniz gerekir.
+> You need to initialize a newly attached empty disk as described in [this article][virtual-machines-linux-how-to-attach-disk-how-to-initialize-a-new-data-disk-in-linux].
+> You also need to add new disks to the /etc/fstab.
 >
 >
 
 ---
-### <a name="final-deployment"></a>Son dağıtım
+### <a name="final-deployment"></a>Final Deployment
 
-Son dağıtım ve özellikle SAP için Azure uzantısının dağıtımına ilişkin tam adımlar için [dağıtım kılavuzuna][deployment-guide]bakın.
+For the final deployment and exact steps, especially with regards to the deployment of the Azure Extension for SAP, refer to the [Deployment Guide][deployment-guide].
 
-## <a name="accessing-sap-systems-running-within-azure-vms"></a>Azure VM 'Leri içinde çalışan SAP sistemlerine erişme
+## <a name="accessing-sap-systems-running-within-azure-vms"></a>Accessing SAP systems running within Azure VMs
 
-SAP GUI 'yi kullanarak genel İnternet üzerinden bu SAP sistemlerine bağlanmak istediğiniz senaryolar için aşağıdaki yordamların uygulanması gerekir.
+For scenarios where you want to connect to those SAP systems across the public internet using SAP GUI, the following procedures need to be applied.
 
-Bu belgede daha sonra, şirket içi sistemler ve Azure sistemleri arasında siteden siteye bağlantı (VPN tüneli) veya Azure ExpressRoute bağlantısı olan şirket içi dağıtımlardaki SAP sistemlerine bağlanarak diğer ana senaryoyu ele alınacaktır.
+Later in the document we will discuss the other major scenario, connecting to SAP systems in cross-premises deployments, which have a site-to-site connection (VPN tunnel) or Azure ExpressRoute connection between the on-premises systems and Azure systems.
 
-### <a name="remote-access-to-sap-systems"></a>SAP sistemlerine uzaktan erişim
+### <a name="remote-access-to-sap-systems"></a>Remote Access to SAP systems
 
-Azure Resource Manager ile, artık eski Klasik modelde olduğu gibi varsayılan uç nokta yoktur. Bir Azure Resource Manager VM 'nin tüm bağlantı noktaları şu kadar sürede açıktır:
+With Azure Resource Manager, there are no default endpoints anymore like in the former classic model. All ports of an Azure Resource Manager VM are open as long as:
 
-1. Alt ağ veya ağ arabirimi için ağ güvenlik grubu tanımlanmadı. Azure VM 'lerine yönelik ağ trafiğine, "ağ güvenlik grupları" adı verilir. Daha fazla bilgi için bkz. [Ağ Güvenlik Grubu (NSG) nedir?][virtual-networks-nsg]
-2. Ağ arabirimi için tanımlı Azure Load Balancer yok   
+1. No Network Security Group is defined for the subnet or the network interface. Network traffic to Azure VMs can be secured via so-called "Network Security Groups". Daha fazla bilgi için bkz. [Ağ Güvenlik Grubu (NSG) nedir?][virtual-networks-nsg]
+2. No Azure Load Balancer is defined for the network interface   
 
-[Bu makalede][virtual-machines-azure-resource-manager-architecture]açıklandığı gibi klasik model ve ARM arasındaki mimari farkını inceleyin.
+See the architecture difference between classic model and ARM as described in [this article][virtual-machines-azure-resource-manager-architecture].
 
-#### <a name="configuration-of-the-sap-system-and-sap-gui-connectivity-over-the-internet"></a>Internet üzerinden SAP System ve SAP GUI bağlantısı yapılandırması
+#### <a name="configuration-of-the-sap-system-and-sap-gui-connectivity-over-the-internet"></a>Configuration of the SAP System and SAP GUI connectivity over the internet
 
-Lütfen bu konunun ayrıntılarını açıklayan bu makaleye bakın:<https://blogs.msdn.com/b/saponsqlserver/archive/2014/06/24/sap-gui-connection-closed-when-connecting-to-sap-system-in-azure.aspx>
+Please see this article, which describes details to this topic: <https://blogs.msdn.com/b/saponsqlserver/archive/2014/06/24/sap-gui-connection-closed-when-connecting-to-sap-system-in-azure.aspx>
 
-#### <a name="changing-firewall-settings-within-vm"></a>VM 'de güvenlik duvarı ayarlarını değiştirme
+#### <a name="changing-firewall-settings-within-vm"></a>Changing Firewall Settings within VM
 
-SAP sisteminize gelen trafiğe izin vermek için sanal makinelerinizde güvenlik duvarının yapılandırılması gerekebilir.
+It might be necessary to configure the firewall on your virtual machines to allow inbound traffic to your SAP system.
 
 ---
 > ![Windows][Logo_Windows] Windows
 >
-> Varsayılan olarak, Azure dağıtılan bir VM 'deki Windows güvenlik duvarı açıktır. Artık SAP bağlantı noktasının açılmasına izin vermeniz gerekir, aksi takdirde SAP GUI bağlantısı yapamaz.
+> By default, the Windows Firewall within an Azure deployed VM is turned on. You now need to allow the SAP Port to be opened, otherwise the SAP GUI will not be able to connect.
 > Bunu yapmak için:
 >
-> * **Gelişmiş ayarlar**için Control panel\system ve Security\windows güvenlik duvarını açın.
-> * Şimdi gelen kurallara sağ tıklayıp **Yeni kural**' ı seçin.
-> * Aşağıdaki sihirbazda yeni bir **bağlantı noktası** kuralı oluşturmayı tercih edin.
-> * Sihirbazın bir sonraki adımında, ayarı TCP ' de bırakın ve açmak istediğiniz bağlantı noktası numarasını yazın. SAP örnek KIMLIĞINIZ 00 olduğundan, 3200 sürdü. Örneğinizin farklı bir örnek numarası varsa, daha önce örnek numarasına göre tanımladığınız bağlantı noktası açılmalıdır.
-> * Sihirbazın bir sonraki bölümünde, **bağlantıya Izin ver** ' in işaretli olması gerekir.
-> * Sihirbazın bir sonraki adımında, kuralın etki alanı, özel ve genel ağ için uygulanıp uygulanmadığını tanımlamanız gerekir. Gereksinimleriniz için gerekiyorsa lütfen ayarlayın. Bununla birlikte, genel ağ üzerinden SAP GUI ile bağlantı kurarak, kuralın genel ağa uygulanmış olması gerekir.
-> * Sihirbazın son adımında, kuralı adlandırın ve **son**' a basarak kaydedin.
+> * Open Control Panel\System and Security\Windows Firewall to **Advanced Settings**.
+> * Now right-click on Inbound Rules and chose **New Rule**.
+> * In the following Wizard chose to create a new **Port** rule.
+> * In the next step of the wizard, leave the setting at TCP and type in the port number you want to open. Since our SAP instance ID is 00, we took 3200. If your instance has a different instance number, the port you defined earlier based on the instance number should be opened.
+> * In the next part of the wizard, you need to leave the item **Allow Connection** checked.
+> * In the next step of the wizard you need to define whether the rule applies for Domain, Private and Public network. Please adjust it if necessary to your needs. However, connecting with SAP GUI from the outside through the public network, you need to have the rule applied to the public network.
+> * In the last step of the wizard, name the rule and save by pressing **Finish**.
 >
-> Kural hemen etkili olur.
+> The rule becomes effective immediately.
 >
-> ![Bağlantı noktası kuralı tanımı][planning-guide-figure-1600]
+> ![Port rule definition][planning-guide-figure-1600]
 >
 > ![Linux][Logo_Linux] Linux
 >
-> Azure Marketi 'ndeki Linux görüntüleri, Iptables güvenlik duvarını varsayılan olarak etkinleştirmez ve SAP sisteminizin bağlantısı çalışmalıdır. İptables veya başka bir güvenlik duvarını etkinleştirdiyseniz, Iptables ' ın (xx, SAP sisteminizin sistem numarasıdır) numaralı bağlantı noktasına gelen TCP trafiğine izin vermek için kullanılan güvenlik duvarının belgelerine bakın.
+> The Linux images in the Azure Marketplace do not enable the iptables firewall by default and the connection to your SAP system should work. If you enabled iptables or another firewall, refer to the documentation of iptables or the used firewall to allow inbound tcp traffic to  port 32xx (where xx is the system number of your SAP system).
 >
 >
 
 ---
 #### <a name="security-recommendations"></a>Güvenlik önerileri
 
-SAP GUI, çalıştıran hiçbir SAP örneğine (bağlantı noktası 32xx) hemen bağlanamaz, ancak önce SAP ileti sunucusu işlemine (bağlantı noktası 36XX) açılan bağlantı noktası aracılığıyla bağlanır. Geçmişte, uygulama örneklerine yönelik iç iletişim için ileti sunucusu tarafından aynı bağlantı noktası kullanılmıştır. Şirket içi uygulama sunucularının Azure 'daki bir ileti sunucusuyla yanlışlıkla iletişim kurmasını engellemek için iç iletişim bağlantı noktaları değiştirilebilir. SAP ileti sunucusuyla uygulama örnekleri arasındaki iç iletişimin, proje testi için bir geliştirme kopyası gibi şirket içi sistemlerden kopyalanmış olan sistemlerdeki farklı bir bağlantı noktası numarasıyla değiştirilmesi kesinlikle önerilir. Bu, varsayılan profil parametresiyle yapılabilir:
+The SAP GUI does not connect immediately to any of the SAP instances (port 32xx) which are running, but first connects via the port opened to the SAP message server process (port 36xx). In the past, the same port was used by the message server for the internal communication to the application instances. To prevent on-premises application servers from inadvertently communicating with a message server in Azure, the internal communication ports can be changed. It is highly recommended to change the internal communication between the SAP message server and its application instances to a different port number on systems that have been cloned from on-premises systems, such as a clone of development for project testing etc. This can be done with the default profile parameter:
 
 > rdisp/msserv_internal
 >
 >
 
-[SAP Ileti sunucusu Için güvenlik ayarlarında](https://help.sap.com/saphelp_nwpi71/helpdata/en/47/c56a6938fb2d65e10000000a42189c/content.htm) belgelendiği gibi
+as documented in [Security Settings for the SAP Message Server](https://help.sap.com/saphelp_nwpi71/helpdata/en/47/c56a6938fb2d65e10000000a42189c/content.htm)
 
 
-### <a name="3e9c3690-da67-421a-bc3f-12c520d99a30"></a>SAP NetWeaver demo/eğitim senaryosuna sahip tek VM
+### <a name="3e9c3690-da67-421a-bc3f-12c520d99a30"></a>Single VM with SAP NetWeaver demo/training scenario
 
-![Azure Cloud Services yalıtılmış olarak aynı VM adlarıyla tek VM SAP tanıtım sistemlerini çalıştırma][planning-guide-figure-1700]
+![Running single VM SAP demo systems with the same VM names, isolated in Azure Cloud Services][planning-guide-figure-1700]
 
-Bu senaryoda, tüm eğitim/tanıtım senaryosunun tek bir sanal makinede bulunduğu tipik bir eğitim/tanıtım sistemi senaryosu uygulamamız. Dağıtımın VM görüntü şablonları aracılığıyla yapıldığını varsayıyoruz. Ayrıca, aynı ada sahip VM 'lerle birlikte bu tanıtım/seyahat sanal makinelerinin birden çok sürümünün dağıtılması gerektiğini varsaydık. Tüm eğitim sistemleri, şirket içi varlıklarınızla bağlantı sahibi değildir ve karma dağıtıma karşı bir yönlerdir.
+In this scenario we are implementing a typical training/demo system scenario where the complete training/demo scenario is contained in a single VM. We assume that the deployment is done through VM image templates. We also assume that multiple of these demo/trainings VMs need to be deployed with the VMs having the same name. The whole training systems don't have connectivity to your on-premises assets and are an opposite to a hybrid deployment.
 
-Bu belgede, bu belgede [Azure IÇIN SAP Ile VM 'Leri hazırlama][planning-guide-5.2] başlıklı bölümün bazı bölümlerinde açıklandığı gıbı bir VM görüntüsü oluşturdunuz.
+The assumption is that you created a VM Image as described in some sections of chapter [Preparing VMs with SAP for Azure][planning-guide-5.2] in this document.
 
-Senaryoyu uygulamak için olayların sırası şuna benzer:
+The sequence of events to implement the scenario looks like this:
 
 ##### <a name="powershell"></a>Powershell
 
-* Her eğitim/tanıtım dünyası için yeni bir kaynak grubu oluşturun
+* Create a new resource group for every training/demo landscape
 
 ```powershell
 $rgName = "SAPERPDemo1"
 New-AzResourceGroup -Name $rgName -Location "North Europe"
 ```
-* Yönetilen diskleri kullanmak istemiyorsanız yeni bir depolama hesabı oluşturun
+* Create a new storage account if you don't want to use Managed Disks
 
 ```powershell
 $suffix = Get-Random -Minimum 100000 -Maximum 999999
 $account = New-AzStorageAccount -ResourceGroupName $rgName -Name "saperpdemo$suffix" -SkuName Standard_LRS -Kind "Storage" -Location "North Europe"
 ```
 
-* Aynı konak adının ve IP adreslerinin kullanımını etkinleştirmek için her eğitim/tanıtım dünyası için yeni bir sanal ağ oluşturun. Sanal ağ, yalnızca bağlantı noktası 3389 ' e giden trafiğe izin veren bir ağ güvenlik grubu tarafından korunmuştur ve SSH için bağlantı noktası 22 ' dir.
+* Create a new virtual network for every training/demo landscape to enable the usage of the same hostname and IP addresses. The virtual network is protected by a Network Security Group that only allows traffic to port 3389 to enable Remote Desktop access and port 22 for SSH.
 
 ```powershell
 # Create a new Virtual Network
@@ -1401,21 +1401,21 @@ $subnetConfig = New-AzVirtualNetworkSubnetConfig -Name Subnet1 -AddressPrefix  1
 $vnet = New-AzVirtualNetwork -Name SAPERPDemoVNet -ResourceGroupName $rgName -Location "North Europe"  -AddressPrefix 10.0.1.0/24 -Subnet $subnetConfig
 ```
 
-* İnternet 'ten sanal makineye erişmek için kullanılabilecek yeni bir genel IP adresi oluşturun
+* Create a new public IP address that can be used to access the virtual machine from the internet
 
 ```powershell
 # Create a public IP address with a DNS name
 $pip = New-AzPublicIpAddress -Name SAPERPDemoPIP -ResourceGroupName $rgName -Location "North Europe" -DomainNameLabel $rgName.ToLower() -AllocationMethod Dynamic
 ```
 
-* Sanal makine için yeni bir ağ arabirimi oluştur
+* Create a new network interface for the virtual machine
 
 ```powershell
 # Create a new Network Interface
 $nic = New-AzNetworkInterface -Name SAPERPDemoNIC -ResourceGroupName $rgName -Location "North Europe" -Subnet $vnet.Subnets[0] -PublicIpAddress $pip
 ```
 
-* Sanal makine oluşturur. Bu senaryo için, her VM aynı ada sahip olacaktır. Bu VM 'lerdeki SAP NetWeaver örneklerinin SAP SID 'SI de aynı olacaktır. Azure Kaynak grubu ' nda, VM 'nin adının benzersiz olması gerekir, ancak farklı Azure Kaynak gruplarında aynı ada sahip VM 'Leri çalıştırabilirsiniz. Windows 'un varsayılan ' Administrator ' hesabı veya Linux için ' root ' hesabı geçerli değil. Bu nedenle, yeni bir yönetici kullanıcı adının bir parolayla birlikte tanımlanması gerekir. VM 'nin boyutunun de tanımlanması gerekir.
+* Sanal makine oluşturur. For this scenario, every VM will have the same name. The SAP SID of the SAP NetWeaver instances in those VMs will be the same as well. Within the Azure Resource Group, the name of the VM needs to be unique, but in different Azure Resource Groups you can run VMs with the same name. The default 'Administrator' account of Windows or 'root' for Linux are not valid. Therefore, a new administrator user name needs to be defined together with a password. The size of the VM also needs to be defined.
 
 ```powershell
 #####
@@ -1476,7 +1476,7 @@ $vmconfig = Set-AzVMBootDiagnostics -Disable -VM $vmconfig
 $vm = New-AzVM -ResourceGroupName $rgName -Location "North Europe" -VM $vmconfig
 ```
 
-* İsteğe bağlı olarak ek diskler ekleyin ve gerekli içeriği geri yükleyin. Tüm blob adları (bloblara yönelik URL 'Ler) Azure içinde benzersiz olmalıdır.
+* Optionally add additional disks and restore necessary content. All blob names (URLs to the blobs) must be unique within Azure.
 
 ```powershell
 # Optional: Attach additional VHD data disks
@@ -1491,9 +1491,9 @@ Add-AzVMDataDisk -VM $vm -Name datadisk -DiskSizeInGB 1023 -CreateOption empty -
 
 ##### <a name="cli"></a>CLI
 
-Aşağıdaki örnek kod Linux üzerinde kullanılabilir. Windows için, yukarıda açıklandığı gibi PowerShell 'i kullanın veya örneği $rgName yerine% rgName% kullanmak üzere uyarlayın ve Windows komut *kümesini*kullanarak ortam değişkenini ayarlayın.
+The following example code can be used on Linux. For Windows, either use PowerShell as described above or adapt the example to use %rgName% instead of $rgName and set the environment variable using the Windows command *set*.
 
-* Her eğitim/tanıtım dünyası için yeni bir kaynak grubu oluşturun
+* Create a new resource group for every training/demo landscape
 
 ```
 rgName=SAPERPDemo1
@@ -1501,13 +1501,13 @@ rgNameLower=saperpdemo1
 az group create --name $rgName --location "North Europe"
 ```
 
-* Yeni depolama hesabı oluştur
+* Yeni depolama hesabı oluşturma
 
 ```
 az storage account create --resource-group $rgName --location "North Europe" --kind Storage --sku Standard_LRS --name $rgNameLower
 ```
 
-* Aynı konak adının ve IP adreslerinin kullanımını etkinleştirmek için her eğitim/tanıtım dünyası için yeni bir sanal ağ oluşturun. Sanal ağ, yalnızca bağlantı noktası 3389 ' e giden trafiğe izin veren bir ağ güvenlik grubu tarafından korunmuştur ve SSH için bağlantı noktası 22 ' dir.
+* Create a new virtual network for every training/demo landscape to enable the usage of the same hostname and IP addresses. The virtual network is protected by a Network Security Group that only allows traffic to port 3389 to enable Remote Desktop access and port 22 for SSH.
 
 ```
 az network nsg create --resource-group $rgName --location "North Europe" --name SAPERPDemoNSG
@@ -1518,19 +1518,19 @@ az network vnet create --resource-group $rgName --name SAPERPDemoVNet --location
 az network vnet subnet create --resource-group $rgName --vnet-name SAPERPDemoVNet --name Subnet1 --address-prefix 10.0.1.0/24 --network-security-group SAPERPDemoNSG
 ```
 
-* İnternet 'ten sanal makineye erişmek için kullanılabilecek yeni bir genel IP adresi oluşturun
+* Create a new public IP address that can be used to access the virtual machine from the internet
 
 ```
 az network public-ip create --resource-group $rgName --name SAPERPDemoPIP --location "North Europe" --dns-name $rgNameLower --allocation-method Dynamic
 ```
 
-* Sanal makine için yeni bir ağ arabirimi oluştur
+* Create a new network interface for the virtual machine
 
 ```
 az network nic create --resource-group $rgName --location "North Europe" --name SAPERPDemoNIC --public-ip-address SAPERPDemoPIP --subnet Subnet1 --vnet-name SAPERPDemoVNet
 ```
 
-* Sanal makine oluşturur. Bu senaryo için, her VM aynı ada sahip olacaktır. Bu VM 'lerdeki SAP NetWeaver örneklerinin SAP SID 'SI de aynı olacaktır. Azure Kaynak grubu ' nda, VM 'nin adının benzersiz olması gerekir, ancak farklı Azure Kaynak gruplarında aynı ada sahip VM 'Leri çalıştırabilirsiniz. Windows 'un varsayılan ' Administrator ' hesabı veya Linux için ' root ' hesabı geçerli değil. Bu nedenle, yeni bir yönetici kullanıcı adının bir parolayla birlikte tanımlanması gerekir. VM 'nin boyutunun de tanımlanması gerekir.
+* Sanal makine oluşturur. For this scenario, every VM will have the same name. The SAP SID of the SAP NetWeaver instances in those VMs will be the same as well. Within the Azure Resource Group, the name of the VM needs to be unique, but in different Azure Resource Groups you can run VMs with the same name. The default 'Administrator' account of Windows or 'root' for Linux are not valid. Therefore, a new administrator user name needs to be defined together with a password. The size of the VM also needs to be defined.
 
 ```
 #####
@@ -1564,7 +1564,7 @@ az vm create --resource-group $rgName --location "North Europe" --name SAPERPDem
 #az vm create --resource-group $rgName --location "North Europe" --name SAPERPDemo --nics SAPERPDemoNIC --admin-username <username> --admin-password <password> --size Standard_DS11_v2 --os-disk-name os --image <managed disk image id> --authentication-type password
 ```
 
-* İsteğe bağlı olarak ek diskler ekleyin ve gerekli içeriği geri yükleyin. Tüm blob adları (bloblara yönelik URL 'Ler) Azure içinde benzersiz olmalıdır.
+* Optionally add additional disks and restore necessary content. All blob names (URLs to the blobs) must be unique within Azure.
 
 ```
 # Optional: Attach additional VHD data disks
@@ -1576,502 +1576,502 @@ az vm disk attach --resource-group $rgName --vm-name SAPERPDemo --size-gb 1023 -
 
 ##### <a name="template"></a>Şablon
 
-GitHub 'daki Azure-QuickStart-Templates deposundaki örnek şablonları kullanabilirsiniz.
+You can use the sample templates on the azure-quickstart-templates repository on GitHub.
 
-* [Basit Linux VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux)
-* [Basit Windows VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)
-* [Görüntüden VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)
+* [Simple Linux VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux)
+* [Simple Windows VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)
+* [VM from image](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)
 
-### <a name="implement-a-set-of-vms-that-communicate-within-azure"></a>Azure içinde iletişim kuran bir VM kümesi uygulama
+### <a name="implement-a-set-of-vms-that-communicate-within-azure"></a>Implement a set of VMs that communicate within Azure
 
-Bu karma olmayan senaryo, tanıtım/eğitim senaryosunu temsil eden yazılımın birden çok VM 'ye yayıldığı eğitim ve tanıtım amacıyla tipik bir senaryodur. Farklı VM 'lerde yüklenen farklı bileşenlerin birbirleriyle iletişim kurması gerekir. Bu senaryoda, şirket içi ağ iletişimi veya şirket içi bir senaryoya gerek yoktur.
+This non-hybrid scenario is a typical scenario for training and demo purposes where the software representing the demo/training scenario is spread over multiple VMs. The different components installed in the different VMs need to communicate with each other. Again, in this scenario no on-premises network communication or cross-premises scenario is needed.
 
-Bu senaryo, bu belgenin [SAP NetWeaver demo/eğitim senaryosuyla bölüm tek VM][planning-guide-7.1] 'de açıklanan yükleme uzantısıdır. Bu durumda, var olan bir kaynak grubuna daha fazla sanal makine eklenecektir. Aşağıdaki örnekte, eğitim yatay bir SAP ASCS/SCS VM 'den, bir DBMS çalıştıran bir VM 'den ve SAP uygulama sunucusu örnek VM 'den oluşur.
+This scenario is an extension of the installation described in chapter [Single VM with SAP NetWeaver demo/training scenario][planning-guide-7.1] of this document. In this case more virtual machines will be added to an existing resource group. In the following example, the training landscape consists of an SAP ASCS/SCS VM, a VM running a DBMS, and an SAP Application Server instance VM.
 
-Bu senaryoyu oluşturmadan önce, daha önce senaryoda zaten uygulanmış olan temel ayarları düşünmeniz gerekir.
+Before you build this scenario, you need to think about basic settings as already exercised in the scenario before.
 
-#### <a name="resource-group-and-virtual-machine-naming"></a>Kaynak grubu ve sanal makine adlandırma
+#### <a name="resource-group-and-virtual-machine-naming"></a>Resource Group and Virtual Machine naming
 
-Tüm kaynak grubu adları benzersiz olmalıdır. Kaynaklarınızın `<rg-name`> ön eki gibi kendi adlandırma düzeninizi geliştirin.
+All resource group names must be unique. Develop your own naming scheme of your resources, such as `<rg-name`>-suffix.
 
-Sanal makine adı, kaynak grubu içinde benzersiz olmalıdır.
+The virtual machine name has to be unique within the resource group.
 
-#### <a name="set-up-network-for-communication-between-the-different-vms"></a>Farklı VM 'Ler arasında iletişim için ağ kurma
+#### <a name="set-up-network-for-communication-between-the-different-vms"></a>Set up Network for communication between the different VMs
 
-![Bir Azure sanal ağı içindeki VM 'Ler kümesi][planning-guide-figure-1900]
+![Set of VMs within an Azure Virtual Network][planning-guide-figure-1900]
 
-Aynı eğitim/tanıtım çelerine ait klonlarla adlandırma çakışmalarını engellemek için, her yatay için bir Azure sanal ağı oluşturmanız gerekir. DNS ad çözümlemesi, Azure tarafından sağlanacak veya kendi DNS sunucunuzu Azure dışında (burada açıklanmayacak şekilde) yapılandırabilirsiniz. Bu senaryoda, kendi DNS sitemizi yapılandırmayız. Bir Azure sanal ağı içindeki tüm sanal makineler için, ana bilgisayar adları aracılığıyla iletişim etkinleştirilecek.
+To prevent naming collisions with clones of the same training/demo landscapes, you need to create an Azure Virtual Network for every landscape. DNS name resolution will be provided by Azure or you can configure your own DNS server outside Azure (not to be further discussed here). In this scenario, we do not configure our own DNS. For all virtual machines inside one Azure Virtual Network, communication via hostnames will be enabled.
 
-Yalnızca kaynak grupları değil, eğitim veya tanıtım ağları 'nın sanal ağlar tarafından ayrılması nedenleri:
+The reasons to separate training or demo landscapes by virtual networks and not only resource groups could be:
 
-* SAP yatay ayarı için kendi AD/OpenLDAP gerekir ve bir etki alanı sunucusunun her bir landscapın parçası olması gerekir.  
-* SAP yatay ayarı, sabit IP adresleriyle çalışması gereken bileşenlere sahiptir.
+* The SAP landscape as set up needs its own AD/OpenLDAP and a Domain Server needs to be part of each of the landscapes.  
+* The SAP landscape as set up has components that need to work with fixed IP addresses.
 
-Azure sanal ağları ve bunların nasıl tanımlanacağı hakkında daha fazla ayrıntı, [Bu makalede][virtual-networks-create-vnet-arm-pportal]bulunabilir.
+More details about Azure Virtual Networks and how to define them can be found in [this article][virtual-networks-create-vnet-arm-pportal].
 
-## <a name="deploying-sap-vms-with-corporate-network-connectivity-cross-premises"></a>SAP VM 'lerini kurumsal ağ bağlantısıyla dağıtma (Şirket Içi)
+## <a name="deploying-sap-vms-with-corporate-network-connectivity-cross-premises"></a>Deploying SAP VMs with Corporate Network Connectivity (Cross-Premises)
 
-SAP Yatayı çalıştırır ve yüksek kaliteli DBMS sunucuları, uygulama katmanları için şirket içi sanallaştırılmış ortamlar ve daha küçük 2 katmanlı yapılandırılmış SAP sistemleri ve Azure IaaS arasında dağıtımı bölmek istiyorsunuz. Temel varsayım, tek bir SAP 'nin içindeki SAP sistemlerinin birbirleriyle ve şirket içinde dağıtılan diğer birçok yazılım bileşeni ile dağıtım formuyla bağımsız olarak iletişim kurması gereken bir diğer yazılım bileşenleriyle iletişim kurmasını sağlar. Ayrıca, SAP GUI veya diğer arabirimlere bağlanan son kullanıcı için dağıtım formu tarafından tanıtılan bir farklılık olmamalıdır. Bu koşullar yalnızca şirket içi Active Directory/OpenLDAP ve DNS hizmetlerinden oluşan siteden siteye/çok siteli bağlantı veya Azure ExpressRoute gibi özel bağlantılar aracılığıyla Azure sistemlerine genişletilmiş olduğunda karşılanır.
+You run an SAP landscape and want to divide the deployment between bare-metal for high-end DBMS servers, on-premises virtualized environments for application layers, and smaller 2-Tier configured SAP systems and Azure IaaS. The base assumption is that SAP systems within one SAP landscape need to communicate with each other and with many other software components deployed in the company, independent of their deployment form. There also should be no differences introduced by the deployment form for the end user connecting with SAP GUI or other interfaces. These conditions can only be met when we have the on-premises Active Directory/OpenLDAP and DNS services extended to the Azure systems through site-to-site/multi-site connectivity or private connections like Azure ExpressRoute.
 
 
 
-### <a name="scenario-of-an-sap-landscape"></a>SAP yatay senaryosu
+### <a name="scenario-of-an-sap-landscape"></a>Scenario of an SAP landscape
 
-Şirket içi veya hibrit senaryosu, aşağıdaki grafiklerde kabaca açıklanabilir:
+The cross-premises or hybrid scenario can be roughly described like in the graphics below:
 
-![Şirket içi ve Azure varlıkları arasında siteden siteye bağlantı][planning-guide-figure-2100]
+![Site-to-Site connectivity between on-premises and Azure assets][planning-guide-figure-2100]
 
-Yukarıda gösterilen senaryo, şirket içinde yer alan bir senaryoyu açıklamaktadır
+The scenario shown above describes a scenario where the on-premises
 
-Minimum gereksinim, tarayıcı erişimi veya Azure hizmetlerine sistem erişimi için VPN tabanlı bağlantılar için SSL/TLS gibi güvenli iletişim protokollerinin kullanılması. Varsayımı, şirketlerin kurumsal ağı ile Azure arasındaki VPN bağlantısını farklı şekilde işlemesinden farklıdır. Bazı şirketler tüm bağlantı noktalarını tekrar açabilir. Bazı diğer şirketler, açılması gereken bağlantı noktalarında kesin olmasını isteyebilir.
+The minimum requirement is the use of secure communication protocols such as SSL/TLS for browser access or VPN-based connections for system access to the Azure services. The assumption is that companies handle the VPN connection between their corporate network and Azure differently. Some companies might blankly open all the ports. Some other companies might want to be precise in which ports they need to open, etc.
 
-Aşağıdaki tabloda, Genel SAP iletişim bağlantı noktaları listelenir. Temel olarak SAP Gateway bağlantı noktasını açmak yeterlidir.
+In the table below typical SAP communication ports are listed. Basically it is sufficient to open the SAP gateway port.
 
 <!-- sapms is prefix of a SAP service name and not a spelling error -->
 
-| Hizmet | Bağlantı noktası adı | Örnek `<nn`> = 01 | Varsayılan Aralık (en düşük) | Yorum |
+| Hizmet | Port Name | Example `<nn`> = 01 | Default Range (min-max) | Açıklama |
 | --- | --- | --- | --- | --- |
-| Dağıtıcı |sapdp`<nn>` bkz. * |3201 |3200 - 3299 |Windows ve Java için SAP GUI tarafından kullanılan SAP dağıtıcısı |
-| İleti sunucusu |sapms`<sid`> bkz: * * |3600 |Ücretsiz sapms`<anySID`> |SID = SAP-sistem KIMLIĞI |
-| Ağ geçidi |sapgw`<nn`> bkz. * |3301 |ücretsiz |CPIC ve RFC iletişimi için kullanılan SAP Gateway |
-| SAP yönlendiricisi |sapdp99 |3299 |ücretsiz |Yalnızca CI (Merkezi örnek) hizmet adları, yüklemeden sonra isteğe bağlı olarak/etc/Services 'e atanabilir. |
+| Dispatcher |sapdp`<nn>` see * |3201 |3200 - 3299 |SAP Dispatcher, used by SAP GUI for Windows and Java |
+| Message server |sapms`<sid`> see ** |3600 |free sapms`<anySID`> |sid = SAP-System-ID |
+| Ağ Geçidi |sapgw`<nn`> see * |3301 |free |SAP gateway, used for CPIC and RFC communication |
+| SAP router |sapdp99 |3299 |free |Only CI (central instance) Service names can be reassigned in /etc/services to an arbitrary value after installation. |
 
-*) nn = SAP örnek numarası
+*) nn = SAP Instance Number
 
-\* *) SID = SAP-sistem KIMLIĞI
+**) sid = SAP-System-ID
 
-SAP ürünlerine göre farklı SAP ürünleri veya hizmetleri için gereken bağlantı noktaları hakkında daha ayrıntılı bilgi burada <https://scn.sap.com/docs/DOC-17124>bulabilirsiniz.
-Bu belgeyle, belirli SAP ürünleri ve senaryoları için gereken VPN cihazında adanmış bağlantı noktalarını açabilmelisiniz.
+More detailed information on ports required for different SAP products or services by SAP products can be found here <https://scn.sap.com/docs/DOC-17124>.
+With this document, you should be able to open dedicated ports in the VPN device necessary for specific SAP products and scenarios.
 
-Bu tür bir senaryoya VM 'Leri dağıtmanın diğer güvenlik önlemleri, erişim kurallarını tanımlamak için bir [ağ güvenlik grubu][virtual-networks-nsg] oluşturmak olabilir.
+Other security measures when deploying VMs in such a scenario could be to create a [Network Security Group][virtual-networks-nsg] to define access rules.
 
-### <a name="dealing-with-different-virtual-machine-series"></a>Farklı sanal makine serisiyle ilgilenme
+### <a name="dealing-with-different-virtual-machine-series"></a>Dealing with different Virtual Machine Series
 
-Microsoft, üzerinde çalıştığı donanımda vCPU sayısı, bellek veya daha fazla önem taşıyan birçok farklı VM türü eklemiştir. SAP ile bu VM 'Lerin tümü desteklenmez (bkz. SAP Not [1928533]IÇINDE desteklenen VM Types). Bu VM 'lerden bazıları farklı ana bilgisayar donanım nesilleri üzerinde çalışır. Bu konak donanım oluşturmaları, bir Azure ölçek birimi 'nin ayrıntı düzeyine dağıtılır. Seçtiğiniz farklı VM türlerinin aynı ölçek birimi üzerinde çalıştırılamadığı durumlar meydana gelebilir. Bir kullanılabilirlik kümesi, farklı donanımlar temelinde ölçek birimlerini yayan sınırlı olur.  Örneğin, bir kullanılabilirlik kümesindeki bir E64s_v3 VM 'de SAP DBMS katmanını çalıştırıyorsanız bir HA yapılandırmasında ikincil DBMS örneğini çalıştıran VM ile birlikte, büyük bir işlem yapmak isteyebileceğiniz için ikincil VM 'yi M serisi VM olarak durdurup yeniden başlatmanız yeterli değildir. VM 'yi taraın. Bunun nedeni, d serisi VM 'Lerin ve Ev3 serisi VM 'Lerin farklı donanımlarda ve farklı ölçek birimlerinde çalıştığı bir nedendir. Yeni bir kullanılabilirlik kümesi oluşturmanız, depolama alanını silmeden ikincil Ev3 serisi VM 'yi silmeniz ve VM 'yi yeni kullanılabilirlik kümesine d serisi VM olarak yeniden dağıtmanız gerekir.
+Microsoft added many more VM types that differ either in number of vCPUs, memory or more important on hardware it is running on. Not all those VMs are supported with SAP (see supported VM types in SAP Note [1928533]). Some of those VMs run on different host hardware generations. These host hardware generations are getting deployed in the granularity of an Azure Scale-Unit. Cases may arise where the different VM types you chose can't be run on the same Scale-Unit. An Availability Set is limited in the ability to span Scale-Units based of different hardware.  For example if you are running the SAP DBMS layer on an E64s_v3 VM which is in an Availability Set together with the VM running the secondary DBMS instance in an HA configuration, you can't simply stop and restart the secondary VM as M-Series VM because you might want to upgrade the VM. Reason is that M-Series VMs and Ev3-Series VMs are running on different hardware and with that in different Scale-Units. You would need to create a new Availability Set, delete the secondary Ev3-Series VM, without deleting the storage, and redeploy the VM as M-Series VM into the new Availability Set.
 
-#### <a name="printing-on-a-local-network-printer-from-sap-instance-in-azure"></a>Azure 'da SAP örneğinden yerel bir ağ yazıcısında yazdırma
+#### <a name="printing-on-a-local-network-printer-from-sap-instance-in-azure"></a>Printing on a local network printer from SAP instance in Azure
 
-##### <a name="printing-over-tcpip-in-cross-premises-scenario"></a>Şirket Içi senaryoda TCP/IP üzerinden yazdırma
+##### <a name="printing-over-tcpip-in-cross-premises-scenario"></a>Printing over TCP/IP in Cross-Premises scenario
 
-Şirket içi TCP/IP tabanlı ağ yazıcılarınızı bir Azure VM 'de ayarlamak, bir VPN siteden siteye tünele veya ExpressRoute bağlantınızın kurulu olduğu varsayıldığında kurumsal ağınızdan aynı genel bir ayardır.
+Setting up your on-premises TCP/IP based network printers in an Azure VM is overall the same as in your corporate network, assuming you do have a VPN Site-To-Site tunnel or ExpressRoute connection established.
 
 ---
 > ![Windows][Logo_Windows] Windows
 >
 > Bunu yapmak için:
 >
-> * Bazı ağ yazıcıları, yazıcınızı bir Azure VM 'de ayarlamayı kolaylaştıran bir yapılandırma sihirbazıyla gelir. Yazıcıyla dağıtılan bir sihirbaz yazılımı yoksa, yazıcıyı ayarlamaya yönelik el ile yeni bir TCP/IP yazıcı bağlantı noktası oluşturulması gerekir.
-> * Denetim Masası-> cihazları ve yazıcıları açın-> bir yazıcı ekleyin
-> * TCP/IP adresi veya ana bilgisayar adı kullanarak yazıcı ekle seçeneğini belirleyin
-> * Yazıcının IP adresini yazın
-> * Yazıcı bağlantı noktası standart 9100
-> * Gerekirse uygun yazıcı sürücüsünü el ile yükleyebilirsiniz.
+> * Some network printers come with a configuration wizard which makes it easy to set up your printer in an Azure VM. If no wizard software has been distributed with the printer, the manual way to set up the printer is to create a new TCP/IP printer port.
+> * Open Control Panel -> Devices and Printers -> Add a printer
+> * Choose Add a printer using a TCP/IP address or hostname
+> * Type in the IP address of the printer
+> * Printer Port standard 9100
+> * If necessary install the appropriate printer driver manually.
 >
 > ![Linux][Logo_Linux] Linux
 >
-> * Windows için olduğu gibi, yalnızca bir ağ yazıcısı yüklemek için standart yordamı izleyin
-> * [SUSE](https://www.suse.com/documentation/sles-12/book_sle_deployment/data/sec_y2_hw_print.html) veya [Red Hat](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Deployment_Guide/sec-Printer_Configuration.html) için genel Linux kılavuzlarını ve yazıcı ekleme hakkında Oracle Linux izlemeniz yeterlidir.
+> * like for Windows just follow the standard procedure to install a network printer
+> * just follow the public Linux guides for [SUSE](https://www.suse.com/documentation/sles-12/book_sle_deployment/data/sec_y2_hw_print.html) or [Red Hat and Oracle Linux](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Deployment_Guide/sec-Printer_Configuration.html) on how to add a printer.
 >
 >
 
 ---
-![Ağ yazdırma][planning-guide-figure-2200]
+![Network printing][planning-guide-figure-2200]
 
-##### <a name="host-based-printer-over-smb-shared-printer-in-cross-premises-scenario"></a>Şirket Içi senaryoda SMB (paylaşılan yazıcı) üzerinden ana bilgisayar tabanlı yazıcı
+##### <a name="host-based-printer-over-smb-shared-printer-in-cross-premises-scenario"></a>Host-based printer over SMB (shared printer) in Cross-Premises scenario
 
-Ana bilgisayar tabanlı yazıcılar, tasarıma göre ağa uyumlu değildir. Ancak, yazıcı yerleşik bir bilgisayara bağlandığı sürece, ana bilgisayar tabanlı bir yazıcı, bir ağdaki bilgisayarlar arasında paylaşılabilir. Şirket ağınızı siteden siteye veya ExpressRoute 'A bağlayın ve yerel yazıcınızı paylaşabilirsiniz. SMB protokolü, ad hizmeti olarak DNS yerine NetBIOS kullanır. NetBIOS ana bilgisayar adı, DNS ana bilgisayar adından farklı olabilir. Standart durum, NetBIOS ana bilgisayar adının ve DNS ana bilgisayar adının aynı olduğu durumdur. DNS etki alanı NetBIOS ad alanında anlamlı değildir. Buna uygun olarak, DNS ana bilgisayar adı ve DNS etki alanından oluşan tam DNS ana bilgisayar adı Netbıos ad alanında kullanılmamalıdır.
+Host-based printers are not network-compatible by design. But a host-based printer can be shared among computers on a network as long as the printer is connected to a powered-on computer. Connect your corporate network either Site-To-Site or ExpressRoute and share your local printer. The SMB protocol uses NetBIOS instead of DNS as name service. The NetBIOS host name can be different from the DNS host name. The standard case is that the NetBIOS host name and the DNS host name are identical. The DNS domain does not make sense in the NetBIOS name space. Accordingly, the fully qualified DNS host name consisting of the DNS host name and DNS domain must not be used in the NetBIOS name space.
 
-Yazıcı paylaşma, ağda benzersiz bir adla tanımlanır:
+The printer share is identified by a unique name in the network:
 
-* SMB konağının ana bilgisayar adı (her zaman gerekli).
-* Paylaşımın adı (her zaman gerekli).
-* Yazıcı paylaşımının SAP sistemiyle aynı etki alanında olmaması durumunda etki alanının adı.
-* Ayrıca, yazıcı paylaşımında erişim için bir Kullanıcı adı ve parola gerekebilir.
+* Host name of the SMB host (always needed).
+* Name of the share (always needed).
+* Name of the domain if printer share is not in the same domain as SAP system.
+* Additionally, a user name and a password may be required to access the printer share.
 
 Nasıl yapılır:
 
 ---
 > ![Windows][Logo_Windows] Windows
 >
-> Yerel yazıcınızı paylaşabilirsiniz.
-> Azure VM 'de Windows Gezgini ' ni açın ve yazıcının Share adını yazın.
-> Bir yazıcı yükleme Sihirbazı, yükleme sürecinde size kılavuzluk eder.
+> Share your local printer.
+> In the Azure VM, open the Windows Explorer and type in the share name of the printer.
+> A printer installation wizard will guide you through the installation process.
 >
 > ![Linux][Logo_Linux] Linux
 >
-> Linux 'ta ağ yazıcılarını yapılandırmaya ilişkin bazı örnekler aşağıda verilmiştir veya Linux 'ta yazdırmayla ilgili bir bölüm dahil olmak üzere. VM bir VPN 'nin parçası olduğu sürece, Azure Linux VM 'de aynı şekilde çalışır:
+> Here are some examples of documentation about configuring network printers in Linux or including a chapter regarding printing in Linux. It will work the same way in an Azure Linux VM as long as the VM is part of a VPN:
 >
-> * SLES<https://en.opensuse.org/SDB:Printing_via_SMB_(Samba)_Share_or_Windows_Share>
-> * RHEL veya Oracle Linux<https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/System_Administrators_Guide/sec-Printer_Configuration.html#s1-printing-smb-printer>
+> * SLES <https://en.opensuse.org/SDB:Printing_via_SMB_(Samba)_Share_or_Windows_Share>
+> * RHEL or Oracle Linux <https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/System_Administrators_Guide/sec-Printer_Configuration.html#s1-printing-smb-printer>
 >
 >
 
 ---
-##### <a name="usb-printer-printer-forwarding"></a>USB yazıcı (yazıcı iletme)
+##### <a name="usb-printer-printer-forwarding"></a>USB Printer (printer forwarding)
 
-Azure 'da Uzak Masaüstü Hizmetleri kullanıcılara, uzak bir oturumdaki yerel yazıcı cihazlarına erişim sağlama olanağı yoktur.
+In Azure the ability of the Remote Desktop Services to provide users the access to their local printer devices in a remote session is not available.
 
 ---
 > ![Windows][Logo_Windows] Windows
 >
-> Windows ile yazdırma hakkında daha fazla ayrıntı için şu adreste bulabilirsiniz <https://technet.microsoft.com/library/jj590748.aspx>:.
+> More details on printing with Windows can be found here: <https://technet.microsoft.com/library/jj590748.aspx>.
 >
 >
 
 ---
-#### <a name="integration-of-sap-azure-systems-into-correction-and-transport-system-tms-in-cross-premises"></a>SAP Azure sistemlerini şirket içinde düzeltme ve taşıma sistemi (TMS) ile tümleştirme
+#### <a name="integration-of-sap-azure-systems-into-correction-and-transport-system-tms-in-cross-premises"></a>Integration of SAP Azure Systems into Correction and Transport System (TMS) in Cross-Premises
 
-SAP değişikliği ve taşıma sisteminin (TMS), yatay içindeki sistemler arasında aktarım isteklerini dışarı ve içeri aktarmak üzere yapılandırılması gerekir. SAP sisteminin (DEV) geliştirme örneklerinin Azure 'da bulunduğunu, ancak kalite güvencesi (QA) ve üretken sistemleri (PRD) Şirket içi olduğunu varsayalım. Ayrıca, merkezi bir aktarım dizini olduğunu varsayalım.
+The SAP Change and Transport System (TMS) needs to be configured to export and import transport request across systems in the landscape. We assume that the development instances of an SAP system (DEV) are located in Azure whereas the quality assurance (QA) and productive systems (PRD) are on-premises. Furthermore, we assume that there is a central transport directory.
 
-##### <a name="configuring-the-transport-domain"></a>Taşıma etki alanını yapılandırma
+##### <a name="configuring-the-transport-domain"></a>Configuring the Transport Domain
 
-Aktarım etki alanı denetleyicisini [yapılandırma](https://help.sap.com/erp2005_ehp_04/helpdata/en/44/b4a0b47acc11d1899e0000e829fbbd/content.htm)bölümünde açıklandığı gibi, aktarım etki alanı denetleyicisi olarak atadığınız sistemde taşıma etki alanınızı yapılandırın. Bir sistem kullanıcısı TMSADM oluşturulur ve gerekli RFC hedefi oluşturulur. İşlem SM59 kullanarak bu RFC bağlantılarını kontrol edebilirsiniz. Ana bilgisayar adı çözümlemesi, aktarım etki alanınız genelinde etkinleştirilmelidir.
-
-Nasıl yapılır:
-
-* Senaryomızda, şirket içi QAS sisteminin CTS etki alanı denetleyicisi olacağını karardık. İşlem STMS çağrısı yapın. TMS iletişim kutusu görüntülenir. Taşıma etki alanını Yapılandır iletişim kutusu görüntülenir. (Bu iletişim kutusu yalnızca henüz bir taşıma etki alanını yapılandırmadıysanız görüntülenir.)
-* Otomatik olarak oluşturulan tmsadm Kullanıcı (SM59-> ABAP bağlantısı-> TMSADM@E61.DOMAIN_E61 -> Ayrıntılar-> Utilities (d)-> Yetkilendirme testi) olduğundan emin olun. İşlemin ilk ekranında, bu SAP sisteminin artık burada gösterildiği gibi aktarım etki alanı denetleyicisi olarak çalıştığını göstermesi gerekir:
-
-![Etki alanı denetleyicisindeki işlem STMS başlangıç ekranı][planning-guide-figure-2300]
-
-#### <a name="including-sap-systems-in-the-transport-domain"></a>Aktarım etki alanına SAP sistemleri dahil
-
-Bir aktarım etki alanında SAP sisteminin dahil edilmesi sırası şu şekilde görünür:
-
-* Azure 'daki GELIŞTIRME sisteminde, aktarım sistemine (Istemci 000) gidin ve işlem STMS ' ı çağırın. İletişim kutusundan diğer yapılandırma ' yı seçin ve Içerme sistemiyle birlikte etki alanına devam edin. Etki alanı denetleyicisini hedef konak olarak belirtin ([Aktarım etki ALANıNDAKI SAP sistemleri dahil](https://help.sap.com/erp2005_ehp_04/helpdata/en/44/b4a0c17acc11d1899e0000e829fbbd/content.htm?frameset=/en/44/b4a0b47acc11d1899e0000e829fbbd/frameset.htm)). Sistem artık aktarım etki alanına dahil edilmesini bekliyor.
-* Güvenlik nedenleriyle isteğinizi onaylamak için etki alanı denetleyicisine geri gitmeniz gerekir. Sisteme genel bakış ve bekleyen sistemi Onayla ' yı seçin. Sonra istemi onaylayın ve yapılandırma dağıtılır.
-
-Bu SAP sistemi artık aktarım etki alanındaki tüm diğer SAP sistemleri hakkında gerekli bilgileri içermektedir. Aynı zamanda, yeni SAP sisteminin adres verileri diğer tüm SAP sistemlerine gönderilir ve SAP sistemi aktarım denetimi programının aktarım profiline girilir. Etki alanının aktarım dizinine yönelik RFC 'Lerin ve erişimin çalışıp çalışmadığını denetleyin.
-
-Belge [değişikliği ve taşıma sisteminde](https://help.sap.com/saphelp_nw70ehp3/helpdata/en/48/c4300fca5d581ce10000000a42189c/content.htm?frameset=/en/44/b4a0b47acc11d1899e0000e829fbbd/frameset.htm)açıklandığı gibi, aktarım sisteminizin yapılandırmasına devam edin.
+Configure your Transport Domain on the system you designated as the Transport Domain Controller as described in [Configuring the Transport Domain Controller](https://help.sap.com/erp2005_ehp_04/helpdata/en/44/b4a0b47acc11d1899e0000e829fbbd/content.htm). A system user TMSADM will be created and the required RFC destination will be generated. You may check these RFC connections using the transaction SM59. Hostname resolution must be enabled across your transport domain.
 
 Nasıl yapılır:
 
-* Şirket içi STMS 'nizin doğru yapılandırıldığından emin olun.
-* Aktarım etki alanı denetleyicisinin ana bilgisayar adının Azure 'daki sanal makineniz tarafından çözümlenebildiğinden ve tam olarak Visa olduğundan emin olun.
-* Çağrı işlemi STMS-> diğer yapılandırma-> dahil etme sistemi.
-* Şirket içi TMS sisteminde bağlantıyı onaylayın.
-* Taşıma yollarını, grupları ve katmanları her zamanki gibi yapılandırın.
+* In our scenario, we decided the on-premises QAS system will be the CTS domain controller. Call transaction STMS. The TMS dialog box appears. A Configure Transport Domain dialog box is displayed. (This dialog box only appears if you have not yet configured a transport domain.)
+* Make sure that the automatically created user TMSADM is authorized (SM59 -> ABAP Connection -> TMSADM@E61.DOMAIN_E61 -> Details -> Utilities(M) -> Authorization Test). The initial screen of transaction STMS should show that this SAP System is now functioning as the controller of the transport domain as shown here:
 
-Siteden siteye bağlı çapraz şirket senaryolarında, şirket içi ve Azure arasındaki gecikme hala önemli olabilir. Geliştirme ve test sistemleri aracılığıyla nesne taşıma sırasını izliyoruz veya farklı sistemlere taşıma veya destek paketleri uygulamayı düşünürken, merkezi aktarım dizininin konumuna bağlı olduğunu fark edersiniz. sistemlerden bazıları merkezi aktarım dizinindeki yüksek gecikmeli okuma veya veri yazma ile karşılaşacaktır. Bu durum, farklı sistemlerin veri merkezleri arasında önemli mesafe ile farklı veri merkezlerinde yayıldığı SAP yatay yapılandırmalarına benzer.
+![Initial screen of transaction STMS on the domain controller][planning-guide-figure-2300]
 
-Bu gecikme süresini aşmak ve sistemin aktarım dizininden okuma ya da yazma sırasında hızla çalışmasını sağlamak için, iki STMS taşıma etki alanı (bir tane şirket içi ve biri Azure 'daki sistemlerle bir tane) ayarlayabilir ve aktarım etki alanlarını bağlayabilirsiniz. SAP TMS 'de bu kavramın arkasındaki ilkeleri açıklayan lütfen bu belgeleri denetleyin: <https://help.sap.com/saphelp_me60/helpdata/en/c4/6045377b52253de10000009b38f889/content.htm?frameset=/en/57/38dd924eb711d182bf0000e829fbfe/frameset.htm>.
+#### <a name="including-sap-systems-in-the-transport-domain"></a>Including SAP Systems in the Transport Domain
+
+The sequence of including an SAP system in a transport domain looks as follows:
+
+* On the DEV system in Azure, go to the transport system (Client 000) and call transaction STMS. Choose Other Configuration from the dialog box and continue with Include System in Domain. Specify the Domain Controller as target host ([Including SAP Systems in the Transport Domain](https://help.sap.com/erp2005_ehp_04/helpdata/en/44/b4a0c17acc11d1899e0000e829fbbd/content.htm?frameset=/en/44/b4a0b47acc11d1899e0000e829fbbd/frameset.htm)). The system is now waiting to be included in the transport domain.
+* For security reasons, you then have to go back to the domain controller to confirm your request. Choose System Overview and Approve of the waiting system. Then confirm the prompt and the configuration will be distributed.
+
+This SAP system now contains the necessary information about all the other SAP systems in the transport domain. At the same time, the address data of the new SAP system is sent to all the other SAP systems, and the SAP system is entered in the transport profile of the transport control program. Check whether RFCs and access to the transport directory of the domain work.
+
+Continue with the configuration of your transport system as usual as described in the documentation [Change and Transport System](https://help.sap.com/saphelp_nw70ehp3/helpdata/en/48/c4300fca5d581ce10000000a42189c/content.htm?frameset=/en/44/b4a0b47acc11d1899e0000e829fbbd/frameset.htm).
 
 Nasıl yapılır:
 
-* İşlem STMS kullanarak her konumda (Şirket içi ve Azure) bir taşıma etki alanı ayarlama<https://help.sap.com/saphelp_nw70ehp3/helpdata/en/44/b4a0b47acc11d1899e0000e829fbbd/content.htm>
-* Etki alanlarını bir etki alanı bağlantısıyla bağlayın ve iki etki alanı arasındaki bağlantıyı onaylayın.
+* Make sure your STMS on premises is configured correctly.
+* Make sure the hostname of the Transport Domain Controller can be resolved by your virtual machine on Azure and vice visa.
+* Call transaction STMS -> Other Configuration -> Include System in Domain.
+* Confirm the connection in the on premises TMS system.
+* Configure transport routes, groups and layers as usual.
+
+In site-to-site connected cross-premises scenarios, the latency between on-premises and Azure still can be substantial. If we follow the sequence of transporting objects through development and test systems to production or think about applying transports or support packages to the different systems, you realize that, dependent on the location of the central transport directory, some of the systems will encounter high latency reading or writing data in the central transport directory. The situation is similar to SAP landscape configurations where the different systems are spread through different data centers with substantial distance between the data centers.
+
+In order to work around such latency and have the systems work fast in reading or writing to or from the transport directory, you can set up two STMS transport domains (one for on-premises and one with the systems in Azure and link the transport domains. Please check this documentation, which explains the principles behind this concept in the SAP TMS: <https://help.sap.com/saphelp_me60/helpdata/en/c4/6045377b52253de10000009b38f889/content.htm?frameset=/en/57/38dd924eb711d182bf0000e829fbfe/frameset.htm>.
+
+Nasıl yapılır:
+
+* Set up a transport domain on each location (on-premises and Azure) using transaction STMS <https://help.sap.com/saphelp_nw70ehp3/helpdata/en/44/b4a0b47acc11d1899e0000e829fbbd/content.htm>
+* Link the domains with a domain link and confirm the link between the two domains.
   <https://help.sap.com/saphelp_nw73ehp1/helpdata/en/a3/139838280c4f18e10000009b38f8cf/content.htm>
-* Yapılandırmayı bağlantılı sisteme dağıtın.
+* Distribute the configuration to the linked system.
 
-#### <a name="rfc-traffic-between-sap-instances-located-in-azure-and-on-premises-cross-premises"></a>Azure 'da ve şirket içinde bulunan SAP örnekleri arasında RFC trafiği (Şirket Içi)
+#### <a name="rfc-traffic-between-sap-instances-located-in-azure-and-on-premises-cross-premises"></a>RFC traffic between SAP instances located in Azure and on-premises (Cross-Premises)
 
-Şirket içinde ve Azure 'da olan sistemler arasındaki RFC trafiği çalışmalıdır. Hedef sisteme yönelik bir RFC bağlantısı tanımlamanız gereken kaynak sistemde bir bağlantı çağrı işlemi SM59 ayarlamak için. Yapılandırma, bir RFC bağlantısının standart kurulumuna benzerdir.
+RFC traffic between systems, which are on-premises and in Azure needs to work. To set up a connection call transaction SM59 in a source system where you need to define an RFC connection towards the target system. The configuration is similar to the standard setup of an RFC Connection.
 
-Şirketler arası senaryoda, birbirleriyle iletişim kurması gereken SAP sistemlerini çalıştıran VM 'Lerin aynı etki alanında olduğunu varsayıyoruz. Bu nedenle, SAP sistemleri arasında bir RFC bağlantısı kurulumu, kurulum adımlarından ve şirket içi senaryolardaki girişlerden farklı değildir.
+We assume that in the cross-premises scenario, the VMs, which run SAP systems that need to communicate with each other are in the same domain. Therefore the setup of an RFC connection between SAP systems does not differ from the setup steps and inputs in on-premises scenarios.
 
-#### <a name="accessing-local-fileshares-from-sap-instances-located-in-azure-or-vice-versa"></a>Azure 'da bulunan SAP örneklerinden yerel dosya paylaşımlarına erişme veya bunun tersi
+#### <a name="accessing-local-fileshares-from-sap-instances-located-in-azure-or-vice-versa"></a>Accessing local fileshares from SAP instances located in Azure or vice versa
 
-Azure 'da bulunan SAP örneklerinin, şirket içi Şirket içindeki dosya paylaşımlarına erişmesi gerekir. Ayrıca, şirket içi SAP örneklerinin Azure 'da bulunan dosya paylaşımlarına erişmesi gerekir. Dosya paylaşımlarını etkinleştirmek için, yerel sistemde izinleri ve paylaşım seçeneklerini yapılandırmanız gerekir. Azure ile veri merkeziniz arasındaki VPN veya ExpressRoute bağlantısı üzerindeki bağlantı noktalarını açmayı unutmayın.
+SAP instances located in Azure need to access file shares, which are within the corporate premises. In addition, on-premises SAP instances need to access file shares, which are located in Azure. To enable the file shares, you must configure the permissions and sharing options on the local system. Make sure to open the ports on the VPN or ExpressRoute connection between Azure and your datacenter.
 
 ## <a name="supportability"></a>Desteklenebilirlik
 
-### <a name="6f0a47f3-a289-4090-a053-2521618a28c3"></a>SAP için Azure uzantısı
+### <a name="6f0a47f3-a289-4090-a053-2521618a28c3"></a>Azure Extension for SAP
 
-Görev açısından kritik SAP sistemlerinin bazı parçalarını, VM 'lerde yüklü olan SAP konak Aracısı örneklerine akışa almak için, SAP için bir Azure (VM) uzantısının dağıtılan VM 'Ler için yüklenmesi gerekir. SAP 'nin talepleri SAP uygulamalarına özel olduğundan, Microsoft gerekli işlevselliği Azure 'a genel olarak uygulamamaya karar vermemeye karar verdi, ancak müşterilerin gerekli VM uzantısını ve yapılandırmasını çalıştıran sanal makinelere dağıtması için bırakın Azure 'da. Bununla birlikte, SAP için Azure VM uzantısının dağıtım ve yaşam döngüsü yönetimi, Azure tarafından çoğunlukla otomatikleştirilir.
+In order to feed some portion of Azure infrastructure information of mission critical SAP systems to the SAP Host Agent instances, installed in VMs, an Azure (VM) Extension for SAP needs to get installed for the deployed VMs. Since the demands by SAP were specific to SAP applications, Microsoft decided not to generically implement the required functionality into Azure, but leave it for customers to deploy the necessary VM extension and configurations to their Virtual Machines running in Azure. However, deployment and lifecycle management of the Azure VM Extension for SAP will be mostly automated by Azure.
 
 #### <a name="solution-design"></a>Çözüm tasarımı
 
-SAP konak Aracısı 'nı etkinleştirmek için geliştirilen çözüm, Azure VM Aracısı ve uzantı çerçevesinin mimarisine dayanır. Azure VM Aracısı ve uzantı çerçevesinin fikri, bir VM içindeki Azure VM Uzantısı galerisinde bulunan yazılım uygulamalarının yüklenmesine izin vermenizde yarar vardır. Bu kavramın arkasındaki prensibi, özel işlevlerin bir VM 'ye dağıtılması ve dağıtım zamanında bu yazılımın yapılandırılması için (SAP için Azure uzantısı gibi durumlarda) izin vermenizde yarar vardır.
+The solution developed to enable SAP Host Agent getting the required information is based on the architecture of Azure VM Agent and Extension framework. The idea of the Azure VM Agent and Extension framework is to allow installation of software application(s) available in the Azure VM Extension gallery within a VM. The principle idea behind this concept is to allow (in cases like the Azure Extension for SAP), the deployment of special functionality into a VM and the configuration of such software at deployment time.
 
-VM 'de belirli Azure VM uzantılarının işlenmesine izin veren ' Azure VM Aracısı ', Azure portal VM oluşturma sırasında varsayılan olarak Windows VM 'lerine eklenir. SUSE, Red hat veya Oracle Linux söz konusu olduğunda, VM Aracısı zaten Azure Marketi görüntüsünün bir parçasıdır. Bir tek durumda, bir Linux sanal makinesini Şirket içinden Azure 'a karşıya yükleyebilir ve VM aracısının el ile yüklenmesi gerekir.
+The 'Azure VM Agent' that enables handling of specific Azure VM Extensions within the VM is injected into Windows VMs by default on VM creation in the Azure portal. In case of SUSE, Red Hat or Oracle Linux, the VM agent is already part of the Azure Marketplace image. In case one would upload a Linux VM from on-premises to Azure the VM agent has to be installed manually.
 
-Azure 'da SAP konak aracısına Azure altyapı bilgilerini sağlamak için çözümün temel yapı taşları şöyle görünür:
+The basic building blocks of the solution to provide Azure infrastructure information to SAP Host agent in Azure looks like this:
 
-![Microsoft Azure uzantısı bileşenleri][planning-guide-figure-2400]
+![Microsoft Azure Extension components][planning-guide-figure-2400]
 
-Yukarıdaki blok diyagramında gösterildiği gibi, çözümün bir parçası Azure VM görüntüsünde ve Azure uzantı galerisinde barındırılır ve bu da Azure Işlemleri tarafından yönetilen küresel olarak çoğaltılan bir depodur. SAP için Azure 'un yeni sürümlerini yayımlamak üzere SAP 'nin Azure uygulamasında çalışan SAP/MS ekibinin sorumluluğundadır.
+As shown in the block diagram above, one part of the solution is hosted in the Azure VM Image and Azure Extension Gallery, which is a globally replicated repository that is managed by Azure Operations. It is the responsibility of the joint SAP/MS team working on the Azure implementation of SAP to work with Azure Operations to publish new versions of the Azure Extension for SAP.
 
-Yeni bir Windows VM dağıtırken, Azure VM Aracısı sanal makineye otomatik olarak eklenir. Bu aracının işlevi, VM 'lerin Azure uzantılarının yükleme ve yapılandırmasını koordine etmek için kullanılır. Linux VM 'Leri için Azure VM Aracısı zaten Azure Marketi işletim sistemi görüntüsünün bir parçasıdır.
+When you deploy a new Windows VM, the Azure VM Agent is automatically added into the VM. The function of this agent is to coordinate the loading and configuration of the Azure Extensions of the VMs. For Linux VMs, the Azure VM Agent is already part of the Azure Marketplace OS image.
 
-Ancak, hala müşteri tarafından yürütülmesi gereken bir adım vardır. Bu, performans koleksiyonunun etkinleştirilmesi ve yapılandırması. Yapılandırma ile ilgili işlem, bir PowerShell betiği veya CLı komutu tarafından otomatikleştirilir. PowerShell betiği, [dağıtım kılavuzunda][deployment-guide]açıklandığı gibi Microsoft Azure betik merkezi 'ne indirilebilir.
+However, there is a step that still needs to be executed by the customer. This is the enablement and configuration of the performance collection. The process related to the configuration is automated by a PowerShell script or CLI command. The PowerShell script can be downloaded in the Microsoft Azure Script Center as described in the [Deployment Guide][deployment-guide].
 
-SAP için Azure uzantısının genel mimarisi şöyle görünür:
+The overall Architecture of the Azure extension for SAP looks like:
 
-![SAP için Azure uzantısı ][planning-guide-figure-2500]
+![Azure extension for SAP ][planning-guide-figure-2500]
 
-**Dağıtım sırasında bu PowerShell cmdlet 'lerini veya CLı komutunu kullanmanın ayrıntılı adımları için nasıl yapılır ve ayrıntılı adımlar için [dağıtım kılavuzunda][deployment-guide]verilen yönergeleri izleyin.**
+**For the exact how-to and for detailed steps of using these PowerShell cmdlets or CLI command during deployments, follow the instructions given in the [Deployment Guide][deployment-guide].**
 
-### <a name="integration-of-azure-located-sap-instance-into-saprouter"></a>Azure bulunan SAP örneğinin, SAProuter ile tümleştirilmesi
+### <a name="integration-of-azure-located-sap-instance-into-saprouter"></a>Integration of Azure located SAP instance into SAProuter
 
-Azure 'da çalışan SAP örneklerinin de SAProuter 'tan erişilebilir olması gerekir.
+SAP instances running in Azure need to be accessible from SAProuter as well.
 
-![SAP-yönlendirici ağ bağlantısı][planning-guide-figure-2600]
+![SAP-Router Network Connection][planning-guide-figure-2600]
 
-Bir SAProuter, doğrudan IP bağlantısı yoksa katılım sistemleri arasında TCP/IP iletişimine izin vermez. Bu, ağ düzeyinde iletişim ortakları arasında uçtan uca bir bağlantının gerekli olmadığı avantajını sağlar. SAProuter, varsayılan olarak 3299 numaralı bağlantı noktasını dinliyor.
-SAP örneklerini bir SAProuter aracılığıyla bağlamak için, bir bağlantı girişimi ile SAProuter dize ve ana bilgisayar adına izin vermeniz gerekir.
+A SAProuter enables the TCP/IP communication between participating systems if there is no direct IP connection. This provides the advantage that no end-to-end connection between the communication partners is necessary on network level. The SAProuter is listening on port 3299 by default.
+To connect SAP instances through a SAProuter you need to give the SAProuter string and host name with any attempt to connect.
 
-## <a name="sap-netweaver-as-java"></a>Java olarak SAP NetWeaver
+## <a name="sap-netweaver-as-java"></a>SAP NetWeaver AS Java
 
-Bu nedenle belgenin odağının genel veya SAP NetWeaver ABAP yığınında SAP NetWeaver. Bu küçük bölümde SAP Java yığınının belirli konuları listelenmiştir. En önemli SAP NetWeaver Java özel tabanlı uygulamalardan biri SAP Enterprise Portal. SAP PI ve SAP çözüm Yöneticisi gibi diğer SAP NetWeaver tabanlı uygulamalar hem SAP NetWeaver ABAP hem de Java yığınlarını kullanır. Bu nedenle, SAP NetWeaver Java Stack ile ilgili belirli yönleri de göz önünde bulundurmanız gerekir.
+So far the focus of the document has been SAP NetWeaver in general or the SAP NetWeaver ABAP stack. In this small section, specific considerations for the SAP Java stack are listed. One of the most important SAP NetWeaver Java exclusively based applications is the SAP Enterprise Portal. Other SAP NetWeaver based applications like SAP PI and SAP Solution Manager use both the SAP NetWeaver ABAP and Java stacks. Therefore, there certainly is a need to consider specific aspects related to the SAP NetWeaver Java stack as well.
 
 ### <a name="sap-enterprise-portal"></a>SAP Enterprise Portal
 
-Şirketler arası senaryolarda dağıtım yapıyorsanız, bir Azure sanal makinesinde SAP portalının kurulumu, şirket içi bir yüklemeden farklı değildir. DNS, şirket içi tarafından yapıldığından, tek örneklerin bağlantı noktası ayarları şirket içi olarak yapılandırılmış şekilde yapılabilir. Bu belgede açıklanan öneriler ve kısıtlamalar, SAP Enterprise Portal veya genel olarak SAP NetWeaver Java Stack gibi bir uygulama için geçerlidir.
+The setup of an SAP Portal in an Azure Virtual Machine does not differ from an on premises installation if you are deploying in cross-premises scenarios. Since the DNS is done by on-premises, the port settings of the individual instances can be done as configured on-premises. The recommendations and restrictions described in this document so far apply for an application like SAP Enterprise Portal or the SAP NetWeaver Java stack in general.
 
-![Sunulan SAP portalı][planning-guide-figure-2700]
+![Exposed SAP Portal][planning-guide-figure-2700]
 
-Bazı müşterilerin özel bir dağıtım senaryosu, sanal makine Konağı, siteden siteye VPN tüneli veya ExpressRoute aracılığıyla şirket ağına bağlıyken SAP Enterprise Portal Internet 'e doğrudan maruz kalmaktır. Böyle bir senaryoda, belirli bağlantı noktalarının açık olduğundan ve güvenlik duvarı veya ağ güvenlik grubu tarafından engellenmediğinden emin olmanız gerekir. 
+A special deployment scenario by some customers is the direct exposure of the SAP Enterprise Portal to the Internet while the virtual machine host is connected to the company network via site-to-site VPN tunnel or ExpressRoute. For such a scenario, you have to make sure that specific ports are open and not blocked by firewall or network security group. 
 
-İlk portal URI 'si, http (s):`<Portalserver`>: bağlantı noktasının ' de <https://help.sap.com/saphelp_nw70ehp1/helpdata/de/a2/f9d7fed2adc340ab462ae159d19509/frameset.htm>SAP tarafından belgelendiği şekilde oluşturulduğu 5xx00/ırj.
+The initial portal URI is http(s):`<Portalserver`>:5XX00/irj where the port is formed as documented by SAP in <https://help.sap.com/saphelp_nw70ehp1/helpdata/de/a2/f9d7fed2adc340ab462ae159d19509/frameset.htm>.
 
-![Uç nokta yapılandırması][planning-guide-figure-2800]
+![Endpoint configuration][planning-guide-figure-2800]
 
-SAP Enterprise Portal URL ve/veya bağlantı noktalarını özelleştirmek istiyorsanız, bu belgeleri denetleyin:
+If you want to customize the URL and/or ports of your SAP Enterprise Portal, check this documentation:
 
-* [Portal URL 'sini Değiştir](https://wiki.scn.sap.com/wiki/display/EP/Change+Portal+URL)
-* [Varsayılan bağlantı noktası numaralarını, Portal bağlantı noktası numaralarını Değiştir](https://wiki.scn.sap.com/wiki/display/NWTech/Change+Default++port+numbers%2C+Portal+port+numbers)
+* [Change Portal URL](https://wiki.scn.sap.com/wiki/display/EP/Change+Portal+URL)
+* [Change Default port numbers, Portal port numbers](https://wiki.scn.sap.com/wiki/display/NWTech/Change+Default++port+numbers%2C+Portal+port+numbers)
 
-## <a name="high-availability-ha-and-disaster-recovery-dr-for-sap-netweaver-running-on-azure-virtual-machines"></a>Azure sanal makinelerde çalışan SAP NetWeaver için yüksek kullanılabilirlik (HA) ve olağanüstü durum kurtarma (DR)
+## <a name="high-availability-ha-and-disaster-recovery-dr-for-sap-netweaver-running-on-azure-virtual-machines"></a>High Availability (HA) and Disaster Recovery (DR) for SAP NetWeaver running on Azure Virtual Machines
 
-### <a name="definition-of-terminologies"></a>Terimlerin tanımı
+### <a name="definition-of-terminologies"></a>Definition of terminologies
 
-**Yüksek kullanılabilirlik (ha)** terimi, BT Hizmetleri 'nin **aynı** yerde, yedekli, hataya dayanıklı veya yük devretme korumalı bileşenler aracılığıyla iş sürekliliği sağlayarak bu kesintiyi en aza indiren bir teknoloji kümesiyle ilgilidir veri merkezi. Bu durumda, bir Azure bölgesi içinde.
+The term **high availability (HA)** is generally related to a set of technologies that minimizes IT disruptions by providing business continuity of IT services through redundant, fault-tolerant, or failover protected components inside the **same** data center. In our case, within one Azure Region.
 
-**Olağanüstü durum kurtarma (Dr)** Ayrıca, BT Hizmetleri kesintisini ve bunların kurtarmasını, ancak genellikle yüzlerce kilometre kilometrede bulunan **farklı** veri merkezlerinde en aza indirme için de hedefleme. Bizim örneğimizde, genellikle aynı coğrafi bölge içindeki farklı Azure bölgeleri arasında veya müşteri olarak sizin tarafınızdan kurulacaktır.
+**Disaster recovery (DR)** is also targeting minimizing IT services disruption, and their recovery but across **different** data centers, that are usually located hundreds of kilometers away. In our case usually between different Azure Regions within the same geopolitical region or as established by you as a customer.
 
-### <a name="overview-of-high-availability"></a>Yüksek kullanılabilirliğe genel bakış
+### <a name="overview-of-high-availability"></a>Overview of High Availability
 
-Azure 'da SAP yüksek kullanılabilirliği hakkındaki tartışmayı iki parçaya ayırabiliriz:
+We can separate the discussion about SAP high availability in Azure into two parts:
 
-* **Azure altyapı yüksek kullanılabilirlik**, örneğin Işlem (VM), ağ, depolama vb. ve SAP uygulama kullanılabilirliğini artırma avantajları.
-* SAP **Uygulama yüksek kullanılabilirliği**, ÖRNEĞIN, SAP yazılım bileşenleri IÇIN bir ha:
-  * SAP uygulama sunucuları
-  * SAP ASCS/SCS örneği
-  * DB sunucusu
+* **Azure infrastructure high availability**, for example HA of compute (VMs), network, storage etc. and its benefits for increasing SAP application availability.
+* **SAP application high availability**, for example HA of SAP software components:
+  * SAP application servers
+  * SAP ASCS/SCS instance
+  * DB server
 
-Azure altyapı HA ile nasıl birleştirilebilecek.
+and how it can be combined with Azure infrastructure HA.
 
-Azure 'da SAP yüksek kullanılabilirlik, şirket içi fiziksel veya sanal ortamda SAP yüksek kullanılabilirliğe kıyasla bazı farklılıklar içerir. SAP 'deki aşağıdaki kağıda Windows üzerinde sanallaştırılmış ortamlarda standart SAP yüksek kullanılabilirlik yapılandırmalarının açıklanmaktadır: <https://scn.sap.com/docs/DOC-44415>. Linux için Windows için mevcut olduğu gibi bir sapinst ile tümleşik SAP-HA yapılandırması yoktur. Linux için şirket içi SAP HA hakkında daha fazla bilgi edinin: <https://scn.sap.com/docs/DOC-8541>.
+SAP High Availability in Azure has some differences compared to SAP High Availability in an on-premises physical or virtual environment. The following paper from SAP describes standard SAP High Availability configurations in virtualized environments on Windows: <https://scn.sap.com/docs/DOC-44415>. There is no sapinst-integrated SAP-HA configuration for Linux like it exists for Windows. Regarding SAP HA on-premises for Linux find more information here: <https://scn.sap.com/docs/DOC-8541>.
 
-### <a name="azure-infrastructure-high-availability"></a>Azure altyapı yüksek kullanılabilirliği
+### <a name="azure-infrastructure-high-availability"></a>Azure Infrastructure High Availability
 
-Şu anda% 99,9 olan tek VM SLA 'Sı var. Tek bir VM 'nin kullanılabilirliğinin nasıl görünebileceğini fikir almak için, farklı kullanılabilir Azure SLA 'ların ürününü oluşturabilirsiniz: <https://azure.microsoft.com/support/legal/sla/>.
+There is currently a single-VM SLA of 99.9%. To get an idea how the availability of a single VM might look like, you can build the product of the different available Azure SLAs: <https://azure.microsoft.com/support/legal/sla/>.
 
-Hesaplamanın temeli ayda 30 gün veya 43200 dakikadır. Bu nedenle,% 0,05 kesinti süresi 21,6 dakikaya karşılık gelir. Her zamanki gibi, farklı hizmetlerin kullanılabilirliği aşağıdaki şekilde çarpılacaktır:
+The basis for the calculation is 30 days per month, or 43200 minutes. Therefore, 0.05% downtime corresponds to 21.6 minutes. As usual, the availability of the different services will multiply in the following way:
 
-(Kullanılabilirlik hizmeti #1/100) * (kullanılabilirlik hizmeti #2/100) * (kullanılabilirlik hizmeti #3/100) 
+(Availability Service #1/100) * (Availability Service #2/100) * (Availability Service #3/100) 
 
-Like
+Like:
 
-(99,95/100) * (99,9/100) * (99,9/100) = 0,9975 veya genel olarak% 99,75 kullanılabilirliği.
+(99.95/100) * (99.9/100) * (99.9/100) = 0.9975 or an overall availability of 99.75%.
 
-#### <a name="virtual-machine-vm-high-availability"></a>Sanal makine (VM) yüksek kullanılabilirlik
+#### <a name="virtual-machine-vm-high-availability"></a>Virtual Machine (VM) High Availability
 
-Sanal makinelerinizin kullanılabilirliğini etkileyebilecek iki tür Azure platform olayı vardır: planlı bakım ve planlanmamış bakım.
+There are two types of Azure platform events that can affect the availability of your virtual machines: planned maintenance and unplanned maintenance.
 
-* Planlı bakım olayları, Microsoft tarafından, sanal makinelerinizin üzerinde çalıştığı platform altyapısının genel güvenilirlik, performans ve güvenliğini geliştirmek amacıyla temel alınan Azure platformunda yapılan düzenli güncelleştirmelerdir.
-* Planlanmamış bakım olayları, sanal makinenizi temel alan donanım veya fiziksel altyapı bir şekilde hata verdi olduğunda meydana gelir. Buna yerel ağ hataları, yerel disk hataları veya raf düzeyinde diğer hatalar dahildir. Böyle bir hata algılandığında, Azure platformu sanal makinenizi sanal makinenizi barındıran uygun olmayan fiziksel sunucudan sağlıklı fiziksel bir sunucuya otomatik olarak geçirilir. Bu tür olaylar nadirdir, ancak sanal makinenizin yeniden başlatılmasına da neden olabilir.
+* Planned maintenance events are periodic updates made by Microsoft to the underlying Azure platform to improve overall reliability, performance, and security of the platform infrastructure that your virtual machines run on.
+* Unplanned maintenance events occur when the hardware or physical infrastructure underlying your virtual machine has faulted in some way. Buna yerel ağ hataları, yerel disk hataları veya raf düzeyinde diğer hatalar dahildir. When such a failure is detected, the Azure platform will automatically migrate your virtual machine from the unhealthy physical server hosting your virtual machine to a healthy physical server. Bu tür olaylar nadirdir, ancak sanal makinenizin yeniden başlatılmasına da neden olabilir.
 
-Bu belgelerde daha fazla ayrıntı bulabilirsiniz:<https://azure.microsoft.com/documentation/articles/virtual-machines-manage-availability>
+More details can be found in this documentation: <https://azure.microsoft.com/documentation/articles/virtual-machines-manage-availability>
 
-#### <a name="azure-storage-redundancy"></a>Azure depolama artıklığı
+#### <a name="azure-storage-redundancy"></a>Azure Storage Redundancy
 
-Microsoft Azure Depolama hesabınızdaki veriler, dayanıklılık ve yüksek kullanılabilirlik sağlamak için her zaman çoğaltılır, bu da geçici donanım arızalarına karşın Azure Depolama SLA 'sını de karşılamıyor.
+The data in your Microsoft Azure Storage Account is always replicated to ensure durability and high availability, meeting the Azure Storage SLA even in the face of transient hardware failures.
 
-Azure depolama, verilerin üç görüntüsünü varsayılan olarak tutarken, birden çok Azure diski arasında RAID5 veya RAID1 gerekli değildir.
+Since Azure Storage is keeping three images of the data by default, RAID5 or RAID1 across multiple Azure disks are not necessary.
 
-Bu makalede daha fazla ayrıntı bulabilirsiniz:<https://azure.microsoft.com/documentation/articles/storage-redundancy/>
+More details can be found in this article: <https://azure.microsoft.com/documentation/articles/storage-redundancy/>
 
-#### <a name="utilizing-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-sap-applications"></a>SAP uygulamalarında daha yüksek kullanılabilirlik elde etmek için Azure altyapı VM yeniden başlatması kullanma
+#### <a name="utilizing-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-sap-applications"></a>Utilizing Azure Infrastructure VM Restart to Achieve Higher Availability of SAP Applications
 
-Linux 'ta Windows Server Yük Devretme Kümelemesi (WSFC) veya Paceyapıcısı gibi işlevleri kullanmamaya karar verirseniz (Şu anda yalnızca SLES 12 ve üzeri için desteklenir), Azure VM yeniden başlatması, bir SAP sistemini planlanmış ve planlanmamış kapalı kalma süresine karşı korumak için kullanılır fiziksel sunucu altyapısı ve temel alınan genel Azure platformu.
+If you decide not to use functionalities like Windows Server Failover Clustering (WSFC) or Pacemaker on Linux (currently only supported for SLES 12 and higher), Azure VM Restart is utilized to protect an SAP System against planned and unplanned downtime of the Azure physical server infrastructure and overall underlying Azure platform.
 
 > [!NOTE]
-> Azure VM 'nin yeniden başlatılmasının birincil olarak uygulamaları DEĞIL, VM 'Leri koruduğu bahsetmek önemlidir. VM yeniden başlatma, SAP uygulamaları için yüksek kullanılabilirlik sunmaz, ancak belirli bir altyapı kullanılabilirliği düzeyi ve bu nedenle SAP sistemlerinin dolaylı olarak daha yüksek kullanılabilirliğini sunmaktadır. Planlı veya planlanmamış bir ana bilgisayar kesintisinden sonra VM 'yi yeniden başlatmak için gereken süre için SLA yoktur. Bu nedenle, bu yüksek kullanılabilirlik yöntemi, (A) SCS veya DBMS gibi bir SAP sisteminin kritik bileşenleri için uygun değildir.
+> It is important to mention that Azure VM Restart primarily protects VMs and NOT applications. VM Restart does not offer high availability for SAP applications, but it does offer a certain level of infrastructure availability and therefore indirectly higher availability of SAP systems. There is also no SLA for the time it will take to restart a VM after a planned or unplanned host outage. Therefore, this method of high availability is not suitable for critical components of an SAP system like (A)SCS or DBMS.
 >
 >
 
-Yüksek kullanılabilirlik için başka bir önemli altyapı öğesi depolama alanı. Örneğin Azure Storage SLA% 99,9 kullanılabilir. Biri, disklerinin bulunduğu tüm VM 'Leri tek bir Azure depolama hesabına dağıttığında, olası Azure depolama alanı, bu Azure depolama hesabına yerleştirilmiş tüm VM 'lerin ve ayrıca bu sanal makinelerin içinde çalışan tüm SAP bileşenleri üzerinde kullanılamamasına neden olur.  
+Another important infrastructure element for high availability is storage. For example Azure Storage SLA is 99.9 % availability. If one deploys all VMs with its disks into a single Azure Storage Account, potential Azure Storage unavailability will cause unavailability of all VMs that are placed in that Azure Storage Account, and also all SAP components running inside of those VMs.  
 
-Tüm VM 'Leri tek bir Azure Storage hesabına koymak yerine, her sanal makine için ayrılmış depolama hesapları da kullanabilirsiniz ve bu şekilde, birden çok bağımsız Azure depolama hesabı kullanarak genel VM ve SAP uygulamasının kullanılabilirliğini artırabilirsiniz.
+Instead of putting all VMs into one single Azure Storage Account, you can also use dedicated storage accounts for each VM, and in this way increase overall VM and SAP application availability by using multiple independent Azure Storage Accounts.
 
-Azure yönetilen diskler, eklendiği sanal makinenin hata etki alanına otomatik olarak yerleştirilir. İki sanal makineyi bir kullanılabilirlik kümesine yerleştirirseniz ve yönetilen diskler kullanıyorsanız, platform yönetilen diskleri farklı hata etki alanlarına dağıtmayı da üstlenir. Premium Depolama kullanmayı planlıyorsanız, diskleri yönetme ' nin kullanılması da önerilir.
+Azure Managed Disks are automatically placed in the Fault Domain of the virtual machine they are attached to. If you place two virtual machines in an availability set and use Managed Disks, the platform will take care of distributing the Managed Disks into different Fault Domains as well. If you plan to use Premium Storage, we highly recommend using Manage Disks as well.
 
-Azure altyapı HA ve depolama hesapları kullanan bir SAP NetWeaver sisteminin örnek mimarisi şuna benzeyebilir:
+A sample architecture of an SAP NetWeaver system that uses Azure infrastructure HA and storage accounts could look like this:
 
-![SAP uygulamasına daha yüksek kullanılabilirlik elde etmek için Azure altyapı HA kullanma][planning-guide-figure-2900]
+![Utilizing Azure infrastructure HA to achieve SAP application higher availability][planning-guide-figure-2900]
 
-Azure altyapı HA ve yönetilen diskler kullanan bir SAP NetWeaver sisteminin örnek mimarisi şuna benzeyebilir:
+A sample architecture of an SAP NetWeaver system that uses Azure infrastructure HA and Managed Disks could look like this:
 
-![SAP uygulamasına daha yüksek kullanılabilirlik elde etmek için Azure altyapı HA kullanma][planning-guide-figure-2901]
+![Utilizing Azure infrastructure HA to achieve SAP application higher availability][planning-guide-figure-2901]
 
-Kritik SAP bileşenleri için şu ana kadar şunu aldık:
+For critical SAP components, we achieved the following so far:
 
-* SAP uygulama sunucularının yüksek kullanılabilirliği (AS)
+* High Availability of SAP Application Servers (AS)
 
-  SAP uygulama sunucusu örnekleri, yedekli bileşenlerdir. Her SAP örneği, farklı bir Azure hata ve yükseltme etki alanında çalışan kendi VM 'sine dağıtılır (bkz. bölümler [hata etki alanları][planning-guide-3.2.1] ve [yükseltme etki alanları][planning-guide-3.2.2]). Bu, Azure kullanılabilirlik kümeleri kullanılarak yapılır (bkz. bölüm [Azure kullanılabilirlik kümeleri][planning-guide-3.2.3]). Bir Azure hata ya da yükseltme etki alanının olası planlanmış veya planlanmamış kullanım dışı kalması, sınırlı sayıda VM 'nin SAP olarak örnekleri olarak kullanılamamasına neden olur.
+  SAP application server instances are redundant components. Each SAP AS instance is deployed on its own VM, that is running in a different Azure Fault and Upgrade Domain (see chapters [Fault Domains][planning-guide-3.2.1] and [Upgrade Domains][planning-guide-3.2.2]). This is ensured by using Azure Availability Sets (see chapter [Azure Availability Sets][planning-guide-3.2.3]). Potential planned or unplanned unavailability of an Azure Fault or Upgrade Domain will cause unavailability of a restricted number of VMs with their SAP AS instances.
 
-  Her SAP, örnek olarak kendi Azure depolama hesabına yerleştirilir. bir Azure Storage hesabının olası kullanım dışı kalması, örnek olarak SAP olarak yalnızca bir VM 'nin kullanılamamasına neden olur. Ancak, bir Azure aboneliği içinde Azure depolama hesabı sınırının olduğunu unutmayın. VM yeniden başlatıldıktan sonra (A) bir SCS örneğinin otomatik olarak başlamasını sağlamak için, [sap örnekleri Için autostart][planning-guide-11.5]' ı kullanarak bölümünde açıklanan, (a) SCS örneği başlangıç profilinde otomatik başlatma parametresini ayarladığınızdan emin olun.
-  Daha fazla ayrıntı için lütfen [SAP uygulama sunucuları için bölüm yüksek kullanılabilirliğini][planning-guide-11.4.1] okuyun.
+  Each SAP AS instance is placed in its own Azure Storage account - potential unavailability of one Azure Storage Account will cause unavailability of only one VM with its SAP AS instance. However, be aware that there is a limit of Azure Storage Accounts within one Azure subscription. To ensure automatic start of (A)SCS instance after the VM reboot, make sure to set the Autostart parameter in (A)SCS instance start profile described in chapter [Using Autostart for SAP instances][planning-guide-11.5].
+  Please also read chapter [High Availability for SAP Application Servers][planning-guide-11.4.1] for more details.
 
-  Yönetilen diskler kullanıyor olsanız da bu diskler bir Azure depolama hesabında depolanır ve depolama kesintisi durumunda kullanılamayabilir.
+  Even if you use Managed Disks, those disks are also stored in an Azure Storage Account and can be unavailable in an event of a storage outage.
 
-* *Daha yüksek* SAP (A) SCS örneği kullanılabilirliği
+* *Higher* Availability of SAP (A)SCS instance
 
-  Burada, VM 'yi yüklü SAP (A) SCS örneğiyle korumak için Azure VM yeniden başlatması kullanıyoruz. Azure 'da planlanmış veya planlanmamış kapalı kalma süresi söz konusu olduğunda, VM 'Ler kullanılabilir başka bir sunucuda yeniden başlatılır. Daha önce belirtildiği gibi, Azure VM yeniden başlatması öncelikle VM 'Leri korur, bu durumda (A) SCS örneği. VM yeniden başlatıldığında, SAP (A) SCS örneği için dolaylı olarak daha yüksek kullanılabilirliğe ulaşacağız. Sanal makine yeniden başlatıldıktan sonra (A) SCS örneğinin otomatik olarak başlamasını sağlamak için, [sap örnekleri Için autostart 'ı kullanma][planning-guide-11.5]bölümünde açıklanan, (a) SCS örneği başlangıç profilinde otomatik başlatma parametresi ayarladığınızdan emin olun. Yani, (A) SCS örneği tek bir VM 'de çalışan tek bir hata noktası (SPOF) olarak tüm SAP yatay kullanılabilirliği için belirleyici bir faktör olacaktır.
+  Here we utilize Azure VM Restart to protect the VM with installed SAP (A)SCS instance. In the case of planned or unplanned downtime of Azure severs, VMs will be restarted on another available server. As mentioned earlier, Azure VM Restart primarily protects VMs and NOT applications, in this case the (A)SCS instance. Through the VM Restart, we'll reach indirectly higher availability of SAP (A)SCS instance. To insure automatic start of (A)SCS instance after the VM reboot, make sure to set Autostart parameter in (A)SCS instance start profile described in chapter [Using Autostart for SAP instances][planning-guide-11.5]. This means the (A)SCS instance as a Single Point of Failure (SPOF) running in a single VM will be the determinative factor for the availability of the whole SAP landscape.
 
-* *Daha yüksek* DBMS sunucusunun kullanılabilirliği
+* *Higher* Availability of DBMS Server
 
-  Burada SAP (A) SCS örnek kullanım örneğine benzer şekilde, VM 'yi yüklü olan DBMS yazılımıyla korumak için Azure VM yeniden başlatma 'yı kullanıyoruz ve VM yeniden başlatma aracılığıyla DBMS yazılımının daha yüksek kullanılabilirliğini elde ediyoruz.
-  Tek bir VM 'de çalışan DBMS de bir SOF olur ve tüm SAP yatay kullanılabilirliği için belirleyici bir etkendir.
+  Here, similar to the SAP (A)SCS instance use case, we utilize Azure VM Restart to protect the VM with installed DBMS software, and we achieve higher availability of DBMS software through VM Restart.
+  DBMS running in a single VM is also a SPOF, and it is the determinative factor for the availability of the whole SAP landscape.
 
-### <a name="sap-application-high-availability-on-azure-iaas"></a>Azure IaaS 'de SAP uygulaması yüksek kullanılabilirliği
+### <a name="sap-application-high-availability-on-azure-iaas"></a>SAP Application High Availability on Azure IaaS
 
-Tam SAP sistem yüksek kullanılabilirlik elde etmek için, tüm kritik SAP sistem bileşenlerini (örneğin, yedekli SAP uygulama sunucuları) ve SAP (A) SCS örneği ve DBMS gibi benzersiz bileşenleri (örneğin, tek başarısızlık noktası) korumanız gerekir.
+To achieve full SAP system high availability, we need to protect all critical SAP system components, for example redundant SAP application servers, and unique components (for example Single Point of Failure) like SAP (A)SCS instance and DBMS.
 
-#### <a name="5d9d36f9-9058-435d-8367-5ad05f00de77"></a>SAP uygulama sunucuları için yüksek kullanılabilirlik
+#### <a name="5d9d36f9-9058-435d-8367-5ad05f00de77"></a>High Availability for SAP Application Servers
 
-SAP uygulama sunucuları/iletişim örnekleri için, belirli bir yüksek kullanılabilirlik çözümü düşünmek gerekli değildir. Yüksek kullanılabilirlik, artıklık tarafından sağlanır ve bu sayede farklı sanal makinelerde yeterince yer vardır. Bunların tümü, planlanan bakım kapalı kalma süresi boyunca VM 'Lerin aynı anda güncelleştirilebileceği kaçınmak için aynı Azure kullanılabilirlik kümesine yerleştirilmelidir. Azure ölçek birimi içindeki farklı yükseltme ve hata etki alanları üzerinde oluşturulan temel işlevsellik, bölüm [yükseltme etki alanlarında][planning-guide-3.2.2]zaten sunulmuştur. Azure kullanılabilirlik kümeleri, bu belgenin bölüm [Azure kullanılabilirlik kümelerinde][planning-guide-3.2.3] sunulmuştur.
+For the SAP application servers/dialog instances, it's not necessary to think about a specific high availability solution. High availability is achieved by redundancy and thereby having enough of them in different virtual machines. They should all be placed in the same Azure Availability Set to avoid that the VMs might be updated at the same time during planned maintenance downtime. The basic functionality, which builds on different Upgrade and Fault Domains within an Azure Scale Unit was already introduced in chapter [Upgrade Domains][planning-guide-3.2.2]. Azure Availability Sets were presented in chapter [Azure Availability Sets][planning-guide-3.2.3] of this document.
 
-Azure ölçek birimi içindeki bir Azure kullanılabilirlik kümesi tarafından kullanılabilen, sonsuz sayıda hata ve yükseltme etki alanı yoktur. Bu, birden çok VM 'nin bir kullanılabilirlik kümesine yerleştirilmesi, daha önce veya daha sonraki bir VM 'nin aynı hata veya yükseltme etki alanında sona ereceği anlamına gelir.
+There is no infinite number of Fault and Upgrade Domains that can be used by an Azure Availability Set within an Azure Scale Unit. This means that putting a number of VMs into one Availability Set, sooner or later more than one VM ends up in the same Fault or Upgrade Domain.
 
-Ayrılmış VM 'lerinde birkaç SAP uygulama sunucusu örneği dağıtma ve beş yükseltme etki alanı olduğunu varsayarsak, aşağıdaki resim sonunda ortaya çıktı. Bir kullanılabilirlik kümesi içindeki en fazla hata ve güncelleştirme etki alanı sayısı gelecekte değişebilir:
+Deploying a few SAP application server instances in their dedicated VMs and assuming that we got five Upgrade Domains, the following picture emerges at the end. The actual max number of fault and update domains within an availability set might change in the future:
 
-![Azure 'da SAP uygulama sunucularının HA][planning-guide-figure-3000]
+![HA of SAP Application Servers in Azure][planning-guide-figure-3000]
 
-Bu belgelerde daha fazla ayrıntı bulabilirsiniz:<https://azure.microsoft.com/documentation/articles/virtual-machines-manage-availability>
+More details can be found in this documentation: <https://azure.microsoft.com/documentation/articles/virtual-machines-manage-availability>
 
-#### <a name="high-availability-for-sap-central-services-on-azure"></a>Azure 'da SAP Merkezi Hizmetleri için yüksek kullanılabilirlik
+#### <a name="high-availability-for-sap-central-services-on-azure"></a>High Availability for SAP Central Services on Azure
 
-Azure 'daki SAP merkezi hizmetlerinin yüksek kullanılabilirlik mimarisi için, giriş bilgileri olarak [SAP NetWeaver Için yüksek kullanılabilirlik mimarisi ve senaryolar](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios) makalesine bakın. Bu makale, belirli işletim sistemleri için daha ayrıntılı açıklamalara işaret eder.
+For High availability architecture of SAP Central Services on Azure, check the article [High-availability architecture and scenarios for SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios) as entry information. The article points to more detailed descriptions for the particular operating systems.
 
-#### <a name="high-availability-for-the-sap-database-instance"></a>SAP veritabanı örneği için yüksek kullanılabilirlik
+#### <a name="high-availability-for-the-sap-database-instance"></a>High Availability for the SAP database instance
 
-Tipik SAP DBMS HA kurulumu, DBMS yüksek kullanılabilirlik işlevinin, etkin DBMS örneğinden ikinci VM 'ye verileri pasif bir DBMS örneğine çoğaltmak için kullanıldığı iki DBMS VM 'yi temel alır.
+The typical SAP DBMS HA setup is based on two DBMS VMs where DBMS high-availability functionality is used to replicate data from the active DBMS instance to the second VM into a passive DBMS instance.
 
-DBMS 'nin genel ve özel DBMS için yüksek kullanılabilirlik ve olağanüstü durum kurtarma işlevlerinin yanı sıra, [DBMS dağıtım kılavuzunda][dbms-guide]de açıklanmaktadır.
+High Availability and Disaster recovery functionality for DBMS in general as well as specific DBMS are described in the [DBMS Deployment Guide][dbms-guide].
 
-#### <a name="end-to-end-high-availability-for-the-complete-sap-system"></a>Tam SAP sistemi için uçtan uca yüksek kullanılabilirlik
+#### <a name="end-to-end-high-availability-for-the-complete-sap-system"></a>End-to-End High Availability for the Complete SAP System
 
-Aşağıda, Azure 'da Windows için bir tane ve Linux için tam SAP NetWeaver HA mimarisine yönelik iki örnek verilmiştir.
+Here are two examples of a complete SAP NetWeaver HA architecture in Azure - one for Windows and one for Linux.
 
-Yalnızca yönetilmeyen diskler: Birçok SAP sistemini dağıtırken ve dağıtılan VM 'lerin sayısı, abonelik başına en fazla depolama hesabı sınırını aştığdığında aşağıda açıklanan kavramların tehlikeye düşmesi gerekebilir. Bu gibi durumlarda, VM 'lerin VHD 'lerinin tek bir depolama hesabında birleştirilmesi gerekir. Genellikle, farklı SAP sistemlerinin SAP uygulama katmanı VM 'lerinin VHD 'lerini birleştirerek bunu yapabilirsiniz.  Ayrıca, tek bir Azure depolama hesabında farklı SAP sistemlerinin farklı DBMS VM 'lerinin farklı VHD 'lerini de birleştirdik. Böylece, Azure depolama hesaplarının ıOPS sınırları göz önünde tutulduğunda (<https://azure.microsoft.com/documentation/articles/storage-scalability-targets>)
+Unmanaged disks only: The concepts as explained below may need to be compromised a bit when you deploy many SAP systems and the number of VMs deployed are exceeding the maximum limit of Storage Accounts per subscription. In such cases, VHDs of VMs need to be combined within one Storage Account. Usually you would do so by combining VHDs of SAP application layer VMs of different SAP systems.  We also combined different VHDs of different DBMS VMs of different SAP systems in one Azure Storage Account. Thereby keeping the IOPS limits of Azure Storage Accounts in mind (<https://azure.microsoft.com/documentation/articles/storage-scalability-targets>)
 
 
-##### <a name="windowslogo_windows-ha-on-windows"></a>![Windows][Logo_Windows] Windows 'da HA
+##### <a name="windowslogo_windows-ha-on-windows"></a>![Windows][Logo_Windows] HA on Windows
 
-![Azure IaaS 'de SQL Server SAP NetWeaver Application HA mimarisi][planning-guide-figure-3200]
+![SAP NetWeaver Application HA Architecture with SQL Server in Azure IaaS][planning-guide-figure-3200]
 
-Aşağıdaki Azure yapıları, altyapı sorunları ve ana bilgisayar düzeltme eki uygulama ile etkisini en aza indirmek için SAP NetWeaver sistemi için kullanılır:
+The following Azure constructs are used for the SAP NetWeaver system, to minimize impact by infrastructure issues and host patching:
 
-* Tam sistem Azure 'da dağıtılır (gerekli-DBMS katmanı, (A) SCS örneği ve tam uygulama katmanının aynı konumda çalıştırılması gerekir).
-* Tüm sistem bir Azure aboneliğinde (gerekli) çalışır.
-* Tüm sistem bir Azure sanal ağı içinde çalışır (gerekli).
-* Aynı sanal ağa ait tüm VM 'Ler de dahil olmak üzere bir SAP sisteminin VM 'lerinin üç kullanılabilirlik kümesine ayrılması mümkündür.
-* Her katmanın (örneğin, DBMS, Ass, uygulama sunucuları) adanmış bir kullanılabilirlik kümesi kullanması gerekir.
-* Bir SAP sisteminin DBMS örneklerini çalıştıran tüm VM 'Ler tek bir kullanılabilirlik kümesinde bulunur. Yerel DBMS yüksek kullanılabilirlik özellikleri kullanıldığından, SQL Server AlwaysOn veya Oracle Data Guard gibi birden çok sanal makinenin sistem başına çalıştığını varsayalım.
-* DBMS örnekleri çalıştıran tüm VM 'Ler kendi depolama hesabını kullanır. DBMS verileri ve günlük dosyaları, verileri eşitlerken DBMS yüksek kullanılabilirlik işlevleri kullanılarak bir depolama hesabından başka bir depolama hesabına çoğaltılır. Tek bir depolama hesabının olmaması, tek bir SQL Windows küme düğümünde kullanılamamasına neden olur, ancak tüm SQL Server hizmeti kullanılamaz.
-* Bir SAP sisteminin (A) SCS örneği çalıştıran tüm VM 'Ler tek bir kullanılabilirlik kümesidir. Bir Windows Server yük devretme kümesi (WSFC), (A) SCS örneğini korumak için bu sanal makinelerin içinde yapılandırılır.
-* Bir SCS örneği çalıştıran tüm VM 'Ler kendi depolama hesabını kullanır. A SCS örnek dosyaları ve SAP Genel klasörü, bir depolama hesabından, SIOS Dataman çoğaltması kullanılarak başka bir depolama hesabına çoğaltılır. Tek bir depolama hesabının olmaması, (a) bir SCS Windows küme düğümünün kullanılamamasına neden olur, ancak (A) bir SCS hizmeti değildir.
-* SAP uygulama sunucusu katmanını temsil eden tüm VM 'Ler üçüncü bir kullanılabilirlik kümesidir.
-* SAP uygulama sunucuları çalıştıran tüm VM 'Ler kendi depolama hesabını kullanır. Bir depolama hesabının olmaması, diğer SAP uygulama sunucularının çalışmaya devam ettiği bir SAP uygulama sunucusu üzerinde kullanılamamasına neden olur.
+* The complete system is deployed on Azure (required - DBMS layer, (A)SCS instance and complete application layer need to run in the same location).
+* The complete system runs within one Azure subscription (required).
+* The complete system runs within one Azure Virtual Network (required).
+* The separation of the VMs of one SAP system into three Availability Sets is possible even with all the VMs belonging to the same Virtual Network.
+* Each layer (for example DBMS, ASCS, Application Servers) must use a dedicated Availability Set.
+* All VMs running DBMS instances of one SAP system are in one Availability Set. We assume that there is more than one VM running DBMS instances per system since native DBMS high availability features are used, like SQL Server AlwaysOn or Oracle Data Guard.
+* All VMs running DBMS instances use their own storage account. DBMS data and log files are replicated from one storage account to another storage account using DBMS high availability functions that synchronize the data. Unavailability of one storage account will cause unavailability of one SQL Windows cluster node, but not the whole SQL Server service.
+* All VMs running (A)SCS instance of one SAP system are in one Availability Set. A Windows Server Failover Cluster (WSFC) is configured inside of those VMs to protect the (A)SCS instance.
+* All VMs running (A)SCS instances use their own storage account. (A)SCS instance files and SAP global folder are replicated from one storage account to another storage account using SIOS DataKeeper replication. Unavailability of one storage account will cause unavailability of one (A)SCS Windows cluster node, but not the whole (A)SCS service.
+* ALL the VMs representing the SAP application server layer are in a third Availability Set.
+* ALL the VMs running SAP application servers use their own storage account. Unavailability of one storage account will cause unavailability of one SAP application server, where other SAP application servers continue to run.
 
-Aşağıdaki şekilde, yönetilen diskler kullanılarak aynı yatay gösterilmektedir.
+The following figure illustrated the same landscape using Managed Disks.
 
-![Azure IaaS 'de SQL Server SAP NetWeaver Application HA mimarisi][planning-guide-figure-3201]
+![SAP NetWeaver Application HA Architecture with SQL Server in Azure IaaS][planning-guide-figure-3201]
 
-##### <a name="linuxlogo_linux-ha-on-linux"></a>![Linux][Logo_Linux] Linux 'ta HA
+##### <a name="linuxlogo_linux-ha-on-linux"></a>![Linux][Logo_Linux] HA on Linux
 
-Azure 'da Linux 'ta SAP HA 'nin mimarisi, yukarıda açıklanan Windows için temelde aynıdır. Desteklenen yüksek kullanılabilirliğe sahip çözümlerin listesi için SAP Note [1928533] bölümüne bakın.
+The architecture for SAP HA on Linux on Azure is basically the same as for Windows as described above. Refer to SAP Note [1928533] for a list of supported high availability solutions.
 
-### <a name="4e165b58-74ca-474f-a7f4-5e695a93204f"></a>SAP örnekleri için autostart 'ı kullanma
+### <a name="4e165b58-74ca-474f-a7f4-5e695a93204f"></a>Using Autostart for SAP instances
 
-SAP, VM 'deki işletim sistemi başladıktan hemen sonra SAP örneklerinin başlatılması için gereken işlevselliği önerdi. SAP Bilgi Bankası makalesi [1909114]' de tam adımlar belgelenmiştir. Ancak, örnek yeniden başlatmalarının sırası üzerinde bir denetim olmadığından, SAP 'nin birden fazla VM 'den etkilendiğini veya birden çok örnek VM başına çalıştırıldığı varsayıldığında, bu ayarı kullanmayı önermez. Bir VM 'deki bir SAP uygulama sunucusu örneğinin tipik bir Azure senaryosu ve tek bir VM 'nin yeniden başlatılması durumunda, autostart önemli değildir ve bu parametre eklenerek etkinleştirilebilir:
+SAP offered the functionality to start SAP instances immediately after the start of the OS within the VM. The exact steps were documented in SAP Knowledge Base Article [1909114]. However, SAP is not recommending to use the setting anymore because there is no control in the order of instance restarts, assuming more than one VM got affected or multiple instances ran per VM. Assuming a typical Azure scenario of one SAP application server instance in a VM and the case of a single VM eventually getting restarted, the Autostart is not critical and can be enabled by adding this parameter:
 
     Autostart = 1
 
-SAP ABAP ve/veya Java örneğinin başlangıç profiline.
+Into the start profile of the SAP ABAP and/or Java instance.
 
 > [!NOTE]
-> Autostart parametresinin bir kısmı de olabilir. Daha ayrıntılı olarak, bu parametre, örneğin ilgili Windows/Linux hizmeti başlatıldığında SAP ABAP veya Java örneğinin başlangıcını tetikler. Bu durum, işletim sisteminin önyüklemesinde büyük bir durumdur. Ancak, SAP hizmetlerinin yeniden başlatılması, SUM veya diğer güncelleştirmeler ya da yükseltmeler gibi SAP yazılım yaşam döngüsü yönetimi işlevlerinin de yaygın bir şeydir. Bu işlevler, bir örneğin otomatik olarak yeniden başlatılmasını beklemiyordu. Bu nedenle, bu tür görevler çalıştırılmadan önce autostart parametresi devre dışı bırakılmalıdır. Autostart parametresi, yoks/SCS/CI gibi kümelenmiş SAP örnekleri için de kullanılmamalıdır.
+> The Autostart parameter can have some downfalls as well. In more detail, the parameter triggers the start of an SAP ABAP or Java instance when the related Windows/Linux service of the instance is started. That certainly is the case when the operating system boots up. However, restarts of SAP services are also a common thing for SAP Software Lifecycle Management functionality like SUM or other updates or upgrades. These functionalities are not expecting an instance to be restarted automatically at all. Therefore, the Autostart parameter should be disabled before running such tasks. The Autostart parameter also should not be used for SAP instances that are clustered, like ASCS/SCS/CI.
 >
 >
 
-SAP örnekleri için otomatik başlatma ile ilgili ek bilgilere buradan bakın:
+See additional information regarding autostart for SAP instances here:
 
-* [UNIX sunucu başlatma/durdurma ile birlikte SAP 'yi başlatma/durdurma](https://scn.sap.com/community/unix/blog/2012/08/07/startstop-sap-along-with-your-unix-server-startstop)
-* [SAP NetWeaver yönetim aracılarını başlatma ve durdurma](https://help.sap.com/saphelp_nwpi711/helpdata/en/49/9a15525b20423ee10000000a421938/content.htm)
-* [HANA veritabanının otomatik başlamasını etkinleştirme](http://www.freehanatutorials.com/2012/10/how-to-enable-auto-start-of-hana.html)
+* [Start/Stop SAP along with your Unix Server Start/Stop](https://scn.sap.com/community/unix/blog/2012/08/07/startstop-sap-along-with-your-unix-server-startstop)
+* [Starting and Stopping SAP NetWeaver Management Agents](https://help.sap.com/saphelp_nwpi711/helpdata/en/49/9a15525b20423ee10000000a421938/content.htm)
+* [How to enable auto Start of HANA Database](http://www.freehanatutorials.com/2012/10/how-to-enable-auto-start-of-hana.html)
 
-### <a name="larger-3-tier-sap-systems"></a>Daha büyük 3 katmanlı SAP sistemleri
-3 katmanlı SAP yapılandırmalarının yüksek kullanılabilirlik yönleri daha önceki bölümlerde ele alınmıştır. Ancak, DBMS sunucu gereksinimlerinin Azure 'da bulunması için çok büyük olduğu, ancak SAP uygulama katmanı Azure 'a dağıtılabilecek sistemler hakkında ne olur?
+### <a name="larger-3-tier-sap-systems"></a>Larger 3-Tier SAP systems
+High-Availability aspects of 3-Tier SAP configurations got discussed in earlier sections already. But what about systems where the DBMS server requirements are too large to have it located in Azure, but the SAP application layer could be deployed into Azure?
 
-#### <a name="location-of-3-tier-sap-configurations"></a>3 katmanlı SAP yapılandırmalarının konumu
-Uygulama katmanının kendisini veya uygulama ve DBMS katmanını şirket içi ve Azure arasında ayırmak desteklenmez. SAP sistemi, şirket içinde ya da Azure 'da tamamen dağıtılır. Ayrıca, bazı uygulama sunucularının şirket içinde ve başkalarının Azure 'da çalıştırılmasını da desteklemez. Bu, tartışmanın başlangıç noktasıdır. Ayrıca, bir SAP sisteminin ve SAP uygulama sunucusu katmanının iki farklı Azure bölgesinde dağıtılan DBMS bileşenlerine sahip olmak için de destekliyoruz. Örneğin, Orta ABD Batı ABD ve SAP uygulama katmanındaki DBMS. Bu tür yapılandırmaların desteklenmesinin nedeni SAP NetWeaver mimarisinin gecikme süresinin duyarlılığı olur.
+#### <a name="location-of-3-tier-sap-configurations"></a>Location of 3-Tier SAP configurations
+It is not supported to split the application tier itself or the application and DBMS tier between on-premises and Azure. An SAP system is either completely deployed on-premises OR in Azure. It is also not supported to have some of the application servers run on-premises and some others in Azure. That is the starting point of the discussion. We also are not supporting to have the DBMS components of an SAP system and the SAP application server layer deployed in two different Azure Regions. For example, DBMS in West US and SAP application layer in Central US. Reason for not supporting such configurations is the latency sensitivity of the SAP NetWeaver architecture.
 
-Bununla birlikte, geçen yılın veri merkezi iş ortaklarının Azure bölgelerine birlikte ortak konumlar geliştirildiği bir kurs üzerinden. Bu ortak konumlar genellikle bir Azure bölgesindeki fiziksel Azure veri merkezlerine yakın yakındadır. Azure 'a ExpressRoute aracılığıyla ortak konumdaki varlıkların kısa uzaklığı ve bağlantısı, 2ms 'den küçük bir gecikme süresine neden olabilir. Böyle durumlarda, bu tür bir ortak konumda DBMS katmanını (depolama SAN/NAS dahil) bulmak için Azure 'daki SAP uygulama katmanı da mümkündür. [Hana büyük örnekleri](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture). 
+However, over the course of last year data center partners developed co-locations to Azure Regions. These co-locations often are in close proximity to the physical Azure data centers within an Azure Region. The short distance and connection of assets in the co-location through ExpressRoute into Azure can result in a latency that is less than 2ms. In such cases, to locate the DBMS layer (including storage SAN/NAS) in such a co-location and the SAP application layer in Azure is possible. [HANA Large Instances](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture). 
 
-### <a name="offline-backup-of-sap-systems"></a>SAP sistemlerinin çevrimdışı yedeklemesi
-Seçilen SAP yapılandırmasına (2 katmanlı veya 3 katmanlı) bağlı olarak, yedeklemeniz gerekir. VM 'nin içeriği ve veritabanının bir yedeklemesi vardır. DBMS ile ilgili yedeklemelerin veritabanı yöntemleriyle yapılması bekleniyor. Farklı veritabanları için ayrıntılı bir açıklama, [DBMS kılavuzunda][dbms-guide]bulunabilir. Diğer yandan, SAP verileri, bu bölümde açıklandığı gibi çevrimdışı bir şekilde (veritabanı içeriği de dahil), sonraki bölümde açıklandığı gibi, çevrimiçi olarak da yedeklenebilir.
+### <a name="offline-backup-of-sap-systems"></a>Offline Backup of SAP systems
+Dependent on the SAP configuration chosen (2-Tier or 3-Tier) there could be a need to back up. The content of the VM itself plus to have a backup of the database. The DBMS-related backups are expected to be done with database methods. A detailed description for the different databases, can be found in [DBMS Guide][dbms-guide]. On the other hand, the SAP data can be backed up in an offline manner (including the database content as well) as described in this section or online as described in the next section.
 
-Çevrimdışı yedekleme temelde Azure portal aracılığıyla VM 'nin kapatılmasını ve temel VM diskinin bir kopyasını ve VM 'ye eklenen tüm diskleri gerektirir. Bu, sanal makinenin ve ilişkili diskinin bir zaman noktası görüntüsünü korur. Yedeklemeleri farklı bir Azure depolama hesabına kopyalamanız önerilir. Bu nedenle, bu belgenin [Azure depolama hesapları arasında diskleri kopyalama][planning-guide-5.4.2] bölümünde açıklanan yordam geçerlidir.
-Azure portal birini kullanan kapatmanın yanı sıra, burada açıklandığı gibi PowerShell veya CLı aracılığıyla da yapabilir:<https://azure.microsoft.com/documentation/articles/virtual-machines-deploy-rmtemplates-powershell/>
+The offline backup would basically require a shutdown of the VM through the Azure portal and a copy of the base VM disk plus all attached disks to the VM. This would preserve a point in time image of the VM and its associated disk. It is recommended to copy the backups into a different Azure Storage Account. Hence the procedure described in chapter [Copying disks between Azure Storage Accounts][planning-guide-5.4.2] of this document would apply.
+Besides the shutdown using the Azure portal one can also do it via Powershell or CLI as described here: <https://azure.microsoft.com/documentation/articles/virtual-machines-deploy-rmtemplates-powershell/>
 
-Bu durumun geri yüklenmesi, temel VM 'nin yanı sıra temel VM 'nin orijinal disklerini ve bağlı disklerin, kaydedilen disklerin yönetilen diskler için özgün depolama hesabına veya kaynak grubuna geri kopyalanmasını ve sonra sistemin yeniden dağıtılmasını içerir.
-Bu makalede, PowerShell 'de bu işlemin nasıl betikleştiribir bir örnek gösterilmektedir:<http://www.westerndevs.com/azure-snapshots/>
+A restore of that state would consist of deleting the base VM as well as the original disks of the base VM and mounted disks, copying back the saved disks to the original Storage Account or resource group for managed disks and then redeploying the system.
+This article shows an example how to script this process in Powershell: <http://www.westerndevs.com/azure-snapshots/>
 
-Yukarıda açıklanan şekilde bir VM yedeklemesini geri yüklemek için yeni bir SAP lisansı yüklediğinizden emin olun.
+Please make sure to install a new SAP license since restoring a VM backup as described above creates a new hardware key.
 
-### <a name="online-backup-of-an-sap-system"></a>SAP sisteminin çevrimiçi yedeklemesi
+### <a name="online-backup-of-an-sap-system"></a>Online backup of an SAP system
 
-DBMS yedeklemesi, DBMS [Kılavuzu][dbms-guide]' nda AÇıKLANDıĞı gibi DBMS 'ye özgü yöntemlerle gerçekleştirilir.
+Backup of the DBMS is performed with DBMS-specific methods as described in the [DBMS Guide][dbms-guide].
 
-SAP sisteminde bulunan diğer VM 'Ler Azure sanal makine yedekleme işlevi kullanılarak yedeklenebilir. Azure sanal makine yedeklemesi, Azure 'da tüm VM 'leri yedeklemek için standart bir yöntemdir. Azure Backup yedeklemeleri Azure 'da depolar ve VM 'nin geri yüklenmesini yeniden sağlar.
+Other VMs within the SAP system can be backed up using Azure Virtual Machine Backup functionality. Azure Virtual Machine Backup is a standard method to back up a complete VM in Azure. Azure Backup stores the backups in Azure and allows a restore of a VM again.
 
 > [!NOTE]
-> Ara 2015 itibariyle, VM yedeklemesini kullanarak SAP lisanslama için kullanılan benzersiz VM KIMLIĞINI değiştirmeyin. Bu, bir VM yedeğinden geri yükleme işleminin, geri yüklenen VM 'nin yeni bir VM olarak kabul edildiği ve önceki bir değişikliği değiştirmediği için yeni bir SAP lisans anahtarı yüklenmesini gerektirdiği anlamına gelir.
+> As of Dec 2015 using VM Backup does NOT keep the unique VM ID which is used for SAP licensing. This means that a restore from a VM backup requires installation of a new SAP license key as the restored VM is considered to be a new VM and not a replacement of the former one which was saved.
 >
 > ![Windows][Logo_Windows] Windows
 >
-> Teorik olarak, veritabanlarını çalıştıran sanal makineler tutarlı bir şekilde yedeklenebilir ve örneğin, SQL Server gibi, DBMS sisteminin Windows VSS 'yi (birim gölge kopyası hizmeti <https://msdn.microsoft.com/library/windows/desktop/bb968832(v=vs.85).aspx>) desteklemesi de desteklenir.
-> Ancak, Azure VM yedeklemeleri, veritabanlarının zaman içindeki geri yüklemelerini temel alan mümkün değildir. Bu nedenle, Azure VM yedeklemesi 'ne güvenmek yerine DBMS işlevselliğiyle veritabanlarının yedeklerini gerçekleştirme önerisi.
+> Theoretically, VMs that run databases can be backed up in a consistent manner as well if the DBMS system supports the Windows VSS (Volume Shadow Copy Service <https://msdn.microsoft.com/library/windows/desktop/bb968832(v=vs.85).aspx>) as, for example, SQL Server does.
+> However, be aware that based on Azure VM backups point-in-time restores of databases are not possible. Therefore, the recommendation is to perform backups of databases with DBMS functionality instead of relying on Azure VM Backup.
 >
-> Azure sanal makine yedeklemesi hakkında bilgi almak için Buradan başlayın: <https://docs.microsoft.com/azure/backup/backup-azure-vms>.
+> To get familiar with Azure Virtual Machine Backup start here: <https://docs.microsoft.com/azure/backup/backup-azure-vms>.
 >
-> Diğer olanaklar, bir Azure sanal makinesinde yüklü Microsoft Data Protection Manager birleşimini kullanmak ve veritabanlarını yedeklemek/geri yüklemek için Azure Backup. Daha fazla bilgiyi burada bulabilirsiniz: <https://docs.microsoft.com/azure/backup/backup-azure-dpm-introduction>.  
+> Other possibilities are to use a combination of Microsoft Data Protection Manager installed in an Azure VM and Azure Backup to backup/restore databases. More information can be found here: <https://docs.microsoft.com/azure/backup/backup-azure-dpm-introduction>.  
 >
 > ![Linux][Logo_Linux] Linux
 >
-> Linux 'ta Windows VSS ile eşdeğer değildir. Bu nedenle, yalnızca dosya ile tutarlı yedeklemeler mümkündür ancak uygulamayla tutarlı yedeklemeler mümkün değildir. SAP DBMS yedeklemesi, DBMS işlevselliği kullanılarak yapılmalıdır. SAP ile ilgili verileri içeren dosya sistemi, örneğin, burada açıklandığı gibi tar kullanılarak kaydedilebilir:<https://help.sap.com/saphelp_nw70ehp2/helpdata/en/d3/c0da3ccbb04d35b186041ba6ac301f/content.htm>
+> There is no equivalent to Windows VSS in Linux. Therefore only file-consistent backups are possible but not application-consistent backups. The SAP DBMS backup should be done using DBMS functionality. The file system which includes the SAP-related data can be saved, for example, using tar as described here: <https://help.sap.com/saphelp_nw70ehp2/helpdata/en/d3/c0da3ccbb04d35b186041ba6ac301f/content.htm>
 >
 >
 
-### <a name="azure-as-dr-site-for-production-sap-landscapes"></a>Üretim SAP lanlar için Azure as DR sitesi
+### <a name="azure-as-dr-site-for-production-sap-landscapes"></a>Azure as DR site for production SAP landscapes
 
-PARÇAAL 2014 ' den itibaren, Hyper-V, System Center ve Azure 'daki çeşitli bileşenlere yönelik uzantılar, Hyper-V ' d e bağlı olarak şirket içinde çalışan VM 'Ler için DR sitesi olarak kullanılmasını sağlar.
+Since Mid 2014, extensions to various components around Hyper-V, System Center, and Azure enable the usage of Azure as DR site for VMs running on-premises based on Hyper-V.
 
-Bu çözümün nasıl dağıtılacağını ayrıntılandıran bir blog şurada belgelenmiştir: <https://blogs.msdn.com/b/saponsqlserver/archive/2014/11/19/protecting-sap-solutions-with-azure-site-recovery.aspx>.
+A blog detailing how to deploy this solution is documented here: <https://blogs.msdn.com/b/saponsqlserver/archive/2014/11/19/protecting-sap-solutions-with-azure-site-recovery.aspx>.
 
 ## <a name="summary"></a>Özet
 
-Azure 'da SAP sistemleri için yüksek kullanılabilirliğe ilişkin önemli noktaları şunlardır:
+The key points of High Availability for SAP systems in Azure are:
 
-* Bu noktada, SAP tek hata noktası, şirket içi dağıtımlarda yapılacağından tam olarak aynı şekilde güvenli hale getirilmeyebilir. Bunun nedeni, paylaşılan disk kümelerinin üçüncü taraf yazılım kullanılmadan Azure 'da henüz derlenmemiştir.
-* DBMS katmanı için, paylaşılan disk kümesi teknolojisine bağlı olmayan DBMS işlevlerini kullanmanız gerekir. Ayrıntılar, [DBMS kılavuzunda][dbms-guide]belgelenmiştir.
-* Azure altyapısında veya konak bakımda hata etki alanları içindeki sorunların etkilerini en aza indirmek için Azure kullanılabilirlik kümelerini kullanmanız gerekir:
-  * SAP uygulama katmanı için bir kullanılabilirlik kümesi olması önerilir.
-  * SAP DBMS katmanı için ayrı bir kullanılabilirlik kümesi kullanılması önerilir.
-  * Farklı SAP sistemlerinin VM 'Leri için aynı Kullanılabilirlik kümesinin uygulanması önerilmez.
-  * Premium yönetilen disklerin kullanılması önerilir.
-* SAP DBMS katmanının yedekleme amaçları için, [DBMS kılavuzunu][dbms-guide]kontrol edin.
-* SAP Iletişim kutusu örneklerinin yedeklenmesi, basit iletişim kutusu örneklerinin yeniden dağıtılması için genellikle daha hızlı olduğundan biraz daha anlamlı hale gelir.
-* SAP sisteminin genel dizinini içeren VM 'yi yedekleme ve farklı örneklerin tüm profilleri ile birlikte, Windows yedekleme ile gerçekleştirilmesi veya örneğin Linux üzerinde ık olması gerekir. Windows Server 2008 (R2) ve Windows Server 2012 (R2) arasında farklar olduğundan, daha yeni Windows Server sürümlerini kullanarak yedeklemeyi daha kolay hale getirir. Windows Server 2012 (R2) 'i Windows Konuk işletim sistemi olarak çalıştırmayı öneririz.
+* At this point in time, the SAP single point of failure cannot be secured exactly the same way as it can be done in on-premises deployments. The reason is that Shared Disk clusters can't yet be built in Azure without the use of 3rd party software.
+* For the DBMS layer you need to use DBMS functionality that does not rely on shared disk cluster technology. Details are documented in the [DBMS Guide][dbms-guide].
+* To minimize the impact of problems within Fault Domains in the Azure infrastructure or host maintenance, you should use Azure Availability Sets:
+  * It is recommended to have one Availability Set for the SAP application layer.
+  * It is recommended to have a separate Availability Set for the SAP DBMS layer.
+  * It is NOT recommended to apply the same Availability set for VMs of different SAP systems.
+  * It is recommended to use Premium Managed Disks.
+* For Backup purposes of the SAP DBMS layer, check the [DBMS Guide][dbms-guide].
+* Backing up SAP Dialog instances makes little sense since it is usually faster to redeploy simple dialog instances.
+* Backing up the VM which contains the global directory of the SAP system and with it all the profiles of the different instances, does make sense and should be performed with Windows Backup or, for example, tar on Linux. Since there are differences between Windows Server 2008 (R2) and Windows Server 2012 (R2), which make it easier to back up using the more recent Windows Server releases, we recommend running Windows Server 2012 (R2) as Windows guest operating system.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Makaleleri okuyun:
+Read the articles:
 
-- [SAP NetWeaver için Azure sanal makineler dağıtımı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/deployment-guide)
-- [SAP iş yükü için Azure sanal makineler DBMS dağıtımına yönelik konular](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)
-- [Azure 'da altyapı yapılandırma ve işlemlerini SAP HANA] (https://docs.microsoft.com/
-- Azure/sanal makineler/iş yükleri/SAP/HANA-VM-Operations)
+- [Azure Virtual Machines deployment for SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/deployment-guide)
+- [Considerations for Azure Virtual Machines DBMS deployment for SAP workload](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)
+- [SAP HANA infrastructure configurations and operations on Azure](https://docs.microsoft.com/
+- azure/virtual-machines/workloads/sap/hana-vm-operations)

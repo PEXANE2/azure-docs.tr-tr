@@ -1,49 +1,45 @@
 ---
-title: Azure Işlevleri bağlama ifadeleri ve desenleri
-description: Ortak desenleri temel alan farklı Azure Işlevleri bağlama ifadeleri oluşturmayı öğrenin.
-services: functions
-documentationcenter: na
+title: Azure Functions bindings expressions and patterns
+description: Learn to create different Azure Functions binding expressions based on common patterns.
 author: craigshoemaker
-manager: gwallace
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: db6f4f938b1555091dc51e310d4d31f96f93200c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f00637ff2c8cf39b683056b041fe0e991276a065
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097349"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227217"
 ---
-# <a name="azure-functions-binding-expression-patterns"></a>Azure Işlevleri bağlama ifadesi desenleri
+# <a name="azure-functions-binding-expression-patterns"></a>Azure Functions binding expression patterns
 
-[Tetikleyiciler ve bağlamaların](./functions-triggers-bindings.md) en güçlü özelliklerinden biri *bağlama ifadeleri*. *Function. JSON* dosyasında ve işlev parametreleri ve kodunda, çeşitli kaynaklardaki değerlere çözüm veren ifadeleri kullanabilirsiniz.
+One of the most powerful features of [triggers and bindings](./functions-triggers-bindings.md) is *binding expressions*. In the *function.json* file and in function parameters and code, you can use expressions that resolve to values from various sources.
 
-Çoğu ifade, küme ayraçları halinde sarmalanarak tanımlanır. Örneğin, bir kuyruk tetikleyicisi işlevinde, `{queueTrigger}` kuyruk ileti metnine çözülür. Blob çıkış bağlamasının `container/{queueTrigger}` `HelloWorld` `HelloWorld` özelliği ise ve işlev bir kuyruk iletisi tarafından tetikleniyorsa adlı bir blob oluşturulur. `path`
+Most expressions are identified by wrapping them in curly braces. For example, in a queue trigger function, `{queueTrigger}` resolves to the queue message text. If the `path` property for a blob output binding is `container/{queueTrigger}` and the function is triggered by a queue message `HelloWorld`, a blob named `HelloWorld` is created.
 
-Bağlama ifadesi türleri
+Types of binding expressions
 
-* [Uygulama ayarları](#binding-expressions---app-settings)
-* [Tetikleyici dosya adı](#trigger-file-name)
-* [Verileri tetikleme](#trigger-metadata)
-* [JSON yükleri](#json-payloads)
-* [Yeni GUID](#create-guids)
-* [Geçerli tarih ve saat](#current-time)
+* [App settings](#binding-expressions---app-settings)
+* [Trigger file name](#trigger-file-name)
+* [Trigger metadata](#trigger-metadata)
+* [JSON payloads](#json-payloads)
+* [New GUID](#create-guids)
+* [Current date and time](#current-time)
 
-## <a name="binding-expressions---app-settings"></a>Bağlama ifadeleri-uygulama ayarları
+## <a name="binding-expressions---app-settings"></a>Binding expressions - app settings
 
-En iyi uygulama olarak, parolalar ve bağlantı dizeleri yapılandırma dosyaları yerine uygulama ayarları kullanılarak yönetilmelidir. Bu, bu gizli dizi erişimini kısıtlar ve Public kaynak denetimi depolarında *function. JSON* gibi dosyaları depolamayı güvenli hale getirir.
+As a best practice, secrets and connection strings should be managed using app settings, rather than configuration files. This limits access to these secrets and makes it safe to store files such as *function.json* in public source control repositories.
 
-Ayrıca, ortama göre yapılandırmayı değiştirmek istediğinizde uygulama ayarları da faydalıdır. Örneğin, bir test ortamında, farklı bir kuyruğu veya blob depolama kapsayıcısını izlemek isteyebilirsiniz.
+App settings are also useful whenever you want to change configuration based on the environment. For example, in a test environment, you may want to monitor a different queue or blob storage container.
 
-Uygulama ayarı bağlama ifadeleri, diğer bağlama ifadelerinden farklı şekilde tanımlanır: küme ayraçları yerine yüzde işaretlerine paketlenir. Örneğin, `%Environment%/newblob.txt` blob çıkış bağlama yolu `Environment` ve uygulama ayarı değeri ise `Development`, `Development` kapsayıcıda bir blob oluşturulur.
+App setting binding expressions are identified differently from other binding expressions: they are wrapped in percent signs rather than curly braces. For example if the blob output binding path is `%Environment%/newblob.txt` and the `Environment` app setting value is `Development`, a blob will be created in the `Development` container.
 
-Bir işlev yerel olarak çalıştığında, uygulama ayarı değerleri *yerel. Settings. JSON* dosyasından gelir.
+When a function is running locally, app setting values come from the *local.settings.json* file.
 
-Tetikleyiciler ve bağlamaların özelliğinin özel bir durum olduğunu ve değerleri yüzde işaretleri olmadan uygulama ayarları olarak otomatik olarak çözümleyeceğini unutmayın. `connection` 
+Note that the `connection` property of triggers and bindings is a special case and automatically resolves values as app settings, without percent signs. 
 
-Aşağıdaki örnek, üzerinde tetiklenecek sırayı tanımlamak için bir uygulama ayarı `%input-queue-name%` kullanan bir Azure kuyruk depolama tetikleyicisinin bir örneğidir.
+The following example is an Azure Queue Storage trigger that uses an app setting `%input-queue-name%` to define the queue to trigger on.
 
 ```json
 {
@@ -59,7 +55,7 @@ Aşağıdaki örnek, üzerinde tetiklenecek sırayı tanımlamak için bir uygul
 }
 ```
 
-Sınıf kitaplıklarında aynı yaklaşımı kullanabilirsiniz:
+You can use the same approach in class libraries:
 
 ```csharp
 [FunctionName("QueueTrigger")]
@@ -71,11 +67,11 @@ public static void Run(
 }
 ```
 
-## <a name="trigger-file-name"></a>Tetikleyici dosya adı
+## <a name="trigger-file-name"></a>Trigger file name
 
-Blob `path` tetikleyicisi için, diğer bağlamalarda ve işlev kodunda tetikleyici Blobun adına başvurmanızı sağlayan bir model olabilir. Bu düzende, bir işlev çağrısını tetikleyebilen Blobları belirten filtreleme ölçütleri de yer alabilir.
+The `path` for a Blob trigger can be a pattern that lets you refer to the name of the triggering blob in other bindings and function code. The pattern can also include filtering criteria that specify which blobs can trigger a function invocation.
 
-Örneğin, aşağıdaki blob tetikleyicisi bağlamasında `path` , bu, adlı `filename`bir bağlama ifadesi `sample-images/{filename}`oluşturan, olur:
+For example, in the following Blob trigger binding, the `path` pattern is `sample-images/{filename}`, which creates a binding expression named `filename`:
 
 ```json
 {
@@ -90,7 +86,7 @@ Blob `path` tetikleyicisi için, diğer bağlamalarda ve işlev kodunda tetikley
     ...
 ```
 
-Daha sonra `filename` ifade, oluşturulan Blobun adını belirtmek için bir çıkış bağlamasında kullanılabilir:
+The expression `filename` can then be used in an output binding to specify the name of the blob being created:
 
 ```json
     ...
@@ -105,7 +101,7 @@ Daha sonra `filename` ifade, oluşturulan Blobun adını belirtmek için bir ç�
 }
 ```
 
-İşlev kodu, parametre adı olarak kullanılarak `filename` aynı değere erişebilir:
+Function code has access to this same value by using `filename` as a parameter name:
 
 ```csharp
 // C# example of binding to {filename}
@@ -119,7 +115,7 @@ public static void Run(Stream image, string filename, Stream imageSmall, ILogger
 <!--TODO: add JavaScript example -->
 <!-- Blocked by bug https://github.com/Azure/Azure-Functions/issues/248 -->
 
-Bağlama ifadeleri ve desenleri kullanma özelliği, sınıf kitaplıkları içindeki öznitelikler için geçerlidir. Aşağıdaki örnekte, öznitelik Oluşturucu parametreleri önceki işlevle aynı `path` değerlerdir *. JSON* örnekleri: 
+The same ability to use binding expressions and patterns applies to attributes in class libraries. In the following example, the attribute constructor parameters are the same `path` values as the preceding *function.json* examples: 
 
 ```csharp
 [FunctionName("ResizeImage")]
@@ -135,23 +131,23 @@ public static void Run(
 
 ```
 
-Uzantı gibi dosya adının parçaları için de ifadeler oluşturabilirsiniz. Blob yol dizesinde ifadelerin ve desenlerin nasıl kullanılacağı hakkında daha fazla bilgi için bkz. [Depolama Blobu bağlama başvurusu](functions-bindings-storage-blob.md).
+You can also create expressions for parts of the file name such as the extension. For more information on how to use expressions and patterns in the Blob path string, see the [Storage blob binding reference](functions-bindings-storage-blob.md).
 
-## <a name="trigger-metadata"></a>Verileri tetikleme
+## <a name="trigger-metadata"></a>Trigger metadata
 
-Bir tetikleyici tarafından belirtilen veri yüküne ek olarak (bir işlevi tetikleyen kuyruk iletisinin içeriği gibi), birçok tetikleyici ek meta veri değerleri sağlar. Bu değerler, içinde C# giriş parametreleri olarak ve F# veya JavaScript içindeki `context.bindings` nesne üzerinde özellikler olarak kullanılabilir. 
+In addition to the data payload provided by a trigger (such as the content of the queue message that triggered a function), many triggers provide additional metadata values. These values can be used as input parameters in C# and F# or properties on the `context.bindings` object in JavaScript. 
 
-Örneğin, bir Azure kuyruk depolama tetikleyicisi aşağıdaki özellikleri destekler:
+For example, an Azure Queue storage trigger supports the following properties:
 
-* QueueTrigger-geçerli bir dize olursa ileti içeriği tetikleniyor
+* QueueTrigger - triggering message content if a valid string
 * DequeueCount
 * ExpirationTime
-* Id
-* Insertiontime
+* Kimlik
+* InsertionTime
 * NextVisibleTime
 * PopReceipt
 
-Bu meta veri değerlerine *function. JSON* dosya özelliklerinden erişilebilir. Örneğin, bir kuyruk tetikleyicisi kullandığınızı ve kuyruk iletisinin, okumak istediğiniz bir Blobun adını içerdiğini varsayalım. *Function. JSON* dosyasında, aşağıdaki örnekte gösterildiği gibi BLOB `queueTrigger` `path` özelliğinde meta veri özelliğini kullanabilirsiniz:
+These metadata values are accessible in *function.json* file properties. For example, suppose you use a queue trigger and the queue message contains the name of a blob you want to read. In the *function.json* file, you can use `queueTrigger` metadata property in the blob `path` property, as shown in the following example:
 
 ```json
   "bindings": [
@@ -171,13 +167,13 @@ Bu meta veri değerlerine *function. JSON* dosya özelliklerinden erişilebilir.
   ]
 ```
 
-Her tetikleyicinin meta veri özelliklerinin ayrıntıları, ilgili başvuru makalesinde açıklanmıştır. Bir örnek için bkz. [kuyruk tetikleyicisi meta verileri](functions-bindings-storage-queue.md#trigger---message-metadata). Belgeler, portalın **tümleştirme** sekmesinde, bağlama yapılandırma alanının altındaki **Belgeler** bölümünde de bulunur.  
+Details of metadata properties for each trigger are described in the corresponding reference article. For an example, see [queue trigger metadata](functions-bindings-storage-queue.md#trigger---message-metadata). Documentation is also available in the **Integrate** tab of the portal, in the **Documentation** section below the binding configuration area.  
 
-## <a name="json-payloads"></a>JSON yükleri
+## <a name="json-payloads"></a>JSON payloads
 
-Bir tetikleyici yükü JSON olduğunda, aynı işlevdeki ve işlev kodundaki diğer bağlamalar için yapılandırma içindeki özelliklerine başvurabilirsiniz.
+When a trigger payload is JSON, you can refer to its properties in configuration for other bindings in the same function and in function code.
 
-Aşağıdaki örnek, JSON içinde bir blob adı alan bir Web kancası işlevi için *function. JSON* dosyasını gösterir: `{"BlobName":"HelloWorld.txt"}`. Blob giriş bağlaması blobu okur ve HTTP çıkış bağlaması, HTTP yanıtında blob içeriğini döndürür. Blob giriş bağlamasının, doğrudan `BlobName` özelliğe (`"path": "strings/{BlobName}"`) başvurarak blob adını aldığından emin olun.
+The following example shows the *function.json* file for a webhook function that receives a blob name in JSON: `{"BlobName":"HelloWorld.txt"}`. A Blob input binding reads the blob, and the HTTP output binding returns the blob contents in the HTTP response. Notice that the Blob input binding gets the blob name by referring directly to the `BlobName` property (`"path": "strings/{BlobName}"`)
 
 ```json
 {
@@ -204,7 +200,7 @@ Aşağıdaki örnek, JSON içinde bir blob adı alan bir Web kancası işlevi i�
 }
 ```
 
-Bu ve C# F#' de çalışması için, aşağıdaki örnekte olduğu gibi, seri durumdan çıkarılacak alanları tanımlayan bir sınıfa ihtiyacınız vardır:
+For this to work in C# and F#, you need a class that defines the fields to be deserialized, as in the following example:
 
 ```csharp
 using System.Net;
@@ -229,7 +225,7 @@ public static HttpResponseMessage Run(HttpRequestMessage req, BlobInfo info, str
 }
 ```
 
-JavaScript 'te JSON serisini kaldırma işlemi otomatik olarak gerçekleştirilir.
+In JavaScript, JSON deserialization is automatically performed.
 
 ```javascript
 module.exports = function (context, info) {
@@ -247,9 +243,9 @@ module.exports = function (context, info) {
 }
 ```
 
-### <a name="dot-notation"></a>Nokta gösterimi
+### <a name="dot-notation"></a>Dot notation
 
-JSON yükündeki özelliklerden bazıları özellikleri olan nesnelerdir, doğrudan nokta gösterimini kullanarak bunlara başvurabilirsiniz. Örneğin, JSON 'larınızın şöyle göründüğünü varsayalım:
+If some of the properties in your JSON payload are objects with properties, you can refer to those directly by using dot notation. For example, suppose your JSON looks like this:
 
 ```json
 {
@@ -260,13 +256,13 @@ JSON yükündeki özelliklerden bazıları özellikleri olan nesnelerdir, doğru
 }
 ```
 
-`FileName` Uygulamasına`BlobName.FileName`doğrudan başvurabilirsiniz. Bu JSON biçimiyle, yukarıdaki örnekteki `path` özelliğin şöyle görünebilecekleri aşağıda verilmiştir:
+You can refer directly to `FileName` as `BlobName.FileName`. With this JSON format, here's what the `path` property in the preceding example would look like:
 
 ```json
 "path": "strings/{BlobName.FileName}.{BlobName.Extension}",
 ```
 
-' C#De, iki sınıfa ihtiyacınız vardır:
+In C#, you would need two classes:
 
 ```csharp
 public class BlobInfo
@@ -280,9 +276,9 @@ public class BlobName
 }
 ```
 
-## <a name="create-guids"></a>GUID 'Ler oluştur
+## <a name="create-guids"></a>Create GUIDs
 
-`{rand-guid}` Bağlama ifadesi bir GUID oluşturur. Bir `function.json` dosyadaki aşağıdaki blob yolu, *50710cb5-84b9-4d87-9d83-a03d6976a682. txt*gibi bir ada sahip bir blob oluşturur.
+The `{rand-guid}` binding expression creates a GUID. The following blob path in a `function.json` file creates a blob with a name like *50710cb5-84b9-4d87-9d83-a03d6976a682.txt*.
 
 ```json
 {
@@ -293,9 +289,9 @@ public class BlobName
 }
 ```
 
-## <a name="current-time"></a>Geçerli zaman
+## <a name="current-time"></a>Current time
 
-Bağlama ifadesi `DateTime` olarak `DateTime.UtcNow`çözümlenir. Bir `function.json` dosyadaki aşağıdaki blob yolu, *2018-02-16T17-59 -55z. txt*gibi bir ada sahip bir blob oluşturur.
+The binding expression `DateTime` resolves to `DateTime.UtcNow`. The following blob path in a `function.json` file creates a blob with a name like *2018-02-16T17-59-55Z.txt*.
 
 ```json
 {
@@ -305,10 +301,10 @@ Bağlama ifadesi `DateTime` olarak `DateTime.UtcNow`çözümlenir. Bir `function
   "path": "my-output-container/{DateTime}"
 }
 ```
-## <a name="binding-at-runtime"></a>Çalışma zamanında bağlama
+## <a name="binding-at-runtime"></a>Binding at runtime
 
-C# Ve diğer .NET dillerinde, *function. JSON* ve Attributes içindeki bildirime dayalı bağlamaların aksine, bir zorunlu bağlama kalıbı kullanabilirsiniz. Bağlama parametrelerinin tasarım zamanı yerine çalışma zamanında hesaplanması gerektiğinde, kesinlik temelli bağlama kullanışlıdır. Daha fazla bilgi edinmek için bkz. [ C# geliştirici başvurusu](functions-dotnet-class-library.md#binding-at-runtime) veya [ C# betik geliştirici başvurusu](functions-reference-csharp.md#binding-at-runtime).
+In C# and other .NET languages, you can use an imperative binding pattern, as opposed to the declarative bindings in *function.json* and attributes. Imperative binding is useful when binding parameters need to be computed at runtime rather than design time. To learn more, see the [C# developer reference](functions-dotnet-class-library.md#binding-at-runtime) or the [C# script developer reference](functions-reference-csharp.md#binding-at-runtime).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 > [!div class="nextstepaction"]
-> [Azure Işlevi dönüş değerini kullanma](./functions-bindings-return-value.md)
+> [Using the Azure Function return value](./functions-bindings-return-value.md)

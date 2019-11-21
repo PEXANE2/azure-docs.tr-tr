@@ -1,7 +1,7 @@
 ---
-title: 'Öğretici: tasarımcı ile makine öğrenimi modeli dağıtma'
+title: 'Tutorial: Deploy a machine learning model with the designer'
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning tasarımcısında bir tahmine dayalı analiz çözümü oluşturmayı öğrenin (Önizleme). Sürükle ve bırak modüllerini kullanarak makine öğrenimi modelini eğitme, Puanlama ve dağıtma.
+description: Learn how to build a predictive analytics solution in Azure Machine Learning designer (preview). Train, score, and deploy a machine learning model by using drag-and-drop modules.
 author: peterclu
 ms.author: peterlu
 services: machine-learning
@@ -9,112 +9,112 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 724a38cb516e5689f817e9ddeaa867b17274971b
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 50ee0ad78ae0e54071d90c8118a1989f306b59e6
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73932038"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224889"
 ---
-# <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>Öğretici: tasarımcı ile makine öğrenimi modeli dağıtma (Önizleme)
+# <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>Tutorial: Deploy a machine learning model with the designer (preview)
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
-Diğer kullanıcılara bunu kullanma şansı vermek için [öğreticinin birinci](tutorial-designer-automobile-price-train-score.md) kısmında geliştirilen tahmine dayalı modeli dağıtabilirsiniz. Birinci bölümde, modelinizi eğitilolursunuz. Şimdi, kullanıcı girişine göre yeni tahmin oluşturma zamanı. Öğreticinin bu bölümünde şunları yapmanız gerekir:
+You can deploy the predictive model developed in [part one of the tutorial](tutorial-designer-automobile-price-train-score.md) to give others a chance to use it. In part one, you trained your model. Now, it's time to generate new predictions based on user input. In this part of the tutorial, you will:
 
 > [!div class="checklist"]
-> * Gerçek zamanlı bir çıkarım işlem hattı oluşturun.
-> * Bir ınıri sınırlama kümesi oluşturun.
-> * Gerçek zamanlı bitiş noktasını dağıtın.
-> * Gerçek zamanlı uç noktayı test edin.
+> * Create a real-time inference pipeline.
+> * Create an inferencing cluster.
+> * Deploy the real-time endpoint.
+> * Test the real-time endpoint.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Tasarımcı 'da makine öğrenimi modelinin nasıl eğeceğinizi ve puanlandıralınacağını öğrenmek için [öğreticiden birinin bir kısmını](tutorial-designer-automobile-price-train-score.md) doldurun.
+Complete [part one of the tutorial](tutorial-designer-automobile-price-train-score.md) to learn how to train and score a machine learning model in the designer.
 
-## <a name="create-a-real-time-inference-pipeline"></a>Gerçek zamanlı bir çıkarım işlem hattı oluşturma
+## <a name="create-a-real-time-inference-pipeline"></a>Create a real-time inference pipeline
 
-İşlem hattınızı dağıtmak için öncelikle eğitim işlem hattını gerçek zamanlı bir çıkarım ardışık düzenine dönüştürmeniz gerekir. Bu işlem, eğitim modüllerini kaldırır ve ınırm istekleri için giriş ve çıkış ekler.
+To deploy your pipeline, you must first convert the training pipeline into a real-time inference pipeline. This process removes training modules and adds inputs and outputs for inferencing requests.
 
-### <a name="create-a-real-time-inference-pipeline"></a>Gerçek zamanlı bir çıkarım işlem hattı oluşturma
+### <a name="create-a-real-time-inference-pipeline"></a>Create a real-time inference pipeline
 
-1. İşlem hattı tuvalinin üzerinde, **gerçek zamanlı çıkarım işlem hattı** > **çıkarım işlem hattı oluştur** ' u seçin.
+1. Above the pipeline canvas, select **Create inference pipeline** > **Real-time inference pipeline**.
 
-    İşlem hatlarınız şu şekilde görünmelidir: 
+    Your pipeline should now look like this: 
 
-   ![Dağıtım için hazırlandıktan sonra işlem hattının beklenen yapılandırmasını gösteren ekran görüntüsü](./media/ui-tutorial-automobile-price-deploy/real-time-inference-pipeline.png)
+   ![Screenshot showing the expected configuration of the pipeline after preparing it for deployment](./media/tutorial-designer-automobile-price-deploy/real-time-inference-pipeline.png)
 
-    **Çıkarım işlem hattı oluştur**' u seçtiğinizde birkaç şey meydana gelir:
+    When you select **Create inference pipeline**, several things happen:
     
-    * Eğitilen model, modül paletinde bir **veri kümesi** modülü olarak depolanır. **Veri kümelerim**altında bulabilirsiniz.
-    * Model ve **bölünmüş verileri** **eğitme** gibi eğitim modülleri kaldırılır.
-    * Kaydedilen eğitilen model ardışık düzene geri eklenir.
-    * **Web hizmeti girişi** ve **Web hizmeti çıkış** modülleri eklendi. Bu modüller, Kullanıcı verilerinin modele girdiği ve verilerin döndürüldüğü yeri gösterir.
+    * The trained model is stored as a **Dataset** module in the module palette. You can find it under **My Datasets**.
+    * Training modules like **Train Model** and **Split Data** are removed.
+    * The saved trained model is added back into the pipeline.
+    * **Web Service Input** and **Web Service Output** modules are added. These modules show where user data enters the model and where data is returned.
 
     > [!NOTE]
-    > *Eğitim işlem hattı* , ardışık düzen tuvalinin en üstündeki yeni sekmenin altına kaydedilir. Ayrıca, tasarımcıda yayımlanmış bir işlem hattı olarak bulunabilir.
+    > The *training pipeline* is saved under the new tab at the top of the pipeline canvas. It can also be found as a published pipeline in the designer.
     >
 
-1. **Çalıştır**' ı seçin ve aynı işlem hedefini kullanın ve birinci bölümde kullandığınız deneyin.
+1. Select **Run**, and use the same compute target and experiment that you used in part one.
 
-1. **Puan modeli** modülünü seçin.
+1. Select the **Score Model** module.
 
-1. Özellikler bölmesinde, modelin hala çalıştığını doğrulamak için **çıktılar** > **Görselleştir** ' i seçin. Orijinal verilerin tahmini fiyat ("puanlanmış Etiketler") ile birlikte görüntülendiğini görebilirsiniz.
+1. In the properties pane, select **Outputs** > **Visualize** to verify the model is still working. You can see the original data is displayed along with the predicted price ("Scored Labels").
 
 1. **Dağıt**'ı seçin.
 
-## <a name="create-an-inferencing-cluster"></a>Bir ınıri yalıtma kümesi oluşturma
+## <a name="create-an-inferencing-cluster"></a>Create an inferencing cluster
 
-Görüntülenen iletişim kutusunda, modelinizi dağıtmak için mevcut herhangi bir Azure Kubernetes hizmeti (AKS) kümesi arasından seçim yapabilirsiniz. AKS kümeniz yoksa, bir tane oluşturmak için aşağıdaki adımları kullanın.
+In the dialog box that appears, you can select from any existing Azure Kubernetes Service (AKS) clusters to deploy your model to. If you don't have an AKS cluster, use the following steps to create one.
 
-1. **İşlem** sayfasına git görüntülenen Iletişim kutusunda **işlem** ' i seçin.
+1. Select **Compute** in the dialog box that appears to go to the **Compute** page.
 
-1. Gezinti şeridinde, **çıkarım kümeleri** >  **+ Yeni**' yi seçin.
+1. On the navigation ribbon, select **Inference Clusters** >  **+ New**.
 
-    ![Yeni çıkarım kümesi bölmesine nasıl alınacağını gösteren ekran görüntüsü](./media/ui-tutorial-automobile-price-deploy/new-inference-cluster.png)
+    ![Screenshot showing how to get to the new inference cluster pane](./media/tutorial-designer-automobile-price-deploy/new-inference-cluster.png)
 
-1. Çıkarım kümesi bölmesinde yeni bir Kubernetes hizmeti yapılandırın.
+1. In the inference cluster pane, configure a new Kubernetes Service.
 
-1. **İşlem adı**için *aks-COMPUTE* girin.
+1. Enter *aks-compute* for the **Compute name**.
     
-1. **Bölge**için kullanılabilen bir yakın bölge seçin.
+1. Select a nearby region that's available for the **Region**.
 
 1. **Oluştur**'u seçin.
 
     > [!NOTE]
-    > Yeni bir AKS hizmeti oluşturmak yaklaşık 15 dakika sürer. **Çıkarım kümeleri** sayfasında sağlama durumunu kontrol edebilirsiniz.
+    > It takes approximately 15 minutes to create a new AKS service. You can check the provisioning state on the **Inference Clusters** page.
     >
 
-## <a name="deploy-the-real-time-endpoint"></a>Gerçek zamanlı uç noktayı dağıtma
+## <a name="deploy-the-real-time-endpoint"></a>Deploy the real-time endpoint
 
-AKS hizmetiniz sağlamayı tamamladıktan sonra, dağıtımı tamamlamaya yönelik gerçek zamanlı ıntıma ardışık düzenine geri dönün.
+After your AKS service has finished provisioning, return to the real-time inferencing pipeline to complete deployment.
 
-1. Tuvalin üzerinde **Dağıt** ' ı seçin.
+1. Select **Deploy** above the canvas.
 
-1. **Yeni gerçek zamanlı uç noktayı dağıt**' ı seçin. 
+1. Select **Deploy new real-time endpoint**. 
 
-1. Oluşturduğunuz AKS kümesini seçin.
+1. Select the AKS cluster you created.
 
 1. **Dağıt**'ı seçin.
 
-    ![Yeni bir gerçek zamanlı uç noktanın nasıl ayarlanacağını gösteren ekran görüntüsü](./media/ui-tutorial-automobile-price-deploy/setup-endpoint.png)
+    ![Screenshot showing how to set up a new real-time endpoint](./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png)
 
-    Dağıtım bittikten sonra tuvalin üzerindeki başarı bildirimi görüntülenir. İşlem birkaç dakika sürebilir.
+    A success notification above the canvas appears after deployment finishes. It might take a few minutes.
 
-## <a name="test-the-real-time-endpoint"></a>Gerçek zamanlı uç noktayı test etme
+## <a name="test-the-real-time-endpoint"></a>Test the real-time endpoint
 
-Dağıtım bittikten sonra, **uç noktalar** sayfasına giderek gerçek zamanlı uç noktanızı test edebilirsiniz.
+After deployment finishes, you can test your real-time endpoint by going to the **Endpoints** page.
 
-1. **Uç noktalar** sayfasında, dağıttığınız uç noktayı seçin.
+1. On the **Endpoints** page, select the endpoint you deployed.
 
-    ![Son oluşturulan bitiş noktası vurgulanmış şekilde gerçek zamanlı uç noktalar sekmesini gösteren ekran görüntüsü](./media/ui-tutorial-automobile-price-deploy/endpoints.png)
+    ![Screenshot showing the real-time endpoints tab with the recently created endpoint highlighted](./media/tutorial-designer-automobile-price-deploy/endpoints.png)
 
-1. **Test**' i seçin.
+1. Select **Test**.
 
-1. Test verilerini el ile belirtebilir veya oto dolgulu örnek verileri kullanabilir ve **Test**' i seçebilirsiniz.
+1. You can manually input testing data or use the autofilled sample data, and select **Test**.
 
-    Portal, uç noktaya bir test isteği gönderir ve sonuçları gösterir. Giriş verileri için bir fiyat değeri oluşturulsa da tahmin değeri oluşturmak için kullanılmaz.
+    The portal submits a test request to the endpoint and shows the results. Although a price value is generated for the input data, it isn't used to generate the prediction value.
 
-    ![Fiyat vurgulanmış olarak gerçek zamanlı uç noktanın puanlanmış etiketle nasıl test leneceğini gösteren ekran görüntüsü](./media/ui-tutorial-automobile-price-deploy/test-endpoint.png)
+    ![Screenshot showing how to test the real-time endpoint with the scored label for price highlighted](./media/tutorial-designer-automobile-price-deploy/test-endpoint.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -122,7 +122,7 @@ Dağıtım bittikten sonra, **uç noktalar** sayfasına giderek gerçek zamanlı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, tasarımcıda makine öğrenimi modeli oluşturma, dağıtma ve kullanma bölümündeki temel adımları öğrendiniz. Diğer sorun türlerini çözümlemek için tasarımcıyı nasıl kullanabileceğiniz hakkında daha fazla bilgi edinmek için diğer örnek işlem hatlarımıza bakın.
+In this tutorial, you learned the key steps in how to create, deploy, and consume a machine learning model in the designer. To learn more about how you can use the designer to solve other types of problems, see our other sample pipelines.
 
 > [!div class="nextstepaction"]
-> [Kredi riski sınıflandırma örneği](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
+> [Credit risk classification sample](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)

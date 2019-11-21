@@ -1,81 +1,79 @@
 ---
-title: Azure Işlevlerinde kod güncelleştirmeleri yapmak için GitHub eylemlerini kullanma
-description: GitHub 'da Azure Işlevleri projelerini derlemek ve dağıtmak için bir iş akışı tanımlamak üzere GitHub eylemlerini nasıl kullanacağınızı öğrenin.
+title: Use GitHub Actions to make code updates in Azure Functions
+description: Learn how to use GitHub Actions to define a workflow to build and deploy Azure Functions projects in GitHub.
 author: ahmedelnably
-manager: gwallace
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: aelnably
-ms.openlocfilehash: 681d7a5eab3306a4067ea49bcf8a038e8627f60e
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 18ba99077592a7d03e19fda86bc61e5839b82b5e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091375"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226924"
 ---
-# <a name="continuous-delivery-by-using-github-action"></a>GitHub eylemini kullanarak sürekli teslim
+# <a name="continuous-delivery-by-using-github-action"></a>Continuous delivery by using GitHub Action
 
-[GitHub eylemleri](https://github.com/features/actions) , işlevlerinizi otomatik olarak derlemek ve Azure 'daki işlev uygulamasına dağıtmak için bir iş akışı tanımlamanızı sağlar. 
+[GitHub Actions](https://github.com/features/actions) lets you define a workflow to automatically build and deploy your functions code to function app in Azure. 
 
-GitHub eylemlerinde, bir [iş akışı](https://help.github.com/articles/about-github-actions#workflow) GitHub deponuzda tanımladığınız otomatikleştirilmiş bir işlemdir. Bu süreç, GitHub 'da işlevler uygulama projenizi nasıl oluşturup dağıtacağınızı gösterir. 
+In GitHub Actions, a [workflow](https://help.github.com/articles/about-github-actions#workflow) is an automated process that you define in your GitHub repository. This process tells GitHub how to build and deploy your functions app project on GitHub. 
 
-Bir iş akışı, deponuzdaki `/.github/workflows/` yolundaki bir YAML (. yıml) dosyası tarafından tanımlanır. Bu tanım, iş akışını oluşturan çeşitli adımları ve parametreleri içerir. 
+A workflow is defined by a YAML (.yml) file in the `/.github/workflows/` path in your repository. This definition contains the various steps and parameters that make up the workflow. 
 
-Azure Işlevleri iş akışı için, dosyanın üç bölümü vardır: 
+For an Azure Functions workflow, the file has three sections: 
 
 | Section | Görevler |
 | ------- | ----- |
-| **Kimlik doğrulaması** | <ol><li>Hizmet sorumlusu tanımlayın.</li><li>Yayımlama profilini indirin.</li><li>GitHub gizli dizisi oluşturun.</li></ol>|
-| **Derleme** | <ol><li>Ortamı ayarlayın.</li><li>İşlev uygulamasını oluşturun.</li></ol> |
-| **Dağıt** | <ol><li>İşlev uygulamasını dağıtın.</li></ol>|
+| **Kimlik doğrulaması** | <ol><li>Define a service principal.</li><li>Download publishing profile.</li><li>Create a GitHub secret.</li></ol>|
+| **Build** | <ol><li>Set up the environment.</li><li>Build the function app.</li></ol> |
+| **Dağıtma** | <ol><li>Deploy the function app.</li></ol>|
 
 > [!NOTE]
-> Kimlik doğrulaması için Yayımlama profili kullanmaya karar verirseniz bir hizmet sorumlusu oluşturmanız gerekmez.
+> You do not need to create a service principal if you decide to use publishing profile for authentication.
 
 ## <a name="create-a-service-principal"></a>Hizmet sorumlusu oluşturma
 
-[Azure CLI](/cli/azure/)'de [az ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) komutunu kullanarak bir [hizmet sorumlusu](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) oluşturabilirsiniz. Bu komutu Azure portal [Azure Cloud Shell](https://shell.azure.com) kullanarak veya **deneyin** düğmesini seçerek çalıştırabilirsiniz.
+You can create a [service principal](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) by using the [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) command in the [Azure CLI](/cli/azure/). You can run this command using [Azure Cloud Shell](https://shell.azure.com) in the Azure portal or by selecting the **Try it** button.
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.Web/sites/<APP_NAME> --sdk-auth
 ```
 
-Bu örnekte, kaynak içindeki yer tutucuları abonelik KIMLIĞINIZ, kaynak grubunuz ve işlev uygulaması adıyla değiştirin. Çıktı, işlev uygulamanıza erişim sağlayan rol atama kimlik bilgileridir. GitHub 'dan kimlik doğrulamak için kullanabileceğiniz bu JSON nesnesini kopyalayın.
+In this example, replace the placeholders in the resource with your subscription ID, resource group, and function app name. The output is the role assignment credentials that provides access to your function app. Copy this JSON object, which you can use to authenticate from GitHub.
 
 > [!IMPORTANT]
-> En az erişim sağlamak her zaman iyi bir uygulamadır. Bu nedenle, önceki örnekteki kapsamın tüm kaynak grubu değil, belirli işlev uygulamasıyla sınırlı olması neden olur.
+> It is always a good practice to grant minimum access. This is why the scope in the previous example is limited to the specific function app and not the entire resource group.
 
-## <a name="download-the-publishing-profile"></a>Yayımlama profilini indir
+## <a name="download-the-publishing-profile"></a>Download the publishing profile
 
-Uygulamanızın **genel bakış** sayfasına gidip **Yayımlama profili al**' a tıklayarak functionapp sitenizin yayımlama profilini indirebilirsiniz.
+You can download the publishing profile of your functionapp, by going to the **Overview** page of your app and clicking **Get publish profile**.
 
-   ![Yayımlama profilini indir](media/functions-how-to-github-actions/get-publish-profile.png)
+   ![Download publish profile](media/functions-how-to-github-actions/get-publish-profile.png)
 
-Dosyanın içeriğini kopyalayın.
+Copy the content of the file.
 
-## <a name="configure-the-github-secret"></a>GitHub gizliliğini yapılandırma
+## <a name="configure-the-github-secret"></a>Configure the GitHub secret
 
-1. [GitHub](https://github.com)'da deponuza gözatıp **Ayarlar** > **gizlilikler** ' ı seçin > **Yeni bir gizli dizi ekleyin**.
+1. In [GitHub](https://github.com), browse your repository, select **Settings** > **Secrets** > **Add a new secret**.
 
-   ![Gizli dizi Ekle](media/functions-how-to-github-actions/add-secret.png)
+   ![Add Secret](media/functions-how-to-github-actions/add-secret.png)
 
-1. **Ad** ve kopyalanmış komut **çıktısı için `AZURE_CREDENTIALS`** kullanın, daha sonra gizli dizi **Ekle**' yi seçin. Yayımlama profili kullanıyorsanız, **değerin** **adı** ve dosya içeriği için `SCM_CREDENTIALS` kullanın.
+1. Use `AZURE_CREDENTIALS` for the **Name** and the copied command output for **Value**, if you then select **Add secret**. If you are using publishing profile, use `SCM_CREDENTIALS` for the **Name** and the file content for **Value**.
 
-GitHub artık Azure 'daki işlev uygulamanıza kimlik doğrulaması yapabilir.
+GitHub can now authenticate to your function app in Azure.
 
 ## <a name="set-up-the-environment"></a>Ortamı ayarlama 
 
-Ortamı ayarlamak, yayınlama kurulum eylemlerinden biri kullanılarak yapılabilir.
+Setting up the environment can be done using one of the publish setup actions.
 
-|Dil | Kurulum eylemi |
+|Dil | Setup Action |
 |---------|---------|
 |**.NET**     | `actions/setup-dotnet` |
 |**Java**    | `actions/setup-java` |
 |**JavaScript**     | `actions/setup-node` |
 |**Python**   | `actions/setup-python` |
 
-Aşağıdaki örneklerde, desteklenen çeşitli diller için ortamı ayarlayan iş akışının bölümü gösterilmektedir:
+The following examples show the part of the workflow that sets up the environment for the various supported languages:
 
 **JavaScript**
 
@@ -131,11 +129,11 @@ Aşağıdaki örneklerde, desteklenen çeşitli diller için ortamı ayarlayan i
         java-version: '1.8.x'
 ```
 
-## <a name="build-the-function-app"></a>İşlev uygulaması oluşturma
+## <a name="build-the-function-app"></a>Build the function app
 
-Bu, dile ve Azure Işlevleri tarafından desteklenen dillere bağlı olarak, bu bölümün her dilin standart derleme adımları olması gerekir.
+This depends on the language and for languages supported by Azure Functions, this section should be the standard build steps of each language.
 
-Aşağıdaki örneklerde, desteklenen çeşitli dillerde işlev uygulamasını oluşturan iş akışının bölümü gösterilmektedir.:
+The following examples show the part of the workflow that builds the function app, in the various supported languages.:
 
 **JavaScript**
 
@@ -195,15 +193,15 @@ Aşağıdaki örneklerde, desteklenen çeşitli dillerde işlev uygulamasını o
 
 ## <a name="deploy-the-function-app"></a>İşlev uygulamasını dağıtma
 
-Kodunuzu bir işlev uygulamasına dağıtmak için `Azure/functions-action` eylemini kullanmanız gerekir. Bu eylemin iki parametresi vardır:
+To deploy your code to a function app, you will need to use the `Azure/functions-action` action. This action has two parameters:
 
 |Parametre |Açıklama  |
 |---------|---------|
-|**_uygulama adı_** | Girilmesi İşlev uygulamanızın adı. |
-|_**yuva adı**_ | Seçim Dağıtmak istediğiniz [dağıtım yuvasının](functions-deployment-slots.md) adı. Yuva, işlev uygulamanızda zaten tanımlanmış olmalıdır. |
+|**_app-name_** | (Mandatory) The name of your function app. |
+|_**slot-name**_ | (Optional) The name of the [deployment slot](functions-deployment-slots.md) you want to deploy to. The slot must already be defined in your function app. |
 
 
-Aşağıdaki örnek `functions-action`1 sürümünü kullanır:
+The following example uses version 1 of the `functions-action`:
 
 ```yaml
     - name: 'Run Azure Functions Action'
@@ -215,7 +213,7 @@ Aşağıdaki örnek `functions-action`1 sürümünü kullanır:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Tüm iş akışı. YAML 'yi görüntülemek için, ad içinde `functionapp` olan [Azure GitHub eylemleri iş akışı örnekleri](https://aka.ms/functions-actions-samples) deposunda bulunan dosyalardan birine bakın. Bu örnekleri, iş akışınız için bir başlangıç noktası olarak kullanabilirsiniz.
+To view a complete workflow .yaml, see one of the files in the [Azure GitHub Actions workflow samples repo](https://aka.ms/functions-actions-samples) that have `functionapp` in the name. You can use these samples a starting point for your workflow.
 
 > [!div class="nextstepaction"]
-> [GitHub eylemleri hakkında daha fazla bilgi edinin](https://help.github.com/en/articles/about-github-actions)
+> [Learn more about GitHub Actions](https://help.github.com/en/articles/about-github-actions)

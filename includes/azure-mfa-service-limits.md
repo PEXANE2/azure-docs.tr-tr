@@ -1,24 +1,24 @@
 ---
 author: rothja
-ms.service: billing
+ms.service: cost-management-billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: a8ee7cc28985d905a0d158745145ce7ffaa5ba6e
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: df237cdbb8944928641f2dbea2117bbef7ba9165
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67188777"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224572"
 ---
-| Resource | Varsayılan limit | Üst sınır |
+| Kaynak | Varsayılan limit | Üst sınır |
 | --- | --- | --- |
-| Abonelik başına en fazla güvenilir IP adresi veya</a> Aralık sayısı |0 |50 |
-| Cihazlarımı, gün sayısını anımsa |14 |60 |
-| En fazla uygulama parolası sayısı |0 |Sınır yok |
-| MFA çağrısı sırasında **X** denemeye izin ver |1\. |99 |
-| İki yönlü kısa mesaj zaman aşımı saniyesi |60 |600 |
-| Saniye cinsinden varsayılan bir kerelik atlama |300 |1\.800 |
-| Art arda **X** MFA reddi sonrasında kullanıcı hesabını kilitle |Ayarlanmadı |99 |
-| **X** dakika sonra hesap kilitleme sayacını sıfırla |Ayarlanmadı |9\.999 |
-| **X** dakika sonra hesabın kilidini aç |Ayarlanmadı |9\.999 |
+| Maximum number of trusted IP addresses or ranges</a> per subscription |0 |50 |
+| Remember my devices, number of days |14 |60 |
+| Maximum number of app passwords |0 |Sınırsız |
+| MFA çağrısı sırasında **X** denemeye izin ver |1 |99 |
+| Two-way text message timeout seconds |60 |600 |
+| Saniye cinsinden varsayılan bir kerelik atlama |300 |1,800 |
+| Art arda **X** MFA reddi sonrasında kullanıcı hesabını kilitle |Not set |99 |
+| **X** dakika sonra hesap kilitleme sayacını sıfırla |Not set |9,999 |
+| **X** dakika sonra hesabın kilidini aç |Not set |9,999 |

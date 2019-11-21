@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Köşeli Azure Active Directory çoklu oturum açma (SSO) ile tümleştirme Microsoft Docs'
-description: Azure Active Directory ve sağ kenar için çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
+title: 'Tutorial: Azure Active Directory Single sign-on (SSO) integration with Cornerstone OnDemand | Microsoft Docs'
+description: Learn how to configure single sign-on between Azure Active Directory and Cornerstone OnDemand.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,145 +16,145 @@ ms.topic: tutorial
 ms.date: 08/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e25b1da7a91dc52aed680bc587dfc20aaee876c4
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 363b5b2dc2891166f779c98c6de1487bc45047a3
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989565"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227627"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cornerstone-ondemand"></a>Öğretici: Sağ Stone OnDemand ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cornerstone-ondemand"></a>Tutorial: Azure Active Directory Single sign-on (SSO) integration with Cornerstone OnDemand
 
-Bu öğreticide, Azure Active Directory (Azure AD) ile bir temel taş OnDemand nasıl tümleştirileceğini öğreneceksiniz. Azure AD ile temel taş OnDemand tümleştirdiğinizde şunları yapabilirsiniz:
+In this tutorial, you'll learn how to integrate Cornerstone OnDemand with Azure Active Directory (Azure AD). When you integrate Cornerstone OnDemand with Azure AD, you can:
 
-* Azure AD 'de, köşeli-aşağı taşı OnDemand erişimi olan denetim.
-* Kullanıcılarınızın Azure AD hesapları ile temel bir Ondemandstone için otomatik olarak oturum açmalarına olanak sağlayın.
-* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
+* Control in Azure AD who has access to Cornerstone OnDemand.
+* Enable your users to be automatically signed-in to Cornerstone OnDemand with their Azure AD accounts.
+* Manage your accounts in one central location - the Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+To learn more about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Başlamak için aşağıdaki öğeler gereklidir:
+To get started, you need the following items:
 
-* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* Temel taş OnDemand çoklu oturum açma (SSO) etkin abonelik.
+* An Azure AD subscription. If you don't have a subscription, you can get a [free account](https://azure.microsoft.com/free/).
+* Cornerstone OnDemand single sign-on (SSO) enabled subscription.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
+In this tutorial, you configure and test Azure AD SSO in a test environment.
 
-* Temel taş OnDemand **SP** tarafından başlatılan SSO 'yu destekler
-* Temel taş OnDemand [Otomatik Kullanıcı sağlamayı](cornerstone-ondemand-provisioning-tutorial.md) destekler
+* Cornerstone OnDemand supports **SP** initiated SSO
+* Cornerstone OnDemand supports [Automated user provisioning](cornerstone-ondemand-provisioning-tutorial.md)
 
-## <a name="adding-cornerstone-ondemand-from-the-gallery"></a>Galeriden temel taş OnDemand ekleme
+## <a name="adding-cornerstone-ondemand-from-the-gallery"></a>Adding Cornerstone OnDemand from the gallery
 
-Temel taş OnDemand ' i Azure AD ile tümleştirmeyi yapılandırmak için, Galeriden temel taş OnDemand ' i yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
+To configure the integration of Cornerstone OnDemand into Azure AD, you need to add Cornerstone OnDemand from the gallery to your list of managed SaaS apps.
 
 1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
-1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
-1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
-1. **Galeriden Ekle** bölümünde, arama kutusuna **köşeli kenar Stone** ' i yazın.
-1. Sonuçlar panelinden temel **taş OnDemand** öğesini seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. On the left navigation pane, select the **Azure Active Directory** service.
+1. Navigate to **Enterprise Applications** and then select **All Applications**.
+1. To add new application, select **New application**.
+1. In the **Add from the gallery** section, type **Cornerstone OnDemand** in the search box.
+1. Select **Cornerstone OnDemand** from results panel and then add the app. Wait a few seconds while the app is added to your tenant.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-cornerstone-ondemand"></a>Azure AD 'ye yönelik çoklu oturum açmayı, temel taş OnDemand için yapılandırın ve test edin
+## <a name="configure-and-test-azure-ad-single-sign-on-for-cornerstone-ondemand"></a>Configure and test Azure AD single sign-on for Cornerstone OnDemand
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu, köşeli-kenar ve test bir testle ve test SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+Configure and test Azure AD SSO with Cornerstone OnDemand using a test user called **B.Simon**. For SSO to work, you need to establish a link relationship between an Azure AD user and the related user in Cornerstone OnDemand.
 
-Azure AD SSO 'yu temel bir Ondemandile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+To configure and test Azure AD SSO with Cornerstone OnDemand, complete the following building blocks:
 
-1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
-    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için, **[köşeli-kenar ve ONDEMANDSSO 'Yu yapılandırın](#configure-cornerstone-ondemand-sso)** .
-    1. Kullanıcı Azure AD gösterimi ile bağlantılı olan temel taş OnDemand ' de en çok B. Simon 'a sahip olmak için bir **[ılstone OnDemand test kullanıcısı oluşturun](#create-cornerstone-ondemand-test-user)** .
-3. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+1. **[Configure Azure AD SSO](#configure-azure-ad-sso)** - to enable your users to use this feature.
+    1. **[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with B.Simon.
+    1. **[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable B.Simon to use Azure AD single sign-on.
+2. **[Configure Cornerstone OnDemand SSO](#configure-cornerstone-ondemand-sso)** - to configure the Single Sign-On settings on application side.
+    1. **[Create Cornerstone OnDemand test user](#create-cornerstone-ondemand-test-user)** - to have a counterpart of B.Simon in Cornerstone OnDemand that is linked to the Azure AD representation of user.
+3. **[Test SSO](#test-sso)** - to verify whether the configuration works.
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
+## <a name="configure-azure-ad-sso"></a>Configure Azure AD SSO
 
-Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
+Follow these steps to enable Azure AD SSO in the Azure portal.
 
-1. [Azure Portal](https://portal.azure.com/), temel **taş OnDemand** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
-1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. In the [Azure portal](https://portal.azure.com/), on the **Cornerstone OnDemand** application integration page, find the **Manage** section and select **Single sign-on**.
+1. On the **Select a Single sign-on method** page, select **SAML**.
+1. On the **Set up Single Sign-On with SAML** page, click the edit/pen icon for **Basic SAML Configuration** to edit the settings.
 
-   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+   ![Edit Basic SAML Configuration](common/edit-urls.png)
 
-1. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
+1. On the **Basic SAML Configuration** section, perform the following steps:
 
-    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<company>.csod.com`
+    a. In the **Sign on URL** text box, type a URL using the following pattern: `https://<company>.csod.com`
 
-    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<company>.csod.com`
+    b. In the **Identifier (Entity ID)** text box, type a URL using the following pattern: `https://<company>.csod.com`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için, bir temel bağlantı iletişim [ekibi istemci destek ekibine](mailto:moreinfo@csod.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > These values are not real. Update these values with the actual Sign on URL and Identifier. Contact [Cornerstone OnDemand Client support team](mailto:moreinfo@csod.com) to get these values. You can also refer to the patterns shown in the **Basic SAML Configuration** section in the Azure portal.
 
-4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+4. On the **Set up Single Sign-On with SAML** page, in the **SAML Signing Certificate** section,  find **Certificate (Base64)** and select **Download** to download the certificate and save it on your computer.
 
-    ![Sertifika indirme bağlantısı](common/certificatebase64.png)
+    ![The Certificate download link](common/certificatebase64.png)
 
-6. Temel **pul ayarlama OnDemand** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
+6. On the **Set up Cornerstone OnDemand** section, copy the appropriate URL(s) based on your requirement.
 
-    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
+    ![Copy configuration URLs](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Create an Azure AD test user
 
-Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
+In this section, you'll create a test user in the Azure portal called B.Simon.
 
-1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Seçin **yeni kullanıcı** ekranın üstünde.
-1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+1. From the left pane in the Azure portal, select **Azure Active Directory**, select **Users**, and then select **All users**.
+1. Select **New user** at the top of the screen.
+1. In the **User** properties, follow these steps:
     1. **Ad** alanına `B.Simon` girin.  
-    1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin: `B.Simon@contoso.com`.
-    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-    1.           **Oluştur**'a tıklayın.
+    1. In the **User name** field, enter the username@companydomain.extension. Örneğin, `B.Simon@contoso.com`.
+    1. Select the **Show password** check box, and then write down the value that's displayed in the **Password** box.
+    1. **Oluştur**’a tıklayın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Assign the Azure AD test user
 
-Bu bölümde, Azure çoklu oturum açma 'yı kullanarak, bir alt taş OnDemand erişimi vererek B. Simon 'u etkinleştireceksiniz.
+In this section, you'll enable B.Simon to use Azure single sign-on by granting access to Cornerstone OnDemand.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde, **köşeli kenar taşı**' yı seçin.
-1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. In the Azure portal, select **Enterprise Applications**, and then select **All applications**.
+1. In the applications list, select **Cornerstone OnDemand**.
+1. In the app's overview page, find the **Manage** section and select **Users and groups**.
 
-    !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+    ![The "Users and groups" link](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. Select **Add user**, then select **Users and groups** in the **Add Assignment** dialog.
 
-    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
+    ![The Add User link](common/add-assign-user.png)
 
-1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+1. In the **Users and groups** dialog, select **B.Simon** from the Users list, then click the **Select** button at the bottom of the screen.
+1. If you're expecting any role value in the SAML assertion, in the **Select Role** dialog, select the appropriate role for the user from the list and then click the **Select** button at the bottom of the screen.
+1. In the **Add Assignment** dialog, click the **Assign** button.
 
-## <a name="configure-cornerstone-ondemand-sso"></a>Köşeli kenar bir OnDemand SSO 'yu yapılandırma
+## <a name="configure-cornerstone-ondemand-sso"></a>Configure Cornerstone OnDemand SSO
 
-**Köşeli** çift yönlü bir şekilde çoklu oturum açma 'yı yapılandırmak için, indirilen **sertifikayı (Base64)** ve Azure Portal ' den temel alınan URL 'leri temel [Stone OnDemand destek ekibine](mailto:moreinfo@csod.com)göndermeniz gerekir. Bunlar, her iki kenarı da düzgün ayarlandığından SAML SSO bağlantı sağlamak için bu ayarı ayarlayın.
+To configure single sign-on on **Cornerstone OnDemand** side, you need to send the downloaded **Certificate (Base64)** and appropriate copied URLs from Azure portal to [Cornerstone OnDemand support team](mailto:moreinfo@csod.com). They set this setting to have the SAML SSO connection set properly on both sides.
 
-### <a name="create-cornerstone-ondemand-test-user"></a>Temel taş OnDemand test kullanıcısı oluşturma
+### <a name="create-cornerstone-ondemand-test-user"></a>Create Cornerstone OnDemand test user
 
-Bu bölümün amacı, bir alt taş OnDemand B. Simon adlı bir Kullanıcı oluşturmaktır. Temel taş OnDemand, varsayılan olarak etkinleştirilen Otomatik Kullanıcı sağlamasını destekler. Otomatik Kullanıcı sağlamayı yapılandırma hakkında [](https://docs.microsoft.com/azure/active-directory/saas-apps/cornerstone-ondemand-provisioning-tutorial) daha fazla ayrıntı bulabilirsiniz.
+The objective of this section is to create a user called B.Simon in Cornerstone OnDemand. Cornerstone OnDemand supports automatic user provisioning, which is by default enabled. You can find more details [here](https://docs.microsoft.com/azure/active-directory/saas-apps/cornerstone-ondemand-provisioning-tutorial) on how to configure automatic user provisioning.
 
-**Kullanıcı el ile oluşturmanız gerekiyorsa aşağıdaki adımları gerçekleştirin:**
+**If you need to create user manually, perform following steps:**
 
-Kullanıcı sağlamayı yapılandırmak için bilgileri gönderin (örn.: Ad, e-posta) temel bir Azure AD kullanıcısı ile ilgili olarak, temel [taş OnDemand destek ekibine](mailto:moreinfo@csod.com)temin edin.
+To configure user provisioning, send the information (e.g.: Name, Email) about the Azure AD user you want to provision to the [Cornerstone OnDemand support team](mailto:moreinfo@csod.com).
 
 >[!NOTE]
->AAD Kullanıcı hesaplarını sağlamak için, temel bir alt taş OnDemand Kullanıcı hesabı oluşturma araçlarını veya bir alt taş OnDemand tarafından sunulan API 'Leri kullanabilirsiniz.
+>You can use any other Cornerstone OnDemand user account creation tools or APIs provided by Cornerstone OnDemand to provision Azure AD user accounts.
 
-## <a name="test-sso"></a>Test SSO 'SU 
+## <a name="test-sso"></a>Test SSO 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+In this section, you test your Azure AD single sign-on configuration using the Access Panel.
 
-Erişim panelinde köşeli kenar kutucuğu OnDemand kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız temel kutucuk OnDemand ' de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+When you click the Cornerstone OnDemand tile in the Access Panel, you should be automatically signed in to the Cornerstone OnDemand for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is conditional access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Azure AD ile temel bir Ondemandstone deneyin](https://aad.portal.azure.com)
+- [Try Cornerstone OnDemand with Azure AD](https://aad.portal.azure.com)

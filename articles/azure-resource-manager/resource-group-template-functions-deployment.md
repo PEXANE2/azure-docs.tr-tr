@@ -1,35 +1,35 @@
 ---
-title: Şablon işlevleri-dağıtım
-description: Dağıtım bilgilerini almak için bir Azure Resource Manager şablonunda kullanılacak işlevleri açıklar.
+title: Template functions - deployment
+description: Describes the functions to use in an Azure Resource Manager template to retrieve deployment information.
 ms.topic: conceptual
-ms.date: 09/13/2019
-ms.openlocfilehash: 17caf78fb77e330685bb45ab03aaeed611900ba0
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.date: 11/19/2019
+ms.openlocfilehash: a255cea128241465788f21013eb0522a29f5bd9e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149645"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230229"
 ---
-# <a name="deployment-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager şablonlar için dağıtım işlevleri 
+# <a name="deployment-functions-for-azure-resource-manager-templates"></a>Deployment functions for Azure Resource Manager templates 
 
-Kaynak Yöneticisi, şablon bölümlerinden ve dağıtımla ilgili değerlerin değerlerini almak için aşağıdaki işlevleri sağlar:
+Resource Manager provides the following functions for getting values from sections of the template and values related to the deployment:
 
-* [dağıtmak](#deployment)
+* [deployment](#deployment)
+* [environment](#environment)
 * [parametreler](#parameters)
 * [variables](#variables)
 
-Kaynaklardan, kaynak gruplarından veya aboneliklerden değerler almak için bkz. [kaynak işlevleri](resource-group-template-functions-resource.md).
-
-<a id="deployment" />
+To get values from resources, resource groups, or subscriptions, see [Resource functions](resource-group-template-functions-resource.md).
 
 ## <a name="deployment"></a>dağıtım
+
 `deployment()`
 
-Geçerli dağıtım işlemiyle ilgili bilgileri döndürür.
+Returns information about the current deployment operation.
 
-### <a name="return-value"></a>Dönüş değeri
+### <a name="return-value"></a>Return value
 
-Bu işlev, dağıtım sırasında geçirilen nesneyi döndürür. Döndürülen nesnedeki özellikler, dağıtım nesnesinin bir bağlantı olarak mı yoksa satır içi nesne olarak mı geçiriltiğine göre farklılık gösterir. Dağıtım nesnesi, bir yerel dosyayı işaret etmek için Azure PowerShell ' de **-TemplateFile** parametresinin kullanıldığı durumlarda olduğu gibi, döndürülen nesne aşağıdaki biçimdedir:
+This function returns the object that is passed during deployment. The properties in the returned object differ based on whether the deployment object is passed as a link or as an in-line object. When the deployment object is passed in-line, such as when using the **-TemplateFile** parameter in Azure PowerShell to point to a local file, the returned object has the following format:
 
 ```json
 {
@@ -51,7 +51,7 @@ Bu işlev, dağıtım sırasında geçirilen nesneyi döndürür. Döndürülen 
 }
 ```
 
-Nesne bir bağlantı olarak geçirildiğinde, örneğin uzak bir nesneyi işaret etmek için **-templateuri** parametresi kullanılırken, nesne aşağıdaki biçimde döndürülür: 
+When the object is passed as a link, such as when using the **-TemplateUri** parameter to point to a remote object, the object is returned in the following format: 
 
 ```json
 {
@@ -75,11 +75,11 @@ Nesne bir bağlantı olarak geçirildiğinde, örneğin uzak bir nesneyi işaret
 }
 ```
 
-Bir [Azure aboneliğine dağıtırken](deploy-to-subscription.md), bir kaynak grubu yerine, dönüş nesnesi bir `location` özelliği içerir. Location özelliği, yerel bir şablon ya da bir dış şablon dağıtıldığında dahil edilir.
+When you [deploy to an Azure subscription](deploy-to-subscription.md), instead of a resource group, the return object includes a `location` property. The location property is included when deploying either a local template or an external template.
 
 ### <a name="remarks"></a>Açıklamalar
 
-Üst şablonun URI 'sini temel alan başka bir şablona bağlamak için Deployment () kullanabilirsiniz.
+You can use deployment() to link to another template based on the URI of the parent template.
 
 ```json
 "variables": {  
@@ -87,11 +87,11 @@ Bir [Azure aboneliğine dağıtırken](deploy-to-subscription.md), bir kaynak gr
 }
 ```  
 
-Portalın dağıtım geçmişinden bir şablonu yeniden dağıtırsanız, şablon yerel bir dosya olarak dağıtılır. Dağıtım işlevinde `templateLink` özelliği döndürülmedi. Şablonunuz başka bir şablonun bağlantısını oluşturmak için `templateLink` kullanıyorsa, yeniden dağıtmak için portalını kullanmayın. Bunun yerine, şablonu ilk olarak dağıtmak için kullandığınız komutları kullanın.
+If you redeploy a template from the deployment history in the portal, the template is deployed as a local file. The `templateLink` property isn't returned in the deployment function. If your template relies on `templateLink` to construct a link to another template, don't use the portal to redeploy. Instead, use the commands you used to originally deploy the template.
 
 ### <a name="example"></a>Örnek
 
-Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deployment.json) dağıtım nesnesini döndürür:
+The following [example template](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deployment.json) returns the deployment object:
 
 ```json
 {
@@ -107,7 +107,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte aşağıdaki nesne döndürülür:
+The preceding example returns the following object:
 
 ```json
 {
@@ -131,28 +131,125 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Dağıtım işlevini kullanan bir abonelik düzeyi şablon için bkz. [abonelik dağıtım işlevi](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json). `az deployment create` ya da `New-AzDeployment` komutlarıyla dağıtılır.
+For a subscription-level template that uses the deployment function, see [subscription deployment function](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json). It's deployed with either `az deployment create` or `New-AzDeployment` commands.
 
-<a id="parameters" />
+## <a name="environment"></a>environment
+
+`environment()`
+
+Returns information about the Azure environment used for deployment.
+
+### <a name="return-value"></a>Return value
+
+This function returns properties for the current Azure environment.
+
+```json
+{
+  "name": "",
+  "gallery": "",
+  "graph": "",
+  "portal": "",
+  "graphAudience": "",
+  "activeDirectoryDataLake": "",
+  "batch": "",
+  "media": "",
+  "sqlManagement": "",
+  "vmImageAliasDoc": "",
+  "resourceManager": "",
+  "authentication": {
+    "loginEndpoint": "",
+    "audiences": [
+      "",
+      ""
+    ],
+    "tenant": "",
+    "identityProvider": ""
+  },
+  "suffixes": {
+    "acrLoginServer": "",
+    "azureDatalakeAnalyticsCatalogAndJob": "",
+    "azureDatalakeStoreFileSystem": "",
+    "azureFrontDoorEndpointSuffix": "",
+    "keyvaultDns": "",
+    "sqlServerHostname": "",
+    "storage": ""
+  }
+}
+```
+
+### <a name="example"></a>Örnek
+
+The following example template returns the environment object.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [],
+    "outputs": {
+        "environmentOutput": {
+            "value": "[environment()]",
+            "type" : "object"
+        }
+    }
+}
+```
+
+The preceding example returns the following object when deployed to global Azure:
+
+```json
+{
+  "name": "AzureCloud",
+  "gallery": "https://gallery.azure.com/",
+  "graph": "https://graph.windows.net/",
+  "portal": "https://portal.azure.com",
+  "graphAudience": "https://graph.windows.net/",
+  "activeDirectoryDataLake": "https://datalake.azure.net/",
+  "batch": "https://batch.core.windows.net/",
+  "media": "https://rest.media.azure.net",
+  "sqlManagement": "https://management.core.windows.net:8443/",
+  "vmImageAliasDoc": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json",
+  "resourceManager": "https://management.azure.com/",
+  "authentication": {
+    "loginEndpoint": "https://login.windows.net/",
+    "audiences": [
+      "https://management.core.windows.net/",
+      "https://management.azure.com/"
+    ],
+    "tenant": "common",
+    "identityProvider": "AAD"
+  },
+  "suffixes": {
+    "acrLoginServer": ".azurecr.io",
+    "azureDatalakeAnalyticsCatalogAndJob": "azuredatalakeanalytics.net",
+    "azureDatalakeStoreFileSystem": "azuredatalakestore.net",
+    "azureFrontDoorEndpointSuffix": "azurefd.net",
+    "keyvaultDns": ".vault.azure.net",
+    "sqlServerHostname": ".database.windows.net",
+    "storage": "core.windows.net"
+  }
+}
+```
 
 ## <a name="parameters"></a>parametreler
+
 `parameters(parameterName)`
 
-Bir parametre değeri döndürür. Belirtilen parametre adı, şablonun parametreler bölümünde tanımlanmalıdır.
+Returns a parameter value. The specified parameter name must be defined in the parameters section of the template.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gereklidir | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| parameterName |Yes |string |Döndürülecek parametrenin adı. |
+| parameterName |Yes |string |The name of the parameter to return. |
 
-### <a name="return-value"></a>Dönüş değeri
+### <a name="return-value"></a>Return value
 
-Belirtilen parametrenin değeri.
+The value of the specified parameter.
 
 ### <a name="remarks"></a>Açıklamalar
 
-Genellikle, kaynak değerlerini ayarlamak için parametreleri kullanırsınız. Aşağıdaki örnek, Web sitesinin adını dağıtım sırasında geçirilen parametre değerine ayarlar.
+Typically, you use parameters to set resource values. The following example sets the name of web site to the parameter value passed in during deployment.
 
 ```json
 "parameters": { 
@@ -172,7 +269,7 @@ Genellikle, kaynak değerlerini ayarlamak için parametreleri kullanırsınız. 
 
 ### <a name="example"></a>Örnek
 
-Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/parameters.json) , Parameters işlevinin Basitleştirilmiş kullanımını gösterir.
+The following [example template](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/parameters.json) shows a simplified use of the parameters function.
 
 ```json
 {
@@ -227,38 +324,37 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+The output from the preceding example with the default values is:
 
-| Ad | Tür | Değer |
+| Adı | Tür | Değer |
 | ---- | ---- | ----- |
-| stringOutput | Dize | Seçenek 1 |
-| ıntoutput | Int | 1 |
-| objectOutput | Nesne | {"One": "a", "iki": "b"} |
+| stringOutput | Dize | option 1 |
+| intOutput | Int | 1 |
+| objectOutput | Nesne | {"one": "a", "two": "b"} |
 | arrayOutput | Dizi | [1, 2, 3] |
-| Çapraz Soutput | Dize | Seçenek 1 |
+| crossOutput | Dize | option 1 |
 
-Parametreleri kullanma hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonundaki parametreler](template-parameters.md).
+For more information about using parameters, see [Parameters in Azure Resource Manager template](template-parameters.md).
 
-<a id="variables" />
+## <a name="variables"></a>variables
 
-## <a name="variables"></a>değişkenlerinin
 `variables(variableName)`
 
-Değişkenin değerini döndürür. Belirtilen değişken adının şablonun değişkenler bölümünde tanımlanması gerekir.
+Returns the value of variable. The specified variable name must be defined in the variables section of the template.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gereklidir | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| variableName |Yes |Dize |Döndürülecek değişkenin adı. |
+| variableName |Yes |Dize |The name of the variable to return. |
 
-### <a name="return-value"></a>Dönüş değeri
+### <a name="return-value"></a>Return value
 
-Belirtilen değişkenin değeri.
+The value of the specified variable.
 
 ### <a name="remarks"></a>Açıklamalar
 
-Genellikle, karmaşık değerleri yalnızca bir kez oluşturarak şablonunuzu basitleştirmek için değişkenler kullanırsınız. Aşağıdaki örnek, bir depolama hesabı için benzersiz bir ad oluşturur.
+Typically, you use variables to simplify your template by constructing complex values only once. The following example constructs a unique name for a storage account.
 
 ```json
 "variables": {
@@ -282,7 +378,7 @@ Genellikle, karmaşık değerleri yalnızca bir kez oluşturarak şablonunuzu ba
 
 ### <a name="example"></a>Örnek
 
-Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/variables.json) farklı değişken değerleri döndürüyor.
+The following [example template](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/variables.json) returns different variable values.
 
 ```json
 {
@@ -320,20 +416,20 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+The output from the preceding example with the default values is:
 
-| Ad | Tür | Değer |
+| Adı | Tür | Değer |
 | ---- | ---- | ----- |
-| exampleOutput1 | Dize | myVariable & lt |
+| exampleOutput1 | Dize | myVariable |
 | exampleOutput2 | Dizi | [1, 2, 3, 4] |
-| exampleOutput3 | Dize | myVariable & lt |
-| exampleOutput4 |  Nesne | {"Property1": "değer1", "Property2": "değer2"} |
+| exampleOutput3 | Dize | myVariable |
+| exampleOutput4 |  Nesne | {"property1": "value1", "property2": "value2"} |
 
-Değişkenleri kullanma hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonundaki değişkenler](template-variables.md).
+For more information about using variables, see [Variables in Azure Resource Manager template](template-variables.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Bir Azure Resource Manager şablonu olarak bölümlerde açıklaması için bkz: [Azure Resource Manager şablonları yazma](resource-group-authoring-templates.md).
-* Çeşitli şablonları birleştirmek için bkz. [bağlantılı şablonları Azure Resource Manager kullanma](resource-group-linked-templates.md).
-* Belirtilen sayıda yineleme için bir kaynak türünü oluştururken bkz [Azure Resource Manager'da kaynakları birden çok örneğini oluşturma](resource-group-create-multiple.md).
-* Oluşturduğunuz bir şablonu dağıtmayı öğrenmek için bkz [Azure Resource Manager şablonu ile uygulama dağıtma](resource-group-template-deploy.md).
+* For a description of the sections in an Azure Resource Manager template, see [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md).
+* To merge several templates, see [Using linked templates with Azure Resource Manager](resource-group-linked-templates.md).
+* To iterate a specified number of times when creating a type of resource, see [Create multiple instances of resources in Azure Resource Manager](resource-group-create-multiple.md).
+* To see how to deploy the template you've created, see [Deploy an application with Azure Resource Manager template](resource-group-template-deploy.md).
 

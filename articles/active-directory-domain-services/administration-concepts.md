@@ -1,6 +1,6 @@
 ---
-title: Azure AD Domain Services için yönetim kavramları | Microsoft Docs
-description: Azure Active Directory Domain Services yönetilen bir etki alanını ve Kullanıcı hesaplarının ve parolaların davranışını yönetme hakkında bilgi edinin
+title: Management concepts for Azure AD Domain Services | Microsoft Docs
+description: Learn about how to administer an Azure Active Directory Domain Services managed domain and the behavior of user accounts and passwords
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -10,58 +10,70 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: iainfou
-ms.openlocfilehash: b82927efa9054e71379d01993d1669527bc71402
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: a5a08bddb53afe8f698b0d96621cc116ee866070
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249431"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74209166"
 ---
-# <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 'de Kullanıcı hesapları, parolalar ve yönetim için yönetim kavramları
+# <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Management concepts for user accounts, passwords, and administration in Azure Active Directory Domain Services
 
-Azure Active Directory Domain Services (AD DS) yönetilen bir etki alanı oluşturup çalıştırdığınızda, bazı durumlarda geleneksel bir şirket içi AD DS ortamıyla karşılaştırıldığında bazı farklılıklar vardır. Azure AD DS 'de otomatik olarak yönetilen bir etki alanı olarak aynı yönetim araçlarını kullanırsınız, ancak etki alanı denetleyicilerine (DC) doğrudan erişemezsiniz. Ayrıca, Kullanıcı hesabı oluşturma kaynağına bağlı olarak parola ilkeleri ve parola karmalarının davranışında bazı farklılıklar da vardır.
+When you create and run an Azure Active Directory Domain Services (AD DS) managed domain, there are some differences in behavior compared to a traditional on-premises AD DS environment. You use the same administrative tools in Azure AD DS as a self-managed domain, but you can't directly access the domain controllers (DC). There's also some differences in behavior for password policies and password hashes depending on the source of the user account creation.
 
-Bu kavramsal makalede, bir Azure AD DS yönetilen etki alanını ve bunların oluşturulma şekline bağlı olarak Kullanıcı hesaplarının farklı davranışlarını yönetme hakkında bilgi yer alır.
+This conceptual article details how to administer an Azure AD DS managed domain and the different behavior of user accounts depending on the way they're created.
 
-## <a name="domain-management"></a>Etki alanı yönetimi
+## <a name="domain-management"></a>Domain management
 
-Azure AD DS 'de, kullanıcılar ve gruplar, kimlik bilgileri ve ilkeler gibi tüm kaynakları içeren etki alanı denetleyicileri (DC 'Ler), yönetilen hizmetin bir parçasıdır. Yedeklilik için, Azure AD DS yönetilen bir etki alanının parçası olarak iki DC oluşturulur. Yönetim görevlerini gerçekleştirmek için bu DC 'lerde oturum açamazsınız. Bunun yerine, Azure AD DS yönetilen etki alanına katılmış bir yönetim sanal makinesi oluşturun ve ardından düzenli AD DS yönetim araçlarınızı yükleyebilirsiniz. Örneğin, DNS veya grup ilkesi nesneleri gibi Active Directory Yönetim Merkezi veya Microsoft Yönetim Konsolu (MMC) ek bileşenlerini kullanabilirsiniz.
+In Azure AD DS, the domain controllers (DCs) that contain all the resources like users and groups, credentials, and policies are part of the managed service. For redundancy, two DCs are created as part of an Azure AD DS managed domain. You can't sign in to these DCs to perform management tasks. Instead, you create a management VM that's joined to the Azure AD DS managed domain, then install your regular AD DS management tools. You can use the Active Directory Administrative Center or Microsoft Management Console (MMC) snap-ins like DNS or Group Policy objects, for example.
 
-## <a name="user-account-creation"></a>Kullanıcı hesabı oluşturma
+## <a name="user-account-creation"></a>User account creation
 
-Kullanıcı hesapları, Azure AD DS 'de birden çok şekilde oluşturulabilir. Çoğu kullanıcı hesabı Azure AD 'den eşitlenir ve bu da şirket içi AD DS ortamından eşitlenen Kullanıcı hesabını da içerebilir. Ayrıca, hesapları doğrudan Azure AD DS 'da da el ile oluşturabilirsiniz. İlk parola eşitleme veya parola ilkesi gibi bazı özellikler, Kullanıcı hesaplarının nasıl ve nerede oluşturulduğuna bağlı olarak farklı davranır.
+User accounts can be created in Azure AD DS in multiple ways. Most user accounts are synchronized in from Azure AD, which can also include user account synchronized from an on-premises AD DS environment. You can also manually create accounts directly in Azure AD DS. Some features, like initial password synchronization or password policy, behave differently depending on how and where user accounts are created.
 
-* Kullanıcı hesabı Azure AD 'den eşitlenebilir. Bu, doğrudan Azure AD 'de oluşturulan bulut Kullanıcı hesaplarını ve Azure AD Connect kullanarak şirket içi AD DS ortamından eşitlenen karma Kullanıcı hesaplarını içerir.
-    * Azure AD DS 'daki Kullanıcı hesaplarının çoğu Azure AD 'den eşitleme işlemi aracılığıyla oluşturulur.
-* Kullanıcı hesabı Azure AD DS yönetilen bir etki alanında el ile oluşturulabilir ve Azure AD 'de mevcut değildir.
-    * Yalnızca Azure AD DS çalışan uygulamalar için hizmet hesapları oluşturmanız gerekiyorsa, bunları yönetilen etki alanında el ile oluşturabilirsiniz. Eşitleme, Azure AD 'den tek yönlü olduğundan Azure AD DS 'de oluşturulan kullanıcı hesapları Azure AD 'ye geri aktarılmaz.
+* The user account can be synchronized in from Azure AD. This includes cloud-only user accounts created directly in Azure AD, and hybrid user accounts synchronized from an on-premises AD DS environment using Azure AD Connect.
+    * The majority of user accounts in Azure AD DS are created through the synchronization process from Azure AD.
+* The user account can be manually created in an Azure AD DS managed domain, and doesn't exist in Azure AD.
+    * If you need to create service accounts for applications that only run in Azure AD DS, you can manually create them in the managed domain. As synchronization is one-way from Azure AD, user accounts created in Azure AD DS aren't synchronized back to Azure AD.
 
-## <a name="password-policy"></a>Parola ilkesi
+## <a name="password-policy"></a>Password policy
 
-Azure AD DS, hesap kilitleme, en fazla parola yaşı ve parola karmaşıklığı gibi şeyler için ayarları tanımlayan bir varsayılan parola ilkesi içerir. Hesap kilitleme ilkesi gibi ayarlar, kullanıcının önceki bölümde özetlendiği şekilde nasıl oluşturulduğuna bakılmaksızın Azure AD DS 'deki tüm kullanıcılara uygulanır. Minimum parola uzunluğu ve parola karmaşıklığı gibi bazı ayarlar, yalnızca doğrudan Azure AD DS oluşturulan kullanıcılara uygulanır.
+Azure AD DS includes a default password policy that defines settings for things like account lockout, maximum password age, and password complexity. Settings like account lockout policy apply to all users in Azure AD DS, regardless of how the user was created as outlined in the previous section. A few settings, like minimum password length and password complexity, only apply to users created directly in Azure AD DS.
 
-Azure AD DS 'de varsayılan ilkeyi geçersiz kılmak için kendi özel parola ilkelerinizi oluşturabilirsiniz. Bu özel ilkeler, gerektiğinde belirli kullanıcı gruplarına uygulanabilir.
+You can create your own custom password policies to override the default policy in Azure AD DS. These custom policies can then be applied to specific groups of users as needed.
 
-Parola ilkelerinin Kullanıcı oluşturma kaynağına göre uygulanma farkları hakkında daha fazla bilgi için, bkz. [yönetilen etki alanlarında parola ve hesap kilitleme ilkeleri][password-policy].
+For more information on the differences in how password policies are applied depending on the source of user creation, see [Password and account lockout policies on managed domains][password-policy].
 
-## <a name="password-hashes"></a>Parola karmaları
+## <a name="password-hashes"></a>Password hashes
 
-Yönetilen etki alanındaki kullanıcıların kimliğini doğrulamak için Azure AD DS 'nin, NT LAN Manager (NTLM) ve Kerberos kimlik doğrulaması için uygun bir biçimde parola karmaları olması gerekir. Azure AD, kiracınız için Azure AD DS etkinleştirene kadar NTLM veya Kerberos kimlik doğrulaması için gereken biçimde parola karmaları oluşturmaz veya depolamaz. Azure AD, güvenlik nedenleriyle şifresiz metin biçiminde hiçbir parola kimlik bilgisi depolamaz. Bu nedenle, Azure AD kullanıcıların mevcut kimlik bilgilerini temel alarak bu NTLM veya Kerberos parola karmalarını otomatik olarak üretemiyor.
+To authenticate users on the managed domain, Azure AD DS needs password hashes in a format that's suitable for NT LAN Manager (NTLM) and Kerberos authentication. Azure AD doesn't generate or store password hashes in the format that's required for NTLM or Kerberos authentication until you enable Azure AD DS for your tenant. For security reasons, Azure AD also doesn't store any password credentials in clear-text form. Therefore, Azure AD can't automatically generate these NTLM or Kerberos password hashes based on users' existing credentials.
 
-Yalnızca bulut Kullanıcı hesapları için, kullanıcıların Azure AD DS kullanabilmesi için parolalarını değiştirmesi gerekir. Bu parola değiştirme işlemi, Kerberos ve NTLM kimlik doğrulamasının parola karmalarının Azure AD 'de oluşturulmasına ve depolanmasına neden olur.
+For cloud-only user accounts, users must change their passwords before they can use Azure AD DS. This password change process causes the password hashes for Kerberos and NTLM authentication to be generated and stored in Azure AD.
 
-Azure AD Connect kullanarak şirket içi AD DS ortamından eşitlenen kullanıcılar için [parola karmalarının eşitlenmesini etkinleştirin][hybrid-phs].
+For users synchronized from an on-premises AD DS environment using Azure AD Connect, [enable synchronization of password hashes][hybrid-phs].
 
 > [!IMPORTANT]
-> Azure AD Connect yalnızca Azure AD kiracınız için Azure AD DS etkinleştirdiğinizde eski parola karmalarını eşitler. Yalnızca Azure AD ile şirket içi AD DS ortamını eşleştirmek için Azure AD Connect kullanıyorsanız eski parola karmaları kullanılmaz.
+> Azure AD Connect only synchronizes legacy password hashes when you enable Azure AD DS for your Azure AD tenant. Legacy password hashes aren't used if you only use Azure AD Connect to synchronize an on-premises AD DS environment with Azure AD.
 >
-> Eski uygulamalarınız NTLM kimlik doğrulaması veya LDAP basit bağlamalar kullanmıyorsanız, Azure AD DS için NTLM parola karma eşitlemesini devre dışı bırakmanızı öneririz. Daha fazla bilgi için bkz. [zayıf şifre paketlerini ve NTLM kimlik bilgisi karma eşitlemesini devre dışı bırakma][secure-domain].
+> If your legacy applications don't use NTLM authentication or LDAP simple binds, we recommend that you disable NTLM password hash synchronization for Azure AD DS. For more information, see [Disable weak cipher suites and NTLM credential hash synchronization][secure-domain].
 
-Uygun şekilde yapılandırıldıktan sonra, kullanılabilir parola karmaları Azure AD DS yönetilen etki alanında depolanır. Azure AD DS yönetilen etki alanını silerseniz, o noktada depolanan tüm parola karmaları da silinir. Azure AD 'deki eşitlenmiş kimlik bilgileri, daha sonra Azure AD DS yönetilen bir etki alanı oluşturursanız yeniden kullanılamaz. parola karmalarını yeniden depolamak için Parola karması eşitlemesini yeniden yapılandırmanız gerekir. Daha önce etki alanına katılmış VM 'Ler veya kullanıcılar, parola karmalarını yeni Azure AD DS yönetilen etki alanında oluşturmak ve depolamak için Azure AD ihtiyaçlarına hemen kimlik doğrulaması yapamaz. Daha fazla bilgi için bkz. [Azure AD DS Için Parola karması eşitleme işlemi ve Azure AD Connect][azure-ad-password-sync].
+Once appropriately configured, the usable password hashes are stored in the Azure AD DS managed domain. If you delete the Azure AD DS managed domain, any password hashes stored at that point are also deleted. Synchronized credential information in Azure AD can't be reused if you later create an Azure AD DS managed domain - you must reconfigure the password hash synchronization to store the password hashes again. Previously domain-joined VMs or users won't be able to immediately authenticate - Azure AD needs to generate and store the password hashes in the new Azure AD DS managed domain. For more information, see [Password hash sync process for Azure AD DS and Azure AD Connect][azure-ad-password-sync].
+
+## <a name="forests-and-trusts"></a>Forests and trusts
+
+A *forest* is a logical construct used by Active Directory Domain Services (AD DS) to group one or more *domains*. The domains then store objects for user or groups, and provide authentication services.
+
+In Azure AD DS, the forest only contains one domain. On-premises AD DS forests often contain many domains. In large organizations, especially after mergers and acquisitions, you may end up with multiple on-premises forests that each then contain multiple domains.
+
+By default, an Azure AD DS managed domain is created as a *user* forest. This type of forest synchronizes all objects from Azure AD, including any user accounts created in an on-premises AD DS environment. User accounts can directly authenticate against the Azure AD DS managed domain, such as to sign in to a domain-joined VM. A user forest works when the password hashes can be synchronized and users aren't using exclusive sign-in methods like smart card authentication.
+
+In an Azure AD DS *resource* forest, users authenticate over a one-way forest *trust* from their on-premises AD DS. With this approach, the user objects and password hashes aren't synchronized to Azure AD DS. The user objects and credentials only exist in the on-premises AD DS. This approach lets enterprises host resources and application platforms in Azure that depend on classic authentication such LDAPS, Kerberos, or NTLM, but any authentication issues or concerns are removed. Azure AD DS resource forests are currently in preview.
+
+For more information about forest types in Azure AD DS, see [What are resource forests?][concepts-forest] and [How do forest trusts work in Azure AD DS?][concepts-trust]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Başlamak için [Azure AD DS yönetilen bir etki alanı oluşturun][create-instance].
+To get started, [create an Azure AD DS managed domain][create-instance].
 
 <!-- INTERNAL LINKS -->
 [password-policy]: password-policy.md
@@ -69,3 +81,6 @@ Başlamak için [Azure AD DS yönetilen bir etki alanı oluşturun][create-insta
 [secure-domain]: secure-your-domain.md
 [azure-ad-password-sync]: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md#password-hash-sync-process-for-azure-ad-domain-services
 [create-instance]: tutorial-create-instance.md
+[tutorial-create-instance-advanced]: tutorial-create-instance-advanced.md
+[concepts-forest]: concepts-resource-forest.md
+[concepts-trust]: concepts-forest-trust.md

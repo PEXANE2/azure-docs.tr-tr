@@ -1,6 +1,6 @@
 ---
-title: Dsregcmd komutunu kullanarak cihazların sorunlarını giderme-Azure Active Directory
-description: Azure AD 'de cihazların durumunu anlamak için dsregcmd 'deki çıktıyı kullanma
+title: Troubleshooting devices using the dsregcmd command - Azure Active Directory
+description: Using the output from dsregcmd to understand the state of devices in Azure AD
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,37 +11,37 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4aa8f9a7c6807a2f9505559ea13fb0b4f410346d
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: c2769210b40b011a35973e48eebce60526f6fc10
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987162"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74207159"
 ---
-# <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>Dsregcmd komutunu kullanarak cihazların sorunlarını giderme
+# <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>Troubleshooting devices using the dsregcmd command
 
-Dsregcmd/Status yardımcı programı, bir etki alanı kullanıcı hesabı olarak çalıştırılmalıdır.
+The dsregcmd /status utility must be run as a domain user account.
 
-## <a name="device-state"></a>Cihaz durumu
+## <a name="device-state"></a>Device state
 
-Bu bölümde cihaz JOIN durumu parametreleri listelenmektedir. Aşağıdaki tabloda, cihazın çeşitli JOIN durumlarında olması için ölçütler listelenmiştir.
+This section lists the device join state parameters. The table below lists the criteria for the device to be in various join states.
 
-| Azureadkatıldı | Enterprisekatılmış | Domainkatılmış | Cihaz durumu |
+| AzureAdJoined | EnterpriseJoined | DomainJoined | Device state |
 | ---   | ---   | ---   | ---   |
-| EVET | NO | NO | Azure AD'ye Katıldı |
-| NO | NO | EVET | Etki Alanına Katıldı |
-| EVET | NO | EVET | Karma AD 'ye katılmış |
-| NO | EVET | EVET | Şirket içi DRS 'ye katılmış |
+| YES | NO | NO | Azure AD Joined |
+| NO | NO | YES | Domain Joined |
+| YES | NO | YES | Hybrid AD Joined |
+| NO | YES | YES | On-premises DRS Joined |
 
 > [!NOTE]
-> Workplace Join (Azure AD kayıtlı) durumu "Kullanıcı durumu" bölümünde görüntülenir
+> Workplace Join (Azure AD registered) state is displayed in the "User State" section
 
-- **Azureadkatıldı:** CIHAZ Azure AD 'ye KATıLıRSA "Evet" olarak ayarlanır. Aksi takdirde "Hayır".
-- **Enterprisekatılmış:** cihaz, ŞIRKET içi DRS 'ye KATıLıRSA "Yes" olarak ayarlanır. Bir cihaz hem Enterprisekatılmış hem de Azureadkatılmış olamaz.
-- **Domainkatıldığında:** cihaz bir etki ALANıNA (ad) KATıLıRSA "Evet" olarak ayarlanır.
-- **DomainName:** -cihaz bir etki alanına katılmışsa, etki alanının adına ayarlanır.
+- **AzureAdJoined:** - Set to “YES” if the device is Joined to Azure AD. “NO” otherwise.
+- **EnterpriseJoined:** - Set to “YES” if the device is Joined to an on-premises DRS. A device cannot be both EnterpriseJoined and AzureAdJoined.
+- **DomainJoined:** - Set to “YES” if the device is joined to a domain (AD).
+- **DomainName:** - Set to the name of the domain if the device is joined to a domain.
 
-### <a name="sample-device-state-output"></a>Örnek cihaz durumu çıkışı
+### <a name="sample-device-state-output"></a>Sample device state output
 
 ```
 +----------------------------------------------------------------------+
@@ -54,18 +54,18 @@ Bu bölümde cihaz JOIN durumu parametreleri listelenmektedir. Aşağıdaki tabl
 +----------------------------------------------------------------------+
 ```
 
-## <a name="device-details"></a>Cihaz ayrıntıları
+## <a name="device-details"></a>Device details
 
-Yalnızca cihaz Azure AD 'ye katılmış veya karma Azure AD 'ye katılmış olduğunda (Azure AD kayıtlı değil) görüntülenir. Bu bölüm, bulutta depolanan cihaz tanımlama ayrıntılarını listeler.
+Displayed only when the device is Azure AD joined or hybrid Azure AD joined (not Azure AD registered). This section lists device identifying details stored in the cloud.
 
-- **DeviceID:** -Azure AD kiracısındaki CIHAZıN benzersiz kimliği
-- **Parmak izi:** -cihaz sertifikasının parmak izi 
-- **Devicecercertificate Ategeçerliliği:** -cihaz sertifikasının geçerliliği
-- **Keycontainerıd:** -cihaz sertifikasıyla ilişkili cihaz özel anahtarının containerıd değeri
-- **Keyprovider:** -cihaz özel anahtarını depolamak için kullanılan keyprovider (donanım/yazılım).
-- **Tpmprotected:** -cihaz özel anahtarı donanım TPM 'de depolanıyorsa, "Evet".
+- **DeviceId:** - Unique ID of the device in the Azure AD tenant
+- **Thumbprint:** - Thumbprint of the device certificate 
+- **DeviceCertificateValidity:** - Validity of the device certificate
+- **KeyContainerId:** - ContainerId of the device private key associated with the device certificate
+- **KeyProvider:** - KeyProvider (Hardware/Software) used to store the device private key.
+- **TpmProtected:** - “YES” if the device private key is stored in a Hardware TPM.
 
-### <a name="sample-device-details-output"></a>Örnek cihaz ayrıntıları çıkışı
+### <a name="sample-device-details-output"></a>Sample device details output
 
 ```
 +----------------------------------------------------------------------+
@@ -81,14 +81,17 @@ Yalnızca cihaz Azure AD 'ye katılmış veya karma Azure AD 'ye katılmış old
 +----------------------------------------------------------------------+
 ```
 
-## <a name="tenant-details"></a>Kiracı ayrıntıları
+## <a name="tenant-details"></a>Tenant details
 
-Yalnızca cihaz Azure AD 'ye katılmış veya karma Azure AD 'ye katılmış olduğunda (Azure AD kayıtlı değil) görüntülenir. Bu bölüm, bir cihaz Azure AD 'ye katıldığında ortak Kiracı ayrıntılarını listeler.
+Displayed only when the device is Azure AD joined or hybrid Azure AD joined (not Azure AD registered). This section lists the common tenant details when a device is joined to Azure AD.
 
 > [!NOTE]
-> MDM URL 'Lerini görseniz bile, cihazın bir MDM tarafından yönetildiği anlamına gelir. Kiracı, cihazın kendisi yönetilmese bile otomatik kayıt için MDM yapılandırmasına sahipse bilgiler görüntülenir. 
+> If the MDM URLs in this section are empty, it indicates that the MDM was either not configured or current user is not in scope of MDM enrollment. Check the Mobility settings in Azure AD to review your MDM configuration.
 
-### <a name="sample-tenant-details-output"></a>Örnek kiracı ayrıntıları çıkışı
+> [!NOTE]
+> Even if you see MDM URLs this does not mean that the device is managed by an MDM. The information is displayed if the tenant has MDM configuration for auto-enrollment even if the device itself is not managed. 
+
+### <a name="sample-tenant-details-output"></a>Sample tenant details output
 
 ```
 +----------------------------------------------------------------------+
@@ -119,24 +122,24 @@ Yalnızca cihaz Azure AD 'ye katılmış veya karma Azure AD 'ye katılmış old
 +----------------------------------------------------------------------+
 ```
 
-## <a name="user-state"></a>Kullanıcı durumu
+## <a name="user-state"></a>User state
 
-Bu bölümde, şu anda cihazda oturum açmış olan kullanıcı için çeşitli özniteliklerin durumu listelenir.
+This section lists the status of various attributes for the user currently logged into the device.
 
 > [!NOTE]
-> Komutun geçerli durum almak için bir kullanıcı bağlamında çalışması gerekir.
+> The command must run in a user context to retrieve valid status.
 
-- **NgcSet:** -geçerli oturum açmış kullanıcı Için bir Windows Hello anahtarı ayarlandıysa, "Evet" olarak ayarlayın.
-- **NgcKeyId:** -geçerli oturum açmış kullanıcı için ayarlanmış bir Windows Hello anahtarı kimliği.
-- **Canreset:** -Windows Hello anahtarının Kullanıcı tarafından sıfırlanıp sıfırlanlamayacağını belirtir. 
-- **Olası değerler:** -yalnızca geri dönüşlü, geri dönüşlü, geri dönüşlü ya da hata durumunda bilinmeyen. 
-- **Çalışma yerleşimi:** -geçerli Ntuser bağlamındaki CIHAZA Azure AD kayıtlı hesapları EKLENDIYSE "Evet" olarak ayarlanır.
-- **Wamdefaultset:** -oturum açmış kullanıcı IÇIN bir WAM varsayılan webaccount OLUŞTURULDUYSA "Yes" olarak ayarlayın. Bu alan, dsreg/Status yönetici bağlamında çalıştırıldığında bir hata görüntüleyebilir. 
-- **Wamdefaultauthority:** -Azure AD için "kuruluşlar" olarak ayarlanır.
-- Azure AD için **wamdefaultıd:** -Always "https://login.microsoft.com".
-- **Wamdefaultguid:** -varsayılan WAM webaccount için WAM sağlayıcısının (Azure AD/Microsoft hesabı) GUID 'i. 
+- **NgcSet:** - Set to “YES” if a Windows Hello key is set for the current logged on user.
+- **NgcKeyId:** - ID of the Windows Hello key if one is set for the current logged on user.
+- **CanReset:** - Denotes if the Windows Hello key can be reset by the user. 
+- **Possible values:** - DestructiveOnly, NonDestructiveOnly, DestructiveAndNonDestructive, or Unknown if error. 
+- **WorkplaceJoined:** - Set to “YES” if Azure AD registered accounts have been added to the device in the current NTUSER context.
+- **WamDefaultSet:** - Set to “YES” if a WAM default WebAccount is created for the logged in user. This field could display an error if dsreg /status is run in admin context. 
+- **WamDefaultAuthority:** - Set to “organizations” for Azure AD.
+- **WamDefaultId:** - Always “https://login.microsoft.com” for Azure AD.
+- **WamDefaultGUID:** - The WAM provider’s (Azure AD/Microsoft account) GUID for the default WAM WebAccount. 
 
-### <a name="sample-user-state-output"></a>Örnek Kullanıcı durumu çıktısı
+### <a name="sample-user-state-output"></a>Sample user state output
 
 ```
 +----------------------------------------------------------------------+
@@ -155,23 +158,23 @@ Bu bölümde, şu anda cihazda oturum açmış olan kullanıcı için çeşitli 
 +----------------------------------------------------------------------+
 ```
 
-## <a name="sso-state"></a>SSO durumu
+## <a name="sso-state"></a>SSO state
 
-Bu bölüm, Azure AD kayıtlı cihazlar için yoksayılabilir.
+This section can be ignored for Azure AD registered devices.
 
 > [!NOTE]
-> Bu kullanıcının geçerli durumunu almak için komutun bir kullanıcı bağlamında çalıştırılması gerekir.
+> The command must run in a user context to retrieve valid status for that user.
 
-- **Azureadprt:** cihazda oturum açmış kullanıcı için bir prt varsa, "Evet" olarak ayarlayın.
-- **Azureadprtupdatetime:** -prt en son GÜNCELLEŞTIRILDIĞI zaman UTC olarak saat olarak ayarlanır.
-- **Azureadprtexpirytime:** -YENILENMEDIĞINDE prt 'nin SÜRESI dolduğunda UTC olarak saat olarak ayarlanır.
-- **Azureadprtauthority:** -Azure AD yetkilisi URL 'si
-- **Enterpriseprt:** -cihazın ŞIRKET içi ADFS 'den yanıt varsa "Evet" olarak ayarlanır. Hibrit Azure AD 'ye katılmış cihazlarda cihazın hem Azure AD hem de şirket içi AD 'den aynı anda EŞIT olması olabilir. Şirket içi katılmış cihazlarda yalnızca kurumsal bir PRT vardır.
-- **Enterpriseprtupdatetime:** -kurumsal prt 'nin son GÜNCELLEŞTIRILDIĞI zaman UTC olarak saat olarak ayarlanır.
-- **Enterpriseprtexpirytime:** -YENILENMEDIĞINDE prt 'nin SÜRESI dolduğunda UTC olarak saat olarak ayarlanır.
-- **Enterpriseprtauthority:** -ADFS yetkili URL 'si
+- **AzureAdPrt:** - Set to “YES” if a PRT is present on the device for the logged-on user.
+- **AzureAdPrtUpdateTime:** - Set to the time in UTC when the PRT was last updated.
+- **AzureAdPrtExpiryTime:** - Set to the time in UTC when the PRT is going to expire if it is not renewed.
+- **AzureAdPrtAuthority:** - Azure AD authority URL
+- **EnterprisePrt:** - Set to “YES” if the device has PRT from on-premises ADFS. For hybrid Azure AD joined devices the device could have PRT from both Azure AD and on-premises AD simultaneously. On-premises joined devices will only have an Enterprise PRT.
+- **EnterprisePrtUpdateTime:** - Set to the time in UTC when the Enterprise PRT was last updated.
+- **EnterprisePrtExpiryTime:** - Set to the time in UTC when the PRT is going to expire if it is not renewed.
+- **EnterprisePrtAuthority:** - ADFS authority URL
 
-### <a name="sample-sso-state-output"></a>Örnek SSO durum çıkışı
+### <a name="sample-sso-state-output"></a>Sample SSO state output
 
 ```
 +----------------------------------------------------------------------+
@@ -190,37 +193,37 @@ Bu bölüm, Azure AD kayıtlı cihazlar için yoksayılabilir.
 +----------------------------------------------------------------------+
 ```
 
-## <a name="diagnostic-data"></a>Tanılama verileri
+## <a name="diagnostic-data"></a>Diagnostic data
 
-### <a name="pre-join-diagnostics"></a>Ön ekleme tanılaması
+### <a name="pre-join-diagnostics"></a>Pre-join diagnostics
 
-Bu bölüm yalnızca cihaz etki alanına katılmış ise ve Azure AD JOIN 'i karma olarak alıyorsa görüntülenir.
+This section is displayed only if the device is domain joined and is unable to hybrid Azure AD join.
 
-Bu bölüm, ekleme hatalarının tanılanmasına yardımcı olmak için çeşitli testler gerçekleştirir. Bu bölüm, önceki (?) ayrıntılarını da içerir. Bu bilgiler hata aşaması, hata kodu, sunucu istek KIMLIĞI, sunucu yanıtı http durumu, sunucu yanıtı hata iletisi içerir.
+This section performs various tests to help diagnose join failures. This section also includes the details of the previous (?). This information includes the error phase, the error code, the server request ID, server response http status, server response error message.
 
-- **Kullanıcı bağlamı:** -Tanılamanın çalıştırıldığı bağlam. Olası değerler: SISTEM, YÜKSELTILMIŞ Kullanıcı, YÜKSELTILMIŞ Kullanıcı. 
+- **User Context:** - The context in which the diagnostics are run. Possible values: SYSTEM, UN-ELEVATED User, ELEVATED User. 
 
    > [!NOTE]
-   > Gerçek JOIN SISTEM bağlamında gerçekleştirildiğinden, SISTEM bağlamında tanılamayı çalıştırmak, gerçek JOIN senaryosuna en yakın. Tanılama 'yı SISTEM bağlamında çalıştırmak için, dsregcmd/Status komutunun yükseltilmiş bir komut isteminden çalıştırılması gerekir.
+   > Since the actual join is performed in SYSTEM context, running the diagnostics in SYSTEM context is closest to the actual join scenario. To run diagnostics in SYSTEM context, the dsregcmd /status command must be run from an elevated command prompt.
 
-- **Istemci saati:** -UTC olarak sistem süresi.
-- **Ad bağlantısı testi:** -test, etki alanı denetleyicisine bir bağlantı testi gerçekleştirir. Bu testte hata, büyük olasılıkla denetim öncesi aşamasında ekleme hatalarıyla sonuçlanır.
-- **Ad yapılandırma testi:** -test, SCP nesnesinin ŞIRKET içi ad ormanında doğru yapılandırılıp yapılandırılmadığını doğrular ve doğrular. Bu testteki hatalar, bulma aşamasında 0x801c001d hata koduyla birlikte hatalara neden olabilir.
-- **DRS bulma testi:** -test, bulma meta verileri uç noktasından DRS uç noktalarını alır ve bir Kullanıcı bölgesi isteği gerçekleştirir. Bu testteki hatalar, bulma aşamasında hata oluşmasına neden olabilir.
-- **DRS bağlantı testi:** -test, DRS uç noktasına temel bağlantı testi gerçekleştirir.
-- **Belirteç alma testi:** -test, Kullanıcı kiracının federe olması halinde bır Azure AD kimlik doğrulama belirteci almaya çalışır. Bu testteki hatalar, kimlik doğrulama aşamasında hata oluşmasına neden olabilir. Kimlik doğrulama başarısız olursa, geri dönüş bir kayıt defteri anahtarı ile açıkça devre dışı bırakılmadığı sürece, geri dönüş olarak denenmeyecektir.
-- **Eşitlemeye geri dön:** -kayıt defteri anahtarı, kimlik doğrulama hatalarıyla eşitlemeye izin vermek Için "etkin" olarak ayarlanır. Bu seçenek Windows 10 1803 ve üzeri sürümlerde kullanılabilir.
-- **Önceki kayıt:** -önceki ekleme girişiminin gerçekleştiği zaman. Yalnızca başarısız olan ekleme denemeleri günlüğe kaydedilir.
-- **Hata aşaması:** -durdurulan birleştirmenin aşaması. Olası değerler, ön denetim, bulma, kimlik doğrulama, JOIN.
-- **Istemci ErrorCode:** -döndürülen istemci hata kodu (HRESULT).
-- **Sunucu** hata kodu:-sunucuya bir istek gönderildiyse ve sunucu bir hata koduyla geri yanıt verdiğinde sunucu hata kodu. 
-- **Sunucu iletisi:** -hata koduyla birlikte sunucu iletisi döndürüldü.
-- **Https durumu:** -sunucu tarafından döndürülen http durumu.
-- **Istek kimliği:** -istemci RequestId sunucuya gönderildi. Sunucu tarafı günlükleriyle ilişkilendirmek için faydalıdır.
+- **Client Time:** - The system time in UTC.
+- **AD Connectivity Test:** - Test performs a connectivity test to the domain controller. Error in this test will likely result in Join errors in pre-check phase.
+- **AD Configuration Test:** - Test reads and verifies whether the SCP object is configured properly in the on-premises AD forest. Errors in this test would likely result in Join errors in the discover phase with the error code 0x801c001d.
+- **DRS Discovery Test:** - Test gets the DRS endpoints from discovery metadata endpoint and performs a user realm request. Errors in this test would likely result in Join errors in the discover phase.
+- **DRS Connectivity Test:** - Test performs basic connectivity test to the DRS endpoint.
+- **Token acquisition Test:** - Test tries to get an Azure AD authentication token if the user tenant is federated. Errors in this test would likely result in Join errors in the auth phase. If auth fails sync join will be attempted as fallback, unless fallback is explicitly disabled with a registry key.
+- **Fallback to Sync-Join:** - Set to “Enabled” if the registry key, to prevent the fallback to sync join with auth failures, is NOT present. This option is available from Windows 10 1803 and later.
+- **Previous Registration:** - Time the previous Join attempt occurred. Only failed Join attempts are logged.
+- **Error Phase:** - The stage of the join in which it was aborted. Possible values are pre-check, discover, auth, join.
+- **Client ErrorCode:** - Client error code returned (HRESULT).
+- **Server ErrorCode:** - Server error code if a request was sent to the server and server responded back with an error code. 
+- **Server Message:** - Server message returned along with the error code.
+- **Https Status:** - Http status returned by the server.
+- **Request ID:** - The client requestId sent to the server. Useful to correlate with server-side logs.
 
-### <a name="sample-pre-join-diagnostics-output"></a>Örnek ön ekleme tanılama çıkışı
+### <a name="sample-pre-join-diagnostics-output"></a>Sample pre-join diagnostics output
 
-Aşağıdaki örnekte, bulma hatasıyla başarısız olan tanılama testi gösterilmektedir.
+The following example shows diagnostics test failing with a discovery error.
 
 ```
 +----------------------------------------------------------------------+
@@ -244,7 +247,7 @@ Aşağıdaki örnekte, bulma hatasıyla başarısız olan tanılama testi göste
 +----------------------------------------------------------------------+
 ```
 
-Aşağıdaki örnek, tanılama testlerinin geçtiğini ancak kayıt denemesinin eşitleme birleşimi için beklenen bir dizin hatası ile başarısız olduğunu gösterir. Azure AD Connect eşitleme işi tamamlandıktan sonra cihaz katılabilecektir.
+The following example shows diagnostics tests are passing but the registration attempt failed with a directory error, which is expected for sync join. Once the Azure AD Connect synchronization job completes, the device will be able to join.
 
 ```
 +----------------------------------------------------------------------+
@@ -273,14 +276,14 @@ Aşağıdaki örnek, tanılama testlerinin geçtiğini ancak kayıt denemesinin 
 +----------------------------------------------------------------------+
 ```
 
-### <a name="post-join-diagnostics"></a>JOIN sonrası tanılama
+### <a name="post-join-diagnostics"></a>Post-join diagnostics
 
-Bu bölümde, buluta katılmış bir cihazda gerçekleştirilen sağlamlık denetimlerinin çıktısı görüntülenir.
+This section displays the output of sanity checks performed on a device joined to the cloud.
 
-- **Aadrecoveryenabled:** -"Yes" ise, cihazda depolanan anahtarlar kullanılamaz ve cihaz kurtarma için işaretlenir. Sonraki oturum açma, kurtarma akışını tetikler ve cihazı yeniden kaydeder.
-- **Keysigntest:** -"başarılı" olduğunda cihaz anahtarları iyi bir durumlardır. KeySignTest başarısız olursa, cihaz genellikle kurtarma için işaretlenir. Sonraki oturum açma, kurtarma akışını tetikler ve cihazı yeniden kaydeder. Hibrit Azure AD 'ye katılmış cihazlar için kurtarma sessiz olur. Azure AD 'ye katılmış veya Azure AD kaydı sırasında, cihazlar, gerekirse cihazı kurtarmak ve yeniden kaydetmek için Kullanıcı kimlik doğrulamasını ister. **KeySignTest için yükseltilmiş ayrıcalıklar gerekir.**
+- **AadRecoveryEnabled:** - If “YES”, the keys stored in the device are not usable and the device is marked for recovery. The next sign in will trigger the recovery flow and re-register the device.
+- **KeySignTest:** - If “PASSED” the device keys are in good health. If KeySignTest fails, the device will usually be marked for recovery. The next sign in will trigger the recovery flow and re-register the device. For hybrid Azure AD joined devices the recovery is silent. While Azure AD joined or Azure AD registered, devices will prompt for user authentication to recover and re-register the device if necessary. **The KeySignTest requires elevated privileges.**
 
-#### <a name="sample-post-join-diagnostics-output"></a>Örnek son ekleme tanılama çıkışı
+#### <a name="sample-post-join-diagnostics-output"></a>Sample post-join diagnostics output
 
 ```
 +----------------------------------------------------------------------+
@@ -292,14 +295,14 @@ Bu bölümde, buluta katılmış bir cihazda gerçekleştirilen sağlamlık dene
 +----------------------------------------------------------------------+
 ```
 
-## <a name="ngc-prerequisite-check"></a>NGC önkoşul denetimi
+## <a name="ngc-prerequisite-check"></a>NGC prerequisite check
 
-Bu bölüm, bir NGC anahtarının sağlanması için önkoşul denetimlerini gerçekleştirir. 
+This section performs the perquisite checks for the provisioning of an NGC key. 
 
 > [!NOTE]
-> Kullanıcı zaten NGC kimlik bilgilerini başarıyla yapılandırdıysa dsregcmd/Status içinde NGC önkoşul denetimi ayrıntılarını göremeyebilirsiniz.
+> You may not see NGC pre-requisite check details in dsregcmd /status if the user already successfully configured NGC credentials.
 
-### <a name="sample-ngc-prerequisite-check-output"></a>Örnek NGC önkoşul denetimi çıkışı
+### <a name="sample-ngc-prerequisite-check-output"></a>Sample NGC prerequisite check output
 
 ```
 +----------------------------------------------------------------------+
@@ -322,4 +325,4 @@ Bu bölüm, bir NGC anahtarının sağlanması için önkoşul denetimlerini ger
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sorular için bkz. [cihaz YÖNETIMI SSS](faq.md)
+For questions, see the [device management FAQ](faq.md)

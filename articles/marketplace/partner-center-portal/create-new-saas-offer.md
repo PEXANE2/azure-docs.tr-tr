@@ -1,247 +1,247 @@
 ---
-title: Ticari Market 'te yeni bir SaaS teklifi oluşturun
-description: Azure Marketi, AppSource veya Microsoft Iş Ortağı Merkezi 'ndeki ticari Market portalını kullanan bulut çözümü sağlayıcısı (CSP) programı aracılığıyla listeleme veya satma için yeni bir hizmet olarak yazılım (SaaS) teklifi oluşturma.
+title: Create a new SaaS offer in the Commercial Marketplace
+description: How to create a new Software as a Service (SaaS) offer for listing or selling in the Azure Marketplace, AppSource, or through the Cloud Solution Provider (CSP) program using the Commercial Marketplace portal on Microsoft Partner Center.
 author: ChJenk
 manager: evansma
 ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/13/2019
-ms.openlocfilehash: a6694d094d185ad70cce8c546e12f48afb69f1ae
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.date: 11/19/2019
+ms.openlocfilehash: 12372c1f00e994382338adf9bd078018ba702da1
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076953"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74213355"
 ---
-# <a name="create-a-new-saas-offer"></a>Yeni bir SaaS teklifi oluşturun
+# <a name="create-a-new-saas-offer"></a>Create a new SaaS offer
 
-Hizmet olarak yazılım (SaaS) teklifi oluşturmaya başlamak için, ilk olarak [bir Iş Ortağı Merkezi hesabı](./create-account.md) oluşturduğunuzdan ve **genel bakış** sekmesi seçili olarak [ticari Market panosunu](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)açın.
+To begin creating Software as a Service (SaaS) offers, ensure that you first [Create a Partner Center account](./create-account.md) and open the [Commercial Marketplace dashboard](https://partner.microsoft.com/dashboard/commercial-marketplace/offers), with the **Overview** tab selected.
 
-![Iş Ortağı Merkezi 'nde ticari Market panosu](./media/new-offer-overview.png)
+![Commercial Marketplace dashboard on Partner Center](./media/new-offer-overview.png)
 
 >[!Note]
-> Bir teklif yayımlandıktan sonra, Iş Ortağı Merkezi 'nde yapılan teklifle ilgili düzenlemeler yalnızca sistem sırasında ve yeniden yayımlamadan sonra mağazaların ön yüzlerinin güncelleştirilmesini sağlar. Lütfen değişiklikleri yaptıktan sonra teklifi yayın için gönderdiğinizden emin olun.
+> Once an offer has been published, edits to the offer made in Partner Center will only be updated in the system and store fronts after re-publishing. Please ensure that you submit the offer for publication after you make changes.
 
-\+ **Yeni teklifi seçin...** düğmesine tıklayın ve ardından **hizmet olarak yazılım** menü öğesini seçin. 
+Select the + **New offer…** button, then select the **Software as a Service** menu item. 
 
-Başka bir teklif türü seçerseniz, eski [bulut iş ortağı portalı](https://cloudpartner.azure.com/)yönlendirilebilirsiniz. Yalnızca SaaS ve Dynamics 365 teklifleri Iş Ortağı Merkezi 'nde ticari Market portalında Şu anda kullanılabilir.
+If you select another offer type, you may be redirected to the older [Cloud Partner Portal](https://cloudpartner.azure.com/). Only SaaS and Dynamics 365 offers are available in the Commercial Marketplace portal on Partner Center at this time.
 
-![Iş Ortağı Merkezi 'nde teklif penceresi oluştur](./media/new-offer-click.png)
+![Create offer window on Partner Center](./media/new-offer-click.png)
 
-**Yeni teklif** iletişim kutusu görüntülenir. 
+The **New offer** dialog box is displayed. 
 
-![Yeni teklif iletişim kutusu](./media/new-offer-popup.png)
+![New offer dialog box](./media/new-offer-popup.png)
 
-## <a name="offer-id-and-alias"></a>Teklif KIMLIĞI ve diğer ad
+## <a name="offer-id-and-alias"></a>Offer ID and alias
 
-- **TEKLIF kimliği**: hesabınızdaki her teklif için benzersiz tanımlayıcı. Bu KIMLIK, Market teklifi ve Azure Resource Manager şablonları (varsa) için URL adresindeki müşterilere görünür olacaktır. Teklif KIMLIĞI küçük harf, alfasayısal (kısa çizgiler ve alt çizgiler dahil ancak boşluk olmadan) olmalıdır. Bu 50 karakterle sınırlıdır ve *Oluştur*' u seçtikten sonra değiştirilemez.  
-Örnek: test-teklif-1
-<br>URL 'ye neden olur: `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`
+- **Offer ID**: Unique identifier for each offer in your account. This ID will be visible to customers in the URL address for the marketplace offer and Azure Resource Manager templates (if applicable). Offer ID must be lowercase, alphanumeric (including hyphens and underscores, but no whitespace). This is limited to 50 characters and can't be changed after you select *Create*.  
+Example: test-offer-1
+<br>Resulting in the URL: `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`
 
-- **Teklif diğer adı**: Iş Ortağı Merkezi portalı içindeki teklifine başvurmak için kullanılan ad. Bu ad Market 'te kullanılmayacak ve *teklif adından* ve müşterilere gösterilecek diğer değerlerden farklı. Bu değer, *Oluştur*' u seçtikten sonra değiştirilemez.
+- **Offer alias**: The name used to refer to the offer within the Partner Center portal. This name won't be used in the marketplace and is different than the *Offer Name* and other values that will be shown to customers. This value can't be changed after you select *Create*.
 
-<br>Örnek: test teklifi 1&#8482;
+<br>Example: Test Offer 1&#8482;
 
-**Oluştur**'u seçin.  Bu teklif için bir **teklif genel bakış** sayfası oluşturulur.  
+**Oluştur**'u seçin.  An **Offer overview** page is created for this offer.  
 
 <!---
 ![Offer overview on Partner Center](./media/commercial-marketplace-offer-overview.png)
 -->
 
-## <a name="offer-overview"></a>Teklifin genel bakış
+## <a name="offer-overview"></a>Offer overview
 
-**Teklif genel bakış** sayfası şunları içerir: 
+The **Offer overview** page includes: 
 
-- **Yayımlama durumu** , bu teklifi yayımlamak için gereken adımların görsel bir gösterimini ve her adımın tamamlanması için ne kadar sürdüğünü gösterir. Tamamlanmamış yayımlama adımı simgeleri gri olacak. 
+- The **Publishing status** displays a visual representation of the steps required to publish this offer and how long each step will take to complete. Incomplete publishing step icons will be greyed out. 
 
-- **Teklif genel bakış** menüsü, bu teklif üzerinde işlem gerçekleştirmek için bağlantıların bir listesini içerir. Bu işlem listesi, teklifiniz için yaptığınız seçime göre değişecektir.  
-    - Teklif bir taslak silise taslak silme 
-    - Teklif canlı değilse, satış teklifini durdur 
-    - Teklif önizleme sürümündedir-canlı 
-    - Yayımcı oturumunu kapatma Işlemini tamamlamadıysanız, yayımlamayı Iptal edin
+- The **Offer overview** menu contains a list of links for performing operations on this offer. This list of operations will change based on the selection you make for your offer.  
+    - If the offer is a draft - Delete draft 
+    - If the offer is live - Stop sell offer 
+    - If the offer is in preview - Go-live 
+    - If you haven't completed publisher sign out - Cancel publish
 
-## <a name="offer-setup"></a>Teklif kurulumu
+## <a name="offer-setup"></a>Offer setup
 
-**Teklif kurulumu** sekmesi aşağıdaki bilgileri ister. Bu alanları tamamladıktan sonra **Kaydet** ' i seçin.
+The **Offer setup** tab asks for the following information. Select **Save** after completing these fields.
 
-- **Microsoft üzerinden satımek istiyor musunuz?** (Evet/Hayır)
-    - **Evet**, Microsoft 'un sizin adınıza Market işlemlerini barındırmakla Microsoft aracılığıyla teklifinizi satmak istiyorsunuz; veya 
-    - **Hayır**, sizin teklifinizi, Microsoft 'tan bağımsız olarak tüm parasal işlemleri işleyerek yalnızca marketler aracılığıyla listelemek tercih edersiniz.    
+- **Would you like to sell through Microsoft?** (Yes/No)
+    - **Yes**, you would like to sell your offer through Microsoft, with Microsoft hosting marketplace transactions on your behalf; or 
+    - **No**, you would prefer to just list your offer through the marketplaces, processing any monetary transactions independently of Microsoft.    
 
-### <a name="sell-through-microsoft"></a>Microsoft ile satış
+### <a name="sell-through-microsoft"></a>Sell through Microsoft
 
-Microsoft ile satış yapmak daha iyi müşteri bulma ve alma olanağı sağlar, Microsoft 'un Market işlemlerini sizin adınıza barındırmasına olanak tanır ve Microsoft 'un küresel olarak kullanılabilir ticari özellikleri avantajlarından yararlanır.
+Selling through Microsoft provides better customer discovery and acquisition, allows Microsoft to host marketplace transactions on your behalf, and takes advantage of Microsoft's globally available commerce capabilities.
 
-#### <a name="saas-offer-requirements"></a>SaaS teklif gereksinimleri
+#### <a name="saas-offer-requirements"></a>SaaS offer requirements
 
-Iş Ortağı Merkezi 'nde ticari Market ile hizmet olarak yazılım (SaaS) teklifleri listelemek için aşağıdaki kriterlerin karşılanması gerekir:
+In order to list Software as a Service (SaaS) offers with Commercial Marketplace on Partner Center, the following criteria must be met:
 
-- Teklifinizin kimlik yönetimi ve kimlik doğrulaması için [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) kullanması gerekir.
-- Teklifinizin Azure Marketi ile tümleştirilecek [SaaS karşılama API 'lerini](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2) kullanması gerekir.
-- Daha kapsamlı gereksinimler için [SaaS teklifi Yayımlama Kılavuzu](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide)' na bakın.
+- Your offer must use [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) for identity management and authentication.
+- Your offer must use [SaaS Fulfillment APIs](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2) to integrate with the Azure Marketplace.
+- For more extensive requirements, see the [SaaS Offer Publishing Guide](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide).
 
-#### <a name="saas-pricing-and-billing-options"></a>SaaS fiyatlandırma ve faturalandırma seçenekleri
-Yayımcının Azure aboneliğinde çalışan SaaS çözümleri sayesinde, müşteriler tarafından ödenen lisans ücretleri, yazılımın dağıtıldığı altyapının maliyetini içerir. Azure altyapı kullanımı, iş ortağı tarafından doğrudan yönetilir ve size faturalandırılır. Gerçek altyapı kullanım ücretleri müşteri tarafından görülmez. Yayımcılar, Azure altyapı kullanım ücretlerini yazılım lisans fiyatlandırmasına paketlemelidir. 
+#### <a name="saas-pricing-and-billing-options"></a>SaaS pricing and billing options
+With SaaS solutions running in the publisher's Azure subscription, license fees paid by customers include the cost of the infrastructure upon which the software is deployed. Azure infrastructure usage is managed and billed to you, the partner, directly. Actual infrastructure usage fees are not seen by the customer. Publishers should bundle Azure infrastructure usage fees into their software license pricing. 
 
-SaaS, aylık veya yıllık faturalandırmaya, Kullanıcı başına veya ölçülen faturalandırma hizmeti kullanılarak sunulan tüketim ücretlerine göre destek sunuyor. Microsoft 'un ticari Market 'i, yayımcıların fiyatları, Microsoft ürün müşterileri ve Microsoft 'un bir kurum ücretini stopajına göre gelir ödediği bir kurum modeli üzerinde çalışır.
+SaaS offers support monthly or annual billing based on a flat fee, per user, or consumption charges using the metered billing service. Microsoft's commercial marketplace operates on an agency model, whereby publishers set prices, Microsoft bills customers, and Microsoft pays revenue to the publisher while withholding an agency fee.
 
-Aşağıdaki tabloda, kurum modelini göstermek için maliyetleri ve ödemlardan oluşan örnek bir bölme gösterilmektedir.
+The following table shows an example break down of costs and payouts to demonstrate the agency model.
 
-|**Lisans maliyetiniz**|**$100/ay**|
+|**Your license cost**|**$100 per month**|
 |:---|:---|
-|Azure kullanım maliyeti (D1/1-çekirdek)|Müşteriye değil doğrudan yayımcıya faturalandırılır|
-|Müşteri Microsoft tarafından faturalandırılır|aylık $100,00 (yayımcı, lisans ücretindeki herhangi bir tahakkuk eden veya geçiş altyapı maliyeti için hesap olmalıdır)|
+|Azure usage cost (D1/1-Core)|Billed directly to the publisher, not the customer|
+|Customer is billed by Microsoft|$100.00 per month (Publisher must account for any incurred or pass-through infrastructure costs in the license fee)|
 
-|**Microsoft faturaları**|**$100/ay**|
+|**Microsoft bills**|**$100 per month**|
 |:---|:---|
-|Microsoft, lisans maliyetinizi %80 oranında ödetir <br>*nitelikli SaaS uygulamaları için *, Microsoft Lisans maliyetlerinizin %90 ' ını öder*|$80,00/ay <br>Ayda 90,00 *$* *|
+|Microsoft pays you 80% of your license cost <br>**For qualified SaaS apps, Microsoft pays 90% of your license cost*|$80.00 per month <br>*$* 90.00 per month*|
 
-- Bu örnekte, Microsoft, yazılım lisansınızın $100,00 ' i müşteriye faturalandırır ve Yayımcı için $80,00 ' i ödeder.
-- **Azaltılmış Market hizmet ücreti** için uygun olan iş ortakları, 2019 2020 Haziran 'a kadar Mayıs 'a kadar olan SaaS teklifleriyle daha düşük bir işlem ücreti görür. Bu senaryoda, Microsoft, yazılım lisansınızın $100,00 ' i faturalandırır ve Yayımcı için $90,00 ' i ödeder.
+- In this example, Microsoft bills $100.00 to the customer for your software license and pays out $80.00 to the publisher.
+- Partners who have qualified for the **Reduced Marketplace Service Fee** will see a reduced transaction fee on the SaaS offers from May 2019 until June 2020. In this scenario, Microsoft bills $100.00 for your software license and pays out $90.00 to the publisher.
 
 > [!NOTE]
-> **Daha az Market hizmeti ücreti**: ticari Market 'te yayımladığınızdan belirli SaaS teklifleri için Microsoft, Market hizmet ücretini %20 ' den (Microsoft Publisher anlaşmasında açıklandığı gibi) %10 oranında azaltacak. Teklifinizin uygun olmasını sağlamak için, tekliflerinizin en az birinin, Microsoft tarafından IP ortak satışı veya IP ortak satışı önceliği atanmış olarak belirlenmiş olması gerekir.  Bu ay için daha düşük olan bu Market servis ücretini almak amacıyla her bir takvim ayının sonundan önce uygunluk en az beş (5) iş gününe ulaşılmalıdır.  Düşük Market hizmet ücreti, sanal makineler, yönetilen uygulamalar veya ticari Market 'ten sunulan diğer ürünlerle ilgili değildir.  Daha az Market hizmet ücreti yalnızca Microsoft tarafından 1 Mayıs 2019 ile 30 Haziran 2020 arasında toplanan lisans ücretleri için uygun tekliflerdir.  Bu süreden sonra Market hizmeti ücreti normal miktarına geri döner. 
+> **Reduced Marketplace Service Fee**: For certain SaaS offers that you have published on our Commercial Marketplace, Microsoft will reduce its Marketplace Service Fee from 20% (as described in the Microsoft Publisher Agreement) to 10%. In order for your offer to qualify, at least one of your offers must have been designated by Microsoft as being either IP co-sell ready or IP co-sell prioritized.  Eligibility must be met at least five (5) business days before the end of each calendar month in order to receive this reduced Marketplace Service Fee for the month.  The Reduced Marketplace Service Fee does not apply to VMs, Managed Apps or any other products made available through our Commercial Marketplace.  The Reduced Marketplace Service Fee will only be available to qualified offers for license charges collected by Microsoft between May 1, 2019 and June 30, 2020.  After this time, the Marketplace Service Fee will return to its normal amount. 
 
-### <a name="list-through-microsoft"></a>Microsoft ile Listele
+### <a name="list-through-microsoft"></a>List through Microsoft
 
-Market listesi oluşturarak işletmenizi Microsoft ile yükseltin. Microsoft 'un doğrudan yazılım lisans işlemlerine katılmayacağı, teklifinizi yalnızca bir şekilde listelemek için seçin. İlişkili bir işlem ücreti yoktur ve Yayımcı, müşteriden toplanan tüm yazılım lisanslama ücretlerine %100 oranında devam eder. Ancak yayımcı, yazılım lisans işleminin, bunlarla sınırlı olmamak üzere tüm yönlerini desteklemekten sorumludur: sipariş karşılama, ölçüm, faturalandırma, faturalama, ödeme ve koleksiyon. 
+Promote your business with Microsoft by creating a marketplace listing. Selecting to list your offer only and not transact through Microsoft means that Microsoft doesn't participate directly in software license transactions. There is no associated transaction fee and the publisher keeps 100% of any software licensing fees collected from the customer. However, the publisher is responsible for supporting all aspects of the software license transaction, including but not limited to: order fulfillment, metering, billing, invoicing, payment, and collection. 
 
-- **Potansiyel müşterilerin bu liste teklifiyle nasıl etkileşime geçmesini istiyorsunuz?**
+- **How do you want potential customers to interact with this listing offer?**
 
-##### <a name="get-it-now-free"></a>Şimdi alın (ücretsiz)
-Uygulamanıza erişebilecekleri geçerli bir URL ( *http* veya *https*ile başlayarak) sağlayarak müşterilerinizin teklifinizi ücretsiz olarak listeleyin.  Örneğin, `https://contoso.com/saas-app`
+##### <a name="get-it-now-free"></a>Get it now (free)
+List your offer to customers for free by providing a valid URL (beginning with *http* or *https*) where they can access your app.  Örneğin, `https://contoso.com/saas-app`
 
-##### <a name="free-trial-listing"></a>Ücretsiz deneme (listeleme)
-[Azure Active Directory (Azure AD) kullanarak tek tıklamayla kimlik doğrulama](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials)aracılığıyla denemeyi alabileceğiniz, GEÇERLI bir URL ( *http* veya *https*ile başlayarak) sağlayarak, ücretsiz bir deneme bağlantısı olan müşterilere teklifinizi listeleyin.  Örneğin: `https://contoso.com/trial/saas-app`. Ücretsiz denemelerdeki teklif listesi, hizmetiniz tarafından oluşturulur, yönetilir ve yapılandırılır ve Microsoft tarafından yönetilen abonelikler içermez.
+##### <a name="free-trial-listing"></a>Free trial (listing)
+List your offer to customers with a link to a free trial by providing a valid URL (beginning with *http* or *https*), where they can get a trial through [one-click authentication by using Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials).  Örneğin: `https://contoso.com/trial/saas-app`. Offer listing free trials are created, managed, and configured by your service and do not have subscriptions managed by Microsoft.
 
 > [!NOTE]
-> Deneme bağlantınız aracılığıyla uygulamanızın alacağı belirteçler yalnızca, uygulamanızda hesap oluşturmayı otomatikleştirmek için Azure AD aracılığıyla Kullanıcı bilgilerini almak üzere kullanılabilir. Bu belirteci kullanarak kimlik doğrulaması için Microsoft hesapları (MSA) desteklenmez.
+> The tokens your application will receive through your trial link can only be used to obtain user information through Azure AD to automate account creation in your app. Microsoft Accounts (MSA) are not supported for authentication using this token.
 
 ##### <a name="contact-me"></a>Benimle iletişim kurun
-Müşteri Ilişkileri yönetimi (CRM) sisteminizi bağlayarak müşteri iletişim bilgilerini toplayın. Müşterinin, bilgilerini paylaşması için izin istenir. Bu müşteri ayrıntıları, teklifinizin bulunduğu teklif adı, KIMLIĞI ve Market kaynağıyla birlikte, yapılandırdığınız CRM sistemine gönderilir. CRM 'nizi yapılandırma hakkında daha fazla bilgi için bkz. [Connect lider yönetimi](#connect-lead-management). 
+Collect customer contact information by connecting your Customer Relationship Management (CRM) system. The customer will be asked for permission to share their information. These customer details, along with the offer name, ID, and marketplace source where they found your offer, will be sent to the CRM system that you've configured. For more information about configuring your CRM, see [Connect lead management](#connect-lead-management). 
 
-## <a name="example-marketplace-offer-listing"></a>Örnek Market teklif listesi
+## <a name="example-marketplace-offer-listing"></a>Example marketplace offer listing
 
-![Not ile örnek Market teklif listesi](./media/marketplace-offer.svg)
+![Example marketplace offer listing with notes](./media/marketplace-offer.svg)
 
-## <a name="enable-a-test-drive"></a>Sınama sürücüsünü etkinleştir
+## <a name="enable-a-test-drive"></a>Enable a test drive
 
-Test sürücüsü, bu kullanıcılara teklifinizi "satın almadan önce dene" seçeneği sunarak, daha fazla dönüştürmeye ve yüksek oranda nitelikli müşteri adaylarının oluşturulmasına neden olacak şekilde sergilemenin harika bir yoludur. [Sınama sürücüleri hakkında daha fazla bilgi edinin.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
+A test drive is a great way to showcase your offer to potential customers by giving them the option to 'try before you buy', resulting in increased conversion and the generation of highly qualified leads. [Learn more about test drives.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
 
-- **Sınama sürücüsünü etkinleştir** (onay kutusu)
+- **Enable a test drive** (checkbox)
 
-Sınama sürücüsünü etkinleştirerek, müşterilerin teklifinizi sabit bir süre için denemesini sağlayacak bir tanıtım ortamı yapılandırmanız istenir. 
+By enabling test drive, you will be asked to configure a demonstration environment for customers to try your offer for a fixed period of time. 
 
-### <a name="type-of-test-drive"></a>Test sürücüsünün türü
+### <a name="type-of-test-drive"></a>Type of test drive
 
-- **[Azure Resource Manager](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)** : çözümünüzü oluşturan tüm Azure kaynaklarını içeren bir dağıtım şablonu. Bu senaryoya uyan ürünler yalnızca Azure kaynaklarını kullanır.
-- **[Iş Merkezi Için Dynamics 365](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-business-central-offer)** : Microsoft, bir iş merkezi kurumsal kaynak planlama sistemi (Finans, işlemler, tedarik ZINCIRI, CRM vb.) için test sürücüsü hizmetini (sağlama ve dağıtım dahil) barındırır ve saklar.  
-- **[Müşteri katılımı Için Dynamics 365](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/dyn365ce/cpp-customer-engagement-offer)** : Microsoft, bir müşteri katılım sistemi (Sales, Service, Project Service, alan hizmeti vb.) için test sürücüsü hizmetini (sağlama ve dağıtım dahil) barındırır ve saklar.  
-- **[Operations Için Dynamics 365](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-dynamics-365-operations-offer)** : Microsoft, finans ve operasyon kurumsal kaynak planlama sistemi (Finans, işlemler, üretim, tedarik zinciri vb.) için test sürücüsü hizmetini (sağlama ve dağıtım dahil) barındırır ve saklar. 
-- **[Mantıksal uygulama](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/logic-app-test-drive)** : tüm karmaşık çözüm mimarilerini çevreleyen bir dağıtım şablonu. Özel ürünlerin bu tür test sürücüsü kullanması gerekir.
-- **[Power BI](https://docs.microsoft.com/power-bi/service-template-apps-overview)** : özel olarak oluşturulmuş bir panoya eklenmiş bir bağlantı. Etkileşimli bir Power BI görseli göstermek isteyen ürünlerin bu tür test sürücüsünü kullanması gerekir. Buraya yüklemeniz gereken, katıştırılmış Power BI URL 'sidir.
+- **[Azure Resource Manager](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)** : A deployment template that contains all the Azure resources that comprise your solution. Products that fit this scenario use only Azure resources.
+- **[Dynamics 365 for Business Central](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-business-central-offer)** : Microsoft hosts and maintains the test drive service (including provisioning and deployment) for a Business Central enterprise resource planning system (finance, operations, supply chain, CRM, etc.).  
+- **[Dynamics 365 for Customer Engagement](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/dyn365ce/cpp-customer-engagement-offer)** : Microsoft hosts and maintains the test drive service (including provisioning and deployment) for a Customer Engagement system (sales, service, project service, field service, etc.).  
+- **[Dynamics 365 for Operations](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-dynamics-365-operations-offer)** : Microsoft hosts and maintains the test drive service (including provisioning and deployment) for a Finance and Operations enterprise resource planning system (finance, operations, manufacturing, supply chain, etc.). 
+- **[Logic app](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/logic-app-test-drive)** : A deployment template encompassing all complex solution architectures. Any custom products should use this type of Test Drive.
+- **[Power BI](https://docs.microsoft.com/power-bi/service-template-apps-overview)** : An embedded link to a custom-built dashboard. Products that want to demonstrate an interactive Power BI visual should use this type of Test Drive. All you need to upload here is your embedded Power BI URL.
 
-#### <a name="additional-test-drive-resources"></a>Ek test sürücüsü kaynakları
-- [Test sürücüsü teknik En Iyi uygulamaları](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
-- [Test sürüşü Pazarlama En Iyi yöntemleri](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
-- [Test sürücüsüne genel bakış bir sayfalayıcı](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)
+#### <a name="additional-test-drive-resources"></a>Additional test drive resources
+- [Test Drive Technical Best Practices](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
+- [Test Drive Marketing Best Practices](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
+- [Test Drive Overview One Pager](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)
 
-## <a name="connect-lead-management"></a>Müşteri adayı yönetimini bağlama
+## <a name="connect-lead-management"></a>Connect lead management
 
 [!INCLUDE [Connect lead management](./includes/connect-lead-management-a.md)]
 
-#### <a name="additional-lead-management-resources"></a>Ek lider Yönetimi kaynakları
-- [Müşteri adayı yönetimi SSS](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [Ortak lider yapılandırma hataları](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
-- [Müşteri adayı yönetimine genel bakış bir sayfalayıcı](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)
+#### <a name="additional-lead-management-resources"></a>Additional lead management resources
+- [Müşteri adayı yönetimi hakkında SSS](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
+- [Sık karşılaşılan müşteri adayı yapılandırma hataları](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
+- [Lead Management Overview One Pager](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)
 
-Sonraki bölüme geçmeden önce **kaydetmeyi** unutmayın!
+Remember to **Save** before moving on to the next section!
 
 ## <a name="properties"></a>Özellikler
-**Özellikler** sekmesi, teklifinizi markette gruplandırmak için kullanılan kategorileri ve endüstrileri, teklifinizi destekleyen yasal sözleşmeleri ve uygulama sürümünüzü tanımlamanızı ister. 
+The **Properties** tab asks you to define the categories and industries used to group your offer on the marketplaces, the legal contracts supporting your offer, and your app version. 
 
-Bu alanları tamamladıktan sonra **Kaydet** ' i seçin. 
+Select **Save** after completing these fields. 
 
 ### <a name="category"></a>Kategori
-Teklifinizi uygun Market arama alanlarında gruplandırmak için en az bir (1) ve en fazla üç (3) kategori seçin. Teklifinizin teklif açıklamasında bu kategorileri nasıl desteklediğini lütfen unutmayın. 
+Select a minimum of one (1) and a maximum of three (3) categories used for grouping your offer into the appropriate marketplace search areas. Please call out how your offer supports these categories in the offer description. 
 
 ### <a name="industry"></a>Sektör
 
 [!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
 ### <a name="app-version"></a>Uygulama sürümü
-Bu, teklifinizin sürüm numarasını belirlemek için AppSource marketi 'nde kullanılan isteğe bağlı bir alandır. 
+This is an optional field used in the AppSource marketplace to identify the version number of your offer. 
 
 ### <a name="standard-contract"></a>Standart Sözleşme
 
-- **Standart Sözleşme mi kullanıyorsunuz?**
+- **Use Standard Contract?**
 
-Müşteriler için satın alma sürecini basitleştirmek ve yazılım satıcılarının yasal karmaşıklığını azaltmak için, Microsoft, Market 'teki bir işlemin kolaylaştırılmasına yardımcı olmak üzere standart bir sözleşme şablonu sunmaktadır. 
+To simplify the procurement process for customers and reduce legal complexity for software vendors, Microsoft offers a Standard Contract template in order to help facilitate a transaction in the marketplace. 
 
-Azure Market yayımcıları, özel hüküm ve koşulları ortadan kaldırmaktansa, müşterilerine yalnızca bir kez ve kabul etmesi gereken standart sözleşme kapsamında yazılım sunmayı tercih edebilir. 
+Rather than crafting custom terms and conditions, Azure Marketplace publishers can choose to offer their software under the Standard Contract, which customers only need to vet and accept once. 
 
-Standart Sözleşme şurada bulunabilir: https://go.microsoft.com/fwlink/?linkid=2041178.
+The Standard Contract can be found here: https://go.microsoft.com/fwlink/?linkid=2041178.
 
 #### <a name="terms-of-use"></a>Kullanım koşulları
 
-Lisans koşullarınız standart sözleşmeden farklıysa, size ait yasal kullanım koşullarınızı buraya girmeye karar verebilirsiniz. Bunlar, düz metin olarak veya lisans koşullarınıza bağlanan tek bir URL olarak girilebilir.
+If your license terms are different from the Standard Contract, you can elect to enter your own legal terms of use here. These can be entered as plain text or as a single URL linking to your license terms.
 
-Müşterilerinizin uygulamanızı deneyebilmeleri için önce bu koşulları kabul etmesi gerekir. 
+Customers are required to accept these terms before they can try your app. 
 
-Sonraki bölüme geçmeden önce **kaydetmeyi** unutmayın!
+Remember to **Save** before moving on to the next section!
 
-## <a name="offer-listing"></a>Teklif listesi
+## <a name="offer-listing"></a>Offer listing
 
-Teklif listesi sekmesinde teklifinizin kullanılabildiği diller (ve pazarlar) görüntülenir. Şu anda Ingilizce (Birleşik Devletler) kullanılabilir tek konumdur. Ayrıca, Bu sayfa dile özgü listenin durumunu ve eklendiği tarih/saati görüntüler. Her dil/Pazar için Market ayrıntılarını (teklif adı, açıklama, arama terimleri vb.) tanımlamanız gerekir.
+The Offer listing tab displays the languages (and markets) where your offer is available, currently English (United States) is the only location available. Additionally, this page displays the status of the language-specific listing and the date/time that it was added. You will need to define the marketplace details (offer name, description, search terms, etc.) for each language / market.
 
 > [!NOTE]
-> Teklif açıklaması (teklif açıklaması, belgeler, ekran görüntüleri, kullanım koşulları ve Gizlilik ilkesi gibi) sunan teklif listesi, "Bu uygulama yalnızca [Ingilizce olmayan dil] ' de kullanılabilir." Ayrıca, teklif listeleme içeriğinde kullanılandan farklı bir dilde içerik sunmak için *yararlı bir bağlantı URL 'si* sağlamak da kabul edilebilir.
+> Offer listing content (such as offer description, documents, screenshots, terms of use and privacy policy) is not required to be in English as long as the offer description begins with the phrase, "This application is available only in [non-English language]." It is also acceptable to provide a *Useful Link URL* to offer content in a language other than the one used in the Offer listing content.
 
-### <a name="offer-listings"></a>Teklif listeleri
+### <a name="offer-listings"></a>Offer listings
 
-Teklif ve pazarlama varlıklarınızın açıklamaları dahil olmak üzere Market 'te görüntülenecek ayrıntıları sağlayın.
+Provide details to be displayed in the marketplace, including descriptions of your offer and marketing assets.
 
-- **Ad** (gerekli): burada tanımlanan ad, seçtiğiniz Market (ler) de teklif listelerinizin başlığı olarak görünür. Ad, önceki **yeni teklif** girişinizin temel alınarak önceden doldurulur.  Bu, trademarked olabilir.  Bu, emojıs (ticari marka ve telif hakkı sembolleri olmadıkları müddetçe) içermemelidir ve 50 karakterle sınırlı olmalıdır.
-- **Özet** (gerekli): market listeleme arama sonuçlarında kullanılacak teklifinizin kısa bir açıklamasını sağlayın. Bu alana en fazla 100 karakter metin girilebilir.
-- **Açıklama** (gerekli): market dökümüne genel bakış bölümünde gösterilecek teklifin açıklamasını sağlayın. Bir değer teklifi, önemli avantajlar, herhangi bir kategori veya sektör ilişkilendirmesi, uygulama içi satın alma fırsatları, gerekli ön kapanışlar ve daha fazla bilgi edinmek için bir bağlantı dahil etmeyi göz önünde bulundurun.
-Bu alana en fazla 3.000 karakter metin girilebilir. Ek ipuçları için [harika uygulama açıklaması yazma](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description)makalesine bakın.
-- **Anahtar sözcükleri ara**: müşterilerin Market 'te teklifinizi bulmak için kullanabileceği en fazla üç arama anahtar sözcüğü girin.
-- Başlarken **yönergeleri** (gerekli): uygulamanızı nasıl yapılandıracağınızı ve potansiyel müşteriler için kullanmaya nasıl başlayacağınız açıklanmaktadır.  Bu hızlı başlangıç, daha ayrıntılı çevrimiçi belgelere bağlantılar içerebilir. Bu alana en fazla 3.000 karakter metin girilebilir. 
+- **Name** (required): The name defined here will appear as the title of your offer listing on the marketplace(s) you have chosen. The name is prepopulated based on your previous **New offer** entry.  This may be trademarked.  This must not contain emojis (unless they are the trademark and copyright symbols) and must be limited to 50 characters.
+- **Summary** (required): Provide a short description of your offer to be used in marketplace listing(s) search results. Up to 100 characters of text can be entered in this field.
+- **Description** (required): Provide a description of your offer to be displayed in the marketplace listing(s) overview. Consider including a value proposition, key benefits, any category or industry associations, in-app purchase opportunities, any required disclosures, and a link to learn more.
+Up to 3,000 characters of text can be entered in this field. For additional tips, see the article [Write a great app description](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description).
+- **Search keywords**: Enter up to three search keywords that customers can use to find your offer in the marketplace(s).
+- **Getting started instructions** (required): Explain how to configure and start using your app for potential customers.  This quickstart can contain links to more detailed online documentation. Up to 3,000 characters of text can be entered in this field. 
 
 #### <a name="description"></a>**Açıklama**
 
-Bu gerekli bir alandır. Açıklamaya eklenecek öğeler: 
+This is a required field. Items to include in the description: 
 
-* Tanımınızın ilk birkaç cümlede teklifinizin değer teklifini açık bir şekilde açıklamalıdır.  
-* İlk birkaç tümcenin arama motoru sonuçlarında görüntülenebileceğini aklınızda bulundurun.  
-* Ürününüzü satmaya yönelik özelliklere ve işlevlere güvenmeyin. Bunun yerine, teslim ettiğiniz değere odaklanın.  
-* Sektöre özgü sözlük veya avantaj temelli bir ifade mümkün olduğunca yararlanın. 
+* Clearly describe your offer's value proposition in the first few sentences of your description.  
+* Keep in mind that the first few sentences might be displayed in search engine results.  
+* Do not rely on features and functionality to sell your product. Instead, focus on the value you deliver.  
+* Use industry-specific vocabulary or benefit-based wording as much as possible. 
 
-Değer önerinizdeki çekirdek bileşenleri aşağıdaki bilgileri içermelidir: 
+Core components of your value proposition should include the following information: 
 
-* Ürünün açıklaması. 
-* Üründen faydalanan Kullanıcı türü. 
-* Müşterinin ürün adresi olması veya bir sorun olması. 
+* Description of the product. 
+* Type of user that benefits from the product. 
+* Customer needs or pain that the product addresses. 
 
-Teklif açıklamanızı daha ilgi çekici hale getirmek için, açıklamayı biçimlendirmek için HTML etiketlerini kullanabilirsiniz. 
+To make your offer description more engaging you can use HTML tags to format the description. 
 
-1. Paragraf oluşturmak istiyorsanız, metnin başına `<p>` ekleyin ve sonuna `</p>` ekleyin.
+1. If you want to create paragraphs, add `<p>` at the begging of the text and add `</p>` at the end.
 
-    **Örnek**: 
+    **Example**: 
 
-    ilk paragrafım `<p>`. `</p>` <br>
-    `<p>` ikinci paragrafım. `</p>` <br>
+    `<p>` This is my first paragraph. `</p>` <br>
+    `<p>` This is my second paragraph. `</p>` <br>
 
-    Yukarıdaki şöyle görünür:
+    The above would look like this:
 
-    <p> İlk paragrafım. </p>
-    <p> Bu, ikinci paragrafım. </p>
+    <p> This is my first paragraph. </p>
+    <p> This is my second paragraph. </p>
 
-1. **Madde işaretli bir öğe listesi**eklemek istiyorsanız, metninizi aşağıdaki `<li>` etiketlere yerleştirin. `<ul>` ve `</ul>` etiketleri içinde daha fazla madde işaretli öğe (`<li>` ve `</li>` etiketleri arasında öğeler) kopyalayabilir ve yapıştırabilirsiniz. `<ul></ul>`eklediğinizden emin olun. 
+1. If you want to add a **bulleted list of items**, place your text within the `<li>` tags below. You can copy and paste more bulleted items (items between the `<li>` and `</li>` tags) within the `<ul>` and `</ul>` tags. Make sure you add the `<ul></ul>`. 
 
-    **Örnek**:
+    **Example**:
 
     ```
     <ul> 
@@ -251,236 +251,236 @@ Teklif açıklamanızı daha ilgi çekici hale getirmek için, açıklamayı bi�
     </ul> 
     ```
 
-    Yukarıdaki şöyle görünür:
+    The above would look like this:
     <ul> 
-        <li>Buraya metin ekleyin</li> 
-        <li> Buraya metin ekleyin </li> 
-        <li> Buraya metin ekleyin </li> 
+        <li>add text here</li> 
+        <li> add text here </li> 
+        <li> add text here </li> 
     </ul> 
 
-1. **Kalın** içerik için, kalın yapmak istediğiniz metnin başına `<b>` ekleyin ve kalın olmasını istediğiniz metnin sonuna `</b>` ekleyin. 
+1. To **bold** content, add `<b>` at the beginning of the text you want to bold and add `</b>` at the end of the text you want to bold. 
 
-    **Örnek**: `<b>` ücretsiz deneme `</b>`
+    **Example**: `<b>` FREE TRIAL `</b>`
     
-    Yukarıdaki, ÜCRETSIZ deneme kelimesinin storefront içinde teklifin açıklamasına göre kalın olmasına neden olur. 
+    The above would cause the words FREE TRIAL to be bolded in the description of the offer in the storefront. 
 
-    **ÜCRETSIZ DENEME**
+    **FREE TRIAL**
 
-1. İçeriğiniz arasına **satır sonları** eklemek için, yeni bir satırda başlamasını istediğiniz içerikten önce `<br>` ekleyin. Bir boşluk bırakmak ve içeriğin yeni bir satırda başlamasını sağlamak istiyorsanız, içerikten önce `<br><br>` ekleyin. 
+1. To add **line breaks** between your content, add `<br>` before the content that you want to start on a new line. If you want to leave a space and make sure content starts on a new line, add `<br><br>` before the content. 
 
-    **Örnek**:
+    **Example**:
 
-    Bu bir metin çizgisi. `<br>` yeni bir satırda başlatılacak bir metin çizgisi. `<br><br>` aşağıda iki satırı başlatacak bir satırdır. 
+    This is a text line. `<br>` This is a text line that will start in a new line. `<br><br>` This is a line that will start two lines below. 
 
-    Yukarıdaki şöyle görünür:
+    The above would look like this:
 
-    Bu bir metin çizgisi. <br> Bu, yeni bir satırda başlatılacak bir metin çizgisi. <br><br> Bu, aşağıdaki iki satırı başlatacak bir satırdır. 
+    This is a text line. <br> This is a text line that will start in a new line. <br><br> This is a line that will start two lines below. 
 
-1. **Metnin boyutunu artırmak**istiyorsanız, önce metnin ne kadar büyük olmasını istediğinizi seçin. Aşağıdaki örnekleri kullanın. Metnin boyutunu seçtikten sonra, metnin başına ve sonuna karşılık gelen `<H*></H*>` etiketlerini ekleyin. 
+1. If you want to **increase the size of the text**, first choose how big you want the text to be. Use the below examples. After you have selected the size of the text, add the corresponding `<H*></H*>` tags to the beginning and ending of the text. 
 
-    **Örnek**:
+    **Example**:
 
-    `<h1>`başlık 1`</h1>` <br>
-    `<h2>`başlık 2 ' dir`</h2>` <br>
-    `<h3>`başlık 3 '`</h3>` <br>
-    `<h4>`başlık 4 '`</h4>` <br>
-    `<h5>`başlık 5 ' tir`</h5>` <br>
-    `<h6>`başlık 6 ' dır`</h6>` 
+    `<h1>`This is heading 1`</h1>` <br>
+    `<h2>`This is heading 2`</h2>` <br>
+    `<h3>`This is heading 3`</h3>` <br>
+    `<h4>`This is heading 4`</h4>` <br>
+    `<h5>`This is heading 5`</h5>` <br>
+    `<h6>`This is heading 6`</h6>` 
 
-    Yukarıdaki şöyle görünür:
+    The above would look like this:
 
-    ![Örnek başlıklar](./media/heading.png)
+    ![Sample headings](./media/heading.png)
 
 #### <a name="links"></a>Bağlantılar
 
-- **Gizlilik ilkesi** (gerekli): kuruluşunuzun gizlilik ilkesine bağlayın. Uygulamanızın gizlilik yasaları ve yönetmeliklerle uyumlu olmasını sağlamaktan ve geçerli bir gizlilik ilkesi sağlamaya yönelik siz sorumlusunuz.
-- **CSP program pazarlama malzemeleri** (isteğe bağlı): teklifinizi [bulut çözümü sağlayıcısı (CSP)](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers) programına genişletmeyi seçerseniz, pazarlama malzemeleri için bir bağlantı sağlamanız gerekir. CSP, CSP iş ortaklarının teklifinizi paketlemelerine, pazarlamaya ve satmasına olanak tanıyarak, teklifinizi daha geniş bir yelpazede nitelikli müşterilere genişletir. Bu satıcıların, teklifinizi pazarlama malzemelerinden sorumlu olması gerekir. Daha fazla bilgi için bkz. [Go-to-market Services](https://partner.microsoft.com/reach-customers/gtm).
-- **Faydalı bağlantılar** (isteğe bağlı): uygulamanız veya bir **başlık** ve **URL**sağlayarak listelenen ilgili hizmetlerinize ilişkin isteğe bağlı ek çevrimiçi belgeler. **+ URL Ekle**' ye tıklayarak ek yararlı bağlantılar ekleyin.
+- **Privacy Policy** (required): Link to your organization's privacy policy. You are responsible for ensuring your app complies with privacy laws and regulations, and for providing a valid privacy policy
+- **CSP Program Marketing Materials** (optional): You must provide a link to marketing materials if you choose to extend your offer to the [Cloud Solution Provider (CSP)](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers) program. CSP extends your offer to a broader range of qualified customers by enabling CSP partners to bundle, market, and resell your offer. These resellers will need access to materials for marketing your offer. For more information, see [Go-To-Market Services](https://partner.microsoft.com/reach-customers/gtm).
+- **Useful Links** (optional): Optional supplemental online documents about your app or related services listed by providing a **Title**  and  **URL**. Add additional useful links by clicking  **+ Add a URL**.
 
 #### <a name="contact-information"></a>İletişim bilgileri
 
-- **Kişiler**: her müşteri kişisi için, bir çalışan **adı** , **telefon numarası**ve **e-posta** adresi sağlayın.  (Bunlar *herkese açık olarak gösterilmez* ). **Destek kişi** grubu Için bir **Destek URL 'si** de gereklidir.  (Bu bilgiler genel *olarak* görüntülenecektir).
+- **Contacts**: For each customer contact, provide an employee  **Name** ,  **Phone number**, and  **Email**  address.  (These *will not* be displayed publicly). A **Support URL**  is also required for the  **Support Contact**  group.  (This information *will* be displayed publicly).
 
-**Destek kişisi** (gerekli): genel destek soruları için.
+**Support contact** (required): For general support questions.
 
-**Mühendislik ilgili kişisi** (gerekli): Teknik sorular için.
+**Engineering contact** (required): For technical questions.
 
-**Channel Manager** ile ilgili iletişim (gerekli): CSP programıyla ilgili satıcı soruları için.
+**Channel Manager contact** (required): For reseller questions related to the CSP program.
 
-#### <a name="files-and-images"></a>Dosyalar ve görüntüler
+#### <a name="files-and-images"></a>Files and Images
 
-- **Belgeler** (gerekli): teklif başına en az bir (1) ve en fazla üç (3) belge sağlayan, teklifiniz için ilgili pazarlama belgelerini ekleyin.
-- **Görüntüler** (isteğe bağlı): teklifinizin logo görüntülerinin Market genelinde görünebileceği birden çok yer vardır; şu boyutlarda olması gerekir--küçük: 48 x 48 piksel _(gerekli),_ orta: 90 x 90 piksel, büyük: 216 x 216 piksel _( gerekli),_ geniş: 255 x 115 piksel ve Hero: 815 x 290 piksel. Tüm görüntülerin içinde olması gerekir. PNG biçimi.
-- **Ekran görüntüleri** (gerekli): teklifinizi gösteren ekran görüntüleri ekleyin. En fazla beş (5) ekran görüntüsü eklenebilir ve 1280 x 720 piksel boyutunda olmalıdır. Tüm görüntülerin içinde olması gerekir. PNG biçimi.
-- **Videolar** (isteğe bağlı): teklifinizi gösteren videoların bağlantılarını ekleyin. Müşteriler teklifinizle birlikte gösterilen YouTube ve/veya Vimeo videolarını içeren bağlantıları kullanabilirsiniz. Ayrıca, PNG biçiminde 1280 x 720 piksel boyutunda videonun küçük resmini de girmeniz gerekir. Her teklif için en fazla dört video görüntüleyebilirsiniz.
+- **Documents** (required): Add related marketing documents for your offer, in PDF format, providing a minimum of one (1) and maximum of three (3) documents per offer.
+- **Images** (optional): There are multiple places where your offer's logo images may appear throughout the marketplace(s), requiring the following sizes -- Small: 48 x 48 pixels _(required),_ Medium: 90 x 90 pixels, Large: 216 x 216 pixels _(required),_ Wide: 255 x 115 pixels, and Hero: 815 x 290 pixels. All images must be in .PNG format.
+- **Screenshots** (required): Add screenshots demonstrating your offer. A maximum of five (5) screenshots may be added and should be sized at 1280 x 720 pixels. All images must be in .PNG format.
+- **Videos** (optional): Add links to videos demonstrating your offer. You can use links to YouTube and/or Vimeo videos, which are shown along with your offer to customers. You will also need to enter a thumbnail image of the video, sized to 1280 x 720 pixels in PNG format. You can display a maximum of four videos per offer.
 
-Sonraki bölüme geçmeden önce **kaydetmeyi** unutmayın!
+Remember to **Save** before moving on to the next section!
 
-#### <a name="additional-marketplace-listing-resources"></a>Ek Market listeleme kaynakları
+#### <a name="additional-marketplace-listing-resources"></a>Additional marketplace listing resources
 
-- [Market teklif listeleri için en iyi uygulamalar](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
+- [Best practices for marketplace offer listings](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
 
 ## <a name="preview"></a>Önizleme
 
-**Önizleme** sekmesi, teklifinizi daha geniş Market hedef kitlelerine yayımlamadan önce teklifinizi serbest bırakmak için sınırlı bir **Önizleme hedef kitlesi** tanımlamanızı sağlar.
+The **Preview** tab enables you to define a limited **Preview Audience** for releasing your offer prior to publishing your offer live to the broader marketplace audience.
 
 > [!IMPORTANT]
-> Teklifinizi önizlemede denetledikten sonra Market ortak hedef kitlesi için canlı **çalış** ' ı seçmeniz gerekir.
+> You must select **Go live** before your offer will be published live to the marketplace public audience after checking your offer in Preview.
 
-- **Bir önizleme hedef kitlesi tanımlayın: isteğe bağlı bir açıklama ile birlikte her satır için tek bir AAD/MSA hesap e-postası ekleyin.**
+- **Define a Preview Audience: Add a single AAD/MSA account email per line, along with an optional description.**
 
-Canlı yayımlamadan önce teklifinizi doğrulamaya yardımcı olmak üzere mevcut Microsoft hesabı (MSA) veya Azure Active Directory hesapları için el ile on (10) e-posta adresi veya bir CSV dosyası karşıya yüklüyorsanız yirmi (20). Bu hesapları ekleyerek, Market 'te yayınlanmadan önce teklifiniz için önizlemeye erişim izni verilecek bir hedef kitle tanımlamanız gerekir. Teklifiniz zaten canlı ise, teklifiniz için herhangi bir değişikliği veya güncelleştirmeyi test etmek üzere bir önizleme hedef kitlesi de tanımlayabilirsiniz.
+Add up to ten (10) email addresses manually, or twenty (20) if uploading a CSV file, for existing Microsoft Account (MSA) or Azure Active Directory accounts to help with validating your offer before publishing live. By adding these accounts, you are defining an audience that will be allowed preview access to your offer before it is published to the marketplace(s). If your offer is already live, you may still define a preview audience for testing any changes or updates to your offer.
 
 > [!NOTE]
-> Önizleme hedef kitlesi, özel bir hedef kitleye göre farklılık gösterir. Bir önizleme hedef kitlesi, Market 'te canlı olarak yayımlanmadan _önce_ teklifinizin erişimine izin verilir. Ayrıca, bir plan oluşturmayı ve yalnızca özel bir hedef kitle için kullanılabilir hale getirebilirsiniz. **Plan listeleme** sekmesinde, **Bu özel bir plan** onay kutusu ile özel bir hedef kitle tanımlayabilirsiniz. Daha sonra, Azure kiracı kimliklerini kullanarak 20.000 adede kadar müşterinin özel bir kitlesini tanımlayabilirsiniz.
+> The preview audience differs from a private audience. A preview audience is allowed access to your offer _prior_ to being published live in the marketplaces. You may also choose to create a plan and make it available only to a private audience. In the **plan listing** tab, you can define a private audience with the **This is a private plan** checkbox. You can then define a private audience of up to 20,000 customers using Azure Tenant IDs.
 
-## <a name="technical-configuration"></a>Teknik yapılandırma
+## <a name="technical-configuration"></a>Technical configuration
 
-**Teknik yapılandırma** sekmesi, teklifinizi bağlamak için kullanılan teknik ayrıntıları (URL yolu, Web kancası, Kiracı kimliği ve uygulama kimliği) tanımlar. Bu bağlantı, teklifi edinmeyi tercih ettiklerinde, son müşteri için teklifinizi sağlamamızı sağlar. Toplanan alanların kullanımını açıklayan diyagramlar [SaaS karşılama API 'leri](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2)için belgelerde bulunabilir.
+The **Technical configuration** tab defines the technical details (URL path, webhook, tenant ID, and app ID) used to connect to your offer. This connection enables us to provision your offer for the end customer if they choose to acquire it. Diagrams describing the usage of the collected fields are available in documentation for [SaaS fulfillment APIs](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2).
 
-- **Giriş sayfası URL 'si** (gerekli): müşterilerinizin teklifinizi marketten aldıktan sonra hangi site URL 'sini tanımlayın. Bu URL, bir müşteri sayfaya yönlendirildiğini belirteç alan uç nokta olur. Bu belirteç, karşılama API 'Lerinde çözümle kullanılarak sağlama ayrıntıları için takas edilebilir. Bu ayrıntılar ve topladığınız tüm diğerleri, kaydınızı tamamlayıp satın almasını etkinleştirmek için deneyiminizin yerleşik olduğu müşteri etkileşimli Web sayfasının bir parçası olarak kullanılabilir.
+- **Landing page URL** (required): Define the site URL that customers will land on after acquiring your offer from the marketplace. This URL will be the endpoint that receives a token when a customer is routed to the page. That token can be exchanged for provisioning details using resolve in the fulfillment APIs. Those details and any others you collect can be used as part of a customer-interactive web page built in your experience to complete registration and activate their purchase.
 
-- **Bağlantı Web kancası** (gerekli): Microsoft 'un müşteri adına size gönderilmesi gereken tüm zaman uyumsuz olaylar için (örnek: SaaS aboneliği geçersiz oldu), bağlantı Web kancası sağlamanız gerekir. Zaten bir Web kancası sisteminiz yoksa, en basit yapılandırma, kendisine gönderilen olayları dinleyen bir HTTP uç noktası mantıksal uygulamasına sahip olmak ve bunları uygun şekilde (ör. https:\//prod-1westus.logic.azure.com:443/work) işleymelidir. Daha fazla bilgi için bkz. [Logic Apps 'TE HTTP uç noktaları Ile çağrı, tetikleyici veya iç içe iş akışları](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
+- **Connection webhook** (required): For all asynchronous events that Microsoft needs to send to you on behalf of the customer (example: SaaS Subscription has gone invalid), we require you to provide a connection webhook. If you don't already have a webhook system in place, the simplest configuration is to have an HTTP Endpoint Logic App that will listen for any events being posted to it and then handle them appropriately (e.g. https:\//prod-1westus.logic.azure.com:443/work). For more information, see [Call, trigger, or nest workflows with HTTP endpoints in logic apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
 
-- **Azure AD KIRACı kimliği** (gerekli): Azure Portal içinde, iki hizmetimiz arasındaki bağlantının kimliği doğrulanmış bir iletişimin arkasında olduğunu doğrulayabilmemiz için [BIR Azure Active Directory (ad) uygulaması oluşturmanız](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) gerekir. [KIRACı kimliğini](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)bulmak için Azure Active Directory gidin ve **Özellikler**' i seçin, ardından listelenen **dizin kimliği** numarasını (ör. 50c464d3-4930-494c-963c-1e951d15360e) arayın.
+- **Azure AD tenant ID** (required): Inside Azure portal, we require that you [create an Azure Active Directory (AD) app](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) so that we can validate the connection between our two services is behind an authenticated communication. To find the [tenant ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in), go to your Azure Active Directory and select **Properties**, then look for the **Directory ID** number listed (e.g. 50c464d3-4930-494c-963c-1e951d15360e).
 
-- **Azure AD uygulama kimliği** (gerekli): Ayrıca, [Uygulama Kimliğiniz](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) ve bir kimlik doğrulama anahtarınız olması gerekir. Bu değerleri almak için Azure Active Directory gidin ve **uygulama kayıtları**' i seçin, ardından LISTELENEN **uygulama kimliği** numarasını (ör. 50c464d3-4930-494c-963c-1e951d15360e) arayın. Kimlik doğrulama anahtarını bulmak için **Ayarlar** ' a gidin ve **anahtarlar**' ı seçin. Bir açıklama ve süre sağlamanız gerekir ve ardından bir sayı değeri sağlanacaktır.
+- **Azure AD app ID** (required): You also need your [application ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) and an authentication key. To get those values, go to your Azure Active Directory and select **App registrations**, then look for the **Application ID** number listed (e.g. 50c464d3-4930-494c-963c-1e951d15360e). To find the authentication key, go to **Settings** and select **Keys**. You will need to provide a description and duration and will then be provided a number value.
 
- Azure uygulama KIMLIĞI 'nin yayımcı KIMLIĞINIZLE ilişkilendirildiğini unutmayın, bu nedenle tüm tekliflerinizi aynı uygulama KIMLIĞININ kullanıldığından emin olun.
+ Note that the Azure application ID is associated to your publisher ID, so make sure that the same application ID is used in all your offers.
 
-## <a name="plan-overview"></a>Plana genel bakış
+## <a name="plan-overview"></a>Plan overview
 
-**Plana genel bakış** sekmesi, aynı teklif dahilinde çeşitli plan seçenekleri sağlamanıza olanak sağlar. Bu planlar (bazen SKU 'Lar olarak adlandırılır) sürüm, para veya hizmet katmanları bakımından farklılık gösterebilir. Teklifinizin Market 'te satılabilir olması için en az bir plan ayarlamanız gerekir.
+The **Plan overview** tab enables you to provide a variety of plan options within the same offer. These plans (sometimes referred to as SKUs) could differ in terms of version, monetization, or tiers of service. You must set up at least one plan in order to sell your offer in the marketplace.
 
-Oluşturulduktan sonra plan adlarınızı, kimlikleri, fiyatlandırma modellerini, kullanılabilirliği (genel veya özel), geçerli yayımlama durumunu ve kullanılabilir eylemleri görürsünüz.
+Once created, you will see your plan names, IDs, pricing models, availability (Public or Private), current publishing status, and any available actions.
 
-**Plana genel bakış** bakımından sunulan **Eylemler** planınızın geçerli durumuna bağlı olarak farklılık gösterir ve şunlar olabilir:
+**Actions** available in the **Plan overview** vary depending on the current status of your plan and may include:
 
-- Plan durumu **taslak** ise taslağı Sil
-- Plan durumu **canlı** ise, bir planı satmayı veya özel izleyiciyi Eşitlemeyi Durdur
+- If the plan status is **Draft** - Delete draft
+- If the plan status is **Live** - Stop sell plan or Sync private audience
 
-**Yeni plan oluştur** (Microsoft üzerinden satış için seçim yapan kişiler için en az bir plan)
+**Create new plan** (minimum of one plan for those who select to sell through Microsoft)
 
-- **Plan kimliği:** Bu teklifteki her plan için benzersiz bir plan KIMLIĞI oluşturun. Bu KIMLIK, ürün URL 'sindeki ve Azure Resource Manager şablonlarındaki (varsa) müşterilere görünür olacaktır. Yalnızca küçük harf, alfasayısal karakter, çizgi veya alt çizgi kullanın. Bu plan KIMLIĞI için en fazla 50 karakter kullanılabilir. Oluştur seçildikten sonra KIMLIğIN değiştirilemeyeceğini unutmayın.
-- **Plan adı:** Tekliflerinizi hangi plana seçeceğinize karar verirken, müşteriler bu adı görür. Bu teklifteki her plan için benzersiz bir teklif adı oluşturun. Plan adı, aynı teklifin bir parçası olabilecek yazılım planlarını ayırt etmek için kullanılır (ör. Teklif adı: Windows Server; planlar: Windows Server 2016, Windows Server 2019).
+- **Plan ID:** Create a unique plan ID for each plan in this offer. This ID will be visible to customers in the product URL and Azure Resource Manager templates (if applicable). Use only lowercase, alphanumeric characters, dashes or underscores. A maximum of 50 characters are allowed for this plan ID. Note that the ID cannot be modified after selecting create.
+- **Plan name:** Customers will see this name when deciding which plan to select within your offer. Create a unique offer name for each plan in this offer. The plan name is used to differentiate software plans that may be a part of the same offer (E.g. Offer name: Windows Server; plans: Windows Server 2016, Windows Server 2019).
 
-### <a name="plan-listing"></a>Planı listeleme
+### <a name="plan-listing"></a>Plan listing
 
-**Plan listeleme** sekmesinde, planınızın kullanılabildiği diller (ve pazarlar) görüntülenir. Şu anda ingilizce (Birleşik Devletler) kullanılabilir tek konumdur. Ayrıca, Bu sayfa dile özgü listenin durumunu ve eklendiği tarih/saati görüntüler. Her dil/Pazar için Market ayrıntılarını (teklif adı, açıklama, arama terimleri vb.) tanımlamanız gerekir.
+The **plan listing** tab displays the languages (and markets) where your plan is available, currently English (United States) is the only location available. Additionally, this page displays the status of the language-specific listing and the date/time that it was added. You will need to define the marketplace details (offer name, description, search terms, etc.) for each language / market.
 
-#### <a name="plan-listing-details"></a>Plan listeleme ayrıntıları
+#### <a name="plan-listing-details"></a>Plan listing details
 
-Plan dillerinden birini seçmek, **ad** ve açıklama dahil olmak üzere **Plan listesi** bilgilerini görüntüler **.**
+Selecting one of the plan languages will display the **plan listing** information, including **Name** and **Description.**
 
-- **Ad**: Önizleme **Yeni plan** girdinizi temel alarak önceden doldurulmuş ve teklifinizin Market 'te görüntülenen "yazılım planının" başlığı olarak görünür.
-- **Açıklama:** Bu açıklama, bu yazılım planının ne olduğunu ve teklifinizdeki diğer yazılım planlarından herhangi bir farklılık yaptığını açıklayan bir fırsattır. En fazla 500 karakter içerebilir.
+- **Name**: Pre-populated based on your preview **New plan** entry and will appear as the title of your offer's "Software plan" displayed in the marketplace.
+- **Description:** This description is an opportunity to explain what makes this software plan unique and any differences from other software plans within your offer. May contain up to 500 characters.
 
-Bu alanları tamamladıktan sonra **Kaydet** ' i seçin.
+Select **Save** after completing these fields.
 
-#### <a name="plan-pricing-and-availability"></a>Fiyatlandırma ve kullanılabilirlik planlaması
+#### <a name="plan-pricing-and-availability"></a>Plan pricing and availability
 
-**Fiyatlandırma ve kullanılabilirlik** sekmesi, bu planın kullanılabileceği pazarları, istenen ödeme modeli, Fiyat ve fatura terimini yapılandırmanıza olanak sağlar. Ayrıca, planın herkes için mi yoksa yalnızca belirli müşterilere mi (özel bir hedef kitle) görünür mı olacağını belirtebilirsiniz.
+The **Pricing and availability** tab enables you to configure the markets that this plan will be available in, the desired monetization model, price, and billing term. In addition, you can indicate whether to make the plan visible to everyone or only to specific customers (a private audience).
 
-##### <a name="enabling-free-trials"></a>Ücretsiz denemeleri etkinleştirme
+##### <a name="enabling-free-trials"></a>Enabling Free Trials
 
-Ticari Market aracılığıyla sunulan SaaS teklifleri, Microsoft üzerinden satılırken bir aylık ücretsiz deneme olanağı sağlamanıza olanak tanır. Ölçümlü planlar hariç tüm faturalama modelleri ve koşulları için ücretsiz denemeler desteklenir. Bu seçenek, müşterilerin bir ay boyunca ücretsiz erişim için düşük bir engel olmasına olanak sağlar.  Teklifiniz dahilinde planlar için ücretsiz denemeyi etkinleştirmeyi seçerseniz, müşteri, ilk bir ay döneminin sonundan önce ücretli bir aboneliğe dönüştürülemez.  Bu süre boyunca, teklifinizi satın alan müşteriler ücretsiz deneme sürümü etkin olan ve aralarında dönüştürme desteklenen planların herhangi birini deneyebilir.  Ücretli aboneliğe dönüştürme işlemi, dönem sonunda otomatik olarak yapılır.
-
->[!Note]
->Müşteri, ücretsiz denemeler olmadan bir plana dönüştürmeyi seçerse, dönüştürme gerçekleşecektir, ancak ücretsiz deneme hemen kaybolacaktır.  Ayrıca, bir müşteri bir plan için ödeme başladıktan sonra, ücretsiz denemeleri destekleyen bir SKU 'ya dönüştürüseler bile, aynı abonelikte artık ücretsiz deneme alamaz.
-
-Ücretsiz deneme yapılandırma özelliği, teklifinizin her bir planı için kullanılabilir. Her teklifin fiyatlandırmasına ve kullanılabilirliğine gitmeniz yeterlidir ve bir aylık denemeye izin vermek için kutuyu işaretleyin.
-
-![Bir aylık ücretsiz deneme onay kutusu](./media/free-trial-enable.png)
+SaaS offers through the commercial marketplace enable you to provide a one-month free trial when selling through Microsoft. For all billing models and terms except metered plans, free trials are supported. This option allows customers to have a low-barrier to entry through one month of free access.  If you choose to enable a free trial for plans within your offer, the customer will not be able to convert to a paid subscription before the end of the initial one month period.  During this time, customers purchasing your offer can try out any of the supported plans that have the free trial enabled and convert between them.  The conversion to a paid subscription is done automatically at the end of the term.
 
 >[!Note]
->Transactable teklifiniz ücretsiz bir deneme ile yayımlandıktan sonra bu plan için devre dışı bırakılamaz. Planı yeniden oluşturmak zorunda kalmamak için bu ayarın ilk yayımlama için doğru olduğundan emin olun.
+>If the customer chooses to convert to a plan without free trials, the conversion will happen, but the free trial will be lost immediately.  Also, once a customer starts paying for a plan, they can no longer get free trial on the same subscription again, even if they convert to a SKU that does support free trials.
 
-Ücretsiz bir denemeye katılmış olan müşteri abonelikleri hakkında bilgi edinmek için, true veya false olarak işaretlenecek `isFreeTrial`yeni API özelliğini kullanın. Daha fazla bilgi için [SaaS Get abonelik API 'sine](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription) bakın.
+The ability to configure a free trial is available for each plan in your offer. Simply navigate to the Pricing and Availability for each offer and check the box to allow a one-month trial.
+
+![One month free trial checkbox](./media/free-trial-enable.png)
 
 >[!Note]
->Market ölçüm hizmetinden yararlanan planlar için ücretsiz denemeler desteklenmez.
+>Once your transactable offer has been published with a free trial it cannot be disabled for that plan. Make sure this setting is correct for the first publish to avoid having to re-create the plan.
 
-#### <a name="markets"></a>Pazar
+To obtain information on customer subscriptions currently participating in a free trial, use the new API property `isFreeTrial`, which will be marked as true or false. See the [SaaS Get Subscription API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription) for more information.
 
-- **Pazarları Düzenle** (isteğe bağlı)
+>[!Note]
+>Free trials are not supported for plans that leverage the marketplace metering service.
 
-Her plan en az bir pazarda kullanılabilir olmalıdır. Bu planı kullanılabilir yapmak istediğiniz tüm pazar konumları için onay kutusunu seçin. Microsoft remits Sales ve kullanım vergisinin sizin adınıza yardımına dahil olduğu "vergi havalesi" ülkelerinden oluşan bir arama kutusu ve düğmesi.
+#### <a name="markets"></a>Markets
 
-Planınız için Birleşik Devletler dolar (USD) cinsinden zaten fiyatlar ayarladıysanız ve başka bir pazar konumu eklerseniz, yeni pazar fiyatı geçerli döviz kurlarına göre hesaplanır. Yayımlamadan önce her bir pazar için ücreti her zaman gözden geçirmelisiniz. Fiyatlandırma, değişiklikleriniz kaydedildikten sonra "fiyatları dışarı aktar (xlsx)" bağlantısı kullanılarak incelenebilir.
+- **Edit markets** (optional)
+
+Every plan must be available in at least one market. Select the checkbox for any market location where you would like to make this plan available. A search box and button for selecting "Tax Remitted" countries, in which Microsoft remits sales and use tax on your behalf, are included to help.
+
+If you have already set prices for your plan in United States Dollars (USD) and add another market location, the price for the new market will be calculated according to the current exchange rates. You should always review the price for each market before publishing. Pricing can be reviewed by using the "Export prices (xlsx)" link after saving your changes.
 
 #### <a name="pricing"></a>Fiyatlandırma
 
-- **Fiyatlandırma modeli**: düz oran veya koltuk tabanlı
+- **Pricing model**: Flat rate or Seat based
 
-**Düz hız:** Tek bir aylık veya yıllık fiyat sabit fiyat fiyatı ile teklifinizin erişimini etkinleştirin. Bu, bazen site tabanlı fiyatlandırma olarak adlandırılır. Bu fiyatlandırma modeliyle isteğe bağlı olarak, müşterileri standart olmayan birimlere göre ücretlendirmesi için Market ölçüm hizmeti API 'sini kullanan tarifeli planlar tanımlayabilirsiniz.  Tarifeli faturalandırma hakkında daha fazla bilgi için bkz. [Market ölçüm hizmeti kullanılarak ölçülen faturalandırma](./saas-metered-billing.md).
+**Flat rate:** Enable access to your offer with a single monthly or annual price flat rate price. This is sometimes referred to as site-based pricing. With this pricing model, you can optionally define metered plans that use the marketplace metering service API to charge customers according to non-standard units.  For more information on metered billing, see [metered billing using the marketplace metering service](./saas-metered-billing.md).
 
-**Kullanıcı başına:** Teklifle veya şirket dışı bilgisayarlara erişen kullanıcı sayısına göre fiyat ile teklifinizin erişimini etkinleştirin. Bu Kullanıcı tabanlı model, fiyata göre izin verilen en düşük ve en yüksek Kullanıcı sayısını ayarlamanıza olanak sağlar. Bu şekilde, farklı fiyat noktaları, birden çok plan yapılandırılarak kullanıcı sayısına göre yapılandırılabilir.  Bu alanlar isteğe bağlıdır. Sol tarafta yoksa, Kullanıcı sayısı bir sınıra sahip değildir (en az 1, en fazla sistem tarafından desteklenebilir). Bu alanlar, planınızdaki bir güncelleştirmenin parçası olarak düzenlenebilir.
+**Per user:** Enable access to your offer with the price based on the number of users accessing the offer or occupying seats. This user-based model enables you to set the minimum and maximum number of users allowed based on the price. This way, different price points can be configured based on the number of users by configuring multiple plans.  These fields are optional. If left unselected, the number of users will be interpreted as not having a limit (min of 1 and max of as many as the system can support). These fields may be edited as part of an update to your plan.
 
-Yayımlandıktan sonra faturalandırma fiyatlandırma modeli seçimi değiştirilemez. Ayrıca, aynı teklif için tüm planlar aynı fiyatlandırma modelini paylaşmalıdır.
+Once published, the billing pricing model choice cannot be changed. In addition, all plans for the same offer must share the same pricing model.
 
-- **Fatura dönemi**: aylık veya yıllık
+- **Billing term**: Monthly or Annual
 
-Müşterilerin listelenen fiyatı ödemesi gereken sıklığı seçin. En az bir aylık veya yıllık fiyat belirtilmelidir ya da müşteriler için her iki seçenek de kullanılabilir hale getirilebilir.
+Select the frequency that customers must pay the price listed. At least one Monthly or Annual price must be provided, or both options can be made available to customers.
 
-- **Fiyat**: aylık ABD Doları veya yıl başına ABD Doları
+- **Price**: USD per month or USD per year
 
-Yerel para birimi cinsinden ayarlanan fiyatlar (USD = Birleşik Devletler dolar), kurulum sırasında kullanılabilir olan geçerli döviz kurlarını kullanarak tüm seçili piyasaların yerel para birimine dönüştürülür. Fiyatlandırma elektronik tablosunu dışarı aktarıp her bir pazardaki fiyatı inceleyerek yayımlamadan önce bu fiyatları doğrulayın. Tek bir pazarda özel fiyatlar ayarlamak isterseniz, fiyatlandırma elektronik tablosunu değiştirin ve içeri aktarın. Bu fiyatlandırmayı doğrulamak ve bu ayarların sahibi olmak sizin sorumluluğunuzdadır.
-*\*Fiyatlandırma verilerinin dışarı aktarılmasını sağlamak için öncelikle fiyatlandırma değişikliklerinizi kaydetmeniz gerekir.*
+Prices set in local currency (USD = United States Dollar) are converted into the local currency of all selected markets using the current exchange rates available during setup. Validate these prices before publishing by exporting the pricing spreadsheet and reviewing the price in each market. If you would like to set custom prices in an individual market, modify and import the pricing spreadsheet. You are responsible for validating this pricing and own these settings.
+*\*You must first save your pricing changes to enable export of pricing data.*
 
-Bir plan yayımlandıktan sonra nelerin değiştirebilecekleri hakkında bazı kısıtlamalar olduğundan, yayımlamadan önce fiyatlarınızı dikkatlice gözden geçirin:
+Review your prices carefully before publishing, as there are some restrictions on what can change after a plan is published:
 
-- Bir plan yayımlandığında fiyatlandırma modeli değiştirilemez.
-- Bir plan için faturalandırma dönemi yayımlandıktan sonra, daha sonra kaldırılamaz.
-- Planınızdaki bir pazar bedeli yayımlandığında, daha sonra değiştirilemez.
+- Once a plan is published, the pricing model can't be changed.
+- Once a billing term is published for a plan, it can't be removed later.
+- Once a price for a market in your plan is published, it can't be changed later.
 
-### <a name="plan-audience"></a>Hedef kitle planlayın
+### <a name="plan-audience"></a>Plan Audience
 
-Her planı herkese görünür olarak veya yalnızca seçtiğiniz belirli bir kitlele yapılandırma seçeneğiniz vardır. Azure AD kiracı kimliklerini kullanarak bu kısıtlanmış hedef kitleye üyelik atayabilirsiniz.
+You have the option to configure each plan to be visible to everyone or to only a specific audience of your choosing. You can assign membership in this restricted audience using Azure AD tenant IDs.
 
 #### <a name="privacy"></a>Gizlilik
 
-- **Bu özel bir plandır** (isteğe bağlı onay kutusu)
+- **This is a private plan** (Optional checkbox)
 
-Planınızı özel ve yalnızca seçtiğiniz kısıtlanmış kitlele görünür hale getirmek için bu kutuyu işaretleyin. Özel bir plan olarak yayımlandıktan sonra izleyiciyi güncelleştirebilir veya planı herkes için kullanılabilir hale getirebilirsiniz. Bir plan herkese görünür olarak yayımlandıktan sonra herkese görünür kalması gerekir. (Plan bir özel plan olarak yeniden yapılandırılamaz).
+Check this box to make your plan private and visible only to the restricted audience of your choosing. Once published as a private plan, you can update the audience or choose to make the plan available to everyone. Once a plan is published as visible to everyone, it must remain visible to everyone. (The plan cannot be configured as a private plan again).
 
-- **Kısıtlanmış hedef kitle (kiracı kimlikleri)**
+- **Restricted Audience (Tenant IDs)**
 
-Bu özel plana erişimi olacak hedef kitleyi atayın. Atanan her kiracı KIMLIĞININ açıklamasını ekleme seçeneğiyle kiracı kimlikleri kullanılarak erişim atanır. Bir. csv elektronik tablo dosyası içeri aktarıldıysanız, en fazla 10 Kiracı kimliği eklenebilir veya 20.000 müşteri Kiracı kimliği olabilir.
+Assign the audience that will have access to this private plan. Access is assigned using tenant IDs with the option to include a description of each tenant ID assigned. A maximum of 10 tenant IDs can be added, or 20,000 customers tenant IDs if importing a .csv spreadsheet file.
 
-Kiracı, bir GUID (genel benzersiz tanımlayıcı, kaynakları tanımlamak için kullanılan 128 bitlik bir tamsayı numarası) olarak temsil edilen KIMLIĞE sahip bir kuruluşun gösterimidir. Kuruluş veya uygulama geliştirici Microsoft'la bir ilişki oluşturduğunda, örneğin Azure'a, Microsoft Intune'a veya Microsoft 365'e kaydolduğunda kuruluşun veya uygulama geliştiricinin aldığı özel bir Azure AD örneğidir. Her Azure AD kiracısı benzersizdir ve diğer Azure AD kiracılarından ayrıdır. Kiracıyı denetlemek için, uygulamanızı yönetmek üzere kullanmak istediğiniz hesapla Azure portal oturum açın. Bir kiracınız varsa, otomatik olarak bu kiracıda oturum açar ve kiracı adını doğrudan hesap adınızın altında görebilirsiniz. Adınızı, e-postanızı, dizininizi/kiracı kimliğinizi (GUID) ve etki alanınızı görmek için, Azure portalının sağ üst kısmında bulunan hesap adınızın üzerine gelin. Hesabınız birden çok kiracıyla ilişkiliyse, kiracılar arasında geçiş yapabileceğiniz bir menüyü açmak için hesap adınızı seçebilirsiniz. Her kiracının kendi kiracı kimliği vardır. Ayrıca, şu adreste bir etki alanı adı URL 'SI kullanarak kuruluşunuzun kiracı KIMLIĞINI de arayabilirsiniz: [https://www.whatismytenantid.com](https://www.whatismytenantid.com).
+A tenant is a representation of an organization, with an ID represented as a GUID (Globally Unique Identifier, a 128-bit integer number used to identify resources). Kuruluş veya uygulama geliştirici Microsoft'la bir ilişki oluşturduğunda, örneğin Azure'a, Microsoft Intune'a veya Microsoft 365'e kaydolduğunda kuruluşun veya uygulama geliştiricinin aldığı özel bir Azure AD örneğidir. Her Azure AD kiracısı benzersizdir ve diğer Azure AD kiracılarından ayrıdır. To check the tenant, sign in to the Azure portal with the account you want to use to manage your application. Bir kiracınız varsa, otomatik olarak bu kiracıda oturum açar ve kiracı adını doğrudan hesap adınızın altında görebilirsiniz. Adınızı, e-postanızı, dizininizi/kiracı kimliğinizi (GUID) ve etki alanınızı görmek için, Azure portalının sağ üst kısmında bulunan hesap adınızın üzerine gelin. Hesabınız birden çok kiracıyla ilişkiliyse, kiracılar arasında geçiş yapabileceğiniz bir menüyü açmak için hesap adınızı seçebilirsiniz. Her kiracının kendi kiracı kimliği vardır. You can also look up your organization's tenant ID using a domain name URL at:  [https://www.whatismytenantid.com](https://www.whatismytenantid.com).
 
-SaaS, özel bir hedef kitle tanımlamak için kiracı kimlikleri kullanır, diğer teklif türleri de Azure abonelik kimliklerini (GUID 'Ler olarak da temsil edilir) kullanabilir.
+While SaaS offers use tenant IDs to define a private audience, other offer types may use Azure Subscription IDs (which are also represented as GUIDs).
 
 > [!NOTE]
-> Özel hedef kitle (veya kısıtlı kitleci), önizleme kitlemesinden farklıdır. **[Önizleme](#preview)** sekmesinde bir önizleme hedef kitlesi tanımlayabilirsiniz. Bir önizleme hedef kitlesi, Market 'te canlı olarak yayımlanmadan *önce* teklifinizin erişimine izin verilir. Özel hedef kitle ataması yalnızca belirli bir plana uygulansa da, önizleme hedef kitlesi tüm planları (özel veya değil) görüntüleyebilir, ancak yalnızca plan test edilirken ve doğrulandığında sınırlı önizleme döneminde bu süre boyunca yalnızca sınırlı önizleme dönemi boyunca görüntülenebilir.
+> The private audience (or restricted audience) differs from a preview audience. In the **[Preview](#preview)** tab, you can define a preview audience. A preview audience is allowed access to your offer *prior* to the offer being published live in the marketplace. While the private audience designation only applies to a specific plan, the preview audience can view all plans (private or not), but only during the limited preview period while the plan is tested and validated.
 
-## <a name="example-list-of-plans-within-a-marketplace-offer"></a>Market teklifi içindeki planların örnek listesi
+## <a name="example-list-of-plans-within-a-marketplace-offer"></a>Example list of plans within a marketplace offer
 
-![Notlardaki örnek Market planı listesi](./media/marketplace-plan.svg)
+![Example marketplace plan listing with notes](./media/marketplace-plan.svg)
 
 ## <a name="test-drive"></a>Test sürüşü
 
 [!INCLUDE [Test drive content](./includes/commercial-marketplace-test-drive.md)]
 
-## <a name="cloud-solution-provider-csp-reseller-audience"></a>Bulut çözümü sağlayıcısı (CSP) satıcı hedef kitlesi
+## <a name="cloud-solution-provider-csp-reseller-audience"></a>Cloud Solution Provider (CSP) Reseller Audience
 
-, Teklifinizin CSP programında kullanılabilmesini sağlamak için, bulut çözümü sağlayıcılarının, müşterilerine paketlenmiş bir çözümün parçası olarak ürününüzü satmasına olanak sağlar. Daha fazla bilgi için bkz. [bulut çözümü sağlayıcısı (CSP)](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers.md).
+Electing to make your offer available in the CSP program enables Cloud Solution Providers to sell your product as part of a bundled solution to their customers. For more information, see [Cloud Solution Providers](https://go.microsoft.com/fwlink/?linkid=2111109).
 
 ## <a name="publish"></a>Yayımlama
 
-Teklifin tüm gerekli bölümlerini tamamladıktan sonra portalın sağ üst köşesinde **Yayımla** ' yı seçin. **İnceleme ve yayımlama** sayfasına yeniden yönlendirilirsiniz.
+Once you have completed all the required sections of the offer, select **publish** in the top-right corner of the portal. You will be re-directed to the **Review and publish** page.
 
-#### <a name="submit-offer-to-preview"></a>Önizlemeye teklif Gönder
+#### <a name="submit-offer-to-preview"></a>Submit offer to preview
 
-Bu teklifi ilk kez yayınlıyorsanız, şunları yapabilirsiniz:
+If this is your first time publishing this offer, you can:
 
-- Teklifin her bölümü için tamamlanma durumuna bakın.
-    - *Başlatılmamış* -bölüm dokunulmamış ve tamamlanması gereken anlamına gelir.
-    - *Tamamlanmamış* -bölümde düzeltilmesi gereken hatalar olduğu veya daha fazla bilgi sağlanması gerekir. Lütfen bölüm (ler) e geri dönün ve güncelleştirin.
-    - *Tam* -bölümün tamamlandığı, tüm gerekli verilerin sağlandığı ve hata olmadığı anlamına gelir. Teklifi gönderebilmeniz için teklifin tüm bölümlerinin tamamen bir durumda olması gerekir.
-- Uygulamanızı anlamak için yararlı olan tüm ek notlara ek olarak, uygulamanızın doğru şekilde test edilmesini sağlamak için sertifika ekibine test yönergeleri sağlayın.
-- **Gönder**' i seçerek teklifi yayımlamaya gönderebilirsiniz. Size, gözden geçirmeniz ve onaylamanız için teklifin bir önizleme sürümünün ne zaman kullanılabileceğini bilmenizi sağlayacak bir e-posta göndereceğiz. Teklifinizi ortak (veya özel bir teklif, özel hedef kitleye) yayımlamak için Iş Ortağı Merkezi 'ne dönmeniz ve teklif için **Go-Live** ' ı seçmeniz gerekir.
+- See the completion status for each section of the offer.
+    - *Not started* - means the section has not been touched and needs to be completed.
+    - *Incomplete* - means the section has errors that need to be fixed or requires more information to be provided. Please go back to the section(s) and update it.
+    - *Complete* - means the section is complete, all required data has been provided and there are no errors. All sections of the offer must be in a complete state before you can submit the offer.
+- Provide testing instructions to the certification team to ensure that your app is tested correctly, in addition to any supplementary notes helpful for understanding your app.
+- Submit the offer for publishing by selecting **Submit**. We will send you an email to let you know when a preview version of the offer is available for you to review and approve. You must return to Partner Center and select **Go-live** for the offer to publish your offer to the public (or if a private offer, to the private audience).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Ticari Market 'te mevcut bir teklifi güncelleştirme](./update-existing-offer.md)
+- [Ticari Market'te bulunan bir teklifi güncelleştirme](./update-existing-offer.md)

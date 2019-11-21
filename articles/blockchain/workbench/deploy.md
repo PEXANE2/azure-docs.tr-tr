@@ -1,222 +1,209 @@
 ---
-title: Azure blok zincirini dağıtma çalışma ekranı önizlemesi
-description: Azure blok zinciri çalışma ekranı önizlemesi nasıl dağıtılır
+title: Deploy Azure Blockchain Workbench Preview
+description: How to deploy Azure Blockchain Workbench Preview
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 09/05/2019
+ms.date: 11/19/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 2ea18c784c6b5cf61013c131360d20349e67b1e5
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 61d47709df2d1bc41bfbf61a7f71f1d73fe27389
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845271"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74222903"
 ---
-# <a name="deploy-azure-blockchain-workbench-preview"></a>Azure blok zincirini dağıtma çalışma ekranı önizlemesi
+# <a name="deploy-azure-blockchain-workbench-preview"></a>Deploy Azure Blockchain Workbench Preview
 
-Azure blok zinciri çalışma ekranı önizlemesi, Azure Marketi 'ndeki bir çözüm şablonu kullanılarak dağıtılır. Şablon, blok zinciri uygulamaları oluşturmak için gereken bileşenlerin dağıtımını basitleştirir. Bir kez dağıtıldıktan sonra, blok zinciri çalışma ekranı, Kullanıcı ve blok zinciri uygulamaları oluşturmak ve yönetmek için istemci uygulamalarına erişim sağlar.
+Azure Blockchain Workbench Preview is deployed using a solution template in the Azure Marketplace. The template simplifies the deployment of components needed to create blockchain applications. Once deployed, Blockchain Workbench provides access to client apps to create and manage users and blockchain applications.
 
-Blok zinciri çalışma ekranı bileşenleri hakkında daha fazla bilgi için bkz. [Azure blok zinciri çalışma ekranı mimarisi](architecture.md).
+For more information about the components of Blockchain Workbench, see [Azure Blockchain Workbench architecture](architecture.md).
 
 [!INCLUDE [Preview note](./includes/preview.md)]
 
 ## <a name="prepare-for-deployment"></a>Dağıtıma hazırlanma
 
-Blok zinciri çalışma ekranı, blok zinciri tabanlı bir uygulama oluşturmak için en sık kullanılan bir dizi ilgili Azure hizmeti ile birlikte bir blok zinciri defteri dağıtmanızı sağlar. Blockzincirine yönelik çalışma ekranı dağıtımı, Azure aboneliğinizdeki bir kaynak grubu içinde sağlanan aşağıdaki Azure hizmetlerine neden olur.
+Blockchain Workbench allows you to deploy a blockchain ledger along with a set of relevant Azure services most often used to build a blockchain-based application. Deploying Blockchain Workbench results in the following Azure services being provisioned within a resource group in your Azure subscription.
 
-* App Service planı (Standart)
+* App Service Plan (Standard)
 * Application Insights
 * Event Grid
 * Azure Key Vault
 * Service Bus
-* SQL veritabanı (Standart S0) + SQL mantıksal sunucusu
-* Azure depolama hesabı (Standart LRS)
-* 1 kapasiteye sahip sanal makine ölçek kümesi
-* Sanal ağ kaynak grubu (Load Balancer, ağ güvenlik grubu, genel IP adresi, sanal ağ)
-* Azure blok zinciri hizmeti. Önceki bir blok zinciri çalışma ekranı dağıtımı kullanıyorsanız Azure blok zinciri hizmetini kullanmak için Azure blok zinciri çalışma ekranı ' nu yeniden dağıtmaya dikkat edin.
+* SQL Database (Standard S0) + SQL Logical Server
+* Azure Storage account (Standard LRS)
+* Virtual machine scale set with capacity of 1
+* Virtual Network resource group (with Load Balancer, Network Security Group, Public IP Address, Virtual Network)
+* Azure Blockchain Service. If you are using a previous Blockchain Workbench deployment, consider redeploying Azure Blockchain Workbench to use Azure Blockchain Service.
 
-Aşağıda, **myblockzincirin** kaynak grubunda oluşturulan örnek bir dağıtım verilmiştir.
+The following is an example deployment created in **myblockchain** resource group.
 
-![Örnek dağıtım](media/deploy/example-deployment.png)
+![Example deployment](media/deploy/example-deployment.png)
 
-Blok zinciri çalışma ekranının maliyeti, temel alınan Azure hizmetlerinin maliyetinin toplamıdır. Azure hizmetleri fiyatlandırma bilgileri, [Fiyatlandırma hesaplayıcısı](https://azure.microsoft.com/pricing/calculator/)kullanılarak hesaplanabilir.
+The cost of Blockchain Workbench is an aggregate of the cost of the underlying Azure services. Pricing information for Azure services can be calculated using the [pricing calculator](https://azure.microsoft.com/pricing/calculator/).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Azure blok zinciri çalışma ekranı, Azure AD yapılandırması ve uygulama kayıtları gerektirir. Dağıtımdan önce Azure AD [yapılandırmalarının el ile](#azure-ad-configuration) veya bir betik dağıtımı çalıştırmadan önce bu yapılandırmayı seçebilirsiniz. Blok zinciri çalışma ekranı 'nı yeniden dağıtıyorsanız Azure [ad yapılandırması ' na bakın.](#azure-ad-configuration)
+Azure Blockchain Workbench requires Azure AD configuration and application registrations. You can choose to do the Azure AD [configurations manually](#azure-ad-configuration) before deployment or run a script post deployment. If you are redeploying Blockchain Workbench, see [Azure AD configuration](#azure-ad-configuration) to verify your Azure AD configuration.
 
 > [!IMPORTANT]
-> Çalışma ekranının, bir Azure AD uygulamasını kaydetmek için kullandığınız kiracı ile aynı kiracıya dağıtılması gerekmez. Çalışma ekranı, kaynakları dağıtmak için yeterli izinlere sahip olduğunuz bir kiracıda dağıtılmalıdır. Azure AD kiracılar hakkında daha fazla bilgi için bkz. [Active Directory kiracı alma](../../active-directory/develop/quickstart-create-new-tenant.md) ve [uygulamaları Azure Active Directory tümleştirme](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md).
+> Workbench does not have to be deployed in the same tenant as the one you are using to register an Azure AD application. Workbench must be deployed in a tenant where you have sufficient permissions to deploy resources. For more information on Azure AD tenants, see [How to get an Active Directory tenant](../../active-directory/develop/quickstart-create-new-tenant.md) and [Integrating applications with Azure Active Directory](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md).
 
-## <a name="deploy-blockchain-workbench"></a>Blok zinciri dağıtma çalışma ekranı
+## <a name="deploy-blockchain-workbench"></a>Deploy Blockchain Workbench
 
-Önkoşul adımları tamamlandıktan sonra, blok zinciri çalışma ekranına dağıtmaya hazırlanın. Aşağıdaki bölümler Framework 'ün nasıl dağıtılacağını özetler.
+Once the prerequisite steps have been completed, you are ready to deploy the Blockchain Workbench. The following sections outline how to deploy the framework.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. Sağ üst köşede hesabınızı seçin ve Azure blok zinciri 'ni dağıtmak istediğiniz Azure AD kiracısına geçiş yapın.
-3. Sol bölmede **kaynak oluştur**' u seçin. Market arama çubuğunda arama yapın. `Azure Blockchain Workbench` 
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. Select your account in the top-right corner, and switch to the desired Azure AD tenant where you want to deploy Azure Blockchain Workbench.
+1. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** öğesini seçin.
+1. Select **Blockchain** > **Azure Blockchain Workbench (preview)** .
 
-    ![Market arama çubuğu](media/deploy/marketplace-search-bar.png)
-
-4. **Azure blok zinciri çalışma ekranı**' nı seçin.
-
-    ![Market arama sonuçları](media/deploy/marketplace-search-results.png)
-
-5. **Oluştur**’u seçin.
-6. Temel ayarları doldurun.
-
-    ![Azure blok zinciri oluşturma çalışma ekranı](media/deploy/blockchain-workbench-settings-basic.png)
+    ![Create Azure Blockchain Workbench](media/deploy/blockchain-workbench-settings-basic.png)
 
     | Ayar | Açıklama  |
     |---------|--------------|
-    | Kaynak ön eki | Dağıtımınız için kısa benzersiz tanımlayıcı. Bu değer, kaynak adlandırma için temel olarak kullanılır. |
-    | VM Kullanıcı adı | Kullanıcı adı tüm sanal makineler (VM) için yönetici olarak kullanılır. |
-    | Kimlik doğrulaması türü | VM 'lere bağlanmak için bir parola veya anahtar kullanmak istiyorsanız seçin. |
-    | istemcisiyle yönetilen bir cihaz için) | Parola, VM 'lere bağlanmak için kullanılır. |
-    | SSH | **Ssh-rsa** ile başlayan tek satırlı BIÇIMDEKI bir RSA ortak anahtarı kullanın veya çok satırlı ped biçimini kullanın. Linux ve OS X veya Windows `ssh-keygen` üzerinde PuTTYgen kullanarak SSH anahtarları oluşturabilirsiniz. SSH anahtarları hakkında daha fazla bilgi için bkz. [Azure 'Da Windows Ile SSH anahtarlarını kullanma](../../virtual-machines/linux/ssh-from-windows.md). |
-    | Veritabanı ve blok zinciri parolası | Dağıtımın bir parçası olarak oluşturulan veritabanına erişim için kullanılacak parolayı belirtin. Parola aşağıdaki dört gereksinimden üçünü karşılamalıdır: uzunluğun 12 & 72 karakter, 1 küçük harf karakter, 1 büyük harf karakter, 1 sayı ve 1 özel karakter (sayı işareti (#), yüzde (%), virgül (,), yıldız (*), arka tırnak işareti içinde olması gerekir. (\`), çift tırnak ("), tek tırnak ('), tire (-) ve semicolumn (;) |
-    | Dağıtım Bölgesi | Blok zinciri çalışma ekranı kaynaklarının nereye dağıtılacağını belirtin. En iyi kullanılabilirlik için bu, **konum** ayarıyla eşleşmelidir. |
-    | Subscription | Dağıtımınız için kullanmak istediğiniz Azure aboneliğini belirtin. |
-    | Kaynak grupları | **Yeni oluştur** ' a tıklayarak yeni bir kaynak grubu oluşturun ve benzersiz bir kaynak grubu adı belirtin. |
-    | Location | Çerçeveyi dağıtmak istediğiniz bölgeyi belirtin. |
+    | Resource prefix | Short unique identifier for your deployment. This value is used as a base for naming resources. |
+    | VM user name | The user name is used as administrator for all virtual machines (VM). |
+    | Kimlik doğrulaması türü | Select if you want to use a password or key for connecting to VMs. |
+    | Parola | The password is used for connecting to VMs. |
+    | SSH | Use an RSA public key in the single-line format beginning  with **ssh-rsa** or use the multi-line PEM format. You can generate SSH keys using `ssh-keygen` on Linux and OS X, or by using PuTTYGen on Windows. More information on SSH keys, see [How to use SSH keys with Windows on Azure](../../virtual-machines/linux/ssh-from-windows.md). |
+    | Database and Blockchain password | Specify the password to use for access to the database created as part of the deployment. The password must meet three of the following four requirements: length needs to be between 12 & 72 characters, 1 lower case character, 1 upper case character, 1 number, and 1 special character that is not number sign(#), percent(%), comma(,), star(*), back quote(\`), double quote("), single quote('), dash(-) and semicolumn(;) |
+    | Deployment region | Specify where to deploy Blockchain Workbench resources. For best availability, this should match the **Location** setting. |
+    | Abonelik | Specify the Azure Subscription you wish to use for your deployment. |
+    | Kaynak grupları | Create a new Resource group by selecting **Create new** and specify a unique resource group name. |
+    | Konum | Specify the region you wish to deploy the framework. |
 
-7. Temel ayar yapılandırma bölümünü sona erdirin **Tamam ' ı** seçin.
+1. Select **OK** to finish the basic setting configuration section.
 
-8. **Gelişmiş ayarlar**' da, yeni bir blok zinciri ağı oluşturmak veya var olan yetkili bir blok zinciri ağını kullanmak istediğinizi seçin.
+1. In **Advanced Settings**, choose if you want to create a new blockchain network or use an existing proof-of-authority blockchain network.
 
-    **Yeni oluştur**:
+    For **Create new**:
 
-    *Yeni oluştur* seçeneği, varsayılan temel SKU Ile bir Azure blok zinciri hizmeti çekirdek defteri dağıtır.
+    The *create new* option deploys an Azure Blockchain Service Quorum ledger with the default basic sku.
 
-    ![Yeni blok zinciri ağı için Gelişmiş ayarlar](media/deploy/advanced-blockchain-settings-new.png)
+    ![Advanced settings for new blockchain network](media/deploy/advanced-blockchain-settings-new.png)
 
     | Ayar | Açıklama  |
     |---------|--------------|
-    | Azure blok zinciri hizmeti Fiyatlandırma Katmanı | Blok zinciri çalışma ekranı için kullanılan **temel** veya **Standart** Azure blok zinciri hizmet katmanını seçin |
-    | Azure Active Directory ayarları | **Daha sonra Ekle**' yi seçin.</br>Not: [Azure AD 'yi önceden yapılandırmayı](#azure-ad-configuration) veya yeniden dağıtımını seçerseniz, *Şimdi eklemeyi*seçin. |
-    | VM seçimi | Blok zinciri ağınız için tercih edilen depolama performansı ve VM boyutu ' nu seçin. Azure Ücretsiz katmanı gibi düşük hizmet limitlerine sahip bir aboneliğiniz varsa *Standart DS1 v2* gibi daha küçük bir VM boyutu seçin. |
+    | Azure Blockchain Service pricing tier | Choose **Basic** or **Standard** Azure Blockchain Service tier that is used for Blockchain Workbench |
+    | Azure Active Directory settings | Choose **Add Later**.</br>Note: If you chose to [pre-configure Azure AD](#azure-ad-configuration) or are redeploying, choose to *Add Now*. |
+    | VM selection | Select preferred storage performance and VM size for your blockchain network. Choose a smaller VM size such as *Standard DS1 v2* if you are on a subscription with low service limits like Azure free tier. |
 
-    **Mevcut olanı kullan**:
+    For **Use existing**:
 
-    *Mevcut olanı kullan* seçeneği, bir Ethereum yetki kanıtı (POA) blok zinciri ağı belirtmenize olanak tanır. Uç noktalar aşağıdaki gereksinimlere sahiptir.
+    The *use existing* option allows you to specify an Ethereum Proof-of-Authority (PoA) blockchain network. Endpoints have the following requirements.
 
-   * Uç nokta, bir Ethereum yetki kanıtı (PoA) blok zinciri ağı olmalıdır.
-   * Uç noktanın ağ üzerinden genel olarak erişilebilir olması gerekir.
-   * PoA blok zinciri ağı, gaz fiyatının sıfıra ayarlanmış olacak şekilde yapılandırılmalıdır.
+   * The endpoint must be an Ethereum Proof-of-Authority (PoA) blockchain network.
+   * The endpoint must be publicly accessible over the network.
+   * The PoA blockchain network should be configured to have gas price set to zero.
 
      > [!NOTE]
-     > Blok zinciri çalışma ekranı hesapları komik değildir. Fonlar gerekliyse, işlemler başarısız olur.
+     > Blockchain Workbench accounts are not funded. If funds are required, the transactions fail.
 
-     ![Mevcut blok zinciri ağı için Gelişmiş ayarlar](media/deploy/advanced-blockchain-settings-existing.png)
+     ![Advanced settings for existing blockchain network](media/deploy/advanced-blockchain-settings-existing.png)
 
      | Ayar | Açıklama  |
      |---------|--------------|
-     | Ethereum RPC uç noktası | Mevcut bir PoA blok zinciri ağının RPC uç noktasını sağlayın. Uç nokta https://veya http://ile başlar ve bir bağlantı noktası numarasıyla biter. Örneğin, `http<s>://<network-url>:<port>` |
-     | Azure Active Directory ayarları | **Daha sonra Ekle**' yi seçin.</br>Not: [Azure AD 'yi önceden yapılandırmayı](#azure-ad-configuration) veya yeniden dağıtımını seçerseniz, *Şimdi eklemeyi*seçin. |
-     | VM seçimi | Blok zinciri ağınız için tercih edilen depolama performansı ve VM boyutu ' nu seçin. Azure Ücretsiz katmanı gibi düşük hizmet limitlerine sahip bir aboneliğiniz varsa *Standart DS1 v2* gibi daha küçük bir VM boyutu seçin. |
+     | Ethereum RPC Endpoint | Provide the RPC endpoint of an existing PoA blockchain network. The endpoint starts with https:// or http:// and ends with a port number. Örneğin, `http<s>://<network-url>:<port>` |
+     | Azure Active Directory settings | Choose **Add Later**.</br>Note: If you chose to [pre-configure Azure AD](#azure-ad-configuration) or are redeploying, choose to *Add Now*. |
+     | VM selection | Select preferred storage performance and VM size for your blockchain network. Choose a smaller VM size such as *Standard DS1 v2* if you are on a subscription with low service limits like Azure free tier. |
 
-9. Gelişmiş ayarları bitirirecek **Tamam ' ı** seçin.
+1. Select **OK** to finish Advanced Settings.
 
-10. Parametrelerinizin doğru olduğunu doğrulamak için Özeti gözden geçirin.
+1. Review the summary to verify your parameters are accurate.
 
     ![Özet](media/deploy/blockchain-workbench-summary.png)
 
-11. Koşulları kabul etmek ve Azure blok zinciri çalışma sunucunuzu dağıtmak için **Oluştur** ' u seçin.
+1. Select **Create** to agree to the terms and deploy your Azure Blockchain Workbench.
 
-Dağıtım 90 dakikaya kadar sürebilir. İlerlemeyi izlemek için Azure portal kullanabilirsiniz. Yeni oluşturulan kaynak grubunda, dağıtılan yapıtların durumunu görmek için **dağıtımlar > genel bakış** ' ı seçin.
+The deployment can take up to 90 minutes. You can use the Azure portal to monitor progress. In the newly created resource group, select **Deployments > Overview** to see the status of the deployed artifacts.
 
 > [!IMPORTANT]
-> Dağıtım sonrası, Active Directory ayarları ' nı doldurmanız gerekir. **Daha sonra Ekle**' yi seçerseniz, [Azure AD yapılandırma betiğini](#azure-ad-configuration-script)çalıştırmanız gerekir.  **Şimdi Ekle**' yi seçerseniz, [yanıt URL 'sini yapılandırmanız](#configuring-the-reply-url)gerekir.
+> Post deployment, you need to complete Active Directory settings. If you chose **Add Later**, you need to run the [Azure AD configuration script](#azure-ad-configuration-script).  If you chose **Add now**, you need to [configure the Reply URL](#configuring-the-reply-url).
 
-## <a name="blockchain-workbench-web-url"></a>Blok zinciri Web URL 'SI
+## <a name="blockchain-workbench-web-url"></a>Blockchain Workbench web URL
 
-Blok zinciri çalışma ekranı dağıtımı tamamlandıktan sonra, yeni bir kaynak grubu blok zinciri çalışma ekranı kaynaklarınızı içerir. Blok zinciri çalışma ekranı hizmetlerine bir Web URL 'SI üzerinden erişilir. Aşağıdaki adımlarda, dağıtılan çerçevenin Web URL 'sini alma yöntemi gösterilmektedir.
+Once the deployment of the Blockchain Workbench has completed, a new resource group contains your Blockchain Workbench resources. Blockchain Workbench services are accessed through a web URL. The following steps show you how to retrieve the web URL of the deployed framework.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. Sol taraftaki Gezinti bölmesinde **kaynak grupları** ' nı seçin.
-3. Blok zinciri çalışma ekranı dağıtımı sırasında belirttiğiniz kaynak grubu adını seçin.
-4. Listeyi türe göre alfabetik olarak sıralamak için **tür** sütun başlığını seçin.
-5. **App Service**türünde iki kaynak vardır. "-Api" soneki *olmadan* App Service türünde kaynağı seçin.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. In the left-hand navigation pane, select **Resource groups**.
+1. Choose the resource group name you specified when deploying Blockchain Workbench.
+1. Select the **TYPE** column heading to sort the list alphabetically by type.
+1. There are two resources with type **App Service**. Select the resource of type **App Service** *without* the "-api" suffix.
 
-    ![App Service listesi](media/deploy/resource-group-list.png)
+    ![App service list](media/deploy/resource-group-list.png)
 
-6. App Service **Essentials** bölümünde, dağıtılan blok zinciri çalışma EKRANıNA Web URL 'sini temsil eden **URL** değerini kopyalayın.
+1. In the App Service **Overview**, copy the **URL** value, which represents the web URL to your deployed Blockchain Workbench.
 
-    ![App Service temelleri](media/deploy/app-service.png)
+    ![App service essentials](media/deploy/app-service.png)
 
-Özel bir etki alanı adını blok zinciri çalışma ekranı ile ilişkilendirmek için, [Traffic Manager kullanarak Azure App Service Web uygulaması için özel etki alanı adı yapılandırma](../../app-service/web-sites-traffic-manager-custom-domain-name.md)konusuna bakın.
+To associate a custom domain name with Blockchain Workbench, see [configuring a custom domain name for a web app in Azure App Service using Traffic Manager](../../app-service/web-sites-traffic-manager-custom-domain-name.md).
 
-## <a name="azure-ad-configuration-script"></a>Azure AD yapılandırma betiği
+## <a name="azure-ad-configuration-script"></a>Azure AD configuration script
 
-Blok zinciri çalışma ekranı dağıtımınızı tamamlayacak Azure AD 'nin yapılandırılması gerekir. Yapılandırmayı yapmak için bir PowerShell betiği kullanacaksınız.
+Azure AD must be configured to complete your Blockchain Workbench deployment. You'll use a PowerShell script to do the configuration.
 
-1. Bir tarayıcıda, [blok zinciri çalışma ekranı web URL](#blockchain-workbench-web-url)'sine gidin.
-2. Cloud Shell kullanarak Azure AD ayarlama yönergelerini görürsünüz. Komutu kopyalayın ve Cloud Shell başlatın.
+1. In a browser, navigate to the [Blockchain Workbench Web URL](#blockchain-workbench-web-url).
+1. You'll see instructions to set up Azure AD using Cloud Shell. Copy the command and launch Cloud Shell.
 
-    ![AAD betiğini Başlat](media/deploy/launch-aad-script.png)
+    ![Launch AAD script](media/deploy/launch-aad-script.png)
 
-3. Blok zinciri çalışma ekranı 'nı dağıttığınız Azure AD kiracısını seçin.
-4. Cloud Shell, komutunu yapıştırın ve çalıştırın.
-5. İstendiğinde, blok zinciri çalışma ekranı için kullanmak istediğiniz Azure AD kiracısını girin. Bu, blok zinciri çalışma ekranı için kullanıcıları içeren kiracı olacaktır.
+1. Choose the Azure AD tenant where you deployed Blockchain Workbench.
+1. In Cloud Shell, paste and run the command.
+1. When prompted, enter the Azure AD tenant you want to use for Blockchain Workbench. This will be the tenant containing the users for Blockchain Workbench.
 
     > [!IMPORTANT]
-    > Kimliği doğrulanmış kullanıcı, kiracıda Azure AD uygulama kayıtları oluşturmak ve yetkilendirilmiş uygulama izinleri vermek için izinler gerektirir. Kiracının yöneticisinden Azure AD yapılandırma betiğini çalıştırmasını veya yeni bir kiracı oluşturmasını isteyebilirsiniz.
+    > The authenticated user requires permissions to create Azure AD application registrations and grant delegated application permissions in the tenant. You may need to ask an administrator of the tenant to run the Azure AD configuration script or create a new tenant.
 
-    ![Azure AD kiracısını girin](media/deploy/choose-tenant.png)
+    ![Enter Azure AD tenant](media/deploy/choose-tenant.png)
 
-6. Azure AD kiracısında bir tarayıcı kullanarak kimlik doğrulaması yapmanız istenir. Web URL 'sini bir tarayıcıda açın, kodu girin ve kimlik doğrulaması yapın.
+1. You'll be prompted to authenticate to the Azure AD tenant using a browser. Open the web URL in a browser, enter the code, and authenticate.
 
-    ![Kodla kimlik doğrulama](media/deploy/authenticate.png)
+    ![Authenticate with code](media/deploy/authenticate.png)
 
-7. Betik birkaç durum iletisi verir. Kiracı başarıyla sağlandıysa **başarı** durumu iletisi alırsınız.
-8. Blok zinciri çalışma ekranı URL 'sine gidin. Dizine okuma izinleri vermeyi onaylarınız istenir. Bu, blok zinciri Web uygulamasının Kiracıdaki kullanıcılara erişimini sağlar. Kiracı yöneticisiyseniz, kuruluşun tamamı için onay seçebilirsiniz. Bu seçenek, Kiracıdaki tüm kullanıcılar için onay kabul eder. Aksi takdirde, her kullanıcıdan blok zinciri çalışma ekranı Web uygulamasının ilk kullanımı için onay istenir.
-9. Onay **kabul et** ' i seçin.
+1. The script outputs several status messages. You get a **SUCCESS** status message if the tenant was successfully provisioned.
+1. Navigate to the Blockchain Workbench URL. You are asked to consent to grant read permissions to the directory. This allows the Blockchain Workbench web app access to the users in the tenant. If you are the tenant administrator, you can choose to consent for the entire organization. This option accepts consent for all users in the tenant. Otherwise, each user is prompted for consent on first use of the Blockchain Workbench web application.
+1. Select **Accept** to consent.
 
-     ![Kullanıcı profillerini okuma onayı](media/deploy/graph-permission-consent.png)
+     ![Consent to read users profiles](media/deploy/graph-permission-consent.png)
 
-10. Onay sonrasında, blok zinciri çalışma ekranı web uygulaması kullanılabilir.
+1. After consent, the Blockchain Workbench web app can be used.
 
-## <a name="azure-ad-configuration"></a>Azure AD yapılandırması
+## <a name="azure-ad-configuration"></a>Azure AD configuration
 
-Dağıtımdan önce Azure AD ayarlarını el ile yapılandırmayı veya doğrulamayı seçerseniz, bu bölümdeki tüm adımları izleyin. Azure AD ayarlarını otomatik olarak yapılandırmak isterseniz, blok zinciri çalışma ekranı 'nı dağıttıktan sonra [Azure AD yapılandırma betiği](#azure-ad-configuration-script) ' ni kullanın.
+If you choose to manually configure or verify Azure AD settings prior to deployment, complete all steps in this section. If you prefer to automatically configure Azure AD settings, use [Azure AD configuration script](#azure-ad-configuration-script) after you deploy Blockchain Workbench.
 
 ### <a name="blockchain-workbench-api-app-registration"></a>Blockchain Workbench API'si uygulama kaydı
 
-Blok zinciri çalışma ekranı dağıtımı, bir Azure AD uygulamasının kaydedilmesini gerektirir. Uygulamayı kaydettirmek için bir Azure Active Directory (Azure AD) kiracısına sahip olmanız gerekir. Mevcut bir kiracıyı kullanabilir veya yeni bir kiracı oluşturabilirsiniz. Mevcut bir Azure AD kiracısı kullanıyorsanız, uygulamaları kaydetmek, Graph API izinleri vermek ve bir Azure AD kiracısı içinde Konuk erişimine izin vermek için yeterli izinlere sahip olmanız gerekir. Mevcut bir Azure AD kiracısında yeterli izinlere sahip değilseniz yeni bir kiracı oluşturun.
+Blockchain Workbench deployment requires registration of an Azure AD application. You need an Azure Active Directory (Azure AD) tenant to register the app. You can use an existing tenant or create a new tenant. If you are using an existing Azure AD tenant, you need sufficient permissions to register applications, grant Graph API permissions, and allow guest access within an Azure AD tenant. If you do not have sufficient permissions in an existing Azure AD tenant create a new tenant.
 
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. Sağ üst köşede hesabınızı seçin ve istediğiniz Azure AD kiracısına geçiş yapın. Kiracı, çalışma sunucusunun dağıtıldığı aboneliğin abonelik kiracısı ve uygulama kaydetmek için yeterli izinlere sahip olması gerekir.
-3. Sol taraftaki gezinti bölmesinde **Azure Active Directory** hizmetini seçin. Yeni **uygulama kayıtları** > **uygulama kaydı**' nı seçin.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. Select your account in the top-right corner, and switch to the desired Azure AD tenant. The tenant should be the subscription admin's tenant of the subscription where Azure Blockchain Workbench is deployed and you have sufficient permissions to register applications.
+1. Sol taraftaki gezinti bölmesinde **Azure Active Directory** hizmetini seçin. Select **App registrations** > **New registration**.
 
     ![Uygulama kaydı](media/deploy/app-registration.png)
 
-4. Uygulama için bir **ad** ve **oturum açma URL 'si** girin. Dağıtım sırasında değerler değiştiğinden bu yana yer tutucu değerlerini kullanabilirsiniz. 
+1. Provide a display **Name** and choose **Accounts in this organizational directory only**.
 
-    ![Uygulama kaydı oluştur](media/deploy/app-registration-create.png)
+    ![Create app registration](media/deploy/app-registration-create.png)
 
-    |Ayar  | Value  |
-    |---------|---------|
-    |Name | `Blockchain API` |
-    |Uygulama türü |Web uygulaması/API|
-    |Oturum açma URL'si | `https://blockchainapi` |
+1. Select **Register** to register the Azure AD application.
 
-5. Azure AD uygulamasını kaydetmek için **Oluştur** ' u seçin.
+### <a name="modify-manifest"></a>Modify manifest
 
-### <a name="modify-manifest"></a>Bildirimi Değiştir
+Next, you need to modify the manifest to use application roles within Azure AD to specify Blockchain Workbench administrators.  For more information about application manifests, see [Azure Active Directory application manifest](../../active-directory/develop/reference-app-manifest.md).
 
-Daha sonra, blok zinciri çalışma ekranı yöneticilerini belirtmek için bildirimi Azure AD içindeki uygulama rollerini kullanacak şekilde değiştirmeniz gerekir.  Uygulama bildirimleri hakkında daha fazla bilgi için bkz. [uygulama bildirimi Azure Active Directory](../../active-directory/develop/reference-app-manifest.md).
 
-1. Kaydettiğiniz uygulama için, kayıtlı uygulama ayrıntıları bölmesinde **bildirim** ' ı seçin.
-2. Bir GUID oluşturun. [GUID] PowerShell komutunu kullanarak bir GUID oluşturabilirsiniz:: NewGuid () veya New-GUID cmdlet 'i. Başka bir seçenek de GUID Oluşturucu Web sitesi kullanmaktır.
-3. Bildirimin **Approles** bölümünü güncelleşeceğiz. Bildirim Düzenle bölmesinde **Düzenle** ' yi seçin ve belirtilen JSON `"appRoles": []` ile değiştirin. **Kimlik** alanı değerini, oluşturduğunuz GUID ile değiştirdiğinizden emin olun. 
+1. You need to generate a GUID for the manifest. You can generate a GUID using the PowerShell command `[guid]::NewGuid()` or `New-GUID` cmdlet. Another option is to use a GUID generator website.
+1. For the application you registered, select **Manifest** in the **Manage** section.
+1. Next, update the **appRoles** section of the manifest. Replace `"appRoles": []` with the provided JSON. Be sure to replace the value for the **id** field with the GUID you generated. 
 
-    ![Bildirimi düzenle](media/deploy/edit-manifest.png)
+    ![Edit manifest](media/deploy/edit-manifest.png)
 
     ``` json
     "appRoles": [
@@ -235,94 +222,88 @@ Daha sonra, blok zinciri çalışma ekranı yöneticilerini belirtmek için bild
     ```
 
     > [!IMPORTANT]
-    > Blok zinciri çalışma ekranı yöneticilerini belirlemek için **yönetici** değeri gereklidir.
+    > The value **Administrator** is needed to identify Blockchain Workbench administrators.
 
-4. Bildirimde ayrıca **Oauth2AllowImplicitFlow** değerini **true**olarak değiştirin.
+1. In the manifest, also change the **Oauth2AllowImplicitFlow** value to **true**.
 
     ``` json
     "oauth2AllowImplicitFlow": true,
     ```
 
-5. Bildirim değişikliklerini kaydetmek için **Kaydet** ' i seçin.
+1. Select **Save** to save the manifest changes.
 
-### <a name="add-graph-api-required-permissions"></a>Gerekli Graph API izinleri ekleme
+### <a name="add-graph-api-required-permissions"></a>Add Graph API required permissions
 
-API uygulamasının dizine erişmesi için kullanıcıdan izin istemesi gerekir. API uygulaması için aşağıdaki gerekli izni ayarlayın:
+The API application needs to request permission from the user to access the directory. Set the following required permission for the API application:
 
-1. Blok zinciri API 'SI uygulama kaydında **ayarlar > gerekli izinler ' i seçin > BIR apı > Microsoft Graph seçin**.
+1. In the *Blockchain API* app registration, select **API permissions**. By default, the Graph API **User.Read** permission is added.
 
-    ![Bir API seçin](media/deploy/client-app-select-api.png)
-
-    Tıklayın **seçin**.
-
-2. **Temsilci izinleri**altında **erişimi etkinleştir** ' de, **tüm kullanıcıların temel profillerini oku '** nı seçin.
-
-    ![Erişimi etkinleştir](media/deploy/client-app-read-perms.png)
-
-    **Kaydet** ' i seçin ve **bitti**' yi seçin.
-
-3. **Gerekli izinler**' de, **izin ver** ' i seçin ve doğrulama istemi için **Evet** ' i seçin.
+1. In **Grant consent**, select **Grant admin consent** for the domain then select **Yes** for the verification prompt.
 
    ![İzinleri verme](media/deploy/client-app-grant-permissions.png)
 
-   İzin verilmesi, blok zinciri çalışma ekranının dizindeki kullanıcılara erişmesine izin verir. Okuma izni, blok zinciri çalışma ekranına üye aramak ve eklemek için gereklidir.
+   Granting permission allows Blockchain Workbench to access users in the directory. The read permission is required to search and add members to Blockchain Workbench.
 
-### <a name="get-application-id"></a>Uygulama KIMLIĞINI al
+### <a name="get-application-id"></a>Get application ID
 
-Dağıtım için uygulama KIMLIĞI ve kiracı bilgileri gereklidir. Dağıtım sırasında kullanılacak bilgileri toplayın ve depolayın.
+The application ID and tenant information are required for deployment. Collect and store the information for use during deployment.
 
-1. Kaydettiğiniz uygulama için **Ayarlar** > **Özellikler**' i seçin.
-2. **Özellikler** bölmesinde, dağıtım sırasında daha sonra kullanmak üzere aşağıdaki değerleri kopyalayın ve saklayın.
+1. For the application you registered, select **Overview**.
+1. Copy and store the **Application ID** value for later use during deployment.
 
-    ![API uygulaması özellikleri](media/deploy/app-properties.png)
+    ![API app properties](media/deploy/app-properties.png)
 
-    | Depolanacak ayar  | Dağıtımda kullan |
+    | Setting to store  | Use in deployment |
     |------------------|-------------------|
-    | Uygulama Kimliği | Azure Active Directory Kurulum > uygulama KIMLIĞI |
+    | Application (client) ID | Azure Active Directory setup > Application ID |
 
-### <a name="get-tenant-domain-name"></a>Kiracı etki alanı adını al
+### <a name="get-tenant-domain-name"></a>Get tenant domain name
 
-Uygulamaların kaydedildiği Active Directory kiracı etki alanı adını toplayın ve depolayın. 
+Collect and store the Active Directory tenant domain name where the applications are registered. 
 
-Sol taraftaki gezinti bölmesinde **Azure Active Directory** hizmetini seçin. **Özel etki alanı adları**'nı seçin. Etki alanı adını kopyalayıp depolayın.
+Sol taraftaki gezinti bölmesinde **Azure Active Directory** hizmetini seçin. **Özel etki alanı adları**'nı seçin. Copy and store the domain name.
 
 ![Etki alanı adı](media/deploy/domain-name.png)
 
-### <a name="guest-user-settings"></a>Konuk Kullanıcı ayarları
+### <a name="guest-user-settings"></a>Guest user settings
 
-Azure AD kiracınızda Konuk kullanıcılarınız varsa, blok zinciri çalışma ekranı Kullanıcı atamasının ve yönetiminin düzgün şekilde çalıştığından emin olmak için ek adımları izleyin.
+If you have guest users in your Azure AD tenant, follow the additional steps to ensure Blockchain Workbench user assignment and management works properly.
 
-1. Azure AD kiracınızı değiştirin ve **dış işbirliği ayarlarını yönetmek > Azure Active Directory > Kullanıcı ayarları**' nı seçin.
-2. **Konuk Kullanıcı izinlerinin ayarlanması,** **Hayır**ile sınırlıdır.
-    ![Dış işbirliği ayarları](media/deploy/user-collaboration-settings.png)
+1. Switch you your Azure AD tenant and select **Azure Active Directory > User settings > Manage external collaboration settings**.
+1. Set **Guest user permissions are limited** to **No**.
+    ![External collaboration settings](media/deploy/user-collaboration-settings.png)
 
-## <a name="configuring-the-reply-url"></a>Yanıt URL 'sini yapılandırma
+## <a name="configuring-the-reply-url"></a>Configuring the reply URL
 
-Azure blok zinciri çalışma ekranı dağıtıldıktan sonra, dağıtılan blok zinciri çalışma ekranı web URL 'sinin Azure Active Directory (Azure AD) istemci uygulaması **yanıt URL** 'sini yapılandırmanız gerekir.
+Once the Azure Blockchain Workbench has been deployed, you have to configure the Azure Active Directory (Azure AD) client application **Reply URL** of the deployed Blockchain Workbench web URL.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. Azure AD istemci uygulamasını kaydettiğiniz kiracıda olduğunuzu doğrulayın.
-3. Sol taraftaki gezinti bölmesinde **Azure Active Directory** hizmetini seçin. **Uygulama kayıtları**'nı seçin.
-4. Önkoşul bölümünde kaydettiğiniz Azure AD istemci uygulamasını seçin.
-5. **Yanıt URL 'leri > ayarlar**' ı seçin.
-6. Azure blok zinciri **Web URL 'Sini al** bölümünde aldığınız Azure blok zinciri çalışma ekranı dağıtımının ana Web URL 'sini belirtin. Yanıt URL 'SI ön `https://`ekine sahiptir. Örneğin, `https://myblockchain2-7v75.azurewebsites.net`
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. Verify you are in the tenant where you registered the Azure AD client application.
+1. Sol taraftaki gezinti bölmesinde **Azure Active Directory** hizmetini seçin. **Uygulama kayıtları**'nı seçin.
+1. Select the Azure AD client application you registered in the prerequisite section.
+1. Select **Authentication**.
+1. Specify the main web URL of the Azure Blockchain Workbench deployment you retrieved in the [Blockchain Workbench web URL](#blockchain-workbench-web-url) section. The Reply URL is prefixed with `https://`. Örneğin, `https://myblockchain2-7v75.azurewebsites.net`
 
-    ![Yanıt URL'leri](media/deploy/configure-reply-url.png)
+    ![Authentication reply URLs](media/deploy/configure-reply-url.png)
 
-7. İstemci kaydını güncelleştirmek için **Kaydet** ' i seçin.
+1. In the **Advanced setting** section, check **Access tokens** and **ID tokens**.
 
-## <a name="remove-a-deployment"></a>Bir dağıtımı kaldır
+    ![Authentication advanced settings](media/deploy/authentication-advanced-settings.png)
 
-Bir dağıtıma artık gerek kalmadığında, blok zinciri çalışma ekranı kaynak grubunu silerek bir dağıtımı kaldırabilirsiniz.
+1. Select **Save** to update the client registration.
 
-1. Azure portal sol gezinti bölmesindeki **kaynak grubu** ' na gidin ve silmek istediğiniz kaynak grubunu seçin. 
-2. **Kaynak grubunu sil**'i seçin. Kaynak grubu adını girip **Sil**' i seçerek silmeyi doğrulayın.
+## <a name="remove-a-deployment"></a>Remove a deployment
 
-    ![Kaynak grubunu sil](media/deploy/delete-resource-group.png)
+When a deployment is no longer needed, you can remove a deployment by deleting the Blockchain Workbench resource group.
+
+1. In the Azure portal, navigate to **Resource group** in the left navigation pane and select the resource group you want to delete. 
+1. **Kaynak grubunu sil**'i seçin. Verify deletion by entering the resource group name and select **Delete**.
+
+    ![Kaynak grubunu silme](media/deploy/delete-resource-group.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu nasıl yapılır makalesinde, Azure blok zinciri çalışma ekranı 'nı dağıttınız. Bir blok zinciri uygulaması oluşturmayı öğrenmek için, sonraki nasıl yapılır makalesine ilerleyin.
+In this how-to article, you deployed Azure Blockchain Workbench. To learn how to create a blockchain application, continue to the next how-to article.
 
 > [!div class="nextstepaction"]
-> [Azure blok zinciri çalışma ekranı 'nda bir blok zinciri uygulaması oluşturma](create-app.md)
+> [Create a blockchain application in Azure Blockchain Workbench](create-app.md)

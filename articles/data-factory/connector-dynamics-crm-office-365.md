@@ -1,91 +1,92 @@
 ---
-title: Azure Data Factory kullanarak Dynamics CRM veya Dynamics 365 ' den (Common Data Service) veri kopyalama
-description: Veri Fabrikası ardışık düzeninde bir kopyalama etkinliği kullanarak Microsoft Dynamics CRM 'den veya Microsoft Dynamics 365 ' den (Common Data Service) desteklenen havuz veri depolarına veya desteklenen kaynak veri depolarından, Dynamics CRM veya Dynamics 365 ' e veri kopyalamayı öğrenin.
+title: Copy data in Dynamics (Common Data Service)
+description: Learn how to copy data from Microsoft Dynamics CRM or Microsoft Dynamics 365 (Common Data Service) to supported sink data stores, or from supported source data stores to Dynamics CRM or Dynamics 365, by using a copy activity in a data factory pipeline.
 services: data-factory
 documentationcenter: ''
-author: linda33wj
-manager: craigg
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/25/2019
 ms.author: jingwang
-ms.openlocfilehash: c9adcf72eeec82fd4b8f1805fca1f284c0b953b7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
-ms.translationtype: MT
+author: linda33wj
+manager: craigg
+ms.reviewer: douglasl
+ms.custom: seo-lt-2019
+ms.date: 10/25/2019
+ms.openlocfilehash: b2eb6f877daf2fddaa5a61a958254cc8222ac6db
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680977"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74218581"
 ---
-# <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Ve Azure Data Factory kullanarak Dynamics 365 (Common Data Service) veya Dynamics CRM 'den veri kopyalama
+# <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Copy data from and to Dynamics 365 (Common Data Service) or Dynamics CRM by using Azure Data Factory
 
-Bu makalede, Microsoft Dynamics 365 veya Microsoft Dynamics CRM 'den verileri kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. Kopyalama etkinliğine genel bir bakış sunan [kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesinde oluşturulur.
+This article outlines how to use Copy Activity in Azure Data Factory to copy data from and to Microsoft Dynamics 365 or Microsoft Dynamics CRM. It builds on the [Copy Activity overview](copy-activity-overview.md) article that presents a general overview of Copy Activity.
 
-## <a name="supported-capabilities"></a>Desteklenen yetenekler
+## <a name="supported-capabilities"></a>Supported capabilities
 
-Bu bağlayıcı aşağıdaki etkinlikler için desteklenir:
+This connector is supported for the following activities:
 
-- [Desteklenen kaynak/havuz matrisi](copy-activity-overview.md) ile [kopyalama etkinliği](copy-activity-overview.md)
+- [Copy activity](copy-activity-overview.md) with [supported source/sink matrix](copy-activity-overview.md)
 - [Arama etkinliği](control-flow-lookup-activity.md)
 
-Dynamics 365 (Common Data Service) veya Dynamics CRM 'den, desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsiniz. Ayrıca, desteklenen herhangi bir kaynak veri deposundan verileri Dynamics 365 (Common Data Service) veya Dynamics CRM 'ye kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak veya havuz olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
+You can copy data from Dynamics 365 (Common Data Service) or Dynamics CRM to any supported sink data store. You also can copy data from any supported source data store to Dynamics 365 (Common Data Service) or Dynamics CRM. For a list of data stores supported as sources or sinks by the copy activity, see the [Supported data stores](copy-activity-overview.md#supported-data-stores-and-formats) table.
 
-Bu Dynamics Connector, hem çevrimiçi hem de şirket içi Dynamics sürüm 7. x-9. x ' i destekler. Daha özel olarak,
+This Dynamics connector supports Dynamics version 7.x to 9.x for both online or on-premises. More specifically,
 
-- Sürüm 7. x, Dynamics CRM 2015 ile eşlenir
-- Sürüm 8. x, Dynamics CRM 2016 ve önceki Dynamics 365 sürümüne eşlenir
-- Sürüm 9. x, Dynamics 365 'in sonraki sürümüyle eşlenir
+- Version 7.x maps to Dynamics CRM 2015
+- Version 8.x maps to Dynamics CRM 2016 and the early version of Dynamics 365
+- Version 9.x maps to the later version of Dynamics 365
 
-Karşılık gelen Dynamics sürümleri/ürünleri için desteklenen kimlik doğrulama türleri ve yapılandırmalarında aşağıdaki tabloya bakın. (IFD, internet 'e yönelik dağıtım için kısadır.)
+Refer to the following table on the supported authentication types and configurations for respective Dynamics versions/products. (IFD is short for internet-facing deployment.)
 
-| Dynamics sürümleri | Kimlik doğrulama türleri | Bağlı hizmet örnekleri |
+| Dynamics versions | Authentication types | Linked service samples |
 |:--- |:--- |:--- |
-| Dynamics 365 çevrimiçi <br> Dynamics CRM Online | Office365 | [Dynamics Online + Office365 auth](#dynamics-365-and-dynamics-crm-online) |
-| Şirket içinde ıFD ile Dynamics 365 <br> Azure 'da ıFD ile Dynamics CRM 2016 <br> Azure 'da ıFD ile Dynamics CRM 2015 | UYGULAMASıNı | [IFD ve ıFD kimlik doğrulaması ile şirket içi Dynamics](#dynamics-365-and-dynamics-crm-on-premises-with-ifd) |
+| Dynamics 365 online <br> Dynamics CRM Online | Office365 | [Dynamics online + Office365 auth](#dynamics-365-and-dynamics-crm-online) |
+| Dynamics 365 on-premises with IFD <br> Dynamics CRM 2016 on-premises with IFD <br> Dynamics CRM 2015 on-premises with IFD | IFD | [Dynamics on-premises with IFD + IFD auth](#dynamics-365-and-dynamics-crm-on-premises-with-ifd) |
 
-Dynamics 365 özel olarak, aşağıdaki uygulama türleri desteklenir:
+For Dynamics 365 specifically, the following application types are supported:
 
-- Sales için Dynamics 365
-- Müşteri Hizmetleri için Dynamics 365
-- Alan hizmeti için Dynamics 365
-- Project Service Automation için Dynamics 365
-- Pazarlama için Dynamics 365
+- Dynamics 365 for Sales
+- Dynamics 365 for Customer Service
+- Dynamics 365 for Field Service
+- Dynamics 365 for Project Service Automation
+- Dynamics 365 for Marketing
 
-Finans ve Işlemler, Taödünvs. gibi diğer uygulama türleri bu bağlayıcı tarafından desteklenmez.
+Other application types e.g. Finance and Operations, Talent, etc. are not supported by this connector.
 
-Bu Dynamics Connector, [Dynamics XRM araçları](https://docs.microsoft.com/dynamics365/customer-engagement/developer/build-windows-client-applications-xrm-tools)'nın üzerine kurulmuştur.
+This Dynamics connector is built on top of [Dynamics XRM tooling](https://docs.microsoft.com/dynamics365/customer-engagement/developer/build-windows-client-applications-xrm-tools).
 
 >[!TIP]
->**Dynamics 365 finans ve işlemlerinden**veri kopyalamak IÇIN [Dynamics AX bağlayıcısını](connector-dynamics-ax.md)kullanabilirsiniz.
+>To copy data from **Dynamics 365 Finance and Operations**, you can use the [Dynamics AX connector](connector-dynamics-ax.md).
 
-## <a name="get-started"></a>Başlarken
+## <a name="get-started"></a>Kullanmaya Başlayın
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Aşağıdaki bölümlerde, Dynamics 'e özgü Data Factory varlıkları tanımlamak için kullanılan özellikler hakkında ayrıntılı bilgiler sağlanmaktadır.
+The following sections provide details about properties that are used to define Data Factory entities specific to Dynamics.
 
-## <a name="linked-service-properties"></a>Bağlı hizmet özellikleri
+## <a name="linked-service-properties"></a>Linked service properties
 
-Dynamics bağlantılı hizmeti için aşağıdaki özellikler desteklenir.
+The following properties are supported for the Dynamics linked service.
 
-### <a name="dynamics-365-and-dynamics-crm-online"></a>Dynamics 365 ve Dynamics CRM Online
+### <a name="dynamics-365-and-dynamics-crm-online"></a>Dynamics 365 and Dynamics CRM Online
 
-| Özellik | Açıklama | Gerekli |
+| Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | Type özelliği **Dynamics**, **DynamicsCRM**veya **commondataserviceforapps**olarak ayarlanmalıdır. | Evet |
-| deploymentType | Dynamics örneğinin dağıtım türü. Dynamics Online için **"çevrimiçi"** olması gerekir. | Evet |
-| serviceUri | Dynamics örneğinizin hizmet URL 'SI, ör. `https://adfdynamics.crm.dynamics.com`. | Evet |
-| authenticationType | Bir Dynamics sunucusuna bağlanmak için kimlik doğrulaması türü. Dynamics Online için **"Office365"** belirtin. | Evet |
-| kullanıcı adı | Dynamics 'e bağlanmak için Kullanıcı adını belirtin. | Evet |
-| password | Kullanıcı adı için belirttiğiniz kullanıcı hesabının parolasını belirtin. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Evet |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. | Kaynak için Hayır, kaynak bağlı hizmetin bir tümleştirme çalışma zamanı yoksa, havuz için Evet |
+| type | The type property must be set to **Dynamics**, **DynamicsCrm**, or **CommonDataServiceForApps**. | Yes |
+| deploymentType | The deployment type of the Dynamics instance. It must be **"Online"** for Dynamics online. | Yes |
+| serviceUri | The service URL of your Dynamics instance, e.g. `https://adfdynamics.crm.dynamics.com`. | Yes |
+| authenticationType | The authentication type to connect to a Dynamics server. Specify **"Office365"** for Dynamics online. | Yes |
+| kullanıcı adı | Specify the user name to connect to Dynamics. | Yes |
+| password | Specify the password for the user account you specified for username. Mark this field as a SecureString to store it securely in Data Factory, or [reference a secret stored in Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| connectVia | The [integration runtime](concepts-integration-runtime.md) to be used to connect to the data store. If not specified, it uses the default Azure Integration Runtime. | No for source, Yes for sink if the source linked service doesn't have an integration runtime |
 
 >[!NOTE]
->Dynamics Connector, Dynamics CRM/365 çevrimiçi örneğinizi tanımlamak için isteğe bağlı "Organizasyonadi" özelliğini kullanmak için kullanılır. Çalışmaya devam ederken, örnek bulma için daha iyi performans kazanmak üzere yeni "serviceUri" özelliğini belirtmeniz önerilir.
+>The Dynamics connector used to use optional "organizationName" property to identify your Dynamics CRM/365 Online instance. While it keeps working, you are suggested to specify the new "serviceUri" property instead to gain better performance for instance discovery.
 
-**Örnek: Office365 kimlik doğrulaması kullanarak Dynamics Online**
+**Example: Dynamics online using Office365 authentication**
 
 ```json
 {
@@ -111,23 +112,23 @@ Dynamics bağlantılı hizmeti için aşağıdaki özellikler desteklenir.
 }
 ```
 
-### <a name="dynamics-365-and-dynamics-crm-on-premises-with-ifd"></a>Dynamics 365 ve şirket içi Dynamics CRM 'yi ıFD ile
+### <a name="dynamics-365-and-dynamics-crm-on-premises-with-ifd"></a>Dynamics 365 and Dynamics CRM on-premises with IFD
 
-*Dynamics Online ile karşılaştırılan ek özellikler şunlardır. "ana bilgisayar adı" ve "bağlantı noktası".*
+*Additional properties that compare to Dynamics online are "hostName" and "port".*
 
-| Özellik | Açıklama | Gerekli |
+| Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | Type özelliği **Dynamics**, **DynamicsCRM**veya **commondataserviceforapps**olarak ayarlanmalıdır. | Evet |
-| deploymentType | Dynamics örneğinin dağıtım türü. Bu, ıFD ile Dynamics şirket içi için **"OnPremisesWithIfd"** olmalıdır.| Evet |
-| Konak | Şirket içi Dynamics sunucusunun ana bilgisayar adı. | Evet |
-| port | Şirket içi Dynamics sunucusunun bağlantı noktası. | Hayır, varsayılan değer 443 ' dir |
-| © | Dynamics örneğinin kuruluş adı. | Evet |
-| authenticationType | Dynamics sunucusuna bağlanmak için kimlik doğrulaması türü. IFD ile Dynamics şirket içi için **"IFD"** belirtin. | Evet |
-| kullanıcı adı | Dynamics 'e bağlanmak için Kullanıcı adını belirtin. | Evet |
-| password | Kullanıcı adı için belirttiğiniz kullanıcı hesabının parolasını belirtin. Bu alanı, ADF 'de güvenli bir şekilde depolamak veya Azure Key Vault parolayı depolamak için bir SecureString olarak işaretlemeyi veya veri kopyalama işlemi gerçekleştirirken kopyalama etkinliğinin buradan daha fazla bilgi edinmesini sağlayabilirsiniz. [Key Vault mağaza kimlik bilgilerinden](store-credentials-in-key-vault.md)daha fazla bilgi edinin. | Evet |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. | Kaynak için Hayır, havuz için Evet |
+| type | The type property must be set to **Dynamics**, **DynamicsCrm**, or **CommonDataServiceForApps**. | Yes |
+| deploymentType | The deployment type of the Dynamics instance. It must be **"OnPremisesWithIfd"** for Dynamics on-premises with IFD.| Yes |
+| hostName | The host name of the on-premises Dynamics server. | Yes |
+| port | The port of the on-premises Dynamics server. | No, default is 443 |
+| organizationName | The organization name of the Dynamics instance. | Yes |
+| authenticationType | The authentication type to connect to the Dynamics server. Specify **"Ifd"** for Dynamics on-premises with IFD. | Yes |
+| kullanıcı adı | Specify the user name to connect to Dynamics. | Yes |
+| password | Specify the password for the user account you specified for username. You can choose to mark this field as a SecureString to store it securely in ADF, or store password in Azure Key Vault and let the copy activity pull from there when performing data copy - learn more from [Store credentials in Key Vault](store-credentials-in-key-vault.md). | Yes |
+| connectVia | The [integration runtime](concepts-integration-runtime.md) to be used to connect to the data store. If not specified, it uses the default Azure Integration Runtime. | No for source, Yes for sink |
 
-**Örnek: ıFD kimlik doğrulaması kullanarak ıFD ile şirket içi Dynamics**
+**Example: Dynamics on-premises with IFD using IFD authentication**
 
 ```json
 {
@@ -155,16 +156,16 @@ Dynamics bağlantılı hizmeti için aşağıdaki özellikler desteklenir.
 }
 ```
 
-## <a name="dataset-properties"></a>Veri kümesi özellikleri
+## <a name="dataset-properties"></a>Dataset properties
 
-Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölüm, Dynamics veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
+For a full list of sections and properties available for defining datasets, see the [Datasets](concepts-datasets-linked-services.md) article. This section provides a list of properties supported by Dynamics dataset.
 
-Ve Dynamics verilerini Dynamics 'ten kopyalamak için aşağıdaki özellikler desteklenir.
+To copy data from and to Dynamics, the following properties are supported.
 
-| Özellik | Açıklama | Gerekli |
+| Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | Veri kümesinin Type özelliği, **Dynamicsentity**, **dynamicscrmentity**veya **commondataserviceforappsentity**olarak ayarlanmalıdır. |Evet |
-| entityName | Alınacak varlığın mantıksal adı. | Kaynak için Hayır (etkinlik kaynağında "sorgu" belirtilmişse), havuz için Evet |
+| type | The type property of the dataset must be set to **DynamicsEntity**, **DynamicsCrmEntity**, or **CommonDataServiceForAppsEntity**. |Yes |
+| entityName | The logical name of the entity to retrieve. | No for source (if "query" in the activity source is specified), Yes for sink |
 
 **Örnek:**
 
@@ -187,23 +188,23 @@ Ve Dynamics verilerini Dynamics 'ten kopyalamak için aşağıdaki özellikler d
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 
-Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. işlem [hatları](concepts-pipelines-activities.md) makalesi. Bu bölüm, Dynamics kaynak ve havuz türleri tarafından desteklenen özelliklerin bir listesini sağlar.
+For a full list of sections and properties available for defining activities, see the [Pipelines](concepts-pipelines-activities.md) article. This section provides a list of properties supported by Dynamics source and sink types.
 
-### <a name="dynamics-as-a-source-type"></a>Kaynak türü olarak Dynamics
+### <a name="dynamics-as-a-source-type"></a>Dynamics as a source type
 
-Dynamics 'ten veri kopyalamak için, etkinlik **kaynağını** kopyalama bölümünde aşağıdaki özellikler desteklenir.
+To copy data from Dynamics, the following properties are supported in the copy activity **source** section.
 
-| Özellik | Açıklama | Gerekli |
+| Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağının Type özelliği **Dynamicssource**, **Dynamicscrmsource**veya **commondataserviceforappssource**olarak ayarlanmalıdır. | Evet |
-| sorgu | FetchXML, Dynamics 'te (çevrimiçi ve şirket içi) kullanılan özel bir sorgu dilidir. Aşağıdaki örneğe bakın. Daha fazla bilgi için bkz. [FetchXML Ile derleme sorguları](https://msdn.microsoft.com/library/gg328332.aspx). | Hayır (veri kümesindeki "entityName" belirtilmişse) |
+| type | The type property of the copy activity source must be set to **DynamicsSource**, **DynamicsCrmSource**, or **CommonDataServiceForAppsSource**. | Yes |
+| sorgu | FetchXML is a proprietary query language that is used in Dynamics (online and on-premises). Aşağıdaki örneğe bakın. To learn more, see [Build queries with FetchXML](https://msdn.microsoft.com/library/gg328332.aspx). | No (if "entityName" in the dataset is specified) |
 
 >[!NOTE]
->FetchXML sorgusunda yapılandırdığınız sütun projeksiyonu içermediği halde, PK sütunu her zaman gönderilir.
+>The PK column will always be copied out even if the column projection you configure in the FetchXML query doesn't contain it.
 
 > [!IMPORTANT]
->- Dynamics 'ten veri kopyaladığınızda, Dynamics 'ten havuza açık sütun eşlemesi isteğe bağlıdır, ancak belirleyici bir kopyalama sonucunu sağlamak için yüksek oranda yeniden belirlenir.
->- Yazar Kullanıcı arabiriminde şemayı içeri aktarırken, ADF, kaynak sütun listesini başlatmak üzere Dynamics sorgu sonucundan en üstteki satırları örnekleyerek şemayı algılar. Bu durumda, en üstteki satırlarda hiçbir değer olmayan sütunlar atlanır. Açık eşleme yoksa, aynı davranış yürütmeleri kopyalama için de geçerlidir. Eşlemeye daha fazla sütun ekleyerek, bu, kopyalama çalışma zamanı sırasında kabul edilecek.
+>- When you copy data from Dynamics, explicit column mapping from Dynamics to sink is optional but highly recommanded to ensure a deterministic copy result.
+>- When importing schema in authoring UI, ADF infers the schema by sampling the top rows from the Dynamics query result to initialize the source column list, in which case columns with no values in top rows will be omitted. The same behavior applies to copy executions if there is no explicit mapping. You can review and add more columns into the mapping, which will be honored during copy runtime.
 
 **Örnek:**
 
@@ -237,7 +238,7 @@ Dynamics 'ten veri kopyalamak için, etkinlik **kaynağını** kopyalama bölüm
 ]
 ```
 
-### <a name="sample-fetchxml-query"></a>Örnek FetchXML sorgusu
+### <a name="sample-fetchxml-query"></a>Sample FetchXML query
 
 ```xml
 <fetch>
@@ -257,24 +258,24 @@ Dynamics 'ten veri kopyalamak için, etkinlik **kaynağını** kopyalama bölüm
 </fetch>
 ```
 
-### <a name="dynamics-as-a-sink-type"></a>Havuz türü olarak Dynamics
+### <a name="dynamics-as-a-sink-type"></a>Dynamics as a sink type
 
-Verileri Dynamics 'e kopyalamak için aşağıdaki özellikler, etkinlik **havuzunu** Kopyala bölümünde desteklenir.
+To copy data to Dynamics, the following properties are supported in the copy activity **sink** section.
 
-| Özellik | Açıklama | Gerekli |
+| Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği havuzunun Type özelliği, **Dynamicssink**, **dynamicscrmsink**veya **commondataserviceforappssink**olarak ayarlanmalıdır. | Evet |
-| WriteBehavior | İşlemin yazma davranışı.<br/>İzin verilen değer **"upsert"** . | Evet |
-| alternateKeyName | "Upsert" yapmak için varlığınızda tanımlanmış alternatif anahtar adını belirtin. | Hayır |
-| writeBatchSize | Her toplu işte Dynamics 'e yazılan verilerin satır sayısı. | Hayır (varsayılan değer 10 ' dur) |
-| ıgnorenullvalues | Bir yazma işlemi sırasında giriş verilerinden (anahtar alanları hariç) null değerlerin yoksayılıp yoksayılmayacağını gösterir.<br/>İzin verilen değerler **true** ve **false**şeklindedir.<br>- **true**: bir yukarı/güncelleştirme işlemi gerçekleştirdiğinizde verileri hedef nesnede değiştirmeden bırakın. Ekleme işlemi yaparken tanımlanmış bir varsayılan değer ekleyin.<br/>- **false**: bir yukarı/güncelleştirme işlemi gerçekleştirdiğinizde hedef NESNESINDEKI verileri null olarak güncelleştirin. Ekleme işlemi yaparken NULL değer ekleyin. | Hayır (varsayılan değer false) |
+| type | The type property of the copy activity sink must be set to **DynamicsSink**, **DynamicsCrmSink**, or **CommonDataServiceForAppsSink**. | Yes |
+| writeBehavior | The write behavior of the operation.<br/>Allowed value is **"Upsert"** . | Yes |
+| alternateKeyName | Specify the alternate key name defined on your entity to perform "Upsert". | Hayır |
+| writeBatchSize | The row count of data written to Dynamics in each batch. | No (default is 10) |
+| ignoreNullValues | Indicates whether to ignore null values from input data (except key fields) during a write operation.<br/>Allowed values are **true** and **false**.<br>- **True**: Leave the data in the destination object unchanged when you do an upsert/update operation. Insert a defined default value when you do an insert operation.<br/>- **False**: Update the data in the destination object to NULL when you do an upsert/update operation. Insert a NULL value when you do an insert operation. | No (default is false) |
 
 >[!NOTE]
->"**Writebatchsize**" havuzunun varsayılan değeri ve Dynamics havuzu için kopyalama etkinliğinin " **[parallelcopy](copy-activity-performance.md#parallel-copy)** " değeri 10 ' dur. Bu nedenle, 100 kayıt aynı anda Dynamics 'e gönderilir.
+>The default value of the sink "**writeBatchSize**" and the copy activity " **[parallelCopies](copy-activity-performance.md#parallel-copy)** " for the Dynamics sink are both 10. Therefore, 100 records are submitted to Dynamics concurrently.
 
-Dynamics 365 Online için, [kuruluş başına 2 eşzamanlı toplu iş çağrısı](https://msdn.microsoft.com/library/jj863631.aspx#Run-time%20limitations)sınırı vardır. Bu sınır aşılırsa, ilk istek yürütülmeden önce bir "sunucu meşgul" hatası oluşturulur. "WriteBatchSize" öğesinin daha az veya 10 ' a eşit tutulması, eşzamanlı çağrıların bu şekilde azaltılmasını önler.
+For Dynamics 365 online, there is a limit of [2 concurrent batch calls per organization](https://msdn.microsoft.com/library/jj863631.aspx#Run-time%20limitations). If that limit is exceeded, a "Server Busy" fault is thrown before the first request is ever executed. Keeping "writeBatchSize" less or equal to 10 would avoid such throttling of concurrent calls.
 
-"**Writebatchsize**" ve "**parallelkopyaların**" en iyi birleşimi, varlığınızın şemasına bağlıdır, örneğin sütun sayısı, satır boyutu, eklentiler/iş akışları/iş akışı etkinliklerinin sayısı, bu çağrılara bağlanır, vb. 10 writeBatchSize * 10 Parallelkopyaların varsayılan ayarı, Dynamics Service 'e göre öneri, ancak çoğu Dynamics varlık için de en iyi performansa sahip olmayabilir. Kopyalama etkinliği ayarlarınızda birleşimi ayarlayarak performansı ayarlayabilirsiniz.
+The optimal combination of "**writeBatchSize**" and "**parallelCopies**" depends on the schema of your entity e.g. number of columns, row size, number of plugins/workflows/workflow activities hooked up to those calls, etc. The default setting of 10 writeBatchSize * 10 parallelCopies is the recommendation according to Dynamics service, which would work for most Dynamics entities though may not be best performance. You can tune the performance by adjusting the combination in your copy activity settings.
 
 **Örnek:**
 
@@ -310,39 +311,39 @@ Dynamics 365 Online için, [kuruluş başına 2 eşzamanlı toplu iş çağrıs�
 ]
 ```
 
-## <a name="data-type-mapping-for-dynamics"></a>Dynamics için veri türü eşlemesi
+## <a name="data-type-mapping-for-dynamics"></a>Data type mapping for Dynamics
 
-Verileri Dynamics 'ten kopyaladığınızda, Dynamics veri türlerinden aşağıdaki eşlemeler, geçici veri türleri Data Factory için kullanılır. Kopyalama etkinliğinin kaynak şemayı ve veri türünü havuza nasıl eşlediğini öğrenmek için bkz. [şema ve veri türü eşlemeleri](copy-activity-schema-and-type-mapping.md).
+When you copy data from Dynamics, the following mappings are used from Dynamics data types to Data Factory interim data types. To learn how the copy activity maps the source schema and data type to the sink, see [Schema and data type mappings](copy-activity-schema-and-type-mapping.md).
 
-Aşağıdaki eşleme tablosunu kullanarak kaynak Dynamics veri türüne göre bir veri kümesi yapısında karşılık gelen Data Factory veri türünü yapılandırın.
+Configure the corresponding Data Factory data type in a dataset structure based on your source Dynamics data type by using the following mapping table.
 
-| Dynamics veri türü | Data Factory geçici veri türü | Kaynak olarak desteklenir | Havuz olarak destekleniyor |
+| Dynamics data type | Data Factory interim data type | Supported as source | Supported as sink |
 |:--- |:--- |:--- |:--- |
-| AttributeTypeCode. BigInt | Uzun | ✓ | ✓ |
-| AttributeTypeCode. Boolean | Boole | ✓ | ✓ |
-| AttributeType. müşterisi | Guid | ✓ | |
-| AttributeType. DateTime | Hem | ✓ | ✓ |
-| AttributeType. Decimal | Kategori | ✓ | ✓ |
-| AttributeType. Double | Çift | ✓ | ✓ |
-| AttributeType. EntityName | Dize | ✓ | ✓ |
-| AttributeType. Integer | Int32 | ✓ | ✓ |
-| AttributeType. Lookup | Guid | ✓ | ✓ (tek hedefle ilişkili) |
-| AttributeType. ManagedProperty | Boole | ✓ | |
-| AttributeType. memo | Dize | ✓ | ✓ |
-| AttributeType. para | Kategori | ✓ | ✓ |
-| AttributeType. Owner | Guid | ✓ | |
-| AttributeType. seçim listesi | Int32 | ✓ | ✓ |
-| AttributeType. uniqueidentifier | Guid | ✓ | ✓ |
-| AttributeType. String | Dize | ✓ | ✓ |
-| AttributeType. State | Int32 | ✓ | ✓ |
-| AttributeType. Status | Int32 | ✓ | ✓ |
+| AttributeTypeCode.BigInt | Uzun | ✓ | ✓ |
+| AttributeTypeCode.Boolean | Boole | ✓ | ✓ |
+| AttributeType.Customer | Guid | ✓ | |
+| AttributeType.DateTime | Datetime | ✓ | ✓ |
+| AttributeType.Decimal | Decimal | ✓ | ✓ |
+| AttributeType.Double | Double | ✓ | ✓ |
+| AttributeType.EntityName | Dize | ✓ | ✓ |
+| AttributeType.Integer | Int32 | ✓ | ✓ |
+| AttributeType.Lookup | Guid | ✓ | ✓ (with single target associated) |
+| AttributeType.ManagedProperty | Boole | ✓ | |
+| AttributeType.Memo | Dize | ✓ | ✓ |
+| AttributeType.Money | Decimal | ✓ | ✓ |
+| AttributeType.Owner | Guid | ✓ | |
+| AttributeType.Picklist | Int32 | ✓ | ✓ |
+| AttributeType.Uniqueidentifier | Guid | ✓ | ✓ |
+| AttributeType.String | Dize | ✓ | ✓ |
+| AttributeType.State | Int32 | ✓ | ✓ |
+| AttributeType.Status | Int32 | ✓ | ✓ |
 
 > [!NOTE]
-> AttributeType. CalendarRules, AttributeType. Multiselectseçim listesi ve AttributeType. PartyList Dynamics veri türleri desteklenmez.
+> The Dynamics data types AttributeType.CalendarRules, AttributeType.MultiSelectPicklist and AttributeType.PartyList aren't supported.
 
-## <a name="lookup-activity-properties"></a>Arama etkinliği özellikleri
+## <a name="lookup-activity-properties"></a>Lookup activity properties
 
-Özelliklerle ilgili ayrıntıları öğrenmek için [arama etkinliğini](control-flow-lookup-activity.md)denetleyin.
+To learn details about the properties, check [Lookup activity](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Data Factory içindeki kopyalama etkinliği tarafından kaynak ve havuz olarak desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats).
+For a list of data stores supported as sources and sinks by the copy activity in Data Factory, see [Supported data stores](copy-activity-overview.md#supported-data-stores-and-formats).

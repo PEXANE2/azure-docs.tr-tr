@@ -3,44 +3,44 @@ title: include dosyası
 description: include dosyası
 services: billing
 author: rothja
-ms.service: billing
+ms.service: cost-management-billing
 ms.topic: include
 ms.date: 07/22/2019
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: f85605610727ef2c1e1987b7ef93a41ce2417a25
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: a01455da36e8ab573773fec2a6da1f7903b8ea20
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "69626413"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224372"
 ---
-| Resource | Varsayılan limit | Üst sınır |
+| Kaynak | Varsayılan limit | Üst sınır |
 | --- | --- | --- |
-| [Abonelik](../articles/billing-buy-sign-up-azure-subscription.md) başına VM |Bölge başına 25.000<sup>1</sup> . |Bölge başına 25.000. |
-| [Abonelik](../articles/billing-buy-sign-up-azure-subscription.md) başına toplam VM çekirdeği sayısı |Bölge başına 20<sup>1</sup> . | Desteğe başvurun. |
-| Abonelik başına dv2 ve F gibi sanal makine, [abonelik](../articles/billing-buy-sign-up-azure-subscription.md) başına çekirdek |Bölge başına 20<sup>1</sup> . | Desteğe başvurun. |
-| Abonelik başına [Coadministrators](../articles/billing-add-change-azure-subscription-administrator.md) |Sayısız. |Sayısız. |
-| Abonelik başına bölge başına [depolama hesapları](../articles/storage/common/storage-quickstart-create-account.md) |250 |250 |
-| Abonelik başına [kaynak grupları](../articles/azure-resource-manager/resource-group-overview.md) |980 |980 |
-| Abonelik başına [kullanılabilirlik kümesi](../articles/virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) sayısı |Bölge başına 2.000. |Bölge başına 2.000. |
-| Azure Resource Manager API isteği boyutu |4\.194.304 bayt. |4\.194.304 bayt. |
-| Abonelik başına Etiketler<sup>2</sup> |Sayısız. |Sayısız. |
-| Abonelik başına benzersiz etiket hesaplamaları<sup>2</sup> | 10,000 | 10,000 |
-| Abonelik başına [bulut hizmeti](../articles/cloud-services/cloud-services-choose-me.md) sayısı |YOK<sup>3</sup> |YOK<sup>3</sup> |
-| Abonelik başına [benzeşim grubu](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) sayısı |YOK<sup>3</sup> |YOK<sup>3</sup> |
-| Konum başına [abonelik düzeyi dağıtımlar](../articles/azure-resource-manager/deploy-to-subscription.md) | 800<sup>4</sup> | 800 |
+| [Abonelik](../articles/billing-buy-sign-up-azure-subscription.md) başına VM |25,000<sup>1</sup> per region. |25,000 per region. |
+| [Abonelik](../articles/billing-buy-sign-up-azure-subscription.md) başına toplam VM çekirdeği sayısı |20<sup>1</sup> per region. | Desteğe başvurun. |
+| VM per series, such as Dv2 and F, cores per [subscription](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> per region. | Desteğe başvurun. |
+| [Coadministrators](../articles/billing-add-change-azure-subscription-administrator.md) per subscription |Unlimited. |Unlimited. |
+| [Storage accounts](../articles/storage/common/storage-quickstart-create-account.md) per region per subscription |250 |250 |
+| [Resource groups](../articles/azure-resource-manager/resource-group-overview.md) per subscription |980 |980 |
+| [Availability sets](../articles/virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) per subscription |2,000 per region. |2,000 per region. |
+| Azure Resource Manager API request size |4,194,304 bytes. |4,194,304 bytes. |
+| Tags per subscription<sup>2</sup> |Unlimited. |Unlimited. |
+| Unique tag calculations per subscription<sup>2</sup> | 10,000 | 10,000 |
+| Abonelik başına [bulut hizmeti](../articles/cloud-services/cloud-services-choose-me.md) sayısı |N/A<sup>3</sup> |N/A<sup>3</sup> |
+| Abonelik başına [benzeşim grubu](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) sayısı |N/A<sup>3</sup> |N/A<sup>3</sup> |
+| [Subscription-level deployments](../articles/azure-resource-manager/deploy-to-subscription.md) per location | 800<sup>4</sup> | 800 |
 
-<sup>1</sup> Varsayılan sınırlar, ücretsiz deneme, Kullandıkça öde ve dv2, F ve G gibi seriler gibi teklif kategorisi türüne göre farklılık gösterir. Örneğin, Kurumsal Anlaşma abonelikler için varsayılan değer 350 ' dir.
+<sup>1</sup>Default limits vary by offer category type, such as Free Trial and Pay-As-You-Go, and by series, such as Dv2, F, and G. For example, the default for Enterprise Agreement subscriptions is 350.
 
-<sup>2</sup> Abonelik başına sınırsız sayıda etiket uygulayabilirsiniz. Kaynak veya kaynak grubu başına etiket sayısı 50 ile sınırlıdır. Kaynak Yöneticisi, yalnızca etiket sayısı 10.000 veya daha az olduğunda, abonelikteki [benzersiz etiket adı ve değerlerinin listesini](/rest/api/resources/tags) döndürür. Sayı 10.000 ' i aştığında yine de etikete göre bir kaynak bulabilirsiniz.  
+<sup>2</sup>You can apply an unlimited number of tags per subscription. The number of tags per resource or resource group is limited to 50. Resource Manager returns a [list of unique tag name and values](/rest/api/resources/tags) in the subscription only when the number of tags is 10,000 or less. You still can find a resource by tag when the number exceeds 10,000.  
 
-<sup>3</sup> Bu özellikler artık Azure Kaynak grupları ve Kaynak Yöneticisi için gerekli değildir.
+<sup>3</sup>These features are no longer required with Azure resource groups and Resource Manager.
 
-<sup>4</sup> 800 dağıtım sınırına ulaşırsanız, artık gerekli olmayan geçmişten dağıtımları silin. Abonelik düzeyi dağıtımlarını silmek için [Remove-azdeployment](/powershell/module/az.resources/Remove-AzDeployment) veya [az Deployment Delete](/cli/azure/deployment?view=azure-cli-latest#az-deployment-delete)komutunu kullanın.
+<sup>4</sup>If you reach the limit of 800 deployments, delete deployments from the history that are no longer needed. To delete subscription level deployments, use [Remove-AzDeployment](/powershell/module/az.resources/Remove-AzDeployment) or [az deployment delete](/cli/azure/deployment?view=azure-cli-latest#az-deployment-delete).
 
 > [!NOTE]
-> Sanal makine çekirdekleri bölgesel toplam sınıra sahiptir. Ayrıca, Dv2 ve F gibi bölge başına bir seri için sınır vardır. Bu sınırlar ayrı olarak zorlanır. Örneğin, Doğu ABD toplam VM çekirdek limiti 30, A serisi çekirdek limiti 30 ve D serisi çekirdek limiti 30 olan bir abonelik düşünün. Bu abonelik 30 a1 VM 'Leri ya da 30 D1 VM 'yi ya da ikisinin bir bileşimini bir toplam 30 çekirdeği aşmayacak şekilde dağıtabilirler. Bir bileşim örneği 10 a1 VM ve 20 D1 VM 'dir.  
+> Virtual machine cores have a regional total limit. They also have a limit for regional per-size series, such as Dv2 and F. These limits are separately enforced. Örneğin, Doğu ABD toplam VM çekirdek limiti 30, A serisi çekirdek limiti 30 ve D serisi çekirdek limiti 30 olan bir abonelik düşünün. This subscription can deploy 30 A1 VMs, or 30 D1 VMs, or a combination of the two not to exceed a total of 30 cores. An example of a combination is 10 A1 VMs and 20 D1 VMs.  
 > <!-- -->
 > 
 > 

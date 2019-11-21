@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı Başlangıç: Temel Load Balancer oluşturma-Azure CLı'
-titlesuffix: Azure Load Balancer
+title: 'Quickstart: Create a Basic Load Balancer - Azure CLI'
+titleSuffix: Azure Load Balancer
 description: Bu hızlı başlangıçta, Azure CLI kullanarak genel bir yük dengeleyicinin nasıl oluşturulacağı gösterilmektedir
 services: load-balancer
 documentationcenter: na
@@ -16,16 +16,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: allensu
-ms.openlocfilehash: 67d137039778b7ec8d5e65acb017b84ad6df5cb2
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 49bd66a5ff3cc9d3cddcb0577e335794550ffd17
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274217"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74214854"
 ---
-# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-azure-cli"></a>Hızlı Başlangıç: Azure CLı kullanarak VM 'Lerin yükünü dengelemek için yük dengeleyici oluşturma
+# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-azure-cli"></a>Quickstart: Create a load balancer to load balance VMs using Azure CLI
 
-Bu hızlı başlangıçta, Azure 'daki sanal makineler arasında internet trafiğini dengelemek için bir Azure Load Balancer oluşturma gösterilmektedir. Yük dengeleyiciyi test etmek için, Ubuntu server çalıştıran iki sanal makine (VM) dağıtın ve bunlar arasında bir web uygulamasının yük dengelemesini yapın.
+This quickstart shows you how to create an Azure Load Balancer to load balance internet traffic between virtual machines in Azure. Yük dengeleyiciyi test etmek için, Ubuntu server çalıştıran iki sanal makine (VM) dağıtın ve bunlar arasında bir web uygulamasının yük dengelemesini yapın.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
@@ -106,7 +106,7 @@ Yük dengeleyici kuralı, gerekli kaynak ve hedef bağlantı noktalarının yan�
 
 VM’leri dağıtmadan ve dengeleyicinizi test etmeden önce yardımcı sanal ağ kaynaklarını oluşturun.
 
-### <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
+### <a name="create-a-virtual-network"></a>Sanal ağ oluşturun
 
 [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) komutunu kullanarak *myResourceGroup* içinde *mySubnet* adlı bir alt ağ ile *myVnet* adlı bir sanal ağ oluşturun.
 
@@ -146,7 +146,7 @@ Sanal ağınıza gelen bağlantıları tanımlamak için ağ güvenlik grubu olu
 ```
 ### <a name="create-nics"></a>NIC’leri oluşturma
 
-[Az Network Nic Create](/cli/azure/network/nic#az-network-nic-create) ile iki ağ arabirimi oluşturun ve BUNLARı genel IP adresi ve ağ güvenlik grubuyla ilişkilendirin. 
+Create two network interfaces with [az network nic create](/cli/azure/network/nic#az-network-nic-create) and associate them with the Public IP address and the network security group. 
 
 ```azurecli-interactive
 for i in `seq 1 2`; do
@@ -250,7 +250,7 @@ Yük dengeleyicinin genel IP adresini almak için [az network public-ip show](/c
     --query [ipAddress] \
     --output tsv
 ``` 
-![Yük dengeleyiciyi test etme](./media/load-balancer-get-started-internet-arm-cli/running-nodejs-app.png)
+![Yük dengeleyiciyi sınama](./media/load-balancer-get-started-internet-arm-cli/running-nodejs-app.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

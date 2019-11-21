@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory tümleştirmesiyle Thoughtworks Mingle | Microsoft Docs'
-description: Azure Active Directory ve Thoughtworks Mingle arasında çoklu oturum açmayı yapılandırmayı öğrenin.
+title: 'Tutorial: Azure Active Directory integration with Thoughtworks Mingle | Microsoft Docs'
+description: Learn how to configure single sign-on between Azure Active Directory and Thoughtworks Mingle.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,226 +15,226 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 4ea2a88c92dcd52e99bb98563cf76d2c5501ef6d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a12d4dca61734275ef0e56dfe2a800c64dc52540
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67088761"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233299"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-thoughtworks-mingle"></a>Öğretici: Thoughtworks Mingle ile Azure Active Directory Tümleştirme
+# <a name="tutorial-azure-active-directory-integration-with-thoughtworks-mingle"></a>Tutorial: Azure Active Directory integration with Thoughtworks Mingle
 
-Bu öğreticide, Azure Active Directory (Azure AD) ile tümleştirme Thoughtworks Mingle öğrenin.
-Azure AD ile tümleştirme Thoughtworks Mingle ile aşağıdaki avantajları sağlar:
+In this tutorial, you learn how to integrate Thoughtworks Mingle with Azure Active Directory (Azure AD).
+Integrating Thoughtworks Mingle with Azure AD provides you with the following benefits:
 
-* Thoughtworks Mingle erişimi, Azure AD'de kontrol edebilirsiniz.
-* Azure AD hesaplarına otomatik olarak (çoklu oturum açma) Thoughtworks Mingle için oturum açmış, kullanıcıların etkinleştirebilirsiniz.
-* Hesaplarınız bir merkezi konumda - Azure portalında yönetebilir.
+* You can control in Azure AD who has access to Thoughtworks Mingle.
+* You can enable your users to be automatically signed-in to Thoughtworks Mingle (Single Sign-On) with their Azure AD accounts.
+* You can manage your accounts in one central location - the Azure portal.
 
-Azure AD SaaS uygulama tümleştirmesi hakkında daha fazla ayrıntı bilmek istiyorsanız, bkz. [uygulama erişimi ve Azure Active Directory ile çoklu oturum açma nedir](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Azure AD tümleştirmesi Thoughtworks Mingle ile yapılandırmak için aşağıdaki öğeler gerekir:
+To configure Azure AD integration with Thoughtworks Mingle, you need the following items:
 
-* Azure AD aboneliğiniz. Bir Azure AD ortamını yoksa, bir aylık deneme alabilirsiniz [burada](https://azure.microsoft.com/pricing/free-trial/)
-* Abonelik Thoughtworks Mingle çoklu oturum açma etkin
+* An Azure AD subscription. If you don't have an Azure AD environment, you can get one-month trial [here](https://azure.microsoft.com/pricing/free-trial/)
+* Thoughtworks Mingle single sign-on enabled subscription
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, yapılandırma ve Azure AD çoklu oturum açma bir test ortamında test edin.
+In this tutorial, you configure and test Azure AD single sign-on in a test environment.
 
-* Thoughtworks Mingle destekler **SP** tarafından başlatılan
+* Thoughtworks Mingle supports **SP** initiated SSO
 
-## <a name="adding-thoughtworks-mingle-from-the-gallery"></a>Galeriden Thoughtworks Mingle ekleme
+## <a name="adding-thoughtworks-mingle-from-the-gallery"></a>Adding Thoughtworks Mingle from the gallery
 
-Thoughtworks Mingle tümleştirmesini Azure AD'de yapılandırmak için Thoughtworks Mingle Galeriden yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
+To configure the integration of Thoughtworks Mingle into Azure AD, you need to add Thoughtworks Mingle from the gallery to your list of managed SaaS apps.
 
-**Galeriden Thoughtworks Mingle eklemek için aşağıdaki adımları gerçekleştirin:**
+**To add Thoughtworks Mingle from the gallery, perform the following steps:**
 
-1. İçinde **[Azure portalında](https://portal.azure.com)** , sol gezinti panelinde tıklayın **Azure Active Directory** simgesi.
+1. In the **[Azure portal](https://portal.azure.com)** , on the left navigation panel, click **Azure Active Directory** icon.
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+    ![The Azure Active Directory button](common/select-azuread.png)
 
-2. Gidin **kurumsal uygulamalar** seçip **tüm uygulamaları** seçeneği.
+2. Navigate to **Enterprise Applications** and then select the **All Applications** option.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![The Enterprise applications blade](common/enterprise-applications.png)
 
-3. Yeni uygulama eklemek için tıklatın **yeni uygulama** iletişim üst kısmındaki düğmesi.
+3. To add new application, click **New application** button on the top of dialog.
 
-    ![Yeni Uygulama düğmesi](common/add-new-app.png)
+    ![The New application button](common/add-new-app.png)
 
-4. Arama kutusuna **Thoughtworks Mingle**seçin **Thoughtworks Mingle** sonucu panelinden ardından **Ekle** uygulama eklemek için Ekle düğmesine.
+4. In the search box, type **Thoughtworks Mingle**, select **Thoughtworks Mingle** from result panel then click **Add** button to add the application.
 
-     ![Sonuç listesinde Thoughtworks Mingle](common/search-new-app.png)
+     ![Thoughtworks Mingle in the results list](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Configure and test Azure AD single sign-on
 
-Bu bölümde, yapılandırma ve Azure AD çoklu oturum açma adlı bir test kullanıcı tabanlı Thoughtworks Mingle ile test etme **Britta Simon**.
-Tek iş için oturum açma için bir Azure AD kullanıcısı ile ilgili Thoughtworks Mingle kullanıcı arasında bir bağlantı ilişki kurulması gerekir.
+In this section, you configure and test Azure AD single sign-on with Thoughtworks Mingle based on a test user called **Britta Simon**.
+For single sign-on to work, a link relationship between an Azure AD user and the related user in Thoughtworks Mingle needs to be established.
 
-Yapılandırma ve Azure AD çoklu oturum açma Thoughtworks Mingle ile test etmek için aşağıdaki yapı taşlarını tamamlanması gerekir:
+To configure and test Azure AD single sign-on with Thoughtworks Mingle, you need to complete the following building blocks:
 
-1. **[Azure AD çoklu oturum açmayı yapılandırmayı](#configure-azure-ad-single-sign-on)**  - bu özelliği kullanmak, kullanıcılarınızın etkinleştirmek için.
-2. **[Thoughtworks Mingle çoklu oturum açmayı yapılandırma](#configure-thoughtworks-mingle-single-sign-on)**  - uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-3. **[Bir Azure AD test kullanıcısı oluşturma](#create-an-azure-ad-test-user)**  - Azure AD çoklu oturum açma Britta Simon ile test etmek için.
-4. **[Azure AD test kullanıcı atama](#assign-the-azure-ad-test-user)**  - Azure AD çoklu oturum açmayı kullanmak Britta Simon etkinleştirmek için.
-5. **[Test kullanıcısı Thoughtworks Mingle oluşturma](#create-thoughtworks-mingle-test-user)**  - Thoughtworks kullanıcı Azure AD gösterimini bağlı Mingle Britta simon'un bir karşılığı vardır.
-6. **[Çoklu oturum açmayı test](#test-single-sign-on)**  - yapılandırma çalışıp çalışmadığını doğrulayın.
+1. **[Configure Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)** - to enable your users to use this feature.
+2. **[Configure Thoughtworks Mingle Single Sign-On](#configure-thoughtworks-mingle-single-sign-on)** - to configure the Single Sign-On settings on application side.
+3. **[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
+4. **[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
+5. **[Create Thoughtworks Mingle test user](#create-thoughtworks-mingle-test-user)** - to have a counterpart of Britta Simon in Thoughtworks Mingle that is linked to the Azure AD representation of user.
+6. **[Test single sign-on](#test-single-sign-on)** - to verify whether the configuration works.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırın
+### <a name="configure-azure-ad-single-sign-on"></a>Configure Azure AD single sign-on
 
-Bu bölümde, Azure AD çoklu oturum açma Azure portalında etkinleştirin.
+In this section, you enable Azure AD single sign-on in the Azure portal.
 
-Azure AD çoklu oturum açma Thoughtworks Mingle ile yapılandırmak için aşağıdaki adımları gerçekleştirin:
+To configure Azure AD single sign-on with Thoughtworks Mingle, perform the following steps:
 
-1. İçinde [Azure portalında](https://portal.azure.com/), **Thoughtworks Mingle** uygulama tümleştirme sayfasında **çoklu oturum açma**.
+1. In the [Azure portal](https://portal.azure.com/), on the **Thoughtworks Mingle** application integration page, select **Single sign-on**.
 
-    ![Çoklu oturum açma bağlantısı yapılandırma](common/select-sso.png)
+    ![Configure single sign-on link](common/select-sso.png)
 
-2. Üzerinde **tek bir oturum açma yönteminizi seçmeniz** iletişim kutusunda, **SAML/WS-Federasyon** modu, çoklu oturum açmayı etkinleştirmek için.
+2. On the **Select a Single sign-on method** dialog, select **SAML/WS-Fed** mode to enable single sign-on.
 
-    ![Çoklu oturum açma seçim modu](common/select-saml-option.png)
+    ![Single sign-on select mode](common/select-saml-option.png)
 
-3. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **Düzenle** açmak için simgeyi **temel SAML yapılandırma** iletişim.
+3. On the **Set up Single Sign-On with SAML** page, click **Edit** icon to open **Basic SAML Configuration** dialog.
 
-    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+    ![Edit Basic SAML Configuration](common/edit-urls.png)
 
-4. Üzerinde **temel SAML yapılandırma** bölümünde, aşağıdaki adımları gerçekleştirin:
+4. On the **Basic SAML Configuration** section, perform the following steps:
 
-    ![Thoughtworks Mingle etki alanı ve URL'ler tek oturum açma bilgileri](common/sp-signonurl.png)
+    ![Thoughtworks Mingle Domain and URLs single sign-on information](common/sp-signonurl.png)
 
-    İçinde **oturum açma URL'si** metin kutusuna şu biçimi kullanarak bir URL yazın:  `https://<companyname>.mingle.thoughtworks.com`
+    In the **Sign-on URL** text box, type a URL using the following pattern:  `https://<companyname>.mingle.thoughtworks.com`
 
     > [!NOTE]
-    > Değer, gerçek değil. Değerini gerçek oturum açma URL'si ile güncelleştirin. İlgili kişi [Thoughtworks Mingle istemci Destek ekibine](https://support.thoughtworks.com/hc/categories/201743486-Mingle-Community-Support) değeri alınamıyor. Gösterilen desenleri de başvurabilirsiniz **temel SAML yapılandırma** bölümünde Azure portalında.
+    > The value is not real. Update the value with the actual Sign-On URL. Contact [Thoughtworks Mingle Client support team](https://support.thoughtworks.com/hc/categories/201743486-Mingle-Community-Support) to get the value. You can also refer to the patterns shown in the **Basic SAML Configuration** section in the Azure portal.
 
-5. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **SAML imzalama sertifikası** bölümünde **indirme** indirmek için **Federasyon meta veri XML**  bilgisayarınızdaki belirli seçenekler ihtiyacınıza göre ve kaydedin.
+5. On the **Set up Single Sign-On with SAML** page, in the **SAML Signing Certificate** section, click **Download** to download the **Federation Metadata XML** from the given options as per your requirement and save it on your computer.
 
-    ![Sertifika indirme bağlantısı](common/metadataxml.png)
+    ![The Certificate download link](common/metadataxml.png)
 
-6. Üzerinde **Thoughtworks Mingle kümesi** bölümünde, ihtiyacınıza göre uygun URL'lerini kopyalayın.
+6. On the **Set up Thoughtworks Mingle** section, copy the appropriate URL(s) as per your requirement.
 
-    ![Yapılandırma URL'leri kopyalayın](common/copy-configuration-urls.png)
+    ![Copy configuration URLs](common/copy-configuration-urls.png)
 
-    a. Oturum Açma URL'si:
+    a. Login URL
 
-    b. Azure AD Tanımlayıcısı
+    b. Azure AD Identifier
 
-    c. Oturum Kapatma URL'si
+    c. Logout URL
 
-### <a name="configure-thoughtworks-mingle-single-sign-on"></a>Yapılandırma Thoughtworks Mingle çoklu oturum açma
+### <a name="configure-thoughtworks-mingle-single-sign-on"></a>Configure Thoughtworks Mingle Single Sign-On
 
-1. Oturum açın, **Thoughtworks Mingle** şirketinizin sitesi yöneticisi olarak.
+1. Sign in to your **Thoughtworks Mingle** company site as administrator.
 
-2. Tıklayın **yönetici** sekmesini tıklatıp, ardından **SSO yapılandırma**.
+2. Click the **Admin** tab, and then, click **SSO Config**.
    
-    ![Yönetim sekmesi](./media/thoughtworks-mingle-tutorial/ic785157.png "SSO yapılandırma")
+    ![Admin tab](./media/thoughtworks-mingle-tutorial/ic785157.png "SSO Config")
 
-3. İçinde **SSO yapılandırma** bölümünde, aşağıdaki adımları gerçekleştirin:
+3. In the **SSO Config** section, perform the following steps:
    
-    ![SSO yapılandırma](./media/thoughtworks-mingle-tutorial/ic785158.png "SSO yapılandırma")
+    ![SSO Config](./media/thoughtworks-mingle-tutorial/ic785158.png "SSO Config")
     
-    a. Meta veri dosyası karşıya yüklemek için tıklayın **dosya**. 
+    a. To upload the metadata file, click **Choose file**. 
 
-    b. Tıklayın **değişiklikleri kaydetmek**.
+    b. Click **Save Changes**.
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma 
+### <a name="create-an-azure-ad-test-user"></a>Create an Azure AD test user 
 
-Bu bölümün amacı, Britta Simon adlı Azure portalında bir test kullanıcısı oluşturmaktır.
+The objective of this section is to create a test user in the Azure portal called Britta Simon.
 
-1. Azure portalında, sol bölmede seçin **Azure Active Directory**seçin **kullanıcılar**ve ardından **tüm kullanıcılar**.
+1. In the Azure portal, in the left pane, select **Azure Active Directory**, select **Users**, and then select **All users**.
 
-    !["Kullanıcılar ve Gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
+    ![The "Users and groups" and "All users" links](common/users.png)
 
-2. Seçin **yeni kullanıcı** ekranın üstünde.
+2. Select **New user** at the top of the screen.
 
-    ![Yeni kullanıcı düğmesi](common/new-user.png)
+    ![New user Button](common/new-user.png)
 
-3. Kullanıcı özellikleri, aşağıdaki adımları gerçekleştirin.
+3. In the User properties, perform the following steps.
 
-    ![Kullanıcı iletişim kutusu](common/user-properties.png)
+    ![The User dialog box](common/user-properties.png)
 
-    a. İçinde **adı** alana **BrittaSimon**.
+    a. In the **Name** field enter **BrittaSimon**.
   
-    b. İçinde **kullanıcı adı** alan türü brittasimon@yourcompanydomain.extension. Örneğin, BrittaSimon@contoso.com
+    b. In the **User name** field type brittasimon@yourcompanydomain.extension. Örneğin, BrittaSimon@contoso.com
 
-    c. Seçin **Show parola** onay kutusunu işaretleyin ve ardından parola kutusunda görüntülenen değeri yazın.
+    c. Select **Show password** check box, and then write down the value that's displayed in the Password box.
 
     d. **Oluştur**’a tıklayın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Assign the Azure AD test user
 
-Bu bölümde, Azure çoklu oturum açma Thoughtworks Mingle için erişim izni verme kullanmak Britta Simon etkinleştirin.
+In this section, you enable Britta Simon to use Azure single sign-on by granting access to Thoughtworks Mingle.
 
-1. Azure portalında **kurumsal uygulamalar**seçin **tüm uygulamaları**, ardından **Thoughtworks Mingle**.
+1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **Thoughtworks Mingle**.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Enterprise applications blade](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Thoughtworks Mingle**.
+2. In the applications list, select **Thoughtworks Mingle**.
 
-    ![Uygulamalar listesinde Thoughtworks Mingle bağlantı](common/all-applications.png)
+    ![The Thoughtworks Mingle link in the Applications list](common/all-applications.png)
 
-3. Soldaki menüde **kullanıcılar ve gruplar**.
+3. In the menu on the left, select **Users and groups**.
 
-    !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+    ![The "Users and groups" link](common/users-groups-blade.png)
 
-4. Tıklayın **Kullanıcı Ekle** düğmesine ve ardından **kullanıcılar ve gruplar** içinde **atama Ekle** iletişim.
+4. Click the **Add user** button, then select **Users and groups** in the **Add Assignment** dialog.
 
-    ![Atama Ekle bölmesi](common/add-assign-user.png)
+    ![The Add Assignment pane](common/add-assign-user.png)
 
-5. İçinde **kullanıcılar ve gruplar** iletişim kutusunda **Britta Simon** 'a tıklayın kullanıcı listesinde **seçin** ekranın alt kısmındaki düğmesi.
+5. In the **Users and groups** dialog select **Britta Simon** in the Users list, then click the **Select** button at the bottom of the screen.
 
-6. SAML onaylaması ardından içinde herhangi bir rolü değer bekleniyor durumunda **rolü Seç** 'a tıklayın listeden bir kullanıcı için uygun rolü Seç iletişim kutusu **seçin** ekranın alt kısmındaki düğmesi.
+6. If you are expecting any role value in the SAML assertion then in the **Select Role** dialog select the appropriate role for the user from the list, then click the **Select** button at the bottom of the screen.
 
-7. İçinde **atama Ekle** iletişim tıklatın **atama** düğmesi.
+7. In the **Add Assignment** dialog click the **Assign** button.
 
-### <a name="create-thoughtworks-mingle-test-user"></a>Thoughtworks Mingle test kullanıcısı oluşturma
+### <a name="create-thoughtworks-mingle-test-user"></a>Create Thoughtworks Mingle test user
 
-Azure AD kullanıcılarının oturum açabilmesi, Azure Active Directory kullanıcı adlarını kullanarak Thoughtworks Mingle uygulaması sağlanmalıdır. Thoughtworks Mingle söz konusu olduğunda, sağlama bir el ile gerçekleştirilen bir görevdir.
+For Azure AD users to be able to sign in, they must be provisioned to the Thoughtworks Mingle application using their Azure Active Directory user names. In the case of Thoughtworks Mingle, provisioning is a manual task.
 
-**Kullanıcı sağlamayı yapılandırmak için aşağıdaki adımları gerçekleştirin:**
+**To configure user provisioning, perform the following steps:**
 
-1. Şirketinizin Thoughtworks Mingle sitesi için yönetici olarak oturum açın.
+1. Sign in to your Thoughtworks Mingle company site as administrator.
 
-2. tıklayın **profili**.
+2. Click **Profile**.
    
-    ![İlk projenizi](./media/thoughtworks-mingle-tutorial/ic785160.png "ilk projenizi")
+    ![Your First Project](./media/thoughtworks-mingle-tutorial/ic785160.png "Your First Project")
 
-3. Tıklayın **yönetici** sekmesine ve ardından **kullanıcılar**.
+3. Click the **Admin** tab, and then click **Users**.
    
-    ![Kullanıcılar](./media/thoughtworks-mingle-tutorial/ic785161.png "kullanıcılar")
+    ![Kullanıcılar](./media/thoughtworks-mingle-tutorial/ic785161.png "Kullanıcılar")
 
-4. Tıklayın **yeni kullanıcı**.
+4. Click **New User**.
    
-    ![Yeni kullanıcı](./media/thoughtworks-mingle-tutorial/ic785162.png "yeni kullanıcı")
+    ![New User](./media/thoughtworks-mingle-tutorial/ic785162.png "New User")
 
-5. Üzerinde **yeni kullanıcı** iletişim sayfasında, aşağıdaki adımları gerçekleştirin:
+5. On the **New User** dialog page, perform the following steps:
    
-    ![Yeni kullanıcı iletişim kutusu](./media/thoughtworks-mingle-tutorial/ic785163.png "yeni kullanıcı")  
+    ![New User dialog](./media/thoughtworks-mingle-tutorial/ic785163.png "New User")  
  
-    a. Tür **oturum açma adı**, **görünen ad**, **Seç parola**, **parolayı onayla** geçerli bir Azure AD hesabı sağlamak istediğiniz ilgili metin kutularına. 
+    a. Type the **Sign-in name**, **Display name**, **Choose password**, **Confirm password** of a valid Azure AD account you want to provision into the related textboxes. 
 
-    b. Olarak **kullanıcı türü**seçin **tam kullanıcı**.
+    b. As **User type**, select **Full user**.
 
-    c. Tıklayın **bu profil oluşturma**.
+    c. Click **Create This Profile**.
 
 >[!NOTE]
->Herhangi diğer Thoughtworks Mingle kullanıcı hesabı oluşturma araçları kullanabilir veya API'leri Thoughtworks Mingle tarafından sağlanan AAD kullanıcı hesapları sağlamak için.
+>You can use any other Thoughtworks Mingle user account creation tools or APIs provided by Thoughtworks Mingle to provision Azure AD user accounts.
 > 
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+In this section, you test your Azure AD single sign-on configuration using the Access Panel.
 
-Erişim panelinde Thoughtworks Mingle kutucuğa tıkladığınızda, otomatik olarak SSO'yu ayarlama Thoughtworks Mingle için oturum açmanız. Erişim paneli hakkında daha fazla bilgi için bkz: [erişim Paneli'ne giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+When you click the Thoughtworks Mingle tile in the Access Panel, you should be automatically signed in to the Thoughtworks Mingle for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

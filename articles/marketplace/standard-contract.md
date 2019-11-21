@@ -1,59 +1,54 @@
 ---
-title: Standart Sözleşme | Mavisi
-description: Azure Market ve AppSource 'ta standart sözleşme
+title: Standard Contract | Azure
+description: Standard Contract for Azure Marketplace and AppSource
 services: Azure, Marketplace, Compute, Storage, Networking
-author: qianw211
+author: ChJenk
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 07/05/2019
-ms.author: ellacroi
-ms.openlocfilehash: 17c1bf9d20b6f2e3ec450ff7bfb54fe61494ff09
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/19/2019
+ms.author: v-chjen
+ms.openlocfilehash: dc8edf2b6e4a1204e7edd515da9323896049eb13
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819489"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228193"
 ---
-# <a name="standard-contract"></a>Standart Sözleşme
+# <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Standard Contract for the Microsoft commercial marketplace
 
-Müşteriler için satın alma sürecini basitleştirmek ve yazılım satıcılarının yasal karmaşıklığını azaltmak için, Microsoft, Market 'teki bir işlemin kolaylaştırılmasına yardımcı olmak üzere standart bir sözleşme şablonu sunmaktadır. Azure Market yayımcıları, özel hüküm ve koşulları ortadan kaldırmaktansa, müşterilerine yalnızca bir kez ve kabul etmesi gereken standart sözleşme kapsamında yazılım sunmayı tercih edebilir. Standart Sözleşme şurada bulunabilir: [https://go.microsoft.com/fwlink/?linkid=2041178](https://go.microsoft.com/fwlink/?linkid=2041178). 
+To simplify the procurement process for customers and reduce legal complexity for software vendors, Microsoft offers a Standard Contract for the Microsoft commercial marketplace in order to help facilitate transactions in the marketplace. Rather than crafting custom terms and conditions, commercial marketplace publishers can choose to offer their software under the Standard Contract, which customers only need to vet and accept once. The Standard Contract can be found here: [https://go.microsoft.com/fwlink/?linkid=2041178](https://go.microsoft.com/fwlink/?linkid=2041178).
 
-Bir teklifin hüküm ve koşulları, Bulut İş Ortağı Portalı bir teklif oluşturulurken Market sekmesinde tanımlanmıştır. Standart Sözleşme seçeneği, ayarı Evet olarak değiştirilerek etkinleştirilir.
-
-![Standart Sözleşme seçeneğini etkinleştirme](media/marketplace-publishers-guide/standard-contract.png)
-
->[!Note] 
->Standart sözleşmeyi kullanmayı seçerseniz, [bulut çözümü sağlayıcısı](./cloud-solution-providers.md) kanalı için ayrı hüküm ve koşullar hala gereklidir.
-
-## <a name="standard-contract-amendments"></a>Standart Sözleşme düzeltme açıklamaları
-
-Standart Sözleşme, yayımcıların basitlik için standart sözleşmeyi seçmesini ve ürün ya da işletmelerinin Özelleştirilmiş şartlarını seçmesine izin verir.  Müşterilerin, Microsoft standart sözleşmesini gözden geçirmiş ve kabul etmiş olmaları durumunda yalnızca sözleşmenin değişiklik yapması gerekir.
-
-Azure Market yayımcılarına yönelik iki çeşit değişiklik vardır:
-
-* Evrensel değişiklik: Bu değişiklik, tüm müşteriler için standart sözleşmeye evrensel olarak uygulanır. Evrensel değişiklik, satın alma akışındaki ürünün her müşterisi için gösterilir.
-
-![Evrensel değişiklik 'Lar](media/marketplace-publishers-guide/universal-amendaments.png)
-
-* Özel değişiklik açıklamaları: Azure Marketi, kiracılara hedeflenmiş özel değişiklik için bir sağlama de içerir. Bunlar, yalnızca belirli müşterileri hedefleyen standart sözleşmeye özel olarak değişiklik görürler. Yayımcılar hedeflemek istedikleri kiracıyı seçebilirler. Bu kiracının müşterileri, ürünü standart sözleşme ve hedeflenen değişiklik DTU 'ları altında satın alabilir.
-
-![Özel değişiklik açıklamaları](media/marketplace-publishers-guide/custom-amendaments.png)
-
->[!Note] 
->Özel değişiklik ile hedeflenen müşteriler Ayrıca satın alma sırasında standart koşullara evrensel değişiklik de sağlar.
+The terms and conditions for an offer are defined when creating the offer in Partner Center or in the Cloud Partner Portal. You can select to use the Standard Contract for the Microsoft commercial marketplace instead of providing your own custom terms and conditions.
 
 >[!Note]
->Aşağıdaki teklif türleri standart sözleşme değişiklik türlerini destekler: Azure uygulamaları (çözüm şablonları ve yönetilen uygulamalar), sanal makineler, kapsayıcılar, kapsayıcı uygulamaları.
+>Once you publish an offer using the Standard contract for the Microsoft commercial marketplace, you are not able to use your own custom terms and conditions. It is an “or” scenario. You either offer your solution under the Standard Contract *or* your own terms and conditions. If you would like to modify the terms of the Standard Contract you can do so through Standard Contract Amendments.
 
-### <a name="customer-experience"></a>Müşteri deneyimi
+## <a name="standard-contract-amendments"></a>Standard Contract Amendments
 
-Azure portal satın alma işlemi sırasında, müşteriler ürünle ilişkili koşulları Microsoft standart sözleşmesi ve değişiklik DTU 'ları olarak görebilir.
+Standard Contract Amendments allow publishers to select the Standard Contract for simplicity, and with customized terms for their product or business. Customers only need to review the amendments to the contract, if they have already reviewed and accepted the Microsoft Standard Contract.
 
-![Azure portal müşteri deneyimi.](media/marketplace-publishers-guide/ibiza-customer-experience.png)
+There are two kinds of amendments available for commercial marketplace publishers:
 
-### <a name="api"></a>API
+* Universal Amendments: These amendments are applied universally to the Standard Contract for all customers. Universal amendments are shown to every customer of the offer in the purchase flow. Customers must accept the terms of the Standard Contract and the amendment before they can use your offer.
 
-Müşteriler bir teklif şartlarını almak ve kabul etmek için `Get-AzureRmMarketplaceTerms` kullanabilir. Standart Sözleşme ve ilişkili değişiklik, cmdlet 'in çıkışında döndürülür.
+* Custom Amendments: These amendments are special amendments to the Standard Contract that are targeted to specific customers only via Azure tenant IDs. Publishers can choose the tenant they want to target. Only customers from the tenant will be presented with the custom amendment terms in the offer’s purchase flow.  Customers must accept the terms of the Standard Contract and the amendment(s) before they can use your offer.
 
----
+>[!Note]
+>These two types of amendments stack on top of each other. Customers targeted with custom amendments will also get the universal amendment to the Standard Contract during purchase.
+
+You can leverage the Standard Contract for the Microsoft commercial marketplace for the following offer types:  Azure Applications (Solution Templates and Managed Applications), Virtual Machines, Containers, Container Applications, IoT Edge Modules, and SaaS.
+
+## <a name="customer-experience"></a>Customer experience
+
+During the discovery experience in Azure marketplace or AppSource, customers will be able to see the terms associated with the offer as the Standard Contract for the Microsoft commercial marketplace and any universal amendments.
+
+![The Azure portal customer discovery experience.](media/marketplace-publishers-guide/azure-discovery-process.png)
+
+During the purchase process in the Azure portal, customers will be able to see the terms associated with the offer as the Standard Contract for the Microsoft commercial marketplace and any universal and/or tenant-specific amendments.
+
+![The Azure portal customer purchase experience.](media/marketplace-publishers-guide/azure-purchase-process.png)
+
+## <a name="api"></a>eklentisi
+
+Customers may use Get-AzureRmMarketplaceTerms to retrieve the terms of an offer and accept it. The Standard Contract and associated amendments will be returned in the output of the cmdlet.

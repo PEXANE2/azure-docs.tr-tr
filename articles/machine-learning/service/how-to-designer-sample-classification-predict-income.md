@@ -1,7 +1,7 @@
 ---
-title: 'Tasarımcı: sınıflandırma, gelir tahmin örneği'
+title: 'Designer: Classify, predict income example'
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning Designer ile gelir tahmin etmek için kod içermeyen bir sınıflandırıcı oluşturun Bu örneği izleyin.
+description: Follow this example build a no-code classifier to predict income with Azure Machine Learning designer.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,64 +10,64 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 527db89be85cc5b095d33ba89c776a077119f08a
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
-ms.translationtype: HT
+ms.openlocfilehash: adc7712a4f41daea9ed691e6df52290e98e8d81f
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196062"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74214106"
 ---
-# <a name="build-a-classifier--use-feature-selection-to-predict-income-with-azure-machine-learning-designer"></a>Azure Machine Learning tasarımcısıyla gelir tahmin etmek için özellik seçimini kullanmak & bir sınıflandırıcı oluşturma
+# <a name="build-a-classifier--use-feature-selection-to-predict-income-with-azure-machine-learning-designer"></a>Build a classifier & use feature selection to predict income with Azure Machine Learning designer
 
-**Tasarımcı (Önizleme) örnek 3**
+**Designer (preview) sample 3**
 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
-Tasarımcı (Önizleme) kullanarak tek bir kod satırı yazmadan makine öğrenimi sınıflandırıcısını oluşturmayı öğrenin. Bu örnek, Yetişkin görselleştirmenizdeki geliri (> = 50K veya < = 50K) tahmin etmek için iki sınıf bir öngörme **kararı ağacı** sağlar.
+Learn how to build a machine learning classifier without writing a single line of code using the designer (preview). This sample trains a **two-class boosted decision tree** to predict adult census income (>=50K or <=50K).
 
-Soru yanıt veriyor mu? " Bu, sınıflandırma sorunu olarak adlandırılır. Ancak, aynı temel süreci, herhangi bir makine öğrenimi sorununun, gerileme, sınıflandırma, kümeleme gibi bir tür olup olmadığını bir şekilde uygulayabilir.
+Because the question is answering "Which one?" this is called a classification problem. However, you can apply the same fundamental process to tackle any type of machine learning problem whether it be regression, classification, clustering, and so on.
 
-Bu örnek için nihai işlem hattı grafiği aşağıda verilmiştir:
+Here's the final pipeline graph for this sample:
 
-![İşlem hattının grafiği](media/how-to-ui-sample-classification-predict-income/overall-graph.png)
+![Graph of the pipeline](media/how-to-designer-sample-classification-predict-income/overall-graph.png)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. Örnek 3 ' e tıklayarak açın.
+4. Click the sample 3 to open it.
 
 
 
 ## <a name="data"></a>Veriler
 
-Veri kümesi 14 özellik ve bir etiket sütunu içerir. Sayısal ve kategorik dahil olmak üzere birden çok özellik türü vardır. Aşağıdaki diyagramda veri kümesinden bir alıntı gösterilmektedir: ![verileri](media/how-to-ui-sample-classification-predict-income/data.png)
+The dataset contains 14 features and one label column. There are multiple types of features, including numerical and categorical. The following diagram shows an excerpt from the dataset: ![data](media/how-to-designer-sample-classification-predict-income/data.png)
 
 
 
-## <a name="pipeline-summary"></a>Ardışık düzen Özeti
+## <a name="pipeline-summary"></a>Pipeline summary
 
-İşlem hattını oluşturmak için aşağıdaki adımları izleyin:
+Follow these steps to create the pipeline:
 
-1. Yetişkin Census geliri Ikili veri kümesi modülünü ardışık düzen tuvaline sürükleyin.
-1. Eğitim ve test kümelerini oluşturmak için bir **bölünmüş veri** modülü ekleyin. İlk çıkış veri kümesindeki satır kesirini 0,7 olarak ayarlayın. Bu ayar, verilerin %70 ' un, modülün sol bağlantı noktasına ve geri kalanı doğru bağlantı noktasına çıkış olacağını belirtir. Eğitim için sol veri kümesini ve test için doğru olanı kullanırız.
-1. PearsonCorreclation tarafından 5 özellik seçmek için **filtre tabanlı özellik seçimi** modülünü ekleyin. 
-1. Önceden maliyetli bir karar ağacı sınıflandırıcısını başlatmak için **Iki sınıf bir önceden maliyetli karar ağacı** modülü ekleyin.
-1. **Eğitim modeli** modülü ekleme. Önceki adımdan gelen sınıflandırıcının, **tren modelinin**sol giriş bağlantı noktasına bağlanmasını sağlar. Filtrelenmiş veri kümesini filtre tabanlı özellik seçim modülünden eğitim veri kümesi olarak bağlayın.  **Eğitme modeli** sınıflandırıcısını eğitecektir.
-1. Veri kümesini test etmek için aynı dönüştürmeyi (filtrelenmiş tabanlı özellik seçimi) uygulamak için sütun Seç dönüşümünü ve dönüştürme modülünü Uygula öğesini ekleyin.
-![uygulama dönüştürme](media/how-to-ui-sample-classification-predict-income/transformation.png)
-1. **Puan modeli** modülünü ekleyin ve **model eğitme** modülünü buna bağlayın. Daha sonra test kümesini (özellik seçimini test kümesine çok fazla uygulanan dönüştürme modülünün çıktısı) **puan modeline**ekleyin. **Puan modeli** tahmine göre yapılır. Tahmine dayalı ve olumlu sınıf olasılıklarına bakmak için çıkış bağlantı noktasını seçebilirsiniz.
+1. Drag the Adult Census Income Binary dataset module into the pipeline canvas.
+1. Add a **Split Data** module to create the training and test sets. Set the fraction of rows in the first output dataset to 0.7. This setting specifies that 70% of the data will be output to the left port of the module and the rest to the right port. We use the left dataset for training and the right one for testing.
+1. Add the **Filter Based Feature Selection** module to select 5 features by PearsonCorreclation. 
+1. Add a **Two-Class Boosted Decision Tree** module to initialize a boosted decision tree classifier.
+1. Add a **Train Model** module. Connect the classifier from the previous step to the left input port of the **Train Model**. Connect the filtered dataset from Filter Based Feature Selection module as training dataset.  The **Train Model** will train the classifier.
+1. Add Select Columns Transformation and Apply Transformation module to apply the same transformation (filtered based feature selection) to test dataset.
+![apply-transformation](media/how-to-designer-sample-classification-predict-income/transformation.png)
+1. Add **Score Model** module and connect the **Train Model** module to it. Then add the test set (the output of Apply Transformation module which apply feature selection to test set too) to the **Score Model**. The **Score Model** will make the predictions. You can select its output port to see the predictions and the positive class probabilities.
 
 
-    Bu işlem hattının iki puan modülü vardır, tahmine dayalı olmadan önce sağ taraftaki etiket sütunu hariç tutulur. Bu, Web hizmeti girişi yalnızca etiket olmayan özellikler beklediğinden gerçek zamanlı bir uç nokta dağıtımı için hazırdır. 
+    This pipeline has two score modules, the one on the right has excluded label column before make the prediction. This is prepared to deploy a real-time endpoint, because the web service input will expect only features not label. 
 
-1. **Model değerlendirme** modülünü ekleyin ve puanlanmış veri kümesini sol giriş bağlantı noktasına bağlayın. Değerlendirme sonuçlarını görmek için **modeli değerlendir** modülünün çıkış bağlantı noktasını seçin ve **Görselleştir**' i seçin.
+1. Add an **Evaluate Model** module and connect the scored dataset to its left input port. To see the evaluation results, select the output port of the **Evaluate Model** module and select **Visualize**.
 
 ## <a name="results"></a>Sonuçlar
 
-![Sonuçları değerlendirin](media/how-to-ui-sample-classification-predict-income/evaluate-result.png)
+![Evaluate the results](media/how-to-designer-sample-classification-predict-income/evaluate-result.png)
 
-Değerlendirme sonuçlarında, ROC, duyarlık-geri çekme ve karışıklık ölçümleri gibi eğrilerin olduğunu görebilirsiniz. 
+In the evaluation results, you can see that the curves like ROC, Precision-recall and confusion metrics. 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -75,11 +75,11 @@ Değerlendirme sonuçlarında, ROC, duyarlık-geri çekme ve karışıklık öl�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Tasarımcı için kullanılabilen diğer örnekleri keşfet:
+Explore the other samples available for the designer:
 
-- [Örnek 1-gerileme: bir otomobil fiyatını tahmin edin](how-to-designer-sample-regression-automobile-price-basic.md)
-- [Örnek 2-gerileme: otomobil fiyatlandırma için algoritmaları karşılaştırın](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
-- [Örnek 4-sınıflandırma: kredi riskini tahmin etme (maliyet duyarlı)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
-- [Örnek 5-sınıflandırma: karmaşıklığı tahmin etme](how-to-designer-sample-classification-churn.md)
-- [Örnek 6-sınıflandırma: uçuş gecikmelerini tahmin etme](how-to-designer-sample-classification-flight-delay.md)
-- [Örnek 7-metin sınıflandırması: Vikipedi SP 500 veri kümesi](how-to-designer-sample-text-classification.md)
+- [Sample 1 - Regression: Predict an automobile's price](how-to-designer-sample-regression-automobile-price-basic.md)
+- [Sample 2 - Regression: Compare algorithms for automobile price prediction](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
+- [Sample 4 - Classification: Predict credit risk (cost sensitive)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
+- [Sample 5 - Classification: Predict churn](how-to-designer-sample-classification-churn.md)
+- [Sample 6 - Classification: Predict flight delays](how-to-designer-sample-classification-flight-delay.md)
+- [Sample 7 - Text Classification: Wikipedia SP 500 Dataset](how-to-designer-sample-text-classification.md)

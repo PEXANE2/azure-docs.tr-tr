@@ -1,120 +1,120 @@
 ---
-title: Azure maliyet yönetimi ile AWS maliyet ve kullanım raporu tümleştirmesini ayarlama ve yapılandırma
-description: Bu makalede, Azure maliyet yönetimi ile AWS maliyet ve kullanım raporu tümleştirmesini ayarlama ve yapılandırma işlemleri adım adım anlatılmaktadır.
+title: Set up and configure AWS Cost and Usage report integration with Azure Cost Management
+description: This article walks you through setting up and configuring AWS Cost and Usage report integration with Azure Cost Management.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 08/15/2019
 ms.topic: conceptual
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: ormaoz
 ms.custom: ''
-ms.openlocfilehash: deb13b833707849bcbce8bcae7b05aeb5e0bce3b
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 66dbe45ff1a8ee773fdf7fcb0aa7cfe8e6ad6437
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338869"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74219686"
 ---
-# <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>AWS maliyet ve kullanım raporu tümleştirmesini ayarlama ve yapılandırma
+# <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>Set up and configure AWS Cost and Usage report integration
 
-Amazon Web Services (AWS) maliyet ve kullanım raporu (CUR) Tümleştirmesi sayesinde AWS harcamalarınızı Azure maliyet yönetimi 'nde izleyip kontrol edersiniz. Tümleştirme, Azure ve AWS için harcamalarınızı izleyip denetlediğiniz Azure portal tek bir konuma izin verir. Bu makalede, tümleştirme ve yapılandırma maliyetlerini analiz etmek ve bütçeleri gözden geçirmek için Azure maliyet yönetimi özelliklerini kullanabilmeniz için tümleştirmenin nasıl ayarlanacağı ve yapılandırılacağı açıklanmaktadır.
+With Amazon Web Services (AWS) Cost and Usage report (CUR) integration, you monitor and control your AWS spending in Azure Cost Management. The integration allows a single location in the Azure portal where you monitor and control spending for both Azure and AWS. This article explains how to set up the integration and configure it so that you can use Azure Cost Management features to analyze costs and review budgets.
 
-Maliyet yönetimi, rapor tanımlarını almak ve rapor GZIP CSV dosyalarını indirmek için AWS erişim kimlik bilgilerinizi kullanarak bir S3 demeti içinde depolanan AWS maliyet ve kullanım raporunu işler.
+Cost Management processes the AWS Cost and Usage report stored in an S3 bucket by using your AWS access credentials to get report definitions and download report GZIP CSV files.
 
-## <a name="create-a-cost-and-usage-report-in-aws"></a>AWS 'de maliyet ve kullanım raporu oluşturma
+## <a name="create-a-cost-and-usage-report-in-aws"></a>Create a Cost and Usage report in AWS
 
-Maliyet ve kullanım raporu kullanmak, AWS maliyetlerini toplamak ve işlemek için, AWS tarafından önerilen bir yoldur. Daha fazla bilgi için bkz. [AWS maliyet ve kullanım raporu](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-reports-costusage.html) belgeleri.
+Using a Cost and Usage report is the AWS-recommended way to collect and process AWS costs. For more information, see the [AWS Cost and Usage Report](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-reports-costusage.html) documentation.
 
-AWS 'de faturalandırma ve Maliyet Yönetimi konsolunun **maliyet & kullanım raporları** sayfasını kullanarak aşağıdaki adımlarla bir maliyet ve kullanım raporu oluşturun:
+Use the **Cost & Usage Reports** page of the Billing and Cost Management console in AWS to create a Cost and Usage report with the following steps:
 
-1. AWS yönetim konsolunda oturum açın ve [faturalandırma ve maliyet yönetimi konsolunu](https://console.aws.amazon.com/billing)açın.
-2. Gezinti bölmesinde, **maliyet & kullanım raporları**' nı seçin.
-3. **Rapor oluştur**' u seçin.
-4. **Rapor adı**için raporunuz için bir ad girin.
-5. **Ek rapor ayrıntıları**' nın altında, **kaynak kimliklerini içer**' i seçin.
-6. **Veri yenileme ayarları**IÇIN, AWS 'nin faturanızı tamamladıktan sonra hesabınıza para iadesi, krediler veya destek ücretleri uygulayacağından, AWS maliyet ve kullanım raporunun yenilenmesini isteyip istemediğinizi seçin. Bir rapor yenilendiğinde, Amazon S3 'e yeni bir rapor yüklenir. Ayarı seçili olarak bırakmanız önerilir.
+1. Sign in to the AWS Management Console and open the [Billing and Cost Management console](https://console.aws.amazon.com/billing).
+2. In the navigation pane, select **Cost & Usage Reports**.
+3. Select **Create report**.
+4. For **Report name**, enter a name for your report.
+5. Under **Additional report details**, select **Include resource IDs**.
+6. For **Data refresh settings**, select whether you want the AWS Cost and Usage report to refresh if AWS applies refunds, credits, or support fees to your account after finalizing your bill. When a report refreshes, a new report is uploaded to Amazon S3. We recommend that you leave the setting selected.
 7. **İleri**’yi seçin.
-8. **S3 demeti**için **Yapılandır**' ı seçin.
-9. S3 demetini Yapılandır iletişim kutusunda aşağıdaki görevlerden birini yapın:
-    1. Aşağı açılan listeden mevcut bir demet seçin ve **İleri ' yi**seçin.
-    2. Bir demet adı ve yeni bir demet oluşturmak istediğiniz bölgeyi girip **İleri ' yi**seçin.
-10. **Bu ilkenin doğru olduğunu onayladım**' ı seçin ve ardından **Kaydet**' e tıklayın.
-11. Seçim Rapor yolu ön eki için, raporun adının sonuna eklemek istediğiniz rapor yolu önekini girin.
-Ön ek belirtmezseniz, varsayılan ön ek rapor için belirttiğiniz addır. Tarih aralığı `/report-name/date-range/` biçimine sahiptir.
-12. **Zaman birimi**için **saatlik**' ı seçin.
-13. **Rapor sürümü oluşturma**için, raporun her bir sürümünün önceki sürümün üzerine yazmasını isteyip istemediğinizi veya ek yeni raporlar istediğinizi seçin.
-14. **İçin veri tümleştirmesini etkinleştir**için seçim gerekmiyor.
-15. **Sıkıştırma**için **GZIP**' i seçin.
+8. For **S3 bucket**, choose **Configure**.
+9. In the Configure S3 Bucket dialog box, do one of the following tasks:
+    1. Select an existing bucket from the drop-down list and choose **Next**.
+    2. Enter a bucket name and the Region where you want to create a new bucket and choose **Next**.
+10. Select **I have confirmed that this policy is correct**, then click **Save**.
+11. (Optional) For Report path prefix, enter the report path prefix that you want prepended to the name of your report.
+If you don't specify a prefix, the default prefix is the name that you specified for the report. The date range has the `/report-name/date-range/` format.
+12. For **Time unit**, choose  **Hourly**.
+13. For **Report versioning**, choose whether you want each version of the report to overwrite the previous version, or if you want additional new reports.
+14. For **Enable data integration for**, no selection is required.
+15. For **Compression**, select **GZIP**.
 16. **İleri**’yi seçin.
-17. Raporunuzun ayarlarını inceledikten sonra, **gözden geçir ve Tamam**' ı seçin.
+17. After you've reviewed the settings for your report, select **Review and Complete**.
 
-    Rapor adı ' nı aklınızda edin. Daha sonraki adımlarda kullanacaksınız.
+    Note the report name. You'll use it in later steps.
 
-AWS 'nin Amazon S3 sepete rapor sunmaya başlaması 24 saate kadar sürebilir. Teslim başladıktan sonra AWS, AWS maliyet ve kullanım raporu dosyalarını günde en az bir kez güncelleştirir. Teslimin başlamasını beklemeden AWS ortamınızı yapılandırmaya devam edebilirsiniz.
+It can take up to 24 hours for AWS to start delivering reports to your Amazon S3 bucket. After delivery starts, AWS updates the AWS Cost and Usage report files at least once a day. You can continue configuring your AWS environment without waiting for delivery to start.
 
-## <a name="create-a-role-and-policy-in-aws"></a>AWS 'de rol ve ilke oluşturma
+## <a name="create-a-role-and-policy-in-aws"></a>Create a role and policy in AWS
 
-Azure maliyet yönetimi, maliyet ve kullanım raporunun günde birkaç kez bulunduğu S3 demetini 'ne erişir. Hizmetin yeni verileri denetlemek için kimlik bilgilerine erişmesi gerekir. Maliyet yönetiminin bu erişime izin vermek için AWS 'de bir rol ve ilke oluşturursunuz.
+Azure Cost Management accesses the S3 bucket where the Cost and Usage report is located several times a day. The service needs access to credentials to check for new data. You create a role and policy in AWS to allow Cost Management to access it.
 
-Maliyet yönetiminde bir AWS hesabına rol tabanlı erişimi etkinleştirmek için, rol AWS konsolunda oluşturulur. AWS konsolundan _ARN_ ve _dış kimliği_ rolüne sahip olmanız gerekir. Daha sonra, bunları maliyet yönetimi 'nde **AWS Bağlayıcısı oluştur** sayfasında kullanırsınız.
+To enable role-based access to an AWS account in Cost Management, the role is created in the AWS console. You need to have the _role ARN_ and _external ID_ from the AWS console. Later, you use them on the **Create an AWS connector** page in Cost Management.
 
-Yeni rol oluşturma Sihirbazı 'nı kullanın:
+Use the Create a New Role wizard:
 
-1. AWS konsolunuza oturum açın ve **Hizmetler**' i seçin.
-2. Hizmetler listesinde, **IAM**öğesini seçin.
-3. **Roller** ' i seçin ve ardından **rol oluştur**' u seçin.
-4. Sonraki sayfada **başka BIR AWS hesabı**seçin.
-5. **Hesap kimliği**alanına **432263259397**girin.
-6. **Seçenekler**' de, **dış kimlik gerektir ' i seçin (üçüncü taraf bu rolü varsayacak en iyi yöntem)** .
-7. **Dış kimlik**ALANıNA dış kimliği girin. Dış KIMLIK, AWS rolü ile Azure maliyet yönetimi arasındaki paylaşılan bir geçiş kodu. Aynı dış KIMLIK aynı zamanda maliyet yönetimi 'ndeki **yeni bağlayıcı** sayfasında da kullanılır. Örneğin, bir dış KIMLIK _Companyname1234567890123_benzerdir.
+1. Sign in to your AWS console and select **Services**.
+2. In the list of services, select **IAM**.
+3. Select **Roles** and then select **Create Role**.
+4. On the next page, select **Another AWS account**.
+5. In **Account ID**, enter **432263259397**.
+6. In **Options**, select **Require external ID (Best practice when a third party will assume this role)** .
+7. In **External ID**, enter the external ID. The external ID is a shared passcode between the AWS role and Azure Cost Management. The same external ID is also used on the **New Connector** page in Cost Management. For example, an external ID resembles _Companyname1234567890123_.
 
     > [!NOTE]
-    > **MFA gerektir**seçimini değiştirmeyin. Temizlenmiş kalmalıdır.
-8. İleri **' yi seçin: İzinler**.
-9. **Ilke oluştur**' u seçin. Yeni bir tarayıcı sekmesi açılır. Bu, ilke oluşturduğunuz yerdir.
-10. **Hizmet Seç**' i seçin.
+    > Don't change the selection for **Require MFA**. It should remain cleared.
+8. Select **Next: Permissions**.
+9. Select **Create policy**. Yeni bir tarayıcı sekmesi açılır. That's where you create a policy.
+10. Select **Choose a service**.
 
-Maliyet ve kullanım raporu için izinleri yapılandırın:
+Configure permission for the Cost and Usage report:
 
-1. **Maliyet ve kullanım raporu**girin.
-2. @No__t **erişim düzeyi**seçin-1**okuma** > **DescribeReportDefinitions**. Bu adım maliyet yönetiminin, GEÇERLI raporların ne şekilde tanımlandığını okumasına ve rapor tanımı önkoşulu ile eşleşip eşleşmediğine nasıl izin verdiğini sağlar.
-3. **Ek Izinler Ekle**' yi seçin.
+1. Enter **Cost and Usage Report**.
+2. Select **Access level** > **Read** > **DescribeReportDefinitions**. This step allows Cost Management to read what CUR reports are defined and determine if they match the report definition prerequisite.
+3. Select **Add additional permissions**.
 
-S3 demet ve nesneleriniz için izinleri yapılandırın:
+Configure permission for your S3 bucket and objects:
 
-1. **Hizmet Seç**' i seçin.
-2. **S3**girin.
-3. @No__t-1**liste** > **listbucket** **erişim düzeyini**seçin. Bu eylem, S3 demetini içindeki nesnelerin listesini alır.
-4. **Erişim düzeyi** > **okuma** > **GetObject**' i seçin. Bu eylem faturalandırma dosyalarının indirilmesini sağlar.
-5. **Kaynakları**seçin.
-6. **Demet seçin – ARN ekleyin**.
-7. **Demet adı**' nda, geçerli dosyaları depolamak için kullanılan demeti girin.
-8. **Nesne seçin – ARN ekleyin**.
-9. **Demet adı**' nda, geçerli dosyaları depolamak için kullanılan demeti girin.
-10. **Nesne adı**' nda **herhangi birini**seçin.
-11. **Ek Izinler Ekle**' yi seçin.
+1. Select **Choose a service**.
+2. Enter **S3**.
+3. Select **Access level** > **List** > **ListBucket**. This action gets the list of objects in the S3 Bucket.
+4. Select **Access level** > **Read** > **GetObject**. This action allows the download of billing files.
+5. Select **Resources**.
+6. Select **bucket – Add ARN**.
+7. In **Bucket name**, enter the bucket used to store the CUR files.
+8. Select **object – Add ARN**.
+9. In **Bucket name**, enter the bucket used to store the CUR files.
+10. In **Object name**, select **Any**.
+11. Select **Add additional permissions**.
 
-Maliyet Gezgini için izinleri yapılandırın:
+Configure permission for Cost Explorer:
 
-1. **Hizmet Seç**' i seçin.
-2. **Maliyet Gezgini hizmeti**girin.
-3. **Tüm maliyet Gezgini hizmet eylemlerini seçin (CE: \*)** . Bu eylem, koleksiyonun doğru olduğunu doğrular.
-4. **Ek Izinler Ekle**' yi seçin.
+1. Select **Choose a service**.
+2. Enter **Cost Explorer Service**.
+3. Select **All Cost Explorer Service actions (ce:\*)** . This action validates that the collection is correct.
+4. Select **Add additional permissions**.
 
-AWS kuruluşları için izin ekleme:
+Add permission for AWS Organizations:
 
-1. **Kuruluşları**girin.
-2. @No__t **erişim düzeyi**seçin-1**liste** > **listaccounts**. Bu eylem, hesapların adlarını alır.
-3. **Inceleme ilkesi**' nde, yeni ilke için bir ad girin. Doğru bilgileri girdiğinizden emin olun ve ardından **Ilke oluştur**' u seçin.
-4. Önceki sekmeye geri dönün ve tarayıcınızın Web sayfasını yenileyin. Arama çubuğunda yeni ilkenizi arayın.
-5. İleri **' yi seçin: Gözden**geçirin.
-6. Yeni rol için bir ad girin. Doğru bilgileri girdiğinizden emin olun ve ardından **rol oluştur**' u seçin.
+1. Enter **Organizations**.
+2. Select **Access level** > **List** > **ListAccounts**. This action gets the names of the accounts.
+3. In **Review Policy**, enter a name for the new policy. Check that you entered the correct information, and then select **Create Policy**.
+4. Go back to the previous tab and refresh your browser's webpage. On the search bar, search for your new policy.
+5. Select **Next: Review**.
+6. Enter a name for the new role. Check that you entered the correct information, and then select **Create Role**.
 
-    Rolü oluştururken önceki adımlarda kullanılan rol ve dış KIMLIK ' i göz önünde bulabilirsiniz. Bunları daha sonra Azure maliyet yönetimi bağlayıcısını ayarlarken kullanacaksınız.
+    Note the role ARN and the external ID used in the preceding steps when you created the role. You'll use them later when you set up the Azure Cost Management connector.
 
-JSON ilkesi aşağıdaki örneğe benzemelidir. _Bucketname_ değerini S3 demet 'larınızın adıyla değiştirin.
+The policy JSON should resemble the following example. Replace _bucketname_ with the name of your S3 bucket.
 
 ```JSON
 {
@@ -146,89 +146,89 @@ JSON ilkesi aşağıdaki örneğe benzemelidir. _Bucketname_ değerini S3 demet 
 }
 ```
 
-## <a name="set-up-a-new-aws-connector-in-azure"></a>Azure 'da yeni bir AWS Bağlayıcısı ayarlama
+## <a name="set-up-a-new-aws-connector-in-azure"></a>Set up a new AWS connector in Azure
 
-AWS bağlayıcısını oluşturmak ve AWS maliyetlerinizi izlemeye başlamak için aşağıdaki bilgileri kullanın:
+Use the following information to create an AWS connector and start monitoring your AWS costs:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. **Maliyet yönetimi + faturalandırma** > **maliyet yönetimi**' ne gidin.
-3. **Ayarlar**altında **bulut bağlayıcıları ' nı (Önizleme)** seçin.  
-    ](./media/aws-integration-setup-configure/cloud-connectors-preview01.png) @no__t bulut bağlayıcıları (Önizleme) ayarını gösteren 0 örnek).
-4. Bağlayıcı oluşturmak için sayfanın üst kısmında **+ Ekle** ' yi seçin.
-5. **AWS Bağlayıcısı oluştur** sayfasında, **görünen ad**alanına Bağlayıcınız için bir ad girin.  
-    AWS Bağlayıcısı oluşturmaya yönelik sayfanın 0Örneği @no__t @ no__t-1
-6. İsteğe bağlı olarak, varsayılan yönetim grubunu seçin. Tüm bulunan bağlı hesapları depolayacaktır. Daha sonra ayarlayabilirsiniz.
-7. Önizlemenin süresi dolduğu zaman sürekli olarak emin olmak istiyorsanız, **faturalandırma** bölümünde, **genel kullanıma sunulmasıyla otomatik olarak% 1 oranında ücretlendirmeyi** seçin. Otomatik seçeneğini belirlerseniz, bir faturalandırma aboneliği seçmeniz gerekir.
-8. **ARN rolü**IÇIN, AWS 'de rolü ayarlarken kullandığınız değeri girin.
-9. **Dış kimlik**IÇIN, AWS 'de rolü ayarlarken kullandığınız değeri girin.
-10. **Rapor adı**için AWS 'de oluşturduğunuz adı girin.
-11. **İleri** ' yi ve ardından **Oluştur**' u seçin.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+2. Go to **Cost Management + Billing** > **Cost Management**.
+3. Under **Settings**, select **Cloud connectors (Preview)** .  
+    ![Example showing the Cloud connectors (Preview) setting)](./media/aws-integration-setup-configure/cloud-connectors-preview01.png).
+4. Select **+Add** at the top of the page to create a connector.
+5. On the **Create an AWS connector** page, in **Display name**, enter a name for your connector.  
+    ![Example of the page for creating an AWS connector](./media/aws-integration-setup-configure/create-aws-connector01.png)
+6. Optionally, select the default management group. It will store all discovered linked accounts. You can set it up later.
+7. In the **Billing** section, select **Automatically charge the 1% at general availability** if you want to ensure continuous operation when the preview expires. If you select the automatic option, you must select a billing subscription.
+8. For **Role ARN**, enter the value that you used when you set up the role in AWS.
+9. For **External ID**, enter the value that you used when you set up the role in AWS.
+10. For **Report Name**, enter the name that you created in AWS.
+11. Select **Next** and then select **Create**.
 
-Yeni AWS kapsamlarının, AWS birleştirilmiş hesabının, AWS bağlı hesaplarının ve maliyet verilerinin görünmesi birkaç saat sürebilir.
+It might take a few hours for the new AWS scopes, AWS consolidated account, AWS linked accounts, and their cost data to appear.
 
-Bağlayıcıyı oluşturduktan sonra, ona erişim denetimi atamanızı öneririz. Kullanıcılara yeni bulunan kapsamlar için izinler atanır: AWS birleştirilmiş hesabı ve AWS bağlı hesapları. Bağlayıcıyı oluşturan kullanıcı bağlayıcının sahibidir, birleştirilmiş hesap ve tüm bağlı hesaplardır.
+After you create the connector, we recommend that you assign access control to it. Users are assigned permissions to the newly discovered scopes: AWS consolidated account and AWS linked accounts. The user who creates the connector is the owner of the connector, the consolidated account, and all linked accounts.
 
-Bulma gerçekleştikten sonra kullanıcılara bağlayıcı izinleri atama, mevcut AWS kapsamlarına izin atamaz. Bunun yerine, yalnızca yeni bağlı hesaplara izin atanır.
+Assigning connector permissions to users after discovery occurs doesn't assign permissions to the existing AWS scopes. Instead, only new linked accounts are assigned permissions.
 
-## <a name="take-additional-steps"></a>Ek adımlar alın
+## <a name="take-additional-steps"></a>Take additional steps
 
-- Henüz yapmadıysanız [Yönetim gruplarını ayarlayın](../governance/management-groups/overview.md#initial-setup-of-management-groups).
-- Kapsam seçiciye yeni kapsamların eklendiğinden emin olun. En son verileri görüntülemek için **Yenile** ' yi seçin.
-- **Bulut bağlayıcıları** sayfasında, bağlayıcıyı seçin ve bağlı hesabı yönetim gruplarına atamak için **faturalandırma hesabına git** ' i seçin.
+- [Set up management groups](../governance/management-groups/overview.md#initial-setup-of-management-groups), if you haven't already.
+- Check that new scopes are added to your scope picker. Select **Refresh** to view the latest data.
+- On the **Cloud connectors** page, select your connector and select **Go to billing account** to assign the linked account to management groups.
 
-## <a name="manage-cloud-connectors"></a>Bulut bağlayıcılarını yönetme
+## <a name="manage-cloud-connectors"></a>Manage cloud connectors
 
-**Bulut bağlayıcıları** sayfasında bir bağlayıcı seçtiğinizde şunları yapabilirsiniz:
+When you select a connector on the **Cloud connectors** page, you can:
 
-- AWS birleştirilmiş hesabının bilgilerini görüntülemek için **faturalandırma hesabına git** ' i seçin.
-- Bağlayıcının rol atamasını yönetmek için **Access Control** ' ı seçin.
-- Bağlayıcıyı güncelleştirmek için **Düzenle** ' yi seçin. AWS hesap numarasını değiştiremezsiniz, çünkü rol ARN ' de görünür. Ancak, yeni bir bağlayıcı oluşturabilirsiniz.
-- Maliyet yönetiminin bağlayıcı ayarlarını kullanarak veri toplayabildiğini doğrulamak için doğrulama testini yeniden çalıştırmak için **Doğrula** ' yı seçin.
+- Select **Go to Billing Account** to view information for the AWS consolidated account.
+- Select **Access Control** to manage the role assignment for the connector.
+- Select **Edit** to update the connector. You can't change the AWS account number, because it appears in the role ARN. But you can create a new connector.
+- Select **Verify** to rerun the verification test to make sure that Cost Management can collect data by using the connector settings.
 
-![Oluşturulan AWS bağlayıcıları örnek listesi](./media/aws-integration-setup-configure/list-aws-connectors.png)
+![Example list of created AWS connectors](./media/aws-integration-setup-configure/list-aws-connectors.png)
 
-## <a name="set-up-azure-management-groups"></a>Azure Yönetim gruplarını ayarlama
+## <a name="set-up-azure-management-groups"></a>Set up Azure management groups
 
-Azure aboneliklerinizi ve AWS bağlantılı hesaplarınızı aynı yönetim grubuna yerleştirip, platformlar arası sağlayıcı bilgilerini görebileceğiniz tek bir konum oluşturun. Azure ortamınızı zaten yönetim gruplarıyla yapılandırmadıysanız, bkz. [yönetim gruplarının ilk kurulumu](../governance/management-groups/overview.md#initial-setup-of-management-groups).
+Place your Azure subscriptions and AWS linked accounts in the same management group to create a single location where you can  see cross-cloud provider information. If you haven't already configured your Azure environment with management groups, see [Initial setup of management groups](../governance/management-groups/overview.md#initial-setup-of-management-groups).
 
-Maliyetleri ayırmak istiyorsanız, yalnızca AWS bağlantılı hesaplarını tutan bir yönetim grubu oluşturabilirsiniz.
+If you want to separate costs, you can create a management group that holds just AWS linked accounts.
 
-## <a name="set-up-an-aws-consolidated-account"></a>AWS birleştirilmiş hesabı ayarlama
+## <a name="set-up-an-aws-consolidated-account"></a>Set up an AWS consolidated account
 
-AWS birleştirilmiş hesabı, birden çok AWS hesabı için faturalandırma ve ödemeyi birleştirir. Ayrıca, AWS bağlantılı hesabı gibi davranır.
+The AWS consolidated account combines billing and payment for multiple AWS accounts. It also acts as an AWS linked account.
 
-![AWS birleştirilmiş hesabı için örnek Ayrıntılar](./media/aws-integration-setup-configure/aws-consolidated-account01.png)
+![Example details for an AWS consolidated account](./media/aws-integration-setup-configure/aws-consolidated-account01.png)
 
-Sayfasında şunları yapabilirsiniz:
+From the page, you can:
 
-- AWS bağlı hesaplarının bir yönetim grubuyla ilişkilendirmesini toplu olarak güncelleştirmek için **Güncelleştir** ' i seçin.
-- Kapsam için rol atamasını ayarlamak üzere **Access Control** ' yi seçin.
+- Select **Update** to bulk update the association of AWS linked accounts with a management group.
+- Select **Access Control** to set the role assignment for the scope.
 
-### <a name="permissions-for-an-aws-consolidated-account"></a>AWS birleştirilmiş hesabının izinleri
+### <a name="permissions-for-an-aws-consolidated-account"></a>Permissions for an AWS consolidated account
 
-Varsayılan olarak, bir AWS birleştirilmiş hesabının izinleri, AWS Bağlayıcısı izinlerine göre hesabın oluşturulmasına göre ayarlanır. Bağlayıcı Oluşturucusu, sahibidir.
+By default, permissions for an AWS consolidated account are set upon the account's creation, based on the AWS connector permissions. The connector creator is the owner.
 
-AWS birleştirilmiş hesabının **erişim düzeyi** sayfasını kullanarak erişim düzeyini yönetirsiniz. Bununla birlikte, AWS bağlantılı hesaplar AWS birleştirilmiş hesabına izin aktarılmaz.
+You manage the access level by using the **Access Level** page of the AWS consolidated account. However, AWS linked accounts don't inherit permissions to the AWS consolidated account.
 
-## <a name="set-up-an-aws-linked-account"></a>AWS bağlantılı hesabı ayarlama
+## <a name="set-up-an-aws-linked-account"></a>Set up an AWS linked account
 
-AWS bağlı hesabı AWS kaynaklarının oluşturulduğu ve yönetildiği yerdir. Bağlı bir hesap da güvenlik sınırı olarak davranır.
+The AWS linked account is where AWS resources are created and managed. A linked account also acts as a security boundary.
 
-Bu sayfadan şunları yapabilirsiniz:
+From this page, you can:
 
-- Bir AWS bağlantılı hesabının bir yönetim grubuyla ilişkilendirmesini güncelleştirmek için **Güncelleştir** ' i seçin.
-- Kapsam için bir rol ataması ayarlamak üzere **Access Control** ' yi seçin.
+- Select **Update** to update the association of an AWS linked account with a management group.
+- Select **Access Control** to set a role assignment for the scope.
 
-![AWS bağlı hesap sayfası örneği](./media/aws-integration-setup-configure/aws-linked-account01.png)
+![Example of the AWS Linked Account page](./media/aws-integration-setup-configure/aws-linked-account01.png)
 
-### <a name="permissions-for-an-aws-linked-account"></a>AWS bağlı hesabının izinleri
+### <a name="permissions-for-an-aws-linked-account"></a>Permissions for an AWS linked account
 
-Varsayılan olarak, AWS bağlantılı hesabına yönelik izinler, AWS bağlayıcı izinlerine göre oluşturma sırasında ayarlanır. Bağlayıcı Oluşturucusu, sahibidir. Erişim düzeyini AWS bağlantılı hesabının **erişim düzeyi** sayfasını kullanarak yönetirsiniz. AWS bağlantılı hesaplar bir AWS birleştirilmiş hesabından izinleri almıyor.
+By default, permissions for an AWS linked account are set upon creation, based on the AWS connector permissions. The connector creator is the owner. You manage the access level by using the **Access Level** page of the AWS linked account. AWS linked accounts don't inherit permissions from an AWS consolidated account.
 
-AWS bağlı hesapları her zaman izinleri ait oldukları yönetim grubundan devralınır.
+AWS linked accounts always inherit permissions from the management group that they belong to.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- AWS maliyet ve kullanım raporu tümleştirmesini ayarlayıp yapılandırdığınıza göre, [AWS maliyetlerini ve kullanımını yönetmeye](aws-integration-manage.md)devam edin.
-- Maliyet analizinden daha fazla bilginiz varsa bkz. [Maliyet Analizi hızlı başlangıç ile maliyetleri araştırma ve analiz etme](quick-acm-cost-analysis.md) .
-- Azure 'daki bütçeleri tanımıyorsanız, bkz. [Azure bütçeleri oluşturma ve yönetme](tutorial-acm-create-budgets.md).
+- Now that you've set up and configured AWS Cost and Usage report integration, continue to [Manage AWS costs and usage](aws-integration-manage.md).
+- If you're unfamiliar with cost analysis, see [Explore and analyze costs with cost analysis](quick-acm-cost-analysis.md) quickstart.
+- If you're unfamiliar with budgets in Azure, see [Create and manage Azure budgets](tutorial-acm-create-budgets.md).

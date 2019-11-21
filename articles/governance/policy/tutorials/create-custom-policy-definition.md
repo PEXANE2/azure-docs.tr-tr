@@ -1,74 +1,74 @@
 ---
-title: Özel ilke tanımı oluşturma
-description: Azure kaynaklarınız için özel iş kurallarını zorlamak üzere Azure Ilkesi için özel bir ilke tanımı oluşturun.
+title: 'Tutorial: Create a custom policy definition'
+description: In this tutorial, you craft a custom policy definition for Azure Policy to enforce custom business rules on your Azure resources.
 ms.date: 04/23/2019
 ms.topic: tutorial
-ms.openlocfilehash: 97a85eb28cd0dbb2586623fda442d87a5790db2a
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 743e3dea3c6daa7b2e713f2b1d5c1691d60785ec
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74128791"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74216696"
 ---
-# <a name="tutorial-create-a-custom-policy-definition"></a>Öğretici: özel bir ilke tanımı oluşturma
+# <a name="tutorial-create-a-custom-policy-definition"></a>Tutorial: Create a custom policy definition
 
-Özel bir ilke tanımı, müşterilerin Azure kullanımı için kendi kurallarını tanımlamasına olanak tanır. Bu kurallar genellikle zorlanır:
+A custom policy definition allows customers to define their own rules for using Azure. These rules often enforce:
 
 - Güvenlik uygulamaları
 - Maliyet yönetimi
-- Kuruluşa özgü kurallar (adlandırma veya konumlar gibi)
+- Organization-specific rules (like naming or locations)
 
-Özel bir ilke oluşturmak için iş sürücüsü ne olursa olsun, adımlar yeni özel ilkeyi tanımlamak için aynıdır.
+Whatever the business driver for creating a custom policy, the steps are the same for defining the new custom policy.
 
-Özel bir ilke oluşturmadan önce, gereksinimlerinize uyan bir ilkenin zaten var olup olmadığını görmek için [ilke örneklerine](../samples/index.md) bakın.
+Before creating a custom policy, check the [policy samples](../samples/index.md) to see if a policy that matches your needs already exists.
 
-Özel bir ilke oluşturmaya yönelik yaklaşım şu adımları izler:
+The approach to creating a custom policy follows these steps:
 
 > [!div class="checklist"]
-> - İş gereksinimlerinizi belirlemek
-> - Her gereksinimi bir Azure Kaynak özelliği ile eşleyin
-> - Özelliği bir diğer ada eşleyin
-> - Hangi etkiyi kullanacağınızı belirleme
-> - İlke tanımını oluşturma
+> - Identify your business requirements
+> - Map each requirement to an Azure resource property
+> - Map the property to an alias
+> - Determine which effect to use
+> - Compose the policy definition
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-## <a name="identify-requirements"></a>Gereksinimleri tanımla
+## <a name="identify-requirements"></a>Identify requirements
 
-İlke tanımını oluşturmadan önce, ilkenin amacını anlamak önemlidir. Bu öğreticide, ilgili adımları göstermek için hedef olarak ortak bir kurumsal güvenlik gereksinimi kullanacağız:
+Before creating the policy definition, it's important to understand the intent of the policy. For this tutorial, we'll use a common enterprise security requirement as the goal to illustrate the steps involved:
 
-- Her depolama hesabının HTTPS için etkinleştirilmesi gerekir
-- Her depolama hesabının HTTP için devre dışı bırakılması gerekir
+- Each storage account must be enabled for HTTPS
+- Each storage account must be disabled for HTTP
 
-Gereksinimleriniz hem "yapılacak" hem de "değil" kaynak durumlarını açıkça tanımlamalıdır.
+Your requirements should clearly identify both the "to be" and the "not to be" resource states.
 
-Kaynağın beklenen durumunu tanımladığımızda, uyumlu olmayan kaynaklarla yapıldığımız şeyleri henüz tanımlamadık. Azure Ilkesi, bir dizi [efekti](../concepts/effects.md)destekler. Bu öğreticide, iş kurallarıyla uyumlu olmadıkları takdirde kaynak oluşturulmasını önleyecek şekilde iş gereksinimini tanımlayacağız. Bu hedefi karşılamak için [reddetme](../concepts/effects.md#deny) efektini kullanacağız. Ayrıca, belirli atamalar için ilkeyi askıya alma seçeneğini de istiyoruz. Bu nedenle, [devre dışı](../concepts/effects.md#disabled) efekti kullanacağız ve ilke tanımında efekti bir [parametre](../concepts/definition-structure.md#parameters) haline getirir.
+While we've defined the expected state of the resource, we've not yet defined what we want done with non-compliant resources. Azure Policy supports a number of [effects](../concepts/effects.md). For this tutorial, we'll define the business requirement as preventing the creation of resources if they aren't compliant with the business rules. To meet this goal, we'll use the [Deny](../concepts/effects.md#deny) effect. We also want the option to suspend the policy for specific assignments. As such, we'll use the [Disabled](../concepts/effects.md#disabled) effect and make the effect a [parameter](../concepts/definition-structure.md#parameters) in the policy definition.
 
-## <a name="determine-resource-properties"></a>Kaynak özelliklerini belirleme
+## <a name="determine-resource-properties"></a>Determine resource properties
 
-Azure Ilkesiyle denetlenecek Azure kaynağı, iş gereksinimine bağlı olarak bir depolama hesabıdır. Ancak, ilke tanımında kullanılacak özellikleri bilmiyorum. Azure Ilkesi kaynağın JSON gösterimine göre değerlendirilir, bu nedenle söz konusu kaynakta kullanılabilen özellikleri anladık.
+Based on the business requirement, the Azure resource to audit with Azure Policy is a storage account. However, we don't know the properties to use in the policy definition. Azure Policy evaluates against the JSON representation of the resource, so we'll need to understand the properties available on that resource.
 
-Bir Azure kaynağı için özellikleri belirlemenin birçok yolu vardır. Bu öğretici için her birine bakacağız:
+There are many ways to determine the properties for an Azure resource. We'll look at each for this tutorial:
 
 - Resource Manager şablonları
-  - Mevcut kaynağı dışarı aktar
-  - Oluşturma deneyimi
-  - Hızlı başlangıç şablonları (GitHub)
-  - Şablon başvuru belgeleri
+  - Export existing resource
+  - Creation experience
+  - Quickstart templates (GitHub)
+  - Template reference docs
 - Azure Resource Manager
 
 ### <a name="resource-manager-templates"></a>Resource Manager şablonları
 
-Yönetmek istediğiniz özelliği içeren [Kaynak Yöneticisi şablona](../../../azure-resource-manager/resource-manager-tutorial-create-encrypted-storage-accounts.md) bakmak için birkaç yol vardır.
+There are several ways to look at a [Resource Manager template](../../../azure-resource-manager/resource-manager-tutorial-create-encrypted-storage-accounts.md) that includes the property you're looking to manage.
 
-#### <a name="existing-resource-in-the-portal"></a>Portalda mevcut kaynak
+#### <a name="existing-resource-in-the-portal"></a>Existing resource in the portal
 
-Özellikleri bulmanın en kolay yolu, aynı türdeki mevcut bir kaynağa bakmanız. Zorlamak istediğiniz ayarla önceden yapılandırılmış kaynaklar, karşılaştırılacak değeri de sağlar.
-Söz konusu kaynak için Azure portal **şablonu dışarı aktar** sayfasına ( **Ayarlar**altında) bakın.
+The simplest way to find properties is to look at an existing resource of the same type. Resources already configured with the setting you want to enforce also provide the value to compare against.
+Look at the **Export template** page (under **Settings**) in the Azure portal for that specific resource.
 
-![Mevcut kaynak üzerinde şablon dışarı aktarma sayfası](../media/create-custom-policy-definition/export-template.png)
+![Export template page on existing resource](../media/create-custom-policy-definition/export-template.png)
 
-Bunu bir depolama hesabı için yapmak, bu örneğe benzer bir şablonu ortaya çıkarır:
+Doing so for a storage account reveals a template similar to this example:
 
 ```json
 ...
@@ -112,13 +112,13 @@ Bunu bir depolama hesabı için yapmak, bu örneğe benzer bir şablonu ortaya �
 ...
 ```
 
-**Özellikler** altında, **supportsHttpsTrafficOnly** adlı bir değer **false**olarak ayarlanır. Bu özellik, aradığınız özellik gibi görünüyor. Ayrıca, kaynağın **türü** **Microsoft. Storage/storageaccounts**olur. Tür, ilkeyi yalnızca bu türdeki kaynaklarla sınırlandırmamızı sağlar.
+Under **properties** is a value named **supportsHttpsTrafficOnly** set to **false**. This property looks like it may be the property we're looking for. Also, the **type** of the resource is **Microsoft.Storage/storageAccounts**. The type lets us limit the policy to only resources of this type.
 
-#### <a name="create-a-resource-in-the-portal"></a>Portalda kaynak oluşturma
+#### <a name="create-a-resource-in-the-portal"></a>Create a resource in the portal
 
-Portal aracılığıyla başka bir yöntem de kaynak oluşturma deneyimidir. Portal aracılığıyla bir depolama hesabı oluştururken, **Gelişmiş** sekmesinde **güvenlik aktarımı gerekli**değildir. Bu özellik _devre dışı_ ve _etkin_ seçeneklere sahiptir. Bilgi simgesi, bu seçeneği doğrulayan ek metnin büyük olasılıkla istediğiniz özelliği olduğunu onaylar. Ancak, Portal bu ekrandaki özellik adını bize söylemez.
+Another way through the portal is the resource creation experience. While creating a storage account through the portal, an option under the **Advanced** tab is **Security transfer required**. This property has _Disabled_ and _Enabled_ options. The info icon has additional text that confirms this option is likely the property we want. However, the portal doesn't tell us the property name on this screen.
 
-**Gözden geçir + oluştur** sekmelerinde, **Otomasyon Için bir şablon indirmek**için sayfanın alt kısmında bir bağlantı bulunur. Bağlantıyı seçmek, yapılandırdığımız kaynağı oluşturan şablonu açar. Bu durumda, iki temel bilgi parçası görüyoruz:
+On the **Review + create** tab, a link is at the bottom of the page to **Download a template for automation**. Selecting the link opens the template that creates the resource we configured. In this case, we see two key pieces of information:
 
 ```json
 ...
@@ -133,28 +133,28 @@ Portal aracılığıyla başka bir yöntem de kaynak oluşturma deneyimidir. Por
 ...
 ```
 
-Bu bilgiler bize Özellik türünü söyler ve ayrıca **supportsHttpsTrafficOnly** , ardığımız özelliktir.
+This information tells us the property type and also confirms **supportsHttpsTrafficOnly** is the property we're looking for.
 
-#### <a name="quickstart-templates-on-github"></a>GitHub 'daki hızlı başlangıç şablonları
+#### <a name="quickstart-templates-on-github"></a>Quickstart templates on GitHub
 
-GitHub 'daki [Azure hızlı başlangıç şablonlarında](https://github.com/Azure/azure-quickstart-templates) , farklı kaynaklar için oluşturulmuş yüzlerce kaynak yöneticisi şablonu vardır. Bu şablonlar, Aradığınız kaynak özelliğini bulmanın harika bir yolu olabilir. Bazı özellikler aradığınız şey gibi görünebilir, ancak başka bir şeyi de kontrol edebilirsiniz.
+The [Azure quickstart templates](https://github.com/Azure/azure-quickstart-templates) on GitHub has hundreds of Resource Manager templates built for different resources. These templates can be a great way to find the resource property you're looking for. Some properties may appear to be what you're looking for, but control something else.
 
-#### <a name="resource-reference-docs"></a>Kaynak başvuru belgeleri
+#### <a name="resource-reference-docs"></a>Resource reference docs
 
-**SupportsHttpsTrafficOnly** 'ın doğru olduğunu doğrulamak için depolama sağlayıcısı üzerindeki [depolama hesabı kaynağı](/azure/templates/microsoft.storage/2018-07-01/storageaccounts) için Kaynak Yöneticisi şablonu başvurusunu kontrol edin.
-Properties nesnesi geçerli parametrelerin bir listesini içerir. [Storageaccountpropertiescreateparameters-Object](/azure/templates/microsoft.storage/2018-07-01/storageaccounts#storageaccountpropertiescreateparameters-object) bağlantısına seçilirse, kabul edilebilir özelliklerden oluşan bir tablo gösterilir. **supportsHttpsTrafficOnly** mevcuttur ve açıklama, iş gereksinimlerini karşılayacak şekilde aradığımızda eşleşir.
+To validate **supportsHttpsTrafficOnly** is correct property, check the Resource Manager template reference for the [storage account resource](/azure/templates/microsoft.storage/2018-07-01/storageaccounts) on the storage provider.
+The properties object has a list of valid parameters. Selecting the [StorageAccountPropertiesCreateParameters-object](/azure/templates/microsoft.storage/2018-07-01/storageaccounts#storageaccountpropertiescreateparameters-object) link shows a table of acceptable properties. **supportsHttpsTrafficOnly** is present and the description matches what we are looking for to meet the business requirements.
 
 ### <a name="azure-resource-explorer"></a>Azure Resource Manager
 
-Azure kaynaklarınızı keşfetmeye yönelik başka bir yol da [Azure Kaynak Gezgini](https://resources.azure.com) (Önizleme). Bu araç, aboneliğinizin bağlamını kullanır, bu nedenle web sitesinde Azure kimlik bilgilerinizle kimlik doğrulaması yapmanız gerekir. Kimliği doğrulandıktan sonra, sağlayıcılara, aboneliklere, kaynak gruplarına ve kaynaklara göre gezinebilirsiniz.
+Another way to explore your Azure resources is through the [Azure Resource Explorer](https://resources.azure.com) (Preview). This tool uses the context of your subscription, so you need to authenticate to the website with your Azure credentials. Once authenticated, you can browse by providers, subscriptions, resource groups, and resources.
 
-Bir depolama hesabı kaynağı bulun ve özelliklerine bakın. Burada **supportsHttpsTrafficOnly** özelliği de görüyoruz. **Belge** sekmesini seçtiğinizde, özellik açıklamasının daha önce başvuru belgelerinde bulduğumuz ile eşleştiğini görüyoruz.
+Locate a storage account resource and look at the properties. We see the **supportsHttpsTrafficOnly** property here as well. Selecting the **Documentation** tab, we see that the property description matches what we found in the reference docs earlier.
 
-## <a name="find-the-property-alias"></a>Özellik diğer adını bul
+## <a name="find-the-property-alias"></a>Find the property alias
 
-Kaynak özelliği tanımlandık, ancak bu özelliği bir [diğer adla](../concepts/definition-structure.md#aliases)eşleştirmemiz gerekiyor.
+We've identified the resource property, but we need to map that property to an [alias](../concepts/definition-structure.md#aliases).
 
-Bir Azure kaynağı için diğer adları belirlemenin birkaç yolu vardır. Bu öğretici için her birine bakacağız:
+There are a few ways to determine the aliases for an Azure resource. We'll look at each for this tutorial:
 
 - Azure CLI
 - Azure PowerShell
@@ -162,7 +162,7 @@ Bir Azure kaynağı için diğer adları belirlemenin birkaç yolu vardır. Bu �
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Azure CLı 'de, `az provider` komut grubu kaynak diğer adlarını aramak için kullanılır. Daha önce Azure kaynağı hakkında aldık ayrıntıları temel alarak **Microsoft. Storage** ad alanını filtreleyeceğiz.
+In Azure CLI, the `az provider` command group is used to search for resource aliases. We'll filter for the **Microsoft.Storage** namespace based on the details we got about the Azure resource earlier.
 
 ```azurecli-interactive
 # Login first with az login if not using Cloud Shell
@@ -171,11 +171,11 @@ Azure CLı 'de, `az provider` komut grubu kaynak diğer adlarını aramak için 
 az provider show --namespace Microsoft.Storage --expand "resourceTypes/aliases" --query "resourceTypes[].aliases[].name"
 ```
 
-Sonuçlarda, **supportsHttpsTrafficOnly**adlı depolama hesapları tarafından desteklenen bir diğer ad görüyoruz. Bu diğer adın varlığı, iş gereksinimlerinizi zorlayabilmemiz için ilkeyi yazabildiğimiz anlamına gelir!
+In the results, we see an alias supported by the storage accounts named **supportsHttpsTrafficOnly**. This existence of this alias means we can write the policy to enforce our business requirements!
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Azure PowerShell, `Get-AzPolicyAlias` cmdlet 'i kaynak diğer adlarını aramak için kullanılır. Daha önce Azure kaynağı hakkında aldık ayrıntıları temel alarak **Microsoft. Storage** ad alanını filtreleyeceğiz.
+In Azure PowerShell, the `Get-AzPolicyAlias` cmdlet is used to search for resource aliases. We'll filter for the **Microsoft.Storage** namespace based on the details we got about the Azure resource earlier.
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -184,11 +184,11 @@ Azure PowerShell, `Get-AzPolicyAlias` cmdlet 'i kaynak diğer adlarını aramak 
 (Get-AzPolicyAlias -NamespaceMatch 'Microsoft.Storage').Aliases
 ```
 
-Azure CLı gibi sonuçlar, **supportsHttpsTrafficOnly**adlı depolama hesapları tarafından desteklenen bir diğer ad gösterir.
+Like Azure CLI, the results show an alias supported by the storage accounts named **supportsHttpsTrafficOnly**.
 
 ### <a name="azure-resource-graph"></a>Azure Kaynak Grafiği
 
-[Azure Kaynak Grafiği](../../resource-graph/overview.md) , önizlemede yeni bir hizmettir. Azure kaynaklarının özelliklerini bulmak için başka bir yöntem sağlar. Kaynak grafiğine sahip tek bir depolama hesabına bakmak için örnek bir sorgu aşağıda verilmiştir:
+[Azure Resource Graph](../../resource-graph/overview.md) is a new service in Preview. It enables another method to find properties of Azure resources. Here is a sample query for looking at a single storage account with Resource Graph:
 
 ```kusto
 where type=~'microsoft.storage/storageaccounts'
@@ -203,7 +203,7 @@ az graph query -q "where type=~'microsoft.storage/storageaccounts' | limit 1"
 Search-AzGraph -Query "where type=~'microsoft.storage/storageaccounts' | limit 1"
 ```
 
-Sonuçlar, Kaynak Yöneticisi şablonlarda görtiğimiz ve Azure Kaynak Gezgini aracılığıyla benzer şekilde görünür. Bununla birlikte, Azure Kaynak Grafiği sonuçları, diğer _adlar_ dizisinin _yansıtılasında_ [diğer ad](../concepts/definition-structure.md#aliases) ayrıntıları da içerebilir:
+The results look similar to what we see in the Resource Manager templates and through the Azure Resource Explorer. However, Azure Resource Graph results can also include [alias](../concepts/definition-structure.md#aliases) details by _projecting_ the _aliases_ array:
 
 ```kusto
 where type=~'microsoft.storage/storageaccounts'
@@ -219,7 +219,7 @@ az graph query -q "where type=~'microsoft.storage/storageaccounts' | limit 1 | p
 Search-AzGraph -Query "where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
 ```
 
-Diğer adlar için bir depolama hesabından örnek çıktı aşağıda verilmiştir:
+Here is example output from a storage account for aliases:
 
 ```json
 "aliases": {
@@ -301,18 +301,18 @@ Diğer adlar için bir depolama hesabından örnek çıktı aşağıda verilmiş
 }
 ```
 
-Azure Kaynak Grafiği (Önizleme) [Cloud Shell](https://shell.azure.com)aracılığıyla kullanılabilir, bu sayede kaynaklarınızın özelliklerini keşfetmeye yönelik hızlı ve kolay bir yol haline gelir.
+Azure Resource Graph (Preview) can be used through [Cloud Shell](https://shell.azure.com), making it a fast and easy way to explore the properties of your resources.
 
-## <a name="determine-the-effect-to-use"></a>Kullanılacak etkiyi belirleme
+## <a name="determine-the-effect-to-use"></a>Determine the effect to use
 
-Uyumlu olmayan kaynaklarınız için ne olacağına karar vermek, ilk yerde değerlendirileceğine karar verirken neredeyse önemli bir şeydir. Uyumlu olmayan bir kaynağa yönelik olası her yanıta bir [efekt](../concepts/effects.md)denir.
-Bu efekt, uyumlu olmayan kaynağın günlüğe kaydedilmesini, engellenip engellenmediğini, verilerin eklenmiş olduğunu veya kaynağın uyumlu duruma geri yerleştirilmesi için kendisiyle ilişkili bir dağıtıma sahip olup olmadığını denetler.
+Deciding what to do with your non-compliant resources is nearly as important as deciding what to evaluate in the first place. Each possible response to a non-compliant resource is called an [effect](../concepts/effects.md).
+The effect controls if the non-compliant resource is logged, blocked, has data appended, or has a deployment associated to it for putting the resource back into a compliant state.
 
-Bizim örneğimizde, Azure ortamımızda uyumsuz kaynaklar oluşturulmasını istemediğiniz için reddetme yaptığımız bir etkiye sahip olur. Denetim, ilke efektinin, bir ilkenin ne kadar etkili olduğunu belirlemek için ne kadar etkili olduğunu belirlemek için iyi bir seçenektir. Atama başına etkiyi değiştirmenin bir yolu, etkiyi parametreleştirmek olacaktır. Ayrıntıları hakkında daha fazla bilgi için aşağıdaki [parametrelere](#parameters) bakın.
+For our example, Deny is the effect we want as we do not want non-compliant resources created in our Azure environment. Audit is a good first choice for a policy effect to determine what the impact of a policy is before setting it to Deny. One way to make changing the effect per assignment easier is to parameterize the effect. See [parameters](#parameters) below for the details on how.
 
-## <a name="compose-the-definition"></a>Tanımı oluştur
+## <a name="compose-the-definition"></a>Compose the definition
 
-Artık, yönetmeyi planladığımız özellikler için özellik ayrıntıları ve diğer ad vardır. Ardından, ilke kuralının kendisini oluşturacağız. İlke dilini henüz bilmiyorsanız, ilke tanımını nasıl yapılandıracağınıza yönelik başvuru [ilke tanımı yapısı](../concepts/definition-structure.md) . Aşağıda, ilke tanımının neye benzediklerine ait boş bir şablon verilmiştir:
+We now have the property details and alias for what we plan to manage. Next, we'll compose the policy rule itself. If you aren't yet familiar with the policy language, reference [policy definition structure](../concepts/definition-structure.md) for how to structure the policy definition. Here is an empty template of what a policy definition looks like:
 
 ```json
 {
@@ -337,7 +337,7 @@ Artık, yönetmeyi planladığımız özellikler için özellik ayrıntıları v
 
 ### <a name="metadata"></a>Meta Veriler
 
-İlk üç bileşen ilke meta verilersidir. Bu bileşenlerin, için kural oluşturduğumuz öğrendiğimiz için değerleri sağlaması kolaydır. [Mod](../concepts/definition-structure.md#mode) öncelikli olarak Etiketler ve kaynak konumu ile ilgilidir. Etiketleri destekleyen kaynaklarla değerlendirmeyi sınırlandırmaya gerek olmadığı için, **mod**için _Tüm_ değeri kullanacağız.
+The first three components are policy metadata. These components are easy to provide values for since we know what we are creating the rule for. [Mode](../concepts/definition-structure.md#mode) is primarily about tags and resource location. Since we don't need to limit evaluation to resources that support tags, we'll use the _all_ value for **mode**.
 
 ```json
 "displayName": "Deny storage accounts not using only HTTPS",
@@ -347,7 +347,7 @@ Artık, yönetmeyi planladığımız özellikler için özellik ayrıntıları v
 
 ### <a name="parameters"></a>Parametreler
 
-Değerlendirmeyi değiştirmek için bir parametre kullanmadığımızda, sorun giderme için **etkiyi** değiştirmeye izin vermek üzere bir parametre kullanmak istiyoruz. **Bir bir** bir bir bir bir bir bir bir bir bir bir bir parametre tanımlayacağız Bu iki seçenek iş gereksinimlerimizle eşleşir. Tamamlanan parametreler bloğu Şu örneğe benzer şekilde görünür:
+While we didn't use a parameter for changing the evaluation, we do want to use a parameter to allow changing the **effect** for troubleshooting. We'll define an **effectType** parameter and limit it to only **Deny** and **Disabled**. These two options match our business requirements. The finished parameters block looks like this example:
 
 ```json
 "parameters": {
@@ -366,14 +366,14 @@ Değerlendirmeyi değiştirmek için bir parametre kullanmadığımızda, sorun 
 },
 ```
 
-### <a name="policy-rule"></a>İlke kuralı
+### <a name="policy-rule"></a>Policy rule
 
-[İlke kuralını](../concepts/definition-structure.md#policy-rule) oluşturma işlemi, özel ilke tanımımızı oluşturmanın son adımıdır. Test etmek için iki deyim belirledik:
+Composing the [policy rule](../concepts/definition-structure.md#policy-rule) is the final step in building our custom policy definition. We've identified two statements to test for:
 
-- Depolama hesabı **türü** **Microsoft. Storage/storageaccounts**
-- **SupportsHttpsTrafficOnly** depolama hesabı **doğru** değil
+- That the storage account **type** is **Microsoft.Storage/storageAccounts**
+- That the storage account **supportsHttpsTrafficOnly** isn't **true**
 
-Bu deyimlerin her ikisinin de doğru olması gerektiğinden, **allof** [Logical işlecini](../concepts/definition-structure.md#logical-operators)kullanacağız. Bir statik bildirim yapmak yerine, etkikiz **parametresini etkiye** geçireceğiz. Tamamlanan kuralımız Şu örneğe benzer şekilde görünür:
+Since we need both of these statements to be true, we'll use the **allOf** [logical operator](../concepts/definition-structure.md#logical-operators). We'll pass the **effectType** parameter to the effect instead of making a static declaration. Our finished rule looks like this example:
 
 ```json
 "if": {
@@ -393,9 +393,9 @@ Bu deyimlerin her ikisinin de doğru olması gerektiğinden, **allof** [Logical 
 }
 ```
 
-### <a name="completed-definition"></a>Tamamlandı tanımı
+### <a name="completed-definition"></a>Completed definition
 
-İlkenin üç bölümü tanımlanmış olarak, tamamlanma tanımımız şu şekildedir:
+With all three parts of the policy defined, here is our completed definition:
 
 ```json
 {
@@ -438,22 +438,22 @@ Bu deyimlerin her ikisinin de doğru olması gerektiğinden, **allof** [Logical 
 }
 ```
 
-Tamamlanan tanım yeni bir ilke oluşturmak için kullanılabilir. Portal ve her SDK (Azure CLı, Azure PowerShell ve REST API) tanımı farklı yollarla kabul eder, bu nedenle doğru kullanımı doğrulamak için her birine yönelik komutları gözden geçirin. Daha sonra, depolama hesaplarınızın güvenliğini yönetmek için parametreli etkiyi kullanarak uygun kaynaklara göre atayın.
+The completed definition can be used to create a new policy. Portal and each SDK (Azure CLI, Azure PowerShell, and REST API) accept the definition in different ways, so review the commands for each to validate correct usage. Then assign it, using the parameterized effect, to appropriate resources to manage the security of your storage accounts.
 
-## <a name="review"></a>Gözden geçirme
+## <a name="review"></a>Gözden Geçir
 
 Bu öğreticide, aşağıdaki görevleri başarıyla gerçekleştirdiniz:
 
 > [!div class="checklist"]
-> - İş gereksinimlerinizi tanımladı
-> - Her gereksinimi bir Azure Kaynak özelliği ile eşlendi
-> - Özelliği bir diğer ada eşlendi
-> - Kullanım efektinin belirlenmesi
-> - İlke tanımı oluşturulmuş
+> - Identified your business requirements
+> - Mapped each requirement to an Azure resource property
+> - Mapped the property to an alias
+> - Determined the effect to use
+> - Composed the policy definition
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ardından, ilke oluşturmak ve atamak için özel ilke tanımınızı kullanın:
+Next, use your custom policy definition to create and assign a policy:
 
 > [!div class="nextstepaction"]
-> [İlke tanımı oluşturma ve atama](../how-to/programmatically-create.md#create-and-assign-a-policy-definition)
+> [Create and assign a policy definition](../how-to/programmatically-create.md#create-and-assign-a-policy-definition)

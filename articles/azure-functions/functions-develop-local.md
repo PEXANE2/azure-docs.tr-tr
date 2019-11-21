@@ -1,48 +1,42 @@
 ---
-title: Azure işlevlerini yerel olarak geliştirin ve çalıştırın | Microsoft Docs
-description: Azure işlevleri 'nde çalıştırmadan önce yerel bilgisayarınızdaki Azure işlevlerini nasıl kodleyeceğinizi ve test leyeceğinizi öğrenin.
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
-ms.service: azure-functions
+title: Develop and run Azure functions locally
+description: Learn how to code and test Azure functions on your local computer before you run them on Azure Functions.
 ms.topic: conceptual
 ms.date: 09/04/2018
-ms.author: glenga
-ms.openlocfilehash: 7c2e727ecb080d1db212e8b45a2c48bac81a3949
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 835edcb94b294d93cab41ea51b88ac38db71d95e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709320"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230641"
 ---
-# <a name="code-and-test-azure-functions-locally"></a>Azure Işlevlerini yerel olarak kod ve test etme
+# <a name="code-and-test-azure-functions-locally"></a>Code and test Azure Functions locally
 
-[Azure Portal]Azure işlevleri geliştirip test edebilirken birçok geliştirici, yerel bir geliştirme deneyimi tercih eder. İşlevler, yerel bilgisayarınızda işlevleri oluşturmak ve test etmek için en sevdiğiniz kod düzenleyicinizi ve geliştirme araçlarını kullanmayı kolaylaştırır. Yerel işlevleriniz canlı Azure hizmetlerine bağlanabilir ve tüm Işlevler çalışma zamanını kullanarak yerel bilgisayarınızda hata ayıklaması yapabilirsiniz.
+While you're able to develop and test Azure Functions in the [Azure portalda], many developers prefer a local development experience. Functions makes it easy to use your favorite code editor and development tools to create and test functions on your local computer. Your local functions can connect to live Azure services, and you can debug them on your local computer using the full Functions runtime.
 
-## <a name="local-development-environments"></a>Yerel geliştirme ortamları
+## <a name="local-development-environments"></a>Local development environments
 
-Yerel bilgisayarınızda işlevleri geliştirme yönteminiz, [dilinize](supported-languages.md) ve araç tercihlerinize göre değişir. Aşağıdaki tablodaki ortamlar yerel geliştirmeyi destekler:
+The way in which you develop functions on your local computer depends on your [language](supported-languages.md) and tooling preferences. The environments in the following table support local development:
 
 |Ortam                              |Diller         |Açıklama|
 |-----------------------------------------|------------|---|
-|[Visual Studio Code](functions-develop-vs-code.md)| [](functions-create-first-function-powershell.md) [](functions-reference-python.md) [](functions-reference-node.md) [ C# ](functions-reference-csharp.md) [ C# (sınıf kitaplığı)](functions-dotnet-class-library.md), betik (. CSX), JavaScript, PowerShell, Python | [Vs Code Için Azure işlevleri uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) , vs Code işlev desteği ekler. Temel araçları gerektirir. , Çekirdek araçların 2. x 'i kullanılırken Linux, MacOS ve Windows için geliştirmeyi destekler. Daha fazla bilgi için bkz. [Visual Studio Code kullanarak ilk işlevinizi oluşturma](functions-create-first-function-vs-code.md). |
-| [Komut istemi veya Terminal](functions-run-local.md) | [](functions-reference-powershell.md) [](functions-reference-python.md) [](functions-reference-node.md) [ C# ](functions-reference-csharp.md) [ C# (sınıf kitaplığı)](functions-dotnet-class-library.md), betik (. CSX), JavaScript, PowerShell, Python | [Azure Functions Core Tools] , yerel geliştirmeyi etkinleştiren işlevler oluşturmak için çekirdek çalışma zamanı ve şablonları sağlar. Sürüm 2. x, Linux, MacOS ve Windows üzerinde geliştirmeyi destekler. Tüm ortamlar yerel Işlevler çalışma zamanına yönelik temel araçlara güvenir. |
-| [Visual Studio 2019](functions-develop-vs.md) | [C#(sınıf kitaplığı)](functions-dotnet-class-library.md) | Azure Işlevleri araçları, [Visual Studio 2019](https://www.visualstudio.com/vs/) ve sonraki sürümlerin **Azure geliştirme** iş yüküne dahildir. Bir sınıf kitaplığındaki işlevleri derlemenize ve. dll dosyasını Azure 'a yayımlamanıza olanak sağlar. Yerel test için temel araçları içerir. Daha fazla bilgi için bkz. [Visual Studio kullanarak Azure Işlevleri geliştirme](functions-develop-vs.md). |
-| [Maven](functions-create-first-java-maven.md) (çeşitli) | [Java](functions-reference-java.md) | , Java işlevlerinin geliştirilmesini sağlamak için çekirdek araçlarla tümleştirilir. Sürüm 2. x, Linux, MacOS ve Windows üzerinde geliştirmeyi destekler. Daha fazla bilgi için bkz. [Java ve Maven ile ilk işlevinizi oluşturma](functions-create-first-java-maven.md). Ayrıca, [Çakışan Küreler](functions-create-maven-eclipse.md) ve [IntelliJ fikrini](functions-create-maven-intellij.md) kullanarak geliştirmeyi destekler |
+|[Visual Studio Code](functions-develop-vs-code.md)| [C# (class library)](functions-dotnet-class-library.md), [C# script (.csx)](functions-reference-csharp.md), [JavaScript](functions-reference-node.md), [PowerShell](functions-create-first-function-powershell.md), [Python](functions-reference-python.md) | The [Azure Functions extension for VS Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) adds Functions support to VS Code. Requires the Core Tools. Supports development on Linux, MacOS, and Windows, when using version 2.x of the Core Tools. To learn more, see [Create your first function using Visual Studio Code](functions-create-first-function-vs-code.md). |
+| [Command prompt or terminal](functions-run-local.md) | [C# (class library)](functions-dotnet-class-library.md), [C# script (.csx)](functions-reference-csharp.md), [JavaScript](functions-reference-node.md), [PowerShell](functions-reference-powershell.md), [Python](functions-reference-python.md) | [Azure Functions Core Tools] provides the core runtime and templates for creating functions, which enable local development. Version 2.x supports development on Linux, MacOS, and Windows. All environments rely on Core Tools for the local Functions runtime. |
+| [Visual Studio 2019](functions-develop-vs.md) | [C# (class library)](functions-dotnet-class-library.md) | The Azure Functions tools are included in the **Azure development** workload of [Visual Studio 2019](https://www.visualstudio.com/vs/) and later versions. Lets you compile functions in a class library and publish the .dll to Azure. Includes the Core Tools for local testing. To learn more, see [Develop Azure Functions using Visual Studio](functions-develop-vs.md). |
+| [Maven](functions-create-first-java-maven.md) (various) | [Java](functions-reference-java.md) | Integrates with Core Tools to enable development of Java functions. Version 2.x supports development on Linux, MacOS, and Windows. To learn more, see [Create your first function with Java and Maven](functions-create-first-java-maven.md). Also supports development using [Eclipse](functions-create-maven-eclipse.md) and [IntelliJ IDEA](functions-create-maven-intellij.md) |
 
 [!INCLUDE [Don't mix development environments](../../includes/functions-mixed-dev-environments.md)]
 
-Bu yerel geliştirme ortamlarının her biri, işlev uygulaması projeleri oluşturmanıza ve yeni işlevler oluşturmak için önceden tanımlanmış Işlevler şablonlarını kullanmanıza imkan sağlar. , İşlevlerinizi diğer uygulamalarda olduğu gibi kendi makinenizde gerçek Işlevler çalışma zamanına karşı sınayabilmeniz ve hatalarını ayıklayabilmeniz için temel araçları kullanır. Ayrıca, bu ortamların herhangi birinden işlev uygulama projenizi Azure 'a yayımlayabilirsiniz.  
+Each of these local development environments lets you create function app projects and use predefined Functions templates to create new functions. Each uses the Core Tools so that you can test and debug your functions against the real Functions runtime on your own machine just as you would any other app. You can also publish your function app project from any of these environments to Azure.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-+ Visual Studio 2019 kullanarak derlenmiş C# işlevlerin yerel geliştirmesi hakkında daha fazla bilgi edinmek için bkz. [Visual Studio kullanarak Azure işlevleri geliştirme](functions-develop-vs.md).
-+ Bir Mac, Linux veya Windows bilgisayarında VS Code kullanarak işlevlerin yerel geliştirmesi hakkında daha fazla bilgi edinmek için, bkz. [vs Code Azure Işlevlerini dağıtma](/azure/javascript/tutorial-vscode-serverless-node-01).
-+ Komut isteminden veya terminalden işlev geliştirme hakkında daha fazla bilgi için bkz. [Azure Functions Core Tools Ile çalışma](functions-run-local.md).
++ To learn more about local development of compiled C# functions using Visual Studio 2019, see [Develop Azure Functions using Visual Studio](functions-develop-vs.md).
++ To learn more about local development of functions using VS Code on a Mac, Linux, or Windows computer, see [Deploy Azure Functions from VS Code](/azure/javascript/tutorial-vscode-serverless-node-01).
++ To learn more about developing functions from the command prompt or terminal, see [Work with Azure Functions Core Tools](functions-run-local.md).
 
 <!-- LINKS -->
 
 [Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
-[Azure portal]: https://portal.azure.com 
+[Azure portalda]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows

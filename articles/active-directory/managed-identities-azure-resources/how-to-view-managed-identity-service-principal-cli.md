@@ -1,6 +1,6 @@
 ---
-title: Hizmet sorumlusunu Azure CLI kullanarak bir yönetilen kimlik görüntüleme
-description: Hizmet sorumlusunu Azure CLI kullanarak bir yönetilen kimlik görüntülemeye ilişkin adım adım yönergeler için.
+title: View service principal of a managed identity - Azure CLI - Azure AD
+description: Step-by-step instructions for viewing the service principal of a managed identity using Azure CLI.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,34 +15,34 @@ ms.workload: identity
 ms.date: 11/29/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f379c78113a4edc1efc288617a8a1c205d03552a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ba60fdfefb5d741e92a56d2dc61eb058ac26b5ba
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60442293"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224600"
 ---
-# <a name="view-the-service-principal-of-a-managed-identity-using-azure-cli"></a>Hizmet sorumlusunu Azure CLI kullanarak bir yönetilen kimlik görüntüleyin
+# <a name="view-the-service-principal-of-a-managed-identity-using-azure-cli"></a>View the service principal of a managed identity using Azure CLI
 
-Azure kaynakları için yönetilen kimlikleri Azure Active Directory'de otomatik olarak yönetilen bir kimlikle Azure hizmetleri sağlar. Bu kimlik, kimlik bilgilerini kodunuzda zorunda kalmadan Azure AD kimlik doğrulamasını destekleyen herhangi bir hizmeti kimlik doğrulaması için kullanabilirsiniz. 
+Managed identities for Azure resources provides Azure services with an automatically managed identity in Azure Active Directory. You can use this identity to authenticate to any service that supports Azure AD authentication without having credentials in your code. 
 
-Bu makalede, hizmet sorumlusunu Azure CLI kullanarak bir yönetilen kimlik görüntüleme hakkında bilgi edinin.
+In this article, you learn how to view the service principal of a managed identity using Azure CLI.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Azure kaynakları için yönetilen kimliklerle bilmiyorsanız kullanıma [genel bakış bölümünde](overview.md).
-- Azure hesabınız yoksa, [ücretsiz bir hesap için kaydolun](https://azure.microsoft.com/free/).
-- Etkinleştirme [bir sanal makinede sistem tarafından atanan kimlik](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity) veya [uygulama](/azure/app-service/overview-managed-identity#adding-a-system-assigned-identity).
-- CLI betiği örnekleri çalıştırmak için üç seçeneğiniz vardır:
-    - Kullanım [Azure Cloud Shell](../../cloud-shell/overview.md) Azure portalından (sonraki bölüme bakın).
-    - Katıştırılmış Azure Cloud Shell aracılığıyla her kod bloğunun sağ üst köşesinde bulunan "Try It" düğmesini kullanın.
-    - [Azure CLI'ın en son sürümü yükleyin](https://docs.microsoft.com/cli/azure/install-azure-cli) yerel bir CLI konsolu ve Azure kullanarak oturum açma tercih ettiğiniz `az login`
+- If you're unfamiliar with managed identities for Azure resources, check out the [overview section](overview.md).
+- If you don't already have an Azure account, [sign up for a free account](https://azure.microsoft.com/free/).
+- Enable [system assigned identity on a virtual machine](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity) or [application](/azure/app-service/overview-managed-identity#adding-a-system-assigned-identity).
+- To run the CLI script examples, you have three options:
+    - Use [Azure Cloud Shell](../../cloud-shell/overview.md) from the Azure portal (see next section).
+    - Use the embedded Azure Cloud Shell via the "Try It" button, located in the top right corner of each code block.
+    - [Install the latest version of the Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) if you prefer to use a local CLI console and sign in to Azure using `az login`
  
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-## <a name="view-the-service-principal"></a>Hizmet sorumlusu görüntüleyin
+## <a name="view-the-service-principal"></a>View the service principal
 
-Bu aşağıdaki komut, etkin yönetilen kimlikle bir VM veya uygulama hizmet sorumlusu görüntülemek nasıl gösterir. Değiştirin `<VM or application name>` kendi değerlerinizle. 
+This following command demonstrates how to view the service principal of a VM or application with managed identity enabled. Replace `<VM or application name>` with your own values. 
 
 ```azurecli-interactive
 az ad sp list --display-name <VM or application name>
@@ -50,6 +50,6 @@ az ad sp list --display-name <VM or application name>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure CLI kullanarak Azure AD hizmet sorumlusu yönetme ile ilgili daha fazla bilgi için bkz: [az ad sp](/cli/azure/ad/sp).
+For more information on managing Azure AD service principals using Azure CLI, see [az ad sp](/cli/azure/ad/sp).
 
 

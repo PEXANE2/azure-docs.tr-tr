@@ -1,157 +1,155 @@
 ---
-title: Azure Işlevleri ağ seçenekleri
-description: Azure Işlevlerinde kullanılabilen tüm ağ seçeneklerine genel bakış.
+title: Azure Functions networking options
+description: An overview of all networking options available in Azure Functions.
 author: alexkarcher-msft
-manager: gwallace
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 4e55932d47389e09b135d571d0e000b9795e6edc
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: a3df48115dde27478446614c0446d64709adbc6f
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73884958"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226791"
 ---
-# <a name="azure-functions-networking-options"></a>Azure Işlevleri ağ seçenekleri
+# <a name="azure-functions-networking-options"></a>Azure Functions networking options
 
-Bu makalede, Azure Işlevleri için barındırma seçenekleri genelinde kullanılabilen ağ özellikleri açıklanmaktadır. Aşağıdaki tüm ağ seçenekleri, internet 'e yönlendirilebilir adresler kullanmadan veya bir işlev uygulamasına internet erişimini kısıtlamak için bazı özellikleri sağlar.
+This article describes the networking features available across the hosting options for Azure Functions. All the following networking options give you some ability to access resources without using internet-routable addresses, or to restrict internet access to a function app.
 
-Barındırma modellerinin farklı düzeylerde ağ yalıtımı vardır. Doğru olanı seçtiğinizde, ağ yalıtımı gereksinimlerinizi karşılamanıza yardımcı olur.
+The hosting models have different levels of network isolation available. Choosing the correct one will help you meet your network isolation requirements.
 
-İşlev uygulamalarını birkaç yolla barındırabilirsiniz:
+You can host function apps in a couple of ways:
 
-* Çeşitli düzeylerde sanal ağ bağlantısı ve ölçeklendirme seçenekleri içeren çok kiracılı bir altyapıda çalışan bir plan seçenekleri kümesi vardır:
-    * Yükleme için dinamik olarak ölçeklendirilen ve en düşük ağ yalıtımı seçeneklerini sunan [Tüketim planı](functions-scale.md#consumption-plan).
-    * Ayrıca, dinamik olarak ölçeklendirilirken, daha kapsamlı ağ yalıtımı sunan [Premium planı](functions-scale.md#premium-plan).
-    * Sabit ölçekte çalışan ve Premium plan olarak benzer ağ yalıtımı sunan Azure [App Service planı](functions-scale.md#app-service-plan).
-* İşlevleri bir [App Service ortamı](../app-service/environment/intro.md)çalıştırabilirsiniz. Bu yöntem, işlevinizi sanal ağınıza dağıtır ve tam ağ denetimi ve yalıtımı sağlar.
+* There's a set of plan options that run on a multi-tenant infrastructure, with various levels of virtual network connectivity and scaling options:
+    * The [Consumption plan](functions-scale.md#consumption-plan), which scales dynamically in response to load and offers minimal network isolation options.
+    * The [Premium plan](functions-scale.md#premium-plan), which also scales dynamically, while offering more comprehensive network isolation.
+    * The Azure [App Service plan](functions-scale.md#app-service-plan), which operates at a fixed scale and offers similar network isolation as the Premium plan.
+* You can run functions in an [App Service Environment](../app-service/environment/intro.md). This method deploys your function into your virtual network and offers full network control and isolation.
 
-## <a name="matrix-of-networking-features"></a>Ağ özellikleri matrisi
+## <a name="matrix-of-networking-features"></a>Matrix of networking features
 
-|                |[Tüketim planı](functions-scale.md#consumption-plan)|[Premium plan](functions-scale.md#premium-plan)|[App Service planı](functions-scale.md#app-service-plan)|[App Service Ortamı](../app-service/environment/intro.md)|
+|                |[Consumption plan](functions-scale.md#consumption-plan)|[Premium plan](functions-scale.md#premium-plan)|[App Service planı](functions-scale.md#app-service-plan)|[App Service Ortamı](../app-service/environment/intro.md)|
 |----------------|-----------|----------------|---------|-----------------------|  
-|[Özel site erişimini & gelen IP kısıtlamaları](#inbound-ip-restrictions)|Evet ✅|Evet ✅|Evet ✅|Evet ✅|
-|[Sanal ağ tümleştirmesi](#virtual-network-integration)|❌Hayır|✅Evet (bölgesel)|✅Evet (bölgesel ve ağ geçidi)|Evet ✅|
-|[Sanal ağ Tetikleyicileri (HTTP olmayan)](#virtual-network-triggers-non-http)|❌Hayır| ❌Hayır|Evet ✅|Evet ✅|
-|[Karma bağlantılar](#hybrid-connections)|❌Hayır|Evet ✅|Evet ✅|Evet ✅|
-|[Giden IP kısıtlamaları](#outbound-ip-restrictions)|❌Hayır| ❌Hayır|❌Hayır|Evet ✅|
+|[Inbound IP restrictions & private site access](#inbound-ip-restrictions)|✅Yes|✅Yes|✅Yes|✅Yes|
+|[Sanal ağ tümleştirmesi](#virtual-network-integration)|❌No|✅Yes (Regional)|✅Yes (Regional and Gateway)|✅Yes|
+|[Virtual network triggers (non-HTTP)](#virtual-network-triggers-non-http)|❌No| ❌No|✅Yes|✅Yes|
+|[Karma bağlantılar](#hybrid-connections)|❌No|✅Yes|✅Yes|✅Yes|
+|[Outbound IP restrictions](#outbound-ip-restrictions)|❌No| ❌No|❌No|✅Yes|
 
-## <a name="inbound-ip-restrictions"></a>Gelen IP kısıtlamaları
+## <a name="inbound-ip-restrictions"></a>Inbound IP restrictions
 
-Uygulamanıza erişim izni verilen veya reddedilen IP adreslerinin öncelik sırasına sahip bir listesini tanımlamak için IP kısıtlamalarını kullanabilirsiniz. Liste, IPv4 ve IPv6 adreslerini içerebilir. Bir veya daha fazla giriş olduğunda, listenin sonunda örtülü bir "Tümünü Reddet" bulunur. IP kısıtlamaları tüm işlev barındırma seçenekleriyle çalışır.
+You can use IP restrictions to define a priority-ordered list of IP addresses that are allowed or denied access to your app. The list can include IPv4 and IPv6 addresses. When there are one or more entries, an implicit "deny all" exists at the end of the list. IP restrictions work with all function-hosting options.
 
 > [!NOTE]
-> Ağ kısıtlamalarına sahip olmak üzere, Portal düzenleyicisini yalnızca sanal ağınızdan veya Güvenli Alıcılar listesindeki Azure portal erişmek için kullandığınız makinenin IP adresini girdiğinizde kullanabilirsiniz. Ancak, herhangi bir makineden **platform özellikleri** sekmesindeki herhangi bir özelliğe erişmeye devam edebilirsiniz.
+> With network restrictions in place, you can use the portal editor only from within your virtual network, or when you've put the IP address of the machine you're using to access the Azure portal on the Safe Recipients list. However, you can still access any features on the **Platform features** tab from any machine.
 
-Daha fazla bilgi için bkz. [Azure App Service statik erişim kısıtlamaları](../app-service/app-service-ip-restrictions.md).
+To learn more, see [Azure App Service static access restrictions](../app-service/app-service-ip-restrictions.md).
 
 ## <a name="private-site-access"></a>Özel site erişimi
 
-Özel site erişimi, uygulamanızı yalnızca Azure sanal ağı gibi özel bir ağdan erişilebilir hale getirme anlamına gelir.
+Private site access refers to making your app accessible only from a private network such as an Azure virtual network.
 
-* Özel site erişimi, hizmet uç noktaları yapılandırıldığında [Premium](./functions-premium-plan.md), [Tüketim](functions-scale.md#consumption-plan)ve [App Service](functions-scale.md#app-service-plan) planlarında kullanılabilir.
-    * Hizmet uç noktaları, **platform özellikleri** > **ağ Iletişimi** > **erişim kısıtlamalarını yapılandırma** > **Kural Ekle**' nin altında uygulama temelinde yapılandırılabilir. Sanal ağlar artık bir kural türü olarak seçilebilir.
-    * Daha fazla bilgi için bkz. [sanal ağ hizmeti uç noktaları](../virtual-network/virtual-network-service-endpoints-overview.md).
-    * Hizmet uç noktalarında, işlevinizin hala internet 'e yönelik sanal ağ tümleştirmesiyle birlikte tam giden erişimi olduğunu aklınızda bulundurun.
-* Özel site erişimi, iç yük dengeleyici (ıLB) ile yapılandırılmış bir App Service Ortamı içinde de kullanılabilir. Daha fazla bilgi için bkz. [bir App Service ortamı iç yük dengeleyici oluşturma ve kullanma](../app-service/environment/create-ilb-ase.md).
+* Private site access is available in the [Premium](./functions-premium-plan.md), [Consumption](functions-scale.md#consumption-plan), and [App Service](functions-scale.md#app-service-plan) plans when service endpoints are configured.
+    * Service endpoints can be configured on a per-app basis under **Platform features** > **Networking** > **Configure Access Restrictions** > **Add Rule**. Virtual networks can now be selected as a rule type.
+    * For more information, see [virtual network service endpoints](../virtual-network/virtual-network-service-endpoints-overview.md).
+    * Keep in mind that with service endpoints, your function still has full outbound access to the internet, even with virtual network integration configured.
+* Private site access is also available within an App Service Environment that's configured with an internal load balancer (ILB). For more information, see [Create and use an internal load balancer with an App Service Environment](../app-service/environment/create-ilb-ase.md).
 
 ## <a name="virtual-network-integration"></a>Sanal ağ tümleştirmesi
 
-Sanal Ağ tümleştirmesi, işlev uygulamanızın bir sanal ağ içindeki kaynaklara erişmesine olanak sağlar. Bu özellik hem Premium planda hem de App Service planında kullanılabilir. Uygulamanız bir App Service Ortamı ise, zaten bir sanal ağda bulunur ve sanal ağ tümleştirmesinin aynı sanal ağdaki kaynaklara ulaşması gerekmez.
+Virtual network integration allows your function app to access resources inside a virtual network. This feature is available in both the Premium plan and the App Service plan. If your app is in an App Service Environment, it's already in a virtual network and doesn't require virtual network integration to reach resources in the same virtual network.
 
-Sanal ağ tümleştirmesini, uygulamalardan sanal ağınızda çalışan veritabanlarına ve Web hizmetlerine erişimi etkinleştirmek için kullanabilirsiniz. Sanal ağ tümleştirmesiyle, VM 'inizdeki uygulamalar için genel bir uç nokta kullanıma almanız gerekmez. Bunun yerine internet 'e ait olmayan özel yönlendirilebilen adresler kullanabilirsiniz.
+You can use virtual network integration to enable access from apps to databases and web services running in your virtual network. With virtual network integration, you don't need to expose a public endpoint for applications on your VM. You can use private, non-internet routable addresses instead.
 
-Sanal ağ tümleştirmesinin iki biçimi vardır:
+There are two forms of virtual network integration:
 
-+ **Bölgesel sanal ağ tümleştirmesi (Önizleme)** : aynı bölgedeki sanal ağlarla tümleştirmeyi mümkün bir şekilde sunar. Bu tür bir tümleştirme, aynı bölgedeki bir sanal ağ için bir alt ağ gerektirir. Bu özellik hala önizlemededir, ancak aşağıdaki sorun/çözüm tablosundan sonra açıklanan uyarılar ile Windows üzerinde çalışan işlev uygulamaları için desteklenir.
-+ **Ağ geçidi gereken sanal ağ tümleştirmesi**: uzak bölgelerdeki sanal ağlarla veya klasik sanal ağlarla tümleştirmeyi mümkün. Bu tür bir tümleştirme, sanal ağ geçidinin VNet 'iniz üzerinde dağıtılmasını gerektirir. Bu, yalnızca Windows üzerinde çalışan işlev uygulamaları için desteklenen Noktadan siteye VPN tabanlı bir özelliktir.
++ **Regional virtual network integration (preview)** : Enables integration with virtual networks in the same region. This type of integration requires a subnet in a virtual network in the same region. This feature is still in preview, but it's supported for function apps running on Windows, with the caveats described after the following Problem/Solution table.
++ **Gateway required virtual network integration**: Enables integration with virtual networks in remote regions, or with classic virtual networks. This type of integration requires deployment of a virtual network gateway into your VNet. This is a point-to-site VPN-based feature, which is supported only for function apps running on Windows.
 
-Bir uygulama aynı anda yalnızca bir sanal ağ tümleştirme özelliğinin türünü kullanabilir. Her ikisi de birçok senaryo için yararlı olsa da, aşağıdaki tablo her birinin nerede kullanılması gerektiğini göstermektedir:
+An app can use only one type of the virtual network integration feature at a time. Although both are useful for many scenarios, the following table indicates where each should be used:
 
 | Sorun  | Çözüm |
 |----------|----------|
-| Aynı bölgedeki bir RFC 1918 adresine (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) ulaşmak ister | Bölgesel sanal ağ tümleştirmesi |
-| Klasik bir sanal ağdaki veya başka bir bölgedeki sanal ağdaki kaynaklara ulaşmak ister | Ağ Geçidi gereken sanal ağ tümleştirmesi |
-| Azure ExpressRoute üzerinden RFC 1918 uç noktalarına erişmek ister misiniz? | Bölgesel sanal ağ tümleştirmesi |
-| Hizmet uç noktaları genelinde kaynaklara ulaşmak ister misiniz? | Bölgesel sanal ağ tümleştirmesi |
+| Want to reach an RFC 1918 address (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) in the same region | Regional virtual network integration |
+| Want to reach resources in a Classic virtual network or a virtual network in another region | Gateway required virtual network integration |
+| Want to reach RFC 1918 endpoints across Azure ExpressRoute | Regional virtual network integration |
+| Want to reach resources across service endpoints | Regional virtual network integration |
 
-Her iki özellik de ExpressRoute üzerinden RFC 1918 olmayan adreslere ulaşmanıza imkan tanır. Bunu yapmak için şu anda bir App Service Ortamı kullanmanız gerekir.
+Neither feature lets you reach non-RFC 1918 addresses across ExpressRoute. To do that, you currently have to use an App Service Environment.
 
-Bölgesel sanal ağ tümleştirmesinin kullanılması, Sanal ağınızı şirket içi uç noktalara bağlama veya hizmet uç noktalarını yapılandırma. Bu, ayrı bir ağ yapılandırması. Bölgesel sanal ağ tümleştirmesi yalnızca uygulamanızın bu bağlantı türleri arasında çağrı yapmasına olanak sağlar.
+Using regional virtual network integration doesn't connect your virtual network to on-premises endpoints or configure service endpoints. That's a separate networking configuration. Regional virtual network integration just enables your app to make calls across those connection types.
 
-Sanal Ağ tümleştirmesi, kullanılan sürümden bağımsız olarak, işlev uygulamanızın sanal ağınızdaki kaynaklara erişmesini sağlar, ancak sanal ağdan işlev uygulamanıza özel site erişimi vermez. Özel site erişimi, uygulamanızı yalnızca bir Azure sanal ağı gibi özel bir ağdan erişilebilir hale getirir. Sanal Ağ tümleştirmesi yalnızca uygulamanızdan sanal ağınıza giden çağrılar yapmak içindir.
+Regardless of the version used, virtual network integration gives your function app access to resources in your virtual network but doesn't grant private site access to your function app from the virtual network. Private site access means making your app accessible only from a private network like an Azure virtual network. virtual network integration is only for making outbound calls from your app into your virtual network.
 
-Sanal ağ tümleştirme özelliği:
+The virtual network integration feature:
 
-* Standart, Premium veya PremiumV2 App Service planı gerektirir
-* TCP ve UDP 'yi destekler
-* App Service uygulamalar ve işlev uygulamalarıyla çalışır
+* Requires a Standard, Premium, or PremiumV2 App Service plan
+* Supports TCP and UDP
+* Works with App Service apps and function apps
 
-Sanal ağ tümleştirmesinin desteklemediği bazı şeyler vardır, örneğin:
+There are some things that virtual network integration doesn't support, including:
 
 * Sürücü takma
 * Active Directory tümleştirmesi
-* Tanımlaya
+* NetBIOS
 
-Azure Işlevlerinde sanal ağ tümleştirmesi App Service Web Apps ile paylaşılan altyapıyı kullanır. İki tür sanal ağ tümleştirmesi hakkında daha fazla bilgi edinmek için bkz.:
+Virtual network integration in Azure Functions uses shared infrastructure with App Service web apps. To learn more about the two types of virtual network integration, see:
 
-* [Bölgesel sanal ağ tümleştirmesi](../app-service/web-sites-integrate-with-vnet.md#regional-vnet-integration)
-* [Ağ Geçidi gereken sanal ağ tümleştirmesi](../app-service/web-sites-integrate-with-vnet.md#gateway-required-vnet-integration)
+* [Regional virtual network Integration](../app-service/web-sites-integrate-with-vnet.md#regional-vnet-integration)
+* [Gateway required virtual network integration](../app-service/web-sites-integrate-with-vnet.md#gateway-required-vnet-integration)
 
-Sanal ağ tümleştirmesini kullanma hakkında daha fazla bilgi için bkz. [bir işlev uygulamasını bir Azure sanal ağı Ile tümleştirme](functions-create-vnet.md).
+To learn more about using virtual network integration, see [Integrate a function app with an Azure virtual network](functions-create-vnet.md).
 
-## <a name="connecting-to-service-endpoint-secured-resources"></a>Hizmet uç noktası güvenliği sağlanmış kaynaklara bağlanılıyor
+## <a name="connecting-to-service-endpoint-secured-resources"></a>Connecting to service endpoint secured resources
 
 > [!NOTE]
-> Şimdilik, aşağı akış kaynağında erişim kısıtlamalarını yapılandırdıktan sonra yeni hizmet uç noktalarının işlev uygulamanız için kullanılabilir hale gelmesi 12 saate kadar sürebilir. Bu süre boyunca, kaynak uygulamanız için tamamen kullanılamaz olur.
+> For now, it may take up to 12 hours for new service endpoints to become available to your function app after you configure access restrictions on the downstream resource. During this time the resource will be completely unavailable to your app.
 
-Daha yüksek bir güvenlik düzeyi sağlamak için, hizmet uç noktalarını kullanarak bir dizi Azure hizmetini bir sanal ağ ile kısıtlayabilirsiniz. Daha sonra, kaynak erişimi için işlev uygulamanızı bu sanal ağla tümleştirmeniz gerekir. Bu yapılandırma, sanal ağ tümleştirmesini destekleyen tüm planlarda desteklenir.
+To provide a higher level of security, you can restrict a number of Azure services to a virtual network by using service endpoints. You must then integrate your function app with that virtual network to access the resource. This configuration is supported on all plans that support virtual network integration.
 
-[Sanal ağ hizmeti uç noktaları hakkında daha fazla bilgi edinin.](../virtual-network/virtual-network-service-endpoints-overview.md)
+[Learn more about virtual network service endpoints.](../virtual-network/virtual-network-service-endpoints-overview.md)
 
-### <a name="restricting-your-storage-account-to-a-virtual-network"></a>Depolama hesabınızı bir sanal ağla kısıtlama
+### <a name="restricting-your-storage-account-to-a-virtual-network"></a>Restricting your storage account to a virtual network
 
-Bir işlev uygulaması oluşturduğunuzda, blob, kuyruk ve tablo depolamayı destekleyen genel amaçlı bir Azure depolama hesabı oluşturmanız veya bağlamanız gerekir. Şu anda bu hesapta herhangi bir sanal ağ kısıtlaması kullanamazsınız. İşlev uygulamanız için kullandığınız depolama hesabında bir sanal ağ hizmeti uç noktası yapılandırırsanız, bu, uygulamanızı bozacaktır.
+When you create a function app, you must create or link to a general-purpose Azure Storage account that supports Blob, Queue, and Table storage. You can't currently use any virtual network restrictions on this account. If you configure a virtual network service endpoint on the storage account you're using for your function app, that will break your app.
 
-[Depolama hesabı gereksinimleri hakkında daha fazla bilgi edinin.](./functions-create-function-app-portal.md#storage-account-requirements)
+[Learn more about storage account requirements.](./functions-create-function-app-portal.md#storage-account-requirements)
 
-### <a name="using-key-vault-references"></a>Key Vault başvurularını kullanma 
+### <a name="using-key-vault-references"></a>Using Key Vault references 
 
-Key Vault başvurular, Azure Işlevleri uygulamanızda herhangi bir kod değişikliğine gerek kalmadan Azure Key Vault gizli dizileri kullanmanıza olanak sağlar. Azure Key Vault, erişim ilkeleri ve denetim geçmişi üzerinde tam denetim ile merkezi gizli dizi yönetimi sağlayan bir hizmettir.
+Key Vault references allow you to use secrets from Azure Key Vault in your Azure Functions application without requiring any code changes. Azure Key Vault is a service that provides centralized secrets management, with full control over access policies and audit history.
 
-Key Vault hizmet uç noktalarıyla güvenlik altına alınırsa, şu anda [Key Vault başvuruları](../app-service/app-service-key-vault-references.md) çalışmayacaktır. Sanal ağ tümleştirmesini kullanarak bir Key Vault bağlanmak için uygulama kodunuzda Anahtar Kasası 'nı çağırmanız gerekir.
+Currently [Key Vault references](../app-service/app-service-key-vault-references.md) will not work if your Key Vault is secured with service endpoints. To connect to a Key Vault using virtual network integration you will need to call key vault in your application code.
 
-## <a name="virtual-network-triggers-non-http"></a>Sanal ağ Tetikleyicileri (HTTP olmayan)
+## <a name="virtual-network-triggers-non-http"></a>Virtual network triggers (non-HTTP)
 
-Şu anda, bir sanal ağ içinden HTTP dışında işlev tetiklerinin kullanılması için, işlev uygulamanızı bir App Service planında veya bir App Service Ortamı çalıştırmanız gerekir.
+Currently, to use function triggers other than HTTP from within a virtual network, you must run your function app in an App Service plan or in an App Service Environment.
 
-Örneğin, yalnızca bir sanal ağdan gelen trafiği kabul etmek için Azure Cosmos DB yapılandırmak istediğinizi varsayalım. İşlev uygulamanızı, bu kaynaktaki Azure Cosmos DB Tetikleyicileri yapılandırmak üzere bu sanal ağla sanal ağ tümleştirmesi sağlayan bir App Service planında dağıtmanız gerekir. Önizleme süresince, sanal ağ tümleştirmesini yapılandırmak Premium planın bu Azure Cosmos DB kaynağını tetiklemesine izin vermez.
+For example, assume you want to configure Azure Cosmos DB to accept traffic only from a virtual network. You would need to deploy your function app in an app service plan that provides virtual network integration with that virtual network in order to configure Azure Cosmos DB triggers from that resource. During preview, configuring virtual network integration doesn't allow the Premium plan to trigger off that Azure Cosmos DB resource.
 
-Nelerin desteklendiğini iki kez kontrol etmek için [http olmayan tüm tetikleyiciler için bu listeye](./functions-triggers-bindings.md#supported-bindings) bakın.
+See [this list for all non-HTTP triggers](./functions-triggers-bindings.md#supported-bindings) to double-check what's supported.
 
 ## <a name="hybrid-connections"></a>Karma Bağlantılar
 
-[Karma bağlantılar](../service-bus-relay/relay-hybrid-connections-protocol.md) , diğer ağlardaki uygulama kaynaklarına erişmek için kullanabileceğiniz bir Azure Relay özelliğidir. Uygulamadan bir uygulama uç noktasına erişim sağlar. Uygulamanıza erişmek için kullanamazsınız. Karma Bağlantılar, tüketim planı hariç tüm işlevler için kullanılabilir.
+[Hybrid Connections](../service-bus-relay/relay-hybrid-connections-protocol.md) is a feature of Azure Relay that you can use to access application resources in other networks. It provides access from your app to an application endpoint. You can't use it to access your application. Hybrid Connections is available to functions running in all but the Consumption plan.
 
-Azure Işlevlerinde kullanıldığında, her karma bağlantı tek bir TCP ana bilgisayarı ve bağlantı noktası bileşimiyle söz konusu. Bu, karma bağlantının uç noktasının, TCP dinleme bağlantı noktasına eriştiğiniz sürece herhangi bir işletim sisteminde ve herhangi bir uygulamada olabileceği anlamına gelir. Karma Bağlantılar özelliği, uygulama protokolünün ne olduğunu veya ne erişmekte olduğunu bilmez veya ilgilenmez. Yalnızca ağ erişimi sağlar.
+As used in Azure Functions, each hybrid connection correlates to a single TCP host and port combination. This means that the hybrid connection's endpoint can be on any operating system and any application as long as you're accessing a TCP listening port. The Hybrid Connections feature doesn't know or care what the application protocol is or what you're accessing. It just provides network access.
 
-Daha fazla bilgi edinmek için [Karma Bağlantılar App Service belgelerine](../app-service/app-service-hybrid-connections.md)bakın. Aynı yapılandırma adımları Azure Işlevlerini destekler.
+To learn more, see the [App Service documentation for Hybrid Connections](../app-service/app-service-hybrid-connections.md). These same configuration steps support Azure Functions.
 
-## <a name="outbound-ip-restrictions"></a>Giden IP kısıtlamaları
+## <a name="outbound-ip-restrictions"></a>Outbound IP restrictions
 
-Giden IP kısıtlamaları yalnızca bir App Service Ortamı dağıtılan işlevler için kullanılabilir. App Service Ortamı dağıtıldığı sanal ağın giden kısıtlamalarını yapılandırabilirsiniz.
+Outbound IP restrictions are available only for functions deployed to an App Service Environment. You can configure outbound restrictions for the virtual network where your App Service Environment is deployed.
 
-Bir Premium planda veya bir sanal ağ ile App Service planında bir işlev uygulamasını tümleştirdiğinizde, uygulama yine de internet 'e giden çağrılar yapabilir.
+When you integrate a function app in a Premium plan or an App Service plan with a virtual network, the app can still make outbound calls to the internet.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ağ ve Azure Işlevleri hakkında daha fazla bilgi edinmek için:
+To learn more about networking and Azure Functions:
 
-* [Sanal ağ tümleştirmesiyle çalışmaya başlama öğreticisini izleyin](./functions-create-vnet.md)
-* [Ağ iletişimi SSS Işlevlerini okuyun](./functions-networking-faq.md)
-* [App Service/Işlevlerle sanal ağ tümleştirmesi hakkında daha fazla bilgi edinin](../app-service/web-sites-integrate-with-vnet.md)
-* [Azure 'da sanal ağlar hakkında daha fazla bilgi edinin](../virtual-network/virtual-networks-overview.md)
-* [App Service ortamlarla daha fazla ağ özelliği ve denetimi etkinleştirin](../app-service/environment/intro.md)
-* [Karma Bağlantılar kullanarak, güvenlik duvarı değişikliği yapmadan tek tek şirket içi kaynaklara bağlanma](../app-service/app-service-hybrid-connections.md)
+* [Follow the tutorial about getting started with virtual network integration](./functions-create-vnet.md)
+* [Read the Functions networking FAQ](./functions-networking-faq.md)
+* [Learn more about virtual network integration with App Service/Functions](../app-service/web-sites-integrate-with-vnet.md)
+* [Learn more about virtual networks in Azure](../virtual-network/virtual-networks-overview.md)
+* [Enable more networking features and control with App Service Environments](../app-service/environment/intro.md)
+* [Connect to individual on-premises resources without firewall changes by using Hybrid Connections](../app-service/app-service-hybrid-connections.md)

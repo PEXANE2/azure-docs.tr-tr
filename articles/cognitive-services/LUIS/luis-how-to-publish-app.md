@@ -1,7 +1,7 @@
 ---
-title: App-LUSıS Yayımla
+title: Publish app - LUIS
 titleSuffix: Azure Cognitive Services
-description: Etkin LUSıS uygulamanızı oluşturma ve test etmeyi bitirdiğinizde, uç noktada yayımlayarak istemci uygulamanız için kullanılabilir hale getirin.
+description: When you finish building and testing your active LUIS app, make it available to your client application by publishing it to the endpoint.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,89 +9,90 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: 0d3a413249cb9058e4098f2836131494670a1727
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f213c1d43930075c78cf81de345f612e46bbfb1c
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491329"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74221715"
 ---
-# <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Etkin, eğitilen uygulamanızı bir hazırlama veya üretim uç noktasına yayımlayın
+# <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Publish your active, trained app to a staging or production endpoint
 
-Etkin LUSıS uygulamanızı oluşturma ve test etmeyi bitirdiğinizde, uç noktada yayımlayarak istemci uygulamanız için kullanılabilir hale getirin. 
+When you finish building, training, and testing your active LUIS app, make it available to your client application by publishing it to the endpoint. 
 
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
-
-<a name="publish-your-trained-app-to-an-http-endpoint"></a>
+[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 ## <a name="publishing"></a>Yayımlama
 
-1. Uç noktaya yayımlamak için, üstteki sağ panelde **Yayımla** ' yı seçin. 
+1. To publish to the endpoint, select **Publish** in the top, right panel. 
 
-    ![En üstte Yayımla düğmesi, sağ gezinti çubuğu](./media/luis-how-to-publish-app/publish-top-nav-bar.png)
+    ![Publish button in top, right nav bar](./media/luis-how-to-publish-app/publish-top-nav-bar.png)
 
-1. Yayımlanan tahmin uç noktası için ayarlarınızı seçip **Yayımla**' yı seçin.
+1. Select your settings for the published prediction endpoint, then select **Publish**.
 
-    ![Yayınlama Ayarları ' nı ve ardından Yayınla düğmesini seçin](./media/luis-how-to-publish-app/publish-pop-up.png)
+    ![Select publish settings then select Publish button](./media/luis-how-to-publish-app/publish-pop-up.png)
 
-### <a name="publishing-slots"></a>Yayımlama Yuvaları
+### <a name="publishing-slots"></a>Publishing slots
 
-Açılır pencere görüntülendiğinde doğru yuvayı seçin: 
+Select the correct slot when the pop-up window displays: 
 
-* Hazırlık.
-* Üretiminden. 
+* Staging
+* Üretim 
 
-Bu, yayımlama yuvalarını iki farklı uç noktada veya aynı sürüme sahip olmak üzere, hem yayımlama yuvaları hem de uygulamanızın iki farklı sürümünün kullanılabilmesini sağlar. 
+By using both publishing slots, this allows you to have two different versions of your app available at the published endpoints or the same version on two different endpoints. 
 
-### <a name="publishing-regions"></a>Yayımlama bölgeleri
+### <a name="publishing-regions"></a>Publishing regions
 
-Uygulama, Lue portalında eklenen LUSıS tahmin uç noktası kaynaklarıyla ilişkili tüm bölgelerde yayımlanır. 
+The app is published to all regions associated with the LUIS prediction endpoint resources added in the LUIS portal from the **Manage** ->  **[Azure Resources](/luis-how-to-azure-subscription.md#assign-a-resource-to-an-app)** page. 
 
-Örneğin, [www.Luis.ai](https://www.luis.ai)üzerinde oluşturulan bir uygulama için, iki bölgede bir Luo kaynağı oluşturursanız, **westus** ve **eastus**ve bunları uygulamaya kaynak olarak eklerseniz, uygulama her iki bölgede da yayımlanır. LUO bölgeleri hakkında daha fazla bilgi için bkz. [bölgeler](luis-reference-regions.md).
+For example, for an app created on [www.luis.ai](https://www.luis.ai), if you create a LUIS resource in two regions, **westus** and **eastus**, and add these to the app as resources, the app is published in both regions. For more information about LUIS regions, see [Regions](luis-reference-regions.md).
+
+> [!TIP]
+> There are 3 authoring regions. You must author in the region you intend to publish to. If you need to publish to all regions, you need to manage your authoring process and the resulting trained model in all 3 authoring regions. 
 
 
-## <a name="configuring-publish-settings"></a>Yayımlama ayarlarını yapılandırma
+## <a name="configuring-publish-settings"></a>Configuring publish settings
 
-Yuvayı seçtikten sonra, yayımlama ayarlarını şu şekilde yapılandırın:
+After you select the slot, configure the publish settings for:
 
-* Yaklaşım analizi
-* Yazım denetimi düzeltmesi
-* Konuşma primi 
+* Duygu analizi
+* Spelling correction - v2 prediction endpoint only
+* Speech priming 
 
-Yayımladıktan sonra bu ayarlar, bölümün **Yayımlama ayarlarını** **Yönet** sayfasından gözden geçirilmek üzere kullanılabilir. Ayarları her Yayımla ile değiştirebilirsiniz. Bir yayımlamayı iptal ederseniz, yayımlama sırasında yaptığınız tüm değişiklikler de iptal edilir. 
+After you publish, these settings are available for review from the **Manage** section's **Publish settings** page. You can change the settings with every publish. If you cancel a publish, any changes you made during the publish are also canceled. 
 
-### <a name="when-your-app-is-published"></a>Uygulamanız yayımlandığında
+### <a name="when-your-app-is-published"></a>When your app is published
 
-Uygulamanız başarıyla yayımlandığında, tarayıcının üst kısmında yeşil başarı bildirimi görüntülenir. Yeşil bildirim çubuğu, uç noktaların bağlantısını da içerir. 
+When your app is successfully published, a success notification appears at the top of the browser. The notification also includes a link to the endpoints. 
 
-![Uç nokta bağlantısı ile açılır pencere yayımlanıyor](./media/luis-how-to-publish-app/publish-success.png)
+If you need the endpoint URL, select the link. You can also get to the endpoint URLs by selecting **Manage** in the top menu, then select **Azure Resources** in the left menu. 
 
-Uç nokta URL 'sine ihtiyacınız varsa bağlantıyı seçin. Üst menüden **Yönet** ' i seçip sol menüden **Azure kaynakları** ' nı seçerek uç nokta URL 'lerine de ulaşabilirsiniz. 
-
-## <a name="sentiment-analysis"></a>Yaklaşım analizi
+## <a name="sentiment-analysis"></a>Duygu analizi
 
 <a name="enable-sentiment-analysis"></a>
 
-Yaklaşım analizi, LUTO 'NıN yaklaşım ve anahtar tümceciği analizi sağlamak için [metin analizi](https://azure.microsoft.com/services/cognitive-services/text-analytics/) ile tümleştirilemesine olanak tanır. 
+Sentiment analysis allows LUIS to integrate with [Text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/) to provide sentiment and key phrase analysis. 
 
-Bir Metin Analizi anahtarı sağlamanız gerekmez ve Azure hesabınızda bu hizmet için faturalandırma ücreti yoktur. 
+You do not have to provide a Text Analytics key and there is no billing charge for this service to your Azure account. 
 
-Yaklaşım verileri, 1 ile 0 arasında pozitif (1 ' e yakın) veya negatif (0 ' a yakın) verilerin yaklaşımını belirten bir puandır. `positive`, `neutral`ve `negative` 'nin yaklaşım etiketi desteklenen kültür başına. Şu anda yalnızca Ingilizce yaklaşım etiketlerini destekler. 
+Sentiment data is a score between 1 and 0 indicating the positive (closer to 1) or negative (closer to 0) sentiment of the data. The sentiment label of `positive`, `neutral`, and `negative` is per supported culture. Currently, only English supports sentiment labels. 
 
-Yaklaşım analizine sahip JSON uç noktası yanıtı hakkında daha fazla bilgi için bkz. yaklaşım [Analizi](luis-concept-data-extraction.md#sentiment-analysis)
+For more information about the JSON endpoint response with sentiment analysis, see [Sentiment analysis](luis-concept-data-extraction.md#sentiment-analysis)
 
-## <a name="spelling-correction"></a>Yazım denetimi düzeltmesi
+## <a name="spelling-correction"></a>Spelling correction
 
-, Azın Kullanıcı söylenişi tahminiyle önce yazım için düzeltmeler yapılır. Yanıtta yazım denetimi de dahil olmak üzere, özgün yazıdaki tüm değişiklikleri görebilirsiniz.
+[!INCLUDE [Not supported in V3 API prediction endpoint](./includes/v2-support-only.md)]
 
-## <a name="speech-priming"></a>Konuşma primi
+Corrections to spelling are made before the LUIS user utterance prediction. You can see any changes to the original utterance, including spelling, in the response.
 
-Konuşma primi, metin konuşmaya dönüştürme işleminden önce, konuşma Hizmetleri için LUSıS modelinin gönderilmesini kullanma sürecinden oluşur. Bu, konuşma hizmetinin modelinize daha doğru konuşma dönüştürmesi sağlamasına izin verir. Bu, bir konuşma araması yaparak ve bir LUO yanıtı geri alarak tek bir çağrıda botu ve LUSıS isteklerini ve yanıtlarını sağlar. Genel olarak daha az gecikme sağlar.
+## <a name="speech-priming"></a>Speech priming
+
+Speech priming is the process of using sending the LUIS model to Speech services prior to conversion of text to speech. This allows the speech service to provide speech conversion more accurately for your model. This allows bot Speech and LUIS requests and responses in one call by making one speech call and getting back a LUIS response. It provides less latency overall.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Bkz. Azure abonelik anahtarına anahtar eklemek için [anahtarları yönetme](./luis-how-to-azure-subscription.md) ve Bing yazım denetimi anahtarı ayarlama ve sonuçlara tüm amaçları ekleme.
-* Yayımlanan uygulamanızı test konsolunda test etme hakkında yönergeler için bkz. [uygulamanızı eğitme ve test](luis-interactive-test.md) etme.
+* See [Manage keys](./luis-how-to-azure-subscription.md) to add keys to Azure subscription key to LUIS and how to set the Bing Spell Check key and include all intents in results.
+* See [Train and test your app](luis-interactive-test.md) for instructions on how to test your published app in the test console.
 

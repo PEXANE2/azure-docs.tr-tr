@@ -1,66 +1,66 @@
 ---
-title: Azure ters DNS'ye genel bakış | Microsoft Docs
-description: Nasıl geriye doğru DNS çalışır ve Azure'da nasıl kullanılabileceğini öğrenin
+title: Overview of reverse DNS in Azure - Azure DNS
+description: In this learning path, get started learning how reverse DNS works and how it can be used in Azure
 services: dns
 documentationcenter: na
-author: vhorne
-manager: jeconnoc
+author: asudbring
+manager: KumuD
 ms.service: dns
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
-ms.author: victorh
-ms.openlocfilehash: 9d3a62ec1c9ede1f25f2b53f800642a792b3aa28
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: 2788cc3957e9822e61c10f5f06a29802e225bcbf
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60192991"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74211024"
 ---
-# <a name="overview-of-reverse-dns-and-support-in-azure"></a>Ters DNS ve Azure desteği'na genel bakış
+# <a name="overview-of-reverse-dns-and-support-in-azure"></a>Overview of reverse DNS and support in Azure
 
-Bu makalede, Azure'da desteklenen geriye doğru DNS senaryoları ve nasıl geriye doğru DNS works genel bakış verilmektedir.
+This article gives an overview of how reverse DNS works, and the reverse DNS scenarios supported in Azure.
 
-## <a name="what-is-reverse-dns"></a>Ters DNS nedir?
+## <a name="what-is-reverse-dns"></a>What is reverse DNS?
 
-Geleneksel DNS kayıtları bir DNS adı (örneğin, 'www.contoso.com') bir IP adresi (örneğin, 64.4.6.100) için ana kadar eşlemeyi etkinleştirin.  Ters DNS çeviri geri bir adı ('www.contoso.com') için bir IP adresi (64.4.6.100) sağlar.
+Conventional DNS records enable a mapping from a DNS name (such as 'www.contoso.com') to an IP address (such as 64.4.6.100).  Reverse DNS enables the translation of an IP address (64.4.6.100) back to a name ('www.contoso.com').
 
-Ters DNS kayıtlarını çeşitli durumlarda kullanılır. Örneğin, ters DNS kayıtlarını yaygın istenmeyen e-posta gönderen bir e-posta iletisinin doğrulayarak mücadele içinde kullanılır.  Alıcı e-posta sunucusuna gönderen sunucusunun IP adresinin ters DNS kaydı alır ve barındıran kaynak etki alanından e-posta göndermek için yetkili olup olmadığını doğrular. 
+Reverse DNS records are used in a variety of situations. For example, reverse DNS records are widely used in combating e-mail spam by verifying the sender of an e-mail message.  The receiving mail server retrieves the reverse DNS record of the sending server's IP address, and verifies if that host is authorized to send e-mail from the originating domain. 
 
-## <a name="how-reverse-dns-works"></a>Nasıl geriye doğru DNS çalışır
+## <a name="how-reverse-dns-works"></a>How reverse DNS works
 
-Ters DNS kayıtlarını 'ARPA' bölgeleri bilinen özel DNS bölgeleri içinde barındırılır.  Bu bölgeler, 'contoso.com' gibi etki alanı barındırma normal hiyerarşi ile paralel ayrı bir DNS hiyerarşi oluşturur.
+Reverse DNS records are hosted in special DNS zones, known as 'ARPA' zones.  These zones form a separate DNS hierarchy in parallel with the normal hierarchy hosting domains such as 'contoso.com'.
 
-Örneğin, DNS kayıt 'www.contoso.com', 'contoso.com' bölgesindeki "www" adı ile bir DNS 'A' kaydı kullanılarak uygulanır.  Bu bir kayıt, bu durumda 64.4.6.100 karşılık gelen IP adresine işaret eder.  Geriye doğru arama, '100' bölgesinde '6.4.64.in-addr.arpa' (IP adresleri ARPA bölgeleri ters gerektiğini unutmayın.) adlı bir 'PTR' kaydı kullanılarak ayrı ayrı uygulanır  Doğru bir şekilde yapılandırılmışsa bu PTR kaydı adı "www.contoso.com" işaret eder.
+For example, the DNS record 'www.contoso.com' is implemented using a DNS 'A' record with the name 'www' in the zone 'contoso.com'.  This A record points to the corresponding IP address, in this case 64.4.6.100.  The reverse lookup is implemented separately, using a 'PTR' record named '100' in the zone '6.4.64.in-addr.arpa' (note that IP addresses are reversed in ARPA zones.)  This PTR record, if it has been configured correctly, points to the name 'www.contoso.com'.
 
-Bunlar ayrıca bir kuruluş bir IP adres bloğu atandığında, karşılık gelen ARPA bölgesini yönetme hakkı edinin. Azure tarafından kullanılan IP adres blokları karşılık gelen ARPA bölgeleri barındırılan ve Microsoft tarafından yönetilir. ISS ARPA bölgesini kendi IP adresleri için sizin için barındırabilir veya Azure DNS gibi tercih ettiğiniz bir DNS hizmetinde ARPA bölgesini barındırmanıza olanak tanıyabilir.
+When an organization is assigned an IP address block, they also acquire the right to manage the corresponding ARPA zone. The ARPA zones corresponding to the IP address blocks used by Azure are hosted and managed by Microsoft. Your ISP may host the ARPA zone for your own IP addresses for you, or may allow you to host the ARPA zone in a DNS service of your choice, such as Azure DNS.
 
 > [!NOTE]
-> İleriye doğru DNS araması ve geriye doğru DNS araması ayrı, paralel DNS hiyerarşileri uygulanır. "Www.contoso.com" için geriye doğru arama olup **değil** "contoso.com" bölgesinde barındırılan, bunun yerine, karşılık gelen IP adresi bloğunun ARPA bölgesini barındırılır. Ayrı bölgeler için IPv4 ve IPv6 adres bloklarını kullanılır.
+> Forward DNS lookups and reverse DNS lookups are implemented in separate, parallel DNS hierarchies. The reverse lookup for 'www.contoso.com' is **not** hosted in the zone 'contoso.com', rather it is hosted in the ARPA zone for the corresponding IP address block. Separate zones are used for IPv4 and IPv6 address blocks.
 
 ### <a name="ipv4"></a>IPv4
 
-Bir IPv4 geriye doğru arama bölgesi adı şu biçimde olmalıdır: `<IPv4 network prefix in reverse order>.in-addr.arpa`.
+The name of an IPv4 reverse lookup zone should be in the following format: `<IPv4 network prefix in reverse order>.in-addr.arpa`.
 
-Örneğin, ana bilgisayar kayıtları bir geriye doğru arama bölgesine IP'leri ile 192.0.2.0/24 önekini konaklar için oluştururken, bölge adı ağ ön eki (192.0.2) adresinin yalıtma ve sonra ters sırada (2.0.192) ve sonekiekleyerekoluşturulacak`.in-addr.arpa`.
+For example, when creating a reverse zone to host records for hosts with IPs that are in the 192.0.2.0/24 prefix, the zone name would be created by isolating the network prefix of the address (192.0.2) and then reversing the order (2.0.192) and adding the suffix `.in-addr.arpa`.
 
-|Alt ağ sınıfı|Ağ ön eki  |Ters çevrilen ağ ön eki  |Standart soneki  |Geriye doğru arama bölgesi adı |
+|Subnet class|Network prefix  |Reversed network prefix  |Standard suffix  |Reverse zone name |
 |-------|----------------|------------|-----------------|---------------------------|
-|Sınıf A|203.0.0.0/8     | 203        | .in-addr.arpa   | `203.in-addr.arpa`        |
-|B sınıfı|198.51.0.0/16   | 51.198     | .in-addr.arpa   | `51.198.in-addr.arpa`     |
-|C sınıfı|192.0.2.0/24    | 2.0.192    | .in-addr.arpa   | `2.0.192.in-addr.arpa`    |
+|Class A|203.0.0.0/8     | 203        | .in-addr.arpa   | `203.in-addr.arpa`        |
+|Class B|198.51.0.0/16   | 51.198     | .in-addr.arpa   | `51.198.in-addr.arpa`     |
+|Class C|192.0.2.0/24    | 2.0.192    | .in-addr.arpa   | `2.0.192.in-addr.arpa`    |
 
-### <a name="classless-ipv4-delegation"></a>Sınıfsız IPv4 temsilci seçme
+### <a name="classless-ipv4-delegation"></a>Classless IPv4 delegation
 
-Bazı durumlarda, bir kuruluş için ayrılan IP aralığını bir sınıf C küçüktür (/ 24) aralığı. Bu durumda, IP aralığını bir bölge sınırı içinde üzerinde düşmüyorsa `.in-addr.arpa` bölge hiyerarşisi ve bu nedenle bir alt bölge temsil edilemez.
+In some cases, the IP range allocated to an organization is smaller than a Class C (/24) range. In this case, the IP range does not fall on a zone boundary within the `.in-addr.arpa` zone hierarchy, and hence cannot be delegated as a child zone.
 
-Bunun yerine, farklı bir mekanizma, bir özel DNS bölgesi için bireysel geriye doğru arama (PTR) kayıtlarının denetim aktarmak için kullanılır. Bu mekanizma her IP aralığı için bir alt bölge atar ve ardından her IP adresi aralığı, CNAME kayıtları kullanarak bu alt bölge için ayrı ayrı eşler.
+Instead, a different mechanism is used to transfer control of individual reverse lookup (PTR) records to a dedicated DNS zone. This mechanism delegates a child zone for each IP range, then maps each IP address in the range individually to that child zone using CNAME records.
 
-Örneğin, bir kuruluşun kendi ISP'ye göre IP aralığı 192.0.2.128/26 verilir varsayalım. Bu 64 IP adresleri arasında 192.0.2.191 için 192.0.2.128 temsil eder. Bu aralık için ters DNS şu şekilde gerçekleştirilir:
-- Kuruluş 128 26.2.0.192.in addr.arpa adlı bir geriye doğru arama bölgesi oluşturur. ' 128-26' öneki, kuruluş sınıfı C içinde atanan ağ kesimini temsil eder (/ 24) aralığı.
-- ISS sınıfı C üst bölgeden yukarıdaki bölgesi için DNS temsilcisini ayarlamak için NS kayıtları oluşturur. Ayrıca CNAME kayıtları üst (sınıfı C) geriye doğru arama bölgesi ' her IP adresi, IP aralığı kuruluş tarafından oluşturulan yeni bölge eşleme oluşturur:
+For example, suppose an organization is granted the IP range 192.0.2.128/26 by its ISP. This represents 64 IP addresses, from 192.0.2.128 to 192.0.2.191. Reverse DNS for this range is implemented as follows:
+- The organization creates a reverse lookup zone called 128-26.2.0.192.in-addr.arpa. The prefix '128-26' represents the network segment assigned to the organization within the Class C (/24) range.
+- The ISP creates NS records to set up the DNS delegation for the above zone from the Class C parent zone. It also creates CNAME records in the parent (Class C) reverse lookup zone, mapping each IP address in the IP range to the new zone created by the organization:
 
 ```
 $ORIGIN 2.0.192.in-addr.arpa
@@ -73,7 +73,7 @@ $ORIGIN 2.0.192.in-addr.arpa
 131       CNAME    131.128-26.2.0.192.in-addr.arpa
 ; etc
 ```
-- Kuruluş, kendi alt bölge içerisindeki tek PTR kayıtları yönetir.
+- The organization then manages the individual PTR records within their child zone.
 
 ```
 $ORIGIN 128-26.2.0.192.in-addr.arpa
@@ -83,35 +83,35 @@ $ORIGIN 128-26.2.0.192.in-addr.arpa
 131      PTR    partners.contoso.com
 ; etc
 ```
-Geriye doğru arama bir PTR kaydı için IP adresi '192.0.2.129' sorgular için '129.2.0.192.in-addr.arpa' adlı. Üst bölgeden alt bölgeye PTR kaydı CNAME aracılığıyla bu sorguyu çözümler.
+A reverse lookup for the IP address '192.0.2.129' queries for a PTR record named '129.2.0.192.in-addr.arpa'. This query resolves via the CNAME in the parent zone to the PTR record in the child zone.
 
 ### <a name="ipv6"></a>IPv6
 
-Bir IPv6 geriye doğru arama bölgesi adı şu biçimde olmalıdır: `<IPv6 network prefix in reverse order>.ip6.arpa`
+The name of an IPv6 reverse lookup zone should be in the following form: `<IPv6 network prefix in reverse order>.ip6.arpa`
 
-Örneğin. Konaklar için ana bilgisayar kayıtları için bir geriye doğru arama bölgesi ile IP'ler, oluşturma olduğunda içinde 2001:db8:1000:abdc:: / 64 ön eki, bölge adı oluşturulacaktır adresi öneki yalıtarak (2001:db8:abdc::). Sonraki kaldırmak için IPv6 öneki genişletin [sıfır sıkıştırma](https://technet.microsoft.com/library/cc781672(v=ws.10).aspx), IPv6 adres ön eki kısaltmak için kullanıldıysa (2001:0db8:abdc:0000::). Ters çevrilen ağ ön eki oluşturmak için her ön ek, onaltılık sayı arasında sınırlayıcı olarak nokta kullanarak sırada (`0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2`) ve soneki eklemek `.ip6.arpa`.
+For example,. When creating a reverse zone to host records for hosts with IPs that are in the 2001:db8:1000:abdc::/64 prefix, the zone name would be created by isolating the network prefix of the address (2001:db8:abdc::). Next expand the IPv6 network prefix to remove [zero compression](https://technet.microsoft.com/library/cc781672(v=ws.10).aspx), if it was used to shorten the IPv6 address prefix (2001:0db8:abdc:0000::). Reverse the order, using a period as the delimiter between each hexadecimal number in the prefix, to build the reversed network prefix (`0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2`) and add the suffix `.ip6.arpa`.
 
 
-|Ağ ön eki  |Genişletilmiş ve ters ağ ön eki |Standart soneki |Geriye doğru arama bölgesi adı  |
+|Network prefix  |Expanded and reversed network prefix |Standard suffix |Reverse zone name  |
 |---------|---------|---------|---------|
 |2001:db8:abdc::/64    | 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2        | .ip6.arpa        | `0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa`       |
 |2001:db8:1000:9102::/64    | 2.0.1.9.0.0.0.1.8.b.d.0.1.0.0.2        | .ip6.arpa        | `2.0.1.9.0.0.0.1.8.b.d.0.1.0.0.2.ip6.arpa`        |
 
 
-## <a name="azure-support-for-reverse-dns"></a>Ters DNS için Azure desteği
+## <a name="azure-support-for-reverse-dns"></a>Azure support for reverse DNS
 
-Azure, ters DNS ile ilgili iki ayrı senaryoları destekler:
+Azure supports two separate scenarios relating to reverse DNS:
 
-**Karşılık gelen, IP adresi bloğuna geriye doğru arama bölgesi barındırma.**
-Azure DNS için kullanılabilir [, geriye doğru arama bölgeleri barındırma ve her geriye doğru DNS araması için PTR kayıtlarını yönetme](dns-reverse-dns-hosting.md), IPv4 ve IPv6 için.  (ARPA) geriye doğru arama bölgesi oluşturma, temsilci seçmeyi ayarlama ayarlama ve PTR kayıtlarını yapılandırma işlemi normal DNS bölgeleri ile aynıdır.  Tek fark, temsilci DNS kayıt şirketinizde yerine ISS'niz yapılandırılmalıdır ve yalnızca PTR kaydı türü kullanılmalıdır vardır.
+**Hosting the reverse lookup zone corresponding to your IP address block.**
+Azure DNS can be used to [host your reverse lookup zones and manage the PTR records for each reverse DNS lookup](dns-reverse-dns-hosting.md), for both IPv4 and IPv6.  The process of creating the reverse lookup (ARPA) zone, setting up the delegation, and configuring PTR records is the same as for regular DNS zones.  The only differences are that the delegation must be configured via your ISP rather than your DNS registrar, and only the PTR record type should be used.
 
-**Ters DNS kaydı, Azure hizmetine atanmış IP adresi için yapılandırın.** Azure, sağlar [yapılandırmak için Azure service ayrılan IP adresleri için geriye doğru arama](dns-reverse-dns-for-azure-services.md).  Bu geriye doğru arama, Azure tarafından karşılık gelen ARPA bölgesini bir PTR kaydı olarak yapılandırılır.  Microsoft tarafından barındırılan, Azure tarafından kullanılan tüm IP aralıklarını karşılık gelen bu ARPA bölgeleri
+**Configure the reverse DNS record for the IP address assigned to your Azure service.** Azure enables you to [configure the reverse lookup for the IP addresses allocated to your Azure service](dns-reverse-dns-for-azure-services.md).  This reverse lookup is configured by Azure as a PTR record in the corresponding ARPA zone.  These ARPA zones, corresponding to all the IP ranges used by Azure, are hosted by Microsoft
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ters DNS hakkında daha fazla bilgi için bkz. [Wikipedia geriye doğru DNS araması](https://en.wikipedia.org/wiki/Reverse_DNS_lookup).
+For more information on reverse DNS, see [reverse DNS lookup on Wikipedia](https://en.wikipedia.org/wiki/Reverse_DNS_lookup).
 <br>
-Bilgi edinmek için nasıl [barındırmak için ISS atanmış IP aralığınızı Azure DNS'de geriye doğru arama bölgesi](dns-reverse-dns-for-azure-services.md).
+Learn how to [host the reverse lookup zone for your ISP-assigned IP range in Azure DNS](dns-reverse-dns-for-azure-services.md).
 <br>
-Bilgi edinmek için nasıl [, Azure Hizmetleri için ters DNS kayıtlarını yönetme](dns-reverse-dns-for-azure-services.md).
+Learn how to [manage reverse DNS records for your Azure services](dns-reverse-dns-for-azure-services.md).
 

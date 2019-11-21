@@ -1,28 +1,24 @@
 ---
-title: Azure Işlevleri tetikleme ve bağlama örneği
-description: Azure Işlev bağlamalarını yapılandırmayı öğrenin
-services: functions
-documentationcenter: na
+title: Azure Functions trigger and binding example
+description: Learn to configure Azure Function bindings
 author: craigshoemaker
-manager: gwallace
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: d1959792823e04cf34d65ab775ae8c51e741e293
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8685c0fe02ad6c68918736e857c2015e2bfb4595
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097478"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227237"
 ---
-# <a name="azure-functions-trigger-and-binding-example"></a>Azure Işlevleri tetikleme ve bağlama örneği
+# <a name="azure-functions-trigger-and-binding-example"></a>Azure Functions trigger and binding example
 
-Bu makalede bir Azure Işlevinde [tetikleyici ve bağlamaların](./functions-triggers-bindings.md) nasıl yapılandırılacağı gösterilir.
+This article demonstrates how to configure a [trigger and bindings](./functions-triggers-bindings.md) in an Azure Function.
 
-Azure kuyruk depolamada yeni bir ileti göründüğünde Azure Tablo depolama alanına yeni bir satır yazmak istediğinizi varsayalım. Bu senaryo, bir Azure kuyruk depolama tetikleyicisi ve bir Azure Tablo depolama çıkış bağlaması kullanılarak uygulanabilir. 
+Suppose you want to write a new row to Azure Table storage whenever a new message appears in Azure Queue storage. This scenario can be implemented using an Azure Queue storage trigger and an Azure Table storage output binding. 
 
-Bu senaryo için bir *function. JSON* dosyası aşağıda verilmiştir. 
+Here's a *function.json* file for this scenario. 
 
 ```json
 {
@@ -45,18 +41,18 @@ Bu senaryo için bir *function. JSON* dosyası aşağıda verilmiştir.
 }
 ```
 
-`bindings` Dizideki ilk öğe kuyruk depolama tetikleyicisinin bir öğesidir. `type` Ve`direction` özellikleri tetikleyiciyi belirler. `name` Özelliği, kuyruk iletisi içeriğini alan işlev parametresini tanımlar. İzlenecek kuyruğun adı ' nda `queueName`, bağlantı dizesi tarafından `connection`tanımlanan uygulama ayarıdır.
+The first element in the `bindings` array is the Queue storage trigger. The `type` and `direction` properties identify the trigger. The `name` property identifies the function parameter that receives the queue message content. The name of the queue to monitor is in `queueName`, and the connection string is in the app setting identified by `connection`.
 
-`bindings` Dizideki ikinci öğe, Azure Tablo depolama çıkış bağlamadır. `type` Ve`direction` özellikleri bağlamayı belirler. `name` Özelliği, işlevin yeni tablo satırını nasıl sağladığını belirtir, bu durumda işlev dönüş değeri ' ni kullanarak. Tablonun `tableName`adı ve bağlantı dizesi tarafından `connection`tanımlanan uygulama ayarıdır.
+The second element in the `bindings` array is the Azure Table Storage output binding. The `type` and `direction` properties identify the binding. The `name` property specifies how the function provides the new table row, in this case by using the function return value. The name of the table is in `tableName`, and the connection string is in the app setting identified by `connection`.
 
-Azure portal *function. JSON* içeriğini görüntülemek ve düzenlemek için Işlevinizin **tümleştirin** sekmesinde **Gelişmiş Düzenleyici** seçeneğine tıklayın.
+To view and edit the contents of *function.json* in the Azure portal, click the **Advanced editor** option on the **Integrate** tab of your function.
 
 > [!NOTE]
-> Değeri `connection` bağlantı dizesinin kendisini değil bağlantı dizesini içeren bir uygulama ayarının adıdır. Bağlamalar, *function. JSON* ' ın hizmet gizli dizileri içermediğinden en iyi uygulamayı zorlamak için uygulama ayarlarında depolanan bağlantı dizelerini kullanır.
+> The value of `connection` is the name of an app setting that contains the connection string, not the connection string itself. Bindings use connection strings stored in app settings to enforce the best practice that *function.json* does not contain service secrets.
 
-## <a name="c-script-example"></a>C#betik örneği
+## <a name="c-script-example"></a>C# script example
 
-Bu tetikleyici C# ve bağlama ile birlikte çalışarak betik kodu aşağıda verilmiştir. Kuyruk iletisi içeriğini sağlayan parametre adının olduğunu `order`ve *function. JSON* içindeki `name` Özellik değeri şu olduğundan, bu ad gereklidir.`order` 
+Here's C# script code that works with this trigger and binding. Notice that the name of the parameter that provides the queue message content is `order`; this name is required because the `name` property value in *function.json* is `order` 
 
 ```cs
 #r "Newtonsoft.Json"
@@ -84,9 +80,9 @@ public class Person
 }
 ```
 
-## <a name="javascript-example"></a>JavaScript örneği
+## <a name="javascript-example"></a>JavaScript example
 
-Aynı *function. JSON* dosyası bir JavaScript işleviyle birlikte kullanılabilir:
+The same *function.json* file can be used with a JavaScript function:
 
 ```javascript
 // From an incoming queue message that is a JSON object, add fields and write to Table Storage
@@ -104,9 +100,9 @@ function generateRandomId() {
 }
 ```
 
-## <a name="class-library-example"></a>Sınıf kitaplığı örneği
+## <a name="class-library-example"></a>Class library example
 
-Bir sınıf kitaplığında, aynı tetikleyici ve bağlama bilgileri &mdash; kuyruğu ve tablo adları, depolama hesapları, giriş ve çıkış &mdash; için işlev parametreleri, bir Function. JSON dosyası yerine öznitelikler tarafından sağlanır. Bir örneği aşağıda verilmiştir:
+In a class library, the same trigger and binding information &mdash; queue and table names, storage accounts, function parameters for input and output &mdash; is provided by attributes instead of a function.json file. Bir örneği aşağıda verilmiştir:
 
 ```csharp
 public static class QueueTriggerTableOutput
@@ -134,9 +130,9 @@ public class Person
 }
 ```
 
-Artık bir Azure kuyruğu tarafından tetiklenen ve Azure Tablo depolama alanına veri çıktısı veren bir çalışma işleviniz var.
+You now have a working function that is triggered by an Azure Queue and outputs data to Azure Table storage.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure Işlevleri bağlama ifadesi desenleri](./functions-bindings-expressions-patterns.md)
+> [Azure Functions binding expression patterns](./functions-bindings-expressions-patterns.md)

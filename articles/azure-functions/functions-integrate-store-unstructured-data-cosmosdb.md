@@ -1,24 +1,15 @@
 ---
-title: Azure Cosmos DB ve İşlevler’i kullanarak yapılandırılmamış verileri depolama | Microsoft Docs
+title: Store unstructured data using Azure Cosmos DB and Functions
 description: Azure İşlevleri ve Cosmos DB’yi kullanarak yapılandırılmamış verileri depolama
-services: functions
-documentationcenter: functions
-author: ggailey777
-manager: jeconnoc
-keywords: azure işlevleri, işlevler, olay işleme, Cosmos DB, dinamik işlem, sunucusuz mimari
-ms.assetid: ''
-ms.service: azure-functions
-ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 10/01/2018
-ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: cdae0a04d09b7985935bee0ae636d7f88fbff541
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: bae5e82bfe9091c2b2003b4f1735f51e3d37222d
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62107017"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230556"
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>Azure İşlevleri ve Azure Cosmos DB’yi kullanarak yapılandırılmamış verileri depolama
 
@@ -64,7 +55,7 @@ Bu öğreticiyi tamamlamak için:
     | **Belge parametre adı** | taskDocument | Kodda Cosmos DB nesnesine başvuran ad. |
     | **Veritabanı adı** | taskDatabase | Belgelerin kaydedileceği veritabanının adı. |
     | **Koleksiyon adı** | TaskCollection | Veritabanı koleksiyonunun adı. |
-    | **True ise, Cosmos DB veritabanı ve koleksiyonunu oluşturur** | İşaretli | Koleksiyon henüz mevcut değil, bu yüzden oluşturun. |
+    | **True ise, Cosmos DB veritabanı ve koleksiyonunu oluşturur** | Onay işaretli | Koleksiyon henüz mevcut değil, bu yüzden oluşturun. |
     | **Azure Cosmos DB hesabı bağlantısı** | Yeni ayar | **Yeni**'yi ve ardından **Aboneliğinizi**, önceden oluşturduğunuz **Veritabanı hesabını** ve **Seç**'i belirtin. Hesap bağlantınız için bir uygulama ayarı oluşturulur. Bu ayar bağlama tarafından veritabanı bağlantısı için kullanılır. |
     | **Koleksiyon aktarım hızı** |400 RU| Daha sonra gecikme süresini azaltmak isterseniz aktarım hızının ölçeğini artırabilirsiniz. |
 

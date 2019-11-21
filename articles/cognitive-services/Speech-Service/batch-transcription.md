@@ -1,7 +1,7 @@
 ---
-title: Toplu Iş dökümü kullanma-konuşma hizmeti
+title: How to use Batch Transcription - Speech Service
 titleSuffix: Azure Cognitive Services
-description: Batch transkripsiyonu, depolama, Azure BLOB'ları gibi ses büyük bir miktarını konuşmaların istiyorsanız idealdir. Adanmış REST API'sini kullanarak bir paylaşılan erişim imzası (SAS) URI ses dosyalarının üzerine gelin ve döküm zaman uyumsuz olarak alır.
+description: Batch transcription is ideal if you want to transcribe a large quantity of audio in storage, such as Azure Blobs. By using the dedicated REST API, you can point to audio files with a shared access signature (SAS) URI and asynchronously receive transcriptions.
 services: cognitive-services
 author: PanosPeriorellis
 manager: nitinme
@@ -10,62 +10,62 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: panosper
-ms.openlocfilehash: 101cfacf071292d00556656b0df9c6bf9c15f414
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 5418b378c2c3cff09dbccbaa7b7240c61bbb583e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515873"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74221523"
 ---
-# <a name="why-use-batch-transcription"></a>Batch transkripsiyonu neden kullanmalısınız?
+# <a name="why-use-batch-transcription"></a>Why use Batch transcription?
 
-Batch transkripsiyonu, depolama, Azure BLOB'ları gibi ses büyük bir miktarını konuşmaların istiyorsanız idealdir. Adanmış REST API'sini kullanarak bir paylaşılan erişim imzası (SAS) URI ses dosyalarının üzerine gelin ve döküm zaman uyumsuz olarak alır.
+Batch transcription is ideal if you want to transcribe a large quantity of audio in storage, such as Azure Blobs. By using the dedicated REST API, you can point to audio files with a shared access signature (SAS) URI and asynchronously receive transcriptions.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-### <a name="subscription-key"></a>Abonelik Anahtarı
+### <a name="subscription-key"></a>Subscription Key
 
-Konuşma hizmeti tüm özellikleri ile bir abonelik anahtarı oluştururken [Azure portalında](https://portal.azure.com) izleyerek bizim [Başlarken Kılavuzu](get-started.md). Bizim temel modellerinden döküm almak planlıyorsanız, bir anahtar oluşturmak tek yapmanız gereken bir işlemdir.
+As with all features of the Speech service, you create a subscription key from the [Azure portal](https://portal.azure.com) by following our [Get started guide](get-started.md). If you plan to get transcriptions from our baseline models, creating a key is all you need to do.
 
 >[!NOTE]
-> Konuşma Hizmetleri standart aboneliği (S0), batch transkripsiyonu kullanmak için gereklidir. Ücretsiz Abonelik anahtarları (F0) işe yaramaz. Ek bilgi için bkz: [fiyatlandırma ve limitler](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
+> A standard subscription (S0) for Speech Services is required to use batch transcription. Free subscription keys (F0) will not work. For additional information, see [pricing and limits](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
-### <a name="custom-models"></a>Özel modeller
+### <a name="custom-models"></a>Custom models
 
-Akustik veya dil modellerini özelleştirmeyi planlıyorsanız, [akustik modelleri özelleştirme](how-to-customize-acoustic-models.md) ve [dil modellerini özelleştirme](how-to-customize-language-model.md)bölümündeki adımları izleyin. Toplu iş dökümlerinde oluşturulan modelleri kullanmak için model kimliklerine ihtiyacınız vardır. Bu KIMLIK, uç nokta Ayrıntıları görünümünde bulduğunuz uç nokta KIMLIĞI değil, modellerin ayrıntılarını seçerken alabileceğiniz model KIMLIĞIDIR.
+If you plan to customize acoustic or language models, follow the steps in [Customize acoustic models](how-to-customize-acoustic-models.md) and [Customizing language models](how-to-customize-language-model.md). To use the created models in batch transcription you need their model IDs. This ID is not the endpoint ID that you find on the Endpoint Details view, it is the model ID that you can retrieve when you select the details of the models.
 
-## <a name="the-batch-transcription-api"></a>Batch tanıma API'si
+## <a name="the-batch-transcription-api"></a>The Batch Transcription API
 
-Batch tanıma API'si, ek özellikleri ile birlikte zaman uyumsuz konuşma metin tanıma sunar. Bu yöntemleri gösteren bir REST API'si değil:
+The Batch Transcription API offers asynchronous speech-to-text transcription, along with additional features. It is a REST API that exposes methods for:
 
-1. Toplu işlem isteği oluşturma
-1. Sorgu durumu
-1. Döküm indiriliyor
+1. Creating batch processing requests
+1. Query Status
+1. Downloading transcriptions
 
 > [!NOTE]
-> Batch tanıma API'si, genellikle saatlik ses binlerce accumulate çağrı merkezleri için idealdir. Büyük hacimde ses kaydı yapmayı kolaylaştırır.
+> The Batch Transcription API is ideal for call centers, which typically accumulate thousands of hours of audio. It makes it easy to transcribe large volumes of audio recordings.
 
-### <a name="supported-formats"></a>Desteklenen biçimler
+### <a name="supported-formats"></a>Supported formats
 
-Batch tanıma API'si, aşağıdaki biçimlerde destekler:
+The Batch Transcription API supports the following formats:
 
-| Biçimlendir | Codec bileşeni | Bit hızı | Örnek hızı |
+| Biçimlendir | Codec | Bitrate | Sample Rate |
 |--------|-------|---------|-------------|
-| WAV | PCM | 16-bit | 8 veya 16 kHz, mono, stereo |
-| MP3 | PCM | 16-bit | 8 veya 16 kHz, mono, stereo |
-| OGG | GEÇERLİ | 16-bit | 8 veya 16 kHz, mono, stereo |
+| WAV | PCM | 16-bit | 8 or 16 kHz, mono, stereo |
+| MP3 | PCM | 16-bit | 8 or 16 kHz, mono, stereo |
+| OGG | OPUS | 16-bit | 8 or 16 kHz, mono, stereo |
 
-Stereo ses akışları için Batch transkripsiyonu API sol ve sağ kanal döküm sırasında böler. Sonuç ile iki JSON dosyaları her tek bir kanaldan oluşturulur. Zaman damgaları utterance başına bir sıralı son döküm oluşturmak Geliştirici etkinleştirin. Bu örnek istek, küfür filtrelemesinin, noktalama işaretlerinin ve sözcük düzeyi zaman damgalarının özelliklerini içerir.
+For stereo audio streams, the Batch transcription API splits the left and right channel during the transcription. The two JSON files with the result are each created from a single channel. The timestamps per utterance enable the developer to create an ordered final transcript. This sample request includes properties for profanity filtering, punctuation, and word level timestamps.
 
 ### <a name="configuration"></a>Yapılandırma
 
-Yapılandırma parametreleri JSON olarak sağlanır:
+Configuration parameters are provided as JSON:
 
 ```json
 {
   "recordingsUrl": "<URL to the Azure blob to transcribe>",
   "models": [{"Id":"<optional acoustic model ID>"},{"Id":"<optional language model ID>"}],
-  "locale": "<locale to us, for example en-US>",
+  "locale": "<locale to use, for example en-US>",
   "name": "<user defined name of the transcription batch>",
   "description": "<optional description of the transcription>",
   "properties": {
@@ -78,35 +78,35 @@ Yapılandırma parametreleri JSON olarak sağlanır:
 ```
 
 > [!NOTE]
-> Döküm, durum ve ilişkili sonuçları istenirken bir REST hizmeti ve Batch tanıma API'sini kullanır. Herhangi bir dilde API'den kullanabilirsiniz. Sonraki bölümde, API'yi nasıl kullanıldığını açıklar.
+> The Batch Transcription API uses a REST service for requesting transcriptions, their status, and associated results. You can use the API from any language. The next section describes how the API is used.
 
-### <a name="configuration-properties"></a>Yapılandırma özellikleri
+### <a name="configuration-properties"></a>Configuration properties
 
-Dökümü yapılandırmak için bu isteğe bağlı özellikleri kullanın:
+Use these optional properties to configure transcription:
 
 | Parametre | Açıklama |
 |-----------|-------------|
-| `ProfanityFilterMode` | Tanıma sonuçları küfür nasıl ele alınacağını belirtir. Kabul edilen değerler `None` , devre dışı bırakır küfür filtresi `masked` yıldız işareti ile küfür değiştirir `removed` sonuç, tüm küfür kaldırır veya `tags` "küfür" etiketleri ekler. Varsayılan ayar `masked`. |
-| `PunctuationMode` | Noktalama işaretleri tanıma sonuçları nasıl ele alınacağını belirtir. Değerler kabul `None` , devre dışı bırakır, noktalama `dictated` açık noktalama gelir `automatic` noktalama işaretleri ile uğraşmak kod çözücü olanak tanıyan veya `dictatedandautomatic` dikte noktalama işaretleri veya otomatik olduğu anlamına gelir. |
- | `AddWordLevelTimestamps` | Sözcük düzeyi tarih damgalarının çıktıya eklenip eklenmesinin gerekip gerekmediğini belirtir. Kabul edilen değerler `true` , Word düzeyi zaman damgalarını ve `false` (varsayılan değer) devre dışı bırakmak için izin veren değerlerdir. |
- | `AddSentiment` | Yaklaşım 'ın utterance 'e eklenmesi gerektiğini belirtir. Kabul edilen değerler `true` , her ay için yaklaşım ve `false` (varsayılan değer) devre dışı bırakmak için kullanılır. |
- | `AddDiarization` | İki ses içeren mono kanalı olması beklenen girişte, seçme analizinin gerçekleştirilmesi gerektiğini belirtir. Kabul edilen değerler `true` ve `false` devre dışı bırakmak için (varsayılan değer) izin verilir. Ayrıca, true `AddWordLevelTimestamps` olarak ayarlanması gerekir.|
+| `ProfanityFilterMode` | Specifies how to handle profanity in recognition results. Accepted values are `None` which disables profanity filtering, `masked` which replaces profanity with asterisks, `removed` which removes all profanity from the result, or `tags` which adds "profanity" tags. The default setting is `masked`. |
+| `PunctuationMode` | Specifies how to handle punctuation in recognition results. Accepted values are `None` which disables punctuation, `dictated` which implies explicit punctuation, `automatic` which lets the decoder deal with punctuation, or `dictatedandautomatic` which implies dictated punctuation marks or automatic. |
+ | `AddWordLevelTimestamps` | Specifies if word level timestamps should be added to the output. Accepted values are `true` which enables word level timestamps and `false` (the default value) to disable it. |
+ | `AddSentiment` | Specifies sentiment should be added to the utterance. Accepted values are `true` which enables sentiment per utterance and `false` (the default value) to disable it. |
+ | `AddDiarization` | Specifies that diarization analysis should be carried out on the input which is expected to be mono channel containing two voices. Accepted values are `true` which enables diarization and `false` (the default value) to disable it. It also requires `AddWordLevelTimestamps` to be set to true.|
 
 ### <a name="storage"></a>Depolama
 
-Toplu iş dökümü, ses okumak ve depoya yazmak için [Azure Blob depolamayı](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) destekler.
+Batch transcription supports [Azure Blob storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) for reading audio and writing transcriptions to storage.
 
 ## <a name="webhooks"></a>Web Kancaları
 
-Döküm durumu için yoklama en iyi performans olmayabilir veya en iyi kullanıcı deneyimini sağlayabilir. Durumu yoklamak için geri çağırmaları kaydedebilirsiniz, bu, uzun süre çalışan döküm görevleri tamamlandığında istemciye bildirim gönderir.
+Polling for transcription status may not be the most performant, or provide the best user experience. To poll for status, you can register callbacks, which will notify the client when long-running transcription tasks have completed.
 
-Daha ayrıntılı bilgi için bkz. [Web kancaları](webhooks.md).
+For more details, see [Webhooks](webhooks.md).
 
-## <a name="speaker-separation-diarization"></a>Konuşmacı ayrımı (Diarleştirme)
+## <a name="speaker-separation-diarization"></a>Speaker Separation (Diarization)
 
-Kararlama, hoparlörleri ses parçasıyla ayırma işlemidir. Batch Işlem hatmız, daha fazla seçim destekleiyor ve mono kanal kayıtlarında iki hoparlörleri tanıyor.
+Diarization is the process of separating speakers in a piece of audio. Our Batch pipeline supports Diarization and is capable of recognizing two speakers on mono channel recordings.
 
-Ses dökümü isteğiniz için işlenmek üzere işlenmesini istemek için, yalnızca aşağıda gösterildiği gibi, HTTP isteğine ilgili parametresini eklemeniz gerekir.
+To request that your audio transcription request is processed for diarization, you simply have to add the relevant parameter in the HTTP request as shown below.
 
  ```json
 {
@@ -122,30 +122,30 @@ Ses dökümü isteğiniz için işlenmek üzere işlenmesini istemek için, yaln
 }
 ```
 
-Yukarıdaki istekteki parametreler gösterildiği gibi, sözcük düzeyi tarih damgalarının de ' açık ' olması gerekir.
+Word level timestamps would also have to be 'turned on' as the parameters in the above request indicate.
 
-Karşılık gelen ses, bir sayıyla tanımlanan hoparlörleri içerir (Şu anda yalnızca iki ses destekliyoruz, bu nedenle konuşmacı, ' hoparlör 1 ' ve ' hoparlör 2 ' olarak tanımlanır) ve ardından döküm çıkışı gelir.
+The corresponding audio will contain the speakers identified by a number (currently we support only two voices, so the speakers will be identified as 'Speaker 1 'and 'Speaker 2') followed by the transcription output.
 
-Ayrıca, stereo kayıtlarında bu özelliği kullanılamaz durumda olduğunu unutmayın. Ayrıca, tüm JSON çıktılarına konuşmacı etiketi de bulunur. Kullanım kullanılmıyorsa, ' Konuşmacı: JSON çıktısında null '.
+Also note that Diarization is not available in Stereo recordings. Furthermore, all JSON output will contain the Speaker tag. If diarization is not used, it will show 'Speaker: Null' in the JSON output.
 
 > [!NOTE]
-> Tüm bölgelerde ve tüm yerel ayarlarda kullanılabilir.
+> Diarization is available in all regions and for all locales!
 
-## <a name="sentiment"></a>Yaklaşım
+## <a name="sentiment"></a>Duygu
 
-Yaklaşım, toplu Iş dökümü API 'sindeki yeni bir özelliktir ve çağrı merkezi etki alanındaki önemli bir özelliktir. Müşteriler, `AddSentiment` parametreleri için isteklerini kullanabilir
+Sentiment is a new feature in Batch Transcription API and is an important feature in the call center domain. Customers can use the `AddSentiment` parameters to their requests to
 
-1.  Müşteri memnuniyeti hakkında Öngörüler edinin
-2.  Aracıların performansı hakkında öngörüler elde edin (çağrıları alan takım)
-3.  Bir çağrının negatif yönde bir değer aldığı zaman içinde tam zaman noktası
-4.  Pozitif yapılan olumsuz çağrıları etkinleştirirken, Pinpoint ne kadar iyi bir sorun oluştu
-5.  Beğendikleri müşterileri ve bir ürün veya hizmet hakkında neleri beğendiklerinizi tanımlayın
+1.  Get insights on customer satisfaction
+2.  Get insight on the performance of the agents (team taking the calls)
+3.  Pinpoint the exact point in time when a call took a turn in a negative direction
+4.  Pinpoint what went well when turning negative calls to positive
+5.  Identify what customers like and what they dislike about a product or a service
 
-Yaklaşım, bir ses kesiminin, utterlik (fark) başlangıcı ve bayt akışı için algılama sessizliği arasında geçen süre içinde tanımlandığı bir ses kesimi başına puanlanır. Bu kesimdeki tüm metin, yaklaşımı hesaplamak için kullanılır. Tüm çağrı veya her bir kanalın tüm konuşma için herhangi bir toplama yaklaşımı değeri hesaplamaz. Bu toplamalar daha sonra uygulamak için etki alanı sahibine bırakılır.
+Sentiment is scored per audio segment where an audio segment is defined as the time lapse between the start of the utterance (offset) and the detection silence of end of byte stream. The entire text within that segment is used to calculate sentiment. We DO NOT calculate any aggregate sentiment values for the entire call or the entire speech of each channel. These aggregations are left to the domain owner to further apply.
 
-Yaklaşım, sözlü biçimde uygulanır.
+Sentiment is applied on the lexical form.
 
-Bir JSON çıkış örneği aşağıdaki gibi görünür:
+A JSON output sample looks like below:
 
 ```json
 {
@@ -180,35 +180,35 @@ Bir JSON çıkış örneği aşağıdaki gibi görünür:
   ]
 }
 ```
-Özelliği, şu anda beta sürümünde olan bir yaklaşım modeli kullanır.
+The feature uses a Sentiment model, which is currently in Beta.
 
 ## <a name="sample-code"></a>Örnek kod
 
-Tüm örnekler, `samples/batch` alt dizinin içindeki [GitHub örnek deposunda](https://aka.ms/csspeech/samples) bulunur.
+Complete samples are available in the [GitHub sample repository](https://aka.ms/csspeech/samples) inside the `samples/batch` subdirectory.
 
-Örnek kodu Abonelik bilgileriniz, hizmet bölgesi, ses dosyasına işaret edilecek SAS URI 'SI ve özel bir akustik veya dil modeli kullanmak istiyorsanız model kimlikleri ile özelleştirmeniz gerekir.
+You have to customize the sample code with your subscription information, the service region, the SAS URI pointing to the audio file to transcribe, and model IDs in case you want to use a custom acoustic or language model.
 
 [!code-csharp[Configuration variables for batch transcription](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#batchdefinition)]
 
-Örnek kod, istemcisini ayarlar ve döküm isteğini gönderir. Daha sonra durum bilgilerini yoklayacak ve döküm ilerlemesiyle ilgili ayrıntıları yazdıracaktır.
+The sample code will setup the client and submit the transcription request. It will then poll for status information and print details about the transcription progress.
 
 [!code-csharp[Code to check batch transcription status](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#batchstatus)]
 
-Önceki çağrılar hakkında tam Ayrıntılar için [Swagger belgemizi](https://westus.cris.ai/swagger/ui/index)inceleyin. Burada gösterilen tam örnek için `samples/batch` alt dizinde [GitHub](https://aka.ms/csspeech/samples) ' a gidin.
+For full details about the preceding calls, see our [Swagger document](https://westus.cris.ai/swagger/ui/index). For the full sample shown here, go to [GitHub](https://aka.ms/csspeech/samples) in the `samples/batch` subdirectory.
 
-Ses gönderme ve döküm durumu almak için zaman uyumsuz Kurulum not alın. Oluşturduğunuz .NET HTTP istemci istemcisidir. Var. bir `PostTranscriptions` ses dosyası ayrıntılarını göndermek için yöntem ve bir `GetTranscriptions` sonuçları almak için yöntemi. `PostTranscriptions` bir tanıtıcı döndürür ve `GetTranscriptions` transkripsiyonu durumu almak için bir tanıtıcı oluşturmak için kullanır.
+Take note of the asynchronous setup for posting audio and receiving transcription status. The client that you create is a .NET HTTP client. There's a `PostTranscriptions` method for sending the audio file details and a `GetTranscriptions` method for receiving the results. `PostTranscriptions` returns a handle, and `GetTranscriptions` uses it to create a handle to get the transcription status.
 
-Geçerli örnek kod, özel bir model belirtmez. Hizmet, dosya veya dosyalar fotoğrafını için temel modelleri kullanır. Modelleri belirtmek için model kimliklerini akustik ve dil modeli için aynı yönteme geçirebilirsiniz.
+The current sample code doesn't specify a custom model. The service uses the baseline models for transcribing the file or files. To specify the models, you can pass on the same method as the model IDs for the acoustic and the language model.
 
 > [!NOTE]
-> Ana hat düzenlemeleri için, taban çizgisi modellerinin KIMLIĞINI bildirmeniz gerekmez. Yalnızca bir dil modeli KIMLIĞI belirtirseniz (ve akustik model KIMLIĞI yoksa), eşleşen bir akustik model otomatik olarak seçilir. Yalnızca bir akustik model KIMLIĞI belirtirseniz, eşleşen bir dil modeli otomatik olarak seçilir.
+> For baseline transcriptions, you don't need to declare the ID for the baseline models. If you only specify a language model ID (and no acoustic model ID), a matching acoustic model is automatically selected. If you only specify an acoustic model ID, a matching language model is automatically selected.
 
 ## <a name="download-the-sample"></a>Örneği indirme
 
-Örneği `samples/batch` [GitHub örnek deposundaki](https://aka.ms/csspeech/samples)dizinde bulabilirsiniz.
+You can find the sample in the `samples/batch` directory in the [GitHub sample repository](https://aka.ms/csspeech/samples).
 
 > [!NOTE]
-> Toplu iş dökümü işleri en iyi çaba temelinde zamanlanır, bir işin çalışma durumuna ne zaman değişene olacağı için bir zaman tahmini yoktur. Çalışır duruma getirildikten sonra gerçek döküm, ses gerçek saatinden daha hızlı işlenir.
+> Batch transcription jobs are scheduled on a best effort basis, there is no time estimate for when a job will change into the running state. Once in running state, the actual transcription is processed faster than the audio real time.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

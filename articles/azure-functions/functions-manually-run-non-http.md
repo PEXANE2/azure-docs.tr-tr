@@ -1,83 +1,79 @@
 ---
-title: El ile olmayan HTTP ile tetiklenen bir Azure işlevleri'ni çalıştırma
-description: Azure işlevleri HTTP olmayan bir HTTP isteği kullanım tetiklendi
-services: functions
-keywords: ''
+title: Manually run a non HTTP-triggered Azure Functions
+description: Use an HTTP request to run a non-HTTP triggered Azure Functions
 author: craigshoemaker
-manager: gwallace
-ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 12/12/2018
 ms.author: cshoe
-ms.openlocfilehash: cfebe5c783018cfab51f384cce578e43383c3905
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 8198ff6579aff839ff9aacb729e2f3f8d3472fae
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67479819"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230469"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>HTTP ile tetiklenmeyen bir işlevi el ile çalıştırma
 
-Bu makalede, olmayan HTTP ile tetiklenen bir işlev özel olarak biçimlendirilmiş bir HTTP isteği aracılığıyla el ile çalıştırabileceğiniz gösterilmiştir.
+This article demonstrates how to manually run a non HTTP-triggered function via specially formatted HTTP request.
 
-Bazı bağlamlarda "isteğe bağlı" çalıştırmanız gerekebilir dolaylı olarak tetikleyen bir Azure işlevi.  Dolaylı Tetikleyicileri örnekler [işlevleri bir zamanlamaya göre](./functions-create-scheduled-function.md) veya sonucu olarak çalıştırılan işlevleri [başka bir kaynağın eylem](./functions-create-storage-blob-triggered-function.md). 
+In some contexts, you may need to run "on-demand" an Azure Function that is indirectly triggered.  Examples of indirect triggers include [functions on a schedule](./functions-create-scheduled-function.md) or functions that run as the result of [another resource's action](./functions-create-storage-blob-triggered-function.md). 
 
-[Postman](https://www.getpostman.com/) aşağıdaki örnekte kullanılır ancak kullanabilirsiniz [cURL](https://curl.haxx.se/), [Fiddler](https://www.telerik.com/fiddler) veya HTTP istekleri göndermek için aracı gibi diğer.
+[Postman](https://www.getpostman.com/) is used in the following example, but you may use [cURL](https://curl.haxx.se/), [Fiddler](https://www.telerik.com/fiddler) or any other like tool to send HTTP requests.
 
-## <a name="define-the-request-location"></a>İstek konumunu tanımlayın
+## <a name="define-the-request-location"></a>Define the request location
 
-Olmayan HTTP ile tetiklenen bir işlev çalıştırmak için Azure için bir istek göndermek için bir yol işlevi çalıştırmak için gerekir. Bu istek için kullanılan URL'nin, belirli bir form alır.
+To run a non HTTP-triggered function, you need to a way to send a request to Azure to run the function. The URL used to make this request takes a specific form.
 
-![İstek konumunu tanımlayın: ana bilgisayar adı, klasör yolu + işlev adı](./media/functions-manually-run-non-http/azure-functions-admin-url-anatomy.png)
+![Define the request location: host name + folder path + function name](./media/functions-manually-run-non-http/azure-functions-admin-url-anatomy.png)
 
-- **Ana bilgisayar adı:** Adı işlevi uygulamanın artı oluşur ortak bir konum işlevi uygulamanın *azurewebsites.net* veya özel etki alanınız.
-- **Klasör yolu:** Klasörler üzerinden istek göndermek zorunda olmayan HTTP ile tetiklenen işlev bir HTTP isteği aracılığıyla erişmek için *yönetici/işlevleri*.
-- **İşlev adı:** Çalıştırmak istediğiniz işlev adı.
+- **Host name:** The function app's public location that is made up from the function app's name plus *azurewebsites.net* or your custom domain.
+- **Folder path:** To access non HTTP-triggered functions via an HTTP request, you have to send the request through the folders *admin/functions*.
+- **Function name:** The name of the function you want to run.
 
-Postman isteği bu konumda Azure isteğinde işlevin ana anahtarı ile birlikte, işlev çalıştırmak için kullanın.
+You use this request location in Postman along with the function's master key in the request to Azure to run the function.
 
 > [!NOTE]
-> Yerel olarak çalışırken, işlevin ana anahtarı gerekli değildir. Doğrudan yapabilecekleriniz [işlev çağrısı](#call-the-function) atlama `x-functions-key` başlığı.
+> When running locally, the function's master key is not required. You can directly [call the function](#call-the-function) omitting the `x-functions-key` header.
 
-## <a name="get-the-functions-master-key"></a>İşlevin ana anahtarı alma
+## <a name="get-the-functions-master-key"></a>Get the function's master key
 
-Azure Portal'da işlevinize gidin ve tıklayarak **Yönet** ve bulma **ana bilgisayar anahtarları** bölümü. Tıklayarak **kopyalama** düğmesine *ana* ana anahtarı panonuza kopyalamak için satır.
+Navigate to your function in the Azure portal and click on **Manage** and find the **Host Keys** section. Click on the **Copy** button in the *_master* row to copy the master key to your clipboard.
 
-![İşlev yönetim ekranından ana anahtarı Kopyala](./media/functions-manually-run-non-http/azure-portal-functions-master-key.png)
+![Copy master key from Function Management screen](./media/functions-manually-run-non-http/azure-portal-functions-master-key.png)
 
-Ana anahtarı kopyaladıktan sonra kod dosyası penceresine dönmek için işlev adına tıklayın. Ardından, tıklayarak **günlükleri** sekmesi. Postman ' el ile işlevi çalıştırdığınızda, burada oturum işlevden mesajlar görürsünüz.
+After copying the master key, click on the function name to return to the code file window. Next, click on the **Logs** tab. You'll see messages from the function logged here when you manually run the function from Postman.
 
 > [!CAUTION]  
-> İşlev uygulamanızın ana anahtar ile verilen yükseltilmiş izinler nedeniyle üçüncü taraflarla bu anahtarı paylaşan veya gerekir uygulamayı dağıtın.
+> Due to the elevated permissions in your function app granted by the master key, you should not share this key with third parties or distribute it in an application.
 
-## <a name="call-the-function"></a>İşlev çağrısı
+## <a name="call-the-function"></a>Call the function
 
-Postman'ı açın ve aşağıdaki adımları izleyin:
+Open Postman and follow these steps:
 
-1. Girin **URL'si metin kutusuna bir konum ister**.
-2. HTTP yöntemi ayarlandığından emin olun **POST**.
-3. **Tıklayın** üzerinde **üstbilgileri** sekmesi.
-4. Girin **x-işlevler-key** ilk olarak **anahtarı** ve ana anahtarı (panodan) yapıştırın **değer** kutusu.
-5. Girin **Content-Type** ikinci olarak **anahtarı** girin **application/json** olarak **değer**.
+1. Enter the **request location in the URL text box**.
+2. Ensure the HTTP method is set to **POST**.
+3. **Click** on the **Headers** tab.
+4. Enter **x-functions-key** as the first **key** and paste the master key (from the clipboard) into the **value** box.
+5. Enter **Content-Type** as the second **key** and enter **application/json** as the **value**.
 
-    ![Postman üstbilgi ayarları](./media/functions-manually-run-non-http/functions-manually-run-non-http-headers.png)
+    ![Postman headers settings](./media/functions-manually-run-non-http/functions-manually-run-non-http-headers.png)
 
-6. **Tıklayın** üzerinde **gövdesi** sekmesi.
-7. Girin **{"Giriş": "test"}** istek gövdesi olarak.
+6. **Click** on the **Body** tab.
+7. Enter **{ "input": "test" }** as the body for the request.
 
-    ![Postman gövdesi ayarları](./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png)
+    ![Postman body settings](./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png)
 
-8. Tıklayın **Gönder**.
+8. Click **Send**.
 
-    ![Postman isteği gönderme](./media/functions-manually-run-non-http/functions-manually-run-non-http-send.png)
+    ![Sending a request with Postman](./media/functions-manually-run-non-http/functions-manually-run-non-http-send.png)
 
-Postman, daha sonra durumunu raporlar **202 kabul edildi**.
+Postman then reports a status of **202 Accepted**.
 
-Ardından, Azure Portal'da işlevinize geri dönün. Bulun *günlükleri* penceresindeki el ile işlev çağrısından gelen iletileri göreceksiniz.
+Next, return to your function in the Azure portal. Locate the *Logs* window and you'll see messages coming from the manual call to the function.
 
-![El ile çağrı günlüğü sonuçlardan işlevi](./media/functions-manually-run-non-http/azure-portal-function-log.png)
+![Function log results from manual call](./media/functions-manually-run-non-http/azure-portal-function-log.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Kodunuzu Azure işlevleri'nde test stratejileri](./functions-test-a-function.md)
-- [Azure işlevi olay Kılavuzu tetikleyicisi yerel hata ayıklama](./functions-debug-event-grid-trigger-local.md)
+- [Strategies for testing your code in Azure Functions](./functions-test-a-function.md)
+- [Azure Function Event Grid Trigger Local Debugging](./functions-debug-event-grid-trigger-local.md)
