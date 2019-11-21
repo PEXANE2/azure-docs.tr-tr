@@ -2,7 +2,7 @@
   href: index.yml
 - name: Genel Bakış
   items:
-    - name: Azure Kaynak Grafiği'ne Genel Bakış
+    - name: Azure Kaynak Grafı nedir?
       displayName: 'Resource Manager, query language, rbac, permissions'
       href: overview.md
 - name: Hızlı Başlangıçlar

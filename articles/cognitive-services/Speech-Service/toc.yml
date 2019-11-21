@@ -468,6 +468,8 @@
   items:
     - name: Destek
       href: support.md
+    - name: Bölgeler
+      href: regions.md
     - name: Fiyatlandırma ve limitler
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
     - name: Uyumluluk
