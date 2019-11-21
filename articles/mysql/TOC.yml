@@ -168,6 +168,8 @@
           href: howto-configure-ssl.md
         - name: Web uygulamaları
           href: howto-connect-webapp.md
+        - name: Yeniden yönlendirme ile bağlanma
+          href: howto-redirection.md
     - name: Sunucu parametrelerini yapılandırma
       items:
         - name: Azure portal

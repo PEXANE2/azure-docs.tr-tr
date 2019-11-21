@@ -112,14 +112,6 @@
               items:
                 - name: SQL Veritabanı denetimini kullanmaya başlama
                   href: sql-database-auditing.md
-        - name: Ağ güvenliği
-          items:
-            - name: Sanal ağ uç noktaları
-              href: sql-database-vnet-service-endpoint-rule-overview.md
-            - name: Sanal ağ uç noktaları - PowerShell
-              href: sql-database-vnet-service-endpoint-rule-powershell.md
-            - name: Özel Bağlantı
-              href: sql-database-private-endpoint-overview.md
         - name: Güvenlik yönetimi
           items:
             - name: Gelişmiş veri güvenliği
@@ -136,14 +128,22 @@
               href: sql-database-feature-restrictions.md
         - name: Tek veritabanı güvenliği
           items:
+            - name: Ağ erişim denetimleri
+              href: sql-database-networkaccess-overview.md
+            - name: IP tabanlı güvenlik duvarı
+              href: sql-database-firewall-configure.md
+            - name: vNet güvenlik duvarı kuralları
+              items:
+                - name: vNet uç noktaları
+                  href: sql-database-vnet-service-endpoint-rule-overview.md
+                - name: vNet uç noktaları - PowerShell
+                  href: sql-database-vnet-service-endpoint-rule-powershell.md
+            - name: Özel Bağlantı
+              href: sql-database-private-endpoint-overview.md
             - name: Denetim Günlüğü Biçimi
               href: sql-database-audit-log-format.md
             - name: Koşullu Erişim
               href: sql-database-conditional-access.md
-            - name: Sunucu düzeyinde IP güvenlik duvarı kuralları
-              items:
-                - name: Oluşturma ve yönetme
-                  href: sql-database-firewall-configure.md
         - name: Yönetilen örnek güvenliği
           items:
             - name: Genel uç noktaların güvenliğini sağlama

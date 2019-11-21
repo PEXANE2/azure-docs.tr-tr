@@ -427,6 +427,33 @@
           href: 'https://aka.ms/csspeech/pythonref'
         - name: Konuşma SDK’sı sürüm notları
           href: releasenotes.md
+- name: Cihazlar
+  exanded: false
+  items:
+    - name: Genel Bakış
+      items:
+        - name: Konuşma Cihazları SDK’sı hakkında
+          href: speech-devices-sdk.md
+        - name: Konuşma Cihazları SDK’sını edinme
+          href: get-speech-devices-sdk.md
+    - name: Donanım
+      items:
+        - name: Mikrofon dizisi önerileri
+          href: speech-devices-sdk-microphone.md
+        - name: Roobo v1 seti
+          href: speech-devices-sdk-roobo-v1.md
+    - name: Hızlı Başlangıçlar
+      items:
+        - name: Windows
+          href: speech-devices-sdk-windows-quickstart.md
+        - name: Linux
+          href: speech-devices-sdk-linux-quickstart.md
+        - name: Android
+          href: speech-devices-sdk-android-quickstart.md
+    - name: Kaynaklar
+      items:
+        - name: Konuşma Cihazları SDK’sında sorun giderme
+          href: speech-devices-sdk-troubleshooting.md
 - name: Geçiş
   exanded: false
   items:

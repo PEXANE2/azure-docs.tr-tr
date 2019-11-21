@@ -23,6 +23,8 @@
       href: tutorial-configure-password-hash-sync.md
     - name: Gelişmiş yönetilen etki alanı oluşturma
       href: tutorial-create-instance-advanced.md
+    - name: Orman güveni oluşturma (önizleme)
+      href: tutorial-create-forest-trust.md
 - name: Örnekler
   items:
     - name: Azure PowerShell kullanarak yönetilen etki alanı oluşturma
@@ -33,6 +35,12 @@
       href: administration-concepts.md
     - name: Yaygın dağıtım senaryoları
       href: scenarios.md
+    - name: Ormanlar ve güvenler
+      items:
+        - name: Kaynak ormanları
+          href: concepts-resource-forest.md
+        - name: Ormanlar güvenleri
+          href: concepts-forest-trust.md
     - name: Azure AD DS eşitlemesinin işleyiş biçimi
       href: synchronization.md
     - name: Parola karması eşitleme nasıl çalışır?

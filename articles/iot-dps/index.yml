@@ -2,7 +2,7 @@
 documentType: LandingData
 title: Azure IoT Hub Cihaz Sağlama Hizmeti Belgeleri
 metadata:
-  title: 'Azure IoT Hub Cihaz Sağlama Hizmeti Belgeleri - Öğreticiler, API Başvurusu'
+  title: Azure IoT Hub Cihaz Sağlama Hizmeti Belgeleri
   description: 'Azure IoT Hub Cihazı Sağlama Hizmeti - Öğreticiler, Hızlı Başlangıçlar, Nasıl Yapılır Videoları ve API Başvurusu'
   author: nberdy
   ms.service: iot-dps
@@ -11,7 +11,7 @@ metadata:
   ms.date: 01/23/2017
   ms.author: nberdy
 abstract:
-  description: 'IoT Hub Cihaz Sağlama Hizmeti doğru IoT hub’a, kullanıcı müdahalesi gerektirmeden otomatik olarak tam zamanında sağlama olanağı sunan bir yardımcı hizmettir. Bu sayede müşteriler milyonlarca cihazı güvenli ve ölçeklenebilir bir şekilde sağlayabiliyor. Hızlı başlangıç kılavuzlarımız, öğreticilerimiz ve örneklerimizle IoT hub’larınıza cihaz sağlamayı öğrenin.'
+  description: 'IoT Hub Cihazı Sağlama Hizmeti (DPS) doğru IoT hub’a, kullanıcı müdahalesi gerektirmeden otomatik olarak tam zamanında sağlama olanağı sunan bir yardımcı hizmettir. Bu sayede müşteriler milyonlarca cihazı güvenli ve ölçeklenebilir bir şekilde sağlayabiliyor. Hızlı başlangıç kılavuzlarımız, öğreticilerimiz ve örneklerimizle IoT hub’larınıza cihaz sağlamayı öğrenin.'
 sections:
   - title: 5 Dakikalık Hızlı Başlangıçlar
     items:

@@ -38,6 +38,8 @@
           href: class-type-shell-scripting-linux.md
         - name: Etik korsanlık
           href: class-type-ethical-hacking.md
+        - name: Veritabanı yönetimi
+          href: class-type-database-management.md
     - name: Laboratuvar hesabı oluşturma ve yapılandırma (laboratuvar hesabı sahibi)
       items:
         - name: Laboratuvar hesabı oluşturma ve yönetme
