@@ -1,44 +1,38 @@
 ---
-title: JavaScript kullanarak Azure 'da ilk dayanıklı işlevinizi oluşturma
-description: Visual Studio Code kullanarak bir Azure dayanıklı Işlevi oluşturun ve yayımlayın.
-services: functions
-documentationcenter: na
+title: Create your first durable function in Azure using JavaScript
+description: Create and publish an Azure Durable Function using Visual Studio Code.
 author: ColbyTresness
-manager: jeconnoc
-keywords: azure işlevleri, işlevler, olay işleme, işlem, sunucusuz mimari
-ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 11/07/2018
-ms.author: glenga
 ms.reviewer: azfuncdf, cotresne
-ms.openlocfilehash: 1a1586124a1cfb05f2b7c4e9c3b0070170447b96
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 94ba2830824c4a918e9451a9fc5140d422110370
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614587"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231307"
 ---
-# <a name="create-your-first-durable-function-in-javascript"></a>JavaScript 'te ilk dayanıklı işlevinizi oluşturma
+# <a name="create-your-first-durable-function-in-javascript"></a>Create your first durable function in JavaScript
 
-*Dayanıklı işlevler* , bir sunucusuz ortamda durum bilgisi olan işlevler yazmanıza olanak sağlayan bir [Azure işlevleri](../functions-overview.md) uzantısıdır. Uzantı sizin için durumu, denetim noktalarını ve yeniden başlatmaları yönetir.
+*Durable Functions* is an extension of [Azure Functions](../functions-overview.md) that lets you write stateful functions in a serverless environment. Uzantı sizin için durumu, denetim noktalarını ve yeniden başlatmaları yönetir.
 
 [!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
-Bu makalede, bir "Hello World" dayanıklı işlevini yerel olarak oluşturmak ve test etmek için Visual Studio Code Azure Işlevleri uzantısının nasıl kullanılacağını öğrenirsiniz.  Bu işlev, diğer işlevlere yönelik çağrıları düzenler ve birlikte zincirler. Ardından işlev kodunu Azure’da yayımlayacaksınız.
+In this article, you learn how to use the Visual Studio Code Azure Functions extension to locally create and test a "hello world" durable function.  This function will orchestrate and chain together calls to other functions. Ardından işlev kodunu Azure’da yayımlayacaksınız.
 
-![Azure 'da dayanıklı işlevi çalıştırma](./media/quickstart-js-vscode/functions-vs-code-complete.png)
+![Running durable function in Azure](./media/quickstart-js-vscode/functions-vs-code-complete.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için:
 
-* [Visual Studio Code](https://code.visualstudio.com/download)'i yükler.
+* Install [Visual Studio Code](https://code.visualstudio.com/download).
 
-* [Azure Functions Core Tools](../functions-run-local.md)en son sürümüne sahip olduğunuzdan emin olun.
+* Make sure you have the latest version of the [Azure Functions Core Tools](../functions-run-local.md).
 
-* Bir Windows bilgisayarında, [Azure Storage öykünücüsü](../../storage/common/storage-use-emulator.md) ' nin yüklü ve çalışır olduğunu doğrulayın. Bir Mac veya Linux bilgisayarda gerçek bir Azure depolama hesabı kullanmanız gerekir.
+* On a Windows computer, verify you have the [Azure Storage Emulator](../../storage/common/storage-use-emulator.md) installed and running. On a Mac or Linux computer, you must use an actual Azure storage account.
 
-* Sürüm 8,0 veya daha sonraki bir [Node. js](https://nodejs.org/) sürümünün yüklü olduğundan emin olun.
+* Make sure that you have version 8.0 or a later version of [Node.js](https://nodejs.org/) installed.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -46,72 +40,72 @@ Bu öğreticiyi tamamlamak için:
 
 [!INCLUDE [functions-create-function-app-vs-code](../../../includes/functions-create-function-app-vs-code.md)]
 
-## <a name="install-the-durable-functions-npm-package"></a>Dayanıklı İşlevler NPM paketini yükler
+## <a name="install-the-durable-functions-npm-package"></a>Install the Durable Functions npm package
 
-1. İşlev uygulamasının kök dizininde `npm install durable-functions` çalıştırarak NPM paketini `durable-functions`.
+1. Install the `durable-functions` npm package by running `npm install durable-functions` in the root directory of the function app.
 
-## <a name="creating-your-functions"></a>İşlevleriniz oluşturma
+## <a name="creating-your-functions"></a>Creating your functions
 
-Artık Dayanıklı İşlevler kullanmaya başlamak için ihtiyacınız olan üç işlevi oluşturacağız: bir HTTP Starter, Orchestrator ve bir etkinlik işlevi. HTTP Starter tüm çözümünüzü başlatacak ve Orchestrator işleri çeşitli etkinlik işlevlerine gönderir.
+We'll now create the three functions you need to get started with Durable Functions: an HTTP starter, an orchestrator, and an activity function. The HTTP starter will initiate your entire solution, and the orchestrator will dispatch work to various activity functions.
 
-### <a name="http-starter"></a>HTTP başlangıç
+### <a name="http-starter"></a>HTTP starter
 
-İlk olarak, dayanıklı bir işlev düzenlemesi Başlatan HTTP ile tetiklenen bir işlev oluşturun.
+First, create an HTTP triggered function that starts a durable function orchestration.
 
-1. *Azure: işlevler*' de **işlev oluştur** simgesini seçin.
+1. From *Azure: Functions*, choose the **Create Function** icon.
 
     ![İşlev oluşturma](./media/quickstart-js-vscode/create-function.png)
 
-2. İşlev uygulaması projenizin bulunduğu klasörü seçin ve **DAYANıKLı işlevler http Starter** işlev şablonunu seçin.
+2. Select the folder with your function app project and select the **Durable Functions HTTP Starter** function template.
 
-    ![HTTP başlangıç şablonunu seçin](./media/quickstart-js-vscode/create-function-choose-template.png)
+    ![Choose the HTTP starter template](./media/quickstart-js-vscode/create-function-choose-template.png)
 
-3. Olarak varsayılan adı bırakın `DurableFunctionsHttpStart` basın ** **Enter** ardından **anonim** kimlik doğrulaması.
+3. Leave the default name as `DurableFunctionsHttpStart` and press ****Enter**, then select **Anonymous** authentication.
 
     ![Anonim kimlik doğrulamasını seçin](./media/quickstart-js-vscode/create-function-anonymous-auth.png)
 
-Şimdi dayanıklı Işlevimize bir giriş noktası oluşturduk. Şimdi bir Orchestrator ekleyelim.
+We've now created an entry-point into our Durable Function. Let's add an orchestrator.
 
 ### <a name="orchestrator"></a>Orchestrator
 
-Şimdi, etkinlik işlevlerini koordine etmek için bir Orchestrator oluşturacağız.
+Now, we'll create an orchestrator to coordinate activity functions.
 
-1. *Azure: işlevler*' de **işlev oluştur** simgesini seçin.
+1. From *Azure: Functions*, choose the **Create Function** icon.
 
     ![İşlev oluşturma](./media/quickstart-js-vscode/create-function.png)
 
-2. İşlev uygulaması projenizin bulunduğu klasörü seçin ve **dayanıklı işlevler Orchestrator** işlev şablonunu seçin. Adı varsayılan "DurableFunctionsOrchestrator" olarak bırakın
+2. Select the folder with your function app project and select the **Durable Functions orchestrator** function template. Leave the name as the default "DurableFunctionsOrchestrator"
 
-    ![Orchestrator şablonunu seçin](./media/quickstart-js-vscode/create-function-choose-template.png)
+    ![Choose the orchestrator template](./media/quickstart-js-vscode/create-function-choose-template.png)
 
-Etkinlik işlevlerine koordine etmek için bir Orchestrator ekledik. Şimdi başvurulan etkinlik işlevini ekleyelim.
+We've added an orchestrator to coordinate activity functions. Let's now add the referenced activity function.
 
 ### <a name="activity"></a>Etkinlik
 
-Şimdi, çözümün işini gerçekten yürütmek için bir etkinlik işlevi oluşturacağız.
+Now, we'll create an activity function to actually carry out the work of the solution.
 
-1. *Azure: işlevler*' de **işlev oluştur** simgesini seçin.
+1. From *Azure: Functions*, choose the **Create Function** icon.
 
     ![İşlev oluşturma](./media/quickstart-js-vscode/create-function.png)
 
-2. İşlev uygulaması projenizin bulunduğu klasörü seçin ve **dayanıklı işlevler etkinlik** işlevi şablonunu seçin. Adı varsayılan "Merhaba" olarak bırakın.
+2. Select the folder with your function app project and select the **Durable Functions activity** function template. Leave the name as the default "Hello".
 
-    ![Etkinlik şablonunu seçin](./media/quickstart-js-vscode/create-function-choose-template.png)
+    ![Choose the activity template](./media/quickstart-js-vscode/create-function-choose-template.png)
 
-Artık bir düzenleme ve zincir oluşturma etkinlik işlevlerini başlatmak için gereken tüm bileşenleri ekledik.
+We've now added all components needed to start off an orchestration and chain together activity functions.
 
 ## <a name="test-the-function-locally"></a>İşlevi yerel olarak test etme
 
 Azure İşlevleri Temel Araçları, Azure İşlevleri projenizi yerel geliştirme bilgisayarınızda çalıştırmanıza olanak sağlar. Visual Studio Code'da ilk kez bir işlev başlattığınızda bu araçları yüklemeniz istenir.
 
-1. Bir Windows bilgisayarında, Azure Storage öykünücüsü ' nü başlatın ve *Local. Settings. JSON* ' ın **AzureWebJobsStorage** özelliğinin `UseDevelopmentStorage=true`olarak ayarlandığından emin olun.
+1. On a Windows computer, start the Azure Storage Emulator and make sure that the **AzureWebJobsStorage** property of *local.settings.json* is set to `UseDevelopmentStorage=true`.
 
-    Depolama öykünücüsü 5,8 için, Local. Settings. JSON **AzureWebJobsSecretStorageType** özelliğinin `files`olarak ayarlandığından emin olun. Mac veya Linux bilgisayarda, **AzureWebJobsStorage** özelliğini mevcut bir Azure depolama hesabının bağlantı dizesine ayarlamanız gerekir. Bu makalede daha sonra bir depolama hesabı oluşturursunuz.
+    For Storage Emulator 5.8 make sure that the **AzureWebJobsSecretStorageType** property of local.settings.json is set to `files`. On     a Mac or Linux computer, you must set the **AzureWebJobsStorage** property to the connection string of an existing Azure storage         account. You create a storage account later in this article.
 
-2. İşlevinizi test etmek için işlev kodunda bir kesme noktası ayarlayın ve işlev uygulaması projesini başlatmak için F5 tuşuna basın. Temel Araçlar’daki çıktı, **Terminal** panelinde görüntülenir. Dayanıklı İşlevler ilk kez kullanıyorsanız, Dayanıklı İşlevler uzantısı yüklenir ve derleme birkaç saniye sürebilir.
+2. İşlevinizi test etmek için işlev kodunda bir kesme noktası ayarlayın ve işlev uygulaması projesini başlatmak için F5 tuşuna basın. Temel Araçlar’daki çıktı, **Terminal** panelinde görüntülenir. If this is your first time using Durable Functions, the Durable Functions extension is installed and the build might take a few seconds.
 
     > [!NOTE]
-    > JavaScript Dayanıklı İşlevler, **Microsoft. Azure. WebJobs. Extensions. DurableTask** uzantısının sürüm **1.7.0** veya üstünü gerektirir. Dayanıklı İşlevler uzantısını yüklemek için Azure Işlevleri uygulamanızın kök klasöründen aşağıdaki komutu çalıştırın `func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.7.0`
+    > JavaScript Durable Functions require version **1.7.0** or greater of the **Microsoft.Azure.WebJobs.Extensions.DurableTask** extension. Run the following command from the root folder of your Azure Functions app to install the Durable Functions extension `func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.7.0`
 
 3. **Terminal** panelinde, HTTP ile tetiklenen işlevinizin URL uç noktasını kopyalayın.
 
@@ -119,13 +113,13 @@ Azure İşlevleri Temel Araçları, Azure İşlevleri projenizi yerel geliştirm
 
 4. `{functionName}` yerine `DurableFunctionsOrchestrator` yazın.
 
-5. [Postman](https://www.getpostman.com/) veya [kıvrık](https://curl.haxx.se/)gibi BIR araç kullanarak, URL uç noktasına bir http post isteği gönderin.
+5. Using a tool like [Postman](https://www.getpostman.com/) or [cURL](https://curl.haxx.se/), send an HTTP POST request to the URL endpoint.
 
-   Yanıt, HTTP işlevinin ilk sonucudur ve dayanıklı düzenleme 'nin başarıyla başlatıldığını öğrenmemize olanak tanıyor. Orchestration 'un nihai sonucu henüz değildir. Yanıt birkaç yararlı URL içerir. Şimdilik düzenleme durumunu sorgulayalım.
+   The response is the initial result from the HTTP function letting us know the durable orchestration has started successfully. It is not yet the end result of the orchestration. The response includes a few useful URLs. For now, let's query the status of the orchestration.
 
-6. `statusQueryGetUri` URL değerini kopyalayın ve tarayıcının adres çubuğuna yapıştırın ve isteği yürütün. Alternatif olarak, GET isteğini vermek için Postman kullanmaya de devam edebilirsiniz.
+6. Copy the URL value for `statusQueryGetUri` and paste it in the browser's address bar and execute the request. Alternatively you can also continue to use Postman to issue the GET request.
 
-   İstek, bu durum için düzenleme örneğini sorgular. Örneğin, örneğin tamamlandığını gösteren ve dayanıklı işlevin çıkışlarını veya sonuçlarını içeren nihai bir yanıt almanız gerekir. Şöyle görünür: 
+   The request will query the orchestration instance for the status. You should get an eventual response, which shows us the instance has completed, and includes the outputs or results of the durable function. It looks like: 
 
     ```json
     {
@@ -143,7 +137,7 @@ Azure İşlevleri Temel Araçları, Azure İşlevleri projenizi yerel geliştirm
     }
     ```
 
-7. Hata ayıklamayı durdurmak için VS Code **Shift + F5** tuşlarına basın.
+7. To stop debugging, press **Shift + F5** in VS Code.
 
 İşlevin yerel bilgisayarınızda düzgün çalıştığını doğruladıktan sonra, projeyi Azure'da yayımlamanın zamanı gelmiştir.
 
@@ -157,11 +151,11 @@ Azure İşlevleri Temel Araçları, Azure İşlevleri projenizi yerel geliştirm
 
         http://<functionappname>.azurewebsites.net/orchestrators/<functionname>
 
-2. HTTP isteğinin yeni URL’sini tarayıcınızın adres çubuğuna yapıştırın. Yayımlanan uygulamayı kullanmadan önce aynı durum yanıtını almalısınız.
+2. HTTP isteğinin yeni URL’sini tarayıcınızın adres çubuğuna yapıştırın. You should get the same status response as before when using the published app.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-JavaScript dayanıklı bir işlev uygulaması oluşturmak ve yayımlamak için Visual Studio Code kullandınız.
+You have used Visual Studio Code to create and publish a JavaScript durable function app.
 
 > [!div class="nextstepaction"]
-> [Ortak dayanıklı işlev desenleri hakkında bilgi edinin](durable-functions-overview.md#application-patterns)
+> [Learn about common durable function patterns](durable-functions-overview.md#application-patterns)

@@ -1,6 +1,6 @@
 ---
-title: Bağlı cihazlarınızı Hesabım portalından yönetme-Azure AD
-description: Hesabım portalının cihazlar sayfasından bağlı cihazlarınızı görüntüleme ve devre dışı bırakma.
+title: Manage your connected devices from the My Account portal - Azure AD
+description: How to view and disable devices connected to your work or school account from the Devices page of the My Account portal.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,64 +12,64 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c0eb691abaabf09ae8f89354e1fdb6f18cf8e5b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 37994125f7f1a7119a8878c7edec401328fd75ca
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73804267"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233211"
 ---
-# <a name="manage-your-connected-devices-from-the-my-account-portal"></a>Bağlı cihazlarınızı Hesabım portalından yönetme
+# <a name="manage-devices-connected-to-your-work-or-school-account-from-the-devices-page"></a>Manage devices connected to your work or school account from the Devices page
 
-**Hesabım** portalının **cihazlar** sayfasında şunları yapabilirsiniz:
+From the **Devices** page of the **My Account** portal, you can:
 
-- İş veya okul hesabınıza bağlı cihazlarınızı görüntüleyin.
+- View your work or school account-connected devices.
 
-- Artık sahip olmadığınız, kaybedilmiş veya çalınmış olan cihazları devre dışı bırakın.
+- Disable any devices you no longer own, have lost, or that have been stolen.
 
-## <a name="view-your-connected-devices"></a>Bağlı cihazlarınızı görüntüleme
+## <a name="view-your-connected-devices"></a>View your connected devices
 
-1. İş veya okul hesabınızda oturum açın ve ardından https://myprofile.microsoft.com/ sayfanıza gidin.
+1. Sign in to your work or school account and then go to your https://myprofile.microsoft.com/ page.
 
-2. Sol gezinti bölmesinden **cihazlar** ' ı seçin veya **cihazlar bloğundan cihazları** **Yönet** bağlantısını seçin.
+2. Select **Devices** from the left navigation pane or select the **Manage devices** link from the **Devices** block.
 
-    ![Vurgulanan cihaz bağlantılarını gösteren Hesabım sayfası](media/my-account-portal/my-account-portal-devices.png)
+    ![My Account page, showing highlighted Devices links](media/my-account-portal/my-account-portal-devices.png)
 
-3. Bağlı cihazlarınızla ilgili bilgileri inceleyerek tümünü tanıdığınızdan emin olun.
+3. Review the information for your connected devices, making sure you recognize them all.
 
-    ![Bağlı cihazları gösteren cihaz sayfası](media/my-account-portal/my-account-portal-devices-page.png)
+    ![Device page, showing connected devices](media/my-account-portal/my-account-portal-devices-page.png)
 
-## <a name="disable-a-device"></a>Cihazı devre dışı bırakma
+## <a name="disable-a-device"></a>Disable a device
 
-Bağlı cihazlarınızdan herhangi birini dilediğiniz zaman devre dışı bırakabilirsiniz. Bu, özellikle bir cihaz sizi tanımıyorsanız veya bir cihazın kaybolması ya da çalınması durumunda önemlidir. Bir cihazı devre dışı bıraktıktan sonra, kuruluşunuz tarafından artık kimlik doğrulaması yapılmaz ve kuruluşunuzun kaynaklarından hiçbirine erişemeyecektir.
+You can disable any of your connected devices at any time. This is especially important if a device isn't familiar to you or if a device is lost or stolen. After you disable a device, it can no longer be authenticated by your organization, and will be unable to access any of your organization's resources.
 
 >[!Important]
->Bir cihazı yanlışlıkla devre dışı bırakırsanız, geri alma yöntemi yoktur. Cihazı yeniden eklemek için kuruluşunuzun yöneticisiyle iletişime geçmeniz gerekir.
+>If you disable a device by mistake, there's no way to undo it. You'll have to contact your organization's administrator to add the device again.
 
-1. Kaldırmak istediğiniz cihazdan **devre dışı bırak** ' ı seçin.
+1. Select **Disable** from the device you want to remove.
 
-    ![Vurgulanan devre dışı bağlantı ile cihaz sayfası](media/my-account-portal/my-account-portal-devices-disable.png)
+    ![Device page with highlighted Disable link](media/my-account-portal/my-account-portal-devices-disable.png)
 
-2. Cihazı devre dışı bırakmak istediğinizi onaylamak için **Evet** ' i seçin.
+2. Select **Yes** to confirm you want to disable the device.
 
-## <a name="view-a-bitlocker-key"></a>BitLocker anahtarını görüntüleme
+## <a name="view-a-bitlocker-key"></a>View a BitLocker key
 
-Cihazınızın oturumunuzu kilitlediyseniz veya önemli bir hata varsa, başka bir cihaza gidebilir ve **Hesabım** portalından BitLocker anahtarınızı görüntüleyebilirsiniz.
+If you're locked out of your device or have a fatal error, you can go to another device and view your BitLocker key from the **My Account** portal.
 
-1. Kilitli olmadığınız başka bir cihazda, **Hesabım** portalının **cihazlar** sayfasına gidin.
+1. On another device, where you're not locked out, go to the **Devices** page of the **My Account** portal.
 
-    ![BitLocker anahtar seçeneğiyle cihaz sayfası](media/my-account-portal/my-account-portal-devices-bitlocker.png)
+    ![Device page with BitLocker key option](media/my-account-portal/my-account-portal-devices-bitlocker.png)
 
-2. Kilitli cihaz için **BitLocker anahtarlarını görüntüle** ' yi seçin ve kilitli cihazınız için BitLocker anahtarını yazın.
+2. Select **View Bitlocker Keys** for the locked out device and write down the BitLocker key for your locked device.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bağlı cihazlarınızı görüntüledikten sonra şunları yapabilirsiniz:
+After viewing your connected devices, you can:
 
-- [Güvenlik bilgilerinizi](user-help-security-info-overview.md)görüntülemek veya yönetmek için seçin.
+- Select to view or manage your [security info](user-help-security-info-overview.md).
 
-- [Kuruluşları](my-account-portal-organizations-page.md)görüntüleyin ve yönetin.
+- View and manage your [organizations](my-account-portal-organizations-page.md).
 
-- [Oturum açma etkinliğinizi](my-account-portal-sign-ins-page.md)görüntüleyin.
+- View your [sign-in activity](my-account-portal-sign-ins-page.md).
 
-- Kuruluşunuzun [gizlilikle ilgili verilerinizi nasıl kullandığını](my-account-portal-privacy-page.md)görüntüleyin.
+- View how your organization [uses your privacy-related data](my-account-portal-privacy-page.md).

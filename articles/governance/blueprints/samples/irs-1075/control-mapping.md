@@ -1,330 +1,330 @@
 ---
-title: IRS 1075 şema örnek denetimi eşlemesi
-description: IRS 1075 şema örneğinin denetim eşlemesi. Her denetim, değerlendirmenize yardımcı olan bir veya daha fazla Azure Ilkesiyle eşleştirilir.
-ms.date: 08/07/2019
+title: IRS 1075 blueprint sample - Control mapping
+description: Control mapping of the IRS 1075 blueprint sample. Each control is mapped to one or more Azure Policies that assists with assessment.
+ms.date: 11/20/2019
 ms.topic: sample
-ms.openlocfilehash: b56e1a2c8a71e3bb7927dc487e0c2f1e7709d413
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
-ms.translationtype: MT
+ms.openlocfilehash: 2083a5249c697b6406982f747ad4ced50e65955a
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74032202"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74210228"
 ---
-# <a name="control-mapping-of-the-irs-1075-blueprint-sample"></a>IRS 1075 şema örneğinin denetim eşlemesi
+# <a name="control-mapping-of-the-irs-1075-blueprint-sample"></a>Control mapping of the IRS 1075 blueprint sample
 
-Aşağıdaki makalede, Azure şemaları IRS 1075 şema örneğinin IRS 1075 denetimlerine nasıl eşleştiği açıklanır. Denetimler hakkında daha fazla bilgi için bkz. [ırs 1075](https://www.irs.gov/pub/irs-pdf/p1075.pdf).
+The following article details how the Azure Blueprints IRS 1075 blueprint sample maps to the IRS 1075 controls. For more information about the controls, see [IRS 1075](https://www.irs.gov/pub/irs-pdf/p1075.pdf).
 
-Aşağıdaki eşlemeler **ırs 1075** denetimlerine göre yapılır. Sağ taraftaki gezinmeyi kullanarak doğrudan belirli bir denetim eşlemesine atlayın. Eşlenmiş denetimlerin birçoğu bir [Azure Policy](../../../policy/overview.md) girişimi ile uygulanır. Tüm girişimi gözden geçirmek için Azure portal **ilkeyi** açın ve **tanımlar** sayfasını seçin. Ardından,\[önizlemeyi bulun ve seçin **\]: ırs 1075 denetimlerini denetleyin ve belırlı VM uzantılarını, denetim gereksinimleri** yerleşik ilke girişimi ' ni destekleyecek şekilde dağıtın.
+The following mappings are to the **IRS 1075** controls. Use the navigation on the right to jump directly to a specific control mapping. Many of the mapped controls are implemented with an [Azure Policy](../../../policy/overview.md) initiative. To review the complete initiative, open **Policy** in the Azure portal and select the **Definitions** page. Then, find and select the **\[Preview\]: Audit IRS 1075 controls and deploy specific VM Extensions to support audit requirements** built-in policy initiative.
 
 > [!IMPORTANT]
-> Aşağıdaki her denetim bir veya daha fazla [Azure ilke](../../../policy/overview.md) tanımı ile ilişkilidir. Bu ilkeler, denetimiyle [uyumluluğu değerlendirmenize](../../../policy/how-to/get-compliance-data.md) yardımcı olabilir; Ancak, bir denetim ve bir veya daha fazla ilke arasında genellikle bir 1:1 veya bir eşleşme yoktur. Bu nedenle, Azure Ilkesi ile **uyumlu** , yalnızca ilkelerin kendilerine başvurur; Bu, bir denetimin tüm gereksinimleriyle tamamen uyumlu olduğunuzdan emin değildir. Buna ek olarak, uyumluluk standardı şu anda herhangi bir Azure Ilke tanımı tarafından açıklanmayan denetimler içerir. Bu nedenle, Azure Ilkesinde uyumluluk, genel uyumluluk durumunuzu yalnızca kısmi görünümüdür. Bu uyumluluk şeması örneği için denetimler ve Azure Ilke tanımları arasındaki ilişkilendirmeler zaman içinde değişebilir. Değişiklik geçmişini görüntülemek için [GitHub kayıt geçmişine](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/irs-1075/control-mapping.md)bakın.
+> Each control below is associated with one or more [Azure Policy](../../../policy/overview.md) definitions. These policies may help you [assess compliance](../../../policy/how-to/get-compliance-data.md) with the control; however, there often is not a 1:1 or complete match between a control and one or more policies. As such, **Compliant** in Azure Policy refers only to the policies themselves; this doesn't ensure you're fully compliant with all requirements of a control. In addition, the compliance standard includes controls that aren't addressed by any Azure Policy definitions at this time. Therefore, compliance in Azure Policy is only a partial view of your overall compliance status. The associations between controls and Azure Policy definitions for this compliance blueprint sample may change over time. To view the change history, see the [GitHub Commit History](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/irs-1075/control-mapping.md).
 
-## <a name="9321-ac-2-account-management"></a>9.3.2.1 AC-2 hesap yönetimi
+## <a name="9321-ac-2-account-management"></a>9.3.2.1 AC-2 Account Management
 
-Bu şema, kuruluşunuzun hesap yönetimi gereksinimleriyle uyumlu olmayan hesapları incelemenizi sağlar. Bu şema, abonelik ve kullanım dışı hesaplar üzerinde okuma, yazma ve sahibi izinleri olan dış hesapları denetleyen [Azure ilke](../../../policy/overview.md) tanımlarını atar. Bu ilkeler tarafından denetlenen hesapları inceleyerek, hesap yönetimi gereksinimlerinin karşılanmasını sağlamak için uygun işlemleri gerçekleştirebilirsiniz.
+This blueprint helps you review accounts that may not comply with your organization's account management requirements. This blueprint assigns [Azure Policy](../../../policy/overview.md) definitions that audit external accounts with read, write and owner permissions on a subscription and deprecated accounts. By reviewing the accounts audited by these policies, you can take appropriate action to ensure account management requirements are met.
 
-- Kullanım dışı bırakılan hesaplar aboneliğinizden kaldırılmalıdır
-- Sahip izinleri olan kullanım dışı hesaplar aboneliğinizden kaldırılmalıdır
-- Sahip izinleri olan dış hesaplar aboneliğinizden kaldırılmalıdır
-- Okuma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir
+- Deprecated accounts should be removed from your subscription
+- Deprecated accounts with owner permissions should be removed from your subscription
+- External accounts with owner permissions should be removed from your subscription
+- External accounts with read permissions should be removed from your subscription
 - Yazma izinleri olan dış hesapların aboneliğinizden kaldırılması gerekir
 
-## <a name="9321-ac-2-7-account-management--role-based-schemes"></a>9.3.2.1 AC-2 (7) hesap yönetimi | Rol tabanlı şemalar
+## <a name="9321-ac-2-7-account-management--role-based-schemes"></a>9.3.2.1 AC-2 (7) Account Management | Role-Based Schemes
 
-Azure, Azure 'daki kaynaklara kimlerin erişebileceğini yönetmenize yardımcı olmak için [rol tabanlı erişim denetimi](../../../../role-based-access-control/overview.md) (RBAC) uygular. Azure portal kullanarak, Azure kaynaklarına kimlerin erişebileceğini ve bunların izinlerini gözden geçirebilirsiniz. Bu şema Ayrıca, SQL Server ve Service Fabric için Azure Active Directory kimlik doğrulamasının kullanımını denetlemek üzere [Azure ilke](../../../policy/overview.md) tanımları atar. Azure Active Directory kimlik doğrulaması kullanmak, veritabanı kullanıcıları ve diğer Microsoft Hizmetleri için Basitleştirilmiş izin yönetimi ve merkezi kimlik yönetimine izin verebilir. Ayrıca, bu şema özel RBAC kurallarının kullanımını denetlemek için bir Azure ilke tanımı atar. Özel RBAC kurallarının uygun olduğunu anlamak, özel RBAC kuralları hata durumunda olduğundan emin olmanıza ve doğru uygulamayı doğrulamaya yardımcı olabilir.
+Azure implements [role-based access control](../../../../role-based-access-control/overview.md) (RBAC) to help you manage who has access to resources in Azure. Using the Azure portal, you can review who has access to Azure resources and their permissions. This blueprint also assigns [Azure Policy](../../../policy/overview.md) definitions to audit use of Azure Active Directory authentication for SQL Servers and Service Fabric. Using Azure Active Directory authentication enables simplified permission management and centralized identity management of database users and other Microsoft services. Additionally, this blueprint assigns an Azure Policy definition to audit the use of custom RBAC rules. Understanding where custom RBAC rules are implemented can help you verify need and proper implementation, as custom RBAC rules are error prone.
 
-- SQL sunucuları için bir Azure Active Directory Yöneticisi sağlanmalıdır
-- Özel RBAC kurallarının kullanımını denetleme
-- Service Fabric kümeler yalnızca istemci kimlik doğrulaması için Azure Active Directory kullanmalıdır
+- An Azure Active Directory administrator should be provisioned for SQL servers
+- Audit usage of custom RBAC rules
+- Service Fabric clusters should only use Azure Active Directory for client authentication
 
-## <a name="9321-ac-2-12-account-management--account-monitoring--atypical-usage"></a>9.3.2.1 AC-2 (12) hesap yönetimi | Hesap Izleme/genel kullanım
+## <a name="9321-ac-2-12-account-management--account-monitoring--atypical-usage"></a>9.3.2.1 AC-2 (12) Account Management | Account Monitoring / Atypical Usage
 
-Tam zamanında (JıT) sanal makine erişimi, Azure sanal makinelerine giden trafiği kilitler ve gerektiğinde VM 'lere bağlanmak için kolay erişim sağlarken saldırılara maruz kalmayı azaltır. Sanal makinelere erişim için tüm JıT istekleri etkinlik günlüğüne kaydedilir ve bu da genel kullanım için izleme sağlar. Bu şema, tam zamanında erişimi destekleyebilen ancak henüz yapılandırılmadığı sanal makineleri izlemenize yardımcı olan bir [Azure ilke](../../../policy/overview.md) tanımı atar.
+Just-in-time (JIT) virtual machine access locks down inbound traffic to Azure virtual machines, reducing exposure to attacks while providing easy access to connect to VMs when needed. All JIT requests to access virtual machines are logged in the Activity Log allowing you to monitor for atypical usage. This blueprint assigns an [Azure Policy](../../../policy/overview.md) definition that helps you monitor virtual machines that can support just-in-time access but haven't yet been configured.
 
-- Tam zamanında ağ erişim denetimi, sanal makinelere uygulanmalıdır
+- Just-In-Time network access control should be applied on virtual machines
 
-## <a name="9314-ac-4-information-flow-enforcement"></a>9.3.1.4 AC-4 bilgi akışı zorlaması
+## <a name="9314-ac-4-information-flow-enforcement"></a>9.3.1.4 AC-4 Information Flow Enforcement
 
-Çapraz kaynak kaynak paylaşımı (CORS), App Services kaynaklarının bir dış etki alanından istenme izin verebilir. Microsoft, yalnızca gerekli etki alanlarının API, işleviniz ve Web uygulamalarınızla etkileşime geçmesini sağlar. Bu şema, Azure Güvenlik Merkezi 'ndeki CORS kaynakları erişim kısıtlamalarını izlemenize yardımcı olmak için bir [Azure ilke](../../../policy/overview.md) tanımı atar.
-CORS uygulamalarını anlamak, bilgi akışı denetimlerinin uygulandığını doğrulamanıza yardımcı olabilir.
+Cross origin resource sharing (CORS) can allow App Services resources to be requested from an outside domain. Microsoft recommends that you allow only required domains to interact with your API, function, and web applications. This blueprint assigns an [Azure Policy](../../../policy/overview.md) definition to help you monitor CORS resources access restrictions in Azure Security Center.
+Understanding CORS implementations can help you verify that information flow controls are implemented.
 
-- CORS, her kaynağın Web uygulamanıza erişmesine izin vermemelidir
+- CORS should not allow every resource to access your Web Application
 
-## <a name="9315-ac-5-separation-of-duties"></a>9.3.1.5 AC-5 Görev ayrımı
+## <a name="9315-ac-5-separation-of-duties"></a>9.3.1.5 AC-5 Separation of Duties
 
-Yalnızca bir Azure aboneliğinin sahibi, yönetici artıklığına izin vermez. Bunun tersine, çok fazla sayıda Azure aboneliği sahibi, güvenliği aşılmış bir sahip hesabı aracılığıyla ihlal olasılığını artırabilir. Bu şema, Azure abonelikleri için sahip sayısını denetleyen [Azure ilke](../../../policy/overview.md) tanımlarını atayarak uygun sayıda Azure abonelik sahibini korumanıza yardımcı olur. Bu şema Ayrıca, Windows sanal makinelerinde Yöneticiler grubunun üyeliğini denetlemenize yardımcı olan Azure ilke tanımlarını atar. Abonelik sahibini ve sanal makine yöneticisi izinlerini yönetmek, görevlerin uygun bir şekilde ayrılmasını sağlamanıza yardımcı olabilir.
+Having only one Azure subscription owner doesn't allow for administrative redundancy. Conversely, having too many Azure subscription owners can increase the potential for a breach via a compromised owner account. This blueprint helps you maintain an appropriate number of Azure subscription owners by assigning [Azure Policy](../../../policy/overview.md) definitions that audit the number of owners for Azure subscriptions. This blueprint also assigns Azure Policy definitions that help you control membership of the Administrators group on Windows virtual machines. Managing subscription owner and virtual machine administrator permissions can help you implement appropriate separation of duties.
 
-- Aboneliğiniz için en fazla 3 sahip belirtilmelidir
-- Yöneticiler grubunun belirtilen üyelerden birini içerdiği Windows VM 'lerini denetleyin
-- Yöneticiler grubunun belirtilen tüm üyeleri içermediği Windows VM 'lerini denetleyin
-- Yöneticiler grubunun belirtilen üyelerden birini içerdiği Windows sanal makinelerini denetlemek için gereksinimleri dağıtın
-- Yöneticiler grubunun belirtilen tüm üyeleri içermediği Windows sanal makinelerini denetlemek için gereksinimleri dağıtın
-- Aboneliğinize birden fazla sahip atanmalıdır
+- A maximum of 3 owners should be designated for your subscription
+- Audit Windows VMs in which the Administrators group contains any of the specified members
+- Audit Windows VMs in which the Administrators group does not contain all of the specified members
+- Deploy requirements to audit Windows VMs in which the Administrators group contains any of the specified members
+- Deploy requirements to audit Windows VMs in which the Administrators group does not contain all of the specified members
+- There should be more than one owner assigned to your subscription
 
-## <a name="9316-ac-6-7-least-privilege--review-of-user-privileges"></a>9.3.1.6 AC-6 (7) en az ayrıcalık | Kullanıcı Ayrıcalıklarını Gözden geçirme
+## <a name="9316-ac-6-7-least-privilege--review-of-user-privileges"></a>9.3.1.6 AC-6 (7) Least Privilege | Review of User Privileges
 
-Azure, Azure 'daki kaynaklara kimlerin erişebileceğini yönetmenize yardımcı olmak için [rol tabanlı erişim denetimi](../../../../role-based-access-control/overview.md) (RBAC) uygular. Azure portal kullanarak, Azure kaynaklarına kimlerin erişebileceğini ve bunların izinlerini gözden geçirebilirsiniz. Bu şema, gözden geçirme için öncelik verilmelidir denetim hesaplarına [Azure ilke](../../../policy/overview.md) tanımları atar. Bu hesap göstergelerini gözden geçirmek, en az ayrıcalık denetimlerinin uygulandığından emin olmanıza yardımcı olabilir.
+Azure implements [role-based access control](../../../../role-based-access-control/overview.md) (RBAC) to help you manage who has access to resources in Azure. Using the Azure portal, you can review who has access to Azure resources and their permissions. This blueprint assigns [Azure Policy](../../../policy/overview.md) definitions to audit accounts that should be prioritized for review. Reviewing these account indicators can help you ensure least privilege controls are implemented.
 
-- Aboneliğiniz için en fazla 3 sahip belirtilmelidir
-- Yöneticiler grubunun belirtilen üyelerden birini içerdiği Windows VM 'lerini denetleyin
-- Yöneticiler grubunun belirtilen tüm üyeleri içermediği Windows VM 'lerini denetleyin
-- Yöneticiler grubunun belirtilen üyelerden birini içerdiği Windows sanal makinelerini denetlemek için gereksinimleri dağıtın
-- Yöneticiler grubunun belirtilen tüm üyeleri içermediği Windows sanal makinelerini denetlemek için gereksinimleri dağıtın
-- Aboneliğinize birden fazla sahip atanmalıdır
+- A maximum of 3 owners should be designated for your subscription
+- Audit Windows VMs in which the Administrators group contains any of the specified members
+- Audit Windows VMs in which the Administrators group does not contain all of the specified members
+- Deploy requirements to audit Windows VMs in which the Administrators group contains any of the specified members
+- Deploy requirements to audit Windows VMs in which the Administrators group does not contain all of the specified members
+- There should be more than one owner assigned to your subscription
 
-## <a name="93112-ac-17-1-remote-access--automated-monitoring--control"></a>9.3.1.12 AC-17 (1) uzaktan erişim | Otomatik Izleme/denetim
+## <a name="93112-ac-17-1-remote-access--automated-monitoring--control"></a>9.3.1.12 AC-17 (1) Remote Access | Automated Monitoring / Control
 
-Bu şema, Azure App Service uygulaması için uzaktan hata ayıklamanın kapalı olduğunu izlemek üzere [Azure ilke](../../../policy/overview.md) tanımları atayarak uzaktan erişimi izleyip denetlemenize yardımcı olur. Şema Ayrıca, parola olmadan hesaplardan gelen uzak bağlantılara izin veren Linux sanal makinelerini denetleyen ilke tanımları atar. Ayrıca, şema, depolama hesaplarına Kısıtlanmamış erişimi izlemenize yardımcı olan bir Azure ilke tanımı atar. Bu göstergeleri izlemek, uzaktan erişim yöntemlerinin güvenlik ilkenize uyduğundan emin olmanıza yardımcı olabilir.
+This blueprint helps you monitor and control remote access by assigning [Azure Policy](../../../policy/overview.md) definitions to monitor that remote debugging for Azure App Service application is turned off. The blueprint also assigns policy definitions that audit Linux virtual machines that allow remote connections from accounts without passwords. Additionally, the blueprint assigns an Azure Policy definition that helps you monitor unrestricted access to storage accounts. Monitoring these indicators can help you ensure remote access methods comply with your security policy.
 
-- \[Preview\]: parola olmadan hesaplardan uzak bağlantılara izin veren Linux VM 'lerini denetleme
-- \[Preview\]: parola olmadan hesaplardan uzak bağlantılara izin veren Linux VM 'lerini denetlemek için gereksinimleri dağıtın
-- Depolama hesaplarına Kısıtlanmamış ağ erişimini denetleme
-- API uygulaması için uzaktan hata ayıklama kapatılmalıdır
-- İşlev Uygulaması için uzaktan hata ayıklama kapatılmalıdır
-- Uzaktan hata ayıklama için Web uygulaması kapalı olmaları
+- \[Preview\]: Audit Linux VMs that allow remote connections from accounts without passwords
+- \[Preview\]: Deploy requirements to audit Linux VMs that allow remote connections from accounts without passwords
+- Audit unrestricted network access to storage accounts
+- Remote debugging should be turned off for API App
+- Remote debugging should be turned off for Function App
+- Remote debugging should be turned off for Web Application
 
-## <a name="9313-au-3-2-content-of-audit-records--centralized-management-of-planned-audit-record-content"></a>9.3.1.3 AU-3 (2) denetim kayıtlarının Içeriği | Planlı denetim kaydı Içeriğinin Merkezi Yönetimi
+## <a name="9313-au-3-2-content-of-audit-records--centralized-management-of-planned-audit-record-content"></a>9.3.1.3 AU-3 (2) Content of Audit Records | Centralized Management of Planned Audit Record Content
 
-Azure Izleyici tarafından toplanan günlük verileri, merkezi yapılandırma ve yönetimi sağlayan bir Log Analytics çalışma alanında depolanır. Bu şema, Azure sanal makinelerinde Log Analytics aracısının dağıtımını denetleyen ve zorlayacağı [Azure ilke](../../../policy/overview.md) tanımları atayarak olayların günlüğe kaydedilmesini sağlamanıza yardımcı olur.
+Log data collected by Azure Monitor is stored in a Log Analytics workspace enabling centralized configuration and management. This blueprint helps you ensure events are logged by assigning [Azure Policy](../../../policy/overview.md) definitions that audit and enforce deployment of the Log Analytics agent on Azure virtual machines.
 
-- \[Preview\]: denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
-- \[Preview\]: VMSS-VM görüntüsündeki (OS) denetim Log Analytics aracı dağıtımı listelenmemiş
-- \[Önizleme\]: Audit Log Analytics çalışma alanı için VM - uyumsuzluğu bildir
-- \[Preview\]: Linux VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
-- \[Önizleme\]: Linux sanal makineleri için Log Analytics aracısını dağıtmayı
-- \[Preview\]: Windows VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
-- \[Önizleme\]: Windows Vm'leri için Log Analytics aracısını dağıtmayı
+- \[Preview\]: Audit Log Analytics Agent Deployment - VM Image (OS) unlisted
+- \[Preview\]: Audit Log Analytics Agent Deployment in VMSS - VM Image (OS) unlisted
+- \[Preview\]: Audit Log Analytics Workspace for VM - Report Mismatch
+- \[Preview\]: Deploy Log Analytics Agent for Linux VM Scale Sets (VMSS)
+- \[Preview\]: Deploy Log Analytics Agent for Linux VMs
+- \[Preview\]: Deploy Log Analytics Agent for Windows VM Scale Sets (VMSS)
+- \[Preview\]: Deploy Log Analytics Agent for Windows VMs
 
-## <a name="9335-au-5-response-to-audit-processing-failures"></a>9.3.3.5 AU-denetim Işleme hatalarının 5 yanıtı
+## <a name="9335-au-5-response-to-audit-processing-failures"></a>9.3.3.5 AU-5 Response to Audit Processing Failures
 
-Bu şema, denetim ve olay günlüğü yapılandırmasını izleyen [Azure ilke](../../../policy/overview.md) tanımlarını atar. Bu yapılandırmaların izlenmesi, bir denetim sistem hatası veya yanlış yapılandırması göstergesi sağlayabilir ve düzeltici eylem yapmanıza yardımcı olabilir.
+This blueprint assigns [Azure Policy](../../../policy/overview.md) definitions that monitor audit and event logging configurations. Monitoring these configurations can provide an indicator of an audit system failure or misconfiguration and help you take corrective action.
 
 - Tanılama ayarını denetle
-- SQL Server Level denetim ayarlarını denetleme
-- Yönetilen örneklerinizdeki gelişmiş veri güvenliği etkinleştirilmelidir
+- Audit SQL server level Auditing settings
+- Advanced data security should be enabled on your managed instances
 - SQL sunucularınızda gelişmiş veri güvenliği etkin olmalıdır
 
-## <a name="9336-au-6-4-audit-review-analysis-and-reporting--central-review-and-analysis"></a>9.3.3.6 AU-6 (4) denetim Incelemesi, analiz ve raporlama | Merkezi Inceleme ve analiz
+## <a name="9336-au-6-4-audit-review-analysis-and-reporting--central-review-and-analysis"></a>9.3.3.6 AU-6 (4) Audit Review, Analysis, and Reporting | Central Review and Analysis
 
-Azure Izleyici tarafından toplanan günlük verileri, merkezi raporlama ve analizi sağlayan bir Log Analytics çalışma alanında depolanır. Bu şema, Azure sanal makinelerinde Log Analytics aracısının dağıtımını denetleyen ve zorlayacağı [Azure ilke](../../../policy/overview.md) tanımları atayarak olayların günlüğe kaydedilmesini sağlamanıza yardımcı olur.
+Log data collected by Azure Monitor is stored in a Log Analytics workspace enabling centralized reporting and analysis. This blueprint helps you ensure events are logged by assigning [Azure Policy](../../../policy/overview.md) definitions that audit and enforce deployment of the Log Analytics agent on Azure virtual machines.
 
-- \[Preview\]: denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
-- \[Preview\]: VMSS-VM görüntüsündeki (OS) denetim Log Analytics aracı dağıtımı listelenmemiş
-- \[Önizleme\]: Audit Log Analytics çalışma alanı için VM - uyumsuzluğu bildir
-- \[Preview\]: Linux VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
-- \[Önizleme\]: Linux sanal makineleri için Log Analytics aracısını dağıtmayı
-- \[Preview\]: Windows VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
-- \[Önizleme\]: Windows Vm'leri için Log Analytics aracısını dağıtmayı
+- \[Preview\]: Audit Log Analytics Agent Deployment - VM Image (OS) unlisted
+- \[Preview\]: Audit Log Analytics Agent Deployment in VMSS - VM Image (OS) unlisted
+- \[Preview\]: Audit Log Analytics Workspace for VM - Report Mismatch
+- \[Preview\]: Deploy Log Analytics Agent for Linux VM Scale Sets (VMSS)
+- \[Preview\]: Deploy Log Analytics Agent for Linux VMs
+- \[Preview\]: Deploy Log Analytics Agent for Windows VM Scale Sets (VMSS)
+- \[Preview\]: Deploy Log Analytics Agent for Windows VMs
 
-## <a name="93311-au-12-audit-generation"></a>9.3.3.11 AU-12 denetim oluşturma
+## <a name="93311-au-12-audit-generation"></a>9.3.3.11 AU-12 Audit Generation
 
-Bu şema, Azure kaynaklarında günlük ayarlarını denetleyen [Azure ilke](../../../policy/overview.md) tanımları atanarak sistem olaylarının günlüğe kaydedildiğinden emin olmanıza yardımcı olur. Bu ilke tanımları, Azure sanal makinelerinde Log Analytics aracısının dağıtımını ve diğer Azure Kaynak türleri için denetim ayarları yapılandırmasını denetler ve uygular. Bu ilke tanımları Ayrıca Azure kaynakları içinde gerçekleştirilen işlemlere ilişkin Öngörüler sağlamak için tanılama günlüklerinin yapılandırmasını denetler. Ayrıca, denetim ve gelişmiş veri güvenliği SQL Server 'lar üzerinde yapılandırılır.
+This blueprint helps you ensure system events are logged by assigning [Azure Policy](../../../policy/overview.md) definitions that audit log settings on Azure resources. These policy definitions audit and enforce deployment of the Log Analytics agent on Azure virtual machines and configuration of audit settings for other Azure resource types. These policy definitions also audit configuration of diagnostic logs to provide insight into operations that are performed within Azure resources. Additionally, auditing and Advanced Data Security are configured on SQL servers.
 
-- \[Preview\]: denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
-- \[Preview\]: VMSS-VM görüntüsündeki (OS) denetim Log Analytics aracı dağıtımı listelenmemiş
-- \[Önizleme\]: Audit Log Analytics çalışma alanı için VM - uyumsuzluğu bildir
-- \[Preview\]: Linux VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
-- \[Önizleme\]: Linux sanal makineleri için Log Analytics aracısını dağıtmayı
-- \[Preview\]: Windows VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
-- \[Önizleme\]: Windows Vm'leri için Log Analytics aracısını dağıtmayı
+- \[Preview\]: Audit Log Analytics Agent Deployment - VM Image (OS) unlisted
+- \[Preview\]: Audit Log Analytics Agent Deployment in VMSS - VM Image (OS) unlisted
+- \[Preview\]: Audit Log Analytics Workspace for VM - Report Mismatch
+- \[Preview\]: Deploy Log Analytics Agent for Linux VM Scale Sets (VMSS)
+- \[Preview\]: Deploy Log Analytics Agent for Linux VMs
+- \[Preview\]: Deploy Log Analytics Agent for Windows VM Scale Sets (VMSS)
+- \[Preview\]: Deploy Log Analytics Agent for Windows VMs
 - Tanılama ayarını denetle
-- SQL Server Level denetim ayarlarını denetleme
-- Yönetilen örneklerinizdeki gelişmiş veri güvenliği etkinleştirilmelidir
+- Audit SQL server level Auditing settings
+- Advanced data security should be enabled on your managed instances
 - SQL sunucularınızda gelişmiş veri güvenliği etkin olmalıdır
-- SQL Server 'lar üzerinde gelişmiş veri güvenliği dağıtma
-- SQL Server 'lar üzerinde denetim dağıtma
-- Ağ güvenlik grupları için tanılama ayarlarını dağıtma
+- Deploy Advanced Data Security on SQL servers
+- Deploy Auditing on SQL servers
+- Deploy Diagnostic Settings for Network Security Groups
 
-## <a name="9357-cm-7-2-least-functionality--prevent-program-execution"></a>9.3.5.7 CM-7 (2) en az Işlevsellik | Programın yürütülmesini engelle
+## <a name="9357-cm-7-2-least-functionality--prevent-program-execution"></a>9.3.5.7 CM-7 (2) Least Functionality | Prevent Program Execution
 
-Azure Güvenlik Merkezi 'nde Uyarlamalı uygulama denetimi, belirli yazılımların sanal makinelerinizde çalıştırılmasını engelleyebilen veya engelleyebilecek akıllı ve otomatik bir uçtan uca uygulama beyaz listeleme çözümüdür. Uygulama denetimi, onaylanmamış uygulamanın çalışmasını engelleyen bir zorlama modunda çalışabilir. Bu şema, bir uygulama beyaz listesinin önerildiği ancak henüz yapılandırılmadığı sanal makineleri izlemenize yardımcı olan bir Azure ilke tanımı atar.
+Adaptive application control in Azure Security Center is an intelligent, automated end-to-end application whitelisting solution that can block or prevent specific software from running on your virtual machines. Application control can run in an enforcement mode that prohibits non-approved application from running. This blueprint assigns an Azure Policy definition that helps you monitor virtual machines where an application whitelist is recommended but has not yet been configured.
 
-- Uyarlamalı uygulama denetimleri sanal makinelerde etkinleştirilmelidir
+- Adaptive Application Controls should be enabled on virtual machines
 
-## <a name="9357-cm-7-5-least-functionality--authorized-software--whitelisting"></a>9.3.5.7 CM-7 (5) en az Işlevsellik | Yetkili yazılım/beyaz listeleme
+## <a name="9357-cm-7-5-least-functionality--authorized-software--whitelisting"></a>9.3.5.7 CM-7 (5) Least Functionality | Authorized Software / Whitelisting
 
-Azure Güvenlik Merkezi 'nde Uyarlamalı uygulama denetimi, belirli yazılımların sanal makinelerinizde çalıştırılmasını engelleyebilen veya engelleyebilecek akıllı ve otomatik bir uçtan uca uygulama beyaz listeleme çözümüdür. Uygulama denetimi, sanal makineleriniz için onaylanan uygulama listeleri oluşturmanıza yardımcı olur. Bu şema, bir uygulama beyaz listesinin önerildiği ancak henüz yapılandırılmadığı sanal makineleri izlemenize yardımcı olan bir [Azure ilke](../../../policy/overview.md) tanımı atar.
+Adaptive application control in Azure Security Center is an intelligent, automated end-to-end application whitelisting solution that can block or prevent specific software from running on your virtual machines. Application control helps you create approved application lists for your virtual machines. This blueprint assigns an [Azure Policy](../../../policy/overview.md) definition that helps you monitor virtual machines where an application whitelist is recommended but has not yet been configured.
 
-- Uyarlamalı uygulama denetimleri sanal makinelerde etkinleştirilmelidir
+- Adaptive Application Controls should be enabled on virtual machines
 
-## <a name="93511-cm-11-user-installed-software"></a>9.3.5.11 CM-11 Kullanıcı tarafından yüklenen yazılım
+## <a name="93511-cm-11-user-installed-software"></a>9.3.5.11 CM-11 User-Installed Software
 
-Azure Güvenlik Merkezi 'nde Uyarlamalı uygulama denetimi, belirli yazılımların sanal makinelerinizde çalıştırılmasını engelleyebilen veya engelleyebilecek akıllı ve otomatik bir uçtan uca uygulama beyaz listeleme çözümüdür. Uygulama denetimi, yazılım kısıtlama ilkeleriyle uyumluluğu zorlamanıza ve izlemenize yardımcı olabilir. Bu şema, bir uygulama beyaz listesinin önerildiği ancak henüz yapılandırılmadığı sanal makineleri izlemenize yardımcı olan bir [Azure ilke](../../../policy/overview.md) tanımı atar.
+Adaptive application control in Azure Security Center is an intelligent, automated end-to-end application whitelisting solution that can block or prevent specific software from running on your virtual machines. Application control can help you enforce and monitor compliance with software restriction policies. This blueprint assigns an [Azure Policy](../../../policy/overview.md) definition that helps you monitor virtual machines where an application whitelist is recommended but has not yet been configured.
 
-- Uyarlamalı uygulama denetimleri sanal makinelerde etkinleştirilmelidir
+- Adaptive Application Controls should be enabled on virtual machines
 
-## <a name="9366-cp-7-alternate-processing-site"></a>9.3.6.6 CP-7 alternatif Işleme sitesi
+## <a name="9366-cp-7-alternate-processing-site"></a>9.3.6.6 CP-7 Alternate Processing Site
 
-Azure Site Recovery, sanal makinelerde çalışan iş yüklerini birincil bir konumdan ikincil konuma çoğaltır. Birincil sitede bir kesinti oluşursa, iş yükü ikincil konum üzerinde başarısız olur. Bu şema, olağanüstü durum kurtarma olmadan sanal makineleri denetleyen bir [Azure ilke](../../../policy/overview.md) tanımı atar. Bu göstergeyi izlemek, gerekli acil durum denetimlerinin yerinde olduğundan emin olmanıza yardımcı olabilir.
+Azure Site Recovery replicates workloads running on virtual machines from a primary location to a secondary location. If an outage occurs at the primary site, the workload fails over the secondary location. This blueprint assigns an [Azure Policy](../../../policy/overview.md) definition that audits virtual machines without disaster recovery configured. Monitoring this indicator can help you ensure necessary contingency controls are in place.
 
-- Olağanüstü durum kurtarma yapılandırması olmadan sanal makineleri denetleme
+- Audit virtual machines without disaster recovery configured
 
-## <a name="9372-ia-2-1-identification-and-authentication-organizational-users--network-access-to-privileged-accounts"></a>9.3.7.2 IA-2 (1) tanımlama ve kimlik doğrulaması (Kurumsal kullanıcılar) | Ayrıcalıklı hesaplara ağ erişimi
+## <a name="9372-ia-2-1-identification-and-authentication-organizational-users--network-access-to-privileged-accounts"></a>9.3.7.2 IA-2 (1) Identification and Authentication (Organizational Users) | Network Access to Privileged Accounts
 
-Bu şema, çok faktörlü kimlik doğrulaması etkinleştirilmemiş olan sahip ve/veya yazma izinleri olan denetim hesaplarına [Azure ilke](../../../policy/overview.md) tanımları atayarak ayrıcalıklı erişimi kısıtlayıp denetlemenize yardımcı olur. Multi-Factor Authentication, bir dizi kimlik doğrulama bilgisinin tehlikeye düşmesi durumunda bile hesapların güvenli kalmasına yardımcı olur. Multi-Factor Authentication 'ı etkin olmayan hesapları izleyerek, tehlikeye geçmek daha olası olabilecek hesapları belirleyebilirsiniz.
+This blueprint helps you restrict and control privileged access by assigning [Azure Policy](../../../policy/overview.md) definitions to audit accounts with owner and/or write permissions that don't have multi-factor authentication enabled. Multi-factor authentication helps keep accounts secure even if one piece of authentication information is compromised. By monitoring accounts without multi-factor authentication enabled, you can identify accounts that may be more likely to be compromised.
 
-- MFA, aboneliğinizde sahip izinleri olan hesaplarda etkinleştirilmelidir
-- MFA, aboneliğinizde yazma izinleri olan hesaplarda etkinleştirilmelidir
+- MFA should be enabled on accounts with owner permissions on your subscription
+- MFA should be enabled on accounts with write permissions on your subscription
 
-## <a name="9372-ia-2-2-identification-and-authentication-organizational-users--network-access-to-non-privileged-accounts"></a>9.3.7.2 IA-2 (2) tanımlama ve kimlik doğrulaması (Kurumsal kullanıcılar) | Ayrıcalıklı olmayan hesaplara ağ erişimi
+## <a name="9372-ia-2-2-identification-and-authentication-organizational-users--network-access-to-non-privileged-accounts"></a>9.3.7.2 IA-2 (2) Identification and Authentication (Organizational Users) | Network Access to Non-Privileged Accounts
 
-Bu şema, çok faktörlü kimlik doğrulaması etkinleştirilmemiş okuma izinleriyle hesapları denetlemek için bir [Azure ilke](../../../policy/overview.md) tanımı atayarak erişimi kısıtlayıp denetlemenize yardımcı olur. Multi-Factor Authentication, bir dizi kimlik doğrulama bilgisinin tehlikeye düşmesi durumunda bile hesapların güvenli kalmasına yardımcı olur. Multi-Factor Authentication 'ı etkin olmayan hesapları izleyerek, tehlikeye geçmek daha olası olabilecek hesapları belirleyebilirsiniz.
+This blueprint helps you restrict and control access by assigning an [Azure Policy](../../../policy/overview.md) definition to audit accounts with read permissions that don't have multi-factor authentication enabled. Multi-factor authentication helps keep accounts secure even if one piece of authentication information is compromised. By monitoring accounts without multi-factor authentication enabled, you can identify accounts that may be more likely to be compromised.
 
-- MFA, aboneliğinizde okuma izinleri olan hesaplarda etkinleştirilmelidir
+- MFA should be enabled on accounts with read permissions on your subscription
 
-## <a name="9375-ia-5-authenticator-management"></a>9.3.7.5 IA-5 Authenticator yönetimi
+## <a name="9375-ia-5-authenticator-management"></a>9.3.7.5 IA-5 Authenticator Management
 
-Bu şema, parola olmadan hesaplardan uzak bağlantılara izin veren ve/veya passwd dosyasında yanlış izinlere sahip olan Linux sanal makinelerini denetleyen [Azure ilke](../../../policy/overview.md) tanımlarını atar. Bu şema Ayrıca, Windows sanal makineleri için parola şifreleme türünün yapılandırılmasını denetleyen ilke tanımları atar. Bu göstergeleri izlemek, sistem kimlik doğrulamasının kuruluşunuzun kimlik ve kimlik doğrulama ilkesiyle uyumlu olmasını sağlamanıza yardımcı olur.
+This blueprint assigns [Azure Policy](../../../policy/overview.md) definitions that audit Linux virtual machines that allow remote connections from accounts without passwords and/or have incorrect permissions set on the passwd file. This blueprint also assigns policy definitions that audit the configuration of the password encryption type for Windows virtual machines. Monitoring these indicators helps you ensure that system authenticators comply with your organization's identification and authentication policy.
 
-- \[Preview\]: passwd dosyası izinleri 0644 olarak ayarlanan Linux VM 'lerini denetleyin
-- \[önizleme\]: parolaları olmayan hesaplara sahip Linux VM 'lerini denetleme
-- \[Preview\]: ters çevrilebilir şifreleme kullanarak parolaları depolamamayan Windows sanal makinelerini denetleme
-- \[Preview\]: passwd dosyası izinleri 0644 olarak ayarlanan Linux sanal makinelerini denetlemek için gereksinimleri dağıtın
-- \[Preview\]: parola olmayan hesaplara sahip Linux sanal makinelerini denetlemek için gereksinimleri dağıtın
-- \[Preview\]: ters çevrilebilir şifreleme kullanarak parolaları depolamamayan Windows sanal makinelerini denetlemek için gereksinimleri dağıtın
+- \[Preview\]: Audit Linux VMs that do not have the passwd file permissions set to 0644
+- \[Preview\]: Audit Linux VMs that have accounts without passwords
+- \[Preview\]: Audit Windows VMs that do not store passwords using reversible encryption
+- \[Preview\]: Deploy requirements to audit Linux VMs that do not have the passwd file permissions set to 0644
+- \[Preview\]: Deploy requirements to audit Linux VMs that have accounts without passwords
+- \[Preview\]: Deploy requirements to audit Windows VMs that do not store passwords using reversible encryption
 
-## <a name="9375-ia-5-1-authenticator-management--password-based-authentication"></a>9.3.7.5 IA-5 (1) Authenticator yönetimi | Parola tabanlı kimlik doğrulaması
+## <a name="9375-ia-5-1-authenticator-management--password-based-authentication"></a>9.3.7.5 IA-5 (1) Authenticator Management | Password-Based Authentication
 
-Bu şema, en düşük güç ve diğer parola gereksinimlerini zorlayamama Windows sanal makinelerini denetleyen [Azure ilke](../../../policy/overview.md) tanımlarını atayarak güçlü parolalar zorlamanıza yardımcı olur. Parola gücü ilkesini ihlal eden sanal makinelerin farkında olmak, tüm sanal makine Kullanıcı hesaplarının parolalarının kuruluşunuzun parola ilkesiyle uyumlu olmasını sağlamak için düzeltici eylemler almanıza yardımcı olur.
+This blueprint helps you enforce strong passwords by assigning [Azure Policy](../../../policy/overview.md) definitions that audit Windows virtual machines that don't enforce minimum strength and other password requirements. Awareness of virtual machines in violation of the password strength policy helps you take corrective actions to ensure passwords for all virtual machine user accounts comply with your organization's password policy.
 
-- \[Preview\]: önceki 24 parolanın yeniden kullanılmasına izin veren Windows VM 'lerini denetleyin
-- \[Preview\]: en fazla 70 gün parola yaşı olmayan Windows VM 'Leri denetleyin
-- \[Preview\]: en az 1 günlük parola yaşı olmayan Windows VM 'Leri denetleyin
-- \[Preview\]: parola karmaşıklığı ayarı etkin olmayan Windows VM 'Leri denetleme
-- \[Preview\]: en az parola uzunluğu 14 karakter olan Windows VM 'lerini denetleyin
-- \[Preview\]: ters çevrilebilir şifreleme kullanarak parolaları depolamamayan Windows sanal makinelerini denetleme
-- \[Preview\]: önceki 24 parolanın yeniden kullanılmasına izin veren Windows sanal makinelerini denetlemek için gereksinimleri dağıtın
-- \[Preview\]: en fazla 70 gün parola yaşı olmayan Windows sanal makinelerini denetlemek için gereksinimleri dağıtın
-- \[Preview\]: en az 1 günlük parola yaşı olmayan Windows VM 'Leri denetlemek için gereksinimleri dağıtın
-- \[Preview\]: parola karmaşıklığı ayarı etkinleştirilmemiş Windows sanal makinelerini denetlemek için gereksinimleri dağıtın
-- \[Preview\]: en az parola uzunluğu 14 karakter olan Windows sanal makinelerini denetlemek için gereksinimleri dağıtın
-- \[Preview\]: ters çevrilebilir şifreleme kullanarak parolaları depolamamayan Windows sanal makinelerini denetlemek için gereksinimleri dağıtın
+- \[Preview\]: Audit Windows VMs that allow re-use of the previous 24 passwords
+- \[Preview\]: Audit Windows VMs that do not have a maximum password age of 70 days
+- \[Preview\]: Audit Windows VMs that do not have a minimum password age of 1 day
+- \[Preview\]: Audit Windows VMs that do not have the password complexity setting enabled
+- \[Preview\]: Audit Windows VMs that do not restrict the minimum password length to 14 characters
+- \[Preview\]: Audit Windows VMs that do not store passwords using reversible encryption
+- \[Preview\]: Deploy requirements to audit Windows VMs that allow re-use of the previous 24 passwords
+- \[Preview\]: Deploy requirements to audit Windows VMs that do not have a maximum password age of 70 days
+- \[Preview\]: Deploy requirements to audit Windows VMs that do not have a minimum password age of 1 day
+- \[Preview\]: Deploy requirements to audit Windows VMs that do not have the password complexity setting enabled
+- \[Preview\]: Deploy requirements to audit Windows VMs that do not restrict the minimum password length to 14 characters
+- \[Preview\]: Deploy requirements to audit Windows VMs that do not store passwords using reversible encryption
 
-## <a name="93143-ra-5-vulnerability-scanning"></a>9.3.14.3 RA-5 güvenlik açığı taraması
+## <a name="93143-ra-5-vulnerability-scanning"></a>9.3.14.3 RA-5 Vulnerability Scanning
 
-Bu şema, Azure Güvenlik Merkezi 'nde işletim sistemi güvenlik açıklarını, SQL güvenlik açıklarını ve sanal makine güvenlik açıklarını izleyen [Azure ilke](../../../policy/overview.md) tanımlarını atayarak bilgi sistemi güvenlik açıklarını yönetmenize yardımcı olur. Azure Güvenlik Merkezi, dağıtılan Azure kaynaklarının güvenlik durumu hakkında gerçek zamanlı Öngörüler elde etme olanağı sunan raporlama özellikleri sağlar. Bu şema Ayrıca, SQL sunucularında gelişmiş veri güvenliğini denetleyen ve uygulayan ilke tanımları da atar. Dağıtılmış kaynaklardaki güvenlik açıklarını anlamanıza yardımcı olmak için gelişmiş veri güvenliğine dahil edilen güvenlik açığı değerlendirmesi ve Gelişmiş tehdit koruması özellikleri.
+This blueprint helps you manage information system vulnerabilities by assigning [Azure Policy](../../../policy/overview.md) definitions that monitor operating system vulnerabilities, SQL vulnerabilities, and virtual machine vulnerabilities in Azure Security Center. Azure Security Center provides reporting capabilities that enable you to have real-time insight into the security state of deployed Azure resources. This blueprint also assigns policy definitions that audit and enforce Advanced Data Security on SQL servers. Advanced data security included vulnerability assessment and advanced threat protection capabilities to help you understand vulnerabilities in your deployed resources.
 
-- Yönetilen örneklerinizdeki gelişmiş veri güvenliği etkinleştirilmelidir
+- Advanced data security should be enabled on your managed instances
 - SQL sunucularınızda gelişmiş veri güvenliği etkin olmalıdır
-- SQL Server 'lar üzerinde gelişmiş veri güvenliği dağıtma
-- Sanal makine ölçek kümelerinizin güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir
-- Sanal makinelerinizdeki güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir
-- SQL veritabanlarınızdaki güvenlik açıkları düzeltilmelidir
-- Güvenlik açıkları bir güvenlik açığı değerlendirme çözümü tarafından düzeltilmelidir
+- Deploy Advanced Data Security on SQL servers
+- Vulnerabilities in security configuration on your virtual machine scale sets should be remediated
+- Vulnerabilities in security configuration on your virtual machines should be remediated
+- Vulnerabilities on your SQL databases should be remediated
+- Vulnerabilities should be remediated by a Vulnerability Assessment solution
 
-## <a name="93164-sc-5-denial-of-service-protection"></a>9.3.16.4 SC-5 hizmet reddi koruması
+## <a name="93164-sc-5-denial-of-service-protection"></a>9.3.16.4 SC-5 Denial of Service Protection
 
-Azure 'un dağıtılmış hizmet reddi (DDoS) standart katmanı, temel hizmet katmanı üzerinden ek özellikler ve hafifletme özellikleri sağlar. Bu ek özellikler, Azure Izleyici tümleştirmesini ve saldırı sonrası risk azaltma raporlarını inceleme olanağını içerir. Bu şema, DDoS standart katmanının etkinleştirilip etkinleştirilmediğini denetleyen bir [Azure ilke](../../../policy/overview.md) tanımı atar. Hizmet katmanları arasındaki yetenek farkını anlamak, Azure ortamınız için hizmet korumalarının reddedilmesine yönelik en iyi çözümü seçmenize yardımcı olabilir.
+Azure's distributed denial of service (DDoS) standard tier provides additional features and mitigation capabilities over the basic service tier. These additional features include Azure Monitor integration and the ability to review post-attack mitigation reports. This blueprint assigns an [Azure Policy](../../../policy/overview.md) definition that audits if the DDoS standard tier is enabled. Understanding the capability difference between the service tiers can help you select the best solution to address denial of service protections for your Azure environment.
 
-- DDoS koruma standardı etkinleştirilmelidir
+- DDoS Protection Standard should be enabled
 
-## <a name="93165-sc-7-boundary-protection"></a>9.3.16.5 SC-7 sınır koruması
+## <a name="93165-sc-7-boundary-protection"></a>9.3.16.5 SC-7 Boundary Protection
 
-Bu şema, Azure Güvenlik Merkezi 'nde ağ güvenlik grubu sağlamlaştırma önerilerini izleyen bir [Azure ilke](../../../policy/overview.md) tanımı atayarak sistem sınırını yönetmenize ve denetlemenize yardımcı olur. Azure Güvenlik Merkezi, Internet 'e yönelik sanal makinelerin trafik düzenlerini analiz eder ve olası saldırı yüzeyini azaltmak için ağ güvenlik grubu kuralı önerileri sağlar.
-Ayrıca, bu şema korunmayan uç noktaları, uygulamalar ve depolama hesaplarını izleyen ilke tanımları da atar. Bir güvenlik duvarı tarafından korunmayan uç noktalar ve uygulamalar ve Kısıtlanmamış erişimi olan depolama hesapları, bilgi sisteminde bulunan bilgilere istenmeden erişime izin verebilir.
+This blueprint helps you manage and control the system boundary by assigning an [Azure Policy](../../../policy/overview.md) definition that monitors for network security group hardening recommendations in Azure Security Center. Azure Security Center analyzes traffic patterns of Internet facing virtual machines and provides network security group rule recommendations to reduce the potential attack surface.
+Additionally, this blueprint also assigns policy definitions that monitor unprotected endpoints, applications, and storage accounts. Endpoints and applications that aren't protected by a firewall, and storage accounts with unrestricted access can allow unintended access to information contained within the information system.
 
-- Internet 'e yönelik sanal makineler için ağ güvenlik grubu kuralları sağlamlaştırılmış olmalıdır
-- Internet 'e yönelik uç nokta ile erişim kısıtlı olmalıdır
-- IaaS üzerinde Web uygulamalarına yönelik NSG kuralları sağlamlaştırılmış olmalıdır
-- Depolama hesaplarına Kısıtlanmamış ağ erişimini denetleme
+- Network Security Group Rules for Internet facing virtual machines should be hardened
+- Access through Internet facing endpoint should be restricted
+- The NSGs rules for web applications on IaaS should be hardened
+- Audit unrestricted network access to storage accounts
 
-## <a name="93165-sc-7-3-boundary-protection--access-points"></a>9.3.16.5 SC-7 (3) sınır koruması | Erişim noktaları
+## <a name="93165-sc-7-3-boundary-protection--access-points"></a>9.3.16.5 SC-7 (3) Boundary Protection | Access Points
 
-Tam zamanında (JıT) sanal makine erişimi, Azure sanal makinelerine giden trafiği kilitler ve gerektiğinde VM 'lere bağlanmak için kolay erişim sağlarken saldırılara maruz kalmayı azaltır. JıT sanal makine erişimi, Azure 'daki kaynaklarınıza yönelik dış bağlantı sayısını sınırlamanıza yardımcı olur. Bu şema, tam zamanında erişimi destekleyebilen ancak henüz yapılandırılmadığı sanal makineleri izlemenize yardımcı olan bir [Azure ilke](../../../policy/overview.md) tanımı atar.
+Just-in-time (JIT) virtual machine access locks down inbound traffic to Azure virtual machines, reducing exposure to attacks while providing easy access to connect to VMs when needed. JIT virtual machine access helps you limit the number of external connections to your resources in Azure. This blueprint assigns an [Azure Policy](../../../policy/overview.md) definition that helps you monitor virtual machines that can support just-in-time access but haven't yet been configured.
 
-- Tam zamanında ağ erişim denetimi, sanal makinelere uygulanmalıdır
+- Just-In-Time network access control should be applied on virtual machines
 
-## <a name="93165-sc-7-4-boundary-protection--external-telecommunications-services"></a>9.3.16.5 SC-7 (4) sınır koruması | Dış telekomünikasyon hizmetleri
+## <a name="93165-sc-7-4-boundary-protection--external-telecommunications-services"></a>9.3.16.5 SC-7 (4) Boundary Protection | External Telecommunications Services
 
-Tam zamanında (JıT) sanal makine erişimi, Azure sanal makinelerine giden trafiği kilitler ve gerektiğinde VM 'lere bağlanmak için kolay erişim sağlarken saldırılara maruz kalmayı azaltır. JıT sanal makine erişimi, erişim isteği ve onay süreçlerini kolaylaştırarak trafik akışı ilkenizin özel durumlarını yönetmenize yardımcı olur. Bu şema, tam zamanında erişimi destekleyebilen ancak henüz yapılandırılmadığı sanal makineleri izlemenize yardımcı olan bir [Azure ilke](../../../policy/overview.md) tanımı atar.
+Just-in-time (JIT) virtual machine access locks down inbound traffic to Azure virtual machines, reducing exposure to attacks while providing easy access to connect to VMs when needed. JIT virtual machine access helps you manage exceptions to your traffic flow policy by facilitating the access request and approval processes. This blueprint assigns an [Azure Policy](../../../policy/overview.md) definition that helps you monitor virtual machines that can support just-in-time access but haven't yet been configured.
 
-- Tam zamanında ağ erişim denetimi, sanal makinelere uygulanmalıdır
+- Just-In-Time network access control should be applied on virtual machines
 
-## <a name="96163-sc-8-1-transmission-confidentiality-and-integrity--cryptographic-or-alternate-physical-protection"></a>9.6.16.3 SC-8 (1) Iletim gizliliği ve bütünlüğü | Şifreleme veya alternatif fiziksel koruma
+## <a name="96163-sc-8-1-transmission-confidentiality-and-integrity--cryptographic-or-alternate-physical-protection"></a>9.6.16.3 SC-8 (1) Transmission Confidentiality and Integrity | Cryptographic or Alternate Physical Protection
 
-Bu şema, iletişim protokolleri için uygulanan şifreleme mekanizmasını izlemenize yardımcı olan [Azure ilke](../../../policy/overview.md) tanımlarını atayarak, iletilen bilgilerin gizli ve bütünlüğünü korumanıza yardımcı olur. İletişimin düzgün şekilde şifrelendiğinden emin olmak, kuruluşunuzun gereksinimlerini karşılamanıza veya bilgilerin yetkisiz olarak açıklanmasını ve değiştirilmesini sağlamanıza yardımcı olabilir.
+This blueprint helps you protect the confidential and integrity of transmitted information by assigning [Azure Policy](../../../policy/overview.md) definitions that help you monitor cryptographic mechanism implemented for communications protocols. Ensuring communications are properly encrypted can help you meet your organization's requirements or protecting information from unauthorized disclosure and modification.
 
-- API uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
-- Güvenli iletişim protokolleri kullanmayan Windows Web sunucularını denetleme
-- Güvenli iletişim protokolleri kullanmayan Windows Web sunucularını denetlemek için gereksinimleri dağıtma
-- İşlev uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
-- Yalnızca Redis Cache güvenli bağlantılar etkinleştirilmelidir
-- Depolama hesaplarına Güvenli aktarım etkinleştirilmelidir
-- Web uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
+- API App should only be accessible over HTTPS
+- Audit Windows web servers that are not using secure communication protocols
+- Deploy requirements to audit Windows web servers that are not using secure communication protocols
+- Function App should only be accessible over HTTPS
+- Only secure connections to your Redis Cache should be enabled
+- Secure transfer to storage accounts should be enabled
+- Web Application should only be accessible over HTTPS
 
-## <a name="93166-sc-28-1-protection-of-information-at-rest--cryptographic-protection"></a>9.3.16.6 SC-28 (1) bekleyen bilgilerin koruması | Şifreleme koruması
+## <a name="93166-sc-28-1-protection-of-information-at-rest--cryptographic-protection"></a>9.3.16.6 SC-28 (1) Protection of Information at Rest | Cryptographic Protection
 
-Bu şema, belirli bir cryptograph denetimi uygulayan [Azure ilke](../../../policy/overview.md) tanımlarını atayarak ve zayıf şifreleme ayarlarının kullanımını denetleyerek, bu şemayı, geri kalan bilgileri korumak için cryptograph denetimleri kullanma konusunda zorlamanıza yardımcı olur. Azure kaynaklarınızın en iyi durumda olmayan şifreleme yapılandırmalarının nerede olabileceğini anlamak, kaynakların bilgi güvenliği ilkenize uygun şekilde yapılandırıldığından emin olmak için düzeltici eylemler almanıza yardımcı olabilir. Özellikle, bu şema tarafından atanan ilke tanımları Data Lake Storage hesapları için şifrelemeyi gerektirir; SQL veritabanlarında saydam veri şifrelemesi gerektir; ve SQL veritabanlarında, sanal makine disklerinde ve Otomasyon hesabı değişkenlerinde eksik şifrelemeyi denetleyin.
+This blueprint helps you enforce your policy on the use of cryptograph controls to protect information at rest by assigning [Azure Policy](../../../policy/overview.md) definitions that enforce specific cryptograph controls and audit use of weak cryptographic settings. Understanding where your Azure resources may have non-optimal cryptographic configurations can help you take corrective actions to ensure resources are configured in accordance with your information security policy. Specifically, the policy definitions assigned by this blueprint require encryption for data lake storage accounts; require transparent data encryption on SQL databases; and audit missing encryption on SQL databases, virtual machine disks, and automation account variables.
 
-- Yönetilen örneklerinizdeki gelişmiş veri güvenliği etkinleştirilmelidir
+- Advanced data security should be enabled on your managed instances
 - SQL sunucularınızda gelişmiş veri güvenliği etkin olmalıdır
-- SQL Server 'lar üzerinde gelişmiş veri güvenliği dağıtma
-- SQL DB saydam veri şifrelemesini dağıtma
-- Disk şifrelemesi sanal makinelere uygulanmalıdır
-- Data Lake Store hesaplarında şifreleme gerektir
-- SQL veritabanlarındaki Saydam Veri Şifrelemesi etkinleştirilmelidir
+- Deploy Advanced Data Security on SQL servers
+- Deploy SQL DB transparent data encryption
+- Disk encryption should be applied on virtual machines
+- Require encryption on Data Lake Store accounts
+- Transparent Data Encryption on SQL databases should be enabled
 
-## <a name="93172-si-2-flaw-remediation"></a>9.3.17.2 sı-2 hata düzeltme
+## <a name="93172-si-2-flaw-remediation"></a>9.3.17.2 SI-2 Flaw Remediation
 
-Bu şema, Azure Güvenlik 'teki eksik sistem güncelleştirmelerini, işletim sistemi güvenlik açıklarını, SQL güvenlik açıklarını ve sanal makine güvenlik açıklarını izleyen [Azure ilke](../../../policy/overview.md) tanımlarını atayarak bilgi sistemi kusurlarını yönetmenize yardımcı olur Merkezinden. Azure Güvenlik Merkezi, dağıtılan Azure kaynaklarının güvenlik durumu hakkında gerçek zamanlı Öngörüler elde etme olanağı sunan raporlama özellikleri sağlar. Bu şema Ayrıca, sanal makine ölçek kümeleri için işletim sisteminin yama yapılmasını sağlayan bir ilke tanımı atar.
+This blueprint helps you manage information system flaws by assigning [Azure Policy](../../../policy/overview.md) definitions that monitor missing system updates, operating system vulnerabilities, SQL vulnerabilities, and virtual machine vulnerabilities in Azure Security Center. Azure Security Center provides reporting capabilities that enable you to have real-time insight into the security state of deployed Azure resources. This blueprint also assigns a policy definition that ensures patching of the operating system for virtual machine scale sets.
 
-- Sanal makine ölçek kümelerinde otomatik işletim sistemi görüntüsü düzeltme eki uygulamayı gerektir
-- Sanal makine ölçek kümelerindeki sistem güncelleştirmeleri yüklenmelidir
-- Sistem güncelleştirmelerinin sanal makinelerinizde yüklü olması gerekir
-- Sanal makine ölçek kümelerinizin güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir
-- Sanal makinelerinizdeki güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir
-- SQL veritabanlarınızdaki güvenlik açıkları düzeltilmelidir
-- Güvenlik açıkları bir güvenlik açığı değerlendirme çözümü tarafından düzeltilmelidir
+- Require automatic OS image patching on Virtual Machine Scale Sets
+- System updates on virtual machine scale sets should be installed
+- System updates should be installed on your virtual machines
+- Vulnerabilities in security configuration on your virtual machine scale sets should be remediated
+- Vulnerabilities in security configuration on your virtual machines should be remediated
+- Vulnerabilities on your SQL databases should be remediated
+- Vulnerabilities should be remediated by a Vulnerability Assessment solution
 
-## <a name="93173-si-3-malicious-code-protection"></a>9.3.17.3 sı-3 kötü amaçlı kod koruması
+## <a name="93173-si-3-malicious-code-protection"></a>9.3.17.3 SI-3 Malicious Code Protection
 
-Bu şema, Azure Güvenlik Merkezi 'nde sanal makinelerde eksik uç nokta koruması için izleme yapan [Azure ilke](../../../policy/overview.md) tanımlarını atayarak ve Microsoft 'a zorlamak için kötü amaçlı kod koruma dahil, Endpoint Protection 'ı yönetmenize yardımcı olur. Windows sanal makinelerinde kötü amaçlı yazılımdan koruma çözümü.
+This blueprint helps you manage endpoint protection, including malicious code protection, by assigning [Azure Policy](../../../policy/overview.md) definitions that monitor for missing endpoint protection on virtual machines in Azure Security Center and enforce the Microsoft antimalware solution on Windows virtual machines.
 
-- Windows Server için varsayılan Microsoft ıaasantimalware uzantısını dağıt
-- Uç nokta koruma çözümü, sanal makine ölçek kümelerine yüklenmelidir
-- Azure Güvenlik Merkezi 'nde eksik Endpoint Protection izleme
+- Deploy default Microsoft IaaSAntimalware extension for Windows Server
+- Endpoint protection solution should be installed on virtual machine scale sets
+- Monitor missing Endpoint Protection in Azure Security Center
 
-## <a name="93173-si-3-1-malicious-code-protection--central-management"></a>9.3.17.3 sı-3 (1) kötü amaçlı kod koruma | Merkezi Yönetim
+## <a name="93173-si-3-1-malicious-code-protection--central-management"></a>9.3.17.3 SI-3 (1) Malicious Code Protection | Central Management
 
-Bu şema, Azure Güvenlik Merkezi 'ndeki sanal makinelerde eksik uç nokta koruması için izleme yapan [Azure ilke](../../../policy/overview.md) tanımlarını atayarak kötü amaçlı kod koruma dahil, Endpoint Protection 'ı yönetmenize yardımcı olur. Azure Güvenlik Merkezi, dağıtılan Azure kaynaklarının güvenlik durumuyla ilgili gerçek zamanlı Öngörüler elde etme olanağı sunan merkezi yönetim ve raporlama özellikleri sağlar.
+This blueprint helps you manage endpoint protection, including malicious code protection, by assigning [Azure Policy](../../../policy/overview.md) definitions that monitor for missing endpoint protection on virtual machines in Azure Security Center. Azure Security Center provides centralized management and reporting capabilities that enable you to have real-time insight into the security state of deployed Azure resources.
 
-- Uç nokta koruma çözümü, sanal makine ölçek kümelerine yüklenmelidir
-- Azure Güvenlik Merkezi 'nde eksik Endpoint Protection izleme
+- Endpoint protection solution should be installed on virtual machine scale sets
+- Monitor missing Endpoint Protection in Azure Security Center
 
-## <a name="93174-si-4-information-system-monitoring"></a>9.3.17.4 sı-4 bilgi sistemi Izleme
+## <a name="93174-si-4-information-system-monitoring"></a>9.3.17.4 SI-4 Information System Monitoring
 
-Bu şema, Azure kaynakları arasında günlük ve veri güvenliğini denetleyerek ve zorunlu tutarak sisteminizi izlemenize yardımcı olur. Özellikle, Log Analytics aracısının dağıtımını denetleme ve uygulamaya zorlama ve SQL veritabanları, depolama hesapları ve ağ kaynakları için gelişmiş güvenlik ayarları atanmış ilkeleridir. Bu yetenekler, uygun işlemleri yapabilmeniz için anormal davranışları ve saldırı göstergelerini tespit etmenize yardımcı olabilir.
+This blueprint helps you monitor your system by auditing and enforcing logging and data security across Azure resources. Specifically, the policies assigned audit and enforce deployment of the Log Analytics agent, and enhanced security settings for SQL databases, storage accounts and network resources. These capabilities can help you detect anomalous behavior and indicators of attacks so you can take appropriate action.
 
-- \[Preview\]: denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
-- \[Preview\]: VMSS-VM görüntüsündeki (OS) denetim Log Analytics aracı dağıtımı listelenmemiş
-- \[Önizleme\]: Audit Log Analytics çalışma alanı için VM - uyumsuzluğu bildir
-- \[Preview\]: Linux VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
-- \[Önizleme\]: Linux sanal makineleri için Log Analytics aracısını dağıtmayı
-- \[Preview\]: Windows VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
-- \[Önizleme\]: Windows Vm'leri için Log Analytics aracısını dağıtmayı
-- Yönetilen örneklerinizdeki gelişmiş veri güvenliği etkinleştirilmelidir
+- \[Preview\]: Audit Log Analytics Agent Deployment - VM Image (OS) unlisted
+- \[Preview\]: Audit Log Analytics Agent Deployment in VMSS - VM Image (OS) unlisted
+- \[Preview\]: Audit Log Analytics Workspace for VM - Report Mismatch
+- \[Preview\]: Deploy Log Analytics Agent for Linux VM Scale Sets (VMSS)
+- \[Preview\]: Deploy Log Analytics Agent for Linux VMs
+- \[Preview\]: Deploy Log Analytics Agent for Windows VM Scale Sets (VMSS)
+- \[Preview\]: Deploy Log Analytics Agent for Windows VMs
+- Advanced data security should be enabled on your managed instances
 - SQL sunucularınızda gelişmiş veri güvenliği etkin olmalıdır
-- SQL Server 'lar üzerinde gelişmiş veri güvenliği dağıtma
-- Depolama hesaplarında Gelişmiş tehdit koruması dağıtma
-- SQL Server 'lar üzerinde denetim dağıtma
-- Sanal ağlar oluşturulduğunda Ağ İzleyicisi dağıt
-- SQL Server 'lar üzerinde tehdit algılamayı dağıtma
+- Deploy Advanced Data Security on SQL servers
+- Deploy Advanced Threat Protection on Storage Accounts
+- Deploy Auditing on SQL servers
+- Deploy network watcher when virtual networks are created
+- Deploy Threat Detection on SQL servers
 
-## <a name="93174-si-4-18-information-system-monitoring--analyze-traffic--covert-exfiltration"></a>9.3.17.4 sı-4 (18) bilgi sistemi Izleme | Trafik/Covert exfiltration çözümleme
+## <a name="93174-si-4-18-information-system-monitoring--analyze-traffic--covert-exfiltration"></a>9.3.17.4 SI-4 (18) Information System Monitoring | Analyze Traffic / Covert Exfiltration
 
-Azure depolama için Gelişmiş tehdit koruması, depolama hesaplarına erişmeye veya açıktan yararlanmaya yönelik olağan dışı ve zararlı olabilecek girişimleri algılar. Koruma uyarıları, anormal erişim desenleri, anormal ayıklar/karşıya yüklemeler ve şüpheli depolama etkinlikleri içerir. Bu göstergeler, bilgilerin birlikte kullanımını tespit etmenize yardımcı olabilir.
+Advanced Threat Protection for Azure Storage detects unusual and potentially harmful attempts to access or exploit storage accounts. Protection alerts include anomalous access patterns, anomalous extracts/uploads, and suspicious storage activity. These indicators can help you detect covert exfiltration of information.
 
-- Depolama hesaplarında Gelişmiş tehdit koruması dağıtma
+- Deploy Advanced Threat Protection on Storage Accounts
 
 > [!NOTE]
-> Belirli Azure Ilke tanımlarının kullanılabilirliği, Azure Kamu ve diğer ulusal bulutlarda farklılık gösterebilir. 
+> Availability of specific Azure Policy definitions may vary in Azure Government and other national clouds. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-IRS 1075 şema 'in denetim eşlemesini gözden geçirdiğinize göre, şema ve bu örneği dağıtma hakkında bilgi edinmek için aşağıdaki makaleleri ziyaret edin:
+Now that you've reviewed the control mapping of the IRS 1075 blueprint, visit the following articles to learn about the blueprint and how to deploy this sample:
 
 > [!div class="nextstepaction"]
-> [IRS 1075 şema-genel bakış](./index.md)
+> [IRS 1075 blueprint - Overview](./index.md)
 
 Şemalar ve bunların kullanımı hakkındaki diğer makaleler:
 

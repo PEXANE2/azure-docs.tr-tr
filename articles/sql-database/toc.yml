@@ -526,7 +526,7 @@
               href: sql-database-elastic-pool-manage.md
         - name: Veritabanı sunucusu kaynakları
           items:
-            - name: Veritabanı sunucusu kaynak sınırları
+            - name: Veritabanı kaynak sınırları
               href: sql-database-resource-limits-database-server.md
             - name: Bağlantı mimarisi
               href: sql-database-connectivity-architecture.md

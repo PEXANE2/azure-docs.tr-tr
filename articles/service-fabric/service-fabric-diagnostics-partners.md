@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric'e izleme iş ortakları | Microsoft Docs
-description: Azure Service Fabric iş ortağı çözümlerini izleme ile izleme hakkında bilgi edinin
+title: Azure Service Fabric Monitoring Partners | Microsoft Docs
+description: Learn how to monitor Azure Service Fabric with partner monitoring solutions
 services: service-fabric
 documentationcenter: .net
 author: srrengar
@@ -14,42 +14,42 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/16/2018
 ms.author: srrengar
-ms.openlocfilehash: c2f953c98e41291951f07556bd0cd441d2793d1d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8353c8846820aa996214e6b119a2f9027b8b6fe6
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60946601"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232442"
 ---
-# <a name="azure-service-fabric-monitoring-partners"></a>Azure Service Fabric izleme iş ortakları
+# <a name="azure-service-fabric-monitoring-partners"></a>Azure Service Fabric Monitoring Partners
 
-Bu makalede, nasıl bir, Service Fabric uygulamaları, kümeler ve altyapı iş ortağı çözümlerini bir küçük izleyebilirsiniz gösterilmektedir. Her bir Service Fabric için tümleşik teklifleri oluşturmak için aşağıdaki ortakları ile çalıştı.
+This article illustrates how one can monitor their Service Fabric applications, clusters, and infrastructure with a handful of partner solutions. We have worked with each of the partners below to create integrated offerings for Service Fabric.
 
 ## <a name="dynatrace"></a>Dynatrace
 
-Dynatrace ile bizim tümleştirme çok Service Fabric kümeleriniz izlemek için kutusunu özellikleri dışında sağlar. Dynatrace OneAgent VMSS örneklerinizin yükleme uygulama düzeye, performans sayaçları ve Service Fabric dağıtımınızın bir topoloji sunar. Dynatrace, şirket içinde izleme için ideal bir tercih de var. Daha fazla listelenen özellikleri kullanıma [duyuru](https://www.dynatrace.com/news/blog/automatic-end-to-end-service-fabric-monitoring-with-dynatrace/) ve [yönergeleri](https://www.dynatrace.com/news/blog/automatic-end-to-end-service-fabric-monitoring-with-dynatrace/) Dynatrace kümenizde etkinleştirmek için. 
+Our integration with Dynatrace provides many out of the box features to monitor your Service Fabric clusters. Installing the Dynatrace OneAgent on your VMSS instances gives you performance counters and a topology of your Service Fabric deployment down to the App level. Dynatrace is also a great choice for on-premises monitoring. Check out more of the features listed in the [announcement](https://www.dynatrace.com/news/blog/automatic-end-to-end-service-fabric-monitoring-with-dynatrace/) and [instructions](https://www.dynatrace.com/news/blog/automatic-end-to-end-service-fabric-monitoring-with-dynatrace/) to enable Dynatrace on your cluster. 
 
 ## <a name="datadog"></a>Datadog
 
-Datadog, hem Windows hem de Linux örnekleri için VMSS için uzantısına sahiptir. Datadog kullanarak Windows olay günlüklerini toplar ve dolayısıyla Windows üzerinde Service Fabric platform olaylarını topla. Datadog için tanılama verilerinizi göndermek yönergeler kullanıma [burada](https://www.datadoghq.com/blog/azure-monitoring-enhancements/#integrate-with-azure-service-fabric).
+Datadog has an extension for VMSS for both Windows and Linux instances. Using Datadog you can collect Windows event logs and thereby collect Service Fabric platform events on Windows. Check out the instructions on how to send your diagnostics data to Datadog [here](https://www.datadoghq.com/blog/azure-monitoring-enhancements/#integrate-with-azure-service-fabric).
 
 ## <a name="appdynamics"></a>AppDynamics
 
-AppDynamics ile Service Fabric uygulama düzeyinde tümleştirmedir. Ortam değişkenlerini güncelleştirme ve uygulama Dynamics Nuget'i kullanma için AppDynamics uygulama telemetri gönderebilir. Başvurun [yönergeleri](https://docs.appdynamics.com/display/AZURE/Install+AppDynamics+for+Azure+Service+Fabric) nasıl AppDynamics ile .NET Service Fabric uygulamalarınızı tümleştirin.
+The Service Fabric integration with AppDynamics is at the application level. By updating environment variables and using App Dynamics NuGets, you can send application telemetry to AppDynamics. Refer to these [instructions](https://docs.appdynamics.com/display/AZURE/Install+AppDynamics+for+Azure+Service+Fabric) for how to integrate your .NET Service Fabric applications with AppDynamics.
 
 ## <a name="new-relic"></a>New Relic
 
-Yeni Relic da Service Fabric uygulamaları ile tümleşen başka bir uygulama performansı Yönetimi aracıdır. Yeni Relic NuGet paketlerini yükleme ve için New Relic uygulama telemetrinizi göndermek için bildirim dosyalarınızın belirli ortam değişkenlerini ekleyin. Bu kontrol [yönergeleri](https://docs.newrelic.com/docs/agents/net-agent/azure-installation/install-net-agent-azure-service-fabric) .NET Service Fabric uygulamalarınızı için New Relic telemetri etkinleştirmek için.
+New Relic is another Application Performance Management tool that integrates well with Service Fabric applications. You can install the New Relic NuGet packages and add specific environment variables in your manifest files to send your application telemetry to New Relic. Check out these [instructions](https://docs.newrelic.com/docs/agents/net-agent/azure-installation/install-net-agent-azure-service-fabric) to enable New Relic telemetry for your .NET Service Fabric applications.
 
 ## <a name="elk"></a>ELK 
 
-ELK yığını, açık kaynaklı teknolojiler topluluğudur: Elasticsearch, Logstash ve kibana'yı. Bunları birlikte kullanarak toplamak, depolamak ve Service Fabric izleme ve tanılama verilerini analiz edin. Bir öğretici için Service Fabric yerel Java uygulamalarıyla bunun nasıl yapılacağını sahibiz [burada](service-fabric-tutorial-java-elk.md). 
+The ELK stack is a collection of open source technologies: Elasticsearch, Logstash, and Kibana. By using these in combination, you can collect, store, and analyze Service Fabric monitoring and diagnostics data. We have a tutorial for how to do this with Service Fabric native Java applications [here](service-fabric-tutorial-java-elk.md). 
 
 ## <a name="humio"></a>Humio
 
-Humio uygulamalardan ve Service Fabric bulutta veya şirket içi gerçek zamanlı olaylardan günlükleri toplayabilir, bir günlük koleksiyonu hizmetidir. Canlı observability yanı sıra Humio ınsights Tanılama'ya toplamak ve görüntülemek için teknoloji analiz ve görselleştirme özellikleri sunar. Humio uygun maliyetli fiyatlandırma planları sahip ve için oluşturulmuştur, korurken ölçek hızlı gölge. Ayrıca Service Fabric platform olaylarına ve uygulama telemetrisini ile doğrudan tümleşir. Daha fazla bilgi edinebilirsiniz Humio ve Service Fabric tümleştirmesi hakkında [burada](https://github.com/humio/service-fabric-humio).
+Humio is a log collection service that can gather logs from your applications and events from Service Fabric in the cloud or on-premises in real time. In addition to live observability, Humio offers state of the art analysis and visualization capabilities for viewing and collecting insights from your diagnostics. Humio has cost effective pricing plans and is built to scale while retaining it's lightening fast speed. It directly integrates with Service Fabric platform events and Application telemetry. You can read more about the Humio and Service Fabric integration [here](https://github.com/humio/service-fabric-humio).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Alma bir [izleme ve tanılama genel bakış](service-fabric-diagnostics-overview.md) Service fabric'te
-* Bilgi nasıl [yaygın senaryoları tanılama](service-fabric-diagnostics-common-scenarios.md) birinci taraf araçlarımız ile
+* Get an [overview of monitoring and diagnostics](service-fabric-diagnostics-overview.md) in Service Fabric
+* Learn how to [diagnose common scenarios](service-fabric-diagnostics-common-scenarios.md) with our first party tools

@@ -1,18 +1,18 @@
 ---
-title: Portalda bir şema oluşturma
-description: Azure portal aracılığıyla yapıtlar oluşturmak, tanımlamak ve dağıtmak için Azure şemaları kullanın.
+title: 'Quickstart: Create a blueprint in the portal'
+description: In this quickstart, you use Azure Blueprints to create, define, and deploy artifacts through the Azure portal.
 ms.date: 03/11/2019
 ms.topic: quickstart
-ms.openlocfilehash: 1c2d619a0383cc9542bc6dc3a5f5822f0477237c
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 47c225f3a3e51dc965580e48b8f838f557676d2e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960466"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74210488"
 ---
-# <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Hızlı başlangıç: portalda bir şema tanımlama ve atama
+# <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Quickstart: Define and assign a blueprint in the portal
 
-Planlar oluşturmayı ve atamayı öğrendikçe, Azure Resource Manager şablonları, ilkesi, güvenliği ve daha fazlasını temel alan yeniden kullanılabilir ve hızlı dağıtılabilir yapılandırma geliştirmek için ortak desenler tanımlayabilirsiniz. Bu öğreticide, kuruluşunuzda şema oluşturma, yayımlama ve atama ile ilgili genel görevlerden bazılarını yapmak için Azure şemaları kullanmayı öğreneceksiniz. Bu görevler şunları içerir:
+When you learn how to create and assign blueprints, you can define common patterns to develop reusable and rapidly deployable configurations based on Azure Resource Manager templates, policy, security, and more. In this tutorial, you learn to use Azure Blueprints to do some of the common tasks related to creating, publishing, and assigning a blueprint within your organization. These tasks include:
 
 > [!div class="checklist"]
 > - Yeni bir şema oluşturma ve çeşitli desteklenen yapıtlar ekleme
@@ -26,74 +26,74 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="create-a-blueprint"></a>Şema oluşturma
 
-Uyumluluk için standart desen tanımlamanın ilk adımı kullanılabilir durumdaki kaynaklardan bir şema oluşturmaktır. Bu örnekte, abonelik için rol ve ilke atamalarını yapılandırmak üzere **myblueprint** adlı yeni bir şema oluşturun. Ardından yeni bir kaynak grubu ekleyin ve yeni kaynak grubunda bir Kaynak Yöneticisi şablonu ve rol ataması oluşturun.
+Uyumluluk için standart desen tanımlamanın ilk adımı kullanılabilir durumdaki kaynaklardan bir şema oluşturmaktır. In this example, create a new blueprint named **MyBlueprint** to configure role and policy assignments for the subscription. Then add a new resource group, and create a Resource Manager template and role assignment on the new resource group.
 
-1. Sol bölmedeki **tüm hizmetler** ' i seçin. **Şemaları**arayın ve seçin.
+1. Select **All services** in the left pane. Search for and select **Blueprints**.
 
-1. Sol taraftaki sayfadan şema **tanımlarını** seçin ve sayfanın üst kısmındaki **+ şema oluştur** düğmesini seçin.
+1. Select **Blueprint definitions** from the page on the left and select the **+ Create blueprint** button at the top of the page.
 
-   Ya da bir Blueprint oluşturmak için **Başlarken** sayfasından **Oluştur** ' u seçin.
+   Or, select **Create** from the **Getting started** page to go straight to creating a blueprint.
 
-   ![Şema tanımları sayfasından bir şema oluşturma](./media/create-blueprint-portal/create-blueprint-button.png)
+   ![Create a blueprint from the Blueprint definitions page](./media/create-blueprint-portal/create-blueprint-button.png)
 
-1. **Myblueprint**gibi bir **Blueprint adı** sağlayın. (En fazla 48 harf ve sayı kullanın, ancak boşluk veya özel karakter kullanmayın). **Blueprint açıklamasını** şimdilik boş bırakın.
+1. Provide a **Blueprint name** such as **MyBlueprint**. (Use up to 48 letters and numbers, but no spaces or special characters). Leave **Blueprint description** blank for now.
 
-1. **Tanım konumu** kutusunda, sağdaki üç noktayı seçin, şemayı kaydetmek istediğiniz [yönetim grubunu](../management-groups/overview.md) veya aboneliği seçin ve **Seç**' i seçin.
+1. In the **Definition location** box, select the ellipsis on the right, select the [management group](../management-groups/overview.md) or subscription where you want to save the blueprint, and choose **Select**.
 
-1. Bilgilerin doğru olduğundan emin olun. **Blueprint adı** ve **tanım konumu** alanları daha sonra değiştirilemez. Ardından Ileri: sayfanın en altındaki **yapıtlar** ' ı veya sayfanın en üstündeki **yapılar** sekmesini seçin.
+1. Verify that the information is correct. The **Blueprint name** and **Definition location** fields can't be changed later. Then select **Next : Artifacts** at the bottom of the page or the **Artifacts** tab at the top of the page.
 
-1. Abonelik düzeyinde bir rol ataması ekleyin:
+1. Add a role assignment at the subscription level:
 
-   1. **Abonelik**altında **+ yapıt Ekle** satırını seçin. Tarayıcının sağ tarafında **yapıt Ekle** penceresi açılır.
+   1. Select the **+ Add artifact** row under **Subscription**. The **Add artifact** window opens on the right side of the browser.
 
-   1. **Yapıt türü**için **rol ataması** seçin.
+   1. Select **Role assignment** for **Artifact type**.
 
-   1. **Rol**altında **katkıda bulunan**' ı seçin. Bir dinamik parametreyi belirten onay kutusuyla **Kullanıcı, uygulama veya Grup Ekle** kutusunu bırakın.
+   1. Under **Role**, select **Contributor**. Leave the **Add user, app or group** box with the check box that indicates a dynamic parameter.
 
-   1. Bu yapıtı şemasını Blueprint öğesine eklemek için **Ekle** ' yi seçin.
+   1. Select **Add** to add this artifact to the blueprint.
 
-   ![Şema yapıtı için rol ataması](./media/create-blueprint-portal/add-role-assignment.png)
+   ![Role assignment for a blueprint artifact](./media/create-blueprint-portal/add-role-assignment.png)
 
    > [!NOTE]
-   > Çoğu yapıt parametreleri destekler. Şema oluşturma sırasında bir değer atanan bir parametre *statik bir parametredir*. Parametre, şema atama sırasında atanırsa *dinamik bir parametredir*. Daha fazla bilgi için bkz. [Şema parametreleri](./concepts/parameters.md).
+   > Most artifacts support parameters. A parameter that's assigned a value during blueprint creation is a *static parameter*. If the parameter is assigned during blueprint assignment, it's a *dynamic parameter*. Daha fazla bilgi için bkz. [Şema parametreleri](./concepts/parameters.md).
 
-1. Abonelik düzeyine bir ilke ataması ekleyin:
+1. Add a policy assignment at the subscription level:
 
-   1. Rol atama yapıtı altında **+ yapıt Ekle** satırını seçin.
+   1. Select the **+ Add artifact** row under the role assignment artifact.
 
-   1. **Yapıt türü**için **ilke atamasını** seçin.
+   1. Select **Policy assignment** for **Artifact type**.
 
-   1. **Türü** **yerleşik**olarak değiştirin. **Ara**alanına **Tag**yazın.
+   1. Change **Type** to **Built-in**. In **Search**, enter **tag**.
 
-   1. Filtrelemenin yapılması için **Ara**’ya tıklayın. **Kaynak grupları için etiketi ve varsayılan değerini Ekle '** yi seçin.
+   1. Filtrelemenin yapılması için **Ara**’ya tıklayın. Select **Append tag and its default value to resource groups**.
 
-   1. Bu yapıtı şemasını Blueprint öğesine eklemek için **Ekle** ' yi seçin.
+   1. Select **Add** to add this artifact to the blueprint.
 
-1. İlke atama **ekleme etiketinin satırını ve kaynak grupları için varsayılan değerini**seçin.
+1. Select the row of the policy assignment **Append tag and its default value to resource groups**.
 
-1. Şema tanımının bir parçası olarak yapıt için parametreler sağlayan pencere açılır ve atama (dinamik parametreler) yerine bu şema temelinde tüm atamalar (statik parametreler) için parametrelerin ayarlanmasına izin verir. Bu örnek, şema atama sırasında dinamik parametreleri kullanır, bu nedenle varsayılan değerleri bırakın ve **iptal**' i seçin.
+1. The window to provide parameters to the artifact as part of the blueprint definition opens and allows setting the parameters for all assignments (static parameters) based on this blueprint instead of during assignment (dynamic parameters). This example uses dynamic parameters during blueprint assignment, so leave the defaults and select **Cancel**.
 
-1. Abonelik düzeyinde bir kaynak grubu ekleyin:
+1. Add a resource group at the subscription level:
 
-   1. **Abonelik**altında **+ yapıt Ekle** satırını seçin.
+   1. Select the **+ Add artifact** row under **Subscription**.
 
-   1. **Yapıt türü**için **kaynak grubu** seçin.
+   1. Select **Resource group** for **Artifact type**.
 
-   1. **Yapıt görünen adı**, **kaynak grubu adı**ve **konum** kutularını boş bırakın, ancak her bir parametre özelliği için onay kutusunun işaretli olduğundan emin olun.
+   1. Leave the **Artifact display name**, **Resource Group Name**, and **Location** boxes blank, but make sure that the check box is checked for each parameter property to make them dynamic parameters.
 
-   1. Bu yapıtı şemasını Blueprint öğesine eklemek için **Ekle** ' yi seçin.
+   1. Select **Add** to add this artifact to the blueprint.
 
-1. Kaynak grubunun altına bir şablon ekleyin:
+1. Add a template under the resource group:
 
-   1. **ResourceGroup** girişinde **+ yapıt Ekle** satırını seçin.
+   1. Select the **+ Add artifact** row under the **ResourceGroup** entry.
 
-   1. **Yapıt türü**için **Azure Resource Manager şablonu** seçin, **yapıt görünen adını** **storageaccount**olarak ayarlayın ve **açıklamayı** boş bırakın.
+   1. Select **Azure Resource Manager template** for **Artifact type**, set **Artifact display name** to **StorageAccount**, and leave **Description** blank.
 
    1. Düzenleyici kutusundaki **Şablon** sekmesinde aşağıdaki Resource Manager şablonunu yapıştırın.
-      Şablonu yapıştırdıktan sonra **Parametreler** sekmesini seçin ve **storageaccounttype** ve **Location** şablon parametrelerinin algılandığını unutmayın. Her bir parametre otomatik olarak algılanır ve doldurulmuştur, ancak dinamik parametre olarak yapılandırıldı.
+      After you paste the template, select the **Parameters** tab and note that the template parameters **storageAccountType** and **location** were detected. Each parameter was automatically detected and populated, but configured as a dynamic parameter.
 
       > [!IMPORTANT]
-      > Şablonu içeri aktarıyorsanız, dosyanın yalnızca JSON olduğundan ve HTML içermediğinden emin olun. GitHub 'da bir URL 'yi işaret ederken, GitHub 'da görüntülenmek üzere bir HTML ile sarmalanmayan saf JSON dosyasını almak için **Ham** seçtiğinizden emin olun. İçeri aktarılan şablon saf JSON değilse bir hata oluşur.
+      > If you're importing the template, ensure that the file is only JSON and doesn't include HTML. When you're pointing to a URL on GitHub, ensure that you have selected **RAW** to get the pure JSON file and not the one wrapped with HTML for display on GitHub. İçeri aktarılan şablon saf JSON değilse bir hata oluşur.
 
       ```json
       {
@@ -144,155 +144,155 @@ Uyumluluk için standart desen tanımlamanın ilk adımı kullanılabilir durumd
       }
       ```
 
-   1. **Storageaccounttype** onay kutusunu temizleyin ve aşağı açılan listenin yalnızca, **allowedValues**altındaki Kaynak Yöneticisi şablonuna dahil edilen değerleri içerdiğini unutmayın. Bir dinamik parametreye geri ayarlamak için kutuyu seçin.
+   1. Clear the **storageAccountType** check box and note that the drop-down list contains only values included in the Resource Manager template under **allowedValues**. Select the box to set it back to a dynamic parameter.
 
-   1. Bu yapıtı şemasını Blueprint öğesine eklemek için **Ekle** ' yi seçin.
+   1. Select **Add** to add this artifact to the blueprint.
 
-   ![Şema yapıtı için Kaynak Yöneticisi şablonu](./media/create-blueprint-portal/add-resource-manager-template.png)
+   ![Resource Manager template for the blueprint artifact](./media/create-blueprint-portal/add-resource-manager-template.png)
 
-1. Tamamladığınız şema aşağıdakine benzer olmalıdır. Her yapının **Parameters** sütununda doldurulmuş  **_x_ -Out parametresi** olduğuna dikkat edin. Dinamik parametreler, Blueprint 'in her ataması sırasında ayarlanır.
+1. Tamamladığınız şema aşağıdakine benzer olmalıdır. Notice that each artifact has **_x_ out of _y_ parameters populated** in the **Parameters** column. The dynamic parameters are set during each assignment of the blueprint.
 
-   ![Şema tanımı tamamlandı](./media/create-blueprint-portal/completed-blueprint.png)
+   ![Completed blueprint definition](./media/create-blueprint-portal/completed-blueprint.png)
 
-1. Tüm planlı yapıtlar eklenmiş olduğuna göre, sayfanın en altındaki **Taslağı kaydet** ' i seçin.
+1. Now that all planned artifacts have been added, select **Save Draft** at the bottom of the page.
 
 ## <a name="edit-a-blueprint"></a>Şema düzenleme
 
-Şema [oluşturma](#create-a-blueprint)' da, bir açıklama sağlamamadınız veya yeni kaynak grubuna rol ataması eklemelisiniz. Aşağıdaki adımları izleyerek her ikisini de giderebilirsiniz:
+In [Create a blueprint](#create-a-blueprint), you didn't provide a description or add the role assignment to the new resource group. You can fix both by following these steps:
 
-1. Soldaki sayfadan **Blueprint tanımlarını** seçin.
+1. Select **Blueprint definitions** from the page on the left.
 
-1. Planlar listesinde, daha önce oluşturduğunuz birine sağ tıklayın ve şemayı **Düzenle**' yi seçin.
+1. In the list of blueprints, right-click the one that you previously created and select **Edit blueprint**.
 
-1. **Şema açıklamasında**, şema ve onu oluşturan yapıtlar hakkında bazı bilgiler sağlayın. Bu durumda, şöyle bir şey girin: **Bu şema, abonelik üzerinde etiket ilkesi ve rol atamasını ayarlar, bir resourcegroup oluşturur ve bu resourcegroup 'e bir kaynak şablonu ve rol ataması dağıtır.**
+1. In **Blueprint description**, provide some information about the blueprint and the artifacts that compose it. In this case, enter something like: **This blueprint sets tag policy and role assignment on the subscription, creates a ResourceGroup, and deploys a resource template and role assignment to that ResourceGroup.**
 
-1. Ileri ' yi seçin: sayfanın en altındaki **yapıtlar** veya sayfanın en üstündeki **yapılar** sekmesi.
+1. Select **Next : Artifacts** at the bottom of the page or the **Artifacts** tab at the top of the page.
 
-1. Kaynak grubunun altına bir rol ataması ekleyin:
+1. Add a role assignment under the resource group:
 
-   1. Yalnızca **ResourceGroup** girişinin altında bulunan **+ yapıt Ekle** satırını seçin.
+   1. Select the **+ Add artifact** row directly under the **ResourceGroup** entry.
 
-   1. **Yapıt türü**için **rol ataması** seçin.
+   1. Select **Role assignment** for **Artifact type**.
 
-   1. **Rol**altında, **sahip**' i seçin ve **Kullanıcı, uygulama veya Grup Ekle** kutusunda onay kutusunun işaretini kaldırın.
+   1. Under **Role**, select **Owner**, and clear the check box under the **Add user, app or group** box.
 
-   1. Eklenecek bir Kullanıcı, uygulama veya grup bulun ve seçin. Bu yapıt, bu Blueprint 'in her atamasında aynı şekilde ayarlanmış statik bir parametre kullanır.
+   1. Search for and select a user, app, or group to add. This artifact uses a static parameter set the same in every assignment of this blueprint.
 
-   e. Bu yapıtı şemasını Blueprint öğesine eklemek için **Ekle** ' yi seçin.
+   e. Select **Add** to add this artifact to the blueprint.
 
-   ![Şema yapıtı için ikinci rol ataması](./media/create-blueprint-portal/add-role-assignment-2.png)
+   ![Second role assignment for the blueprint artifact](./media/create-blueprint-portal/add-role-assignment-2.png)
 
-1. Tamamladığınız şema aşağıdakine benzer olmalıdır. Yeni eklenen rol atamasında 1 ' den fazla **parametre doldurulduğuna**dikkat edin. Bu, bir statik parametre olduğu anlamına gelir.
+1. Tamamladığınız şema aşağıdakine benzer olmalıdır. Notice that the newly added role assignment shows **1 out of 1 parameters populated**. That means it's a static parameter.
 
-   ![Tamamlanmış şema için ikinci tanım](./media/create-blueprint-portal/completed-blueprint-2.png)
+   ![Second definition for the completed blueprint](./media/create-blueprint-portal/completed-blueprint-2.png)
 
-1. Taslağı Şimdi güncelleştirilmiş olarak **Kaydet** ' i seçin.
+1. Select **Save Draft** now that it has been updated.
 
 ## <a name="publish-a-blueprint"></a>Şemayı yayımlama
 
 Planlanan tüm yapıtları ekledikten sonra şemayı yayımlayabilirsiniz.
-Yayımlama, BLUEPRINT 'in bir aboneliğe atanmasını sağlar.
+Publishing makes the blueprint available to be assigned to a subscription.
 
-1. Soldaki sayfadan **Blueprint tanımlarını** seçin.
+1. Select **Blueprint definitions** from the page on the left.
 
-1. Planlar listesinde, daha önce oluşturduğunuz birine sağ tıklayın ve şema **Yayımla**' yı seçin.
+1. In the list of blueprints, right-click the one you previously created and select **Publish blueprint**.
 
-1. Açılan bölmede, **v1**gibi en fazla 20 karakter uzunluğunda bir **Sürüm** (harfler, rakamlar ve kısa çizgiler) sağlayın. İsteğe bağlı olarak, **ilk yayımlama**gibi **değişiklik notlarına**metin girin.
+1. In the pane that opens, provide a **Version** (letters, numbers, and hyphens with a maximum length of 20 characters), such as **v1**. Optionally, enter text in **Change notes**, such as **First publish**.
 
-1. Sayfanın alt kısmındaki **Yayımla** ' yı seçin.
+1. Select **Publish** at the bottom of the page.
 
 ## <a name="assign-a-blueprint"></a>Şema atama
 
-Şema yayımlandıktan sonra bir aboneliğe atanabilir. Oluşturduğunuz şema öğesini yönetim grubu hiyerarşinizin altındaki aboneliklerden birine atayın. Şema bir aboneliğe kaydedilirse, bu aboneliğe yalnızca atanabilir.
+After a blueprint has been published, it can be assigned to a subscription. Assign the blueprint that you created to one of the subscriptions under your management group hierarchy. If the blueprint is saved to a subscription, it can only be assigned to that subscription.
 
-1. Soldaki sayfadan **Blueprint tanımlarını** seçin.
+1. Select **Blueprint definitions** from the page on the left.
 
-1. Planlar listesinde, daha önce oluşturduğunuz birine sağ tıklayın (veya üç noktayı seçin) ve şema **ata**' yı seçin.
+1. In the list of blueprints, right-click the one that you previously created (or select the ellipsis) and select **Assign blueprint**.
 
-1. **Şeması ata** sayfasında, **abonelik** açılan listesinde, bu şemayı dağıtmak istediğiniz abonelikleri seçin.
+1. On the **Assign blueprint** page, in the **Subscription** drop-down list, select the subscriptions that you want to deploy this blueprint to.
 
-   [Azure faturalandırmaya](../../billing/index.md)sunulan desteklenen kurumsal teklifler varsa, **abonelik** kutusu altında **Yeni bir oluştur** bağlantısı etkinleştirilir. Şu adımları uygulayın:
+   If there are supported Enterprise offerings available from [Azure Billing](../../billing/index.md), a **Create new** link is activated under the **Subscription** box. Şu adımları uygulayın:
 
-   1. Yeni bir abonelik oluşturmak için **Yeni oluştur** bağlantısını seçin.
+   1. Select the **Create new** link to create a new subscription instead of selecting existing ones.
 
-   1. Yeni abonelik için bir **görünen ad** belirtin.
+   1. Provide a **Display name** for the new subscription.
 
-   1. Açılan listeden kullanılabilir **teklifi** seçin.
+   1. Select the available **Offer** from the drop-down list.
 
-   1. Aboneliğin bir alt öğesi olacağı [yönetim grubunu](../management-groups/overview.md) seçmek için üç noktayı kullanın.
+   1. Use the ellipsis to select the [management group](../management-groups/overview.md) that the subscription will be a child of.
 
-   1. Sayfanın alt kısmında **Oluştur** ' u seçin.
+   1. Select **Create** at the bottom of the page.
 
-   ![Şema atama aboneliği için abonelik oluşturma](./media/create-blueprint-portal/assignment-create-subscription.png)
+   ![Create a subscription for a blueprint assignment subscription](./media/create-blueprint-portal/assignment-create-subscription.png)
 
    > [!IMPORTANT]
-   > Yeni Abonelik **Oluştur**' u seçtikten hemen sonra oluşturulur.
+   > The new subscription is created immediately after you select **Create**.
 
    > [!NOTE]
-   > Seçtiğiniz her abonelik için bir atama oluşturulur. Seçili aboneliklerin geri kalanı üzerinde değişiklik yapmaya gerek kalmadan, tek bir abonelik atamasında daha sonra değişiklikler yapabilirsiniz.
+   > An assignment is created for each subscription that you select. You can make changes to a single subscription assignment at a later time without forcing changes on the remainder of the selected subscriptions.
 
-1. **Atama adı**için, bu atama için benzersiz bir ad sağlayın.
+1. For **Assignment name**, provide a unique name for this assignment.
 
-1. **Konum**' da, içinde oluşturulacak yönetilen kimlik ve abonelik dağıtım nesnesi için bir bölge seçin. Azure Blueprint bu yönetilen kimliği kullanarak tüm yapıtları atanmış şemaya dağıtır. Daha fazla bilgi için bkz. [Azure kaynakları için yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md).
+1. In **Location**, select a region for the managed identity and subscription deployment object to be created in. Azure Blueprint bu yönetilen kimliği kullanarak tüm yapıtları atanmış şemaya dağıtır. Daha fazla bilgi için bkz. [Azure kaynakları için yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md).
 
-1. **V1** girişinde, **yayımlanan** sürümlerin şema **tanımı sürümü** açılan seçimini bırakın. (Varsayılan değer en son yayımlanan sürümdür.)
+1. Leave the **Blueprint definition version** drop-down selection of **Published** versions on the **v1** entry. (The default is the most recently published version.)
 
-1. **Atamayı Kilitle** seçeneği için varsayılan **Kilitleme** ayarını değiştirmeyin. Daha fazla bilgi için bkz. [kaynak kilitlemeyi planlar](./concepts/resource-locking.md).
+1. **Atamayı Kilitle** seçeneği için varsayılan **Kilitleme** ayarını değiştirmeyin. For more information, see [Blueprints resource locking](./concepts/resource-locking.md).
 
-   ![Atama için kilitleme ve yönetilen kimlikler](./media/create-blueprint-portal/assignment-locking-mi.png)
+   ![Locking and managed identities for the assignment](./media/create-blueprint-portal/assignment-locking-mi.png)
 
-1. **Yönetilen kimlik**altında, varsayılan olarak **atanmış sistem**' i bırakın.
+1. Under **Managed Identity**, leave the default of **System assigned**.
 
 1. Abonelik düzeyinde rol ataması **[Kullanıcı grubu veya uygulama adı]:Katkıda bulunan** için bir kullanıcı, uygulama veya grup arayıp seçin.
 
-1. Abonelik düzeyi ilke ataması için, **etiket adı** ' nı **costcenter** olarak ayarlayın ve bu **değeri** **contoso.**
+1. For the subscription level policy assignment, set **Tag Name** to **CostCenter** and the **Tag Value** to **ContosoIT**.
 
-1. **ResourceGroup**için, açılan listeden bir **storageaccount** **adı** ve **Doğu ABD 2** bir **konum** sağlayın.
+1. For **ResourceGroup**, provide a **Name** of **StorageAccount** and a **Location** of **East US 2** from the drop-down list.
 
    > [!NOTE]
-   > Şema tanımı sırasında kaynak grubu altına eklediğiniz her bir yapıt için, bu yapıt, ile dağıtacağınız kaynak grubu veya nesne ile hizalanacak şekilde girintilenir.
-   > Parametre alma veya atama sırasında tanımlanacak hiçbir parametresi olmayan yapıtlar yalnızca bağlamsal bilgiler için listelenir.
+   > For each artifact that you added under the resource group during blueprint definition, that artifact is indented to align with the resource group or object that you'll deploy it with.
+   > Artifacts that either don't take parameters or have no parameters to be defined at assignment are listed only for contextual information.
 
-1. Azure Resource Manager şablonu **Storageaccount**' da **storageaccounttype** parametresi için **Standard_GRS** öğesini seçin.
+1. On the Azure Resource Manager template **StorageAccount**, select **Standard_GRS** for the **storageAccountType** parameter.
 
-1. Sayfanın altındaki bilgi kutusunu okuyun ve ardından **ata**' yı seçin.
+1. Read the information box at the bottom of the page, and then select **Assign**.
 
 ## <a name="track-deployment-of-a-blueprint"></a>Şema dağıtımını izleme
 
 Bir şema bir veya daha fazla aboneliğe atandığında iki şey gerçekleşir:
 
-- Şema, her abonelik için **atanan** şemalar sayfasına eklenir.
-- Şema tarafından tanımlanan tüm yapıtları dağıtma işlemi başlar.
+- The blueprint is added to the **Assigned blueprints** page for each subscription.
+- The process of deploying all the artifacts defined by the blueprint begins.
 
-Şema bir aboneliğe atandığına göre, dağıtımın ilerlemesini doğrulayın:
+Now that the blueprint has been assigned to a subscription, verify the progress of the deployment:
 
-1. Soldaki sayfadan **atanan** şemalar ' ı seçin.
+1. Select **Assigned blueprints** from the page on the left.
 
-1. Planlar listesinde, daha önce atadığınız birine sağ tıklayın ve **atama ayrıntılarını görüntüle**' yi seçin.
+1. In the list of blueprints, right-click the one that you previously assigned and select **View assignment details**.
 
-   ![Atanan şemalar sayfasından atama ayrıntılarını görüntüleme](./media/create-blueprint-portal/view-assignment-details.png)
+   ![View assignment details from the Assigned blueprints page](./media/create-blueprint-portal/view-assignment-details.png)
 
-1. **Blueprint atama** sayfasında, tüm yapıtların başarıyla dağıtıldığını ve dağıtım sırasında hata olmadığını doğrulayın. Hata oluştuysa, nelerin yanlış olduğunu belirlemek için bkz. [sorun giderme şemaları](./troubleshoot/general.md) .
+1. On the **Blueprint assignment** page, validate that all artifacts were successfully deployed and that there were no errors during the deployment. If errors occurred, see [Troubleshooting blueprints](./troubleshoot/general.md) for steps to determine what went wrong.
 
-## <a name="unassign-a-blueprint"></a>Şema atamasını kaldırma
+## <a name="unassign-a-blueprint"></a>Şemanın atamasını kaldırma
 
-Artık bir şema ataması gerekmiyorsa, aboneliği bir abonelikten kaldırın. Şema, güncelleştirilmiş desenler, ilkeler ve tasarımlarla daha yeni bir şema ile değiştirilmiş olabilir. Bir şema kaldırıldığında o şemanın bir parçası olarak atanan yapıtlar geride kalır. Şema atamasını kaldırmak için aşağıdaki adımları izleyin:
+If you no longer need a blueprint assignment, remove it from a subscription. The blueprint might have been replaced by a newer blueprint with updated patterns, policies, and designs. Bir şema kaldırıldığında o şemanın bir parçası olarak atanan yapıtlar geride kalır. Şema atamasını kaldırmak için aşağıdaki adımları izleyin:
 
-1. Soldaki sayfadan **atanan** şemalar ' ı seçin.
+1. Select **Assigned blueprints** from the page on the left.
 
-1. Planlar listesinde, atamasını kaldırmak istediğiniz şema öğesini seçin. Sonra sayfanın üst kısmındaki **şema atamasını Kaldır** düğmesini seçin.
+1. In the list of blueprints, select the blueprint that you want to unassign. Then select the **Unassign blueprint** button at the top of the page.
 
-1. Onay iletisini okuyun ve **Tamam**' ı seçin.
+1. Read the confirmation message and then select **OK**.
 
-## <a name="delete-a-blueprint"></a>Şema silme
+## <a name="delete-a-blueprint"></a>Şemayı silme
 
-1. Soldaki sayfadan **Blueprint tanımlarını** seçin.
+1. Select **Blueprint definitions** from the page on the left.
 
-1. Silmek istediğiniz şema öğesine sağ tıklayın ve şemayı **Sil**' i seçin. Onay iletişim kutusunda **Evet** ' i seçin.
+1. Right-click the blueprint that you want to delete, and select **Delete blueprint**. Then select **Yes** in the confirmation dialog box.
 
 > [!NOTE]
-> Bu yöntemde bir şema silindiğinde, seçilen şema 'in yayımlanan tüm sürümleri de silinir.
-> Tek bir sürümü silmek için, Blueprint ' i açın, **yayımlanmış sürümler** sekmesini seçin, silmek istediğiniz sürümü seçin ve ardından **Bu sürümü Sil**' i seçin. Ayrıca, söz konusu şema tanımının tüm şema atamalarını silene kadar bir şeması silemezsiniz.
+> Deleting a blueprint in this method also deletes all published versions of the selected blueprint.
+> To delete a single version, open the blueprint, select the **Published versions** tab, select the version that you want to delete, and then select **Delete This Version**. Also, you can't delete a blueprint until you've deleted all blueprint assignment of that blueprint definition.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

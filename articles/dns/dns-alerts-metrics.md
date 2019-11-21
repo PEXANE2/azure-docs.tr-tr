@@ -1,70 +1,68 @@
 ---
-title: Azure DNS ölçümleri ve Uyarıları | Microsoft Docs
-description: Azure DNS ölçümleri ve Uyarıları hakkında bilgi edinin.
+title: Metrics and alerts - Azure DNS
+description: With this learning path, get started with Azure DNS metrics and alerts.
 services: dns
 documentationcenter: na
-author: vhorne
-manager: jennoc
-editor: ''
-ms.assetid: ''
+author: asudbring
+manager: kumudD
 ms.service: dns
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2018
-ms.author: victorh
-ms.openlocfilehash: a9d8bc172eb5f5e0e119a0bde56fb167f7a0c2b2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: dc4d7de3d235fcdaf4a7f681065ba6e2857eb2ce
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64699145"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74212395"
 ---
-# <a name="azure-dns-metrics-and-alerts"></a>Azure DNS ölçümleri ve Uyarıları
-Azure DNS, Microsoft Azure altyapısı kullanılarak ad çözümlemesi sağlayan bir barındırma DNS etki alanları için hizmetidir. Bu makalede, Ölçümler ve Uyarılar için Azure DNS hizmeti açıklanır.
+# <a name="azure-dns-metrics-and-alerts"></a>Azure DNS metrics and alerts
+Azure DNS is a hosting service for DNS domains that provides name resolution using the Microsoft Azure infrastructure. This article describes metrics and alerts for the Azure DNS service.
 
-## <a name="azure-dns-metrics"></a>Azure DNS ölçümleri
+## <a name="azure-dns-metrics"></a>Azure DNS metrics
 
-Azure DNS, bunları hizmette barındırılan kendi DNS bölgelerinin belirli işlevlerinin izlemek etkinleştirmek, müşteriler için ölçümleri sağlar. Ayrıca, Azure DNS ölçümlerindeki ile yapılandırın ve ilgi koşullara göre uyarı alacak. Ölçümleri aracılığıyla sağlanan [Azure İzleyici hizmeti](../azure-monitor/index.yml). Azure DNS, DNS bölgeleriniz için Azure İzleyici aracılığıyla aşağıdaki ölçümleri sunar:
+Azure DNS provides metrics for customers to enable them to monitor specific aspects of their DNS zones hosted in the service. In addition, with Azure DNS metrics, you can configure and receive alerts based on conditions of interest. The metrics are provided via the [Azure Monitor service](../azure-monitor/index.yml). Azure DNS provides the following metrics via Azure Monitor for your DNS zones:
 
 -   QueryVolume
 -   RecordSetCount
 -   RecordSetCapacityUtilization
 
-Ayrıca bkz [Bu ölçümler tanımını](../azure-monitor/platform/metrics-supported.md#microsoftnetworkdnszones) Azure İzleyici belgeleri sayfasında.
+You can also see the [definition of these metrics](../azure-monitor/platform/metrics-supported.md#microsoftnetworkdnszones) on the Azure Monitor documentation page.
 >[!NOTE]
-> Şu anda bu ölçümler yalnızca Azure DNS'de barındırılan bir ortak DNS bölgeleri için kullanılabilir. Azure DNS'de barındırılan özel bölgeleri varsa, bu ölçümleri veri bölgeleri için sağlamaz. Ayrıca, Ölçümler ve uyarı özelliği yalnızca desteklenir Azure genel bulutunda. Bağımsız Bulutlar için destek, daha sonraki bir zamanda izler. 
+> At this time, these metrics are only available for Public DNS zones hosted in Azure DNS. If you have Private Zones hosted in Azure DNS, these metrics will not provide data for those zones. In addition, the metrics and alerting feature is only supported in Azure Public cloud. Support for sovereign clouds will follow at a later time. 
 
-Ölçümlerini görebileceğiniz en ayrıntılı bir DNS bölgesi öğesidir. Şu an için tek kaynak kayıtları bir bölge içerisindeki ölçümleri göremez.
+The most granular element that you can see metrics for is a DNS zone. You cannot currently see metrics for individual resource records within a zone.
 
-### <a name="query-volume"></a>Sorgu birim
+### <a name="query-volume"></a>Query volume
 
-*Sorgu toplu* ölçümü Azure DNS'de DNS bölgenizi Azure DNS tarafından alınan DNS sorguları (sorgu trafiği) hacmini gösterir. Ölçü birimi sayı ve toplama işlemini bir süre alınan tüm sorguların toplamıdır. 
+The *Query Volume* metric in Azure DNS shows the volume of DNS queries (query traffic) that is received by Azure DNS for your DNS zone. The unit of measurement is Count and the aggregation is the total of all the queries received over a period of time. 
 
-Bu ölçüm görüntülemek için Azure portalında izleme sekmesi Gezgini deneyimi ölçümler (Önizleme) seçin. DNS bölgenizi kaynak açılan listeden seçin, sorgu toplu ölçümü seçin ve Sum toplama seçin. Aşağıdaki ekran görüntüsünde, bir örnek gösterilmektedir.  Ölçüm Gezgini hakkında daha fazla bilgi için deneyimi ve grafik, bkz: [Azure İzleyici ölçüm Gezgini'ni](../azure-monitor/platform/metrics-charts.md).
+To view this metric, select Metrics (preview) explorer experience from the Monitor tab in the Azure portal. Select your DNS zone from the Resource drop-down, select the Query Volume metric, and select Sum as the Aggregation. Below screenshot shows an example.  For more information on the Metrics Explorer experience and charting, see [Azure Monitor Metrics Explorer](../azure-monitor/platform/metrics-charts.md).
 
-![Sorgu birim](./media/dns-alerts-metrics/dns-metrics-query-volume.png)
+![Query volume](./media/dns-alerts-metrics/dns-metrics-query-volume.png)
 
-*Şekil: Azure DNS sorgu toplu ölçümleri*
+*Figure: Azure DNS Query Volume metrics*
 
-### <a name="record-set-count"></a>Kayıt kümesi sayısı
-*Kayıt kümesi sayısı* ölçüm için DNS bölgenizi Azure DNS'ye kayıt kümeleri sayısını gösterir. Tüm kayıt kümelerini diliminizi tanımlı sayılır. Ölçü birimi sayısı ve toplama tüm kayıt kümelerini sayısı. Bu ölçüm görüntülemek için seçin **ölçümler (Önizleme)** Gezgini deneyiminden **İzleyici** Azure portalında sekmesi. DNS bölgenizi seçin **kaynak** açılan listesinde, select **kayıt kümesi sayısı** ölçüm ve ardından **Max** olarak **toplama** . Ölçüm Gezgini hakkında daha fazla bilgi için deneyimi ve grafik, bkz: [Azure İzleyici ölçüm Gezgini'ni](../azure-monitor/platform/metrics-charts.md). 
+### <a name="record-set-count"></a>Record Set Count
+The *Record Set Count* metric shows the number of Recordsets in Azure DNS for your DNS zone. All the Recordsets defined in your zone are counted. The unit of measurement is Count and the aggregation is the Maximum of all the Recordsets. To view this metric, select **Metrics (preview)** explorer experience from the **Monitor** tab in the Azure portal. Select your DNS zone from the **Resource** drop-down, select the **Record Set Count** metric, and then select **Max** as the **Aggregation**. For more information on the Metrics Explorer experience and charting, see [Azure Monitor Metrics Explorer](../azure-monitor/platform/metrics-charts.md). 
 
-![Kayıt kümesi sayısı](./media/dns-alerts-metrics/dns-metrics-record-set-count.png)
+![Record Set Count](./media/dns-alerts-metrics/dns-metrics-record-set-count.png)
 
-*Şekil: Azure DNS kayıt kümesi sayısı ölçümleri*
+*Figure: Azure DNS Record Set Count metrics*
 
 
-### <a name="record-set-capacity-utilization"></a>Kayıt kümesi kapasite kullanımı
-*Kayıt kümesi kapasite kullanımı* ölçümü Azure DNS'de bir DNS bölgesi için kayıt kümesi kapasite kullanımı yüzdesini gösterir. Her DNS bölgesinin Azure DNS'de bölge için izin verilen kayıt kümeleri maksimum sayısını tanımlayan bir kayıt kümesi sınırı tabidir (bkz [DNS sınırları](dns-zones-records.md#limits)). Bu nedenle, bu ölçüm, ne kadar yakın, kayıt sınırına ulaşması için gösterilir. Örneğin, DNS bölgeniz için yapılandırılmış 500 kayıt kümeleri vardır ve bölge varsayılan kayıt kümesi sınırı 5000 RecordSetCapacityUtilization ölçüm 10 (bölme 500 tarafından 5000 tarafından alınır) % değerini gösterir. Ölçü birimi **yüzdesi** ve **toplama** türü **maksimum**. Bu ölçüm görüntülemek için Azure portalında izleme sekmesi Gezgini deneyimi ölçümler (Önizleme) seçin. DNS bölgenizi kaynak açılan listeden seçin, kayıt kümesi kapasite kullanımı ölçümü seçin ve Max toplama seçin. Aşağıdaki ekran görüntüsünde, bir örnek gösterilmektedir. Ölçüm Gezgini hakkında daha fazla bilgi için deneyimi ve grafik, bkz: [Azure İzleyici ölçüm Gezgini'ni](../azure-monitor/platform/metrics-charts.md). 
+### <a name="record-set-capacity-utilization"></a>Record Set Capacity Utilization
+The *Record Set Capacity Utilization* metric in Azure DNS shows the percentage of utilization of your Recordset capacity for a DNS Zone. Every DNS zone in Azure DNS is subject to a Recordset limit that defines the maximum number of Recordsets that are allowed for the Zone (see [DNS limits](dns-zones-records.md#limits)). Hence, this metric shows you how close you are to hitting the Recordset limit. For example, if you have 500 Recordsets configured for your DNS zone, and the zone has the default Recordset limit of 5000, the RecordSetCapacityUtilization metric will show the value of 10% (which is obtained by dividing 500 by 5000). The unit of measurement is **Percentage** and the **Aggregation** type is **Maximum**. To view this metric, select Metrics (preview) explorer experience from the Monitor tab in the Azure portal. Select your DNS zone from the Resource drop-down, select the Record Set Capacity Utilization metric, and select Max as the Aggregation. Below screenshot shows an example. For more information on the Metrics Explorer experience and charting, see [Azure Monitor Metrics Explorer](../azure-monitor/platform/metrics-charts.md). 
 
-![Kayıt kümesi sayısı](./media/dns-alerts-metrics/dns-metrics-record-set-capacity-uitlization.png)
+![Record Set Count](./media/dns-alerts-metrics/dns-metrics-record-set-capacity-uitlization.png)
 
-*Şekil: Azure DNS kayıt kümesi kapasite kullanım ölçümleri*
+*Figure: Azure DNS Record Set Capacity Utilization metrics*
 
-## <a name="alerts-in-azure-dns"></a>Azure DNS içindeki uyarılar
-Azure İzleyici uyarı kullanılabilir ölçüm değerleri karşı yeteneği sağlar. DNS ölçümleri yeni uyarı yapılandırma deneyiminde kullanılabilir. Ayrıntılı olarak açıklandığı gibi [Azure İzleyici uyarılarına belgeleri](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md), DNS bölgesi kaynağı seçin, ölçüm sinyal türü seçin ve uyarı mantığının ve diğer parametreleri gibi yapılandırma **süresi**ve **sıklığı**. Daha fazla tanımlayabilirsiniz bir [eylem grubu](../azure-monitor/platform/action-groups.md) uyarı seçtiğiniz eylemleri teslim edilecek gerçekleştirilmesine için ne zaman Uyarı koşulu, karşılanır. Azure İzleyici ölçümleri için uyarı yapılandırma hakkında daha fazla bilgi için bkz. [oluşturun, görüntüleyin ve Azure İzleyicisi'ni kullanarak Uyarıları yönetme](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md). 
+## <a name="alerts-in-azure-dns"></a>Alerts in Azure DNS
+Azure Monitor provides the capability to alert against available metric values. The DNS metrics are available in the new Alert configuration experience. As described in detail in the [Azure Monitor alerts documentation](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md), you can select DNS Zone as the resource, choose the Metric signal type, and configure the alert logic and other parameters such as **Period** and **Frequency**. You can further define an [Action Group](../azure-monitor/platform/action-groups.md) for when the alert condition is met, whereby the alert will be delivered via the chosen actions. For more information on how to configure alerting for Azure Monitor metrics, see [Create, view, and manage alerts using Azure Monitor](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md). 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Daha fazla bilgi edinin [Azure DNS](dns-overview.md).
+- Learn more about [Azure DNS](dns-overview.md).

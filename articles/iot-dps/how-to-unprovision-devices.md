@@ -1,70 +1,69 @@
 ---
-title: Azure IOT Hub cihazı sağlama hizmeti ile sağlanan cihazları sağlamasını kaldırmak nasıl | Microsoft Docs
-description: Azure IOT Hub cihazı sağlama hizmeti ile sağlanan sağlamayı kaldırma cihazları
+title: Deprovision devices that were provisioned with Azure IoT Hub Device Provisioning Service
+description: How to deprovision devices that have been provisioned with Azure IoT Hub Device Provisioning Service
 author: wesmc7777
 ms.author: wesmc
 ms.date: 05/11/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
-ms.openlocfilehash: ba62d8cff646ce5ef4f4b8a36fdad78ddc354227
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 60d0647522fbce2fea43531e164e0a6d1b0de144
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60626527"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229685"
 ---
-# <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>Nasıl daha önce otomatik olarak sağlanan cihazları sağlamasını kaldırmak için 
+# <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>How to deprovision devices that were previously auto-provisioned 
 
-Daha önce otomatik olarak cihaz sağlama hizmeti sağlanan sağlamayı kaldırma cihazlara gerekli bulabilirsiniz. Örneğin, bir cihaz satılan veya farklı bir IOT hub'ına taşınmış veya kayıp, çalınmış veya olabilir Aksi takdirde gizliliği. 
+You may find it necessary to deprovision devices that were previously auto-provisioned through the Device Provisioning Service. For example, a device may be sold or moved to a different IoT hub, or it may be lost, stolen, or otherwise compromised. 
 
-Genel olarak, bir cihaz sağlamayı kaldırma iki adımdan oluşur:
+In general, deprovisioning a device involves two steps:
 
-1. Gelecekte otomatik sağlama önlemek için sağlama hizmetinize CİHAZDAN disenroll. Erişim geçici veya kalıcı olarak iptal etmek istediğinize bağlı olarak, devre dışı bırakın ya da kayıt girişi silmek isteyebilirsiniz. X.509 kanıtlama kullanan cihazlar için bir giriş var olan kayıt grupları hiyerarşisi içinde devre dışı bırakma/silme isteyebilirsiniz.  
+1. Disenroll the device from your provisioning service, to prevent future auto-provisioning. Depending on whether you want to revoke access temporarily or permanently, you may want to either disable or delete an enrollment entry. For devices that use X.509 attestation, you may want to disable/delete an entry in the hierarchy of your existing enrollment groups.  
  
-   - Bir cihaz disenroll öğrenmek için bkz. [nasıl bir CİHAZDAN bir Azure IOT Hub cihazı sağlama hizmeti disenroll](how-to-revoke-device-access-portal.md).
-   - Bir cihaz sağlama hizmeti Sdk'lardan birini kullanarak program aracılığıyla disenroll öğrenmek için bkz. [hizmet Sdk'leri ile cihaz kayıtlarını yönetme](how-to-manage-enrollments-sdks.md).
+   - To learn how to disenroll a device, see [How to disenroll a device from Azure IoT Hub Device Provisioning Service](how-to-revoke-device-access-portal.md).
+   - To learn how to disenroll a device programmatically using one of the provisioning service SDKs, see [Manage device enrollments with service SDKs](how-to-manage-enrollments-sdks.md).
 
-2. Gelecekteki iletişim ve veri aktarımını önlemek için IOT Hub CİHAZDAN kaydını silemiyor. Yeniden geçici olarak devre dışı veya cihazın giriş kimlik kayıt defterinde burada sağlanan IOT Hub için kalıcı olarak sil. Bkz: [cihazları devre dışı bırak](/azure/iot-hub/iot-hub-devguide-identity-registry#disable-devices) disablement hakkında daha fazla bilgi edinmek için. "Cihaz Yönetimi / IOT cihazları" IOT hub'ı kaynağınızın görmek [Azure portalında](https://portal.azure.com).
+2. Deregister the device from your IoT Hub, to prevent future communications and data transfer. Again, you can temporarily disable or permanently delete the device's entry in the identity registry for the IoT Hub where it was provisioned. See [Disable devices](/azure/iot-hub/iot-hub-devguide-identity-registry#disable-devices) to learn more about disablement. See "Device Management / IoT Devices" for your IoT Hub resource, in the [Azure portal](https://portal.azure.com).
 
-Cihaz sağlamasını kaldırmak için uygulayacağınız tam adımlar, kanıtlama mekanizması ve sağlama hizmetinizle ilgili bir kayıt girdisini bağlıdır. Aşağıdaki bölümler, kayıt ve kanıtlama türüne göre işlemi, genel bir bakış sağlar.
+The exact steps you take to deprovision a device depend on its attestation mechanism and its applicable enrollment entry with your provisioning service. The following sections provide an overview of the process, based on the enrollment and attestation type.
 
-## <a name="individual-enrollments"></a>Bireysel kayıtlar
-TPM kanıtlama veya X.509 kanıtlama ile bir yaprak sertifikayı kullanan cihazları bireysel kayıt girişi sağlanır. 
+## <a name="individual-enrollments"></a>Individual enrollments
+Devices that use TPM attestation or X.509 attestation with a leaf certificate are provisioned through an individual enrollment entry. 
 
-Bireysel kayıt olan bir cihazda sağlamasını kaldırmak için: 
+To deprovision a device that has an individual enrollment: 
 
-1. Cihaz sağlama hizmetinizde disenroll:
+1. Disenroll the device from your provisioning service:
 
-   - TPM kanıtlama kullanan cihazlar için cihazın erişim sağlama hizmetine kalıcı olarak iptal etmek için bireysel kayıt girişi silebilir veya geçici olarak erişimini iptal etmek için giriş devre dışı. 
-   - X.509 kanıtlama kullanan cihazlar için silmek veya giriş devre dışı bırakın. Ancak, cihazın sertifika zinciri, cihaz yeniden kaydetmek için bir imza sertifikası için kullandığı X.509 cihazı için bireysel bir kayıt silme ve etkin kayıt grubu varsa, dikkat edin. Bu tür cihazlar için kayıt girişi devre dışı bırakmak daha güvenli olabilir. Bunu yapmak, bu nedenle gerektireceğini, cihazın etkin kayıt grubu imzalama sertifikalarını birini var olup bakılmaksızın engeller.
+   - For devices that use TPM attestation, delete the individual enrollment entry to permanently revoke the device's access to the provisioning service, or disable the entry to temporarily revoke its access. 
+   - For devices that use X.509 attestation, you can either delete or disable the entry. Be aware, though, if you delete an individual enrollment for a device that uses X.509 and an enabled enrollment group exists for a signing certificate in that device's certificate chain, the device can re-enroll. For such devices, it may be safer to disable the enrollment entry. Doing so prevents the device from re-enrolling, regardless of whether an enabled enrollment group exists for one of its signing certificates.
 
-2. Devre dışı bırakın veya cihaz için sağlanan IOT hub kimlik kayıt defterinde silin. 
+2. Disable or delete the device in the identity registry of the IoT hub that it was provisioned to. 
 
 
-## <a name="enrollment-groups"></a>Kayıt grupları
-X.509 kanıtlama ile cihazları bir kayıt grubu sağlanabilir. Kayıt grupları ya da bir ara bir imza sertifikası yapılandırılır veya kök CA sertifikasını ve bu sertifika, sertifika zincirlerinde ile cihazları için sağlama hizmetine erişimi denetler. Kayıt grupları ve X.509 sertifikalarıyla sağlama hizmeti hakkında daha fazla bilgi için bkz: [X.509 sertifikaları](concepts-security.md#x509-certificates). 
+## <a name="enrollment-groups"></a>Enrollment groups
+With X.509 attestation, devices can also be provisioned through an enrollment group. Enrollment groups are configured with a signing certificate, either an intermediate or root CA certificate, and control access to the provisioning service for devices with that certificate in their certificate chain. To learn more about enrollment groups and X.509 certificates with the provisioning service, see [X.509 certificates](concepts-security.md#x509-certificates). 
 
-Kayıt grubu sağlanan cihazların listesini görmek için kayıt grubunun ayrıntılarını görüntüleyebilirsiniz. Bu, her cihaz için sağlanan hangi IOT hub'a anlaşılması kolay bir yoludur. Cihaz listesini görüntülemek için: 
+To see a list of devices that have been provisioned through an enrollment group, you can view the enrollment group's details. This is an easy way to understand which IoT hub each device has been provisioned to. To view the device list: 
 
-1. Azure portalında oturum açın ve tıklayın **tüm kaynakları** sol menüdeki.
-2. Sağlama hizmetinize kaynak listesine tıklayın.
-3. Sağlama hizmetinize tıklayın **kayıtları Yönet**, ardından **kayıt grupları** sekmesi.
-4. Kayıt grubu açmak için tıklayın.
+1. Log in to the Azure portal and click **All resources** on the left-hand menu.
+2. Click your provisioning service in the list of resources.
+3. In your provisioning service, click **Manage enrollments**, then select **Enrollment Groups** tab.
+4. Click the enrollment group to open it.
 
-   ![Portalda kayıt grubu girdisini görüntüleme](./media/how-to-unprovision-devices/view-enrollment-group.png)
+   ![View enrollment group entry in the portal](./media/how-to-unprovision-devices/view-enrollment-group.png)
 
-Kayıt gruplarıyla dikkate alınması gereken iki senaryo vardır:
+With enrollment groups, there are two scenarios to consider:
 
-- Kayıt grubu sağlanan tüm aygıtları sağlamasını kaldırmak için:
-  1. İmzalama sertifikasını kara listeye kayıt grubu devre dışı bırakın. 
-  2. Kendi IOT hub kimlik kayıt defterinden her cihazı silmek veya devre dışı bırakmak, kayıt grubu için sağlanan cihaz listesini kullanın. 
-  3. Devre dışı bırakma veya kendi ilgili IOT hub'ları tüm cihazları sildikten sonra isteğe bağlı olarak kayıt grubu silebilirsiniz. Ancak, kayıt grubunu silin ve sertifika zincirine daha yüksek bir imza sertifikası için etkin kayıt grubu bir veya daha fazla cihaz varsa, bu cihazları yeniden kaydedebilirsiniz, unutmayın. 
+- To deprovision all of the devices that have been provisioned through an enrollment group:
+  1. Disable the enrollment group to blacklist its signing certificate. 
+  2. Use the list of provisioned devices for that enrollment group to disable or delete each device from the identity registry of its respective IoT hub. 
+  3. After disabling or deleting all devices from their respective IoT hubs, you can optionally delete the enrollment group. Be aware, though, that, if you delete the enrollment group and there is an enabled enrollment group for a signing certificate higher up in the certificate chain of one or more of the devices, those devices can re-enroll. 
 
-- Kayıt grubu tek bir CİHAZDAN sağlamasını kaldırmak için:
-  1. Yaprak (cihaz) sertifikasını devre dışı bırakılmış bir bireysel kayıt oluşturun. Bu, bu cihaz için sağlama hizmetine erişiminizi kayıt Grup imzalama sertifikasını kendi zincirine sahip diğer cihazlar için erişimi hala kullanılmasına da izin veren iptal eder. Cihaz devre dışı bireysel kayıt silmeyin. Bunun yapılması, cihaz kayıt grubu yeniden kaydetmeye izin verir. 
-  2. Cihaz için sağlanan IOT hub'ı bulmak için bu kayıt grubu için sağlanan cihaz listesini kullanın ve devre dışı bırakmak veya bu hub'ının kimlik kayıt defterinden silebilirsiniz. 
+- To deprovision a single device from an enrollment group:
+  1. Create a disabled individual enrollment for its leaf (device) certificate. This revokes access to the provisioning service for that device while still permitting access for other devices that have the enrollment group's signing certificate in their chain. Do not delete the disabled individual enrollment for the device. Doing so will allow the device to re-enroll through the enrollment group. 
+  2. Use the list of provisioned devices for that enrollment group to find the IoT hub that the device was provisioned to and disable or delete it from that hub's identity registry. 
   
   
 

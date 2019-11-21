@@ -1,40 +1,40 @@
 ---
-title: Azure portalında sorgu oluşturma ve paylaşma
-description: Bu öğreticide, bir kaynak grafiği sorgusu oluşturup Azure portal başkalarıyla paylaşma hakkında bilgi edinin.
+title: 'Tutorial: Manage queries in Azure portal'
+description: In this tutorial, you create a Resource Graph Query and share the new query with others in the Azure portal.
 ms.date: 10/23/2019
 ms.topic: tutorial
-ms.openlocfilehash: 65b96da3bd9064f34d75d5e87f1fcf55336d9893
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
-ms.translationtype: MT
+ms.openlocfilehash: a1f3213ae1dbd3bc7127b4f4adb8648e9f9adf07
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958565"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74216217"
 ---
-# <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>Öğretici: Azure portal Azure Kaynak Grafiği sorgusu oluşturma ve paylaşma
+# <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>Tutorial: Create and share an Azure Resource Graph query in the Azure portal
 
-Azure Kaynak Grafiği Gezgini, kaynak grafik sorgularınızı doğrudan Azure portal kaydetmenize olanak tanır. İki tür sorgu vardır: _özel_ ve _paylaşılan_. Azure portal ayarlarınıza özel bir sorgu kaydedilir. Paylaşılan sorgu, rol tabanlı erişim denetimleriyle (RBAC) yönetilebilen ve kaynak kilitleriyle korunan bir Kaynak Yöneticisi kaynağıdır.
+Azure Resource Graph Explorer lets you save your Resource Graph queries directly in the Azure portal. There are two types of queries: _Private_ and _Shared_. A Private query is saved in your Azure portal settings. Whereas a Shared query is a Resource Manager resource that can be managed with role-based access controls (RBAC) and protected with resource locks.
 
-Sorguları Azure portal kaydederek sık kullandığınız veya yaygın olarak kullanılan sorguları Aradığınız zamandan tasarruf edebilirsiniz. Sorguları paylaştığınızda, ekibinizin yineleme aracılığıyla tutarlılık ve verimlilik hedeflerini fark etmiş olursunuz.
+By saving queries in the Azure portal, you save the time you might otherwise spend looking for your favorite or commonly used queries. When you share queries, you help your team realize goals of consistency and efficiency through repetition.
 
-Bu öğreticide, aşağıdaki görevleri tamamlayacaksınız:
+In this tutorial, you'll complete the following tasks:
 
 > [!div class="checklist"]
-> - Özel sorgu oluşturma ve silme
-> - Paylaşılan sorgu oluşturma
-> - Paylaşılan sorguları bulma
-> - Paylaşılan bir sorguyu silme
+> - Create and delete a Private query
+> - Create a Shared query
+> - Discover Shared queries
+> - Delete a Shared query
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için bir Azure aboneliğinizin olması gerekir. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-## <a name="create-and-delete-a-private-query"></a>Özel sorgu oluşturma ve silme
+## <a name="create-and-delete-a-private-query"></a>Create and delete a Private query
 
-Özel sorgular erişilebilir ve yalnızca kendilerini oluşturan hesap tarafından görülebilir. Bir hesabın Azure portal ayarlarına kaydedildiğinden, bunlar yalnızca Azure portal içinden oluşturulabilir, kullanılabilirler ve silinebilir. Özel bir sorgu Kaynak Yöneticisi kaynak değildir. Yeni bir özel sorgu oluşturmak için aşağıdaki adımları izleyin:
+Private queries are accessible and visible only to the account that creates them. As they're saved in an account's Azure portal settings, they can be created, used, and deleted only from inside the Azure portal. A Private query isn't a Resource Manager resource. To create a new Private query, follow these steps:
 
-1. Portal menüsünde **tüm hizmetler** ' i seçin veya tüm sayfaların en üstündeki Azure Arama kutusunu kullanın. **Kaynak Grafiği Gezgini**' ni arayıp seçin.
+1. From the portal menu, select **All services** or use the Azure search box at the top of all pages. Search for and then select **Resource Graph Explorer**.
 
-1. Azure Kaynak Grafiği Gezgini sayfasındaki **sorgu 1** sekmesinde aşağıdaki sorguyu girin:
+1. On the **Query 1** tab on the Azure Resource Graph Explorer page, enter the following query:
 
    ```kusto
    Resources
@@ -42,31 +42,31 @@ Bu öğreticiyi tamamlamak için bir Azure aboneliğinizin olması gerekir. Abon
    | summarize count() by tostring(properties.storageProfile.osDisk.osType)
    ```
 
-   Alttaki bölmede sorgu sonuçlarını görmek için **Sorguyu Çalıştır** ' ı seçin.
+   Select **Run query** to see the query results in the bottom pane.
 
-   Bu sorgu hakkında daha fazla bilgi için bkz. [Samples: sanal makineleri işletim sistemi türüne göre say](../samples/starter.md#count-virtual-machines-by-os-type).
+   For more information about this query, see [Samples – Count virtual machines by OS type](../samples/starter.md#count-virtual-machines-by-os-type).
 
 
-1. **Farklı** **Kaydet ' i seçin,** ad **olarak işletim sistemine göre VM sayısını** girin, türü **özel sorgu**olarak bırakın ve ardından Save **Query** bölmesinin en altında bulunan **Kaydet** ' i seçin. Sekme başlığı, **sorgu 1** ' den **Işletim sistemine göre VM 'lere göre**değişir.
+1. Select **Save** or **Save as**, enter **Count VMs by OS** as the name, leave the type as **Private query**, and then select **Save** at the bottom of the **Save query** pane. The tab title changes from **Query 1** to **Count VMs by OS**.
 
-1. Azure portal Azure Kaynak Grafiği Gezgini ' nden uzakta ilerleyin ve sonra buna geri dönün. Kaydedilen sorgunun artık gösterilmediğine ve **sorgu 1** sekmesinin döndürüldiğine dikkat edin.
+1. Move away from Azure Resource Graph Explorer in the Azure portal and then return to it. Notice that the saved query is no longer displayed and the **Query 1** tab has returned.
 
-1. **Sorgu aç**' ı seçin. Türün **özel sorgu**olduğundan emin olun. **İşletim sistemi tarafından kaydedilen ad sayısı VM 'leri** artık **sorgu adı** listesinde görünür. Kaydedilen sorgunun başlık bağlantısını seçtiğinizde, bu sorgu adı ile yeni bir sekmeye yüklenir.
+1. Select **Open a query**. Make sure that the type is **Private query**. The saved name **Count VMs by OS** now appears in the **Query Name** list. When you select the title link of the saved query, it's loaded into a new tab with that query's name.
 
    > [!NOTE] 
-   >Kaydedilen bir sorgu açık olduğunda ve sekme bu adı gösteriyorsa, **Kaydet** düğmesi seçildiğinde bu değişiklik yapılmış değişikliklerle güncelleştirilir. Bu açık sorgudan yeni bir kaydedilmiş sorgu oluşturmak için **farklı kaydet** ' i seçin ve yeni bir yepyeni sorgu kaydediyorsanız devam edin.
+   >When a saved query is open and the tab shows its name, selecting the **Save** button updates it with any changes that have been made. To create a new saved query from this open query, select **Save as** and proceed as if you were saving a brand new query.
 
-1. Kayıtlı sorguyu silmek için **sorguyu yeniden aç** ' ı seçin ve **tür** alanının **özel sorgu**olarak ayarlandığını doğrulayın. Kaydedilen `Count VMs by OS` sorgusunun satırında **Sil** ' i (geri dönüşüm kutusu simgesi) seçin. Onay iletişim kutusunda, sorguyu silmeyi sona bırakmak için **Evet** ' i seçin.
-   Sonra, **bir sorgu aç** bölmesini kapatın.
+1. To delete the saved query, select **Open a query** again, and verify that the **Type** field is set to **Private query**. On the row of the saved `Count VMs by OS` query, select **Delete** (Recycle bin icon). In the confirmation dialog box, select **Yes** to finish deleting the query.
+   Then, close the **Open a query** pane.
 
-## <a name="create-a-shared-query"></a>Paylaşılan sorgu oluşturma
+## <a name="create-a-shared-query"></a>Create a Shared query
 
-Özel bir sorgunun aksine, paylaşılan bir sorgu Kaynak Yöneticisi kaynağıdır. Bu olgu, sorgunun bir kaynak grubuna kaydedildiği, RBAC ile yönetilebilecek ve denetlenebileceği, hatta kaynak kilitleri ile korunabilecek anlamına gelir. Kaynak olarak, uygun izinlere sahip olan herkes onu görebilir ve kullanabilir.
-Yeni bir paylaşılan sorgu oluşturmak için aşağıdaki adımları izleyin:
+Unlike a Private query, a Shared query is a Resource Manager resource. This fact means the query gets saved to a resource group, can be managed and controlled with RBAC, and can even be protected with resource locks. As a resource, anyone who has the appropriate permissions can see and use it.
+To create a new Shared query, follow these steps:
 
-1. Portal menüsünde **tüm hizmetler**' i seçin veya **kaynak grafik Gezgini**' ni aramak ve seçmek için tüm sayfaların en üstündeki Azure Arama kutusunu kullanın.
+1. From the portal menu, select **All services**, or use the Azure search box at the top of all pages to search for and select **Resource Graph Explorer**.
 
-1. Azure Kaynak Grafiği Gezgini sayfasındaki **sorgu 1** sekmesinde aşağıdaki sorguyu girin:
+1. On the **Query 1** tab on the Azure Resource Graph Explorer page, enter the following query:
 
    ```kusto
    Resources
@@ -74,62 +74,62 @@ Yeni bir paylaşılan sorgu oluşturmak için aşağıdaki adımları izleyin:
    | summarize count() by tostring(properties.storageProfile.osDisk.osType)
    ```
     
-   Alttaki bölmede sorgu sonuçlarını görmek için **Sorguyu Çalıştır** ' ı seçin.
+   Select **Run query** to see the query results in the bottom pane.
 
-   Bu sorgu hakkında daha fazla bilgi için bkz. [Samples: sanal makineleri işletim sistemi türüne göre say](../samples/starter.md#count-virtual-machines-by-os-type).
+   For more information about this query, see [Samples – Count virtual machines by OS type](../samples/starter.md#count-virtual-machines-by-os-type).
 
-1. **Kaydet** veya **farklı kaydet**' i seçin.
+1. Select **Save** or **Save as**.
 
    
-   ![Kaydet düğmesini kullanarak yeni sorguyu kaydetme](../media/create-share-query/save-shared-query-buttons.png)
+   ![Save the new query using the save button](../media/create-share-query/save-shared-query-buttons.png)
 
-1. **Sorguyu Kaydet** bölmesinde, ad için **Işletim sistemine göre sayı VM 'leri** girin.
+1. In the **Save query** pane, enter **Count VMs by OS** for the name.
 
-1. Türü **paylaşılan sorgu**olarak değiştirin, açıklamasını **işletim sistemi türüne göre sanal makine sayısı**olarak ayarlayın ve sorgu kaynağının nerede oluşturulacağını belirtmek için **abonelik** ayarlayın.
+1. Change the type to **Shared query**, set the description to **Count of virtual machines by OS type**, and set **Subscription** to specify where the query resource gets created.
 
-1. **Kaynak olarak Yayımla-Graph-Queries kaynak grubu** onay kutusunu seçili bırakın ve **kaynak grubu konumu** **(US) Orta Batı ABD**olarak ayarlanır.
+1. Leave the **Publish to resource-graph-queries resource group** check box selected and the **Resource Group location** set to **(US) West Central US**.
 
-1. **Sorguyu Kaydet** bölmesinin en altında bulunan **Kaydet** ' i seçin. Sekme başlığı, **sorgu 1** ' den **Işletim sistemine göre VM 'lere göre**değişir. **Kaynak-grafik sorguları** kaynak grubu ilk kez kullanıldığında, kaynak grubu oluşturulduğundan, kaydetme beklenenden uzun sürer.
+1. Select **Save** at the bottom of the **Save query** pane. The tab title changes from **Query 1** to **Count VMs by OS**. The first time the **resource-graph-queries** resource group is used, the save takes longer than expected as the resource group gets created.
    
-   ![Yeni sorguyu paylaşılan sorgu olarak kaydet](../media/create-share-query/save-shared-query-window.png)
+   ![Save the new query as a Shared query](../media/create-share-query/save-shared-query-window.png)
 
    > [!NOTE] 
-   > Paylaşılan sorguyu kaydetmek için mevcut bir kaynak grubunun adını sağlamak istiyorsanız **kaynağa Yayımla-Graph-Queries kaynak grubu** onay kutusunu temizleyebilirsiniz. Sorgular için varsayılan adlandırılmış kaynak grubunun kullanılması, paylaşılan sorguları bulmayı kolaylaştırır. Ayrıca, bu kaynak grubunun amacını daha belirgin hale getirir. Bununla birlikte, mevcut izinlere göre güvenlik nedenleriyle mevcut bir kaynak grubunu seçebilirsiniz.
+   > You can clear the **Publish to resource-graph-queries resource group** check box if you want to provide the name of an existing resource group to save the shared query into. Using the default named resource group for queries makes Shared queries easier to discover. It also makes the purpose of that resource group more apparent. However, you might opt to select an existing resource group for security reasons based on existing permissions.
 
-1. Azure portal Azure Kaynak Grafiği Gezgini ' nden uzakta ilerleyin ve sonra buna geri dönün. Kaydedilen sorgunun artık gösterilmediğine ve **sorgu 1** sekmesinin döndürüldiğine dikkat edin.
+1. Move away from Azure Resource Graph Explorer in the Azure portal and then return to it. Notice that the saved query is no longer displayed and the **Query 1** tab has returned.
 
-1. **Sorgu aç**' ı seçin. Türün **paylaşılan sorgu** olarak ayarlandığını, **aboneliğin** ve **kaynak grubunun** birleşimini, sorguyu kaydettiğiniz yere göre eşleştiğini doğrulayın. **İşletim sistemi öğesine göre kaydedilen sayı VM 'leri** artık **sorgu adı** listesinde görünür. Kaydedilen sorgunun başlık bağlantısını seçerek sorgunun adına sahip yeni bir sekmeye yükleyin. Paylaşılan bir sorgu olarak, başlığın yanındaki sekmede, paylaşılan olarak gösterildiği gibi bir simge görüntüler.
+1. Select **Open a query**. Verify that the type is set to **Shared query** and the combination of **Subscription** and **Resource group** match where you saved the query. The saved **Count VMs by OS** item now appears in the **Query Name** list. Select the title link of the saved query to load it into a new tab with that query's name. As a Shared query, it displays an icon in the tab next to the title, denoting it as shared.
 
-   ![Paylaşılan sorguyu simge ile göster](../media/create-share-query/show-saved-shared-query.png)
+   ![Show the Shared Query with icon](../media/create-share-query/show-saved-shared-query.png)
 
    > [!NOTE] 
-   > Kaydedilen bir sorgu açık olduğunda ve sekme bu adı gösteriyorsa, **Kaydet** düğmesi bunu yapılmış değişikliklerle günceller. Yeni kaydedilmiş bir sorgu oluşturmak için **farklı kaydet** ' i seçin ve yepyeni bir sorgu kaydediyorsunuz gibi ilerleyin.
+   > When a saved query is open and the tab shows its name, the **Save** button updates it with any changes that have been made. To create a new saved query, select **Save as** and proceed as if you were saving a brand new query.
 
-## <a name="discover-shared-queries"></a>Paylaşılan sorguları bulma
+## <a name="discover-shared-queries"></a>Discover Shared queries
 
-Paylaşılan bir sorgu Kaynak Yöneticisi kaynak olduğundan, bir tane bulmak için çeşitli yollar vardır:
+Because a Shared query is a Resource Manager resource, there are several ways to find one:
 
-- Kaynak Grafiği Gezgini ' nden **bir sorgu aç** ' ı seçin ve türü **paylaşılan sorgu**olarak ayarlayın.
-- Kaynak Grafiği sorguları portalı sayfasından.
-- Paylaşılan sorgunun kaydedildiği kaynak grubundan.
-- Kaynak grafiğine bir sorgu üzerinden.
+- From Resource Graph Explorer, select **Open a query** and set the type to **Shared query**.
+- From the Resource Graph queries portal page.
+- From the resource group that the Shared query was saved in.
+- Through a query to Resource Graph.
 
-### <a name="view-resource-graph-queries"></a>Kaynak Grafiği sorgularını görüntüle
+### <a name="view-resource-graph-queries"></a>View Resource Graph queries
 
-Azure portal, kaynak grafiği sorguları sayfasında, oturum açma hesabının erişimi olan paylaşılan sorgular görüntülenir. Bu sayfa, kaynak grafiği sorgusunun adına, aboneliğine, kaynak grubuna ve diğer özelliklerine göre filtrelemeye izin vermez. Ayrıca, bu arabirimi kullanarak kaynak grafiği sorgularını etiketleyebilir, dışarı aktarabilir ve silebilirsiniz.
+In the Azure portal, the Resource Graph queries page displays Shared queries that the logged-in account has access to. This page enables filtering by name, subscription, resource group, and other properties of the Resource Graph query. You can also tag, export, and delete Resource Graph queries by using this interface.
 
-Sorgulardan birini seçmek kaynak grafiği sorgu sayfasını açar. Diğer Kaynak Yöneticisi kaynaklar gibi bu sayfada, etkinlik günlüğü, erişim denetimi ve etiketleriyle birlikte etkileşimli bir genel bakış sunulmaktadır. Ayrıca, bu sayfadan doğrudan bir kaynak kilidi uygulayabilirsiniz.
+Selecting one of the queries opens the Resource Graph query page. Like other Resource Manager resources, this page offers an interactive overview along with the Activity log, access control, and tags. You can also apply a resource lock directly from this page.
 
-**Tüm hizmetler** ' i seçerek veya tüm sayfaların en üstündeki Azure Arama kutusunu kullanarak portal menüsünden Kaynak Grafiği sorguları sayfasına gidin. **Kaynak Grafiği Gezginini**arayın ve seçin.
+Get to the Resource Graph queries page from the portal menu by selecting **All services** or by using the Azure search box at the top of all pages. Search for and select **Resource Graph Explorer**.
 
-### <a name="list-resource-groups-resources"></a>Kaynak grupları kaynaklarını listeleme
+### <a name="list-resource-groups-resources"></a>List Resource groups resources
 
-Kaynak Grafiği sorgusu, kaynak grubunun parçası olan diğer kaynakların yanı sıra listelenir.
-Kaynak Grafiği sorgusunun seçilmesi, bu sorgunun sayfasını açar. Üç nokta ve kısayol menü seçenekleri (sağ tıklatmaya tetiklenir), kaynak Graph sorgu sayfası ile aynı şekilde çalışır.
+The Resource Graph query is listed alongside other resources that are part of a resource group.
+Selecting the Resource Graph query opens the page for that query. The ellipsis and shortcut menu options (triggered by right-clicking) work the same as on the Resource Graph query page.
 
-### <a name="query-resource-graph"></a>Sorgu kaynağı grafiği
+### <a name="query-resource-graph"></a>Query Resource Graph
 
-Kaynak grafından bir sorgu aracılığıyla kaynak grafik sorgularını bulabilirsiniz. Aşağıdaki kaynak Graph sorgu `Microsoft.ResourceGraph/queries`türe göre kısıtlar ve sonra yalnızca adı, değiştirilme süresini ve sorgunun kendisini listelemek için `project` kullanır:
+You can find Resource Graph queries through a query to Resource Graph. The following Resource Graph query limits by type `Microsoft.ResourceGraph/queries`, and then uses `project` to list only the name, time modified, and the query itself:
 
 ```kusto
 Resources
@@ -137,25 +137,25 @@ Resources
 | project name, properties.timeModified, properties.query
 ```
 
-## <a name="delete-a-shared-query"></a>Paylaşılan bir sorguyu silme
+## <a name="delete-a-shared-query"></a>Delete a Shared query
 
-Paylaşılan bir sorgu artık gerekmiyorsa, silin. Paylaşılan bir sorguyu silerek karşılık gelen Kaynak Yöneticisi kaynağını kaldırırsınız. Sonuçlar grafiğinin şimdi bir hata mesajı görüntülemesi için sabitlendiğini belirten panolar. Bu hata iletisi görüntülendiğinde panonuzu temizlemek için **panodan kaldır** düğmesini kullanın.
+If a Shared query is no longer needed, delete it. By deleting a Shared query, you remove the corresponding Resource Manager resource. Any dashboards that the results chart was pinned to now display an error message. When that error message is displayed, use the **Remove from dashboard** button to clean up your dashboard.
 
-Paylaşılan bir sorguyu aşağıdaki arabirimler aracılığıyla silebilirsiniz:
-- Kaynak Grafiği sorguları sayfası
-- Kaynak Grafiği sorgu sayfası
-- Kaynak Grafiği Gezgininde **sorgu aç** sayfası
-- Kaynak grupları sayfası
+You can delete a Shared query through the following interfaces:
+- Resource Graph queries page
+- Resource Graph query page
+- The **Open a query** page in Resource Graph Explorer
+- Resource groups page
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu öğreticiyi tamamladığınızda, artık istemediğiniz özel ve paylaşılan sorguları silin.
+When you're finished with this tutorial, delete the Private and Shared queries you created if you no longer want them.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Portal](../first-query-portal.md)kullanarak ilk sorgunuzu çalıştırın.
-- [Sorgu dili](../concepts/query-language.md)hakkında daha fazla bilgi alın.
-- [Kaynakları araştırma](../concepts/explore-resources.md)hakkında daha fazla bilgi edinin.
-- Bkz. [Başlangıç sorguları](../samples/starter.md)örnekleri.
-- [Gelişmiş sorguların](../samples/advanced.md)örneklerine bakın.
-- [UserVoice](https://feedback.azure.com/forums/915958-azure-governance)hakkında geri bildirim sağlayın.
+- Run your first query by using the [Azure portal](../first-query-portal.md).
+- Get more information about the [query language](../concepts/query-language.md).
+- Learn more about how to [explore resources](../concepts/explore-resources.md).
+- See samples of [Starter queries](../samples/starter.md).
+- See samples of [Advanced queries](../samples/advanced.md).
+- Provide feedback on [UserVoice](https://feedback.azure.com/forums/915958-azure-governance).

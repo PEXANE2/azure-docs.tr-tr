@@ -69,6 +69,8 @@
       href: ddos-protection-overview.md
     - name: Alt ağ uzantısı
       href: subnet-extension.md
+    - name: Alt ağ temsilcisi
+      href: subnet-delegation-overview.md
     - name: Arka Uç Bağlantısı Birlikte Çalışabilirliği
       items:
         - name: Önsöz ve Test Kurulumu

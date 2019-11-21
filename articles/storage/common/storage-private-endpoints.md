@@ -1,6 +1,6 @@
 ---
-title: Azure Storage ile özel uç noktaları kullanma | Microsoft Docs
-description: Sanal ağlardan depolama hesaplarına güvenli erişim için özel uç noktalara genel bakış.
+title: Using Private Endpoints with Azure Storage | Microsoft Docs
+description: Overview of private endpoints for secure access to storage accounts from virtual networks.
 services: storage
 author: santoshc
 ms.service: storage
@@ -9,119 +9,132 @@ ms.date: 09/25/2019
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: fb1f8a1d1f8e1ebbaf3e0e9fe96e3c1bf0ba9ba6
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 06b96bf548be45952e1ff21f0433a1607ab36501
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74078764"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227893"
 ---
-# <a name="using-private-endpoints-for-azure-storage-preview"></a>Azure depolama için özel uç noktaları kullanma (Önizleme)
+# <a name="using-private-endpoints-for-azure-storage-preview"></a>Using Private Endpoints for Azure Storage (Preview)
 
-Bir sanal ağdaki (VNet) istemcilerin [özel bir bağlantı](../../private-link/private-link-overview.md)üzerinden güvenli bir şekilde verilere erişmesine izin vermek Için, Azure depolama hesaplarınız Için [Özel uç noktaları](../../private-link/private-endpoint-overview.md) kullanabilirsiniz. Özel uç nokta, depolama hesabı hizmetiniz için VNet adres alanından bir IP adresi kullanır. VNet ve depolama hesabı arasındaki ağ trafiği, VNet üzerinden ve Microsoft omurga ağındaki özel bir bağlantı üzerinden, genel İnternet 'ten etkilenme olasılığını ortadan kaldırır.
+You can use [Private Endpoints](../../private-link/private-endpoint-overview.md) for your Azure Storage accounts to allow clients on a virtual network (VNet) to securely access data over a [Private Link](../../private-link/private-link-overview.md). The private endpoint uses an IP address from the VNet address space for your storage account service. Network traffic between the clients on the VNet and the storage account traverses over the VNet and a private link on the Microsoft backbone network, eliminating exposure from the public internet.
 
-Depolama hesabınız için özel uç noktalar kullanmak şunları yapmanızı sağlar:
-- Depolama hizmeti için genel uç noktasındaki tüm bağlantıları engelleyecek şekilde depolama hesabınızı güvenli hale getirerek depolama hesabınızın güvenliğini sağlayın.
-- Sanal ağ (VNet) için güvenliği artırarak VNet 'ten veri alımını engelleyebilirsiniz.
-- [VPN](../../vpn-gateway/vpn-gateway-about-vpngateways.md) veya [ExpressRoute](../../expressroute/expressroute-locations.md) Ile özel eşleme ile sanal ağa bağlanan şirket içi ağlardan depolama hesaplarına güvenli bir şekilde bağlanın.
+Using private endpoints for your storage account enables you to:
+- Secure your storage account by configuring the storage firewall to block all connections on the public endpoint for the storage service.
+- Increase security for the virtual network (VNet), by enabling you to block exfiltration of data from the VNet.
+- Securely connect to storage accounts from on-premises networks that connect to the VNet using [VPN](../../vpn-gateway/vpn-gateway-about-vpngateways.md) or [ExpressRoutes](../../expressroute/expressroute-locations.md) with private-peering.
 
-## <a name="conceptual-overview"></a>Kavramsal genel bakış
-![Azure depolama için özel uç noktalara genel bakış](media/storage-private-endpoints/storage-private-endpoints-overview.jpg)
+## <a name="conceptual-overview"></a>Conceptual Overview
+![Private Endpoints for Azure Storage Overview](media/storage-private-endpoints/storage-private-endpoints-overview.jpg)
 
-Özel uç nokta, [sanal ağınızdaki](../../virtual-network/virtual-networks-overview.md) (VNet) bir Azure hizmeti için özel bir ağ arabirimidir. Depolama hesabınız için özel bir uç nokta oluşturduğunuzda, VNet 'iniz ve depolama ağınızdaki istemciler arasında güvenli bağlantı sağlar. Özel uç noktaya sanal Ağınızın IP adresi aralığından bir IP adresi atanır. Özel uç nokta ve depolama hizmeti arasındaki bağlantı güvenli bir özel bağlantı kullanır.
+A Private Endpoint is a special network interface for an Azure service in your [Virtual Network](../../virtual-network/virtual-networks-overview.md) (VNet). When you create a private endpoint for your storage account, it provides secure connectivity between clients on your VNet and your storage. The private endpoint is assigned an IP address from the IP address range of your VNet. The connection between the private endpoint and the storage service uses a secure private link.
 
-VNet 'teki uygulamalar, **diğer durumlarda kullandıkları aynı bağlantı dizelerini ve yetkilendirme mekanizmalarını kullanarak**, Özel uç nokta üzerinden depolama hizmetine sorunsuz bir şekilde bağlanabilir. Özel uç noktalar, REST ve SMB dahil olmak üzere depolama hesabı tarafından desteklenen tüm protokollerle kullanılabilir.
+Applications in the VNet can connect to the storage service over the private endpoint seamlessly, **using the same connection strings and authorization mechanisms that they would use otherwise**. Private endpoints can be used with all protocols supported by the storage account, including REST and SMB.
 
-VNet 'iniz içindeki bir depolama hizmeti için özel bir uç nokta oluşturduğunuzda, depolama hesabı sahibine onay için bir izin isteği gönderilir. Özel uç noktanın oluşturulmasını isteyen kullanıcı aynı zamanda depolama hesabının sahibiyseniz, bu onay isteği otomatik olarak onaylanır.
+When you create a private endpoint for a storage service in your VNet, a consent request is sent for approval to the storage account owner. If the user requesting the creation of the private endpoint is also an owner of the storage account, this consent request is automatically approved.
 
-Depolama hesabı sahipleri, [Azure Portal](https://portal.azure.com)depolama hesabı Için '*Özel uç noktalar*' sekmesi aracılığıyla izin isteklerini ve özel uç noktaları yönetebilir.
-
-> [!TIP]
-> Yalnızca özel uç nokta aracılığıyla depolama hesabınıza erişimi kısıtlamak istiyorsanız, depolama güvenlik duvarını genel uç nokta aracılığıyla tüm erişimi reddedecek şekilde yapılandırın.
-
-Depolama hesabınızı, varsayılan olarak genel bitiş noktası üzerinden erişimi reddedecek şekilde [yapılandırarak](storage-network-security.md#change-the-default-network-access-rule) , depolama hesabınızı yalnızca sanal ağınızdan gelen bağlantıları kabul edecek şekilde güvenli hale getirebilirsiniz. Depolama güvenlik duvarı yalnızca genel uç nokta üzerinden erişimi denetlemediğinden, özel bir uç noktası olan VNet 'ten gelen trafiğe izin vermek için bir güvenlik duvarı kuralına gerek yoktur. Bunun yerine özel uç noktalar, depolama hizmetine alt ağ erişimi sağlamak için izin akışını kullanır.
-
-### <a name="private-endpoints-for-storage-service"></a>Depolama hizmeti için özel uç noktalar
-
-Özel uç nokta oluştururken, bağlandığı depolama hesabını ve depolama hizmetini belirtmeniz gerekir. Her depolama hizmeti için, [BLOB](../blobs/storage-blobs-overview.md), [Data Lake Storage 2.](../blobs/data-lake-storage-introduction.md), [Dosya](../files/storage-files-introduction.md), [kuyruk](../queues/storage-queues-introduction.md), [tablo](../tables/table-storage-overview.md)veya [statik Web siteleri](../blobs/storage-blob-static-website.md)olmak üzere erişmeniz gereken bir depolama hesabında ayrı bir özel uç noktaya ihtiyacınız vardır.
+Storage account owners can manage consent requests and the private endpoints, through the '*Private Endpoints*' tab for the storage account in the [Azure portal](https://portal.azure.com).
 
 > [!TIP]
-> RA-GRS hesaplarında daha iyi okuma performansı için depolama hizmetinin ikincil örneği için ayrı bir özel uç nokta oluşturun.
+> If you want to restrict access to your storage account through the private endpoint only, configure the storage firewall to deny or control access through the public endpoint.
 
-[Okuma Erişimli Coğrafi olarak yedekli depolama hesabında](storage-redundancy-grs.md#read-access-geo-redundant-storage)okuma kullanılabilirliği için, hizmetin birincil ve ikincil örneklerinde ayrı özel uç noktalara ihtiyacınız vardır. **Yük devretme**için ikincil örnek için özel bir uç nokta oluşturmanız gerekmez. Özel uç nokta, yük devretmeden sonra otomatik olarak yeni birincil örneğe bağlanır.
+You can secure your storage account to only accept connections from your VNet, by [configuring the storage firewall](storage-network-security.md#change-the-default-network-access-rule) to deny access through its public endpoint by default. You don't need a firewall rule to allow traffic from a VNet that has a private endpoint, since the storage firewall only controls access through the public endpoint. Private endpoints instead rely on the consent flow for granting subnets access to the storage service.
+
+### <a name="private-endpoints-for-storage-service"></a>Private Endpoints for Storage Service
+
+When creating the private endpoint, you must specify the storage account and the storage service to which it connects. You need a separate private endpoint for each storage service in a storage account that you need to access, namely [Blobs](../blobs/storage-blobs-overview.md), [Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md), [Files](../files/storage-files-introduction.md), [Queues](../queues/storage-queues-introduction.md), [Tables](../tables/table-storage-overview.md), or [Static Websites](../blobs/storage-blob-static-website.md).
+
+> [!TIP]
+> Create a separate private endpoint for the secondary instance of the storage service for better read performance on RA-GRS accounts.
+
+For read availability on a [read-access geo redundant storage account](storage-redundancy-grs.md#read-access-geo-redundant-storage), you need separate private endpoints for both the primary and secondary instances of the service. You don't need to create a private endpoint for the secondary instance for **failover**. The private endpoint will automatically connect to the new primary instance after failover.
 
 #### <a name="resources"></a>Kaynaklar
 
-Depolama hesabınız için özel bir uç nokta oluşturma hakkında daha ayrıntılı bilgi için aşağıdaki makalelere bakın:
+For more detailed information on creating a private endpoint for your storage account, refer to the following articles:
 
-- [Azure portal depolama hesabı deneyiminden bir depolama hesabına özel olarak bağlanma](../../private-link/create-private-endpoint-storage-portal.md)
-- [Azure portal özel bağlantı merkezini kullanarak özel bir uç nokta oluşturma](../../private-link/create-private-endpoint-portal.md)
-- [Azure CLı kullanarak özel uç nokta oluşturma](../../private-link/create-private-endpoint-cli.md)
-- [Azure PowerShell kullanarak özel uç nokta oluşturma](../../private-link/create-private-endpoint-powershell.md)
+- [Connect privately to a storage account from the Storage Account experience in the Azure portal](../../private-link/create-private-endpoint-storage-portal.md)
+- [Create a private endpoint using the Private Link Center in the Azure portal](../../private-link/create-private-endpoint-portal.md)
+- [Create a private endpoint using Azure CLI](../../private-link/create-private-endpoint-cli.md)
+- [Create a private endpoint using Azure PowerShell](../../private-link/create-private-endpoint-powershell.md)
 
-### <a name="dns-changes-for-private-endpoints"></a>Özel uç noktalar için DNS değişiklikleri
+### <a name="connecting-to-private-endpoints"></a>Connecting to Private Endpoints
 
-Bir sanal ağ üzerindeki istemcilerin, özel bir uç nokta kullanılırken bile depolama hesabı için aynı bağlantı dizesini kullanması gerekir.
+Clients on a VNet using the private endpoint should use the same connection string for the storage account, as clients connecting to the public endpoint. We rely upon DNS resolution to automatically route the connections from the VNet to the storage account over a private link.
 
-Özel bir uç nokta oluşturduğunuzda, bu depolama uç noktası için DNS CNAME kaynak kaydını, '*Privatelink*' önekine sahip bir alt etki alanındaki diğer adla güncelleştiririz. Varsayılan olarak, sanal ağa bağlı [Özel BIR DNS bölgesi](../../dns/private-dns-overview.md) de oluşturacağız. Bu özel DNS bölgesi, '*Privatelink*' ön ekine sahip alt etki alanına karşılık gelir ve özel uç noktalar Için DNS A kaynak kayıtlarını içerir.
+> [!IMPORTANT]
+> Use the same connection string to connect to the storage account using private endpoints, as you'd use otherwise. Please don't connect to the storage account using its '*privatelink*' subdomain URL.
 
-Depolama uç noktası URL 'sini VNet dışından özel uç noktayla çözdüğünde, depolama hizmetinin genel uç noktasına dönüşür. Özel uç noktayı barındıran VNet 'ten çözümlendiğinde, depolama uç noktası URL 'SI özel uç noktanın IP adresine çözümlenir.
+We create a [private DNS zone](../../dns/private-dns-overview.md) attached to the VNet with the necessary updates for the private endpoints, by default. However, if you're using your own DNS server, you may need to make additional changes to your DNS configuration. The section on [DNS changes](#dns-changes-for-private-endpoints) below describes the updates required for private endpoints.
 
-Yukarıdaki gösterilen örnek için, Özel uç noktayı barındıran VNet dışından çözümlendiğinde ' StorageAccountA ' depolama hesabı için DNS kaynak kayıtları şu şekilde olur:
+## <a name="dns-changes-for-private-endpoints"></a>DNS changes for Private Endpoints
 
-| Ad                                                  | Tür  | Değer                                                 |
+The DNS CNAME resource record for a storage account with a private endpoint is updated to an alias in a subdomain with the prefix '*privatelink*'. By default, we also create a [private DNS zone](../../dns/private-dns-overview.md) attached to the VNet that corresponds to the subdomain with the prefix '*privatelink*', and contains the DNS A resource records for the private endpoints.
+
+When you resolve the storage endpoint URL from outside the VNet with the private endpoint, it resolves to the public endpoint of the storage service. When resolved from the VNet hosting the private endpoint, the storage endpoint URL resolves to the private endpoint's IP address.
+
+For the illustrated example above, the DNS resource records for the storage account 'StorageAccountA', when resolved from outside the VNet hosting the private endpoint, will be:
+
+| Adı                                                  | Tür  | Değer                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
-| ``StorageAccountA.privatelink.blob.core.windows.net`` | CNAME | \<depolama hizmeti genel uç noktası\>                   |
-| \<depolama hizmeti genel uç noktası\>                   | A     | \<depolama hizmeti genel IP adresi\>                 |
+| ``StorageAccountA.privatelink.blob.core.windows.net`` | CNAME | \<storage service public endpoint\>                   |
+| \<storage service public endpoint\>                   | A     | \<storage service public IP address\>                 |
 
-Daha önce belirtildiği gibi, depolama güvenlik duvarını kullanarak genel uç nokta aracılığıyla tüm erişimi reddedebilirsiniz.
+As previously mentioned, you can deny or control access for clients outside the VNet through the public endpoint using the storage firewall.
 
-Özel uç noktasını barındıran VNet 'teki bir istemci tarafından çözümlendiğinde StorageAccountA için DNS kaynak kayıtları şu şekilde olur:
+The DNS resource records for StorageAccountA, when resolved by a client in the VNet hosting the private endpoint, will be:
 
-| Ad                                                  | Tür  | Değer                                                 |
+| Adı                                                  | Tür  | Değer                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
 | ``StorageAccountA.privatelink.blob.core.windows.net`` | A     | 10.1.1.5                                              |
 
-Bu yaklaşım, Özel uç noktaları barındıran VNet 'ten **aynı bağlantı dizesinin** yanı sıra VNET dışındaki istemcileri kullanarak depolama hesabına erişim sağlar. VNet dışındaki tüm istemcilere erişimi reddetmek için depolama güvenlik duvarını kullanabilirsiniz.
+This approach enables access to the storage account **using the same connection string** for clients on the VNet hosting the private endpoints, as well as clients outside the VNet.
 
-> [!IMPORTANT]
-> Diğer durumlarda kullandığınız gibi, Özel uç noktalar üzerinden depolama hesabına bağlanmak için aynı bağlantı dizesini kullanın. Lütfen '*Privatelink*' alt etki alanı URL 'sini kullanarak depolama hesabına bağlanmayın.
+If you are using a custom DNS server on your network, clients must be able to resolve the FQDN for the storage account endpoint to the private endpoint IP address. For this, you must configure your DNS server to delegate your private link subdomain to the private DNS zone for the VNet, or configure the A records for '*StorageAccountA.privatelink.blob.core.windows.net*' with the private endpoint IP address. 
 
 > [!TIP]
-> Özel veya şirket içi bir DNS sunucusu kullanırken, depolama hizmetinin ' privatelınk ' alt etki alanına karşılık gelen bir DNS bölgesindeki Özel uç noktalar için DNS kaynak kayıtlarını yapılandırmalısınız.
+> When using a custom or on-premises DNS server, you should configure your DNS server to resolve the storage account name in the 'privatelink' subdomain to the private endpoint IP address. You can do this by delegating the 'privatelink' subdomain to the private DNS zone of the VNet, or configuring the DNS zone on your DNS server and adding the DNS A records.
 
-Depolama Hizmetleri için özel uç noktalar için önerilen DNS bölge adları şunlardır:
+The recommended DNS zone names for private endpoints for storage services are:
 
-| Depolama hizmeti        | Bölge adı                            |
+| Storage service        | Zone name                            |
 | :--------------------- | :----------------------------------- |
-| Blob hizmeti           | `privatelink.blob.core.windows.net`  |
+| Blob Hizmeti           | `privatelink.blob.core.windows.net`  |
 | Data Lake Storage Gen2 | `privatelink.dfs.core.windows.net`   |
-| Dosya hizmeti           | `privatelink.file.core.windows.net`  |
-| Kuyruk hizmeti          | `privatelink.queue.core.windows.net` |
-| Tablo hizmeti          | `privatelink.table.core.windows.net` |
-| Statik Web siteleri        | `privatelink.web.core.windows.net`   |
+| File service           | `privatelink.file.core.windows.net`  |
+| Queue service          | `privatelink.queue.core.windows.net` |
+| Table service          | `privatelink.table.core.windows.net` |
+| Static Websites        | `privatelink.web.core.windows.net`   |
+
+#### <a name="resources"></a>Kaynaklar
+
+For additional guidance on configuring your own DNS server to support private endpoints, refer to the following articles:
+
+- [Azure sanal ağlarındaki kaynaklar için ad çözümlemesi](/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
+- [DNS configuration for Private Endpoints](/private-link/private-endpoint-overview#dns-configuration)
 
 ## <a name="pricing"></a>Fiyatlandırma
 
-Fiyatlandırma ayrıntıları için bkz. [Azure özel bağlantı fiyatlandırması](https://azure.microsoft.com/pricing/details/private-link).
+For pricing details, see [Azure Private Link pricing](https://azure.microsoft.com/pricing/details/private-link).
 
 ## <a name="known-issues"></a>Bilinen Sorunlar
 
-### <a name="copy-blob-support"></a>Blob 'U kopyalama desteği
+### <a name="copy-blob-support"></a>Copy Blob support
 
-Önizleme sırasında, kaynak depolama hesabı bir güvenlik duvarı tarafından korunduğunda özel uç noktalar aracılığıyla erişilen depolama hesaplarına verilen [kopyalama blobu](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) komutlarını desteklemiyoruz.
+During the preview, we don't support [Copy Blob](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) commands issued to storage accounts accessed through private endpoints when the source storage account is protected by a firewall.
 
-### <a name="subnets-with-service-endpoints"></a>Hizmet uç noktaları içeren alt ağlar
-Şu anda, hizmet uç noktalarına sahip bir alt ağda özel bir uç nokta oluşturamazsınız. Geçici bir çözüm olarak, hizmet uç noktaları ve özel uç noktalar için aynı VNet 'te ayrı alt ağlar oluşturabilirsiniz.
+### <a name="subnets-with-service-endpoints"></a>Subnets with Service Endpoints
+Currently, you can't create a private endpoint in a subnet that has service endpoints. As a workaround, you can create separate subnets in the same VNet for service endpoints and private endpoints.
 
-### <a name="storage-access-constraints-for-clients-in-vnets-with-private-endpoints"></a>Özel uç noktalarla VNET 'lerdeki istemciler için depolama erişimi kısıtlamaları
+### <a name="storage-access-constraints-for-clients-in-vnets-with-private-endpoints"></a>Storage access constraints for clients in VNets with Private Endpoints
 
-Özel uç noktaları olan diğer depolama hesaplarına erişirken, mevcut özel uç noktalar ile VNET 'lerdeki istemciler. Örneğin, bir VNet N1 'nin bir depolama hesabı için a1, blob hizmeti için özel bir uç noktası olduğunu varsayalım. A2 depolama hesabı, blob hizmeti için bir VNet için bir özel uç nokta içeriyorsa, VNet N1 içindeki istemciler de özel bir uç nokta kullanarak a2 hesabının blob hizmetine da erişir. A2 depolama hesabı, blob hizmeti için özel uç nokta içermiyorsa, VNet N1 içindeki istemciler blob hizmetine özel bir uç nokta olmadan erişebilir.
+Clients in VNets with existing private endpoints face constraints when accessing other storage accounts that have private endpoints. For instance, suppose a VNet N1 has a private endpoint for a storage account A1 for, say, the blob service. If storage account A2 has a private endpoint in a VNet N2 for the blob service, then clients in VNet N1 must also access the blob service of account A2 using a private endpoint. If storage account A2 does not have any private endpoints for the blob service, then clients in VNet N1 can access its blob service without a private endpoint.
 
-Bu kısıtlama, a2 hesabı özel bir uç nokta oluşturduğunda yapılan DNS değişikliklerinin bir sonucudur.
+This constraint is a result of the DNS changes made when account A2 creates a private endpoint.
 
-### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>Özel uç noktaları olan alt ağlar için ağ güvenlik grubu kuralları
+### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>Network Security Group rules for subnets with private endpoints
 
-Şu anda, Özel uç noktaları olan alt ağlar için [ağ güvenlik grubu](../../virtual-network/security-overview.md) (NSG) kurallarını yapılandıramazsınız. Bu sorun için sınırlı bir geçici çözüm, kaynak alt ağlardaki özel uç noktalar için erişim kurallarınızı uygulamaktır, ancak bu yaklaşım daha yüksek bir yönetim yükü gerektirebilir.
+Currently, you can't configure [Network Security Group](../../virtual-network/security-overview.md) (NSG) rules for subnets with private endpoints. A limited workaround for this issue is to implement your access rules for private endpoints on the source subnets, though this approach may require a higher management overhead.

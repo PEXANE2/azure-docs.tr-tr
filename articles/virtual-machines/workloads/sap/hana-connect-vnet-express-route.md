@@ -1,6 +1,6 @@
 ---
-title: Azure 'da SAP HANA sanal ağdan bağlantı kurma (büyük örnekler) | Microsoft Docs
-description: Azure 'da SAP HANA kullanmak için sanal ağdan bağlantı kurun (büyük örnekler).
+title: Connectivity set up from virtual network to SAP HANA on Azure (large instances) | Microsoft Docs
+description: Connectivity set up from virtual network to use SAP HANA on Azure (large instances).
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
@@ -13,29 +13,29 @@ ms.workload: infrastructure
 ms.date: 05/25/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 547640ab1a6dd948cf5d17279d784e1b4a37b35e
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 5fbcc6ace4923d8aa2d938cd9fffe7a16c4fc1ff
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101246"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74206738"
 ---
-# <a name="connect-a-virtual-network-to-hana-large-instances"></a>Sanal ağı HANA büyük örneklerine bağlama
+# <a name="connect-a-virtual-network-to-hana-large-instances"></a>Connect a virtual network to HANA large instances
 
-Azure sanal ağını oluşturduktan sonra, bu ağı Azure büyük örneklerinde SAP HANA bağlayabilirsiniz. Sanal ağ üzerinde bir Azure ExpressRoute Ağ Geçidi oluşturun. Bu ağ geçidi, sanal ağı HANA büyük örnek damgasında müşteri kiracıya bağlanan ExpressRoute bağlantı hattına bağlanmanızı sağlar.
+After you've created an Azure virtual network, you can connect that network to SAP HANA on Azure large instances. Create an Azure ExpressRoute gateway on the virtual network. This gateway enables you to link the virtual network to the ExpressRoute circuit that connects to the customer tenant on the HANA Large Instance stamp.
 
 > [!NOTE] 
-> Bu adımın tamamlanması 30 dakika kadar sürebilir. Yeni ağ geçidi, belirlenen Azure aboneliğinde oluşturulur ve ardından belirtilen Azure sanal ağına bağlanır.
+> This step can take up to 30 minutes to complete. The new gateway is created in the designated Azure subscription, and then connected to the specified Azure virtual network.
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
-Bir ağ geçidi zaten varsa, bir ExpressRoute ağ geçidi olup olmadığını kontrol edin. ExpressRoute ağ geçidi değilse, ağ geçidini silin ve ExpressRoute ağ geçidi olarak yeniden oluşturun. Bir ExpressRoute ağ geçidi zaten kurulduysa, "sanal ağları bağlama" başlıklı bu makalenin aşağıdaki bölümüne bakın. 
+If a gateway already exists, check whether it's an ExpressRoute gateway or not. If it is not an ExpressRoute gateway, delete the gateway, and re-create it as an ExpressRoute gateway. If an ExpressRoute gateway is already established, see the following section of this article, "Link virtual networks." 
 
-- Sanal ağınıza bağlı bir ExpressRoute VPN Gateway oluşturmak için [Azure Portal](https://portal.azure.com/) ya da PowerShell kullanın.
-  - Azure portal kullanıyorsanız, yeni bir **sanal ağ geçidi**ekleyin ve ardından ağ geçidi türü olarak **ExpressRoute** ' u seçin.
-  - PowerShell kullanıyorsanız, önce en son [Azure PowerShell SDK 'sını](https://azure.microsoft.com/downloads/)indirip kullanın. 
+- Use either the [Azure portal](https://portal.azure.com/) or PowerShell to create an ExpressRoute VPN gateway connected to your virtual network.
+  - If you use the Azure portal, add a new **Virtual Network Gateway**, and then select **ExpressRoute** as the gateway type.
+  - If you use PowerShell, first download and use the latest [Azure PowerShell SDK](https://azure.microsoft.com/downloads/). 
  
-Aşağıdaki komutlar bir ExpressRoute ağ geçidi oluşturur. Önünde bir _$_ olan metinler, belirli bilgileriniz ile güncelleştirilmeleri gereken kullanıcı tanımlı değişkenlerdir.
+The following commands create an ExpressRoute gateway. The texts preceded by a _$_ are user-defined variables that should be updated with your specific information.
 
 ```powershell
 # These Values should already exist, update to match your environment
@@ -63,16 +63,16 @@ New-AzVirtualNetworkGateway -Name $myGWName -ResourceGroupName $myGroupName -Loc
 -GatewaySku $myGWSku -VpnType PolicyBased -EnableBgp $true
 ```
 
-Bu örnekte, HighPerformance ağ geçidi SKU 'SU kullanılmıştır. Seçenekleriniz, Azure 'daki SAP HANA (büyük örnekler) için desteklenen tek ağ geçidi SKU 'Ları olarak yüksek performans veya UltraPerformance.
+In this example, the HighPerformance gateway SKU was used. Your options are HighPerformance or UltraPerformance as the only gateway SKUs that are supported for SAP HANA on Azure (large instances).
 
 > [!IMPORTANT]
-> Tür II sınıf SKU 'sunda HANA büyük örnekleri için UltraPerformance ağ geçidi SKU 'sunu kullanmanız gerekir.
+> For HANA large instances of the Type II class SKU, you must use the UltraPerformance Gateway SKU.
 
-## <a name="link-virtual-networks"></a>Sanal ağları bağlama
+## <a name="link-virtual-networks"></a>Link virtual networks
 
-Azure sanal ağında artık bir ExpressRoute ağ geçidi vardır. ExpressRoute ağ geçidini SAP HANA Büyük Örnekleri ExpressRoute devresine bağlamak için Microsoft tarafından sunulan yetkilendirme bilgilerini kullanın. Azure portal veya PowerShell kullanarak bağlanabilirsiniz. PowerShell yönergeleri aşağıdaki gibidir. 
+The Azure virtual network now has an ExpressRoute gateway. Use the authorization information provided by Microsoft to connect the ExpressRoute gateway to the SAP HANA Large Instances ExpressRoute circuit. You can connect by using the Azure portal or PowerShell. The PowerShell instructions are as follows. 
 
-Her bir bağlantı için farklı bir AuthGUID kullanarak her bir ExpressRoute ağ geçidi için aşağıdaki komutları çalıştırın. Aşağıdaki betikte gösterilen ilk iki giriş, Microsoft tarafından verilen bilgilerden gelir. Ayrıca, Authguıd her sanal ağ ve ağ geçidi için özeldir. Başka bir Azure sanal ağı eklemek istiyorsanız, ExpressRoute bağlantı hattı için Microsoft 'tan Azure 'da HANA büyük örnekleri bağlayan başka bir Authıd almanız gerekir. 
+Run the following commands for each ExpressRoute gateway by using a different AuthGUID for each connection. The first two entries shown in the following script come from the information provided by Microsoft. Also, the AuthGUID is specific for every virtual network and its gateway. If you want to add another Azure virtual network, you need to get another AuthID for your ExpressRoute circuit that connects HANA large instances into Azure from Microsoft. 
 
 ```powershell
 # Populate with information provided by Microsoft Onboarding team
@@ -96,12 +96,12 @@ New-AzVirtualNetworkGatewayConnection -Name $myConnectionName `
 ```
 
 > [!NOTE]
-> New-AzVirtualNetworkGatewayConnection komutundaki son parametre olan **Expressroutegatewaybypass** , ExpressRoute hızlı yolunu sağlayan yeni bir parametredir. HANA büyük örnek birimleriniz ile Azure VM 'Ler arasındaki ağ gecikmesini azaltan bir işlev. İşlevselliği 2019 Mayıs 'ta eklenmiştir. Daha fazla ayrıntı için [SAP HANA (büyük örnekler) ağ mimarisi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture)makalesine bakın. Komutları çalıştırmadan önce PowerShell cmdlet 'lerinin en son sürümünü çalıştırdığınızdan emin olun.
+> The last parameter in the command New-AzVirtualNetworkGatewayConnection, **ExpressRouteGatewayBypass** is a new parameter that enables ExpressRoute Fast Path. A functionality that reduces network latency between your HANA Large Instance units and Azure VMs. The functionality got added in May 2019. For more details, check the article [SAP HANA (Large Instances) network architecture](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture). Make sure that you are running the latest version of PowerShell cmdlets before running the commands.
 
-Ağ geçidini aboneliğinizle ilişkili birden fazla ExpressRoute devresine bağlamak için bu adımı birden çok kez çalıştırmanız gerekebilir. Örneğin, büyük olasılıkla aynı sanal ağ geçidini, sanal ağı şirket içi ağınıza bağlayan ExpressRoute bağlantı hattına bağlayacağız.
+To connect the gateway to more than one ExpressRoute circuit associated with your subscription, you might need to run this step more than once. For example, you're likely going to connect the same virtual network gateway to the ExpressRoute circuit that connects the virtual network to your on-premises network.
 
-## <a name="applying-expressroute-fast-path-to-existing-hana-large-instance-expressroute-circuits"></a>Mevcut HANA büyük örnek ExpressRoute devresine ExpressRoute hızlı yolu uygulanıyor
-Belgeler, bir HANA büyük örnek dağıtımıyla oluşturulan yeni bir ExpressRoute devresine Azure sanal ağlarınızdan birinin Azure ExpressRoute ağ geçidine nasıl bağlayabileceğini açıklamaktadır. Ancak birçok müşteri zaten ExpressRoute devreleri kurulumuna sahiptir ve sanal ağlarının zaten HANA büyük örneklerine bağlı olmasını sağlar. Yeni ExpressRoute hızlı yolu ağ gecikmesini azalttığından, bu işlevselliği kullanmak için değişikliği uygulamanız önerilir. Yeni bir ExpreesRoute devresini bağlama ve mevcut bir ExpressRoute devresini değiştirme komutları aynı. Sonuç olarak, mevcut bir bağlantı hattını kullanmak üzere değiştirmek için bu PowerShell komutları dizisini çalıştırmanız gerekir 
+## <a name="applying-expressroute-fast-path-to-existing-hana-large-instance-expressroute-circuits"></a>Applying ExpressRoute Fast Path to existing HANA Large Instance ExpressRoute circuits
+The documentation so far explained how to connect a new ExpressRoute circuit that got created with a HANA Large Instance deployment to an Azure ExpressRoute gateway of one of your Azure virtual networks. But many customers already have their ExpressRoute circuits setup already and have their virtual networks connected to HANA Large Instances already. As the new ExpressRoute Fast Path is reducing network latency, it is recommended that you apply the change to use this functionality. The commands to connect a new ExpreesRoute circuit and to change an existing ExpressRoute Circuit are the same. As a result you need to run this sequence of PowerShell commands to change an existing circuit to use 
 
 ```powershell
 # Populate with information provided by Microsoft Onboarding team
@@ -124,39 +124,39 @@ New-AzVirtualNetworkGatewayConnection -Name $myConnectionName `
 -PeerId $PeerID -ConnectionType ExpressRoute -AuthorizationKey $AuthGUID -ExpressRouteGatewayBypass
 ```
 
-ExpressRoute hızlı yolu işlevselliğini etkinleştirmek için yukarıda görüntülenen son parametreyi eklemeniz önemlidir
+It is important that you add the last parameter as displayed above to enable the ExpressRoute Fast Path functionality
 
 
-## <a name="expressroute-global-reach"></a>ExpressRoute Global Reach
-İki senaryonun biri veya her ikisi için Global Reach etkinleştirmek istiyorsanız:
+## <a name="expressroute-global-reach"></a>ExpressRoute Global Reach hakkında
+As you want to enable Global Reach for one or both of the two scenarios:
 
- - Ek proxy veya güvenlik duvarları olmadan HANA sistem çoğaltması
- - Sistem kopyaları veya sistem yenilemeleri gerçekleştirmek üzere iki farklı bölgedeki HANA büyük örnek birimleri arasında yedeklemeleri kopyalama
+ - HANA System Replication without any additional proxies or firewalls
+ - Copying backups between HANA Large Instance units in two different regions to perform system copies or system refreshes
 
-şunları göz önünde bulundurmanız gerekir:
+you need consider that:
 
-- Bir/29 adres alanının adres alanı aralığını sağlamanız gerekir. Bu adres aralığı, HANA büyük örneklerini Azure 'a bağlayan ve Azure 'da veya şirket içinde başka herhangi bir yerde kullandığınız IP adresi aralığınızda çakışmayacak şekilde kullandığınız diğer adres alanı aralıklarıyla çakışmayabilir.
-- Şirket içi rotalarınızı HANA büyük örneklerine tanıtmak için kullanılabilen ASNs (otonom sistem numarası) üzerinde bir sınırlama vardır. Şirket içi ağınız, 65000 – 65020 veya 65515 aralığında özel ASNs ile hiçbir yol bildirmemelidir. 
-- HANA büyük örneklerine şirket içi doğrudan erişim bağlama senaryosu için sizi Azure 'a bağlayan bağlantı ücretini hesaplamanız gerekir. Fiyatlar için [Global Reach eklentisinin](https://azure.microsoft.com/pricing/details/expressroute/)fiyatlarını kontrol edin.
+- You need to provide an address space range of a /29 address space. That address range may not overlap with any of the other address space ranges that you used so far connecting HANA Large Instances to Azure and may not overlap with any of your IP address ranges you used somewhere else in Azure or on-premises.
+- There is a limitation on the ASNs (Autonomous System Number) that can be used to advertise your on-premises routes to HANA Large Instances. Your on-premises must not advertise any routes with private ASNs in the range of 65000 – 65020 or 65515. 
+- For the scenario of connecting on-premises direct access to HANA Large instances, you need to calculate a fee for the circuit that connects you to Azure. For prices, check the prices for [Global Reach Add-On](https://azure.microsoft.com/pricing/details/expressroute/).
 
-Dağıtımınıza uygulanan senaryolardan birini veya her ikisini almak için, Azure ile bir destek iletisi açın ve [Hana büyük örnekler için destek Isteği açma](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-li-portal#open-a-support-request-for-hana-large-instances) bölümünde açıklandığı gibi
+To get one or both of the scenarios applied to your deployment, open a support message with Azure as described in [Open a support request for HANA large Instances](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-li-portal#open-a-support-request-for-hana-large-instances)
 
-Gerekli veriler ve Microsoft 'un isteğiniz üzerinde yönlendirimek ve yürütebilmesi için kullanmanız gereken anahtar sözcükler şöyle görünür:
+Data that is needed and keywords that you need to use for Microsoft to be able to route and execute on your request, looks like:
 
-- Hizmet: SAP HANA Büyük Örneği
-- Sorun türü: Yapılandırma ve Kurulum
-- Sorun alt türü: Sorunum yukarıdaki listede değil
-- Konu ' ağımı Değiştir-Global Reach Ekle '
-- Ayrıntılar: ' Hana büyük örnek kiracısına Global Reach HANA büyük örneğe veya ' Şirket içi olarak HANA büyük örnek kiracısına Global Reach ekleyin.
-- Hana büyük örneği için HANA büyük örnek kiracı örneğine yönelik ek ayrıntılar: Bağlantı yapılacak iki kiracının bulunduğu **ve** **/29 IP adresi aralığını** göndermeniz gereken **iki Azure bölgesini** tanımlamanız gerekir
-- Şirket içi ve HANA büyük örnek kiracısı için ek ayrıntılar: HANA büyük örnek kiracının dağıtıldığı **Azure bölgesini** tanımlamanız gerekir. Ayrıca, şirket içi ve Azure arasında ExpressRoute bağlantı hattını oluştururken aldığınız **kimlik doğrulama GUID 'si** ve **devre eşi kimliğini** sağlamanız gerekir. Ayrıca, **ASN**'nizi de yazmanız gerekir. Son teslim edilebiliri, ExpressRoute Global Reach için bir **/29 IP adresi aralığıdır** .
+- Service: SAP HANA Large Instance
+- Problem type: Configuration and Setup
+- Problem subtype: My problem is not listed above
+- Subject 'Modify my Network - add Global Reach'
+- Details: 'Add Global Reach to HANA Large Instance to HANA Large Instance tenant or 'Add Global Reach to on-premises to HANA Large Instance tenant.
+- Additional details for the HANA Large Instance to HANA Large Instance tenant case: You need to define the **two Azure regions** where the two tenants to connect are located **AND** you need to submit the **/29 IP address range**
+- Additional details for the on-premises to HANA Large Instance tenant case: You need to define the **Azure Region** where the HANA Large Instance tenant is deployed you want to connect to directly. Additionally you need to provide the **Auth GUID** and **Circuit Peer ID** that you received when you established your ExpressRoute circuit between on-premises and Azure. Additionally, you need to name your **ASN**. The last deliverable is a **/29 IP address range** for ExpressRoute Global Reach.
 
 > [!NOTE]
-> Her iki durumu da ele almak istiyorsanız, şimdiye kadar kullanılan başka bir IP adresi aralığıyla çakışmayacak iki farklı/29 IP adresi aralığı sağlamanız gerekir. 
+> If you want to have both cases handled, you need to supply two different /29 IP address ranges that do not overlap with any other IP address range used so far. 
 
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [HLI için ek ağ gereksinimleri](hana-additional-network-requirements.md)
+- [Additional network requirements for HLI](hana-additional-network-requirements.md)

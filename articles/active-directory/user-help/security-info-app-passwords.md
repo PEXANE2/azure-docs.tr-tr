@@ -1,6 +1,6 @@
 ---
-title: Güvenlik bilgilerinde uygulama parolaları oluşturma (Önizleme)-Azure AD
-description: Herhangi bir tarayıcı olmayan uygulamayla veya iki öğeli doğrulamayı desteklemeyen herhangi bir uygulamayla kullanmak için otomatik olarak oluşturulan parolalar (Uygulama parolaları) ayarlayın. Bu uygulama parolası normal bir paroladan ayrıdır ve güvenlik bilgileri sayfasından ayarlanabilir.
+title: Create app passwords from Security info (preview) page - Azure AD
+description: Create auto-generated passwords (app passwords) to use with any non-browser app, or any app that doesn't support two-factor verification, in your organization. This app password is separate from a normal password and can be set up from the Security info page.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,77 +12,77 @@ ms.topic: conceptual
 ms.date: 02/13/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb26d90772fc9e3e3e506946363c76cf02e6b2ef
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ee9f6bc1986cb31b1e21a0678e59bf8269988426
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820335"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231801"
 ---
-# <a name="create-app-passwords-from-your-security-info-preview-page"></a>Güvenlik bilgileri (Önizleme) sayfasından uygulama parolaları oluşturma
+# <a name="create-app-passwords-from-the-security-info-preview-page"></a>Create app passwords from the Security info (preview) page
 
-Outlook 2010 gibi bazı uygulamalar iki aşamalı doğrulamayı desteklemez. Bu destek eksikliği, kuruluşunuzda iki aşamalı doğrulama kullanıyorsanız uygulamanın çalışmamasıdır. Bu sorunu çözmek için, her tarayıcı olmayan uygulamayla birlikte kullanmak üzere otomatik olarak oluşturulan bir parola oluşturarak normal parolanınızdan ayırabilirsiniz.
+Certain apps, such as Outlook 2010, don't support two-step verification. This lack of support means that if you're using two-step verification in your organization, the app won't work. To get around this problem, you can create an auto-generated password to use with each non-browser app, separate from your normal password.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 >[!Important]
->Yöneticiniz uygulama parolalarını kullanmanıza izin vermeyebilir. **Uygulama parolalarını** bir seçenek olarak görmüyorsanız, kuruluşunuzda mevcut değildir.
+>Your administrator may not allow you to use app passwords. If you don't see **App passwords** as an option, they're not available in your organization.
 
-Uygulama parolalarını kullanırken, dikkat edilmesi önemlidir:
+When using app passwords, it's important to remember:
 
-- Uygulama parolaları otomatik olarak oluşturulur ve uygulama başına bir kez oluşturulup girilmelidir.
+- App passwords are auto-generated, and should be created and entered once per app.
 
-- Kullanıcı başına 40 parola sınırı vardır. Bu sınırdan sonra bir tane oluşturmayı denerseniz, yenisini oluşturmaya izin verilmeden önce mevcut bir parolayı silmeniz istenir.
+- There's a limit of 40 passwords per user. If you try to create one after that limit, you'll be prompted to delete an existing password before being allowed to create the new one.
 
     >[!Note]
-    >Office 2013 istemcileri (Outlook dahil) yeni kimlik doğrulama protokollerini destekler ve iki adımlı doğrulama ile kullanılabilir. Bu destek, iki adımlı doğrulama etkinleştirildikten sonra Office 2013 istemcileri için uygulama parolalarına gerek kalmaz. Daha fazla bilgi için bkz. [office 2013 ve office 2016 istemci uygulamalarında modern kimlik doğrulaması nasıl kullanılır](https://support.office.com/article/how-modern-authentication-works-for-office-2013-and-office-2016-client-apps-e4c45989-4b1a-462e-a81b-2a13191cf517) makalesi.
+    >Office 2013 clients (including Outlook) support new authentication protocols and can be used with two-step verification. This support means that after two-step verification is turned on, you'll no longer need app passwords for Office 2013 clients. For more info, see the [How modern authentication works for Office 2013 and Office 2016 client apps](https://support.office.com/article/how-modern-authentication-works-for-office-2013-and-office-2016-client-apps-e4c45989-4b1a-462e-a81b-2a13191cf517) article.
 
-## <a name="create-new-app-passwords"></a>Yeni uygulama parolaları oluşturma
+## <a name="create-new-app-passwords"></a>Create new app passwords
 
-İş veya okul hesabınızla iki aşamalı doğrulama kullanırsanız ve yöneticiniz güvenlik bilgileri deneyimini kullanıyorsa, **güvenlik bilgileri** sayfasını kullanarak uygulama parolalarınızı oluşturabilir ve silebilirsiniz.
+If you use two-step verification with your work or school account and your administrator has turned on the security info experience, you can create and delete your app passwords using the **Security info** page.
 
 >[!Note]
->Yöneticiniz güvenlik bilgileri deneyimini etkinleştirmediyse, [iki adımlı doğrulama için uygulama parolalarını yönetme](multi-factor-authentication-end-user-app-passwords.md) bölümünde yer alan yönergeleri ve bilgileri izlemeniz gerekir.
+>If your administrator hasn't turned on the security info experience, you must follow the instructions and information in the [Manage app passwords for two-step verification](multi-factor-authentication-end-user-app-passwords.md) section.
 
-### <a name="to-create-a-new-app-password"></a>Yeni bir uygulama parolası oluşturmak için
+### <a name="to-create-a-new-app-password"></a>To create a new app password
 
-1. İş veya okul hesabınızda oturum açın ve ardından https://myprofile.microsoft.com/ sayfanıza gidin.
+1. Sign in to your work or school account and then go to your https://myprofile.microsoft.com/ page.
 
-    ![, Vurgulanan güvenlik bilgisi bağlantılarını gösteren profilim sayfası](media/security-info/securityinfo-myprofile-page.png)
+    ![My Profile page, showing highlighted Security info links](media/security-info/securityinfo-myprofile-page.png)
 
-2. Sol gezinti bölmesinden veya **güvenlik bilgileri** bloğundaki bağlantıdan **güvenlik bilgileri** ' ni seçin ve ardından **güvenlik bilgileri** sayfasından **Yöntem Ekle** ' yi seçin.
+2. Select **Security info** from the left navigation pane or from the link in the **Security info** block, and then select **Add method** from the **Security info** page.
 
-    ![Vurgulanan yöntem ekleme seçeneğiyle güvenlik bilgileri sayfası](media/security-info/securityinfo-myprofile-addmethod-page.png)
+    ![Security info page with highlighted Add method option](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
-3. **Yöntem Ekle** sayfasında, açılan listeden **uygulama parolası** ' nı seçin ve ardından **Ekle**' yi seçin.
+3. On the **Add a method** page, select **App password** from the drop-down list, and then select **Add**.
 
-    ![Uygulama parolası seçiliyken Yöntem kutusu Ekle](media/security-info/securityinfo-myprofile-addpassword.png)
+    ![Add method box, with App password selected](media/security-info/securityinfo-myprofile-addpassword.png)
 
-4. Uygulama parolasını gerektiren uygulamanın adını yazın ve ardından **İleri**' yi seçin.
+4. Type the name of the app that requires the app password, and then select **Next**.
 
-    ![Uygulama parolası sayfası, uygulamanın adı](media/security-info/securityinfo-myprofile-password-appname.png)
+    ![App password page, with name of app](media/security-info/securityinfo-myprofile-password-appname.png)
 
-5. **Parola** kutusundan metni kopyalayın, parolayı uygulamanın parola alanına yapıştırın (Bu örnekte, Outlook 2010) ve **bitti**' yi seçin.
+5. Copy the text from the **Password** box, paste the password in the password area of the app (in this example, Outlook 2010), and then select **Done**.
 
-    ![Uygulama parolası sayfası, uygulamanın adı](media/security-info/securityinfo-myprofile-password-copytext.png)
+    ![App password page, with name of app](media/security-info/securityinfo-myprofile-password-copytext.png)
 
-    Parola eklenir ve uygulamanızda başarılı bir şekilde oturum açabilirsiniz.
+    The password is added and you can successfully log in to your app going forward.
 
-## <a name="delete-your-app-passwords"></a>Uygulama parolalarınızı silme
+## <a name="delete-your-app-passwords"></a>Delete your app passwords
 
-Uygulama parolası gerektiren bir uygulamayı artık kullanmanız gerekmiyorsa, ilişkili uygulama parolasını silebilirsiniz. Uygulama parolasının silinmesi, gelecekte kullanılmak üzere kullanılabilir uygulama parolası noktalarından birini serbest bırakır.
+If you no longer need to use an app that requires an app password, you can delete the associated app password. Deleting the app password frees up one of the available app password spots for use in the future.
 
 >[!Important]
->Bir uygulama parolasını yanlışlıkla silerseniz geri alma yöntemi yoktur. Bu makalenin [Yeni uygulama parolaları oluşturma](#create-new-app-passwords) bölümündeki adımları izleyerek yeni bir uygulama parolası oluşturmanız ve uygulamayı yeniden girmeniz gerekir.
+>If you delete an app password by mistake, there's no way to undo it. You'll have to create a new app password and re-enter it into the app, following the steps in the [Create new app passwords](#create-new-app-passwords) section of this article.
 
-### <a name="to-delete-an-app-password"></a>Uygulama parolasını silmek için
+### <a name="to-delete-an-app-password"></a>To delete an app password
 
-1. **Güvenlik bilgileri** sayfasında, belirli bir uygulama için **uygulama parolası** seçeneğinin yanındaki **Sil** bağlantısını seçin.
+1. On the **Security info** page, select the **Delete** link next to the **App password** option for the specific app.
 
-    ![Güvenlik bilgilerinizden uygulama parolası yöntemini silmeye yönelik bağlantı](media/security-info/securityinfo-myprofile-password-appdelete.png)
+    ![Link to delete the app password method from security info](media/security-info/securityinfo-myprofile-password-appdelete.png)
 
-2. **Uygulama parolasını**silmek için onay kutusundan **Evet** ' i seçin. Uygulama parolası silindikten sonra, güvenlik bilgileriniz kaldırılır ve **güvenlik bilgileri** sayfasından kaybolur.
+2. Select **Yes** from the confirmation box to delete the **App password**. After the app password is deleted, it's removed from your security info and it disappears from the **Security info** page.
 
 ## <a name="for-more-information"></a>Daha fazla bilgi edinmek için
 
-- **Güvenlik bilgileri** sayfası ve nasıl ayarlanacağı hakkında daha fazla bilgi için bkz. [güvenlik bilgilerine genel bakış](user-help-security-info-overview.md)
+- For more information about the **Security info** page and how to set it up, see [Security info overview](user-help-security-info-overview.md)

@@ -1,67 +1,63 @@
 ---
-title: Dayanıklı İşlevler performansı ve ölçeği-Azure
-description: Azure Işlevleri için Dayanıklı İşlevler uzantısına giriş.
-services: functions
+title: Performance and scale in Durable Functions - Azure
+description: Introduction to the Durable Functions extension for Azure Functions.
 author: cgillum
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5efe571e2c7ff75ace584755324964003176b5f0
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 15302eb4f89c854210d4fc1aba292c57d4757278
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614705"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231336"
 ---
-# <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler performans ve ölçek (Azure Işlevleri)
+# <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Performance and scale in Durable Functions (Azure Functions)
 
-Performansı ve ölçeklenebilirliği iyileştirmek için [dayanıklı işlevler](durable-functions-overview.md)'in benzersiz ölçeklendirme özelliklerini anlamak önemlidir.
+To optimize performance and scalability, it's important to understand the unique scaling characteristics of [Durable Functions](durable-functions-overview.md).
 
-Ölçek davranışını anlamak için, temel alınan Azure depolama sağlayıcısının bazı ayrıntılarını anlamanız gerekir.
+To understand the scale behavior, you have to understand some of the details of the underlying Azure Storage provider.
 
-## <a name="history-table"></a>Geçmiş tablosu
+## <a name="history-table"></a>History table
 
-**Geçmiş** tablosu, bir görev hub 'ında bulunan tüm düzenleme örnekleri için geçmiş olaylarını Içeren bir Azure depolama tablosudur. Bu tablonun adı *Taskhubname*geçmişi biçiminde olur. Örnekler çalıştırıldığında, bu tabloya yeni satırlar eklenir. Bu tablonun bölüm anahtarı, düzenleme örnek KIMLIĞINDEN türetilir. Çoğu durumda, Azure Storage 'da iç bölümlerin en iyi şekilde dağıtılmasını sağlayan bir örnek KIMLIĞI rasgeledir.
+The **History** table is an Azure Storage table that contains the history events for all orchestration instances within a task hub. The name of this table is in the form *TaskHubName*History. As instances run, new rows are added to this table. The partition key of this table is derived from the instance ID of the orchestration. An instance ID is random in most cases, which ensures optimal distribution of internal partitions in Azure Storage.
 
-Bir Orchestration örneğinin çalıştırılması gerektiğinde, geçmiş tablosunun uygun satırları belleğe yüklenir. Daha sonra bu *geçmiş olaylar* daha önceden denetim noktası durumuna geri dönmek için Orchestrator işlev koduna yeniden yürütülür. Durumu bu şekilde yeniden derlemek için yürütme geçmişinin kullanılması olay kaynağını belirleme [düzeniyle](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing)etkilenir.
+When an orchestration instance needs to run, the appropriate rows of the History table are loaded into memory. These *history events* are then replayed into the orchestrator function code to get it back into its previously checkpointed state. The use of execution history to rebuild state in this way is influenced by the [Event Sourcing pattern](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing).
 
-## <a name="instances-table"></a>Örnekler tablosu
+## <a name="instances-table"></a>Instances table
 
-**Örnekler** tablosu, bir görev hub 'ında bulunan tüm düzenleme ve varlık örneklerinin durumlarını içeren başka bir Azure depolama tablosudur. Örnek oluşturulurken bu tabloya yeni satırlar eklenir. Bu tablonun bölüm anahtarı Orchestration örnek KIMLIĞI veya varlık anahtarıdır ve satır anahtarı sabit bir sabittir. Düzenleme veya varlık örneği başına bir satır vardır.
+The **Instances** table is another Azure Storage table that contains the statuses of all orchestration and entity instances within a task hub. As instances are created, new rows are added to this table. The partition key of this table is the orchestration instance ID or entity key and the row key is a fixed constant. There is one row per orchestration or entity instance.
 
-Bu tablo, `GetStatusAsync` (.NET) ve `getStatus` (JavaScript) API 'Lerinin yanı sıra [durum sorgusu HTTP API](durable-functions-http-api.md#get-instance-status)'sindeki örnek sorgu isteklerini karşılamak için kullanılır. Sonunda daha önce bahsedilen **Geçmiş** tablosunun içeriğiyle tutarlı tutulur. Örnek sorgu işlemlerini bu şekilde sağlamak için ayrı bir Azure depolama tablosunun kullanılması [komut ve sorgu sorumluluklarının ayrılığı (CQRS) düzeniyle](https://docs.microsoft.com/azure/architecture/patterns/cqrs)etkilenir.
+This table is used to satisfy instance query requests from the `GetStatusAsync` (.NET) and `getStatus` (JavaScript) APIs as well as the [status query HTTP API](durable-functions-http-api.md#get-instance-status). It is kept eventually consistent with the contents of the **History** table mentioned previously. The use of a separate Azure Storage table to efficiently satisfy instance query operations in this way is influenced by the [Command and Query Responsibility Segregation (CQRS) pattern](https://docs.microsoft.com/azure/architecture/patterns/cqrs).
 
-## <a name="internal-queue-triggers"></a>İç sıra Tetikleyicileri
+## <a name="internal-queue-triggers"></a>Internal queue triggers
 
-Orchestrator işlevleri ve etkinlik işlevleri, işlev uygulamasının görev hub 'ında iç kuyruklar tarafından tetiklenir. Kuyrukları bu şekilde kullanmak, güvenilir "en az bir kez" ileti teslimi garantisi sağlar. Dayanıklı İşlevler iki tür kuyruk vardır: **Denetim kuyruğu** ve **iş öğesi kuyruğu**.
+Orchestrator functions and activity functions are both triggered by internal queues in the function app's task hub. Using queues in this way provides reliable "at-least-once" message delivery guarantees. There are two types of queues in Durable Functions: the **control queue** and the **work-item queue**.
 
-### <a name="the-work-item-queue"></a>İş öğesi kuyruğu
+### <a name="the-work-item-queue"></a>The work-item queue
 
-Dayanıklı İşlevler görev hub 'ı başına bir iş öğesi kuyruğu vardır. Bu temel bir sıradır ve Azure Işlevlerinde diğer `queueTrigger` kuyrukla benzer şekilde davranır. Bu kuyruk, tek bir iletiyi aynı anda kuyruktan ayırarak durum bilgisiz *etkinlik işlevlerini* tetiklemek için kullanılır. Bu iletilerin her biri, etkinlik işlevi girişleri ve yürütülecek işlev gibi ek meta veriler içerir. Bir Dayanıklı İşlevler uygulaması birden çok VM 'ye ölçeklenirken, bu VM 'Ler iş öğesi sırasından iş elde etmek için tüm yarışmaya rekabet sağlar.
+There is one work-item queue per task hub in Durable Functions. It is a basic queue and behaves similarly to any other `queueTrigger` queue in Azure Functions. This queue is used to trigger stateless *activity functions* by dequeueing a single message at a time. Each of these messages contains activity function inputs and additional metadata, such as which function to execute. When a Durable Functions application scales out to multiple VMs, these VMs all compete to acquire work from the work-item queue.
 
-### <a name="control-queues"></a>Denetim kuyrukları
+### <a name="control-queues"></a>Control queue(s)
 
-Dayanıklı İşlevler görev hub 'ı başına birden fazla *Denetim kuyruğu* vardır. *Denetim kuyruğu* daha basit iş öğesi sırasından daha karmaşıktır. Denetim kuyrukları, durum bilgisi olan Orchestrator ve varlık işlevlerini tetiklemek için kullanılır. Orchestrator ve Entity işlev örnekleri durum bilgisi olmayan tekton olduğundan, VM 'Ler arasında yük dağıtmak için rekabet eden bir tüketici modeli kullanılması mümkün değildir. Bunun yerine, Orchestrator ve varlık iletileri denetim kuyrukları arasında yük dengelidir. Bu davranış hakkında daha fazla ayrıntı, sonraki bölümlerde bulunabilir.
+There are multiple *control queues* per task hub in Durable Functions. A *control queue* is more sophisticated than the simpler work-item queue. Control queues are used to trigger the stateful orchestrator and entity functions. Because the orchestrator and entity function instances are stateful singletons, it's not possible to use a competing consumer model to distribute load across VMs. Instead, orchestrator and entity messages are load-balanced across the control queues. More details on this behavior can be found in subsequent sections.
 
-Denetim kuyrukları çeşitli düzenleme yaşam döngüsü ileti türlerini içerir. [Orchestrator denetim iletilerini](durable-functions-instance-management.md), etkinlik işlevi *Yanıt* iletilerini ve Zamanlayıcı iletilerini içeren örneklere örnek olarak verilebilir. 32 ' den fazla ileti, tek bir yoklamada denetim sırasından kaldırılır. Bu iletiler, yük verilerinin yanı sıra hangi düzenleme örneğini amaçladığı dahil meta verileri içerir. Aynı düzenleme örneği için birden fazla sıraya alınmış ileti tasarlanıyorsa, bunlar toplu işlem olarak işlenir.
+Control queues contain a variety of orchestration lifecycle message types. Examples include [orchestrator control messages](durable-functions-instance-management.md), activity function *response* messages, and timer messages. As many as 32 messages will be dequeued from a control queue in a single poll. These messages contain payload data as well as metadata including which orchestration instance it is intended for. If multiple dequeued messages are intended for the same orchestration instance, they will be processed as a batch.
 
-### <a name="queue-polling"></a>Sıra yoklama
+### <a name="queue-polling"></a>Queue polling
 
-Dayanıklı görev uzantısı, depolama işlem maliyetlerinde boşta sıra yoklamanın etkisini azaltmak için rastgele bir üstel geri alma algoritması uygular. Bir ileti bulunduğunda, çalışma zamanı hemen başka bir iletiyi denetler; hiçbir ileti bulunamadığında, yeniden denemeden önce bir süre bekler. Sonraki başarısız bir kuyruk iletisi almaya çalıştıktan sonra, bekleme süresi, varsayılan olarak 30 saniye olacak şekilde en fazla bekleme süresine ulaşana kadar artar.
+The durable task extension implements a random exponential back-off algorithm to reduce the effect of idle-queue polling on storage transaction costs. When a message is found, the runtime immediately checks for another message; when no message is found, it waits for a period of time before trying again. After subsequent failed attempts to get a queue message, the wait time continues to increase until it reaches the maximum wait time, which defaults to 30 seconds.
 
-En fazla yoklama gecikmesi [Host. JSON dosyasındaki](../functions-host-json.md#durabletask)`maxQueuePollingInterval` özelliği aracılığıyla yapılandırılabilir. Bu özelliğin daha yüksek bir değere ayarlanması, daha yüksek ileti işleme gecikmeleri oluşmasına neden olabilir. Daha yüksek gecikme süreleri yalnızca işlem yapılmadan sonra beklenmelidir. Bu özelliğin daha düşük bir değere ayarlanması, daha yüksek depolama işlemleri nedeniyle depolama maliyetlerinin artmasına neden olabilir.
+The maximum polling delay is configurable via the `maxQueuePollingInterval` property in the [host.json file](../functions-host-json.md#durabletask). Setting this property to a higher value could result in higher message processing latencies. Higher latencies would be expected only after periods of inactivity. Setting this property to a lower value could result in higher storage costs due to increased storage transactions.
 
 > [!NOTE]
-> Azure işlevleri tüketim ve Premium planlarında çalışırken, [Azure Işlevleri ölçek denetleyicisi](../functions-scale.md#how-the-consumption-and-premium-plans-work) her bir denetimi ve iş öğesi kuyruğunu her 10 saniyede bir yoklamaya çalışır. Bu ek yoklama, işlev uygulaması örneklerinin ne zaman etkinleştireceğinize karar vermek ve ölçek kararları almak için gereklidir. Yazma sırasında, bu 10 saniyelik Aralık sabittir ve yapılandırılamaz.
+> When running in the Azure Functions Consumption and Premium plans, the [Azure Functions Scale Controller](../functions-scale.md#how-the-consumption-and-premium-plans-work) will poll each control and work-item queue once every 10 seconds. This additional polling is necessary to determine when to activate function app instances and to make scale decisions. At the time of writing, this 10 second interval is constant and cannot be configured.
 
-## <a name="storage-account-selection"></a>Depolama hesabı seçimi
+## <a name="storage-account-selection"></a>Storage account selection
 
-Dayanıklı İşlevler tarafından kullanılan kuyruklar, tablolar ve Bloblar yapılandırılmış bir Azure depolama hesabında oluşturulur. Kullanılacak hesap, **Host. JSON** dosyasında `durableTask/storageProvider/connectionStringName` ayarı (veya dayanıklı işlevler 1. x) `durableTask/azureStorageConnectionStringName` ayarı kullanılarak belirtilebilir.
+The queues, tables, and blobs used by Durable Functions are created in a configured Azure Storage account. The account to use can be specified using the `durableTask/storageProvider/connectionStringName` setting (or `durableTask/azureStorageConnectionStringName` setting in Durable Functions 1.x) in the **host.json** file.
 
-### <a name="durable-functions-2x"></a>Dayanıklı İşlevler 2. x
+### <a name="durable-functions-2x"></a>Durable Functions 2.x
 
 ```json
 {
@@ -75,7 +71,7 @@ Dayanıklı İşlevler tarafından kullanılan kuyruklar, tablolar ve Bloblar ya
 }
 ```
 
-### <a name="durable-functions-1x"></a>Dayanıklı İşlevler 1. x
+### <a name="durable-functions-1x"></a>Durable Functions 1.x
 
 ```json
 {
@@ -87,13 +83,13 @@ Dayanıklı İşlevler tarafından kullanılan kuyruklar, tablolar ve Bloblar ya
 }
 ```
 
-Belirtilmemişse, varsayılan `AzureWebJobsStorage` depolama hesabı kullanılır. Ancak, performansa duyarlı iş yükleri için varsayılan olmayan bir depolama hesabının yapılandırılması önerilir. Dayanıklı İşlevler Azure Storage 'ı yoğun bir şekilde kullanır ve adanmış bir depolama hesabı kullanılması, Azure Işlevleri ana bilgisayarı tarafından iç kullanımlardan Dayanıklı İşlevler depolama kullanımını yalıtır.
+If not specified, the default `AzureWebJobsStorage` storage account is used. For performance-sensitive workloads, however, configuring a non-default storage account is recommended. Durable Functions uses Azure Storage heavily, and using a dedicated storage account isolates Durable Functions storage usage from the internal usage by the Azure Functions host.
 
-## <a name="orchestrator-scale-out"></a>Orchestrator ölçeği genişletme
+## <a name="orchestrator-scale-out"></a>Orchestrator scale-out
 
-Etkinlik işlevleri durum bilgisiz ve VM 'Ler eklenerek otomatik olarak ölçeklendirilir. Diğer yandan Orchestrator işlevleri ve varlıkları bir veya daha fazla denetim kuyruğuna göre *bölümlenmiştir* . Denetim sıralarının sayısı **Host. JSON** dosyasında tanımlanmıştır. Aşağıdaki örnek Host. JSON kod parçacığı, `durableTask/storageProvider/partitionCount` özelliğini (veya Dayanıklı İşlevler 1. x) `durableTask/partitionCount` `3`olarak ayarlar.
+Activity functions are stateless and scaled out automatically by adding VMs. Orchestrator functions and entities, on the other hand, are *partitioned* across one or more control queues. The number of control queues is defined in the **host.json** file. The following example host.json snippet sets the `durableTask/storageProvider/partitionCount` property (or `durableTask/partitionCount` in Durable Functions 1.x) to `3`.
 
-### <a name="durable-functions-2x"></a>Dayanıklı İşlevler 2. x
+### <a name="durable-functions-2x"></a>Durable Functions 2.x
 
 ```json
 {
@@ -107,7 +103,7 @@ Etkinlik işlevleri durum bilgisiz ve VM 'Ler eklenerek otomatik olarak ölçekl
 }
 ```
 
-### <a name="durable-functions-1x"></a>Dayanıklı İşlevler 1. x
+### <a name="durable-functions-1x"></a>Durable Functions 1.x
 
 ```json
 {
@@ -119,44 +115,44 @@ Etkinlik işlevleri durum bilgisiz ve VM 'Ler eklenerek otomatik olarak ölçekl
 }
 ```
 
-Bir görev hub 'ı, 1 ile 16 arasında bölüm arasında yapılandırılabilir. Belirtilmemişse, varsayılan bölüm sayısı **4**' dir.
+A task hub can be configured with between 1 and 16 partitions. If not specified, the default partition count is **4**.
 
-Birden çok işlev ana bilgisayar örneğine (genellikle farklı VM 'lerde) ölçeklendirirken, her örnek denetim kuyruklarından birinde bir kilit alır. Bu kilitler, BLOB depolama kiraları olarak dahili olarak uygulanır ve bir düzenleme örneğinin veya varlığının aynı anda yalnızca tek bir konak örneği üzerinde çalıştığından emin olun. Bir görev hub 'ı üç denetim kuyruğu ile yapılandırıldıysa, düzenleme örnekleri ve varlıklar, üç VM 'ye kadar fazla yük dengeli olabilir. Etkinlik işlev yürütmesinin kapasitesini artırmak için ek VM 'Ler eklenebilir.
+When scaling out to multiple function host instances (typically on different VMs), each instance acquires a lock on one of the control queues. These locks are internally implemented as blob storage leases and ensure that an orchestration instance or entity only runs on a single host instance at a time. If a task hub is configured with three control queues, orchestration instances and entities can be load-balanced across as many as three VMs. Additional VMs can be added to increase capacity for activity function execution.
 
-Aşağıdaki diyagramda, Azure Işlevleri 'nin genişleme ortamında depolama varlıklarıyla nasıl etkileşim kurduğu gösterilmektedir.
+The following diagram illustrates how the Azure Functions host interacts with the storage entities in a scaled out environment.
 
-![Diyagramı Ölçeklendir](./media/durable-functions-perf-and-scale/scale-diagram.png)
+![Scale diagram](./media/durable-functions-perf-and-scale/scale-diagram.png)
 
-Önceki diyagramda gösterildiği gibi, tüm VM 'Ler iş öğesi sırasındaki iletiler için rekabet ediyor. Ancak, denetim kuyruklarından yalnızca üç VM tarafından ileti alabilir ve her VM tek bir denetim kuyruğunu kilitler.
+As shown in the previous diagram, all VMs compete for messages on the work-item queue. However, only three VMs can acquire messages from control queues, and each VM locks a single control queue.
 
-Düzenleme örnekleri ve varlıklar tüm denetim kuyruğu örneklerine dağıtılır. Dağıtım, düzenleme veya varlık adı ile anahtar çiftinin örnek KIMLIĞI karma oluşturarak yapılır. Düzenleme örneği kimlikleri varsayılan olarak rastgele GUID 'lerdir ve örneklerin tüm denetim sıralarında eşit bir şekilde dağıtılmasını sağlar.
+Orchestration instances and entities are distributed across all control queue instances. The distribution is done by hashing the instance ID of the orchestration or the entity name and key pair. Orchestration instance IDs by default are random GUIDs, ensuring that instances are equally distributed across all control queues.
 
-Genellikle, Orchestrator işlevlerinin hafif olması amaçlanmıştır ve büyük miktarlarda bilgi işlem gücü gerektirmemelidir. Bu nedenle, düzenleme için harika verimlilik sağlamak üzere çok sayıda denetim kuyruğu bölümü oluşturmak gerekli değildir. Ağır çalışmanın çoğu, sonsuz bir şekilde ölçeklenebilen, durumsuz etkinlik işlevlerinde yapılmalıdır.
+Generally speaking, orchestrator functions are intended to be lightweight and should not require large amounts of computing power. It is therefore not necessary to create a large number of control queue partitions to get great throughput for orchestrations. Most of the heavy work should be done in stateless activity functions, which can be scaled out infinitely.
 
 ## <a name="auto-scale"></a>Otomatik Ölçeklendirme
 
-Tüketim ve elastik Premium planlarında çalışan tüm Azure Işlevlerinde olduğu gibi, Dayanıklı İşlevler [Azure işlevleri ölçek denetleyicisi](../functions-scale.md#runtime-scaling)aracılığıyla otomatik ölçeklendirmeyi destekler. Ölçek denetleyicisi, düzenli aralıklarla _göz atma_ komutları vererek tüm kuyrukların gecikmesini izler. Atılamıyor iletilerinin gecikme sürelerini temel alarak, ölçek denetleyicisi VM ekleme veya kaldırma konusunda karar verir.
+As with all Azure Functions running in the Consumption and Elastic Premium plans, Durable Functions supports auto-scale via the [Azure Functions scale controller](../functions-scale.md#runtime-scaling). The Scale Controller monitors the latency of all queues by periodically issuing _peek_ commands. Based on the latencies of the peeked messages, the Scale Controller will decide whether to add or remove VMs.
 
-Ölçek denetleyicisi denetim sırası ileti gecikmelerinin çok yüksek olduğunu belirlerse, ileti gecikmesi kabul edilebilir bir düzeye düşene veya denetim sırası bölüm sayısına ulaştığı sürece VM örnekleri eklenir. Benzer şekilde, Bölüm sayımından bağımsız olarak iş öğesi kuyruğu gecikme süresi yüksekse, ölçek denetleyicisi sürekli olarak VM örnekleri ekler.
+If the Scale Controller determines that control queue message latencies are too high, it will add VM instances until either the message latency decreases to an acceptable level or it reaches the control queue partition count. Similarly, the Scale Controller will continually add VM instances if work-item queue latencies are high, regardless of the partition count.
 
 > [!NOTE]
-> Dayanıklı İşlevler 2,0 ' den başlayarak, işlev uygulamaları elastik Premium plandaki VNET korumalı hizmet uç noktaları içinde çalışacak şekilde yapılandırılabilir. Bu yapılandırmada Dayanıklı İşlevler, ölçek denetleyicisi yerine ölçek isteklerini başlatacak şekilde tetikler.
+> Starting with Durable Functions 2.0, function apps can be configured to run within VNET-protected service endpoints in the Elastic Premium plan. In this configuration, the Durable Functions triggers initiate scale requests instead of the Scale Controller.
 
-## <a name="thread-usage"></a>İş parçacığı kullanımı
+## <a name="thread-usage"></a>Thread usage
 
-Orchestrator işlevleri, yürütmenin çok sayıda yeniden yürütmeye göre belirleyici olmasını sağlamak için tek bir iş parçacığında yürütülür. Bu tek iş parçacıklı yürütme nedeniyle, Orchestrator işlevi iş parçacıklarının CPU yoğun görevleri gerçekleştirmediği, g/ç veya herhangi bir nedenden dolayı engel olmadığı önemli bir işlemdir. G/ç, engelleme veya birden çok iş parçacığı gerektirebilecek herhangi bir iş, etkinlik işlevlerine taşınmalıdır.
+Orchestrator functions are executed on a single thread to ensure that execution can be deterministic across many replays. Because of this single-threaded execution, it's important that orchestrator function threads do not perform CPU-intensive tasks, do I/O, or block for any reason. Any work that may require I/O, blocking, or multiple threads should be moved into activity functions.
 
-Etkinlik işlevleri, normal kuyruk ile tetiklenen işlevlerle aynı davranışa sahiptir. G/ç 'yi güvenle yapabilir, yoğun CPU kullanan işlemler yürütebilir ve birden çok iş parçacığı kullanabilirler. Etkinlik Tetikleyicileri durum bilgisiz olduğundan, sınırsız sayıda VM 'ye serbestçe ölçeklenebilirler.
+Activity functions have all the same behaviors as regular queue-triggered functions. They can safely do I/O, execute CPU intensive operations, and use multiple threads. Because activity triggers are stateless, they can freely scale out to an unbounded number of VMs.
 
-Varlık işlevleri de tek bir iş parçacığında yürütülür ve işlemler tek seferde işlenir. Ancak, varlık işlevlerinin yürütülebilecek kod türü üzerinde hiçbir kısıtlaması yoktur.
+Entity functions are also executed on a single thread and operations are processed one-at-a-time. However, entity functions do not have any restrictions on the type of code that can be executed.
 
-## <a name="concurrency-throttles"></a>Eşzamanlılık kısıtları
+## <a name="concurrency-throttles"></a>Concurrency throttles
 
-Azure Işlevleri tek bir uygulama örneği içinde eşzamanlı olarak birden çok işlevin yürütülmesini destekler. Bu eşzamanlı yürütme paralellik arttırmaya yardımcı olur ve tipik bir uygulamanın zaman içinde deneymesinin "soğuk başladığı" sayısını en aza indirir. Ancak, yüksek eşzamanlılık, ağ bağlantıları veya kullanılabilir bellek gibi VM başına sistem kaynaklarını tüketebilir. İşlev uygulamasının ihtiyaçlarına bağlı olarak, yüksek yükleme durumlarında belleğin tükenme olasılığını ortadan kaldırmak için örnek başına eşzamanlılık azaltma gerekebilir.
+Azure Functions supports executing multiple functions concurrently within a single app instance. This concurrent execution helps increase parallelism and minimizes the number of "cold starts" that a typical app will experience over time. However, high concurrency can exhaust per-VM system resources such network connections or available memory. Depending on the needs of the function app, it may be necessary to throttle the per-instance concurrency to avoid the possibility of running out of memory in high-load situations.
 
-Etkinlik, Orchestrator ve varlık işlevi eşzamanlılık sınırları, **Host. JSON** dosyasında yapılandırılabilir. İlgili ayarlar, etkinlik işlevleri için `durableTask/maxConcurrentActivityFunctions` ve hem Orchestrator hem de varlık işlevleri için `durableTask/maxConcurrentOrchestratorFunctions`.
+Activity, orchestrator, and entity function concurrency limits can be configured in the **host.json** file. The relevant settings are `durableTask/maxConcurrentActivityFunctions` for activity functions and `durableTask/maxConcurrentOrchestratorFunctions` for both orchestrator and entity functions.
 
-### <a name="functions-20"></a>İşlevler 2,0
+### <a name="functions-20"></a>Functions 2.0
 
 ```json
 {
@@ -180,18 +176,18 @@ Etkinlik, Orchestrator ve varlık işlevi eşzamanlılık sınırları, **Host. 
 }
 ```
 
-Önceki örnekte, tek bir VM 'de aynı anda en fazla 10 Orchestrator veya Entity işlevleri ve 10 etkinlik işlevi çalıştırılabilir. Belirtilmezse, eşzamanlı etkinlik ve Orchestrator ya da varlık işlevi yürütmelerinin sayısı, sanal makine üzerindeki çekirdek sayısına göre 10X üzerinden yapılır.
+In the previous example, a maximum of 10 orchestrator or entity functions and 10 activity functions can run on a single VM concurrently. If not specified, the number of concurrent activity and orchestrator or entity function executions is capped at 10X the number of cores on the VM.
 
 > [!NOTE]
-> Bu ayarlar, tek bir VM 'de bellek ve CPU kullanımının yönetilmesine yardımcı olmak için yararlıdır. Ancak, birden çok VM arasında ölçeklendirildiğinde, her VM 'nin kendi sınırları vardır. Bu ayarlar, genel düzeyde eşzamanlılık denetlemek için kullanılamaz.
+> These settings are useful to help manage memory and CPU usage on a single VM. However, when scaled out across multiple VMs, each VM has its own set of limits. These settings can't be used to control concurrency at a global level.
 
-## <a name="extended-sessions"></a>Genişletilmiş oturumlar
+## <a name="extended-sessions"></a>Extended sessions
 
-Genişletilmiş oturumlar, iletileri işlemeyi bitirdikten sonra bile, bellek içinde ayarları ve varlıkları tutan bir ayardır. Genişletilmiş oturumların etkinleştirilmesinin tipik etkisi, Azure depolama hesabına ve genel olarak geliştirilmiş aktarım hızına karşı g/ç 'yi azaltmıştır.
+Extended sessions is a setting that keeps orchestrations and entities in memory even after they finish processing messages. The typical effect of enabling extended sessions is reduced I/O against the Azure Storage account and overall improved throughput.
 
-`durableTask/extendedSessionsEnabled`, **Host. JSON** dosyasında `true` olarak ayarlayarak genişletilmiş oturumları etkinleştirebilirsiniz. `durableTask/extendedSessionIdleTimeoutInSeconds` ayarı, boş bir oturumun bellekte tutulacağı süreyi denetlemek için kullanılabilir:
+You can enable extended sessions by setting `durableTask/extendedSessionsEnabled` to `true` in the **host.json** file. The `durableTask/extendedSessionIdleTimeoutInSeconds` setting can be used to control how long an idle session will be held in memory:
 
-**İşlevler 2,0**
+**Functions 2.0**
 ```json
 {
   "extensions": {
@@ -203,7 +199,7 @@ Genişletilmiş oturumlar, iletileri işlemeyi bitirdikten sonra bile, bellek i�
 }
 ```
 
-**İşlevler 1,0**
+**Functions 1.0**
 ```json
 {
   "durableTask": {
@@ -213,64 +209,64 @@ Genişletilmiş oturumlar, iletileri işlemeyi bitirdikten sonra bile, bellek i�
 }
 ```
 
-Bu ayarın farkında olması için iki olası kenarı vardır:
+There are two potential downsides of this setting to be aware of:
 
-1. İşlev uygulaması bellek kullanımında genel bir artış vardır.
-2. Çok sayıda eşzamanlı, kısa süreli Orchestrator veya varlık işlevi yürütmeleri varsa, üretilen iş için genel bir azalma olabilir.
+1. There's an overall increase in function app memory usage.
+2. There can be an overall decrease in throughput if there are many concurrent, short-lived orchestrator or entity function executions.
 
-Örnek olarak, `durableTask/extendedSessionIdleTimeoutInSeconds` 30 saniyeye ayarlanırsa, 1 saniyeden kısa bir süre içinde çalışan kısa süreli bir Orchestrator veya varlık işlevi bölümü 30 saniye boyunca belleği kaplar. Ayrıca, daha önce bahsedilen `durableTask/maxConcurrentOrchestratorFunctions` kotasına göre sayılır, bu da diğer Orchestrator veya varlık işlevlerinin çalışmasını engelleyebilir.
+As an example, if `durableTask/extendedSessionIdleTimeoutInSeconds` is set to 30 seconds, then a short-lived orchestrator or entity function episode that executes in less than 1 second still occupies memory for 30 seconds. It also counts against the `durableTask/maxConcurrentOrchestratorFunctions` quota mentioned previously, potentially preventing other orchestrator or entity functions from running.
 
-Orchestrator ve Entity işlevlerinde genişletilmiş oturumların belirli etkileri, sonraki bölümlerde açıklanmıştır.
+The specific effects of extended sessions on orchestrator and entity functions are described in the next sections.
 
-### <a name="orchestrator-function-replay"></a>Orchestrator işlevi yeniden yürütme
+### <a name="orchestrator-function-replay"></a>Orchestrator function replay
 
-Daha önce belirtildiği gibi, Orchestrator işlevleri **Geçmiş** tablosunun içerikleri kullanılarak yeniden yürütülür. Varsayılan olarak, bir denetim kuyruğundan bir toplu ileti sıralandığında, Orchestrator işlev kodu yeniden yürütülür. Genişletilmiş Oturumlar etkinleştirildiğinde, Orchestrator işlev örnekleri bellekte daha uzun tutulur ve yeni iletiler tam geçmiş yeniden yürütme olmadan işlenebilir.
+As mentioned previously, orchestrator functions are replayed using the contents of the **History** table. By default, the orchestrator function code is replayed every time a batch of messages are dequeued from a control queue. When extended sessions are enabled, orchestrator function instances are held in memory longer and new messages can be processed without a full history replay.
 
-Genişletilmiş oturumların performans geliştirmesi en sık aşağıdaki durumlarda gözlemlenmiştir:
+The performance improvement of extended sessions is most often observed in the following situations:
 
-* Aynı anda çalışan sınırlı sayıda düzenleme örneği olduğunda.
-* Düzenlemeler, hızlıca tamamlanan çok sayıda sıralı eyleme (ör. yüzlerce etkinlik işlevi çağrısı) sahiptir.
-* , Fan ve fanı yaparken, aynı anda tamamlanan çok sayıda eylem.
-* Orchestrator işlevlerinin büyük iletileri işlemesi veya CPU yoğunluğu olan herhangi bir veri işlemeyi yapması gerektiğinde.
+* When there are a limited number of orchestration instances running concurrently.
+* When orchestrations have large number of sequential actions (e.g. hundreds of activity function calls) that complete quickly.
+* When orchestrations fan-out and fan-in a large number of actions that complete around the same time.
+* When orchestrator functions need to process large messages or do any CPU-intensive data processing.
 
-Diğer tüm durumlarda, genellikle Orchestrator işlevleri için bir observable performans geliştirmesi yoktur.
+In all other situations, there is typically no observable performance improvement for orchestrator functions.
 
 > [!NOTE]
-> Bu ayarlar yalnızca bir Orchestrator işlevi tam olarak geliştirilip sınandıktan sonra kullanılmalıdır. Varsayılan agresif yeniden yürütme davranışı, geliştirme sırasında [Orchestrator işlev kodu kısıtlamaları](durable-functions-code-constraints.md) ihlallerinin algılanması için yararlı olabilir ve bu nedenle varsayılan olarak devre dışıdır.
+> These settings should only be used after an orchestrator function has been fully developed and tested. The default aggressive replay behavior can useful for detecting [orchestrator function code constraints](durable-functions-code-constraints.md) violations at development time, and is therefore disabled by default.
 
-### <a name="entity-function-unloading"></a>Varlık işlevini kaldırma
+### <a name="entity-function-unloading"></a>Entity function unloading
 
-Varlık işlevleri, tek bir toplu işte 20 ' ye kadar işlem işleyebilir. Bir varlık bir işlem toplu işlemini işlemeyi tamamladığında, durumu devam ettirir ve bellekten kaldırır. Genişletilmiş oturumlar ayarını kullanarak varlıkların bellekten kaldırılmasını erteleyebilirsiniz. Varlıklar, daha önce olduğu gibi durum değişikliklerini kalıcı olmaya devam eder, ancak Azure depolama alanındaki yükleme sayısını azaltmak için yapılandırılan süre boyunca bellekte kalır. Azure depolama 'dan gerçekleştirilen bu yükleme azaltmaları, sık erişilen varlıkların genel performansını iyileştirebilir.
+Entity functions process up to 20 operations in a single batch. As soon as an entity finishes processing a batch of operations, it persists its state and unloads from memory. You can delay the unloading of entities from memory using the extended sessions setting. Entities continue to persist their state changes as before, but remain in memory for the configured period of time to reduce the number of loads from Azure Storage. This reduction of loads from Azure Storage can improve the overall throughput of frequently accessed entities.
 
-## <a name="performance-targets"></a>Performans hedefleri
+## <a name="performance-targets"></a>Performance targets
 
-Bir üretim uygulaması için Dayanıklı İşlevler kullanmayı planlarken, planlama sürecinde performans gereksinimlerini erken göz önünde bulundurmanız önemlidir. Bu bölümde, bazı temel kullanım senaryoları ve beklenen en fazla aktarım hızı sayısı ele alınmaktadır.
+When planning to use Durable Functions for a production application, it is important to consider the performance requirements early in the planning process. This section covers some basic usage scenarios and the expected maximum throughput numbers.
 
-* **Sıralı etkinlik yürütme**: Bu senaryo, bir dizi etkinlik işlevlerini diğeri dışında çalıştıran bir Orchestrator işlevini açıklar. [Işlev zincirleme](durable-functions-sequence.md) örneğine en yakından benzer.
-* **Paralel etkinlik yürütme**: Bu senaryo, çok sayıda etkinlik işlevini paralel olarak yürüten bir Orchestrator Işlevini [, fanı-Out, fan-ın](durable-functions-cloud-backup.md) düzenlerini açıklar.
-* **Paralel yanıt işleme**: Bu senaryo [, fan ve fan](durable-functions-cloud-backup.md) deseninin ikinci yarısıdır. Bu, fan performansına odaklanır. Fanı 'den farklı olarak, fanı tek bir Orchestrator işlev örneği tarafından yapılır ve bu nedenle yalnızca tek bir VM üzerinde çalıştırılabilir.
-* **Dış olay işleme**: Bu senaryo, tek seferde bir tane olmak üzere [dış olaylar](durable-functions-external-events.md)üzerinde bekleyen tek bir Orchestrator işlev örneğini temsil eder.
-* **Varlık işlem işleme**: Bu senaryo, _tek_ bir [sayaç varlığının](durable-functions-entities.md) ne kadar hızlı bir işlem akışı işleyeceğini sınar.
+* **Sequential activity execution**: This scenario describes an orchestrator function that runs a series of activity functions one after the other. It most closely resembles the [Function Chaining](durable-functions-sequence.md) sample.
+* **Parallel activity execution**: This scenario describes an orchestrator function that executes many activity functions in parallel using the [Fan-out, Fan-in](durable-functions-cloud-backup.md) pattern.
+* **Parallel response processing**: This scenario is the second half of the [Fan-out, Fan-in](durable-functions-cloud-backup.md) pattern. It focuses on the performance of the fan-in. It's important to note that unlike fan-out, fan-in is done by a single orchestrator function instance, and therefore can only run on a single VM.
+* **External event processing**: This scenario represents a single orchestrator function instance that waits on [external events](durable-functions-external-events.md), one at a time.
+* **Entity operation processing**: This scenario tests how quickly a _single_ [Counter entity](durable-functions-entities.md) can process a constant stream of operations.
 
 > [!TIP]
-> Fanı 'den farklı olarak, fanı-ın işlemleri tek bir VM ile sınırlıdır. Uygulamanız, fanı-Out, fanı-ın düzenlerini kullanıyorsa ve fan performansı hakkında endişeleriniz varsa, etkinlik işlevi fanı ' ı birden çok [alt](durable-functions-sub-orchestrations.md)düzenleme sırasında alt olarak bölüyi göz önünde bulundurun.
+> Unlike fan-out, fan-in operations are limited to a single VM. If your application uses the fan-out, fan-in pattern and you are concerned about fan-in performance, consider sub-dividing the activity function fan-out across multiple [sub-orchestrations](durable-functions-sub-orchestrations.md).
 
-Aşağıdaki tabloda, daha önce açıklanan senaryolar için beklenen *en fazla* aktarım hızı sayısı gösterilmektedir. "Örnek", Azure App Service bir tek küçük ([a1](../../virtual-machines/windows/sizes-previous-gen.md#a-series)) VM üzerinde çalışan bir Orchestrator işlevinin tek bir örneğini ifade eder. Her durumda, [genişletilmiş oturumların](#orchestrator-function-replay) etkin olduğu varsayılır. Gerçek sonuçlar, işlev kodu tarafından gerçekleştirilen CPU veya g/ç çalışmasına bağlı olarak farklılık gösterebilir.
+The following table shows the expected *maximum* throughput numbers for the previously described scenarios. "Instance" refers to a single instance of an orchestrator function running on a single small ([A1](../../virtual-machines/windows/sizes-previous-gen.md#a-series)) VM in Azure App Service. In all cases, it is assumed that [extended sessions](#orchestrator-function-replay) are enabled. Actual results may vary depending on the CPU or I/O work performed by the function code.
 
 | Senaryo | Aktarım hızı üst sınırı |
 |-|-|
-| Sıralı etkinlik yürütme | saniyede 5 etkinlik/örnek |
-| Paralel Etkinlik yürütme (fan-giden) | saniyede 100 etkinlik, örnek başına |
-| Paralel yanıt işleme (fan-ın) | saniyede 150 yanıt/örnek |
-| Dış olay işleme | saniyede 50 olay, örnek başına |
-| Varlık işlem işleme | saniye başına 64 işlem |
+| Sequential activity execution | 5 activities per second, per instance |
+| Parallel activity execution (fan-out) | 100 activities per second, per instance |
+| Parallel response processing (fan-in) | 150 responses per second, per instance |
+| External event processing | 50 events per second, per instance |
+| Entity operation processing | 64 operations per second |
 
 > [!NOTE]
-> Bu sayılar Dayanıklı İşlevler uzantısının v 1.4.0 (GA) sürümü itibariyle geçerli. Bu sayılar, özellik ve iyileştirmeler yapıldığından zaman içinde değişebilir.
+> These numbers are current as of the v1.4.0 (GA) release of the Durable Functions extension. These numbers may change over time as the feature matures and as optimizations are made.
 
-Bekleyeceğiniz işleme numaralarını görmüyorsanız CPU ve bellek kullanımınız sağlıklı görünüyorsa, sorunun [depolama hesabınızın durumuyla](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#troubleshooting-guidance)ilgili olup olmadığını denetleyin. Dayanıklı İşlevler uzantısı, Azure depolama hesabına önemli bir yük yerleştirebilir ve yeterince yüksek yükleme, depolama hesabı azaltmasına neden olabilir.
+If you are not seeing the throughput numbers you expect and your CPU and memory usage appears healthy, check to see whether the cause is related to [the health of your storage account](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#troubleshooting-guidance). The Durable Functions extension can put significant load on an Azure Storage account and sufficiently high loads may result in storage account throttling.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Olağanüstü durum kurtarma ve coğrafi dağıtım hakkında bilgi edinin](durable-functions-disaster-recovery-geo-distribution.md)
+> [Learn about disaster recovery and geo-distribution](durable-functions-disaster-recovery-geo-distribution.md)

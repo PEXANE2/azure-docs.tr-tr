@@ -1,191 +1,188 @@
 ---
-title: Azure Işlevleri dağıtım Yuvaları
-description: Azure Işlevleri ile dağıtım yuvaları oluşturmayı ve kullanmayı öğrenin
+title: Azure Functions deployment slots
+description: Learn to create and use deployment slots with Azure Functions
 author: craigshoemaker
-manager: gwallace
-keywords: Azure işlevleri, işlevler
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 08/12/2019
 ms.author: cshoe
-ms.openlocfilehash: 23a4870332266ce180c2e94aeb0b5ca24073878b
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a59b62e19ac1e470dcdaaf0281dde9904a70b583
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73576312"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230682"
 ---
-# <a name="azure-functions-deployment-slots"></a>Azure Işlevleri dağıtım Yuvaları
+# <a name="azure-functions-deployment-slots"></a>Azure Functions deployment slots
 
-Azure Işlevleri dağıtım yuvaları, işlev uygulamanızın "yuvalar" adlı farklı örnekleri çalıştırmasına izin verir. Yuvalar, genel kullanıma açık bir uç nokta aracılığıyla kullanıma sunulan farklı ortamlardır. Bir uygulama örneği her zaman üretim yuvasına eşlenir ve isteğe bağlı bir yuvaya atanmış örnekleri takas edebilirsiniz. Uygulamalar hizmet planı altında çalışan işlev uygulamalarının birden çok yuvası olabilir, ancak tüketim kapsamında yalnızca bir yuva kullanılabilir.
+Azure Functions deployment slots allow your function app to run different instances called "slots". Slots are different environments exposed via a publicly available endpoint. One app instance is always mapped to the production slot, and you can swap instances assigned to a slot on demand. Function apps running under the Apps Service plan may have multiple slots, while under Consumption only one slot is allowed.
 
-Aşağıdaki, işlevlerin takas yuvaları tarafından nasıl etkilendiğini yansıtır:
+The following reflect how functions are affected by swapping slots:
 
-- Trafik yeniden yönlendirmesi sorunsuz; bir değiştirme nedeniyle hiçbir istek atılamaz.
-- Bir işlev değiştirme sırasında çalışıyorsa, yürütme devam eder ve sonraki Tetikleyiciler, takas edilen uygulama örneğine yönlendirilir.
+- Traffic redirection is seamless; no requests are dropped because of a swap.
+- If a function is running during a swap, execution continues and subsequent triggers are routed to the swapped app instance.
 
 > [!NOTE]
-> Yuvalar Şu anda Linux tüketim planı için kullanılamaz.
+> Slots are currently not available for the Linux Consumption plan.
 
-## <a name="why-use-slots"></a>Yuvalar neden kullanılmalıdır?
+## <a name="why-use-slots"></a>Why use slots?
 
-Dağıtım yuvalarını kullanmanın bazı avantajları vardır. Aşağıdaki senaryolar yuvalar için ortak kullanımları anlatmaktadır:
+There are a number of advantages to using deployment slots. The following scenarios describe common uses for slots:
 
-- Farklı **amaçlar Için farklı ortamlar**: farklı yuvaların kullanılması, üretim veya hazırlama yuvasına geçmeden önce uygulama örneklerini ayırt etme fırsatına sahip olmanızı sağlar.
-- **Ön ısıtma**: doğrudan üretime dağıtmak yerine bir yuvaya dağıtım, uygulamanın canlı olmadan önce daha sıcak olmasına olanak sağlar. Ayrıca, yuva kullanımı, HTTP ile tetiklenen iş yükleri için gecikme süresini azaltır. Örnekler, dağıtımdan önce, yeni dağıtılan işlevlerin soğuk başlangıcını azaltan bir şekilde azalmış olur.
-- **Kolay azalma**: bir değiştirme işleminden sonra, daha önce hazırlanmış bir uygulamaya sahip yuva artık önceki üretim uygulamasına sahiptir. Üretim yuvasında takas edilen değişiklikler beklenmediği sürece, "son bilinen iyi örnek örneğinizi" geri almak için değiştirmeyi hemen ters çevirebilirsiniz.
+- **Different environments for different purposes**: Using different slots gives you the opportunity to differentiate app instances before swapping to production or a staging slot.
+- **Prewarming**: Deploying to a slot instead of directly to production allows the app to warm up before going live. Additionally, using slots reduces latency for HTTP-triggered workloads. Instances are warmed up before deployment which reduces the cold start for newly-deployed functions.
+- **Easy fallbacks**: After a swap with production, the slot with a previously staged app now has the previous production app. If the changes swapped into the production slot aren't as you expect, you can immediately reverse the swap to get your "last known good instance" back.
 
-## <a name="swap-operations"></a>Değiştirme işlemleri
+## <a name="swap-operations"></a>Swap operations
 
-Bir değiştirme sırasında, bir yuva kaynak ve diğer hedef olarak değerlendirilir. Kaynak yuva, hedef yuvaya uygulanan uygulamanın örneğine sahiptir. Aşağıdaki adımlar, hedef yuvanın bir değiştirme sırasında kapalı kalma süresi yaşamasını güvence altına almamalıdır:
+During a swap, one slot is considered the source and the other the target. The source slot has the instance of the application that is applied to the target slot. The following steps ensure the target slot doesn't experience downtime during a swap:
 
-1. **Ayarları Uygula:** Hedef yuvadan alınan ayarlar, kaynak yuvasının tüm örneklerine uygulanır. Örneğin, üretim ayarları hazırlama örneğine uygulanır. Uygulanan ayarlar aşağıdaki kategorileri içerir:
-    - [Yuvaya özgü](#manage-settings) uygulama ayarları ve bağlantı dizeleri (varsa)
-    - [Sürekli dağıtım](../app-service/deploy-continuous-deployment.md) ayarları (etkinse)
-    - [App Service kimlik doğrulama](../app-service/overview-authentication-authorization.md) ayarları (etkinse)
+1. **Apply settings:** Settings from the target slot are applied to all instances of the source slot. For example, the production settings are applied to the staging instance. The applied settings include the following categories:
+    - [Slot-specific](#manage-settings) app settings and connection strings (if applicable)
+    - [Continuous deployment](../app-service/deploy-continuous-deployment.md) settings (if enabled)
+    - [App Service authentication](../app-service/overview-authentication-authorization.md) settings (if enabled)
 
-1. **Yeniden başlatmalar ve kullanılabilirlik Için bekleyin:** Takas, kaynak yuvadaki her örnek için yeniden başlatma işleminin tamamlanmasını ve istekler için kullanılabilir olmasını bekler. Herhangi bir örnek yeniden başlatılamazsa, değiştirme işlemi kaynak yuvada tüm değişiklikleri geri alır ve işlemi sonlandırır.
+1. **Wait for restarts and availability:** The swap waits for every instance in the source slot to complete its restart and to be available for requests. If any instance fails to restart, the swap operation reverts all changes to the source slot and stops the operation.
 
-1. **Yönlendirmeyi güncelleştir:** Kaynak yuvasındaki tüm örnekler başarıyla iyileştirilirken, iki yuva yönlendirme kurallarını değiştirerek takası tamamlar. Bu adımdan sonra, hedef yuva (örneğin, üretim yuvası), kaynak yuvada daha önce çarpımış olan uygulamaya sahiptir.
+1. **Update routing:** If all instances on the source slot are warmed up successfully, the two slots complete the swap by switching routing rules. After this step, the target slot (for example, the production slot) has the app that's previously warmed up in the source slot.
 
-1. **Işlemi Yinele:** Artık kaynak yuvasının hedef yuvada daha önce takas öncesi uygulamasına sahip olduğuna göre, tüm ayarları uygulayıp kaynak yuva için örnekleri yeniden başlatarak aynı işlemi gerçekleştirin.
+1. **Repeat operation:** Now that the source slot has the pre-swap app previously in the target slot, perform the same operation by applying all settings and restarting the instances for the source slot.
 
 Aşağıdaki noktaları göz önünde bulundurun:
 
-- Değiştirme işleminin herhangi bir noktasında, takas edilen uygulamaların başlatılması kaynak yuvada gerçekleşir. Kaynak yuva hazırlanırken, değiştirme işleminin başarılı veya başarısız olmasına bakılmaksızın hedef yuva çevrimiçi kalır.
+- At any point of the swap operation, initialization of the swapped apps happens on the source slot. The target slot remains online while the source slot is being prepared, whether the swap succeeds or fails.
 
-- Bir hazırlama yuvasını üretim yuvası ile değiştirmek için, üretim yuvasının *her zaman* hedef yuva olduğundan emin olun. Bu şekilde, değiştirme işlemi üretim uygulamanızı etkilemez.
+- To swap a staging slot with the production slot, make sure that the production slot is *always* the target slot. This way, the swap operation doesn't affect your production app.
 
-- *Değiştirme başlatılmadan önce*, olay kaynaklarıyla ilgili ayarların ve bağlamaların [dağıtım yuvası ayarları](#manage-settings) olarak yapılandırılması gerekir. Bu süreyi "yapışkan" olarak işaretlemek, olayların ve çıktıların doğru örneğe yönlendirilmesini sağlar.
+- Settings related to event sources and bindings need to be configured as [deployment slot settings](#manage-settings) *before you initiate a swap*. Marking them as "sticky" ahead of time ensures events and outputs are directed to the proper instance.
 
 ## <a name="manage-settings"></a>Ayarları yönetme
 
 [!INCLUDE [app-service-deployment-slots-settings](../../includes/app-service-deployment-slots-settings.md)]
 
-### <a name="create-a-deployment-setting"></a>Dağıtım ayarı oluşturma
+### <a name="create-a-deployment-setting"></a>Create a deployment setting
 
-Ayarları, "yapışkan" yapan bir dağıtım ayarı olarak işaretleyebilirsiniz. Yapışkan ayar, uygulama örneğiyle takas etmez.
+You can mark settings as a deployment setting which makes it "sticky". A sticky setting does not swap with the app instance.
 
-Bir yuvada bir dağıtım ayarı oluşturursanız, bir değiştirme işleminde yer alan diğer tüm yuvalara aynı ayarı oluşturmayı unutmayın. Bu şekilde, bir ayarın değeri değişmezse, ayar adları yuvalar arasında tutarlı kalır. Bu ad tutarlılığı, kodunuzun tek bir yuvada tanımlanmış ancak başka bir yuvada tanımlanmış bir ayara erişmeyi denememesini sağlar.
+If you create a deployment setting in one slot, make sure to create the same setting with a unique value in any other slot involved in a swap. This way, while a setting's value doesn't change, the setting names remain consistent among slots. This name consistency ensures your code doesn't try to access a setting that is defined in one slot but not another.
 
-Dağıtım ayarı oluşturmak için aşağıdaki adımları kullanın:
+Use the following steps to to create a deployment setting:
 
-- İşlev uygulamasındaki *yuvalara* gitme
-- Yuva adına tıklayın
-- *Platform özellikleri > genel ayarlar*altında, **yapılandırma** ' ya tıklayın.
-- Geçerli yuvaya göre kontrol etmek istediğiniz ayar adına tıklayın
-- **Dağıtım yuvası ayarı** onay kutusuna tıklayın
+- Navigate to *Slots* in the function app
+- Click on the slot name
+- Under *Platform Features > General Settings*, click on **Configuration**
+- Click on the setting name you want to stick with the current slot
+- Click the **Deployment slot setting** checkbox
 - **Tamam**’a tıklayın.
-- Dikey pencere kaybolduğunda, değişiklikleri korumak için **Kaydet** ' e tıklayın
+- Once setting blade disappears, click **Save** to keep the changes
 
-![Dağıtım yuvası ayarı](./media/functions-deployment-slots/azure-functions-deployment-slots-deployment-setting.png)
+![Deployment Slot Setting](./media/functions-deployment-slots/azure-functions-deployment-slots-deployment-setting.png)
 
-## <a name="deployment"></a>Dağıtım
+## <a name="deployment"></a>Kurulum
 
-Yuva oluşturduğunuzda yuvalar boştur. Uygulamanızı bir yuvaya dağıtmak için [Desteklenen Dağıtım teknolojilerinden](./functions-deployment-technologies.md) herhangi birini kullanabilirsiniz.
+Slots are empty when you create a slot. You can use any of the [supported deployment technologies](./functions-deployment-technologies.md) to deploy your application to a slot.
 
 ## <a name="scaling"></a>Ölçeklendirme
 
-Tüm yuvalar, üretim yuvasında aynı çalışan sayısına göre ölçeklenir.
+All slots scale to the same number of workers as the production slot.
 
-- Tüketim planları için yuva, işlev uygulaması ölçeklendirilen şekilde ölçeklendirilir.
-- App Service planlar için, uygulama sabit bir çalışan sayısına göre ölçeklendirilir. Yuvalar, uygulama planıyla aynı sayıda çalışan üzerinde çalışır.
+- For Consumption plans, the slot scales as the function app scales.
+- For App Service plans, the app scales to a fixed number of workers. Slots run on the same number of workers as the app plan.
 
-## <a name="add-a-slot"></a>Yuva Ekle
+## <a name="add-a-slot"></a>Add a slot
 
-[CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create) aracılığıyla veya Portal aracılığıyla bir yuva ekleyebilirsiniz. Aşağıdaki adımlarda portalda nasıl yeni bir yuva oluşturacağınız gösterilmektedir:
+You can add a slot via the [CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create) or through the portal. The following steps demonstrate how to create a new slot in the portal:
 
-1. İşlev uygulamanıza gidin ve *yuvalar*' ın yanındaki **artı** işaretine tıklayın.
+1. Navigate to your function app and click on the **plus sign** next to *Slots*.
 
-    ![Azure Işlevleri dağıtım yuvası Ekle](./media/functions-deployment-slots/azure-functions-deployment-slots-add.png)
+    ![Add Azure Functions deployment slot](./media/functions-deployment-slots/azure-functions-deployment-slots-add.png)
 
-1. Metin kutusuna bir ad girin ve **Oluştur** düğmesine basın.
+1. Enter a name in the textbox, and press the **Create** button.
 
-    ![Azure Işlevleri dağıtım yuvasını Adlandır](./media/functions-deployment-slots/azure-functions-deployment-slots-add-name.png)
+    ![Name Azure Functions deployment slot](./media/functions-deployment-slots/azure-functions-deployment-slots-add-name.png)
 
-## <a name="swap-slots"></a>Takas Yuvaları
+## <a name="swap-slots"></a>Swap slots
 
-Yuvaları [CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap) aracılığıyla veya Portal üzerinden takas edebilirsiniz. Aşağıdaki adımlarda, portalda yuvaların nasıl takas yapılacağı gösterilmektedir:
+You can swap slots via the [CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap) or through the portal. The following steps demonstrate how to swap slots in the portal:
 
-1. İşlev uygulamasına gidin
-1. Değiştirmek istediğiniz kaynak yuva adına tıklayın
-1. *Genel bakış* sekmesinden **takas** düğmesine tıklayın ![Azure işlevleri dağıtım yuvası ' nı değiştirin](./media/functions-deployment-slots/azure-functions-deployment-slots-swap.png)
-1. Değiştirme için yapılandırma ayarlarını doğrulayın ve **takas** ![değiştirme Azure işlevleri dağıtım yuvası ' na tıklayın](./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png)
+1. Navigate to the function app
+1. Click on the source slot name that you want to swap
+1. From the *Overview* tab, click on the **Swap** button  ![Swap Azure Functions deployment slot](./media/functions-deployment-slots/azure-functions-deployment-slots-swap.png)
+1. Verify the configuration settings for your swap and click **Swap** ![Swap Azure Functions deployment slot](./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png)
 
-Değiştirme işlemi yürütülürken işlem biraz zaman alabilir.
+The operation may take a moment while the swap operation is executing.
 
-## <a name="roll-back-a-swap"></a>Değiştirme geri alma
+## <a name="roll-back-a-swap"></a>Roll back a swap
 
-Bir değiştirme bir hatayla sonuçlanarak veya yalnızca bir değiştirmeyi "geri almak" istiyorsanız, ilk duruma geri alabilirsiniz. Önceden takas durumuna geri dönmek için, değiştirmeyi tersine çevirmek için başka bir takas yapın.
+If a swap results in an error or you simply want to "undo" a swap, you can roll back to the initial state. To return to the pre-swapped state, do another swap to reverse the swap.
 
-## <a name="remove-a-slot"></a>Yuva kaldırma
+## <a name="remove-a-slot"></a>Remove a slot
 
-Bir yuvayı [CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete) aracılığıyla veya Portal üzerinden kaldırabilirsiniz. Aşağıdaki adımlarda portalda bir yuvanın nasıl kaldırılacağı gösterilmektedir:
+You can remove a slot via the [CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete) or through the portal. The following steps demonstrate how to remove a slot in the portal:
 
-1. İşlev uygulamasına genel bakış bölümüne gitme
+1. Navigate to the function app Overview
 
-1. **Sil** düğmesine tıklayın
+1. Click on the **Delete** button
 
-    ![Azure Işlevleri dağıtım yuvası Ekle](./media/functions-deployment-slots/azure-functions-deployment-slots-delete.png)
+    ![Add Azure Functions deployment slot](./media/functions-deployment-slots/azure-functions-deployment-slots-delete.png)
 
-## <a name="automate-slot-management"></a>Yuva yönetimini otomatikleştirin
+## <a name="automate-slot-management"></a>Automate slot management
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest)'yı kullanarak bir yuva için aşağıdaki işlemleri otomatikleştirebilirsiniz:
+Using the [Azure CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest), you can automate the following actions for a slot:
 
 - [oluşturmaya](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create)
 - [sil](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete)
 - [list](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-list)
-- [Kur](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap)
-- [Otomatik takas](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-auto-swap)
+- [swap](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap)
+- [auto-swap](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-auto-swap)
 
-## <a name="change-app-service-plan"></a>App Service planını değiştir
+## <a name="change-app-service-plan"></a>Change app service plan
 
-App Service planı altında çalışan bir işlev uygulamasıyla, bir yuva için temel alınan App Service planını değiştirme seçeneğiniz vardır.
+With a function app that is running under an App Service plan, you have the option to change the underlying app service plan for a slot.
 
 > [!NOTE]
-> Tüketim planı kapsamındaki bir yuvanın App Service planını değiştiremezsiniz.
+> You can't change a slot's App Service plan under the Consumption plan.
 
-Bir yuvanın App Service planını değiştirmek için aşağıdaki adımları kullanın:
+Use the following steps to change a slot's app service plan:
 
-1. Bir yuvaya gitme
+1. Navigate to a slot
 
-1. *Platform özellikleri*altında **Tüm ayarlar** ' a tıklayın.
+1. Under *Platform Features*, click **All Settings**
 
-    ![App Service planını değiştir](./media/functions-deployment-slots/azure-functions-deployment-slots-change-app-service-settings.png)
+    ![Change app service plan](./media/functions-deployment-slots/azure-functions-deployment-slots-change-app-service-settings.png)
 
-1. **App Service planına** tıklayın
+1. Click on **App Service plan**
 
-1. Yeni bir App Service planı seçin veya yeni bir plan oluşturun
+1. Select a new App Service plan, or create a new plan
 
 1. **Tamam**’a tıklayın.
 
-    ![App Service planını değiştir](./media/functions-deployment-slots/azure-functions-deployment-slots-change-app-service-select.png)
+    ![Change app service plan](./media/functions-deployment-slots/azure-functions-deployment-slots-change-app-service-select.png)
 
 
 ## <a name="limitations"></a>Sınırlamalar
 
-Azure Işlevleri dağıtım yuvaları aşağıdaki sınırlamalara sahiptir:
+Azure Functions deployment slots have the following limitations:
 
-- Bir uygulama için kullanılabilen yuvaların sayısı plana bağlıdır. Tüketim planına yalnızca bir dağıtım yuvası izin verilir. App Service plan kapsamında çalışan uygulamalar için ek yuvalar vardır.
-- Bir `AzureWebJobsSecretStorageType` uygulama ayarı `files`eşit olan uygulamalar için bir yuva sıfırlama anahtarlarını değiştirme.
-- Yuvalar, Linux tüketim planı için kullanılamaz.
+- The number of slots available to an app depends on the plan. The Consumption plan is only allowed one deployment slot. Additional slots are available for apps running under the App Service plan.
+- Swapping a slot resets keys for apps that have an `AzureWebJobsSecretStorageType` app setting equal to `files`.
+- Slots are not available for the Linux Consumption plan.
 
 ## <a name="support-levels"></a>Destek düzeyleri
 
-Dağıtım yuvaları için iki düzey destek vardır:
+There are two levels of support for deployment slots:
 
-- **Genel kullanılabilirlik (GA)** : üretim kullanımı için tam olarak desteklenir ve onaylanır.
-- **Önizleme**: henüz desteklenmiyor, ancak gelecekte GA durumuna ulaşması bekleniyor.
+- **General availability (GA)** : Fully supported and approved for production use.
+- **Preview**: Not yet supported, but is expected to reach GA status in the future.
 
-| İşletim sistemi/barındırma planı           | Destek düzeyi     |
+| OS/Hosting plan           | Level of support     |
 | ------------------------- | -------------------- |
-| Windows tüketimi       | Genel kullanılabilirlik |
+| Windows Consumption       | Genel kullanılabilirlik |
 | Windows Premium           | Genel kullanılabilirlik  |
-| Windows ayrılmış         | Genel kullanılabilirlik |
-| Linux tüketimi         | Desteklenmeyen          |
+| Windows Dedicated         | Genel kullanılabilirlik |
+| Linux Consumption         | Desteklenmeyen          |
 | Linux Premium             | Genel kullanılabilirlik  |
-| Linux adanmış           | Genel kullanılabilirlik |
+| Linux Dedicated           | Genel kullanılabilirlik |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Işlevlerinde dağıtım teknolojileri](./functions-deployment-technologies.md)
+- [Deployment technologies in Azure Functions](./functions-deployment-technologies.md)

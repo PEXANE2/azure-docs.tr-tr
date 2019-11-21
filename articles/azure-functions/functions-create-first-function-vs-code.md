@@ -1,22 +1,15 @@
 ---
 title: Visual Studio Code’u kullanarak Azure’da ilk işlevinizi oluşturma
 description: Visual Studio Code’daki Azure İşlevleri uzantısını kullanarak basit bir HTTP ile tetiklenen işlev oluşturun ve Azure’da yayımlayın.
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
-keywords: azure işlevleri, işlevler, olay işleme, işlem, sunucusuz mimari
-ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 06/25/2019
-ms.author: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: fbde3c939a23e4023c0403c27433717a11762b08
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: b89e6d75cd82a65dfbce29b949c4b7d463582bb9
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622051"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230790"
 ---
 # <a name="create-your-first-function-using-visual-studio-code"></a>Visual Studio Code kullanarak ilk işlevinizi oluşturma
 
@@ -26,26 +19,26 @@ Bu makalede Microsoft Visual Studio Code’u kullanarak yerel bilgisayarınızda
 
 ![Visual Studio projesinde Azure İşlevleri kodu](./media/functions-create-first-function-vs-code/functions-vscode-intro.png)
 
-Uzantı şu anda, C#JavaScript, Java ve Python işlevlerini desteklemektedir. Bu makaledeki adımlar ve aşağıdaki makale yalnızca JavaScript ve C# işlevleri destekler. Visual Studio Code kullanarak Python işlevleri oluşturma ve yayımlama hakkında bilgi edinmek için bkz. [Python 'da sunucusuz Azure Işlevleri oluşturma ve Visual Studio Code ile dağıtma](/azure/python/tutorial-vs-code-serverless-python-01). PowerShell işlevleri oluşturmak ve yayımlamak için Visual Studio Code kullanmayı öğrenmek için bkz. [Azure 'da Ilk PowerShell işlevinizi oluşturma](functions-create-first-function-powershell.md). 
+The extension currently supports C#, JavaScript, Java, and Python functions. The steps in this article and the article that follows support only JavaScript and C# functions. To learn how to use Visual Studio Code to create and publish Python functions, see [Create and deploy serverless Azure Functions in Python with Visual Studio Code](/azure/python/tutorial-vs-code-serverless-python-01). To learn how to use Visual Studio Code to create and publish PowerShell functions, see [Create your first PowerShell function in Azure](functions-create-first-function-powershell.md). 
 
 Uzantı şu an önizleme aşamasındadır. Daha fazla bilgi edinmek için [Visual Studio Code için Azure İşlevleri uzantısı] sayfasına bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlamak için:
 
-* [Desteklenen platformlardan](https://code.visualstudio.com/) birinde [Visual Studio Code](https://code.visualstudio.com/docs/supporting/requirements#_platforms)’u yükleyin.
+* [Desteklenen platformlardan](https://code.visualstudio.com/docs/supporting/requirements#_platforms) birinde [Visual Studio Code](https://code.visualstudio.com/)’u yükleyin.
 
-* [Azure Functions Core Tools](functions-run-local.md#v2)sürüm 2. x ' i yükler.
+* Install version 2.x of the [Azure Functions Core Tools](functions-run-local.md#v2).
 
 * Seçtiğiniz dile özgü gereksinimleri yükleyin:
 
     | Dil | Gereksinim |
     | -------- | --------- |
-    | **C#** | [C#uzantının](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)  |
-    | **JavaScript** | [Node. js](https://nodejs.org/) <sup>*</sup> | 
+    | **C#** | [C# extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)  |
+    | **JavaScript** | [Node.js](https://nodejs.org/)<sup>*</sup> | 
  
-    <sup>*</sup> Etkin LTS ve bakım LTS sürümleri (8.11.1 ve 10.14.1 önerilir).
+    <sup>*</sup>Active LTS and Maintenance LTS versions (8.11.1 and 10.14.1 recommended).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -61,9 +54,9 @@ Bu hızlı başlangıcı tamamlamak için:
 
 [!INCLUDE [functions-publish-project-vscode](../../includes/functions-publish-project-vscode.md)]
 
-## <a name="run-the-function-in-azure"></a>İşlevi Azure 'da çalıştırma
+## <a name="run-the-function-in-azure"></a>Run the function in Azure
 
-1. **Çıktı** panelinden HTTP tetikleyicisinin URL’sini kopyalayın. Bu URL, `code` sorgu parametresine geçirilen işlev anahtarını içerir. Daha önce olduğu gibi, `?name=<yourname>` sorgu dizesini bu URL’nin sonuna ekleyip isteği yürütmeyi unutmayın.
+1. **Çıktı** panelinden HTTP tetikleyicisinin URL’sini kopyalayın. This URL includes the function key, which is passed to the `code` query parameter. Daha önce olduğu gibi, `?name=<yourname>` sorgu dizesini bu URL’nin sonuna ekleyip isteği yürütmeyi unutmayın.
 
     HTTP tarafından tetiklenen işlevinizi çağıran URL aşağıdaki biçimde olmalıdır:
 
@@ -75,10 +68,10 @@ Bu hızlı başlangıcı tamamlamak için:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-HTTP ile tetiklenen basit bir işlevi kullanarak bir işlev uygulaması oluşturmak için Visual Studio Code’u kullandınız. Sonraki makalede, bir çıkış bağlaması ekleyerek bu işlevi genişletmelisiniz. Bu bağlama, HTTP isteğinden dizeyi bir Azure kuyruk depolama kuyruğundaki bir iletiye yazar. Sonraki makalede ayrıca, oluşturduğunuz kaynak grubunu kaldırarak bu yeni Azure kaynaklarını temizleme yöntemi gösterilmektedir.
+HTTP ile tetiklenen basit bir işlevi kullanarak bir işlev uygulaması oluşturmak için Visual Studio Code’u kullandınız. In the next article, you expand that function by adding an output binding. This binding writes the string from the HTTP request to a message in an Azure Queue Storage queue. The next article also shows you how to clean up these new Azure resources by removing the resource group you created.
 
 > [!div class="nextstepaction"]
-> [İşleviniz için bir Azure depolama kuyruğu bağlama ekleme](functions-add-output-binding-storage-queue-vs-code.md)
+> [Add an Azure Storage queue binding to your function](functions-add-output-binding-storage-queue-vs-code.md)
 
 [Azure Functions Core Tools]: functions-run-local.md
 [Visual Studio Code için Azure İşlevleri uzantısı]: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions

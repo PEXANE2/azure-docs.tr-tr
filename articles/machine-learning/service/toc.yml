@@ -193,7 +193,7 @@
             - name: Uçuş rötarları tahmini
               displayName: 'classification, studio'
               href: how-to-designer-sample-classification-flight-delay.md
-            - name: Sınıflandırmayı test etme
+            - name: Metin sınıflandırması
               displayName: 'classification, studio'
               href: how-to-designer-sample-text-classification.md
         - name: ML için tahmin araçlarını kullanma

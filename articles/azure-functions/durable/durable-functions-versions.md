@@ -1,82 +1,80 @@
 ---
-title: Dayanıklı İşlevler sürümlere genel bakış-Azure Işlevleri
-description: Dayanıklı İşlevler sürümleri hakkında bilgi edinin.
+title: Durable Functions versions overview - Azure Functions
+description: Learn about Durable Functions versions.
 author: cgillum
-manager: gwallace
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5d6c8bcf610bfc8900e0f2a5237228208cd633ca
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 93c35eb4f69cc4f9b16f669d96c2df53f50bcf84
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614544"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231185"
 ---
-# <a name="durable-functions-versions-overview"></a>Dayanıklı İşlevler sürümlere genel bakış
+# <a name="durable-functions-versions-overview"></a>Durable Functions versions overview
 
-*Dayanıklı işlevler* , [Azure Işlevleri](../functions-overview.md) ve [Azure Web işleri](../../app-service/web-sites-create-web-jobs.md) 'nin bir uzantısıdır ve bu da sunucusuz bir ortamda durum bilgisi olan işlevler yazmanızı sağlar. Uzantı sizin için durumu, denetim noktalarını ve yeniden başlatmaları yönetir. Daha önce Dayanıklı İşlevler hakkında bilginiz yoksa [genel bakış belgelerine](durable-functions-overview.md)bakın.
+*Durable Functions* is an extension of [Azure Functions](../functions-overview.md) and [Azure WebJobs](../../app-service/web-sites-create-web-jobs.md) that lets you write stateful functions in a serverless environment. Uzantı sizin için durumu, denetim noktalarını ve yeniden başlatmaları yönetir. If you are not already familiar with Durable Functions, see the [overview documentation](durable-functions-overview.md).
 
-## <a name="new-features-in-2x"></a>2\. x içindeki yeni özellikler
+## <a name="new-features-in-2x"></a>New features in 2.x
 
-Bu bölümde, sürüm 2. x ' de eklenen Dayanıklı İşlevler özellikleri açıklanmaktadır.
+This section describes the features of Durable Functions that are added in version 2.x.
 
-### <a name="durable-entities"></a>Dayanıklı varlıklar
+### <a name="durable-entities"></a>Durable entities
 
-Dayanıklı İşlevler 2. x ' de yeni bir [varlık işlevleri](durable-functions-entities.md) kavramı sunuyoruz.
+In Durable Functions 2.x, we introduced a new [entity functions](durable-functions-entities.md) concept.
 
-Varlık işlevleri, *dayanıklı varlıklar*olarak bilinen küçük durum parçalarını okumak ve güncelleştirmek için işlemleri tanımlar. Orchestrator işlevleri gibi, varlık işlevleri de özel tetikleyici türü, *varlık tetikleyicisi*olan işlevlerdir. Orchestrator işlevlerinin aksine, varlık işlevlerinin belirli kod kısıtlamaları yoktur. Varlık işlevleri, durumu denetim akışı aracılığıyla örtük olarak temsil etmek yerine, durumu açıkça da yönetir.
+Entity functions define operations for reading and updating small pieces of state, known as *durable entities*. Like orchestrator functions, entity functions are functions with a special trigger type, *entity trigger*. Unlike orchestrator functions, entity functions do not have any specific code constraints. Entity functions also manage state explicitly rather than implicitly representing state via control flow.
 
-Daha fazla bilgi için bkz. [dayanıklı varlıklar](durable-functions-entities.md) makalesi.
+To learn more, see the [durable entities](durable-functions-entities.md) article.
 
-### <a name="durable-http"></a>Kalıcı HTTP
+### <a name="durable-http"></a>Durable HTTP
 
-Dayanıklı İşlevler 2. x ' de şunları yapmanıza olanak sağlayan yeni bir [DAYANıKLı http](durable-functions-http-features.md#consuming-http-apis) özelliği sunuyoruz:
+In Durable Functions 2.x, we introduced a new [Durable HTTP](durable-functions-http-features.md#consuming-http-apis) feature that allows you to:
 
-* HTTP API 'Lerini doğrudan düzenleme işlevlerinden çağırın (bazı belgelenen sınırlamalar ile).
-* Otomatik istemci tarafı HTTP 202 durum yoklamasını uygulayın.
-* [Azure Yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md)için yerleşik destek.
+* Call HTTP APIs directly from orchestration functions (with some documented limitations).
+* Implement automatic client-side HTTP 202 status polling.
+* Built-in support for [Azure Managed Identities](../../active-directory/managed-identities-azure-resources/overview.md).
 
-Daha fazla bilgi için bkz. [http özellikleri](durable-functions-http-features.md#consuming-http-apis) makalesi.
+To learn more, see the [HTTP features](durable-functions-http-features.md#consuming-http-apis) article.
 
-## <a name="migrate-from-1x-to-2x"></a>1\. x 'ten 2. x 'e geçiş
+## <a name="migrate-from-1x-to-2x"></a>Migrate from 1.x to 2.x
 
-Bu bölümde, yeni özelliklerden yararlanmak için mevcut sürüm 1. x Dayanıklı İşlevler sürüm 2. x ' e nasıl geçirileceği açıklanmaktadır.
+This section describes how to migrate your existing version 1.x Durable Functions to version 2.x to take advantage of the new features.
 
-### <a name="upgrade-the-extension"></a>Uzantıyı yükseltin
+### <a name="upgrade-the-extension"></a>Upgrade the extension
 
-[Dayanıklı işlevler bağlamaları uzantısının](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) sürüm 2. x ' i projenize yükler. Daha fazla bilgi için bkz. [Azure işlevleri bağlama uzantılarını kaydetme](../functions-bindings-register.md) .
+Install version 2.x of the [Durable Functions bindings extension](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) in your project. See [Register Azure Functions binding extensions](../functions-bindings-register.md) for more information.
 
-### <a name="update-your-code"></a>Kodunuzu güncelleştirme
+### <a name="update-your-code"></a>Update your code
 
-Dayanıklı İşlevler 2. x birkaç önemli değişiklik sunar. Dayanıklı İşlevler 1. x uygulamaları, kod değişikliği olmadan Dayanıklı İşlevler 2. x ile uyumlu değildir. Bu bölümde, sürüm 1. x işlevinizi 2. x olarak yükseltirken yapmanız gereken bazı değişiklikler listelenmiştir.
+Durable Functions 2.x introduces several breaking changes. Durable Functions 1.x applications are not compatible with Durable Functions 2.x without code changes. This section lists some of the changes you must make when upgrading your version 1.x functions to 2.x.
 
-#### <a name="hostjson-schema"></a>Host. JSON şeması
+#### <a name="hostjson-schema"></a>Host.json schema
 
-Dayanıklı İşlevler 2. x yeni bir Host. JSON şeması kullanır. 1\. x üzerindeki ana değişiklikler şunları içerir:
+Durable Functions 2.x uses a new host.json schema. The main changes from 1.x include:
 
-* depolamaya özgü yapılandırma için `"storageProvider"` (ve `"azureStorage"` alt bölümü).
-* izleme ve günlüğe kaydetme yapılandırması için `"tracking"`.
-* Event Grid bildirim yapılandırması için `"notifications"` (ve `"eventGrid"` alt bölümü).
+* `"storageProvider"` (and the `"azureStorage"` subsection) for storage-specific configuration.
+* `"tracking"` for tracking and logging configuration.
+* `"notifications"` (and the `"eventGrid"` subsection) for event grid notification configuration.
 
-Ayrıntılar için [dayanıklı işlevler Host. JSON başvurusu belgelerine](durable-functions-bindings.md#durable-functions-2-0-host-json) bakın.
+See the [Durable Functions host.json reference documentation](durable-functions-bindings.md#durable-functions-2-0-host-json) for details.
 
-#### <a name="public-interface-changes-net-only"></a>Ortak arabirim değişiklikleri (yalnızca .NET)
+#### <a name="public-interface-changes-net-only"></a>Public interface changes (.NET only)
 
-1\. x sürümünde, Dayanıklı İşlevler tarafından desteklenen çeşitli _bağlam_ nesneleri, birim testinde kullanılmak üzere tasarlanan soyut temel sınıflara sahiptir. Dayanıklı İşlevler 2. x ' in bir parçası olarak, bu soyut temel sınıflar, arabirimler ile değiştirilmiştir.
+In version 1.x, the various _context_ objects supported by Durable Functions have abstract base classes intended for use in unit testing. As part of Durable Functions 2.x, these abstract base classes are replaced with interfaces.
 
-Aşağıdaki tablo, ana değişiklikleri temsil eder:
+The following table represents the main changes:
 
-| 'in | 2.x |
+| 1.x | 2.x |
 |----------|----------|
 | `DurableOrchestrationClientBase` | `IDurableOrchestrationClient` veya `IDurableClient` |
 | `DurableOrchestrationContext` veya `DurableOrchestrationContextBase` | `IDurableOrchestrationContext` |
 | `DurableActivityContext` veya `DurableActivityContextBase` | `IDurableActivityContext` |
 | `OrchestrationClientAttribute` | `DurableClientAttribute` |
 
-Soyut bir temel sınıfın sanal yöntemler içerdiği durumlarda, bu sanal yöntemler `DurableContextExtensions`tanımlı uzantı yöntemleriyle değiştirilmiştir.
+In the case where an abstract base class contained virtual methods, these virtual methods have been replaced by extension methods defined in `DurableContextExtensions`.
 
-#### <a name="functionjson-changes-javascript-and-c-script"></a>function. JSON değişiklikleri (JavaScript ve C# betik)
+#### <a name="functionjson-changes-javascript-and-c-script"></a>function.json changes (JavaScript and C# Script)
 
-Dayanıklı İşlevler 1. x içinde Orchestration istemci bağlaması `orchestrationClient``type` kullanır. Sürüm 2. x bunun yerine `durableClient` kullanır.
+In Durable Functions 1.x, the orchestration client binding uses a `type` of `orchestrationClient`. Version 2.x uses `durableClient` instead.

@@ -1,6 +1,6 @@
 ---
-title: My Account Portal 'da kuruluşları yönetme-Azure AD
-description: Hesap portalımın kuruluşlar sayfasından kuruluşları görüntüleme ve bu kuruluşlarla ayrılma.
+title: Manage your organizations from the My Account portal - Azure AD
+description: How to view and leave organizations connected to your work or school account from the Organizations page of the My Account portal.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,59 +12,59 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b81ec4996ae91714b442dd2e62a0bc45c6bfd39
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: d0b8a5a8ac4132c998567f956f3171db06a9ca53
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820406"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231856"
 ---
-# <a name="manage-your-organizations-from-the-my-account-portal"></a>Kuruluşlarınızı Hesabım portalından yönetme
+# <a name="manage-organizations-connected-to-your-work-or-school-account-from-the-organizations-page"></a>Manage organizations connected to your work or school account from the Organizations page
 
-Kuruluşlarınızı **Hesabım** portalının **kuruluşlar** sayfasından yönetebilirsiniz.
+You can manage your organizations from the **Organizations** page of the **My Account** portal.
 
-**Kuruluşlar** sayfasında gösterilen iki tür kuruluş vardır:
+There are two types of organizations shown on the **Organizations** page:
 
-- **Ana kuruluş.** Ev kuruluşunuz, iş veya okul hesabınızın sahibi olan kuruluştur. Ana kuruluşunuzu bırakamazsınız.
+- **Home organization.** Your home organization is the organization that owns your work or school account. You can't leave your home organization.
 
-- **Diğer kuruluşlar.** Diğer kuruluşlar, daha önce iş veya okul hesabınızı kullanarak oturum açtığınız herhangi bir gruptur. Bu kuruluşlardan herhangi birini dilediğiniz zaman bırakabilirsiniz.
+- **Other organizations.** The other organizations are any group that you've signed in to previously using your work or school account. You can leave any of these organizations at any time.
 
     >[!NOTE]
-    > Atanmış bir ana kuruluşunuz yoksa, yalnızca ilişkili kuruluşlarınızın listesini içeren kuruluşlar belirten tek bir başlık görürsünüz.
+    > If you don't have an assigned Home organization, you'll just see a single heading that says Organizations with the list of your associated organizations.
 
-## <a name="view-your-organizations"></a>Kuruluşlarınızı görüntüleme
+## <a name="view-your-organizations"></a>View your organizations
 
-1. İş veya okul hesabınızda oturum açın ve ardından https://myprofile.microsoft.com/ sayfanıza gidin.
+1. Sign in to your work or school account and then go to your https://myprofile.microsoft.com/ page.
 
-2. Sol gezinti bölmesinden **kuruluşlar** ' ı seçin veya **kuruluşlar bloğundan kuruluşları** **Yönet** bağlantısını seçin.
+2. Select **Organizations** from the left navigation pane or select the **Manage organizations** link from the **Organizations** block.
 
-    ![Vurgulanan kuruluşların bağlantılarını gösteren Hesabım sayfası](media/my-account-portal/my-account-portal-organizations.png)
+    ![My Account page, showing highlighted Organizations links](media/my-account-portal/my-account-portal-organizations.png)
 
-3. **Ana kuruluşunuzun**bilgilerini gözden geçirin.
+3. Review the information for your **Home organization**.
 
-    ![Kuruluşlar sayfası](media/my-account-portal/my-account-portal-organization-page.png)
+    ![Organizations page](media/my-account-portal/my-account-portal-organization-page.png)
 
-4. Diğer ilişkili kurumlarınızı gözden geçirerek hesabınıza bağlı tüm kuruluşları tanıdığınızdan emin olun.
+4. Review your other associated organizations, making sure you recognize all of the organizations connected to your account.
 
 ## <a name="leave-an-organization"></a>Kuruluştan ayrılma
 
-Ana kuruluşunuz olmayan herhangi bir kuruluştan ayrılırsanız.
+You can leave any organization that isn't your Home organization.
 
 >[!Important]
->Bir kuruluştan yanlışlıkla ayrılırsanız geri alma yöntemi yoktur. Bu kuruluşun yöneticisinin sizi tekrar davet etmesini beklemeniz gerekir.
+>If you leave an organization by mistake, there's no way to undo it. You'll have to wait for the administrator of that organization to invite you again.
 
-1. Bırakmak istediğiniz kuruluşun yanındaki **kuruluşu bırak** ' ı seçin ve sonra çıkmak istediğinizi onaylamak için **bırak** ' ı seçin.
+1. Select **Leave organization** next to the organization you want to leave, and then select **Leave** to confirm you want to leave.
 
-    ![Vurgulanan kuruluşu bırak bağlantısına sahip kuruluşlar sayfası](media/my-account-portal/my-account-portal-organizations-leave.png)
+    ![Organizations page with highlighted leave organization link](media/my-account-portal/my-account-portal-organizations-leave.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kuruluşları görüntüledikten sonra şunları yapabilirsiniz:
+After viewing your organizations, you can:
 
-- [Güvenlik bilgilerinizi](user-help-security-info-overview.md)görüntüleyin veya yönetin.
+- View or manage your [security info](user-help-security-info-overview.md).
 
-- Bağlı [cihazlarınızı](my-account-portal-devices-page.md)görüntüleyin veya yönetin.
+- View or manage your connected [devices](my-account-portal-devices-page.md).
 
-- [Oturum açma etkinliğinizi](my-account-portal-sign-ins-page.md)görüntüleyin.
+- View your [sign-in activity](my-account-portal-sign-ins-page.md).
 
-- Kuruluşunuzun [gizlilikle ilgili verilerinizi nasıl kullandığını](my-account-portal-privacy-page.md)görüntüleyin.
+- View how your organization [uses your privacy-related data](my-account-portal-privacy-page.md).

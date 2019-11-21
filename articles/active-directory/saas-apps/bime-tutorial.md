@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Bime ile tümleştirme Azure Active Directory | Microsoft Docs'
-description: Azure Active Directory ve Bime arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
+title: 'Tutorial: Azure Active Directory integration with Bime | Microsoft Docs'
+description: Learn how to configure single sign-on between Azure Active Directory and Bime.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,234 +16,234 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f792798e724387b6917c23d1bde0c2c68fa8a270
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 7774fd55a64df198a9b025a67ce377deebefe8fe
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73157674"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232082"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-bime"></a>Öğretici: Bime ile tümleştirme Azure Active Directory
+# <a name="tutorial-azure-active-directory-integration-with-bime"></a>Tutorial: Azure Active Directory integration with Bime
 
-Bu öğreticide, Azure Active Directory (Azure AD) ile bir Bime tümleştirmeyi öğreneceksiniz.
-Bime 'yi Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
+In this tutorial, you learn how to integrate Bime with Azure Active Directory (Azure AD).
+Integrating Bime with Azure AD provides you with the following benefits:
 
-* Azure AD 'de, Bıme 'ye erişimi olan denetimi yapabilirsiniz.
-* Kullanıcılarınızın Azure AD hesaplarıyla otomatik olarak (çoklu oturum açma) oturum açmasını sağlayabilirsiniz.
-* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
+* You can control in Azure AD who has access to Bime.
+* You can enable your users to be automatically signed-in to Bime (Single Sign-On) with their Azure AD accounts.
+* You can manage your accounts in one central location - the Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Azure AD tümleştirmesini bir Bime ile yapılandırmak için aşağıdaki öğeler gereklidir:
+To configure Azure AD integration with Bime, you need the following items:
 
-* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü edinebilirsiniz
-* Bime çoklu oturum açma etkin abonelik
+* An Azure AD subscription. If you don't have an Azure AD environment, you can get one-month trial [here](https://azure.microsoft.com/pricing/free-trial/)
+* Bime single sign-on enabled subscription
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
+In this tutorial, you configure and test Azure AD single sign-on in a test environment.
 
-* Bıme, **SP** tarafından başlatılan SSO 'yu destekliyor
+* Bime supports **SP** initiated SSO
 
-## <a name="adding-bime-from-the-gallery"></a>Galeriden Kaynakça ekleme
+## <a name="adding-bime-from-the-gallery"></a>Adding Bime from the gallery
 
-Bime 'nin Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden yönetilen SaaS uygulamaları listenize bir kaynakça eklemeniz gerekir.
+To configure the integration of Bime into Azure AD, you need to add Bime from the gallery to your list of managed SaaS apps.
 
-**Galeriden bir Kaynakça eklemek için aşağıdaki adımları uygulayın:**
+**To add Bime from the gallery, perform the following steps:**
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
+1. In the **[Azure portal](https://portal.azure.com)** , on the left navigation panel, click **Azure Active Directory** icon.
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+    ![The Azure Active Directory button](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
+2. Navigate to **Enterprise Applications** and then select the **All Applications** option.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![The Enterprise applications blade](common/enterprise-applications.png)
 
-3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
+3. To add new application, click **New application** button on the top of dialog.
 
-    ![Yeni uygulama düğmesi](common/add-new-app.png)
+    ![The New application button](common/add-new-app.png)
 
-4. Arama kutusuna **Bime**yazın, sonuç panelinden **Bime** ' yi seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. In the search box, type **Bime**, select **Bime** from result panel then click **Add** button to add the application.
 
-     ![Sonuçlar listesinde Bime](common/search-new-app.png)
+     ![Bime in the results list](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Configure and test Azure AD single sign-on
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına bağlı olarak, Bime ile yapılandırıp test edersiniz.
-Çoklu oturum açma için, bir Azure AD kullanıcısı ile ilişkili kullanıcı arasındaki bir bağlantı ilişkisinin oluşturulması gerekir.
+In this section, you configure and test Azure AD single sign-on with Bime based on a test user called **Britta Simon**.
+For single sign-on to work, a link relationship between an Azure AD user and the related user in Bime needs to be established.
 
-Azure AD çoklu oturum açma 'yı çift ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
+To configure and test Azure AD single sign-on with Bime, you need to complete the following building blocks:
 
-1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Çoklu **[oturum açmayı yapılandırma](#configure-bime-single-sign-on)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
-5. **[Bime test kullanıcısı oluşturun](#create-bime-test-user)** -Kullanıcı IÇIN Azure AD gösterimine bağlı olan, Bime 'de Britta Simon 'un bir karşılığı olacak.
-6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
+1. **[Configure Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)** - to enable your users to use this feature.
+2. **[Configure Bime Single Sign-On](#configure-bime-single-sign-on)** - to configure the Single Sign-On settings on application side.
+3. **[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
+4. **[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
+5. **[Create Bime test user](#create-bime-test-user)** - to have a counterpart of Britta Simon in Bime that is linked to the Azure AD representation of user.
+6. **[Test single sign-on](#test-single-sign-on)** - to verify whether the configuration works.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
+### <a name="configure-azure-ad-single-sign-on"></a>Configure Azure AD single sign-on
 
-Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
+In this section, you enable Azure AD single sign-on in the Azure portal.
 
-Azure AD çoklu oturum açma 'yı Bime ile yapılandırmak için aşağıdaki adımları uygulayın:
+To configure Azure AD single sign-on with Bime, perform the following steps:
 
-1. [Azure Portal](https://portal.azure.com/), **Bime** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
+1. In the [Azure portal](https://portal.azure.com/), on the **Bime** application integration page, select **Single sign-on**.
 
-    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
+    ![Configure single sign-on link](common/select-sso.png)
 
-2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
+2. On the **Select a Single sign-on method** dialog, select **SAML/WS-Fed** mode to enable single sign-on.
 
-    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
+    ![Single sign-on select mode](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. On the **Set up Single Sign-On with SAML** page, click **Edit** icon to open **Basic SAML Configuration** dialog.
 
-    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+    ![Edit Basic SAML Configuration](common/edit-urls.png)
 
-4. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
+4. On the **Basic SAML Configuration** section, perform the following steps:
 
-    ![Bime etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/sp-identifier.png)
+    ![Bime Domain and URLs single sign-on information](common/sp-identifier.png)
 
-    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://<tenant-name>.Bimeapp.com`
+    a. In the **Sign on URL** text box, type a URL using the following pattern: `https://<tenant-name>.Bimeapp.com`
 
-    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://<tenant-name>.Bimeapp.com`
+    b. In the **Identifier (Entity ID)** text box, type a URL using the following pattern: `https://<tenant-name>.Bimeapp.com`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [Bime istemci destek ekibine](https://bime.zendesk.com/hc/categories/202604307-Support-tech-notes-and-tips-) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > These values are not real. Update these values with the actual Sign on URL and Identifier. Contact [Bime Client support team](https://bime.zendesk.com/hc/categories/202604307-Support-tech-notes-and-tips-) to get these values. You can also refer to the patterns shown in the **Basic SAML Configuration** section in the Azure portal.
 
-5. **SAML Imzalama sertifikası** bölümünde, **SAML imzalama sertifikası** Iletişim kutusunu açmak için **Düzenle** düğmesine tıklayın.
+5. In the **SAML Signing Certificate** section, click **Edit** button to open **SAML Signing Certificate** dialog.
 
-    ![SAML Imzalama sertifikasını Düzenle](common/edit-certificate.png)
+    ![Edit SAML Signing Certificate](common/edit-certificate.png)
 
-6. **SAML Imzalama sertifikası** bölümünde, **parmak izini** kopyalayın ve bilgisayarınıza kaydedin.
+6. In the **SAML Signing Certificate** section, copy the **THUMBPRINT** and save it on your computer.
 
-    ![Parmak Izi değerini Kopyala](common/copy-thumbprint.png)
+    ![Copy Thumbprint value](common/copy-thumbprint.png)
 
-7. **Bime 'Yi ayarla** bölümünde, uygun URL 'leri gereksiniminize göre kopyalayın.
+7. On the **Set up Bime** section, copy the appropriate URL(s) as per your requirement.
 
-    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
+    ![Copy configuration URLs](common/copy-configuration-urls.png)
 
-    a. Oturum açma URL 'SI
+    a. Login URL
 
-    b. Azure AD tanımlayıcısı
+    b. Azure Ad Identifier
 
-    c. Oturum kapatma URL 'SI
+    c. Logout URL
 
-### <a name="configure-bime-single-sign-on"></a>Bime çoklu oturum açmayı yapılandırma
+### <a name="configure-bime-single-sign-on"></a>Configure Bime Single Sign-On
 
-1. Farklı bir Web tarayıcısı penceresinde, yönetici olarak Bime şirket sitenizde oturum açın.
+1. In a different web browser window, log into your Bime company site as an administrator.
 
-2. Araç çubuğunda **yönetici**' ye ve ardından **Hesap**' a tıklayın.
+2. In the toolbar, click **Admin**, and then **Account**.
   
-    ![Yöneticileri](./media/bime-tutorial/ic775558.png "Yöneticileri")
+    ![Admin](./media/bime-tutorial/ic775558.png "Admin")
 
-3. Hesap yapılandırması sayfasında, aşağıdaki adımları uygulayın:
+3. On the account configuration page, perform the following steps:
   
-    ![Çoklu oturum açmayı yapılandırma](./media/bime-tutorial/ic775559.png "Çoklu oturum açmayı yapılandırma")
+    ![Configure Single Sign-On](./media/bime-tutorial/ic775559.png "Configure Single Sign-On")
 
-    a. **SAML kimlik doğrulamasını etkinleştir**' i seçin.
+    a. Select **Enable SAML authentication**.
 
-    b. **Uzaktan oturum açma URL** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
+    b. In the **Remote Login URL** textbox, paste the value of **Login URL**, which you have copied from Azure portal.
 
-    c. **Sertifika parmak izi** metin kutusunda, Azure Portal kopyaladığınız **parmak izi** değerini yapıştırın.
+    c. In the **Certificate Fingerprint** textbox, paste the **THUMBPRINT** value which you have copied from Azure portal.
 
     d. **Kaydet** düğmesine tıklayın.
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Create an Azure AD test user
 
-Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
+The objective of this section is to create a test user in the Azure portal called Britta Simon.
 
-1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. In the Azure portal, in the left pane, select **Azure Active Directory**, select **Users**, and then select **All users**.
 
-    !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
+    ![The "Users and groups" and "All users" links](common/users.png)
 
-2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+2. Select **New user** at the top of the screen.
 
-    ![Yeni Kullanıcı düğmesi](common/new-user.png)
+    ![New user Button](common/new-user.png)
 
-3. Kullanıcı Özellikleri ' nde aşağıdaki adımları gerçekleştirin.
+3. In the User properties, perform the following steps.
 
-    ![Kullanıcı iletişim kutusu](common/user-properties.png)
+    ![The User dialog box](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. In the **Name** field enter **BrittaSimon**.
   
-    b. **Kullanıcı adı** alanında **brittasıon\@yourşirketnotlarıetki alanı. Extension** yazın  
+    b. In the **User name** field type **brittasimon\@yourcompanydomain.extension**  
     Örneğin, BrittaSimon@contoso.com
 
-    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
+    c. Select **Show password** check box, and then write down the value that's displayed in the Password box.
 
     d. **Oluştur**’a tıklayın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
+### <a name="assign-the-azure-ad-test-user"></a>Assign the Azure AD test user
 
-Bu bölümde, BIG 'ye erişim izni vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
+In this section, you enable Britta Simon to use Azure single sign-on by granting access to Bime.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **Bime**' yi seçin.
+1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **Bime**.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Enterprise applications blade](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **Bime**' yi seçin.
+2. In the applications list, select **Bime**.
 
-    ![Uygulamalar listesindeki Bime bağlantısı](common/all-applications.png)
+    ![The Bime link in the Applications list](common/all-applications.png)
 
-3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
+3. In the menu on the left, select **Users and groups**.
 
-    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
+    ![The "Users and groups" link](common/users-groups-blade.png)
 
-4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+4. Click the **Add user** button, then select **Users and groups** in the **Add Assignment** dialog.
 
-    ![Atama Ekle bölmesi](common/add-assign-user.png)
+    ![The Add Assignment pane](common/add-assign-user.png)
 
-5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+5. In the **Users and groups** dialog select **Britta Simon** in the Users list, then click the **Select** button at the bottom of the screen.
 
-6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+6. If you are expecting any role value in the SAML assertion then in the **Select Role** dialog select the appropriate role for the user from the list, then click the **Select** button at the bottom of the screen.
 
-7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+7. In the **Add Assignment** dialog click the **Assign** button.
 
-### <a name="create-bime-test-user"></a>Bime test kullanıcısı oluştur
+### <a name="create-bime-test-user"></a>Create Bime test user
 
-Azure AD kullanıcılarının, Bıme 'de oturum açmasını sağlamak için, bu kullanıcıların da Iki kez sağlanması gerekir. Bime durumunda, sağlama el ile gerçekleştirilen bir görevdir.
+In order to enable Azure AD users to log in to Bime, they must be provisioned into Bime. In the case of Bime, provisioning is a manual task.
 
-**Kullanıcı sağlamayı yapılandırmak için aşağıdaki adımları uygulayın:**
+**To configure user provisioning, perform the following steps:**
 
-1. **Bime** kiracınızda oturum açın.
+1. Log in to your **Bime** tenant.
 
-2. Araç çubuğunda **yönetici**' ye ve ardından **Kullanıcılar**' a tıklayın.
+2. In the toolbar, click **Admin**, and then **Users**.
 
-    ![Yöneticileri](./media/bime-tutorial/ic775561.png "Yöneticileri")
+    ![Admin](./media/bime-tutorial/ic775561.png "Admin")
 
-3. **Kullanıcılar listesinde**, **Yeni Kullanıcı Ekle** ' ye ("+") tıklayın.
+3. In the **Users List**, click **Add New User** (“+”).
 
     ![Kullanıcılar](./media/bime-tutorial/ic775562.png "Kullanıcılar")
 
-4. **Kullanıcı ayrıntıları** iletişim sayfasında, aşağıdaki adımları uygulayın:
+4. On the **User Details** dialog page, perform the following steps:
 
-    ![Kullanıcı ayrıntıları](./media/bime-tutorial/ic775563.png "Kullanıcı ayrıntıları")
+    ![User Details](./media/bime-tutorial/ic775563.png "User Details")
 
-    a. **Ad** metin kutusuna, ilk Kullanıcı adını **Britta**gibi girin.
+    a. In the **First name** textbox, enter the first name of user like **Britta**.
 
-    b. **Soyadı** metin kutusunda, **Simon**gibi kullanıcı adının soyadını girin.
+    b. In the **Last name** textbox, enter the last name of user like **Simon**.
 
-    c. **E-posta** metin kutusuna, **brittasıon\@contoso.com**gibi kullanıcının e-postasını girin.
+    c. In the **Email** textbox, enter the email of user like **brittasimon\@contoso.com**.
 
     d. **Kaydet** düğmesine tıklayın.
 
 > [!NOTE]
-> AAD Kullanıcı hesapları sağlamak için, Bime tarafından sunulan diğer bir kullanıcı hesabı oluşturma araçlarını veya API 'Leri kullanabilirsiniz.
+> You can use any other Bime user account creation tools or APIs provided by Bime to provision Azure AD user accounts.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+In this section, you test your Azure AD single sign-on configuration using the Access Panel.
 
-Erişim panelinde Bime kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Iki adımda de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+When you click the Bime tile in the Access Panel, you should be automatically signed in to the Bime for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

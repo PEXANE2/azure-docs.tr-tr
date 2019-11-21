@@ -1,85 +1,85 @@
 ---
-title: Azure 'da özel bir uç nokta bağlantısını yönetme
-description: Azure 'da özel uç nokta bağlantılarını yönetmeyi öğrenin
+title: Manage a Private Endpoint connection in Azure
+description: Learn how to manage private endpoint connections in Azure
 services: private-link
-author: KumudD
+author: asudbring
 ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
-ms.author: kumud
-ms.openlocfilehash: 012b236e997ef9144eaab43862f5f4dd2b324fff
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.author: allensu
+ms.openlocfilehash: 929dfedbbbbe58a30eaa186398c595eaaabeb0a9
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104645"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232527"
 ---
-# <a name="manage-a-private-endpoint-connection"></a>Özel bir uç nokta bağlantısını yönetme
-Azure özel bağlantısı, özel bağlantı hizmeti tüketicisinin hizmeti tüketmesi için hizmet sağlayıcısına bir bağlantı isteyebildiğini bir onay çağrı akışı modelinde çalışmaktadır. Hizmet sağlayıcı, tüketicinin bağlanmasına izin verip vermeyeceğine karar verebilir. Azure özel bağlantısı, hizmet sağlayıcılarının kaynakları üzerinde özel uç nokta bağlantısını yönetmesine olanak sağlar. Bu makale, Özel uç nokta bağlantılarının nasıl yönetileceği hakkında yönergeler sağlar.
+# <a name="manage-a-private-endpoint-connection"></a>Manage a Private Endpoint connection
+Azure Private Link works on an approval call flow model wherein the Private Link service consumer can request a connection to the service provider for consuming the service. The service provider can then decide whether to allow the consumer to connect or not. Azure Private Link enables the service providers to manage the private endpoint connection on their resources. This article provides instructions about how to manage the Private Endpoint connections.
 
-![Özel uç noktaları yönetme](media/manage-private-endpoint/manage-private-endpoint.png)
+![Manage Private Endpoints](media/manage-private-endpoint/manage-private-endpoint.png)
 
-Özel bağlantı hizmeti tüketicisinin aralarından seçim yapabileceğiniz iki bağlantı onay yöntemi vardır:
-- **Otomatik**: Hizmet tüketicisinin hizmet sağlayıcı kaynağında RBAC izinleri varsa, tüketici otomatik onay yöntemini seçebilir. Bu durumda, istek hizmet sağlayıcı kaynağına ulaştığında, hizmet sağlayıcısından herhangi bir işlem yapmanız gerekmez ve bağlantı otomatik olarak onaylanır. 
-- **El ile**: Aksine, hizmet tüketicisinin hizmet sağlayıcı kaynağında RBAC izinleri yoksa, tüketici el ile onay yöntemini seçebilir. Bu durumda, bağlantı isteği **bekliyor**olarak hizmet kaynaklarında görüntülenir. Bağlantı kurulamamadan önce hizmet sağlayıcının isteği el ile onaylaması de istenir. El ile yapılan durumlarda, hizmet tüketicisi hizmet sağlayıcısına daha fazla bağlam sağlama isteğine sahip bir ileti de belirtebilir. Hizmet sağlayıcısı, tüm özel uç nokta bağlantılarında arasından seçim yapmak için aşağıdaki seçeneklere sahiptir: **Onaylandı**, **Reddet**, **Kaldır**.
+There are two connection approval methods that a Private Link service consumer can choose from:
+- **Automatic**: If the service consumer has RBAC permissions on the service provider resource, the consumer can choose the automatic approval method. In this case, when the request reaches the service provider resource, no action is required from the service provider and the connection is automatically approved. 
+- **Manual**: On the contrary, if the service consumer doesn’t have RBAC permissions on the service provider resource, the consumer can choose the manual approval method. In this case, the connection request appears on the service resources as **Pending**. The service provider has to manually approve the request before connections can be established. In manual cases, service consumer can also specify a message with the request to provide more context to the service provider. The service provider has following options to choose from for all Private Endpoint connections: **Approved**, **Reject**, **Remove**.
 
-Aşağıdaki tabloda, çeşitli hizmet sağlayıcısı eylemleri ve özel uç noktalar için ortaya çıkan bağlantı durumları gösterilmektedir.  Hizmet sağlayıcı ayrıca, Özel uç nokta bağlantısının bağlantı durumunu daha sonra tüketici müdahalesi olmadan değiştirebilir. Bu eylem, tüketici tarafındaki uç noktanın durumunu güncelleştirir. 
+The below table shows the various service provider actions and the resulting connection states for Private Endpoints.  The service provider can also change the connection state of private endpoint connection at a later time without consumer intervention. The action will update the state of the endpoint on the consumer side. 
 
 
-|Hizmet sağlayıcı eylemi   |Hizmet tüketicisi özel uç nokta durumu   |Açıklama   |
+|Service Provider Action   |Service Consumer Private Endpoint State   |Açıklama   |
 |---------|---------|---------|
-|Yok.    |    Bekleniyor     |    Bağlantı el ile oluşturulur ve özel bağlantı kaynağı sahibi tarafından onay bekliyor.       |
-|Onayla    |  Onaylandı       |  Bağlantı otomatik olarak veya el ile onaylandı ve kullanılabilir hale gelmiştir.     |
-|Reddet     | Reddedildi        | Bağlantı, özel bağlantı kaynağı sahibi tarafından reddedildi.        |
-|Kaldır    |  Bağlantısı kesildi       | Bağlantı, özel bağlantı kaynağı sahibi tarafından kaldırıldı, Özel uç nokta bilgilendirici hale gelir ve temizleme için silinmelidir.        |
+|Hiçbiri    |    Beklemede     |    Connection is created manually and is pending for approval by the Private Link resource owner.       |
+|Onaylama    |  Onaylandı       |  Connection was automatically or manually approved and is ready to be used.     |
+|Reddet     | Rejected        | Connection was rejected by the private link resource owner.        |
+|Kaldır    |  Disconnected       | Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean up.        |
 |   |         |         |
    
-## <a name="manage-private-endpoint-connections-on-azure-paas-resources"></a>Azure PaaS kaynaklarında özel uç nokta bağlantılarını yönetme
-Portal, Azure PaaS kaynaklarında özel uç nokta bağlantılarını yönetmek için tercih edilen yöntemdir. Şu anda Azure PaaS kaynakları üzerinde bağlantıları yönetmek için PowerShell/CLı desteğiniz yok.
-1. [https://portal.azure.com](https://portal.azure.com ) adresinden Azure portalında oturum açın.
-2. Özel bağlantı merkezi ' ne gidin.
-3. **Kaynaklar**altında, Özel uç nokta bağlantılarını yönetmek istediğiniz kaynak türünü seçin.
-4. Kaynak tipinin her biri için, onunla ilişkili özel uç nokta bağlantılarının sayısını görüntüleyebilirsiniz. Kaynakları gerektiği gibi filtreleyebilirsiniz.
-5. Özel uç nokta bağlantılarını seçin.  Listelenen bağlantılar altında, yönetmek istediğiniz bağlantıyı seçin. 
-6. En üstteki seçeneklerden birini seçerek bağlantının durumunu değiştirebilirsiniz.
+## <a name="manage-private-endpoint-connections-on-azure-paas-resources"></a>Manage Private Endpoint Connections on Azure PaaS resources
+Portal is the preferred method for managing private endpoint connections on Azure PaaS resources. Currently, we don’t have PowerShell/CLI support for managing connections on Azure PaaS resources.
+1. https://portal.azure.com adresinden Azure portalında oturum açın.
+2. Navigate to Private Link Center.
+3. Under **Resources**, select the resource type you want to manage the private endpoint connections.
+4. For each of your resource type, you can view the number of Private Endpoint Connections associated with it. You can filter the resources as needed.
+5. Select the private endpoint connections.  Under the connections listed, select the connection that you want to manage. 
+6. You can change the state of the connection by selecting from the options at the top.
 
-## <a name="manage-private-endpoint-connections-on-a-customerpartner-owned-private-link-service"></a>Müşterinin/ortağın sahip olduğu özel bağlantı hizmetinde özel uç nokta bağlantılarını yönetme
+## <a name="manage-private-endpoint-connections-on-a-customerpartner-owned-private-link-service"></a>Manage Private Endpoint connections on a customer/partner owned Private Link service
 
-Azure PowerShell ve Azure CLı, Microsoft Iş ortağı hizmetlerinde veya müşterinin sahip olduğu hizmetlerde özel uç nokta bağlantılarını yönetmek için tercih edilen yöntemlerdir. Şu anda, bir özel bağlantı hizmetinde bağlantıları yönetmek için Portal desteğiniz yok.  
+Azure PowerShell and Azure CLI are the preferred methods for managing Private Endpoint connections on Microsoft Partner Services or customer owned services. Currently, we don’t have any portal support for managing connections on a Private Link service.  
  
 ### <a name="powershell"></a>PowerShell 
   
-Özel uç nokta bağlantılarını yönetmek için aşağıdaki PowerShell komutlarını kullanın.  
-#### <a name="get-private-link-connection-states"></a>Özel bağlantı bağlantı durumlarını al 
-Özel uç nokta bağlantılarını ve bunların durumlarını almak için cmdlet'inikullanın.`Get-AzPrivateLinkService`  
+Use the following PowerShell commands to manage private endpoint connections.  
+#### <a name="get-private-link-connection-states"></a>Get Private Link connection states 
+Use the `Get-AzPrivateLinkService` cmdlet to get the Private Endpoint connections and their states.  
 ```azurepowershell
 Get-AzPrivateLinkService -Name myPrivateLinkService -ResourceGroupName myResourceGroup 
  ```
  
-#### <a name="approve-a-private-endpoint-connection"></a>Özel bir uç nokta bağlantısını onaylama 
+#### <a name="approve-a-private-endpoint-connection"></a>Approve a Private Endpoint connection 
  
-Özel bir uç nokta bağlantısını onaylamak için cmdlet'inikullanın.`Approve-AzPrivateEndpointConnection` 
+Use the `Approve-AzPrivateEndpointConnection` cmdlet to approve a Private Endpoint connection. 
  
 ```azurepowershell
 Approve-AzPrivateEndpointConnection -Name myPrivateEndpointConnection -ResourceGroupName myResourceGroup -ServiceName myPrivateLinkService
 ```
  
-#### <a name="deny-private-endpoint-connection"></a>Özel uç nokta bağlantısını reddet 
+#### <a name="deny-private-endpoint-connection"></a>Deny Private Endpoint connection 
  
-Özel bir uç nokta bağlantısını reddetmek için cmdlet'inikullanın.`Deny-AzPrivateEndpointConnection` 
+Use the `Deny-AzPrivateEndpointConnection` cmdlet to reject a Private Endpoint connection. 
 ```azurepowershell
 Deny-AzPrivateEndpointConnection -Name myPrivateEndpointConnection -ResourceGroupName myResourceGroup -ServiceName myPrivateLinkService 
 ```
-#### <a name="remove-private-endpoint-connection"></a>Özel uç nokta bağlantısını kaldır 
+#### <a name="remove-private-endpoint-connection"></a>Remove Private Endpoint Connection 
  
-Özel bir uç nokta bağlantısını kaldırmak için cmdlet'inikullanın.`Remove-AzPrivateEndpointConnection` 
+Use the `Remove-AzPrivateEndpointConnection` cmdlet to remove a Private Endpoint connection. 
 ```azurepowershell
 Remove-AzPrivateEndpointConnection -Name myPrivateEndpointConnection1 -ResourceGroupName myResourceGroup -ServiceName myPrivateLinkServiceName 
 ```
  
 ### <a name="azure-cli"></a>Azure CLI 
  
-Özel `az network private-link-service update` uç nokta bağlantılarınızı yönetmek için kullanın. Bağlantı durumu ```azurecli connection-status``` parametresinde belirtilir. 
+Use `az network private-link-service update` for managing your Private Endpoint connections. The connection state is specified in the ```azurecli connection-status``` parameter. 
 ```azurecli
 az network private-link-service connection update -g myResourceGroup -n myPrivateEndpointConnection1 --service-name myPLS --connection-status Approved 
 ```
@@ -87,5 +87,5 @@ az network private-link-service connection update -g myResourceGroup -n myPrivat
    
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Özel uç noktalar hakkında bilgi edinin](private-endpoint-overview.md)
+- [Learn about Private Endpoints](private-endpoint-overview.md)
  

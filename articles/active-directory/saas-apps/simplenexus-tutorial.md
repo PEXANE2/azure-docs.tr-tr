@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory Tümleştirmesi ile SimpleNexus | Microsoft Docs'
-description: Azure Active Directory ve SimpleNexus arasında çoklu oturum açmayı yapılandırmayı öğrenin.
+title: 'Tutorial: Azure Active Directory integration with SimpleNexus | Microsoft Docs'
+description: Learn how to configure single sign-on between Azure Active Directory and SimpleNexus.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,189 +15,189 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 1f8041ecea7c297c6eafdedfbedaae62f61e0e8c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d368b6cd809ccf4e428974bf7c82c01bc5e035b7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67090588"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233414"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-simplenexus"></a>Öğretici: SimpleNexus ile Azure Active Directory Tümleştirme
+# <a name="tutorial-azure-active-directory-integration-with-simplenexus"></a>Tutorial: Azure Active Directory integration with SimpleNexus
 
-Bu öğreticide, Azure Active Directory (Azure AD) ile SimpleNexus tümleştirme konusunda bilgi edinin.
-Azure AD ile SimpleNexus tümleştirme ile aşağıdaki avantajları sağlar:
+In this tutorial, you learn how to integrate SimpleNexus with Azure Active Directory (Azure AD).
+Integrating SimpleNexus with Azure AD provides you with the following benefits:
 
-* SimpleNexus erişimi, Azure AD'de kontrol edebilirsiniz.
-* Otomatik olarak (çoklu oturum açma) SimpleNexus için kendi Azure AD hesapları ile oturum açmış, kullanıcıların etkinleştirebilirsiniz.
-* Hesaplarınız bir merkezi konumda - Azure portalında yönetebilir.
+* You can control in Azure AD who has access to SimpleNexus.
+* You can enable your users to be automatically signed-in to SimpleNexus (Single Sign-On) with their Azure AD accounts.
+* You can manage your accounts in one central location - the Azure portal.
 
-Azure AD SaaS uygulama tümleştirmesi hakkında daha fazla ayrıntı bilmek istiyorsanız, bkz. [uygulama erişimi ve Azure Active Directory ile çoklu oturum açma nedir](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Azure AD Tümleştirmesi ile SimpleNexus yapılandırmak için aşağıdaki öğeler gerekir:
+To configure Azure AD integration with SimpleNexus, you need the following items:
 
-* Azure AD aboneliğiniz. Bir Azure AD ortamını yoksa, bir aylık deneme alabilirsiniz [burada](https://azure.microsoft.com/pricing/free-trial/)
-* SimpleNexus tek oturum açma etkin abonelik
+* An Azure AD subscription. If you don't have an Azure AD environment, you can get one-month trial [here](https://azure.microsoft.com/pricing/free-trial/)
+* SimpleNexus single sign-on enabled subscription
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, yapılandırma ve Azure AD çoklu oturum açma bir test ortamında test edin.
+In this tutorial, you configure and test Azure AD single sign-on in a test environment.
 
-* SimpleNexus destekler **SP** tarafından başlatılan
+* SimpleNexus supports **SP** initiated SSO
 
-## <a name="adding-simplenexus-from-the-gallery"></a>Galeriden SimpleNexus ekleme
+## <a name="adding-simplenexus-from-the-gallery"></a>Adding SimpleNexus from the gallery
 
-Azure AD'de SimpleNexus tümleştirmesini yapılandırmak için SimpleNexus Galeriden yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
+To configure the integration of SimpleNexus into Azure AD, you need to add SimpleNexus from the gallery to your list of managed SaaS apps.
 
-**Galeriden SimpleNexus eklemek için aşağıdaki adımları gerçekleştirin:**
+**To add SimpleNexus from the gallery, perform the following steps:**
 
-1. İçinde **[Azure portalında](https://portal.azure.com)** , sol gezinti panelinde tıklayın **Azure Active Directory** simgesi.
+1. In the **[Azure portal](https://portal.azure.com)** , on the left navigation panel, click **Azure Active Directory** icon.
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+    ![The Azure Active Directory button](common/select-azuread.png)
 
-2. Gidin **kurumsal uygulamalar** seçip **tüm uygulamaları** seçeneği.
+2. Navigate to **Enterprise Applications** and then select the **All Applications** option.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![The Enterprise applications blade](common/enterprise-applications.png)
 
-3. Yeni uygulama eklemek için tıklatın **yeni uygulama** iletişim üst kısmındaki düğmesi.
+3. To add new application, click **New application** button on the top of dialog.
 
-    ![Yeni Uygulama düğmesi](common/add-new-app.png)
+    ![The New application button](common/add-new-app.png)
 
-4. Arama kutusuna **SimpleNexus**seçin **SimpleNexus** sonucu panelinden ardından **Ekle** uygulama eklemek için Ekle düğmesine.
+4. In the search box, type **SimpleNexus**, select **SimpleNexus** from result panel then click **Add** button to add the application.
 
-     ![Sonuç listesinde SimpleNexus](common/search-new-app.png)
+     ![SimpleNexus in the results list](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Configure and test Azure AD single sign-on
 
-Bu bölümde, yapılandırma ve Azure AD çoklu oturum açma SimpleNexus adlı bir test kullanıcı tabanlı test **Britta Simon**.
-Tek iş için oturum açma için bir Azure AD kullanıcısının SimpleNexus ilgili kullanıcı arasında bir bağlantı ilişkisi kurulması gerekir.
+In this section, you configure and test Azure AD single sign-on with SimpleNexus based on a test user called **Britta Simon**.
+For single sign-on to work, a link relationship between an Azure AD user and the related user in SimpleNexus needs to be established.
 
-Yapılandırma ve Azure AD çoklu oturum açma SimpleNexus ile test etmek için aşağıdaki yapı taşlarını tamamlanması gerekir:
+To configure and test Azure AD single sign-on with SimpleNexus, you need to complete the following building blocks:
 
-1. **[Azure AD çoklu oturum açmayı yapılandırmayı](#configure-azure-ad-single-sign-on)**  - bu özelliği kullanmak, kullanıcılarınızın etkinleştirmek için.
-2. **[SimpleNexus çoklu oturum açmayı yapılandırma](#configure-simplenexus-single-sign-on)**  - uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-3. **[Bir Azure AD test kullanıcısı oluşturma](#create-an-azure-ad-test-user)**  - Azure AD çoklu oturum açma Britta Simon ile test etmek için.
-4. **[Azure AD test kullanıcı atama](#assign-the-azure-ad-test-user)**  - Azure AD çoklu oturum açmayı kullanmak Britta Simon etkinleştirmek için.
-5. **[SimpleNexus test kullanıcısı oluşturma](#create-simplenexus-test-user)**  - kullanıcı Azure AD gösterimini bağlı SimpleNexus Britta simon'un bir karşılığı vardır.
-6. **[Çoklu oturum açmayı test](#test-single-sign-on)**  - yapılandırma çalışıp çalışmadığını doğrulayın.
+1. **[Configure Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)** - to enable your users to use this feature.
+2. **[Configure SimpleNexus Single Sign-On](#configure-simplenexus-single-sign-on)** - to configure the Single Sign-On settings on application side.
+3. **[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
+4. **[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
+5. **[Create SimpleNexus test user](#create-simplenexus-test-user)** - to have a counterpart of Britta Simon in SimpleNexus that is linked to the Azure AD representation of user.
+6. **[Test single sign-on](#test-single-sign-on)** - to verify whether the configuration works.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırın
+### <a name="configure-azure-ad-single-sign-on"></a>Configure Azure AD single sign-on
 
-Bu bölümde, Azure AD çoklu oturum açma Azure portalında etkinleştirin.
+In this section, you enable Azure AD single sign-on in the Azure portal.
 
-Azure AD çoklu oturum açma ile SimpleNexus yapılandırmak için aşağıdaki adımları gerçekleştirin:
+To configure Azure AD single sign-on with SimpleNexus, perform the following steps:
 
-1. İçinde [Azure portalında](https://portal.azure.com/), **SimpleNexus** uygulama tümleştirme sayfasında **çoklu oturum açma**.
+1. In the [Azure portal](https://portal.azure.com/), on the **SimpleNexus** application integration page, select **Single sign-on**.
 
-    ![Çoklu oturum açma bağlantısı yapılandırma](common/select-sso.png)
+    ![Configure single sign-on link](common/select-sso.png)
 
-2. Üzerinde **tek bir oturum açma yönteminizi seçmeniz** iletişim kutusunda, **SAML/WS-Federasyon** modu, çoklu oturum açmayı etkinleştirmek için.
+2. On the **Select a Single sign-on method** dialog, select **SAML/WS-Fed** mode to enable single sign-on.
 
-    ![Çoklu oturum açma seçim modu](common/select-saml-option.png)
+    ![Single sign-on select mode](common/select-saml-option.png)
 
-3. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **Düzenle** açmak için simgeyi **temel SAML yapılandırma** iletişim.
+3. On the **Set up Single Sign-On with SAML** page, click **Edit** icon to open **Basic SAML Configuration** dialog.
 
-    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+    ![Edit Basic SAML Configuration](common/edit-urls.png)
 
-4. Üzerinde **temel SAML yapılandırma** bölümünde, aşağıdaki adımları gerçekleştirin:
+4. On the **Basic SAML Configuration** section, perform the following steps:
 
-    ![SimpleNexus etki alanı ve URL'ler tek oturum açma bilgileri](common/sp-identifier.png)
+    ![SimpleNexus Domain and URLs single sign-on information](common/sp-identifier.png)
 
-    a. İçinde **oturum açma URL'si** metin kutusuna şu biçimi kullanarak bir URL yazın: `https://simplenexus.com/<companyname>_login`
+    a. In the **Sign on URL** text box, type a URL using the following pattern: `https://simplenexus.com/<companyname>_login`
 
-    b. İçinde **tanımlayıcı (varlık kimliği)** metin kutusuna şu biçimi kullanarak bir URL yazın: `https://simplenexus.com/<companyname>`
+    b. In the **Identifier (Entity ID)** text box, type a URL using the following pattern: `https://simplenexus.com/<companyname>`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerler gerçek oturum açma URL ve tanımlayıcıdır ile güncelleştirin. İlgili kişi [SimpleNexus istemci Destek ekibine](https://simplenexus.com/sn/contact-us/) bu değerleri almak için. Gösterilen desenleri de başvurabilirsiniz **temel SAML yapılandırma** bölümünde Azure portalında.
+    > These values are not real. Update these values with the actual Sign on URL and Identifier. Contact [SimpleNexus Client support team](https://simplenexus.com/sn/contact-us/) to get these values. You can also refer to the patterns shown in the **Basic SAML Configuration** section in the Azure portal.
 
-5. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **SAML imzalama sertifikası** bölümünde **indirme** indirmek için **Federasyon meta veri XML**  bilgisayarınızdaki belirli seçenekler ihtiyacınıza göre ve kaydedin.
+5. On the **Set up Single Sign-On with SAML** page, in the **SAML Signing Certificate** section, click **Download** to download the **Federation Metadata XML** from the given options as per your requirement and save it on your computer.
 
-    ![Sertifika indirme bağlantısı](common/metadataxml.png)
+    ![The Certificate download link](common/metadataxml.png)
 
-6. Üzerinde **SimpleNexus kümesi** bölümünde, ihtiyacınıza göre uygun URL'lerini kopyalayın.
+6. On the **Set up SimpleNexus** section, copy the appropriate URL(s) as per your requirement.
 
-    ![Yapılandırma URL'leri kopyalayın](common/copy-configuration-urls.png)
+    ![Copy configuration URLs](common/copy-configuration-urls.png)
 
-    a. Oturum Açma URL'si:
+    a. Login URL
 
-    b. Azure AD Tanımlayıcısı
+    b. Azure AD Identifier
 
-    c. Oturum Kapatma URL'si
+    c. Logout URL
 
-### <a name="configure-simplenexus-single-sign-on"></a>SimpleNexus tek oturum açmayı yapılandırın
+### <a name="configure-simplenexus-single-sign-on"></a>Configure SimpleNexus Single Sign-On
 
-Çoklu oturum açmayı yapılandırma **SimpleNexus** tarafı, indirilen göndermek için ihtiyacınız **Federasyon meta verileri XML** ve uygun Azure portalına kopyalanan URL'lerden [SimpleNexus Destek ekibine ](https://simplenexus.com/sn/contact-us/). Bunlar, her iki kenarı da düzgün ayarlandığından SAML SSO bağlantı sağlamak için bu ayarı ayarlayın.
+To configure single sign-on on **SimpleNexus** side, you need to send the downloaded **Federation Metadata XML** and appropriate copied URLs from Azure portal to [SimpleNexus support team](https://simplenexus.com/sn/contact-us/). They set this setting to have the SAML SSO connection set properly on both sides.
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma 
+### <a name="create-an-azure-ad-test-user"></a>Create an Azure AD test user 
 
-Bu bölümün amacı, Britta Simon adlı Azure portalında bir test kullanıcısı oluşturmaktır.
+The objective of this section is to create a test user in the Azure portal called Britta Simon.
 
-1. Azure portalında, sol bölmede seçin **Azure Active Directory**seçin **kullanıcılar**ve ardından **tüm kullanıcılar**.
+1. In the Azure portal, in the left pane, select **Azure Active Directory**, select **Users**, and then select **All users**.
 
-    !["Kullanıcılar ve Gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
+    ![The "Users and groups" and "All users" links](common/users.png)
 
-2. Seçin **yeni kullanıcı** ekranın üstünde.
+2. Select **New user** at the top of the screen.
 
-    ![Yeni kullanıcı düğmesi](common/new-user.png)
+    ![New user Button](common/new-user.png)
 
-3. Kullanıcı özellikleri, aşağıdaki adımları gerçekleştirin.
+3. In the User properties, perform the following steps.
 
-    ![Kullanıcı iletişim kutusu](common/user-properties.png)
+    ![The User dialog box](common/user-properties.png)
 
-    a. İçinde **adı** alana **BrittaSimon**.
+    a. In the **Name** field enter **BrittaSimon**.
   
-    b. İçinde **kullanıcı adı** alan türü **brittasimon@yourcompanydomain.extension**  
+    b. In the **User name** field type **brittasimon@yourcompanydomain.extension**  
     Örneğin, BrittaSimon@contoso.com
 
-    c. Seçin **Show parola** onay kutusunu işaretleyin ve ardından parola kutusunda görüntülenen değeri yazın.
+    c. Select **Show password** check box, and then write down the value that's displayed in the Password box.
 
     d. **Oluştur**’a tıklayın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Assign the Azure AD test user
 
-Bu bölümde, Azure çoklu oturum açma kullanmak için SimpleNexus erişim vererek Britta Simon etkinleştirin.
+In this section, you enable Britta Simon to use Azure single sign-on by granting access to SimpleNexus.
 
-1. Azure portalında **kurumsal uygulamalar**seçin **tüm uygulamaları**, ardından **SimpleNexus**.
+1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **SimpleNexus**.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Enterprise applications blade](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **SimpleNexus**.
+2. In the applications list, select **SimpleNexus**.
 
-    ![Uygulamalar listesinde SimpleNexus bağlantı](common/all-applications.png)
+    ![The SimpleNexus link in the Applications list](common/all-applications.png)
 
-3. Soldaki menüde **kullanıcılar ve gruplar**.
+3. In the menu on the left, select **Users and groups**.
 
-    !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+    ![The "Users and groups" link](common/users-groups-blade.png)
 
-4. Tıklayın **Kullanıcı Ekle** düğmesine ve ardından **kullanıcılar ve gruplar** içinde **atama Ekle** iletişim.
+4. Click the **Add user** button, then select **Users and groups** in the **Add Assignment** dialog.
 
-    ![Atama Ekle bölmesi](common/add-assign-user.png)
+    ![The Add Assignment pane](common/add-assign-user.png)
 
-5. İçinde **kullanıcılar ve gruplar** iletişim kutusunda **Britta Simon** 'a tıklayın kullanıcı listesinde **seçin** ekranın alt kısmındaki düğmesi.
+5. In the **Users and groups** dialog select **Britta Simon** in the Users list, then click the **Select** button at the bottom of the screen.
 
-6. SAML onaylaması ardından içinde herhangi bir rolü değer bekleniyor durumunda **rolü Seç** 'a tıklayın listeden bir kullanıcı için uygun rolü Seç iletişim kutusu **seçin** ekranın alt kısmındaki düğmesi.
+6. If you are expecting any role value in the SAML assertion then in the **Select Role** dialog select the appropriate role for the user from the list, then click the **Select** button at the bottom of the screen.
 
-7. İçinde **atama Ekle** iletişim tıklatın **atama** düğmesi.
+7. In the **Add Assignment** dialog click the **Assign** button.
 
-### <a name="create-simplenexus-test-user"></a>SimpleNexus test kullanıcısı oluşturma
+### <a name="create-simplenexus-test-user"></a>Create SimpleNexus test user
 
-SimpleNexus için oturum açmak Azure AD kullanıcılarının etkinleştirmek için bunların SimpleNexus sağlanması gerekir. SimpleNexus söz konusu olduğunda, sağlama Kiracı Yöneticisi tarafından gerçekleştirilen bir el ile gerçekleştirilen bir görevdir.
+In order to enable Azure AD users to log in to SimpleNexus, they must be provisioned into SimpleNexus. In the case of SimpleNexus, provisioning is a manual task performed by the tenant administrator.
 
 > [!NOTE]
-> Herhangi diğer SimpleNexus kullanıcı hesabı oluşturma araçları kullanabilir veya API'leri için AAD kullanıcı hesapları sağlamak SimpleNexus tarafından sağlanan.
+> You can use any other SimpleNexus user account creation tools or APIs provided by SimpleNexus to provision Azure AD user accounts.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+In this section, you test your Azure AD single sign-on configuration using the Access Panel.
 
-Erişim paneli SimpleNexus kutucuğa tıkladığınızda, size otomatik olarak SSO'yu ayarlama SimpleNexus için oturum açmanız. Erişim paneli hakkında daha fazla bilgi için bkz: [erişim Paneli'ne giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+When you click the SimpleNexus tile in the Access Panel, you should be automatically signed in to the SimpleNexus for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

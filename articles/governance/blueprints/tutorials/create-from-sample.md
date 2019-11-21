@@ -1,189 +1,189 @@
 ---
-title: Şema örneğinden ortam oluşturma
-description: İki kaynak grubu ayarlayan ve her biri için bir rol ataması yapılandıran bir şema tanımı oluşturmak için bir şema örneği kullanın.
+title: 'Tutorial: Blueprint sample to new environment'
+description: In this tutorial, you use a blueprint sample to create a blueprint definition that sets up two resource groups and configures a role assignment for each.
 ms.date: 03/05/2019
 ms.topic: tutorial
-ms.openlocfilehash: d23e9b7242c58e4da5fcfe5ef4d29d9f9df6f754
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 31363f8756a8483533a24a8005c0ca9cb7ea7ea0
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960281"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74216922"
 ---
-# <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Öğretici: bir şema örneğinden ortam oluşturma
+# <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Tutorial: Create an environment from a blueprint sample
 
-Örnek planlar, Azure şemaları kullanılarak neler yapılabileceğini örnekler sağlar. Her biri belirli bir amaç veya amaca sahip bir örnektir, ancak kendileri tarafından tamamen bir ortam oluşturmaz. Her biri, dahil edilen yapıların, tasarımların ve parametrelerin çeşitli birleşimleri ile Azure şemaları kullanılarak araştırılacak başlangıç yeri olarak hazırlanmıştır.
+Sample blueprints provide examples of what can be done using Azure Blueprints. Each is a sample with a specific intent or purpose, but doesn't create a complete environment by themselves. Each is intended as a starting place to explore using Azure Blueprints with various combinations of included artifacts, designs, and parameters.
 
-Aşağıdaki öğreticide, planlar hizmetinin farklı yönlerini göstermek için RBAC şeması örneği **Ile kaynak grupları** kullanılmaktadır. Aşağıdaki adımlar ele alınmıştır:
+The following tutorial uses the **Resource Groups with RBAC** blueprint sample to showcase different aspects of the Blueprints service. The following steps are covered:
 
 > [!div class="checklist"]
-> - Örnekten yeni bir şema tanımı oluşturun
-> - Örnek kopyanızı **yayımlandı** olarak işaretleyin
-> - Şema kopyanızı mevcut bir aboneliğe atama
-> - Atama için dağıtılan kaynakları İncele
-> - Kilitleri kaldırmak için şema atamasını kaldırma
+> - Create a new blueprint definition from the sample
+> - Mark your copy of the sample as **Published**
+> - Assign your copy of the blueprint to an existing subscription
+> - Inspect deployed resources for the assignment
+> - Unassign the blueprint to remove the locks
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticiyi tamamlayabilmeniz için bir Azure aboneliği gerekir. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+To complete this tutorial, an Azure subscription is needed. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-## <a name="create-blueprint-definition-from-sample"></a>Örnekten şema tanımı oluştur
+## <a name="create-blueprint-definition-from-sample"></a>Create blueprint definition from sample
 
-İlk olarak, şema örneğini uygulayın. İçeri aktarma, ortamınızda örneğe bağlı olarak yeni bir şema oluşturur.
+First, implement the blueprint sample. Importing creates a new blueprint in your environment based on the sample.
 
-1. Sol bölmedeki **tüm hizmetler** ' i seçin. **Şemaları**arayın ve seçin.
+1. Select **All services** in the left pane. Search for and select **Blueprints**.
 
-1. Soldaki **Başlarken** sayfasında, şema _Oluştur_altında **Oluştur** düğmesini seçin.
+1. From the **Getting started** page on the left, select the **Create** button under _Create a blueprint_.
 
-1. _Diğer örnekler_ altında RBAC şeması örneği **ile kaynak gruplarını** bulun ve **Bu örneği kullan**' ı seçin.
+1. Find the **Resource Groups with RBAC** blueprint sample under _Other Samples_ and select **Use this sample**.
 
-1. Şema örneği _hakkında temel bilgileri_ girin:
+1. Enter the _Basics_ of the blueprint sample:
 
-   - **Şema adı**: şema örneğinin kopyasına bir ad verin. Bu öğreticide,- _role-atamaları ile birlikte iki-RGS_adı kullanacağız.
-   - **Tanım konumu**: üç noktayı kullanın ve örnek kopyanızı kaydetmek için yönetim grubunu veya aboneliği seçin.
+   - **Blueprint name**: Provide a name for your copy of the blueprint sample. For this tutorial, we'll use the name _two-rgs-with-role-assignments_.
+   - **Definition location**: Use the ellipsis and select the management group or subscription to save your copy of the sample to.
 
-1. Sayfanın üst kısmındaki _yapıtlar_ sekmesini veya sonraki: sayfanın en altındaki **yapıtları** seçin.
+1. Select the _Artifacts_ tab at the top of the page or **Next: Artifacts** at the bottom of the page.
 
-1. Şema örneğini oluşturan yapıtların listesini gözden geçirin. Bu örnek, _prodrg_ ve _preprodrg_görünen adları ile iki kaynak grubu tanımlar. Her kaynak grubunun son adı ve konumu, şema atama sırasında ayarlanır. _Prodrg_ kaynak grubuna _katkıda_ bulunan rolü atanır ve _Preprodrg_ kaynak grubuna _sahip_ ve _Okuyucular_ rolleri atanır. Tanımda atanan roller statiktir, ancak rol atanmış kullanıcı, uygulama veya Grup, şema atama sırasında ayarlanır.
+1. Review the list of artifacts that make up the blueprint sample. This sample defines two resource groups, with display names of _ProdRG_ and _PreProdRG_. The final name and location of each resource group are set during blueprint assignment. The _ProdRG_ resource group is assigned the _Contributor_ role and the _PreProdRG_ resource group is assigned the _Owner_ and _Readers_ roles. The roles assigned in the definition are static, but user, app, or group that is assigned the role is set during blueprint assignment.
 
-1. Şema örneğini gözden geçirmeyi bitirdiğinizde **Taslağı kaydet** ' i seçin.
+1. Select **Save Draft** when you've finished reviewing the blueprint sample.
 
-Bu adım, seçili yönetim grubunda veya abonelikte örnek şema tanımının bir kopyasını oluşturur. Kayıtlı şema tanımı, sıfırdan oluşturulan herhangi bir şema gibi yönetilir. Örneği, gereken sayıda yönetim grubunuza veya aboneliğine kaydedebilirsiniz. Ancak, her kopyaya benzersiz bir ad verilmelidir.
+This step creates a copy of the sample blueprint definition in the selected management group or subscription. The saved blueprint definition is managed like any blueprint created from scratch. You may save the sample to your management group or subscription as many times as needed. However, each copy must be provided a unique name.
 
-Şema **tanımını kaydetme başarılı oldu** Portal bildirimi göründüğünde, sonraki adıma geçin.
+Once the **Saving blueprint definition succeeded** portal notification appears, move to the next step.
 
-## <a name="publish-the-sample-copy"></a>Örnek kopyayı Yayımla
+## <a name="publish-the-sample-copy"></a>Publish the sample copy
 
-Şema örneğinin kopyası artık ortamınızda oluşturulmuştur. **Taslak** modunda oluşturulur ve atanmadan ve dağıtılmadan önce **yayımlanmaları** gerekir. Şema örneğinin kopyası ortamınıza ve gereksinimlerinize göre özelleştirilebilir. Bu öğreticide hiçbir değişiklik yapmayacağız.
+Your copy of the blueprint sample has now been created in your environment. It's created in **Draft** mode and must be **Published** before it can be assigned and deployed. The copy of the blueprint sample can be customized to your environment and needs. For this tutorial, we won't make any changes.
 
-1. Sol bölmedeki **tüm hizmetler** ' i seçin. **Şemaları**arayın ve seçin.
+1. Select **All services** in the left pane. Search for and select **Blueprints**.
 
-1. Sol taraftaki **Blueprint tanımları** sayfasını seçin. _İki-RGS-rol-atamaları_ şema tanımını bulmak için filtreleri kullanın ve ardından bunu seçin.
+1. Select the **Blueprint definitions** page on the left. Use the filters to find the _two-rgs-with-role-assignments_ blueprint definition and then select it.
 
-1. Sayfanın üst kısmındaki şemayı **Yayımla** ' yı seçin. Sağdaki yeni bölmede, şema örneğinin kopyası için **Sürüm** _1,0_ olarak sağlayın. Daha sonra bir değişiklik yaparsanız, bu özellik için faydalıdır. "RBAC şeması örneği ile kaynak gruplarından yayımlanan Ilk sürüm" gibi **değişiklik notları** sağlayın. Ardından sayfanın alt kısmında **Yayımla** ' yı seçin.
+1. Select **Publish blueprint** at the top of the page. In the new pane on the right, provide **Version** as _1.0_ for your copy of the blueprint sample. This property is useful for if you make a modification later. Provide **Change notes** such as "First version published from the resource groups with RBAC blueprint sample." Then select **Publish** at the bottom of the page.
 
-Bu adım, şema 'in bir aboneliğe atanmasını olanaklı kılar. Yayımlandıktan sonra değişiklikler yine de yapılabilir. Aynı şema tanımının farklı sürümleri arasındaki farkları izlemek için ek değişiklikler yeni bir **Sürüm** değeriyle yayımlamayı gerektirir.
+This step makes it possible to assign the blueprint to a subscription. Once published, changes can still be made. Additional changes require publishing with a new **Version** value to track differences between different versions of the same blueprint definition.
 
-Şema **tanımını yayımlama başarılı oldu** Portal bildirimi göründüğünde bir sonraki adıma geçin.
+Once the **Publishing blueprint definition succeeded** portal notification appears, move to the next step.
 
-## <a name="assign-the-sample-copy"></a>Örnek kopyayı atama
+## <a name="assign-the-sample-copy"></a>Assign the sample copy
 
-Şema örneğinin kopyası başarıyla **yayımlandıktan**sonra, kaydedildiği yönetim grubu içindeki bir aboneliğe atanabilir. Bu adım, her bir şema örneğinin kopyasının her dağıtımını yapmak için parametrelerin sağlandığı yerdir.
+Once the copy of the blueprint sample has been successfully **Published**, it can be assigned to a subscription within the management group it was saved to. This step is where parameters are provided to make each deployment of the copy of the blueprint sample unique.
 
-1. Sol bölmedeki **tüm hizmetler** ' i seçin. **Şemaları**arayın ve seçin.
+1. Select **All services** in the left pane. Search for and select **Blueprints**.
 
-1. Sol taraftaki **Blueprint tanımları** sayfasını seçin. _İki-RGS-rol-atamaları_ şema tanımını bulmak için filtreleri kullanın ve ardından bunu seçin.
+1. Select the **Blueprint definitions** page on the left. Use the filters to find the _two-rgs-with-role-assignments_ blueprint definition and then select it.
 
-1. Şema tanım sayfasının en üstünde şema **ata** ' yı seçin.
+1. Select **Assign blueprint** at the top of the blueprint definition page.
 
-1. Şema atamasının parametre değerlerini sağlayın:
+1. Provide the parameter values for the blueprint assignment:
 
    - Temel Bilgiler
 
-     - **Abonelikler**: şema örneğinin kopyasını kaydettiğiniz yönetim grubundaki bir veya daha fazla abonelik seçin. Birden fazla abonelik seçerseniz, girilen parametreleri kullanarak her biri için bir atama oluşturulur.
-     - **Atama adı**: ad, şema tanımının adına göre önceden doldurulur.
-     - **Konum**: yönetilen kimliğin oluşturulacağı bölgeyi seçin. Azure Blueprint bu yönetilen kimliği kullanarak tüm yapıtları atanmış şemaya dağıtır. Daha fazla bilgi için bkz. [Azure kaynakları için yönetilen kimlikler](../../../active-directory/managed-identities-azure-resources/overview.md).
-       Bu öğretici için _Doğu ABD 2_' yi seçin.
-     - Şema **tanımı sürümü**: örnek şema tanımının **yayınlanmış** sürüm _1,0_ ' i seçin.
+     - **Subscriptions**: Select one or more of the subscriptions that are in the management group you saved your copy of the blueprint sample to. If you select more than one subscription, an assignment will be created for each using the parameters entered.
+     - **Assignment name**: The name is pre-populated for you based on the name of the blueprint definition.
+     - **Location**: Select a region for the managed identity to be created in. Azure Blueprint bu yönetilen kimliği kullanarak tüm yapıtları atanmış şemaya dağıtır. Daha fazla bilgi için bkz. [Azure kaynakları için yönetilen kimlikler](../../../active-directory/managed-identities-azure-resources/overview.md).
+       For this tutorial, select _East US 2_.
+     - **Blueprint definition version**: Pick the **Published** version _1.0_ of your copy of the sample blueprint definition.
 
-   - Kilit ataması
+   - Lock Assignment
 
-     _Salt okuma_ şeması kilit modunu seçin. Daha fazla bilgi için bkz. [şema kaynağı kilitleme](../concepts/resource-locking.md).
+     Select the _Read Only_ blueprint lock mode. Daha fazla bilgi için bkz. [şema kaynağı kilitleme](../concepts/resource-locking.md).
 
    - Yönetilen Kimlik
 
-     Varsayılan _sistem atanmış_ seçeneğini bırakın. Daha fazla bilgi için bkz. [Yönetilen kimlikler](../../../active-directory/managed-identities-azure-resources/overview.md).
+     Leave the default _System assigned_ option. For more information, see [managed identities](../../../active-directory/managed-identities-azure-resources/overview.md).
 
-   - Yapıt parametreleri
+   - Artifact parameters
 
-     Bu bölümde tanımlanan parametreler, tanımlanan yapıt için geçerlidir. Bu parametreler, Blueprint atama sırasında tanımlandıklarından [dinamik parametrelerdir](../concepts/parameters.md#dynamic-parameters) . Her yapıt için, parametre değerini **değer** sütununda tanımlananla ayarlayın. `{Your ID}`için Azure kullanıcı hesabınızı seçin.
+     The parameters defined in this section apply to the artifact under which it's defined. These parameters are [dynamic parameters](../concepts/parameters.md#dynamic-parameters) since they're defined during the assignment of the blueprint. For each artifact, set the parameter value to what is defined in the **Value** column. For `{Your ID}`, select your Azure user account.
 
-     |Yapıt adı|Yapıt türü|Parametre adı|Değer|Açıklama|
+     |Artifact name|Artifact type|Parametre adı|Değer|Açıklama|
      |-|-|-|-|-|
-     |ProdRG kaynak grubu|Kaynak grubu|Ad|Üretim RG|İlk kaynak grubunun adını tanımlar.|
-     |ProdRG kaynak grubu|Kaynak grubu|Konum|Batı ABD 2|İlk kaynak grubunun konumunu ayarlar.|
-     |Katılımcı|Rol ataması|Kullanıcı veya Grup|{KIMLIĞINIZ}|İlk kaynak grubu içinde _katkıda_ bulunan rol atamasını hangi kullanıcı veya gruba veririm tanımlar.|
-     |PreProdRG kaynak grubu|Kaynak grubu|Ad|Ön üretim RG|İkinci kaynak grubunun adını tanımlar.|
-     |PreProdRG kaynak grubu|Kaynak grubu|Konum|Batı ABD|İkinci kaynak grubunun konumunu ayarlar.|
-     |Sahip|Rol ataması|Kullanıcı veya Grup|{KIMLIĞINIZ}|İkinci kaynak grubu içinde _sahip_ rolü atamasını hangi kullanıcı veya gruba veririm tanımlar.|
-     |Okuyucular|Rol ataması|Kullanıcı veya Grup|{KIMLIĞINIZ}|İkinci kaynak grubu içinde _Okuyucular_ rolü atamasını hangi kullanıcı veya gruba veririm tanımlar.|
+     |ProdRG resource group|Kaynak grubu|Adı|ProductionRG|Defines the name of the first resource group.|
+     |ProdRG resource group|Kaynak grubu|Konum|Batı ABD 2|Sets the location of the first resource group.|
+     |Katılımcı|Rol ataması|User or Group|{Your ID}|Defines which user or group to grant the _Contributor_ role assignment within the first resource group.|
+     |PreProdRG resource group|Kaynak grubu|Adı|PreProductionRG|Defines the name of the second resource group.|
+     |PreProdRG resource group|Kaynak grubu|Konum|Batı ABD|Sets the location of the second resource group.|
+     |Sahip|Rol ataması|User or Group|{Your ID}|Defines which user or group to grant the _Owner_ role assignment within the second resource group.|
+     |Okuyucular|Rol ataması|User or Group|{Your ID}|Defines which user or group to grant the _Readers_ role assignment within the second resource group.|
 
-1. Tüm parametreler girildikten sonra sayfanın alt kısmındaki **ata** ' yı seçin.
+1. Once all parameters have been entered, select **Assign** at the bottom of the page.
 
-Bu adım, tanımlı kaynakları dağıtır ve seçili **kilit atamasını**yapılandırır. Blueprint kilitlerinin uygulanması 30 dakika kadar sürebilir.
+This step deploys the defined resources and configures the selected **Lock Assignment**. Blueprint locks can take up to 30 minutes to apply.
 
-Şema **tanımı başarılı oldu** Portal bildirimi seçildikten sonra bir sonraki adıma geçin.
+Once the **Assigning blueprint definition succeeded** portal notification appears, move to the next step.
 
-## <a name="inspect-resources-deployed-by-the-assignment"></a>Atama tarafından dağıtılan kaynakları İncele
+## <a name="inspect-resources-deployed-by-the-assignment"></a>Inspect resources deployed by the assignment
 
-Şema ataması, şema tanımında tanımlanan yapıtları oluşturur ve izler. Nesnelerin durumunu şema atama sayfasından görebilir ve kaynaklara doğrudan bakarak erişebilirsiniz.
+The blueprint assignment creates and tracks the artifacts defined in the blueprint definition. We can see the status of the resources from the blueprint assignment page and by looking at the resources directly.
 
-1. Sol bölmedeki **tüm hizmetler** ' i seçin. **Şemaları**arayın ve seçin.
+1. Select **All services** in the left pane. Search for and select **Blueprints**.
 
-1. Sol taraftaki **atanan** şemalar sayfasını seçin. ------------------ _Role-_ ----------
+1. Select the **Assigned blueprints** page on the left. Use the filters to find the _Assignment-two-rgs-with-role-assignments_ blueprint assignment and then select it.
 
-   Bu sayfadan, atamanın başarılı olduğunu ve oluşturulan kaynakların listesini şema Lock durumuyla birlikte görebiliriz. Atama güncelleştirilirse, **atama işlemi** açılır listesi her tanım sürümünün dağıtımıyla ilgili ayrıntıları gösterir. Oluşturulan her kaynak, tıklanmış ve bu kaynaklar özellik sayfasını açacak.
+   From this page, we can see the assignment succeeded and the list of created resources along with their blueprint lock state. If the assignment is updated, the **Assignment operation** drop-down shows details about the deployment of each definition version. Each listed resource that was created can be clicked and opens that resources property page.
 
-1. **Üretim RG** kaynak grubunu seçin.
+1. Select the **ProductionRG** resource group.
 
-   Kaynak grubunun adının, yapıt görünen adı _Prodrg_değil, **Üretim** için olduğunu görüyoruz. Bu ad, şema ataması sırasında ayarlanan değerle eşleşir.
+   We see that the name of the resource group is **ProductionRG** and not the artifact display name _ProdRG_. This name matches the value set during the blueprint assignment.
 
-1. Sol taraftaki **erişim denetimi (IAM)** sayfasını ve ardından **rol atamaları** sekmesini seçin.
+1. Select the **Access control (IAM)** page on the left and then the **Role assignments** tab.
 
-   Burada, hesabınıza _Bu kaynağın_kapsamında _katkıda_ bulunan rolü verildiğini görüyoruz. ----------------- --------------- _Rol atamaları_ Bu izinler, yapılandırılmış şema kilitleri olan kaynakları yönetmek için de kullanılır.
+   Here we see that your account has been granted the _Contributor_ role on the scope of _This resource_. The _Assignment-two-rgs-with-role-assignments_ blueprint assignment has the _Owner_ role as it was used to create the resource group. These permissions are also used to manage resources with configured blueprint locks.
 
-1. Azure portal içerik haritasında, bir sayfa geri **gitmek için----** ------------- ------------
+1. From the Azure portal breadcrumb, select **Assignment-two-rgs-with-role-assignments** to go back one page, then select the **PreProductionRG** resource group.
 
-1. Sol taraftaki **erişim denetimi (IAM)** sayfasını ve ardından **rol atamaları** sekmesini seçin.
+1. Select the **Access control (IAM)** page on the left and then the **Role assignments** tab.
 
-   Burada, hesabınıza hem _sahip_ hem de _okuyucu_ rollerinin verildiğini, her ikisi de _Bu kaynağın_kapsamını görürsünüz. Şema atamasının aynı zamanda ilk kaynak grubu gibi _sahip_ rolü de vardır.
+   Here we see that your account has been granted both the _Owner_ and _Reader_ roles, both on the scope of _This resource_. The blueprint assignment also has the _Owner_ role like the first resource group.
 
-1. **Atamaları Reddet** sekmesini seçin.
+1. Select the **Deny assignments** tab.
 
-   Şema ataması, _salt okuma_ şeması kilit modunu zorlamak için dağıtılan kaynak grubunda bir [reddetme ataması](../../../role-based-access-control/deny-assignments.md) oluşturdu. Reddetme ataması, _rol atamaları_ sekmesinde uygun haklara sahip birinin belirli eylemleri almasını engeller. Reddetme ataması _tüm sorumluları_etkiler.
+   The blueprint assignment created a [deny assignment](../../../role-based-access-control/deny-assignments.md) on the deployed resource group to enforce the _Read Only_ blueprint lock mode. The deny assignment prevents someone with appropriate rights on the _Role assignments_ tab from taking specific actions. The deny assignment affects _All principals_.
 
-1. Reddetme atamasını seçin, ardından sol taraftaki **Izinleri reddedildi** sayfasını seçin.
+1. Select the deny assignment, then select the **Denied Permissions** page on the left.
 
-   Reddetme ataması **\*** ve **eylem** yapılandırmasıyla tüm Işlemleri engellemektedir, ancak **NotActions**aracılığıyla **\*/Read** 'i dışlayarak okuma erişimine izin verir.
+   The deny assignment is preventing all operations with the **\*** and **Action** configuration, but allows read access by excluding **\*/read** via **NotActions**.
 
-1. Azure portal içerik haritasında, **ön üretim RG-Access Control (IAM)** seçeneğini belirleyin. Ardından sol taraftaki **genel bakış** sayfasını ve ardından **kaynak grubunu sil** düğmesini seçin. Silmeyi onaylamak için _Preüretim RG_ adını girin ve bölmenin altındaki **Sil** ' i seçin.
+1. From the Azure portal breadcrumb, select **PreProductionRG - Access control (IAM)** . Then select the **Overview** page on the left and then the **Delete resource group** button. Enter the name _PreProductionRG_ to confirm the delete and select **Delete** at the bottom of the pane.
 
-   Portal bildirim **silme kaynak grubu ön üretim RG başarısız oldu** . Hata, hesabınız kaynak grubunu silme iznine sahip olsa da, şema atama tarafından erişim reddedilir. Şema atama sırasında _yalnızca okuma_ şeması kilit modunu seçtiğinizi unutmayın. Şema Lock, izin olan bir hesabın, hatta _sahibi_, kaynağın silinmesini engeller. Daha fazla bilgi için bkz. [şema kaynağı kilitleme](../concepts/resource-locking.md).
+   The portal notification **Delete resource group PreProductionRG failed** is displayed. The error states that while your account has permission to delete the resource group, access is denied by the blueprint assignment. Remember that we selected the _Read Only_ blueprint lock mode during blueprint assignment. The blueprint lock prevents an account with permission, even _Owner_, from deleting the resource. Daha fazla bilgi için bkz. [şema kaynağı kilitleme](../concepts/resource-locking.md).
 
-Bu adımlar, kaynaklarımızın tanımlandığı şekilde oluşturulduğunu ve şema kilitleri izin içeren bir hesaptan bile istenmeyen silme işlemini engellediğini gösterir.
+These steps show that our resources were created as defined and the blueprint locks prevented unwanted deletion, even from an account with permission.
 
-## <a name="unassign-the-blueprint"></a>Şema atamasını kaldırma
+## <a name="unassign-the-blueprint"></a>Unassign the blueprint
 
-Son adım, şema 'in ve dağıtıldığı kaynakların atanmasını kaldırmakta.
-Atamanın kaldırılması dağıtılan yapıtları kaldırmaz.
+The last step is to remove the assignment of the blueprint and the resources that it deployed.
+Removing the assignment doesn't remove the deployed artifacts.
 
-1. Sol bölmedeki **tüm hizmetler** ' i seçin. **Şemaları**arayın ve seçin.
+1. Select **All services** in the left pane. Search for and select **Blueprints**.
 
-1. Sol taraftaki **atanan** şemalar sayfasını seçin. ------------------ _Role-_ ----------
+1. Select the **Assigned blueprints** page on the left. Use the filters to find the _Assignment-two-rgs-with-role-assignments_ blueprint assignment and then select it.
 
-1. Sayfanın üst kısmındaki **şema atamasını Kaldır** düğmesini seçin. Onay iletişim kutusunda uyarıyı okuyun ve **Tamam**' ı seçin.
+1. Select the **Unassign blueprint** button at the top of the page. Read the warning in the confirmation dialog, then select **OK**.
 
-   Şema ataması kaldırıldığında, şema kilitleri da kaldırılır. Oluşturulan kaynaklar, izinleri olan bir hesap tarafından yeniden silinir.
+   With the blueprint assignment removed, the blueprint locks are also removed. The created resources can once again be deleted by an account with permissions.
 
-1. Azure menüsünden **kaynak grupları** ' nı seçin ve ardından **Üretim RG**' yi seçin.
+1. Select **Resource groups** from the Azure menu, then select **ProductionRG**.
 
-1. Sol taraftaki **erişim denetimi (IAM)** sayfasını ve ardından **rol atamaları** sekmesini seçin.
+1. Select the **Access control (IAM)** page on the left and then the **Role assignments** tab.
 
-Her kaynak grubu için güvenlik, dağıtılan rol atamalarına hala sahiptir, ancak şema atamasının artık _sahip_ erişimi yoktur.
+The security for each resource groups still has the deployed role assignments, but the blueprint assignment no longer has _Owner_ access.
 
-Şema **atamasını kaldırma başarılı oldu** Portal bildirimi göründüğünde bir sonraki adıma geçin.
+Once the **Removing blueprint assignment succeeded** portal notification appears, move to the next step.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu öğreticiyle işiniz bittiğinde aşağıdaki kaynakları silin:
+When finished with this tutorial, delete the following resources:
 
-- Kaynak grubu _Üretim RG_
-- Kaynak grubu _ön üretim RG_
-- Blueprint Definition _iki-RGS-rol-atamalar_
+- Resource group _ProductionRG_
+- Resource group _PreProductionRG_
+- Blueprint definition _two-rgs-with-role-assignments_
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Şema yaşam döngüsü](../concepts/lifecycle.md) hakkında bilgi edinin
+- Learn about the [blueprint lifecycle](../concepts/lifecycle.md)
 - [Statik ve dinamik parametreleri](../concepts/parameters.md) kullanmayı anlayın
 - [Şema kaynak kilitleme](../concepts/resource-locking.md) özelliğini kullanmayı öğrenin
 - [Şema sıralamasını](../concepts/sequencing-order.md) özelleştirmeyi öğrenin

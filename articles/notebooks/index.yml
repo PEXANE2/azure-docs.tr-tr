@@ -4,14 +4,8 @@ title: Azure Notebooks Belgeleri
 metadata:
   title: Azure Notebooks Belgeleri
   description: 'Barındırılan Azure Notebooks hizmeti aracılığıyla Jupyter not defterlerini oluşturmayı, çalıştırmayı ve paylaşmayı öğrenin.'
-  services: notebooks
-  author: kraigb
-  manager: barbkess
-  ms.service: azure-notebooks
-  ms.tgt_pltfrm: na
   ms.topic: landing-page
   ms.date: 12/04/2018
-  ms.author: kraigb
 abstract:
   description: 'Azure Notebooks, yükleme yapmadan Jupyter not defterlerini geliştirmeye ve çalıştırmaya yönelik, ücretsiz ve barındırılan bir hizmettir. Jupyter (eski adı IPython) Markdown metinlerini, yürütülebilir kodu (Python, R ve F#), kalıcı verileri, grafikleri ve görselleştirmeleri kolayca not defteri olarak adlandırılan tek, paylaşılabilir bir tuvalde birleştirmenizi sağlayan bir açık kaynak projesidir.'
 sections:

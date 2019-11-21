@@ -1,6 +1,6 @@
 ---
-title: Azure 'da VMware 'de çalışırken uygulamanın yüksek oranda kullanılabilir olmasını sağlayın
-description: CloudSimple özel bulutu 'nda çalışan uygulamalar için ortak uygulama hatası senaryolarını ele almak üzere CloudSimple yüksek kullanılabilirlik özelliklerini açıklar
+title: Ensure application high availability when running in VMware on Azure
+description: Describes CloudSimple high availability features to address common application failure scenarios for applications running in a CloudSimple Private Cloud
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/20/2019
@@ -8,59 +8,59 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5a48a75d70234b06942f5141402070c89c543f18
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: a3eed033ba6a1a6f9237116a53ec7751ae906fe4
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69903384"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74206538"
 ---
-# <a name="ensure-application-high-availability-when-running-in-vmware-on-azure"></a>Azure 'da VMware 'de çalışırken uygulamanın yüksek oranda kullanılabilir olmasını sağlayın
+# <a name="ensure-application-high-availability-when-running-in-vmware-on-azure"></a>Ensure application high availability when running in VMware on Azure
 
-CloudSimple çözümü, Azure ortamında VMware üzerinde çalışan uygulamalarınız için yüksek kullanılabilirlik sağlar. Aşağıdaki tabloda hata senaryoları ve ilişkili yüksek kullanılabilirlik özellikleri listelenmektedir.
+The CloudSimple solution provides high availability for your applications running on VMware in the Azure environment. The following table lists failure scenarios and the associated high availability features.
 
-| Hata senaryosu | Uygulama korumalı mı? | Platform HA özelliği | VMware HA özelliği | Azure HA özelliği |
+| Failure scenario | Application protected? | Platform HA feature | VMware HA feature | Azure HA feature |
 ------------ | ------------- | ------------ | ------------ | ------------- |
-| Disk hatası | EVET | Hatalı düğümü hızlı değiştirme | [VSAN varsayılan depolama Ilkesi hakkında](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.virtualsan.doc/GUID-C228168F-6807-4C2A-9D74-E584CAF49A2A.html) |
-| Fan hatası | EVET | Gereksiz fanlar, başarısız olan düğümün hızlı değiştirilmesi |  |  |
-| NIC hatası | EVET | Yedekli NIC, başarısız olan düğümün hızlı değiştirilmesi
-| Konak güç hatası | EVET | Yedekli güç kaynağı |  |  |
-| ESXi ana bilgisayar arızası | EVET | Hatalı düğümü hızlı değiştirme | [Yüksek kullanılabilirlik VMware vSphere](https://www.vmware.com/products/vsphere/high-availability.html) |  |  |
-| VM hatası | EVET | [Yük dengeleyiciler](load-balancers.md)  | [Yüksek kullanılabilirlik VMware vSphere](https://www.vmware.com/products/vsphere/high-availability.html) | Durum bilgisiz VMware VM 'Leri için Azure Load Balancer |
-| Yaprak anahtar bağlantı noktası hatası | EVET | Yedekli NIC |  |  |
-| Yaprak anahtar hatası | EVET | Yedekli yaprak anahtarları |  |  |
-| Raf hatası | EVET | Yerleştirme grupları |  |  |
-| Şirket içi DC 'ye ağ bağlantısı | EVET  | Yedekli ağ hizmetleri |  | Yedekli ER devreleri |
-| Azure ile ağ bağlantısı | EVET | |  | Yedekli ER devreleri |
-| Veri merkezi hatası | EVET |  |  | Kullanılabilirlik alanları |
-| Bölgesel hata | EVET  |  |  | Azure bölgeleri |
+| Disk Failure | YES | Fast replacement of failed node | [About the vSAN Default Storage Policy](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.virtualsan.doc/GUID-C228168F-6807-4C2A-9D74-E584CAF49A2A.html) |
+| Fan Failure | YES | Redundant fans, fast replacement of failed node |  |  |
+| NIC Failure | YES | Redundant NIC, fast replacement of failed node
+| Host Power Failure | YES | Redundant power supply |  |  |
+| ESXi Host Failure | YES | fast replacement of failed node | [VMware vSphere High Availability](https://www.vmware.com/products/vsphere/high-availability.html) |  |  |
+| VM Failure | YES | [Yük dengeleyiciler](load-balancers.md)  | [VMware vSphere High Availability](https://www.vmware.com/products/vsphere/high-availability.html) | Azure Load Balancer for stateless VMware VMs |
+| Leaf Switch Port Failure | YES | Redundant NIC |  |  |
+| Leaf Switch Failure | YES | Redundant leaf switches |  |  |
+| Rack Failure | YES | Yerleştirme grupları |  |  |
+| Network Connectivity to on-premises DC | YES  | Redundant networking services |  | Redundant ER circuits |
+| Network Connectivity to Azure | YES | |  | Redundant ER circuits |
+| Datacenter Failure | YES |  |  | Kullanılabilirlik alanları |
+| Regional Failure | YES  |  |  | Azure bölgeleri |
 
-CloudSimple tarafından sağlanan Azure VMware çözümü, aşağıdaki yüksek kullanılabilirlik özelliklerini sağlar.
+Azure VMware Solution by CloudSimple provides the following high availability features.
 
-## <a name="fast-replacement-of-failed-node"></a>Hatalı düğümü hızlı değiştirme
+## <a name="fast-replacement-of-failed-node"></a>Fast replacement of failed node
 
-CloudSimple denetim düzlemi yazılımı, VMware kümelerinin sistem durumunu sürekli olarak izler ve bir ESXi düğümünün başarısız olduğunu algılar. Daha sonra, etkilenen VMware kümesine otomatik olarak kullanılabilir düğümler havuzundan yeni bir ESXi Konağı ekler ve başarısız olan düğümü kümeden alır. Bu işlevsellik, VMware kümesindeki yedek kapasitenin hızlı bir şekilde geri yüklenmesini sağlar, böylece küme, vSAN ve VMware HA tarafından sağlanmış olan dayanıklılık geri yüklenir.
+The CloudSimple control plane software continuously monitors the health of VMware clusters and detects when an ESXi node fails. It then automatically adds a new ESXi host to the affected VMware cluster from its pool of readily available nodes and takes the failed node out of the cluster. This functionality ensures that the spare capacity in the VMware cluster is restored quickly so that the cluster’s resiliency provided by vSAN and VMware HA is restored.
 
 ## <a name="placement-groups"></a>Yerleştirme grupları
 
-Özel bir bulut oluşturan bir Kullanıcı, seçili bölgede bir Azure bölgesi ve bir yerleştirme grubu seçebilir. Yerleştirme grubu, birden çok rafdaki, ancak aynı sırt ağı segmentinde yayılan bir düğüm kümesidir. Aynı yerleştirme grubu içindeki düğümler, en fazla iki ek anahtar atlaması ile birbirlerine erişebilir. Bir yerleştirme grubu her zaman tek bir Azure kullanılabilirlik bölgesi içinde bulunur ve birden çok raflara yayılır. CloudSimple denetim düzlemi, bir özel bulutun düğümlerini, en iyi çabalara göre birden çok raf arasında dağıtır. Farklı yerleştirme gruplarındaki düğümlerin farklı raflara yerleştirilmesi garanti edilir.
+A user who creates a Private Cloud can select an Azure region and a placement group within the selected region. A placement group is a set of nodes spread across multiple racks but within the same spine network segment. Nodes within the same placement group can reach each other with a maximum of two extra switch hops. A placement group is always within a single Azure availability zone and spans multiple racks. The CloudSimple control plane distributes nodes of a Private Cloud across multiple racks based on best effort. Nodes in different placement groups are guaranteed to be placed in different racks.
 
 ## <a name="availability-zones"></a>Kullanılabilirlik alanları
 
-Kullanılabilirlik alanları, uygulamalarınızı ve verilerinizi veri merkezi hatalarından koruyan yüksek kullanılabilirliğe sahip bir tekliftir. Kullanılabilirlik alanları, bir Azure bölgesi içindeki özel fiziksel konumlardır. Her bölge, soğutma ve ağ bağımsız güç ile donatılmış bir veya daha fazla veri merkezlerinden oluşur. Her bölgenin bir kullanılabilirlik alanı vardır. Daha fazla bilgi için bkz. [Azure 'da kullanılabilirlik alanları nedir?](../availability-zones/az-overview.md).
+Availability zones are a high-availability offering that protects your applications and data from datacenter failures. Availability zones are special physical locations within an Azure region. Her alan bağımsız güç, soğutma ve ağ bağlantısı ile donatılmış bir veya daha fazla veri merkezinden oluşur. Each region has one availability zone. For more information, see [What are Availability Zones in Azure?](../availability-zones/az-overview.md).
 
-## <a name="redundant-azure-expressroute-circuits"></a>Gereksiz Azure ExpressRoute devreleri
+## <a name="redundant-azure-expressroute-circuits"></a>Redundant Azure ExpressRoute circuits
 
-ExpressRoute kullanarak Azure vNet 'e veri merkezi bağlantısı, yüksek oranda kullanılabilir ağ bağlantısı bağlantısı sağlamak için yedekli devrelere sahiptir.
+Data center connectivity to Azure vNet using ExpressRoute has redundant circuits to provide highly available network connectivity link.
 
-## <a name="redundant-networking-services"></a>Yedekli ağ hizmetleri
+## <a name="redundant-networking-services"></a>Redundant networking services
 
-Özel bulut için tüm CloudSimple ağ hizmetleri (VLAN, güvenlik duvarı, genel IP adresleri, Internet ve VPN dahil), yüksek oranda kullanılabilir olacak şekilde tasarlanmıştır ve hizmet SLA 'sını destekleyebilir.
+All the CloudSimple networking services for the Private Cloud (including VLAN, firewall, public IP addresses, Internet, and VPN) are designed to be highly available and able to support the service SLA.
 
-## <a name="azure-layer-7-load-balancer-for-stateless-vmware-vms"></a>Durum bilgisiz VMware VM 'Leri için Azure katman 7 Load Balancer
+## <a name="azure-layer-7-load-balancer-for-stateless-vmware-vms"></a>Azure Layer 7 Load Balancer for stateless VMware VMs
 
-Kullanıcılar, Web katmanı için yüksek kullanılabilirlik elde etmek üzere VMware ortamında çalışan durum bilgisiz Web katmanı VM 'lerinin önüne bir Azure katman 7 Load Balancer yerleştirebilir.
+Users can put an Azure Layer 7 Load Balancer in front of the stateless web tier VMs running in the VMware environment to achieve high availability for the web tier.
 
 ## <a name="azure-regions"></a>Azure bölgeleri
 
-Azure bölgesi, gecikme süresi belirlenmiş bir çevre içinde dağıtılan ve adanmış bölgesel düşük gecikmeli bir ağ ile bağlanan bir veri merkezleri kümesidir. Ayrıntılar için bkz. [Azure bölgeleri](https://azure.microsoft.com/global-infrastructure/regions).
+An Azure region is a set of data centers deployed within a latency-defined perimeter and connected through a dedicated regional low-latency network. For details, see [Azure Regions](https://azure.microsoft.com/global-infrastructure/regions).

@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory Tümleştirmesi ile AirWatch | Microsoft Docs'
-description: Azure Active Directory ve AirWatch arasında çoklu oturum açmayı yapılandırmayı öğrenin.
+title: 'Tutorial: Azure Active Directory integration with AirWatch | Microsoft Docs'
+description: Learn how to configure single sign-on between Azure Active Directory and AirWatch.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,239 +16,239 @@ ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f0a684c6a38ba3a95438941f668b36b23d278df
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 772b37816b83c275bae927d825434dc3ca76a35c
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227684"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231983"
 ---
-# <a name="tutorial-integrate-airwatch-with-azure-active-directory"></a>Öğretici: AirWatch Azure Active Directory ile tümleştirme
+# <a name="tutorial-integrate-airwatch-with-azure-active-directory"></a>Tutorial: Integrate AirWatch with Azure Active Directory
 
-Bu öğreticide, Azure Active Directory (Azure AD) ile AirWatch tümleştirme öğreneceksiniz. AirWatch Azure AD ile tümleştirdiğinizde, şunları yapabilirsiniz:
+In this tutorial, you'll learn how to integrate AirWatch with Azure Active Directory (Azure AD). When you integrate AirWatch with Azure AD, you can:
 
-* AirWatch erişimi, Azure AD'de denetler.
-* Otomatik olarak AirWatch için kendi Azure AD hesapları ile oturum açmış olmasını sağlayın.
-* Bir merkezi konumda - Azure portalı hesaplarınızı yönetin.
+* Control in Azure AD who has access to AirWatch.
+* Enable your users to be automatically signed-in to AirWatch with their Azure AD accounts.
+* Manage your accounts in one central location - the Azure portal.
 
-Azure AD SaaS uygulama tümleştirmesi hakkında daha fazla bilgi için bkz. [uygulama erişimi ve Azure Active Directory ile çoklu oturum açma nedir](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+To learn more about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Başlamak için aşağıdaki öğeler gerekir:
+To get started, you need the following items:
 
-* Azure AD aboneliğiniz. Bir aboneliğiniz yoksa, bir aylık ücretsiz deneme alabilirsiniz [burada](https://azure.microsoft.com/pricing/free-trial/).
-* AirWatch çoklu oturum açma (SSO) abonelik etkin.
+* An Azure AD subscription. If you don't have a subscription, you can get one-month free trial [here](https://azure.microsoft.com/pricing/free-trial/).
+* AirWatch single sign-on (SSO) enabled subscription.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, yapılandırma ve Azure AD SSO bir test ortamında test edin. AirWatch destekler **SP** SSO başlattı.
+In this tutorial, you configure and test Azure AD SSO in a test environment. AirWatch supports **SP** initiated SSO.
 
-## <a name="adding-airwatch-from-the-gallery"></a>Galeriden AirWatch ekleme
+## <a name="adding-airwatch-from-the-gallery"></a>Adding AirWatch from the gallery
 
-Azure AD'de AirWatch tümleştirmesini yapılandırmak için AirWatch Galeriden yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
+To configure the integration of AirWatch into Azure AD, you need to add AirWatch from the gallery to your list of managed SaaS apps.
 
 1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
-1. Sol gezinti bölmesinde seçin **Azure Active Directory** hizmeti.
-1. Gidin **kurumsal uygulamalar** seçip **tüm uygulamaları**.
-1. Yeni bir uygulama eklemek için seçin **yeni uygulama**.
-1. İçinde **Galeriden Ekle** bölümüne şunu yazın **AirWatch** arama kutusuna.
-1. Seçin **AirWatch** gelen sonuçlar panelinde ve uygulama ekleyin. Uygulama, kiracınıza eklendiği sırada birkaç saniye bekleyin.
+1. On the left navigation pane, select the **Azure Active Directory** service.
+1. Navigate to **Enterprise Applications** and then select **All Applications**.
+1. To add new application, select **New application**.
+1. In the **Add from the gallery** section, type **AirWatch** in the search box.
+1. Select **AirWatch** from results panel and then add the app. Wait a few seconds while the app is added to your tenant.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Configure and test Azure AD single sign-on
 
-Yapılandırma ve Azure AD SSO kullanarak adlı bir test kullanıcı AirWatch ile test etme **B.Simon**. Çalışmak SSO için AirWatch içinde bir Azure AD kullanıcısı ile ilgili kullanıcı arasında bir bağlantı ilişki oluşturmanız gerekir.
+Configure and test Azure AD SSO with AirWatch using a test user called **B.Simon**. For SSO to work, you need to establish a link relationship between an Azure AD user and the related user in AirWatch.
 
-Yapılandırma ve Azure AD SSO ile AirWatch sınamak için aşağıdaki yapı taşlarını tamamlayın:
+To configure and test Azure AD SSO with AirWatch, complete the following building blocks:
 
-1. **[Azure AD SSO'yu yapılandırma](#configure-azure-ad-sso)**  - bu özelliği kullanmak, kullanıcılarınızın etkinleştirmek için.
-2. **[AirWatch SSO'yu yapılandırarak](#configure-airwatch-sso)**  - uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-3. **[Bir Azure AD test kullanıcısı oluşturma](#create-an-azure-ad-test-user)**  - Azure AD çoklu oturum açma Britta Simon ile test etmek için.
-4. **[AirWatch test kullanıcısı oluşturma](#create-airwatch-test-user)**  - kullanıcı Azure AD gösterimini bağlı AirWatch Britta simon'un bir karşılığı vardır.
-5. **[Azure AD test kullanıcı atama](#assign-the-azure-ad-test-user)**  - Azure AD çoklu oturum açmayı kullanmak Britta Simon etkinleştirmek için.
-6. **[Test SSO](#test-sso)**  - yapılandırma çalışıp çalışmadığını doğrulayın.
+1. **[Configure Azure AD SSO](#configure-azure-ad-sso)** - to enable your users to use this feature.
+2. **[Configure AirWatch SSO](#configure-airwatch-sso)** - to configure the Single Sign-On settings on application side.
+3. **[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
+4. **[Create AirWatch test user](#create-airwatch-test-user)** - to have a counterpart of Britta Simon in AirWatch that is linked to the Azure AD representation of user.
+5. **[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
+6. **[Test SSO](#test-sso)** - to verify whether the configuration works.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO'yu yapılandırma
+### <a name="configure-azure-ad-sso"></a>Configure Azure AD SSO
 
-Azure portalında Azure AD SSO'yu etkinleştirmek üzere aşağıdaki adımları izleyin.
+Follow these steps to enable Azure AD SSO in the Azure portal.
 
-1. İçinde [Azure portalında](https://portal.azure.com/), **AirWatch** uygulama tümleştirme sayfası, bulma **Yönet** bölümünde ve seçin **çoklu oturum açma**.
-1. Üzerinde **tek bir oturum açma yönteminizi seçmeniz** sayfasında **SAML**.
-1. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlayın** sayfasında, düzenleme/kalem simgesine tıklayıp **temel SAML yapılandırma** ayarlarını düzenlemek için.
+1. In the [Azure portal](https://portal.azure.com/), on the **AirWatch** application integration page, find the **Manage** section and select **Single sign-on**.
+1. On the **Select a Single sign-on method** page, select **SAML**.
+1. On the **Set up Single Sign-On with SAML** page, click the edit/pen icon for **Basic SAML Configuration** to edit the settings.
 
-   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+   ![Edit Basic SAML Configuration](common/edit-urls.png)
 
-1. Üzerinde **temel SAML yapılandırma** sayfasında, aşağıdaki alanlar için değerleri girin:
+1. On the **Basic SAML Configuration** page, enter the values for the following fields:
 
-    1. İçinde **oturum açma URL'si** metin kutusuna şu biçimi kullanarak bir URL yazın: `https://<subdomain>.awmdm.com/AirWatch/Login?gid=companycode`
+    1. In the **Sign on URL** text box, type a URL using the following pattern: `https://<subdomain>.awmdm.com/AirWatch/Login?gid=companycode`
 
-    1. İçinde **tanımlayıcı (varlık kimliği)** metin kutusunda, değer olarak girin: `AirWatch`
+    1. In the **Identifier (Entity ID)** text box, type the value as: `AirWatch`
 
     > [!NOTE]
-    > Bu değer, gerçek değil. Bu değer, gerçek oturum açma URL'si ile güncelleştirin. İlgili kişi [AirWatch istemci Destek ekibine](https://www.air-watch.com/company/contact-us/) bu değeri alınamıyor. Gösterilen desenleri de başvurabilirsiniz **temel SAML yapılandırma** bölümünde Azure portalında.
+    > This value is not the real. Update this value with the actual Sign-on URL. Contact [AirWatch Client support team](https://www.air-watch.com/company/contact-us/) to get this value. You can also refer to the patterns shown in the **Basic SAML Configuration** section in the Azure portal.
 
-1. AirWatch uygulama belirli bir biçimde SAML onaylamalarını bekler. Bu uygulama için aşağıdaki talepleri yapılandırın. Bu öznitelikleri değerlerini yönetebilirsiniz **kullanıcı öznitelikleri** uygulama tümleştirme sayfasında bölümü. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **Düzenle** açmak için düğmeyi **kullanıcı öznitelikleri** iletişim.
+1. AirWatch application expects the SAML assertions in a specific format. Configure the following claims for this application. You can manage the values of these attributes from the **User Attributes** section on application integration page. On the **Set up Single Sign-On with SAML** page, click **Edit** button to open **User Attributes** dialog.
 
     ![image](common/edit-attribute.png)
 
-1. İçinde **kullanıcı taleplerini** bölümünde **kullanıcı öznitelikleri** iletişim kutusunda kullanarak talep Düzenle **düzenleme simgesi** veya talep kullanarak **Ekle yeni talep**SAML belirteci özniteliği yukarıdaki görüntüde gösterildiği gibi yapılandırın ve aşağıdaki adımları gerçekleştirin:
+1. In the **User Claims** section on the **User Attributes** dialog, edit the claims by using **Edit icon** or add the claims by using **Add new claim** to configure SAML token attribute as shown in the image above and perform the following steps:
 
-    | Ad |  Kaynak özniteliği|
+    | Adı |  Source Attribute|
     |---------------|----------------|
-    | KULLANICI KİMLİĞİ | User.userPrincipalName |
+    | UID | user.userprincipalname |
     | | |
 
-    a. Tıklayın **Ekle yeni talep** açmak için **yönetmek, kullanıcı talepleri** iletişim.
+    a. Click **Add new claim** to open the **Manage user claims** dialog.
 
-    b. İçinde **adı** metin kutusuna, bu satır için gösterilen öznitelik adı yazın.
+    b. In the **Name** textbox, type the attribute name shown for that row.
 
-    c. Bırakın **Namespace** boş.
+    c. Leave the **Namespace** blank.
 
-    d. Kaynağı olarak **özniteliği**.
+    d. Select Source as **Attribute**.
 
-    e. Gelen **kaynak özniteliği** listesinde, ilgili satır için gösterilen öznitelik değeri yazın.
+    e. From the **Source attribute** list, type the attribute value shown for that row.
 
-    f. Tıklayın **Tamam**
+    f. Click **Ok**
 
-    g. **Kaydet**’e tıklayın.
+    g. **Kaydet** düğmesine tıklayın.
 
-1. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **SAML imzalama sertifikası** bölümünde, bulma **Federasyon meta verileri XML** seçip **indirin** meta veri XML indirin ve bilgisayarınıza kaydedin.
+1. On the **Set up Single Sign-On with SAML** page, in the **SAML Signing Certificate** section, find **Federation Metadata XML** and select **Download** to download the Metadata XML and save it on your computer.
 
-   ![Sertifika indirme bağlantısı](common/metadataxml.png)
+   ![The Certificate download link](common/metadataxml.png)
 
-1. Üzerinde **AirWatch kümesi** bölümünde, ihtiyacınıza göre uygun URL'lerini kopyalayın.
+1. On the **Set up AirWatch** section, copy the appropriate URL(s) based on your requirement.
 
-   ![Yapılandırma URL'leri kopyalayın](common/copy-configuration-urls.png)
+   ![Copy configuration URLs](common/copy-configuration-urls.png)
 
-### <a name="configure-airwatch-sso"></a>AirWatch SSO yapılandırma
+### <a name="configure-airwatch-sso"></a>Configure AirWatch SSO
 
-1. Farklı bir web tarayıcı penceresinde AirWatch şirketinizin sitesi için bir yönetici olarak oturum açın.
+1. In a different web browser window, sign in to your AirWatch company site as an administrator.
 
-1. Ayarlar sayfasında. Seçin **Ayarları > Kurumsal tümleştirme > Dizin Hizmetleri**.
+1. On the settings page. Select **Settings > Enterprise Integration > Directory Services**.
 
-   ![Ayarları](./media/airwatch-tutorial/ic791921.png "ayarları")
+   ![Ayarlar](./media/airwatch-tutorial/ic791921.png "Ayarlar")
 
-1. Tıklayın **kullanıcı** sekmesinde **temel DN** metin etki alanı adınızı yazın ve ardından **Kaydet**.
+1. Click the **User** tab, in the **Base DN** textbox, type your domain name, and then click **Save**.
 
-   ![Kullanıcı](./media/airwatch-tutorial/ic791922.png "kullanıcı")
+   ![User](./media/airwatch-tutorial/ic791922.png "Kullanıcı")
 
-1. Tıklayın **sunucu** sekmesi.
+1. Click the **Server** tab.
 
-   ![Sunucu](./media/airwatch-tutorial/ic791923.png "sunucusu")
+   ![Sunucu](./media/airwatch-tutorial/ic791923.png "Sunucu")
 
-1. Aşağıdaki adımları gerçekleştirin **LDAP** bölümü:
+1. Perform the following steps on the **LDAP** section:
 
-    ![Karşıya yükleme](./media/airwatch-tutorial/ic791924.png "LDAP")   
+    ![Upload](./media/airwatch-tutorial/ic791924.png "LDAP")   
 
-    a. Olarak **dizin türü**seçin **hiçbiri**.
+    a. As **Directory Type**, select **None**.
 
-    b. Seçin **SAML kimlik doğrulaması için kullanmak**.
+    b. Select **Use SAML For Authentication**.
 
-1. Üzerinde **SAML 2.0** bölümünde indirilen sertifikayı karşıya yüklemek için tıklayın **karşıya**.
+1. On the **SAML 2.0** section, to upload the downloaded certificate, click **Upload**.
 
-    ![Karşıya yükleme](./media/airwatch-tutorial/ic791932.png "karşıya yükleme")
+    ![Upload](./media/airwatch-tutorial/ic791932.png "Karşıya Yükleme")
 
-1. İçinde **istek** bölümünde, aşağıdaki adımları gerçekleştirin:
+1. In the **Request** section, perform the following steps:
 
-    ![İstek](./media/airwatch-tutorial/ic791925.png "iste")  
+    ![İstek](./media/airwatch-tutorial/ic791925.png "İste")  
 
-    a. Olarak **isteği bağlama türü**seçin **POST**.
+    a. As **Request Binding Type**, select **POST**.
 
-    b. Azure portalında, üzerinde **çoklu oturum açma sırasında AirWatch yapılandırma** iletişim sayfası, kopyalama **oturum açma URL'si** değeri ve ardından yapıştırın **kimlik sağlayıcısı tek işareti bulunan URL'si** metin kutusu.
+    b. In the Azure portal, on the **Configure single sign-on at AirWatch** dialog page, copy the **Login URL** value, and then paste it into the **Identity Provider Single Sign On URL** textbox.
 
-    c. Olarak **Nameıd biçimi**seçin **e-posta adresi**.
+    c. As **NameID Format**, select **Email Address**.
 
-    d. Olarak **kimlik doğrulama isteği güvenliği**seçin **hiçbiri**.
+    d. As **Authentication Request Security**, select **None**.
 
-    e. **Kaydet**’e tıklayın.
+    e. **Kaydet** düğmesine tıklayın.
 
-1. Tıklayın **kullanıcı** yeniden sekmesi.
+1. Click the **User** tab again.
 
-    ![Kullanıcı](./media/airwatch-tutorial/ic791926.png "kullanıcı")
+    ![User](./media/airwatch-tutorial/ic791926.png "Kullanıcı")
 
-1. İçinde **özniteliği** bölümünde, aşağıdaki adımları gerçekleştirin:
+1. In the **Attribute** section, perform the following steps:
 
-    ![Öznitelik](./media/airwatch-tutorial/ic791927.png "özniteliği")
+    ![Attribute](./media/airwatch-tutorial/ic791927.png "Öznitelik")
 
-    a. İçinde **nesne tanımlayıcısı** metin kutusuna `http://schemas.microsoft.com/identity/claims/objectidentifier`.
+    a. In the **Object Identifier** textbox, type `http://schemas.microsoft.com/identity/claims/objectidentifier`.
 
-    b. İçinde **kullanıcıadı** metin kutusuna `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    b. In the **Username** textbox, type `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
 
-    c. İçinde **görünen ad** metin kutusuna `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
+    c. In the **Display Name** textbox, type `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
 
-    d. İçinde **ad** metin kutusuna `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
+    d. In the **First Name** textbox, type `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
 
-    e. İçinde **Soyadı** metin kutusuna `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
+    e. In the **Last Name** textbox, type `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
 
-    f. İçinde **e-posta** metin kutusuna `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    f. In the **Email** textbox, type `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
 
-    g. **Kaydet**’e tıklayın.
+    g. **Kaydet** düğmesine tıklayın.
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Create an Azure AD test user
 
-Bu bölümde, bir test kullanıcısı B.Simon adlı Azure portalında oluşturacaksınız.
+In this section, you'll create a test user in the Azure portal called B.Simon.
 
-1. Azure Portalı'ndaki sol bölmeden seçin **Azure Active Directory**seçin **kullanıcılar**ve ardından **tüm kullanıcılar**.
-1. Seçin **yeni kullanıcı** ekranın üstünde.
-1. İçinde **kullanıcı** özellikleri, aşağıdaki adımları izleyin:
+1. From the left pane in the Azure portal, select **Azure Active Directory**, select **Users**, and then select **All users**.
+1. Select **New user** at the top of the screen.
+1. In the **User** properties, follow these steps:
    1. **Ad** alanına `B.Simon` girin.  
-   1. İçinde **kullanıcı adı** alanına username@companydomain.extension. Örneğin: `B.Simon@contoso.com`.
-   1. Seçin **Show parola** onay kutusunu işaretleyin ve ardından görüntülenen değeri yazın **parola** kutusu.
-   1.           **Oluştur**'a tıklayın.
+   1. In the **User name** field, enter the username@companydomain.extension. Örneğin, `B.Simon@contoso.com`.
+   1. Select the **Show password** check box, and then write down the value that's displayed in the **Password** box.
+   1. **Oluştur**’a tıklayın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Assign the Azure AD test user
 
-Bu bölümde, Azure çoklu oturum açma kullanmak için AirWatch erişim vererek B.Simon tıklatmalarını sağlarsınız.
+In this section, you'll enable B.Simon to use Azure single sign-on by granting access to AirWatch.
 
-1. Azure portalında **kurumsal uygulamalar**ve ardından **tüm uygulamaları**.
-1. Uygulamalar listesinde **AirWatch**.
-1. Uygulamanın genel bakış sayfasında bulma **Yönet** seçin ve bölüm **kullanıcılar ve gruplar**.
+1. In the Azure portal, select **Enterprise Applications**, and then select **All applications**.
+1. In the applications list, select **AirWatch**.
+1. In the app's overview page, find the **Manage** section and select **Users and groups**.
 
-   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+   ![The "Users and groups" link](common/users-groups-blade.png)
 
-1. Seçin **Kullanıcı Ekle**, ardından **kullanıcılar ve gruplar** içinde **atama Ekle** iletişim.
+1. Select **Add user**, then select **Users and groups** in the **Add Assignment** dialog.
 
-    ![Kullanıcı ekleme bağlantısı](common/add-assign-user.png)
+    ![The Add User link](common/add-assign-user.png)
 
-1. İçinde **kullanıcılar ve gruplar** iletişim kutusunda **B.Simon** kullanıcılar listesinden ardından **seçin** ekranın alt kısmındaki düğmesi.
-1. SAML onaylama işlemi herhangi bir rolü değer de beklediğiniz varsa **rolü Seç** iletişim kutusunda, listeden bir kullanıcı için uygun rolü seçin ve ardından **seçin** ekranın alt kısmındaki düğmesi.
-1. İçinde **atama Ekle** iletişim kutusunda, tıklayın **atama** düğmesi.
+1. In the **Users and groups** dialog, select **B.Simon** from the Users list, then click the **Select** button at the bottom of the screen.
+1. If you're expecting any role value in the SAML assertion, in the **Select Role** dialog, select the appropriate role for the user from the list and then click the **Select** button at the bottom of the screen.
+1. In the **Add Assignment** dialog, click the **Assign** button.
 
-### <a name="create-airwatch-test-user"></a>AirWatch test kullanıcısı oluşturma
+### <a name="create-airwatch-test-user"></a>Create AirWatch test user
 
-Azure AD kullanıcıları için AirWatch oturum açmak etkinleştirmek için bunlar içinde AirWatch için sağlanması gerekir. AirWatch söz konusu olduğunda, sağlama bir el ile gerçekleştirilen bir görevdir.
+To enable Azure AD users to sign in to AirWatch, they must be provisioned in to AirWatch. In the case of AirWatch, provisioning is a manual task.
 
-**Kullanıcı sağlamayı yapılandırmak için aşağıdaki adımları gerçekleştirin:**
+**To configure user provisioning, perform the following steps:**
 
-1. Oturum açın, **AirWatch** şirketinizin sitesi yöneticisi olarak.
+1. Sign in to your **AirWatch** company site as administrator.
 
-2. Sol taraftaki gezinti bölmesinde **hesapları**ve ardından **kullanıcılar**.
+2. In the navigation pane on the left side, click **Accounts**, and then click **Users**.
   
-   ![Kullanıcılar](./media/airwatch-tutorial/ic791929.png "kullanıcılar")
+   ![Kullanıcılar](./media/airwatch-tutorial/ic791929.png "Kullanıcılar")
 
-3. İçinde **kullanıcılar** menüsünde tıklatın **liste görünümü**ve ardından **Ekle > Kullanıcı Ekle**.
+3. In the **Users** menu, click **List View**, and then click **Add > Add User**.
   
-   ![Kullanıcı ekleme](./media/airwatch-tutorial/ic791930.png "kullanıcı ekleme")
+   ![Add User](./media/airwatch-tutorial/ic791930.png "Kullanıcı Ekleme")
 
-4. Üzerinde **Ekle / Düzenle kullanıcı** iletişim kutusunda, aşağıdaki adımları gerçekleştirin:
+4. On the **Add / Edit User** dialog, perform the following steps:
 
-   ![Kullanıcı ekleme](./media/airwatch-tutorial/ic791931.png "kullanıcı ekleme")
+   ![Add User](./media/airwatch-tutorial/ic791931.png "Kullanıcı Ekleme")
 
-   a. Tür **kullanıcıadı**, **parola**, **parolayı onaylayın**, **ad**, **Soyadı**,  **E-posta adresi** istediğiniz ilgili metin kutularına zbilgisayarlar geçerli bir Azure Active Directory hesabı.
+   a. Type the **Username**, **Password**, **Confirm Password**, **First Name**, **Last Name**, **Email Address** of a valid Azure Active Directory account you want to provision into the related textboxes.
 
-   b. **Kaydet**’e tıklayın.
+   b. **Kaydet** düğmesine tıklayın.
 
 > [!NOTE]
-> Herhangi diğer AirWatch kullanıcı hesabı oluşturma araçları kullanabilir veya API'leri için AAD kullanıcı hesapları sağlamak AirWatch tarafından sağlanan.
+> You can use any other AirWatch user account creation tools or APIs provided by AirWatch to provision Azure AD user accounts.
 
 ### <a name="test-sso"></a>Test SSO
 
-Erişim Paneli'nde AirWatch kutucuğu seçtiğinizde, otomatik olarak SSO'yu ayarlama AirWatch için oturum açmanız. Erişim paneli hakkında daha fazla bilgi için bkz: [erişim Paneli'ne giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+When you select the AirWatch tile in the Access Panel, you should be automatically signed in to the AirWatch for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is conditional access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

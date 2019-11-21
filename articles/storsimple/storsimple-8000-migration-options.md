@@ -1,6 +1,6 @@
 ---
-title: 5000-7000 Serisi Storsimple'dan verileri geçirmek için ilgili seçenekleri değerlendirmede | Microsoft Docs
-description: StorSimple 5000-7000 serisinden verileri geçirmeye seçeneklerine genel bakış sağlar.
+title: Evaluate options to migrate data from StorSimple 5000-7000 series| Microsoft Docs
+description: Provides an overview of the options to migrate data from StorSimple 5000-7000 series.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -13,118 +13,118 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 1e637f58b392b2de67a5ead9d57a6a87ab705b93
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d51891c076f1784fbddb88bfaed28ac1d889afdc
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60631620"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227774"
 ---
-# <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>5000-7000 Serisi Storsimple'dan verileri geçirmeye seçenekleri 
+# <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>Options to migrate data from StorSimple 5000-7000 series 
 
 > [!IMPORTANT]
-> 9 Temmuz 2019, StorSimple 5000/7000 Serisi (EOS) destek durumu sonuna ulaşacak. StorSimple 5000/7000 Serisi müşteriler belgede açıklanan alternatifleri birine geçiş öneririz.
+> On July 9, 2019 the StorSimple 5000/7000 series will reach end of support (EOS) status. We recommend that StorSimple 5000/7000 series customers migrate to one of the alternatives described in the document.
 
-StorSimple 5000-7000 Serisi ulaşmasını [destek sonu](https://support.microsoft.com/lifecycle/search?alpha=StorSimple%205000%2F7000%20Series) Temmuz 2019 içinde. StorSimple 5000-7000 Serisi için diğer Azure yükseltme seçeneğini çalıştıran müşteriler, karma Hizmetleri birinci taraf. Bu makalede, Azure hibrit veri geçirmek için kullanılabilir seçenekleri açıklanır. 
+StorSimple 5000-7000 series is reaching [end of Support](https://support.microsoft.com/lifecycle/search?alpha=StorSimple%205000%2F7000%20Series) in July 2019. The customers who are running StorSimple 5000-7000 series have an option to upgrade to other Azure first party hybrid services. This article describes the Azure hybrid options available to migrate data. 
 
-## <a name="migration-options"></a>Geçiş seçenekleri
+## <a name="migration-options"></a>Migration options
 
-StorSimple'ı kullanan müşteriler, Azure veya üçüncü taraf seçenekleri 5000-7000 Serisi sahip.
+The customers using StorSimple 5000-7000 series have Azure or third-party options.
 
-### <a name="azure-options"></a>Azure seçenekleri
+### <a name="azure-options"></a>Azure options
 
-#### <a name="upgrade-to-storsimple-8000-series"></a>StorSimple 8000 serisi için yükseltme
+#### <a name="upgrade-to-storsimple-8000-series"></a>Upgrade to StorSimple 8000 Series
 
-StorSimple 8000 serisi yükseltin ve bu nedenle StorSimple platformunda devam edin.  Bu yükseltme yolunu bir 8000 serisi, 5000-7000 Serisi cihazlar yerine müşterilerinize gerektirir. Veriler, 5000-7000 Serisi CİHAZDAN geçiş aracını kullanarak geçirilir. Taşıma başarıyla tamamlandıktan sonra StorSimple 8000 serisi cihazlar katman verileri Azure Blob Depolama'ya devam eder. 
+Upgrade to StorSimple 8000 series and thus continue on the StorSimple platform.  This upgrade path requires customers to replace their 5000-7000 series devices with an 8000 series. The data is migrated from the 5000-7000 series device by using the migration tool. Once the migration is successfully complete, the StorSimple 8000 series devices will continue to tier data to Azure Blob Storage. 
 
-StorSimple 8000 serisi kullanarak verileri geçirme hakkında daha fazla bilgi için Git [veri Storsimple'dan 5000-7000 Serisi için 8000 serisi cihaz geçirme](storsimple-8000-migrate-from-5000-7000.md).
+For more information on how to migrate data using a StorSimple 8000 series, go to [Migrate data from StorSimple 5000-7000 series to 8000 series device](storsimple-8000-migrate-from-5000-7000.md).
 
 #### <a name="migrate-to-azure-file-sync"></a>Azure Dosya Eşitleme’ye Geçiş
 
-Bu yepyeni bir geçiş seçeneği, müşterilerin kendi kuruluşunuzun dosya paylaşımlarını Azure dosyaları depolamak sağlar. Bu dosya paylaşımlarını Azure dosya eşitleme (AFS) kullanarak şirket içi erişim için ardından toplanmıştır. Windows Server ana bilgisayarında AFS dağıtılabilir. Gerçek veri geçişinin ardından konak olarak gerçekleştirilir kopyalama veya Taşıma Aracı'nı kullanma.
+This brand new migration option enables customers to store their organization’s file shares in the Azure Files. These files shares are then centralized for on-premises access using Azure File Sync (AFS). AFS can be deployed on a Windows Server host. The actual data migration is then performed as a host copy or using the migration tool.
 
-Verileri geçirmek için Azure dosya eşitleme hakkında daha fazla bilgi için Git [veri Storsimple'dan 5000-7000 Serisi için Azure dosya eşitleme taşıma](storsimple-5000-7000-afs-migration.md).
+For more information on how to migrate data to Azure File Sync, go to [Migrate data from StorSimple 5000-7000 series to Azure File Sync](storsimple-5000-7000-afs-migration.md).
 
-### <a name="third-party-options"></a>Üçüncü taraf seçenekleri
+### <a name="third-party-options"></a>Third-party options
 
-#### <a name="migrate-to-panzura-freedom-nas"></a>Panzura özgürlüğü NAS geçirme
+#### <a name="migrate-to-panzura-freedom-nas"></a>Migrate to Panzura Freedom NAS
 
-StorSimple 5000-7000 müşterilerin kendi verilerini Azure'da korumak için Panzura özgürlük NAS geçirmek seçebilirsiniz. Panzura özgürlük çözüm yayılan veri merkezleri, ofisleri, genel ve özel bulutların bir NAS çözümü sağlar. Çözüm, NFS, SMB ve mobil istemciler için yerel, karma ve bulut data iş akışları sağlar. 
+StorSimple 5000-7000 customers can choose to migrate to Panzura Freedom NAS to keep their data in Azure. Panzura Freedom solution provides a NAS solution that spans datacenters, offices, public and private clouds. The solution enables local, hybrid, and in-cloud data workflows for NFS, SMB, and mobile clients. 
 
-Bu geçiş Panzura tarafından desteklenir ve geçiş desteği'nden isteyerek müşteriler başlayabilirsiniz [Panzura Web sitesi](https://panzura.com/storsimple-migration/).
+This migration is supported by Panzura and customers can get started by requesting migration support from the [Panzura website](https://panzura.com/storsimple-migration/).
 
-#### <a name="migrate-to-cohesity"></a>İçin Cohesity geçirme
+#### <a name="migrate-to-cohesity"></a>Migrate to Cohesity
 
-Cohesity, veri, geçerli StorSimple 5000-7000 Cohesity veri platformuna azure'da geçirmenize olanak sağlar. Cohesity veri platformu dosyaları, yedeklemeler, nesneleri ve Vm'leri tek bir yerel bulut çözümünün birleştiren bir yazılım tanımlı web ölçeğindeki çözümüdür. Veri platformuna geçişten sonra yönetmek, koruma ve veri ve bulut uygulamaları üzerinden tek bir cam bölmeyle core'a sağlayın. En az üç düğüm olarak Cohesity ile başlayın. 
+Cohesity enables you to migrate data from your current StorSimple 5000–7000 to the Cohesity Data Platform on Azure. The Cohesity Data Platform is a software-defined web-scale solution that consolidates files, backups, objects, and VMs onto a single cloud-native solution. After migration to the Data Platform, you can manage, protect, and provision data and apps from cloud to core through a single pane of glass. With Cohesity, start with as few as three nodes. 
 
-Daha fazla bilgi [Cohesity veri platformuna geçiş](https://info.cohesity.com/migrate-from-storsimple-to-cohesity.html).
+Learn more on [migration to the Cohesity Data Platform](https://info.cohesity.com/migrate-from-storsimple-to-cohesity.html).
 
-#### <a name="migrate-to-nasuni"></a>Nasuni için geçirme
+#### <a name="migrate-to-nasuni"></a>Migrate to Nasuni
 
-Nasuni, geçirme ve verilerini Azure'da korumak, StorSimple 5000-7000 müşteriler kolaylaştırır.  Nasuni önde gelen bir NAS Azure tabanlı depolama çözümü, müşterilere bulut ekonomisinden ve ölçek ile şirket içi çözümlerinden bekledikleri güvenlik ve performans sağlıyor.  Yüksek performanslı dosya depolama, Nasuni ve Azure tanıtıcı yedekleme ve DR sağlarken paylaşın ve verilerinizi dünyanın çeşitli yerlerinde merkezi dosya depolama yönetimi ile birlikte üzerinde işbirliği sağlamak yanı sıra. 
+Nasuni makes it easy for StorSimple 5000-7000 customers to migrate and keep their data in Azure.  Nasuni is a leading Azure-based NAS storage solution, giving customers the performance and security they expect from on-prem solutions, with cloud economics and scale.  In addition to high performance file storage, Nasuni and Azure handle backup and DR, while allowing you to share and collaborate on your data around the globe with centralized file storage management. 
 
-Nasuni, bugün kullanmaya başlayın – geçişinizi kolaylaştırmak için bir deneyimi vardır: https://info.nasuni.com/nasuni-storsimple-migration
+Nasuni has the experience to make your migration easy – get started today: https://info.nasuni.com/nasuni-storsimple-migration
 
-#### <a name="migrate-to-talon-fast"></a>Talon hızlı geçirme
+#### <a name="migrate-to-talon-fast"></a>Migrate to Talon FAST
 
-Talon, StorSimple 5000-7000 müşterilerin daha da fazla işleviyle çok StorSimple platformda (sınırsız bulut kaynakları tarafından desteklenen küçük yerinde ayak izini) değerli avantajlarından yararlanmaya devam kolaylaştırır.  Hızlı Talon çözümü sayesinde müşteriler geçirebilirsiniz ve tutun verilerini azure'da artık bile küçük bir salt yazılım yerinde ayak izine sahip ve genel dosya gibi avantajları ekleme sırasında kilitleme, genel ad alanı ve çok siteli işbirliği.  Talon, şirket içi dosya sunucusu iş yüklerini kullanıcı iş akışı veya deneyimini riske atmadan olmadan birleştirilmiş, Azure tabanlı bir ayak uygulamasına geçirmek için genel müşteri ile çalışan bir sektör lideri Azure ekosistemi, çözümdür.  
+Talon makes it easy for StorSimple 5000-7000 customers to continue to leverage the benefits they valued so much in the StorSimple platform (small on-site footprint backed by unlimited cloud resources) with even greater function.  With the Talon FAST solution, customers can migrate and keep their data in Azure, while now having an even smaller software-only onsite footprint and adding benefits such as global file locking, global namespace, and multi-site collaboration.  Talon is a leading Azure ecosystem solution, working with global customers to migrate their on-premises file server workloads into a consolidated, Azure-based footprint without compromising user workflow or experience.  
 
-Bulut birleştirilmiş bir kuruluş evrim Geçiren hakkında daha fazla bilgi https://www.talonstorage.com/alliances/microsoft-storsimple.
-
-
-## <a name="migration---frequently-asked-questions"></a>Geçişi - sık sorulan sorular
-
-### <a name="q-when-do-the-storsimple-5000-and-7000-series-devices-reach-end-of-service"></a>S. Ne zaman StorSimple 5000 ve 7000 Serisi cihazlar hizmeti sonuna ulaşmak? 
-
-A. StorSimple 5000-7000 Serisi ulaşmak [hizmet sonuna](https://support.microsoft.com/lifecycle/search?alpha=StorSimple%205000%2F7000%20Series) Temmuz 2019 içinde. Hizmet sonuna Microsoft artık Temmuz 2019 sonra donanım ve yazılım bu cihaz için destek sağlamak mümkün olacağını gösterir. Verileri cihazlarınızdan artık taşımak için bir plan formulating Başlat öneririz.
-
-### <a name="q-what-happens-to-the-data-i-have-stored-in-azure"></a>S. Azure'da depolanan verilere ne olur?  
-
-A. Daha yeni bir hizmete geçirdikten sonra verileri Azure'da kullanmaya devam edebilirsiniz. 
+Learn more about how to evolve to a cloud-consolidated enterprise at https://www.talonstorage.com/alliances/microsoft-storsimple.
 
 
-### <a name="q-what-happens-to-the-data-i-have-stored-locally-on-my-storsimple-device"></a>S. StorSimple cihazımda depolanan yerel olarak verileri ne olur? 
+## <a name="migration---frequently-asked-questions"></a>Migration - Frequently asked questions
 
-A. Geçiş belgelerinde açıklanan şekilde yeni hizmet yerel cihazda veri kopyalanabilir.
+### <a name="q-when-do-the-storsimple-5000-and-7000-series-devices-reach-end-of-service"></a>S. When do the StorSimple 5000 and 7000 series devices reach end of service? 
 
-### <a name="q-what-happens-if-i-want-to-keep-my-storsimple-50007000-series-appliance"></a>S. My StorSimple 5000/7000 Serisi Gereci tutmak istiyorsanız ne olacak? 
+A. StorSimple 5000-7000 series reach [end of service](https://support.microsoft.com/lifecycle/search?alpha=StorSimple%205000%2F7000%20Series) in July 2019. The end of service implies that Microsoft will no longer be able to provide support for both hardware and software of these devices after July 2019. We strongly recommend that you start formulating a plan to migrate the data from your devices now.
 
-A. Hizmetlerin çalışmaya devam edebilir ancak Microsoft artık donanım ve yazılım destek sağlamak mümkün olacaktır. Geçiş için iş sürekliliği önemle tavsiye edilir.
+### <a name="q-what-happens-to-the-data-i-have-stored-in-azure"></a>S. What happens to the data I have stored in Azure?  
 
-### <a name="q-what-options-are-available-to-migrate-data-from-storsimple-5000-7000-series-devices"></a>S. 5000-7000 Serisi cihazlar Storsimple'dan verileri geçirmek hangi seçenekler kullanılabilir? 
+A. You can continue to use the data in Azure once you migrate it to a newer service. 
 
-A. Kendi senaryoya bağlı olarak, StorSimple 5000-7000 Serisi kullanıcılar aşağıdaki geçiş seçenekleri de mevcuttur. 
 
- - **8000 serisi için yükseltme**: StorSimple platformunda devam etmek istediğinizde bu seçeneği kullanın. 
- - **Azure dosya eşitleme geçirme**: Azure yerel biçime geçiş yapmak istediğinizde bu seçeneği kullanın. Azure dosya eşitleme dosya paylaşımları Merkezi Yönetim için kullanabilirsiniz. 
+### <a name="q-what-happens-to-the-data-i-have-stored-locally-on-my-storsimple-device"></a>S. What happens to the data I have stored locally on my StorSimple device? 
 
-Burada listelenmeyen geçiş seçenekler hakkında konuşmak amacıyla Microsoft Support başvurabilirsiniz.
+A. The data that is on the local device can be copied to the newer service as described in the migration documents.
 
-### <a name="q-is-migration-to-other-storage-solutions-supported"></a>S. Desteklenen diğer depolama çözümleri için geçiş mi?
+### <a name="q-what-happens-if-i-want-to-keep-my-storsimple-50007000-series-appliance"></a>S. What happens if I want to keep my StorSimple 5000/7000 series appliance? 
 
-A. Evet. Konak veri kopyası ile diğer depolama çözümleri geçiş desteklenir.
+A. While the services might continue to work, Microsoft will no longer be able to provide hardware and software support. Migration is strongly recommended for business continuity.
 
-### <a name="q-is-migration-supported-by-microsoft"></a>S. Geçiş, Microsoft tarafından desteklenir? 
+### <a name="q-what-options-are-available-to-migrate-data-from-storsimple-5000-7000-series-devices"></a>S. What options are available to migrate data from StorSimple 5000-7000 series devices? 
 
-A. 5000 veya 7000 serisinden geçiş tam olarak desteklenen bir işlemdir. Aslında, Microsoft, Geçişe başlamadan önce Destek birimine ulaşmanızı önerir. Geçişi şu anda destekli bir işlemdir. 5000-7000 Serisi bir cihaza, Storsimple'dan verileri geçirmeyi düşünüyorsanız [bir destek bileti açın](storsimple-8000-contact-microsoft-support.md).
+A. Depending on their scenario, StorSimple 5000-7000 series users have the following migration options. 
 
-### <a name="q-what-is-the-pricing-model-for-both-the-migration-options"></a>S. Geçiş seçenekleri için fiyatlandırma modeli nedir?
+ - **Upgrade to 8000 series**: Use this option when you want to continue on StorSimple platform. 
+ - **Migrate to Azure File Sync**: Use this option when you want to switch to Azure native format. You can use Azure File Sync for centralized management of file shares. 
 
-A. Geçiş maliyeti, belirlediğiniz seçeneğe bağlı olarak değişir. Bir StorSimple 8000 serisi için yükseltmeye karar verirseniz geçiş kendisi ücretsizdir ancak donanım maliyeti olmayacaktır. 
+You can contact Microsoft Support to discuss migration options not listed here.
 
-Benzer şekilde, Azure dosya eşitleme kullanırken, hizmeti için Abonelik ücretleri geçerli olabilir. Her durumda, Müşteriler ayrıca sürekli depolama ücret ödemeniz gerekir. Tahmin için aşağıdakilere bakın: 
-- [StorSimple'nın fiyatlandırma](https://azure.microsoft.com/pricing/details/storsimple/)  
-- [Fiyatlandırma AFS]( https://azure.microsoft.com/pricing/details/storage/files/)
+### <a name="q-is-migration-to-other-storage-solutions-supported"></a>S. Is migration to other storage solutions supported?
 
-### <a name="q--how-long-does-it-take-to-complete-a-migration"></a>S.  Ne kadar bir geçiş işlemini tamamlamak için sürer?
+A. Evet. Migration to other storage solutions using host copy of the data is supported.
 
-A. Veri geçiş süresini, veriler ve yükseltme seçeneği belirlenmiş miktarına bağlıdır. 
+### <a name="q-is-migration-supported-by-microsoft"></a>S. Is migration supported by Microsoft? 
 
-### <a name="q-what-is-the-end-of-support-date-for-storsimple-8000-series"></a>S. StorSimple 8000 serisi için desteği son tarih nedir?
+A. Migrating from 5000 or 7000 series is a fully supported operation. In fact, Microsoft recommends reaching out to Support before you start migration. Migration is currently an assisted operation. If you intend to migrate data from your StorSimple 5000-7000 series device, [Open a Support ticket](storsimple-8000-contact-microsoft-support.md).
 
-A. StorSimple 8000 serisi için desteği bitiş tarihi yayımlanan [burada](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%208000%20Series).
+### <a name="q-what-is-the-pricing-model-for-both-the-migration-options"></a>S. What is the pricing model for both the migration options?
+
+A. Cost of migration varies depending on the option you choose. While migration itself is free, if you decide to upgrade to a StorSimple 8000 series, there will be the cost of the hardware device. 
+
+Similarly, when using Azure File Sync, the subscription fees for the service may apply. In each case, customers will also have to pay ongoing storage costs. Refer to the following for an estimate: 
+- [StorSimple pricing](https://azure.microsoft.com/pricing/details/storsimple/)  
+- [AFS pricing]( https://azure.microsoft.com/pricing/details/storage/files/)
+
+### <a name="q--how-long-does-it-take-to-complete-a-migration"></a>S.  How long does it take to complete a migration?
+
+A. The time to migrate data depends on the amount of the data and the upgrade option selected. 
+
+### <a name="q-what-is-the-end-of-support-date-for-storsimple-8000-series"></a>S. What is the End of Support date for StorSimple 8000 series?
+
+A. The End of Support date for StorSimple 8000 series is published [here](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%208000%20Series).
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
- - [Verileri bir Storsimple'dan 5000-7000 Serisi 8000 serisinin cihazına geçirmek](storsimple-8000-migrate-from-5000-7000.md).
- - [Azure dosya eşitleme için StorSimple 5000-7000 serisinden veri geçirme](storsimple-5000-7000-afs-migration.md)
+ - [Migrate data from a StorSimple 5000-7000 series to an 8000 series device](storsimple-8000-migrate-from-5000-7000.md).
+ - [Migrate data from a StorSimple 5000-7000 series to Azure File Sync](storsimple-5000-7000-afs-migration.md)

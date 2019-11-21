@@ -1,66 +1,66 @@
 ---
-title: Azure Load Balancer için güvenlik denetimleri
-description: Load Balancer değerlendirmek için güvenlik denetimlerinin denetim listesi
+title: Security controls for Azure Load Balancer
+description: A checklist of security controls for evaluating Load Balancer
 services: load-balancer
-author: msmbaldwin
-manager: barbkess
+author: asudbring
+manager: KumudD
 ms.service: load-balancer
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.author: mbaldwin
-ms.openlocfilehash: e0be6635a0916183e1dfe776bef4c547578383dc
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.author: allensu
+ms.openlocfilehash: 6043e574697489b6566641c352bc21a2b6d87f51
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70886462"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74214894"
 ---
-# <a name="security-controls-for-azure-load-balancer"></a>Azure Load Balancer için güvenlik denetimleri
+# <a name="security-controls-for-azure-load-balancer"></a>Security controls for Azure Load Balancer
 
-Bu makalede, Azure Load Balancer yerleşik olarak bulunan güvenlik denetimleri Belgelenebilir.
+This article documents the security controls built into Azure Load Balancer.
 
 [!INCLUDE [Security controls Header](../../includes/security-controls-header.md)]
 
 ## <a name="network"></a>Ağ
 
-| Güvenlik denetimi | Evet/Hayır | Notlar |
+| Security control | Evet/Hayır | Notlar |
 |---|---|--|
-| Hizmet uç noktası desteği| Yok | |
-| VNet ekleme desteği| Yok | |
-| Ağ yalıtımı ve güvenlik duvarı desteği| Yok |  |
-| Zorlamalı tünel desteği| Yok | |
+| Service endpoint support| Yok | |
+| VNet injection support| Yok | |
+| Network Isolation and Firewalling support| Yok |  |
+| Forced tunneling support| Yok | |
 
-## <a name="monitoring--logging"></a>& Günlüğü izleme
+## <a name="monitoring--logging"></a>Monitoring & logging
 
-| Güvenlik denetimi | Evet/Hayır | Notlar|
+| Security control | Evet/Hayır | Notlar|
 |---|---|--|
-| Azure izleme desteği (Log Analytics, App Insights vb.)| Evet | Bkz. [Genel temel Load Balancer Için Azure izleyici günlükleri](load-balancer-monitor-log.md). |
-| Denetim ve yönetim düzlemi günlüğü ve denetimi| Evet | Bkz. [Genel temel Load Balancer Için Azure izleyici günlükleri](load-balancer-monitor-log.md). |
-| Veri düzlemi günlüğü ve denetimi | Yok |  |
+| Azure monitoring support (Log analytics, App insights, etc.)| Yes | See [Azure Monitor logs for public Basic Load Balancer](load-balancer-monitor-log.md). |
+| Control and management plane logging and audit| Yes | See [Azure Monitor logs for public Basic Load Balancer](load-balancer-monitor-log.md). |
+| Data plane logging and audit | Yok |  |
 
 ## <a name="identity"></a>Kimlik
 
-| Güvenlik denetimi | Evet/Hayır | Notlar|
+| Security control | Evet/Hayır | Notlar|
 |---|---|--|
-| Authentication| Yok |  |
-| Authorization| Yok |  |
+| Kimlik Doğrulaması| Yok |  |
+| Yetkilendirme| Yok |  |
 
-## <a name="data-protection"></a>Veri koruma
+## <a name="data-protection"></a>Veri koruması
 
-| Güvenlik denetimi | Evet/Hayır | Notlar |
+| Security control | Evet/Hayır | Notlar |
 |---|---|--|
-| Bekleyen sunucu tarafı şifrelemesi: Microsoft tarafından yönetilen anahtarlar | Yok | |
-| Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifreleme ve VNet-VNet şifreleme gibi)| Yok | |
-| Bekleyen sunucu tarafı şifreleme: müşteri tarafından yönetilen anahtarlar (BYOK) | Yok | |
-| Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| Yok | |
-| Şifrelenmiş API çağrıları| Evet | [Azure Resource Manager](../azure-resource-manager/index.yml)üzerinden. |
+| Server-side encryption at rest: Microsoft-managed keys | Yok | |
+| Encryption in transit (such as ExpressRoute encryption, in VNet encryption, and VNet-VNet encryption )| Yok | |
+| Server-side encryption at rest: customer-managed keys (BYOK) | Yok | |
+| Column level encryption (Azure Data Services)| Yok | |
+| API calls encrypted| Yes | Via the [Azure Resource Manager](../azure-resource-manager/index.yml). |
 
 ## <a name="configuration-management"></a>Yapılandırma yönetimi
 
-| Güvenlik denetimi | Evet/Hayır | Notlar|
+| Security control | Evet/Hayır | Notlar|
 |---|---|--|
-| Yapılandırma yönetimi desteği (yapılandırmanın sürümü oluşturma, vb.)| Yok |  | 
+| Configuration management support (versioning of configuration, etc.)| Yok |  | 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure hizmetleri genelinde yerleşik güvenlik denetimleri](../security/fundamentals/security-controls.md)hakkında daha fazla bilgi edinin.
+- Learn more about the [built-in security controls across Azure services](../security/fundamentals/security-controls.md).

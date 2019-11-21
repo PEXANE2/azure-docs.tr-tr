@@ -1,75 +1,72 @@
 ---
-title: Dayanıklı İşlevler için sıfır kesinti süresi dağıtımı
-description: Sıfır kesinti süresi için Dayanıklı İşlevler düzenleme özelliğini nasıl etkinleştireceğinizi öğrenin.
-services: functions
+title: Zero-downtime deployment for Durable Functions
+description: Learn how to enable your Durable Functions orchestration for zero-downtime deployments.
 author: tsushi
-manager: gwallace
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: azfuncdf
-ms.openlocfilehash: af19f8cdcc26d1459bc024f00b963f04bd8d763b
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 8e12d58c0077084c181d111b0b017665b74b9157
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904053"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231267"
 ---
-# <a name="zero-downtime-deployment-for-durable-functions"></a>Dayanıklı İşlevler için sıfır kesinti süresi dağıtımı
+# <a name="zero-downtime-deployment-for-durable-functions"></a>Zero-downtime deployment for Durable Functions
 
-Dayanıklı İşlevler [güvenilir yürütme modeli](durable-functions-checkpointing-and-replay.md) , güncelleştirmeleri dağıtırken göz önünde bulundurmanız gereken ek bir sınama oluşturan, düzenleme belirleyici olmasını gerektirir. Bir dağıtım, etkinlik işlevi imzalarında veya Orchestrator mantığındaki değişiklikler içerdiğinde uçuş düzenleme örnekleri başarısız olur. Bu durum özellikle uzun süre çalışan düzenleyiciler örneklerine yönelik bir sorundur ve bu da saatleri veya iş günlerini temsil edebilir.
+The [reliable execution model](durable-functions-checkpointing-and-replay.md) of Durable Functions requires that orchestrations be deterministic, which creates an additional challenge to consider when you deploy updates. When a deployment contains changes to activity function signatures or orchestrator logic, in-flight orchestration instances fail. This situation is especially a problem for instances of long-running orchestrations, which might represent hours or days of work.
 
-Bu hataların oluşmasını engellemek için iki seçeneğiniz vardır: 
-- Çalışan tüm düzenleme örnekleri tamamlanana kadar dağıtımınızı geciktirebilirsiniz.
-- Çalışan tüm düzenleme örneklerinin işlevlerinizin mevcut sürümlerini kullanmasını sağlayın. 
+To prevent these failures from happening, you have two options: 
+- Delay your deployment until all running orchestration instances have completed.
+- Make sure that any running orchestration instances use the existing versions of your functions. 
 
 > [!NOTE]
-> Bu makalede, Dayanıklı İşlevler 1. x ' i hedefleyen işlevler uygulamalarına yönelik rehberlik sunulmaktadır. Dayanıklı İşlevler 2. x içinde tanıtılan değişiklikler için hesaba güncelleştirilmedi. Uzantı sürümleri arasındaki farklar hakkında daha fazla bilgi için bkz. [dayanıklı işlevler sürümleri](durable-functions-versions.md).
+> This article provides guidance for functions apps that target Durable Functions 1.x. It hasn't been updated to account for changes introduced in Durable Functions 2.x. For more information about the differences between extension versions, see [Durable Functions versions](durable-functions-versions.md).
 
-Aşağıdaki grafik, Dayanıklı İşlevler için sıfır kesinti temelli bir dağıtım elde etmek üzere üç ana stratejileri karşılaştırır: 
+The following chart compares the three main strategies to achieve a zero-downtime deployment for Durable Functions: 
 
-| Strateji |  Kullanılması gereken durumlar | Ları | Simgeler |
+| Strateji |  Kullanılması gereken durumlar | Pros | Simgeler |
 | -------- | ------------ | ---- | ---- |
-| [Sürümü](#versioning) |  Sık karşılaşılan değişiklikler hakkında daha fazla karşılaşmeyen uygulamalar [.](durable-functions-versioning.md) | Basit uygulama. |  Bellekte ve işlev sayısında daha fazla işlev uygulaması boyutu.<br/>Kod çoğaltma. |
-| [Yuva ile durum denetimi](#status-check-with-slot) | 24 veya daha fazla çakışan düzenleme için uzun süre çalışan bir düzenleme gerçekleştirmeyen bir sistem. | Basit kod tabanı.<br/>Ek işlev uygulama yönetimi gerektirmez. | Ek depolama hesabı veya görev merkezi yönetimi gerektirir.<br/>Hiçbir düzenleme çalışmadığı zaman dönem gerektirir. |
-| [Uygulama yönlendirme](#application-routing) | En son 24 saatten uzun veya sık sık çakışan düzenleyicilerle bu dönemler gibi, düzenleme çalışmadığı zaman süreleri olmayan bir sistem. | Sürekli değişiklikler içeren düzenlemeleri çalıştıran sistemlerin yeni sürümlerini işler. | Akıllı uygulama yönlendiricisi gerektirir.<br/>Aboneliğiniz tarafından izin verilen işlev uygulamalarının sayısı en fazla olabilir. Varsayılan değer 100 ' dir. |
+| [Versioning](#versioning) |  Applications that don't experience frequent [breaking changes.](durable-functions-versioning.md) | Simple to implement. |  Increased function app size in memory and number of functions.<br/>Code duplication. |
+| [Status check with slot](#status-check-with-slot) | A system that doesn't have long-running orchestrations lasting more than 24 hours or frequently overlapping orchestrations. | Simple code base.<br/>Doesn't require additional function app management. | Requires additional storage account or task hub management.<br/>Requires periods of time when no orchestrations are running. |
+| [Application routing](#application-routing) | A system that doesn't have periods of time when orchestrations aren't running, such as those time periods with orchestrations that last more than 24 hours or with frequently overlapping orchestrations. | Handles new versions of systems with continually running orchestrations that have breaking changes. | Requires an intelligent application router.<br/>Could max out the number of function apps allowed by your subscription. The default is 100. |
 
 ## <a name="versioning"></a>Sürüm oluşturma
 
-İşlevlerinizin yeni sürümlerini tanımlayın ve işlev uygulamanızda eski sürümleri bırakın. Diyagramda görebileceğiniz gibi, bir işlevin sürümü adının bir parçası haline gelir. İşlevlerin önceki sürümleri korunduğundan, uçuş sırasında düzenleme örnekleri bunlara başvurmasına devam edebilir. Bu sırada, Orchestration Client işlevinizin bir uygulama ayarından başvurmasına yönelik yeni düzenleme örnekleri istekleri en son sürüm için çağrı yapılır.
+Define new versions of your functions and leave the old versions in your function app. As you can see in the diagram, a function's version becomes part of its name. Because previous versions of functions are preserved, in-flight orchestration instances can continue to reference them. Meanwhile, requests for new orchestration instances call for the latest version, which your orchestration client function can reference from an app setting.
 
-![Sürüm oluşturma stratejisi](media/durable-functions-zero-downtime-deployment/versioning-strategy.png)
+![Versioning strategy](media/durable-functions-zero-downtime-deployment/versioning-strategy.png)
 
-Bu stratejide, her işlev kopyalanmalıdır ve diğer işlevlere olan başvuruların güncellenmesi gerekir. Bir komut dosyası yazarak daha kolay hale getirebilirsiniz. Geçiş betiği içeren [örnek bir proje](https://github.com/TsuyoshiUshio/DurableVersioning) aşağıda verilmiştir.
+In this strategy, every function must be copied, and its references to other functions must be updated. You can make it easier by writing a script. Here's a [sample project](https://github.com/TsuyoshiUshio/DurableVersioning) with a migration script.
 
 >[!NOTE]
->Bu strateji dağıtım sırasında kapalı kalma süresini önlemek için dağıtım yuvalarını kullanır. Yeni dağıtım yuvaları oluşturma ve kullanma hakkında daha ayrıntılı bilgi için bkz. [Azure işlevleri dağıtım yuvaları](../functions-deployment-slots.md).
+>This strategy uses deployment slots to avoid downtime during deployment. For more detailed information about how to create and use new deployment slots, see [Azure Functions deployment slots](../functions-deployment-slots.md).
 
-## <a name="status-check-with-slot"></a>Yuva ile durum denetimi
+## <a name="status-check-with-slot"></a>Status check with slot
 
-İşlev uygulamanızın geçerli sürümü üretim yuvasıyla çalışırken, işlev uygulamanızın yeni sürümünü hazırlama yuvasıyla dağıtın. Üretim ve hazırlama yuvalarınızı değiştirmeden önce, çalışan herhangi bir düzenleme örneği olup olmadığını kontrol edin. Tüm düzenleme örnekleri tamamlandıktan sonra, değiştirmeyi yapabilirsiniz. Bu strateji, hiçbir düzenleme örneği kol olmadığında tahmin edilebilir Dönemleriniz olduğunda işe yarar. Bu, düzenleyiclarınız uzun süre çalışmadığı ve düzenleme yürütmeleri sıklıkla çakışmazsa en iyi yaklaşımdır.
+While the current version of your function app is running in your production slot, deploy the new version of your function app to your staging slot. Before you swap your production and staging slots, check to see if there are any running orchestration instances. After all orchestration instances are complete, you can do the swap. This strategy works when you have predictable periods when no orchestration instances are in flight. This is the best approach when your orchestrations aren't long-running and when your orchestration executions don't frequently overlap.
 
-### <a name="function-app-configuration"></a>İşlev uygulaması yapılandırması
+### <a name="function-app-configuration"></a>Function app configuration
 
-Bu senaryoyu ayarlamak için aşağıdaki yordamı kullanın.
+Use the following procedure to set up this scenario.
 
-1. Hazırlama ve üretim için işlev uygulamanıza [dağıtım yuvaları ekleyin](../functions-deployment-slots.md#add-a-slot) .
+1. [Add deployment slots](../functions-deployment-slots.md#add-a-slot) to your function app for staging and production.
 
-1. Her yuva için, [AzureWebJobsStorage uygulama ayarını](../functions-app-settings.md#azurewebjobsstorage) paylaşılan bir depolama hesabının bağlantı dizesine ayarlayın. Bu depolama hesabı bağlantı dizesi, Azure Işlevleri çalışma zamanı tarafından kullanılır. Bu hesap, Azure Işlevleri çalışma zamanı tarafından kullanılır ve işlevin anahtarlarını yönetir.
+1. For each slot, set the [AzureWebJobsStorage application setting](../functions-app-settings.md#azurewebjobsstorage) to the connection string of a shared storage account. This storage account connection string is used by the Azure Functions runtime. This account is used by the Azure Functions runtime and manages the function's keys.
 
-1. Her yuva için yeni bir uygulama ayarı oluşturun, örneğin `DurableManagementStorage`. Değerini farklı depolama hesaplarının bağlantı dizesine ayarlayın. Bu depolama hesapları, [güvenilir yürütme](durable-functions-checkpointing-and-replay.md)için dayanıklı işlevler uzantısı tarafından kullanılır. Her yuva için ayrı bir depolama hesabı kullanın. Bu ayarı bir dağıtım yuvası ayarı olarak işaretlemeyin.
+1. For each slot, create a new app setting, for example, `DurableManagementStorage`. Set its value to the connection string of different storage accounts. These storage accounts are used by the Durable Functions extension for [reliable execution](durable-functions-checkpointing-and-replay.md). Use a separate storage account for each slot. Don't mark this setting as a deployment slot setting.
 
-1. İşlev uygulamanızın [Host. json dosyasının durableTask bölümünde](durable-functions-bindings.md#hostjson-settings), adım 3 ' te oluşturduğunuz uygulama ayarının adı olarak `azureStorageConnectionStringName` belirtin.
+1. In your function app's [host.json file's durableTask section](durable-functions-bindings.md#hostjson-settings), specify `azureStorageConnectionStringName` as the name of the app setting you created in step 3.
 
-Aşağıdaki diyagramda, dağıtım yuvaları ve depolama hesaplarının açıklanan yapılandırması gösterilmektedir. Bu potansiyel dağıtım senaryosunda, bir işlev uygulamasının 2. sürümü üretim yuvasında çalışmaktadır, 1. sürüm hazırlama yuvasında kalır.
+The following diagram shows the described configuration of deployment slots and storage accounts. In this potential predeployment scenario, version 2 of a function app is running in the production slot, while version 1 remains in the staging slot.
 
-![Dağıtım yuvaları ve depolama hesapları](media/durable-functions-zero-downtime-deployment/deployment-slot.png)
+![Deployment slots and storage accounts](media/durable-functions-zero-downtime-deployment/deployment-slot.png)
 
-### <a name="hostjson-examples"></a>Host. JSON örnekleri
+### <a name="hostjson-examples"></a>host.json examples
 
-Aşağıdaki JSON parçaları, *Host. JSON* dosyasındaki bağlantı dizesi ayarına örnektir.
+The following JSON fragments are examples of the connection string setting in the *host.json* file.
 
-#### <a name="functions-20"></a>İşlevler 2,0
+#### <a name="functions-20"></a>Functions 2.0
 
 ```json
 {
@@ -92,9 +89,9 @@ Aşağıdaki JSON parçaları, *Host. JSON* dosyasındaki bağlantı dizesi ayar
 }
 ```
 
-### <a name="cicd-pipeline-configuration"></a>CI/CD işlem hattı yapılandırması
+### <a name="cicd-pipeline-configuration"></a>CI/CD pipeline configuration
 
-CI/CD işlem hattınızı yalnızca işlev uygulamanızda bekleyen veya çalışan düzenleme örnekleri olmadığında dağıtılacak şekilde yapılandırın. Azure Pipelines kullanırken, aşağıdaki örnekte olduğu gibi, bu koşulları denetleyen bir işlev oluşturabilirsiniz:
+Configure your CI/CD pipeline to deploy only when your function app has no pending or running orchestration instances. When you're using Azure Pipelines, you can create a function that checks for these conditions, as in the following example:
 
 ```csharp
 [FunctionName("StatusCheck")]
@@ -113,68 +110,68 @@ public static async Task<IActionResult> StatusCheck(
 }
 ```
 
-Ardından, hazırlama geçidini, hiçbir düzenleme çalışmadığı sürece bekleyecek şekilde yapılandırın. Daha fazla bilgi için bkz. [kapıları kullanarak yayın dağıtım denetimi](/azure/devops/pipelines/release/approvals/gates?view=azure-devops)
+Next, configure the staging gate to wait until no orchestrations are running. For more information, see [Release deployment control using gates](/azure/devops/pipelines/release/approvals/gates?view=azure-devops)
 
-![Dağıtım kapısı](media/durable-functions-zero-downtime-deployment/deployment-gate.png)
+![Deployment gate](media/durable-functions-zero-downtime-deployment/deployment-gate.png)
 
-Azure Pipelines, dağıtımınız başlamadan önce düzenleme örneklerini çalıştırmaya yönelik işlev uygulamanızı denetler.
+Azure Pipelines checks your function app for running orchestration instances before your deployment starts.
 
-![Dağıtım Kapısı (çalışıyor)](media/durable-functions-zero-downtime-deployment/deployment-gate-2.png)
+![Deployment gate (running)](media/durable-functions-zero-downtime-deployment/deployment-gate-2.png)
 
-Artık işlev uygulamanızın yeni sürümü hazırlama yuvasına dağıtılmalıdır.
+Now the new version of your function app should be deployed to the staging slot.
 
-![Hazırlama yuvası](media/durable-functions-zero-downtime-deployment/deployment-slot-2.png)
+![Staging slot](media/durable-functions-zero-downtime-deployment/deployment-slot-2.png)
 
-Son olarak, takas yuvaları. 
+Finally, swap slots. 
 
-Dağıtım yuvası ayarları olarak işaretlenmemiş uygulama ayarları da takas edilir, bu nedenle sürüm 2 uygulaması, depolama hesabına A başvurusunu tutar. Düzenleme durumu depolama hesabında izlendiğinden, sürüm 2 uygulamasında çalışan her türlü düzenleme kesintiye uğramadan yeni yuvada çalışmaya devam eder.
+Application settings that aren't marked as deployment slot settings are also swapped, so the version 2 app keeps its reference to storage account A. Because orchestration state is tracked in the storage account, any orchestrations running on the version 2 app continue to run in the new slot without interruption.
 
 ![Dağıtım yuvası](media/durable-functions-zero-downtime-deployment/deployment-slot-3.png)
 
-Her iki yuva için aynı depolama hesabını kullanmak için, görev hub 'larınızın adlarını değiştirebilirsiniz. Bu durumda, yuvalarınızın durumunu ve uygulamanızın HubName ayarlarını yönetmeniz gerekir. Daha fazla bilgi için bkz. [dayanıklı işlevler görev hub 'ları](durable-functions-task-hubs.md).
+To use the same storage account for both slots, you can change the names of your task hubs. In this case, you need to manage the state of your slots and your app's HubName settings. To learn more, see [Task hubs in Durable Functions](durable-functions-task-hubs.md).
 
-## <a name="application-routing"></a>Uygulama yönlendirme
+## <a name="application-routing"></a>Application routing
 
-Bu strateji en karmaşıktır. Ancak, çalışma düzenlemeleri arasında zaman olmayan işlev uygulamaları için kullanılabilir.
+This strategy is the most complex. However, it can be used for function apps that don't have time between running orchestrations.
 
-Bu strateji için Dayanıklı İşlevler önünde bir *uygulama yönlendirici* oluşturmanız gerekir. Bu yönlendirici Dayanıklı İşlevler ile uygulanabilir. Yönlendirici şu şekilde sorumluluğa sahiptir:
+For this strategy, you must create an *application router* in front of your Durable Functions. This router can be implemented with Durable Functions. The router has the responsibility to:
 
-* İşlev uygulamasını dağıtın.
-* Dayanıklı İşlevler sürümünü yönetin. 
-* Düzenleme isteklerini işlev uygulamalarına yönlendirin.
+* Deploy the function app.
+* Manage the version of Durable Functions. 
+* Route orchestration requests to function apps.
 
-Bir Orchestration isteği ilk kez alındığında yönlendirici aşağıdaki görevleri yapar:
+The first time an orchestration request is received, the router does the following tasks:
 
-1. Azure 'da yeni bir işlev uygulaması oluşturur.
-2. İşlev uygulamanızın kodunu Azure 'daki yeni işlev uygulamasına dağıtır.
-3. Düzenleme isteğini yeni uygulamaya iletir.
+1. Creates a new function app in Azure.
+2. Deploys your function app's code to the new function app in Azure.
+3. Forwards the orchestration request to the new app.
 
-Yönlendirici, uygulama kodunuzun hangi sürümünün Azure 'daki işlev uygulamasına dağıtıldığını yönetir.
+The router manages the state of which version of your app's code is deployed to which function app in Azure.
 
-![Uygulama yönlendirme (ilk kez)](media/durable-functions-zero-downtime-deployment/application-routing.png)
+![Application routing (first time)](media/durable-functions-zero-downtime-deployment/application-routing.png)
 
-Yönlendirici dağıtım ve düzenleme isteklerini istekle birlikte gönderilen sürüme bağlı olarak uygun işlev uygulamasına yönlendirir. Düzeltme Eki sürümünü yoksayar.
+The router directs deployment and orchestration requests to the appropriate function app based on the version sent with the request. It ignores the patch version.
 
-Uygulamanızın yeni bir sürümünü bir değişiklik yapmadan dağıttığınızda, düzeltme eki sürümünü artırabilirsiniz. Yönlendirici mevcut işlev uygulamanıza dağıtılır ve aynı işlev uygulamasına yönlendirilen kodun eski ve yeni sürümlerine yönelik istekler gönderir.
+When you deploy a new version of your app without a breaking change, you can increment the patch version. The router deploys to your existing function app and sends requests for the old and new versions of the code, which are routed to the same function app.
 
-![Uygulama yönlendirme (hiçbir bölme değişikliği yok)](media/durable-functions-zero-downtime-deployment/application-routing-2.png)
+![Application routing (no breaking change)](media/durable-functions-zero-downtime-deployment/application-routing-2.png)
 
-Uygulamanızın yeni bir sürümünü Son değişiklik ile dağıttığınızda, büyük veya küçük sürümü artırabilirsiniz. Ardından, uygulama yönlendiricisi Azure 'da yeni bir işlev uygulaması oluşturur, buna dağıtır ve uygulamanızın yeni sürümü için istekleri yönlendirir. Aşağıdaki diyagramda uygulamanın 1.0.1 sürümünde düzenlemeler çalıştırılıyor, ancak 1.1.0 sürümü istekleri yeni işlev uygulamasına yönlendirilir.
+When you deploy a new version of your app with a breaking change, you can increment the major or minor version. Then the application router creates a new function app in Azure, deploys to it, and routes requests for the new version of your app to it. In the following diagram, running orchestrations on the 1.0.1 version of the app keep running, but requests for the 1.1.0 version are routed to the new function app.
 
-![Uygulama yönlendirme (Son değişiklik)](media/durable-functions-zero-downtime-deployment/application-routing-3.png)
+![Application routing (breaking change)](media/durable-functions-zero-downtime-deployment/application-routing-3.png)
 
-Yönlendirici 1.0.1 sürümündeki düzenlemeleri izler ve tüm düzenlemeler bittikten sonra uygulamaları kaldırır. 
+The router monitors the status of orchestrations on the 1.0.1 version and removes apps after all orchestrations are finished. 
 
-### <a name="tracking-store-settings"></a>İzleme deposu ayarları
+### <a name="tracking-store-settings"></a>Tracking store settings
 
-Her işlev uygulaması, muhtemelen ayrı depolama hesaplarında ayrı zamanlama kuyrukları kullanmalıdır. Uygulamanızın tüm sürümlerindeki tüm organize edilecek örnekleri sorgulamak istiyorsanız, işlev uygulamalarınız genelinde örnek ve geçmiş tabloları paylaşabilirsiniz. Her tümünün aynı değerleri kullanabilmesi için [Host. JSON ayarları](durable-functions-bindings.md#host-json) dosyasındaki `trackingStoreConnectionStringName` ve `trackingStoreNamePrefix` ayarlarını yapılandırarak tabloları paylaşabilirsiniz.
+Each function app should use separate scheduling queues, possibly in separate storage accounts. If you want to query all orchestrations instances across all versions of your application, you can share instance and history tables across your function apps. You can share tables by configuring the `trackingStoreConnectionStringName` and `trackingStoreNamePrefix` settings in the [host.json settings](durable-functions-bindings.md#host-json) file so that they all use the same values.
 
-Daha fazla bilgi için bkz. [Azure 'da dayanıklı işlevler örnekleri yönetme](durable-functions-instance-management.md).
+For more information, see [Manage instances in Durable Functions in Azure](durable-functions-instance-management.md).
 
-![İzleme deposu ayarları](media/durable-functions-zero-downtime-deployment/tracking-store-settings.png)
+![Tracking store settings](media/durable-functions-zero-downtime-deployment/tracking-store-settings.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Sürüm oluşturma Dayanıklı İşlevler](durable-functions-versioning.md)
+> [Versioning Durable Functions](durable-functions-versioning.md)
 

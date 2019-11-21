@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory çok kiracılı uygulamalar için otomatik Kullanıcı sağlamayı etkinleştir
-description: Otomatik sağlamayı etkinleştirmek için bağımsız yazılım satıcıları Kılavuzu
+title: Enable automatic user provisioning for multi-tenant applications - Azure AD
+description: A guide for independent software vendors for enabling automated provisioning
 services: active-directory
 documentationcenter: azure
 author: BarbaraSelden
@@ -15,108 +15,108 @@ ms.date: 07/23/2019
 ms.author: baselden
 ms.reviewer: zhchia
 ms.collection: active-directory
-ms.openlocfilehash: 119c46ac2d1d34d86a6bfb9f75384f262f89219b
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 74b991fce132c991ebd5fbd3789328e2a500da86
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72429460"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232306"
 ---
-# <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Çok kiracılı uygulamanız için otomatik Kullanıcı sağlamayı etkinleştirme
+# <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Enable automatic user provisioning for your multi-tenant application
 
-Otomatik Kullanıcı sağlama, hizmet olarak yazılım uygulamaları gibi hedef sistemlerdeki Kullanıcı kimliklerinin oluşturulmasını, bakımını ve kaldırılmasını otomatik hale getirme işlemidir.
+Automatic user provisioning is the process of automating the creation, maintenance, and removal of user identities in target systems like your software-as-a-service applications.
 
-## <a name="why-enable-automatic-user-provisioning"></a>Otomatik Kullanıcı sağlama neden etkinleştirilsin?
+## <a name="why-enable-automatic-user-provisioning"></a>Why enable automatic user provisioning?
 
-Kullanıcının ilk oturum açması Kullanıcı tarafından sağlanmadan önce uygulamada bir Kullanıcı kaydının mevcut olmasını gerektiren uygulamalar. Sizin için bir hizmet sağlayıcı olarak kullanabileceğiniz avantajlar ve müşterilerinizin avantajları vardır.
+Applications that require that a user record is present in the application before a user’s first sign in require user provisioning. There are benefits to you as a service provider, and benefits to your customers.
 
-### <a name="benefits-to-you-as-the-service-provider"></a>Hizmet sağlayıcı olarak size faydalanır
+### <a name="benefits-to-you-as-the-service-provider"></a>Benefits to you as the service provider
 
-* Microsoft Identity platformunu kullanarak uygulamanızın güvenliğini artırın.
+* Increase the security of your application by using the Microsoft identity platform.
 
-* Uygulamanızı benimsemek için gerçek ve algılanan müşteri çabalarını azaltın.
+* Reduce actual and perceived customer effort to adopt your application.
 
-* Etki alanları arası kimlik yönetimi (SCıM) tabanlı sağlama için sistem 'i kullanarak otomatik Kullanıcı sağlama için birden çok kimlik sağlayıcısıyla (IDPs) tümleştirmeye yönelik maliyetlerinizi azaltın.
+* Reduce your costs in integrating with multiple identity providers (IdPs) for automatic user provisioning by using System for Cross-Domain Identity Management (SCIM)-based provisioning.
 
-* Müşterilerin Kullanıcı sağlama sorunlarını gidermenize yardımcı olmak için zengin Günlükler sunarak destek maliyetlerini azaltın.
+* Reduce support costs by providing rich logs to help customers troubleshoot user provisioning issues.
 
-* [Azure AD uygulama galerisinde](https://azuremarketplace.microsoft.com/marketplace/apps)uygulamanızın görünürlüğünü artırın.
+* Increase the visibility of your application in the [Azure AD app gallery](https://azuremarketplace.microsoft.com/marketplace/apps).
 
-* Uygulama öğreticileri sayfasında öncelikli bir liste alın.
+* Get a prioritized listing in the App Tutorials page.
 
-### <a name="benefits-to-your-customers"></a>Müşterilerinizin avantajları
+### <a name="benefits-to-your-customers"></a>Benefits to your customers
 
-* Rolleri değiştirme veya kuruluştan uygulamanızı bırakma kullanıcıları için uygulamanıza erişimi otomatik olarak kaldırarak güvenliği artırın.
+* Increase security by automatically removing access to your application for users who change roles or leave the organization to your application.
 
-* El ile sağlama ile ilişkili insan hatasından ve yinelenen çalışmalardan kaçınarak uygulamanız için Kullanıcı yönetimini kolaylaştırın.
+* Simplify user management for your application by avoiding human error and repetitive work associated with manual provisioning.
 
-* Özel olarak geliştirilmiş sağlama çözümlerini barındırma ve sürdürme maliyetlerini azaltın.
+* Reduce the costs of hosting and maintaining custom-developed provisioning solutions.
 
-## <a name="choose-a-provisioning-method"></a>Bir sağlama yöntemi seçin
+## <a name="choose-a-provisioning-method"></a>Choose a provisioning method
 
-Azure AD, uygulamanız için otomatik Kullanıcı sağlamayı etkinleştirmek üzere çeşitli Tümleştirme yolları sağlar.
+Azure AD provides several integration paths to enable automatic user provisioning for your application.
 
-* [Azure AD sağlama hizmeti](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) , Azure AD 'den uygulamanıza (giden sağlama) ve UYGULAMANıZDAN Azure AD 'ye (gelen sağlama) yönelik sağlama ve sağlamayı kaldırmayı yönetir. Hizmet, uygulamanız tarafından sağlanmış olan etki alanları arası kimlik yönetimi (SCıM) Kullanıcı yönetimi API uç noktaları için sisteme bağlanır.
+* The [Azure AD Provisioning Service](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) manages the provisioning and deprovisioning of users from Azure AD to your application (outbound provisioning) and from your application to Azure AD (inbound provisioning). The service connects to the System for Cross-Domain Identity Management (SCIM) user management API endpoints provided by your application.
 
-* [Microsoft Graph](https://docs.microsoft.com/graph/)kullanılırken, UYGULAMANıZ Microsoft Graph API 'Sini SORGULAYARAK Azure AD 'den uygulamanıza yönelik kullanıcı ve grupların gelen ve giden sağlamasını yönetir.
+* When using the [Microsoft Graph](https://docs.microsoft.com/graph/), your application manages inbound and outbound provisioning of users and groups from Azure AD to your application by querying the Microsoft Graph API.
 
-* Uygulamanız Federasyon için SAML kullanıyorsa, tam zamanında Security Assertion Markup Language (SAML JıT) Kullanıcı sağlama etkinleştirilebilir. Kullanıcı sağlamak için SAML belirtecinde gönderilen talep bilgilerini kullanır.
+* The Security Assertion Markup Language Just in Time (SAML JIT) user provisioning can be enabled if your application is using SAML for federation. It uses claims information sent in the SAML token to provision users.
 
-Uygulamanız için hangi tümleştirme seçeneğinin kullanılacağını belirlemede yardımcı olması için üst düzey karşılaştırma tablosuna bakın ve sonra her bir seçenek hakkında daha ayrıntılı bilgi için bkz.
+To help determine which integration option to use for your application, refer to the high-level comparison table, and then see the more detailed information on each option.
 
-| Otomatik sağlama tarafından etkinleştirilen veya geliştirilmiş yetenekler| Azure AD sağlama hizmeti (SCıM 2,0)| Microsoft Graph API (OData v 4.0)| SAML JıT |
+| Capabilities enabled or enhanced by Automatic Provisioning| Azure AD Provisioning Service (SCIM 2.0)| Microsoft Graph API (OData v4.0)| SAML JIT |
 |---|---|---|---|
-| Azure AD 'de Kullanıcı ve Grup Yönetimi| √| √| Yalnızca Kullanıcı |
-| Şirket içi Active Directory eşitlenen kullanıcıları ve grupları yönetme| √| √| Yalnızca Kullanıcı * |
-| O365 verilerine (takımlar, SharePoint, e-posta, takvim, belgeler vb.) erişim sağlama sırasında kullanıcılar ve grupların ötesinde verilere erişin| X +| √| X |
-| İş kurallarına göre Kullanıcı oluşturma, okuma ve güncelleştirme| √| √| √ |
-| İş kurallarına göre kullanıcıları silme| √| √| X |
-| Azure portal tüm uygulamalar için otomatik Kullanıcı sağlamasını yönetme| √| X| √ |
-| Birden çok kimlik sağlayıcısını destekleme| √| X| √ |
-| Konuk hesaplarını (B2B) destekleme| √| √| √ |
-| Kurumsal olmayan hesapları destekleme (B2C)| X| √| √ |
+| User and group management in Azure AD| √| √| User only |
+| Manage users and groups synced from on-premises Active Directory| √*| √*| User only* |
+| Access data beyond users and groups during provisioning Access to O365 data (Teams, SharePoint, Email, Calendar, Documents, etc.)| X+| √| X |
+| Create, read, and update users based on business rules| √| √| √ |
+| Delete users based on business rules| √| √| X |
+| Manage automatic user provisioning for all applications from the Azure portal| √| X| √ |
+| Support multiple identity providers| √| X| √ |
+| Support guest accounts (B2B)| √| √| √ |
+| Support non-enterprise accounts (B2C)| X| √| √ |
 
-<sup>*</sup> – Azure AD Connect kullanıcıları ad 'den Azure AD 'ye eşitlemek için kurulum gereklidir.  
-<sup>+</sup >– sağlama için SCIM kullanıldığında, diğer amaçlar Için uygulamanızı MICROSOFT Graph ile tümleştirmenizi engellemez.
+<sup>*</sup> – Azure AD Connect setup is required to sync users from AD to Azure AD.  
+<sup>+</sup >– Using SCIM for provisioning does not preclude you from integrating your application with MIcrosoft Graph for other purposes.
 
-## <a name="azure-ad-provisioning-service-scim"></a>Azure AD sağlama hizmeti (SCıM)
+## <a name="azure-ad-provisioning-service-scim"></a>Azure AD Provisioning Service (SCIM)
 
-Azure AD sağlama hizmetleri, birçok kimlik sağlayıcısı (IDPs) ve uygulamalar (örn. bolluk, G Suite, Dropbox) tarafından desteklenen sağlama için endüstri standardı olan [SCIM](https://aka.ms/SCIMOverview)'i kullanır. Her türlü SCıM uyumlu IDP, SCıM uç noktanıza bağlanabildikleri için Azure AD 'nin yanı sıra IDPs 'yi desteklemek istiyorsanız, Azure AD sağlama hizmetini kullanmanızı öneririz. Basit bir/User uç noktası oluşturma, kendi eşitleme motorınızı sürdürmek zorunda kalmadan sağlamayı etkinleştirebilirsiniz. 
+The Azure AD provisioning services uses [SCIM](https://aka.ms/SCIMOverview), an industry standard for provisioning supported by many identity providers (IdPs) as well as applications (e.g. Slack, G Suite, Dropbox). We recommend you use the Azure AD provisioning service if you want to support IdPs in addition to Azure AD, as any SCIM-compliant IdP can connect to your SCIM endpoint. Building a simple /User endpoint, you can enable provisioning without having to maintain your own sync engine. 
 
-Azure AD sağlama hizmeti kullanıcılarının SCıM hakkında daha fazla bilgi için bkz.: 
+For more information on how the Azure AD Provisioning Service users SCIM, see: 
 
-* [SCıM standardı hakkında daha fazla bilgi edinin](https://aka.ms/SCIMOverview)
+* [Learn more about the SCIM standard](https://aka.ms/SCIMOverview)
 
-* [Kullanıcıları ve grupları Azure Active Directory uygulamalara otomatik olarak sağlamak için etki alanları arası kimlik yönetimi (SCıM) için sistem kullanma](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
+* [Using System for Cross-Domain Identity Management (SCIM) to automatically provision users and groups from Azure Active Directory to applications](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
 
-* [Azure AD SCıM uygulamasını anlama](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
+* [Understand the Azure AD SCIM implementation](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
 
-## <a name="microsoft-graph-for-provisioning"></a>Sağlama için Microsoft Graph
+## <a name="microsoft-graph-for-provisioning"></a>Microsoft Graph for Provisioning
 
-Sağlama için Microsoft Graph kullandığınızda, grafikte kullanılabilen tüm zengin Kullanıcı verilerine erişebilirsiniz. Kullanıcı ve grupların ayrıntılarına ek olarak, kullanıcının rolleri, Yöneticisi ve doğrudan raporları, sahip olunan cihazlar ve [Microsoft Graph](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)bulunan yüzlerce diğer veri parçası gibi ek bilgiler de getirebilirsiniz. 
+When you use Microsoft Graph for provisioning, you have access to all the rich user data available in Graph. In addition to the details of users and groups, you can also fetch additional information like the user’s roles, manager and direct reports, owned and registered devices, and hundreds of other data pieces available in the [Microsoft Graph](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0). 
 
-15.000.000 ' den fazla kuruluş ve Fortune 500 şirketlerinin %90 ' si, Office 365, Microsoft Azure, Enterprise Mobility Suite veya Microsoft 365 gibi Microsoft bulut hizmetlerine abone olurken Azure AD 'yi kullanır. Uygulamanızı, çalışan ekleme (ve sonlandırma), profil bakımı ve daha fazlası gibi yönetim iş akışlarıyla tümleştirmek için Microsoft Graph kullanabilirsiniz. 
+More than 15 million organizations, and 90% of fortune 500 companies use Azure AD while subscribing to Microsoft cloud services like Office 365, Microsoft Azure, Enterprise Mobility Suite, or Microsoft 365. You can use Microsoft Graph to integrate your app with administrative workflows, such as employee onboarding (and termination), profile maintenance, and more. 
 
-Sağlama için Microsoft Graph kullanma hakkında daha fazla bilgi edinin:
+Learn more about using Microsoft Graph for provisioning:
 
-* [Microsoft Graph giriş sayfası](https://developer.microsoft.com/graph)
+* [Microsoft Graph Home page](https://developer.microsoft.com/graph)
 
 * [Microsoft Graph’a genel bakış](https://docs.microsoft.com/graph/overview)
 
-* [Microsoft Graph auth 'ye Genel Bakış](https://docs.microsoft.com/graph/auth/)
+* [Microsoft Graph Auth Overview](https://docs.microsoft.com/graph/auth/)
 
-* [Microsoft Graph kullanmaya başlama](https://developer.microsoft.com/graph/get-started)
+* [Getting started with Microsoft Graph](https://developer.microsoft.com/graph/get-started)
 
-## <a name="using-saml-jit-for-provisioning"></a>Sağlama için SAML JıT kullanma
+## <a name="using-saml-jit-for-provisioning"></a>Using SAML JIT for provisioning
 
-Kullanıcıları yalnızca uygulamanızda ilk kez oturum açtığında sağlamak istiyorsanız ve kullanıcıların otomatik olarak sağlanması gerekmiyorsa, SAML JıT bir seçenektir. Uygulamanızın SAML JıT kullanmak için SAML 2,0 ' ü desteklemesi gerekir.
+If you want to provision users only upon first sign in to your application, and do not need to automatically deprovision users, SAML JIT is an option. Your application must support SAML 2.0 as a federation protocol to use SAML JIT.
 
-SAML JıT, uygulama içindeki kullanıcı bilgilerini oluşturmak ve güncelleştirmek için SAML belirtecindeki talep bilgilerini kullanır. Müşteriler gerektiğinde bu gerekli talepleri Azure AD uygulamasında yapılandırabilir. Bazen JıT sağlamanın uygulama tarafında etkinleştirilmesi gerekir, böylelikle müşteri bu özelliği kullanabilir. SAML JıT, Kullanıcı oluşturmak ve güncelleştirmek için yararlıdır, ancak uygulamadaki kullanıcıları silemez veya devre dışı bırakamıyorum.
+SAML JIT uses the claims information in the SAML token to create and update user information in the application. Customers can configure these required claims in the Azure AD application as needed. Sometimes the JIT provisioning needs to be enabled from the application side so that customer can use this feature. SAML JIT is useful for creating and updating users, but it can't delete or deactivate the users in the application.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-* [Uygulamanız için çoklu oturum açmayı etkinleştirme](https://docs.microsoft.com/azure/active-directory/manage-apps/isv-sso-content)
+* [Enable Single Sign-on for your application](https://docs.microsoft.com/azure/active-directory/manage-apps/isv-sso-content)
 
-* Microsoft 'un sitesinde belge oluşturmak için [uygulama listelemeyi ve iş ortaklarınızı](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx) Microsoft Ile birlikte gönderebilirsiniz.
+* [Submit your application listing](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx) and partner with Microsoft to create documentation on Microsoft’s site.
 
-* [Microsoft iş ortağı ağı (ücretsiz) ekleyin ve pazara git planınızı oluşturun](https://partner.microsoft.com/en-us/explore/commercial).
+* [Join the Microsoft Partner Network (free) and create your go to market plan](https://partner.microsoft.com/en-us/explore/commercial).

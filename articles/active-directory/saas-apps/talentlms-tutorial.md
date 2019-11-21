@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory Tümleştirmesi ile TalentLMS | Microsoft Docs'
-description: Azure Active Directory ve TalentLMS arasında çoklu oturum açmayı yapılandırmayı öğrenin.
+title: 'Tutorial: Azure Active Directory integration with TalentLMS | Microsoft Docs'
+description: Learn how to configure single sign-on between Azure Active Directory and TalentLMS.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,243 +16,243 @@ ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0243a3e0ed83abc1edead5ecece4fd5c6ff1cad9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 970ab9de270b1227884a13ac578d4c439043b20c
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67089158"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233375"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-talentlms"></a>Öğretici: TalentLMS ile Azure Active Directory Tümleştirme
+# <a name="tutorial-azure-active-directory-integration-with-talentlms"></a>Tutorial: Azure Active Directory integration with TalentLMS
 
-Bu öğreticide, Azure Active Directory (Azure AD) ile TalentLMS tümleştirme konusunda bilgi edinin.
-Azure AD ile TalentLMS tümleştirme ile aşağıdaki avantajları sağlar:
+In this tutorial, you learn how to integrate TalentLMS with Azure Active Directory (Azure AD).
+Integrating TalentLMS with Azure AD provides you with the following benefits:
 
-* TalentLMS erişimi, Azure AD'de kontrol edebilirsiniz.
-* Otomatik olarak (çoklu oturum açma) TalentLMS için kendi Azure AD hesapları ile oturum açmış, kullanıcıların etkinleştirebilirsiniz.
-* Hesaplarınız bir merkezi konumda - Azure portalında yönetebilir.
+* You can control in Azure AD who has access to TalentLMS.
+* You can enable your users to be automatically signed-in to TalentLMS (Single Sign-On) with their Azure AD accounts.
+* You can manage your accounts in one central location - the Azure portal.
 
-Azure AD SaaS uygulama tümleştirmesi hakkında daha fazla ayrıntı bilmek istiyorsanız, bkz. [uygulama erişimi ve Azure Active Directory ile çoklu oturum açma nedir](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Azure AD Tümleştirmesi ile TalentLMS yapılandırmak için aşağıdaki öğeler gerekir:
+To configure Azure AD integration with TalentLMS, you need the following items:
 
-* Azure AD aboneliğiniz. Bir Azure AD ortamını yoksa alabileceğiniz bir [ücretsiz hesap](https://azure.microsoft.com/free/)
-* TalentLMS tek oturum açma etkin abonelik
+* An Azure AD subscription. If you don't have an Azure AD environment, you can get a [free account](https://azure.microsoft.com/free/)
+* TalentLMS single sign-on enabled subscription
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, yapılandırma ve Azure AD çoklu oturum açma bir test ortamında test edin.
+In this tutorial, you configure and test Azure AD single sign-on in a test environment.
 
-* TalentLMS destekler **SP** tarafından başlatılan
+* TalentLMS supports **SP** initiated SSO
 
-## <a name="adding-talentlms-from-the-gallery"></a>Galeriden TalentLMS ekleme
+## <a name="adding-talentlms-from-the-gallery"></a>Adding TalentLMS from the gallery
 
-Azure AD'de TalentLMS tümleştirmesini yapılandırmak için TalentLMS Galeriden yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
+To configure the integration of TalentLMS into Azure AD, you need to add TalentLMS from the gallery to your list of managed SaaS apps.
 
-**Galeriden TalentLMS eklemek için aşağıdaki adımları gerçekleştirin:**
+**To add TalentLMS from the gallery, perform the following steps:**
 
-1. İçinde **[Azure portalında](https://portal.azure.com)** , sol gezinti panelinde tıklayın **Azure Active Directory** simgesi.
+1. In the **[Azure portal](https://portal.azure.com)** , on the left navigation panel, click **Azure Active Directory** icon.
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+    ![The Azure Active Directory button](common/select-azuread.png)
 
-2. Gidin **kurumsal uygulamalar** seçip **tüm uygulamaları** seçeneği.
+2. Navigate to **Enterprise Applications** and then select the **All Applications** option.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![The Enterprise applications blade](common/enterprise-applications.png)
 
-3. Yeni uygulama eklemek için tıklatın **yeni uygulama** iletişim üst kısmındaki düğmesi.
+3. To add new application, click **New application** button on the top of dialog.
 
-    ![Yeni Uygulama düğmesi](common/add-new-app.png)
+    ![The New application button](common/add-new-app.png)
 
-4. Arama kutusuna **TalentLMS**seçin **TalentLMS** sonucu panelinden ardından **Ekle** uygulama eklemek için Ekle düğmesine.
+4. In the search box, type **TalentLMS**, select **TalentLMS** from result panel then click **Add** button to add the application.
 
-    ![Sonuç listesinde TalentLMS](common/search-new-app.png)
+    ![TalentLMS in the results list](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Configure and test Azure AD single sign-on
 
-Bu bölümde, yapılandırma ve Azure AD çoklu oturum açma TalentLMS adlı bir test kullanıcı tabanlı test **Britta Simon**.
-Tek iş için oturum açma için bir Azure AD kullanıcısının TalentLMS ilgili kullanıcı arasında bir bağlantı ilişkisi kurulması gerekir.
+In this section, you configure and test Azure AD single sign-on with TalentLMS based on a test user called **Britta Simon**.
+For single sign-on to work, a link relationship between an Azure AD user and the related user in TalentLMS needs to be established.
 
-Yapılandırma ve Azure AD çoklu oturum açma TalentLMS ile test etmek için aşağıdaki yapı taşlarını tamamlanması gerekir:
+To configure and test Azure AD single sign-on with TalentLMS, you need to complete the following building blocks:
 
-1. **[Azure AD çoklu oturum açmayı yapılandırmayı](#configure-azure-ad-single-sign-on)**  - bu özelliği kullanmak, kullanıcılarınızın etkinleştirmek için.
-2. **[TalentLMS çoklu oturum açmayı yapılandırma](#configure-talentlms-single-sign-on)**  - uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-3. **[Bir Azure AD test kullanıcısı oluşturma](#create-an-azure-ad-test-user)**  - Azure AD çoklu oturum açma Britta Simon ile test etmek için.
-4. **[Azure AD test kullanıcı atama](#assign-the-azure-ad-test-user)**  - Azure AD çoklu oturum açmayı kullanmak Britta Simon etkinleştirmek için.
-5. **[TalentLMS test kullanıcısı oluşturma](#create-talentlms-test-user)**  - kullanıcı Azure AD gösterimini bağlı TalentLMS Britta simon'un bir karşılığı vardır.
-6. **[Çoklu oturum açmayı test](#test-single-sign-on)**  - yapılandırma çalışıp çalışmadığını doğrulayın.
+1. **[Configure Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)** - to enable your users to use this feature.
+2. **[Configure TalentLMS Single Sign-On](#configure-talentlms-single-sign-on)** - to configure the Single Sign-On settings on application side.
+3. **[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
+4. **[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
+5. **[Create TalentLMS test user](#create-talentlms-test-user)** - to have a counterpart of Britta Simon in TalentLMS that is linked to the Azure AD representation of user.
+6. **[Test single sign-on](#test-single-sign-on)** - to verify whether the configuration works.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırın
+### <a name="configure-azure-ad-single-sign-on"></a>Configure Azure AD single sign-on
 
-Bu bölümde, Azure AD çoklu oturum açma Azure portalında etkinleştirin.
+In this section, you enable Azure AD single sign-on in the Azure portal.
 
-Azure AD çoklu oturum açma ile TalentLMS yapılandırmak için aşağıdaki adımları gerçekleştirin:
+To configure Azure AD single sign-on with TalentLMS, perform the following steps:
 
-1. İçinde [Azure portalında](https://portal.azure.com/), **TalentLMS** uygulama tümleştirme sayfasında **çoklu oturum açma**.
+1. In the [Azure portal](https://portal.azure.com/), on the **TalentLMS** application integration page, select **Single sign-on**.
 
-    ![Çoklu oturum açma bağlantısı yapılandırma](common/select-sso.png)
+    ![Configure single sign-on link](common/select-sso.png)
 
-2. Üzerinde **tek bir oturum açma yönteminizi seçmeniz** iletişim kutusunda, **SAML/WS-Federasyon** modu, çoklu oturum açmayı etkinleştirmek için.
+2. On the **Select a Single sign-on method** dialog, select **SAML/WS-Fed** mode to enable single sign-on.
 
-    ![Çoklu oturum açma seçim modu](common/select-saml-option.png)
+    ![Single sign-on select mode](common/select-saml-option.png)
 
-3. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **Düzenle** açmak için simgeyi **temel SAML yapılandırma** iletişim.
+3. On the **Set up Single Sign-On with SAML** page, click **Edit** icon to open **Basic SAML Configuration** dialog.
 
-    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+    ![Edit Basic SAML Configuration](common/edit-urls.png)
 
-4. Üzerinde **temel SAML yapılandırma** bölümünde, aşağıdaki adımları gerçekleştirin:
+4. On the **Basic SAML Configuration** section, perform the following steps:
 
-    ![TalentLMS etki alanı ve URL'ler tek oturum açma bilgileri](common/sp-identifier.png)
+    ![TalentLMS Domain and URLs single sign-on information](common/sp-identifier.png)
 
-    a. İçinde **oturum açma URL'si** metin kutusuna şu biçimi kullanarak bir URL yazın: `https://<tenant-name>.TalentLMSapp.com`
+    a. In the **Sign on URL** text box, type a URL using the following pattern: `https://<tenant-name>.TalentLMSapp.com`
 
-    b. İçinde **tanımlayıcı (varlık kimliği)** metin kutusuna şu biçimi kullanarak bir URL yazın: `http://<tenant-name>.talentlms.com`
+    b. In the **Identifier (Entity ID)** text box, type a URL using the following pattern: `http://<tenant-name>.talentlms.com`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerler gerçek oturum açma URL ve tanımlayıcıdır ile güncelleştirin. İlgili kişi [TalentLMS istemci Destek ekibine](https://www.talentlms.com/contact) bu değerleri almak için. Gösterilen desenleri de başvurabilirsiniz **temel SAML yapılandırma** bölümünde Azure portalında.
+    > These values are not real. Update these values with the actual Sign on URL and Identifier. Contact [TalentLMS Client support team](https://www.talentlms.com/contact) to get these values. You can also refer to the patterns shown in the **Basic SAML Configuration** section in the Azure portal.
 
-5. İçinde **SAML imzalama sertifikası** bölümünde **Düzenle** açmak için düğmeyi **SAML imzalama sertifikası** iletişim.
+5. In the **SAML Signing Certificate** section, click **Edit** button to open **SAML Signing Certificate** dialog.
 
-    ![SAML imzalama sertifikası Düzenle](common/edit-certificate.png)
+    ![Edit SAML Signing Certificate](common/edit-certificate.png)
 
-6. İçinde **SAML imzalama sertifikası** bölümünde, kopya **parmak İZİ** ve bilgisayarınıza kaydedin.
+6. In the **SAML Signing Certificate** section, copy the **THUMBPRINT** and save it on your computer.
 
-    ![Parmak izi değerini kopyalayın](common/copy-thumbprint.png)
+    ![Copy Thumbprint value](common/copy-thumbprint.png)
 
-7. Üzerinde **TalentLMS kümesi** bölümünde, ihtiyacınıza göre uygun URL'lerini kopyalayın.
+7. On the **Set up TalentLMS** section, copy the appropriate URL(s) as per your requirement.
 
-    ![Yapılandırma URL'leri kopyalayın](common/copy-configuration-urls.png)
+    ![Copy configuration URLs](common/copy-configuration-urls.png)
 
-    a. Oturum Açma URL'si:
+    a. Login URL
 
-    b. Azure AD Tanımlayıcısı
+    b. Azure AD Identifier
 
-    c. Oturum Kapatma URL'si
+    c. Logout URL
 
-### <a name="configure-talentlms-single-sign-on"></a>TalentLMS tek oturum açmayı yapılandırın
+### <a name="configure-talentlms-single-sign-on"></a>Configure TalentLMS Single Sign-On
 
-1. Farklı bir web tarayıcı penceresinde TalentLMS şirketinizin sitesi için bir yönetici olarak oturum açın.
+1. In a different web browser window, sign in to your TalentLMS company site as an administrator.
 
-1. İçinde **hesabı & ayarları** bölümünde **kullanıcılar** sekmesi.
+1. In the **Account & Settings** section, click the **Users** tab.
 
-    ![& Hesap ayarları](./media/talentlms-tutorial/IC777296.png "hesabı & ayarları")
+    ![Account & Settings](./media/talentlms-tutorial/IC777296.png "Account & Settings")
 
-1. Tıklayın **çoklu oturum açma (SSO)** ,
+1. Click **Single Sign-On (SSO)** ,
 
-1. Çoklu oturum açma bölümünde aşağıdaki adımları gerçekleştirin:
+1. In the Single Sign-On section, perform the following steps:
 
-    ![Çoklu oturum açma](./media/talentlms-tutorial/IC777297.png "çoklu oturum açma")
+    ![Single Sign-On](./media/talentlms-tutorial/IC777297.png "Single Sign-On")
 
-    a. Gelen **SSO tümleştirme türü** listesinden **SAML 2.0**.
+    a. From the **SSO integration type** list, select **SAML 2.0**.
 
-    b. İçinde **kimlik sağlayıcıyı (IDP)** metin değerini yapıştırın **Azure AD tanımlayıcısı**, hangi Azure Portalı'ndan kopyaladığınız.
+    b. In the **Identity provider (IDP)** textbox, paste the value of **Azure AD Identifier**, which you have copied from Azure portal.
 
-    c. Yapıştırma **parmak izi** Azure portalında bir değerden **sertifika parmak izi** metin.
+    c. Paste the **Thumbprint** value from Azure portal into the **Certificate fingerprint** textbox.
 
-    d.  İçinde **uzaktan oturum açma URL'si** metin değerini yapıştırın **oturum açma URL'si**, hangi Azure Portalı'ndan kopyaladığınız.
+    d.  In the **Remote sign-in URL** textbox, paste the value of **Login URL**, which you have copied from Azure portal.
 
-    e. İçinde **uzak oturum kapatma URL'si** metin değerini yapıştırın **oturum kapatma URL'si**, hangi Azure Portalı'ndan kopyaladığınız.
+    e. In the **Remote sign-out URL** textbox, paste the value of **Logout URL**, which you have copied from Azure portal.
 
-    f. Aşağıdakileri doldurun:
+    f. Fill in the following:
 
-    * İçinde **TargetedID** metin kutusuna `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`
+    * In the **TargetedID** textbox, type `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`
 
-    * İçinde **ad** metin kutusuna `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
+    * In the **First name** textbox, type `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
 
-    * İçinde **Soyadı** metin kutusuna `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`
+    * In the **Last name** textbox, type `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`
 
-    * İçinde **e-posta** metin kutusuna `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
+    * In the **Email** textbox, type `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
 
-1. **Kaydet**’e tıklayın.
+1. **Kaydet** düğmesine tıklayın.
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Create an Azure AD test user
 
-Bu bölümün amacı, Britta Simon adlı Azure portalında bir test kullanıcısı oluşturmaktır.
+The objective of this section is to create a test user in the Azure portal called Britta Simon.
 
-1. Azure portalında, sol bölmede seçin **Azure Active Directory**seçin **kullanıcılar**ve ardından **tüm kullanıcılar**.
+1. In the Azure portal, in the left pane, select **Azure Active Directory**, select **Users**, and then select **All users**.
 
-    !["Kullanıcılar ve Gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
+    ![The "Users and groups" and "All users" links](common/users.png)
 
-2. Seçin **yeni kullanıcı** ekranın üstünde.
+2. Select **New user** at the top of the screen.
 
-    ![Yeni kullanıcı düğmesi](common/new-user.png)
+    ![New user Button](common/new-user.png)
 
-3. Kullanıcı özellikleri, aşağıdaki adımları gerçekleştirin.
+3. In the User properties, perform the following steps.
 
-    ![Kullanıcı iletişim kutusu](common/user-properties.png)
+    ![The User dialog box](common/user-properties.png)
 
-    a. İçinde **adı** alana **BrittaSimon**.
+    a. In the **Name** field enter **BrittaSimon**.
   
-    b. İçinde **kullanıcı adı** alan türü `brittasimon@yourcompanydomain.extension`. Örneğin, BrittaSimon@contoso.com
+    b. In the **User name** field type `brittasimon@yourcompanydomain.extension`. Örneğin, BrittaSimon@contoso.com
 
-    c. Seçin **Show parola** onay kutusunu işaretleyin ve ardından parola kutusunda görüntülenen değeri yazın.
+    c. Select **Show password** check box, and then write down the value that's displayed in the Password box.
 
     d. **Oluştur**’a tıklayın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Assign the Azure AD test user
 
-Bu bölümde, Azure çoklu oturum açma kullanmak için TalentLMS erişim vererek Britta Simon etkinleştirin.
+In this section, you enable Britta Simon to use Azure single sign-on by granting access to TalentLMS.
 
-1. Azure portalında **kurumsal uygulamalar**seçin **tüm uygulamaları**, ardından **TalentLMS**.
+1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **TalentLMS**.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Enterprise applications blade](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **TalentLMS**.
+2. In the applications list, select **TalentLMS**.
 
-    ![Uygulamalar listesinde TalentLMS bağlantı](common/all-applications.png)
+    ![The TalentLMS link in the Applications list](common/all-applications.png)
 
-3. Soldaki menüde **kullanıcılar ve gruplar**.
+3. In the menu on the left, select **Users and groups**.
 
-    !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+    ![The "Users and groups" link](common/users-groups-blade.png)
 
-4. Tıklayın **Kullanıcı Ekle** düğmesine ve ardından **kullanıcılar ve gruplar** içinde **atama Ekle** iletişim.
+4. Click the **Add user** button, then select **Users and groups** in the **Add Assignment** dialog.
 
-    ![Atama Ekle bölmesi](common/add-assign-user.png)
+    ![The Add Assignment pane](common/add-assign-user.png)
 
-5. İçinde **kullanıcılar ve gruplar** iletişim kutusunda **Britta Simon** 'a tıklayın kullanıcı listesinde **seçin** ekranın alt kısmındaki düğmesi.
+5. In the **Users and groups** dialog select **Britta Simon** in the Users list, then click the **Select** button at the bottom of the screen.
 
-6. SAML onaylaması ardından içinde herhangi bir rolü değer bekleniyor durumunda **rolü Seç** 'a tıklayın listeden bir kullanıcı için uygun rolü Seç iletişim kutusu **seçin** ekranın alt kısmındaki düğmesi.
+6. If you are expecting any role value in the SAML assertion then in the **Select Role** dialog select the appropriate role for the user from the list, then click the **Select** button at the bottom of the screen.
 
-7. İçinde **atama Ekle** iletişim tıklatın **atama** düğmesi.
+7. In the **Add Assignment** dialog click the **Assign** button.
 
-### <a name="create-talentlms-test-user"></a>TalentLMS test kullanıcısı oluşturma
+### <a name="create-talentlms-test-user"></a>Create TalentLMS test user
 
-TalentLMS için oturum açmak Azure AD kullanıcılarının etkinleştirmek için bunların TalentLMS sağlanması gerekir. TalentLMS söz konusu olduğunda, sağlama bir el ile gerçekleştirilen bir görevdir.
+To enable Azure AD users to sign in to TalentLMS, they must be provisioned into TalentLMS. In the case of TalentLMS, provisioning is a manual task.
 
-**Bir kullanıcı hesabı sağlamak için aşağıdaki adımları gerçekleştirin:**
+**To provision a user account, perform the following steps:**
 
-1. Oturum açın, **TalentLMS** Kiracı.
+1. Sign in to your **TalentLMS** tenant.
 
-1. Tıklayın **kullanıcılar**ve ardından **Kullanıcı Ekle**.
+1. Click **Users**, and then click **Add User**.
 
-1. Üzerinde **Kullanıcı Ekle** iletişim sayfasında, aşağıdaki adımları gerçekleştirin:
+1. On the **Add user** dialog page, perform the following steps:
 
-    ![Kullanıcı ekleme](./media/talentlms-tutorial/IC777299.png "kullanıcı ekleme")  
+    ![Add User](./media/talentlms-tutorial/IC777299.png "Kullanıcı Ekleme")  
 
-    a. İçinde **ad** metin gibi kullanıcı adını girin **Britta**.
+    a. In the **First name** textbox, enter the first name of user like **Britta**.
 
-    b. İçinde **Soyadı** metin gibi kullanıcının soyadını girin **Simon**.
+    b. In the **Last name** textbox, enter the last name of user like **Simon**.
  
-    c. İçinde **e-posta adresi** metin gibi kullanıcının e-posta girin `brittasimon\@contoso.com`.
+    c. In the **Email address** textbox, enter the email of user like `brittasimon\@contoso.com`.
 
-    d. Tıklayın **kullanıcı ekleme**.
+    d. Click **Add User**.
 
 > [!NOTE]
-> Herhangi diğer TalentLMS kullanıcı hesabı oluşturma araçları kullanabilir veya API'leri için AAD kullanıcı hesapları sağlamak TalentLMS tarafından sağlanan.
+> You can use any other TalentLMS user account creation tools or APIs provided by TalentLMS to provision Azure AD user accounts.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+In this section, you test your Azure AD single sign-on configuration using the Access Panel.
 
-Erişim paneli TalentLMS kutucuğa tıkladığınızda, size otomatik olarak SSO'yu ayarlama TalentLMS için oturum açmanız. Erişim paneli hakkında daha fazla bilgi için bkz: [erişim Paneli'ne giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+When you click the TalentLMS tile in the Access Panel, you should be automatically signed in to the TalentLMS for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

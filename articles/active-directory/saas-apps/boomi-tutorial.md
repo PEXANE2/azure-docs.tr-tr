@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Boomı ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
-description: Azure Active Directory ile Boomı arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
+title: 'Tutorial: Azure Active Directory single sign-on (SSO) integration with Boomi | Microsoft Docs'
+description: Learn how to configure single sign-on between Azure Active Directory and Boomi.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,193 +16,193 @@ ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1044a78d9bf1b52a7b0dd9e47d7db6d98b45299c
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 2469745edb5b8b3696478603cfe874bcabc8c1ff
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74081962"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231962"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-boomi"></a>Öğretici: Boomı ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-boomi"></a>Tutorial: Azure Active Directory single sign-on (SSO) integration with Boomi
 
-Bu öğreticide, Azure Active Directory (Azure AD) ile Boomı tümleştirme hakkında bilgi edineceksiniz. Boomı 'yi Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
+In this tutorial, you'll learn how to integrate Boomi with Azure Active Directory (Azure AD). When you integrate Boomi with Azure AD, you can:
 
-* Azure AD 'de, Boomı 'ya erişimi olan denetim.
-* Kullanıcılarınızın Azure AD hesaplarıyla otomatik olarak oturum açmalarına izin vermek için etkinleştirin.
-* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
+* Control in Azure AD who has access to Boomi.
+* Enable your users to be automatically signed-in to Boomi with their Azure AD accounts.
+* Manage your accounts in one central location - the Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+To learn more about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Başlamak için aşağıdaki öğeler gereklidir:
+To get started, you need the following items:
 
-* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* Boomı çoklu oturum açma (SSO) etkin aboneliği.
+* An Azure AD subscription. If you don't have a subscription, you can get a [free account](https://azure.microsoft.com/free/).
+* Boomi single sign-on (SSO) enabled subscription.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
+In this tutorial, you configure and test Azure AD SSO in a test environment.
 
-* Boomı, **IDP** tarafından başlatılan SSO 'yu destekler
+* Boomi supports **IDP** initiated SSO
 
-## <a name="adding-boomi-from-the-gallery"></a>Galeriden Boomı ekleme
+## <a name="adding-boomi-from-the-gallery"></a>Adding Boomi from the gallery
 
-Boomı 'nın Azure AD 'ye tümleştirilmesini yapılandırmak için, Galeriden, yönetilen SaaS uygulamaları listenize bir Boomı eklemeniz gerekir.
+To configure the integration of Boomi into Azure AD, you need to add Boomi from the gallery to your list of managed SaaS apps.
 
 1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
-1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
-1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
-1. **Galeriden Ekle** bölümünde, arama kutusuna **boomı** yazın.
-1. Sonuçlar panelinden **Boomı** öğesini seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. On the left navigation pane, select the **Azure Active Directory** service.
+1. Navigate to **Enterprise Applications** and then select **All Applications**.
+1. To add new application, select **New application**.
+1. In the **Add from the gallery** section, type **Boomi** in the search box.
+1. Select **Boomi** from results panel and then add the app. Wait a few seconds while the app is added to your tenant.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-boomi"></a>Azure AD çoklu oturum açmayı, Boomı için yapılandırın ve test edin
+## <a name="configure-and-test-azure-ad-single-sign-on-for-boomi"></a>Configure and test Azure AD single sign-on for Boomi
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu boomı ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Boomı içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
+Configure and test Azure AD SSO with Boomi using a test user called **B.Simon**. For SSO to work, you need to establish a link relationship between an Azure AD user and the related user in Boomi.
 
-Azure AD SSO 'yu Boomı ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+To configure and test Azure AD SSO with Boomi, complete the following building blocks:
 
-1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
-    * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-    * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
-1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Boomı SSO 'Yu yapılandırın](#configure-boomi-sso)** .
-    * Kullanıcının Azure AD gösterimine bağlı olan, Boomi 'da bir B. Simon 'ya sahip olmak için, **[boomı test kullanıcısı oluşturun](#create-boomi-test-user)** .
-1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+1. **[Configure Azure AD SSO](#configure-azure-ad-sso)** - to enable your users to use this feature.
+    * **[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with B.Simon.
+    * **[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable B.Simon to use Azure AD single sign-on.
+1. **[Configure Boomi SSO](#configure-boomi-sso)** - to configure the single sign-on settings on application side.
+    * **[Create Boomi test user](#create-boomi-test-user)** - to have a counterpart of B.Simon in Boomi that is linked to the Azure AD representation of user.
+1. **[Test SSO](#test-sso)** - to verify whether the configuration works.
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
+## <a name="configure-azure-ad-sso"></a>Configure Azure AD SSO
 
-Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
+Follow these steps to enable Azure AD SSO in the Azure portal.
 
-1. [Azure Portal](https://portal.azure.com/), **Boomi** uygulama tümleştirme sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
-1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. In the [Azure portal](https://portal.azure.com/), on the **Boomi** application integration page, find the **Manage** section and select **single sign-on**.
+1. On the **Select a single sign-on method** page, select **SAML**.
+1. On the **Set up single sign-on with SAML** page, click the edit/pen icon for **Basic SAML Configuration** to edit the settings.
 
-   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+   ![Edit Basic SAML Configuration](common/edit-urls.png)
 
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, aşağıdaki alanlar için değerleri girin:
+1. On the **Set up single sign-on with SAML** page, enter the values for the following fields:
 
-    a. **Tanımlayıcı** metin kutusuna bir URL yazın: `https://platform.boomi.com/`
+    a. In the **Identifier** text box, type a URL: `https://platform.boomi.com/`
 
-    b. **Yanıt URL 'si** metin kutusuna şu kalıbı kullanarak bir URL yazın: `https://platform.boomi.com/sso/<boomi-tenant>/saml`
+    b. In the **Reply URL** text box, type a URL using the following pattern: `https://platform.boomi.com/sso/<boomi-tenant>/saml`
 
     > [!NOTE]
-    > Yanıt URL 'SI değeri gerçek değil. Değeri gerçek yanıt URL 'siyle güncelleştirin. Bu değeri almak için [Boomı istemci desteği ekibine](https://boomi.com/company/contact/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > The Reply URL value is not real. Update the value with the actual Reply URL. Contact [Boomi Client support team](https://boomi.com/company/contact/) to get this value. You can also refer to the patterns shown in the **Basic SAML Configuration** section in the Azure portal.
 
-1. Boomı uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
+1. Boomi application expects the SAML assertions in a specific format, which requires you to add custom attribute mappings to your SAML token attributes configuration. The following screenshot shows the list of default attributes.
 
     ![image](common/default-attributes.png)
 
-1. Daha fazlasına ek olarak, Boomı uygulaması aşağıda gösterilen SAML yanıtında birkaç özniteliğin daha fazla özniteliğe geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
+1. In addition to above, Boomi application expects few more attributes to be passed back in SAML response which are shown below. These attributes are also pre populated but you can review them as per your requirements.
 
-    | Ad |  Kaynak özniteliği|
+    | Adı |  Source Attribute|
     | ---------------|  --------- |
-    | FEDERATION_ID | Kullanıcı. Mail |
+    | FEDERATION_ID | user.mail |
 
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+1. On the **Set up single sign-on with SAML** page, in the **SAML Signing Certificate** section,  find **Certificate (Base64)** and select **Download** to download the certificate and save it on your computer.
 
-    ![Sertifika indirme bağlantısı](common/certificatebase64.png)
+    ![The Certificate download link](common/certificatebase64.png)
 
-1. **Boomi ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
+1. On the **Set up Boomi** section, copy the appropriate URL(s) based on your requirement.
 
-    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
+    ![Copy configuration URLs](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Create an Azure AD test user
 
-Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
+In this section, you'll create a test user in the Azure portal called B.Simon.
 
-1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Seçin **yeni kullanıcı** ekranın üstünde.
-1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+1. From the left pane in the Azure portal, select **Azure Active Directory**, select **Users**, and then select **All users**.
+1. Select **New user** at the top of the screen.
+1. In the **User** properties, follow these steps:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
-   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’ tıklayın.
+   1. In the **User name** field, enter the username@companydomain.extension. Örneğin, `B.Simon@contoso.com`.
+   1. Select the **Show password** check box, and then write down the value that's displayed in the **Password** box.
+   1. **Oluştur**’a tıklayın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Assign the Azure AD test user
 
-Bu bölümde, B. Simon 'u, Boomi 'ya erişim vererek Azure çoklu oturum açma özelliğini etkinleştirecek şekilde etkinleştireceksiniz.
+In this section, you'll enable B.Simon to use Azure single sign-on by granting access to Boomi.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde, **Boomi**' yi seçin.
-1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. In the Azure portal, select **Enterprise Applications**, and then select **All applications**.
+1. In the applications list, select **Boomi**.
+1. In the app's overview page, find the **Manage** section and select **Users and groups**.
 
-   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+   ![The "Users and groups" link](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. Select **Add user**, then select **Users and groups** in the **Add Assignment** dialog.
 
-    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
+    ![The Add User link](common/add-assign-user.png)
 
-1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+1. In the **Users and groups** dialog, select **B.Simon** from the Users list, then click the **Select** button at the bottom of the screen.
+1. If you're expecting any role value in the SAML assertion, in the **Select Role** dialog, select the appropriate role for the user from the list and then click the **Select** button at the bottom of the screen.
+1. In the **Add Assignment** dialog, click the **Assign** button.
 
-## <a name="configure-boomi-sso"></a>Boomı SSO yapılandırma
+## <a name="configure-boomi-sso"></a>Configure Boomi SSO
 
-1. Farklı bir Web tarayıcısı penceresinde, Boomı şirket sitenizde yönetici olarak oturum açın.
+1. In a different web browser window, sign in to your Boomi company site as an administrator.
 
-1. **Şirket adı** ' na gidin ve **Ayarla**' ya gidin.
+1. Navigate to **Company Name** and go to **Set up**.
 
-1. **SSO seçenekleri** sekmesine tıklayın ve aşağıdaki adımları gerçekleştirin.
+1. Click the **SSO Options** tab and perform below steps.
 
-    ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/boomi-tutorial/tutorial_boomi_11.png)
+    ![Configure Single Sign-On On App Side](./media/boomi-tutorial/tutorial_boomi_11.png)
 
-    a. **SAML çoklu oturum açmayı etkinleştir** onay kutusunu işaretleyin.
+    a. Check **Enable SAML Single Sign-On** checkbox.
 
-    b. Azure AD 'den **kimlik sağlayıcısı sertifikasına**indirilen sertifikayı yüklemek Için **içeri aktar** ' a tıklayın.
+    b. Click **Import** to upload the downloaded certificate from Azure AD to **Identity Provider Certificate**.
 
-    c. **Kimlik sağlayıcısı oturum açma URL 'si** metin kutusunda, **oturum açma URL 'SI** değerini Azure AD uygulama yapılandırma penceresinden koyun.
+    c. In the **Identity Provider Login URL** textbox, put the value of **Login URL** from Azure AD application configuration window.
 
-    d. **Federasyon kimliği konumu**olarak, **FEDERATION_ID öznitelik öğesi radyo düğmesinde federasyon kimliği** ' ni seçin.
+    d. As **Federation Id Location**, select **Federation Id is in FEDERATION_ID Attribute element** radio button.
 
-    e. Tıklayın **Kaydet** düğmesi.
+    e. Click **Save** button.
 
-### <a name="create-boomi-test-user"></a>Boomı test kullanıcısı oluştur
+### <a name="create-boomi-test-user"></a>Create Boomi test user
 
-Azure AD kullanıcılarının, Boomı 'da oturum açmasını etkinleştirmek için, bu kullanıcıların Boomı 'da sağlanması gerekir. Boomi durumunda, sağlama işlemi el ile gerçekleştirilen bir görevdir.
+In order to enable Azure AD users to sign in to Boomi, they must be provisioned into Boomi. In the case of Boomi, provisioning is a manual task.
 
-### <a name="to-provision-a-user-account-perform-the-following-steps"></a>Bir kullanıcı hesabı sağlamak için aşağıdaki adımları gerçekleştirin:
+### <a name="to-provision-a-user-account-perform-the-following-steps"></a>To provision a user account, perform the following steps:
 
-1. Bir yönetici olarak Boomı şirket sitenizde oturum açın.
+1. Sign in to your Boomi company site as an administrator.
 
-1. Oturum açtıktan sonra **Kullanıcı yönetimi** ' ne gidin ve **Kullanıcılar**' a gidin.
+1. After logging in, navigate to **User Management** and go to **Users**.
 
     ![Kullanıcılar](./media/boomi-tutorial/tutorial_boomi_001.png "Kullanıcılar")
 
-1. **+** simgesine tıklayın ve **Kullanıcı rolleri ekle/koru** iletişim kutusu açılır.
+1. Click **+**  icon and the **Add/Maintain User Roles** dialog opens.
 
     ![Kullanıcılar](./media/boomi-tutorial/tutorial_boomi_002.png "Kullanıcılar")
 
     ![Kullanıcılar](./media/boomi-tutorial/tutorial_boomi_003.png "Kullanıcılar")
 
-    a. **Kullanıcı e-posta adresi** metin kutusuna, B.Simon@contoso.comgibi kullanıcının e-postasını yazın.
+    a. In the **User e-mail address** textbox, type the email of user like B.Simon@contoso.com.
 
-    b. **Ad** metin kutusuna B gibi ilk Kullanıcı adını yazın.
+    b. In the **First name** textbox, type the First name of user like B.
 
-    c. **Soyadı** metin kutusunda, Simon gibi kullanıcı adının soyadını yazın.
+    c. In the **Last name** textbox, type the Last name of user like Simon.
 
-    d. Kullanıcının **Federasyon kimliğini**girin. Her kullanıcının hesabı içinde kullanıcıyı benzersiz bir şekilde tanımlayan bir Federasyon KIMLIĞI olmalıdır.
+    d. Enter the user's **Federation ID**. Each user must have a Federation ID that uniquely identifies the user within the account.
 
-    e. Kullanıcıya **Standart Kullanıcı** rolünü atayın. Yönetici rolünü atamayın çünkü bu, bunlara normal Atmosphere erişimine ek olarak çoklu oturum açma erişimi de verecektir.
+    e. Assign the **Standard User** role to the user. Do not assign the Administrator role because that would give them normal Atmosphere access as well as single sign-on access.
 
-    f. **OK (Tamam)** düğmesine tıklayın.
+    f. **Tamam**’a tıklayın.
 
     > [!NOTE]
-    > Kullanıcı, parolaları kimlik sağlayıcısı aracılığıyla yönetildiğinden, AtomSphere hesabında oturum açmak için kullanılabilecek bir parola içeren bir hoş geldiniz bildirim e-postası almaz. AAD Kullanıcı hesapları sağlamak için, Boomı tarafından sunulan diğer bir Boomı Kullanıcı hesabı oluşturma aracını veya API 'Leri kullanabilirsiniz.
+    > The user will not receive a welcome notification email containing a password that can be used to log in to the AtomSphere account because their password is managed through the identity provider. You may use any other Boomi user account creation tools or APIs provided by Boomi to provision Azure AD user accounts.
 
-## <a name="test-sso"></a>Test SSO 'SU
+## <a name="test-sso"></a>Test SSO
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+In this section, you test your Azure AD single sign-on configuration using the Access Panel.
 
-Erişim panelinde Boomı kutucuğunu tıkladığınızda, SSO 'yu ayarladığınız Boomı 'da otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+When you click the Boomi tile in the Access Panel, you should be automatically signed in to the Boomi for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is conditional access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Azure AD ile Boomı 'yi deneyin](https://aad.portal.azure.com/)
+- [Try Boomi with Azure AD](https://aad.portal.azure.com/)

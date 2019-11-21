@@ -1,6 +1,6 @@
 ---
-title: Microsoft kimlik platformu ve On-Behalf-Of akışı OAuth2.0 | Azure
-description: Bu makalede, HTTP iletileri OAuth2.0 On-Behalf-Of akışı kullanarak hizmet kimlik doğrulaması uygulamak için kullanmayı açıklar.
+title: Microsoft identity platform and OAuth2.0 On-Behalf-Of flow | Azure
+description: This article describes how to use HTTP messages to implement service to service authentication using the OAuth2.0 On-Behalf-Of flow.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -13,72 +13,74 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/05/2019
+ms.date: 11/19/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7582cd8453b25f071c18566f09d2155a6377a0a6
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 09d851572731ad9c83093b7076279df112585703
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482164"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74207505"
 ---
-# <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft kimlik platformu ve OAuth 2.0 On-Behalf-Of akış
+# <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft identity platform and OAuth 2.0 On-Behalf-Of flow
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
-OAuth 2.0 On-Behalf-Of akış (OBO) sırayla başka bir hizmet/web API'si çağırmayı gerektiren bir uygulama hizmeti/web API'si, burada çağırır kullanım örneği sunar. İstek zincirinin aracılığıyla izinleri ve yetkilendirilmiş kullanıcının kimlik yayılması olur. Orta katman hizmet aşağı akış hizmeti için kimliği doğrulanmış isteğinde bulunmak Microsoft kimlik platformu, kullanıcı adına bir erişim belirteci güvenliğini sağlamak gerekir.
+The OAuth 2.0 On-Behalf-Of flow (OBO) serves the use case where an application invokes a service/web API, which in turn needs to call another service/web API. The idea is to propagate the delegated user identity and permissions through the request chain. For the middle-tier service to make authenticated requests to the downstream service, it needs to secure an access token from the Microsoft identity platform, on behalf of the user.
+
+This article describes how to program directly against the protocol in your application.  When possible, we recommend you use the supported Microsoft Authentication Libraries (MSAL) instead to [acquire tokens and call secured web APIs](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows).  Also take a look at the [sample apps that use MSAL](sample-v2-code.md).
 
 > [!NOTE]
 >
-> - Microsoft kimlik platformu uç nokta, tüm senaryolar ve Özellikler desteklemiyor. Microsoft kimlik platformu uç noktasını kullanması gerekip gerekmediğini belirlemek için aşağıdaki hakkında bilgi edinin: [Microsoft Identity platform sınırlamaları](active-directory-v2-limitations.md). Özellikle, bilinen istemci uygulamaları, Microsoft hesabı (MSA) ve Azure AD hedef kitlelere sahip uygulamalar için desteklenmez. Bu nedenle, OBO için yaygın bir onay Düzen hem kişisel ve iş veya Okul hesaplarında oturum istemciler için çalışmaz. Akışın bu adımın nasıl işleneceği hakkında daha fazla bilgi için bkz: [Orta katmanlı uygulama için onay sağlamasını](#gaining-consent-for-the-middle-tier-application).
-> - Mayıs 2018'den itibaren bazı akış örtük türetilmiş `id_token` OBO akış için kullanılamaz. Tek sayfa uygulamaları (Spa'lar) geçirmesi gerekir bir **erişim** bir orta katman belirtecini OBO gerçekleştirmek için gizli bir istemci yerine akar. Hangi istemcilerin OBO çağrıları gerçekleştirebilir daha fazla bilgi için bkz. [sınırlamaları](#client-limitations).
+> - The Microsoft identity platform endpoint doesn't support all scenarios and features. To determine whether you should use the Microsoft identity platform endpoint, read about [Microsoft identity platform limitations](active-directory-v2-limitations.md). Specifically, known client applications aren't supported for apps with Microsoft account (MSA) and Azure AD audiences. Thus, a common consent pattern for OBO will not work for clients that sign in both personal and work or school accounts. To learn more about how to handle this step of the flow, see [Gaining consent for the middle-tier application](#gaining-consent-for-the-middle-tier-application).
+> - As of May 2018, some implicit-flow derived `id_token` can't be used for OBO flow. Single-page apps (SPAs) should pass an **access** token to a middle-tier confidential client to perform OBO flows instead. For more info about which clients can perform OBO calls, see [limitations](#client-limitations).
 
-## <a name="protocol-diagram"></a>Protokol diyagramı
+## <a name="protocol-diagram"></a>Protocol diagram
 
-Kullanıcı bir uygulama kullanarak doğrulandıktan varsayar [OAuth 2.0 yetkilendirme kodu verme akışı](v2-oauth2-auth-code-flow.md). Bu noktada, uygulama erişim belirteci sahip *API a* (simge, A) kullanıcı talepleri ve orta katmanda erişmek için bir onay ile API (API A) web. Şimdi, API bir aşağı akış web API'sine (API B) kimliği doğrulanmış bir istekte gerekir.
+Assume that the user has been authenticated on an application using the [OAuth 2.0 authorization code grant flow](v2-oauth2-auth-code-flow.md). At this point, the application has an access token *for API A* (token A) with the user’s claims and consent to access the middle-tier web API (API A). Now, API A needs to make an authenticated request to the downstream web API (API B).
 
-Aşağıdaki adımları OBO akışı oluşturan ve aşağıdaki diyagramda yardımıyla açıklanmıştır.
+The steps that follow constitute the OBO flow and are explained with the help of the following diagram.
 
-![On-Behalf-Of akışı OAuth2.0 gösterir](./media/v2-oauth2-on-behalf-of-flow/protocols-oauth-on-behalf-of-flow.png)
+![Shows the OAuth2.0 On-Behalf-Of flow](./media/v2-oauth2-on-behalf-of-flow/protocols-oauth-on-behalf-of-flow.png)
 
-1. İstemci uygulama bir API A belirteciyle bir istekte (ile bir `aud` API bir talep).
-1. API A için Microsoft kimlik platformu belirteç yayınında uç nokta kimlik doğrulaması ve API B'nin erişmek için bir belirteç istekleri
-1. Microsoft kimlik platformu belirteç yayınında uç noktası, API A'ın kimlik belirteci A ile doğrular ve API B (belirteç B) için erişim belirteci verir.
-1. API b isteğin yetkilendirme üst bilgisi belirteç B ayarlanır
-1. Güvenli kaynaktan veri API b tarafından döndürülür.
+1. The client application makes a request to API A with token A (with an `aud` claim of API A).
+1. API A authenticates to the Microsoft identity platform token issuance endpoint and requests a token to access API B.
+1. The Microsoft identity platform token issuance endpoint validates API A's credentials with token A and issues the access token for API B (token B).
+1. Token B is set in the authorization header of the request to API B.
+1. Data from the secured resource is returned by API B.
 
 > [!NOTE]
-> Bu senaryoda, kullanıcı etkileşimi olmadan aşağı akış API'ye erişmek için kullanıcı onayı almak için orta katman hizmet vardır. Bu nedenle, adım onay bir parçası olarak kimlik doğrulaması sırasında önceden aşağı akış API'sine erişim izni seçeneği sunulur. Uygulamanız için bunu öğrenmek için bkz. [Orta katmanlı uygulama için onay sağlamasını](#gaining-consent-for-the-middle-tier-application).
+> In this scenario, the middle-tier service has no user interaction to obtain the user's consent to access the downstream API. Therefore, the option to grant access to the downstream API is presented upfront as a part of the consent step during authentication. To learn how to set this up for your app, see [Gaining consent for the middle-tier application](#gaining-consent-for-the-middle-tier-application).
 
-## <a name="service-to-service-access-token-request"></a>Hizmetten hizmete erişim belirteci isteği
+## <a name="service-to-service-access-token-request"></a>Service-to-service access token request
 
-Bir erişim belirteci istemek için kiracıya özgü Microsoft kimlik platformu belirteç uç noktası aşağıdaki parametrelerle bir HTTP POST olun.
+To request an access token, make an HTTP POST to the tenant-specific Microsoft identity platform token endpoint with the following parameters.
 
 ```
 https://login.microsoftonline.com/<tenant>/oauth2/v2.0/token
 ```
 
-İstemci uygulaması paylaşılan bir gizli dizi veya bir sertifika tarafından güvenli hale seçti olup olmadığına bağlı olarak iki durum vardır.
+There are two cases depending on whether the client application chooses to be secured by a shared secret or a certificate.
 
-### <a name="first-case-access-token-request-with-a-shared-secret"></a>İlk Durum: Paylaşılan gizlilik ile erişim belirteci isteği
+### <a name="first-case-access-token-request-with-a-shared-secret"></a>First case: Access token request with a shared secret
 
-Paylaşılan gizlilik kullanırken, hizmetten hizmete erişim belirteci isteği aşağıdaki parametreleri içerir:
+When using a shared secret, a service-to-service access token request contains the following parameters:
 
 | Parametre |  | Açıklama |
 | --- | --- | --- |
-| `grant_type` | Gerekli | Belirteç isteği türü. JWT'nin kullanarak bir istek için bir değer olmalıdır `urn:ietf:params:oauth:grant-type:jwt-bearer`. |
-| `client_id` | Gerekli | (İstemci) uygulama kimliği [Azure Portalı - Uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfa uygulamanıza atanan. |
-| `client_secret` | Gerekli | Uygulamanızı Azure portalında - uygulama kayıtları sayfası için oluşturulan istemci gizli anahtarı. |
-| `assertion` | Gerekli | İstekte kullanılan belirteç değeri. |
-| `scope` | Gerekli | Boşlukla ayrılmış belirteci isteği için kapsam listesi. Daha fazla bilgi için [kapsamları](v2-permissions-and-consent.md). |
-| `requested_token_use` | Gerekli | İsteğin nasıl işleneceğini belirtir. OBO flow'da değeri ayarlamak `on_behalf_of`. |
+| `grant_type` | Gereklidir | The type of  token request. For a request using a JWT, the value must be `urn:ietf:params:oauth:grant-type:jwt-bearer`. |
+| `client_id` | Gereklidir | The application (client) ID that [the Azure portal - App registrations](https://go.microsoft.com/fwlink/?linkid=2083908) page has assigned to your app. |
+| `client_secret` | Gereklidir | The client secret that you generated for your app in the Azure portal - App registrations page. |
+| `assertion` | Gereklidir | The value of the token used in the request. |
+| `scope` | Gereklidir | A space separated list of scopes for the token request. For more information, see [scopes](v2-permissions-and-consent.md). |
+| `requested_token_use` | Gereklidir | Specifies how the request should be processed. In the OBO flow, the value must be set to `on_behalf_of`. |
 
 #### <a name="example"></a>Örnek
 
-Bir erişim belirteci ve yenileme belirteci ile aşağıdaki HTTP POST istekleri `user.read` için kapsam https://graph.microsoft.com web API'si.
+The following HTTP POST requests an access token and refresh token with `user.read` scope for the https://graph.microsoft.com web API.
 
 ```
 //line breaks for legibility only
@@ -95,25 +97,25 @@ grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer
 &requested_token_use=on_behalf_of
 ```
 
-### <a name="second-case-access-token-request-with-a-certificate"></a>İkinci durum: Bir sertifika ile erişim belirteci isteği
+### <a name="second-case-access-token-request-with-a-certificate"></a>Second case: Access token request with a certificate
 
-Bir sertifika ile hizmetten hizmete erişim belirteci isteği aşağıdaki parametreleri içerir:
+A service-to-service access token request with a certificate contains the following parameters:
 
 | Parametre |  | Açıklama |
 | --- | --- | --- |
-| `grant_type` | Gerekli | Belirteç isteği türü. JWT'nin kullanarak bir istek için bir değer olmalıdır `urn:ietf:params:oauth:grant-type:jwt-bearer`. |
-| `client_id` | Gerekli |  (İstemci) uygulama kimliği [Azure Portalı - Uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfa uygulamanıza atanan. |
-| `client_assertion_type` | Gerekli | Değer olmalıdır `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`. |
-| `client_assertion` | Gerekli | Oluşturma ve sertifika ile imzalamak için gereken onaylama (bir JSON web belirteci) uygulamanız için kimlik bilgileri olarak kayıtlı. Sertifikanızı ve onaylama biçimi kaydetme hakkında bilgi için bkz: [sertifika kimlik bilgileri](active-directory-certificate-credentials.md). |
-| `assertion` | Gerekli | İstekte kullanılan belirteç değeri. |
-| `requested_token_use` | Gerekli | İsteğin nasıl işleneceğini belirtir. OBO flow'da değeri ayarlamak `on_behalf_of`. |
-| `scope` | Gerekli | Belirteç isteği için kapsamları boşlukla ayrılmış listesi. Daha fazla bilgi için [kapsamları](v2-permissions-and-consent.md).|
+| `grant_type` | Gereklidir | The type of the token request. For a request using a JWT, the value must be `urn:ietf:params:oauth:grant-type:jwt-bearer`. |
+| `client_id` | Gereklidir |  The application (client) ID that [the Azure portal - App registrations](https://go.microsoft.com/fwlink/?linkid=2083908) page has assigned to your app. |
+| `client_assertion_type` | Gereklidir | The value must be `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`. |
+| `client_assertion` | Gereklidir | An assertion (a JSON web token) that you need to create and sign with the certificate you registered as credentials for your application. To learn how to register your certificate and the format of the assertion, see [certificate credentials](active-directory-certificate-credentials.md). |
+| `assertion` | Gereklidir | The value of the token used in the request. |
+| `requested_token_use` | Gereklidir | Specifies how the request should be processed. In the OBO flow, the value must be set to `on_behalf_of`. |
+| `scope` | Gereklidir | A space-separated list of scopes for the token request. For more information, see [scopes](v2-permissions-and-consent.md).|
 
-Parametreler neredeyse aynı paylaşılan gizli diziyi hariç isteğiyle gibi söz konusu olduğunda olduğunu fark `client_secret` parametresi tarafından iki parametre değiştirilir: bir `client_assertion_type` ve `client_assertion`.
+Notice that the parameters are almost the same as in the case of the request by shared secret except that the `client_secret` parameter is replaced by two parameters: a `client_assertion_type` and `client_assertion`.
 
 #### <a name="example"></a>Örnek
 
-Bir erişim belirteci ile aşağıdaki HTTP POST istekleri `user.read` için kapsam https://graph.microsoft.com bir sertifika ile web API'si.
+The following HTTP POST requests an access token with `user.read` scope for the https://graph.microsoft.com web API with a certificate.
 
 ```
 // line breaks for legibility only
@@ -131,21 +133,21 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 &scope=https://graph.microsoft.com/user.read+offline_access
 ```
 
-## <a name="service-to-service-access-token-response"></a>Hizmet erişim belirteci yanıtı hizmetine
+## <a name="service-to-service-access-token-response"></a>Service to service access token response
 
-Başarılı yanıtı aşağıdaki parametrelerle bir JSON OAuth 2.0 yanıtındaki ' dir.
+A success response is a JSON OAuth 2.0 response with the following parameters.
 
 | Parametre | Açıklama |
 | --- | --- |
-| `token_type` | Belirteç türü değeri gösterir. Microsoft kimlik platformu destekleyen tek yazın `Bearer`. Taşıyıcı belirteçleri hakkında daha fazla bilgi için bkz. [OAuth 2.0 yetkilendirme Framework: Taşıyıcı belirteç kullanımı (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
-| `scope` | Erişim belirtecinde verilen kapsam. |
-| `expires_in` | Erişim belirtecinin geçerli olduğu saniye cinsinden süre uzunluğu. |
-| `access_token` | İstenen erişim belirteci. Arama hizmeti, alıcı hizmetinde kimlik doğrulaması için bu belirteci kullanabilirsiniz. |
-| `refresh_token` | İstenen erişim belirtecini yenileme belirteci. Arama hizmeti geçerli erişim belirtecinin süresi dolduktan sonra başka bir erişim belirteci istemek için bu belirteci kullanabilirsiniz. Yenileme belirteci yalnızca, sağlanan `offline_access` kapsam istendi. |
+| `token_type` | Indicates the token type value. The only type that Microsoft identity platform supports is `Bearer`. For more info about bearer tokens, see the [OAuth 2.0 Authorization Framework: Bearer Token Usage (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
+| `scope` | The scope of access granted in the token. |
+| `expires_in` | The length of time, in seconds, that the access token is valid. |
+| `access_token` | The requested access token. The calling service can use this token to authenticate to the receiving service. |
+| `refresh_token` | The refresh token for the requested access token. The calling service can use this token to request another access token after the current access token expires. The refresh token is only provided if the `offline_access` scope was requested. |
 
-### <a name="success-response-example"></a>Başarılı yanıt örneği
+### <a name="success-response-example"></a>Success response example
 
-Aşağıdaki örnek, bir başarı isteğine yanıt olarak bir erişim belirteci için gösterir https://graph.microsoft.com web API'si.
+The following example shows a success response to a request for an access token for the https://graph.microsoft.com web API.
 
 ```
 {
@@ -159,11 +161,11 @@ Aşağıdaki örnek, bir başarı isteğine yanıt olarak bir erişim belirteci 
 ```
 
 > [!NOTE]
-> Yukarıdaki erişim belirteci v1.0 biçimli bir belirteçtir. Belirteç erişilen kaynak dayalı olarak sunulur olmasıdır. Bir istemci için Microsoft Graph belirteçleri istediğinde Microsoft kimlik platformu v1.0 erişim belirteçleri oluşturur. Bu nedenle, Microsoft Graph v1.0 belirteçleri, ister. Yalnızca uygulamalara erişim belirteçleri görünmelidir. İstemciler bunları inceleyin yapmanız gerekmez.
+> The above access token is a v1.0-formatted token. This is because the token is provided based on the resource being accessed. The Microsoft Graph requests v1.0 tokens, so Microsoft identity platform produces v1.0 access tokens when a client requests tokens for Microsoft Graph. Only applications should look at access tokens. Clients should not need to inspect them.
 
-### <a name="error-response-example"></a>Hata yanıtı örneği
+### <a name="error-response-example"></a>Error response example
 
-Aşağı Akış API koşullu erişim ilkesi ayarlayabilirsiniz (örneğin, çok faktörlü kimlik doğrulaması) varsa aşağı akış API'si için bir erişim belirteci almak çalışırken, bir hata yanıtı belirteç uç noktası tarafından döndürülür. İstemci uygulaması koşullu erişim ilkesi karşılamak için kullanıcı etkileşimi sağlayabilmesi orta katman hizmet istemci uygulamayı bu hata ortaya.
+An error response is returned by the token endpoint when trying to acquire an access token for the downstream API, if the downstream API has a Conditional Access policy (such as multi-factor authentication) set on it. The middle-tier service should surface this error to the client application so that the client application can provide the user interaction to satisfy the Conditional Access policy.
 
 ```
 {
@@ -177,9 +179,9 @@ Aşağı Akış API koşullu erişim ilkesi ayarlayabilirsiniz (örneğin, çok 
 }
 ```
 
-## <a name="use-the-access-token-to-access-the-secured-resource"></a>Güvenli kaynak erişimi için erişim belirteci kullanın
+## <a name="use-the-access-token-to-access-the-secured-resource"></a>Use the access token to access the secured resource
 
-Orta katman hizmet belirteci ayarlayarak, Aşağı Akış web API'sine, kimliği doğrulanmış isteğinde bulunmak için yukarıda edinilen belirteci artık `Authorization` başlığı.
+Now the middle-tier service can use the token acquired above to make authenticated requests to the downstream web API, by setting the token in the `Authorization` header.
 
 ### <a name="example"></a>Örnek
 
@@ -189,42 +191,42 @@ Host: graph.microsoft.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVGFlN0NkV1c3UWZkSzdNN0RyNXlvUUdLNmFEc19vdDF3cEQyZjNqRkxiNlVrcm9PcXA2cXBJclAxZVV0QktzMHEza29HN3RzXzJpSkYtQjY1UV8zVGgzSnktUHZsMjkxaFNBQSIsImFsZyI6IlJTMjU2IiwieDV0IjoiejAzOXpkc0Z1aXpwQmZCVksxVG4yNVFIWU8wIiwia2lkIjoiejAzOXpkc0Z1aXpwQmZCVksxVG4yNVFIWU8wIn0.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDcvIiwiaWF0IjoxNDkzOTMwMDE2LCJuYmYiOjE0OTM5MzAwMTYsImV4cCI6MTQ5MzkzMzg3NSwiYWNyIjoiMCIsImFpbyI6IkFTUUEyLzhEQUFBQUlzQjN5ZUljNkZ1aEhkd1YxckoxS1dlbzJPckZOUUQwN2FENTVjUVRtems9IiwiYW1yIjpbInB3ZCJdLCJhcHBfZGlzcGxheW5hbWUiOiJUb2RvRG90bmV0T2JvIiwiYXBwaWQiOiIyODQ2ZjcxYi1hN2E0LTQ5ODctYmFiMy03NjAwMzViMmYzODkiLCJhcHBpZGFjciI6IjEiLCJmYW1pbHlfbmFtZSI6IkNhbnVtYWxsYSIsImdpdmVuX25hbWUiOiJOYXZ5YSIsImlwYWRkciI6IjE2Ny4yMjAuMC4xOTkiLCJuYW1lIjoiTmF2eWEgQ2FudW1hbGxhIiwib2lkIjoiZDVlOTc5YzctM2QyZC00MmFmLThmMzAtNzI3ZGQ0YzJkMzgzIiwib25wcmVtX3NpZCI6IlMtMS01LTIxLTIxMjc1MjExODQtMTYwNDAxMjkyMC0xODg3OTI3NTI3LTI2MTE4NDg0IiwicGxhdGYiOiIxNCIsInB1aWQiOiIxMDAzM0ZGRkEwNkQxN0M5Iiwic2NwIjoiVXNlci5SZWFkIiwic3ViIjoibWtMMHBiLXlpMXQ1ckRGd2JTZ1JvTWxrZE52b3UzSjNWNm84UFE3alVCRSIsInRpZCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsInVuaXF1ZV9uYW1lIjoibmFjYW51bWFAbWljcm9zb2Z0LmNvbSIsInVwbiI6Im5hY2FudW1hQG1pY3Jvc29mdC5jb20iLCJ1dGkiOiJzUVlVekYxdUVVS0NQS0dRTVFVRkFBIiwidmVyIjoiMS4wIn0.Hrn__RGi-HMAzYRyCqX3kBGb6OS7z7y49XPVPpwK_7rJ6nik9E4s6PNY4XkIamJYn7tphpmsHdfM9lQ1gqeeFvFGhweIACsNBWhJ9Nx4dvQnGRkqZ17KnF_wf_QLcyOrOWpUxdSD_oPKcPS-Qr5AFkjw0t7GOKLY-Xw3QLJhzeKmYuuOkmMDJDAl0eNDbH0HiCh3g189a176BfyaR0MgK8wrXI_6MTnFSVfBePqklQeLhcr50YTBfWg3Svgl6MuK_g1hOuaO-XpjUxpdv5dZ0SvI47fAuVDdpCE48igCX5VMj4KUVytDIf6T78aIXMkYHGgW3-xAmuSyYH_Fr0yVAQ
 ```
 
-## <a name="gaining-consent-for-the-middle-tier-application"></a>Orta katman uygulama için onay elde etme
+## <a name="gaining-consent-for-the-middle-tier-application"></a>Gaining consent for the middle-tier application
 
-Uygulamanız için hedef kitle bağlı olarak, OBO akışın başarılı olduğu için farklı stratejiler düşünebilirsiniz. Her durumda, nihai amacıyla uygun izin verilen sağlamak içindir. Ancak oluşan nasıl hangi kullanıcıların uygulamanızı bağlıdır destekler.
+Depending on the audience for your application, you may consider different strategies for ensuring that the OBO flow is successful. In all cases, the ultimate goal is to ensure proper consent is given. How that occurs, however, depends on which users your application supports.
 
-### <a name="consent-for-azure-ad-only-applications"></a>Azure yalnızca AD uygulamaları için onay
+### <a name="consent-for-azure-ad-only-applications"></a>Consent for Azure AD-only applications
 
-#### <a name="default-and-combined-consent"></a>/.default ve birleştirilmiş onay
+#### <a name="default-and-combined-consent"></a>/.default and combined consent
 
-Yalnızca iş veya Okul hesapları için gerek duyan uygulamalar için geleneksel "Bilinen istemci uygulamalar" yaklaşım yeterli olur. Orta katman uygulama istemci bildirimi bilinen istemci uygulamalar listesinde ekler ve ardından istemci birleştirilmiş onay akışı hem kendisi ve orta katman uygulama için tetikleyebilirsiniz. Microsoft kimlik platformu noktadaki yapıldığını kullanarak [ `/.default` kapsam](v2-permissions-and-consent.md#the-default-scope). Bilinen istemci uygulamalarını kullanarak bir onay ekranında tetiklerken ve `/.default`, onay ekranında hem de istemci orta katman API için izinler gösterir ve ayrıca izinlere orta katman API'sı tarafından gerekli istek. Kullanıcı her iki uygulama için onay sağlar ve ardından OBO akış çalışır.
+For applications that only need to sign in work or school accounts, the traditional "Known Client Applications" approach is sufficient. The middle tier application adds the client to the known client applications list in its manifest, and then the client can trigger a combined consent flow for both itself and the middle tier application. On the Microsoft identity platform endpoint, this is done using the [`/.default` scope](v2-permissions-and-consent.md#the-default-scope). When triggering a consent screen using known client applications and `/.default`, the consent screen will show permissions for both the client to the middle tier API, and also request whatever permissions are required by the middle-tier API. The user provides consent for both applications, and then the OBO flow works.
 
-Şu anda kişisel Microsoft hesap sistemi, birleştirilmiş onay desteklemiyor ve bu nedenle bu yaklaşım özellikle kişisel hesaplarında oturum açmak istediğiniz uygulamalar için çalışmaz. Kişisel Microsoft hesapları bir kiracıdaki Konuk hesabı olarak kullanılan Azure AD sistem kullanılarak ele alınır ve birleşik onayı ile gidebilirsiniz.
+At this time, the personal Microsoft account system does not support combined consent and so this approach does not work for apps that want to specifically sign in personal accounts. Personal Microsoft accounts being used as guest accounts in a tenant are handled using the Azure AD system, and can go through combined consent.
 
-#### <a name="pre-authorized-applications"></a>Önceden yetkilendirilmiş uygulamalar
+#### <a name="pre-authorized-applications"></a>Pre-authorized applications
 
-"Önceden yetkilendirilmiş uygulamalar" uygulama portalı özelliğidir. Bu şekilde, her zaman belirli bir uygulama belirli kapsamları alma izni olan bir kaynak belirtebilirsiniz. Bu, özellikle istemci ön uç ve arka uç kaynağı arasındaki bağlantıları daha sorunsuz hale getirmek yararlıdır. Kaynak birden fazla önceden yetkilendirilmiş uygulamalar bildirebilirsiniz: Bu tür bir uygulama bu izinlerin bir OBO akış ve bunları onay veren kullanıcıya sorulmadan almak isteyebilirsiniz.
+A feature of the application portal is "pre-authorized applications". In this way, a resource can indicate that a given application always has permission to receive certain scopes. This is primarily useful to make connections between a front-end client and a back-end resource more seamless. A resource can declare multiple pre-authorized applications - any such application can request these permissions in an OBO flow and receive them without the user providing consent.
 
 #### <a name="admin-consent"></a>Yönetici onayı
 
-Bir kiracı Yöneticisi, uygulamaları Orta katmanlı bir uygulama için yönetici onayı sağlayarak kendi gerekli API'leri çağırma izni olduğunu garanti edebilir. Bunu yapmak için yönetici kendilerine ait kiracıda orta katman uygulamayı bulun, gerekli izinleri sayfasını açın ve uygulama için izin vermek seçin. Yönetici onayı hakkında daha fazla bilgi için bkz: [onay ve izinlerini belgeleri](v2-permissions-and-consent.md).
+A tenant admin can guarantee that applications have permission to call their required APIs by providing admin consent for the middle tier application. To do this, the admin can find the middle tier application in their tenant, open the required permissions page, and choose to give permission for the app. To learn more about admin consent, see the [consent and permissions documentation](v2-permissions-and-consent.md).
 
-### <a name="consent-for-azure-ad--microsoft-account-applications"></a>Azure AD için onay + Microsoft hesabı uygulaması
+### <a name="consent-for-azure-ad--microsoft-account-applications"></a>Consent for Azure AD + Microsoft account applications
 
-Kişisel hesapları için izinler modeli ve değerlendirip Kiracı eksikliği kısıtlamaları nedeniyle, kişisel hesapları için izin gereksinimleri Azure AD'den bir bit büyük/küçük harf farklıdır. Kiracı genelinde izin sağlamak için Kiracı yok ya da olan var. yapabilme birleştirilmiş onay. Bu nedenle, mevcut diğer stratejiler kendilerini - bu uygulamalar için Azure AD hesapları desteklemek için tek gereken iş unutmayın.
+Because of restrictions in the permissions model for personal accounts and the lack of a governing tenant, the consent requirements for personal accounts are a bit different from Azure AD. There is no tenant to provide tenant-wide consent for, nor is there the ability to do combined consent. Thus, other strategies present themselves - note that these work for applications that only need to support Azure AD accounts as well.
 
-#### <a name="use-of-a-single-application"></a>Tek bir uygulama kullanımı
+#### <a name="use-of-a-single-application"></a>Use of a single application
 
-Bazı senaryolarda, yalnızca tek bir orta katman ve ön uç istemcisi eşlemesine sahip olabilir. Bu senaryoda, bunu tek bir uygulama bir orta katman uygulama gereksinimini tamamen negating daha kolay. Ön uç ve web API'si arasında kimlik doğrulaması için tanımlama bilgileri, bir id_token veya uygulama için istenen bir erişim belirteci kullanabilirsiniz. Ardından, arka uç kaynağa tek bu uygulamadan onayı isteyin.
+In some scenarios, you may only have a single pairing of middle-tier and front-end client. In this scenario, you may find it easier to make this a single application, negating the need for a middle-tier application altogether. To authenticate between the front-end and the web API, you can use cookies, an id_token, or an access token requested for the application itself. Then, request consent from this single application to the back-end resource.
 
-## <a name="client-limitations"></a>İstemci sınırlamaları
+## <a name="client-limitations"></a>Client limitations
 
-Örtük akış bir id_token almak için istemcinin ve istemci joker karakterler bir yanıt URL'si da vardır., id_token bir OBO akışı için kullanılamaz.  Ancak, kayıtlı bir joker karakter yanıt URL'si başlatma istemci sahip olsa bile örtük verme akışı edinilen erişim belirteçleri hala gizli bir istemci tarafından ödenebilecek.
+If a client uses the implicit flow to get an id_token, and that client also has wildcards in a reply URL, the id_token can't be used for an OBO flow.  However, access tokens acquired through the implicit grant flow can still be redeemed by a confidential client even if the initiating client has a wildcard reply URL registered.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-OAuth 2.0 protokolünü ve istemci kimlik bilgilerini kullanarak hizmet kimlik doğrulaması gerçekleştirmek için başka bir yöntem hakkında daha fazla bilgi edinin.
+Learn more about the OAuth 2.0 protocol and another way to perform service to service auth using client credentials.
 
-* [Microsoft kimlik platformu OAuth 2.0 istemci kimlik bilgileri verme](v2-oauth2-client-creds-grant-flow.md)
-* [Microsoft kimlik platformu OAuth 2.0 kod akışı](v2-oauth2-auth-code-flow.md)
-* [Kullanarak `/.default` kapsamı](v2-permissions-and-consent.md#the-default-scope)
+* [OAuth 2.0 client credentials grant in Microsoft identity platform](v2-oauth2-client-creds-grant-flow.md)
+* [OAuth 2.0 code flow in Microsoft identity platform](v2-oauth2-auth-code-flow.md)
+* [Using the `/.default` scope](v2-permissions-and-consent.md#the-default-scope)

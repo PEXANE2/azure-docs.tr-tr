@@ -1,11 +1,10 @@
 ---
-title: Diğer Azure Hizmetleri ile Azure DNS kullanma | Microsoft Docs
-description: Azure DNS'yi diğer Azure Hizmetleri için adlarını çözümlemek için kullanmayı öğrenme
+title: Use Azure DNS with other Azure services
+description: In this learning path, get started on how to use Azure DNS to resolve names for other Azure services
 services: dns
 documentationcenter: na
-author: vhorne
-manager: jeconnoc
-editor: ''
+author: asudbring
+manager: kumudD
 tags: azure dns
 ms.assetid: e9b5eb94-7984-4640-9930-564bb9e82b78
 ms.service: dns
@@ -15,29 +14,29 @@ ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 09/21/2016
-ms.author: victorh
-ms.openlocfilehash: dcf209d2036d2686bea0b51380db3cd2473d04a6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: 142157273bd24912311383785d08177abfd04398
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61293206"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74211891"
 ---
-# <a name="how-azure-dns-works-with-other-azure-services"></a>Azure DNS, diğer Azure hizmetleriyle nasıl çalışır?
+# <a name="how-azure-dns-works-with-other-azure-services"></a>How Azure DNS works with other Azure services
 
-Azure DNS bir barındırılan DNS Yönetimi ve ad çözümleme hizmetidir. Azure'da diğer uygulama ve dağıttığınız hizmetler için Genel DNS adları oluşturmak için kullanabilirsiniz. Özel etki alanınızı bir Azure hizmeti için bir ad oluşturmak kolaydır. Yalnızca hizmetiniz için doğru türde bir kayıt ekleyin.
+Azure DNS is a hosted DNS management and name resolution service. You can use it to create public DNS names for other applications and services that you deploy in Azure. Creating a name for an Azure service in your custom domain is simple. You just add a record of the correct type for your service.
 
-* Dinamik olarak ayrılan IP adresleri için Azure hizmetiniz için oluşturulan DNS adına eşleyen bir DNS CNAME kaydı oluşturabilirsiniz. DNS standartları için bölge tepesinde CNAME kaydı kullanarak engeller. Bunun yerine bir diğer ad kaydı kullanabilirsiniz. Daha fazla bilgi için [Öğreticisi: Bir Azure genel IP adresi için başvuruda bulunmak için bir diğer ad kaydı yapılandırmak](tutorial-alias-pip.md).
-* Statik olarak ayrılan IP adresleri için DNS A kaydı içeren herhangi bir ad kullanarak oluşturabileceğiniz bir *çıplak etki* bölgenin tepesindeki adı.
+* For dynamically allocated IP addresses, you can create a DNS CNAME record that maps to the DNS name that Azure created for your service. DNS standards prevent you from using a CNAME record for the zone apex. You can use an alias record instead. For more information, see [Tutorial: Configure an alias record to refer to an Azure Public IP address](tutorial-alias-pip.md).
+* For statically allocated IP addresses, you can create a DNS A record by using any name, which includes a *naked domain* name at the zone apex.
 
-Aşağıdaki tabloda, çeşitli Azure Hizmetleri için kullanabileceğiniz desteklenen kayıt türleri özetlenmektedir. Tablonun gösterdiği gibi Azure DNS, Internet'e yönelik ağ kaynakları için yalnızca DNS kayıtları destekler. Azure DNS ad çözümlemesi için dahili, özel adres kullanılamaz.
+The following table outlines the supported record types you can use for various Azure services. As the table shows, Azure DNS supports only DNS records for Internet-facing network resources. Azure DNS can't be used for name resolution of internal, private addresses.
 
 | Azure hizmeti | Ağ arabirimi | Açıklama |
 | --- | --- | --- |
-| Azure Application Gateway |[Ön uç genel IP](dns-custom-domain.md#public-ip-address) |Bir DNS A veya CNAME kaydı oluşturabilirsiniz. |
-| Azure Load Balancer |[Ön uç genel IP](dns-custom-domain.md#public-ip-address) |Bir DNS A veya CNAME kaydı oluşturabilirsiniz. Dinamik olarak atanan bir IPv6 genel IP adresini yük dengeleyici olabilir. Bir IPv6 adresi için bir CNAME kaydı oluşturun. |
-| Azure Traffic Manager |Ortak ad |Traffic Manager profilinizin atanan trafficmanager.net adıyla eşleşen bir diğer ad kaydı oluşturabilirsiniz. Daha fazla bilgi için [Öğreticisi: Apex etki alanı adları ile Traffic Manager'ı desteklemek için bir diğer ad kaydı yapılandırmak](tutorial-alias-tm.md). |
-| Azure bulut Hizmetleri |[Genel IP](dns-custom-domain.md#public-ip-address) |Statik olarak ayrılan IP adresleri için DNS A kaydı oluşturabilirsiniz. Dinamik olarak ayrılan IP adresleri için eşleyen bir CNAME kaydı oluşturmanız gerekir *cloudapp.net* adı.|
-| Azure uygulama hizmeti | [Dış IP](dns-custom-domain.md#app-service-web-apps) |Dış IP adresleri için DNS A kaydı oluşturabilirsiniz. Aksi takdirde, azurewebsites.net adına eşleyen bir CNAME kaydı oluşturmanız gerekir. Daha fazla bilgi için [bir özel etki alanı adını bir Azure uygulamasına eşleme](../app-service/app-service-web-tutorial-custom-domain.md). |
-| Azure Resource Manager Vm'lerinde |[Genel IP](dns-custom-domain.md#public-ip-address) |Resource Manager Vm'lerinde genel IP adresleri olabilir. Bir VM'nin genel IP adresine sahip yük dengeleyici arkasında da olabilir. DNS A, CNAME veya genel adresi için diğer ad kaydı oluşturabilirsiniz. Yük dengeleyicide VIP'ye atlamak için bu özel ad kullanabilirsiniz. |
-| Klasik VM'ler |[Genel IP](dns-custom-domain.md#public-ip-address) |PowerShell veya CLI kullanılarak oluşturulan Klasik Vm'leri dinamik veya statik (ayrılmış) sanal adresi ile yapılandırılabilir. Bir DNS CNAME veya bir A kaydı sırasıyla oluşturabilirsiniz. |
+| Azure Application Gateway |[Front-end public IP](dns-custom-domain.md#public-ip-address) |You can create a DNS A or CNAME record. |
+| Azure Load Balancer |[Front-end public IP](dns-custom-domain.md#public-ip-address) |You can create a DNS A or CNAME record. Load Balancer can have an IPv6 public IP address that's dynamically assigned. Create a CNAME record for an IPv6 address. |
+| Azure Traffic Manager |Public name |You can create an alias record that maps to the trafficmanager.net name assigned to your Traffic Manager profile. For more information, see [Tutorial: Configure an alias record to support apex domain names with Traffic Manager](tutorial-alias-tm.md). |
+| Azure Bulut Hizmetleri |[Public IP](dns-custom-domain.md#public-ip-address) |For statically allocated IP addresses, you can create a DNS A record. For dynamically allocated IP addresses, you must create a CNAME record that maps to the *cloudapp.net* name.|
+| Azure App Service | [External IP](dns-custom-domain.md#app-service-web-apps) |For external IP addresses, you can create a DNS A record. Otherwise, you must create a CNAME record that maps to the azurewebsites.net name. For more information, see [Map a custom domain name to an Azure app](../app-service/app-service-web-tutorial-custom-domain.md). |
+| Azure Resource Manager VMs |[Public IP](dns-custom-domain.md#public-ip-address) |Resource Manager VMs can have public IP addresses. A VM with a public IP address also can be behind a load balancer. You can create a DNS A, CNAME, or alias record for the public address. You can use this custom name to bypass the VIP on the load balancer. |
+| Klasik VM'ler |[Public IP](dns-custom-domain.md#public-ip-address) |Classic VMs created by using PowerShell or CLI can be configured with a dynamic or static (reserved) virtual address. You can create a DNS CNAME or an A record, respectively. |

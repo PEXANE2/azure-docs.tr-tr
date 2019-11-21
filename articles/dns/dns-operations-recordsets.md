@@ -1,9 +1,9 @@
 ---
-title: Azure PowerShell ile Azure DNS'te DNS kayıtlarını yönetme | Microsoft Docs
-description: DNS kayıt kümeleri ve Azure DNS kayıtları etki alanınızı Azure DNS'ye üzerinde barındırırken yönetme. Kayıt kümeleri ve kayıtları üzerinde işlemler için tüm PowerShell komutları.
+title: Manage DNS records in Azure DNS using Azure PowerShell | Microsoft Docs
+description: Managing DNS record sets and records on Azure DNS when hosting your domain on Azure DNS. All PowerShell commands for operations on record sets and records.
 services: dns
 documentationcenter: na
-author: vhorne
+author: asudbring
 manager: timlt
 ms.assetid: 7136a373-0682-471c-9c28-9e00d2add9c2
 ms.service: dns
@@ -13,29 +13,29 @@ ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/21/2016
-ms.author: victorh
-ms.openlocfilehash: fedab8cc45fff6d7830f67e7a23786b5952f83a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: c11a5c4a3cfe18fbc203ad641ab1de866915bcc4
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66170216"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74211682"
 ---
-# <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>DNS kayıtlarını ve Azure PowerShell kullanarak Azure DNS kayıt kümelerini yönetme
+# <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>Manage DNS records and recordsets in Azure DNS using Azure PowerShell
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](dns-operations-recordsets-portal.md)
+> * [Azure Portalı](dns-operations-recordsets-portal.md)
 > * [Azure klasik CLI](dns-operations-recordsets-cli-nodejs.md)
 > * [Azure CLI](dns-operations-recordsets-cli.md)
 > * [PowerShell](dns-operations-recordsets.md)
 
-Bu makalede, Azure PowerShell kullanarak DNS bölgenizin DNS kayıtlarını yönetme işlemini göstermektedir. DNS kayıtlarını da yönetilebilir platformlar arası kullanarak [Azure CLI](dns-operations-recordsets-cli.md) veya [Azure portalında](dns-operations-recordsets-portal.md).
+This article shows you how to manage DNS records for your DNS zone by using Azure PowerShell. DNS records can also be managed by using the cross-platform [Azure CLI](dns-operations-recordsets-cli.md) or the [Azure portal](dns-operations-recordsets-portal.md).
 
-Bu makaledeki örneklerde varsayılmaktadır [, oturum açtığınız, Azure PowerShell yüklenmiş ve DNS bölgesi oluşturduğunuz](dns-operations-dnszones.md).
+The examples in this article assume you have already [installed Azure PowerShell, signed in, and created a DNS zone](dns-operations-dnszones.md).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="introduction"></a>Giriş
+## <a name="introduction"></a>Tanıtım
 
 Azure DNS’de DNS kayıtlarını oluşturmadan önce Azure DNS’nin DNS kayıtlarını DNS kayıt kümeleri şeklinde nasıl düzenlediğini kavramanız gerekir.
 
@@ -44,29 +44,29 @@ Azure DNS’de DNS kayıtlarını oluşturmadan önce Azure DNS’nin DNS kayıt
 Azure DNS’deki DNS kayıtları hakkında daha fazla bilgi için bkz. [DNS bölgeleri ve kayıtları](dns-zones-records.md).
 
 
-## <a name="create-a-new-dns-record"></a>Yeni bir DNS kaydı oluşturma
+## <a name="create-a-new-dns-record"></a>Create a new DNS record
 
-Yeni kaydınızı aynı ada ve türe varolan bir kaydı olarak varsa yapmanız [var olan kayıt kümesine eklemeniz](#add-a-record-to-an-existing-record-set). Yeni kaydınızın adı ve türü var olan tüm kayıtlardan varsa, yeni bir kayıt kümesi oluşturmanız gerekir. 
+If your new record has the same name and type as an existing record, you need to [add it to the existing record set](#add-a-record-to-an-existing-record-set). If your new record has a different name and type to all existing records, you need to create a new record set. 
 
-### <a name="create-a-records-in-a-new-record-set"></a>Yeni bir kayıt kümesindeki 'A' kaydı oluşturma
+### <a name="create-a-records-in-a-new-record-set"></a>Create 'A' records in a new record set
 
-`New-AzDnsRecordSet` cmdlet’ini kullanarak kayıt kümeleri oluşturabilirsiniz. Kayıt, Canlı (TTL) için ad, bölge, zaman kümesi belirtmenize gerek kayıt kümesi oluştururken kayıt türünü ve kayıtları oluşturulacak.
+`New-AzDnsRecordSet` cmdlet’ini kullanarak kayıt kümeleri oluşturabilirsiniz. When creating a record set, you need to specify the record set name, the zone, the time to live (TTL), the record type, and the records to be created.
 
-Bir kayıt kümesine kayıt eklemeye yönelik parametreler, kayıt kümesinin türüne bağlı olarak farklılık gösterir. Örneğin, 'A' türünde bir kayıt kümesi kullanırken, parametre kullanarak IP adresini belirtmeniz gerekir `-IPv4Address`. Diğer parametreler, diğer kayıt türleri için kullanılır. Ek kayıt türü örnekleri Ayrıntılar için bkz.
+Bir kayıt kümesine kayıt eklemeye yönelik parametreler, kayıt kümesinin türüne bağlı olarak farklılık gösterir. For example, when using a record set of type 'A', you need to specify the IP address using the parameter `-IPv4Address`. Other parameters are used for other record types. See Additional record type examples for details.
 
-Aşağıdaki örnek, "contoso.com" DNS bölgesinde göreli adı "www" ile ayarlanmış bir kayıt oluşturur. Kayıt kümesinin tam adı "www.contoso.com" dir. 'A' kaydı türüdür ve TTL 3600 saniyedir. Tek kayıtlı, IP adresi '1.2.3.4' kayıt kümesi içerir.
+The following example creates a record set with the relative name 'www' in the DNS Zone 'contoso.com'. The fully-qualified name of the record set is 'www.contoso.com'. The record type is 'A', and the TTL is 3600 seconds. The record set contains a single record, with IP address '1.2.3.4'.
 
 ```powershell
 New-AzDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -IPv4Address "1.2.3.4") 
 ```
 
-Ayarla '' bir bölgenin tepesinde bir kayıt oluşturmak için (Bu durumda "contoso.com"), kayıt kümesi adını kullan '\@' (çift tırnak işaretlerini atarak):
+To create a record set at the 'apex' of a zone (in this case, 'contoso.com'), use the record set name '\@' (excluding quotation marks):
 
 ```powershell
 New-AzDnsRecordSet -Name "@" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -IPv4Address "1.2.3.4") 
 ```
 
-Bir kayıt kümesi birden fazla kayıt içeren oluşturmanız gerekiyorsa, önce yerel bir dizi oluşturmak ve kayıtları eklemek ve ardından diziye geçirmek `New-AzDnsRecordSet` gibi:
+If you need to create a record set containing more than one record, first create a local array and add the records, then pass the array to `New-AzDnsRecordSet` as follows:
 
 ```powershell
 $aRecords = @()
@@ -75,25 +75,25 @@ $aRecords += New-AzDnsRecordConfig -IPv4Address "2.3.4.5"
 New-AzDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName MyResourceGroup -Ttl 3600 -RecordType A -DnsRecords $aRecords
 ```
 
-[Kayıt kümesi meta verileri](dns-zones-records.md#tags-and-metadata) uygulamaya özgü verileri, anahtar-değer çiftleri olarak her bir kayıt kümesi ile ilişkilendirmek için kullanılabilir. Aşağıdaki örnek, iki meta veri girdileri ile kayıt oluşturma işlemi gösterilmektedir ' bölüm Finans =' ve ' ortamında Üretim ='.
+[Record set metadata](dns-zones-records.md#tags-and-metadata) can be used to associate application-specific data with each record set, as key-value pairs. The following example shows how to create a record set with two metadata entries, 'dept=finance' and 'environment=production'.
 
 ```powershell
 New-AzDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -IPv4Address "1.2.3.4") -Metadata @{ dept="finance"; environment="production" } 
 ```
 
-Azure DNS, DNS kayıtlarını oluşturmadan önce bir DNS adını ayırmak için bir yer tutucu olarak görev yapabilir 'empty' kayıt kümelerini de destekler. Boş kayıt kümeleri, Azure DNS denetimi düzlemde görünür, ancak Azure DNS ad sunucularında görünür. Aşağıdaki örnek, boş bir kayıt kümesi oluşturur:
+Azure DNS also supports 'empty' record sets, which can act as a placeholder to reserve a DNS name before creating DNS records. Empty record sets are visible in the Azure DNS control plane, but do appear on the Azure DNS name servers. The following example creates an empty record set:
 
 ```powershell
 New-AzDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords @()
 ```
 
-## <a name="create-records-of-other-types"></a>Diğer tür kayıtları oluşturma
+## <a name="create-records-of-other-types"></a>Create records of other types
 
-Aşağıdaki örnekler, 'A' kaydı oluşturma adımları ayrıntılı olarak görülen, Azure DNS tarafından desteklenen diğer kayıt türleri kayıtlarının nasıl oluşturulacağını gösterir.
+Having seen in detail how to create 'A' records, the following examples show how to create records of other record types supported by Azure DNS.
 
-Her durumda, bir kayıt içeren tek bir kayıt kümesi oluşturmak nasıl göstereceğiz. Diğer tür meta verilerle birden çok kayıt içeren kayıt kümeleri oluşturma veya boş bir kayıt kümesi oluşturmak için önceki örnekler 'A' kaydı için uyarlanabilir.
+In each case, we show how to create a record set containing a single record. The earlier examples for 'A' records can be adapted to create record sets of other types containing multiple records, with metadata, or to create empty record sets.
 
-SOAs oluşturulduğundan bir SOA kayıt kümesi oluşturmak için örnek atamayın ve ile her bir DNS bölgesi silindi ve oluşturulamıyor veya ayrı olarak silindi. Ancak, [SOA, bir sonraki örnekte gösterildiği gibi değiştirilebilir](#to-modify-an-soa-record).
+We do not give an example to create an SOA record set, since SOAs are created and deleted with each DNS zone and cannot be created or deleted separately. However, [the SOA can be modified, as shown in a later example](#to-modify-an-soa-record).
 
 ### <a name="create-an-aaaa-record-set-with-a-single-record"></a>Tek kayıtlı bir AAAA kayıt kümesi oluşturma
 
@@ -101,7 +101,7 @@ SOAs oluşturulduğundan bir SOA kayıt kümesi oluşturmak için örnek atamay�
 New-AzDnsRecordSet -Name "test-aaaa" -RecordType AAAA -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Ipv6Address "2607:f8b0:4009:1803::1005") 
 ```
 
-### <a name="create-a-caa-record-set-with-a-single-record"></a>CAA kaydı ile tek bir kayıt kümesi oluşturma
+### <a name="create-a-caa-record-set-with-a-single-record"></a>Create a CAA record set with a single record
 
 ```powershell
 New-AzDnsRecordSet -Name "test-caa" -RecordType CAA -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Caaflags 0 -CaaTag "issue" -CaaValue "ca1.contoso.com") 
@@ -110,9 +110,9 @@ New-AzDnsRecordSet -Name "test-caa" -RecordType CAA -ZoneName "contoso.com" -Res
 ### <a name="create-a-cname-record-set-with-a-single-record"></a>Tek kayıtlı bir CNAME kayıt kümesi oluşturma
 
 > [!NOTE]
-> DNS standartları bölge tepesinde CNAME kayıtlarına izin vermez (`-Name '@'`), ya da birden fazla kayıt içeren kayıt kümeleri izin yapın.
+> The DNS standards do not permit CNAME records at the apex of a zone (`-Name '@'`), nor do they permit record sets containing more than one record.
 > 
-> Daha fazla bilgi için [CNAME kayıtları](dns-zones-records.md#cname-records).
+> For more information, see [CNAME records](dns-zones-records.md#cname-records).
 
 
 ```powershell
@@ -121,7 +121,7 @@ New-AzDnsRecordSet -Name "test-cname" -RecordType CNAME -ZoneName "contoso.com" 
 
 ### <a name="create-an-mx-record-set-with-a-single-record"></a>Tek kayıtlı bir MX kayıt kümesi oluşturma
 
-Bu örnekte, kayıt kümesi adını kullanıyoruz '\@' bölgenin tepesinde bir MX kaydı oluşturmak için (Bu durumda "contoso.com").
+In this example, we use the record set name '\@' to create an MX record at the zone apex (in this case, 'contoso.com').
 
 
 ```powershell
@@ -136,7 +136,7 @@ New-AzDnsRecordSet -Name "test-ns" -RecordType NS -ZoneName "contoso.com" -Resou
 
 ### <a name="create-a-ptr-record-set-with-a-single-record"></a>Tek kayıtlı bir PTR kaydı kümesi oluşturma
 
-Bu durumda ' my-arpa-Zone ' IP aralığınızı temsil eden ARPA geriye doğru arama bölgesini temsil eder. Bu bölgedeki her PTR kaydı bu IP aralığındaki bir IP adresine karşılık gelir. Kayıt adı '10' IP adresinin bu kayıt tarafından temsil edilen bu IP aralığındaki son sekizli ' dir.
+In this case, 'my-arpa-zone.com' represents the ARPA reverse lookup zone representing your IP range. Bu bölgedeki her PTR kaydı bu IP aralığındaki bir IP adresine karşılık gelir. The record name '10' is the last octet of the IP address within this IP range represented by this record.
 
 ```powershell
 New-AzDnsRecordSet -Name 10 -RecordType PTR -ZoneName "my-arpa-zone.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Ptrdname "myservice.contoso.com") 
@@ -144,153 +144,153 @@ New-AzDnsRecordSet -Name 10 -RecordType PTR -ZoneName "my-arpa-zone.com" -Resour
 
 ### <a name="create-an-srv-record-set-with-a-single-record"></a>Tek kayıtlı bir SRV kayıt kümesi oluşturma
 
-Oluştururken bir [SRV kayıt kümesi](dns-zones-records.md#srv-records), belirtin  *\_hizmet* ve  *\_Protokolü* kayıt kümesi adı. Eklemenize gerek yoktur '\@' bir SRV kaydı bölge tepesinde kümesi oluştururken kayıt kümesi adı.
+When creating an [SRV record set](dns-zones-records.md#srv-records), specify the *\_service* and *\_protocol* in the record set name. There is no need to include '\@' in the record set name when creating an SRV record set at the zone apex.
 
 ```powershell
 New-AzDnsRecordSet -Name "_sip._tls" -RecordType SRV -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Priority 0 -Weight 5 -Port 8080 -Target "sip.contoso.com") 
 ```
 
 
-### <a name="create-a-txt-record-set-with-a-single-record"></a>Bir tek kayıtlı bir TXT kayıt kümesi oluşturma
+### <a name="create-a-txt-record-set-with-a-single-record"></a>Create a TXT record set with a single record
 
-Aşağıdaki örnek, bir TXT kaydı oluşturma işlemi gösterilmektedir. TXT kayıtlarının desteklenen maksimum dize uzunluğu hakkında daha fazla bilgi için bkz: [TXT kayıtlarının](dns-zones-records.md#txt-records).
+The following example shows how to create a TXT record. For more information about the maximum string length supported in TXT records, see [TXT records](dns-zones-records.md#txt-records).
 
 ```powershell
 New-AzDnsRecordSet -Name "test-txt" -RecordType TXT -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Value "This is a TXT record") 
 ```
 
 
-## <a name="get-a-record-set"></a>Kayıt kümesi Al
+## <a name="get-a-record-set"></a>Get a record set
 
-Mevcut bir kayıt kümesi almak için kullanın `Get-AzDnsRecordSet`. Bu cmdlet, kayıt kümesine Azure DNS'de temsil eden yerel bir nesne döndürür.
+To retrieve an existing record set, use `Get-AzDnsRecordSet`. This cmdlet returns a local object that represents the record set in Azure DNS.
 
-Olduğu gibi `New-AzDnsRecordSet`, verilen kayıt kümesi adı olmalıdır bir *göreli* ad, bölge adı dışarıda gerekir anlamına gelir. Ayrıca kayıt türünü belirtmeniz gerekir ve kaydın bulunduğu bölgeye ayarlayın.
+As with `New-AzDnsRecordSet`, the record set name given must be a *relative* name, meaning it must exclude the zone name. You also need to specify the record type, and the zone containing the record set.
 
-Aşağıdaki örnek, bir kayıt kümesi almak gösterilmektedir. Bu örnekte, bölgenin kullanarak belirtilen `-ZoneName` ve `-ResourceGroupName` parametreleri.
+The following example shows how to retrieve a record set. In this example, the zone is specified using the `-ZoneName` and `-ResourceGroupName` parameters.
 
 ```powershell
 $rs = Get-AzDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 ```
 
-Alternatif olarak, ayrıca iletilen bir bölge nesnesini kullanarak bölgeyi belirtin `-Zone` parametresi.
+Alternatively, you can also specify the zone using a zone object, passed using the `-Zone` parameter.
 
 ```powershell
 $zone = Get-AzDnsZone -Name "contoso.com" -ResourceGroupName "MyResourceGroup"
 $rs = Get-AzDnsRecordSet -Name "www" -RecordType A -Zone $zone
 ```
 
-## <a name="list-record-sets"></a>Kayıt kümeleri listesi
+## <a name="list-record-sets"></a>List record sets
 
-Ayrıca `Get-AzDnsZone` atlama tarafından bir bölgedeki kayıt kümeleri listesi için `-Name` ve/veya `-RecordType` parametreleri.
+You can also use `Get-AzDnsZone` to list record sets in a zone, by omitting the `-Name` and/or `-RecordType` parameters.
 
-Aşağıdaki örnek, tüm kayıt bölgeyi ayarlar döndürür:
+The following example returns all record sets in the zone:
 
 ```powershell
 $recordsets = Get-AzDnsRecordSet -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 ```
 
-Aşağıdaki örnek, tüm kaydı kümeleri belirli bir türden nasıl gösterir. kaydı atlayarak adı ayarlanırken, kayıt türünü belirterek alınabilir:
+The following example shows how all record sets of a given type can be retrieved by specifying the record type while omitting the record set name:
 
 ```powershell
 $recordsets = Get-AzDnsRecordSet -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 ```
 
-Kayıt türleri arasında belirli bir ada sahip tüm kayıt kümelerini almak için tüm kayıt kümelerini almak ve sonra sonuçları filtrelemek gerekir:
+To retrieve all record sets with a given name, across record types, you need to retrieve all record sets and then filter the results:
 
 ```powershell
 $recordsets = Get-AzDnsRecordSet -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" | where {$_.Name.Equals("www")}
 ```
 
-Tüm Yukarıdaki örneklerde, bölge kullanarak ya da belirtilebilir `-ZoneName` ve `-ResourceGroupName`(gösterildiği gibi) parametreleri veya bölge nesnesi belirterek:
+In all the above examples, the zone can be specified either by using the `-ZoneName` and `-ResourceGroupName`parameters (as shown), or by specifying a zone object:
 
 ```powershell
 $zone = Get-AzDnsZone -Name "contoso.com" -ResourceGroupName "MyResourceGroup"
 $recordsets = Get-AzDnsRecordSet -Zone $zone
 ```
 
-## <a name="add-a-record-to-an-existing-record-set"></a>Bir kaydı var olan bir kayıt kümesine ekleyin.
+## <a name="add-a-record-to-an-existing-record-set"></a>Add a record to an existing record set
 
-Var olan bir kayıt kümesine bir kayıt eklemek için aşağıdaki üç adımı izleyin:
+To add a record to an existing record set, follow the following three steps:
 
-1. Var olan kayıt kümesine Al
+1. Get the existing record set
 
     ```powershell
     $rs = Get-AzDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A
     ```
 
-2. Yeni kayıt yerel kayıt kümesine ekleyebilirsiniz. Bu bir çevrimdışı bir işlemdir.
+2. Add the new record to the local record set. This is an off-line operation.
 
     ```powershell
     Add-AzDnsRecordConfig -RecordSet $rs -Ipv4Address "5.6.7.8"
     ```
 
-3. Azure DNS hizmetine değişikliği işleyin. 
+3. Commit the change back to the Azure DNS service. 
 
     ```powershell
     Set-AzDnsRecordSet -RecordSet $rs
     ```
 
-Kullanarak `Set-AzDnsRecordSet` *değiştirir* mevcut kayıt belirtilen kayıt kümesi ile Azure DNS (ve içerdiği tüm kayıtları) kümesi. [ETag denetimleri](dns-zones-records.md#etags) eşzamanlı değişiklikleri yazılmaz emin olmak için kullanılır. Kullanabileceğiniz isteğe bağlı `-Overwrite` bu denetimleri bastırmak için anahtar.
+Using `Set-AzDnsRecordSet` *replaces* the existing record set in Azure DNS (and all records it contains) with the record set specified. [Etag checks](dns-zones-records.md#etags) are used to ensure concurrent changes are not overwritten. You can use the optional `-Overwrite` switch to suppress these checks.
 
-Bu işlemlerin sırasını da olabilir *yöneltilen*, bir parametre olarak geçirerek yerine kanal kullanarak kayıt kümesi nesnesi geçirdiğiniz anlamına gelir:
+This sequence of operations can also be *piped*, meaning you pass the record set object by using the pipe rather than passing it as a parameter:
 
 ```powershell
 Get-AzDnsRecordSet -Name "www" –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Add-AzDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzDnsRecordSet
 ```
 
-Yukarıdaki örneklerde, mevcut bir kayıt kümesine 'A' türünde bir 'A' kaydı ekleme işlemini göstermektedir. Benzer bir dizi işlem değiştirerek, diğer türlerinin kayıt kümelerine kayıt eklemek için kullanılan `-Ipv4Address` parametresinin `Add-AzDnsRecordConfig` belirli kayıt türlerinin diğer parametrelere sahip. Tüm kayıt türlerine ait parametreleri aynıdır `New-AzDnsRecordConfig` ek kayıt türü Yukarıdaki örneklerde gösterildiği gibi cmdlet'i.
+The examples above show how to add an 'A' record to an existing record set of type 'A'. A similar sequence of operations is used to add records to record sets of other types, substituting the `-Ipv4Address` parameter of `Add-AzDnsRecordConfig` with other parameters specific to each record type. The parameters for each record type are the same as for the `New-AzDnsRecordConfig` cmdlet, as shown in Additional record type examples above.
 
-'CNAME' veya 'SOA' türündeki kayıt kümesi birden fazla kayıtla içeremez. Bu kısıtlama, DNS standartları ortaya çıkar. Azure DNS bir kısıtlaması değil.
+Record sets of type 'CNAME' or 'SOA' cannot contain more than one record. This constraint arises from the DNS standards. It is not a limitation of Azure DNS.
 
-## <a name="remove-a-record-from-an-existing-record-set"></a>Mevcut bir kayıt kümesinden bir kaydı Kaldır
+## <a name="remove-a-record-from-an-existing-record-set"></a>Remove a record from an existing record set
 
-Kayıt kümesinden bir kaydı kaldırma işlemini işlemi var olan bir kayıt kümesine kayıt eklemeye benzer:
+The process to remove a record from a record set is similar to the process to add a record to an existing record set:
 
-1. Var olan kayıt kümesine Al
+1. Get the existing record set
 
     ```powershell
     $rs = Get-AzDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A
     ```
 
-2. Kaydı yerel kayıt kümesi nesneden kaldırın. Bu bir çevrimdışı bir işlemdir. Kaldırılmakta olan kaydı varolan bir kaydı ile tam eşleşmiyorsa tüm parametreleri arasında olmalıdır.
+2. Remove the record from the local record set object. This is an off-line operation. The record that's being removed must be an exact match with an existing record across all parameters.
 
     ```powershell
     Remove-AzDnsRecordConfig -RecordSet $rs -Ipv4Address "5.6.7.8"
     ```
 
-3. Azure DNS hizmetine değişikliği işleyin. İsteğe bağlı `-Overwrite` bastırmak için anahtar [Etag denetler](dns-zones-records.md#etags) eş zamanlı değişiklikler.
+3. Commit the change back to the Azure DNS service. Use the optional `-Overwrite` switch to suppress [Etag checks](dns-zones-records.md#etags) for concurrent changes.
 
     ```powershell
     Set-AzDnsRecordSet -RecordSet $Rs
     ```
 
-Kayıt kümesindeki en son kaydını kaldırmak için yukarıdaki dizisi kullanarak kayıt kümesi silinmez, bunun yerine, boş bir kayıt kümesi bırakır. Bir kayıt kümesi tamamen kaldırmak için bkz: [kayıt kümesini Sil](#delete-a-record-set).
+Using the above sequence to remove the last record from a record set does not delete the record set, rather it leaves an empty record set. To remove a record set entirely, see [Delete a record set](#delete-a-record-set).
 
-Benzer şekilde bir kayıt kümesine kayıt eklemeye kayıt kümesi kaldırmak için işlem dizisi ayrıca yöneltilebilir:
+Similarly to adding records to a record set, the sequence of operations to remove a record set can also be piped:
 
 ```powershell
 Get-AzDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Remove-AzDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzDnsRecordSet
 ```
 
-Farklı kayıt türleri, uygun türe özgü parametrelerle geçirerek desteklenir `Remove-AzDnsRecordSet`. Tüm kayıt türlerine ait parametreleri aynıdır `New-AzDnsRecordConfig` ek kayıt türü Yukarıdaki örneklerde gösterildiği gibi cmdlet'i.
+Different record types are supported by passing the appropriate type-specific parameters to `Remove-AzDnsRecordSet`. The parameters for each record type are the same as for the `New-AzDnsRecordConfig` cmdlet, as shown in Additional record type examples above.
 
 
-## <a name="modify-an-existing-record-set"></a>Mevcut bir kayıt kümesini değiştirme
+## <a name="modify-an-existing-record-set"></a>Modify an existing record set
 
-Mevcut bir kayıt kümesini değiştirme adımları ekleyerek veya kayıt kümesindeki kayıtları kaldırırken adımlar benzerdir:
+The steps for modifying an existing record set are similar to the steps you take when adding or removing records from a record set:
 
-1. Ayarlamak için mevcut kaydı almak `Get-AzDnsRecordSet`.
-2. Yerel kayıt kümesi nesnesiyle değiştirin:
-    * Ekleme veya kaldırma kayıtları
-    * Var olan kayıtların parametrelerinin değiştirilmesi
-    * Kayıt değiştirme meta verileri ve zamanını ayarlayıp Canlı (TTL)
-3. Kullanarak değişikliklerinizi işleyin `Set-AzDnsRecordSet` cmdlet'i. Bu *değiştirir* mevcut kayıt belirtilen kayıt kümesi ile Azure DNS'de kümesi.
+1. Retrieve the existing record set by using `Get-AzDnsRecordSet`.
+2. Modify the local record set object by:
+    * Adding or removing records
+    * Changing the parameters of existing records
+    * Changing the record set metadata and time to live (TTL)
+3. Commit your changes by using the `Set-AzDnsRecordSet` cmdlet. This *replaces* the existing record set in Azure DNS with the record set specified.
 
-Kullanırken `Set-AzDnsRecordSet`, [Etag denetler](dns-zones-records.md#etags) eşzamanlı değişiklikleri yazılmaz emin olmak için kullanılır. Kullanabileceğiniz isteğe bağlı `-Overwrite` bu denetimleri bastırmak için anahtar.
+When using `Set-AzDnsRecordSet`, [Etag checks](dns-zones-records.md#etags) are used to ensure concurrent changes are not overwritten. You can use the optional `-Overwrite` switch to suppress these checks.
 
-### <a name="to-update-a-record-in-an-existing-record-set"></a>Var olan bir kayıt kümesine bir kaydı güncelleştirmek için
+### <a name="to-update-a-record-in-an-existing-record-set"></a>To update a record in an existing record set
 
-Bu örnekte biz varolan 'A' kaydı, IP adresini değiştirin:
+In this example, we change the IP address of an existing 'A' record:
 
 ```powershell
 $rs = Get-AzDnsRecordSet -name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
@@ -298,11 +298,11 @@ $rs.Records[0].Ipv4Address = "9.8.7.6"
 Set-AzDnsRecordSet -RecordSet $rs
 ```
 
-### <a name="to-modify-an-soa-record"></a>SOA kaydı değiştirmek için
+### <a name="to-modify-an-soa-record"></a>To modify an SOA record
 
-Ekleyemez veya otomatik olarak oluşturulan SOA kaydı bölgenin tepesinde kümesi kayıtları kaldırmak (`-Name "@"`, tırnak işaretleri dahil olmak üzere). Ancak, herhangi bir parametre içinde SOA kaydını ("ana" dışında) değiştirebilirsiniz ve TTL kaydı ayarlayın.
+You cannot add or remove records from the automatically created SOA record set at the zone apex (`-Name "@"`, including quote marks). However, you can modify any of the parameters within the SOA record (except "Host") and the record set TTL.
 
-Aşağıdaki örnek nasıl değiştirileceğini gösterir *e-posta* SOA kaydı özelliği:
+The following example shows how to change the *Email* property of the SOA record:
 
 ```powershell
 $rs = Get-AzDnsRecordSet -Name "@" -RecordType SOA -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
@@ -310,15 +310,15 @@ $rs.Records[0].Email = "admin.contoso.com"
 Set-AzDnsRecordSet -RecordSet $rs
 ```
 
-### <a name="to-modify-ns-records-at-the-zone-apex"></a>NS kayıtları bölgenin tepesindeki değiştirmek için
+### <a name="to-modify-ns-records-at-the-zone-apex"></a>To modify NS records at the zone apex
 
-NS kayıt bölge tepesinde kümesi her DNS bölge ile otomatik olarak oluşturulur. Bu bölgeye atanan Azure DNS ad sunucularının adlarını içerir.
+The NS record set at the zone apex is automatically created with each DNS zone. It contains the names of the Azure DNS name servers assigned to the zone.
 
-Ek ad sunucuları bu NS kayıt için birden fazla DNS sağlayıcısı ile ortak barındırma etki alanlarını destekleyecek şekilde ayarlama, ekleyebilirsiniz. Bu kayıt kümesi için meta veriler ve TTL de değiştirebilirsiniz. Ancak, kaldırın veya önceden doldurulmuş Azure DNS ad sunucularını değiştirin.
+You can add additional name servers to this NS record set, to support co-hosting domains with more than one DNS provider. You can also modify the TTL and metadata for this record set. However, you cannot remove or modify the pre-populated Azure DNS name servers.
 
-Bu bölge tepesinde yalnızca NS kayıt kümesi için geçerli olduğunu unutmayın. (Alt bölgeleri temsilci seçmek için kullanıldığı şekilde), bu bölgedeki diğer NS kayıt kümeleri, kısıtlama değiştirilebilir.
+Note that this applies only to the NS record set at the zone apex. Other NS record sets in your zone (as used to delegate child zones) can be modified without constraint.
 
-Aşağıdaki örnekte bölgenin tepesinde ayarlayın NS kaydı ek ad sunucusu ekleme gösterir:
+The following example shows how to add an additional name server to the NS record set at the zone apex:
 
 ```powershell
 $rs = Get-AzDnsRecordSet -Name "@" -RecordType NS -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
@@ -326,11 +326,11 @@ Add-AzDnsRecordConfig -RecordSet $rs -Nsdname ns1.myotherdnsprovider.com
 Set-AzDnsRecordSet -RecordSet $rs
 ```
 
-### <a name="to-modify-record-set-metadata"></a>Kayıt kümesi meta verileri değiştirmek için
+### <a name="to-modify-record-set-metadata"></a>To modify record set metadata
 
-[Kayıt kümesi meta verileri](dns-zones-records.md#tags-and-metadata) uygulamaya özgü verileri, anahtar-değer çiftleri olarak her bir kayıt kümesi ile ilişkilendirmek için kullanılabilir.
+[Record set metadata](dns-zones-records.md#tags-and-metadata) can be used to associate application-specific data with each record set, as key-value pairs.
 
-Aşağıdaki örnek, mevcut bir kayıt kümesi meta verileri değiştirmek gösterilmektedir:
+The following example shows how to modify the metadata of an existing record set:
 
 ```powershell
 # Get the record set
@@ -347,36 +347,36 @@ Set-AzDnsRecordSet -RecordSet $rs
 ```
 
 
-## <a name="delete-a-record-set"></a>Bir kayıt kümesini Sil
+## <a name="delete-a-record-set"></a>Delete a record set
 
-Kullanarak kayıt kümelerini silinebilir `Remove-AzDnsRecordSet` cmdlet'i. Kayıt kümesi sildiğinizde, kayıt kümesindeki tüm kayıtlar da silinir.
+Record sets can be deleted by using the `Remove-AzDnsRecordSet` cmdlet. Deleting a record set also deletes all records within the record set.
 
 > [!NOTE]
-> SOA silemezsiniz ve NS kayıt kümeleri bölgenin tepesinde (`-Name '@'`).  Azure DNS bölgesi oluşturuldu ve bölge silindiğinde bunları otomatik olarak siler. Bunlar otomatik olarak oluşturulur.
+> You cannot delete the SOA and NS record sets at the zone apex (`-Name '@'`).  Azure DNS created these automatically when the zone was created, and deletes them automatically when the zone is deleted.
 
-Aşağıdaki örnek, bir kayıt kümesini silmek gösterilmektedir. Bu örnekte, kayıt kümesi adını, kayıt kümesi türü, bölge adını ve kaynak grubu her açıkça belirtilir.
+The following example shows how to delete a record set. In this example, the record set name, record set type, zone name, and resource group are each specified explicitly.
 
 ```powershell
 Remove-AzDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 ```
 
-Alternatif olarak, kayıt kümesi adını ve türünü ve kullanarak bir nesneyi belirtilen bölge tarafından belirtilebilir:
+Alternatively, the record set can be specified by name and type, and the zone specified using an object:
 
 ```powershell
 $zone = Get-AzDnsZone -Name "contoso.com" -ResourceGroupName "MyResourceGroup"
 Remove-AzDnsRecordSet -Name "www" -RecordType A -Zone $zone
 ```
 
-Üçüncü bir seçenek olarak öğesi kendisine ayarlanmış kaydı, bir kayıt kümesi nesnesi kullanılarak belirtilebilir:
+As a third option, the record set itself can be specified using a record set object:
 
 ```powershell
 $rs = Get-AzDnsRecordSet -Name www -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 Remove-AzDnsRecordSet -RecordSet $rs
 ```
 
-Kayıt kümesi bir kayıt kümesi nesnesini kullanarak silinecek belirttiğinizde [Etag denetler](dns-zones-records.md#etags) eşzamanlı değişiklikleri silinmediğinden emin olmak için kullanılır. Kullanabileceğiniz isteğe bağlı `-Overwrite` bu denetimleri bastırmak için anahtar.
+When you specify the record set to be deleted by using a record set object, [Etag checks](dns-zones-records.md#etags) are used to ensure concurrent changes are not deleted. You can use the optional `-Overwrite` switch to suppress these checks.
 
-Kayıt kümesi nesnesi, ayrıca bir parametre olarak geçirilen yerine yöneltilebilir:
+The record set object can also be piped instead of being passed as a parameter:
 
 ```powershell
 Get-AzDnsRecordSet -Name www -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" | Remove-AzDnsRecordSet
@@ -386,7 +386,7 @@ Get-AzDnsRecordSet -Name www -RecordType A -ZoneName "contoso.com" -ResourceGrou
 
 `New-AzDnsRecordSet`, `Set-AzDnsRecordSet` ve `Remove-AzDnsRecordSet` cmdlet’lerinin tamamı onay istemlerini destekler.
 
-Her cmdlet'i, onay ister `$ConfirmPreference` PowerShell tercih değişkeni değerine sahip `Medium` veya daha düşük. İçin varsayılan değer beri `$ConfirmPreference` olan `High`, bu komut istemlerini ayarlarıyla PowerShell kullanırken sunulmaz.
+Each cmdlet prompts for confirmation if the `$ConfirmPreference` PowerShell preference variable has a value of `Medium` or lower. Since the default value for `$ConfirmPreference` is `High`, these prompts are not given when using the default PowerShell settings.
 
 `-Confirm` parametresini kullanarak geçerli `$ConfirmPreference` ayarını geçersiz kılabilirsiniz. `-Confirm` veya `-Confirm:$True` belirtirseniz cmdlet, çalıştırılmadan önce size onay istemi görüntüler. `-Confirm:$False` belirtirseniz cmdlet size onay istemi görüntülemez. 
 
@@ -394,8 +394,8 @@ Her cmdlet'i, onay ister `$ConfirmPreference` PowerShell tercih değişkeni değ
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi edinin [bölgelerini ve kayıtlarını Azure DNS'de](dns-zones-records.md).
+Learn more about [zones and records in Azure DNS](dns-zones-records.md).
 <br>
-Bilgi nasıl [bölgeleri ve kayıtlarını koruma](dns-protect-zones-recordsets.md) Azure DNS kullanırken.
+Learn how to [protect your zones and records](dns-protect-zones-recordsets.md) when using Azure DNS.
 <br>
-Gözden geçirme [Azure DNS PowerShell başvuru belgeleri](/powershell/module/az.dns).
+Review the [Azure DNS PowerShell reference documentation](/powershell/module/az.dns).

@@ -1,26 +1,20 @@
 ---
-title: Azure Cosmos DB tarafından tetiklenen bir işlev oluşturma | Microsoft Docs
+title: Azure Cosmos DB tarafından tetiklenen bir işlev oluşturma
 description: Azure İşlevleri kullanarak Azure Cosmos DB’de bir veritabanına veri eklendiğinde çağrılan sunucusuz bir işlev oluşturun.
-services: azure-functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
 ms.assetid: bc497d71-75e7-47b1-babd-a060a664adca
-ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 10/02/2018
-ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 9cd09349ae37d11e4d01bc308162512ebfa03dfc
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e321fcdf4b5871cf4a55e7018229569a337e8305
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086348"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230936"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Azure Cosmos DB tarafından tetiklenen bir işlev oluşturma
 
-Azure Cosmos DB’de veri eklendiğinde veya değiştirildiğinde tetiklenen bir işlev oluşturmayı öğrenin. Azure Cosmos DB hakkında daha fazla bilgi için bkz [. Azure Cosmos DB: Azure Işlevleri](../cosmos-db/serverless-computing-database.md)'ni kullanarak sunucusuz veritabanı hesaplama.
+Azure Cosmos DB’de veri eklendiğinde veya değiştirildiğinde tetiklenen bir işlev oluşturmayı öğrenin. Azure Cosmos DB hakkında daha fazla bilgi edinmek için bkz. [Azure Cosmos DB: Azure İşlevleri ile sunucusuz veritabanı işlemleri](../cosmos-db/serverless-computing-database.md).
 
 ![Günlüklerde iletiyi görüntüleyin.](./media/functions-create-cosmos-db-triggered-function/quickstart-completed.png)
 
@@ -59,7 +53,7 @@ Ardından, yeni işlev uygulamasında bir işlev oluşturun.
 
 1. Arama alanına `cosmos` yazıp **Azure Cosmos DB tetikleyicisi** şablonunu seçin.
 
-1. İstenirse, işlev uygulamasına Azure Cosmos DB uzantısını yüklemek için, **yüklensin** ' i seçin. Yükleme başarılı olduktan sonra **Devam**'ı seçin.
+1. If prompted, select **Install** to install the Azure Cosmos DB extension in the function app. Yükleme başarılı olduktan sonra **Devam**'ı seçin.
 
     ![Bağlama uzantılarını yükleme](./media/functions-create-cosmos-db-triggered-function/functions-create-cosmos-db-trigger-portal.png)
 
@@ -69,10 +63,10 @@ Ardından, yeni işlev uygulamasında bir işlev oluşturun.
 
     | Ayar      | Önerilen değer  | Açıklama                                |
     | ------------ | ---------------- | ------------------------------------------ |
-    | **Name** | Varsayılan | Şablonun önerdiği varsayılan işlev adını kullanın.|
+    | **Adı** | Varsayılan | Şablonun önerdiği varsayılan işlev adını kullanın.|
     | **Azure Cosmos DB hesabı bağlantısı** | Yeni ayar | **Yeni**'yi ve ardından **Aboneliğinizi**, önceden oluşturduğunuz **Veritabanı hesabını** ve **Seç**'i belirtin. Bunu yaptığınızda hesap bağlantınız için bir uygulama ayarı oluşturulur. Bu ayar bağlama tarafından veritabanı bağlantısı için kullanılır. |
     | **Koleksiyon adı** | Öğeler | İzlenecek koleksiyonun adı. |
-    | **Yoksa kira koleksiyonu oluşturun** | İşaretli | Koleksiyon henüz mevcut değil, bu yüzden oluşturun. |
+    | **Yoksa kira koleksiyonu oluşturun** | Onay işaretli | Koleksiyon henüz mevcut değil, bu yüzden oluşturun. |
     | **Veritabanı adı** | Görevler | İzlenecek koleksiyonu içeren veritabanının adı. |
 
 1. **Oluştur**’a tıklayarak Azure Cosmos DB tarafından tetiklenen işlevinizi oluşturun. İşlev oluşturulduktan sonra şablon temelli işlev kodu görüntülenir.  
@@ -95,7 +89,7 @@ Daha sonra, Azure Cosmos DB hesabınız bağlar ve `Tasks` veritabanında `Items
 
 1. **Koleksiyonlar** bölümünde **taskDatabase**’i seçip **Yeni Koleksiyon**’u seçin.
 
-    ![Koleksiyon oluşturma](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-collection.png)
+    ![Koleksiyon oluşturun](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-collection.png)
 
 1. **Koleksiyon Ekle** bölümünde, resmin altındaki tabloda gösterilen ayarları kullanın. 
 

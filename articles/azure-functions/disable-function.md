@@ -1,39 +1,33 @@
 ---
-title: Azure Işlevleri 'nde işlevleri devre dışı bırakma
-description: Azure Işlevleri 1. x ve 2. x içindeki işlevleri devre dışı bırakmayı ve etkinleştirmeyi öğrenin.
-services: functions
-documentationcenter: ''
-author: ggailey777
-manager: jeconnoc
-ms.service: azure-functions
+title: How to disable functions in Azure Functions
+description: Learn how to disable and enable functions in Azure Functions 1.x and 2.x.
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.author: glenga
-ms.openlocfilehash: 498bb8c0f1e7bb674605d4a98f0be0f3e0b9a7c9
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 7968580fcaa40575571a41f067fa74fbdc0a3a34
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650488"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233039"
 ---
-# <a name="how-to-disable-functions-in-azure-functions"></a>Azure Işlevleri 'nde işlevleri devre dışı bırakma
+# <a name="how-to-disable-functions-in-azure-functions"></a>How to disable functions in Azure Functions
 
-Bu makalede, Azure Işlevlerinde bir işlevin nasıl devre dışı bırakılacağı açıklanır. Bir işlevi *devre dışı bırakmak* , çalışma zamanının işlev için tanımlanan otomatik tetikleyiciyi yoksayması anlamına gelir. Bunu yapmanız, çalışma zamanı sürümüne ve programlama diline bağlıdır:
+This article explains how to disable a function in Azure Functions. To *disable* a function means to make the runtime ignore the automatic trigger that is defined for the function. The way you do that depends on the runtime version and the programming language:
 
-* İşlevler 2. x:
-  * Tüm diller için bir yol
-  * Sınıf kitaplıkları için C# isteğe bağlı yol
-* 1\. x işlevleri:
-  * Komut dosyası dilleri
-  * C#sınıf kitaplıkları
+* Functions 2.x:
+  * One way for all languages
+  * Optional way for C# class libraries
+* Functions 1.x:
+  * Scripting languages
+  * C# class libraries
 
-## <a name="functions-2x---all-languages"></a>İşlevler 2. x-tüm diller
+## <a name="functions-2x---all-languages"></a>Functions 2.x - all languages
 
-2\. x fonksiyonlarının biçimindeki `AzureWebJobs.<FUNCTION_NAME>.Disabled`bir uygulama ayarı kullanarak bir işlevi devre dışı bırakabilirsiniz. Bu uygulama ayarını [Azure CLI](/cli/azure/) kullanarak ve işlevinizin [Azure Portal](https://portal.azure.com)içindeki **Yönet** sekmesinden bir dizi şekilde oluşturabilir ve değiştirebilirsiniz. 
+In Functions 2.x, you disable a function by using an app setting in the format `AzureWebJobs.<FUNCTION_NAME>.Disabled`. You can create and modify this application setting in a number of ways, including by using the [Azure CLI](/cli/azure/) and from your function's **Manage** tab in the [Azure portal](https://portal.azure.com). 
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Azure CLI 'da, uygulama ayarını oluşturmak ve [`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) değiştirmek için komutunu kullanın. Aşağıdaki komut, adlı bir işlevi `QueueTrigger` olarak `true`ayarla adlı `AzureWebJobs.QueueTrigger.Disabled` bir uygulama ayarı oluşturarak devre dışı bırakır. 
+In the Azure CLI, you use the [`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) command to create and modify the app setting. The following command disables a function named `QueueTrigger` by creating an app setting named `AzureWebJobs.QueueTrigger.Disabled` set it to `true`. 
 
 ```azurecli-interactive
 az functionapp config appsettings set --name <myFunctionApp> \
@@ -41,7 +35,7 @@ az functionapp config appsettings set --name <myFunctionApp> \
 --settings AzureWebJobs.QueueTrigger.Disabled=true
 ```
 
-İşlevi yeniden etkinleştirmek için, bir değeriyle `false`aynı komutu yeniden çalıştırın.
+To re-enable the function, rerun the same command with a value of `false`.
 
 ```azurecli-interactive
 az functionapp config appsettings set --name <myFunctionApp> \
@@ -51,17 +45,17 @@ az functionapp config appsettings set --name <myFunctionApp> \
 
 ### <a name="portal"></a>Portal
 
-İşlevin **Yönet** sekmesinde **işlev durumu** anahtarını da kullanabilirsiniz. Anahtar, `AzureWebJobs.<FUNCTION_NAME>.Disabled` uygulama ayarı oluşturup silerek işe yarar.
+You can also use the **Function State** switch on the function's **Manage** tab. The switch works by creating and deleting the `AzureWebJobs.<FUNCTION_NAME>.Disabled` app setting.
 
-![İşlev durum anahtarı](media/disable-function/function-state-switch.png)
+![Function state switch](media/disable-function/function-state-switch.png)
 
-## <a name="functions-2x---c-class-libraries"></a>İşlevler 2. x C# sınıfı kitaplıklar
+## <a name="functions-2x---c-class-libraries"></a>Functions 2.x - C# class libraries
 
-Işlevler 2. x sınıf kitaplığında, tüm diller için çalışır olan yöntemi kullanmanızı öneririz. Ancak isterseniz, [Disable özniteliğini 1. x işlevleri içinde kullanabilirsiniz](#functions-1x---c-class-libraries).
+In a Functions 2.x class library, we recommend that you use the method that works for all languages. But if you prefer, you can [use the Disable attribute as in Functions 1.x](#functions-1x---c-class-libraries).
 
-## <a name="functions-1x---scripting-languages"></a>İşlevler 1. x-betik dilleri
+## <a name="functions-1x---scripting-languages"></a>Functions 1.x - scripting languages
 
-C# Betik ve JavaScript gibi komut dosyası dilleri için, çalışma zamanına bir `disabled` işlev tetikleyemediğinden, *function. JSON* dosyasının özelliğini kullanırsınız. Bu özellik, bir uygulama ayarının `true` adına veya adına ayarlanabilir:
+For scripting languages such as C# script and JavaScript, you use the `disabled` property of the *function.json* file to tell the runtime not to trigger a function. This property can be set to `true` or to the name of an app setting:
 
 ```json
 {
@@ -77,7 +71,7 @@ C# Betik ve JavaScript gibi komut dosyası dilleri için, çalışma zamanına b
     "disabled": true
 }
 ```
-veya 
+or 
 
 ```json
     "bindings": [
@@ -86,15 +80,15 @@ veya
     "disabled": "IS_DISABLED"
 ```
 
-İkinci örnekte, IS_DISABLED adlı bir uygulama ayarı olduğunda ve veya 1 olarak `true` ayarlandığında işlev devre dışıdır.
+In the second example, the function is disabled when there is an app setting that is named IS_DISABLED and is set to `true` or 1.
 
-Dosyayı Azure portal düzenleyebilir veya işlevin **Yönet** sekmesindeki **işlev durumu** anahtarını kullanabilirsiniz. Portal anahtarı, *function. JSON* dosyası değiştirilerek çalışır.
+You can edit the file in the Azure portal or use the **Function State** switch on the function's **Manage** tab. The portal switch works by changing the *function.json* file.
 
-![İşlev durum anahtarı](media/disable-function/function-state-switch.png)
+![Function state switch](media/disable-function/function-state-switch.png)
 
-## <a name="functions-1x---c-class-libraries"></a>İşlevler 1. x- C# sınıf kitaplıkları
+## <a name="functions-1x---c-class-libraries"></a>Functions 1.x - C# class libraries
 
-İşlevler 1. x sınıf kitaplığında, bir işlevin tetiklenmesi için `Disable` bir öznitelik kullanırsınız. Aşağıdaki örnekte gösterildiği gibi, özniteliğini bir oluşturucu parametresi olmadan kullanabilirsiniz:
+In a Functions 1.x class library, you use a `Disable` attribute to prevent a function from being triggered. You can use the attribute without a constructor parameter, as shown in the following example:
 
 ```csharp
 public static class QueueFunctions
@@ -110,7 +104,7 @@ public static class QueueFunctions
 }
 ```
 
-Oluşturucu parametresi olmayan özniteliği, işlevin devre dışı durumunu değiştirmek için projeyi yeniden derlemenize ve yeniden dağıtmanıza gerek duyar. Bu özniteliği kullanmanın daha esnek bir yolu, aşağıdaki örnekte gösterildiği gibi bir Boole uygulama ayarına başvuran bir oluşturucu parametresi dahil maktır:
+The attribute without a constructor parameter requires that you recompile and redeploy the project to change the function's disabled state. A more flexible way to use the attribute is to include a constructor parameter that refers to a Boolean app setting, as shown in the following example:
 
 ```csharp
 public static class QueueFunctions
@@ -126,15 +120,15 @@ public static class QueueFunctions
 }
 ```
 
-Bu yöntem, uygulamayı yeniden derlemeden veya yeniden dağıtmaya gerek kalmadan, uygulama ayarını değiştirerek işlevini etkinleştirmenizi ve devre dışı bırakmanızı sağlar. Bir uygulama ayarının değiştirilmesi, işlev uygulamasının yeniden başlatılmasına neden olur, bu nedenle devre dışı durum değişikliği hemen tanınır.
+This method lets you enable and disable the function by changing the app setting, without recompiling or redeploying. Changing an app setting causes the function app to restart, so the disabled state change is recognized immediately.
 
 > [!IMPORTANT]
-> `Disabled` Özniteliği, bir sınıf kitaplığı işlevini devre dışı bırakmak için tek yoldur. Bir sınıf kitaplığı işlevi için oluşturulan *function. JSON* dosyası doğrudan düzenlenmemelidir. Bu dosyayı düzenlerseniz, `disabled` özelliği üzerinde yaptığınız her şey hiçbir etkiye sahip olmaz.
+> The `Disabled` attribute is the only way to disable a class library function. The generated *function.json* file for a class library function is not meant to be edited directly. If you edit that file, whatever you do to the `disabled` property will have no effect.
 >
-> , *Function. JSON* dosyasını değiştirerek çalıştığından, **Yönetim** sekmesindeki **işlev durumu** anahtarı için de aynı olur.
+> The same goes for the **Function state** switch on the **Manage** tab, since it works by changing the *function.json* file.
 >
-> Ayrıca, portalda işlevin devre dışı bırakıldığını belirtebileceğini unutmayın.
+> Also, note that the portal may indicate the function is disabled when it isn't.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makale, otomatik Tetikleyicileri devre dışı bırakmaya yönelik bir. Tetikleyiciler hakkında daha fazla bilgi için bkz. [Tetikleyiciler ve bağlamalar](functions-triggers-bindings.md).
+This article is about disabling automatic triggers. For more information about triggers, see [Triggers and bindings](functions-triggers-bindings.md).
