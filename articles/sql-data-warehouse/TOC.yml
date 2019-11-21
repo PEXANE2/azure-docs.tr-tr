@@ -47,6 +47,10 @@
           href: quickstart-scale-compute-tsql.md
     - name: İş yükü yönetimi
       items:
+        - name: İş yükü sınıflandırıcısı oluşturma
+          items:
+            - name: T-SQL
+              href: quickstart-create-a-workload-classifier-tsql.md
         - name: İş yükü yalıtımı oluşturma
           items:
             - name: T-SQL
