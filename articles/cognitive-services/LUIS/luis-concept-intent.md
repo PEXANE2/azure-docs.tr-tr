@@ -1,7 +1,7 @@
 ---
 title: Amaçlar ve varlıklar-LUSıS
 titleSuffix: Azure Cognitive Services
-description: Tek bir amaç, kullanıcının gerçekleştirmek istediği bir görevi veya eylemi temsil eder. Bu, kullanıcının utterliği içinde ifade edilen bir amaç veya hedeftir. Uygulamanızda almak istedikleri eylemlere karşılık gelen bir amaç kümesi tanımlayın.
+description: Tek bir amaç, kullanıcının gerçekleştirmek istediği bir görevi veya eylemi temsil eder. Bir amaç veya hedef kullanıcının utterance ifade edilen olduğundan. Kullanıcıların uygulamanızda almak istediğiniz eylemlerine karşılık gelen bir ıntents kümesi tanımlar.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,43 +11,43 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: diberry
-ms.openlocfilehash: 3d2895fa8d45ad594963d3f26cbe04fd968f5fcc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 309a2592dbac2918aeb532fbe91e33d296f4e5a5
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73487540"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280895"
 ---
 # <a name="intents-in-your-luis-app"></a>LUSıS uygulamanızdaki amaçlar
 
-Amaç, kullanıcının gerçekleştirmek istediği bir görevi veya eylemi temsil eder. Bu, kullanıcının [utterliği](luis-concept-utterance.md)içinde ifade edilen bir amaç veya hedeftir.
+Kullanıcı eylem gerçekleştirmek istediği ya da bir amacı bir görevi gösterir. Bir amaç veya hedef bir kullanıcının ifade olduğundan [utterance](luis-concept-utterance.md).
 
-Uygulamanızda almak istedikleri eylemlere karşılık gelen bir amaç kümesi tanımlayın. Örneğin, bir seyahat uygulaması çeşitli amaçlar tanımlar:
+Kullanıcıların uygulamanızda almak istediğiniz eylemlerine karşılık gelen bir ıntents kümesi tanımlar. Örneğin, bir seyahat uygulaması, çeşitli hedefleri tanımlar:
 
-Seyahat uygulaması amaçları   |   Örnek konuşmalar   | 
+Uygulama amaçları seyahat   |   Örnek konuşmalar   | 
 ------|------|
- BookFlight     |   "RIO sonraki haftada bir uçuş <br/> "24th 'da RIO 'ya giriş" <br/> "Sonraki Pazar için bir düzlem bileti gerekir.    |
- Karşılama     |   N <br/>Herkese <br/>"İyi sabah"  |
- Checkhava durumu | "Boston 'da olduğu gibi hava durumu nedir?" <br/> "Bu hafta sonu için tahminleri göster" |
- None         | "Bana bir tanımlama bilgisi tarifi al"<br>"Lamanlar kazanın mi?" |
+ BookFlight     |   "Bana bir uçuş RIO için sonraki hafta kitap" <br/> "Benim için RIO üzerinde 24 uçarak" <br/> "Uçak bileti Rio de Janeiro sonraki Sunday ihtiyacım"    |
+ Karşılama     |   "Hi" <br/>"Hello" <br/>"Günaydın"  |
+ CheckWeather | "Gibi de Boston hava nedir?" <br/> "Bu hafta için hava durumu tahminini Göster" |
+ None         | "Bana bir tanımlama bilgisi tarif Al"<br>"Lakers win?" |
 
 Tüm uygulamalar, geri dönüş amacı olan önceden tanımlanmış "[none](#none-intent)" hedefi ile gelir. 
 
-## <a name="prebuilt-domains-provide-intents"></a>Önceden oluşturulmuş etki alanları amaçları sağlar
+## <a name="prebuilt-domains-provide-intents"></a>Önceden oluşturulmuş etki alanları hedefleri belirtin
 Tanımladığınız amaçlardan ek olarak, önceden oluşturulan hedefleri [önceden oluşturulmuş etki alanlarından](luis-how-to-use-prebuilt-domains.md)birini kullanarak kullanabilirsiniz. 
 
-## <a name="return-all-intents-scores"></a>Tüm Amaçlar puanlarını döndür
-Tek bir amaç için bir söylenişi atarsınız. Luara, uç noktada bir söylenişi aldığında, varsayılan olarak o zaman için en üst amacı döndürür. 
+## <a name="return-all-intents-scores"></a>Tüm hedefleri puanlarını döndürür
+Tek bir hedefi için bir utterance atarsınız. Luara, uç noktada bir söylenişi aldığında, varsayılan olarak o zaman için en üst amacı döndürür. 
 
 Utterance için tüm amaçlar için puanları istiyorsanız, tahmin API 'sinin sorgu dizesinde bir bayrak sağlayabilirsiniz. 
 
-|Tahmin API sürümü|bayrağıyla|
+|Tahmin API sürümü|Bayrağı|
 |--|--|
 |V2|`verbose=true`|
-|Yüklemesinde|`show-all-intents=true`|
+|V3|`show-all-intents=true`|
 
-## <a name="intent-compared-to-entity"></a>Varlıkla karşılaştırılan amaç
-Amaç, bot 'ın Kullanıcı için yapması gereken eylemi temsil eder ve tüm söylik 'i temel alır. Bir söylenişi yalnızca bir tane en üst Puanlama amacına sahip olabilir, ancak birçok varlık olabilir. 
+## <a name="intent-compared-to-entity"></a>Varlığa karşılaştırıldığında hedefi
+Amaç, uygulamanın kullanıcı için yapması gereken eylemi temsil eder ve tüm söylik 'i temel alır. Bir utterance hedefi Puanlama yalnızca bir üste sahip olabilir ancak birçok varlık sahip olabilir. 
 
 <a name="how-do-intents-relate-to-entities"></a>
 
@@ -55,24 +55,24 @@ Kullanıcının _amacı_ , checkhava durumu () işlevine yapılan bir çağrı g
 
 |Amaç   | Varlık | Örnek konuşma   | 
 |------------------|------------------------------|------------------------------|
-| Checkhava durumu | {"tür": "konum", "varlık": "Seattle"}<br>{"Type": "Builtin. datetimeV2. Date", "Entity": "Yarın", "Çözüm": "2018-05-23"} | `Seattle` `tomorrow`Hava durumu nedir? |
-| Checkhava durumu | {"tür": "date_range", "Entity": "Bu hafta sonu"} | `this weekend` tahminini göster | 
+| CheckWeather | {"type": "Konum", "varlık": "seattle"}<br>{"type": "builtin.datetimeV2.date","entity": "yarın", "Çözüm": "2018-05-23"} | Hava durumu, beğendiğiniz Özellikler `Seattle` `tomorrow`? |
+| CheckWeather | {"type": "date_range", "varlık": "Bu hafta sonu"} | Tahmini Göster `this weekend` | 
 ||||
 
-## <a name="prebuilt-domain-intents"></a>Önceden oluşturulmuş etki alanı amaçları
+## <a name="prebuilt-domain-intents"></a>Önceden oluşturulmuş etki alanı hedefleri
 
 [Önceden oluşturulan etki alanları](luis-how-to-use-prebuilt-domains.md) , utterlerle amaçlar sağlar. 
 
 ## <a name="none-intent"></a>Amaç yok
 
-**Hiçbiri** amacı oluşturulur ancak boş bırakılır. **Hiçbiri** amacı gerekli bir amaç değildir ve silinemez veya yeniden adlandırılamaz. Bunu, etki alanınız dışında olan utterlerle doldurabilirsiniz.
+**Hiçbiri** hedefi oluşturulur, ancak boş bilerek. **Hiçbiri** amacı gerekli amacı ve silinemez veya yeniden adlandırılamaz. Etki alanı dışındaki bir konuşma ile doldurun.
 
-**Hiçbiri** amacı her uygulama için önemli olan geri dönüş amacı ve toplam dikkat sayısının %10 ' u olmalıdır. Bu, uygulama etki alanında (konu alanı) önemli olmayan LUSıS utssıs 'leri öğretmek için kullanılır. **Hiçbiri** amacı için herhangi bir söylik eksiz DEĞILSENIZ, Lua, etki alanı dışındaki bir şekilde etki alanı amaçlardakilerden birine zorlar. Bu, bu tahmin puanlarını, deterlik için yanlış bir amaç öğretmek için eğriltebilir. 
+**Hiçbiri** amacı her uygulama için önemli olan geri dönüş amacı ve toplam dikkat sayısının %10 ' u olmalıdır. LUIS uygulama etki alanında (konu alanı), önemli değildir. Konuşma öğretmek için kullanılır. İçin herhangi bir konuşma eklemezseniz **hiçbiri** hedefi, LUIS etki alanına bir etki alanı amacı dışında bir utterance zorlar. LUIS utterance yanlış hedefini eğitiminde tarafından bu tahmin puanları eğme. 
 
 Bir söylenişi, None amacı olarak tahmin edildiğinde, istemci uygulaması daha fazla soru sorabilir veya kullanıcıyı geçerli seçeneklere yönlendirecek bir menü sağlayabilir. 
 
 ## <a name="negative-intentions"></a>Negatif amaçları 
-" **Bir otomobil istiyorum"** ve " **araba istemiyorum"** gibi negatif ve pozitif amaçları tespit etmek istiyorsanız, iki amaç oluşturabilir (bir pozitif ve bir negatif) ve her biri için uygun bir Aralık ekleyebilirsiniz. Ya da tek bir amaç oluşturabilir ve iki farklı pozitif ve negatif terimi bir varlık olarak işaretleyebilirsiniz.  
+Negatif ve pozitif amaçları gibi belirlemek istiyorsanız "miyim **istediğiniz** bir araba" ve "ı **yoksa** bir araba istediğiniz", iki hedefleri (bir pozitif ve negatif bir) oluşturma ve için uygun Konuşma ekleme Her. Tek bir hedefi oluşturma ve iki farklı pozitif ve negatif koşulları bir varlık olarak işaretleyin.  
 
 ## <a name="intents-and-patterns"></a>Amaçlar ve desenler
 
@@ -80,28 +80,28 @@ Bir normal ifade olarak kısmen veya bütün olarak tanımlanabilen örnek utsun
 
 Bir normal ifade varlığı kullanmak, düzenin eşleşmesi için veri ayıklamasını garanti eder. Bu eşleştirme, tam bir amacı garanti eder. 
 
-## <a name="intent-balance"></a>Amaç bakiyesi
-Uygulama etki alanı amaçları, her amaç genelinde bir dizi kullanım bakiyesine sahip olmalıdır. 10 utkollarla bir amaç ve 500 utterer ile başka bir amaç yoktur. Bu dengeli değildir. Bu durumda, amaçlarının çoğunun bir [düzende](luis-concept-patterns.md)yeniden düzenlenebilmeme olup olmadığını görmek için 500 utterler ile amacı gözden geçirin. 
+## <a name="intent-balance"></a>Intent bakiyesi
+Uygulama etki alanı hedefleri konuşma dengesi her hedefi arasında olmalıdır. 10 Konuşma ile bir hedefi ve 500 Konuşma ile başka bir amacı yoktur. Bu dengeli değil. Bu durum varsa, birçok hedefleri halinde yeniden, görmek için 500 konuşma amacıyla gözden geçirin. bir [deseni](luis-concept-patterns.md). 
 
-**Hiçbir** amaç bakiyeye dahil değildir. Bu amaç, uygulamadaki toplam söyleyinin %10 ' un %10 ' a sahip olmalıdır.
+**Hiçbiri** hedefi bakiyeye dahil değildir. Bu hedefi % uygulamasında toplam konuşma 10 içermelidir.
 
-## <a name="intent-limits"></a>Amaç limitleri
-Bir modele kaç amaç ekleyebileceğiniz hakkında bilgi edinmek için [limitleri](luis-boundaries.md#model-boundaries) gözden geçirin. 
+## <a name="intent-limits"></a>Intent sınırları
+Gözden geçirme [sınırları](luis-boundaries.md#model-boundaries) kaç hedefleri öğrenmek için bir model ekleyebilirsiniz. 
 
-### <a name="if-you-need-more-than-the-maximum-number-of-intents"></a>En fazla amaç sayısından daha fazlasına ihtiyacınız varsa 
-İlk olarak, sisteminizin çok fazla amaç kullanıp kullanmadığını göz önünde bulundurun. 
+### <a name="if-you-need-more-than-the-maximum-number-of-intents"></a>Intents en fazla sayısından fazlasını gerekiyorsa 
+İlk olarak, sisteminize çok fazla ıntents kullanıp kullanmadığını göz önünde bulundurun. 
 
-### <a name="can-multiple-intents-be-combined-into-single-intent-with-entities"></a>Birden çok amaç, varlıklarla tek amaç halinde birleştirilebilir 
-Çok benzer amaçlar, LUID 'leri aralarında ayırt etmek daha zor hale getirir. Amaçlar, kullanıcının istediği ana görevleri yakalamaya yetecek kadar farklılaştırılmalıdır, ancak kodunuzun aldığı her yolu yakalamaya gerek kalmaz. Örneğin, Bookuçuş ve FlightCustomerService bir seyahat uygulamasında ayrı amaçlar olabilir, ancak Bookuluslararası Aluçuş ve BookDomesticFlight çok benzerdir. Sisteminizin bunları ayırt etmek gerekiyorsa, amaçları yerine varlıkları veya diğer mantığı kullanın. 
+### <a name="can-multiple-intents-be-combined-into-single-intent-with-entities"></a>Birden çok hedefleri tek amacı, varlıklarla birleştirilebilir 
+Çok benzer bir ıntents LUIS bunları ayırt daha zor yapabilirsiniz. Intents olması için anın ancak alan, kodunuzun her yolunu yakalamak üzere gerekmeyen ana görevleri yakalamak için yeterli değiştirilen. Örneğin, bir seyahat uygulamasında ayrı ıntents BookFlight ve FlightCustomerService olabilir, ancak BookInternationalFlight ve BookDomesticFlight çok benzerdir. Bunları ayırt etmek sisteminizi gerekiyorsa, varlıklar veya diğer mantıksal yerine hedefleri kullanın. 
 
 ### <a name="dispatcher-model"></a>Dağıtıcı modeli
-LUVE QnA Maker uygulamalarını [dağıtma modeliyle](luis-concept-enterprise.md#when-you-need-to-combine-several-luis-and-qna-maker-apps)birleştirme hakkında daha fazla bilgi edinin. 
+LUIS ve soru-cevap Oluşturucu uygulamalarla birleştirme hakkında daha fazla bilgi [gönderme modeli](luis-concept-enterprise.md#when-you-need-to-combine-several-luis-and-qna-maker-apps). 
 
-### <a name="request-help-for-apps-with-significant-number-of-intents"></a>Önemli sayıda amaç içeren uygulamalar için yardım isteyin
-Amaç sayısını azalttıktan veya amaçlarınızı birden çok uygulamaya bölmek sizin için desteğe başvurun. Azure aboneliğiniz destek hizmetleri içeriyorsa, [Azure teknik desteği](https://azure.microsoft.com/support/options/)'ne başvurun. 
+### <a name="request-help-for-apps-with-significant-number-of-intents"></a>Önemli sayıda hedefleri olan uygulamalar için yardım iste
+Intents sayısını azaltmayı ya da birden çok uygulamalarda, hedefleri bölme sizin için işe yaramazsa, desteğe başvurun. Destek Hizmetleri Azure aboneliğinize dahildir, başvurun [Azure teknik desteğine](https://azure.microsoft.com/support/options/). 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Amaçlar ile ilgili önemli sözcükler olan [varlıklar](luis-concept-entity-types.md)hakkında daha fazla bilgi edinin
-* LUSıS uygulamanızda [amaçları ekleme ve yönetme](luis-how-to-add-intents.md) hakkında bilgi edinin.
-* Hedef [en iyi uygulamaları](luis-concept-best-practices.md) gözden geçirme
+* Daha fazla bilgi edinin [varlıkları](luis-concept-entity-types.md), önemli sözcükleri hedefleri için uygun olan
+* Bilgi nasıl [ekleyin ve hedefleri yönetin](luis-how-to-add-intents.md) LUIS uygulamanızda.
+* Gözden geçirin, amacı [en iyi uygulamalar](luis-concept-best-practices.md)
