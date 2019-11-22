@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: blok zinciri
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/02/2019
+ms.date: 11/18/2019
 ms.topic: overview
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: 9fcf75a07d1caf7b411c315d11ce984cbe35df75
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
-ms.translationtype: MT
+ms.openlocfilehash: 55c4c3f2c6a7856f3e7c0aea81ce013d3ff56f8b
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577191"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284781"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Azure Blok Zinciri Hizmeti nedir?
 
@@ -31,7 +31,7 @@ Bu özellikler neredeyse hiç yönetim gerektirmez ve tümüyle ek ücret ödeme
 
 ## <a name="network-deployment-and-operations"></a>Ağ dağıtımı ve işlemler
 
-Azure blok zinciri hizmeti 'nin dağıtımı, Azure blok zinciri uzantısını kullanan Azure portal, Azure CLı ve Visual Studio Code aracılığıyla yapılabilir.  Dağıtım basitleştirilerek, hem işlem hem de Doğrulayıcı düğümlerinin sağlanması, güvenlik yalıtımı için Azure sanal ağları ve hizmet tarafından yönetilen depolamanın sağlanması dahildir.  Ayrıca, yeni bir blok zinciri üyesi dağıttığınızda, kullanıcılar bir konsorsiyumun de oluşturulmasını veya katılıyor.  Consortiums, farklı Azure aboneliklerindeki birden fazla tarafın paylaşılan bir blok zincirinde birbirleriyle güvenli bir şekilde iletişim kurabilmelerini sağlar.  Bu basitleştirilmiş dağıtım, blok zinciri ağ dağıtımını gün ve dakika olarak azaltır.
+Azure blok zinciri hizmeti 'nin dağıtımı, Azure blok zinciri uzantısı kullanılarak Azure portal, Azure CLı veya Visual Studio Code aracılığıyla yapılır. Dağıtım basitleştirilerek, hem işlem hem de Doğrulayıcı düğümlerinin sağlanması, güvenlik yalıtımı için Azure sanal ağları ve hizmet tarafından yönetilen depolamanın sağlanması dahildir.  Ayrıca, yeni bir blok zinciri üyesi dağıttığınızda, kullanıcılar bir konsorsiyumun de oluşturulmasını veya katılıyor.  Consortiums, farklı Azure aboneliklerindeki birden fazla tarafın paylaşılan bir blok zincirinde birbirleriyle güvenli bir şekilde iletişim kurabilmelerini sağlar.  Bu basitleştirilmiş dağıtım, blok zinciri ağ dağıtımını gün ve dakika olarak azaltır.
 
 ### <a name="performance-and-service-tiers"></a>Performans ve hizmet katmanları
 
@@ -43,13 +43,13 @@ Azure blok zinciri hizmeti iki hizmet katmanı sunar: *temel* ve *Standart*. Her
 
 ### <a name="security-and-maintenance"></a>Güvenlik ve bakım
 
-İlk blok zinciri üyesini sağlamaktan sonra, üyeye ek işlem düğümleri ekleyebilirsiniz.  Varsayılan olarak, işlem düğümleri güvenlik duvarı kuralları aracılığıyla güvenli hale getirilir ve erişim için yapılandırılması gerekir.  Ayrıca, tüm işlem düğümleri TLS aracılığıyla hareket halindeki verileri şifreler.  İşlem düğümü erişiminin güvenliğini sağlamak için güvenlik duvarı kuralları, temel kimlik doğrulaması, erişim anahtarları ve Azure Active Directory tümleştirme gibi birden çok seçenek mevcuttur. Daha fazla bilgi için bkz. [işlem düğümlerini yapılandırma](configure-transaction-nodes.md) ve [Azure Active Directory erişimi yapılandırma](configure-aad.md).
+İlk blok zinciri üyesini sağlamaktan sonra, üyeye ek işlem düğümleri ekleyebilirsiniz.  Varsayılan olarak, işlem düğümleri güvenlik duvarı kuralları aracılığıyla güvenli hale getirilir ve erişim için yapılandırma gerektirir.  Ayrıca, tüm işlem düğümleri TLS aracılığıyla hareket halindeki verileri şifreler.  Güvenlik duvarı kuralları, temel kimlik doğrulaması, erişim anahtarları ve Azure Active Directory tümleştirme dahil olmak üzere işlem düğümü erişiminin güvenliğini sağlamak için birden çok seçenek mevcuttur. Daha fazla bilgi için bkz. [işlem düğümlerini yapılandırma](configure-transaction-nodes.md) ve [Azure Active Directory erişimi yapılandırma](configure-aad.md).
 
 Yönetilen bir hizmet olarak, Azure blok zinciri hizmeti, blok zinciri üyesinin düğümlerine en son ana bilgisayar işletim sistemi ve genel muhasebe yazılım yığın güncelleştirmeleriyle birlikte düzeltme eki uygulanmış ve yüksek kullanılabilirlik için yapılandırılmış (yalnızca Standart katman), DevOps 'un çoğunu ortadan kaldıran sağlar geleneksel IaaS blok zinciri düğümleri için gereklidir.  Düzeltme eki uygulama ve güncelleştirme hakkında daha fazla bilgi için bkz. [desteklenen Azure blok zinciri hizmeti muhasebe sürümleri](ledger-versions.md).
 
 ### <a name="monitoring-and-logging"></a>İzleme ve günlüğe kaydetme
 
-Ayrıca, Azure blok zinciri hizmeti, düğümlerin CPU, bellek ve depolama kullanımına ilişkin Öngörüler sağlayan Azure Izleyici hizmeti aracılığıyla zengin ölçümler sağlarken, işlemler ve bloklar gibi blok zinciri ağ etkinliğine yönelik yardımcı öngörüler sağlar. işlem sırası derinliğinin yanı sıra etkin bağlantılar.  Ölçümler, blok zinciri uygulamanız için önemli olan öngörülere görünümler sunacak şekilde özelleştirilebilir.  Ayrıca, eşikler, kullanıcıların bir e-posta veya kısa mesaj gönderme, bir Logic App, Azure Işlevi çalıştırma veya özel tanımlanmış bir Web kancasına gönderme gibi eylemleri tetiklemelerine olanak sağlayan uyarılar aracılığıyla tanımlanabilir.
+Ayrıca, Azure blok zinciri hizmeti, düğümlerin CPU, bellek ve depolama kullanımı hakkında Öngörüler sağlayan Azure Izleyici hizmeti aracılığıyla zengin ölçümler sağlar.  Azure Izleyici Ayrıca, blok zinciri ağ etkinliğine yönelik işlemler ve bloklar, işlem sırası derinliği ve etkin bağlantılar gibi yararlı öngörüler sağlar.  Ölçümler, blok zinciri uygulamanız için önemli olan öngörülere görünümler sunacak şekilde özelleştirilebilir.  Ayrıca, eşikler, kullanıcıların bir e-posta veya kısa mesaj gönderme, bir Logic App, Azure Işlevi çalıştırma veya özel tanımlanmış bir Web kancasına gönderme gibi eylemleri tetiklemelerine olanak sağlayan uyarılar aracılığıyla tanımlanabilir.
 
 ![Ölçümler](./media/overview/metrics.png)
 

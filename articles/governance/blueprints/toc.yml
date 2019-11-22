@@ -2,7 +2,7 @@
   href: index.yml
 - name: Genel Bakış
   items:
-    - name: Azure Blueprints’e genel bakış
+    - name: Azure Blueprints nedir?
       displayName: 'templates, policy, definition, assignment, rbac'
       href: overview.md
 - name: Hızlı Başlangıçlar

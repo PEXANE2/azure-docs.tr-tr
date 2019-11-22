@@ -1,31 +1,31 @@
 ---
-title: Truffle kullanarak bağlanma
+title: Azure blok zinciri hizmeti 'ne bağlanmak için Truffle kullanın
 description: Truffle kullanarak bir Azure blok zinciri hizmeti ağına bağlanma
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 08/29/2019
+ms.date: 11/20/2019
 ms.topic: quickstart
 ms.service: azure-blockchain
-ms.reviewer: jackyhsu
+ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: ea64e3fe4789ac0558463ded81c8179db83469d5
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
-ms.translationtype: MT
+ms.openlocfilehash: f5d752c99331d454e7f9f98c06b9ba0209de8cc7
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932592"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74285353"
 ---
-# <a name="quickstart-use-truffle-to-connect-to-a-transaction-node"></a>Hızlı Başlangıç: İşlem düğümüne bağlanmak için Truffle kullanma
+# <a name="quickstart-use-truffle-to-connect-to-azure-blockchain-service"></a>Hızlı başlangıç: Azure blok zinciri hizmetine bağlanmak için Truffle kullanın
 
-Truffle, bir Azure blok zinciri hizmeti işlem düğümüne bağlanmak için kullanabileceğiniz bir blok zinciri geliştirme ortamıdır.
+Bu hızlı başlangıçta, Azure blok zinciri hizmeti işlem düğümünü kullanarak Truffle bağlantısını kullanırsınız. Daha sonra, blok zinciri ağınızla etkileşim kurmak için **Web3** yöntemlerini çağırmak üzere Truffle etkileşimli konsolunu kullanırsınız.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* [Hızlı başlangıç: Azure Portal](create-member.md) veya[hızlı başlangıcı kullanarak bir blok zinciri üyesi oluşturun: Azure CLı kullanarak Azure blok zinciri hizmeti blok zinciri üyesi oluşturma](create-member-cli.md)
+* [Hızlı başlangıç: Azure Portal veya hızlı başlangıç kullanarak bir blok zinciri üyesi oluşturma](create-member.md) [: Azure CLI kullanarak bir Azure blok zinciri hizmeti blok zinciri üyesi](create-member-cli.md) oluşturma
 * [Truffle](https://github.com/trufflesuite/truffle)'yi yükler. Truffle, [Node. js](https://nodejs.org), [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)gibi çeşitli araçların yüklenmesini gerektirir.
 * [Python 2.7.15](https://www.python.org/downloads/release/python-2715/)'i yükler. Web3 için Python gereklidir.
 
@@ -58,18 +58,21 @@ Truffle, bir Azure blok zinciri hizmeti işlem düğümüne bağlanmak için kul
 
 Truffle projesini yapılandırmak için Azure portal işlem düğümü bilgilerine ihtiyacınız vardır.
 
-### <a name="transaction-node-endpoint-addresses"></a>İşlem düğümü uç noktası adresleri
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. Azure blok zinciri hizmeti üyesine gidin. **İşlem düğümleri** ve varsayılan işlem düğümü bağlantısı ' nı seçin.
 
-1. Azure portal, varsayılan işlem düğümüne gidin ve **bağlantı dizelerini > işlem düğümleri**' ni seçin.
-1. Uç nokta URL 'sini https 'den kopyalayın ve kaydedin **(erişim anahtarı 1)** . Öğreticide daha sonra akıllı sözleşme yapılandırma dosyası için uç nokta adreslerine ihtiyacınız vardır.
+    ![Varsayılan işlem düğümünü seçin](./media/connect-truffle/transaction-nodes.png)
 
-    ![İşlem uç noktası adresi](./media/connect-truffle/endpoint.png)
+1. **Bağlantı dizelerini**seçin.
+1. Bağlantı dizesini **https 'den (erişim anahtarı 1)** kopyalayın. Sonraki bölüm için dizeye ihtiyacınız vardır.
+
+    ![Bağlantı dizesi](./media/connect-truffle/connection-string.png)
 
 ### <a name="edit-configuration-file"></a>Yapılandırma dosyasını Düzenle
 
 Ardından, Truffle yapılandırma dosyasını işlem düğümü uç noktasıyla güncelleştirmeniz gerekir.
 
-1. **Trufftademo** proje klasöründe, bir düzenleyicide Truffle yapılandırma dosyasını `truffle-config.js` açın.
+1. **Trufftademo** proje klasöründe, bir düzenleyicide `truffle-config.js` Truffle yapılandırma dosyasını açın.
 1. Dosyanın içeriğini aşağıdaki yapılandırma bilgileriyle değiştirin. Uç nokta adresini içeren bir değişken ekleyin. Açılı ayracını önceki bölümden topladığınız değerlerle değiştirin.
 
     ``` javascript
@@ -100,7 +103,7 @@ Ardından, Truffle yapılandırma dosyasını işlem düğümü uç noktasıyla 
 
     Truffle varsayılan işlem düğümüne bağlanır ve etkileşimli bir konsol sağlar.
 
-    İşlem düğümünüz ile etkileşim kurmak için **Web3** nesnesi üzerinde yöntemler çağırabilirsiniz.
+    Blok zinciri ağınızla etkileşim kurmak için **Web3** nesnesi üzerinde yöntemler çağırabilirsiniz.
 
 1. Geçerli blok numarasını döndürmek için **Getblocknumber** yöntemini çağırın.
 
@@ -122,9 +125,9 @@ Ardından, Truffle yapılandırma dosyasını işlem düğümü uç noktasıyla 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, Azure blok zinciri hizmeti varsayılan işlem düğümünüz ile bağlantı kurmak için bir truffle projesi oluşturdunuz.
+Bu hızlı başlangıçta, Azure blok zinciri hizmeti varsayılan işlem düğümüne bağlanın ve geçerli blok zinciri blok numarasını döndürmek için etkileşimli konsolu kullandınız.
 
-Bir işlem aracılığıyla akıllı sözleşme işlevi oluşturmak, derlemek, dağıtmak ve yürütmek için Ethereum ve truffle için Azure blok zinciri geliştirme setini kullanmak üzere bir sonraki öğreticiyi deneyin.
+Bir işlem aracılığıyla akıllı sözleşme işlevi oluşturmak, derlemek, dağıtmak ve yürütmek için Ethereum için Azure blok zinciri geliştirme setini kullanmak üzere bir sonraki öğreticiyi deneyin.
 
 > [!div class="nextstepaction"]
 > [Akıllı sözleşmeleri oluşturmak, derlemek ve dağıtmak için Visual Studio Code kullanma](send-transaction.md)

@@ -1,28 +1,24 @@
 ---
-title: Azure Cloud Shell kullanarak Azure geliştirme alanları için etkin bir Kubernetes kümesi oluşturma
-titleSuffix: Azure Dev Spaces
+title: Azure Dev Spaces için etkin bir Kubernetes kümesi oluşturma Azure Cloud Shell kullanarak
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 10/04/2018
 ms.topic: conceptual
-description: Hızlı bir şekilde Azure geliştirme alanları için doğrudan tarayıcınızdan herhangi bir şey yüklemeden etkin bir Kubernetes kümesi oluşturmayı öğrenin.
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kapsayıcılar, Helm, hizmet kafes, ağ hizmeti Yönlendirme, kubectl, k8s
-ms.openlocfilehash: cd0c8c3c26feefe3448ada1cf1575706cd17e525
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+description: Her şeyi yüklemeden doğrudan tarayıcınızdan Azure Dev Spaces için etkin bir Kubernetes kümesini kolayca oluşturmayı öğrenin.
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
+ms.openlocfilehash: dbdc9226e417b3142284386ae3586819cda802d9
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66808698"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280109"
 ---
 # <a name="create-a-kubernetes-cluster-using-azure-cloud-shell"></a>Azure Cloud Shell kullanarak Kubernetes kümesi oluşturma
 
-Kullanabileceğiniz [Azure Cloud Shell](/azure/cloud-shell) kullanarak Azure Kubernetes Service kümesi oluşturmak için **deneyin** bu sayfadan düğmesi. Oturum açmadıysanız, bir Azure hesabıyla oturum açmak için istemleri takip edin, ardından göründüğünde Azure Cloud Shell isteminde komutları yazın.
+Bu sayfadan **deneyin** düğmesini kullanarak bir Azure Kubernetes hizmet kümesi oluşturmak için [Azure Cloud Shell](/azure/cloud-shell) kullanabilirsiniz. Oturum açmadıysanız, bir Azure hesabıyla oturum açmak için istemleri izleyin ve sonra Azure Cloud Shell istemine komutları yazın.
 
 ## <a name="create-the-cluster"></a>Kümeyi oluşturma
 
-İlk olarak, kaynak grubunu oluşturma bir [Azure geliştirme alanları destekleyen bir bölge][supported-regions].
+İlk olarak, [Azure dev Spaces destekleyen bir bölgede][supported-regions]kaynak grubunu oluşturun.
 
 ```azurecli-interactive
 az group create --name MyResourceGroup --location <region>
@@ -34,14 +30,14 @@ az group create --name MyResourceGroup --location <region>
 az aks create -g MyResourceGroup -n MyAKS --location <region> --disable-rbac --generate-ssh-keys
 ```
 
-Kümenin oluşturulması birkaç dakika sürer.  Tamamlandığında, çıkış JSON biçiminde gösterilir. Aranacak `provisioningState` ve bunu doğrulayın `Succeeded`.
+Kümenin oluşturulması birkaç dakika sürer.  Tamamlandığında, çıktı JSON biçiminde gösterilir. `provisioningState` bulun ve `Succeeded`doğrulayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bkz: [Azure geliştirme alanları](/azure/dev-spaces/) bağlantıları için tam öğreticiler.
+Tam öğreticilerin bağlantıları için bkz. [Azure dev Spaces](/azure/dev-spaces/) .
 
 > [!IMPORTANT]
-> Azure geliştirme alanları hızlı başlangıçlar ve öğreticilerle birçoğu işlemleri gerçekleştirmek için Azure geliştirme alanları CLI'yı kullanın. Azure geliştirme alanları CLI, Azure Cloud Shell'de yükleyemezsiniz.
+> Azure Dev Spaces hızlı başlangıç ve öğreticilerin birçoğu, işlemleri gerçekleştirmek için Azure Dev Spaces CLı kullanır. Azure Dev Spaces CLı 'yi Azure Cloud Shell yükleyemezsiniz.
 
 
 [supported-regions]: ../about.md#supported-regions-and-configurations

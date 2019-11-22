@@ -1,53 +1,53 @@
 ---
-title: Azure blok zinciri hizmeti 'ne bağlanmak için geth kullanma
-description: Geth kullanarak bir Azure blok zinciri hizmeti ağına bağlanma
+title: Azure blok zinciri hizmetine eklemek için geth kullanma
+description: Azure blok zinciri hizmeti işlem düğümündeki bir geth örneğine iliştirme
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/02/2019
+ms.date: 11/20/2019
 ms.topic: quickstart
 ms.service: azure-blockchain
-ms.reviewer: jackyhsu
+ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: a26899e291c4f44d3c9d91032b2ee191ba03133a
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
-ms.translationtype: MT
+ms.openlocfilehash: 1c285a7b5cc04aa330e9f68fdb82cfd099a19e03
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931768"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74285262"
 ---
-# <a name="quickstart-use-geth-to-connect-to-a-transaction-node"></a>Hızlı Başlangıç: İşlem düğümüne bağlanmak için Geth kullanma
+# <a name="quickstart-use-geth-to-attach-to-an-azure-blockchain-service-transaction-node"></a>Hızlı başlangıç: Azure blok zinciri hizmeti işlem düğümüne eklemek için geth kullanma
 
-Geth, bir Azure blok zinciri hizmeti işlem düğümündeki bir geth örneğine iliştirmek için kullanabileceğiniz bir go Ethereum istemcidir.
+Bu hızlı başlangıçta, Azure blok zinciri hizmeti işlem düğümündeki bir geth örneğine eklemek için geth istemcisini kullanırsınız. İliştirildikten sonra, Web3 JavaScript Dapp API 'sini çağırmak için geth JavaScript konsolunu kullanırsınız.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 * [Geth](https://github.com/ethereum/go-ethereum/wiki/geth) 'ı yükler
-* [Hızlı başlangıç: Azure Portal](create-member.md) veya[hızlı başlangıcı kullanarak bir blok zinciri üyesi oluşturun: Azure CLı kullanarak Azure blok zinciri hizmeti blok zinciri üyesi oluşturma](create-member-cli.md)
+* [Hızlı başlangıç: Azure Portal veya hızlı başlangıç kullanarak bir blok zinciri üyesi oluşturma](create-member.md) [: Azure CLI kullanarak bir Azure blok zinciri hizmeti blok zinciri üyesi](create-member-cli.md) oluşturma
 
-## <a name="get-the-geth-connection-string"></a>Geth bağlantı dizesini al
+## <a name="get-geth-connection-string"></a>Geth bağlantı dizesi al
 
-Geth bağlantı dizesini Azure portal bulabilirsiniz.
+Azure portal bir Azure blok zinciri hizmeti işlem düğümü için geth bağlantı dizesini edinebilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Azure blok zinciri hizmeti üyesine gidin. **İşlem düğümleri** ve varsayılan işlem düğümü bağlantısı ' nı seçin.
 
     ![Varsayılan işlem düğümünü seçin](./media/connect-geth/transaction-nodes.png)
 
 1. **Bağlantı dizelerini**seçin.
-1. Bağlantı dizesini **https 'den (erişim anahtarı 1)** kopyalayın. Sonraki bölüm için komutuna ihtiyacınız vardır.
+1. Bağlantı dizesini **https 'den (erişim anahtarı 1)** kopyalayın. Sonraki bölüm için dizeye ihtiyacınız vardır.
 
     ![Bağlantı dizesi](./media/connect-geth/connection-string.png)
 
 ## <a name="connect-to-geth"></a>Geth 'a bağlanma
 
 1. Bir komut istemi veya kabuk açın.
-1. İşlem düğümünüz üzerinde çalışan geth örneğine iliştirmek için geth Attach alt komutunu kullanın. Bağlantı dizesini Attach alt komutu için bir bağımsız değişken olarak yapıştırın. Örneğin,
+1. İşlem düğümünüz üzerinde çalışan geth örneğine iliştirmek için geth Attach alt komutunu kullanın. Bağlantı dizesini Attach alt komutu için bir bağımsız değişken olarak yapıştırın. Örneğin:
 
-    ```
+    ``` bash
     geth attach <connection string>
     ```
 
@@ -55,19 +55,19 @@ Geth bağlantı dizesini Azure portal bulabilirsiniz.
 
     Örneğin, Chainıd 'yi bulmak için aşağıdaki API 'yi kullanın.
 
-    ```bash
+    ``` bash
     admin.nodeInfo.protocols.istanbul.config.chainId
     ```
 
-    Bu örnekte, Chainıd 297 ' dir.
+    Bu örnekte, Chainıd 661 ' dir.
 
     ![Azure blok zinciri hizmeti seçeneği](./media/connect-geth/geth-attach.png)
 
-1. Konsola bağlantıyı kesmek için yazın `exit`.
+1. Konsola bağlantıyı kesmek için `exit`yazın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, Azure blok zinciri hizmeti işlem düğümündeki bir geth örneğine eklemek için geth istemcisini kullandınız. Bir işlem aracılığıyla akıllı sözleşme işlevi oluşturmak, derlemek, dağıtmak ve yürütmek için Ethereum ve truffle için Azure blok zinciri geliştirme setini kullanmak üzere bir sonraki öğreticiyi deneyin.
+Bu hızlı başlangıçta, Azure blok zinciri hizmeti işlem düğümündeki bir geth örneğine eklemek için geth istemcisini kullandınız. Bir işlem aracılığıyla akıllı sözleşme işlevi oluşturmak, derlemek, dağıtmak ve yürütmek için Ethereum için Azure blok zinciri geliştirme setini kullanmak üzere bir sonraki öğreticiyi deneyin.
 
 > [!div class="nextstepaction"]
 > [Akıllı sözleşmeleri oluşturmak, derlemek ve dağıtmak için Visual Studio Code kullanma](send-transaction.md)

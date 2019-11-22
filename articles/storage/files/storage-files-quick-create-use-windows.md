@@ -7,14 +7,14 @@ ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 95a5df4ca14f4be8553c83dfe8b4d09d00341102
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 22c2f3b91b650bcdbf8eb7368023e068a397323f
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260390"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74305816"
 ---
-# <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>Hızlı Başlangıç: Windows sanal makineleri ile Azure dosyaları paylaşma oluşturma ve yönetme
+# <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>Hızlı başlangıç: Windows sanal makineler ile Azure dosyaları paylaşma oluşturma ve yönetme
 
 Makalesinde, bir Azure dosya paylaşımının oluşturulmasına ve kullanılmasına yönelik temel adımlar gösterilmektedir. Bu hızlı başlangıçta, bu vurgu hızlı bir şekilde Azure dosya paylaşımının kurulması ve bu sayede hizmetin nasıl çalıştığı ile karşılaşabilirsiniz. Azure dosya paylaşımlarını kendi ortamınızda oluşturmaya ve kullanmaya yönelik daha ayrıntılı yönergeler gerekiyorsa bkz. [Windows Ile Azure dosya paylaşımı kullanma](storage-how-to-use-files-windows.md).
 
@@ -22,7 +22,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure Portal](https://portal.azure.com) oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 ## <a name="prepare-your-environment"></a>Ortamınızı hazırlama
 
@@ -54,7 +54,7 @@ Sonra, bir dosya paylaşımı oluşturacaksınız.
 1. Yerel makinenizde *Qstestfile* adlı yeni bir txt dosyası oluşturun.
 1. Yeni dosya payını seçin, sonra dosya paylaşma konumunda **karşıya yükle**' yi seçin.
 
-    ![Karşıya dosya yükle](./media/storage-files-quick-create-use-windows/create-file-share-portal5.png)
+    ![Dosyayı karşıya yükleme](./media/storage-files-quick-create-use-windows/create-file-share-portal5.png)
 
 1. . Txt dosyanızı oluşturduğunuz konuma gidin > *Qstestfile. txt* ' yi seçin > **karşıya yükle**' yi seçin.
 
@@ -73,7 +73,7 @@ Sonra, bir dosya paylaşımı oluşturacaksınız.
 1. **Yönetici hesabı**altında *Vmadmin* **Kullanıcı adı** olarak ekleyin ve VM için bir **parola** girin.
 1. **Gelen bağlantı noktası kuralları** altında **Seçilen bağlantı noktalarına izin ver**'i, sonra aşağı açılan listeden **RDP (3389)** ve **HTTP** değerlerini seçin.
 1. **İncele ve oluştur**’u seçin.
-1. **Oluştur**’u seçin. Yeni bir sanal makinenin oluşturulması birkaç dakika sürebilir.
+1. **Oluştur**'u seçin. Yeni bir sanal makinenin oluşturulması birkaç dakika sürebilir.
 
 1. VM dağıtımınız tamamlandıktan sonra **Kaynağa Git**' i seçin.
 
@@ -87,7 +87,7 @@ Bu noktada yeni bir sanal makine oluşturdunuz ve bir veri diskini kullanıma a�
 
 1. **Sanal makineye bağlan** sayfasında, **ıp adresine** göre *3389* **numaralı bağlantı noktası** üzerinden bağlanmak için varsayılan seçenekleri tutun ve **RDP dosyasını indir**' i seçin.
 1. İndirilen RDP dosyasını açın ve istendiğinde **Bağlan** ' ı seçin.
-1. **Windows Güvenliği** penceresinde **Diğer seçenekler**'i ve ardından **Başka bir hesap kullanın**'ı seçin. Kullanıcı adını, sanalmakine için oluşturduğunuz &lt;VM&gt; Yönetici Kullanıcı adı olan localhost\username olarak yazın. Sanal makine için oluşturduğunuz parolayı girin ve ardından **Tamam**' ı seçin.
+1. **Windows Güvenliği** penceresinde **Diğer seçenekler**'i ve ardından **Başka bir hesap kullanın**'ı seçin. Kullanıcı adını *localhost\username*olarak yazın; burada &lt;kullanıcı adı&gt; sanal makine IÇIN oluşturduğunuz VM yönetici kullanıcı adıdır. Sanal makine için oluşturduğunuz parolayı girin ve ardından **Tamam**' ı seçin.
 
    ![Diğer seçenekler](./media/storage-files-quick-create-use-windows/local-host2.png)
 
@@ -101,7 +101,7 @@ Bu noktada yeni bir sanal makine oluşturdunuz ve bir veri diskini kullanıma a�
    ![Azure Dosyaları Bağlan bölmesinden UNC adı](./media/storage-files-quick-create-use-windows/portal_netuse_connect2.png)
 
 1. VM 'de **Dosya Gezgini** 'ni açın ve pencerede **Bu bilgisayarı** seçin. Bu seçim Şeritteki kullanılabilir menüleri değiştirecek. **Bilgisayar** menüsünde, **Ağ Sürücüsüne Bağlan**' ı seçin.
-1. Sürücü harfini seçin ve UNC adını girin. Bu hızlı başlangıçta adlandırma önerilerini izlediyseniz, **Not defteri**'nden  *\\qsstorageacct. File. Core. Windows. net\qsfileshare* ' yi kopyalayın.
+1. Sürücü harfini seçin ve UNC adını girin. Bu hızlı başlangıçta adlandırma önerilerini izlediyseniz, *\\qsstorageacct. File. Core. Windows. net\qsfileshare* dosyasını **Not defteri**'nden kopyalayın.
 
    Her iki onay kutusu işaretli olduğundan emin olun.
 
@@ -173,7 +173,7 @@ Sürücüyü eşleştirdikten sonra bir anlık görüntü oluşturabilirsiniz.
 
 1. **Geri yükle**' yi seçin. Bu eylem, paylaşımın anlık görüntüsünün oluşturulduğu sırada tüm dizinin içeriğini özyinelemeli olarak özgün konuma kopyalar.
 
-   ![Uyarı iletisindeki Geri Yükle düğmesi](./media/storage-files-quick-create-use-windows/snapshot-windows-restore.png)
+   Uyarı iletisindeki geri yükleme düğmesi ![](./media/storage-files-quick-create-use-windows/snapshot-windows-restore.png) Not: dosyanız değişmediyseniz, bu dosya, anlık görüntüyle aynı sürümde olduğundan dosyanın önceki bir sürümünü görmezsiniz. Bu, Windows dosya sunucusu üzerinde nasıl çalıştığı ile tutarlıdır.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
