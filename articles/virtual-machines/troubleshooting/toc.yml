@@ -114,6 +114,8 @@
           href: serial-console-grub-single-user-mode.md
         - name: Seri Konsol NMI/SysRq
           href: serial-console-nmi-sysrq.md
+        - name: Seri konsol grub proaktif yapılandırma
+          href: serial-console-grub-proactive-configuration.md
     - name: Windows için Seri Konsol
       href: serial-console-windows.md
       items:
@@ -125,8 +127,6 @@
       href: serial-console-power-options.md
     - name: Yaygın Seri Konsol hataları
       href: serial-console-errors.md
-    - name: Seri konsol grub proaktif yapılandırma
-      href: serial-console-grub-proactive-configuration.md
 - name: Depolama alanı kaynaklarını silerken karşılaşılan hatalar
   href: storage-resource-deletion-errors.md
 - name: Klasik depolama alanı kaynaklarını silerken karşılaşılan hatalar

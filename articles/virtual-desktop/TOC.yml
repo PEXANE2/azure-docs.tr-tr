@@ -62,6 +62,8 @@
       href: customize-rdp-properties.md
     - name: Tanılama aracını dağıtma
       href: deploy-diagnostics.md
+    - name: MSIX uygulama iliştirmeyi ayarlama
+      href: app-attach.md
 - name: Kavramlar
   items:
     - name: Windows Sanal Masaüstü ortamı

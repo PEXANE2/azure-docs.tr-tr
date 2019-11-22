@@ -49,6 +49,8 @@
           href: routing-coverage.md
         - name: Ulaşım kapsamı
           href: mobility-coverage.md
+        - name: Hava durumu kapsamı
+          href: weather-coverage.md
     - name: Yerelleştirme desteği
       href: supported-languages.md
     - name: Desteklenen eşleme stilleri
@@ -57,6 +59,8 @@
       href: zoom-levels-and-tile-grid.md
     - name: Ulaşım Hizmeti veri yapısı
       href: mobility-service-data-structure.md
+    - name: Hava Durumu Hizmeti kavramları
+      href: weather-services-concepts.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Haritalar hesaplarını yönetme
@@ -185,6 +189,8 @@
           href: 'https://docs.microsoft.com/rest/api/maps/mobility'
         - name: İşleme hizmeti
           href: 'https://docs.microsoft.com/rest/api/maps/render'
+        - name: İşleme hizmeti V2
+          href: 'https://docs.microsoft.com/rest/api/maps/renderv2'
         - name: Yönlendirme hizmeti
           href: 'https://docs.microsoft.com/rest/api/maps/route'
         - name: Arama hizmeti
@@ -195,6 +201,8 @@
           href: 'https://docs.microsoft.com/rest/api/maps/timezone'
         - name: Trafik hizmeti
           href: 'https://docs.microsoft.com/rest/api/maps/traffic'
+        - name: Hava durumu hizmeti
+          href: 'https://docs.microsoft.com/rest/api/maps/weather'
         - name: Haritalar hesabı yönetimi
           href: 'https://docs.microsoft.com/rest/api/maps-management'
     - name: JavaScript

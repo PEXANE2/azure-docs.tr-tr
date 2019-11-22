@@ -156,7 +156,7 @@
           href: vpn-gateway-howto-always-on-user-tunnel.md
         - name: Özel yolları P2S istemcilere tanıtma
           href: vpn-gateway-p2s-advertise-custom-routes.md
-    - name: Azure Kullanılabilirlik Alanları arasında yedekli VNet ağ geçidi oluşturma
+    - name: Alanlar arası yedekli ağ geçidi oluşturma
       href: create-zone-redundant-vnet-gateway.md
     - name: Bağlantılarda IPsec/IKE ilkelerini yapılandırma
       href: vpn-gateway-ipsecikepolicy-rm-powershell.md

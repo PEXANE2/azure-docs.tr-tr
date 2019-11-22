@@ -28,6 +28,8 @@
       href: tutorial-restore-files.md
     - name: Azure VM’lerde SQL Server’ı yedekleme
       href: tutorial-sql-backup.md
+    - name: Azure VM’lerindeki SAP HANA veritabanlarını yedekleme
+      href: tutorial-backup-sap-hana-db.md
     - name: Azure Dosyalar dosya paylaşımlarını yedekleme
       href: tutorial-backup-azure-files.md
     - name: Windows Server’ı yedekleme
@@ -52,6 +54,8 @@
           href: backup-support-matrix-mabs-dpm.md
         - name: MARS aracısı destek matrisi
           href: backup-support-matrix-mars-agent.md
+        - name: SAP HANA Backup destek matrisi
+          href: sap-hana-backup-support-matrix.md
     - name: Güvenlik
       items:
         - name: Rol Tabanlı Access Control
@@ -74,6 +78,8 @@
           href: backup-azure-files-faq.md
         - name: SSS-Azure VM’lerindeki SQL Server veritabanlarını yedekleme
           href: faq-backup-sql-server.md
+        - name: SSS-Azure VM’lerindeki SAP HANA veritabanlarını yedekleme
+          href: sap-hana-faq-backup-azure-vm.md
         - name: SSS-Azure Backup Sunucusu ve DPM
           href: backup-azure-dpm-azure-server-faq.md
         - name: SSS - Azure Backup izleme uyarısı
@@ -228,8 +234,14 @@
           href: restore-sql-database-azure-vm.md
         - name: Yedeklenmiş SQL Server veritabanlarını yönetme
           href: manage-monitor-sql-database-backup.md
-    - name: Azure VM’lerindeki SAP HANA veritabanlarını yedekleme
-      href: backup-azure-sap-hana-database.md
+    - name: Azure VM’lerindeki SAP HANA veritabanları
+      items:
+        - name: Azure VM’lerindeki SAP HANA veritabanlarını yedekleme
+          href: backup-azure-sap-hana-database.md
+        - name: Azure VM’lerindeki SAP HANA veritabanlarını geri yükleme
+          href: sap-hana-db-restore.md
+        - name: Yedeklenmiş SAP HANA veritabanlarını yönetme
+          href: sap-hana-db-manage.md
     - name: Windows Server
       items:
         - name: Windows Server dosya ve klasörlerini yedekleme
