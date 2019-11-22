@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 09/30/2019
-ms.openlocfilehash: e89a8f98d92e92fa8afe93340576b14ff1dd5051
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.date: 11/20/2019
+ms.openlocfilehash: efa19cdd1dd0827fd0e88f533b94f69bd7b99ca9
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249193"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307212"
 ---
 # <a name="role-based-access-control-in-azure-digital-twins"></a>Azure dijital TWINS 'de rol tabanlı erişim denetimi
 
@@ -74,7 +74,7 @@ Aşağıdaki başvuru belgesi makaleleri şunları anlatmaktadır:
 
 Bir Azure dijital TWINS rol ataması, bir kullanıcı veya Azure AD kiracısı gibi bir nesneyi bir rol ve boşluk ile ilişkilendirir. Bu alana ait olan tüm nesnelere izinler verilir. Alan, altındaki tüm uzamsal grafiği içerir.
 
-Örneğin, bir kullanıcıya bir yapı temsil eden uzamsal grafiğin kök düğümü için `DeviceInstaller` rolüne sahip bir rol ataması verilir. Kullanıcı daha sonra bu düğüm ve binanın diğer tüm alt alanları için cihazları okuyabilir ve güncelleştirebilir.
+Örneğin, bir kullanıcıya bir yapı temsil eden uzamsal grafiğin kök düğümü için `DeviceInstaller` rol ataması verilir. Kullanıcı daha sonra bu düğüm ve binanın diğer tüm alt alanları için cihazları okuyabilir ve güncelleştirebilir.
 
 Bir alıcıya izin vermek için bir rol ataması oluşturun. İzinleri iptal etmek için rol atamasını kaldırın.
 

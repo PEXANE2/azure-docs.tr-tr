@@ -1,6 +1,6 @@
 ---
-title: Azure CDN'yi CORS ile kullanma | Microsoft Docs
-description: Çıkış noktaları arası kaynak paylaşımı (CORS) ile Azure Content Delivery Network (CDN) için kullanmayı öğrenin.
+title: CORS ile Azure CDN kullanma | Microsoft Docs
+description: Azure Content Delivery Network 'yi (CDN), çıkış noktaları arası kaynak paylaşımı (CORS) ile birlikte nasıl kullanacağınızı öğrenin.
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -14,86 +14,94 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 204183fa25203a094eecd8df85a8bfd5dcf271cc
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 169de21b6dbdafaaeff64e315daa104f3b6faadd
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593964"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278124"
 ---
-# <a name="using-azure-cdn-with-cors"></a>Azure CDN'yi CORS ile kullanma
+# <a name="using-azure-cdn-with-cors"></a>CORS ile Azure CDN kullanma
 ## <a name="what-is-cors"></a>CORS nedir?
-CORS (çapraz kaynak kaynak paylaşımı) başka bir etki alanındaki kaynaklara erişmek bir etki alanı altında çalışan bir web uygulamasını etkinleştiren bir HTTP özelliğidir. Siteler arası betik saldırıları olasılığını azaltmak için tüm modern web tarayıcıları olarak bilinen bir güvenlik kısıtlaması uygulamak [aynı çıkış noktası İlkesi](https://www.w3.org/Security/wiki/Same_Origin_Policy).  Bu, bir web sayfasından farklı bir etki alanında arama API'leri engeller.  CORS, başka bir kaynak API'leri çağırmak bir kaynak (kaynak etki alanı) izin vermek için güvenli bir yol sağlar.
+CORS (Cross-Origin kaynak paylaşımı), bir etki alanı altında çalışan bir Web uygulamasının başka bir etki alanındaki kaynaklara erişmesine olanak tanıyan bir HTTP özelliğidir. Siteler arası komut dosyası saldırıları olasılığını azaltmak için, tüm modern web tarayıcıları [aynı kaynak ilkesi](https://www.w3.org/Security/wiki/Same_Origin_Policy)olarak bilinen bir güvenlik kısıtlaması uygular.  Bu, bir Web sayfasının farklı bir etki alanındaki API 'Leri aramasını engeller.  CORS, farklı bir kaynaktan API 'Leri çağırmak için bir kaynağa (kaynak etki alanı) izin vermek için güvenli bir yol sağlar.
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
-CORS istekleri, iki tür vardır *basit istekler* ve *karmaşık istekler.*
+İki tür CORS isteği, *basit istekler* ve *karmaşık istekler vardır.*
 
-### <a name="for-simple-requests"></a>Basit istekleri için:
+### <a name="for-simple-requests"></a>Basit istekler için:
 
-1. Tarayıcı ek bir CORS isteği gönderen **kaynak** HTTP isteği üstbilgisi. Bileşimi tanımlanır ana sayfada sunulandan kaynak bu üst bilgi değeri *Protokolü* *etki* ve *bağlantı noktası.*  Bir sayfa zaman https'den\:/ / www.contoso.com çalışır fabrikam.com kaynağı kullanıcının verilere erişmek, aşağıdaki istek üstbilgisi fabrikam.com olarak gönderilecek:
+1. Tarayıcı, CORS isteğini ek bir **kaynak** http istek üstbilgisiyle gönderir. Bu üstbilginin değeri, üst sayfayı sunan, *protokol,* *etki alanı* ve *bağlantı noktası* birleşimi olarak tanımlanan başlangıç noktasıdır.  Https\://www.contoso.com 'deki bir sayfa, fabrikam.com kaynağından bir kullanıcının verilerine erişmeyi denediğinde, aşağıdaki istek üst bilgisi fabrikam.com 'e gönderilir:
 
    `Origin: https://www.contoso.com`
 
-2. Sunucu aşağıdakilerden herhangi biri ile yanıt verebilir:
+2. Sunucu, aşağıdakilerden biriyle yanıt verebilir:
 
-   * Bir **Access-Control-Allow-Origin** hangi kaynak site izin belirten kendi yanıt üst bilgisi. Örneğin:
+   * Yanıtında bir **erişim-denetim-Izin verme-kaynak** üst bilgisi, hangi kaynak siteye izin verildiğini belirtir. Örneğin:
 
      `Access-Control-Allow-Origin: https://www.contoso.com`
 
-   * Sunucu çıkış noktaları arası istek kaynak üst bilgisi denetledikten sonra izin vermiyorsa 403 gibi HTTP hata kodu
+   * Sunucu, kaynak üstbilgisini denetledikten sonra çıkış noktaları arası isteğe izin vermezse 403 gibi bir HTTP hata kodu
 
-   * Bir **Access-Control-Allow-Origin** tüm kaynaklara izin veren bir joker karakter üstbilgiyle:
+   * Tüm kaynakları izin veren bir joker karakter içeren bir **erişim-denetim-izin-kaynak** üst bilgisi:
 
      `Access-Control-Allow-Origin: *`
 
-### <a name="for-complex-requests"></a>Karmaşık istekleri için:
+### <a name="for-complex-requests"></a>Karmaşık istekler için:
 
-Karmaşık bir CORS isteği göndermek için tarayıcı burada gerekli isteğidir bir *denetim öncesi isteği* (diğer bir deyişle, ilk araştırma) fiili CORS isteğini göndermeden önce. Denetim öncesi isteği özgün CORS devam edebilir ve olduğundan isteği sunucu izni ister bir `OPTIONS` aynı URL'sine istek.
+Karmaşık bir istek, tarayıcının gerçek CORS isteğini göndermeden önce bir *ön kontrol isteği* (yani bir ön araştırma) göndermesi için gereken bir CORS isteğidir. İlk CORS isteği devam edebiliyorsa ve aynı URL 'ye yönelik bir `OPTIONS` isteği ise, ön kontrol isteği sunucu iznini ister.
 
 > [!TIP]
-> CORS akışlar ve yaygın görülen tehlikeleri hakkında daha fazla ayrıntı için görüntüleme [REST API'leri için CORS Kılavuzu](https://www.moesif.com/blog/technical/cors/Authoritative-Guide-to-CORS-Cross-Origin-Resource-Sharing-for-REST-APIs/).
+> CORS akışları ve genel bilgiler hakkında daha fazla bilgi için, [REST API 'leri IÇIN CORS Kılavuzu](https://www.moesif.com/blog/technical/cors/Authoritative-Guide-to-CORS-Cross-Origin-Resource-Sharing-for-REST-APIs/)' na bakın.
 >
 >
 
-## <a name="wildcard-or-single-origin-scenarios"></a>Joker karakter veya tek bir kaynak senaryoları
-Azure cdn'de CORS ek bir yapılandırma olmadan otomatik olarak çalışır, **Access-Control-Allow-Origin** joker karakter (*) veya tek bir kaynak için üst bilgisini ayarlayın.  CDN ilk yanıtı önbelleğe alır ve sonraki istekleri aynı üst bilgiyi kullanır.
+## <a name="wildcard-or-single-origin-scenarios"></a>Joker karakter veya tek kaynak senaryoları
+**Erişim-denetim-izin-kaynak** üstbilgisi joker (*) veya tek bir Origin olarak AYARLANDıĞıNDA Azure CDN CORS, ek yapılandırma olmadan otomatik olarak çalışacaktır.  CDN ilk yanıtı önbelleğe alacak ve sonraki istekler aynı üstbilgiyi kullanacaktır.
 
-İstek zaten CDN'yi CORS kaynağınızda ayarlamadan önce yapıldı, içerikle yeniden yüklemek için uç nokta içeriğinizle içeriği temizlemek gerekir **Access-Control-Allow-Origin** başlığı.
+Kaynak üzerinde CORS 'den önce CDN 'de istekler zaten yapılmışsa, içerik **erişim-denetim-izin-kaynak** üstbilgisiyle yeniden yüklemek için uç nokta içeriklerindeki içeriği temizlemeniz gerekir.
 
-## <a name="multiple-origin-scenarios"></a>Birden çok kaynak senaryoları
-Belirli bir CORS için izin verilecek çıkış noktaları listesi izin vermeniz gerekiyorsa, biraz daha karmaşık işlerinizi. CDN'nin önbelleğe aldığını sorun oluşur **Access-Control-Allow-Origin** ilk CORS kaynağı başlığı.  Farklı bir CORS kaynağı bir sonraki istekte bulunduğunda CDN önbelleğe alınan hizmet **Access-Control-Allow-Origin** eşleşmeyecektir üst bilgisi.  Bu sorunu gidermek için birkaç yolu vardır.
+## <a name="multiple-origin-scenarios"></a>Birden çok kaynak senaryosu
+CORS için belirli bir çıkış listesine izin verilmesi gerekiyorsa, bu şeyler biraz daha karmaşıktır. Bu sorun, CDN ilk CORS kaynağı için **Access-Control-Allow-Origin** üst bilgisini önbelleğe alırken oluşur.  Farklı bir CORS kaynağı sonraki bir istek yaptığında CDN, önbelleğe alınan **Access-Control-Allow-Origin** üst bilgisine sahip olur ve bu eşleşmez.  Bunu düzeltmek için birkaç yol vardır.
+
+### <a name="azure-cdn-standard-profiles"></a>Standart profiller Azure CDN
+Microsoft 'tan Azure CDN Standard 'da, istekteki **kaynak** üst bilgisini denetlemek için [standart kurallar altyapısında](cdn-standard-rules-engine-reference.md) bir kural oluşturabilirsiniz. Geçerli bir Origin ise, kuralınız **erişim-Control-Allow-Origin** üst bilgisini istenen değere ayarlar. Bu durumda, dosyanın kaynak sunucusundan **erişim-denetim-izin-kaynak** üst bilgisi yok SAYıLıR ve CDN 'nin Rules altyapısı ızın verilen CORS kaynakları 'nı tamamen yönetir.
+
+![Standart kurallar altyapısına sahip kurallar örneği](./media/cdn-cors/cdn-standard-cors.png)
+
+> [!TIP]
+> **Erişim-denetimi-Izin verme yöntemleri**gibi ek yanıt üstbilgilerini değiştirmek için kuralınıza ek eylemler ekleyebilirsiniz.
+> 
+
+**Akamai ' dan Azure CDN Standart**, joker karakter kaynağını kullanmadan birden fazla kaynağa izin veren tek mekanizma [sorgu dizesi önbelleğe almayı](cdn-query-string.md)kullanmaktır. CDN uç noktası için sorgu dizesi ayarını etkinleştirin ve ardından izin verilen her etki alanından gelen istekler için benzersiz bir sorgu dizesi kullanın. Bunun yapılması, benzersiz bir sorgu dizesi için CDN önbelleğine ayrı bir nesne olarak neden olur. Ancak bu yaklaşım ideal değildir, ancak CDN 'de önbelleğe alınan aynı dosyanın birden çok kopyasının oluşmasına neden olur.  
 
 ### <a name="azure-cdn-premium-from-verizon"></a>Verizon’dan Azure CDN Premium
-Bunu etkinleştirmek için en iyi yolu kullanmaktır **verizon'dan Azure CDN Premium**, gelişmiş işlevsellik bazı sunar. 
+Verizon Premium kuralları altyapısını kullanarak, istekteki **kaynak** üst bilgisini denetlemek için [bir kural oluşturmanız](cdn-rules-engine.md) gerekir.  Geçerli bir başlangıç noktası ise, kuralınız **erişim-Control-Allow-Origin** üst bilgisini istekte verilen kaynağa ayarlar.  **Kaynak** üstbilgisinde belirtilen kaynağa izin verilmiyorsa, kuralınız, tarayıcının isteği reddetmesine neden olacak şekilde **erişim-denetim-izin-Origin** üst bilgisini atmalıdır. 
 
-Şunları yapmanız gerekir [kural oluşturma](cdn-rules-engine.md) denetlemek için **kaynak** isteği üstbilgisi.  Geçerli bir kaynak varsa, kural ayarlayacak **Access-Control-Allow-Origin** istekte sağlanan kaynak üstbilgiyle.  Kaynak belirtilmişse **kaynak** üst bilgi verilmez, kural atlamak **Access-Control-Allow-Origin** başlığı, bu isteği reddetmek tarayıcıya çalışmamasına neden olur. 
+Bunu Premium kurallar altyapısı ile gerçekleştirmenin iki yolu vardır. Her iki durumda da, dosyanın kaynak sunucusundaki **erişim-denetim-izin-kaynak** üst bilgisi yok SAYıLıR ve CDN 'nin Rules altyapısı ızın verilen CORS kaynakları 'nı tamamen yönetir.
 
-Kural altyapısı ile bunu yapmanın iki yolu vardır. Her iki durumda da **Access-Control-Allow-Origin** üstbilgi dosyasının kaynak sunucudan göz ardı edilir ve CDN'in kurallar altyapısı tamamen izin verilen CORS çıkış noktaları yönetir.
-
-#### <a name="one-regular-expression-with-all-valid-origins"></a>Tüm geçerli kaynaklara sahip bir normal ifade
-Bu durumda, tüm izin vermek istediğiniz kaynakları içeren bir normal ifade oluşturacaksınız: 
+#### <a name="one-regular-expression-with-all-valid-origins"></a>Tüm geçerli kaynakları içeren bir normal ifade
+Bu durumda, izin vermek istediğiniz tüm kaynakları içeren bir normal ifade oluşturacaksınız: 
 
     https?:\/\/(www\.contoso\.com|contoso\.com|www\.microsoft\.com|microsoft.com\.com)$
 
 > [!TIP]
-> **Verizon'dan Azure CDN Premium** kullanan [Perl uyumlu normal ifadeler](https://pcre.org/) normal ifadeler için kendi altyapısı olarak.  Gibi bir araç kullanabilirsiniz [normal ifadeler 101](https://regex101.com/) normal ifadeniz doğrulamak için.  "/" Karakterini normal ifadelerde geçerli olduğundan ve kaçış karakterleri gerekmez, ancak bu karakter atlanıyor ve en iyi uygulama olarak kabul edilir bazı regex doğrulayıcıları tarafından beklenen dikkat edin.
+> **Verizon ' dan Premium Azure CDN** , normal ifadeler için kendi altyapısı olarak [Perl uyumlu normal ifadelerini](https://pcre.org/) kullanır.  Normal ifadenizi doğrulamak için [normal ifadeler 101](https://regex101.com/) gibi bir araç kullanabilirsiniz.  "/" Karakterinin normal ifadelerde geçerli olduğunu ve kaçmasına gerek duymadığını, ancak bu karakterin kaçış için en iyi uygulama olarak kabul edileceğini ve bazı Regex doğrulayıcıları tarafından beklendiğini unutmayın.
 > 
 > 
 
-Normal ifadeyle eşleşen, kural yerini alacak **Access-Control-Allow-Origin** isteğin kaynağına sahip kaynaktan üstbilgi (varsa).  Ek CORS üst bilgileri gibi ekleyebilirsiniz **erişim-denetim-Allow-Methods**.
+Normal ifade eşleşiyorsa kuralınız, **erişim-denetimi-izin-kaynak** üst bilgisini (varsa), isteği gönderen kaynağa göre değiştirir.  Ayrıca, **Access-Control-Allow-Methods**gıbı ek CORS üst bilgileri de ekleyebilirsiniz.
 
-![Normal ifade ile kuralları örneği](./media/cdn-cors/cdn-cors-regex.png)
+![Normal ifadeyle kurallar örneği](./media/cdn-cors/cdn-cors-regex.png)
 
 #### <a name="request-header-rule-for-each-origin"></a>Her kaynak için istek üst bilgisi kuralı.
-Normal ifadeler yerine, bunun yerine kullanarak izin vermek istediğiniz her kaynak için ayrı bir kural oluşturabilirsiniz **istek üst bilgisi joker** [eşleşen koşul](/previous-versions/azure/mt757336(v=azure.100)#match-conditions). Normal ifade yöntemiyle olduğu gibi tek başına kural altyapısı CORS üstbilgilerini ayarlar. 
+Normal ifadeler yerine, **Istek üst bilgisi** [eşleştirme koşulunun](/previous-versions/azure/mt757336(v=azure.100)#match-conditions)kullanılmasına izin vermek istediğiniz her kaynak için ayrı bir kural oluşturabilirsiniz. Normal ifade yönteminde olduğu gibi, kural altyapısı yalnızca CORS üst bilgilerini ayarlar. 
 
-![Normal ifade olmadan kuralları örneği](./media/cdn-cors/cdn-cors-no-regex.png)
+![Normal ifade olmayan kurallar örneği](./media/cdn-cors/cdn-cors-no-regex.png)
 
 > [!TIP]
-> Joker karakter kullanmanın yukarıdaki örnekte * hem HTTP hem de HTTPS eşleştirmek için kurallar altyapısı söyler.
+> Yukarıdaki örnekte joker karakter * kullanımı, Rules altyapısına hem HTTP hem de HTTPS ile eşleşmesini söyler.
 > 
 > 
 
-### <a name="azure-cdn-standard-profiles"></a>Azure CDN standart profilleri
-Azure CDN standart profilleri (**Azure CDN standart Microsoft gelen**, **akamai'den Azure CDN standart**, ve **verizon'dan Azure CDN standart**), yalnızca mekanizması joker karakter kaynak kullanımını kullanmaktır olmadan için birden çok kaynaklara izin [sorgu dizesini önbelleğe alma](cdn-query-string.md). CDN uç noktası için sorgu dizesi ayarını etkinleştirin ve ardından izin verilen her etki alanı gelen istekleri için bir benzersiz sorgu dizesini kullanın. Bunun yapılması, ayrı bir nesne için her bir benzersiz sorgu dizesini önbelleğe alma bir CDN neden olur. Bu yaklaşım ancak ideal, değil olarak CDN'de önbelleğe alınmış aynı dosyanın birden çok kopyasını neden.  
+
 

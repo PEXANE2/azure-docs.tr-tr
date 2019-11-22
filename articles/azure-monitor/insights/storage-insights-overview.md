@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 08/15/2019
-ms.openlocfilehash: e5738b9f7cca03898d3bb5c593004bb316aa0b23
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: aaf7d1a38d4b809b904b6c607a4cfc23efd4dde5
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553887"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286315"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage-preview"></a>Depolama hizmetinizi depolama için Azure Izleyici ile izleme (Önizleme)
 
@@ -26,7 +26,7 @@ Deneyime girmeden önce, bilgilerin nasıl sunulduklarını ve görselleştirir.
 
 Birleşik BT, şunları sağlar:
 
-* Depolama hizmetinin veya API işleminin sistem durumuna bağlı olarak kullanılabilirliğinden bir anlık görüntü görünümünü gösteren **Ölçek perspektifinde** , depolama hizmetinin aldığı toplam istek sayısını gösteren kullanım ve ortalama süreyi gösteren gecikme süresi depolama hizmeti veya API işlem türü, istekleri işlemek için sürüyor. Ayrıca, kapasiteyi blob, dosya, tablo ve kuyruğa göre de görüntüleyebilirsiniz.
+* Depolama hizmetinin veya API işleminin sistem durumuna göre kullanılabilirliğinden bir anlık görüntü görünümünü gösteren **Ölçek perspektifinde** , depolama hizmetinin aldığı toplam istek sayısını gösteren kullanım ve depolama hizmeti ya da API işlem türünün istekleri işleme aldığı ortalama süreyi gösteren gecikme süresi. Ayrıca, kapasiteyi blob, dosya, tablo ve kuyruğa göre de görüntüleyebilirsiniz.
 
 * Sorunları tanılamaya veya kategori kullanılabilirliği, performans, hatalara ve kapasiteye göre ayrıntılı analiz gerçekleştirmeye yardımcı olması için belirli bir depolama hesabının **detayına** bakın. Bu seçeneklerden herhangi birini seçmek, ölçümlerin derinlemesine bir görünümünü sağlar.  
 
@@ -47,7 +47,7 @@ Azure Izleyici 'den, aboneliğinizdeki birden çok depolama hesabından işlem, 
 
 Tüm aboneliklerinizde depolama hesaplarınızın kullanımını ve kullanılabilirliğini görüntülemek için aşağıdaki adımları gerçekleştirin.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 2. Azure portal sol bölmeden **izleyici** ' yi seçin ve **Öngörüler** bölümünde **depolama hesapları ' nı (Önizleme)** seçin.
 
@@ -65,7 +65,7 @@ Seçili abonelik için **genel bakış** çalışma kitabında tablo, abonelik i
 
 Açılan listelerin altındaki sayaç kutucuğu, abonelikteki toplam depolama hesabı sayısını kaydeder ve toplamın kaç tane seçili olduğunu yansıtır. Çalışma kitabındaki, işlem ölçümlerini veya hataları rapor eden sütunlar için koşullu renk kodlaması veya heavmaps vardır. En büyük renk en yüksek değere sahiptir ve en düşük değere göre daha açık bir renge sahiptir. Hata tabanlı sütunlarda değer kırmızı, ölçüm tabanlı sütunlar için ise değer mavi renkte olur.
 
-**Kullanılabilir**sütunlarda bir değer seçin, **e2e gecikme süresi**, **sunucu gecikmesi**ve **işlem hata türü/hataları** , sizi için seçilen sütunla eşleşen belirli depolama ölçümleri türüne uyarlanmış bir rapora yönlendirir depolama hesabı. Her bir kategorinin çalışma kitapları hakkında daha fazla bilgi için aşağıdaki [ayrıntılı depolama çalışma kitapları](#detailed-storage-workbooks) bölümüne bakın. 
+**Kullanılabilirlik**, **e2e gecikme süresi**, **sunucu gecikmesi**ve **işlem hata türü/hata** sütunlarında bir değer seçin, sizi bu depolama hesabı için seçilen sütunla eşleşen belirli depolama ölçümleri türüne uyarlanmış bir rapora yönlendirir. Her bir kategorinin çalışma kitapları hakkında daha fazla bilgi için aşağıdaki [ayrıntılı depolama çalışma kitapları](#detailed-storage-workbooks) bölümüne bakın. 
 
 >[!NOTE]
 >Raporda hangi hataların gösterilebileceği hakkında ayrıntılı bilgi için bkz. [yanıt türü şeması](../../storage/common/storage-metrics-in-azure-monitor.md#metrics-dimensions) ve **serverothererror**, **clienentothererror**, **clientkısıtlanror**gibi yanıt türlerini arayın. Seçili depolama hesaplarına bağlı olarak, üçten fazla üç tür hata bildirildiğinde, diğer tüm hatalar **diğeri**kategorisi altında gösterilir.
@@ -111,7 +111,7 @@ Depolama hesabı için **genel bakış** çalışma kitabında, hızlı bir şek
 
 ## <a name="detailed-storage-workbooks"></a>Ayrıntılı depolama çalışma kitapları
 
-Birden fazla depolama hesabına **genel bakış** çalışma kitabındaki **kullanılabilirlik**, **e2e gecikme süresi**, **sunucu gecikmesi**ve **işlem hata türü/hata** sütunlarında bir değer seçtiğinizden veya herhangi bir düğmeden birini seçmeye bakılmaksızın Belirli bir depolama hesabındaki **genel bakış** çalışma kitabından **oluşan sorunlar**, **performans**, **kullanılabilirlik**ve **Kapasite** , her biri söz konusu kategoriye özel bir dizi etkileşimli depolama ile ilgili bilgi sağlar.  
+Birden fazla depolama hesabına **genel bakış** çalışma kitabındaki **kullanılabilirlik**, **e2e gecikme süresi**, **sunucu gecikmesi**ve **işlem hata türü/hata** sütunlarında bir değer seçtiğinizden veya belirli bir depolama hesabındaki **genel bakış** çalışma kitabından **hatalara**, **performansa**, **kullanılabilirliğe**ve **kapasiteye** yönelik düğmelerden birini seçerek, her biri bu kategoriye özel bir dizi etkileşimli depolama ile ilgili bilgi sağlar.  
 
 * **Kullanılabilirlik** , **kullanılabilirlik** çalışma kitabını açar. Depolama hesabında tanımlanan, seçilen zaman aralığını temsil eden bir eğilim çizgisi ve için bir kullanılabilirlik eğilimi grafiği içeren, veri hizmetine göre kategorilere ayrılan her nesnenin kullanılabilir sistem durumunu gösteren bir tablo olan Azure depolama hizmeti 'nin geçerli sistem durumunu gösterir. hesaptaki her bir veri hizmeti.  
 
@@ -121,7 +121,7 @@ Birden fazla depolama hesabına **genel bakış** çalışma kitabındaki **kull
 
     ![Performans raporu örneği](./media/storage-insights-overview/storage-account-performance-01.png)
 
-* Kılavuzda listelenen herhangi bir hata kategorisinden birini seçerek **hata** çalışma kitabını açın. Raporda, hata ve başarılı istekler, istemci azaltma hataları, Clienentothererror özniteliğine özgü işlem **yanıt türü** boyut ölçümü için bir performans grafiği olan diğer tüm istemci tarafı hatalarının ölçüm kutucukları gösterilmektedir. ve iki tablo- **Yanıt türüne göre** **API adına ve işlemlere göre işlem** .
+* Kılavuzda listelenen herhangi bir hata kategorisinden birini seçerek **hata** çalışma kitabını açın. Raporda, bir yandan ve başarılı istekler, istemci kısıtlama hataları, Clienentothererror özniteliğine özel işlem **yanıt türü** boyut ölçümü için bir performans grafiği ve **Yanıt türüne göre** **API adına** ve işlemlere göre işlemler, diğer tüm istemci tarafı hatalarının ölçüm kutucukları gösterilmektedir.
 
    ![Hata raporu örneği](./media/storage-insights-overview/storage-account-failures-01.png)
 
@@ -168,7 +168,7 @@ Bu bölümde, veri analizi ihtiyaçlarınızı desteklemeye yönelik olarak öze
 
 ### <a name="modify-metrics-and-colors-in-the-workbook"></a>Çalışma kitabındaki ölçümleri ve renkleri değiştirme
 
-Önceden oluşturulmuş çalışma kitapları ölçüm verileri içerir ve görselleştirmelerin herhangi birini değiştirme veya kaldırma ve takımınızın özel ihtiyaçlarına göre özelleştirme imkanına sahip olursunuz. 
+Önceden oluşturulmuş çalışma kitapları ölçüm verileri içerir ve görselleştirmelerin herhangi birini değiştirme veya kaldırma ve takımınızın özel ihtiyaçlarına göre özelleştirme imkanına sahip olursunuz.
 
 Bizim örneğimizde, nasıl yapılacağını göstermek için çoklu abonelik ve depolama hesabı kapasitesi çalışma kitabıyla birlikte çalışıyoruz:
 
@@ -183,7 +183,7 @@ Bizim örneğimizde, nasıl yapılacağını göstermek için çoklu abonelik ve
 
     ![Çalışma kitabını değiştirmek için Düzenle ' yi seçin](./media/storage-insights-overview/workbook-edit-workbook.png)
 
-3. Ölçümler bölümünün yanındaki **Düzenle**' yi seçin. 
+3. Ölçümler bölümünün yanındaki **Düzenle**' yi seçin.
 
     ![Kapasite çalışma kitabı ölçümlerini değiştirmek için Düzenle ' yi seçin](./media/storage-insights-overview/edit-metrics-capacity-workbook-01.png)
 
@@ -191,7 +191,7 @@ Bizim örneğimizde, nasıl yapılacağını göstermek için çoklu abonelik ve
 
     ![Sütun ayarlarını Düzenle](./media/storage-insights-overview/edit-capacity-workbook-resource-grid.png)
 
-5. **Sütun ayarlarını Düzenle** bölmesinde, **Microsoft. Storage/Storageaccounts-Capacity-usedcapacity zaman çizelgesi $ | sütunları bölümünde öğesini seçin. Hesap kapasite zaman çizelgesi $** ve açılan liste **sütunu Işleyicisinin** altında **gizli**öğesini seçin. 
+5. **Sütun ayarlarını Düzenle** bölmesinde, **Microsoft. Storage/Storageaccounts-Capacity-usedcapacity zaman çizelgesi $ | sütunları bölümünde öğesini seçin. Hesap kapasite zaman çizelgesi $** ve açılan liste **sütunu Işleyicisinin** altında **gizli**öğesini seçin.
 
 6. Değişiklerinizi uygulamak için **Kaydet ve Kapat ' ı** seçin.
 
@@ -199,7 +199,7 @@ Bizim örneğimizde, nasıl yapılacağını göstermek için çoklu abonelik ve
 
 1. Ölçüm kılavuzunda **sütun ayarları** ' nı seçin.
 
-2. **Sütun ayarlarını Düzenle** bölmesinde **Microsoft. Storage/Storageaccounts-Capacity-usedcapacity $ | Microsoft. Storage/storageaccounts/Blobservices-Capacity-blobcapacity $ | Microsoft. Storage/sütunları bölümünde ' ı seçin. storageaccounts/fileservices-kapasite-FileCapacity $ | Microsoft. Storage/storageaccounts/queueservices-Capacity-QueueCapacity $ | Microsoft. Storage/storageaccounts/tableservices-Capacity-TableCapacity $** . Aşağı açılan liste **renk paleti**altında **yeşil**' i seçin.
+2. **Sütun ayarlarını Düzenle** bölmesinde, Microsoft **sütunları** bölümünde ' ı seçin **. depolama/Storageaccounts-kapasite-usedcapacity $ | Microsoft. Storage/storageaccounts/Blobservices-Capacity-blobcapacity $ | Microsoft. Storage/Storageaccounts/Fileservices-Capacity-filecapacity $ | Microsoft. Storage/storageaccounts/Queueservices-Capacity-queuecapacity $ | Microsoft. Storage/Storageaccounts/Tableservices-Capacity-tablecapacity $** . Aşağı açılan liste **renk paleti**altında **yeşil**' i seçin.
 
 3. Değişiklerinizi uygulamak için **Kaydet ve Kapat ' ı** seçin.
 
@@ -234,6 +234,86 @@ Bu bölüm, depolama için Azure Izleyici (Önizleme) kullanırken karşılaşab
 ### <a name="resolving-performance-capacity-or-availability-issues"></a>Performans, kapasite veya kullanılabilirlik sorunlarını çözme
 
 Depolama için Azure Izleyici (Önizleme) ile belirttiğiniz depolamayla ilgili sorunları gidermeye yardımcı olmak için bkz. Azure depolama [sorun giderme kılavuzu](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#troubleshooting-guidance).  
+
+### <a name="why-can-i-only-see-200-storage-accounts"></a>Neden 200 depolama hesabı görmem yeterlidir?
+
+Seçilen depolama hesaplarının sayısı, seçilen aboneliklerin sayısından bağımsız olarak 200 sınırına sahiptir.
+
+### <a name="what-happens-when-i-click-on-a-recently-pinned-tile-in-the-dashboard"></a>Panoda son sabitlenmiş bir kutucuğa tıkladığımda ne olur?
+
+* Kutucukta herhangi bir yere tıkladığınızda, sizi kutucuğun sabitlendiği sekmeye götürür. Örneğin, "depolama hesabına genel bakış" sekmesinde bir grafiği sabitleyebilir, panoda bu kutucuğa tıkladığınızda bu varsayılan görünümü açılır. ancak, kendi kayıtlı kopyaınızdan bir grafiği sabitleyebilir, kaydettiğiniz kopya görünümü açılır.
+* Başlığın sol üst kısmındaki filtre simgesi "kutucuk ayarlarını yapılandır" sekmesini açar.
+* Sağ üst köşedeki elips simgesi size "başlık verilerini özelleştirme", "özelleştirme", "Yenile" ve "Panodan kaldır" seçeneklerini verecektir.
+
+### <a name="what-happens-when-i-save-a-workbook"></a>Çalışma kitabını kaydettiğimde ne olur?
+
+* Bir çalışma kitabını kaydettiğinizde, düzenlemelerinizle çalışma kitabının yeni bir kopyasını oluşturmanıza ve başlığı değiştirmenize olanak sağlar. Kaydetme, çalışma kitabının üzerine yazmaz, geçerli çalışma kitabı her zaman varsayılan görünüm olacaktır.
+* **Kaydedilmemiş** bir çalışma kitabı yalnızca varsayılan görünümüdür.
+
+
+### <a name="why-dont-i-see-all-my-subscriptions-in-the-portal"></a>Portalda tüm aboneliklerimi neden görmüyorum?
+
+Portal, yalnızca Portal başlatıldığında seçili abonelikler için verileri gösterir. Hangi aboneliklerin seçili olduğunu değiştirmek için sağ üst kısımdaki ' a gidin ve filtre simgesi olan not defterine tıklayın. Bu, Dizin + abonelikler sekmesini gösterir.
+
+![Dizin + abonelik](./media/storage-insights-overview/fqa3.png)
+
+### <a name="how-to-change-the-coloring-and-threshold-for-availability"></a>Kullanılabilirlik için renklendirme ve eşik nasıl değiştirilir?
+
+Kullanılabilirliği ve eşikleri kullanılabilirlik için değiştirme hakkında ayrıntılı adımlar için [kullanılabilirlik eşiğini değiştirme](storage-insights-overview.md#modify-the-availability-threshold) bölümüne bakın.
+
+### <a name="how-to-analyze-and-troubleshoot-the-data-shown-in-azure-monitor-for-storage"></a>Depolama için Azure Izleyici 'de gösterilen verileri analiz etme ve giderme
+
+ Depolama için Azure Izleyici 'de gösterilen Azure depolama verilerini çözümleme ve sorun giderme hakkında bilgi için [bkz. izleyici, tanılama ve sorun giderme Microsoft Azure depolama](https://docs.microsoft.com/azure/storage/common/storage-monitoring-diagnosing-troubleshooting) makalesi.
+
+### <a name="why-dont-i-see-all-the-types-of-errors-in-metrics"></a>Ölçümlerde neden tüm hata türlerini görmüyorum?
+
+Şu anda en fazla üç farklı hata türü gösteriliyor ve hataların geri kalanı tek bir demet içinde birlikte gruplandırılır. SplitByLimit kullanılarak denetlenir ve değiştirilebilir. Bu özelliği değiştirmek için:
+
+1. Çalışma kitabını Düzenle ' ye tıklayın.
+2. Ölçümler ' e gidin, Düzenle ' ye tıklayın ve ardından **işlemler, toplam** veya düzenlemek istediğiniz ölçümler ' i seçin.
+
+    ![Ölçümler 'e gidin ve "Işlemler, toplamlar" üzerinde Düzenle ' ye tıklayın.](./media/storage-insights-overview/fqa7.png)
+
+1. Ardından bölme sayısını değiştirin.
+
+    ![Ölçüm parametrelerini seçin "](./media/storage-insights-overview/fqa7-2.png)
+
+Hatalı hata türlerini n + 1 olarak, geriye kalan hatalar için de n + 1 olarak belirtin.
+
+###  <a name="i-saved-my-workbook-while-on-some-storage-account-why-cant-i-find-it-now"></a>Çalışma kitabımı bazı depolama hesabı sırasında kaydettik. Neden şimdi bulamıyorum?
+
+Her çalışma kitabı, bu dosyayı kaydettiğiniz depolama hesabına kaydedilir. Kullanıcının çalışma kitabını kaydettiği belirli bir depolama hesabını bulmayı deneyin. Aksi takdirde, kaynağı (depolama hesabı) bilmeden belirli bir çalışma kitabını bulmanın bir yolu yoktur.
+
+### <a name="what-is-time-range"></a>Zaman aralığı nedir?
+
+Zaman aralığı, belirli bir zaman çerçevesinde verileri gösterir. Örneğin, zaman aralığı 24 saat ise, son 24 saat içindeki verileri gösterir.
+
+### <a name="what-is-time-granularity-time-grain"></a>Zaman ayrıntı düzeyi (zaman çizgisi) nedir?
+
+Zaman ayrıntı düzeyi iki veri noktası arasındaki zaman farkındır. Örneğin, zaman dilimi 1 saniye olarak ayarlandıysa, her saniye ölçüm toplanır.
+
+### <a name="what-is-the-time-granularity-once-we-pin-any-part-of-the-workbooks-to-a-dashboard"></a>Çalışma kitaplarının herhangi bir bölümünü bir panoya sabitledikten sonra zaman ayrıntı düzeyi nedir?
+
+Varsayılan zaman ayrıntı düzeyi otomatik olarak ayarlanmıştır, şu anda şu anda değiştirilemez.
+
+### <a name="how-do-i-change-the-timespan-time-range-of-the-workbook-step-on-my-dashboard"></a>Panodaki çalışma kitabı adımının TimeSpan/Time aralığını değiştirmek Nasıl yaparım? mı?
+
+Varsayılan olarak, pano kutucuğlarınızdaki TimeSpan/Time aralığı 24 saat olarak ayarlanır, bunu değiştirmek için sağ üst köşedeki üç noktaya tıklayın, **kutucuk verilerini Özelleştir**' i seçin, "başlık düzeyinde Pano zaman ayarlarını geçersiz kıl" kutusunu işaretleyin ve ardından açılan menüyü kullanarak bir zaman aralığı seçin.  
+
+![Kutucuğun sağ köşesindeki üç noktayı seçin ve bu verileri Özelleştir ' i seçin](./media/storage-insights-overview/fqa-data-settings.png)
+
+![Kutucuk ayarlarını yapılandır bölümünde, TimeSpan/saat aralığını değiştirmek için TimeSpan açılan listesini seçin](./media/storage-insights-overview/fqa-timespan.png)
+
+### <a name="how-do-i-change-the-title-of-the-workbook-or-a-workbook-step-i-pinned-to-a-dashboard"></a>Çalışma kitabının başlığını veya bir panoya sabitlenmiş bir çalışma kitabı adımını değiştirmek Nasıl yaparım??
+
+Bir panoya sabitlenmiş çalışma kitabının veya çalışma kitabı adımının başlığı, çalışma kitabındaki aynı adı korur. Başlığı değiştirmek için çalışma kitabının kendi kopyasını kaydetmeniz gerekir. Ardından, Kaydet 'e tıklamadan önce çalışma kitabını adlandırın.
+
+![Çalışma kitabının bir kopyasını kaydetmek ve adını değiştirmek için üst kısımdaki Kaydet ' i seçin](./media/storage-insights-overview/fqa-change-workbook-name.png)
+
+Kaydettiğiniz çalışma kitabınızdaki bir adımın adını değiştirmek için adım altında Düzenle ' yi seçin ve ardından ayarların en altındaki dişli ' ı seçin.
+
+![çalışma kitabı adımının en altında Düzenle ' yi seçin](./media/storage-insights-overview/fqa-edit.png)
+ayarlar ' a ![ayarlar ' da, adım adını değiştirebilmek için alttaki dişli ' ı seçin](./media/storage-insights-overview/fqa-change-name.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

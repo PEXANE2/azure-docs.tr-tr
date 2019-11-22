@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory ile otomatik kullanıcı hazırlama için LinkedIn Sales Navigator yapılandırma | Microsoft Docs'
-description: Otomatik olarak sağlama ve sağlamasını LinkedIn Sales Navigator kullanıcı hesaplarını Azure Active Directory yapılandırmayı öğrenin.
+title: 'Öğretici: Kullanıcı hazırlama-LinkedIn Sales Navigator, Azure AD'
+description: LinkedIn Sales Navigator 'a Kullanıcı hesaplarını otomatik olarak sağlamak ve serbest bırakmak için Azure Active Directory yapılandırmayı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: ArvindHarinder1
@@ -15,113 +15,113 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8977e6bb8b665705af7183ff0cdcfae22a19c759
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dbf8923d62b49ed5341776aef03bc1bc2dabeaa9
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65965937"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276815"
 ---
-# <a name="tutorial-configure-linkedin-sales-navigator-for-automatic-user-provisioning"></a>Öğretici: Otomatik kullanıcı hazırlama için LinkedIn Sales Navigator yapılandırın
+# <a name="tutorial-configure-linkedin-sales-navigator-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için LinkedIn Sales Navigator 'ı yapılandırma
 
-Bu öğreticinin amacı, LinkedIn Sales Navigator ve Azure AD'ye otomatik olarak sağlama ve sağlamasını Azure AD'den kullanıcı hesapları için LinkedIn Sales Navigator gerçekleştirmek için gereken adımları Göster sağlamaktır.
+Bu öğreticinin amacı, Azure AD 'den LinkedIn Sales Navigator 'a Kullanıcı hesaplarını otomatik olarak sağlamak ve devre dışı bırakmak için LinkedIn Sales Navigator ve Azure AD 'de gerçekleştirmeniz gereken adımları gösteriyoruz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki öğeleri zaten sahip olduğunuzu varsayar:
+Bu öğreticide özetlenen senaryo, aşağıdaki öğelerin zaten olduğunu varsayar:
 
 * Azure Active Directory kiracısı
-* Bir LinkedIn Sales Navigator Kiracı 
-* LinkedIn Sales Navigator LinkedIn hesap Merkezi'ne erişimi olan bir yönetici hesabı
+* LinkedIn Sales Navigator kiracısı 
+* LinkedIn hesap merkezine erişimi olan LinkedIn Sales Navigator 'da yönetici hesabı
 
 > [!NOTE]
-> Azure Active Directory çalışır LinkedIn Sales Navigator kullanarak [SCIM](http://www.simplecloud.info/) protokolü.
+> Azure Active Directory, [SCIM](http://www.simplecloud.info/) protokolünü kullanarak LinkedIn Sales Navigator ile tümleşir.
 
-## <a name="assigning-users-to-linkedin-sales-navigator"></a>Kullanıcı için LinkedIn Sales Navigator atama
+## <a name="assigning-users-to-linkedin-sales-navigator"></a>LinkedIn Sales Navigator 'a Kullanıcı atama
 
-Azure Active Directory "atamaları" adlı bir kavram, hangi kullanıcıların seçilen uygulamalara erişimi alması belirlemek için kullanır. Otomatik kullanıcı hesabı sağlama bağlamında, yalnızca kullanıcıların ve grupların, "Azure AD'de bir uygulama için atandı" eşitlenecektir.
+Azure Active Directory, hangi kullanıcıların seçili uygulamalara erişim alacağını belirleyebilmek için "atamalar" adlı bir kavram kullanır. Otomatik Kullanıcı hesabı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya "atanmış" olan kullanıcılar ve gruplar eşitlenir.
 
-Yapılandırma ve sağlama hizmetini etkinleştirmeden önce hangi kullanıcılara ve/veya Azure AD'de grupları LinkedIn Sales Navigator erişmesi gereken kullanıcıları temsil karar vermeniz gerekir. Karar sonra buradaki yönergeleri izleyerek bu kullanıcılar için LinkedIn Sales Navigator atayabilirsiniz:
+Sağlama hizmetini yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların ve/veya grupların LinkedIn Sales Navigator 'a erişmesi gereken kullanıcıları temsil ettiğini belirlemeniz gerekir. Karar verdikten sonra buradaki yönergeleri izleyerek bu kullanıcıları LinkedIn Sales Navigator 'a atayabilirsiniz:
 
-[Kurumsal bir uygulamayı kullanıcı veya grup atama](../manage-apps/assign-user-or-group-access-portal.md)
+[Kurumsal uygulamaya Kullanıcı veya Grup atama](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-linkedin-sales-navigator"></a>Kullanıcılar için LinkedIn Sales Navigator atamak için önemli ipuçları
+### <a name="important-tips-for-assigning-users-to-linkedin-sales-navigator"></a>LinkedIn Sales Navigator 'a Kullanıcı atamaya yönelik önemli ipuçları
 
-* Önerilir tek bir Azure AD kullanıcı sağlama yapılandırmayı test etmek için LinkedIn Sales Navigator atanabilir. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
+* Sağlama yapılandırmasını test etmek için LinkedIn Sales Navigator 'a tek bir Azure AD kullanıcısının atanması önerilir. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
 
-* Bir kullanıcı için LinkedIn Sales Navigator atarken seçmelisiniz **kullanıcı** rol ataması iletişim. "Varsayılan erişim" rolü sağlama için çalışmaz.
+* LinkedIn Sales Navigator 'a bir Kullanıcı atarken, atama iletişim kutusunda **Kullanıcı** rolünü seçmeniz gerekir. "Varsayılan erişim" rolü sağlama için çalışmaz.
 
-## <a name="configuring-user-provisioning-to-linkedin-sales-navigator"></a>LinkedIn Sales Navigator için kullanıcı sağlamayı yapılandırma
+## <a name="configuring-user-provisioning-to-linkedin-sales-navigator"></a>LinkedIn Sales Navigator 'a Kullanıcı sağlamayı yapılandırma
 
-Bu bölümde Azure AD sağlama API'si LinkedIn Sales Navigator'ın SCIM kullanıcı hesabına bağlanma sırasında size kılavuzluk eder ve oluşturma, güncelleştirme ve devre dışı bırakmak için sağlama hizmetine atanan kullanıcı hesapları, kullanıcıya dayanarak LinkedIn Sales Navigator ve Azure AD'de Grup ataması.
+Bu bölümde, Azure AD 'nizi LinkedIn Sales Navigator 'ın SCıM Kullanıcı hesabı sağlama API 'sine bağlama ve sağlama hizmeti 'ni Kullanıcı tabanlı LinkedIn Sales Navigator 'daki atanan kullanıcı hesaplarını oluşturmak, güncelleştirmek ve devre dışı bırakmak için yapılandırma işlemi kılavuzluk eder. Azure AD 'de grup ataması.
 
 > [!TIP]
-> Ayrıca seçtiğiniz etkin SAML tabanlı çoklu oturum açma için LinkedIn Sales Navigator, yönergeleri izleyerek sağlanan [Azure portalında](https://portal.azure.com). Bu iki özellik birbirini tamamlar ancak otomatik sağlama bağımsız olarak, çoklu oturum açma yapılandırılabilir.
+> Ayrıca, [Azure Portal](https://portal.azure.com)' de sağlanan yönergeleri Izleyerek LinkedIn Sales NAVIGATOR için SAML tabanlı çoklu oturum açma 'yı da etkinleştirebilirsiniz. Çoklu oturum açma özelliği otomatik sağlanmadan bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini tamamlayabilse de.
 
-### <a name="to-configure-automatic-user-account-provisioning-to-linkedin-sales-navigator-in-azure-ad"></a>Otomatik kullanıcı hesap için LinkedIn Sales Navigator Azure AD'de sağlama yapılandırmak için:
+### <a name="to-configure-automatic-user-account-provisioning-to-linkedin-sales-navigator-in-azure-ad"></a>Azure AD 'de LinkedIn Sales Navigator 'a otomatik Kullanıcı hesabı sağlamayı yapılandırmak için:
 
-LinkedIn erişim belirteci almak için ilk adımdır bakın. Bir kuruluş yöneticisiyseniz, kendi kendine bir erişim belirteci sağlayabilirsiniz. Hesap Merkezi'nde Git **ayarları &gt; genel ayarları** açın **SCIM Kurulum** paneli.
+İlk adım, LinkedIn erişim belirtecinizi almak için kullanılır. Kuruluş yöneticisiyseniz, kendi kendine erişim belirteci sağlayabilirsiniz. Hesap merkezinizde **ayarlar &gt; genel ayarlar** ' a gidin ve **SCIM kurulum** panelini açın.
 
 > [!NOTE]
-> Hesap Merkezi yerine doğrudan bir bağlantı aracılığıyla erişiyorsanız aşağıdaki adımları kullanarak ulaşabilirsiniz.
+> Hesap merkezine bir bağlantı yerine doğrudan erişiyorsanız, aşağıdaki adımları kullanarak buna ulaşabilirsiniz.
 
-1. Hesap Merkezi'nde oturum açın.
+1. Hesap Merkezi 'nde oturum açın.
 
-2. Seçin **yönetici &gt; yönetici ayarları** .
+2. Yönetici **&gt; yönetici ayarları** ' nı seçin.
 
-3. Tıklayın **Gelişmiş tümleştirmeler** sol kenar çubuğundaki. Hesap merkezine yönlendirilirsiniz.
+3. Sol kenar çubuğunda **Gelişmiş tümleştirmeler** ' e tıklayın. Hesap merkezine yönlendirilirsiniz.
 
-4. Tıklayın **+ yeni SCIM Yapılandırması Ekle** ve her alanı doldurarak yordamı izleyin.
+4. **+ Yenı SCIM Yapılandırması Ekle** ' ye tıklayın ve her alanı doldurarak yordamı izleyin.
 
     > [!NOTE]
-    > Autoassign lisansları etkin değil, yalnızca kullanıcı verilerini eşitlenip anlamına gelir.
+    > Yeniden atama lisansları etkin olmadığında, yalnızca Kullanıcı verilerinin eşitlendiği anlamına gelir.
 
     ![LinkedIn Sales Navigator sağlama](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_1.PNG)
 
     > [!NOTE]
-    > Autolicense atama etkinleştirildiğinde, uygulama örneği ve lisans türü gerekir. Üzerinde bir ilk gelen atanmış lisansları, tüm lisansları duruma kadar ilk temel hizmet.
+    > Oto lisans ataması etkinleştirildiğinde, uygulama örneği ve lisans türünü not etmeniz gerekir. Lisanslar ilk olarak atanır, ilk olarak tüm lisanslar alınana kadar temel alınır.
 
     ![LinkedIn Sales Navigator sağlama](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_2.PNG)
 
-5. Tıklayın **belirteç Oluştur**. Erişim belirteci görüntü altında görmelisiniz **erişim belirteci** alan.
+5. **Belirteç oluştur**' a tıklayın. Erişim belirteci, erişim **belirteci** alanının altında görüntülenir.
 
-6. Erişim belirtecinizi sayfadan ayrılmadan önce Pano veya bilgisayara kaydedin.
+6. Sayfadan çıkmadan önce erişim belirtecinizi panonuza veya bilgisayarınıza kaydedin.
 
-7. Ardından, oturum [Azure portalında](https://portal.azure.com)ve **Azure Active Directory > Kurumsal uygulamaları > tüm uygulamaları** bölümü.
+7. Ardından [Azure Portal](https://portal.azure.com)oturum açın ve **Azure Active Directory > Enterprise Apps > tüm uygulamalar** bölümüne gidin.
 
-8. Çoklu oturum açma için LinkedIn Sales Navigator zaten yapılandırdıysanız arama alanını kullanarak LinkedIn Sales Navigator Örneğiniz için arama yapın. Aksi takdirde seçin **Ekle** araması **LinkedIn Sales Navigator** uygulama galerisinde. Arama sonuçlarından LinkedIn Sales Navigator seçin ve uygulama listenize ekleyin.
+8. Çoklu oturum açma için LinkedIn Sales Navigator 'ı zaten yapılandırdıysanız, arama alanını kullanarak LinkedIn Sales Navigator örneğinizi arayın. Aksi takdirde, uygulama galerisinde **LinkedIn Sales Navigator** **Ekle** ve ara ' yı seçin. Arama sonuçlarından LinkedIn Sales Navigator ' ı seçin ve uygulama listenize ekleyin.
 
-9. LinkedIn Sales Navigator örneğinizi seçin ve ardından **sağlama** sekmesi.
+9. LinkedIn Sales Navigator örneğinizi seçin ve **sağlama** sekmesini seçin.
 
-10. Ayarlama **hazırlama modu** için **otomatik**.
+10. **Sağlama modunu** **Otomatik**olarak ayarlayın.
 
     ![LinkedIn Sales Navigator sağlama](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_3.PNG)
 
-11. Altında aşağıdaki alanları doldurun **yönetici kimlik bilgileri** :
+11. **Yönetici kimlik bilgileri** altında aşağıdaki alanları girin:
 
-    * İçinde **Kiracı URL'si** alanına https://api.linkedin.com.
+    * **Kiracı URL 'si** alanında https://api.linkedin.comgirin.
 
-    * İçinde **gizli belirteç** alanı, 1. adımda oluşturulan erişim belirtecini girin ve tıklayın **Bağlantıyı Sına** .
+    * **Gizli belirteç** alanına, adım 1 ' de oluşturduğunuz erişim belirtecini girin ve **Bağlantıyı Sına** ' yı tıklatın.
 
-    * Portalınızı upperright tarafında bir başarı bildirimini görmeniz gerekir.
+    * Portalınızın sağ tarafında bir başarı bildirimi görmeniz gerekir.
 
-12. Bir kişi veya grup sağlama hatası bildirimlerini alması gereken e-posta adresini girin **bildirim e-posta** alan ve aşağıdaki onay kutusunu işaretleyin.
+12. **Bildirim e-postası** alanında sağlama hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve aşağıdaki onay kutusunu işaretleyin.
 
 13. **Kaydet**’e tıklayın.
 
-14. İçinde **öznitelik eşlemelerini** bölümünde, Azure AD'den için LinkedIn Sales Navigator eşitlenecek kullanıcı ve grup öznitelikleri gözden geçirin. Seçilen öznitelikler olarak Not **eşleşen** özellikleri, kullanıcı hesaplarının ve güncelleştirme işlemleri için LinkedIn Sales Navigator grupların eşleştirmek için kullanılır. Değişiklikleri kaydetmek için Kaydet düğmesini seçin.
+14. **Öznitelik eşlemeleri** bölümünde, Azure AD 'Den LinkedIn Sales Navigator 'a eşitlenecek Kullanıcı ve grup özniteliklerini gözden geçirin. Güncelleştirme işlemleri için LinkedIn Sales Navigator 'daki Kullanıcı hesaplarını ve grupları eşleştirmek için, **eşleşen** özellikler olarak seçilen özniteliklerin kullanılacağını unutmayın. Değişiklikleri kaydetmek için Kaydet düğmesini seçin.
 
     ![LinkedIn Sales Navigator sağlama](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_4.PNG)
 
-15. Azure AD sağlama hizmeti için LinkedIn Sales Navigator etkinleştirmek için değiştirin **sağlama durumu** için **üzerinde** içinde **ayarları** bölümü
+15. LinkedIn Sales Navigator için Azure AD sağlama hizmeti 'ni etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin
 
 16. **Kaydet**’e tıklayın.
 
-Bu, herhangi bir kullanıcı ve/veya LinkedIn Sales Navigator kullanıcılar ve Gruplar bölümünde atanan grupları ilk eşitlemeyi başlatır. İlk eşitleme hizmetini çalıştıran sürece yaklaşık 40 dakikada oluşan sonraki eşitlemeler uzun sürer. Kullanabileceğiniz **eşitleme ayrıntıları** bölüm ilerlemeyi izlemek ve LinkedIn Sales Navigator uygulamanızdan sağlama hizmeti tarafından gerçekleştirilen tüm eylemler açıklayan etkinlik günlüklerini sağlama için bağlantıları izleyin.
+Bu, kullanıcılar ve Gruplar bölümünde LinkedIn Sales Navigator 'a atanan tüm Kullanıcı ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, hizmetin çalıştığı sürece yaklaşık 40 dakikada bir gerçekleşen sonraki eşitlemeler yerine daha uzun süreceğini unutmayın. **Eşitleme ayrıntıları** bölümünü Izleyip, LinkedIn Sales Navigator uygulamanızda sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan etkinlik günlüklerinin sağlanması için kullanılacak bağlantıları izleyebilirsiniz.
 
 Azure AD günlüklerini sağlama okuma hakkında daha fazla bilgi için bkz. [hesabı otomatik kullanıcı hazırlama raporlama](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-* [Kullanıcı hesabı, kurumsal uygulamalar için sağlamayı yönetme](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)

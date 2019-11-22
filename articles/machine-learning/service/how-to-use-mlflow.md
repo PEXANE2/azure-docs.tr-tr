@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 946350af0c1a4e8140fbf7f926061aae250e9969
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 9b6efdc75c15e9686728236f82fea8794f3782bf
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73716476"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276632"
 ---
 # <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-preview"></a>MLflow ve Azure Machine Learning modellerini izleme ve model dağıtma (Önizleme)
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -55,7 +55,7 @@ Aşağıdaki diyagramda, MLflow Izlemenin yanı sıra, Azure Machine Learning ç
 |Model performansını izleme||✓|  |   |
 | Veri değişikliklerini algılama |   | ✓ |   | ✓ |
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [MLflow 'ı yükler.](https://mlflow.org/docs/latest/quickstart.html)
 * [Azure Machine Learning SDK 'sını](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) yerel BILGISAYARıNıZA yüklediğinizde SDK, çalışma alanınıza erişmek Için mlflow bağlantısını sağlar.
@@ -238,7 +238,7 @@ Aşağıdaki diyagramda, MLflow dağıtım API 'SI ile, var olan MLflow modeller
 
 ### <a name="log-your-model"></a>Modelinizi günlüğe kaydedin
 
-Dağıtmadan önce, modelinize ve dağıtım için yol konumuna başvurabilmeniz için modelinizin kaydedildiğinden emin olun. Eğitim betiğinizdeki aşağıdaki [mlflow. sköğren. log _model ()](https://www.mlflow.org/docs/latest/python_api/mlflow.sklearn.html) yöntemine benzer bir kod olmalıdır. Bu, modelinizi belirtilen çıktılar dizinine kaydeder. 
+Dağıtmadan önce, modelinize ve dağıtım için yol konumuna başvurabilmeniz için modelinizin kaydedildiğinden emin olun. Eğitim betiğinizdeki aşağıdaki [mlflow. sköğren. log_model ()](https://www.mlflow.org/docs/latest/python_api/mlflow.sklearn.html) yöntemine benzer bir kod olmalıdır. Bu, modelinizi belirtilen çıktılar dizinine kaydeder. 
 
 ```python
 # change sklearn to pytorch, tensorflow, etc. based on your experiment's framework 
@@ -303,7 +303,7 @@ aci_config = AciWebservice.deploy_configuration(cpu_cores=1,
                                                 location='eastus2')
 ```
 
-Ardından, Azure Machine Learning SDK 'nın [deploy_from_image ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice(class)?view=azure-ml-py#deploy-from-image-workspace--name--image--deployment-config-none--deployment-target-none-) metodunu kullanarak görüntüyü dağıtın. 
+Sonra, Azure Machine Learning SDK 'nın [deploy_from_image ()](/python/api/azureml-core/azureml.core.webservice.webservice(class)?view=azure-ml-py#deploy-from-image-workspace--name--image--deployment-config-none--deployment-target-none--overwrite-false-) yöntemini kullanarak görüntüyü dağıtın. 
 
 ```python
 webservice = Webservice.deploy_from_image( image=azure_image, 
@@ -359,7 +359,7 @@ aks_config = AksWebservice.deploy_configuration(enable_app_insights=True)
 service_name ='aks-service'
 ```
 
-Ardından, Azure Machine Learning SDK 'nın [deploy_from_image ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice(class)?view=azure-ml-py#deploy-from-image-workspace--name--image--deployment-config-none--deployment-target-none-) metodunu kullanarak görüntüyü dağıtın. 
+Sonra, Azure Machine Learning SDK 'nın [deploy_from_image ()](/python/api/azureml-core/azureml.core.webservice.webservice(class)?view=azure-ml-py#deploy-from-image-workspace--name--image--deployment-config-none--deployment-target-none--overwrite-false-) yöntemini kullanarak görüntüyü dağıtın. 
 
 ```python
 # Webservice creation using single command
@@ -389,7 +389,7 @@ Hizmet dağıtımı birkaç dakika sürebilir.
 1. Kaynak grubu adını girin. Ardından **Sil**’i seçin.
 
 
-## <a name="example-notebooks"></a>Örnek Not defterleri
+## <a name="example-notebooks"></a>Örnek Not Defterleri
 
 [Azure ML Not defterleri Ile Mlflow](https://aka.ms/azureml-mlflow-examples) , bu makalede sunulan kavramları gösterir ve genişletir.
 

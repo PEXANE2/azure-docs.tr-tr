@@ -1,6 +1,7 @@
 ---
-title: Power BI ile visualizing Azure ağ güvenlik grubu akış günlüklerini | Microsoft Docs
-description: Bu sayfa, Power BI ile NSG akış günlüklerini görselleştirme açıklar.
+title: Azure NSG akış günlüklerini görselleştirme-Power BI
+titleSuffix: Azure Network Watcher
+description: Bu sayfada, NSG akış günlüklerinin Power BI nasıl görselleştirilmesi açıklanmaktadır.
 services: network-watcher
 documentationcenter: na
 author: mattreatMSFT
@@ -14,116 +15,116 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: mareat
-ms.openlocfilehash: 6df49f9cd308f4bb9b1fef6e5860872526ce8bb7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 05378799dd77a17b69adbcf492af2e1cb1030375
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60860878"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277724"
 ---
-# <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>Power BI ile visualizing ağ güvenlik grubu akış günlüklerini
+# <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>Power BI ile ağ güvenlik grubu akış günlüklerini görselleştirme
 
-Ağ güvenlik grubu akış günlüklerini üzerindeki ağ güvenlik gruplarının giriş ve çıkış IP trafiğini hakkındaki bilgileri görüntülemek izin verin. Bu kural başına temelinde, akışı NIC giden ve gelen akışlar uygulandığı günlüklerini gösterme, 5 demet bilgi (kaynak/hedef IP, kaynak/hedef bağlantı noktası, protokol) akışla ilgili ve trafiklere izin verildiğini veya, akış.
+Ağ güvenlik grubu akış günlükleri, ağ güvenlik gruplarında giriş ve çıkış IP trafiği hakkındaki bilgileri görüntülemenize olanak sağlar. Bu akış günlükleri her kural temelinde giden ve gelen akışları gösterir, akışın akış (kaynak/hedef IP 'si, kaynak/hedef bağlantı noktası, protokol) hakkında, 5 demet bilgileri için geçerli olduğu ve trafiğe izin verildiyse veya reddedildiyse.
 
-Günlük dosyalarını el ile arama yaparak akış günlüğü verileri Öngörüler edinmek zor olabilir. Bu makalede, en son, akış günlüklerini Görselleştirme ve ağınızdaki trafiği hakkında bilgi edinmek için bir çözüm sunuyoruz.
+Günlük dosyalarını el ile arayarak akış günlüğü verilerine yönelik Öngörüler elde etmek zor olabilir. Bu makalede, en son akış günlüklerinizi görselleştirmeye yönelik bir çözüm sunuyoruz ve ağınızdaki trafik hakkında bilgi edinebilirsiniz.
 
 > [!Warning]  
-> Aşağıdaki adımlar akış günlükleri sürüm 1 ile çalışır. Ayrıntılar için bkz [için ağ güvenlik grubu akış günlüğe kaydetme giriş](network-watcher-nsg-flow-logging-overview.md). Aşağıdaki yönergeler, değişiklik yapmadan günlük dosyalarının sürüm 2 ile çalışmaz.
+> Aşağıdaki adımlar akış günlükleri sürüm 1 ile birlikte çalışır. Ayrıntılar için bkz. [ağ güvenlik grupları için akış günlüğüne giriş](network-watcher-nsg-flow-logging-overview.md). Aşağıdaki yönergeler, değişiklik yapılmadan günlük dosyalarının 2. sürümüyle birlikte çalışmayacaktır.
 
 ## <a name="scenario"></a>Senaryo
 
-Aşağıdaki senaryoda, NSG akış günlüğü verilerimiz için bir havuz olarak yapılandırdık depolama hesabına Power BI desktop bağlanın. Biz depolama hesabımız bağlandıktan sonra Power BI indirir ve ağ güvenlik grupları tarafından günlüğe kaydedilen trafik görsel bir temsilini sağlamak için günlükleri ayrıştırır.
+Aşağıdaki senaryoda, Power BI Desktop 'ı NSG akış günlüğü verilerimizin havuzu olarak yapılandırdığımız depolama hesabına bağlayacağız. Depolama hesabımızla bağlantı kurulduktan sonra, ağ güvenlik grupları tarafından günlüğe kaydedilen trafiğin görsel bir gösterimini sağlamak için günlükleri indirir ve ayrıştırır Power BI.
 
-İncelemek şablonda sağlanan görseller kullanma:
+Şablonda sağlanan görselleri kullanarak şunları inceleyebilirsiniz:
 
-* Popüler konuşmacılar
-* Yöne ve kural kararına göre zaman serisi akış verileri
+* En üstteki Taliciler
+* Yön ve kural kararına göre zaman serisi akış verileri
 * Ağ arabirimi MAC adresine göre akışlar
-* NSG ve kural göre akışlar
+* NSG ve kurala göre akışlar
 * Hedef bağlantı noktasına göre akışlar
 
-Yeni veri, görsel öğe eklemek için değiştirin ya da gereksinimlerinize uyacak şekilde sorguları Düzenle sağlanan şablon düzenlenemez.
+Belirtilen şablon düzenlenebilir olduğundan, gereksinimlerinize uyacak şekilde yeni veriler, görseller veya sorguları düzenlemek üzere değişiklik yapabilirsiniz.
 
 ## <a name="setup"></a>Kurulum
 
-Başlamadan önce ağ güvenlik grubu akış hesabınızdaki bir veya daha fazla ağ güvenlik grupları etkin günlüğü olması gerekir. Ağ güvenliği akış günlüklerini etkinleştirme hakkında yönergeler için şu makaleye başvurun: [Ağ güvenlik grupları için akış günlüğü giriş](network-watcher-nsg-flow-logging-overview.md).
+Başlamadan önce, hesabınızdaki bir veya daha fazla ağ güvenlik grubunda ağ güvenlik grubu akış günlüğü etkin olmalıdır. Ağ güvenlik akışı günlüklerinin etkinleştirilmesi hakkındaki yönergeler için aşağıdaki makaleye bakın: [ağ güvenlik grupları için akış günlüğüne giriş](network-watcher-nsg-flow-logging-overview.md).
 
-Ayrıca, Power BI Desktop istemcisi makinenizde ve makinenize indirmek ve depolama hesabınızda var olan günlük verileri yüklemek için yeterli boş alan yüklü olması gerekir.
+Ayrıca, makinenizde Power BI Desktop istemcisinin yüklü olması ve depolama hesabınızda bulunan günlük verilerini indirmek ve yüklemek için makinenizde yeterli boş alan olması gerekir.
 
 ![Visio diyagramı][1]
 
 ### <a name="steps"></a>Adımlar
 
-1. İndirin ve aşağıdaki Power BI şablonu Power BI Desktop uygulamasında açın [şablonu Ağ İzleyicisi Powerbı akış günlükleri](https://aka.ms/networkwatcherpowerbiflowlogstemplate)
+1. Aşağıdaki Power BI şablonunu indirin ve Power BI Desktop uygulama [ağ Izleyicisi PowerBI akış günlükleri şablonunda](https://aka.ms/networkwatcherpowerbiflowlogstemplate) açın
 1. Gerekli sorgu parametrelerini girin
-   1. **StorageAccountName** – yüklenemedi ve görselleştirmek istediğiniz NSG akış günlüklerini içeren depolama hesabı adını belirtir.
-   1. **NumberOfLogFiles** – indirip Power BI'da görselleştirin istediğiniz günlük dosyalarının sayısını belirtir. Örneğin, 50 belirtilirse, en son 50 günlük dosyaları. Biz bu hesap için NSG akış günlükleri göndermek için etkinleştirilmiş ve yapılandırılmış 2 Nsg'ler varsa, son 25 saat günlüklerinin görüntülenebilir.
+   1. **StorageAccountName** : yüklemek ve görselleştirmek istediğiniz NSG akış günlüklerini içeren depolama hesabının adını belirtir.
+   1. **NumberOfLogFiles** : Power BI indirmek ve görselleştirmek istediğiniz günlük dosyası sayısını belirtir. Örneğin, 50 50 belirtilirse en son günlük dosyaları. 2 NSG 'ler etkin ve bu hesaba NSG akış günlükleri gönderecek şekilde yapılandırıldıysa, son 25 saat günlük görüntülenebilir.
 
       ![Power BI ana][2]
 
-1. Depolama hesabınızın erişim anahtarını girin. Geçerli erişim tuşlarını seçerek portal ve Azure depolama hesabınıza giderek bulabilirsiniz **erişim anahtarlarını** Ayarlar menüsünden. Tıklayın **Connect** sonra değişiklikleri uygulayın.
+1. Depolama hesabınız için erişim anahtarını girin. Azure portal ' de depolama hesabınıza gidip ayarlar menüsünden **erişim tuşları** ' nı seçerek geçerli erişim anahtarlarını bulabilirsiniz. **Bağlan** ' a tıklayın ve ardından değişiklikleri uygulayın.
 
-    ![Erişim anahtarları][3]
+    ![erişim tuşları][3]
 
     ![erişim anahtarı 2][4]
 
-4. Günlüklerinizi indirmek durumda, ayrıştırılmış ve artık önceden oluşturulmuş görselleri kullanabilir.
+4. Günlükleriniz indirilir ve ayrıştırılır ve artık önceden oluşturulmuş görselleri kullanabilirsiniz.
 
-## <a name="understanding-the-visuals"></a>Görsellerin anlama
+## <a name="understanding-the-visuals"></a>Görselleri anlama
 
-Şablonda sağlanan bir NSG akış günlüğü verileri anlamlı yardımcı görsellerin yer alır. Aşağıdaki resimlerde bir örnek Pano verilerle doldurmuş nasıl göründüğünü gösterir. Aşağıda daha ayrıntılı her bir görselin inceleyeceğiz 
+Şablonda sağlanan bir dizi görseldir ve NSG akış günlüğü verilerini anlamlı hale getirir. Aşağıdaki görüntüler, verilerle doldurulduğu sırada panonun nasıl göründüğüne ilişkin bir örnek gösterir. Aşağıda her görseli daha ayrıntılı olarak inceliyoruz 
 
-![Power BI][5]
+![powerbi][5]
  
-Bağlantıların çoğu dönemi boyunca başlattınız IP'ler belirtilen üst konuşmacılar visual gösterir. Kutularının boyutu, göreli bağlantı sayısını karşılık gelir. 
+Üst düzey bir görselde, belirtilen süre boyunca en fazla bağlantıyı başlatan IP 'Leri gösterir. Kutuların boyutu, göreli bağlantı sayısına karşılık gelir. 
 
-![toptalkers][6]
+![toptaliciler][6]
 
-Aşağıdaki zaman serisi grafikleri dönemdeki akışların sayısını gösterir. Üst grafik, akış yönü göre segmentlere ve alt, (izin ver veya Reddet) yapılan karar tarafından bölümlenmiş. Bu görselle ne zaman içinde trafiği eğilimleri incelemek ve herhangi bir anormal ani nokta veya trafiği segmentasyonunun veya trafiği reddedebilir.
+Aşağıdaki zaman serisi grafiklerde, dönem içindeki akış sayısı gösterilir. Üst grafik akış yönüne göre bölündü ve daha düşük olan karar (izin verme veya reddetme) tarafından bölündü. Bu Görselle trafik eğilimlerini zaman içinde inceleyebilir ve trafik veya trafik segmentlerinin olağandışı artışlarını veya reddetmeyi belirleyebilirsiniz.
 
 ![flowsoverperiod][7]
 
-Aşağıdaki grafikleri tarafından yapılan karar akış yönünü ve daha düşük ile bölümlenmiş üst ile ağ arabirimi başına akışlar bölümlenmiş gösterir. Bu bilgileri kullanarak, sanal makinelerinizin en diğerleri göre bildirilmesi ve belirli bir VM'ye trafik yüklenmekte olan Öngörüler elde edebilir izin verilen veya reddedilen.
+Aşağıdaki grafiklerde, akış yönüne göre üst kesimli ve kararlara göre aşağı kesimli bir ağ arabirimi başına akış gösterilmektedir. Bu bilgilerle, sanal makinelerinizdeki diğer kullanıcılara en iyi şekilde iletildiğini ve belirli bir VM 'ye giden trafiğe izin verilmesi veya reddedilmesi hakkında öngörüler elde edebilirsiniz.
 
-![flowspernic][8]
+![flowspernıc][8]
 
-Aşağıdaki halka tekerleği grafik, hedef bağlantı noktasına göre akışlar dökümünü gösterir. Bu bilgileri kullanarak, belirtilen süre içinde kullanılan en yaygın olarak kullanılan hedef bağlantı noktaları görüntüleyebilirsiniz.
+Aşağıdaki halka tekerleği grafiği, hedef bağlantı noktasına göre akışların dökümünü gösterir. Bu bilgilerle, belirtilen dönemde kullanılan en yaygın olarak kullanılan hedef bağlantı noktalarını görüntüleyebilirsiniz.
 
-![Halka][9]
+![halka][9]
 
-Aşağıdaki çubuk grafik, NSG ve kural akışı gösterilmektedir. Bu bilgileri kullanarak Nsg'ler çoğu trafik ve trafik dökümü sorumlu üzerinde bir NSG kuralı tarafından görebilirsiniz.
+Aşağıdaki çubuk grafik, NSG ve kurala göre akışı gösterir. Bu bilgilerle, en çok trafikten sorumlu NSG 'leri ve bir NSG 'nin kurala göre dökümünü bulabilirsiniz.
 
-![barchart][10]
+![bargrafik][10]
  
-Aşağıdaki bilgi grafikleri mevcut günlüklerinde, nokta ve yakalanan erken günlüğünün tarih üzerinden yakalanan akışlarının sayısı Nsg'ler ilgili bilgileri görüntüler. Bu bilgiler, hangi Nsg'ler hakkında bir fikir olduğunu günlüğe kaydedilmesini ve akışlar tarih aralığını sağlar.
+Aşağıdaki bilgilendirici grafiklerde, günlüklerde bulunan NSG 'ler, dönem boyunca yakalanan akış sayısı ve yakalanan en erken günlüğün tarihi hakkındaki bilgileri görüntüler. Bu bilgiler, hangi NSG 'lerin günlüğe kaydedildiği ve akış tarih aralığı hakkında fikir verir.
 
 ![infochart1][11]
 
 ![infochart2][12]
 
-Bu şablon, yalnızca en çok ilgilendiğiniz verileri görüntülemek izin vermek için aşağıdaki dilimleyiciler içerir. Kaynak grupları, Nsg'leri ve kuralları filtreleyebilirsiniz. Ayrıca, 5 demet bilgi, karar ve günlüğe yazıldığı zaman filtreleyebilirsiniz.
+Bu şablon, yalnızca en ilgilendiğiniz verileri görüntülemenize olanak tanımak için aşağıdaki Dilimleyicileri içerir. Kaynak gruplarınız, NSG 'ler ve kurallarınız üzerinde filtre uygulayabilirsiniz. Ayrıca, 5 demet bilgisini, kararı ve günlüğün yazıldığı saati de filtreleyebilirsiniz.
 
-![Dilimleyiciler][13]
+![Dilimleyicileri][13]
 
 ## <a name="conclusion"></a>Sonuç
 
-Biz bu senaryoda Ağ İzleyicisi ve Power BI tarafından sağlanan ağ güvenlik grubu akış günlüklerini kullanarak, Görselleştirme ve anlama trafiği mümkün olduğunu göstermiştir. Belirtilen şablonu kullanarak Power BI, günlükleri doğrudan Storage'dan ve bunları yerel olarak işler. Şablon yüklenmesi için geçen süre istenen dosyaları sayısına bağlı olarak değişir ve indirilen dosyaların toplam boyutu.
+Ağ Izleyicisi ve Power BI tarafından sunulan ağ güvenlik grubu akış günlüklerini kullanarak bu senaryoda, trafiği görselleştirebildiğimiz ve anlayabiliyoruz. Power BI, belirtilen şablonu kullanarak günlükleri doğrudan depolamadan indirir ve yerel olarak işler. Şablonun yüklenmesi için geçen süre, istenen dosya sayısına ve indirilen dosyaların toplam boyutuna bağlı olarak değişir.
 
-Bu şablonu kendi gereksinimlerinize göre özelleştirmek çekinmeyin. Power BI ile ağ güvenlik grubu akış günlüklerini kullanabileceğiniz birçok birçok yolu vardır. 
+Bu şablonu gereksinimlerinize uygun şekilde özelleştirebilirsiniz. Ağ güvenlik grubu akış günlükleri ile Power BI kullanmanın çok çeşitli yolları vardır. 
 
 ## <a name="notes"></a>Notlar
 
-* Günlükleri varsayılan olarak depolanır `https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/`
+* Günlükler varsayılan olarak `https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/` depolanır
 
-    * Başka bir dizinde başka veriler varsa, bunlar çekme ve işlem veri sorguları değiştirilmesi gerekir.
+    * Başka bir dizinde diğer veriler varsa, verilerin çekme ve işleme sorgularının değiştirilmesi gerekir.
 
-* Sağlanan şablon 1 GB'den fazla günlükleri ile kullanım için önerilmez.
+* Belirtilen şablon, 1 GB 'den fazla günlüğe sahip kullanım için önerilmez.
 
-* Günlükleri, büyük bir miktarını varsa, Data Lake veya SQL server gibi başka bir veri deposunu kullanan bir çözüm araştırmanız önerilir.
+* Büyük miktarda günlükiz varsa, Data Lake veya SQL Server gibi başka bir veri deposu kullanarak bir çözümü araştırmanızı öneririz.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-NSG akış günlüklerinizi Elastic Stack ile ederek görselleştirmeyi öğrenmek [açık kaynak araçlar kullanarak görselleştirme Azure Ağ İzleyicisi NSG akış günlükleri](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
+[Açık kaynak araçları kullanarak Azure ağ IZLEYICISI NSG akış günlüklerini görselleştirme](network-watcher-visualize-nsg-flow-logs-open-source-tools.md) ' i ziyaret ederek NSG akış günlüklerinizi esnek yığın ile görselleştirmeyi öğrenin
 
 [1]: ./media/network-watcher-visualize-nsg-flow-logs-power-bi/figure1.png
 [2]: ./media/network-watcher-visualize-nsg-flow-logs-power-bi/figure2.png

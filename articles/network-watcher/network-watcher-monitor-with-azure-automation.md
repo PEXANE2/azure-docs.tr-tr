@@ -1,6 +1,7 @@
 ---
-title: Sorun giderme Azure Ağ İzleyicisi ile VPN ağ geçitleri izleyin | Microsoft Docs
-description: Bu makalede nasıl Azure Otomasyonu ve Ağ İzleyicisi ile şirket içi bağlantıyı tanılama
+title: VPN ağ geçitleri sorunlarını giderme ve izleme-Azure Otomasyonu
+titleSuffix: Azure Network Watcher
+description: Bu makalede, Azure Otomasyonu ve ağ Izleyicisi ile şirket içi bağlantıyı tanılama açıklanmaktadır
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -13,76 +14,76 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: d3a09ee83d4a1f05781c885eaa708e6e024b7f97
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 07847289c156aaa48b9d15c40d4135ce2cf39c10
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "64719806"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275903"
 ---
-# <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>Sorun giderme Ağ İzleyicisi ile VPN ağ geçitlerini izleme
+# <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>Ağ Izleyicisi sorunlarını giderme ile VPN ağ geçitlerini izleme
 
-Ağ performansına ayrıntılı Öngörüler elde etme, müşterilere güvenilir hizmetleri sağlamak için önemlidir. Bu nedenle, ağ kesintisi hızlı bir şekilde algılayan ve kesinti koşulu gidermek için düzeltici eylemi gerçekleştirme için önemlidir. Azure Otomasyonu ve runbook'ları programlı bir şekilde bir görevi çalıştırmayı sağlar. Azure otomasyonu kullanarak, sürekli ve öngörülü ağ izleme ve uyarı gerçekleştirmek için mükemmel bir tarif oluşturur.
+Müşterilere güvenilir hizmetler sağlamak için ağ performansından derin Öngörüler elde etmek önemlidir. Bu nedenle, ağ kesintisi koşullarını hızlı bir şekilde algılamak ve kesinti koşulunu azaltmak için düzeltici eylemler gerçekleştirmek önemlidir. Azure Otomasyonu, runbook 'ları kullanarak bir görevi programlı bir şekilde uygulamanıza ve çalıştırmanıza olanak sağlar. Azure Otomasyonu 'nu kullanarak sürekli ve proaktif ağ izleme ve uyarı gerçekleştirmeye yönelik kusursuz bir tarif oluşturulur.
 
 ## <a name="scenario"></a>Senaryo
 
-Aşağıdaki görüntüde çok katmanlı bir uygulama ile şirket içi bağlantısı bir VPN ağ geçidi ve tünel kullanılarak senaryodur. VPN ağ geçidinin çalışır durumda olduktan ve çalışan uygulamaları performansı için önemlidir.
+Aşağıdaki görüntüde yer alan senaryo, şirket içi bağlantı VPN Gateway ve tünel kullanılarak kurulabilen çok katmanlı bir uygulamadır. VPN Gateway çalıştığından ve çalışır duruma, uygulamaların performansı için kritik öneme sahip olma.
 
-Bir runbook ile bağlantı tünel durumunu denetlemek için sorun giderme kaynak API'si kullanarak VPN tüneli bağlantı durumunu denetlemek için bir komut dosyası oluşturulur. Durumu iyi değil, yöneticilere bir e-posta tetikleyicisi gönderilir.
+Bağlantı tüneli durumunu denetlemek için kaynak sorun giderme API 'sini kullanarak VPN tünelinin bağlantı durumunu denetlemek üzere bir komut dosyası ile bir runbook oluşturulur. Durum sağlıklı değilse, yöneticilere bir e-posta tetikleyicisi gönderilir.
 
 ![Senaryo örneği][scenario]
 
-Bu senaryo olur:
+Bu senaryo şunları olacaktır:
 
-- Bir runbook çağırma oluşturma `Start-AzureRmNetworkWatcherResourceTroubleshooting` cmdlet'ini bağlantı durumu sorunlarını giderme
-- Runbook'a bir zamanlama Bağla
+- Bağlantı durumu sorunlarını gidermek için `Start-AzureRmNetworkWatcherResourceTroubleshooting` cmdlet 'ini çağıran bir runbook oluşturma
+- Bir zamanlamayı runbook 'a bağlama
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu senaryoya başlamadan önce aşağıdaki ön koşullar olması gerekir:
+Bu senaryoya başlamadan önce, aşağıdaki önkoşulların olması gerekir:
 
-- Azure'da bir Azure Otomasyonu hesabı. Otomasyon hesabı son modül yok ve AzureRM.Network modülü de sahip emin olun. AzureRM.Network modülü Otomasyon hesabınıza eklemek gerekirse modülü galerisinde kullanılabilir.
-- Azure Otomasyonu'nda yapılandırma kimlik bilgileri kümesi olması gerekir. Daha fazla bilgi [Azure Automation güvenliği](../automation/automation-security-overview.md)
-- Geçerli bir SMTP sunucusu (Office 365, şirket içi e-posta veya başka bir) ve Azure Automation'da tanımlanan kimlik bilgileri
-- Yapılandırılmış sanal ağ ağ geçidi azure'da.
-- Mevcut bir depolama hesabı günlükleri depolamak için var olan bir kapsayıcı ile.
+- Azure 'da bir Azure Otomasyonu hesabı. Otomasyon hesabının en son modüller içerdiğinden ve ayrıca Azurerd. Network modülüne sahip olduğundan emin olun. Azurere. Network modülü, Otomasyon hesabınıza eklemeniz gerekiyorsa modül galerisinde kullanılabilir.
+- Azure Otomasyonu 'nda yapılandırma bir kimlik bilgileri kümesine sahip olmanız gerekir. [Azure Otomasyonu güvenliği](../automation/automation-security-overview.md) hakkında daha fazla bilgi edinin
+- Azure Otomasyonu 'nda tanımlı geçerli bir SMTP sunucusu (Office 365, şirket içi e-posta veya başka bir) ve kimlik bilgileri
+- Azure 'da yapılandırılmış bir sanal ağ geçidi.
+- Günlükleri depolamak için mevcut bir kapsayıcıya sahip mevcut bir depolama hesabı.
 
 > [!NOTE]
-> Önceki resimde gösterilen altyapı gösterim amaçlıdır ve bu makalede yer alan adımlarla oluşturulmaz.
+> Önceki görüntüde gösterilen altyapı, illüstrasyon amaçlıdır ve bu makalede yer alan adımlarla oluşturulmamıştır.
 
-### <a name="create-the-runbook"></a>Runbook oluşturma
+### <a name="create-the-runbook"></a>Runbook 'u oluşturma
 
-Bu örnek yapılandırmanın ilk adımı, runbook oluşturmaktır. Bu örnek, bir farklı çalıştır hesabı kullanır. Farklı çalıştırma hesapları hakkında bilgi edinmek için [Azure farklı çalıştır hesabıyla Runbook kimlik doğrulaması](../automation/automation-create-runas-account.md)
+Örneği yapılandırmanın ilk adımı, runbook 'u oluşturmaktır. Bu örnek, bir farklı çalıştır hesabı kullanır. Farklı Çalıştır hesapları hakkında bilgi edinmek için bkz. [Azure farklı çalıştır hesabı Ile runbook 'Ları kimlik doğrulama](../automation/automation-create-runas-account.md)
 
 ### <a name="step-1"></a>1\. Adım
 
-Azure Otomasyonu'nda gidin [Azure portalında](https://portal.azure.com) tıklatıp **runbook'ları**
+[Azure Portal](https://portal.azure.com) Azure Otomasyonu ' na gidin ve **runbook 'lar** ' a tıklayın.
 
 ![Otomasyon hesabına genel bakış][1]
 
 ### <a name="step-2"></a>2\. Adım
 
-Tıklayın **runbook Ekle** runbook oluşturma işlemini başlatmak için.
+Runbook oluşturma işlemini başlatmak için **runbook Ekle** ' ye tıklayın.
 
-![runbook'ları dikey penceresi][2]
+![Runbook 'lar dikey penceresi][2]
 
 ### <a name="step-3"></a>3\. Adım
 
-Altında **hızlı Oluştur**, tıklayın **yeni bir runbook oluşturmak** runbook oluşturmak için.
+Runbook 'u oluşturmak için **hızlı oluştur**' un altında **yeni runbook oluştur ' a** tıklayın.
 
-![bir runbook dikey penceresi ekleme][3]
+![Runbook Ekle dikey penceresi][3]
 
 ### <a name="step-4"></a>4\. Adım
 
-Bu adımda, biz runbook bir ad verin, çağrıldığı örnek içinde **Get-VPNGatewayStatus**. Bunu, runbook'a açıklayıcı bir ad vermek önemli ve önerilen standart PowerShell adlandırma standartlarını takip eden bir ad verin. Bu örnek için runbook türü **PowerShell**, grafik, PowerShell iş akışı, diğer seçenekler şunlardır: ve grafik PowerShell iş akışı.
+Bu adımda, runbook 'a bir ad veriyoruz; Örneğin, **Get-VPNGatewayStatus**olarak adlandırılır. Runbook 'a açıklayıcı bir ad vermek ve standart PowerShell adlandırma standartlarını izleyen bir ad vermek için önerilir. Bu örnek için Runbook türü **PowerShell**, diğer seçenekler ise grafik, PowerShell iş akışı ve grafik PowerShell iş akışıdır.
 
-![runbook dikey penceresini][4]
+![Runbook dikey penceresi][4]
 
 ### <a name="step-5"></a>5\. Adım
 
-Runbook oluşturulur, bu adımda, örnek için gerekli tüm kodlar aşağıdaki kod örneği sağlar. İçeren kod öğeleri \<değer\> aboneliğinizde değerlerle değiştirilmesi gerekebilir.
+Bu adımda, runbook oluşturulur, aşağıdaki kod örneği örnek için gereken tüm kodu sağlar. \<değer\> içeren koddaki öğelerin, aboneliğinizdeki değerlerle değiştirilmeleri gerekir.
 
-Aşağıdaki kodu kullanın tıklatın **Kaydet**
+**Kaydet** ' e tıklayarak aşağıdaki kodu kullanın
 
 ```powershell
 # Set these variables to the proper values for your environment
@@ -146,47 +147,47 @@ else
 
 ### <a name="step-6"></a>6\. Adım
 
-Runbook kaydedildikten sonra runbook başlangıcını otomatikleştirmek için bir zamanlama bağlanmalıdır. İşlemi başlatmak için tıklatın **zamanlama**.
+Runbook kaydedildikten sonra, runbook 'un başlamasını otomatikleştirmek için bir zamanlamanın bağlanması gerekir. İşlemi başlatmak için **zamanlama**' ya tıklayın.
 
 ![6\. Adım][6]
 
-## <a name="link-a-schedule-to-the-runbook"></a>Runbook'a bir zamanlama Bağla
+## <a name="link-a-schedule-to-the-runbook"></a>Bir zamanlamayı runbook 'a bağlama
 
-Yeni bir zamanlama oluşturulmalıdır. Tıklayın **bir zamanlamayı runbook'a bağlamak**.
+Yeni bir zamanlamanın oluşturulması gerekir. **Runbook 'a bir zamanlama bağla**' ya tıklayın.
 
 ![7\. Adım][7]
 
 ### <a name="step-1"></a>1\. Adım
 
-Üzerinde **zamanlama** dikey penceresinde tıklayın **yeni bir zamanlama oluşturun**
+**Zamanlama** dikey penceresinde **Yeni Zamanlama Oluştur ' a** tıklayın.
 
 ![8\. Adım][8]
 
 ### <a name="step-2"></a>2\. Adım
 
-Üzerinde **yeni zamanlama** zamanlama bilgileri dikey penceresini doldurun. Aşağıdaki listede ayarlanabilen değerler şunlardır:
+**Yeni zamanlama** dikey penceresinde zamanlama bilgilerini doldurun. Ayarlanacak değerler aşağıdaki listede yer alabilir:
 
-- **Ad** -planı kolay adı.
-- **Açıklama** -zamanlama açıklaması.
-- **Başlar** -bu değeri tarih ve saat zamanlama Tetikleyicileri zaman olun saat dilimi bir birleşimidir.
-- **Yinelenme** -zamanlamaları yineleme bu değeri belirler.  Geçerli değerler **kez** veya **yinelenen**.
-- **Yineleme her** -saat, gün, hafta veya ayda zamanlama yinelenme aralığı.
-- **Sona erme süresini ayarlamanıza** -zamanlama veya süresi dolarsa, değeri belirler. Ayarlanabilir **Evet** veya **Hayır**. Geçerli tarih ve saat Evet seçilirse sağlanan üzeresiniz.
+- **Ad** -zamanlamanın kolay adı.
+- **Açıklama** -zamanlamanın açıklaması.
+- **Başlar** -bu değer, zamanlamanın tetiklediği zamanı oluşturan Tarih, saat ve saat diliminin bir birleşimidir.
+- **Yinelenme** -bu değer zamanlamaları tekrarlamayı belirler.  Geçerli değerler **bir kez** veya **yineleniyor**.
+- Zamanlamanın saat, gün, hafta veya ay içinde her yineleme aralığını **Yinele** .
+- **Süre sonu ayarla** -değer, zamanlamanın süresinin dolacağını belirler. **Evet** veya **Hayır**olarak ayarlanabilir. Evet seçilirse geçerli bir tarih ve saat sağlanmalıdır.
 
 > [!NOTE]
-> (Diğer bir deyişle, 15, 30 saat sonra 45 dakika) farklı aralıklarla saatte daha sık çalıştırmasına runbook ihtiyacınız varsa birden çok zamanlama oluşturulmalıdır
+> Bir runbook 'un her saatten daha sık çalışmasını istiyorsanız, farklı aralıklarda (15, 30, saat sonra 45 dakika) birden çok zamanlama oluşturulması gerekir
 
 ![9\. Adım][9]
 
 ### <a name="step-3"></a>3\. Adım
 
-Zamanlamayı runbook'a kaydetmek için Kaydet'e tıklayın.
+Zamanlamayı runbook 'a kaydetmek için Kaydet ' e tıklayın.
 
 ![10. adım][10]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ağ İzleyicisi sorun giderme Azure Otomasyonu ile tümleştirme hakkında bir anlama sahip olduğunuza göre VM uyarılar üzerinde paket yakalamaları ederek tetikleme hakkında bilgi edinin [bir uyarı tetiklendi paket yakalamasıAzureAğİzleyicisiileoluşturma](network-watcher-alert-triggered-packet-capture.md).
+Artık ağ Izleyicisi sorunlarını Azure Otomasyonu ile tümleştirme hakkında bilgi sahibi olduğunuza göre, [Azure Ağ İzleyicisi ile bir uyarı tetiklenen bir uyarı oluşturma](network-watcher-alert-triggered-packet-capture.md)' yı zıyaret ederek VM uyarıları üzerinde paket yakalamalarını nasıl tetikleyeceğinizi öğrenin.
 
 <!-- images -->
 [scenario]: ./media/network-watcher-monitor-with-azure-automation/scenario.png

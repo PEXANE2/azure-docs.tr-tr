@@ -1,6 +1,6 @@
 ---
-title: B2B - Azure Active Directory için bir AD FS ile doğrudan Federasyon ayarlama | Microsoft Docs
-description: Konuklar, Azure AD uygulamaları için oturum açabilmeniz için doğrudan Federasyon kimlik sağlayıcısı olarak AD FS ayarlamayı öğrenin
+title: B2B için bir AD FS doğrudan Federasyonu ayarlama-Azure AD
+description: Konukların Azure AD uygulamalarınızda oturum açmasını sağlamak için doğrudan Federasyon için kimlik sağlayıcısı olarak AD FS ayarlamayı öğrenin
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,146 +12,146 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8f709186f0ef17e037c4203118be07ea2d4f511
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: e350d6338b6ca589ab18d068ef6a314363fe205c
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67544328"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272839"
 ---
-# <a name="example-direct-federation-with-active-directory-federation-services-ad-fs-preview"></a>Örnek: Active Directory Federasyon Hizmetleri (AD FS) ile doğrudan Federasyon (Önizleme)
+# <a name="example-direct-federation-with-active-directory-federation-services-ad-fs-preview"></a>Örnek: Active Directory Federasyon Hizmetleri (AD FS) ile doğrudan Federasyon (AD FS) (Önizleme)
 |     |
 | --- |
-| Doğrudan Federasyon, Azure Active Directory genel Önizleme özelliğidir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
+| Doğrudan Federasyon, Azure Active Directory genel önizleme özelliğidir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
 |     |
 
-Bu makalede nasıl ayarlandığı [doğrudan Federasyon](direct-federation.md) SAML 2.0 veya WS-Federasyon kimlik sağlayıcısı olarak Active Directory Federasyon Hizmetleri (AD FS) kullanarak. Doğrudan federasyonu'nu destekleyecek şekilde belirli öznitelikleri ve talepler kimlik sağlayıcısında yapılandırılmalıdır. Doğrudan Federasyon için bir kimlik sağlayıcısı yapılandırmak nasıl göstermek için Active Directory Federasyon Hizmetleri (AD FS) örnek olarak kullanacağız. AD FS SAML kimlik sağlayıcısı olarak hem bir WS-Federasyon kimlik sağlayıcısı olarak ayarlamak nasıl göstereceğiz.
+Bu makalede SAML 2,0 veya WS-besleyen kimlik sağlayıcısı olarak Active Directory Federasyon Hizmetleri (AD FS) (AD FS) kullanılarak [doğrudan Federasyonun](direct-federation.md) nasıl ayarlanacağı açıklanır. Doğrudan Federasyonu desteklemek için, belirli öznitelikler ve talepler kimlik sağlayıcıda yapılandırılmalıdır. Doğrudan Federasyon için bir kimlik sağlayıcısının nasıl yapılandırılacağını göstermek için, örnek olarak Active Directory Federasyon Hizmetleri (AD FS) (AD FS) kullanacağız. AD FS hem SAML kimlik sağlayıcısı hem de WS-beslik kimlik sağlayıcısı olarak ayarlamayı göstereceğiz.
 
 > [!NOTE]
-> Bu makalede, SAML ve WS-Federasyon için gösterim amacıyla AD FS ayarlanacağını açıklar. AD FS kimlik sağlayıcısı olduğu için doğrudan Federasyon tümleştirmeler WS-Federasyon protokol olarak kullanmanızı öneririz. 
+> Bu makalede, çizim amacıyla hem SAML hem de WS-beslemenin AD FS nasıl ayarlanacağı açıklanır. Kimlik sağlayıcısının AD FS doğrudan Federasyon tümleştirmeleri için, protokol olarak WS-beslik kullanılması önerilir. 
 
-## <a name="configure-ad-fs-for-saml-20-direct-federation"></a>SAML 2.0 doğrudan Federasyon için AD FS'yi yapılandırma
-Azure AD B2B, aşağıda listelenen belirli gereksinimleri olan SAML protokolü kullanan kimlik sağlayıcıları ile federasyona eklemek için yapılandırılabilir. SAML yapılandırma adımlarını anlamak için bu bölümü AD FS SAML 2.0 için ayarlama işlemi gösterilmektedir. 
+## <a name="configure-ad-fs-for-saml-20-direct-federation"></a>SAML 2,0 Direct Federasyonu için AD FS yapılandırma
+Azure AD B2B, SAML protokolünü kullanan kimlik sağlayıcılarıyla federasyona eklemek için aşağıda listelenen belirli gereksinimlere sahip olacak şekilde yapılandırılabilir. SAML yapılandırma adımlarını göstermek için, bu bölümde SAML 2,0 için AD FS ayarlama gösterilmektedir. 
 
-Doğrudan Federasyon ayarlamak için aşağıdaki öznitelikleri SAML 2.0 yanıtındaki kimlik sağlayıcısından alınmış olması gerekir. Bu öznitelikler, bağlama çevrimiçi güvenlik belirteci hizmeti XML dosyasını veya bunları el ile girerek yapılandırılabilir. Adımda 12 [test AD FS örneği oluşturma](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed) AD FS bitiş noktaları bulma veya oluşturmayı, meta veri URL'si, örneğin açıklayan `https://fs.iga.azure-test.net/federationmetadata/2007-06/federationmetadata.xml`. 
+Doğrudan Federasyonu ayarlamak için, kimlik sağlayıcısından SAML 2,0 yanıtında aşağıdaki öznitelikler alınmalıdır. Bu öznitelikler, çevrimiçi güvenlik belirteci hizmeti XML dosyasına bağlanarak veya el ile girilerek yapılandırılabilir. Adım 12 ' de [bir test AD FS örneği oluşturma](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed) AD FS uç noktaların nasıl bulunacağını veya meta veri URL 'nizin nasıl oluşturulacağını açıklar. Örneğin `https://fs.iga.azure-test.net/federationmetadata/2007-06/federationmetadata.xml`. 
 
 |Öznitelik  |Değer  |
 |---------|---------|
 |AssertionConsumerService     |`https://login.microsoftonline.com/login.srf`         |
 |Hedef kitle     |`urn:federation:MicrosoftOnline`         |
-|Veren     |İş ortağı IDP, örneğin URI'sini veren `http://www.example.com/exk10l6w90DHM0yi...`         |
+|Veren     |İş ortağı IDP veren URI 'SI (örneğin `http://www.example.com/exk10l6w90DHM0yi...`)         |
 
-Aşağıdaki talep kimlik sağlayıcısı tarafından verilen SAML 2.0 belirtecin, yapılandırılmış olması gerekir:
+Aşağıdaki taleplerin kimlik sağlayıcısı tarafından verilen SAML 2,0 belirtecinde yapılandırılması gerekir:
 
 
 |Öznitelik  |Değer  |
 |---------|---------|
-|Nameıd biçimi     |`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`         |
-|emailaddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
+|NameID biçimi     |`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`         |
+|EmailAddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
 
 
-Sonraki bölümde, gerekli öznitelikler ve talepleri AD FS kullanarak örnek bir SAML 2.0 kimlik sağlayıcısı olarak nasıl yapılandırılacağı gösterilmektedir.
+Sonraki bölümde, SAML 2,0 kimlik sağlayıcısı örneği olarak AD FS kullanarak gerekli özniteliklerin ve taleplerin nasıl yapılandırılacağı gösterilmektedir.
 
 ### <a name="before-you-begin"></a>Başlamadan önce
 
-AD FS sunucusu zaten ayarlanmalıdır yukarı ve bu yordama başlamadan önce çalışmıyor. AD FS sunucusu kurma konusunda yardım için bkz. [Azure sanal makinesinde bir test AD FS 3.0 örneği oluşturma](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed).
+Bu yordama başlamadan önce bir AD FS sunucusu ayarlanmalıdır ve çalışır durumda olmalıdır. AD FS sunucu ayarlama konusunda yardım için bkz. [Azure sanal makinesinde test AD FS 3,0 örneği oluşturma](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed).
 
-### <a name="add-the-claim-description"></a>Talep açıklaması ekleme
+### <a name="add-the-claim-description"></a>Talep açıklamasını ekleyin
 
-1. AD FS sunucunuza seçin **Araçları** > **AD FS Yönetimi**.
-2. Gezinti bölmesinde seçin **hizmet** > **talep açıklamaları**.
-3. Altında **eylemleri**seçin **talep açıklaması ekleme**.
-4. İçinde **talep açıklaması ekleme** penceresinde aşağıdaki değerleri belirtin:
+1. AD FS sunucunuzda **araçlar** > **AD FS Yönetim**' i seçin.
+2. Gezinti bölmesinde **Service** > **talep açıklamaları**' nı seçin.
+3. **Eylemler**' ın altında **talep açıklaması ekle**' yi seçin.
+4. **Talep açıklaması ekle** penceresinde, aşağıdaki değerleri belirtin:
 
-   - **Görünen ad**: Kalıcı tanımlayıcı
-   - **Talep tanıtıcısı**: `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent` 
-   - Onay kutusunu seçin **bu talep açıklaması Federasyon meta verilerinde Federasyon Hizmeti'nin kabul edebileceği bir talep türü olarak Yayımla**.
-   - Onay kutusunu seçin **bu talep açıklaması Federasyon meta verilerinde Federasyon Hizmeti'nin gönderebileceği bir talep türü olarak Yayımla**.
+   - **Görünen ad**: kalıcı tanımlayıcı
+   - **Talep tanımlayıcısı**: `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent` 
+   - Bu **talep açıklamasını bu Federasyon hizmetinin kabul edebileceği bir talep türü olarak Federasyon meta verilerinde Yayımla**onay kutusunu seçin.
+   - Bu **talep açıklamasını bu Federasyon Hizmeti 'nin gönderebilecek bir talep türü olarak Federasyon meta verilerinde Yayımla**onay kutusunu seçin.
 
 5. **Tamam**’a tıklayın.
 
-### <a name="add-the-relying-party-trust-and-claim-rules"></a>Bağlı olan taraf güveni ekleme ve talep kuralları
+### <a name="add-the-relying-party-trust-and-claim-rules"></a>Bağlı olan taraf güvenini ve talep kurallarını ekleyin
 
-1. AD FS sunucusunda Git **Araçları** > **AD FS Yönetimi**.
-2. Gezinti bölmesinde seçin **güven ilişkileri** > **bağlı olan taraf güvenleri**.
-3. Altında **eylemleri**seçin **bağlı olan taraf güveni Ekle**. 
-4. İçin ekleme bağlı olan taraf güveni Sihirbazı'nda **veri kaynağı Seç**, bu seçeneği kullanın **çevrimiçi veya yerel ağda yayımlanan bağlı olan taraf hakkındaki verileri içeri aktar**. Bu Federasyon meta verileri URL'sini - belirleyen https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml. Diğer varsayılan seçimleri bırakın. Seçin **Kapat**.
+1. AD FS sunucusunda **araçlar** > **AD FS Yönetim**' e gidin.
+2. Gezinti bölmesinde, **bağlı olan taraf güvenleri** > **güven ilişkileri** ' ni seçin.
+3. **Eylemler**altında **bağlı olan taraf güveni Ekle**' yi seçin. 
+4. **Veri kaynağı seç**için bağlı olan taraf güveni Ekleme Sihirbazı ' nda, **çevrimiçi veya yerel bir ağ üzerinde yayınlanan bağlı olan taraf hakkında verileri içeri aktarma**seçeneğini kullanın. Bu Federasyon meta veri URL 'sini belirtin- https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml. Diğer varsayılan seçimleri bırakın. **Kapat**' ı seçin.
 5. **Talep kurallarını Düzenle** Sihirbazı açılır.
-6. İçinde **talep kurallarını Düzenle** seçin **Kuralı Ekle**. İçinde **kural türü seçin**seçin **LDAP özniteliklerini talep olarak Gönder**. **İleri**’yi seçin.
-7. İçinde **talep kuralını yapılandırın**, aşağıdaki değerleri belirtin: 
+6. **Talep kurallarını Düzenle** sihirbazında **Kural Ekle**' yi seçin. **Kural türünü seçin**bölümünde **LDAP özniteliklerini talep olarak gönder**' i seçin. **İleri**’yi seçin.
+7. **Talep Yapılandır kuralını**, aşağıdaki değerleri belirtin: 
 
-   - **Talep kuralı adı**: E-posta talebi kuralı 
+   - **Talep kuralı adı**: e-posta talebi kuralı 
    - **Öznitelik deposu**: Active Directory 
    - **LDAP özniteliği**: E-posta adresleri 
-   - **Giden talep türü**: E-posta adresi
+   - **Giden talep türü**: e-posta adresi
 
 8. **Son**’u seçin.
-9. **Talep kurallarını Düzenle** penceresi, Yeni kuralın gösterilir. **Uygula**'ya tıklayın. 
+9. **Talep kurallarını Düzenle** penceresinde yeni kural görüntülenir. **Uygula**'ya tıklayın. 
 10. **Tamam**’a tıklayın.  
 
-### <a name="create-an-email-transform-rule"></a>Bir e-posta dönüştürme kuralı oluşturma
-1. Git **talep kurallarını Düzenle** tıklatıp **Kuralı Ekle**. İçinde **kural türü seçin**seçin **gelen talebi Dönüştür** tıklatıp **sonraki**. 
-2. İçinde **talep kuralını yapılandırın**, aşağıdaki değerleri belirtin: 
+### <a name="create-an-email-transform-rule"></a>E-posta dönüştürme kuralı oluşturma
+1. **Talep kurallarını Düzenle** ' ye gidin ve **Kural Ekle**' ye tıklayın. **Kural türünü seçin**' de, **gelen talebi Dönüştür** ' ü seçin ve **İleri**' ye tıklayın. 
+2. **Talep Yapılandır kuralını**, aşağıdaki değerleri belirtin: 
 
-   - **Talep kuralı adı**: E-posta dönüştürme kuralı 
-   - **Gelen talep türü**: E-posta adresi 
-   - **Giden talep türü**: Ad kimliği 
-   - **Giden ad kimliği biçimi**: Kalıcı tanımlayıcı 
+   - **Talep kuralı adı**: e-posta dönüştürme kuralı 
+   - **Gelen talep türü**: e-posta adresi 
+   - **Giden talep türü**: ad kimliği 
+   - **Giden ad kimlik biçimi**: kalıcı tanımlayıcı 
    - **Tüm talep değerlerini geçir**’i seçin.
 
 3. **Son**'a tıklayın. 
-4. **Talep kurallarını Düzenle** penceresi, yeni kurallar gösterilir. **Uygula**'ya tıklayın. 
-5. **Tamam** düğmesine tıklayın. AD FS sunucusu, SAML 2.0 protokolünü kullanarak doğrudan Federasyon için yapılandırılmıştır.
+4. **Talep kurallarını Düzenle** penceresinde yeni kurallar gösterilir. **Uygula**'ya tıklayın. 
+5. **OK (Tamam)** düğmesine tıklayın. AD FS sunucusu artık SAML 2,0 protokolü kullanılarak doğrudan Federasyon için yapılandırılmıştır.
 
-## <a name="configure-ad-fs-for-ws-fed-direct-federation"></a>WS-Federasyon doğrudan Federasyon için AD FS'yi yapılandırma 
-Azure AD B2B, aşağıda listelenen belirli gereksinimleri olan WS-Federasyon protokolünü kullanan kimlik sağlayıcıları ile federasyona eklemek için yapılandırılabilir. Şu anda Azure AD ile uyumluluk eklemek için AD FS ve Shibboleth iki WS-Federasyon sağlayıcıları test edilmiştir. Burada, Active Directory Federasyon Hizmetleri (AD FS) WS-Federasyon kimlik sağlayıcısının örnek olarak kullanacağız. Azure AD ile uyumlu bir WS-Federasyon sağlayıcısı arasında bağlı olan taraf güveni oluşturma hakkında daha fazla bilgi için Azure AD kimlik sağlayıcısı uyumluluk belgelerini indirin.
+## <a name="configure-ad-fs-for-ws-fed-direct-federation"></a>WS-Besdirect Federasyonu için AD FS yapılandırma 
+Azure AD B2B, aşağıda listelenen belirli gereksinimlere sahip WS-Besme protokolünü kullanan kimlik sağlayıcılarıyla federasyona eklemek üzere yapılandırılabilir. Şu anda, iki WS-beslemeli sağlayıcı Azure AD dahil AD FS ve Shibbomath ile uyumluluk için sınanmıştır. Burada, WS-beslik kimlik sağlayıcısının bir örneği olarak Active Directory Federasyon Hizmetleri (AD FS) (AD FS) kullanacağız. Azure AD ile WS-Beslikli bir sağlayıcı arasında bağlı olan taraf güveni oluşturma hakkında daha fazla bilgi için Azure AD kimlik sağlayıcısı uyumluluk belgeleri ' ni indirin.
 
-Doğrudan Federasyon ayarlamak için aşağıdaki öznitelikleri WS-Federasyon iletisi kimlik sağlayıcısından alınmış olması gerekir. Bu öznitelikler, bağlama çevrimiçi güvenlik belirteci hizmeti XML dosyasını veya bunları el ile girerek yapılandırılabilir. Adımda 12 [test AD FS örneği oluşturma](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed) AD FS bitiş noktaları bulma veya oluşturmayı, meta veri URL'si, örneğin açıklayan `https://fs.iga.azure-test.net/federationmetadata/2007-06/federationmetadata.xml`.
+Doğrudan Federasyonu ayarlamak için, kimlik sağlayıcısından gelen WS-Besme iletisinde aşağıdaki öznitelikler alınmalıdır. Bu öznitelikler, çevrimiçi güvenlik belirteci hizmeti XML dosyasına bağlanarak veya el ile girilerek yapılandırılabilir. Adım 12 ' de [bir test AD FS örneği oluşturma](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed) AD FS uç noktaların nasıl bulunacağını veya meta veri URL 'nizin nasıl oluşturulacağını açıklar. Örneğin `https://fs.iga.azure-test.net/federationmetadata/2007-06/federationmetadata.xml`.
  
 |Öznitelik  |Değer  |
 |---------|---------|
-|PassiveRequestorEndpoint     |`https://login.microsoftonline.com/login.srf`         |
+|Passıverequestorendpoint     |`https://login.microsoftonline.com/login.srf`         |
 |Hedef kitle     |`urn:federation:MicrosoftOnline`         |
-|Veren     |İş ortağı IDP, örneğin URI'sini veren `http://www.example.com/exk10l6w90DHM0yi...`         |
+|Veren     |İş ortağı IDP veren URI 'SI (örneğin `http://www.example.com/exk10l6w90DHM0yi...`)         |
 
-IDP tarafından verilen WS-Federasyon belirteç için gerekli talep:
+IDP tarafından verilen WS-Besme belirteci için gerekli talepler:
 
 |Öznitelik  |Değer  |
 |---------|---------|
-|Immutableıd     |`http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID`         |
-|emailaddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
+|ImmutableID     |`http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID`         |
+|EmailAddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
 
-Sonraki bölümde, gerekli öznitelikleri yapılandırma gösterir ve WS-Federasyon kimlik sağlayıcısının örnek olarak AD FS kullanarak talep.
+Sonraki bölümde, WS-beslik kimlik sağlayıcısı örneği olarak AD FS kullanarak gerekli özniteliklerin ve taleplerin nasıl yapılandırılacağı gösterilmektedir.
 
 ### <a name="before-you-begin"></a>Başlamadan önce
-AD FS sunucusu zaten ayarlanmalıdır yukarı ve bu yordama başlamadan önce çalışmıyor. AD FS sunucusu kurma konusunda yardım için bkz. [Azure sanal makinesinde bir test AD FS 3.0 örneği oluşturma](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed).
+Bu yordama başlamadan önce bir AD FS sunucusu ayarlanmalıdır ve çalışır durumda olmalıdır. AD FS sunucu ayarlama konusunda yardım için bkz. [Azure sanal makinesinde test AD FS 3,0 örneği oluşturma](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed).
 
 
-### <a name="add-the-relying-party-trust-and-claim-rules"></a>Bağlı olan taraf güveni ekleme ve talep kuralları 
-1. AD FS sunucusunda Git **Araçları** > **AD FS Yönetimi**. 
-1. Gezinti bölmesinde seçin **güven ilişkileri** > **bağlı olan taraf güvenleri**. 
-1. Altında **eylemleri**seçin **bağlı olan taraf güveni Ekle**.  
-1. İçin bağlı olan taraf güveni Sihirbazı Ekle **veri kaynağı Seç**, bu seçeneği kullanın **çevrimiçi veya yerel ağda yayımlanan bağlı olan taraf hakkındaki verileri içeri aktar**. Bu Federasyon meta verileri URL'sini belirtin: `https://nexus.microsoftonline-p.com/federationmetadata/2007-06/federationmetadata.xml`.  Diğer varsayılan seçimleri bırakın. Seçin **Kapat**.
+### <a name="add-the-relying-party-trust-and-claim-rules"></a>Bağlı olan taraf güvenini ve talep kurallarını ekleyin 
+1. AD FS sunucusunda **araçlar** > **AD FS Yönetim**' e gidin. 
+1. Gezinti bölmesinde, **bağlı olan taraf güvenleri** > **güven ilişkileri** ' ni seçin. 
+1. **Eylemler**altında **bağlı olan taraf güveni Ekle**' yi seçin.  
+1. Bağlı olan taraf güveni Ekleme Sihirbazı ' nda, **veri kaynağı seç**için, **çevrimiçi veya yerel bir ağ üzerinde yayınlanan bağlı olan taraf hakkında verileri içeri aktarma**seçeneğini kullanın. Bu Federasyon meta veri URL 'sini belirtin: `https://nexus.microsoftonline-p.com/federationmetadata/2007-06/federationmetadata.xml`.  Diğer varsayılan seçimleri bırakın. **Kapat**' ı seçin.
 1. **Talep kurallarını Düzenle** Sihirbazı açılır. 
-1. İçinde **talep kurallarını Düzenle** seçin **Kuralı Ekle**. İçinde **kural türü seçin**seçin **talepleri özel kural kullanarak Gönder**. *İleri*’yi seçin. 
-1. İçinde **talep kuralını yapılandırın**, aşağıdaki değerleri belirtin:
+1. **Talep kurallarını Düzenle** sihirbazında **Kural Ekle**' yi seçin. **Kural türü seç**' te, **talepleri özel bir kural kullanarak gönder**' i seçin. *İleri*’yi seçin. 
+1. **Talep Yapılandır kuralını**, aşağıdaki değerleri belirtin:
 
-   - **Talep kuralı adı**: Sorunu sabit kimlik  
+   - **Talep kuralı adı**: sorun sabit kimliği  
    - **Özel kural**: `c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname"] => issue(store = "Active Directory", types = ("http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID"), query = "samAccountName={0};objectGUID;{1}", param = regexreplace(c.Value, "(?<domain>[^\\]+)\\(?<user>.+)", "${user}"), param = c.Value);`
 
 1. **Son**’u seçin. 
-1. **Talep kurallarını Düzenle** penceresi, Yeni kuralın gösterilir. **Uygula**'ya tıklayın.  
-1. Aynı **talep kurallarını Düzenle** seçin **Kuralı Ekle**. İçinde **Cohose kural türü**seçin **LDAP özniteliklerini talep olarak Gönder**. **İleri**’yi seçin.
-1. İçinde **talep kuralını yapılandırın**, aşağıdaki değerleri belirtin: 
+1. **Talep kurallarını Düzenle** penceresinde yeni kural görüntülenir. **Uygula**'ya tıklayın.  
+1. Aynı **talep kurallarını düzenleme** sihirbazında **Kural Ekle**' yi seçin. **Cohortum kural türü**' nde **LDAP özniteliklerini talep olarak gönder**' i seçin. **İleri**’yi seçin.
+1. **Talep Yapılandır kuralını**, aşağıdaki değerleri belirtin: 
 
-   - **Talep kuralı adı**: E-posta talebi kuralı  
+   - **Talep kuralı adı**: e-posta talebi kuralı  
    - **Öznitelik deposu**: Active Directory  
    - **LDAP özniteliği**: E-posta adresleri  
-   - **Giden talep türü**: E-posta adresi 
+   - **Giden talep türü**: e-posta adresi 
 
 1.  **Son**’u seçin. 
-1.  **Talep kurallarını Düzenle** penceresi, Yeni kuralın gösterilir. **Uygula**'ya tıklayın.  
-1.  **Tamam** düğmesine tıklayın. AD FS sunucusu, WS-Federasyon kullanarak doğrudan Federasyon için yapılandırılmıştır.
+1.  **Talep kurallarını Düzenle** penceresinde yeni kural görüntülenir. **Uygula**'ya tıklayın.  
+1.  **OK (Tamam)** düğmesine tıklayın. AD FS sunucusu artık WS-Beskullanan doğrudan Federasyon için yapılandırılmıştır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Ardından, artıracaksınız [doğrudan Federasyon Azure AD'de yapılandırırken](direct-federation.md#step-2-configure-direct-federation-in-azure-ad) Azure AD portalında veya PowerShell kullanarak. 
+Bundan sonra Azure [ad 'de doğrudan Federasyonu](direct-federation.md#step-2-configure-direct-federation-in-azure-ad) Azure AD portalında veya PowerShell kullanarak yapılandırırsınız. 

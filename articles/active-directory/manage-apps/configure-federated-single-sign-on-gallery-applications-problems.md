@@ -1,5 +1,5 @@
 ---
-title: Azure AD Galeri uygulamaları için Federasyon çoklu oturum açmayı yapılandırma sorunları | Microsoft Docs
+title: Azure AD Galeri uygulamaları için Federasyon SSO yapılandırma sorunları
 description: Azure AD uygulama galerisinde listelenen uygulamalar için SAML kullanarak federe çoklu oturum açmayı yapılandırırken karşılaşabileceğiniz yaygın sorunlardan bazılarını çözün
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f4e690b440604a312ddfa8cd320ac200c0f40cf
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 87c2497a781b0d46b3b2f1e281a3d7b327b60952
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381211"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274650"
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>Azure AD Galeri uygulaması için Federasyon çoklu oturum açmayı yapılandırma sorunu
 
@@ -74,7 +74,7 @@ Değerler, Azure AD 'de önceden yapılandırılmış desenlerle eşleşmezse. �
 
 -   Azure AD 'de önceden yapılandırılmış olan desenli eşleşen değerleri almak için uygulama satıcısıyla birlikte çalışın
 
--   Ya da, uygulama için desteklenen desenlerin güncelleştirilmesini <aadapprequest@microsoft.com> istemek için Azure AD ekibine başvurabilirsiniz veya öğreticide bir yorum bırakabilirsiniz
+-   Ya da, uygulama için desteklenen desenlerin güncelleştirilmesini istemek üzere <aadapprequest@microsoft.com> adresinden Azure AD ekibine başvurabilirsiniz veya öğreticide bir yorum bırakabilirsiniz
 
 ## <a name="where-do-i-set-the-entityid-user-identifier-format"></a>EntityId (Kullanıcı tanımlayıcısı) biçimini nereden ayarlayabilirim?
 

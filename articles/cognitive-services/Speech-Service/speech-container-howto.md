@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: dapine
-ms.openlocfilehash: 4170db596d3d4f4b197120770afa2f6e8b0f8a1c
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
-ms.translationtype: MT
+ms.openlocfilehash: b83ece803a72fe6132c1ba98414e95897a0fcc90
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132613"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304870"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Konuşma hizmeti kapsayıcılarını yükleyip çalıştırma
 
@@ -155,10 +155,10 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-t
 
 #### <a name="speech-to-text-locales"></a>Konuşmayı metne göre yerel ayarlar
 
-`latest` dışındaki tüm Etiketler aşağıdaki biçimdedir, burada `<culture>` yerel ayar kapsayıcısını gösterir:
+`latest` dışındaki tüm Etiketler aşağıdaki biçimdedir ve büyük/küçük harfe duyarlıdır:
 
 ```
-<major>.<minor>.<patch>-<platform>-<culture>-<prerelease>
+<major>.<minor>.<patch>-<platform>-<locale>-<prerelease>
 ```
 
 Aşağıdaki etiket, biçiminin bir örneğidir:
@@ -197,10 +197,10 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 
 #### <a name="text-to-speech-locales"></a>Metinden konuşmaya yerel ayarlar
 
-`latest` dışındaki tüm Etiketler aşağıdaki biçimdedir; burada `<culture>` yerel ayarı gösterir ve `<voice>` kapsayıcının sesini gösterir:
+`latest` dışındaki tüm Etiketler aşağıdaki biçimdedir ve büyük/küçük harfe duyarlıdır:
 
 ```
-<major>.<minor>.<patch>-<platform>-<culture>-<voice>-<prerelease>
+<major>.<minor>.<patch>-<platform>-<locale>-<voice>-<prerelease>
 ```
 
 Aşağıdaki etiket, biçiminin bir örneğidir:
@@ -404,7 +404,7 @@ Kapsayıcıyı başlatırken veya çalıştırırken sorunlarla karşılaşabili
 
 [!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
-## <a name="billing"></a>Faturalandırma
+## <a name="billing"></a>Faturalama
 
 Konuşma kapsayıcıları, Azure hesabınızdaki bir *konuşma* kaynağını kullanarak faturalama bilgilerini Azure 'a gönderir.
 

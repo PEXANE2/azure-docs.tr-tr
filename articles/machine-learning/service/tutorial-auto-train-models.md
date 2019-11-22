@@ -1,5 +1,5 @@
 ---
-title: 'Regresyon modeli öğreticisi: otomatik ML'
+title: 'Regresyon öğreticisi: otomatik ML'
 titleSuffix: Azure Machine Learning
 description: Otomatik makine öğrenimi kullanarak makine öğrenimi modeli oluşturmayı öğrenin. Azure Machine Learning, veri ön işleme, algoritma seçimi ve hiper parametre seçimini sizin için otomatik bir şekilde gerçekleştirebilir. Ardından, son model Azure Machine Learning ile dağıtılır.
 services: machine-learning
@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 11/04/2019
-ms.openlocfilehash: 23441fb64293647698921c17c06731ab413b7699
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 5e7d897b3a845580d7830e2cf816417f2282dd27
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582448"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74271857"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Öğretici: taksi Fares 'yi tahmin etmek için otomatik makine öğrenimi kullanma
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -33,7 +33,7 @@ Bu öğreticide aşağıdaki görevleri öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. Azure Machine Learning [ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Zaten bir Azure Machine Learning çalışma alanınız veya Not defteri sanal makineniz yoksa [Kurulum öğreticisini](tutorial-1st-experiment-sdk-setup.md) doldurun.
 * Kurulum öğreticisini tamamladıktan sonra, aynı not defteri sunucusunu kullanarak **öğreticiler/Regression-Automated-ml. ipynb** Not defterini açın.
@@ -70,7 +70,7 @@ green_taxi_df.head(10)
 ```
 
 <div>
-<style scoped>. dataframe tbody tr TH: yalnızca-of-type {Vertical-ALIGN: Middle;}
+<style scoped> .dataframe tbody tr th: yalnızca-of-type {Dikey Hizala: Orta;}
 
     .dataframe tbody tr th {
         vertical-align: top;
@@ -97,7 +97,7 @@ green_taxi_df.head(10)
       <th>...</th>
       <th>paymentType</th>
       <th>fareAmount</th>
-      <th>Ina</th>
+      <th>ına</th>
       <th>Mtavergisi</th>
       <th>improvementSurcharge</th>
       <th>tipAmount</th>
@@ -123,14 +123,14 @@ green_taxi_df.head(10)
       <td>...</td>
       <td>2</td>
       <td>15,00</td>
-      <td>0,50</td>
-      <td>0,50</td>
+      <td>0.50</td>
+      <td>0.50</td>
       <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
+      <td>0.00</td>
+      <td>0.00</td>
       <td>nBir</td>
       <td>16,30</td>
-      <td>1,00</td>
+      <td>1.00</td>
     </tr>
     <tr>
       <th>1129817</th>
@@ -138,7 +138,7 @@ green_taxi_df.head(10)
       <td>2015-01-20 16:26:29</td>
       <td>2015-01-20 16:30:26</td>
       <td>1</td>
-      <td>0,69</td>
+      <td>0.69</td>
       <td>None</td>
       <td>None</td>
       <td>-73,96</td>
@@ -146,15 +146,15 @@ green_taxi_df.head(10)
       <td>-73,96</td>
       <td>...</td>
       <td>2</td>
-      <td>4,50</td>
-      <td>1,00</td>
-      <td>0,50</td>
+      <td>4.50</td>
+      <td>1.00</td>
+      <td>0.50</td>
       <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
+      <td>0.00</td>
+      <td>0.00</td>
       <td>nBir</td>
       <td>6,30</td>
-      <td>1,00</td>
+      <td>1.00</td>
     </tr>
     <tr>
       <th>1278620</th>
@@ -171,14 +171,14 @@ green_taxi_df.head(10)
       <td>...</td>
       <td>2</td>
       <td>4,00</td>
-      <td>0,00</td>
-      <td>0,50</td>
+      <td>0.00</td>
+      <td>0.50</td>
       <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
+      <td>0.00</td>
+      <td>0.00</td>
       <td>nBir</td>
       <td>4,80</td>
-      <td>1,00</td>
+      <td>1.00</td>
     </tr>
     <tr>
       <th>348430</th>
@@ -186,7 +186,7 @@ green_taxi_df.head(10)
       <td>2015-01-17 02:20:50</td>
       <td>2015-01-17 02:41:38</td>
       <td>1</td>
-      <td>0,00</td>
+      <td>0.00</td>
       <td>None</td>
       <td>None</td>
       <td>-73,81</td>
@@ -195,14 +195,14 @@ green_taxi_df.head(10)
       <td>...</td>
       <td>2</td>
       <td>12,50</td>
-      <td>0,50</td>
-      <td>0,50</td>
+      <td>0.50</td>
+      <td>0.50</td>
       <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
+      <td>0.00</td>
+      <td>0.00</td>
       <td>nBir</td>
       <td>13,80</td>
-      <td>1,00</td>
+      <td>1.00</td>
     </tr>
     <tr>
       <th>1269627</th>
@@ -210,7 +210,7 @@ green_taxi_df.head(10)
       <td>2015-01-01 05:04:10</td>
       <td>2015-01-01 05:06:23</td>
       <td>1</td>
-      <td>0,50</td>
+      <td>0.50</td>
       <td>None</td>
       <td>None</td>
       <td>-73,92</td>
@@ -219,14 +219,14 @@ green_taxi_df.head(10)
       <td>...</td>
       <td>2</td>
       <td>4,00</td>
-      <td>0,50</td>
-      <td>0,50</td>
+      <td>0.50</td>
+      <td>0.50</td>
       <td>0</td>
-      <td>0,00</td>
-      <td>0,00</td>
+      <td>0.00</td>
+      <td>0.00</td>
       <td>nBir</td>
-      <td>5,00</td>
-      <td>1,00</td>
+      <td>5.00</td>
+      <td>1.00</td>
     </tr>
     <tr>
       <th>811755</th>
@@ -243,14 +243,14 @@ green_taxi_df.head(10)
       <td>...</td>
       <td>2</td>
       <td>6,50</td>
-      <td>0,50</td>
-      <td>0,50</td>
+      <td>0.50</td>
+      <td>0.50</td>
       <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
+      <td>0.00</td>
+      <td>0.00</td>
       <td>nBir</td>
       <td>7,80</td>
-      <td>1,00</td>
+      <td>1.00</td>
     </tr>
     <tr>
       <th>737281</th>
@@ -266,15 +266,15 @@ green_taxi_df.head(10)
       <td>-73,87</td>
       <td>...</td>
       <td>2</td>
-      <td>6,00</td>
-      <td>0,00</td>
-      <td>0,50</td>
+      <td>6.00</td>
+      <td>0.00</td>
+      <td>0.50</td>
       <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
+      <td>0.00</td>
+      <td>0.00</td>
       <td>nBir</td>
       <td>6,80</td>
-      <td>1,00</td>
+      <td>1.00</td>
     </tr>
     <tr>
       <th>113951</th>
@@ -291,14 +291,14 @@ green_taxi_df.head(10)
       <td>...</td>
       <td>2</td>
       <td>12,50</td>
-      <td>0,50</td>
-      <td>0,50</td>
+      <td>0.50</td>
+      <td>0.50</td>
       <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
+      <td>0.00</td>
+      <td>0.00</td>
       <td>nBir</td>
       <td>13,80</td>
-      <td>1,00</td>
+      <td>1.00</td>
     </tr>
     <tr>
       <th>150436</th>
@@ -315,14 +315,14 @@ green_taxi_df.head(10)
       <td>...</td>
       <td>1</td>
       <td>7,00</td>
-      <td>0,00</td>
-      <td>0,50</td>
+      <td>0.00</td>
+      <td>0.50</td>
       <td>0,3</td>
       <td>1,75</td>
-      <td>0,00</td>
+      <td>0.00</td>
       <td>nBir</td>
       <td>9,55</td>
-      <td>1,00</td>
+      <td>1.00</td>
     </tr>
     <tr>
       <th>432136</th>
@@ -338,15 +338,15 @@ green_taxi_df.head(10)
       <td>-73,94</td>
       <td>...</td>
       <td>2</td>
-      <td>5,00</td>
-      <td>0,50</td>
-      <td>0,50</td>
+      <td>5.00</td>
+      <td>0.50</td>
+      <td>0.50</td>
       <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
+      <td>0.00</td>
+      <td>0.00</td>
       <td>nBir</td>
       <td>6,30</td>
-      <td>1,00</td>
+      <td>1.00</td>
     </tr>
   </tbody>
 </table>
@@ -371,7 +371,7 @@ green_taxi_df.head(10)
 ```
 
 <div>
-<style scoped>. dataframe tbody tr TH: yalnızca-of-type {Vertical-ALIGN: Middle;}
+<style scoped> .dataframe tbody tr th: yalnızca-of-type {Dikey Hizala: Orta;}
 
     .dataframe tbody tr th {
         vertical-align: top;
@@ -423,11 +423,11 @@ green_taxi_df.head(10)
       <td>-73,94</td>
       <td>...</td>
       <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
+      <td>0.00</td>
+      <td>0.00</td>
       <td>nBir</td>
       <td>16,30</td>
-      <td>1,00</td>
+      <td>1.00</td>
       <td>1</td>
       <td>11</td>
       <td>6</td>
@@ -439,7 +439,7 @@ green_taxi_df.head(10)
       <td>2015-01-20 16:26:29</td>
       <td>2015-01-20 16:30:26</td>
       <td>1</td>
-      <td>0,69</td>
+      <td>0.69</td>
       <td>None</td>
       <td>None</td>
       <td>-73,96</td>
@@ -447,11 +447,11 @@ green_taxi_df.head(10)
       <td>-73,96</td>
       <td>...</td>
       <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
+      <td>0.00</td>
+      <td>0.00</td>
       <td>nBir</td>
       <td>6,30</td>
-      <td>1,00</td>
+      <td>1.00</td>
       <td>1</td>
       <td>20</td>
       <td>1</td>
@@ -471,11 +471,11 @@ green_taxi_df.head(10)
       <td>-73,91</td>
       <td>...</td>
       <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
+      <td>0.00</td>
+      <td>0.00</td>
       <td>nBir</td>
       <td>4,80</td>
-      <td>1,00</td>
+      <td>1.00</td>
       <td>1</td>
       <td>1</td>
       <td>3</td>
@@ -487,7 +487,7 @@ green_taxi_df.head(10)
       <td>2015-01-17 02:20:50</td>
       <td>2015-01-17 02:41:38</td>
       <td>1</td>
-      <td>0,00</td>
+      <td>0.00</td>
       <td>None</td>
       <td>None</td>
       <td>-73,81</td>
@@ -495,11 +495,11 @@ green_taxi_df.head(10)
       <td>-73,82</td>
       <td>...</td>
       <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
+      <td>0.00</td>
+      <td>0.00</td>
       <td>nBir</td>
       <td>13,80</td>
-      <td>1,00</td>
+      <td>1.00</td>
       <td>1</td>
       <td>17</td>
       <td>5</td>
@@ -511,7 +511,7 @@ green_taxi_df.head(10)
       <td>2015-01-01 05:04:10</td>
       <td>2015-01-01 05:06:23</td>
       <td>1</td>
-      <td>0,50</td>
+      <td>0.50</td>
       <td>None</td>
       <td>None</td>
       <td>-73,92</td>
@@ -519,11 +519,11 @@ green_taxi_df.head(10)
       <td>-73,92</td>
       <td>...</td>
       <td>0</td>
-      <td>0,00</td>
-      <td>0,00</td>
+      <td>0.00</td>
+      <td>0.00</td>
       <td>nBir</td>
-      <td>5,00</td>
-      <td>1,00</td>
+      <td>5.00</td>
+      <td>1.00</td>
       <td>1</td>
       <td>1</td>
       <td>3</td>
@@ -543,11 +543,11 @@ green_taxi_df.head(10)
       <td>-73,95</td>
       <td>...</td>
       <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
+      <td>0.00</td>
+      <td>0.00</td>
       <td>nBir</td>
       <td>7,80</td>
-      <td>1,00</td>
+      <td>1.00</td>
       <td>1</td>
       <td>4</td>
       <td>6</td>
@@ -567,11 +567,11 @@ green_taxi_df.head(10)
       <td>-73,87</td>
       <td>...</td>
       <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
+      <td>0.00</td>
+      <td>0.00</td>
       <td>nBir</td>
       <td>6,80</td>
-      <td>1,00</td>
+      <td>1.00</td>
       <td>1</td>
       <td>3</td>
       <td>5</td>
@@ -591,11 +591,11 @@ green_taxi_df.head(10)
       <td>-73,91</td>
       <td>...</td>
       <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
+      <td>0.00</td>
+      <td>0.00</td>
       <td>nBir</td>
       <td>13,80</td>
-      <td>1,00</td>
+      <td>1.00</td>
       <td>1</td>
       <td>9</td>
       <td>4</td>
@@ -616,10 +616,10 @@ green_taxi_df.head(10)
       <td>...</td>
       <td>0,3</td>
       <td>1,75</td>
-      <td>0,00</td>
+      <td>0.00</td>
       <td>nBir</td>
       <td>9,55</td>
-      <td>1,00</td>
+      <td>1.00</td>
       <td>1</td>
       <td>11</td>
       <td>6</td>
@@ -639,11 +639,11 @@ green_taxi_df.head(10)
       <td>-73,94</td>
       <td>...</td>
       <td>0,3</td>
-      <td>0,00</td>
-      <td>0,00</td>
+      <td>0.00</td>
+      <td>0.00</td>
       <td>nBir</td>
       <td>6,30</td>
-      <td>1,00</td>
+      <td>1.00</td>
       <td>1</td>
       <td>22</td>
       <td>3</td>
@@ -667,7 +667,7 @@ for col in columns_to_remove:
 green_taxi_df.head(5)
 ```
 
-### <a name="cleanse-data"></a>Verileri temizleme
+### <a name="cleanse-data"></a>Verilerini temizlemek
 
 Her bir alanın Özet istatistiklerini görmek için yeni veri çerçevesinde `describe()` işlevini çalıştırın.
 
@@ -676,7 +676,7 @@ green_taxi_df.describe()
 ```
 
 <div>
-<style scoped>. dataframe tbody tr TH: yalnızca-of-type {Vertical-ALIGN: Middle;}
+<style scoped> .dataframe tbody tr th: yalnızca-of-type {Dikey Hizala: Orta;}
 
     .dataframe tbody tr th {
         vertical-align: top;
@@ -721,7 +721,7 @@ green_taxi_df.describe()
       <td>48000,00</td>
     </tr>
     <tr>
-      <th>Ortası</th>
+      <th>Ortalama</th>
       <td>1,78</td>
       <td>1,37</td>
       <td>2,87</td>
@@ -737,53 +737,53 @@ green_taxi_df.describe()
     </tr>
     <tr>
       <th>STD</th>
-      <td>0,41</td>
+      <td>0.41</td>
       <td>1,04</td>
       <td>2,93</td>
       <td>2,76</td>
       <td>1,52</td>
-      <td>2,61</td>
+      <td>2.61</td>
       <td>1,44</td>
       <td>12,08</td>
-      <td>3,45</td>
+      <td>3.45</td>
       <td>8,45</td>
       <td>1,95</td>
       <td>6,83</td>
     </tr>
     <tr>
       <th>dk</th>
-      <td>1,00</td>
-      <td>0,00</td>
-      <td>0,00</td>
+      <td>1.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
       <td>-74,66</td>
-      <td>0,00</td>
+      <td>0.00</td>
       <td>-74,66</td>
-      <td>0,00</td>
+      <td>0.00</td>
       <td>-300,00</td>
-      <td>1,00</td>
-      <td>1,00</td>
-      <td>0,00</td>
-      <td>0,00</td>
+      <td>1.00</td>
+      <td>1.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
     </tr>
     <tr>
       <th>%25</th>
-      <td>2,00</td>
-      <td>1,00</td>
+      <td>2.00</td>
+      <td>1.00</td>
       <td>1,06</td>
       <td>-73,96</td>
       <td>40,70</td>
       <td>-73,97</td>
       <td>40,70</td>
       <td>7,80</td>
-      <td>3,75</td>
+      <td>3.75</td>
       <td>8,00</td>
-      <td>2,00</td>
+      <td>2.00</td>
       <td>9,00</td>
     </tr>
     <tr>
       <th>%50</th>
-      <td>2,00</td>
-      <td>1,00</td>
+      <td>2.00</td>
+      <td>1.00</td>
       <td>1,90</td>
       <td>-73,94</td>
       <td>40,75</td>
@@ -792,13 +792,13 @@ green_taxi_df.describe()
       <td>11,30</td>
       <td>6,50</td>
       <td>15,00</td>
-      <td>3,00</td>
+      <td>3.00</td>
       <td>15,00</td>
     </tr>
     <tr>
       <th>%75</th>
-      <td>2,00</td>
-      <td>1,00</td>
+      <td>2.00</td>
+      <td>1.00</td>
       <td>3,60</td>
       <td>-73,92</td>
       <td>40,80</td>
@@ -807,22 +807,22 @@ green_taxi_df.describe()
       <td>17,80</td>
       <td>9,25</td>
       <td>22,00</td>
-      <td>5,00</td>
+      <td>5.00</td>
       <td>19,00</td>
     </tr>
     <tr>
       <th>Biçimlendir</th>
-      <td>2,00</td>
+      <td>2.00</td>
       <td>9,00</td>
       <td>97,57</td>
-      <td>0,00</td>
+      <td>0.00</td>
       <td>41,93</td>
-      <td>0,00</td>
+      <td>0.00</td>
       <td>41,94</td>
       <td>450,00</td>
       <td>12,00</td>
       <td>30,00</td>
-      <td>6,00</td>
+      <td>6.00</td>
       <td>23,00</td>
     </tr>
   </tbody>
@@ -869,7 +869,7 @@ ws = Workspace.from_config()
 
 `scikit-learn` kitaplığındaki `train_test_split` işlevini kullanarak verileri eğitim ve test kümelerine ayırın. Bu işlev, model eğitimi için verileri x (**Özellikler**) veri kümesine ayırır ve test için y (**tahmin edilecek değerler**) veri kümesini gösterir.
 
-`test_size` parametresi, teste ayrılacak verilerin yüzdesini belirler. `random_state` parametresi, tren test bölünmeleri belirleyici olacak şekilde rastgele oluşturucuya bir çekirdek ayarlar.
+`test_size` Parametresi test ayrılacak veri yüzdesini belirler. `random_state` parametresi, tren test bölünmeleri belirleyici olacak şekilde rastgele oluşturucuya bir çekirdek ayarlar.
 
 ```python
 from sklearn.model_selection import train_test_split
@@ -884,7 +884,7 @@ Bu adımın amacı, doğru doğruluğu ölçmek için modeli eğmekte kullanılm
 
 Diğer bir deyişle, iyi eğitilen bir modelin zaten görmemiş verilerden tahmine dayalı hale getirme yapabilmesi gerekir. Artık, bir makine öğrenimi modeline otomatik eğitim için hazırlanan veriler vardır.
 
-## <a name="automatically-train-a-model"></a>Bir modeli otomatik olarak eğitme
+## <a name="automatically-train-a-model"></a>Otomatik olarak bir modeli eğitme
 
 Bir modeli otomatik olarak eğitmek için aşağıdaki adımları uygulayın:
 1. Deneme çalıştırmasının ayarlarını tanımlayın. Eğitim verilerinizi yapılandırmaya ekleyin ve eğitim sürecini denetleyen ayarları değiştirin.
@@ -892,7 +892,7 @@ Bir modeli otomatik olarak eğitmek için aşağıdaki adımları uygulayın:
 
 ### <a name="define-training-settings"></a>Eğitim ayarlarını tanımlama
 
-Eğitim için deneme parametresi ve model ayarlarını tanımlayın. [Ayarların](how-to-configure-auto-train.md)tam listesini görüntüleyin. Denemeyi bu varsayılan ayarlarla göndermek yaklaşık 5-20 dakika sürer, ancak daha kısa bir çalışma süresi istiyorsanız `experiment_timeout_minutes` parametresini küçültün.
+Eğitim için deneme parametresi ve model ayarlarını tanımlayın. Tam listesini görüntüleyin [ayarları](how-to-configure-auto-train.md). Denemeyi bu varsayılan ayarlarla göndermek yaklaşık 5-20 dakika sürer, ancak daha kısa bir çalışma süresi istiyorsanız `experiment_timeout_minutes` parametresini küçültün.
 
 |Özellik| Bu öğreticideki değer |Açıklama|
 |----|----|---|
@@ -901,7 +901,7 @@ Eğitim için deneme parametresi ve model ayarlarını tanımlayın. [Ayarların
 |**enable_early_stopping**|True|Puan, kısa vadede iyileştirilmediğinden erken sonlandırma için bayrak.|
 |**primary_metric**| spearman_correlation | İyileştirmek istediğiniz ölçüm. En uygun model bu ölçüme göre seçilecek.|
 |**korturlama**| Otomatik | **Otomatik**, deneme kullanarak giriş verilerini önceden işleyebilir (eksik verileri işleme, metni sayısal olarak dönüştürme vb.)|
-|**ayrıntı**| logging.INFO | Günlüğe kaydetme düzeyini denetler.|
+|**Ayrıntı düzeyi**| logging.INFO | Günlüğe kaydetme düzeyini denetler.|
 |**n_cross_validations**|5|Doğrulama verileri belirtilmediğinde gerçekleştirilecek çapraz doğrulama bölme sayısı.|
 
 ```python
@@ -933,7 +933,7 @@ automl_config = AutoMLConfig(task='regression',
 > [!NOTE]
 > Otomatik makine öğrenimi ön işleme adımları (özellik normalleştirme, eksik verileri işleme, metni sayısal olarak dönüştürme, vb.) temel modelin bir parçası haline gelir. Tahmin için model kullanılırken, eğitim sırasında uygulanan aynı ön işleme adımları, giriş verilerinize otomatik olarak uygulanır.
 
-### <a name="train-the-automatic-regression-model"></a>Otomatik regresyon modelini eğitme
+### <a name="train-the-automatic-regression-model"></a>Otomatik bir regresyon modeli eğitme
 
 Çalışma alanınızda bir deneme nesnesi oluşturun. Deneme, bireysel çalışmalarınız için bir kapsayıcı olarak davranır. Tanımlanan `automl_config` nesnesini denemenize geçirin ve çalıştırma sırasında ilerlemeyi görüntülemek için çıktıyı `True` olarak ayarlayın.
 
@@ -1006,9 +1006,9 @@ print(best_run)
 print(fitted_model)
 ```
 
-### <a name="test-the-best-model-accuracy"></a>En iyi model doğruluğunu test edin
+### <a name="test-the-best-model-accuracy"></a>En iyi modeli doğruluk testi
 
-Taksi Fares 'yi tahmin etmek için test verileri kümesindeki tahminleri çalıştırmak için en iyi modeli kullanın. İşlevi `predict` en iyi modeli kullanır ve `x_test` veri kümesinden y, **seyahat maliyeti**değerlerini tahmin eder. İlk 10 tahmini maliyet değerini `y_predict`yazdır.
+Taksi Fares 'yi tahmin etmek için test verileri kümesindeki tahminleri çalıştırmak için en iyi modeli kullanın. İşlevi `predict` en iyi modeli kullanır ve `x_test` veri kümesinden y, **seyahat maliyeti**değerlerini tahmin eder. Yazdırma değerlerinden maliyet tahmin ilk 10 `y_predict`.
 
 ```python
 y_predict = fitted_model.predict(x_test.values)
@@ -1056,7 +1056,7 @@ print(1 - mean_abs_percent_error)
 
 İki tahmin doğruluk ölçümlerinde, modelin, veri kümesinin özelliklerinden, genellikle +-$4,00 ' de ve yaklaşık %15 ' te vergilenme Fareli tahminlerinde oldukça iyi olduğunu görürsünüz.
 
-Geleneksel makine öğrenimi modeli geliştirme süreci, yoğun kaynak yoğunluğu sağlar ve çok sayıda modelin sonuçlarını çalıştırmak ve karşılaştırmak için önemli etki alanı bilgisi ve zaman yatırımı gerektirir. Otomatik makine öğrenimi kullanmak, senaryonuza yönelik birçok farklı modeli hızlıca test etmenin harika bir yoludur.
+Geleneksel makine öğrenme modeli geliştirme sürecinde yüksek kaynak kullanımı yoğun ve çalıştırmak ve modelleri onlarca sonuçları karşılaştırmak için önemli bir etki alanı bilgilerini ve saat yatırım gerektirir. Otomatik makine öğrenimi kullanmak, senaryonuza yönelik birçok farklı modeli hızlıca test etmenin harika bir yoludur.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -1086,4 +1086,4 @@ Bu otomatik makine öğrenimi öğreticisinde aşağıdaki görevleri yaptınız
 > * Özel parametrelerle yerel olarak otomatik regresyon modeli kullanılarak eğitilen.
 > * Araştırılan ve gözden geçirilmiş eğitim sonuçları.
 
-[Modelinizi](tutorial-deploy-models-with-aml.md) Azure Machine Learning ile dağıtın.
+[Modelinizi](tutorial-deploy-models-with-aml.md) Azure Machine Learning ile.

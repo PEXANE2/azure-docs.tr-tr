@@ -1,5 +1,5 @@
 ---
-title: İlk otomatik ML sınıflandırma denemenizi oluşturun
+title: İlk otomatik ML denemenize oluşturma
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning Studio 'da otomatik makine öğrenimi ile bir sınıflandırma modelini eğitme ve dağıtmayı öğrenin.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: ecad41097786a40f7c605a686f085136856c950a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 04035e23c0c650fb6cbf4fdca3b78ce5e814c9d3
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581574"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270715"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Öğretici: otomatik makine öğrenimi ile ilk sınıflandırma modelinizi oluşturma
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -27,12 +27,12 @@ Otomatik makine öğrenimi sayesinde yoğun zamanda yoğun görevleri otomatik h
 Bu öğreticide, aşağıdaki görevleri nasıl gerçekleştireceğinizi öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Azure Machine Learning çalışma alanı oluşturun.
+> * Bir Azure Machine Learning çalışma alanı oluşturun.
 > * Otomatik makine öğrenimi denemesinin çalıştırın.
 > * Deneme ayrıntılarını görüntüleyin.
-> * Modeli dağıtın.
+> * Model dağıtma.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://aka.ms/AMLFree)oluşturun.
 
@@ -69,7 +69,7 @@ Tüm beceri seviyeleri için veri bilimi senaryoları gerçekleştirmek üzere M
 
 1. **+ Veri kümesi oluştur** açılır listesinden **yerel dosyalardan** seçim yaparak yeni bir veri kümesi oluşturun. 
 
-    1. **Gözat**’ı seçin.
+    1. **Gözat**'ı seçin.
     
     1. Yerel bilgisayarınızda **bankmarketing_train. csv** dosyasını seçin. Bu, bir [Önkoşul](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv)olarak indirdiğiniz dosyadır.
 
@@ -86,19 +86,19 @@ Tüm beceri seviyeleri için veri bilimi senaryoları gerçekleştirmek üzere M
         Alan|Açıklama| Öğretici için değer
         ---|---|---
         Dosya biçimi|Bir dosyada depolanan verilerin yerleşimini ve türünü tanımlar.| Ted
-        Ayırıcı|Düz metin veya diğer veri akışlarında&nbsp; ayrı, bağımsız bölgeler arasındaki sınırı belirtmek için bir veya daha fazla karakter. |Virgülle
+        Sınırlayıcı|Düz metin veya diğer veri akışlarında&nbsp; ayrı, bağımsız bölgeler arasındaki sınırı belirtmek için bir veya daha fazla karakter. |Virgülle
         Encoding|Veri kümenizi okumak için kullanılacak bit karakter şeması tablosunu belirler.| UTF-8
-        Sütun başlıkları| Veri kümesinin üst bilgilerinin (varsa) nasıl değerlendirileceğini gösterir.| Tüm dosyaların aynı üst bilgileri var
+        Sütun üstbilgileri| Veri kümesinin üst bilgilerinin (varsa) nasıl değerlendirileceğini gösterir.| Tüm dosyaların aynı üst bilgileri var
         Satırları atla | Veri kümesinde kaç tane, ne varsa satırların atlandığını gösterir.| None
 
-    1. **Şema** formu, bu deneme için verilerinizin daha fazla yapılandırılmasını sağlar. Bu örnek için, **day_of_week** özelliği için geçiş anahtarını seçin. bu nedenle, bu deneme için dahil edilmez. **İleri**’yi seçin.
+    1. **Şema** formu, bu deneme için verilerinizin daha fazla yapılandırılmasını sağlar. Bu örnek için **day_of_week** özelliği için geçiş anahtarını seçin. bu nedenle, bu deneme için dahil edilmez. **İleri**’yi seçin.
 
         ![Önizleme sekmesi yapılandırması](media/tutorial-1st-experiment-automated-ml/schema-tab-config.gif)
 
     1. **Ayrıntıları Onayla** formunda, bilgilerin daha önce **temel bilgi** ve **Ayarlar ve önizleme** formlarında doldurulduğu ile eşleştiğini doğrulayın.
     1. Veri kümenizin oluşturulmasını gerçekleştirmek için **Oluştur** ' u seçin.
     1. Listede göründükten sonra veri kümenizi seçin.
-    1. **Veri önizlemeyi** inceleyerek **day_of_week** emin olun ve **Tamam**' ı seçin.
+    1. **Day_of_week** dahil etmediğinizden emin olmak için **veri önizlemeyi** gözden geçirin ve **Tamam**' ı seçin.
 
     1. **İleri**’yi seçin.
 
@@ -132,7 +132,7 @@ Tüm beceri seviyeleri için veri bilimi senaryoları gerçekleştirmek üzere M
         Ek&nbsp;yapılandırması|Açıklama|&nbsp;öğreticisi için değer&nbsp;
         ------|---------|---
         Birincil ölçüm| Makine öğrenimi algoritmasının ölçülecek değerlendirme ölçümü.|AUC_weighted
-        Otomatik olarak korleştirme| Ön işleme etkinleştirilir. Bu, yapay özellikler oluşturmak için otomatik veri temizleme, hazırlama ve dönüştürmeyi içerir.| Etkinleştirme
+        Otomatik olarak korleştirme| Ön işleme etkinleştirilir. Bu, yapay özellikler oluşturmak için otomatik veri temizleme, hazırlama ve dönüştürmeyi içerir.| Etkinleştir
         Engellenen algoritmalar | Eğitim işinden dışlamak istediğiniz algoritmalar| None
         Çıkış ölçütü| Bir kriterle karşılanırsa eğitim işi durdurulur. |Eğitim&nbsp;işi&nbsp;süresi (saat): 1 <br> Ölçüm&nbsp;puanı&nbsp;eşiği: yok
         Doğrulama | Çapraz doğrulama türü ve test sayısı seçin.|Doğrulama türü:<br>çapraz doğrulama&nbsp;&nbsp;k katlama <br> <br> Doğrulama sayısı: 2
@@ -151,7 +151,7 @@ Tüm beceri seviyeleri için veri bilimi senaryoları gerçekleştirmek üzere M
 
 ##  <a name="explore-models"></a>Modelleri keşfet
 
-Test edilen algoritmaları (modeller) görmek için **modeller** sekmesine gidin. Modeller, varsayılan olarak, tamamlandığı gibi ölçüm puanına göre sıralanır. Bu öğretici için, seçilen **AUC_weighted** ölçüsüne göre en yüksek düzeyde puan veren model listenin en üstünde yer alır.
+Test edilen algoritmaları (modeller) görmek için **modeller** sekmesine gidin. Modeller, varsayılan olarak, tamamlandığı gibi ölçüm puanına göre sıralanır. Bu öğretici için, seçili **AUC_weighted** ölçüsüne göre en yüksek düzeyde puan veren model listenin en üstünde yer alır.
 
 Deneme modellerinin tümünün bitmesini beklerken, performans ayrıntılarını araştırmak için tamamlanmış bir modelin **algoritma adını** seçin. 
 
@@ -167,7 +167,7 @@ Bu deneme için, bir Web hizmetine dağıtım, artık, potansiyel sabit depozito
 
 Çalıştırma tamamlandıktan sonra, **ayrıntıları Çalıştır** sayfasına dönün ve **modeller** sekmesini seçin. **Yenile**'yi seçin. 
 
-Bu deneme bağlamında, **Votingensebir** **AUC_weighted** ölçüsüne göre en iyi model olarak kabul edilir.  Bu modeli dağıyoruz ancak yapmanız önerilir, dağıtımın tamamlaması yaklaşık 20 dakika sürer. Dağıtım işlemi, modeli kaydetme, kaynakları oluşturma ve bunları Web hizmeti için yapılandırma dahil olmak üzere birkaç adım gerektirir.
+Bu deneme bağlamında, **Votingensediskte** **AUC_weighted** ölçüsüne göre en iyi model kabul edilir.  Bu modeli dağıyoruz ancak yapmanız önerilir, dağıtımın tamamlaması yaklaşık 20 dakika sürer. Dağıtım işlemi, modeli kaydetme, kaynakları oluşturma ve bunları Web hizmeti için yapılandırma dahil olmak üzere birkaç adım gerektirir.
 
 1. Sol alt köşedeki **En Iyi modeli dağıt** düğmesini seçin.
 

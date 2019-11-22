@@ -3,12 +3,12 @@ title: Azure İlkesine Genel Bakış
 description: Azure İlkesi, Azure ortamında ilke tanımlarınızı oluşturmak, atamak ve yönetmek için kullandığınız bir Azure hizmetidir.
 ms.date: 12/06/2018
 ms.topic: overview
-ms.openlocfilehash: e6b74eb2ffe15256523e46f0c246ba9f4d399c4d
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
-ms.translationtype: MT
+ms.openlocfilehash: 1e8d00039f7cb2a1dd01eb02e623c37fc1afe126
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959319"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307081"
 ---
 # <a name="overview-of-the-azure-policy-service"></a>Azure Ilke hizmetine genel bakış
 
@@ -35,7 +35,7 @@ Azure İlkesi iki Kaynak Sağlayıcısı’nda işlemler olarak bilinen bazı iz
 - [Microsoft.Authorization](../../role-based-access-control/resource-provider-operations.md#microsoftauthorization)
 - [Microsoft.PolicyInsights](../../role-based-access-control/resource-provider-operations.md#microsoftpolicyinsights)
 
-Birçok Yerleşik rol Azure İlkesi kaynaklarına izin verir. **Kaynak Ilkesi katkıda bulunan (Önizleme)** rolü çoğu Azure ilke işlemini içerir. **Sahibi** tam haklarına sahip. **Katkıda bulunan** ve **Reader** tüm Azure ilkesi Işlemlerini kullanabilir, ancak **katkıda bulunan** düzeltme de tetiklenebilir.
+Birçok Yerleşik rol Azure İlkesi kaynaklarına izin verir. **Kaynak Ilkesi katılımcısı** rolü çoğu Azure ilke işlemini içerir. **Sahibi** tam haklarına sahip. **Katkıda bulunan** ve **Reader** tüm Azure ilkesi Işlemlerini kullanabilir, ancak **katkıda bulunan** düzeltme de tetiklenebilir.
 
 Yerleşik rollerin hiçbirinde gerekli izinler yoksa [özel rol](../../role-based-access-control/custom-roles.md) oluşturun.
 

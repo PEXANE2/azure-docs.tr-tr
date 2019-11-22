@@ -1,6 +1,6 @@
 ---
-title: Office 365 dış paylaşım ve B2B işbirliği - Azure Active Directory | Microsoft Docs
-description: O365 ve Azure Active Directory B2B işbirliğini kullanarak dış iş ortakları ile kaynakların paylaşımı açıklanır.
+title: Office 365 dış paylaşım ve B2B işbirliği-Azure AD
+description: O365 ve Azure Active Directory B2B işbirliği kullanan dış iş ortaklarıyla kaynakları paylaşmayı açıklar.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -11,42 +11,42 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f6cdc782f091709ed00358dd309e9fd4ccfd0eb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3d70aed6fbe0f09ea6284f913c88186ecf94e297
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66807699"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272264"
 ---
-# <a name="office-365-external-sharing-and-azure-active-directory-b2b-collaboration"></a>Office 365 dış paylaşım ve Azure Active Directory B2B işbirliği
+# <a name="office-365-external-sharing-and-azure-active-directory-b2b-collaboration"></a>Office 365 dış paylaşımı ve Azure Active Directory B2B işbirliği
 
-Dış paylaşım (OneDrive, SharePoint Online, birleşik gruplar vb.) Office 365 ve Azure Active Directory (Azure AD) B2B işbirliği teknik olarak aynı şeydir. Tüm dış (OneDrive/SharePoint Online dışında) paylaşımı, Konuklar, Office 365 grupları dahil olmak üzere, önceden paylaşmak için Azure AD B2B işbirliği davet API'leri kullanır.
+Office 365 (OneDrive, SharePoint Online, Birleşik Gruplar, vb.) ve Azure Active Directory (Azure AD) B2B işbirliğinde dış paylaşım teknik açıdan aynı şeydir. Office 365 gruplarındaki konukları da dahil olmak üzere tüm dış paylaşım (OneDrive/SharePoint Online hariç), paylaşım için Azure AD B2B işbirliği daveti API 'Lerini zaten kullanıyor.
 
-## <a name="how-does-azure-ad-b2b-differ-from-external-sharing-in-sharepoint-online"></a>Azure AD B2B dış SharePoint Online'da paylaşmasını farkı nedir?
+## <a name="how-does-azure-ad-b2b-differ-from-external-sharing-in-sharepoint-online"></a>Azure AD B2B, SharePoint Online 'daki dış paylaşımlardan farklı midir?
 
-OneDrive/SharePoint Online ayrı davet manager vardır. Dış OneDrive/SharePoint Online ile paylaşma desteği, Azure AD desteğini geliştirilen önce başladı. Zaman içerisinde, OneDrive/SharePoint Online dış paylaşım çeşitli özellikler tahakkuk ettirilen ve birçok ürün kullanan kullanıcılar milyonlarca deseni paylaşımı yerleşik. Ancak, OneDrive/SharePoint Online dış paylaşım nasıl çalıştığını ve Azure AD B2B işbirliği nasıl çalıştığını arasındaki bazı farklar vardır. OneDrive/SharePoint Online harici olarak paylaşma hakkında daha fazla bilgi [dış paylaşımına genel bakış](https://docs.microsoft.com/sharepoint/external-sharing-overview). İşlem, genellikle aşağıdaki şekillerde Azure AD B2B ' farklıdır:
+OneDrive/SharePoint Online 'ın ayrı bir davet Yöneticisi vardır. OneDrive/SharePoint Online 'da dış paylaşım desteği, Azure AD tarafından destek geliştirilerek başlatıldı. Zaman içinde, OneDrive/SharePoint Online dış paylaşımı, ürünün yerleşik paylaşım modelini kullanan birçok farklı özelliği ve milyonlarca kullanıcıyı tahakkuk etmiş. Ancak, OneDrive/SharePoint Online dış paylaşımının nasıl çalıştığı ve Azure AD B2B işbirliğinin nasıl çalıştığı arasında bazı hafif farklılıklar vardır. [Dış paylaşıma genel bakışta](https://docs.microsoft.com/sharepoint/external-sharing-overview)OneDrive/SharePoint Online dış paylaşımı hakkında daha fazla bilgi edinebilirsiniz. İşlem genellikle Azure AD B2B 'den şu yollarla farklılık gösterir:
 
-- Kullanıcı davetlerini yararlandınız sonra OneDrive/SharePoint Online dizine kullanıcılar ekler. Bu nedenle, kullanım önce kullanıcının Azure AD portalında görmüyorum. Başka bir siteye sırada bir kullanıcı davet yeni bir davet oluşturulur. Azure AD B2B işbirliği kullandığınız zaman, her yerde göster ancak kullanıcılar hemen davetinde eklenir.
+- OneDrive/SharePoint Online, kullanıcılar davetlerini kullandıktan sonra kullanıcıları dizine ekler. Bu nedenle, kullanmadan önce kullanıcıyı Azure AD portalında görmezsiniz. Bu sırada başka bir site bir kullanıcıyı davet eder, yeni bir davet oluşturulur. Ancak, Azure AD B2B işbirliğini kullandığınızda kullanıcılar her yerde gösterilmesi için davet üzerine hemen eklenir.
 
-- Azure AD B2B işbirliği deneyimi farklı kullanım deneyimi OneDrive/SharePoint Online'daki arar. Bir kullanıcı davet redeems sonra deneyimleri benzer.
+- OneDrive/SharePoint Online 'daki kullanım deneyimi, Azure AD B2B işbirliğinin deneyiminden farklı görünüyor. Bir Kullanıcı bir daveti etkinleştirdikten sonra, deneyimler benzer şekilde görünür.
 
-- Azure AD B2B işbirliği davet edilen kullanıcıların OneDrive/SharePoint Online'dan iletişim kutuları paylaşımı çekilebilir. Davet OneDrive/SharePoint Online kullanıcıları Ayrıca bunlar davetlerini pass'inizi sonra Azure AD'de gösterilir.
+- Azure AD B2B işbirliği davet edilen kullanıcılar OneDrive/SharePoint Online Paylaşım iletişim kutularından alınabilir. OneDrive/SharePoint Online davet edilen kullanıcılar, davetlerini kullandıktan sonra Azure AD 'de de görünür.
 
-- Lisanslama gereksinimleri farklılık gösterir. Her Ücretli Azure AD lisansı için en fazla 5 Konuk kullanıcı, ücretli erişim sağlayabilirsiniz. Azure AD özellikleri. Lisanslama hakkında daha fazla bilgi için bkz: [Azure AD B2B lisansı](https://docs.microsoft.com/azure/active-directory/b2b/licensing-guidance) ve ["Bir dış kullanıcının SharePoint Online'da paylaşmaya genel bakış dış nedir?"](https://docs.microsoft.com/sharepoint/external-sharing-overview#what-happens-when-users-share).
+- Lisanslama gereksinimleri farklılık gösterir. Ücretli her Azure AD lisansı için, en fazla 5 Konuk kullanıcının ücretli Azure AD özelliklerine erişmesini sağlayabilirsiniz. Lisanslama hakkında daha fazla bilgi edinmek için bkz. [Azure AD B2B lisanslama](https://docs.microsoft.com/azure/active-directory/b2b/licensing-guidance) ve ["Dış Kullanıcı nedir?", SharePoint Online dış paylaşımına genel bakış](https://docs.microsoft.com/sharepoint/external-sharing-overview#what-happens-when-users-share).
 
-Dış OneDrive/SharePoint Online ile Azure AD B2B işbirliği paylaşımını yönetmek için OneDrive/SharePoint Online dış ayarına paylaşımı ayarlama **izin vermek kuruluşunuzun zaten yalnızca dış kullanıcılarla paylaşma Dizin**. Kullanıcılar, harici olarak paylaşılan sitelerine gidin ve yönetici eklemiştir dış ortak çalışanlar ' ı seçin. Yönetici, dış ortak çalışanlar B2B işbirliği davet API'leri aracılığıyla ekleyebilirsiniz.
+OneDrive/SharePoint Online 'da dış paylaşımı Azure AD B2B işbirliğiyle yönetmek için, OneDrive/SharePoint Online dış paylaşım ayarını **yalnızca kuruluşunuzun dizininde zaten var olan dış kullanıcılarla paylaşıma Izin verecek**şekilde ayarlayın. Kullanıcılar dışarıdan paylaşılan sitelere gidebilir ve yöneticinin eklediği dış ortak çalışanlarla seçim yapabilir. Yönetici, B2B işbirliği daveti API 'Leri aracılığıyla dış ortak çalışanları ekleyebilir.
 
 
-![OneDrive/SharePoint Online paylaşımı ayarı dış](media/o365-external-user/odsp-sharing-setting.png)
+![OneDrive/SharePoint Online dış paylaşım ayarı](media/o365-external-user/odsp-sharing-setting.png)
 
-Dış paylaşım etkinleştirdikten sonra SharePoint Online (SPO) Kişi Seçici var olan konuk kullanıcılar için arama yapma, eski davranışı eşleştirmek için varsayılan olarak OFF durumda.
+Dış paylaşımı etkinleştirdikten sonra, SharePoint Online (SPO) kişi seçicisindeki mevcut Konuk kullanıcıları arama özelliği, eski davranışa uyacak şekilde varsayılan olarak KAPALıDıR.
 
-'ShowPeoplePickerSuggestionsForGuestUsers' ayarı Kiracı ve site koleksiyonu düzeyinde kullanarak bu özelliği etkinleştirebilirsiniz. Üyelerinin dizindeki tüm mevcut Konuk kullanıcıları aramak Set-SPOTenant ve Set-SPOSite cmdlet'lerini kullanarak özelliğini ayarlayabilirsiniz. Değişiklikler Kiracı kapsamında zaten sağlanan SPO site etkilemez.
+Kiracı ve site koleksiyonu düzeyinde ' ShowPeoplePickerSuggestionsForGuestUsers ' ayarını kullanarak bu özelliği etkinleştirebilirsiniz. Özelliği set-SPOTenant ve set-SPOSite cmdlet 'lerini kullanarak ayarlayabilirsiniz. Bu özellik, üyelerin dizindeki tüm mevcut Konuk kullanıcıları aramasını sağlar. Kiracı kapsamındaki değişiklikler zaten sağlanmış olan SPO sitelerini etkilemez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure AD B2B işbirliği nedir?](what-is-b2b.md)
 * [Bir role B2B işbirliği kullanıcısı ekleme](add-guest-to-role.md)
-* [Temsilci B2B işbirliği davetleri](delegate-invitations.md)
-* [Dinamik gruplar ve B2B işbirliği](use-dynamic-groups.md)
-* [Azure Active Directory B2B işbirliği sorunlarını giderme](troubleshoot.md)
+* [B2B işbirliği davetlerini devretmek](delegate-invitations.md)
+* [Dinamik Gruplar ve B2B işbirliği](use-dynamic-groups.md)
+* [B2B işbirliği Azure Active Directory sorunlarını giderme](troubleshoot.md)

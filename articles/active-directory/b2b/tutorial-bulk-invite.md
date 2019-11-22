@@ -1,5 +1,5 @@
 ---
-title: B2B işbirliği kullanıcılarına toplu davet etme öğreticisi-Azure Active Directory | Microsoft Docs
+title: B2B işbirliği kullanıcılarına toplu davet etme öğreticisi-Azure AD
 description: Bu öğreticide, harici Azure AD B2B işbirliği kullanıcılarına toplu davet göndermek için PowerShell ve CSV dosyasının nasıl kullanılacağını öğreneceksiniz.
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec1a6ea8f363f2ddd4a9568700d5bff3330443c0
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 1ffcdad43195ce49ef3cd8b695f9ad5009af82fb
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71128716"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272349"
 ---
 # <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users-preview"></a>Öğretici: Azure AD B2B işbirliği kullanıcılarını toplu davet etme (Önizleme)
 
@@ -43,7 +43,7 @@ Davetleri gönderebileceğiniz iki veya daha fazla test e-posta hesabı olması 
 
 1. Kuruluşta Kullanıcı Yöneticisi olan bir hesapla Azure portal oturum açın.
 2. Gezinti bölmesinde **Azure Active Directory**' yi seçin.
-3. **Yönet**' in altında, **Kullanıcılar** > **toplu davet**' i seçin.
+3. **Yönet**altında, **toplu davet** > **Kullanıcılar** ' ı seçin.
 4. **Toplu davet kullanıcıları (Önizleme)** sayfasında, davet özelliklerine sahip geçerli bir. csv dosyası almak için **İndir** ' i seçin.
 
     ![Toplu davet indirme düğmesi](media/tutorial-bulk-invite/bulk-invite-button.png)
@@ -88,7 +88,7 @@ Eklediğiniz konuk kullanıcıların Azure portal dizinde mı yoksa PowerShell k
  Get-AzureADUser -Filter "UserType eq 'Guest'"
 ```
 
-Bir Kullanıcı asıl adı (UPN) ile, davet ettiğiniz kullanıcıları *emadresi*#EXT #\@*etki*biçiminde görmeniz gerekir. Örneğin, *lstokes_fabrikam. com #\@ext # contoso.onmicrosoft.com*, burada contoso.onmicrosoft.com, davetleri gönderdiğiniz kuruluştur.
+Bir Kullanıcı asıl adı (UPN) olarak, davet ettiğiniz kullanıcıları *emadresi*#EXT #\@*etki alanı*biçiminde görmeniz gerekir. Örneğin, *lstokes_fabrikam. com # ext #\@contoso.onmicrosoft.com*, burada contoso.onmicrosoft.com, davetleri gönderdiğiniz kuruluştur.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

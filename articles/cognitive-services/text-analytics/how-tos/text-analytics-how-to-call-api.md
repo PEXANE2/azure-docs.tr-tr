@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: 5697ae4c8864e0b9c4cbfc9e1e1048e1c3d60f77
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: afb576c265ccdd4a014ed678331f030a0442a197
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837207"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286598"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Metin Analizi nasıl çağrılacağını REST API
 
@@ -25,10 +25,9 @@ Her isteğin erişim anahtarınızı ve bir HTTP uç noktasını içermesi gerek
 
 Yönetilecek veri varlığı olmadığından Metin Analizi durum bilgisiz olduğunu hatırlayın. Metniniz karşıya yüklenir, teslim edildiğinde çözümlenir ve sonuçlar çağıran uygulamaya hemen döndürülür.
 
-> [!Tip]
-> API 'nin nasıl çalıştığını görmek için tek kapalı çağrılar için, herhangi bir [API belgesi sayfasında](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6)bulunan yerleşik **API test konsolundan**post istekleri gönderebilirsiniz. Bir kurulum yoktur ve tek gereksinimler, isteğe bir erişim anahtarı ve JSON belgelerini buraya yapıştırmaktır. 
+[!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 

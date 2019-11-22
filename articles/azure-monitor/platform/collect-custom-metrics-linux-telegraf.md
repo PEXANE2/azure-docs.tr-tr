@@ -1,6 +1,6 @@
 ---
 title: Etkileyen Linux VM için özel ölçümler toplayın telegraf Agent
-description: Etkileyen bir Linux VM için özel ölçümler toplama telegraf Aracısı
+description: Azure 'daki bir Linux sanal makinesine etkileyen bir Linux VM 'de etkileyen ve aracıyı Azure Izleyici 'de yayımlamak üzere yapılandıran yönergeler.
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 05cc1dcb2a6fa4e7790fa57cd2136d21d94b8a0b
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 4e8783d500ed7dd6e8e5d518d2a4fbe5e5e1e276
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200531"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74305286"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Etkileyen bir Linux VM için özel ölçümler toplama telegraf Aracısı
 
@@ -29,7 +29,7 @@ Azure Izleyici 'yi kullanarak, uygulama telemetriniz, Azure kaynaklarınızda ç
 
 Bu öğretici için Ubuntu 16,04 LTS işletim sistemini çalıştıran bir Linux sanal makinesi dağıyoruz. Telegraf Aracısı çoğu Linux işletim sistemi için desteklenir. IBU ve RPM paketlerinin her ikisi de [etkileyen](https://portal.influxdata.com/downloads)Linux ikilileri ile birlikte kullanılabilir. Ek yükleme yönergeleri ve seçenekleri için bu [telegraf yükleme kılavuzuna](https://docs.influxdata.com/telegraf/v1.8/introduction/installation/) bakın. 
 
-[Azure Portal](https://portal.azure.com)’ında oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 Yeni bir Linux sanal makinesi oluşturun: 
 

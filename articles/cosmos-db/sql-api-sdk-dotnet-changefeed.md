@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 01/30/2019
 ms.author: maquaran
-ms.openlocfilehash: 2392eb1f02ede13aca88419c00ea33ae38cfd8ab
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: bd727e9c68a34c8e182a6726b257a6bf37178837
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73023899"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74306760"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET değişiklik akışı Işlemcisi SDK 'Sı: Indirme ve sürüm notları
 
@@ -34,10 +34,13 @@ ms.locfileid: "73023899"
 
 |   |   |
 |---|---|
-|**SDK indirmesi**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)|
+|**SDK'sını indirme**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)|
 |**API belgeleri**|[Akış Işlemcisi kitaplık API 'SI başvuru belgelerini değiştirme](/dotnet/api/microsoft.azure.documents.changefeedprocessor?view=azure-dotnet)|
-|**Başlarken**|[Değişiklik akışı Işlemcisi .NET SDK 'sını kullanmaya başlama](change-feed.md)|
-|**Desteklenen geçerli çerçeve**| [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET çekirdek](https://www.microsoft.com/net/download/core) |
+|**Başlangıç**|[Değişiklik akışı Işlemcisi .NET SDK 'sını kullanmaya başlama](change-feed.md)|
+|**Geçerli desteklenen çerçevesi**| [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET çekirdek](https://www.microsoft.com/net/download/core) |
+
+> [!NOTE]
+> Değişiklik akışı işlemcisini kullanıyorsanız, lütfen SDK 'da yerleşik olarak bulunan değişiklik akışını içeren [.NET SDK 'sının](change-feed-processor.md)en son sürümü olan 3. x sürümünü inceleyin. 
 
 ## <a name="release-notes"></a>Sürüm notları
 
@@ -99,7 +102,7 @@ ms.locfileid: "73023899"
 * Bölüm ayırma sırasında oluşan bir yarış durumu düzeltildi. Yarış durumu kira elde edebilir ve bölüm bölme sırasında hemen kaybı ve çekişmeye neden olabilir. Yarış durumu sorunu bu sürümle düzeltilmiştir.
 
 ### <a name="a-name204204"></a><a name="2.0.4"/>2.0.4
-* GA SDK
+* GA SDK'SI
 
 ### <a name="a-name203-prerelease203-prerelease"></a><a name="2.0.3-prerelease"/>2.0.3-ön sürüm
 * Aşağıdaki sorunlar çözülmüştür:
@@ -164,20 +167,20 @@ ms.locfileid: "73023899"
 * [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.13.2 ve üzeri sürümleriyle uyumludur.
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
-* GA SDK
+* GA SDK'SI
 * [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.14.1 ve altı sürümleriyle uyumludur.
 
 ## <a name="release--retirement-dates"></a>Yayın & kullanımdan kaldırma tarihleri
 
-Microsoft, daha yeni/desteklenen bir sürüme geçişi düzgünleştirmek için SDK 'nın devre dışı bırakılmasının ardından en az **12 ay** önce bildirim sağlayacaktır.
+Sağlar; Microsoft bildirim en az **12 ay** yeni/desteklenen bir sürüme geçiş hafifletmek için bir SDK'yı devre dışı bırakmadan önce.
 
 Yeni özellikler ve işlevler ve iyileştirmeler yalnızca geçerli SDK 'ya eklenir, bu nedenle en son SDK sürümüne her zaman olabildiğince erken yükseltmeniz önerilir. 
 
-Kullanımdan kaldırılan bir SDK 'Yı kullanarak Cosmos DB istek, hizmet tarafından reddedilir.
+Cosmos DB devre dışı bırakılan bir SDK'sını kullanarak yapılan tüm istekleri hizmet tarafından reddedilir.
 
 <br/>
 
-| Sürüm | Yayın tarihi | Emeklilik tarihi |
+| Sürüm | Yayınlanma Tarihi | Sona erme tarihi |
 | --- | --- | --- |
 | [2.2.8](#2.2.8) |28 Ekim 2019 |--- |
 | [2.2.7](#2.2.7) |14 Mayıs 2019 |--- |
@@ -201,4 +204,4 @@ Kullanımdan kaldırılan bir SDK 'Yı kullanarak Cosmos DB istek, hizmet taraf�
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-Cosmos DB hakkında daha fazla bilgi için bkz. [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) hizmet sayfası.
+Cosmos DB hakkında daha fazla bilgi için bkz: [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) hizmeti sayfası.

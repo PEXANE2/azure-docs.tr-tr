@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: kumud
-ms.openlocfilehash: 5e71f30723826a18f10d4c8e1b9d34e356c9962b
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 9071596d384d09bf6cbc46316a7f33c69c7b32e9
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74114629"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278465"
 ---
 # <a name="create-change-or-delete-a-public-ip-address"></a>Genel IP adresi oluşturma, değiştirme veya silme
 
@@ -45,7 +45,7 @@ Genel IP adreslerinin nominal bir ücreti vardır. Fiyatlandırmayı görüntül
 
 ## <a name="create-a-public-ip-address"></a>Genel IP adresi oluşturma
 
-1. Portalın sol üst köşesinde **+ kaynak oluştur**' u seçin.
+1. Azure portal menüsünde veya **giriş** sayfasında, **kaynak oluştur**' u seçin.
 2. *Market 'Te ara* kutusuna *genel IP adresini* girin. Arama sonuçlarında **genel IP adresi** göründüğünde seçin.
 3. **Genel IP adresi**altında **Oluştur**' u seçin.
 4. Aşağıdaki ayarlara ait değerleri girin veya seçin, **genel IP adresi oluştur**altında, **Oluştur**' u seçin.

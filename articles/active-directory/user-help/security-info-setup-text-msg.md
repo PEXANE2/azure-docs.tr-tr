@@ -1,6 +1,6 @@
 ---
-title: Metin iletileri için güvenlik bilgilerini ayarlama (Önizleme)-Azure AD
-description: Metin mesajlaşma ve mobil cihazınızı kullanarak kimliğinizi doğrulamak için güvenlik bilgilerinizi ayarlama.
+title: Doğrulama yönteminiz olarak metin iletilerini ayarlama-Azure AD
+description: Doğrulama yönteminiz olarak metin iletilerini kullanarak kimliğinizi doğrulamak için güvenlik bilgileriniz (Önizleme) sayfasını ayarlama.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a4be99a84964b7a55448692385d027262ecfec3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 2fe8610d7551b63ed613153ba1ee0e6f8e73b5a5
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73803832"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278916"
 ---
-# <a name="set-up-security-info-preview-to-use-text-messaging"></a>Metin iletilerini kullanmak için güvenlik bilgilerini ayarlama (Önizleme)
+# <a name="set-up-text-messaging-as-your-verification-method"></a>Doğrulama yönteminiz olarak metin mesajlaşma ayarlama
 
 İki öğeli doğrulama ve parola sıfırlama yöntemlerinizi eklemek için aşağıdaki adımları izleyebilirsiniz. İlk kez ayarladıktan sonra güvenlik bilgilerini eklemek, güncelleştirmek veya silmek için **güvenlik** bilgileri sayfasına dönebilirsiniz.
 

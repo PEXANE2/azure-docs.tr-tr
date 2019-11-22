@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: kumud
-ms.openlocfilehash: 1c00f23570c3f8d80e39f3fe3901f866e40dc2ea
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: afbe4aae0ac1296bfc4b2011069f9d81afed977f
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305675"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74273674"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Ağ güvenlik grubu oluşturma, değiştirme veya silme
 
@@ -30,9 +30,9 @@ Ağ güvenlik gruplarındaki güvenlik kuralları, sanal ağ alt ağları ve ağ
 Bu makalenin herhangi bir bölümündeki adımları tamamlamadan önce aşağıdaki görevleri doldurun:
 
 - Henüz bir Azure hesabınız yoksa [ücretsiz deneme hesabı](https://azure.microsoft.com/free)için kaydolun.
-- Portalı kullanıyorsanız, açın https://portal.azure.com ve Azure hesabınızla oturum açın.
+- Portalı kullanıyorsanız, https://portal.azure.comaçın ve Azure hesabınızla oturum açın.
 - Bu makaledeki görevleri tamamlamaya yönelik PowerShell komutlarını kullanıyorsanız, [Azure Cloud Shell](https://shell.azure.com/powershell)komutları çalıştırın veya PowerShell 'i bilgisayarınızdan çalıştırarak çalıştırın. Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. Bu öğretici, Azure PowerShell modülü sürümü 1.0.0 veya üstünü gerektirir. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
-- Bu makaledeki görevleri gerçekleştirmek için Azure komut satırı arabirimi (CLı) komutlarını kullanıyorsanız, [Azure Cloud Shell](https://shell.azure.com/bash)komutları çalıştırın ya da bilgisayarınızdan CLI 'yı çalıştırarak. Bu öğretici, Azure CLı sürüm 2.0.28 veya üstünü gerektirir. Yüklü sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme](/cli/azure/install-azure-cli). Azure CLI 'yi yerel olarak çalıştırıyorsanız, Azure ile bir bağlantı oluşturmak için çalıştırmanız `az login` da gerekir.
+- Bu makaledeki görevleri gerçekleştirmek için Azure komut satırı arabirimi (CLı) komutlarını kullanıyorsanız, [Azure Cloud Shell](https://shell.azure.com/bash)komutları çalıştırın ya da bilgisayarınızdan CLI 'yı çalıştırarak. Bu öğretici, Azure CLı sürüm 2.0.28 veya üstünü gerektirir. Yüklü sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme](/cli/azure/install-azure-cli). Azure CLı 'yi yerel olarak çalıştırıyorsanız, Azure ile bağlantı oluşturmak için `az login` çalıştırmanız da gerekir.
 
 Oturum açmak veya Azure 'a bağlanmak için kullandığınız hesap, [ağ katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolüne veya [izinlerde](#permissions)listelenen uygun eylemlere atanmış [özel bir role](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) atanmalıdır.
 
@@ -44,7 +44,7 @@ Bir ağ güvenlik grubu oluşturabilir, bunları [görüntüleyebilir](#view-all
 
 Azure konumu ve aboneliği başına kaç ağ güvenlik grubunun oluşturabileceğiniz bir sınır vardır. Ayrıntılar için [Azure limitleri](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) makalesini inceleyin.
 
-1. Portalın sol üst köşesinde **+ kaynak oluştur**' u seçin.
+1. Azure portal menüsünde veya **giriş** sayfasında, **kaynak oluştur**' u seçin.
 2. Ağ **' ı**ve ardından **ağ güvenlik grubu**' nu seçin.
 3. Ağ güvenlik grubu için bir **ad** girin, **aboneliğinizi**seçin, yeni bir **kaynak grubu**oluşturun veya var olan bir kaynak grubunu seçin, bir **konum**seçin ve ardından **Oluştur**' u seçin.
 
@@ -86,7 +86,7 @@ Portalın üst kısmındaki arama kutusuna *ağ güvenlik grupları*' nı girin.
 **Komut**
 
 - Azure CLı: [az Network NSG Update](/cli/azure/network/nsg#az-network-nsg-update)
-- PowerShell: [Set-AzNetworkSecurityGroup](/powershell/module/az.network/set-aznetworksecuritygroup)
+- PowerShell: [set-AzNetworkSecurityGroup](/powershell/module/az.network/set-aznetworksecuritygroup)
 
 ### <a name="associate-or-dissociate-a-network-security-group-to-or-from-a-subnet-or-network-interface"></a>Bir ağ güvenlik grubunu bir alt ağ veya ağ arabiriminden ilişkilendir veya ilişkisini kaldır
 
@@ -118,15 +118,15 @@ Her Azure konumu ve aboneliği için ağ güvenlik grubu başına kural oluştur
 3. **Ayarlar**altında **gelen güvenlik kuralları** ' nı seçin. Var olan çeşitli kurallar listelenmiştir. Eklenmeyebilirsiniz bazı kurallar. Bir ağ güvenlik grubu oluşturulduğunda, içinde birkaç varsayılan güvenlik kuralı oluşturulur. Daha fazla bilgi için bkz. [varsayılan güvenlik kuralları](security-overview.md#default-security-rules).  Varsayılan güvenlik kurallarını silemezsiniz, ancak daha yüksek önceliğe sahip kurallarla bunları geçersiz kılabilirsiniz.
 4. <a name = "security-rule-settings"></a> **+ Ekle**' yi seçin.  Aşağıdaki ayarlara ilişkin değerleri seçin veya ekleyin ve ardından **Tamam**' ı seçin:
     
-    |Ayar  |Value  |Ayrıntılar  |
+    |Ayar  |Değer  |Ayrıntılar  |
     |---------|---------|---------|
-    |Source     | Gelen güvenlik kuralları için **herhangi bir** **uygulama güvenlik grubu**, **IP adresi**veya **hizmet etiketi** seçin. Giden güvenlik kuralı oluşturuyorsanız, Seçenekler **hedef**için listelenen seçeneklerle aynıdır.       | **Uygulama güvenlik grubu**' nu seçerseniz, ağ arabirimiyle aynı bölgede bulunan bir veya daha fazla var olan uygulama güvenlik grubunu seçin. [Uygulama güvenlik grubu oluşturmayı](#create-an-application-security-group)öğrenin. Hem **kaynak** hem de **hedef**için **uygulama güvenlik grubu** ' nu seçerseniz, her iki uygulama güvenlik grubu içindeki ağ arabirimlerinin aynı sanal ağda olması gerekir. **IP adresleri**' ni SEÇIP **kaynak IP adresleri/CIDR aralıklarını**belirtin. Birden çok değerin tek bir değer veya virgülle ayrılmış bir listesini belirtebilirsiniz. Birden çok değere örnek 10.0.0.0/16, 192.188.1.1. Belirtebileceğiniz değer sayısı için sınırlar vardır. Ayrıntılar için bkz. [Azure Limitleri](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) . **Service Tag**' i seçerseniz, bir hizmet etiketi seçin. Bir hizmet etiketi, bir IP adresleri kategorisi için önceden tanımlanmış bir tanıtıcıdır. Kullanılabilir hizmet etiketleri ve etiketlerin ne gösterdiği hakkında daha fazla bilgi edinmek için bkz. [hizmet etiketleri](security-overview.md#service-tags). Belirttiğiniz IP adresi bir Azure sanal makinesine atanmışsa, sanal makineye atanan genel IP adresini değil, özel IP 'yi belirttiğinizden emin olun. Güvenlik kuralları, Azure genel IP adresini gelen güvenlik kuralları için özel bir IP adresine çevirdikten sonra ve Azure bir özel IP adresini giden kuralları için genel bir IP adresine dönüştürdüğünde işlenir. Azure 'da ortak ve özel IP adresleri hakkında daha fazla bilgi edinmek için bkz. [IP adresi türleri](virtual-network-ip-addresses-overview-arm.md).        |
-    |Source port ranges     | 80 gibi tek bir bağlantı noktası, 1024-65535 gibi bir bağlantı noktası aralığı veya tek bağlantı noktaları ve/veya bağlantı noktası aralıklarının virgülle ayrılmış bir listesini (örneğin, 80, 1024-65535) belirtin. Herhangi bir bağlantı noktasında trafiğe izin vermek için bir yıldız işareti girin. | Bağlantı noktaları ve aralıklar, kural tarafından hangi bağlantı noktası trafiğinin izin verildiğini veya reddedildiğini belirtir. Belirtebileceğiniz bağlantı noktası sayısı için sınırlar vardır. Ayrıntılar için bkz. [Azure Limitleri](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) .  |
+    |Kaynak     | Gelen güvenlik kuralları için **herhangi bir** **uygulama güvenlik grubu**, **IP adresi**veya **hizmet etiketi** seçin. Giden güvenlik kuralı oluşturuyorsanız, Seçenekler **hedef**için listelenen seçeneklerle aynıdır.       | **Uygulama güvenlik grubu**' nu seçerseniz, ağ arabirimiyle aynı bölgede bulunan bir veya daha fazla var olan uygulama güvenlik grubunu seçin. [Uygulama güvenlik grubu oluşturmayı](#create-an-application-security-group)öğrenin. Hem **kaynak** hem de **hedef**için **uygulama güvenlik grubu** ' nu seçerseniz, her iki uygulama güvenlik grubu içindeki ağ arabirimlerinin aynı sanal ağda olması gerekir. **IP adresleri**' ni SEÇIP **kaynak IP adresleri/CIDR aralıklarını**belirtin. Birden çok değerin tek bir değer veya virgülle ayrılmış bir listesini belirtebilirsiniz. Birden çok değere örnek 10.0.0.0/16, 192.188.1.1. Belirtebileceğiniz değer sayısı için sınırlar vardır. Ayrıntılar için bkz. [Azure Limitleri](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) . **Service Tag**' i seçerseniz, bir hizmet etiketi seçin. Bir hizmet etiketi, bir IP adresleri kategorisi için önceden tanımlanmış bir tanıtıcıdır. Kullanılabilir hizmet etiketleri ve etiketlerin ne gösterdiği hakkında daha fazla bilgi edinmek için bkz. [hizmet etiketleri](security-overview.md#service-tags). Belirttiğiniz IP adresi bir Azure sanal makinesine atanmışsa, sanal makineye atanan genel IP adresini değil, özel IP 'yi belirttiğinizden emin olun. Güvenlik kuralları, Azure genel IP adresini gelen güvenlik kuralları için özel bir IP adresine çevirdikten sonra ve Azure bir özel IP adresini giden kuralları için genel bir IP adresine dönüştürdüğünde işlenir. Azure 'da ortak ve özel IP adresleri hakkında daha fazla bilgi edinmek için bkz. [IP adresi türleri](virtual-network-ip-addresses-overview-arm.md).        |
+    |Kaynak bağlantı noktası aralıkları     | 80 gibi tek bir bağlantı noktası, 1024-65535 gibi bir bağlantı noktası aralığı veya tek bağlantı noktaları ve/veya bağlantı noktası aralıklarının virgülle ayrılmış bir listesini (örneğin, 80, 1024-65535) belirtin. Herhangi bir bağlantı noktasında trafiğe izin vermek için bir yıldız işareti girin. | Bağlantı noktaları ve aralıklar, kural tarafından hangi bağlantı noktası trafiğinin izin verildiğini veya reddedildiğini belirtir. Belirtebileceğiniz bağlantı noktası sayısı için sınırlar vardır. Ayrıntılar için bkz. [Azure Limitleri](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) .  |
     |Hedef     | Giden güvenlik kuralları için **herhangi bir** **uygulama güvenlik grubu**, **IP adresi**veya **sanal ağ** seçin. Bir gelen güvenlik kuralı oluşturuyorsanız, Seçenekler **kaynak**için listelenen seçeneklerle aynıdır.        | **Uygulama güvenlik grubu** ' nu seçerseniz, ağ arabirimiyle aynı bölgede bulunan bir veya daha fazla var olan uygulama güvenlik grubunu seçmeniz gerekir. [Uygulama güvenlik grubu oluşturmayı](#create-an-application-security-group)öğrenin. **Uygulama güvenlik grubu**' nu seçerseniz, ağ arabirimiyle aynı bölgede bulunan mevcut bir uygulama güvenlik grubunu seçin. **IP adresleri**' ni SEÇIP **hedef IP adresleri/CIDR aralıklarını**belirtin. **Kaynak** ve **kaynak IP adresleri/CIDR aralıklarına**benzer şekilde, tek veya birden çok adres veya Aralık belirtebilirsiniz ve belirtebileceğiniz sayı için sınırlar vardır. Bir hizmet etiketi olan **sanal ağ**' ı seçtiğinizde, trafiğe sanal ağın adres ALANıNDAKI tüm IP adreslerinin izin verdiği anlamına gelir. Belirttiğiniz IP adresi bir Azure sanal makinesine atanmışsa, sanal makineye atanan genel IP adresini değil, özel IP 'yi belirttiğinizden emin olun. Güvenlik kuralları, Azure genel IP adresini gelen güvenlik kuralları için özel bir IP adresine çevirdikten sonra ve Azure bir özel IP adresini giden kuralları için genel bir IP adresine dönüştürdüğünde işlenir. Azure 'da ortak ve özel IP adresleri hakkında daha fazla bilgi edinmek için bkz. [IP adresi türleri](virtual-network-ip-addresses-overview-arm.md).        |
     |Hedef bağlantı noktası aralıkları     | Tek bir değer veya virgülle ayrılmış bir değerler listesi belirtin. | **Kaynak bağlantı noktası aralıklarına**benzer şekilde, tek veya birden çok bağlantı noktası ve Aralık belirtebilirsiniz ve belirtebileceğiniz sayı için sınırlar vardır. |
-    |Protocol     | **Herhangi bir** **TCP**, **UDP** veya **ICMP**seçin.        |         |
-    |Action     | **Izin ver** veya **Reddet**' i seçin.        |         |
-    |Priority     | Ağ güvenlik grubu içindeki tüm güvenlik kuralları için benzersiz olan 100-4096 arasında bir değer girin. |Kurallar öncelik sırasına göre işlenir. Sayı ne kadar düşükse öncelik o kadar yüksektir. Kuralları oluştururken 100, 200, 300 gibi öncelik sayıları arasında bir boşluk bırakmanız önerilir. Boşlukları bırakmak, daha sonra mevcut kurallardan daha yüksek veya daha düşük bir hale getirmeniz gerekebilecek kurallar eklemenizi kolaylaştırır.         |
+    |Protokol     | **Herhangi bir** **TCP**, **UDP** veya **ICMP**seçin.        |         |
+    |Eylem     | **Izin ver** veya **Reddet**' i seçin.        |         |
+    |Öncelik     | Ağ güvenlik grubu içindeki tüm güvenlik kuralları için benzersiz olan 100-4096 arasında bir değer girin. |Kurallar öncelik sırasına göre işlenir. Sayı ne kadar düşükse öncelik o kadar yüksektir. Kuralları oluştururken 100, 200, 300 gibi öncelik sayıları arasında bir boşluk bırakmanız önerilir. Boşlukları bırakmak, daha sonra mevcut kurallardan daha yüksek veya daha düşük bir hale getirmeniz gerekebilecek kurallar eklemenizi kolaylaştırır.         |
     |Ad     | Ağ güvenlik grubu içindeki kural için benzersiz bir ad.        |  Ad en fazla 80 karakter olabilir. Bir harf veya sayı ile başlamalı, harf, sayı veya alt çizgi ile bitmelidir ve yalnızca harf, sayı, alt çizgi, nokta veya kısa çizgi içerebilir.       |
     |Açıklama     | İsteğe bağlı bir açıklama.        |         |
 
@@ -170,7 +170,7 @@ Liste, oluşturduğunuz kuralları ve ağ güvenlik grubu [varsayılan güvenlik
 **Komut**
 
 - Azure CLı: [az Network NSG Rule Update](/cli/azure/network/nsg/rule#az-network-nsg-rule-update)
-- PowerShell: [Set-AzNetworkSecurityRuleConfig](/powershell/module/az.network/set-aznetworksecurityruleconfig)
+- PowerShell: [set-AzNetworkSecurityRuleConfig](/powershell/module/az.network/set-aznetworksecurityruleconfig)
 
 ### <a name="delete-a-security-rule"></a>Bir güvenlik kuralını Sil
 
@@ -192,12 +192,12 @@ Bir uygulama güvenlik grubu sıfır veya daha fazla ağ arabirimi içerir. Daha
 2. **Market içinde ara** kutusuna *Uygulama güvenlik grubu* girin. Arama sonuçlarında **Uygulama güvenlik grubu** gösterildiğinde bunu seçin, **Her şey**'in altında yeniden **Uygulama güvenlik grubu**'nu seçin ve sonra da **Oluştur**'u seçin.
 3. Aşağıdaki bilgileri girin veya seçin ve sonra **Oluştur**’u seçin:
 
-    | Ayar        | Value                                                   |
+    | Ayar        | Değer                                                   |
     | ---            | ---                                                     |
     | Ad           | Ad, kaynak grubu içinde benzersiz olmalıdır.        |
-    | Subscription   | Aboneliğinizi seçin.                               |
-    | Resource group | Var olan bir kaynak grubunu seçin veya yeni bir tane oluşturun. |
-    | Location       | Bir konum seçin                                       |
+    | Abonelik   | Aboneliğinizi seçin.                               |
+    | Kaynak grubu | Var olan bir kaynak grubunu seçin veya yeni bir tane oluşturun. |
+    | Konum       | Bir konum seçin                                       |
 
 **Komut**
 
@@ -250,11 +250,11 @@ Bir uygulama güvenlik grubunu, içinde herhangi bir ağ arabirimi varsa silemez
 
 ## <a name="permissions"></a>İzinler
 
-Ağ güvenlik gruplarında, güvenlik kurallarında ve uygulama güvenlik gruplarında görevler gerçekleştirmek için, hesabınız [ağ katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolüne veya aşağıda listelenen uygun izinlere atanmış [özel bir role](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) atanmalıdır takvimleri
+Ağ güvenlik gruplarında, güvenlik kurallarında ve uygulama güvenlik gruplarında görevler gerçekleştirmek için, hesabınız [ağ katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolüne ya da aşağıdaki tablolarda listelenen uygun izinlere atanmış [özel bir role](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) atanmalıdır:
 
 ### <a name="network-security-group"></a>Ağ güvenlik grubu
 
-| Action                                                        |   Ad                                                                |
+| Eylem                                                        |   Ad                                                                |
 |-------------------------------------------------------------- |   -------------------------------------------                         |
 | Microsoft.Network/networkSecurityGroups/read                  |   Ağ güvenlik grubunu al                                          |
 | Microsoft. Network/networkSecurityGroups/Write                 |   Ağ güvenlik grubu oluştur veya güncelleştir                             |
@@ -264,7 +264,7 @@ Ağ güvenlik gruplarında, güvenlik kurallarında ve uygulama güvenlik grupla
 
 ### <a name="network-security-group-rule"></a>Ağ güvenlik grubu kuralı
 
-| Action                                                        |   Ad                                                                |
+| Eylem                                                        |   Ad                                                                |
 |-------------------------------------------------------------- |   -------------------------------------------                         |
 | Microsoft. Network/networkSecurityGroups/Rules/Read            |   Kural al                                                            |
 | Microsoft. Network/networkSecurityGroups/Rules/Write           |   Kural oluştur veya güncelleştir                                               |
@@ -272,7 +272,7 @@ Ağ güvenlik gruplarında, güvenlik kurallarında ve uygulama güvenlik grupla
 
 ### <a name="application-security-group"></a>Uygulama güvenlik grubu
 
-| Action                                                                     | Ad                                                     |
+| Eylem                                                                     | Ad                                                     |
 | --------------------------------------------------------------             | -------------------------------------------              |
 | Microsoft. Network/applicationSecurityGroups/Joinıp/Action     | Bir IP yapılandırmasını bir uygulama güvenlik grubuna katma|
 | Microsoft. Network/applicationSecurityGroups/joinNetworkSecurityRule/Action | Bir güvenlik kuralına uygulama güvenlik grubuna ekleme    |

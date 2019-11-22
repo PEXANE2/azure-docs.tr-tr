@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 3df1bd879c10411800596ce7157be4554fcffaf6
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 71a0be68f91c468813c1ed2fc8764d9714deb54a
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903502"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276172"
 ---
 # <a name="quickstart-provision-a-simulated-tpm-device-using-the-azure-iot-c-sdk"></a>Hızlı başlangıç: Azure IoT C SDK'sını kullanarak simülasyon TPM cihazı sağlama
 
@@ -115,24 +115,25 @@ Bu bölümde, çalışır ve 2321 ile 2322 numaralı bağlantı noktaları üzer
 
 3. Visual Studio'nun *Çözüm Gezgini* penceresinde **Sağlama\_Araçları** klasörüne gidin. **tpm_device_provision** projesine sağ tıklayın ve **Başlangıç Projesi Olarak Ayarla**’yı seçin. 
 
-4. Çözümü çalıştırmak için Visual Studio menüsünde **Hata Ayıkla** > **Hata ayıklama olmadan başlat**'ı seçin. Uygulama **_Kayıt Kimliği_** ve **_Onay Anahtarı_** değerlerini okur ve görüntüler. Bu değerleri kopyalayın. Bunlar, bir sonraki bölümde cihaz kaydı için kullanılacaktır. 
+4. Çözümü çalıştırmak için Visual Studio menüsünde **Hata Ayıkla** > **Hata ayıklama olmadan başlat**'ı seçin. Uygulama bir **_kayıt kimliği_** ve bir **_onay anahtarı_** okur ve görüntüler. Veya bu değerleri kopyalayın. Bunlar, bir sonraki bölümde cihaz kaydı için kullanılacaktır. 
 
 
 <a id="portalenrollment"></a>
 
 ## <a name="create-a-device-enrollment-entry-in-the-portal"></a>Portalda bir cihaz kaydı girişi oluşturma
 
-1. Azure portalında oturum açın, sol taraftaki menüden **Tüm kaynaklar** düğmesine tıklayın ve Cihaz Sağlama hizmetinizi açın.
+1. Azure portal oturum açın, sol taraftaki menüden **tüm kaynaklar** düğmesini seçin ve cihaz sağlama hizmetinizi açın.
 
-2. **Kayıtları yönet** sekmesini seçin ve ardından üstteki **Tek kayıt ekle** düğmesine tıklayın. 
+1. Kayıtları **Yönet** sekmesini seçin ve ardından üst kısımdaki **tek kayıt Ekle** düğmesini seçin. 
 
-3. **Kayıt ekle** altında aşağıdaki bilgileri girin ve **Kaydet** düğmesine tıklayın.
-
-    - **Mekanizma**: Kimlik onay **Mekanizması** olarak *TPM* seçeneğini belirleyin.
-    - **Onay anahtarı:** *tpm_device_provision* projesini çalıştırarak TPM cihazınız için oluşturduğunuz *Onay anahtarı*'nı girin.
-    - **Kayıt kimliği:** *tpm_device_provision* projesini çalıştırarak TPM cihazınız için oluşturduğunuz *Kayıt kimliği*'ni girin.
-    - **IoT Edge cihazı:** **Devre dışı bırak**'ı seçin.
-    - **IoT Hub Cihaz kimliği:** Cihaza bir kimlik vermek için **test-docs-device** girin.
+1. **Kayıt Ekle** panelinde, aşağıdaki bilgileri girin:
+   - Kimlik onay **Mekanizması** olarak *TPM* seçeneğini belirleyin.
+   - Daha önce not ettiğiniz değerlerden TPM cihazınızın *kayıt kimliği* ve *onay anahtarı* ' nı girin.
+   - Sağlama hizmetinizle bağlanacak IoT hub'ını seçin.
+   - İsteğe bağlı olarak, aşağıdaki bilgileri sağlayabilirsiniz:
+       - Benzersiz bir *CIHAZ kimliği* girin (önerilen **Test-docs-Device** ' i kullanabilir veya kendi kendinizinkini sağlayabilirsiniz). Cihazınızı adlandırırken gizli veriler kullanmaktan kaçının. Bir tane sağlamadıysanız, bunun yerine cihazı tanımlamak için kayıt KIMLIĞI kullanılır.
+       - **Başlangıç cihaz ikizi durumu** alanını cihaz için istenen başlangıç yapılandırmasına göre güncelleştirin.
+   - Tamamlandıktan sonra **Kaydet** düğmesine basın. 
 
       ![Portala cihaz kayıt bilgilerini girme](./media/quick-create-simulated-device/enter-device-enrollment.png)  
 
@@ -182,7 +183,7 @@ Bu bölümde, örnek kodu yapılandırarak cihazın önyükleme sırasını Ciha
 
 6. **prov\_dev\_client\_sample** projesine sağ tıklayın ve **Başlangıç Projesi Olarak Ayarla**’yı seçin. 
 
-7. Çözümü çalıştırmak için Visual Studio menüsünde **Hata Ayıkla** > **Hata ayıklama olmadan başlat**'ı seçin. Projeyi yeniden derleme isteminde **Evet**'e tıklayarak, çalıştırmadan önce projeyi yeniden derleyin.
+7. Çözümü çalıştırmak için Visual Studio menüsünde **Hata Ayıkla** > **Hata ayıklama olmadan başlat**'ı seçin. Projeyi yeniden oluşturmak için istemde, çalıştırmadan önce projeyi yeniden derlemek için **Evet**' i seçin.
 
     Aşağıdaki çıkış, başarıyla önyüklemesi yapılan cihaz istemci örneğini sağlama ve IoT hub bilgilerini almak üzere Cihaz Sağlama Hizmeti'ne bağlanıp kaydolma işlemlerinin bir örneğidir:
 
@@ -200,23 +201,23 @@ Bu bölümde, örnek kodu yapılandırarak cihazın önyükleme sırasını Ciha
     test-docs-hub.azure-devices.net, deviceId: test-docs-device
     ```
 
-8. Simülasyon cihazı sağlama hizmetinizle IoT hub’ına sağlandıktan sonra, cihaz kimliği hub'ın **IoT Cihazları** altında gösterilir. 
+8. Sanal cihaz, sağlama hizmetiniz tarafından IoT Hub 'ına sağlandıktan sonra, hub 'ın **IoT cihazlarıyla**bırlıkte cihaz kimliği görüntülenir. 
 
     ![Cihaz IOT hub'da kayıtlı](./media/quick-create-simulated-device/hub-registration.png) 
 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Cihaz istemci örneği üzerinde çalışmaya ve inceleme yapmaya devam etmeyi planlıyorsanız bu Hızlı Başlangıç’ta oluşturulan kaynakları silmeyin. Devam etmeyi planlamıyorsanız, bu hızlı başlangıç ile oluşturulan tüm kaynakları silmek için aşağıdaki adımları kullanın:
+Cihaz istemci örneğini üzerinde çalışmaya ve keşfetmeye devam etmeyi planlıyorsanız, bu hızlı başlangıçta oluşturulan kaynakları temizlemeyin. Devam etmeyi planlamıyorsanız, bu hızlı başlangıç tarafından oluşturulan tüm kaynakları silmek için aşağıdaki adımları kullanın.
 
 1. Makinenizde cihaz istemci örnek çıktı penceresini kapatın.
 2. Makinenizde TPM simülatörü penceresini kapatın.
-3. Azure portalında sol taraftaki menüden **Tüm kaynaklar**’ı ve ardından Cihaz Sağlama hizmetini seçin. Hizmetiniz için kayıtları **Yönet** ' i açın ve sonra **bireysel** Kayıtlar sekmesine tıklayın. bu hızlı BAŞLANGıÇTA kaydettiğiniz cihazın *kayıt kimliği* ' ni seçin ve üstteki **Sil** düğmesine tıklayın. 
-4. Azure portalında sol taraftaki menüden **Tüm kaynaklar**’ı ve ardından IoT hub’ınızı seçin. Hub'ınızın **IoT Cihazları** seçeneğini açıp bu Hızlı Başlangıç adımlarını kullanarak kaydettiğiniz cihazın *CİHAZ KİMLİĞİ* değerini seçin ve en üstte bulunan **Sil** düğmesine tıklayın.
+3. Azure portal sol taraftaki menüden **tüm kaynaklar** ' ı seçin ve ardından cihaz sağlama hizmetinizi seçin. Hizmetiniz için kayıtları **Yönet** ' i açın ve sonra **bireysel** kayıtlar sekmesini seçin. bu hızlı BAŞLANGıÇTA kaydettiğiniz cihazın *kayıt kimliği* ' nin yanındaki onay kutusunu işaretleyin ve bölmenin en üstündeki **Sil** düğmesine basın. 
+4. Azure portal sol taraftaki menüden **tüm kaynaklar** ' ı seçin ve ardından IoT Hub 'ınızı seçin. , Hub 'ınız için **IoT cihazlarını** açın, bu hızlı başlangıçta kaydettiğiniz CIHAZıN *cihaz kimliği* ' nin yanındaki onay kutusunu işaretleyin ve ardından bölmenin en üstündeki **Sil** düğmesine basın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta makinenizde bir TPM sanal cihazı oluşturdunuz ve IoT Hub Cihaz Sağlama Hizmeti ile IoT hub'ınıza sağladınız. TPM cihazınızı programlı bir şekilde kaydetmeyi öğrenmek için TPM cihazının programlı kaydının yer aldığı Hızlı Başlangıç adımlarına gidin. 
+Bu hızlı başlangıçta, makinenizde bir TPM sanal cihazı oluşturdunuz ve IoT Hub cihaz sağlama hizmetini kullanarak IoT Hub 'ınıza sağladınız. TPM cihazınızı programlı bir şekilde kaydetmeyi öğrenmek için bir TPM cihazının programlı kaydı için hızlı başlangıç 'a geçin. 
 
 > [!div class="nextstepaction"]
-> [Azure Hızlı Başlangıcı - TPM cihazını Azure IoT Hub Cihaz Sağlama Hizmeti'ne kaydetme](quick-enroll-device-tpm-java.md)
+> [Azure hızlı başlangıç-TPM cihazını Azure IoT Hub cihaz sağlama hizmeti 'ne kaydetme](quick-enroll-device-tpm-java.md)

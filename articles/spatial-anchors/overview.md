@@ -1,6 +1,6 @@
 ---
-title: Azure uzamsal yer işaretleri genel bakış | Microsoft Docs
-description: Uzamsal bağlayıcılarını Azure platformlar arası karma gerçeklik deneyimlerini geliştirmenize nasıl yardımcı olduğunu öğrenin.
+title: Azure uzamsal Tutturucuların genel bakış
+description: Azure uzamsal Tutturucuların platformlar arası karma gerçeklik deneyimlerini geliştirmenize nasıl yardımcı olduğunu öğrenin.
 author: craigktreasure
 manager: aliemami
 services: azure-spatial-anchors
@@ -8,38 +8,38 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 2451922f0eb49a5ccee036db72eb046760287dca
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 503004cba0d4109adcfee62f7acd108cbcb73eb6
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "60240474"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277149"
 ---
-# <a name="azure-spatial-anchors-overview"></a>Azure uzamsal yer işaretleri genel bakış
+# <a name="azure-spatial-anchors-overview"></a>Azure uzamsal Tutturucuların genel bakış
 
-Azure uzamsal yer işaretlerine giden Hoş Geldiniz. Azure uzamsal bağlayıcılarını mekan kullanan karma gerçeklik uygulamaları oluşturmak için temel özelliklerini geliştiricilere güçlendirir. Bu uygulamalar Microsoft HoloLens, ARKit destekleyen iOS tabanlı cihazları ve Android tabanlı cihazlar ARCore destekleyen destekleyebilir. Azure uzamsal bağlayıcılarını geliştiricilerinin alanları algılar, ilgilenilen kesin noktaları belirlemek ve desteklenen cihazlardan ilgi bu noktaları çağırmak için karma gerçeklik platformları ile çalışmasını sağlar.
-İlgilendiğiniz kesin şu noktaları uzamsal bağlantı olarak adlandırılır.
+Azure uzamsal tutturucularını hoş geldiniz. Azure uzamsal bağlantıları, geliştiricilere, istenmeyen ve dağınık karma gerçeklik uygulamaları oluşturmak için önemli yetenekler sağlar. Bu uygulamalar, ARKit destekleyen Microsoft HoloLens, iOS tabanlı cihazları ve ARCore destekleyen Android tabanlı cihazları destekleyebilir. Azure Spatial Anchors geliştiricilerin alanları algılamak, ilgi çekici noktaları tam olarak belirlemek ve desteklenen cihazlarda bu ilgi çekici noktaları anımsamak için karma gerçeklik platformlarıyla çalışmasını sağlar.
+Bu kesin ilgi noktaları, uzamsal bağlayıcı olarak adlandırılır.
 
 ![Platformlar Arası](./media/cross-platform.png)
 
 ## <a name="examples"></a>Örnekler
 
-Uzamsal bağlayıcılarını tarafından etkin bazı örnek kullanım alanları şunlardır:
+Uzamsal Tutturucuların etkinleştirildiği bazı örnek kullanım durumları şunlardır:
 
-- [Birden çok kullanıcı deneyimleri](tutorials/tutorial-share-anchors-across-devices.md). Uzamsal bağlayıcılarını kolaylaştırır kişilerin aynı yerde birden çok kullanıcı karma gerçeklik uygulamaları katılmak. Örneğin, iki kişinin bir tabloda bir sanal chess Panosu yerleştirerek karma gerçeklik satranç başlayabilirsiniz. Ardından, cihazlarını tablosunu işaret ederek görüntüleyebilir ve sanal chess panosu ile birlikte etkileşim.
+- [Çok kullanıcılı deneyimler](tutorials/tutorial-share-anchors-across-devices.md). Uzamsal bağlantılar, aynı yerde bulunan kişilerin çok kullanıcılı karma gerçeklik uygulamalarına katılmasını kolaylaştırır. Örneğin, iki kişi bir tabloya sanal satranç panosu yerleştirerek karma gerçeklik satranç oyununu başlatabilir. Ardından, cihazlarını tabloya işaret ederek, sanal satranç panosunu birlikte görüntüleyip etkileşime girebilirler.
 
-- [Yol-bulma](concepts/anchor-relationships-way-finding.md). Geliştiriciler, uzamsal birlikte bunların arasında ilişki oluşturma Çıpalarını da bağlanabilirsiniz. Örneğin, bir uygulama, bir kullanıcı bir görevi tamamlamak için etkileşim kurması gereken ilgilenilen iki veya daha fazla noktaları olan bir deneyim içerebilir. Bu noktaları ilgi bağlı bir şekilde oluşturulabilir. Daha sonra kullanıcının çok adımlı görev tamamlarken, uygulama için geçerli bir sonraki adımda doğru kullanıcı görevi doğrudan yakın olan yer işaretleri sorabilirsiniz.
+- [Yol bulma](concepts/anchor-relationships-way-finding.md). Geliştiriciler, uzamsal bağlantıları aralarında ilişkiler oluşturarak da birbirine bağlayabilirler. Örneğin, bir uygulama, bir kullanıcının bir görevi tamamlaması için etkileşimde bulunması gereken iki veya daha fazla ilgi noktasına sahip bir deneyim içerebilir. Bu ilgi çekici noktaları, bağlı bir biçimde oluşturulabilir. Daha sonra, Kullanıcı çok adımlı görevi tamamlarken, uygulama, kullanıcının görevin bir sonraki adımına yaklaşmasını sağlamak için yakın olan bağlantıları ister.
 
-- [Kalıcı sanal gerçek içeriği](how-tos/create-locate-anchors-unity.md#create-a-cloud-spatial-anchor). Bir uygulamayı sanal bir takvim, kişiler bir telefon uygulaması veya HoloLens cihaz kullanarak görebilir bir Konferans odası nu duvara yansıtabilir, yerleştirin kullanıcı izin verebilirsiniz. Endüstriyel bir ayarda, kullanıcı desteklenen cihaz kamerasına üzerine gelerek bir makine hakkında bağlamsal bilgi alabilir.
+- [Gerçek dünyada kalıcı sanal içerik](how-tos/create-locate-anchors-unity.md#create-a-cloud-spatial-anchor). Bir uygulama, kullanıcının bir telefon uygulaması veya HoloLens cihazı kullanarak görebilmesine olanak tanıyan bir konferans odası duvarından bir sanal takvim yerleştirmesini sağlayabilir. Endüstriyel ortamda kullanıcı desteklenen bir cihaz kamerasını makineye doğrultarak makine hakkında bağlamsal bilgiler alabilir.
 
-Yönetilen hizmet ve istemci SDK'ları desteklenen cihaz platformları için Azure uzamsal bağlayıcılarını oluşur. Aşağıdaki bölümler, Azure uzamsal bağlayıcılarını kullanarak uygulamaları oluşturma ile çalışmaya başlama hakkında bilgi sağlar.
+Azure Spatial Anchors bir yönetilen hizmetten ve desteklenen cihaz platformları için istemci SDK'larından oluşur. Aşağıdaki bölümlerde, Azure uzamsal bağlayıcıları kullanarak uygulama oluşturmaya başlama hakkında bilgi sağlanmaktadır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Uzamsal Çıpasıyla ilk uygulamanızı oluşturun.
+Uzamsal bağlayıcılarla ilk uygulamanızı oluşturun.
 
 > [!div class="nextstepaction"]
-> [Unity](unity-overview.yml)
+> ['Yi](unity-overview.yml)
 
 > [!div class="nextstepaction"]
 > [iOS](quickstarts/get-started-ios.md)

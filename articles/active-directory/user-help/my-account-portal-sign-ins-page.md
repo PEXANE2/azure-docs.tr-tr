@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9d134e522575f30fd1f1be8176e0e1589faa7ac
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a45caeed8b601a845b0eb0fbcd25f1ec097a77a1
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73587634"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279032"
 ---
 # <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-preview-page"></a>Son oturum açma etkinliğinizi, oturum açma (Önizleme) sayfasından görüntüleme ve arama
 
@@ -29,7 +29,7 @@ En son iş veya okul hesabı oturum açma etkinliğinizi, **Hesabım** portalın
 
 - Saldırganın erişmeye çalıştığı uygulamalar.
 
-## <a name="view-your-recent-sign-in-activity"></a>Son oturum açma etkinliğinizi görüntüleyin
+## <a name="view-your-recent-sign-in-activity"></a>Son oturum açma etkinliğinizi görüntüleme
 
 1. İş veya okul hesabınızda oturum açın ve ardından https://myprofile.microsoft.com/ sayfanıza gidin.
 
@@ -49,7 +49,7 @@ Bir şeyin yanlış olduğunu belirlemediğinizden önce, yanlış pozitif bir d
 
 ### <a name="if-you-see-an-unsuccessful-sign-in"></a>Başarısız bir oturum açma görürseniz
 
-Oturum etkinliği olmadan başarısız bir oturum açma işlemi, birincil kimlik doğrulama yönteminizin (Kullanıcı adı/parola) başarısız olduğu anlamına gelir. Bu, Kullanıcı adınızı veya parolanızı yanlış yazmış olduğunuz anlamına gelir, ancak bir saldırganın parolanızı tahmin etmeye çalıştığı anlamına da gelebilir. Bir saldırganın parolanızı tahmin edemeyeceğini düşünüyorsanız parolanızı değiştirmeniz gerekmez, ancak Azure Multi-Factor Authentication (MFA) için kaydolmanızı önemle öneririz. MFA ile, korsanın parolanızı tahmin etse bile hesabınıza erişmek için yeterli olmayacaktır.
+Oturum etkinliği olmadan başarısız bir oturum açma işlemi, birincil doğrulama yönteminizin (Kullanıcı adı/parola) başarısız olduğu anlamına gelir. Bu, Kullanıcı adınızı veya parolanızı yanlış yazmış olduğunuz anlamına gelir, ancak bir saldırganın parolanızı tahmin etmeye çalıştığı anlamına da gelebilir. Bir saldırganın parolanızı tahmin edemeyeceğini düşünüyorsanız parolanızı değiştirmeniz gerekmez, ancak Azure Multi-Factor Authentication (MFA) için kaydolmanızı önemle öneririz. MFA ile, korsanın parolanızı tahmin etse bile hesabınıza erişmek için yeterli olmayacaktır.
 
 Başarısız bir oturum açma görürseniz, oturum etkinliği altında, **ek doğrulama başarısız oldu, geçersiz kod**ile, birincil kimlik doğrulamanın (Kullanıcı adı/parola) başarılı olduğu ancak MFA 'nın başarısız olduğu anlamına gelir. Bu bir saldırgan ise parolanızı doğru tahmin eder ancak MFA Challenge 'ı yine de geçemeyebilir. Bu durumda, saldırgan söz konusu bölüm hakkına sahip olduğundan ve ardından güvenlik ayarlarınızı güncelleştirmek için [güvenlik bilgisi](https://mysignins.microsoft.com/security-info) sayfasına giderek parolanızı değiştirmenize devam etmenizi öneririz.
 

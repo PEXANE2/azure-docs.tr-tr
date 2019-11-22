@@ -1,5 +1,5 @@
 ---
-title: Bir uygulama için Kullanıcı onayı Yapılandırma-Azure Active Directory | Microsoft Docs
+title: Bir uygulama için Kullanıcı onayı Yapılandırma-Azure Active Directory
 description: Kullanıcıların uygulama izinlerini kabul etme şeklini yönetmeyi öğrenin. Yönetici onayı vererek Kullanıcı deneyimini basitleştirebilirsiniz. Bu yöntemler Azure Active Directory (Azure AD) kiracınızdaki tüm son kullanıcılar için geçerlidir.
 services: active-directory
 author: msmimart
@@ -12,19 +12,19 @@ ms.date: 10/22/2018
 ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6bd746e79bc9d70be23771f97b1757f090f6375f
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 4a187ea9d22efa40c482ea8930be0271d84a899a
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709282"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74273983"
 ---
 # <a name="configure-the-way-end-users-consent-to-an-application-in-azure-active-directory"></a>Azure Active Directory ' deki bir uygulamaya Son Kullanıcı onay biçimini yapılandırma
 Kullanıcıların uygulama izinlerini kabul etme şeklini nasıl yapılandıracağınızı öğrenin. Yönetici onayı vererek Kullanıcı deneyimini basitleştirebilirsiniz. Bu makalede, Kullanıcı onayını yapılandırabileceğiniz farklı yollar sunulmaktadır. Yöntemler, Azure Active Directory (Azure AD) kiracınızdaki tüm son kullanıcılar için geçerlidir. 
 
 Uygulamalara yönelik yarışmaya yönelik daha fazla bilgi için bkz. [Azure Active Directory izin çerçevesi](../develop/consent-framework.md).
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 Yönetici onayı verme, genel yönetici, uygulama Yöneticisi veya bulut uygulama Yöneticisi olarak oturum açmanızı gerektirir.
 
@@ -52,10 +52,10 @@ Bu seçenek yalnızca uygulama şu olduğunda geçerlidir:
 
 Bir uygulamayı kaydederken yönetici onayı vermek için: 
 
-1. [Azure Portal](https://portal.azure.com) genel yönetici olarak oturum açın.
+1. [Azure portalında](https://portal.azure.com) genel yönetici olarak oturum açın.
 2. **Uygulama kayıtları** dikey penceresine gidin.
 3. Onay için uygulamayı seçin.
-4. **API izinleri**' ni seçin.
+4. Seçin **API izinleri**.
 5. **Yönetici Izni ver**' e tıklayın.
 
 
@@ -63,13 +63,13 @@ Bir uygulamayı kaydederken yönetici onayı vermek için:
 
 Bir URL isteği aracılığıyla yönetici onayı vermek için:
 
-1. Uygulama yapılandırlarınızla *login.microsoftonline.com* için bir istek oluşturun ve `&prompt=admin_consent` ' e ekleyin. Bu URL şöyle görünür: `https://login.microsoftonline.com/<tenant-id>/oauth2/authorize?client_id=<client id>&response_type=code&redirect_uri=<Your-Redirect-URI-Https-Encoded>&nonce=1234&resource=<your-resource-Https-encoded>&prompt=admin_consent`
+1. Uygulama konfigürasyonlarınızla *login.microsoftonline.com* için bir istek oluşturun ve `&prompt=admin_consent`ekleyin. Bu URL şöyle görünür: `https://login.microsoftonline.com/<tenant-id>/oauth2/authorize?client_id=<client id>&response_type=code&redirect_uri=<Your-Redirect-URI-Https-Encoded>&nonce=1234&resource=<your-resource-Https-encoded>&prompt=admin_consent`
 2. Yönetici kimlik bilgileriyle oturum açtıktan sonra, uygulamaya tüm kullanıcılar için izin verildi.
 
 
 ## <a name="force-user-consent-through-a-url-request"></a>URL isteği aracılığıyla Kullanıcı onayını zorla
 
-Son kullanıcıların her kimlik doğrulamasından geçen her seferinde bir uygulamaya onay vermesini gerektirmek için, kimlik doğrulaması istek URL 'sine `&prompt=consent` ekleyin.
+Son kullanıcıların her kimlik doğrulamasından geçen her seferinde bir uygulamaya onay vermesini gerektirmek için `&prompt=consent` kimlik doğrulaması istek URL 'sine ekleyin.
 Bu URL şöyle görünür: `https://login.microsoftonline.com/<tenant-id>/oauth2/authorize?client_id=<client id>&response_type=code&redirect_uri=<Your-Redirect-URI-Https-Encoded>&nonce=1234&resource=<your-resource-Https-encoded>&prompt=consent`
 
 ## <a name="next-steps"></a>Sonraki adımlar

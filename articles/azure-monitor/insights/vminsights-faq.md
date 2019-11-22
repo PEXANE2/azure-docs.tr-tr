@@ -1,21 +1,21 @@
 ---
 title: VM'ler için Azure İzleyici (Önizleme) sık sorulan sorular | Microsoft Docs
-description: VM'ler için Azure İzleyici Azure 'da, Azure VM işletim sisteminin sistem durumunu ve performans izlemesini birleştiren bir çözümdür ve uygulama bileşenlerini ve bağımlılıklarını diğer kaynaklarla otomatik olarak bulabilir ve arasındaki iletişimi eşler yapıştırabilirsiniz. Bu makalede yaygın soruların yanıtları vardır.
+description: Uygulama bileşenlerini ve bunların bağımlılıklarını otomatik olarak bulmaya ve eşleştirmeye ek olarak Azure VM 'lerinin sistem durumunu ve performansını izleyen VM'ler için Azure İzleyici yönelik yaygın soruların yanıtları.
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 01/09/2018
-ms.openlocfilehash: 675277a33a5613507297f1c77ee9cef3215b22a2
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 579538996e934c7068c397a284d819f5ddb92f08
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555203"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74305454"
 ---
 # <a name="azure-monitor-for-vms-preview-frequently-asked-questions"></a>VM'ler için Azure İzleyici (Önizleme) sık sorulan sorular
-Bu Microsoft SSS, VM'ler için Azure İzleyici hakkında sık sorulan soruların bir listesidir. Çözümle ilgili başka sorularınız varsa, [tartışma forumuna](https://feedback.azure.com/forums/34192--general-feedback) gidin ve sorularınızı gönderin. Bir soru sıkça sorulduğunda, hızlı ve kolay bir şekilde bulunabilmesi için bu makaleye ekleyeceğiz.
+Bu Microsoft SSS, VM'ler için Azure İzleyici hakkında sık sorulan soruların bir listesidir. Çözümle ilgili başka sorularınız varsa, [tartışma forumuna](https://feedback.azure.com/forums/34192--general-feedback) gidin ve sorularınızı gönderin. Sık sorulan bir soru, böylece hızla ve kolayca bulunabilir, bu makaleye ekleriz.
 
 ## <a name="can-i-onboard-to-an-existing-workspace"></a>Mevcut bir çalışma alanına ekleyebilir miyim?
 Sanal makineleriniz zaten bir Log Analytics çalışma alanına bağlıysa, [burada](vminsights-enable-overview.md#prerequisites)listelenen desteklenen bölgelerden birinde olması kaydıyla, VM'ler için Azure izleyici ekleme sırasında bu çalışma alanını kullanmaya devam edebilirsiniz.
@@ -30,7 +30,7 @@ VM 'niz Şu anda mevcut bir Log Analytics çalışma alanına bağlı değilse, 
 Betik tabanlı yöntemi kullanmayı seçerseniz, bu adımlar [Azure PowerShell veya Kaynak Yöneticisi şablonu kullanarak etkinleştirme VM'ler için Azure izleyici (Önizleme)](vminsights-enable-at-scale-powershell.md) içinde ele alınmıştır. 
 
 ## <a name="what-do-i-do-if-my-vm-is-already-reporting-to-an-existing-workspace"></a>VM 'im mevcut bir çalışma alanına zaten bildirildiğimde ne yapmam gerekiyor?
-Sanal makinelerinizden zaten veri topluyorsanız, mevcut bir Log Analytics çalışma alanına verileri raporlamak için onu zaten yapılandırmış olabilirsiniz.  Çalışma alanı desteklenen bölgelerden birinde olduğu sürece, VM'ler için Azure İzleyici önceden var olan çalışma alanına etkinleştirebilirsiniz.  Zaten kullanmakta olduğunuz çalışma alanı desteklenen bölgelerden birinde değilse, şu anda VM'ler için Azure İzleyici içine yükleyemezsiniz.  Ek bölgeleri desteklemek için etkin bir şekilde çalışıyoruz.
+Sanal makinelerinizden zaten veri topluyorsanız, mevcut bir Log Analytics çalışma alanına verileri raporlamak için onu zaten yapılandırmış olabilirsiniz.  Çalışma alanı desteklenen bölgelerden birinde olduğu sürece, VM'ler için Azure İzleyici önceden var olan çalışma alanına etkinleştirebilirsiniz.  Zaten kullanmakta olduğunuz çalışma alanı desteklenen bölgelerden birinde değilse, şu anda VM'ler için Azure İzleyici içine yükleyemezsiniz.  Etkin bir şekilde ek bölgeler desteklemek için çalışıyoruz.
 
 >[!NOTE]
 >Çalışma alanına rapor veren tüm VM 'Leri etkileyen çalışma alanı için performans sayaçlarını yapılandıracağız, bunlara VM'ler için Azure İzleyici eklemek isteyip istemediğinizi seçmiş olursunuz. Çalışma alanı için performans sayaçlarının nasıl yapılandırıldığı hakkında daha fazla bilgi için lütfen [belgelerimize](../../azure-monitor/platform/data-sources-performance-counters.md)bakın. VM'ler için Azure İzleyici için yapılandırılan sayaçlar hakkında daha fazla bilgi için lütfen [etkinleştirme VM'ler için Azure izleyici](vminsights-enable-overview.md#performance-counters-enabled) makalemize bakın.  
@@ -38,13 +38,13 @@ Sanal makinelerinizden zaten veri topluyorsanız, mevcut bir Log Analytics çal�
 ## <a name="why-did-my-vm-fail-to-onboard"></a>Sanal makinem neden eklenemedi?
 Azure portal bir Azure VM 'si eklenirken aşağıdaki adımlar oluşur:
 
-* Bu seçenek işaretliyse, varsayılan bir Log Analytics çalışma alanı oluşturulur.
+* Varsayılan Log Analytics çalışma alanı, seçenek seçilen oluşturulur.
 * Performans sayaçları seçili çalışma alanı için yapılandırıldı. Bu adım başarısız olursa, bazı performans grafiklerinin ve tablolarının eklendi olduğunuz VM için verileri göstermediğini fark edersiniz. [Burada](vminsights-enable-at-scale-powershell.md#enable-performance-counters)belgelenen PowerShell betiğini çalıştırarak bu hatayı çözebilirsiniz.
 * Log Analytics Aracısı, gerekli olduğunu tespit ederseniz bir VM uzantısı kullanılarak Azure VM 'lerine yüklenir.  
 * VM'ler için Azure İzleyici Map bağımlılık Aracısı, gerekli olduğunu tespit ederseniz bir uzantı kullanılarak Azure VM 'lerine yüklenir.  
 * Sistem durumu özelliğini destekleyen Azure Izleyici bileşenleri, gerekirse yapılandırılır ve VM, sistem durumu verilerini raporlamak üzere yapılandırılır.
 
-Ekleme işlemi sırasında, portalda size bir bildirim durumu döndürmek için yukarıdaki her bir durumu denetliyoruz. Çalışma alanının yapılandırması ve aracı yüklemesi genellikle 5 ila 10 dakika sürer. Portalda izleme ve sistem durumu verilerinin görüntülenmesi 10 dakikaya kadar 5 dakika sürer.  
+Ekleme işlemi sırasında, portalda size bir bildirim durumu döndürmek için yukarıdaki her bir durumu denetliyoruz. Çalışma alanını ve aracı yüklemesini yapılandırmasını, genellikle 5-10 dakika sürer. Portalda izleme ve sistem durumu verilerinin görüntülenmesi 10 dakikaya kadar 5 dakika sürer.  
 
 Ekleme işlemini başlattınız ve VM 'nin eklendi olması gerektiğini belirten iletiler görürseniz, VM 'nin işlemi tamamlaması için 30 dakikaya kadar bekleyin. 
 
@@ -61,31 +61,31 @@ Bu sürümde durum ölçütleri devre dışı bırakılamaz.
 Sağlık uyarısı önem derecesi değiştirilemez, yalnızca etkinleştirilebilir veya devre dışı bırakılabilir. Ayrıca, bazı uyarı önem dereceleri durum ölçütlerine göre güncelleştirme yapılır. 
 
 ## <a name="if-i-reconfigure-the-settings-of-a-particular-health-criteria-can-it-be-scoped-to-a-specific-instance"></a>Belirli bir sistem durumu ölçütlerinin ayarlarını yeniden yapılandırdığımda, belirli bir örneğe kapsam eklenebilir mi?  
-Bir sistem durumu ölçüt örneğinin herhangi bir ayarını değiştirirseniz, Azure VM 'de aynı türdeki tüm durum ölçütleri örnekleri değiştirilir. Örneğin, mantıksal disk C: öğesine karşılık gelen disk boş alan sistem durumu ölçüt örneğinin eşiği değiştirilirse, bu eşik aynı VM için bulunan ve izlenen diğer tüm mantıksal diskler için geçerlidir.
+Bir sistem durumu ölçüt örneğinin herhangi bir ayarını değiştirirseniz, Azure VM 'de aynı türdeki tüm durum ölçütleri örnekleri değiştirilir. Örneğin, mantıksal disk C: karşılık gelen disk boş alan sistem durumu ölçütü örneğinin eşiği değiştirilirse Bu eşik bulunan ve aynı sanal makine için izlenen tüm diğer mantıksal diskleri geçerlidir.
 
 ## <a name="does-the-health-feature-monitor-logical-processors-and-cores"></a>Sistem durumu özelliği mantıksal işlemcileri ve çekirdekleri izler mi?
 Hayır, tek tek işlemci ve mantıksal işlemci düzeyi durum ölçütleri bir Windows için dahil değildir, Azure VM 'nin kullanabildiği toplam mantıksal CPU sayısına göre CPU basıncını etkin bir şekilde değerlendirmek için varsayılan olarak yalnızca toplam CPU kullanımı izlenir. 
 
 ## <a name="are-all-health-criteria-thresholds-configurable"></a>Tüm durum ölçütleri eşikleri yapılandırılabilir mi?  
-Windows VM 'yi hedefleyen sistem durumu ölçütlerine yönelik eşikler, sistem durumları *çalışıyor* veya *kullanılabilir*olarak ayarlandığı için değiştirilebilir değildir. [Iş yükü IZLEYICISI API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components)'sinden sistem durumunu sorgulayıp, şu durumlarda hizmet veya varlık için **4** *eşik* değeriyle **LessThan** veya **GreaterThan** *değerini görüntüler* :
-   - DNS Istemci hizmeti sistem durumu – hizmeti çalışmıyor. 
-   - DHCP istemci hizmeti sistem durumu – hizmeti çalışmıyor. 
-   - RPC hizmeti sistem durumu – hizmeti çalışmıyor. 
-   - Windows Güvenlik Duvarı hizmeti sistem durumu – hizmeti çalışmıyor.
-   - Windows olay günlüğü hizmeti sistem durumu – hizmeti çalışmıyor. 
-   - Sunucu hizmeti sistem durumu – hizmeti çalışmıyor. 
-   - Windows Uzaktan Yönetim hizmeti sistem durumu – hizmeti çalışmıyor. 
-   - Dosya sistemi hatası veya bozulması – mantıksal disk kullanılamıyor.
+Sistem durumlarına ayarlanır çünkü hedef bir Windows VM durumu ölçütlerini eşikleri değiştirilebilir, olmayan *çalıştıran* veya *kullanılabilir*. Sistem sağlığı durumunu sorgulanırken [iş yükü İzleyicisi API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components), görüntülediği *comparisonOperator* değerini **LessThan** veya **GreaterThan** ile bir *eşiği* değerini **4** hizmet veya varlık varsa:
+   - DNS istemcisi hizmet durumu-hizmet çalışmıyor. 
+   - DHCP istemci hizmeti sistem durumu-hizmet çalışmıyor. 
+   - RPC hizmet durumu-hizmet çalışmıyor. 
+   - Windows Güvenlik Duvarı Hizmet durumu-hizmet çalışmıyor.
+   - Windows olay günlüğü hizmet durumu-hizmet çalışmıyor. 
+   - Sunucu hizmet durumu-hizmet çalışmıyor. 
+   - Windows Uzaktan Yönetimi hizmetinin sistem durumu – hizmet çalışmıyor. 
+   - Mantıksal Disk, dosya sistemi hatası veya bozulma – kullanılamıyor.
 
-Aşağıdaki Linux durum ölçütlerine yönelik eşikler, sistem durumu zaten *true*olarak ayarlandığından değiştirilebilir değildir. Sistem durumu, içeriğine bağlı olarak varlık için Iş yükü Izleme API 'sinden sorgulandığında, değeri **LessThan** ve *eşik* değeri **1** olan *ComparisonOperator* ' i görüntüler.
-   - Mantıksal disk durumu – mantıksal disk çevrimiçi değil/kullanılabilir
-   - Disk durumu – disk çevrimiçi/kullanılabilir değil
-   - Ağ bağdaştırıcısı durumu-ağ bağdaştırıcısı devre dışı
+Sistem durumu zaten ayarlandığından aşağıdaki Linux durumu ölçütlerini eşikleri değiştirilebilir, olmayan *true*. Sistem durumunu görüntüler *comparisonOperator* bir değerle **LessThan** ve *eşiği* değerini **1** gelen sorgulandığında İş yükü izleme API bağlama bağlı olarak varlığı için:
+   - Mantıksal Disk durumu – mantıksal disk değil çevrimiçi / kullanılabilir
+   - Disk durumu – Disk değil çevrimiçi / kullanılabilir
+   - Ağ bağdaştırıcısı durumu - ağ bağdaştırıcısı devre dışı bırakıldı
 
 ## <a name="how-do-i-modify-alerts-that-are-included-with-the-health-feature"></a>Sistem durumu özelliğine dahil olan uyarıları değiştirmek Nasıl yaparım??
-Her bir sistem durumu ölçütü için tanımlanan uyarı kuralları Azure portal gösterilmez. Bir sistem durumu uyarı kuralını yalnızca [Iş yükü IZLEYICISI API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components)'sinde etkinleştirebilir veya devre dışı bırakabilirsiniz. Ayrıca, Azure portal sistem durumu uyarıları için bir [Azure izleyici eylem grubu](../../azure-monitor/platform/action-groups.md) atayamazsınız. Bir sistem durumu uyarısı tetiklendiğinde tetiklenecek bir eylem grubunu yapılandırmak için yalnızca bildirim ayarı API 'sini kullanabilirsiniz. Şu anda, VM 'ye karşı gerçekleştirilen tüm *sistem durumu uyarılarının* aynı eylem gruplarını tetiklenmesi IÇIN bir VM 'ye karşı eylem grupları atayabilirsiniz. Geleneksel Azure uyarılarının aksine, her bir sistem durumu uyarı kuralı için ayrı bir eylem grubu kavramı yoktur. Ayrıca, sistem durumu uyarıları tetiklendiğinde yalnızca e-posta veya SMS bildirimleri sağlamak üzere yapılandırılan eylem grupları desteklenir. 
+Her sistem durumu ölçütü için tanımlanan uyarı kuralları, Azure portalında görüntülenmez. Etkinleştirebilir veya sistem durumu uyarısı devre dışı yalnızca kural [iş yükü İzleyicisi API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components). Ayrıca, Azure portal sistem durumu uyarıları için bir [Azure izleyici eylem grubu](../../azure-monitor/platform/action-groups.md) atayamazsınız. Bir sistem durumu uyarısı tetiklendiğinde tetiklenecek bir eylem grubunu yapılandırmak için yalnızca bildirim ayarı API 'sini kullanabilirsiniz. Şu anda, bir VM'ye karşı Eylem grupları atayabilirsiniz böylece tüm *sistem durumu uyarılarını* aynı Eylem grupları karşı VM tetikleyici tetiklendi. Geleneksel Azure uyarıları ayrı bir eylem grubu her sistem durumu uyarı kuralının kavramı yoktur. Ayrıca, sistem durumu uyarı tetiklendiğinde e-posta veya SMS bildirimleri sağlamak için yapılandırılmış olan eylem grupları desteklenir. 
 
-## <a name="i-dont-see-some-or-any-data-in-the-performance-charts-for-my-vm"></a>VM 'im için Performans grafiklerinde bir veya daha fazla veri görmüyorum
+## <a name="i-dont-see-some-or-any-data-in-the-performance-charts-for-my-vm"></a>Sanal Makinem için performans grafikleri bazı veya tüm veriler göremiyorum
 Disk tablosunda veya bazı performans grafiklerinde performans verilerini görmüyorsanız, performans sayaçlarınız çalışma alanında yapılandırılmamış olabilir. Çözümlemek için aşağıdaki [PowerShell betiğini](vminsights-enable-at-scale-powershell.md#enable-with-powershell)çalıştırın.
 
 ## <a name="how-is-azure-monitor-for-vms-map-feature-different-from-service-map"></a>VM'ler için Azure İzleyici eşleme özelliği Hizmet Eşlemesi nasıl farklıdır?
@@ -101,10 +101,10 @@ VM'ler için Azure İzleyici Map özelliği Hizmet Eşlemesi tabanlıdır, ancak
 * Eşlenecek grupları ve makineleri seçme seçeneği güncelleştirildi ve artık abonelikleri, kaynak gruplarını, Azure sanal makine ölçek kümelerini ve bulut hizmetlerini desteklemektedir.
 * VM'ler için Azure İzleyici Map özelliğinde yeni Hizmet Eşlemesi makine grupları oluşturamazsınız.  
 
-## <a name="why-do-my-performance-charts-show-dotted-lines"></a>Performans grafiklerim neden noktalı çizgiler gösteriyor?
+## <a name="why-do-my-performance-charts-show-dotted-lines"></a>Neden benim performans grafiklerini noktalı satırları göster?
 Bu, birkaç nedenden dolayı oluşabilir.  Veri koleksiyonunda bir boşluk olduğu durumlarda, satırları noktalı olarak belirledik.  Performans sayaçları etkin olan veri örnekleme sıklığını değiştirdiyseniz (varsayılan ayar, her 60 saniyede bir veri toplamaktır), grafik için dar bir zaman aralığı seçerseniz ve örnekleme sıklığınızdan daha küçükse, grafikte noktalı çizgileri görebilirsiniz. grafikte kullanılan demet boyutu (örneğin, örnekleme sıklığı 10 dakikadır ve grafikteki her demet 5 dakikadır).  Görüntülenecek daha geniş bir zaman aralığı seçilmesi, grafik çizgilerinin bu durumda nokta yerine düz çizgiler olarak görünmesine neden olmalıdır.
 
-## <a name="are-groups-supported-with-azure-monitor-for-vms"></a>Gruplar VM'ler için Azure İzleyici destekleniyor mu?
+## <a name="are-groups-supported-with-azure-monitor-for-vms"></a>Grupları, sanal makineleri için Azure İzleyici ile desteklenir?
 Evet, bağımlılık aracısını yükledikten sonra abonelikleri, kaynak grubunu, sanal makine ölçek kümelerini ve bulut hizmetlerini temel alan grupları göstermek için VM 'lerden bilgi topladık.  Hizmet Eşlemesi kullanıyorsanız ve makine grupları oluşturduysanız, bunlar da görüntülenir.  Siz görüntülemekte olduğunuz çalışma alanı için oluşturduysanız, bilgisayar grupları gruplar filtresinde da görünür. 
 
 ## <a name="how-do-i-see-the-details-for-what-is-driving-the-95th-percentile-line-in-the-aggregate-performance-charts"></a>Nasıl yaparım? toplam Performans grafiklerinde 95. yüzdebirlik satırını neyin yönlendirdiğini görmek için ayrıntılara bakın.
@@ -117,7 +117,7 @@ IP aralıklarını VM 'Ler veya alt ağlar ve sanal makine ölçek kümeleri ara
 Map özelliği şu anda yalnızca IPv4 'Ü destekliyor ve IPv6 desteğini araştırıyoruz. IPv6 içinde tünel oluşturulan IPv4 de destekliyoruz.
 
 ## <a name="when-i-load-a-map-for-a-resource-group-or-other-large-group-the-map-is-difficult-to-view"></a>Bir kaynak grubu veya başka bir büyük grup için bir harita yüklediğimde haritanın görüntülemesi zordur
-Büyük ve karmaşık yapılandırmaların işlenmesi amacıyla haritada geliştirmeler yaptığımız için, bir haritanın çok fazla düğüm, bağlantı ve düğüm kümesi olarak çalışan bir düğüm olabileceğini fark ettik.  Ölçeklenebilirliği artırmak için desteği geliştirmeye devam etmek için çalışıyoruz.   
+Büyük ve karmaşık yapılandırmaların işlenmesi amacıyla haritada geliştirmeler yaptığımız için, bir haritanın çok fazla düğüm, bağlantı ve düğüm kümesi olarak çalışan bir düğüm olabileceğini fark ettik.  Ölçeklenebilirliği artırmak için destek geliştirmek devam etmek için kararlıyız.   
 
 ## <a name="why-does-the-network-chart-on-the-performance-tab-look-different-than-the-network-chart-on-the-azure-vm-overview-page"></a>Performans sekmesindeki ağ grafiği neden Azure VM 'ye Genel Bakış sayfasındaki ağ grafiğinden farklı görünüyor?
 

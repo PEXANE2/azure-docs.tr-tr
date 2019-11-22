@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: f36d3bcb16876f080f780658bc59afd794e3431e
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 261816e42c8de670cd7888af726a70e1a6e5b228
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699193"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74269370"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Windows 'da Azure dosyaları sorunlarını giderme
 
-Bu makalede, Windows istemcilerinden bağlandığınızda Microsoft Azure dosyalarla ilgili yaygın sorunlar listelenmektedir. Ayrıca, bu sorunlar için olası nedenler ve çözümler de sağlar. Bu makaledeki sorun giderme adımlarına ek olarak, Windows istemci ortamının doğru önkoşullara sahip olduğundan emin olmak için [azfilediagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) 'i de kullanabilirsiniz. AzFileDiagnostics, bu makalede bahsedilen belirtilerin çoğunu algılamayı otomatikleştirir ve en iyi performansı elde etmek için ortamınızı ayarlamanıza yardımcı olur. Bu bilgileri Azure dosya [paylaşımları sorun gidericisinde](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares) de bulabilirsiniz. Bu bilgiler, Azure dosya paylaşımlarını bağlama/eşleme/bağlama sorunları konusunda size yardımcı olacak adımlar sağlar.
+Bu makalede, Windows istemcilerinden bağlandığınızda Microsoft Azure dosyalarla ilgili yaygın sorunlar listelenmektedir. Ayrıca, bu sorunlar için olası nedenler ve çözümler de sağlar. Bu makaledeki sorun giderme adımlarına ek olarak, Windows istemci ortamının doğru önkoşullara sahip olduğundan emin olmak için [Azfilediagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) de kullanabilirsiniz. AzFileDiagnostics, bu makalede bahsedilen belirtilerin çoğunu algılamayı otomatikleştirir ve en iyi performansı elde etmek için ortamınızı ayarlamanıza yardımcı olur. Bu bilgileri Azure dosya [paylaşımları sorun gidericisinde](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares) de bulabilirsiniz. Bu bilgiler, Azure dosya paylaşımlarını bağlama/eşleme/bağlama sorunları konusunda size yardımcı olacak adımlar sağlar.
 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
@@ -28,7 +28,7 @@ Bir dosya payını bağlamaya çalıştığınızda, şu hatayı alabilirsiniz:
 
 - Sistem hatası 5 oluştu. Erişim reddedildi.
 
-### <a name="cause-1-unencrypted-communication-channel"></a>Neden 1: Şifrelenmemiş iletişim kanalı
+### <a name="cause-1-unencrypted-communication-channel"></a>Neden 1: şifrelenmemiş iletişim kanalı
 
 Güvenlik nedeniyle, iletişim kanalı şifrelenmemişse ve bağlantı girişimi Azure dosya paylaşımlarının bulunduğu veri merkezinden yapılmıyorsa Azure dosya paylaşımlarına bağlantılar engellenir. Depolama hesabında [Güvenli aktarım gerekli](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) ayarı etkinleştirildiyse aynı veri merkezi içinde şifrelenmemiş bağlantılar da engellenebilir. Şifrelenmiş bir iletişim kanalının sağlanabilmesi için kullanıcının istemcisi SMB şifrelemesini desteklemelidir.
 
@@ -39,7 +39,7 @@ Her sistemin Windows 8, Windows Server 2012 ve üstü sürümleri şifrelemeyi d
 1. SMB şifrelemesini (Windows 8, Windows Server 2012 veya üzeri) destekleyen bir istemciden bağlanın veya aynı veri merkezindeki bir sanal makineden Azure dosya paylaşımında kullanılan Azure depolama hesabıyla bağlanın.
 2. İstemci SMB şifrelemesini desteklemiyorsa, depolama hesabında [Güvenli aktarım gerekli](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) ayarının devre dışı olduğunu doğrulayın.
 
-### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>Neden 2: Depolama hesabında sanal ağ veya güvenlik duvarı kuralları etkin 
+### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>Neden 2: depolama hesabında sanal ağ veya güvenlik duvarı kuralları etkin 
 
 Depolama hesabında sanal ağ (VNET) ve güvenlik duvarı kuralları yapılandırıldıysa, istemci IP adresine veya sanal ağa erişim izni verilmediği sürece ağ trafiğinin erişimi reddedilir.
 
@@ -56,13 +56,13 @@ Depolama hesabında sanal ağ ve güvenlik duvarı kurallarının düzgün yapı
 - Sistem hatası 67 oluştu. Ağ adı bulunamıyor.
 - Sistem hatası 87 oluştu. Parametre yanlış.
 
-### <a name="cause-1-port-445-is-blocked"></a>Neden 1: 445 numaralı bağlantı noktası engellendi
+### <a name="cause-1-port-445-is-blocked"></a>Neden 1: bağlantı noktası 445 engellendi
 
 Bir Azure dosyaları veri merkezi ile bağlantı noktası 445 giden iletişim engellendiğinde sistem hatası 53 veya sistem hatası 67 oluşur. 445 numaralı bağlantı noktasından erişime izin veren veya erişimi engelleyen ISP'lerin özetini görmek için [TechNet](https://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx)'e gidin.
 
-Güvenlik duvarınızın veya ISS 'nizin bağlantı noktası 445 ' i engelleyip engellemediğini denetlemek için [azfilediagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) aracını veya `Test-NetConnection` cmdlet 'ini kullanın. 
+Güvenlik duvarınızın veya ISS 'nizin bağlantı noktası 445 ' i engelleyip engellemediğini denetlemek için [Azfilediagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) aracını veya `Test-NetConnection` cmdlet 'ini kullanın. 
 
-`Test-NetConnection` Cmdlet 'ini kullanmak için Azure PowerShell modülünün yüklenmesi gerekir. daha fazla bilgi için bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-Az-ps) . `<your-storage-account-name>` ile `<your-resource-group-name>` yerine depolama hesabınızla ilgili bilgileri yazmayı unutmayın.
+`Test-NetConnection` cmdlet 'ini kullanmak için Azure PowerShell modülünün yüklü olması gerekir. daha fazla bilgi için bkz. [Azure PowerShell modülü yükleme](/powershell/azure/install-Az-ps) . `<your-storage-account-name>` ile `<your-resource-group-name>` yerine depolama hesabınızla ilgili bilgileri yazmayı unutmayın.
 
    
     $resourceGroupName = "<your-resource-group-name>"
@@ -94,11 +94,11 @@ Bağlantı başarılı olursa şu çıktıyı görmeniz gerekir:
 ### <a name="solution-for-cause-1"></a>Neden 1 için çözüm
 
 #### <a name="solution-1---use-azure-file-sync"></a>Çözüm 1-Azure Dosya Eşitleme kullanın
-Azure Dosya Eşitleme, şirket içi Windows Server 'larınızı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürür. SMB, NFS ve FTPS dahil olmak üzere verilerinize yerel olarak erişmek için Windows Server 'da bulunan herhangi bir protokolü kullanabilirsiniz. Azure Dosya Eşitleme 443 bağlantı noktası üzerinden çalışarak, bağlantı noktası 445 ' nin engellediği istemcilerden Azure dosyalarına erişmek için geçici bir çözüm olarak kullanılabilir. [Azure dosya eşitleme ayarlamayı öğrenin](https://docs.microsoft.com/azure/storage/files/storage-sync-files-extend-servers).
+Azure Dosya Eşitleme, şirket içi Windows Server 'larınızı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürebilir. SMB, NFS ve FTPS dahil olmak üzere verilerinize yerel olarak erişmek için Windows Server 'da bulunan herhangi bir protokolü kullanabilirsiniz. Azure Dosya Eşitleme 443 bağlantı noktası üzerinden çalışarak, bağlantı noktası 445 ' nin engellediği istemcilerden Azure dosyalarına erişmek için geçici bir çözüm olarak kullanılabilir. [Azure dosya eşitleme ayarlamayı öğrenin](https://docs.microsoft.com/azure/storage/files/storage-sync-files-extend-servers).
 
 #### <a name="solution-2---use-vpn"></a>Çözüm 2-VPN kullanma
-Belirli depolama hesabınıza bir VPN ayarlayarak trafik, internet üzerinden değil, güvenli bir tünelden geçer. Windows 'dan Azure dosyalarına erişmek için](https://github.com/Azure-Samples/azure-files-samples/tree/master/point-to-site-vpn-azure-files
-) VPN Kurulumu için yönergeleriizleyin.[
+Belirli depolama hesabınıza bir VPN ayarlayarak trafik, internet üzerinden değil, güvenli bir tünelden geçer. Windows 'dan Azure dosyalarına erişmek için [VPN Kurulumu için yönergeleri](https://github.com/Azure-Samples/azure-files-samples/tree/master/point-to-site-vpn-azure-files
+) izleyin.
 
 #### <a name="solution-3---unblock-port-445-with-help-of-your-ispit-admin"></a>Çözüm 3-ISS/BT yöneticinizin yardımıyla bağlantı noktası 445 engelini kaldırın
 [Azure IP aralıklarına](https://www.microsoft.com/download/details.aspx?id=41653)giden 445 numaralı bağlantı noktasını açmak için BT departmanınızla veya ISS 'niz ile çalışın.
@@ -154,7 +154,7 @@ Erişim izniniz yok
 
 Azure dosya paylaşımının bulunduğu depolama hesabına gidin, **erişim denetimi (IAM)** öğesine tıklayın ve Kullanıcı hesabınızın depolama hesabına erişimi olduğunu doğrulayın. Daha fazla bilgi edinmek için bkz. [rol tabanlı Access Control (RBAC) ile depolama hesabınızın güvenliğini sağlama](https://docs.microsoft.com/azure/storage/common/storage-security-guide#how-to-secure-your-storage-account-with-role-based-access-control-rbac).
 
-### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>Neden 2: Depolama hesabında sanal ağ veya güvenlik duvarı kuralları etkin
+### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>Neden 2: depolama hesabında sanal ağ veya güvenlik duvarı kuralları etkin
 
 ### <a name="solution-for-cause-2"></a>Neden 2 için çözüm
 
@@ -245,7 +245,7 @@ Sürücüler Kullanıcı başına bağlanır. Uygulamanız veya hizmetiniz sür�
 
 ### <a name="solution"></a>Çözüm
 
-Şu çözümlerden birini kullanın:
+Aşağıdaki çözümlerden birini kullanın:
 
 -   Sürücüyü uygulamayı içeren kullanıcı hesabından bağlayın. PsExec gibi bir araç kullanabilirsiniz.
 - Depolama hesabı adını ve anahtarını net use komutunun Kullanıcı adı ve parola parametrelerine geçirin.
@@ -256,17 +256,17 @@ Sürücüler Kullanıcı başına bağlanır. Uygulamanız veya hizmetiniz sür�
 
   `net use * \\storage-account-name.file.core.windows.net\share`
 
-Bu yönergeleri izledikten sonra, sistem/ağ hizmeti hesabı için net use çalıştırdığınızda aşağıdaki hata iletisini alabilirsiniz: "Sistem hatası 1312 oluştu. Belirtilen bir oturum açma oturumu yok. Zaten sonlandırılmış olabilir. " Bu durumda, ağ kullanımına geçirilen kullanıcı adının etki alanı bilgilerini içerdiğinden emin olun (örneğin: "[depolama hesabı adı]. File. Core. Windows. net").
+Bu yönergeleri izledikten sonra, sistem/ağ hizmeti hesabı için net use çalıştırdığınızda aşağıdaki hata iletisini alabilirsiniz: "sistem hatası 1312 oluştu. Belirtilen bir oturum açma oturumu yok. Zaten sonlandırılmış olabilir. " Bu durumda, ağ kullanımına geçirilen kullanıcı adının etki alanı bilgilerini içerdiğinden emin olun (örneğin: "[depolama hesabı adı]. File. Core. Windows. net").
 
 <a id="doesnotsupportencryption"></a>
 ## <a name="error-you-are-copying-a-file-to-a-destination-that-does-not-support-encryption"></a>"Şifrelemeyi desteklemeyen bir hedefe dosya kopyalıyorsunuz" hatası
 
-Ağ üzerinden bir dosya kopyalandığında, dosya, düz metin olarak iletilir ve hedefte yeniden şifrelendiğinde kaynak bilgisayarda şifresi çözülür. Ancak, şifrelenmiş bir dosyayı kopyalamaya çalışırken şu hatayı görebilirsiniz: "Dosyayı şifrelemeyi desteklemeyen bir hedefe kopyalıyorsunuz."
+Ağ üzerinden bir dosya kopyalandığında, dosya, düz metin olarak iletilir ve hedefte yeniden şifrelendiğinde kaynak bilgisayarda şifresi çözülür. Ancak, şifrelenmiş bir dosyayı kopyalamaya çalışırken şu hatayı görebilirsiniz: "dosyayı şifrelemeyi desteklemeyen bir hedefe kopyalıyorsunuz."
 
 ### <a name="cause"></a>Nedeni
 Şifreleme dosya sistemi (EFS) kullanıyorsanız, bu sorun oluşabilir. BitLocker ile şifrelenen dosyalar Azure dosyalarına kopyalanabilir. Ancak, Azure dosyaları NTFS EFS 'yi desteklemez.
 
-### <a name="workaround"></a>Geçici Çözüm
+### <a name="workaround"></a>Geçici çözüm
 Ağ üzerinden bir dosyayı kopyalamak için, önce onu çözmelisiniz. Aşağıdaki yöntemlerden birini kullanın:
 
 - **Copy/d** komutunu kullanın. Şifrelenmiş dosyaların hedefte şifresi çözülmüş dosyalar olarak kaydedilmesine izin verir.
@@ -307,5 +307,5 @@ Depolama hesabınızın dağıtıldığı aboneliğin AAD kiracısında AAD DS '
 
 [!INCLUDE [storage-files-condition-headers](../../../includes/storage-files-condition-headers.md)]
 
-## <a name="need-help-contact-support"></a>Yardım mı gerekiyor? Desteğe başvurun.
+## <a name="need-help-contact-support"></a>Yardıma mı ihtiyacınız var? Desteğe başvurun.
 Hala yardıma ihtiyacınız varsa, sorununuzun hızla çözülmesini sağlamak için [desteğe başvurun](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) .

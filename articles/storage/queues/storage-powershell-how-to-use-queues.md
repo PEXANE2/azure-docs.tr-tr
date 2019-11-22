@@ -1,5 +1,5 @@
 ---
-title: Azure kuyruk depolamada PowerShell ile Azure depolama üzerinde işlem gerçekleştirme
+title: PowerShell 'de Azure kuyruk depolama eylemlerini gerçekleştirme
 description: PowerShell ile Azure kuyruk depolama üzerinde işlem gerçekleştirme
 author: mhopkins-msft
 ms.author: mhopkins
@@ -8,20 +8,20 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
-ms.openlocfilehash: bf5cf668620eb08e0d808c2052eac59b15af740c
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 98c59555f2b9b93ee3f78da91f85a7728679235d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721220"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74269374"
 ---
-# <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Azure PowerShell ile Azure kuyruk depolama işlemlerini gerçekleştirme
+# <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Azure PowerShell ile Azure Kuyruk depolama işlemleri gerçekleştirme
 
 Azure kuyruk depolama, dünyanın her yerinden HTTP veya HTTPS aracılığıyla erişilebilen çok sayıda iletiyi depolamaya yönelik bir hizmettir. Ayrıntılı bilgi için bkz. [Azure kuyruklarına giriş](storage-queues-introduction.md). Bu nasıl yapılır makalesi, genel kuyruk depolama işlemlerini içerir. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
 > [!div class="checklist"]
 >
-> * Kuyruk oluştur
+> * Kuyruk oluşturma
 > * Kuyruğu alma
 > * İleti ekleme
 > * İletiyi oku
@@ -76,7 +76,7 @@ $storageAccount = New-AzStorageAccount -ResourceGroupName $resourceGroup `
 $ctx = $storageAccount.Context
 ```
 
-## <a name="create-a-queue"></a>Kuyruk oluştur
+## <a name="create-a-queue"></a>Kuyruk oluşturma
 
 Aşağıdaki örnek, depolama hesabı adını ve erişim anahtarını içeren depolama hesabı bağlamını kullanarak Azure depolama 'ya bir bağlantı kurar. Ardından, ' SıraAdı ' adlı bir sıra oluşturmak için [New-AzStorageQueue](/powershell/module/az.storage/New-AzStorageQueue) cmdlet 'ini çağırır.
 
@@ -185,7 +185,7 @@ Bu nasıl yapılır makalesinde, aşağıdakiler dahil olmak üzere PowerShell i
 
 > [!div class="checklist"]
 >
-> * Kuyruk oluştur
+> * Kuyruk oluşturma
 > * Kuyruğu alma
 > * İleti ekleme
 > * Sonraki iletiyi okuyun

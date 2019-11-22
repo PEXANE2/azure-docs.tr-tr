@@ -1,6 +1,6 @@
 ---
-title: Bir uygulama proxy'si uygulaması PingAccess kullanmak için yapılandırma | Microsoft Docs
-description: Üst bilgi tabanlı kimlik doğrulaması kullanan uygulamalar için uygulama proxy'si avantajlarını genişletmek için PingAccess kullanmayı öğrenin
+title: Bir uygulama proxy uygulamasını PingAccess kullanacak şekilde yapılandırma
+description: Uygulama proxy 'sinin, üst bilgi tabanlı kimlik doğrulaması kullanan uygulamalara sağladığı avantajları uzatmak için PingAccess 'i nasıl kullanacağınızı öğrenin
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,27 +16,27 @@ ms.date: 05/21/2018
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d555aaf99470588bb3ed2b328adb3e99f6c4a50e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c852c69b6f64b59845b551202bd1a25646a49eb6
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65783990"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275648"
 ---
-# <a name="how-to-configure-an-application-proxy-application-to-use-pingaccess"></a>PingAccess kullanmak için bir uygulama proxy'si uygulaması yapılandırma
+# <a name="how-to-configure-an-application-proxy-application-to-use-pingaccess"></a>Bir uygulama proxy uygulamasını PingAccess kullanacak şekilde yapılandırma
 
-PingAccess siber Suçluların artık üst bilgi tabanlı kimlik doğrulaması kullanan uygulamalar için uygulama proxy'si avantajlarını sağlar. Uygulamalarınızı üst bilgiler kullanmayan olup bizim [çoklu oturum açma belgeleri](application-proxy-configure-single-sign-on-with-kcd.md) diğer seçenekleri ile ilgili ayrıntılar için.
+PingAccess ile işbirliği yaptığımız, uygulama proxy 'sinin avantajlarını üst bilgi tabanlı kimlik doğrulaması kullanarak genişletmenizi sağlar. Uygulamalarınız üst bilgileri kullanmazlar, diğer seçeneklerle ilgili ayrıntılı bilgi için bkz. [Çoklu oturum açma belgelerimize](application-proxy-configure-single-sign-on-with-kcd.md) bakın.
 
-## <a name="overview-of-steps-and-recommended-documents"></a>Adımlar ve önerilen belgeler genel bakış
+## <a name="overview-of-steps-and-recommended-documents"></a>Adımlara ve önerilen belgelere genel bakış
 
-Bir uygulama ile PingAccess yapılandırmak için dört adım vardır:
+Bir uygulamayı PingAccess ile yapılandırmak için dört adım vardır:
 
-1.  Uygulama Proxy Bağlayıcısı'nı yapılandırma
+1.  Uygulama proxy bağlayıcıları yapılandırma
 
-2.  Azure AD uygulama proxy'si uygulamasını oluşturma
+2.  Azure AD Uygulama Ara Sunucusu uygulaması oluşturma
 
-3.  İndirme ve PingAccess yapılandırın
+3.  PingAccess 'i indirme & yapılandırma
 
-4.  PingAccess uygulamaları yapılandır
+4.  PingAccess 'te uygulamaları yapılandırma
 
-Bu adımların her biri hakkında daha fazla bilgi için bkz. bizim [üstbilgileri belgeleri ile çoklu oturum açmayı](application-proxy-configure-single-sign-on-with-ping-access.md).
+Bu adımların her biri hakkında ayrıntılı bilgi için bkz. [üst bilgi belgeleriyle çoklu oturum açma](application-proxy-configure-single-sign-on-with-ping-access.md).

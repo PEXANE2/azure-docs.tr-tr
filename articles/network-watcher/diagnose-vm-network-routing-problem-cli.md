@@ -1,6 +1,7 @@
 ---
-title: Bir sanal makine ağ yönlendirme sorunu - Azure CLI tanılama | Microsoft Docs
-description: Bu makalede, Azure Ağ İzleyicisi sonraki atlama özelliğini kullanarak bir sanal makine ağ yönlendirme bir problemi tanılamaya öğrenin.
+title: VM ağı yönlendirme sorununu tanılama-Azure CLı
+titleSuffix: Azure Network Watcher
+description: Bu makalede, Azure ağ Izleyicisi 'nin sonraki atlama özelliğini kullanarak bir sanal makine ağ yönlendirme sorununu tanılamayı öğreneceksiniz.
 services: network-watcher
 documentationcenter: network-watcher
 author: KumudD
@@ -17,26 +18,26 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 968b7dd703ba40f46a068deb1d8b7d2b32e0de2b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 23ffc16948c250a6999c33b8812769ba889f4900
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64688209"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276103"
 ---
-# <a name="diagnose-a-virtual-machine-network-routing-problem---azure-cli"></a>Bir sanal makine ağ yönlendirme sorunu - Azure CLI tanılama
+# <a name="diagnose-a-virtual-machine-network-routing-problem---azure-cli"></a>Bir sanal makine ağ yönlendirme sorununu tanılama-Azure CLı
 
-Bu makalede, bir sanal makine (VM) dağıtın ve ardından bir IP adresi ve URL iletişimler olup olmadığını denetleyin. Bir iletişim hatasının nedenini ve bu hatayı nasıl çözeceğinizi belirlersiniz.
+Bu makalede bir sanal makineyi (VM) dağıtırsınız ve ardından bir IP adresi ile URL 'ye iletişimleri kontrol edersiniz. Bir iletişim hatasının nedenini ve bu hatayı nasıl çözeceğinizi belirlersiniz.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale, Azure CLI 2.0.28 çalıştırdığınız gerekir veya üzeri. Yüklü sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli). CLI sürümünü doğruladıktan sonra, Azure ile bağlantı oluşturmak için `az login` komutunu çalıştırın. Bu makalede CLI komutları bir Bash kabuğunda çalıştırmak için biçimlendirilir.
+CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale, Azure CLı sürüm 2.0.28 veya üstünü çalıştırıyor olmanızı gerektirir. Yüklü sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli). CLI sürümünü doğruladıktan sonra, Azure ile bağlantı oluşturmak için `az login` komutunu çalıştırın. Bu makaledeki CLı komutları Bash kabuğunda çalışacak şekilde biçimlendirilir.
 
 ## <a name="create-a-vm"></a>VM oluşturma
 
-Sanal makine oluşturabilmeniz için sanal makineyi içerecek bir kaynak grubu oluşturmanız gerekir. [az group create](/cli/azure/group#az-group-create) ile bir kaynak grubu oluşturun. Aşağıdaki örnek *eastus* konumunda *myResourceGroup* adlı bir kaynak grubu oluşturur:
+Bir sanal makine oluşturabilmeniz için sanal makineyi içerecek bir kaynak grubu oluşturmanız gerekir. [az group create](/cli/azure/group#az-group-create) ile bir kaynak grubu oluşturun. Aşağıdaki örnek *eastus* konumunda *myResourceGroup* adlı bir kaynak grubu oluşturur:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -56,11 +57,11 @@ Sanal makinenin oluşturulması birkaç dakika sürer. Sanal makine oluşturulup
 
 ## <a name="test-network-communication"></a>Ağ iletişimini test etme
 
-Ağ İzleyicisi ile ağ iletişimi test etmek için önce test etmek istediğiniz VM'nin bulunduğu bölgede bir Ağ İzleyicisi'ni etkinleştirin ve ardından iletişimi test etme için Ağ İzleyicisi'nin sonraki atlama özelliği kullanın.
+Ağ iletişimini ağ Izleyicisi ile test etmek için, önce test etmek istediğiniz VM 'nin bulunduğu bölgede bir ağ izleyicisi etkinleştirmeniz ve ardından iletişim sınaması için ağ Izleyicisi 'nin sonraki atlama özelliğini kullanmanız gerekir.
 
 ### <a name="enable-network-watcher"></a>Ağ izleyicisini etkinleştirme
 
-Doğu ABD bölgesinde etkin bir Ağ İzleyicisi zaten varsa, atlamak [kullanım sonraki atlama](#use-next-hop). Kullanım [az Ağ İzleyicisi'ni yapılandırma](/cli/azure/network/watcher#az-network-watcher-configure) komutunu bir Ağ İzleyicisi Doğu ABD bölgesinde oluşturun:
+Doğu ABD bölgesinde zaten etkinleştirilmiş bir ağ izleyicisi varsa, [sonraki atlamayı kullan](#use-next-hop)' a atlayın. Doğu ABD bölgesinde bir Ağ İzleyicisi oluşturmak için [az Network izleyici configure](/cli/azure/network/watcher#az-network-watcher-configure) komutunu kullanın:
 
 ```azurecli-interactive
 az network watcher configure \
@@ -71,7 +72,7 @@ az network watcher configure \
 
 ### <a name="use-next-hop"></a>Sonraki atlamayı kullanma
 
-Azure, varsayılan hedeflerin yollarını otomatik olarak oluşturur. Varsayılan yolları geçersiz kılmak için özel yollar oluşturabilirsiniz. Bazı durumlarda, özel yollar iletişimin başarısız olmasına neden olabilir. Bir sanal makineden yönlendirmeyi test etmek için [az network watcher show-next-hop](/cli/azure/network/watcher?view=azure-cli-latest#az-network-watcher-show-next-hop) yönlendirme sonraki atlama belirlerken trafiği için belirli bir adresi yönlendirilir.
+Azure, varsayılan hedeflerin yollarını otomatik olarak oluşturur. Varsayılan yolları geçersiz kılmak için özel yollar oluşturabilirsiniz. Bazı durumlarda, özel yollar iletişimin başarısız olmasına neden olabilir. Bir VM 'den yönlendirmeyi test etmek için [az Network izleyici Show-Next-Hop](/cli/azure/network/watcher?view=azure-cli-latest#az-network-watcher-show-next-hop) ' i kullanarak trafik belirli bir adrese yönlendirilse sonraki yönlendirme atağını saptayın.
 
 Sanal makineden, www.bing.com adresinin IP adreslerinden birine giden iletişimi test etme:
 
@@ -85,7 +86,7 @@ az network watcher show-next-hop \
   --out table
 ```
 
-Birkaç saniye sonra çıktı size bildirir, **nextHopType** olduğu **Internet**ve **routeTableId** olduğu **sistem yolu**. Bu sonucu, geçerli bir hedef yolu olduğunu bilmenizi sağlar.
+Birkaç saniye sonra çıktı, **Nexthoptype** 'un **Internet**olduğunu ve **routetableıd** 'in **sistem yolu**olduğunu bildirir. Bu sonuç, hedefe geçerli bir yol olduğunu bilmenizi sağlar.
 
 Sanal makineden 172.31.0.100 adresine giden iletişimi test etme:
 
@@ -99,11 +100,11 @@ az network watcher show-next-hop \
   --out table
 ```
 
-Döndürülen çıktının size bildirir, **hiçbiri** olduğu **nextHopType**ve **routeTableId** de **sistem yolu**. Bu sonuç, hedefin geçerli bir sistem yolu olmasına rağmen trafiği hedefe yönlendiren bir sonraki atlama olmadığını size bildirir.
+Döndürülen çıktı, **hiçbir** bir **nexthoptype**olmadığı ve **Routetableıd** 'in de **sistem rotası**olduğunu size bildirir. Bu sonuç, hedefin geçerli bir sistem yolu olmasına rağmen trafiği hedefe yönlendiren bir sonraki atlama olmadığını size bildirir.
 
 ## <a name="view-details-of-a-route"></a>Bir yolun ayrıntılarını görüntüleme
 
-Daha fazla yönlendirme analiz etmek için ağ arabirimi için geçerli rotalar gözden [az network nic show-etkin-yönlendirme-tablosunu](/cli/azure/network/nic#az-network-nic-show-effective-route-table) komutu:
+Yönlendirmeyi daha fazla analiz etmek için [az Network Nic Show-etkin-Route-Table](/cli/azure/network/nic#az-network-nic-show-effective-route-table) komutunu kullanarak ağ arabirimine yönelik geçerli yolları gözden geçirin:
 
 ```azurecli-interactive
 az network nic show-effective-route-table \
@@ -111,7 +112,7 @@ az network nic show-effective-route-table \
   --name myVmVMNic
 ```
 
-Aşağıdaki metni döndürülen çıkışında yer almaktadır:
+Döndürülen çıktıda aşağıdaki metin bulunur:
 
 ```azurecli
 {
@@ -129,9 +130,9 @@ Aşağıdaki metni döndürülen çıkışında yer almaktadır:
 },
 ```
 
-Kullanıldığında, `az network watcher show-next-hop` giden iletişimi 13.107.21.200 içinde test etmek için komut [kullanım sonraki atlama](#use-next-hop), rota ile **addressPrefix** 0.0.0.0/0** adresine beri trafiği yönlendirmek için kullanıldı çıktıda başka bir yolun adres içerir. Varsayılan olarak, başka bir yolun adres ön ekinde belirtilmeyen tüm adresler İnternet'e yönlendirilir.
+Giden iletişimi bir [sonraki atlamada](#use-next-hop)13.107.21.200 ile test etmek için `az network watcher show-next-hop` komutunu kullandığınızda, çıkışdaki başka bir yol adresi içerdiğinden, adresi adrese yönlendirmek Için **addresspredüzeltmesini** 0.0.0.0/0 * * ile yönlendirme kullanılmıştır. Varsayılan olarak, başka bir yolun adres ön ekinde belirtilmeyen tüm adresler İnternet'e yönlendirilir.
 
-Kullanıldığında, `az network watcher show-next-hop` 172.31.0.100 giden iletişimi ancak test etmek için komut, sonraki atlama türü yok edildi sonucu haberdar. Döndürülen çıktısında, ayrıca aşağıdaki metni görürsünüz:
+172.31.0.100 ile giden iletişimi test etmek için `az network watcher show-next-hop` komutunu kullandığınızda, sonuç bir sonraki atlama türü olmadığını bildirdi. Döndürülen çıktıda aşağıdaki metni de görürsünüz:
 
 ```azurecli
 {
@@ -149,7 +150,7 @@ Kullanıldığında, `az network watcher show-next-hop` 172.31.0.100 giden ileti
 },
 ```
 
-Çıkışta gördüğünüz gibi `az network watcher nic show-effective-route-table` komutu 172.31.0.100 içerir 172.16.0.0/12 önekini varsayılan bir yolu olsa adresi **nextHopType** olduğu **hiçbiri**. Azure, 172.16.0.0/12 için varsayılan bir yol oluşturur ancak bir neden olmadıkça sonraki atlama türünü belirtmez. Örneğin, 172.16.0.0/12 adres aralığını sanal ağın adres alanına eklediyseniz, Azure değişiklikleri **nextHopType** için **sanal ağ** rota. Bir onay ardından gösterebilir **sanal ağ** olarak **nextHopType**.
+`az network watcher nic show-effective-route-table` komutunun çıktısında görebileceğiniz gibi, 172.31.0.100 adresini de içeren 172.16.0.0/12 ön ekine varsayılan bir yol vardır ancak **Nexthoptype** **none**olur. Azure, 172.16.0.0/12 için varsayılan bir yol oluşturur ancak bir neden olmadıkça sonraki atlama türünü belirtmez. Örneğin, 172.16.0.0/12 adres aralığını sanal ağın adres alanına eklediyseniz Azure, **Nexthoptype** 'ı yol için **sanal ağ** olarak değiştirir. Ardından bir denetim, **sanal ağı** **nexthoptype**olarak gösterir.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -161,6 +162,6 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, bir VM oluşturulur ve sanal makineden ağ yönlendirme tanı koydu. Azure’un birkaç varsayılan yol oluşturduğunu öğrendiniz ve iki farklı hedefin yolunu test ettiniz. [Azure'da yönlendirme](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) ve [özel yollar oluşturma](../virtual-network/manage-route-table.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-route) hakkında daha fazla bilgi edinin.
+Bu makalede, bir VM oluşturdunuz ve VM 'den ağ yönlendirmesi tanılandı. Azure’un birkaç varsayılan yol oluşturduğunu öğrendiniz ve iki farklı hedefin yolunu test ettiniz. [Azure'da yönlendirme](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) ve [özel yollar oluşturma](../virtual-network/manage-route-table.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-route) hakkında daha fazla bilgi edinin.
 
-Giden sanal makine bağlantılarında, gecikme süresini de belirleyebilirsiniz ve izin verilen ve VM Ağ İzleyicisi'nin kullanarak bir uç nokta arasındaki ağ trafiğini reddedildi [bağlantı sorunlarını giderme](network-watcher-connectivity-cli.md) yeteneği. Ağ İzleyicisi Bağlantı İzleyicisi özelliğini kullanarak zaman içinde bir VM ile URL veya bir IP adresi gibi bir uç noktası arasındaki iletişimi izleyebilirsiniz. Bilgi edinmek için bkz [Ağ Bağlantı İzleyicisi](connection-monitor.md).
+Giden VM bağlantıları için, ağ izleyicisinin [bağlantısını sorun giderme](network-watcher-connectivity-cli.md) ÖZELLIĞINI kullanarak VM ile bir uç nokta arasında gecikme süresi ve reddedilen ağ trafiği de belirleyebilirsiniz. Ağ Izleyicisi Bağlantı İzleyicisi özelliğini kullanarak bir sanal makine ile IP adresi veya URL gibi bir uç nokta arasındaki iletişimi izleyebilirsiniz. Nasıl yapılacağını öğrenmek için bkz. [ağ bağlantısını izleme](connection-monitor.md).

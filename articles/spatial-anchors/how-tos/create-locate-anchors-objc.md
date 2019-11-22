@@ -1,49 +1,49 @@
 ---
-title: Oluşturma ve Azure uzamsal bağlayıcılarını kullanarak Objective-C içinde yer işaretleri bulun | Microsoft Docs
-description: Ayrıntılı açıklamasını nasıl oluşturulup Azure uzamsal bağlayıcılarını kullanarak Objective-c bağlayıcılarını bulun
+title: '& Oluştur ve hedefi bul-C'
+description: Hedef-C ' de Azure uzamsal bağlayıcılarını kullanarak bağlantıları oluşturma ve bulma hakkında ayrıntılı açıklama.
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: d9638c96c06c06bd92690e568364551bdc299c80
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 119cf971a18ce7a9c2f2c22aba18d4dd3d9642ec
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672037"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277342"
 ---
-# <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-objective-c"></a>Oluşturma ve Azure uzamsal bağlayıcılarını kullanarak Objective-C içinde yer işaretleri bulun
+# <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-objective-c"></a>Hedef-C ' de Azure uzamsal bağlayıcılarını kullanarak Tutturucular oluşturma ve bulma
 
 > [!div  class="op_single_selector"]
-> * [Unity](create-locate-anchors-unity.md)
+> * ['Yi](create-locate-anchors-unity.md)
 > * [Objective-C](create-locate-anchors-objc.md)
 > * [Swift](create-locate-anchors-swift.md)
 > * [Android Java](create-locate-anchors-java.md)
 > * [C++/NDK](create-locate-anchors-cpp-ndk.md)
-> * [C++/WinRT](create-locate-anchors-cpp-winrt.md)
+> * [C++/Wınrt](create-locate-anchors-cpp-winrt.md)
 
-Azure uzamsal yer işaretleri, yer işaretleri dünyanın farklı cihazlar arasında paylaşmak izin verin. Bu, birkaç farklı geliştirme ortamlarında destekler. Bu makalede, Azure uzamsal bağlayıcılarını SDK'sı, Objective-C için nasıl kullanılacağını size derinlerine:
+Azure uzamsal bağlantıları, dünyanın farklı cihazları arasında bağlantıları paylaşmanızı sağlar. Çeşitli farklı geliştirme ortamlarını destekler. Bu makalede, hedef-C ' de Azure uzamsal çıpası SDK 'sını nasıl kullanacağınızı inceleyeceğiz:
 
-- Doğru şekilde ayarlayın ve Azure uzamsal bağlayıcılarını oturumu yönetin.
-- Oluşturma ve yerel bağlayıcıları üzerinde özelliklerini ayarlayın.
+- Azure uzamsal bağlayıcı oturumunu doğru şekilde kurun ve yönetin.
+- Yerel bağlayıcıların özelliklerini oluşturun ve ayarlayın.
 - Bunları buluta yükleyin.
-- Bulun ve uzamsal uygulamasının bulut bağlayıcılarını silin.
+- Bulut uzamsal bağlayıcılarını bulun ve silin.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu kılavuzu tamamlamak için sahip olduğunuzdan emin olun:
+Bu kılavuzu gerçekleştirmek için şunları yaptığınızdan emin olun:
 
-- Okumak [Azure uzamsal yer işaretleri genel bakış](../overview.md).
-- Biri tamamlandı [5 dakikalık hızlı Başlangıçlar](../index.yml).
-- Objective-c hakkında temel bilgilere
-- Hakkında temel bilgilere <a href="https://developer.apple.com/arkit/" target="_blank">ARKit</a>.
+- [Azure uzamsal Tutturucuların genel bakış](../overview.md)bölümünü okuyun.
+- [5 dakikalık hızlı](../index.yml)başlangıçlardan biri tamamlandı.
+- Amaç-C hakkında temel bilgi.
+- <a href="https://developer.apple.com/arkit/" target="_blank">ARKit</a>hakkında temel bilgi.
 
 [!INCLUDE [Start](../../../includes/spatial-anchors-create-locate-anchors-start.md)]
 
-Daha fazla bilgi edinin [ASACloudSpatialAnchorSession](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession) sınıfı.
+[ASACloudSpatialAnchorSession](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession) sınıfı hakkında daha fazla bilgi edinin.
 
 ```objc
     ASACloudSpatialAnchorSession *_cloudSession;
@@ -53,7 +53,7 @@ Daha fazla bilgi edinin [ASACloudSpatialAnchorSession](https://docs.microsoft.co
 
 [!INCLUDE [Account Keys](../../../includes/spatial-anchors-create-locate-anchors-account-keys.md)]
 
-Daha fazla bilgi edinin [ASASessionConfiguration](https://docs.microsoft.com/objectivec/api/spatial-anchors/asasessionconfiguration) sınıfı.
+[Asasessionconfiguration](https://docs.microsoft.com/objectivec/api/spatial-anchors/asasessionconfiguration) sınıfı hakkında daha fazla bilgi edinin.
 
 ```objc
     _cloudSession.configuration.accountKey = @"MyAccountKey";
@@ -67,7 +67,7 @@ Daha fazla bilgi edinin [ASASessionConfiguration](https://docs.microsoft.com/obj
 
 [!INCLUDE [Access Tokens Event](../../../includes/spatial-anchors-create-locate-anchors-access-tokens-event.md)]
 
-Daha fazla bilgi edinin [tokenRequired](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsessiondelegate#tokenrequired) protokol yöntemi.
+[Tokenrequired](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsessiondelegate#tokenrequired) protokol yöntemi hakkında daha fazla bilgi edinin.
 
 ```objc
     - (void)tokenRequired:(ASACloudSpatialAnchorSession *)cloudSession :(ASATokenRequiredEventArgs *)args {
@@ -115,7 +115,7 @@ Daha fazla bilgi edinin [tokenRequired](https://docs.microsoft.com/objectivec/ap
 
 [!INCLUDE [Setup](../../../includes/spatial-anchors-create-locate-anchors-setup-ios.md)]
 
-Daha fazla bilgi edinin [Başlat](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#start) yöntemi.
+[Başlangıç](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#start) yöntemi hakkında daha fazla bilgi edinin.
 
 ```objc0
     _cloudSession.session = self.sceneView.session;
@@ -125,7 +125,7 @@ Daha fazla bilgi edinin [Başlat](https://docs.microsoft.com/objectivec/api/spat
 
 [!INCLUDE [Frames](../../../includes/spatial-anchors-create-locate-anchors-frames.md)]
 
-Daha fazla bilgi edinin [processFrame](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#processframe) yöntemi.
+[Processframe](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#processframe) yöntemi hakkında daha fazla bilgi edinin.
 
 ```objc
     [_cloudSession processFrame:_sceneView.session.currentFrame];
@@ -133,7 +133,7 @@ Daha fazla bilgi edinin [processFrame](https://docs.microsoft.com/objectivec/api
 
 [!INCLUDE [Feedback](../../../includes/spatial-anchors-create-locate-anchors-feedback.md)]
 
-Daha fazla bilgi edinin [sessionUpdated](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsessiondelegate#sessionupdated) protokol yöntemi.
+[Sessionupdated](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsessiondelegate#sessionupdated) protokol yöntemi hakkında daha fazla bilgi edinin.
 
 ```objc
     - (void)sessionUpdated:(ASACloudSpatialAnchorSession *)cloudSession :(ASASessionUpdatedEventArgs *)args {
@@ -148,7 +148,7 @@ Daha fazla bilgi edinin [sessionUpdated](https://docs.microsoft.com/objectivec/a
 
 [!INCLUDE [Creating](../../../includes/spatial-anchors-create-locate-anchors-creating.md)]
 
-Daha fazla bilgi edinin [ASACloudSpatialAnchor](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchor) sınıfı.
+[ASACloudSpatialAnchor](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchor) sınıfı hakkında daha fazla bilgi edinin.
 
 ```objc
     // Create a local anchor, perhaps by hit-testing and creating an ARAnchor
@@ -175,7 +175,7 @@ Daha fazla bilgi edinin [ASACloudSpatialAnchor](https://docs.microsoft.com/objec
 
 [!INCLUDE [Session Status](../../../includes/spatial-anchors-create-locate-anchors-session-status.md)]
 
-Daha fazla bilgi edinin [getSessionStatusWithCompletionHandler](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#getsessionstatus) yöntemi.
+[Getsessionstatuswithcompletionhandler](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#getsessionstatus) yöntemi hakkında daha fazla bilgi edinin.
 
 ```objc
     [_cloudSession getSessionStatusWithCompletionHandler:^(ASASessionStatus *value, NSError *error) {
@@ -190,7 +190,7 @@ Daha fazla bilgi edinin [getSessionStatusWithCompletionHandler](https://docs.mic
 
 [!INCLUDE [Setting Properties](../../../includes/spatial-anchors-create-locate-anchors-setting-properties.md)]
 
-Daha fazla bilgi edinin [appProperties](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchor#appproperties) özelliği.
+[Appproperties](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchor#appproperties) özelliği hakkında daha fazla bilgi edinin.
 
 ```objc
     ASACloudSpatialAnchor *cloudAnchor = [[ASACloudSpatialAnchor alloc] init];
@@ -203,7 +203,7 @@ Daha fazla bilgi edinin [appProperties](https://docs.microsoft.com/objectivec/ap
 
 [!INCLUDE [Update Anchor Properties](../../../includes/spatial-anchors-create-locate-anchors-updating-properties.md)]
 
-Daha fazla bilgi edinin [updateAnchorProperties](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#updateanchorproperties) yöntemi.
+[Updateanchorproperties](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#updateanchorproperties) metodu hakkında daha fazla bilgi edinin.
 
 ```objc
     ASACloudSpatialAnchor *anchor = /* locate your anchor */;
@@ -215,7 +215,7 @@ Daha fazla bilgi edinin [updateAnchorProperties](https://docs.microsoft.com/obje
 
 [!INCLUDE [Getting Properties](../../../includes/spatial-anchors-create-locate-anchors-getting-properties.md)]
 
-Daha fazla bilgi edinin [getAnchorProperties](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#getanchorproperties) yöntemi.
+[Getanchorproperties](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#getanchorproperties) metodu hakkında daha fazla bilgi edinin.
 
 ```objc
     [_cloudSession getAnchorProperties:@"anchorId" withCompletionHandler:^(SCCCloudSpatialAnchor *anchor, NSError *error) {
@@ -234,7 +234,7 @@ Daha fazla bilgi edinin [getAnchorProperties](https://docs.microsoft.com/objecti
 
 [!INCLUDE [Expiration](../../../includes/spatial-anchors-create-locate-anchors-expiration.md)]
 
-Daha fazla bilgi edinin [sona erme](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchor#expiration) özelliği.
+[Süre sonu](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchor#expiration) özelliği hakkında daha fazla bilgi edinin.
 
 ```objc
     int secondsInAWeek = 60 * 60 * 24 * 7;
@@ -244,7 +244,7 @@ Daha fazla bilgi edinin [sona erme](https://docs.microsoft.com/objectivec/api/sp
 
 [!INCLUDE [Locate](../../../includes/spatial-anchors-create-locate-anchors-locating.md)]
 
-Daha fazla bilgi edinin [createWatcher](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#createwatcher) yöntemi.
+[Createizleyici](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#createwatcher) yöntemi hakkında daha fazla bilgi edinin.
 
 ```objc
     ASAAnchorLocateCriteria *criteria = [ASAAnchorLocateCriteria new];
@@ -254,7 +254,7 @@ Daha fazla bilgi edinin [createWatcher](https://docs.microsoft.com/objectivec/ap
 
 [!INCLUDE [Locate Events](../../../includes/spatial-anchors-create-locate-anchors-locating-events.md)]
 
-Daha fazla bilgi edinin [anchorLocated](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsessiondelegate#anchorlocated) protokol yöntemi.
+[Anchorkonumlandırılan](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsessiondelegate#anchorlocated) protokol yöntemi hakkında daha fazla bilgi edinin.
 
 ```objc
     - (void)anchorLocated:(ASACloudSpatialAnchorSession *)cloudSession :(ASAAnchorLocatedEventArgs *)args {
@@ -282,7 +282,7 @@ Daha fazla bilgi edinin [anchorLocated](https://docs.microsoft.com/objectivec/ap
 
 [!INCLUDE [Deleting](../../../includes/spatial-anchors-create-locate-anchors-deleting.md)]
 
-Daha fazla bilgi edinin [deleteAnchor](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#deleteanchor) yöntemi.
+[Deletetutturucu](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#deleteanchor) yöntemi hakkında daha fazla bilgi edinin.
 
 ```objc
     [_cloudSession deleteAnchor:cloudAnchor withCompletionHandler:^(NSError *error) {
@@ -292,7 +292,7 @@ Daha fazla bilgi edinin [deleteAnchor](https://docs.microsoft.com/objectivec/api
 
 [!INCLUDE [Stopping](../../../includes/spatial-anchors-create-locate-anchors-stopping.md)]
 
-Daha fazla bilgi edinin [Durdur](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#stop) yöntemi.
+[Stop](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#stop) yöntemi hakkında daha fazla bilgi edinin.
 
 ```objc
     [_cloudSession stop];
@@ -300,7 +300,7 @@ Daha fazla bilgi edinin [Durdur](https://docs.microsoft.com/objectivec/api/spati
 
 [!INCLUDE [Resetting](../../../includes/spatial-anchors-create-locate-anchors-resetting.md)]
 
-Daha fazla bilgi edinin [sıfırlama](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#reset) yöntemi.
+[Reset](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#reset) yöntemi hakkında daha fazla bilgi edinin.
 
 ```objc
     [_cloudSession reset];

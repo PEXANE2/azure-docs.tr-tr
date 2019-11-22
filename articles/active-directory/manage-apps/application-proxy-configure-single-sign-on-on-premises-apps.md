@@ -1,5 +1,5 @@
 ---
-title: Azure AD Uygulaması Proxy 'Si ile şirket içi uygulamalar için SAML çoklu oturum açma | Microsoft Docs
+title: Azure AD Uygulaması Proxy ile şirket içi uygulamalar için SAML çoklu oturum açma
 description: SAML kimlik doğrulamasıyla güvenliği sağlanan şirket içi uygulamalar için çoklu oturum açma sağlamayı öğrenin. Uygulama proxy 'Si ile şirket içi uygulamalara uzaktan erişim sağlama.
 services: active-directory
 documentationcenter: ''
@@ -16,16 +16,16 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d004d1183c9f5c1aec2dae7ab2d638528f164cd9
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 59e4e527f25a32c8a5274db5eab5d33a7843bc3c
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73062508"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275579"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>Uygulama proxy 'Si ile şirket içi uygulamalar için SAML çoklu oturum açma
 
-SAML kimlik doğrulamasıyla güvenliği sağlanan şirket içi uygulamalara çoklu oturum açma (SSO) ve uygulama proxy 'Si aracılığıyla bu uygulamalara uzaktan erişim sağlama sağlayabilirsiniz. SAML çoklu oturum açma ile Azure Active Directory (Azure AD) kullanıcının Azure AD hesabını kullanarak uygulamanın kimliğini doğrular. Azure AD, oturum açma bilgilerini bir bağlantı protokolü aracılığıyla uygulamayla iletişim kurar. Ayrıca, SAML talepleriniz içinde tanımladığınız kurallara göre kullanıcıları belirli uygulama rollerine eşleyebilirsiniz. SAML SSO 'ya ek olarak uygulama proxy 'Si etkinleştirilerek, kullanıcılarınız uygulamaya dış erişime ve sorunsuz bir SSO deneyimine sahip olur.
+SAML kimlik doğrulamasıyla güvenliği sağlanan şirket içi uygulamalara çoklu oturum açma (SSO) ve uygulama proxy 'Si aracılığıyla bu uygulamalara uzaktan erişim sağlama sağlayabilirsiniz. SAML çoklu oturum açma ile Azure Active Directory (Azure AD) kullanıcının Azure AD hesabını kullanarak uygulamanın kimliğini doğrular. Azure AD oturum açma bilgileri uygulamaya bir bağlantı protokolü üzerinden iletişim kurar. Ayrıca, SAML talepleriniz içinde tanımladığınız kurallara göre kullanıcıları belirli uygulama rollerine eşleyebilirsiniz. SAML SSO 'ya ek olarak uygulama proxy 'Si etkinleştirilerek, kullanıcılarınız uygulamaya dış erişime ve sorunsuz bir SSO deneyimine sahip olur.
 
 Uygulamalar, **Azure Active Directory**tarafından verilen SAML belirteçlerini tüketebilmelidir. Bu yapılandırma, şirket içi kimlik sağlayıcısı kullanan uygulamalar için uygulanmaz. Bu senaryolar için, [uygulamaları Azure AD 'ye geçirmeye yönelik kaynakları](migration-resources.md)gözden geçirmeyi öneririz.
 
@@ -92,12 +92,12 @@ Aşağıdaki protokol diyagramlarında, hem hizmet sağlayıcısı tarafından b
     
 ## <a name="test-your-app"></a>Uygulamanızı test etme
 
-Tüm bu adımları tamamladığınızda, uygulamanız çalışır duruma gelmelidir. Uygulamayı test etmek için:
+Tüm adımları tamamladıktan sonra uygulamanızı ve çalışıyor olması gerekir. Uygulamayı test etmek için:
 
 1. Bir tarayıcı açın ve uygulamayı yayımladığınızda oluşturduğunuz **dış URL** 'ye gidin. 
-1. Uygulamaya atadığınız test hesabıyla oturum açın. Uygulamayı yükleyebilir ve uygulamanın içinde SSO 'SU olabilir.
+1. Bir uygulamaya atanan test hesapla oturum açın. Uygulamayı yükleyebilir ve uygulamanın içinde SSO 'SU olabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure AD Uygulama Ara Sunucusu çoklu oturum açma nasıl sağlar?](application-proxy-single-sign-on.md)
-- [Uygulama ara sunucusu sorunlarını giderme](application-proxy-troubleshoot.md)
+- [Azure AD uygulama proxy'si nasıl çoklu oturum açma sağlar?](application-proxy-single-sign-on.md)
+- [Uygulama Ara sunucusu sorunlarını giderme](application-proxy-troubleshoot.md)

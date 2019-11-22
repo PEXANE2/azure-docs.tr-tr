@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory'de öznitelik eşlemeleri için ifadeler yazma | Microsoft Docs
+title: Azure AD 'de öznitelik eşlemeleri için Ifadeler yazma
 description: İfade eşlemeleri otomatik Azure Active Directory'de SaaS uygulama nesnelerin sağlama sırasında öznitelik değerleri kabul edilebilir bir biçime dönüştürmek için kullanmayı öğrenin.
 services: active-directory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd7abdeef7c13c272a0e4bbf2075c6eda8f73a07
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 5f1880a79f7fdb27b407ecb7ed1b761493fe850d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162389"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274017"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Azure Active Directory'de öznitelik eşlemeleri için ifadeler yazma
 Bir SaaS uygulaması için sağlama yapılandırdığınızda, belirtebilmeniz için öznitelik eşlemelerini türdeki bir ifade eşleme biridir. Bu, kullanıcılarınızın verileri fazla SaaS uygulaması için kabul edilebilir biçimlere dönüştürme olanak tanıyan bir betik gibi ifade yazmanız gerekir.
@@ -33,12 +33,12 @@ Bir SaaS uygulaması için sağlama yapılandırdığınızda, belirtebilmeniz i
 * İşlevlere üç farklı türde bağımsız değişkenler geçirebilirsiniz:
   
   1. Öznitelik, köşeli ayraçlar içine alınmalıdır. Örneğin: [attributeName]
-  2. Dize sabitleri çift tırnak içine alınmalıdır. Örneğin: "Birleşik Devletler"
-  3. Diğer işlevler. Örneğin: Functionone (`<<argument1>>`, functiontwo (`<<argument2>>`))
-* Dize sabitleri için bir ters eğik çizgi (\) veya tırnak işareti (") dizedeki gerekiyorsa, eğik çizgi (\) simgesiyle kaçınılmalıdır. Örneğin: "Şirket adı: \\"Contoso\\" "
+  2. Dize sabitleri çift tırnak içine alınmalıdır. Örneğin: "ABD"
+  3. Diğer işlevler. Örneğin: FunctionOne (`<<argument1>>`, FunctionTwo (`<<argument2>>`))
+* Dize sabitleri için bir ters eğik çizgi (\) veya tırnak işareti (") dizedeki gerekiyorsa, eğik çizgi (\) simgesiyle kaçınılmalıdır. Örneğin: "Şirket adı: \\" contoso\\""
 
 ## <a name="list-of-functions"></a>İşlevlerin listesi
-[Sona Ekle](#append) &nbsp; [FormatDateTime](#formatdatetime) [](#join) birleşimi &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [](#not) [](#mid) &nbsp; Mnormalizediactik [](#normalizediacritics) dili &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [Selectuniquevalue değerini](#selectuniquevalue) [değiştirme](#replace) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [ Singleapprotaatama](#singleapproleassignment) &nbsp; &nbsp; &nbsp; [](#stripspaces) [](#split)bölünmüş StripSpaces&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; Aşağıgeç&nbsp; [](#switch) &nbsp; &nbsp; &nbsp; [](#tolower) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [ToUpper](#toupper)
+[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [formatdatetime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [JOIN](#join) &nbsp;&nbsp;&nbsp;&nbsp; [orta](#mid) &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;[&nbsp;](#selectuniquevalue) &nbsp; [normalizediacritik](#normalizediacritics) [değil](#not) &nbsp;&nbsp;[&nbsp;&nbsp;](#replace) &nbsp;&nbsp; [Singleapprotaatama](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [bölme](#split)&nbsp;&nbsp;&nbsp;&nbsp;[StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [anahtarı](#switch)&nbsp;&nbsp;&nbsp;&nbsp; [ToLower](#tolower)&nbsp;&nbsp;&nbsp;&nbsp; [ToUpper](#toupper)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 ---
 ### <a name="append"></a>Ekle
@@ -94,7 +94,7 @@ Kaynak değerlerinden biri çok değerli bir öznitelik ise, bu öznitelikteki h
 | --- | --- | --- | --- |
 | **Kaynak** |Gerekli |Dize |Genellikle özniteliğin adı. |
 | **start** |Gerekli |integer |İçinde dizin **kaynak** alt dizenin başladığı dize. Dizedeki ilk karakter dizini 1 gerekir, ikinci karakter 2 dizine sahip ve benzeri. |
-| **Uzunluğu** |Gerekli |integer |Alt dizenin uzunluğu. Uzunluğu dışında sona ererse **kaynak** dize işlevi alt dizeyi döndürecektir **Başlat** sonuna kadar dizin **kaynak** dize. |
+| **length** |Gerekli |integer |Alt dizenin uzunluğu. Uzunluğu dışında sona ererse **kaynak** dize işlevi alt dizeyi döndürecektir **Başlat** sonuna kadar dizin **kaynak** dize. |
 
 ---
 ### <a name="normalizediacritics"></a>NormalizeDiacritics
@@ -109,7 +109,7 @@ Kaynak değerlerinden biri çok değerli bir öznitelik ise, bu öznitelikteki h
 | **Kaynak** |Gerekli |Dize | Genellikle ad veya soyadı özniteliği. |
 
 ---
-### <a name="not"></a>değil
+### <a name="not"></a>Not
 **İşlev:**<br> Not(Source)
 
 **Açıklama:**<br> Boole değeri çevirir **kaynak**. Varsa **kaynak** değeridir "*True*", döndürür "*False*". Aksi halde döndürür "*True*".
@@ -149,12 +149,12 @@ Bir dize içindeki değerleri değiştirir. Sağlanan parametreler bağlı olara
 | Ad | Gerekli / yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **Kaynak** |Gerekli |Dize |Genellikle **kaynak** nesneden özniteliğin adı. |
-| **oldValue** |İsteğe bağlı |Dize |İçinde değiştirilecek değer **kaynak** veya **şablon**. |
-| **regexPattern** |İsteğe bağlı |Dize |Regex deseni olarak değiştirilecek değeri **kaynak**. Ya da **Replacementpropertyname** kullanıldığında, **replacementpropertyname**öğesinden değer çıkarmak için bir model. |
-| **regexGroupName** |İsteğe bağlı |Dize |Grup içinde adını **regexPattern**. Yalnızca **Replacementpropertyname** kullanıldığında, bu grubun değerini **replacementpropertyname**öğesinden **replacementvalue** olarak ayıklayacağız. |
-| **replacementValue** |İsteğe bağlı |Dize |Eski değiştirmek için yeni değeri. |
-| **replacementAttributeName** |İsteğe bağlı |Dize |Değiştirme değeri için kullanılacak özniteliğin adı |
-| **Şablonu** |İsteğe bağlı |Dize |**Şablon** değeri sağlandığında, şablon içinde **OldValue** aranacağı ve bunu **kaynak** değerle değiştirecek. |
+| **oldValue** |İsteğe Bağlı |Dize |İçinde değiştirilecek değer **kaynak** veya **şablon**. |
+| **regexPattern** |İsteğe Bağlı |Dize |Regex deseni olarak değiştirilecek değeri **kaynak**. Ya da **Replacementpropertyname** kullanıldığında, **replacementpropertyname**öğesinden değer çıkarmak için bir model. |
+| **regexGroupName** |İsteğe Bağlı |Dize |Grup içinde adını **regexPattern**. Yalnızca **Replacementpropertyname** kullanıldığında, bu grubun değerini **replacementpropertyname**öğesinden **replacementvalue** olarak ayıklayacağız. |
+| **replacementValue** |İsteğe Bağlı |Dize |Eski değiştirmek için yeni değeri. |
+| **replacementAttributeName** |İsteğe Bağlı |Dize |Değiştirme değeri için kullanılacak özniteliğin adı |
+| **Şablonu** |İsteğe Bağlı |Dize |**Şablon** değeri sağlandığında, şablon içinde **OldValue** aranacağı ve bunu **kaynak** değerle değiştirecek. |
 
 ---
 ### <a name="selectuniquevalue"></a>SelectUniqueValue
@@ -189,7 +189,7 @@ Bir dize içindeki değerleri değiştirir. Sağlanan parametreler bağlı olara
 | **[appRoleAssignments]** |Gerekli |Dize |**[appRoleAssignments]**  nesne. |
 
 ---
-### <a name="split"></a>Böl
+### <a name="split"></a>Bölme
 **İşlev:**<br> Böl (kaynak, sınırlayıcı)
 
 **Açıklama:**<br> Belirtilen sınırlayıcı karakteri kullanarak bir dizeyi çok değerli bir diziye böler.
@@ -224,12 +224,12 @@ Bir dize içindeki değerleri değiştirir. Sağlanan parametreler bağlı olara
 | Ad | Gerekli / yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **Kaynak** |Gerekli |Dize |**Kaynak** güncelleştirmek için değer. |
-| **defaultValue** |İsteğe bağlı |Dize |Tüm anahtarları kaynak eşleşmediğinde kullanılacak varsayılan değeri. Boş bir dize olabilir (""). |
+| **defaultValue** |İsteğe Bağlı |Dize |Tüm anahtarları kaynak eşleşmediğinde kullanılacak varsayılan değeri. Boş bir dize olabilir (""). |
 | **anahtar** |Gerekli |Dize |**Anahtar** Karşılaştırılacak **kaynak** ile değeri. |
 | **value** |Gerekli |Dize |İçin değiştirme değeri **kaynak** anahtarıyla eşleşen. |
 
 ---
-### <a name="tolower"></a>toLower
+### <a name="tolower"></a>ToLower
 **İşlev:**<br> ToLower (kaynak, kültür)
 
 **Açıklama:**<br> Bir *kaynak* dize değeri alır ve belirtilen kültür kurallarını kullanarak küçük harfe dönüştürür. Belirtilen bir *kültür* bilgisi yoksa, sabit kültür kullanacaktır.
@@ -242,7 +242,7 @@ Bir dize içindeki değerleri değiştirir. Sağlanan parametreler bağlı olara
 | **ayarı** |İsteğe Bağlı |Dize |RFC 4646 ' i temel alan kültür adı biçimi *languagecode2-Country/regioncode2*, burada *languagecode2* iki harfli dil kodu ve *Ülke/regioncode2* ise iki harfli alt kültür kodudur. Japonca (Japonya) için ja-JP ve Ingilizce (Birleşik Devletler) için en-US sayılabilir. İki harfli dil kodunun kullanılamadığı durumlarda ISO 639-2 ' den türetilen üç harfli bir kod kullanılır.|
 
 ---
-### <a name="toupper"></a>toUpper
+### <a name="toupper"></a>ToUpper
 **İşlev:**<br> ToUpper (kaynak, kültür)
 
 **Açıklama:**<br> Bir *kaynak* dize değeri alır ve belirtilen kültür kurallarını kullanarak büyük harfe dönüştürür. Belirtilen bir *kültür* bilgisi yoksa, sabit kültür kullanacaktır.
@@ -286,9 +286,9 @@ Bir kullanıcı diğer kullanıcının adını, ilk 3 harf ve kullanıcının so
 
 **Örnek giriş/çıkış:** <br>
 
-* **Giriş** (Bu): "John"
-* **Giriş** (Soyadı): In
-* **ÇIKIŞ**:  "Cantikan"
+* **Giriş** (givenName): "John"
+* **Giriş** (Soyadı): "Doe"
+* **Çıkış**: "JohDoe"
 
 ### <a name="remove-diacritics-from-a-string"></a>Bir dizeden Aksanları Kaldır
 Vurgu işaretlerinin içermeyen eşdeğer karakterlerle vurgu işaretleri içeren karakter değiştirmeniz gerekir.
@@ -298,8 +298,8 @@ NormalizeDiacritics([givenName])
 
 **Örnek giriş/çıkış:** <br>
 
-* **Giriş** (Bu): "Zoë"
-* **ÇIKIŞ**:  "Bure"
+* **Giriş** (givenName): "Zoë"
+* **Çıkış**: "Zoe"
 
 ### <a name="split-a-string-into-a-multi-valued-array"></a>Dizeyi çok değerli bir diziye bölme
 Virgülle ayrılmış dizelerin bir listesini almanız ve bunları Salesforce 'ın PermissionSets özniteliği gibi bir çok değerli özniteliğe takılmış bir diziye bölmeniz gerekir. Bu örnekte, Azure AD 'de extensionAttribute5 'de izin kümelerinin bir listesi doldurulmuştur.
@@ -309,7 +309,7 @@ Böl ([extensionAttribute5], ",")
 
 **Örnek giriş/çıkış:** <br>
 
-* **Giriş** (extensionAttribute5): "PermissionSetOne, Izinionsettingwo"
+* **Giriş** (extensionAttribute5): "PermissionSetOne, Izinleri Izinionsettingwo"
 * **Çıkış**: ["Permissionsetone", "Permissionsettingwo"]
 
 ### <a name="output-date-as-a-string-in-a-certain-format"></a>Belirli bir biçimde bir dize olarak çıkış tarihi
@@ -322,8 +322,8 @@ Belirli bir biçimdeki bir SaaS uygulamasına tarihleri göndermek istediğiniz.
 
 **Örnek giriş/çıkış:**
 
-* **Giriş** (extensionAttribute1): "20150123105347.1 Z"
-* **ÇIKIŞ**:  "2015-01-23"
+* **Giriş** (extensionAttribute1): "20150123105347.1Z"
+* **ÇIKIŞ**: "2015-01-23"
 
 ### <a name="replace-a-value-based-on-predefined-set-of-options"></a>Önceden tanımlanmış seçenekleri kümesi temel alınarak bir değeri değiştirin
 
@@ -336,7 +336,7 @@ Azure AD'de depolanan eyalet koduna göre kullanıcının saat dilimi tanımlama
 **Örnek giriş/çıkış:**
 
 * **Giriş** (durum): "QLD"
-* **ÇIKIŞ**: "Avustralya/Brisbane"
+* **Çıkış**: "Avustralya/Brisbane"
 
 ### <a name="replace-characters-using-a-regular-expression"></a>Normal ifade kullanarak karakterleri değiştirme
 Normal ifade değeriyle eşleşen karakterler bulmanız ve bunları kaldırmanız gerekir.
@@ -347,8 +347,8 @@ Replace ([Mailtakma ad],, "[a-zA-Z_] *",, "",,)
 
 **Örnek giriş/çıkış:**
 
-* **Giriş** (Mailtakma ad: "john_doe72"
-* **ÇIKIŞ**: "72"
+* **Giriş** (mailtakma ad: "john_doe72"
+* **Çıkış**: "72"
 
 ### <a name="convert-generated-userprincipalname-upn-value-to-lower-case"></a>Oluşturulan userPrincipalName (UPN) değerini küçük harfe Dönüştür
 Aşağıdaki örnekte, UPN değeri PreferredFirstName ve PreferredLastName kaynak alanları birleştirerek oluşturulur ve tüm karakterleri küçük harfe dönüştürmek için ToLower işlevi oluşturulan dize üzerinde çalışır. 
@@ -358,8 +358,8 @@ Aşağıdaki örnekte, UPN değeri PreferredFirstName ve PreferredLastName kayna
 **Örnek giriş/çıkış:**
 
 * **Giriş** (PreferredFirstName): "John"
-* **Giriş** (PreferredLastName): Uludağ
-* **ÇIKIŞ**: "john.smith@contoso.com"
+* **Giriş** (PreferredLastName): "Smith"
+* **Çıkış**: "john.smith@contoso.com"
 
 ### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>UserPrincipalName (UPN) özniteliği için benzersiz bir değer oluşturur
 Bağlı kullanıcının ilk adını, ikinci adı ve Soyadı, UPN özniteliği için değer atamadan önce hedef AD dizininde UPN özniteliği için bir değer ve kendi benzersizlik denetimi oluşturmanız gerekiyor.
@@ -375,7 +375,7 @@ Bağlı kullanıcının ilk adını, ikinci adı ve Soyadı, UPN özniteliği i�
 **Örnek giriş/çıkış:**
 
 * **Giriş** (PreferredFirstName): "John"
-* **Giriş** (PreferredLastName): Uludağ
+* **Giriş** (PreferredLastName): "Smith"
 * **Çıkış**: "John.Smith@contoso.com" değilse UPN değerini John.Smith@contoso.com dizininde zaten mevcut değil
 * **Çıkış**: "J.Smith@contoso.com" değilse UPN değerini John.Smith@contoso.com dizinde zaten var.
 * **Çıkış**: "Jo.Smith@contoso.com" Yukarıdaki iki UPN değeri dizinde zaten mevcutsa

@@ -3,12 +3,12 @@ title: Sanal makinelerin içeriğini denetleme hakkında bilgi edinin
 description: Azure Ilkesi 'nin bir Azure makinesi içindeki ayarları denetlemek için konuk yapılandırmasını nasıl kullandığını öğrenin.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 5148ecb2f10a2ac517c5cf6c7f682a0f25808910
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: c01f6d02c15dbd7519bfafdc413d70a05498c7c4
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959772"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279369"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure İlkesi'nin Konuk yapılandırma anlama
 
@@ -61,7 +61,7 @@ Aşağıdaki tabloda, desteklenen her işletim sisteminde kullanılan yerel Ara�
 
 |İşletim sistemi|Doğrulama Aracı|Notlar|
 |-|-|-|
-|Windows|[Microsoft Desired State Configuration](/powershell/dsc) v2| |
+|Windows|[Windows PowerShell Istenen durum yapılandırması](/powershell/scripting/dsc/overview/overview) v2| |
 |Linux|[Chef InSpec](https://www.chef.io/inspec/)| Ruby ve Python Konuk Configuration uzantısı tarafından yüklenir. |
 
 ### <a name="validation-frequency"></a>Doğrulama sıklığı
@@ -113,7 +113,7 @@ Konuk yapılandırması tarafından çalıştırılan her denetim, bir **Deployi
 
 **Deployifnotexists** ataması uyumlu olduğunda, **auditınotexists** ilke ataması, yapılandırma atamasının uyumlu veya uyumsuz olduğunu anlamak için yerel doğrulama araçlarını kullanır. Doğrulama Aracı sonuçları Konuk yapılandırma istemciye sağlar. İstemci, Konuk yapılandırma kaynak sağlayıcısı kullanılabilir hale getirir Konuk uzantısına sonuçları iletir.
 
-Azure İlkesi kullanan Konuk yapılandırma kaynak sağlayıcıları **complianceStatus** rapor uyumluluk özelliğini **Uyumluluk** düğümü. Daha fazla bilgi için [uyumluluk verilerini alma](../how-to/getting-compliance-data.md).
+Azure İlkesi kullanan Konuk yapılandırma kaynak sağlayıcıları **complianceStatus** rapor uyumluluk özelliğini **Uyumluluk** düğümü. Daha fazla bilgi için [uyumluluk verilerini alma](../how-to/get-compliance-data.md).
 
 > [!NOTE]
 > **Uıınotexists** ilkesi, sonuçları döndürmek için bu **ilke için** gereklidir. **Deployifnotexists**olmadan, **auditınotexists** ilkesi "0/0" kaynağını durum olarak gösterir.
@@ -198,6 +198,6 @@ Ilke Konuk yapılandırması için örnekler aşağıdaki konumlarda kullanılab
 - [Azure İlkesi tanımı yapısını](definition-structure.md) gözden geçirin.
 - [İlkenin etkilerini anlama](effects.md) konusunu gözden geçirin.
 - [Program aracılığıyla ilkelerin nasıl oluşturulduğunu](../how-to/programmatically-create.md)anlayın.
-- [Uyumluluk verilerini nasıl alabileceğinizi](../how-to/getting-compliance-data.md)öğrenin.
+- [Uyumluluk verilerini nasıl alabileceğinizi](../how-to/get-compliance-data.md)öğrenin.
 - [Uyumlu olmayan kaynakları nasıl düzelteceğinizi](../how-to/remediate-resources.md)öğrenin.
 - [Kaynakları Azure Yönetim gruplarıyla düzenleme](../../management-groups/overview.md)ile yönetim grubunun ne olduğunu inceleyin.

@@ -1,14 +1,14 @@
 ---
 title: Büyük veri kümeleriyle çalışma
-description: Azure Kaynak Grafında çalışırken büyük veri kümelerinin nasıl alınacağını ve kontrol olduğunu anlayın.
+description: Azure Kaynak Grafında çalışırken büyük veri kümelerinde kayıtları alma, biçimlendirme, sayfa ve atlamayı anlayın.
 ms.date: 10/18/2019
 ms.topic: conceptual
-ms.openlocfilehash: a7258534b867c57f89eeb432b579e87070b4fc1d
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 2c6aca0c468630cee79222bc77bdc20dc9d95b19
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959009"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304004"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Büyük Azure Kaynak veri kümeleriyle çalışma
 

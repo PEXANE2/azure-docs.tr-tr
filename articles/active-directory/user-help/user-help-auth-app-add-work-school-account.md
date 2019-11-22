@@ -1,6 +1,6 @@
 ---
-title: Bir kimlik doğrulayıcı uygulamasına iş veya okul hesabı ekleme-Azure AD
-description: İki öğeli doğrulama için iş veya okul hesabınızı Microsoft Authenticator uygulamasına ekleme.
+title: Microsoft Authenticator uygulamasına iş veya okul hesabı ekleme-Azure AD
+description: İki öğeli doğrulama kullanırken kimliğinizi doğrulamak için Microsoft Authenticator uygulamasına iş veya okul hesabınızı ekleyin.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,14 +12,14 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7c9fa41a1278f0e1e54a06c3930e3bbc3d3d3ae
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: bcd69fab269e39a8c78a56c08854262ca839d60f
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73803730"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267134"
 ---
-# <a name="add-your-work-or-school-account"></a>İş veya okul hesabınızı ekleyin
+# <a name="add-your-work-or-school-account-to-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulamasına iş veya okul hesabınızı ekleyin
 
 Kuruluşunuz iki öğeli doğrulama kullanıyorsa, iş veya okul hesabınızı doğrulama yöntemlerinden biri olarak Microsoft Authenticator uygulamayı kullanacak şekilde ayarlayabilirsiniz.
 

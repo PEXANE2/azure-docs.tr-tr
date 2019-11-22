@@ -10,18 +10,18 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: diberry
-ms.openlocfilehash: 087b3a61902c533648b5d6e1b4b763f88ee5d794
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: cbfb0ddb0ee901545443fc127f80a1837c7bde9b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73669671"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278600"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Hızlı başlangıç: LUO portalında yeni bir uygulama oluşturma
 
 [!INCLUDE [Uses preview portal](./includes/uses-portal-preview.md)]
 
-Bu hızlı başlangıçta, [LUI portalında](https://www.luis.ai)yeni bir uygulama oluşturacaksınız. İlk olarak bir uygulama, **Amaç**ve **varlıkların**temel parçalarını oluşturursunuz. Ardından, tahmin edilen amacı almak için etkileşimli test panelinde örnek bir Kullanıcı yazarak uygulamayı test edersiniz.
+Bu hızlı başlangıçta, LUı portalında yeni bir uygulama oluşturacaksınız. İlk olarak bir uygulama, **Amaç**ve **varlıkların**temel parçalarını oluşturursunuz. Ardından, tahmin edilen amacı almak için etkileşimli test panelinde örnek bir Kullanıcı yazarak uygulamayı test edersiniz.
 
 Uygulama oluşturma ücretsizdir ve bir Azure aboneliği gerektirmez. Uygulamanızı dağıtmaya hazırsanız, [uygulamayı dağıtmaya yönelik hızlı başlangıç](get-started-portal-deploy-app.md)bölümüne bakın. Azure bilişsel hizmet kaynağı oluşturma ve uygulamaya atama işlemlerinin nasıl yapılacağını gösterir.
 
@@ -39,7 +39,7 @@ Uygulama oluşturma ücretsizdir ve bir Azure aboneliği gerektirmez. Uygulaman�
    |--|--|--|
    |Ad|`myEnglishApp`|Benzersiz LUSıS uygulama adı<br>Gerekli|
    |Kültür|**İngilizce**|Kullanıcılardan gelen **söylenme dili, en-US**<br>Gerekli|
-   |Açıklama (Isteğe bağlı)|`App made with LUIS Portal`|Uygulamanın açıklaması<br>Seçim|
+   |Açıklama (Isteğe bağlı)|`App made with LUIS Portal`|Uygulamanın açıklaması<br>seçim|
    |Tahmin kaynağı (Isteğe bağlı) |-  |' Yi seçmeyin. LUSıS, yazma ve 1.000 tahmin uç noktası istekleri için ücretsiz olarak kullanabileceğiniz bir başlangıç anahtarı sağlar. |
 
    ![Yeni uygulama ayarlarını girin](./media/get-started-portal-build-app/create-new-app-settings.png)
@@ -66,7 +66,7 @@ Amaç oluşturmak için aşağıdaki adımları izleyin:
 
 1. Amaç adı ' nı `FindForm`girin ve **bitti**' yi seçin.
 
-## <a name="add-an-example-utterance"></a>Örnek bir mekan ekleyin
+## <a name="add-an-example-utterance"></a>Bir örnek utterance Ekle
 
 Amaçları oluşturduktan sonra örnek bir parametre ekleyin. Örnek, kullanıcının bir sohbet bot veya diğer istemci uygulamasına girdiği metindir. Kullanıcı metninin amacı bir LUO amacı ile eşlenir.
 

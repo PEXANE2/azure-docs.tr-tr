@@ -1,5 +1,5 @@
 ---
-title: Hızlı Başlangıç, PowerShell - Azure Active Directory ile Konuk kullanıcı ekleme | Microsoft Docs
+title: 'Hızlı başlangıç: PowerShell ile Konuk Kullanıcı ekleme-Azure AD'
 description: Bu hızlı başlangıçta, şirket dışından bir Azure AD B2B işbirliği kullanıcısına davet göndermek için PowerShell’in nasıl kullanılacağını öğreneceksiniz.
 services: active-directory
 ms.service: active-directory
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5325529acb66735db0c27c0f5bdfca819e8ec4d8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 50c283122fe707e922275b6c1a6c576009964855
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65812294"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74273364"
 ---
 # <a name="quickstart-add-a-guest-user-with-powershell"></a>Hızlı Başlangıç: PowerShell ile konuk kullanıcı ekleme
 
@@ -75,7 +75,7 @@ Connect-AzureAD -TenantDomain "<Tenant_Domain_Name>"
 
 ## <a name="send-an-invitation"></a>Davet gönderme
 
-1. Test e-posta hesabınıza bir davet göndermesi için aşağıdaki PowerShell komutunu çalıştırın (Değiştir **"Sanda"** ve **sanda\@fabrikam.com** test e-posta hesabı adınızı ve e-posta adresinizi ile): 
+1. Test e-posta hesabınıza davetiye göndermek için aşağıdaki PowerShell komutunu çalıştırın ( **"Sanda"** ve **sanda\@fabrikam.com** öğesini, test e-posta hesabınızın adı ve e-posta adresi ile değiştirin): 
 
    ```powershell
    New-AzureADMSInvitation -InvitedUserDisplayName "Sanda" -InvitedUserEmailAddress sanda@fabrikam.com -InviteRedirectURL https://myapps.azure.com -SendInvitationMessage $true
@@ -91,7 +91,7 @@ Connect-AzureAD -TenantDomain "<Tenant_Domain_Name>"
    ```powershell
    Get-AzureADUser -Filter "UserType eq 'Guest'"
    ```
-3. Davet listelendiğinden, biçimde bir kullanıcı asıl adına (UPN) sahip olduğundan emin olmak için çıktıyı denetleyin *emailaddress*EXT #\@*etki alanı*. Örneğin, *sanda_fabrikam.com#EXT#\@contoso.onmicrosoft.com*, contoso.onmicrosoft.com içinden gönderdiğiniz davetiye kuruluş olduğu.
+3. Davet ettiğiniz kullanıcının bir Kullanıcı asıl adı (UPN) ile *emadresi*#EXT #\@*etki alanı*biçiminde listelendiğinden emin olmak için çıktıyı denetleyin. Örneğin, *sanda_fabrikam. com # ext #\@contoso.onmicrosoft.com*, burada contoso.onmicrosoft.com, davetleri gönderdiğiniz kuruluştur.
 
    ![Eklenen konuk kullanıcıyı gösteren PowerShell çıktısı](media/quickstart-invite-powershell/powershell-guest-user-added.png)
 
@@ -109,4 +109,4 @@ Artık gerekli değilse dizindeki test kullanıcı hesaplarını silebilirsiniz.
 Bu hızlı başlangıçta, PowerShell kullanarak dizininize tek bir konuk kullanıcıyı davet edip eklediniz. Şimdi, PowerShell kullanarak konuk kullanıcıların toplu olarak nasıl davet edileceğini öğreneceksiniz.
 
 > [!div class="nextstepaction"]
-> [Öğretici: Toplu Azure AD B2B işbirliği kullanıcıları davet edin](tutorial-bulk-invite.md)
+> [Öğretici: Azure AD B2B işbirliği kullanıcılarını toplu davet etme](tutorial-bulk-invite.md)

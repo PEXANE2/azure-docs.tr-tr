@@ -1,5 +1,6 @@
 ---
-title: Bir sanal ağ yönlendirme sorununu tanılama - öğretici - Azure portalı | Microsoft Docs
+title: 'Öğretici: VM ağı yönlendirme sorununu tanılama-Azure portal'
+titleSuffix: Azure Network Watcher
 description: Bu öğreticide, Azure Ağ İzleyicisi’nin IP sonraki atlama özelliği kullanılarak sanal makine ağ yönlendirme sorununu tanılama hakkında bilgi edineceksiniz.
 services: network-watcher
 documentationcenter: network-watcher
@@ -17,14 +18,14 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 3ad9cd8b620b55aaa17e84343a82ac361081de44
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f9c7139dc9c27ed5b4f97f38e98b4663e9676288
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64684512"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276039"
 ---
-# <a name="tutorial-diagnose-a-virtual-machine-network-routing-problem-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak bir sanal makine ağ yönlendirme bir sorunu tanılama
+# <a name="tutorial-diagnose-a-virtual-machine-network-routing-problem-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak bir sanal ağ yönlendirme sorununu tanılama
 
 Bir sanal makine (VM) dağıttığınızda, Azure bu sanal makine için birkaç varsayılan yol oluşturur. Azure’un varsayılan yollarını geçersiz kılmak için özel yollar oluşturabilirsiniz. Bazı durumlarda özel bir yol, bir sanal makinenin diğer kaynaklarla iletişim kuramamasına neden olabilir. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -74,7 +75,7 @@ En az bir bölgede etkinleştirilmiş bir ağ izleyiciniz zaten varsa [Sonraki a
 
     ![Ağ İzleyicisini etkinleştirme](./media/diagnose-vm-network-traffic-filtering-problem/enable-network-watcher.png)
 
-3. **Ağ izleyicisini etkinleştirme**’yi seçin.
+3. **Ağ İzleyicisini etkinleştirme**’yi seçin.
 
 ### <a name="use-next-hop"></a>Sonraki atlamayı kullanma
 
@@ -89,7 +90,7 @@ Azure, varsayılan hedeflerin yollarını otomatik olarak oluşturur. Varsayıla
     | Sanal makine         | MyVm öğesini seçin                                            |
     | Ağ arabirimi       | myvm - Ağ arabiriminizin adı farklı olabilir.   |
     | Kaynak IP adresi       | 10.0.0.4                                               |
-    | Hedef IP adresi  | 13.107.21.200 - için adreslerinden biri < www.bing.com>. |
+    | Hedef IP adresi  | 13.107.21.200-< www. Bing. com > adreslerinden biridir. |
 
     ![Sonraki atlama](./media/diagnose-vm-network-routing-problem/next-hop.png)
 
@@ -112,9 +113,9 @@ Azure, varsayılan hedeflerin yollarını otomatik olarak oluşturur. Varsayıla
 
 Artık gerekli olmadığında kaynak grubunu ve içerdiği tüm kaynakları silin:
 
-1. Portalın üst kısmındaki **Ara** kutusuna *myResourceGroup* değerini girin. Arama sonuçlarında **myResourceGroup** seçeneğini gördüğünüzde bunu seçin.
+1. Portalın üst kısmındaki *Ara* kutusuna **myResourceGroup** değerini girin. Arama sonuçlarında **myResourceGroup** seçeneğini gördüğünüzde bunu seçin.
 2. **Kaynak grubunu sil**'i seçin.
-3. **KAYNAK GRUBU ADINI YAZIN:** için *myResourceGroup* girin ve **Sil**’i seçin.
+3. *KAYNAK GRUBU ADINI YAZIN:* için **myResourceGroup** girin ve **Sil**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

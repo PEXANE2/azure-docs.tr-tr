@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: seodec18
 ms.date: 11/05/2019
-ms.openlocfilehash: 0cfff0196ebc20b9b01bc966b3590470d349e86e
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 3e228fb9d4223ad1d6d906b44ab63c35600faa56
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718002"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307351"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Öğretici: Azure Event Hubs'a gönderilen gerçek zamanlı olaylardaki veri anomalilerini görselleştirme
 
@@ -30,9 +30,9 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Bu verileri işlemek için bir Stream Analytics işi yapılandırma
 > * Sonuçları göstermek için bir Power BI görselleştirmesi yapılandırma
 
-Bu öğreticiyi tamamlamak için bir Azure aboneliğinizin olması gerekir. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun][].
+Bu öğreticiyi tamamlamak için bir Azure aboneliğinizin olması gerekir. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap][] oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -156,7 +156,7 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 
 ## <a name="run-app-to-produce-test-event-data"></a>Test amaçlı olay verilerini üretmek için uygulamayı çalıştırma
 
-[GitHub üzerindeki Event Hubs örnekleri](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet) arasında test verilerini üretecek bir [anomali algılama uygulaması](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/AnomalyDetector) bulunur. Kredi kartı kullanım simülasyonu yapan bu uygulama olay hub'ına kredi kartı işlemlerini yazar ve arada anomali olarak etiketlenmeleri için birden fazla konumda aynı kredi kartına ait işlemler yazar. Bu uygulamayı çalıştırmak için aşağıdaki adımları uygulayın: 
+[GitHub üzerindeki Event Hubs örnekleri](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet) arasında test verilerini üretecek bir [anomali algılama uygulaması](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/AnomalyDetector) bulunur. Kredi kartı kullanım simülasyonu yapan bu uygulama olay hub'ına kredi kartı işlemlerini yazar ve arada anomali olarak etiketlenmeleri için birden fazla konumda aynı kredi kartına ait işlemler yazar. Bu uygulamayı çalıştırmak için aşağıdaki adımları uygulayın: 
 
 1. GitHub'dan [Azure Event Hubs örneklerini](https://github.com/Azure/azure-event-hubs/archive/master.zip) indirin ve dosyaları ayıklayın.
 
@@ -217,7 +217,7 @@ Steam Analytics işinin girişleri, olay hub'ından gelen kredi kartı işlemler
 
    ![Stream Analytics işine giriş akışı ekleme adımlarını gösteren ekran görüntüsü.](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-inputs.png)
 
-5. **Kaydet** düğmesine tıklayın.
+5. **Kaydet**’e tıklayın.
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Stream Analytics işine çıkış ekleme
 
@@ -239,7 +239,7 @@ Steam Analytics işinin girişleri, olay hub'ından gelen kredi kartı işlemler
 
 4. Kalan alanlarda varsayılan değerleri kabul edin.
 
-5. **Kaydet** düğmesine tıklayın.
+5. **Kaydet**’e tıklayın.
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>Stream Analytics işinin sorgusunu yapılandırma
 
@@ -268,7 +268,7 @@ Bu sorgu, Power BI görselleştirmesine gönderilecek verilerin alınması için
    GROUP BY TumblingWindow(Duration(second, 1))
    ```
 
-4. **Kaydet** düğmesine tıklayın.
+4. **Kaydet**’e tıklayın.
 
 ### <a name="test-the-query-for-the-stream-analytics-job"></a>Stream Analytics işinin sorgusunu test etme 
 
@@ -320,7 +320,7 @@ Stream Analytics işinde **Çalıştır**'a, **Şimdi**'ye ve ardından **Çalı
 
    **İleri**’ye tıklayın.
 
-10. Başlığı **Sahtekarlık amaçlı kullanımlar**, alt başlığı da **Son birkaç dakikadaki toplam veriler** yapın. **Apply (Uygula)** düğmesine tıklayın. Kutucuk, panonuza kaydedilir.
+10. Başlığı **Sahtekarlık amaçlı kullanımlar**, alt başlığı da **Son birkaç dakikadaki toplam veriler** yapın. **Uygula**'ya tıklayın. Kutucuk, panonuza kaydedilir.
 
     ![Pano kutucuğu için başlık ve alt başlık belirtme işleminin ekran görüntüsü.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-tile-details.png)
 
@@ -386,4 +386,4 @@ Azure Event Hubs hakkında daha fazla bilgi edinmek için bir sonraki makaleye g
 > [!div class="nextstepaction"]
 > [.NET Standard'da Azure Event Hubs'a ileti göndermeye başlama](event-hubs-dotnet-standard-getstarted-send.md)
 
-[ücretsiz bir hesap oluşturun]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[ücretsiz bir hesap]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio

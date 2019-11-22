@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b4aa4fbff4e1b89b87dd05e0547db8e14ae5835
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 48ddb4c3baa40bf70fe12451f048b2228c8bd441
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927145"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74271507"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft Identity platform uç noktasındaki izinler ve onay
 
@@ -41,6 +41,7 @@ Microsoft Identity platformu, [OAuth 2,0](active-directory-v2-protocols.md) yetk
 * Microsoft Graph: `https://graph.microsoft.com`
 * Office 365 posta API 'SI: `https://outlook.office.com`
 * Azure AD grafiği: `https://graph.windows.net`
+* Azure Key Vault: `https://vault.azure.net`
 
 > [!NOTE]
 > Azure AD Graph, Office 365 mail API vb. yerine Microsoft Graph kullanmanızı kesinlikle öneririz.
@@ -89,7 +90,7 @@ Bir uygulama, [OpenID Connect](active-directory-v2-protocols.md)kullanarak oturu
 
 `email` kapsamı `openid` kapsamı ve diğerleri ile kullanılabilir. Uygulama, kullanıcının birincil e-posta adresine `email` talebi biçiminde erişim sağlar. `email` talebi, yalnızca bir e-posta adresi kullanıcı hesabıyla ilişkiliyse, her zaman durum olmayan bir belirtece dahil edilir. `email` kapsamını kullanıyorsa, uygulamanız `email` talebinin belirteçte olmadığı bir durumu işlemeye hazırlanmalıdır.
 
-### <a name="profile"></a>profilinizi
+### <a name="profile"></a>profile
 
 `profile` kapsamı `openid` kapsamı ve diğerleri ile kullanılabilir. Uygulamanın kullanıcı hakkındaki önemli miktarda bilgiye erişmesini sağlar. Erişebileceği bilgiler, kullanıcının verilen adı, soyadı, tercih edilen Kullanıcı adı ve nesne KIMLIĞINI içerir, ancak bunlarla sınırlı değildir. Belirli bir kullanıcı için id_tokens parametresinde kullanılabilir olan profil taleplerinin tüm listesi için, [`id_tokens` başvurusuna](id-tokens.md)bakın.
 

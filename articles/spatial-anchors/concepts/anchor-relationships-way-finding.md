@@ -1,85 +1,85 @@
 ---
-title: Bağlantı ilişkilerini ve Azure uzamsal yer işaretleri, yol bulma | Microsoft Docs
-description: Bağlantı ilişkilerini arkasında kavramsal model hakkında bilgi edinin. Bir alanı içinde yer işaretleri bağlanmak için ve bir şekilde bulma senaryo karşılamak üzere yakında API'sini kullanmayı öğrenin.
+title: Bağlama ilişkileri ve yöntemi-bulma
+description: Bağlantı ilişkilerinin arkasındaki kavramsal model hakkında bilgi edinin. Bir alan içindeki çıpası bağlamayı ve bir yol bulma senaryosunu karşılamak için yakındaki API 'yi kullanmayı öğrenin.
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 008269a5883750dc8899d896c101c6a05bf7e814
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f2fd8f4b7d03be8822c3ec12e2be589054942ce3
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65969275"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270612"
 ---
-# <a name="anchor-relationships-and-way-finding-in-azure-spatial-anchors"></a>Bağlantı ilişkilerini ve Azure uzamsal yer işaretleri, şekilde bulma
+# <a name="anchor-relationships-and-way-finding-in-azure-spatial-anchors"></a>Azure uzamsal bağlayıcılarını ve bağlama ilişkilerini ve yolunu bulma
 
-Bağlantı ilişkileri kullanarak bir alana bağlı bağlayıcılarını oluşturabilir ve sonra bunlar gibi sorular sorun:
+Bağlayıcı ilişkilerini kullanarak, bir alanda bağlı Tutturucular oluşturabilir ve ardından bunlar gibi sorular sorabilirsiniz:
 
-* Yakındaki bağlantıların yer işaretleri var mı?
-* Bunlar nasıl uzakta misiniz?
+* Yakında bağlayıcı var mı?
+* Ne kadar uzakta?
 
 ## <a name="examples"></a>Örnekler
 
-Bu gibi durumlarda bağlı bağlayıcılarını kullanabilirsiniz:
+Bağlı bağlayıcıları bunlar gibi durumlarda kullanabilirsiniz:
 
-* Bir çalışan bir endüstriyel fabrikası çeşitli konumlarda ziyaret içeren bir görevi tamamlamak gerekir. Fabrika her konumda uzamsal bağlantıları vardır. Çalışan bir konumdan diğerine Kılavuzu, HoloLens veya mobil uygulamanıza yardımcı olur. Uygulama, yakında uzamsal yer işaretleri için ilk ister ve sonraki konuma çalışan size yol gösterir. Uygulama, görsel olarak sonraki konuma uzaklık ve genel yönünü gösterir.
+* Çalışan bir endüstriyel fabrikadaki çeşitli konumları ziyaret eden bir görevi tamamlaması gerekir. Fabrikada her konumdaki uzamsal bağlantılar bulunur. HoloLens veya mobil uygulama, çalışan tarafından bir konumdan sonrakine kılavuzluk eder. Uygulama ilk olarak yakın uzamsal Tutturuculara sorar ve sonra çalışanı bir sonraki konuma yönlendirir. Uygulama, genel yönü ve bir sonraki konuma mesafeyi gösterir.
 
-* Bir müze genel görüntüler uzamsal yer işaretleri oluşturur. Birlikte, bu yer işaretleri bir saatlik tura müze'nın temel genel görüntüler oluşturur. Genel bir görüntü mobil cihazlarında müze'nın karma gerçeklik uygulamasını ziyaretçiler açabilirsiniz. Ardından bunlar genel yönünü ve diğer genel görüntüler için daha fazla mesafe Turun görmek için alanı etrafında telefon kamerasına gelin. Bir kullanıcı doğru ortak bir ekran gösterilir gibi uygulama kullanıcının rehberlik edecek uzaklık ve genel yönünü güncelleştirir.
+* Bir Museum, genel ekranlarda uzamsal bağlantılar oluşturur. Birlikte, bu Tutturucuların her biri, Museum 'un gerekli genel ekranların bir saatlik turuna göre yapılır. Ortak bir ekranda, ziyaretçiler, mobil cihazlarıyla Museum 'un karma gerçeklik uygulamasını açabilir. Daha sonra genel yönü görmek ve turdaki diğer genel ekranları bulmak için telefon kameralarını alanın çevresinde işaret ederler. Bir Kullanıcı genel bir ekranda ilerlemelerine göre, uygulama, kullanıcıya kılavuzluk eden genel yönü ve mesafeyi güncelleştirir.
 
-## <a name="set-up-way-finding"></a>Yedekleme yolu bulma ayarlama
+## <a name="set-up-way-finding"></a>Yöntemi ayarlama-bulma
 
-Satır görüş yönünü ve rehberlik sunmak için yer işaretleri arasındaki uzaklığı kullanan bir uygulamayı kullanarak *şekilde bulma*. Yol-bulma Aç tarafından Aç Gezinti bölmesinden farklıdır. Bırakma tarafından Aç Gezinti bölmesinde kullanıcılar etrafında duvarlar, kapılar ve Katlar arasında gerçekleşir. Yol-bulma ile kullanıcı hedef genel yönünü konusunda ipuçları alır. Ancak çıkarımı veya bilgi alan hedef yapısı arasında gezinmek kullanıcı da yardımcı olur.
+Gözetimi sağlayan bir uygulama, kılavuz sağlamak için *yol bulma yöntemini*kullanıyor. Yöntem-bulma işlemi, sırayla gezinmede farklılık açabilir. Açılan gezinmede, kullanıcılar duvarlar, kapıların ve katlar arasında kılavuzluk eder. Yöntemle, Kullanıcı hedefin genel yönü hakkında ipuçları alır. Ancak alanın çıkarım veya bilgisi, kullanıcının hedef yapıya göre gezinmenize de yardımcı olur.
 
-Bir şekilde bulma deneyimi oluşturmak için ilk deneyimine bir alanı hazırlamak ve kullanıcı etkileşim kuracağı bir uygulama geliştirmek. Kavramsal adımları şunlardır:
+Bir yöntem bulma deneyimi oluşturmak için ilk olarak deneyim için bir alan hazırlayın ve kullanıcıların etkileşime gileceği bir uygulama geliştirin. Bunlar kavramsal adımlardır:
 
-1. **Alanı planlama**: Alanı içinde hangi konumları şekilde bulma deneyiminin bir parçası olarak olacağına karar verin. Bizim senaryolarda Fabrika gözetmen veya müze turu Düzenleyici yolu bulma deneyimini dahil etmek için hangi konumların karar verebilirsiniz.
-2. **Yer işaretleri bağlanma**: Uzamsal yer işaretleri oluşturmanız için seçilen konumlarını ziyaret edin. Son kullanıcı uygulamasının bir yönetici modunda veya farklı bir uygulama tamamen bunu yapabilirsiniz. Bağlanın veya her bağlantı için diğer ilgili. Hizmet, bu ilişkileri tutar.
-3. **Son kullanıcı deneyimi Başlat**: Kullanıcılar seçilen konumlardan herhangi birinde olabilir bir yer işareti bulmak için uygulamayı çalıştırın. Genel tasarımınızı deneyimi girebileceğiniz konumları belirlemeniz gerekir.
-4. **Bağlayıcılarını bulma**: Kullanıcı bir yer işareti bulduktan sonra uygulamanın yakındaki bağlantıların yer işaretleri isteyebilir. Bu yordam, cihaz ve bu yer işaretleri arasında bir poz döndürür.
-5. **Kullanıcı Kılavuzu**: Uygulama, kullanıcının genel yönünü ve uzaklık hakkında rehberlik yapmak poz her bu bağlantıları kullanabilirsiniz. Örneğin, kamera akışını uygulamada bir simge ve aşağıda gösterildiği gibi her bir potansiyel hedefine temsil etmek için oka gösterebilir.
-6. **Kılavuz İyileştir**: Kullanıcı gezer gibi uygulamayı düzenli olarak yeni bir poz arasında cihaz ve hedef bağlantı hesaplayabilirsiniz. Uygulama, hedefte geldiğinde kullanıcı Yardımı rehberi ipuçları iyileştirmek devam eder.
+1. **Alanı planlayın**: alanın içindeki konumların, yol bulma deneyiminin bir parçası olacağını belirleyin. Senaryolarımızda, fabrika idarecisi veya Museum Tur Düzenleyicisi, yol bulma deneyimine hangi konumlara dahil edileceğini karar verebilir.
+2. **Bağlantı bağlantıları**: uzamsal bağlayıcı oluşturmak için seçili konumları ziyaret edin. Bunu, Son Kullanıcı uygulamasının bir yönetici modunda veya tamamen farklı bir uygulamada yapabilirsiniz. Her bir bağlayıcıyı birbirine bağlayacaksınız veya birbirleriyle ilişkilendirirsiniz. Hizmet bu ilişkileri korur.
+3. **Son Kullanıcı deneyimini başlatın**: kullanıcılar, seçili konumlardan hiçbirinde olabilecek bir tutturucu bulmak için uygulamayı çalıştırır. Genel tasarımınız, kullanıcıların deneyimi girebilecekleri konumları belirlemelidir.
+4. **Yakın bağlayıcıları bul**: Kullanıcı bir tutturucu bulduktan sonra, uygulama yakındaki bağlantıları isteyebilir. Bu yordam, cihaz ve bu bağlantılar arasında bir poz döndürür.
+5. **Kullanıcıya kılavuzluk**edin: uygulama, kullanıcının genel yönü ve mesafesi hakkında rehberlik sağlamak için bu bağlayıcıların her birine ait pozları kullanabilir. Örneğin, uygulamadaki kamera akışı, aşağıdaki görüntüde gösterildiği gibi her bir olası hedefi temsil eden bir simge ve ok gösterebilir.
+6. **Kılavuzu daraltın**: Kullanıcı yönergede olduğu gibi, uygulama cihaz ile hedef bağlantı noktası arasında düzenli olarak yeni bir poz hesaplayabilir. Uygulama, kullanıcının hedefe ulaşmaya yardımcı olan kılavuz ipuçlarını iyileştirmeye devam etmektedir.
 
-    ![İlişkin bir örnek bir uygulama yolu bulma Kılavuzu gösterebilirsiniz.](./media/meeting-spot.png)
+    ![Uygulamanın yol bulma kılavuzunu nasıl gösterebileceğine ilişkin bir örnek](./media/meeting-spot.png)
 
-## <a name="connect-anchors"></a>Yer işaretleri bağlanma
+## <a name="connect-anchors"></a>Bağlantı bağlantıları
 
-Bir şekilde bulma deneyimi oluşturmak için önce seçilen konumda yer işaretlerini yerleştirmek gerekir. Bu bölümde, uygulamanın yönetici bu iş zaten bitmiş varsayacağız.
+Bir yöntem bulma deneyimi oluşturmak için önce bağlantıları seçili konumlara yerleştirmeniz gerekir. Bu bölümde, uygulamanın yöneticisinin bu çalışmayı zaten tamamladığını varsayacağız.
 
-### <a name="connect-anchors-in-a-single-session"></a>Yer işaretleri, tek bir oturumda bağlanma
+### <a name="connect-anchors-in-a-single-session"></a>Bağlantıları tek bir oturumda bağlama
 
-Yer işaretleri bağlanmak için:
+Bağlantıları bağlamak için:
 
-1. İlk konuma izlemek ve bir CloudSpatialAnchorSession kullanarak bir bağlantı oluşturun.
-2. İkinci bir konuma yol. Temel alınan MR/AR platformu hareketini izler.
-3. Yer işareti B aynı CloudSpatialAnchorSession kullanarak oluşturun. A ve B bağlantıları artık bağlanır. Uzamsal bağlayıcılarını hizmeti, bu ilişkiyi korur.
-4. Yordamı diğer bağlayıcıları için devam edin.
+1. İlk konuma kılavuzluk edin ve bir CloudSpatialAnchorSession kullanarak bağlayıcı oluşturun.
+2. İkinci konuma kılavuzluk edin. Temel alınan MR/AR platformu hareketi izler.
+3. Aynı CloudSpatialAnchorSession kullanarak bağlayıcı B oluşturun. A ve B bağlantıları artık bağlı. Uzamsal bağlayıcı hizmeti bu ilişkiyi tutar.
+4. Kalan Tutturucuların yordamına devam edin.
 
-### <a name="connect-anchors-in-multiple-sessions"></a>Birden çok oturumlarda bağlayıcılarını bağlanma
+### <a name="connect-anchors-in-multiple-sessions"></a>Birden çok oturumda bağlantıları bağlama
 
-Uzamsal bağlayıcılarını birden çok oturumu bağlanabilirsiniz. Bu yöntemi kullanarak, oluşturma ve bazı yer işaretleri tek seferde bağlanmak ve ardından daha sonra oluşturabilir ve daha fazla yer işaretleri bağlanın. 
+Uzamsal Tutturucuların birden çok oturum üzerinden bağlanmasını sağlayabilirsiniz. Bu yöntemi kullanarak, bir seferde bazı bağlayıcıları oluşturup bağlayıp daha sonra daha sonra daha fazla bağlayıcı oluşturup bağlayabilirsiniz.
 
-Yer işaretleri birden çok oturumu bağlanmak için:
+Birden çok oturumun bağlayıcılarını bağlamak için:
 
-1. Uygulama içinde bir CloudSpatialAnchorSession bazı yer işaretleri oluşturur. 
-2. Farklı bir zamanda yeni CloudSpatialAnchorSession kullanarak uygulamanın bu yer işaretleri (örneğin, bir yer işareti) birini bulur.
-3. Yeni bir konuma yol. Temel alınan karma gerçeklik veya genişletilmiş gerçeklik platformu hareketini izler.
-4. Yer işareti C aynı CloudSpatialAnchorSession kullanarak oluşturun. Yer işaretleri A, B ve C artık bağlanır. Uzamsal bağlayıcılarını hizmeti, bu ilişkiyi korur.
+1. Uygulama bir CloudSpatialAnchorSession içinde bazı bağlantılar oluşturur.
+2. Farklı bir zamanda uygulama, yeni bir CloudSpatialAnchorSession kullanarak bu bağlayıcıların birini (örneğin, A bağlantısı) bulur.
+3. Yeni bir konuma kılavuzluk edin. Temel karma gerçeklik veya genişletilmiş gerçeklik platformu, taşımayı izler.
+4. Aynı CloudSpatialAnchorSession kullanarak bir bağlayıcı oluşturun. A, B ve C bağlantıları artık bağlı. Uzamsal bağlayıcı hizmeti bu ilişkiyi tutar.
 
-Zaman içinde daha fazla yer işaretleri ve daha fazla oturumları için bu yordamı devam edebilirsiniz.
+Zaman içinde daha fazla bağlayıcı ve daha fazla oturum için bu yordama devam edebilirsiniz.
 
-### <a name="verify-anchor-connections"></a>Yer işareti bağlantıları doğrulama
+### <a name="verify-anchor-connections"></a>Bağlantı bağlantılarını doğrulama
 
-Uygulamanın yakındaki bağlantıları için bir sorgu yayınlayarak iki çıpasının bağlandığınızdan emin doğrulayabilirsiniz. Sorgunun sonucu hedef bağlantı içeriyorsa, yer işareti bağlantısı doğrulanır. Yer işaretlerini bağlı değilseniz uygulamayı yeniden bağlanmayı deneyebilirsiniz. 
+Uygulama, yakın Tutturucular için bir sorgu vererek iki Tutturucuların bağlandığını doğrulayabilirler. Sorgunun sonucu hedef bağlayıcıyı içerdiğinde, bağlantı bağlantısı doğrulanır. Bağlantı bağlantıları bağlı değilse, uygulama bunları yeniden bağlamayı deneyebilir.
 
-Neden bağlayıcılarını bağlanamayabilir bazı nedenler şunlardır:
+Bağlantı oluşturulamalarının bağlanamamasının bazı nedenleri aşağıda verilmiştir:
 
-* İzleme bağlayıcılarını bağlanma işlemi sırasında kaybedilen temel karma gerçeklik veya genişletilmiş gerçeklik platform.
-* Yer işareti bağlantısı uzamsal bağlayıcılarını hizmet ile iletişim sırasında bir ağ hatası nedeniyle kalıcı uygulanamadı.
+* Bağlantıları bağlama işlemi sırasında temeldeki karma gerçeklik veya genişletilmiş gerçeklik platformu kayıp izleme.
+* Uzamsal bağlayıcı hizmeti ile iletişim sırasında bir ağ hatası nedeniyle, bağlantı bağlantısı kalıcı hale getirilemedi.
 
 ### <a name="find-sample-code"></a>Örnek kod bulma
 
-Bağlayıcılarını bağlanmak ve sorgular yapmak için nasıl oluşturulduğunu gösteren örnek kodu bulmak için bkz [uzamsal bağlayıcılarını örnek uygulamalar](https://github.com/Azure/azure-spatial-anchors-samples).
+Bağlantı ve yakın sorguları nasıl bağlayabileceğinizi gösteren örnek kodu bulmak için bkz. [uzamsal Tutturucuların örnek uygulamaları](https://github.com/Azure/azure-spatial-anchors-samples).

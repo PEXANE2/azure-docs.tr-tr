@@ -4,14 +4,14 @@ description: Azure geçişi sunucu değerlendirmesi kullanılarak şirket içi s
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 11/18/2019
+ms.date: 11/20/2019
 ms.author: snehaa
-ms.openlocfilehash: 14ecc6454c3d0f167c671532dd8e659e767cda66
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 279e326ace308b354d7bcb8366d3286980e7b8c6
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158641"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278468"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>Makine uygulamalarını, rolleri ve özellikleri bul
 
@@ -19,10 +19,10 @@ Bu makalede, Azure geçişi: Sunucu değerlendirmesi kullanılarak şirket içi 
 
 Uygulamaların envanterini bulma ve şirket içi makinelerinizde çalışan roller/özellikler, iş yükleriniz için uyarlanmış bir Azure 'a geçiş yolu tanımlamanızı ve planlamanız sağlar.
 
-Azure geçişi kullanarak uygulama bulma: Sunucu değerlendirmesi aracısız. Makinelere ve VM 'Lere hiçbir şeyin yüklü olması gerekir. Sunucu değerlendirmesi, makine konuk kimlik bilgileriyle birlikte bulma işlemi gerçekleştirmek için Azure geçişi gereci kullanır. Gereç, WMI ve SSH çağrılarını kullanarak makinelere uzaktan erişir.
-
 > [!NOTE]
 > Uygulama bulma Şu anda yalnızca VMware VM 'Leri için desteklenmektedir ve yalnızca bulma ile sınırlıdır. Henüz uygulama tabanlı değerlendirme sunmuyoruz.  Şimdi sunucu değerlendirmesi Şu anda şirket içi VMware VM 'leri, Hyper-V VM 'Leri ve makine düzeyindeki fiziksel sunucuları, yükseltme ve kaydırma geçişleri için değerlendirir.
+
+Azure geçişi kullanarak uygulama bulma: Sunucu değerlendirmesi aracısız. Makinelere ve VM 'Lere hiçbir şeyin yüklü olması gerekir. Sunucu değerlendirmesi, makine konuk kimlik bilgileriyle birlikte bulma işlemi gerçekleştirmek için Azure geçişi gereci kullanır. Gereç, VMware API 'Lerini kullanarak VMware makinelerine uzaktan erişir.
 
 
 ## <a name="before-you-start"></a>Başlamadan önce

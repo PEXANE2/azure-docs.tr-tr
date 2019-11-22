@@ -1,23 +1,17 @@
 ---
 title: Azure veri bilimi sanal makinelerini kullanma
 description: Kullanılabilir işlem gücünü Azure Notebooks genişletmek için bir Azure Veri Bilimi Sanal Makinesi 'ye (DSVM) bağlanın.
-services: app-service
-documentationcenter: ''
 author: getroyer
 manager: andneil
-ms.assetid: 0ccc2529-e17f-4221-b7c7-9496d6a731cc
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.author: getroyer
 ms.topic: article
 ms.date: 06/13/2019
-ms.author: getroyer
-ms.openlocfilehash: 0f06475708adaf1324eedbd8e315fe4d731339be
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 0559442cb3f6c3937e6930082940e9354c43bc30
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970098"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277396"
 ---
 # <a name="use-azure-data-science-virtual-machines"></a>Azure veri bilimi sanal makinelerini kullanma
 
@@ -30,7 +24,7 @@ Varsayılan olarak, projeler **ücretsiz işlem** katmanında çalışır, bu da
 
 Yeni bir DSVM örneği oluşturmak için [Ubuntu veri bilimi VM'si oluşturma](/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)yönergelerini izleyin. Fiyatlandırma ayrıntıları dahil daha fazla bilgi için bkz. [veri bilimi sanal makineleri](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/).
 
-## <a name="connect-to-the-dsvm"></a>DSVM 'ye bağlanma
+## <a name="connect-to-the-dsvm"></a>Değerini DSVM Örneğinize bağlanın
 
 DSVM 'yi oluşturduktan sonra, Azure Notebooks projesi panosunda **Çalıştır** açılan listesini seçin ve uygun dsvm örneğini seçin. Aşağıdaki koşullar doğruysa, açılan listede DSVM örnekleri gösterilmektedir:
 
@@ -50,7 +44,7 @@ Bu değerleri Azure portal DSVM sayfasından elde edersiniz.
 
 ## <a name="accessing-azure-notebooks-files-from-the-dsvm"></a>DSVM 'deki Azure Notebooks dosyalarına erişme
 
-Dosya sistemi erişimi, DSVM sürümleri 19.06.15 veya üzeri için desteklenir. Sürümü denetlemek için öncelikle SSH aracılığıyla DSVM 'nize bağlanın, ardından şu komutu çalıştırın: `curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2018-10-01"` (burada gösterilen tam IP adresini kullanmanız gerekir). Sürüm numarası, "sürüm" için çıktıda gösterilir.
+Dosya sistemi erişimi, DSVM sürümleri 19.06.15 veya üzeri için desteklenir. Sürümü denetlemek için öncelikle SSH aracılığıyla DSVM 'nize bağlanın ve ardından şu komutu çalıştırın: `curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2018-10-01"` (burada gösterilen tam IP adresini kullanmanız gerekir). Sürüm numarası, "sürüm" için çıktıda gösterilir.
 
 Dosya yollarının, **ücretsiz işlem** katmanıyla birlikte kullanımını korumak için, BIR anda dsvm 'de yalnızca bir proje açabilirsiniz. Yeni bir proje açmak için önce açık projeyi kapatmanız gerekir.
 

@@ -2,14 +2,14 @@
 title: Bölgeler arasında güvenli dağıtım-Azure Dağıtım Yöneticisi
 description: Azure Deployment Manager ile pek çok bölge üzerinde bir hizmet dağıtmayı açıklar. Bu, tüm bölgelere sunulmadan önce dağıtımınızı kararlılığını doğrulamak için güvenli dağıtım uygulamalarını gösterir.
 ms.topic: conceptual
-ms.date: 05/31/2019
+ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0a0d13150086b393e10bc16c5c2cef173ab0abab
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 9b0e314b3911dcd3b96dc2b5b32081bd2e9c0c0c
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74147199"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307048"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Azure Dağıtım Yöneticisi ile güvenli dağıtım uygulamalarını etkinleştirme (Genel Önizleme)
 
@@ -338,3 +338,5 @@ Bu makalede, Deployment Manager hakkında bilgi edindiniz. Deployment Manager il
 
 > [!div class="nextstepaction"]
 > [Öğretici: Azure Dağıtım Yöneticisi'ni kullanın Resource Manager şablonları ile](./deployment-manager-tutorial.md)
+>
+> [Hızlı başlangıç: Azure Dağıtım Yöneticisi yalnızca birkaç dakika içinde deneyin](https://github.com/Azure-Samples/adm-quickstart)

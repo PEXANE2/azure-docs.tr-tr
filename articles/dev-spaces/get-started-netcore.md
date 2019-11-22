@@ -1,20 +1,16 @@
 ---
 title: .NET Core ve VS Code kullanarak bulutta bir Kubernetes dev alanı oluşturun
-titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 09/26/2018
 ms.topic: tutorial
 description: Azure’da kapsayıcılar ve mikro hizmetlerle hızlı Kubernetes geliştirme
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
-ms.openlocfilehash: 523c722edd3e76a291ae753ec7c3482e19ca7e24
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
-ms.translationtype: MT
+ms.openlocfilehash: 85360f343326d2c974965e93147c38ac2336e83a
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845719"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280199"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core"></a>.NET Core ile Azure Dev Spaces kullanmaya başlama
 
@@ -78,7 +74,7 @@ AKS kümenizi içeren kaynak grubuyla AKS kümesi adınızı kullanarak aşağı
    ```
    
 > [!IMPORTANT]
-> Azure dev Spaces yapılandırma işlemi, varsa, kümedeki `azds` ad alanını kaldırır.
+> Azure Dev Spaces yapılandırma işlemi, varsa kümedeki `azds` ad alanını kaldırır.
 
 ## <a name="get-kubernetes-debugging-for-vs-code"></a>VS Code için Kubernetes hata ayıklaması edinin
 Kubernetes hata ayıklaması gibi zengin özellikler VS Code kullanarak .NET Core ve Node.js geliştiricileri için kullanılabilir.
@@ -106,11 +102,11 @@ Bu bölümde, bir ASP.NET Core Web uygulaması oluşturacak ve Kubernetes içind
 
 Azure CLI’nin `azds prep` komutu varsayılan ayarlarla Docker ve Kubernetes varlıklarını oluşturur:
 * `./Dockerfile`, uygulamanın kapsayıcı görüntüsünü açıklar, kaynak kodunun nasıl derlendiğini ve kapsayıcının içinde çalıştırıldığını belirtir.
-* `./charts/webfrontend` altındaki [Helm grafiği](https://docs.helm.sh), kapsayıcının Kubernetes'de nasıl dağıtıldığını açıklar.
+* [ altındaki ](https://docs.helm.sh)Helm grafiği`./charts/webfrontend`, kapsayıcının Kubernetes'de nasıl dağıtıldığını açıklar.
 
 Şimdilik bu dosyaların tüm içeriğini anlamanız gerekli değildir. Bununla birlikte, **geliştirme aşamasından üretim aşamasına kadar aynı Kubernetes ve Docker kod yapılandırmalı varlıklarının kullanılabildiğini, bu şekilde farklı ortamlarda daha tutarlı sonuçlar sağlanabildiğini** belirtmek gerekir.
  
-`prep` komutuyla `./azds.yaml` adlı bir dosya da oluşturulur ve bu dosya Azure Dev Spaces’in yapılandırma dosyasıdır. Azure’da yinelemeli bir geliştirme deneyimi sağlamak için Docker ve Kubernetes yapıtlarını ek yapılandırmayla tamamlar.
+`./azds.yaml` komutuyla `prep` adlı bir dosya da oluşturulur ve bu dosya Azure Dev Spaces’in yapılandırma dosyasıdır. Azure’da yinelemeli bir geliştirme deneyimi sağlamak için Docker ve Kubernetes yapıtlarını ek yapılandırmayla tamamlar.
 
 ## <a name="build-and-run-code-in-kubernetes"></a>Kubernetes'de kodu oluşturma ve çalıştırma
 Şimdi kodumuzu çalıştıralım! Terminal penceresinde, bu komutu webfrontend **kök kod klasöründen** çalıştırın:
@@ -130,7 +126,7 @@ Komutun çıkışını gözden geçirin; ilerledikçe bazı şeyler göreceksini
 > Bu adımlar, `up` komutu ilk kez çalıştırıldığında biraz uzun sürer ama izleyen çalıştırmalar daha hızlı olacaktır.
 
 ### <a name="test-the-web-app"></a>Web uygulamasını test etme
-*Uygulamanın başlattığı* iletinin konsol çıkışını tarayın, `up` komutun tamamlandığını onaylayarak:
+`up` komutunun tamamlandığını onaylayan, *uygulama tarafından başlatılan* ileti için konsol çıkışını tarayın:
 
 ```
 Service 'webfrontend' port 80 (TCP) is available at 'http://localhost:<port>'
@@ -151,20 +147,20 @@ webfrontend-5798f9dc44-99fsd: Now listening on: http://[::]:80
 webfrontend-5798f9dc44-99fsd: Application started. Press Ctrl+C to shut down.
 ```
 
-`up` Komutun çıktısındaki hizmet için genel URL 'yi belirler. İçinde `.azds.io`biter. Yukarıdaki örnekte, genel URL olur `http://webfrontend.1234567890abcdef1234.eus.azds.io/`.
+`up` komutundan çıkışta hizmetin genel URL 'sini belirler. `.azds.io`biter. Yukarıdaki örnekte, genel URL `http://webfrontend.1234567890abcdef1234.eus.azds.io/`.
 
-Web uygulamanızı görmek için genel URL 'YI bir tarayıcıda açın. Ayrıca, uyarı `stdout` ve `stderr` çıkış, Web uygulamanızla etkileşime geçerek *azds Trace* Terminal penceresine akışla kaydedilir. Ayrıca, sistemde ilerlediklerinde HTTP istekleri için izleme bilgilerini görürsünüz. Bu, geliştirme sırasında karmaşık çok hizmet çağrılarını izlemenizi kolaylaştırır. Dev Spaces tarafından eklenen araçlar bu istek izlemeyi sağlar.
+Web uygulamanızı görmek için genel URL 'YI bir tarayıcıda açın. Ayrıca, `stdout` ve `stderr` çıkışı, Web uygulamanızla etkileşime geçerek *azds Trace* Terminal penceresine akışla kaydedilir. Ayrıca, sistemde ilerlediklerinde HTTP istekleri için izleme bilgilerini görürsünüz. Bu, geliştirme sırasında karmaşık çok hizmet çağrılarını izlemenizi kolaylaştırır. Dev Spaces tarafından eklenen araçlar bu istek izlemeyi sağlar.
 
 ![azds izleme Terminal penceresi](media/get-started-netcore/azds-trace.png)
 
 
 > [!Note]
-> Genel URL 'nin yanı sıra, konsol çıkışında görüntülenen alternatif `http://localhost:<portnumber>` URL 'yi de kullanabilirsiniz. Localhost URL'sini kullanırsanız kapsayıcı yerel olarak çalışıyor gibi görünebilir, ancak gerçekte AKS'de çalışıyordur. Azure Dev Spaces, Kubernetes *bağlantı noktası-iletme* işlevini kullanarak localhost bağlantı noktasını aks 'de çalışan kapsayıcıya eşler. Bu, yerel makinenizden hizmetle etkileşimde bulunmayı kolaylaştırır.
+> Genel URL 'nin yanı sıra, konsol çıkışında görüntülenen alternatif `http://localhost:<portnumber>` URL 'sini de kullanabilirsiniz. Localhost URL'sini kullanırsanız kapsayıcı yerel olarak çalışıyor gibi görünebilir, ancak gerçekte AKS'de çalışıyordur. Azure Dev Spaces, Kubernetes *bağlantı noktası-iletme* işlevini kullanarak localhost bağlantı noktasını aks 'de çalışan kapsayıcıya eşler. Bu, yerel makinenizden hizmetle etkileşimde bulunmayı kolaylaştırır.
 
 ### <a name="update-a-content-file"></a>İçerik dosyası güncelleştirme
 Azure Dev Spaces yalnızca kodu Kubernetes’te çalıştırmaya yönelik değildir; aynı zamanda kod değişikliklerinizin buluttaki bir Kubernetes ortamında uygulandığını hızlıca ve yinelenerek görmenizi sağlar.
 
-1. `./Views/Home/Index.cshtml` dosyasını bulun ve HTML dosyasında bir düzenleme yapın. Örneğin, aşağıdakine benzer bir şekilde [ `<h2>Application uses</h2>` okunan satır 73](https://github.com/Azure/dev-spaces/blob/master/samples/dotnetcore/getting-started/webfrontend/Views/Home/Index.cshtml#L73) ' i değiştirin: 
+1. `./Views/Home/Index.cshtml` dosyasını bulun ve HTML dosyasında bir düzenleme yapın. Örneğin, `<h2>Application uses</h2>`şu şekilde [okunan satır 73](https://github.com/Azure/dev-spaces/blob/master/samples/dotnetcore/getting-started/webfrontend/Views/Home/Index.cshtml#L73) ' i değiştirin: 
 
     ```html
     <h2>Hello k8s in Azure!</h2>
@@ -226,7 +222,7 @@ Kubernetes’te kodunuzun hatalarını ayıklamak için **F5**’e basın.
 
 ![](media/common/vscode-status-bar-url.png)
 
-Sunucu tarafı kod dosyasında (örneğin `Controllers/HomeController.cs` kaynak dosyasındaki `About()` işlevi içinde) bir kesme noktası belirleyin. Tarayıcı sayfasının yenilenmesi, kesme noktasına ulaşılmasına neden olur.
+Sunucu tarafı kod dosyasında (örneğin `About()` kaynak dosyasındaki `Controllers/HomeController.cs` işlevi içinde) bir kesme noktası belirleyin. Tarayıcı sayfasının yenilenmesi, kesme noktasına ulaşılmasına neden olur.
 
 Kodun yerel olarak yürütülmesi durumunda olduğu gibi, çağrı yığını, yerel değişkenler, özel durum bilgileri vb. hata ayıklama bilgilerine tam erişiminiz vardır.
 

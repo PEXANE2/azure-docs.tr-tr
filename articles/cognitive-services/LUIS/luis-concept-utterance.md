@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: diberry
-ms.openlocfilehash: 8069b3b9c9a226e29a3eae3261948ee92291726d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7412677773b60a1894a6ece7251e797bfddee091
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73486633"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280805"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>LUSıS uygulamanız için nelerin iyi olduğunu anlayın
 
@@ -60,17 +60,17 @@ Bu örnek aşağıdaki adımları uygulayın:
 |Bir bilgisayar almak istiyorum, nasıl gidebilirim?|
 |Bir bilgisayar ne zaman olabilir?| 
 
-Buradaki temel terim, "bilgisayar" olarak farklılık gösterir. Masaüstü bilgisayar, dizüstü bilgisayar, iş istasyonu veya hatta yalnızca makine gibi alternatifleri kullanın. LUSıS, bağlamdaki Eşanlamlı sözcükleri akıllıca algılar, ancak eğitim için söyler oluşturduğunuzda bunları değiştirmek daha iyidir.
+Buradaki temel terim, "bilgisayar" olarak farklılık gösterir. Masaüstü bilgisayar, dizüstü bilgisayar, iş istasyonu veya hatta yalnızca makine gibi alternatifleri kullanın. LUU bağlamdaki Eşanlamlı sözcükleri akıllıca çıkarabilir, ancak eğitim için utumslar oluştururken bunları değiştirmek her zaman daha iyidir.
 
 ## <a name="example-utterances-in-each-intent"></a>Her amaç için örnek söylenme
 
-Her bir amaç, en az 15 örnek bir olmalıdır. Herhangi bir örnek elde gerektirmeyen bir amaç varsa, LUO 'yı eğitemeyeceksiniz. Bir veya çok az örnek ile ilgili bir amaç varsa, LUARA, amacı doğru tahmin etmez. 
+Her bir amaç, en az 15 örnek bir olmalıdır. Herhangi bir örnek elde gerektirmeyen bir amaç varsa, LUO 'yı eğitemeyeceksiniz. Bir veya çok az örnek ile ilgili bir amaç varsa, Lu, amacı doğru tahmin edemeyebilir. 
 
 ## <a name="add-small-groups-of-15-utterances-for-each-authoring-iteration"></a>Her yazma yinelemesi için küçük sayıda 15 utterations ekleyin
 
 Modelin her yinelemesinde, büyük miktarlarda sayı eklemeyin. Sayıları 15 ' te ekleyin. Yeniden [eğitin](luis-how-to-train.md), [yayımlayın](luis-how-to-publish-app.md)ve [Test](luis-interactive-test.md) edin.  
 
-LUSıS, lular model yazarı tarafından dikkatle seçilmiş olan deterleri olan etkili modeller oluşturur. Çok fazla sayıda söyleyme eklemek karışıklık sunduğundan önemli değildir.  
+LUSıS, lular model yazarı tarafından dikkatle seçilmiş olan deterleri olan etkili modeller oluşturur. Çok fazla sayıda söyleyme eklemek karışıklık sunduğundan önemli değildir.
 
 Birkaç noktadır başlamak daha iyidir, ardından doğru amaç tahmini ve varlık ayıklama için [uç nokta utslerini gözden geçirin](luis-how-to-review-endpoint-utterances.md) .
 
@@ -108,11 +108,11 @@ Normalleştirme, örnek ifade veya tahmin yanıtlarınızda noktalama ve aksanla
 
 ### <a name="punctuation-marks"></a>Noktalama işaretleri
 
-Noktalama, LUSıS 'de ayrı bir belirteçtir. Uçta nokta içermeyen bir nokta ile sonunda bir nokta içeren bir söylenişi iki ayrı tanüler ve iki farklı tahmin elde edebilir. 
+Noktalama, LUIS, ayrı bir belirteçtir. Uçta nokta içermeyen bir nokta ile sonunda bir nokta içeren bir söylenişi iki ayrı tanüler ve iki farklı tahmin elde edebilir. 
 
 Noktalama işareti normalleştirilmezse, bazı istemci uygulamalar bu işaretlere anlam yerleştirebilir, varsayılan olarak, Lu, noktalama işaretlerini yoksayar. Her iki stilin de aynı göreli puanları döndürmesi için, örnek uttlarınızın hem noktalama işaretlerini hem de noktalama işaretlerini kullantığınızdan emin olun. 
 
-Modelin noktalama [işaretlerini (noktalama](luis-concept-utterance.md) işaretleri içeren ve olmayan) veya özel sözdizimi ile noktalama işaretlerini gözardı etmek daha kolay olan [desenlerdeki](luis-concept-patterns.md) noktalama işaretlerini işlediği emin olun: `I am applying for the {Job} position[.]`
+Modelin noktalama işaretlerini (noktalama işaretleri içeren ve olmayan) veya özel sözdizimi ile noktalama işaretlerini gözardı etmek daha kolay olan [desenlerdeki](luis-concept-patterns.md) noktalama işaretlerini işlediği emin olun: `I am applying for the {Job} position[.]`
 
 Noktalama, istemci uygulamanızda belirli bir anlamı yoksa, noktalama işaretlerini normalleştirerek [noktalama işaretlerini yok saymayı](#utterance-normalization) düşünün. 
 
@@ -136,18 +136,18 @@ Modelinize eğitilen, yayımladım ve [uç nokta](luis-glossary.md#endpoint) sor
 
 [En iyi uygulamaları](luis-concept-best-practices.md) gözden geçirin ve bunları düzenli yazma döngünüzün bir parçası olarak uygulayın.
 
-## <a name="label-for-word-meaning"></a>Sözcük anlamı etiketi
+## <a name="label-for-word-meaning"></a>Word anlamı etiketi
 
-Sözcük seçimi veya sözcük düzenlemesi aynıysa, ancak aynı şeyi içermiyorsa, varlıkla etiketlemeyin. 
+Word choice veya word düzenleme aynıdır, ancak aynı şeyi anlamına gelmez, bu varlıkla etiket değil. 
 
-Aşağıdaki söyleyenlerdeki sözcük `fair` bir hograf. Aynı şekilde yazılmış ancak farklı bir anlamı vardır:
+Aşağıdaki konuşma, word `fair` olan bir eş sesli sözcük. Aynı yazıldığından, ancak farklı bir anlama sahiptir:
 
-|İfade|
+|Konuşma|
 |--|
-|Bu yaz Seattle alanında ne tür bir ilçe FAIRS oluyor?|
-|Seattle incelemesi için geçerli derecelendirme mi?|
+|Ne tür bir ilçe fairs yapıldığını Seattle alanında bu yaz?|
+|Geçerli derecelendirme Seattle gözden geçirilmek üzere adil mi?|
 
-Tüm olay verilerini bulmak için bir olay varlığı istediyseniz, sözcüğü ilk utterde `fair` etiketleyin, ancak ikinciden değil.
+Tüm olay verileri bulmak için bir olay varlık istediyseniz, word etiket `fair` ilk utterance, ancak ikinci içinde değil.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4a0a005d096702b864c770675a427184547a2b44
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: a86c809e239a84b2ec6910c47a17b935c440c741
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185714"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286991"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Azure Bilişsel Arama ortak Dizin Oluşturucu hataları ve uyarıları sorunlarını giderme
 
@@ -46,7 +46,7 @@ API sürümü `2019-05-06`başlayarak, öğe düzeyinde Dizin Oluşturucu hatala
 
 Dizin Oluşturucu, veri kaynağından belgeyi okuyamadı. Bunun nedeni aşağıdakiler olabilir:
 
-| Neden | Ayrıntılar/örnek | Çözünürlük |
+| Neden | Ayrıntılar/örnek | Çözüm |
 | --- | --- | --- |
 | farklı belgeler genelinde tutarsız alan türleri | Değerin türü sütun türüyle eşleşmiyor. `'{47.6,-122.1}'` yazarlar sütununda depolanamadı.  Beklenen tür JArray. | Her alanın türünün farklı belgeler arasında aynı olduğundan emin olun. Örneğin, ilk belge `'startTime'` alanı bir tarih Tariheyse ve ikinci belgede bir dize ise, bu hata olur. |
 | veri kaynağının temelindeki hizmetten alınan hatalar | (Cosmos DB) `{"Errors":["Request rate is large"]}` | Sağlıklı olduğundan emin olmak için depolama örneğinizi denetleyin. Ölçeklendirmeyi/bölümlemeyi ayarlamanız gerekebilir. |
@@ -57,7 +57,7 @@ Dizin Oluşturucu, veri kaynağından belgeyi okuyamadı. Bunun nedeni aşağıd
 ## <a name="error-could-not-extract-document-content"></a>Hata: belge içeriği ayıklanamadı
 Blob veri kaynağı olan Dizin Oluşturucu, içeriği belgeden (örneğin, bir PDF dosyası) ayıklayamadı. Bunun nedeni aşağıdakiler olabilir:
 
-| Neden | Ayrıntılar/örnek | Çözünürlük |
+| Neden | Ayrıntılar/örnek | Çözüm |
 | --- | --- | --- |
 | blob boyut sınırının üzerinde | Belge, geçerli hizmet katmanınız için belge ayıklama için en büyük boyut `'134217728'` baytı aşan `'150441598'` bayttır. | [blob dizin oluşturma hataları](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
 | blob desteklenmeyen içerik türüne sahip | Belge desteklenmeyen içerik türüne sahip `'image/png'` | [blob dizin oluşturma hataları](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
@@ -69,7 +69,7 @@ Blob veri kaynağı olan Dizin Oluşturucu, içeriği belgeden (örneğin, bir P
 ## <a name="error-could-not-parse-document"></a>Hata: belge ayrıştırılamadı
 Dizin Oluşturucu veri kaynağından belgeyi okudu, ancak belge içeriği belirtilen alan eşleme şemasına dönüştürülürken bir sorun oluştu. Bunun nedeni aşağıdakiler olabilir:
 
-| Neden | Ayrıntılar/örnek | Çözünürlük |
+| Neden | Ayrıntılar/örnek | Çözüm |
 | --- | --- | --- |
 | Belge anahtarı eksik | Belge anahtarı eksik veya boş olamaz | Tüm belgelerin geçerli belge anahtarlarına sahip olduğundan emin olun |
 | Belge anahtarı geçersiz | Belge anahtarı 1024 karakterden uzun olamaz | Belge anahtarını doğrulama gereksinimlerini karşılayacak şekilde değiştirin. |
@@ -81,7 +81,7 @@ Dizin Oluşturucu veri kaynağından belgeyi okudu, ancak belge içeriği belirt
 ## <a name="error-could-not-execute-skill"></a>Hata: yetenek yürütülemedi
 Dizin Oluşturucu beceri içinde bir yetenek çalıştıramıyor.
 
-| Neden | Ayrıntılar/örnek | Çözünürlük |
+| Neden | Ayrıntılar/örnek | Çözüm |
 | --- | --- | --- |
 | Geçici bağlantı sorunları | Geçici bir hata oluştu. Lütfen daha sonra tekrar deneyin. | Bazen beklenmedik bağlantı sorunları var. Belgeyi Dizin oluşturucudan daha sonra tekrar çalıştırmayı deneyin. |
 | Olası ürün hatası | Beklenmeyen bir hata oluştu. | Bu, bilinmeyen bir hata sınıfını gösterir ve bir ürün hatası olduğu anlamına gelebilir. Yardım almak için lütfen bir [destek bileti](https://ms.portal.azure.com/#create/Microsoft.Support) girin. |
@@ -140,7 +140,7 @@ Oluşturduğunuz özel bir yeteneğe sahip bir zaman aşımı hatasıyla karşı
 
 Belge okundu ve işlendi, ancak Dizin Oluşturucu onu arama dizinine ekleyemedi. Bunun nedeni aşağıdakiler olabilir:
 
-| Neden | Ayrıntılar/örnek | Çözünürlük |
+| Neden | Ayrıntılar/örnek | Çözüm |
 | --- | --- | --- |
 | Bir alan çok büyük bir terim içeriyor | Belgenizdeki bir terim [32 KB sınırından](search-limits-quotas-capacity.md#api-request-limits) daha büyük | Alanın filtrelenebilir, çok yönlü veya sıralanabilir olarak yapılandırılmadığından emin olmak için bu kısıtlamayı önleyebilirsiniz.
 | Belge dizine eklenemeyecek kadar büyük | Belge, [en yüksek API istek boyutundan](search-limits-quotas-capacity.md#api-request-limits) daha büyük | [Büyük veri kümelerini dizin oluşturma](search-howto-large-index.md)
@@ -195,7 +195,7 @@ Eksik giriş durumunda varsayılan bir değer sağlamak istiyorsanız, [koşullu
 }
 ```
 
-| Neden | Ayrıntılar/örnek | Çözünürlük |
+| Neden | Ayrıntılar/örnek | Çözüm |
 | --- | --- | --- |
 | Beceri girişi yanlış türde | Gerekli yetenek girişi `X` `String`beklenen türde değil. Gerekli yetenek girişi `X` beklenen biçimde değil. | Bazı yetenekler belirli türlerin girdilerini bekler, örneğin yaklaşım [becerisi](cognitive-search-skill-sentiment.md) `text` bir dize olmasını bekler. Giriş dize olmayan bir değer belirtiyorsa, yetenek yürütülmez ve çıkış oluşturmaz. Veri ayarlamış olduğunuz giriş değerlerinin türünde Tekdüzen olduğundan emin olun veya girişi önceden işlemek için [özel bir Web API 'si](cognitive-search-custom-skill-web-api.md) kullanın. Yeteneği bir dizi üzerinden yineleyorsanız, yetenek bağlamını ve girişin doğru konumlarda `*` olduğunu kontrol edin. Genellikle bağlam ve giriş kaynağı diziler için `*` bitmelidir. |
 | Yetenek girişi eksik | Gerekli yetenek girişi `X` eksik. | Tüm belgeleriniz bu uyarıyı alıyorsa, büyük olasılıkla giriş yollarında bir yazım hatası vardır ve özellik adının büyük küçük harf, ek veya eksik `*` ve veri kaynağından alınan belgeler gerekli girdileri tanımlar. |
@@ -291,3 +291,19 @@ Varolmayan/null olmayan verilere başvuran çıkış alanı eşlemeleri, her bel
 
 ## <a name="warning-the-data-change-detection-policy-is-configured-to-use-key-column-x"></a>Uyarı: veri değişikliği algılama ilkesi ' X ' anahtar sütununu kullanacak şekilde yapılandırıldı
 [Veri değişikliği algılama ilkeleri](https://docs.microsoft.com/rest/api/searchservice/create-data-source#data-change-detection-policies) , değişikliği algılamak için kullandıkları sütunlar için özel gereksinimlere sahiptir. Bu gereksinimlerden biri, kaynak öğe her değiştirildiğinde bu sütunun Güncellenme öğesidir. Başka bir gereksinim, bu sütun için yeni değerin önceki değerden daha büyük olması. Anahtar sütunlar, her güncelleştirmede değişmediği için bu gereksinimi yerine getirmiyor. Bu sorunu geçici olarak çözmek için değişiklik algılama ilkesi için farklı bir sütun seçin.
+
+<a name="document-text-appears-to-be-utf-16-encoded-but-is-missing-a-byte-order-mark"/>
+
+## <a name="warning-document-text-appears-to-be-utf-16-encoded-but-is-missing-a-byte-order-mark"></a>Uyarı: belge metni UTF-16 kodlamalı görünüyor, ancak bir bayt sıra işareti eksik
+
+[Dizin Oluşturucu ayrıştırma modları](https://docs.microsoft.com/rest/api/searchservice/create-indexer#blob-configuration-parameters) , metnin ayrıştırmadan önce nasıl kodlandığını bilmelidir. Metin kodlamasının en yaygın iki yolu UTF-16 ve UTF-8 ' dir. UTF-8, her karakterin 1 bayt ve 4 bayt uzunluğunda olduğu değişken uzunlukta bir kodlamadır. UTF-16, her karakterin 2 bayt uzunluğunda olduğu sabit uzunluklu bir kodlamadır. UTF-16, "big endian" ve "little endian" iki farklı çeşitlere sahiptir. Metin kodlaması, metinden önceki bir bayt dizisi olan "bayt sırası işareti" tarafından belirlenir.
+
+| Encoding | Bayt sıra Işareti |
+| --- | --- |
+| UTF-16 Big endian | 0xFE 0xFF |
+| UTF-16 little endian | 0xFF 0xFE |
+| UTF-8 | 0xEF 0xBB 0xBF |
+
+Bir bayt sıra işareti yoksa, metnin UTF-8 olarak kodlandığını kabul edilir.
+
+Bu uyarıyı geçici olarak çözmek için, bu Blobun metin kodlamasının ne olduğunu saptayın ve uygun bayt sırası işaretini ekleyin.

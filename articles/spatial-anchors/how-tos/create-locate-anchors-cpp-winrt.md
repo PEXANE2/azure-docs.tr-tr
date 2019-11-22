@@ -1,48 +1,48 @@
 ---
-title: Oluşturma ve C +'da Azure uzamsal bağlayıcılarını kullanarak yer işaretleri bulun +/ WinRT | Microsoft Docs
-description: Oluşturma ve C +'da Azure uzamsal bağlayıcılarını kullanarak yer işaretleri bulun, ayrıntılı açıklama +/ WinRT.
+title: /Wınrt 'de C++bağlantıları oluşturma & bulma
+description: C++/Winrtthe Azure uzamsal bağlayıcılarını kullanarak bağlantı oluşturma ve bulma hakkında ayrıntılı açıklama.
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e8cacb443a9fc13d742f84b92136be7428375fc6
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 9da98c0908f2164b8b03db5ec0e67802e782e2c4
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67669222"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270247"
 ---
-# <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-cwinrt"></a>Oluşturma ve C +'da Azure uzamsal bağlayıcılarını kullanarak yer işaretleri bulun +/ WinRT
+# <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-cwinrt"></a>/Wınrt 'de C++Azure uzamsal bağlayıcılarını kullanarak bağlantı oluşturma ve bulma
 
 > [!div  class="op_single_selector"]
-> * [Unity](create-locate-anchors-unity.md)
+> * ['Yi](create-locate-anchors-unity.md)
 > * [Objective-C](create-locate-anchors-objc.md)
 > * [Swift](create-locate-anchors-swift.md)
 > * [Android Java](create-locate-anchors-java.md)
 > * [C++/NDK](create-locate-anchors-cpp-ndk.md)
-> * [C++/WinRT](create-locate-anchors-cpp-winrt.md)
+> * [C++/Wınrt](create-locate-anchors-cpp-winrt.md)
 
-Azure uzamsal yer işaretleri, yer işaretleri dünyanın farklı cihazlar arasında paylaşmak izin verin. Bu, birkaç farklı geliştirme ortamlarında destekler. Bu makalede, sizi Azure uzamsal bağlayıcılarını SDK C +'da kullanmak nasıl ele alacağız +/ WinRT,:
+Azure uzamsal bağlantıları, dünyanın farklı cihazları arasında bağlantıları paylaşmanızı sağlar. Çeşitli farklı geliştirme ortamlarını destekler. Bu makalede,/Wınrt ' de C++Azure uzamsal bağlayıcı SDK 'sını nasıl kullanacağınızı inceleyeceğiz:
 
-- Doğru şekilde ayarlayın ve Azure uzamsal bağlayıcılarını oturumu yönetin.
-- Oluşturma ve yerel bağlayıcıları üzerinde özelliklerini ayarlayın.
+- Azure uzamsal bağlayıcı oturumunu doğru şekilde kurun ve yönetin.
+- Yerel bağlayıcıların özelliklerini oluşturun ve ayarlayın.
 - Bunları buluta yükleyin.
-- Bulun ve uzamsal uygulamasının bulut bağlayıcılarını silin.
+- Bulut uzamsal bağlayıcılarını bulun ve silin.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu kılavuzu tamamlamak için sahip olduğunuzdan emin olun:
+Bu kılavuzu gerçekleştirmek için şunları yaptığınızdan emin olun:
 
-- Okumak [Azure uzamsal yer işaretleri genel bakış](../overview.md).
-- Biri tamamlandı [5 dakikalık hızlı Başlangıçlar](../index.yml).
-- C++ hakkında temel bilgilere ve <a href="https://docs.microsoft.com/windows/uwp/cpp-and-winrt-apis/intro-to-using-cpp-with-winrt" target="_blank">Windows Runtime API'ları</a>.
+- [Azure uzamsal Tutturucuların genel bakış](../overview.md)bölümünü okuyun.
+- [5 dakikalık hızlı](../index.yml)başlangıçlardan biri tamamlandı.
+- Temel bilgi C++ ve <a href="https://docs.microsoft.com/windows/uwp/cpp-and-winrt-apis/intro-to-using-cpp-with-winrt" target="_blank">Windows çalışma zamanı API 'leri</a>.
 
 [!INCLUDE [Start](../../../includes/spatial-anchors-create-locate-anchors-start.md)]
 
-Daha fazla bilgi edinin [CloudSpatialAnchorSession](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession) sınıfı.
+[CloudSpatialAnchorSession](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession) sınıfı hakkında daha fazla bilgi edinin.
 
 ```cpp
     SpatialAnchorsFactory m_asafactory{ nullptr };
@@ -55,7 +55,7 @@ Daha fazla bilgi edinin [CloudSpatialAnchorSession](https://docs.microsoft.com/c
 
 [!INCLUDE [Account Keys](../../../includes/spatial-anchors-create-locate-anchors-account-keys.md)]
 
-Daha fazla bilgi edinin [SessionConfiguration](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/sessionconfiguration) sınıfı.
+[Sessionconfiguration](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/sessionconfiguration) sınıfı hakkında daha fazla bilgi edinin.
 
 ```cpp
     auto configuration = m_cloudSession.Configuration();
@@ -71,7 +71,7 @@ Daha fazla bilgi edinin [SessionConfiguration](https://docs.microsoft.com/cpp/ap
 
 [!INCLUDE [Access Tokens Event](../../../includes/spatial-anchors-create-locate-anchors-access-tokens-event.md)]
 
-Daha fazla bilgi edinin [TokenRequiredDelegate](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/tokenrequireddelegate) temsilci.
+[Tokenrequireddelegate](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/tokenrequireddelegate) temsilcisi hakkında daha fazla bilgi edinin.
 
 ```cpp
     m_accessTokenRequiredToken = m_cloudSession.TokenRequired(winrt::auto_revoke, [](auto&&, auto&& args) {
@@ -120,7 +120,7 @@ Daha fazla bilgi edinin [TokenRequiredDelegate](https://docs.microsoft.com/cpp/a
 
 [!INCLUDE [Setup](../../../includes/spatial-anchors-create-locate-anchors-setup-non-ios.md)]
 
-Daha fazla bilgi edinin [Başlat](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#start) yöntemi.
+[Başlangıç](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#start) yöntemi hakkında daha fazla bilgi edinin.
 
 ```cpp
     m_cloudSession.Start();
@@ -128,7 +128,7 @@ Daha fazla bilgi edinin [Başlat](https://docs.microsoft.com/cpp/api/spatial-anc
 
 [!INCLUDE [Frames](../../../includes/spatial-anchors-create-locate-anchors-frames.md)]
 
-Daha fazla bilgi edinin [ProcessFrame](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession) yöntemi.
+[Processframe](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession) yöntemi hakkında daha fazla bilgi edinin.
 
 ```cpp
     m_cloudSession->ProcessFrame(ar_frame_);
@@ -136,7 +136,7 @@ Daha fazla bilgi edinin [ProcessFrame](https://docs.microsoft.com/cpp/api/spatia
 
 [!INCLUDE [Feedback](../../../includes/spatial-anchors-create-locate-anchors-feedback.md)]
 
-Daha fazla bilgi edinin [SessionUpdatedDelegate](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/sessionupdateddelegate) temsilci.
+[Sessionupdateddelegate](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/sessionupdateddelegate) temsilcisi hakkında daha fazla bilgi edinin.
 
 ```cpp
     m_sessionUpdatedToken = m_cloudSession.SessionUpdated(winrt::auto_revoke, [this](auto&&, auto&& args)
@@ -150,7 +150,7 @@ Daha fazla bilgi edinin [SessionUpdatedDelegate](https://docs.microsoft.com/cpp/
 
 [!INCLUDE [Creating](../../../includes/spatial-anchors-create-locate-anchors-creating.md)]
 
-Daha fazla bilgi edinin [CloudSpatialAnchor](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchor) sınıfı.
+[CloudSpatialAnchor](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchor) sınıfı hakkında daha fazla bilgi edinin.
 
 ```cpp
     // Initialization
@@ -186,7 +186,7 @@ Daha fazla bilgi edinin [CloudSpatialAnchor](https://docs.microsoft.com/cpp/api/
 
 [!INCLUDE [Session Status](../../../includes/spatial-anchors-create-locate-anchors-session-status.md)]
 
-Daha fazla bilgi edinin [GetSessionStatusAsync](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#getsessionstatusasync) yöntemi.
+[Getsessionstatusasync](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#getsessionstatusasync) yöntemi hakkında daha fazla bilgi edinin.
 
 ```cpp
     SessionStatus status = co_await m_cloudSession.GetSessionStatusAsync();
@@ -196,7 +196,7 @@ Daha fazla bilgi edinin [GetSessionStatusAsync](https://docs.microsoft.com/cpp/a
 
 [!INCLUDE [Setting Properties](../../../includes/spatial-anchors-create-locate-anchors-setting-properties.md)]
 
-Daha fazla bilgi edinin [AppProperties](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchor#appproperties) yöntemi.
+[Appproperties](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchor#appproperties) metodu hakkında daha fazla bilgi edinin.
 
 ```cpp
     CloudSpatialAnchor cloudAnchor = m_asafactory.CreateCloudSpatialAnchor();
@@ -209,7 +209,7 @@ Daha fazla bilgi edinin [AppProperties](https://docs.microsoft.com/cpp/api/spati
 
 [!INCLUDE [Update Anchor Properties](../../../includes/spatial-anchors-create-locate-anchors-updating-properties.md)]
 
-Daha fazla bilgi edinin [UpdateAnchorPropertiesAsync](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#updateanchorpropertiesasync) yöntemi.
+[UpdateAnchorPropertiesAsync](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#updateanchorpropertiesasync) yöntemi hakkında daha fazla bilgi edinin.
 
 ```cpp
     CloudSpatialAnchor anchor = /* locate your anchor */;
@@ -219,7 +219,7 @@ Daha fazla bilgi edinin [UpdateAnchorPropertiesAsync](https://docs.microsoft.com
 
 [!INCLUDE [Getting Properties](../../../includes/spatial-anchors-create-locate-anchors-getting-properties.md)]
 
-Daha fazla bilgi edinin [GetAnchorPropertiesAsync](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#getanchorpropertiesasync) yöntemi.
+[GetAnchorPropertiesAsync](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#getanchorpropertiesasync) yöntemi hakkında daha fazla bilgi edinin.
 
 ```cpp
     CloudSpatialAnchor anchor = co_await m_cloudSession.GetAnchorPropertiesAsync(LR"(anchorId)");
@@ -232,7 +232,7 @@ Daha fazla bilgi edinin [GetAnchorPropertiesAsync](https://docs.microsoft.com/cp
 
 [!INCLUDE [Expiration](../../../includes/spatial-anchors-create-locate-anchors-expiration.md)]
 
-Daha fazla bilgi edinin [sona erme](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchor#expiration) yöntemi.
+[Süre sonu](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchor#expiration) yöntemi hakkında daha fazla bilgi edinin.
 
 ```cpp
     const int64_t oneWeekFromNowInHours = 7 * 24;
@@ -242,7 +242,7 @@ Daha fazla bilgi edinin [sona erme](https://docs.microsoft.com/cpp/api/spatial-a
 
 [!INCLUDE [Locate](../../../includes/spatial-anchors-create-locate-anchors-locating.md)]
 
-Daha fazla bilgi edinin [CreateWatcher](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#createwatcher) yöntemi.
+[Createizleyici](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#createwatcher) yöntemi hakkında daha fazla bilgi edinin.
 
 ```cpp
     AnchorLocateCriteria criteria = m_asafactory.CreateAnchorLocateCriteria();
@@ -252,7 +252,7 @@ Daha fazla bilgi edinin [CreateWatcher](https://docs.microsoft.com/cpp/api/spati
 
 [!INCLUDE [Locate Events](../../../includes/spatial-anchors-create-locate-anchors-locating-events.md)]
 
-Daha fazla bilgi edinin [AnchorLocatedDelegate](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/anchorlocateddelegate) temsilci.
+[Anchorlocateddelegate](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/anchorlocateddelegate) temsilcisi hakkında daha fazla bilgi edinin.
 
 ```cpp
     m_anchorLocatedToken = m_cloudSession.AnchorLocated(winrt::auto_revoke, [this](auto&&, auto&& args)
@@ -282,7 +282,7 @@ Daha fazla bilgi edinin [AnchorLocatedDelegate](https://docs.microsoft.com/cpp/a
 
 [!INCLUDE [Deleting](../../../includes/spatial-anchors-create-locate-anchors-deleting.md)]
 
-Daha fazla bilgi edinin [DeleteAnchorAsync](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#deleteanchorasync) yöntemi.
+[Deleteanchorasync](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#deleteanchorasync) yöntemi hakkında daha fazla bilgi edinin.
 
 ```cpp
     co_await m_cloudSession.DeleteAnchorAsync(cloudAnchor);
@@ -291,7 +291,7 @@ Daha fazla bilgi edinin [DeleteAnchorAsync](https://docs.microsoft.com/cpp/api/s
 
 [!INCLUDE [Stopping](../../../includes/spatial-anchors-create-locate-anchors-stopping.md)]
 
-Daha fazla bilgi edinin [Durdur](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#stop) yöntemi.
+[Stop](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#stop) yöntemi hakkında daha fazla bilgi edinin.
 
 ```cpp
     m_cloudSession.Stop();
@@ -299,7 +299,7 @@ Daha fazla bilgi edinin [Durdur](https://docs.microsoft.com/cpp/api/spatial-anch
 
 [!INCLUDE [Resetting](../../../includes/spatial-anchors-create-locate-anchors-resetting.md)]
 
-Daha fazla bilgi edinin [sıfırlama](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#reset) yöntemi.
+[Reset](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#reset) yöntemi hakkında daha fazla bilgi edinin.
 
 ```cpp
     m_cloudSession.Reset();

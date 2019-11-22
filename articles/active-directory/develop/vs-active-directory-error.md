@@ -12,18 +12,18 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26f25daa01288959c38520f9713d35eb975d2df2
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: c6df50db564dac09785b460d158d4276ea8a215e
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73941377"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74271243"
 ---
 # <a name="diagnosing-errors-with-the-azure-active-directory-connected-service"></a>Azure Active Directory bağlı hizmeti ile hataları tanılama
 
-Önceki kimlik doğrulama kodu algılanırken, Azure Active Director Connect sunucusu uyumsuz bir kimlik doğrulama türü algıladı.
+Azure Active Directory bağlı hizmet, önceki kimlik doğrulama kodunu algılarken uyumsuz bir kimlik doğrulama türü algıladı.
 
-Bir projede önceki kimlik doğrulama kodunu doğru bir şekilde algılamak için, projenin oluşturulması gerekir.  Bu hatayı görürseniz ve projenizde önceki bir kimlik doğrulama kodunuz yoksa, yeniden derleyin ve tekrar deneyin.
+Bir projede önceki kimlik doğrulama kodunu doğru bir şekilde algılamak için projenin yeniden oluşturulması gerekir. Bu hatayı görürseniz ve projenizde önceki bir kimlik doğrulama kodunuz yoksa, yeniden derleyin ve tekrar deneyin.
 
 ## <a name="project-types"></a>Proje türleri
 

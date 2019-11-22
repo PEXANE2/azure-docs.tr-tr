@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory 'de kurumsal uygulama için Kullanıcı oturum açma işlemlerini devre dışı bırakma | Microsoft Docs
+title: Azure AD 'de kurumsal uygulama için Kullanıcı oturum açma işlemlerini devre dışı bırakma
 description: Bir kurumsal uygulamayı devre dışı bırakma, bir kullanıcının Azure Active Directory oturum açmasını sağlamak için
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a08779d171367d982392ae4e987fb46e019e61f
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 10553898376c4b9236ee62718fffccd45b12d70b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720271"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274085"
 ---
 # <a name="disable-user-sign-ins-for-an-enterprise-app-in-azure-active-directory"></a>Azure Active Directory ' de bir kurumsal uygulama için Kullanıcı oturum açma işlemlerini devre dışı bırakma
 

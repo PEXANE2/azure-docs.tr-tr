@@ -1,6 +1,6 @@
 ---
-title: Microsoft Authenticator App ile yedekleme ve kurtarma-Azure AD
-description: Microsoft Authenticator uygulamasını kullanarak hesap kimlik bilgilerinizi nasıl yedekleyeceğinizi ve kurtaracağınızı öğrenin.
+title: Microsoft Authenticator App ile hesapları yedekleme ve kurtarma-Azure AD
+description: Microsoft Authenticator uygulamasını kullanarak yedeklenmiş hesap kimlik bilgilerinizi nasıl yedekleyeceğinizi ve kurtaracağınızı öğrenin.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,14 +12,14 @@ ms.date: 08/22/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2404dd443c1e3ede1d3ad5a81888e9f805edb810
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 827213c8d243e9d66c58195e1d9400bed9c3e337
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820252"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74266994"
 ---
-# <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulamayla hesap kimlik bilgilerini yedekleme ve kurtarma
+# <a name="backup-and-recover-account-credentials-using-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulamasını kullanarak hesap kimlik bilgilerini yedekleme ve kurtarma
 
 **Şunlara uygulanır:**
 
@@ -125,7 +125,7 @@ Yedeğinizin kullanılabilir olmasının birkaç nedeni vardır:
 
 Hesap kimlik bilgilerinizi yeni cihazınıza yedeklediğinize ve kurtardığınıza göre kimliğinizi doğrulamak için Microsoft Authenticator uygulamasını kullanmaya devam edebilirsiniz. Daha fazla bilgi için bkz. [Microsoft Authenticator uygulamasını kullanarak hesaplarınızda oturum açma](user-help-sign-in.md).
 
-## <a name="related-articles"></a>İlgili makaleler:
+## <a name="related-articles"></a>İlgili makaleler
 
 - [Microsoft Authenticator uygulaması nedir?](user-help-auth-app-overview.md)
 

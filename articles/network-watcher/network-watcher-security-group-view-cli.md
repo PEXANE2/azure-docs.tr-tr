@@ -1,6 +1,7 @@
 ---
-title: Azure Ağ İzleyicisi güvenlik grubu görünümü - Azure CLI ile ağ güvenlik analiz | Microsoft Docs
-description: Bu makalede, bir sanal makine güvenliği'güvenlik grubu görünümü ile analiz etmek için Azure CLI'yı kullanmayı anlatmaktadır.
+title: Güvenlik grubu görünümü ile ağ güvenliğini çözümleme-Azure CLı
+titleSuffix: Azure Network Watcher
+description: Bu makalede, Azure CLı kullanarak bir sanal makine güvenliğini güvenlik grubu görünümüyle çözümlemek için nasıl kullanılacağı açıklanır.
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -14,49 +15,49 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 68222a90eb60ab4f84a34b5e46833128ea081ec1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 70460d3b46baa094f227f96733f8ac98fae9285b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64724445"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277842"
 ---
-# <a name="analyze-your-virtual-machine-security-with-security-group-view-using-azure-cli"></a>Azure CLI kullanarak bir güvenlik grubu görünümü ile sanal makine güvenlik analiz edin
+# <a name="analyze-your-virtual-machine-security-with-security-group-view-using-azure-cli"></a>Azure CLı kullanarak sanal makine güvenliğine güvenlik grubu görünümü ile çözümleyin
 
 > [!div class="op_single_selector"]
 > - [PowerShell](network-watcher-security-group-view-powershell.md)
 > - [Azure CLI](network-watcher-security-group-view-cli.md)
 > - [REST API](network-watcher-security-group-view-rest.md)
 
-Güvenlik grubu görünümü bir sanal makineye uygulanan yapılandırılmış ve etkin ağ güvenlik kuralları döndürür. Bu yetenek, Denetim ve ağ güvenlik grupları ve trafiği okunuyor emin olmak için bir VM üzerinde yapılandırılan kurallardan tanılamak kullanışlıdır doğru bir şekilde izin verilen veya reddedilen. Bu makalede, biz, Azure CLI kullanarak bir sanal makine için yapılandırılmış ve etkili güvenlik kuralları nasıl alınacağını göstermektedir
+Güvenlik grubu görünümü, bir sanal makineye uygulanan yapılandırılmış ve etkin ağ güvenlik kurallarını döndürür. Bu özellik, trafiğin doğru şekilde izin verilmesini veya reddedilmemesini sağlamak için bir sanal makinede yapılandırılan ağ güvenlik gruplarını ve kurallarını denetlemek ve tanılamak için yararlıdır. Bu makalede, Azure CLı kullanarak bir sanal makineye yapılandırılmış ve etkin güvenlik kurallarının nasıl alınacağını göstereceğiz
 
-Bu makaledeki adımları gerçekleştirmek için yapmanız [Azure komut satırı arabirimi için Mac, Linux ve Windows (CLI) yükleme](/cli/azure/install-azure-cli).
+Bu makaledeki adımları gerçekleştirmek için [Mac, Linux ve Windows Için Azure komut satırı arabirimini (CLI) yüklemeniz](/cli/azure/install-azure-cli)gerekir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu senaryo, zaten uyguladığınız adımları varsayar [Ağ İzleyicisi oluşturma](network-watcher-create.md) Ağ İzleyicisi oluşturmak için.
+Bu senaryo, ağ Izleyicisi oluşturmak için [ağ Izleyicisi oluşturma](network-watcher-create.md) bölümündeki adımları zaten izlediğinizi varsayar.
 
 ## <a name="scenario"></a>Senaryo
 
-Bu makalede ele alınan senaryo, belirli bir sanal makine için yapılandırılmış ve etkili güvenlik kurallarını alır.
+Bu makalede ele alınan senaryo, belirli bir sanal makine için yapılandırılmış ve etkin güvenlik kurallarını alır.
 
-## <a name="get-a-vm"></a>VM Al
+## <a name="get-a-vm"></a>VM al
 
-Bir sanal makine çalıştırmak için gerekli olan `vm list` cmdlet'i. Aşağıdaki komut, bir kaynak grubundaki sanal makineleri listeler:
+`vm list` cmdlet 'ini çalıştırmak için bir sanal makine gerekir. Aşağıdaki komut bir kaynak grubundaki sanal makineleri listeler:
 
 ```azurecli
 az vm list -resource-group resourceGroupName
 ```
 
-Sanal makine öğrendikten sonra kullanabileceğiniz `vm show` kendi kaynak kimliğini almak için cmdlet:
+Sanal makineyi öğrendikten sonra, kaynak kimliğini almak için `vm show` cmdlet 'ini kullanabilirsiniz:
 
 ```azurecli
 az vm show -resource-group resourceGroupName -name virtualMachineName
 ```
 
-## <a name="retrieve-security-group-view"></a>Güvenlik grubu görünümünü Al
+## <a name="retrieve-security-group-view"></a>Güvenlik grubu görünümünü al
 
-Sonraki adım, güvenlik grubu görünümü sonucu almasını sağlamaktır.
+Bir sonraki adım, güvenlik grubu görünüm sonucunu almak için kullanılır.
 
 ```azurecli
 az network watcher show-security-group-view --resource-group resourceGroupName --vm vmName
@@ -64,7 +65,7 @@ az network watcher show-security-group-view --resource-group resourceGroupName -
 
 ## <a name="viewing-the-results"></a>Sonuçları görüntüleme
 
-Aşağıdaki örnek, döndürülen sonuçların kısaltılmış yanıttır. Gruplar halinde ayrılmış sanal makine üzerindeki tüm etkin ve uygulanan güvenlik kuralları sonuçlarını göster **NetworkInterfaceSecurityRules**, **DefaultSecurityRules**, ve  **EffectiveSecurityRules**.
+Aşağıdaki örnek döndürülen sonuçların kısaltılmış bir yanıtı örneğidir. Sonuçlar, **Networkınterfacesecurityrules**, **Defaultsecurityrules**ve **securittivesecurityrules**gruplarında oluşan sanal makinede etkin ve uygulanan tüm güvenlik kurallarını gösterir.
 
 ```json
 {
@@ -156,6 +157,6 @@ Aşağıdaki örnek, döndürülen sonuçların kısaltılmış yanıttır. Grup
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ziyaret [denetimi ağ güvenlik grupları (NSG) Ağ İzleyicisi ile](network-watcher-nsg-auditing-powershell.md) ağ güvenlik gruplarının doğrulama otomatikleştirme hakkında bilgi edinmek için.
+Ağ güvenlik gruplarının doğrulanmasını otomatik hale getirmeyi öğrenmek için ağ [İzleyicisi ile ağ güvenlik grupları (NSG) denetimini](network-watcher-nsg-auditing-powershell.md) ziyaret edin.
 
-Ağ kaynaklarınıza ederek uygulanan güvenlik kuralları hakkında daha fazla bilgi [güvenlik grubu Görünümü'ne genel bakış](network-watcher-security-group-view-overview.md)
+[Güvenlik grubu görünümüne genel bakış ' ı](network-watcher-security-group-view-overview.md) ziyaret ederek ağ kaynaklarınıza uygulanan güvenlik kuralları hakkında daha fazla bilgi edinin

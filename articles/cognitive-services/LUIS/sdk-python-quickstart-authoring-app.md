@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 08/07/2019
 ms.author: diberry
-ms.openlocfilehash: 1b586af569a9406d7fe9fa3d05c198f62f32744f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: bbeb15fbe2fb4722cb564aec4f99eef338afd00a
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73672014"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280277"
 ---
 # <a name="quickstart-language-understanding-luis-authoring-client-library-for-python"></a>Hızlı başlangıç: Language Understanding (LUSıS) Python için istemci kitaplığı yazma
 
@@ -30,7 +30,7 @@ Python için Language Understanding (LUSıS) yazma istemci kitaplığını şu �
 
 [Başvuru belgeleri](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/index?view=azure-python) | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-luis/azure/cognitiveservices/language/luis) | [yazma paketi (Pypı)](https://pypi.org/project/azure-cognitiveservices-language-luis/) | [örnekleri](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Language Understanding (LUSıS) portal hesabı: [ücretsiz bir tane oluşturun](https://www.luis.ai).
 * [Python 3. x](https://www.python.org/)
@@ -39,7 +39,46 @@ Python için Language Understanding (LUSıS) yazma istemci kitaplığını şu �
 
 ### <a name="get-your-language-understanding-luis-starter-key"></a>Language Understanding (LUSıS) başlangıç anahtarınızı alın
 
-[Başlangıç anahtarınızı](luis-how-to-azure-subscription.md#starter-key)alın ve anahtar için `LUIS_AUTHORING_KEY` adı ve anahtar bölgesi için bir ortam değişkeni [olan `LUIS_REGION`bir ortam değişkeni oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
+Bir LUSıS yazma kaynağı oluşturarak [Başlangıç anahtarınızı](luis-how-to-azure-subscription.md#starter-key) alın. Bir sonraki adımda anahtarınızı ve anahtarın bölgesini saklayın.
+
+### <a name="create-an-environment-variable"></a>Ortam değişkeni oluşturma
+
+Anahtarınızı ve anahtarın bölgesini kullanarak, kimlik doğrulama için iki ortam değişkeni oluşturun:
+
+* `LUIS_AUTHORING_KEY`-isteklerinizin kimliğini doğrulamak için kaynak anahtarı.
+* `LUIS_REGION`-anahtarınızla ilişkili bölge. Örneğin, `westus`.
+
+İşletim sisteminiz için yönergeleri kullanın.
+
+#### <a name="windowstabwindows"></a>[Windows](#tab/windows)
+
+```console
+setx LUIS_AUTHORING_KEY <replace-with-your-luis-authoring-key
+setx LUIS_REGION <replace-with-your-luis-region>
+```
+
+Ortam değişkenini ekledikten sonra konsol penceresini yeniden başlatın.
+
+#### <a name="linuxtablinux"></a>[Linux](#tab/linux)
+
+```bash
+export LUIS_AUTHORING_KEY=<replace-with-your-luis-authoring-key>
+export LUIS_REGION=<replace-with-your-luis-region>
+```
+
+Ortam değişkenini ekledikten sonra değişiklikleri uygulamak için konsol pencerenizden `source ~/.bashrc` çalıştırın.
+
+#### <a name="macostabunix"></a>[macOS](#tab/unix)
+
+`.bash_profile`düzenleyin ve ortam değişkenini ekleyin:
+
+```bash
+export LUIS_AUTHORING_KEY=<replace-with-your-luis-authoring-key> 
+export LUIS_REGION=<replace-with-your-luis-region>
+```
+
+Ortam değişkenini ekledikten sonra değişiklikleri uygulamak için konsol pencerenizden `source .bash_profile` çalıştırın.
+***
 
 ### <a name="install-the-python-library-for-luis"></a>LUSıS için Python kitaplığını yükler
 
@@ -91,7 +130,7 @@ Anahtarınızla bir [Biliveservicescredentials](https://docs.microsoft.com/pytho
 
 [!code-python[Create LUIS client object](~/cognitive-services-quickstart-code/python/LUIS/application_quickstart.py?name=Client)]
 
-## <a name="create-a-luis-app"></a>LUSıS uygulaması oluşturma
+## <a name="create-a-luis-app"></a>Bir LUIS uygulaması oluşturma
 
 1. Hedefleri, varlıkları ve örnek kullanımları tutan doğal dil işleme (NLP) modelini içeren bir LUO uygulaması oluşturun. 
 
@@ -103,7 +142,7 @@ Anahtarınızla bir [Biliveservicescredentials](https://docs.microsoft.com/pytho
 ## <a name="create-intent-for-the-app"></a>Uygulama için amaç oluştur
 Bir LUıN uygulamasının modelindeki birincil nesne, amaç ' dır. Amaç, Kullanıcı utterlerinin bir gruplandırması ile _hizalanır._ Bir Kullanıcı soru sorabilir veya bir bot 'tan (veya başka bir istemci uygulamasından) belirli bir _amaçlanan_ yanıtı bulmak için bir ifade oluşturabilir. Bir uçuşmaya örnek olarak, hedef şehirdeki hava durumu hakkında bilgi isteyerek ve müşteri hizmetleri için iletişim bilgilerini soruyor.   
 
-[Model. Add _amacını](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.modeloperations?view=azure-python#add-intent-app-id--version-id--name-none--custom-headers-none--raw-false----operation-config-) kullanarak benzersiz bir amaç adı Ile uygulama kimliği, sürüm kimliği ve yeni amaç adını geçirin. 
+[Model. add_intent](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.modeloperations?view=azure-python#add-intent-app-id--version-id--name-none--custom-headers-none--raw-false----operation-config-) yöntemini benzersiz bir amaç adıyla kullanın, ardından uygulama kimliği, sürüm kimliği ve yeni amaç adını geçirin. 
 
 [!code-python[Create LUIS client app](~/cognitive-services-quickstart-code/python/LUIS/application_quickstart.py?name=addIntents)]
 
@@ -111,7 +150,7 @@ Bir LUıN uygulamasının modelindeki birincil nesne, amaç ' dır. Amaç, Kulla
 
 Varlıklar gerekli olmasa da, çoğu uygulama içinde bulunur. Varlık, kullanıcının amaç bilgisini almak için gerekli olan bilgileri Kullanıcı aracılığıyla ayıklar. Her biri kendi veri dönüştürme nesnesi (DTO) modelleriyle birlikte, çok sayıda [önceden oluşturulmuş](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.modeloperations?view=azure-python#add-prebuilt-app-id--version-id--prebuilt-extractor-names--custom-headers-none--raw-false----operation-config-) ve özel varlık türü vardır.  Uygulamanıza eklenecek ortak önceden oluşturulmuş varlıklar [Number](luis-reference-prebuilt-number.md), [datetimeV2](luis-reference-prebuilt-datetimev2.md), [geographyV2](luis-reference-prebuilt-geographyv2.md), [Ordinal](luis-reference-prebuilt-ordinal.md)içerir. 
 
-Bu **add_entities** yöntemi, iki role sahip `Location` basit bir varlık, `Class` basit bir varlık, `Flight` bileşik bir varlık oluşturdu ve çok sayıda önceden oluşturulmuş varlık ekliyor.
+Bu **add_entities** yöntemi iki role sahip `Location` basit bir varlık, `Class` basit bir varlık, `Flight` bileşik bir varlık oluşturdu ve çok sayıda önceden oluşturulmuş varlık ekliyor.
 
 Varlıkların bir amaç ile işaretlenmediğini bilmek önemlidir. Bunlar, genellikle birçok amaç için uygulanabilir. Yalnızca belirli bir amaç için örnek Kullanıcı utbotları işaretlenir.
 

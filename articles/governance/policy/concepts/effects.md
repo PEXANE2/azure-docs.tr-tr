@@ -3,12 +3,12 @@ title: Efektlerin nasıl çalıştığını anlama
 description: Azure Ilke tanımlarının uyumluluğun nasıl yönetildiğini ve raporlanmadığını belirten çeşitli etkileri vardır.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: c345f96ef5176c4afb3d46aaca2e9903c7911fb1
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 8338f3bf965f121a553a56c551d2095bf60e4880
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959899"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279505"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure İlkesi etkilerini anlama
 
@@ -571,6 +571,6 @@ Her atama ayrı ayrı değerlendirilir. Bu nedenle, hiç bir kaynak için bir f�
 - [Azure ilke örneklerindeki](../samples/index.md)örnekleri gözden geçirin.
 - [Azure İlkesi tanımı yapısını](definition-structure.md) gözden geçirin.
 - [Program aracılığıyla ilkelerin nasıl oluşturulduğunu](../how-to/programmatically-create.md)anlayın.
-- [Uyumluluk verilerini nasıl alabileceğinizi](../how-to/getting-compliance-data.md)öğrenin.
+- [Uyumluluk verilerini nasıl alabileceğinizi](../how-to/get-compliance-data.md)öğrenin.
 - [Uyumlu olmayan kaynakları nasıl düzelteceğinizi](../how-to/remediate-resources.md)öğrenin.
 - [Kaynakları Azure Yönetim gruplarıyla düzenleme](../../management-groups/overview.md)ile yönetim grubunun ne olduğunu inceleyin.

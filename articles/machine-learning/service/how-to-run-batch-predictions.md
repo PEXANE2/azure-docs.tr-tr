@@ -1,5 +1,5 @@
 ---
-title: Büyük miktarlarda veri üzerinde toplu çıkarımı Çalıştır
+title: Büyük verilerde toplu tahminleri Çalıştır
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning toplu çıkarımı kullanarak büyük miktarlardaki verileri zaman uyumsuz olarak nasıl alabileceğinizi öğrenin. Toplu çıkarım, büyük veri kullanım durumları için, kullanıma hazır olan paralel işleme yetenekleri sağlar ve yüksek aktarım hızı, yangın ve unutma çıkarımı için en iyi duruma getirir.
 services: machine-learning
@@ -11,12 +11,12 @@ ms.author: vaidyas
 author: vaidya-s
 ms.date: 11/04/2019
 ms.custom: Ignite2019
-ms.openlocfilehash: 4e7ddf7fc7b18d57b8251d4fb8293ed2f6e83d17
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 3613639b43db1cd5310a7ea5d7fa18f34e22ed44
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929566"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276720"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Azure Machine Learning kullanarak büyük miktarlarda veri üzerinde toplu çıkarımı çalıştırın
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,7 +40,7 @@ Bu nasıl yapılır bölümünde aşağıdaki görevleri öğrenirsiniz:
 
 * Kendi ortamınızı ve bağımlılıklarınızı yönetmek için kendi ortamınızı yapılandırma hakkında [nasıl yapılır Kılavuzu](how-to-configure-environment.md) ' na bakın. Gerekli bağımlılıkları indirmek için ortamınızda `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-contrib-pipeline-steps` çalıştırın.
 
-## <a name="set-up-machine-learning-resources"></a>Makine öğrenimi kaynaklarını ayarlama
+## <a name="set-up-machine-learning-resources"></a>Machine learning kaynaklarını ayarlama
 
 Aşağıdaki eylemler bir toplu çıkarım ardışık düzeni çalıştırmak için ihtiyacınız olan kaynakları ayarlar:
 
@@ -149,7 +149,7 @@ else:
     print(compute_target.get_status().serialize())
 ```
 
-## <a name="prepare-the-model"></a>Modeli hazırlama
+## <a name="prepare-the-model"></a>Model hazırlama
 
 [Önceden eğitilen görüntü sınıflandırma modelini indirin](https://pipelinedata.blob.core.windows.net/mnist-model/mnist-tf.tar.gz)ve ardından `models` dizinine ayıklayın.
 
@@ -241,7 +241,7 @@ def run(mini_batch):
 
 Artık işlem hattını oluşturmak için ihtiyacınız olan her şeye sahipsiniz.
 
-### <a name="prepare-the-run-environment"></a>Çalıştırma ortamını hazırlama
+### <a name="prepare-the-run-environment"></a>Çalışma ortamı hazırlama
 
 İlk olarak, betiğinizin bağımlılıklarını belirtin. Bu nesneyi daha sonra işlem hattı adımını oluştururken kullanırsınız.
 
@@ -292,7 +292,7 @@ parallel_run_config = ParallelRunConfig(
     node_count=4)
 ```
 
-### <a name="create-the-pipeline-step"></a>İşlem hattı adımını oluşturma
+### <a name="create-the-pipeline-step"></a>İşlem hattı adım oluşturma
 
 Komut dosyası, ortam yapılandırması ve parametreleri kullanarak işlem hattı adımını oluşturun. Komut dosyası için yürütme hedefi olarak çalışma alanınıza zaten iliştirtiğiniz işlem hedefini belirtin. Aşağıdaki parametreleri alan toplu çıkarım ardışık düzen adımını oluşturmak için `ParallelRunStep` kullanın:
 - `name`: adım adı, şu adlandırma kısıtlamalarına sahip: benzersiz, 3-32 karakter ve Regex ^\[a-z\]([-a-Z0-9] * [a-Z0-9])? $.
@@ -335,7 +335,7 @@ pipeline_run = Experiment(ws, 'digit_identification').submit(pipeline)
 
 Bir toplu çıkarım işinin tamamlanması uzun zaman alabilir. Bu örnek, bir Jupyıter pencere öğesi kullanarak ilerlemeyi izler. Ayrıca şunları kullanarak işin ilerlemesini yönetebilirsiniz:
 
-* Azure Machine Learning Studio. 
+* Azure Machine Learning Studio'da. 
 * [`PipelineRun`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.run.pipelinerun?view=azure-ml-py) nesnesinden konsol çıktısı.
 
 ```python

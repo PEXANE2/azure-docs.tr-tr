@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory Uygulama proxy'si joker karakteri uygulamalarında | Microsoft Docs
+title: Azure AD Uygulama Ara Sunucusu joker karakter uygulamaları
 description: Joker karakter içeren uygulamalar Azure Active Directory Uygulama proxy kullanmayı öğrenin.
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d3b8176566593c5c9e9ff63a6ccbafcb2a35cd5
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.openlocfilehash: c5a9e7be5f582051e03cba08733fcbfa697cc8f5
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67828002"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275040"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Azure Active Directory Uygulama proxy'si joker karakteri uygulamalarında
 
@@ -55,13 +55,13 @@ Bir joker uygulama oluşturma temel aynı [uygulama yayımlama akışını](appl
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Başlamak için bu gereksinimlerini karşılamanızın emin olun.
+Başlamak için, bu gereksinimleri karşıladığınızdan emin olun.
 
 ### <a name="custom-domains"></a>Özel etki alanları
 
 Sırada [özel etki alanları](application-proxy-configure-custom-domain.md) olan joker karakter içeren uygulamalar için bir önkoşul oldukları diğer tüm uygulamaları için isteğe bağlı. Özel etki alanları oluşturmak, gerektirir:
 
-1. Azure içinde doğrulanmış bir etki alanı oluşturun.
+1. Azure 'da doğrulanmış bir etki alanı oluşturun.
 1. Bir SSL sertifikası PFX biçimi, uygulama ara sunucusuna yükleyin.
 
 Uygulama oluşturmayı planladığınız eşleştirmek için joker karakter sertifika kullanmayı düşünmeniz gerekir. Alternatif olarak, yalnızca belirli uygulamaların listeleyen bir sertifika kullanabilirsiniz. Bu durumda, yalnızca sertifikasında listelenen uygulamalar bu joker uygulama erişilebilir.
@@ -78,17 +78,17 @@ CNAME doğru yapılandırdığınızdan, kullanabileceğinizi doğrulamak için 
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
-Joker karakter içeren uygulamalar için hesaba atmanız gereken bazı noktalar aşağıda verilmiştir.
+Joker uygulamalar için dikkate almanız gereken bazı noktalar aşağıda verilmiştir.
 
 ### <a name="accepted-formats"></a>Kabul edilen biçimler
 
 Joker karakter içeren uygulamalar için **İç URL** olarak biçimlendirilmelidir `http(s)://*.<domain>`.
 
-![İç URL için http (s) biçimi kullanmak :/ / *. \<etki alanı >](./media/application-proxy-wildcard/22.png)
+![İç URL için http (s)://* biçimini kullanın.\<etki alanı >](./media/application-proxy-wildcard/22.png)
 
 Yapılandırırken bir **dış URL**, aşağıdaki biçimi kullanmanız gerekir: `https://*.<custom domain>`
 
-![Dış URL biçimi https://* kullanın. \<özel etki alanı >](./media/application-proxy-wildcard/21.png)
+![Dış URL için https://* biçimini kullanın. Özel etki alanı\<>](./media/application-proxy-wildcard/21.png)
 
 Joker karakter, birden fazla joker karakterler veya diğer normal ifade dizeleri diğer konumlarını desteklenmez ve hatalara neden oluyor.
 
@@ -105,7 +105,7 @@ Ayrıca, DNS Yönetimi aracılığıyla belirli uygulamalar için yalnızca iş 
 
 Bu seçeneği kullanırsanız, ayrıca başka bir CNAME girişi için bir değer gerekir `AppId.domain`, örneğin, `00000000-1a11-22b2-c333-444d4d4dd444.adventure-works.com`de aynı konuma gelin. Bulabilirsiniz **AppID** joker uygulama, uygulama özellikleri sayfasında:
 
-![Uygulamanın özellik sayfasında uygulama Kimliğini bulun](./media/application-proxy-wildcard/01.png)
+![Uygulamanın özellik sayfasında uygulama KIMLIĞINI bulun](./media/application-proxy-wildcard/01.png)
 
 ### <a name="setting-the-homepage-url-for-the-myapps-panel"></a>Giriş sayfası URL'si MyApps paneli için ayarlama
 
@@ -142,28 +142,28 @@ Aşağıdaki [belgelenen adımları](application-proxy-add-on-premises-applicati
 
 - İç URL:
 
-    ![Örnek: İç URL joker karakter](./media/application-proxy-wildcard/42.png)
+    ![Örnek: İç URL 'de joker karakter](./media/application-proxy-wildcard/42.png)
 
 - Dış URL:
 
-    ![Örnek: Dış URL'yi joker karakter](./media/application-proxy-wildcard/43.png)
+    ![Örnek: dış URL 'de joker karakter](./media/application-proxy-wildcard/43.png)
 
 - İç uygulama SPN'si:
 
-    ![Örnek: Joker karakter SPN yapılandırma](./media/application-proxy-wildcard/44.png)
+    ![Örnek: SPN yapılandırmasında joker karakter](./media/application-proxy-wildcard/44.png)
 
 Joker uygulama yayımladığınızda, artık üç uygulamalarınız için kullanılan URL'leri giderek erişebilirsiniz (örneğin, `travel.adventure-works.com`).
 
 Aşağıdaki yapı yapılandırmasını uygular:
 
-![Örnek Yapılandırması tarafından uygulanan yapısını gösterir](./media/application-proxy-wildcard/05.png)
+![Örnek yapılandırma tarafından uygulanan yapıyı gösterir](./media/application-proxy-wildcard/05.png)
 
 | Renk | Açıklama |
 | ---   | ---         |
-| Mavi  | Uygulamaları açıkça yayımlanan ve Azure portalında görünür. |
+| Mavi  | Azure portal açıkça yayımlanmış ve görünür uygulamalar. |
 | Gri  | Uygulamaları üst uygulama üzerinden erişilebilir olabilir. |
 
-## <a name="scenario-2-general-wildcard-application-with-exception"></a>Senaryo 2: Özel durum ile genel joker uygulama
+## <a name="scenario-2-general-wildcard-application-with-exception"></a>Senaryo 2: Genel joker uygulama özel durum ile
 
 Bu senaryoda, ayrıca üç genel için başka bir uygulama, uygulamanız `finance.adventure-works.com`, yalnızca olacağı Finans bölme erişilebilir. Geçerli uygulama yapısıyla Finans uygulamanız aracılığıyla joker uygulama ve tüm çalışanlar tarafından erişilebilir olacaktır. Bunu değiştirmek için uygulamanızın, joker karakter daha kısıtlayıcı izinlerle ayrı bir uygulama olarak, Finans yapılandırarak hariç tutun.
 
@@ -173,19 +173,19 @@ Aşağıdaki [belgelenen adımları](application-proxy-add-on-premises-applicati
 
 - İçinde **İç URL**, ayarladığınız **Finans** yerine bir joker karakter.
 
-    ![Örnek: İç URL joker karakter yerine Finans ayarlayın](./media/application-proxy-wildcard/52.png)
+    ![Örnek: İç URL 'de joker karakter yerine finans ayarla](./media/application-proxy-wildcard/52.png)
 
 - İçinde **dış URL**, ayarladığınız **Finans** yerine bir joker karakter.
 
-    ![Örnek: Dış URL'yi joker karakter yerine Finans ayarlayın](./media/application-proxy-wildcard/53.png)
+    ![Örnek: dış URL 'de joker karakter yerine finans ayarla](./media/application-proxy-wildcard/53.png)
 
 - Ayarladığınız iç uygulama SPN'si **Finans** yerine bir joker karakter.
 
-    ![Örnek: Joker karakter yerine Finans SPN yapılandırmasında ayarlayın](./media/application-proxy-wildcard/54.png)
+    ![Örnek: SPN yapılandırmasında joker karakter yerine finans ayarlama](./media/application-proxy-wildcard/54.png)
 
 Bu yapılandırma aşağıdaki senaryoyu uygular:
 
-![Örnek senaryo tarafından uygulanan yapılandırmasını gösterir](./media/application-proxy-wildcard/09.png)
+![Örnek senaryo tarafından uygulanan yapılandırmayı gösterir](./media/application-proxy-wildcard/09.png)
 
 Çünkü `finance.adventure-works.com` daha fazla belirli bir URL olduğundan `*.adventure-works.com`, önceliği alır. Kullanıcılar için gezinme `finance.adventure-works.com` Finans kaynakları uygulamada belirtilen deneyime sahiptir. Bu durumda, yalnızca finans çalışanlarıyla erişebilir `finance.adventure-works.com`.
 
@@ -193,5 +193,5 @@ Birden çok uygulama için finans yayımlanan varsa ve sahip olduğunuz `finance
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Hakkında daha fazla bilgi edinmek için **özel etki alanları**, bkz: [Azure AD uygulama proxy'sinde özel etki alanları ile çalışma](application-proxy-configure-custom-domain.md).
-- Hakkında daha fazla bilgi edinmek için **uygulamaları yayımlama**, bkz: [Azure AD uygulama ara sunucusu kullanarak uygulama yayımlama](application-proxy-add-on-premises-application.md)
+- **Özel etki alanları**hakkında daha fazla bilgi için bkz. [Azure AD uygulama ara sunucusu özel etki alanları ile çalışma](application-proxy-configure-custom-domain.md).
+- **Uygulama yayımlama**hakkında daha fazla bilgi edinmek için bkz. [Azure kullanarak uygulama yayımlama ad uygulama ara sunucusu](application-proxy-add-on-premises-application.md)

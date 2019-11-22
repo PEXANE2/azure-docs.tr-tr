@@ -1,5 +1,6 @@
 ---
-title: Sanal makine ağ trafiği filtreleme sorununu tanılama - hızlı başlangıç - Azure PowerShell | Microsoft Docs
+title: 'Hızlı başlangıç: bir VM ağı trafik filtresi sorununu tanılama-Azure PowerShell'
+titleSuffix: Azure Network Watcher
 description: Bu hızlı başlangıçta, Azure Ağ İzleyicisi’nin IP akış doğrulama özelliği kullanılarak sanal makine ağ trafiği filtreleme sorununun nasıl tanılanacağını öğrenirsiniz.
 services: network-watcher
 documentationcenter: network-watcher
@@ -17,14 +18,14 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 5cc735c6ad3986161b155ab97bbb3d6be5713d15
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 756c8d4d7e227d477c3031aab0d0a478454c35bf
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729886"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276064"
 ---
-# <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-powershell"></a>Hızlı Başlangıç: Bir sanal makine ağ trafik filtresi sorununu - Azure PowerShell tanılama
+# <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-powershell"></a>Hızlı Başlangıç: Sanal makine ağ trafiği filtreleme sorununu tanılama - Azure PowerShell
 
 Bu hızlı başlangıçta bir sanal makine (VM) dağıtır ve sonra bir IP adresi ve URL ile iletişimleri ve bir IP adresinden gelen iletişimleri denetlersiniz. Bir iletişim hatasının nedenini ve bu hatayı nasıl çözeceğinizi belirlersiniz.
 
@@ -34,19 +35,19 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-PowerShell'i yerel olarak yükleyip kullanmayı seçerseniz bu hızlı başlangıçta Azure PowerShell gerektirir. `Az` modülü. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-Az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
+PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz, bu hızlı başlangıç Azure PowerShell `Az` modülünü gerektirir. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-Az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
 
 
 
 ## <a name="create-a-vm"></a>VM oluşturma
 
-Sanal makine oluşturabilmeniz için sanal makineyi içerecek bir kaynak grubu oluşturmanız gerekir. Bir kaynak grubu oluşturun [yeni AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup). Aşağıdaki örnek *eastus* konumunda *myResourceGroup* adlı bir kaynak grubu oluşturur.
+Bir sanal makine oluşturabilmeniz için sanal makineyi içerecek bir kaynak grubu oluşturmanız gerekir. [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup)ile bir kaynak grubu oluşturun. Aşağıdaki örnek *eastus* konumunda *myResourceGroup* adlı bir kaynak grubu oluşturur.
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroup -Location EastUS
 ```
 
-İle VM oluşturma [yeni-AzVM](/powershell/module/az.compute/new-azvm). Bu adımı çalıştırırken kimlik bilgileri istenir. Girdiğiniz değerler, sanal makinenin kullanıcı adı ve parolası olarak yapılandırılır.
+[New-azvm](/powershell/module/az.compute/new-azvm)ile VM 'yi oluşturun. Bu adımı çalıştırırken kimlik bilgileri istenir. Girdiğiniz değerler, sanal makinenin kullanıcı adı ve parolası olarak yapılandırılır.
 
 ```azurepowershell-interactive
 $vM = New-AzVm `
@@ -63,7 +64,7 @@ Ağ İzleyicisi ile ağ iletişimini test etmek için önce test etmek istediği
 
 ### <a name="enable-network-watcher"></a>Ağ izleyicisini etkinleştirme
 
-Doğu ABD bölgesinde etkin bir Ağ İzleyicisi zaten varsa [Get-AzNetworkWatcher](/powershell/module/az.network/get-aznetworkwatcher) Ağ İzleyicisi alınamıyor. Aşağıdaki örnekte, *NetworkWatcherRG* kaynak grubunda bulunan *NetworkWatcher_eastus* adlı mevcut ağ izleyicisi alınır:
+Doğu ABD bölgesinde zaten etkinleştirilmiş bir ağ izleyicisi varsa, Ağ İzleyicisini almak için [Get-Aznetworkizleyici](/powershell/module/az.network/get-aznetworkwatcher) ' yi kullanın. Aşağıdaki örnekte, *NetworkWatcherRG* kaynak grubunda bulunan *NetworkWatcher_eastus* adlı mevcut ağ izleyicisi alınır:
 
 ```azurepowershell-interactive
 $networkWatcher = Get-AzNetworkWatcher `
@@ -71,7 +72,7 @@ $networkWatcher = Get-AzNetworkWatcher `
   -ResourceGroupName NetworkWatcherRG
 ```
 
-Doğu ABD bölgesinde etkin bir Ağ İzleyicisi zaten yoksa, kullanın [yeni AzNetworkWatcher](/powershell/module/az.network/new-aznetworkwatcher) Doğu ABD bölgesinde bir Ağ İzleyicisi oluşturmak için:
+Doğu ABD bölgesinde etkinleştirilmiş bir ağ izleyicisi yoksa, Doğu ABD bölgesinde bir Ağ İzleyicisi oluşturmak için [New-Aznetworkizleyici](/powershell/module/az.network/new-aznetworkwatcher) ' yi kullanın:
 
 ```azurepowershell-interactive
 $networkWatcher = New-AzNetworkWatcher `
@@ -82,7 +83,7 @@ $networkWatcher = New-AzNetworkWatcher `
 
 ### <a name="use-ip-flow-verify"></a>IP akışı doğrulamayı kullanma
 
-Bir sanal makine oluşturduğunuzda Azure varsayılan olarak sanal makineye/sanal makineden ağ trafiğine izin verir veya ağ trafiğini reddeder. Daha sonra Azure’un varsayılanlarını geçersiz kılarak ek trafik türlerine izin verebilir veya ek trafik türlerini reddedebilirsiniz. Trafiğe izin veya farklı hedeflere ve kaynak IP adresi reddedildi olup olmadığını test etmek için [Test AzNetworkWatcherIPFlow](/powershell/module/az.network/test-aznetworkwatcheripflow) komutu.
+Bir sanal makine oluşturduğunuzda Azure varsayılan olarak sanal makineye/sanal makineden ağ trafiğine izin verir veya ağ trafiğini reddeder. Daha sonra Azure’ın varsayılanlarını geçersiz kılarak ek trafik türlerine izin verebilir veya ek trafik türlerini reddedebilirsiniz. Farklı hedeflere ve bir kaynak IP adresinden trafik izni verilip verilmediğini sınamak için, [Test-AzNetworkWatcherIPFlow](/powershell/module/az.network/test-aznetworkwatcheripflow) komutunu kullanın.
 
 Sanal makineden, www.bing.com adresinin IP adreslerinden birine giden iletişimi test etme:
 
@@ -134,7 +135,7 @@ Döndürülen sonuç, **DefaultInboundDenyAll** adlı bir güvenlik kuralı tara
 
 ## <a name="view-details-of-a-security-rule"></a>Bir güvenlik kuralının ayrıntılarını görüntüleme
 
-Nedenini belirlemek için kuralları [Test ağ iletişimi](#test-network-communication) iletişimi engelliyor, ağ arabirimi için geçerli güvenlik kurallarını gözden geçirin veya izin [Get-AzEffectiveNetworkSecurityGroup](/powershell/module/az.network/get-azeffectivenetworksecuritygroup):
+[Test ağ Iletişiminizdeki](#test-network-communication) kuralların neden iletişim kurmasına izin vermesini veya bunu engellediğini öğrenmek Için, [Get-AzEffectiveNetworkSecurityGroup](/powershell/module/az.network/get-azeffectivenetworksecuritygroup)ile ağ arabirimine yönelik geçerli güvenlik kurallarını gözden geçirin:
 
 ```azurepowershell-interactive
 Get-AzEffectiveNetworkSecurityGroup `
@@ -142,7 +143,7 @@ Get-AzEffectiveNetworkSecurityGroup `
   -ResourceGroupName myResourceGroup
 ```
 
-Döndürülen çıktı, [IP akışı doğrulamayı kullanma](#use-ip-flow-verify) bölümünde yer alan ve www.bing.com adresine giden erişime izin veren **AllowInternetOutbound** kuralı için aşağıdaki metni içerir:
+Döndürülen çıktı, **IP akışı doğrulamayı kullanma** bölümünde yer alan ve www.bing.com adresine giden erişime izin veren [AllowInternetOutbound](#use-ip-flow-verify) kuralı için aşağıdaki metni içerir:
 
 ```powershell
 {
@@ -177,9 +178,9 @@ Döndürülen çıktı, [IP akışı doğrulamayı kullanma](#use-ip-flow-verify
   },
 ```
 
-Çıktıda **destinationAddressPrefix** öğesinin **İnternet** olduğunu görebilirsiniz. [IP akışı doğrulamayı kullanma](#use-ip-flow-verify) altında test ettiğiniz 13.107.21.200 adresinin **İnternet** ile nasıl ilişkilendirildiği açık değildir. **ExpandedDestinationAddressPrefix** bölümünde çeşitli adres ön eklerinin listelendiğini görürsünüz. Listedeki ön eklerden biri **12.0.0.0/6**'dır ve IP adreslerinin 12.0.0.1-15.255.255.254 aralığını kapsar. 13.107.21.200 bu adres aralığı içinde yer aldığından **AllowInternetOutBound** kuralı, giden trafiğe izin verir. Ayrıca, `Get-AzEffectiveNetworkSecurityGroup` tarafından döndürülen çıktıda listelenen kurallarda bu kuralı geçersiz kılan daha yüksek **öncelikli** (daha küçük numaralı) kurallar da yoktur. 13.107.21.200 adresine giden iletişimi reddetmek için, IP adresine giden 80 numaralı bağlantı noktasını reddeden, daha yüksek önceliğe sahip bir güvenlik kuralı ekleyebilirsiniz.
+Çıktıda **destinationAddressPrefix** öğesinin **İnternet** olduğunu görebilirsiniz. [IP akışı doğrulamayı kullanma](#use-ip-flow-verify) altında test ettiğiniz 13.107.21.200 adresinin **İnternet** ile nasıl ilişkilendirildiği açık değildir. **ExpandedDestinationAddressPrefix** bölümünde çeşitli adres ön eklerinin listelendiğini görürsünüz. Listedeki öneklerden biri **12.0.0.0/6** olup bu, IP adreslerinin 12.0.0.1-15.255.255.254 aralığını kapsar. 13.107.21.200 bu adres aralığı içinde yer aldığından **AllowInternetOutBound** kuralı, giden trafiğe izin verir. Ayrıca, **tarafından döndürülen çıktıda listelenen kurallarda bu kuralı geçersiz kılan daha yüksek**öncelikli`Get-AzEffectiveNetworkSecurityGroup` (daha küçük numaralı) kurallar da yoktur. 13.107.21.200 adresine giden iletişimi reddetmek için, IP adresine giden 80 numaralı bağlantı noktasını reddeden, daha yüksek önceliğe sahip bir güvenlik kuralı ekleyebilirsiniz.
 
-[IP akışı doğrulamayı kullanma](#use-ip-flow-verify) bölümünde 172.131.0.100 adresine giden iletişimi test etmek için `Test-AzNetworkWatcherIPFlow` komutunu çalıştırdığınızda elde edilen çıktı size **DefaultOutboundDenyAll** kuralının iletişimi reddettiğini bildirdi. **DefaultOutboundDenyAll** kuralı, `Get-AzEffectiveNetworkSecurityGroup` komutundan elde edilen aşağıdaki çıktıda listelenen **DenyAllOutBound** kuralına karşılık gelir:
+`Test-AzNetworkWatcherIPFlow`IP akışı doğrulamayı kullanma[ bölümünde 172.131.0.100 adresine giden iletişimi test etmek için ](#use-ip-flow-verify) komutunu çalıştırdığınızda elde edilen çıktı size **DefaultOutboundDenyAll** kuralının iletişimi reddettiğini bildirdi. **DefaultOutboundDenyAll** kuralı, **komutundan elde edilen aşağıdaki çıktıda listelenen**DenyAllOutBound`Get-AzEffectiveNetworkSecurityGroup` kuralına karşılık gelir:
 
 ```powershell
 {
@@ -205,9 +206,9 @@ Döndürülen çıktı, [IP akışı doğrulamayı kullanma](#use-ip-flow-verify
 }
 ```
 
-Kural, **DestinationAddressPrefix** olarak **0.0.0.0/0** değerini listeler. Adres, `Get-AzEffectiveNetworkSecurityGroup` komutundan elde edilen çıktıdaki diğer giden kurallarından herhangi birinin **DestinationAddressPrefix** değeri içinde yer almadığından, kural 172.131.0.100 adresine giden iletişimi reddeder. Giden iletişime izin vermek için, 172.131.0.100 adresinde 80 numaralı bağlantı noktasına giden trafiğe izin veren daha yüksek öncelikli bir güvenlik kuralı ekleyebilirsiniz.
+Kural, **DestinationAddressPrefix** olarak **0.0.0.0/0** değerini listeler. Adres, **komutundan elde edilen çıktıdaki diğer giden kurallarından herhangi birinin**DestinationAddressPrefix`Get-AzEffectiveNetworkSecurityGroup` değeri içinde yer almadığından, kural 172.131.0.100 adresine giden iletişimi reddeder. Giden iletişime izin vermek için, 172.131.0.100 adresinde 80 numaralı bağlantı noktasına giden trafiğe izin veren daha yüksek öncelikli bir güvenlik kuralı ekleyebilirsiniz.
 
-[IP akışı doğrulamayı kullanma](#use-ip-flow-verify) bölümünde 172.131.0.100 adresinden gelen iletişimi test etmek için `Test-AzNetworkWatcherIPFlow` komutunu çalıştırdığınızda, elde edilen çıktı size **DefaultInboundDenyAll** kuralının iletişimi reddettiğini bildirdi. **DefaultInboundDenyAll** kuralı, `Get-AzEffectiveNetworkSecurityGroup` komutundan elde edilen aşağıdaki çıktıda listelenen **DenyAllInBound** kuralına karşılık gelir:
+`Test-AzNetworkWatcherIPFlow`IP akışı doğrulamayı kullanma[ bölümünde 172.131.0.100 adresinden gelen iletişimi test etmek için ](#use-ip-flow-verify) komutunu çalıştırdığınızda, elde edilen çıktı size **DefaultInboundDenyAll** kuralının iletişimi reddettiğini bildirdi. **DefaultInboundDenyAll** kuralı, **komutundan elde edilen aşağıdaki çıktıda listelenen**DenyAllInBound`Get-AzEffectiveNetworkSecurityGroup` kuralına karşılık gelir:
 
 ```powershell
 {
@@ -233,13 +234,13 @@ Kural, **DestinationAddressPrefix** olarak **0.0.0.0/0** değerini listeler. Adr
 },
 ```
 
-Çıktıda gösterildiği gibi, `Get-AzEffectiveNetworkSecurityGroup` komutundan elde edilen çıktıda, 172.131.0.100 adresinden sanal makineye gelen 80 numaralı bağlantı noktasına izin veren daha yüksek öncelikli başka bir kural olmadığından **DenyAllInBound** kuralı uygulanır. Gelen iletişime izin vermek için, 172.131.0.100 adresinden gelen 80 numaralı bağlantı noktasına izin veren daha yüksek öncelikli bir güvenlik kuralı ekleyebilirsiniz.
+Çıktıda gösterildiği gibi, **komutundan elde edilen çıktıda, 172.131.0.100 adresinden sanal makineye gelen 80 numaralı bağlantı noktasına izin veren daha yüksek öncelikli başka bir kural olmadığından**DenyAllInBound`Get-AzEffectiveNetworkSecurityGroup` kuralı uygulanır. Gelen iletişime izin vermek için, 172.131.0.100 adresinden gelen 80 numaralı bağlantı noktasına izin veren daha yüksek öncelikli bir güvenlik kuralı ekleyebilirsiniz.
 
 Bu hızlı başlangıçtaki denetimlerinde Azure yapılandırması test edilmiştir. Denetimler beklenen sonuçları döndürdüğü halde ağ sorunları yaşamaya devam ediyorsanız, sanal makineniz ve iletişim kurduğunuz uç nokta arasında bir güvenlik duvarı olmadığından ve sanal makinenizdeki işletim sisteminin, iletişime izin veren veya iletişimi reddeden bir güvenlik duvarının olmadığından emin olun.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli değilse [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) kaynak grubunu ve içerdiği tüm kaynakları kaldırmak için:
+Artık gerekli değilse, [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) komutunu kullanarak kaynak grubunu ve içerdiği tüm kaynakları kaldırabilirsiniz:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force

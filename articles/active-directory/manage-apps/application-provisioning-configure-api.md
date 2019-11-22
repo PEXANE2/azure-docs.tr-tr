@@ -16,16 +16,16 @@ ms.date: 11/15/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00b3e6f84051aec97691d2bedda6665d3c9c0ceb
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 1ca26c7277f69a817a48884acce116e3a66608ff
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74125080"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275729"
 ---
 # <a name="configure-provisioning-using-microsoft-graph-apis"></a>Microsoft Graph API 'Leri kullanarak sağlamayı yapılandırma
 
-Azure portal, bireysel uygulamalar için tek seferde sağlamayı yapılandırmanın kolay bir yoludur. Ancak, bir uygulamanın birkaç veya hatta yüzlerce — örneğini oluşturuyorsanız, uygulama oluşturma ve yapılandırmayı Microsoft Graph API 'lerle otomatik hale getirmek daha kolay olabilir. Bu makalede API 'Ler aracılığıyla sağlama yapılandırmasının nasıl otomatikleştirilmesi özetlenmektedir. Bu yöntem, genellikle [Amazon Web Services](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial#configure-azure-ad-single-sign-on)gibi uygulamalar için kullanılır.
+Azure portal, bireysel uygulamalar için tek seferde sağlamayı yapılandırmanın kolay bir yoludur. Ancak, bir uygulamanın birkaç veya hatta yüzlerce — örneğini oluşturuyorsanız, uygulama oluşturma ve yapılandırmayı Microsoft Graph API 'lerle otomatik hale getirmek daha kolay olabilir. Bu makalede API 'Ler aracılığıyla sağlama yapılandırmasının nasıl otomatikleştirilmesi özetlenmektedir. Bu yöntem, genellikle [Amazon Web Services](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial#configure-azure-ad-sso)gibi uygulamalar için kullanılır.
 
 **Sağlama yapılandırmasını otomatikleştirmek için Microsoft Graph API 'Leri kullanmaya yönelik adımlara genel bakış**
 

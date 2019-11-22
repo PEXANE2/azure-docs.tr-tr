@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 10/24/2019
 ms.author: ramkris
-ms.openlocfilehash: 0ff281e54df0273cc4c72d1780f4a99fe9719aec
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: b6685f8524dc1f3ac080abe81389d091c7cf6f1b
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900182"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74306751"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>.NET toplu yürütücü kitaplığı: Indirme bilgileri 
 
@@ -34,19 +34,22 @@ ms.locfileid: "72900182"
 | |  |
 |---|---|
 | **Açıklama**| .Net toplu yürütücü kitaplığı, istemci uygulamalarının Azure Cosmos DB hesaplarında toplu işlemler gerçekleştirmesine olanak sağlar. Bu kitaplık, BulkImport, BulkUpdate ve BulkDelete ad alanları sağlar. BulkImport modülü, bir koleksiyon için sağlanan aktarım hızı en büyük ölçüde tüketilebilmesi için belgeleri en iyi duruma getirilmiş bir şekilde toplu Içe alabilir. BulkUpdate modülü Azure Cosmos kapsayıcılarındaki mevcut verileri düzeltme eki olarak toplu güncelleştirebilir. BulkDelete modülü, bir koleksiyon için sağlanan aktarım hızı en yüksek ölçüde tüketilebilmesi için belgeleri iyileştirilmiş bir şekilde toplu olarak silebilir.|
-|**SDK indirmesi**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.BulkExecutor/) |
+|**SDK'sını indirme**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.BulkExecutor/) |
 | **GitHub 'da toplu yürütücü kitaplığı**| [GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)|
 |**API belgeleri**|[.NET API başvuru belgeleri](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor?view=azure-dotnet)|
-|**Başlarken**|[Toplu yürütücü kitaplığı .NET SDK ile çalışmaya başlama](bulk-executor-dot-net.md)|
-| **Desteklenen geçerli çerçeve**| Microsoft .NET Framework 4.5.2, 4.6.1 ve .NET Standard 2,0 |
+|**Başlangıç**|[Toplu yürütücü kitaplığı .NET SDK ile çalışmaya başlama](bulk-executor-dot-net.md)|
+| **Geçerli desteklenen çerçevesi**| Microsoft .NET Framework 4.5.2, 4.6.1 ve .NET Standard 2,0 |
+
+> [!NOTE]
+> Toplu yürütücü kullanıyorsanız, lütfen SDK 'da yerleşik toplu yürütücü bulunan [.NET SDK 'sının](tutorial-sql-api-dotnet-bulk-import.md)en son sürümü olan 3. x sürümünü inceleyin. 
 
 ## <a name="release-notes"></a>Sürüm notları
 
-### <a name="a-name241-preview241-preview"></a><a name="2.4.1-preview"/>2.4.1-Preview
+### <a name="a-name241-preview241-preview"></a><a name="2.4.1-preview"/>2.4.1-Önizleme
 
 * Tüm yeniden denemeler dahil toplam süreyi doğru şekilde ölçmek için BulkDelete yanıtında fixed TotalElapsedTime.
 
-### <a name="a-name240-preview240-preview"></a><a name="2.4.0-preview"/>2.4.0-Preview
+### <a name="a-name240-preview240-preview"></a><a name="2.4.0-preview"/>2.4.0-Önizleme
 
 * SDK bağımlılığı > = 2.5.1 olarak değiştirildi
 
@@ -78,14 +81,14 @@ ms.locfileid: "72900182"
 
 * Bir POCO nesneleri ile sayısal değerleri içeren bir liste ile BulkImport çağrılırken tanımlayıcıların sabit işlenmesi.
 
-### <a name="a-name183183"></a><a name="1.8.3"/>1.8.3
+### <a name="a-name183183"></a><a name="1.8.3"/>1.8.3 birden fazla
 
 * Tüm yeniden denemeler dahil toplam süreyi doğru şekilde ölçmek için BulkDelete yanıtında fixed TotalElapsedTime.
 
 ### <a name="a-name182182"></a><a name="1.8.2"/>1.8.2
 
 * Belirli senaryolarda yüksek CPU tüketimi düzeltildi.
-* İzleme artık TraceSource kullanıyor. Kullanıcılar `BulkExecutorTrace` kaynağı için dinleyicileri tanımlayabilir.
+* İzleme artık TraceSource kullanıyor. Kullanıcılar `BulkExecutorTrace` kaynak için dinleyicileri tanımlayabilir.
 * 2 MB boyutunda bir belge gönderirken bir kilit oluşmasına neden olabilecek nadir bir senaryo düzeltildi.
 
 ### <a name="a-name160160"></a><a name="1.6.0"/>1.6.0

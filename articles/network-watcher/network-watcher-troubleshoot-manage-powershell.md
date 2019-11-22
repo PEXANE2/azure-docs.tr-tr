@@ -1,5 +1,6 @@
 ---
-title: Azure sanal ağ geçidi ve bağlantıları sorunlarını giderme-PowerShell | Microsoft Docs
+title: Azure VNet ağ geçidi ve bağlantıları sorunlarını giderme-Azure PowerShell
+titleSuffix: Azure Network Watcher
 description: Bu sayfada, Azure ağ Izleyicisi PowerShell cmdlet 'inin nasıl kullanılacağı açıklanmaktadır
 services: network-watcher
 documentationcenter: na
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: kumud
-ms.openlocfilehash: 40d576a980bd66fea44f9f8e4935fab3d777e4c8
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 4e65be8254710beffc6cc042316305d8d64c43c3
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163865"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277824"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-powershell"></a>Azure ağ Izleyicisi PowerShell kullanarak sanal ağ geçidi ve bağlantıları sorunlarını giderme
 
@@ -46,7 +47,7 @@ Kaynak sorunlarını giderme, sanal ağ geçitleri ve bağlantılarıyla ortaya 
 
 ## <a name="retrieve-network-watcher"></a>Ağ İzleyicisini al
 
-İlk adım, ağ Izleyicisi örneğini almak için kullanılır. Değişken, adım 4 ' teki `Start-AzNetworkWatcherResourceTroubleshooting` cmdlet 'e geçirilir. `$networkWatcher`
+İlk adım, ağ Izleyicisi örneğini almak için kullanılır. `$networkWatcher` değişkeni, adım 4 ' teki `Start-AzNetworkWatcherResourceTroubleshooting` cmdlet 'ine geçirilir.
 
 ```powershell
 $networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
@@ -72,10 +73,10 @@ $sc = New-AzStorageContainer -Name logs
 
 ## <a name="run-network-watcher-resource-troubleshooting"></a>Ağ Izleyicisi kaynak sorunlarını giderme
 
-`Start-AzNetworkWatcherResourceTroubleshooting` Cmdlet 'iyle kaynak sorunlarını giderin. Cmdlet 'i ağ Izleyicisi nesnesi, bağlantının kimliği veya sanal ağ geçidi, depolama hesabı kimliği ve sonuçları depolayacak yol geçiririz.
+`Start-AzNetworkWatcherResourceTroubleshooting` cmdlet 'ini kullanarak kaynak sorunlarını giderin. Cmdlet 'i ağ Izleyicisi nesnesi, bağlantının kimliği veya sanal ağ geçidi, depolama hesabı kimliği ve sonuçları depolayacak yol geçiririz.
 
 > [!NOTE]
-> `Start-AzNetworkWatcherResourceTroubleshooting` Cmdlet uzun çalışıyor ve tamamlanması birkaç dakika sürebilir.
+> `Start-AzNetworkWatcherResourceTroubleshooting` cmdlet 'i uzun süredir çalışıyor ve tamamlanması birkaç dakika sürebilir.
 
 ```powershell
 Start-AzNetworkWatcherResourceTroubleshooting -NetworkWatcher $networkWatcher -TargetResourceId $connection.Id -StorageId $sa.Id -StoragePath "$($sa.PrimaryEndpoints.Blob)$($sc.name)"

@@ -1,20 +1,20 @@
 ---
 title: Birden fazla Azure sanal makinesi için güncelleştirmeleri yönetme
-description: Bu makalede, Azure sanal makineleri için güncelleştirmelerin nasıl yönetileceği açıklanır.
+description: Bu makalede, Azure ve Azure olmayan sanal makineler için güncelleştirmelerin nasıl yönetileceği açıklanır.
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: bobbytreed
-ms.author: robreed
-ms.date: 04/02/2019
+author: mgoedtel
+ms.author: magoedte
+ms.date: 11/20/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 367a4409c004c98cc4b5ec844aab5b05ec74abcb
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 70f4f4163a143354cd1fe5adf031c4d9cd87a46e
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374505"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278673"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Birden çok makine için güncelleştirmeleri yönetme
 
@@ -31,6 +31,8 @@ Güncelleştirme Yönetimi kullanmak için şunlar gerekir:
 
 - Desteklenen işletim sistemlerinden birinin yüklü olduğu bir sanal makine veya bilgisayar.
 
+- Çözüme eklendi Linux VM 'Leri için bir güncelleştirme deposuna erişim.
+
 ## <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 
 Güncelleştirme Yönetimi aşağıdaki işletim sistemlerinde desteklenir:
@@ -39,17 +41,13 @@ Güncelleştirme Yönetimi aşağıdaki işletim sistemlerinde desteklenir:
 |---------|---------|
 |Windows Server 2008, Windows Server 2008 R2 RTM    | Yalnızca güncelleştirme değerlendirmelerini destekler.         |
 |Windows Server 2008 R2 SP1 ve üzeri     |Windows PowerShell 4,0 veya üzeri gereklidir. ([WMF 4,0 indirin](https://www.microsoft.com/download/details.aspx?id=40855))</br> Windows PowerShell 5,1, daha fazla güvenilirlik için önerilir. ([WMF 5,1 indirin](https://www.microsoft.com/download/details.aspx?id=54616))         |
-|CentOS 6 (x86/x64) ve 7 (x64)      | Linux aracılarının bir güncelleştirme havuzuna erişimi olmalıdır.        |
-|Red Hat Enterprise 6 (x86/x64) ve 7 (x64)     | Linux aracılarının bir güncelleştirme havuzuna erişimi olmalıdır.        |
-|SUSE Linux Enterprise Server 11 (x86/x64) ve 12 (x64)     | Linux aracılarının bir güncelleştirme havuzuna erişimi olmalıdır.        |
-|Ubuntu 14,04 LTS, 16,04 LTS ve 18,04 LTS (x86/x64)      |Linux aracılarının bir güncelleştirme havuzuna erişimi olmalıdır.         |
+|CentOS 6 (x86/x64) ve 7 (x64)      | |
+|Red Hat Enterprise 6 (x86/x64) ve 7 (x64)     | |
+|SUSE Linux Enterprise Server 11 (x86/x64) ve 12 (x64)     | |
+|Ubuntu 14,04 LTS, 16,04 LTS ve 18,04 LTS (x86/x64)      | |
 
 > [!NOTE]
 > Güncelleştirmelerin Ubuntu'daki bakım penceresinin dışında uygulanmasının önüne geçmek için Katılımsız Yükseltme paketini otomatik güncelleştirmeler devre dışı bırakılacak şekilden yeniden yapılandırın. Daha fazla bilgi için bkz. [Ubuntu Server Kılavuzu'ndaki Otomatik Güncelleştirmeler konu başlığı](https://help.ubuntu.com/lts/serverguide/automatic-updates.html).
-
-Linux aracılarının bir güncelleştirme havuzuna erişimi olmalıdır.
-
-Bu çözüm, birden çok Azure Log Analytics çalışma alanına raporlamak üzere yapılandırılmış Linux için Log Analytics aracısını desteklemez.
 
 ## <a name="enable-update-management-for-azure-virtual-machines"></a>Azure sanal makineleri için Güncelleştirme Yönetimi etkinleştirme
 
@@ -69,13 +67,11 @@ Ekleme tamamlandığında, sanal makineniz için Güncelleştirme Yönetimi etki
 
 ## <a name="enable-update-management-for-non-azure-virtual-machines-and-computers"></a>Azure olmayan sanal makineler ve bilgisayarlar için Güncelleştirme Yönetimi etkinleştirme
 
-Azure olmayan Windows sanal makineleri ve bilgisayarları için Güncelleştirme Yönetimi etkinleştirmeyi öğrenmek için bkz. [Azure 'Da Windows bilgisayarlarını Azure izleyici hizmetine bağlama](../log-analytics/log-analytics-windows-agent.md).
-
-Azure olmayan Linux sanal makineleri ve bilgisayarları için Güncelleştirme Yönetimi etkinleştirmeyi öğrenmek için bkz. [Linux bilgisayarlarınızı Azure izleyici günlüklerine bağlama](../log-analytics/log-analytics-agent-linux.md).
+Windows ve Linux için Log Analytics aracısının, kurumsal ağınızda veya diğer bulut ortamınızda çalışan VM 'lerde Güncelleştirme Yönetimi sağlamak için yüklü olması gerekir. Aracıyı Azure dışında barındırılan makinelere dağıtmaya yönelik sistem gereksinimleri ve desteklenen yöntemler hakkında bilgi edinmek için bkz. [Log Analytics aracısına genel bakış](../azure-monitor/platform/log-analytics-agent.md).
 
 ## <a name="view-computers-attached-to-your-automation-account"></a>Otomasyon hesabınıza bağlı bilgisayarları görüntüleme
 
-Makineleriniz için Güncelleştirme Yönetimi etkinleştirdikten sonra **bilgisayarlar**' ı seçerek makine bilgilerini görebilirsiniz. *Makinenizde makine adı*, *uyumluluk durumu*, *ortam*, *işletim sistemi türü*, *kritik güncelleştirmeler ve güvenlik güncelleştirmeleri*, *yüklü diğer güncelleştirmeler*ve *Güncelleştirme Aracısı hazırlığı* hakkında bilgi alabilirsiniz: bilgisayarlar.
+Makineleriniz için Güncelleştirme Yönetimi etkinleştirdikten sonra **bilgisayarlar**' ı seçerek makine bilgilerini görebilirsiniz. *Makine adı*, *uyumluluk durumu*, *ortam*, *işletim sistemi türü*, *kritik güncelleştirmeler ve güvenlik güncelleştirmeleri*, yüklü *diğer güncelleştirmeler*ve bilgisayarlarınıza *Güncelleştirme Aracısı hazırlığı* hakkında bilgi görebilirsiniz.
 
   ![Bilgisayarları görüntüle sekmesi](./media/manage-update-multi/update-computers-tab.png)
 
@@ -103,7 +99,7 @@ Sanal makinelere ve bilgisayarlara yüklenen aracılar güncelleştirmeler hakk�
 
 Aşağıdaki tabloda bu çözüm tarafından desteklenen bağlı kaynaklar açıklanmaktadır:
 
-| Bağlı kaynak | Desteklenen | Açıklama |
+| Bağlı kaynak | Destekleniyor | Açıklama |
 | --- | --- | --- |
 | Windows aracıları |Yes |Güncelleştirme Yönetimi, Windows aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve gerekli güncelleştirmelerin yüklemesini başlatır. |
 | Linux aracıları |Yes |Güncelleştirme Yönetimi, Linux aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve desteklenen dağıtımlarda gerekli güncelleştirmelerin yüklemesini başlatır. |
@@ -130,8 +126,13 @@ Bir veya daha fazla sanal makine için yeni bir güncelleştirme dağıtımı za
 
 - **Ad**: güncelleştirme dağıtımını tanımlamak için benzersiz bir ad girin.
 - **İşletim sistemi**: **Windows** veya **Linux**seçeneğini belirleyin.
-- **Güncelleştirilecek gruplar (önizleme)** : Dağıtımınıza dahil edilecek Azure sanal makinelerinin dinamik grubunu derlemek için bir abonelik, kaynak grupları, konumlar ve etiketler birleşimine göre bir sorgu tanımlayın. Daha fazla bilgi edinmek için bkz. [Dinamik Gruplar](automation-update-management-groups.md)
-- **Güncelleştirilecek makineler**: güncelleştirmek istediğiniz makineleri seçmek Için, kaydedilmiş bir arama, içeri aktarılan grup veya makine seçin ' i seçin. **Makineler**'i seçerseniz makinenin hazır olma durumu **GÜNCELLEŞTİRME ARACISI HAZIRLIĞI** sütununda gösterilir. Güncelleştirme dağıtımını zamanlamadan önce makinenin sistem durumunu görebilirsiniz. Azure Izleyici günlüklerinde bilgisayar grupları oluşturmaya yönelik farklı yöntemler hakkında bilgi edinmek için bkz. [Azure izleyici günlüklerinde bilgisayar grupları](../azure-monitor/platform/computer-groups.md)
+- **Güncelleştirilecek gruplar**: dağıtımınıza dahil etmek üzere Azure VM 'lerin dinamik bir grubunu derlemek için abonelik, kaynak grubu, konum ve etiketlerin birleşimine göre bir sorgu tanımlayın. Azure dışı VM 'Ler için, kayıtlı aramalar dağıtımınıza dahil etmek üzere dinamik bir grup oluşturmak için kullanılır. Daha fazla bilgi için bkz. [Dinamik Gruplar](automation-update-management-groups.md).
+- **Güncelleştirilecek makineler**: güncelleştirmek istediğiniz makineleri seçmek Için, kaydedilmiş bir arama, içeri aktarılan grup veya makine seçin ' i seçin.
+
+   >[!NOTE]
+   >Kaydedilen arama seçeneğinin belirlenmesi makine kimliklerini, yalnızca adlarını döndürmez. Birden çok kaynak grubunda aynı ada sahip birden fazla VM varsa, bunlar sonuçlarda döndürülür. Ölçütlerinizle eşleşen benzersiz VM 'Leri dahil etmeniz için **güncelleştirilecek gruplar** seçeneğinin kullanılması önerilir.
+
+   **Makineler**'i seçerseniz makinenin hazır olma durumu **GÜNCELLEŞTİRME ARACISI HAZIRLIĞI** sütununda gösterilir. Güncelleştirme dağıtımını zamanlamadan önce makinenin sistem durumunu görebilirsiniz. Azure Izleyici günlüklerinde bilgisayar grupları oluşturmaya yönelik farklı yöntemler hakkında bilgi edinmek için bkz. [Azure izleyici günlüklerinde bilgisayar grupları](../azure-monitor/platform/computer-groups.md)
 
   ![Yeni güncelleştirme dağıtım bölmesi](./media/manage-update-multi/update-select-computers.png)
 
@@ -143,7 +144,7 @@ Bir veya daha fazla sanal makine için yeni bir güncelleştirme dağıtımı za
   - Hizmet paketleri
   - Tanım güncelleştirmeleri
   - Araçlar
-  - Güncellemeler
+  - Güncelleştirmeler
 
 - **Dahil edilecek/dışlanacak güncelleştirmeler** - Böylece **Dahil Et / Dışla** sayfası açılır. Dahil edilecek veya dışlanacak güncelleştirmeler ayrı sekmelerdedir. Ekleme hakkında daha fazla bilgi için bkz. [güncelleştirme dağıtımı zamanlama](automation-tutorial-update-management.md#schedule-an-update-deployment).
 
@@ -196,5 +197,5 @@ Dağıtımla ilgili her türlü hata hakkında ayrıntılı bilgi için **Hatala
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Günlükler, çıkış ve hatalar dahil Güncelleştirme Yönetimi hakkında daha fazla bilgi edinmek için bkz. [Azure 'da güncelleştirme yönetimi çözümü](../operations-management-suite/oms-solution-update-management.md).
+Günlükler, çıkış ve hatalar dahil Güncelleştirme Yönetimi hakkında daha fazla bilgi edinmek için bkz. [Azure 'da güncelleştirme yönetimi çözümü](../operations-management-suite/oms-solution-update-management.md).
 

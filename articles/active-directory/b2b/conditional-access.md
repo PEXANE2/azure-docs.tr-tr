@@ -1,5 +1,5 @@
 ---
-title: B2B işbirliği kullanıcıları için koşullu erişim-Azure Active Directory | Microsoft Docs
+title: B2B işbirliği kullanıcıları için koşullu erişim-Azure AD
 description: Azure Active Directory B2B işbirliği, kurumsal uygulamalarınıza seçmeli erişim için Multi-Factor Authentication 'ı (MFA) destekler
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a54e5006a268347148945fbe7fc5f18cfa41036
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: c0b6ceba4c3c9202e2024b5c163c0e98bb6cbf55
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68357124"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74273009"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>B2B işbirliği kullanıcıları için koşullu erişim
 
@@ -46,7 +46,7 @@ Kullanım deneyimini görmek için aşağıdaki animasyonu inceleyin:
 ### <a name="mfa-reset-for-b2b-collaboration-users"></a>B2B işbirliği kullanıcıları için MFA sıfırlaması
 Şu anda yönetici, B2B işbirliği kullanıcılarının yalnızca aşağıdaki PowerShell cmdlet 'lerini kullanarak yeniden kanıt sağlamasını gerektirebilir:
 
-1. Azure AD'ye bağlan
+1. Azure AD'ye Bağlanma
 
    ```
    $cred = Get-Credential
@@ -75,9 +75,9 @@ Geçerli yayında MFA, tahmine dayalı nedenlerle her zaman kaynak kiralandır. 
 
 Contoso, APP1 için MFA ilkesi etkinleştirmişse, app2 değil ise, belirteçte contoso MFA talebine baktığımızda, aşağıdaki sorunu görebiliriz:
 
-* Gün 1: Kullanıcı contoso 'da MFA 'ya sahiptir ve APP1 'e erişiyor, sonra fabrikam 'da ek MFA istemi gösterilmez.
+* Gün 1: bir Kullanıcı contoso 'da MFA 'ya sahiptir ve APP1 'e erişiyor, ardından fabrikam 'da ek MFA istemi gösterilmez.
 
-* Gün 2: Kullanıcı, contoso 'da App 2 ' ye eriştiğinde, bu nedenle fabrikam 'a erişirken, burada MFA 'ya kaydolmalıdır.
+* 2\. gün: Kullanıcı, contoso 'da uygulama 2 ' ye erişmiş, bu nedenle fabrikam 'a erişirken, burada MFA 'ya kaydolmalıdır.
 
 Bu işlem kafa karıştırıcı olabilir ve oturum açma tamamlanmalarından sonra bırakmaya yol açabilir.
 
@@ -85,7 +85,7 @@ Bu işlem kafa karıştırıcı olabilir ve oturum açma tamamlanmalarından son
 
 Son olarak, kaynak kiracı MFA aynı zamanda MSAs ve sosyal kimlikler ve MFA 'nın ayarlanmayan iş ortakları için de çalışır.
 
-Bu nedenle, B2B kullanıcıları için MFA önerisi her zaman davet kiracısında MFA gerektirdir. Bu gereksinim, bazı durumlarda çift MFA oluşmasına neden olabilir, ancak davet kiracıya erişirken son kullanıcıların deneyimi tahmin edilebilir: Sally, davet eden kiracıyla MFA için kaydolmalıdır.
+Bu nedenle, B2B kullanıcıları için MFA önerisi her zaman davet kiracısında MFA gerektirdir. Bu gereksinim, bazı durumlarda çift MFA 'ya yol açabilir, ancak davet kiracıya erişirken son kullanıcıların deneyimi tahmin edilebilir: Sally, davet eden kiracı ile MFA için kaydedilmelidir.
 
 ### <a name="device-based-location-based-and-risk-based-conditional-access-for-b2b-users"></a>B2B kullanıcıları için cihaz tabanlı, konum tabanlı ve risk tabanlı koşullu erişim
 

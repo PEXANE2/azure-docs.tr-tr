@@ -1,6 +1,6 @@
 ---
 title: Azure Depolama’yı kullanarak Azure ölçümlerini ve günlük verilerini arşivleme
-description: Azure içinde oluşturulmuş günlük ve ölçüm verilerini bir depolama hesabında arşivleyin.
+description: Azure kaynakları tarafından bir depolama hesabına oluşturulan arşiv günlüğü ve ölçüm verileri.
 author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
@@ -9,12 +9,12 @@ ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.subservice: metrics
-ms.openlocfilehash: e784b76af478f834a7d1104650da1cbd3ca2a31f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4d150a1f6793cc20d58bebc67d5c6b58c03139d4
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60552935"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304704"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>Azure Depolama’yı kullanarak Azure ölçümlerini ve günlük verilerini arşivleme
 
@@ -38,7 +38,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/) oturum açın.
+[Azure portalında](https://portal.azure.com/) oturum açın.
 
 ## <a name="create-a-storage-account"></a>Depolama hesabı oluşturma
 
@@ -86,7 +86,7 @@ Aboneliğinizdeki izleme verileri artık depolama hesabına akar.
 
    ![Tanılama ayarları bölümü](media/tutorial-archive-data/diagnostic-settings-home.png)
 
-4. **Bir depolama hesabında arşivle** altındaki **Yapılandır** düğmesine tıklayın ve önceki bölümde oluşturduğunuz depolama hesabını seçin. **Tamam**’a tıklayın.
+4. **Bir depolama hesabında arşivle** altındaki **Yapılandır** düğmesine tıklayın ve önceki bölümde oluşturduğunuz depolama hesabını seçin. **OK (Tamam)** düğmesine tıklayın.
 
    ![Tanılama ayarları depolama hesabı](media/tutorial-archive-data/diagnostic-settings-storage.png)
 
@@ -103,7 +103,7 @@ Kaynağınızdaki izleme verileri artık depolama hesabına akar.
 > [!NOTE]
 > Çok boyutlu ölçümlerin tanılama ayarları aracılığıyla gönderilmesi şu anda desteklenmemektedir. Boyutlu ölçümler, boyut değerlerinin toplamı alınarak düzleştirilmiş tek yönlü ölçümler olarak dışarı aktarılır.
 >
-> *Örneğin*: Bir olay Hub'ındaki 'Gelen iletiler' ölçümü temelinde araştırılıp bir kuyruk düzeyi. Ancak, tanılama ayarları aracılığıyla dışarı aktarılan ölçüm, Olay Hub’ındaki tüm kuyruklarda tüm gelen iletiler halinde ifade edilir.
+> *Örneğin*: Bir Olay Hub'ındaki 'Gelen İletiler' ölçümü, kuyruk düzeyi temelinde araştırılıp grafiği oluşturulabilir. Ancak, tanılama ayarları aracılığıyla dışarı aktarılan ölçüm, Olay Hub’ındaki tüm kuyruklarda tüm gelen iletiler halinde ifade edilir.
 >
 >
 

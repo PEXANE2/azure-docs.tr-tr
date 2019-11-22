@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc9565f44fdb868bc45d2f99de1d4036e1d5d123
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 5eefac10e2ab196affc4c4148348d19959fcfeec
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74181139"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74266890"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 'de yönetici rolü izinleri
 
@@ -238,6 +238,7 @@ Bu roldeki kullanıcılar Microsoft 365 hizmetleri genelinde ayarları ve yönet
 >- [Azure AD Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) -genel okuyucu, bir kurumsal uygulamanın sağlama modunu okuyamıyor.
 >- [M365 Yönetim Merkezi](https://admin.microsoft.com/Adminportal/Home#/homepage) -genel okuyucu, müşteri kasası isteklerini okuyamıyor. M365 Yönetim Merkezi 'nin sol bölmesinde, **destek** altında **müşteri kasası istekleri** sekmesini bulmayacağız.
 >- [M365 Güvenlik Merkezi](https://security.microsoft.com/homepage) -genel okuyucu duyarlılık ve Bekletme etiketlerini okuyamıyor. M365 Güvenlik Merkezi 'nin sol bölmesinde **duyarlık etiketleri**, **bekletme etiketleri**ve **etiket Analizi** sekmelerini bulmayacağız.
+>- [Office güvenlik ve Uyumluluk Merkezi](https://protection.microsoft.com) -genel okuyucu SCC denetim günlüklerini okuyamıyor veya içerik araması yapamıyor.
 >- [Takımlar Yönetim Merkezi](https://admin.teams.microsoft.com) -küresel okuyucu **takımlar yaşam döngüsünü**, **Analiz & raporlarını**, **IP telefon cihaz yönetimini** ve **uygulama kataloğunu**okuyamıyor.
 >- [Privileged Access Management (Pam)](https://docs.microsoft.com/office365/securitycompliance/privileged-access-management-overview) , genel okuyucu rolünü desteklemez.
 >- [Azure Information Protection](https://docs.microsoft.com/azure/information-protection/what-is-information-protection) -genel okuyucu yalnızca [merkezi raporlama Için](https://docs.microsoft.com/azure/information-protection/reports-aip) desteklenir ve Azure AD Kuruluşunuz [Birleşik etiketleme platformunda](https://docs.microsoft.com/azure/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform)ne zaman değildir.

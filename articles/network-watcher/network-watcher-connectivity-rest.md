@@ -1,5 +1,6 @@
 ---
-title: Azure ağ Izleyicisi ile bağlantı sorunlarını giderme-Azure REST API | Microsoft Docs
+title: Bağlantı sorunlarını giderme-Azure REST API
+titleSuffix: Azure Network Watcher
 description: Azure REST API kullanarak Azure ağ Izleyicisi 'nde bağlantı sorunlarını giderme özelliğini kullanmayı öğrenin.
 services: network-watcher
 documentationcenter: na
@@ -13,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/02/2017
 ms.author: kumud
-ms.openlocfilehash: 82dd77e8ea36610244b97c1701209d5aa3be2869
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 792556a63b5ca9ef53a33960e8284354972b3895
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69017777"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275951"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-rest-api"></a>Azure REST API kullanarak Azure ağ Izleyicisi ile bağlantı sorunlarını giderme
 
@@ -38,7 +39,7 @@ Bu makalede aşağıdaki kaynaklara sahip olduğunuz varsayılır:
 * İle bağlantı sorunlarını gidermek için sanal makineler.
 
 > [!IMPORTANT]
-> Bağlantı sorunlarını gidermek için, üzerinde çalıştığınız `AzureNetworkWatcherExtension` VM 'nin VM uzantısının yüklü olması gerekir. Windows VM 'ye uzantı yüklemek için bkz. [Windows Için Azure ağ Izleyicisi Aracısı sanal makine uzantısı](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) ve Linux VM Için [Azure Ağ İzleyicisi Aracısı sanal makine uzantısı](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)' nı ziyaret edin. Uzantı hedef uç noktada gerekli değil.
+> Bağlantı sorunlarını gidermek için, üzerinde çalıştığınız sanal makinenin `AzureNetworkWatcherExtension` VM uzantısının yüklü olması gerekir. Windows VM 'ye uzantı yüklemek için bkz. [Windows Için Azure ağ Izleyicisi Aracısı sanal makine uzantısı](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) ve Linux VM Için [Azure Ağ İzleyicisi Aracısı sanal makine uzantısı](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)' nı ziyaret edin. Uzantı hedef uç noktada gerekli değil.
 
 ## <a name="log-in-with-armclient"></a>ARMClient ile oturum açma
 
@@ -133,7 +134,7 @@ null
 
 ### <a name="response"></a>Yanıt
 
-Aşağıdaki yanıt, önceki örnekteki bir örnektir.  Bu yanıtta `ConnectionStatus` , **ulaşılamaz**olur. Tüm yoklamaların başarısız olduğunu görebilirsiniz. Bağlantı noktası 80 ' de gelen trafiği engelleyecek şekilde yapılandırılmış, Kullanıcı tarafından `NetworkSecurityRule` yapılandırılmış adlandırılmış bir **UserRule_Port80**nedeniyle bağlantı Sanal Gereç sırasında başarısız oldu. Bu bilgiler, bağlantı sorunlarını araştırmak için kullanılabilir.
+Aşağıdaki yanıt, önceki örnekteki bir örnektir.  Bu yanıtta `ConnectionStatus` **ulaşılamaz**olur. Tüm yoklamaların başarısız olduğunu görebilirsiniz. Bağlantı noktası 80 ' de gelen trafiği engellemek için yapılandırılmış **UserRule_Port80**adlı Kullanıcı tarafından yapılandırılmış bir `NetworkSecurityRule` nedeniyle bağlantı Sanal Gereç sırasında başarısız oldu. Bu bilgiler, bağlantı sorunlarını araştırmak için kullanılabilir.
 
 ```json
 {
@@ -249,7 +250,7 @@ null
 
 ### <a name="response"></a>Yanıt
 
-Aşağıdaki örnekte,, `connectionStatus` **ulaşılamaz**olarak gösterilir. Ayrıntılarda, trafiğin bir `UserDefinedRoute`nedeniyle engellenmiş `issues` olduğunu görebilirsiniz. `hops`
+Aşağıdaki örnekte `connectionStatus` **ulaşılamaz**olarak gösterilir. `hops` ayrıntılarda, trafiğin bir `UserDefinedRoute`nedeniyle engellendiğini `issues` altında bakabilirsiniz.
 
 ```json
 {
@@ -345,7 +346,7 @@ null
 
 ### <a name="response"></a>Yanıt
 
-Aşağıdaki yanıtta, `connectionStatus` programları **erişilebilir**olarak görebilirsiniz. Bir bağlantı başarılı olduğunda, gecikme süresi değerleri sağlanır.
+Aşağıdaki yanıtta `connectionStatus` **erişilebilir**olduğunu görebilirsiniz. Bir bağlantı başarılı olduğunda, gecikme süresi değerleri sağlanır.
 
 ```json
 {
@@ -432,7 +433,7 @@ null
 
 ### <a name="response"></a>Yanıt
 
-Aşağıdaki örnek, önceki API çağrısını çalıştırmanın yanıtı örneğidir. Denetim başarılı `connectionStatus` olduğu için özelliği **erişilebilir**olarak gösterilir.  Depolama Blobu ve gecikme süresine ulaşmak için gereken atlama sayısıyla ilgili ayrıntılar verilmiştir.
+Aşağıdaki örnek, önceki API çağrısını çalıştırmanın yanıtı örneğidir. Denetim başarılı olduğu için `connectionStatus` özelliği **erişilebilir**olarak gösterilir.  Depolama Blobu ve gecikme süresine ulaşmak için gereken atlama sayısıyla ilgili ayrıntılar verilmiştir.
 
 ```json
 {

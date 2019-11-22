@@ -1,20 +1,16 @@
 ---
 title: Azure Dev Spaces hakkında sık sorulan sorular
-titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 09/25/2019
 ms.topic: conceptual
 description: Azure Dev Spaces hakkında bazı yaygın soruların yanıtlarını bulun
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
-ms.openlocfilehash: 1f25ccd26aed832c068c04198486e769ec980380
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 3c7335f1656d304d231c2146c8b7496ea43f0b4c
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072209"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280249"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Azure Dev Spaces hakkında sık sorulan sorular
 
@@ -46,12 +42,24 @@ Evet, ağ için CNı kullanan bir AKS kümesinde Azure Dev Spaces kullanabilirsi
 
 ## <a name="can-i-use-azure-dev-spaces-on-aks-clusters-with-api-server-authorized-ip-address-ranges-enabled"></a>API sunucusu yetkilendirilmiş IP adresi aralıkları etkin olan AKS kümelerinde Azure Dev Spaces kullanabilir miyim?
 
-Evet, [API sunucusu YETKILENDIRILMIŞ IP adresi aralıkları][aks-auth-range] etkin olan aks kümelerinde Azure dev Spaces kullanabilirsiniz. Kümenizi [oluştururken][aks-auth-range-create] , [bölgeniz temelinde ek aralıklara izin vermeniz][aks-auth-range-ranges]gerekir. Ayrıca, bu ek aralıklara izin vermek için var olan kümeyi [güncelleştirebilir][aks-auth-range-update] .
+Evet, [API sunucusu YETKILENDIRILMIŞ IP adresi aralıkları][aks-auth-range] etkin olan aks kümelerinde Azure dev Spaces kullanabilirsiniz. Kümenizi [oluştururken][aks-auth-range-create] , [bölgeniz temelinde ek aralıklara izin vermeniz][aks-auth-range-ranges]gerekir. Ayrıca, var olan bir kümeyi bu ek aralıklara izin verecek şekilde [güncelleştirebilirsiniz][aks-auth-range-update] .
+
+### <a name="can-i-use-azure-dev-spaces-on-aks-clusters-with-restricted-egress-traffic-for-cluster-nodes"></a>Küme düğümleri için kısıtlanmış çıkış trafiği ile AKS kümelerinde Azure Dev Spaces kullanabilir miyim?
+
+Evet, aşağıdaki FQDN 'Lere izin verildiğinde, [küme düğümleri Için kısıtlanmış çıkış trafiği][aks-restrict-egress-traffic] olan aks kümelerinde Azure dev Spaces kullanabilirsiniz:
+
+| FQDN                                    | Bağlantı noktası      | Bir yönetim grubuna bağlanmak veya bağlı bir yönetim grubunun özelliklerini düzenlemek için Yönetim çalışma alanında      |
+|-----------------------------------------|-----------|----------|
+| cloudflare.docker.com | HTTPS: 443 | Linux alp ve diğer Azure Dev Spaces görüntülerini çekmek için |
+| gcr.io | HTTP: 443 | Held/Tiller görüntülerini çekmek için|
+| storage.googleapis.com | HTTP: 443 | Held/Tiller görüntülerini çekmek için|
+
 
 [aks-auth-range]: ../aks/api-server-authorized-ip-ranges.md
 [aks-auth-range-create]: ../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled
 [aks-auth-range-ranges]: https://github.com/Azure/dev-spaces/tree/master/public-ips
 [aks-auth-range-update]: ../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges
+[aks-restrict-egress-traffic]: ../aks/limit-egress-traffic.md
 [dev-spaces-routing]: how-dev-spaces-works.md#how-routing-works
 [ingress-traefik]: how-to/ingress-https-traefik.md#configure-a-custom-traefik-ingress-controller
 [ingress-https-traefik]: how-to/ingress-https-traefik.md#configure-the-traefik-ingress-controller-to-use-https

@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory 'de şirket içi uygulama uygulama proxy 'Si ekleme | Microsoft Docs
+title: Azure AD 'de şirket içi uygulama-uygulama proxy 'Si ekleme
 description: Azure Active Directory (Azure AD), kullanıcıların Azure AD hesabıyla oturum açarak şirket içi uygulamalara erişmesini sağlayan bir uygulama proxy hizmeti içerir. Bu öğreticide, ortamınızı uygulama proxy 'Si ile kullanım için nasıl hazırlayacağınız gösterilmektedir. Daha sonra, Azure AD kiracınıza şirket içi bir uygulama eklemek için Azure portal kullanır.
 services: active-directory
 author: msmimart
@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0399f084e663ab891d59384af263a7faac2f42e
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 87b8a76c94af1578423668becf4b7955862314cb
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73943825"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275666"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Öğretici: Azure Active Directory içindeki uygulama proxy 'Si aracılığıyla uzaktan erişim için şirket içi uygulama ekleme
 

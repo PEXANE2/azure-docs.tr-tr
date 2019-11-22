@@ -1,5 +1,6 @@
 ---
-title: Azure ağ Izleyicisi ile paket yakalamalarını yönetme-Azure portal | Microsoft Docs
+title: Paket yakalamalarını yönetme-Azure portal
+titleSuffix: Azure Network Watcher
 description: Azure portal kullanarak ağ Izleyicisi 'nin paket yakalama özelliğini yönetmeyi öğrenin.
 services: network-watcher
 documentationcenter: na
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: kumud
-ms.openlocfilehash: 00349a7e681beab447e585139e481c04755b7879
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 4950ef8b763967e4e852e319429cc263a4a85f6c
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102859"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277861"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>Portalı kullanarak paket yakalamalarını Azure ağ Izleyicisi ile yönetme
 
@@ -38,29 +39,29 @@ Ağ güvenlik grubu, ağ arabirimi veya ağ arabiriminin içinde bulunduğu alt 
 
 ## <a name="start-a-packet-capture"></a>Paket yakalaması başlatma
 
-1. Tarayıcınızda [Azure Portal](https://portal.azure.com) gidin ve **tüm hizmetler**' i seçin ve ağ **İzleyicisi** ' ni seçin.
+1. Tarayıcınızda [Azure Portal](https://portal.azure.com) gidin ve **tüm hizmetler**' i seçin ve ağ **İzleyicisi** ' ni **seçin.**
 2. **Ağ tanılama araçları**altında **paket yakalama** ' yı seçin. Mevcut paket yakalamaları, durumlarına bakılmaksızın listelenir.
 3. Paket yakalama oluşturmak için **Ekle** ' yi seçin. Aşağıdaki özellikler için değer seçebilirsiniz:
-   - **Abonelik**: İçin paket yakalama oluşturmak istediğiniz sanal makinenin bulunduğu abonelik.
-   - **Kaynak grubu**: Sanal makinenin kaynak grubu.
-   - **Hedef sanal makine**: Paket yakalamayı oluşturmak istediğiniz sanal makine.
-   - **Paket yakalama adı**: Paket yakalama için bir ad.
-   - **Depolama hesabı veya dosya**: **Depolama hesabı**, **Dosya**veya her ikisini birden seçin. **Dosya**' yı seçerseniz yakalama, sanal makine içindeki bir yola yazılır.
-   - **Yerel dosya yolu**: Sanal makinede paket yakalamanın kaydedileceği yerel yol (yalnızca *Dosya* seçildiğinde geçerlidir). Yol geçerli bir yol olmalıdır. Linux sanal makinesi kullanıyorsanız yolun */var/yakalamaları*ile başlaması gerekir.
-   - **Depolama hesapları**: *Depolama hesabı*' nı seçtiyseniz, var olan bir depolama hesabını seçin. Bu seçenek yalnızca **depolama**' yı seçtiyseniz kullanılabilir.
+   - **Abonelik**: paket yakalamayı oluşturmak istediğiniz sanal makinenin içinde olduğu abonelik.
+   - **Kaynak grubu**: sanal makinenin kaynak grubu.
+   - **Hedef sanal makine**: paket yakalamayı oluşturmak istediğiniz sanal makine.
+   - **Paket yakalama adı**: paket yakalama için bir ad.
+   - **Depolama hesabı veya dosyası**: **depolama hesabı**, **Dosya**veya her ikisini birden seçin. **Dosya**' yı seçerseniz yakalama, sanal makine içindeki bir yola yazılır.
+   - **Yerel dosya yolu**: sanal makinedeki paket yakalamanın kaydedileceği yerel yol (yalnızca *Dosya* seçildiğinde geçerlidir). Yol geçerli bir yol olmalıdır. Linux sanal makinesi kullanıyorsanız yolun */var/yakalamaları*ile başlaması gerekir.
+   - **Depolama hesapları**: *depolama hesabı*' nı seçtiyseniz, var olan bir depolama hesabını seçin. Bu seçenek yalnızca **depolama**' yı seçtiyseniz kullanılabilir.
    
      > [!NOTE]
      > Premium Depolama hesapları Şu anda paket yakalamalarını depolamak için desteklenmiyor.
 
-   - **Paket başına en fazla bayt**: Yakalanan her paketten bayt sayısı. Boş bırakılırsa, tüm baytlar yakalanır.
-   - **Oturum başına en fazla bayt**: Yakalanan toplam bayt sayısı. Değere ulaşıldığında, paket yakalama durdu.
-   - **Süre sınırı (saniye)** : Paket yakalama durdurulmadan önceki süre sınırı. Varsayılan değer 18.000 saniyedir.
+   - **Paket başına en fazla bayt**: yakalanan her paketten bayt sayısı. Boş bırakılırsa, tüm baytlar yakalanır.
+   - **Oturum başına en fazla bayt**: yakalanan toplam bayt sayısıdır. Değere ulaşıldığında, paket yakalama durdu.
+   - **Süre sınırı (saniye)** : paket yakalamanın durdurulmadan önce geçmesi gereken süre. Varsayılan değer 18.000 saniyedir.
    - Filtreleme (Isteğe bağlı). **+ Filtre Ekle** ' yi seçin
-     - **Protokol**: Paket yakalama için filtrelenecek protokol. Kullanılabilir değerler TCP, UDP ve any ' dir.
-     - **Yerel IP adresi**: Yerel IP adresinin bu değerle eşleştiği paketler için paket yakalamayı filtreler.
-     - **Yerel bağlantı noktası**: Yerel bağlantı noktasının bu değerle eşleştiği paketler için paket yakalamayı filtreler.
-     - **Uzak IP adresi**: Uzak IP adresinin bu değerle eşleştiği paketler için paket yakalamayı filtreler.
-     - **Uzak bağlantı noktası**: Uzak bağlantı noktasının bu değerle eşleştiği paketler için paket yakalamayı filtreler.
+     - **Protokol**: paket yakalama için filtrelenecek protokol. Kullanılabilir değerler TCP, UDP ve any ' dir.
+     - **Yerel IP adresi**: yerel IP adresinin bu değerle eşleştiği paketler için paket yakalamaya filtre uygular.
+     - **Yerel bağlantı noktası**: yerel bağlantı noktasının bu değerle eşleştiği paketler için paket yakalamayı filtreler.
+     - **Uzak IP adresi**: uzak IP adresinin bu değerle eşleştiği paketler için paket yakalamaya filtre uygular.
+     - **Uzak bağlantı noktası**: uzak bağlantı noktasının bu değerle eşleştiği paketler için paket yakalamayı filtreler.
     
      > [!NOTE]
      > Bağlantı noktası ve IP adresi değerleri tek bir değer, değer aralığı veya bağlantı noktası için 80-1024 gibi bir Aralık olabilir. İhtiyaç duyduğunuz kadar çok filtre tanımlayabilirsiniz.
@@ -77,7 +78,7 @@ Paket yakalamada ayarlanan zaman sınırının süresi dolduktan sonra, paket ya
 ## <a name="delete-a-packet-capture"></a>Paket yakalamayı silme
 
 1. Paket yakalama görünümünde, paket yakalamanın sağ tarafındaki **...** seçeneğini belirleyin veya var olan bir paket yakalamaya sağ tıklayın ve **Sil**' i seçin.
-2. Paket yakalamayı silmek istediğinizi onaylamanız istenir. **Evet**' i seçin.
+2. Paket yakalamayı silmek istediğinizi onaylamanız istenir. **Evet**’i seçin.
 
 > [!NOTE]
 > Bir paket yakalamanın silinmesi, depolama hesabındaki veya sanal makinedeki yakalama dosyasını silmez.

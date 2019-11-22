@@ -1,6 +1,7 @@
 ---
-title: Azure Ağ İzleyicisi ve açık kaynak araçlarla ağ trafiği desenlerini Görselleştirme | Microsoft Docs
-description: Bu sayfa, Ağ İzleyicisi paket yakalama ile Capanalysis Vm'lerinizi gelen ve giden trafiği desenlerini görselleştirme için nasıl kullanılacağını açıklar.
+title: Açık kaynaklı araçlarla ağ trafiği düzenlerini görselleştirin
+titleSuffix: Azure Network Watcher
+description: Bu sayfada, sanal makinelerinizden ve sanal makinelerinizden trafik desenlerini görselleştirmek için Capanalysis ile ağ Izleyicisi paket yakalamanın nasıl kullanılacağı açıklanır.
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -14,89 +15,89 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 3a0ae782d3fe97752ca8b9e786c3c2672f554277
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3baf73eed09e6880820952b8457526b6c21dd83b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64936017"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277754"
 ---
-# <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>Açık kaynak araçlar kullanarak sanal makinelerinizi gelen ve giden ağ trafiği desenlerini Görselleştirme
+# <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>Açık kaynaklı araçlar kullanarak sanal makinelerinizden gelen ve giden ağ trafiği düzenlerini görselleştirin
 
-Paket yakalama ağ inceleme ve derin paket incelemesi gerçekleştirmenize olanak sağlayan ağ verileri içerir. Kaynak araç ağınız hakkında Öngörüler elde etmek için paket yakalamaları çözümleme için kullanabileceğiniz birçok açılır vardır. CapAnalysis, bir açık kaynak paket yakalama görselleştirme aracı bu araçlardan biridir. Paket yakalama verileri görselleştirme, hızlı Öngörüler düzenleri ve anormallikleri ağınızdaki türetmek için faydalı bir yöntemdir. Görselleştirmeler, ayrıca buna benzer öngörüleri kullanımı kolay bir şekilde paylaşma olanağı sağlar.
+Paket yakalamaları, ağ oluşturma ve derin paket incelemesi gerçekleştirmenize olanak tanıyan ağ verileri içerir. Ağınız hakkında Öngörüler kazanmak için paket yakalamalarını çözümlemek üzere kullanabileceğiniz birçok açık kaynak aracı vardır. Bu tür bir araç, açık kaynaklı bir paket yakalama görselleştirme aracı olan CapAnalysis. Paket yakalama verilerinin görselleştirilmesi, ağınız içindeki desenler ve bozukluklar hakkında hızlı bir şekilde Öngörüler elde etmenin değerli bir yoludur. Görselleştirmeler Ayrıca, bu tür öngörüleri kolayca tüketilebilir şekilde paylaşmak için bir yol sağlar.
 
-Azure Ağ İzleyicisi, ağ üzerinde paket yakalamaları gerçekleştirmenize olanak vererek verilerini yakalama olanağı sağlar. Bu makalede, Ağ İzleyicisi ile CapAnalysis kullanarak görselleştirin ve paket verilerden Öngörüler elde etmeye yönelik bir kılavuzda yakalar sağlar.
+Azure 'un ağ Izleyicisi, ağınızda paket yakalamaları gerçekleştirmenize izin vererek verileri yakalama olanağı sağlar. Bu makalede, ağ Izleyicisi ile CapAnalysis kullanarak paket yakalamalarından nasıl görselleştirme ve öngörü elde edilecek hakkında bir adım adım sunulmaktadır.
 
 ## <a name="scenario"></a>Senaryo
 
-Sahip olduğunuz açık kaynak Araçlar, ağ trafik akış desenlerini ve olası anomalileri hızlıca tanımlamak için görselleştirmek için kullanmak istediğiniz bir sanal makine azure'da dağıtılan basit bir web uygulaması. Ağ İzleyicisi ile ağ ortamınızın bir paket yakalama almak ve doğrudan depolama hesabınızda depolayın. CapAnalysis paket yakalaması depolama blobdan doğrudan alma ve içeriğini görselleştirin.
+Azure 'daki bir VM üzerinde dağıtılan basit bir Web uygulamanız varsa, akış düzenlerini ve olası anormallikleri hızlıca tanımlamak üzere ağ trafiğini görselleştirmek için açık kaynak araçları kullanmak istiyorsunuz. Ağ izleyicisinden, ağ ortamınızın paket yakalamasını elde edebilir ve depolama hesabınızda doğrudan depolarsınız. CapAnalysis daha sonra paket yakalamayı doğrudan depolama blobundan alabilir ve içeriğini görselleştirin.
 
 ![senaryo][1]
 
 ## <a name="steps"></a>Adımlar
 
-### <a name="install-capanalysis"></a>CapAnalysis yükleyin
+### <a name="install-capanalysis"></a>CapAnalysis 'i yükler
 
-Bir sanal makinede CapAnalysis yüklemek için resmi yönergeleri burada başvurabilir https://www.capanalysis.net/ca/how-to-install-capanalysis.
-CapAnalysis uzaktan erişim, yeni bir gelen güvenlik kuralı ekleyerek vm'nizde 9877 bağlantı noktası açmanız gerekir. Ağ güvenlik gruplarında kuralları oluşturma hakkında daha fazla bilgi için bkz [mevcut bir NSG'de kurallar oluşturma](../virtual-network/manage-network-security-group.md#create-a-security-rule). Kural başarıyla eklendikten sonra gelen CapAnalysis erişebilir olmalıdır `http://<PublicIP>:9877`
+Bir sanal makineye CapAnalysis yüklemek için https://www.capanalysis.net/ca/how-to-install-capanalysisburadaki resmi yönergelere bakabilirsiniz.
+Uzaktan erişim CapAnalysis için, yeni bir gelen güvenlik kuralı ekleyerek sanal makinenizde 9877 numaralı bağlantı noktasını açmanız gerekir. Ağ güvenlik gruplarında kural oluşturma hakkında daha fazla bilgi için, [mevcut BIR NSG 'de kurallar oluşturma](../virtual-network/manage-network-security-group.md#create-a-security-rule)bölümüne bakın. Kural başarıyla eklendikten sonra, `http://<PublicIP>:9877` 'den CapAnalysis 'ye erişebiliyor olmanız gerekir
 
-### <a name="use-azure-network-watcher-to-start-a-packet-capture-session"></a>Paket yakalama oturumu başlatmak için Azure Ağ İzleyicisi'ni kullanın
+### <a name="use-azure-network-watcher-to-start-a-packet-capture-session"></a>Paket yakalama oturumu başlatmak için Azure ağ Izleyicisi 'ni kullanma
 
-Ağ İzleyicisi, bir sanal makine ve giden trafiği izlemek için paket yakalamanızı sağlar. Bölümündeki yönergeleri başvurabilirsiniz [Yönet paket yakalar Ağ İzleyicisi ile](network-watcher-packet-capture-manage-portal.md) bir paket yakalama oturumu başlatmak için. Paket yakalaması CapAnalysis tarafından erişilecek bir depolama blobu depolanabilir.
+Ağ Izleyicisi, bir sanal makinede trafiği izlemek için paket yakalamanızı sağlar. Paket yakalama oturumu başlatmak için [ağ izleyiciyle paket yakalamalarını yönetme](network-watcher-packet-capture-manage-portal.md) bölümündeki yönergelere başvurabilirsiniz. Paket yakalama, CapAnalysis tarafından erişilecek bir depolama blobuna depolanabilir.
 
-### <a name="upload-a-packet-capture-to-capanalysis"></a>Paket yakalaması CapAnalysis için karşıya yükleme
-Paket yakalaması depolandığı "URL'den içeri aktar" sekmesini kullanarak ve depolama blobu bağlantı sağlayan Ağ İzleyicisi tarafından gerçekleştirilen bir paket yakalama doğrudan yükleyebilirsiniz.
+### <a name="upload-a-packet-capture-to-capanalysis"></a>CapAnalysis 'e bir paket yakalama yükleme
+"URL 'den Içeri aktar" sekmesini kullanarak Ağ İzleyicisi tarafından alınan bir paket yakalamayı doğrudan karşıya yükleyebilir ve paket yakalamanın depolandığı depolama blobuna bir bağlantı sağlayabilirsiniz.
 
-Bir bağlantı için CapAnalysis sağlanırken bir SAS belirteci depolama blob URL'ye emin olun.  Bunu yapmak için paylaşılan erişim imzası için depolama hesabından gidin, izin verilen izinleri belirlemek ve bir belirteç oluşturmak için SAS Oluştur düğmesine basın. Ardından, paket yakalama depolama blobu URL'si için bir SAS belirteci ekleyebilirsiniz.
+CapAnalysis için bir bağlantı sağlarken, Depolama Blobu URL 'sine bir SAS belirteci eklemediğinizden emin olun.  Bunu yapmak için depolama hesabından paylaşılan erişim imzası ' na gidin, izin verilen izinleri belirleyin ve bir belirteç oluşturmak için SAS Oluştur düğmesine basın. Daha sonra, SAS belirtecini paket yakalama Depolama Blobu URL 'sine ekleyebilirsiniz.
 
-Çıkan URL, aşağıdaki URL aşağıdakine benzer: http://storageaccount.blob.core.windows.net/container/location?addSASkeyhere
+Elde edilen URL aşağıdaki URL 'ye benzer şekilde görünür: http://storageaccount.blob.core.windows.net/container/location?addSASkeyhere
 
 
-### <a name="analyzing-packet-captures"></a>Çözümleme paket yakalar.
+### <a name="analyzing-packet-captures"></a>Paket yakalamaları çözümleniyor
 
-CapAnalysis paket yakalama, farklı bir bakış açısı sağlayan her analiz görselleştirmek için çeşitli seçenekler sunar. Bu görsel özetler ile ağ trafiğini eğilimlerini ve hızlı bir şekilde hiç olağan dışı etkinlik saptayın. Bu özelliklerin birkaçını aşağıda gösterilmiştir:
+CapAnalysis, her biri farklı bir perspektiften analiz sağlayan, paket yakalamanızı görselleştirmek için çeşitli seçenekler sunar. Bu görsel özetler sayesinde, ağ trafiği eğilimlerini anlayabilir ve alışılmadık etkinlikleri hızlı bir şekilde belirleyebilirsiniz. Aşağıdaki listede bu özelliklerden birkaçı gösterilmektedir:
 
 1. Akış tabloları
 
-    Bu tablo, paket verileri, iş akışlarıyla ilişkili zaman damgası ve akış, yanı sıra kaynak ve hedef IP ilişkili çeşitli protokoller akışların listesini sağlar.
+    Bu tablo, paket verileri, akışlarla ilişkili zaman damgası ve Flow ile ilişkili çeşitli protokoller ve kaynak ve hedef IP ile ilgili akış listesi sağlar.
 
-    ![capanalysis akış sayfası][5]
+    ![capanalysis Flow sayfası][5]
 
-1. Protokolüne genel bakış
+1. Protokole Genel Bakış
 
-    Bu bölme, ağ trafiğinin dağıtımını çeşitli protokoller ve coğrafyalar hızlıca görmenize olanak sağlar.
+    Bu bölme, çeşitli protokoller ve coğrafi bölgelerde ağ trafiğinin dağıtımını hızlı bir şekilde görmenizi sağlar.
 
     ![capanalysis protokolüne genel bakış][6]
 
 1. İstatistikler
 
-    Bu bölme, ağ trafiğini istatistiklerini – bayt görüntülemek için gönderilen ve alınan kaynak ve hedef Ip'lerini, her kaynak ve hedef Ip'lerini, bir Akış Protokolü çeşitli akışlar ve akışlar süresi için kullanılan sağlar.
+    Bu bölme, kaynak ve hedef IP 'lerden gönderilen ve alınan baytlar, kaynak ve hedef IP 'lerin her biri için akışlar, çeşitli akışlar için kullanılan protokol ve akış süresi gibi ağ trafiği istatistiklerini görüntülemenize olanak sağlar.
 
     ![capanalysis istatistikleri][7]
 
-1. Coğrafi haritayı
+1. coğrafi Haritayı görmek
 
-    Bu bölme her ülke/bölgeden trafik hacmi ölçeklendirme renklerle ile ağ trafiğinizin bir harita görünümünü sağlar. Gönderilen ve bu ülke/bölge içinde Ip'lerden alınan veriler oranı gibi ek akış istatistiklerini görüntülemek için vurgulanan ülkeler/bölgeler seçebilirsiniz.
+    Bu bölme, her bir ülke/bölgeden gelen trafik hacmine renk ölçeklendirerek ağ trafiğinizin bir harita görünümünü sağlar. Bu ülkenin/bölgedeki IP 'lerden gönderilen ve alınan verilerin oranı gibi ek akış istatistiklerini görüntülemek için vurgulanan ülkeleri/bölgeleri seçebilirsiniz.
 
-    ![Coğrafi haritayı][8]
+    ![coğrafi Haritayı görmek][8]
 
 1. Filtreler
 
-    CapAnalysis hızlı analiz belirli bir paket için bir filtre kümesi sağlar. Örneğin, bu trafiğin alt dayalı belirli Öngörüler elde etmek için protokolü tarafından verilere filtre uygulamak seçebilirsiniz.
+    CapAnalysis, belirli paketlerin hızlı analizine yönelik bir filtre kümesi sağlar. Örneğin, bu trafik alt kümesiyle ilgili Öngörüler elde etmek için verileri protokole göre filtrelemeyi seçebilirsiniz.
 
     ![filtreler][11]
 
-    Ziyaret [ https://www.capanalysis.net/ca/#about ](https://www.capanalysis.net/ca/#about) tüm CapAnalysis özellikleri hakkında daha fazla bilgi edinmek için.
+    Tüm CapAnalysis ' özellikleri hakkında daha fazla bilgi edinmek için [https://www.capanalysis.net/ca/#about](https://www.capanalysis.net/ca/#about) ziyaret edin.
 
 ## <a name="conclusion"></a>Sonuç
 
-Ağ İzleyicisi'nin paket yakalama özelliğini ağ adli gerçekleştirmek ve ağ trafiğinizi daha iyi anlamak gereken verileri yakalamanıza olanak sağlar. Bu senaryoda nasıl paket yakalamaları Ağ İzleyicisi'nden kolayca açık kaynaklı görselleştirme araçları ile tümleştirilebilir gösterdi. Paket yakalamaları görselleştirmek için CapAnalysis gibi açık kaynak araçları kullanarak derin paket incelemesi gerçekleştiren ve ağ trafiğinizi içinde eğilimleri hızla tanımlayın.
+Ağ Izleyicisi 'nin paket yakalama özelliği, ağ ve ağ trafiğinizi daha iyi anlamak için gereken verileri yakalamanızı sağlar. Bu senaryoda, ağ izleyicisinden paket yakalamalarından kolayca açık kaynaklı görselleştirme araçlarıyla nasıl tümleştirilebileceğine gösterildik. Paket yakalamalarını görselleştirmek için CapAnalysis gibi açık kaynaklı araçları kullanarak, derin paket incelemesi gerçekleştirebilir ve ağ trafiğiniz içindeki eğilimleri hızlıca belirleyebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-NSG akış günlükleri hakkında daha fazla bilgi edinmek için [NSG akış günlükleri](network-watcher-nsg-flow-logging-overview.md)
+NSG akış günlükleri hakkında daha fazla bilgi edinmek için [NSG akış günlüklerini](network-watcher-nsg-flow-logging-overview.md) ziyaret edin
 
-Ziyaret ederek, NSG akış günlüklerini Power BI ile görselleştirmeyi öğrenmek [görselleştirme NSG akış günlükleri Power BI ile](network-watcher-visualize-nsg-flow-logs-power-bi.md)
+Power BI ile NSG akış günlüklerinizi görselleştirmeyi öğrenin [Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 <!--Image references-->
 
 [1]: ./media/network-watcher-using-open-source-tools/figure1.png

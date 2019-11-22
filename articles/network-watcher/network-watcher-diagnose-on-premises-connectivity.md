@@ -1,6 +1,7 @@
 ---
-title: Azure Ağ İzleyicisi ile VPN ağ geçidi üzerinden Tanıla şirket içi bağlantı | Microsoft Docs
-description: Bu makalede, Azure Ağ İzleyicisi sorun giderme kaynak ile VPN gateway aracılığıyla şirket içi bağlantıyı tanılama açıklar.
+title: VPN Gateway aracılığıyla şirket Içi bağlantıyı tanılama
+titleSuffix: Azure Network Watcher
+description: Bu makalede, Azure ağ Izleyicisi kaynak sorunlarını giderme ile VPN ağ geçidi aracılığıyla şirket içi bağlantının nasıl tanılanacağı açıklanır.
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -14,36 +15,36 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 05335cb6949928244e10641ebe82008275830e67
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 602a319ce90e5a6d13829e218899f135413d762d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754054"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275949"
 ---
-# <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>VPN ağ geçitleri üzerinden şirket içi bağlantıyı tanılama
+# <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>VPN ağ geçitleri aracılığıyla şirket içi bağlantıyı tanılama
 
-Azure VPN ağ geçidi, şirket içi ağınız ile Azure sanal ağınız arasında güvenli bir bağlantı için gereken adres karma çözüm oluşturmak amacıyla sağlar. Gereksinimlerinizi benzersiz olduğundan, bu nedenle şirket içi VPN cihazının seçenektir. Azure şu anda destekler [birkaç VPN cihazları](../vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable) , sürekli doğrulanır cihaz satıcılarıyla iş ortaklığı. Cihaza özgü yapılandırma ayarlarını, şirket içi VPN Cihazınızı yapılandırmadan önce gözden geçirin. Benzer şekilde, Azure VPN ağ geçidi kümesi ile yapılandırılmış [IPSec parametreleri desteklenen](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec) bağlantıları kurmak için kullanılır. Şu anda Azure VPN gateway'den belirli bir birleşimi IPSec parametreleri bir yolu yoktur. Şirket içi ve Azure arasında başarılı bir bağlantı kurmak için şirket içi VPN cihaz ayarları, Azure VPN Gateway tarafından belirlenen IPSec parametreleri uygun olmalıdır. Ayarlar doğru var ise bağlantı kaybı ve şimdiye kadar bu sorunları gidermek Önemsiz değildi ve genellikle belirlemek ve sorunu gidermek için saat sürüyordu.
+Azure VPN Gateway, şirket içi ağınız ile Azure sanal ağınız arasında güvenli bir bağlantı gereksinimini karşılayan karma çözüm oluşturmanıza olanak sağlar. Gereksinimleriniz benzersiz olduğundan, şirket içi VPN cihazı tercih edilir. Azure Şu anda cihaz satıcılarıyla iş ortaklığı içinde sürekli olarak doğrulanan [ÇEŞITLI VPN cihazlarını](../vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable) desteklemektedir. Şirket içi VPN cihazınızı yapılandırmadan önce cihaza özgü yapılandırma ayarlarını gözden geçirin. Benzer şekilde, Azure VPN Gateway, bağlantı kurmak için kullanılan [desteklenen bir IPSec parametreleri](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec) kümesiyle yapılandırılır. Şu anda Azure VPN Gateway IPsec parametrelerinin belirli bir birleşimini belirtmenin veya seçmenin bir yolu yoktur. Şirket içi ve Azure arasında başarılı bir bağlantı kurmak için şirket içi VPN cihaz ayarlarının Azure VPN Gateway tarafından belirtilen IPSec parametrelerine uygun olması gerekir. Ayarlar doğruysa, bağlantı kaybı olur ve bu sorunların giderilmesi önemsiz değildi ve genellikle sorunu tanımlamak ve düzeltmek için saat sürdü.
 
-Azure Ağ İzleyicisi ile sorun giderme özelliği, ağ geçidi ve bağlantılarıyla sorunları tanılayın ve dakikalar içinde sorunu düzeltmek için bilinçli bir karar vermeniz için yeterli bilgiye sahip.
+Azure ağ Izleyicisi sorun giderme özelliği sayesinde, ağ geçidiniz ve bağlantılarınız ile ilgili sorunları tanılayabilir ve dakikalar içinde sorunu düzeltmeye yönelik bilinçli bir karar vermek için yeterli bilgiye sahip olabilirsiniz.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="scenario"></a>Senaryo
 
-Azure ve şirket içi arasında siteden siteye bağlantı yapılandırma istediğiniz FortiGate şirket içi VPN ağ geçidi olarak kullanma. Bu senaryo elde etmek için aşağıdaki Kurulum gerekir:
+Şirket içi VPN Gateway olarak FortiGate kullanarak Azure ile şirket içi arasında siteden siteye bağlantı yapılandırmak istiyorsunuz. Bu senaryoya ulaşmak için aşağıdaki kuruluma ihtiyacınız vardır:
 
-1. Sanal ağ geçidi - azure'da VPN ağ geçidi
-1. Yerel ağ geçidi - [şirket içi (FortiGate) VPN ağ geçidi](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway) Azure bulutunda gösterimi
-1. Siteden siteye bağlantı (rota tabanlı) - [VPN Gateway ve şirket içi yönlendiricileri arasındaki bağlantı](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal#CreateConnection)
+1. Sanal ağ geçidi-Azure 'da VPN Gateway
+1. Yerel ağ geçidi- [Şirket içi (FortiGate)](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway) Azure bulutundaki gösterimi VPN Gateway
+1. Siteden siteye bağlantı (rota tabanlı)- [VPN Gateway ve şirket içi yönlendirici arasında bağlantı](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal#CreateConnection)
 1. [FortiGate yapılandırma](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/Site-to-Site_VPN_using_FortiGate.md)
 
-Siteden siteye bir yapılandırma için ayrıntılı adım adım rehberlik ederek bulunabilir: [Azure portalını kullanarak siteden siteye bağlantı ile VNet oluşturma](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
+Siteden siteye yapılandırma yapılandırmaya yönelik ayrıntılı adım adım yönergeler, ziyaret ederek bulunabilir: [Azure Portal kullanarak siteden siteye bağlantı Ile VNET oluşturma](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
 
-Kritik yapılandırma adımlarının birini IPSec iletişimi parametreleri yapılandırma, şirket içi ağınız ve Azure arasında bağlantı kaybı için herhangi bir yanlış yapılandırma yol açar. Şu anda Azure VPN ağ geçitleri, 1. Aşama için aşağıdaki IPSec parametreleri desteklemek üzere yapılandırılır. Bu ayarlar değiştirilemez daha önce belirtildiği gibi unutmayın.  Aşağıdaki tabloda görebileceğiniz gibi Azure VPN ağ geçidi tarafından desteklenen şifreleme algoritmalarını AES256, AES128 ve 3DES ' dir.
+Kritik yapılandırma adımlarından biri IPSec iletişim parametrelerini yapılandırıyor, herhangi bir yanlış yapılandırma, şirket içi ağ ile Azure arasında bağlantı kaybına neden olur. Şu anda Azure VPN ağ geçitleri, 1. aşama için aşağıdaki IPSec parametrelerini destekleyecek şekilde yapılandırılmıştır. Daha önce belirtildiği gibi, bu ayarlar değiştirilemez.  Aşağıdaki tabloda görebileceğiniz gibi, Azure VPN Gateway tarafından desteklenen şifreleme algoritmaları AES256, AES128 ve 3DES ' dir.
 
-### <a name="ike-phase-1-setup"></a>IKE Aşama 1 Kurulumu
+### <a name="ike-phase-1-setup"></a>IKE Aşama 1 kurulumu
 
 | **Özellik** | **PolicyBased** | **RouteBased ve standart ya da yüksek performanslı VPN ağ geçidi** |
 | --- | --- | --- |
@@ -52,68 +53,68 @@ Kritik yapılandırma adımlarının birini IPSec iletişimi parametreleri yapı
 | Kimlik Doğrulama Yöntemi |Önceden Paylaşılan Anahtar |Önceden Paylaşılan Anahtar |
 | Şifreleme Algoritmaları |AES256 AES128 3DES |AES256 3DES |
 | Karma Algoritma |SHA1(SHA128) |SHA1(SHA128), SHA2(SHA256) |
-| Aşama 1 Güvenlik İlişkisi (SA) Yaşam Süresi (Zaman) |28\.800 saniye |10\.800 saniye |
+| Aşama 1 Güvenlik İlişkisi (SA) Yaşam Süresi (Zaman) |28.800 saniye |10.800 saniye |
 
-Bir kullanıcı olarak, FortiGate yapılandırmak için gerekli olacak, bir örnek yapılandırma bulunabilir [GitHub](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/fortigate_show%20full-configuration.txt). Farkında olmadan, FortiGate karma algoritması SHA-512 kullanmak için yapılandırılmış. Bu algoritma, ilke tabanlı bağlantıları için desteklenen bir algoritması değil olarak VPN bağlantınızı çalışır.
+Bir kullanıcı olarak, bir örnek yapılandırmanın [GitHub](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/fortigate_show%20full-configuration.txt)'da bulunması Için FortiGate 'i yapılandırmanız gerekir. FortiGate 'i karma algoritma olarak SHA-512 kullanacak şekilde yapılandırdınız. Bu algoritma, ilke tabanlı bağlantılar için desteklenen bir algoritma olmadığından, VPN bağlantınız çalışır.
 
-Bu sorunları gidermek daha zordur ve kök nedenleri genellikle anlaşılamayacak. Bu durumda sorunu çözme konusunda yardım almak için bir destek bileti açabilirsiniz. Ancak Azure Ağ İzleyicisi ile API sorun giderme, bu sorunları kendiniz belirleyebilirsiniz.
+Bu sorunların giderilmesi zordur ve kök nedenler genellikle sezgisel değildir. Bu durumda, sorunu çözmeye yönelik yardım almak için bir destek bileti açabilirsiniz. Ancak, Azure ağ Izleyicisi ile ilgili sorun giderme API 'SI ile bu sorunları kendi kendinize tanımlayabilirsiniz.
 
-## <a name="troubleshooting-using-azure-network-watcher"></a>Azure Ağ İzleyicisi'ni kullanarak sorun giderme
+## <a name="troubleshooting-using-azure-network-watcher"></a>Azure ağ Izleyicisi 'ni kullanarak sorun giderme
 
-Bağlantınızı tanılamak için Azure PowerShell'i bağlayın ve başlatma `Start-AzNetworkWatcherResourceTroubleshooting` cmdlet'i. Bu cmdlet, kullanımıyla ilgili ayrıntılar bulabilirsiniz [sorun giderme sanal ağ geçidini ve bağlantıları - PowerShell](network-watcher-troubleshoot-manage-powershell.md). Bu cmdlet tamamlanması birkaç dakika sürebilir.
+Bağlantınızı tanılamak için Azure PowerShell bağlanın ve `Start-AzNetworkWatcherResourceTroubleshooting` cmdlet 'ini başlatın. Bu cmdlet 'i kullanarak ilgili ayrıntıları, [sanal ağ geçidi ve bağlantılar-PowerShell sorunlarını gidermek](network-watcher-troubleshoot-manage-powershell.md)için bulabilirsiniz. Bu cmdlet 'in tamamlanması birkaç dakika sürebilir.
 
-Cmdlet tamamlandıktan sonra cmdlet günlükleri ve sorun hakkında ayrıntılı bilgi almak belirtilen depolama konumuna gidebilirsiniz. Azure Ağ İzleyicisi aşağıdaki günlük dosyalarını içeren bir zip klasörünü oluşturur:
+Cmdlet tamamlandıktan sonra, sorun ve Günlükler hakkında ayrıntılı bilgi almak için cmdlet 'inde belirtilen depolama konumuna gidebilirsiniz. Azure ağ Izleyicisi, aşağıdaki günlük dosyalarını içeren bir zip klasörü oluşturur:
 
 ![1][1]
 
-IKEErrors.txt adlı dosyayı açın ve şirket içi ile ilgili bir sorun gösteren aşağıdaki hatayı alırsanız görüntüler IKE ayarı yanlış yapılandırma.
+Ikeerrors. txt adlı dosyayı açın ve şirket içi ıKE ayarı yanlış yapılandırmayla ilgili bir sorun olduğunu belirten aşağıdaki hatayı görüntüler.
 
 ```
 Error: On-premises device rejected Quick Mode settings. Check values.
      based on log : Peer sent NO_PROPOSAL_CHOSEN notify
 ```
 
-Bu durumda olduğunu bahsetmeleri gibi sayfasından Scrubbed wfpdiag.txt hata hakkında ayrıntılı bilgi edinebilirsiniz `ERROR_IPSEC_IKE_POLICY_MATCH` düzgün çalışmıyor bağlantı sağlama.
+Scrubbed-wfpdiag. txt dosyasından hata hakkında ayrıntılı bilgi edinebilirsiniz. Bu durumda, bağlantının düzgün şekilde çalışmamasına neden olan `ERROR_IPSEC_IKE_POLICY_MATCH` olduğunu bahsetmektedir.
 
-Başka bir yaygın hatalı yapılandırma belirten yanlış paylaşılan anahtarlar var. Yukarıdaki örnekte, farklı bir paylaşılan anahtarlar belirlemiş olsaydık IKEErrors.txt aşağıdaki hatayı gösterir: `Error: Authentication failed. Check shared key`.
+Diğer bir yaygın yanlış yapılandırma yanlış paylaşılan anahtarlar belirtmektir. Yukarıdaki örnekte farklı paylaşılan anahtarlar belirttiyseniz, ıkeerrors. txt dosyasında şu hata görüntülenir: `Error: Authentication failed. Check shared key`.
 
-Azure Ağ İzleyicisi sorun giderme tanılayın ve basit bir PowerShell cmdlet'i bir kolayca ile VPN Gateway ve bağlantı sorunlarını giderme özelliği sağlar. Şu anda biz aşağıdaki durumlarını tanılamada desteği ve daha fazla koşul ekleme doğrultusunda çalışıyoruz.
+Azure ağ Izleyicisi sorun giderme özelliği, VPN Gateway ve bağlantınızı basit bir PowerShell cmdlet 'i ile tanılamanıza ve gidermenize olanak sağlar. Şu anda aşağıdaki koşulları tanılamayı destekliyoruz ve daha fazla koşul eklemeye yönelik çalışıyor.
 
-### <a name="gateway"></a>Ağ geçidi
+### <a name="gateway"></a>Ağ Geçidi
 
 | Hata türü | Neden | Günlük|
 |---|---|---|
-| NoFault | Herhangi bir hata algılandığında. |Evet|
-| GatewayNotFound | Ağ geçidi veya ağ geçidi sağlanmamış bulunamıyor. |Hayır|
-| PlannedMaintenance |  Ağ geçidinin bakım yapılıyor.  |Hayır|
-| UserDrivenUpdate | Ne zaman bir kullanıcı güncelleştirme devam ediyor. Bu, yeniden boyutlandırma işlemi olabilir. | Hayır |
-| VipUnResponsive | Birincil ağ geçidi örneğini erişemiyor. Durum araştırması başarısız olduğunda meydana gelir. | Hayır |
-| PlatformInActive | Platform ile ilgili bir sorun yoktur. | Hayır|
+| Nofatoult | Hata saptanmadı. |Yes|
+| GatewayNotFound | Ağ Geçidi bulunamıyor veya ağ geçidi sağlanmadı. |Hayır|
+| PlannedMaintenance |  Ağ Geçidi örneği bakım aşamasındadır.  |Hayır|
+| UserDrivenUpdate | Bir Kullanıcı güncelleştirmesi devam ediyor. Bu bir yeniden boyutlandırma işlemi olabilir. | Hayır |
+| Canlı yanıt verme | Ağ geçidinin birincil örneğine ulaşılamıyor. Bu durum araştırma başarısız olduğunda gerçekleşir. | Hayır |
+| PlatformInActive | Platformda bir sorun var. | Hayır|
 | ServiceNotRunning | Temel alınan hizmet çalışmıyor. | Hayır|
-| NoConnectionsFoundForGateway | Ağ geçidi üzerinde bağlantı var. Bu yalnızca bir uyarıdır.| Hayır|
-| ConnectionsNotConnected | Bağlantıları hiçbiri bağlı. Bu yalnızca bir uyarıdır.| Evet|
-| GatewayCPUUsageExceeded | Geçerli ağ geçidi CPU kullanımı > %95 kullanımdır. | Evet |
+| NoConnectionsFoundForGateway | Ağ geçidinde hiçbir bağlantı yok. Bu yalnızca bir uyarıdır.| Hayır|
+| ConnectionsNotConnected | Bağlantılardan hiçbiri bağlanmadı. Bu yalnızca bir uyarıdır.| Yes|
+| Gatewaycpuusageaşıldı | Geçerli ağ geçidi kullanım CPU kullanımı %95 >. | Yes |
 
 ### <a name="connection"></a>Bağlantı
 
 | Hata türü | Neden | Günlük|
 |---|---|---|
-| NoFault | Herhangi bir hata algılandığında. |Evet|
-| GatewayNotFound | Ağ geçidi veya ağ geçidi sağlanmamış bulunamıyor. |Hayır|
-| PlannedMaintenance | Ağ geçidinin bakım yapılıyor.  |Hayır|
-| UserDrivenUpdate | Ne zaman bir kullanıcı güncelleştirme devam ediyor. Bu, yeniden boyutlandırma işlemi olabilir.  | Hayır |
-| VipUnResponsive | Birincil ağ geçidi örneğini erişemiyor. Durum araştırması başarısız olduğunda ortaya çıkar. | Hayır |
+| Nofatoult | Hata saptanmadı. |Yes|
+| GatewayNotFound | Ağ Geçidi bulunamıyor veya ağ geçidi sağlanmadı. |Hayır|
+| PlannedMaintenance | Ağ Geçidi örneği bakım aşamasındadır.  |Hayır|
+| UserDrivenUpdate | Bir Kullanıcı güncelleştirmesi devam ediyor. Bu bir yeniden boyutlandırma işlemi olabilir.  | Hayır |
+| Canlı yanıt verme | Ağ geçidinin birincil örneğine ulaşılamıyor. Durum araştırması başarısız olduğunda gerçekleşir. | Hayır |
 | ConnectionEntityNotFound | Bağlantı yapılandırması eksik. | Hayır |
-| ConnectionIsMarkedDisconnected | Bağlantı "bağlantısız" olarak işaretlendi |Hayır|
-| ConnectionNotConfiguredOnGateway | Temel alınan hizmete yapılandırılmış bağlantı yok. | Evet |
-| ConnectionMarkedStandby | Temel alınan hizmete yedek olarak işaretlenir.| Evet|
-| Kimlik Doğrulaması | Önceden paylaşılan anahtarı uyuşmazlığı. | Evet|
-| PeerReachability | Eş Ağ Geçidi erişilebilir değil. | Evet|
-| IkePolicyMismatch | Eş Ağ geçidi, Azure tarafından desteklenen IKE ilkeleri vardır. | Evet|
-| WfpParse Error | WFP günlük ayrıştırılırken bir hata oluştu. |Evet|
+| Connectionımarkedconnected | Bağlantı "bağlantısı kesildi" olarak işaretlenir. |Hayır|
+| ConnectionNotConfiguredOnGateway | Temeldeki hizmette bağlantı yapılandırılmamış. | Yes |
+| ConnectionMarkedStandby | Temel alınan hizmet bekleme olarak işaretlendi.| Yes|
+| Kimlik Doğrulaması | Önceden paylaşılan anahtar uyumsuzluğu. | Yes|
+| Peerulaşılabilirlik | Eş ağ geçidine erişilemiyor. | Yes|
+| Ikepolicyuyuşmazlığıdır | Eş ağ geçidinde Azure tarafından desteklenmeyen ıKE ilkeleri vardır. | Yes|
+| WfpParse Error | WFP günlüğü ayrıştırılırken bir hata oluştu. |Yes|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-PowerShell ve Azure Otomasyonu ile VPN ağ geçidi bağlantısı kontrol ederek öğrenin [İzleyicisi VPN ağ geçitleri, Azure Ağ İzleyicisi sorun giderme](network-watcher-monitor-with-azure-automation.md)
+[Azure Ağ İzleyicisi sorunlarını giderme Ile VPN ağ geçitlerini](network-watcher-monitor-with-azure-automation.md) ziyaret ederek PowerShell ve Azure otomasyonu ile VPN Gateway bağlantısını denetlemeyi öğrenin
 
 [1]: ./media/network-watcher-diagnose-on-premises-connectivity/figure1.png

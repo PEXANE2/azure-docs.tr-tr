@@ -2,13 +2,13 @@
 title: Azure portal şablonu dışarı aktarma
 description: Aboneliğinizdeki kaynaklardan bir Azure Resource Manager şablonu dışarı aktarmak için Azure portal kullanın.
 ms.topic: conceptual
-ms.date: 10/11/2019
-ms.openlocfilehash: 6e05a8bff27e56bc5942a7c16ab63921c489f44c
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.date: 11/21/2019
+ms.openlocfilehash: 9e6a4089758809cbebc6a3c0cd586cb418ca42bf
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149861"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74306782"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Azure portal bir şablona tek ve çoklu kaynak verme
 
@@ -33,7 +33,7 @@ Seçtiğiniz seçeneğe bağlı olarak, içe aktarılmış şablonların farklı
 | Şablon, kaynakların geçerli durumunun anlık görüntüsüdür. Dağıtımdan sonra yaptığınız el ile yapılan tüm değişiklikleri içerir. | Şablon, dağıtım sırasında yalnızca kaynakların durumunu gösterir. Dağıtımdan sonra yaptığınız tüm el ile değişiklikler dahil edilmez. |
 | Bir kaynak grubundan dışarı aktarılacak kaynakları seçebilirsiniz. | Belirli bir dağıtımın tüm kaynakları dahil edilmiştir. Bu kaynakların bir alt kümesini seçemezsiniz veya farklı bir zamanda eklenen kaynaklar ekleyebilirsiniz. |
 | Şablon, genellikle dağıtım sırasında ayarladığınız bazı özellikler dahil olmak üzere, kaynakların tüm özelliklerini içerir. Şablonu yeniden kullanmadan önce bu özellikleri kaldırmak veya temizlemek isteyebilirsiniz. | Şablon yalnızca dağıtım için gereken özellikleri içerir. Şablon kullanıma hazırdır. |
-| Şablon muhtemelen yeniden kullanım için gereken tüm parametreleri içermez. Çoğu özellik değeri, şablonda sabit olarak kodlanır. Diğer ortamlarda şablonu yeniden dağıtmak için, kaynakları yapılandırma özelliğini artıran parametreler eklemeniz gerekir. | Şablon, farklı ortamlarda yeniden dağıtmayı kolaylaştıran parametreler içerir. |
+| Şablon muhtemelen yeniden kullanım için gereken tüm parametreleri içermez. Çoğu özellik değeri, şablonda sabit olarak kodlanır. Diğer ortamlarda şablonu yeniden dağıtmak için, kaynakları yapılandırma özelliğini artıran parametreler eklemeniz gerekir.  Ayrıca kendi parametrelerinizi yazabileceğiniz **parametreleri dahil etme** seçeneğiniz de vardır. | Şablon, farklı ortamlarda yeniden dağıtmayı kolaylaştıran parametreler içerir. |
 
 Şablonu bir kaynak grubu veya kaynağından dışarı aktarın, ne zaman:
 
@@ -62,6 +62,8 @@ Bir kaynak grubundan bir veya daha fazla kaynağı dışarı aktarmak için:
 
    ![Şablonu göster](./media/export-template-portal/show-template.png)
 
+   **Include parametreleri** varsayılan olarak seçilidir.  Seçildiğinde, şablon oluşturulduğunda tüm şablon parametreleri dahil edilir. Kendi parametrelerinizi yazmak isterseniz, bu onay kutusunu dahil etmez.
+
 ## <a name="export-template-from-a-resource"></a>Şablondan bir kaynağı dışarı aktar
 
 Bir kaynağı dışarı aktarmak için:
@@ -74,7 +76,7 @@ Bir kaynağı dışarı aktarmak için:
 
    ![Kaynağı dışarı aktar](./media/export-template-portal/export-single-resource.png)
 
-1. İçe aktarılmış şablon görüntülenir ve indirilebilir ve dağıtılabilir. Şablon yalnızca tek bir kaynağı içerir.
+1. İçe aktarılmış şablon görüntülenir ve indirilebilir ve dağıtılabilir. Şablon yalnızca tek bir kaynağı içerir. **Include parametreleri** varsayılan olarak seçilidir.  Seçildiğinde, şablon oluşturulduğunda tüm şablon parametreleri dahil edilir. Kendi parametrelerinizi yazmak isterseniz, bu onay kutusunu dahil etmez.
 
 ## <a name="export-template-before-deployment"></a>Dağıtımdan önce şablonu dışarı aktar
 

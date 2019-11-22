@@ -1,5 +1,5 @@
 ---
-title: Azure Izleyici ile roller, izinler ve güvenlik ile çalışmaya başlama
+title: Azure Izleyici 'de roller, izinler ve güvenlik
 description: İzleme kaynaklarına erişimi kısıtlamak için Azure Izleyici 'nin yerleşik rollerini ve izinlerini nasıl kullanacağınızı öğrenin.
 author: johnkemnetz
 services: azure-monitor
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: c745375eb4f59208af79bbb03d45f8f0eea7f3ca
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 424d57c59dea11a49faf7a7bb32d85772ef4de8c
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260615"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74305165"
 ---
-# <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Azure Izleyici ile roller, izinler ve güvenlik ile çalışmaya başlama
+# <a name="roles-permissions-and-security-in-azure-monitor"></a>Azure Izleyici 'de roller, izinler ve güvenlik
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -24,7 +24,7 @@ Birçok ekibin izleme verilerine ve ayarlarına erişimi kesinlikle daha fazla d
 ## <a name="built-in-monitoring-roles"></a>Yerleşik izleme rolleri
 Azure Izleyici 'nin yerleşik rolleri, bir abonelikteki kaynaklarla erişimi sınırlamaya yardımcı olmak üzere tasarlanmıştır. bu sayede, altyapının ihtiyaç duydukları verileri elde etmek ve yapılandırmak üzere izleme için sorumlu olmaya devam ediyor. Azure Izleyici, iki kullanıma hazır rol sağlar: Izleme okuyucu ve Izleme katılımcısı.
 
-### <a name="monitoring-reader"></a>İzleme Okuyucusu
+### <a name="monitoring-reader"></a>İzleme okuyucusu
 Izleme okuyucusu rolünü atayan kişiler, bir abonelikteki tüm izleme verilerini görüntüleyebilir, ancak herhangi bir kaynağı değiştiremez veya izleme kaynaklarıyla ilgili herhangi bir ayarı düzenleyemez. Bu rol, bir kuruluştaki, destek veya operasyon mühendisleri gibi kullanıcıların şunları yapabilmesi gereken kullanıcılar için uygundur:
 
 * Portalda izleme panolarını görüntüleyin ve kendi özel izleme panoları oluşturun.
@@ -48,7 +48,7 @@ Izleme okuyucusu rolünü atayan kişiler, bir abonelikteki tüm izleme verileri
 > 
 > 
 
-### <a name="monitoring-contributor"></a>İzleme Katkıda Bulunanı
+### <a name="monitoring-contributor"></a>Katkıda bulunan izleniyor
 Izleme katılımcısı rolünü atayan kişiler, bir abonelikteki tüm izleme verilerini görüntüleyebilir ve izleme ayarlarını oluşturabilir veya değiştirebilir, ancak başka bir kaynağı değiştiremezler. Bu rol, Izleme okuyucusu rolünün bir üst kümesidir ve bir kuruluşun izleme ekibinin veya yukarıdaki izinlerin yanı sıra, yukarıdaki izinlerle ilgili olarak da şunları yapabilmeleri için gerekli olan yönetilen hizmet sağlayıcılarının üyeleri için uygundur:
 
 * İzleme panoları paylaşılan bir pano olarak yayımlayın.
@@ -61,7 +61,7 @@ Izleme katılımcısı rolünü atayan kişiler, bir abonelikteki tüm izleme ve
 * Log Analytics çalışma alanında kaydedilmiş aramaları oluşturun ve silin ve yürütün.
 * Log Analytics çalışma alanı depolama yapılandırmasını oluşturun ve silin.
 
-\*Ayrıca, bir günlük profili veya tanılama ayarı ayarlamak için Kullanıcı hedef kaynakta (depolama hesabı veya Olay Hub 'ı ad alanı) ListKeys iznine sahip olmalıdır.
+Ayrıca, bir günlük profili veya tanılama ayarı ayarlamak için \*kullanıcının hedef kaynakta (depolama hesabı veya Olay Hub 'ı ad alanı) ListKeys iznine sahip olması gerekir.
 
 > [!NOTE]
 > Bu rol, bir olay hub 'ına akan veya depolama hesabında depolanan günlük verilerine okuma erişimi vermez. Bu kaynaklara erişimi yapılandırma hakkında daha fazla bilgi için [aşağıya bakın](#security-considerations-for-monitoring-data) .
@@ -182,7 +182,7 @@ Azure Izleyici, etkinleştirdiğiniz hizmetleri sağlamak için Azure kaynaklar�
 ### <a name="secured-storage-accounts"></a>Güvenli depolama hesapları 
 
 İzleme verileri genellikle bir depolama hesabına yazılır. Bir depolama hesabına kopyalanmış verilere yetkisiz kullanıcılar tarafından erişilemediğinden emin olmak isteyebilirsiniz. Ek güvenlik için, bir depolama hesabını "seçili ağları" kullanacak şekilde kısıtlayarak, yalnızca yetkili kaynaklarınızın ve güvenilir Microsoft hizmetlerinizin bir depolama hesabına erişmesine izin vermek üzere ağ erişimini sınırlayabilirsiniz.
-![Azure depolama ayarları iletişim](./media/roles-permissions-security/secured-storage-example.png) kutusu Azure izleyici, bu "Güvenilen Microsoft hizmetlerinden" biri olarak kabul edilir. güvenilen Microsoft hizmetlerinin güvenli depolamaya erişmesine izin verirseniz, Azure izleyici güvenli depolama hesabınıza erişebilir; etkinleştiriliyor Bu korumalı koşullarda Azure Izleyici tanılama günlükleri, etkinlik günlüğü ve ölçümleri depolama hesabınıza yazma. Bu da Log Analytics, güvenli depolama alanından günlükleri okumasına olanak tanır.   
+![Azure depolama ayarları Iletişim kutusu](./media/roles-permissions-security/secured-storage-example.png) Azure Izleyici bu "Güvenilen Microsoft hizmetlerinden biri" olarak kabul edilir. güvenilen Microsoft hizmetlerinin güvenli depolamaya erişmesine izin verirseniz, Azure izleyici, güvenli depolama hesabınıza erişebilir; Bu korumalı koşullarda Azure Izleyici tanılama günlükleri, etkinlik günlüğü ve ölçümleri depolama hesabınıza yazmayı etkinleştirme. Bu da Log Analytics, güvenli depolama alanından günlükleri okumasına olanak tanır.   
 
 
 Daha fazla bilgi için bkz. [ağ güvenliği ve Azure depolama](../../storage/common/storage-network-security.md)

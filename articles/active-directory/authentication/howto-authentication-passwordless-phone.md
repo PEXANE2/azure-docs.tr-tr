@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acdcbef74d95fbbc4cfb49176d1f98621e746ff6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3ca668036a8b4a4af261ee85b8a884c22258beb4
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474364"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74269496"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Microsoft Authenticator uygulamasıyla passwordless oturum açmayı etkinleştirme (Önizleme)
 
@@ -46,7 +46,7 @@ Passwordless kimlik doğrulama yöntemlerinin kayıt özellikleri, Birleşik kay
 ### <a name="enable-passwordless-phone-sign-in-authentication-methods"></a>Passwordless telefon oturum açma kimlik doğrulama yöntemlerini etkinleştir
 
 1. [Azure portalda](https://portal.azure.com) oturum açma
-1. **Kimlik doğrulama yöntemi ilkesi (Önizleme)**  > **Azure AD güvenlik** > **kimlik doğrulama yöntemlerine** gidin
+1. Arama yapın ve *Azure Active Directory*seçin. **Güvenlik** > **kimlik doğrulama yöntemlerini** seçin > **kimlik doğrulama yöntemi ilkesi (Önizleme)**
 1. **Passwordless telefon oturumu açma**altında aşağıdaki seçenekleri belirleyin
    1. **Etkinleştir** -Evet veya Hayır
    1. **Hedef** -tüm kullanıcılar veya kullanıcıları seçin

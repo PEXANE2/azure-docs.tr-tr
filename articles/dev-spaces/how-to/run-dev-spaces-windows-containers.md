@@ -1,20 +1,16 @@
 ---
 title: Windows kapsayıcılarıyla etkileşim kurmak için Azure Dev Spaces kullanma
-titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 07/25/2019
 ms.topic: conceptual
 description: Windows kapsayıcıları ile mevcut bir kümede Azure Dev Spaces çalıştırmayı öğrenin
 keywords: Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Windows kapsayıcıları
-ms.openlocfilehash: 90d7c8e5fc08405178ab6596b765f289b9bd716f
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
-ms.translationtype: MT
+ms.openlocfilehash: ad91d8e48a9242795d4f5d5cd165e658339ebe08
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582785"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280042"
 ---
 # <a name="use-azure-dev-spaces-to-interact-with-windows-containers"></a>Windows kapsayıcılarıyla etkileşim kurmak için Azure Dev Spaces kullanma
 

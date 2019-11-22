@@ -1,6 +1,7 @@
 ---
-title: Azure Ağ İzleyicisi - Azure portalı ile bağlantı sorunlarını giderme | Microsoft Docs
-description: Bağlantıyı kullanmayı öğrenin özelliği, Azure portalını kullanarak Azure Ağ İzleyicisi sorun giderme.
+title: Bağlantı sorunlarını giderme-Azure portal
+titleSuffix: Azure Network Watcher
+description: Azure ağ Izleyicisi 'nin Azure portal kullanarak bağlantı sorunlarını giderme özelliğini kullanmayı öğrenin.
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -13,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/03/2017
 ms.author: kumud
-ms.openlocfilehash: 783bcd0cdc97328f16c4a0defa18daa46a065842
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5236d076939b6972946adfde3557e3534f9adf5c
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64702012"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275983"
 ---
-# <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-portal"></a>Azure portalını kullanarak Azure Ağ İzleyicisi ile bağlantı sorunlarını giderme
+# <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-portal"></a>Azure portal kullanarak Azure ağ Izleyicisi ile bağlantı sorunlarını giderme
 
 > [!div class="op_single_selector"]
 > - [Portal](network-watcher-connectivity-portal.md)
@@ -28,39 +29,39 @@ ms.locfileid: "64702012"
 > - [Azure CLI](network-watcher-connectivity-cli.md)
 > - [Azure REST API](network-watcher-connectivity-rest.md)
 
-Bağlantı kullanmayı öğrenin belirli bir uç noktaya doğrudan TCP bağlantısı bir sanal makineden oluşturulan olup olmadığını doğrulamak için sorun giderme.
+Bir sanal makineden belirli bir uç noktaya doğrudan TCP bağlantısının kurulabildiğini doğrulamak için bağlantı sorunlarını giderme hakkında bilgi edinin.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu makalede, aşağıdaki kaynaklara sahip olduğunu varsayar:
+Bu makalede aşağıdaki kaynaklara sahip olduğunuz varsayılır:
 
-* Ağ İzleyicisi bağlantı sorunlarını gidermek için istediğiniz bölgede bir örneği.
-* Bağlantı sorunlarını gidermek için sanal makineler.
+* Bir bağlantı sorunlarını gidermek istediğiniz bölgedeki ağ Izleyicisi örneği.
+* İle bağlantı sorunlarını gidermek için sanal makineler.
 
 > [!IMPORTANT]
-> Bağlantı sorunlarını giderme, sorun giderme VM'ye sahip olması gerekir `AzureNetworkWatcherExtension` VM uzantısı yüklü. Bir Windows VM'de uzantıyı yüklemek için ziyaret [Windows için Azure Ağ İzleyicisi Aracısı sanal makine uzantısı](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) ve Linux VM ziyaret [LinuxiçinAzureAğİzleyicisiAracısısanalmakineuzantısı](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). Hedef uç noktada bir uzantı gerekli değildir.
+> Bağlantı sorunlarını gidermek için, üzerinde çalıştığınız sanal makinenin `AzureNetworkWatcherExtension` VM uzantısının yüklü olması gerekir. Windows VM 'ye uzantı yüklemek için bkz. [Windows Için Azure ağ Izleyicisi Aracısı sanal makine uzantısı](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) ve Linux VM Için [Azure Ağ İzleyicisi Aracısı sanal makine uzantısı](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)' nı ziyaret edin. Uzantı hedef uç noktada gerekli değil.
 
-## <a name="check-connectivity-to-a-virtual-machine"></a>Bir sanal makine bağlantısını kontrol edin
+## <a name="check-connectivity-to-a-virtual-machine"></a>Bir sanal makineye bağlantıyı denetle
 
-Bu örnek, bir hedef sanal makinenin bağlantı bağlantı noktası 80 üzerinden denetler.
+Bu örnek, 80 bağlantı noktası üzerinden bir hedef sanal makineye bağlantıyı denetler.
 
-İçin Ağ İzleyicisi gelin ve tıklayın **bağlantı sorunlarını giderme**. Bağlantıyı denetlemek için sanal makineyi seçin. İçinde **hedef** bölümü seçin **bir sanal makine seçin** ve doğru sanal makine ve test etmek için bağlantı noktası seçin.
+Ağ izleyicisine gidin ve **bağlantı sorunlarını giderme**' ye tıklayın. Bağlantıyı denetlemek için sanal makineyi seçin. **Hedef** bölümünde, **bir sanal makine seç** ' i seçin ve doğru sanal makineyi ve test edilecek bağlantı noktasını seçin.
 
-' A tıkladığınızda **denetleyin**, belirtilen bağlantı noktası sanal makineler arasındaki bağlantıyı denetlenir. Örnekte, hedef VM erişilemiyor, atlama listesi gösterilir.
+**Denetle**' ye tıkladığınızda, belirtilen bağlantı noktasındaki sanal makineler arasındaki bağlantı denetlenir. Örnekte, hedef VM ulaşılamaz durumdaysa, atlamalarla bir liste gösterilir.
 
-![Bir sanal makine için denetim bağlantı sonuçları][1]
+![Bir sanal makine için bağlantı sonuçlarını denetleme][1]
 
-## <a name="check-remote-endpoint-connectivity"></a>Uzak uç noktası bağlantısını denetleyin
+## <a name="check-remote-endpoint-connectivity"></a>Uzak uç nokta bağlantısını denetle
 
-Uzak uç noktası için gecikme süresi ve bağlantı kontrol edin, tercih **el ile belirt** radyo düğmesinin **hedef** bölümünde URL'yi ve bağlantı noktasını girin ve tıklayın **denetleyin**.  Bu, Web siteleri ve depolama uç noktaları gibi uzak uç noktaları için kullanılır.
+Uzak bir uç nokta bağlantısını ve gecikmesini denetlemek için **hedef** bölümünde **el ile radyo belirt** düğmesini seçin, URL 'yi ve bağlantı noktasını girin ve **Denetle**' ye tıklayın.  Bu, Web siteleri ve depolama uç noktaları gibi uzak uç noktalar için kullanılır.
 
-![Bir web sitesi için bağlantı sonuçlarını denetleyin][2]
+![Web sitesi için bağlantı sonuçlarını denetleme][2]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sanal makine uyarılarla paket yakalamaları görüntüleyerek otomatikleştirmeyi öğrenme [uyarı tetiklendi paket yakalama oluşturma](network-watcher-alert-triggered-packet-capture.md)
+[Bir uyarı tetikledi bildiren paket yakalamayı](network-watcher-alert-triggered-packet-capture.md) görüntüleyerek sanal makine uyarıları ile paket yakalamaları otomatikleştirmeyi öğrenin
 
-Belirli trafiğe içine veya dışına VM'nizi ederek izin verilip verilmediğini Bul [denetleyin IP akışı doğrulama](diagnose-vm-network-traffic-filtering-problem.md)
+IP 'de belirli trafiğe izin verilip verilmeyeceğini [denetle onay IP Flow doğrula](diagnose-vm-network-traffic-filtering-problem.md) ' yı ziyaret ederek bulun
 
 [1]: ./media/network-watcher-connectivity-portal/figure1.png
 [2]: ./media/network-watcher-connectivity-portal/figure2.png

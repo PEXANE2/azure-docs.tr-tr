@@ -1,5 +1,5 @@
 ---
-title: Azure AD uygulamaları için bağlantılı oturum açma-Microsoft Identity platform | Microsoft Docs
+title: Azure AD uygulamaları için bağlantılı oturum açma-Microsoft Identity platform
 description: Microsoft Identity platform (Azure AD) içinde Azure AD kurumsal uygulamalarınızın bağlantılı çoklu oturum açmayı (SSO) yapılandırma
 services: active-directory
 author: msmimart
@@ -12,12 +12,12 @@ ms.date: 05/08/2019
 ms.author: mimart
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc1e26a3c7d284a60b830f6f66cdcecef97db4d6
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 2c4547bddeea8b67bd3377124b1c299662fea3e6
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834625"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274182"
 ---
 # <a name="configure-linked-sign-on"></a>Bağlantılı oturum açmayı yapılandırma
 
@@ -31,7 +31,7 @@ Uygulama Azure AD kiracınıza eklenmemişse, bkz. [Galeri uygulaması ekleme](a
 
 1. [Azure Portal](https://portal.azure.com) bir bulut uygulaması Yöneticisi veya Azure AD kiracınız için bir uygulama Yöneticisi olarak oturum açın.
 
-1. **Azure Active Directory** > **kurumsal uygulamalara**gidin. Azure AD kiracınızdaki uygulamaların rastgele bir örneği görüntülenir. 
+1. **Kurumsal uygulamalarda** **Azure Active Directory** > gidin. Azure AD kiracınızdaki uygulamaların rastgele bir örneği görüntülenir. 
 
 1. **Uygulama türü** menüsünde, **tüm uygulamalar**' ı seçin ve ardından **Uygula**' yı seçin.
 

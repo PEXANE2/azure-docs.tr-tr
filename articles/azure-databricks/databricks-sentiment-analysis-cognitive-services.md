@@ -9,16 +9,16 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 07/29/2019
-ms.openlocfilehash: 12e6d292779d497d907bb68eece3fc2338f072fd
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 13afdf4d6c45927c60e8de9fd228f70b7c0a3c68
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73602057"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286537"
 ---
 # <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>Öğretici: Azure Databricks kullanarak akış verileri ile ilgili yaklaşım analizi
 
-Bu öğreticide, neredeyse gerçek zamanlı Azure Databricks kullanarak bir veri akışında yaklaşım analizini nasıl çalıştıracağınızı öğreneceksiniz. Azure Event Hubs’ı kullanarak veri alımı sistemini ayarlarsınız. Spark Event Hubs bağlayıcısını kullanarak Event Hubs’tan Azure Databricks’e iletileri kullanırsınız. Son olarak, akış verileri üzerinde yaklaşım analizini çalıştırmak için bilişsel hizmet API 'Lerini kullanırsınız.
+Bu öğreticide, Azure Databricks kullanarak neredeyse gerçek zamanlı veri akışı ile ilgili yaklaşım analizi çalıştırmak öğrenin. Azure Event Hubs’ı kullanarak veri alımı sistemini ayarlarsınız. Spark Event Hubs bağlayıcısını kullanarak Event Hubs’tan Azure Databricks’e iletileri kullanırsınız. Son olarak, akış verileri üzerinde yaklaşım analizini çalıştırmak için bilişsel hizmet API 'Lerini kullanırsınız.
 
 Bu öğreticinin sonunda, Twitter’daki "Azure" terimini içeren tweet’leri alır ve bu tweet’ler ile ilgili yaklaşım analizi çalıştırmış olursunuz.
 
@@ -39,13 +39,13 @@ Bu öğretici aşağıdaki görevleri kapsar:
 > * Event Hubs’tan tweet’leri okuma
 > * Tweet’lerle ilgili yaklaşım analizi çalıştırma
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=sparkeventhubs-docs-alehall) oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=sparkeventhubs-docs-alehall).
 
 > [!Note]
 > Bu öğretici **Azure Ücretsiz deneme aboneliği**kullanılarak gerçekleştirilemez.
 > Ücretsiz hesabınız varsa, profilinize gidin ve aboneliğinizi **Kullandıkça Öde**ile değiştirin. Daha fazla bilgi için bkz. [Ücretsiz Azure hesabı](https://azure.microsoft.com/free/). Ardından, [harcama limitini kaldırın](https://docs.microsoft.com/azure/billing/billing-spending-limit#remove-the-spending-limit-in-azure-portal)ve bölgenizdeki vCPU 'lar için [bir kota artışı isteyin](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) . Azure Databricks çalışma alanınızı oluşturduğunuzda, çalışma alanına 14 gün boyunca ücretsiz Premium Azure Databricks DBUs erişimi sağlamak için **deneme (Premium-14 gün ücretsiz DBUs)** fiyatlandırma katmanını seçebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce aşağıdaki gereksinimlerin karşılandığından emin olun:
 - Azure Event Hubs ad alanı.
@@ -102,7 +102,7 @@ Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı
     Aşağıdakiler dışında diğer tüm varsayılan değerleri kabul edin:
 
    * Küme için bir ad girin.
-   * Bu makalede, **5,2** çalışma zamanına sahip bir küme oluşturun.
+   * Bu makalede, **6,0** çalışma zamanına sahip bir küme oluşturun.
    * **\_\_ dakika işlem yapılmadığında sonlandır** onay kutusunu seçtiğinizden emin olun. Küme kullanılmazsa kümenin sonlandırılması için biz süre (dakika cinsinden) belirtin.
 
    Teknik ölçüt ve [Bütçe](https://azure.microsoft.com/pricing/details/databricks/?WT.mc_id=sparkeventhubs-docs-alehall)için uygun olan küme çalışanını ve sürücü düğümü boyutunu seçin.
@@ -176,11 +176,11 @@ Bu öğreticide, Azure bilişsel [hizmetler metin analizi API 'lerini](../cognit
    - Hesabın oluşturulacağı Azure aboneliğini seçin.
    - Bir Azure konumu seçin.
    - Hizmet için bir fiyatlandırma katmanı seçin. Bilişsel Hizmetler fiyatlandırması hakkında daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/cognitive-services/?WT.mc_id=sparkeventhubs-docs-alehall).
-   - Yeni bir kaynak grubu oluşturmak veya var olan bir kaynak grubunu seçmek isteyip istemediğinizi belirtin.
+   - Yeni bir kaynak grubu oluşturun veya mevcut bir isteyip istemediğinizi belirtin.
 
      **Oluştur**'u seçin.
 
-5. Hesap oluşturulduktan sonra, **genel bakış** sekmesinden **erişim anahtarlarını göster**' i seçin.
+5. Hesap oluşturulduktan sonra gelen **genel bakış** sekmesinde **erişim anahtarlarını gösterme**.
 
     ![Erişim tuşlarını göster](./media/databricks-sentiment-analysis-cognitive-services/cognitive-services-get-access-keys.png "Erişim tuşlarını göster")
 
@@ -439,7 +439,7 @@ Aşağıdaki çıkışı alırsınız:
     ...
     ...
 
-Apache Spark için Event Hubs bağlayıcısını kullanarak Azure Event Hubs ' den neredeyse gerçek zamanlı olarak Azure Databricks veri akışı oluşturdunuz. Spark için Event Hubs bağlayıcısını kullanma hakkında daha fazla bilgi için [bağlayıcı belgesi](https://github.com/Azure/azure-event-hubs-spark/tree/master/docs?WT.mc_id=sparkeventhubs-docs-alehall)ne başvurun.
+Artık, neredeyse gerçek zamanlı olarak Apache Spark için Event Hubs bağlayıcısını kullanarak Azure Databricks'e Azure Event Hubs verilerini yaptınız. Spark için Event Hubs bağlayıcısını kullanma hakkında daha fazla bilgi için [bağlayıcı belgesi](https://github.com/Azure/azure-event-hubs-spark/tree/master/docs?WT.mc_id=sparkeventhubs-docs-alehall)ne başvurun.
 
 ## <a name="run-sentiment-analysis-on-tweets"></a>Tweet’lerle ilgili yaklaşım analizi çalıştırma
 
@@ -552,7 +552,7 @@ object SentimentDetector extends Serializable {
 }
 ```
 
-Yaklaşımı belirleyen bir Spark UDF (Kullanıcı tanımlı işlev) tanımlamak için başka bir hücre ekleyin.
+Bir Spark yaklaşım belirleyen UDF (kullanıcı tanımlı işlev) tanımlamak için başka bir hücreye ekleyin.
 
 ```scala
 // User Defined Function for processing content of messages to return their sentiment.
@@ -614,7 +614,7 @@ Aşağıdaki kod parçacığı gibi bir çıktı görmeniz gerekir:
 
 **Yaklaşım** sütununda bir değerin **1** değerine yakın olması, Azure deneyiminin mükemmel olduğunu ifade eder. Bir değerin **0** değerine yakın olması, kullanıcının Microsoft Azure ile çalışırken sorunlarla karşılaştığını ifade eder.
 
-İşte bu kadar! Azure Databricks kullanarak, verileri Azure Event Hubs 'a başarıyla akıtıyordınız ve Event Hubs bağlayıcısını kullanarak akış verilerini tüketilip neredeyse gerçek zamanlı olarak akış verilerinde yaklaşım analizini çalıştırdınız.
+İşte bu kadar! Azure Databricks kullanarak verileri başarıyla yaptınız Azure Event Hubs'a, Event Hubs bağlayıcısını kullanarak akış verilerini kullandınız ve sonra verileri neredeyse gerçek zamanlı akış yaklaşım analizi çalıştırdınız.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -622,7 +622,7 @@ Aşağıdaki kod parçacığı gibi bir çıktı görmeniz gerekir:
 
 ![Databricks kümesini durdurma](./media/databricks-sentiment-analysis-cognitive-services/terminate-databricks-cluster.png "Databricks kümesini durdurma")
 
-Bu kümeyi el ile sonlandıramazsanız, kümeyi oluştururken **\_sonra Sonlandır** onay kutusunu \_, sonra da Durdur seçeneğini belirlediyseniz, otomatik olarak durdurulur. Böyle bir durumda, belirtilen süre boyunca etkin olmaması durumunda küme otomatik olarak durdurulur.
+El ile otomatik olarak durdurur küme sonlandırmazsanız, seçtiğiniz sağlanan **sonra Sonlandır \_ \_ yapılmadan geçecek dakika cinsinden** küme oluşturulurken onay kutusu. Böyle bir durumda, belirtilen süre boyunca etkin olmaması durumunda küme otomatik olarak durdurulur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu öğreticide, verileri Azure Event Hubs’ta akışa almak ve sonra gerçek zamanlı olarak Event Hubs’tan akış verilerini okumak için Azure Databricks’i kullanmayı öğrendiniz. Şunları öğrendiniz:
