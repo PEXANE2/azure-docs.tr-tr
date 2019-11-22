@@ -1,6 +1,7 @@
 ---
-title: Bir sanal makine ağ yönlendirme sorunu - Azure PowerShell tanılama | Microsoft Docs
-description: Bu makalede, Azure Ağ İzleyicisi sonraki atlama özelliğini kullanarak bir sanal makine ağ yönlendirme bir problemi tanılamaya öğrenin.
+title: Bir VM ağ yönlendirme sorununu tanılama-Azure PowerShell
+titleSuffix: Azure Network Watcher
+description: Bu makalede, Azure ağ Izleyicisi 'nin sonraki atlama özelliğini kullanarak bir sanal makine ağ yönlendirme sorununu tanılamayı öğreneceksiniz.
 services: network-watcher
 documentationcenter: network-watcher
 author: KumudD
@@ -17,16 +18,16 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 08d273ce6e6ecb1b10d3c39a0954d430a3cb674a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 81e2af329661d485b2d189e9a1f70b50bd6d4b7d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66730745"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276107"
 ---
-# <a name="diagnose-a-virtual-machine-network-routing-problem---azure-powershell"></a>Bir sanal makine ağ yönlendirme sorunu - Azure PowerShell tanılama
+# <a name="diagnose-a-virtual-machine-network-routing-problem---azure-powershell"></a>Bir sanal makine ağ yönlendirme sorununu tanılama-Azure PowerShell
 
-Bu makalede, bir sanal makine (VM) dağıtın ve ardından bir IP adresi ve URL iletişimler olup olmadığını denetleyin. Bir iletişim hatasının nedenini ve bu hatayı nasıl çözeceğinizi belirlersiniz.
+Bu makalede bir sanal makineyi (VM) dağıtırsınız ve ardından bir IP adresi ile URL 'ye iletişimleri kontrol edersiniz. Bir iletişim hatasının nedenini ve bu hatayı nasıl çözeceğinizi belirlersiniz.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -34,19 +35,19 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-PowerShell'i yerel olarak yükleyip kullanmayı tercih ederseniz bu makale Azure PowerShell gerektirir. `Az` modülü. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-Az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
+PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz, bu makale Azure PowerShell `Az` modülünü gerektirir. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-Az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
 
 
 
 ## <a name="create-a-vm"></a>VM oluşturma
 
-Sanal makine oluşturabilmeniz için sanal makineyi içerecek bir kaynak grubu oluşturmanız gerekir. Bir kaynak grubu oluşturun [yeni AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup). Aşağıdaki örnek *eastus* konumunda *myResourceGroup* adlı bir kaynak grubu oluşturur.
+Bir sanal makine oluşturabilmeniz için sanal makineyi içerecek bir kaynak grubu oluşturmanız gerekir. [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup)ile bir kaynak grubu oluşturun. Aşağıdaki örnek *eastus* konumunda *myResourceGroup* adlı bir kaynak grubu oluşturur.
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroup -Location EastUS
 ```
 
-İle VM oluşturma [yeni-AzVM](/powershell/module/az.compute/new-azvm). Bu adımı çalıştırırken kimlik bilgileri istenir. Girdiğiniz değerler, sanal makinenin kullanıcı adı ve parolası olarak yapılandırılır.
+[New-azvm](/powershell/module/az.compute/new-azvm)ile VM 'yi oluşturun. Bu adımı çalıştırırken kimlik bilgileri istenir. Girdiğiniz değerler, sanal makinenin kullanıcı adı ve parolası olarak yapılandırılır.
 
 ```azurepowershell-interactive
 $vM = New-AzVm `
@@ -59,11 +60,11 @@ Sanal makinenin oluşturulması birkaç dakika sürer. Sanal makine oluşturulup
 
 ## <a name="test-network-communication"></a>Ağ iletişimini test etme
 
-Ağ İzleyicisi ile ağ iletişimi test etmek için önce test etmek istediğiniz VM'nin bulunduğu bölgede bir Ağ İzleyicisi'ni etkinleştirin ve ardından iletişimi test etme için Ağ İzleyicisi'nin sonraki atlama özelliği kullanın.
+Ağ iletişimini ağ Izleyicisi ile test etmek için, önce test etmek istediğiniz VM 'nin bulunduğu bölgede bir ağ izleyicisi etkinleştirmeniz ve ardından iletişim sınaması için ağ Izleyicisi 'nin sonraki atlama özelliğini kullanmanız gerekir.
 
 ## <a name="enable-network-watcher"></a>Ağ izleyicisini etkinleştirme
 
-Doğu ABD bölgesinde etkin bir Ağ İzleyicisi zaten varsa [Get-AzNetworkWatcher](/powershell/module/az.network/get-aznetworkwatcher) Ağ İzleyicisi alınamıyor. Aşağıdaki örnekte, *NetworkWatcherRG* kaynak grubunda bulunan *NetworkWatcher_eastus* adlı mevcut ağ izleyicisi alınır:
+Doğu ABD bölgesinde zaten etkinleştirilmiş bir ağ izleyicisi varsa, Ağ İzleyicisini almak için [Get-Aznetworkizleyici](/powershell/module/az.network/get-aznetworkwatcher) ' yi kullanın. Aşağıdaki örnekte, *NetworkWatcherRG* kaynak grubunda bulunan *NetworkWatcher_eastus* adlı mevcut ağ izleyicisi alınır:
 
 ```azurepowershell-interactive
 $networkWatcher = Get-AzNetworkWatcher `
@@ -71,7 +72,7 @@ $networkWatcher = Get-AzNetworkWatcher `
   -ResourceGroupName NetworkWatcherRG
 ```
 
-Doğu ABD bölgesinde etkin bir Ağ İzleyicisi zaten yoksa, kullanın [yeni AzNetworkWatcher](/powershell/module/az.network/new-aznetworkwatcher) Doğu ABD bölgesinde bir Ağ İzleyicisi oluşturmak için:
+Doğu ABD bölgesinde etkinleştirilmiş bir ağ izleyicisi yoksa, Doğu ABD bölgesinde bir Ağ İzleyicisi oluşturmak için [New-Aznetworkizleyici](/powershell/module/az.network/new-aznetworkwatcher) ' yi kullanın:
 
 ```azurepowershell-interactive
 $networkWatcher = New-AzNetworkWatcher `
@@ -82,7 +83,7 @@ $networkWatcher = New-AzNetworkWatcher `
 
 ### <a name="use-next-hop"></a>Sonraki atlamayı kullanma
 
-Azure, varsayılan hedeflerin yollarını otomatik olarak oluşturur. Varsayılan yolları geçersiz kılmak için özel yollar oluşturabilirsiniz. Bazı durumlarda, özel yollar iletişimin başarısız olmasına neden olabilir. Bir sanal makineden yönlendirmeyi test etmek için [Get-AzNetworkWatcherNextHop](/powershell/module/az.network/get-aznetworkwatchernexthop) trafiği belirli bir adresi için hedeflenen yönlendirme sonraki atlama belirlerken komutu.
+Azure, varsayılan hedeflerin yollarını otomatik olarak oluşturur. Varsayılan yolları geçersiz kılmak için özel yollar oluşturabilirsiniz. Bazı durumlarda, özel yollar iletişimin başarısız olmasına neden olabilir. Bir VM 'den yönlendirmeyi test etmek için [Get-AzNetworkWatcherNextHop](/powershell/module/az.network/get-aznetworkwatchernexthop) komutunu kullanarak trafik belirli bir adres için hedeflenen bir sonraki yönlendirme atini tespit edin.
 
 Sanal makineden, www.bing.com adresinin IP adreslerinden birine giden iletişimi test etme:
 
@@ -94,7 +95,7 @@ Get-AzNetworkWatcherNextHop `
   -DestinationIPAddress 13.107.21.200
 ```
 
-Birkaç saniye sonra çıktı size bildirir, **NextHopType** olduğu **Internet**ve **RouteTableId** olduğu **sistem yolu**. Bu sonucu, geçerli bir hedef yolu olduğunu bilmenizi sağlar.
+Birkaç saniye sonra çıktı, **Nexthoptype** 'un **Internet**olduğunu ve **routetableıd** 'in **sistem yolu**olduğunu bildirir. Bu sonuç, hedefe geçerli bir yol olduğunu bilmenizi sağlar.
 
 Sanal makineden 172.31.0.100 adresine giden iletişimi test etme:
 
@@ -106,11 +107,11 @@ Get-AzNetworkWatcherNextHop `
   -DestinationIPAddress 172.31.0.100
 ```
 
-Döndürülen çıktının size bildirir, **hiçbiri** olduğu **NextHopType**ve **RouteTableId** de **sistem yolu**. Bu sonuç, hedefin geçerli bir sistem yolu olmasına rağmen trafiği hedefe yönlendiren bir sonraki atlama olmadığını size bildirir.
+Döndürülen çıktı, **hiçbir** bir **nexthoptype**olmadığı ve **Routetableıd** 'in de **sistem rotası**olduğunu size bildirir. Bu sonuç, hedefin geçerli bir sistem yolu olmasına rağmen trafiği hedefe yönlendiren bir sonraki atlama olmadığını size bildirir.
 
 ## <a name="view-details-of-a-route"></a>Bir yolun ayrıntılarını görüntüleme
 
-Daha fazla yönlendirme analiz etmek için ağ arabirimi için geçerli rotalar gözden [Get-AzEffectiveRouteTable](/powershell/module/az.network/get-azeffectiveroutetable) komutu:
+Yönlendirmeyi daha fazla analiz etmek için [Get-AzEffectiveRouteTable](/powershell/module/az.network/get-azeffectiveroutetable) komutuyla ağ arabirimine yönelik geçerli yolları gözden geçirin:
 
 ```azurepowershell-interactive
 Get-AzEffectiveRouteTable `
@@ -119,7 +120,7 @@ Get-AzEffectiveRouteTable `
   Format-table
 ```
 
-Aşağıdaki metni içeren bir çıktı döndürülür:
+Aşağıdaki metni içeren çıkış döndürülür:
 
 ```powershell
 Name State  Source  AddressPrefix           NextHopType NextHopIpAddress
@@ -131,11 +132,11 @@ Name State  Source  AddressPrefix           NextHopType NextHopIpAddress
      Active Default {172.16.0.0/12}         None        {}              
 ```
 
-Rota ile önceki çıktıda görüldüğü **AddressPrefix** , **0.0.0.0/0** başka bir yolun adres ön ekleri 'ınbirsonrakiatlamaadreslerihedefleyendeğiltümtrafiğiyönlendiren**Internet**. Çıktıda de görebileceğiniz gibi ancak yoktur 172.31.0.100 içerir 172.16.0.0/12 önekini varsayılan bir yolu adresi **nextHopType** olduğu **hiçbiri**. Azure, 172.16.0.0/12 için varsayılan bir yol oluşturur ancak bir neden olmadıkça sonraki atlama türünü belirtmez. Örneğin, 172.16.0.0/12 adres aralığını sanal ağın adres alanına eklediyseniz, Azure değişiklikleri **nextHopType** için **sanal ağ** rota. Bir onay ardından gösterebilir **sanal ağ** olarak **nextHopType**.
+Önceki çıktıda görebileceğiniz gibi **0.0.0.0/0** ' ın **addresspredüzeltmesini** içeren yol, diğer yönlendirmelerin adres ön eklerinin Içindeki adreslere hiçbir şekilde **Internet**'in bir sonraki atına yol açabilir. Ayrıca çıktıda da görebileceğiniz gibi, 172.31.0.100 adresini içeren 172.16.0.0/12 ön ekine varsayılan bir yol vardır ancak **Nexthoptype** **none**olur. Azure, 172.16.0.0/12 için varsayılan bir yol oluşturur ancak bir neden olmadıkça sonraki atlama türünü belirtmez. Örneğin, 172.16.0.0/12 adres aralığını sanal ağın adres alanına eklediyseniz Azure, **Nexthoptype** 'ı yol için **sanal ağ** olarak değiştirir. Ardından bir denetim, **sanal ağı** **nexthoptype**olarak gösterir.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli değilse [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) kaynak grubunu ve içerdiği tüm kaynakları kaldırmak için:
+Artık gerekli değilse, [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) komutunu kullanarak kaynak grubunu ve içerdiği tüm kaynakları kaldırabilirsiniz:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force
@@ -143,6 +144,6 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, bir VM oluşturulur ve sanal makineden ağ yönlendirme tanı koydu. Azure’un birkaç varsayılan yol oluşturduğunu öğrendiniz ve iki farklı hedefin yolunu test ettiniz. [Azure'da yönlendirme](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) ve [özel yollar oluşturma](../virtual-network/manage-route-table.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-route) hakkında daha fazla bilgi edinin.
+Bu makalede, bir VM oluşturdunuz ve VM 'den ağ yönlendirmesi tanılandı. Azure’un birkaç varsayılan yol oluşturduğunu öğrendiniz ve iki farklı hedefin yolunu test ettiniz. [Azure'da yönlendirme](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) ve [özel yollar oluşturma](../virtual-network/manage-route-table.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-route) hakkında daha fazla bilgi edinin.
 
-Giden sanal makine bağlantılarında, gecikme süresini de belirleyebilirsiniz ve izin verilen ve VM Ağ İzleyicisi'nin kullanarak bir uç nokta arasındaki ağ trafiğini reddedildi [bağlantı sorunlarını giderme](network-watcher-connectivity-powershell.md) yeteneği. Ağ İzleyicisi Bağlantı İzleyicisi özelliğini kullanarak zaman içinde bir VM ile URL veya bir IP adresi gibi bir uç noktası arasındaki iletişimi izleyebilirsiniz. Bilgi edinmek için bkz [Ağ Bağlantı İzleyicisi](connection-monitor.md).
+Giden VM bağlantıları için, ağ izleyicisinin [bağlantısını sorun giderme](network-watcher-connectivity-powershell.md) ÖZELLIĞINI kullanarak VM ile bir uç nokta arasında gecikme süresi ve reddedilen ağ trafiği de belirleyebilirsiniz. Ağ Izleyicisi Bağlantı İzleyicisi özelliğini kullanarak bir sanal makine ile IP adresi veya URL gibi bir uç nokta arasındaki iletişimi izleyebilirsiniz. Nasıl yapılacağını öğrenmek için bkz. [ağ bağlantısını izleme](connection-monitor.md).

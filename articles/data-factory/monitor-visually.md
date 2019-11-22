@@ -1,110 +1,73 @@
 ---
-title: Azure veri fabrikalarını görsel olarak izleme
+title: Görsel olarak izleme Azure Data Factory
 description: Azure veri fabrikalarını görsel olarak izlemeyi öğrenin
 services: data-factory
 documentationcenter: ''
 author: djpmsft
 ms.author: daperlov
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/19/2018
-ms.openlocfilehash: 7b79fd9c87e97e624cce567b57c1c65fefcc151e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.date: 11/19/2018
+ms.openlocfilehash: a4258b51acfa603c156bc35cdb2cbc3b16f37ab0
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684629"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278416"
 ---
-# <a name="visually-monitor-azure-data-factories"></a>Azure veri fabrikalarını görsel olarak izleme
-Azure Data Factory, bulut tabanlı bir veri tümleştirme hizmetidir. Veri taşıma ve veri dönüştürmeyi düzenlemek ve otomatikleştirmek için bulutta veri odaklı iş akışları oluşturmak için bu uygulamayı kullanabilirsiniz. Azure Data Factory kullanarak şunları yapabilirsiniz:
+# <a name="visually-monitor-azure-data-factory"></a>Görsel olarak izleme Azure Data Factory
 
-- Farklı veri depolarından veri alabilen veri odaklı iş akışları (işlem hattı olarak adlandırılır) oluşturabilir ve zamanlayabilirsiniz.
-- Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics ve Azure Machine Learning gibi işlem hizmetlerini kullanarak verileri işleyin ve dönüştürün.
-- Çıktı verilerini iş zekası (BI) uygulamalarının kullanması için Azure SQL Veri Ambarı gibi veri depolarında yayımlayabilirsiniz.
+Azure Data Factory bir işlem hattı oluşturup yayımladıktan sonra, bir tetikleyici ile ilişkilendirebilir veya bir geçici çalıştırmayı el ile başlatabilirsiniz. Azure Data Factory kullanıcı deneyiminde tüm işlem hattı çalıştırmalarının yerel olarak izlenmesini sağlayabilirsiniz. İzleme deneyimini açmak için [Azure Portal](https://portal.azure.com/)Veri Fabrikası dikey penceresinde **izleyici & Yönet** kutucuğunu seçin. Zaten ADF UX kullanıyorsanız sol kenar çubuğundaki **izleyici** simgesine tıklayın.
 
-Bu hızlı başlangıçta, tek bir kod satırı yazmadan Data Factory işlem hatlarını görsel olarak nasıl izleyebileceğinizi öğreneceksiniz.
-
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
-
-## <a name="monitor-data-factory-pipelines"></a>Data Factory işlem hatlarını izleme
-
-Bir basit liste görünümü arabirimiyle işlem hattını ve etkinlik çalıştırmalarını izleyin. Tüm çalıştırmalar tarayıcının yerel saat diliminde görüntülenir. Saat dilimini değiştirirseniz, tüm tarih/saat alanları seçtiğiniz bir öğesine yastur.  
-
-1. Microsoft Edge veya Google Chrome 'ı başlatın. Şu anda Data Factory Kullanıcı arabirimi yalnızca bu iki Web tarayıcısında desteklenir.
-2. [Azure Portal](https://portal.azure.com/)oturum açın.
-3. Azure portal oluşturulan veri fabrikası dikey penceresine gidin. Data Factory görsel izleme deneyimini başlatmak için **Izleyiciyi yönet &** bölmesini seçin.
+Tüm Data Factory çalıştırmaları tarayıcının yerel saat diliminde görüntülenir. Saat dilimini değiştirirseniz, tüm tarih/saat alanları seçtiğiniz bir öğesine yastur.
 
 ## <a name="monitor-pipeline-runs"></a>İşlem hattı çalıştırmalarını izleme
-Liste görünümü, Data Factory işlem hatlarınız için her bir işlem hattının çalışmasını gösterir. Şu sütunları içerir:
+
+Varsayılan izleme görünümü, seçilen dönemdeki işlem hattı çalıştırmaları listesidir. Aşağıdaki sütunlar görüntülenir:
 
 | **Sütun adı** | **Açıklama** |
 | --- | --- |
 | İşlem hattı adı | İşlem hattının adı |
-| Eylemler | Etkinlik çalıştırmalarını görüntülemek için kullanılabilen tek eylem |
+| Eylemler | Etkinlik ayrıntılarını görüntülemenizi, iptal etmenizi veya işlem hattını yeniden çalıştırmayı sağlayan simgeler |
 | Çalıştırma başlangıç | İşlem hattı çalışmasının başlangıç tarihi ve saati (AA/GG/YYYY, ss: DD: SS) |
 | Süre | Çalıştırma süresi (SS: DD: SS) |
-| Tetikleyen | El ile tetikleyici veya zamanlanan tetikleyici |
-| Durum | **Başarısız**, **başarılı**veya **devam ediyor** |
+| Tetikleyen | İşlem hattını Başlatan tetikleyicinin adı |
+| Durum | **Başarısız**, **başarılı**, **devam ediyor**, **iptal edildi**veya **sıraya alındı** |
+| Açıklamaları | İşlem hattı ile ilişkili filtrelenebilir Etiketler  |
 | Parametreler | İşlem hattı çalıştırması için parametreler (ad/değer çiftleri) |
-| Hata | İşlem hattı çalıştırma hatası (varsa) |
+| Hata | İşlem hattı başarısız olursa, çalıştırma hatası |
 | Çalıştırma KIMLIĞI | İşlem hattı çalıştırmasının KIMLIĞI |
 
 ![İzleme işlem hattı çalıştırmaları için liste görünümü](media/monitor-visually/pipeline-runs.png)
 
+İşlem hattı ve etkinlik çalıştırmaları listesini yenilemek için **Yenile** düğmesini el ile seçmeniz gerekir. Oto yenileme şu anda desteklenmiyor.
+
+![Yenile düğmesi](media/monitor-visually/refresh.png)
+
 ## <a name="monitor-activity-runs"></a>Etkinlik çalıştırmalarını izleme
-Liste görünümü her bir işlem hattı çalıştırmasına karşılık gelen etkinlik çalıştırmalarını gösterir. Her Işlem hattı çalıştırması için etkinlik çalıştırmalarını görüntülemek için **Eylemler** sütununun altındaki **etkinlik çalıştırmaları** simgesini seçin. Liste görünümü şu sütunları içerir:
+
+Her Işlem hattı çalıştırması için etkinlik çalıştırmalarını görüntülemek için **Eylemler** sütununun altındaki **etkinlik çalıştırmalarını görüntüle** simgesini seçin. Liste görünümü her bir işlem hattı çalıştırmasına karşılık gelen etkinlik çalıştırmalarını gösterir.
 
 | **Sütun adı** | **Açıklama** |
 | --- | --- |
 | Etkinlik adı | İşlem hattının içindeki etkinliğin adı |
-| Etkinlik türü | Etkinliğin türü, örneğin **Copy**, **HDInsightSpark**veya **hdınsighthive** |
+| Etkinlik türü | Etkinliğin türü; örneğin **Copy**, **executedataflow**veya **AzureMLExecutePipeline** |
+| Eylemler | JSON giriş bilgilerini, JSON çıktı bilgilerini veya ayrıntılı etkinliğe özgü izleme deneyimlerini görmenizi sağlayan simgeler | 
 | Çalıştırma başlangıç | Etkinlik çalıştırmasının başlangıç tarihi ve saati (AA/GG/YYYY, ss: DD: SS) |
 | Süre | Çalıştırma süresi (SS: DD: SS) |
-| Durum | **Başarısız**, **başarılı**veya **devam ediyor** |
-| Girdi | Etkinlik girişlerini açıklayan JSON dizisi |
-| Çıktı | Etkinlik çıkışlarını açıklayan JSON dizisi |
-| Hata | Etkinlik çalıştırma hatası (varsa) |
+| Durum | **Başarısız**, **başarılı**, **devam ediyor**veya **iptal edildi** |
+| Integration Runtime | Etkinliğin çalıştırıldığı Integration Runtime |
+| Kullanıcı Özellikleri | Etkinliğin Kullanıcı tanımlı özellikleri |
+| Hata | Etkinlik başarısız olursa, çalıştırma hatası |
+| Çalıştırma KIMLIĞI | Etkinlik çalıştırmasının KIMLIĞI |
 
 ![İzleme etkinliği çalıştırmaları için liste görünümü](media/monitor-visually/activity-runs.png)
 
-> [!IMPORTANT]
-> İşlem hattı ve etkinlik çalıştırmaları listesini yenilemek için üstteki **Yenile** düğmesini seçmeniz gerekir. Otomatik yenileme şu anda desteklenmiyor.
+### <a name="promote-user-properties-to-monitor"></a>Kullanıcı özelliklerini izlemeye yükselt
 
-![Yenile düğmesi](media/monitor-visually/refresh.png)
-
-## <a name="select-a-data-factory-to-monitor"></a>İzlenecek bir veri fabrikası seçin
-Sol üstteki **Data Factory** simgesinin üzerine gelin. İzleyebilmeniz gereken Azure aboneliklerinin ve veri fabrikalarının listesini görmek için ok simgesini seçin.
-
-![Veri fabrikasını seçin](media/monitor-visually/select-datafactory.png)
-
-## <a name="configure-the-list-view"></a>Liste görünümünü yapılandırma
-
-### <a name="apply-rich-ordering-and-filtering"></a>Zengin sıralama ve filtreleme uygulama
-
-Sıra işlem hattı, çalışma başlangıç zamanına göre DESC/ASC 'de çalışır. Aşağıdaki sütunları kullanarak filtre işlem hattı çalıştırmaları:
-
-| **Sütun adı** | **Açıklama** |
-| --- | --- |
-| İşlem hattı adı | İşlem hattının adı. Seçenekler, **son 24 saat**, **son hafta**ve **son 30 gün**için hızlı filtreler içerir. Veya özel bir tarih ve saat seçin. |
-| Çalıştırma başlangıç | İşlem hattı çalıştırmasının başlangıç tarihi ve saati. |
-| Çalışma durumu | Durum, çalışma durumu: **başarılı**, **başarısız**veya **devam ediyor**. |
-
-![Filtreleme seçenekleri](media/monitor-visually/filter.png)
-
-### <a name="add-or-remove-columns"></a>Sütun ekleme veya kaldırma
-Liste görünümü başlığına sağ tıklayın ve liste görünümünde görünmesini istediğiniz sütunları seçin.
-
-![Sütun seçenekleri](media/monitor-visually/columns.png)
-
-### <a name="adjust-column-widths"></a>Sütun genişliklerini ayarla
-Sütun üst bilgisinin üzerine gelerek liste görünümündeki sütun genişliklerini artırın ve azaltın.
-
-## <a name="promote-user-properties-to-monitor"></a>Kullanıcı özelliklerini izlemeye yükselt
-
-Herhangi bir işlem hattı etkinlik özelliğini, izleyebileceğiniz bir varlık olacak şekilde Kullanıcı özelliği olarak yükseltebilirsiniz. Örneğin, işlem hattınızdaki kopyalama etkinliğinin **kaynak** ve **hedef** özelliklerini Kullanıcı özellikleri olarak yükseltebilirsiniz. Ayrıca, bir kopyalama etkinliğinin **kaynak** ve **hedef** Kullanıcı özelliklerini oluşturmak için **Otomatik oluştur** ' u da seçebilirsiniz.
+Herhangi bir işlem hattı etkinlik özelliğini Kullanıcı özelliği olarak yükselterek izlediğiniz bir varlık haline gelir. Örneğin, işlem hattınızdaki kopyalama etkinliğinin **kaynak** ve **hedef** özelliklerini Kullanıcı özellikleri olarak yükseltebilirsiniz. Bir kopyalama etkinliğinin **kaynak** ve **hedef** Kullanıcı özelliklerini oluşturmak için **Otomatik oluştur** ' u seçin.
 
 ![Kullanıcı Özellikleri oluştur](media/monitor-visually/monitor-user-properties-image1.png)
 
@@ -119,9 +82,33 @@ Kullanıcı özelliklerini oluşturduktan sonra bunları izleme listesi görün�
 
 ![Kullanıcı özellikleri için sütunları olan etkinlik çalıştırmaları listesi](media/monitor-visually/monitor-user-properties-image4.png)
 
+## <a name="configure-the-list-view"></a>Liste görünümünü yapılandırma
+
+### <a name="order-and-filter"></a>Sırala ve filtrele
+
+İşlem hattının çalışmasının, çalışma başlangıç zamanına göre azalan veya artan şekilde olacağını değiştirin. Aşağıdaki sütunları kullanarak filtre işlem hattı çalıştırmaları:
+
+| **Sütun adı** | **Açıklama** |
+| --- | --- |
+| İşlem hattı adı | İşlem hattının adına göre filtreleyin. |
+| Çalıştırma başlangıç |  Gösterilecek işlem hattı çalıştırmalarının zaman aralığını belirleme. Seçenekler, **son 24 saat**, **son hafta**ve **son 30 gün** için hızlı filtreler içerir veya özel bir tarih ve saat seçer. |
+| Çalışma durumu | **Şu**durum ile filtre çalıştırmaları: **başarılı**, başarısız, **sıraya alınmış**, **iptal edildi**veya **devam ediyor**. |
+| Açıklamaları | Her bir ardışık düzene uygulanan etiketlere göre filtrele |
+| Çalıştırmalar | İşlem hatlarını yeniden yönlendirme görmek isteyip istemediğinizi filtreleyin |
+
+![Filtreleme seçenekleri](media/monitor-visually/filter.png)
+
+### <a name="add-or-remove-columns"></a>Sütun ekleme veya kaldırma
+Liste görünümü başlığına sağ tıklayın ve liste görünümünde görünmesini istediğiniz sütunları seçin.
+
+![Sütun seçenekleri](media/monitor-visually/columns.png)
+
+### <a name="adjust-column-widths"></a>Sütun genişliklerini ayarla
+Sütun üst bilgisinin üzerine gelerek liste görünümündeki sütun genişliklerini artırın ve azaltın.
+
 ## <a name="rerun-activities-inside-a-pipeline"></a>Etkinlikleri bir işlem hattı içinde yeniden çalıştırma
 
-Artık etkinlikleri bir işlem hattı içinde yeniden çalıştırabilirsiniz. **Etkinlik çalıştırmalarını görüntüle**' yi seçin ve ardından işlem hattınızda etkinlik hattınızı yeniden çalıştırmak istediğiniz noktayı seçin.
+Etkinlikleri bir işlem hattı içinde yeniden çalıştırabilirsiniz. **Etkinlik çalıştırmalarını görüntüle**' yi seçin ve ardından işlem hattınızda etkinlik hattınızı yeniden çalıştırmak istediğiniz noktayı seçin.
 
 ![Etkinlik çalıştırmalarını görüntüleme](media/monitor-visually/rerun-activities-image1.png)
 
@@ -139,9 +126,11 @@ Ayrıca, belirli bir işlem hattı çalıştırması için yeniden çalıştırm
 
 ## <a name="gantt-views"></a>Gantt görünümleri
 
-Ardışık düzenleri ve etkinlik çalıştırmalarını hızlıca görselleştirmek için Gantt görünümlerini kullanın. İşlem hatlarında oluşturduğunuz ek açıklamaların/etiketlerin başına, ardışık düzen veya grup için Gantt görünümüne bakabilirsiniz.
+Ardışık düzenleri ve etkinlik çalıştırmalarını hızlıca görselleştirmek için Gantt görünümlerini kullanın.
 
 ![Gantt grafiğinin örneği](media/monitor-visually/gantt1.png)
+
+İşlem hatlarında oluşturduğunuz ek açıklamaların/etiketlerin başına, ardışık düzen veya grup için Gantt görünümüne bakabilirsiniz.
 
 ![Gantt grafiği ek açıklamaları](media/monitor-visually/gantt2.png)
 
@@ -153,11 +142,6 @@ Ardışık düzenleri ve etkinlik çalıştırmalarını hızlıca görselleşti
 Sol alt köşedeki **bilgi** simgesini seçin. Ardından, işlem hattınızı ve etkinlik çalıştırmalarını nasıl izleyecağınız hakkında adım adım yönergeleri almak için **Kılavuzlu Turları** seçin.
 
 ![Kılavuzlu Turlar](media/monitor-visually/guided-tours.png)
-
-## <a name="feedback"></a>Geri Bildirim
-Çeşitli özelliklerle ilgili geri bildirimde bulunmak için **geri bildirim** simgesini veya karşılaştığınız sorunları bize iletin.
-
-![Geri Bildirim](media/monitor-visually/feedback.png)
 
 ## <a name="alerts"></a>Uyarılar
 

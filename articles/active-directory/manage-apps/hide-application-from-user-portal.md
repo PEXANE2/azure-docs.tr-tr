@@ -1,6 +1,6 @@
 ---
-title: Bir uygulamayı Azure Active Directory'de kullanıcı deneyiminden gizleme | Microsoft Docs
-description: Uygulamanın Azure Active Directory erişim panellerinde veya Office 365 launchers kullanıcı deneyiminden gizleme yapma.
+title: Azure AD 'de kullanıcının deneyiminden bir uygulamayı gizleme
+description: Azure Active Directory erişim panellerinde veya Office 365 launchers 'da bir uygulamayı kullanıcının deneyiminden gizleme.
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -12,52 +12,52 @@ ms.date: 11/12/2018
 ms.author: mimart
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3dd98aa974f2adcd363c04c10b7a10cef6ca8ce7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1e01c79c5cc9391922333af4e9a60ba44a6a6b13
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65824533"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74273996"
 ---
-# <a name="hide-applications-from-end-users-in-azure-active-directory"></a>Azure Active Directory'de son kullanıcıların uygulamaları Gizle
+# <a name="hide-applications-from-end-users-in-azure-active-directory"></a>Azure Active Directory ' deki son kullanıcılardan uygulamaları gizleyin
 
-Son MyApps paneli veya Office 365 Başlatıcısı uygulamalarından gizleme hakkında yönergeler. Uygulama gizli olduğunda, kullanıcılar yine de uygulamayı izinlere sahip olursunuz. 
+Son kullanıcıların Uygulamaps panelinden veya Office 365 başlatıcısı 'ndan uygulama gizleme yönergeleri. Bir uygulama gizli olduğunda, kullanıcıların uygulama izinleri hala vardır. 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bir uygulamadan MyApps panelinde ve Office 365 Başlatıcısı gizlemek için uygulama yönetici ayrıcalıkları gerekir.
+Uygulama Yöneticisi ayrıcalıkları, uygulamayı Uygps panelinden ve Office 365 başlatıcısı 'ndan gizlemek için gereklidir.
 
 Tüm Office 365 uygulamalarını gizlemek için genel yönetici ayrıcalıkları gerekir.
 
 
-## <a name="hide-an-application-from-the-end-user"></a>Son kullanıcıdan bir uygulamayı Gizle
-MyApps panelinde ve Office 365 uygulama başlatıcısında bir uygulamadan gizlemek için aşağıdaki adımları kullanın.
+## <a name="hide-an-application-from-the-end-user"></a>Bir uygulamayı son kullanıcıdan gizleme
+Uygulamaps panelinden ve Office 365 uygulama başlatıcısı 'ndan bir uygulamayı gizlemek için aşağıdaki adımları kullanın.
 
-1.  Oturum [Azure portalında](https://portal.azure.com) dizininizin genel Yöneticisi olarak.
+1.  [Azure Portal](https://portal.azure.com) , dizininiz için genel yönetici olarak oturum açın.
 2.  **Azure Active Directory**'yi seçin.
-3.  Seçin **kurumsal uygulamalar**. **Kurumsal uygulamalar - tüm uygulamalar** dikey penceresi açılır.
-4.  Altında **uygulama türü**seçin **kurumsal uygulamalar**, zaten seçili değilse.
-5.  Gizlemek ve uygulama için istediğiniz uygulamayı arayın.  Uygulamanın genel bakış açılır.
+3.  **Kurumsal uygulamalar**' ı seçin. **Kurumsal uygulamalar-tüm uygulamalar** dikey penceresi açılır.
+4.  **Uygulama türü**' nün altında, henüz seçili değilse **Kurumsal uygulamalar**' ı seçin.
+5.  Gizlemek istediğiniz uygulamayı arayın ve uygulamayı tıklatın.  Uygulamanın genel görünümü açılır.
 6.  **Özellikler**'e tıklayın. 
-7.  İçin **kullanıcılara görünür?** soru ye **Hayır**.
+7.  **Kullanıcılar Için görünebilir mi?** sorusu için **Hayır**'a tıklayın.
 8.  **Kaydet**’e tıklayın.
 
 
-## <a name="hide-office-365-applications-from-the-myapps-panel"></a>MyApps Masası'ndan Office 365 uygulamaları Gizle
+## <a name="hide-office-365-applications-from-the-myapps-panel"></a>Uygulamaps panelinden Office 365 uygulamalarını gizleme
 
-Tüm Office 365 uygulamalarını MyApps panelinden gizlemek için aşağıdaki adımları kullanın. Uygulamalar Office 365 portalında hala görülebilir.
+Uygulamaps panelinden tüm Office 365 uygulamalarını gizlemek için aşağıdaki adımları kullanın. Uygulamalar hala Office 365 portalında görünür.
 
-1.  Oturum [Azure portalında](https://portal.azure.com) dizininizin genel Yöneticisi olarak.
+1.  [Azure Portal](https://portal.azure.com) , dizininiz için genel yönetici olarak oturum açın.
 2.  **Azure Active Directory**'yi seçin.
-3.  Seçin **kullanıcı ayarları**.
-4.  Altında **kurumsal uygulamalar**, tıklayın **son kullanıcılara nasıl başlatın ve uygulamalarını görüntüleyin yönetin.**
-5.  İçin **kullanıcılar yalnızca Office 365 uygulamaları Office 365 portalında görebilir**, tıklayın **Evet**.
+3.  **Kullanıcı ayarları**' nı seçin.
+4.  **Kurumsal uygulamalar**altında **son kullanıcıların uygulamalarını nasıl başlatıp görüntüleyebileceğini Yönet** ' e tıklayın.
+5.  **Kullanıcılar yalnızca office 365 portalında office 365 uygulamalarını görebilir**, **Evet**' e tıklayın.
 6.  **Kaydet**’e tıklayın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Tüm Gruplarım bakın](../fundamentals/active-directory-groups-view-azure-portal.md)
-* [Kurumsal bir uygulamayı kullanıcı veya grup atama](assign-user-or-group-access-portal.md)
-* [Bir kullanıcı veya grup ataması Kurumsal uygulamadan Kaldır](remove-user-or-group-access-portal.md)
-* [Adını veya kurumsal bir uygulamanın logoyu değiştirme](change-name-or-logo-portal.md)
+* [Tüm gruplarımı gör](../fundamentals/active-directory-groups-view-azure-portal.md)
+* [Kurumsal uygulamaya Kullanıcı veya Grup atama](assign-user-or-group-access-portal.md)
+* [Bir kurumsal uygulamadan Kullanıcı veya grup atamasını kaldırma](remove-user-or-group-access-portal.md)
+* [Kurumsal uygulamanın adını veya logosunu değiştirme](change-name-or-logo-portal.md)
 

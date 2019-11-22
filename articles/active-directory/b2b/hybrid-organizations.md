@@ -1,6 +1,6 @@
 ---
-title: Hibrit kuruluşlar - Azure Active Directory B2B işbirliği | Microsoft Docs
-description: İş ortakları, hem şirket içi için erişim verin ve bulut kaynakları Azure AD B2B işbirliği ile.
+title: Karma kuruluşlar için B2B işbirliği-Azure AD
+description: Azure AD B2B işbirliğiyle iş ortakları için hem şirket içi hem de bulut kaynaklarına erişim izni verin.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -11,43 +11,43 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b30e9c14863f67d28203eac916606e8786101e3b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 427f7ad4d6a1b9839b1197ef9f7ca15400ea0f59
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65768277"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272480"
 ---
-# <a name="azure-active-directory-b2b-collaboration-for-hybrid-organizations"></a>Hibrit kuruluşlar için Azure Active Directory B2B işbirliği
+# <a name="azure-active-directory-b2b-collaboration-for-hybrid-organizations"></a>Karma kuruluşlar için B2B işbirliği Azure Active Directory
 
-Azure Active Directory (Azure AD) B2B işbirliği, dış iş ortakları uygulama ve kuruluşunuzdaki kaynaklara erişmesini kolaylaştırır. Bu hem şirket içi hem de bulut tabanlı kaynaklara sahip olduğu bir karma yapılandırmasında bile geçerlidir. Şu anda dış iş ortağı hesapları yerel olarak şirket içi kimlik sisteminizde yönetiyorsanız veya Azure AD B2B kullanıcıları olarak bulutta olan dış hesapların yönetiyorsanız önemi yoktur. Artık bu kullanıcılar, her iki ortamları için aynı oturum açma kimlik bilgilerini kullanarak ya da konumda kaynaklarına erişimi verebilirsiniz.
+Azure Active Directory (Azure AD) B2B işbirliği, dış iş ortaklarınıza kuruluşunuzdaki uygulamalar ve kaynaklar için erişim vermenizi kolaylaştırır. Bu, hem şirket içi hem de bulut tabanlı kaynaklarınızın bulunduğu karma bir yapılandırmada bile geçerlidir. Dış iş ortağı hesaplarını şirket içi kimlik sisteminizde yerel olarak yönettiğinizde veya bulutta dış hesapları Azure AD B2B kullanıcıları olarak yönetiyorsanız bu değildir. Artık her iki ortam için de aynı oturum açma kimlik bilgilerini kullanarak bu kullanıcılara her iki konumdaki kaynaklara erişim izni verebilirsiniz.
 
-## <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-apps"></a>GRANT B2B kullanıcıları Azure AD'de şirket içi uygulamalarınıza erişim
+## <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-apps"></a>Şirket içi uygulamalarınıza Azure AD erişimi için B2B kullanıcıları verme
 
-Kuruluşunuz Azure ad iş ortağı kuruluşlardan Konuk kullanıcıları davet etmek için Azure AD B2B işbirliği özellikleri kullanıyorsa, artık şirket içi uygulamalara bu B2B kullanıcıları erişimi sağlayabilirsiniz.
+Kuruluşunuz, Konuk kullanıcıları iş ortağı kuruluşlarından Azure AD 'ye davet etmek için Azure AD B2B işbirliği özelliklerini kullanıyorsa, bu B2B kullanıcılarına şirket içi uygulamalara erişimi sağlayabilirsiniz.
 
-SAML tabanlı kimlik doğrulaması kullanan uygulamalar için bu uygulamalar için kullanılabilir Azure portalı üzerinden kimlik doğrulaması için Azure AD uygulama proxy'si kullanarak B2B kullanıcıları hale getirebilirsiniz.
+SAML tabanlı kimlik doğrulaması kullanan uygulamalar için, kimlik doğrulaması için Azure AD Uygulama Ara Sunucusu kullanarak bu uygulamaları Azure portal aracılığıyla B2B kullanıcıları için kullanılabilir hale getirebilirsiniz.
 
-Kerberos Kısıtlı temsilci (KCD) ile tümleşik Windows kimlik doğrulaması (IWA) kullanan uygulamalar için de Azure AD Proxy kimlik doğrulaması için kullanabilirsiniz. Ancak, çalışması yetkilendirme için şirket içi Windows Server Active Directory'de bir kullanıcı nesnesi gereklidir. B2B Konuk kullanıcılarınızın temsil eden yerel kullanıcı nesneleri oluşturmak için kullanabileceğiniz iki yöntem vardır.
+Kerberos kısıtlanmış temsili (KCD) ile tümleşik Windows kimlik doğrulaması (ıWA) kullanan uygulamalar için kimlik doğrulaması için Azure AD proxy 'yi de kullanırsınız. Ancak, yetkilendirmenin çalışması için, şirket içi Windows Server Active Directory bir kullanıcı nesnesi gerekir. B2B Konuk kullanıcılarınızı temsil eden yerel kullanıcı nesneleri oluşturmak için kullanabileceğiniz iki yöntem vardır.
 
-- Microsoft Identity Manager (MIM) 2016 SP1 ve MIM yönetim aracısı için Microsoft Graph kullanabilirsiniz.
-- Bir PowerShell betiğini kullanabilirsiniz. (Bu çözüm, MIM gerektirmez.)
+- Microsoft Graph için Microsoft Identity Manager (MıM) 2016 SP1 ve MıM Yönetim Aracısı 'nı kullanabilirsiniz.
+- PowerShell betiğini kullanabilirsiniz. (Bu çözüm MıM gerektirmez.)
 
-Bu çözümleri uygulama hakkında daha fazla ayrıntı için bkz. [verme B2B kullanıcıları Azure AD'de, şirket içi uygulamalarınıza erişim](hybrid-cloud-to-on-premises.md).
+Bu çözümlerin nasıl uygulanacağı hakkında daha fazla bilgi için bkz. [Azure AD 'de B2B kullanıcılarına şirket içi uygulamalarınıza erişim verme](hybrid-cloud-to-on-premises.md).
 
-## <a name="grant-locally-managed-partner-accounts-access-to-cloud-resources"></a>Yerel olarak yönetilen bir iş ortağı hesapları bulut kaynaklarına erişim
+## <a name="grant-locally-managed-partner-accounts-access-to-cloud-resources"></a>Yerel olarak yönetilen iş ortağı hesaplarına bulut kaynaklarına erişim izni verme
 
-Azure AD önce şirket içi kimlik sistemlerinin bir kuruluşlarıyla geleneksel şirket içi directory'lerinde iş ortağı hesapları yüklediniz. Siz bu tür bir kuruluş gibiyseniz, iş ortaklarınızı uygulamalarınızı ve diğer kaynakları buluta taşıdıkça erişiminiz devam ettiğinden emin olmanız gerekir. İdeal olarak, bu kullanıcılar, hem buluttaki hem de şirket içi kaynaklara erişmek için aynı kimlik bilgileri kümesi kullanmak istersiniz. 
+Azure AD 'den önce, şirket içi kimlik sistemlerine sahip kuruluşların şirket içi dizininde geleneksel olarak yönetilen iş ortağı hesapları vardır. Böyle bir kuruluşunuz varsa, uygulamalarınızı ve diğer kaynaklarınızı buluta taşırken iş ortaklarınızın erişime sahip olmaya devam etmesini sağlamak istersiniz. İdeal olarak, bu kullanıcıların hem buluta hem de şirket içi kaynaklara erişmek için aynı kimlik bilgileri kümesini kullanmasını istersiniz. 
 
-Şimdi, burada hesapları yalnızca davranır "konuk kullanıcılar," buluta bu yerel hesaplar eşitlemek için Azure AD Connect kullanabileceğiniz teklif yöntemleri Azure AD B2B kullanıcıları istiyoruz.
+Artık, hesapların Azure AD B2B kullanıcıları gibi davranan "Konuk kullanıcılar" olarak bu yerel hesapları buluta eşitlemek için Azure AD Connect kullanabileceğiniz yöntemler sunuyoruz.
 
-Şirket verilerinizi korumaya yardımcı olmak için yalnızca doğru kaynaklara erişimi denetlemek ve bu konuk kullanıcılara çalışanlarınızın öğesinden farklı davranma yetkilendirme ilkelerini yapılandırın.
+Şirket verilerinizi korumaya yardımcı olmak için, yalnızca doğru kaynaklara erişimi denetleyebilir ve bu konuk kullanıcıları çalışanlarınızdan farklı şekilde işleyecek yetkilendirme ilkelerini yapılandırabilirsiniz.
 
-Uygulama ayrıntıları için bkz. [verme yerel olarak yönetilen bir iş ortağı hesapları Azure AD B2B işbirliğini kullanarak bulut kaynaklarına erişim](hybrid-on-premises-to-cloud.md).
+Uygulama ayrıntıları için bkz. [Azure AD B2B işbirliğini kullanarak bulut kaynaklarına yerel olarak yönetilen iş ortağı hesaplarına erişim verme](hybrid-on-premises-to-cloud.md).
  
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [GRANT B2B kullanıcıları Azure AD'de, şirket içi uygulamalarınıza erişim](hybrid-cloud-to-on-premises.md)
-- [Azure AD B2B işbirliğini kullanarak bulut kaynaklarına erişime yerel olarak yönetilen bir iş ortağı hesapları](hybrid-on-premises-to-cloud.md)
+- [Azure AD B2B işbirliğini kullanarak bulut kaynaklarına yerel olarak yönetilen iş ortağı hesapları erişimi verme](hybrid-on-premises-to-cloud.md)
 
 

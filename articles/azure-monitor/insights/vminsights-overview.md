@@ -1,18 +1,18 @@
 ---
 title: Azure İzleyici VM'ler (Önizleme) nedir? | Microsoft Belgeleri
-description: VM'ler için Azure İzleyici bir sistem durumunu ve uygulama bileşenleri ve diğer kaynaklarla ilgili bağımlılıkları otomatik olarak keşfetme yanı sıra Azure VM'nin işletim sistemi izleme performansını birleştirir ve iletişimi eşleyen bir Azure İzleyici özelliğidir. Bunlar arasında. Bu makalede, genel bir bakış sağlar.
+description: Uygulama bileşenlerini ve bağımlılıklarını otomatik olarak bulmaya ve eşleştirmeye ek olarak Azure VM 'lerinin sistem durumunu ve performansını izleyen VM'ler için Azure İzleyici genel bakış.
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 11/14/2019
-ms.openlocfilehash: 84ebf92f795dfe1a21570d782bf24fad27f50eda
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: e9a3df0172f276800a3049675f6e858db7f0370c
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109075"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307298"
 ---
 # <a name="what-is-azure-monitor-for-vms-preview"></a>Azure İzleyici VM'ler (Önizleme) nedir?
 

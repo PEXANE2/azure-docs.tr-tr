@@ -1,6 +1,6 @@
 ---
-title: Konuk kullanıcı - Azure Active Directory kuruluştan Ayrıl | Microsoft Docs
-description: Erişim paneli kullanarak bir Azure AD B2B Konuk kullanıcı bir kuruluş nasıl bırakabilirsiniz gösterir.
+title: Bir kuruluştan Konuk Kullanıcı olarak ayrılın Azure Active Directory
+description: Bir Azure AD B2B Konuk kullanıcısının, erişim panelini kullanarak bir kuruluştan nasıl çıkabileceğiniz gösterilmektedir.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -11,58 +11,58 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26d9eb883cc014c1bea092a12e22b6d144a37994
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8bce67c81b924d768826402b707c41c085b7767b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112984"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272488"
 ---
-# <a name="leave-an-organization-as-a-guest-user"></a>Konuk kullanıcı olarak kuruluştan Ayrıl
+# <a name="leave-an-organization-as-a-guest-user"></a>Bir kuruluştan Konuk Kullanıcı olarak ayrılın
 
-Bir Azure Active Directory (Azure AD) B2B Konuk kullanıcı, uygulamaları söz konusu kuruluştaki kullanın veya herhangi bir ilişkisi korumak bunlar artık ihtiyacınız yoksa, herhangi bir zamanda kuruluştan Ayrıl geçmeye karar verebilirsiniz. Bir kullanıcı bir kuruluş, kendi yöneticiye başvurun gerek kalmadan bırakabilirsiniz.
+Azure Active Directory (Azure AD) B2B Konuk kullanıcısı, artık bu kuruluştan uygulama kullanmaya gerek kalmadığında veya herhangi bir ilişkilendirmeyi koruduklarında, bir kuruluştan herhangi bir zamanda ayrılmaya karar verebilir. Bir Kullanıcı bir yönetici ile iletişim kurmak zorunda kalmadan bir kuruluştan kendi kendine bırakabilir.
 
 > [!NOTE]
-> Giriş kiracısında veya kaynak Kiracı hesabını devre dışı bırakılırsa, Konuk kullanıcı bir kuruluştan ayrılamazsınız. Hesabını devre dışı bırakılırsa, Konuk kullanıcı kullanan Konuk hesabı silebilir veya kullanıcının kuruluşu terk etmesi için konuk hesabını etkinleştirin Kiracı yöneticisine başvurun gerekecektir.
+> Bir Konuk Kullanıcı, hesabı ev kiracısında veya kaynak kiracısında devre dışı bırakılmışsa bir kuruluştan çıkamaz. Hesabı devre dışıysa, Konuk kullanıcının Kiracı Yöneticisi ile iletişim kurabilmesi gerekir, bu da Konuk hesabını silebilir veya kullanıcı kuruluştan ayrıduyabilmesi için konuk hesabını etkinleştirebilir.
 
 ## <a name="leave-an-organization"></a>Kuruluştan ayrılma
 
-Bir kuruluş olarak bırakmak için aşağıdaki adımları izleyin.
+Bir kuruluştan ayrılmak için aşağıdaki adımları izleyin.
 
-1. Aşağıdakilerden birini yaparak erişim paneli profil sayfanıza gidin:
+1. Aşağıdaki adımlardan birini gerçekleştirerek erişim paneli profil sayfanıza gidin:
    
-   - İçinde [Azure portalında](https://portal.azure.com), adınıza sağ tıklayın ve seçin **hesabı görüntüle**.
-   - Açık, [erişim paneli](https://myapps.microsoft.com), üst, sağ ve bir sonraki adınıza tıklayın **kuruluşlar**, ayarları (dişli) simgesini seçin.
+   - [Azure Portal](https://portal.azure.com), sağ üst köşedeki ad ' a tıklayın ve **hesabı görüntüle**' yi seçin.
+   - [Erişim masasını](https://myapps.microsoft.com)açın, sağ üst köşedeki adınızı ve ardından **kuruluşlar**' ın yanındaki Ayarlar simgesini (dişli) seçin.
  
-   ![Erişim panelinde kullanıcı ayarları gösteren ekran görüntüsü](media/leave-the-organization/UserSettings.png) 
+   ![Erişim panelinde Kullanıcı ayarlarını gösteren ekran görüntüsü](media/leave-the-organization/UserSettings.png) 
 
    > [!NOTE]
-   > Kuruluşa henüz oturum açmadıysanız, altında ayrılmak istediğinizden **kuruluşlar**, tıklayın **kuruluştan ayrılmak için oturum** kuruluşun adının yanındaki bağlantı. Açtıktan sonra tekrar sağ üst köşedeki ve yanındaki adınızı tıklatın **kuruluşlar**, ayarları (dişli) simgesini seçin.
+   > Ayrılmak istediğiniz kuruluşta oturum açmadıysanız, **kuruluşlar**' ın altında kuruluş adının yanında **kuruluştan çıkmak için oturum aç** bağlantısını tıklatın. Oturum açtıktan sonra, sağ üst köşedeki ve **kuruluşlar**' ın yanındaki ad ' a tıklayın, ayarlar simgesini (dişli) seçin.
 
-3. Altında **kuruluşlar**, bulmak, bırakın ve istediğiniz kuruluş **bırakın kuruluş**.
+3. **Kuruluşlar**' ın altında, bırakmak istediğiniz kuruluşu bulun ve **kuruluştan ayrıl**' ı seçin.
 
-   ![Kullanıcı arabiriminde bırakın kuruluş seçeneğini gösteren ekran görüntüsü](media/leave-the-organization/LeaveOrg.png)
+   ![Kullanıcı arabirimindeki organizasyonu bırak seçeneğini gösteren ekran görüntüsü](media/leave-the-organization/LeaveOrg.png)
 
-4. Onaylamak için sorulduğunda seçin **bırakın**. 
+4. Onaylamanız istendiğinde, **bırak**' ı seçin. 
 
-## <a name="account-removal"></a>Hesabınızın kaldırılması
+## <a name="account-removal"></a>Hesap kaldırma
 
-Bir kullanıcı, bir kuruluşun ayrıldığında, kullanıcı hesabının "yumuşak silinir" dizininde. Varsayılan olarak, kullanıcı nesnesinin taşır **silinmiş kullanıcılarını** Azure AD alanında 30 gün boyunca kalıcı olarak silinmez, ancak. Bu geçici silme yöneticisinin kullanıcı hesabını 30 günlük süre içinde geri yüklemek için bir istek yaparsa (grupları ve izinleri dahil) kullanıcı hesabının, geri yükleme sağlar.
+Bir kullanıcı kuruluştan ayrıldığında Kullanıcı hesabı, dizinde "geçici olarak silindi" olur. Varsayılan olarak, Kullanıcı nesnesi Azure AD 'deki **silinen kullanıcılar** alanına gider, ancak 30 gün boyunca kalıcı olarak silinmez. Bu geçici silme, kullanıcının hesabı 30 günlük süre içinde geri yükleme isteğinde bulunursa, yöneticinin kullanıcı hesabını (gruplar ve izinler dahil) geri yüklemesini sağlar.
 
-İsterseniz, bir kiracı yöneticisi hesabı 30 günlük süre boyunca herhangi bir zamanda kalıcı olarak silebilirsiniz. Bunu yapmak için:
+İsterseniz, bir kiracı yöneticisi, hesabı 30 günlük süre boyunca dilediğiniz zaman kalıcı olarak silebilir. Bunu yapmak için:
 
-1. İçinde [Azure portalında](https://portal.azure.com)seçin **Azure Active Directory**.
+1. [Azure portal](https://portal.azure.com) **Azure Active Directory**' ni seçin.
 2. **Yönet** bölümünde **Kullanıcılar**’ı seçin.
-3. Seçin **silinmiş kullanıcılarını**.
-4. Silinen bir kullanıcıyı yanındaki onay kutusunu işaretleyin ve ardından **kalıcı olarak silmek**.
+3. **Silinen kullanıcılar**' ı seçin.
+4. Silinen bir kullanıcının yanındaki onay kutusunu işaretleyin ve **kalıcı olarak sil**' i seçin.
 
-Kullanıcı kalıcı olarak siler, bu değiştirilemeyen bir eylemdir.
+Bir kullanıcıyı kalıcı olarak silerseniz, bu eylem geri alınamaz.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-dsr-and-stp-note.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure AD B2B genel bakış için bkz. [Azure AD B2B işbirliği nedir?](what-is-b2b.md)
+- Azure AD B2B 'ye genel bakış için bkz. [Azure AD B2B işbirliği nedir?](what-is-b2b.md)
 
 
 

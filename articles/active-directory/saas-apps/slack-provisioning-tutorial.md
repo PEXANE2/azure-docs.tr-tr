@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için bolluk yapılandırma | Microsoft Docs'
+title: 'Öğretici: bolluk için Kullanıcı hazırlama-Azure AD'
 description: Kullanıcı hesaplarını bolluk 'e otomatik olarak sağlamak ve devre dışı bırakmak için Azure Active Directory yapılandırmayı öğrenin.
 services: active-directory
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a294254bd52db89179c5644ea7a0f0f04027f30
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: a90151679b71364d93446d1acc46a461d2a9d8f9
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932483"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278176"
 ---
-# <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Öğretici: Otomatik Kullanıcı sağlaması için bolluk yapılandırma
+# <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için bolluk yapılandırma
 
 Bu öğreticinin amacı, Azure AD 'den bolluk 'ye Kullanıcı hesaplarını otomatik olarak sağlamak ve devre dışı bırakmak için bolluk ve Azure AD 'de gerçekleştirmeniz gereken adımları gösteriyoruz.
 
@@ -34,7 +34,7 @@ Bu öğreticide özetlenen senaryo, aşağıdaki öğelerin zaten olduğunu vars
 * [Artı planı](https://aadsyncfabric.slack.com/pricing) veya daha iyi etkinleştirilmiş bir bolluk kiracısı
 * Ekip Yöneticisi izinleri ile bolluk içinde bir kullanıcı hesabı
 
-Not: Azure AD sağlama tümleştirmesi, artı planı veya daha iyi bir deyişle bolluk ekipleri tarafından kullanılabilen [bolluk SCIM API](https://api.slack.com/scim)'sini kullanır.
+Note: Azure AD sağlama tümleştirmesi, artı planındaki veya daha iyi bir ekip için kullanılabilen [bolluk SCIM API 'sine](https://api.slack.com/scim)bağımlıdır.
 
 ## <a name="assigning-users-to-slack"></a>Kullanıcıları bolluk 'e atama
 

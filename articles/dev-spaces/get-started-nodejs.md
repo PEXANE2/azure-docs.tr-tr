@@ -1,22 +1,18 @@
 ---
-title: VS Code ile bulutta Kubernetes Node.js geliştirme ortamı oluşturma
-titleSuffix: Azure Dev Spaces
+title: Bulutta bir Kubernetes Node. js geliştirme ortamı oluşturma VS Code
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 09/26/2018
 ms.topic: tutorial
 description: Azure’da kapsayıcılar ve mikro hizmetlerle hızlı Kubernetes geliştirme
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kapsayıcılar, Helm, hizmet kafes, ağ hizmeti Yönlendirme, kubectl, k8s
-ms.openlocfilehash: 30f912e9c1573b32247bb3c2a3f7d4026436748b
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
-ms.translationtype: MT
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
+ms.openlocfilehash: 46d15ddef0f6c58902b85304827a6dd5bd635a14
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67503041"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280182"
 ---
-# <a name="get-started-on-azure-dev-spaces-with-nodejs"></a>Node.js ile Azure geliştirme alanlarında çalışmaya başlama
+# <a name="get-started-on-azure-dev-spaces-with-nodejs"></a>Node. js ile Azure Dev Spaces kullanmaya başlama
 
 Bu kılavuzda şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -25,7 +21,7 @@ Bu kılavuzda şunların nasıl yapıldığını öğreneceksiniz:
 - Kodunuzu bir ekip ortamında verimli bir şekilde geliştirip test edin.
 
 > [!Note]
-> **Takılı kalarak,** herhangi bir zamanda bkz [sorun giderme](troubleshooting.md) bölümü.
+> Herhangi bir zamanda **takıldıysanız** , [sorun giderme](troubleshooting.md) bölümüne bakın.
 
 ## <a name="install-the-azure-cli"></a>Azure CLI'yı yükleme
 Azure Dev Spaces, çok az yerel makine kurulumu gerektirir. Geliştirme ortamı yapılandırmanızın büyük bölümü bulutta depolanır ve diğer kullanıcılarla paylaşılabilir. İlk olarak [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) indirip yükleyin.
@@ -55,7 +51,7 @@ az account set --subscription <subscription ID>
 
 ## <a name="create-a-kubernetes-cluster-enabled-for-azure-dev-spaces"></a>Azure Dev Spaces için bir Kubernetes kümesi oluşturma
 
-Komut isteminde, kaynak grubunu oluşturma bir [Azure geliştirme alanları destekleyen bir bölge][supported-regions].
+Komut isteminde, [Azure dev Spaces destekleyen bir bölgede][supported-regions]kaynak grubunu oluşturun.
 
 ```cmd
 az group create --name MyResourceGroup --location <region>
@@ -78,7 +74,7 @@ AKS kümenizi içeren kaynak grubuyla AKS kümesi adınızı kullanarak aşağı
    ```
 
 > [!IMPORTANT]
-> Azure geliştirme alanları yapılandırma işlemini kaldıracak `azds` kümedeki varsa, ad alanı.
+> Azure Dev Spaces yapılandırma işlemi, varsa kümedeki `azds` ad alanını kaldırır.
 
 ## <a name="get-kubernetes-debugging-for-vs-code"></a>VS Code için Kubernetes hata ayıklaması edinin
 Kubernetes hata ayıklaması gibi zengin özellikler VS Code kullanarak .NET Core ve Node.js geliştiricileri için kullanılabilir.
@@ -93,7 +89,7 @@ Bu bölümde bir Node.js web uygulaması oluşturacak ve Kubernetes’teki bir k
 ### <a name="create-a-nodejs-web-app"></a>Node.js Web Uygulaması oluşturma
 GitHub deposunu yerel ortamınıza indirmek için https://github.com/Azure/dev-spaces konumuna gidip **Kopyala veya İndir**’i seçerek GitHub’dan kodu indirin. Bu kılavuzun kodu `samples/nodejs/getting-started/webfrontend` içindedir.
 
-## <a name="prepare-code-for-docker-and-kubernetes-development"></a>Docker ve Kubernetes geliştirme için Code hazırlayın
+## <a name="prepare-code-for-docker-and-kubernetes-development"></a>Docker ve Kubernetes geliştirmesi için kod hazırlama
 Şimdiye kadar, yerel olarak çalıştırılabilen temel bir web uygulamanız vardı. Şimdi uygulamanın kapsayıcısını tanımlayan varlıklar oluşturup Kubernetes’de nasıl dağıtılacağını belirleyerek uygulamayı kapsayıcılı hale getireceksiniz. Bu görev Azure Dev Spaces ile kolayca gerçekleştirilebilir: 
 
 1. VS Code’u başlatın ve `webfrontend` klasörünü açın. (Hata ayıklama varlıkları eklemek veya projeyi geri yüklemek için tüm varsayılan istemleri yoksayabilirsiniz.)
@@ -106,11 +102,11 @@ GitHub deposunu yerel ortamınıza indirmek için https://github.com/Azure/dev-s
 
 Azure CLI’nin `azds prep` komutu varsayılan ayarlarla Docker ve Kubernetes varlıklarını oluşturur:
 * `./Dockerfile`, uygulamanın kapsayıcı görüntüsünü açıklar, kaynak kodunun nasıl derlendiğini ve kapsayıcının içinde çalıştırıldığını belirtir.
-* `./charts/webfrontend` altındaki [Helm grafiği](https://docs.helm.sh), kapsayıcının Kubernetes'de nasıl dağıtıldığını açıklar.
+* [ altındaki ](https://docs.helm.sh)Helm grafiği`./charts/webfrontend`, kapsayıcının Kubernetes'de nasıl dağıtıldığını açıklar.
 
 Şimdilik bu dosyaların tüm içeriğini anlamanız gerekli değildir. Bununla birlikte, **geliştirme aşamasından üretim aşamasına kadar aynı Kubernetes ve Docker kod yapılandırmalı varlıklarının kullanılabildiğini, bu şekilde farklı ortamlarda daha tutarlı sonuçlar sağlanabildiğini** belirtmek gerekir.
  
-`prep` komutuyla `./azds.yaml` adlı bir dosya da oluşturulur ve bu dosya Azure Dev Spaces’in yapılandırma dosyasıdır. Azure’da yinelemeli bir geliştirme deneyimi sağlamak için Docker ve Kubernetes yapıtlarını ek yapılandırmayla tamamlar.
+`./azds.yaml` komutuyla `prep` adlı bir dosya da oluşturulur ve bu dosya Azure Dev Spaces’in yapılandırma dosyasıdır. Azure’da yinelemeli bir geliştirme deneyimi sağlamak için Docker ve Kubernetes yapıtlarını ek yapılandırmayla tamamlar.
 
 ## <a name="build-and-run-code-in-kubernetes"></a>Kubernetes'de kodu oluşturma ve çalıştırma
 Şimdi kodumuzu çalıştıralım! Terminal penceresinde, bu komutu webfrontend **kök kod klasöründen** çalıştırın:
@@ -138,17 +134,17 @@ Service 'webfrontend' port 'http' is available at http://webfrontend.1234567890a
 Service 'webfrontend' port 80 (TCP) is available at 'http://localhost:<port>'
 ```
 
-Çıktıda hizmeti için genel URL tanımlamak `up` komutu. İle biter `.azds.io`. Yukarıdaki örnekte, genel URL'dir `http://webfrontend.1234567890abcdef1234.eus.azds.io/`.
+`up` komutundan çıkışta hizmetin genel URL 'sini belirler. `.azds.io`biter. Yukarıdaki örnekte, genel URL `http://webfrontend.1234567890abcdef1234.eus.azds.io/`.
 
-Web uygulamanızı görmek için genel URL, bir tarayıcıda açın. Ayrıca, fark `stdout` ve `stderr` çıkış akışı yapılan *azds izleme* terminal penceresinde aynı web uygulamanızla etkileşim. Ayrıca, sistemden ilerledikçe bilgi HTTP isteklerini izleme görürsünüz. Bu, karmaşık çoklu hizmet çağrıları geliştirme sırasında izlemek kolaylaştırır. Bu istek izleme geliştirme alanları tarafından eklenen izleme sağlar.
+Web uygulamanızı görmek için genel URL 'YI bir tarayıcıda açın. Ayrıca, `stdout` ve `stderr` çıkışı, Web uygulamanızla etkileşime geçerek *azds Trace* Terminal penceresine akışla kaydedilir. Ayrıca, sistemde ilerlediklerinde HTTP istekleri için izleme bilgilerini görürsünüz. Bu, geliştirme sırasında karmaşık çok hizmet çağrılarını izlemenizi kolaylaştırır. Dev Spaces tarafından eklenen araçlar bu istek izlemeyi sağlar.
 
 > [!Note]
-> Genel URL yanı sıra diğer kullanabilirsiniz `http://localhost:<portnumber>` konsol çıkışında görüntülenen URL. Localhost URL'sini kullanırsanız, kapsayıcıyı yerel olarak çalışıyor, ancak gerçekte Azure'da çalışan gibi görünebilir. Azure geliştirme alanları Kubernetes kullanan *bağlantı noktası iletme* AKS'de çalışan kapsayıcıya localhost bağlantı noktasına eşlemek üzere işlevsellik. Bu, yerel makinenizde hizmetiyle etkileşim kolaylaştırır.
+> Genel URL 'nin yanı sıra, konsol çıkışında görüntülenen alternatif `http://localhost:<portnumber>` URL 'sini de kullanabilirsiniz. Localhost URL 'sini kullanırsanız, kapsayıcı yerel olarak çalışıyor, ancak aslında Azure 'da çalışıyor gibi görünebilir. Azure Dev Spaces, Kubernetes *bağlantı noktası-iletme* işlevini kullanarak localhost bağlantı noktasını aks 'de çalışan kapsayıcıya eşler. Bu, yerel makinenizden hizmetle etkileşimde bulunmayı kolaylaştırır.
 
 ### <a name="update-a-content-file"></a>İçerik dosyası güncelleştirme
 Azure Dev Spaces yalnızca kodu Kubernetes’te çalıştırmaya yönelik değildir; aynı zamanda kod değişikliklerinizin buluttaki bir Kubernetes ortamında uygulandığını hızlıca ve yinelenerek görmenizi sağlar.
 
-1. `./public/index.html` dosyasını bulun ve HTML dosyasında bir düzenleme yapın. Örneğin, sayfanın arka plan rengini Mavi gölgeye için değiştirme [15 satırındaki](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/public/index.html#L15):
+1. `./public/index.html` dosyasını bulun ve HTML dosyasında bir düzenleme yapın. Örneğin, sayfanın arka plan rengini [15. satırda](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/public/index.html#L15)mavi gölge olarak değiştirin:
 
     ```html
     <body style="background-color: #95B9C7; margin-left:10px; margin-right:10px;">
@@ -164,7 +160,7 @@ webfrontend genel URL'sini kullanarak web uygulamasını bir mobil cihazdan aç�
 
 Bu sorunu gidermek için bir `viewport` meta etiketi ekleyin:
 1. `./public/index.html` dosyasını açın
-1. Ekleme bir `viewport` meta etiketi mevcut `head` başlayan öğesi [6. satırda](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/public/index.html#L6):
+1. [6. satırda](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/public/index.html#L6)başlayan mevcut `head` öğesinde bir `viewport` meta etiketi ekleyin:
 
     ```html
     <head>
@@ -228,11 +224,11 @@ Kubernetes’te kodunuzun hatalarını ayıklamak için **F5**’e basın!
 `up` komutuna benzer şekilde, hata ayıklamaya başladığınızda kod geliştirme ortamıyla eşitlenir ve bir kapsayıcı derlenip Kubernetes’e dağıtılır. Bu kez, hata ayıklayıcı uzak kapsayıcıya eklenir.
 
 > [!Tip]
-> VS Code durum çubuğunda turuncu kapatır belirten hata ayıklayıcı eklenir. Ayrıca, siteniz hızla açmak için kullanabileceğiniz bir tıklanabilir URL de görüntülenir.
+> VS Code durum çubuğu, hata ayıklayıcının ekli olduğunu belirten turuncu kullanacaktır. Ayrıca, sitenizi hızlı bir şekilde açmak için kullanabileceğiniz tıklatılabilir bir URL görüntülenir.
 
 ![](media/common/vscode-status-bar-url.png)
 
-Bir kesme noktası sunucu tarafındaki kod dosyasında, örneğin içinde ayarlamak `app.get('/api'...` üzerinde [13, satır `server.js` ](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13). 
+Sunucu tarafı kod dosyasında, örneğin [`server.js`13. satırdaki ](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13)`app.get('/api'...` içinde bir kesme noktası ayarlayın. 
 
     ```javascript
     app.get('/api', function (req, res) {
@@ -240,12 +236,12 @@ Bir kesme noktası sunucu tarafındaki kod dosyasında, örneğin içinde ayarla
     });
     ```
 
-Tarayıcı sayfayı yenileyin veya tuşuna *, Say yeniden* düğmesi ve kesme noktasına isabet ve kodunuz içinde adım adım mümkün olmayacaktır.
+Tarayıcı sayfasını yenileyin veya *bunu yeniden söyleyin* düğmesine basın ve kesme noktasına basmalısınız ve kod aracılığıyla ilerleyebileceğiniz
 
 Kodun yerel olarak yürütülmesi durumunda olduğu gibi, çağrı yığını, yerel değişkenler, özel durum bilgileri vb. hata ayıklama bilgilerine tam erişiminiz vardır.
 
 ### <a name="edit-code-and-refresh-the-debug-session"></a>Kod düzenleme ve hata ayıklama oturumunu yenileme
-Hata ayıklayıcı ile etkin bir kodunu düzenle oluşturmak; Selamlama iletisine gibi değiştirmek [13, satır `server.js` ](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) yeniden:
+Hata ayıklayıcı etkin olduğunda, kod düzenleme yapın; Örneğin, 13. satırdaki Merhaba iletisini yeniden [`server.js`](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) değiştirin:
 
 ```javascript
 app.get('/api', function (req, res) {
@@ -253,7 +249,7 @@ app.get('/api', function (req, res) {
 });
 ```
 
-Dosyayı kaydedin ve buna **hata ayıklama Eylemler bölmesinde**, tıklayın **yeniden** düğmesi. 
+Dosyayı kaydedin ve **Hata Ayıkla eylemleri bölmesinde** **Yeniden Başlat** düğmesine tıklayın. 
 
 ![](media/common/debug-action-refresh.png)
 
@@ -276,12 +272,12 @@ Bu yapılandırmada, kapsayıcı *nodemon* başlatacak şekilde yapılandırılm
 1. `server.js` içindeki karşılama iletisini yeniden düzenleyin ve dosyayı kaydedin.
 1. Değişikliklerinizin uygulandığını görmek için tarayıcıyı yenileyin veya *Tekrar Söyleyin* düğmesine tıklayın!
 
-**Artık kod üzerinde hızla yineleme ve doğrudan Kubernetes’te hata ayıklamaya yönelik bir yönteminiz var!** Ardından, ikinci bir kapsayıcıyı nasıl oluşturabileceğinizi ve çağırabileceğinizi göreceksiniz.
+**Artık kod üzerinde hızlıca yineleme ve doğrudan Kubernetes’te hata ayıklamaya yönelik bir yönteminiz var!** Ardından, ikinci bir kapsayıcıyı nasıl oluşturabileceğinizi ve çağırabileceğinizi göreceksiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Birden çok hizmet geliştirme hakkında bilgi edinin](multi-service-nodejs.md)
+> [Çoklu hizmet geliştirme hakkında bilgi edinin](multi-service-nodejs.md)
 
 
 [supported-regions]: about.md#supported-regions-and-configurations

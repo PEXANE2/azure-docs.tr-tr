@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 04/04/2019
 ms.author: aahi
-ms.openlocfilehash: 19421788eea59ea250efbaa656266da49dc3b42f
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: f11d23207a21af5c73831d0edd5ffc9eaa59c119
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73742740"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280667"
 ---
 # <a name="example-user-scenarios-for-the-text-analytics-api"></a>Metin Analizi API'si için örnek kullanıcı senaryoları
 
@@ -41,7 +41,7 @@ Yapılandırılmamış metinsel biçimde gönderilen destek isteklerini işlemek
 
 ## <a name="monitor-your-products-social-media-feeds"></a>Ürününüzün sosyal medya akışlarını izleyin
 
-Ürününüzün Twitter veya Facebook sayfasında Kullanıcı ürün geri bildirimini izleyin. Yeni ürünlere yönelik müşteri yaklaşımını çözümlemek, Özellikler ve özellik istekleri hakkında önemli tümceleri ayıklamak veya müşteri şikayetlerini olduğu gibi çözmek için verileri kullanın.
+Ürününüzün Twitter veya Facebook sayfasında Kullanıcı ürün geri bildirimini izleyin. Yeni ürünlere yönelik müşteri yaklaşımını çözümlemek, Özellikler ve özellik istekleri hakkında önemli tümceleri ayıklamak veya müşteri şikayetlerini olduğu gibi çözmek için verileri kullanın. Örnek [Microsoft Flow şablonu](https://flow.microsoft.com/galleries/public/templates/2680d2227d074c4d901e36c66e68f6f9/run-sentiment-analysis-on-tweets-and-push-results-to-a-power-bi-dataset/)' na bakın.
 
 ![Anahtar tümceciği ayıklama kullanarak ürün ve şirket geri bildiriminizi sosyal medya hakkında nasıl izleyeceğinizi açıklayan bir görüntü](media/use-cases/social-feed.svg)
 

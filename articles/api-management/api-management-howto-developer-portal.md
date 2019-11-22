@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 377ed8f17cfcf67f10cbdec77199c69c606afa3e
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 1a8fb8140fd2f58556e4a64bca0f4a052a84c2bb
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74180684"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74285609"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API Management geliştirici portalına genel bakış
 
@@ -26,8 +26,6 @@ Geliştirici portalı, API 'lerinizin belgelerinde otomatik olarak oluşturulan 
 Bu makalede, API Management 'de geliştirici portalının şirket içinde barındırılan ve yönetilen sürümleri arasındaki farklar açıklanmaktadır. Ayrıca, mimarisini açıklar ve sık sorulan soruların yanıtlarını sağlar.
 
 > [!WARNING]
-> Yeni geliştirici portalı şu anda API Management Hizmetleri 'ne alındı.
-> Hizmetiniz yeni oluşturulmuşsa veya bir geliştirici katmanı hizmeti ise, en son sürüme sahip olmanız gerekir. Aksi takdirde sorunlarla karşılaşabilirsiniz (örneğin, yayımlama işlevselliğiyle). Özellik dağıtımı, 22nd, 2019 Cuma günü tamamlanmalıdır.
 >
 > [Önizleme sürümünden geliştirici portalının genel kullanıma sunulan sürümüne geçiş yapmayı öğrenin](#preview-to-ga) .
 
@@ -115,7 +113,7 @@ Hayır.
 
 Hayır.
 
-### <a name="im-getting-a-cors-error-when-using-the-interactive-console-what-should-i-do"></a>Etkileşimli konsolu kullanırken CORS hatası alıyorum. Ne yapmam gerekir?
+### <a name="im-getting-a-cors-error-when-using-the-interactive-console-what-should-i-do"></a>Etkileşimli konsolu kullanırken CORS hatası alıyorum. Ne yapmalıyım?
 
 Etkileşimli konsol tarayıcıdan istemci tarafı API isteği yapar. API 'lerinize [BIR CORS ilkesi](https://docs.microsoft.com/azure/api-management/api-management-cross-domain-policies#CORS) ekleyerek CORS sorununu çözebilirsiniz. Tüm parametreleri el ile belirtebilir veya joker karakter `*` değerlerini kullanabilirsiniz. Örneğin:
 

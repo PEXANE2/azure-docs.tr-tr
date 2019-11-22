@@ -1,21 +1,21 @@
 ---
-title: Hızlı başlangıç-Azure uzamsal bağlayıcılarla Unity Android uygulaması oluşturma | Microsoft Docs
+title: 'Hızlı başlangıç: Unity Android uygulaması oluşturma'
 description: Bu hızlı başlangıçta, uzamsal bağlayıcıları kullanarak Unity ile bir Android uygulaması oluşturmayı öğreneceksiniz.
 author: craigktreasure
-manager: aliemami
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3ba50b8317e85d09aeaf32c1acc62342ee2683bc
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 213cf9b64f2c43274192c22efa2fa5a7dfbce5e5
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847723"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277072"
 ---
-# <a name="quickstart-create-a-unity-android-app-with-azure-spatial-anchors"></a>Hızlı Başlangıç: Azure uzamsal bağlayıcılarla Unity Android uygulaması oluşturma
+# <a name="quickstart-create-a-unity-android-app-with-azure-spatial-anchors"></a>Hızlı başlangıç: Azure uzamsal bağlayıcılarla Unity Android uygulaması oluşturma
 
 Bu hızlı başlangıçta, [Azure uzamsal bağlayıcılarını](../overview.md)kullanarak Unity Android uygulamasının nasıl oluşturulacağı ele alınmaktadır. Azure uzamsal bağlantıları, zaman içinde cihazlarda konumlarını sürekli tutan nesneleri kullanarak karma gerçeklik deneyimleri oluşturmanıza olanak sağlayan bir platformlar arası geliştirici hizmetidir. İşiniz bittiğinde, bir uzamsal bağlayıcıyı kaydedip geri çekebilmeniz için Unity ile oluşturulmuş bir ARCore Android uygulamanız olacaktır.
 
@@ -36,7 +36,7 @@ Bu hızlı başlangıcı tamamlamak için aşağıdakileri yaptığınızdan emi
 
 - Android derleme desteği ve Android SDK & NDK araçları modülleri de dahil olmak üzere <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.1 +</a> Içeren bir Windows veya MacOS makinesi.
   - Windows üzerinde çalışıyorsa, <a href="https://git-scm.com/download/win" target="_blank">Windows Için git</a>de gerekecektir.
-  - MacOS üzerinde çalışıyorsa, HomeBrew aracılığıyla Git ' i alın. Terminalin tek bir satırına şu komutu girin: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Ardından, öğesini `brew install git`çalıştırın.
+  - MacOS üzerinde çalışıyorsa, HomeBrew aracılığıyla Git ' i alın. Terminalin tek bir satırına şu komutu girin: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Ardından `brew install git`çalıştırın.
 - <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">Geliştirici etkin</a> ve <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">korumalı</a> bir Android cihaz.
   - Bilgisayarınızın Android cihazından iletişim kurması için ek cihaz sürücüleri gerekebilir. Ek bilgi ve yönergeler için [buraya](https://developer.android.com/studio/run/device.html) bakın.
 
@@ -52,7 +52,7 @@ Bu hızlı başlangıcı tamamlamak için aşağıdakileri yaptığınızdan emi
 
 ## <a name="configure-account-identifier-and-key"></a>Hesap tanımlayıcıyı ve anahtarı yapılandırın
 
-**Proje** bölmesinde, öğesine `Assets/AzureSpatialAnchors.Examples/Scenes` gidin ve `AzureSpatialAnchorsBasicDemo.unity` sahne dosyasını açın.
+**Proje** bölmesinde `Assets/AzureSpatialAnchors.Examples/Scenes` ' a gidin ve `AzureSpatialAnchorsBasicDemo.unity` sahne dosyasını açın.
 
 [!INCLUDE [Configure Unity Scene](../../../includes/spatial-anchors-unity-configure-scene.md)]
 
@@ -62,7 +62,7 @@ Bu hızlı başlangıcı tamamlamak için aşağıdakileri yaptığınızdan emi
 
 [!INCLUDE [Export Unity Project](../../../includes/spatial-anchors-unity-export-project-snip.md)]
 
-**Çalıştır cihaz** ' de cihazınızı seçin ve **Oluştur ve Çalıştır**' a tıklayın. İçin ad seçebileceğiniz bir `.apk` dosyayı kaydetmeniz istenecektir.
+**Çalıştır cihaz** ' de cihazınızı seçin ve **Oluştur ve Çalıştır**' a tıklayın. İçin herhangi bir ad seçebileceğiniz bir `.apk` dosyasını kaydetmeniz istenecektir.
 
 Bir bağlayıcıyı yerleştirmek ve geri çağırmak için uygulamadaki yönergeleri izleyin.
 
@@ -75,4 +75,4 @@ Uygulamayı çalıştırırken, kamerayı arka plan olarak görmüyorsanız (ör
 [!INCLUDE [Next steps](../../../includes/spatial-anchors-quickstarts-nextsteps.md)]
 
 > [!div class="nextstepaction"]
-> [Öğretici: Uzamsal bağlayıcıları cihazlarda paylaşma](../tutorials/tutorial-share-anchors-across-devices.md)
+> [Öğretici: cihazlarda uzamsal bağlayıcıları paylaşma](../tutorials/tutorial-share-anchors-across-devices.md)

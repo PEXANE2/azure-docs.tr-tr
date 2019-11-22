@@ -1,20 +1,16 @@
 ---
 title: Sorun giderme
-titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 09/25/2019
 ms.topic: conceptual
 description: Azure’da kapsayıcılar ve mikro hizmetlerle hızlı Kubernetes geliştirme
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
-ms.openlocfilehash: 5d327dd1041172bc546b2e0cb5ec3a140f401d84
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
-ms.translationtype: MT
+ms.openlocfilehash: 5eec9771e964cf6b47492fdad34bcba14d897d41
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072202"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279711"
 ---
 # <a name="troubleshooting-guide"></a>Sorun giderme kılavuzu
 
@@ -380,7 +376,7 @@ Denetleyicinin Kullanıcı RBAC rolünü güncelleştirmek için:
     * *Rol*Için, *katkıda bulunan* veya *sahip*seçeneklerinden birini belirleyin.
     * *Erişim atama*Için, *Azure AD Kullanıcı, Grup veya hizmet sorumlusu*' nı seçin.
     * *Seç*için izin vermek istediğiniz kullanıcıyı arayın.
-1. *Save (Kaydet)* düğmesine tıklayın.
+1. *Kaydet*’e tıklayın.
 
 ### <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>Geliştirme alanları hizmeti ile ilişkilendirilen genel bir URL için DNS adı çözümlemesi başarısız olur
 
@@ -453,3 +449,13 @@ kubectl -n my-namespace delete pod --all
 ```
 
 Yığınlarınız yeniden başlatıldıktan sonra, Azure Dev Spaces var olan ad alanınızı kullanmaya başlayabilirsiniz.
+
+### <a name="enable-azure-dev-spaces-on-aks-cluster-with-restricted-egress-traffic-for-cluster-nodes"></a>Küme düğümlerinde kısıtlanmış çıkış trafiği ile AKS kümesinde Azure Dev Spaces etkinleştirme
+
+Küme düğümlerinden gelen çıkış trafiğinin kısıtlandığı bir AKS kümesinde Azure Dev Spaces etkinleştirmek için aşağıdaki FQDN 'Lere izin vermeniz gerekir:
+
+| FQDN                                    | Bağlantı noktası      | Bir yönetim grubuna bağlanmak veya bağlı bir yönetim grubunun özelliklerini düzenlemek için Yönetim çalışma alanında      |
+|-----------------------------------------|-----------|----------|
+| cloudflare.docker.com | HTTPS: 443 | Linux alp ve diğer Azure Dev Spaces görüntülerini çekmek için |
+| gcr.io | HTTP: 443 | Held/Tiller görüntülerini çekmek için|
+| storage.googleapis.com | HTTP: 443 | Held/Tiller görüntülerini çekmek için|

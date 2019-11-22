@@ -3,12 +3,12 @@ title: Konuk yapılandırma ilkeleri oluşturma
 description: Windows veya Linux VM 'Leri için Azure Ilke Konuk yapılandırma ilkesi oluşturmayı öğrenin.
 ms.date: 09/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 3c7b214a07b89f4b66aa32724259b01129b9b7e9
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 2f8ad66e636f7fa37d94d24d12a2537759a3304b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959474"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279353"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Konuk yapılandırma ilkeleri oluşturma
 
@@ -412,4 +412,4 @@ Bu araçtaki cmdlet 'ler hakkında daha fazla bilgi için yerleşik Kılavuzu g�
 
 - [Konuk yapılandırması](../concepts/guest-configuration.md)olan VM 'leri denetleme hakkında bilgi edinin.
 - [Program aracılığıyla ilkelerin nasıl oluşturulduğunu](programmatically-create.md)anlayın.
-- [Uyumluluk verilerini nasıl alabileceğinizi](getting-compliance-data.md)öğrenin.
+- [Uyumluluk verilerini nasıl alabileceğinizi](get-compliance-data.md)öğrenin.

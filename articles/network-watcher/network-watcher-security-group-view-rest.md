@@ -1,6 +1,7 @@
 ---
-title: Azure Ağ İzleyicisi güvenlik grubu görünümü - REST API ile ağ güvenlik analiz | Microsoft Docs
-description: Bu makalede, bir sanal makine güvenliği'güvenlik grubu görünümü ile çözümlemek için PowerShell kullanmayı anlatmaktadır.
+title: Ağ güvenliğini çözümleme-güvenlik grubu görünümü-Azure REST API
+titleSuffix: Azure Network Watcher
+description: Bu makalede, PowerShell kullanarak bir sanal makine güvenliğini güvenlik grubu görünümüyle analiz etme açıklanır.
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -14,47 +15,47 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 86fff39605fa91c1b09c1547dd0efa97b8fd26cd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f11e288c28274e08fdabe7fee02a099410611872
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64687857"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277905"
 ---
-# <a name="analyze-your-virtual-machine-security-with-security-group-view-using-rest-api"></a>Sanal Makine güvenlik REST API kullanarak güvenlik grubu görünümünü çözümleme
+# <a name="analyze-your-virtual-machine-security-with-security-group-view-using-rest-api"></a>REST API kullanarak, sanal makine güvenliğine güvenlik grubu görünümü ile çözümleyin
 
 > [!div class="op_single_selector"]
 > - [PowerShell](network-watcher-security-group-view-powershell.md)
 > - [Azure CLI](network-watcher-security-group-view-cli.md)
 > - [REST API](network-watcher-security-group-view-rest.md)
 
-Güvenlik grubu görünümü bir sanal makineye uygulanan yapılandırılmış ve etkin ağ güvenlik kuralları döndürür. Bu yetenek, Denetim ve ağ güvenlik grupları ve trafiği okunuyor emin olmak için bir VM üzerinde yapılandırılan kurallardan tanılamak kullanışlıdır doğru bir şekilde izin verilen veya reddedilen. Bu makalede, biz, REST API kullanarak bir sanal makine için etkili ve uygulanan güvenlik kuralları nasıl alınacağını göstermektedir
+Güvenlik grubu görünümü, bir sanal makineye uygulanan yapılandırılmış ve etkin ağ güvenlik kurallarını döndürür. Bu özellik, trafiğin doğru şekilde izin verilmesini veya reddedilmemesini sağlamak için bir sanal makinede yapılandırılan ağ güvenlik gruplarını ve kurallarını denetlemek ve tanılamak için yararlıdır. Bu makalede, REST API kullanarak, etkin ve uygulanan güvenlik kurallarını bir sanal makineye nasıl alacağınızı göstereceğiz
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu senaryoda, bir sanal makine için güvenlik grubu görünümünü almak için Ağ İzleyicisi Rest API çağrısı. ARMclient, PowerShell kullanarak REST API'sini çağırmak için kullanılır. ARMClient bulunur, chocolatey [ARMClient Chocolatey üzerinde](https://chocolatey.org/packages/ARMClient)
+Bu senaryoda, bir sanal makine için güvenlik grubu görünümünü almak üzere ağ Izleyicisi REST API 'sini çağırabilirsiniz. ARMclient, PowerShell kullanarak REST API çağırmak için kullanılır. ARMClient, [Chocolatey üzerinde](https://chocolatey.org/packages/ARMClient) Chocolatey konumunda bulunur
 
-Bu senaryo, zaten uyguladığınız adımları varsayar [Ağ İzleyicisi oluşturma](network-watcher-create.md) Ağ İzleyicisi oluşturmak için. Senaryo da kullanılacak geçerli bir sanal makine ile bir kaynak grubu var olduğunu varsayar.
+Bu senaryo, ağ Izleyicisi oluşturmak için [ağ Izleyicisi oluşturma](network-watcher-create.md) bölümündeki adımları zaten izlediğinizi varsayar. Senaryo Ayrıca, geçerli bir sanal makineye sahip bir kaynak grubunun kullanılabilir olduğunu varsayar.
 
 ## <a name="scenario"></a>Senaryo
 
-Bu makalede ele alınan senaryo, belirli bir sanal makine için etkili ve uygulanan güvenlik kuralları alır.
+Bu makalede ele alınan senaryo, belirli bir sanal makine için geçerli ve uygulanan güvenlik kurallarını alır.
 
-## <a name="log-in-with-armclient"></a>Oturum ARMClient oturum açın
+## <a name="log-in-with-armclient"></a>ARMClient ile oturum açma
 
 ```powershell
 armclient login
 ```
 
-## <a name="retrieve-a-virtual-machine"></a>Bir sanal makine alma
+## <a name="retrieve-a-virtual-machine"></a>Bir sanal makineyi al
 
-Aşağıdaki kod, sanal machineThe döndürmek için aşağıdaki betiği çalıştırın değişkenleri gerekir:
+Bir sanal machineto döndürmek için aşağıdaki betiği çalıştırın. Aşağıdaki kod, değişkenlere ihtiyaç duyuyor:
 
-- **Subscriptionıd** -abonelik kimliği ile de alınabilir **Get-AzSubscription** cmdlet'i.
-- **resourceGroupName** -sanal makine içeren bir kaynak grubu adı.
+- **SubscriptionID** -abonelik kimliği **Get-azsubscription** cmdlet 'i ile de alınabilir.
+- **Resourcegroupname** -sanal makineler içeren bir kaynak grubunun adı.
 
 ```powershell
 $subscriptionId = '<subscription id>'
@@ -63,7 +64,7 @@ $resourceGroupName = '<resource group name>'
 armclient get https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Compute/virtualMachines?api-version=2015-05-01-preview
 ```
 
-Gerekli bilgileri **kimliği** türü altında `Microsoft.Compute/virtualMachines` yanıt, aşağıdaki örnekte görüldüğü gibi:
+Gereken bilgiler, aşağıdaki örnekte görüldüğü gibi, yanıt olarak `Microsoft.Compute/virtualMachines` türü altında yer alan **kimliğidir** :
 
 ```json
 ...,
@@ -93,9 +94,9 @@ pute/virtualMachines/{vmName}/extensions/CustomScriptExtension"
 }
 ```
 
-## <a name="get-security-group-view-for-virtual-machine"></a>Sanal makine için güvenlik grubu görünümünü Al
+## <a name="get-security-group-view-for-virtual-machine"></a>Sanal makine için güvenlik grubu görünümü al
 
-Aşağıdaki örnek, hedeflenen bir sanal makine güvenlik grubu görünümünü ister. Bu örnekte sonuçlar, kuralları ve güvenlik için yapılandırma değişikliklerini aramak için bir kaynak tarafından tanımlanan karşılaştırmak üzere kullanılabilir.
+Aşağıdaki örnek, hedeflenen bir sanal makinenin güvenlik grubu görünümünü ister. Bu örneğin sonuçları, yapılandırma DRIP 'yi aramak için alma tarafından tanımlanan kurallarla ve güvenlikle karşılaştırmak için kullanılabilir.
 
 ```powershell
 $subscriptionId = "<subscription id>"
@@ -112,9 +113,9 @@ $requestBody = @"
 armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/securityGroupView?api-version=2016-12-01" $requestBody -verbose
 ```
 
-## <a name="view-the-response"></a>Yanıtı görüntüleyin
+## <a name="view-the-response"></a>Yanıtı görüntüleme
 
-Aşağıdaki örnek, önceki komuttan döndürülen yanıttır. Gruplar halinde ayrılmış sanal makine üzerindeki tüm etkin ve uygulanan güvenlik kuralları sonuçlarını göster **NetworkInterfaceSecurityRules**, **DefaultSecurityRules**, ve  **EffectiveSecurityRules**.
+Aşağıdaki örnek, önceki komuttan döndürülen yanıt örneğidir. Sonuçlar, **Networkınterfacesecurityrules**, **Defaultsecurityrules**ve **securittivesecurityrules**gruplarında oluşan sanal makinede etkin ve uygulanan tüm güvenlik kurallarını gösterir.
 
 ```json
 
@@ -184,6 +185,6 @@ Aşağıdaki örnek, önceki komuttan döndürülen yanıttır. Gruplar halinde 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ziyaret [denetimi ağ güvenlik grupları (NSG) Ağ İzleyicisi ile](network-watcher-security-group-view-powershell.md) ağ güvenlik gruplarının doğrulama otomatikleştirme hakkında bilgi edinmek için.
+Ağ güvenlik gruplarının doğrulanmasını otomatik hale getirmeyi öğrenmek için ağ [İzleyicisi ile ağ güvenlik grupları (NSG) denetimini](network-watcher-security-group-view-powershell.md) ziyaret edin.
 
 

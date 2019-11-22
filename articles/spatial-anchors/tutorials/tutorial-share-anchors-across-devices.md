@@ -1,19 +1,19 @@
 ---
-title: Öğretici-Azure uzamsal bağlayıcılarını oturumlar ve cihazlar arasında paylaşma | Microsoft Docs
+title: 'Öğretici: oturumlar ve cihazlar arasında bağlantıları paylaşma'
 description: Bu öğreticide, bir arka uç hizmetiyle Unity 'de Android/iOS cihazları arasında Azure uzamsal bağlayıcı tanımlayıcıları paylaşmayı öğreneceksiniz.
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e8a60d5d90b684698d6fcb612278bcae6d4ed08e
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: f0029fcf8e9efdea529212a7cca49cc8660c623f
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882329"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276958"
 ---
 # <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices"></a>Öğretici: Azure uzamsal bağlayıcılarını oturumlar ve cihazlar arasında paylaşma
 

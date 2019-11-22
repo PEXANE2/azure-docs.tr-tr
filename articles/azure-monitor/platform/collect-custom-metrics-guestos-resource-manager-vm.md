@@ -1,5 +1,5 @@
 ---
-title: Windows sanal makinesi için Kaynak Yöneticisi şablonu kullanarak Azure Izleyici ölçüm deposuna Konuk işletim sistemi ölçümleri gönderme
+title: Azure Izleyici 'de şablon ile Windows VM ölçümleri toplama
 description: Windows sanal makinesi için Kaynak Yöneticisi şablonu kullanarak Azure Izleyici ölçüm deposuna Konuk işletim sistemi ölçümleri gönderme
 author: anirudhcavale
 services: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: ac8d059c2bcad7aaa005b4afe1fb7814d49f9339
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: b6e66bea6dd86409866db1fee3564d21236ecbce
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844952"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286175"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>Windows sanal makinesi için Kaynak Yöneticisi şablonu kullanarak Azure Izleyici ölçüm deposuna Konuk işletim sistemi ölçümleri gönderme
 
@@ -126,7 +126,7 @@ Azure 'un MSI uzantısına bir sistem kimliği atamasını sağlamak için **kim
     ...
 ```
 
-Windows sanal makinesinde tanılama uzantısını etkinleştirmek için aşağıdaki yapılandırmayı ekleyin. Basit Kaynak Yöneticisi tabanlı bir sanal makine için uzantı yapılandırmasını, sanal makine için kaynaklar dizisine ekleyebiliriz. &mdash; Bölümünün&mdash;devamındaki "" azmonsink "satırı ve karşılık gelen" sinksconfig "satırı, uzantının ölçümleri doğrudan Azure izleyici 'ye yaymalıdır. Gerektiğinde performans sayaçlarını ekleme veya kaldırma ücretsizdir.
+Windows sanal makinesinde tanılama uzantısını etkinleştirmek için aşağıdaki yapılandırmayı ekleyin. Basit Kaynak Yöneticisi tabanlı bir sanal makine için uzantı yapılandırmasını, sanal makine için kaynaklar dizisine ekleyebiliriz. "AzMonSink" satırı ve ilgili "SinksConfig" satırı, "daha sonra gelen" havuz "&mdash;&mdash;. Gerektiğinde performans sayaçlarını ekleme veya kaldırma ücretsizdir.
 
 
 ```json
@@ -241,8 +241,8 @@ Her iki dosyayı da kaydedin ve kapatın.
 Kaynak Yöneticisi şablonu dağıtmak için Azure PowerShell faydalanır.
 
 1. PowerShell 'i başlatın.
-1. Kullanarak `Login-AzAccount`Azure 'da oturum açın.
-1. Kullanarak `Get-AzSubscription`abonelik listenizi alın.
+1. `Login-AzAccount`kullanarak Azure 'da oturum açın.
+1. `Get-AzSubscription`kullanarak abonelik listenizi alın.
 1. ' De sanal makineyi oluşturmak/güncelleştirmek için kullandığınız aboneliği ayarlayın:
 
    ```powershell
@@ -267,7 +267,7 @@ Kaynak Yöneticisi şablonu dağıtmak için Azure PowerShell faydalanır.
 1. Dağıtımınız başarılı olduktan sonra, sanal makinenin Azure portal olması gerekir ve ölçümleri Azure Izleyici 'ye yayın.
 
    > [!NOTE]
-   > Seçili vmSkuSize etrafında hatalarla karşılaşabilirsiniz. Bu durumda, azuredeploy. JSON dosyanıza dönün ve vmSkuSize parametresinin varsayılan değerini güncelleştirin. Bu durumda, "Standard_DS1_v2" öğesini denemeyi öneririz.
+   > Seçili vmSkuSize etrafında hatalarla karşılaşabilirsiniz. Bu durumda, azuredeploy. JSON dosyanıza dönün ve vmSkuSize parametresinin varsayılan değerini güncelleştirin. Bu durumda, "Standard_DS1_v2" seçeneğini denemeyi öneririz.
 
 ## <a name="chart-your-metrics"></a>Ölçümlerinizi grafik yapın
 
@@ -285,7 +285,7 @@ Kaynak Yöneticisi şablonu dağıtmak için Azure PowerShell faydalanır.
 
 6. Ad alanları açılan menüsünde **Azure. VM. Windows. Guest** ' i seçin.
 
-7. Ölçümler açılan menüsünde, **Kullanımdaki bellek\%kaydedilmiş bayt**' ı seçin.
+7. Ölçümler açılan menüsünde **bellek\%kaydedilmiş bayt kullanımda**' yı seçin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

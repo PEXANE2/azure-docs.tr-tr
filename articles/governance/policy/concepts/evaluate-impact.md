@@ -3,12 +3,12 @@ title: Yeni bir Azure ilkesinin etkisini değerlendirin
 description: Azure ortamınıza yeni bir ilke oluştururken izlenecek işlemi anlayın.
 ms.date: 09/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6c1a3ea764aedec7de5eab1f564176eaafead70b
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: e39183b13d2b3cf8c7527f9372879372b2123648
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959840"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279419"
 ---
 # <a name="evaluate-the-impact-of-a-new-azure-policy"></a>Yeni bir Azure ilkesinin etkisini değerlendirin
 
@@ -71,6 +71,6 @@ Kapsamda herhangi bir değişiklik olmadığından emin olmak için kapsamdaki t
 - [İlke tanımı yapısı](./definition-structure.md)hakkında bilgi edinin.
 - [İlke atama yapısı](./assignment-structure.md)hakkında bilgi edinin.
 - [Program aracılığıyla ilkelerin nasıl oluşturulduğunu](../how-to/programmatically-create.md)anlayın.
-- [Uyumluluk verilerini nasıl alabileceğinizi](../how-to/getting-compliance-data.md)öğrenin.
+- [Uyumluluk verilerini nasıl alabileceğinizi](../how-to/get-compliance-data.md)öğrenin.
 - [Uyumlu olmayan kaynakları nasıl düzelteceğinizi](../how-to/remediate-resources.md)öğrenin.
 - [Kaynakları Azure Yönetim gruplarıyla düzenleme](../../management-groups/overview.md)ile yönetim grubunun ne olduğunu inceleyin.

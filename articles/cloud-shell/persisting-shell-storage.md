@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/04/2018
+ms.date: 11/20/2019
 ms.author: damaerte
-ms.openlocfilehash: ee68400d000ca823816c8efc6bcbc224d1388832
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 8e04e7c1919deaf60e083aba4588943147ebd6bf
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082988"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284822"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Dosyaları Azure Cloud Shell Sürdür
 Cloud Shell, dosyaları oturumlarda kalıcı hale getirmek için Azure dosya depolama kullanır. İlk başlangıçta Cloud Shell, dosyaları oturumlardaki kalıcı hale getirmek için yeni veya var olan bir dosya paylaşımından ilişkilendiremenizi ister.
@@ -38,9 +38,6 @@ Temel ayarları kullandığınızda ve yalnızca bir abonelik seçtiğinizde, Cl
 
 Dosya paylaşma, `$Home` dizininizde `clouddrive` olarak takar. Bu tek seferlik bir eylemdir ve dosya paylaşımının sonraki oturumlarda otomatik olarak takar. 
 
-> [!NOTE]
-> Güvenlik için, her kullanıcının kendi depolama hesabını sağlaması gerekir.  Rol tabanlı erişim denetimi (RBAC) için, kullanıcıların depolama hesabı düzeyinde katkıda bulunan erişimi veya üzeri olması gerekir.
-
 Dosya paylaşımında Ayrıca, `$Home` dizininizdeki verileri otomatik olarak sürdüren, sizin için oluşturulan 5 GB bir görüntü de bulunur. Bu hem Bash hem PowerShell için geçerlidir.
 
 ## <a name="use-existing-resources"></a>Mevcut kaynakları kullan
@@ -54,7 +51,14 @@ Depolama kurulumu istemi göründüğünde, ek seçenekleri görüntülemek içi
 
 ![Kaynak grubu ayarı](media/persisting-shell-storage/advanced-storage.png)
 
-### <a name="supported-storage-regions"></a>Desteklenen depolama bölgeleri
+## <a name="securing-storage-access"></a>Depolama erişiminin güvenliğini sağlama
+Güvenlik için, her kullanıcının kendi depolama hesabını sağlaması gerekir.  Rol tabanlı erişim denetimi (RBAC) için, kullanıcıların depolama hesabı düzeyinde katkıda bulunan erişimi veya üzeri olması gerekir.
+
+Cloud Shell, bir depolama hesabında, belirtilen bir abonelikte Azure dosya paylaşımından yararlanır. Devralınan izinler nedeniyle, abonelikte yeterli erişim haklarına sahip olan kullanıcılar, abonelikte bulunan tüm depolama hesaplarına ve dosya paylaşımlarına erişebilecektir.
+
+Kullanıcılar, depolama hesabındaki veya abonelik düzeyindeki izinleri ayarlayarak dosyalarına erişimi kilitlemelidir.
+
+## <a name="supported-storage-regions"></a>Desteklenen depolama bölgeleri
 İlişkili Azure depolama hesapları, bunları bağlamak istediğiniz Cloud Shell makineyle aynı bölgede bulunmalıdır. Geçerli bölgenizi bulmak için bash 'de `env` çalıştırıp `ACC_LOCATION`değişkenini bulabilirsiniz. Dosya paylaşımları, `$Home` dizininizi kalıcı hale getirmek için oluşturduğunuz 5 GB bir görüntü alır.
 
 Cloud Shell makineler aşağıdaki bölgelerde mevcuttur:
@@ -67,8 +71,6 @@ Cloud Shell makineler aşağıdaki bölgelerde mevcuttur:
 
 ## <a name="restrict-resource-creation-with-an-azure-resource-policy"></a>Azure Kaynak ilkesiyle kaynak oluşturmayı kısıtlama
 Cloud Shell içinde oluşturduğunuz depolama hesapları `ms-resource-usage:azure-cloud-shell`olarak etiketlenir. Kullanıcıların Cloud Shell depolama hesapları oluşturmalarına izin vermemek istiyorsanız, bu özel etiket tarafından tetiklenen [Etiketler için bir Azure Kaynak ilkesi](../azure-policy/json-samples.md) oluşturun.
-
-
 
 ## <a name="how-cloud-shell-storage-works"></a>Cloud Shell depolama nasıl kullanılır 
 Aşağıdaki yöntemlerin her ikisinde de dosyaları Cloud Shell devam ettirir: 

@@ -1,7 +1,7 @@
 ---
-title: Run batch predictions using Azure Machine Learning designer (preview)
+title: Azure Machine Learning Designer (Önizleme) kullanarak toplu tahmine dayalı tahminleri çalıştırma
 titleSuffix: Azure Machine Learning
-description: Learn how to train a model and set up a batch prediction pipeline using the designer. Deploy the pipeline as a parameterized web service, which can be triggered from any HTTP library.
+description: Tasarımcıyı kullanarak bir modeli eğitme ve Batch tahmini işlem hattı ayarlama hakkında bilgi edinin. İşlem hattını, herhangi bir HTTP kitaplığından tetiklenebilecek parametreli bir Web hizmeti olarak dağıtın.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,101 +11,101 @@ ms.author: trbye
 author: trevorbye
 ms.date: 11/19/2019
 ms.custom: Ignite2019
-ms.openlocfilehash: 623400c2ee75f9ef1495e839ba9f418e48f11708
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: HT
+ms.openlocfilehash: a44ac821271cc07a790c380287391f41650ced19
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229161"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276748"
 ---
-# <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Run batch predictions using Azure Machine Learning designer
+# <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Azure Machine Learning tasarımcısını kullanarak toplu tahminleri Çalıştır
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In this how-to, you learn how to use the designer to train a model and set up a batch prediction pipeline and web service. Batch prediction allows for continuous and on-demand scoring of trained models on large data sets, optionally configured as a web service that can be triggered from any HTTP library. 
+Bu nasıl yapılır, bir modeli eğitme ve Batch tahmin işlem hattı ve Web hizmeti ayarlama hakkında tasarımcı 'yı nasıl kullanacağınızı öğrenirsiniz. Toplu tahmin, isteğe bağlı olarak, herhangi bir HTTP kitaplığından tetiklenebilecek bir Web hizmeti olarak yapılandırılmış, büyük veri kümelerinde sürekli ve isteğe bağlı eğitilen modellerin kullanımını sağlar. 
 
-For setting up batch scoring services using the SDK, see the accompanying [how-to](how-to-run-batch-predictions.md).
+SDK 'Yı kullanarak Batch Puanlama hizmetlerini ayarlamak için, bkz. [nasıl yapılır](how-to-run-batch-predictions.md).
 
-In this how-to, you learn the following tasks:
+Bu nasıl yapılır bölümünde aşağıdaki görevleri öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Create a basic ML experiment in a pipeline
-> * Create a parameterized batch inference pipeline
-> * Manage and run pipelines manually or from a REST endpoint
+> * İşlem hattında temel ML denemesi oluşturma
+> * Parametreli yığın çıkarım ardışık düzeni oluşturma
+> * İşlem hatlarını el ile veya bir REST uç noktasından yönetin ve çalıştırın
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-1. If you don’t have an Azure subscription, create a free account before you begin. Try the [free or paid version of the Azure Machine Learning service](https://aka.ms/AMLFree).
+1. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 
-1. Create a [workspace](tutorial-1st-experiment-sdk-setup.md).
+1. [Çalışma alanı](tutorial-1st-experiment-sdk-setup.md)oluşturun.
 
-1. Sign in to [Azure Machine Learning studio](https://ml.azure.com/).
+1. [Azure Machine Learning Studio](https://ml.azure.com/)'da oturum açın.
 
-This how-to assumes basic knowledge of building a simple pipeline in the designer. For a guided introduction to the designer, complete the [tutorial](tutorial-designer-automobile-price-train-score.md). 
+Bu nasıl yapılır, tasarımcıda basit bir işlem hattı oluşturma hakkında temel bilgileri varsayar. Tasarımcıya yönelik kılavuzlu bir giriş için [öğreticiyi](tutorial-designer-automobile-price-train-score.md)doldurun. 
 
 ## <a name="create-a-pipeline"></a>İşlem hattı oluşturma
 
-To create a batch inference pipeline, you first need a machine learning experiment. To create one, navigate to the **Designer** tab in your workspace and create a new pipeline by selecting the **Easy-to-use prebuilt modules** option.
+Bir toplu çıkarım işlem hattı oluşturmak için önce bir makine öğrenimi denemesinin olması gerekir. Bir tane oluşturmak için, çalışma alanınızdaki **Tasarımcı** sekmesine gidin ve kullanımı **kolay önceden oluşturulmuş modüller** seçeneğini belirleyerek yeni bir işlem hattı oluşturun.
 
-![Designer home](media/how-to-run-batch-predictions-designer/designer-batch-scoring-1.png)
+![Tasarımcı ana sayfası](media/how-to-run-batch-predictions-designer/designer-batch-scoring-1.png)
 
-The following is a simple machine learning model for demonstration purposes. The data is a registered Dataset created from the Azure Open Datasets diabetes data. See the [how-to section](how-to-create-register-datasets.md#create-datasets-with-azure-open-datasets) for registering Datasets from Azure Open Datasets. The data is split into training and validation sets, and a boosted decision tree is trained and scored. The pipeline must be run at least once to be able to create an inferencing pipeline. Click the **Run** button to run the pipeline.
+Aşağıda, tanıtım amacıyla basit bir makine öğrenimi modeli verilmiştir. Veriler, Azure açık veri kümeleri diabetes verilerinden oluşturulan kayıtlı bir veri kümesidir. Azure açık veri kümelerinde veri kümelerini kaydetme [hakkında nasıl yapılır bölümüne](how-to-create-register-datasets.md#create-datasets-with-azure-open-datasets) bakın. Veriler eğitim ve doğrulama kümelerine bölünür ve artırılmış bir karar ağacı eğitilmiş ve puanlanır. Bir ının bir işlem hattı oluşturmak için işlem hattının en az bir kez çalıştırılması gerekir. İşlem hattını çalıştırmak için **Çalıştır** düğmesine tıklayın.
 
-![Create simple experiment](media/how-to-run-batch-predictions-designer/designer-batch-scoring-2.png)
+![Basit deneme oluşturma](media/how-to-run-batch-predictions-designer/designer-batch-scoring-2.png)
 
-## <a name="create-a-batch-inference-pipeline"></a>Create a batch inference pipeline
+## <a name="create-a-batch-inference-pipeline"></a>Toplu çıkarım ardışık düzeni oluşturma
 
-Now that the pipeline has been run, there is a new option available next to **Run** and **Publish** called **Create inference pipeline**. Click the dropdown and select **Batch inference pipeline**.
+İşlem hattı çalıştırıldığına göre, **Çalıştır** ve **Yayımla** adlı **çıkarım ardışık düzeni oluşturma**' nın yanında yeni bir seçenek mevcuttur. Açılan listeye tıklayın ve **Batch çıkarım işlem hattı**' nı seçin.
 
-![Create batch inference pipeline](media/how-to-run-batch-predictions-designer/designer-batch-scoring-5.png)
+![Toplu çıkarım ardışık düzeni oluşturma](media/how-to-run-batch-predictions-designer/designer-batch-scoring-5.png)
 
-The result is a default batch inference pipeline. This includes a node for your original pipeline experiment setup, a node for raw data for scoring, and a node to score the raw data against your original pipeline.
+Sonuç, varsayılan bir Batch çıkarım ardışık düzeni olur. Bu, özgün işlem hattı denemenize yönelik bir düğüm, Puanlama için ham veriler için bir düğüm ve ham verilerin özgün işlem hattınızda elde edilecek bir düğüm içerir.
 
-![Default batch inference pipeline](media/how-to-run-batch-predictions-designer/designer-batch-scoring-6.png)
+![Varsayılan toplu çıkarım ardışık düzeni](media/how-to-run-batch-predictions-designer/designer-batch-scoring-6.png)
 
-You can add other nodes to change the behavior of the batch inferencing process. In this example, you add a node for randomly sampling from the input data before scoring. Create a **Partition and Sample** node and place it between the raw data and scoring nodes. Next, click on the **Partition and Sample** node to gain access to the settings and parameters.
+Toplu iş örneği işleme işleminin davranışını değiştirmek için başka düğümler ekleyebilirsiniz. Bu örnekte, Puanlama öncesinde giriş verilerinden rastgele örnekleme için bir düğüm eklersiniz. Bir **bölüm ve örnek** düğüm oluşturun ve ham veriler ile Puanlama düğümleri arasına yerleştirin. Ardından, ayarlar ve parametrelere erişim kazanmak için **bölüm ve örnek** düğümüne tıklayın.
 
-![New node](media/how-to-run-batch-predictions-designer/designer-batch-scoring-7.png)
+![Yeni düğüm](media/how-to-run-batch-predictions-designer/designer-batch-scoring-7.png)
 
-The *Rate of sampling* parameter controls what percent of the original data set to take a random sample from. This is a parameter that will be useful to adjust frequently, so you enable it as a pipeline parameter. Pipeline parameters can be changed at runtime, and can be specified in a payload object when rerunning the pipeline from a REST endpoint. 
+*Örnekleme parametresi oranı* , özgün veri kümesinin ne kadarlık bir rastgele örnek almak için ayarlandığını denetler. Bu, sıklıkla ayarlamak için yararlı olacak bir parametredir, bu nedenle onu bir işlem hattı parametresi olarak etkinleştirmeniz gerekir. İşlem hattı parametreleri çalışma zamanında değiştirilebilir ve bir REST uç noktasından işlem hattı yeniden çalıştırıldığında bir yük nesnesi içinde belirlenebilir. 
 
-To enable this field as a pipeline parameter, click the ellipses above the field and then click **Add to pipeline parameter**. 
+Bu alanı bir ardışık düzen parametresi olarak etkinleştirmek için alanın üzerindeki üç noktaya tıklayın ve ardından **ardışık düzen parametresine Ekle**' ye tıklayın. 
 
-![Sample settings](media/how-to-run-batch-predictions-designer/designer-batch-scoring-8.png)
+![Örnek ayarlar](media/how-to-run-batch-predictions-designer/designer-batch-scoring-8.png)
 
-Next, give the parameter a name and default value. The name will be used to identify the parameter, and specify it in a REST call.
+Sonra, parametreye bir ad ve varsayılan değer verin. Ad, parametreyi tanımlamak ve bir REST çağrısında belirtmek için kullanılır.
 
 ![İşlem hattı parametresi](media/how-to-run-batch-predictions-designer/designer-batch-scoring-9.png)
 
-## <a name="deploy-batch-inferencing-pipeline"></a>Deploy batch inferencing pipeline
+## <a name="deploy-batch-inferencing-pipeline"></a>Toplu iş ve bölge zinciri dağıtma
 
-Now you are ready to deploy the pipeline. Click the **Deploy** button, which opens the interface to set up an endpoint. Click the dropdown and select **New PipelineEndpoint**.
+Artık işlem hattını dağıtmaya hazırsınız. Bir uç nokta ayarlamak için arabirimi açan **Dağıt** düğmesine tıklayın. Açılan listeye tıklayın ve **Yeni PipelineEndpoint**' i seçin.
 
-![Pipeline deploy](media/how-to-run-batch-predictions-designer/designer-batch-scoring-10.png)
+![İşlem hattı dağıtımı](media/how-to-run-batch-predictions-designer/designer-batch-scoring-10.png)
 
-Give the endpoint a name and optional description. Near the bottom you see the `sample-rate` parameter you configured with a default value of 0.8. When you're ready, click **Deploy**.
+Uç noktaya bir ad ve isteğe bağlı bir açıklama sağlayın. En alttaki 0,8 varsayılan değeriyle yapılandırdığınız `sample-rate` parametresini görürsünüz. Hazırlanıyor, **Dağıt**' a tıklayın.
 
-![Setup endpoint](media/how-to-run-batch-predictions-designer/designer-batch-scoring-11.png)
+![Kurulum uç noktası](media/how-to-run-batch-predictions-designer/designer-batch-scoring-11.png)
 
 ## <a name="manage-endpoints"></a>Uç noktaları yönetme 
 
-After deployment is complete, go to the **Endpoints** tab and click the name of the endpoint you just created.
+Dağıtım tamamlandıktan sonra, **uç noktalar** sekmesine gidin ve yeni oluşturduğunuz uç noktanın adına tıklayın.
 
-![Endpoint link](media/how-to-run-batch-predictions-designer/designer-batch-scoring-12.png)
+![Uç nokta bağlantısı](media/how-to-run-batch-predictions-designer/designer-batch-scoring-12.png)
 
-This screen shows all published pipelines under the specific endpoint. Click on your inferencing pipeline.
+Bu ekran, belirli bir uç nokta altındaki tüm yayınlanan işlem hatlarını gösterir. Inizme işlem hattınızı tıklatın.
 
-![Inference pipeline](media/how-to-run-batch-predictions-designer/designer-batch-scoring-13.png)
+![Çıkarım işlem hattı](media/how-to-run-batch-predictions-designer/designer-batch-scoring-13.png)
 
-The pipeline details page shows you detailed run history and connection string information for your pipeline. Click the **Run** button to create a manual run of the pipeline.
+İşlem hattı ayrıntıları sayfasında, işlem hattınızla ilgili ayrıntılı çalıştırma geçmişi ve bağlantı dizesi bilgileri görüntülenir. İşlem hattının el ile çalıştırılmasını oluşturmak için **Çalıştır** düğmesine tıklayın.
 
-![Pipeline details](media/how-to-run-batch-predictions-designer/designer-batch-scoring-14.png)
+![Ardışık düzen ayrıntıları](media/how-to-run-batch-predictions-designer/designer-batch-scoring-14.png)
 
-In the run setup, you can provide a description for the run, and change the value for any pipeline parameters. This time, rerun the inferencing pipeline with a sample rate of 0.9. Click **Run** to run the pipeline.
+Çalıştır kurulumunda, çalıştırma için bir açıklama sağlayabilir ve herhangi bir işlem hattı parametresi için değeri değiştirebilirsiniz. Bu kez, örnek işleme işlem hattını 0,9 örnek oranıyla yeniden çalıştırın. İşlem hattını çalıştırmak için **Çalıştır** ' a tıklayın.
 
-![Pipeline run](media/how-to-run-batch-predictions-designer/designer-batch-scoring-15.png)
+![İşlem hattı çalıştırması](media/how-to-run-batch-predictions-designer/designer-batch-scoring-15.png)
 
-The **Consume** tab contains the REST endpoint for rerunning your pipeline. To make a rest call, you will need an OAuth 2.0 bearer-type authentication header. See the following [tutorial section](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint) for more detail on setting up authentication to your workspace and making a parameterized REST call.
+**Tüketme** sekmesi, işlem hattınızı yeniden ÇALıŞTıRMAYA yönelik REST uç noktasını içerir. Rest çağrısı yapmak için bir OAuth 2,0 taşıyıcı türü kimlik doğrulama üst bilgisi gerekir. Çalışma alanınıza yönelik kimlik doğrulamasını ayarlama ve parametreli bir REST çağrısı yapma hakkında daha fazla ayrıntı için aşağıdaki [öğretici bölümüne](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint) bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Follow the designer [tutorial](tutorial-designer-automobile-price-train-score.md) to train and deploy a regression model.
+Bir regresyon modeli eğitme ve dağıtma için tasarımcı [öğreticisini](tutorial-designer-automobile-price-train-score.md) izleyin.

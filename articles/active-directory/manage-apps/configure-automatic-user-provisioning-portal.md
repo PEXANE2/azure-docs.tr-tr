@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory 'de kurumsal uygulamalar için Kullanıcı sağlama yönetimi | Microsoft Docs
+title: Azure AD 'de kurumsal uygulamalar için Kullanıcı sağlama yönetimi
 description: Azure Active Directory kullanarak kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetmeyi öğrenin
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.date: 04/01/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26b00670ad93cceab8f570d3a5f56bd095fa80b5
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 77cda523582b513669adcafd3a46b6ac02dd99db
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315265"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74285615"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Azure portal kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme
 
@@ -53,7 +53,7 @@ Bir dizinde çoklu oturum açma için yapılandırılmış tüm uygulamaları g�
 
 Yönetici kimlik bilgileri, eşlemeler, başlatma ve durdurma ve eşitleme için ayarları belirtmek üzere **Otomatik** seçeneğini belirleyin.
 
-### <a name="admin-credentials"></a>Yönetici Kimlik Bilgileri
+### <a name="admin-credentials"></a>Yönetici kimlik bilgileri
 
 Azure AD 'nin uygulamanın kullanıcı yönetim API 'sine bağlanması için gereken kimlik bilgilerini girmek üzere **yönetici kimlik bilgileri** ' ni genişletin. Gerekli giriş uygulamaya bağlı olarak değişir. Belirli uygulamalar için kimlik bilgisi türleri ve gereksinimleri hakkında bilgi edinmek için ilgili [uygulamanın yapılandırma öğreticisine](user-provisioning.md)bakın.
 
@@ -85,9 +85,4 @@ Hazırlama işlemi bir uygulama için ilk kez etkinleştiriliyorsa, **sağlama d
 
 Sağlama hizmetini duraklatmak için **sağlama durumunu** **kapalı** olarak değiştirin. Bu durumda, Azure uygulamadaki hiçbir Kullanıcı veya Grup nesnesini oluşturmaz, güncelleştirmez veya kaldırmaz. Durumu yeniden **Açık** olarak değiştirin ve hizmet kaldığınız yerden gelir.
 
-**Geçerli durumu temizle ve eşitlemeyi yeniden Başlat** onay kutusunu seçin ve **Kaydet** ' i seçin:
-
-* Sağlama hizmetini durdur
-* Hizmetleri yeniden başlatın ve ilk döngüyü yeniden çalıştırın
-
-Bu seçenek, yöneticilerin sağlama dağıtım işlemini yeniden başlatmasını sağlar.
+**Geçerli durumu temizle ve yeniden başlatma eşitlemesi** bir başlangıç döngüsünü tetikler. Daha sonra hizmet, kaynak sistemdeki tüm kullanıcıları yeniden değerlendirir ve sağlama kapsamında olup olmadıklarını saptacaktır. Bu, uygulamanız Şu anda karantinaya alındı veya öznitelik eşlemelerinizde bir değişiklik yapmanız gerektiğinde yararlı olabilir. Bu olaylar, temiz bir durum tetiklendiğinde ve yeniden başlatıldığında atılamaz bir silme veya devre dışı bırakma isteğini tetiklemek için kullanılmamalıdır. Aynı zamanda, değerlendirilmesi gereken nesne sayısı nedeniyle, ilk döngüyü tipik artımlı döngüden daha uzun sürer. Burada ilk ve artımlı döngülerin performansı hakkında daha fazla bilgi edinebilirsiniz [.](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) 

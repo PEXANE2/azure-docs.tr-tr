@@ -1,6 +1,6 @@
 ---
-title: Azure CDN önbelleğe alma kuralları ile önbelleğe alma davranışını denetleme | Microsoft Docs
-description: CDN önbelleğe alma kuralları ayarlayın veya hem genel hem de bir URL yolu ve dosya uzantıları gibi koşullarla varsayılan önbellek sona erme davranışını değiştirmek için kullanabilirsiniz.
+title: Önbelleğe alma kurallarıyla denetim Azure CDN önbelleğe alma davranışı | Microsoft Docs
+description: CDN önbelleğe alma kurallarını, hem genel olarak hem de bir URL yolu ve dosya uzantıları gibi koşullara sahip olan varsayılan önbellek süre sonu davranışını ayarlamak veya değiştirmek için kullanabilirsiniz.
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -13,34 +13,34 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: magattus
-ms.openlocfilehash: d4ab3ca32f229e92ae6bae5906c6c70593e9f9d3
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: ddd7dc7e1245c2a77e866a454bf6bfa3c1f16f88
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594030"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278130"
 ---
-# <a name="control-azure-cdn-caching-behavior-with-caching-rules"></a>Denetim Azure CDN önbelleğe alma kuralları ile önbelleğe alma davranışı
+# <a name="control-azure-cdn-caching-behavior-with-caching-rules"></a>Önbelleğe alma kurallarıyla denetim Azure CDN önbelleğe alma davranışı
 
 > [!NOTE] 
-> Önbelleğe alma kuralları, yalnızca kullanılabilir **verizon'dan Azure CDN standart** ve **akamai'den Azure CDN standart** profilleri. İçin **verizon'dan Azure CDN Premium** profilleri kullanmalıdır [Azure CDN kurallar altyapısı](cdn-rules-engine.md) içinde **Yönet** benzer işlevselliği için portal.
+> Önbelleğe alma kuralları yalnızca Verizon **Azure CDN ve Akamai** profillerindeki standart **Azure CDN Standart** için kullanılabilir. **Microsoft profillerinin Azure CDN** Için, Verizon profiller **'den Azure CDN Premium** için [standart kurallar altyapısını](cdn-standard-rules-engine-reference.md) kullanmanız gerekir, benzer Işlevler için **Manage** Portal 'daki [Verizon Premium Rules altyapısını](cdn-rules-engine.md) kullanmanız gerekir.
  
-Azure Content Delivery Network (CDN), dosyaların önbelleğe nasıl alındığını denetlemek için iki yol sunar: 
+Azure Content Delivery Network (CDN), dosyalarınızın nasıl önbelleğe alınacağını denetlemek için iki yol sunar: 
 
-- Önbelleğe alma kuralları: Bu makalede, ayarlamak veya hem genel hem de bir URL yolu ve dosya uzantısı gibi özel koşullar ile varsayılan önbellek sona erme davranışını değiştirmek için önbelleğe alma kuralları content delivery Network'te (CDN) nasıl kullanabileceğinizi açıklar. Azure CDN iki tür önbelleğe alma kuralı sağlar:
+- Önbelleğe alma kuralları: Bu makalede, hem genel olarak hem de bir URL yolu ve dosya uzantısı gibi özel koşullara sahip varsayılan önbellek süre sonu davranışını ayarlamak veya değiştirmek için Content Delivery Network (CDN) önbelleğe alma kurallarını nasıl kullanabileceğiniz açıklanır. Azure CDN iki tür önbelleğe alma kuralı sağlar:
 
-   - Genel önbelleğe alma kuralları: Uç nokta için tüm istekleri etkileyen profilinizde her uç nokta için bir genel önbelleğe alma kuralı ayarlayabilirsiniz. Genel önbelleğe alma kuralı ayarlandığında tüm HTTP önbellek yönergesi üst bilgilerini geçersiz kılar.
+   - Genel önbelleğe alma kuralları: Profilinizdeki her uç nokta için bir genel önbelleğe alma kuralı ayarlayabilirsiniz. Bu işlem uç noktaya yönelik tüm istekleri etkiler. Genel önbelleğe alma kuralı ayarlandığında tüm HTTP önbellek yönergesi üst bilgilerini geçersiz kılar.
 
-   - Özel önbelleğe alma kuralları: Profilinizde bir veya daha fazla özel önbelleğe alma kuralları her uç noktası için ayarlayabilirsiniz. Özel önbelleğe alma kuralları ayarlandığında belirli yollar ve dosya uzantılarıyla eşleşir, sırasıyla işlenir ve genel önbelleğe alma kuralını geçersiz kılar. 
+   - Özel önbelleğe alma kuralları: Profilinizdeki her uç nokta için bir veya daha fazla özel önbelleğe alma kuralı ayarlayabilirsiniz. Özel önbelleğe alma kuralları ayarlandığında belirli yollar ve dosya uzantılarıyla eşleşir, sırasıyla işlenir ve genel önbelleğe alma kuralını geçersiz kılar. 
 
-- Sorgu dizesini önbelleğe alma: İstekleri ile sorgu dizeleri için önbelleğe alma, Azure CDN nasıl işler ayarlayabilirsiniz. Bilgi için [denetimi Azure CDN önbelleğe alma davranışını sorgu dizeleriyle](cdn-query-string.md). Dosyayı önbelleğe alınabilir bir durumda değilse, sorgu dizesi ayarı tabanlı önbelleğe alma, kurallar ve CDN varsayılan davranışlar üzerinde hiçbir etkisi vardır.
+- Sorgu dizesi önbelleğe alma: Azure CDN sorgu dizelerine sahip istekler için önbelleğe almayı nasıl değerlendirip ayarlayabelirtebilirsiniz. Bilgi için bkz. [sorgu dizeleri Ile denetim Azure CDN önbelleğe alma davranışı](cdn-query-string.md). Dosya önbelleklenebilir değilse, sorgu dizesi önbelleğe alma ayarının önbelleğe alma kuralları ve CDN varsayılan davranışlarına göre hiçbir etkisi yoktur.
 
-Varsayılan önbelleğe alma davranışını ve yönergesi üst bilgilerinin önbelleğe alma hakkında daha fazla bilgi için bkz. [önbelleğe alma nasıl işler](cdn-how-caching-works.md). 
+Varsayılan önbelleğe alma davranışı ve önbelleğe alma yönergesi üstbilgileri hakkında daha fazla bilgi için bkz. [önbelleğe alma nasıl kullanılır](cdn-how-caching-works.md). 
 
 
-## <a name="accessing-azure-cdn-caching-rules"></a>Azure CDN önbelleğe alma kuralları erişme
+## <a name="accessing-azure-cdn-caching-rules"></a>Azure CDN önbelleğe alma kurallarına erişme
 
-1. Azure portalını açın, CDN profilini seçin ve ardından bir uç nokta seçin.
+1. Azure portal açın, bir CDN profili seçin ve ardından bir uç nokta seçin.
 
 2. Ayarların altındaki sol bölmede **Önbelleğe alma kuralları**’nı seçin.
 
@@ -52,68 +52,68 @@ Varsayılan önbelleğe alma davranışını ve yönergesi üst bilgilerinin ön
 
 
 ## <a name="caching-behavior-settings"></a>Önbelleğe alma davranışı ayarları
-Genel ve özel önbelleğe alma kuralları için aşağıdakileri belirtebilirsiniz **önbelleğe alma davranışını** ayarları:
+Genel ve özel önbelleğe alma kuralları için aşağıdaki **önbelleğe alma davranışı** ayarlarını belirtebilirsiniz:
 
-- **Önbelleği atla**: Önbellekte değil ve sağlanan kaynak önbellek yönergesi üstbilgileri yoksay.
+- **Atlama önbelleği**: Origin tarafından belirtilen Cache-Directive üst bilgilerini önbelleğe almayın ve yoksayın.
 
-- **Geçersiz kılma**: Sağlanan kaynak önbellek süresi yoksayın; Bunun yerine, sağlanan önbellek süresi kullanın. Cache-control kılmaz: no-cache.
+- **Geçersiz kıl**: Origin tarafından belirtilen önbellek süresini yoksay; Bunun yerine, belirtilen önbellek süresini kullanın. Bu, Cache-Control: No-Cache ' i geçersiz kılmaz.
 
-- **Eksikse Ayarla**: Sağlanan kaynak önbellek yönergesi üstbilgileri varsa dikkate; Aksi takdirde, sağlanan önbellek süresi kullanın.
+- **Eksik Ise ayarla**: varsa, kaynak tarafından sağlanmış Cache-Directive üst bilgilerini kabul edin. Aksi takdirde, belirtilen önbellek süresini kullanın.
 
 ![Genel önbelleğe alma kuralları](./media/cdn-caching-rules/cdn-global-caching-rules.png)
 
 ![Özel önbelleğe alma kuralları](./media/cdn-caching-rules/cdn-custom-caching-rules.png)
 
 ## <a name="cache-expiration-duration"></a>Önbellek sona erme süresi
-Genel ve özel önbelleğe alma kuralları için gün, saat, dakika ve saniye önbellek sona erme süresi belirtebilirsiniz:
+Genel ve özel önbelleğe alma kuralları için önbelleğin süre sonu süresini gün, saat, dakika ve saniye cinsinden belirtebilirsiniz:
 
-- İçin **geçersiz kılma** ve **eksikse Ayarla** **önbelleğe alma davranışını** ayarları, geçerli önbellek süreleri aralığında 0 saniye ve 366 günü. 0 saniye değerini, CDN içeriği önbelleğe alır, ancak kaynak sunucu her bir istekle düzeltin gerekir.
+- **Geçersiz kılma** için, **eksik** **önbelleğe alma davranışı** ayarları varsa, geçerli önbellek süreleri 0 saniye ile 366 gün arasında değişir. 0 saniyelik bir değer için CDN, içeriği önbelleğe alır, ancak her isteği kaynak sunucu ile yeniden doğrulaması gerekir.
 
-- İçin **önbelleği atla** ayarlama, önbelleğe alma süresi 0 saniyeye otomatik olarak ayarlanır ve değiştirilemez.
+- Önbelleği **atlama** ayarı için önbellek süresi otomatik olarak 0 saniyeye ayarlanır ve değiştirilemez.
 
-## <a name="custom-caching-rules-match-conditions"></a>Özel önbelleğe alma kuralları eşleştirme koşulları
+## <a name="custom-caching-rules-match-conditions"></a>Özel önbelleğe alma kuralları koşullara uymuyor
 
-Özel önbellek kuralları için iki eşleştirme koşulları kullanılabilir:
+Özel önbellek kuralları için, iki eşleşme koşulu vardır:
  
-- **Yol**: Bu durum, URL'nin etki alanı adı dışında bir yol ile eşleşen ve joker karakter sembolünü destekler (\*). Örneğin, _/myfile.html_, _/my/folder / *_ , ve _/my/images/*.jpg_. En fazla uzunluk 260 karakterdir.
+- **Yol**: Bu koşul, etki alanı adı hariç olmak üzere URL 'nin yoluyla eşleşir ve joker karakter simgesini (\*) destekler. Örneğin, _/MyFile.exe HTML_, _/My/Folder/*_ ve _/My/images/*. jpg_. En fazla 260 karakter uzunluğunda olur.
 
-- **Uzantı**: Bu durum, istenen dosyanın dosya uzantısı ile eşleşir. Eşleştirilecek virgülle ayrılmış dosya uzantıları listesini sağlar. Örneğin, _.jpg_, _.mp3_, veya _.png_. Uzantıları sayısı 50'dir ve uzantı başına karakter sayısı 16'dır. 
+- **Uzantı**: Bu koşul, istenen dosyanın dosya uzantısıyla eşleşiyor. Eşleştirilecek virgülle ayrılmış dosya uzantılarının bir listesini sağlayabilirsiniz. Örneğin, _. jpg_, _. mp3_veya _. png_. En fazla uzantı sayısı 50, uzantı başına en fazla karakter sayısı 16 ' dır. 
 
 ## <a name="global-and-custom-rule-processing-order"></a>Genel ve özel kural işleme sırası
 Genel ve özel önbelleğe alma kuralları aşağıdaki sırayla işlenir:
 
-- Genel önbelleğe alma kuralları varsayılan CDN önbelleğe alma davranışını (HTTP önbellek yönergesi üst bilgi ayarları) göre önceliklidir. 
+- Genel önbelleğe alma kuralları varsayılan CDN önbelleğe alma davranışına (HTTP Cache-Directive üstbilgi ayarları) göre önceliklidir. 
 
-- Özel önbelleğe alma kuralları genel önbelleğe alma kuralları, burada geçerli önceliklidir. Özel önbelleğe alma kuralları, yukarıdan aşağıya sırasında işlenir. Bir istek koşulların her ikisi de eşleşirse, diğer bir deyişle, kurallar listesinin altındaki listenin üst kısmındaki kurallar önceliklidir. Bu nedenle, daha belirli kurallar alt listesinde yerleştirmeniz gerekir.
+- Özel önbelleğe alma kuralları, uygulanan genel önbelleğe alma kurallarına göre önceliklidir. Özel önbelleğe alma kuralları yukarıdan aşağıya doğru sırayla işlenir. Diğer bir deyişle, bir istek her iki koşuldan de eşleşiyorsa, listenin altındaki kurallar listenin en üstündeki kurallara göre önceliklidir. Bu nedenle, listede daha az belirli kurallar yerleştirmeniz gerekir.
 
 **Örnek**:
 - Genel önbelleğe alma kuralı: 
-   - Önbelleğe alma davranışı: **geçersiz kılma**
+   - Önbelleğe alma davranışı: **geçersiz kıl**
    - Önbellek sona erme süresi: 1 gün
 
 - Özel önbelleğe alma kuralı #1:
-   - Eşleşme koşulu: **Yolu**
-   - Eşleşen değer:   _/home / *_
-   - Önbelleğe alma davranışı: **geçersiz kılma**
+   - Eşleşme koşulu: **yol**
+   - Eşleşme değeri: _/Home/*_
+   - Önbelleğe alma davranışı: **geçersiz kıl**
    - Önbellek sona erme süresi: 2 gün
 
 - Özel önbelleğe alma kuralı #2:
-   - Eşleşme koşulu: **Uzantı**
-   - Eşleşen değer: _.html_
-   - Önbelleğe alma davranışı: **Eksikse Ayarla**
+   - Eşleşme koşulu: **uzantı**
+   - Eşleşme değeri: _. html_
+   - Önbelleğe alma davranışı: **eksikse ayarla**
    - Önbellek sona erme süresi: 3 gün
 
-Bu kurallar ayarlandığında, bir istek için  _&lt;uç noktası ana bilgisayar&gt;_ özel önbelleğe alma kuralı ayarlamak için #2.azureedge.net/home/index.html Tetikleyicileri: **Eksikse Ayarla** ve 3 gün. Bu nedenle, varsa *index.html* dosyasının `Cache-Control` veya `Expires` HTTP üstbilgileri ödenmiş oldukları; bu üstbilgileri ayarlanmazsa dosyası için 3 gün Aksi takdirde, önbelleğe alınır.
+Bu kurallar ayarlandığında, _&lt;uç noktası ana bilgisayar adı&gt;_ . azureedge.net/Home/index.html için bir istek, şu şekilde ayarlanmış özel önbelleğe alma kuralı #2 tetikler: eksik ve 3 gündür **ayarlanır** . Bu nedenle, *index. html* dosyasında `Cache-Control` veya `Expires` http üst bilgileri varsa, bunlar kabul edilir; Aksi takdirde, bu üst bilgiler ayarlanmamışsa, bu dosya 3 gün boyunca önbelleğe alınır.
 
 > [!NOTE] 
-> Bir kural değişikliği önce önbelleğe alınan dosyalar, kaynak önbellek süresi ayarı koruyun. Önbellek süreler sıfırlamak için gereken [dosya temizleme](cdn-purge-endpoint.md). 
+> Bir kural değişikliğinden önce önbelleğe alınan dosyalar, kaynak önbellek süresi ayarını korur. Önbellek sürelerini sıfırlamak için [dosyayı temizlemeniz](cdn-purge-endpoint.md)gerekir. 
 >
-> Azure CDN yapılandırma değişiklikleri ağ üzerinden yayılması biraz zaman alabilir: 
+> Azure CDN yapılandırma değişikliklerinin ağ üzerinden yayılması biraz zaman alabilir: 
 > - **Akamai’den Azure CDN Standart** profilleri için yayma işlemi genellikle bir dakika içinde tamamlanır. 
-> - İçin **verizon'dan Azure CDN standart** profilleri için yayma genellikle 10 dakika içinde tamamlanır.  
+> - **Verizon profillerinden Azure CDN Standart** için, yayma genellikle 10 dakika içinde tamamlanır.  
 >
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
 - [Önbelleğe alma nasıl işler?](cdn-how-caching-works.md)
-- [Öğretici: Azure CDN önbelleğe alma kuralları ayarlayın](cdn-caching-rules-tutorial.md)
+- [Öğretici: Azure CDN önbelleğe alma kurallarını ayarlama](cdn-caching-rules-tutorial.md)

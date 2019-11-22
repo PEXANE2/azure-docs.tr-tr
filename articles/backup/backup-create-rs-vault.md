@@ -4,12 +4,12 @@ description: Bu makalede, yedeklemeleri ve kurtarma noktalarını depolayan kurt
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: c678452cd65d0b03d923659e380c1dcef3540ce1
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 144d8cdb870e12474dfc47784749b5f0e466f8bf
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172421"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74273388"
 ---
 # <a name="create-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasası oluşturma
 
@@ -72,6 +72,13 @@ Azure Backup kasa için depolamayı otomatik olarak işler. Bu depolamanın nas�
 
 > [!NOTE]
 > Bir kurtarma hizmetleri Kasası için **depolama çoğaltma türünü** (yerel olarak yedekli/coğrafi olarak yedekli) değiştirmek, kasadaki yedeklemeleri yapılandırmadan önce yapılmalıdır. Yedeklemeyi yapılandırdıktan sonra, değiştirme seçeneği devre dışı bırakılır ve **depolama çoğaltma türünü**değiştiremezsiniz.
+
+## <a name="modifying-default-settings"></a>Varsayılan ayarları değiştirme
+
+Kasadaki yedeklemeleri yapılandırmadan önce **depolama çoğaltma türü** ve **güvenlik ayarları** için varsayılan ayarları incelemenizi kesinlikle öneririz. 
+* **Depolama çoğaltma türü** varsayılan olarak **coğrafi olarak yedekli**olarak ayarlanır. Yedeklemeyi yapılandırdıktan sonra, değiştirme seçeneği devre dışı bırakılır. Ayarları gözden geçirmek ve değiştirmek için aşağıdaki [adımları](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy) izleyin. 
+* Varsayılan olarak **geçici silme** , yeni oluşturulan kasaların yanlışlıkla veya kötü amaçlı silmelerden yedekleme verilerini korumak için **etkinleştirilir** . Ayarları gözden geçirmek ve değiştirmek için aşağıdaki [adımları](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#disabling-soft-delete) izleyin.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,5 +1,6 @@
 ---
-title: Azure ağ Izleyicisi ile ağ güvenlik grubu akış günlüklerini yönetme-REST API | Microsoft Docs
+title: NSG akış günlüklerini yönetme-Azure REST API
+titleSuffix: Azure Network Watcher
 description: Bu sayfada, Azure ağ Izleyicisi 'nde ağ güvenlik grubu akış günlüklerinin REST API ile nasıl yönetileceği açıklanmaktadır
 services: network-watcher
 documentationcenter: na
@@ -14,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 88173b24ecfca72e05d6f930b45d732aefad0e56
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 636a422cd46dc6b6274766b92753f04195a829a0
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563425"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277925"
 ---
 # <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>REST API kullanarak ağ güvenlik grubu akış günlüklerini yapılandırma
 
 > [!div class="op_single_selector"]
-> - [Azure portal](network-watcher-nsg-flow-logging-portal.md)
+> - [Azure Portal](network-watcher-nsg-flow-logging-portal.md)
 > - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
 > - [Azure CLI](network-watcher-nsg-flow-logging-cli.md)
 > - [REST API](network-watcher-nsg-flow-logging-rest.md)

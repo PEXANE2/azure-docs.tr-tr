@@ -14,17 +14,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: cephalin
-ms.openlocfilehash: f9b1af14bd986f1fa6fb5feb398a7f1fdf982f77
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 02d8c511b799a4caee185f7ecb847e6cc15f3c87
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73669104"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304745"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Azure App Service 'de hazırlama ortamlarını ayarlama
 <a name="Overview"></a>
 
-Web uygulamanızı, Linux 'ta Web uygulamanızı, mobil arka uca veya API uygulamasını [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)için dağıtırken, **Standart**, **Premium**veya yalıtılmış olarak çalışırken varsayılan üretim yuvası yerine ayrı bir dağıtım yuvası kullanabilirsinizPlan katmanını App Service. Dağıtım yuvaları, kendi ana bilgisayar adlarına sahip canlı uygulamalardır. Uygulama içeriği ve yapılandırma öğeleri, üretim yuvası dahil olmak üzere iki dağıtım yuvası arasında değiştirilebilir. 
+Web uygulamanızı, Linux 'ta Web uygulamanızı, mobil arka uca veya API uygulamasını [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)için dağıtırken, **Standart**, **Premium**veya **yalıtılmış** App Service planı katmanında çalışırken varsayılan üretim yuvası yerine ayrı bir dağıtım yuvası kullanabilirsiniz. Dağıtım yuvaları, kendi ana bilgisayar adlarına sahip canlı uygulamalardır. Uygulama içeriği ve yapılandırma öğeleri, üretim yuvası dahil olmak üzere iki dağıtım yuvası arasında değiştirilebilir. 
 
 Uygulamanızı üretim dışı bir yuvaya dağıtmak aşağıdaki avantajlara sahiptir:
 
@@ -215,7 +216,7 @@ Bazı uygulamalar, değiştirme işleminden önce özel ısınma eylemleri gerek
 
 Ayrıca, aşağıdaki [uygulama ayarlarından](configure-common.md)biri veya her ikisiyle de ısınma davranışını özelleştirebilirsiniz:
 
-- `WEBSITE_SWAP_WARMUP_PING_PATH`: sitenizi ısınma için ping yapılacak yol. Değer olarak eğik çizgiyle başlayan özel bir yol belirterek bu uygulama ayarını ekleyin. `/statuscheck` bunun bir örneğidir. Varsayılan değer `/` ' dır. 
+- `WEBSITE_SWAP_WARMUP_PING_PATH`: sitenizi ısınma için ping yapılacak yol. Değer olarak eğik çizgiyle başlayan özel bir yol belirterek bu uygulama ayarını ekleyin. `/statuscheck` bunun bir örneğidir. Varsayılan değer `/`. 
 - `WEBSITE_SWAP_WARMUP_PING_STATUSES`: ısınma işlemi için geçerli HTTP yanıt kodları. Bu uygulama ayarını, virgülle ayrılmış bir HTTP kodları listesi ile ekleyin. Örnek `200,202`. Döndürülen durum kodu listede yoksa, ısınma ve takas işlemleri durdurulur. Varsayılan olarak, tüm yanıt kodları geçerlidir.
 
 > [!NOTE]
@@ -248,6 +249,10 @@ Varsayılan olarak, uygulamanın üretim URL 'sine (`http://<app_name>.azurewebs
 Ayar kaydedildikten sonra, belirtilen istemci yüzdesi, bir üretim dışı yuvaya rastgele yönlendirilir. 
 
 İstemci belirli bir yuvaya otomatik olarak yönlendirildikten sonra, o istemci oturumunun ömrü için bu yuvaya "sabitlenmiş" olur. İstemci tarayıcısında, HTTP başlıklarınızın `x-ms-routing-name` tanımlama bilgisine bakarak oturumunuzun hangi yuvaya sabitlendiği hakkında bilgi alabilirsiniz. "Hazırlama" yuvasına yönlendirilen bir istek tanımlama bilgisine sahiptir `x-ms-routing-name=staging`. Üretim yuvasına yönlendirilen bir istek tanımlama bilgisine sahiptir `x-ms-routing-name=self`.
+
+   > [!NOTE]
+   > Azure portalının yanında, DevOps işlem hatları veya diğer otomasyon sistemleri gibi CI/CD araçlarından yönlendirme yüzdelerini ayarlamak için Azure CLı 'daki [`az webapp traffic-routing set`](/cli/azure/webapp/traffic-routing.md#az-webapp-traffic-routing-set) komutunu da kullanabilirsiniz.
+   > 
 
 ### <a name="route-production-traffic-manually"></a>Üretim trafiğini el ile yönlendirin
 

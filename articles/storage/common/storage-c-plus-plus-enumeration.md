@@ -1,5 +1,5 @@
 ---
-title: Azure depolama kaynaklarını depolama Istemci kitaplığı | için C++ listeleyin Microsoft Docs
+title: Azure depolama kaynaklarını C++ istemci kitaplığıyla listeleme
 description: Kapsayıcıları, Blobları, kuyrukları, tabloları ve varlıkları listelemek C++ Için Microsoft Azure depolama istemci Kitaplığı ' nda listeleme API 'lerinin nasıl kullanılacağını öğrenin.
 author: mhopkins-msft
 ms.author: mhopkins
@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: dineshm
-ms.openlocfilehash: 3a87e39c9435ba02357b4b655e95e96666242b71
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 0f9e80aff20c1b2663491f6d6ceb99aaec58230f
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721912"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74269442"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>Azure depolama kaynaklarını listelemeC++
 
@@ -59,10 +59,10 @@ Bu nedenle, tüm nesneleri tek bir yanıtta listelemek pratik değildir. Bunun y
 
 Bölümlenmiş bir listeleme işleminin yanıtı şunları içerir:
 
-* *_segment*, liste API 'sine tek bir çağrı için döndürülen sonuç kümesini içerir.
-* bir sonraki sonuç sayfasına ulaşmak için sonraki çağrıya geçirilen *continuation_token*. Döndürülecek daha fazla sonuç olmadığında devamlılık belirteci null olur.
+* liste API 'sine tek bir çağrı için döndürülen sonuç kümesini içeren *_segment*.
+* sonraki sonuçların bir sonraki sayfasına ulaşmak için bir sonraki çağrıya geçirilen *continuation_token*. Döndürülecek daha fazla sonuç olmadığında devamlılık belirteci null olur.
 
-Örneğin, bir kapsayıcıdaki tüm Blobları listelemek için tipik bir çağrı aşağıdaki kod parçacığı gibi görünebilir. Kod, örneklerimizde mevcuttur [](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted/Application.cpp):
+Örneğin, bir kapsayıcıdaki tüm Blobları listelemek için tipik bir çağrı aşağıdaki kod parçacığı gibi görünebilir. Kod, [örneklerimizde](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted/Application.cpp)mevcuttur:
 
 ```cpp
 // List blobs in the blob container
@@ -87,7 +87,7 @@ do
 while (!token.empty());
 ```
 
-Bir sayfada döndürülen sonuç sayısının her API 'nin aşırı yüklemesiyle *max_results* parametresi tarafından denetlenebileceğini unutmayın, örneğin:
+Bir sayfada döndürülen sonuç sayısının, her API 'nin aşırı yükteki *max_results* parametresi tarafından denetlenebileceğini unutmayın, örneğin:
 
 ```cpp
 list_blob_item_segment list_blobs_segmented(const utility::string_t& prefix, bool use_flat_blob_listing,
@@ -95,9 +95,9 @@ list_blob_item_segment list_blobs_segmented(const utility::string_t& prefix, boo
     const blob_request_options& options, operation_context context)
 ```
 
-*Max_results* parametresini belirtmezseniz, tek bir sayfada en fazla 5000 sonucun varsayılan en büyük değeri döndürülür.
+*Max_results* parametresini belirtmezseniz, en fazla 5000 sonuç olan varsayılan değer tek bir sayfada döndürülür.
 
-Ayrıca, Azure Tablo depolamaya yönelik bir sorgu, devamlılık belirteci boş olmasa bile, belirttiğiniz *max_results* parametresinin değerinden bir kayıt veya daha az kayıt döndürebileceğini unutmayın. Bir nedenden dolayı sorgunun beş saniye içinde tamamlanmamasının nedeni olabilir. Devamlılık belirteci boş olmadığı sürece sorgu devam etmelidir ve kodunuz, kesim sonuçlarının boyutunu varsaymamalıdır.
+Ayrıca, Azure Tablo depolamaya yönelik bir sorgu, devamlılık belirteci boş olmasa bile, belirttiğiniz *max_results* parametresinin değerinden daha az kayıt döndürebileceğini unutmayın. Bir nedenden dolayı sorgunun beş saniye içinde tamamlanmamasının nedeni olabilir. Devamlılık belirteci boş olmadığı sürece sorgu devam etmelidir ve kodunuz, kesim sonuçlarının boyutunu varsaymamalıdır.
 
 Çoğu senaryo için önerilen kodlama deseninin, listeleme veya sorgulama üzerinde açık ilerleme durumu ve hizmetin her bir isteğe nasıl yanıt verdiği ile ilgili olarak bölümlenmiş listesi verilmiştir. Özellikle uygulamalar C++ veya hizmetler için, liste ilerleme durumunun alt düzey denetimi bellek ve performansın denetimine yardımcı olabilir.
 

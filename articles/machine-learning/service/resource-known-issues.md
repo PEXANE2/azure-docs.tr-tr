@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 3fd97e33c88e7767e1d9b230792aea675a744f27
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: c16abd02dfef5fb8b74cd5c0cafa97e5f29cc6b2
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73619777"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286976"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Bilinen sorunlar ve sorun giderme Azure Machine Learning
 
@@ -25,7 +25,7 @@ Bu makale, Azure Machine Learning kullanırken hataları veya hataları bulmanı
 
 Azure Işlem, tüm MPı uygulamalarını ve sürümlerini desteklemek üzere NCv3 SKU 2019 'Larını ve InfiniBand ile donatılmış sanal makineler için RDMA fiillerini güncelleştirmek olacaktır. Bu, kısa bir kesinti süresi gerektirir [ve SR-IOV yükseltmesi hakkında daha fazla bilgi edinin](https://azure.microsoft.com/updates/sriov-availability-on-ncv3-virtual-machines-sku).
 
-Azure Machine Learning yönetilen işlem sunumu (AmlCompute) müşterisi olarak, şu anda herhangi bir değişiklik yapmanız gerekmez. [Güncelleştirme zamanlaması](https://azure.microsoft.com/updates/sr-iov-availability-schedule-on-ncv3-virtual-machines-sku) temelinde, eğitiminde kısa bir kesme planlamanız gerekir. Hizmet, Küme düğümlerinizin VM görüntülerini güncelleştirmek ve kümenizi otomatik olarak ölçeklendirmek için sorumluluğu alacak. Yükseltme tamamlandıktan sonra, daha yüksek InfiniBand bant genişliği, daha düşük gecikme süreleri ve daha iyi dağıtılmış uygulama performansını elde etmek için diğer tüm MPı 'ları (Pytorch ile OpenMPI gibi) kullanabilirsiniz.
+Azure Machine Learning yönetilen işlem sunumu (AmlCompute) müşterisi olarak, şu anda herhangi bir değişiklik yapmanız gerekmez. [Güncelleştirme zamanlaması](https://azure.microsoft.com/updates/sr-iov-availability-schedule-on-ncv3-virtual-machines-sku) temelinde, eğitiminde kısa bir kesme planlamanız gerekir. Hizmet, Küme düğümlerinizin VM görüntülerini güncelleştirmek ve kümenizi otomatik olarak ölçeklendirmek için sorumluluğu alacak. Yükseltme tamamlandıktan sonra, daha yüksek InfiniBand bant genişliği, daha düşük gecikme süreleri ve daha iyi dağıtılmış uygulama performansını elde etmek için diğer tüm MPı dağıtımlarını (Pytorch ile OpenMPI gibi) kullanabilirsiniz.
 
 ## <a name="azure-machine-learning-designer-issues"></a>Tasarımcı sorunlarını Azure Machine Learning
 
@@ -46,9 +46,9 @@ Aşağıdaki görüntüde nasıl yapılacağı gösterilmektedir: ![visulize-Dat
 
 ## <a name="sdk-installation-issues"></a>SDK yükleme sorunları
 
-**Hata iletisi: ' PyYAML ' kaldırılamıyor**
+**Hata iletisi: 'PyYAML' kaldırılamıyor**
 
-Python için Azure Machine Learning SDK: PyYAML, yüklenmiş bir proje. Bu nedenle, kısmi bir kaldırma işlemi varsa, hangi dosyaların kendisine ait olduğunu doğru bir şekilde belirleyemedik. Bu hatayı yoksayarak SDK 'Yı yüklemeye devam etmek için şunu kullanın:
+Python için Azure Machine Learning SDK: PyYAML olan yüklü distutils proje. Bu nedenle, kısmi bir kaldırma işlemi varsa, hangi dosyaların kendisine ait olduğunu doğru bir şekilde belirleyemedik. Bu hatayı yoksayma sırasında SDK'sı yüklemeye devam etmek için kullanın:
 
 ```Python
 pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
@@ -62,13 +62,13 @@ conda create -n <env-name> python=3.7.3
 ```
 Bu, 3.7.4 içinde bir Install sorunu bulunmayan Python 3.7.3 kullanarak bir Conda ortamı oluşturur.
 
-## <a name="trouble-creating-azure-machine-learning-compute"></a>Azure Machine Learning Işlem oluşturma sorunu
+## <a name="trouble-creating-azure-machine-learning-compute"></a>Azure Machine Learning işlem oluştururken sorun
 
-Azure Machine Learning çalışma alanını, GA sürümünden önce Azure portal oluşturan bazı kullanıcıların bu çalışma alanında Azure Machine Learning Işlem oluşturamayacak nadir bir şansınız vardır. Hizmette bir destek isteği oluşturabilir veya portal veya SDK aracılığıyla hemen engelini kaldırmak için yeni bir çalışma alanı oluşturabilirsiniz.
+GA sürümü önce Azure portalından, Azure Machine Learning çalışma alanı oluşturan bazı kullanıcıların bu çalışma alanında Azure Machine Learning işlem oluşturmak mümkün olmayabilir nadir bir fırsat yoktur. Bir destek isteği hizmetinde yükseltmek veya Portal veya SDK'yı kendiniz hemen engelini kaldırmak için yeni bir çalışma alanı oluşturun.
 
 ## <a name="image-building-failure"></a>Görüntü oluşturma hatası
 
-Web hizmeti dağıtımında görüntü oluşturma hatası. Geçici çözüm, görüntü yapılandırması için Conda dosyasına bir pynacl = = 1.2.1
+Web hizmeti dağıtılırken hata oluşturma görüntüsü. Geçici çözüm olan eklemek için "pynacl 1.2.1 ==" Conda dosyasına görüntü yapılandırması için pip bağımlılık olarak.
 
 ## <a name="deployment-failure"></a>Dağıtım hatası
 
@@ -76,7 +76,7 @@ Web hizmeti dağıtımında görüntü oluşturma hatası. Geçici çözüm, gö
 
 ## <a name="fpgas"></a>FPGA'lar
 
-FPGA kotası istenene ve onaylanana kadar, Fpg' de modeller dağıtacaksınız. Erişim istemek için kota isteği formunu doldurun: https://aka.ms/aml-real-time-ai
+İstenen ve FPGA kotası için onaylanmış kadar FPGA modellerde dağıtmayı mümkün olmayacaktır. Erişim istemek için kota istek formunu doldurun: https://aka.ms/aml-real-time-ai
 
 ## <a name="automated-machine-learning"></a>Otomatik makine öğrenimi
 
@@ -112,7 +112,7 @@ Databricks ve Azure Machine Learning sorunları.
 
 ### <a name="failure-when-installing-packages"></a>Paketler yüklenirken hata oluştu
 
-Azure Machine Learning SDK yüklemesi, daha fazla paket yüklendiğinde Azure Databricks başarısız olur. `psutil`gibi bazı paketler çakışmalara neden olabilir. Yükleme hatalarını önlemek için, kitaplık sürümünü dondurarak paketleri yükleme. Bu sorun, Azure Machine Learning SDK 'Sı değil Databricks ile ilgilidir. Bu sorunla diğer kitaplıklarla de karşılaşabilirsiniz. Örnek:
+Azure Machine Learning SDK yüklemesi, daha fazla paket yüklendiğinde Azure Databricks başarısız olur. Gibi bazı paketler `psutil`, çakışmaları neden olabilir. Yükleme hatalarını önlemek için, kitaplık sürümünü dondurarak paketleri yükleme. Bu sorun, Azure Machine Learning SDK 'Sı değil Databricks ile ilgilidir. Bu sorunla diğer kitaplıklarla de karşılaşabilirsiniz. Örnek:
 
 ```python
 psutil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
@@ -161,11 +161,11 @@ Azure Databricks kümesindeki verileri okurken `FailToSendFeather` hatası gör�
 
 ## <a name="azure-portal"></a>Azure portal
 
-Çalışma alanınızı SDK veya portaldan bir Share bağlantısından görüntülemeye doğrudan giderseniz, uzantı içindeki abonelik bilgileriyle normal genel bakış sayfasını görüntüleyemeyeceksiniz. Ayrıca, başka bir çalışma alanına geçiş yapamazsınız. Başka bir çalışma alanını görüntülemeniz gerekirse, geçici çözüm doğrudan [Azure Machine Learning Studio](https://ml.azure.com) 'ya gidip çalışma alanı adını arayacak.
+Doğrudan paylaşım bağlantısı SDK veya portalından çalışma alanınızda görüntülemeye giderseniz, uzantı normal genel bakış sayfası ile abonelik bilgilerini görüntülemek mümkün olmayacaktır. Siz de başka bir çalışma alanına geçmeniz mümkün olmayacaktır. Başka bir çalışma alanını görüntülemeniz gerekirse, geçici çözüm doğrudan [Azure Machine Learning Studio](https://ml.azure.com) 'ya gidip çalışma alanı adını arayacak.
 
 ## <a name="diagnostic-logs"></a>Tanılama günlükleri
 
-Bazen yardım isterken tanılama bilgilerini sağlayabilmeniz faydalı olabilir. Bazı günlükleri görmek için [Azure Machine Learning Studio 'yu](https://ml.azure.com) ziyaret edin ve çalışma alanınıza gidin ve **> günlüklerini çalıştırmak > deneyin > çalışma alanı**' nı seçin.  
+Bazen Yardım isteme, tanılama bilgilerini sağlarsanız, yararlı olabilir. Bazı günlükleri görmek için [Azure Machine Learning Studio 'yu](https://ml.azure.com) ziyaret edin ve çalışma alanınıza gidin ve **> günlüklerini çalıştırmak > deneyin > çalışma alanı**' nı seçin.  
 
 > [!NOTE]
 > Azure Machine Learning, eğitim sırasında (örneğin, oto ml) veya eğitim işini çalıştıran Docker kapsayıcısı gibi çeşitli kaynaklardan günlük bilgileri günlüğe kaydeder. Bu günlüklerin birçoğu açıklanmamıştır. Sorunlarla karşılaşırsanız ve Microsoft Destek ile iletişime geçerek, sorun giderme sırasında bu günlükleri kullanabiliyor olabilirler.

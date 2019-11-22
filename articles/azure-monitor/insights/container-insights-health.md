@@ -12,16 +12,20 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 11/18/2019
 ms.author: magoedte
-ms.openlocfilehash: f748399b6b356e5f8655f59221e78acd0d98f51e
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 08f7cf5a26108608aa3719085d69ec9543f4aa51
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173629"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279646"
 ---
 # <a name="understand-kubernetes-cluster-health-with-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici ile Kubernetes küme durumunu anlayın
 
-Kapsayıcılar için Azure Izleyici ile, yönetilen altyapı bileşenlerinin ve kapsayıcı için Azure Izleyici tarafından desteklenen herhangi bir Kubernetes kümesinde çalışan tüm düğümlerin sistem durumunu izler ve raporlar. Bu deneyim, [birden çok küme görünümünde](container-insights-analyze.md#multi-cluster-view-from-azure-monitor)hesaplanan ve bildirilen küme durumu durumunun ötesine uzanır, burada kümede bir veya daha fazla düğüm kısıtlanmış olup olmadığını anlayabilir veya bir düğüm ya da Pod, seçilen ölçümleri temel alarak kümedeki çalışan bir uygulamayı etkileyebilecek bir düğüm veya Pod kullanılamaz. 
+Kapsayıcılar için Azure Izleyici ile, yönetilen altyapı bileşenlerinin ve kapsayıcı için Azure Izleyici tarafından desteklenen herhangi bir Kubernetes kümesinde çalışan tüm düğümlerin sistem durumunu izler ve raporlar. Bu deneyim, [birden çok küme görünümünde](container-insights-analyze.md#multi-cluster-view-from-azure-monitor)hesaplanan ve bildirilen küme durumu durumunun ötesine uzanır, burada kümede bir veya daha fazla düğüm kısıtlanmış olup olmadığını anlayabilir veya bir düğüm ya da Pod, seçilen ölçümleri temel alarak kümedeki çalışan bir uygulamayı etkileyebilecek bir düğüm veya Pod kullanılamaz.
+
+>[!NOTE]
+>Sistem durumu özelliği şu anda genel önizlemede.
+>
 
 Kapsayıcılar için Azure Izleyicisini etkinleştirme hakkında daha fazla bilgi için bkz. [kapsayıcılar Için Azure izleyicisini](container-insights-onboard.md)ekleme.
 
@@ -33,7 +37,7 @@ Kapsayıcılar için Azure Izleyicisini etkinleştirme hakkında daha fazla bilg
 
 ## <a name="overview"></a>Genel Bakış
 
-Kapsayıcılar için Azure Izleyici 'de sistem durumu özelliği, sorunları belirlemenize ve tanılamanıza yardımcı olması için Kubernetes kümenizin öngörülü durum izlemesini sağlar. Algılanan önemli sorunları görüntülemenize olanak sağlar. Kümenizdeki kapsayıcı aracısında kümenizin sistem durumunu değerlendiren izleyiciler ve sistem durumu verileri Log Analytics çalışma alanınızdaki **Kubehealth** tablosuna yazılır. 
+Kapsayıcılar için Azure Izleyici 'de, sistem durumu (Önizleme) özelliği sorunları belirlemenize ve tanılamanıza yardımcı olması için Kubernetes kümenizin öngörülü durum izlemesini sağlar. Algılanan önemli sorunları görüntülemenize olanak sağlar. Kümenizdeki kapsayıcı aracısında kümenizin sistem durumunu değerlendiren izleyiciler ve sistem durumu verileri Log Analytics çalışma alanınızdaki **Kubehealth** tablosuna yazılır. 
 
 Kubernetes küme durumu, aşağıdaki Kubernetes nesneleri ve soyutlamalar tarafından düzenlenen bir dizi izleme senaryosunu temel alır:
 
@@ -72,7 +76,7 @@ Kapsayıcılar için Azure Izleyici sistem durumu özelliğini destekleyen her m
 
 ## <a name="view-health-of-an-aks-or-non-aks-cluster"></a>AKS veya AKS olmayan kümenin durumunu görüntüleme
 
-Kapsayıcılar için Azure Izleyici sistem durumu özelliğine erişim, Azure portal sol bölmeden **Öngörüler** ' i seçerek doğrudan bir aks kümesinden edinilebilir. Altında **Insights** bölümünden **kapsayıcıları**. 
+Kapsayıcılar için Azure Izleyici sistem durumu (Önizleme) özelliğine erişim, Azure portal sol bölmeden **Öngörüler** ' i seçerek doğrudan bir aks kümesinden edinilebilir. Altında **Insights** bölümünden **kapsayıcıları**. 
 
 Şirket içinde veya Azure Stack barındırılan bir AKS altyapısı kümesi olan AKS olmayan bir kümeden sistem durumunu görüntülemek için, Azure portal sol bölmeden **Azure izleyici** ' yi seçin. Altında **Insights** bölümünden **kapsayıcıları**.  Çoklu küme sayfasında, listeden AKS olmayan kümeyi seçin.
 

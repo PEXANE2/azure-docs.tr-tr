@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory B2B işbirliği kullanıcısı talep eşlemesi - | Microsoft Docs
-description: Kullanıcı Azure Active Directory (Azure AD) B2B kullanıcıları için SAML belirtecinde verilen talepleri özelleştirme.
+title: B2B işbirliği Kullanıcı talepleri eşleme-Azure Active Directory
+description: Azure Active Directory (Azure AD) B2B kullanıcıları için SAML belirtecinde verilen kullanıcı taleplerini özelleştirin.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -11,33 +11,33 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: edb18c31f40de3358ad987be4a9c67ed3a5079e8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3508865d9f89501cf70e09087c6a609beb6662b2
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65811923"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74273194"
 ---
-# <a name="b2b-collaboration-user-claims-mapping-in-azure-active-directory"></a>Eşleme Azure Active Directory B2B işbirliği kullanıcı talepleri
+# <a name="b2b-collaboration-user-claims-mapping-in-azure-active-directory"></a>Azure Active Directory 'de B2B işbirliği Kullanıcı talepleri eşleme
 
-B2B işbirliği kullanıcıları için SAML belirtecinde verilen talepleri özelleştirme azure Active Directory (Azure AD) destekler. Bir kullanıcı uygulama kimliğini doğruladığında, Azure AD benzersiz olarak tanımlayan bir kullanıcı hakkında bilgileri (veya talep) içeren uygulamaya bir SAML belirteci verir. Varsayılan olarak, bu kullanıcının kullanıcı adı, e-posta adresi, ad ve Soyadı içerir.
+Azure Active Directory (Azure AD), B2B işbirliği kullanıcıları için SAML belirtecinde verilen talepleri özelleştirmeyi destekler. Kullanıcı uygulamanın kimliğini doğruladığında, Azure AD, uygulamayı benzersiz bir şekilde tanımlayan kullanıcı hakkında bilgi (veya talepler) içeren bir SAML belirteci yayınlar. Bu, varsayılan olarak kullanıcının Kullanıcı adını, e-posta adresini, adını ve soyadını içerir.
 
-İçinde [Azure portalında](https://portal.azure.com), görüntüleyebilir veya uygulamaya SAML belirtecindeki gönderilen talepleri düzenleyin. Ayarlara erişmek için seçin **Azure Active Directory** > **kurumsal uygulamalar** > çoklu oturum açma için yapılandırılmış uygulama > **çoklu oturum açma** . SAML belirteci ayarlarında bkz **kullanıcı öznitelikleri** bölümü.
+[Azure Portal](https://portal.azure.com), SAML belirtecinde gönderilen talepleri uygulamaya görüntüleyebilir veya düzenleyebilirsiniz. Ayarlara erişmek için, çoklu oturum açma > **Çoklu oturum**açma için yapılandırılmış uygulamayı > **Azure Active Directory** > **Kurumsal uygulamalar** ' ı seçin. **Kullanıcı öznitelikleri** bölümünde SAML belirteci ayarları ' na bakın.
 
-![SAML belirteci öznitelikleri kullanıcı Arabiriminde gösterir](media/claims-mapping/view-claims-in-saml-token.png)
+![Kullanıcı arabirimindeki SAML belirteci özniteliklerini gösterir](media/claims-mapping/view-claims-in-saml-token.png)
 
-SAML belirtecinde verilen talepleri düzenlemeniz gerekebilir neden iki olası nedeni vardır:
+SAML belirtecinde verilen talepleri düzenlemeniz gerekebilecek iki nedeni vardır:
 
-1. Farklı uygulama gerektiriyorsa URI'ler talep veya değerleri.
+1. Uygulama farklı bir talep URI 'si veya talep değerleri kümesi gerektiriyor.
 
-2. Uygulamanın Azure AD'de depolanan kullanıcı asıl adı (UPN) dışında bir şey olacak şekilde NameIdentifier talebini gerektirir.
+2. Uygulama, NameIdentifier talebinin Azure AD 'de depolanan kullanıcı asıl adı (UPN) dışında bir şey olmasını gerektirir.
 
-Ekleme ve talep düzenleme hakkında daha fazla bilgi için bkz. [Azure Active Directory'de kurumsal uygulamalar için SAML belirtecinde verilen talepleri özelleştirme](../develop/active-directory-saml-claims-customization.md).
+Talepler ekleme ve düzenleme hakkında daha fazla bilgi için bkz. [Azure Active Directory 'de kurumsal uygulamalar IÇIN SAML belirtecinde verilen talepleri özelleştirme](../develop/active-directory-saml-claims-customization.md).
 
-B2B işbirliği için Nameıd ve UPN kiracılar arası eşleme kullanıcıları, güvenlik nedenleriyle engellenir.
+B2B işbirliği kullanıcıları için, eşleme NameID ve UPN çapraz kiracı, güvenlik nedenleriyle engellenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- B2B işbirliği kullanıcı özellikleri hakkında daha fazla bilgi için bkz. [bir Azure Active Directory B2B işbirliği kullanıcısı özelliklerini](user-properties.md).
-- B2B işbirliği kullanıcıları için kullanıcı belirteçlerinin hakkında daha fazla bilgi için bkz. [Azure AD B2B işbirliği içinde çalışan kullanıcı belirteçleri anlamak](user-token.md).
+- B2B işbirliği Kullanıcı özellikleri hakkında daha fazla bilgi için bkz. [Azure ACTIVE DIRECTORY B2B işbirliği kullanıcısının özellikleri](user-properties.md).
+- B2B işbirliği kullanıcıları için Kullanıcı belirteçleri hakkında daha fazla bilgi için bkz. [Azure AD B2B işbirliği içindeki Kullanıcı belirteçlerini anlama](user-token.md).
 

@@ -1,26 +1,22 @@
 ---
 title: Özel bir traefik giriş denetleyicisi kullanma ve https 'yi yapılandırma
-titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 08/13/2019
 ms.topic: conceptual
 description: Azure Dev Spaces özel bir traefik ingınress denetleyicisi kullanmak ve bu giriş denetleyicisini kullanarak HTTPS 'yi yapılandırmak için nasıl yapılandırılacağını öğrenin
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
-ms.openlocfilehash: c015fe8e7108f07d66d2464c4f8b6287e8f54446
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a7f8684c8236e69c16bedf0186ed7ed17bbc8462
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582318"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280067"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>Özel bir traefik giriş denetleyicisi kullanma ve https 'yi yapılandırma
 
 Bu makalede, Azure Dev Spaces özel bir traefik ingınress denetleyicisi kullanmak üzere nasıl yapılandırılacağı gösterilmektedir. Bu makalede ayrıca, bu özel giriş denetleyicisinin HTTPS kullanmak üzere nasıl yapılandırılacağı gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Hesabınız yoksa [ücretsiz bir hesap][azure-account-create] oluşturabilirsiniz.
 * [Yüklü Azure CLI][az-cli].
@@ -78,7 +74,7 @@ az network dns record-set a add-record \
     --ipv4-address MY_EXTERNAL_IP
 ```
 
-Yukarıdaki örnek, *MY_CUSTOM_DOMAIN* DNS bölgesine *bir* kayıt ekler.
+Yukarıdaki örnek *MY_CUSTOM_DOMAIN* DNS bölgesine *bir* kayıt ekler.
 
 Bu makalede, Azure Dev Spaces kullanmayı göstermek için [Azure dev Spaces bisiklet paylaşımı örnek uygulamasını](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp) kullanacaksınız. Uygulamayı GitHub 'dan kopyalayıp dizinine gidin:
 
@@ -87,7 +83,7 @@ git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/BikeSharingApp/charts
 ```
 
-[Values. YAML][values-yaml] dosyasını açın ve tüm *< REPLACE_ME_WITH_HOST_SUFFIX >* örneklerini traefik ile değiştirin *. MY_CUSTOM_DOMAIN* *için etki*alanınızı kullanma. Ayrıca, *Kubernetes.io/ingress.class: traefik # özel*giriş ile *Kubernetes.io/ingress.class: traefik-azds # dev Spaces öğesine özgüdür* . Güncelleştirilmiş `values.yaml` dosyasına bir örnek aşağıda verilmiştir:
+[Values. YAML][values-yaml] dosyasını açın ve tüm *< REPLACE_ME_WITH_HOST_SUFFIX >* örneklerini traefik ile değiştirin *. MY_CUSTOM_DOMAIN* *MY_CUSTOM_DOMAIN*için etki alanınızı kullanma. Ayrıca, *Kubernetes.io/ingress.class: traefik # özel*giriş ile *Kubernetes.io/ingress.class: traefik-azds # dev Spaces öğesine özgüdür* . Güncelleştirilmiş `values.yaml` dosyasına bir örnek aşağıda verilmiştir:
 
 ```yaml
 # This is a YAML-formatted file.

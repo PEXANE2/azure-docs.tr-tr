@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/22/2018
 ms.author: aschhab
-ms.openlocfilehash: 7d31dd004c879fd3e689f4ba7a8ae58cb223ae70
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 99a705c3923821739ddc1dedd8f7c079dc534a1a
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73484930"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277301"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>Azure Service Bus ile sanal ağ hizmeti uç noktalarını kullanma
 
@@ -31,14 +31,13 @@ Sonuç olarak, alt ağa ve ilgili Service Bus ad alanıyla ilişkili olan iş y�
 > Sanal ağlar uygulandığında güvenilen Microsoft Hizmetleri desteklenmez.
 >
 > Sanal ağlarla çalışmayan yaygın Azure senaryoları ( **listenin ayrıntılı olmadığına** unutmayın)-
-> - Azure İzleyici
 > - Azure Stream Analytics
 > - Azure Event Grid ile tümleştirme
 > - Azure IoT Hub yolları
 > - Azure IoT Device Explorer
 >
 > Aşağıdaki Microsoft hizmetlerinin bir sanal ağda olması gerekir
-> - Azure App Service
+> - Azure uygulama hizmeti
 > - Azure İşlevleri
 
 > [!IMPORTANT]
@@ -48,11 +47,11 @@ Sonuç olarak, alt ağa ve ilgili Service Bus ad alanıyla ilişkili olan iş y�
 
 VNet hizmet uç noktalarını Service Bus kullandığınızda önemli bir göz önünde bulundurun. bu uç noktaları, standart ve Premium katman Service Bus ad alanlarını karışan uygulamalarda etkinleştirmemelidir. Standart katman VNET 'leri desteklemediğinden, uç nokta yalnızca Premium katman ad alanları ile kısıtlıdır.
 
-## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>VNet tümleştirmesi tarafından etkinleştirilen gelişmiş güvenlik senaryoları 
+## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>VNet tümleştirmesi etkin Gelişmiş Güvenlik senaryoları 
 
-Sıkı ve compartmenbir güvenlik gerektiren ve sanal ağ alt ağlarının, compartmenhizmeti arasında segmentleme sağladığı çözümler, genellikle bu bölmeleri bulunan hizmetler arasında iletişim yollarına gerek duyar.
+Sıkı ve compartmentalized güvenlik gerektiren ve sanal ağ alt ağları compartmentalized hizmetler arasında ayrılmasını sağlarsınız çözümleri genellikle yine de bu bölmeleri içinde bulunan hizmetler arasındaki iletişim yolları gerekir.
 
-TCP/IP üzerinden HTTPS 'yi yürüten bu dahil olmak üzere, bölmeleri arasındaki tüm anında IP rotası, üzerindeki ağ katmanından güvenlik açıklarına karşı yararlanma riskini taşır. Mesajlaşma Hizmetleri, iletiler, taraflar arasında geçiş yaparken iletilerin diske yazıldığı, tamamen yalıtılmış iletişim yolları sağlar. Aynı Service Bus örneğine bağlanan iki ayrı sanal ağdaki iş yükleri iletiler aracılığıyla verimli ve güvenilir bir şekilde iletişim kurabilir, ancak ilgili ağ yalıtımı sınır bütünlüğü korunur.
+TCP/IP üzerinden HTTPS taşıyan dahil olmak üzere bölmeler arasında anında herhangi IP yönlendirme, güvenlik açıklarına karşı ağ katmanı kötüye kullanılma riskini taşır üzerinde yukarı. Burada iletileri bile, taraflar arasında geçiş olarak diske yazılır, tamamen yalıtılmış iletişim yolları Mesajlaşma hizmetleri sağlar. Aynı Service Bus örneğine bağlanan iki ayrı sanal ağdaki iş yükleri iletiler aracılığıyla verimli ve güvenilir bir şekilde iletişim kurabilir, ancak ilgili ağ yalıtımı sınır bütünlüğü korunur.
  
 Bu, güvenlik duyarlı bulut çözümlerinizin yalnızca Azure sektör lideri güvenilir ve ölçeklenebilir zaman uyumsuz mesajlaşma özelliklerine erişim elde edemeyeceği anlamına gelir, ancak artık güvenli çözüm bölmeleri arasında iletişim yolları oluşturmak için mesajlaşma kullanabilir , HTTPS ve diğer TLS güvenlikli yuva protokolleri de dahil olmak üzere eşler arası iletişim moduyla ulaşılabilir, doğal olarak daha güvenlidir.
 
@@ -71,13 +70,13 @@ Aşağıdaki Kaynak Yöneticisi şablonu, var olan bir Service Bus ad alanına b
 Şablon parametreleri:
 
 * **NamespaceName**: Service Bus ad alanı.
-* **Virtualnetworkingsubnetıd**: sanal ağ alt ağı için tam olarak nitelenmiş Kaynak Yöneticisi yolu; Örneğin, bir sanal ağın varsayılan alt ağı için `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default`.
+* **virtualNetworkingSubnetId**: tam Resource Manager yolu için sanal ağ alt ağı; Örneğin, `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` sanal ağ varsayılan alt ağ.
 
 > [!NOTE]
 > Mümkün olan reddetme kuralları olmadığı sürece, Azure Resource Manager şablonu, bağlantıları kısıtlayameyen **"Izin ver"** olarak ayarlanmış varsayılan eylemi içerir.
 > Sanal ağ veya güvenlik duvarları kuralları yaparken, ***"DefaultAction"*** öğesini değiştirmemiz gerekir
 > 
-> Kaynak
+> from
 > ```json
 > "defaultAction": "Allow"
 > ```

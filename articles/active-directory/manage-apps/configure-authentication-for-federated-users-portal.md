@@ -1,5 +1,5 @@
 ---
-title: Giriş bölgesi bulma ilkesini kullanarak oturum açma otomatik hızlandırmasını yapılandırma | Microsoft Docs
+title: Giriş bölgesi bulmayı kullanarak oturum açma otomatik hızlandırmasını yapılandırma
 description: Otomatik hızlandırma ve etki alanı ipuçları dahil olmak üzere federasyon kullanıcıları için Azure Active Directory kimlik doğrulaması için giriş bölgesi bulma ilkesini nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.date: 04/08/2019
 ms.author: mimart
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f8f51fcd69a7115879aad97bbf696833e87877b
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 174cdc31d7e5f29716febc7f68bbb410f33926c6
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68477214"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274638"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Giriş bölgesi bulma ilkesi kullanarak bir uygulama için Azure Active Directory oturum açma davranışı yapılandırma
 
@@ -65,9 +65,9 @@ Etki alanı ipucu sözdizimi, kullanılan protokole bağlı olarak değişir ve 
 
 **WS-Federation**: WHr = contoso. com sorgu dizesinde.
 
-**SAML**:  Bir etki alanı ipucu veya bir sorgu dizesi olan WHr = contoso. com içeren bir SAML kimlik doğrulama isteği.
+**SAML**: bir etki alanı ipucu veya bir sorgu dizesi WHr = contoso. com IÇEREN bir SAML kimlik doğrulama isteği.
 
-**Açık kimlik bağlantısı**: Sorgu dizesi domain_hint = contoso. com. 
+**Açık kimlik Connect**: bir sorgu dizesi domain_hint = contoso. com. 
 
 Bir etki alanı ipucu, uygulamadan gelen kimlik doğrulama isteğine dahil ise ve kiracı bu etki alanıyla federe ise, Azure AD bu etki alanı için yapılandırılmış IDP 'ye oturum açmayı yeniden yönlendirmeye çalışır. 
 
@@ -170,14 +170,14 @@ Aşağıdaki örneklerde, Azure AD 'de uygulama hizmeti sorumluları üzerinde i
 
 Hiçbir şey döndürülmezse, kiracınızda hiçbir ilke oluşturulmamış demektir.
 
-### <a name="example-set-hrd-policy-for-an-application"></a>Örnek: Bir uygulama için HRD ilkesini ayarlama 
+### <a name="example-set-hrd-policy-for-an-application"></a>Örnek: bir uygulama için HRD ilkesini ayarlama 
 
 Bu örnekte, bir uygulamaya atandığı bir ilke oluşturursunuz: 
 - Kiracınızda tek bir etki alanı olduğunda bir uygulamada oturum açtıklarında kullanıcıları AD FS oturum açma ekranına otomatik olarak hızlandırır. 
 - Kullanıcıları AD FS oturum açma ekranına otomatik olarak hızlandırır kiracınızda birden fazla Federasyon etki alanı bulunur.
 - , İlkenin atandığı uygulamalar için Federasyon kullanıcıları için doğrudan Azure Active Directory için etkileşimli olmayan Kullanıcı adı/parola oturum açma imkanı sağlar.
 
-#### <a name="step-1-create-an-hrd-policy"></a>1\. adım: Bir HRD ilkesi oluşturma
+#### <a name="step-1-create-an-hrd-policy"></a>1\. Adım: bir HRD ilkesi oluşturma
 
 Aşağıdaki ilke, kiracınızda tek bir etki alanı olduğunda bir uygulamada oturum açtıklarında kullanıcıları AD FS oturum açma ekranına otomatik olarak hızlandırır.
 
@@ -206,7 +206,7 @@ Get-AzureADPolicy
 
 Bunu oluşturduktan sonra HRD ilkesini uygulamak için, birden çok uygulama hizmeti sorumlularına atayabilirsiniz.
 
-#### <a name="step-2-locate-the-service-principal-to-which-to-assign-the-policy"></a>2\. adım: İlkenin atanacağı hizmet sorumlusunu bulun  
+#### <a name="step-2-locate-the-service-principal-to-which-to-assign-the-policy"></a>2\. Adım: ilkenin atanacağı hizmet sorumlusunu bulma  
 İlkeyi atamak istediğiniz hizmet sorumlularının **ObjectID** 'ye ihtiyacınız vardır. Hizmet sorumluları **ObjectID** 'yi bulmanın birkaç yolu vardır.    
 
 Portalı kullanabilir veya [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity)sorgulayabilirsiniz. Ayrıca, tüm kuruluşunuzun hizmet sorumlularını görmek için [Graph Explorer aracına](https://developer.microsoft.com/graph/graph-explorer) gidebilir ve Azure AD hesabınızda oturum açabilirsiniz. 
@@ -217,7 +217,7 @@ PowerShell 'i kullandığınız için, hizmet sorumlularını ve kimliklerini li
 Get-AzureADServicePrincipal
 ```
 
-#### <a name="step-3-assign-the-policy-to-your-service-principal"></a>3\. adım: İlkeyi hizmet sorumlusuna atama  
+#### <a name="step-3-assign-the-policy-to-your-service-principal"></a>3\. Adım: ilkeyi hizmet sorumlusuna atama  
 Otomatik hızlandırmayı yapılandırmak istediğiniz uygulamanın hizmet sorumlusu **ObjectID** olduktan sonra aşağıdaki komutu çalıştırın. Bu komut, adım 1 ' de oluşturduğunuz HRD ilkesini adım 2 ' de bulduğunuz hizmet sorumlusu ile ilişkilendirir.
 
 ``` powershell
@@ -234,12 +234,12 @@ HRD ilkesinin hangi uygulamalarda yapılandırıldığını denetlemek için **G
 ``` powershell
 Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
-#### <a name="step-5-youre-done"></a>5\. Adım: İşiniz bitti!
+#### <a name="step-5-youre-done"></a>5\. Adım: işiniz bitti!
 Yeni ilkenin çalışıp çalışmadığını denetlemek için uygulamayı deneyin.
 
 ### <a name="example-list-the-applications-for-which-hrd-policy-is-configured"></a>Örnek: HRD ilkesinin yapılandırıldığı uygulamaları listeleyin
 
-#### <a name="step-1-list-all-policies-that-were-created-in-your-organization"></a>1\. adım: Kuruluşunuzda oluşturulan tüm ilkeleri listeleme 
+#### <a name="step-1-list-all-policies-that-were-created-in-your-organization"></a>1\. Adım: kuruluşunuzda oluşturulan tüm ilkeleri listeleme 
 
 ``` powershell
 Get-AzureADPolicy
@@ -247,23 +247,23 @@ Get-AzureADPolicy
 
 Atamalarını listelemek istediğiniz ilkenin **ObjectID** değerini unutmayın.
 
-#### <a name="step-2-list-the-service-principals-to-which-the-policy-is-assigned"></a>2\. adım: İlkenin atandığı hizmet sorumlularını listeleyin  
+#### <a name="step-2-list-the-service-principals-to-which-the-policy-is-assigned"></a>2\. Adım: ilkenin atandığı hizmet sorumlularını listeleyin  
 
 ``` powershell
 Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
 
-### <a name="example-remove-an-hrd-policy-for-an-application"></a>Örnek: Bir uygulama için HRD ilkesini kaldırma
-#### <a name="step-1-get-the-objectid"></a>1\. adım: ObjectID 'yi al
+### <a name="example-remove-an-hrd-policy-for-an-application"></a>Örnek: bir uygulama için HRD ilkesini kaldırma
+#### <a name="step-1-get-the-objectid"></a>1\. Adım: ObjectID 'yi edinme
 İlke **ObjectID** 'yi ve kaldırmak istediğiniz uygulama hizmeti sorumlusunu almak için önceki örneği kullanın. 
 
-#### <a name="step-2-remove-the-policy-assignment-from-the-application-service-principal"></a>2\. adım: Uygulama hizmeti sorumlusundan ilke atamasını kaldırma  
+#### <a name="step-2-remove-the-policy-assignment-from-the-application-service-principal"></a>2\. Adım: ilke atamasını uygulama hizmeti sorumlusundan kaldırma  
 
 ``` powershell
 Remove-AzureADApplicationPolicy -id <ObjectId of the Service Principal>  -PolicyId <ObjectId of the policy>
 ```
 
-#### <a name="step-3-check-removal-by-listing-the-service-principals-to-which-the-policy-is-assigned"></a>3\. adım: İlkenin atandığı hizmet sorumlularını listeleyerek kaldırma işlemini denetleyin 
+#### <a name="step-3-check-removal-by-listing-the-service-principals-to-which-the-policy-is-assigned"></a>3\. Adım: ilkenin atandığı hizmet sorumlularını listeleyerek kaldırma işlemini denetleyin 
 
 ``` powershell
 Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: overview
 ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: cab4f156aa1fb2fa4d3b122377be1b28337f15a9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e0c92fbd06bec00f09c66c322ba2520bacb7bffb
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681600"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267783"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Azure Data Factory ile Data Factory sürüm 1'in karşılaştırılması
 Bu makale Data Factory ile Data Factory sürüm 1’i karşılaştırır. Data Factory hakkında giriş bilgileri için bkz. [Data Factory'ye giriş](introduction.md).Data Factory sürüm 1 hakkında giriş bilgileri için bkz. [Azure Data Factory'ye Giriş](v1/data-factory-introduction.md). 
@@ -29,7 +29,7 @@ Aşağıdaki tabloda Data Factory ile Data Factory sürüm 1'in özellikleri kar
 | Veri kümeleri | Etkinliklerinizde girdi ve çıktı olarak kullanmak istediğiniz verilere başvuran verilerin adlandırılmış bir görünümüdür. Veri kümeleri tablolar, dosyalar, klasörler ve belgeler gibi farklı veri depolarındaki verileri tanımlar. Örneğin Azure Blob veri kümesi, etkinliğin verileri okuması için gereken blob kapsayıcısını ve Azure Blob depolama klasörünü belirtir.<br/><br/>**Kullanılabilirlik**, veri kümesi (saatlik, günlük gibi) için model dilimleme işleme penceresini tanımlar. | Veri kümeleri geçerli sürümde aynıdır. Ancak, veri kümeleri için **kullanılabilirlik** zaman çizelgelerini tanımlamanız gerekmez. İşlem hatlarını bir zaman çizelgesi oluşturma paradigmasından zamanlayabilen bir tetikleyici kaynak belirleyebilirsiniz. Daha fazla bilgi için [Tetikleyiciler](concepts-pipeline-execution-triggers.md#triggers) ve [Veri Kümeleri](concepts-datasets-linked-services.md) bölümlerine bakın. | 
 | Bağlı hizmetler | Bağlı hizmetler, dış kaynaklara bağlanmak için Data Factory'ye gereken bağlantı bilgilerini tanımlayan bağlantı dizelerine çok benzer. | Bağlı hizmetler Data Factory V1 ile aynıdır, ancak Data Factory'nin geçerli sürümünün Integration Runtime bilgi işlem ortamından yararlanmak için yeni bir **connectVia** özelliği de bulunur. Daha fazla bilgi için bkz. [Azure Data Factory’de tümleştirme çalışma zamanı](concepts-integration-runtime.md) ve [Azure Blob depolama için bağlı hizmeti özellikleri](connector-azure-blob-storage.md#linked-service-properties). |
 | İşlem hatları | Bir veri fabrikasında bir veya daha fazla işlem hattı olabilir. İşlem hattı, bir araya geldiğinde bir görev gerçekleştiren mantıksal etkinlik grubudur. İşlem hatlarını zamanlamak ve çalıştırmak için startTime, endTime ve isPaused kullanırsınız. | İşlem hatları, veriler üzerinde uygulanacak etkinlik gruplarıdır. Ancak işlem hattındaki etkinliklerin zamanlanması, tetikleyici kaynaklarına ayrılmıştır. Data Factory'nin geçerli sürümü üzerindeki işlem hatlarını, tetikleyiciler aracılığıyla ayrı olarak zamanladığınız “iş akışı birimleri” olarak düşünebilirsiniz. <br/><br/>Data Factory'nin geçerli sürümünde, işlem hatlarının yürütüleceği zaman “pencereleri” yoktur. Data Factory V1’in startTime, endTime, ve isPaused kavramları, Data Factory'nin geçerli sürümünde bulunmaz. Daha fazla bilgi bkz. [İşlem hattı yürütme ve tetikleyicileri](concepts-pipeline-execution-triggers.md) ve [İşlem hatları ve etkinlikler](concepts-pipelines-activities.md). |
-| Etkinlikler | Etkinlikler, bir işlem hattındaki verilerinizde gerçekleştirilecek eylemleri tanımlar. Veri taşıma (kopyalama etkinliği) ve veri dönüştürme etkinlikleri (Hive, Pig ve MapReduce gibi) desteklenir. | Geçerli Data Factory sürümünde, etkinlikler bir işlem hattının içinde tanımlanmış eylemlerdir. Data Factory geçerli sürümü, yeni [Denetim akışı etkinliklerini](concepts-pipelines-activities.md#control-activities)tanıtır. Bu etkinlikleri denetim akışında (döngü ve dal oluşturma) kullanırsınız. V1’de desteklenen veri taşıma ve veri dönüştürmek etkinlikleri, geçerli sürümde de desteklenir. Geçerli sürümde dönüşüm etkinliklerini veri kümelerini kullanmadan da tanımlayabilirsiniz. |
+| Olaylar | Etkinlikler, bir işlem hattındaki verilerinizde gerçekleştirilecek eylemleri tanımlar. Veri taşıma (kopyalama etkinliği) ve veri dönüştürme etkinlikleri (Hive, Pig ve MapReduce gibi) desteklenir. | Geçerli Data Factory sürümünde, etkinlikler bir işlem hattının içinde tanımlanmış eylemlerdir. Data Factory geçerli sürümü, yeni [Denetim akışı etkinliklerini](concepts-pipelines-activities.md#control-flow-activities)tanıtır. Bu etkinlikleri denetim akışında (döngü ve dal oluşturma) kullanırsınız. V1’de desteklenen veri taşıma ve veri dönüştürmek etkinlikleri, geçerli sürümde de desteklenir. Geçerli sürümde dönüşüm etkinliklerini veri kümelerini kullanmadan da tanımlayabilirsiniz. |
 | Karma veri taşıma ve etkinlik dağıtma | Adı Integration Runtime olarak değişen [Veri Yönetimi Ağ Geçidi](v1/data-factory-data-management-gateway.md), şirket içi ile bulut arasında veri taşıma desteği sunuyordu.| Veri Yönetimi Ağ Geçidi artık Şirket İçinde Barındırılan Integration Runtime olarak adlandırılmaktadır. V1’deki özelliklerin aynısını sunar. <br/><br/> Data Factory'nin geçerli sürümündeki Azure-SSIS Integration Runtime, bulutta SQL Server Integration Services (SSIS) dağıtımını ve çalıştırılmasını destekler. Daha fazla bilgi için bkz. [Azure Data Factory'de tümleştirme çalışma zamanı](concepts-integration-runtime.md).|
 | Parametreler | NA | Parametreler, işlem hatlarında tanımlanan salt okunur yapılandırma ayarlarının anahtar-değer çiftleridir. İşlem hattını el ile çalıştırırken, bağımsız değişkenleri parametrelere geçirebilirsiniz. Bir zamanlayıcı tetikleyicisi kullanıyorsanız, tetikleyici de parametrelere ilişkin değerleri geçirebilir. İşlem hattındaki etkinlikler parametre değerlerini kullanır.  |
 | İfadeler | Data Factory V1, veri seçimi sorgularında ve etkinlik/veri kümesi özelliklerinde işlevleri ve sistem değişkenlerini kullanmanızı sağlar. | Data Factory'nin geçerli sürümünde, ifadeleri JSON dizesi değerinin tüm kısımlarında kullanabilirsiniz. Daha fazla bilgi için bkz. [Data Factory'nin geçerli sürümünde ifadeler ve işlevler](control-flow-expression-language-functions.md).|
@@ -113,7 +113,7 @@ Geçerli sürümdeki özel etkinlikte .NET arabirimi uygulamanız gerekmez. Doğ
 
 Daha fazla bilgi için bkz. [Data Factory ve sürüm 1’de özel etkinlikler arasındaki farklar](transform-data-using-dotnet-custom-activity.md#compare-v2-v1).
 
-## <a name="sdks"></a>SDK'lar
+## <a name="sdks"></a>SDK’lar
  Data Factory'nin geçerli sürümü işlem hatlarını yazmak, yönetmek ve izlemek için kullanılabilen daha geniş SDK seçenekleri sunar.
 
 - **.NET SDK**: .NET SDK, geçerli sürüm için güncelleştirilmiştir.

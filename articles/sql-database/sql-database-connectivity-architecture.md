@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 07/02/2019
-ms.openlocfilehash: 2140216a27d9c903495da4f7b43f6fdfda62591e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b3b735f7ee644bb017756f3d6378e625fa66d448
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826903"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280785"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL bağlantı mimarisi
 
@@ -54,6 +54,10 @@ Azure içinden bağlanıyorsanız bağlantılarınız, varsayılan olarak `Redir
 Azure dışından bağlanıyorsanız, bağlantılarınızın varsayılan olarak `Proxy` bağlantı ilkesi vardır. `Proxy` ilkesi, TCP oturumunun Azure SQL veritabanı ağ geçidi aracılığıyla ve sonraki tüm paketlerin ağ geçidiyle akış üzerinden kurulduğu anlamına gelir. Aşağıdaki diyagramda bu trafik akışı gösterilmektedir.
 
 ![mimariye genel bakış](./media/sql-database-connectivity-architecture/connectivity-onprem.png)
+
+> [!IMPORTANT]
+> Ayrıca [, dac Ile bağlanmayı](https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators?view=sql-server-2017#connecting-with-dac) etkinleştirmek için 14000-14999 bağlantı noktalarını açın
+
 
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>Azure SQL Veritabanı ağ geçidi IP adresleri
 

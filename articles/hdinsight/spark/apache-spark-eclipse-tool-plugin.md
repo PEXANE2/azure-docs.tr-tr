@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/30/2017
-ms.openlocfilehash: 7e320b4a0166ffad3ba62c80ad7667c626acb136
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6268256c9be26ef3e7e1061eef7cdb3b3f7d31db
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494679"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286947"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>HDInsight kümesi için Apache Spark uygulamalar oluşturmak üzere Azure Toolkit for Eclipse kullanma
 
@@ -84,7 +84,10 @@ Bir normal kümeyi, ambarı yönetilen Kullanıcı adı kullanarak bağlayabilir
    > [!NOTE]  
    > Küme hem Azure abonelikte hem de bir kümeye bağlandığında bağlı depolama anahtarını, Kullanıcı adını ve parolayı kullanırız.
    > Azure Explorer depolama hesaplarını ![](./media/apache-spark-eclipse-tool-plugin/storage-explorer-in-Eclipse.png)
-
+   >
+   > Yalnızca klavye kullanıcısı için, geçerli odak **depolama anahtaryken**, iletişim kutusunda bir sonraki alana odaklanmak için **CTRL + TAB** tuşlarını kullanmanız gerekir.
+   
+   
 1. Giriş bilgileri doğru ise, Tamam düğmesine tıkladıktan sonra **HDInsight** düğümünde bağlantılı bir küme görebilirsiniz. Artık, bu bağlantılı kümeye bir uygulama gönderebilirsiniz.
 
    ![Azure Explorer HDI bağlantılı kümesi](./media/apache-spark-eclipse-tool-plugin/hdinsight-linked-cluster.png)
@@ -230,7 +233,7 @@ Spark Scala uygulamalarını iş istasyonunuzda yerel olarak çalıştırmak iç
 
 Yerel Spark Scala uygulamasını bir Windows bilgisayarında çalıştırırken [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356)' de anlatıldığı gibi bir özel durum alabilirsiniz. Bu özel durum, Windows 'ta **Winutils. exe** eksik olduğu için oluşur.
 
-Bu hatayı çözmek için [yürütülebilir dosyayı](https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe) **C:\wintıı s\bin**gibi bir konuma indirmeniz ve sonra **HADOOP_HOME** ortam değişkenini ekleyip değişkenin değerini **c\winutils**olarak ayarlamanız gerekir.
+Bu hatayı çözmek için [yürütülebilir dosyayı](https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe) **C:\wintıı s\bin**gibi bir konuma indirmeniz ve sonra **HADOOP_HOME** ortam değişkenini eklemeniz ve değişkenin değerini **c\winutils**olarak ayarlamanız gerekir.
 
 ### <a name="run-a-local-spark-scala-application"></a>Yerel Spark Scala uygulaması çalıştırma
 

@@ -1,6 +1,6 @@
 ---
-title: B2B konuk kullanıcıların - Azure Active Directory kimlik doğrulama bir kerelik geçiş kodu | Microsoft Docs
-description: Bir Microsoft hesabına gerek olmadan B2B konuk kullanıcıların kimliğini doğrulamak için e-posta bir kerelik geçiş kodu kullanma
+title: B2B Konuk kullanıcıları için bir kerelik geçiş kodu kimlik doğrulaması-Azure AD
+description: Bir Microsoft hesabı ihtiyaç duymadan B2B Konuk kullanıcılarının kimliğini doğrulamak için bir kerelik e-posta geçiş kodu kullanma.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,75 +12,75 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13808871d67bb47dce82c5a3493fd89b0dfe1dcd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d6d897bb983eb06baa4f1573f1f875eea8bb8afc
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65952852"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272317"
 ---
-# <a name="email-one-time-passcode-authentication-preview"></a>E-posta bir kerelik geçiş kodu kimlik doğrulama (Önizleme)
+# <a name="email-one-time-passcode-authentication-preview"></a>E-posta bir kerelik geçiş kodu kimlik doğrulaması (Önizleme)
 
 |     |
 | --- |
-| E-posta bir kerelik geçiş kodu bir Azure Active Directory genel Önizleme özelliğidir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
+| E-posta bir kerelik geçiş kodu, Azure Active Directory genel önizleme özelliğidir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
 |     |
 
-Bu makalede, e-posta B2B konuk kullanıcıların bir kerelik geçiş kodu kimlik doğrulamasını etkinleştirmek açıklar. E-posta bir kerelik geçiş kodu Özelliği Azure AD gibi başka bir yolla, Microsoft hesabı (MSA) veya Google Federasyon doğrulanamayan B2B konuk kullanıcıların kimliğini doğrular. Bir kerelik geçiş kodu ile kimlik doğrulaması, bir Microsoft hesabı oluşturmaya gerek yoktur. Konuk kullanıcı davet redeems veya paylaşılan bir kaynağa erişirken kendi e-posta adresine gönderilen geçici bir kod isteyebilirler. Ardından oturum açarken devam etmek için bu kodu girin.
+Bu makalede, B2B Konuk kullanıcıları için bir kerelik geçiş kodu kimlik doğrulamasının nasıl etkinleştirileceği açıklanır. E-posta bir kerelik geçiş kodu özelliği, Azure AD, Microsoft hesabı (MSA) veya Google Federasyonu gibi diğer yollarla kimlik doğrulamasından geçiyorlarsa B2B Konuk kullanıcılarının kimliğini doğrular. Tek seferlik geçiş kodu kimlik doğrulamasıyla Microsoft hesabı oluşturmanız gerekmez. Konuk Kullanıcı bir davetiyeyi bir davet edebilir veya paylaşılan bir kaynağa eriştiğinde, kendi e-posta adreslerine gönderilen geçici bir kod isteyebilir. Sonra oturum açmaya devam etmek için bu kodu girer.
 
-Bu özellik şu anda Önizleme için kullanılabilir (bkz [Önizleme seçim](#opting-in-to-the-preview) aşağıda). Önizlemeden sonra bu özellik varsayılan olarak tüm kiracılar için açık olması.
+Bu özellik şu anda önizleme için kullanılabilir (bkz. aşağıdaki [önizlemede bulunan](#opting-in-to-the-preview) ). Önizleme sonrasında, bu özellik tüm kiracılar için varsayılan olarak açılır.
 
 > [!NOTE]
-> Bir kerelik geçiş kodu kullanıcılar Kiracı bağlamını içeren bir bağlantıyı kullanarak oturum gerekir (örneğin, `https://myapps.microsoft.com/?tenantid=<tenant id>` veya `https://portal.azure.com/<tenant id>`, doğrulanmış bir etki alanı söz konusu olduğunda veya `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com`). Kiracı bağlam içerirler sürece uygulamalarına ve kaynaklarına doğrudan bağlantılar da çalışır. Konuk kullanıcıları hiçbir Kiracı bağlamına sahip uç noktaları kullanarak oturum şu anda belirleyemiyoruz. Örneğin, kullanarak `https://myapps.microsoft.com`, `https://portal.azure.com`, veya ekipler ortak uç nokta bir hataya neden olur. 
+> Bir kerelik geçiş kodu kullanıcılarının kiracı bağlamını içeren bir bağlantı kullanarak oturum açması gerekir (örneğin, `https://myapps.microsoft.com/?tenantid=<tenant id>` veya `https://portal.azure.com/<tenant id>`ya da doğrulanmış bir etki alanı olması durumunda `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com`). Uygulama ve kaynakların doğrudan bağlantıları, kiracı bağlamını dahil ettikleri sürece da çalışır. Konuk kullanıcılar şu anda kiracı bağlamı olmayan uç noktaları kullanarak oturum açamıyor. Örneğin, `https://myapps.microsoft.com`, `https://portal.azure.com`veya takımlar ortak uç nokta kullanımı bir hataya neden olur. 
 
-## <a name="user-experience-for-one-time-passcode-guest-users"></a>Bir kerelik geçiş kodu Konuk kullanıcılar için kullanıcı deneyimi
-Bir kerelik geçiş kodu ile kimlik doğrulaması, Konuk kullanıcı, doğrudan bağlantısını tıklatarak veya için davet e-posta davetini. Her iki durumda da, Konuk kullanıcının e-posta adresine bir kod gönderilecek tarayıcıda bir ileti gösterir. Konuk kullanıcının seçtiği **kod Gönder**:
+## <a name="user-experience-for-one-time-passcode-guest-users"></a>Bir kerelik geçiş kodu Konuk kullanıcıları için Kullanıcı deneyimi
+Bir kerelik geçiş kodu kimlik doğrulamasıyla, Konuk Kullanıcı doğrudan bağlantıya tıklayarak veya davet e-postasını kullanarak davetinizi kullanabilir. Her iki durumda da tarayıcıda bir ileti, Konuk kullanıcının e-posta adresine bir kod gönderileceğini belirtir. Konuk Kullanıcı, **kodu gönder**' i seçer:
  
    ![Kod Gönder düğmesini gösteren ekran görüntüsü](media/one-time-passcode/otp-send-code.png)
  
-Bir geçiş kodu, kullanıcının e-posta adresine gönderilir. Kullanıcı e-postadan geçiş kodunu alır ve tarayıcı penceresinde girer:
+Kullanıcının e-posta adresine bir geçiş kodu gönderilir. Kullanıcı geçiş kodunu e-postayla alır ve tarayıcı penceresine girer:
  
-   ![Enter kod sayfasını gösteren ekran görüntüsü](media/one-time-passcode/otp-enter-code.png)
+   ![Kod gir sayfasını gösteren ekran görüntüsü](media/one-time-passcode/otp-enter-code.png)
  
-Konuk kullanıcı artık kimliği doğrulanmış ve paylaşılan kaynağı bakın veya oturum devam edin. 
+Artık Konuk kullanıcının kimliği doğrulanır ve paylaşılan kaynağı görebilir veya oturum açmaya devam edebilir. 
 
 > [!NOTE]
-> Bir kerelik geçiş kodlarını 30 dakika için geçerlidir. 30 dakika sonra belirli bir kerelik geçiş kodu artık geçerli değil ve yeni bir kullanıcı isteği göndermelidir. Kullanıcı oturumları, 24 saat sonra süresi dolar. Kaynak eriştiklerinde o tarihten sonra Konuk kullanıcı yeni bir geçiş kodu alır. Özellikle, Konuk kullanıcı, şirketten ayrılması veya artık erişmesi oturum sona ermesi ek güvenlik sağlar.
+> Bir kerelik geçiş kodları 30 dakika için geçerlidir. 30 dakika sonra, belirli bir kerelik geçiş kodu artık geçerli değildir ve kullanıcının yeni bir tane istemesi gerekir. Kullanıcı oturumlarının süresi 24 saat sonra dolacak. Bu süreden sonra, Konuk Kullanıcı kaynağa erişirken yeni bir geçiş kodu alır. Oturum süre sonu, özellikle bir ziyaretçi Kullanıcı şirketten ayrıldığında veya artık erişime ihtiyaç duymuyorsa ek güvenlik sağlar.
 
-## <a name="when-does-a-guest-user-get-a-one-time-passcode"></a>Konuk kullanıcı, bir kerelik geçiş ne zaman elde?
+## <a name="when-does-a-guest-user-get-a-one-time-passcode"></a>Konuk Kullanıcı bir kerelik geçiş kodu ne zaman alır?
 
-Konuk kullanıcı davet redeems veya kendileriyle paylaşılan bir kaynağa bağlantı kullanır, bunlar bir kerelik geçiş durumunda alırsınız:
-- Bir Azure AD hesabı olmadığı 
-- Bir Microsoft hesabına sahip değil 
-- Davet eden Kiracı için Google Federasyon oluşturan ayarlamamış @gmail.com ve @googlemail.com kullanıcılar 
+Konuk Kullanıcı bir daveti bir kez kullanır veya bununla paylaşılan bir kaynağın bağlantısını kullandığında, şu durumlarda bir kerelik geçiş kodu alırlar:
+- Azure AD hesabı yoktur 
+- Microsoft hesabı yoktur 
+- Davet eden kiracı, @gmail.com ve @googlemail.com kullanıcılar için Google Federasyonu 'nı ayarladı 
 
-Davet zaman davet ediyoruz kullanıcı bir kerelik geçiş kodu kimlik doğrulaması kullandığını bir gösterge yoktur. Ancak Konuk kullanıcı oturum açtığında, diğer bir kimlik doğrulama yöntemleri kullanılamaması durumunda bir kerelik geçiş kodu kimlik doğrulama geri dönüş yöntemi olacaktır. 
+Davet sırasında, davet ettiğiniz kullanıcının bir kerelik geçiş kodu kimlik doğrulamasını kullanacağı belirtilecektir. Ancak Konuk Kullanıcı oturum açtığında, başka bir kimlik doğrulama yöntemi kullanılmıyorsa, tek seferlik geçiş kodu kimlik doğrulaması geri dönüş yöntemi olur. 
 
-Giderek Azure portalında bir kerelik geçiş kodlarını kimliğini Konuk kullanıcılar görüntüleyebilir **Azure Active Directory** > **kuruluş ilişkileri**  >   **Diğer kuruluşlardan**.
+Azure portal, **diğer kuruluşlardan kullanıcılara** >  > **kuruluş ilişkilerine** **Azure Active Directory** giderek, tek seferlik Geçiş kodlarıyla kimlik doğrulayan Konuk kullanıcıları görüntüleyebilirsiniz.
 
-![Bir kerelik geçiş kodu OTP kaynak değeriyle ekran görüntüsü](media/one-time-passcode/otp-users.png)
+![Kaynak değeri OTP olan bir kerelik geçiş kodu kullanıcısını gösteren ekran görüntüsü](media/one-time-passcode/otp-users.png)
 
 > [!NOTE]
-> Bir kullanıcı bir kerelik geçiş kodu redeems ve daha sonra bir MSA, Azure AD hesabı veya diğer birleştirilmiş bir hesap edinir, bir kerelik geçiş kodu kullanarak kimlik doğrulaması devam edeceğiz. Kendi kimlik doğrulama yöntemini güncelleştirmek istiyorsanız, Konuk kullanıcı hesabı silin ve bunları yeniden davet edin.
+> Bir Kullanıcı bir kerelik geçiş kodunu ve daha sonra bir MSA, Azure AD hesabını ya da başka bir Federasyon hesabını aldığında, bir kerelik geçiş kodu kullanarak kimlik doğrulamasından devam eder. Kimlik doğrulama yöntemini güncelleştirmek istiyorsanız, Konuk Kullanıcı hesabını silip yeniden davet edebilirsiniz.
 
 ### <a name="example"></a>Örnek
-Konuk kullanıcı alexdoe@gmail.com ayarlanan Google Federasyon olmayan Fabrikam üzere davet edildiği. Alex bir Microsoft hesabı yok. Bunlar, kimlik doğrulaması için bir kerelik geçiş kodu alırsınız.
+Konuk Kullanıcı alexdoe@gmail.com, Google Federasyonu ayarlanmamış olan Fabrikam 'a davet edildi. Alex Microsoft hesabı yok. Kimlik doğrulaması için bir kerelik geçiş kodu alırlar.
 
-## <a name="opting-in-to-the-preview"></a>Önizleme için seçim 
-Bu, etkili olması katılım eylemi için birkaç dakika sürebilir. Bundan sonra yukarıdaki koşulları yerine yalnızca yeni davet edilen kullanıcıların bir kerelik geçiş kodu kimlik doğrulamasını kullanır. Konuk kullanıcılar davet daha önce kullanılan aynı kendi kimlik doğrulama yöntemini kullanmaya devam eder.
+## <a name="opting-in-to-the-preview"></a>Önizlemede düzenleme 
+Kabul etme eyleminin etkili olması birkaç dakika sürebilir. Bundan sonra, yalnızca yukarıdaki koşullara uyan yeni davet edilen kullanıcılar, tek seferlik geçiş kodu kimlik doğrulamasını kullanır. Daha önce bir davetiyeyi kullanan Konuk kullanıcılar aynı kimlik doğrulama yöntemini kullanmaya devam eder.
 
-### <a name="to-opt-in-using-the-azure-ad-portal"></a>Azure AD portalı kullanarak kabul etme
-1.  Oturum [Azure portalında](https://portal.azure.com/) bir Azure AD genel Yöneticisi olarak.
-2.  Gezinti bölmesinde seçin **Azure Active Directory**.
-3.  Altında **Yönet**seçin **kuruluş ilişkileri**.
+### <a name="to-opt-in-using-the-azure-ad-portal"></a>Azure AD portalını kullanmayı kabul etmek için
+1.  [Azure Portal](https://portal.azure.com/) Azure AD Genel Yöneticisi olarak oturum açın.
+2.  Gezinti bölmesinde **Azure Active Directory**' yi seçin.
+3.  **Yönet**altında **Kuruluş ilişkileri**' ni seçin.
 4.  Seçin **ayarları**.
-5.  Altında **etkinleştirme e-posta kerelik geçiş kodu (Önizleme) konuklar için**seçin **Evet**.
+5.  **Konuklar Için tek seferlik geçiş kodunu etkinleştir (Önizleme)** altında **Evet**' i seçin.
  
-### <a name="to-opt-in-using-powershell"></a>PowerShell kullanarak geri çevirmek için
+### <a name="to-opt-in-using-powershell"></a>PowerShell 'i kullanmayı kabul etmek için
 
-İlk olarak, grafik Modülü (AzureADPreview) için Azure AD PowerShell en son sürümünü yüklemeniz gerekir. Ardından B2B ilkeleri zaten mevcut ve uygun komutları çalıştırmak isteyip belirlersiniz.
+İlk olarak, Graph modülünün (AzureADPreview) Azure AD PowerShell 'in en son sürümünü yüklemeniz gerekir. Daha sonra, B2B ilkelerinin zaten mevcut olup olmadığını ve uygun komutları çalıştırıp çalıştırmayacağını belirlersiniz.
 
-#### <a name="prerequisite-install-the-latest-azureadpreview-module"></a>Önkoşul: En son AzureADPreview modülünü yükleme
+#### <a name="prerequisite-install-the-latest-azureadpreview-module"></a>Önkoşul: en son AzureADPreview modülünü yükler
 İlk olarak, hangi modülleri yüklediğinizi denetleyin. Windows PowerShell’i yükseltilmiş yönetici olarak açın (Yönetici olarak çalıştırın) ve aşağıdaki komutu çalıştırın:
  
 ```powershell  
@@ -109,22 +109,22 @@ AzureADPreview modülü, sonraki bir sürüm olduğunu belirten bir ileti olmada
 
 Modülü güvenilir olmayan bir depodan yüklediğinizi belirten bir istem alabilirsiniz. Önceden PSGallery deposunu güvenilir depo olarak ayarlamadıysanız bu oluşur. Modülü yüklemek için **Y** tuşuna basın.
 
-#### <a name="check-for-existing-policies-and-opt-in"></a>Mevcut ilkeler için denetleyin ve kabul et
+#### <a name="check-for-existing-policies-and-opt-in"></a>Mevcut ilkeleri denetleme ve kabul etme
 
-Ardından, aşağıdaki komutu çalıştırarak bir B2BManagementPolicy geçerli olup olmadığını kontrol edin:
+Sonra, B2BManagementPolicy Şu anda mevcut olup olmadığını kontrol ederek aşağıdakileri çalıştırın:
 
 ```powershell 
 $currentpolicy =  Get-AzureADPolicy | ?{$_.Type -eq 'B2BManagementPolicy' -and $_.IsOrganizationDefault -eq $true} | select -First 1
 $currentpolicy -ne $null
 ```
-- Çıkış False ise, ilke şu anda mevcut değil. Yeni bir B2BManagementPolicy oluşturun ve önizleme için aşağıdaki komutu çalıştırarak kabul et:
+- Çıkış yanlışsa, ilke şu anda mevcut değildir. Yeni bir B2BManagementPolicy oluşturun ve aşağıdakileri çalıştırarak önizlemeyi kabul edin:
 
    ```powershell 
    $policyValue=@("{`"B2BManagementPolicy`":{`"PreviewPolicy`":{`"Features`":[`"OneTimePasscode`"]}}}")
    New-AzureADPolicy -Definition $policyValue -DisplayName B2BManagementPolicy -Type B2BManagementPolicy -IsOrganizationDefault $true
    ```
 
-- Çıkış True ise, B2BManagementPolicy ilke şu anda mevcut. Güncelleştirme ilkesi ve önizleme için katılım için şu komutu çalıştırın:
+- Çıkış doğruysa B2BManagementPolicy ilkesi Şu anda mevcuttur. İlkeyi güncelleştirmek ve önizlemeye kabul etmek için aşağıdakileri çalıştırın:
   
    ```powershell 
    $policy = $currentpolicy.Definition | ConvertFrom-Json
@@ -133,25 +133,25 @@ $currentpolicy -ne $null
    Set-AzureADPolicy -Definition $updatedPolicy -Id $currentpolicy.Id
    ```
 
-## <a name="opting-out-of-the-preview-after-opting-in"></a>Seçim sonrasında Önizleme dışında seçim yapma
-Bu, geri çevirme eylemi etkili olması birkaç dakika sürebilir. Önizlemeyi Kapat, bir kerelik geçiş kodu yararlandınız tüm Konuk kullanıcılar oturum açmanız mümkün olmayacaktır. Konuk kullanıcı silebilir ve odaklanmalarını başka bir kimlik doğrulama yöntemini kullanarak tekrar oturum açmak kullanıcıya yeniden davet edin.
+## <a name="opting-out-of-the-preview-after-opting-in"></a>Geri alındıktan sonra önizlemeyi kapatma
+Geri çevirme eyleminin etkili olması birkaç dakika sürebilir. Önizlemeyi kapatırsanız, bir kerelik geçiş kodu kullanan tüm konuk kullanıcılar oturum açamaz. Konuk kullanıcıyı silebilir ve kullanıcıyı, başka bir kimlik doğrulama yöntemi kullanarak tekrar oturum açmasını sağlamak üzere yeniden davet edebilirsiniz.
 
-### <a name="to-turn-off-the-preview-using-the-azure-ad-portal"></a>Azure AD portalı kullanarak önizlemesini Kapat için
-1.  Oturum [Azure portalında](https://portal.azure.com/) bir Azure AD genel Yöneticisi olarak.
-2.  Gezinti bölmesinde seçin **Azure Active Directory**.
-3.  Altında **Yönet**seçin **kuruluş ilişkileri**.
+### <a name="to-turn-off-the-preview-using-the-azure-ad-portal"></a>Azure AD portalını kullanarak önizlemeyi devre dışı bırakmak için
+1.  [Azure Portal](https://portal.azure.com/) Azure AD Genel Yöneticisi olarak oturum açın.
+2.  Gezinti bölmesinde **Azure Active Directory**' yi seçin.
+3.  **Yönet**altında **Kuruluş ilişkileri**' ni seçin.
 4.  Seçin **ayarları**.
-5.  Altında **etkinleştirme e-posta kerelik geçiş kodu (Önizleme) konuklar için**seçin **Hayır**.
+5.  **Konuklar Için tek seferlik geçiş kodunu etkinleştir (Önizleme)** altında **Hayır**' ı seçin.
 
-### <a name="to-turn-off-the-preview-using-powershell"></a>PowerShell kullanarak önizlemesini Kapat için
-Henüz yoksa, en son AzureADPreview modülünde yükleyin (bkz [önkoşul: En son AzureADPreview modülünü yükleme](#prerequisite-install-the-latest-azureadpreview-module) yukarıda). Ardından, bir kerelik geçiş kodu Önizleme İlkesi şu anda aşağıdaki komutu çalıştırarak var olduğundan emin olun:
+### <a name="to-turn-off-the-preview-using-powershell"></a>PowerShell 'i kullanarak önizlemeyi devre dışı bırakmak için
+Zaten yoksa en son AzureADPreview modülünü yükleyebilirsiniz (bkz. [Önkoşul: Yukarıdaki en son AzureADPreview modülünü Install](#prerequisite-install-the-latest-azureadpreview-module) ). Ardından, aşağıdakileri çalıştırarak tek seferlik geçiş kodu önizleme ilkesinin mevcut olduğunu doğrulayın:
 
 ```powershell 
 $currentpolicy = Get-AzureADPolicy | ?{$_.Type -eq 'B2BManagementPolicy' -and $_.IsOrganizationDefault -eq $true} | select -First 1
 ($currentPolicy -ne $null) -and ($currentPolicy.Definition -like "*OneTimePasscode*")
 ```
 
-Çıkış True ise, aşağıdaki komutu çalıştırarak önizlemeden iyileştirilmiş:
+Çıkış doğruysa, aşağıdakileri çalıştırarak önizlemeyi geri çevirin:
 
 ```powershell 
 $policy = $currentpolicy.Definition | ConvertFrom-Json

@@ -1,5 +1,5 @@
 ---
-title: Azure AD Uygulama Ara Sunucusu için ağ topolojisi konuları | Microsoft Docs
+title: Azure AD Uygulama Ara Sunucusu için ağ topolojisi konuları
 description: Azure AD uygulama ara sunucusu kullanırken, ağ topolojisi konuları kapsar.
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7320df63885f562b4724285a3ca5c3cf6ea2a52
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 075b2c92168afe0c366608266c38b14394b73cff
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381454"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275479"
 ---
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>Azure Active Directory Uygulama proxy'si kullanılırken ağ topolojisi hakkında önemli noktalar
 
@@ -80,17 +80,17 @@ Kurumsal ağınız ile Azure arasında adanmış bir VPN veya ExpressRoute bağl
 
 Kullanıcılarınızın uygulama proxy'si hizmeti arasında bağlantı kontrol etmek için yapabileceğiniz çok az yoktur. Kullanıcılar, uygulamalarınıza bir ev ağı, kahve dükkanı veya farklı bir ülke/bölge aracılığıyla erişebilir. Bunun yerine, uygulama proxy'si hizmeti uygulaması Ara sunucusu bağlayıcıları bağlantılara iyileştirebilirsiniz. Ortamınızı şu desenlerden eklemeyi göz önünde bulundurun.
 
-### <a name="pattern-1-put-the-connector-close-to-the-application"></a>1\. Model: Bağlayıcıyı uygulamaya kapat
+### <a name="pattern-1-put-the-connector-close-to-the-application"></a>Desen 1: bağlayıcı uygulamayı yakın yerleştirin
 
 Müşteri ağ yakın hedef uygulama Bağlayıcısı'nı koyun. Bu yapılandırma bağlayıcı ve uygulamayı Kapat olduğundan topografi diyagram 3 adımda en aza indirir.
 
 Bağlayıcınızı görebilmesi için etki alanı denetleyicisi gerekiyorsa, bu düzen avantajlıdır. Çoğu senaryo için iyi çalıştığı için müşterilerimizin çoğu bu düzeni kullanın. Bu düzen Ayrıca hizmet Bağlayıcısı'nı arasındaki trafiğin iyileştirilmesi 2 deseni ile birleştirilebilir.
 
-### <a name="pattern-2-take-advantage-of-expressroute-with-microsoft-peering"></a>2\. Model: Microsoft eşlemesiyle ExpressRoute avantajlarından yararlanın
+### <a name="pattern-2-take-advantage-of-expressroute-with-microsoft-peering"></a>2\. Desen: Microsoft eşlemesi ile ExpressRoute yararlanın
 
 Microsoft eşlemesi ile ayarlanan ExpressRoute varsa, uygulama ara sunucusu Bağlayıcısı'nı arasındaki trafik için daha hızlı ExpressRoute bağlantısı kullanabilirsiniz. Bağlayıcı, uygulamanın yakın ağınıza açık durumdadır.
 
-### <a name="pattern-3-take-advantage-of-expressroute-with-private-peering"></a>3\. Model: Özel eşleme ile ExpressRoute avantajlarından yararlanın
+### <a name="pattern-3-take-advantage-of-expressroute-with-private-peering"></a>3\. Desen: özel eşdüzey hizmet sağlama ile ExpressRoute yararlanın
 
 Adanmış bir VPN veya ExpressRoute Azure ve şirket ağınız arasında özel eşlemesi ile ayarlanan varsa, başka bir seçeneğiniz vardır. Bu yapılandırmada, Azure sanal ağında genellikle bir şirket ağına uzantı olarak kabul edilir. Bu nedenle Azure veri merkezinde bağlayıcıyı yükleyin ve yine de bağlayıcı uygulama bağlantının düşük gecikme süresi gereksinimleri karşılaması.
 
@@ -112,15 +112,15 @@ Bu bölümde, bazı yaygın senaryolar üzerinden inceleyeceğiz. Varsayımında
 
 Bu senaryolar için her bağlantı bir "durak" arayın ve bunları daha kolay tartışmak için sayı:
 
-- **Atlama 1**: Kullanıcı, uygulama proxy 'Si hizmeti
-- **Atlama 2**: Uygulama proxy hizmeti için uygulama ara sunucusu Bağlayıcısı
-- **Atlama 3**: Hedef uygulamaya uygulama proxy Bağlayıcısı 
+- **1 atlama**: kullanıcıya uygulama proxy'si hizmeti
+- **2 atlama**: uygulama ara Sunucusu hizmetine uygulama Proxy Bağlayıcısı
+- **3 atlama**: Hedef uygulama için uygulama Proxy Bağlayıcısı 
 
 ### <a name="use-case-1"></a>Kullanım örneği 1
 
-**Senaryon** Uygulama, ABD 'deki bir kuruluşun ağında, aynı bölgedeki kullanıcılarla birlikte bulunur. Herhangi bir ExpressRoute veya VPN kurumsal ağ ve Azure veri merkezi arasında yok.
+**Senaryo:** kullanıcılarla aynı bölgede bir kuruluşun ağındaki ABD uygulamasıdır. Herhangi bir ExpressRoute veya VPN kurumsal ağ ve Azure veri merkezi arasında yok.
 
-**Önerilen** Önceki bölümde açıklanan 1. kalıbı izleyin. İçin gecikme süresini kısaltmak, ExpressRoute kullanılarak gerekirse göz önünde bulundurun.
+**Öneri:** önceki bölümde açıklanan izleyin düzeni, 1. İçin gecikme süresini kısaltmak, ExpressRoute kullanılarak gerekirse göz önünde bulundurun.
 
 Bu basit bir desendir. Atlama 3, bağlayıcı uygulama yakın yerleştirerek iyileştirin. Bağlayıcı genellikle görebilmesi KCD işlemleri gerçekleştirmek için bir veri merkezine ve uygulama ile birlikte yüklenir ayrıca doğal bir seçim olmasıdır.
 
@@ -128,9 +128,9 @@ Bu basit bir desendir. Atlama 3, bağlayıcı uygulama yakın yerleştirerek iyi
 
 ### <a name="use-case-2"></a>Kullanım örneği 2
 
-**Senaryon** Uygulama, ABD 'deki bir kuruluşun ağında, kullanıcıların küresel olarak yayılmaktadır. Herhangi bir ExpressRoute veya VPN kurumsal ağ ve Azure veri merkezi arasında yok.
+**Senaryo:** ABD'deki, bir kuruluşun ağındaki dünya çapında yayılmış kullanıcılarla uygulamasıdır. Herhangi bir ExpressRoute veya VPN kurumsal ağ ve Azure veri merkezi arasında yok.
 
-**Önerilen** Önceki bölümde açıklanan 1. kalıbı izleyin.
+**Öneri:** önceki bölümde açıklanan izleyin düzeni, 1.
 
 Yeniden yaygın atlama 3, en iyi duruma getirme Bağlayıcısı'nı uygulama yakın yerleştirdiğiniz modelidir. Atlama 3 tümü aynı bölge içinde ise genellikle pahalı değil. Ancak, dünya genelinde kullanıcılar uygulama ara Sunucusu örneğinde ABD erişmeniz gerekir çünkü atlama 1 kullanıcının olduğu bağlı olarak, daha pahalı olabilir. Bu, herhangi bir proxy çözümüne genel dağılmış kullanıcılar ile ilgili benzer özelliklere sahip olduğunu hatalarının ayıklanabileceğini belirtmekte yarar.
 
@@ -138,9 +138,9 @@ Yeniden yaygın atlama 3, en iyi duruma getirme Bağlayıcısı'nı uygulama yak
 
 ### <a name="use-case-3"></a>Kullanım örneği 3
 
-**Senaryon** Uygulama, ABD 'deki bir kuruluşun ağında. Microsoft eşlemesi ile ExpressRoute, Azure ve şirket ağı arasında yok.
+**Senaryo:** ABD'deki bir kuruluşun ağındaki uygulamasıdır. Microsoft eşlemesi ile ExpressRoute, Azure ve şirket ağı arasında yok.
 
-**Önerilen** Önceki bölümde açıklanan 1. ve 2. desenleri izleyin.
+**Öneri:** desenleri 1 ve 2 ' nin önceki bölümde açıklanan izleyin.
 
 İlk olarak, bağlayıcı olabildiğince uygulamaya mümkün olduğunca yakın yerleştirin. Ardından, sistem otomatik olarak 2 atlama için Expressroute'u kullanır.
 
@@ -150,9 +150,9 @@ Microsoft eşleme ExpressRoute bağlantı kullanıyorsanız, proxy ve bağlayıc
 
 ### <a name="use-case-4"></a>Kullanım örneği 4
 
-**Senaryon** Uygulama, ABD 'deki bir kuruluşun ağında. ExpressRoute özel eşlemesi, Azure ve şirket ağı arasında yok.
+**Senaryo:** ABD'deki bir kuruluşun ağındaki uygulamasıdır. ExpressRoute özel eşlemesi, Azure ve şirket ağı arasında yok.
 
-**Önerilen** Önceki bölümde açıklanan 3. kalıbı izleyin.
+**Öneri:** izleyin düzeni 3, önceki bölümde açıklanan.
 
 Azure veri merkezine ExpressRoute özel eşlemesi üzerinden şirket ağına bağlı Bağlayıcısı'nı koyun.
 
@@ -162,9 +162,9 @@ Bağlayıcısı Azure veri merkezinde yerleştirilebilir. Bağlayıcı görebilm
 
 ### <a name="use-case-5"></a>Kullanım örneği 5
 
-**Senaryon** Uygulama, uygulama proxy 'Si örneği ve ABD 'deki çoğu kullanıcı ile AB 'deki bir kuruluşun ağında bulunur.
+**Senaryo:** bir kuruluşun ağındaki uygulama ara sunucusu örneği ve kullanıcıların çoğu ABD'deki AB uygulamasıdır.
 
-**Önerilen** Bağlayıcıyı uygulamanın yanına yerleştirin. Uygulama Ara sunucusu örneği aynı bölgede olması erişen ABD kullanıcı için atlama 1 çok pahalı değil. Atlama 3 optimize edilmiştir. Atlama 2 iyileştirmek için ExpressRoute kullanmayı düşünün.
+**Öneri:** uygulamayı yakın Bağlayıcısı'nı koyun. Uygulama Ara sunucusu örneği aynı bölgede olması erişen ABD kullanıcı için atlama 1 çok pahalı değil. Atlama 3 optimize edilmiştir. Atlama 2 iyileştirmek için ExpressRoute kullanmayı düşünün.
 
 ![Diyagram, Avrupa 'daki ABD, bağlayıcı ve uygulamadaki kullanıcıları ve proxy 'yi gösterir](./media/application-proxy-network-topology/application-proxy-pattern5b.png)
 

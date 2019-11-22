@@ -1,6 +1,6 @@
 ---
 title: Azure Izleyici tanılama günlüklerine biçim değişikliğine hazırlanma
-description: Azure tanılama günlükleri, 1 Kasım 2018 ' de Append blob 'ları kullanacak şekilde taşınacak.
+description: 1 Kasım 2018 ' de ekleme bloblarını kullanacak şekilde değiştirilen yeni Azure tanılama günlüklerini işlemek için, bu etkiyi ve araçlarınızın nasıl güncelleştirileceğini açıklar.
 author: johnkemnetz
 services: monitoring
 ms.service: azure-monitor
@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: a5589828570455c61f857dbeadc896e8fef27178
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 5e71f4c590e4eafea5a2c6ad52b8df8c7dcf3814
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71258393"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307059"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-diagnostic-logs-archived-to-a-storage-account"></a>Azure Izleyici tanılama günlüklerinde bir depolama hesabına arşivlenen biçim değişikliğine hazırlanma
 
 > [!WARNING]
-> [Azure Kaynak tanılama günlüklerini veya ölçümlerini](./../../azure-monitor/platform/archive-diagnostic-logs.md) , [günlük profillerini kullanarak bir depolama hesabına](./../../azure-monitor/platform/archive-activity-log.md)kaynak tanılama ayarlarını ya da etkinlik günlüklerini kullanarak bir depolama hesabına gönderiyorsanız, depolama hesabındaki VERILERIN biçimi, üzerinde JSON satırları olarak değişir Kas. 1, 2018. Aşağıdaki yönergeler etkisini ve yeni biçimi işlemek için araçlarınızın nasıl güncelleşmesini açıklamaktadır. 
+> [Azure Kaynak tanılama günlüklerini veya ölçümlerini](./../../azure-monitor/platform/archive-diagnostic-logs.md) , [günlük profillerini kullanarak bir depolama hesabına](./../../azure-monitor/platform/archive-activity-log.md)kaynak tanılama ayarlarını ya da etkinlik günlüklerini kullanarak bir depolama hesabına gönderiyorsanız, depolama hesabındaki verilerin BIÇIMI, Kasım 'da JSON satırları olarak değişir. 1, 2018. Aşağıdaki yönergeler etkisini ve yeni biçimi işlemek için araçlarınızın nasıl güncelleşmesini açıklamaktadır. 
 >
 > 
 
-## <a name="what-is-changing"></a>Yapılacak değişiklikler
+## <a name="what-is-changing"></a>Değişen
 
 Azure Izleyici, Azure Izleyici 'de bir Azure depolama hesabına, Event Hubs ad alanına veya bir Log Analytics çalışma alanına kaynak Tanılama verileri ve etkinlik günlüğü verileri göndermenizi sağlayan bir özellik sunar. Bir sistem performansı sorununa yönelik olarak, **1 kasım 2018 ' de 12:00 gece yarısı UTC** , blob depolamaya gönderilen günlük verilerinin biçimi değişecektir. Blob depolamadan veri okuyan bir araç varsa, yeni veri biçimini anlamak için araç araçlarınızı güncelleştirmeniz gerekir.
 
@@ -45,7 +45,7 @@ Bu değişiklikten yalnızca şunları yaptıysanız etkilenmiş olursunuz:
 1. , Bir kaynak tanılama ayarı kullanarak bir Azure depolama hesabına günlük verileri gönderiyor ve
 2. Depolama alanındaki bu günlüklerin JSON yapısına bağlı olan araçları izleyin.
  
-Bir Azure depolama hesabına veri gönderen kaynak tanılama ayarlarınıza sahip olup olmadığını belirlemek için portalın **izleyici** bölümüne gidebilir, **Tanılama ayarları**' na tıklayabilir ve tanısı olan tüm kaynakları belirleyebilirsiniz  **Durum** **etkin**olarak ayarlandı:
+Bir Azure depolama hesabına veri gönderen kaynak tanılama ayarlarınıza sahip olup olmadığını belirlemek için portalın **izleyici** bölümüne gidebilir, **Tanılama ayarları**' na tıklayabilir ve **Tanılama durumu** **etkin**olarak ayarlanmış olan tüm kaynakları belirleyebilirsiniz:
 
 ![Azure Izleyici Tanılama ayarları dikey penceresi](./media/diagnostic-logs-append-blobs/portal-diag-settings.png)
 

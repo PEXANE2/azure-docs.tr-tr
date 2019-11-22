@@ -1,6 +1,7 @@
 ---
-title: Azure ağ izleyicisinde sorunları giderme kaynak giriş | Microsoft Docs
-description: Bu sayfada Ağ İzleyicisi sorun giderme kaynak özelliklerine genel bakış sunulmaktadır.
+title: Kaynak sorun gidermeye giriş
+titleSuffix: Azure Network Watcher
+description: Bu sayfada ağ Izleyicisi kaynağı sorun giderme özelliklerine genel bir bakış sunulmaktadır
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -14,109 +15,109 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: kumud
-ms.openlocfilehash: 65ce9e7d298131486ae4e5f3584c7975ca81e1ab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 736bbd16456dd0abda3292b9b9e73ea5b941e7ed
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64684240"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277784"
 ---
-# <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Azure ağ izleyicisinde sorunları giderme kaynak giriş
+# <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Azure ağ Izleyicisi 'nde kaynak sorunlarını gidermeye giriş
 
-Sanal ağ geçitleri, şirket içi kaynaklara ve diğer Azure içindeki sanal ağlar arasında bağlantı sağlar. Ağ geçitlerinin ve bağlantılarının izlenmesi, iletişimin kesilmemesini güvence altına alma açısından kritik önem taşır. Ağ İzleyicisi, ağ geçitleri ve bağlantı sorunlarını giderme özelliği sağlar. Özelliği, portal, PowerShell, Azure CLI veya REST API çağrılabilir. Çağrıldığında, Ağ İzleyicisi ağ geçidi veya bağlantı durumunu tanılar ve uygun sonuçlarını döndürür. İstek uzun süren bir işlemdir. Tanılama tamamlandıktan sonra sonuçlar döndürülür.
+Sanal ağ geçitleri, şirket içi kaynaklar ve Azure 'daki diğer sanal ağlar arasında bağlantı sağlar. Ağ geçitlerinin ve bağlantılarının izlenmesi, iletişimin kesilmemesini güvence altına alma açısından kritik önem taşır. Ağ Izleyicisi ağ geçitlerinin ve bağlantıların sorunlarını giderme yeteneği sağlar. Bu özellik Portal, PowerShell, Azure CLı veya REST API aracılığıyla çağrılabilir. Çağrıldığında, ağ Izleyicisi ağ geçidinin veya bağlantının sistem durumunu tanılar ve uygun sonuçları döndürür. İstek, uzun süre çalışan bir işlemdir. Tanı tamamlandıktan sonra sonuçlar döndürülür.
 
 ![portal][2]
 
 ## <a name="results"></a>Sonuçlar
 
-Döndürülen ilk sonuçlar kaynak durumunun genel bir resmini verir. Aşağıdaki bölümde gösterildiği gibi daha ayrıntılı bilgi için kaynaklar sağlanabilir:
+Döndürülen sonuç, kaynağın sistem durumunun genel bir resmini verir. Aşağıdaki bölümde gösterildiği gibi kaynaklar için daha derin bilgiler de sağlanmaktadır:
 
-Sorun giderme API döndürülen değerleri aşağıdaki listede verilmiştir:
+Aşağıdaki liste, sorun giderme API 'SI ile döndürülen değerlerdir:
 
-* **startTime** -sorun giderme API çağrısı başlattığınızda bu değerdir.
-* **endTime** -bu değer sorun giderme bittiğinde saattir.
-* **kod** -tek tanılama hatası olursa uygun değil, değerdir.
-* **Sonuçları** -sonuçlar, bağlantı veya sanal ağ geçidi üzerinde döndürülen sonuç koleksiyonudur.
-    * **Kimliği** -bu değeri hata türüdür.
-    * **Özet** -bu değeri hatasının bir özetidir.
-    * **ayrıntılı** -bu değeri, hatanın ayrıntılı bir açıklamasını sağlar.
-    * **recommendedActions** -bu özellik almak için önerilen eylemleri koleksiyonudur.
-      * **actionText** -bu değer, hangi eylemin yapılacağını açıklayan metni içerir.
-      * **actionUri** -bu değeri URI belgelerine nasıl davranmasını sağlar.
+* **StartTime** -bu değer, sorun giderme API 'si çağrısının başlatıldığı süredir.
+* **BitişZamanı** -bu değer, sorun gidermenin sona erdiği süredir.
+* **Code** -tek bir tanılama hatası varsa bu değer sağlıksız olur.
+* **sonuçlar** -sonuçlar, bağlantıda veya sanal ağ geçidinde döndürülen bir sonuç koleksiyonudur.
+    * **ID** -bu değer hata türüdür.
+    * **Özet** -bu değer hatanın bir özetidir.
+    * **ayrıntılı** -bu değer hatanın ayrıntılı bir açıklamasını sağlar.
+    * **recommendedActions** -bu özellik, gerçekleştirilecek önerilen eylemlerin bir koleksiyonudur.
+      * **ActionText** -bu değer, hangi eylemin yapılacağını açıklayan metni içerir.
+      * **Actionuri** -bu değer, nasıl davranması ile ılgılı belgelere URI sağlar.
       * **actionUriText** -bu değer eylem metninin kısa bir açıklamasıdır.
 
-Aşağıdaki tablolar kullanılabilir olan farklı hata türleri (yukarıdaki listede sonuçlardan kimliğinizle) gösterir ve Hata günlüklerini oluşturur.
+Aşağıdaki tablolarda, kullanılabilir olan farklı hata türleri (önceki listenin sonuçları altında kimlik) ve hata günlükleri oluşturduğunda gösterilmektedir.
 
-### <a name="gateway"></a>Ağ geçidi
+### <a name="gateway"></a>Ağ Geçidi
 
 | Hata türü | Neden | Günlük|
 |---|---|---|
-| NoFault | Herhangi bir hata algılandığında |Evet|
-| GatewayNotFound | Ağ geçidi veya ağ geçidi sağlanmamış bulunamıyor |Hayır|
-| PlannedMaintenance |  Ağ geçidinin bakımda  |Hayır|
-| UserDrivenUpdate | Bir kullanıcı güncelleştirme devam ederken bu hata oluşur. Güncelleştirme, yeniden boyutlandırma işlemi olabilir. | Hayır |
-| VipUnResponsive | Birincil ağ geçidi örneğini bir sistem durumu araştırma hatası nedeniyle erişildiğinde bu hata oluşur. | Hayır |
-| PlatformInActive | Platform ile ilgili bir sorun yoktur. | Hayır|
+| Nofatoult | Hiçbir hata algılanmadığında |Yes|
+| GatewayNotFound | Ağ Geçidi bulunamıyor veya ağ geçidi sağlanmadı |Hayır|
+| PlannedMaintenance |  Ağ Geçidi örneği bakımda  |Hayır|
+| UserDrivenUpdate | Bu hata, bir Kullanıcı güncelleştirmesi devam ederken oluşur. Güncelleştirme bir yeniden boyutlandırma işlemi olabilir. | Hayır |
+| Canlı yanıt verme | Bu hata, ağ geçidinin birincil örneğine bir sistem durumu araştırma hatası nedeniyle ulaşılamadığından oluşur. | Hayır |
+| PlatformInActive | Platformda bir sorun var. | Hayır|
 | ServiceNotRunning | Temel alınan hizmet çalışmıyor. | Hayır|
-| NoConnectionsFoundForGateway | Ağ geçidi üzerinde bağlantı yok. Bu hata yalnızca bir uyarıdır.| Hayır|
-| ConnectionsNotConnected | Bağlantı bağlı değildir. Bu hata yalnızca bir uyarıdır.| Evet|
-| GatewayCPUUsageExceeded | Geçerli CPU kullanımı > %95 ağ geçididir. | Evet |
+| NoConnectionsFoundForGateway | Ağ geçidinde bağlantı yok. Bu hata yalnızca bir uyarıdır.| Hayır|
+| ConnectionsNotConnected | Bağlantılar bağlı değil. Bu hata yalnızca bir uyarıdır.| Yes|
+| Gatewaycpuusageaşıldı | Geçerli ağ geçidi CPU kullanımı %95 >. | Yes |
 
 ### <a name="connection"></a>Bağlantı
 
 | Hata türü | Neden | Günlük|
 |---|---|---|
-| NoFault | Herhangi bir hata algılandığında |Evet|
-| GatewayNotFound | Ağ geçidi veya ağ geçidi sağlanmamış bulunamıyor |Hayır|
-| PlannedMaintenance | Ağ geçidinin bakımda  |Hayır|
-| UserDrivenUpdate | Bir kullanıcı güncelleştirme devam ederken bu hata oluşur. Güncelleştirme, yeniden boyutlandırma işlemi olabilir.  | Hayır |
-| VipUnResponsive | Birincil ağ geçidi örneğini bir sistem durumu araştırma hatası nedeniyle erişildiğinde bu hata oluşur. | Hayır |
+| Nofatoult | Hiçbir hata algılanmadığında |Yes|
+| GatewayNotFound | Ağ Geçidi bulunamıyor veya ağ geçidi sağlanmadı |Hayır|
+| PlannedMaintenance | Ağ Geçidi örneği bakımda  |Hayır|
+| UserDrivenUpdate | Bu hata, bir Kullanıcı güncelleştirmesi devam ederken oluşur. Güncelleştirme bir yeniden boyutlandırma işlemi olabilir.  | Hayır |
+| Canlı yanıt verme | Bu hata, ağ geçidinin birincil örneğine bir sistem durumu araştırma hatası nedeniyle ulaşılamadığından oluşur. | Hayır |
 | ConnectionEntityNotFound | Bağlantı yapılandırması eksik | Hayır |
-| ConnectionIsMarkedDisconnected | Bağlantı "bağlantısız" olarak işaretlendi |Hayır|
-| ConnectionNotConfiguredOnGateway | Temel alınan hizmete yapılandırılmış bağlantı yok. | Evet |
-| ConnectionMarkedStandby | Temel alınan hizmete yedek olarak işaretlenir.| Evet|
-| Authentication | Önceden paylaşılan anahtar uyumsuzluğu | Evet|
-| PeerReachability | Eş Ağ Geçidi erişilebilir değil. | Evet|
-| IkePolicyMismatch | Eş Ağ geçidi, Azure tarafından desteklenen IKE ilkeleri vardır. | Evet|
-| WfpParse Error | WFP günlük ayrıştırılırken bir hata oluştu. |Evet|
+| Connectionımarkedconnected | Bağlantı "bağlantısı kesildi" olarak işaretlendi |Hayır|
+| ConnectionNotConfiguredOnGateway | Temeldeki hizmette bağlantı yapılandırılmamış. | Yes |
+| ConnectionMarkedStandby | Temel alınan hizmet bekleme olarak işaretlendi.| Yes|
+| Kimlik Doğrulaması | Önceden paylaşılmış anahtar uyumsuzluğu | Yes|
+| Peerulaşılabilirlik | Eş ağ geçidine erişilemiyor. | Yes|
+| Ikepolicyuyuşmazlığıdır | Eş ağ geçidinde Azure tarafından desteklenmeyen ıKE ilkeleri vardır. | Yes|
+| WfpParse Error | WFP günlüğü ayrıştırılırken bir hata oluştu. |Yes|
 
 ## <a name="supported-gateway-types"></a>Desteklenen ağ geçidi türleri
 
-Aşağıdaki tablo, hangi ağ geçitleriniz ve bağlantılarınızı desteklenen listeler Ağ İzleyicisi sorun giderme:
+Aşağıdaki tabloda ağ Izleyicisi sorunlarını gidermek için hangi ağ geçitlerinin ve bağlantıların desteklendiği listelenmektedir:
 
 |  |  |
 |---------|---------|
 |**Ağ geçidi türleri**   |         |
-|VPN      | Desteklenen        |
+|VPN      | Destekleniyor        |
 |ExpressRoute | Desteklenmiyor |
 |**VPN türleri** | |
-|Rota tabanlı | Desteklenen|
+|Rota tabanlı | Destekleniyor|
 |İlke tabanlı | Desteklenmiyor|
 |**Bağlantı türleri**||
-|IPSec| Desteklenen|
-|VNet2Vnet| Desteklenen|
+|Bkz| Destekleniyor|
+|VNet2Vnet| Destekleniyor|
 |ExpressRoute| Desteklenmiyor|
 |VPNClient| Desteklenmiyor|
 
 ## <a name="log-files"></a>Günlük dosyaları
 
-Kaynak sorun giderme işlemi tamamlandıktan sonra kaynak sorun giderme günlük dosyalarının bir depolama hesabında depolanır. Aşağıdaki görüntüde hatayla sonuçlanan çağrı örnek içeriğini gösterir.
+Kaynak sorun giderme günlük dosyaları, kaynak sorunlarını giderme işlemi tamamlandıktan sonra bir depolama hesabında depolanır. Aşağıdaki görüntüde, bir hata ile sonuçlanan bir çağrının örnek içerikleri gösterilmektedir.
 
 ![zip dosyası][1]
 
 > [!NOTE]
-> Bazı durumlarda, yalnızca bir alt kümesini günlük dosyaları için depolama yazılır.
+> Bazı durumlarda, günlük dosyalarının yalnızca bir alt kümesi depolamaya yazılır.
 
-Azure depolama hesaplarından dosyaları indirme ile ilgili yönergeler için başvurmak [.NET kullanarak Azure Blob depolamayı kullanmaya başlama](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Kullanılabilen başka bir Depolama Gezgini aracıdır. Depolama Gezgini hakkında daha fazla bilgi aşağıdaki bağlantıda burada bulunabilir: [Depolama Gezgini](https://storageexplorer.com/)
+Azure depolama hesaplarından dosya indirme yönergeleri için bkz. [.NET kullanarak Azure Blob depolamayı kullanmaya başlama](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Kullanılabilecek başka bir araç Depolama Gezgini. Depolama Gezgini hakkında daha fazla bilgi aşağıdaki bağlantıda bulunabilir: [Depolama Gezgini](https://storageexplorer.com/)
 
-### <a name="connectionstatstxt"></a>ConnectionStats.txt
+### <a name="connectionstatstxt"></a>ConnectionStats. txt
 
-**ConnectionStats.txt** genel istatistikleri giriş ve çıkış baytlarını, bağlantı durumu ve bağlantı kuruldu saat bağlantı dosyası içerir.
+**Connectionstats. txt** dosyası, giriş ve çıkış baytları, bağlantı durumu ve bağlantının kurulduğu zaman dahil olmak üzere bağlantının genel istatistiklerini içerir.
 
 > [!NOTE]
-> Sorun giderme API çağrısı sağlıklı döndürürse, zip dosyasında verilen gereken tek şey olduğunu bir **ConnectionStats.txt** dosya.
+> Sorun giderme API 'SI çağrısı sağlıklı döndürüyorsa, ZIP dosyasında döndürülen tek şey bir **Connectionstats. txt** dosyasıdır.
 
-Bu dosyanın içeriğini aşağıdaki örneğe benzer:
+Bu dosyanın içeriği aşağıdaki örneğe benzer:
 
 ```
 Connectivity State : Connected
@@ -126,19 +127,19 @@ Egress Bytes (Since last connected) : 288 B
 Connected Since : 2/1/2017 8:22:06 PM
 ```
 
-### <a name="cpustatstxt"></a>CPUStats.txt
+### <a name="cpustatstxt"></a>CPUStats. txt
 
-**CPUStats.txt** CPU kullanımı ve test sırasında kullanılabilir bellek dosyası içerir.  Bu dosyanın içeriğini aşağıdaki örneğe benzer:
+**Cpustats. txt** dosyası, test SıRASıNDA kullanılabilir CPU kullanımı ve bellek içerir.  Bu dosyanın içeriği aşağıdaki örneğe benzer:
 
 ```
 Current CPU Usage : 0 % Current Memory Available : 641 MBs
 ```
 
-### <a name="ikeerrorstxt"></a>IKEErrors.txt
+### <a name="ikeerrorstxt"></a>Ikeerrors. txt
 
-**IKEErrors.txt** dosyasını içeren IKE hataları izleme sırasında bulunamadı.
+**Ikeerrors. txt** dosyası, izleme sırasında bulunan tüm IKE hatalarını içerir.
 
-Aşağıdaki örnek, bir IKEErrors.txt dosyanın içeriğini gösterir. Hatalarınızı soruna bağlı olarak farklı olabilir.
+Aşağıdaki örnek, bir ıkeerrors. txt dosyasının içeriğini gösterir. Sorununuz soruna bağlı olarak farklı olabilir.
 
 ```
 Error: Authentication failed. Check shared key. Check crypto. Check lifetimes. 
@@ -147,11 +148,11 @@ Error: On-prem device sent invalid payload.
      based on log : IkeFindPayloadInPacket failed with Windows error 13843(ERROR_IPSEC_IKE_INVALID_PAYLOAD)
 ```
 
-### <a name="scrubbed-wfpdiagtxt"></a>Wfpdiag.txt iptal etti
+### <a name="scrubbed-wfpdiagtxt"></a>Scrubbed-wfpdiag. txt
 
-**Scrubbed wfpdiag.txt** wfp günlük günlük dosyası içerir. Bu günlük, paket bırakma ve IKE/AuthIP hata günlük kaydı içerir.
+**Scrubbed-wfpdiag. txt** günlük dosyası WFP günlüğünü içerir. Bu günlük, paket bırakma ve ıKE/AuthIP hatalarının günlüğe kaydedilmesini içerir.
 
-Aşağıdaki örnek Scrubbed wfpdiag.txt dosyanın içeriğini gösterir. Bu örnekte, bağlantısı paylaşılan anahtarı altındaki üçüncü satırından görüldüğü gibi doğru değildi. Aşağıdaki örnek günlük soruna bağlı olabileceği tüm günlük yalnızca bir parçacığı aynıdır.
+Aşağıdaki örnek, Scrubbed-wfpdiag. txt dosyasının içeriğini gösterir. Bu örnekte, bir bağlantının paylaşılan anahtarı doğru değildi, en alttan üçüncü satırdan görünebilirler. Aşağıdaki örnek, bir günlüğün, soruna bağlı olarak uzun sürebilecek bir bütün bir kod parçacıkdır.
 
 ```
 ...
@@ -180,11 +181,11 @@ Aşağıdaki örnek Scrubbed wfpdiag.txt dosyanın içeriğini gösterir. Bu ör
 ...
 ```
 
-### <a name="wfpdiagtxtsum"></a>wfpdiag.txt.Sum
+### <a name="wfpdiagtxtsum"></a>wfpdiag. txt. Sum
 
-**Wfpdiag.txt.sum** arabellekleri ve işlenen olayların gösteren bir günlük dosyasıdır.
+**Wfpdiag. txt. Sum** dosyası, işlenen arabellekleri ve olayları gösteren bir günlüğe kaydedilir.
 
-Aşağıdaki örnekte wfpdiag.txt.sum dosyasının içeriği bulunur.
+Aşağıdaki örnek bir wfpdiag. txt. Sum dosyasının içeriğidir.
 ```
 Files Processed:
     C:\Resources\directory\924336c47dd045d5a246c349b8ae57f2.GatewayTenantWorker.DiagnosticsStorage\2017-02-02T17-34-23\wfpdiag.etl
@@ -212,7 +213,7 @@ Elapsed Time            330 sec
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir ağ geçidi veya ağ geçidi bağlantısı ile ilgili bir sorun Tanıla öğrenmek için bkz. [ağlar arasındaki iletişim sorunlarını tanılama](diagnose-communication-problem-between-networks.md).
+Ağ geçidi veya ağ geçidi bağlantısıyla ilgili bir sorunu tanılamayı öğrenmek için bkz. [ağlar arasındaki iletişim sorunlarını tanılama](diagnose-communication-problem-between-networks.md).
 <!--Image references-->
 
 [1]: ./media/network-watcher-troubleshoot-overview/GatewayTenantWorkerLogs.png

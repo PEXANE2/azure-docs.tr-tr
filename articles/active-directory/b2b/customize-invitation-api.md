@@ -1,5 +1,5 @@
 ---
-title: B2B işbirliği API ve özelleştirme - Azure Active Directory | Microsoft Docs
+title: B2B işbirliği API 'SI ve özelleştirmesi-Azure Active Directory
 description: Azure Active Directory B2B işbirliği, iş ortaklarının kurumsal uygulamalarınıza seçmeli olarak erişmelerini mümkün kılarak şirketler arası ilişkilerinizi destekler.
 services: active-directory
 ms.service: active-directory
@@ -11,57 +11,57 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0369988bc6f6503f9940e6aabccb91ab843d63f5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3a090ee3f9588ff6bff01e12db469bf04407a7fc
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65811879"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272872"
 ---
-# <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory B2B işbirliği API ve özelleştirme
+# <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory B2B işbirliği API 'SI ve özelleştirmesi
 
-Biz, birçok müşteri, kuruluşları için en iyi şekilde davet sürecini özelleştirmek istedikleri bize vardı. API ile bunu yapabilirsiniz. [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation)
+Birçok müşterimiz, davet sürecini kuruluşlar için en iyi şekilde çalışacak şekilde özelleştirmek istediğimizi söyledik. API 'imizde, yalnızca bunu yapabilirsiniz. [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation)
 
-## <a name="capabilities-of-the-invitation-api"></a>Davet API özellikleri
+## <a name="capabilities-of-the-invitation-api"></a>Davet API 'SI özellikleri
 
-API, aşağıdaki özellikleri sunar:
+API aşağıdaki özellikleri sunar:
 
-1. İle bir dış kullanıcıyı davet *herhangi* e-posta adresi.
+1. *Herhangi* bir e-posta adresine sahip bir dış kullanıcıyı davet edin.
 
     ```
     "invitedUserDisplayName": "Sam"
     "invitedUserEmailAddress": "gsamoogle@gmail.com"
     ```
 
-2. Bunlar, davetini kabul ettikten sonra kavuşmak kullanıcılarınıza istediğiniz özelleştirin.
+2. Kullanıcılarınızın davetini kabul ettikten sonra nereye girmesini istediğinizi özelleştirin.
 
     ```
     "inviteRedirectUrl": "https://myapps.microsoft.com/"
     ```
 
-3. Standart bir davet e-posta yoluyla bize gönderebilirsiniz
+3. Standart davet e-postasını bizimle göndermek için seçin
 
     ```
     "sendInvitationMessage": true
     ```
 
-   özelleştirebileceğiniz alıcı ile bir ileti
+   bir alıcıya, özelleştirebileceğiniz bir ileti ile
 
     ```
     "customizedMessageBody": "Hello Sam, let's collaborate!"
     ```
 
-4. Kime seçin: kişiler bu ortak çalışanı davet hakkında döngüsünde tutmak istediğinizi.
+4. Ve CC: Bu ortak çalışan davet etme hakkında döngüde tutmak istediğiniz kişileri seçin.
 
-5. Veya Azure AD üzerinden bildirim göndermek seçerek daveti ve ekleme iş akışı tamamen özelleştirebilirsiniz.
+5. Ya da Azure AD ile bildirim göndermemeyi seçerek davetinizi ve ekleme iş akışınızı tamamen özelleştirin.
 
     ```
     "sendInvitationMessage": false
     ```
 
-   Bu durumda, bir kullanım URL, bir e-posta şablonu, anlık ileti veya diğer dağıtım yöntemini seçeceğiniz katıştırabilirsiniz API'sinden ulaşırsınız.
+   Bu durumda, bir e-posta şablonuna, anlık kişiye veya seçtiğiniz başka bir dağıtım yöntemine katıştıracağınız API 'den bir kullanım URL 'SI geri alırsınız.
 
-6. Son olarak, bir yönetici, üye olarak kullanıcı davet seçebilirsiniz.
+6. Son olarak, bir yöneticisiniz, kullanıcıyı üye olarak davet etmeyi tercih edebilirsiniz.
 
     ```
     "invitedUserType": "Member"
@@ -70,22 +70,22 @@ API, aşağıdaki özellikleri sunar:
 
 ## <a name="authorization-model"></a>Yetkilendirme modeli
 
-API aşağıdaki yetkilendirme modu çalıştırabilirsiniz:
+API aşağıdaki yetkilendirme modlarında çalıştırılabilir:
 
 ### <a name="app--user-mode"></a>Uygulama + kullanıcı modu
 
-Bu modda, kişi B2B davetleri olması oluşturma izinlerine sahip API gereksinimlerini kullanıyor.
+Bu modda, API 'leri kullanarak B2B davetleri oluşturma izinlerine sahip olması gerekir.
 
-### <a name="app-only-mode"></a>Tek uygulama modu
+### <a name="app-only-mode"></a>Yalnızca uygulama modu
 
-Uygulama yalnızca bağlamında, uygulamanın, başarılı olması davet User.Invite.All kapsamını gerekir.
+Yalnızca uygulama bağlamında, uygulamanın kullanıcı. davet. davet için tüm kapsamın başarılı olması gerekir.
 
-Daha fazla bilgi için bkz: https://developer.microsoft.com/graph/docs/authorization/permission_scopes
+Daha fazla bilgi için bkz. https://developer.microsoft.com/graph/docs/authorization/permission_scopes
 
 
 ## <a name="powershell"></a>PowerShell
 
-Ekleme ve bir kuruluşun dış kullanıcılara bir kolayca davet için PowerShell kullanabilirsiniz. Cmdlet'ini kullanarak bir davet oluşturun:
+PowerShell kullanarak dış kullanıcıları kolayca bir kuruluşa ekleyebilir ve davet edebilirsiniz. Cmdlet 'ini kullanarak bir davetiye oluşturun:
 
 ```powershell
 New-AzureADMSInvitation
@@ -94,18 +94,18 @@ New-AzureADMSInvitation
 Aşağıdaki seçenekleri kullanabilirsiniz:
 
 * -InvitedUserDisplayName
-* -InvitedUserEmailAddress
-* -SendInvitationMessage
+* -Davetteduseremapostaadresi
+* -Sendınvitationmessage
 * -InvitedUserMessageInfo
 
-### <a name="invitation-status"></a>Davet durumu
+### <a name="invitation-status"></a>Davetiye durumu
 
-Bir dış kullanıcıyı Davet Gönder sonra kullanabileceğiniz **Get-AzureADUser** bunlar kabul, görmek için cmdlet. Get-AzureADUser aşağıdaki özelliklerini bir dış kullanıcıyı davet gönderildiğinde doldurulur:
+Bir dış Kullanıcı daveti gönderdikten sonra, bunu kabul edip etmediğini görmek için **Get-AzureADUser** cmdlet 'ini kullanabilirsiniz. Get-AzureADUser öğesinin aşağıdaki özellikleri bir dış kullanıcıya Davetiye gönderildiğinde doldurulur:
 
-* **UserState** davet olup olmadığını belirten **PendingAcceptance** veya **kabul edilen**.
-* **UserStateChangedOn** yapılan son değişikliği için zaman damgasını gösterir **UserState** özelliği.
+* **UserState** , davetin **Pendingkabulünü** veya **kabul**edilip edilmediğini belirtir.
+* **Userstatechangedon** , **userState** özelliğindeki en son değişikliğin zaman damgasını gösterir.
 
-Kullanabileceğiniz **filtre** sonuçlarına göre filtreleme seçeneğini **UserState**. Aşağıdaki örnek, bekleyen davet sahip kullanıcıları göstermek için sonuçları filtrelemek gösterilmektedir. Örnek ayrıca gösterir **Format-List** seçeneği, görüntülenecek özelliklerini belirtmenize olanak tanır. 
+Sonuçları **userState**'e göre filtrelemek için **filtre** seçeneğini kullanabilirsiniz. Aşağıdaki örnekte, yalnızca bekleyen bir daveti olan kullanıcıları göstermek için sonuçların nasıl filtreleneceği gösterilmektedir. Örnek, görüntülenecek özellikleri belirtmenize imkan tanıyan **Format-List** seçeneğini de gösterir. 
  
 
 ```powershell
@@ -113,15 +113,15 @@ Get-AzureADUser -Filter "UserState eq 'PendingAcceptance'" | Format-List -Proper
 ```
 
 > [!NOTE]
-> AzureAD PowerShell modülü veya AzureADPreview PowerShell modülünün en son sürümü olduğundan emin olun. 
+> AzureAD PowerShell modülünün veya AzureADPreview PowerShell modülünün en son sürümüne sahip olduğunuzdan emin olun. 
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-Davet API başvurusunda kullanıma [ https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation ](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation).
+[https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation)'de davet API 'sine göz atın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure AD B2B işbirliği nedir?](what-is-b2b.md)
-- [B2B işbirliği davet e-posta öğeleri](invitation-email-elements.md)
-- [B2B işbirliği Davetiyesi kullanımı](redemption-experience.md)
-- [B2B işbirliği kullanıcıları davet etmeden ekleme](add-user-without-invite.md)
+- [B2B işbirliği davetiyesi e-postası öğeleri](invitation-email-elements.md)
+- [B2B işbirliği daveti satın alma](redemption-experience.md)
+- [Bir davetiye olmadan B2B işbirliği kullanıcıları ekleyin](add-user-without-invite.md)

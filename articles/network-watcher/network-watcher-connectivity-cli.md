@@ -1,6 +1,7 @@
 ---
-title: Azure Ağ İzleyicisi - Azure CLI ile bağlantı sorunlarını giderme | Microsoft Docs
-description: Bağlantıyı kullanmayı öğrenin özelliği, Azure CLI kullanarak Azure Ağ İzleyicisi sorun giderme.
+title: Bağlantı sorunlarını giderme-Azure CLı
+titleSuffix: Azure Network Watcher
+description: Azure CLı kullanarak Azure ağ Izleyicisi 'nde bağlantı sorunlarını giderme özelliğini nasıl kullanacağınızı öğrenin.
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -13,35 +14,35 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: kumud
-ms.openlocfilehash: 568d3fe774bd2ec810bd3aa386fb151518e6a581
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 07358d5d77e91f0b4eebffa068ff72fc83c74893
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64720854"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276021"
 ---
-# <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-cli"></a>Azure CLI kullanarak Azure Ağ İzleyicisi ile bağlantı sorunlarını giderme
+# <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-cli"></a>Azure CLı kullanarak Azure ağ Izleyicisi ile bağlantı sorunlarını giderme
 
 > [!div class="op_single_selector"]
 > - [PowerShell](network-watcher-connectivity-powershell.md)
 > - [Azure CLI](network-watcher-connectivity-cli.md)
 > - [Azure REST API](network-watcher-connectivity-rest.md)
 
-Bağlantı kullanmayı öğrenin belirli bir uç noktaya doğrudan TCP bağlantısı bir sanal makineden oluşturulan olup olmadığını doğrulamak için sorun giderme.
+Bir sanal makineden belirli bir uç noktaya doğrudan TCP bağlantısının kurulabildiğini doğrulamak için bağlantı sorunlarını giderme hakkında bilgi edinin.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu makalede, aşağıdaki kaynaklara sahip olduğunu varsayar:
+Bu makalede aşağıdaki kaynaklara sahip olduğunuz varsayılır:
 
-* Ağ İzleyicisi bağlantı sorunlarını gidermek için istediğiniz bölgede bir örneği.
-* Bağlantı sorunlarını gidermek için sanal makineler.
+* Bir bağlantı sorunlarını gidermek istediğiniz bölgedeki ağ Izleyicisi örneği.
+* İle bağlantı sorunlarını gidermek için sanal makineler.
 
 > [!IMPORTANT]
-> Bağlantı sorunlarını giderme, sorun giderme VM'ye sahip olması gerekir `AzureNetworkWatcherExtension` VM uzantısı yüklü. Bir Windows VM'de uzantıyı yüklemek için ziyaret [Windows için Azure Ağ İzleyicisi Aracısı sanal makine uzantısı](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) ve Linux VM ziyaret [LinuxiçinAzureAğİzleyicisiAracısısanalmakineuzantısı](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). Hedef uç noktada bir uzantı gerekli değildir.
+> Bağlantı sorunlarını gidermek için, üzerinde çalıştığınız sanal makinenin `AzureNetworkWatcherExtension` VM uzantısının yüklü olması gerekir. Windows VM 'ye uzantı yüklemek için bkz. [Windows Için Azure ağ Izleyicisi Aracısı sanal makine uzantısı](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) ve Linux VM Için [Azure Ağ İzleyicisi Aracısı sanal makine uzantısı](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)' nı ziyaret edin. Uzantı hedef uç noktada gerekli değil.
 
-## <a name="check-connectivity-to-a-virtual-machine"></a>Bir sanal makine bağlantısını kontrol edin
+## <a name="check-connectivity-to-a-virtual-machine"></a>Bir sanal makineye bağlantıyı denetle
 
-Bu örnek, bir hedef sanal makinenin bağlantı bağlantı noktası 80 üzerinden denetler.
+Bu örnek, 80 bağlantı noktası üzerinden bir hedef sanal makineye bağlantıyı denetler.
 
 ### <a name="example"></a>Örnek
 
@@ -51,7 +52,7 @@ az network watcher test-connectivity --resource-group ContosoRG --source-resourc
 
 ### <a name="response"></a>Yanıt
 
-Önceki örnekte yanıttır.  Bu yanıt `ConnectionStatus` olduğu **ulaşılamıyor**. Tüm araştırmaları başarısız gönderilen görebilirsiniz. Sanal gereç kullanıcının yapılandırdığı nedeniyle bağlantı başarısız `NetworkSecurityRule` adlı **UserRule_Port80**, 80 numaralı bağlantı noktasında gelen trafiği engellemek için yapılandırılmış. Bu bilgiler, bağlantı sorunlarını araştırmak için kullanılabilir.
+Aşağıdaki yanıt, önceki örnekteki bir örnektir.  Bu yanıtta `ConnectionStatus` **ulaşılamaz**olur. Tüm yoklamaların başarısız olduğunu görebilirsiniz. Bağlantı noktası 80 ' de gelen trafiği engellemek için yapılandırılmış **UserRule_Port80**adlı Kullanıcı tarafından yapılandırılmış bir `NetworkSecurityRule` nedeniyle bağlantı Sanal Gereç sırasında başarısız oldu. Bu bilgiler, bağlantı sorunlarını araştırmak için kullanılabilir.
 
 ```json
 {
@@ -120,9 +121,9 @@ Nic0/ipConfigurations/ipconfig1",
 }
 ```
 
-## <a name="validate-routing-issues"></a>Yönlendirme sorunları doğrula
+## <a name="validate-routing-issues"></a>Yönlendirme sorunlarını doğrulama
 
-Bu örnek, bir sanal makine ve uzak uç noktası arasındaki bağlantıyı denetler.
+Bu örnek, bir sanal makine ile uzak uç nokta arasındaki bağlantıyı denetler.
 
 ### <a name="example"></a>Örnek
 
@@ -132,7 +133,7 @@ az network watcher test-connectivity --resource-group ContosoRG --source-resourc
 
 ### <a name="response"></a>Yanıt
 
-Aşağıdaki örnekte, `connectionStatus` olarak gösterilen **ulaşılamıyor**. İçinde `hops` ayrıntıları görebilirsiniz altında `issues` trafiği nedeniyle engellenen bir `UserDefinedRoute`.
+Aşağıdaki örnekte `connectionStatus` **ulaşılamaz**olarak gösterilir. `hops` ayrıntılarda, trafiğin bir `UserDefinedRoute`nedeniyle engellendiğini `issues` altında bakabilirsiniz.
 
 ```json
 {
@@ -178,9 +179,9 @@ pNic0/ipConfigurations/ipconfig1",
 }
 ```
 
-## <a name="check-website-latency"></a>Onay Web sitesi gecikme süresi
+## <a name="check-website-latency"></a>Web sitesi gecikmesini denetle
 
-Aşağıdaki örnek, bir Web sitesi bağlantısını denetler.
+Aşağıdaki örnek bir Web sitesine olan bağlantıyı denetler.
 
 ### <a name="example"></a>Örnek
 
@@ -190,7 +191,7 @@ az network watcher test-connectivity --resource-group ContosoRG --source-resourc
 
 ### <a name="response"></a>Yanıt
 
-Aşağıdaki yanıtta gördüğünüz `connectionStatus` olarak gösterir **erişilebilir**. Bağlantı başarılı olduğunda, gecikme süresi değerleri sağlanır.
+Aşağıdaki yanıtta `connectionStatus` **erişilebilir**olduğunu görebilirsiniz. Bir bağlantı başarılı olduğunda, gecikme süresi değerleri sağlanır.
 
 ```json
 {
@@ -224,9 +225,9 @@ pNic0/ipConfigurations/ipconfig1",
 }
 ```
 
-## <a name="check-connectivity-to-a-storage-endpoint"></a>Depolama uç noktası bağlantısını denetleyin
+## <a name="check-connectivity-to-a-storage-endpoint"></a>Depolama uç noktası bağlantısını denetle
 
-Aşağıdaki örnek, bir sanal makineden bir BLOB Depolama hesabı bağlantısını denetler.
+Aşağıdaki örnek, bir sanal makineden bir blog depolama hesabına olan bağlantıyı denetler.
 
 ### <a name="example"></a>Örnek
 
@@ -236,7 +237,7 @@ az network watcher test-connectivity --resource-group ContosoRG --source-resourc
 
 ### <a name="response"></a>Yanıt
 
-Aşağıdaki json, önceki cmdlet çalışmasını örnek yanıttır. Onay başarılı olduğu gibi `connectionStatus` özellik gösterilmiştir olarak **erişilebilir**.  Atlama gecikme süresi ve depolama blobu erişmek için gerekli sayısı ile ilgili ayrıntılar verilmiştir.
+Aşağıdaki JSON, önceki cmdlet 'i çalıştırmanın örnek yanıtı örneğidir. Denetim başarılı olduğu için `connectionStatus` özelliği **erişilebilir**olarak gösterilir.  Depolama Blobu ve gecikme süresine ulaşmak için gereken atlama sayısıyla ilgili ayrıntılar verilmiştir.
 
 ```json
 {
@@ -271,6 +272,6 @@ Aşağıdaki json, önceki cmdlet çalışmasını örnek yanıttır. Onay başa
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sanal makine uyarılarla paket yakalamaları görüntüleyerek otomatikleştirmeyi öğrenme [uyarı tetiklendi paket yakalama oluşturma](network-watcher-alert-triggered-packet-capture.md)
+[Bir uyarı tetikledi bildiren paket yakalamayı](network-watcher-alert-triggered-packet-capture.md) görüntüleyerek sanal makine uyarıları ile paket yakalamaları otomatikleştirmeyi öğrenin
 
-Belirli trafiğe içine veya dışına VM'nizi ederek izin verilip verilmediğini Bul [denetleyin IP akışı doğrulama](diagnose-vm-network-traffic-filtering-problem.md)
+IP 'de belirli trafiğe izin verilip verilmeyeceğini [denetle onay IP Flow doğrula](diagnose-vm-network-traffic-filtering-problem.md) ' yı ziyaret ederek bulun

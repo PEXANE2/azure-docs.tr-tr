@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 76b7c9436b8d1d466a69df7e5427991df0a9c63e
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 277548c859370a700973d9f60556fe38e94548b0
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74125635"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280373"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -25,7 +25,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 > [!div class="checklist"]
 >
 > * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
-> * [Bir LUSıS uygulaması oluşturma ve bir uç nokta anahtarı edinme](../../../../quickstarts/create-luis.md)
+> * [Language Understanding (LUSıS) uygulaması oluşturma ve bir uç nokta anahtarı edinme](../../../../quickstarts/create-luis.md)
 > * [Geliştirme ortamınızı kurma](../../../../quickstarts/setup-platform.md?tabs=windows)
 > * [Boş bir örnek proje oluşturun](../../../../quickstarts/create-project.md?tabs=windows)
 

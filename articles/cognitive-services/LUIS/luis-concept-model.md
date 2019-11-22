@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 4cbca96ed95167615f3ff2876e27e546d08d92f5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d721ceb25b3ce2408563a0bed16457d05affe7b4
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507720"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280879"
 ---
 # <a name="design-with-intent-and-entity-models"></a>Amaç ve varlık modelleriyle tasarım 
 
@@ -37,7 +37,7 @@ Model ayrıştırma aşağıdaki bölümlere sahiptir:
 * [makine tarafından öğrenilen varlıklar](#machine-learned-entities)
     * alt [Bileşenler](#entity-subcomponents-help-extract-data) (ayrıca makine tarafından öğrenilen varlıklar)
         * Özellikler tarafından sunulan [tanımlayıcılar](#descriptors-are-features) 
-        * (normal ifadeler ve listeler) gibi makine tarafından öğrenilen varlıklar tarafından belirtilen [kısıtlamalar](#constraints-are-text-rules)
+        * normal ifadeler ve listeler gibi makine tarafından öğrenilen varlıklar tarafından sağlanmış [kısıtlamalar](#constraints-are-text-rules)
 
 ## <a name="v2-authoring-models"></a>V2 yazma modelleri
 
@@ -134,7 +134,7 @@ Bir amaç, varlıkların, utterden çıkarılan veri parçaları olduğu sürece
 
 Bu söylenişi _bir amaç içermeli ve_ varlıkları _olabilir:_
 
-`Buy a airline ticket from Seattle to Cairo`
+`Buy an airline ticket from Seattle to Cairo`
 
 Bu söylenişi tek bir amaç içerir:
 

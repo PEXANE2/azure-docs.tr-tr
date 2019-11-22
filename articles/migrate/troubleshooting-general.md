@@ -5,14 +5,14 @@ author: musa-57
 ms.manager: abhemraj
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 11/21/2019
 ms.author: hamusa
-ms.openlocfilehash: 468c87e176cc61c48ba4caabd1c5a26f94d5fb5b
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 12f8f64c051d33ac2518edbe8b937521318a9e71
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970645"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284496"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Azure Geçişi sorunlarını giderme
 
@@ -88,8 +88,8 @@ Azure geçişi 'nin eski sürümündeki bir projeyi silmek için:
 ### <a name="delete-a-workspace"></a>Çalışma alanını silme
 
 Projeye bağlı Log Analytics çalışma alanına gidin.
-* Azure geçişi projesini sildiyseniz, **Essentials** > **Sunucu değerlendirmesi**içindeki çalışma alanının bağlantısını bulabilirsiniz.
-       ![LA çalışma alanı @ no__t-1
+* Azure geçişi projesini sildiyseniz, **Essentials** > **Server değerlendirmesi**içindeki çalışma alanının bağlantısını bulabilirsiniz.
+       ![LA çalışma alanı](./media/troubleshooting-general/loganalytics-workspace.png)
 
      * If you've already deleted the Azure Migrate project, select **Resource Groups** in the left pane of the Azure portal. Locate the workspace in the relevant resources group, and [follow the instructions](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace) to delete it.
 
@@ -112,7 +112,7 @@ Proje oluştururken bu hata, kuruluşun Azure Active Directory (Azure AD) kirac�
 2. Dağıtım hala başarısız olursa ve OVF dosyasını dağıtmak için VMware vSphere istemcisini kullanıyorsanız, vSphere Web istemcisi aracılığıyla dağıtmayı deneyin. Dağıtım hala başarısız olursa, farklı bir Web tarayıcısı kullanmayı deneyin.
 3. VSphere Web istemcisini kullanıyorsanız ve vCenter Server 6,5 veya 6,7 ' de dağıtmaya çalışıyorsanız, OVA 'yı doğrudan ESXi konağına dağıtmayı deneyin:
    - Web istemcisi (https://<*ana BILGISAYAR IP adresi*>/UI) Ile ESXi konağına doğrudan (vCenter Server yerine) bağlanın.
-   - **Ana** > **envanterinde** **Dosya** > **ovf şablonu dağıt**' ı seçin. OVA 'ya gidin ve dağıtımı doldurun.
+   - **Giriş** > **envanterinde** **Dosya** > **ovf şablonu dağıt**' ı seçin. OVA 'ya gidin ve dağıtımı doldurun.
 4. Dağıtım hala başarısız olursa Azure geçiş desteği 'ne başvurun.
 
 ## <a name="appliance-cant-connect-to-the-internet"></a>Gereç internet 'e bağlanamıyor
@@ -201,7 +201,7 @@ Hata 60025: "Azure AD işlemi başarısız oldu. Azure AD uygulaması oluşturul
 - Gereç tarafından toplanan bulgu verilerinin portalda yansıtılması 30 dakikaya kadar sürer.
 - 30 dakikadan sonra güncel bilgileri görmüyorsanız, bu adımları izleyerek verileri yenileyin:
 
-    1. **Sunucular** > **Azure sunucu değerlendirmesini geçir**bölümünde **genel bakış**' ı seçin.
+    1. **Azure sunucu değerlendirmesini geçir** > **sunucularında** **genel bakış**' ı seçin.
     2. **Yönet**' in altında **Aracı durumu** ' yi seçin.
     3. **Aracıyı Yenile**' yi seçin.
     1. Yenileme işleminin tamamlanmasını bekleyin. Şimdi güncel bilgileri görmeniz gerekir.
@@ -211,7 +211,7 @@ Hata 60025: "Azure AD işlemi başarısız oldu. Azure AD uygulaması oluşturul
 - Gereç tarafından toplanan bulgu verilerinin portalda yansıtılması 30 dakikaya kadar sürer.
 - 30 dakikadan sonra güncel bilgileri görmüyorsanız, bu adımları izleyerek verileri yenileyin:
 
-    1. **Sunucular** > **Azure sunucu değerlendirmesini geçir**bölümünde **genel bakış**' ı seçin.
+    1. **Azure sunucu değerlendirmesini geçir** > **sunucularında** **genel bakış**' ı seçin.
     2. **Yönet**' in altında **Aracı durumu** ' yi seçin.
     3. **Aracıyı Yenile**' yi seçin.
     1. Yenileme işleminin tamamlanmasını bekleyin. Şimdi güncel bilgileri görmeniz gerekir.
@@ -229,13 +229,38 @@ Hata 50004: "sunucu adı çözümlenemediği için bir konağa veya kümeye bağ
     4. Hosts dosyasını kaydedin ve kapatın.
     5. Gereç Yönetimi uygulamasını kullanarak gerecin konaklara bağlanıp bağlanamayacağını denetleyin. 30 dakika sonra, Azure portal bu konaklar için en son bilgileri görmeniz gerekir.
 
+## <a name="application-discovery-issues"></a>Uygulama bulma sorunları
+
+Uygulamaları bulma işlemi şu anda yalnızca VMware VM 'Leri için desteklenir. Hyper-V VM 'Leri ve fiziksel sunucular için destek daha sonra etkinleştirilecek. Uygulamaları bulma işlemi, Gereç içinde VM kimlik bilgilerini sağlamanızı gerektirir. VCenter Server ve VMware VM 'Leri için gereken erişim ayrıcalıkları hakkında daha fazla bilgi edinin. Bulma işlemi aşağıdaki sorunlardan biri nedeniyle başarısız olabilir, lütfen sorunu çözmek için aşağıda açıklandığı gibi önerilen eylemi gözden geçirin:
+
+**Hata kodu** | **İleti** | **Olası nedeni** | **Önerilen eylem**
+--- | --- | --- | ---
+10000 | Sunucuda yüklü olan uygulamalar bulunamıyor. | Sunucu üzerinde çalışan işletim sistemi Windows veya Linux değilse bu durum oluşabilir. | Yüklenen uygulamaların bulunması yalnızca Windows ve Linux sunucuları için desteklenir.
+10001 | Sunucu yüklü olan uygulamalar alınamıyor. | Bu, bir iç hata nedeniyle gereç içindeki bazı eksik dosyalar var. | Lütfen Microsoft Desteği başvurun.
+10002 | Sunucu yüklü olan uygulamalar alınamıyor. | Bu durum, Azure geçiş gereci içindeki bulma Aracısı düzgün çalışmıyorsa meydana gelebilir. | Sorun, 24 saat içinde otomatik olarak çözümlenmelidir. Sorun devam ederse lütfen Microsoft Desteği başvurun.
+10003 | Sunucu yüklü olan uygulamalar alınamıyor. | Keşif Aracısı düzgün çalışmıyorsa bu durum oluşabilir. | Sorun, 24 saat içinde otomatik olarak çözümlenmelidir. Sorun devam ederse lütfen Microsoft Desteği başvurun.
+10004 | < Windows/Linux > makineler için yüklü uygulamalar bulunamıyor. |  < Windows/Linux > makinelere erişme kimlik bilgileri Azure geçişi gereci içinde sağlanmadı | Lütfen Azure geçiş gerecine < Windows/Linux > makinelerine erişimi olan bir kimlik bilgisi ekleyin.
+10005 | Şirket içi sunucuya erişilemiyor. | Bu durum, makinenin sunucuya erişmesi için belirtilen kimlik bilgilerinin hatalı olması olabilir. | Lütfen gereç içinde belirtilen kimlik bilgilerini güncelleştirin ve kimlik bilgilerini kullanarak sunucuya erişilebilir olduğundan emin olun.
+10006 | Şirket içi sunucuya erişilemiyor. | Sunucu üzerinde çalışan işletim sistemi Windows veya Linux değilse bu durum oluşabilir. | Yüklenen uygulamaların bulunması yalnızca Windows ve Linux sunucuları için desteklenir.
+9000 | VM 'de yüklü olan uygulamalar bulunamıyor. | VMware araçları yüklenmemiş veya bozuk olabilir. | VMware araçlarını VM 'ye yükleyin/yeniden yükleyin ve çalışıp çalışmadığını denetleyin.
+9001 | VM 'de yüklü olan uygulamalar bulunamıyor. | VMware araçları yüklenmemiş veya bozuk olabilir. | VMware araçlarını VM 'ye yükleyin/yeniden yükleyin ve çalışıp çalışmadığını denetleyin.
+9002 | VM 'de yüklü olan uygulamalar bulunamıyor. | VMware araçları çalışmıyor olabilir. | VMware araçlarını VM 'ye yükleyin/yeniden yükleyin ve çalışıp çalışmadığını denetleyin.
+9003 | Sunucuda yüklü olan uygulamalar bulunamıyor. | Sunucu üzerinde çalışan işletim sistemi Windows veya Linux değilse bu durum oluşabilir. | Yüklenen uygulamaların bulunması yalnızca Windows ve Linux sunucuları için desteklenir.
+9004 | Sunucuda yüklü olan uygulamalar bulunamıyor. | VM kapatılmışsa bu durum oluşabilir. | Sunucuda yüklü uygulamaları öğrenmek için, sanal makinenin açık olduğundan emin olun.
+9005 | VM 'de yüklü olan uygulamalar bulunamıyor. | VM üzerinde çalışan işletim sistemi Windows veya Linux değilse bu durum oluşabilir. | Yüklenen uygulamaların bulunması yalnızca Windows ve Linux sunucuları için desteklenir.
+9006 | Sunucu yüklü olan uygulamalar alınamıyor. | Keşif Aracısı düzgün çalışmıyorsa bu durum oluşabilir. | Sorun, 24 saat içinde otomatik olarak çözümlenmelidir. Sorun devam ederse lütfen Microsoft Desteği başvurun.
+9007 | Sunucu yüklü olan uygulamalar alınamıyor. | Keşif Aracısı düzgün çalışmıyorsa bu durum oluşabilir. | Sorun, 24 saat içinde otomatik olarak çözümlenmelidir. Sorun devam ederse lütfen Microsoft Desteği başvurun.
+9008 | Sunucu yüklü olan uygulamalar alınamıyor. | Sorun, bir iç hata nedeniyle oluşabilir.  | Sorun, 24 saat içinde otomatik olarak çözümlenmelidir. Sorun devam ederse lütfen Microsoft Desteği başvurun.
+9009 | Sunucu yüklü olan uygulamalar alınamıyor. | Bu sorun, sunucudaki Windows Kullanıcı hesabı denetimi (UAC) ayarları kısıtlayıcıysa ve yüklü uygulamaların bulunmasını engelliyorsa oluşabilir. | Sunucuda ' Kullanıcı hesabı denetimi ' ayarlarını arayın ve sunucudaki UAC ayarını alt iki düzeyden birinde olacak şekilde yapılandırın.
+9010 | Sunucu yüklü olan uygulamalar alınamıyor. | Sorun, bir iç hata nedeniyle oluşabilir.  | Sorun, 24 saat içinde otomatik olarak çözümlenmelidir. Sorun devam ederse lütfen Microsoft Desteği başvurun.
+8084 | VMware hatası nedeniyle uygulamalar bulunamıyor: <Exception from VMware> | Azure geçişi gereci, uygulamaları bulmaya yönelik VMware API 'Lerini kullanır. Bu sorun, uygulamalar bulunmaya çalışılırken vCenter Server tarafından oluşturulan bir özel durum nedeniyle ortaya çıkabilir. VMware 'den hata iletisi, portalda gösterilen hata iletisinde görüntülenir. | [VMware belgelerini](https://pubs.vmware.com/vsphere-51/topic/com.vmware.wssdk.apiref.doc/index-faults.html)gözden geçirin, hata iletisini arayın ve bu sorunu gidermek için VMware makalesindeki sorun giderme adımlarını izleyin. Hala sorunu çözemiyorsanız Microsoft Desteği 'ye ulaşın.
 
 
 ## <a name="fix-assessment-readiness"></a>Değerlendirme hazırlığını çözme
 
 Değerlendirme hazırlık sorunlarını aşağıdaki şekilde giderin:
 
-**Konuda** | **Onar**
+**Konuda** | **Fix**
 --- | ---
 Desteklenmeyen önyükleme türü | Azure, EFı önyükleme türü olan VM 'Leri desteklemez. Geçiş çalıştırmadan önce önyükleme türünü BIOS 'a dönüştürmeniz önerilir. <br/><br/>Bu sanal makinelerin geçişini yönetmek için Azure geçişi sunucu geçişini kullanabilirsiniz. Geçiş sırasında VM 'nin önyükleme türünü BIOS 'a dönüştürür.
 Koşullu olarak desteklenen Windows işletim sistemi | İşletim sistemi destek son tarihini geçti ve [Azure 'da destek](https://aka.ms/WSosstatement)için özel bir destek SÖZLEŞMESINE (CSA) ihtiyaç duyuyor. Azure 'a geçiş yapmadan önce yükseltmeyi göz önünde bulundurun.
@@ -282,7 +307,7 @@ Azure geçişi sunucu değerlendirmesi, Azure VM SKU 'Larını, değerlendirme t
 
 Bunun önerileri nasıl etkileyebileceğini göstermek için bir örnek alalım:
 
-Dört çekirdekli ve sekiz GB bellek içeren,% 50 CPU kullanımı ve% 50 bellek kullanımı ve belirli bir rahatlık 1,3 faktörü içeren bir şirket içi VM sunuyoruz.
+Dört çekirdekli ve sekiz GB bellek içeren, %50 CPU kullanımı ve %50 bellek kullanımı ve belirli bir rahatlık 1,3 faktörü içeren bir şirket içi VM sunuyoruz.
 
 -  Değerlendirme **Şirket içinde**ise, 4 çekirdek ve 8 GB bellek Içeren BIR Azure VM SKU 'su önerilir.
 - Değerlendirme performansı temel alıyorsa, etkin CPU ve bellek kullanımına 50 (4 çekirdek * 1,3 = 2,6 çekirdekler 50 ve 8 GB bellek * 1,3 = 5,3-GB bellek) göre, dört çekirdekli sanal makine SKU 'SU (en yakın desteklenen çekirdek sayısı) ve sekiz GB bellek (en yakın) bellek boyutu) önerilir.
@@ -321,19 +346,17 @@ Sunucu Değerlendirmesi şirket içi makinelerin performans verilerini sürekli 
 - Dönemin en yoğun kullanımını seçmek ve tüm aykırı değerleri kaçırmak istemiyorsanız, yüzdebirlik kullanımı için 99. yüzdebirlik ' ü seçmeniz gerekir.
 
 
-
 ## <a name="i-cant-find-dependency-visualization-for-azure-government"></a>Azure Kamu için bağımlılık görselleştirmesini bulamıyorum
 
 Azure geçişi, bağımlılık görselleştirme işlevselliği için Hizmet Eşlemesi bağımlıdır. Hizmet Eşlemesi Şu anda Azure Kamu 'da kullanılamadığından, bu işlev Azure Kamu 'da kullanılamaz.
 
 ## <a name="dependencies-dont-show-after-installing-agents"></a>Aracılar yüklendikten sonra bağımlılıklar gösterilmez
 
-
 Şirket içi VM 'Lere bağımlılık görselleştirme aracılarını yükledikten sonra, Azure geçişi genellikle portalda bağımlılıkları göstermek için 15-30 dakika sürer. 30 dakikadan uzun süre beklemişseniz, Microsoft Monitoring Agent (MMA) Log Analytics çalışma alanına bağlanabildiğinizden emin olun.
 
 Windows VM 'Leri için:
 1. Denetim Masası 'nda MMA 'yı başlatın.
-2. **Microsoft Monitoring Agent özellikler** > **Azure Log Analytics (OMS)** Içinde, çalışma alanı **durumunun** yeşil olduğundan emin olun.
+2. **Microsoft Monitoring Agent Özellikler** **Azure Log Analytics (OMS)**  > , çalışma alanının **durumunun** yeşil olduğundan emin olun.
 3. Durum yeşil değilse, çalışma alanını kaldırmayı ve onu yeniden eklemeyi deneyin.
 
       ![MMA özellikleri iletişim kutusu](./media/troubleshooting-general/mma-status.png)
@@ -375,7 +398,7 @@ Bağımlılık görselleştirmesi etkinleştirilmiş makineleri Azure 'a geçird
 
 Günlükleri aşağıdaki şekilde toplayın:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Geliştirici Araçları başlamak için F12 tuşuna basın. Gerekirse, **Gezinti ayarında girişleri temizle** ' yi temizleyin.
 3. **Ağ** sekmesini seçin ve ağ trafiğini yakalamaya başlayın:
    - Chrome 'da **günlüğü koru**' yı seçin. Kayıt otomatik olarak başlamalıdır. Kırmızı bir daire trafiğin yakalandığını gösterir. Kırmızı daire görünmezse başlamak için siyah daireyi seçin.

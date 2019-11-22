@@ -1,21 +1,21 @@
 ---
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.date: 04/03/2019
 ms.topic: include
 ms.author: rgarcia
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: fcc6c10419b46d31fde20001fefccb32b7a421ce
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 8bef7b12f4d9d9a63e41441ef22b029b2ee5afd1
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188956"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276930"
 ---
-## <a name="putting-everything-together"></a>Her şeyi bir araya getirilmesi
+## <a name="putting-everything-together"></a>Her şeyi birlikte yerleştirme
 
-İşte nasıl tam `MainActivity` sınıf dosyası görünmelidir gibi tüm farklı öğeler birlikte yerleştirdiğiniz sonra. Kendi dosyanızı karşı karşılaştırın ve sol farkları gerekecekse nokta için bir başvuru olarak da kullanabilirsiniz.
+Tüm farklı öğeler birlikte yerleştirildikten sonra, Bütün `MainActivity` sınıf dosyası nasıl görünmelidir. Bunu kendi dosyanıza göre karşılaştırmak için bir başvuru olarak kullanabilir ve herhangi bir farklılık varsa, herhangi bir farklılık olabilir.
 
 ```java
 package com.example.myfirstapp;
@@ -244,7 +244,7 @@ public class MainActivity extends AppCompatActivity {
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, Azure uzamsal Çıpasıyla ARCore işlevini birleştirir yeni bir Android uygulaması oluşturmak öğrendiniz. Azure uzamsal bağlayıcılarını Kitaplığı hakkında daha fazla bilgi için kılavuzumuza oluşturmak ve bağlantıları bulmak nasıl devam edin.
+Bu öğreticide, Azure uzamsal bağlayıcılarla en önemli işlevselliği tümleştiren yeni bir Android uygulaması oluşturmayı öğrendiniz. Azure uzamsal bağlayıcı Kitaplığı hakkında daha fazla bilgi edinmek için, bağlantıları oluşturma ve bulma konusundaki kılavuzumuza devam edin.
 
 > [!div class="nextstepaction"]
-> [Oluşturma ve Azure uzamsal bağlayıcılarını kullanarak yer işaretleri bulun](/azure/spatial-anchors/create-locate-anchors-overview)
+> [Azure uzamsal bağlayıcıları kullanarak bağlantıları oluşturma ve bulma](/azure/spatial-anchors/create-locate-anchors-overview)

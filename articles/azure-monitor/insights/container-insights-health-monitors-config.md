@@ -12,16 +12,20 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 11/12/2019
 ms.author: magoedte
-ms.openlocfilehash: b782581318751830ec47b9fecb056fecefb353eb
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 7a774adb33646635832dba5505abf57b2703de5d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74134963"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279704"
 ---
 # <a name="azure-monitor-for-containers-health-monitor-configuration-guide"></a>Kapsayıcılar için Azure Izleyici durum izleyici yapılandırma kılavuzu
 
-İzleyiciler, Azure Izleyici 'de kapsayıcılar için sistem durumunu ölçmeye ve hataları algılamaya yönelik birincil öğedir. Bu makale, sağlık [özelliği](container-insights-health.md)Ile Kubernetes kümenizin sistem durumunu izlemek ve raporlamak için sistem durumunun ölçülme ve sistem durumu modelini oluşturan öğelerin kavramlarını anlamanıza yardımcı olur.
+İzleyiciler, Azure Izleyici 'de kapsayıcılar için sistem durumunu ölçmeye ve hataları algılamaya yönelik birincil öğedir. Bu makale, sağlık durumu [(Önizleme)](container-insights-health.md) özelliği Ile Kubernetes kümenizin sistem durumunu izlemek ve raporlamak için sistem durumunun ölçülme ve sistem durumu modelini oluşturan öğelerin kavramlarını anlamanıza yardımcı olur.
+
+>[!NOTE]
+>Sistem durumu özelliği şu anda genel önizlemede.
+>
 
 ## <a name="monitors"></a>İzleyiciler
 
@@ -73,7 +77,7 @@ Kapsayıcılar için Azure Izleyici, aşağıdaki gibi yapılandırılmış bir 
 
 |**İzleyici adı** | **Açıklama** | **Algoritma** |
 |-----------------|-----------------|---------------|
-|Düğüm |Bu izleyici, tüm düğüm izlemelerinin bir toplamasından oluşur. En kötü sistem durumu ile alt izleyicinin durumuyla eşleşir:<br> Düğüm CPU kullanımı<br> Düğüm bellek kullanımı<br> Düğüm durumu | En kötü|
+|Node |Bu izleyici, tüm düğüm izlemelerinin bir toplamasından oluşur. En kötü sistem durumu ile alt izleyicinin durumuyla eşleşir:<br> Düğüm CPU kullanımı<br> Düğüm bellek kullanımı<br> Düğüm durumu | En kötü|
 |Düğüm havuzu |Bu izleyici, düğüm havuzu *agentpool*içindeki tüm düğümlerin Birleşik sistem durumunu bildirir. Bu üç durum izleyicisine sahiptir ve bu durum, düğüm havuzundaki düğümlerin %80 ' üne ait olan, düğüm durumlarının önem derecesine göre azalan düzende (yani, kritik, uyarı, sağlıklı) sıralanmıştır.|Yüzde |
 |Düğümler (düğüm havuzunun üst öğesi) |Bu, tüm düğüm havuzlarının bir toplam izleyicisine sahiptir. Durumu, alt izlemelerinin (yani kümede bulunan düğüm havuzlarının) en kötü durumuna bağlıdır. |En kötü |
 |Küme (düğümlerin üst öğesi/<br> Kubernetes altyapısı) |Bu, Kubernetes altyapısı ve düğümleri olan en kötü sistem durumu ile alt izleyicinin durumuyla eşleşen ana izleyicidir. |En kötü |

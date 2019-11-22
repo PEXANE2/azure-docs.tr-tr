@@ -1,6 +1,6 @@
 ---
-title: Kişisel verileri - Azure Active Directory Uygulama proxy'si Kaldır | Microsoft Docs
-description: Azure Active Directory Uygulama proxy'si için cihazlarında yüklü bağlayıcıların kişisel verileri kaldırın.
+title: Kişisel verileri Kaldır-Azure Active Directory Uygulama Ara Sunucusu
+description: Azure Active Directory Uygulama Ara Sunucusu için cihazlara yüklenmiş olan bağlayıcılardan kişisel verileri kaldırın.
 documentationcenter: ''
 author: msmimart
 manager: CelesteDG
@@ -15,70 +15,70 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebb2a38e520c988ee7ca9a234aadd6ae2de4f0cb
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: fe97956d99bd5c677e499b532ef85a1bb4d324ef
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807746"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275423"
 ---
-# <a name="remove-personal-data-for-azure-active-directory-application-proxy"></a>Azure Active Directory Uygulama proxy'si için kişisel verilerini kaldırma
+# <a name="remove-personal-data-for-azure-active-directory-application-proxy"></a>Azure Active Directory Uygulama Ara Sunucusu kişisel verilerini kaldır
 
-Azure Active Directory Uygulama Proxy bağlayıcıları cihazlarınızda kişisel verileri olabileceğini anlamına gelir, cihazlarınıza yükleyebilir gerektirir. Bu makalede gizlilik geliştirmek için bu kişisel verileri silmek adımlar sağlar.
+Azure Active Directory Uygulama Ara Sunucusu cihazlarınızda bağlayıcılar yüklemenizi gerektirir, bu da cihazlarınızda kişisel veriler olabileceğini gösterir. Bu makalede, gizliliği geliştirmek için kişisel verilerin nasıl silineceği hakkında adımlar sağlanmaktadır.
 
-## <a name="where-is-the-personal-data"></a>Kişisel verileri nerede?
+## <a name="where-is-the-personal-data"></a>Kişisel veriler nerede?
 
-Aşağıdaki günlük türlerine kişisel veri yazmak uygulama proxy'si mümkündür:
+Uygulama proxy 'Sinin kişisel verileri aşağıdaki günlük türlerine yazması mümkündür:
 
-- Bağlayıcısı olay günlükleri
+- Bağlayıcı olay günlükleri
 - Windows olay günlükleri
 
-## <a name="remove-personal-data-from-windows-event-logs"></a>Windows olay günlükleri kişisel verilerini kaldırma
+## <a name="remove-personal-data-from-windows-event-logs"></a>Windows olay günlüklerinden kişisel verileri kaldırma
 
-Veri saklama için Windows olay günlüklerini yapılandırma hakkında daha fazla bilgi için bkz: [olay günlüğü ayarları](https://technet.microsoft.com/library/cc952132.aspx). Windows olay günlükleri hakkında bilgi edinmek için [kullanarak Windows olay günlüğü](https://msdn.microsoft.com/library/windows/desktop/aa385772.aspx).
+Windows olay günlükleri için veri bekletmenin nasıl yapılandırılacağı hakkında bilgi için bkz. [olay günlüklerine yönelik ayarlar](https://technet.microsoft.com/library/cc952132.aspx). Windows olay günlükleri hakkında bilgi edinmek için bkz. [Windows olay günlüğü kullanma](https://msdn.microsoft.com/library/windows/desktop/aa385772.aspx).
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-hybrid-note.md)]
 
-## <a name="remove-personal-data-from-connector-event-logs"></a>Bağlayıcısı olay günlüklerinden kişisel verilerini kaldırma
+## <a name="remove-personal-data-from-connector-event-logs"></a>Kişisel verileri bağlayıcı olay günlüklerinden kaldır
 
-Uygulama Ara sunucusu günlükleri kişisel verileriniz yoksa emin olmak için şunlardan birini yapabilirsiniz:
+Uygulama proxy 'Si günlüklerinin kişisel verileri olmadığından emin olmak için şunlardan birini yapabilirsiniz:
 
-- Silme veya gerekli değilse, verileri görüntüleme veya
-- Günlüğünü devre dışı bırakın
+- Gerektiğinde verileri silme veya görüntüleme veya
+- Günlüğe kaydetmeyi kapat
 
-Bağlayıcısı olay günlüklerinden kişisel verileri kaldırmak için aşağıdaki bölümleri kullanın. Bağlayıcıyı yüklediğiniz tüm cihazlar için temizleme işlemini tamamlamanız gerekir.
+Bağlayıcı olay günlüklerinden kişisel verileri kaldırmak için aşağıdaki bölümleri kullanın. Bağlayıcının yüklü olduğu tüm cihazlar için kaldırma işlemini tamamlamalısınız.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
-### <a name="view-or-export-specific-data"></a>Görüntülemek veya belirli verileri dışarı aktarma
+### <a name="view-or-export-specific-data"></a>Belirli verileri görüntüleme veya dışarı aktarma
 
-Görüntülemek veya belirli verileri dışarı aktarma için her bağlayıcı günlüklerinin ilgili girişlere arayın. Günlükleri şu adreste bulunabilir `C:\ProgramData\Microsoft\Microsoft AAD Application Proxy Connector\Trace`.
+Belirli verileri görüntülemek veya dışarı aktarmak için, her bağlayıcı olay günlüğündeki ilgili girişleri arayın. Günlükler `C:\ProgramData\Microsoft\Microsoft AAD Application Proxy Connector\Trace`konumunda bulunur.
 
-Günlükleri metin dosyaları olduğundan, kullanabileceğiniz [findstr](https://docs.microsoft.com/windows-server/administration/windows-commands/findstr) bir kullanıcıyla ilişkili metin girişleri aranacak.  
+Günlükler metin dosyaları olduğundan, bir kullanıcıyla ilgili metin girişlerini aramak için [Findstr](https://docs.microsoft.com/windows-server/administration/windows-commands/findstr) kullanabilirsiniz.  
 
-Kişisel verileri bulmak için kullanıcı kimliği için günlük dosyalarını arayın.
+Kişisel verileri bulmak için, Kullanıcı kimliği için günlük dosyalarını arayın.
 
-Kerberos kısıtlanmış temsil, kullanıcı adı türü bu bileşenler için arama kullanan bir uygulama tarafından günlüğe kaydedilen kişisel verileri bulmak için:
+Kerberos kısıtlanmış temsili kullanan bir uygulama tarafından günlüğe kaydedilen kişisel verileri bulmak için Kullanıcı adı türünün şu bileşenlerini arayın:
 
-- Şirket içi kullanıcı asıl adı
-- Kullanıcı adı, kullanıcı asıl adının parçası
-- Kullanıcı adı, şirket içi kullanıcı asıl adının parçası
-- Şirket içi Güvenlik Hesapları Yöneticisi (SAM) hesap adı
+- Şirket içi Kullanıcı asıl adı
+- Kullanıcı asıl adının Kullanıcı adı bölümü
+- Şirket içi Kullanıcı asıl adının Kullanıcı adı bölümü
+- Şirket içi güvenlik Hesapları Yöneticisi (SAM) hesap adı
 
-### <a name="delete-specific-data"></a>Özel verileri Sil
+### <a name="delete-specific-data"></a>Belirli verileri silme
 
-Belirli veri silmek için:
+Belirli verileri silmek için:
 
-1. Yeni bir günlük dosyası oluşturmak için Microsoft Azure AD uygulama ara sunucusu Bağlayıcısı hizmeti yeniden başlatın. Yeni bir günlük dosyası, eski günlük dosyaları değiştirmek veya silmek sağlar. 
-1. İzleyin [görünümü veya dışarı aktarma belirli veri](#view-or-export-specific-data) işlem açıklanan daha önce silinmesi gereken bilgi bulunamıyor. Tüm bağlayıcı günlüklerini arayın.
-1. Ya da ilgili günlük dosyalarını veya kişisel verileri içeren alanları seçerek silebilirsiniz. Artık ihtiyacınız yoksa tüm eski günlük dosyaları silebilirsiniz.
+1. Yeni bir günlük dosyası oluşturmak için Microsoft Azure AD uygulama proxy Bağlayıcısı hizmetini yeniden başlatın. Yeni günlük dosyası eski günlük dosyalarını silmenizi veya değiştirmenizi sağlar. 
+1. Silinmesi gereken bilgileri bulmak için daha önce açıklanan [belirli veri sürecini görüntüleyin veya dışarı aktarın](#view-or-export-specific-data) . Tüm bağlayıcı günlüklerinde arama yapın.
+1. İlgili günlük dosyalarını silin ya da kişisel verileri içeren alanları seçmeli olarak silin. Artık gerekmiyorsa, eski günlük dosyalarını da silebilirsiniz.
 
-### <a name="turn-off-connector-logs"></a>Bağlayıcı oturumunu kapatıp açın
+### <a name="turn-off-connector-logs"></a>Bağlayıcı günlüklerini kapatma
 
-Connector günlükleri kişisel verilerini içermediğinden emin olmak için bir oturum oluşturmayı devre dışı bırak seçenektir. Bağlayıcı günlükleri oluşturmaya durdurmak için aşağıdaki vurgulanmış satırından kaldırmak `C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config`.
+Bağlayıcı günlüklerinin kişisel veriler içermediğinden emin olmak için bir seçenek, günlük oluşturmayı kapatmamalıdır. Bağlayıcı günlüklerini oluşturmayı durdurmak için `C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config`aşağıdaki vurgulanmış çizgiyi kaldırın.
 
-![Vurgulanmış kodu kaldırmak için bir kod parçacığı gösterir](./media/application-proxy-remove-personal-data/01.png)
+![Kaldırmak için vurgulanan koda sahip bir kod parçacığı gösterir](./media/application-proxy-remove-personal-data/01.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Uygulama proxy'si genel bakış için bkz. [güvenli uzaktan erişim sağlamak şirket içi uygulamalara](application-proxy.md).
+Uygulama proxy 'sine genel bakış için bkz. Şirket [içi uygulamalara güvenli uzaktan erişim sağlama](application-proxy.md).

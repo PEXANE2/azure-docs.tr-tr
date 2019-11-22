@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 341383c232718349f091a9c92207bb27cf87cc48
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: e6415c9e8e0ab8743042891a2d0d422dffe37bdb
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083027"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279096"
 ---
 # <a name="tutorial-access-storage-blobs-using-an-azure-cdn-custom-domain-over-https"></a>Öğretici: Depolama bloblarına HTTPS üzerinden Azure CDN özel etki alanı kullanarak erişme
 
@@ -43,11 +43,15 @@ Azure CDN SAS belirtecine eklenen kısıtlamaları yok sayar. Örneğin, tüm SA
 Aynı blob uç noktası için birden çok SAS URL’si oluşturursanız, sorgu dizesi önbelleğe almayı göz önünde bulundurun. Bunu yapmak her URL’nin benzersiz bir varlık olarak kabul edilmesini sağlar. Daha fazla bilgi için bkz. [Sorgu dizeleri içeren Azure CDN önbelleğe alma davranışını kontrol etme](cdn-query-string.md).
 
 ## <a name="http-to-https-redirection"></a>HTTP’den -HTTPS’ye yeniden yönlendirme
-[Azure CDN kuralları altyapısı](cdn-verizon-premium-rules-engine-reference-features.md#url-redirect) ile bir [URL Yeniden Yönlendirme kuralı](cdn-verizon-premium-rules-engine.md) oluşturarak HTTP trafiğini HTTPS’ye yeniden yönlendirebilirsiniz. Bu seçenek bir **Verizon’dan Azure CDN Premium** profili gerektirir.
+[Standart kurallar altyapısı](cdn-standard-rules-engine.md) veya [Verizon Premium kuralları ALTYAPıSı](cdn-verizon-premium-rules-engine.md)ile bir URL YENIDEN yönlendirme KURALı oluşturarak HTTP trafiğini HTTPS 'ye yeniden yönlendirmeyi tercih edebilirsiniz. Standart kurallar altyapısı yalnızca Microsoft profillerinin Azure CDN için kullanılabilir, ancak Verizon Premium kuralları altyapısı yalnızca Verizon profillerdeki Azure CDN Premium ile kullanılabilir.
 
-![URL yeniden yönlendirme kuralı](./media/cdn-storage-custom-domain-https/cdn-url-redirect-rule.png)
+![Microsoft yeniden yönlendirme kuralı](./media/cdn-storage-custom-domain-https/cdn-standard-redirect-rule.png)
 
-Bu kuralda, *Cdn-endpoint-name* CDN uç noktanız için yapılandırdığınız, açılır listeden seçebileceğiniz addır. *origin-path* değeri statik içeriğinizin bulunduğu kaynak depolama hesabı içindeki yola başvurur. Tüm statik içeriği tek bir kapsayıcıda barındırıyorsanız, *origin-path* değerini bu kapsayıcının adıyla değiştirin.
+Yukarıdaki kuralda, ana bilgisayar adı, yol, sorgu dizesi ve parçadan ayrıldığınızda gelen değerler yeniden yönlendirmede kullanılır. 
+
+![Verizon yeniden yönlendirme kuralı](./media/cdn-storage-custom-domain-https/cdn-url-redirect-rule.png)
+
+Yukarıdaki kuralda, CDN uç *nokta-adı* , CDN uç noktanız için yapılandırdığınız ada başvurur ve bu, açılan listeden seçim yapabilirsiniz. *origin-path* değeri statik içeriğinizin bulunduğu kaynak depolama hesabı içindeki yola başvurur. Tüm statik içeriği tek bir kapsayıcıda barındırıyorsanız, *origin-path* değerini bu kapsayıcının adıyla değiştirin.
 
 ## <a name="pricing-and-billing"></a>Fiyatlandırma ve Faturalama
 Azure CDN üzerinden bloblara eriştiğinizde, POP sunucuları ve kaynak (Blob depolama) arasında trafik için [Blob depolama fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/blobs/) ve POP sunucularından erişilen veriler için [Azure CDN fiyatlandırması](https://azure.microsoft.com/pricing/details/cdn/) üzerinden ücret ödersiniz.

@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Metin Analizi çağırmak için Java kullanın REST API'
+title: 'Hızlı başlangıç: Metin Analizi REST API çağırmak için Java kullanın'
 titleSuffix: Azure Cognitive Services
 description: Azure bilişsel hizmetler 'de Metin Analizi API'si kullanmaya hızlı bir şekilde başlamanıza yardımcı olması için bilgi ve kod örnekleri alın.
 services: cognitive-services
@@ -11,19 +11,19 @@ ms.topic: quickstart
 ms.date: 08/28/2019
 ms.author: aahi
 ms.custom: seo-java-july2019, seo-java-august2019
-ms.openlocfilehash: e875c74884fcea824ac29001aa5bcca9009e3dcb
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: f4bae69f1ce65b98a4b83d50e906a1636833a1fd
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142756"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284879"
 ---
-# <a name="quickstart-use-java-to-call-the-azure-text-analytics-cognitive-service"></a>Hızlı Başlangıç: Azure Metin Analizi bilişsel hizmetini çağırmak için Java kullanın
+# <a name="quickstart-use-java-to-call-the-azure-text-analytics-cognitive-service"></a>Hızlı başlangıç: Azure Metin Analizi bilişsel hizmetini çağırmak için Java kullanma
 <a name="HOLTop"></a>
 
-Bu makalede, Java ile [metin analizi API 'leri](//go.microsoft.com/fwlink/?LinkID=759711) kullanarak [](#SentimentAnalysis) [dilin nasıl algılanacağı](#Detect), yaklaşım analiziyle, [anahtar tümceciklerini ayıklamayla](#KeyPhraseExtraction)ve [bağlantılı varlıkların](#Entities) nasıl kullanılacağı gösterilir.
+Bu makalede, Java ile  [metin analizi API 'leri](//go.microsoft.com/fwlink/?LinkID=759711) kullanarak [dilin nasıl algılanacağı](#Detect), yaklaşım [Analizi](#SentimentAnalysis), [anahtar tümceciklerini ayıklama](#KeyPhraseExtraction)ve [bağlantılı varlıkların](#Entities) nasıl kullanılacağı gösterilir.
 
-API'lerle ilgili teknik bilgiler için [API tanımları](//go.microsoft.com/fwlink/?LinkID=759346) sayfasını inceleyin.
+[!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -33,12 +33,12 @@ Ayrıca kayıt sırasında oluşturulan [uç nokta ve erişim anahtarı](../../c
 
 <a name="Detect"></a>
 
-## <a name="detect-language"></a>Dili algıla
+## <a name="detect-language"></a>Dili algılama
 
 Dil Algılama API 'SI, [Dili algıla yöntemini](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)kullanarak bir metin belgesinin dilini algılar.
 
-1. Ortam değişkenlerini `TEXT_ANALYTICS_SUBSCRIPTION_KEY` ve `TEXT_ANALYTICS_ENDPOINT` kaynağınızın Azure uç noktası ve abonelik anahtarı için oluşturun. Uygulamayı düzenleme başladıktan sonra bu ortam değişkenlerini oluşturduysanız, ortam değişkenlerine erişmek için kullandığınız düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir.
-1. En sevdiğiniz IDE (veya masaüstünüzdeki yeni klasör) içinde yeni bir Java projesi oluşturun. Adlı `DetectLanguage.java`bir sınıf oluşturun.
+1. `TEXT_ANALYTICS_SUBSCRIPTION_KEY` ortam değişkenleri oluşturun ve kaynağınızın Azure uç noktası ve abonelik anahtarı için `TEXT_ANALYTICS_ENDPOINT`. Uygulamayı düzenleme başladıktan sonra bu ortam değişkenlerini oluşturduysanız, ortam değişkenlerine erişmek için kullandığınız düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir.
+1. En sevdiğiniz IDE (veya masaüstünüzdeki yeni klasör) içinde yeni bir Java projesi oluşturun. `DetectLanguage.java`adlı bir sınıf oluşturun.
 1. Aşağıda belirtilen kodu sınıfınıza ekleyin.
 1. [Gson](https://github.com/google/gson) kitaplığının yüklü olduğundan emin olun.
 1. Programı IDE 'de çalıştırın veya çalıştırmak için komut satırını kullanın (kod açıklamalarındaki yönergeler).
@@ -215,8 +215,8 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 
 Yaklaşım Analizi API'si, [Yaklaşım metodunu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) kullanarak bir metin kaydı kümesinin yaklaşımını algılar. Aşağıdaki örnek, biri İngilizce diğeri İspanyolca olan iki belge puanlar.
 
-1. Ortam değişkenlerini `TEXT_ANALYTICS_SUBSCRIPTION_KEY` ve `TEXT_ANALYTICS_ENDPOINT` kaynağınızın Azure uç noktası ve abonelik anahtarı için oluşturun. Uygulamayı düzenleme başladıktan sonra bu ortam değişkenlerini oluşturduysanız, ortam değişkenlerine erişmek için kullandığınız düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir.
-1. En sevdiğiniz IDE (veya masaüstünüzdeki yeni klasör) içinde yeni bir Java projesi oluşturun. Adında `GetSentiment.java`bir sınıf oluşturun.
+1. `TEXT_ANALYTICS_SUBSCRIPTION_KEY` ortam değişkenleri oluşturun ve kaynağınızın Azure uç noktası ve abonelik anahtarı için `TEXT_ANALYTICS_ENDPOINT`. Uygulamayı düzenleme başladıktan sonra bu ortam değişkenlerini oluşturduysanız, ortam değişkenlerine erişmek için kullandığınız düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir.
+1. En sevdiğiniz IDE (veya masaüstünüzdeki yeni klasör) içinde yeni bir Java projesi oluşturun. `GetSentiment.java`adında bir sınıf oluşturun.
 1. Aşağıda belirtilen kodu sınıfınıza ekleyin.
 1. [Gson](https://github.com/google/gson) kitaplığının yüklü olduğundan emin olun.
 1. Programı IDE 'de çalıştırın veya çalıştırmak için komut satırını kullanın (kod açıklamalarındaki yönergeler).
@@ -366,12 +366,12 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 
 <a name="KeyPhraseExtraction"></a>
 
-## <a name="extract-key-phrases"></a>Başlıca sözcük gruplarını ayıkla
+## <a name="extract-key-phrases"></a>Anahtar ifadeleri ayıklama
 
 Anahtar İfade Ayıklama API'si [Anahtar İfadeler metodunu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) kullanarak bir metin belgesindeki anahtar ifadeleri ayıklar. Aşağıdaki örnekte hem İngilizce hem de İspanyolca belgelerin anahtar ifadeleri ayıklanır.
 
-1. Ortam değişkenlerini `TEXT_ANALYTICS_SUBSCRIPTION_KEY` ve `TEXT_ANALYTICS_ENDPOINT` kaynağınızın Azure uç noktası ve abonelik anahtarı için oluşturun. Uygulamayı düzenleme başladıktan sonra bu ortam değişkenlerini oluşturduysanız, ortam değişkenlerine erişmek için kullandığınız düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir.
-1. En sevdiğiniz IDE (veya masaüstünüzdeki yeni klasör) içinde yeni bir Java projesi oluşturun. Adında `GetKeyPhrases.java`bir sınıf oluşturun.
+1. `TEXT_ANALYTICS_SUBSCRIPTION_KEY` ortam değişkenleri oluşturun ve kaynağınızın Azure uç noktası ve abonelik anahtarı için `TEXT_ANALYTICS_ENDPOINT`. Uygulamayı düzenleme başladıktan sonra bu ortam değişkenlerini oluşturduysanız, ortam değişkenlerine erişmek için kullandığınız düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir.
+1. En sevdiğiniz IDE (veya masaüstünüzdeki yeni klasör) içinde yeni bir Java projesi oluşturun. İçinde `GetKeyPhrases.java`adlı bir sınıf oluşturun.
 1. Aşağıda belirtilen kodu sınıfınıza ekleyin.
 1. [Gson](https://github.com/google/gson) kitaplığının yüklü olduğundan emin olun.
 1. Programı IDE 'de çalıştırın veya çalıştırmak için komut satırını kullanın (kod açıklamalarındaki yönergeler).
@@ -542,10 +542,10 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 
 ## <a name="identify-entities"></a>Varlıkları tanımlama
 
-Varlıklar API'si, [Varlıklar metodunu](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634) kullanarak bir metin belgesindeki iyi bilinen varlıkları tanımlar. [Varlıklar](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) , "Birleşik Devletler" gibi metinden sözcükleri ayıklar, ardından bu kelimelerin türünü ve/veya Vimi bağlantısını verir. "Birleşik Devletler" `location`türü, `https://en.wikipedia.org/wiki/United_States`vikipe bağlantısı olduğunda.  Aşağıdaki örnekte İngilizce belgelerin varlıkları tanımlanır.
+Varlıklar API'si, [Varlıklar metodunu](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634) kullanarak bir metin belgesindeki iyi bilinen varlıkları tanımlar. [Varlıklar](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) , "Birleşik Devletler" gibi metinden sözcükleri ayıklar, ardından bu kelimelerin türünü ve/veya Vimi bağlantısını verir. "Birleşik Devletler" türü `location`, vikipe bağlantısı `https://en.wikipedia.org/wiki/United_States`.  Aşağıdaki örnekte İngilizce belgelerin varlıkları tanımlanır.
 
-1. Ortam değişkenlerini `TEXT_ANALYTICS_SUBSCRIPTION_KEY` ve `TEXT_ANALYTICS_ENDPOINT` kaynağınızın Azure uç noktası ve abonelik anahtarı için oluşturun. Uygulamayı düzenleme başladıktan sonra bu ortam değişkenlerini oluşturduysanız, ortam değişkenlerine erişmek için kullandığınız düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir.
-1. En sevdiğiniz IDE (veya masaüstünüzdeki yeni klasör) içinde yeni bir Java projesi oluşturun. Adında `GetEntities.java`bir sınıf oluşturun.
+1. `TEXT_ANALYTICS_SUBSCRIPTION_KEY` ortam değişkenleri oluşturun ve kaynağınızın Azure uç noktası ve abonelik anahtarı için `TEXT_ANALYTICS_ENDPOINT`. Uygulamayı düzenleme başladıktan sonra bu ortam değişkenlerini oluşturduysanız, ortam değişkenlerine erişmek için kullandığınız düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir.
+1. En sevdiğiniz IDE (veya masaüstünüzdeki yeni klasör) içinde yeni bir Java projesi oluşturun. `GetEntities.java`adında bir sınıf oluşturun.
 1. Aşağıda belirtilen kodu sınıfınıza ekleyin.
 1. [Gson](https://github.com/google/gson) kitaplığının yüklü olduğundan emin olun.
 1. Programı IDE 'de çalıştırın veya çalıştırmak için komut satırını kullanın (kod açıklamalarındaki yönergeler).

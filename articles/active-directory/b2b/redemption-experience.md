@@ -1,5 +1,5 @@
 ---
-title: B2B işbirliği ile davet yeniden satın alma-Azure Active Directory | Microsoft Docs
+title: B2B işbirliği ile davet kullanım-Azure AD
 description: Son kullanıcılar için, gizlilik koşullarına yönelik anlaşma dahil olmak üzere Azure AD B2B işbirliği daveti kullanım deneyimini açıklar.
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d32818f9e96e931f9e8c3c13554752327c5c456
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 3e85b0ae298589c0e0e051a24e5db89eae81db62
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622623"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272130"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B işbirliği daveti kullanım
 
@@ -38,10 +38,10 @@ Dizininize bir Konuk kullanıcı eklediğinizde, Konuk Kullanıcı hesabının b
 Davet e-postasına alternatif olarak, bir konuğa uygulamanız veya portalınızın doğrudan bağlantısını sağlayabilirsiniz. Önce [Azure Portal](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-add-guest-users-portal) veya [PowerShell](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-invite-powershell)aracılığıyla konuk kullanıcıyı dizininize eklemeniz gerekir. Ardından doğrudan oturum açma bağlantıları dahil olmak üzere [kullanıcılara uygulama dağıtmak için özelleştirilebilen bir yol](https://docs.microsoft.com/azure/active-directory/manage-apps/end-user-experiences)kullanabilirsiniz. Bir konuk davet e-postası yerine doğrudan bağlantı kullandığında, yine de ilk kez onay deneyiminde gezinir.
 
 > [!IMPORTANT]
-> Doğrudan bağlantı, kiracıya özgü olmalıdır. Diğer bir deyişle, bir kiracı KIMLIĞI veya doğrulanmış etki alanı içermesi gerekir, bu sayede Konuk, paylaşılan uygulamanın bulunduğu kiracınızda kimlik doğrulaması yapılabilir. Kimlik doğrulaması için kendi https://myapps.microsoft.com giriş kiracısına yönlendirireceği için, benzer ortak bir URL, konuk için çalışmaz. Kiracı bağlamıyla doğrudan bağlantı örnekleri aşağıda verilmiştir:
+> Doğrudan bağlantı, kiracıya özgü olmalıdır. Diğer bir deyişle, bir kiracı KIMLIĞI veya doğrulanmış etki alanı içermesi gerekir, bu sayede Konuk, paylaşılan uygulamanın bulunduğu kiracınızda kimlik doğrulaması yapılabilir. https://myapps.microsoft.com gibi ortak bir URL, kimlik doğrulaması için kendi giriş kiracısına yönlendirireceği için, konuk için çalışmaz. Kiracı bağlamıyla doğrudan bağlantı örnekleri aşağıda verilmiştir:
  > - Uygulamalar erişim paneli: https://myapps.microsoft.com/?tenantid=&lt; Kiracı kimliği&gt; 
  > - Doğrulanan etki alanı için uygulamalar erişim paneli: https://myapps.microsoft.com/&lt; doğrulanan etki alanı&gt;
- > - Azure Portal: https://portal.azure.com/&lt; Kiracı kimliği&gt;
+ > - Azure portal: https://portal.azure.com/&lt; Kiracı kimliği&gt;
  > - Tek uygulama: bkz. [doğrudan oturum açma bağlantısı](../manage-apps/end-user-experiences.md#direct-sign-on-links) kullanma
 
 Davet e-postasında doğrudan bağlantı üzerinden önerilen bazı durumlar vardır. Bu özel durumlar kuruluşunuz için önemliyse, davet e-postasını hala gönderen yöntemleri kullanarak kullanıcıları davet etmenizi öneririz:
@@ -58,14 +58,14 @@ Bir konuk, bir iş ortağı kuruluşundaki kaynaklara ilk kez erişmek üzere ot
    ![İzinleri gözden geçir sayfasını gösteren ekran görüntüsü](media/redemption-experience/review-permissions.png) 
 
    > [!NOTE]
-   > Kiracı Yöneticisi olarak kuruluşunuzun gizlilik bildirimine nasıl bağlayabileceğiniz hakkında bilgi için bkz [. nasıl yapılır: Kuruluşunuzun gizlilik bilgilerini Azure Active Directory](https://aka.ms/adprivacystatement)ekleyin.
+   > Kiracı Yöneticisi olarak kuruluşunuzun gizlilik bildirimine nasıl bağlayabileceğiniz hakkında bilgi için bkz. [nasıl yapılır: kuruluşunuzun gizlilik bilgilerini Azure Active Directory ekleme](https://aka.ms/adprivacystatement).
 
 2. Kullanım koşulları yapılandırılırsa, Konuk açılıp kullanım koşullarını inceler ve **kabul et**' i seçer. 
 
    ![Yeni kullanım koşullarını gösteren ekran görüntüsü](media/redemption-experience/terms-of-use-accept.png) 
 
    > [!NOTE]
-   > Yapılandırabilirsiniz:**kuruluş ilişkilerini** >  [](../governance/active-directory-tou.md) yönetmekullanımkoşullarıiçinkullanımkoşulları > ' nı yapılandırabilirsiniz.
+   > Yapılandırma > **kuruluş Ilişkilerini** **yönetme** > **kullanım koşulları**için [kullanım koşulları](../governance/active-directory-tou.md) ' nı yapılandırabilirsiniz.
 
 3. Aksi belirtilmediği takdirde, Konuk, konuk tarafından erişebilen uygulamaları listeleyen uygulamalar erişim paneline yönlendirilir.
 

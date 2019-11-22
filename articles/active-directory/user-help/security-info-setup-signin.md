@@ -1,6 +1,6 @@
 ---
-title: Oturum açma isteminden güvenlik bilgilerini ayarlama (Önizleme)-Azure AD
-description: Kuruluşunuzun oturum açma sayfasından istenirse iş veya okul hesabınız için güvenlik bilgilerini ayarlama.
+title: Güvenlik bilgilerinizi (Önizleme) bir oturum açma isteminden ayarlama-Azure AD
+description: Kuruluşunuzun oturum açma sayfasından istemde bulunulduktan sonra iş veya okul hesabınız için güvenlik bilgilerinizi (Önizleme) nasıl ayarlayacağız.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,14 +12,14 @@ ms.topic: overview
 ms.date: 08/05/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ae1856c7934c658bd244445306b4bb78c666e38
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 710e43aec82c5d154b2e17a20abb2ce4dd481129
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820295"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278993"
 ---
-# <a name="set-up-your-security-info-preview-from-the-sign-in-page-prompt"></a>Oturum açma sayfası isteminden güvenlik bilgilerinizi (Önizleme) ayarlama
+# <a name="set-up-your-security-info-preview-from-a-sign-in-prompt"></a>Güvenlik bilgilerinizi (Önizleme) bir oturum açma isteminden ayarlama
 
 İş veya okul hesabınızda oturum açtıktan hemen sonra güvenlik bilgilerinizi ayarlamanız istenirse, bu adımları izleyebilirsiniz.
 

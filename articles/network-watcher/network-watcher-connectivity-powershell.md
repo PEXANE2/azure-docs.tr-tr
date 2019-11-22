@@ -1,5 +1,6 @@
 ---
-title: Azure ağ Izleyicisi ile bağlantı sorunlarını giderme-PowerShell | Microsoft Docs
+title: Bağlantı sorunlarını giderme-Azure PowerShell
+titleSuffix: Azure Network Watcher
 description: PowerShell kullanarak Azure ağ Izleyicisi 'nde bağlantı sorunlarını giderme özelliğini nasıl kullanacağınızı öğrenin.
 services: network-watcher
 documentationcenter: na
@@ -13,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: kumud
-ms.openlocfilehash: 82bd92de8b2cbb0da4d6d37911a6a3f71186b592
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 824799254b2706c64a17921034dbde3e4f60e132
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802034"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275990"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-powershell"></a>PowerShell kullanarak Azure ağ Izleyicisi ile bağlantı sorunlarını giderme
 
@@ -64,7 +65,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>Yanıt
 
-Aşağıdaki yanıt, önceki örnekteki bir örnektir.  Bu yanıtta `ConnectionStatus` **ulaşılamaz**olur. Tüm yoklamaların başarısız olduğunu görebilirsiniz. Bağlantı noktası 80 ' de gelen trafiği engellemek üzere yapılandırılan, Kullanıcı tarafından yapılandırılan `NetworkSecurityRule` adlı **UserRule_Port80**adlı bir bağlantı, Sanal Gereç sırasında başarısız oldu. Bu bilgiler, bağlantı sorunlarını araştırmak için kullanılabilir.
+Aşağıdaki yanıt, önceki örnekteki bir örnektir.  Bu yanıtta `ConnectionStatus` **ulaşılamaz**olur. Tüm yoklamaların başarısız olduğunu görebilirsiniz. Bağlantı noktası 80 ' de gelen trafiği engellemek için yapılandırılmış **UserRule_Port80**adlı Kullanıcı tarafından yapılandırılmış bir `NetworkSecurityRule` nedeniyle bağlantı Sanal Gereç sırasında başarısız oldu. Bu bilgiler, bağlantı sorunlarını araştırmak için kullanılabilir.
 
 ```
 ConnectionStatus : Unreachable
@@ -155,7 +156,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>Yanıt
 
-Aşağıdaki örnekte `ConnectionStatus`, **ulaşılamaz**olarak gösterilir. @No__t-0 ayrıntılarından `UserDefinedRoute` nedeniyle trafiğin engellendiğini `Issues` altında görebilirsiniz. 
+Aşağıdaki örnekte `ConnectionStatus` **ulaşılamaz**olarak gösterilir. `Hops` ayrıntılarda, trafiğin bir `UserDefinedRoute`nedeniyle engellendiğini `Issues` altında bakabilirsiniz. 
 
 ```
 ConnectionStatus : Unreachable
@@ -219,7 +220,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>Yanıt
 
-Aşağıdaki yanıtta `ConnectionStatus` ' ı **erişilebilir**olarak gösterir. Bir bağlantı başarılı olduğunda, gecikme süresi değerleri sağlanır.
+Aşağıdaki yanıtta `ConnectionStatus` **erişilebilir**olduğunu görebilirsiniz. Bir bağlantı başarılı olduğunda, gecikme süresi değerleri sağlanır.
 
 ```
 ConnectionStatus : Reachable

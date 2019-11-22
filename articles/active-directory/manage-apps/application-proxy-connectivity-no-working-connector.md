@@ -1,6 +1,6 @@
 ---
-title: Hiçbir çalışma bağlayıcı grubu için bir uygulama proxy'si uygulaması bulunamadı | Microsoft Docs
-description: Hiçbir çalışma Bağlayıcısı Azure AD uygulama ara sunucusu ile uygulamanız için bağlayıcı grubunda olduğunda, karşılaşabileceğiniz sorunları
+title: Uygulama ara sunucusu uygulaması için çalışan bağlayıcı grubu bulunamadı
+description: Azure AD Uygulama Ara Sunucusu, uygulamanız için bir bağlayıcı grubunda hiç çalışma Bağlayıcısı olmadığında karşılaşabileceğiniz sorunları ele alabilirsiniz
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,57 +16,57 @@ ms.date: 05/21/2018
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f829b8e8a4bc08b43d3c30a6333771ccd4e26e8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 96ab0d1b3bbab9c97c04da4f918f3aaa2f1d07e4
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65783621"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275612"
 ---
-# <a name="no-working-connector-group-found-for-an-application-proxy-application"></a>Çalışma bağlayıcı grubu için bir uygulama proxy'si uygulaması bulunamadı
+# <a name="no-working-connector-group-found-for-an-application-proxy-application"></a>Uygulama ara sunucusu uygulaması için çalışan bağlayıcı grubu bulunamadı
 
-Bu makale, Azure Active Directory ile tümleşik bir uygulama proxy'si uygulaması için algılanan bir bağlayıcı olmadığında karşılaştığı yaygın sorunları çözmenize yardımcı olur.
+Bu makale, Azure Active Directory ile tümleştirilmiş bir uygulama proxy uygulaması için algılanan bir bağlayıcı olmadığında ortaya çıkan yaygın sorunları gidermeye yardımcı olur.
 
 ## <a name="overview-of-steps"></a>Adımlara genel bakış
-Hiçbir çalışma uygulamanız için bir bağlayıcı grubu bağlayıcısında varsa, sorunu çözmek için birkaç yolu vardır:
+Uygulamanız için bir bağlayıcı grubunda çalışma Bağlayıcısı yoksa, sorunu çözmek için birkaç yol vardır:
 
--   Bağlayıcılar grubunda varsa, şunları yapabilirsiniz:
+-   Grupta hiç bağlayıcı yoksa şunları yapabilirsiniz:
 
-    -   Şirket içi sunucuda sağ taraftaki yeni bir bağlayıcı indirmek ve bu gruba atayın
+    -   Sağ taraftaki Şirket sunucusunda yeni bir bağlayıcı indirin ve bu gruba atayın
 
-    -   Etkin bir bağlayıcı grubuna Taşı
+    -   Etkin bir bağlayıcıyı gruba taşıma
 
--   Grup içinde etkin bağlayıcı yok varsa, şunları yapabilirsiniz:
+-   Grupta etkin bağlayıcı yoksa şunları yapabilirsiniz:
 
-    -   Bağlayıcınızı etkin olmasının nedeni tanımlama ve çözme
+    -   Bağlayıcının etkin olmaması ve çözümlenmesi nedenini belirlemek
 
-    -   Etkin bir bağlayıcı grubuna Taşı
+    -   Etkin bir bağlayıcıyı gruba taşıma
 
-Sorunu anlamasını için uygulamanıza "Uygulama proxy'si" menüsünü açın ve bağlayıcı grubu uyarısı ileti arayın. Grup içinde bağlayıcılar varsa, uyarı iletisi en az bir bağlayıcı grubu gerekiyor belirtir. Etkin bağlayıcı yok varsa, uyarı iletisi açıklar. Devre dışı bağlayıcılar yaygındır. 
+Sorunu anlamak için uygulamanızdaki "uygulama proxy 'Si" menüsünü açın ve bağlayıcı grubu uyarı iletisine bakın. Grupta hiç bağlayıcı yoksa, uyarı iletisi grubun en az bir bağlayıcıya ihtiyacı olduğunu belirtir. Etkin bağlayıcılar yoksa, uyarı iletisi bunu açıklar. Etkin olmayan bağlayıcılar olması yaygındır. 
 
-   ![Azure portalında bağlayıcı Grup Seçimi](./media/application-proxy-connectivity-no-working-connector/no-active-connector.png)
+   ![Azure portal bağlayıcı grubu seçimi](./media/application-proxy-connectivity-no-working-connector/no-active-connector.png)
 
-Bu seçeneklerin her biri hakkında daha fazla bilgi için aşağıdaki ilgili bölümüne bakın. Yönergeler bağlayıcı yönetim sayfasından başlangıç varsayar. Hata iletisi yukarıdaki arıyorsanız, uyarı iletisi tıklayarak bu sayfasına gidebilirsiniz. Sayfasına gidip da edinebilirsiniz **Azure Active Directory**, öğesine tıklayarak **kurumsal uygulamalar**, ardından **uygulama proxy'si.**
+Bu seçeneklerin her biri hakkında ayrıntılı bilgi için aşağıdaki ilgili bölüme bakın. Yönergeler bağlayıcı Yönetim sayfasından başlattığınızı varsayar. Yukarıdaki hata iletisine bakıyorsanız, uyarı iletisine tıklayarak bu sayfaya gidebilirsiniz. Ayrıca, **Azure Active Directory**gidip **Kurumsal uygulamalar**' a ve ardından **uygulama proxy 'si** ' ne tıklayarak da sayfaya ulaşabilirsiniz.
 
-   ![Azure portalında Grup Yönetimi Bağlayıcısı](./media/application-proxy-connectivity-no-working-connector/app-proxy.png)
+   ![Azure portal 'de bağlayıcı grubu yönetimi](./media/application-proxy-connectivity-no-working-connector/app-proxy.png)
 
-## <a name="download-a-new-connector"></a>Yeni bir bağlayıcı indirmek
+## <a name="download-a-new-connector"></a>Yeni bir bağlayıcı indirin
 
-Yeni bir bağlayıcı indirmek için sayfanın en üstündeki "Bağlayıcısı'nı indir" düğmesini kullanın.
+Yeni bir bağlayıcıyı indirmek için sayfanın üst kısmındaki "bağlayıcıyı Indir" düğmesini kullanın.
 
-Bağlayıcıyı doğrudan görebilmesi için arka uç uygulaması ile bir makineye yükleyin. Genellikle, bağlayıcı uygulama ile aynı sunucuya yüklenir. İndirdikten sonra bağlayıcıyı bu menüde görünmeli. Bağlayıcı tıklayın ve "Bağlayıcı grubu" açılan doğru grubuna ait olduğundan emin olun. Yaptığınız değişikliği kaydedin.
+Bağlayıcıyı, arka uç uygulamasına doğrudan görüş satırı olan bir makineye yükler. Genellikle bağlayıcı, uygulamayla aynı sunucuya yüklenir. İndirmeden sonra bağlayıcının bu menüde görünmesi gerekir. Bağlayıcıya tıklayın ve sağ gruba ait olduğundan emin olmak için "bağlayıcı grubu" açılan simgesini kullanın. Değişikliği kaydedin.
 
-   ![Bağlayıcı Azure portalından indirin](./media/application-proxy-connectivity-no-working-connector/download-connector.png)
+   ![Azure portal bağlayıcıyı indirin](./media/application-proxy-connectivity-no-working-connector/download-connector.png)
    
-## <a name="move-an-active-connector"></a>Etkin bir Bağlayıcıyı taşıma
+## <a name="move-an-active-connector"></a>Etkin Bağlayıcıyı taşıma
 
-Görebilmesi için hedef arka uç uygulama grubuna ait olmalıdır ve bir etkin bağlayıcı varsa, bağlayıcı atanan grubuna taşıyabilirsiniz. Bunu yapmak için bağlayıcı'yı tıklayın. "Bağlayıcı grubu" alanında doğru grubunu seçin ve Kaydet'e tıklayın için açılan listeyi kullanın.
+Gruba ait olması gereken ve hedef arka uç uygulamasına bir görüş satırı içeren etkin bir bağlayıcınız varsa, bağlayıcıyı atanan gruba taşıyabilirsiniz. Bunu yapmak için bağlayıcı'yı tıklayın. "Bağlayıcı grubu" alanında, doğru grubu seçmek için açılan eklentiyi kullanın ve Kaydet ' e tıklayın.
 
-## <a name="resolve-an-inactive-connector"></a>Etkin olmayan bir bağlayıcı çözümleyin
+## <a name="resolve-an-inactive-connector"></a>Etkin olmayan bir bağlayıcıyı çözümle
 
-Gruptaki yalnızca bağlayıcıları devre dışı ise engeli kaldırılmış tüm gerekli bağlantı noktalarına sahip olmayan bir makineye olasıdır.
+Gruptaki tek bağlayıcılar devre dışı bırakılırsa, büyük olasılıkla gerekli olan tüm bağlantı noktalarının engeli kaldırılmış bir makinedir.
 
-Bu sorunu araştırma hakkında ayrıntılar için bağlantı noktalarını sorun giderme belgesi bakın.
+Bu sorunu araştırmaya ilişkin ayrıntılar için bkz. belge sorunlarını giderme bilgileri.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Azure AD uygulama ara sunucusu bağlayıcıları anlama](application-proxy-connectors.md)

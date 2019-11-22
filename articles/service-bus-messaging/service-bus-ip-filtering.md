@@ -11,32 +11,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 45415af479c9581ee04b97af4fb5297d09c5769d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 02d6e150e638321e11a8dec9838e360faa00783e
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496338"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280933"
 ---
 # <a name="use-firewall-rules"></a>Güvenlik duvarı kurallarını kullanma
 
-Azure Service Bus yalnızca belirli bir bilinen sitelerden erişilebilen senaryolarda güvenlik duvarı kuralları, belirli IPv4 adreslerinden kaynaklanan trafiği kabul etmek için kuralları yapılandırmanızı sağlar. Örneğin, bu adresler bir kurumsal NAT ağ geçidi olabilir.
+Azure Service Bus yalnızca belirli bir bilinen sitelerden erişilebilen senaryolarda güvenlik duvarı kuralları, belirli IPv4 adreslerinden kaynaklanan trafiği kabul etmek için kuralları yapılandırmanızı sağlar. Örneğin, bu adresler kurumsal bir NAT ağ geçidinin bu olabilir.
 
 ## <a name="when-to-use"></a>Kullanılması gereken durumlar
 
 Yalnızca belirli bir IP adresi aralığından trafik alması ve diğer her şeyi reddetmesi gibi Service Bus kurmak istiyorsanız, diğer IP adreslerinden Service Bus uç noktaları engellemek için bir *güvenlik duvarı* üzerinden yararlanabilirsiniz. Örneğin, şirket içi altyapınızla özel bağlantılar oluşturmak için [Azure Express Route][express-route] ile Service Bus kullanıyorsunuz. 
 
-## <a name="how-filter-rules-are-applied"></a>Filtre kuralları nasıl uygulanır
+## <a name="how-filter-rules-are-applied"></a>Filtre kurallarının uygulanma yöntemi
 
-IP filtresi kuralları Service Bus ad alanı düzeyinde uygulanır. Bu nedenle, kurallar desteklenen herhangi bir protokolü kullanarak istemcilerden gelen tüm bağlantılara uygulanır.
+IP filtresi kuralları Service Bus ad alanı düzeyinde uygulanır. Bu nedenle, kurallar, istemcilerden herhangi bir desteklenen protokolünü kullanarak tüm bağlantıları için geçerlidir.
 
-Service Bus ad alanındaki izin verilen bir IP kuralıyla eşleşmeyen bir IP adresinden gelen bağlantı girişimleri yetkisiz olarak reddedilir. Yanıt, IP kuralından bahsetmiyor.
+Service Bus ad alanındaki izin verilen bir IP kuralıyla eşleşmeyen bir IP adresinden gelen bağlantı girişimleri yetkisiz olarak reddedilir. Yanıt IP kuralı başvurmayacak.
 
 ## <a name="default-setting"></a>Varsayılan ayar
 
-Varsayılan olarak, Service Bus Portal 'daki **IP filtresi** Kılavuzu boştur. Bu varsayılan ayar, ad alanınız herhangi bir IP adresine bağlantı kabul ettiği anlamına gelir. Bu varsayılan ayar 0.0.0.0/0 IP adresi aralığını kabul eden bir kuralla eşdeğerdir.
+Varsayılan olarak, Service Bus Portal 'daki **IP filtresi** Kılavuzu boştur. Bu varsayılan ayar, ad alanınız herhangi bir IP adresine bağlantı kabul ettiği anlamına gelir. Bu varsayılan ayarı 0.0.0.0/0 IP adresi aralığı kabul eden bir kural eşdeğerdir.
 
-## <a name="ip-filter-rule-evaluation"></a>IP filtresi kuralı değerlendirmesi
+## <a name="ip-filter-rule-evaluation"></a>IP filtresi kuralı değerlendirme
 
 IP filtresi kuralları sırasıyla uygulanır ve IP adresiyle eşleşen ilk kural kabul etme veya reddetme eylemini belirler.
 
@@ -46,14 +46,13 @@ IP filtresi kuralları sırasıyla uygulanır ve IP adresiyle eşleşen ilk kura
 > IP filtrelemesi (güvenlik duvarı kuralları) uygulandığında güvenilir Microsoft Hizmetleri desteklenmez ve yakında kullanıma sunulacaktır.
 >
 > IP filtrelemesi ile çalışmayan yaygın Azure senaryoları ( **listenin ayrıntılı olmadığına** unutmayın)-
-> - Azure İzleyici
 > - Azure Stream Analytics
 > - Azure Event Grid ile tümleştirme
 > - Azure IoT Hub yolları
 > - Azure IoT Device Explorer
 >
 > Aşağıdaki Microsoft hizmetlerinin bir sanal ağda olması gerekir
-> - Azure App Service
+> - Azure uygulama hizmeti
 > - Azure İşlevleri
 
 ### <a name="creating-a-virtual-network-and-firewall-rule-with-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarıyla bir sanal ağ ve güvenlik duvarı kuralı oluşturma
@@ -65,13 +64,13 @@ Aşağıdaki Kaynak Yöneticisi şablonu, var olan bir Service Bus ad alanına b
 
 Şablon parametreleri:
 
-- **IPMask** , CIDR gösteriminde tek bir IPv4 ADRESIDIR veya IP adresi bloğudur. Örneğin, CıDR gösteriminde 70.37.104.0/24, Aralık için önemli olan önek bit sayısını belirten, 70.37.104.0 ile 70.37.104.255 arasındaki 256 IPv4 adresini temsil eder.
+- **ipMask** tek bir IPv4 adresi veya IP adresleri CIDR gösteriminde bir bloğu. Örneğin, CIDR gösterimi 70.37.104.0/24 256 IPv4 adresi 70.37.104.0 70.37.104.255, aralığı için önemli bir önek bit sayısını gösteren 24 ile temsil eder.
 
 > [!NOTE]
 > Mümkün olan reddetme kuralları olmadığı sürece, Azure Resource Manager şablonu, bağlantıları kısıtlayameyen **"Izin ver"** olarak ayarlanmış varsayılan eylemi içerir.
 > Sanal ağ veya güvenlik duvarları kuralları yaparken, ***"DefaultAction"*** öğesini değiştirmemiz gerekir
 > 
-> Kaynak
+> from
 > ```json
 > "defaultAction": "Allow"
 > ```

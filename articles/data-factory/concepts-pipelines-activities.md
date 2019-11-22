@@ -5,20 +5,19 @@ services: data-factory
 documentationcenter: ''
 author: djpmsft
 ms.author: daperlov
-manager: jroth
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/12/2018
-ms.openlocfilehash: bed81633b27d5d0f89cb7e3d7a6e0975de4b6772
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.date: 11/19/2019
+ms.openlocfilehash: 6e466675a9bd86693ce0ee048480712a55829ce6
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681454"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280728"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure Data Factory’de işlem hatları ve etkinlikler
+
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-create-pipelines.md)
 > * [Geçerli sürüm](concepts-pipelines-activities.md)
@@ -26,17 +25,18 @@ ms.locfileid: "73681454"
 Bu makale, Azure Data Factory’de işlem hatlarını ve etkinlikleri anlamanıza ve veri hareketi ile veri işleme senaryolarınız için uçtan uca veri odaklı iş akışları oluşturmak amacıyla bunları nasıl kullanacağınızı anlamanıza yardımcı olur.
 
 ## <a name="overview"></a>Genel Bakış
-Bir veri fabrikasında bir veya daha fazla işlem hattı olabilir. İşlem hattı, bir araya geldiğinde bir görev gerçekleştiren mantıksal etkinlik grubudur. Örneğin, bir işlem hattı günlük verilerini alıp temizleyen ve sonra günlük verilerini analiz etmek üzere bir HDInsight kümesinde Spark işi başlatan bir dizi etkinlik içerebilir. İşlem hattının avantajı, etkinliklerin her birini tek tek yönetmek yerine bir küme olarak yönetmenize olanak tanımasıdır. Örneğin, etkinlikleri bağımsız olarak dağıtmak ve zamanlamak yerine işlem hattını dağıtabilir ve zamanlayabilirsiniz.
+Bir veri fabrikasında bir veya daha fazla işlem hattı olabilir. İşlem hattı, bir araya geldiğinde bir görev gerçekleştiren mantıksal etkinlik grubudur. Örneğin, bir işlem hattı günlük verilerini alıp Temizleme ve sonra da günlük verilerini çözümlemek için bir eşleme veri akışını başlatma gibi bir etkinlik kümesi içerebilir. İşlem hattı etkinlikleri tek tek yerine bir küme olarak yönetmenizi sağlar. Etkinlikleri yerine işlem hattını dağıtır ve zamanlayabilirsiniz.
 
-Bir işlem hattındaki etkinlikler, verilerinizde gerçekleştirilecek eylemleri tanımlar. Örneğin, kopyalama etkinliğini kullanarak şirket içi SQL Server’dan Azure Blob Depolama’ya veri kopyalayabilirsiniz. Ardından bir Azure HDInsight kümesinde Hive betiği çalıştıran bir Hive etkinliği kullanıp blob depolamadaki verileri işleyerek/dönüştürerek çıktı verileri üretebilirsiniz. Son olarak, ikinci bir kopyalama etkinliği kullanarak üzerinde iş zekası (BI) raporlama çözümlerinin oluşturulduğu bir Azure SQL Veri Ambarı’na çıktı verilerini kopyalayabilirsiniz.
+Bir işlem hattındaki etkinlikler, verilerinizde gerçekleştirilecek eylemleri tanımlar. Örneğin, kopyalama etkinliğini kullanarak şirket içi SQL Server’dan Azure Blob Depolama’ya veri kopyalayabilirsiniz. Daha sonra, blob depolamadan veri işlemek ve iş zekası raporlama çözümlerinin oluşturulduğu bir Azure SYNAPSE Analytics havuzuna dönüştürmek için bir veri akışı etkinliği veya Databricks Not defteri etkinliğini kullanın.
 
-Data Factory üç tür etkinliği destekler: [veri taşıma etkinlikleri](copy-activity-overview.md), [veri dönüştürme etkinlikleri](transform-data.md) ve [denetim etkinlikleri](control-flow-web-activity.md). Bir etkinliğin sıfır veya sıfırdan çok giriş [veri kümesi](concepts-datasets-linked-services.md) olabilir ve her etkinlik bir veya birden çok çıkış [veri kümesi](concepts-datasets-linked-services.md) oluşturabilir. Aşağıdaki diyagramda, Data Factory içindeki işlem hattı, etkinlik ve veri kümesi arasındaki ilişki gösterilmektedir:
+Data Factory üç etkinlik gruplansahiptir: [veri taşıma etkinlikleri](copy-activity-overview.md), [veri dönüştürme etkinlikleri](transform-data.md)ve [Denetim etkinlikleri](control-flow-web-activity.md). Bir etkinliğin sıfır veya sıfırdan çok giriş [veri kümesi](concepts-datasets-linked-services.md) olabilir ve her etkinlik bir veya birden çok çıkış [veri kümesi](concepts-datasets-linked-services.md) oluşturabilir. Aşağıdaki diyagramda, Data Factory içindeki işlem hattı, etkinlik ve veri kümesi arasındaki ilişki gösterilmektedir:
 
 ![Veri kümesi, etkinlik ve işlem hattı arasındaki ilişki](media/concepts-pipelines-activities/relationship-between-dataset-pipeline-activity.png)
 
 Giriş veri kümesi, veri işlem hattındaki bir etkinlik için girişi ve çıktı veri kümesi, etkinliğin çıktısını temsil eder. Veri kümeleri tablolar, dosyalar, klasörler ve belgeler gibi farklı veri depolarındaki verileri tanımlar. Bir veri kümesi oluşturduktan sonra, bu kümeyi bir işlem hattındaki etkinliklerle birlikte kullanabilirsiniz. Örneğin, veri kümesi bir Kopyalama Etkinliğinin veya HDInsightHive Etkinliğinin giriş/çıkış veri kümesi olabilir. Veri kümeleri hakkında daha fazla bilgi için [Azure Data Factory'de Veri Kümeleri](concepts-datasets-linked-services.md) makalesine bakın.
 
 ## <a name="data-movement-activities"></a>Veri taşıma etkinlikleri
+
 Data Factory’deki Kopyalama Etkinliği bir kaynak veri deposundan havuz veri deposuna verileri kopyalar. Data Factory bu bölümdeki tabloda listelenen veri depolarını destekler. Herhangi bir kaynaktan gelen veriler herhangi bir havuza yazılabilir. Bir depoya veya depodan veri kopyalama hakkında bilgi edinmek için veri deposuna tıklayın.
 
 [!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores.md)]
@@ -48,6 +48,8 @@ Azure Data Factory, işlem hatlarına tek tek veya başka bir etkinlikle zincirl
 
 Veri dönüştürme etkinliği | İşlem ortamı
 ---------------------------- | -------------------
+[Veri akışı](control-flow-execute-data-flow-activity.md) | Azure Databricks Azure Data Factory tarafından yönetiliyor
+[Azure Işlevi](control-flow-azure-function-activity.md) | Azure İşlevleri
 [Hive](transform-data-using-hadoop-hive.md) | HDInsight [Hadoop]
 [Pig](transform-data-using-hadoop-pig.md) | HDInsight [Hadoop]
 [MapReduce](transform-data-using-hadoop-map-reduce.md) | HDInsight [Hadoop]
@@ -56,26 +58,31 @@ Veri dönüştürme etkinliği | İşlem ortamı
 [Machine Learning etkinlikleri: Toplu Yürütme ve Kaynak Güncelleştirme](transform-data-using-machine-learning.md) | Azure VM
 [Saklı Yordam](transform-data-using-stored-procedure.md) | Azure SQL, Azure SQL Veri Ambarı veya SQL Server
 [U-SQL](transform-data-using-data-lake-analytics.md) | Azure Data Lake Analytics
-[Özel Kod](transform-data-using-dotnet-custom-activity.md) | Azure Batch
+[Özel etkinlik](transform-data-using-dotnet-custom-activity.md) | Azure Batch
 [Databricks Not Defteri](transform-data-databricks-notebook.md) | Azure Databricks
 [Databricks jar etkinliği](transform-data-databricks-jar.md) | Azure Databricks
 [Databricks Python etkinliği](transform-data-databricks-python.md) | Azure Databricks
 
 Daha fazla bilgi için [veri dönüştürme etkinlikleri](transform-data.md) makalesine bakın.
 
-## <a name="control-activities"></a>Denetim etkinlikleri
+## <a name="control-flow-activities"></a>Denetim akışı etkinlikleri
 Aşağıdaki denetim akışı etkinlikleri desteklenir:
 
 Denetim etkinliği | Açıklama
 ---------------- | -----------
-[İşlem Hattı Yürütme Etkinliği](control-flow-execute-pipeline-activity.md) | İşlem Hattı Yürütme etkinliği bir Data Factory işlem hattının başka bir işlem hattını çağırmasını sağlar.
-[ForEachActivity](control-flow-for-each-activity.md) | ForEach Etkinliği, işlem hattınızda yinelenen bir denetim akışını tanımlar. Bu etkinlik bir koleksiyon üzerinde yinelemek için kullanılır ve bir döngüde belirtilen etkinlikleri yürütür. Bu etkinliğin döngü uygulaması, programlama dillerindeki Foreach döngü yapısına benzer.
-[WebActivity](control-flow-web-activity.md) | Web Etkinliği bir Data Factory işlem hattından özel bir REST uç noktasını çağırmak için kullanılabilir. Etkinlik tarafından kullanılacak ve erişilecek veri kümelerini ve bağlı hizmetleri geçirebilirsiniz.
-[Arama Etkinliği](control-flow-lookup-activity.md) | Arama Etkinliği herhangi bir dış kaynaktan bir record/ table name/ değerini okumak veya aramak için kullanılabilir. Sonraki etkinliklerde bu çıktıya daha fazla başvurulabilir.
-[Meta Veri Alma Etkinliği](control-flow-get-metadata-activity.md) | GetMetadata etkinliği, Azure Data Factory içindeki herhangi bir verinin meta verilerini almak için kullanılabilir.
-[Bitiş Etkinliği](control-flow-until-activity.md) | Programlama dillerindeki Do-Until döngü yapısına benzer bir Do-Until döngüsü uygular. Etkinlikle ilişkilendirilmiş olan koşul doğru sonucunu verene kadar bir dizi etkinliği döngüsel olarak yürütür. Data Factory'de bitiş etkinliği için bir zaman aşımı değeri belirtebilirsiniz.
+[Değişken Ekle](control-flow-append-variable-activity.md) | Varolan bir dizi değişkenine bir değer ekleyin.
+[İşlem hattını yürütme](control-flow-execute-pipeline-activity.md) | İşlem Hattı Yürütme etkinliği bir Data Factory işlem hattının başka bir işlem hattını çağırmasını sağlar.
+[Filtre](control-flow-filter-activity.md) | Giriş dizisine filtre ifadesi uygulama
+[Her biri için](control-flow-for-each-activity.md) | ForEach Etkinliği, işlem hattınızda yinelenen bir denetim akışını tanımlar. Bu etkinlik bir koleksiyon üzerinde yinelemek için kullanılır ve bir döngüde belirtilen etkinlikleri yürütür. Bu etkinliğin döngü uygulaması, programlama dillerindeki Foreach döngü yapısına benzer.
+[Meta verileri al](control-flow-get-metadata-activity.md) | GetMetadata etkinliği, Azure Data Factory içindeki herhangi bir verinin meta verilerini almak için kullanılabilir.
 [If Koşulu Etkinliği](control-flow-if-condition-activity.md) | If Koşulu, doğru veya yanlış sonucunu vermesi temelinde dallanmak için kullanılabilir. If Koşulu etkinliği, programlama dilerindeki If deyimiyle aynı işlevselliği sağlar. Koşul `true` sonucunu verdiğinde bir dizi etkinliği, `false` sonucu verdiğinde ise başka bir dizi etkinliği değerlendirmeye alır.
+[Arama Etkinliği](control-flow-lookup-activity.md) | Arama Etkinliği herhangi bir dış kaynaktan bir record/ table name/ değerini okumak veya aramak için kullanılabilir. Sonraki etkinliklerde bu çıktıya daha fazla başvurulabilir.
+[Değişken ayarla](control-flow-set-variable-activity.md) | Mevcut bir değişkenin değerini ayarlayın.
+[Bitiş Etkinliği](control-flow-until-activity.md) | Programlama dillerindeki Do-Until döngü yapısına benzer bir Do-Until döngüsü uygular. Etkinlikle ilişkilendirilmiş olan koşul doğru sonucunu verene kadar bir dizi etkinliği döngüsel olarak yürütür. Data Factory'de bitiş etkinliği için bir zaman aşımı değeri belirtebilirsiniz.
+[Doğrulama etkinliği](control-flow-validation-activity.md) | İşlem hattının yalnızca bir başvuru veri kümesi varsa, belirtilen kriterleri karşılıyorsa veya bir zaman aşımıyla ulaşıldığı takdirde yürütmeye devam ettiğinden emin olun.
 [Bekleme Etkinliği](control-flow-wait-activity.md) | İşlem hattında Bekleme etkinliğini kullandığınızda, işlem hattı izleyen etkinlikleri yürütmeye devam etmeden önce belirtilen süre kadar bekler.
+[Web etkinliği](control-flow-web-activity.md) | Web Etkinliği bir Data Factory işlem hattından özel bir REST uç noktasını çağırmak için kullanılabilir. Etkinlik tarafından kullanılacak ve erişilecek veri kümelerini ve bağlı hizmetleri geçirebilirsiniz.
+[Web kancası etkinliği](control-flow-webhook-activity.md) | Web kancası etkinliğini kullanarak bir uç nokta çağırın ve bir geri çağırma URL 'SI geçirin. İşlem hattı çalıştırması, bir sonraki etkinliğe devam etmeden önce geri aramanın çağrılmasını bekler.
 
 ## <a name="pipeline-json"></a>İşlem Hattı JSON
 JSON biçiminde işlem hattı şöyle tanımlanır:
@@ -90,17 +97,22 @@ JSON biçiminde işlem hattı şöyle tanımlanır:
         [
         ],
         "parameters": {
-         }
+        },
+        "concurrency": <your max pipeline concurrency>,
+        "annotations": [
+        ]
     }
 }
 ```
 
 Etiket | Açıklama | Tür | Gerekli
 --- | ----------- | ---- | --------
-ad | İşlem hattının adı. İşlem hattının gerçekleştirdiği eylemi temsil eden bir ad belirtin. <br/><ul><li>En fazla karakter sayısı: 140</li><li>Bir harf, sayı veya alt çizgi ile başlamalıdır (\_)</li><li>Şu karakterler kullanılamaz: “.”, “+”, “?”, “/”, “<”,”>”,”*”,”%”,”&”,”:”,”\”</li></ul> | Dize | Evet
+ad | İşlem hattının adı. İşlem hattının gerçekleştirdiği eylemi temsil eden bir ad belirtin. <br/><ul><li>En fazla karakter sayısı: 140</li><li>Bir harf, sayı veya alt çizgi ile başlamalıdır (\_)</li><li>Şu karakterler kullanılamaz: “.”, “+”, “?”, “/”, “<”,”>”,”*”,”%”,”&”,”:”,”\”</li></ul> | Dize | Yes
 açıklama | İşlem hattının ne için kullanıldığını açıklayan metni belirtin. | Dize | Hayır
-etkinlikler | **Etkinlikler** bölümünde tanımlanmış bir veya daha fazla etkinlik olabilir. Etkinliklerin JSON öğesi hakkında ayrıntılı bilgi için [Etkinlik JSON](#activity-json) bölümüne bakın. | Dizi | Evet
+etkinlikler | **Etkinlikler** bölümünde tanımlanmış bir veya daha fazla etkinlik olabilir. Etkinliklerin JSON öğesi hakkında ayrıntılı bilgi için [Etkinlik JSON](#activity-json) bölümüne bakın. | Dizi | Yes
 parametreler | **Parametreler** bölümü, işlem hattınızı yeniden kullanım için esnek hale getiren, işlem hattında tanımlanmış bir veya daha fazla parametreyi içerebilir. | Liste | Hayır
+concurrency | İşlem hattının sahip olduğu en fazla eşzamanlı çalıştırma sayısı. Varsayılan olarak, en fazla bir değer yoktur. Eşzamanlılık sınırına ulaşılırsa, daha önce tamamlanana kadar ek işlem hattı çalıştırmaları sıraya alınır | Sayı | Hayır 
+Açıklamaları | İşlem hattı ile ilişkili etiketlerin listesi | Dizi | Hayır
 
 ## <a name="activity-json"></a>Etkinlik JSON
 **Etkinlikler** bölümünde tanımlanmış bir veya daha fazla etkinlik olabilir. İki temel etkinlik türü vardır: Yürütme ve Denetim Etkinlikleri.
@@ -130,9 +142,9 @@ Aşağıdaki tabloda, etkinlik JSON tanımındaki özellikler açıklamaktadır:
 
 Etiket | Açıklama | Gerekli
 --- | ----------- | ---------
-ad | Etkinliğin adı. Etkinliğin gerçekleştirdiği eylemi temsil eden bir ad belirtin. <br/><ul><li>En fazla karakter sayısı: 55</li><li>Bir harf numarası veya alt çizgi (\_) ile başlamalıdır</li><li>Şu karakterler kullanılamaz: “.”, “+”, “?”, “/”, “<”,”>”,”*”,”%”,”&”,”:”,”\” | Evet</li></ul>
-açıklama | Etkinliğin ne olduğunu veya ne için kullanıldığını açıklayan metin | Evet
-type | Etkinliğin türü. Farklı etkinlik türleri için [Veri Taşıma Etkinlikleri](#data-movement-activities), [Veri Dönüştürme Etkinlikleri](#data-transformation-activities) ve [Denetim Etkinlikleri](#control-activities) bölümlerine bakın. | Evet
+ad | Etkinliğin adı. Etkinliğin gerçekleştirdiği eylemi temsil eden bir ad belirtin. <br/><ul><li>En fazla karakter sayısı: 55</li><li>Bir harf numarası veya alt çizgi (\_) ile başlamalıdır</li><li>Şu karakterler kullanılamaz: “.”, “+”, “?”, “/”, “<”,”>”,”*”,”%”,”&”,”:”,”\” | Yes</li></ul>
+açıklama | Etkinliğin ne olduğunu veya ne için kullanıldığını açıklayan metin | Yes
+type | Etkinliğin türü. Farklı etkinlik türleri için [Veri Taşıma Etkinlikleri](#data-movement-activities), [Veri Dönüştürme Etkinlikleri](#data-transformation-activities) ve [Denetim Etkinlikleri](#control-flow-activities) bölümlerine bakın. | Yes
 linkedServiceName | Etkinlik tarafından kullanılan bağlı hizmetin adı.<br/><br/>Bir etkinlik için gerekli işlem ortamına bağlanan bağlı hizmeti belirtmeniz gerekebilir. | HDInsight Etkinliği, Azure Machine Learning Toplu İşlem Puanlandırma Etkinliği, Saklı Yordam Etkinliği için evet. <br/><br/>Diğer tümü için hayır
 typeProperties | typeProperties bölümündeki özellikler her bir etkinlik türüne bağlıdır. Bir etkinliğin tür özelliklerini görmek için önceki bölümde verilen etkinlik bağlantılarına tıklayın. | Hayır
 ilke | Etkinliğin çalışma zamanı davranışını etkileyen ilkeler. Bu özellik zaman aşımı ve yeniden deneme davranışını içerir. Belirtilmemişse, varsayılan değerler kullanılır. Daha fazla bilgi için [Etkinlik İlkesi](#activity-policy) bölümüne bakın. | Hayır
@@ -195,9 +207,9 @@ Denetim etkinlikleri aşağıdaki üst düzey yapıya sahiptir:
 
 Etiket | Açıklama | Gerekli
 --- | ----------- | --------
-ad | Etkinliğin adı. Etkinliğin gerçekleştirdiği eylemi temsil eden bir ad belirtin.<br/><ul><li>En fazla karakter sayısı: 55</li><li>Bir harf numarası veya alt çizgi (\_) ile başlamalıdır</li><li>Şu karakterler kullanılamaz: “.”, “+”, “?”, “/”, “<”,”>”,”*”,”%”,”&”,”:”,”\” | Evet</li><ul>
-açıklama | Etkinliğin ne olduğunu veya ne için kullanıldığını açıklayan metin | Evet
-type | Etkinliğin türü. Farklı etkinlik türleri için [veri taşıma etkinlikleri](#data-movement-activities), [veri dönüştürme etkinlikleri](#data-transformation-activities) ve [denetim etkinlikleri](#control-activities) bölümlerine bakın. | Evet
+ad | Etkinliğin adı. Etkinliğin gerçekleştirdiği eylemi temsil eden bir ad belirtin.<br/><ul><li>En fazla karakter sayısı: 55</li><li>Bir harf numarası veya alt çizgi (\_) ile başlamalıdır</li><li>Şu karakterler kullanılamaz: “.”, “+”, “?”, “/”, “<”,”>”,”*”,”%”,”&”,”:”,”\” | Yes</li><ul>
+açıklama | Etkinliğin ne olduğunu veya ne için kullanıldığını açıklayan metin | Yes
+type | Etkinliğin türü. Farklı etkinlik türleri için [veri taşıma etkinlikleri](#data-movement-activities), [veri dönüştürme etkinlikleri](#data-transformation-activities) ve [denetim etkinlikleri](#control-flow-activities) bölümlerine bakın. | Yes
 typeProperties | typeProperties bölümündeki özellikler her bir etkinlik türüne bağlıdır. Bir etkinliğin tür özelliklerini görmek için önceki bölümde verilen etkinlik bağlantılarına tıklayın. | Hayır
 dependsOn | Bu özellik Etkinlik Bağımlılığını ve sonraki etkinliklerin önceki etkinliklere ne kadar bağımlı olduğunu tanımlamak için kullanılır. Daha fazla bilgi için bkz. [etkinlik bağımlılığı](#activity-dependency). | Hayır
 
@@ -362,7 +374,7 @@ Sonraki etkinliklerin önceki etkinliklere nasıl bağımlı olduğunu tanımlay
 
 Tetikleyicinizin bir işlem hattı çalıştırmasını başlatması için tetikleyici tanımındaki belirli işlem hattının işlem hattı başvurusunu eklemeniz gerekir. İşlem hatları ve tetikleyiciler n-m ilişkisine sahiptir. Birden çok tetikleyici tek bir işlem hattını, bir tetikleyici de birden fazla işlem hattını başlatabilir. Tetikleyici tanımlandıktan sonra işlem hattını tetiklemesini başlatmak için tetikleyiciyi başlatmanız gerekir. Tetikleyiciler hakkında daha fazla bilgi için [işlem hattı yürütme ve tetikleyicileri](concepts-pipeline-execution-triggers.md) makalesine bakın.
 
-Örneğin, "MyCopyPipeline" işlem hattımı başlatmak istediğim "Tetikleyici A" adlı zamanlayıcı tetikleyiciye sahip olduğumu varsayalım. Tetikleyiciyi aşağıdaki örnekte gösterildiği gibi tanımlayın:
+Örneğin, "MyCopyPipeline" ardışık yolumu kapatmak istediğim bir Zamanlayıcı Tetikleyiciniz olduğunu varsayalım. Tetikleyiciyi aşağıdaki örnekte gösterildiği gibi tanımlayın:
 
 ### <a name="trigger-a-definition"></a>Tetikleyici A tanımı
 

@@ -1,22 +1,18 @@
 ---
-title: " Geliştirme makinenizi bir AKS kümesine bağlama"
-titleSuffix: Azure Dev Spaces
+title: Geliştirme makinenizi AKS kümesine bağlama
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 11/04/2019
 ms.topic: conceptual
 description: Geliştirme makinenizi Azure Dev Spaces ile bir AKS kümesine bağlamayı öğrenin
 keywords: Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar
-ms.openlocfilehash: 15e46fba19d92e08a9c87a63f6f01ec6b0836910
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 1b65721b67ff63525adfe5d2061f22f359c02bde
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888917"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280128"
 ---
-# <a name="connect-your-development-machine-to-an-aks-cluster-preview"></a>Geliştirme makinenizi bir AKS kümesine bağlama (Önizleme)
+# <a name="connect-your-development-machine-to-an-aks-cluster-preview"></a>Geliştirme makinenizi AKS kümesine bağlama (önizleme)
 
 Azure Dev Spaces, geliştirme makinenizde bir kapsayıcı ile veya bu kodla hata ayıklamanıza olanak sağlarken, hala uygulamanızın veya hizmetlerinizin geri kalanı ile Kubernetes kümenize bağlanır. Geliştirme makinenizi kümenize bağlamak, herhangi bir Docker veya Kubernetes yapılandırması oluşturmaya gerek kalmadan uygulamanızı hızlı bir şekilde geliştirmenize ve uçtan uca test gerçekleştirmenize yardımcı olur. Ayrıca, diğer iş yüklerini veya aynı kümeyi kullanabilecek kullanıcıları etkilemeden AKS kümenize bağlanabilirsiniz.
 
@@ -39,7 +35,7 @@ Bu kılavuz, geliştirme makinenizin bir AKS kümesine bağlanmasını gösterme
 
 * UDP Şu anda desteklenmiyor.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz hesap](https://azure.microsoft.com/free) oluşturabilirsiniz.
 * [Yüklü Azure CLI][azure-cli].

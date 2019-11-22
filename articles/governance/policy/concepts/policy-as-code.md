@@ -3,12 +3,12 @@ title: İlkeyi Kod iş akışları olarak tasarklama
 description: Azure Ilke tanımlarınızı kod olarak dağıtmak ve kaynakları otomatik olarak doğrulamak için iş akışları tasarlamayı öğrenin.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 935616145ee32bea8c3b514c495690ce4105cb80
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 0914ba6510c9d2ef87d3f83417f97340d42c8bce
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072084"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267273"
 ---
 # <a name="design-policy-as-code-workflows"></a>İlkeyi Kod iş akışları olarak tasarklama
 
@@ -128,6 +128,6 @@ Bu makalede kod olarak Ilke için genel iş akışı ve ayrıca ilke değerlendi
 - [İlke tanımı yapısı](./definition-structure.md)hakkında bilgi edinin.
 - [İlke atama yapısı](./assignment-structure.md)hakkında bilgi edinin.
 - [Program aracılığıyla ilkelerin nasıl oluşturulduğunu](../how-to/programmatically-create.md)anlayın.
-- [Uyumluluk verilerini nasıl alabileceğinizi](../how-to/getting-compliance-data.md)öğrenin.
+- [Uyumluluk verilerini nasıl alabileceğinizi](../how-to/get-compliance-data.md)öğrenin.
 - [Uyumlu olmayan kaynakları nasıl düzelteceğinizi](../how-to/remediate-resources.md)öğrenin.
 - [Kaynakları Azure Yönetim gruplarıyla düzenleme](../../management-groups/overview.md)ile yönetim grubunun ne olduğunu inceleyin.

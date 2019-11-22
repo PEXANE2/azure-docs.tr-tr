@@ -1,6 +1,6 @@
 ---
-title: Hızlı Başlangıç-tarayıcıda JavaScript ve HTML kullanarak Azure depolamada blob oluşturma
-description: HTML sayfasında JavaScript kullanarak Blobları karşıya yüklemeyi, listeleyeceğinizi ve silmeyi öğrenin.
+title: 'Hızlı başlangıç: tarayıcıda JavaScript ile v10 arasındaki için Azure Blob depolama'
+description: JavaScript ile v10 arasındaki SDK kullanarak blob 'ları bir HTML sayfasında karşıya yüklemeyi, listeleyeceğinizi ve silmeyi öğrenin.
 services: storage
 author: mhopkins-msft
 ms.custom: mvc
@@ -9,12 +9,12 @@ ms.author: mhopkins
 ms.date: 08/29/2019
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: 018a0405215d084962f6c107a607c8f82fae2500
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 7d481b115650c72df95f7516bb3b39411201bf83
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132008"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270203"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 

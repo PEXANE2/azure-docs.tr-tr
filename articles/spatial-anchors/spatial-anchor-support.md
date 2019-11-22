@@ -1,53 +1,53 @@
 ---
-title: Uzamsal bağlantı Azure destek seçenekleri hakkında bilgi edinin | Microsoft Docs
-description: Bir isteği destek ekibi ile açmak nasıl Azure uzamsal bağlayıcılarını bilgiler.
+title: Destek seçenekleri
+description: Azure uzamsal Tutturucuların destek ekibi ile bir isteğin nasıl açılacağı hakkında bilgi.
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: troubleshooting
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 1930d5fc9dafe7d480302ded9b4e5a86f55a7669
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 371cb9ade54da42af1ed75c3e9857b6d1a7a0f4f
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65964520"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276982"
 ---
-# <a name="azure-spatial-anchors-support-options"></a>Azure uzamsal bağlayıcılarını destek seçenekleri
+# <a name="azure-spatial-anchors-support-options"></a>Azure uzamsal Tutturucuların destek seçenekleri
 
-## <a name="open-a-tech-support-ticket"></a>Teknik Destek bileti açın
+## <a name="open-a-tech-support-ticket"></a>Bir teknik destek bileti açın
 
-Azure uzamsal bağlayıcıları için Azure Portal'ın teknik destek bileti açmak için:
+Azure 'da uzamsal bağlayıcıların Azure portalında teknik destek bileti açmak için:
 
-1. İle [Azure portalında](https://azure.microsoft.com/account/) açın, üst menü çubuğundan Yardım simgesini seçin ve ardından seçin **Yardım + Destek** düğmesi. 
+1. [Azure Portal](https://azure.microsoft.com/account/) açıkken, üst menü çubuğundan Yardım simgesini seçin ve ardından **Yardım + Destek** düğmesini seçin.
 
-![Azure portalı Yardım ve Destek](./media/spatial-anchor-support.png)
+![Yardım ve destek Azure portal](./media/spatial-anchor-support.png)
 
-1. Yardım + destek sayfasını açın, select **+ yeni destek isteği**.
+1. Yardım + Destek sayfası açıkken **+ Yeni destek isteği**' ni seçin.
 
 ![Azure portal yeni destek isteği](./media/spatial-anchor-support2.png)
 
-1. Destek bileti alanları tamamlarken: 
+1. Destek bileti alanları tamamlanırken:
 
 - Sorun türü: Teknik
-- Hizmet: Spatial Anchors
+- Hizmet: uzamsal bağlantılar
 
-![Azure portalı desteği bileti alanları](./media/spatial-anchor-support3.png)
+![Azure portal destek bileti alanları](./media/spatial-anchor-support3.png)
 
 ## <a name="community-support"></a>Topluluk desteği
 
-Kullanıcı topluluğundan daha fazla destek için lütfen bkz [Azure Stack overflow'da uzamsal yer işaretleri](https://stackoverflow.com/questions/tagged/azure-spatial-anchors). 
+Kullanıcı topluluğundan destek için lütfen [Stack Overflow Azure uzamsal bağlayıcılarını](https://stackoverflow.com/questions/tagged/azure-spatial-anchors)inceleyin.
 
-## <a name="provide-content-feedback"></a>İçerik geri bildirim sağlayın
+## <a name="provide-content-feedback"></a>İçerik geri bildirimi sağlama
 
-İçerik her makalenin altındaki üzerinde bir GitHub sorunu açın ve Azure uzamsal bağlayıcı belgeleri içeriğini geri bildirim sağlamak için bir fırsat yoktur. 
+Her içerik makalesinin en altında, GitHub sorunu açma ve Azure uzamsal bağlayıcı belge içeriği hakkında geri bildirim sağlama fırsatına yer verilir.
 
 ## <a name="provide-product-feedback"></a>Ürün geri bildirimi sağlama
 
-Geri bildirim sağlamak için bir fikriniz veya öneriniz uzamsal bağlayıcılarını Azure hizmeti için paylaşın veya başkalarının gönderdiği fikirleri oylamak için şurayı ziyaret edin [Azure uzamsal bağlantıları geri bildirim Forumu](https://feedback.azure.com/forums/919252-azure-spatial-anchors).
+Geri bildirim sağlamak, Azure uzamsal çıpası hizmeti için bir fikir veya öneri paylaşın ya da başkalarının gönderdiği fikirleri oylayın, [Azure uzamsal bağlantıları geri bildirim forumunu](https://feedback.azure.com/forums/919252-azure-spatial-anchors)ziyaret edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure uzamsal yer işaretleri hakkında sık sorulan sorular için bkz. [SSS](spatial-anchor-faq.md) sayfası.
+Azure uzamsal bağlantıları hakkında sık sorulan sorular için [SSS](spatial-anchor-faq.md) sayfasına bakın.

@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 64efd1a02b903ec3874066f6c663b86a8080f746
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: ff82986b27d038c536872b07e1308b0d48fadaef
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73932264"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270220"
 ---
 # <a name="performance-tiers-for-block-blob-storage"></a>Blok Blobu depolaması için performans katmanları
 
@@ -54,6 +54,12 @@ Premium performans depolaması, hızlı ve tutarlı yanıt süreleri gerektiren 
 ## <a name="standard-performance"></a>Standart performans
 
 Standart performans, verileri en düşük maliyetli şekilde depolamak için farklı [erişim katmanlarını](storage-blob-storage-tiers.md) destekler. Büyük veri kümelerinde yüksek kapasite ve yüksek aktarım hızı için en iyi duruma getirilmiştir.
+
+- **Yedekleme ve olağanüstü durum kurtarma veri kümeleri**. Standart performans depolaması, hem kısa vadeli hem de uzun süreli olağanüstü durum kurtarma veri kümeleri, ikincil yedeklemeler ve uyumluluk verileri arşivleme için mükemmel bir kullanım örneği sunarak uygun maliyetli katmanlar sunar.
+
+- **Medya içeriği**. Görüntüler ve videolar genellikle ilk oluşturulduğunda ve depolandığında sıklıkla erişilir, ancak bu içerik türü daha eski olduğu için daha az kullanılır. Standart performans depolama, medya içerik ihtiyaçları için uygun katmanları sunmaktadır. 
+
+- **Toplu veri işleme**. Bu tür iş yükleri, tutarlı düşük gecikme süresi yerine uygun maliyetli yüksek performanslı depolama gerektirdiğinden standart depolama için uygundur. Büyük, ham veri kümeleri işlenmek üzere hazırlanır ve sonunda daha soğuk katmanlara geçirilir.
 
 ## <a name="migrate-from-standard-to-premium"></a>Standart 'ten Premium 'a geçiş
 

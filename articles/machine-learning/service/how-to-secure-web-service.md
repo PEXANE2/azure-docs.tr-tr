@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 08/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: f6a6f50a86dc58299a1c1b5994dd1d19cc915e6c
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: f577ac723558ad3772b697922baa624e0047dd21
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076891"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276825"
 ---
 # <a name="use-ssl-to-secure-a-web-service-through-azure-machine-learning"></a>Azure Machine Learning aracılığıyla bir Web hizmetini güvenli hale getirmek için SSL kullanma
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -80,8 +80,8 @@ SSL etkinken hizmeti dağıtmak (veya yeniden dağıtmak) için, *ssl_enabled* p
 
 AKS 'e dağıttığınızda, yeni bir AKS kümesi oluşturabilir veya var olan bir küme ekleyebilirsiniz. Küme oluşturma veya ekleme hakkında daha fazla bilgi için bkz. [Azure Kubernetes hizmet kümesine model dağıtma](how-to-deploy-azure-kubernetes-service.md).
   
--  Yeni bir küme oluşturursanız, **[Akscompute. provisionining_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute#provisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none-)** kullanılır.
-- Var olan bir kümeyi eklerseniz, **[Akscompute. attach_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** kullanırsınız. Her ikisi de **Enable_ssl** yöntemi olan bir yapılandırma nesnesi döndürür.
+-  Yeni bir küme oluşturursanız, **[Akscompute. provisionining_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#provisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none-)** kullanılır.
+- Var olan bir kümeyi eklerseniz, **[Akscompute. attach_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none--load-balancer-type-none-)** kullanırsınız. Her ikisi de **Enable_ssl** yöntemi olan bir yapılandırma nesnesi döndürür.
 
 **Enable_ssl** yöntemi, Microsoft tarafından veya satın aldığınız bir sertifika tarafından sunulan bir sertifikayı kullanabilir.
 

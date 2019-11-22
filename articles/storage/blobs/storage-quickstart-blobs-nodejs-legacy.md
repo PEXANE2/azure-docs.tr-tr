@@ -1,6 +1,6 @@
 ---
 title: 'Hızlı başlangıç: JavaScript için Azure Blob depolama istemci kitaplığı v2'
-description: Nesne (Blob) depolamada depolama hesabı ve kapsayıcı oluşturun. Ardından, Azure depolama 'ya blob yüklemek, blob indirmek ve bir kapsayıcıdaki Blobları listelemek için Node. js v2 için Azure Storage istemci kitaplığı 'nı kullanın.
+description: Nesne (Blob) depolamada depolama hesabı ve kapsayıcı oluşturun. Blob yüklemek, blob indirmek ve bir kapsayıcıdaki Blobları listelemek için Node. js v2 için Azure Storage istemci kitaplığı 'nı kullanın.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 02/04/2019
@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.custom: seo-javascript-september2019
-ms.openlocfilehash: 12078300b36412a1507991507a39654acdeb7c69
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7300d4eccec5b1e4b3b5b7dc292cf6150a42e7b4
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825341"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74269678"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v2-for-javascript"></a>Hızlı başlangıç: JavaScript için Azure Blob depolama istemci kitaplığı v2
 
@@ -22,7 +22,7 @@ Bu nasıl yapılır kılavuzunda, Azure Blob depolama ile Blobları karşıya y�
 > [!TIP]
 > Node. js için Azure Storage istemci kitaplığı 'nın en son sürümü ile v10 arasındaki 'dir. Microsoft, mümkün olduğunda istemci kitaplığı 'nın en son sürümünü kullanmanızı önerir. İle v10 arasındaki kullanmaya başlamak için bkz. [hızlı başlangıç: JavaScript Için Azure Storage istemci kitaplığı 'nı kullanarak Blobları karşıya yükleme, indirme, listeleme ve silme (Önizleme)](storage-quickstart-blobs-nodejs-v10.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 

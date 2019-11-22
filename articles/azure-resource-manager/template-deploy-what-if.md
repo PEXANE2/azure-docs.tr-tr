@@ -1,71 +1,71 @@
 ---
-title: Template deployment what-if (Preview)
-description: Determine what changes will happen to your resources before deploying an Azure Resource Manager template.
+title: Şablon dağıtımı-if (Önizleme)
+description: Azure Resource Manager şablonu dağıtılmadan önce kaynaklarınızda hangi değişikliklerin gerçekleşecektir belirleme.
 author: mumian
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 11/20/2019
 ms.author: jgao
-ms.openlocfilehash: f399a89ff22dd3d1b360196c81d652b55f30e029
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: HT
+ms.openlocfilehash: 19cb674ca7a2dfefc11c7646b23427c722f6e671
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230218"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278312"
 ---
-# <a name="resource-manager-template-deployment-what-if-operation-preview"></a>Resource Manager template deployment what-if operation (Preview)
+# <a name="resource-manager-template-deployment-what-if-operation-preview"></a>Kaynak Yöneticisi şablonu dağıtımı durum işlemi (Önizleme)
 
-Before deploying a template, you might want to preview the changes that will happen. Azure Resource Manager provides the what-if operation to let you see how resources will change if you deploy the template. The what-if operation doesn't make any changes to existing resources. Instead, it predicts the changes if the specified template is deployed.
+Bir şablonu dağıtımdan önce, gerçekleşecek değişiklikleri önizlemek isteyebilirsiniz. Azure Resource Manager, şablonu dağıtırsanız kaynakların ne şekilde değişdiklerinizi görmenizi sağlamak için ne yapılır işlemini sağlar. Bu işlem, mevcut kaynaklarda hiçbir değişiklik yapmaz. Bunun yerine, belirtilen şablon dağıtılırsa değişiklikleri tahmin eder.
 
 > [!NOTE]
-> The what-if operation is currently in preview. To use it, you must [sign up for the preview](https://aka.ms/armtemplatepreviews). As a preview release, the results may sometimes show that a resource will change when actually no change will happen. We're working to reduce these issues, but we need your help. Please report these issues at [https://aka.ms/armwhatifissues](https://aka.ms/armwhatifissues).
+> Bu işlem şu anda önizleme aşamasındadır. Bunu kullanmak için, [Önizleme için kaydolmanız](https://aka.ms/armtemplatepreviews)gerekir. Önizleme sürümü olarak, sonuçlar bazen hiçbir değişiklik gerçekleşmediği zaman bir kaynağın değiştirileceği gösterebilir. Bu sorunları azaltmak için çalışıyoruz, ancak yardımımız için ihtiyacımız var. Lütfen bu sorunları [https://aka.ms/whatifissues](https://aka.ms/whatifissues)bildirin.
 
-You can use the what-if operation with the `New-AzDeploymentWhatIf` PowerShell command or the [Deployments - What If](/rest/api/resources/deployments/whatif) REST operation.
+`New-AzDeploymentWhatIf` PowerShell komutuyla ve [dağıtım What If](/rest/api/resources/deployments/whatif) Rest işlemiyle ne yapılır işlemini kullanabilirsiniz.
 
-In PowerShell, the output looks like:
+PowerShell 'de, çıktı şöyle görünür:
 
-![Resource Manager template deployment what-if operation fullresourcepayload and change types](./media/template-deploy-what-if/resource-manager-deployment-whatif-change-types.png)
+![Kaynak Yöneticisi şablonu dağıtımı ne yapılır işlemi fullresourcepayload ve değişiklik türleri](./media/template-deploy-what-if/resource-manager-deployment-whatif-change-types.png)
 
-## <a name="change-types"></a>Change types
+## <a name="change-types"></a>Değişiklik türleri
 
-The what-if operation lists six different types of changes:
+Ne yapılır işlemi altı farklı değişiklik türünü listeler:
 
-- **Create**: The resource doesn't currently exist but is defined in the template. The resource will be created.
+- **Oluştur**: kaynak şu anda mevcut değil, ancak şablonda tanımlandı. Kaynak oluşturulacaktır.
 
-- **Delete**: This change type only applies when using [complete mode](deployment-modes.md) for deployment. The resource exists, but isn't defined in the template. With complete mode, the resource will be deleted. Only resources that [support complete mode deletion](complete-mode-deletion.md) are included in this change type.
+- **Sil**: Bu değişiklik türü yalnızca dağıtım için [tamamlanmış mod](deployment-modes.md) kullanılırken geçerlidir. Kaynak var, ancak şablonda tanımlı değil. Bu, tüm modda kaynak silinir. Yalnızca [tamamlanmış mod silme işlemini destekleyen](complete-mode-deletion.md) kaynaklar bu değişiklik türüne dahil edilir.
 
-- **Ignore**: The resource exists, but isn't defined in the template. The resource won't be deployed or modified.
+- **Yoksay**: kaynak var, ancak şablonda tanımlı değil. Kaynak dağıtılmaz veya değiştirilmez.
 
-- **NoChange**: The resource exists, and is defined in the template. The resource will be redeployed, but the properties of the resource won't change. This change type is returned when [ResultFormat](#result-format) is set to `FullResourcePayloads`, which is the default value.
+- **NOCHANGE**: kaynak vardır ve şablonda tanımlanmıştır. Kaynak yeniden dağıtılacak, ancak kaynağın özellikleri değişmeyecek. Bu değişiklik türü, [RESULTFORMAT](#result-format) `FullResourcePayloads`, varsayılan değer olan olarak ayarlandığında döndürülür.
 
-- **Modify**: The resource exists, and is defined in the template. The resource will be redeployed, and the properties of the resource will change. This change type is returned when [ResultFormat](#result-format) is set to `FullResourcePayloads`, which is the default value.
+- **Değiştir**: kaynak vardır ve şablonda tanımlanmıştır. Kaynak yeniden dağıtılacak ve kaynağın özellikleri değişecektir. Bu değişiklik türü, [RESULTFORMAT](#result-format) `FullResourcePayloads`, varsayılan değer olan olarak ayarlandığında döndürülür.
 
-- **Deploy**: The resource exists, and is defined in the template. The resource will be redeployed. The properties of the resource may or may not change. The operation returns this change type when it doesn't have enough information to determine if any properties will change. You only see this condition when [ResultFormat](#result-format) is set to `ResourceIdOnly`.
+- **Dağıtım**: kaynak vardır ve şablonda tanımlanmıştır. Kaynak yeniden dağıtılacak. Kaynağın özellikleri değişebilir veya değişmeyebilir. İşlem, herhangi bir özellik değişmeyeceği için yeterli bilgi olmadığında bu değişiklik türünü döndürür. Bu durumu yalnızca [RESULTFORMAT](#result-format) `ResourceIdOnly`olarak ayarlandığında görürsünüz.
 
-## <a name="deployment-scope"></a>Deployment scope
+## <a name="deployment-scope"></a>Dağıtım kapsamı
 
-You can use the what-if operation for deployments at either the subscription or resource group level. You set the deployment scope with the `-ScopeType` parameter. The accepted values are `Subscription` and `ResourceGroup`. This article demonstrates resource group deployments.
+Dağıtımlar için ne yapılır işlemini abonelik veya kaynak grubu düzeyinde kullanabilirsiniz. Dağıtım kapsamını `-ScopeType` parametresiyle ayarlarsınız. Kabul edilen değerler `Subscription` ve `ResourceGroup`. Bu makalede kaynak grubu dağıtımları gösterilmektedir.
 
-To learn about subscription level deployments, see [Create resource groups and resources at the subscription level](deploy-to-subscription.md#).
+Abonelik düzeyi dağıtımları hakkında bilgi edinmek için bkz. [abonelik düzeyinde kaynak grupları ve kaynaklar oluşturma](deploy-to-subscription.md#).
 
-## <a name="result-format"></a>Result format
+## <a name="result-format"></a>Sonuç biçimi
 
-You can control the level of detail that is returned about the predicted changes. Set the `ResultFormat` parameter to `FullResourcePayloads` to get a list of resources what will change and details about the properties that will change. Set the `ResultFormat` parameter to `ResourceIdOnly` to get a list of resources that will change. The default value is `FullResourcePayloads`.  
+Tahmin edilen değişiklikler hakkında döndürülen ayrıntı düzeyini kontrol edebilirsiniz. Değişiklik yapılacak kaynakların bir listesini ve değiştirecek özelliklerle ilgili ayrıntıları almak için `ResultFormat` parametresini `FullResourcePayloads` olarak ayarlayın. Değiştirecek kaynakların bir listesini almak için `ResultFormat` parametresini `ResourceIdOnly` olarak ayarlayın. Varsayılan değer `FullResourcePayloads`.  
 
-The following screenshots show the two different output formats:
+Aşağıdaki ekran görüntülerinde iki farklı çıkış biçimi gösterilmektedir:
 
-- Full resource payloads
+- Tam kaynak yükleri
 
-    ![Resource Manager template deployment what-if operation fullresourcepayloads output](./media/template-deploy-what-if/resource-manager-deployment-whatif-output-fullresourcepayload.png)
+    ![Kaynak Yöneticisi şablonu dağıtımı ne yapılır işlemi fullresourceyüklerini çıkışı](./media/template-deploy-what-if/resource-manager-deployment-whatif-output-fullresourcepayload.png)
 
-- Resource ID only
+- Yalnızca kaynak KIMLIĞI
 
-    ![Resource Manager template deployment what-if operation resourceidonly output](./media/template-deploy-what-if/resource-manager-deployment-whatif-output-resourceidonly.png)
+    ![Kaynak Yöneticisi şablonu dağıtımı ne yapılır işlemi resourceıdonly çıkışı](./media/template-deploy-what-if/resource-manager-deployment-whatif-output-resourceidonly.png)
 
-## <a name="run-what-if-operation"></a>Run what-if operation
+## <a name="run-what-if-operation"></a>Durum işlemini çalıştır
 
-### <a name="set-up-environment"></a>Set up environment
+### <a name="set-up-environment"></a>Ortamı ayarlama
 
-To see how what-if works, let's runs some tests. First, deploy a template from [Azure Quickstart templates that creates a storage account](https://github.com/Azure/azure-quickstart-templates/blob/master/101-storage-account-create/azuredeploy.json). The default storage account type is `Standard_LRS`. You'll use this storage account to test how changes are reported by what-if.
+Nasıl çalıştığını görmek için bazı testler çalıştıralım. İlk olarak, [bir depolama hesabı oluşturan Azure hızlı başlangıç şablonlarından](https://github.com/Azure/azure-quickstart-templates/blob/master/101-storage-account-create/azuredeploy.json)bir şablon dağıtın. Varsayılan depolama hesabı türü `Standard_LRS`. Bu depolama hesabını, değişikliklerin ne yapılır-if tarafından raporlanacağı test etmek için kullanacaksınız.
 
 ```azurepowershell-interactive
 New-AzResourceGroup `
@@ -76,9 +76,9 @@ New-AzResourceGroupDeployment `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
 ```
 
-### <a name="test-modification"></a>Test modification
+### <a name="test-modification"></a>Test değişikliği
 
-After the deployment completes, you're ready to test the what-if operation. Run the what-if command but change the storage account type to `Standard_GRS`.
+Dağıtım tamamlandıktan sonra, durum işlemini test etmeye hazırsınız demektir. Durum komutunu çalıştırın ancak depolama hesabı türünü `Standard_GRS`olarak değiştirin.
 
 ```azurepowershell-interactive
 New-AzDeploymentWhatIf `
@@ -88,19 +88,19 @@ New-AzDeploymentWhatIf `
   -storageAccountType Standard_GRS
 ```
 
-The what-if output is similar to:
+Ne olursa? çıktısı şuna benzerdir:
 
-![Resource Manager template deployment what-if operation output](./media/template-deploy-what-if/resource-manager-deployment-whatif-output.png)
+![Kaynak Yöneticisi şablonu dağıtımı ne yapılır işlemi çıkışı](./media/template-deploy-what-if/resource-manager-deployment-whatif-output.png)
 
-Notice at the top of the output that colors are defined to indicate the type of changes.
+Çıktının en üstünde, değişikliklerin türünü belirtmek için renklerin tanımlandığını görürsünüz.
 
-At the bottom of the output, it shows the sku name (storage account type) will be changed from **Standard_LRS** to **Standard_GRS**.
+Çıktının en altında, SKU adı (depolama hesabı türü) **Standard_LRS** **Standard_GRS**olarak değiştirilir.
 
-Some of the properties that are listed as deleted won't actually change. In the preceding image, these properties are accessTier, encryption.keySource and others in that section. Properties can be incorrectly reported as deleted when they aren't in the template but are automatically set during deployment. The final deployed resource will have the values set for the properties. As the what-if operation matures, these properties will be filtered out of the result.
+Silinmiş olarak listelenen özelliklerden bazıları aslında değişmeyecektir. Önceki görüntüde, bu özellikler accessTier, ENCRYPTION. keySource ve bu bölümdeki diğer özelliklerdir. Özellikler, şablonda olmadıkları sırada silinmiş olarak yanlış bildirilebilir, ancak dağıtım sırasında varsayılan değer olarak otomatik olarak ayarlanır. Bu sonuç, durum yanıtı içinde "gürültü" olarak değerlendirilir. Son dağıtılan kaynak, özellikler için ayarlanmış değerlere sahip olacaktır. Ne gibi işlemler söz konusu olduğunda, bu özellikler sonuçtan filtrelenmez.
 
-### <a name="test-deletion"></a>Test deletion
+### <a name="test-deletion"></a>Test silme
 
-The what-if operation supports using [deployment mode](deployment-modes.md). When set to complete mode, resources not in the template are deleted. The following example deploys a [template that has no resources defined](https://github.com/Azure/azure-docs-json-samples/blob/master/empty-template/azuredeploy.json) in complete mode.
+[Dağıtım modunun](deployment-modes.md)kullanımını destekleyen durum işlemi. Tamamlanmış moda ayarlandığında şablonda olmayan kaynaklar silinir. Aşağıdaki örnek, tamamlanmış bir [kaynağı olmayan bir şablon dağıtmıştır](https://github.com/Azure/azure-docs-json-samples/blob/master/empty-template/azuredeploy.json) .
 
 ```azurepowershell-interactive
 New-AzDeploymentWhatIf `
@@ -110,15 +110,15 @@ New-AzDeploymentWhatIf `
   -Mode Complete
 ```
 
-Because no resources are defined in the template and the deployment mode is set to complete, the storage account will be deleted.
+Şablonda kaynak tanımlanmadığı ve dağıtım modu Tamam olarak ayarlandığından, depolama hesabı silinir.
 
-![Resource Manager template deployment what-if operation output deployment mode complete](./media/template-deploy-what-if/resource-manager-deployment-whatif-output-mode-complete.png)
+![Kaynak Yöneticisi şablonu dağıtımı ne yapılır işlemi çıkışı dağıtım modu tamamlanmıştır](./media/template-deploy-what-if/resource-manager-deployment-whatif-output-mode-complete.png)
 
-It's important to remember what-if makes no actual changes. The storage account still exists in your resource group.
+Nelerin gerçek değişiklik yapmaz unutmayın. Depolama hesabı, kaynak grubunuzda hala mevcut.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- If you notice incorrect results from the preview release of what-if, please report the issues at [https://aka.ms/armwhatifissues](https://aka.ms/armwhatifissues).
-- To deploy templates with Azure PowerShell, see [Deploy resources with Resource Manager templates and Azure PowerShell](resource-group-template-deploy.md).
-- To deploy templates with REST, see [Deploy resources with Resource Manager templates and Resource Manager REST API](resource-group-template-deploy-rest.md).
-- To roll back to a successful deployment when you get an error, see [Rollback on error to successful deployment](rollback-on-error.md).
+- Önizleme sürümünden yanlış sonuçlar olduğunu fark ederseniz, lütfen [https://aka.ms/whatifissues](https://aka.ms/whatifissues)sorunları bildirin.
+- Şablonları Azure PowerShell dağıtmak için bkz. [Kaynak Yöneticisi şablonları ve Azure PowerShell ile kaynak dağıtma](resource-group-template-deploy.md).
+- Şablonları REST ile dağıtmak için bkz. [Kaynak Yöneticisi şablonlarıyla kaynak dağıtma ve REST API Kaynak Yöneticisi](resource-group-template-deploy-rest.md).
+- Hata aldığınızda başarılı bir dağıtıma geri dönmek için, [başarılı bir dağıtımda hata durumunda geri alma](rollback-on-error.md)konusuna bakın.

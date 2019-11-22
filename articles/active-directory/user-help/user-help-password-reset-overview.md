@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 05/15/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57d14ac3cbce6880604ad44b6aa71998ed061c10
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6d517c5f0e45edd16778b1300ba9ff41a1483d84
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74028499"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74266949"
 ---
 # <a name="reset-your-own-work-or-school-password-overview"></a>Kendi iş veya okul parolanızı sıfırlayın genel bakış
 
@@ -34,5 +34,5 @@ Hesabınızı parola sıfırlama için kaydetme ve parolanızı sıfırlama hakk
 
 |Makale |Açıklama |
 |------|------------|
-| [Self servis parola sıfırlama için kaydolma](active-directory-passwords-reset-register.md) | Kendi parolanızı sıfırlayabilmeniz için kimlik doğrulama yöntemlerinizi doğrulama ve self servis parola sıfırlama için kaydolma hakkında yönergeler. |
+| [Self servis parola sıfırlama için kaydolma](active-directory-passwords-reset-register.md) | Kendi parolanızı sıfırlayabilmeniz için doğrulama yöntemlerinizi doğrulama ve self servis parola sıfırlama için kaydolma hakkında yönergeler. |
 | [Parolanızı sıfırlama](active-directory-passwords-update-your-own-password.md) | Bir iş veya okul hesabı için parolanızı sıfırlama veya kilidini açma ile ilgili yönergeler. |

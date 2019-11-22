@@ -1,24 +1,24 @@
 ---
 title: Başlangıç sorgu örnekleri
-description: Use Azure Resource Graph to run some starter queries, including counting resources, ordering resources, or by a specific tag.
-ms.date: 11/18/2019
-ms.topic: quickstart
-ms.openlocfilehash: 87061b56371bc68bd1d71cc9e9278b8c46c168a3
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: HT
+description: Kaynakları sayma, kaynakları sıralama veya belirli bir etiket gibi bazı başlangıç sorgularını çalıştırmak için Azure Kaynak Grafiği ' ni kullanın.
+ms.date: 11/21/2019
+ms.topic: sample
+ms.openlocfilehash: b966d8c239cb6ff706c967174bcea23bf25de374
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74216414"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279440"
 ---
-# <a name="starter-resource-graph-queries"></a>Başlangıç Kaynak Grafiği sorguları
+# <a name="starter-resource-graph-query-samples"></a>Başlatıcı kaynak grafiği sorgu örnekleri
 
-Azure Kaynak Grafiği ile sorguları anlamanın il adımı, [Sorgu Dili](../concepts/query-language.md)’nin temel bir anlayışıdır. If you aren't already familiar with [Kusto Query Language (KQL)](/azure/kusto/query/index), it's recommended to review the [tutorial for KQL](/azure/kusto/query/tutorial) to understand how to compose requests for the resources you're looking for.
+Azure Kaynak Grafiği ile sorguları anlamanın il adımı, [Sorgu Dili](../concepts/query-language.md)’nin temel bir anlayışıdır. [Kusto sorgu dili (KQL)](/azure/kusto/query/index)hakkında bilginiz yoksa, aradığınız kaynaklara yönelik isteklerin nasıl oluşturulduğunu anlamak için [KQL öğreticisini](/azure/kusto/query/tutorial) gözden geçirmeniz önerilir.
 
 Aşağıdaki başlangıç sorgularını inceleyeceğiz:
 
 > [!div class="checklist"]
 > - [Azure kaynaklarını sayma](#count-resources)
-> - [Count key vault resources](#count-keyvaults)
+> - [Anahtar Kasası kaynaklarını sayma](#count-keyvaults)
 > - [Ada göre sıralanmış kaynakları listeleme](#list-resources)
 > - [Tüm sanal makineleri ada göre azalan düzende sıralı olarak gösterme](#show-vms)
 > - [Ada ve işletim sistemi türüne göre ilk beş sanal makineyi gösterme](#show-sorted)
@@ -28,9 +28,9 @@ Aşağıdaki başlangıç sorgularını inceleyeceğiz:
 > - [Aboneliğe göre yapılandırılmış IP adreslerine sahip kaynakları sayma](#count-resources-by-ip)
 > - [Belirli bir etiket değerine sahip kaynakları listeleme](#list-tag)
 > - [Belirli bir değerine sahip tüm depolama hesaplarını listeleme](#list-specific-tag)
-> - [Show aliases for a virtual machine resource](#show-aliases)
-> - [Show distinct values for a specific alias](#distinct-alias-values)
-> - [Show unassociated network security groups](#unassociated-nsgs)
+> - [Bir sanal makine kaynağı için diğer adları göster](#show-aliases)
+> - [Belirli bir diğer ad için farklı değerleri göster](#distinct-alias-values)
+> - [İlişkilendirilmemiş ağ güvenlik gruplarını göster](#unassociated-nsgs)
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun.
 
@@ -38,7 +38,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Azure CLI (bir uzantı yoluyla) ve Azure PowerShell (bir modül yoluyla), Azure Kaynak Grafiği’ni destekler. Aşağıdaki sorgulardan herhangi birini çalıştırmadan önce ortamınızın hazır olduğundan emin olun. Seçtiğiniz kabuk ortamını yükleme ve doğrulama adımları için, bkz. [Azure CLI](../first-query-azurecli.md#add-the-resource-graph-extension) ve [Azure PowerShell](../first-query-powershell.md#add-the-resource-graph-module).
 
-## <a name="a-namecount-resources-count-azure-resources"></a><a name="count-resources" />Count Azure resources
+## <a name="a-namecount-resources-count-azure-resources"></a><a name="count-resources" />sayısı Azure kaynakları
 
 Bu sorgu, erişiminiz bulunan aboneliklerde var olan Azure kaynaklarının sayısını döndürür. Ayrıca, seçtiğiniz kabukta uygun Azure Kaynak Grafı bileşenlerinin yüklü ve çalışma düzeninde olduğunu doğrulamak için iyi bir sorgudur.
 
@@ -61,16 +61,17 @@ Search-AzGraph -Query "Resources | summarize count()"
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-![Resource Graph explorer icon](../media/resource-graph-small.png) Try this query in Azure Resource Graph Explorer:
+![Kaynak Grafiği Gezgini simgesi](../media/resource-graph-small.png) Azure Kaynak Grafiği Gezgini 'nde bu sorguyu deneyin:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20summarize%20count()" target="_blank">portal.azure.com</a> ![Open link in new window icon](../../media/new-window.png)
-- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20summarize%20count()" target="_blank">portal.azure.us</a> ![Open link in new window icon](../../media/new-window.png)
+- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20summarize%20count()" target="_blank">portal.azure.com</a> ![bağlantıyı yeni pencere simgesinde aç](../../media/new-window.png)
+- Azure Kamu Portalı: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20summarize%20count()" target="_blank">portal.azure.us</a> ![bağlantıyı yeni pencere simgesinde açın](../../media/new-window.png)
+- Azure Çin Portalı: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20summarize%20count()" target="_blank">portal.azure.cn</a> ![bağlantıyı yeni pencere simgesine açın](../../media/new-window.png)
 
 ---
 
-## <a name="a-namecount-keyvaults-count-key-vault-resources"></a><a name="count-keyvaults" />Count key vault resources
+## <a name="a-namecount-keyvaults-count-key-vault-resources"></a><a name="count-keyvaults" />Anahtar Kasası kaynaklarını sayma
 
-This query uses `count` instead of `summarize` to count the number of records returned. Only key vaults are included in the count.
+Bu sorgu döndürülen kayıt sayısını saymak için `summarize` yerine `count` kullanır. Sayıma yalnızca anahtar kasaları dahildir.
 
 ```kusto
 Resources
@@ -92,14 +93,15 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.keyvault/vaults' | c
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-![Resource Graph explorer icon](../media/resource-graph-small.png) Try this query in Azure Resource Graph Explorer:
+![Kaynak Grafiği Gezgini simgesi](../media/resource-graph-small.png) Azure Kaynak Grafiği Gezgini 'nde bu sorguyu deneyin:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.keyvault%2Fvaults'%20%7C%20count" target="_blank">portal.azure.com</a> ![Open link in new window icon](../../media/new-window.png)
-- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.keyvault%2Fvaults'%20%7C%20count" target="_blank">portal.azure.us</a> ![Open link in new window icon](../../media/new-window.png)
+- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.keyvault%2Fvaults'%20%7C%20count" target="_blank">portal.azure.com</a> ![bağlantıyı yeni pencere simgesinde aç](../../media/new-window.png)
+- Azure Kamu Portalı: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.keyvault%2Fvaults'%20%7C%20count" target="_blank">portal.azure.us</a> ![bağlantıyı yeni pencere simgesinde açın](../../media/new-window.png)
+- Azure Çin Portalı: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.keyvault%2Fvaults'%20%7C%20count" target="_blank">portal.azure.cn</a> ![bağlantıyı yeni pencere simgesine açın](../../media/new-window.png)
 
 ---
 
-## <a name="a-namelist-resources-list-resources-sorted-by-name"></a><a name="list-resources" />List resources sorted by name
+## <a name="a-namelist-resources-list-resources-sorted-by-name"></a>ada göre sıralanan liste kaynakları <a name="list-resources" />
 
 Bu sorgu herhangi bir türdeki kaynakların yalnızca **name**, **type** ve **location** özelliklerini döndürür. `order by` kullanarak özellikleri **name** özelliğine göre artan (`asc`) düzende sıralar.
 
@@ -123,14 +125,15 @@ Search-AzGraph -Query "Resources | project name, type, location | order by name 
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-![Resource Graph explorer icon](../media/resource-graph-small.png) Try this query in Azure Resource Graph Explorer:
+![Kaynak Grafiği Gezgini simgesi](../media/resource-graph-small.png) Azure Kaynak Grafiği Gezgini 'nde bu sorguyu deneyin:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20project%20name%2C%20type%2C%20location%20%7C%20order%20by%20name%20asc" target="_blank">portal.azure.com</a> ![Open link in new window icon](../../media/new-window.png)
-- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20project%20name%2C%20type%2C%20location%20%7C%20order%20by%20name%20asc" target="_blank">portal.azure.us</a> ![Open link in new window icon](../../media/new-window.png)
+- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20project%20name%2C%20type%2C%20location%20%7C%20order%20by%20name%20asc" target="_blank">portal.azure.com</a> ![bağlantıyı yeni pencere simgesinde aç](../../media/new-window.png)
+- Azure Kamu Portalı: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20project%20name%2C%20type%2C%20location%20%7C%20order%20by%20name%20asc" target="_blank">portal.azure.us</a> ![bağlantıyı yeni pencere simgesinde açın](../../media/new-window.png)
+- Azure Çin Portalı: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20project%20name%2C%20type%2C%20location%20%7C%20order%20by%20name%20asc" target="_blank">portal.azure.cn</a> ![bağlantıyı yeni pencere simgesine açın](../../media/new-window.png)
 
 ---
 
-## <a name="a-nameshow-vms-show-all-virtual-machines-ordered-by-name-in-descending-order"></a><a name="show-vms" />Show all virtual machines ordered by name in descending order
+## <a name="a-nameshow-vms-show-all-virtual-machines-ordered-by-name-in-descending-order"></a>ada göre sıralanmış tüm sanal makineleri azalan sırada göstermek <a name="show-vms" />
 
 Yalnızca sanal makineleri (`Microsoft.Compute/virtualMachines` türündeki) listelemek için sonuçlarda **type** özelliğini eşleştirebiliriz. Önceki sorguya benzer şekilde `desc`, `order by`’yi azalan olması için değiştirir. Eşleme türündeki `=~`, Kaynak Grafiği’nin büyük/küçük harfe duyarlı olmadığını bildirir.
 
@@ -155,14 +158,15 @@ Search-AzGraph -Query "Resources | project name, location, type| where type =~ '
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-![Resource Graph explorer icon](../media/resource-graph-small.png) Try this query in Azure Resource Graph Explorer:
+![Kaynak Grafiği Gezgini simgesi](../media/resource-graph-small.png) Azure Kaynak Grafiği Gezgini 'nde bu sorguyu deneyin:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20project%20name%2C%20location%2C%20type%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20order%20by%20name%20desc" target="_blank">portal.azure.com</a> ![Open link in new window icon](../../media/new-window.png)
-- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20project%20name%2C%20location%2C%20type%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20order%20by%20name%20desc" target="_blank">portal.azure.us</a> ![Open link in new window icon](../../media/new-window.png)
+- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20project%20name%2C%20location%2C%20type%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20order%20by%20name%20desc" target="_blank">portal.azure.com</a> ![bağlantıyı yeni pencere simgesinde aç](../../media/new-window.png)
+- Azure Kamu Portalı: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20project%20name%2C%20location%2C%20type%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20order%20by%20name%20desc" target="_blank">portal.azure.us</a> ![bağlantıyı yeni pencere simgesinde açın](../../media/new-window.png)
+- Azure Çin Portalı: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20project%20name%2C%20location%2C%20type%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20order%20by%20name%20desc" target="_blank">portal.azure.cn</a> ![bağlantıyı yeni pencere simgesine açın](../../media/new-window.png)
 
 ---
 
-## <a name="a-nameshow-sorted-show-first-five-virtual-machines-by-name-and-their-os-type"></a><a name="show-sorted" />Show first five virtual machines by name and their OS type
+## <a name="a-nameshow-sorted-show-first-five-virtual-machines-by-name-and-their-os-type"></a><a name="show-sorted" />adı ve işletim sistemi türlerine göre ilk beş sanal makineyi gösterme
 
 Bu sorgu `top`’i yalnızca ada göre sıralanmış beş eşleşen kaydı almak için kullanır. Azure kaynağının türü `Microsoft.Compute/virtualMachines`’dir. `project`, Azure Kaynak Grafiği’ne hangi özelliklerin dahil edileceğini bildirir.
 
@@ -187,17 +191,18 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-![Resource Graph explorer icon](../media/resource-graph-small.png) Try this query in Azure Resource Graph Explorer:
+![Kaynak Grafiği Gezgini simgesi](../media/resource-graph-small.png) Azure Kaynak Grafiği Gezgini 'nde bu sorguyu deneyin:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20project%20name%2C%20properties.storageProfile.osDisk.osType%20%7C%20top%205%20by%20name%20desc" target="_blank">portal.azure.com</a> ![Open link in new window icon](../../media/new-window.png)
-- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20project%20name%2C%20properties.storageProfile.osDisk.osType%20%7C%20top%205%20by%20name%20desc" target="_blank">portal.azure.us</a> ![Open link in new window icon](../../media/new-window.png)
+- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20project%20name%2C%20properties.storageProfile.osDisk.osType%20%7C%20top%205%20by%20name%20desc" target="_blank">portal.azure.com</a> ![bağlantıyı yeni pencere simgesinde aç](../../media/new-window.png)
+- Azure Kamu Portalı: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20project%20name%2C%20properties.storageProfile.osDisk.osType%20%7C%20top%205%20by%20name%20desc" target="_blank">portal.azure.us</a> ![bağlantıyı yeni pencere simgesinde açın](../../media/new-window.png)
+- Azure Çin Portalı: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20project%20name%2C%20properties.storageProfile.osDisk.osType%20%7C%20top%205%20by%20name%20desc" target="_blank">portal.azure.cn</a> ![bağlantıyı yeni pencere simgesine açın](../../media/new-window.png)
 
 ---
 
-## <a name="a-namecount-os-count-virtual-machines-by-os-type"></a><a name="count-os" />Count virtual machines by OS type
+## <a name="a-namecount-os-count-virtual-machines-by-os-type"></a><a name="count-os" />işletim sistemi türüne göre sanal makine sayısı
 
 Bir önceki sorguyu oluşturmada, hâlâ `Microsoft.Compute/virtualMachines` türündeki Azure kaynaklarına göre sınırlandırıyoruz, ancak geri gönderilen kayıtların sayısını sınırlandırmıyoruz.
-Bunu yerine, değerleri (bu örnekte `properties.storageProfile.osDisk.osType`) özelliğe göre gruplandırma ve toplamayı tanımlamak için `summarize` ve `count()` kullandık. Bu dizenin tam nesnede nasıl göründüğüne ilişkin bir örnek için, bkz. [ kaynakları keşfetme - sanal makine bulma](../concepts/explore-resources.md#virtual-machine-discovery).
+Bunu yerine, değerleri (bu örnekte `summarize`) özelliğe göre gruplandırma ve toplamayı tanımlamak için `count()` ve `properties.storageProfile.osDisk.osType` kullandık. Bu dizenin tam nesnede nasıl göründüğüne ilişkin bir örnek için, bkz. [ kaynakları keşfetme - sanal makine bulma](../concepts/explore-resources.md#virtual-machine-discovery).
 
 ```kusto
 Resources
@@ -219,10 +224,11 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-![Resource Graph explorer icon](../media/resource-graph-small.png) Try this query in Azure Resource Graph Explorer:
+![Kaynak Grafiği Gezgini simgesi](../media/resource-graph-small.png) Azure Kaynak Grafiği Gezgini 'nde bu sorguyu deneyin:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20summarize%20count()%20by%20tostring(properties.storageProfile.osDisk.osType)" target="_blank">portal.azure.com</a> ![Open link in new window icon](../../media/new-window.png)
-- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20summarize%20count()%20by%20tostring(properties.storageProfile.osDisk.osType)" target="_blank">portal.azure.us</a> ![Open link in new window icon](../../media/new-window.png)
+- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20summarize%20count()%20by%20tostring(properties.storageProfile.osDisk.osType)" target="_blank">portal.azure.com</a> ![bağlantıyı yeni pencere simgesinde aç](../../media/new-window.png)
+- Azure Kamu Portalı: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20summarize%20count()%20by%20tostring(properties.storageProfile.osDisk.osType)" target="_blank">portal.azure.us</a> ![bağlantıyı yeni pencere simgesinde açın](../../media/new-window.png)
+- Azure Çin Portalı: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20summarize%20count()%20by%20tostring(properties.storageProfile.osDisk.osType)" target="_blank">portal.azure.cn</a> ![bağlantıyı yeni pencere simgesine açın](../../media/new-window.png)
 
 ---
 
@@ -249,19 +255,20 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-![Resource Graph explorer icon](../media/resource-graph-small.png) Try this query in Azure Resource Graph Explorer:
+![Kaynak Grafiği Gezgini simgesi](../media/resource-graph-small.png) Azure Kaynak Grafiği Gezgini 'nde bu sorguyu deneyin:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20extend%20os%20%3D%20properties.storageProfile.osDisk.osType%20%7C%20summarize%20count()%20by%20tostring(os)" target="_blank">portal.azure.com</a> ![Open link in new window icon](../../media/new-window.png)
-- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20extend%20os%20%3D%20properties.storageProfile.osDisk.osType%20%7C%20summarize%20count()%20by%20tostring(os)" target="_blank">portal.azure.us</a> ![Open link in new window icon](../../media/new-window.png)
+- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20extend%20os%20%3D%20properties.storageProfile.osDisk.osType%20%7C%20summarize%20count()%20by%20tostring(os)" target="_blank">portal.azure.com</a> ![bağlantıyı yeni pencere simgesinde aç](../../media/new-window.png)
+- Azure Kamu Portalı: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20extend%20os%20%3D%20properties.storageProfile.osDisk.osType%20%7C%20summarize%20count()%20by%20tostring(os)" target="_blank">portal.azure.us</a> ![bağlantıyı yeni pencere simgesinde açın](../../media/new-window.png)
+- Azure Çin Portalı: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20extend%20os%20%3D%20properties.storageProfile.osDisk.osType%20%7C%20summarize%20count()%20by%20tostring(os)" target="_blank">portal.azure.cn</a> ![bağlantıyı yeni pencere simgesine açın](../../media/new-window.png)
 
 ---
 
 > [!NOTE]
-> `=~`, büyük/küçük harfe duyarlı olmayan eşleşmeye izin verirken, sorgudaki özelliklerin (örneğin, **properties.storageProfile.osDisk.osType** gibi) kullanımının, durumun doğru olmasını gerektirdiğini unutmayın. If the property is the incorrect case, a null or incorrect value is returned and the grouping or summarization would be incorrect.
+> `=~`, büyük/küçük harfe duyarlı olmayan eşleşmeye izin verirken, sorgudaki özelliklerin (örneğin, **properties.storageProfile.osDisk.osType** gibi) kullanımının, durumun doğru olmasını gerektirdiğini unutmayın. Özelliğin durumu yanlış ise, null veya hatalı bir değer döndürülür ve gruplandırma veya özetleme yanlış olur.
 
-## <a name="a-nameshow-storage-show-resources-that-contain-storage"></a><a name="show-storage" />Show resources that contain storage
+## <a name="a-nameshow-storage-show-resources-that-contain-storage"></a>depolama alanı içeren kaynakları göstermek <a name="show-storage" />
 
-Eşleştirilecek türü şekilde açık olarak tanımlamak yerine, bu örnek sorgu, **depo** sözcüğünü `contains` eden tüm Azure kaynaklarını bulur.
+Eşleştirilecek türü şekilde açık olarak tanımlamak yerine, bu örnek sorgu, `contains`depo**sözcüğünü** eden tüm Azure kaynaklarını bulur.
 
 ```kusto
 Resources
@@ -282,18 +289,19 @@ Search-AzGraph -Query "Resources | where type contains 'storage' | distinct type
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-![Resource Graph explorer icon](../media/resource-graph-small.png) Try this query in Azure Resource Graph Explorer:
+![Kaynak Grafiği Gezgini simgesi](../media/resource-graph-small.png) Azure Kaynak Grafiği Gezgini 'nde bu sorguyu deneyin:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'storage'%20%7C%20distinct%20type" target="_blank">portal.azure.com</a> ![Open link in new window icon](../../media/new-window.png)
-- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'storage'%20%7C%20distinct%20type" target="_blank">portal.azure.us</a> ![Open link in new window icon](../../media/new-window.png)
+- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'storage'%20%7C%20distinct%20type" target="_blank">portal.azure.com</a> ![bağlantıyı yeni pencere simgesinde aç](../../media/new-window.png)
+- Azure Kamu Portalı: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'storage'%20%7C%20distinct%20type" target="_blank">portal.azure.us</a> ![bağlantıyı yeni pencere simgesinde açın](../../media/new-window.png)
+- Azure Çin Portalı: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'storage'%20%7C%20distinct%20type" target="_blank">portal.azure.cn</a> ![bağlantıyı yeni pencere simgesine açın](../../media/new-window.png)
 
 ---
 
-## <a name="a-namelist-publicip-list-all-public-ip-addresses"></a><a name="list-publicip" />List all public IP addresses
+## <a name="a-namelist-publicip-list-all-public-ip-addresses"></a>Tüm genel IP adreslerini <a name="list-publicip" />Listele
 
 Önceki sorguya benzer şekilde, **publicIPAddresses** sözcüğünü içeren bir tür olan her şeyi bulun.
-This query expands on that pattern to only include results where **properties.ipAddress**
-`isnotempty`, to only return the **properties.ipAddress**, and to `limit` the results by the top
+Bu sorgu yalnızca **Properties. ıpaddress
+`isnotempty`** , yalnızca **Properties. IPAddress**ve sonuçları en üste `limit` döndürecek sonuçları dahil etmek için bu modele genişletilir.
 100. Seçtiğiniz kabuğa bağlı olarak tırnak işaretlerinin dışına çıkmanız gerekebilir.
 
 ```kusto
@@ -317,14 +325,15 @@ Search-AzGraph -Query "Resources | where type contains 'publicIPAddresses' and i
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-![Resource Graph explorer icon](../media/resource-graph-small.png) Try this query in Azure Resource Graph Explorer:
+![Kaynak Grafiği Gezgini simgesi](../media/resource-graph-small.png) Azure Kaynak Grafiği Gezgini 'nde bu sorguyu deneyin:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'publicIPAddresses'%20and%20isnotempty(properties.ipAddress)%20%7C%20project%20properties.ipAddress%20%7C%20limit%20100" target="_blank">portal.azure.com</a> ![Open link in new window icon](../../media/new-window.png)
-- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'publicIPAddresses'%20and%20isnotempty(properties.ipAddress)%20%7C%20project%20properties.ipAddress%20%7C%20limit%20100" target="_blank">portal.azure.us</a> ![Open link in new window icon](../../media/new-window.png)
+- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'publicIPAddresses'%20and%20isnotempty(properties.ipAddress)%20%7C%20project%20properties.ipAddress%20%7C%20limit%20100" target="_blank">portal.azure.com</a> ![bağlantıyı yeni pencere simgesinde aç](../../media/new-window.png)
+- Azure Kamu Portalı: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'publicIPAddresses'%20and%20isnotempty(properties.ipAddress)%20%7C%20project%20properties.ipAddress%20%7C%20limit%20100" target="_blank">portal.azure.us</a> ![bağlantıyı yeni pencere simgesinde açın](../../media/new-window.png)
+- Azure Çin Portalı: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'publicIPAddresses'%20and%20isnotempty(properties.ipAddress)%20%7C%20project%20properties.ipAddress%20%7C%20limit%20100" target="_blank">portal.azure.cn</a> ![bağlantıyı yeni pencere simgesine açın](../../media/new-window.png)
 
 ---
 
-## <a name="a-namecount-resources-by-ip-count-resources-that-have-ip-addresses-configured-by-subscription"></a><a name="count-resources-by-ip" />Count resources that have IP addresses configured by subscription
+## <a name="a-namecount-resources-by-ip-count-resources-that-have-ip-addresses-configured-by-subscription"></a>abonelik tarafından yapılandırılan IP adreslerine sahip <a name="count-resources-by-ip" />sayısı kaynakları
 
 Önceki örnek sorguyu kullanarak ve `summarize` ile `count()` ekleyerek, yapılandırılmış IP adreslerine sahip kaynakların aboneliğe göre listesini elde edebiliriz.
 
@@ -348,14 +357,15 @@ Search-AzGraph -Query "Resources | where type contains 'publicIPAddresses' and i
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-![Resource Graph explorer icon](../media/resource-graph-small.png) Try this query in Azure Resource Graph Explorer:
+![Kaynak Grafiği Gezgini simgesi](../media/resource-graph-small.png) Azure Kaynak Grafiği Gezgini 'nde bu sorguyu deneyin:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'publicIPAddresses'%20and%20isnotempty(properties.ipAddress)%20%7C%20summarize%20count%20()%20by%20subscriptionId" target="_blank">portal.azure.com</a> ![Open link in new window icon](../../media/new-window.png)
-- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'publicIPAddresses'%20and%20isnotempty(properties.ipAddress)%20%7C%20summarize%20count%20()%20by%20subscriptionId" target="_blank">portal.azure.us</a> ![Open link in new window icon](../../media/new-window.png)
+- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'publicIPAddresses'%20and%20isnotempty(properties.ipAddress)%20%7C%20summarize%20count%20()%20by%20subscriptionId" target="_blank">portal.azure.com</a> ![bağlantıyı yeni pencere simgesinde aç](../../media/new-window.png)
+- Azure Kamu Portalı: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'publicIPAddresses'%20and%20isnotempty(properties.ipAddress)%20%7C%20summarize%20count%20()%20by%20subscriptionId" target="_blank">portal.azure.us</a> ![bağlantıyı yeni pencere simgesinde açın](../../media/new-window.png)
+- Azure Çin Portalı: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'publicIPAddresses'%20and%20isnotempty(properties.ipAddress)%20%7C%20summarize%20count%20()%20by%20subscriptionId" target="_blank">portal.azure.cn</a> ![bağlantıyı yeni pencere simgesine açın](../../media/new-window.png)
 
 ---
 
-## <a name="a-namelist-tag-list-resources-with-a-specific-tag-value"></a><a name="list-tag" />List resources with a specific tag value
+## <a name="a-namelist-tag-list-resources-with-a-specific-tag-value"></a>belirli bir etiket değerine sahip kaynakları listelemek <a name="list-tag" />
 
 Sonuçları, etiket gibi Azure kaynak türünden başka özelliklere göre de sınırlandırabiliriz. Bu örnekte, Azure kaynaklarını **Dahili** değerine sahip **Ortam** etiket adıyla filtreliyoruz.
 
@@ -379,14 +389,15 @@ Search-AzGraph -Query "Resources | where tags.environment=~'internal' | project 
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-![Resource Graph explorer icon](../media/resource-graph-small.png) Try this query in Azure Resource Graph Explorer:
+![Kaynak Grafiği Gezgini simgesi](../media/resource-graph-small.png) Azure Kaynak Grafiği Gezgini 'nde bu sorguyu deneyin:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20tags.environment%3D~'internal'%20%7C%20project%20name" target="_blank">portal.azure.com</a> ![Open link in new window icon](../../media/new-window.png)
-- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20tags.environment%3D~'internal'%20%7C%20project%20name" target="_blank">portal.azure.us</a> ![Open link in new window icon](../../media/new-window.png)
+- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20tags.environment%3D~'internal'%20%7C%20project%20name" target="_blank">portal.azure.com</a> ![bağlantıyı yeni pencere simgesinde aç](../../media/new-window.png)
+- Azure Kamu Portalı: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20tags.environment%3D~'internal'%20%7C%20project%20name" target="_blank">portal.azure.us</a> ![bağlantıyı yeni pencere simgesinde açın](../../media/new-window.png)
+- Azure Çin Portalı: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20tags.environment%3D~'internal'%20%7C%20project%20name" target="_blank">portal.azure.cn</a> ![bağlantıyı yeni pencere simgesine açın](../../media/new-window.png)
 
 ---
 
-Kaynağın sahip olduğu etiketleri ve değerlerini de sağlamak için `project` sözcüğüne **tags** özelliğini ekleyin.
+Kaynağın sahip olduğu etiketleri ve değerlerini de sağlamak için **sözcüğüne**tags`project` özelliğini ekleyin.
 
 ```kusto
 Resources
@@ -408,14 +419,15 @@ Search-AzGraph -Query "Resources | where tags.environment=~'internal' | project 
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-![Resource Graph explorer icon](../media/resource-graph-small.png) Try this query in Azure Resource Graph Explorer:
+![Kaynak Grafiği Gezgini simgesi](../media/resource-graph-small.png) Azure Kaynak Grafiği Gezgini 'nde bu sorguyu deneyin:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20tags.environment%3D~'internal'%20%7C%20project%20name%2C%20tags" target="_blank">portal.azure.com</a> ![Open link in new window icon](../../media/new-window.png)
-- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20tags.environment%3D~'internal'%20%7C%20project%20name%2C%20tags" target="_blank">portal.azure.us</a> ![Open link in new window icon](../../media/new-window.png)
+- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20tags.environment%3D~'internal'%20%7C%20project%20name%2C%20tags" target="_blank">portal.azure.com</a> ![bağlantıyı yeni pencere simgesinde aç](../../media/new-window.png)
+- Azure Kamu Portalı: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20tags.environment%3D~'internal'%20%7C%20project%20name%2C%20tags" target="_blank">portal.azure.us</a> ![bağlantıyı yeni pencere simgesinde açın](../../media/new-window.png)
+- Azure Çin Portalı: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20tags.environment%3D~'internal'%20%7C%20project%20name%2C%20tags" target="_blank">portal.azure.cn</a> ![bağlantıyı yeni pencere simgesine açın](../../media/new-window.png)
 
 ---
 
-## <a name="a-namelist-specific-tag-list-all-storage-accounts-with-specific-tag-value"></a><a name="list-specific-tag" />List all storage accounts with specific tag value
+## <a name="a-namelist-specific-tag-list-all-storage-accounts-with-specific-tag-value"></a>belirli bir etiket değerine sahip tüm depolama hesaplarını listelemek <a name="list-specific-tag" />
 
 Önceki örneğin filtre işleviyle birleştirerek Azure kaynak türünü **type** özelliğine göre filtreleyin. Bu sorgu da aramayı belirli bir etiket adına ve değerine sahip olan belirli Azure kaynağı türleriyle sınırlar.
 
@@ -439,19 +451,20 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Storage/storageAccou
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-![Resource Graph explorer icon](../media/resource-graph-small.png) Try this query in Azure Resource Graph Explorer:
+![Kaynak Grafiği Gezgini simgesi](../media/resource-graph-small.png) Azure Kaynak Grafiği Gezgini 'nde bu sorguyu deneyin:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Storage%2FstorageAccounts'%20%7C%20where%20tags%5B'tag%20with%20a%20space'%5D%3D%3D'Custom%20value'" target="_blank">portal.azure.com</a> ![Open link in new window icon](../../media/new-window.png)
-- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Storage%2FstorageAccounts'%20%7C%20where%20tags%5B'tag%20with%20a%20space'%5D%3D%3D'Custom%20value'" target="_blank">portal.azure.us</a> ![Open link in new window icon](../../media/new-window.png)
+- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Storage%2FstorageAccounts'%20%7C%20where%20tags%5B'tag%20with%20a%20space'%5D%3D%3D'Custom%20value'" target="_blank">portal.azure.com</a> ![bağlantıyı yeni pencere simgesinde aç](../../media/new-window.png)
+- Azure Kamu Portalı: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Storage%2FstorageAccounts'%20%7C%20where%20tags%5B'tag%20with%20a%20space'%5D%3D%3D'Custom%20value'" target="_blank">portal.azure.us</a> ![bağlantıyı yeni pencere simgesinde açın](../../media/new-window.png)
+- Azure Çin Portalı: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Storage%2FstorageAccounts'%20%7C%20where%20tags%5B'tag%20with%20a%20space'%5D%3D%3D'Custom%20value'" target="_blank">portal.azure.cn</a> ![bağlantıyı yeni pencere simgesine açın](../../media/new-window.png)
 
 ---
 
 > [!NOTE]
-> Bu örnek, eşleştirme için `=~` koşullu yerine `==` kullanır. `==` büyük küçük harfe duyarlı bir eşleşmedir.
+> Bu örnek, eşleştirme için `==` koşullu yerine `=~` kullanır. `==` büyük küçük harfe duyarlı bir eşleşmedir.
 
-## <a name="a-nameshow-aliases-show-aliases-for-a-virtual-machine-resource"></a><a name="show-aliases" />Show aliases for a virtual machine resource
+## <a name="a-nameshow-aliases-show-aliases-for-a-virtual-machine-resource"></a>bir sanal makine kaynağı için diğer adları göstermek <a name="show-aliases" />
 
-[Azure Policy aliases](../../policy/concepts/definition-structure.md#aliases) are used by Azure Policy to manage resource compliance. Azure Resource Graph can return the _aliases_ of a resource type. These values are useful for comparing the current value of aliases when creating a custom policy definition. The _aliases_ array isn't provided by default in the results of a query. Use `project aliases` to explicitly add it to the results.
+Azure [ilkesi diğer adları](../../policy/concepts/definition-structure.md#aliases) , Azure ilkesi tarafından kaynak uyumluluğunu yönetmek için kullanılır. Azure Kaynak Grafiği, bir kaynak türünün _diğer adlarını_ döndürebilir. Bu değerler, özel bir ilke tanımı oluştururken diğer adların geçerli değerlerini karşılaştırmak için yararlıdır. _Diğer adlar_ dizisi, bir sorgunun sonuçlarında varsayılan olarak sağlanmaz. Sonuçlara açıkça eklemek için `project aliases` kullanın.
 
 ```kusto
 Resources
@@ -474,16 +487,17 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-![Resource Graph explorer icon](../media/resource-graph-small.png) Try this query in Azure Resource Graph Explorer:
+![Kaynak Grafiği Gezgini simgesi](../media/resource-graph-small.png) Azure Kaynak Grafiği Gezgini 'nde bu sorguyu deneyin:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20limit%201%20%7C%20project%20aliases" target="_blank">portal.azure.com</a> ![Open link in new window icon](../../media/new-window.png)
-- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20limit%201%20%7C%20project%20aliases" target="_blank">portal.azure.us</a> ![Open link in new window icon](../../media/new-window.png)
+- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20limit%201%20%7C%20project%20aliases" target="_blank">portal.azure.com</a> ![bağlantıyı yeni pencere simgesinde aç](../../media/new-window.png)
+- Azure Kamu Portalı: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20limit%201%20%7C%20project%20aliases" target="_blank">portal.azure.us</a> ![bağlantıyı yeni pencere simgesinde açın](../../media/new-window.png)
+- Azure Çin Portalı: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20limit%201%20%7C%20project%20aliases" target="_blank">portal.azure.cn</a> ![bağlantıyı yeni pencere simgesine açın](../../media/new-window.png)
 
 ---
 
-## <a name="a-namedistinct-alias-values-show-distinct-values-for-a-specific-alias"></a><a name="distinct-alias-values" />Show distinct values for a specific alias
+## <a name="a-namedistinct-alias-values-show-distinct-values-for-a-specific-alias"></a><a name="distinct-alias-values" />belirli bir diğer ad için ayrı değerleri göster
 
-Seeing the value of aliases on a single resource is helpful, but it doesn't show the true value of using Azure Resource Graph to query across subscriptions. This example looks at all values of a specific alias and returns the distinct values.
+Diğer adların değerini tek bir kaynakta görmek faydalı olur, ancak abonelikler arasında sorgulama yapmak için Azure Kaynak grafiğinin kullanıldığı doğru değeri göstermez. Bu örnek, belirli bir diğer adın tüm değerlerine bakar ve ayrı değerleri döndürür.
 
 ```kusto
 Resources
@@ -506,16 +520,17 @@ Search-AzGraph -Query "Resources | where type=~'Microsoft.Compute/virtualMachine
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-![Resource Graph explorer icon](../media/resource-graph-small.png) Try this query in Azure Resource Graph Explorer:
+![Kaynak Grafiği Gezgini simgesi](../media/resource-graph-small.png) Azure Kaynak Grafiği Gezgini 'nde bu sorguyu deneyin:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%3D~'Microsoft.Compute%2FvirtualMachines'%20%7C%20extend%20alias%20%3D%20aliases%5B'Microsoft.Compute%2FvirtualMachines%2FstorageProfile.osDisk.managedDisk.storageAccountType'%5D%20%7C%20distinct%20tostring(alias)" target="_blank">portal.azure.com</a> ![Open link in new window icon](../../media/new-window.png)
-- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%3D~'Microsoft.Compute%2FvirtualMachines'%20%7C%20extend%20alias%20%3D%20aliases%5B'Microsoft.Compute%2FvirtualMachines%2FstorageProfile.osDisk.managedDisk.storageAccountType'%5D%20%7C%20distinct%20tostring(alias)" target="_blank">portal.azure.us</a> ![Open link in new window icon](../../media/new-window.png)
+- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%3D~'Microsoft.Compute%2FvirtualMachines'%20%7C%20extend%20alias%20%3D%20aliases%5B'Microsoft.Compute%2FvirtualMachines%2FstorageProfile.osDisk.managedDisk.storageAccountType'%5D%20%7C%20distinct%20tostring(alias)" target="_blank">portal.azure.com</a> ![bağlantıyı yeni pencere simgesinde aç](../../media/new-window.png)
+- Azure Kamu Portalı: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%3D~'Microsoft.Compute%2FvirtualMachines'%20%7C%20extend%20alias%20%3D%20aliases%5B'Microsoft.Compute%2FvirtualMachines%2FstorageProfile.osDisk.managedDisk.storageAccountType'%5D%20%7C%20distinct%20tostring(alias)" target="_blank">portal.azure.us</a> ![bağlantıyı yeni pencere simgesinde açın](../../media/new-window.png)
+- Azure Çin Portalı: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%3D~'Microsoft.Compute%2FvirtualMachines'%20%7C%20extend%20alias%20%3D%20aliases%5B'Microsoft.Compute%2FvirtualMachines%2FstorageProfile.osDisk.managedDisk.storageAccountType'%5D%20%7C%20distinct%20tostring(alias)" target="_blank">portal.azure.cn</a> ![bağlantıyı yeni pencere simgesine açın](../../media/new-window.png)
 
 ---
 
-## <a name="a-nameunassociated-nsgs-show-unassociated-network-security-groups"></a><a name="unassociated-nsgs" />Show unassociated network security groups
+## <a name="a-nameunassociated-nsgs-show-unassociated-network-security-groups"></a>ilişkilendirilmemiş ağ güvenlik gruplarını göstermek <a name="unassociated-nsgs" />
 
-This query returns Network Security Groups (NSGs) that aren't associated to a network interface or subnet.
+Bu sorgu, bir ağ arabirimiyle veya alt ağıyla ilişkilendirilmemiş ağ güvenlik gruplarını (NSG 'ler) döndürür.
 
 ```kusto
 Resources
@@ -538,15 +553,16 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.network/networksecur
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-![Resource Graph explorer icon](../media/resource-graph-small.png) Try this query in Azure Resource Graph Explorer:
+![Kaynak Grafiği Gezgini simgesi](../media/resource-graph-small.png) Azure Kaynak Grafiği Gezgini 'nde bu sorguyu deneyin:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.network%2Fnetworksecuritygroups'%20and%20isnull(properties.networkInterfaces)%20and%20isnull(properties.subnets)%20%7C%20project%20name%2C%20resourceGroup%20%7C%20sort%20by%20name%20asc" target="_blank">portal.azure.com</a> ![Open link in new window icon](../../media/new-window.png)
-- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.network%2Fnetworksecuritygroups'%20and%20isnull(properties.networkInterfaces)%20and%20isnull(properties.subnets)%20%7C%20project%20name%2C%20resourceGroup%20%7C%20sort%20by%20name%20asc" target="_blank">portal.azure.us</a> ![Open link in new window icon](../../media/new-window.png)
+- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.network%2Fnetworksecuritygroups'%20and%20isnull(properties.networkInterfaces)%20and%20isnull(properties.subnets)%20%7C%20project%20name%2C%20resourceGroup%20%7C%20sort%20by%20name%20asc" target="_blank">portal.azure.com</a> ![bağlantıyı yeni pencere simgesinde aç](../../media/new-window.png)
+- Azure Kamu Portalı: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.network%2Fnetworksecuritygroups'%20and%20isnull(properties.networkInterfaces)%20and%20isnull(properties.subnets)%20%7C%20project%20name%2C%20resourceGroup%20%7C%20sort%20by%20name%20asc" target="_blank">portal.azure.us</a> ![bağlantıyı yeni pencere simgesinde açın](../../media/new-window.png)
+- Azure Çin Portalı: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.network%2Fnetworksecuritygroups'%20and%20isnull(properties.networkInterfaces)%20and%20isnull(properties.subnets)%20%7C%20project%20name%2C%20resourceGroup%20%7C%20sort%20by%20name%20asc" target="_blank">portal.azure.cn</a> ![bağlantıyı yeni pencere simgesine açın](../../media/new-window.png)
 
 ---
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Learn more about the [query language](../concepts/query-language.md).
-- Learn more about how to [explore resources](../concepts/explore-resources.md).
-- See samples of [Advanced queries](advanced.md).
+- [Sorgu dili](../concepts/query-language.md)hakkında daha fazla bilgi edinin.
+- [Kaynakları araştırma](../concepts/explore-resources.md)hakkında daha fazla bilgi edinin.
+- [Gelişmiş sorguların](advanced.md)örneklerine bakın.

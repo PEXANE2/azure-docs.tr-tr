@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: aahi
-ms.openlocfilehash: 15beb8d3e326f04f1ae61c26f00e9428d95f6bc4
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6ef23c03f01cd8e83d4327f358eaf12209659ce8
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74031367"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286450"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Metin Analizi API’sindeki yenilikler
 
@@ -29,8 +29,8 @@ Adlandırılmış varlık tanıma 'nın (NER) sonraki sürümü artık genel ön
     * Telefon numarası
     * IP adresi
 
-* Kişisel bilgi varlık türlerini (Yalnızca Ingilizce) tanıma için [Yeni bir uç nokta](https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionPii)
-* [Varlık tanıma]( https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral) ve [varlık bağlama]( https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesLinking)için ayrı uç noktalar.
+* Kişisel bilgi varlık türlerini (Yalnızca Ingilizce) tanıma için [Yeni bir uç nokta](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionPii)
+* [Varlık tanıma](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral) ve [varlık bağlama](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesLinking)için ayrı uç noktalar.
 
 Varlık bağlama, Ingilizce ve Ispanyolca 'yi destekler. NER dil desteği varlık türüne göre farklılık gösterir. 
 
@@ -39,7 +39,7 @@ Varlık bağlama, Ingilizce ve Ispanyolca 'yi destekler. NER dil desteği varlı
 
 ## <a name="sentiment-analysis-v3-public-preview---october-2019"></a>Yaklaşım Analizi v3 genel önizleme-Ekim 2019
 
-[Yaklaşım Analizi sonraki sürümü](https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment) artık genel önizlemeye sunuldu ve API 'nin metin kategorisi ve puanlaması için doğruluk ve ayrıntı açısından önemli geliştirmeler sağlar. Ayrıca şunları sağlar:
+[Yaklaşım Analizi sonraki sürümü](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment) artık genel önizlemeye sunuldu ve API 'nin metin kategorisi ve puanlaması için doğruluk ve ayrıntı açısından önemli geliştirmeler sağlar. Ayrıca şunları sağlar:
 
 * Metindeki farklı sentiler için otomatik etiketleme.
 * Bir belge ve tümce düzeyinde yaklaşım Analizi ve çıktısı. 

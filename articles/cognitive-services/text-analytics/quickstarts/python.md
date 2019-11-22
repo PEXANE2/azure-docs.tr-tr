@@ -1,5 +1,5 @@
 ---
-title: "Hızlı Başlangıç: Metin Analizi API'si çağırmak için Python kullanma"
+title: "Hızlı başlangıç: Metin Analizi API'sini çağırmak için Python kullanma"
 titleSuffix: Azure Cognitive Services
 description: Azure bilişsel hizmetler 'de Metin Analizi API'si kullanmaya hızlı bir şekilde başlamanıza yardımcı olması için bilgi ve kod örnekleri alın.
 services: cognitive-services
@@ -10,19 +10,19 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 08/28/2019
 ms.author: aahi
-ms.openlocfilehash: e763c1a5bebddcb76647b4ecff02506fc41f6a47
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 15f0cf7725dec99884497be79b63c21ef16f88b1
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70387383"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284979"
 ---
-# <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>Hızlı Başlangıç: Metin Analizi bilişsel hizmeti çağırmak için Python REST API kullanma 
+# <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>Hızlı başlangıç: Metin Analizi bilişsel hizmeti çağırmak için Python REST API kullanma 
 <a name="HOLTop"></a>
 
 Metin Analizi REST API ve Python ile dili çözümlemeye başlamak için bu hızlı başlangıcı kullanın. Bu makalede, [Dili algılama](#Detect), yaklaşımı [Çözümleme](#SentimentAnalysis), [anahtar tümceleri ayıklama](#KeyPhraseExtraction)ve [bağlantılı varlıkları belirleme](#Entities)işlemlerinin nasıl yapılacağı gösterilir.
 
-API'lerle ilgili teknik bilgiler için [API tanımları](//go.microsoft.com/fwlink/?LinkID=759346) sayfasını inceleyin.
+[!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -49,7 +49,7 @@ import requests
 from pprint import pprint
 ```
 
-Kaynağınızın Azure uç noktası ve abonelik anahtarı için değişkenler oluşturun. Bu değerleri TEXT_ANALYTICS_SUBSCRIPTION_KEY ve TEXT_ANALYTICS_ENDPOINT ortam değişkenleriyle elde edin. Uygulamayı düzenleme başladıktan sonra bu ortam değişkenlerini oluşturduysanız, değişkenlere erişmek için kullandığınız düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir.
+Kaynağınızın Azure uç noktası ve abonelik anahtarı için değişkenler oluşturun. TEXT_ANALYTICS_SUBSCRIPTION_KEY ve TEXT_ANALYTICS_ENDPOINT ortam değişkenlerinden bu değerleri alın. Uygulamayı düzenleme başladıktan sonra bu ortam değişkenlerini oluşturduysanız, değişkenlere erişmek için kullandığınız düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir.
     
 ```python
 import os
@@ -71,13 +71,13 @@ Aşağıdaki bölümlerde, API 'nin özelliklerinin her birinin nasıl çağrıl
 
 ## <a name="detect-languages"></a>Dilleri algılama
 
-Dil `/text/analytics/v2.1/languages` algılama URL 'sini oluşturmak için metin analizi temel uç noktaya ekleyin. Örneğin, `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/languages`
+Dil algılama URL 'sini oluşturmak için Metin Analizi taban bitiş noktasına `/text/analytics/v2.1/languages` ekleyin. Örneğin, `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/languages`
     
 ```python
 language_api_url = endpoint + "/text/analytics/v2.1/languages"
 ```
 
-API 'nin yükü, `documents` `id` ve `text` özniteliğini içeren tanımlama grupları olan bir listesinden oluşur. Özniteliği çözümlenecek metni depolar `id` ve herhangi bir değer olabilir. `text` 
+API 'nin yükü, bir `id` ve bir `text` özniteliği içeren tanımlama grupları olan `documents`listesinden oluşur. `text` özniteliği çözümlenecek metni depolar ve `id` herhangi bir değer olabilir. 
 
 ```python
 documents = {"documents": [
@@ -87,7 +87,7 @@ documents = {"documents": [
 ]}
 ```
 
-API 'ye belge göndermek için Istekler kitaplığını kullanın. Abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgiye ekleyin ve isteği ile `requests.post()`gönderin. 
+API 'ye belge göndermek için Istekler kitaplığını kullanın. Abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgisine ekleyin ve isteği `requests.post()`gönderin. 
 
 ```python
 headers = {"Ocp-Apim-Subscription-Key": subscription_key}
@@ -96,7 +96,7 @@ languages = response.json()
 pprint(languages)
 ```
 
-### <a name="output"></a>Output
+### <a name="output"></a>Çıktı
 
 ```json
 {
@@ -140,13 +140,13 @@ pprint(languages)
 
 ## <a name="analyze-sentiment"></a>Yaklaşımı analiz etme
 
-Bir belge kümesinin yaklaşımını (pozitif veya negatif) algılamak için, dil algılama URL 'sini oluşturmak üzere metin analizi temel uç `/text/analytics/v2.1/sentiment` noktasına ekleyin. Örneğin, `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`
+Bir belge kümesinin (pozitif veya negatif arasındaki aralığı) tespit etmek için `/text/analytics/v2.1/sentiment`, dil algılama URL 'sini oluşturmak için Metin Analizi temel uç noktaya ekleyin. Örneğin, `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`
     
 ```python
 sentiment_url = endpoint + "/text/analytics/v2.1/sentiment"
 ```
 
-Dil algılama örneğinde olduğu gibi, bir belge listesinden oluşan `documents` anahtarı içeren bir sözlük oluşturun. Her belge, analiz edilecek `id` ve `text` ile metnin `language` öğesini içeren bir demettir. 
+Dil algılama örneğinde olduğu gibi, bir belge listesinden oluşan `documents` anahtarı ile bir sözlük oluşturun. Her belge, analiz edilecek `id` ve `text` ile metnin `language` öğesini içeren bir demettir. 
 
 ```python
 documents = {"documents": [
@@ -161,7 +161,7 @@ documents = {"documents": [
 ]}
 ```
 
-API 'ye belge göndermek için Istekler kitaplığını kullanın. Abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgiye ekleyin ve isteği ile `requests.post()`gönderin. 
+API 'ye belge göndermek için Istekler kitaplığını kullanın. Abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgisine ekleyin ve isteği `requests.post()`gönderin. 
 
 ```python
 headers = {"Ocp-Apim-Subscription-Key": subscription_key}
@@ -170,7 +170,7 @@ sentiments = response.json()
 pprint(sentiments)
 ```
 
-### <a name="output"></a>Output
+### <a name="output"></a>Çıktı
 
 Bir belge için yaklaşım puanı, daha pozitif bir yaklaşım belirten daha yüksek bir puana sahip 0,0 ve 1,0 arasındadır.
 
@@ -200,9 +200,9 @@ Bir belge için yaklaşım puanı, daha pozitif bir yaklaşım belirten daha yü
 
 <a name="KeyPhraseExtraction"></a>
 
-## <a name="extract-key-phrases"></a>Başlıca sözcük gruplarını ayıkla
+## <a name="extract-key-phrases"></a>Anahtar ifadeleri ayıklama
  
-Bir belge kümesinden anahtar tümceleri ayıklamak için, dil algılama URL 'sini `/text/analytics/v2.1/keyPhrases` oluşturmak üzere metin analizi temel uç noktaya ekleyin. Örneğin, `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/keyPhrases`
+Bir belge kümesinden anahtar tümceleri ayıklamak için `/text/analytics/v2.1/keyPhrases`, dil algılama URL 'sini oluşturmak için Metin Analizi temel uç noktaya ekleyin. Örneğin, `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/keyPhrases`
     
 ```python
 keyphrase_url = endpoint + "/text/analytics/v2.1/keyphrases"
@@ -223,7 +223,7 @@ documents = {"documents": [
 ]}
 ```
 
-API 'ye belge göndermek için Istekler kitaplığını kullanın. Abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgiye ekleyin ve isteği ile `requests.post()`gönderin. 
+API 'ye belge göndermek için Istekler kitaplığını kullanın. Abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgisine ekleyin ve isteği `requests.post()`gönderin. 
 
 ```python
 headers = {"Ocp-Apim-Subscription-Key": subscription_key}
@@ -232,7 +232,7 @@ key_phrases = response.json()
 pprint(key_phrases)
 ```
 
-### <a name="output"></a>Output
+### <a name="output"></a>Çıktı
 
 ```json
 {
@@ -278,7 +278,7 @@ pprint(key_phrases)
 
 ## <a name="identify-entities"></a>Varlıkları tanımla
 
-Metin belgelerindeki iyi bilinen varlıkları (kişiler, konumlar ve şeyler) belirlemek için, dil algılama URL 'sini `/text/analytics/v2.1/entities` oluşturmak üzere metin analizi temel uç noktaya ekleyin. Örneğin, `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
+Metin belgelerindeki iyi bilinen varlıkları (kişiler, konumlar ve şeyler) tanımlamak için, dil algılama URL 'sini oluşturmak üzere `/text/analytics/v2.1/entities` Metin Analizi temel uç noktaya ekleyin. Örneğin, `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
     
 ```python
 entities_url = endpoint + "/text/analytics/v2.1/entities"
@@ -292,7 +292,7 @@ documents = {"documents": [
 ]}
 ```
 
-API 'ye belge göndermek için Istekler kitaplığını kullanın. Abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgiye ekleyin ve isteği ile `requests.post()`gönderin.
+API 'ye belge göndermek için Istekler kitaplığını kullanın. Abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgisine ekleyin ve isteği `requests.post()`gönderin.
 
 ```python
 headers = {"Ocp-Apim-Subscription-Key": subscription_key}
@@ -301,7 +301,7 @@ entities = response.json()
 pprint(entities)
 ```
 
-### <a name="output"></a>Output
+### <a name="output"></a>Çıktı
 
 ```json
 {

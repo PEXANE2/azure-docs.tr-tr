@@ -1,6 +1,7 @@
 ---
-title: Ağ İzleyicisi ve Elastic Stack kullanarak ağ güvenlik grubu akış günlüklerini analiz etme ve yönetme | Microsoft Docs
-description: Yönetme ve Ağ İzleyicisi ve Elastic Stack kullanarak azure'da ağ güvenlik grubu akış günlüklerini analiz edin.
+title: NSG akış günlüklerini görselleştirme-elastik yığın
+titleSuffix: Azure Network Watcher
+description: Ağ Izleyicisi ve esnek yığın kullanarak Azure 'da ağ güvenlik grubu akış günlüklerini yönetin ve çözümleyin.
 services: network-watcher
 documentationcenter: na
 author: mattreatMSFT
@@ -14,40 +15,40 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: mareat
-ms.openlocfilehash: 7361eff0f76271564fd5a0e9b8a18221ec4138e3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 53cbfe08d310f7244134e1ae31b18644a83c63d3
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60860149"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277741"
 ---
-# <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>Açık kaynak araçlar kullanarak Azure Ağ İzleyicisi NSG akış günlüklerini Görselleştirme
+# <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>Açık kaynak araçları kullanarak Azure ağ Izleyicisi NSG akış günlüklerini görselleştirme
 
-Ağ güvenlik grubu akış günlüklerini kullanılabilir bilgi sağlayan ağ güvenlik gruplarında giriş ve çıkış IP trafiğini anlayın. Bu akış günlüklerini giden ve gelen akışlar başına kural olarak, akış uygulandığı NIC, 5 demet bilgi (kaynak/hedef IP, kaynak/hedef bağlantı noktası, protokol) akışla ilgili trafiklere izin verildiğini veya, gösterin.
+Ağ güvenlik grubu akış günlükleri, ağ güvenlik gruplarında giriş ve çıkış IP trafiğini anlamak için kullanılabilecek bilgiler sağlar. Bu akış günlükleri, her kural için giden ve gelen akışları gösterir, akışın geçerli olduğu NIC (kaynak/hedef IP, kaynak/hedef bağlantı noktası, protokol) ve trafiğe izin verildiyse veya reddedildiyse.
 
-Bu akış günlüklerini el ile ayrıştırma ve Öngörüler elde etmek zor olabilir. Ancak, bu verileri görselleştirmenize yardımcı olabilecek birçok açık kaynak araçları vardır. Bu makale elastik hızla dizin ve akışınız görselleştirmenize olanak tanıyan yığını kullanarak bu günlükleri görselleştirmek için bir çözüm Kibana panosunda oturum sağlar.
+Bu akış günlüklerinin el ile ayrıştırılması ve öngörüleri elde edilmesi zor olabilir. Ancak, bu verileri görselleştirmeye yardımcı olabilecek çeşitli açık kaynaklı araçlar vardır. Bu makalede, bir kibana panosunda akış günlüklerinizi hızlı bir şekilde dizinleyecek ve görselleştirmenize olanak tanıyan esnek yığını kullanarak bu günlükleri görselleştirmeye yönelik bir çözüm sağlanmaktadır.
 
 > [!Warning]  
-> Aşağıdaki adımlar akış günlükleri sürüm 1 ile çalışır. Ayrıntılar için bkz [için ağ güvenlik grubu akış günlüğe kaydetme giriş](network-watcher-nsg-flow-logging-overview.md). Aşağıdaki yönergeler, değişiklik yapmadan günlük dosyalarının sürüm 2 ile çalışmaz.
+> Aşağıdaki adımlar akış günlükleri sürüm 1 ile birlikte çalışır. Ayrıntılar için bkz. [ağ güvenlik grupları için akış günlüğüne giriş](network-watcher-nsg-flow-logging-overview.md). Aşağıdaki yönergeler, değişiklik yapılmadan günlük dosyalarının 2. sürümüyle birlikte çalışmayacaktır.
 
 ## <a name="scenario"></a>Senaryo
 
-Bu makalede, elastik yığın'ı kullanarak ağ güvenlik grubu akış günlüklerini görselleştirme sağlayacak bir çözüm ayarlayacağız.  Logstash giriş eklentisi akış günlüklerini içeren akış günlüklerini yapılandırılmış depolama blobu doğrudan elde edersiniz. Ardından, Elastic Stack kullanarak akış günlüklerini dizine ve bilgileri görselleştirmek için Kibana Pano oluşturmak için kullanılan.
+Bu makalede, esnek yığını kullanarak ağ güvenlik grubu akış günlüklerini görselleştirmenizi sağlayacak bir çözüm ayarlayacağız.  Logstash giriş eklentisi akış günlüklerini, akış günlüklerini içerecek şekilde yapılandırılan depolama blobundan doğrudan elde eder. Daha sonra elastik yığını kullanarak, akış günlüklerinin dizini oluşturulur ve bilgileri görselleştirmek üzere bir kibana panosu oluşturmak için kullanılır.
 
 ![senaryo][scenario]
 
 ## <a name="steps"></a>Adımlar
 
-### <a name="enable-network-security-group-flow-logging"></a>Etkinleştirme ağ güvenlik grubu akış günlüğe kaydetme
-Bu senaryo için ağ güvenlik grubu akış hesabınızda en az bir ağ güvenlik grubu etkin günlüğü olması gerekir. Ağ güvenlik akış günlüklerini etkinleştirme hakkında yönergeler için şu makaleye başvurun [için ağ güvenlik grubu akış günlüğe kaydetme giriş](network-watcher-nsg-flow-logging-overview.md).
+### <a name="enable-network-security-group-flow-logging"></a>Ağ güvenlik grubu akış günlüğünü etkinleştir
+Bu senaryoda, hesabınızdaki en az bir ağ güvenlik grubunda ağ güvenlik grubu akış günlüğü 'nün etkin olması gerekir. Ağ güvenlik akışı günlüklerinin etkinleştirilmesi hakkındaki yönergeler için, [ağ güvenlik grupları için akış günlüğüne giriş konusuna giriş](network-watcher-nsg-flow-logging-overview.md)olarak aşağıdaki makaleye bakın.
 
-### <a name="set-up-the-elastic-stack"></a>Elastik yığını ayarlayın
-NSG akış günlüklerini Elastic Stack ile bağlanarak, Kibana panonuza arama, grafik, analiz ve bizim günlüklerinden içgörülere sahip olun kurmamızı sağlayan oluşturabiliriz.
+### <a name="set-up-the-elastic-stack"></a>Elastik yığını ayarlama
+NSG akış günlüklerini elastik Stack ile bağlayarak, günlüklerimize ilişkin neleri araymamızı, grafiklemenizi, analiz etmenizi ve türetmemize olanak sağlayan bir kibana panosu oluşturuyoruz.
 
-#### <a name="install-elasticsearch"></a>Elasticsearch'ü yükleme
+#### <a name="install-elasticsearch"></a>Elaa aramasını yükleme
 
-1. Elastik yığın sürüm 5.0 ve üzeri Java 8 gerektirir. Komutunu çalıştırın `java -version` sürümünüzü denetlemek için. Java yüklü değilse, şirket belgelerine başvurun [Azure bloklarını koruma jdk](https://aka.ms/azure-jdks).
-2. Sisteminiz için doğru ikili paket yükleyin:
+1. 5,0 ve üzeri sürümler için esnek yığın Java 8 gerektirir. Sürümünüzü denetlemek için `java -version` komutunu çalıştırın. Java yüklü değilse, [Azure-suppored JDKs](https://aka.ms/azure-jdks)ile ilgili belgelere başvurun.
+2. Sisteminiz için doğru ikili paketi indirin:
 
    ```bash
    curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.2.0.deb
@@ -55,15 +56,15 @@ NSG akış günlüklerini Elastic Stack ile bağlanarak, Kibana panonuza arama, 
    sudo /etc/init.d/elasticsearch start
    ```
 
-   Diğer yükleme yöntemleri şu yolda bulunabilir: [elasticsearch'ü yükleme](https://www.elastic.co/guide/en/beats/libbeat/5.2/elasticsearch-installation.html)
+   Diğer yükleme yöntemleri, [Elaun Search yüklemesinde](https://www.elastic.co/guide/en/beats/libbeat/5.2/elasticsearch-installation.html) bulunabilir
 
-3. Elasticsearch komutuyla çalıştığını doğrulayın:
+3. Şu komutla, Elaun aramasının çalıştığını doğrulayın:
 
     ```bash
     curl http://127.0.0.1:9200
     ```
 
-    Şuna benzer bir yanıt görmeniz gerekir:
+    Aşağıdakine benzer bir yanıt görmeniz gerekir:
 
     ```json
     {
@@ -80,17 +81,17 @@ NSG akış günlüklerini Elastic Stack ile bağlanarak, Kibana panonuza arama, 
     }
     ```
 
-Yükleme esnek arama ile ilgili diğer yönergeleri için başvurmak [yükleme yönergeleri](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/_installation.html).
+Elastik arama yükleme hakkında daha fazla yönerge için [yükleme yönergelerine](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/_installation.html)bakın.
 
-### <a name="install-logstash"></a>Logstash'i yükleyin
+### <a name="install-logstash"></a>Logstash 'i yükler
 
-1. Aşağıdaki komutları çalıştırın Logstash yüklemek için:
+1. Logstash 'i yüklemek için aşağıdaki komutları çalıştırın:
 
     ```bash
     curl -L -O https://artifacts.elastic.co/downloads/logstash/logstash-5.2.0.deb
     sudo dpkg -i logstash-5.2.0.deb
     ```
-2. Sonraki erişme ve akış günlüklerini ayrıştırmanıza Logstash gerekir. Kullanarak bir logstash.conf dosyası oluşturun:
+2. Daha sonra Flow günlüklerine erişmek ve bunları ayrıştırmak için Logstash 'i yapılandırmanız gerekir. Şunu kullanarak bir logstash. conf dosyası oluşturun:
 
     ```bash
     sudo touch /etc/logstash/conf.d/logstash.conf
@@ -159,93 +160,93 @@ Yükleme esnek arama ile ilgili diğer yönergeleri için başvurmak [yükleme y
    }  
    ```
 
-Logstash yükleme hakkında daha fazla yönerge için başvurmak [resmi belgelerine](https://www.elastic.co/guide/en/beats/libbeat/5.2/logstash-installation.html).
+Logstash 'i yükleme hakkında daha fazla bilgi için [resmi belgelere](https://www.elastic.co/guide/en/beats/libbeat/5.2/logstash-installation.html)bakın.
 
-### <a name="install-the-logstash-input-plugin-for-azure-blob-storage"></a>Azure blob depolama için Logstash giriş eklentisini yükleme
+### <a name="install-the-logstash-input-plugin-for-azure-blob-storage"></a>Azure Blob depolama için Logstash giriş eklentisini yükler
 
-Bu Logstash eklentisi, kendi atanmış depolama hesabından akış günlüklerini doğrudan bağlanmasına izin verir. Bu eklentiyi yüklemek için komut varsayılan Logstash yükleme dizini (büyük/küçük harf bu /usr/share/logstash/bin) çalıştırın:
+Bu Logstash eklentisi, akış günlüklerine belirlenen depolama hesabından doğrudan erişmenizi sağlayacaktır. Bu eklentiyi yüklemek için, varsayılan Logstash yükleme dizininden (Bu durumda/usr/share/logstash/bin) komutunu çalıştırın:
 
 ```bash
 logstash-plugin install logstash-input-azureblob
 ```
 
-Logstash başlangıç için komutu çalıştırın:
+Logstash 'i başlatmak için şu komutu çalıştırın:
 
 ```bash
 sudo /etc/init.d/logstash start
 ```
 
-Bu eklenti hakkında daha fazla bilgi için [belgeleri](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-input-azureblob).
+Bu eklenti hakkında daha fazla bilgi için [belgelerine](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-input-azureblob)bakın.
 
-### <a name="install-kibana"></a>Kibana'yı yükleme
+### <a name="install-kibana"></a>Kibana 'i yükler
 
-1. Kibana'yı yüklemek için aşağıdaki komutları çalıştırın:
+1. Kibana yüklemek için aşağıdaki komutları çalıştırın:
 
    ```bash
    curl -L -O https://artifacts.elastic.co/downloads/kibana/kibana-5.2.0-linux-x86_64.tar.gz
    tar xzvf kibana-5.2.0-linux-x86_64.tar.gz
    ```
 
-2. Kibana'yı çalıştırma için komutları kullanın:
+2. Kibana çalıştırmak için şu komutları kullanın:
 
    ```bash
    cd kibana-5.2.0-linux-x86_64/
    ./bin/kibana
    ```
 
-3. Kibana'yı web Arabiriminizin görüntülemek için gidin `http://localhost:5601`
-4. Bu senaryoda, akış günlükleri için kullanılan dizin "nsg akış günlüklerini" modelidir. Dizin düzeni logstash.conf dosyanızın "çıkış" bölümündeki değişebilir.
-5. Kibana panonuza uzaktan görüntülemek istiyorsanız, erişim izni veren gelen NSG kuralı oluşturma **bağlantı noktası 5601**.
+3. Kibana Web arabiriminizi görüntülemek için `http://localhost:5601` gidin.
+4. Bu senaryoda, akış günlükleri için kullanılan dizin deseninin "NSG-Flow-Logs" olması gerekir. Logstash. conf dosyanızın "çıktı" bölümünde Dizin modelini değiştirebilirsiniz.
+5. Kibana panosunu uzaktan görüntülemek istiyorsanız, **5601 numaralı bağlantı noktasına**erişime izin veren bir gelen NSG kuralı oluşturun.
 
-### <a name="create-a-kibana-dashboard"></a>Kibana Pano oluşturma
+### <a name="create-a-kibana-dashboard"></a>Kibana panosu oluşturma
 
-Örnek Pano uyarılarınızı eğilimleri ve ayrıntılarını görüntülemek için aşağıdaki resimde gösterilmektedir:
+Uyarılarınızın eğilimlerini ve ayrıntılarını görüntülemek için örnek bir Pano aşağıdaki resimde gösterilmiştir:
 
 ![Şekil 1][1]
 
-İndirme [Pano dosya](https://aka.ms/networkwatchernsgflowlogdashboard), [görselleştirme dosyası](https://aka.ms/networkwatchernsgflowlogvisualizations)ve [arama kaydettiğiniz](https://aka.ms/networkwatchernsgflowlogsearch).
+[Pano dosyasını](https://aka.ms/networkwatchernsgflowlogdashboard), [görselleştirme dosyasını](https://aka.ms/networkwatchernsgflowlogvisualizations)ve [kayıtlı arama dosyasını](https://aka.ms/networkwatchernsgflowlogsearch)indirin.
 
-Altında **Yönetim** sekmesine gidin Kibana, **kaydedilen nesneleri** ve üç dosya içeri aktarma. Öğesinden sonra **Pano** sekmesini açın ve örnek panoyu yükleyebilirsiniz.
+Kibana 'ın **Yönetim** sekmesi altında, **kayıtlı nesneler** ' e gidin ve üç dosyayı içeri aktarın. Sonra **Pano** sekmesinden örnek panoyu açabilir ve yükleyebilirsiniz.
 
-Ayrıca, kendi görselleştirmeler ve kendi ilgilendiğiniz ölçümleri uyarlanmış panolar oluşturabilirsiniz. Kibana 's Kibana görselleştirmeler oluşturma hakkında daha fazla [resmi belgelerine](https://www.elastic.co/guide/en/kibana/current/visualize.html).
+Kendi görselleştirmelerinizle ilgili ölçümleriniz doğrultusunda kendi görselleştirmelerinizi ve panolarınızı da oluşturabilirsiniz. Kibana 'ın [resmi belgelerinden](https://www.elastic.co/guide/en/kibana/current/visualize.html)kibana görselleştirmeler oluşturma hakkında daha fazla bilgi edinin.
 
-### <a name="visualize-nsg-flow-logs"></a>NSG akış günlüklerini Görselleştirme
+### <a name="visualize-nsg-flow-logs"></a>NSG akış günlüklerini görselleştirme
 
-Akış günlüklerini çeşitli görselleştirmelerle ilişkin örnek panoyu sağlar:
+Örnek Pano, akış günlüklerinin çeşitli görselleştirmelerini sağlar:
 
-1. -Zamana karar/yön ile zaman serisi grafikleri süre boyunca akışlarının sayısını gösteren akar. Zaman birimi ve her iki bu görselleştirmeler span düzenleyebilirsiniz. Karar göre akışlar izin ver veya Reddet yönüne göre akışlar geliş ve gidiş trafiğinin oranını gösterirken, kararlara oranını gösterir. Bu görsellerle zaman içinde trafik eğilimleri inceleyebilir ve herhangi bir ani veya olağandışı desenleri için bakın.
+1. Zaman aralığı boyunca akış sayısını gösteren zaman zaman serisi grafiklerde kararına/yönlendirmeye göre akar. Bu görselleştirmelerin zaman ve Aralık birimini düzenleyebilirsiniz. Kararlara göre akışlar, yapılan, izin verme veya reddetme kararlarının oranını gösterir. bu sırada akışlara göre akışlar gelen ve giden trafiğin oranını gösterir. Bu görsellerle zaman içinde trafik eğilimlerini inceleyebilir ve tüm ani veya olağandışı desenleri arayabilirsiniz.
 
    ![Şekil 2][2]
 
-2. Hedef/kaynak bağlantı noktası göre– akışlar ilgili bağlantı noktaları için akışlar dökümünü gösteren pasta grafikler. Bu görünümle, en sık kullanılan bağlantı noktaları görebilirsiniz. Pasta grafik içinde belirli bir bağlantı noktasında tıklarsanız Pano rest Bu bağlantı noktasının doğru akar filtre uygular.
+2. Hedef/kaynak bağlantı noktasına göre akışlar – akış dökümlerinin ilgili bağlantı noktalarına dökümünü gösteren pasta grafikler. Bu görünümle, en sık kullanılan bağlantı noktalarınızı görebilirsiniz. Pasta grafiğinin içindeki belirli bir bağlantı noktasına tıkladığınızda panonun geri kalanı bu bağlantı noktasının akışlarına göre filtreedilir.
 
    ![figure3][3]
 
-3. Akışlar ve erken günlüğü süresi – kaydedilen akışlarının sayısı ve yakalanan erken günlük tarihini gösteren ölçümleri sayısı.
+3. Akış sayısı ve en erken günlük zamanı – kaydedilen akış sayısını ve yakalanan en erken günlüğün tarihini gösteren ölçümler.
 
-   ![Şekil 4][4]
+   ![figure4][4]
 
-4. Akışlar NSG ve kural – dağıtım her NSG kuralların yanı sıra, her bir NSG içinde akış dağılımı gösteren bir çubuk grafiği. Burada, hangi NSG ve kuralları en çok trafiği oluşturulan görebilirsiniz.
+4. NSG ve kurala göre akar: her NSG içindeki akışların dağıtımını ve her NSG içinde kuralların dağıtımını gösteren bir çubuk grafiği. Buradan, hangi NSG 'lerin ve kuralların en iyi şekilde oluşturulduğunu görebilirsiniz.
 
    ![figure5][5]
 
-5. İlk 10 kaynak ve hedef Ip'lerini gösteren çubuk grafikler 10 kaynak/hedef IP'ler – üst. Daha az veya üst IP'ler göstermek için bu grafikleri ayarlayabilirsiniz. Buradan IP'ler ve bunun yanı sıra trafik karar en sık gerçekleşen görebilirsiniz (izin ver veya Reddet) her IP yapılan.
+5. İlk 10 kaynak/hedef IP 'Leri – ilk 10 kaynak ve hedef IP 'Leri gösteren çubuk grafikler. Bu grafikleri, daha fazla veya daha az üst IP gösterecek şekilde ayarlayabilirsiniz. Burada, en yaygın olarak gerçekleşen IP 'Lerin yanı sıra her IP 'ye yönelik trafik kararı (izin verme veya reddetme) görebilirsiniz.
 
    ![figure6][6]
 
-6. Akış diziler – Bu tablo her akış demet yanı sıra, karşılık gelen NGS ve kural içinde yer alan bilgileri gösterir.
+6. Akış Başlıkları – bu tabloda, her bir akış grubu içinde yer alan bilgiler ve ilgili NGS ve kuralları gösterilmektedir.
 
    ![figure7][7]
 
-Panonun üst kısmında sorgu çubuğunu kullanarak, abonelik kimliği, kaynak grupları, kuralı veya ilgilendiğiniz herhangi bir değişken gibi bir akışı herhangi bir parametre bağlı Pano aşağı filtreleyebilirsiniz. Kibana'nın sorgular ve filtreleri hakkında daha fazla bilgi için bkz [resmi belgeleri](https://www.elastic.co/guide/en/beats/packetbeat/current/kibana-queries-filters.html)
+Panonun üst kısmındaki sorgu çubuğunu kullanarak, pano KIMLIĞI, kaynak grupları, kural veya herhangi bir ilgi alanı gibi herhangi bir parametreye göre Pano 'ya filtre uygulayabilirsiniz. Kibana 'in sorguları ve filtreleri hakkında daha fazla bilgi için [resmi belgelere](https://www.elastic.co/guide/en/beats/packetbeat/current/kibana-queries-filters.html) bakın
 
 ## <a name="conclusion"></a>Sonuç
 
-Ağ güvenlik grubu akış günlüklerini Elastic Stack ile birleştirerek, biz bizim ağ trafiğini görselleştirmek için güçlü ve özelleştirilebilir yol gündeme. Bu pano, hızlı bir şekilde elde edin ve aşağı, ağ trafiğini, aynı zamanda filtre ilgili öngörüleri paylaşın ve olası anomalileri araştırın olanak tanır. Kibana'yı kullanarak, bu panoları uyumlu hale getirmenizi ve tüm güvenlik, Denetim ve uyumluluk gereksinimlerini karşılamak için özel görselleştirmeler oluşturun.
+Ağ güvenlik grubu akış günlüklerini elastik Stack ile birleştirerek, ağ trafiğinizi görselleştirmenin güçlü ve özelleştirilebilir bir yoluyla karşılaştık. Bu panolar, ağ trafiğiniz hakkında hızlı bir şekilde Öngörüler elde edebilir ve bunları paylaşabilir ve tüm olası bozukluklar üzerinde araştırma ve araştırma yapmanıza olanak sağlar. Kibana kullanarak, bu panoları uyarlayabilirsiniz ve güvenlik, denetim ve uyumluluk ihtiyaçlarını karşılamak için belirli görselleştirmeler oluşturabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ziyaret ederek, NSG akış günlüklerini Power BI ile görselleştirmeyi öğrenmek [görselleştirme NSG akış günlükleri Power BI ile](network-watcher-visualize-nsg-flow-logs-power-bi.md)
+Power BI ile NSG akış günlüklerinizi görselleştirmeyi öğrenin [Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 
 <!--Image references-->
 

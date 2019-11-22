@@ -9,12 +9,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: sstein
-ms.openlocfilehash: 5c70d1d7d62b41965d4c81e8bbe0e5b2dc3cbb92
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: bdea9af04008ef68578ff8c136760f2493a2ae35
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74166263"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279225"
 ---
 # <a name="sql-database-release-notes"></a>SQL veritabanı sürüm notları
 
@@ -80,6 +80,7 @@ Aşağıdaki özellikler, H1 2019 ' de yönetilen örnek dağıtım modelinde et
 
 - **2019 Ağu** -kapsanan veritabanları yönetilen örnekte tam olarak desteklenmektedir.
 - Adım **2019** -yerleşik zaman içinde, kaynak veritabanı bellek içi OLTP nesneleri içeriyorsa İş Açısından Kritik katmanından genel amaçlı katmanına geri yükleme başarısız olur.
+- **Oct 2019** -güvenli bağlantı kullanarak harici (Azure dışı) posta sunucularıyla **veritabanı postası** özelliği kullanabilirsiniz.
 - **Kas 2019** -veritabanı tutarlılığı, Azure Blob depolamadan veritabanını geri yükledikten sonra `DBCC CHECKDB` kullanılarak doğrulanır.
 
 ## <a name="updates"></a>Güncelleştirmeler

@@ -3,18 +3,22 @@ title: Azure Izleyici günlükleri veri modeli
 description: Bu makalede, Azure Backup verileri için Azure Izleyici Log Analytics veri modeli ayrıntıları hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 055a36fb2aa8e9048089a338f57555242e8eb754
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: eed3f66c1743bb21118a2d90343989d2b6a081de
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173023"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278488"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Azure Backup verileri için Log Analytics veri modeli
 
 Log Analytics özel uyarılar oluşturmak için Log Analytics veri modelini kullanın.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+> [!NOTE]
+>
+> Bu veri modeli, Log Analytics (LA) öğesine tanılama olayları gönderme Azure Tanılama moduna başvurdadır. Yeni kaynağa özgü moda yönelik veri modelini öğrenmek için şu makaleye başvurabilirsiniz: [Azure Backup tanılama olayları Için veri modeli](https://aka.ms/diagnosticsdatamodel)
 
 ## <a name="using-azure-backup-data-model"></a>Azure Backup veri modelini kullanma
 

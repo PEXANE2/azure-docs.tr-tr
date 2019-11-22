@@ -12,16 +12,16 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 08/27/2019
-ms.openlocfilehash: 85d2e58d35ef233fda7c724f85152fc74bd11189
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 939606412c55ddad29801776c2385b406dc93a33
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826833"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286753"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>Öğretici: bir yük devretme grubuna SQL veritabanı yönetilen örneği ekleme
 
-Bir yük devretme grubuna SQL veritabanı yönetilen örneği ekleyin. Bu makalede şunları yapmayı öğreneceksiniz:
+Bir yük devretme grubuna SQL veritabanı yönetilen örneği ekleyin. Bu makalede, öğreneceksiniz nasıl yapılır:
 
 > [!div class="checklist"]
 > - Birincil yönetilen örnek oluşturma
@@ -33,7 +33,7 @@ Bir yük devretme grubuna SQL veritabanı yönetilen örneği ekleyin. Bu makale
   > - Yönetilen bir örnek oluşturmak, önemli miktarda zaman alabilir. Sonuç olarak, Bu öğreticinin tamamlanması birkaç saat sürebilir. Sağlama süreleri hakkında daha fazla bilgi için bkz. [yönetilen örnek yönetimi işlemleri](sql-database-managed-instance.md#managed-instance-management-operations). 
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 Bu öğreticiyi tamamlamak için şunlar sahip olduğunuzdan emin olun: 
@@ -422,7 +422,7 @@ Bir sanal ağ oluşturmak için aşağıdaki adımları izleyin:
 
     | **Alan** | Değer |
     | --- | --- |
-    | **Ad** |  `vnet-sql-mi-secondary`gibi, ikincil yönetilen örnek tarafından kullanılacak sanal ağın adı. |
+    | **Adı** |  `vnet-sql-mi-secondary`gibi, ikincil yönetilen örnek tarafından kullanılacak sanal ağın adı. |
     | **Adres alanı** | Sanal ağınızın `10.128.0.0/16`gibi adres alanı. | 
     | **Abonelik** | Birincil yönetilen örneğinizin ve kaynak grubunuzun bulunduğu abonelik. |
     | **Bölge** | İkincil yönetilen örneğinizi dağıtacağınız konum. |
@@ -752,7 +752,7 @@ Azure portal kullanarak, birincil yönetilen örneğinizin sanal ağı için ağ
     | **Alan** | Değer |
     | --- | --- |
     | **Abonelik** |  Birincil yönetilen örneğinizin bulunduğu abonelik. |
-    | **Ad** | `primary-mi-gateway`gibi sanal ağ geçidinizin adı. | 
+    | **Adı** | `primary-mi-gateway`gibi sanal ağ geçidinizin adı. | 
     | **Bölge** | İkincil yönetilen örneğinizin bulunduğu bölge. |
     | **Ağ Geçidi türü** | **VPN**' yi seçin. |
     | **VPN türü** | **Rota tabanlı** seçin |
@@ -834,7 +834,7 @@ Azure portal kullanarak, ikincil yönetilen örnek için sanal ağ alt ağını 
    | **Alan** | Değer |
    | --- | --- |
    | **Abonelik** |  İkincil yönetilen örneğinizin olduğu abonelik. |
-   | **Ad** | `secondary-mi-gateway`gibi sanal ağ geçidinizin adı. | 
+   | **Adı** | `secondary-mi-gateway`gibi sanal ağ geçidinizin adı. | 
    | **Bölge** | İkincil yönetilen örneğinizin bulunduğu bölge. |
    | **Ağ Geçidi türü** | **VPN**' yi seçin. |
    | **VPN türü** | **Rota tabanlı** seçin |
@@ -1075,7 +1075,7 @@ Yük devretme grubunu birincil sunucuya geri çevir:
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 1. [Azure Portal](https://portal.azure.com)kaynak grubunuza gidin. 
-1. Yönetilen örneği seçin ve **Sil**' i seçin. Kaynağı silmek istediğinizi onaylamak için metin kutusuna `yes` yazın ve ardından **Sil**' i seçin. Bu işlemin tamamlanması biraz zaman alabilir ve bu işlem "tamamlanana kadar" *sanal kümeyi* veya diğer bağımlı kaynakları silememeyeceksiniz. Yönetilen örneğinizin silindiğini onaylamak için etkinlik sekmesindeki silmeyi izleyin. 
+1. Yönetilen örnekleri seçin ve ardından **Sil**' i seçin. Kaynağı silmek istediğinizi onaylamak için metin kutusuna `yes` yazın ve ardından **Sil**' i seçin. Bu işlemin tamamlanması biraz zaman alabilir ve bu işlem "tamamlanana kadar" *sanal kümeyi* veya diğer bağımlı kaynakları silememeyeceksiniz. Yönetilen örneğinizin silindiğini onaylamak için etkinlik sekmesindeki silmeyi izleyin. 
 1. Yönetilen örnek silindikten sonra, *sanal kümeyi* kaynak grubunuzda seçip **Sil**' i seçerek silin. Kaynağı silmek istediğinizi onaylamak için metin kutusuna `yes` yazın ve ardından **Sil**' i seçin. 
 1. Kalan kaynakları silin. Kaynağı silmek istediğinizi onaylamak için metin kutusuna `yes` yazın ve ardından **Sil**' i seçin. 
 1. Kaynak grubunu Sil ' i seçerek kaynak grubunu **Sil**' i seçin, kaynak grubunun adını yazın, `myResourceGroup`ve ardından **Sil**' i seçin. 

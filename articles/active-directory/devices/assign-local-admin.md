@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5372bf853092ea55952b45a1300d0f979f1b086c
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: b222e67d06bc9fa0fabcc0bc3c0ddd2c6855fbc3
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73062269"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74271300"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Azure AD 'ye katılmış cihazlarda yerel Yöneticiler grubunu yönetme
 
@@ -24,7 +24,7 @@ Bir Windows cihazını yönetmek için yerel Yöneticiler grubunun bir üyesi ol
 
 Bu makalede, üyelik güncelleştirmesinin nasıl çalıştığı ve bir Azure AD birleşimi sırasında nasıl özelleştirileceği açıklanır. Bu makalenin içeriği, **karma** BIR Azure AD katılımı için geçerlidir.
 
-## <a name="how-it-works"></a>Nasıl çalışır
+## <a name="how-it-works"></a>Nasıl çalışır?
 
 Azure AD JOIN kullanarak bir Windows cihazını Azure AD 'ye bağladığınızda, Azure AD, cihazdaki yerel Yöneticiler grubuna aşağıdaki güvenlik ilkelerini ekler:
 
@@ -48,7 +48,7 @@ Genel yönetici rolünün üyeliğini görüntülemek ve güncelleştirmek için
 Azure portal, **cihazlar** sayfasında cihaz yöneticisi rolünü yönetebilirsiniz. **Cihazlar** sayfasını açmak için:
 
 1. [Azure Portal](https://portal.azure.com) genel yönetici veya cihaz yöneticisi olarak oturum açın.
-1. Sol gezinti çubuğunda **Azure Active Directory**' ye tıklayın. 
+1. Arama yapın ve *Azure Active Directory*seçin.
 1. **Yönet** bölümünde, **cihazlar**' a tıklayın.
 1. **Cihazlar** sayfasında, **cihaz ayarları**' na tıklayın.
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 78604a4f6fd5a6bcd21d0adc80c1c60278068836
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 9b0602f526991be37b7a9cce1d621dc2138dec48
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037058"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279144"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Bir Linux VM 'sine veri diski eklemek için portalı kullanma 
 Bu makalede, Azure portal aracılığıyla bir Linux sanal makinesine hem yeni hem de mevcut diskleri nasıl ekleyebileceğiniz gösterilmektedir. Ayrıca [, Azure Portal bir WINDOWS sanal makinesine veri diski ekleyebilirsiniz](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
@@ -183,6 +183,15 @@ Writing inode tables: done
 Creating journal (32768 blocks): done
 Writing superblocks and filesystem accounting information: done
 ```
+
+#### <a name="alternate-method-using-parted"></a>Ayrıştırmuş kullanılan alternatif Yöntem
+Fdisk yardımcı programı etkileşimli girişe ihtiyaç duyuyor ve bu nedenle Otomasyon betikleri içinde kullanılmak üzere ideal değildir. Ancak, [genişletilmiş](https://www.gnu.org/software/parted/) yardımcı program komut dosyası oluşturabilir ve bu nedenle Otomasyon senaryolarında daha iyi bir şekilde olabilir. Genişletilmiş yardımcı program, bir veri diskinin bölümlenmesi ve formatlanmaya yönelik olarak kullanılabilir. Aşağıdaki izlenecek yol için, yeni bir veri diski/dev/SDC ve [XFS](https://xfs.wiki.kernel.org/) FileSystem kullanarak biçimlendirin.
+```bash
+sudo parted /dev/sdc --script mklabel gpt mkpart xfspart xfs 0% 100%
+partprobe /dev/sdc1
+```
+Yukarıda görüldüğü gibi, çekirdeğin yeni bölüm ve FileSystem 'ın hemen farkında olduğundan emin olmak için [partaraştırma](https://linux.die.net/man/8/partprobe) yardımcı programını kullanırız. Partaraştırması kullanma hatası, blkıd veya lslbk komutlarının, yeni FileSystem için UUID 'yi hemen döndürmemesine neden olabilir.
+
 ### <a name="mount-the-disk"></a>Diski bağlama
 `mkdir`kullanarak dosya sistemini bağlamak için bir dizin oluşturun. Aşağıdaki örnek, */datadrive*dizininde bir dizin oluşturur:
 

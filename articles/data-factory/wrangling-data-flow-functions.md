@@ -7,12 +7,12 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 3274641f7b118e13b3ed727f609ce7471fd66b54
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e2517ec4a02a5d61fb3ce1d9ca9ffa2b5f4e8bf8
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682299"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74287038"
 ---
 # <a name="transformation-functions-in-wrangling-data-flow"></a>Denetimi veri akışındaki dönüştürme işlevleri
 
@@ -81,12 +81,21 @@ Değerleri sıralamak için [Table. Sort](https://docs.microsoft.com/powerquery-
 
 Bağımsız tut ve çıkar, aralığı tut (karşılık gelen k işlevleri, yalnızca destekleme sayısı, koşullar değil: [Table. FirstN](https://docs.microsoft.com/powerquery-m/table-firstn), [Table. Skip](https://docs.microsoft.com/powerquery-m/table-skip), [Table. Removefirstn](https://docs.microsoft.com/powerquery-m/table-removefirstn), [Table. Range](https://docs.microsoft.com/powerquery-m/table-range), [Table. Minn](https://docs.microsoft.com/powerquery-m/table-minn), [Table. MAXn](https://docs.microsoft.com/powerquery-m/table-maxn))
 
-## <a name="known-unsupported-functionality"></a>Bilinen desteklenmeyen işlevsellik
+## <a name="known-unsupported-functions"></a>Bilinen desteklenmeyen işlevler
 
-Desteklenmeyen işlevler aşağıda verilmiştir. Bu liste ayrıntılı değildir ve değişikliğe tabidir.
-* Sütunları birleştir (AddColumn ile elde edilebilir)
-* Sütunu Böl
-* Sorgu Ekle
-* ' İlk satırı üst bilgi olarak kullan ' ve ' üst bilgileri ilk satır olarak kullan '
+| İşlev | Durum |
+| -- | -- |
+| Table. PromoteHeaders | Desteklenmiyor. Aynı sonuç, veri kümesindeki "Ilk satır üstbilgi olarak" ayarlanarak elde edilebilir. |
+| Table. CombineColumns | Bu, doğrudan desteklenmeyen ancak verilen iki sütunu birleştiren yeni bir sütun eklenerek elde edilen yaygın bir senaryodur.  Örneğin, Table. AddColumn (RemoveEmailColumn, "ad", her [FirstName] & "" & [LastName]) |
+| Table. TransformColumnTypes | Çoğu durumda bu desteklenir. Aşağıdaki senaryolar desteklenmez: dizeyi para birimi türüne dönüştürme, dizeyi zaman türüne dönüştürme, dizeyi yüzde türüne dönüştürme. |
+| Table. Nestedjoın | Yalnızca bir birleşimi yapmanız doğrulama hatasına neden olur. Çalışması için sütunların genişletilmesi gerekir. |
+| Table. Distinct | Yinelenen satırları kaldırma desteklenmiyor. |
+| Table. RemoveLastN | Alt satırları kaldır desteklenmiyor. |
+| Table. RowCount | Desteklenmez, ancak tüm hücreler boş olan bir Ekle sütunuyla elde edilebilir (koşul sütunu kullanılabilir) ve ardından bu sütunda Group By kullanılıyor. Table. Group desteklenir. | 
+| Satır düzeyi hata işleme | Satır düzeyi hata işleme Şu anda desteklenmiyor. Örneğin, bir sütundan sayısal olmayan değerleri filtrelemek için, bir yaklaşım metin sütununu bir sayıya dönüştürmelidir. Dönüştürülemezse her hücre bir hata durumunda olur ve filtrelenebilir. Bu senaryo, denetimi veri akışında mümkün değildir. |
+| Table. devrik | Desteklenmiyor |
+| Table. Pivot | Desteklenmiyor |
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
+[Bir denetimi veri akışı oluşturmayı](wrangling-data-flow-tutorial.md)öğrenin.

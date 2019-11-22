@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 11/05/2019
+ms.date: 11/21/2019
 ms.author: victorh
-ms.openlocfilehash: df649eab1f0e2946078f8efd3cdd6ab68c3b7938
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 897819928ab0bcf48b58428014c03aea6b2145fd
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580202"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267962"
 ---
 # <a name="what-is-azure-firewall-manager-preview"></a>Azure Güvenlik Duvarı Yöneticisi önizlemesi nedir?
 
@@ -59,7 +59,7 @@ Genel önizleme için aşağıdaki bölgeler desteklenir:
 
 - Batı Avrupa, Kuzey Avrupa, Fransa Orta, Fransa Güney, UK Güney, UK Batı
 - Avustralya Doğu, Avustralya Orta, Avustralya Orta 2, Avustralya Güneydoğu
-- Kanada Orta
+- Orta Kanada
 - Doğu ABD, Batı ABD, Doğu ABD 2, Orta Güney ABD, Batı ABD 2, Orta ABD, Orta Kuzey ABD, Orta Batı ABD
 
 Azure Güvenlik Duvarı Ilkeleri yalnızca bu bölgelerde oluşturulabilir, ancak bölgeler arasında kullanılabilirler. Örneğin, Batı ABD bir ilke oluşturabilir ve Doğu ABD ' de kullanabilirsiniz. 
@@ -75,6 +75,7 @@ Azure Güvenlik Duvarı Yöneticisi önizlemesi aşağıdaki bilinen sorunlara s
 |Trafik bölme şu anda desteklenmiyor|Office 365 ve Azure genel PaaS trafik bölünmesi Şu anda desteklenmiyor. Bu nedenle, V2I veya B2I için bir üçüncü taraf sağlayıcı seçilirse ortak hizmet aracılığıyla tüm Azure genel PaaS ve Office 365 trafiği de gönderilir.|Şu anda hub 'da trafik bölmeyi araştırıyoruz.
 |Bölge başına bir hub|Bölge başına birden fazla hub 'ınız olamaz|Bir bölgede birden çok sanal WAN oluşturun.|
 |Temel ilkeler yerel ilkeyle aynı bölgede olmalıdır|Tüm yerel ilkelerinizi temel ilkeyle aynı bölgede oluşturun. Başka bir bölgeden güvenli bir hub 'daki tek bir bölgede oluşturulmuş bir ilkeyi yine de uygulayabilirsiniz.|Şu anda araştırma.|
+|Güvenli sanal hub ile hub arası iletişim çalışmıyor|Güvenli sanal hub, güvenli sanal hub iletişimine henüz desteklenmiyor.|Şu anda araştırma.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,16 +7,20 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 11/18/2019
-ms.openlocfilehash: 6fc81fa84d4d40d5318d6bf3690aa4b90c4e3c9b
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 26477eeb00fe7616a8d2f2be343e586042c0d130
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196819"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279659"
 ---
 # <a name="configure-azure-red-hat-openshift-clusters-with-azure-monitor-for-containers"></a>Azure Red Hat OpenShift kümelerini kapsayıcılar için Azure Izleyici ile yapılandırma
 
 Kapsayıcılar için Azure Izleyici, Azure Kubernetes hizmeti (AKS) ve AKS motoru kümeleri için zengin izleme deneyimi sağlar. Bu makalede, benzer bir izleme deneyimi elde etmek için [Azure Red Hat OpenShift](../../openshift/intro-openshift.md) üzerinde barındırılan Kubernetes kümelerinin izlenmesini nasıl etkinleştireceğinizi açıklar.
+
+>[!NOTE]
+>Red Hat OpenShift desteği şu anda genel önizlemede bir özelliktir.
+>
 
 Kapsayıcılar için Azure Izleyici, yeni bir veya daha fazla Azure Red Hat OpenShift dağıtımı için aşağıdaki desteklenen yöntemleri kullanarak etkinleştirilebilir:
 
@@ -29,7 +33,7 @@ Kapsayıcılar için Azure Izleyici, [genel bakış](container-insights-overview
 
 - Canlı veriler
 - Prometheus ölçümleri scraping
-- Ölçümleri toplama
+- Küme düğümlerinden ve yığınlardan ölçümleri toplayın ve bunları Azure Izleyici ölçümleri deposuna yazarak
 - Sistem durumu özelliği
 
 ## <a name="prerequisites"></a>Önkoşullar

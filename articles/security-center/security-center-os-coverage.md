@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: d91ac6d50faaadf560ae7ff9e9cce5f7bc4b180a
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 47e66bfc4550372b571b7263ef5b7f2f149712dc
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803919"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307310"
 ---
 # <a name="supported-platforms"></a>Desteklenen platformlar 
 
@@ -95,24 +95,26 @@ Aşağıdaki Azure PaaS kaynakları, Azure Güvenlik Merkezi tarafından destekl
 * İşlev
 * Bulut Hizmeti
 * Sanal ağ
-* Alt ağ
+* Subnet
 * NIC
 * NSG
 * Batch hesabı
 * Service Fabric hesabı
 * Otomasyon hesabı
 * Yük dengeleyici
-* Arama
-* Service Bus ad alanı
+* Search
+* Service bus ad alanı
 * Stream Analytics
 * Olay hub’ı ad alanı
 * Mantıksal uygulamalar
 * Redis
 * Data Lake Analytics
 * Data Lake Store
-* Key vault
+* Key Vault
 
 Yukarıdaki PaaS kaynakları listesinin desteklenen özellikleri hakkında daha fazla bilgi edinmek için bkz. [PaaS hizmetleri tarafından desteklenen özellikler](security-center-services.md#paas-services).
+
+Azure Stack bulunan sanal makineler için koruma de desteklenir. Güvenlik Merkezi 'nin Azure Stack tümleştirmesi hakkında daha fazla bilgi için, bkz. [Azure Stack sanal makinelerinizi Güvenlik Merkezi 'ne](https://docs.microsoft.com/azure/security-center/quick-onboard-azure-stack)ekleme.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

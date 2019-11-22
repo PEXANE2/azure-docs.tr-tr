@@ -1,5 +1,5 @@
 ---
-title: Azure AD Uygulama Ara Sunucusu ile Power BI uzaktan erişimi etkinleştirme | Microsoft Docs
+title: Azure AD Uygulama Ara Sunucusu ile Power BI uzaktan erişimi etkinleştirme
 description: Şirket içi Power BI Azure AD Uygulama Ara Sunucusu ile tümleştirme hakkında temel bilgileri içerir.
 services: active-directory
 documentationcenter: ''
@@ -16,18 +16,18 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 845ffda22cae9464870786cc5997b9f5521c03e1
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 9faa1fffde5553168c8b76ea40cebc001c1e27b2
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795619"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275517"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu ile Power BI Mobil uzaktan erişimi etkinleştirme
 
 Bu makalede, Power BI mobil uygulamanın Power BI Rapor Sunucusu (PBIRS) ve SQL Server Reporting Services (SSRS) 2016 ve üzeri bir sürüme bağlanmasını sağlamak için Azure AD Uygulama Ara Sunucusu 'nin nasıl kullanılacağı açıklanır. Bu tümleştirme sayesinde, kurumsal ağdan uzakta olan kullanıcılar Power BI raporlarına Power BI mobil uygulamadan erişebilir ve Azure AD kimlik doğrulaması tarafından korunabilir. Bu koruma, koşullu erişim ve çok faktörlü kimlik doğrulaması gibi [güvenlik avantajlarını](application-proxy-security.md#security-benefits) içerir.  
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede, zaten rapor Hizmetleri dağıttığınız ve [uygulama ara sunucusu 'nu etkinleştirmiş](application-proxy-add-on-premises-application.md)olduğunuz varsayılmaktadır.
 
@@ -37,7 +37,7 @@ Bu makalede, zaten rapor Hizmetleri dağıttığınız ve [uygulama ara sunucusu
 
 ## <a name="step-1-configure-kerberos-constrained-delegation-kcd"></a>1\. Adım: Kerberos kısıtlı temsilcisini yapılandırma (KCD)
 
-Windows kimlik doğrulaması kullanan şirket içi uygulamalarda, Kerberos kimlik doğrulama protokolü ve Kerberos kısıtlanmış temsili (KCD) adlı bir özellik ile çoklu oturum açma (SSO) elde edebilirsiniz. Yapılandırıldığında, KCD, Kullanıcı Windows 'da doğrudan oturum açmamış olsa bile, uygulama proxy bağlayıcısının Kullanıcı için bir Windows belirteci almasına izin verir. KCD hakkında daha fazla bilgi edinmek için bkz. [Kerberos kısıtlanmış temsilciye genel bakış](https://technet.microsoft.com/library/jj553400.aspx) ve [uygulama proxy 'si ile uygulamalarınıza çoklu oturum açma Için Kerberos kısıtlanmış temsili](application-proxy-configure-single-sign-on-with-kcd.md).
+Windows kimlik doğrulaması kullanan şirket içi uygulamalar için çoklu oturum açma (SSO) ile Kerberos kimlik doğrulama protokolünü ve Kerberos Kısıtlı temsilci (KCD) adlı bir özellik elde edebilirsiniz. Yapılandırıldığında, KCD, Kullanıcı Windows 'da doğrudan oturum açmamış olsa bile, uygulama proxy bağlayıcısının Kullanıcı için bir Windows belirteci almasına izin verir. KCD hakkında daha fazla bilgi edinmek için bkz. [Kerberos kısıtlanmış temsilciye genel bakış](https://technet.microsoft.com/library/jj553400.aspx) ve [uygulama proxy 'si ile uygulamalarınıza çoklu oturum açma Için Kerberos kısıtlanmış temsili](application-proxy-configure-single-sign-on-with-kcd.md).
 
 Reporting Services tarafında yapılandırılması çok fazla olmaz. Doğru Kerberos kimlik doğrulamasının gerçekleşmesini sağlamak için geçerli bir hizmet asıl adına (SPN) sahip olduğunuzdan emin olun. Ayrıca Raporlama Hizmetleri sunucusunun, anlaşma kimlik doğrulaması için etkinleştirildiğinden emin olun.
 
@@ -46,7 +46,7 @@ Reporting Services için KCD 'yi ayarlamak için aşağıdaki adımlarla devam e
 ### <a name="configure-the-service-principal-name-spn"></a>Hizmet asıl adını (SPN) yapılandırma
 
 SPN, Kerberos kimlik doğrulaması kullanan bir hizmetin benzersiz tanımlayıcısıdır. Rapor sunucunuz için uygun bir HTTP SPN 'si olduğundan emin olmanız gerekir. Rapor sunucunuz için uygun hizmet asıl adı 'nı (SPN) yapılandırma hakkında bilgi için bkz. [bir rapor sunucusu Için hizmet asıl adını (SPN) kaydetme](https://msdn.microsoft.com/library/cc281382.aspx).
-Setspn komutunu-L seçeneğiyle çalıştırarak SPN 'nin eklendiğini doğrulayabilirsiniz. Bu komut hakkında daha fazla bilgi edinmek için bkz. [Setspn](https://social.technet.microsoft.com/wiki/contents/articles/717.service-principal-names-spn-setspn-syntax.aspx).
+Setspn komutunu-L seçeneğiyle çalıştırarak SPN 'nin eklendiğini doğrulayabilirsiniz. Bu komut hakkında daha fazla bilgi için bkz. [Setspn](https://social.technet.microsoft.com/wiki/contents/articles/717.service-principal-names-spn-setspn-syntax.aspx).
 
 ### <a name="enable-negotiate-authentication"></a>Negotiate kimlik doğrulamasını etkinleştir
 
@@ -63,17 +63,17 @@ Bir rapor sunucusunun Kerberos kimlik doğrulamasını kullanmasını sağlamak 
 Daha fazla bilgi için bkz. [bir Reporting Services yapılandırma dosyasını değiştirme](https://msdn.microsoft.com/library/bb630448.aspx) ve [bir rapor sunucusunda Windows kimlik doğrulamasını yapılandırma](https://msdn.microsoft.com/library/cc281253.aspx).
 
 ### <a name="ensure-the-connector-is-trusted-for-delegation-to-the-spn-added-to-the-reporting-services-application-pool-account"></a>Bağlayıcının, Reporting Services uygulama havuzu hesabına eklenen SPN 'ye devredilmek için güvenilir olduğundan emin olun
-KCD 'YI, Azure AD Uygulama Ara Sunucusu hizmetinin Raporlama Hizmetleri uygulama havuzu hesabına Kullanıcı kimlikleri atayabilmesi için yapılandırın. Azure AD 'de kimlik doğrulamasından geçen kullanıcılarınız için Kerberos biletleri almak üzere uygulama proxy bağlayıcısını etkinleştirerek KCD 'yi yapılandırın. Bu durumda, bu sunucu bağlamı hedef uygulamaya veya Reporting Services 'e geçirir.
+KCD 'YI, Azure AD Uygulama Ara Sunucusu hizmetinin Raporlama Hizmetleri uygulama havuzu hesabına Kullanıcı kimlikleri atayabilmesi için yapılandırın. KCD, kullanıcılarınız Azure AD'de kimlik doğrulaması için Kerberos anahtarlarını almak uygulama Proxy Bağlayıcısı'nı etkinleştirerek yapılandırın. Bu durumda, bu sunucu bağlamı hedef uygulamaya veya Reporting Services 'e geçirir.
 
 KCD 'yi yapılandırmak için, her bağlayıcı makinesi için aşağıdaki adımları yineleyin:
 
 1. Etki alanı denetleyicisinde etki alanı yöneticisi olarak oturum açın ve ardından **Active Directory Kullanıcıları ve bilgisayarları**' nı açın.
-2. Bağlayıcının üzerinde çalıştığı bilgisayarı bulun.  
+2. Bağlayıcıyı çalıştıran bilgisayarı bulmak.  
 3. Bilgisayara çift tıklayın ve ardından **temsili** sekmesini seçin.
-4. **Bu bilgisayara yalnızca belirtilen hizmetlere atamak üzere güvenmek**için, yetkilendirme ayarlarını belirleyin. Ardından **herhangi bir kimlik doğrulama protokolünü kullan**' ı seçin.
+4. **Bu bilgisayara yalnızca belirtilen hizmetlere atamak üzere güvenmek**için, yetkilendirme ayarlarını belirleyin. Ardından, **herhangi bir kimlik doğrulama protokolünü kullan**.
 5. **Ekle**' yi ve ardından **Kullanıcılar veya bilgisayarlar**' ı seçin.
 6. Raporlama Hizmetleri için kullandığınız hizmet hesabını girin. Bu, SPN 'yi Raporlama Hizmetleri Yapılandırması içinde eklediğiniz hesaptır.
-7. **Tamam** düğmesine tıklayın. Değişiklikleri kaydetmek için yeniden **Tamam** ' a tıklayın.
+7. **OK (Tamam)** düğmesine tıklayın. Değişiklikleri kaydetmek için yeniden **Tamam** ' a tıklayın.
 
 Daha fazla bilgi için bkz. [uygulama proxy 'si ile uygulamalarınızda çoklu oturum açma Için Kerberos kısıtlanmış temsili](application-proxy-configure-single-sign-on-with-kcd.md).
 
@@ -89,17 +89,17 @@ Artık Azure AD Uygulama Ara Sunucusu 'yi yapılandırmaya hazırsınız.
 
    - **Ön kimlik doğrulama yöntemi**: Azure Active Directory
 
-2. Uygulamanız yayımlandıktan sonra, çoklu oturum açma ayarlarını aşağıdaki adımlarla yapılandırın:
+2. Uygulamanızı yayımladıktan sonra aşağıdaki adımlarla çoklu oturum açma ayarları yapılandırın:
 
-   a. Portaldaki uygulama sayfasında, **Çoklu oturum açma**' yı seçin.
+   a. Uygulama sayfasında portalında seçin **çoklu oturum açma**.
 
    b. **Çoklu oturum açma modu**Için **Tümleşik Windows kimlik doğrulaması**' nı seçin.
 
    c. **Iç uygulama SPN 'sini** daha önce ayarladığınız değere ayarlayın.  
 
-   d. Bağlayıcının Kullanıcı adına kullanması için **yetkilendirilmiş oturum açma kimliğini** seçin. Daha fazla bilgi için bkz. [farklı şirket içi ve bulut kimlikleriyle çalışma](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities).
+   d. Seçin **temsilci oturum açma kimliği** Bağlayıcısı kullanıcılarınız adına kullanın. Daha fazla bilgi için bkz. [farklı şirket içi ve bulut kimlikleriyle çalışma](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities).
 
-   e. Değişikliklerinizi kaydetmek için **Kaydet** ' e tıklayın.
+   e. Tıklayın **Kaydet** yaptığınız değişiklikleri kaydedin.
 
 Uygulamanızı ayarlamayı bitirmeden, **Kullanıcılar ve gruplar** bölümüne gidin ve bu uygulamaya erişmek için kullanıcıları atayın.
 

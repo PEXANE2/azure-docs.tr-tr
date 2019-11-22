@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 08/30/2019
 ms.author: diberry
-ms.openlocfilehash: 6af076f585e7fc9afe870acada744ead2d2e9118
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b3b7fed91be00e1bf2ac097638f14d1bbe6481f0
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73672083"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280312"
 ---
 # <a name="quickstart-language-understanding-luis-authoring-client-library-for-net"></a>Hızlı başlangıç: Language Understanding (LUSıS) .NET için istemci kitaplığı yazma
 
@@ -30,16 +30,56 @@ ms.locfileid: "73672083"
 
 [Başvuru belgeleri](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet) | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Language.LUIS.Authoring) | [yazma paketi (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/) | [ C# örnekleri](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/LUIS/LUIS.cs)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Language Understanding (LUSıS) portal hesabı- [ücretsiz olarak bir tane oluşturun](https://www.luis.ai)
 * [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)'un geçerli sürümü.
+
 
 ## <a name="setting-up"></a>Ayarlanıyor
 
 ### <a name="get-your-language-understanding-luis-starter-key"></a>Language Understanding (LUSıS) başlangıç anahtarınızı alın
 
-[Başlangıç anahtarınızı](luis-how-to-azure-subscription.md#starter-key)alın ve `COGNITIVESERVICE_AUTHORING_KEY`adlı anahtar için [bir ortam değişkeni oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
+Bir LUSıS yazma kaynağı oluşturarak [Başlangıç anahtarınızı](luis-how-to-azure-subscription.md#starter-key) alın. Bir sonraki adımda anahtarınızı ve anahtarın bölgesini saklayın.
+
+### <a name="create-an-environment-variable"></a>Ortam değişkeni oluşturma
+
+Anahtarınızı ve anahtarın bölgesini kullanarak, kimlik doğrulama için iki ortam değişkeni oluşturun:
+
+* `COGNITIVESERVICE_AUTHORING_KEY`-isteklerinizin kimliğini doğrulamak için kaynak anahtarı.
+* `COGNITIVESERVICE_REGION`-anahtarınızla ilişkili bölge. Örneğin, `westus`.
+
+İşletim sisteminiz için yönergeleri kullanın.
+
+#### <a name="windowstabwindows"></a>[Windows](#tab/windows)
+
+```console
+setx COGNITIVESERVICE_AUTHORING_KEY <replace-with-your-authoring-key>
+setx COGNITIVESERVICE_REGION <replace-with-your-authoring-region>
+```
+
+Ortam değişkenini ekledikten sonra konsol penceresini yeniden başlatın.
+
+#### <a name="linuxtablinux"></a>[Linux](#tab/linux)
+
+```bash
+export COGNITIVESERVICE_AUTHORING_KEY=<replace-with-your-authoring-key>
+export COGNITIVESERVICE_REGION=<replace-with-your-authoring-region>
+```
+
+Ortam değişkenini ekledikten sonra değişiklikleri uygulamak için konsol pencerenizden `source ~/.bashrc` çalıştırın.
+
+#### <a name="macostabunix"></a>[macOS](#tab/unix)
+
+`.bash_profile`düzenleyin ve ortam değişkenini ekleyin:
+
+```bash
+export COGNITIVESERVICE_AUTHORING_KEY=<replace-with-your-authoring-key> 
+export COGNITIVESERVICE_REGION=<replace-with-your-authoring-region>
+```
+
+Ortam değişkenini ekledikten sonra değişiklikleri uygulamak için konsol pencerenizden `source .bash_profile` çalıştırın.
+***
 
 ### <a name="create-a-new-c-application"></a>Yeni C# bir uygulama oluşturun
 
@@ -129,7 +169,7 @@ Proje dizininden, **program.cs** dosyasını tercih ettiğiniz DÜZENLEYICIDE ve
 
     [!code-csharp[Create LUIS client object](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/LUIS/LUIS.cs?name=AuthoringCreateClient)]
 
-## <a name="create-a-luis-app"></a>LUSıS uygulaması oluşturma
+## <a name="create-a-luis-app"></a>Bir LUIS uygulaması oluşturma
 
 1. Hedefleri, varlıkları ve örnek kullanımları tutan doğal dil işleme (NLP) modelini içeren bir LUO uygulaması oluşturun. 
 

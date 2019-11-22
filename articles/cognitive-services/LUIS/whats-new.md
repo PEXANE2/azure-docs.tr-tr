@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/07/2019
 ms.author: diberry
-ms.openlocfilehash: 62ce0ac36223098d013cc75b7f62fc2c68e358ed
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: e03c7489268f3ad7076481de4498c5e202f654b6
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953375"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280290"
 ---
 # <a name="whats-new-in-language-understanding"></a>Language Understanding yenilikleri
 
@@ -33,14 +33,14 @@ Hizmette nelerin yeni olduğunu öğrenin. Bu öğeler sürüm notlarını, Vide
     * [Arapça ve Hintçe](luis-language-support.md) genel önizlemede.
 * Önceden oluşturulmuş modeller
     * [Önceden oluşturulmuş etki alanları](luis-reference-prebuilt-domains.md) artık genel kullanıma sunuldu (GA)
-    * Japonca [önceden oluşturulmuş varlıklar](luis-reference-prebuilt-entities.md#japanese-entity-support) -yaş, para birimi, sayı, yüzde, v3 'de desteklenmez.
-    * İtalyanca [önceden oluşturulmuş varlıklar](luis-reference-prebuilt-entities.md#italian-entity-support) -yaş, para birimi, boyut, sayı, yüzde çözünürlüğü v2 'den değişti.
-* [Preview.Luis.ai Portal](https://preview.luis.ai) 'da Kullanıcı deneyimini geliştirin-karmaşık modellerin oluşturulmasını ve hata ayıklamasını etkinleştirmek için yeniden etiketleme deneyimidir. Önizleme portalı öğreticilerini deneyin:
+    * Japonca [önceden oluşturulmuş varlıklar](luis-reference-prebuilt-entities.md#japanese-entity-support) -yaş, para birimi, sayı ve yüzde v3 'de desteklenmez.
+    * İtalyanca [önceden oluşturulmuş varlıklar](luis-reference-prebuilt-entities.md#italian-entity-support) -yaş, para birimi, boyut, sayı ve yüzde çözünürlüğü v2 'den değiştirilmiştir.
+* [Preview.Luis.ai Portal](https://preview.luis.ai) 'da geliştirilmiş Kullanıcı deneyimi-karmaşık modellerin oluşturulmasını ve hata ayıklamasını etkinleştirmek için etiketleme deneyimidir. Önizleme portalı öğreticilerini deneyin:
     * [Yalnızca amaçlar](tutorial-intents-only.md)
     * [Ayrıştırılmış makine tarafından öğrenilen varlık](tutorial-machine-learned-entity.md) 
 * Gelişmiş dil özelliklerini anlama-daha az çaba ile [Gelişmiş dil modelleri oluşturma](luis-concept-entity-types.md) . 
-* Makine öğrenimi özelliklerini model düzeyinde tanımlama ve modelleri amaçlar ve diğer varlıklara özellikler olarak kullanma gibi diğer modele işaret olarak kullanılmak üzere etkinleştirme.
-* Yeni, genişletilmiş [sınırlar](luis-boundaries.md) -tümcecik listeleri ve toplam ifadeler için daha yüksek maksimum değer, özellik sınırları olarak yeni model
+* Model düzeyinde makine öğrenimi özelliklerini tanımlayın ve modellerin diğer modellere sinyal olarak kullanılmasını etkinleştirin. Örneğin, varlıkları amaçlar ve diğer varlıklara özellikler olarak kullanma.
+* Yeni, genişletilmiş [sınırlar](luis-boundaries.md) -tümcecik listeleri ve toplam ifadeler için yüksek maksimum sınır, özellik sınırları olarak yeni model
 * Derin hiyerarşi yapısı biçimindeki metinden bilgi ayıklayın ve konuşma uygulamalarını daha güçlü hale getirir.
 
     ![makine tarafından öğrenilen varlık görüntüsü](./media/whats-new/deep-entity-extraction-example.png)

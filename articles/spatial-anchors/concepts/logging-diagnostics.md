@@ -1,29 +1,29 @@
 ---
-title: Günlüğe kaydetme ve Tanılama'da Azure uzamsal bağlayıcılarını | Microsoft Docs
-description: Oluşturma ve günlüğe kaydetme ve Tanılama'da Azure uzamsal bağlayıcılarını almak ayrıntılı açıklaması.
+title: Günlüğe kaydetme ve tanılama
+description: Azure uzamsal bağlayıcılarda günlük ve tanılamayı oluşturma ve alma hakkında ayrıntılı açıklamalar.
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 02/22/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: b66dc7d6ec9d11fe645587fe791824009231b7c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f4359db1deda2295a66bcb97cf374d0fe9bc3ef7
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65964749"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270122"
 ---
-# <a name="logging-and-diagnostics-in-azure-spatial-anchors"></a>Günlüğe kaydetme ve Tanılama'da Azure uzamsal yer işaretleri
+# <a name="logging-and-diagnostics-in-azure-spatial-anchors"></a>Azure uzamsal bağlayıcılarda günlüğe kaydetme ve tanılama
 
-Azure uzamsal bağlayıcılarını uygulama geliştirme için kullanışlı olan bir standart günlük mekanizma sağlar. Uzamsal Çıpalarını tanılama günlük modu, hata ayıklama için daha fazla bilgi gerektiğinde faydalıdır. Tanılama günlüğünü ortamının görüntülerini depolar.
+Azure uzamsal bağlantıları, uygulama geliştirme için yararlı olan standart bir günlüğe kaydetme mekanizması sağlar. Uzamsal Tutturucuların tanılama günlüğü modu, hata ayıklama için daha fazla bilgiye ihtiyacınız olduğunda faydalıdır. Tanılama günlüğü, ortamın görüntülerini depolar.
 
 ## <a name="standard-logging"></a>Standart günlüğe kaydetme
-Uzamsal bağlayıcılarını API'SİNDE günlük mekanizmasına, uygulama geliştirme ve hata ayıklama için yararlı günlüklerini almak için abone olabilirsiniz. Standart Günlük API'leri yok depolamak ortamın resimleri cihaz diskte. SDK, bu günlükleri Olay geri çağırmaları sağlar. Bu günlükleri uygulamanın günlüğü mekanizmasına tümleştirme size aittir.
+Uzamsal bağlayıcıların API 'sinde, uygulama geliştirme ve hata ayıklama için yararlı Günlükler almak amacıyla günlüğe kaydetme mekanizmasına abone olabilirsiniz. Standart günlüğe kaydetme API 'Leri, ortamın resimlerini cihaz diskine depolamaz. SDK bu günlükleri Olay geri çağırmaları olarak sağlar. Bu günlükleri uygulamanın günlüğe kaydetme mekanizmasıyla tümleştirmeniz en iyisidir.
 
-### <a name="configuration-of-log-messages"></a>Günlük iletilerini yapılandırması
-Kullanıcı için ilgilenilen iki geri çağırmaları vardır. Aşağıdaki örnek, oturum yapılandırma işlemi gösterilmektedir.
+### <a name="configuration-of-log-messages"></a>Günlük iletilerinin yapılandırması
+Kullanıcı için ilgilendiğiniz iki geri çağrı vardır. Aşağıdaki örnek, oturumunun nasıl yapılandırılacağını gösterir.
 
 ```csharp
     cloudSpatialAnchorSession = new CloudSpatialAnchorSession();
@@ -38,27 +38,27 @@ Kullanıcı için ilgilenilen iki geri çağırmaları vardır. Aşağıdaki ör
     cloudSpatialAnchorSession.Error += CloudSpatialAnchorSession_Error;
 ```
 
-### <a name="events-and-properties"></a>Olayları ve özellikleri
+### <a name="events-and-properties"></a>Olaylar ve Özellikler
 
-Bu olay geri çağırmaları günlüklerini ve oturum hatalarını işlemek için sağlanır:
+Bu olay geri çağırmaları, oturumdaki günlükleri ve hataları işlemek için verilmiştir:
 
-- [LogLevel](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.loglevel): Çalışma zamanını şuradan almak olaylar için ayrıntı düzeyini belirtir.
-- [OnLogDebug](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.onlogdebug): Standart hata ayıklama günlüğü olayları sağlar.
-- [Hata](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.error): Çalışma zamanı hataları olmasını dikkate günlük olayları sağlar.
+- [LogLevel](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.loglevel): çalışma zamanından alınan olaylar için ayrıntı düzeyini belirtir.
+- [Onlogdebug](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.onlogdebug): standart hata ayıklama günlüğü olayları sağlar.
+- [Hata](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.error): çalışma zamanının hata olarak kabul eden günlük olaylarını sağlar.
 
-## <a name="diagnostics-logging"></a>Tanılama günlükleri
+## <a name="diagnostics-logging"></a>Tanılama günlüğü
 
-Ek olarak Standart mod için günlüğe kaydetme işleminin kayma bağlayıcılarını tanı Modu'nu de vardır. Tanı Modu'nu ortamının görüntülerini yakalar ve bunları diske kaydeder. Bu mod, sorunların, tahmin edilebilir bir biçimde bir bağlantı bulunamadı hatası gibi belirli türdeki hata ayıklamak için kullanabilirsiniz. Yalnızca belirli bir sorunu yeniden oluşturmak için günlüğe kaydetme Tanılama'yı etkinleştirin. Ardından bunu devre dışı. Uygulamalarınızı normalde çalıştırırken tanılama etkinleştirmeyin.
+Günlük kaydı için standart işlem moduna ek olarak, uzamsal bağlayıcıların da bir tanılama modu vardır. Tanılama modu, ortamın görüntülerini yakalar ve bunları diske kaydeder. Bu modu, bir bağlayıcıyı öngörülebilir bir şekilde bulma hatası gibi belirli türlerde sorunları ayıklamak için kullanabilirsiniz. Yalnızca belirli bir sorunu yeniden oluşturmak için tanılama günlüğünü etkinleştirin. Ardından devre dışı bırakın. Uygulamalarınızı normal şekilde çalıştırırken tanılamayı etkinleştirmeyin.
 
-Microsoft ile destek etkileşim sırasında daha fazla araştırma için bir tanılama paket göndermek için bir Microsoft temsilcisinin isteyebilir. Bu durumda, tanılamayı etkinleştirin ve tanılama paket gönderebilir. Bu nedenle, sorunu yeniden oluşturmak isteyebilirsiniz. 
+Microsoft ile destek etkileşimi sırasında, bir Microsoft temsilcisi daha fazla araştırma için bir tanılama paketi göndermek isteyip istemediğinizi sorabilir. Bu durumda, tanılama paketini gönderebilmeniz için tanılamayı etkinleştirmeyi ve sorunu yeniden oluşturmaya karar verebilirsiniz.
 
-Microsoft'a tanılama günlüğü bir Microsoft temsilcisinin önceki bildirim gönderirseniz gönderim yanıtlanmamış geçer.
+Bir Microsoft temsilcisinden önceki doğrulamadan önce Microsoft 'a bir tanılama günlüğü gönderirseniz, gönderim yanıt vermez.
 
-Aşağıdaki bölümlerde, tanı Modu'nu etkinleştirme ve tanılama günlükleri Microsoft'a göndermek nasıl gösterir.
+Aşağıdaki bölümlerde tanılama modunun nasıl etkinleştirileceği ve ayrıca Microsoft 'a tanılama günlüklerinin nasıl gönderileceği gösterilmektedir.
 
 ### <a name="enable-diagnostics-logging"></a>Tanılama günlüğünü etkinleştirme
 
-Oturum açmak için tanılama günlüğünü etkinleştirme oturumdaki tüm işlemleri ilgili tanılama günlük kaydı yerel dosya sisteminde vardır. Günlük kaydı sırasında ortamının görüntülerini diske kaydedilir.
+Tanılama günlüğü için bir oturumu etkinleştirdiğinizde, oturumdaki tüm işlemlerin yerel dosya sisteminde karşılık gelen tanılama günlüğü vardır. Günlüğe kaydetme sırasında, ortamın görüntüleri diske kaydedilir.
 
 ```csharp
 private void ConfigureSession()
@@ -86,9 +86,9 @@ private void ConfigureSession()
 }
 ```
 
-### <a name="submit-the-diagnostics-bundle"></a>Tanılama paket gönderin
+### <a name="submit-the-diagnostics-bundle"></a>Tanılama paketi 'ni gönderme
 
-Aşağıdaki kod parçacığı, bir tanılama paket Microsoft'a gönderme işlemi gösterilmektedir. Bu paket tanılama etkinleştirdikten sonra oturumu tarafından yakalanan ortamının görüntülerini içerir. 
+Aşağıdaki kod parçacığı, Microsoft 'a bir tanılama paketi göndermeyi gösterir. Bu paket, tanılamayı etkinleştirdikten sonra oturum tarafından yakalanan ortamın görüntülerini içerir.
 
 ```csharp
 // method to handle the diagnostics bundle submission
@@ -104,9 +104,9 @@ private async Task CreateAndSubmitBundle()
 }
 ```
 
-### <a name="parts-of-a-diagnostics-bundle"></a>Tanılama paket bölümleri
-Tanılama paket, aşağıdaki bilgileri içerebilir:
+### <a name="parts-of-a-diagnostics-bundle"></a>Bir tanılama paketi 'nin parçaları
+Tanılama paketi aşağıdaki bilgileri içerebilir:
 
-- **Anahtar kare görüntülerini**: Tanılama etkinleştirilmiş durumdayken oturumu sırasında yakalanan ortam görüntüler.
-- **Günlükleri**: Çalışma zamanı tarafından kaydedilen olayları günlüğe kaydedin.
-- **Oturum meta verileri**: Oturumunu tanımlayan meta verileri.
+- **Ana kare görüntüleri**: Tanılama etkinken, oturum sırasında yakalanan ortamın görüntüleri.
+- **Günlükler**: çalışma zamanı tarafından kaydedilen günlük olayları.
+- **Oturum meta verileri**: oturumu tanımlayan meta veriler.

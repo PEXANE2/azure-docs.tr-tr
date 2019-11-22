@@ -3,12 +3,12 @@ title: Azure Kubernetes hizmeti için Azure Ilkesi öğrenin
 description: Azure Ilkesi 'nin Azure Kubernetes hizmetindeki kümeleri yönetmek için rego 'ı ve açık Ilke aracısını nasıl kullandığını öğrenin.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: dbac1ee762066fb59cd57c04839666026a2bd89b
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: d8d5c1ebeded62f475804e4e704f823aba2c10eb
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959793"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279387"
 ---
 # <a name="understand-azure-policy-for-azure-kubernetes-service"></a>Azure Kubernetes hizmeti için Azure Ilkesini anlama
 
@@ -123,7 +123,7 @@ Eklentiyi AKS kümenize yüklemeden önce, önizleme uzantısının yüklenmesi 
 
 Önkoşullar tamamlandıktan sonra, yönetmek istediğiniz AKS kümesinde Azure Ilke eklentisini yükleyebilirsiniz.
 
-- Azure portalında
+- Azure portal
 
   1. **Tüm hizmetler**' e tıklayıp **Kubernetes Hizmetleri**' nı arayıp seçerek aks hizmetini Azure Portal başlatın.
 
@@ -206,7 +206,7 @@ Ağ geçidi denetleyicisi kapsayıcılarından günlükleri görüntülemek içi
 
 Azure Ilke eklentisini AKS kümenizdeki kaldırmak için Azure portal veya Azure CLı kullanın:
 
-- Azure portalında
+- Azure portal
 
   1. **Tüm hizmetler**' e tıklayıp **Kubernetes Hizmetleri**' nı arayıp seçerek aks hizmetini Azure Portal başlatın.
 
@@ -257,6 +257,6 @@ Eklenti tarafından toplanan bilgiler kişisel veriler değildir. Şu anda topla
 - [İlke tanım yapısını](definition-structure.md) gözden geçirin.
 - [İlkenin etkilerini anlama](effects.md) konusunu gözden geçirin.
 - [Program aracılığıyla ilkelerin nasıl oluşturulduğunu](../how-to/programmatically-create.md)anlayın.
-- [Uyumluluk verilerini nasıl alabileceğinizi](../how-to/getting-compliance-data.md)öğrenin.
+- [Uyumluluk verilerini nasıl alabileceğinizi](../how-to/get-compliance-data.md)öğrenin.
 - [Uyumlu olmayan kaynakları nasıl düzelteceğinizi](../how-to/remediate-resources.md)öğrenin.
 - [Kaynakları Azure Yönetim gruplarıyla düzenleme](../../management-groups/overview.md)ile yönetim grubunun ne olduğunu inceleyin.

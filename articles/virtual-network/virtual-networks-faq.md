@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: 30398b5f81ac1893129ba222c5f1a2d762ad1e7f
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 81384bb784e3417dabfd673ef746463f55fc3063
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595057"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304717"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure sanal ağ hakkında sık sorulan sorular (SSS)
 
@@ -35,7 +35,7 @@ Sanal ağları şu şekilde kullanın:
 
 * Karma bulut senaryolarını etkinleştirin. VNET 'ler, bir dizi karma bulut senaryosunu destekleme esnekliği sağlar. Bulut tabanlı uygulamaları, ana bilgisayarlar ve UNIX sistemleri gibi herhangi bir şirket içi sistem türüne güvenli bir şekilde bağlayabilirsiniz.
 
-### <a name="how-do-i-get-started"></a>Nasıl kullanmaya başlarım?
+### <a name="how-do-i-get-started"></a>Nasıl kullanmaya başlayabilirim?
 Başlamak için [sanal ağ belgelerini](https://docs.microsoft.com/azure/virtual-network/) ziyaret edin. Bu içerik, tüm VNet özellikleri için genel bakış ve dağıtım bilgileri sağlar.
 
 ### <a name="can-i-use-vnets-without-cross-premises-connectivity"></a>Şirket içi bağlantı olmadan VNET 'i kullanabilir miyim?
@@ -49,7 +49,7 @@ Evet. Azure Marketi aracılığıyla çeşitli satıcıların [WAN optimizasyon 
 ### <a name="what-tools-do-i-use-to-create-a-vnet"></a>VNet oluşturmak için hangi araçları kullanabilirim?
 VNet oluşturmak veya yapılandırmak için aşağıdaki araçları kullanabilirsiniz:
 
-* Azure portalı
+* Azure portal
 * PowerShell
 * Azure CLI
 * Ağ yapılandırma dosyası (yalnızca klasik sanal ağlar için netcfg). [Ağ yapılandırma dosyası kullanarak VNET yapılandırma](virtual-networks-using-network-configuration-file.md) makalesini inceleyin.
@@ -63,7 +63,7 @@ VNet oluşturmak veya yapılandırmak için aşağıdaki araçları kullanabilir
 * 168.63.129.16/32 (iç DNS)
 
 ### <a name="can-i-have-public-ip-addresses-in-my-vnets"></a>VNET 'imde genel IP adresleri olabilir miyim?
-Evet. Genel IP adresi aralıkları hakkında daha fazla bilgi için bkz. [sanal ağ oluşturma](manage-virtual-network.md#create-a-virtual-network). Genel IP adreslerine internet 'ten doğrudan erişilemez.
+Evet. Genel IP adresi aralıkları hakkında daha fazla bilgi için bkz. [sanal ağ oluşturma](manage-virtual-network.md#create-a-virtual-network). Genel IP adresleri doğrudan internet'ten erişilemez.
 
 ### <a name="is-there-a-limit-to-the-number-of-subnets-in-my-vnet"></a>VNet 'imde alt ağ sayısı sınırı var mı?
 Evet. Ayrıntılar için bkz. [Azure Limitleri](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) . Alt ağ adres alanları bir diğerinden çakışamaz.
@@ -188,7 +188,7 @@ Evet. Bir ASE (App Service Ortamı) kullanarak bir VNet içinde Web Apps dağıt
 
 * [App Service ağ özellikleri](../app-service/networking-features.md)
 * [App Service Ortamı Web Apps oluşturma](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-* [Uygulamanızı bir Azure sanal ağıyla tümleştirin](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+* [Uygulamanızı bir Azure Sanal Ağı ile tümleştirme](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 * [App Service erişim kısıtlamaları](../app-service/app-service-ip-restrictions.md)
 
 ### <a name="can-i-deploy-cloud-services-with-web-and-worker-roles-paas-in-a-vnet"></a>Web ve çalışan rolleri (PaaS) ile bir VNet 'te Cloud Services dağıtabilir miyim?
@@ -232,7 +232,7 @@ Evet. Kullanma hakkında daha fazla bilgi edinin:
 - [Kaynak Yöneticisi](/powershell/module/az.network) ve [Klasik](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0) dağıtım modelleriyle dağıtılan sanal ağları yönetmek için PowerShell.
 - [Kaynak Yöneticisi](/cli/azure/network/vnet) ve [Klasik](../virtual-machines/azure-cli-arm-commands.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-commands-to-manage-network-resources) dağıtım modelleri aracılığıyla dağıtılan VNET 'leri dağıtmak ve yönetmek için Azure komut satırı arabirimi (CLI).  
 
-## <a name="vnet-peering"></a>Sanal ağ eşleme
+## <a name="vnet-peering"></a>VNet eşlemesi
 
 ### <a name="what-is-vnet-peering"></a>VNet eşlemesi nedir?
 VNet eşlemesi (veya sanal ağ eşlemesi), sanal ağlara bağlanmanızı sağlar. Sanal ağlar arasındaki VNet eşleme bağlantısı, trafiği özel olarak IPv4 adresleriyle yönlendirmenizi sağlar. Eşlenen VNET 'lerdeki sanal makineler, aynı ağ içinde olup olmadıkları gibi birbirleriyle iletişim kurabilir. Bu sanal ağlar aynı bölgede veya farklı bölgelerde (genel VNet eşlemesi olarak da bilinir) olabilir. VNet eşleme bağlantıları, Azure abonelikleri arasında da oluşturulabilir.
@@ -241,11 +241,11 @@ VNet eşlemesi (veya sanal ağ eşlemesi), sanal ağlara bağlanmanızı sağlar
 Evet. Küresel VNet eşlemesi, farklı bölgelerdeki VNET 'leri eşlemenize olanak sağlar. Küresel VNet eşlemesi, tüm Azure genel bölgelerinde, Çin bulut bölgelerinde ve kamu bulut bölgelerinde kullanılabilir. Azure genel bölgelerinden Ulusal bulut bölgelerine genel olarak ihtiyacınız yoktur.
 
 ### <a name="what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers"></a>Küresel VNet eşlemesi ve yük dengeleyiciler ile ilgili kısıtlamalar nelerdir?
-İki sanal ağ farklı bölgelerde (küresel VNet eşlemesi), temel Load Balancer kullanan kaynaklara bağlanamazsınız. Standart Load Balancer kullanan kaynaklara bağlanabilirsiniz.
-Aşağıdaki kaynaklar temel yük dengeleyiciler kullanır, bu da genel VNet eşlemesi genelinde onlarla iletişim kuramayabileceği anlamına gelir:
+İki farklı bölgedeki iki sanal ağ genel VNet eşlemesi üzerinden eşlenirse, Load Balancer ön uç IP 'si aracılığıyla temel Load Balancer arkasındaki kaynaklara bağlanamazsınız. Bu kısıtlama bir Standart Load Balancer için yok.
+Aşağıdaki kaynaklar temel yük dengeleyiciler kullanabilir, bu da, genel VNet eşlemesi üzerinden Load Balancer ön uç IP 'si üzerinden ulaşamamanıza yol açabilir. Bununla birlikte, izin verildiğinde genel VNet eşlemesini kullanarak kaynaklarına doğrudan özel VNet IP 'Leri üzerinden ulaşabilirsiniz. 
 - Temel yük dengeleyiciler arkasındaki VM 'Ler
 - Temel yük dengeleyicileri olan sanal makine ölçek kümeleri 
-- Redis Cache 
+- Redis Önbelleği 
 - Application Gateway (v1) SKU 'SU
 - Service Fabric
 - SQL MI
@@ -402,12 +402,12 @@ Bir sanal ağdaki toplam VNet hizmeti uç noktası sayısı için bir sınır yo
 |||
 |---|---|
 |Azure hizmeti| VNet kuralları sınırları|
-|Azure Depolama| 100|
+|Azure Storage| 100|
 |Azure SQL| 128|
 |Azure SQL Veri Ambarı|  128|
 |Azure Keykasası|    127|
 |Azure Cosmos DB|   64|
-|Azure Olay Hub’ı|   128|
+|Azure Olay Hub'ı|   128|
 |Azure Service Bus| 128|
 |Azure Data Lake Store v1|  100|
  

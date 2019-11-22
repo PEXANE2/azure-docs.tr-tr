@@ -1,6 +1,6 @@
 ---
-title: Azure Hızlı Başlangıç - Tarayıcıda HTML ve JavaScript kullanarak nesne depolamada blob oluşturma
-description: Bir HTML sayfasında JavaScript kullanarak blobları karşıya yüklemek, listelemek ve silmek için bir BlobService örneğini kullanma hakkında bilgi edinin.
+title: 'Hızlı başlangıç: tarayıcıda JavaScript v2 için Azure Blob depolama'
+description: Bir HTML sayfasında JavaScript v2 SDK kullanarak blob 'ları karşıya yüklemek, listelemek ve silmek için bir BlobService örneği kullanmayı öğrenin.
 keywords: depolama, javascript, html
 author: mhopkins-msft
 ms.author: mhopkins
@@ -8,16 +8,16 @@ ms.date: 08/29/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 3dbd78f9c233515c675cd511924b3d4600b72fbd
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 1bf71f899a38fa4ce36f8f0ffc78de0c64f6c3f3
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173112"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270049"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
-# <a name="quickstart-upload-list-and-delete-blobs-using-javascripthtml-in-the-browser"></a>Hızlı Başlangıç: Tarayıcıda JavaScript/HTML kullanarak Blobları karşıya yükleme, listeleme ve silme
+# <a name="quickstart-upload-list-and-delete-blobs-using-javascripthtml-in-the-browser"></a>Hızlı Başlangıç: Tarayıcıda JavaScript/HTML kullanarak blobları karşıya yükleme, listeleme ve silme
 
 Bu hızlı başlangıçta, tamamen tarayıcıdan çalıştırılan koddan blobların nasıl yönetileceği gösterilmektedir. Burada kullanılan yaklaşım, blob depolama hesabınıza korumalı erişimi güvence altına almak için gerekli güvenlik önlemlerinin nasıl kullanılacağını göstermektedir. Bu hızlı başlangıcı tamamlamak bir [Azure aboneliğinizin](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) olması gerekir.
 
@@ -76,7 +76,7 @@ az storage account generate-sas
 ```
 Her parametreden sonraki değer serisini biraz şifreli bulabilirsiniz. Bu parametre değerleri, kendi ilgili izninin ilk harfinden alınır. Aşağıdaki tabloda değerlerin nereden geldiği açıklanmıştır: 
 
-| Parametre        | Value   | Açıklama  |
+| Parametre        | Değer   | Açıklama  |
 |------------------|---------|---------|
 | *izinleri*    | racwdl  | Bu SAS *read*, *append*, *create*, *write*, *delete* ve *list* özelliklerine izin verir. |
 | *resource-types* | sco     | SAS’den etkilenen kaynaklar *service*, *container* ve *object* kaynaklarıdır. |
@@ -181,7 +181,7 @@ document.getElementById('create-button').addEventListener('click', () => {
 ```
 
 ### <a name="upload-a-blob"></a>Blobu karşıya yükleme
-Bir HTML formundan blob karşıya yüklemek için, *INPUT* öğesinden seçilen dosyaya bir başvuru alırsınız. Öğenin *türü* *dosya* olarak ayarlandığında, seçilen dosya `files` dizisi aracılığıyla kullanılabilir.
+Bir HTML formundan blob karşıya yüklemek için, *INPUT* öğesinden seçilen dosyaya bir başvuru alırsınız. Öğenin `files`türüdosya*olarak ayarlandığında, seçilen dosya* dizisi aracılığıyla kullanılabilir.
 
 Betikten HTML öğesine başvurabilir ve seçili dosyayı blob hizmetine geçirebilirsiniz.
 
@@ -249,7 +249,7 @@ document.getElementById('delete-button').addEventListener('click', () => {
 > Bu kod örneğinin çalışması için *blobName*’e ilişkin bir dize değeri sağlamanız gerekir.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
-Bu hızlı başlangıç sırasında oluşturulan kaynakları temizlemek için [Azure portalına](https://portal.azure.com) geri dönün ve depolama hesabınızı seçin. Seçildikten sonra, şu hesaba giderek depolama hesabını silebilirsiniz: **> Depolama hesabını silmek Için genel bakış**.
+Bu hızlı başlangıç sırasında oluşturulan kaynakları temizlemek için [Azure portalına](https://portal.azure.com) geri dönün ve depolama hesabınızı seçin. Seçtikten sonra şuraya giderek depolama hesabınızı silebilirsiniz: **Genel bakış > Depolama hesabını sil**.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Dosya yüklemeleri sırasında blobları ve rapor ilerleme durumunu indirme hakkında bilgi almak için örnekleri araştırın.

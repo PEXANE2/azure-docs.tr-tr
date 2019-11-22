@@ -14,12 +14,12 @@ ms.date: 11/04/2019
 ms.author: cephalin
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 93dfe784d45cd9cd93d22c5e8c3275c563f7f88b
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 1546ded1977e1e26792189e1d992d106d3d77ef2
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572133"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74271279"
 ---
 # <a name="use-an-ssl-certificate-in-your-code-in-azure-app-service"></a>Kodunuzda bir SSL sertifikası kullanın Azure App Service
 
@@ -29,7 +29,7 @@ Kodunuzda sertifika kullanmaya yönelik bu yaklaşım, uygulamanızın **temel**
 
 SSL sertifikalarınızı App Service izin vermenizde, sertifikaları ve uygulama kodunuzu ayrı olarak koruyabilir ve hassas verilerinizi koruyabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzunu izlemek için:
 
@@ -141,6 +141,8 @@ El ile karşıya yüklediğiniz bir sertifika dosyası yüklemeniz gerekiyorsa, 
 > ```azurecli-interactive
 > az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_USER_PROFILE=1
 > ```
+>
+> Kodunuzda sertifika kullanmaya yönelik bu yaklaşım, uygulamanızın **temel** katmanda veya üzerinde olmasını GEREKTIREN App Service SSL işlevselliğini kullanır.
 
 Aşağıdaki C# örnek, uygulamanızda göreli bir yoldan ortak bir sertifika yükler:
 

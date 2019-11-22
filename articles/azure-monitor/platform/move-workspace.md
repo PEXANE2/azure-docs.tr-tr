@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2019
-ms.openlocfilehash: fd7ff7aa2275defba57aa24b5ef0b9adc78a5355
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: f6e1af2fdf43eb4351e996297f7dba775b7ffcef
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74093793"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278804"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Log Analytics çalışma alanını farklı bir aboneliğe veya kaynak grubuna taşıyın
 
@@ -29,17 +29,17 @@ Bu makalede, Log Analytics çalışma alanını aynı bölgedeki başka bir kayn
 (Get-AzSubscription -SubscriptionName <your-destination-subscription>).TenantId
 ```
 
-## <a name="remove-solutions"></a>Çözümleri kaldır
-Çalışma alanına yüklenen yönetilen çözümler Log Analytics çalışma alanı taşıma işlemiyle birlikte taşınır. Aynı halde bir Otomasyon hesabına olan bağlantıyı kaldırmanız gerektiğinden, o bağlantıyı kullanan çözümlerin kaldırılması gerekir.
+## <a name="workspace-move-considerations"></a>Çalışma alanı taşıma konuları
+Çalışma alanına yüklenen yönetilen çözümler Log Analytics çalışma alanı taşıma işlemiyle birlikte taşınır. Bağlı aracılar bağlı kalacak ve taşıma sonrasında çalışma alanına veri göndermeyecektir. Taşıma işlemi, çalışma alanından herhangi bir Otomasyon hesabına herhangi bir bağlantı olmadığından, bu bağlantıyı kullanan çözümlerin kaldırılması gerekir.
 
-Kaldırılması gereken çözümler şunları içerir: 
+Otomasyon Hesabınızın bağlantısını kaldırmak için önce kaldırılması gereken çözümler:
 
 - Güncelleştirme Yönetimi
 - Değişiklik İzleme
 - Hizmetin kapalı olduğu saatlerde Sanal Makineleri Başlatma/Durdurma
 
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="delete-in-azure-portal"></a>Azure portalında silme
 Azure portal kullanarak çözümleri kaldırmak için aşağıdaki yordamı kullanın:
 
 1. Üzerinde çözümlerin yüklendiği kaynak grubunun menüsünü açın.
@@ -48,7 +48,7 @@ Azure portal kullanarak çözümleri kaldırmak için aşağıdaki yordamı kull
 
 ![Çözümleri silme](media/move-workspace/delete-solutions.png)
 
-### <a name="powershell"></a>PowerShell
+### <a name="delete-using-powershell"></a>PowerShell kullanarak silme
 
 PowerShell 'i kullanarak çözümleri kaldırmak için, aşağıdaki örnekte gösterildiği gibi [Remove-AzResource](/powershell/module/az.resources/remove-azresource?view=azps-2.8.0) cmdlet 'ini kullanın:
 
@@ -58,7 +58,7 @@ Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -Reso
 Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -ResourceName "Start-Stop-VM(<workspace-name>)" -ResourceGroupName <resource-group-name>
 ```
 
-## <a name="remove-alert-rules"></a>Uyarı kurallarını kaldır
+### <a name="remove-alert-rules"></a>Uyarı kurallarını kaldır
 **VM 'Leri Başlat/Durdur** çözümü için, çözüm tarafından oluşturulan uyarı kurallarını da kaldırmanız gerekir. Bu kuralları kaldırmak için Azure portal aşağıdaki yordamı kullanın.
 
 1. **İzleyici** menüsünü açın ve ardından **Uyarılar**' ı seçin.

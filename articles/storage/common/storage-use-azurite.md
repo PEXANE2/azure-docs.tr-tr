@@ -1,5 +1,5 @@
 ---
-title: Azure depolama geliştirme ve test için Azurıite açık kaynak öykünücüsünü kullanma (Önizleme)
+title: Yerel Azure depolama geliştirmesi için Azurite öykünücüsünü kullanma
 description: Azurite açık kaynaklı öykünücü (Önizleme), Azure depolama uygulamalarınızı test etmek için ücretsiz bir yerel ortam sağlar.
 author: mhopkins-msft
 ms.author: mhopkins
@@ -7,14 +7,14 @@ ms.date: 08/31/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: e611afd6f10154636eb2e0dd08437b4f7468d6b3
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 0421f49b31eba688542adc0a5b62e1cf75028836
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309554"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74269468"
 ---
-# <a name="use-the-azurite-open-source-emulator-for-azure-storage-development-and-testing-preview"></a>Azure depolama geliştirme ve test için Azurıite açık kaynak öykünücüsünü kullanma (Önizleme)
+# <a name="use-the-azurite-emulator-for-local-azure-storage-development-and-testing-preview"></a>Yerel Azure depolama geliştirme ve test (Önizleme) için Azurite öykünücüsünü kullanın
 
 Azurite sürümü 3,2 açık kaynaklı öykünücü (Önizleme), Azure Blob ve kuyruk depolama uygulamalarınızı test etmek için ücretsiz bir yerel ortam sağlar. Uygulamanızın yerel olarak nasıl çalıştığı konusunda memnun olduğunuzda, bulutta bir Azure depolama hesabı kullanmaya geçiş yapın. Öykünücü, Windows, Linux ve MacOS 'ta platformlar arası destek sağlar. Azurite v3, Azure Blob hizmeti tarafından uygulanan API 'Leri destekler.
 
@@ -40,13 +40,13 @@ VS Code durum çubuğunda **[Azurite blob hizmeti]** veya **[Azurıite kuyruk hi
 Uzantı aşağıdaki Visual Studio Code komutlarını destekler:
 
    * **Azurite: Başlat** -tüm Azurite hizmetlerini Başlat
-   * **Azurite: Kapat** -tüm Azurite hizmetlerini kapat
-   * **Azurite: Tüm** Azurite Hizmetleri için temiz verileri temizle
-   * **Azurite: Blob hizmetini** Başlat-blob hizmetini Başlat
-   * **Azurite: Blob hizmetini** kapat-blob hizmetini kapat
-   * **Azurite: Blob hizmetini** temizle-blob hizmetini temizle
-   * **Azurite: Kuyruk hizmetini** Başlat-kuyruk hizmetini Başlat
-   * **Azurite: Kuyruk hizmetini** kapat-kuyruk hizmetini kapat
+   * **Azurite:** tüm Azurite hizmetlerini kapat
+   * **Azurite:** tüm Azurite Hizmetleri kalıcılığı verilerini temizle
+   * **Azurite: blob hizmetini Başlat** -blob hizmetini Başlat
+   * **Azurite: blob hizmetini kapat** -blob hizmetini kapat
+   * **Azurite: Temizleme blobu hizmeti** -Temizleme blobu hizmeti
+   * **Azurite: kuyruk hizmetini Başlat** -kuyruk hizmetini Başlat
+   * **Azurite: kuyruk hizmetini kapat** -kuyruk hizmetini kapat
    * **Azurite: Temizleme kuyruğu hizmeti** -Temizleme kuyruğu hizmeti
 
 Visual Studio Code içinde Azurite yapılandırmak için Uzantılar bölmesini seçin. **Azurite**için **Yönet** (dişli) simgesini seçin. **Uzantı ayarlarını yapılandır**' ı seçin.
@@ -55,13 +55,13 @@ Visual Studio Code içinde Azurite yapılandırmak için Uzantılar bölmesini s
 
 Aşağıdaki ayarlar desteklenir:
 
-   * **Azurite: Blob Konağı** -blob hizmeti dinleme uç noktası. Varsayılan ayar 127.0.0.1 ' dir.
-   * **Azurite: Blob bağlantı** noktası-blob hizmeti dinleme bağlantı noktası. Varsayılan bağlantı noktası 10000 ' dir.
-   * **Azurite: Hata** Ayıkla-hata ayıklama günlüğünü Azurite kanalına çıkar. Varsayılan değer **false**.
-   * **Azurite: Konum** -çalışma alanı konum yolu. Varsayılan değer Visual Studio Code çalışma klasörüdür.
-   * **Azurite: Kuyruk Konağı** -dinleme uç noktası kuyruk hizmeti. Varsayılan ayar 127.0.0.1 ' dir.
-   * **Azurite: Kuyruk bağlantı** noktası-dinleme bağlantı noktası kuyruk hizmeti. Varsayılan bağlantı noktası 10001 ' dir.
-   * **Azurite: Sessiz** -sessiz mod, erişim günlüğünü devre dışı bırakır. Varsayılan değer **false**.
+   * **Azurite: blob Konağı** -blob hizmeti dinleme uç noktası. Varsayılan ayar 127.0.0.1 ' dir.
+   * **Azurite: blob bağlantı** noktası-blob hizmeti dinleme bağlantı noktası. Varsayılan bağlantı noktası 10000 ' dir.
+   * **Azurite: hata** ayıklama-hata ayıklama günlüğünü Azurite kanalına çıkar. Varsayılan değer **false**.
+   * **Azurite: konum** -çalışma alanı konum yolu. Varsayılan değer Visual Studio Code çalışma klasörüdür.
+   * **Azurite: kuyruk Konağı** -dinleme uç noktası kuyruk hizmeti. Varsayılan ayar 127.0.0.1 ' dir.
+   * **Azurite: kuyruk bağlantı** noktası-dinleme bağlantı noktası kuyruk hizmeti. Varsayılan bağlantı noktası 10001 ' dir.
+   * **Azurite: sessiz** -sessiz mod, erişim günlüğünü devre dışı bırakır. Varsayılan değer **false**.
 
 ## <a name="install-and-run-azurite-by-using-npm"></a>NPM kullanarak Azurite 'i yükleyip çalıştırma
 
@@ -83,7 +83,7 @@ docker pull mcr.microsoft.com/azure-storage/azurite
 
 **Azurite Docker görüntüsünü çalıştırın**:
 
-Aşağıdaki komut Azurite Docker görüntüsünü çalıştırır. Parametresi `-p 10000:10000` , istekleri ana makinenin 10000 numaralı bağlantı noktasından Docker örneğine yeniden yönlendirir.
+Aşağıdaki komut Azurite Docker görüntüsünü çalıştırır. `-p 10000:10000` parametresi, istekleri ana makinenin 10000 numaralı bağlantı noktasından Docker örneğine yönlendirir.
 
 ```console
 docker run -p 10000:10000 -p 10001:10001 mcr.microsoft.com/azure-storage/azurite
@@ -290,8 +290,8 @@ Herhangi bir kimlik doğrulama stratejisi kullanarak Azure Storage SDK 'Ları ve
 
 Aşağıdaki hesap adını ve anahtarını Azurite ile birlikte kullanabilirsiniz. Bu, eski Azure depolama öykünücüsü tarafından kullanılan iyi bilinen hesap ve anahtardır.
 
-* Hesap adı:`devstoreaccount1`
-* Hesap anahtarı:`Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==`
+* Hesap adı: `devstoreaccount1`
+* Hesap anahtarı: `Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==`
 
 > [!NOTE]
 > SharedKey kimlik doğrulamasına ek olarak, Azurite hesabı ve hizmet SAS kimlik doğrulamasını destekler. Anonim erişim, bir kapsayıcı genel erişime izin verecek şekilde ayarlandığında da kullanılabilir.

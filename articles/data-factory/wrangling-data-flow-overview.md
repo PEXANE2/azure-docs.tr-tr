@@ -7,12 +7,12 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 7b46b1108246f0b83fcfce69844d19d01b1994c4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e36cc044e6a4160d16f15b93d8a88d946f476c89
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73665640"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74287075"
 ---
 # <a name="what-are-wrangling-data-flows"></a>Denetimi veri akışları nelerdir?
 
@@ -37,6 +37,30 @@ Vatandaşlık veri tümleştiricileri, verileri arayan ve hazırlama zamanının
 ### <a name="data-validation"></a>Veri doğrulama
 
 Herhangi bir şeyi kaldırmak ve hızlı analizler için bir şekle uymak üzere verilerinizi kod ücretsiz olarak görsel olarak tarayın.
+
+## <a name="supported-sources"></a>Desteklenen kaynaklar
+
+| Bağlayıcı | Veri biçimi | Kimlik doğrulaması türü |
+| -- | -- | --|
+| [Azure Blob Depolama](connector-azure-blob-storage.md) | CSV | Hesap Anahtarı |
+| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | CSV | Hizmet Sorumlusu |
+| [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md) | CSV | Hesap anahtarı, hizmet sorumlusu |
+| [Azure SQL Veritabanı](connector-azure-sql-database.md) | - | SQL kimlik doğrulaması |
+| [Azure SYNAPSE Analizi](connector-azure-sql-data-warehouse.md) | - | SQL kimlik doğrulaması |
+
+## <a name="the-mashup-editor"></a>Karma düzenleyici
+
+Bir denetimi veri akışı oluşturduğunuzda, tüm kaynak veri kümeleri veri kümesi sorguları haline gelir ve **adfresource** klasörüne yerleştirilir. Varsayılan olarak, UserQuery ilk veri kümesi sorgusuna işaret eder. Veri kümesi sorgularının değişiklikleri desteklenmediğinden veya kalıcı hale getirilmesi nedeniyle, tüm dönüşümler UserQuery üzerinde yapılmalıdır. Sorguları yeniden adlandırma, ekleme ve silme işlemi şu anda desteklenmiyor.
+
+![Denetimi](media/wrangling-data-flow/editor.png)
+
+Şu anda tüm Power Query M işlevleri, yazma sırasında kullanılabilir olmasına rağmen veri denetimi için desteklenmez. Denetimi veri akışlarınızı oluştururken, bir işlev desteklenmiyorsa aşağıdaki hata iletisiyle karşılaşırsınız:
+
+`The wrangling data flow is invalid. Expression.Error: The transformation logic isn't supported. Please try a simpler expression`
+
+Desteklenen Dönüşümler hakkında daha fazla bilgi için bkz. [denetimi veri akışı işlevleri](wrangling-data-flow-functions.md).
+
+Şu anda denetimi veri akışı yalnızca bir havuza yazmayı destekler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,21 +1,21 @@
 ---
-title: Visual Studio Code-Azure blok zinciri hizmeti 'ni kullanma
+title: Akıllı sözleşmeleri oluşturma, derleme, & dağıtma öğreticisi-Azure blok zinciri hizmeti
 description: Azure blok zinciri hizmetinde akıllı bir sözleşme oluşturmak, derlemek ve dağıtmak için Visual Studio Code 'de Ethereum uzantısı için Azure blok zinciri geliştirme seti 'ni kullanma hakkında öğretici.
 services: azure-blockchain
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/14/2019
+ms.date: 11/20/2019
 ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: chrisseg
-ms.openlocfilehash: 13a5993a14e386dc7d24c7464610bbf1ace4b9cb
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
-ms.translationtype: MT
+ms.openlocfilehash: 9e3b9dc7ea10e67b636194d955f3a7b50d990a23
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329235"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286699"
 ---
-# <a name="tutorial-usevisual-studio-code-to-create-buildanddeploysmartcontracts"></a>Öğretici: akıllı sözleşmeleri oluşturmak, derlemek ve dağıtmak için Visual Studio Code kullanma
+# <a name="tutorial-create-buildanddeploysmartcontracts-on-azure-blockchain-service"></a>Öğretici: Azure blok zinciri hizmetinde akıllı sözleşmeler oluşturma, derleme ve dağıtma
 
 Bu öğreticide, Azure blok zinciri hizmetinde akıllı bir sözleşme oluşturmak, derlemek ve dağıtmak için Visual Studio Code 'de Ethereum uzantısı için Azure blok zinciri geliştirme setini kullanın. Ayrıca bir işlem aracılığıyla akıllı sözleşme işlevini yürütmek için Truffle kullanırsınız.
 
@@ -32,6 +32,21 @@ Ethereum için Azure blok zinciri geliştirme setini şu şekilde kullanabilirsi
 ## <a name="prerequisites"></a>Önkoşullar
 
 * [Hızlı başlangıç: Azure blok zinciri hizmeti Consortium ağına bağlanmak için Visual Studio Code kullanma](connect-vscode.md)
+* [Visual Studio Code](https://code.visualstudio.com/Download)
+* [Ethereum uzantısı için Azure blok zinciri geliştirme seti](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
+* [Node. js 10.15. x veya üzeri](https://nodejs.org/download)
+* [Git 2.10. x veya üzeri](https://git-scm.com)
+* [Python 2.7.15](https://www.python.org/downloads/release/python-2715/) Yolunuza Python. exe ' yi ekleyin. Azure blok zinciri geliştirme seti için yolunuzda Python sürüm 2.7.15 gereklidir.
+* [Truffle 5.0.0](https://www.trufflesuite.com/docs/truffle/getting-started/installation)
+* [Ganache CLı 6.0.0](https://github.com/trufflesuite/ganache-cli)
+
+Windows 'da, Node- C++ JP modülü için yüklü bir derleyici gerekir. MSBuild araçlarını kullanabilirsiniz:
+
+* Visual Studio 2017 yüklüyse, NPM 'yi komutuyla MSBuild araçlarını kullanacak şekilde yapılandırın `npm config set msvs_version 2017 -g`
+* Visual Studio 2019 yüklüyse, NPM için MS derleme araçları yolunu ayarlayın. Örneğin, `npm config set msbuild_path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe"`
+* Aksi takdirde, yükseltilmiş bir *yönetici olarak çalıştır* komut kabuğu `npm install --global windows-build-tools` kullanarak tek başına vs Build araçlarını yükleyemezsiniz.
+
+Node-cayp hakkında daha fazla bilgi için [GitHub 'daki node-cayp deposuna](https://github.com/node-gyp)bakın.
 
 ## <a name="create-a-smart-contract"></a>Akıllı sözleşme oluşturma
 
@@ -39,7 +54,7 @@ Ethereum için Azure blok zinciri geliştirme seti, sözleşmeleri dolandırmaya
 
 1. VS Code komut paletinden **Azure blok Zinciri: New Solidity Project**' i seçin.
 1. **Temel proje oluştur**seçeneğini belirleyin.
-1. @No__t-0 adlı yeni bir klasör oluşturun ve **Yeni proje yolu**' nu seçin.
+1. `HelloBlockchain` adlı yeni bir klasör oluşturun ve **Yeni proje yolu**' nu seçin.
 
 Azure blok zinciri geliştirme seti sizin için yeni bir Solidity projesi oluşturur ve başlatır. Temel proje, örnek bir **Helloblockzincirine** akıllı sözleşme ve Azure blok zinciri hizmeti 'nde Consortium üyelemenize dağıtmak için gereken tüm dosyaları içerir. Projenin oluşturulması birkaç dakika sürebilir. Azure blok zinciri için çıktıyı seçerek VS Code 'ın Terminal panelinde ilerleme durumunu izleyebilirsiniz.
 
@@ -76,7 +91,7 @@ Azure blok zinciri geliştirme seti, sözleşmeleri blok zincirine dağıtmak ü
 
 **Helloblockzincirleri** sözleşmesinin **SendRequest** işlevi **RequestMessage** durum değişkenini değiştirir. Bir blok zinciri ağının durumunun değiştirilmesi bir işlem aracılığıyla yapılır. **SendRequest** işlevini bir işlem aracılığıyla yürütmek için bir komut dosyası oluşturabilirsiniz.
 
-1. Truffle projenizin kökünde yeni bir dosya oluşturun ve `sendrequest.js` olarak adlandırın. Aşağıdaki Web3 JavaScript kodunu dosyaya ekleyin.
+1. Truffle projenizin kökünde yeni bir dosya oluşturun ve `sendrequest.js`adlandırın. Aşağıdaki Web3 JavaScript kodunu dosyaya ekleyin.
 
     ```javascript
     var HelloBlockchain = artifacts.require("HelloBlockchain");
@@ -104,7 +119,7 @@ Azure blok zinciri geliştirme seti, sözleşmeleri blok zincirine dağıtmak ü
     truffle exec sendrequest.js --network <blockchain network>
     ```
 
-    @No__t-0blok zinciri ağı @ no__t-1 ' i **Truffle-config. js**' de tanımlanan blok zinciri ağının adıyla değiştirin.
+    \<blok zinciri ağı\>, **Truffle-config. js**içinde tanımlanan blok zinciri ağının adıyla değiştirin.
 
 Truffle, betiği blok zinciri ağınızda yürütür.
 
@@ -132,7 +147,7 @@ Akıllı sözleşme işlevleri, durum değişkenlerinin geçerli değerini dönd
 
 1. Akıllı sözleşmede değişiklikleri derlemek için **Helloblockzincirine. Nuevo** öğesine sağ tıklayın ve menüden **sözleşmeleri derle** ' yi seçin.
 1. Dağıtmak için, **Helloblockzincirine. Nuevo** öğesine sağ tıklayın ve menüden **sözleşmeleri dağıt** ' ı seçin. İstendiğinde, komut paletinde Azure blok zinciri Konsorsiyumu ağınızı seçin.
-1. Sonra, **GetMessage** işlevini çağırmak için kullanarak bir betik oluşturun. Truffle projenizin kökünde yeni bir dosya oluşturun ve `getmessage.js` olarak adlandırın. Aşağıdaki Web3 JavaScript kodunu dosyaya ekleyin.
+1. Sonra, **GetMessage** işlevini çağırmak için kullanarak bir betik oluşturun. Truffle projenizin kökünde yeni bir dosya oluşturun ve `getmessage.js`adlandırın. Aşağıdaki Web3 JavaScript kodunu dosyaya ekleyin.
 
     ```javascript
     var HelloBlockchain = artifacts.require("HelloBlockchain");
@@ -159,13 +174,13 @@ Akıllı sözleşme işlevleri, durum değişkenlerinin geçerli değerini dönd
     truffle exec getmessage.js --network <blockchain network>
     ```
 
-    @No__t-0blok zinciri ağı @ no__t-1 ' i **Truffle-config. js**' de tanımlanan blok zinciri ağının adıyla değiştirin.
+    \<blok zinciri ağı\>, **Truffle-config. js**içinde tanımlanan blok zinciri ağının adıyla değiştirin.
 
 Betik, getMessage işlevini çağırarak akıllı sözleşmeyi sorgular. **RequestMessage** durum değişkeninin geçerli değeri döndürüldü.
 
 ![Betik çıkışı](./media/send-transaction/execute-get.png)
 
-Değerin **Merhaba, blok zinciri!** olmadığına dikkat edin. Bunun yerine, döndürülen değer bir yer tutucudur. Sözleşmeyi değiştirdiğinizde ve dağıttığınızda, sözleşme yeni bir sözleşme adresi alır ve durum değişkenlerine akıllı sözleşme oluşturucusunda değerler atanır. Truffle örnek **2_deploy_contracts. js** geçiş betiği, akıllı sözleşmeyi dağıtır ve bir yer tutucu değerini bağımsız değişken olarak geçirir. Oluşturucu **RequestMessage** durum değişkenini yer tutucu değerine ayarlar ve döndürülen değer.
+Değerin **Merhaba, blok zinciri!** olmadığına dikkat edin. Bunun yerine, döndürülen değer bir yer tutucudur. Sözleşmeyi değiştirdiğinizde ve dağıttığınızda, değiştirilen sözleşme yeni bir adreste dağıtılır ve durum değişkenlerine akıllı sözleşme oluşturucusunda değerler atanır. Truffle örnek **2_deploy_contracts. js** geçiş betiği, akıllı sözleşmeyi dağıtır ve bir yer tutucu değerini bağımsız değişken olarak geçirir. Oluşturucu **RequestMessage** durum değişkenini yer tutucu değerine ayarlar ve döndürülen değer.
 
 1. **RequestMessage** durum değişkenini ayarlamak ve değeri sorgulamak için **SendRequest. js** ve **GetMessage. js** betiklerini yeniden çalıştırın.
 
@@ -175,7 +190,7 @@ Değerin **Merhaba, blok zinciri!** olmadığına dikkat edin. Bunun yerine, dö
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli değilse, *blok zinciri üye önkoşulu oluşturma* hızlı başlangıcı ' nda oluşturduğunuz `myResourceGroup` kaynak grubunu silerek kaynakları silebilirsiniz.
+Artık gerekli değilse, *blok zinciri üye* önkoşul hızlı başlangıcı ' nda oluşturduğunuz `myResourceGroup` kaynak grubunu silerek kaynakları silebilirsiniz.
 
 Kaynak grubunu silmek için:
 

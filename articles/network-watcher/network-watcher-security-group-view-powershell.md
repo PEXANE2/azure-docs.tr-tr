@@ -1,5 +1,6 @@
 ---
-title: Azure ağ Izleyicisi güvenlik grubu görünümü ile ağ güvenliğini çözümleme-PowerShell | Microsoft Docs
+title: Ağ güvenliğini çözümleme-güvenlik grubu görünümü-Azure PowerShell
+titleSuffix: Azure Network Watcher
 description: Bu makalede, PowerShell kullanarak bir sanal makine güvenliğini güvenlik grubu görünümüyle analiz etme açıklanır.
 services: network-watcher
 documentationcenter: na
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 4c7b79460169612a046b19a4d66f222936710a8e
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 3127d60263437a18e0c8d9a98ebdfad31049c58d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163892"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277907"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-powershell"></a>PowerShell kullanarak sanal makine güvenliğine güvenlik grubu görünümü ile çözümleyin
 
@@ -35,7 +36,7 @@ Güvenlik grubu görünümü, bir sanal makineye uygulanan yapılandırılmış 
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu senaryoda, güvenlik kuralı bilgilerini almak `Get-AzNetworkWatcherSecurityGroupView` için cmdlet 'ini çalıştırırsınız.
+Bu senaryoda, güvenlik kuralı bilgilerini almak için `Get-AzNetworkWatcherSecurityGroupView` cmdlet 'ini çalıştırırsınız.
 
 Bu senaryo, ağ Izleyicisi oluşturmak için [ağ Izleyicisi oluşturma](network-watcher-create.md) bölümündeki adımları zaten izlediğinizi varsayar.
 
@@ -45,7 +46,7 @@ Bu makalede ele alınan senaryo, belirli bir sanal makine için yapılandırılm
 
 ## <a name="retrieve-network-watcher"></a>Ağ İzleyicisini al
 
-İlk adım, ağ Izleyicisi örneğini almak için kullanılır. Bu değişken `Get-AzNetworkWatcherSecurityGroupView` cmdlet 'e geçirilir.
+İlk adım, ağ Izleyicisi örneğini almak için kullanılır. Bu değişken `Get-AzNetworkWatcherSecurityGroupView` cmdlet 'ine geçirilir.
 
 ```powershell
 $networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" }
@@ -53,7 +54,7 @@ $networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network
 
 ## <a name="get-a-vm"></a>VM al
 
-`Get-AzNetworkWatcherSecurityGroupView` Cmdlet 'ini çalıştırmak için bir sanal makine gerekir. Aşağıdaki örnek bir VM nesnesini alır.
+`Get-AzNetworkWatcherSecurityGroupView` cmdlet 'ini çalıştırmak için bir sanal makine gerekir. Aşağıdaki örnek bir VM nesnesini alır.
 
 ```powershell
 $VM = Get-AzVM -ResourceGroupName testrg -Name testvm1

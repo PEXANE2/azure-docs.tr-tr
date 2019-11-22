@@ -3,18 +3,18 @@ title: Programlı olarak ilkeler oluşturma
 description: Bu makalede, program aracılığıyla oluşturma ve Azure ilkesine ilkelerini yönetme gösterilmektedir.
 ms.date: 01/31/2019
 ms.topic: conceptual
-ms.openlocfilehash: 581f7e5cc2fa20f1ff284e32351e495349fdfad2
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: bc97eac8f66a3c289bb22bfac8617177d60b4583
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959429"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267233"
 ---
 # <a name="programmatically-create-policies"></a>Programlı olarak ilkeler oluşturma
 
 Bu makalede, program aracılığıyla oluşturma ve ilkeleri yönetme gösterilmektedir. Azure Ilke tanımları, kaynaklarınız üzerinde farklı kurallar ve etkiler uygular. Zorlama kaynakları, Kurumsal standartlarınız ve hizmet düzeyi sözleşmeleri ile uyumluluğu sürdürün, emin olur.
 
-Uyumluluk hakkında daha fazla bilgi için bkz. [uyumluluk verilerini alma](getting-compliance-data.md).
+Uyumluluk hakkında daha fazla bilgi için bkz. [uyumluluk verilerini alma](get-compliance-data.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 

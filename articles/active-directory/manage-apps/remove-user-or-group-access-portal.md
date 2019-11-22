@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory bir uygulamadan Kullanıcı veya grup atamalarını kaldırma | Microsoft Docs
+title: Azure AD 'de bir uygulamadan Kullanıcı veya grup atamalarını kaldırma
 description: Azure Active Directory içindeki bir kurumsal uygulamadan bir kullanıcının veya grubun erişim atamasını kaldırma
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 380816283156969c47f45a9b47435688df91f4ca
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: edf918b57212cf2adfbffb358a0257d9dbea85e9
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381054"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275872"
 ---
 # <a name="remove-a-user-or-group-assignment-from-an-enterprise-app-in-azure-active-directory"></a>Azure Active Directory içindeki bir kurumsal uygulamadan bir kullanıcı veya grup atamasını kaldırma
 
@@ -44,9 +44,9 @@ Bir kullanıcıyı veya grubu, Azure Active Directory (Azure AD) içinde kurulu�
 1. Yükseltilmiş bir Windows PowerShell komut istemi açın.
 
    > [!NOTE]
-   > AzureAD modülünü yüklemeniz gerekir (komutunu `Install-Module -Name AzureAD`kullanın). NuGet modülünü veya yeni Azure Active Directory v2 PowerShell modülünü yüklemek isteyip istemediğiniz sorulursa, Y yazın ve ENTER tuşuna basın.
+   > AzureAD modülünü yüklemeniz gerekir (`Install-Module -Name AzureAD`komutunu kullanın). NuGet modülünü veya yeni Azure Active Directory v2 PowerShell modülünü yüklemek isteyip istemediğiniz sorulursa, Y yazın ve ENTER tuşuna basın.
 
-1. ' `Connect-AzureAD` İ çalıştırın ve bir genel yönetici kullanıcı hesabıyla oturum açın.
+1. `Connect-AzureAD` çalıştırın ve bir genel yönetici kullanıcı hesabıyla oturum açın.
 1. Bir uygulamayı bir Kullanıcı ve rolü kaldırmak için aşağıdaki betiği kullanın:
 
     ```powershell

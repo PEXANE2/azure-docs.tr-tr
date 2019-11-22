@@ -1,5 +1,5 @@
 ---
-title: "Hızlı Başlangıç: Go kullanarak Metin Analizi API'si çağırın"
+title: "Hızlı başlangıç: Metin Analizi API'sini çağırmak için Go kullanma"
 titleSuffix: Azure Cognitive Services
 description: Azure bilişsel hizmetler 'de Metin Analizi API'si kullanmaya hızlı bir şekilde başlamanıza yardımcı olması için bilgi ve kod örnekleri alın.
 services: cognitive-services
@@ -10,19 +10,19 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 08/28/2019
 ms.author: aahi
-ms.openlocfilehash: 5c97648bd11a506d3c818584ed7d82d0a12d2e2c
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: d833293d094837c164da855aef197ad927c60ad7
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70387507"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286528"
 ---
-# <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>Hızlı Başlangıç: Metin Analizi bilişsel hizmeti çağırmak için go kullanma 
+# <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>Hızlı başlangıç: Metin Analizi Bilişsel Hizmetini çağırmak için Go kullanma 
 <a name="HOLTop"></a>
 
-Bu makalede, Go ile [metin analizi API 'leri](//go.microsoft.com/fwlink/?LinkID=759711) kullanarak [dilin nasıl algılanacağı](#Detect), yaklaşım [analiziyle](#SentimentAnalysis), [anahtar tümceciklerini ayıklamada](#KeyPhraseExtraction)ve [bağlantılı varlıkların](#Entities) nasıl kullanılacağı gösterilir.
+Bu makalede, Go ile  [metin analizi API 'leri](//go.microsoft.com/fwlink/?LinkID=759711) kullanarak [dilin nasıl algılanacağı](#Detect), yaklaşım [Analizi](#SentimentAnalysis), [anahtar tümceciklerini ayıklama](#KeyPhraseExtraction)ve [bağlantılı varlıkları nasıl tanımlayabileceğiniz](#Entities) gösterilmektedir.
 
-API'lerle ilgili teknik bilgiler için [API tanımları](//go.microsoft.com/fwlink/?LinkID=759346) sayfasını inceleyin.
+[!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -37,7 +37,7 @@ API'lerle ilgili teknik bilgiler için [API tanımları](//go.microsoft.com/fwli
 
 Dil Algılama API'si, [Dili Algıla metodunu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) kullanarak bir metin belgesinin dilini algılar.
 
-1. Ortam değişkenlerini `TEXT_ANALYTICS_SUBSCRIPTION_KEY` ve `TEXT_ANALYTICS_ENDPOINT` kaynağınızın Azure uç noktası ve abonelik anahtarı için oluşturun. Uygulamayı düzenleme başladıktan sonra bu ortam değişkenlerini oluşturduysanız, ortam değişkenlerine erişmek için kullandığınız düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir.
+1. `TEXT_ANALYTICS_SUBSCRIPTION_KEY` ortam değişkenleri oluşturun ve kaynağınızın Azure uç noktası ve abonelik anahtarı için `TEXT_ANALYTICS_ENDPOINT`. Uygulamayı düzenleme başladıktan sonra bu ortam değişkenlerini oluşturduysanız, ortam değişkenlerine erişmek için kullandığınız düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir.
 1. Sık kullandığınız kod düzenleyicisinde yeni bir Go projesi oluşturun.
 1. Aşağıda sağlanan kodu ekleyin.
 1. Dosyayı '.go' uzantısıyla kaydedin.
@@ -178,7 +178,7 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 
 Yaklaşım Analizi API'si, [Yaklaşım metodunu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) kullanarak bir metin kaydı kümesinin yaklaşımını algılar. Aşağıdaki örnek, biri İngilizce diğeri İspanyolca olan iki belge puanlar.
 
-1. Ortam değişkenlerini `TEXT_ANALYTICS_SUBSCRIPTION_KEY` ve `TEXT_ANALYTICS_ENDPOINT` kaynağınızın Azure uç noktası ve abonelik anahtarı için oluşturun. Uygulamayı düzenleme başladıktan sonra bu ortam değişkenlerini oluşturduysanız, ortam değişkenlerine erişmek için kullandığınız düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir.
+1. `TEXT_ANALYTICS_SUBSCRIPTION_KEY` ortam değişkenleri oluşturun ve kaynağınızın Azure uç noktası ve abonelik anahtarı için `TEXT_ANALYTICS_ENDPOINT`. Uygulamayı düzenleme başladıktan sonra bu ortam değişkenlerini oluşturduysanız, ortam değişkenlerine erişmek için kullandığınız düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir.
 1. Sık kullandığınız kod düzenleyicisinde yeni bir Go projesi oluşturun.
 1. Aşağıda sağlanan kodu ekleyin.
 1. Dosyayı '.go' uzantısıyla kaydedin.
@@ -294,7 +294,7 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 
 Anahtar İfade Ayıklama API'si [Anahtar İfadeler metodunu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) kullanarak bir metin belgesindeki anahtar ifadeleri ayıklar. Aşağıdaki örnekte hem İngilizce hem de İspanyolca belgelerin anahtarı ifadeleri ayıklanır.
 
-1. Ortam değişkenlerini `TEXT_ANALYTICS_SUBSCRIPTION_KEY` ve `TEXT_ANALYTICS_ENDPOINT` kaynağınızın Azure uç noktası ve abonelik anahtarı için oluşturun. Uygulamayı düzenleme başladıktan sonra bu ortam değişkenlerini oluşturduysanız, ortam değişkenlerine erişmek için kullandığınız düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir.
+1. `TEXT_ANALYTICS_SUBSCRIPTION_KEY` ortam değişkenleri oluşturun ve kaynağınızın Azure uç noktası ve abonelik anahtarı için `TEXT_ANALYTICS_ENDPOINT`. Uygulamayı düzenleme başladıktan sonra bu ortam değişkenlerini oluşturduysanız, ortam değişkenlerine erişmek için kullandığınız düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir.
 1. Sık kullandığınız kod düzenleyicisinde yeni bir Go projesi oluşturun.
 1. Aşağıda sağlanan kodu ekleyin.
 1. Dosyayı '.go' uzantısıyla kaydedin.
@@ -428,9 +428,9 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 
 ## <a name="identify-entities"></a>Varlıkları tanımlama
 
-Varlıklar API'si, [Varlıklar metodunu](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634) kullanarak bir metin belgesindeki iyi bilinen varlıkları tanımlar. [Varlıklar](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) , "Birleşik Devletler" gibi metinden sözcükleri ayıklar, ardından bu kelimelerin türünü ve/veya Vimi bağlantısını verir. "Birleşik Devletler" `location`türü, `https://en.wikipedia.org/wiki/United_States`vikipe bağlantısı olduğunda.  Aşağıdaki örnekte İngilizce belgelerin varlıkları tanımlanır.
+Varlıklar API'si, [Varlıklar metodunu](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634) kullanarak bir metin belgesindeki iyi bilinen varlıkları tanımlar. [Varlıklar](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) , "Birleşik Devletler" gibi metinden sözcükleri ayıklar, ardından bu kelimelerin türünü ve/veya Vimi bağlantısını verir. "Birleşik Devletler" türü `location`, vikipe bağlantısı `https://en.wikipedia.org/wiki/United_States`.  Aşağıdaki örnekte İngilizce belgelerin varlıkları tanımlanır.
 
-1. Ortam değişkenlerini `TEXT_ANALYTICS_SUBSCRIPTION_KEY` ve `TEXT_ANALYTICS_ENDPOINT` kaynağınızın Azure uç noktası ve abonelik anahtarı için oluşturun. Uygulamayı düzenleme başladıktan sonra bu ortam değişkenlerini oluşturduysanız, ortam değişkenlerine erişmek için kullandığınız düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir.
+1. `TEXT_ANALYTICS_SUBSCRIPTION_KEY` ortam değişkenleri oluşturun ve kaynağınızın Azure uç noktası ve abonelik anahtarı için `TEXT_ANALYTICS_ENDPOINT`. Uygulamayı düzenleme başladıktan sonra bu ortam değişkenlerini oluşturduysanız, ortam değişkenlerine erişmek için kullandığınız düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir.
 1. Sık kullandığınız kod düzenleyicisinde yeni bir Go projesi oluşturun.
 1. Aşağıda sağlanan kodu ekleyin.
 1. Dosyayı '.go' uzantısıyla kaydedin.

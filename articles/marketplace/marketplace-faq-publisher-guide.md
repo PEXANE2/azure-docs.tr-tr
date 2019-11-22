@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/4/2019
 ms.author: ellacroi
-ms.openlocfilehash: 300f1783c1c514a6cc49d700c2741be85e69c3e8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6a7a0d5bdd07221be823f8b94bd581db6d966fa8
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822975"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74306403"
 ---
 # <a name="microsoft-commercial-marketplace-faqs"></a>Microsoft ticari Market SSS
 
@@ -165,7 +165,7 @@ Kurumsal Anlaşma (EA) dolaylı müşterilerin tüm Azure Marketi fiyatlandırma
 
 **Çalışanlarımı Azure Market 'e erişimi ve satın alma ayrıcalıklarını denetleyebilir miyim?**
 
-Evet, Kurumsal Anlaşma (EA) müşterileri için kayıt yöneticisi, kayıt üzerindeki tüm hesapların satın alma ayrıcalıklarını kapatabilir ve satın alma işlemini yapmak için yeterince uzun süre açık bırakabilir. Ayrıca, tüm müşteriler Azure Market kaynakları yönetimi de dahil olmak üzere Azure aboneliklerine yönelik dağıtım seçeneklerini kısıtlamak için Azure Ilkesini kullanabilir.
+Evet, Kurumsal Anlaşma (EA) müşterileri için kayıt yöneticisi, kayıt üzerindeki tüm hesapların satın alma ayrıcalıklarını kapatabilir ve satın alma işlemini yapmak için yeterince uzun süre açık bırakabilir.
 
 **Ticari Market satınalmaları için hangi ödeme yöntemleri desteklenir?**
 
@@ -173,7 +173,7 @@ Müşteriler Azure Market 'ten teklifler satın alabilir ve kredi kartları kull
 
 **Hesabım halinde Azure abonelik kredileri veya parasal taahhüt fonlarını Azure Market teklifleri doğrultusunda uygulayabilir miyim?**
 
-Belirli Azure Market teklifleri, Azure abonelik kredilerini veya parasal taahhüt fonlarını kullanabilir. Bu programa katılan ürünlerin tüm listesi için bkz. [Azure parasal taahhüt](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/) . Bu teklifler KLG veya BYOS seçeneklerini içermez. Diğer tüm Azure Market teklifleri, ücretsiz bir aylık deneme kredisi, aylık MSDN kredileri, Azure promosyonları, parasal taahhüt bakiyeleri ve tarafından sunulan diğer tüm ücretsiz krediler gibi Azure abonelik kredileri veya parasal taahhüt kullanamaz. Mavisi.
+Belirli Azure Market teklifleri, Azure abonelik kredilerini veya parasal taahhüt fonlarını kullanabilir. Bu programa katılan ürünlerin tam listesi için [Azure parasal taahhüdü](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/) sayfasına bakın. Bu teklifler KLG veya BYOS seçeneklerini içermez. Diğer tüm Azure Market teklifleri, ücretsiz bir aylık deneme kredisi, aylık MSDN kredileri, Azure promosyonları, parasal taahhüt bakiyeleri ve tarafından sunulan diğer tüm ücretsiz krediler gibi Azure abonelik kredileri veya parasal taahhüt kullanamaz. Mavisi.
 
 **Toplu lisans indirimleri Azure Market satın alımlarında geçerlidir mi?**
 
@@ -348,7 +348,7 @@ Teklifi tamamladıktan ve bir müşteri adayı hedefi ayarladıktan sonra, liste
 
 **Azure Marketi hangi ülkelerde/bölgelerde Satım için kullanılabilir?**
 
-Şu ülkelerde/bölgelerde yer alarak bulunan yayımcılar şu anda Azure Marketi 'nde satıbiliyor: Afganistan, Arnavutluk, Cezayir, Angola, Antigua ve Barbuda, Arjantin, Ermenistan, Avustralya, Avusturya, Azerbaycan, Bahreyn, Bangladeş, Belarus, Belçika, Benin, Bolivya, Bosna Hersek, Botsvana, Brezilya, Bulgaristan, Burkina Faso, Burundi, Kamboçya, Kamerun, Kanada, Orta Afrika Cumhuriyeti, Chad, Şili, Kolombiya, Komorolar, Kongo, Kongo (KDC), Kosta Rika, Fildişi Sahili, Hırvatistan, Kıbrıs, Çek Cumhuriyeti, Danimarka, Dominik, Dominik Cumhuriyeti, Ekvador, Mısır, El Salvador, Eritre, Estonya, Etiyopya, Fiji Adaları, Finlandiya, Fransa, Georgia, Almanya, Ghana, Yunanistan, Guatemala, Gine, Haiti, Honduras, Hong Kong ÖIB, Macaristan, Izlanda, Hindistan, Endonezya, Irak, İrlanda, Israil, Italya, Jamaika, Japonya, Ürdün, Kazakistan, Kenya, Kore (Güney), Kuveyt, Laos, Letonya, Lübnan, Liberia, Liechtenstein, Litvanya, Lüksemburg, Madagaskar, Malavi, Malezya, mali, Malta, Mauritius, Meksika, Monako, Moğolistan, Karadağ, Fas, Mozambik, Nepal, Hollanda, Yeni Zelanda, Nikaragua, Nijer, Nijerya, Norveç, Umman, Pakistan, Panama, Paraguay, Peru, Filipinler, Polonya, Portekiz Slovakya, Slovenya, Vamalia, Güney Afrika, Ispanya, Sri Lanka, Isveç, Isviçre, Tacikistan, Tanzanya, bir Tayland, Timor-Leste, Togo, Tonga, Trinidad ve Tobago, Tunus, Türkiye, Türkmenistan, Uganda, Ukrayna, Birleşik Arap, Birleşik Krallık, Birleşik Durumlar, Uruguay, Özbekistan, Venezuela, Vietnam, Zambiya ve Zimbabve.
+Şu ülkelerde/bölgelerde bulunan yayımcılar şu anda Azure Marketi 'nde satıtabilecekleri: Afganistan, Arnavutluk, Cezayir, Angola, Antigua ve Barbuda, Arjantin, Ermenistan, Avustralya, Avusturya, Azerbaycan, Bahreyn, Bangladeş, Belarus, Belçika, Benin, Bolivya, Bosna-Hersek, Boto, Brezilya, Bulgaristan, Burkina Faso, Burundi, Kamboçya, Kamerun, Kanada, Orta Afrika Cumhuriyeti, Chad, Şili, Kolombiya, Inos, Kongo, Kongo (KDC), Kosta Rika, Fildişi Sahili, Hırvatistan, Kıbrıs, Çek Cumhuriyeti, Danimarka, Dominika, Dominik Cumhuriyeti, Ekvador, Mısır, El Salvador, Eritre, Estonya, Etiyopya, Fiji Adaları, Finlandiya, Fransa, Georgia, Almanya, Ghana, Yunanistan, Guatemala, Gine, Haiti, Honduras, Hong Kong çın ÖIB, Macaristan, Izlanda, Hindistan, Endonezya, Irak, Irlanda, Israil, Italya, Jamaika, Japonya, Ürdün, Kazakistan, Kenya, Kore (Güney), Kuveyt, Laos, Letonya, Lübnan, Liberia, Liechtenstein, Litvanya, Lüksemburg, Madagaskar, Malavi, Malezya, mali, Malta, Mauritius, Meksika, Monako, Moğolistan, Fas, Mozambik, Nepal, Hollanda, Yeni Zelanda, Nikaragua, Nijerya, Nijerya, Norveç, Umman, Pakistan, Panama, Paraguay, Peru, Filipinler, Polonya, Portekiz, Qtor, Romanya, Rusya, Ruanda, Suudi Arabistan, Senegal, Sırbistan, Sierra letone, Singapur, Slovakya, Slovenya, Somalia, Güney Afrika, Ispanya, Sri Lanka, Isveç, Isviçre, Tacikistan, Ruanda, Tayland, Doğu ABD, Doğu ABD, bir, Tayland, Timor-Leste, Togo, Tonga, Trinidad Durumlar, Uruguay, Özbekistan, Venezuela, Vietnam, Zambiya ve Zimbabve.
 
 **Nasıl yaparım? Azure Marketi 'nden bir listeyi silmek mi istiyorsunuz?**
 
@@ -433,7 +433,7 @@ Sık sorulan sorular konusunda güncel kaynak ve belge belgeleri için [Azure Ma
 
     ![Bölgeleri seçin](media/marketplace-publishers-guide/FAQ-choose-geo.png)
 
-1.  Bir liste, satış yapılacak tüm kullanılabilir ülkelerin/bölgelerin açılır.  Bu SKU 'nun kullanılabilir olmasını istediğiniz her ülkenin/bölgenin yanındaki onay kutusuna tıklayın. **Tamam** düğmesine tıklayın.
+1.  Bir liste, satış yapılacak tüm kullanılabilir ülkelerin/bölgelerin açılır.  Bu SKU 'nun kullanılabilir olmasını istediğiniz her ülkenin/bölgenin yanındaki onay kutusuna tıklayın. **OK (Tamam)** düğmesine tıklayın.
 
     ![Ülke/bölge listesi seçin](media/marketplace-publishers-guide/FAQ-select-countries.png)
 

@@ -11,14 +11,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 11/20/2019
 ms.author: jingwang
-ms.openlocfilehash: e891f6675920e7bb90d2a6d007676cdd65f19917
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 039176f2c546aa933d3a87ded8b6ded94e485d74
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73679898"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280657"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure Data Factory meta veri Al etkinliği
 
@@ -43,7 +43,7 @@ Meta veri Al etkinliği bir veri kümesini girdi olarak alır ve meta veri bilgi
 
 **Dosya depolama**
 
-| Bağlayıcı/meta veriler | ItemName<br>(dosya/klasör) | ItemType<br>(dosya/klasör) | boyutla<br>dosyasýný | yaratıl<br>(dosya/klasör) | lastModified<br>(dosya/klasör) |childItems<br>klasörde |contentMD5<br>dosyasýný | yapısı<br/>dosyasýný | columnCount<br>dosyasýný | Bulunur<br>(dosya/klasör) |
+| Bağlayıcı/meta veriler | ItemName<br>(dosya/klasör) | ItemType<br>(dosya/klasör) | size<br>dosyasýný | yaratıl<br>(dosya/klasör) | lastModified<br>(dosya/klasör) |childItems<br>klasörde |contentMD5<br>dosyasýný | structure<br/>dosyasýný | columnCount<br>dosyasýný | bulunur<br>(dosya/klasör) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
 | [Amazon S3](connector-amazon-simple-storage-service.md) | √/√ | √/√ | √ | x/x | √/√ * | √ | x | √ | √ | √/√ * |
 | [Google bulut depolaması](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√ * | √ | x | √ | √ | √/√ * |
@@ -57,10 +57,11 @@ Meta veri Al etkinliği bir veri kümesini girdi olarak alır ve meta veri bilgi
 
 - Amazon S3 ve Google Cloud Storage için, `lastModified` demet ve anahtar için geçerlidir, ancak sanal klasöre uygulanmaz ve `exists` demet ve anahtar için geçerlidir ancak önek veya sanal klasöre uygulanmaz.
 - Azure Blob depolama için `lastModified` kapsayıcı ve BLOB için geçerlidir ancak sanal klasöre uygulanmaz.
+- Klasörler/dosyalar üzerinde joker karakter filtresi, meta veri Al etkinliği için desteklenmiyor.
 
 **İlişkisel veritabanı**
 
-| Bağlayıcı/meta veriler | yapısı | columnCount | Bulunur |
+| Bağlayıcı/meta veriler | structure | columnCount | bulunur |
 |:--- |:--- |:--- |:--- |
 | [Azure SQL Veritabanı](connector-azure-sql-database.md) | √ | √ | √ |
 | [Azure SQL Veritabanı yönetilen örneği](connector-azure-sql-database-managed-instance.md) | √ | √ | √ |
@@ -75,14 +76,14 @@ Meta veri Al etkinliği bir veri kümesini girdi olarak alır ve meta veri bilgi
 |:--- |:--- |
 | ItemName | Dosya veya klasörün adı. |
 | ItemType | Dosya veya klasörün türü. Döndürülen değer `File` veya `Folder`. |
-| boyutla | Dosyanın bayt cinsinden boyutu. Yalnızca dosyalar için geçerlidir. |
+| size | Dosyanın bayt cinsinden boyutu. Yalnızca dosyalar için geçerlidir. |
 | yaratıl | Dosya veya klasörün DateTime değeri oluşturuldu. |
 | lastModified | Dosya veya klasörün son değiştirilme tarihi. |
 | childItems | Belirtilen klasördeki alt klasörlerin ve dosyaların listesi. Yalnızca klasörler için geçerlidir. Döndürülen değer her bir alt öğenin adının ve türünün bir listesidir. |
 | contentMD5 | Dosyanın MD5. Yalnızca dosyalar için geçerlidir. |
-| yapısı | Dosya veya ilişkisel veritabanı tablosunun veri yapısı. Döndürülen değer, sütun adlarının ve sütun türlerinin bir listesidir. |
+| structure | Dosya veya ilişkisel veritabanı tablosunun veri yapısı. Döndürülen değer, sütun adlarının ve sütun türlerinin bir listesidir. |
 | columnCount | Dosya veya ilişkisel tablodaki sütun sayısı. |
-| Bulunur| Bir dosya, klasör veya tablo bulunup yok. Meta verileri al alan listesinde `exists` belirtilirse, dosya, klasör veya tablo mevcut olmasa bile etkinlik başarısız olmaz. Bunun yerine, çıkışta `exists: false` döndürülür. |
+| bulunur| Bir dosya, klasör veya tablo bulunup yok. Meta verileri al alan listesinde `exists` belirtilirse, dosya, klasör veya tablo mevcut olmasa bile etkinlik başarısız olmaz. Bunun yerine, çıkışta `exists: false` döndürülür. |
 
 >[!TIP]
 >Bir dosya, klasör veya tablonun var olduğunu doğrulamak istediğinizde meta verileri al etkinlik alanı listesinde `exists` belirtin. Ardından, etkinlik çıkışında `exists: true/false` sonucunu kontrol edebilirsiniz. Alan listesinde `exists` belirtilmemişse, nesne bulunamazsa meta verileri Al etkinliği başarısız olur.
@@ -136,8 +137,8 @@ Meta veri Al etkinliği bir veri kümesini girdi olarak alır ve meta veri bilgi
 
 Özellik | Açıklama | Gerekli
 -------- | ----------- | --------
-fieldList | Gerekli meta veri bilgileri türleri. Desteklenen meta veriler hakkında daha fazla bilgi için bu makalenin [meta veri seçenekleri](#metadata-options) bölümüne bakın. | Evet 
-Veri kümesi | Meta verileri Al etkinliği tarafından alınacak olan başvuru veri kümesi. Desteklenen bağlayıcılar hakkında bilgi için bkz. [yetenekler](#capabilities) bölümü. Veri kümesi sözdizimi ayrıntıları için ilgili bağlayıcı konularına bakın. | Evet
+fieldList | Gerekli meta veri bilgileri türleri. Desteklenen meta veriler hakkında daha fazla bilgi için bu makalenin [meta veri seçenekleri](#metadata-options) bölümüne bakın. | Yes 
+veri kümesi | Meta verileri Al etkinliği tarafından alınacak olan başvuru veri kümesi. Desteklenen bağlayıcılar hakkında bilgi için bkz. [yetenekler](#capabilities) bölümü. Veri kümesi sözdizimi ayrıntıları için ilgili bağlayıcı konularına bakın. | Yes
 formatSettings | Biçim türü veri kümesi kullanırken uygulayın. | Hayır
 storeSettings | Biçim türü veri kümesi kullanırken uygulayın. | Hayır
 

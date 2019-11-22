@@ -1,19 +1,19 @@
 ---
-title: Öğretici-Azure Cosmos DB arka ucu ile oturumlar ve cihazlar arasında Azure uzamsal çıpası paylaşma | Microsoft Docs
+title: 'Öğretici: Azure Cosmos DB bağlayıcı paylaşma'
 description: Bu öğreticide, bir arka uç hizmetiyle ve Azure Cosmos DB Unity 'de Android/iOS cihazlarında Azure uzamsal bağlayıcı tanımlayıcılarını paylaşmayı öğreneceksiniz.
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 7ddbff563f79992f21aef5182177f4fb60c61dab
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 57bf9c9752cf2203ffcac08c213373fd71a79148
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882159"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276873"
 ---
 # <a name="tutorial-sharing-azure-spatial-anchors-across-sessions-and-devices-with-an-azure-cosmos-db-back-end"></a>Öğretici: Azure uzamsal bağlayıcılarını Azure Cosmos DB arka ucu ile oturumlar ve cihazlar arasında paylaşma
 
@@ -25,7 +25,7 @@ Bu öğreticide Unity ve Azure Cosmos DB kullanacağınızı, ancak bu öğretic
 
 ## <a name="create-a-database-account"></a>Veritabanı hesabı oluşturma
 
-Daha önce oluşturduğunuz kaynak grubuna bir Azure Cosmos veritabanı ekleyin. 
+Daha önce oluşturduğunuz kaynak grubuna bir Azure Cosmos veritabanı ekleyin.
 
 [!INCLUDE [cosmos-db-create-dbaccount-table](../../../includes/cosmos-db-create-dbaccount-table.md)]
 

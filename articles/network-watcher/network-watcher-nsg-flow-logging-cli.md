@@ -1,5 +1,6 @@
 ---
-title: Azure ağ Izleyicisi ile ağ güvenlik grubu akış günlüklerini yönetme-Azure CLı | Microsoft Docs
+title: NSG akış günlüklerini yönetme-Azure CLı
+titleSuffix: Azure Network Watcher
 description: Bu sayfada Azure CLı ile Azure ağ Izleyicisi 'nde ağ güvenlik grubu akış günlüklerinin nasıl yönetileceği açıklanmaktadır
 services: network-watcher
 documentationcenter: na
@@ -14,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 5e7c09c1a06a94a2ed64f3624ee38dc42606d7bc
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 950b014d7e08eeeeed40ba7b294e53e1c200474b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563480"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278010"
 ---
 # <a name="configuring-network-security-group-flow-logs-with-azure-cli"></a>Azure CLı ile ağ güvenlik grubu akış günlüklerini yapılandırma
 
 > [!div class="op_single_selector"]
-> - [Azure portal](network-watcher-nsg-flow-logging-portal.md)
+> - [Azure Portal](network-watcher-nsg-flow-logging-portal.md)
 > - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
 > - [Azure CLI](network-watcher-nsg-flow-logging-cli.md)
 > - [REST API](network-watcher-nsg-flow-logging-rest.md)
@@ -53,7 +54,7 @@ az network watcher flow-log configure --resource-group resourceGroupName --enabl
 
 Belirttiğiniz depolama hesabı, yalnızca Microsoft hizmetlerine veya belirli sanal ağlara ağ erişimini kısıtlayan ağ kuralları için yapılandırılmış olamaz. Depolama hesabı aynı veya farklı bir Azure aboneliğinde olabilir ve bu da akış günlüğünü etkinleştirdiğiniz NSG 'den farklıdır. Farklı abonelikler kullanıyorsanız, her ikisinin de aynı Azure Active Directory kiracısıyla ilişkilendirilmesi gerekir. Her abonelik için kullandığınız hesabın [gerekli izinlere](required-rbac-permissions.md)sahip olması gerekir. 
 
-Depolama hesabı, ağ güvenlik grubundan farklı bir kaynak grubunda veya abonelikte yer alıyorsa, depolama hesabının adı yerine tam KIMLIĞI belirtin. Örneğin, depolama hesabı, bir önceki komutta *storageAccountName* belirtmek yerine *RG-Storage*adlı bir kaynak grubunsa */Subscriptions/{SubscriptionID}/ResourceGroups/RG-Storage/Providers/belirtmelisiniz Microsoft. Storage/storageAccounts/storageAccountName*.
+Depolama hesabı, ağ güvenlik grubundan farklı bir kaynak grubunda veya abonelikte yer alıyorsa, depolama hesabının adı yerine tam KIMLIĞI belirtin. Örneğin, depolama hesabı, bir önceki komutta *storageAccountName* belirtmek yerine *RG-Storage*adlı bir kaynak grubunsa, */Subscriptions/{SubscriptionID}/resourceGroups/RG-Storage/Providers/Microsoft.Storage/storageAccounts/storageAccountName*belirtmeniz gerekir.
 
 ## <a name="disable-network-security-group-flow-logs"></a>Ağ güvenlik grubu akış günlüklerini devre dışı bırak
 

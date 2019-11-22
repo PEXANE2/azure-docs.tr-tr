@@ -7,12 +7,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
-ms.openlocfilehash: d0e19c8483321189cb38a4eebdbf7b2cb89785ef
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 0503ebc7a585210f95eb58b0f11ae1dd0a835264
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933033"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278619"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Azure Izleyici 'de günlük sorgularını kullanmaya başlama
 
@@ -239,4 +239,7 @@ Perf
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Arama sorguları yazma](search-queries.md) hakkında bilgi edinin
+- [Azure izleyici günlük sorgularında dizelerle birlikte çalışan](string-operations.md)bir günlük sorgusunda dize verileri kullanma hakkında daha fazla bilgi edinin.
+- [Azure izleyici günlük sorgularında gelişmiş toplamalar](advanced-aggregations.md)içeren bir günlük sorgusunda veri toplama hakkında daha fazla bilgi edinin.
+- [Azure izleyici günlük sorgularında birleşimlerle](joins.md)birden çok tablodan veri birleştirmeyi öğrenin.
+- [KQL dil başvurusunda](/azure/kusto/query/)tüm kusto sorgu dilinin belgelerini alın.

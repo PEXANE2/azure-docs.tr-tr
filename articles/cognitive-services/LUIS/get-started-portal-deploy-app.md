@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: diberry
-ms.openlocfilehash: 279ec4e8a6d9a9d473cc511b4ec690391cdbd634
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 65af2caa2272549b5ad562ff3c38b90e3ea43fd5
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73669416"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278536"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Hızlı başlangıç: Lua portalında uygulama dağıtma
 
@@ -25,10 +25,11 @@ Lusıs uygulamanız, bir istemci uygulamasına söylenişi tahminleri (örneğin
 
 Bu hızlı başlangıçta, bir uygulamayı dağıtmayı öğreneceksiniz. Bir tahmin uç noktası kaynağı oluşturur, uygulamayı uygulamaya atayabilir, uygulamayı eğitme ve uygulamayı yayımlayabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir [Azure aboneliği](https://azure.microsoft.com/free)alın.
 * [Önceki Portal Hızlı](get-started-portal-build-app.md) başlangıcını tamamlayıp [uygulamayı indirip içeri aktarın](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/in-portal/build-portal-app.json).
+* Azure Kaynak kimlik doğrulamasının önceden güncel olduğu uygulamalarınız varsa, [bir Azure kaynağına geçiş](luis-migration-authoring.md)yapın. E-posta kimlik doğrulaması etkin olduğunda bazı portal sayfaları farklı görünür.
 
 ## <a name="create-the-endpoint-resource"></a>Uç nokta kaynağı oluşturma
 
@@ -60,7 +61,7 @@ Tahmin uç noktası kaynağını Azure portal oluşturursunuz. Bu kaynak yalnız
 
 LUHER yeni kaynak oluşturduğunuzda, kaynağı LUO uygulamasına atamanız gerekir. Atandıktan sonra, yeni bir kaynak oluşturmadığınız takdirde bu adımı tekrar yapmanız gerekmez. Uygulamanızın bölgelerini genişletmek veya daha yüksek sayıda tahmin sorgusu desteklemek için yeni bir kaynak oluşturabilirsiniz.
 
-1. [Luo portalında](https://www.luis.ai) oturum açın ve uygulamalar listesinden **Myenglishapp** uygulamasını seçin.
+1. [Luo portalında](https://preview.luis.ai) oturum açın ve uygulamalar listesinden **Myenglishapp** uygulamasını seçin.
 
 1. Sağ üst menüdeki **Yönet** ' i seçin ve ardından **Azure kaynakları**' nı seçin.
 
@@ -68,7 +69,7 @@ LUHER yeni kaynak oluşturduğunuzda, kaynağı LUO uygulamasına atamanız gere
 
     ![LUSıS tahmin kaynağını eklemek için tahmin kaynağı Ekle ' yi seçin.](./media/get-started-portal-deploy-app/azure-resources-add-prediction-resource.png)
 
-1. Kiracınızı, aboneliğinizi ve kaynak adınızı seçin. **Kaynak ata**' yı seçin.
+1. Kiracınızı, aboneliğinizi ve kaynak adınızı seçin. Seçin **atama kaynak**.
 
    ![Uygulamanıza bir kaynak atayın](./media/get-started-portal-deploy-app/assign-resource.png)
 
@@ -86,7 +87,7 @@ LUHER yeni kaynak oluşturduğunuzda, kaynağı LUO uygulamasına atamanız gere
 
 ## <a name="prediction-endpoint-request"></a>Tahmin uç noktası isteği
 
-URL 'nin sonundaki `query=`, kullanıcının utterine GET isteğine eklendiği yerdir. `query=`sonra, önceki hızlı başlangıç için kullanılan Kullanıcı utterliğini girin:
+Önizleme portalında, URL 'nin sonundaki `query=`, kullanıcının utterine GET isteğine eklendiği yerdir. `query=`sonra, önceki hızlı başlangıç için kullanılan Kullanıcı utterliğini girin:
 
 ```Is there a form named hrf-234098```
 

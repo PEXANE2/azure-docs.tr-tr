@@ -13,21 +13,21 @@ ms.date: 07/18/2019
 ms.author: lizross
 ms.custom: user-help
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c79e82680ae81137ee4164e88e62235f934565a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: f595013d5404f0cbcb17a0d24d6395a84fa5b607
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74028518"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74266980"
 ---
 # <a name="sign-in-using-two-step-verification-or-security-info"></a>İki adımlı doğrulama veya güvenlik bilgilerini kullanarak oturum açın
 
-İki aşamalı doğrulamayı veya güvenlik bilgilerini ayarladıktan sonra, hesabınızda belirtilen kimlik doğrulama yönteminizi kullanarak oturum açabilirsiniz.
+İki adımlı doğrulama veya güvenlik bilgilerini ayarladıktan sonra, hesabınızda belirtilen doğrulama yönteminizi kullanarak oturum açabilirsiniz.
 
 > [!Note]
-> İki adımlı doğrulama deneyimini kullanmaya devam ediyorsanız, [iki adımlı doğrulama için hesabımı ayarlama](multi-factor-authentication-end-user-first-time.md) makalesindeki yönergeleri izleyerek kimlik doğrulama yöntemlerinizi ayarlamanız gerekir.
+> İki adımlı doğrulama deneyimini kullanmaya devam ediyorsanız, [iki adımlı doğrulama için hesabımı ayarlama](multi-factor-authentication-end-user-first-time.md) makalesindeki yönergeleri izleyerek doğrulama yöntemlerinizi ayarlamanız gerekir.
 >
-> Yöneticiniz güvenlik bilgileri deneyimini etkinleştirmiştir, bu adım adım makaleleri kullanarak kimlik doğrulama yöntemlerinizi ayarlamanız gerekir:<ul><li>[Kimlik doğrulama uygulaması kullanmak için güvenlik bilgilerini ayarlama](security-info-setup-auth-app.md)</li><li>[Güvenlik bilgilerini SMS kullanacak şekilde ayarlama](security-info-setup-text-msg.md)</li><li>[Telefon araması kullanmak için güvenlik bilgilerini ayarlama](security-info-setup-phone-number.md)</li><li>[Güvenlik anahtarı kullanmak için güvenlik bilgilerini ayarlama](security-info-setup-security-key.md)</li></ul>
+> Yöneticiniz güvenlik bilgileri deneyimini etkinleştirmiştir, bu adım adım makaleleri kullanarak doğrulama yöntemlerinizi ayarlamanız gerekir:<ul><li>[Kimlik doğrulama uygulaması kullanmak için güvenlik bilgilerini ayarlama](security-info-setup-auth-app.md)</li><li>[Güvenlik bilgilerini SMS kullanacak şekilde ayarlama](security-info-setup-text-msg.md)</li><li>[Telefon araması kullanmak için güvenlik bilgilerini ayarlama](security-info-setup-phone-number.md)</li><li>[Güvenlik anahtarı kullanmak için güvenlik bilgilerini ayarlama](security-info-setup-security-key.md)</li></ul>
 
 ## <a name="sign-in-using-an-authenticator-app-notification-on-your-mobile-device"></a>Mobil cihazınızda bir Authenticator uygulama bildirimi kullanarak oturum açın
 

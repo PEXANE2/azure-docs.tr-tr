@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: fb8f5f2adf497a12b4ed54b381a2dbf85e160b8e
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 2a40680b45522d8a8e49a3f01a50a748e1c71b53
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123961"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274072"
 ---
 # <a name="container-security-in-security-center"></a>Güvenlik Merkezi 'nde kapsayıcı güvenliği
 
@@ -32,7 +32,7 @@ Bu makalede, kapsayıcılarınızın ve uygulamalarının güvenliğini nasıl i
 [Azure Güvenlik Merkezi 'nin kapsayıcı Güvenlik sekmesini ![](media/container-security/container-security-tab.png)](media/container-security/container-security-tab.png#lightbox)
 
 ## <a name="vulnerability-management---scanning-container-images-preview"></a>Güvenlik açığı yönetimi-kapsayıcı görüntülerini tarama (Önizleme)
-Azure Container Registry izlemek için, güvenlik merkezi 'ne bağlayın. Yeni bir görüntü gönderildiğinde, Güvenlik Merkezi, sektör lideri güvenlik açığı tarama satıcısı, Qualys 'den bir tarayıcı kullanarak görüntüyü tarar.
+Azure Container Registry izlemek için Güvenlik Merkezi 'nin standart katmanında olduğunuzdan emin olun (bkz. [fiyatlandırma](https://docs.microsoft.com/azure/security-center/security-center-pricing.md)). Sonra isteğe bağlı kapsayıcı kayıt defterleri paketini etkinleştirin. Yeni bir görüntü gönderildiğinde, Güvenlik Merkezi, sektör lideri güvenlik açığı tarama satıcısı, Qualys 'den bir tarayıcı kullanarak görüntüyü tarar.
 
 Sorunlar bulunduğunda: Qualys veya Güvenlik Merkezi tarafından – Güvenlik Merkezi panosunda bildirim alırsınız. Güvenlik Merkezi her güvenlik açığı için, eyleme dönüştürülebilir öneriler, bir önem sınıflandırması ve sorunun nasıl düzeltileceği ile ilgili rehberlik sağlar. Güvenlik Merkezi 'nin önerilerin ayrıntıları için, [sanal makine korumasında](security-center-virtual-machine-protection.md##compute-and-app-recs)önerilerin listesine bakın.
 
@@ -55,7 +55,7 @@ AKS, kümelerinizin güvenlik duruşuna güvenlik denetimleri ve görünürlük 
 
 Güvenlik Merkezi 'nin önerilerine ilişkin ayrıntılar için bkz. [sanal makine koruması](security-center-virtual-machine-protection.md).
 
-## <a name="run-time-protection---real-time-threat-detection"></a>Çalışma zamanı koruması-gerçek zamanlı tehdit algılama 
+## <a name="run-time-protection---real-time-threat-detection"></a>Çalışma zamanı koruması-gerçek zamanlı tehdit algılama
 
 Güvenlik Merkezi, Kapsayıcılı ortamlarınız için gerçek zamanlı tehdit algılama sağlar ve şüpheli etkinlikler için uyarı oluşturur. Bu bilgileri kullanarak güvenlik sorunlarını hızlı bir şekilde çözebilir ve kapsayıcılarınızın güvenlik düzeyini artırabilirsiniz.
 

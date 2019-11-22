@@ -1,6 +1,6 @@
 ---
-title: Bir bilgi çalışanı - Azure Active Directory B2B işbirliği kullanıcıları ekleme | Microsoft Docs
-description: Bilgi çalışanları ve uygulama sahipleri erişim için Azure AD'ye Konuk kullanıcıları eklemek B2B işbirliğine olanak tanır | Microsoft Docs
+title: B2B işbirliği kullanıcılarını bilgi çalışanı olarak ekleme-Azure AD
+description: B2B işbirliği, bilgi işçileri ve uygulama sahiplerinin erişim için Azure AD 'ye Konuk kullanıcılar eklemesine olanak tanır | Microsoft Docs
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,112 +12,112 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8606a0d4e203e1a910a5cd15ca83a622f5286bd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 37dc4a618f01022f4963a14aba921edcce9f4b60
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65812543"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74268850"
 ---
-# <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>Nasıl kuruluşunuzdaki kullanıcılar uygulama Konuk kullanıcılar davet edebilir
+# <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>Kuruluşunuzdaki kullanıcıların bir uygulamaya Konuk kullanıcıları davet edebilir
 
-Sonra Konuk kullanıcı eklendiğini dizine Azure AD'de uygulama sahibinin Konuk kullanıcı paylaşmak istediğiniz uygulamaya doğrudan bağlantı gönderebilirsiniz. Azure AD yöneticileri, Self Servis Yönetimi galeri veya kendi Azure AD kiracısında SAML tabanlı uygulamalar için de ayarlayabilirsiniz. Konuk kullanıcıları dizine henüz bile eklemediyseniz bu şekilde, uygulama sahibi kendi Konuk kullanıcılar yönetebilirsiniz. Bir uygulama için Self Servis yapılandırıldığında, uygulama sahibi kendi erişim panellerine uygulamaya Konuk kullanıcı davet veya bir gruba uygulama erişimi olan Konuk kullanıcı Ekle için kullanır. Galeri ve SAML tabanlı uygulamaları için Self Servis uygulama yönetimi, bir yönetici tarafından bazı ilk kurulum gerektirir Kurulum adımları bir özeti aşağıda verilmiştir (daha ayrıntılı yönergeler için bkz. [önkoşulları](#prerequisites) daha sonra bu sayfayı):
+Bir Konuk Kullanıcı Azure AD 'de dizine eklendikten sonra, bir uygulama sahibi Konuk kullanıcıyı paylaştırmak istedikleri uygulamaya doğrudan bir bağlantı gönderebilir. Azure AD yöneticileri, Azure AD kiracısındaki Galeri veya SAML tabanlı uygulamalar için self servis yönetimini de ayarlayabilir. Bu şekilde, Konuk kullanıcılar henüz dizine eklenmemiş olsa bile, uygulama sahipleri kendi Konuk kullanıcılarını yönetebilir. Bir uygulama self servis için yapılandırıldığında, uygulama sahibi Konuk kullanıcıyı bir uygulamaya davet etmek veya uygulamaya erişimi olan bir gruba Konuk Kullanıcı eklemek için erişim panelini kullanır. Galeri ve SAML tabanlı uygulamalar için self servis uygulama yönetimi, bir yönetici tarafından bazı ilk kurulumu gerektirir. Aşağıda, Kurulum adımlarının bir özeti verilmiştir (daha ayrıntılı yönergeler için bu sayfanın ilerleyen kısımlarında yer alan [Önkoşullar](#prerequisites) bölümüne bakın):
 
- - Kiracınız için Self Servis Grup Yönetimi etkinleştir
- - Uygulamaya atamak ve kullanıcı sahibi olmak için bir grup oluşturun
- - Self Servis uygulamasını yapılandırma ve uygulamaya grup atama
+ - Kiracınız için Self Servis Grup yönetimini etkinleştirme
+ - Uygulamaya atanacak bir grup oluşturun ve kullanıcıya bir sahip yapın
+ - Uygulamayı self servis için yapılandırma ve grubu uygulamaya atama
 
 > [!NOTE]
-> Bu makalede, Galeri ve Azure AD kiracınıza eklediğiniz SAML tabanlı uygulamaları için Self Servis Yönetimi ayarlamak açıklar. Ayrıca [Self Servis Office 365 grupları ayarlama](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management) kullanıcılarınız kendi Office 365 grupları erişimi yönetebilirsiniz. Konuk kullanıcılarla daha yollarını kullanıcılar Office dosyalarını ve uygulamaları paylaşmak için bkz: [Konuk erişimi Office 365 gruplarında](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6) ve [SharePoint paylaşım dosyaları veya klasörleri](https://support.office.com/article/share-sharepoint-files-or-folders-1fe37332-0f9a-4719-970e-d2578da4941c).
+> Bu makalede, Azure AD kiracınıza eklediğiniz Galeri ve SAML tabanlı uygulamalar için self servis yönetiminin nasıl ayarlanacağı açıklanır. Ayrıca, kullanıcılarınızın kendi Office 365 gruplarına erişimi yönetebilmesi için [self servis office 365 gruplarını da ayarlayabilirsiniz](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management) . Kullanıcıların Office dosyalarını ve uygulamalarını Konuk kullanıcılarla paylaşmasına yönelik daha fazla bilgi için bkz. [office 365 gruplarında konuk erişimi](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6) ve [SharePoint dosyalarını veya klasörlerini paylaşma](https://support.office.com/article/share-sharepoint-files-or-folders-1fe37332-0f9a-4719-970e-d2578da4941c).
 
-## <a name="invite-a-guest-user-to-an-app-from-the-access-panel"></a>Konuk kullanıcı bir uygulamaya erişim panelinden davet edin.
+## <a name="invite-a-guest-user-to-an-app-from-the-access-panel"></a>Erişim panelinden bir uygulamaya Konuk Kullanıcı davet etme
 
-Bir uygulama için Self Servis yapılandırdıktan sonra uygulama sahibi kendi erişim paneli paylaşmak istediğiniz uygulama için bir Konuk kullanıcı davet etmek için kullanabilirsiniz. Konuk kullanıcı mutlaka önceden Azure AD'ye eklemiş gerekmez. 
+Bir uygulama self servis için yapılandırıldıktan sonra, uygulama sahipleri bir konuk kullanıcıyı paylaştırmak istedikleri uygulamaya davet etmek için kendi erişim panelini kullanabilir. Konuk kullanıcının Azure AD 'ye önceden eklenmiş olması gerekmez. 
 
-1. Giderek, erişim paneli `https://myapps.microsoft.com`.
-2. Uygulamaya gelin, elipsleri seçin ( **...** ) ve ardından **Yönet uygulama**.
+1. `https://myapps.microsoft.com`giderek erişim masasını açın.
+2. Uygulamanın üzerine gelin, üç nokta ( **...** ) simgesini seçin ve ardından **Uygulamayı Yönet**' i seçin.
  
-   ![Doğrudan Salesforce uygulamasının Yönet uygulama alt menüsünü gösteren ekran görüntüsü](media/add-users-iw/access-panel-manage-app.png)
+   ![Salesforce uygulaması için uygulama yönetme alt menüsünü gösteren ekran görüntüsü](media/add-users-iw/access-panel-manage-app.png)
  
-3. Kullanıcılar listenin en üstünde seçin **+** .
+3. Kullanıcılar listesinin en üstünde **+** ' yi seçin.
    
-   ![Uygulamaya üyeleri eklemek için artı simgesini gösteren ekran görüntüsü](media/add-users-iw/access-panel-manage-app-add-user.png)
+   ![Uygulamaya üye eklemek için artı simgesini gösteren ekran görüntüsü](media/add-users-iw/access-panel-manage-app-add-user.png)
    
-4. İçinde **üye ekleme** arama kutusuna, Konuk kullanıcı için e-posta adresini yazın. İsteğe bağlı olarak bir hoş geldiniz iletisi ekleyin.
+4. **Üye Ekle** arama kutusuna Konuk kullanıcının e-posta adresini yazın. İsteğe bağlı olarak bir hoş geldiniz iletisi ekleyin.
    
-   ![Ekleme gösteren ekran görüntüsü ekleme Konuk üyeleri penceresi](media/add-users-iw/access-panel-invitation.png)
+   ![Konuk eklemek için üye Ekle penceresini gösteren ekran görüntüsü](media/add-users-iw/access-panel-invitation.png)
    
-5. Seçin **Ekle** Konuk kullanıcı davet gönderilecek. Daveti göndermenizin ardından kullanıcı hesabı otomatik olarak dizine konuk olarak eklenir.
+5. Konuk kullanıcıya davetiye göndermek için **Ekle** ' yi seçin. Daveti göndermenizin ardından kullanıcı hesabı otomatik olarak dizine konuk olarak eklenir.
 
-## <a name="invite-someone-to-join-a-group-that-has-access-to-the-app"></a>Uygulama erişimi olan bir gruba katılması için davet
-Bir uygulama için Self Servis yapılandırdıktan sonra uygulama sahipleri paylaşmak istediğiniz uygulamaları erişimi yönettikleri gruplara Konuk kullanıcılar davet edebilirsiniz. Konuk kullanıcıları dizinde zaten gerekmez. Uygulama sahibi uygulama erişebilmesi için grubuna Konuk kullanıcı davet etmek için aşağıdaki adımları izleyin.
+## <a name="invite-someone-to-join-a-group-that-has-access-to-the-app"></a>Bir kişiyi uygulamaya erişimi olan bir gruba katılmaya davet etme
+Bir uygulama self servis için yapılandırıldıktan sonra, uygulama sahipleri Konuk kullanıcıları, paylaştığı uygulamalara erişimi olan yönettikleri gruplara davet edebilir. Konuk kullanıcıların dizinde zaten var olması gerekmez. Uygulama sahibi, uygulamaya erişebilmek için bir konuk kullanıcıyı gruba davet etmek için aşağıdaki adımları izler.
 
-1. Paylaşmak istediğiniz uygulama erişimi olan Self Servis Grup sahibi olduğunuzdan emin olun.
-2. Giderek, erişim paneli `https://myapps.microsoft.com`.
-3. Seçin **grupları** uygulama.
+1. Paylaşmak istediğiniz uygulamaya erişimi olan Self Servis grubunun sahibi olduğunuzdan emin olun.
+2. `https://myapps.microsoft.com`giderek erişim masasını açın.
+3. **Gruplar** uygulamasını seçin.
    
-   ![Gruplar uygulama erişim panelinde gösteren ekran görüntüsü](media/add-users-iw/access-panel-groups.png)
+   ![Erişim panelinde Gruplar uygulamasını gösteren ekran görüntüsü](media/add-users-iw/access-panel-groups.png)
    
-4. Altında **olduğum gruplar**, paylaşmak istediğiniz uygulama erişimi olan grubu seçin.
+4. **Sahipim olan gruplar**altında, paylaştırmak istediğiniz uygulamaya erişimi olan grubu seçin.
    
-   ![Sahip olduğum gruplar altındaki bir grubu seçmek nereye gösteren ekran görüntüsü](media/add-users-iw/access-panel-groups-i-own.png)
+   ![Sahip olduğu gruplar altında bir grubun nerede seçileceğini gösteren ekran görüntüsü](media/add-users-iw/access-panel-groups-i-own.png)
    
-5. Grup üyeleri listenin en üstünde seçin **+** .
+5. Grup üyeleri listesinin en üstünde **+** ' yi seçin.
    
    ![Gruba üye eklemek için artı simgesini gösteren ekran görüntüsü](media/add-users-iw/access-panel-groups-add-member.png)
    
-6. İçinde **üye ekleme** arama kutusuna, Konuk kullanıcı için e-posta adresini yazın. İsteğe bağlı olarak bir hoş geldiniz iletisi ekleyin.
+6. **Üye Ekle** arama kutusuna Konuk kullanıcının e-posta adresini yazın. İsteğe bağlı olarak bir hoş geldiniz iletisi ekleyin.
    
-   ![Ekleme gösteren ekran görüntüsü ekleme Konuk üyeleri penceresi](media/add-users-iw/access-panel-invitation.png)
+   ![Konuk eklemek için üye Ekle penceresini gösteren ekran görüntüsü](media/add-users-iw/access-panel-invitation.png)
    
-7. Seçin **Ekle** otomatik olarak Konuk kullanıcı davet göndermek için. Daveti göndermenizin ardından kullanıcı hesabı otomatik olarak dizine konuk olarak eklenir.
+7. Daveti Konuk kullanıcıya otomatik olarak göndermek için **Ekle** ' yi seçin. Daveti göndermenizin ardından kullanıcı hesabı otomatik olarak dizine konuk olarak eklenir.
 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Self Servis uygulama yönetimi, genel yönetici ve bir Azure AD Yöneticisi tarafından bazı ilk kurulum gerektirir. Bu kurulumunun bir parçası olarak, Self Servis uygulamasını yapılandırma ve uygulama sahibi yönetebileceği uygulamaya bir gruba atayın. Ayrıca grubun üyelik istemek bir grup sahibinin onayı iste herkesin izin verecek şekilde yapılandırabilirsiniz. (Daha fazla bilgi edinin [Self Servis Grup Yönetimi](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management).) 
+Self Servis uygulama yönetimi, bir genel yönetici ve bir Azure AD yöneticisi tarafından bazı ilk kurulum gerektirir. Bu kurulumun bir parçası olarak, uygulamayı self servis için yapılandıracaksınız ve uygulama sahibinin yönetebileceği uygulamaya bir grup atamalısınız. Ayrıca grubu, herkesin üyelik istemesine izin verecek ancak Grup sahibinin onayını gerektirme amacıyla de yapılandırabilirsiniz. ( [Self servis grup yönetimi](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management)hakkında daha fazla bilgi edinin.) 
 
 > [!NOTE]
-> Konuk kullanıcıların dinamik bir grup veya şirket içi Active Directory ile eşitlenen bir gruba eklenemiyor.
+> Konuk kullanıcıları dinamik bir gruba veya şirket içi Active Directory eşitlenen bir gruba ekleyemezsiniz.
 
-### <a name="enable-self-service-group-management-for-your-tenant"></a>Kiracınız için Self Servis Grup Yönetimi etkinleştir
-1. Oturum [Azure portalında](https://portal.azure.com) genel Yöneticisi olarak.
-2. Gezinti panelinde seçin **Azure Active Directory**.
-3. Seçin **grupları**.
-4. Altında **ayarları**seçin **genel**.
-5. Altında **Self Servis Grup Yönetimi**yanındaki **sahipler, erişim Paneli'nde grup üyeliği isteklerini yönetebilir**seçin **Evet**.
+### <a name="enable-self-service-group-management-for-your-tenant"></a>Kiracınız için Self Servis Grup yönetimini etkinleştirme
+1. [Azure Portal](https://portal.azure.com) genel yönetici olarak oturum açın.
+2. Gezinti panelinde **Azure Active Directory**' yi seçin.
+3. **Grupları**seçin.
+4. **Ayarlar**altında **genel**' i seçin.
+5. **Self servis grup yönetimi**altında, sahipler ' in yanında, **erişim panelinde grup üyeliği Isteklerini yönetebilir**, **Evet**' i seçin.
 6. **Kaydet**’i seçin.
 
-### <a name="create-a-group-to-assign-to-the-app-and-make-the-user-an-owner"></a>Uygulamaya atamak ve kullanıcı sahibi olmak için bir grup oluşturun
-1. Oturum [Azure portalında](https://portal.azure.com) bir Azure AD Yöneticisi veya genel yönetici olarak.
-2. Gezinti panelinde seçin **Azure Active Directory**.
-3. Seçin **grupları**.
-4. Seçin **yeni grup**.
-5. Altında **grup türü**seçin **güvenlik**.
+### <a name="create-a-group-to-assign-to-the-app-and-make-the-user-an-owner"></a>Uygulamaya atanacak bir grup oluşturun ve kullanıcıya bir sahip yapın
+1. [Azure Portal](https://portal.azure.com) Azure AD yöneticisi veya genel yönetici olarak oturum açın.
+2. Gezinti panelinde **Azure Active Directory**' yi seçin.
+3. **Grupları**seçin.
+4. **Yeni Grup**' u seçin.
+5. **Grup türü**altında **güvenlik**' i seçin.
 6. Bir **Grup adı** ve **Grup açıklaması** girin.
-7. Altında **üyelik türü**seçin **atanan**.
-8. Seçin **Oluştur**ve Kapat **grubu** sayfası.
-9. Üzerinde **gruplar - tüm gruplar** sayfasında, grubun açın. 
-10. Altında **Yönet**seçin **sahipleri** > **sahipler eklemeyi**. Uygulama erişimi yönetmesi gereken kullanıcıyı arayın. Kullanıcıyı seçin ve ardından **seçin**.
+7. **Üyelik türü**' nün altında, **atandı**' ı seçin.
+8. **Oluştur**' u seçin ve **Grup** sayfasını kapatın.
+9. **Gruplar-tüm gruplar** sayfasında, grubu açın. 
+10. **Yönet**altında **sahipler > ** **sahip Ekle**' yi seçin. Uygulamaya erişimi yönetmesi gereken kullanıcıyı arayın. Kullanıcıyı seçin ve ardından **Seç**' e tıklayın.
 
-### <a name="configure-the-app-for-self-service-and-assign-the-group-to-the-app"></a>Self Servis uygulamasını yapılandırma ve uygulamaya grup atama
-1. Oturum [Azure portalında](https://portal.azure.com) bir Azure AD Yöneticisi veya genel yönetici olarak.
-2. Gezinti bölmesinde seçin **Azure Active Directory**.
-3. Altında **Yönet**seçin **kurumsal uygulamalar** > **tüm uygulamaları**.
-4. Uygulama listesinde, bulmak ve uygulamayı açın.
-5. Altında **Yönet**seçin **çoklu oturum açma**ve uygulama için çoklu oturum açmayı yapılandırın. (Ayrıntılar için bkz [kurumsal uygulamalar için çoklu oturum açmayı yönetme](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-portal).)
-6. Altında **Yönet**seçin **Self Servis**ve Self Servis uygulama erişimini ayarlama. (Ayrıntılar için bkz [Self Servis uygulama erişiminin nasıl kullanıldığını](https://docs.microsoft.com/azure/active-directory/application-access-panel-self-service-applications-how-to).) 
+### <a name="configure-the-app-for-self-service-and-assign-the-group-to-the-app"></a>Uygulamayı self servis için yapılandırma ve grubu uygulamaya atama
+1. [Azure Portal](https://portal.azure.com) Azure AD yöneticisi veya genel yönetici olarak oturum açın.
+2. Gezinti bölmesinde **Azure Active Directory**' yi seçin.
+3. **Yönet**' ın altında **tüm uygulamalar** > **Kurumsal uygulamalar** ' ı seçin.
+4. Uygulama listesinde, uygulamayı bulun ve açın.
+5. **Yönet**altında **Çoklu oturum açma**' yı seçin ve uygulamayı çoklu oturum açma için yapılandırın. (Ayrıntılar için bkz. [Kurumsal uygulamalar için çoklu oturum açmayı yönetme](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-portal).)
+6. **Yönet**altında **self servis**' i seçin ve self servis uygulama erişimini ayarlayın. (Ayrıntılar için bkz. [self servis uygulama erişimini kullanma](https://docs.microsoft.com/azure/active-directory/application-access-panel-self-service-applications-how-to).) 
 
     > [!NOTE]
-    > Ayar için **atanan kullanıcılar hangi gruba eklenir?** önceki bölümde oluşturduğunuz grubunu seçin.
-7. Altında **Yönet**seçin **kullanıcılar ve gruplar**, oluşturduğunuz Self Servis Grup listesinde göründüğünü doğrulayın.
-8. Uygulama grubu sahibinin erişim paneline yönlendiren eklemek için seçin **Kullanıcı Ekle** > **kullanıcılar ve gruplar**. Grup sahibi için arama yapın ve kullanıcı seçin, **seçin**ve ardından **atama** kullanıcı uygulamaya ekleyin.
+    > **Kullanıcıların hangi gruba atanması gerektiğine** ilişkin ayar için, önceki bölümde oluşturduğunuz grubu seçin.
+7. **Yönet**' ın altında **Kullanıcılar ve gruplar**' ı seçin ve oluşturduğunuz self servis grubunun listede göründüğünü doğrulayın.
+8. Uygulamayı grup sahibinin erişim paneline eklemek için Kullanıcı > **kullanıcıları ve grupları** **Ekle** ' yi seçin. Grup sahibini arayın ve kullanıcıyı seçin, **Seç**' e tıklayın ve ardından kullanıcıyı uygulamaya eklemek için **ata** ' ya tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure AD B2B işbirliği hakkında aşağıdaki makalelere bakın:
+Azure AD B2B işbirliği ile ilgili aşağıdaki makalelere bakın:
 
 - [Azure AD B2B işbirliği nedir?](what-is-b2b.md)
-- [Azure Active Directory yöneticileri B2B işbirliği kullanıcılarını nasıl ekleyebilir?](add-users-administrator.md)
-- [B2B işbirliği Davetiyesi kullanımı](redemption-experience.md)
+- [Azure Active Directory yöneticileri B2B işbirliği kullanıcılarını nasıl ekler?](add-users-administrator.md)
+- [B2B işbirliği daveti satın alma](redemption-experience.md)
 - [Azure AD B2B işbirliği lisanslaması](licensing-guidance.md)

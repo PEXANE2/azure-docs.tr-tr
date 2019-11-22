@@ -1,5 +1,5 @@
 ---
-title: Azure multi-Factor Authentication sunucusu - Azure Active Directory Başlarken
+title: Azure Multi-Factor Authentication Sunucusu kullanmaya başlama-Azure Active Directory
 description: Adım adım Azure MFA Server şirket içi kullanmaya başlama
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,28 +11,28 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15900758945fd5c97198caf47ff01fcfb5a6a794
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4682425dfd3f32e139390ef65e267a80d95f6ccd
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057411"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74268984"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Sunucusu’nu kullanmaya başlama
 
 <center>
 
-![MFA sunucusu şirket içi ile çalışmaya başlama](./media/howto-mfaserver-deploy/server2.png)</center>
+![, şirket içi MFA sunucusu ile çalışmaya başlama](./media/howto-mfaserver-deploy/server2.png)</center>
 
 Bu sayfa yeni bir sunucu yüklemeyi ve şirket içi Active Directory’de kurulumunu yapmayı ele alır. MFA sunucusu zaten yüklüyse ve yükseltmek istiyorsanız bkz. [En yeni Azure Multi-Factor Authentication Sunucusu’na yükseltme](howto-mfaserver-deploy-upgrade.md). Yalnızca web hizmetini yükleme hakkında bilgi almak istiyorsanız bkz. [Azure Multi-Factor Authentication Sunucusu Mobil Uygulama Web Hizmeti’ni dağıtma](howto-mfaserver-deploy-mobileapp.md).
 
 > [!IMPORTANT]
-> 1 Temmuz 2019'dan itibaren Microsoft artık yeni dağıtımlar için MFA sunucusu sunacaktır. Bulut tabanlı Azure multi-Factor Authentication, kullanıcıların multi-Factor authentication gerektirmesine istediğiniz yeni müşteriler kullanmanız gerekir. MFA sunucusu 1 Temmuz'dan önce etkinleştirmiş olan mevcut müşteriler, Gelecekteki güncelleştirmelerin en son sürümü indirip zamanki etkinleştirme kimlik bilgileri oluştur mümkün olacaktır.
+> 1 Temmuz 2019 itibariyle, Microsoft artık Yeni dağıtımlar için MFA sunucusu sunmaz. Kullanıcılardan Multi-Factor Authentication istemek isteyen yeni müşteriler bulut tabanlı Azure Multi-Factor Authentication kullanmalıdır. MFA sunucusunu 1 Temmuz 'dan önce etkinleştiren mevcut müşteriler, en son sürümü ve gelecekteki güncelleştirmeleri indirebilir ve her zamanki gibi etkinleştirme kimlik bilgilerini oluşturabilir.
 
 ## <a name="plan-your-deployment"></a>Dağıtımınızı planlama
 
 > [!WARNING]
-> 2019 MFA Server'ın Mart ayından başlayarak yüklemeler yalnızca ücretli kiracılar için kullanılabilir. Ücretsiz deneme kiracıları artık indirin veya oluşturma ve etkinleştirme kimlik bilgileri kullanmak mümkün olacaktır.
+> Mart 2019 ' den başlayarak MFA sunucu İndirmeleri yalnızca ücretli kiracılar tarafından kullanılabilir. Ücretsiz/deneme kiracılar artık etkinleştirme kimlik bilgilerini indiremez veya kullanamaz.
 
 Azure Multi-Factor Authentication Sunucusu'nu indirmeden önce yük ve yüksek kullanılabilirlik gereksinimlerinizi göz önünde bulundurun. Bu bilgileri kullanarak nasıl ve nereye dağıtım gerçekleştireceğinize karar verin.
 
@@ -41,10 +41,10 @@ Düzenli olarak kimlik doğrulaması yapmasını beklediğiniz kullanıcı sayı
 | Kullanıcılar | RAM |
 | ----- | --- |
 | 1-10.000 | 4 GB |
-| 10\.001-50.000 | 8 GB |
-| 50\.001-100.000 | 12 GB |
-| 100\.000-200.001 | 16 GB |
-| 200\.001+ | 32 GB |
+| 10.001-50.000 | 8 GB |
+| 50.001-100.000 | 12 GB |
+| 100.000-200.001 | 16 GB |
+| 200.001+ | 32 GB |
 
 Yüksek kullanılabilirlik veya yük dengeleme için birden çok sunucu ayarlamanız mı gerekiyor? Azure MFA Sunucusu ile bu yapılandırmayı ayarlamanın birçok yolu vardır. İlk Azure MFA Sunucunuzu yüklediğinizde bu, ana sunucunuz olur. Diğer tüm sunucular, alt sunucu haline gelir ve kullanıcılarının yanı sıra yapılandırmayı ana sunucuyla otomatik olarak eşitler. Ardından, bir birincil sunucu yapılandırabilir ve geri kalanları yedek sunucu olarak belirleyebilir veya tüm sunucular arasında yük dengeleme ayarlayabilirsiniz.
 
@@ -58,7 +58,7 @@ Azure Multi-Factor Authentication için kullandığınız sunucunun aşağıdaki
 |:--- |:--- |
 | Donanım |<li>200 MB boş sabit disk alanı</li><li>x32 veya x64 özellikli işlemci</li><li>1 GB veya daha fazla RAM</li> |
 | Yazılım |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008 R2</li><li>Windows Server 2008, SP1, SP2</li><li>Windows Server 2003 R2</li><li>Windows Server 2003, SP1, SP2</li><li>Windows 10</li><li>Windows 8.1, tüm sürümler</li><li>Windows 8, tüm sürümler</li><li>Windows 7, tüm sürümler</li><li>Windows Vista, tüm sürümler, SP1, SP2</li><li>Microsoft .NET 4.0 Framework</li><li>IIS 7.0 veya üst sürümü, kullanıcı portalı veya web hizmeti SDK’sı yüklüyorsanız</li> |
-| İzinler | Active Directory ile kaydetmek için etki alanı yöneticisi veya kuruluş yöneticisi hesabı |
+| İzinler | Active Directory kaydedileceği etki alanı yöneticisi veya kuruluş yöneticisi hesabı |
 
 ### <a name="azure-mfa-server-components"></a>Azure MFA Sunucusu Bileşenleri
 
@@ -97,16 +97,16 @@ Olay Onayı özelliğini kullanmıyorsanız ve kullanıcılarınız şirket ağ�
 ## <a name="download-the-mfa-server"></a>MFA Sunucusu'nu indirme
 
 > [!WARNING]
-> 2019 MFA Server'ın Mart ayından başlayarak yüklemeler yalnızca ücretli kiracılar için kullanılabilir. Ücretsiz deneme kiracıları artık indirin veya oluşturma ve etkinleştirme kimlik bilgileri kullanmak mümkün olacaktır.
+> Mart 2019 ' den başlayarak MFA sunucu İndirmeleri yalnızca ücretli kiracılar tarafından kullanılabilir. Ücretsiz/deneme kiracılar artık etkinleştirme kimlik bilgilerini indiremez veya kullanamaz.
 
 Azure portalından Azure Multi-Factor Authentication Sunucusu'nu indirmek için aşağıdaki adımları izleyin:
 
 1. [Azure Portal](https://portal.azure.com)’da yönetici olarak oturum açın.
-2. **Azure Active Directory** > **MFA Sunucusu**'nu seçin.
+2. Arama yapın ve *Azure Active Directory*seçin. **MFA sunucusu**' nu seçin.
 3. **Sunucu ayarları**'nı seçin.
 4. **İndir**'i seçin ve indirme sayfasındaki talimatları izleyerek yükleyiciyi kaydedin. 
 
-   ![Azure portalından MFA Sunucusu'nu indirme](./media/howto-mfaserver-deploy/downloadportal.png)
+   ![MFA sunucusunu Azure portal indirin](./media/howto-mfaserver-deploy/downloadportal.png)
 
 5. Yükleyiciyi çalıştırdıktan sonra bakacağımızdan bu sayfayı açık tutun.
 
@@ -119,7 +119,7 @@ Artık sunucuyu indirdiğinize göre, yükleyebilir ve yapılandırabilirsiniz. 
 3. Yükleme tamamlandıktan sonra **Son**'a tıklayın. Yapılandırma sihirbazı başlatılır.
 4. Yapılandırma sihirbazı karşılama ekranında **Kimlik Doğrulaması Yapılandırma Sihirbazı kullanmayı atla** seçeneğini işaretleyin ve **İleri**’ye tıklayın. Sihirbaz kapatılır ve sunucu başlatılır.
 
-   ![Kimlik Doğrulaması Yapılandırma Sihirbazı'nı kullanmayı atla](./media/howto-mfaserver-deploy/skip2.png)
+   ![Kimlik doğrulama Yapılandırma Sihirbazı 'Nı kullanarak atlayın](./media/howto-mfaserver-deploy/skip2.png)
 
 5. Sunucuyu indirdiğiniz sayfaya dönerek, **Etkinleştirme Kimlik Bilgileri Oluştur** düğmesine tıklayın. Bu bilgileri verilen kutularda Azure MFA Sunucusu’na kopyalayın ve **Etkinleştir**’e tıklayın.
 
@@ -139,7 +139,7 @@ Soldaki e-posta simgesine tıklayarak bu e-postaları gönderme ayarlarını yap
 
 E-posta İçeriği sekmesinde, seçim yapabileceğiniz e-posta şablonlarını görebilirsiniz. Kullanıcılarınızı iki adımlı doğrulama için nasıl yapılandırdığınıza bağlı olarak, size en uygun şablonu seçin.
 
-![Konsolunda MFA sunucusu e-posta şablonları](./media/howto-mfaserver-deploy/email2.png)
+![Konsolundaki MFA sunucusu e-posta şablonları](./media/howto-mfaserver-deploy/email2.png)
 
 ## <a name="import-users-from-active-directory"></a>Kullanıcıları Active Directory'den içeri aktarma
 
@@ -152,7 +152,7 @@ Artık sunucu yüklendiğine göre kullanıcıları eklemek istersiniz. Kullanı
 3. Artık kullanıcıları tek tek arayabilir ya da içindeki kullanıcılarla birlikte OU’lar için AD dizininde arama yapabilirsiniz. Bu durumda kullanıcıların OU’su belirtilir.
 4. Sağ tarafta tüm kullanıcıları vurgulayın ve **İçeri Aktar**’a tıklayın. Başarılı olduğunuzu belirten bir açılır pencere görmeniz gerekir. İçeri aktarma penceresini kapatın.
 
-   ![Active Directory'den MFA sunucusu kullanıcı içeri aktarma](./media/howto-mfaserver-deploy/import2.png)
+   ![MFA sunucusu kullanıcı içeri aktarma Active Directory](./media/howto-mfaserver-deploy/import2.png)
 
 ### <a name="automated-synchronization-with-active-directory"></a>Active Directory ile otomatik eşitleme
 
@@ -180,7 +180,7 @@ Artık sunucu yüklendiğine göre kullanıcıları eklemek istersiniz. Kullanı
 Yukarıdaki alanlara ek olarak, doğrulama sonucu (başarılı/reddedildi) ve reddetme nedeni kimlik doğrulama verileriyle birlikte depolanır ve kimlik doğrulama/kullanım raporlarıyla kullanıma sunulur.
 
 > [!IMPORTANT]
-> Telefon araması seçenekleri 2019'ın Mart başlangıç MFA sunucusu kullanıcıları Azure AD ücretsiz/deneme kiracılar için kullanılabilir olmayacak. SMS iletileri, bu değişiklikten etkilenmez. Telefon Araması'nda kullanıcılara kullanılabilir Ücretli Azure AD kiracılarıyla devam eder. Bu değişiklik, yalnızca Azure AD ücretsiz/deneme kiracıları etkiler.
+> Mart 2019 ' den itibaren telefon araması seçenekleri, ücretsiz/deneme Azure AD kiracılarındaki sunucu kullanıcıları için mevcut olmayacaktır. SMS iletileri bu değişiklikten etkilenmez. Telefon araması, ücretli Azure AD kiracılarındaki kullanıcılar için kullanılabilir olmaya devam edecektir. Bu değişiklik yalnızca ücretsiz/deneme Azure AD kiracılarını etkiler.
 
 ## <a name="back-up-and-restore-azure-mfa-server"></a>Azure MFA Sunucusunu yedekleme ve geri yükleme
 

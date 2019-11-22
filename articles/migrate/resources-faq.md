@@ -4,14 +4,14 @@ description: Azure geçişi hizmeti hakkında sık sorulan soruların yanıtlar�
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 11/21/2019
 ms.author: snehaa
-ms.openlocfilehash: a622a5793e817be2445e60d925354ab37bb8e331
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: dc7dff0119ec849b447754ae54a45911038f6c48
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185770"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284463"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure geçişi: sık sorulan sorular
 
@@ -118,16 +118,10 @@ Sunucu değerlendirmesi, geçiş hazırlığı ve Azure 'a geçiş için iş yü
 
 ### <a name="whats-the-difference-between-server-assessment-and-the-site-recovery-deployment-planner"></a>Sunucu değerlendirmesi ve Site Recovery Dağıtım Planlayıcısı arasındaki fark nedir?
 
-Sunucu değerlendirmesi bir geçiş planlama aracıdır. Site Recovery Dağıtım Planlayıcısı bir olağanüstü durum kurtarma planlama aracıdır. 
+Sunucu değerlendirmesi bir geçiş planlama aracıdır. Site Recovery Dağıtım Planlayıcısı bir olağanüstü durum kurtarma planlama aracıdır.
 
 - **Azure 'da şirket içi geçiş planlama**: Şirket Içi sunucularınızı Azure 'a geçirmeyi planlıyorsanız, geçiş planlaması Için Sunucu değerlendirmesi kullanın. Şirket içi iş yüklerini değerlendirir ve geçiş yapmanıza yardımcı olacak yönergeler ve araçlar sağlar. Geçiş planı kurulduktan sonra, makineleri Azure 'a geçirmek için Azure geçiş sunucusu geçişi de dahil olmak üzere araçları kullanabilirsiniz.
 - **Azure 'da olağanüstü durum kurtarmayı planlayın**: Şirket içinden Azure 'a olağanüstü durum kurtarma ayarlamayı Site Recovery için Site Recovery dağıtım planlayıcısı kullanın. Dağıtım Planlayıcısı, olağanüstü durum kurtarma amacıyla Şirket içi ortamınızın derinlemesine ve Site Recovery özgü bir değerlendirmesini sağlar. Çoğaltma ve yük devretme gibi olağanüstü durum kurtarma konusunda öneriler sağlar.
-
-### <a name="does-azure-migrate-estimate-costs-for-the-enterprise-agreement-ea-program"></a>Azure, Kurumsal Anlaşma (EA) programı için tahmini maliyetleri mi geçirsin?
-
-Azure geçişi sunucu değerlendirmesi Şu anda [Kurumsal Anlaşma program](https://azure.microsoft.com/offers/enterprise-agreement-support/)için maliyet tahminleri desteklememektedir. Geçici bir çözüm olarak, bir değerlendirme oluşturduğunuzda, **teklif**olarak **Kullandıkça Öde** ' yi belirtebilir ve indirim yüzdesini (aboneliğe uygulanabilir) değerlendirme özelliklerindeki **indirimle** el ile ekleyebilirsiniz:
-
-  ![Değerlendirme özellikleri](./media/resources-faq/discount.png)
 
 ### <a name="whats-the-difference-between-as-on-premises-and-performance-based-sizing"></a>Şirket içi ve performans tabanlı boyutlandırma arasındaki fark nedir?
 

@@ -1,5 +1,5 @@
 ---
-title: B2B işbirliği - Azure Active Directory kullanıcı belirteçleri anlama | Microsoft Docs
+title: B2B işbirliği içindeki Kullanıcı belirteçlerini anlama-Azure AD
 description: Azure Active Directory B2B işbirliği için kullanıcı belirteci başvurusu
 services: active-directory
 ms.service: active-directory
@@ -11,16 +11,16 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c2e872c108e19e21258610edd62899b1029fcd9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 08dbb81b91def2fd464ecc85c2d2eaf45ed189d5
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65767179"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74271769"
 ---
-# <a name="understand-user-tokens-in-azure-ad-b2b-collaboration"></a>Azure AD B2B işbirliği içinde çalışan kullanıcı belirteçleri anlama
+# <a name="understand-user-tokens-in-azure-ad-b2b-collaboration"></a>Azure AD B2B işbirliğinde Kullanıcı belirteçlerini anlayın
 
-Belirteç B2B işbirliği kullanıcısı için nasıl göründüğüne bilmek istiyorsanız, burada, taşıyıcı belirteç ayrıntıları ve bir Azure Active Directory (Azure AD) Konuk ve kaynak Kiracı (Kiracı kimliği için bir Microsoft hesabı Konuk için belirteç içeriği 04dcc6ab-388a-4559-b527-fbec656300ea). JSON Web Token (JWT) içeriği görmek için [ https://jwt.io/ ](https://jwt.io/) veya [ https://jwt.ms/ ](https://jwt.ms/).
+Bir B2B işbirliği kullanıcısına ait belirtecin nasıl göründüğünü anlamak isterseniz, kaynak kiracısında bir Azure Active Directory (Azure AD) konuğunu ve bir Microsoft hesabı konuğunu için taşıyıcı belirteç ayrıntıları ve belirteç içerikleri aşağıda verilmiştir (tenantıd için 04dcc6ab-388A-4559-B527-fbec656300ea). JSON Web Token (JWT) içeriğini görmek için [https://jwt.io/](https://jwt.io/) veya [https://jwt.ms/](https://jwt.ms/)kullanın.
 
 ## <a name="azure-ad-guest-token"></a>Azure AD Konuk belirteci
 ```
@@ -36,5 +36,5 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ilk0dWVLMm9hSU
 
 * [Azure AD B2B işbirliği nedir?](what-is-b2b.md)
 * [B2B işbirliği kullanıcı özellikleri](user-properties.md)
-* [B2B işbirliği kullanıcı taleplerini eşleme](claims-mapping.md)
+* [B2B işbirliği Kullanıcı talepleri eşleme](claims-mapping.md)
 

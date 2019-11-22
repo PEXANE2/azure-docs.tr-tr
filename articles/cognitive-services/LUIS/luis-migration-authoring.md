@@ -1,7 +1,7 @@
 ---
-title: Migrate to Azure resource for authoring
+title: Yazma için Azure kaynağına geçiş
 titleSuffix: Azure Cognitive Services
-description: Migrate to an Azure authoring resource key.
+description: Azure yazma kaynak anahtarına geçiş yapın.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,99 +11,99 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: 7721b6c86642ad79cd646c66b1ef578acdca1505
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: HT
+ms.openlocfilehash: 44baac5eb4e8887594ba05498901ba664380005f
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225505"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280766"
 ---
-# <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrate to an Azure resource authoring key
+# <a name="migrate-to-an-azure-resource-authoring-key"></a>Azure Kaynak yazma anahtarına geçiş
 
-Language Understanding (LUIS) authoring authentication changed from an email account to an Azure resource. 
+Language Understanding (LUSıS) yazma kimlik doğrulaması, bir e-posta hesabından Azure kaynağına değişti. Şu anda gerekli olmasa da, bir Azure kaynağına geçiş daha sonra zorlanabilir.
 
-## <a name="why-migrate"></a>Why migrate?
+## <a name="why-migrate"></a>Neden geçirilir?
 
-Using an Azure resource for authoring allows you, as the owner of the resource, to control access to authoring. You can create and name authoring resources to manage different groups of authors. 
+Yazma için bir Azure kaynağı kullanmak, yazma erişimini denetlemek için kaynağın sahibi olarak size izin verir. Farklı yazar gruplarını yönetmek için yazma kaynakları oluşturabilir ve ad verebilirsiniz. 
 
-For example, if you have 2 types of LUIS apps you are authoring, with different members, you can create two different authoring resources and assign contributors. The Azure authoring resource controls the authorization. 
+Örneğin, farklı Üyeler ile yazma işlemi yaptığınız 2 tür lusıs uygulamanız varsa, iki farklı yazma kaynağı oluşturabilir ve katkıda bulunanlar atayabilirsiniz. Azure Authoring Resource, yetkilendirmeyi denetler. 
 
 > [!Note]
-> Before migration, co-authors are known as _collaborators_. After migration, the Azure role of _contributor_ is used for the same functionality.
+> Geçişten önce, ortak yazarlar _ortak çalışanlar_olarak bilinir. Geçişten sonra, aynı işlevsellik için _katılımcı_ Azure rolü kullanılır.
 
-## <a name="what-is-migrating"></a>What is migrating?
+## <a name="what-is-migrating"></a>Ne geçiriliyor?
 
-Migration includes:
+Geçişe şunlar dahildir:
 
-* All users of LUIS, owners and contributors.
-* **All** apps.
-* A **one-way** migration.
+* LULAR, sahipler ve katkıda bulunanlar tüm kullanıcıları.
+* **Tüm** uygulamalar.
+* **Tek yönlü** geçiş.
 
-The owner can't choose a subset of apps to migrate and the process isn't reversible. 
+Sahip, geçirilecek uygulamaların bir alt kümesini seçemez ve işlem geri alınamaz. 
 
-The migration is not: 
+Geçiş şu değildir: 
 
-* A process that collects collaborators and automatically moves or adds to the Azure authoring resource. You, as the app owner, need to complete this step. This step requires permissions to the appropriate resource.
-* A process to create and assign a prediction runtime resource. If you need a prediction runtime resource, that is [a separate process](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) and is unchanged. 
+* Ortak çalışanları toplayan ve otomatik olarak taşınan veya Azure yazma kaynağına ekleyen bir işlem. Uygulamanın sahibi olarak bu adımı gerçekleştirmeniz gerekir. Bu adım uygun kaynak için izinleri gerektirir.
+* Tahmin çalışma zamanı kaynağı oluşturma ve atama işlemi. Bir tahmin çalışma zamanı kaynağına ihtiyacınız varsa, bu [ayrı bir işlemdir](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) ve değiştirilmez. 
 
-## <a name="how-are-the-apps-migrating"></a>How are the apps migrating?
+## <a name="how-are-the-apps-migrating"></a>Uygulamalar nasıl taşınıyor?
 
-The [LUIS portal](https://www.luis.ai) provides the migration process. 
+[LUA portalı](https://www.luis.ai) , geçiş işlemini sağlar. 
 
-You will be asked to migrate if:
+Şu durumlarda geçiş yapmanız istenir:
 
-* You have apps on the email authentication system for authoring.
-* And you are the app owner. 
+* Yazma için e-posta kimlik doğrulama sisteminde uygulamalarınız var.
+* Uygulama sahibisiniz. 
 
-You can delay the migration process, by canceling out of the window. You are periodically asked to migrate until you migrate or the migration deadline is passed. You can start the migration process from the top navigation bar's lock icon.
+Pencereyi iptal ederek geçiş işlemini erteleyebilirsiniz. Geçiş yapılıncaya veya geçiş son tarihi geçirilmeden, düzenli aralıklarla geçiş yapmanız istenir. Geçiş işlemini üst gezinti çubuğunun kilit simgesinden başlatabilirsiniz.
 
-## <a name="migration-for-the-app-owner"></a>Migration for the app owner
+## <a name="migration-for-the-app-owner"></a>Uygulama sahibi için geçiş
 
-### <a name="before-you-migrate"></a>Before you migrate
+### <a name="before-you-migrate"></a>Geçirmeden önce
 
-* **Optionally**, backup the apps from the LUIS portal's apps list by exporting each app or use the export [API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40).
-* **Optionally**, save each app's collaborator's list. This email list is provided as part of the migration process.
-* **Required**, you need to have an [Azure subscription](https://azure.microsoft.com/free/). A part of the subscription process does require billing information. However, you can use the Free (`F0`) pricing tier when you use LUIS. 
+* **Isteğe bağlı**olarak, her uygulamayı dışarı aktararak ve dışarı aktarma [API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)'sini kullanarak, bu uygulamaları lusıs portalının uygulamalar listesinden yedekleyin.
+* **Isteğe bağlı**olarak, her bir uygulamanın ortak kayıt listesini kaydedin. Bu e-posta listesi, geçiş işleminin bir parçası olarak sağlanır.
+* **Gerekli**, bir [Azure aboneliğinizin](https://azure.microsoft.com/free/)olması gerekir. Abonelik işleminin bir parçası faturalandırma bilgileri gerektirir. Ancak, LUSıS kullandığınızda ücretsiz (`F0`) fiyatlandırma katmanını kullanabilirsiniz. 
 
-**Authoring your LUIS app is free**, indicated by the `F0` tier. Learn [more about pricing tiers](luis-boundaries.md#key-limits).
+**Lusıs uygulamanızı yazma**`F0` katmanı tarafından belirtilen ücretsizdir. [Fiyatlandırma katmanları hakkında daha fazla](luis-boundaries.md#key-limits)bilgi edinin.
 
-If you do not have an Azure subscription, [sign up](https://azure.microsoft.com/free/). 
+Azure aboneliğiniz yoksa [kaydolun](https://azure.microsoft.com/free/). 
 
 ### <a name="migration-steps"></a>Geçiş adımları
 
-Follow [these migration steps](luis-migration-authoring-steps.md).
+[Bu geçiş adımlarını](luis-migration-authoring-steps.md)izleyin.
 
 ### <a name="after-you-migrate"></a>Geçişinizden sonra 
 
-After the migration process, all your LUIS apps are now assigned to a single LUIS authoring resource.
+Geçiş işleminden sonra, tüm LUO uygulamalarınız tek bir LUıN yazma kaynağına atanır.
 
-You can create more authoring resources and assign from the **Manage -> Azure resources** page in the _LUIS portal_. 
+_LUA portalında_daha fazla yazma kaynağı oluşturabilir ve **> Azure kaynaklarını yönet** sayfasından atayabilirsiniz. 
 
-You can add contributors to the authoring resource from the _Azure portal_, on the **Access Control (IAM)** page for that resource. See [add contributor access](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource) for more information.
+Kaynak için **Access Control (IAM)** sayfasında _Azure Portal_yazma kaynağına katkıda bulunanlar ekleyebilirsiniz. Daha fazla bilgi için bkz. [katılımcı erişimi ekleme](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource) .
 
 |Portal|Amaç|
 |--|--|
-|[Azure](https://azure.microsoft.com/free/)|* Create prediction and authoring resources.<br>* Assign contributors.|
-|[LUIS](https://www.luis.ai)|* Migrate to new authoring resources.<br>* Assign or unassign prediction and authoring resources to apps from **Manage -> Azure resources** page.| 
+|[Azure](https://azure.microsoft.com/free/)|* Tahmin ve yazma kaynakları oluşturun.<br>* Katkıda bulunanlar ata.|
+|[LUIS](https://www.luis.ai)|* Yeni yazma kaynaklarına geçirin.<br>* **Manage-> Azure Resources** sayfasından tahmine ve yazma kaynaklarını uygulamalara atayın veya atamayı yapın.| 
 
-## <a name="migration-for-the-app-contributor"></a>Migration for the app contributor
+## <a name="migration-for-the-app-contributor"></a>Uygulama katılımcısı için geçiş
 
-Every user of LUIS needs to migrate, including collaborators/contributors. 
+Her LUıN kullanıcısının, ortak çalışanlar/katkıda bulunanlar dahil olmak üzere geçirilmesi gerekir. 
 
-### <a name="before-the-app-is-migrated"></a>Before the app is migrated
+### <a name="before-the-app-is-migrated"></a>Uygulama geçirilmeden önce
 
-You may choose to export an app you are a collaborator on, then import the app back into LUIS. The import process creates a new app with a new app ID, for which you are the owner.
+Ortak çalışan bir uygulamayı dışarı aktarmayı tercih edebilir ve ardından uygulamayı LUSıS 'e geri aktarabilirsiniz. İçeri aktarma işlemi, sahip olduğunuz yeni bir uygulama KIMLIĞIYLE yeni bir uygulama oluşturur.
 
-### <a name="after-the-app-is-migrated"></a>After the app is migrated
+### <a name="after-the-app-is-migrated"></a>Uygulama geçirildikten sonra
 
-The app owner needs to [add your email to the Azure authoring resource as a collaborator](luis-how-to-collaborate.md#add-contributor-to-azure-authoring-resource). 
+Uygulama sahibinin [e-postanızı Azure yazma kaynağına ortak çalışan olarak eklemesi](luis-how-to-collaborate.md#add-contributor-to-azure-authoring-resource)gerekir. 
 
-After the migration process, any apps you own are available on the **My apps** page of the LUIS portal.  
+Geçiş işleminden sonra, sahip olduğunuz tüm uygulamalar, LUı portalının **uygulamalarım** sayfasında bulunur.  
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-LUIS authoring keys are only visible in the LUIS portal after the migration process is complete. If you create the authoring keys, such as with the LUIS CLI, the user still needs to complete the migration process. 
+LUSıS yazma anahtarları yalnızca, geçiş işlemi tamamlandıktan sonra LUO portalında görünür. LUSıS CLı gibi yazma anahtarlarını oluşturursanız, kullanıcının geçiş işlemini tamamlaması gerekir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [How to migrate your app to an authoring resource](luis-migration-authoring-steps.md)
+* [Uygulamanızı bir yazma kaynağına geçirme](luis-migration-authoring-steps.md)

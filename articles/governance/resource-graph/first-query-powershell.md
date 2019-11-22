@@ -1,47 +1,51 @@
 ---
-title: 'Quickstart: Your first PowerShell query'
-description: In this quickstart, you follow the steps to enable the Resource Graph module for Azure PowerShell and run your first query.
-ms.date: 10/18/2019
+title: 'Hızlı başlangıç: ilk PowerShell sorgunuz'
+description: Bu hızlı başlangıçta, Azure PowerShell için kaynak Graph modülünü etkinleştirmek ve ilk sorgunuzu çalıştırmak için adımları izleyin.
+ms.date: 11/21/2019
 ms.topic: quickstart
-ms.openlocfilehash: de0103ea5fe12ae26ac64d04a8efc50b9e708fc5
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: dd96324671f46f98d5b6c8bae1839a5b02d38b23
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74216471"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304143"
 ---
-# <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Quickstart: Run your first Resource Graph query using Azure PowerShell
+# <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak ilk kaynak grafik sorgunuzu çalıştırın
 
 Azure Kaynak Grafiği’ni kullanmada ilk adım, Azure PowerShell modülünün yüklenip yüklenmediğini denetlemektir. Bu hızlı başlangıç, Azure PowerShell yüklemenize modül ekleme işlemini incelemenizi sağlar.
 
 Bu işlemin sonunda, modülü seçtiğiniz Azure PowerShell yüklemesine eklemiş ve ilk Kaynak Grafiği sorgunuzu çalıştırmış olacaksınız.
 
+## <a name="prerequisites"></a>Önkoşullar
+
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
+
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="add-the-resource-graph-module"></a>Kaynak Grafiği modülü ekleme
 
-Azure PowerShell’in Azure Kaynak Grafiği’ni sorgulamasını etkinleştirmek için modül eklenmelidir. This module can be used with locally installed PowerShell, with [Azure Cloud Shell](https://shell.azure.com), or with the [PowerShell Docker image](https://hub.docker.com/_/microsoft-powershell).
+Azure PowerShell’in Azure Kaynak Grafiği’ni sorgulamasını etkinleştirmek için modül eklenmelidir. Bu modül, [Azure Cloud Shell](https://shell.azure.com)Ile veya [PowerShell Docker görüntüsü](https://hub.docker.com/_/microsoft-powershell)Ile yerel olarak yüklü PowerShell ile kullanılabilir.
 
 ### <a name="base-requirements"></a>Temel gereksinimler
 
 Azure Kaynak Grafiği modülü aşağıdaki yazılımı gerektirir:
 
-- Azure PowerShell 1.0.0 or higher. Henüz yüklenmiş değilse, [bu yönergeleri](/powershell/azure/install-az-ps) izleyin.
+- Azure PowerShell 1.0.0 veya üzeri. Henüz yüklenmiş değilse, [bu yönergeleri](/powershell/azure/install-az-ps) izleyin.
 
 - PowerShellGet 2.0.1 veya üzeri. Henüz yüklenmiş ve güncellenmiş değilse, [bu yönergeleri](/powershell/scripting/gallery/installing-psget) izleyin.
 
-### <a name="install-the-module"></a>Install the module
+### <a name="install-the-module"></a>Modülü yükler
 
-The Resource Graph module for PowerShell is **Az.ResourceGraph**.
+PowerShell için kaynak Graph modülü **az. ResourceGraph**' dir.
 
-1. From an **administrative** PowerShell prompt, run the following command:
+1. Bir **Yönetim** PowerShell isteminde aşağıdaki komutu çalıştırın:
 
    ```azurepowershell-interactive
    # Install the Resource Graph module from PowerShell Gallery
    Install-Module -Name Az.ResourceGraph
    ```
 
-1. Validate that the module has been imported and is the latest version (0.7.5):
+1. Modülün içeri aktarıldığını ve en son sürümü (0.7.5) olduğunu doğrulayın:
 
    ```azurepowershell-interactive
    # Get a list of commands for the imported Az.ResourceGraph module
@@ -84,7 +88,7 @@ Azure PowerShell modülünün seçtiğiniz ortamınıza eklenmesiyle birlikte ş
 Son sorgu birkaç kere çalıştırıldığında, ortamınızda hiçbir şeyin değişmediği varsayılarak döndürülen sonuçlar tutarlı ve beklendiği gibi olur, yani **Ad** özelliğine göre düzenlenir ama yine de en iyi beş sonuçla sınırlıdır.
 
 > [!NOTE]
-> If the query does not return results from a subscription you already have access to, then note that `Search-AzGraph` cmdlet defaults to subscriptions in the default context. To see the list of subscription IDs which are part of the default context run this `(Get-AzContext).Account.ExtendedProperties.Subscriptions` If you wish to search across all the subscriptions you have access to, one can set the PSDefaultParameterValues for `Search-AzGraph` cmdlet by running `$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}`
+> Sorgu zaten erişiminiz olan bir abonelikten sonuç döndürmezse, `Search-AzGraph` cmdlet 'inin varsayılan bağlamdaki abonelikler olduğunu unutmayın. Varsayılan `(Get-AzContext).Account.ExtendedProperties.Subscriptions` bağlamın bir parçası olan abonelik kimliklerinin listesini görmek için, erişiminiz olan tüm aboneliklerde arama yapmak istiyorsanız, bir tane, `Search-AzGraph` cmdlet 'i çalıştırarak PSDefaultParameterValues değerlerini ayarlayabilir `$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}`
    
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -103,10 +107,7 @@ Uninstall-Module -Name 'Az.ResourceGraph'
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Get more information about the [query language](./concepts/query-language.md).
-- Learn more about how to [explore resources](./concepts/explore-resources.md).
-- Run your first query by using the [Azure portal](first-query-portal.md).
-- Run your first query with [Azure CLI](first-query-azurecli.md).
-- See samples of [Starter queries](./samples/starter.md).
-- See samples of [Advanced queries](./samples/advanced.md).
-- Provide feedback on [UserVoice](https://feedback.azure.com/forums/915958-azure-governance).
+Bu hızlı başlangıçta, kaynak Graph modülünü Azure PowerShell ortamınıza eklediniz ve ilk sorgunuzu çalıştırdık. Kaynak grafik dili hakkında daha fazla bilgi edinmek için sorgu dili ayrıntıları sayfasına ilerleyin.
+
+> [!div class="nextstepaction"]
+> [Sorgu dili hakkında daha fazla bilgi alın](./concepts/query-language.md)

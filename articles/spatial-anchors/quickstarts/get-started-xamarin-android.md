@@ -1,21 +1,21 @@
 ---
-title: Hızlı başlangıç-Azure uzamsal bağlayıcılarla bir Xamarin Android uygulaması oluşturma | Microsoft Docs
+title: 'Hızlı başlangıç: Xamarin Android uygulaması oluşturma'
 description: Bu hızlı başlangıçta, uzamsal bağlayıcıları kullanarak Xamarin ile bir Android uygulaması oluşturmayı öğreneceksiniz.
 author: craigktreasure
-manager: virivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: crtreasu
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 0958961f1e66be130dd2be816f6002dd34465dc6
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 2976104c72179fede3b39816663ac8196d7539ec
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931661"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277017"
 ---
-# <a name="quickstart-create-a-xamarin-android-app-with-azure-spatial-anchors"></a>Hızlı Başlangıç: Azure uzamsal bağlayıcılarla bir Xamarin Android uygulaması oluşturma
+# <a name="quickstart-create-a-xamarin-android-app-with-azure-spatial-anchors"></a>Hızlı başlangıç: Azure uzamsal bağlayıcılarla bir Xamarin Android uygulaması oluşturma
 
 Bu hızlı başlangıçta, [Azure uzamsal bağlayıcıları](../overview.md)kullanarak Xamarin Ile bir Android uygulamasının nasıl oluşturulacağı ele alınmaktadır. Azure uzamsal bağlantıları, zaman içinde cihazlarda konumlarını sürekli tutan nesneleri kullanarak karma gerçeklik deneyimleri oluşturmanıza olanak sağlayan bir platformlar arası geliştirici hizmetidir. İşiniz bittiğinde, bir uzamsal bağlayıcıyı kaydedip geri çekebilmeniz için bir Android uygulamanız olacaktır.
 
@@ -49,7 +49,7 @@ Bu hızlı başlangıcı tamamlamak için aşağıdakileri yaptığınızdan emi
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
-Visual `Xamarin/SampleXamarin.sln` Studio 'da açın.
+Visual Studio 'da `Xamarin/SampleXamarin.sln` açın.
 
 ## <a name="configure-account-identifier-and-key"></a>Hesap tanımlayıcıyı ve anahtarı yapılandırın
 
@@ -57,9 +57,9 @@ Bir sonraki adım, uygulamayı hesap tanımlayıcıyı ve hesap anahtarınızı 
 
 Açık `Xamarin/SampleXamarin.Common/AccountDetails.cs`.
 
-Alanı bulun ve hesap anahtarıyla `Set me`değiştirin. `SpatialAnchorsAccountKey`
+`SpatialAnchorsAccountKey` alanını bulun ve `Set me` hesap anahtarıyla değiştirin.
 
-Alanı bulun ve hesap tanımlayıcısıyla `Set me`değiştirin. `SpatialAnchorsAccountId`
+`SpatialAnchorsAccountId` alanını bulun ve `Set me` hesap tanımlayıcısı ile değiştirin.
 
 ## <a name="deploy-the-app-to-your-android-device"></a>Uygulamayı Android cihazınıza dağıtma
 
@@ -71,25 +71,25 @@ Başlangıç projesini **Samplexamarin. Android**olarak ayarlayın, **çözüm y
 
 ![Visual Studio yapılandırması](./media/get-started-xamarin-android/visual-studio-windows-configuration.png)
 
-Uygulamanızı dağıtmak ve başlatmak için hata**ayıklamayı Başlat** ' ı seçin. > 
+Uygulamanızı dağıtmak ve başlatmak için hata **ayıklamayı başlatmak** > **Hata Ayıkla** ' yı seçin.
 
 # <a name="macostabdeploy-macos"></a>[macOS](#tab/deploy-macos)
 
 ![Visual Studio yapılandırması](./media/get-started-xamarin-android/visual-studio-macos-configuration.jpg)
 
-Uygulamanızı dağıtmak ve başlatmak için**hata ayıklama olmadan Başlat** ' ı seçin. > 
+Uygulamanızı dağıtmak ve başlatmak için **hata ayıklama olmadan başlat** > **Çalıştır** ' ı seçin.
 
 ---
 
 Uygulamada, tanıtımı çalıştırmak için **temel** ' yı seçin ve bir tutturucu yerleştirip geri çekmeniz için yönergeleri izleyin.
 
-> ![Ekran görüntüsü](./media/get-started-xamarin-android/screenshot-1.jpg)
-> 1![ekran](./media/get-started-xamarin-android/screenshot-2.jpg)
-> görüntüsü2![ekran görüntüsü 3](./media/get-started-xamarin-android/screenshot-3.jpg)
+> ![ekran görüntüsü 1](./media/get-started-xamarin-android/screenshot-1.jpg)
+> ![ekran görüntüsü 2](./media/get-started-xamarin-android/screenshot-2.jpg)
+> ![ekran görüntüsü 3](./media/get-started-xamarin-android/screenshot-3.jpg)
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 
 [!INCLUDE [Next steps](../../../includes/spatial-anchors-quickstarts-nextsteps.md)]
 
 > [!div class="nextstepaction"]
-> [Öğretici: Uzamsal bağlayıcıları cihazlarda paylaşma](../tutorials/tutorial-share-anchors-across-devices.md)
+> [Öğretici: cihazlarda uzamsal bağlayıcıları paylaşma](../tutorials/tutorial-share-anchors-across-devices.md)

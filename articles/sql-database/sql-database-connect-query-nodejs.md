@@ -1,6 +1,6 @@
 ---
-title: 'Quickstart: Use Node.js to query data from an Azure SQL database'
-description: How to use Node.js to create a program that connects to an Azure SQL database and query it using T-SQL statements.
+title: 'Hızlı başlangıç: node. js kullanarak Azure SQL veritabanındaki verileri sorgulama'
+description: Node. js kullanarak Azure SQL veritabanına bağlanan ve T-SQL deyimlerini kullanarak sorgulayan bir program oluşturma.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -11,74 +11,73 @@ ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 03/25/2019
 ms.custom: seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: bf63cd1fb81dace477b7d9062831f0b563314f8b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: HT
+ms.openlocfilehash: 064baf0215a2eaf7b90b78716b87606990b8fd21
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228001"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279250"
 ---
 # <a name="quickstart-use-nodejs-to-query-an-azure-sql-database"></a>Hızlı Başlangıç: Node.js kullanarak Azure SQL veritabanı sorgulama
 
-This quickstart demonstrates how to use [Node.js](https://nodejs.org) to connect to an Azure SQL database. You can then use T-SQL statements to query data.
+Bu hızlı başlangıçta, [Node. js](https://nodejs.org) kullanarak BIR Azure SQL veritabanına bağlanmak için nasıl kullanılacağı gösterilmektedir. Daha sonra verileri sorgulamak için T-SQL deyimlerini kullanabilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-To complete this sample, make sure you have the following prerequisites:
+Bu örneği gerçekleştirmek için aşağıdaki önkoşullara sahip olduğunuzdan emin olun:
 
-- Bir Azure SQL veritabanı. You can use one of these quickstarts to create and then configure a database in Azure SQL Database:
+- Bir Azure SQL veritabanı. Azure SQL veritabanı 'nda bir veritabanı oluşturmak ve yapılandırmak için bu hızlı başlangıçlardan birini kullanabilirsiniz:
 
   || Tek veritabanı | Yönetilen örnek |
   |:--- |:--- |:---|
-  | Create| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
+  | Oluşturma| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
   || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Yapılandırma | [Server-level IP firewall rule](sql-database-server-level-firewall-rule.md)| [Connectivity from a VM](sql-database-managed-instance-configure-vm.md)|
-  |||[Connectivity from on-site](sql-database-managed-instance-configure-p2s.md)
-  |Veri yükleme|Adventure Works loaded per quickstart|[Restore Wide World Importers](sql-database-managed-instance-get-started-restore.md)
-  |||Restore or import Adventure Works from [BACPAC](sql-database-import.md) file from [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
+  | Yapılandırma | [Sunucu düzeyi IP güvenlik duvarı kuralı](sql-database-server-level-firewall-rule.md)| [Bir VM 'den bağlantı](sql-database-managed-instance-configure-vm.md)|
+  |||[Siteden bağlantı](sql-database-managed-instance-configure-p2s.md)
+  |Veri yükleme|Hızlı başlangıç başına yüklenen Adventure Works|[Geniş dünyada içeri aktarıcılar geri yükleme](sql-database-managed-instance-get-started-restore.md)
+  |||[GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) 'Dan [bacpac](sql-database-import.md) dosyasından Adventure Works 'ü geri yükleme veya içe aktarma|
   |||
 
   > [!IMPORTANT]
-  > The scripts in this article are written to use the Adventure Works database. With a managed instance, you must either import the Adventure Works database into an instance database or modify the scripts in this article to use the Wide World Importers database.
+  > Bu makaledeki betikler, Adventure Works veritabanını kullanmak için yazılmıştır. Yönetilen bir örnek ile, Adventure Works veritabanını bir örnek veritabanına aktarmanız veya bu makaledeki betikleri Wide World Importers veritabanını kullanacak şekilde değiştirmeniz gerekir.
 
 
-- Node.js-related software for your operating system:
+- İşletim sisteminiz için Node. js ile ilgili yazılımlar:
 
-  - **MacOS**, install Homebrew and Node.js, then install the ODBC driver and SQLCMD. Bkz: [1.2 ve 1.3 adımları](https://www.microsoft.com/sql-server/developer-get-started/node/mac/).
+  - **MacOS**, homebrew ve Node. js ' yı yükleyip ODBC sürücüsünü ve sqlcmd 'yi yükler. Bkz: [1.2 ve 1.3 adımları](https://www.microsoft.com/sql-server/developer-get-started/node/mac/).
   
-  - **Ubuntu**, install Node.js, then install the ODBC driver and SQLCMD. Bkz: [1.2 ve 1.3 adımları](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu/).
+  - **Ubuntu**, Node. js ' yı yükleyip ODBC sürücüsünü ve sqlcmd 'yi yükler. Bkz: [1.2 ve 1.3 adımları](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu/).
   
-  - **Windows**, install Chocolatey and Node.js, then install the ODBC driver and SQLCMD. Bkz: [1.2 ve 1.3 adımları](https://www.microsoft.com/sql-server/developer-get-started/node/windows/).
+  - **Windows**, Chocolatey ve Node. js ' yı yükleyip ODBC sürücüsünü ve sqlcmd 'yi yükler. Bkz: [1.2 ve 1.3 adımları](https://www.microsoft.com/sql-server/developer-get-started/node/windows/).
 
-## <a name="get-sql-server-connection-information"></a>Get SQL server connection information
+## <a name="get-sql-server-connection-information"></a>SQL Server bağlantı bilgilerini al
 
-Get the connection information you need to connect to the Azure SQL database. You'll need the fully qualified server name or host name, database name, and login information for the upcoming procedures.
+Azure SQL veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Yaklaşan yordamlar için tam sunucu adı veya ana bilgisayar adı, veritabanı adı ve oturum açma bilgileri gerekir.
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
-2. Go to the **SQL databases**  or **SQL managed instances** page.
+2. **SQL veritabanları** veya **SQL yönetilen örnekler** sayfasına gidin.
 
-3. On the **Overview** page, review the fully qualified server name next to **Server name** for a single database or the fully qualified server name next to **Host** for a managed instance. To copy the server name or host name, hover over it and select the **Copy** icon. 
+3. **Genel bakış** sayfasında, tek bir veritabanı için **sunucu adı** ' nın yanında tam sunucu adını veya yönetilen örnek Için **ana bilgisayar ' ın** yanındaki tam sunucu adını gözden geçirin. Sunucu adını veya ana bilgisayar adını kopyalamak için üzerine gelin ve **Kopyala** simgesini seçin. 
 
 ## <a name="create-the-project"></a>Proje oluşturma
 
-Komut istemini açın ve *sqltest* adlı bir klasör oluşturun. Open the folder you created and run the following command:
+Komut istemini açın ve *sqltest* adlı bir klasör oluşturun. Oluşturduğunuz klasörü açın ve şu komutu çalıştırın:
 
   ```bash
   npm init -y
   npm install tedious
   ```
 
-## <a name="add-code-to-query-database"></a>Add code to query database
+## <a name="add-code-to-query-database"></a>Sorgu veritabanına kod ekleme
 
-1. In your favorite text editor, create a new file, *sqltest.js*.
+1. En sevdiğiniz metin düzenleyicisinde *SQLtest. js*adlı yeni bir dosya oluşturun.
 
-1. Replace its contents with the following code. Then add the appropriate values for your server, database, user, and password.
+1. İçeriğini aşağıdaki kodla değiştirin. Daha sonra sunucunuz, veritabanınız, Kullanıcı ve parolanız için uygun değerleri ekleyin.
 
     ```js
-    const Connection = require("tedious").Connection;
-    const Request = require("tedious").Request;
+    const { Connection, Request } = require("tedious");
 
     // Create connection to database
     const config = {
@@ -136,24 +135,24 @@ Komut istemini açın ve *sqltest* adlı bir klasör oluşturun. Open the folder
     ```
 
 > [!NOTE]
-> The code example uses the **AdventureWorksLT** sample database for Azure SQL.
+> Kod örneği, Azure SQL için **AdventureWorksLT** örnek veritabanını kullanır.
 
 ## <a name="run-the-code"></a>Kodu çalıştırma
 
-1. At the command prompt, run the program.
+1. Komut isteminde programı çalıştırın.
 
     ```bash
     node sqltest.js
     ```
 
-1. Verify the top 20 rows are returned and close the application window.
+1. İlk 20 satırın döndürüldüğünden emin olun ve uygulama penceresini kapatın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [SQL Server için Microsoft Node.js Sürücüsü](/sql/connect/node-js/node-js-driver-for-sql-server)
 
-- Connect and query on Windows/Linux/macOS with [.NET core](sql-database-connect-query-dotnet-core.md), [Visual Studio Code](sql-database-connect-query-vscode.md), or [SSMS](sql-database-connect-query-ssms.md) (Windows only)
+- [.NET Core](sql-database-connect-query-dotnet-core.md), [Visual Studio Code](sql-database-connect-query-vscode.md)veya [SSMS](sql-database-connect-query-ssms.md) Ile Windows/Linux/MacOS 'a bağlanma ve sorgulama (yalnızca Windows)
 
-- [Get started with .NET Core on Windows/Linux/macOS using the command line](/dotnet/core/tutorials/using-with-xplat-cli)
+- [Komut satırını kullanarak Windows/Linux/macOS 'ta .NET Core ile çalışmaya başlama](/dotnet/core/tutorials/using-with-xplat-cli)
 
-- Design your first Azure SQL database using [.NET](sql-database-design-first-database-csharp.md) or [SSMS](sql-database-design-first-database.md)
+- [.Net](sql-database-design-first-database-csharp.md) veya [SSMS](sql-database-design-first-database.md) kullanarak ilk Azure SQL veritabanınızı tasarlama

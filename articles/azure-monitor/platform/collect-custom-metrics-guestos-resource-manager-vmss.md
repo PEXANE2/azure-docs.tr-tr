@@ -1,5 +1,5 @@
 ---
-title: Windows sanal makine ölçek kümesi için Azure Resource Manager şablonu kullanarak Azure Izleyici ölçüm deposuna Konuk işletim sistemi ölçümleri gönderme
+title: Azure Izleyici 'de şablonla Windows ölçek kümesi ölçümleri toplama
 description: Windows sanal makine ölçek kümesi için Kaynak Yöneticisi şablonu kullanarak Azure Izleyici ölçüm deposuna Konuk işletim sistemi ölçümleri gönderme
 author: anirudhcavale
 services: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 8ee8c0c9d9724706f9b46013eba14e878832fd02
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 691b2ae7e497c9292975083e3687d9240ce6f3e6
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844978"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286131"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Windows sanal makine ölçek kümesi için Azure Resource Manager şablonu kullanarak Azure Izleyici ölçüm deposuna Konuk işletim sistemi ölçümleri gönderme
 
@@ -239,8 +239,8 @@ Her iki dosyayı da kaydedin ve kapatın.
 Kaynak Yöneticisi şablonunu dağıtmak için Azure PowerShell kullanın:  
 
 1. PowerShell 'i başlatın. 
-1. Kullanarak `Login-AzAccount`Azure 'da oturum açın.
-1. Kullanarak `Get-AzSubscription`abonelik listenizi alın.
+1. `Login-AzAccount`kullanarak Azure 'da oturum açın.
+1. `Get-AzSubscription`kullanarak abonelik listenizi alın.
 1. Oluşturacağınız aboneliği ayarlayın veya sanal makineyi güncelleştirin: 
 
    ```powershell
@@ -267,7 +267,7 @@ Kaynak Yöneticisi şablonunu dağıtmak için Azure PowerShell kullanın:
 1. Dağıtımınız başarılı olduktan sonra, Azure portal sanal makine ölçek kümesini bulmanız gerekir. Ölçümleri Azure Izleyici 'ye yaymalıdır. 
 
    > [!NOTE]  
-   > Seçili **Vmskusize**etrafında hatalarla karşılaşabilirsiniz. Bu durumda, **azuredeploy. JSON** dosyanıza dönün ve **Vmskusize** parametresinin varsayılan değerini güncelleştirin. **Standard_DS1_v2**denemenizi öneririz. 
+   > Seçili **Vmskusize**etrafında hatalarla karşılaşabilirsiniz. Bu durumda, **azuredeploy. JSON** dosyanıza dönün ve **Vmskusize** parametresinin varsayılan değerini güncelleştirin. **Standard_DS1_v2**denemeniz önerilir. 
 
 
 ## <a name="chart-your-metrics"></a>Ölçümlerinizi grafik yapın 
@@ -286,7 +286,7 @@ Kaynak Yöneticisi şablonunu dağıtmak için Azure PowerShell kullanın:
 
 1. Ad alanları açılan menüsünde **Azure. VM. Windows. Guest**' yi seçin. 
 
-1. Ölçümler açılan menüsünde, **Kullanımdaki bellek\%kaydedilmiş bayt**' ı seçin.  
+1. Ölçümler açılan menüsünde **bellek\%kaydedilmiş bayt kullanımda**' yı seçin.  
 
 Ayrıca, bu ölçümdeki boyutları belirli bir VM için grafik olarak veya ölçek kümesindeki her bir VM 'yi çizmek için de kullanabilirsiniz. 
 

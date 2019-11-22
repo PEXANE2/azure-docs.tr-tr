@@ -12,19 +12,19 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 08/28/2019
+ms.date: 11/15/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 6826c1340de16891933b290eb29bd4fb8d120974
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 64b906c8a6b52d9c9655f3fe2b13d504d8eed4cb
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127913"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278083"
 ---
 # <a name="compare-azure-cdn-product-features"></a>Azure CDN ürün özelliklerini karşılaştırın
 
-Azure Content Delivery Network (CDN) dört ürün içerir: Azure CDN **Microsoft 'tan standart Azure CDN**, **Akamai**'ten standart, **Verizon 'den standart Azure CDN**ve **Verizon 'den Premium Azure CDN**. **Verizon'dan Azure CDN Standart** profilinden **Verizon’dan Azure CDN Premium** profiline geçme hakkında bilgi için bkz. [Verizon'dan Azure CDN Standart profilinden Verizon’dan Azure CDN Premium profiline geçiş yapma](cdn-migrate.md). Standart Verizon 'den Premium Verizon 'e yükseltme yolu olduğunu ancak şu anda diğer ürünler arasında dönüştürme mekanizması olmadığını unutmayın.
+Azure Content Delivery Network (CDN), dört ürün içerir: **Microsoft’tan Azure CDN Standart**, **Akamai’den Azure CDN Standart**, **Verizon’dan Azure CDN Standart** ve **Verizon’dan Azure CDN Premium**. **Verizon'dan Azure CDN Standart** profilinden **Verizon’dan Azure CDN Premium** profiline geçme hakkında bilgi için bkz. [Verizon'dan Azure CDN Standart profilinden Verizon’dan Azure CDN Premium profiline geçiş yapma](cdn-migrate.md). Standart Verizon 'den Premium Verizon 'e yükseltme yolu olduğunu ancak şu anda diğer ürünler arasında dönüştürme mekanizması olmadığını unutmayın.
 
 Aşağıdaki tabloda her ürünle birlikte sunulan özellikler karşılaştırılmaktadır.
 
@@ -41,11 +41,11 @@ Aşağıdaki tabloda her ürünle birlikte sunulan özellikler karşılaştırı
 | [Genel sunucu yük dengelemesi (GSLB)](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-load-balancing-azure)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [Hızlı temizleme](cdn-purge-endpoint.md)  | **&#x2713;** |**&#x2713;** , Tümünü Temizleme ve joker karakter Temizleme, şu anda Akamai öğesinden Azure CDN desteklenmez |**&#x2713;** |**&#x2713;** |
 | [Varlık önceden yükleme](cdn-preload-endpoint.md)  |  | |**&#x2713;** |**&#x2713;** |
-| Önbellek/üst bilgi ayarları ([önbelleğe alma](cdn-caching-rules.md) kullanılarak)  |  |**&#x2713;** |**&#x2713;** | |
-| Özelleştirilebilir, kural tabanlı içerik teslim altyapısı ( [kurallar altyapısı](cdn-rules-engine.md)kullanılarak)  |  | | |**&#x2713;** |
-| Önbellek/üstbilgi ayarları ([kurallar altyapısı](cdn-rules-engine.md) kullanılarak)  |  | | |**&#x2713;** |
-| URL yeniden yönlendirme/yeniden yazma ( [kural altyapısını](cdn-rules-engine.md)kullanma)  |  | | |**&#x2713;** |
-| Mobil cihaz kuralları ([kurallar altyapısı](cdn-rules-engine.md) kullanılarak)  |  | | |**&#x2713;** |
+| Önbellek/üst bilgi ayarları ([önbelleğe alma](cdn-caching-rules.md) kullanılarak)  |**&#x2713;** [standart kurallar altyapısını](cdn-standard-rules-engine.md) kullanma  |**&#x2713;** |**&#x2713;** | |
+| Özelleştirilebilir, kural tabanlı içerik teslim altyapısı |**&#x2713;** [standart kurallar altyapısını](cdn-standard-rules-engine.md) kullanma  | | |**&#x2713;** [kural altyapısını](cdn-rules-engine.md) kullanma |
+| Önbellek/üst bilgi ayarları  |**&#x2713;** [standart kurallar altyapısını](cdn-standard-rules-engine.md) kullanma | | |**&#x2713;** [Premium kuralları altyapısını](cdn-rules-engine.md) kullanma |
+| URL yeniden yönlendirme/yeniden yazma |**&#x2713;** [standart kurallar altyapısını](cdn-standard-rules-engine.md) kullanma  | | |**&#x2713;** [Premium kuralları altyapısını](cdn-rules-engine.md) kullanma |
+| Mobil cihaz kuralları  |**&#x2713;** [standart kurallar altyapısını](cdn-standard-rules-engine.md) kullanma | | |**&#x2713;** [Premium kuralları altyapısını](cdn-rules-engine.md) kullanma |
 | [Sorgu dizesini önbelleğe alma](cdn-query-string.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | IPv4/IPv6 ikili yığını | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [HTTP/2 desteği](cdn-http2.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
@@ -72,7 +72,7 @@ Aşağıdaki tabloda her ürünle birlikte sunulan özellikler karşılaştırı
 | [Depolama](cdn-create-a-storage-account-with-cdn.md), [Web Apps](cdn-add-to-web-app.md) ve [Media Services](../media-services/media-services-portal-manage-streaming-endpoints.md) gibi Azure hizmetleriyle kolay tümleştirme  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [REST API](/rest/api/cdn/), [.NET](cdn-app-dev-net.md), [Node.js](cdn-app-dev-node.md), veya [PowerShell](cdn-manage-powershell.md) aracılığıyla yönetim  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [Sıkıştırma MIME türleri](https://docs.microsoft.com/azure/cdn/cdn-improve-performance)  |Yalnızca varsayılan |Yapılandırılabilir |Yapılandırılabilir  |Yapılandırılabilir  |
-| Sıkıştırma kodlamaları  |gzip, brotli |gzip |gzip, söndür, bzip2, brotili  |gzip, söndür, bzip2, brotili  |
+| Sıkıştırma kodlamaları  |gzip, brotli |Gzip |gzip, söndür, bzip2, brotili  |gzip, söndür, bzip2, brotili  |
 
 
 

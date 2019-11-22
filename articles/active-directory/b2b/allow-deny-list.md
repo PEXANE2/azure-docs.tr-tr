@@ -1,5 +1,5 @@
 ---
-title: Belirli kuruluşlara yapılan davetlere izin verme veya bunları engelleme-Azure Active Directory | Microsoft Docs
+title: Belirli kuruluşlara yapılan davetlere izin verme veya bunları engelleme-Azure AD
 description: Bir yöneticinin, belirli etki alanlarından B2B kullanıcılarına izin vermek veya bunları engellemek için bir erişim veya reddetme listesi ayarlamak üzere Azure portal veya PowerShell 'i nasıl kullanabileceğinizi gösterir.
 services: active-directory
 ms.service: active-directory
@@ -12,14 +12,14 @@ manager: celestedg
 ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cd0cc6b2343a84287bd2ffdfd9df8d832f17fc8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8b5100c4406cfd4a8395dfa177dc3cd5e911decb
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474178"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74273416"
 ---
-# <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Belirli kuruluşların B2B kullanıcılarına yönelik davetlere izin verme veya bunları engelleme
+# <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>İzin verme veya davetleri B2B kullanıcıları belirli kuruluşlardan engelleme
 
 Belirli kuruluşlardan B2B kullanıcılarına izin vermek veya bu kullanıcılara yönelik davetleri engellemek için bir izin verilenler listesi veya reddetme listesi kullanabilirsiniz. Örneğin, kişisel e-posta adresi etki alanlarını engellemek istiyorsanız Gmail.com ve Outlook.com gibi etki alanlarını içeren bir reddetme listesi ayarlayabilirsiniz. Ya da işletmenizde Contoso.com, Fabrikam.com ve Litware.com gibi diğer işletmelerle bir ortaklığı varsa ve davetleri yalnızca bu kuruluşlara kısıtlamak istiyorsanız, izin verilenler listenize Contoso.com, Fabrikam.com ve Litware.com ekleyebilirsiniz.
   
@@ -49,7 +49,7 @@ Reddetme listesi eklemek için:
 
    ![Eklenen etki alanları ile reddetme seçeneğini gösterir](./media/allow-deny-list/DenyListSettings.png)
  
-6. İşiniz bittiğinde **Kaydet**' e tıklayın.
+6. İşiniz bittiğinde tıklayın **Kaydet**.
 
 İlkeyi ayarladıktan sonra, engellenen bir etki alanından bir kullanıcıyı davet etmeye çalışırsanız, kullanıcının etki alanının şu anda davet ilkeniz tarafından engellendiğini söyleyen bir ileti alırsınız.
  
@@ -70,7 +70,7 @@ Bir izin verilenler listesi eklemek için:
 
    ![Eklenmiş etki alanları ile izin ver seçeneğini gösterir](./media/allow-deny-list/AllowListSettings.png)
  
-6. İşiniz bittiğinde **Kaydet**' e tıklayın.
+6. İşiniz bittiğinde tıklayın **Kaydet**.
 
 İlkeyi ayarladıktan sonra, izin verilenler listesinde olmayan bir etki alanından bir kullanıcıyı davet etmeye çalışırsanız, kullanıcının etki alanının şu anda davet ilkeniz tarafından engellendiğini söyleyen bir ileti alırsınız.
 

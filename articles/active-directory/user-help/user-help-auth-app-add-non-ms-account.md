@@ -1,6 +1,6 @@
 ---
-title: Bir Authenticator uygulamasına Microsoft hesabı olmayan bir uygulamaya ekleme-Azure AD
-description: Google, Facebook veya GitHub gibi Microsoft dışı hesaplarınızı iki öğeli doğrulama için Microsoft Authenticator uygulamasına ekleme.
+title: Microsoft Authenticator uygulamasına Microsoft dışı hesapları ekleme-Azure AD
+description: İki öğeli doğrulama kullanırken kimliğinizi doğrulamak için Google veya Facebook gibi Microsoft olmayan hesapları Microsoft Authenticator uygulamasına ekleyin.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,14 +12,14 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62d866e9bf543577887ee99173a52202fcfec632
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: c01377280c4e4c97b729e27c22496c388652924f
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73803674"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278889"
 ---
-# <a name="add-your-non-microsoft-accounts"></a>Microsoft dışı hesaplarınızı ekleyin
+# <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulamasına Microsoft dışı hesapları ekleme
 
 Google, Facebook veya GitHub gibi Microsoft dışı hesaplarınızı iki öğeli doğrulama için Microsoft Authenticator uygulamasına ekleyin. Microsoft Authenticator uygulaması, iki öğeli doğrulama kullanan tüm uygulamalar ve zaman tabanlı bir kerelik parola (TOTP) standartlarını destekleyen herhangi bir hesap ile birlikte kullanılabilir.
 

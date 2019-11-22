@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 11/20/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8f95dfd6410ae22a4596ac7d5d72add57e8029d
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 49081ba72559b021d2e4846e7d9feffd61ae7b36
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72373886"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284907"
 ---
 # <a name="service-to-service-apps"></a>Hizmetten hizmete uygulamalar
 
@@ -40,7 +40,7 @@ Hizmetten hizmete uygulamalar, bir Web API 'sinden kaynak alması gereken bir Da
 
 ![Web API diyagramına arka plan programı veya sunucu uygulaması](./media/authentication-scenarios/daemon_server_app_to_web_api.png)
 
-## <a name="dprotocol-flow"></a>DProtocol akışı
+## <a name="protocol-flow"></a>Protokol akışı
 
 ### <a name="application-identity-with-oauth-20-client-credentials-grant"></a>OAuth 2,0 istemci kimlik bilgileri izni ile uygulama kimliği
 
@@ -59,11 +59,11 @@ Aşağıda ele alınan akış, bir kullanıcının başka bir uygulamada (yerel 
 
 ## <a name="code-samples"></a>Kod örnekleri
 
-Web API senaryolarında arka plan programı veya sunucu uygulaması için kod örneklerine bakın. Yeni örnekler sık sık eklendikçe, daha sonra da yeniden kontrol edin. [Web API 'ye sunucu veya Daemon uygulaması](sample-v1-code.md#daemon-applications-accessing-web-apis-with-the-applications-identity)
+Web API senaryolarında arka plan programı veya sunucu uygulaması için kod örneklerine bakın: [sunucu veya Daemon uygulaması Web API 'si](sample-v1-code.md#daemon-applications-accessing-web-apis-with-the-applications-identity)
 
 ## <a name="app-registration"></a>Uygulama kaydı
 
-* Tek kiracı-hem uygulama kimliği hem de temsilci Kullanıcı kimliği durumları Için, arka plan veya sunucu uygulamasının Azure AD 'de aynı dizine kaydedilmesi gerekir. Web API 'SI, arka plan programı veya sunucunun kaynaklarına erişimini sınırlandırmak için kullanılan bir izin kümesini açığa çıkarmak üzere yapılandırılabilir. Yetkilendirilmiş bir kullanıcı kimliği türü kullanılıyorsa, sunucu uygulamasının, Azure portal "diğer uygulamalara yönelik Izinler" açılan menüsünde istenen izinleri seçmesini gerekir. Uygulama kimliği türü kullanılıyorsa bu adım gerekli değildir.
+* Tek kiracı-hem uygulama kimliği hem de temsilci Kullanıcı kimliği durumları Için, arka plan veya sunucu uygulamasının Azure AD 'de aynı dizine kaydedilmesi gerekir. Web API 'SI, arka plan programı veya sunucunun kaynaklarına erişimini sınırlandırmak için kullanılan bir izin kümesini açığa çıkarmak üzere yapılandırılabilir. Yetkilendirilmiş bir kullanıcı kimliği türü kullanılıyorsa, sunucu uygulamasının istenen izinleri seçmesini gerekir. Uygulama kaydı için **API izin** sayfasında, **izin Ekle** ' yi seçtikten sonra API ailesini seçtikten sonra, **temsilci izinleri**' ni seçin ve ardından izinlerinizi seçin. Uygulama kimliği türü kullanılıyorsa bu adım gerekli değildir.
 * Çok kiracılı-Birincisi, Daemon veya sunucu uygulaması, işlevsel olması gereken izinleri belirtecek şekilde yapılandırılmıştır. Bu gerekli izinler listesi, hedef dizindeki bir kullanıcı veya yönetici uygulamaya izin verdiği zaman bir iletişim kutusunda gösterilir. Bu, kuruluş tarafından kullanılabilir hale gelir. Bazı uygulamalar yalnızca, kuruluştaki herhangi bir kullanıcının izin verebileceği Kullanıcı düzeyi izinler gerektirir. Diğer uygulamalar, kuruluştaki bir kullanıcının onay veremediği yönetici düzeyinde izinler gerektirir. Bu izin düzeyini gerektiren uygulamalara yalnızca bir dizin Yöneticisi izin verebilir. Kullanıcı veya yönetici, Web API 'lerinin her ikisi de kendi dizinine kaydedilir.
 
 ## <a name="token-expiration"></a>Belirteç süre sonu

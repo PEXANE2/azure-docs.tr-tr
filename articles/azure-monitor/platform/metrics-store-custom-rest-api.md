@@ -1,6 +1,6 @@
 ---
-title: REST API'sini kullanarak bir Azure kaynağı için özel ölçümler Azure İzleyici ölçüm depoya gönder
-description: REST API'sini kullanarak bir Azure kaynağı için özel ölçümler Azure İzleyici ölçüm depoya gönder
+title: REST API kullanarak Azure Izleyici ölçüm veritabanına ölçümleri gönderme
+description: Bir Azure kaynağı için Azure Izleyici ölçüm deposuna bir REST API kullanarak özel ölçümler gönderme
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,46 +8,46 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: aa842979bf86410e9dab97d6209f336eb6b02bd3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a19b59c758f31ff1ef3416b59031202193d50522
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60253856"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74285938"
 ---
-# <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>REST API'sini kullanarak bir Azure kaynağı için özel ölçümler Azure İzleyici ölçüm depoya gönder
+# <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>Bir Azure kaynağı için Azure Izleyici ölçüm deposuna bir REST API kullanarak özel ölçümler gönderme
 
-Bu makalede Azure kaynakları için özel ölçümleri bir REST API aracılığıyla Azure İzleyici ölçümleri mağazası gönderme işlemini gösterir. Azure İzleyicisi'nde ölçümler olduktan sonra standart ölçümleri ile bunu bunlarla birlikte her şeyi yapabilirsiniz. Örnek uyarı, grafik ve bunları diğer dış araçlar için yönlendirme.  
+Bu makalede, Azure Izleyici ölçüm deposuna bir REST API aracılığıyla Azure kaynakları için nasıl özel ölçümler gönderileceği gösterilir. Ölçümler Azure Izleyici 'de olduktan sonra, bunları standart ölçümlerle yaptığınız tüm şeyleri yapabilirsiniz. Örnekler grafikleme, uyarma ve diğer dış araçlara yönlendirme.  
 
 >[!NOTE]  
->REST API, yalnızca Azure kaynakları için özel ölçümleri gönderme verir. Farklı ortamlar veya şirket içi kaynakların ölçümlerini göndermek için kullanabileceğiniz [Application Insights](../../azure-monitor/app/api-custom-events-metrics.md).    
+>REST API yalnızca Azure kaynakları için özel ölçümler göndermeye izin verir. Farklı ortamlardaki veya Şirket içindeki kaynaklara yönelik ölçümleri göndermek için [Application Insights](../../azure-monitor/app/api-custom-events-metrics.md)kullanabilirsiniz.    
 
 
-## <a name="create-and-authorize-a-service-principal-to-emit-metrics"></a>Oluşturma ve ölçümleri yaymak için bir hizmet sorumlusu yetkilendirme 
+## <a name="create-and-authorize-a-service-principal-to-emit-metrics"></a>Ölçümleri göstermek için bir hizmet sorumlusu oluşturma ve yetkilendirme 
 
-Konusunda bulunan yönergeleri kullanarak Azure Active Directory kiracınızda bir hizmet sorumlusu oluşturma [hizmet sorumlusu oluşturma](../../active-directory/develop/howto-create-service-principal-portal.md). 
+[Hizmet sorumlusu oluşturma](../../active-directory/develop/howto-create-service-principal-portal.md)bölümünde bulunan yönergeleri kullanarak Azure Active Directory kiracınızda bir hizmet sorumlusu oluşturun. 
 
-Bu süreçte giderken aşağıdakilere dikkat edin: 
+Bu işlemi yaparken aşağıdakilere göz önünde olun: 
 
-- Herhangi bir URL için oturum açma URL'si girebilirsiniz.  
-- Bu uygulama için yeni bir istemci gizli anahtarı oluşturun.  
-- Sonraki adımlarda, anahtar ve kullanmak için istemci kimliği kaydedin.  
+- Oturum açma URL 'si için herhangi bir URL girebilirsiniz.  
+- Bu uygulama için yeni bir istemci gizli dizisi oluşturun.  
+- Daha sonraki adımlarda kullanmak üzere anahtarı ve istemci KIMLIĞINI kaydedin.  
 
-Adım 1, izleme, ölçüm yayımcı izinleri karşı ölçümleri yayma istediğiniz kaynak bir parçası olarak oluşturulan uygulama verin. Özel ölçümler birçok kaynağa karşı yaymak için uygulamayı kullanmayı planlıyorsanız, kaynak grubu veya abonelik düzeyinde bu izinleri verebilir. 
+Uygulamanın 1. adım, ölçüm Izleme yayımcısı, ölçümleri sunmak istediğiniz kaynağa yönelik izinler olarak oluşturulmasını sağlayın. Uygulamayı birçok kaynağa karşı özel ölçümleri yayan kullanmayı planlıyorsanız, bu izinleri kaynak grubu veya abonelik düzeyinde verebilirsiniz. 
 
-## <a name="get-an-authorization-token"></a>Bir yetkilendirme belirteci alma
+## <a name="get-an-authorization-token"></a>Yetkilendirme belirteci al
 Bir komut istemi açın ve aşağıdaki komutu çalıştırın:
 
 ```shell
 curl -X POST https://login.microsoftonline.com/<yourtenantid>/oauth2/token -F "grant_type=client_credentials" -F "client_id=<insert clientId from earlier step>" -F "client_secret=<insert client secret from earlier step>" -F "resource=https://monitoring.azure.com/"
 ```
-Erişim belirteci yanıttan kaydedin.
+Erişim belirtecini yanıttan kaydedin.
 
-![erişim belirteci](./media/metrics-store-custom-rest-api/accesstoken.png)
+![Erişim belirteci](./media/metrics-store-custom-rest-api/accesstoken.png)
 
-## <a name="emit-the-metric-via-the-rest-api"></a>REST API aracılığıyla ölçüm yayma 
+## <a name="emit-the-metric-via-the-rest-api"></a>Ölçümü REST API aracılığıyla yayma 
 
-1. Aşağıdaki JSON bir dosyaya yapıştırın ve kaydedileceği **custommetric.json** yerel bilgisayarınızda. JSON dosyasındaki süre parametresini güncelleştirin: 
+1. Aşağıdaki JSON dosyasını bir dosyaya yapıştırın ve yerel bilgisayarınızda **custommetric. JSON** olarak kaydedin. JSON dosyasındaki zaman parametresini güncelleştirin: 
     
     ```json
     { 
@@ -77,46 +77,46 @@ Erişim belirteci yanıttan kaydedin.
     } 
     ``` 
 
-1. Komut İstemi penceresinde, ölçüm verilerini gönder: 
-   - **azureRegion**. Kaynak ölçümleri için yayma Dağıtım bölgesi eşleşmesi gerekir. 
-   - **ResourceId**.  Kaynak ölçümüne karşı takip ettiğiniz bir Azure kaynak kimliği.  
-   - **AccessToken**. Önceden edindiğiniz belirteci yapıştırın.
+1. Komut istemi penceresinde, ölçüm verilerini gönderin: 
+   - **Azureregion**. , Ölçümlerini yayan kaynağın dağıtım bölgesiyle eşleşmelidir. 
+   - **RESOURCEID**.  Ölçümü izlemekte olduğunuz Azure kaynağının kaynak KIMLIĞI.  
+   - **Accesstoken**. Daha önce aldığınız belirteci yapıştırın.
 
      ```Shell 
      curl -X POST https://<azureRegion>.monitoring.azure.com/<resourceId>/metrics -H "Content-Type: application/json" -H "Authorization: Bearer <AccessToken>" -d @custommetric.json 
      ```
-1. Zaman damgası ve JSON dosyasında değerlerini değiştirin. 
-1. Birkaç dakika verileriniz için önceki iki adımı birkaç kez yineleyin.
+1. JSON dosyasındaki zaman damgasını ve değerleri değiştirin. 
+1. Önceki iki adımı birkaç kez tekrarlayın, bu nedenle birkaç dakika için verileriniz vardır.
 
 ## <a name="troubleshooting"></a>Sorun giderme 
-İşleminin bir parçası olan bir hata iletisi alırsanız, aşağıdaki sorun giderme bilgileri göz önünde bulundurun:
+İşlemin bir parçası ile bir hata iletisi alırsanız, aşağıdaki sorun giderme bilgilerini göz önünde bulundurun:
 
-1. Bir abonelik veya kaynak grubu karşı ölçümleri, bir Azure kaynağı olarak gönderilemez. 
-1. Bir ölçüm 20 dakikadan eski olan depoya konulamaz. Ölçüm deposu, uyarı ve gerçek zamanlı grafik için optimize edilmiştir. 
-2. Boyut adları sayısını değerlerin eşleşmesi gerekir ve bunun tersi de geçerlidir. Değerleri kontrol edin. 
-2. Özel ölçümler desteklemeyen bir bölge karşı ölçümleri yayma. Bkz: [desteklenen bölgeler](../../azure-monitor/platform/metrics-custom-overview.md#supported-regions). 
+1. Azure kaynağınız olarak bir abonelik veya kaynak grubuna karşı ölçümler yapamazsınız. 
+1. Bir ölçümü 20 dakikadan daha eski bir mağazaya koyamazsınız. Ölçüm deposu, uyarı ve gerçek zamanlı grafik için iyileştirilmiştir. 
+2. Boyut adlarının sayısı, değerlerle eşleşmelidir ve tam tersi de geçerlidir. Değerleri denetleyin. 
+2. Özel ölçümleri desteklemeyen bir bölgeye karşı ölçümleri yayan olabilirsiniz. Bkz. [Desteklenen bölgeler](../../azure-monitor/platform/metrics-custom-overview.md#supported-regions). 
 
 
 
-## <a name="view-your-metrics"></a>Ölçümlerinizi görüntüleyin 
+## <a name="view-your-metrics"></a>Ölçümlerinizi görüntüleme 
 
 1. Azure Portal’da oturum açın. 
 
-1. Sol taraftaki menüde **İzleyici**. 
+1. Sol taraftaki menüde **izleyici**' yi seçin. 
 
-1. Üzerinde **İzleyici** sayfasında **ölçümleri**. 
+1. **İzleyici** sayfasında **ölçümler**' i seçin. 
 
-   ![Ölçümleri Seç](./media/metrics-store-custom-rest-api/metrics.png) 
+   ![Ölçümleri seçin](./media/metrics-store-custom-rest-api/metrics.png) 
 
-1. Toplama dönemini değiştirmek **son 30 dakika**.  
+1. Toplama süresini **son 30 dakika**olarak değiştirin.  
 
-1. İçinde **kaynak** açılan menüsünde, ilgili ölçümün yayılan kaynağı seçin.  
+1. **Kaynak** açılan menüsünde, ölçümü dağıttığınız kaynağı seçin.  
 
-1. İçinde **ad alanları** açılan menüsünde, select **QueueProcessing**. 
+1. **Ad alanları** açılan menüsünde **queueprocessing**' ı seçin. 
 
-1. İçinde **ölçümleri** açılan menüsünde, select **QueueDepth**.  
+1. **Ölçümler** açılan menüsünde, **queuedepth**' ı seçin.  
 
  
 ## <a name="next-steps"></a>Sonraki adımlar
-- Daha fazla bilgi edinin [özel ölçümler](../../azure-monitor/platform/metrics-custom-overview.md).
+- [Özel ölçümler](../../azure-monitor/platform/metrics-custom-overview.md)hakkında daha fazla bilgi edinin.
 

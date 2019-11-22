@@ -1,21 +1,21 @@
 ---
-title: Azure blok zinciri hizmeti muhasebe sürümleri, düzeltme eki uygulama ve yükseltme
+title: Azure blok zinciri hizmeti muhasebe sürümleri, düzeltme eki uygulama & yükseltme
 description: Systems düzeltme eki uygulama ve sistem tarafından yönetilen ve Kullanıcı tarafından yönetilen yükseltmelerle ilgili ilkeler de dahil olmak üzere Azure blok zinciri hizmeti 'ndeki desteklenen bağış cihazları sürümlerine genel bakış.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/14/2019
+ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: 16d0f0876e7d75dfd0266468ddc3005b86fc632f
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
-ms.translationtype: MT
+ms.openlocfilehash: 03eaf86ece191cce7eef6647a582a66495692db2
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579811"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284918"
 ---
 # <a name="supported-azure-blockchain-service-ledger-versions"></a>Desteklenen Azure blok zinciri hizmeti muhasebe sürümleri
 
@@ -27,7 +27,7 @@ Azure blok zinciri hizmeti, Azure blok zinciri hizmeti 'nde bir konsorsiyum olar
 
 Çekirdekte sürüm oluşturma, ana, ikincil ve düzeltme eki yayınlar aracılığıyla yapılır. Örneğin, çekirdek sürümü 2.0.1 ise, yayın türü şu şekilde kategorilere ayrılır:
 
-|Major | Bazı  | Düzeltmesi  |
+|Büyük | Küçük  | Düzeltmesi  |
 | :--- | :----- | :----- |
 | 2 | 0 | 1 | 
 

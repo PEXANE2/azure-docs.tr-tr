@@ -1,5 +1,5 @@
 ---
-title: "Hızlı Başlangıç: Metin Analizi API'si çağırmak için PHP kullanma"
+title: "Hızlı başlangıç: Metin Analizi API'sini çağırmak için PHP kullanma"
 titleSuffix: Azure Cognitive Services
 description: Azure bilişsel hizmetler 'de Metin Analizi API'si kullanmaya hızlı bir şekilde başlamanıza yardımcı olması için bilgi ve kod örnekleri alın.
 services: cognitive-services
@@ -10,19 +10,19 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 08/28/2019
 ms.author: aahi
-ms.openlocfilehash: a1e3484c544478fa6e9414eea1e139b81652ace3
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 3b95109ea3389cc8ee7e748e06265870d5f903a4
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135002"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284747"
 ---
-# <a name="quickstart-using-php-to-call-the-text-analytics-cognitive-service"></a>Hızlı Başlangıç: Metin Analizi bilişsel hizmeti çağırmak için PHP kullanma
+# <a name="quickstart-using-php-to-call-the-text-analytics-cognitive-service"></a>Hızlı başlangıç: Metin Analizi Bilişsel Hizmetini çağırmak için PHP kullanma
 <a name="HOLTop"></a>
 
-Bu makalede, [dil algılama](#Detect), yaklaşım [Çözümleme](#SentimentAnalysis), [anahtar tümceleri ayıklama](#KeyPhraseExtraction)ve PHP ile [metin analizi API 'leri](//go.microsoft.com/fwlink/?LinkID=759711) kullanarak [bağlantılı varlıkları belirleme](#Entities) işlemlerinin nasıl yapılacağı gösterilir.
+Bu makalede, PHP ile  [metin analizi API 'leri](//go.microsoft.com/fwlink/?LinkID=759711) kullanarak [dilin nasıl algılanacağı](#Detect), yaklaşım [analizle](#SentimentAnalysis), [anahtar tümceleri ayıklamayla](#KeyPhraseExtraction)ve [bağlantılı varlıkların](#Entities) nasıl kullanılacağı gösterilir.
 
-API'lerle ilgili teknik bilgiler için [API tanımları](//go.microsoft.com/fwlink/?LinkID=759346) sayfasını inceleyin.
+[!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -30,11 +30,11 @@ API'lerle ilgili teknik bilgiler için [API tanımları](//go.microsoft.com/fwli
 
 <a name="Detect"></a>
 
-## <a name="detect-language"></a>Dili algıla
+## <a name="detect-language"></a>Dili algılama
 
 Dil Algılama API'si, [Dili Algıla metodunu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) kullanarak bir metin belgesinin dilini algılar.
 
-1. Ortam değişkenlerini `TEXT_ANALYTICS_SUBSCRIPTION_KEY` ve `TEXT_ANALYTICS_ENDPOINT` kaynağınızın Azure uç noktası ve abonelik anahtarı için oluşturun. Uygulamayı düzenleme başladıktan sonra bu ortam değişkenlerini oluşturduysanız, değişkenlere erişmek için kullandığınız düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir.
+1. `TEXT_ANALYTICS_SUBSCRIPTION_KEY` ortam değişkenleri oluşturun ve kaynağınızın Azure uç noktası ve abonelik anahtarı için `TEXT_ANALYTICS_ENDPOINT`. Uygulamayı düzenleme başladıktan sonra bu ortam değişkenlerini oluşturduysanız, değişkenlere erişmek için kullandığınız düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir.
 1. Sık kullandığınız IDE ile yeni bir PHP projesi oluşturun.
 1. Aşağıda sağlanan kodu ekleyin.
 1. Programı çalıştırın.
@@ -151,7 +151,7 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 
 Yaklaşım Analizi API'si, [Yaklaşım metodunu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) kullanarak bir metin kaydı kümesinin yaklaşımını algılar. Aşağıdaki örnek, biri İngilizce diğeri İspanyolca olan iki belge puanlar.
 
-1. Ortam değişkenlerini `TEXT_ANALYTICS_SUBSCRIPTION_KEY` ve `TEXT_ANALYTICS_ENDPOINT` kaynağınızın Azure uç noktası ve abonelik anahtarı için oluşturun. Uygulamayı düzenleme başladıktan sonra bu ortam değişkenlerini oluşturduysanız, değişkenlere erişmek için kullandığınız düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir.
+1. `TEXT_ANALYTICS_SUBSCRIPTION_KEY` ortam değişkenleri oluşturun ve kaynağınızın Azure uç noktası ve abonelik anahtarı için `TEXT_ANALYTICS_ENDPOINT`. Uygulamayı düzenleme başladıktan sonra bu ortam değişkenlerini oluşturduysanız, değişkenlere erişmek için kullandığınız düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir.
 1. Sık kullandığınız IDE ile yeni bir PHP projesi oluşturun.
 1. Aşağıda sağlanan kodu ekleyin.
 1. Programı çalıştırın.
@@ -244,11 +244,11 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 
 <a name="KeyPhraseExtraction"></a>
 
-## <a name="extract-key-phrases"></a>Başlıca sözcük gruplarını ayıkla
+## <a name="extract-key-phrases"></a>Anahtar ifadeleri ayıklama
 
 Anahtar İfade Ayıklama API'si [Anahtar İfadeler metodunu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) kullanarak bir metin belgesindeki anahtar ifadeleri ayıklar. Aşağıdaki örnekte hem İngilizce hem de İspanyolca belgelerin anahtarı ifadeleri ayıklanır.
 
-1. Ortam değişkenlerini `TEXT_ANALYTICS_SUBSCRIPTION_KEY` ve `TEXT_ANALYTICS_ENDPOINT` kaynağınızın Azure uç noktası ve abonelik anahtarı için oluşturun. Uygulamayı düzenleme başladıktan sonra bu ortam değişkenlerini oluşturduysanız, değişkenlere erişmek için kullandığınız düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir.
+1. `TEXT_ANALYTICS_SUBSCRIPTION_KEY` ortam değişkenleri oluşturun ve kaynağınızın Azure uç noktası ve abonelik anahtarı için `TEXT_ANALYTICS_ENDPOINT`. Uygulamayı düzenleme başladıktan sonra bu ortam değişkenlerini oluşturduysanız, değişkenlere erişmek için kullandığınız düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir.
 1. Sık kullandığınız IDE ile yeni bir PHP projesi oluşturun.
 1. Aşağıda sağlanan kodu ekleyin.
 1. Programı çalıştırın.
@@ -359,7 +359,7 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 
 Varlıklar API'si, [Varlıklar metodunu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) kullanarak bir metin belgesindeki iyi bilinen varlıkları tanımlar. Aşağıdaki örnekte İngilizce belgelerin varlıkları tanımlanır.
 
-1. Ortam değişkenlerini `TEXT_ANALYTICS_SUBSCRIPTION_KEY` ve `TEXT_ANALYTICS_ENDPOINT` kaynağınızın Azure uç noktası ve abonelik anahtarı için oluşturun. Uygulamayı düzenleme başladıktan sonra bu ortam değişkenlerini oluşturduysanız, değişkenlere erişmek için kullandığınız düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir.
+1. `TEXT_ANALYTICS_SUBSCRIPTION_KEY` ortam değişkenleri oluşturun ve kaynağınızın Azure uç noktası ve abonelik anahtarı için `TEXT_ANALYTICS_ENDPOINT`. Uygulamayı düzenleme başladıktan sonra bu ortam değişkenlerini oluşturduysanız, değişkenlere erişmek için kullandığınız düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir.
 1. Sık kullandığınız IDE ile yeni bir PHP projesi oluşturun.
 1. Aşağıda sağlanan kodu ekleyin.
 1. Programı çalıştırın.

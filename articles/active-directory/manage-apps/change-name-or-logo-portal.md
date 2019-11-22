@@ -1,6 +1,6 @@
 ---
-title: Adını veya bir Azure Active Directory'de Kurumsal uygulama logosunu değiştirme | Microsoft Docs
-description: Adı veya özel kuruluş uygulaması Azure Active Directory'de logosunu değiştirme
+title: Azure AD 'de kurumsal uygulamanın adını veya logosunu değiştirme
+description: Azure Active Directory içindeki özel bir kurumsal uygulamanın adını veya logosunu değiştirme
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,38 +16,38 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30da8d6843c27c42d4d99adef50b9ad98a131c95
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d3dfe0f8788275dd4403b6c9cad99a8eb09e479b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65780915"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274725"
 ---
-# <a name="change-the-name-or-logo-of-an-enterprise-application-in-azure-active-directory"></a>Adı veya Azure Active Directory'de bir kurumsal uygulamanın logoyu değiştirme
+# <a name="change-the-name-or-logo-of-an-enterprise-application-in-azure-active-directory"></a>Azure Active Directory bir kurumsal uygulamanın adını veya logosunu değiştirme
 
-Adı veya logosu özel kuruluş uygulaması Azure Active Directory'de (Azure AD) değiştirmek kolay bir işlemdir. Bu değişiklikleri yapmak için uygun izinlere sahip olmalıdır ve özel uygulama oluşturucusu olmalıdır.
+Azure Active Directory (Azure AD) içinde özel bir kurumsal uygulama için adı veya logoyu değiştirmek kolaydır. Bu değişiklikleri yapmak için uygun izinlere sahip olmanız gerekir ve özel uygulamanın oluşturucusu olmanız gerekir.
 
-## <a name="how-do-i-change-an-enterprise-applications-name-or-logo"></a>Bir kurumsal uygulamanın adı veya logosu nasıl değiştirebilirim?
+## <a name="how-do-i-change-an-enterprise-applications-name-or-logo"></a>Nasıl yaparım? bir kurumsal uygulamanın adı veya logosu değiştirilsin mi?
 
-1. Oturum [Azure Active Directory portalında](https://aad.portal.azure.com/) dizin için genel yönetici olan bir hesapla. **Azure Active Directory Yönetim Merkezi** sayfası görüntülenir.
-2. Sol bölmede **Kurumsal uygulamalar**’ı seçin. Kurumsal uygulamalarınızı listesi görüntülenir.
-3. Bir uygulama seçin. Uygulama genel bakış sayfası görüntülenir.
-4. Uygulama genel bakış bölmesinde altında **Yönet** başlığı seçin **özellikleri**. **Özellikleri** sayfası görüntülenir.
-5. Adı değiştirmek istiyorsanız, seçin **adı** kutusunda, yeni adı yazın ve ENTER tuşuna **Enter**.
-6. Logo değiştirmek istiyorsanız, bulma **logosu** alan ve klasör simgesini seçin **bir dosya seçin** uygulamanın geçerli logo resmi olan kutusu.
+1. [Azure Active Directory portalında](https://aad.portal.azure.com/) , dizin için genel yönetici olan bir hesapla oturum açın. **Azure Active Directory Yönetim Merkezi** sayfası görüntülenir.
+2. Sol bölmede **Kurumsal uygulamalar**’ı seçin. Kurumsal uygulamalarınızın listesi görüntülenir.
+3. Bir uygulama seçin. Uygulamaya genel bakış sayfası görüntülenir.
+4. Uygulamaya Genel Bakış bölmesinde, **Yönet** başlığı altında **Özellikler**' i seçin. **Özellikler** sayfası görüntülenir.
+5. Adı değiştirmek istiyorsanız, **ad** kutusunu seçin, yeni adı yazın ve **ENTER**tuşuna basın.
+6. Logoyu değiştirmek istiyorsanız, **logo** alanını bulun ve uygulamanın geçerli logosu görüntüsünün altında olan **Dosya Seç** kutusunun yanındaki klasör simgesini seçin.
 
-   ![Özellikler komutu seçme](./media/change-name-or-logo-portal/change-logo.png)
+   ![Özellikler komutunu seçme](./media/change-name-or-logo-portal/change-logo.png)
 
-   Logo değişiyorsa değil, aksi takdirde 8. adımına geçin.
-7. Dosya Seçici'de yeni logo olarak istediğiniz dosyayı seçin. Dosyanın adı, geçerli logo resmi altındaki kutuya görünür.
+   Aksi takdirde, logoyu değiştirmiyorsanız, 8. adıma gidin.
+7. Dosya seçicide yeni logo olarak istediğiniz dosyayı seçin. Dosyanın adı geçerli logo resminin altındaki kutuda görüntülenir.
 
    > [!NOTE]
-   > Azure logosu resmi bir PNG dosyası gerektirir ve genişlik, yükseklik ve dosya boyutu sınırları geçerlidir.
-8. **Kaydet**’i seçin. Yeni bir logo seçerseniz **logosu** yeni logo dosyası yansıtacak şekilde alanın görüntü değişiklikler.
+   > Azure, logo resminin bir PNG dosyası olmasını gerektirir ve genişlik, yükseklik ve dosya boyutu sınırlarını uygular.
+8. **Kaydet**’i seçin. Yeni bir logo seçerseniz, **logo** alanının görüntüsü yeni logo dosyasını yansıtacak şekilde değişir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Hızlı Başlangıç: Kuruluşunuzun gruplar ve üyeler, Azure Active Directory'de görüntüle](../fundamentals/active-directory-groups-view-azure-portal.md)
-* [Kurumsal bir uygulamayı kullanıcı veya grup atama](assign-user-or-group-access-portal.md)
-* [Bir kullanıcı veya grup ataması Kurumsal uygulamadan Kaldır](remove-user-or-group-access-portal.md)
-* [Kullanıcı oturum açma Kurumsal uygulama için devre dışı bırak](disable-user-sign-in-portal.md)
+* [Hızlı başlangıç: Azure Active Directory içindeki kuruluşunuzun gruplarını ve üyelerini görüntüleme](../fundamentals/active-directory-groups-view-azure-portal.md)
+* [Kurumsal uygulamaya Kullanıcı veya Grup atama](assign-user-or-group-access-portal.md)
+* [Bir kurumsal uygulamadan Kullanıcı veya grup atamasını kaldırma](remove-user-or-group-access-portal.md)
+* [Kurumsal uygulama için Kullanıcı oturum açma işlemlerini devre dışı bırakma](disable-user-sign-in-portal.md)

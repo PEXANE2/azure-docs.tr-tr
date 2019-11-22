@@ -11,34 +11,34 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 5104e6e037341c41a032f80287c6d56d17361d4c
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 8c50a1ba79fc07f62e319c6dceb75c32a9e8609f
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73932191"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74287135"
 ---
-# <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Bulutta otomatik makine öğrenimi ile modelleri eğitme
+# <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Bulutta otomatik machine learning ile modellerini eğitin
 
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Azure Machine Learning, modelinizi yönettiğiniz farklı türlerde işlem kaynakları üzerinde eğitebilirsiniz. İşlem hedefi, bulutta yerel bir bilgisayar veya bir kaynak olabilir.
+Azure Machine Learning'de yönettiğiniz işlem kaynaklarının farklı türlerde modelinizi eğitin. İşlem hedefi, bulutta yerel bir bilgisayar veya bir kaynak olabilir.
 
 Azure Machine Learning Işlem (AmlCompute) gibi ek bilgi işlem hedefleri ekleyerek makine öğrenimi denemenizin kolayca ölçeğini değiştirebilir veya ölçeklendirebilirsiniz. AmlCompute, kolayca tek veya çok düğümlü bir işlem oluşturmanıza olanak sağlayan bir yönetilen işlem altyapısıdır.
 
 Bu makalede, AmlCompute ile otomatikleştirilmiş ML kullanarak bir model oluşturmayı öğreneceksiniz.
 
-## <a name="how-does-remote-differ-from-local"></a>Uzaktan yerel nasıl farklıdır?
+## <a name="how-does-remote-differ-from-local"></a>Uzaktan yerel bilgisayardan farkı nedir?
 
-"[Otomatik makine öğrenimi ile sınıflandırma modelini eğitme](tutorial-auto-train-models.md)" öğreticisi, bir MODELI otomatik ml ile eğitme konusunda yerel bir bilgisayar kullanmayı öğretir. Eğitim yerel olarak uzak hedefler de için de geçerli olduğunda iş akışı. Ancak, uzaktan işlem ile otomatikleştirilmiş ML denemesi yinelemeleri zaman uyumsuz olarak yürütülür. Bu işlevsellik, belirli bir yinelemeyi iptal etmenizi, yürütmenin durumunu izlemenize veya Jupyter not defterindeki diğer hücrelerde çalışmaya devam etmenize olanak tanır. Uzaktan eğitebilmeniz için öncelikle AmlCompute gibi bir uzak işlem hedefi oluşturursunuz. Ardından, uzak kaynağı yapılandırıp kodunuzu buraya gönderebilirsiniz.
+"[Otomatik makine öğrenimi ile sınıflandırma modelini eğitme](tutorial-auto-train-models.md)" öğreticisi, bir MODELI otomatik ml ile eğitme konusunda yerel bir bilgisayar kullanmayı öğretir. Yerel olarak da eğitimindeki iş akışı uzak hedefleri için de geçerlidir. Ancak, uzak işlem ile otomatik ML deneme yinelemelerini zaman uyumsuz olarak yürütülür. Bu işlevsellik, belirli bir yinelemeye iptal etme, yürütme durumunu izlemek veya diğer Jupyter not defteri hücrelerde üzerinde çalışmaya devam sağlar. Uzaktan eğitebilmeniz için öncelikle AmlCompute gibi bir uzak işlem hedefi oluşturursunuz. Ardından uzak kaynak yapılandırın ve kodunuzu var. gönderin.
 
-Bu makalede, uzak bir AmlCompute hedefinde otomatik ML denemesi çalıştırmak için gereken ek adımlar gösterilmektedir. Öğreticiden `ws`çalışma alanı nesnesi, burada kod boyunca kullanılır.
+Bu makalede, uzak bir AmlCompute hedefinde otomatik ML denemesi çalıştırmak için gereken ek adımlar gösterilmektedir. Çalışma alanı nesnesi `ws`, öğreticinin buraya kod kullanılır.
 
 ```python
 ws = Workspace.from_config()
 ```
 
-## <a name="create-resource"></a>Kaynak oluştur
+## <a name="create-resource"></a>Kaynak Oluştur
 
 Zaten mevcut değilse, çalışma alanınızda AmlCompute hedefini oluşturun (`ws`).
 
@@ -62,19 +62,26 @@ compute_target.wait_for_completion(
     show_output=True, min_node_count=None, timeout_in_minutes=20)
 ```
 
-Artık `compute_target` nesnesini uzak işlem hedefi olarak kullanabilirsiniz.
+Artık `compute_target` uzak işlem hedefi olarak nesnesi.
 
 Küme adı kısıtlamaları şunları içerir:
 + 64 karakterden kısa olmalıdır.
-+ Şu karakterlerden herhangi birini içeremez: `\` ~! @ # $% ^ & * () = + _ [] {} \\\\ |; : \' \\"< >/?. `
++ Aşağıdaki karakterlerden herhangi birini içeremez: `\` ~! @ # $ % ^ & * () = + _ [] {} \\ \\ |;: \' \\", < > /?. `
 
 ## <a name="access-data-using-tabulardataset-function"></a>TabularDataset işlevini kullanarak verilere erişme
 
-Otomatikmlconfig içindeki otomatik ML 'ye geçirilen `TabularDataset`s olarak X ve y tanımlandı. Varsayılan olarak `from_delimited_files`, `infer_column_types` doğru olarak ayarlar, bu da sütun türünü otomatik olarak çıkaracaktır. 
+`TabularDataset`olarak training_data tanımlanmış ve Otomatikmlconfig içindeki otomatik ML 'ye geçirilen etiket. Varsayılan olarak `from_delimited_files`, `infer_column_types` doğru olarak ayarlar, bu da sütun türünü otomatik olarak çıkaracaktır. 
 
-Sütun türlerini el ile ayarlamak isterseniz, her bir sütunun türünü el ile ayarlamak için `set_column_types` bağımsız değişkenini ayarlayabilirsiniz. Aşağıdaki kod örneğinde, veriler sköğren paketinden gelir.
+Sütun türlerini el ile ayarlamak isterseniz, her bir sütunun türünü el ile ayarlamak için `set_column_types` bağımsız değişkenini ayarlayabilirsiniz. Aşağıdaki kod örneğinde, veriler sklearn öğesini paketten gelir.
 
 ```python
+from sklearn import datasets
+from azureml.core.dataset import Dataset
+from scipy import sparse
+import numpy as np
+import pandas as pd
+import os
+
 # Create a project_folder if it doesn't exist
 if not os.path.isdir('data'):
     os.mkdir('data')
@@ -82,23 +89,20 @@ if not os.path.isdir('data'):
 if not os.path.exists(project_folder):
     os.makedirs(project_folder)
 
-from sklearn import datasets
-from azureml.core.dataset import Dataset
-from scipy import sparse
-import numpy as np
-import pandas as pd
+X = pd.DataFrame(data_train.data[100:,:])
+y = pd.DataFrame(data_train.target[100:])
 
-data_train = datasets.load_digits()
+# merge X and y
+label = "digit"
+X[label] = y
 
-pd.DataFrame(data_train.data[100:,:]).to_csv("data/X_train.csv", index=False)
-pd.DataFrame(data_train.target[100:]).to_csv("data/y_train.csv", index=False)
+training_data = X
 
+training_data.to_csv('data/digits.csv')
 ds = ws.get_default_datastore()
 ds.upload(src_dir='./data', target_path='digitsdata', overwrite=True, show_progress=True)
 
-X = Dataset.Tabular.from_delimited_files(path=ds.path('digitsdata/X_train.csv'))
-y = Dataset.Tabular.from_delimited_files(path=ds.path('digitsdata/y_train.csv'))
-
+training_data = Dataset.Tabular.from_delimited_files(path=ds.path('digitsdata/digits.csv'))
 ```
 
 ## <a name="create-run-configuration"></a>Çalıştırma yapılandırması oluştur
@@ -115,14 +119,14 @@ run_config.environment.docker.enabled = True
 run_config.environment.docker.base_image = azureml.core.runconfig.DEFAULT_CPU_IMAGE
 
 dependencies = CondaDependencies.create(
-    pip_packages=["scikit-learn", "scipy", "numpy"])
+    pip_packages=["scikit-learn", "scipy", "numpy==1.16.2"])
 run_config.environment.python.conda_dependencies = dependencies
 ```
 
 Bu tasarım deseninin ek bir örneği için bu [örnek not defterine](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/remote-amlcompute/auto-ml-remote-amlcompute.ipynb) bakın.
 
 ## <a name="configure-experiment"></a>Deneme yapılandırma
-`AutoMLConfig`için ayarları belirtin.  ( [Parametrelerin tam listesini](how-to-configure-auto-train.md#configure-experiment) ve olası değerlerini görün.)
+Ayarlarını belirtin `AutoMLConfig`.  (Bkz: bir [parametrelerin tam listesi](how-to-configure-auto-train.md#configure-experiment) ve olası değerleri.)
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -131,29 +135,27 @@ import logging
 
 automl_settings = {
     "name": "AutoML_Demo_Experiment_{0}".format(time.time()),
+    "experiment_timeout_minutes" : 20,
+    "enable_early_stopping" : True,
     "iteration_timeout_minutes": 10,
-    "iterations": 20,
     "n_cross_validations": 5,
     "primary_metric": 'AUC_weighted',
-    "preprocess": False,
     "max_concurrent_iterations": 10,
-    "verbosity": logging.INFO
 }
 
 automl_config = AutoMLConfig(task='classification',
                              debug_log='automl_errors.log',
                              path=project_folder,
                              compute_target=compute_target,
-                             run_configuration=run_config,
-                             X = X,
-                             y = y,
+                             training_data=training_data,
+                             label_column_name=label,
                              **automl_settings,
                              )
 ```
 
-## <a name="submit-training-experiment"></a>Eğitim deneme deneyimini gönder
+## <a name="submit-training-experiment"></a>Eğitim denemesini gönderin
 
-Şimdi, algoritmayı otomatik olarak seçmek için yapılandırmayı, hiper parametreleri ve modeli eğiteye gönderebilirsiniz.
+Algoritma, Hiper parametre otomatik olarak seçmek için yapılandırma şimdi gönderin ve modeli eğitme.
 
 ```python
 from azureml.core.experiment import Experiment
@@ -195,7 +197,7 @@ Aşağıdaki örneğe benzer bir çıktı görürsünüz:
             19      Robust Scaler kNN                     0:02:32                  0.983     0.989
 
 
-## <a name="explore-results"></a>Sonuçları keşfet
+## <a name="explore-results"></a>Sonuçları keşfedin
 
 Bir grafik ve sonuç tablosu görmek için [eğitim öğreticisinde](tutorial-auto-train-models.md#explore-the-results) gösterildiği gibi aynı [jupi pencere öğesini](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) kullanabilirsiniz.
 
@@ -204,12 +206,12 @@ from azureml.widgets import RunDetails
 RunDetails(remote_run).show()
 ```
 
-Burada pencere öğesinin statik bir görüntüsü yer alır.  Not defterinde, söz konusu çalıştırmaya yönelik çalıştırma özelliklerini ve çıkış günlüklerini görmek için tablodaki herhangi bir satıra tıklayabilirsiniz.   Her yineleme için kullanılabilir her ölçümün grafiğini görüntülemek için grafiğin üzerindeki açılan menüyü de kullanabilirsiniz.
+Burada pencere öğesinin statik bir görüntüsü yer alır.  Not Defteri çalıştırma özellikleri görmek ve günlükleri çalıştırılan için çıkış tablodaki herhangi bir satırdaki tıklayabilirsiniz.   Grafiğin üstünde açılan, her yineleme için her ölçüm grafiğini görüntülemek için de kullanabilirsiniz.
 
 ![pencere öğesi tablosu](./media/how-to-auto-train-remote/table.png)
 ![pencere öğesi çizimi](./media/how-to-auto-train-remote/plot.png)
 
-Pencere öğesi, bireysel çalıştırma ayrıntılarını görmek ve araştırmak için kullanabileceğiniz bir URL görüntüler.  
+Pencere öğesi görebilir ve çalıştırma ayrıntıları tek keşfetmek için kullanabileceğiniz bir URL görüntülenir.  
 
 Jupyter not defterinde değilseniz, bu URL 'YI çalıştırmanın içinden görüntüleyebilirsiniz:
 
@@ -227,5 +229,5 @@ Aşağıdaki [Not defteri](https://github.com/Azure/MachineLearningNotebooks/blo
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Otomatik eğitime yönelik ayarları yapılandırmayı](how-to-configure-auto-train.md)öğrenin.
+* Bilgi [otomatik eğitim ayarlarını yapılandırma](how-to-configure-auto-train.md).
 * Otomatik ML denemeleri ' de model yorumlu özelliklerinin [nasıl](how-to-machine-learning-interpretability-automl.md) etkinleştirilebilirliği bölümüne bakın.

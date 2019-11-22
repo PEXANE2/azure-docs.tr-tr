@@ -1,5 +1,5 @@
 ---
-title: B2B-Azure Active Directory için bir kimlik sağlayıcısı olarak Google ekleme | Microsoft Docs
+title: B2B için kimlik sağlayıcısı olarak Google ekleme-Azure AD
 description: Konuk kullanıcıların Azure AD uygulamalarınızda kendi Gmail hesabıyla oturum açmasını sağlamak için Google ile Federasyonun
 services: active-directory
 ms.service: active-directory
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68acf32660fe36ddd4c2982b818ce21adde7ddab
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 6da9aed857524e9b71aad4dfc99f1d2e54306dc9
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603585"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272888"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>B2B Konuk kullanıcıları için bir kimlik sağlayıcısı olarak Google ekleme
 
@@ -125,7 +125,7 @@ Google Federation kurulumunuzu silebilirsiniz. Bunu yaparsanız, davetini zaten 
 1. Graph modülü için Azure AD PowerShell 'in en son sürümünü ([Azureadpreview](https://www.powershellgallery.com/packages/AzureADPreview)) yükler.
 2. `Connect-AzureAD` öğesini çalıştırın.  
 4. Oturum açma isteminde, yönetilen genel yönetici hesabıyla oturum açın.  
-5. Aşağıdaki komutu kullanın:
+5. Aşağıdaki komutu girin:
 
     `Remove-AzureADMSIdentityProvider -Id Google-OAUTH`
 

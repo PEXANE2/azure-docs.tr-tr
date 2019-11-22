@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: diberry
-ms.openlocfilehash: 6234a13d07ac024849d1c890d82ef03e19c11af4
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 32b9b42ee0962353405616e501de95b19e40ea1a
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012007"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280847"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Desenlerini tahmin doğruluğunu artırmak
 Desenler, çeşitli konuşma çok benzer olduğunda doğruluğunu artırmak için tasarlanmıştır.  Bir desen çok daha fazla konuşma sağlamadan bir amaç için daha yüksek doğruluk derecesi elde etmek sağlar. 
@@ -45,7 +45,7 @@ Desenlerini tahmin teknolojilerinin bir karışımını kullanın. Bir desende b
 
 ## <a name="patterns-do-not-improve-machine-learned-entity-detection"></a>Desenler makine tarafından öğrenilen varlık algılamayı iyileştirmez
 
-Bir model öncelikle amaç ve rollerin tahminine yardımcı olmak için tasarlanmıştır. Model. herhangi bir varlık, serbest biçimli varlıkları ayıklamak için kullanılır. Desenler varlıkları kullanırken, bir desen makine tarafından öğrenilen bir varlığı algılamaya yardımcı olmaz.  
+Bir model öncelikle amaç ve rollerin tahminine yardımcı olmak için tasarlanmıştır. _Model. herhangi bir_ varlık, serbest biçimli varlıkları ayıklamak için kullanılır. Desenler varlıkları kullanırken, bir desen makine tarafından öğrenilen bir varlığı algılamaya yardımcı olmaz.  
 
 Birden çok kuralı tek bir düzende daraltarak, geliştirilmiş varlık tahminini görmeyi beklememeniz gerekmez. Basit varlıkların tetiklenmesi için, bu tür varlıkları eklemeniz veya liste varlıklarını kullanmanız gerekir, ancak sizin düzeniniz tetikleymeyecektir.
 
@@ -64,7 +64,7 @@ Her bir amaç için bir desen olduğu sürece, örnekleri olmayan amaçlar içer
 ## <a name="best-practices"></a>En iyi uygulamalar
 Bilgi [en iyi uygulamalar](luis-concept-best-practices.md).
 
-## <a name="pattern-syntax"></a>Desen sözdizimi
+## <a name="pattern-syntax"></a>Desen söz dizimi
 
 [Model sözdizimi başvurusundan](reference-pattern-syntax.md)bir model sözdizimi öğrenin. 
 

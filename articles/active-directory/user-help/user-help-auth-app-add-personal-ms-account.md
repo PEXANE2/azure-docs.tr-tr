@@ -1,6 +1,6 @@
 ---
-title: Bir kimlik doğrulayıcı uygulamasına kişisel Microsoft hesabı ekleme-Azure AD
-description: Outlook.com veya Xbox LIVE gibi kişisel Microsoft hesaplarınızı, iki öğeli doğrulama için Microsoft Authenticator uygulamasına ekleme.
+title: Microsoft Authenticator uygulamasına kişisel Microsoft hesabı ekleme-Azure AD
+description: İki öğeli doğrulama kullanırken kimliğinizi doğrulamak için Outlook.com veya Xbox LIVE gibi kişisel Microsoft hesaplarını Microsoft Authenticator uygulamasına ekleyin.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,14 +12,14 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ca01aad76bfbeba0cf56be8ee74287a79f6346e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 28fd29c1f3f393c37c9e9a8d0995766258c2eb45
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820249"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278895"
 ---
-# <a name="add-your-personal-microsoft-accounts"></a>Kişisel Microsoft hesaplarınızı ekleyin
+# <a name="add-personal-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulamasına kişisel Microsoft hesapları ekleme
 
 Outlook.com ve Xbox gibi kişisel Microsoft hesaplarınızı, hem standart iki öğeli doğrulama işlemi hem de passwordless telefon oturum açma yöntemi için Microsoft Authenticator uygulamasına ekleyin.
 

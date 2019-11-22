@@ -1,5 +1,5 @@
 ---
-title: Azure AD Galeri uygulamasına kullanıcı sağlamayı yapılandırma sorunu | Microsoft Docs
+title: Azure AD Galeri uygulamasına kullanıcı sağlamayı yapılandırma sorunu
 description: Azure AD uygulama galerisinde zaten listelenen bir uygulamaya Kullanıcı sağlamayı yapılandırırken karşılaştığı yaygın sorunları giderme
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 09/03/2019
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a8eaa46b46551f9b6075ec10b38de80f84c22a0
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 55b9b8dae6ff47099935f42f75286b1b4ddd3708
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034164"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275755"
 ---
 # <a name="problem-configuring-user-provisioning-to-an-azure-ad-gallery-application"></a>Azure AD Galeri uygulamasına kullanıcı sağlamayı yapılandırma sorunu
 
@@ -33,9 +33,9 @@ Uygulamanız için sağlamayı ayarlamaya özgü kurulum öğreticisini bularak 
 
 Hizmet yapılandırıldıktan sonra, hizmetin çalışması ile ilgili birçok öngörü iki konumdan çizilebilirler:
 
--   **Sağlama günlükleri (Önizleme)** – sağlama [günlüğü](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) , sağlama kapsamında olan ATANMıŞ kullanıcılar için Azure AD sorgulama da dahil olmak üzere, sağlama hizmeti tarafından gerçekleştirilen tüm işlemleri kaydeder. Bu kullanıcıların varlığı için hedef uygulamayı sorgulayın ve sistem arasındaki kullanıcı nesnelerini karşılaştırır. Ardından, karşılaştırma temelinde hedef sistemde Kullanıcı hesabını ekleyin, güncelleştirin veya devre dışı bırakın. &gt; **Etkinlik** bölümünde **Kurumsal uygulamalar** &gt; **sağlama günlükleri (Önizleme)** **Azure Active Directory** ' ni seçerek Azure Portal sağlama günlüklerine erişebilirsiniz.
+-   **Sağlama günlükleri (Önizleme)** – sağlama [günlüğü](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) , sağlama kapsamında olan ATANMıŞ kullanıcılar için Azure AD sorgulama da dahil olmak üzere, sağlama hizmeti tarafından gerçekleştirilen tüm işlemleri kaydeder. Bu kullanıcıların varlığı için hedef uygulamayı sorgulayın ve sistem arasındaki kullanıcı nesnelerini karşılaştırır. Ardından, karşılaştırma temelinde hedef sistemde Kullanıcı hesabını ekleyin, güncelleştirin veya devre dışı bırakın. **Etkinlik** bölümünde &gt; **Kurumsal uygulamalar** &gt; **sağlama günlükleri (Önizleme)** **Azure Active Directory** ' ni seçerek Azure Portal sağlama günlüklerine erişebilirsiniz.
 
--   **Geçerli durum –** Belirli bir uygulama için en son sağlama çalıştırmasının Özeti, ' nin en altındaki **Azure Active Directory &gt; kurumsal uygulamalar\] &gt; \[ &gt;uygulama adı sağlama** bölümünde görülebilir. Hizmet ayarları altındaki ekran. Geçerli durum bölümü, bir sağlama döngüsünün Kullanıcı hesapları sağlamaya başlayıp başlamadığına ilişkin gösterir. Döngüsünün ilerlemesini izleyebilir, kaç Kullanıcı ve grup sağlandığını görebilir ve kaç rolün oluşturulduğunu görebilirsiniz. Herhangi bir hata oluşursa, Ayrıntılar [sağlama günlüklerinde (Önizleme)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)bulunabilir.
+-   **Geçerli durum –** Belirli bir uygulama için en son sağlama çalıştırmasının bir özeti, hizmet ayarları altındaki ekranın alt kısmındaki **&gt; \[uygulama adı\] &gt;sağlama bölümünde &gt; kurumsal uygulamalar Azure Active Directory** görünebilir. Geçerli durum bölümü, bir sağlama döngüsünün Kullanıcı hesapları sağlamaya başlayıp başlamadığına ilişkin gösterir. Döngüsünün ilerlemesini izleyebilir, kaç Kullanıcı ve grup sağlandığını görebilir ve kaç rolün oluşturulduğunu görebilirsiniz. Herhangi bir hata oluşursa, Ayrıntılar [sağlama günlüklerinde (Önizleme)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)bulunabilir.
 
 ## <a name="general-problem-areas-with-provisioning-to-consider"></a>Dikkate alınması gereken genel sorun alanı
 
@@ -47,7 +47,7 @@ Aşağıda, nereden başlayabileceğiniz hakkında bir fikriniz varsa, detaya gi
 
 ## <a name="provisioning-service-does-not-appear-to-start"></a>Sağlama hizmeti başlatma olarak görünmüyor
 
-**Sağlama durumunu** , Azure Portal **Azure Active Directory &gt; Enterprise Apps &gt;uygulamaadı \[\] sağlama&gt;** **bölümünde olacak şekilde** ayarlarsanız . Ancak, sonraki yeniden yüklemeden sonra bu sayfada başka bir durum ayrıntısı gösterilmez. Hizmetin çalışıyor olması, ancak henüz bir başlangıç döngüsünü tamamlamamasından kaynaklanıyor olabilir. Hizmetin hangi işlemleri yaptığını ve herhangi bir hata olup olmadığını belirlemek için yukarıda açıklanan **sağlama günlüklerini** denetleyin.
+**Sağlama durumunu** **Azure Active Directory &gt; Enterprise Apps &gt; \[uygulama adı\] &gt;sağlama** **bölümünde olacak şekilde** ayarlarsanız. Ancak, sonraki yeniden yüklemeden sonra bu sayfada başka bir durum ayrıntısı gösterilmez. Hizmetin çalışıyor olması, ancak henüz bir başlangıç döngüsünü tamamlamamasından kaynaklanıyor olabilir. Hizmetin hangi işlemleri yaptığını ve herhangi bir hata olup olmadığını belirlemek için yukarıda açıklanan **sağlama günlüklerini** denetleyin.
 
 >[!NOTE]
 >Bir başlangıç döngüsünün, Azure AD dizininin boyutuna ve sağlama kapsamındaki kullanıcı sayısına bağlı olarak 20 dakikadan birkaç saate kadar herhangi bir zaman geçmesi gerekir. İlk döngüden sonra sonraki eşitlemeler daha hızlı olur, çünkü sağlama hizmeti başlangıç döngüsünden sonra her iki sistemin durumunu temsil eden filigranları depolar, sonraki eşitlemeler performansını geliştirir.
@@ -62,13 +62,13 @@ Sağlamanın çalışması için Azure AD, uygulamanın bu uygulama tarafından 
 
 Bir Kullanıcı sağlama günlüklerinde "atlandı" olarak görünüyorsa, nedenini öğrenmek için günlük iletisindeki genişletilmiş ayrıntıları okumak çok önemlidir. Aşağıda yaygın nedenler ve çözümler verilmiştir:
 
-- **Kapsam filtresi yapılandırıldı** **Bu, kullanıcıyı bir öznitelik değerine göre filtreleyerek**. Filtrelerin kapsamını belirleme hakkında daha fazla bilgi için <https://docs.microsoft.com/azure/active-directory/active-directory-saas-scoping-filters>bkz.
+- Bir **öznitelik değerine göre kullanıcıya filtre**uygulanan **bir kapsam filtresi yapılandırıldı** . Filtrelerin kapsamını belirleme hakkında daha fazla bilgi için bkz. <https://docs.microsoft.com/azure/active-directory/active-directory-saas-scoping-filters>.
 
-- **Kullanıcı "etkin değil" olarak belirlenir.** Bu özel hata iletisini görürseniz, bunun nedeni Azure AD 'de depolanan kullanıcı atama kaydında bir sorun olması olabilir. Bu sorunu onarmak için, Kullanıcı (veya grubu) uygulamadan atamayı kaldırın ve yeniden atayın. Atama hakkında daha fazla bilgi için bkz <https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal>.
+- **Kullanıcı "etkin değil" olarak belirlenir.** Bu özel hata iletisini görürseniz, bunun nedeni Azure AD 'de depolanan kullanıcı atama kaydında bir sorun olması olabilir. Bu sorunu onarmak için, Kullanıcı (veya grubu) uygulamadan atamayı kaldırın ve yeniden atayın. Atama hakkında daha fazla bilgi için bkz. <https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal>.
 
-- **Gerekli bir öznitelik eksik veya Kullanıcı için doldurulmamış.** Sağlama yaparken göz önünde bulundurmanız gereken önemli bir şey, Azure AD 'den uygulamaya hangi kullanıcı (veya grup) özelliklerinin akmasını tanımlayan öznitelik eşlemelerini ve iş akışlarını gözden geçirmek ve yapılandırmak için gereken bir şeydir. Bu, iki sistem arasında kullanıcıları/grupları benzersiz şekilde tanımlamak ve eşleştirmek için kullanılan "eşleşen özelliği" ayarlamayı içerir. Bu önemli süreç hakkında daha fazla bilgi için bkz <https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings>.
+- **Gerekli bir öznitelik eksik veya Kullanıcı için doldurulmamış.** Sağlama yaparken göz önünde bulundurmanız gereken önemli bir şey, Azure AD 'den uygulamaya hangi kullanıcı (veya grup) özelliklerinin akmasını tanımlayan öznitelik eşlemelerini ve iş akışlarını gözden geçirmek ve yapılandırmak için gereken bir şeydir. Bu, iki sistem arasında kullanıcıları/grupları benzersiz şekilde tanımlamak ve eşleştirmek için kullanılan "eşleşen özelliği" ayarlamayı içerir. Bu önemli süreç hakkında daha fazla bilgi için bkz. <https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings>.
 
-  * **Gruplar için öznitelik eşlemeleri:** Bazı uygulamalarda destekleniyorsa, üyelere ek olarak grup adı ve grup ayrıntılarının sağlanması. **Sağlama** sekmesinde gösterilen Grup nesneleri **eşlemesini** etkinleştirerek veya devre dışı bırakarak bu işlevselliği etkinleştirebilir veya devre dışı bırakabilirsiniz. Sağlama grupları etkinleştirilmişse, "eşleşen KIMLIK" için uygun bir alanın kullanıldığından emin olmak üzere öznitelik eşlemelerini gözden geçirdiğinizden emin olun. Bu, görünen ad veya e-posta diğer adı olabilir), eşleşen özellik boşsa veya Azure AD 'de bir grup için doldurulmamışsa grup ve üyeleri sağlanmamıştır.
+  * **Gruplar Için öznitelik eşlemeleri:** Bazı uygulamalarda destekleniyorsa, üyelere ek olarak grup adı ve grup ayrıntılarının sağlanması. **Sağlama** sekmesinde gösterilen Grup nesneleri **eşlemesini** etkinleştirerek veya devre dışı bırakarak bu işlevselliği etkinleştirebilir veya devre dışı bırakabilirsiniz. Sağlama grupları etkinleştirilmişse, "eşleşen KIMLIK" için uygun bir alanın kullanıldığından emin olmak üzere öznitelik eşlemelerini gözden geçirdiğinizden emin olun. Bu, görünen ad veya e-posta diğer adı olabilir), eşleşen özellik boşsa veya Azure AD 'de bir grup için doldurulmamışsa grup ve üyeleri sağlanmamıştır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Azure Active Directory ile SaaS Uygulamalarına Kullanıcı Hazırlama ve Sağlamayı Kaldırma İşlemlerini Otomatik Hale Getirme](user-provisioning.md)

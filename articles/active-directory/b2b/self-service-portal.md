@@ -1,5 +1,5 @@
 ---
-title: B2B işbirliği - Azure Active Directory için Self Servis kaydolma portal | Microsoft Docs
+title: B2B işbirliği için self servis kaydolma portalı-Azure AD
 description: Azure Active Directory B2B işbirliği, iş ortaklarının kurumsal uygulamalarınıza seçmeli olarak erişmelerini mümkün kılarak şirketler arası ilişkilerinizi destekler.
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28db43a345fb29a7529136ddfb929f5a48ccb1f8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 794a13a3f863c732d4e7ed8cedcbd73f7cbc0d0b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785425"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272098"
 ---
 # <a name="self-service-portal-for-azure-ad-b2b-collaboration-sign-up"></a>Azure AD B2B işbirliği kaydı için self servis portalı
 

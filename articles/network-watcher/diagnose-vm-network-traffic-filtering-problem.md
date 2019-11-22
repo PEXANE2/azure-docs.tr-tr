@@ -1,5 +1,6 @@
 ---
-title: Sanal makine ağ trafiği filtreleme sorununu tanılama - hızlı başlangıç - Azure portalı | Microsoft Docs
+title: 'Hızlı başlangıç: bir VM ağı trafik filtresi sorununu tanılama-Azure portal'
+titleSuffix: Azure Network Watcher
 description: Bu hızlı başlangıçta, Azure Ağ İzleyicisi’nin IP akış doğrulama özelliği kullanılarak sanal makine ağ trafiği filtreleme sorununun nasıl tanılanacağını öğrenirsiniz.
 services: network-watcher
 documentationcenter: network-watcher
@@ -17,14 +18,14 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 6478c82a93cd35eead3972bb4dccf402219d9b7d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d436fab100dc05cde8a434af564c67477b33d8d3
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64702913"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276003"
 ---
-# <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem-using-the-azure-portal"></a>Hızlı Başlangıç: Azure portalını kullanarak bir sanal makine ağ trafik filtresi sorununu tanılama
+# <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem-using-the-azure-portal"></a>Hızlı Başlangıç: Azure portalını kullanarak sanal makine ağ trafiği filtreleme sorununu tanılama
 
 Bu hızlı başlangıçta bir sanal makine (VM) dağıtır ve sonra bir IP adresi ve URL ile iletişimleri ve bir IP adresinden gelen iletişimleri denetlersiniz. Bir iletişim hatasının nedenini ve bu hatayı nasıl çözeceğinizi belirlersiniz.
 
@@ -32,12 +33,12 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="log-in-to-azure"></a>Azure'da oturum açma
 
-[https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
+https://portal.azure.com adresinden Azure portalında oturum açın.
 
 ## <a name="create-a-vm"></a>VM oluşturma
 
 1. Azure portalının sol üst köşesinde bulunan **+ Kaynak oluştur** seçeneğini belirleyin.
-2. Seçin **işlem**ve ardından **Windows Server 2016 Datacenter** veya sürümünün **Ubuntu Server**.
+2. **İşlem**' ı seçin ve ardından **Windows Server 2016 Datacenter** veya **Ubuntu Server**sürümünü seçin.
 3. Aşağıdaki bilgileri girin veya seçin, kalan ayarlar için varsayılan değerleri kabul edin ve sonra **Tamam**’ı seçin:
 
     |Ayar|Değer|
@@ -82,10 +83,10 @@ Bir sanal makine oluşturduğunuzda Azure varsayılan olarak sanal makineye/sana
     | Sanal makine   | MyVm öğesini seçin                                                                                       |
     | Ağ arabirimi | myvm - VM’yi oluşturduğunuzda portalın oluşturduğu ağ arabiriminin adı farklıdır. |
     | Protokol          | TCP                                                                                               |
-    | Direction         | Giden                                                                                          |
+    | Yön         | Giden                                                                                          |
     | Yerel IP adresi  | 10.0.0.4                                                                                          |
     | Yerel bağlantı noktası      | 60000                                                                                                |
-    | Uzak IP adresi | 13.107.21.200 - için adreslerinden biri < www.bing.com>.                                             |
+    | Uzak IP adresi | 13.107.21.200-< www. Bing. com > adreslerinden biridir.                                             |
     | Uzak bağlantı noktası       | 80                                                                                                |
 
     ![IP akışı doğrulama](./media/diagnose-vm-network-traffic-filtering-problem/ip-flow-verify-outbound.png)
@@ -118,9 +119,9 @@ Bu hızlı başlangıçtaki denetimlerinde Azure yapılandırması test edilmiş
 
 Artık gerekli olmadığında kaynak grubunu ve içerdiği tüm kaynakları silin:
 
-1. Portalın üst kısmındaki **Ara** kutusuna *myResourceGroup* değerini girin. Arama sonuçlarında **myResourceGroup** seçeneğini gördüğünüzde bunu seçin.
+1. Portalın üst kısmındaki *Ara* kutusuna **myResourceGroup** değerini girin. Arama sonuçlarında **myResourceGroup** seçeneğini gördüğünüzde bunu seçin.
 2. **Kaynak grubunu sil**'i seçin.
-3. **KAYNAK GRUBU ADINI YAZIN:** için *myResourceGroup* girin ve **Sil**’i seçin.
+3. *KAYNAK GRUBU ADINI YAZIN:* için **myResourceGroup** girin ve **Sil**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

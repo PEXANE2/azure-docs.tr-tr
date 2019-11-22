@@ -1,5 +1,6 @@
 ---
-title: Sanal makineye gelen ve sanal makineden giden ağ trafiği akışını günlüğe kaydetme - öğretici - Azure portalı | Microsoft Docs
+title: "Öğretici: VM 'ye ve VM 'ye giden günlük ağ trafiği akışı Azure portal"
+titleSuffix: Azure Network Watcher
 description: Ağ İzleyicisi’nin NSG akış günlükleri özelliğini kullanarak bir sanal makineye gelen ve sanal makineden giden ağ trafiği akışını günlüğe kaydetme hakkında bilgi edinin.
 services: network-watcher
 documentationcenter: na
@@ -17,14 +18,14 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 3e5490a4d74f10532764029f7a83788e3e39b592
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 53cfb2e46b642def12bfc6aea2f35c245e8427aa
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69636209"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277997"
 ---
-# <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak bir sanal makineye gelen ve giden ağ trafiğini günlüğe kaydet
+# <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak sanal makineye gelen ve sanal makineden giden ağ trafiğini günlüğe kaydetme
 
 Ağ güvenlik grubu (NSG), bir sanal makineye gelen trafiği ve sanal makineden giden trafiği filtrelemenize olanak sağlar. Ağ İzleyicisinin NSG akış günlüğü özelliği ile NSG aracılığıyla akan trafiği günlüğe kaydedebilirsiniz. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -43,14 +44,14 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 2. **İşlem**' ı seçin ve ardından **Windows Server 2016 Datacenter** veya **Ubuntu Server**sürümünü seçin.
 3. Aşağıdaki bilgileri girin veya seçin, kalan ayarlar için varsayılan değerleri kabul edin ve sonra **Tamam**’ı seçin:
 
-    |Ayar|Value|
+    |Ayar|Değer|
     |---|---|
-    |Name|myVm|
+    |Ad|myVm|
     |Kullanıcı adı| Seçtiğiniz bir kullanıcı adını girin.|
-    |istemcisiyle yönetilen bir cihaz için)| Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
-    |Subscription| Aboneliğinizi seçin.|
-    |Resource group| **Yeni oluştur**’u seçin ve **myResourceGroup** değerini girin.|
-    |Location| **Doğu ABD**’yi seçin|
+    |Parola| Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
+    |Abonelik| Aboneliğinizi seçin.|
+    |Kaynak grubu| **Yeni oluştur**’u seçin ve **myResourceGroup** değerini girin.|
+    |Konum| **Doğu ABD**’yi seçin|
 
 4. Sanal makine için bir boyut seçin ve **Seç** seçeneğini belirleyin.
 5. **Ayarlar** bölümünde tüm varsayılanları kabul edin ve **Tamam**’ı seçin.
@@ -67,7 +68,7 @@ Doğu ABD bölgesinde etkinleştirilmiş bir ağ izleyiciniz zaten varsa [Insigh
 
     ![Ağ İzleyicisini etkinleştirme](./media/network-watcher-nsg-flow-logging-portal/enable-network-watcher.png)
 
-3. **Ağ izleyicisini etkinleştirme**’yi seçin.
+3. **Ağ İzleyicisini etkinleştirme**’yi seçin.
 
 ## <a name="register-insights-provider"></a>Insights sağlayıcısını kaydetme
 
@@ -86,21 +87,21 @@ NSG akış günlüğü kaydı için **Microsoft.Insights** sağlayıcısı gerek
 2. **Depolama**’yı ve sonra **Depolama hesabı - blob, dosya, tablo, kuyruk** öğesini seçin.
 3. Aşağıdaki bilgileri girin veya seçin, kalan varsayılan değerleri kabul edin ve sonra **Oluştur**’u seçin.
 
-    | Ayar        | Value                                                        |
+    | Ayar        | Değer                                                        |
     | ---            | ---   |
-    | Name           | 3-24 karakter uzunluğundadır. Yalnızca küçük harfler ve rakamlar içerebilir ve tüm Azure Depolama hesapları arasında benzersiz olmalıdır.                                                               |
-    | Location       | **Doğu ABD**’yi seçin                                           |
-    | Resource group | **Var olanı kullan**’ı seçin ve sonra **myResourceGroup** seçeneğini belirleyin |
+    | Ad           | 3-24 karakter uzunluğundadır. Yalnızca küçük harfler ve rakamlar içerebilir ve tüm Azure Depolama hesapları arasında benzersiz olmalıdır.                                                               |
+    | Konum       | **Doğu ABD**’yi seçin                                           |
+    | Kaynak grubu | **Var olanı kullan**’ı seçin ve sonra **myResourceGroup** seçeneğini belirleyin |
 
     Depolama hesabının oluşturulması yaklaşık bir dakika sürebilir. Depolama hesabı oluşturulmadan kalan adımlara devam etmeyin. Yenisini oluşturmak yerine mevcut bir depolama hesabını kullanırsanız, depolama hesabı için **AYARLAR** bölümünde **Güvenlik duvarları ve sanal ağlar** için **Tüm ağlar** (varsayılan) seçeneği belirlenmiş bir depolama hesabı seçtiğinizden emin olun. Her durumda, depolama hesabının NSG ile aynı bölgede olması gerekir. 
     
     > [!NOTE]
     > Microsoft. Insight ve Microsoft. Network sağlayıcıları şu anda [Azure depolama için güvenilen Microsoft Hizmetleri](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services)olarak desteklenirken, NSG akış günlükleri yine de tamamen eklendi. NSG akış günlüğünü etkinleştirmek için, yukarıda belirtilen **tüm ağların** seçili olması gerekir.
     
-4. Portalın sol üst köşesinde **Tüm hizmetler**’i seçin. **Filtre** kutusuna *Ağ İzleyicisi* yazın. **Ağ İzleyicisi**, arama sonuçlarında görüntülendiğinde onu seçin.
+4. Portalın sol üst köşesinde **Tüm hizmetler**’i seçin. **Filtre** kutusuna *Ağ İzleyicisi* yazın. **Ağ İzleyicisi**, arama sonuçlarında görüntülendiğinde seçin.
 5. **GÜNLÜKLER** bölümünde, aşağıdaki resimde gösterildiği gibi **NSG akış günlükleri**’ni seçin:
 
-    ![NSG](./media/network-watcher-nsg-flow-logging-portal/nsgs.png)
+    ![NSG'ler](./media/network-watcher-nsg-flow-logging-portal/nsgs.png)
 
 6. NSG listesinden **myVm-nsg** adlı NSG’yi seçin.
 7. **Akış günlükleri ayarları** bölümünde **Açık** seçeneğini belirleyin.
@@ -126,8 +127,8 @@ NSG akış günlüğü kaydı için **Microsoft.Insights** sağlayıcısı gerek
    ![Akış günlüklerini indirme](./media/network-watcher-nsg-flow-logging-portal/download-flow-logs.png)
 
 3. [NSG akış günlüğünü etkinleştirme](#enable-nsg-flow-log) bölümünün 2. adımında yapılandırdığınız depolama hesabını seçin.
-4. **BLOB hizmeti**altında Bloblar' ı seçin ve ardından **Öngörüler-logs-networksecuritygroupflowevent** kapsayıcısını seçin.
-5. Kapsayıcıda, aşağıdaki resimde gösterildiği gibi, bir PT1H. JSON dosyasına ulaşana kadar klasör hiyerarşisine gidin. Günlük dosyaları şu adlandırma kuralını izleyen bir klasör hiyerarşisine yazılır: https://{storageAccountName}. blob. Core. Windows. net/Insights-logs-networksecuritygroupflowevent/RESOURCEID =/Subscriptions/{SubscriptionID}/ RESOURCEGROUPS/{resourceGroupName}/SAĞLAYıCıLAR/MICROSOFT. NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y = {Year}/m = {month}/d = {Day}/h = {saat}/m = 00/macAddress = {macAddress}/Pt1h.exe
+4. **BLOB hizmeti**altında **Bloblar**' ı seçin ve ardından **Öngörüler-logs-networksecuritygroupflowevent** kapsayıcısını seçin.
+5. Kapsayıcıda, aşağıdaki resimde gösterildiği gibi, bir PT1H. JSON dosyasına ulaşana kadar klasör hiyerarşisine gidin. Günlük dosyaları, aşağıdaki adlandırma kuralını izleyen bir klasör hiyerarşisine yazılır: https://{storageAccountName}. blob. Core. Windows. net/Insights-logs-networksecuritygroupflowevent/RESOURCEID =/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y = {Year}/m = {month}/d = {Day}/h = {Hour}/m = 00/macAddress = {macAddress}/Pt1h.exe JSON
 
    ![Akış günlüğü](./media/network-watcher-nsg-flow-logging-portal/log-file.png)
 
@@ -214,11 +215,11 @@ Aşağıdaki json, verileri günlüğe kaydedilen her akış için PT1H.json dos
 | 10.0.0.4  | Kaynak IP adresi      | Akışın geldiği kaynak IP adresi. 10.0.0.4, [Sanal makine oluşturma](#create-a-vm) bölümünde oluşturduğunuz sanal makinenin özel IP adresidir.
 | 13.67.143.118     | Hedef IP adresi | Akışın hedeflendiği hedef IP adresi.                                                                                  |
 | 44931        | Kaynak bağlantı noktası            | Akışın geldiği kaynak bağlantı noktası.                                           |
-| 443         | Hedef bağlantı noktası       | Akışın hedeflendiği hedef bağlantı noktası. Trafiğin bağlantı noktası 443 ' e gönderildiği için, günlük dosyasındaki **UserRule_default-Allow-RDP**adlı kural akışı işlenir.                                                |
-| T            | Protocol               | Akış protokolünün TCP (T) mi yoksa UDP (U) mi olduğu.                                  |
-| O            | Direction              | Trafiğin gelen (I) mi yoksa giden (O) mi olduğu.                                     |
-| A            | Action                 | Trafiğe izin mi verildiği (A) yoksa trafiğin ret mi edildiği (D).  
-| C            | Yalnızca akış durumu **sürüm 2** | Akışın durumunu yakalar. Olası durumlar **B**: Bir akış oluşturulduğunda başlar. İstatistikler sağlanmamış. **C**: Devam eden bir akış için devam edin. İstatistikler 5 dakikalık aralıklarla sağlanır. **E**: Bir akış sonlandırıldığında bitiş. İstatistikler sağlanır. |
+| 443         | Hedef bağlantı noktası       | Akışın hedeflendiği hedef bağlantı noktası. Trafiğin bağlantı noktası 443 ' e gönderildiği için, günlük dosyasında **UserRule_default-Allow-RDP**adlı kural akışı işlenir.                                                |
+| T            | Protokol               | Akış protokolünün TCP (T) mi yoksa UDP (U) mi olduğu.                                  |
+| O            | Yön              | Trafiğin gelen (I) mi yoksa giden (O) mi olduğu.                                     |
+| A            | Eylem                 | Trafiğe izin mi verildiği (A) yoksa trafiğin ret mi edildiği (D).  
+| C            | Yalnızca akış durumu **sürüm 2** | Akışın durumunu yakalar. Olası durumlar **B**: bir akış oluşturulduğunda başlar. İstatistikler sağlanmamış. **C**: devam eden bir akış için devam ediliyor. İstatistikler 5 dakikalık aralıklarla sağlanır. **E**: bir akış sonlandırıldığında sonlandırın. İstatistikler sağlanır. |
 | 30 | Kaynak gönderilen paketler **yalnızca hedef sürüm 2** ' ye | Son güncelleştirmeden bu yana kaynaktan hedefe gönderilen TCP veya UDP paketlerinin toplam sayısı. |
 | 16978 | Gönderilen bayt-kaynak yalnızca hedef **sürüm 2** | Son güncelleştirmeden bu yana kaynaktan hedefe gönderilen TCP veya UDP paket baytlarının toplam sayısıdır. Paket baytları paket üst bilgisini ve yükünü içerir. |
 | 24 | Gönderilen paketler-hedef yalnızca kaynak **sürüm 2** ' ye | Son güncelleştirmeden bu yana hedefin kaynağına Gönderilen TCP veya UDP paketlerinin toplam sayısı. |

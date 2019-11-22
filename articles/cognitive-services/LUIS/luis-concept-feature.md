@@ -1,7 +1,7 @@
 ---
 title: Özellikler-LUSıS
 titleSuffix: Azure Cognitive Services
-description: Etiketlemek veya sınıflandırmak istediğiniz girişin nasıl tanınılacağı hakkında ipuçları sağlamak için bir dil modeline özellikler ekleyin.
+description: Bir dil modeli, ipuçlarını, etiket veya sınıflandırmak istediğiniz giriş anlamayı hakkında sağlamaya özellikleri ekleyin.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,16 +11,16 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: diberry
-ms.openlocfilehash: 0cab6eb38459a632f1e7bd1a21e6a7251d33f683
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: b151043babd6c67a17f704bb671a415fcc3ba7b2
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647412"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280906"
 ---
 # <a name="machine-learned-features"></a>Makine tarafından öğrenilen Özellikler 
 
-Machine Learning 'de, bir *özellik* , sistem engellerinizin öğrendiği & öğrendiği verilerin bir ayırt edici nitelik veya özniteliğidir. Language Understanding (LUSıS) ' de bir özellik, amaç ve varlıklarınız hakkında ne kadar önemli olduğunu açıklar ve açıklar.
+Machine Learning 'de, bir _özellik_ , sistem engellerinizin öğrendiği & öğrendiği verilerin bir ayırt edici nitelik veya özniteliğidir. Language Understanding (LUSıS) ' de bir özellik, amaç ve varlıklarınız hakkında ne kadar önemli olduğunu açıklar ve açıklar.
 
 [ÖNIZLEME luın portalında](https://preview.luis.ai)özellikler, amacı veya varlığı _anlatmak_ için kullanıldıklarından _tanımlayıcılardır_ .  
 
@@ -43,7 +43,7 @@ Bir tümcecik listesi ile, LUSıS, bağlamı ve genelleştirir, ancak tam metin 
 
 Yeni kişilerin adlarını tanıması gereken bir toplantı Zamanlayıcısı veya yeni ürünleri tanıması gereken bir envanter uygulaması gibi yeni örnekleri tanıyabilmek istediğinizde, makine tarafından öğrenilen bir varlıkla başlayın. Ardından, LUO 'NUN benzer anlamlara sahip sözcüklerin bulmasına yardımcı olan bir tümcecik listesi oluşturun. Bu tümcecik listesi, LUSıS 'in bu sözcüklerin değerine ek anlam ekleyerek örnekleri tanımasını sağlar. 
 
-Tümcecik listeleri, hem amaçları hem de varlıkların anlaşılmasına yardımcı olan, etki alanına özgü sözlük gibidir. 
+Hedefleri ve varlıkları anlama kalitesini geliştirme ile yardımcı etki alanına özel sözlük ifade listeleri gibidir. 
 
 ## <a name="considerations-when-using-a-phrase-list"></a>Tümcecik listesi kullanırken dikkat edilecek noktalar
 
@@ -57,7 +57,7 @@ Bir tümcecik listesi oluşturur (varsayılan olarak genel olarak oluşturulur),
 
 ### <a name="how-to-use-a-phrase-list"></a>Tümcecik listesi kullanma
 
-Amaç veya varlığınızda, şu gibi önemli sözcükler ya da tümcecikler olduğunda [bir tümcecik listesi oluşturun](luis-how-to-add-features.md) :
+Amaç veya varlığınızda şu gibi önemli sözcükler ya da tümcecikler olduğunda [bir tümcecik listesi oluşturun](luis-how-to-add-features.md) :
 
 * sektör koşulları
 * Argo
@@ -82,13 +82,13 @@ Varlığın algılanması amaç için önemli olduğunda bir amaca tanımlayıc�
 
 ### <a name="entity-as-a-feature-to-another-entity"></a>Başka bir varlığa özellik olarak varlık
 
-Bir varlık (a), bu varlığın (A) algılanması (B) için önemli olduğunda başka bir varlığa (B) bir özellik olarak eklenmelidir.
+Varlık (a), varlık (B) için önemli olduğunda bu varlığın (A) algılanabilmesi durumunda başka bir varlığa (B) bir özellik olarak eklenmelidir.
 
 Örneğin, sokak adresi varlığı (A) algılanırsa, sokak adresini bulma (A), sevkiyat adresi varlığı için tahmine ağırlık ekler (B). 
 
 ## <a name="best-practices"></a>En iyi uygulamalar
-[En iyi yöntemleri](luis-concept-best-practices.md)öğrenin.
+Bilgi [en iyi uygulamalar](luis-concept-best-practices.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-LUSıS uygulamanıza özellikler ekleme hakkında daha fazla bilgi edinmek için bkz. [özellik ekleme](luis-how-to-add-features.md) .
+Bkz: [Özellik Ekle](luis-how-to-add-features.md) LUIS uygulamanızı özellikleri ekleme hakkında daha fazla bilgi için.

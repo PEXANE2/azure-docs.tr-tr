@@ -1,6 +1,6 @@
 ---
-title: Şirket içi uygulamaları Cloud App Security - Azure Active Directory ile tümleştirin. | Microsoft Docs
-description: Microsoft Cloud App Security (MCAS) ile çalışmak için Azure Active Directory'de şirket içi bir uygulamayı yapılandırın. MCAS koşullu erişim uygulama denetim oturumları izlemek ve denetlemek için gerçek zamanlı olarak koşullu erişim ilkelerine bağlı olarak kullanın. Azure Active Directory (Azure AD) uygulama ara sunucusu kullanan şirket içi uygulamalar için bu ilkeler uygulayabilirsiniz.
+title: Cloud App Security-Azure AD ile şirket içi uygulamaları tümleştirme
+description: Azure Active Directory Microsoft Cloud App Security (MCAS) ile çalışmak için bir şirket içi uygulama yapılandırın. , Koşullu erişim ilkelerine bağlı olarak oturumları gerçek zamanlı izlemek ve denetlemek için MCAS Koşullu Erişim Uygulama Denetimi kullanın. Bu ilkeleri, Azure Active Directory (Azure AD) içinde uygulama proxy 'Si kullanan şirket içi uygulamalara uygulayabilirsiniz.
 author: msmimart
 manager: CelesteDG
 ms.service: active-directory
@@ -11,61 +11,61 @@ ms.date: 12/19/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7b9b27a3b8329f906b1adfd48d28892a7edc4d1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eb97f9dd87277215a5d4708d3a6f49564c490204
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108439"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275506"
 ---
-# <a name="configure-real-time-application-access-monitoring-with-microsoft-cloud-app-security-and-azure-active-directory"></a>Microsoft Cloud App Security ve Azure Active Directory ile gerçek zamanlı uygulama erişim izlemeyi yapılandırma
-Microsoft Cloud App Security (MCAS) kullanmak için bir şirket içi uygulamanızı Azure Active Directory'de (Azure AD), gerçek zamanlı izleme için yapılandırma. İzlemek için koşullu erişim uygulaması denetimi MCAS kullanır ve gerçek zamanlı denetim oturumları koşullu erişim ilkelerine bağlı. Azure Active Directory (Azure AD) uygulama ara sunucusu kullanan şirket içi uygulamalar için bu ilkeler uygulayabilirsiniz.
+# <a name="configure-real-time-application-access-monitoring-with-microsoft-cloud-app-security-and-azure-active-directory"></a>Microsoft Cloud App Security ve Azure Active Directory ile gerçek zamanlı uygulama erişimi izlemeyi yapılandırma
+Azure Active Directory (Azure AD) içindeki şirket içi bir uygulamayı gerçek zamanlı izleme için Microsoft Cloud App Security (MCAS) kullanacak şekilde yapılandırın. MCAS, koşullu erişim ilkelerine bağlı olarak oturumları gerçek zamanlı olarak izlemek ve denetlemek için Koşullu Erişim Uygulama Denetimi kullanır. Bu ilkeleri, Azure Active Directory (Azure AD) içinde uygulama proxy 'Si kullanan şirket içi uygulamalara uygulayabilirsiniz.
 
-MCAS ile oluşturduğunuz ilke türleri bazı örnekleri aşağıda verilmiştir:
+Aşağıda MCAS ile oluşturabileceğiniz ilke türlerine ilişkin bazı örnekler verilmiştir:
 
-- Engelleme veya yönetilmeyen cihazlarda hassas belgeleri indirilmesini koruyun.
-- Yüksek riskli kullanıcılar uygulamalara oturum açmak ve ardından kendi eylemlerden içinde oturumu zamana yönelik İzleyici. Bu bilgiyle oturum ilkeleri uygulamak nasıl belirlemek için kullanıcı davranışını analiz edebilirsiniz.
-- İstemci sertifikaları ya da cihaz uyumluluğunu yönetilmeyen cihazlardan belirli uygulamalara erişimi engellemek için kullanın.
-- Kullanıcı oturumlarını, şirket dışı ağlardan kısıtlayın. Şirket ağınızın dışından gelen bir uygulamaya erişen kullanıcılar için kısıtlı erişim verebilirsiniz. Örneğin, bu kısıtlı erişim hassas belgeler indiriliyor kullanıcının engelleyebilirsiniz.
+- Yönetilmeyen cihazlarda hassas belgelerin indirilmesini engelleyin veya koruyun.
+- Yüksek riskli kullanıcılar uygulamalarda oturum açtığında izleyin ve sonra eylemlerini oturum içinden günlüğe kaydeder. Bu bilgilerle, oturum ilkelerinin nasıl uygulanacağını öğrenmek için Kullanıcı davranışını çözümleyebilirsiniz.
+- Yönetilmeyen cihazlardan belirli uygulamalara erişimi engellemek için istemci sertifikalarını veya cihaz uyumluluğunu kullanın.
+- Şirket dışı ağlardan kullanıcı oturumlarını kısıtlayın. Şirket ağınızın dışından bir uygulamaya erişen kullanıcılara sınırlı erişim verebilirsiniz. Örneğin, bu sınırlı erişim kullanıcının gizli belgeleri karşıdan yüklemesini engelleyebilir.
 
-Daha fazla bilgi için [Microsoft Cloud App Security koşullu erişim uygulaması denetimi ile uygulamaları koruma](/cloud-app-security/proxy-intro-aad).
+Daha fazla bilgi için bkz. [uygulamaları Microsoft Cloud App Security koşullu erişim uygulama denetimi koruma](/cloud-app-security/proxy-intro-aad).
 
 ## <a name="requirements"></a>Gereksinimler
 
-Lisans:
+Lisan
 
 - EMS E5 lisansı veya 
-- Azure Active Directory Premium P1 ve MCAS tek başına.
+- P1 ve MCAS tek başına Azure Active Directory Premium.
 
 Şirket içi uygulama:
 
-- Şirket içi uygulama Kerberos Kısıtlı temsilci (KCD) kullanmanız gerekir
+- Şirket içi uygulama Kerberos kısıtlı temsilcisini (KCD) kullanmalıdır
 
-Uygulama proxy'si yapılandırın:
+Uygulama proxy 'Sini Yapılandır:
 
-- Azure AD uygulama ara sunucusu bağlayıcısını yükleme ve ortamınızı hazırlama da dahil olmak üzere uygulama ara sunucusunu kullanacak şekilde yapılandırın. Bir öğretici için bkz. [Azure AD'de uygulama ara sunucusu üzerinden uzaktan erişim için bir şirket içi uygulamalara ekleme](application-proxy-add-on-premises-application.md). 
+- Azure AD 'yi, ortamınızı hazırlama ve uygulama proxy bağlayıcısını yükleme dahil olmak üzere uygulama proxy 'Si kullanacak şekilde yapılandırın. Öğretici için bkz. [Azure AD 'de uygulama proxy 'si aracılığıyla uzaktan erişim için şirket içi uygulamalar ekleme](application-proxy-add-on-premises-application.md). 
 
-## <a name="add-on-premises-application-to-azure-ad"></a>Şirket içi uygulamanızı Azure AD'ye ekleme
+## <a name="add-on-premises-application-to-azure-ad"></a>Azure AD 'ye şirket içi uygulama ekleme
 
-Şirket içi bir uygulamayı Azure AD'ye ekleyin. Hızlı Başlangıç için bkz: [şirket içi bir uygulamayı Azure AD'ye ekleme](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad). Uygulama eklerken, aşağıdaki iki ayarı ayarladığınızdan emin olun **şirket içi uygulamanızı ekleme** dikey penceresinde:
+Azure AD 'ye şirket içi bir uygulama ekleyin. Hızlı başlangıç için bkz. [Azure AD 'ye şirket içi uygulama ekleme](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad). Uygulamayı eklerken, Şirket **içi uygulamanızı ekleme** dikey penceresinde aşağıdaki iki ayarı ayarladığınızdan emin olun:
 
-- **Ön kimlik doğrulaması**: Girin **Azure Active Directory**.
-- **Uygulama gövdesindeki URL'leri**: Seçin **Evet**.
+- **Ön kimlik doğrulaması**: **Azure Active Directory**girin.
+- **Uygulama gövdesinde URL 'Leri çevir**: **Evet**' i seçin.
 
-Bu iki ayar, uygulamanın MCAS ile çalışmak gereklidir.
+Uygulamanın MCAS ile çalışması için bu iki ayar gereklidir.
 
 ## <a name="test-the-on-premises-application"></a>Şirket içi uygulamayı test etme
 
-Uygulamanızı Azure AD'ye eklendikten sonra içindeki adımları kullanın [uygulamayı test etme](application-proxy-add-on-premises-application.md#test-the-application) test etmek için kullanıcı ekleme ve oturum açmayı test edin. 
+Uygulamanızı Azure AD 'ye ekledikten sonra, test için bir kullanıcı eklemek ve oturum açmayı test etmek için [uygulamayı test](application-proxy-add-on-premises-application.md#test-the-application) etme bölümündeki adımları kullanın. 
 
-## <a name="deploy-conditional-access-app-control"></a>Koşullu erişim uygulama Denetimi'ni dağıtma
+## <a name="deploy-conditional-access-app-control"></a>Koşullu Erişim Uygulama Denetimi dağıt
 
-Koşullu erişim uygulama denetimi ile uygulamanızı yapılandırmak için yönergeleri izleyin. [dağıtma koşullu erişim uygulama denetimi için Azure AD uygulamaları](/cloud-app-security/proxy-deployment-aad).
+Uygulamanızı koşullu erişim uygulaması denetimiyle yapılandırmak için [Azure AD uygulamaları Için koşullu erişim uygulama denetimi dağıtma](/cloud-app-security/proxy-deployment-aad)bölümündeki yönergeleri izleyin.
 
 
-## <a name="test-conditional-access-app-control"></a>Test koşullu erişim uygulama denetimi
+## <a name="test-conditional-access-app-control"></a>Test Koşullu Erişim Uygulama Denetimi
 
-Azure AD uygulamaları koşullu erişim uygulama denetimi ile dağıtımı test etmek için'ndaki yönergeleri izleyin. [dağıtımı için Azure AD uygulamaları test etme](/cloud-app-security/proxy-deployment-aad).
+Koşullu erişim uygulama denetimi ile Azure AD uygulamalarının dağıtımını test etmek için [Azure AD uygulamaları için dağıtımı test](/cloud-app-security/proxy-deployment-aad)etme bölümündeki yönergeleri izleyin.
 
 
 

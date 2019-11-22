@@ -1,6 +1,6 @@
 ---
 title: Sorular & Microsoft Authenticator uygulama hakkında yanıtlar-Azure AD
-description: Microsoft kimlik doğrulama uygulamasıyla ve kimlik doğrulamasıyla ilgili sık sorulan soruların ve yanıtların bir listesini sağlar.
+description: Microsoft kimlik doğrulama uygulaması ve iki öğeli doğrulama hakkında sık sorulan sorular ve yanıtlar (SSS).
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -13,14 +13,14 @@ ms.date: 01/31/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcd8140acaff693f5b73fe9654968a5ae7cd4c4a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 5ba475ecae09dadf31441827a2db846286b74ad2
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74029817"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74266972"
 ---
-# <a name="frequently-asked-questions-about-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulaması hakkında sık sorulan sorular
+# <a name="frequently-asked-questions-faqs-about-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulaması hakkında sık sorulan sorular (SSS)
 
 Bu makalede Microsoft Authenticator uygulaması hakkında sık sorulan sorular yanıtlanmaktadır. Sorunuz için bir yanıt görmüyorsanız [Microsoft Authenticator uygulama forumuna](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp)gidin.
 

@@ -1,20 +1,20 @@
 ---
 title: Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme
-description: Bu makalede Azure Windows VM'leriniz için güncelleştirme ve düzeltme eki yönetimi uygulaması olan Azure Otomasyonu Güncelleştirme Yönetimi’ni nasıl kullanacağınız anlatılmaktadır.
+description: Bu makalede, Azure ve Azure dışı sanal makinelerinize yönelik güncelleştirmeleri ve düzeltme eklerini yönetmek için Azure Otomasyonu Güncelleştirme Yönetimi kullanma hakkında genel bakış sunulmaktadır.
 services: automation
-author: zjalexander
+author: mgoedtel
 ms.service: automation
 ms.subservice: update-management
 ms.topic: tutorial
-ms.date: 12/04/2018
-ms.author: zachal
+ms.date: 11/20/2019
+ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 65bbf58d8514f9fea082b839f57e9aaf3417dc14
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 65ce4234da3f44de11522a626d2c0d10524e4673
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469737"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278775"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme
 
@@ -51,15 +51,15 @@ Bu öğretici için öncelikle VM'nizde Güncelleştirme Yönetimi'ni etkinleşt
 1. Güncelleştirme Yönetimi etkinleştirmek istediğiniz VM 'yi seçin.
 1. VM sayfasının **İŞLEMLER** bölümünde **Güncelleştirme yönetimi**'ni seçin. **Güncelleştirme Yönetimini Etkinleştirme** sayfası açılır.
 
-Bu VM için Güncelleştirme Yönetimi özelliğinin etkin olup olmadığını belirlemek için doğrulama gerçekleştirilir. Bu doğrulama kapsamında Azure Log Analytics çalışma alanı ve bağlantılı Otomasyon hesabının yanı sıra Güncelleştirme Yönetimi çözümünün çalışma alanında olup olmadığı kontrol edilir.
+Bu VM için Güncelleştirme Yönetimi özelliğinin etkin olup olmadığını belirlemek için doğrulama gerçekleştirilir. Bu doğrulama, bir Log Analytics çalışma alanı ve bağlantılı Otomasyon hesabı için denetimleri ve Güncelleştirme Yönetimi çözümünün çalışma alanında etkinleştirilip etkinleştirilmediğini içerir.
 
-[Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json) çalışma alanı, Güncelleştirme Yönetimi gibi özellikler ve hizmetler tarafından oluşturulan verileri toplamak için kullanılır. Çalışma alanı, birden fazla kaynaktan alınan verilerin incelenip analiz edilebileceği ortak bir konum sağlar.
+[Log Analytics](../azure-monitor/platform/data-platform-logs.md) çalışma alanı, Güncelleştirme Yönetimi gibi özellikler ve hizmetler tarafından oluşturulan verileri toplamak için kullanılır. Çalışma alanı, birden fazla kaynaktan alınan verilerin incelenip analiz edilebileceği ortak bir konum sağlar.
 
-Doğrulama işlemi ayrıca VM'nin Microsoft Monitoring Agent (MMA) ve Otomasyon Karma Runbook Çalışanı ile sağlanıp sağlanmadığını da kontrol eder. Bu aracı, Azure Otomasyonu ile iletişim kurmak ve güncelleştirme durumu hakkında bilgi almak için kullanılır. Aracı, Azure Otomasyonu hizmetiyle iletişim kurmak ve güncelleştirmeleri indirmek için 443 numaralı bağlantı noktasının açık olmasını gerektirir.
+Doğrulama işlemi ayrıca VM 'nin Log Analytics Aracısı ve otomasyon karma Runbook Worker ile sağlanıp sağlanmadığını kontrol eder. Bu aracı, Azure Otomasyonu ile iletişim kurmak ve güncelleştirme durumu hakkında bilgi almak için kullanılır. Aracı, Azure Otomasyonu hizmetiyle iletişim kurmak ve güncelleştirmeleri indirmek için 443 numaralı bağlantı noktasının açık olmasını gerektirir.
 
 Ekleme sırasında aşağıdaki önkoşullardan birinin karşılanmadığı tespit edilirse ilgili önkoşul otomatik olarak eklenir:
 
-* [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json) çalışma alanı
+* [Log Analytics](../azure-monitor/platform/data-platform-logs.md) çalışma alanı
 * Bir [Otomasyon hesabı](./automation-offering-get-started.md)
 * Bir [Karma Runbook Çalışanı](./automation-hybrid-runbook-worker.md) (VM üzerinde etkin)
 
@@ -71,9 +71,9 @@ Ekleme sırasında aşağıdaki önkoşullardan birinin karşılanmadığı tesp
 
 ## <a name="view-update-assessment"></a>Güncelleştirme değerlendirmesini görüntüleme
 
-Güncelleştirme Yönetimi etkinleştirildikten sonra **Güncelleştirme yönetimi** bölmesi açılır. Varsa **Eksik güncelleştirmeler** sekmesinde eksik güncelleştirmelerin bir listesi gösterilir.
+Güncelleştirme Yönetimi etkinleştirildikten sonra **Güncelleştirme yönetimi** bölmesi açılır. Herhangi bir güncelleştirme eksik olarak tanımlanmışsa eksik güncelleştirmeler listesi **eksik güncelleştirmeler** sekmesinde gösterilir.
 
-Güncelleştirmeyle ilgili destek makalesini ayrı bir pencerede açmak için **BİLGİ BAĞLANTISI** bölümünden güncelleştirme bağlantısını seçin. Bu pencereden güncelleştirmeyle ilgili önemli bilgilere ulaşabilirsiniz.
+**BILGI bağlantısı**altında, güncelleştirme için destek makalesini açmak üzere Güncelleştir bağlantısını seçin. Güncelleştirme hakkında önemli bilgi edinebilirsiniz.
 
 ![Güncelleştirme durumunu görüntüleme](./media/automation-tutorial-update-management/manageupdates-view-status-win.png)
 

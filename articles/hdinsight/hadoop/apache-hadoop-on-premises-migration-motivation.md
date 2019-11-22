@@ -2,18 +2,18 @@
 title: "Avantajlar: şirket içi Apache Hadoop Azure HDInsight 'a geçirme"
 description: Şirket içi Hadoop kümelerini Azure HDInsight 'a geçirmeye yönelik mosyon ve avantajları öğrenin.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/25/2018
-ms.author: hrasheed
-ms.openlocfilehash: 7f67b85b66748ae98cbb520bf4ebc11a2eef9efb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/15/2019
+ms.openlocfilehash: 2440b93629416ea73fcf211cbe7bf5a3b72ab2e7
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494937"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267321"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>Şirket içi Apache Hadoop kümelerini Azure HDInsight 'a geçirme-mosyon ve avantajlar
 
@@ -39,7 +39,7 @@ Azure HDInsight, Hadoop bileşenlerinin bulut dağıtımıdır. Azure HDInsight,
 
 - **Yönetilen donanım ve yapılandırma** -bir HDInsight kümesiyle fiziksel donanım veya altyapıyla uğraşmanız gerekmez. Kümenin yapılandırmasını belirtmeniz yeterlidir ve Azure tarafından ayarlanır.
 
-- **Kolayca ölçeklenebilir** -HDInsight, iş yüklerini yukarı veya aşağı [ölçeklendirmenizi](../hdinsight-administer-use-portal-linux.md) sağlar. Azure, veri işleme işlerini kesintiye uğramadan veri yeniden dağıtımı ve iş yükü yeniden dengelemesinden yararlanır.
+- **Kolayca ölçeklenebilir** -HDInsight, iş yüklerini [ölçek](../hdinsight-administer-use-portal-linux.md) yukarı veya aşağı ölçeklendirmenizi sağlar. Azure, veri işleme işlerini kesintiye uğramadan veri yeniden dağıtımı ve iş yükü yeniden dengelemesinden yararlanır.
 
 - **Genel kullanılabilirlik** -HDInsight, diğer büyük veri analizi sunumından daha fazla [bölgede](https://azure.microsoft.com/regions/services/) kullanılabilir. Azure HDInsight ayrıca temel bağımsız bölgelerde kurumsal ihtiyaçlarınızı karşılamanıza olanak sağlayan Azure Kamu, Çin ve Almanya’da da kullanılabilir.
 
@@ -85,7 +85,7 @@ Bu bölümde hakkında önemli bilgiler toplamaya yardımcı olacak şablon anke
 - Proje ayrıntıları
 - Azure gereksinimleri
 
-### <a name="on-premises-deployment-questionnaire"></a>Şirket Içi dağıtım Anketi
+### <a name="on-premises-deployment-questionnaire"></a>Şirket içi dağıtım Anketi
 
 | **Unuza** | **Örnek** | **Yanıtınıza** |
 |---|---|---|
@@ -101,7 +101,7 @@ Bu bölümde hakkında önemli bilgiler toplamaya yardımcı olacak şablon anke
 |Ana düğüm yapılandırması|d/y, CPU, disk vb.|
 |Veri düğümleri yapılandırması|d/y, CPU, disk vb.|
 |Kenar düğümleri yapılandırması|d/y, CPU, disk vb.|
-|Bu şifreleme?|Evet|
+|Bu şifreleme?|Yes|
 |Yüksek Kullanılabilirlik|, Metasha, meta veri deposu HA|
 |Olağanüstü durum kurtarma/yedekleme|Yedekleme kümesi mi?|  
 |Kümeye bağımlı sistemler|SQL Server, Teradata, Power BI, MongoDB|
@@ -132,7 +132,7 @@ Bu bölümde hakkında önemli bilgiler toplamaya yardımcı olacak şablon anke
 |Komut dosyaları|Kabuk, Python||
 |**Konu**: **veri**|||
 |Veri kaynakları|Düz dosyalar, JSON, Kafka, RDBMS||
-|Veri düzenleme|Oozie iş akışları, Airflow||
+|Verileri düzenleme|Oozie iş akışları, Airflow||
 |Bellek aramaları|Apache Ignite, Redsıs||
 |Veri hedefleri|, RDBMS, Kafka, MPP ||
 |**Konu**: **meta veriler**|||
@@ -167,8 +167,8 @@ Bu bölümde hakkında önemli bilgiler toplamaya yardımcı olacak şablon anke
 |---|---|---|
 |**Unuza**|**Örnek**|**Yanıtınıza**|
 | Tercih edilen bölge|ABD Doğu||
-|VNet tercih edildi mi?|Evet||
-|HA/DR gerekli mi?|Evet||
+|VNet tercih edildi mi?|Yes||
+|HA/DR gerekli mi?|Yes||
 |Diğer bulut hizmetleriyle tümleştirme yapılsın mı?|ADF, CosmosDB||
 |**Konu**: **veri taşıma**  |||
 |İlk yükleme tercihi|DistCp, Data Box, ADF, WANDisco||
@@ -177,25 +177,25 @@ Bu bölümde hakkında önemli bilgiler toplamaya yardımcı olacak şablon anke
 |**Konu**: **izleme & uyarma** |||
 |Azure Izleme & uyarı, üçüncü taraf izlemeyi tümleştirme karşılaştırması|Azure Izleme & uyarma kullanma||
 |**Konu**: **Güvenlik tercihleri** |||
-|Özel ve korunan veri ardışık düzeni?|Evet||
-|Etki alanına katılmış küme (ESP)?|     Evet||
-|Şirket Içi AD Eşitleme buluta mı?|     Evet||
+|Özel ve korunan veri ardışık düzeni?|Yes||
+|Etki alanına katılmış küme (ESP)?|     Yes||
+|Şirket Içi AD Eşitleme buluta mı?|     Yes||
 |Eşitlenecek AD kullanıcılarının sayısı?|          100||
-|Parolalar buluta eşitlensin mi?|    Evet||
-|Yalnızca bulut kullanıcıları mı?|                 Evet||
+|Parolalar buluta eşitlensin mi?|    Yes||
+|Yalnızca bulut kullanıcıları mı?|                 Yes||
 |MFA gerekli mi?|                       Hayır|| 
-|Veri yetkilendirme gereksinimleri?|  Evet||
-|Rol tabanlı Access Control?|        Evet||
-|Denetim gerekli mi?|                  Evet||
-|Bekleyen veri şifrelemesi|          Evet||
-|Geçiş sırasında veri şifrelemesi yapılsın mı?|       Evet||
+|Veri yetkilendirme gereksinimleri?|  Yes||
+|Rol tabanlı Access Control?|        Yes||
+|Denetim gerekli mi?|                  Yes||
+|Bekleyen veri şifrelemesi|          Yes||
+|Geçiş sırasında veri şifrelemesi yapılsın mı?|       Yes||
 |**Konu**: **yeniden mimari tercihleri** |||
 |Tek küme, belirli küme türlerine karşı|Belirli küme türleri||
 |Birlikte bulunan depolama ve uzak depolama karşılaştırması|Uzak depolama||
 |Veriler uzaktan depolandığından daha küçük küme boyutu var mı?|Daha küçük küme boyutu||
 |Tek bir büyük küme yerine birden çok daha küçük küme kullanın mi?|Birden çok daha küçük küme kullanın||
-|Uzak bir meta veri deposu mı kullanıyorsunuz?|Evet||
-|Farklı kümeler arasında meta tasares paylaşma yapılsın mı?|Evet||
+|Uzak bir meta veri deposu mı kullanıyorsunuz?|Yes||
+|Farklı kümeler arasında meta tasares paylaşma yapılsın mı?|Yes||
 |İş yüklerini kaldırma|Hive işlerini Spark işleriyle değiştirme||
 |Veri düzenleme için ADF kullanılsın mı?|Hayır||
 

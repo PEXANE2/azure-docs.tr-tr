@@ -1,19 +1,19 @@
 ---
-title: Hızlı başlangıç-Azure uzamsal bağlayıcılarla HoloLens uygulaması oluşturma | Microsoft Docs
+title: 'Hızlı başlangıç: DirectX ile bir HoloLens uygulaması oluşturma'
 description: Bu hızlı başlangıçta, uzamsal bağlayıcıları kullanarak bir HoloLens uygulaması oluşturmayı öğreneceksiniz.
 author: craigktreasure
-manager: aliemami
+manager: virivera
 services: azure-spatial-anchors
 ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 7069a3c8b266938e974d1b7130a349e0c9b66b5c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 3814a12657b2634ede02eda83c7e7bcdf78cd7e2
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111819"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277090"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-spatial-anchors-in-cwinrt-and-directx"></a>Hızlı başlangıç:/Wınrt ve DirectX 'te C++Azure uzamsal bağlayıcılarla bir HoloLens uygulaması oluşturma
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Kaynak günlüklerini bir olay hub 'ına akış
-description: Azure Kaynak günlüklerinin bir olay hub 'ına akışını nasıl sağlayacağınızı öğrenin.
+description: Üçüncü taraf Sıems ve diğer Log Analytics çözümleri gibi dış sistemlere veri göndermek için Azure Kaynak günlüklerinin bir olay hub 'ına akışını nasıl sağlayacağınızı öğrenin.
 author: bwren
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 1d7a533658b6c72caae9649d7e5a9c4fad117245
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 680570c5102f656b2b2d2e05f9e08f51fe892f44
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262420"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304937"
 ---
 # <a name="stream-azure-resource-logs-to-azure-event-hubs"></a>Azure Kaynak günlüklerini Azure Event Hubs akış
 Azure 'da [kaynak günlükleri](resource-logs-overview.md) , bir Azure kaynağının iç işlemi hakkında zengin, sık veriler sağlar. Bu makalede, üçüncü taraf Sıems ve diğer Log Analytics çözümleri gibi dış sistemlere veri göndermek için Olay Hub 'larına akış kaynak günlükleri açıklanır.
@@ -25,7 +25,7 @@ Aşağıdaki işlevleri sağlamak için Azure 'daki Olay Hub 'larına kaynak gü
 * Günlük verilerini üçüncü taraf bir SıEM veya Log Analytics aracına yöneltmek için tüm kaynak günlüklerinizi tek bir olay hub 'ına akış halinde **kaydeder** .
 * **Özel bir telemetri ve günlüğe kaydetme platformu oluşturma** – Olay Hub 'larının yüksek düzeyde ölçeklenebilir yayımla-abone olma yapısı, kaynak günlüklerini özel bir teletry platformunda esnek bir şekilde içe almanıza olanak sağlar. Ayrıntılar için bkz. [Event Hubs Azure 'Da küresel ölçekli telemetri platformunu tasarlama ve boyutlandırma](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/) .
 
-* **Power BI veri akışı yaparak hizmet durumunu görüntüleyin** – tanılama verilerinizi Azure hizmetlerinizden neredeyse gerçek zamanlı içgörüler halinde dönüştürmek için Event Hubs, Stream Analytics ve Power BI kullanın. Stream Analytics [ve Power BI bakın: Bu çözüm hakkındaki ayrıntılar için veri](../../stream-analytics/stream-analytics-power-bi-dashboard.md) akışı için gerçek zamanlı analiz panosu.
+* **Power BI veri akışı yaparak hizmet durumunu görüntüleyin** – tanılama verilerinizi Azure hizmetlerinizden neredeyse gerçek zamanlı içgörüler halinde dönüştürmek için Event Hubs, Stream Analytics ve Power BI kullanın. Bkz. [Stream Analytics ve Power BI: Bu çözümdeki Ayrıntılar için veri akışı için gerçek zamanlı analiz panosu](../../stream-analytics/stream-analytics-power-bi-dashboard.md) .
 
     Aşağıdaki SQL kodu, ' deki tüm günlük verilerini bir Power BI tablosuna ayrıştırmak için kullanabileceğiniz bir örnek Stream Analytics sorgusudur:
     
@@ -59,7 +59,7 @@ Olay Hub 'larından kaynak günlüklerini kullandığınızda, aşağıdaki tabl
 
 | Öğe adı | Açıklama |
 | --- | --- |
-| kayıt |Bu yükteki tüm günlük olaylarının bir dizisi. |
+| kaydeden |Bu yükteki tüm günlük olaylarının bir dizisi. |
 | time |Olayın gerçekleştiği zaman. |
 | category |Bu olay için günlük kategorisi. |
 | resourceId |Bu olayı oluşturan kaynağın kaynak KIMLIĞI. |

@@ -1,33 +1,24 @@
 ---
-title: Azure 'da bir Jupyter not defterine paket yükler
-description: Azure üzerinde çalışan bir Jupyter F# Not Defteri içinden Python, R ve paketleri nasıl yükleyeceğiniz.
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: barbkess
-ms.assetid: 6f089c12-128b-4dbd-96e3-1320d37eeba4
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Azure üzerinde Jupyter notebook paketleri yükleme
+description: Python, R, yükleme ve F# paketleri gelen içinde Azure üzerinde çalışan bir Jupyter not defteri.
 ms.topic: article
 ms.date: 12/04/2018
-ms.author: kraigb
-ms.openlocfilehash: e6582bb21cb6d383e298bdf68bdb2f565147c20a
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 5d85c8e936ce7c8bf38ec7bc9c27d9066cc8b155
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71969931"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277544"
 ---
-# <a name="install-packages-from-within-a-notebook"></a>Bir not defteri içinden paket yükler
+# <a name="install-packages-from-within-a-notebook"></a>İçinde bir not defteri paketleri yükleme
 
-[Not defteriniz için projeyi proje düzeyinde](configure-manage-azure-notebooks-projects.md#configure-the-project-environment)yapılandırabilseniz de, paketleri doğrudan ayrı bir not defteri içinde yüklemek isteyebilirsiniz.
+Yapılandırmanız mümkün olmakla birlikte [ortamı için dizüstü bilgisayarınızda proje düzeyinde](configure-manage-azure-notebooks-projects.md#configure-the-project-environment), doğrudan tek bir not defteri içindeki paketleri yüklemek isteyebilirsiniz.
 
-Not defterinden yüklenen paketler yalnızca geçerli sunucu oturumu için geçerlidir. Sunucu kapatıldıktan sonra paket yüklemeleri kalıcı olmaz.
+Not defterinden yüklü paketleri yalnızca geçerli sunucu oturumu için geçerlidir. Sunucu kapatıldığında paket yüklemeleri kalıcı değildir.
 
 ## <a name="python"></a>Python
 
-Python 'daki paketler, kod hücrelerinin içindeki komutlar kullanılarak PIP veya Conda ile yüklenebilir:
+Python paketleri pip ya da kod hücreleri komutlarını kullanarak conda kullanarak yüklenebilir:
 
 ```bash
 !pip install <package_name>
@@ -35,7 +26,7 @@ Python 'daki paketler, kod hücrelerinin içindeki komutlar kullanılarak PIP ve
 !conda install <package_name> -y
 ```
 
-Komut çıktısı, gereksinimin zaten karşılandığını gösteriyorsa, Azure Notebooks paketi varsayılan olarak içerebilir. Paket ayrıca bir [Proje ortamı Kurulum adımı](configure-manage-azure-notebooks-projects.md#configure-the-project-environment)ile yüklenebilir.
+Komut çıktısı olduğunu gösteriyorsa gereksinim uyulmuş olur ve ardından Azure not defterleri, varsayılan olarak paket içerebilir. Paket yoluyla da yüklenebilir bir [proje ortamı Kurulum adımı](configure-manage-azure-notebooks-projects.md#configure-the-project-environment).
 
 ## <a name="r"></a>R
 
@@ -55,13 +46,13 @@ install_github('<user>/<repo>')
 
 ## <a name="f"></a>F#
 
-İçindeki F# paketler, kod hücrelerinin içinden paket bağımlılığı yöneticisini çağırarak, [NuGet.org](https://www.nuget.org) adresinden yüklenebilir. İlk olarak, paket yöneticisini yükleyin:
+İçindeki paketleri F# yüklenebilir [nuget.org](https://www.nuget.org) Paket bağımlılık Yöneticisi'nden kod hücreleri çağırarak. İlk olarak, Paket Yöneticisi'ni Yükle:
 
 ```fsharp
 #load "Paket.fsx"
 ```
 
-Ardından paketleri yükler:
+Ardından, paketleri yükleyin:
 
 ```fsharp
 Paket.Package
@@ -82,5 +73,5 @@ open MathNet.Numerics
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Nasıl yapılır: projeleri yapılandırma ve yönetme](configure-manage-azure-notebooks-projects.md)
-- [Nasıl yapılır: bir slayt gösterisi sunma](present-jupyter-notebooks-slideshow.md)
+- [Nasıl yapılır: projeleri yönetme ve yapılandırma](configure-manage-azure-notebooks-projects.md)
+- [Nasıl yapılır: bir slayt gösterisi sunar](present-jupyter-notebooks-slideshow.md)

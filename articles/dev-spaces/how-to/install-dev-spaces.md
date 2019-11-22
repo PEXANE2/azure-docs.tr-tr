@@ -1,20 +1,16 @@
 ---
 title: AKS 'e ve istemci tarafı araçlarına Azure Dev Spaces yüklemesi
-titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 07/24/2019
 ms.topic: conceptual
 description: Bir AKS kümesine Azure Dev Spaces yüklemeyi ve istemci tarafı araçları yüklemeyi öğrenin.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
-ms.openlocfilehash: 642d4406840f1748c3b6cbb4441227fff0c6d721
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
-ms.translationtype: MT
+ms.openlocfilehash: c62fe38a12b5ec279bc51fe8bc0d340e2f439200
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494843"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280049"
 ---
 # <a name="install-azure-dev-spaces-on-aks-and-the-client-side-tooling"></a>AKS 'e ve istemci tarafı araçlarına Azure Dev Spaces yüklemesi
 
@@ -27,7 +23,7 @@ CLı kullanarak dev alanlarını yüklemeden önce şunları yapmanız gerekir:
 * [Azure CLI yüklendi][install-cli].
 * [Desteklenen bir bölgedeki][supported-regions] [aks kümesi][create-aks-cli] .
 
-Aks kümenizde dev alanlarını etkinleştirmek ve istemleri izlemek için komutunukullanın.`use-dev-spaces`
+AKS kümenizde dev alanlarını etkinleştirmek ve istemleri izlemek için `use-dev-spaces` komutunu kullanın.
 
 ```cmd
 az aks use-dev-spaces -g myResourceGroup -n myAKSCluster
@@ -53,7 +49,7 @@ Configuring and selecting dev space 'default'...3s
 Managed Kubernetes cluster 'myAKSCluster' in resource group 'myResourceGroup' is ready for development in dev space 'default'. Type `azds prep` to prepare a source directory for use with Azure Dev Spaces and `azds up` to run.
 ```
 
-`use-dev-spaces` Komut ayrıca Azure dev Spaces CLI 'yi de yüklüyor.
+`use-dev-spaces` komutu aynı zamanda Azure Dev Spaces CLı 'yi de yüklüyor.
 
 ## <a name="install-azure-dev-spaces-using-the-azure-portal"></a>Azure portal kullanarak Azure Dev Spaces yüklemesi
 
@@ -62,14 +58,14 @@ Azure portal kullanarak dev alanlarını yükleyebilmek için önce şunları ya
 * [Desteklenen bir bölgedeki][supported-regions] [aks kümesi][create-aks-portal] .
 
 Azure portal kullanarak Azure Dev Spaces yüklemek için:
-1. [Azure Portal][az-portal] oturum açın.
+1. [Azure portalında][az-portal] oturum açın.
 1. AKS kümenize gidin.
 1. *Geliştirme alanları*' na tıklayın.
 1. Değişiklik *geliştirme alanlarını* *Evet* olarak etkinleştirin ve *Kaydet*' e tıklayın.
 
 ![Azure portal dev alanlarını etkinleştirme](../media/how-to-setup-dev-spaces/enable-dev-spaces-portal.png)
 
-**Azure Portal kullanarak** Azure Dev Spaces yüklemek Azure dev Spaces için herhangi bir istemci tarafı aracı yüklemez.
+Azure portal kullanarak Azure Dev Spaces yüklemek Azure Dev Spaces için herhangi bir istemci tarafı **Aracı yüklemez.**
 
 ## <a name="install-the-client-side-tooling"></a>İstemci tarafı araçları 'nı yükler
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd50ca8b81b933a61a67ac36db6a656791a8121f
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 0bfd75f54e2b57e57fcadc27df2ca43d8be5cf37
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832864"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74285519"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure 'da Azure Active Directory kimlik doğrulaması (Önizleme) kullanarak Windows sanal makinesinde oturum açma
 
@@ -33,9 +33,9 @@ Azure AD kimlik doğrulamasını kullanarak Azure 'da Windows VM 'lerde oturum a
 - Artık yerel yönetici hesaplarını yönetmek zorunda değildir.
 - Azure RBAC, ihtiyaç duymak üzere VM 'lere uygun erişim izni vermenizi ve artık gerekli olmadığında kaldırmanızı sağlar.
 - Bir sanal makineye erişime izin vermeden önce Azure AD koşullu erişimi, şöyle ek gereksinimler uygulayabilir: 
-   - Multi-factor authentication
-   - Oturum açma riski
-- Azure tabanlı Windows VM 'Leri için Azure AD JOIN 'i otomatikleştirin ve ölçeklendirin.
+   - Multi-Factor Authentication
+   - Oturum açma risk denetimi
+- VDı dağıtımlarınız için bir parçası olan Azure Windows VM 'lerinin Azure AD JOIN 'i otomatikleştirin ve ölçeklendirin.
 
 ## <a name="requirements"></a>Gereksinimler
 
@@ -68,7 +68,7 @@ Azure 'da Windows VM 'de Azure AD oturum açma 'yı kullanmak için, önce Windo
 Windows VM 'niz için Azure AD oturum açma özelliğini etkinleştirebilmenizin birden çok yolu vardır:
 
 - Windows VM oluştururken Azure portal deneyimini kullanma
-- Windows VM oluştururken veya mevcut bir Windows VM için Azure Cloud Shell deneyimini kullanma
+- Windows VM oluştururken **veya mevcut bir WINDOWS VM için** Azure Cloud Shell deneyimini kullanma
 
 ### <a name="using-azure-portal-create-vm-experience-to-enable-azure-ad-login"></a>Azure AD oturum açma özelliğini etkinleştirmek için Azure portal VM oluşturma deneyimi kullanma
 
@@ -187,6 +187,13 @@ Azure abonelik kaynaklarınıza erişimi yönetmek için RBAC kullanma hakkında
 - [RBAC ve Azure portalını kullanarak Azure kaynaklarına erişimi yönetme](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 - [RBAC ve Azure PowerShell kullanarak Azure kaynaklarına erişimi yönetin](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell).
 
+## <a name="using-conditional-access"></a>Koşullu erişim kullanma
+
+Azure AD oturum açma özelliği ile etkinleştirilen Azure 'da Windows VM 'lerine erişimi yetkilendirmeden önce Multi-Factor Authentication veya Kullanıcı oturum açma riski denetimi gibi koşullu erişim ilkelerini uygulayabilirsiniz. Koşullu erişim ilkesini uygulamak için, bulut uygulamaları veya eylemler atama seçeneğinden "Azure Windows VM oturum açma" uygulamasını seçmeniz ve ardından bir koşul olarak oturum açma riskini ve/veya çok faktörlü kimlik doğrulamasının izin verme erişim denetimi olarak kullanılmasını sağlamanız gerekir. 
+
+> [!NOTE]
+> "Multi-Factor Authentication gerektir" seçeneğini, "Azure Windows VM oturum açma" uygulamasına erişim isteğinde bulunmak için erişim denetimi izni olarak kullanırsanız, ' de hedef Windows VM 'sine yönelik RDP oturumunu başlatan istemcinin bir parçası olarak Multi-Factor Authentication talebi sağlamalısınız. Mavisi. Bunu bir Windows 10 istemcisinde elde etmenin tek yolu, RDP sırasında Iş için Windows Hello PIN veya biyometrik kimlik doğrulaması kullanmaktır. Windows 10 1809 ' ye RDP sırasında biyometrik kimlik doğrulaması desteği eklenmiştir. RDP sırasında Iş için Windows Hello kimlik doğrulaması kullanılması yalnızca sertifika güven modeli kullanan dağıtımlar için kullanılabilir ve şu anda anahtar güven modeli için kullanılamaz.
+
 ## <a name="log-in-using-azure-ad-credentials-to-a-windows-vm"></a>Azure AD kimlik bilgilerini kullanarak bir Windows VM 'de oturum açma
 
 > [!IMPORTANT]
@@ -196,7 +203,7 @@ Azure AD 'yi kullanarak Windows Server 2019 sanal makinenizde oturum açmak içi
 
 1. Azure AD oturum açma özelliği ile etkinleştirilen sanal makinenin genel bakış sayfasına gidin.
 1. **Bağlan** ' ı seçerek sanal makine bağlantısı dikey penceresini açın.
-1. **RDP dosyasını indir**' i seçin.
+1. Seçin **RDP dosyasını indir**.
 1. Uzak Masaüstü Bağlantısı istemcisini başlatmak için **Aç** ' ı seçin.
 1. Windows oturum açma iletişim kutusunu başlatmak için **Bağlan** ' ı seçin.
 1. Azure AD kimlik bilgilerinizi kullanarak oturum açın.
@@ -337,7 +344,12 @@ Sanal makinenize Uzak Masaüstü bağlantısı başlattığınızda aşağıdaki
 
 ![Kullanmaya çalıştığınız oturum açma yöntemine izin verilmiyor.](./media/howto-vm-sign-in-azure-ad-windows/mfa-sign-in-method-required.png)
 
-RBAC kaynağına erişebilmek için MFA 'nın yapılmasını gerektiren bir koşullu erişim ilkesi yapılandırdıysanız, sanal makinenize yönelik uzak masaüstü bağlantısını başlatan Windows 10 BILGISAYARıN, bir güçlü kimlik doğrulama yöntemi kullanarak oturum açtığından emin olmanız gerekir. Windows Hello olarak. Uzak Masaüstü bağlantınız için güçlü bir kimlik doğrulama yöntemi kullanmıyorsanız, aşağıdaki hatayı görürsünüz.
+RBAC kaynağına erişebilmek için MFA 'nın yapılmasını gerektiren bir koşullu erişim ilkesi yapılandırdıysanız, sanal makinenize yönelik uzak masaüstü bağlantısını başlatan Windows 10 BILGISAYARıN, bir güçlü kimlik doğrulama yöntemi kullanarak oturum açtığından emin olmanız gerekir. Windows Hello olarak. Uzak Masaüstü bağlantınız için güçlü bir kimlik doğrulama yöntemi kullanmıyorsanız, aşağıdaki hatayı görürsünüz. 
+
+Iş için Windows Hello dağıtmadıysanız ve bu şimdilik bir seçenek yoksa, MFA gerektiren bulut uygulamaları listesinden "Azure Windows VM oturum açma" uygulamasını dışlayan koşullu erişim ilkesini yapılandırarak MFA gereksinimini yapılandırabilirsiniz. Iş için Windows Hello hakkında daha fazla bilgi edinmek için bkz. [iş Için Windows Hello 'Ya genel bakış](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification).
+
+> [!NOTE]
+> Windows 10 ' da, RDP sırasında Iş için Windows Hello PIN kimlik doğrulaması, şimdilik desteklenir. Windows 10 1809 ' ye RDP sırasında biyometrik kimlik doğrulaması desteği eklenmiştir. RDP sırasında Iş için Windows Hello kimlik doğrulaması kullanılması yalnızca sertifika güven modeli kullanan dağıtımlar için kullanılabilir ve şu anda anahtar güven modeli için kullanılamaz.
  
 ## <a name="preview-feedback"></a>Önizleme geri bildirimi
 

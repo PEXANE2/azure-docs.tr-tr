@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: c639cb059d773042b7f45160dea18bfc2130cae9
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 1fcaf694e7a628232ea252585d6d9a507a9850da
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73893812"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74287043"
 ---
 # <a name="create-an-azure-iot-central-application-preview-features"></a>Azure IoT Central uygulaması oluşturma (Önizleme özellikleri)
 
@@ -46,13 +46,13 @@ Yeni bir Azure IoT Central uygulaması oluşturmak için:
 
 1. Bu uygulamayı 7 günlük ücretsiz deneme sürümünü kullanarak oluşturmak mı yoksa Kullandıkça Öde aboneliği kullanmak mı istediğinizi seçin.
     - **Deneme** uygulamaları yedi gün boyunca ücretsizdir ve en fazla beş cihaz destekler. Süresi dolmadan önce herhangi bir anda Kullandıkça Öde uygulamasına dönüştürülebilir. Bir deneme uygulaması oluşturursanız, iletişim bilgilerinizi girmeniz ve Microsoft 'tan bilgi ve ipuçları alıp almamanız gerekir.
-    - **Kullandıkça Öde** uygulamaları, ilk iki cihaz serbest bırakılmakta olan cihaz başına temelinde ücretlendirilir. [IoT Central fiyatlandırması](https://aka.ms/iotcentral-pricing)hakkında daha fazla bilgi edinin. Kullandıkça Öde uygulaması oluşturursanız, *dizininizi*, *Azure aboneliğinizi*ve *bölgenizi*seçmeniz gerekir:
+    - **Kullandıkça Öde** uygulamaları, ilk iki cihaz serbest bırakılmakta olan cihaz başına temelinde ücretlendirilir. [IoT Central fiyatlandırması](https://aka.ms/iotcentral-pricing)hakkında daha fazla bilgi edinin. Kullandıkça Öde uygulaması oluşturursanız, *dizininizi*, *Azure aboneliğinizi*ve *konumunu*seçmeniz gerekir:
         - *Dizin* , uygulamanızı oluşturacağınız Azure ACTIVE DIRECTORY (AAD). Azure AD, Kullanıcı kimliklerini, kimlik bilgilerini ve diğer kuruluş bilgilerini içerir. Azure AD yoksa, bir Azure aboneliği oluşturduğunuzda sizin için bir tane oluşturulur.
         - *Azure Aboneliği*, Azure hizmetlerinin örneklerini oluşturmanıza olanak tanır. IoT Central aboneliğinizdeki kaynakları sağlar. Azure aboneliğiniz yoksa, [Azure kayıt sayfasında](https://aka.ms/createazuresubscription) bir abonelik oluşturabilirsiniz. Azure aboneliğini oluşturduktan sonra, **uygulama oluşturma** sayfasına geri gidin. Yeni aboneliğiniz **Azure aboneliği** açılır penceresinde görünür.
-        - *Bölge* , cihazlarınızın verilerinin depolanacağı fiziksel konumdur. Genellikle, en iyi performansı elde etmek için cihazlarınıza fiziksel olarak en yakın bölgeyi seçmeniz ve veri egemenlik uyumluluğuna emin olmanız gerekir. Bir bölge seçtiğinizde, uygulamanızı daha sonra farklı bir bölgeye taşıyamazsınız.
+        - *Konum* , uygulamanızı oluşturmak istediğiniz [Coğrafya](https://azure.microsoft.com/global-infrastructure/geographies/) ' dır. Genellikle en iyi performansı elde etmek için cihazlarınıza fiziksel olarak en yakın konumu seçmeniz gerekir. Azure IoT Central genel önizlemesi Şu anda **Birleşik Devletler**veya **Avrupa**'da kullanılabilir. Bir konum seçtikten sonra, uygulamanızı daha sonra farklı bir konuma taşıyamazsınız.
 
         > [!NOTE]
-        > Genel Önizleme sırasında, **Önizleme uygulamaları** için kullanılabilen tek bölge **Kuzey Avrupa** ve **Orta ABD**.
+        > Genel Önizleme sırasında, **Önizleme uygulamaları** için yalnızca kullanılabilir konumlar **Avrupa** ve **Birleşik Devletler**.
 
 1. Hüküm ve koşulları gözden geçirin ve sayfanın alt kısmında **Oluştur** ' u seçin.
 

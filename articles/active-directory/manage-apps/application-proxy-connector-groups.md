@@ -1,5 +1,5 @@
 ---
-title: Azure AD Uygulaması Proxy bağlayıcı gruplarıyla ayrı ağlarda uygulama yayımlama | Microsoft Docs
+title: Bağlayıcı grupları aracılığıyla uygulamaları ayrı ağlarda yayımlama-Azure AD
 description: Azure AD uygulama proxy'sinde bağlayıcı gruplarını oluşturma ve yönetme konusunu kapsar.
 services: active-directory
 author: msmimart
@@ -14,12 +14,12 @@ ms.date: 11/08/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dae4eea3e08818d43482c995595cc9fbc3f91910
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 22fa1de0a0e3bb91480212381e07b17875bf0bf4
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381491"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275574"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Ayrı ağlarda ve konumları bağlayıcı grupları kullanarak uygulama yayımlama
 
@@ -40,7 +40,7 @@ Bağlayıcılarınızı grubuna emin olmak sahip [yüklü birden fazla bağlayı
 
 İstediğiniz sayıda bağlayıcı grubu oluşturmak için aşağıdaki adımları kullanın.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Seçin **Azure Active Directory** > **kurumsal uygulamalar** > **uygulama proxy'si**.
 1. Seçin **yeni bağlayıcı grubu**. Yeni bağlayıcı grubu dikey penceresi görüntülenir.
 

@@ -1,6 +1,6 @@
 ---
-title: Güvenlik anahtarı için güvenlik bilgilerini ayarlama (Önizleme)-Azure AD
-description: Hızlı kimlik çevrimiçi (FIDO2) güvenlik anahtarı kullanarak kimliğinizi doğrulamak için güvenlik bilgilerinizi ayarlama.
+title: Doğrulama yönteminiz olarak bir güvenlik anahtarı ayarlama-Azure AD
+description: Kimlik doğrulama yönteminiz olarak bir hızlı kimlik çevrimiçi (FIDO2) güvenlik anahtarı kullanmak üzere kimliğinizi doğrulamak için güvenlik bilgileriniz (Önizleme) sayfasını ayarlama.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9d86d594f0918e6a9ffed49142a81a0f7834e86
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7d02ca3a8b5b617edb8ee00ae7d15ea7e94cae80
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73803781"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278957"
 ---
-# <a name="set-up-security-info-preview-for-a-security-key"></a>Güvenlik anahtarı için güvenlik bilgilerini ayarlama (Önizleme)
+# <a name="set-up-a-security-key-as-your-verification-method"></a>Doğrulama yönteminiz olarak bir güvenlik anahtarı ayarlayın
 
-Güvenlik anahtarlarını, kuruluşunuzda bir passwordless oturum açma yöntemi olarak kullanabilirsiniz. Güvenlik anahtarı, iş veya okul hesabınızda oturum açmak için benzersiz bir PIN ile kullanılan fiziksel bir cihazdır. Güvenlik anahtarlarına fiziksel cihaz ve yalnızca bildiğiniz bir şey gerektiğinden, bu, Kullanıcı adı ve paroladan daha güçlü bir kimlik doğrulama yöntemi olarak kabul edilir.
+Güvenlik anahtarlarını, kuruluşunuzda bir passwordless oturum açma yöntemi olarak kullanabilirsiniz. Güvenlik anahtarı, iş veya okul hesabınızda oturum açmak için benzersiz bir PIN ile kullanılan fiziksel bir cihazdır. Güvenlik anahtarlarına fiziksel cihaz ve yalnızca bildiğiniz bir şey gerektiğinden, bir Kullanıcı adı ve paroladan daha güçlü bir doğrulama yöntemi olarak kabul edilir.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-key.md)]
 
@@ -35,7 +35,7 @@ Güvenlik anahtarlarını, kuruluşunuzda bir passwordless oturum açma yöntemi
 Yöneticiniz veya kuruluşunuz size iş veya okul hesabınız için ihtiyaç duydukları bir güvenlik anahtarı sağlar. Kullanabileceğiniz farklı güvenlik anahtarı türleri vardır, örneğin cihazınıza taktığınız USB anahtarı veya bir NFC okuyucusuna dokunmanız gereken bir NFC anahtarı vardır. Kuruluşunuzun belgelerinden, ne tür olduğunu da içeren güvenlik anahtarınız hakkında daha fazla bilgi edinebilirsiniz.
 
 > [!Note]
-> Bir FIDO2 güvenlik anahtarı kullandıysanız, Microsoft Authenticator uygulaması veya Windows Hello gibi kullanabileceğiniz diğer passwordless kimlik doğrulama yöntemleri vardır. Microsoft Authenticator uygulaması hakkında daha fazla bilgi için, bkz. [Microsoft Authenticator uygulama nedir?](user-help-auth-app-overview.md). Windows Hello hakkında daha fazla bilgi için bkz. [Windows Hello 'ya genel bakış](https://www.microsoft.com/windows/windows-hello).
+> Bir FIDO2 güvenlik anahtarı kullanmanızın ardından Microsoft Authenticator uygulaması veya Windows Hello gibi kullanabileceğiniz diğer passwordless doğrulama yöntemleri vardır. Microsoft Authenticator uygulaması hakkında daha fazla bilgi için, bkz. [Microsoft Authenticator uygulama nedir?](user-help-auth-app-overview.md). Windows Hello hakkında daha fazla bilgi için bkz. [Windows Hello 'ya genel bakış](https://www.microsoft.com/windows/windows-hello).
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -150,7 +150,7 @@ Bir güvenlik anahtarını kaydetmek için, en az bir ek güvenlik doğrulama y�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Passwordless kimlik doğrulama yöntemleri hakkında daha fazla bilgi için [Microsoft 'un Azure AD 'de FIDO2 güvenlik anahtarlarının genel önizlemesine başlayan, passwordless oturum açma](https://www.onmsft.com/news/microsofts-azure-ad-begins-public-preview-of-fido2-security-keys-enabling-passwordless-logins) blogunu etkinleştiren veya [Microsoft Authenticator uygulamasının](user-help-auth-app-overview.md) [ne olduğunu okuduğunuzu okuyun. Windows Hello genel bakış](https://www.microsoft.com/windows/windows-hello) makaleleri.
+- Passwordless doğrulama yöntemleri hakkında daha fazla bilgi için [Microsoft 'un Azure AD 'de FIDO2 güvenlik anahtarlarının genel önizlemesine başlayan, passwordless oturum açma](https://www.onmsft.com/news/microsofts-azure-ad-begins-public-preview-of-fido2-security-keys-enabling-passwordless-logins) blogunu etkinleştiren veya [Microsoft Authenticator App ne olduğunu](user-help-auth-app-overview.md) ve [Windows Hello 'ya genel bakış](https://www.microsoft.com/windows/windows-hello) makalelerini okuyun.
 
 - [Microsoft uyumlu güvenlik anahtarları](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/microsoft-compatible-security-key)hakkında daha ayrıntılı bilgi için.
 

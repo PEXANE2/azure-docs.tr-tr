@@ -3,12 +3,12 @@ title: Bulut iş yüklerini korumaya yardımcı olan güvenlik özellikleri
 description: Yedeklemeleri daha güvenli hale getirmek için Azure Backup güvenlik özelliklerini kullanmayı öğrenin.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 95eb72fe9d918b527cdceec69a0e90a682d62b07
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: b6ce2f9400ad46150fbd4ee86f126b137b5f7800
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172714"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278217"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Azure Backup kullanan bulut iş yüklerini korumanıza yardımcı olacak güvenlik özellikleri
 
@@ -41,7 +41,7 @@ Geçici silme Şu anda Orta Batı ABD, Doğu Asya, Kanada Orta, Kanada Doğu, Fr
    > [!NOTE]
    > Kasada geçici olarak silinen yedekleme öğeleri varsa, kasa bu anda silinemez. Lütfen yedekleme öğeleri kalıcı olarak silindikten sonra kasa silme işlemini deneyin ve kasada geçici olarak silinmiş durumda bir öğe yok.
 
-4. Geçici olarak silinen VM 'yi geri yüklemek için önce silinmesi gerekir. Silmeyi geri almak için, geçici olarak silinen VM 'yi seçin ve sonra **geri al**seçeneğine tıklayın.
+4. Geçici olarak silinen VM 'yi geri yüklemek için önce silinmesi gerekir. Silmeyi geri almak için, geçici olarak silinen VM 'yi seçin ve sonra **silmeyi geri al**seçeneğini belirleyin.
 
    ![Azure portal ekran görüntüsü, geri alma VM](./media/backup-azure-security-feature-cloud/choose-undelete.png)
 
@@ -60,7 +60,7 @@ Geçici silme Şu anda Orta Batı ABD, Doğu Asya, Kanada Orta, Kanada Doğu, Fr
 
    ![Azure portal ekran görüntüsü, yedeklemeyi sürdürür seçeneği](./media/backup-azure-security-feature-cloud/resume-backup.png)
 
-Bu akış grafiği, bir yedekleme öğesinin farklı adımlarını ve durumlarını gösterir:
+Bu akış grafiği, geçici silme etkinleştirildiğinde bir yedekleme öğesinin farklı adımlarını ve durumlarını gösterir:
 
 ![Geçici olarak silinen yedekleme öğesinin yaşam döngüsü](./media/backup-azure-security-feature-cloud/lifecycle.png)
 
@@ -68,26 +68,47 @@ Daha fazla bilgi için aşağıdaki [sık sorulan sorular](backup-azure-security
 
 ## <a name="disabling-soft-delete"></a>Geçici silme devre dışı bırakılıyor
 
-Geçici silme, yeni oluşturulan kasaların varsayılan olarak etkindir. Geçici silme güvenliği özelliği devre dışıysa, yedekleme verileri yanlışlıkla veya kötü amaçlı silmelerden korunmaz. Geçici silme özelliği olmadan, korumalı öğelerin tüm silmeleri, geri yükleme özelliği olmadan hemen kaldırılmasına neden olur. "Geçici silme" durumundaki yedekleme verileri müşteri için herhangi bir ücret ödemediğinden bu özelliğin devre dışı bırakılması önerilmez. Geçici silme işleminin devre dışı bırakılmasını göz önünde bulundurmanız gereken tek durumlar, korumalı öğelerinizi yeni bir kasaya taşımayı planlıyorsanız ve silinmeden ve yeniden korumadan önce 14 gün önce bekleyemez (örneğin, bir test ortamında).
+Geçici silme, yeni oluşturulan kasaların yanlışlıkla veya kötü amaçlı silmeleri arasında yedekleme verilerini korumak için varsayılan olarak etkindir.  Bu özelliğin devre dışı bırakılması önerilmez. Geçici silme işleminin devre dışı bırakılmasını göz önünde bulundurmanız gereken tek durumlar, korumalı öğelerinizi yeni bir kasaya taşımayı planlıyorsanız ve silinmeden ve yeniden korumadan önce 14 gün önce bekleyemez (örneğin, bir test ortamında). Yalnızca bir yedekleme Yöneticisi bu özelliği devre dışı bırakabilir. Bu özelliği devre dışı bırakırsanız, korumalı öğelerin tüm silmeleri, geri yükleme özelliği olmadan hemen kaldırılmasına neden olur. Bu özelliğin devre dışı bırakılmasından önce geçici olarak silinen durumda verileri yedekleyin, geçici olarak silinmiş durumda kalır. Bunları hemen kalıcı olarak silmek isterseniz, kalıcı olarak silinmesi için silmeyi geri almanız ve silmeniz gerekir.
 
-### <a name="prerequisites-for-disabling-soft-delete"></a>Geçici silme devre dışı bırakma önkoşulları
-
-- Kasaların (korumalı öğeler olmadan) geçici silme özelliğinin etkinleştirilmesi veya devre dışı bırakılması yalnızca Azure portal yapılabilir. Bu için geçerlidir:
-  - Korumalı öğeler içermeyen yeni oluşturulan kasaları
-  - Korunan öğeleri silinen ve süresi geçmiş mevcut kasaların (Sabit 14 günlük bekletme döneminin ötesinde)
-- Kasa için geçici silme özelliği devre dışıysa, yeniden etkinleştirebilirsiniz, ancak bu seçimi ters çeviremezsiniz ve kasa korumalı öğeler içeriyorsa yeniden devre dışı bırakabilirsiniz.
-- Geçici olarak silinen durumunda korunan öğeleri veya öğeleri içeren kasaların geçici silme özelliğini devre dışı bırakabilirsiniz. Bunu yapmanız gerekirse, aşağıdaki adımları izleyin:
-  - Tüm korumalı öğeler için silinen verilerin korumasını durdurun.
-  - 14 günlük güvenlik saklama işleminin sona ermesini bekleyin.
-  - Geçici silme devre dışı bırakın.
-
-Geçici silme devre dışı bırakmak için önkoşulların karşılandığından emin olun ve ardından şu adımları izleyin:
+Geçici silme devre dışı bırakmak için şu adımları izleyin:
 
 1. Azure portal kasanıza gidin ve **ayarlar** -> **Özellikler**' e gidin.
-2. Özellikler bölmesinde, **güvenlik ayarları** -> **Güncelleştir**' i seçin.
-3. Güvenlik ayarları bölmesinde, geçici silme altında **devre dışı bırak**' ı seçin.
+2. Özellikler bölmesinde, **güvenlik ayarları** -> **Güncelleştir**' i seçin.  
+3. Güvenlik ayarları bölmesinde, **geçici silme**altında **devre dışı bırak**' ı seçin.
+
 
 ![Geçici silmeyi devre dışı bırak](./media/backup-azure-security-feature-cloud/disable-soft-delete.png)
+
+## <a name="permanently-deleting-soft-deleted-backup-items"></a>Geçici olarak silinen yedekleme öğelerini kalıcı olarak silme
+
+Bu özelliğin devre dışı bırakılmasından önce geçici olarak silinen durumda verileri yedekleyin, geçici olarak silinmiş durumda kalır. Bunları hemen kalıcı olarak silmek istiyorsanız silmeyi geri alın ve kalıcı olarak silmek için yeniden silin. 
+
+Şu adımları uygulayın:
+
+1. [Geçici silme özelliğini devre dışı bırakmak](#disabling-soft-delete)için adımları izleyin. 
+2. Azure portal, kasanıza gidin, **yedekleme öğeleri** ' ne gidin ve geçici olarak silinen VM 'yi seçin 
+
+![Geçici olarak silinen VM 'yi seçin](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
+
+3. **Silmeyi geri al**seçeneğini belirleyin.
+
+![Silmeyi geri al seçeneğini belirleyin](./media/backup-azure-security-feature-cloud/choose-undelete.png)
+
+
+4. Bir pencere görüntülenir. **Silmeyi geri al**seçeneğini belirleyin.
+
+![Silmeyi geri al seçeneğini belirleyin](./media/backup-azure-security-feature-cloud/undelete-vm.png)
+
+5. Yedekleme verilerini kalıcı olarak silmek için **yedekleme verilerini sil** ' i seçin.
+
+![Yedekleme verilerini Sil ' i seçin](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-buttom.png)
+
+6. Kurtarma noktalarını silmek istediğinizi onaylamak için yedekleme öğesinin adını yazın.
+
+![Yedekleme öğesinin adını yazın](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-data1.png)
+
+7. Öğe için yedekleme verilerini silmek için **Sil**' i seçin. Bir bildirim iletisi, yedekleme verilerinin silindiğini bilmenizi sağlar.
+
 
 ## <a name="other-security-features"></a>Diğer güvenlik özellikleri
 
@@ -139,7 +160,7 @@ Geri alma işleminden sonra devam ederseniz kaynak yeniden korunur. Özgeçmişi
 
 #### <a name="can-i-delete-my-vault-if-there-are-soft-deleted-items-in-the-vault"></a>Kasada geçici olarak silinen öğeler varsa kasamı silebilir miyim?
 
-Kasadaki geçici olarak silinen durumda yedekleme öğeleri varsa kurtarma hizmetleri Kasası silinemez. Geçici olarak silinen öğeler, silme işleminin 14 gün sonra kalıcı olarak silinir. Kasayı yalnızca tüm geçici silinen öğeler temizlenmeden sonra silebilirsiniz.  
+Kasadaki geçici olarak silinen durumda yedekleme öğeleri varsa kurtarma hizmetleri Kasası silinemez. Geçici olarak silinen öğeler, silme işleminden sonra 14 gün sonra kalıcı olarak silinir. 14 gün bekleyemez, [geçici silme işlemini devre dışı bırakın](#disabling-soft-delete), geçici olarak silinen öğeleri geri alın ve kalıcı olarak silmek için yeniden silin. Korunan öğe olmadığından ve geçici olarak silinen öğeler olmadığından, kasanın silinebilmesini sağlar.  
 
 #### <a name="can-i-delete-the-data-earlier-than-the-14-days-soft-delete-period-after-deletion"></a>Silme işleminden sonra 14 gün geçici silme süresinden önceki verileri silebilir miyim?
 

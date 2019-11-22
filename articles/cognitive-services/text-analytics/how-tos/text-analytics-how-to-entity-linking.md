@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 11/12/2019
 ms.author: aahi
-ms.openlocfilehash: 5933c7ec56ded971e4daf96ea6d4302c04921f2f
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
-ms.translationtype: MT
+ms.openlocfilehash: d3869438f299383a0b3096babbd4874c24f08b3a
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74031436"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286582"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Metin Analizi içinde adlandırılmış varlık tanımayı kullanma
 
@@ -33,11 +33,11 @@ Adlandırılmış varlık tanıma (NER), metinde farklı varlıkları belirleme 
 
 ## <a name="named-entity-recognition-v3-public-preview"></a>Adlandırılmış varlık tanıma v3 genel önizlemesi
 
-[Adlandırılmış varlık tanımanın bir sonraki sürümü]( https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral) artık genel önizlemeye sunuldu. Hem varlık bağlama hem de adlandırılmış varlık tanıma için güncelleştirmeler sağlar. 
+[Adlandırılmış varlık tanımanın bir sonraki sürümü](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral) artık genel önizlemeye sunuldu. Hem varlık bağlama hem de adlandırılmış varlık tanıma için güncelleştirmeler sağlar.
 
 :::row:::
     :::column span="":::
-        **Özellik**
+        **Özelliği**
     :::column-end:::
     ::: column span="":::
         **Açıklama** 
@@ -108,7 +108,7 @@ Varlık bağlama
 | Miktar      | Yüzde    | "%50", "yüzde elli"|
 | Miktar      | Sıra       | "2.", "ikinci"     |
 | Miktar      | Yaş           | "90 gün eski", "30 yıl eski"    |
-| Miktar      | Para birimi      | “10,99 ABD Doları”     |
+| Miktar      | Currency      | “10,99 ABD Doları”     |
 | Miktar      | Boyut     | "10 mil", "40 cm"     |
 | Miktar      | Sıcaklık   | "32 derece"    |
 | DateTime      | Yok\*         | “18:30 4 Şubat 2012”      |

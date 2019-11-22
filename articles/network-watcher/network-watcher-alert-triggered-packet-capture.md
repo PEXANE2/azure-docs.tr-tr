@@ -1,5 +1,6 @@
 ---
-title: Uyarı ve Azure Işlevleri ile öngörülü ağ izleme yapmak için paket yakalamayı kullanın | Microsoft Docs
+title: Uyarı ile öngörülü ağ izleme yapmak için paket yakalamayı kullanma-Azure Işlevleri
+titleSuffix: Azure Network Watcher
 description: Bu makalede, Azure ağ Izleyicisi ile bir uyarı tetiklenen paket yakalama oluşturma açıklanmaktadır
 services: network-watcher
 documentationcenter: na
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: d894fabf3cfd4c6949aba94d558751bf007356d9
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 26599776abdf7ecbb6c86c332a40e0c2b7d6e67e
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165149"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276128"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Uyarılar ve Azure Işlevleri ile öngörülü ağ izleme için paket yakalamayı kullanma
 
@@ -69,7 +70,7 @@ Bu senaryo şunları yapar:
 
 İlk adım, uyarıyı işlemek ve bir paket yakalama oluşturmak için bir Azure işlevi oluşturmaktır.
 
-1. [Azure Portal](https://portal.azure.com) **kaynak** > oluşturmaişlemişlevuygulaması > seçin.
+1. [Azure Portal](https://portal.azure.com) **kaynak oluştur** > **işlem** > **işlev uygulaması**' nı seçin.
 
     ![İşlev uygulaması oluşturma][1-1]
 
@@ -81,10 +82,10 @@ Bu senaryo şunları yapar:
     |**Abonelik**|[Aboneliğiniz] İşlev uygulamasının oluşturulacağı abonelik.||
     |**Kaynak Grubu**|PacketCaptureRG|İşlev uygulamasını içerecek kaynak grubu.|
     |**Barındırma Planı**|Tüketim Planı| İşlev uygulamanızın kullandığı planın türü. Seçenekler, tüketim veya Azure App Service planlardır. |
-    |**Location**|Orta ABD| İşlev uygulamasının oluşturulacağı bölge.|
+    |**Konum**|Orta ABD| İşlev uygulamasının oluşturulacağı bölge.|
     |**Depolama Hesabı**|otomatik olarak oluşturulan| Azure Işlevlerinin genel amaçlı depolama için ihtiyaç duyacağı depolama hesabı.|
 
-3. **Packetcaptureexample işlevi uygulamalar** dikey penceresinde **işlevler** > **özel işlev** > **+** ' i seçin.
+3. **Packetcaptureexample Işlevi uygulamalar** dikey penceresinde **işlevler** > **özel işlev** > **+** ' ı seçin.
 
 4. **Httptrigger-PowerShell**' i seçin ve ardından kalan bilgileri girin. Son olarak, işlevi oluşturmak için **Oluştur**' u seçin.
 
@@ -121,7 +122,7 @@ Ağ Izleyicisi PowerShell cmdlet 'lerini kullanmak için, işlev uygulamasına e
 
      ![PowerShell klasörleri][functions5]
 
-1. **İşlev uygulaması ayarları** > seçin**App Service Düzenleyicisi git**.
+1. **İşlev uygulaması ayarları** ' nı seçin > **App Service Düzenleyicisi gidin**.
 
     ![İşlev uygulaması ayarları][functions2]
 
@@ -149,7 +150,7 @@ Ağ Izleyicisi PowerShell cmdlet 'lerini kullanmak için, işlev uygulamasına e
 
     ![PowerShell dosyaları][functions7]
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Kimlik Doğrulaması
 
 PowerShell cmdlet 'lerini kullanmak için kimlik doğrulaması yapmanız gerekir. İşlev uygulamasında kimlik doğrulamasını yapılandırırsınız. Kimlik doğrulamasını yapılandırmak için, ortam değişkenlerini yapılandırmanız ve şifrelenmiş bir anahtar dosyasını işlev uygulamasına yüklemeniz gerekir.
 
@@ -226,7 +227,7 @@ Aşağıdaki PowerShell örneğini çalıştırarak kiracı KIMLIĞINI edinin:
 
 #### <a name="azurecredpassword"></a>AzureCredPassword
 
-AzureCredPassword ortam değişkeninin değeri, aşağıdaki PowerShell örneğini çalıştırmadan aldığınız değerdir. Bu örnek, önceki **şifreli kimlik bilgileri** bölümünde gösterilen bir örnektir. Gereken değer, `$Encryptedpassword` değişkenin çıktıdır.  Bu, PowerShell betiğini kullanarak şifrelediğiniz hizmet sorumlusu parolasıdır.
+AzureCredPassword ortam değişkeninin değeri, aşağıdaki PowerShell örneğini çalıştırmadan aldığınız değerdir. Bu örnek, önceki **şifreli kimlik bilgileri** bölümünde gösterilen bir örnektir. Gereken değer `$Encryptedpassword` değişkeninin çıktısından oluşur.  Bu, PowerShell betiğini kullanarak şifrelediğiniz hizmet sorumlusu parolasıdır.
 
 ```powershell
 #Variables
@@ -247,7 +248,7 @@ $Encryptedpassword
 
 ### <a name="store-the-environment-variables"></a>Ortam değişkenlerini depolayın
 
-1. İşlev uygulamasına gidin. Ardından **işlev uygulama ayarları** > **uygulama ayarlarını yapılandır**' ı seçin.
+1. İşlev uygulamasına gidin. Ardından **uygulama ayarlarını yapılandırmak** > **işlev uygulama ayarları** ' nı seçin.
 
     ![Uygulama ayarlarını yapılandırma][functions11]
 
@@ -345,7 +346,7 @@ Var olan bir sanal makineye gidin ve bir uyarı kuralı ekleyin. Uyarıları yap
 
   |**Ayar** | **Değer** | **Ayrıntılar** |
   |---|---|---|
-  |**Name**|TCP_Segments_Sent_Exceeded|Uyarı kuralının adı.|
+  |**Adı**|TCP_Segments_Sent_Exceeded|Uyarı kuralının adı.|
   |**Açıklama**|Gönderilen TCP kesimleri eşiği aştı|Uyarı kuralının açıklaması.|
   |**Ölçüm**|Gönderilen TCP kesimleri| Uyarıyı tetiklemek için kullanılacak ölçüm. |
   |**Koşul**|Büyüktür| Ölçüm değerlendirilirken kullanılacak koşul.|
