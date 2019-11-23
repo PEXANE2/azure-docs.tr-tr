@@ -71,20 +71,20 @@ Yüklemeye başlamadan önce, aşağıdaki SAP notları ve belgelerine bakın:
 | SAP Note | Açıklama |
 | --- | --- |
 | [1928533] | Azure 'da SAP uygulamaları: Desteklenen Ürünler ve Azure VM türleri |
-| [2015553] | Azure 'da SAP: Destek önkoşulları |
+| [2015553] | Azure üzerinde SAP: destek önkoşulları |
 | [2178632] | Azure 'da SAP için anahtar izleme ölçümleri |
 | [2191498] | Azure ile Linux üzerinde SAP: Gelişmiş izleme |
 | [2243692] | Azure 'da Linux (IaaS) VM: SAP lisans sorunları |
-| [2002167] | Red Hat Enterprise Linux 7. x: Yükleme ve yükseltme |
+| [2002167] | Red Hat Enterprise Linux 7. x: yükleme ve yükseltme |
 | [2694118] | Azure 'da HA eklentisi Red Hat Enterprise Linux |
 | [1999351] | SAP için gelişmiş Azure izleme sorunlarını giderme |
 | [2233094] | DB6: Azure 'da Linux, UNIX ve Windows için IBM DB2 kullanan SAP uygulamaları-ek bilgiler |
-| [1612105] | DB6: HADR ile DB2 hakkında SSS |
+| [1612105] | DB6: HADR ile DB2 üzerinde SSS |
 
 
 | Belgeler | 
 | --- |
-| [SAP Community wiki](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes): Linux için gereken tüm SAP notlarına sahiptir |
+| [SAP Community wiki](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes): Linux için gereken tüm sap notlarını içerir |
 | [Linux 'TA SAP Için Azure sanal makineleri planlama ve uygulama][planning-guide] Kılavuzu |
 | [Linux 'TA SAP Için Azure sanal makineleri dağıtımı][deployment-guide] (Bu makale) |
 | [Linux 'TA SAP Için Azure sanal makineler veritabanı yönetim sistemi (DBMS) dağıtımı][dbms-guide] |
@@ -157,7 +157,7 @@ Azure 'da Linux Paceyapıcısı hakkında daha fazla bilgi için bkz. [Azure 'da
 
 IBM DB2 LUW için kaynak Aracısı Red Hat Enterprise Linux Server HA eklentisi 'ne dahildir. Bu belgede açıklanan kurulum için SAP Red Hat Enterprise Linux kullanmanız gerekir. Azure Marketi, yeni Azure sanal makinelerini dağıtmak için kullanabileceğiniz SAP veya daha yüksek Red Hat Enterprise Linux 7,4 için bir görüntü içerir. Azure VM marketi 'nde bir VM görüntüsü seçtiğinizde, Azure Marketi aracılığıyla, Red Hat tarafından sunulan çeşitli destek veya hizmet modellerinden haberdar olun.
 
-### <a name="hosts-dns-updates"></a>Bilgisayarlarınızı DNS güncelleştirmeleri
+### <a name="hosts-dns-updates"></a>Konaklar: DNS güncelleştirmeleri
 Sanal ana bilgisayar adları da dahil olmak üzere tüm konak adlarının listesini oluşturun ve DNS sunucularınızı, konak adı çözümlemesi için doğru IP adresini etkinleştirmek üzere güncelleştirin. Bir DNS sunucusu yoksa veya DNS girdilerini güncelleştirip oluşturamıyoruz, bu senaryoya katılan ayrı VM 'lerin yerel ana bilgisayar dosyalarını kullanmanız gerekir. Ana bilgisayar dosyaları girişleri kullanıyorsanız, girdilerin SAP sistem ortamındaki tüm VM 'lere uygulandığından emin olun. Bununla birlikte, ideal olarak Azure 'a genişleyen DNS 'nizi kullanmanızı öneririz.
 
 
@@ -195,7 +195,7 @@ IBM DB2 LUW üzerinde NetWeaver tabanlı uygulamalar yüklemeyle ilgili SAP yük
 SAP [Yükleme Kılavuzu bulucusu][sap-instfind]' nı kullanarak SAP yardım portalındaki kılavuzların bulabilirsiniz.
 
 Aşağıdaki filtreleri ayarlayarak portalda görünen kılavuz sayısını azaltabilirsiniz:
-- Yapmak istiyorum: "Yeni bir sistem yüklensin"
+- Şunu yapmak istiyorum: "yeni bir sistem yüklemek"
 - Veritabanım: "Linux, Unix ve Windows için IBM DB2"
 - SAP NetWeaver sürümleri, yığın yapılandırması veya işletim sistemi için ek filtreler
 
@@ -227,11 +227,11 @@ Birincil IBM DB2 LUW veritabanı örneğini ayarlamak için:
 İlk yük devretme/ön yük testi temelinde yukarıdaki parametreleri öneririz. Bu parametre ayarları ile yük devretme ve en uygun işlevsellik için test etmeniz zorunludur. Ayrı ayrı yapılandırmaların değişebildiğinden, parametreler ayarlama gerektirebilir. 
 
 > [!NOTE]
-> Normal başlatma ile HADR yapılandırması ile IBM DB2 'e özgü: Birincil veritabanı örneğini başlatabilmeniz için ikincil veya bekleme veritabanı örneğinin çalışır ve çalışıyor olması gerekir.
+> Normal başlatma ile HADR yapılandırması ile IBM DB2 'e özgü: birincil veritabanı örneğini başlatmadan önce ikincil veya bekleme veritabanı örneği çalışır duruma gelmelidir.
 
    
 > [!NOTE]
-> Azure ve pacemaker 'a özgü yükleme ve yapılandırma için: SAP yazılım sağlama Yöneticisi üzerinden yükleme yordamı sırasında IBM DB2 LUW için yüksek kullanılabilirlik hakkında açık bir soru vardır:
+> Azure ve Paceyapıcısı 'e özgü yükleme ve yapılandırma için: SAP yazılım sağlama Yöneticisi aracılığıyla yükleme yordamı sırasında IBM DB2 LUW için yüksek kullanılabilirlik hakkında açık bir soru vardır:
 >+ **IBM DB2 pureScale**öğesini seçmeyin.
 >+ **Çoklu platformlar IÇIN IBM Tivoli sistem otomasyonu yüklemeyi**seçmeyin.
 >+ **Küme yapılandırma dosyalarını üret**' i seçmeyin.
@@ -240,7 +240,7 @@ Birincil IBM DB2 LUW veritabanı örneğini ayarlamak için:
 
 SAP homojen sistem kopyalama yordamını kullanarak bekleme veritabanı sunucusunu ayarlamak için aşağıdaki adımları yürütün:
 
-1. **Hedef sistemler** **Dağıtılmış veritabanı örneği**> Sistem kopyalama seçeneğini belirleyin. >  > 
+1. **Hedef sistemler** > **Dağıtılmış** > **veritabanı örneğini**> **sistem kopyalama** seçeneğini belirleyin.
 1. Bir kopyalama yöntemi olarak, yedek sunucu örneğindeki bir yedeği geri yüklemek için yedekleme kullanabilmeniz için **homojen sistemi** ' ni seçin.
 1. Homojen sistem kopyası için veritabanını geri yüklemek üzere çıkış adımına ulaştığınızda yükleyiciden çıkın. Veritabanını birincil ana bilgisayarın yedeğinden geri yükleyin. Sonraki yükleme aşamaları, birincil veritabanı sunucusunda zaten yürütüldü.
 
@@ -366,13 +366,13 @@ Düğüm arızası durumunda otomatik yük devretme için pacemaker kullandığ�
 
 Aşağıdaki öğelerin ön eki vardır:
 
-- **[A]** : Tüm düğümlere uygulanabilir
-- **[1]** : Yalnızca düğüm 1 için geçerlidir 
-- **[2]** : Yalnızca düğüm 2 için geçerlidir
+- **[A]** : tüm düğümlere uygulanabilir
+- **[1]** : yalnızca düğüm 1 için geçerlidir 
+- **[2]** : yalnızca düğüm 2 ' de geçerlidir
 
 **[A]** pacemaker yapılandırması için Önkoşullar:
 1. Db2stop ile Kullanıcı DB2\<SID > her iki veritabanı sunucusunu da kapatın.
-1. DB2\<SID > User için Shell ortamını */bin/ksh*olarak değiştirin:
+1. DB2\<SID > kullanıcısının Kabuk ortamını */bin/ksh*olarak değiştirin:
 <pre><code># Install korn shell:
 sudo yum install ksh
 # Change users shell:
@@ -423,7 +423,7 @@ sudo pcs property set maintenance-mode=false</pre></code>
 
 Kaynakların tam listesi:
 
- rsc_st_azure (stonith: fence_azure_arm):      Başlatıldı az-idb01 Master/bağımlı set: Db2_HADR_ID2-Master [Db2_HADR_ID2] ana şablonlar: [az-idb01] SLA: [az-idb02] kaynak grubu: g_ipnc_db2id2_ID2 vip_db2id2_ID2 (OCF:: sinyal: IPaddr2):       Started az-idb01 nc_db2id2_ID2 (OCF:: sinyal: Azure-lb):      Başlatıldı az-idb01
+ rsc_st_azure (stonith: fence_azure_arm): başlatıldı az-idb01 Master/bağımlı kümesi: Db2_HADR_ID2-Master [Db2_HADR_ID2] asılları: [az-idb01] SLA: [az-idb02] kaynak grubu: g_ipnc_db2id2_ID2 vip_db2id2_ID2 (OCF:: sinyal: IPaddr2): başlatıldı az-idb01 nc_db2id2_ID2 (OCF:: sinyal: Azure-lb): başlatıldı az-idb01
 
 Daemon durumu: Corosync: etkin/devre dışı pacemaker: etkin/devre dışı pcsd: etkin/etkin
 </pre>
@@ -494,7 +494,7 @@ sudo firewall-cmd --reload</code></pre>
 ### <a name="make-changes-to-sap-profiles-to-use-virtual-ip-for-connection"></a>Bağlantı için sanal IP 'yi kullanmak üzere SAP profillerinde değişiklikler yapın
 HADR yapılandırmasının birincil örneğine bağlanmak için, SAP uygulama katmanının Azure Load Balancer için tanımladığınız ve yapılandırdığınız sanal IP adresini kullanması gerekir. Aşağıdaki değişiklikler gereklidir:
 
-/sapmnt/\<SID >/profil/default. PFL
+/sapmnt/\<SID >/profile/DEFAULT. PFL
 <pre><code>SAPDBHOST = db-virt-hostname
 j2ee/dbhost = db-virt-hostname
 </code></pre>
@@ -520,7 +520,7 @@ JDBC URL 'sini denetlemek veya güncelleştirmek için J2EE yapılandırma arac�
     <pre><code>sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh</code></pre>  
     
 1. Sol çerçevede **Güvenlik deposu**' nu seçin.
-1. Sağ çerçevede, anahtarı `jdbc/pool/\<SAPSID>/url`seçin.
+1. Sağ çerçevede anahtar `jdbc/pool/\<SAPSID>/url`seçin.
 1. JDBC URL 'sindeki ana bilgisayar adını sanal ana bilgisayar adıyla değiştirin.
     
     <pre><code>jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0</code></pre>  
@@ -547,7 +547,7 @@ Aktarımlar için mevcut olan yüksek oranda kullanılabilir NFS paylaşımları
 
 Bu bölüm, DB2 HADR kurulumunuzu nasıl test kullanabileceğinizi açıklar. Her test, *az-idb01* sanal makinesinde IBM DB2 birincil 'ın çalıştığını varsayar. Sudo ayrıcalıklarına veya köküne sahip kullanıcı (önerilmez) kullanılmalıdır.
 
-Tüm test çalışmalarının ilk durumu burada açıklanmıştır: (crm_mon-r veya PC Status)
+Tüm test çalışmalarının ilk durumu burada açıklanmıştır: (crm_mon-r veya bilgisayarların durumu)
 
 - **bilgisayar durumu** , yürütme sırasında pacemaker durumunun bir anlık görüntüsüdür 
 - **crm_mon-r** , pacemaker durumunun sürekli çıkışı
@@ -587,7 +587,7 @@ Bir SAP sistemindeki özgün durum, aşağıdaki görüntüde gösterildiği gib
 > Teste başlamadan önce şunları yaptığınızdan emin olun:
 > * Pacemaker başarısız olan eylemlere sahip değil (bilgisayar durumu).
 > * Hiçbir konum kısıtlaması yok (geçiş testinin sol üyesi ol)
-> * IBM DB2 HADR eşitlemesi çalışıyor. Kullanıcı DB2\<SID 'si > denetle <pre><code>db2pd -hadr -db \<DBSID></code></pre>
+> * IBM DB2 HADR eşitlemesi çalışıyor. Kullanıcı DB2\<SID > denetleyin <pre><code>db2pd -hadr -db \<DBSID></code></pre>
 
 
 Aşağıdaki komutu yürüterek birincil DB2 veritabanını çalıştıran düğümü geçirin:
@@ -643,9 +643,9 @@ Kaynağı *az-idb01* 'e geri geçirin ve konum kısıtlamalarını temizleyin
 sudo pcs resource clear Db2_HADR_<b>ID2</b>-master
 </code></pre>
 
-- **bilgisayar kaynağı taşıma \<RES_NAME > <host>:** Konum kısıtlamaları oluşturur ve ele alınmasına neden olabilir
-- **PC kaynağı Temizleme \<RES_NAME >** : Konum kısıtlamalarını temizler
-- **bilgisayar kaynağı Temizleme \<RES_NAME >** : Kaynağın tüm hatalarını temizler
+- **bilgisayar kaynak taşıma \<res_name > <host>:** Konum kısıtlamaları oluşturur ve ele alınmasına neden olabilir
+- **bilgisayar kaynağı temizle \<res_name >** : konum kısıtlamalarını temizler
+- **bilgisayar kaynağı temizleme \<res_name >** : kaynağın tüm hatalarını temizler
 
 ### <a name="test-a-manual-takeover"></a>El ile devralmayı test etme
 
@@ -740,7 +740,7 @@ DB2 örneği, daha önce atandığı ikincil rolde yeniden başlatılır.
 
 ### <a name="stop-db-via-db2stop-force-on-the-node-that-runs-the-hadr-primary-database-instance"></a>HADR birincil veritabanı örneğini çalıştıran düğümde db2stop zorlamalı aracılığıyla DB 'yi durdur
 
-As user DB2\<SID > Execute Command db2stop zorlama:
+Kullanıcı DB2\<SID > Execute komutu db2stop zorlama:
 <pre><code>az-idb01:db2ptr> db2stop force</code></pre>
 
 Hata tespit edildi:
@@ -808,7 +808,7 @@ rsc_st_azure    (stonith:fence_azure_arm):      Started az-idb02
      vip_db2id2_ID2     (ocf::heartbeat:IPaddr2):       Started az-idb01
      nc_db2id2_ID2      (ocf::heartbeat:azure-lb):      Started az-idb01</code></pre>
 
-Sonraki adım *bölünmüş* bir beyinme durumu olup olmadığını denetlemedir. Kalan düğüm, birincil veritabanı örneğini son çalıştıran düğümün çalıştığını belirledikten sonra, kaynakların yük devretmesi yürütülür.
+Sonraki adım bölünmüş bir beyinme durumu olup olmadığını *denetlemedir* . Kalan düğüm, birincil veritabanı örneğini son çalıştıran düğümün çalıştığını belirledikten sonra, kaynakların yük devretmesi yürütülür.
 
 <pre><code>2 nodes configured
 5 resources configured

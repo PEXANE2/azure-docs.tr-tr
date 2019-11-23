@@ -15,7 +15,7 @@ ms.locfileid: "72326633"
 ---
 # <a name="where-clause-in-azure-cosmos-db"></a>Azure Cosmos DB WHERE yan tümcesi
 
-İsteğe bağlı WHERE yan tümcesi (`WHERE <filter_condition>`), kaynak JSON öğelerinin sorgunun sonuçlara dahil etmek için karşılaması gereken koşulları belirtir. Bir JSON öğesi, sonuç için değerlendirilecek `true` için belirtilen koşulları değerlendirmelidir. Dizin Katmanı WHERE yan tümcesini kullanarak sonucun parçası olabilecek en küçük kaynak öğeleri alt kümesini tespit edebilir.
+İsteğe bağlı WHERE yan tümcesi (`WHERE <filter_condition>`), kaynak JSON öğelerinin sorgunun sonuçlara dahil etmek için karşılaması gereken koşulları belirtir. Bir JSON öğesi, sonuç için kabul edilecek `true` için belirtilen koşulları değerlendirmelidir. Dizin Katmanı WHERE yan tümcesini kullanarak sonucun parçası olabilecek en küçük kaynak öğeleri alt kümesini tespit edebilir.
   
 ## <a name="syntax"></a>Sözdizimi
   
@@ -29,20 +29,20 @@ WHERE <filter_condition>
 
 - `<filter_condition>`  
   
-   Döndürülecek belgelerin karşılanabileceği koşulu belirtir.  
+   Döndürülecek belgeler için karşılanması gereken bir koşulu belirtir.  
   
 - `<scalar_expression>`  
   
-   Hesaplanacağı değeri temsil eden ifade. Ayrıntılar için bkz. [skalar ifadeler](sql-query-scalar-expressions.md) .  
+   Hesaplanmasını değeri gösteren ifade. Ayrıntılar için bkz. [skalar ifadeler](sql-query-scalar-expressions.md) .  
   
 
 ## <a name="remarks"></a>Açıklamalar
   
-  Belgenin döndürülmesi için filtre koşulu true olarak değerlendirilmelidir. Yalnızca true Boole değeri koşulu karşılar, başka bir değer vardır: tanımsız, null, yanlış, sayı, dizi veya nesne koşulu karşılamıyor. 
+  Filtre olarak belirtilen bir ifade döndürülecek belge sırada koşul true olarak değerlendirilmelidir. Başka bir değer koşulu, Boole değeri true yerine getirecek yalnızca: tanımsız, null, false, sayı, dizi veya nesne karşılamaz koşul. 
 
 ## <a name="examples"></a>Örnekler
 
-Aşağıdaki sorgu, değeri `AndersenFamily` olan `id` özelliği içeren öğeleri ister. @No__t-0 özelliği olmayan ya da değeri `AndersenFamily` ile eşleşmeyen herhangi bir öğeyi dışlar.
+Aşağıdaki sorgu, değeri `AndersenFamily`olan `id` bir özelliği içeren öğeleri ister. `id` özelliğine sahip olmayan ya da değeri `AndersenFamily`eşleşmeyen herhangi bir öğeyi dışlar.
 
 ```sql
     SELECT f.address
@@ -64,17 +64,17 @@ Sonuçlar şunlardır:
 
 ### <a name="scalar-expressions-in-the-where-clause"></a>WHERE yan tümcesindeki skaler ifadeler
 
-Önceki örnekte basit bir eşitlik sorgusu gösteriliyordu. SQL API ayrıca çeşitli [Skalar ifadeleri](sql-query-scalar-expressions.md)destekler. En yaygın olarak kullanılan ikili ve birli ifadelerdir. Kaynak JSON nesnesinden Özellik başvuruları da geçerli ifadelerdir.
+Önceki örnekte, bir basit eşitlik sorgu gösterdi. SQL API ayrıca çeşitli [Skalar ifadeleri](sql-query-scalar-expressions.md)destekler. En sık kullanılan ikili ve birli ifadelerdir. Kaynak JSON nesne özelliği başvurularından da geçerli ifadelerdir.
 
 Aşağıdaki desteklenen ikili işleçleri kullanabilirsiniz:  
 
 |**İşleç türü**  | **Değerler** |
 |---------|---------|
-|Tiğinin | +,-,*,/,% |
-|Operatörün    | \|, &, ^, < <, > >, > > > (sıfır-doldur sağ SHIFT) |
-|Mantıksal    | VE, VEYA DEĞIL      |
-|Karşılaştırma | =,! =, &lt;, &gt;, &lt; =, &gt; =, < > |
-|Dize     |  \| @ no__t-1 (Birleştir) |
+|Aritmetik | +,-,*,/,% |
+|bit düzeyinde    | \|, &, ^, <<>>,, >>> (sıfır dolgu sağa kaydırma) |
+|Mantıksal    | VE, VEYA DEĞİL      |
+|Karşılaştırma | =, !=, &lt;, &gt;, &lt;=, &gt;=, <> |
+|Dize     |  \|\| (birleştirme) |
 
 Aşağıdaki sorgular ikili işleçler kullanır:
 
@@ -104,10 +104,10 @@ Ayrıca, aşağıdaki örneklerde gösterildiği gibi, sorgularda DEĞIL Birli �
     WHERE (-c.grade = -5)  -- matching grades == 5
 ```
 
-Sorgularda Özellik başvurularını da kullanabilirsiniz. Örneğin `SELECT * FROM Families f WHERE f.isRegistered`, `true` değerine eşit değeri olan `isRegistered` özelliğini içeren JSON öğesini döndürür. @No__t-0, `null`, `Undefined`, `<number>`, `<string>`, `<object>` veya `<array>` gibi başka herhangi bir değer, öğeyi sonuçtan dışlar. 
+Sorgularda Özellik başvurularını da kullanabilirsiniz. Örneğin `SELECT * FROM Families f WHERE f.isRegistered`, `true`değerine eşit değere sahip `isRegistered` özelliğini içeren JSON öğesini döndürür. `false`, `null`, `Undefined`, `<number>`, `<string>`, `<object>`veya `<array>`gibi başka herhangi bir değer, öğeyi sonuçtan dışlar. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Başlarken](sql-query-getting-started.md)
+- [Başlangıç](sql-query-getting-started.md)
 - [Azure Cosmos DB .NET örnekleri](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [FROM yan tümcesi](sql-query-from.md)

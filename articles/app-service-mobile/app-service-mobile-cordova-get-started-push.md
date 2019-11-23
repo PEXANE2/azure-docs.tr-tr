@@ -28,7 +28,7 @@ ms.locfileid: "72388863"
 > [!NOTE]
 > Visual Studio App Center mobil uygulama dağıtımında merkezi konumdaki uçtan uca ve tümleşik hizmetleri destekler. Geliştiriciler Sürekli Tümleştirme ve Teslim işlem hattını ayarlamak için **Oluşturma**, **Test** ve **Dağıtım** hizmetlerini kullanabilir. Uygulama dağıtıldıktan sonra, geliştiriciler **Analiz** ve **Tanılama** hizmetlerini kullanarak uygulamanın durumunu ve kullanımını izleyebilir, **Gönderme** hizmetini kullanarak kullanıcılarla etkileşim kurabilir. Geliştiriciler ayrıca kullanıcıların kimliğini doğrulamak için **Kimlik Doğrulaması**'ndan ve uygulama verilerini bulutta kalıcı hale getirmek ve eşitlemek için **Veri** hizmetinden yararlanabilir.
 >
-> Mobil uygulamanızda bulut hizmetlerini tümleştirmek istiyorsanız bugün [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) kaydolun.
+> Bulut hizmetlerini mobil uygulamanızla tümleştirmek istiyorsanız [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc)'a hemen kaydolun.
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -68,14 +68,14 @@ Apache Cordova uygulama projenizin anında iletme bildirimlerini işlemeye hazı
 
 Projeniz sürüm 6.1.1 ' den önceki bir Apache Cordova sürümünü kullanıyorsa, istemci projesini güncelleştirin. Projeyi güncelleştirmek için aşağıdaki adımları uygulayın:
 
-* Yapılandırma tasarımcısını açmak için `config.xml` ' a sağ tıklayın.
+* Yapılandırma tasarımcısını açmak için `config.xml`' ye sağ tıklayın.
 * **Platformlar** sekmesini seçin.
 * **Cordova CLI** metin kutusunda **6.1.1**' yi seçin. 
 * Projeyi güncelleştirmek için **Oluştur**' u seçin ve ardından **Build Solution**' ı seçin.
 
 #### <a name="install-the-push-plugin"></a>İtme eklentisini yükleme
 
-Apache Cordova uygulamalar, cihaz veya ağ yeteneklerini yerel olarak işlemez.  Bu yetenekler, [NPM][10] veya GitHub üzerinde yayınlanan eklentiler tarafından sağlanır. @No__t-0 eklentisi ağ anında iletme bildirimlerini işler.
+Apache Cordova uygulamalar, cihaz veya ağ yeteneklerini yerel olarak işlemez.  Bu yetenekler, [NPM][10] veya GitHub üzerinde yayınlanan eklentiler tarafından sağlanır. `phonegap-plugin-push` eklentisi ağ anında iletme bildirimlerini işler.
 
 İtme eklentisini aşağıdaki yöntemlerle yükleyebilirsiniz:
 
@@ -87,7 +87,7 @@ Apache Cordova uygulamalar, cihaz veya ağ yeteneklerini yerel olarak işlemez. 
 
 **Visual Studio içinden:**
 
-1. Çözüm Gezgini ' de, `config.xml` dosyasını açın. Sonra, eklentiler **@no__t-** 1**özel**' i seçin. Ardından yükleme kaynağı olarak **Git** ' i seçin.
+1. Çözüm Gezgini, `config.xml` dosyasını açın. Ardından, **özel** > **Eklentiler** ' i seçin. Ardından yükleme kaynağı olarak **Git** ' i seçin.
 
 2. Kaynak olarak `https://github.com/phonegap/phonegap-plugin-push` girin.
 
@@ -95,7 +95,7 @@ Apache Cordova uygulamalar, cihaz veya ağ yeteneklerini yerel olarak işlemez. 
 
 3. Yükleme kaynağının yanındaki oku seçin.
 
-4. **SENDER_ID**' de, Google Geliştirici konsol projesi için bir sayısal proje kimliğiniz zaten varsa, buradan ekleyebilirsiniz. Aksi takdirde, 777777 gibi bir yer tutucu değeri girin. Android 'i hedefliyorsanız, bu değeri config. xml dosyasında daha sonra güncelleştirebilirsiniz.
+4. **SENDER_ID**, zaten Google Geliştirici konsol projesi için sayısal BIR proje Kimliğiniz varsa, buradan ekleyebilirsiniz. Aksi takdirde, 777777 gibi bir yer tutucu değeri girin. Android 'i hedefliyorsanız, bu değeri config. xml dosyasında daha sonra güncelleştirebilirsiniz.
 
     >[!NOTE]
     >Sürüm 2.0.0 itibariyle, Google-Services. json ' ın, gönderenin KIMLIĞINI yapılandırmak için projenizin kök klasörüne yüklenmesi gerekir. Daha fazla bilgi için [yükleme belgelerine bakın.](https://github.com/phonegap/phonegap-plugin-push/blob/master/docs/INSTALLATION.md)
@@ -106,7 +106,7 @@ Gönderme eklentisi artık yüklendi.
 
 #### <a name="install-the-device-plugin"></a>Cihaz eklentisini yükler
 
-Push eklentisini yüklerken kullandığınız yordamın aynısını izleyin. Çekirdek eklentiler listesinden cihaz eklentisini ekleyin. (Bulmak için **eklentiler @no__t-** 1**çekirdek**' u seçin.) Platform adını almak için bu eklentiye ihtiyacınız vardır.
+Push eklentisini yüklerken kullandığınız yordamın aynısını izleyin. Çekirdek eklentiler listesinden cihaz eklentisini ekleyin. (Bulmak için, **temel** > **Eklentiler** ' i seçin.) Platform adını almak için bu eklentiye ihtiyacınız vardır.
 
 #### <a name="register-your-device-when-the-application-starts"></a>Uygulama başladığında cihazınızı kaydetme 
 
@@ -134,7 +134,7 @@ Başlangıçta Android için çok az kod ekledik. Daha sonra, uygulamayı iOS ve
         }, handleError);
     ```
 
-    Bu örnekte, kimlik doğrulaması başarılı olduktan sonra **Registerforpushnotifications** çağrısı gösterilmektedir. Gereken sıklıkta `registerForPushNotifications()` ' yı çağırabilirsiniz.
+    Bu örnekte, kimlik doğrulaması başarılı olduktan sonra **Registerforpushnotifications** çağrısı gösterilmektedir. Gerekli olan her sıklıkta `registerForPushNotifications()` çağırabilirsiniz.
 
 2. Yeni **Registerforpushnotifications** yöntemini aşağıdaki şekilde ekleyin:
 
@@ -182,7 +182,7 @@ Başlangıçta Android için çok az kod ekledik. Daha sonra, uygulamayı iOS ve
     pushRegistration.on('error', handleError);
     }
     ```
-3. Android Yukarıdaki kodda `Your_Project_ID` ' ı, [Google Developer konsolundan][18]uygulamanızın sayısal proje kimliğiyle değiştirin.
+3. Android Yukarıdaki kodda `Your_Project_ID`, [Google Geliştirici konsolundan][18]uygulamanızın sayısal proje kimliğiyle değiştirin.
 
 ## <a name="optional-configure-and-run-the-app-on-android"></a>Seçim Android 'de uygulamayı yapılandırma ve çalıştırma
 
@@ -200,7 +200,7 @@ Google Android platformunu başlangıçta hedeflediğinden, Firebase Cloud Messa
 
 #### <a name="configure-your-cordova-app-for-android"></a>Android için Cordova uygulamanızı yapılandırma
 
-Cordova uygulamanızda, **config. xml**dosyasını açın. Sonra, [Google Geliştirici konsolundan][18]`Your_Project_ID` ' ı uygulamanızın sayısal proje kimliğiyle değiştirin.
+Cordova uygulamanızda, **config. xml**dosyasını açın. Ardından `Your_Project_ID`, [Google Geliştirici konsolundan][18]uygulamanızın sayısal proje kimliğiyle değiştirin.
 
 ```xml
 <plugin name="phonegap-plugin-push" version="1.7.1" src="https://github.com/phonegap/phonegap-plugin-push.git">
@@ -222,7 +222,7 @@ pushRegistration = PushNotification.init({
 
 Uygulamanızı Android cihazınıza dağıtabilmeniz için önce USB hata ayıklamayı etkinleştirmeniz gerekir. Android telefonunuzda aşağıdaki adımları uygulayın:
 
-1. **Telefon hakkında**@no__t **Ayarlar**' a gidin. Ardından, geliştirici modu etkinleştirilene kadar (yaklaşık yedi kez) **yapı numarasına** dokunun.
+1. **Telefon hakkında** > **Ayarlar** ' a gidin. Ardından, geliştirici modu etkinleştirilene kadar (yaklaşık yedi kez) **yapı numarasına** dokunun.
 2. **Ayarlar** > **Geliştirici seçenekleri**' ne geri döndüğünüzde, **USB hata ayıklamayı**etkinleştirin. Ardından Android telefonunuzu bir USB kablosuyla geliştirme PC 'nize bağlayın.
 
 Bunu, Android 6,0 (sıralamada Mallow) çalıştıran bir Google Nexus 5X cihazını kullanarak test ettik. Ancak, teknikler tüm modern Android sürümler üzerinde ortaktır.
@@ -257,7 +257,7 @@ Artık uygulamayı çalıştırarak ve TodoItem tablosuna öğeler ekleyerek an�
 
     Daha hızlı bir x86 öykünücüsü kullanmak istiyorsanız [HAXM sürücüsünü yükleyip][11]öykünücü 'yı kullanmak üzere yapılandırın.
 
-    **Uygulamalar** > **Ayarlar** > **Hesap Ekle**' i seçerek Android cihazına bir Google hesabı ekleyin. Ardından istemleri izleyin.
+    **Uygulamalar** > **Ayarlar** > **Hesap Ekle**' ye tıklayarak Android cihazına bir Google hesabı ekleyin. Ardından istemleri izleyin.
 
     ![Android cihazına bir Google hesabı ekleme](./media/app-service-mobile-cordova-get-started-push/add-google-account.png)
 
@@ -280,7 +280,7 @@ Visual Studio kullanarak iOS 'ta bir Cordova uygulamasını çalıştırmadan ö
 
 #### <a name="find-the-id-to-use-as-your-app-id"></a>Uygulama KIMLIĞINIZ olarak kullanılacak KIMLIĞI bulun
 
-Uygulamanızı anında iletme bildirimleri için kaydetmeden önce, Cordova uygulamanızda config. xml dosyasını açın, pencere öğesi öğesinde `id` öznitelik değerini bulun ve daha sonra kullanmak üzere kopyalayın. Aşağıdaki XML 'de, KIMLIK `io.cordova.myapp7777777` ' dır.
+Uygulamanızı anında iletme bildirimleri için kaydetmeden önce, Cordova uygulamanızda config. xml dosyasını açın, pencere öğesi öğesinde `id` öznitelik değerini bulun ve daha sonra kullanmak üzere kopyalayın. Aşağıdaki XML 'de, KIMLIK `io.cordova.myapp7777777`.
 
 ```xml
 <widget defaultlocale="en-US" id="io.cordova.myapp7777777"

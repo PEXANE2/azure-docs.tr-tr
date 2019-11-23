@@ -50,25 +50,25 @@ Azure haritalar coğrafi kodlama özelliklerini ülkeye/bölgeye göre daha fazl
 
    Sonuçlarınızı kullanıcılarınızın ilgili alanına coğrafi olarak sıralamak için, olası en yüksek ayrıntılı konum girişini her zaman eklemeniz gerekir. Arama sonuçlarını kısıtlamak için aşağıdaki giriş türlerini eklemeyi göz önünde bulundurun:
 
-   1. @No__t-0 parametresini, örneğin "US, FR" olarak ayarlayın. Varsayılan arama davranışı, büyük olasılıkla gereksiz sonuçlar döndüren dünyanın tamamında arama yapmak için kullanılır. Sorgunuz `countrySet` parametresini içermiyorsa arama yanlış sonuçlar döndürebilir. Örneğin, **Bellevue** adlı bir şehri aramak, Fransa ve ABD 'de **Bellevue** adlı ŞEHIRLERIN bulunduğu için ABD ve Fransa 'dan sonuçlar döndürür.
+   1. `countrySet` parametresini, örneğin "US, FR" olarak ayarlayın. Varsayılan arama davranışı, büyük olasılıkla gereksiz sonuçlar döndüren dünyanın tamamında arama yapmak için kullanılır. Sorgunuz `countrySet` parametresi içermiyorsa, arama yanlış sonuçlar döndürebilir. Örneğin, **Bellevue** adlı bir şehri aramak, Fransa ve ABD 'de **Bellevue** adlı ŞEHIRLERIN bulunduğu için ABD ve Fransa 'dan sonuçlar döndürür.
 
-   2. Aramayı haritadaki belirli bir alanla sınırlamak için sınırlayıcı kutuyu ayarlamak üzere `btmRight` ve `topleft` parametrelerini kullanabilirsiniz.
+   2. `btmRight` ve `topleft` parametrelerini, aramayı haritadaki belirli bir alanla sınırlamak üzere sınırlama kutusunu ayarlamak için kullanabilirsiniz.
 
-   3. Sonuçlara ilişkin ilgi alanını etkilemek için `lat`ve `lon` koordinat parametrelerini tanımlayabilir ve arama alanının yarıçapını `radius` parametresini kullanarak ayarlayabilirsiniz.
+   3. Sonuçlara ilişkin ilgi alanını etkilemek için, `lat`ve `lon` koordinat parametrelerini tanımlayabilir ve `radius` parametresini kullanarak arama alanının yarıçapını ayarlayabilirsiniz.
 
 
    **Benzer arama parametreleri**
 
-   1. @No__t-0 ve `maxFuzzyLevel`, sorgu parametreleri tam olarak istenen bilgilere karşılık gelmese bile ilgili eşleşmeleri geri döndürmesine yardımcı olur. Çoğu arama, performansı elde etmek ve olağandışı sonuçları azaltmak için varsayılan olarak `minFuzzyLevel=1` ve `maxFuzzyLevel=2` ' i sorgular. "Restrant" arama terimine bir örnek alın, `maxFuzzyLevel` olarak ayarlandığında, "Restoran" ile eşleştirilir. Varsayılan benzer düzeyler, istek gereksinimlerine göre geçersiz kılınabilir. 
+   1. `minFuzzyLevel` ve `maxFuzzyLevel`, sorgu parametreleri tam olarak istenen bilgilere karşılık gelmese bile ilgili eşleşmeleri döndürür. Çoğu arama, performansı elde etmek ve olağandışı sonuçları azaltmak için `minFuzzyLevel=1` ve `maxFuzzyLevel=2` varsayılan olarak sorgular. "Restrant" arama terimine bir örnek alın, `maxFuzzyLevel` 2 olarak ayarlandığında "Restoran" ile eşleştirilir. Varsayılan benzer düzeyler, istek gereksinimlerine göre geçersiz kılınabilir. 
 
-   2. @No__t-0 parametresini kullanarak döndürülecek sonuç türlerinin tam kümesini de belirtebilirsiniz. Bu amaçla, virgülle ayrılmış dizinlerin listesini gönderebilirsiniz, öğe sırası önemi yoktur. Desteklenen dizinler aşağıda verilmiştir:
+   2. Ayrıca, `idxSet` parametresi kullanılarak döndürülecek sonuç türlerinin tam kümesini de belirtebilirsiniz. Bu amaçla, virgülle ayrılmış dizinlerin listesini gönderebilirsiniz, öğe sırası önemi yoktur. Desteklenen dizinler aşağıda verilmiştir:
 
-       * `Addr` @ no__t-1**adres aralıkları**: bazı Streets için, cadde başı ve sonundan alınmış adres noktaları vardır; Bu noktaların adres aralıkları olarak temsil edilir.
-       * `Geo` @ no__t-1**Geographies**: bir kapıdaki yönetim bölümünü temsil eden, yani ülke, eyalet, şehir olan bölgeler.
-       * `PAD` @ no__t-1**noktası adresi**: bir dizin içinde cadde adı ve sayı olan belirli bir adresin bulunabileceği bir haritada işaret eder; örneğin, Soquel Dr 2501. Adresler için kullanılabilen en yüksek doğruluk düzeyindedir.  
-       * `POI` @ no__t-1**ilgi çekici noktaları**: bir haritada dikkat çekici olan ve ilginç olabilecek bir haritada işaret ediyor.  [Arama adresini al](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) , POI döndürmez.  
-       * `Str` @ no__t-1**Streets**: haritadaki cadde temsili.
-       * `XStr` @ no__t-1**çapraz Streets/kesişmeler**: ardımları gösterimi; İki cadde kesiştiğinde yer koyar.
+       * `Addr` - **adres aralıkları**: bazı Streets için, cadde başı ve sonundan alınmış adres noktaları vardır; Bu noktaların adres aralıkları olarak temsil edilir.
+       * `Geo` - **coğrafi**bölgeler: bir haritanın yönetim bölümünü temsil eden, yani ülke, eyalet, şehir.
+       * `PAD` - **noktası adresi**: bir dizin içinde sokak adı ve numarası olan belirli bir adresin bulunabileceği bir haritada nokta, örneğin, Soquel Dr 2501. Adresler için kullanılabilen en yüksek doğruluk düzeyindedir.  
+       * `POI` - **Ilgi noktaları**: bir haritanın dikkat çekici olduğunu ve ilginç olabileceğini gösterir.  [Arama adresini al](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) , POI döndürmez.  
+       * `Str` - **Streets**: haritadaki Streets temsili.
+       * `XStr` - **çapraz Streets/kesişmeler: Juntler**temsili; İki cadde kesiştiğinde yer koyar.
 
 
        **Kullanım örnekleri**:
@@ -79,7 +79,7 @@ Azure haritalar coğrafi kodlama özelliklerini ülkeye/bölgeye göre daha fazl
 
 ### <a name="reverse-geocode-and-geography-entity-type-filter"></a>Coğrafi kod ve Coğrafya varlık türü filtresini ters çevir
 
-[Arama adresi ters API 'si](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)ile ters coğrafi kod araması gerçekleştirirken hizmetin, yönetim alanlarının çokgenler döndürme özelliği vardır. İstekte `entityType` parametresini sağlayarak, belirtilen Coğrafya varlık türleri için aramayı daraltabilirsiniz. Elde edilen yanıt, Coğrafya KIMLIĞI ve eşleşen varlık türü ile birlikte içerecektir. Birden fazla varlık sağlarsanız, uç nokta **kullanılabilir en küçük varlığı**döndürür. Döndürülen geometri KIMLIĞI, bu coğrafi bölge 'nin geometrisini [Al (çokgen) hizmeti](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon)aracılığıyla almak için kullanılabilir.
+[Arama adresi ters API 'si](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)ile ters coğrafi kod araması gerçekleştirirken hizmetin, yönetim alanlarının çokgenler döndürme özelliği vardır. İstekte parametre `entityType` sağlayarak, belirtilen Coğrafya varlık türleri için aramayı daraltabilirsiniz. Elde edilen yanıt, Coğrafya KIMLIĞI ve eşleşen varlık türü ile birlikte içerecektir. Birden fazla varlık sağlarsanız, uç nokta **kullanılabilir en küçük varlığı**döndürür. Döndürülen geometri KIMLIĞI, bu coğrafi bölge 'nin geometrisini [Al (çokgen) hizmeti](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon)aracılığıyla almak için kullanılabilir.
 
 **Örnek istek:**
 
@@ -128,7 +128,7 @@ https://atlas.microsoft.com/search/address/reverse/json?api-version=1.0&subscrip
 
 ### <a name="search-results-language"></a>Arama sonuçları dili
 
-@No__t-0 parametresi, hangi dilde arama sonuçlarının döndürülmeyeceğini ayarlamanıza olanak sağlar. İstek içinde dil ayarlanmamışsa, arama hizmeti otomatik olarak ülke/bölgedeki en yaygın dile varsayılan olarak ayarlanır. Ayrıca, belirtilen dildeki veriler kullanılabilir olmadığında, varsayılan dil kullanılır. Desteklenen dillerin bir listesi için bkz. Azure Maps hizmetleriyle ülkeye/bölgeye göre [desteklenen diller.](https://docs.microsoft.com/azure/azure-maps/supported-languages)
+`language` parametresi, hangi dilde arama sonuçlarının döndürülmeyeceğini ayarlamanıza olanak sağlar. İstek içinde dil ayarlanmamışsa, arama hizmeti otomatik olarak ülke/bölgedeki en yaygın dile varsayılan olarak ayarlanır. Ayrıca, belirtilen dildeki veriler kullanılabilir olmadığında, varsayılan dil kullanılır. Desteklenen dillerin bir listesi için bkz. Azure Maps hizmetleriyle ülkeye/bölgeye göre [desteklenen diller.](https://docs.microsoft.com/azure/azure-maps/supported-languages)
 
 
 ### <a name="predictive-mode-auto-suggest"></a>Tahmine dayalı mod (otomatik öneri)
@@ -311,7 +311,7 @@ url.QueryEscape(query)
 
 ## <a name="best-practices-for-poi-search"></a>POı araması için en iyi uygulamalar
 
-Ilgi noktaları (POı) arama, bir ada göre POı sonuçları talep etmenize olanak tanır. Örneğin, iş adına göre arama yapın. Varsayılan davranış tüm dünyayı aramak, büyük olasılıkla gereksiz sonuçları geri döndürmek ve/veya daha uzun arama süreleriyle sonuçlanabileceğinden, uygulamanızın kapsama ihtiyacı olan ülkeleri belirtmek için `countrySet` parametresini kullanmanızı önemle tavsiye ederiz.
+Ilgi noktaları (POı) arama, bir ada göre POı sonuçları talep etmenize olanak tanır. Örneğin, iş adına göre arama yapın. Varsayılan davranış tüm dünyayı aramak, büyük olasılıkla gereksiz sonuçları geri almak ve/veya daha uzun arama süreleriyle sonuçlandığı için, uygulamanızın kapsama ihtiyacı olan ülkeleri belirtmek üzere `countrySet` parametresini kullanmanızı önemle tavsiye ederiz.
 
 ### <a name="brand-search"></a>Marka araması
 
@@ -496,7 +496,7 @@ Belirli bir konumun etrafında yalnızca POı sonuçlarını almak için, [yakı
 
 ## <a name="understanding-the-responses"></a>Yanıtları anlama
 
-Seattle 'daki bir adres için Azure haritalar [Arama hizmeti](https://docs.microsoft.com/rest/api/maps/search) 'Ne bir adres arama isteği oluşturalım. Aşağıdaki istek URL 'sini dikkatle görüyorsanız, `countrySet` parametresini, " **abd** Birleşik Devletler adresini arayacak şekilde ayarlayacağız.
+Seattle 'daki bir adres için Azure haritalar [Arama hizmeti](https://docs.microsoft.com/rest/api/maps/search) 'Ne bir adres arama isteği oluşturalım. Aşağıdaki istek URL 'sini dikkatle görüyorsanız, `countrySet` parametresini, Amerika Birleşik Devletler, adresi aramak için **bizimle** ayarlayacağız.
 
 **Örnek sorgu:**
 

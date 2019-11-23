@@ -73,7 +73,7 @@ Bu makalede, _Office 365 ' de Azure Blob depolama alanına veri yükleme_Data Fa
 
     ![Yeni Office 365 bağlı hizmeti](./media/load-office-365-data/new-office-365-linked-service.png)
  
-7. Bağlı hizmet oluşturulduktan sonra veri kümesi ayarlarına dönersiniz. **Tablo**' nın yanındaki aşağı oku seçerek kullanılabilir Office 365 veri kümeleri listesini genişletin ve "BasicDataSet_v0" öğesini seçin. Message_v0 "açılan listesinden:
+7. Bağlı hizmet oluşturulduktan sonra veri kümesi ayarlarına dönersiniz. **Tablo**' nın yanındaki aşağı oku seçerek kullanılabilir Office 365 veri kümeleri listesini genişletin ve "BasicDataSet_v0 ' yi seçin. Message_v0 "açılan listeden:
 
     ![Yapılandırma Office 365 veri kümesi tablosu](./media/load-office-365-data/edit-dataset.png)
 
@@ -108,7 +108,7 @@ Bu makalede, _Office 365 ' de Azure Blob depolama alanına veri yükleme_Data Fa
 
 Ayrıca, sağ üst köşedeki kod ' a tıklayarak ardışık düzen ile ilişkili JSON kodunu da görebilirsiniz.
 
-## <a name="publish-the-pipeline"></a>İşlem hattını yayımlama
+## <a name="publish-the-pipeline"></a>Yayımlama kanalı
 
 Üstteki araç çubuğunda **Tümünü Yayımla**' yı seçin. Bu eylem, oluşturduğunuz varlıkları (veri kümeleri ve işlem hatları) Data Factory'de yayımlar.
 

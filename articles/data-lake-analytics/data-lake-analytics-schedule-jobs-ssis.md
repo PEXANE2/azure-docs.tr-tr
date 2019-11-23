@@ -46,7 +46,7 @@ Kolay bakım ve kod yönetimi için, yalnızca kısa U-SQL betiğini satır içi
 
 ![SSIS görevinde satır içi U-SQL betiğini Düzenle](./media/data-lake-analytics-schedule-jobs-ssis/edit-inline-usql-script-in-ssis.png)
 
-İlgili makale: [Parametreleri saklı yordamlara geçirme](#scenario-6-pass-parameters-to-u-sql-script)
+İlgili makale: [parametreleri saklı yordamlara geçirme](#scenario-6-pass-parameters-to-u-sql-script)
 
 ## <a name="scenario-2-use-u-sql-files-in-azure-data-lake-store"></a>Senaryo 2-Azure Data Lake Store içindeki U-SQL dosyalarını kullanma
 
@@ -77,11 +77,11 @@ SSIS paket tasarımı görünümünde, Foreach döngüsü kapsayıcısına bir *
 
 2. **Numaralandırıcı yapılandırma** grubu altındaki **klasörü** , indirilen U-SQL betiklerini içeren geçici klasöre ayarlayın.
 
-3. **Numaralandırıcı yapılandırması** altındaki **dosyaları** `*.usql` olarak ayarlayın; böylece döngü kapsayıcısı yalnızca `.usql` ile biten dosyaları yakalar.
+3. **Numaralandırıcı yapılandırması** altındaki **dosyaları** `*.usql` olarak ayarlayın; böylece döngü kapsayıcısı yalnızca `.usql`biten dosyaları yakalar.
 
     ![Foreach döngüsü kapsayıcısını Yapılandır](./media/data-lake-analytics-schedule-jobs-ssis/configure-foreach-loop-container-collection.png)
 
-4. **Değişken eşlemeleri** sayfasında, her bir U-SQL dosyası için dosya adını almak üzere Kullanıcı tanımlı bir değişken ekleyin. Dosya adını almak için **dizini** 0 olarak ayarlayın. Bu örnekte, `User::FileName` adlı bir değişken tanımlayın. Bu değişken, Azure Data Lake Analytics görevinde u-SQL betik dosyası bağlantısını dinamik olarak almak ve U-SQL iş adını ayarlamak için kullanılacaktır.
+4. **Değişken eşlemeleri** sayfasında, her bir U-SQL dosyası için dosya adını almak üzere Kullanıcı tanımlı bir değişken ekleyin. Dosya adını almak için **dizini** 0 olarak ayarlayın. Bu örnekte, `User::FileName`adlı bir değişken tanımlayın. Bu değişken, Azure Data Lake Analytics görevinde u-SQL betik dosyası bağlantısını dinamik olarak almak ve U-SQL iş adını ayarlamak için kullanılacaktır.
 
     ![Dosya adını almak için Foreach döngüsü kapsayıcısını yapılandırma](./media/data-lake-analytics-schedule-jobs-ssis/configure-foreach-loop-container-variable-mapping.png)
 
@@ -93,14 +93,14 @@ SSIS paket tasarımı görünümünde, Foreach döngüsü kapsayıcısına bir *
     
     Bu dosya bağlantısını oluşturmak için:
 
-   1. **@No__t-1Yeni bağlantı seçin...** FileConnection ayarında >.
+   1. **Yeni bağlantı\<seçin...** FileConnection ayarında >.
    2. **Kullanım türünü** **mevcut dosya**olarak ayarlayın ve **dosyayı** varolan herhangi bir dosyanın dosya yoluna ayarlayın.
 
        ![Foreach döngüsü kapsayıcısını Yapılandır](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
 
    3. **Bağlantı yöneticileri** görünümünde, hemen şimdi oluşturulan dosya bağlantısına sağ tıklayın ve **Özellikler**' i seçin.
 
-   4. **Özellikler** penceresinde, **ifadeler**' i genişletin ve **ConnectionString** öğesini foreach döngüsü kapsayıcısında tanımlanan değişkene ayarlayın, örneğin, `@[User::FileName]`.
+   4. **Özellikler** penceresinde, **ifadeler**' i genişletin ve **ConnectionString** ' in foreach döngüsü kapsayıcısında tanımlanan değişkene ayarlayın, örneğin `@[User::FileName]`.
 
        ![Foreach döngüsü kapsayıcısını Yapılandır](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-property-for-foreach-loop-container.png)
 
@@ -119,7 +119,7 @@ SSIS paket tasarımı görünümünde, Foreach döngüsü kapsayıcısına bir *
 
 Azure Feature Pack 'te Azure **BLOB Indirme görevini** kullanarak, Azure Blob depolamada U-SQL dosyalarını kullanabilirsiniz. Bu yaklaşım, bulutta betikleri kullanmanıza izin vermez.
 
-Adımlar [Senaryo 2 ile benzerdir: Azure Data Lake Store @ no__t-0 ' da U-SQL dosyaları kullanın. Azure Data Lake Store dosya sistemi görevini Azure Blob Indirme göreviyle değiştirin. [Azure Blob Indirme görevi hakkında daha fazla bilgi edinin](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task?view=sql-server-2017).
+Bu adımlar [Senaryo 2 ile benzerdir: Azure Data Lake Store Içindeki U-SQL dosyalarını kullanın](#scenario-2-use-u-sql-files-in-azure-data-lake-store). Azure Data Lake Store dosya sistemi görevini Azure Blob Indirme göreviyle değiştirin. [Azure Blob Indirme görevi hakkında daha fazla bilgi edinin](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task?view=sql-server-2017).
 
 Denetim akışı aşağıdaki gibidir.
 

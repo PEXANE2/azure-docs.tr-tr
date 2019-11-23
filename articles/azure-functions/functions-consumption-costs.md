@@ -1,6 +1,6 @@
 ---
-title: Estimating Consumption plan costs in Azure Functions
-description: Learn how to better estimate the costs that you may incur when running your function app in a Consumption plan in Azure.
+title: Azure Işlevlerinde tüketim planı maliyetlerini tahmin etme
+description: İşlev uygulamanızı Azure 'da bir tüketim planında çalıştırırken tabi olabilecek maliyetleri daha iyi tahmin etme hakkında bilgi edinin.
 ms.date: 9/20/2019
 ms.topic: conceptual
 ms.openlocfilehash: 9d81c99f3602e3d7ed5508884b0b313ef2f2fcaf
@@ -10,106 +10,106 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74230869"
 ---
-# <a name="estimating-consumption-plan-costs"></a>Estimating Consumption plan costs
+# <a name="estimating-consumption-plan-costs"></a>Tüketim planı maliyetlerini tahmin etme
 
-There are currently three types of hosting plans for an app that run in Azure Functions, with each plan having its own pricing model: 
+Azure Işlevleri 'nde çalışan bir uygulama için şu anda üç tür barındırma planı vardır: her plan kendi fiyatlandırma modeline sahiptir: 
 
-| Plan | Açıklama |
+| Planlama | Açıklama |
 | ---- | ----------- |
-| [**Consumption**](functions-scale.md#consumption-plan) | You're only charged for the time that your function app runs. This plan includes a [free grant][pricing page] on a per subscription basis.|
-| [**Premium**](functions-scale.md#premium-plan) | Provides you with the same features and scaling mechanism as the Consumption plan, but with enhanced performance and VNET access. Cost is based on your chosen pricing tier. To learn more, see [Azure Functions Premium plan](functions-premium-plan.md). |
-| [**Dedicated (App Service)** ](functions-scale.md#app-service-plan) <br/>(basic tier or higher) | When you need to run in dedicated VMs or in isolation, use custom images, or want to use your excess App Service plan capacity. Uses [regular App Service plan billing](https://azure.microsoft.com/pricing/details/app-service/). Cost is based on your chosen pricing tier.|
+| [**Mine**](functions-scale.md#consumption-plan) | Yalnızca işlev uygulamanızın çalıştırıldığı zaman ücretlendirilirsiniz. Bu plan, abonelik bazında [ücretsiz]bir[fiyatlandırma sayfası] içerir.|
+| [**Premium**](functions-scale.md#premium-plan) | Tüketim planıyla aynı özellikleri ve ölçeklendirme mekanizmasını, ancak gelişmiş performans ve VNET erişimi sağlar. Maliyet, seçtiğiniz fiyatlandırma katmanına göre belirlenir. Daha fazla bilgi için bkz. [Azure Işlevleri Premium planı](functions-premium-plan.md). |
+| [**Adanmış (App Service)** ](functions-scale.md#app-service-plan) <br/>(temel katman veya daha yüksek) | Adanmış VM 'lerde veya yalıtımda çalıştırmanız gerektiğinde, özel görüntüleri kullanın veya fazla App Service planı kapasitenizi kullanmak isteyebilirsiniz. [Düzenli App Service planı faturalandırmasını](https://azure.microsoft.com/pricing/details/app-service/)kullanır. Maliyet, seçtiğiniz fiyatlandırma katmanına göre belirlenir.|
 
-You chose the plan that best supports your function performance and cost requirements. To learn more, see [Azure Functions scale and hosting](functions-scale.md).
+İşlev performansınızı ve maliyet gereksinimlerinizi en iyi şekilde destekleyen planı seçtiniz. Daha fazla bilgi için bkz. [Azure işlevleri ölçeklendirme ve barındırma](functions-scale.md).
 
-This article deals only with the Consumption plan, since this plan results in variable costs. 
+Bu makale, değişken maliyetleriyle sonuçlandığından yalnızca tüketim planıyla ilgilidir. 
 
-Durable Functions can also run in a Consumption plan. To learn more about the cost considerations when using Durable Functions, see [Durable Functions billing](./durable/durable-functions-billing.md).
+Dayanıklı İşlevler, bir tüketim planında da çalıştırılabilir. Dayanıklı İşlevler kullanırken maliyet konuları hakkında daha fazla bilgi için, bkz. [dayanıklı işlevler faturalandırma](./durable/durable-functions-billing.md).
 
 ## <a name="consumption-plan-costs"></a>Tüketim planı maliyetleri
 
-The execution *cost* of a single function execution is measured in *GB-seconds*. Execution cost is calculated by combining its memory usage with its execution time. A function that runs for longer costs more, as does a function that consumes more memory. 
+Tek bir işlev yürütmenin yürütme *ücreti* *GB saniye*cinsinden ölçülür. Yürütme maliyeti, bellek kullanımını yürütme süresi ile birleştirerek hesaplanır. Daha fazla bellek tüketen bir işlev olduğu gibi daha uzun maliyetler için çalışan bir işlev. 
 
-Consider a case where the amount of memory used by the function stays constant. In this case, calculating the cost is simple multiplication. For example, say that your function consumed 0.5 GB for 3 seconds. Then the execution cost is `0.5GB * 3s = 1.5 GB-seconds`. 
+İşlev tarafından kullanılan bellek miktarının sabit kaldığından bir durum düşünün. Bu durumda, maliyeti hesaplamak basit çarpma olur. Örneğin, işlevinizin 3 saniye boyunca 0,5 GB tükettiğini varsayalım. Ardından yürütme maliyeti `0.5GB * 3s = 1.5 GB-seconds`. 
 
-Since memory usage changes over time, the calculation is essentially the integral of memory usage over time.  The system does this calculation by sampling the memory usage of the process (along with child processes) at regular intervals. As mentioned on the [pricing page], memory usage is rounded up to the nearest 128-MB bucket. When your process is using 160 MB, you're charged for 256 MB. The calculation takes into account concurrency, which is multiple concurrent function executions in the same process.
+Bellek kullanımı zaman içinde değiştiği için, hesaplama temelde bellek kullanımının zaman içindeki integrali olur.  Sistem, düzenli aralıklarla işlemin bellek kullanımını (alt işlemlerle birlikte) örnekleyerek bu hesaplamayı yapar. [Fiyatlandırma sayfasında]belirtildiği gibi, bellek kullanımı en yakın 128 MB 'lık sepete yuvarlanır. İşleminiz 160 MB kullanıyorsa, 256 MB üzerinden ücretlendirilirsiniz. Hesaplama, aynı işlemde birden çok eş zamanlı işlev yürütmesi olan eşzamanlılık hesabı ' na geçer.
 
 > [!NOTE]
-> While CPU usage isn't directly considered in execution cost, it can have an impact on the cost when it affects the execution time of the function.
+> CPU kullanımı doğrudan yürütme maliyetinde düşünülmediğinde, işlevin yürütme süresini etkilediğinde maliyeti etkileyebilir.
 
-## <a name="other-related-costs"></a>Other related costs
+## <a name="other-related-costs"></a>Diğer ilgili maliyetler
 
-When estimating the overall cost of running your functions in any plan, remember that the Functions runtime uses several other Azure services, which are each billed separately. When calculating pricing for function apps, any triggers and bindings you have that integrate with other Azure services require you to create and pay for those additional services. 
+İşlevlerinizi herhangi bir planda çalıştırmanın genel maliyetini tahmin edildiğinde, Işlevler çalışma zamanının her biri ayrı olarak faturalandırılan çeşitli Azure hizmetlerini kullandığını unutmayın. İşlev uygulamaları için fiyatlandırma hesaplanırken, diğer Azure hizmetleriyle tümleşen tüm tetikleyiciler ve bağlamalar, bu ek hizmetler için oluşturmanız ve ödemeniz gerekir. 
 
-For functions running in a Consumption plan, the total cost is the execution cost of your functions, plus the cost of bandwidth and additional services. 
+Tüketim planında çalışan işlevler için toplam maliyet, işlevlerinizin yürütme maliyetleridir ve bant genişliği ile ek hizmetler maliyetlidir. 
 
-When estimating the overall costs of your function app and related services, use the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/?service=functions). 
+İşlev uygulamanızın ve ilgili hizmetlerin genel maliyetlerinin tahmin edildiğinde [Azure Fiyatlandırma Hesaplayıcı](https://azure.microsoft.com/pricing/calculator/?service=functions)' ı kullanın. 
 
-| Related cost | Açıklama |
+| İlgili maliyet | Açıklama |
 | ------------ | ----------- |
-| **Depolama hesabı** | Each function app requires that you have an associated General Purpose [Azure Storage account](../storage/common/storage-introduction.md#types-of-storage-accounts), which is [billed separately](https://azure.microsoft.com/pricing/details/storage/). This account is used internally by the Functions runtime, but you can also use it for Storage triggers and bindings. If you don't have a storage account, one is created for you when the function app is created. To learn more, see [Storage account requirements](functions-scale.md#storage-account-requirements).|
-| **Application Insights** | Functions relies on [Application Insights](../azure-monitor/app/app-insights-overview.md) to provide a high-performance monitoring experience for your function apps. While not required, you should [enable Application Insights integration](functions-monitoring.md#enable-application-insights-integration). A free grant of telemetry data is included every month. To learn more, see [the Azure Monitor pricing page](https://azure.microsoft.com/pricing/details/monitor/). |
-| **Network bandwidth** | You don't pay for data transfer between Azure services in the same region. However, you can incur costs for outbound data transfers to another region or outside of Azure. To learn more, see [Bandwidth pricing details](https://azure.microsoft.com/pricing/details/bandwidth/). |
+| **Depolama hesabı** | Her işlev uygulaması, [ayrı olarak faturalandırılan](https://azure.microsoft.com/pricing/details/storage/)ilişkili bir genel amaçlı [Azure depolama hesabına](../storage/common/storage-introduction.md#types-of-storage-accounts)sahip olmanızı gerektirir. Bu hesap, Işlevler çalışma zamanı tarafından dahili olarak kullanılır, ancak bunu depolama Tetikleyicileri ve bağlamaları için de kullanabilirsiniz. Depolama hesabınız yoksa, işlev uygulaması oluşturulduğunda sizin için bir tane oluşturulur. Daha fazla bilgi için bkz. [depolama hesabı gereksinimleri](functions-scale.md#storage-account-requirements).|
+| **Application Insights** | İşlevler, işlev uygulamalarınız için yüksek performanslı bir izleme deneyimi sağlamak üzere [Application Insights](../azure-monitor/app/app-insights-overview.md) bağımlıdır. Gerekli olmasa da [Application Insights tümleştirmeyi etkinleştirmelisiniz](functions-monitoring.md#enable-application-insights-integration). Her ay Telemetri verilerinin ücretsiz olarak verilmesi dahildir. Daha fazla bilgi edinmek için bkz. [Azure Monitor fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/monitor/). |
+| **Ağ bant genişliği** | Aynı bölgedeki Azure hizmetleri arasında veri aktarımı için ödeme yapmazsınız. Ancak, giden veri aktarımları için başka bir bölgeye veya Azure dışında maliyetlerine tabi olabilirsiniz. Daha fazla bilgi için bkz. [bant genişliği fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/bandwidth/). |
 
-## <a name="behaviors-affecting-execution-time"></a>Behaviors affecting execution time
+## <a name="behaviors-affecting-execution-time"></a>Yürütme süresini etkileyen davranışlar
 
-The following behaviors of your functions can impact the execution time:
+İşlevlerinizin aşağıdaki davranışları yürütme süresini etkileyebilir:
 
-+ **Triggers and bindings**: The time taken to read input from and write output to your [function bindings](functions-triggers-bindings.md) is counted as execution time. For example, when your function uses an output binding to write a message to an Azure storage queue, your execution time includes the time taken to write the message to the queue, which is included in the calculation of the function cost. 
++ **Tetikleyiciler ve bağlamalar**: [işlev Bağlamalarınızın](functions-triggers-bindings.md) giriş ve yazma çıktısından alınması için geçen süre, yürütme süresi olarak sayılır. Örneğin, işleviniz bir Azure depolama kuyruğuna ileti yazmak için bir çıkış bağlaması kullandığında, yürütme süresi, ileti maliyeti hesaplamasına dahil edilen iletiyi sıraya yazmak için geçen süreyi içerir. 
 
-+ **Asynchronous execution**: The time that your function waits for the results of an async request (`await` in C#) is counted as execution time. The GB-second calculation is based on the start and end time of the function and the memory usage over that period. What is happening over that time in terms of CPU activity isn't factored into the calculation. You may be able to reduce costs during asynchronous operations by using [Durable Functions](durable/durable-functions-overview.md). You're not billed for time spent at awaits in orchestrator functions.
++ **Zaman uyumsuz yürütme**: işlevinizin zaman uyumsuz bir isteğin (`await` içindeki C#) sonuçları için beklediği süre yürütme süresi olarak sayılır. GB saniyelik hesaplama, işlevin başlangıç ve bitiş zamanına ve bu döneme ait bellek kullanımına göre belirlenir. CPU etkinliği açısından bu sürenin üzerinde neler olduğu, hesaplamaya hiçbir şekilde bölünmez. [Dayanıklı işlevler](durable/durable-functions-overview.md)kullanarak, zaman uyumsuz işlemler sırasında maliyetleri azaltabilirsiniz. Orchestrator işlevlerinde beklemeleri sırasında harcanan zaman için faturalandırılırsınız.
 
-## <a name="view-execution-data"></a>View execution data
+## <a name="view-execution-data"></a>Yürütme verilerini görüntüle
 
-In [your invoice](/azure/billing/billing-download-azure-invoice), you can view the cost-related data of **Total Executions - Functions** and **Execution Time - Functions**, along with the actual billed costs. However, this invoice data is a monthly aggregate for a past invoice period. 
+[Faturanızda](/azure/billing/billing-download-azure-invoice), **Toplam yürütme-Işlev** ve **yürütme süresi-işlevlerinin**maliyet ile ilgili verilerini, gerçek fatura maliyetleriyle birlikte görüntüleyebilirsiniz. Ancak, bu fatura verileri geçmiş bir fatura dönemi için aylık bir topladır. 
 
-To better understand the cost impact of your functions, you can use Azure Monitor to view cost-related metrics currently being generated by your function apps. You can use either [Azure Monitor metrics explorer](../azure-monitor/platform/metrics-getting-started.md) in the [Azure portalda] or REST APIs to get this data.
+İşlevlerinizin maliyet etkisini daha iyi anlamak için, Azure Izleyici 'yi kullanarak işlev uygulamalarınız tarafından şu anda oluşturulan maliyetlerle ilgili ölçümleri görüntüleyebilirsiniz. Bu verileri almak için [Azure Portal] veya REST API 'Lerinde [Azure izleyici ölçüm Gezgini](../azure-monitor/platform/metrics-getting-started.md) 'ni kullanabilirsiniz.
 
-### <a name="monitor-metrics-explorer"></a>Monitor metrics explorer
+### <a name="monitor-metrics-explorer"></a>Ölçüm Gezginini izleme
 
-Use [Azure Monitor metrics explorer](../azure-monitor/platform/metrics-getting-started.md) to view cost-related data for your Consumption plan function apps in a graphical format. 
+Tüketim planı işlev uygulamalarınızın maliyet ile ilgili verilerini grafik biçiminde görüntülemek için [Azure izleyici ölçümleri Gezginini](../azure-monitor/platform/metrics-getting-started.md) kullanın. 
 
-1. At the top of the [Azure portalda] in **Search services, resources, and docs**  search for `monitor` and select **Monitor** under **Services**.
+1. **Arama Hizmetleri, kaynaklar ve docs** 'daki [Azure portal] en üstünde `monitor` Için arama yapın ve **Hizmetler**altında **İzle** ' yi seçin.
 
-1. At the left, select **Metrics** > **Select a resource**, then use the settings below the image to choose your function app.
+1. Solda, **ölçüm** ' i seçin > **bir kaynak seçin**, sonra işlev uygulamanızı seçmek için görüntünün altındaki ayarları kullanın.
 
-    ![Select your function app resource](media/functions-consumption-costing/select-a-resource.png)
+    ![İşlev uygulaması kaynağını seçin](media/functions-consumption-costing/select-a-resource.png)
 
       
     |Ayar  |Önerilen değer  |Açıklama  |
     |---------|---------|---------|
-    | Abonelik    |  Aboneliğiniz  | The subscription with your function app.  |
-    | Kaynak grubu     | Your resource group  | The resource group that contains your function app.   |
-    | Kaynak türü     |  Uygulama Hizmetleri | Function apps are shown as App Services instances in Monitor. |
-    | Kaynak     |  Your function app  | The function app to monitor.        |
+    | Abonelik    |  Aboneliğiniz  | İşlev uygulamanıza sahip abonelik.  |
+    | Kaynak grubu     | Kaynak grubunuz  | İşlev uygulamanızı içeren kaynak grubu.   |
+    | Kaynak türü     |  Uygulama Hizmetleri | İşlev uygulamaları, Monitor 'daki App Services örnekleri olarak gösterilir. |
+    | Kaynak     |  İşlev uygulamanız  | İzlenecek işlev uygulaması.        |
 
-1. Select **Apply** to choose your function app as the resource to monitor.
+1. İşlev uygulamanızı izlenecek kaynak olarak seçmek için **Uygula** ' yı seçin.
 
-1. From **Metric**, choose **Function execution count** and **Sum** for **Aggregation**. This adds the sum of the execution counts during chosen period to the chart.
+1. **Ölçüm**'Den, **toplama**için **işlev yürütme sayısı** ve **toplamı** ' nı seçin. Bu, seçilen dönemdeki yürütme sayılarının toplamını grafiğe ekler.
 
-    ![Define a functions app metric to add to the chart](media/functions-consumption-costing/monitor-metrics-add-metric.png)
+    ![Grafiğe eklemek için bir işlevler uygulama ölçümü tanımlayın](media/functions-consumption-costing/monitor-metrics-add-metric.png)
 
-1. Select **Add metric** and repeat steps 2-4 to add **Function execution units** to the chart. 
+1. Grafiğe **işlev yürütme birimleri** eklemek Için **ölçüm Ekle** ve 2-4 adımlarını tekrarlayın ' i seçin. 
 
-The resulting chart contains the totals for both execution metrics in the chosen time range, which in this case is two hours.
+Elde edilen grafik, seçilen zaman aralığındaki her iki yürütme ölçümlerinin toplamını içerir. Bu durumda iki saattir.
 
-![Graph of function execution counts and execution units](media/functions-consumption-costing/monitor-metrics-execution-sum.png)
+![İşlev yürütme sayıları ve yürütme birimlerinin grafiği](media/functions-consumption-costing/monitor-metrics-execution-sum.png)
 
-As the number of execution units is so much greater than the execution count, the chart just shows execution units.
+Yürütme birimlerinin sayısı, yürütme sayısından çok daha fazla olduğu için grafik yalnızca yürütme birimlerini gösterir.
 
-This chart shows a total of 1.11 billion `Function Execution Units` consumed in a two-hour period, measured in MB-milliseconds. To convert to GB-seconds, divide by 1024000. In this example, the function app consumed `1110000000 / 1024000 = 1083.98` GB-seconds. You can take this value and multiply by the current price of execution time on the [Functions pricing page][pricing page], which gives you the cost of these two hours, assuming you've already used any free grants of execution time. 
+Bu grafik, iki saatlik bir dönemde tüketilen toplam 1.110.000.000 `Function Execution Units`, MB milisaniyelik cinsinden gösterir. GB saniyeye dönüştürmek için 1024000 ile bölün. Bu örnekte, işlev uygulaması GB-saniye `1110000000 / 1024000 = 1083.98` tüketildi. Bu değeri alabilir ve [işlevler fiyatlandırma sayfası][fiyatlandırma sayfasında]geçerli yürütme süresi fiyatına göre çarpıp, size bu iki saatin maliyetini sağlayan, size herhangi bir ücretsiz yürütme süresi verdiğini kabul eden bir ücret verir. 
 
 ### <a name="azure-cli"></a>Azure CLI
 
-The [Azure CLI](/cli/azure/) has commands for retrieving metrics. You can use the CLI from a local command environment or directly from the portal using [Azure Cloud Shell](../cloud-shell/overview.md). For example, the following [az monitor metrics list](/cli/azure/monitor/metrics#az-monitor-metrics-list) command returns hourly data over same time period used before.
+[Azure CLI](/cli/azure/) , ölçümleri almak için komutlar içerir. CLı 'yi yerel bir komut ortamından veya [Azure Cloud Shell](../cloud-shell/overview.md)kullanarak doğrudan portaldan kullanabilirsiniz. Örneğin, aşağıdaki [az Monitor ölçümleri List](/cli/azure/monitor/metrics#az-monitor-metrics-list) komutu, daha önce kullanılan aynı zaman dilimine göre saatlik verileri döndürür.
 
-Make sure to replace `<AZURE_SUBSCRIPTON_ID>` with your Azure subscription ID running the command.
+`<AZURE_SUBSCRIPTON_ID>`, komutu çalıştıran Azure abonelik KIMLIĞINIZ ile değiştirdiğinizden emin olun.
 
 ```azurecli-interactive
 az monitor metrics list --resource /subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/metrics-testing-consumption/providers/Microsoft.Web/sites/metrics-testing-consumption --metric FunctionExecutionUnits,FunctionExecutionCount --aggregation Total --interval PT1H --start-time 2019-09-11T21:46:00Z --end-time 2019-09-11T23:18:00Z
 ```
 
-This command returns a JSON payload that looks like the following example:
+Bu komut, aşağıdaki örnekte olduğu gibi görünen bir JSON yükü döndürür:
 
 ```json
 {
@@ -188,15 +188,15 @@ This command returns a JSON payload that looks like the following example:
   ]
 }
 ```
-This particular response shows that from `2019-09-11T21:46` to `2019-09-11T23:18`, during which the app consumed 1110000000 MB-milliseconds (1083.98 GB-seconds).
+Bu belirli yanıt, uygulamanın 1110000000 MB-milisaniye (1083,98 GB-saniye) tükettiği `2019-09-11T23:18``2019-09-11T21:46` gösterir.
 
-## <a name="determine-memory-usage"></a>Determine memory usage
+## <a name="determine-memory-usage"></a>Bellek kullanımını belirleme
 
-Function execution units are a combination of execution time and your memory usage, which makes it a difficult metric for understanding memory usage. Memory data isn't a metric currently available through Azure Monitor. However, if you want to optimize the memory usage of your app, can use the performance counter data collected by Application Insights.  
+İşlev yürütme birimleri, yürütme süresi ve bellek kullanımınızın bir birleşimidir ve bu da bellek kullanımını anlamak için zor bir ölçüm sağlar. Bellek verileri şu anda Azure Izleyici aracılığıyla kullanılabilen bir ölçüm değildir. Ancak, uygulamanızın bellek kullanımını iyileştirmek isterseniz, Application Insights tarafından toplanan performans sayacı verilerini kullanabilir.  
 
-If you haven't already done so, [enable Application Insights in your function app](functions-monitoring.md#enable-application-insights-integration). With this integration enabled, you can [query this telemetry data in the portal](functions-monitoring.md#query-telemetry-data).  
+Daha önce yapmadıysanız, [işlev uygulamanızda Application Insights etkinleştirin](functions-monitoring.md#enable-application-insights-integration). Bu tümleştirme etkinken, [portalda bu telemetri verilerini sorgulayabilirsiniz](functions-monitoring.md#query-telemetry-data).  
 
-Under **Monitoring**, select **Logs (Analytics)** , then copy the following telemetry query and paste it into the query window and select **Run**. This query returns the total memory usage at each sampled time.
+**İzleme**altında **Günlükler (Analiz)** öğesini seçin, ardından aşağıdaki telemetri sorgusunu kopyalayın ve sorgu penceresine yapıştırın ve **Çalıştır**' ı seçin. Bu sorgu, her örneklenmiş zamanda toplam bellek kullanımını döndürür.
 
 ```
 performanceCounters
@@ -204,20 +204,20 @@ performanceCounters
 | project timestamp, name, value
 ```
 
-The results look like the following example:
+Sonuçlar aşağıdaki örneğe benzer şekilde görünür:
 
-| timestamp \[UTC\]          | ad          | değer       |
+| zaman damgası \[UTC\]          | ad          | değer       |
 |----------------------------|---------------|-------------|
-| 9/12/2019, 1:05:14\.947 AM | Private Bytes | 209,932,288 |
-| 9/12/2019, 1:06:14\.994 AM | Private Bytes | 212,189,184 |
-| 9/12/2019, 1:06:30\.010 AM | Private Bytes | 231,714,816 |
-| 9/12/2019, 1:07:15\.040 AM | Private Bytes | 210,591,744 |
-| 9/12/2019, 1:12:16\.285 AM | Private Bytes | 216,285,184 |
-| 9/12/2019, 1:12:31\.376 AM | Private Bytes | 235,806,720 |
+| 9/12/2019, 1:05:14\.947 | Özel baytlar | 209.932.288 |
+| 9/12/2019, 1:06:14\.994 | Özel baytlar | 212.189.184 |
+| 9/12/2019, 1:06:30\.010 | Özel baytlar | 231.714.816 |
+| 9/12/2019, 1:07:15\.040 | Özel baytlar | 210.591.744 |
+| 9/12/2019, 1:12:16\.285 | Özel baytlar | 216.285.184 |
+| 9/12/2019, 1:12:31\.376 | Özel baytlar | 235.806.720 |
 
-## <a name="function-level-metrics"></a>Function-level metrics
+## <a name="function-level-metrics"></a>İşlev düzeyi ölçümleri
 
-Azure Monitor tracks metrics at the resource level, which for Functions is the function app. Application Insights integration emits metrics on a per-function basis. Here's an example analytics query to get the average duration of a function:
+Azure Izleyici, kaynak düzeyindeki ölçümleri izler, bu Işlevler işlev uygulamadır. Application Insights tümleştirme ölçümleri işlev başına temelinde yayar. Bir işlevin ortalama süresini almak için örnek bir analiz sorgusu aşağıda verilmiştir:
 
 ```
 customMetrics
@@ -235,7 +235,7 @@ customMetrics
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Learn more about Monitoring function apps](functions-monitoring.md)
+> [İşlev uygulamalarını Izleme hakkında daha fazla bilgi edinin](functions-monitoring.md)
 
-[pricing page]: https://azure.microsoft.com/pricing/details/functions/
-[Azure portalda]: https://portal.azure.com
+[Fiyatlandırma sayfasında]: https://azure.microsoft.com/pricing/details/functions/
+[Azure Portal]: https://portal.azure.com

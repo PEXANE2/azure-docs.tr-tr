@@ -321,12 +321,12 @@ Aşağıdaki SAP notları Azure 'da SAP ile ilgilidir.
 | Dekont numarası | Başlık |
 | --- | --- |
 | [1928533] |Azure 'da SAP uygulamaları: Desteklenen Ürünler ve Azure VM türleri |
-| [2015553] |Microsoft Azure SAP: Destek önkoşulları |
+| [2015553] |Microsoft Azure SAP: destek önkoşulları |
 | [1999351] |SAP için gelişmiş Azure izleme sorunlarını giderme |
 | [2178632] |Microsoft Azure üzerinde SAP için anahtar izleme ölçümleri |
 | [2191498] |Azure ile Linux üzerinde SAP: Gelişmiş izleme |
-| [2039619] |Oracle veritabanını kullanarak Microsoft Azure SAP uygulamaları: Desteklenen Ürünler ve sürümler |
-| [2243692] |Microsoft Azure Linux (IaaS) sanal makinesi: SAP lisans sorunları |
+| [2039619] |Oracle veritabanı 'nı kullanarak Microsoft Azure SAP uygulamaları: Desteklenen Ürünler ve sürümler |
+| [2243692] |Linux on Microsoft Azure (IaaS) VM: SAP lisans sorunları |
 | [2069760] |Oracle Linux 7. x SAP yüklemesi ve yükseltmesi |
 | [1597355] |Linux için takas boşluğu önerisi |
 | [2171857] |Linux 'ta Oracle Database 12c-dosya sistemi desteği |
@@ -374,10 +374,10 @@ En düşük yapılandırma aşağıdaki gibidir:
 
 | Bileşen | Disk | Önbelleğe Alma | Depolama havuzu |
 | --- | ---| --- | --- |
-| \oracle\<SID > \origlogaA & irrlogb | Premium | Yok. | Gerekli değil |
-| \oracle\<SID > \origlogaB & irrloga | Premium | Yok. | Gerekli değil |
+| \oracle\<SID > \origlogaA & mirrlogB | Premium | None | Gerekli değil |
+| \oracle\<SID > \origlogaB & mirrlogA | Premium | None | Gerekli değil |
 | \oracle\<SID > \sapdata1..exe. No | Premium | Salt okunur | Kullanılabilir |
-| \oracle\<SID > \oraarch | Standart | Yok. | Gerekli değil |
+| \oracle\<SID > \oraarch | Standart | None | Gerekli değil |
 | Oracle Home, saptrace,... | İşletim sistemi diski | | Gerekli değil |
 
 
@@ -387,13 +387,13 @@ Performans yapılandırması aşağıdaki gibidir:
 
 | Bileşen | Disk | Önbelleğe Alma | Depolama havuzu |
 | --- | ---| --- | --- |
-| \oracle\<SID > \origlogaA | Premium | Yok. | Kullanılabilir  |
-| \oracle\<SID > \origlogaB | Premium | Yok. | Kullanılabilir |
-| \oracle\<SID > \mirrlogab | Premium | Yok. | Kullanılabilir |
-| \oracle\<SID > \mirrlogba | Premium | Yok. | Kullanılabilir |
+| \oracle\<SID > \origlogaA | Premium | None | Kullanılabilir  |
+| \oracle\<SID > \origlogaB | Premium | None | Kullanılabilir |
+| \oracle\<SID > \mirrlogAB | Premium | None | Kullanılabilir |
+| \oracle\<SID > \mirrlogBA | Premium | None | Kullanılabilir |
 | \oracle\<SID > \sapdata1..exe. No | Premium | Salt okunur | Önerilen  |
-| \Oracle\sıd\sapdata (n + 1) * | Premium | Yok. | Kullanılabilir |
-| \oracle\<SID > \oraarch * | Premium | Yok. | Gerekli değil |
+| \Oracle\sıd\sapdata (n + 1) * | Premium | None | Kullanılabilir |
+| \oracle\<SID > \oraarch * | Premium | None | Gerekli değil |
 | Oracle Home, saptrace,... | İşletim sistemi diski | Gerekli değil |
 
 \* (n + 1): barındırma SISTEMI, GEÇICI ve GERI alma Tablespaces. Sistem ve geri alma Tablespaces 'ın g/ç deseninin, uygulama verilerini barındıran diğer tabloboşluklarından farklıdır. Önbelleğe alma işlemi, sistem performansı ve tablo alanlarını geri alma için en iyi seçenektir.
@@ -418,7 +418,7 @@ Oracle Data Guard, yüksek kullanılabilirlik ve olağanüstü durum kurtarma am
 
 Azure 'da Oracle veritabanları için olağanüstü durum kurtarma hakkında daha fazla bilgi için bkz. [Azure ortamında Oracle Database 12c veritabanı Için olağanüstü durum kurtarma](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-disaster-recovery).
 
-### <a name="accelerated-networking"></a>Hızlandırılmış ağ
+### <a name="accelerated-networking"></a>Hızlandırılmış ağ iletişimi
 Windows üzerinde Oracle dağıtımları için, [Azure hızlandırılmış ağ](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)bölümünde açıklandığı gibi hızlandırılmış ağ iletişimi önemle önerilir. Ayrıca, [SAP iş yükü Için Azure sanal MAKINELER DBMS dağıtımı ile Ilgili dikkat edilmesi](dbms_guide_general.md)gereken önerileri göz önünde bulundurun. 
 ### <a name="other"></a>Diğer
 [SAP iş yükü Için Azure sanal MAKINELERI DBMS dağıtımı](dbms_guide_general.md) , Azure kullanılabilirlik KÜMELERI ve SAP izleme dahil olmak üzere Oracle Database sahip VM dağıtımları ile ilgili diğer önemli kavramları açıklamaktadır.
@@ -464,13 +464,13 @@ En düşük yapılandırma:
 
 | Bileşen | Disk | Önbelleğe Alma | Şeridi oluşturma |
 | --- | ---| --- | --- |
-| /Oracle/\<SID >/origlogaA & irrlogb | Premium | Yok. | Gerekli değil |
-| /Oracle/\<SID >/origlogaB & irrloga | Premium | Yok. | Gerekli değil |
+| /Oracle/\<SID >/origlogaA & mirrlogB | Premium | None | Gerekli değil |
+| /Oracle/\<SID >/origlogaB & mirrlogA | Premium | None | Gerekli değil |
 | /Oracle/\<SID >/sapdata1..exe. No | Premium | Salt okunur | Kullanılabilir |
-| /Oracle/\<SID >/oraarch | Standart | Yok. | Gerekli değil |
+| /Oracle/\<SID >/oraarch | Standart | None | Gerekli değil |
 | Oracle Home, saptrace,... | İşletim sistemi diski | | Gerekli değil |
 
-Şeridi oluşturma RAID0 kullanarak LVM Stripe veya MDADDM
+\* RAID0 kullanarak LVM Stripe veya MDADDM
 
 Oracle 'ın çevrimiçi yineleme günlüklerinin barındırılmasına yönelik disk seçimi, ıOPS gereksinimlerine göre yapılmalıdır. Tüm sapdata1 depolamak mümkündür... birim, ıOPS ve aktarım hızı gereksinimleri karşılamadığı sürece, tek bir bağlı diskte n (tablospaces). 
 
@@ -478,18 +478,18 @@ Performans yapılandırması:
 
 | Bileşen | Disk | Önbelleğe Alma | Şeridi oluşturma |
 | --- | ---| --- | --- |
-| /Oracle/\<SID >/origlogaA | Premium | Yok. | Kullanılabilir  |
-| /Oracle/\<SID >/origlogaB | Premium | Yok. | Kullanılabilir |
-| /Oracle/\<SID >/mirrlogab | Premium | Yok. | Kullanılabilir |
-| /Oracle/\<SID >/mirrlogba | Premium | Yok. | Kullanılabilir |
+| /Oracle/\<SID >/origlogaA | Premium | None | Kullanılabilir  |
+| /Oracle/\<SID >/origlogaB | Premium | None | Kullanılabilir |
+| /Oracle/\<SID >/Irrlogab | Premium | None | Kullanılabilir |
+| /Oracle/\<SID >/Irrlogba | Premium | None | Kullanılabilir |
 | /Oracle/\<SID >/sapdata1..exe. No | Premium | Salt okunur | Önerilen  |
-| /Oracle/\<SID >/sapdata (n + 1) * | Premium | Yok. | Kullanılabilir |
-| /Oracle/\<SID >/oraarch * | Premium | Yok. | Gerekli değil |
+| /Oracle/\<SID >/sapdata (n + 1) * | Premium | None | Kullanılabilir |
+| /Oracle/\<SID >/oraarch * | Premium | None | Gerekli değil |
 | Oracle Home, saptrace,... | İşletim sistemi diski | Gerekli değil |
 
-Şeridi oluşturma RAID0 kullanarak LVM Stripe veya MDADDM
+\* RAID0 kullanarak LVM Stripe veya MDADDM
 
-\* (n + 1): barındırma SISTEMI, GEÇICI ve GERI alma Tablespaces: Sistem ve geri alma Tablespaces 'ın g/ç deseninin, uygulama verilerini barındıran diğer tabloboşluklarından farklıdır. Önbelleğe alma işlemi, sistem performansı ve tablo alanlarını geri alma için en iyi seçenektir.
+\* (n + 1): barındırma SISTEMI, GEÇICI ve GERI alma tabloboşluğu: sistem ve geri alma Tablespaces 'ın g/ç alanı, uygulama verilerini barındıran diğer tabloboşluklarından farklıdır. Önbelleğe alma işlemi, sistem performansı ve tablo alanlarını geri alma için en iyi seçenektir.
 
 \* oraarch: depolama havuzu, bir görünüm performans noktasından gerekli değildir.
 
@@ -512,7 +512,7 @@ Oracle Data Guard, yüksek kullanılabilirlik ve olağanüstü durum kurtarma am
 
 Azure 'da Oracle veritabanları için olağanüstü durum kurtarma yönleri, [bir Azure ortamında Oracle Database 12c veritabanı Için olağanüstü durum kurtarma](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-disaster-recovery)makalesinde sunulmaktadır.
 
-### <a name="accelerated-networking"></a>Hızlandırılmış ağ
+### <a name="accelerated-networking"></a>Hızlandırılmış ağ iletişimi
 Oracle Linux 'de Azure hızlandırılmış ağ desteği, Oracle Linux 7 güncelleştirme 5 (Oracle Linux 7,5) ile sunulmaktadır. En son Oracle Linux 7,5 sürümüne yükseltirsiniz, Oracle UEK çekirdeği yerine RedHat uyumlu çekirdeği (RHCK) kullanılarak geçici bir çözüm olabilir. 
 
 Oracle Linux içinde RHEL çekirdeğini kullanmak SAP Note [#1565179](https://launchpad.support.sap.com/#/notes/1565179)göre desteklenir. Azure hızlandırılmış ağ için en düşük RHCKL çekirdek sürümünün 3.10.0-862.13.1. EL7 olması gerekir. Oracle Linux ' de UEK çekirdeğini [Azure hızlandırılmış ağ](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)ile birlikte kullanıyorsanız, Oracle UEK çekirdek sürüm 5 ' i kullanmanız gerekir.

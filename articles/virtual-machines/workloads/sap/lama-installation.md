@@ -77,19 +77,19 @@ Azure Bağlayıcısı, SAP 'yi 3,0 SP05 olarak sevk edilir. SAP 'yi 3,0 için en
 1. Azure Active Directory dikey penceresini açın
 1. Uygulama kayıtları tıklayın
 1. Ekle 'ye tıklayın
-1. Bir ad girin, uygulama türü "Web uygulaması/API" yi seçin, bir oturum açma URL 'SI girin (örneğin, http: \//localhost) ve Oluştur ' a tıklayın.
-1. Oturum açma URL 'SI kullanılmıyor ve geçerli bir URL olabilir
+1. Bir ad girin, uygulama türü "Web uygulaması/API" yi seçin, bir oturum açma URL 'SI girin (örneğin, http:\//localhost) ve Oluştur ' a tıklayın.
+1. Oturum açma URL'si kullanılmaz ve geçerli bir URL olabilir
 1. Yeni uygulamayı seçin ve Ayarlar sekmesinde anahtarlar ' a tıklayın.
 1. Yeni anahtar için bir açıklama girin, "süresiz Expires" seçeneğini belirleyin ve Kaydet ' e tıklayın.
 1. Değeri yazın. Hizmet sorumlusu için parola olarak kullanılır
-1. Uygulama KIMLIĞINI yazın. Hizmet sorumlusunun Kullanıcı adı olarak kullanılır
+1. Uygulama Kimliği yazma Hizmet sorumlusunun Kullanıcı adı olarak kullanılır
 
-Hizmet sorumlusu, varsayılan olarak Azure kaynaklarınıza erişme iznine sahip değildir. Onlara erişim sağlamak için hizmet sorumlusu izinlerine sahip olmanız gerekir.
+Hizmet sorumlusu kullanarak Azure kaynaklarınızı varsayılan olarak erişim izni yok. Onlara erişim sağlamak için hizmet sorumlusu izinlerine sahip olmanız gerekir.
 
 1. Şuraya gidin: https://portal.azure.com
 1. Kaynak grupları dikey penceresini açın
 1. Kullanmak istediğiniz kaynak grubunu seçin
-1. Erişim denetimi (ıAM) öğesine tıklayın
+1. Erişim denetimi (IAM)'ye tıklayın.
 1. Rol ataması Ekle ' ye tıklayın
 1. Rol katılımcısı seçin
 1. Yukarıda oluşturduğunuz uygulamanın adını girin
@@ -101,7 +101,7 @@ SAP bir Web sitesini açın ve altyapıya gidin. Sekme bulut yöneticileri ' ne 
 * Etiket: bağlayıcı örneği için bir ad seçin
 * Kullanıcı adı: hizmet sorumlusu uygulama KIMLIĞI
 * Parola: hizmet sorumlusu anahtarı/parolası
-* URL: varsayılan @no__t tut-0
+* URL: varsayılan https://management.azure.com/ tut
 * İzleme aralığı (saniye): en az 300 olmalıdır
 * Abonelik KIMLIĞI: Azure abonelik KIMLIĞI
 * Azure Active Directory kiracı KIMLIĞI: Active Directory kiracının KIMLIĞI
@@ -123,7 +123,7 @@ SAP 'yi kullanarak yönetmek istediğiniz tüm sanal makineler için ayrı bir a
 > [!NOTE]
 > Mümkünse, sanal makineden disk ayırmak için uzun çalışma zamanlarının oluşmasına neden olabilecek tüm sanal makine uzantılarını kaldırın.
 
-Kullanıcı \<hanasıd > adm, \<sapsıd > adm ve grup sapsys 'in aynı KIMLIĞE ve GID 'ye sahip hedef makinede bulunduğundan emin olun veya LDAP kullanın. SAP NetWeaver (A) SCS 'yi çalıştırmak için kullanılması gereken sanal makinelerde NFS Sunucusunu etkinleştirin ve başlatın.
+Kullanıcı \<hanasıd > adm, \<sapsıd > adm ve grup sapsys 'nin aynı KIMLIĞE ve GID 'ye sahip hedef makinede bulunduğundan emin olun veya LDAP kullanın. SAP NetWeaver (A) SCS 'yi çalıştırmak için kullanılması gereken sanal makinelerde NFS Sunucusunu etkinleştirin ve başlatın.
 
 ### <a name="manual-deployment"></a>El ile dağıtım
 
@@ -218,9 +218,9 @@ Ayrıca, [Microsoft Indirme merkezi](https://www.microsoft.com/download) ' nden 
 
 * Sapsysgıd: sapsys grubunun Linux Grup KIMLIĞI. Windows için gerekli değildir.
 
-* _artifactsLocation: Bu şablon için gereken yapıtların bulunduğu temel URI. Şablon, eşlik eden betikler kullanılarak dağıtıldığında, abonelikte bir özel konum kullanılacaktır ve bu değer otomatik olarak oluşturulur. Şablonu yalnızca GitHub 'dan dağıtmayın.
+* _artifactsLocation: Bu şablon Için gereken yapıtların bulunduğu temel URI. Şablon, eşlik eden betikler kullanılarak dağıtıldığında, abonelikte bir özel konum kullanılacaktır ve bu değer otomatik olarak oluşturulur. Şablonu yalnızca GitHub 'dan dağıtmayın.
 
-* _artifactsLocationSasToken: _artifactsLocation öğesine erişmek için gereken sasToken. Şablon, eşlik eden betikler kullanılarak dağıtıldığında, otomatik olarak bir sasToken oluşturulur. Şablonu yalnızca GitHub 'dan dağıtmayın.
+* _artifactsLocationSasToken: _artifactsLocation erişmek için gereken sasToken. Şablon, eşlik eden betikler kullanılarak dağıtıldığında, otomatik olarak bir sasToken oluşturulur. Şablonu yalnızca GitHub 'dan dağıtmayın.
 
 ### <a name="sap-hana"></a>SAP HANA
 
@@ -246,8 +246,8 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h ah1-as
 
 SPM 'yi çalıştırın ve *ascs örnek ana bilgisayar adı*için *AH1-ascs* kullanın.
 
-![Linux @ no__t-1 Linux  
-Aşağıdaki profil parametresini/usr/SAP/hostctrl/exe/host_profile. adresinde bulunan SAP konak Aracısı profiline ekleyin Daha fazla bilgi için bkz. SAP Note [2628497].
+Linux][Logo_Linux] ![Linux  
+Aşağıdaki profile parametresini,/usr/SAP/hostctrl/exe/host_profile konumunda bulunan SAP konak Aracısı profiline ekleyin. Daha fazla bilgi için bkz. SAP Note [2628497].
 ```
 acosprep/nfs_paths=/home/ah1adm,/usr/sap/trans,/sapmnt/AH1,/usr/sap/AH1
 ```
@@ -258,7 +258,7 @@ acosprep/nfs_paths=/home/ah1adm,/usr/sap/trans,/sapmnt/AH1,/usr/sap/AH1
 > Bu işlevsellik daha sonra veya GA 'dir. Daha fazla bilgi için SAP Note [2815988] (yalnızca Preview müşterilerine görünür) bölümüne bakın.
 Bir SAP olayını bileşen BC-VCM-LVM-HYPERV ' de açın ve Azure NetApp Files önizlemesi için yönetim depolama bağdaştırıcısına katma isteği yapın
 
-ANF, Azure için NFS sağlar. SAP 'nin bu bağlamda, ABAP Merkezi Hizmetleri (ASCS) örneklerinin ve sonraki uygulama sunucuları yüklemesinin oluşturulmasını basitleştirir. Daha önce ASCS örneğinin de NFS sunucusu olarak davranması gerekiyordu ve acosprep/nfs_paths parametresi, SAP Hostagent 'ın host_profile 'e eklenmesi gerekiyordu.
+ANF, Azure için NFS sağlar. SAP 'nin bu bağlamda, ABAP Merkezi Hizmetleri (ASCS) örneklerinin ve sonraki uygulama sunucuları yüklemesinin oluşturulmasını basitleştirir. Daha önce ASCS örneğinin de NFS sunucusu olarak davranması gerekiyordu ve acosprep/nfs_paths parametresi SAP Hostagent host_profile eklenmelidir.
 
 #### <a name="anf-is-currently-available-in-these-regions"></a>ANF Şu anda şu bölgelerde kullanılabilir:
 
@@ -289,7 +289,7 @@ NetApp hesabında, kapasite havuzu her havuzun disk boyutunu ve türünü belirt
 
 ![SAP 'nin NetApp kapasite havuzunu oluşturma ](media/lama/sap-lama-capacitypool-list.png)
 
-NFS birimleri artık tanımlanabilir. Tek bir havuzdaki birden fazla sistem için birimler olacağı için, kendi kendine açıklayan bir adlandırma düzeni seçilmelidir. SID ekleme ilgili birimleri birlikte gruplamak için yardımcı olur. YOKS ve AS örneği için aşağıdaki takmalar gereklidir: */sapmnt/\<SıD @ no__t-2*, */usr/SAP/\<sid @ no__t-5*ve */Home/\<sid @ no__t-8adm*. İsteğe bağlı olarak, */usr/SAP/Trans* , en azından bir yatay 'ın tüm sistemleri tarafından kullanılan merkezi aktarım dizini için gereklidir.
+NFS birimleri artık tanımlanabilir. Tek bir havuzdaki birden fazla sistem için birimler olacağı için, kendi kendine açıklayan bir adlandırma düzeni seçilmelidir. SID ekleme ilgili birimleri birlikte gruplamak için yardımcı olur. YOKS ve AS örneği için aşağıdaki takmalar gereklidir: */sapmnt/\<sıd\>* , */usr/sap/\<SID\>* ve */Home/\<SID\>adm*. İsteğe bağlı olarak, */usr/SAP/Trans* , en azından bir yatay 'ın tüm sistemleri tarafından kullanılan merkezi aktarım dizini için gereklidir.
 
 > [!NOTE]
 > BETA aşamasında birimlerin adı, abonelik içinde benzersiz olmalıdır.
@@ -336,7 +336,7 @@ Başarılı yüklemeden sonra sistem, SAP 'nin içinde keşfedilmiş olmalıdır
 
 Bağlama noktaları, yoks ve AS örneği için şöyle görünmelidir:
 
-](media/lama/sap-lama-ascs.png)  ' de bağlama noktalarını (Bu bir örnektir). IP adresleri ve dışa aktarma yolu, daha önce kullanıldıklarından farklıdır)
+![, ](media/lama/sap-lama-ascs.png) Lama (bir örnektir. IP adresleri ve dışa aktarma yolu, daha önce kullanıldıklarından farklıdır)
 
 
 #### <a name="install-sap-hana"></a>SAP HANA yükleme
@@ -455,7 +455,7 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-di
 ### <a name="errors-and-warnings-during-a-system-copy"></a>Sistem kopyası sırasında hatalar ve uyarılar
 
 * Sistem sağlama adımı doğrulanırken bir hata oluştu
-  * Neden: com. sap. NW. lm. aci. Engine. Base. API. util. Exception. HAOperationException çağıran '/usr/SAP/hostctrl/exe/sapacext-a ShowHanaBackups-m HN1-f 50-h HN1-DB-o Level = 0 @ no__t-0durum = 5 @ no__t-1port = 35013 PF =/usr/SAP/hostctrl/exe/Host_ profil-R-T dev_lvminfo-u SISTEM-p kanca-r ' | /usr/SAP/hostctrl/exe/sapacext-a ShowHanaBackups-m HN1-f 50-h HN1-DB-o Level = 0 @ no__t-2 durum = 5 @ no__t-3port = 35013 PF =/usr/SAP/hostctrl/exe/host_profile-R-T dev_lvminfo-u SISTEM-p kanca-r
+  * Neden: com. sap. NW. lm. aci. Engine. Base. API. util. Exception. HAOperationException çağıran '/usr/SAP/hostctrl/exe/sapacext-a ShowHanaBackups-m HN1-f 50-h HN1-DB-o Level = 0\;durum = 5\;Port = 35013 PF =/usr/SAP/hostctrl/exe/host_profile-R-T dev_lvminfo-u SISTEM-p kanca-r ' | /usr/SAP/hostctrl/exe/sapacext-a ShowHanaBackups-m HN1-f 50-h HN1-DB-o Level = 0\;durum = 5\;bağlantı noktası = 35013 PF =/usr/SAP/hostctrl/exe/host_profile-R-T dev_lvminfo-u SISTEM-p kanca-r
   * Çözüm  
     Kaynak HANA sistemindeki tüm veritabanlarının yedeklemesini al
 
@@ -467,21 +467,21 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-di
 ### <a name="errors-and-warnings-during-a-system-clone"></a>Sistem kopyası sırasında hatalar ve uyarılar
 
 * Uygulama sunucusu ya da yoks adımındaki *zorlamalı yazmaç ve başlatma örneği aracısına* örnek Aracısı kaydettirilmeye çalışılırken hata oluştu
-  * Örnek Aracısı kaydettirilmeye çalışılırken hata oluştu. (RemoteException: ', ' \\as1-ascs \ sapmnt \ AS1 \ SYS \ profile \ AS1_D00_as1-di-0 ' profilinden örnek veriler yüklenemedi: ' \\AS1-ascs \ sapmnt \ AS1 \ SYS \ profile \ AS1_D00_as1-di-0 ' profiline erişilemiyor: böyle bir dosya veya dizin yok. ')
+  * Örnek Aracısı kaydettirilmeye çalışılırken hata oluştu. (RemoteException: ' '\\as1-ascs\sapmnt\AS1\SYS\profile\ AS1_D00_as1-dı-0 ' profilinden örnek veriler yüklenemedi: '\\as1-ascs\sapmnt\AS1\SYS\profile\ AS1_D00_as1-dı-0 ' profiline erişilemiyor: böyle bir dosya veya dizin yok. ')
   * Çözüm  
    ASCS/SCS 'deki sapmnt paylaşımının SAP_AS1_GlobalAdmin için tam erişime sahip olduğundan emin olun
 
 * Adım, *kopyalama Için başlangıç korumasını etkinleştirme* hatası
-  * ' @No__t-0as1-ascs \ sapmnt \ AS1 \ SYS \ profile \ AS1_D00_as1-di-0 ' adlı dosya açılamadı nedeni: böyle bir dosya veya dizin yok
+  * '\\as1-ascs\sapmnt\AS1\SYS\profile\ AS1_D00_as1-dı-0 ' dosyası açılamadı. nedeni: böyle bir dosya veya dizin yok
   * Çözüm  
     Uygulama sunucusunun bilgisayar hesabının profile yazma erişimi olması gerekir
 
 ### <a name="errors-and-warnings-during-create-system-replication"></a>Sistem çoğaltması oluşturma sırasında hatalar ve uyarılar
 
 * Sistem çoğaltması oluştur 'a tıklanmadaki özel durum
-  * Neden: com. sap. NW. lm. aci. Engine. Base. API. util. Exception. HAOperationException çağıran '/usr/SAP/hostctrl/exe/sapacext-a ShowHanaBackups-m HN1-f 50-h HN1-DB-o Level = 0 @ no__t-0durum = 5 @ no__t-1port = 35013 PF =/usr/SAP/hostctrl/exe/Host_ profil-R-T dev_lvminfo-u SISTEM-p kanca-r ' | /usr/SAP/hostctrl/exe/sapacext-a ShowHanaBackups-m HN1-f 50-h HN1-DB-o Level = 0 @ no__t-2 durum = 5 @ no__t-3port = 35013 PF =/usr/SAP/hostctrl/exe/host_profile-R-T dev_lvminfo-u SISTEM-p kanca-r
+  * Neden: com. sap. NW. lm. aci. Engine. Base. API. util. Exception. HAOperationException çağıran '/usr/SAP/hostctrl/exe/sapacext-a ShowHanaBackups-m HN1-f 50-h HN1-DB-o Level = 0\;durum = 5\;Port = 35013 PF =/usr/SAP/hostctrl/exe/host_profile-R-T dev_lvminfo-u SISTEM-p kanca-r ' | /usr/SAP/hostctrl/exe/sapacext-a ShowHanaBackups-m HN1-f 50-h HN1-DB-o Level = 0\;durum = 5\;bağlantı noktası = 35013 PF =/usr/SAP/hostctrl/exe/host_profile-R-T dev_lvminfo-u SISTEM-p kanca-r
   * Çözüm  
-    Sapacext 'ın `<hanasid` > adm olarak yürütülebileceğini test edin
+    Sapacext 'ın `<hanasid`> adm olarak yürütülebileceğini test edin
 
 * Depolama adımında tam kopya etkin olmadığında hata
   * Itoesgecopydata. storageVolumeCopyList: 1 ve Field Targetstoragessystemıd için bağlam öznitelik iletisi raporlanırken bir hata oluştu
@@ -503,7 +503,7 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-di
 ### <a name="errors-and-warnings-during-application-server-installation"></a>Uygulama sunucusu yüklemesi sırasında hatalar ve uyarılar
 
 * Sapınst adımını yürütme hatası: getProfileDir
-  * Hata: (adım tarafından bildirilen son hata: modül çağrısında ESAPinstException yakalandı: ' | adım doğrulayıcısı NW_DI | ind | ind | ind | ind | 0 | 0 | NW_GetSidFromProfiles | ind | ind | ind | INSID | 0 | NW_readProfileDir | ind | ind | ind | ind | readProfile | 0 | Getprofiledır ' bir hata bildirdi: düğüm \\ \ as1-ascs\sapmnt\AS1\SYS\profile yok. Bu sorunu çözmek için Sapınst 'yi etkileşimli modda başlatın
+  * Hata: (adım tarafından bildirilen son hata: modül çağrısında ESAPinstException yakalandı: ' | adım doğrulayıcısı NW_DI | ind | ind | ind | ind | 0 | 0 | NW_GetSidFromProfiles | ind | ind | ind | INSID | 0 | NW_readProfileDir | ind | ind | ind | ind | readProfile | 0 | getProfileDir ' bir hata bildirdi: node \\\as1-ascs\sapmnt\AS1\SYS\profile yok. Bu sorunu çözmek için Sapınst 'yi etkileşimli modda başlatın
   * Çözüm  
     SWPM 'nin profile erişimi olan bir kullanıcı ile çalıştığından emin olun. Bu Kullanıcı, uygulama sunucusu Yükleme Sihirbazı 'nda yapılandırılabilir
 
@@ -525,25 +525,25 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-di
     SQL Server için Microsoft ODBC sürücüsünün uygulama sunucusunu yüklemek istediğiniz sanal makinede yüklü olduğundan emin olun
 
 * Sapınst adımını yürütme hatası: copyScripts
-  * Adım tarafından bildirilen son hata: sistem çağrısı başarısız oldu. Ayrıntılar: parametre (\\ \ AS1-ascs/sapmnt/AS1/SYS/exe/UC/NTAMD64/strdbs) ile ' fopenU ' sistem çağrısını yürütmede hata 13 (0x0000000d) (Izin reddedildi). cmd, w), (\ bas/bas/749_REL/bc_749_REL/src/ins/SAPINST/Impl/src/) dosyasında satır (494) syslib/FileSystem/syxxcfstrm2. cpp), yığın izleme:  
+  * Adım tarafından bildirilen son hata: sistem çağrısı başarısız oldu. Ayrıntılar: dosyadaki (\\\ AS1-ascs/sapmnt/AS1/SYS/exe/UC/NTAMD64/strdbs. cmd, w), Line (494) (\ bas/bas/749_REL/bc_749_REL/src/ins/SAPINST/impl/src/syslib/filesystem/syxxcfstrm2.cpp) ile ' fopenU ' sistem çağrısını yürütme sırasında hata 13 (0x0000000d) (Izin reddedildi), yığın izleme:  
   CThrThread. cpp: 85: CThrThread:: threadFunction ()  
   Csiservıceset. cpp: 63: Csiservıceset:: executeService ()  
   CSiStepExecute. cpp: 913: CSiStepExecute:: Execute ()  
   EJSController. cpp: 179: EJSControllerImpl:: executeScript ()  
   Jsextenma. hpp: 1136: CallFunctionBase:: Call ()  
   ıaxxcfile. cpp: 183: ıastring Cıaosfileconnect:: callMemberFunction (ıastring const & Name, args_t const & args)  
-  ıaxxcfile. cpp: 1849: ıastring Cıaosfileconnect:: newFileStream (args_t const & _Args)  
+  ıaxxcfile. cpp: 1849: ıastring Cıaosfileconnect:: newFileStream (args_t const & _args)  
   ıaxxbdosya. cpp: 773: Cıaosfile:: newFileStream_impl (4)  
   syxxcfile. cpp: 233: Csyfileımpl:: openStream (ırivfile:: eFileOpenMode)  
   syxxcfstrı. cpp: 29: Csyfilestreamımpl:: Csyfilestreamımpl (CSyFileStream *, ıastring, ırivfile:: eFileOpenMode)  
   syxxcfstrd. cpp: 265: Csyfilestreamımpl:: Open ()  
-  syxxcfstrm2. cpp: 58: CSyFileStream2Impl:: CSyFileStream2Impl (const CSyPath & \\ \ AW1-ascs/sapmnt/AW1/SYS/exe/UC/NTAMD64/strdbs. cmd, 0x4)  
+  syxxcfstrm2. cpp: 58: CSyFileStream2Impl:: CSyFileStream2Impl (const CSyPath & \\\ AW1-ascs/sapmnt/AW1/SYS/exe/UC/NTAMD64/strdbs. cmd, 0x4)  
   syxxcfstrm2. cpp: 456: CSyFileStream2Impl:: Open ()
   * Çözüm  
     SWPM 'nin profile erişimi olan bir kullanıcı ile çalıştığından emin olun. Bu Kullanıcı, uygulama sunucusu Yükleme Sihirbazı 'nda yapılandırılabilir
 
 * Sapınst adımını yürütme hatası: Askşifreler
-  * Adım tarafından bildirilen son hata: sistem çağrısı başarısız oldu. Ayrıntılar: hata 5 (0x00000005) (erişim reddedildi.) ' NetValidatePasswordPolicy ' sistem çağrısının (...), dosyadaki (\ bas/bas/749_REL/bc_749_REL/src/ins/SAPINST/Impl/src/syslib/Account/synxcaccmg. cpp) (\ 359), yığın izleme:  
+  * Adım tarafından bildirilen son hata: sistem çağrısı başarısız oldu. Ayrıntılar: hata 5 (0x00000005) (erişim reddedildi.) dosyadaki parametre (...), satır (359) ile ' NetValidatePasswordPolicy ' sistem çağrısını yürütme (\ bas/bas/749_REL/bc_749_REL/src/ins/SAPINST/impl/src/syslib/account/synxcaccmg.cpp), yığın izleme:  
   CThrThread. cpp: 85: CThrThread:: threadFunction ()  
   Csiservıceset. cpp: 63: Csiservıceset:: executeService ()  
   CSiStepExecute. cpp: 913: CSiStepExecute:: Execute ()  
@@ -555,7 +555,7 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-di
   EJSController. cpp: 179: EJSControllerImpl:: executeScript ()  
   Jsextenma. hpp: 1136: CallFunctionBase:: Call ()  
   ıaxxcaccount. cpp: 107: ıastring Cıaosaccountconnect:: callMemberFunction (ıastring const & Name, args_t const & args)  
-  ıaxxcaccount. cpp: 1186: ıastring Cıaosaccountconnect:: validatePasswordPolicy (args_t const & _Args)  
+  ıaxxcaccount. cpp: 1186: ıastring Cıaosaccountconnect:: validatePasswordPolicy (args_t const & _args)  
   ıaxxbaccount. cpp: 430: Cıaosaccount:: validatePasswordPolicy_impl ()  
   synxcaccmg. cpp: 297: ısyaccountynt::P asswordValidationMessage Csyaccountmgtımpl:: validatePasswordPolicy (saponazure, * * * * *) const)
   * Çözüm  

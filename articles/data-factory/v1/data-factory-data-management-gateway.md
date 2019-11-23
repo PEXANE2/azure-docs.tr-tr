@@ -72,14 +72,14 @@ En üst düzey veri akışı ve veri ağ geçidi ile kopyalama adımlarının Ö
 * Veri deposu bir **Azure IaaS VM**'sinde bulutta olsa bile **ağ geçidini kullanmanız** gerekir.
 
 ## <a name="installation"></a>Yükleme
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 * Desteklenen **Işletim sistemi** sürümleri şunlardır; Windows 7, Windows 8/8.1, Windows 10, windows Server 2008 R2, windows Server 2012, windows Server 2012 R2. Bir etki alanı denetleyicisine veri yönetimi ağ geçidi yüklemesi şu anda desteklenmiyor.
 * .NET Framework 4.5.1 veya üzeri gereklidir. Windows 7 makinesine ağ geçidi yüklüyorsanız, .NET Framework 4,5 veya sonraki bir sürümü yükleyebilirsiniz. Ayrıntılar için [.NET Framework sistem gereksinimleri](https://msdn.microsoft.com/library/8z6watww.aspx) ' ne bakın.
 * Ağ Geçidi makinesi için önerilen **yapılandırma** en az 2 GHz, 4 çekirdek, 8 GB RAM ve 80 GB disk.
 * Ana makine hazırda beklemesi durumunda, ağ geçidi veri isteklerine yanıt vermez. Bu nedenle, ağ geçidini yüklemeden önce bilgisayarda uygun bir **güç planı** yapılandırın. Makine hazırda bekleme moduna yapılandırıldıysa, ağ geçidi yüklemesi bir ileti ister.
 * Veri yönetimi ağ geçidini başarılı bir şekilde yüklemek ve yapılandırmak için makinede yönetici olmanız gerekir. **Veri yönetimi ağ geçidi kullanıcıları** yerel Windows grubuna daha fazla kullanıcı ekleyebilirsiniz. Bu grubun üyeleri, ağ geçidini yapılandırmak için **veri yönetimi ağ geçidi Configuration Manager** aracını kullanabilir.
 
-Kopyalama etkinliği belirli bir sıklıkta gerçekleşirken, makinedeki kaynak kullanımı (CPU, bellek) de yoğun ve boşta zamanlarla aynı düzene uyar. Kaynak kullanımı Ayrıca, taşınmakta olan veri miktarına göre büyük ölçüde farklılık gösterir. Birden çok kopyalama işi devam ederken, yoğun saatlerde kaynak kullanımını görürsünüz.
+Kopyalama etkinliği belirli bir sıklıkta gerçekleşirken, makinedeki kaynak kullanımı (CPU, bellek) de yoğun ve boşta zamanlarla aynı düzene uyar. Kaynak Kullanımı Yoğun taşınan veri miktarı da bağlıdır. Birden çok kopyalama işi devam ederken, yoğun saatlerde kaynak kullanımını görürsünüz.
 
 ### <a name="installation-options"></a>Yükleme seçenekleri
 Veri yönetimi ağ geçidi aşağıdaki yollarla yüklenebilir:
@@ -98,7 +98,7 @@ Veri yönetimi ağ geçidi aşağıdaki yollarla yüklenebilir:
 4. **Hoş geldiniz** sayfasında bir **dil** seçin, **İleri**' ye tıklayın.
 5. Son Kullanıcı Lisans sözleşmesini **kabul edin** ve **İleri**' ye tıklayın.
 6. Ağ geçidini yüklemek için **klasör** ' i seçin ve **İleri**' ye tıklayın.
-7. **Yüklemeye hazırlanma** sayfasında, **yükler**' e tıklayın.
+7. Üzerinde **yüklenmeye hazır** sayfasında **yükleme**.
 8. Yüklemeyi tamamlamaya **son** ' a tıklayın.
 9. Azure portal anahtarı alın. Adım adım yönergeler için sonraki bölüme bakın.
 10. Makinenizde çalışan **veri yönetimi ağ geçidi Configuration Manager** **ağ geçidini kaydet** sayfasında, aşağıdaki adımları uygulayın:
@@ -145,7 +145,7 @@ Göz önünde bulundurmanız gereken iki güvenlik duvarı vardır: kuruluşun m
 | --- | --- | --- |
 | *.servicebus.windows.net |443 |Veri taşıma hizmeti arka ucu ile iletişim için kullanılır |
 | *. core.windows.net |443 |Azure Blob kullanılarak hazırlanan kopya için kullanılır (yapılandırıldıysa)|
-| *. frontend.clouddatahub.net |443 |Veri taşıma hizmeti arka ucu ile iletişim için kullanılır |
+| *.frontend.clouddatahub.net |443 |Veri taşıma hizmeti arka ucu ile iletişim için kullanılır |
 | *.servicebus.windows.net |9350-9354, 5671 |Kopyalama Sihirbazı tarafından kullanılan TCP üzerinden isteğe bağlı Service Bus geçişi |
 
 Windows güvenlik duvarı düzeyinde, bu giden bağlantı noktaları normalde etkindir. Aksi takdirde, etki alanlarını ve bağlantı noktalarını ağ geçidi makinesinde uygun şekilde yapılandırabilirsiniz.
@@ -381,8 +381,8 @@ Aşağıdaki tabloda **ağ geçidi düğümünün**olası durumları verilmişti
 
 Durum  | Açıklamalar/senaryolar
 :------- | :------------------
-Çevrimiçi | Data Factory hizmetine bağlı düğüm.
-Offline | Düğüm çevrimdışı.
+Online | Data Factory hizmetine bağlı düğüm.
+Çevrimdışı | Düğüm çevrimdışı.
 Yükseltmenin | Düğüm otomatik olarak güncelleştiriliyor.
 Sınırlı | Bağlantı sorunu nedeniyle. HTTP bağlantı noktası 8050 sorunu, Service Bus bağlantı sorunu veya kimlik bilgisi eşitleme sorunu olabilir.
 Olmadan | Düğüm, diğer çoğunluk düğümlerin yapılandırmasından farklı bir yapılandırmadır.<br/><br/> Düğüm, diğer düğümlere bağlanamıyorsa devre dışı olabilir.
@@ -392,8 +392,8 @@ Aşağıdaki tabloda, **mantıksal bir ağ geçidinin**olası durumları verilmi
 Durum | Yorumlar
 :----- | :-------
 Kayıt gerekiyor | Henüz bu mantıksal ağ geçidine kayıtlı düğüm yok
-Çevrimiçi | Ağ Geçidi düğümleri çevrimiçi
-Offline | Çevrimiçi durumda düğüm yok.
+Online | Ağ Geçidi düğümleri çevrimiçi
+Çevrimdışı | Çevrimiçi durumda düğüm yok.
 Sınırlı | Bu ağ geçidinde düğümlerin hepsi sağlıklı durumda değil. Bu durum, bir düğümün kapatılmış olabileceğini belirten bir uyarıdır! <br/><br/>Dağıtıcı/çalışan düğümündeki kimlik bilgisi eşitleme sorunundan kaynaklanıyor olabilir.
 
 ## <a name="scale-up-gateway"></a>Ağ geçidini büyütme

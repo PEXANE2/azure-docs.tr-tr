@@ -23,17 +23,17 @@ Azure Cosmos DB Graph Engine, [Apache TinkerPop](https://tinkerpop.apache.org/do
 
 ## <a name="unsupported-features"></a>Desteklenmeyen özellikler
 
-* ***[Gremlin Bytecode](http://tinkerpop.apache.org/docs/current/tutorials/gremlin-language-variants/)*** graf dolaşma işlemlerine yönelik programlama dilinden bağımsız bir belirtimdir. Cosmos DB Graph henüz desteklemiyor. @No__t-0 kullanın ve çapraz geçişi metin dizesi olarak geçirin.
+* ***[Gremlin Bytecode](http://tinkerpop.apache.org/docs/current/tutorials/gremlin-language-variants/)*** graf dolaşma işlemlerine yönelik programlama dilinden bağımsız bir belirtimdir. Cosmos DB Graph henüz desteklemiyor. ```GremlinClient.SubmitAsync()``` kullanın ve çapraz geçişi metin dizesi olarak geçirin.
 
-* ***```property(set, 'xyz', 1)```*** kümesi kardinalitesi bugün desteklenmez. Bunun yerine ```property(list, 'xyz', 1)``` kullanın.
+* ***```property(set, 'xyz', 1)```*** kümesi kardinalitesi bugün desteklenmiyor. Bunun yerine ```property(list, 'xyz', 1)``` kullanın.
 
 * ***```match()```*** , bildirime dayalı model eşleştirmeyi kullanarak grafiklerin sorgulanmasına olanak tanır. Bu özellik kullanılamıyor.
 
 * Köşelerin veya kenarlardaki ***Özellikler olarak nesneler*** desteklenmez. Özellikler yalnızca temel türler veya diziler olabilir.
 
-* @No__t-1 ***dizi özelliklerine göre sıralama*** desteklenmez. Yalnızca temel türlere göre sıralama desteklenir.
+* ***Dizi özelliklerine göre sıralama*** desteklenmez ```.order().by(<array property>)```. Yalnızca temel türlere göre sıralama desteklenir.
 
-* ***Ilkel olmayan JSON türleri*** desteklenmez. @No__t-0, ```number``` veya ```true``` @ no__t-3 @ no__t-4 türlerini kullanın. ```null``` değerleri desteklenmez. 
+* ***Ilkel olmayan JSON türleri*** desteklenmez. ```string```, ```number```veya ```true```/```false``` türlerini kullanın. ```null``` değerleri desteklenmez. 
 
 * ***GraphSONv3*** seri hale getirici bugün kullanılamıyor.
 

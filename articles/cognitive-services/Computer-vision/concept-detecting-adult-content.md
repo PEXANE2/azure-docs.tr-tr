@@ -35,7 +35,7 @@ Görüntü İşleme, geliştiricilerin bu görüntülerin yazılımda görüntü
 
 ## <a name="use-the-api"></a>API’yi kullanma
 
-[Görüntü analizi](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 'siyle yetişkinlere yönelik içeriği algılayabilirsiniz. @No__t-0 değerini **Visualfeatures** sorgu parametresine EKLEDIĞINIZDE, API, JSON yanıtında @ no__t-2 @ no__t-3, `isRacyContent` ve `isGoryContent` @ no__t-6Üç Boole özelliği döndürür. Bu yöntem aynı zamanda, karşılık gelen her kategori için sıfır ile bir arasındaki güven puanlarını temsil eden @ no__t-0 @ no__t-1, `racyScore` ve `goreScore` @ no__t-4özelliklerine karşılık gelen özellikleri döndürür.
+[Görüntü analizi](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 'siyle yetişkinlere yönelik içeriği algılayabilirsiniz. `Adult` değerini **Visualfeatures** sorgu parametresine EKLEDIĞINIZDE, API, JSON yanıtında `isAdultContent`, `isRacyContent`ve `isGoryContent`&mdash;üç Boole&mdash;özelliği döndürür. Yöntemi aynı zamanda, ilgili&mdash;`adultScore`, `racyScore`ve `goreScore`&mdash;, her ilgili kategori için sıfır ile bir arasındaki güven puanlarını temsil eder.
 
 - [Hızlı başlangıç: bir görüntüyü çözümleme (.NET SDK)](./quickstarts-sdk/csharp-analyze-sdk.md)
 - [Hızlı başlangıç: bir görüntüyü çözümleme (REST API)](./quickstarts/csharp-analyze.md)

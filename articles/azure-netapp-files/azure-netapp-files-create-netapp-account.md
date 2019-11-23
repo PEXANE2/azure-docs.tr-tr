@@ -48,7 +48,7 @@ Ayrıca, NetApp kaynak sağlayıcısını kullanmak için aboneliğinizi kaydetm
      Mevcut abonelikleriniz arasından bir abonelik seçin.
    * **Kaynak grubu**   
      Mevcut Kaynak Grubunu kullanın ya da yeni bir tane oluşturun.
-   * **Location**  
+   * **Konum**  
      Hesabın ve alt kaynaklarının içinde yer almasını istediğiniz bölgeyi seçin.  
 
      ![Yeni NetApp hesabı](../media/azure-netapp-files/azure-netapp-files-new-netapp-account.png)

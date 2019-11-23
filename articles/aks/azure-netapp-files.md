@@ -24,7 +24,7 @@ Bu makalede, mevcut bir AKS kümeniz olduğunu varsaymaktadır. AKS kümesine ih
 > [!IMPORTANT]
 > AKS kümeniz de [Azure NetApp Files destekleyen bir bölgede][anf-regions]olmalıdır.
 
-Ayrıca Azure CLı sürüm 2.0.59 veya üzeri yüklü ve yapılandırılmış olmalıdır. Sürümü `az --version` bulmak için ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
+Ayrıca Azure CLı sürüm 2.0.59 veya üzeri yüklü ve yapılandırılmış olmalıdır. Sürümü bulmak için `az --version` çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
 
 ### <a name="limitations"></a>Sınırlamalar
 
@@ -57,7 +57,7 @@ $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeR
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-[Az netappfiles hesap Create][az-netappfiles-account-create]kullanarak aks kümeniz ile aynı bölgede, **düğüm** kaynak grubunda bir Azure NetApp Files hesabı oluşturun. Aşağıdaki örnek *MC_myResourceGroup_myAKSCluster_eastus* kaynak grubunda ve *eastus* bölgesinde *myaccount1* adlı bir hesap oluşturur:
+[Az netappfiles hesap Create][az-netappfiles-account-create]kullanarak aks kümeniz ile aynı bölgede, **düğüm** kaynak grubunda bir Azure NetApp Files hesabı oluşturun. Aşağıdaki örnek, *MC_myResourceGroup_myAKSCluster_eastus* kaynak grubunda ve *eastus* bölgesinde *myaccount1* adlı bir hesap oluşturur:
 
 ```azure-cli
 az netappfiles account create \
@@ -143,7 +143,7 @@ $ az netappfiles volume show --resource-group $RESOURCE_GROUP --account-name $AN
 }
 ```
 
-@No__t oluşturun-bir PersistentVolume tanımlayarak 0. @No__t-0 ' i *Creationtoken* ve `server` ' den önceki komuttan *IPAddress* ile değiştirin. Örneğin:
+Bir PersistentVolume tanımlayan `pv-nfs.yaml` oluşturun. `path` *Creationtoken* ile değiştirin ve önceki komuttan *IPAddress* ile `server`. Örneğin:
 
 ```yaml
 ---
@@ -175,7 +175,7 @@ kubectl describe pv pv-nfs
 
 ## <a name="create-the-persistentvolumeclaim"></a>PersistentVolumeClaim oluşturma
 
-@No__t oluşturun-bir PersistentVolume tanımlayarak 0. Örneğin:
+Bir PersistentVolume tanımlayan `pvc-nfs.yaml` oluşturun. Örneğin:
 
 ```yaml
 apiVersion: v1
@@ -205,7 +205,7 @@ kubectl describe pvc pvc-nfs
 
 ## <a name="mount-with-a-pod"></a>Pod ile bağlama
 
-PersistentVolumeClaim kullanan bir pod tanımlayan bir @no__t oluşturun-0. Örneğin:
+PersistentVolumeClaim kullanan bir pod tanımlayan `nginx-nfs.yaml` oluşturun. Örneğin:
 
 ```yaml
 kind: Pod
@@ -241,7 +241,7 @@ kubectl apply -f nginx-nfs.yaml
 kubectl describe pod nginx-nfs
 ```
 
-[Kubectl exec][kubectl-exec] kullanarak Pod 'a bağlanıp daha sonra birimin bağlanıp bağlanmayacağını denetlemek için `df -h` ' i kullanarak hacminin Pod 'a bağlandığından emin olun.
+[Kubectl exec][kubectl-exec] kullanarak Pod 'a bağlanıp daha `df -h` sonra birimin bağlanıp bağlanmayacağını denetlemek için, biriminizin Pod 'a bağlandığından emin olun.
 
 ```console
 $ kubectl exec -it nginx-nfs -- bash

@@ -37,7 +37,7 @@ Azure VM görüntü Oluşturucu (Azure görüntü Oluşturucu), bir Windows veya
 Azure görüntü Oluşturucu hizmeti bu bölgelerde önizleme için kullanılabilir olacak. Görüntüler, bu bölgelerin dışına dağıtılabilir.
 - Doğu ABD
 - Doğu ABD 2
-- Orta Batı ABD
+- Batı Orta ABD
 - Batı ABD
 - Batı ABD 2
 
@@ -58,7 +58,7 @@ AıB, için bir kaynak olarak RHEL ISO 'yu destekleyecektir:
 
 RHEL 7,6 ISOs desteklenmez, ancak test ediliyor.
 
-## <a name="how-it-works"></a>Nasıl çalışır
+## <a name="how-it-works"></a>Nasıl çalışır?
 
 
 ![Azure Image Builder kavramsal çizimi](./media/virtual-machines-image-builder-overview/image-builder.png)
@@ -72,9 +72,9 @@ Azure görüntü Oluşturucu, bir Azure Kaynak sağlayıcısı tarafından eriş
 ![Azure Image Builder işleminin kavramsal çizimi](./media/virtual-machines-image-builder-overview/image-builder-process.png)
 
 1. Görüntü şablonunu bir. JSON dosyası olarak oluşturun. Bu. JSON dosyası, görüntü kaynağı, özelleştirmeler ve dağıtım hakkındaki bilgileri içerir. [Azure Image Builder GitHub deposunda](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts)birden çok örnek vardır.
-1. Bu hizmeti hizmetine gönderirseniz, belirttiğiniz kaynak grubunda bir görüntü şablonu yapıtı oluşturulur. Arka planda, görüntü Oluşturucu kaynak görüntüyü veya ISO ve komut dosyalarını gerektiği şekilde indirir. Bunlar, aboneliğinizde otomatik olarak oluşturulan ayrı bir kaynak grubunda depolanır: IT_ @ no__t-0DestinationResourceGroup > _ @ no__t-1TemplateName >. 
-1. Görüntü şablonu oluşturulduktan sonra görüntüyü oluşturabilirsiniz. Arka plan resmi tasarımcısında, IT_ @ no__t-0DestinationResourceGroup > _ @ no__t-1TemplateName > kaynak grubunda bir VM (D1v2), ağ, genel IP ve depolama oluşturmak için şablon ve kaynak dosyalarını kullanır.
-1. Görüntü oluşturma işleminin bir parçası olarak, görüntü Oluşturucu görüntüyü şablona göre dağıtır ve ardından işlem için oluşturulan IT_ @ no__t-0DestinationResourceGroup > _ @ no__t-1TemplateName > kaynak grubundaki ek kaynakları siler.
+1. Bu hizmeti hizmetine gönderirseniz, belirttiğiniz kaynak grubunda bir görüntü şablonu yapıtı oluşturulur. Arka planda, görüntü Oluşturucu kaynak görüntüyü veya ISO ve komut dosyalarını gerektiği şekilde indirir. Bunlar, aboneliğinizde otomatik olarak oluşturulan ayrı bir kaynak grubunda depolanır: IT_\<DestinationResourceGroup > _\<TemplateName >. 
+1. Görüntü şablonu oluşturulduktan sonra görüntüyü oluşturabilirsiniz. Arka plan resmi tasarımcısında, IT_\<DestinationResourceGroup > _\<TemplateName > kaynak grubundaki bir VM (D1v2), ağ, genel IP ve depolama oluşturmak için şablon ve kaynak dosyalarını kullanır.
+1. Görüntü oluşturma işleminin bir parçası olarak, görüntü Oluşturucu görüntüyü şablona göre dağıtır ve ardından işlem için oluşturulan IT_\<DestinationResourceGroup > _\<TemplateName > kaynak grubundaki ek kaynakları siler.
 
 
 ## <a name="permissions"></a>İzinler
@@ -98,7 +98,7 @@ Hizmet hesabı bulunmazsa, rol atamasını eklediğiniz aboneliğin kaynak sağl
 ## <a name="costs"></a>Maliyetler
 Azure Image Builder ile görüntü oluştururken, derlerken ve depolarken bazı işlem, ağ ve depolama maliyetlerine tabi olursunuz. Bu maliyetler, el ile özel görüntüler oluşturma bölümünde tahakkuk eden maliyetlere benzer. Kaynaklar için Azure ücretlerinizi ücretlendirilecektir. 
 
-Görüntü oluşturma işlemi sırasında, dosyalar `IT_<DestinationResourceGroup>_<TemplateName>` kaynak grubunda indirilir ve depolanır ve bu, küçük bir depolama maliyetlerine neden olur. Bunları tutmak istemiyorsanız, görüntü oluşturulduktan sonra **görüntü şablonunu** silin.
+Görüntü oluşturma işlemi sırasında, dosyalar `IT_<DestinationResourceGroup>_<TemplateName>` kaynak grubunda indirilir ve depolanır ve bu işlem küçük bir depolama maliyetlerine neden olur. Bunları tutmak istemiyorsanız, görüntü oluşturulduktan sonra **görüntü şablonunu** silin.
  
 Image Builder, VM için gereken bir D1v2 VM boyutu, depolama alanı ve ağ kullanarak bir VM oluşturur. Bu kaynaklar, derleme işleminin süresi boyunca son verilecek ve görüntü Oluşturucu görüntüyü oluşturmayı tamamladığında silinir. 
  

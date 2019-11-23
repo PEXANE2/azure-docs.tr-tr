@@ -112,7 +112,7 @@ Snapshot betiğinin başarıyla çalıştığından emin olmak için, Perl 'nin 
 
 HANA büyük örneklerle depolama anlık görüntülerini ayarlamak için aşağıdaki adımları izleyin.
 1. Perl 'nin HANA büyük örnekler sunucusunda Linux işletim sisteminde yüklü olduğundan emin olun.
-1. _Mac HMAC-SHA1_satırını eklemek için/etc/ssh/SSH @ no__t-0config öğesini değiştirin.
+1. /Etc/ssh/SSH\_config dosyasını değiştirerek _Mac HMAC-SHA1_satırını ekleyin.
 1. Varsa, çalıştırdığınız her bir SAP HANA örneği için ana düğümde SAP HANA bir yedekleme Kullanıcı hesabı oluşturun.
 1. SAP HANA HDB istemcisini tüm SAP HANA Büyük Örnekleri sunucularına yükler.
 1. Her bölgenin ilk SAP HANA Büyük Örnekleri sunucusunda, anlık görüntü oluşturmayı denetleyen temeldeki depolama altyapısına erişmek için ortak bir anahtar oluşturun.
@@ -131,7 +131,7 @@ Azure 'da SAP HANA yüklü Linux işletim sistemi (büyük örnekler), yedekleme
 
 SAP HANA yüklerken SAP HANA HDB istemcisini HANA büyük örnek birimlerine yüklemek sizin sorumluluğunuzdadır.
 
-### <a name="step-2-change-the-etcsshssh_config"></a>2\. Adım:/etc/ssh/SSH @ no__t-0config öğesini değiştirme
+### <a name="step-2-change-the-etcsshssh_config"></a>2\. Adım:/etc/ssh/SSH\_config 'i değiştirme
 
 Bu adım, [Azure 'daki SAP HANA Için Microsoft Snapshot araçları](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)'nda "depolama Ile iletişimi etkinleştir" bölümünde açıklanmaktadır.
 
@@ -154,7 +154,7 @@ Bir kullanıcı hesabı ayarlamak ve kullanmak için [GitHub](https://github.com
 
 ### <a name="step-5-authorize-the-sap-hana-user-account"></a>5\. Adım: SAP HANA Kullanıcı hesabını yetkilendirme
 
-Bu adımda, betiklerin çalışma zamanında parola göndermesi gerekmeyen SAP HANA Kullanıcı hesabını yetkilendirirsiniz. @No__t-0 SAP HANA komutu bir SAP HANA Kullanıcı anahtarı oluşturulmasına izin vermez. Anahtar bir veya daha fazla SAP HANA düğümünde depolanır. Kullanıcı anahtarı, komut dosyası işlemi içinden parolaları yönetmek zorunda kalmadan kullanıcının SAP HANA erişmesini sağlar. Betik işleme Bu makalenin ilerleyen kısımlarında ele alınmıştır.
+Bu adımda, betiklerin çalışma zamanında parola göndermesi gerekmeyen SAP HANA Kullanıcı hesabını yetkilendirirsiniz. SAP HANA komut `hdbuserstore` SAP HANA Kullanıcı anahtarı oluşturulmasına izin vermez. Anahtar bir veya daha fazla SAP HANA düğümünde depolanır. Kullanıcı anahtarı, komut dosyası işlemi içinden parolaları yönetmek zorunda kalmadan kullanıcının SAP HANA erişmesini sağlar. Betik işleme Bu makalenin ilerleyen kısımlarında ele alınmıştır.
 
 >[!IMPORTANT]
 >Bu yapılandırma komutlarını, anlık görüntü komutlarının çalıştırıldığı Kullanıcı bağlamı ile çalıştırın. Aksi takdirde, anlık görüntü komutları düzgün çalışmaz.
@@ -178,13 +178,13 @@ Anlık görüntü araç kümesinin yapılandırması, [Azure 'daki SAP HANA Içi
 
 #### <a name="test-connectivity-with-sap-hana"></a>SAP HANA ile bağlantıyı test etme
 
-Tüm yapılandırma verilerini *Hanabackupcustomerdetails. txt* dosyasına geçirdikten sonra, yapılandırmaların Hana örnek verileri için doğru olup olmadığını denetleyin. SAP HANA ölçeği büyütme veya genişleme yapılandırmasından bağımsız olan `testHANAConnection` betiğini kullanın.
+Tüm yapılandırma verilerini *Hanabackupcustomerdetails. txt* dosyasına geçirdikten sonra, yapılandırmaların Hana örnek verileri için doğru olup olmadığını denetleyin. SAP HANA ölçeği büyütme veya genişleme yapılandırmasından bağımsız olan betik `testHANAConnection`kullanın.
 
 Daha fazla bilgi için bkz. [Azure 'da SAP HANA Için Microsoft Snapshot araçları](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)içindeki "SAP HANA-testHANAConnection Ile bağlantıyı denetleme".
 
 #### <a name="test-storage-connectivity"></a>Test depolama bağlantısı
 
-Sonraki test adımı, *Hanabackupcustomerdetails. txt* yapılandırma dosyasına yerleştirdiğiniz verilere bağlı olarak depolama bağlantısını denetedebilirdir. Ardından bir test anlık görüntüsü çalıştırın. @No__t-0 komutunu çalıştırmadan önce, bu testi çalıştırmanız gerekir. Bu test için komut dizisi için bkz. [Azure üzerinde SAP HANA Için Microsoft Snapshot araçları](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)'nda "Storage-testStorageSnapshotConnection Ile bağlantıyı denetleme" ".
+Sonraki test adımı, *Hanabackupcustomerdetails. txt* yapılandırma dosyasına yerleştirdiğiniz verilere bağlı olarak depolama bağlantısını denetedebilirdir. Ardından bir test anlık görüntüsü çalıştırın. `azure_hana_backup` komutunu çalıştırmadan önce, bu testi çalıştırmanız gerekir. Bu test için komut dizisi için bkz. [Azure üzerinde SAP HANA Için Microsoft Snapshot araçları](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)'nda "Storage-testStorageSnapshotConnection Ile bağlantıyı denetleme" ".
 
 Depolama sanal makine arabirimlerinde başarılı bir oturum açma işleminden sonra, betik 2. aşama ile devam eder ve bir test anlık görüntüsü oluşturur. Çıktı, SAP HANA üç düğümlü bir genişleme yapılandırması için burada gösterilir.
 
@@ -195,9 +195,9 @@ Test anlık görüntüsü komut dosyasıyla başarıyla çalışırsa, gerçek d
 
 Hazırlama adımları bittiğinde, gerçek depolama anlık görüntülerini yapılandırmaya ve zamanlamaya başlayabilirsiniz. Zamanlanan betik, SAP HANA ölçeği artırma ve genişleme yapılandırmalarına göre çalışır. Yedekleme betiğini düzenli ve düzenli olarak yürütmek için cron yardımcı programını kullanarak betiği zamanlayın. 
 
-Tam komut sözdizimi ve işlevselliği için bkz. [Azure 'da SAP HANA Için Microsoft Snapshot araçları](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)'nda "Snapshot Backup-Azure_hana_backup" gerçekleştirme. 
+Tam komut sözdizimi ve işlevselliği için bkz. [Azure 'da SAP HANA Için Microsoft Snapshot araçları](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)'nda "anlık görüntü yedeklemesi gerçekleştirme-azure_hana_backup". 
 
-@No__t-0 betiği çalıştırıldığında, aşağıdaki üç aşamada depolama anlık görüntüsünü oluşturur:
+Betik `azure_hana_backup` çalıştığında, aşağıdaki üç aşamada depolama anlık görüntüsünü oluşturur:
 
 1. SAP HANA anlık görüntüsünü çalıştırır.
 1. Bir depolama anlık görüntüsü çalıştırır.
@@ -286,7 +286,7 @@ Veritabanı hiç yedeklenmediyse, son adım yedekleme kataloğunda olması gerek
 
 ### <a name="monitor-the-number-and-size-of-snapshots-on-the-disk-volume"></a>Disk birimindeki anlık görüntülerin sayısını ve boyutunu izleyin
 
-Belirli bir depolama biriminde, anlık görüntü sayısını ve bu anlık görüntülerin depolama tüketimini izleyebilirsiniz. @No__t-0 komutu, anlık görüntü dizinini veya dosyalarını göstermez. Linux işletim sistemi komutu `du`, aynı birimlerde depolandığından, bu depolama anlık görüntüleri hakkındaki ayrıntıları gösterir. Aşağıdaki seçeneklerle komutunu kullanın:
+Belirli bir depolama biriminde, anlık görüntü sayısını ve bu anlık görüntülerin depolama tüketimini izleyebilirsiniz. `ls` komutu Snapshot dizinini veya dosyalarını göstermez. Linux işletim sistemi komutu `du`, aynı birimlerde depolandığından, bu depolama anlık görüntüleri hakkındaki ayrıntıları gösterir. Aşağıdaki seçeneklerle komutunu kullanın:
 
 - `du –sh .snapshot`: Bu seçenek, anlık görüntü dizini içindeki tüm anlık görüntülerin toplam sayısını sağlar.
 - `du –sh --max-depth=1`: Bu seçenek, **. Snapshot** klasörüne kaydedilen tüm anlık görüntüleri ve her anlık görüntünün boyutunu listeler.
@@ -298,7 +298,7 @@ Alınan ve depolanan anlık görüntülerin birimlerdeki tüm depolamayı tüket
 >Önyükleme LUN ' nin anlık görüntüleri, önceki komutlarla birlikte görünmez.
 
 ### <a name="get-details-of-snapshots"></a>Anlık görüntülerin ayrıntılarını al
-Anlık görüntüler hakkında daha fazla bilgi edinmek için `azure_hana_snapshot_details` betiğini kullanın. Olağanüstü durum kurtarma konumunda etkin bir sunucu varsa, bu betiği herhangi bir konumda çalıştırabilirsiniz. Betiği, anlık görüntüler içeren her bir birime göre ayrılmış aşağıdaki çıktıyı sağlar: 
+Anlık görüntüler hakkında daha fazla bilgi edinmek için `azure_hana_snapshot_details`betiği kullanın. Olağanüstü durum kurtarma konumunda etkin bir sunucu varsa, bu betiği herhangi bir konumda çalıştırabilirsiniz. Betiği, anlık görüntüler içeren her bir birime göre ayrılmış aşağıdaki çıktıyı sağlar: 
    * Bir birimdeki toplam anlık görüntülerin boyutu
    * Bu birimdeki her anlık görüntüde aşağıdaki Ayrıntılar: 
       - Anlık görüntü adı 
@@ -307,7 +307,7 @@ Anlık görüntüler hakkında daha fazla bilgi edinmek için `azure_hana_snapsh
       - Anlık görüntünün sıklığı
       - Uygunsa, bu anlık görüntüyle ilişkili HANA yedekleme KIMLIĞI
 
-Komut ve çıktıların sözdizimi için bkz. [Azure 'da SAP HANA Için Microsoft Snapshot araçları](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)'Nda "List Snapshots-azure_hana_snapshot_details". 
+Komut ve çıktıların sözdizimi için bkz. [Azure 'da SAP HANA Için Microsoft Snapshot araçları](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)'nda "anlık görüntüleri listele-azure_hana_snapshot_details". 
 
 
 
@@ -330,13 +330,13 @@ Betiği bu ayarla çalıştırırsanız, yeni depolama anlık görüntüsünü i
  >[!NOTE]
  > Bu betik, yalnızca bir saatten daha eski anlık görüntüler varsa, anlık görüntü sayısını azaltır. Betik, bir saatten daha eski olan anlık görüntüleri silmez. Bu kısıtlamalar, sunulan isteğe bağlı olağanüstü durum kurtarma işleviyle ilgilidir.
 
-Bir anlık görüntü kümesini artık, {1} **yedekleme ön eki** ile korumak istemiyorsanız, komut dosyasını saklama numarası olarak **0** ile çalıştırın. Bu etiketle eşleşen tüm anlık görüntüler daha sonra kaldırılır. Tüm anlık görüntülerin kaldırılması, HANA büyük örnek olağanüstü durum kurtarma işlevinin yeteneklerini etkileyebilir.
+Bir anlık görüntü kümesini artık, **Yedekleme ön eki ile korumak istemiyorsanız** , komut dosyasını saklama numarası olarak **0** ile çalıştırın. Bu etiketle eşleşen tüm anlık görüntüler daha sonra kaldırılır. Tüm anlık görüntülerin kaldırılması, HANA büyük örnek olağanüstü durum kurtarma işlevinin yeteneklerini etkileyebilir.
 
-Belirli anlık görüntüleri silmek için ikinci bir seçenek, `azure_hana_snapshot_delete` betiğini kullanmaktır. Bu betik, HANA Studio 'da bulunan ya da anlık görüntü adının kendisi aracılığıyla HANA yedekleme KIMLIĞI kullanılarak bir anlık görüntüyü veya anlık görüntü kümesini silmek için tasarlanmıştır. Şu anda yedekleme KIMLIĞI yalnızca **Hana** anlık görüntü türü için oluşturulan anlık görüntülere bağlıdır. Tür **günlüklerinin** anlık görüntü yedeklemeleri ve **önyüklemesi** SAP HANA bir anlık görüntü gerçekleştirmez, bu nedenle bu anlık görüntüler için hiçbir yedekleme kimliği bulunamadı. Anlık görüntü adı girilirse, girilen anlık görüntü adıyla eşleşen farklı birimlerdeki tüm anlık görüntüleri arar. 
+Belirli anlık görüntüleri silmek için ikinci bir seçenek, `azure_hana_snapshot_delete`betiği kullanmaktır. Bu betik, HANA Studio 'da bulunan ya da anlık görüntü adının kendisi aracılığıyla HANA yedekleme KIMLIĞI kullanılarak bir anlık görüntüyü veya anlık görüntü kümesini silmek için tasarlanmıştır. Şu anda yedekleme KIMLIĞI yalnızca **Hana** anlık görüntü türü için oluşturulan anlık görüntülere bağlıdır. Tür **günlüklerinin** anlık görüntü yedeklemeleri ve **önyüklemesi** SAP HANA bir anlık görüntü gerçekleştirmez, bu nedenle bu anlık görüntüler için hiçbir yedekleme kimliği bulunamadı. Anlık görüntü adı girilirse, girilen anlık görüntü adıyla eşleşen farklı birimlerdeki tüm anlık görüntüleri arar. 
 
 <!-- hana, logs and boot are no spelling errors as Acrolinx indicates, but terms of parameter values -->
 
-Betiği hakkında daha fazla bilgi için bkz. [Azure 'da SAP HANA Için Microsoft Snapshot araçları](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)'nda "anlık görüntü-azure_hana_snapshot_delete silme".
+Betiği hakkında daha fazla bilgi için bkz. [Azure 'da SAP HANA Için Microsoft Snapshot araçları](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)'nda "anlık görüntü silme-azure_hana_snapshot_delete".
 
 Betiği Kullanıcı **kökü**olarak çalıştırın.
 

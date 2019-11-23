@@ -143,13 +143,13 @@ Starting development server at http://127.0.0.1:8000/
 Quit the server with CONTROL-C.
 ```
 
-Tarayıcıda `http://localhost:8000` ' a gidin. @No__t-0 iletisini görmeniz gerekir. 
+Bir tarayıcıda `http://localhost:8000` gidin. İleti `No polls are available.`görmeniz gerekir. 
 
-@No__t-0 ' a gidin ve son adımda oluşturduğunuz yönetici kullanıcısını kullanarak oturum açın. **Sorular** ' ın yanındaki **Ekle** ' yi seçin ve bazı seçeneklerle bir yoklama sorusu oluşturun.
+`http://localhost:8000/admin` gidin ve son adımda oluşturduğunuz yönetici kullanıcısını kullanarak oturum açın. **Sorular** ' ın yanındaki **Ekle** ' yi seçin ve bazı seçeneklerle bir yoklama sorusu oluşturun.
 
 ![Uygulama hizmetlerinde yerel olarak Python Docgo uygulaması çalıştırma](./media/tutorial-python-postgresql-app/run-python-django-app-locally.png)
 
-@No__t-0 ' a yeniden gidin ve görünen yoklama sorusunu görüntüleyin.
+`http://localhost:8000` tekrar gidin ve görünen yoklama sorusunu görüntüleyin.
 
 Docgo örnek uygulaması, Kullanıcı verilerini veritabanında depolar. Bir anket sorusu eklerken başarılı olursanız, uygulamanız yerel PostgreSQL veritabanına veri yazıyor.
 
@@ -169,13 +169,13 @@ Bu adımda, Azure’da bir SQL Veritabanı oluşturursunuz. Uygulamanız Azure�
 
 Cloud Shell'de [`az postgres server create`](/cli/azure/postgres/server?view=azure-cli-latest#az-postgres-server-create) komutuyla bir PostgreSQL sunucusu oluşturun.
 
-Aşağıdaki örnek komutta *\<postgresql-name >* öğesini benzersiz bir sunucu adıyla değiştirin ve *\<admin-username >* ve *\<admin-Password >* öğesini istenen kullanıcı kimlik bilgileriyle değiştirin. Kullanıcı kimlik bilgileri, veritabanı yöneticisi hesabı için geçerli olacaktır. Sunucu adı, PostgreSQL uç noktasının bir parçası olan `https://<postgresql-name>.postgres.database.azure.com` olarak kullanıldığından, adın Azure’daki tüm sunucularda benzersiz olması gerekir.
+Aşağıdaki örnek komutta, *\<PostgreSQL-name >* öğesini benzersiz bir sunucu adıyla değiştirin ve *\<admin-username >* ve *\<Admin-Password >* öğesini istenen kullanıcı kimlik bilgileriyle değiştirin. Kullanıcı kimlik bilgileri, veritabanı yöneticisi hesabı için geçerli olacaktır. Sunucu adı, PostgreSQL uç noktasının bir parçası olan `https://<postgresql-name>.postgres.database.azure.com` olarak kullanıldığından, adın Azure’daki tüm sunucularda benzersiz olması gerekir.
 
 ```azurecli-interactive
 az postgres server create --resource-group myResourceGroup --name <postgresql-name> --location "West Europe" --admin-user <admin-username> --admin-password <admin-password> --sku-name B_Gen4_1
 ```
 
-PostgreSQL sunucusu için Azure Veritabanı oluşturulduğunda Azure CLI, aşağıdaki örneğe benzer bilgiler gösterir:
+PostgreSQL için Azure Veritabanı sunucusu oluşturulduğunda Azure CLI, aşağıdaki örneğe benzer bilgiler gösterir:
 
 ```json
 {
@@ -197,7 +197,7 @@ PostgreSQL sunucusu için Azure Veritabanı oluşturulduğunda Azure CLI, aşağ
 ```
 
 > [!NOTE]
-> @No__t-0admin-username > ve \<admin-Password > daha sonra hatırlayın. Postgre sunucusu ve veritabanlarında oturum açmak için bunlara ihtiyacınız vardır.
+> Daha sonra için admin-username > ve \<Admin-Password > \<unutmayın. Postgre sunucusu ve veritabanlarında oturum açmak için bunlara ihtiyacınız vardır.
 
 ### <a name="create-firewall-rules-for-the-postgresql-server"></a>PostgreSQL sunucusu için güvenlik duvarı kuralları oluşturma
 
@@ -210,7 +210,7 @@ az postgres server firewall-rule create --resource-group myResourceGroup --serve
 > [!NOTE]
 > Bu ayar, Azure ağ içindeki tüm IP’lerden ağ bağlantılarına izin verir. Üretim kullanımı için, [yalnızca uygulamanızın kullandığı giden IP adreslerini kullanarak](../overview-inbound-outbound-ips.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips) en kısıtlayıcı güvenlik duvarı kurallarını yapılandırmayı deneyin.
 
-Cloud Shell, *\<-IP adresi >* [yerel IPv4 IP adresinizle](https://www.whatsmyip.org/)değiştirerek yerel bilgisayarınızdan erişime izin vermek için komutu yeniden çalıştırın.
+Cloud Shell, *IP adresi >\<* [yerel IPv4 IP adresinizle](https://www.whatsmyip.org/)değiştirerek yerel bilgisayarınızdan erişime izin vermek için komutu yeniden çalıştırın.
 
 ```azurecli-interactive
 az postgres server firewall-rule create --resource-group myResourceGroup --server-name <postgresql-name> --start-ip-address=<your-ip-address> --end-ip-address=<your-ip-address> --name AllowLocalClient
@@ -272,15 +272,15 @@ Yönetici Kullanıcı oluşturulduktan sonra Docgo sunucusunu çalıştırın.
 python manage.py runserver
 ```
 
-@No__t-0 ' a yeniden gidin. @No__t-0 iletisini tekrar görmeniz gerekir. 
+Yeniden `http://localhost:8000` gidin. İletiyi yeniden `No polls are available.` görmeniz gerekir. 
 
-@No__t-0 ' a gidin ve oluşturduğunuz yönetici kullanıcısını kullanarak oturum açın ve daha önce olduğu gibi bir yoklama sorusu oluşturun.
+`http://localhost:8000/admin` gidin ve oluşturduğunuz yönetici kullanıcısını kullanarak oturum açın ve daha önce olduğu gibi bir yoklama sorusu oluşturun.
 
 ![Uygulama hizmetlerinde yerel olarak Python Docgo uygulaması çalıştırma](./media/tutorial-python-postgresql-app/run-python-django-app-locally.png)
 
-@No__t-0 ' a yeniden gidin ve görünen yoklama sorusunu görüntüleyin. Uygulamanız artık Azure 'da veritabanına veri yazıyor.
+`http://localhost:8000` tekrar gidin ve görünen yoklama sorusunu görüntüleyin. Uygulamanız artık Azure 'da veritabanına veri yazıyor.
 
-## <a name="deploy-to-azure"></a>Azure'a Dağıt
+## <a name="deploy-to-azure"></a>Azure’a dağıtma
 
 Bu adımda, Postgres’e bağlı Python uygulamasını Azure App Service'e dağıtırsınız.
 
@@ -294,7 +294,7 @@ ALLOWED_HOSTS = [os.environ['WEBSITE_SITE_NAME'] + '.azurewebsites.net', '127.0.
 
 Daha sonra, Docgo [üretimde statik dosyalara hizmet vermeye](https://docs.djangoproject.com/en/2.1/howto/static-files/deployment/), bu yüzden el ile etkinleştirmeniz gerekir. Bu öğreticide, [Whitenoıse](https://whitenoise.evans.io/en/stable/)kullanıyorsunuz. Whitenoıse paketi, _requirements. txt_' ye zaten dahil edilmiştir. Yalnızca Docgo 'Yu kullanmak için yapılandırmanız gerekir. 
 
-_Azuresite/Settings. Kopyala_içinde `MIDDLEWARE` ayarını bulun ve @no__t 2 ' yi `django.middleware.security.SecurityMiddleware` ara yazılımı altında listeye ekleyin. @No__t-0 ayarınız şuna benzemelidir:
+_Azuresite/Settings. Kopyala_içinde `MIDDLEWARE` ayarını bulun ve `whitenoise.middleware.WhiteNoiseMiddleware` ara yazılımını `django.middleware.security.SecurityMiddleware` ara yazılımı altında bulunan listeye ekleyin. `MIDDLEWARE` ayarınız şöyle görünmelidir:
 
 ```python
 MIDDLEWARE = [
@@ -337,9 +337,9 @@ git commit -am "configure for App Service"
 
 ### <a name="configure-environment-variables"></a>Ortam değişkenlerini yapılandırma
 
-Öğreticinin önceki bölümlerinde, PostgreSQL veritabanınıza bağlanmak üzere ortam değişkenleri tanımladınız.
+Öğreticide daha önce PostgreSQL veritabanınıza bağlanmak için ortam değişkenleri tanımladınız.
 
-App Service’te, Cloud Shell'de [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) komutunu kullanarak ortam değişkenlerini _uygulama ayarları_ olarak ayarlayabilirsiniz.
+App Service’te, Cloud Shell'de[ komutunu kullanarak ortam değişkenlerini `az webapp config appsettings set`uygulama ayarları](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) olarak ayarlayabilirsiniz.
 
 Şu örnek, veritabanı bağlantı ayrıntılarını uygulama ayarları olarak belirtir. 
 
@@ -375,7 +375,7 @@ To https://<app-name>.scm.azurewebsites.net/<app-name>.git
    06b6df4..6520eea  master -> master
 ```  
 
-App Service dağıtım sunucusu, depo kökünde _requirements. txt dosyasını_ görür ve `git push` ' den sonra Python paket yönetimini otomatik olarak çalıştırır.
+App Service dağıtım sunucusu, depo kökünde _requirements. txt dosyasını_ görür ve `git push`sonra Python paket yönetimini otomatik olarak çalıştırır.
 
 ### <a name="browse-to-the-azure-app"></a>Azure uygulamasına gidin
 
@@ -389,7 +389,7 @@ Daha önce oluşturduğunuz yoklama sorusunu görmeniz gerekir.
 
 App Service, varsayılan olarak `manage.py startproject` tarafından oluşturulan her alt dizindeki bir _wsgi.py_ arayarak deponuzdaki bir Docgo projesi algılar. Dosyayı bulduğunda, Docgo Web uygulamasını yükler. App Service Python uygulamalarını nasıl yüklediği hakkında daha fazla bilgi için bkz. [yerleşik Python görüntüsünü yapılandırma](how-to-configure-python.md).
 
-@No__t-0 ' a gidin ve oluşturduğunuz yönetici kullanıcı ile oturum açın. İsterseniz, bazı daha fazla yoklama soruları oluşturmayı deneyin.
+`<app-name>.azurewebsites.net` gidin ve oluşturduğunuz yönetici kullanıcı ile oturum açın. İsterseniz, bazı daha fazla yoklama soruları oluşturmayı deneyin.
 
 ![Azure 'da uygulama hizmetlerinde Python Docgo uygulamasını çalıştırma](./media/tutorial-python-postgresql-app/run-python-django-app-in-azure.png)
 

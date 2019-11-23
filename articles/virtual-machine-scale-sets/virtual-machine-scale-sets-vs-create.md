@@ -71,7 +71,7 @@ Yük dengeleyici, sanal makine örneklerine SSH (Linux) veya RDP (Windows) ile b
 
 Sanal makine ölçek kümesi kaynağını oluşturmak için Azure Resource Manager şablonunu dağıtın:
 
-1. **Çözüm Gezgini**, projeye sağ tıklayın ve @no__t **Dağıt**-2**Yeni**' yi seçin.
+1. **Çözüm Gezgini**, projeye sağ tıklayın ve **Yeni** > **Dağıt** ' ı seçin.
 
     ![Projenizi dağıtın](media/virtual-machine-scale-sets-vs-create/deploy-new-project.png)
 
@@ -91,7 +91,7 @@ Sanal makine ölçek kümesi kaynağını oluşturmak için Azure Resource Manag
 
 ## Sanal makine ölçek kümesini keşfet<a name="exploring-your-virtual-machine-scale-set"></a>
 
-Yeni sanal makine ölçek kümesini görüntülemek için  > **bulut Gezginini** **görüntüle**' yi seçin. Gerekirse **Tümünü Yenile**seçeneğini kullanın.
+Yeni sanal makine ölçek kümesini görüntülemek için > **bulut Gezginini** **görüntüle** ' yi seçin. Gerekirse **Tümünü Yenile**seçeneğini kullanın.
 
 ![Cloud Explorer](media/virtual-machine-scale-sets-vs-create/cloud-explorer.png)
 

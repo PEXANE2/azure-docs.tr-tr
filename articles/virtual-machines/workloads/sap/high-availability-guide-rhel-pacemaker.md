@@ -108,9 +108,9 @@ Aşağıdaki öğeler ile önek **[A]** - tüm düğümler için geçerli **[1]*
 
    > [!IMPORTANT]
    > Müşterilerin daha hızlı bir yük devretme zamanından faydalanmasını sağlamak için aşağıdaki Azure sınır Aracısı (veya üzeri) sürümlerini öneririz. bir kaynak durmazsa veya küme düğümleri bundan böyle iletişim kuramadıysanız:  
-   > RHEL 7,6: Fence-Agents-4.2.1 -11. EL7 _ 6.8  
-   > RHEL 7,5: Fence-Agents-4.0.11 -86. EL7 _ 5.8  
-   > RHEL 7,4: Fence-Agents-4.0.11 -66. EL7 _ 4.12  
+   > RHEL 7,6: çit-Agents-4.2.1-11. el7_6.8  
+   > RHEL 7,5: çit-Agents-4.0.11-86. el7_5.8  
+   > RHEL 7,4: çit-Agents-4.0.11-66. el7_4.12  
    > Daha fazla bilgi için, bkz. [Azure VM 'nin BIR RHEL yüksek kullanılabilirlik kümesi üyesi olarak çalışıyor olması çok uzun zaman alır veya VM kapatılmadan önce başarısız/zaman aşımına](https://access.redhat.com/solutions/3408711)uğrar.
 
    Azure çit aracısının sürümünü denetleyin. Gerekirse, yukarıda belirtilen değere eşit veya ondan daha yeni bir sürüme güncelleştirin.
@@ -206,7 +206,7 @@ STONITH cihaz, Microsoft Azure karşı korunmasına yetki vermek için bir hizme
 1. Uygulama kayıtları tıklayın
 1. Yeni kayıt öğesine tıklayın
 1. Bir ad girin, "yalnızca bu kuruluş dizinindeki hesaplar" ı seçin 
-2. "Web" uygulama türünü seçin, bir oturum açma URL 'si girin (örneğin, http:\//localhost) ve Ekle ' ye tıklayın.  
+2. "Web" uygulama türünü seçin, bir oturum açma URL 'SI girin (örneğin, http:\//localhost) ve Ekle ' ye tıklayın.  
    Oturum açma URL'si kullanılmaz ve geçerli bir URL olabilir
 1. Sertifikalar ve gizlilikler ' ı seçin ve ardından yeni istemci parolası ' na tıklayın
 1. Yeni anahtar için bir açıklama girin, "süresiz Expires" öğesini seçin ve Ekle ' ye tıklayın.
@@ -265,7 +265,7 @@ sudo pcs property set stonith-timeout=900
 Çit cihazını yapılandırmak için aşağıdaki komutu kullanın.
 
 > [!NOTE]
-> ' Pcmk_host_map ' seçeneği yalnızca, RHEL ana bilgisayar adları ve Azure düğüm adları özdeş DEĞILSE komutta gereklidir. Komutun kalın bölümüne bakın.
+> ' Pcmk_host_map ' seçeneği yalnızca, RHEL ana bilgisayar adları ve Azure düğüm adları aynı DEĞILSE komutunda gereklidir. Komutun kalın bölümüne bakın.
 
 <pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm login="<b>login ID</b>" passwd="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:10.0.0.6;prod-cl1-1:10.0.0.7"</b> power_timeout=240 pcmk_reboot_timeout=900</code></pre>
 

@@ -44,7 +44,7 @@ Azure dosya paylaşımı oluşturmak için zaten var olan bir Depolama Hesabı k
 
 
 ## <a name="create-file-share-through-powershell"></a>PowerShell üzerinden dosya paylaşımı oluşturma
-PowerShell’i kullanmaya hazırlamak için Azure PowerShell cmdlet’lerini indirin ve yükleyin. Yükleme noktası ve yükleme yönergelerini  for [Azure PowerShell yükleme ve yapılandırma](https://docs.microsoft.com/powershell/azure/overview) konusuna bakın.
+PowerShell’i kullanmaya hazırlamak için Azure PowerShell cmdlet’lerini indirin ve yükleyin. Yükleme noktası ve yükleme yönergeleri için Azure PowerShell yükleme [ve yapılandırma](https://docs.microsoft.com/powershell/azure/overview) konusuna bakın.
 
 > [!Note]  
 > En güncel Azure PowerShell modülünü indirmeniz ve yüklemeniz veya yükseltmeniz önerilir.
@@ -73,7 +73,7 @@ PowerShell’i kullanmaya hazırlamak için Azure PowerShell cmdlet’lerini ind
     Bkz. [Azure CLI 'Yı yüklemeyi](https://docs.microsoft.com/cli/azure/install-azure-cli) ve [Azure CLI kullanmaya başlama](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli).
 
 2. **Paylaşımı oluşturmak istediğiniz depolama hesabına bir bağlantı dizesi oluşturun.**  
-    Aşağıdaki örnekte, depolama hesabı adı ve kaynak grubunuz  with  ```<storage-account>```  and  ```<resource_group>``` değiştirin:
+    Aşağıdaki örnekte ```<storage-account>``` ve ```<resource_group>``` depolama hesabı adı ve kaynak grubuyla değiştirin:
 
    ```azurecli
     current_env_conn_string=$(az storage account show-connection-string -n <storage-account> -g <resource-group> --query 'connectionString' -o tsv)

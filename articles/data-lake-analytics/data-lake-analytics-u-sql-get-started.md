@@ -27,7 +27,7 @@ U-SQL, herhangi bir ölçekte verileri işlemenizi sağlamak için C# , BILDIRIM
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu belgedeki U-SQL örneklerinden geçmeden önce [Öğreticisi ' ni okuyun ve tamamlayın: Visual Studio @ no__t-0 için Data Lake araçları kullanarak U-SQL betikleri geliştirin. Bu öğreticide, Visual Studio için Azure Data Lake Araçları ile U-SQL kullanma mekanizması açıklanmaktadır.
+Bu belgedeki U-SQL örneklerinden geçmeden önce, [öğreticiyi tamamlayın: Visual Studio için Data Lake araçları 'nı kullanarak u-SQL betikleri geliştirin](data-lake-analytics-data-lake-tools-get-started.md). Bu öğreticide, Visual Studio için Azure Data Lake Araçları ile U-SQL kullanma mekanizması açıklanmaktadır.
 
 ## <a name="your-first-u-sql-script"></a>İlk U-SQL betiğiniz
 
@@ -50,24 +50,24 @@ OUTPUT @searchlog
     USING Outputters.Csv();
 ```
 
-Bu betikte herhangi bir dönüştürme adımı yok. @No__t-0 adlı kaynak dosyadan okur, şemalar ve satır kümesini SearchLog-first-u-sql. csv adlı bir dosyaya geri yazar.
+Bu betikte herhangi bir dönüştürme adımı yok. `SearchLog.tsv`adlı kaynak dosyadan okur, şemalar ve satır kümesini SearchLog-first-u-sql. csv adlı bir dosyaya geri yazar.
 
-@No__t-0 alanındaki veri türünün yanındaki soru işaretine dikkat edin. @No__t-0 alanının null olabileceği anlamına gelir.
+`Duration` alanındaki veri türünün yanındaki soru işaretine dikkat edin. `Duration` alanın null olabileceği anlamına gelir.
 
 ### <a name="key-concepts"></a>Önemli kavramlar
-* **Satır kümesi değişkenleri**: Bir satır kümesi üreten her sorgu ifadesi bir değişkene atanabilir. U-SQL, betikteki T-SQL değişken adlandırma düzenine (örneğin `@searchlog`) uyar.
+* **Satır kümesi değişkenleri**: bir satır kümesi üreten her sorgu ifadesi bir değişkene atanabilir. U-SQL, betikteki T-SQL değişken adlandırma örüntüsünün (örneğin`@searchlog`) izler.
 * **Extract** anahtar sözcüğü bir dosyadaki verileri okur ve okunan şemayı tanımlar. `Extractors.Tsv`, sekmeyle ayrılmış değer dosyaları için yerleşik bir U-SQL ayıklayıcısı. Özel ayıklayıcıları geliştirebilirsiniz.
-* **Çıktı** , verileri bir satır kümesinden dosyaya yazar. `Outputters.Csv()`, virgülle ayrılmış değer dosyası oluşturmak için yerleşik bir U-SQL çıktıcısı olur. Özel çıktıcılar geliştirebilirsiniz.
+* **Çıktı** , verileri bir satır kümesinden dosyaya yazar. `Outputters.Csv()`, virgülle ayrılmış değer dosyası oluşturmak için yerleşik bir U-SQL outputter ' dur. Özel çıktıcılar geliştirebilirsiniz.
 
 ### <a name="file-paths"></a>Dosya yolları
 
 AYıKLA ve OUTPUT deyimleri dosya yollarını kullanır. Dosya yolları mutlak veya göreli olabilir:
 
-Aşağıdaki mutlak dosya yolu, Data Lake Store `mystore` adlı bir dosyaya başvurur:
+Aşağıdaki mutlak dosya yolu, `mystore`adlı Data Lake Store bir dosyaya başvurur:
 
     adl://mystore.azuredatalakestore.net/Samples/Data/SearchLog.tsv
 
-Aşağıdaki dosya yolu `"/"` ile başlar. Varsayılan Data Lake Store hesabındaki bir dosyaya başvurur:
+Aşağıdaki dosya yolu `"/"`başlar. Varsayılan Data Lake Store hesabındaki bir dosyaya başvurur:
 
     /output/SearchLog-first-u-sql.csv
 

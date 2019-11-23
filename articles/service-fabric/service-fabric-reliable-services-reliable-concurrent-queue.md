@@ -62,7 +62,7 @@ IReliableConcurrentQueue<int> queue = await this.StateManager.GetOrAddAsync<IRel
 ### <a name="enqueueasync"></a>EnqueueAsync
 Aşağıda, EnqueueAsync 'in ardından beklenen çıkışları tarafından kullanılması için birkaç kod parçacığı verilmiştir.
 
-- *Case 1: Tek sıraya alma görevi @ no__t-0
+- *Durum 1: tek kuyruğa alma görevi*
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -81,7 +81,7 @@ Görevin başarıyla tamamlandığını ve sırayı değiştiren bir eşzamanlı
 > 20, 10
 
 
-- *Case 2: Paralel sıraya alma görevi @ no__t-0
+- *Durum 2: paralel sıraya alma görevi*
 
 ```
 // Parallel Task 1
@@ -110,7 +110,7 @@ Görevlerin başarıyla tamamlandığını, görevlerin paralel olarak çalışt
 Aşağıda, TryDequeueAsync kullanımına yönelik birkaç kod parçacığı ve ardından beklenen çıktılar verilmiştir. Kuyruğun kuyruktaki şu öğelerle zaten doldurulmuş olduğunu varsayın:
 > 10, 20, 30, 40, 50, 60
 
-- *Case 1: Tek bir sıradan çıkarma görevi @ no__t-0
+- *Durum 1: tek bir sıradan çıkarma görevi*
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -125,7 +125,7 @@ using (var txn = this.StateManager.CreateTransaction())
 
 Görevin başarıyla tamamlandığını ve sırayı değiştiren bir eşzamanlı işlem olmadığını varsayın. Kuyruktaki öğelerin sıralaması hakkında çıkarıcı bulunmadığından, öğelerin üçü herhangi bir sırada sıradan kaldırılabilir. Sıra, öğeleri özgün (sıraya alınmış) sırada tutmaya çalışır, ancak eşzamanlı işlemler veya hatalar nedeniyle bunları yeniden sıralamak zorunlu olabilir.  
 
-- *Case 2: Paralel sıradan çıkarma görevi @ no__t-0
+- *Durum 2: paralel sıradan çıkarma görevi*
 
 ```
 // Parallel Task 1
@@ -153,7 +153,7 @@ Görevlerin başarıyla tamamlandığını, görevlerin paralel olarak çalışt
 
 Aynı öğe her iki listede *de görünmez.* Bu nedenle, dequeue1 *10*, *30*ise, dequeue2 *20*, *40*olur.
 
-- *Case 3: Işlem Iptali Ile sıralamayı sıradan çıkarma @ no__t-0
+- *Durum 3: Işlem Iptali Ile sıralamayı sıradan çıkarma*
 
 Uçuş dışı kuyrukla bir işlemi iptal etmek, öğeleri sıranın baş üzerine geri koyar. Sıranın baş üzerine maddelerin geri alındığı sıra garanti edilmez. Aşağıdaki koda bakmamıza izin verin:
 
@@ -275,7 +275,7 @@ while(!cancellationToken.IsCancellationRequested)
 ```
 
 ### <a name="best-effort-drain"></a>En iyi çaba boşaltma
-Veri yapısının eşzamanlı yapısı nedeniyle kuyruğun bir boşaltma garantisi olamaz.  Kuyruktaki hiçbir Kullanıcı işlemi uçuş aşamasında olsa bile, bir TryDequeueAsync öğesine yapılan belirli bir çağrı daha önce kuyruğa alınmış ve kaydedilmiş bir öğe döndürmeyebilir.  Kuyruğa alınan öğe, *sonunda* , bant dışı bir iletişim mekanizması olmadan, son sıraya alma işlemi için görünür hale gelmiştir, ancak tüm üreticileri durmuş ve Hayır olsa bile bağımsız bir tüketici kuyruğun kararlı duruma geldiğini bilmez Yeni sıraya alma işlemlerine izin verilir. Bu nedenle, boşaltma işlemi aşağıda uygulanan en iyi çabadır.
+Veri yapısının eşzamanlı yapısı nedeniyle kuyruğun bir boşaltma garantisi olamaz.  Kuyruktaki hiçbir Kullanıcı işlemi uçuş aşamasında olsa bile, bir TryDequeueAsync öğesine yapılan belirli bir çağrı daha önce kuyruğa alınmış ve kaydedilmiş bir öğe döndürmeyebilir.  Sıraya alınan öğe, *sonunda* , bant dışı bir iletişim mekanizması olmadan sıradan olarak görünür hale gelmiştir, ancak tüm üreticileri durdurulduysa ve yeni bir sıraya alma işlemine izin verilmiyorsa, bağımsız bir tüketici kuyruğun kararlı duruma geldiğini bilmez. Bu nedenle, boşaltma işlemi aşağıda uygulanan en iyi çabadır.
 
 Kullanıcı, tüm üretici ve tüketici görevlerini durdurmalı ve kuyruğu boşaltmaya çalışmadan önce, tüm uçuş işlemlerinin tamamlanmasını veya durdurulmasına izin vermez.  Kullanıcı kuyruktaki öğe sayısını biliyorsa, tüm öğelerin sıraya alınmış olduğunu işaret eden bir bildirim ayarlayabilir.
 

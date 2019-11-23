@@ -37,7 +37,7 @@ Yedeklemeden önce, sunucunuz için depolama ayarlarını yapılandırmanız ger
 
 2.  **Etkin**' e ve ardından **depolama ayarları**' na tıklayın.
 
-    ![Etkinleştirme](./media/analysis-services-backup/aas-backup-enable.png)
+    ![Etkinleştir](./media/analysis-services-backup/aas-backup-enable.png)
 
 3. Depolama hesabınızı seçin veya yeni bir tane oluşturun.
 

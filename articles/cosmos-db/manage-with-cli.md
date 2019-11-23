@@ -45,7 +45,7 @@ az cosmosdb create \
 İki bölgeyle bir Azure Cosmos hesabı oluşturun, bölge ekleyin ve bölge kaldırın.
 
 > [!NOTE]
-> Aynı anda bir Azure Cosmos hesabı için @no__t bölge ekleyemez ve kaldıramazsınız ve diğer özellikleri değiştirebilirsiniz. Bölgeleri değiştirmek, hesap kaynağında yapılan diğer değişiklikten farklı bir işlem olarak gerçekleştirilmelidir.
+> Aynı anda bölge ekleyemez veya kaldıramazsınız `locations` ve bir Azure Cosmos hesabının diğer özelliklerini değiştiremezsiniz. Bölgeleri değiştirmek, hesap kaynağında yapılan diğer değişiklikten farklı bir işlem olarak gerçekleştirilmelidir.
 > [!NOTE]
 > Bu komut, bölge eklemenize ve kaldırmanıza izin verir ancak yük devretme önceliklerini değiştirmenize veya el ile yük devretme tetiklemesine izin vermez. Bkz. [Yük devretme önceliğini ayarlama](#set-failover-priority) ve [El Ile yük devretmeyi tetikleme](#trigger-manual-failover).
 
@@ -190,7 +190,7 @@ az cosmosdb keys regenerate \
     --key-kind secondary
 ```
 
-## <a name="create-a-database"></a>Veritabanı oluşturun
+## <a name="create-a-database"></a>Veritabanı oluşturma
 
 Cosmos veritabanı oluşturma.
 

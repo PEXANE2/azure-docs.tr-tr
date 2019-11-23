@@ -77,7 +77,7 @@ Bu öğreticideki depolar ve dizinler için belirtilen adlar, büyük veri bilim
 - Birden çok veri bilimi ekibi olmayan küçük bir veri bilimi grubu. 
 - Aynı şekilde, grup düzeyi Sprint planlaması gibi etkinliklerle ekip içi işbirliğini iyileştirmek isteyen birden fazla veri bilimi ekibine sahip daha büyük bir veri bilimi grubu. 
 
-Ekipler tek bir grup projesi altında, takımlarına özgü depolara sahip olmasını tercih ediyorsanız, ekip müşteri adayları  *\<TeamName > şablonu* ve  *\<TeamName > yardımcı programları*gibi adlara sahip depolar oluşturmamalıdır. Örneğin: *Teamatemplate* ve *teamautilities*. 
+Ekipler tek bir grup projesi altında, takımlarına özgü depolara sahip olmasını tercih ederseniz, takım müşteri adayları *\<teamname > şablonu* ve *\<TeamName > yardımcı programları*gibi adlara sahip depoları oluşturması gerekir. Örneğin: *Teamatemplate* ve *teamautilities*. 
 
 Herhangi bir durumda, takımın, takım üyelerinin hangi şablon ve yardımcı program depoları ayarlayabileceklerini ve kopyalayabileceklerini bilmesini sağlamak gerekir. Proje liderleri, ayrı projeler veya tek bir proje kapsamında olmak üzere, [bir veri bilimi ekibinin proje depoları oluşturması için proje sağlama görevlerini](project-lead-tasks.md) izlemelidir. 
 
@@ -85,7 +85,7 @@ Herhangi bir durumda, takımın, takım üyelerinin hangi şablon ve yardımcı 
 
 Takımınız için ayrı bir proje oluşturmak için:
 
-1. Web tarayıcınızda, URL *https:\//\<sunucu adı >/\<kuruluş adı >* konumundaki grubunuzun Azure DevOps kuruluş giriş sayfasına gidin ve **Yeni proje**' yi seçin. 
+1. Web tarayıcınızda, URL *https:\//\<sunucu adı >/\<kuruluş adı >* ' nda grubunuzun Azure DevOps kuruluş giriş sayfasına gidin ve **Yeni proje**' yi seçin. 
    
    ![Yeni proje seçin](./media/team-lead-tasks/team-leads-2-create-new-team.png)
    
@@ -95,7 +95,7 @@ Takımınız için ayrı bir proje oluşturmak için:
    
    ![Proje oluşturma](./media/team-lead-tasks/team-leads-3-create-new-team-2.png)
    
-Takım projesi **Özet** sayfası açılarak sayfa URL 'si *https\/:/\<sunucu adı >/\<kuruluş adı >/\<takım adı >* .
+Takım projesi **Özet** sayfası açılarak sayfa URL 'si *https:\//\<sunucu adı >/\<kuruluş adı >/\<takım adı*>.
 
 ### <a name="rename-the-myteam-default-repository-to-teamutilities"></a>MyTeam varsayılan deposunu Ekipçonelikler olarak yeniden adlandırın
 
@@ -140,7 +140,7 @@ Ekip depolarınızı grup yöneticiniz tarafından ayarlanan ortak depoların i�
    
    ![Içeri aktar 'ı seçin](./media/team-lead-tasks/import-repo.png)
    
-1. **Git deposunu Içeri aktar** iletişim kutusunda, **kaynak türü**olarak **Git** ' i seçin ve **kopya URL**'si altında grup ortak şablon deponuzun URL 'sini girin. URL, *https: \/ @ no__t-2 @ no__t-3sunucu adı >/\<kuruluş adı >/_git/\<repository adı >* . Örneğin: *https: \//dev. Azure. com/Databilimenceunit/GroupCommon/_Git/GroupProjectTemplate*. 
+1. **Git deposunu Içeri aktar** iletişim kutusunda, **kaynak türü**olarak **Git** ' i seçin ve **kopya URL**'si altında grup ortak şablon deponuzun URL 'sini girin. URL *: https:\//\<sunucu adı >/\<kuruluş adı >/_Git/\<Depo adı >* . Örneğin: *https:\//dev.Azure.com/DataScienceUnit/GroupCommon/_Git/GroupProjectTemplate*. 
    
 1. **Içeri aktar**' ı seçin. Grup şablonu deponuzun içeriği takım şablonu deponuza aktarılır. 
    
@@ -199,7 +199,7 @@ Depoları kopyalamak için:
    
 1. Oluşturduğunuz dizine geçin.
    
-1. Git Bash 'de, `git clone <clone URL>` \<kopya URL 'si > **kopyalama** iletişim kutusundan kopyaladığınız URL olduğunda komutunu çalıştırın.
+1. Git Bash 'de, \<kopya URL 'SI > **kopya** iletişim kutusundan kopyaladığınız URL olduğu için `git clone <clone URL>`komutunu çalıştırın.
    
    Örneğin, **Ekipçtilities** deposunu yerel makinenizde *myTeam* dizinine kopyalamak için aşağıdaki komutlardan birini kullanın. 
    
@@ -226,7 +226,7 @@ git push
 ```
 
 > [!NOTE]
-> Git deposuna ilk kez çalışıyorsanız, `git commit` komutu çalıştırmadan önce *User.Name* ve *User. email* genel parametrelerini yapılandırmanız gerekebilir. Aşağıdaki iki komutu çalıştırın:
+> Git deposuna ilk kez çalışıyorsanız, `git commit` komutunu çalıştırmadan önce *User.Name* ve *User. email* genel parametrelerini yapılandırmanız gerekebilir. Aşağıdaki iki komutu çalıştırın:
 > 
 > `git config --global user.name <your name>`
 > 
@@ -250,7 +250,7 @@ Takıma üye eklemek için:
    
 1. **Kullanıcı ve Grup Ekle** iletişim kutusunda, gruba eklenecek üyeleri arayıp seçin ve ardından **Değişiklikleri Kaydet**' i seçin. 
    
-   ![Kullanıcı ve grup ekle](./media/team-lead-tasks/add-users.png)
+   ![Kullanıcı ve Grup Ekle](./media/team-lead-tasks/add-users.png)
    
 
 Takım üyeleri için izinleri yapılandırmak için:

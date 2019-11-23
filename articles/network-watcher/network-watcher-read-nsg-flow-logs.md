@@ -98,7 +98,7 @@ $CloudBlockBlob = Get-NSGFlowLogCloudBlockBlob -subscriptionId "yourSubscription
 $blockList = Get-NSGFlowLogBlockList -CloudBlockBlob $CloudBlockBlob
 ```
 
-@No__t-0 değişkeni blob içindeki blokların bir listesini döndürür. Her Blok Blobu en az iki blok içerir.  İlk blok uzunluğu @no__t 0 bayttır, bu blok JSON günlüğünün sol köşeli ayracını içerir. Diğer blok, kapanış ayraçları ve uzunluğu @no__t 0 bayttır.  Aşağıdaki örnek günlükte, her biri tek bir giriş olmak üzere, burada yedi giriş olduğunu görebilirsiniz. Günlükteki tüm yeni girişler son bloğundan önce son sağa eklenir.
+`$blockList` değişkeni blob içindeki blokların bir listesini döndürür. Her Blok Blobu en az iki blok içerir.  İlk blok `12` bayt uzunluğuna sahiptir, bu blok JSON günlüğünün sol köşeli ayracını içerir. Diğer blok, kapanış ayraçları ve `2` bayt uzunluğuna sahiptir.  Aşağıdaki örnek günlükte, her biri tek bir giriş olmak üzere, burada yedi giriş olduğunu görebilirsiniz. Günlükteki tüm yeni girişler son bloğundan önce son sağa eklenir.
 
 ```
 Name                                         Length Committed
@@ -160,7 +160,7 @@ function Get-NSGFlowLogReadBlock  {
 $valuearray = Get-NSGFlowLogReadBlock -blockList $blockList -CloudBlockBlob $CloudBlockBlob
 ```
 
-Artık `$valuearray` dizisi her bloğun dize değerini içerir. Girişi doğrulamak için `$valuearray[$valuearray.Length-2]` ' ı çalıştırarak dizideki son değeri alın. Son değeri, kapanış ayracı olduğu için istemezsiniz.
+Artık `$valuearray` dizi her bloğun dize değerini içerir. Girişi doğrulamak için, `$valuearray[$valuearray.Length-2]`çalıştırarak dizideki son değeri alın. Son değeri, kapanış ayracı olduğu için istemezsiniz.
 
 Bu değerin sonuçları aşağıdaki örnekte gösterilmiştir:
 
