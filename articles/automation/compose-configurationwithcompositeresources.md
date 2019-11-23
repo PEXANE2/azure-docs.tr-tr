@@ -28,16 +28,16 @@ Bileşik kaynaklar Otomasyon hesabınıza alındıktan sonra, **Durum Yapıland�
 
 Azure portal bileşik kaynaklardan yapılan bir yapılandırmayı atamadan önce oluşturmanız gerekir. Bu işlem, **yapılandırmalar** veya **derlenen yapılandırmalar** SEKMELERINDE **Durum Yapılandırması (DSC)** sayfasında **yapılandırma oluştur** kullanılarak yapılabilir.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Sol tarafta **tüm kaynaklar** ' a ve ardından Otomasyon hesabınızın adına tıklayın.
 1. **Otomasyon hesabı** sayfasında, **yapılandırma yönetimi**altında **Durum Yapılandırması (DSC)** öğesini seçin.
 1. **Durum Yapılandırması (DSC)** sayfasında, **yapılandırmalar** veya **derlenen yapılandırmalar** sekmesine tıklayın ve ardından sayfanın en üstündeki menüde **yapılandırma oluştur** ' a tıklayın.
 1. **Temel bilgiler** adımında yeni yapılandırma adını (gerekli) belirtin ve yeni yapılandırmanıza eklemek istediğiniz her bileşik kaynağın satırındaki herhangi bir yere tıklayın ve ardından **İleri** ' ye tıklayın veya **kaynak kodu** adımına tıklayın. Aşağıdaki adımlar için **Psexecutionpolicy** ve **RenameAndDomainJoin** bileşik kaynaklarını seçtik.
-   @no__t-yapılandırma oluşturma sayfasının temel kavramları adımının 0 ekran görüntüsü @ no__t-1
+   yapılandırma oluşturma sayfasının temel kavramları adımının ![ekran görüntüsü](./media/compose-configurationwithcompositeresources/compose-configuration-basics.png)
 1. **Kaynak kodu** adımı, seçili bileşik kaynakların oluşturulan yapılandırmasının nasıl göründüğünü gösterir. Tüm parametrelerin birleştirilmesini ve bunların bileşik kaynağa nasıl geçtiğini görebilirsiniz. Yeni kaynak kodu gözden geçirmeyi tamamladığınızda, **İleri** ' ye tıklayın veya **Parametreler** adımına tıklayın.
-   yapılandırma oluşturma sayfasının kaynak kodu adımının ![Ekran görüntüsü @ no__t-1
+   yapılandırma oluşturma sayfasının kaynak kodu adımının ekran görüntüsünü ![](./media/compose-configurationwithcompositeresources/compose-configuration-sourcecode.png)
 1. **Parametreler** adımında, her bileşik kaynağın sağlandığı parametre, sağlanabilmeleri için sunulur. Bir parametrenin açıklaması varsa, parametre alanının yanında görüntülenir. Bir alan **PSCredential** türü parametre ise, yapılandırılacak açılan liste geçerli Otomasyon hesabındaki **kimlik bilgisi** nesnelerinin bir listesini sağlar. Bir **+ kimlik bilgisi ekle** seçeneği de mevcuttur. Tüm gerekli parametreler sağlandıktan sonra **Kaydet ve derle**' ye tıklayın.
-   yapılandırma oluşturma sayfasının parametre adımının ![Ekran görüntüsü @ no__t-1
+   yapılandırma oluşturma sayfasının parametreler adımının ekran görüntüsünü ![](./media/compose-configurationwithcompositeresources/compose-configuration-parameters.png)
 
 Yeni yapılandırma kaydedildikten sonra, derleme için gönderilir. Derleme işinin durumu, içeri aktarılan tüm yapılandırmalar gibi görüntülenebilir. Daha fazla bilgi için bkz. [derleme Işini görüntüleme](automation-dsc-getting-started.md#viewing-a-compilation-job).
 

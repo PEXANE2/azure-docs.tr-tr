@@ -28,7 +28,7 @@ Basamaklı 500 IoT Ağ Geçidi, kendi basamaklı hizmet olarak Edge çözümün�
 
 Cascade 500, çözüm oluşturucularımızın cihazı uçtan uca çözümlere kolayca açmasına olanak tanıyan Azure IoT Tak ve Kullan (PnP) için önceden sertifikalıdır. Basamaklı ağ geçidi, ağ geçidi cihazına yakınlık halinde olan çeşitli durum izleme sensörlerinden kablosuz olarak bağlanmanıza olanak sağlar. Bu sensörler, ağ geçidi cihazı aracılığıyla IoT Central eklendi olabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu nasıl yapılır kılavuzunda ilerlemek için aşağıdaki kaynaklara ihtiyacınız vardır:
 
 * Bir Rigado Cascade 500 cihazı. Daha fazla bilgi için lütfen [Rigado](https://www.rigado.com/)adresini ziyaret edin.

@@ -36,7 +36,7 @@ Bağımlılık görselleştirmesi hakkında [daha fazla bilgi edinin](concepts-d
 
 **Özellikler** | **Not**
 --- | ---
-Erişilebilirlik | Bağımlılık görselleştirmesi Azure Kamu 'da kullanılamaz.
+Kullanılabilirlik | Bağımlılık görselleştirmesi Azure Kamu 'da kullanılamaz.
 Hizmet Eşlemesi | Bağımlılık görselleştirmesi Azure Izleyici 'de Hizmet Eşlemesi çözümünü kullanır. [Hizmet eşlemesi](../azure-monitor/insights/service-map.md) , sunucular arasındaki bağlantıları otomatik olarak bulur ve gösterir.
 Aracılar | Bağımlılık görselleştirmesini kullanmak için, eşlemek istediğiniz makinelere aşağıdaki aracıları yükleyebilirsiniz:<br/> - [Log Analytics aracı](../azure-monitor/platform/log-analytics-agent.md) Aracısı (daha önce Microsoft Monitoring Agent (MMA) olarak adlandırılır.<br/> - [hizmet eşlemesi bağımlılık Aracısı](../azure-monitor/insights/vminsights-enable-overview.md#the-microsoft-dependency-agent).<br/><br/> Aracı yüklemesini otomatikleştirmek için, Azure geçişi için bir aracı dağıtım çözümü olan System Center Configuration Manager gibi bir dağıtım aracı kullanabilirsiniz.
 Bağımlılık aracısı | Windows ve Linux için [bağımlılık Aracısı desteğini](../azure-monitor/insights/vminsights-enable-overview.md#the-microsoft-dependency-agent) gözden geçirin.<br/><br/> Bağımlılık aracısını yüklemek için betikleri kullanma hakkında [daha fazla bilgi edinin](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples) .
@@ -85,7 +85,7 @@ Aracıyı bir Windows makinesine yüklemek için:
 1. İndirilen aracıya çift tıklayın.
 2. **Hoş Geldiniz** sayfasında **İleri**'ye tıklayın. **Lisans Koşulları** sayfasında **Kabul Ediyorum**’a tıklayarak lisansı kabul edin.
 3. **Hedef klasörde**, **sonraki**> varsayılan yükleme klasörünü tutun veya değiştirin.
-4. **Aracı kurulum seçenekleri**' nde, **Azure Log Analytics**@no__t **-2 ' yi seçin**.
+4. **Aracı kurulum seçenekleri**' nde, **Azure Log Analytics** > **İleri**' yi seçin.
 5. Yeni bir Log Analytics çalışma alanı eklemek için **Ekle** ' ye tıklayın. Portaldan kopyaladığınız çalışma alanı KIMLIĞINI ve anahtarını yapıştırın. **İleri**’ye tıklayın.
 
 Aracıyı komut satırından veya System Center Configuration Manager veya [ıntigua](https://go.microsoft.com/fwlink/?linkid=2104196)gibi otomatikleştirilmiş bir yöntem kullanarak yükleyebilirsiniz. MMA aracısını yüklemek için bu yöntemleri kullanma hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) . MMA aracısı bu [betik](https://go.microsoft.com/fwlink/?linkid=2104394) kullanılarak da yüklenebilir.

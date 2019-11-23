@@ -1,6 +1,6 @@
 ---
-title: Using the Azure Dev Spaces Plug-in for Jenkins with Azure Kubernetes Service
-description: Learn how to use the Azure Dev Spaces plug-in in a continuous integration pipeline.
+title: Azure Kubernetes hizmeti ile Jenkins için Azure Dev Spaces eklentisini kullanma
+description: Azure Dev Spaces eklentisinin sürekli tümleştirme ardışık düzeninde nasıl kullanılacağını öğrenin.
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.openlocfilehash: 9dba0307db8ebbf07422fd770ea336b2abc031bd
@@ -10,46 +10,46 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74209663"
 ---
-# <a name="tutorial-using-the-azure-dev-spaces-plug-in-for-jenkins-with-azure-kubernetes-service"></a>Tutorial: Using the Azure Dev Spaces Plug-in for Jenkins with Azure Kubernetes Service 
+# <a name="tutorial-using-the-azure-dev-spaces-plug-in-for-jenkins-with-azure-kubernetes-service"></a>Öğretici: Azure Kubernetes hizmeti ile Jenkins için Azure Dev Spaces eklentisi kullanma 
 
-Azure Dev Spaces allows you to test and iteratively develop your microservice application running in Azure Kubernetes Service (AKS) without the need to replicate or mock dependencies. The Azure Dev Spaces plug-in for Jenkins helps you use Dev Spaces in your continuous integration and delivery (CI/CD) pipeline.
+Azure Dev Spaces, Azure Kubernetes hizmeti 'nde (AKS) çalışan mikro hizmet uygulamanızı, bağımlılıkları çoğaltma veya sahte olarak kullanmanıza gerek kalmadan test etmenize ve yineleyebilir. Jenkins için Azure Dev Spaces eklentisi, geliştirme alanlarını sürekli tümleştirme ve teslim (CI/CD) ardışık düzeninde kullanmanıza yardımcı olur.
 
-This tutorial also uses Azure Container Registry (ACR). ACR stores images, and an ACR Task builds Docker and Helm artifacts. Using ACR and ACR Task for artifact generation removes the need for you to install additional software, such as Docker, on your Jenkins server. 
+Bu öğretici Ayrıca Azure Container Registry (ACR) kullanır. ACR görüntüleri depolar ve bir ACR görevi Docker ve Helm yapıtları oluşturur. Yapıt oluşturma için ACR ve ACR görevi kullanmak, Jenkins sunucunuza Docker gibi ek yazılım yüklemenize gerek ortadan kaldırır. 
 
-In this tutorial, you'll complete these tasks:
+Bu öğreticide, şu görevleri tamamlayacaksınız:
 
 > [!div class="checklist"]
-> * Create an Azure Dev Spaces enabled AKS cluster
-> * Deploy a multi-service application to AKS
-> * Prepare your Jenkins server
-> * Use the Azure Dev Spaces plug-in in a Jenkins pipeline to preview code changes before merging them into the project
+> * Azure Dev Spaces etkinleştirilmiş bir AKS kümesi oluşturma
+> * AKS 'e çoklu hizmet uygulaması dağıtma
+> * Jenkins sunucunuzu hazırlama
+> * Kod değişikliklerini projeye birleştirmeden önce önizlemek için Jenkins ardışık düzeninde Azure Dev Spaces eklentisini kullanın
 
-This tutorial assumes intermediate knowledge of core Azure services, AKS, ACR, Azure Dev Spaces, Jenkins [pipelines](https://jenkins.io/doc/book/pipeline/) and plug-ins, and GitHub. Basic familiarity with supporting tools such as kubectl and Helm is helpful.
+Bu öğreticide, temel Azure Hizmetleri, AKS, ACR, Azure Dev Spaces, Jenkins işlem [hatları](https://jenkins.io/doc/book/pipeline/) ve eklentileri ve GitHub hakkında ara bilgi varsayılmaktadır. Kubectl ve Held gibi destekleyici araçların temel bilgileri yararlıdır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Bir Azure hesabı. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-* GitHub hesabı. If you don't have a GitHub account, create a [free account](https://github.com/) before you begin.
+* GitHub hesabı. GitHub hesabınız yoksa başlamadan önce [ücretsiz bir hesap](https://github.com/) oluşturun.
 
-* [Visual Studio Code](https://code.visualstudio.com/download) with the [Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) extension installed.
+* [Azure dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) uzantısı yüklü [Visual Studio Code](https://code.visualstudio.com/download) .
 
-* [Azure CLI installed](/cli/azure/install-azure-cli?view=azure-cli-latest), version 2.0.43 or higher.
+* [Azure CLI yüklü](/cli/azure/install-azure-cli?view=azure-cli-latest), sürüm 2.0.43 veya üzeri.
 
-* Bir Jenkins ana sunucusu. If you don't already have a Jenkins master, deploy [Jenkins](https://aka.ms/jenkins-on-azure) on Azure by following the steps in this [quickstart](https://docs.microsoft.com/azure/jenkins/install-jenkins-solution-template). 
+* Bir Jenkins ana sunucusu. Zaten bir Jenkins ana hesabınız yoksa, bu [hızlı](https://docs.microsoft.com/azure/jenkins/install-jenkins-solution-template)başlangıçta bulunan adımları izleyerek Azure 'Da [jenkins](https://aka.ms/jenkins-on-azure) dağıtın. 
 
-* The Jenkins server must have both Helm and kubectl installed and available to the Jenkins account, as explained later in this tutorial.
+* Jenkins sunucusunda, Bu öğreticinin ilerleyen kısımlarında açıklandığı gibi, hem helk hem de kubectl yüklü ve Jenkins hesabı için kullanılabilir olmalıdır.
 
-* VS Code, the VS Code Terminal or WSL, and Bash. 
+* VS Code, VS Code terminali veya WSL ve Bash. 
 
 
 ## <a name="create-azure-resources"></a>Azure kaynakları oluşturma
 
-In this section, you create Azure resources:
+Bu bölümde Azure kaynakları oluşturursunuz:
 
-* A resource group to contain all of the Azure resources for this tutorial.
-* An [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/) (AKS) cluster.
-* An [Azure container registry](https://docs.microsoft.com/azure/container-registry/) (ACR) to build (using ACR Tasks) and store Docker images.
+* Bu öğretici için tüm Azure kaynaklarını içeren bir kaynak grubu.
+* Bir [Azure Kubernetes hizmeti](https://docs.microsoft.com/azure/aks/) (aks) kümesi.
+* Derlenecek (ACR görevlerini kullanarak) ve Docker görüntülerini depolayabilen bir [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) (ACR).
 
 1. Bir kaynak grubu oluşturun.
 
@@ -57,36 +57,36 @@ In this section, you create Azure resources:
     az group create --name MyResourceGroup --location westus2
     ```
 
-2. Create an AKS cluster. Create the AKS cluster in a [region that supports Dev Spaces](../dev-spaces/about.md#supported-regions-and-configurations).
+2. AKS kümesi oluşturma. AKS kümesini [geliştirme alanlarını destekleyen bir bölgede](../dev-spaces/about.md#supported-regions-and-configurations)oluşturun.
 
     ```bash
     az aks create --resource-group MyResourceGroup --name MyAKS --location westus2 --kubernetes-version 1.11.9 --enable-addons http_application_routing --generate-ssh-keys --node-count 1 --node-vm-size Standard_D1_v2
     ```
 
-3. Configure AKS to use Dev Spaces.
+3. AKS 'leri geliştirme alanlarını kullanacak şekilde yapılandırın.
 
     ```bash
     az aks use-dev-spaces --resource-group MyResourceGroup --name MyAKS
     ```
-    This step installs the `azds` CLI extension.
+    Bu adım `azds` CLı uzantısını yüklüyor.
 
-4. Create a container registry.
+4. Bir kapsayıcı kayıt defteri oluşturun.
 
     ```bash
     az acr create -n MyACR -g MyResourceGroup --sku Basic --admin-enabled true
     ```
 
-## <a name="deploy-sample-apps-to-the-aks-cluster"></a>Deploy sample apps to the AKS cluster
+## <a name="deploy-sample-apps-to-the-aks-cluster"></a>Örnek uygulamaları AKS kümesine dağıtma
 
-In this section, you set up a dev space and deploy a sample application to the AKS cluster you created in the last section. The application consists of two parts, *webfrontend* and *mywebapi*. Both components are deployed in a dev space. Later in this tutorial, you'll submit a pull request against mywebapi to trigger the CI pipeline in Jenkins.
+Bu bölümde, bir dev alanı ayarlarsınız ve son bölümde oluşturduğunuz AKS kümesine örnek bir uygulama dağıtırsınız. Uygulama, *webön uç* ve *mywebapi*olmak üzere iki bölümden oluşur. Her iki bileşen de bir geliştirme alanında dağıtılır. Bu öğreticide daha sonra Jenkins 'te CI işlem hattını tetiklemek için mywebapi 'e karşı bir çekme isteği göndereceğiz.
 
-For more information on using Azure Dev Spaces and multi-service development with Azure Dev Spaces, see [Get started on Azure Dev Spaces with Java](https://docs.microsoft.com/azure/dev-spaces/get-started-java), and [Multi-service development with Azure Dev Spaces](https://docs.microsoft.com/azure/dev-spaces/multi-service-java). Those tutorials provide additional background information not included here.
+Azure Dev Spaces ile Azure Dev Spaces ve çoklu hizmet geliştirmeyi kullanma hakkında daha fazla bilgi için bkz. [Java ile Azure dev Spaces kullanmaya başlama](https://docs.microsoft.com/azure/dev-spaces/get-started-java)ve [Azure dev Spaces ile çoklu hizmet geliştirme](https://docs.microsoft.com/azure/dev-spaces/multi-service-java). Bu öğreticiler burada bulunmayan ek arka plan bilgileri sağlar.
 
-1. Download the https://github.com/Azure/dev-spaces repo from GitHub.
+1. https://github.com/Azure/dev-spaces depoyu GitHub 'dan indirin.
 
-2. Open the `samples/java/getting-started/webfrontend` folder in VS Code. (Hata ayıklama varlıkları eklemek veya projeyi geri yüklemek için tüm varsayılan istemleri yoksayabilirsiniz.)
+2. VS Code `samples/java/getting-started/webfrontend` klasörü açın. (Hata ayıklama varlıkları eklemek veya projeyi geri yüklemek için tüm varsayılan istemleri yoksayabilirsiniz.)
 
-3. Update `/src/main/java/com/ms/sample/webfrontend/Application.java` to look like the following:
+3. Aşağıdaki gibi görünmesi için `/src/main/java/com/ms/sample/webfrontend/Application.java` güncelleştirin:
 
     ```java
     package com.ms.sample.webfrontend;
@@ -116,38 +116,38 @@ For more information on using Azure Dev Spaces and multi-service development wit
     }
     ```
 
-4. Click **View** then **Terminal** to open the Integrated Terminal in VS Code.
+4. VS Code ' de tümleşik terminali açmak için **görüntüle** **' ye tıklayın** .
 
-5. Run the `azds prep` command to prepare your application to run in a dev space. This command must be run from `dev-spaces/samples/java/getting-started/webfrontend` to prepare your application correctly:
+5. Uygulamanızı bir geliştirme alanında çalışacak şekilde hazırlamak için `azds prep` komutunu çalıştırın. Uygulamanızı doğru şekilde hazırlamak için bu komutun `dev-spaces/samples/java/getting-started/webfrontend` 'den çalıştırılması gerekir:
 
     ```bash
     azds prep --public
     ```
 
-    The Dev Spaces CLI's `azds prep` command generates Docker and Kubernetes assets with default settings. These files persist for the lifetime of the project, and they can be customized:
+    Dev Spaces CLı 'nın `azds prep` komutu, varsayılan ayarlarla Docker ve Kubernetes varlıkları oluşturur. Bu dosyalar projenin ömrü boyunca kalır ve özelleştirilebilir:
 
-    * `./Dockerfile` and `./Dockerfile.develop` describe the app's container image, and how the source code is built and runs within the container.
-    * `./charts/webfrontend` altındaki [Helm grafiği](https://helm.sh/docs/topics/charts/), kapsayıcının Kubernetes'de nasıl dağıtıldığını açıklar.
-    * `./azds.yaml` is the Azure Dev Spaces configuration file.
+    * `./Dockerfile` ve `./Dockerfile.develop` uygulamanın kapsayıcı görüntüsünü ve kaynak kodun, kapsayıcı içinde nasıl oluşturulup çalışacağını açıklamaktadır.
+    * [ altındaki ](https://helm.sh/docs/topics/charts/)Helm grafiği`./charts/webfrontend`, kapsayıcının Kubernetes'de nasıl dağıtıldığını açıklar.
+    * `./azds.yaml`, Azure Dev Spaces yapılandırma dosyasıdır.
 
-    For more information, see [How Azure Dev Spaces works and is configured](https://docs.microsoft.com/azure/dev-spaces/how-dev-spaces-works).
+    Daha fazla bilgi için bkz. [Azure dev Spaces nasıl çalıştığını ve nasıl yapılandırılır](https://docs.microsoft.com/azure/dev-spaces/how-dev-spaces-works).
 
-6. Build and run the application in AKS using the `azds up` command:
+6. `azds up` komutunu kullanarak AKS 'te uygulamayı derleyin ve çalıştırın:
 
     ```bash
     azds up
     ```
-    <a name="test_endpoint"></a>Scan the console output for information about the URL that was created by the `up` command. Şu biçimde olacaktır:
+    <a name="test_endpoint"></a>`up` komutu tarafından oluşturulan URL hakkında daha fazla bilgi için konsol çıkışını tarayın. Şu biçimde olacaktır:
 
     ```bash
     (pending registration) Service 'webfrontend' port 'http' will be available at '<url>'
     Service 'webfrontend' port 80 (TCP) is available at 'http://localhost:<port>'
     ```
-    Open this URL in a browser window, and you should see the web app. Kapsayıcı yürütülürken, terminal penceresine `stdout` ve `stderr` çıkışının akışı yapılır.
+    Bu URL 'YI bir tarayıcı penceresinde açın ve Web uygulamasını görmeniz gerekir. Kapsayıcı yürütülürken, terminal penceresine `stdout` ve `stderr` çıkışının akışı yapılır.
 
-8. Next, set up and deploy *mywebapi*:
+8. Ardından, *mywebapi*'i ayarlama ve dağıtma:
 
-    1. Change directory to `dev-spaces/samples/java/getting-started/mywebapi`
+    1. Dizini `dev-spaces/samples/java/getting-started/mywebapi` olarak değiştir
 
     2. Çalıştırın
 
@@ -161,47 +161,47 @@ For more information on using Azure Dev Spaces and multi-service development wit
         azds up -d
         ```
 
-## <a name="prepare-jenkins-server"></a>Prepare Jenkins server
+## <a name="prepare-jenkins-server"></a>Jenkins sunucusunu hazırlama
 
-In this section, you prepare the Jenkins server to run the sample CI pipeline.
+Bu bölümde, Jenkins sunucusunu örnek CI işlem hattını çalıştıracak şekilde hazırlarsınız.
 
-* Install plug-ins
-* Install Helm and Kubernetes CLI
-* Add credentials
+* Eklentileri yükler
+* Helk ve Kubernetes CLı 'yı yükler
+* Kimlik bilgileri ekle
 
-### <a name="install-plug-ins"></a>Install plug-ins
+### <a name="install-plug-ins"></a>Eklentileri yükler
 
-1. Sign in to your Jenkins server. Choose **Manage Jenkins > Manage Plugins**.
-2. On the **Available** tab, select the following plug-ins:
+1. Jenkins sunucunuzda oturum açın. **Eklentileri yönet > Jenkins 'ı Yönet**' i seçin.
+2. **Kullanılabilir** sekmesinde, aşağıdaki eklentileri seçin:
     * [Azure Dev Spaces](https://plugins.jenkins.io/azure-dev-spaces)
-    * [Azure Container Registry Tasks](https://plugins.jenkins.io/azure-container-registry-tasks)
-    * [Environment Injector](https://plugins.jenkins.io/envinject)
-    * [GitHub Integration](https://plugins.jenkins.io/github-pullrequest)
+    * [Azure Container Registry görevler](https://plugins.jenkins.io/azure-container-registry-tasks)
+    * [Ortam Injector](https://plugins.jenkins.io/envinject)
+    * [GitHub tümleştirmesi](https://plugins.jenkins.io/github-pullrequest)
 
-    If these plug-ins don't appear in the list, check the **Installed** tab to see if they're already installed.
+    Bu eklentiler listede görünmezse, zaten yüklü olup olmadığını görmek için **yüklü** sekmesini işaretleyin.
 
-3. To install the plug-ins, choose **Download now and install after restart**.
+3. Eklentileri yüklemek için **Şimdi İndir ' i ve yeniden başlattıktan sonra Yükle**' yi seçin.
 
-4. Restart your Jenkins server to complete the installation.
+4. Yüklemeyi gerçekleştirmek için Jenkins sunucunuzu yeniden başlatın.
 
-### <a name="install-helm-and-kubectl"></a>Install Helm and kubectl
+### <a name="install-helm-and-kubectl"></a>Helk ve kubectl 'yi yükler
 
-The sample pipeline uses Helm and kubectl to deploy to the dev space. When Jenkins is installed, it creates an admin account named *jenkins*. Both Helm and kubectl need to be accessible to the jenkins user.
+Örnek işlem hattı, geliştirme alanına dağıtmak için helk ve kubectl kullanır. Jenkins yüklendiğinde, *Jenkins*adlı bir yönetici hesabı oluşturur. Jenkins kullanıcısına hem helk hem de kubectl 'nin erişilebilir olması gerekir.
 
-1. Make an SSH connection to the Jenkins master. 
+1. Jenkins ana ile bir SSH bağlantısı oluşturun. 
 
-2. Switch to the `jenkins` user:
+2. `jenkins` kullanıcısına geç:
     ```bash
     sudo su jenkins
     ```
 
-3. Install the Helm CLI. For more information, see [Installing Helm](https://helm.sh/docs/using_helm/#installing-helm).
+3. Held CLı 'yı yükler. Daha fazla bilgi için bkz. [Held 'Yi yükleme](https://helm.sh/docs/using_helm/#installing-helm).
 
-4. Install kubectl. For more information, see [**az acs kubernetes install-cli**](https://helm.sh/docs/using_helm/#installing-helm).
+4. Kubectl 'yi yükler. Daha fazla bilgi için bkz. [**az ACS Kubernetes Install-CLI**](https://helm.sh/docs/using_helm/#installing-helm).
 
-### <a name="add-credentials-to-jenkins"></a>Add credentials to Jenkins
+### <a name="add-credentials-to-jenkins"></a>Jenkins 'e kimlik bilgileri ekleme
 
-1. Jenkins needs an Azure service principal for authenticating and accessing Azure resources. To create the service principal, Refer to the [Create service principal](https://docs.microsoft.com/azure/jenkins/tutorial-jenkins-deploy-web-app-azure-app-service#create-service-principal) section in the Deploy to Azure App Service tutorial. Be sure to save a copy of the output from `create-for-rbac` because you need that information to complete the next step. The output will look something like this:
+1. Jenkins 'in kimlik doğrulaması ve Azure kaynaklarına erişim için bir Azure hizmet sorumlusu olması gerekir. Hizmet sorumlusu oluşturmak için, dağıtım Azure App Service öğreticisindeki [hizmet sorumlusu oluşturma](https://docs.microsoft.com/azure/jenkins/tutorial-jenkins-deploy-web-app-azure-app-service#create-service-principal) bölümüne bakın. Sonraki adımı tamamlaması için bu bilgilere ihtiyacınız olduğundan çıkışın bir kopyasını `create-for-rbac` kaydettiğinizden emin olun. Çıktı şuna benzer şekilde görünecektir:
 
     ```json
     {
@@ -213,23 +213,23 @@ The sample pipeline uses Helm and kubectl to deploy to the dev space. When Jenki
     }
     ```
 
-2. Add a *Microsoft Azure Service Principal* credential type in Jenkins, using the service principal information from the previous step. The names in the screenshot below correspond to the output from `create-for-rbac`.
+2. Önceki adımdaki hizmet sorumlusu bilgilerini kullanarak Jenkins 'te bir *Microsoft Azure hizmet sorumlusu* kimlik bilgisi türü ekleyin. Aşağıdaki ekran görüntüsündeki adlar `create-for-rbac`çıktılarına karşılık gelir.
 
-    The **ID** field is the Jenkins credential name for your service principal. The example uses the value of `displayName` (in this instance, `xxxxxxxjenkinssp`), but you can use any text you want. This credential name is the value for the AZURE_CRED_ID environment variable in the next section.
+    **Kimlik** alanı, hizmet sorumlunuz Için Jenkins kimlik bilgisi adıdır. Örnek, `displayName` değerini (Bu örnekte, `xxxxxxxjenkinssp`) kullanır, ancak istediğiniz herhangi bir metni kullanabilirsiniz. Bu kimlik bilgisi adı, sonraki bölümde AZURE_CRED_ID ortam değişkeninin değeridir.
 
-    ![Add service principal credentials to Jenkins](media/tutorial-jenkins-dev-spaces/add-service-principal-credentials.png)
+    ![Jenkins 'e hizmet sorumlusu kimlik bilgileri ekleme](media/tutorial-jenkins-dev-spaces/add-service-principal-credentials.png)
 
-    The **Description** is optional. For more detailed instructions, see [Add service principal to Jenkins](https://docs.microsoft.com/azure/jenkins/tutorial-jenkins-deploy-web-app-azure-app-service#add-service-principal-to-jenkins) section in the Deploy to Azure App Service tutorial. 
+    **Açıklama** isteğe bağlıdır. Daha ayrıntılı yönergeler için, bkz. Azure App Service öğreticideki [Jenkins 'e hizmet sorumlusu ekleme](https://docs.microsoft.com/azure/jenkins/tutorial-jenkins-deploy-web-app-azure-app-service#add-service-principal-to-jenkins) bölümüne bakın. 
 
 
 
-3. To show your ACR credentials, run this command:
+3. ACR kimlik bilgilerinizi görüntülemek için şu komutu çalıştırın:
 
     ```bash
     az acr credential show -n <yourRegistryName>
     ```
 
-    Make a copy of the JSON output, which should look something like this:
+    JSON çıkışının bir kopyasını oluşturun ve şuna benzer şekilde görünmelidir:
 
     ```json
     {
@@ -247,35 +247,35 @@ The sample pipeline uses Helm and kubectl to deploy to the dev space. When Jenki
     }
     ```
 
-4. Add a *Username with password* credential type in Jenkins. The **username** is the username from the last step, in this example `acr01`. The **password** is the value for the first password, in this example `vGBP=zzzzzzzzzzzzzzzzzzzzzzzzzzz`. The **ID** of this credential is the value of ACR_CRED_ID.
+4. Jenkins 'te parola kimlik bilgisi türü *olan bir Kullanıcı adı* ekleyin. **Kullanıcı adı** , son adımdaki kullanıcı adıdır, bu örnekte `acr01`. **Parola** , ilk parolanın değeridir, bu örnekte `vGBP=zzzzzzzzzzzzzzzzzzzzzzzzzzz`. Bu kimlik bilgisinin **kimliği** ACR_CRED_ID değeridir.
 
-5. Set up an AKS credential. Add a *Kubernetes configuration (kubeconfig)* credential type in Jenkins (use the option "Enter directly"). To get the access credentials for your AKS cluster, run the following command:
+5. AKS kimlik bilgilerini ayarlayın. Jenkins 'te bir *Kubernetes yapılandırma (kubeconfig)* kimlik bilgisi türü ekleyin ("doğrudan gir" seçeneğini kullanın). AKS kümenizin erişim kimlik bilgilerini almak için aşağıdaki komutu çalıştırın:
 
     ```cmd
     az aks get-credentials -g MyResourceGroup -n <yourAKSName> -f -
     ```
 
-   The **ID** this credential is the value of KUBE_CONFIG_ID in the next section.
+   Bu kimlik bilgisinin **kimliği** , sonraki bölümde KUBE_CONFIG_ID değeridir.
 
 ## <a name="create-a-pipeline"></a>İşlem hattı oluşturma
 
-The scenario selected for the example pipeline is based on a real-world pattern: A pull request triggers a CI pipeline that builds and then deploys the proposed changes to an Azure dev space for testing and review. Depending on the outcome of the review, the changes are either merged and deployed to AKS or discarded. Finally, the dev space is removed.
+Örnek işlem hattı için seçilen senaryo gerçek bir düzeni temel alır: bir çekme isteği, test ve gözden geçirmek için önerilen değişiklikleri oluşturan ve ardından Azure dev alanına dağıtan bir CI işlem hattını tetikler. İncelemenin sonucuna bağlı olarak, değişiklikler birleştirilir ve AKS 'e dağıtılır ya da atılır. Son olarak, dev alanı kaldırılır.
 
-The Jenkins pipeline configuration and Jenkinsfile define the stages in the CI pipeline. This flowchart shows the pipeline stages and decision points defined by the Jenkinsfile:
+Jenkins ardışık düzen yapılandırması ve Jenkinsfile, CI işlem hattının aşamalarını tanımlar. Bu akış çizelgesi, Jenkinsfile tarafından tanımlanan işlem hattı aşamalarını ve karar noktalarını gösterir:
 
-![Jenkins pipeline flow](media/tutorial-jenkins-dev-spaces/jenkins-pipeline-flow.png)
+![Jenkins ardışık düzen akışı](media/tutorial-jenkins-dev-spaces/jenkins-pipeline-flow.png)
 
-1. Download a modified version of the *mywebapi* project from https://github.com/azure-devops/mywebapi. This project contains several files needed to create a pipeline, including the *Jenkinsfile*, *Dockerfiles*, and Helm chart.
+1. https://github.com/azure-devops/mywebapi*mywebapi* projesinin değiştirilmiş bir sürümünü indirin. Bu proje, *Jenkinsfile*, *Dockerfiles*ve helk grafik gibi bir işlem hattı oluşturmak için gereken çeşitli dosyaları içerir.
 
-2. Log into Jenkins. From the menu on the left, select **Add Item**.
+2. Jenkins 'de oturum açın. Soldaki menüden **öğe Ekle**' yi seçin.
 
-3. Select **Pipeline**, and then enter a name in the **Enter an item name** box. Select **OK**, and then the pipeline configuration screen will automatically open.
+3. İşlem **hattı**' nı seçin ve ardından bir **öğe adı girin** kutusuna bir ad girin. **Tamam**' ı seçin ve ardından işlem hattı yapılandırma ekranı otomatik olarak açılır.
 
-4. On the **General** tab, check **Prepare an environment for the run**. 
+4. **Genel** sekmesinde, **çalıştırma Için bir ortam hazırlayın**' ı işaretleyin. 
 
-5. Check **Keep Jenkins Environment Variables** and **Keep Jenkins Build Variables**.
+5. **Jenkins ortam değişkenlerini koruyun** ve **Jenkins derleme değişkenlerini koruyun**.
 
-6. In the **Properties Content** box, enter the following environment variables:
+6. **Özellikler içerik** kutusuna aşağıdaki ortam değişkenlerini girin:
 
     ```
     AZURE_CRED_ID=[your credential ID of service principal]
@@ -292,19 +292,19 @@ The Jenkins pipeline configuration and Jenkinsfile define the stages in the CI p
     TEST_ENDPOINT=[your web frontend end point for testing. Should be webfrontend.XXXXXXXXXXXXXXXXXXX.xxxxxx.aksapp.io]
     ```
 
-    Using the sample values given in the preceding sections, the list of environment variables should look something like this:
+    Önceki bölümlerde verilen örnek değerleri kullanarak, ortam değişkenlerinin listesi şuna benzer görünmelidir:
 
-    ![Jenkins pipeline environment variables](media/tutorial-jenkins-dev-spaces/jenkins-pipeline-environment.png)
+    ![Jenkins ardışık düzen ortam değişkenleri](media/tutorial-jenkins-dev-spaces/jenkins-pipeline-environment.png)
 
-7. Choose **Pipeline script from SCM** in **Pipeline > Definition**.
-8. In **SCM**, choose **Git** and then enter your repo URL.
-9. In **Branch Specifier**, enter `refs/remotes/origin/${GITHUB_PR_SOURCE_BRANCH}`.
-10. Fill in the SCM repo URL and script path "Jenkinsfile".
-11. **Lightweight checkout** should be checked.
+7. İşlem **hattı > TANıMıNDA** **SCM 'den işlem hattı betiği** seçin.
+8. **SCM**'de **Git** ' i SEÇIN ve ardından depo URL 'nizi girin.
+9. **Dal belirticisi**' nde `refs/remotes/origin/${GITHUB_PR_SOURCE_BRANCH}`girin.
+10. SCM deposu URL 'sini ve "Jenkinsfile" komut dosyası yolunu girin.
+11. **Hafif kullanıma alma** denetlenmelidir.
 
-## <a name="create-a-pull-request-to-trigger-the-pipeline"></a>Create a pull request to trigger the pipeline
+## <a name="create-a-pull-request-to-trigger-the-pipeline"></a>İşlem hattını tetiklemek için çekme isteği oluşturma
 
-To complete step 3 in this section, you will need to comment part of the Jenkinsfile, otherwise you will get a 404 error when you try to view the new and old versions side by side. By default, when you choose to merge the PR, the previous shared version of mywebapi will be removed and replaced by the new version. Make the following change to the Jenkinsfile before completing step 1:
+Bu bölümdeki 3. adımı tamamlayabilmeniz için Jenkinsfile ' ın bir kısmına yorum yapmanız gerekir, aksi halde yeni ve eski sürümleri yan yana görüntülemeye çalıştığınızda 404 hatası alırsınız. Varsayılan olarak, çekme isteğini birleştirmeyi seçtiğinizde, mywebapi öğesinin önceki paylaşılan sürümü kaldırılacak ve yeni sürüm tarafından değiştirilmeyecektir. Adım 1 ' i tamamlamadan önce Jenkinsfile dosyasında aşağıdaki değişikliği yapın:
 
 ```Groovy
     if (userInput == true) {
@@ -333,7 +333,7 @@ To complete step 3 in this section, you will need to comment part of the Jenkins
     }
 ```
 
-1. Make a change to `mywebapi/src/main/java/com/ms/sample/mywebapi/Application.java`and then create a pull request. Örnek:
+1. `mywebapi/src/main/java/com/ms/sample/mywebapi/Application.java`bir değişiklik yapın ve ardından bir çekme isteği oluşturun. Örneğin:
 
     ```java
     public String index() {
@@ -341,23 +341,23 @@ To complete step 3 in this section, you will need to comment part of the Jenkins
     }
     ```
 
-2. Sign into Jenkins and select the pipeline name, and then choose **Build Now**. 
+2. Jenkins 'de oturum açın ve işlem hattı adını seçip **Şimdi Oluştur**' u seçin. 
 
-    You can also set up a *webhook* to automatically trigger the Jenkins pipeline. When a pull request is entered, GitHub issues a POST to Jenkins, triggering the pipeline. For more information about setting up a webhook, see [Connect Jenkins to GitHub](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/jenkins/tutorial-jenkins-deploy-web-app-azure-app-service.md#connect-jenkins-to-github).
+    Ayrıca, Jenkins ardışık düzenini otomatik olarak tetiklemek için bir *Web kancası* da ayarlayabilirsiniz. Bir çekme isteği girildiğinde, GitHub, ardışık düzeni tetikleyen Jenkins 'e bir GÖNDERI yayınlar. Web kancası ayarlama hakkında daha fazla bilgi için bkz. [Jenkins 'ı GitHub 'A bağlama](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/jenkins/tutorial-jenkins-deploy-web-app-azure-app-service.md#connect-jenkins-to-github).
 
-3. Compare changes to the current shared version:
+3. Değişiklikleri geçerli paylaşılan sürümle karşılaştırın:
 
-    1. Open your browser and navigate to the shared version `https://webfrontend.XXXXXXXXXXXXXXXXXXX.eastus.aksapp.io`. TEST_ENDPOINT contains the URL.
+    1. Tarayıcınızı açın ve `https://webfrontend.XXXXXXXXXXXXXXXXXXX.eastus.aksapp.io`paylaşılan sürüme gidin. TEST_ENDPOINT URL 'YI içerir.
 
-    2. Open another tab and then enter the PR dev space URL. It will be similar to `https://<yourdevspacename>.s.webfrontend.XXXXXXXXXXXXXXXXXXX.eastus.aksapp.io`. You'll find the link in **Build History > <build#> > Console Output**  for the Jenkins job. Search the page for `aksapp`, or to see only the prefix, search for `azdsprefix`.
+    2. Başka bir sekme açın ve ardından PR dev Space URL 'sini girin. `https://<yourdevspacename>.s.webfrontend.XXXXXXXXXXXXXXXXXXX.eastus.aksapp.io`benzer olacaktır. Bağlantıyı, Jenkins işi için derleme **geçmişi > < Build # > > konsol çıktısına** bulacaksınız. Sayfada `aksapp`arayın veya yalnızca öneki görmek için, `azdsprefix`arayın.
 
  
 
-### <a name="constructing-the-url-to-the-child-dev-space"></a>Constructing the URL to the child dev space
+### <a name="constructing-the-url-to-the-child-dev-space"></a>Alt dev alanının URL 'sini oluşturma
 
-When you file a pull request, Jenkins creates a child dev space based on the team's shared dev space and runs the code from your pull request in that child dev space. The URL to the child dev space takes the form `http://$env.azdsprefix.<test_endpoint>`. 
+Bir çekme isteği oluşturduğunuzda, Jenkins ekibin paylaşılan dev alanını temel alan bir alt dev alanı oluşturur ve bu alt dev alanındaki çekme talebinizden kodu çalıştırır. Alt dev Space URL 'SI `http://$env.azdsprefix.<test_endpoint>`formu alır. 
 
-**$env.azdsprefix** is set during pipeline execution by the Azure Dev Spaces plug-in by **devSpacesCreate**:
+**$env. azdspredüzeltmesini** , **Devspacescreate**tarafından Azure dev Spaces eklentisinin işlem hattı yürütmesi sırasında ayarlanır:
 
 ```Groovy
 stage('create dev space') {
@@ -370,9 +370,9 @@ stage('create dev space') {
 }
 ```
 
-The `test_endpoint` is the URL to the webfrontend app you previously deployed using `azds up`in [Deploy sample apps to the AKS cluster, Step 7](#test_endpoint). The value of `$env.TEST_ENDPOINT` is set in the pipeline configuration. 
+`test_endpoint`, [AKS kümesine örnek uygulamalar dağıtma '](#test_endpoint)da daha önce `azds up`kullanarak dağıttığınız webön uç uygulamasının URL 'Sidir, adım 7 ' dir. `$env.TEST_ENDPOINT` değeri, işlem hattı yapılandırmasında ayarlanır. 
 
-The following code snippet shows how the child dev space URL is used in the `smoketest` stage. The code checks to see if the child dev space TEST_ENDPOINT is available, and if so, downloads the greeting text to stdout:
+Aşağıdaki kod parçacığı, `smoketest` aşamada alt dev Space URL 'sinin nasıl kullanıldığını gösterir. Kod, alt dev Space TEST_ENDPOINT kullanılabilir olup olmadığını denetler ve varsa, selamlama metnini stdout 'a indirir:
 
 ```Groovy
 stage('smoketest') {
@@ -401,7 +401,7 @@ stage('smoketest') {
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-When you're done using the sample application, clean up Azure resources by deleting the resource group:
+Örnek uygulamayı kullanarak işiniz bittiğinde, kaynak grubunu silerek Azure kaynaklarını temizleyin:
 
 ```bash
 az group delete -y --no-wait -n MyResourceGroup
@@ -409,16 +409,16 @@ az group delete -y --no-wait -n MyResourceGroup
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-In this article, you learned how to use the Azure Dev Spaces plug-in for Jenkins and the Azure Container Registry plug-in to build code and deploy to a dev space.
+Bu makalede, Jenkins için Azure Dev Spaces eklentisinin ve bir geliştirme alanına dağıtım ve dağıtım alanı için Azure Container Registry eklentisinin nasıl kullanılacağını öğrendiniz.
 
-The following list of resources provides more information on Azure Dev Spaces, ACR Tasks, and CI/CD with Jenkins.
+Aşağıdaki kaynak listesi Azure Dev Spaces, ACR görevleri ve Jenkins ile CI/CD hakkında daha fazla bilgi sağlar.
 
 Azure Dev Spaces:
 * [Azure Dev Spaces çalışma ve yapılandırma süreçleri](https://docs.microsoft.com/azure/dev-spaces/how-dev-spaces-works)
 
-ACR Tasks:
+ACR görevleri:
 * [ACR Görevleri ile işletim sistemi ve çerçeve düzeltme eki uygulamayı otomatikleştirme](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-overview)
-* [Automatic build on code commit](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-overview)
+* [Kod işlemede otomatik derleme](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-overview)
 
-CI/CD with Jenkins on Azure:
-* [Jenkins continuous deployment](https://docs.microsoft.com/azure/aks/jenkins-continuous-deployment)
+Azure 'da Jenkins ile CI/CD:
+* [Jenkins sürekli dağıtımı](https://docs.microsoft.com/azure/aks/jenkins-continuous-deployment)

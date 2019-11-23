@@ -40,7 +40,7 @@ Service Fabric izlenen yükseltmelerde, uygulama Yöneticisi Service Fabric uygu
 Uygulama Projesi, **Visualobjectsapplication** öğesine sağ tıklayıp **Yayımla** komutunu seçerek uygulamayı derleyin ve yayımlayın.  Daha fazla bilgi için bkz. [uygulama yükseltme öğreticisini Service Fabric](service-fabric-application-upgrade-tutorial.md).  Alternatif olarak, uygulamanızı dağıtmak için PowerShell 'i de kullanabilirsiniz.
 
 > [!NOTE]
-> PowerShell 'de Service Fabric komutlarının herhangi biri kullanılmadan önce, önce `Connect-ServiceFabricCluster` cmdlet 'ini kullanarak kümeye bağlanmanız gerekir. Benzer şekilde, kümenin yerel makinenizde zaten ayarlandığı varsayılır. [Service Fabric geliştirme ortamınızı ayarlama](service-fabric-get-started.md)hakkındaki makaleye bakın.
+> PowerShell 'de Service Fabric komutlarından herhangi biri kullanılmadan önce, önce `Connect-ServiceFabricCluster` cmdlet 'ini kullanarak kümeye bağlanmanız gerekir. Benzer şekilde, kümenin yerel makinenizde zaten ayarlandığı varsayılır. [Service Fabric geliştirme ortamınızı ayarlama](service-fabric-get-started.md)hakkındaki makaleye bakın.
 > 
 > 
 
@@ -51,7 +51,7 @@ Visual Studio 'da projeyi oluşturduktan sonra, uygulama paketini ımabir görü
 ## <a name="step-2-update-the-visual-objects-sample"></a>2\. Adım: görsel nesneler örneğini güncelleştirme
 Adım 1 ' de dağıtılan sürümde, görsel nesnelerin döndürüleceğini fark edebilirsiniz. Bu uygulamayı görsel nesnelerin de her yerde de döndürelim.
 
-VisualObjects çözüm içindeki VisualObjects. ActorService projesini seçin ve StatefulVisualObjectActor.cs dosyasını açın. Bu dosya içinde `MoveObject` yöntemine gidin, açıklama `this.State.Move()` ' i ve `this.State.Move(true)` ' yi kaldırın. Bu değişiklik, hizmet yükseltildikten sonra nesneleri döndürür.
+VisualObjects çözüm içindeki VisualObjects. ActorService projesini seçin ve StatefulVisualObjectActor.cs dosyasını açın. Bu dosya içinde, yöntem `MoveObject`gidin, `this.State.Move()`yorum yapın ve `this.State.Move(true)`seçeneğini kaldırın. Bu değişiklik, hizmet yükseltildikten sonra nesneleri döndürür.
 
 Ayrıca, Project **Visualobjects. ActorService**projesinin *servicemanifest. xml* dosyasını (PackageRoot altında) güncelleştirmemiz gerekir. *CodePackage* ve hizmet sürümünü 2,0 olarak ve *servicemanifest. xml* dosyasında karşılık gelen satırları güncelleştirin.
 Bildirim dosyasının değişiklik yapması için çözüme sağ tıkladıktan sonra Visual Studio *bildirim dosyalarını Düzenle* seçeneğini kullanabilirsiniz.
@@ -94,7 +94,7 @@ Artık uygulama oluşturulmuştur ve yükseltilmeye hazırdır. Yönetici olarak
 
 Uygulama paketi, Service Fabric SDK- *Samples\services\stateful\visualobjects\visualobjects\obj\x64\debug*öğesini sıkıştırdığınızda aşağıdaki göreli yol altında depolanır. Bu dizinde uygulama paketinin depolandığı bir "paket" klasörü bulmalısınız. En son derleme olduğundan emin olmak için zaman damgalarını denetleyin (yolları uygun şekilde değiştirmeniz gerekebilir).
 
-Şimdi güncelleştirilmiş uygulama paketini ımagesme Service Fabric kopyalayalim (uygulama paketlerinin Service Fabric tarafından depolandığı yer). *Applicationpackagepathınımaitstore* parametresi, uygulama paketini bulabileceği Service Fabric bilgilendirir. Güncelleştirilmiş uygulamayı aşağıdaki komutla "VisualObjects @ no__t-0V2" içine yerleştirdik (yolları uygun bir şekilde değiştirmeniz gerekebilir).
+Şimdi güncelleştirilmiş uygulama paketini ımagesme Service Fabric kopyalayalim (uygulama paketlerinin Service Fabric tarafından depolandığı yer). *Applicationpackagepathınımaitstore* parametresi, uygulama paketini bulabileceği Service Fabric bilgilendirir. Güncelleştirilmiş uygulamayı aşağıdaki komutla "VisualObjects\_v2" içine yerleştirdik (yolları uygun bir şekilde değiştirmeniz gerekebilir).
 
 ```powershell
 Copy-ServiceFabricApplicationPackage -ApplicationPackagePath .\Samples\Services\Stateful\VisualObjects\VisualObjects\obj\x64\Debug\Package -ApplicationPackagePathInImageStore "VisualObjects\_V2"

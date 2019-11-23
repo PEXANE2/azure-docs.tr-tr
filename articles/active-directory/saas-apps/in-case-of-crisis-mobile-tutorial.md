@@ -83,7 +83,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-1.  **Temel SAML yapılandırması** bölümünde, uygulama **IDP** başlatılmış modda önceden yapılandırılmıştır ve gerekli URL 'ler Azure ile önceden doldurulmuştur. Kullanıcının @no__t **Kaydet**-1düğmesine tıklayarak yapılandırmayı kaydetmesi gerekir.
+1.  **Temel SAML yapılandırması** bölümünde, uygulama **IDP** başlatılmış modda önceden yapılandırılmıştır ve gerekli URL 'ler Azure ile önceden doldurulmuştur. Kullanıcının  **Kaydet** düğmesine tıklayarak yapılandırmayı kaydetmesi gerekir.
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama Sertifikası** bölümünde **sertifika (ham)** bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
@@ -93,19 +93,19 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![Çoklu oturum açma özellikleri](./media/in-case-of-crisis-mobile-tutorial/properties.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
 1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. Seçin **yeni kullanıcı** ekranın üstünde.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına username@companydomain.extension girin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
 Bu bölümde, B. Simon 'u, çapraz mobil şirket durumunda erişim izni vererek Azure çoklu oturum açma özelliğini kullanacak şekilde etkinleştireceksiniz.
 
@@ -113,7 +113,7 @@ Bu bölümde, B. Simon 'u, çapraz mobil şirket durumunda erişim izni vererek 
 1. Uygulamalar listesinde, **çapraz mobil durumunda**' i seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
-   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
+   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
 
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
@@ -125,15 +125,15 @@ Bu bölümde, B. Simon 'u, çapraz mobil şirket durumunda erişim izni vererek 
 
 ## <a name="configure-in-case-of-crisis---mobile-sso"></a>Çapraz mobil SSO ıhtimaline karşı yapılandırma
 
-**Çapraz mobil taraf durumunda** çoklu oturum açma 'yı yapılandırmak için, indirilen **sertifikayı (ham)** ve Azure Portal ' den [çapraz mobil destek ekibi olması durumunda](https://www.rockdovesolutions.com/features/enterprise-ready)' dan ' e kopyalanmış **Kullanıcı erişim URL 'sini** göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
+**Çapraz mobil taraf durumunda** çoklu oturum açma 'yı yapılandırmak için, indirilen **sertifikayı (ham)** ve Azure Portal ' den [çapraz mobil destek ekibi olması durumunda](https://www.rockdovesolutions.com/features/enterprise-ready)' dan ' e kopyalanmış **Kullanıcı erişim URL 'sini** göndermeniz gerekir. Bunlar, her iki kenarı da düzgün ayarlandığından SAML SSO bağlantı sağlamak için bu ayarı ayarlayın.
 
 ### <a name="create-in-case-of-crisis---mobile-test-user"></a>Çapraz mobil test kullanıcısı durumunda oluştur
 
-Bu bölümde, çapraz mobil mobil durumunda Britta Simon adlı bir Kullanıcı oluşturacaksınız. Çapraz mobil platform söz konusu olduğunda kullanıcıları eklemek için [çapraz mobil destek ekibi](https://www.rockdovesolutions.com/features/enterprise-ready) ile birlikte çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, çapraz mobil mobil durumunda Britta Simon adlı bir Kullanıcı oluşturacaksınız. Çapraz mobil platform söz konusu olduğunda kullanıcıları eklemek için [çapraz mobil destek ekibi](https://www.rockdovesolutions.com/features/enterprise-ready) ile birlikte çalışın. Kullanıcı oluşturulmalı ve çoklu oturum açma kullanmadan önce etkinleştirildi.
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
 
 Erişim panelinde çapraz mobil kutucuk durumunda öğesine tıkladığınızda, SSO 'yu ayarladığınız çapraz mobil için otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 

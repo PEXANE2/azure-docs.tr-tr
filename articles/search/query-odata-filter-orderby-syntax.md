@@ -91,9 +91,9 @@ Bu örnekte, Aralık değişkeni `room` `room/Type` alan yolunda görüntülenir
 
 Alan yolları [Azure BILIŞSEL arama REST API](https://docs.microsoft.com/rest/api/searchservice/)'lerinin birçok parametresi için kullanılır. Aşağıdaki tabloda, kullanılabilecekleri tüm konumlar ve kullanımları üzerinde kısıtlamalar listelenmiştir:
 
-| eklentisi | Parametre adı | Kısıtlamalar |
+| API | Parametre adı | Kısıtlamalar |
 | --- | --- | --- |
-| Dizin [Oluştur](https://docs.microsoft.com/rest/api/searchservice/create-index) veya [Güncelleştir](https://docs.microsoft.com/rest/api/searchservice/update-index) | `suggesters/sourceFields` | Hiçbiri |
+| Dizin [Oluştur](https://docs.microsoft.com/rest/api/searchservice/create-index) veya [Güncelleştir](https://docs.microsoft.com/rest/api/searchservice/update-index) | `suggesters/sourceFields` | None |
 | Dizin [Oluştur](https://docs.microsoft.com/rest/api/searchservice/create-index) veya [Güncelleştir](https://docs.microsoft.com/rest/api/searchservice/update-index) | `scoringProfiles/text/weights` | Yalnızca **aranabilir** alanlara başvurabilir |
 | Dizin [Oluştur](https://docs.microsoft.com/rest/api/searchservice/create-index) veya [Güncelleştir](https://docs.microsoft.com/rest/api/searchservice/update-index) | `scoringProfiles/functions/fieldName` | Yalnızca **filtrelenebilir** alanlara başvurabilir |
 | [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `queryType` ne zaman `search` `full` | Yalnızca **aranabilir** alanlara başvurabilir |
@@ -218,7 +218,7 @@ Etkileşimli bir sözdizimi diyagramı da kullanılabilir:
 > [!NOTE]
 > Tüm EBNF için bkz. [Azure bilişsel arama Için OData ifadesi söz dizimi başvurusu](search-query-odata-syntax-reference.md) .
 
-**$OrderBy** ve **$Select** parametreleri, daha basit ifadelerin virgülle ayrılmış listeleridir. **$Filter** parametresi, daha basit alt ifadelerden oluşan bir Boolean ifadedir. Bu alt ifadeler [`and`, `or`ve `not`](search-query-odata-logical-operators.md)gibi mantıksal işleçler, [`eq`, `lt`, `gt`, vb](search-query-odata-comparison-operators.md). gibi karşılaştırma işleçleri ve [`any` ve @no__t_10 gibi koleksiyon işleçleri kullanılarak birleştirilir _ ](search-query-odata-collection-operators.md).
+**$OrderBy** ve **$Select** parametreleri, daha basit ifadelerin virgülle ayrılmış listeleridir. **$Filter** parametresi, daha basit alt ifadelerden oluşan bir Boolean ifadedir. Bu alt ifadeler [`and`, `or`ve `not`](search-query-odata-logical-operators.md)gibi mantıksal işleçler, [`eq`, `lt`, `gt`, vb](search-query-odata-comparison-operators.md). gibi karşılaştırma işleçleri ve [`any` ve `all`](search-query-odata-collection-operators.md)gibi koleksiyon işleçleri kullanılarak birleştirilir.
 
 **$Filter**, **$OrderBy**ve **$Select** parametreleri aşağıdaki makalelerde daha ayrıntılı bir şekilde araştırılabilir:
 

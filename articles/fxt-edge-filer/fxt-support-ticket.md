@@ -26,12 +26,12 @@ Microsoft Müşteri Hizmetleri ve desteği ile bir destek bileti açmak için Az
    ![Boş destek isteği formunun ekran görüntüsü](media/fxt-support-blank.png)
 
 1. İstek formunu doldurun.  
-    1. **Temel bilgiler** sekmesinde, ``Technical`` ' de **sorun türünü** seçin. 
+    1. **Temel bilgiler** sekmesinde ``Technical``**sorun türünü** seçin. 
     1. Aboneliğinizi seçin. 
     1. **Hizmet**altında **Azure FXT Edge Filer**' ı seçin. Bulmak için **tüm hizmetler** filtre denetimine tıklamanız gerekebilir. 
     1. Bir **Özet** girin ve **sorun türünü**seçin. 
-    ![Boş destek istek biçimi @ no__t-1 
-    1. Devam etmek için **İleri** 'ye tıklayın. 
+    boş destek isteği formunun ekran görüntüsünü ![](media/fxt-support-populated.png) 
+    1. Devam etmek için **İleri** 'yi tıklatın. 
 1. **Ayrıntılar** sekmesinde, sorun ve sizinle iletişim kurma hakkında daha fazla bilgi ekleyin. Sorunla ilgili bir dosyayı karşıya yükleyebilirsiniz. 
 1. **Gözden geçir + oluştur**' da, bilgileri denetleyin ve isteğinizi göndermek için **Oluştur** düğmesine tıklayın.
 

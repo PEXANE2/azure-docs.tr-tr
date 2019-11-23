@@ -34,7 +34,7 @@ Senaryonuz için yapılandırılmış paylaşılan bir görüntünün kullanılm
 * **Uygulamaları önceden yükler.** İşletim düğümleri bir başlangıç göreviyle sağlandıktan sonra uygulamaları yüklemekten daha verimli ve daha az hata, işletim sistemi diskine önceden yükleme.
 * **Büyük miktarlarda veriyi bir kez kopyalayın.** Yönetilen bir görüntünün veri disklerine kopyalayarak, yönetilen paylaşılan görüntünün statik veri parçasını oluşturun. Bu yalnızca bir kez yapılmalıdır ve verileri havuzun her bir düğümü için kullanılabilir hale getirir.
 * **Daha büyük boyutlarda havuzları büyütün.** Paylaşılan görüntü Galerisi ile, daha fazla paylaşılan görüntü çoğaltmalarıyla birlikte özelleştirilmiş görüntülerinize sahip daha büyük havuzlar da oluşturabilirsiniz.
-* **Özel görüntüden daha iyi performans.** Paylaşılan görüntüleri kullanarak havuzun kararlı duruma ulaşması için gereken süre% 25 daha hızlı ve VM boşta kalma gecikmesi% 30 ' a kadar daha kısadır.
+* **Özel görüntüden daha iyi performans.** Paylaşılan görüntüleri kullanarak havuzun kararlı duruma ulaşması için gereken süre %25 daha hızlı ve VM boşta kalma gecikmesi %30 ' a kadar daha kısadır.
 * **Daha kolay yönetim için görüntü sürümü oluşturma ve gruplama.** Görüntü gruplandırma tanımı, görüntünün neden oluşturulduğu, ne kadar işletim sistemi olduğu ve görüntüyü kullanma hakkında bilgi içeren bilgileri içerir. Görüntülerin gruplandırılması, daha kolay görüntü yönetimine olanak tanır. Daha fazla bilgi için bkz. [görüntü tanımları](../virtual-machines/windows/shared-image-galleries.md#image-definitions).
 
 ## <a name="prerequisites"></a>Önkoşullar
@@ -85,7 +85,7 @@ Yönetilen görüntünüzü başarıyla oluşturduktan sonra, özel görüntün�
 
 ## <a name="create-a-pool-from-a-shared-image-using-the-azure-cli"></a>Azure CLı kullanarak paylaşılan görüntüden havuz oluşturma
 
-Azure CLı kullanarak paylaşılan Görüntinizden bir havuz oluşturmak için `az batch pool create` komutunu kullanın. @No__t-0 alanında paylaşılan görüntü KIMLIĞINI belirtin. İşletim sistemi türü ve SKU 'sunun @no__t tarafından belirtilen sürümlerle eşleştiğinden emin olun-0
+Azure CLı kullanarak paylaşılan Görüntinizden bir havuz oluşturmak için `az batch pool create` komutunu kullanın. `--image` alanında paylaşılan görüntü KIMLIĞINI belirtin. İşletim sistemi türü ve SKU 'sunun `--node-agent-sku-id` tarafından belirtilen sürümlerle eşleştiğinden emin olun
 
 ```azurecli
 az batch pool create \
@@ -148,7 +148,7 @@ Paylaşılan bir görüntü kullanarak yüzlerce veya binlerce VM veya daha fazl
 
 * **Paylaşılan görüntü Galerisi çoğaltma numaraları.**  En fazla 600 örneği olan her havuz için en az bir çoğaltma tutmanız önerilir. Örneğin, 3000 VM 'Ler içeren bir havuz oluşturuyorsanız, resminizin en az 5 çoğaltmasını tutmanız gerekir. Daha iyi performans için en düşük gereksinimlerden her zaman daha fazla çoğaltma tutulması önerilir.
 
-* **Yeniden boyutlandırma zaman aşımı.** Havuzunuz sabit sayıda düğüm içeriyorsa (otomatik ölçeklendirme yoksa), havuzun boyutuna bağlı olarak havuzun `resizeTimeout` özelliğini arttırın. Her 1000 VM için önerilen yeniden boyutlandırma zaman aşımı en az 15 dakikadır. Örneğin, 2000 VM içeren bir havuz için önerilen yeniden boyutlandırma zaman aşımı süresi en az 30 dakikadır.
+* **Yeniden boyutlandırma zaman aşımı.** Havuzunuz sabit sayıda düğüm içeriyorsa (otomatik ölçeklendirme yoksa) havuz boyutuna bağlı olarak havuzun `resizeTimeout` özelliğini arttırın. Her 1000 VM için önerilen yeniden boyutlandırma zaman aşımı en az 15 dakikadır. Örneğin, 2000 VM içeren bir havuz için önerilen yeniden boyutlandırma zaman aşımı süresi en az 30 dakikadır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

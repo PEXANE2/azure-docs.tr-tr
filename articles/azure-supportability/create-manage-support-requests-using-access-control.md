@@ -33,7 +33,7 @@ Destek isteği Yönetimi ' nde, destek istekleri oluşturup yönetebilmek için 
 
 Aşağıdaki makalede, Azure portal destek istekleri oluşturmak ve yönetmek için Azure 'un özel rol tabanlı Access Control (RBAC) nasıl kullanabileceğiniz açıklanmaktadır.
 
-## <a name="getting-started"></a>Başlangıç
+## <a name="getting-started"></a>Başlarken
 
 Yukarıdaki örneği kullanarak, abonelik sahibi tarafından abonelikte özel bir RBAC rolü atandıysa, kaynağınız için bir destek isteği oluşturabilirsiniz.
 Azure PowerShell, Azure komut satırı arabirimi (CLı) ve REST API kullanılarak [özel RBAC rolleri](https://azure.microsoft.com/documentation/articles/role-based-access-control-custom-roles/) oluşturulabilir.
@@ -95,7 +95,7 @@ Bu abonelik kapsamındaki kaynaklar için destek bileti oluşturma ve yönetme o
 
     ![Yeni destek isteği](./media/create-manage-support-requests-using-access-control/new-support-request.png)
 
-8. "Tüm destek istekleri" ali ' ne tıklamak bu abonelik için oluşturulan Destek isteklerinin listesini görebilir ![Case Ayrıntıları görünümü @ no__t-1
+8. "Tüm destek istekleri" ali ' ne tıklamak, bu abonelik için oluşturulan Destek isteklerinin listesini görebilir ![durum ayrıntıları görünümü](./media/create-manage-support-requests-using-access-control/case-details-view.png)
 
 ## <a name="remove-support-request-access-in-the-azure-portal"></a>Azure portal destek isteği erişimini kaldırma
 

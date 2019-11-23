@@ -24,7 +24,7 @@ ms.locfileid: "72173453"
 # <a name="service-remoting-in-c-with-reliable-services"></a>Reliable Services C# ile hizmet uzaktan iletişimi
 
 > [!div class="op_single_selector"]
-> * [C#Windows 'da](service-fabric-reliable-services-communication-remoting.md)
+> * [Windows üzerinde C#](service-fabric-reliable-services-communication-remoting.md)
 > * [Linux üzerinde Java](service-fabric-reliable-services-communication-remoting-java.md)
 >
 >
@@ -35,11 +35,11 @@ Bir Web API 'SI, Windows Communication Foundation veya diğerleri gibi belirli b
 
 İki basit adımda bir hizmet için uzaktan iletişim kurabilirsiniz:
 
-1. Hizmetinizin uygulanması için bir arabirim oluşturun. Bu arabirim, hizmetinize bir uzak yordam çağrısı için kullanılabilen yöntemleri tanımlar. Yöntemler görev döndüren zaman uyumsuz yöntemler olmalıdır. Hizmetin bir uzaktan iletişim arabirimine sahip olduğunu bildirmek için arabirimin `Microsoft.ServiceFabric.Services.Remoting.IService` uygulaması gerekir.
-2. Hizmetinizde uzaktan iletişim dinleyicisi kullanın. Uzaktan iletişim dinleyicisi, uzaktan iletişim özellikleri sağlayan `ICommunicationListener` uygulamasıdır. @No__t-0 ad alanı, varsayılan uzaktan iletişim aktarım protokolünü kullanarak uzaktan iletişim dinleyicisi oluşturmak için kullanılabilecek hem durum bilgisiz hem de durum bilgisi olan hizmetler için `CreateServiceRemotingInstanceListeners` uzantı yöntemini içerir.
+1. Hizmetinizin uygulanması için bir arabirim oluşturun. Bu arabirim, hizmetinize bir uzak yordam çağrısı için kullanılabilen yöntemleri tanımlar. Yöntemler görev döndüren zaman uyumsuz yöntemler olmalıdır. Arabirimin, hizmetin uzaktan iletişim arabirimine sahip olduğunu bildirmek için `Microsoft.ServiceFabric.Services.Remoting.IService` uygulaması gerekir.
+2. Hizmetinizde uzaktan iletişim dinleyicisi kullanın. Uzaktan iletişim dinleyicisi, uzaktan iletişim özellikleri sağlayan bir `ICommunicationListener` uygulamasıdır. `Microsoft.ServiceFabric.Services.Remoting.Runtime` ad alanı, varsayılan uzaktan iletişim aktarımı protokolünü kullanarak bir uzaktan iletişim dinleyicisi oluşturmak için kullanılabilecek hem durum bilgisiz hem de durum bilgisi olan hizmetler için `CreateServiceRemotingInstanceListeners` genişletme yöntemini içerir.
 
 >[!NOTE]
->@No__t-0 ad alanı, `Microsoft.ServiceFabric.Services.Remoting` adlı ayrı bir NuGet paketi olarak kullanılabilir.
+>`Remoting` ad alanı, `Microsoft.ServiceFabric.Services.Remoting`adlı ayrı bir NuGet paketi olarak kullanılabilir.
 
 Örneğin, aşağıdaki durum bilgisi olmayan hizmet bir uzak yordam çağrısı üzerinden "Merhaba Dünya" almak için tek bir yöntem sunar.
 
@@ -80,7 +80,7 @@ class MyService : StatelessService, IMyService
 
 ## <a name="call-remote-service-methods"></a>Uzak hizmet yöntemlerini çağırma
 
-Uzaktan iletişim yığınını kullanarak bir hizmette Yöntemler çağırmak, `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxy` sınıfı aracılığıyla hizmete yerel bir proxy kullanılarak yapılır. @No__t-0 yöntemi, hizmetin uyguladığı arabirimi kullanarak bir yerel ara sunucu oluşturur. Bu proxy ile, arabirimdeki yöntemleri uzaktan çağırabilirsiniz.
+Uzaktan iletişim yığınını kullanarak bir hizmette Yöntemler çağırmak, `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxy` sınıfı aracılığıyla hizmete yerel bir proxy kullanılarak yapılır. `ServiceProxy` yöntemi, hizmetin uyguladığı arabirimi kullanarak bir yerel ara sunucu oluşturur. Bu proxy ile, arabirimdeki yöntemleri uzaktan çağırabilirsiniz.
 
 ```csharp
 
@@ -94,11 +94,11 @@ Remoting Framework, hizmet tarafından oluşturulan özel durumları istemciye y
 
 ## <a name="service-proxy-lifetime"></a>Hizmet proxy 'si ömrü
 
-Hizmet proxy 'si oluşturma hafif bir işlemdir, bu sayede ihtiyacınız olan kadar oluşturabilirsiniz. Hizmet proxy örnekleri, gerektiği sürece yeniden kullanılabilir. Bir uzak yordam çağrısı bir özel durum oluşturursa, yine de aynı proxy örneğini yeniden kullanabilirsiniz. Her hizmet proxy 'si, iletileri kablo üzerinden göndermek için kullanılan bir iletişim istemcisi içerir. Uzaktan aramalar çağrılırken, iletişim istemcisinin geçerli olup olmadığını anlamak için iç denetimler gerçekleştirilir. Bu denetimlerin sonuçlarına bağlı olarak, iletişim istemcisi gerektiğinde yeniden oluşturulur. Bu nedenle, bir özel durum oluşursa @no__t yeniden oluşturmanız gerekmez-0.
+Hizmet proxy 'si oluşturma hafif bir işlemdir, bu sayede ihtiyacınız olan kadar oluşturabilirsiniz. Hizmet proxy örnekleri, gerektiği sürece yeniden kullanılabilir. Bir uzak yordam çağrısı bir özel durum oluşturursa, yine de aynı proxy örneğini yeniden kullanabilirsiniz. Her hizmet proxy 'si, iletileri kablo üzerinden göndermek için kullanılan bir iletişim istemcisi içerir. Uzaktan aramalar çağrılırken, iletişim istemcisinin geçerli olup olmadığını anlamak için iç denetimler gerçekleştirilir. Bu denetimlerin sonuçlarına bağlı olarak, iletişim istemcisi gerektiğinde yeniden oluşturulur. Bu nedenle, bir özel durum oluşursa `ServiceProxy`yeniden oluşturmanız gerekmez.
 
 ### <a name="service-proxy-factory-lifetime"></a>Hizmet proxy 'si fabrikası ömrü
 
-[Serviceproxyfactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) , farklı uzaktan iletişim arabirimleri için proxy örnekleri oluşturan bir fabrikadır. Bir proxy oluşturmak için API 'YI `ServiceProxyFactory.CreateServiceProxy` kullanıyorsanız, çerçeve bir tek hizmet proxy 'si oluşturur.
+[Serviceproxyfactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) , farklı uzaktan iletişim arabirimleri için proxy örnekleri oluşturan bir fabrikadır. Proxy oluşturmak için API `ServiceProxyFactory.CreateServiceProxy` kullanıyorsanız, çerçeve bir tek hizmet proxy 'si oluşturur.
 [Iviceremotingclientfactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v1.client.iserviceremotingclientfactory) özelliklerini geçersiz kılmanız gerektiğinde bir el ile oluşturmak yararlı olur.
 Fabrika oluşturma maliyetli bir işlemdir. Hizmet proxy fabrikası, iletişim istemcisinin dahili bir önbelleğini tutar.
 En iyi yöntem, hizmet proxy fabrikasını mümkün olduğunca uzun süre önbelleğe alma yöntemidir.
@@ -126,7 +126,7 @@ V2 yığınını etkinleştirmek için aşağıdaki yaklaşımlar mevcuttur.
 
 Bu adımlar, derleme özniteliği kullanarak v2 yığınını kullanmak için şablon kodunu değiştirir.
 
-1. Uç nokta kaynağını, hizmet bildiriminde `"ServiceEndpoint"` ' dan `"ServiceEndpointV2"` ' e değiştirin.
+1. Uç nokta kaynağını, hizmet bildiriminde `"ServiceEndpointV2"` olarak `"ServiceEndpoint"` değiştirin.
 
    ```xml
    <Resources>
@@ -136,7 +136,7 @@ Bu adımlar, derleme özniteliği kullanarak v2 yığınını kullanmak için ş
    </Resources>
    ```
 
-2. Uzaktan iletişim dinleyicileri oluşturmak için `Microsoft.ServiceFabric.Services.Remoting.Runtime.CreateServiceRemotingInstanceListeners` genişletme yöntemini kullanın (hem v1 hem de v2 için eşittir).
+2. Uzaktan iletişim dinleyicileri oluşturmak için `Microsoft.ServiceFabric.Services.Remoting.Runtime.CreateServiceRemotingInstanceListeners` uzantısı yöntemini kullanın (hem v1 hem de v2 için eşittir).
 
    ```csharp
     protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -160,7 +160,7 @@ Derleme özniteliği kullanmanın bir alternatifi olarak, v2 yığını da açı
 
 Bu adımlar, açık v2 sınıfları kullanarak v2 yığınını kullanmak için şablon kodunu değiştirir.
 
-1. Uç nokta kaynağını, hizmet bildiriminde `"ServiceEndpoint"` ' dan `"ServiceEndpointV2"` ' e değiştirin.
+1. Uç nokta kaynağını, hizmet bildiriminde `"ServiceEndpointV2"` olarak `"ServiceEndpoint"` değiştirin.
 
    ```xml
    <Resources>
@@ -170,7 +170,7 @@ Bu adımlar, açık v2 sınıfları kullanarak v2 yığınını kullanmak için 
    </Resources>
    ```
 
-2. @No__t-1 ad alanından [Fabrictransportserviceremotinglistener](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotingListener?view=azure-dotnet) kullanın.
+2. `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Runtime` ad alanından [Fabrictransportserviceremotinglistener](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotingListener?view=azure-dotnet) kullanın.
 
    ```csharp
    protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -186,7 +186,7 @@ Bu adımlar, açık v2 sınıfları kullanarak v2 yığınını kullanmak için 
     }
    ```
 
-3. İstemcileri oluşturmak için `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client` ad alanından [Fabrictransportserviceremotingclientfactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet) komutunu kullanın.
+3. İstemci oluşturmak için `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client` ad alanından [Fabrictransportserviceremotingclientfactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet) komutunu kullanın.
 
    ```csharp
    var proxyFactory = new ServiceProxyFactory((c) =>
@@ -239,12 +239,12 @@ Bu adım, hizmetin yalnızca v2 dinleyicisine dinlediğinden emin olmanızı sa�
 
 ## <a name="use-the-remoting-v2-interface-compatible-stack"></a>Remoting v2 (arabirim ile uyumlu) yığınını kullanın
 
- Remoting v2 (Interface uyumlu, V2_1 olarak bilinir) yığını, V2 Uzaktan iletişim yığınının tüm özelliklerine sahiptir. Arabirim yığını, uzaktan iletişim v1 Stack ile uyumludur, ancak v2 ve v1 ile geriye dönük olarak uyumlu değildir. Hizmet kullanılabilirliğini etkilemeden v1 'den V2_1 'e yükseltmek için v1 'den v2 'ye yükseltme (arabirim ile uyumlu) makalesindeki adımları izleyin.
+ Remoting v2 (arabirim uyumlu, V2_1 olarak bilinir) yığını, V2 Uzaktan iletişim yığınının tüm özelliklerine sahiptir. Arabirim yığını, uzaktan iletişim v1 Stack ile uyumludur, ancak v2 ve v1 ile geriye dönük olarak uyumlu değildir. V1 'den, hizmet kullanılabilirliğini etkilemeden V2_1 sürümüne yükseltmek için v1 'den v2 'ye yükseltme (arabirim ile uyumlu) makalesindeki adımları izleyin.
 
 
 ### <a name="use-an-assembly-attribute-to-use-the-remoting-v2-interface-compatible-stack"></a>Remoting v2 (arabirim ile uyumlu) yığınını kullanmak için bir derleme özniteliği kullanın
 
-V2_1 yığınına geçmek için bu adımları izleyin.
+V2_1 yığınına geçmek için aşağıdaki adımları izleyin.
 
 1. Hizmet bildiriminde "ServiceEndpointV2_1" adlı bir uç nokta kaynağı ekleyin.
 
@@ -277,7 +277,7 @@ V2_1 yığınına geçmek için bu adımları izleyin.
 
 ### <a name="use-explicit-remoting-classes-to-create-a-listenerclient-factory-for-the-v2-interface-compatible-version"></a>V2 (arabirim ile uyumlu) sürümü için bir dinleyici/istemci fabrikası oluşturmak üzere açık uzaktan iletişim sınıfları kullanın
 
-Şu adımları izleyin:
+Şu adımları uygulayın:
 
 1. Hizmet bildiriminde "ServiceEndpointV2_1" adlı bir uç nokta kaynağı ekleyin.
 
@@ -319,15 +319,15 @@ V2_1 yığınına geçmek için bu adımları izleyin.
 
 ## <a name="upgrade-from-remoting-v1-to-remoting-v2-interface-compatible"></a>Remoting v1 'den Remoting v2 'ye yükseltme (arabirime uyumlu)
 
-V1 'den v2 'ye yükseltmek için (arabirim uyumlu, V2_1 olarak bilinir), iki adımlı yükseltmeler gereklidir. Bu dizideki adımları izleyin.
+V1 'den v2 'ye yükseltmek için (V2_1 olarak bilinen arabirim uyumlu), iki adımlı yükseltmeler gereklidir. Bu dizideki adımları izleyin.
 
 > [!NOTE]
 > V1 'den v2 'ye yükseltirken `Remoting` ad alanının v2 kullanacak şekilde güncelleştirildiğinden emin olun. Örnek: ' Microsoft. ServiceFabric. Services. Remoting. v2. FabricTransport. Client '
 >
 >
 
-1. Aşağıdaki özniteliği kullanarak v1 hizmetini V2_1 Service 'e yükseltin.
-Bu değişiklik, hizmetin v1 ve V2_1 dinleyicisini dinlediğinden emin olmanızı sağlar.
+1. Aşağıdaki özniteliği kullanarak v1 hizmetini V2_1 hizmetine yükseltin.
+Bu değişiklik, hizmetin v1 ve V2_1 dinleyicisinden dinleme yaptığını sağlar.
 
     a. Hizmet bildiriminde "ServiceEndpointV2_1" adlı bir uç nokta kaynağı ekleyin.
       ```xml
@@ -366,7 +366,7 @@ Bu adım, hizmetin yalnızca v2 dinleyicisine dinlediğinden emin olmanızı sa�
 ### <a name="use-custom-serialization-with-a-remoting-wrapped-message"></a>Uzaktan, Sarmalanan bir ileti ile özel serileştirme kullanma
 
 Uzaktan iletişim sarmalanmış bir ileti için, içinde bir alan olarak tüm parametreleri içeren tek bir Sarmalanan nesne oluşturacağız.
-Şu adımları izleyin:
+Şu adımları uygulayın:
 
 1. Özel serileştirme için uygulama sağlamak üzere `IServiceRemotingMessageSerializationProvider` arabirimini uygulayın.
     Bu kod parçacığı, uygulamanın nasıl göründüğünü gösterir.
@@ -530,7 +530,7 @@ Uzaktan iletişim sarmalanmış bir ileti için, içinde bir alan olarak tüm pa
     }
     ```
 
-2. Uzaktan iletişim dinleyicisi için `JsonSerializationProvider` ile varsayılan serileştirme sağlayıcısını geçersiz kılın.
+2. Uzaktan iletişim dinleyicisi için `JsonSerializationProvider` varsayılan serileştirme sağlayıcısını geçersiz kılın.
 
    ```csharp
    protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -546,7 +546,7 @@ Uzaktan iletişim sarmalanmış bir ileti için, içinde bir alan olarak tüm pa
    }
    ```
 
-3. Uzaktan iletişim istemci fabrikası için varsayılan serileştirme sağlayıcısını `JsonSerializationProvider` ile geçersiz kılın.
+3. Uzaktan iletişim istemci fabrikası için `JsonSerializationProvider` varsayılan serileştirme sağlayıcısını geçersiz kılın.
 
     ```csharp
     var proxyFactory = new ServiceProxyFactory((c) =>

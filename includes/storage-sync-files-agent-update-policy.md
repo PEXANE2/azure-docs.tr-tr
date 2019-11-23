@@ -14,8 +14,8 @@ ms.locfileid: "72391821"
 Azure Dosya Eşitleme Aracısı, yeni işlevsellik eklemek ve sorunları gidermek için düzenli olarak güncelleştirilir. Microsoft Update, Azure Dosya Eşitleme aracısına ait güncelleştirmeleri kullanıma almak için yapılandırmanızı öneririz.
 
 #### <a name="major-vs-minor-agent-versions"></a>Birincil ve ikincil Aracı sürümleri
-* Ana Aracı sürümleri genellikle yeni özellikler içerir ve sürüm numarasının ilk bölümü olarak artan bir sayı içerir. Örneğin: \*2. \*. \* @ no__t-3
-* Alt Aracı sürümleri "yamalar" olarak da adlandırılır ve Ana sürümlerden daha sık yayımlanır. Bunlar genellikle hata düzeltmeleri ve daha küçük geliştirmeler içerir ancak yeni özellikler içermez. Örneğin: \* @ no__t-1.3. \* @ no__t-3
+* Ana Aracı sürümleri genellikle yeni özellikler içerir ve sürüm numarasının ilk bölümü olarak artan bir sayı içerir. Örneğin: \*2.\*.\*\*
+* Alt Aracı sürümleri "yamalar" olarak da adlandırılır ve Ana sürümlerden daha sık yayımlanır. Bunlar genellikle hata düzeltmeleri ve daha küçük geliştirmeler içerir ancak yeni özellikler içermez. Örneğin: \*\*. 3.\*\*
 
 #### <a name="upgrade-paths"></a>Yükseltme yolları
 Azure Dosya Eşitleme Aracısı güncelleştirmelerini yüklemek için dört onaylı ve test edilmiş yol vardır. 
@@ -43,7 +43,7 @@ cd 'C:\Program Files\Azure\StorageSyncAgent'
 Import-Module -Name \StorageSync.Management.ServerCmdlets.dll
 ```
 
-Geçerli ilke ayarını denetlemek ve değiştirmek istediğinizi öğrenmek için `Get-StorageSyncAgentAutoUpdatePolicy` ' yı çalıştırabilirsiniz.
+Geçerli ilke ayarını denetlemek ve değiştirmek istediğinizi öğrenmek için `Get-StorageSyncAgentAutoUpdatePolicy` çalıştırabilirsiniz.
 
 Geçerli ilke ayarını gecikmeli güncelleştirme izlemesine göre değiştirmek için şunları kullanabilirsiniz:
 ```powershell
@@ -61,7 +61,7 @@ Azure Dosya Eşitleme, sürekli olarak yeni özellikler ve geliştirmeler sunan 
 - Ana Aracı sürümleri ilk yayın tarihinden en az altı ay boyunca desteklenir.
 - Ana Aracı sürümleri desteği arasında en az üç aydan oluşan bir çakışma olduğunu garanti ediyoruz. 
 - Son kullanma süresi dolmadan önce en az üç ay sonra, kayıtlı sunucular için uyarılar verilir. Kayıtlı bir sunucunun, bir depolama eşitleme hizmeti 'nin kayıtlı sunucular bölümünde aracının daha eski bir sürümünü kullanıp kullan, kontrol edebilirsiniz.
-- Bir alt Aracı sürümünün ömrü, ilişkili ana sürüme bağlanır. Örneğin, aracı sürümü 3,0 bırakıldığında, 2. \* Aracı sürümleri birlikte sona ermeyecek şekilde ayarlanır.
+- Bir alt Aracı sürümünün ömrü, ilişkili ana sürüme bağlanır. Örneğin, aracı sürümü 3,0 bırakıldığında, Aracı sürümleri 2 ' dir.\*, hepsi birlikte dolacak şekilde ayarlanacak.
 
 > [!Note]
 > Bir aracı sürümünü bir süre sonu uyarısıyla yüklemek bir uyarı görüntüler, ancak başarılı olur. Zaman aşımına uğradı bir Aracı sürümüyle yüklenmeye veya bağlanmaya çalışılması desteklenmez ve engellenir.

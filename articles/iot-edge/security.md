@@ -22,13 +22,13 @@ Azure IoT Edge, verilerinizi ve analizlerinizi akıllı bir kenara taşırken de
 
 IoT Edge, donanımların çeşitli ve modellerinde çalışır, çeşitli işletim sistemlerini destekler ve çeşitli dağıtım senaryoları için geçerlidir. Dağıtım senaryosunun riski, çözüm sahipliğini, dağıtım coğrafi konumunu, veri duyarlılığını, gizliliği, uygulama dikey ve mevzuat gereksinimlerini içeren faktörlere bağlıdır. IoT Edge, belirli senaryolar için somut çözümler sunmak yerine, ölçek için tasarlanan iyi topraklanmış kurallara dayanan genişletilebilir bir güvenlik çerçevesidir. 
  
-Bu makalede, IoT Edge güvenlik çerçevesine bir genel bakış sunulmaktadır. Daha fazla bilgi için [akıllı uç güvenliğini sağlama](https://azure.microsoft.com/blog/securing-the-intelligent-edge/).
+Bu makalede, IoT Edge güvenlik çerçevesine bir genel bakış sunulmaktadır. Daha fazla bilgi için bkz. [akıllı kenarı güvenli hale getirme](https://azure.microsoft.com/blog/securing-the-intelligent-edge/).
 
 ## <a name="standards"></a>Standartları
 
 Standartlar, her ikisi de her ikisi de bir dizi güvenlik olan uygulama kolaylığını ve kolay kullanımını yükseltir. Bir güvenlik çözümü, güven oluşturmak için değerlendirme kapsamında kendisini ve dağıtıma karşı bir sanal olmaması gerekir. Azure IoT Edge güvenli hale getirmek için Framework tasarımı, daha fazla bilme ve yeniden kullanım için zaman sınanmış ve sektörde kanıtlanmış güvenlik protokollerine dayanır. 
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Kimlik Doğrulaması
 
 Bir IoT çözümünü dağıtırken, çözümünüze yalnızca güvenilir aktörlerin, cihazların ve modüllerin erişiminin olduğunu bilmeniz gerekir. Sertifika tabanlı kimlik doğrulaması, Azure IoT Edge platformu için kimlik doğrulaması için birincil mekanizmadır. Bu mekanizma, Internet Mühendisliği görev gücü (IETF) tarafından ortak anahtar altyapısını (PKiX) yöneten bir standartlar kümesinden türetilir.     
 
@@ -36,7 +36,7 @@ Azure IoT Edge cihazla etkileşime geçen tüm cihazlar, modüller ve aktörler,
 
 Daha fazla bilgi için bkz. [Azure IoT Edge sertifika kullanımı](iot-edge-certs.md).
 
-## <a name="authorization"></a>Authorization
+## <a name="authorization"></a>Yetkilendirme
 
 En az ayrıcalık ilkesi, bir sistemin kullanıcılarının ve bileşenlerinin yalnızca rollerini gerçekleştirmek için gereken en düşük kaynak ve veri kümesine erişiminin olması gerektiğini belirtir. Cihazlar, modüller ve aktör yalnızca izin kapsamındaki kaynaklara ve verilere ve yalnızca mimarel olarak izin verilebilir hale geldiğinde erişmelidir. Bazı izinler yeterli ayrıcalıklara sahip yapılandırılabilir ve diğerleri mimari olarak zorlanır.  Örneğin, bazı modüllerin Azure IoT Hub 'ye bağlanma yetkisi olabilir. Ancak, bir IoT Edge cihazdaki bir modülün başka bir IoT Edge cihazdaki bir modülün ikizi 'e erişmesi neden yoktur.
 
@@ -44,7 +44,7 @@ Diğer yetkilendirme şemaları, sertifika imzalama hakları ve rol tabanlı eri
 
 ## <a name="attestation"></a>Kanıtlama
 
-Kanıtlama, kötü amaçlı yazılımların algılanması ve önlenmesi açısından önemli olan yazılım bitlerinin bütünlüğünü sağlar.  Azure IOT Edge güvenlik framework üç ana kategori altında kanıtlama sınıflandırır:
+Kanıtlama, kötü amaçlı yazılımların algılanması ve önlenmesi açısından önemli olan yazılım bitlerinin bütünlüğünü sağlar.  Azure IoT Edge güvenlik çerçevesi, kanıtlama üç ana kategoride sınıflandırır:
 
 * Statik kanıtlama
 * Çalışma zamanı kanıtlama
@@ -68,18 +68,18 @@ Birçok akıllı sınır aygıtı için, özellikle potansiyel kötü amaçlı a
 
 ## <a name="certification"></a>Sertifika
 
-Cihazlara Azure IoT Edge cihazları oluştururken müşterilerin bilinçli kararlar almasına yardımcı olmak için IoT Edge Framework 'ün sertifika gereksinimleri vardır.  Güvenlik talepleri ilişkin sertifikaları ve ilgili güvenlik uygulamasının doğrulama sertifikaları için bu gereksinimleri derinlerine dalın.  Örneğin, bir güvenlik talebi sertifikası, IoT Edge cihazın önyükleme saldırılarına karşı bilinen güvenli donanımı kullandığı anlamına gelir. Doğrulama sertifikası, güvenli donanımın cihazda bu değeri sunmak üzere düzgün şekilde uygulandığı anlamına gelir.  Basitlik ilkesiyle birlikte, Framework en düşük sertifika yükünü tutmaya çalışır.   
+Cihazlara Azure IoT Edge cihazları oluştururken müşterilerin bilinçli kararlar almasına yardımcı olmak için IoT Edge Framework 'ün sertifika gereksinimleri vardır.  Bu gereksinimlere ek olarak, güvenlik uygulamalarının doğrulanması ile ilgili güvenlik talepleri ve sertifikaların sertifikalamaları vardır.  Örneğin, bir güvenlik talebi sertifikası, IoT Edge cihazın önyükleme saldırılarına karşı bilinen güvenli donanımı kullandığı anlamına gelir. Doğrulama sertifikası, güvenli donanımın cihazda bu değeri sunmak üzere düzgün şekilde uygulandığı anlamına gelir.  Basitlik ilkesiyle birlikte, Framework en düşük sertifika yükünü tutmaya çalışır.   
 
 ## <a name="extensibility"></a>Genişletilebilirlik
 
-Farklı türlerde iş dönüştürmeleri sunan IoT teknolojisi sayesinde, güvenlik, gelişen senaryolara yönelik olarak paralel olarak gelişmelidir.  Azure IOT Edge güvenlik çerçevesi, sağlam bir temel üzerinde genişletilebilirlik dahil etmek için farklı boyut içinde derlemeler ile başlar: 
+Farklı türlerde iş dönüştürmeleri sunan IoT teknolojisi sayesinde, güvenlik, gelişen senaryolara yönelik olarak paralel olarak gelişmelidir.  Azure IoT Edge güvenlik çerçevesi, genişletilebilirlik içinde farklı boyutlarda bulunan bir Solid Foundation ile başlar: 
 
 * Birinci taraf güvenlik hizmetleri için Azure IOT Hub cihaz sağlama hizmeti ister.
 * Farklı uygulamalar için yönetilen güvenlik hizmetleri gibi üçüncü taraf hizmetler (endüstriyel veya sağlık gibi) veya teknoloji odaklı (ağ ağlarında güvenlik izleme veya Silicon Hardware kanıtlama hizmetleri gibi), zengin bir ağ ortaklarınıza.
 * Eski sistemleri ile diğer güvenlik stratejileri, retrofitting eklemek gibi kimlik doğrulaması ve kimlik yönetimi için sertifikalar dışında güvenli teknolojisini kullanarak.
 * Gelişen güvenli donanım teknolojileri ve Silicon partner katkıları benimseme için güvenli donanım.
 
-Son olarak, akıllı bir kenara güvenli hale getirmek, IoT 'yi güvenli hale getirmenin yaygın ilgi çekici bir şekilde çalışan bir açık topluluk aracılığıyla işbirliğine dayalı katkıları gerektirir  Bu Katkıları güvenli teknolojiler ve hizmetler biçiminde olabilir.  Azure IOT Edge güvenlik çerçevesi, güven ve Azure bulut ile akıllı uç bütünlüğü aynı düzeyde sunmak en fazla kapsamı için genişletilebilir güvenlik için sağlam bir temel sunar.  
+Son olarak, akıllı bir kenara güvenli hale getirmek, IoT 'yi güvenli hale getirmenin yaygın ilgi çekici bir şekilde çalışan bir açık topluluk aracılığıyla işbirliğine dayalı katkıları gerektirir  Bu katkıların güvenliği, güvenli teknolojiler veya hizmetler biçiminde olabilir.  Azure IoT Edge güvenlik çerçevesi, Azure bulutu ile olduğu gibi akıllı kenarda aynı güven düzeyini ve bütünlüğü sunmak üzere en yüksek kapsam için genişletilebilir bir güvenlik sunar.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

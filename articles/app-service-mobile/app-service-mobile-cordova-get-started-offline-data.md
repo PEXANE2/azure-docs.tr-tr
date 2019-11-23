@@ -27,10 +27,10 @@ ms.locfileid: "72388843"
 > [!NOTE]
 > Visual Studio App Center mobil uygulama dağıtımında merkezi konumdaki uçtan uca ve tümleşik hizmetleri destekler. Geliştiriciler Sürekli Tümleştirme ve Teslim işlem hattını ayarlamak için **Oluşturma**, **Test** ve **Dağıtım** hizmetlerini kullanabilir. Uygulama dağıtıldıktan sonra, geliştiriciler **Analiz** ve **Tanılama** hizmetlerini kullanarak uygulamanın durumunu ve kullanımını izleyebilir, **Gönderme** hizmetini kullanarak kullanıcılarla etkileşim kurabilir. Geliştiriciler ayrıca kullanıcıların kimliğini doğrulamak için **Kimlik Doğrulaması**'ndan ve uygulama verilerini bulutta kalıcı hale getirmek ve eşitlemek için **Veri** hizmetinden yararlanabilir.
 >
-> Mobil uygulamanızda bulut hizmetlerini tümleştirmek istiyorsanız bugün [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) kaydolun.
+> Bulut hizmetlerini mobil uygulamanızla tümleştirmek istiyorsanız [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc)'a hemen kaydolun.
 
 ## <a name="overview"></a>Genel Bakış
-Bu öğreticide, Cordova için Azure Mobile Apps çevrimdışı eşitleme özelliği tanıtılmıştır. Çevrimdışı eşitleme son kullanıcıların bir mobil uygulamayla etkileşime geçmesini sağlar @ no__t-0görüntüleme, veri ekleme veya değiştirme, ağ bağlantısı olmadığında bile @ no__t-1. Değişiklikler yerel bir veritabanında depolanır.  Cihaz yeniden çevrimiçi olduktan sonra, bu değişiklikler uzak hizmetle eşitlenir.
+Bu öğreticide, Cordova için Azure Mobile Apps çevrimdışı eşitleme özelliği tanıtılmıştır. Çevrimdışı eşitleme son kullanıcıların bir mobil uygulamayla etkileşime geçmesini sağlar ve ağ bağlantısı olmasa bile veri&mdash;görüntüleme, ekleme veya değiştirme&mdash;. Değişiklikler yerel bir veritabanında depolanır.  Cihaz yeniden çevrimiçi olduktan sonra, bu değişiklikler uzak hizmetle eşitlenir.
 
 Bu öğretici, [Apache Cordova hızlı başlangıç]öğreticiyi tamamladığınızda oluşturduğunuz Mobile Apps için Cordova hızlı başlangıç çözümünü temel alır. Bu öğreticide, Azure Mobile Apps çevrimdışı özellikleri eklemek için hızlı başlangıç çözümünü güncelleşolursunuz.  Ayrıca, uygulamadaki çevrimdışı özel kodu vurgularız.
 
@@ -44,7 +44,7 @@ Bu öğretici, [Apache Cordova hızlı başlangıç]öğreticiyi tamamladığın
         var client,            // Connection to the Azure Mobile App backend
            todoItemTable;      // Reference to a table endpoint on backend
 
-    Şu kodla:
+    Bu kod ile:
 
         var client,            // Connection to the Azure Mobile App backend
            todoItemTable,      // Reference to a table endpoint on backend
@@ -54,7 +54,7 @@ Bu öğretici, [Apache Cordova hızlı başlangıç]öğreticiyi tamamladığın
 
         client = new WindowsAzure.MobileServiceClient('http://yourmobileapp.azurewebsites.net');
 
-    Şu kodla:
+    Bu kod ile:
 
         client = new WindowsAzure.MobileServiceClient('http://yourmobileapp.azurewebsites.net');
         var store = new WindowsAzure.MobileServiceSqliteStore('store.db');
@@ -72,7 +72,7 @@ Bu öğretici, [Apache Cordova hızlı başlangıç]öğreticiyi tamamladığın
         // Get the sync context from the client
         syncContext = client.getSyncContext();
 
-    Yukarıdaki kod eklemeleri yerel depoyu başlatır ve Azure arka uçta kullanılan sütun değerleriyle eşleşen bir yerel tablo tanımlar. (Bu kodda tüm sütun değerlerini eklemeniz gerekmez.)  @No__t-0 alanı mobil arka uç tarafından korunur ve çakışma çözümü için kullanılır.
+    Yukarıdaki kod eklemeleri yerel depoyu başlatır ve Azure arka uçta kullanılan sütun değerleriyle eşleşen bir yerel tablo tanımlar. (Bu kodda tüm sütun değerlerini eklemeniz gerekmez.)  `version` alanı, mobil arka uç tarafından korunur ve çakışma çözümü için kullanılır.
 
     **Getsynccontext**'i çağırarak eşitleme bağlamına bir başvuru alırsınız. Eşitleme bağlamı, `.push()` çağrıldığında bir istemci uygulamasının değiştirdiği tüm tablolardaki değişiklikleri izleyerek ve ileterek Tablo ilişkilerinin korunmasına yardımcı olur.
 
@@ -82,7 +82,7 @@ Bu öğretici, [Apache Cordova hızlı başlangıç]öğreticiyi tamamladığın
 
         todoItemTable = client.getTable('todoitem'); // todoitem is the table name
 
-    Şu kodla:
+    Bu kod ile:
 
         // Initialize the sync context with the store
         syncContext.initialize(store).then(function () {
@@ -186,7 +186,7 @@ Bu bölümde, arka ucunuz için geçersiz bir uygulama URL 'SI kullanarak bir ç
 Bu bölümde, uygulamanın çevrimiçi duruma geri geldiğini taklit eden mobil arka uca yeniden bağlayaöğreneceksiniz. Oturum açtığınızda, veriler mobil arka ucunuza eşitlenir.
 
 1. İndex. js ' ye yeniden açın ve uygulama URL 'sini geri yükleyin.
-2. Index. html dosyasını yeniden açın ve CSP `<meta>` öğesindeki uygulama URL 'sini düzeltin.
+2. Index. html dosyasını yeniden açın ve CSP `<meta>` öğesinde uygulama URL 'sini düzeltin.
 3. İstemci uygulamasını yeniden derleyin ve çalıştırın. Uygulama, oturum açtıktan sonra mobil uygulama arka ucuna eşitlemeye çalışır. Hata ayıklama konsolunda hiçbir özel durum günlüğe kaydedilmeyeceğini doğrulayın.
 4. Seçim SQL Server Nesne Gezgini veya Fiddler gibi bir REST aracını kullanarak güncelleştirilmiş verileri görüntüleyin. Arka uç veritabanı ve yerel depo arasında verilerin eşitlendiğini fark edin.
 

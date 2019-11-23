@@ -30,7 +30,7 @@ Bu yöntemlerin herhangi biri tarafından alınan durum aşağıdakilerden biri 
 
 - Sorunsuz
 
-- Sağlıksız
+- İyi durumda değil
 
 - Bilinmiyor
 
@@ -81,13 +81,13 @@ Bir arka uç havuzundaki tüm sunucular için sağlıklı olmayan bir arka uç s
 **Ayrıntılar** sütununda görünen ileti, sorun hakkında daha ayrıntılı öngörüler sağlar ve bunlar temelinde sorun gidermeye başlayabilirsiniz.
 
 > [!NOTE]
-> Varsayılan araştırma isteği, \<protocol @ no__t-1://127.0.0.1: \<Port @ no__t-3/biçiminde gönderilir. Örneğin, 80 numaralı bağlantı noktasında http araştırması için http://127.0.0.1:80. Yalnızca 200 ile 399 arasındaki HTTP durum kodları sağlıklı olarak değerlendirilir. Protokol ve hedef bağlantı noktası HTTP ayarlarından devralınır. Application Gateway farklı bir protokol, ana bilgisayar adı veya yol üzerinde araştırma yapmak ve farklı bir durum kodunu sağlıklı olarak tanımak istiyorsanız, özel bir araştırma yapılandırın ve bunu HTTP ayarları ile ilişkilendirin.
+> Varsayılan araştırma isteği, \<Protocol\>://127.0.0.1:\<bağlantı noktası\>/biçiminde gönderilir. Örneğin, 80 numaralı bağlantı noktasında http yoklaması için http://127.0.0.1:80. Yalnızca 200 ile 399 arasındaki HTTP durum kodları sağlıklı olarak değerlendirilir. Protokol ve hedef bağlantı noktası HTTP ayarlarından devralınır. Application Gateway farklı bir protokol, ana bilgisayar adı veya yol üzerinde araştırma yapmak ve farklı bir durum kodunu sağlıklı olarak tanımak istiyorsanız, özel bir araştırma yapılandırın ve bunu HTTP ayarları ile ilişkilendirin.
 
 <a name="error-messages"></a>Hata iletileri
 ------------------------
 #### <a name="backend-server-timeout"></a>Arka uç sunucu zaman aşımı
 
-**İleti:** Arka uçta uygulama ağ geçidine yanıt vermek için geçen süre @ no__t-1s sistem durumu araştırması, araştırma ayarındaki zaman aşımı eşiğinden daha fazla.
+**İleti:** Arka ucun uygulama ağ\'geçidine yanıt vermesi için geçen süre, araştırma ayarındaki zaman aşımı eşiğinden daha fazla.
 
 **Neden:** Application Gateway, arka uç sunucusuna bir HTTP (S) araştırma isteği gönderdikten sonra, yapılandırılan bir süre için arka uç sunucusundan bir yanıt bekler. Arka uç sunucusu yapılandırılan süre içinde yanıt vermiyorsa (zaman aşımı değeri), yapılandırılan zaman aşımı süresi içinde yeniden yanıt vermemeye başlamasına kadar sağlıksız olarak işaretlenir.
 
@@ -105,11 +105,11 @@ Zaman aşımı değerini artırmak için aşağıdaki adımları izleyin:
 
 #### <a name="dns-resolution-error"></a>DNS çözümleme hatası
 
-**İleti:** Application Gateway bu arka uç için bir araştırma oluşturamadı. Bu genellikle arka ucun FQDN 'SI doğru girildiyse oluşur. 
+**İleti:** Application Gateway bu arka uç için bir araştırma oluşturamadı. Bu durum genellikle arka ucun FQDN değerinin doğru girilmemesinden kaynaklanır. 
 
 **Neden:** Arka uç havuzu IP adresi/FQDN veya App Service türünde ise, Application Gateway etki alanı adı sistemi (DNS) ile girilen FQDN 'nin IP adresine (özel veya Azure varsayılan) çözülür ve HTTP ayarlarında belirtilen TCP bağlantı noktasındaki sunucuya bağlanmaya çalışır. Ancak bu ileti görüntüleniyorsa Application Gateway, girilen FQDN 'nin IP adresini başarıyla çözümleyemediğini önerir.
 
-**Çözünürlüğüne**
+**Çözüm:**
 
 1.  Arka uç havuzunda girilen FQDN 'nin doğru olduğundan ve ortak bir etki alanı olduğundan emin olun ve ardından yerel makinenizden çözümlemeyi deneyin.
 
@@ -155,9 +155,9 @@ Ayrıca, herhangi bir NSG/UDR/güvenlik duvarının IP 'ye ve bu arka ucun bağl
     ```
 1.  NSG veya UDR ile ilgili herhangi bir sorun bulamazsanız, istemcilerin yapılandırılmış bağlantı noktalarında bir TCP oturumu kurmasını engelleyen uygulamayla ilgili sorunlar için arka uç sunucunuzu kontrol edin. Denetlenecek birkaç şey:
 
-    a.  Bir komut istemi açın (Win + R-\> cmd), `netstat` girin ve ENTER ' u seçin.
+    a.  Bir komut istemi açın (Win + R-\> cmd), `netstat`girin ve ENTER ' u seçin.
 
-    b.  Sunucunun yapılandırılmış bağlantı noktasında dinleme yapıp yapmadığını denetleyin. Örnek:
+    b.  Sunucunun yapılandırılmış bağlantı noktasında dinleme yapıp yapmadığını denetleyin. Örneğin:
     ```
             Proto Local Address Foreign Address State PID
             TCP 0.0.0.0:80 0.0.0.0:0 LISTENING 4
@@ -168,15 +168,15 @@ Ayrıca, herhangi bir NSG/UDR/güvenlik duvarının IP 'ye ve bu arka ucun bağl
 
 #### <a name="http-status-code-mismatch"></a>HTTP durum kodu uyumsuzluğu
 
-**İleti:** Arka uç @ no__t-1s HTTP yanıtının durum kodu araştırma ayarıyla eşleşmedi. Beklenen: {HTTPStatusCode0} alındı: {HTTPStatusCode1}.
+**İleti:** Arka uç\'s HTTP yanıtının durum kodu araştırma ayarıyla eşleşmedi. Beklenen: {HTTPStatusCode0} alındı: {HTTPStatusCode1}.
 
-**Neden:** TCP bağlantısı kurulduktan ve bir SSL el sıkışması yapıldıktan sonra (SSL etkinse), Application Gateway arka uç sunucusuna bir HTTP GET isteği olarak araştırmaya gönderilir. Daha önce açıklandığı gibi, varsayılan araştırma \<protocol @ no__t-1://127.0.0.1: \<Port @ no__t-3/olur ve 200 ile 399 arasındaki yanıt durum kodlarını sağlıklı olarak değerlendirir. Sunucu başka bir durum kodu döndürürse, Bu iletiyle sağlıksız olarak işaretlenir.
+**Neden:** TCP bağlantısı kurulduktan ve bir SSL el sıkışması yapıldıktan sonra (SSL etkinse), Application Gateway arka uç sunucusuna bir HTTP GET isteği olarak araştırmaya gönderilir. Daha önce açıklandığı gibi, varsayılan araştırma \<protokol\>://127.0.0.1:\<bağlantı noktası\>/olur ve bu, Rage 200 ile 399 arasındaki yanıt durum kodlarını sağlıklı olarak değerlendirir. Sunucu başka bir durum kodu döndürürse, Bu iletiyle sağlıksız olarak işaretlenir.
 
 **Çözüm:** Arka uç sunucusunun yanıt koduna bağlı olarak, aşağıdaki adımları gerçekleştirebilirsiniz. Yaygın durum kodlarından bazıları aşağıda listelenmiştir:
 
-| **Hatayla** | **Eylemler** |
+| **Hata:** | **Eylemler** |
 | --- | --- |
-| Araştırma durum kodu uyumsuzluğu: 401 alındı | Arka uç sunucusunun kimlik doğrulaması gerektirip gerektirmediğini denetleyin. Application Gateway araştırmaları bu noktada kimlik doğrulaması için kimlik bilgilerini geçiremiyor. Araştırma durum kodu eşleşmesi veya araştırmasının sunucu kimlik doğrulaması gerektirmeyen bir yola göre \"HTTP 401 @ no__t-1 ' e izin verin. | |
+| Araştırma durum kodu uyumsuzluğu: 401 alındı | Arka uç sunucusunun kimlik doğrulaması gerektirip gerektirmediğini denetleyin. Application Gateway araştırmaları bu noktada kimlik doğrulaması için kimlik bilgilerini geçiremiyor. Bir araştırma durum kodu eşleşmesi veya araştırmasının, sunucunun kimlik doğrulaması gerektirmeyen bir yola \"HTTP 401\" izin verin. | |
 | Araştırma durum kodu uyumsuzluğu: 403 alındı | Erişim yasak. Arka uç sunucusunda yola erişime izin verilip verilmediğini denetleyin. | |
 | Araştırma durum kodu uyumsuzluğu: 404 alındı | Sayfa bulunamadı. Ana bilgisayar adı yolunun arka uç sunucusunda erişilebilir olup olmadığını denetleyin. Ana bilgisayar adı veya yol parametresini erişilebilir bir değer olarak değiştirin. | |
 | Araştırma durum kodu uyumsuzluğu: 405 alındı | Application Gateway için araştırma istekleri HTTP GET yöntemini kullanır. Sunucunuzun bu yöntemin izin verip içermediğini denetleyin. | |
@@ -189,7 +189,7 @@ Ya da yanıtın meşru olduğunu düşünüyorsanız ve Application Gateway diğ
 
 #### <a name="http-response-body-mismatch"></a>HTTP yanıt gövdesi uyumsuzluğu
 
-**İleti:** Arka uç @ no__t-1s HTTP yanıtının gövdesi araştırma ayarıyla eşleşmedi. Alınan yanıt gövdesi {String} içermiyor.
+**İleti:** Arka uç\'s HTTP yanıtı, araştırma ayarıyla eşleşmedi. Alınan yanıt gövdesi {String} içermiyor.
 
 **Neden:** Özel bir araştırma oluşturduğunuzda, yanıt gövdesinden bir dizeyi eşleştirerek arka uç sunucusunu sağlıklı olarak işaretleme seçeneğiniz vardır. Örneğin, Application Gateway eşleşecek bir dize olarak "yetkisiz" kabul edecek şekilde yapılandırabilirsiniz. Araştırma isteği için arka uç sunucu yanıtı, dizeyi **yetkisiz**Içeriyorsa, sağlıklı olarak işaretlenir. Aksi takdirde, Bu iletiyle sağlıksız olarak işaretlenir.
 
@@ -216,9 +216,9 @@ SSL sertifikasının güvenilir olması için, arka uç sunucusunun bu sertifika
 
 1.  Win + R ' yi seçin veya **Başlat** düğmesine sağ tıklayıp **Çalıştır**' ı seçin.
 
-1.  @No__t-0 girin ve ENTER ' u seçin. Ayrıca, **Başlangıç** menüsünde Sertifika Yöneticisi 'ni de arayabilirsiniz.
+1.  `certmgr.msc` girin ve ENTER ' u seçin. Ayrıca, **Başlangıç** menüsünde Sertifika Yöneticisi 'ni de arayabilirsiniz.
 
-1.  Genellikle `\Certificates - Current User\\Personal\\Certificates\` ' da sertifikayı bulun ve açın.
+1.  Sertifikayı bulun, genellikle `\Certificates - Current User\\Personal\\Certificates\`' de açın ve açın.
 
 1.  Kök sertifikayı seçin ve ardından **sertifikayı görüntüle**' yi seçin.
 
@@ -253,7 +253,7 @@ Güvenilen kök sertifikaların Application Gateway nasıl ayıklanıp yüklenem
 > [!NOTE]
 > Bu hata, arka uç sunucusu, TLS el sıkışması sırasında kök > ara (varsa) > yaprak dahil olmak üzere tüm sertifika zincirini değişmediğinde meydana gelebilir. Doğrulamak için herhangi bir istemciden OpenSSL komutlarını kullanabilir ve Application Gateway araştırmakta yapılandırılan ayarları kullanarak arka uç sunucusuna bağlanabilirsiniz.
 
-Örnek:
+Örneğin:
 ```
 OpenSSL> s_client -connect 10.0.0.4:443 -servername www.example.com -showcerts
 ```
@@ -319,7 +319,7 @@ OpenSSL kullanan Linux için:
 
 #### <a name="backend-certificate-is-invalid"></a>Arka uç sertifikası geçersiz
 
-**İleti:** Arka uç sertifikası geçersiz. Geçerli tarih, @ no__t-1 ve \" ' den geçerli @no__t, sertifikadaki @ no__t-3 tarih aralığı içinde değil.
+**İleti:** Arka uç sertifikası geçersiz. Geçerli tarih\" \"geçerli değil ve sertifikadaki\" tarih aralığına \"geçerli değil.
 
 **Neden:** Her sertifika bir geçerlilik aralığıyla birlikte gelir ve sunucunun SSL sertifikası geçerli olmadığı takdirde HTTPS bağlantısı güvende olmaz. Geçerli veriler, **öğesinden geçerli** ve **geçerli** bir aralık dahilinde olmalıdır. Aksi takdirde, sertifika geçersiz olarak kabul edilir ve Application Gateway arka uç sunucusunu sağlıksız olarak işaretleyen bir güvenlik sorunu oluşturur.
 

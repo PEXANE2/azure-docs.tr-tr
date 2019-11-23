@@ -101,8 +101,8 @@ Parametrelerin belirtilmesi gerekli değildir. Varsayılan değer uygulanır.
 |------------------|-------|--------------|---------|
 | `Type`           | Sabit Listesi  | Gerçekleştirilecek işleme türü. Türler TMSL [yenileme komut](https://docs.microsoft.com/bi-reference/tmsl/refresh-command-tmsl) türleriyle hizalanır: Full, clearvalues, Calculate, dataonly, Automatic ve birleştirme. Tür ekleme desteklenmiyor.      |   Otomatik      |
 | `CommitMode`     | Sabit Listesi  | Nesnelerin toplu işlemlere mi yoksa yalnızca tamamlandığında mi uygulanacağını belirler. Modlar şunlardır: Default, işlemsel, partialBatch.  |  işlem       |
-| `MaxParallelism` | 'Tir   | Bu değer, işlem komutlarının paralel olarak çalıştırılacağı en fazla iş parçacığı sayısını belirler. Bu değer, TMSL [Sequence komutunda](https://docs.microsoft.com/bi-reference/tmsl/sequence-command-tmsl) veya diğer yöntemleri kullanarak ayarlanabir Maxparallelilik özelliği ile hizalanır.       | 10        |
-| `RetryCount`     | 'Tir   | İşlemin başarısız olmadan önce kaç kez yeniden deneneceğini gösterir.      |     0    |
+| `MaxParallelism` | Int   | Bu değer, işlem komutlarının paralel olarak çalıştırılacağı en fazla iş parçacığı sayısını belirler. Bu değer, TMSL [Sequence komutunda](https://docs.microsoft.com/bi-reference/tmsl/sequence-command-tmsl) veya diğer yöntemleri kullanarak ayarlanabir Maxparallelilik özelliği ile hizalanır.       | 10        |
+| `RetryCount`     | Int   | İşlemin başarısız olmadan önce kaç kez yeniden deneneceğini gösterir.      |     0    |
 | `Objects`        | Dizi | İşlenecek nesne dizisi. Her nesne şunları içerir: bir bölümü işlerken tüm tablo veya "Tablo" ve "Bölüm" işlemlerini işlerken "Table". Hiçbir nesne belirtilmemişse, modelin tamamı yenilenir. |   Modelin tamamını işle      |
 
 CommitMode, partialBatch 'e eşittir. Saat süretabilecek büyük veri kümelerinin ilk yüklemesi yapılırken kullanılır. Yenileme işlemi bir veya daha fazla toplu işlem başarıyla gerçekleştirildikten sonra başarısız olursa, başarıyla kaydedilmiş toplu işler tamamlandı olarak kalır (başarıyla işlenen toplu işleri geri almaz).

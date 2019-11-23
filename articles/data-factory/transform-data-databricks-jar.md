@@ -58,11 +58,11 @@ Aşağıdaki tabloda JSON tanımında kullanılan JSON özellikleri açıklanmak
 
 |Özellik|Açıklama|Gerekli|
 |:--|---|:-:|
-|ad|İşlem hattındaki etkinliğin adı.|Evet|
+|ad|İşlem hattındaki etkinliğin adı.|Yes|
 |açıklama|Etkinliğin ne yaptığını açıklayan metin.|Hayır|
-|type|Databricks jar etkinliği için etkinlik türü Databricksmini jar ' dir.|Evet|
-|linkedServiceName|Jar etkinliğinin üzerinde çalıştığı Databricks bağlı hizmetinin adı. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlantılı hizmetleri](compute-linked-services.md) makalesi.|Evet|
-|mainClassName|Yürütülecek ana yöntemi içeren sınıfın tam adı. Bu sınıf, kitaplık olarak sunulan bir JAR içinde yer almalıdır.|Evet|
+|type|Databricks jar etkinliği için etkinlik türü Databricksmini jar ' dir.|Yes|
+|linkedServiceName|Jar etkinliğinin üzerinde çalıştığı Databricks bağlı hizmetinin adı. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlantılı hizmetleri](compute-linked-services.md) makalesi.|Yes|
+|mainClassName|Yürütülecek ana yöntemi içeren sınıfın tam adı. Bu sınıf, kitaplık olarak sunulan bir JAR içinde yer almalıdır.|Yes|
 |parametreler|Main yöntemine geçirilecek parametreler.  Bu bir dizeler dizisidir.|Hayır|
 |Kütüphaneler|İşi yürütecek olan kümeye yüklenecek kitaplıkların listesi. < Dize, nesne > dizisi olabilir|Evet (mainClassName yöntemini içeren en az bir tane)|
 

@@ -53,7 +53,7 @@ Aşağıdaki araçlardan/SDK 'Lardan birini kullanarak veri fabrikaları yazabil
 * **Azure PowerShell** Bkz. PowerShell kullanarak veri fabrikası oluşturmaya yönelik bir öğretici için [Azure PowerShell kullanarak Azure Data Factory oluşturma ve izleme](data-factory-build-your-first-pipeline-using-powershell.md) . Data Factory cmdlet 'lerinin kapsamlı bir belgesi için MSDN Kitaplığı 'ndaki [Data Factory cmdlet başvurusu][adf-powershell-reference] içeriğine bakın.
 * **.NET sınıf kitaplığı** Data Factory .NET SDK kullanarak program aracılığıyla veri fabrikaları oluşturabilirsiniz. .NET SDK kullanarak veri fabrikası oluşturma hakkında yönergeler için bkz. [.NET SDK kullanarak veri fabrikaları oluşturma, izleme ve yönetme](data-factory-create-data-factories-programmatically.md) . .NET SDK Data Factory kapsamlı bir belge için bkz. [Data Factory sınıf kitaplığı başvurusu][msdn-class-library-reference] .
 * **REST API** Ayrıca, veri fabrikaları oluşturmak ve dağıtmak için Azure Data Factory hizmetinin açığa çıkarılan REST API de kullanabilirsiniz. Data Factory REST API kapsamlı bir belge için bkz. [Data Factory REST API başvurusu][msdn-rest-api-reference] .
-* **Azure Resource Manager şablonu** Öğreticiye bakın [: Azure Resource Manager şablonu](data-factory-build-your-first-pipeline-using-arm.md) kullanarak ilk Azure veri fabrikanızı oluşturun ayrıntıları Info.
+* **Azure Resource Manager şablonu** Bkz. [öğretici: Azure Resource Manager şablonu kullanarak Ilk Azure Data Factory 'Nizi oluşturma](data-factory-build-your-first-pipeline-using-arm.md) ayrıntıları.
 
 ### <a name="can-i-rename-a-data-factory"></a>Bir veri fabrikasını yeniden adlandırabilir miyim?
 Hayır. Diğer Azure kaynakları gibi, Azure Data Factory 'nin adı değiştirilemez.
@@ -66,16 +66,16 @@ Evet. Aşağıdaki diyagramda gösterildiği gibi Data Factory dikey penceresind
 ### <a name="what-are-the-compute-environments-supported-by-data-factory"></a>Data Factory tarafından desteklenen işlem ortamları nelerdir?
 Aşağıdaki tabloda, Data Factory tarafından desteklenen işlem ortamlarının listesi ve bunlar üzerinde çalışabilecek etkinlikler verilmiştir.
 
-| İşlem ortamı | activities |
+| İşlem ortamı | etkinlikler |
 | --- | --- |
 | [İsteğe bağlı HDInsight kümesi](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) veya [kendi HDInsight kümeniz](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) |[DotNet](data-factory-use-custom-activities.md), [Hive](data-factory-hive-activity.md), [Pig](data-factory-pig-activity.md), [MapReduce](data-factory-map-reduce.md), [Hadoop akışı](data-factory-hadoop-streaming-activity.md) |
 | [Azure Batch](data-factory-compute-linked-services.md#azure-batch-linked-service) |[DotNet](data-factory-use-custom-activities.md) |
-| [Azure Machine Learning](data-factory-compute-linked-services.md#azure-machine-learning-linked-service) |[Machine Learning etkinlikleri: Toplu yürütme ve kaynak güncelleştirme](data-factory-azure-ml-batch-execution-activity.md) |
+| [Azure Machine Learning](data-factory-compute-linked-services.md#azure-machine-learning-linked-service) |[Machine Learning etkinlikleri: Toplu Yürütme ve Kaynak Güncelleştirme](data-factory-azure-ml-batch-execution-activity.md) |
 | [Azure Data Lake Analytics'i](data-factory-compute-linked-services.md#azure-data-lake-analytics-linked-service) |[Data Lake Analytics U-SQL](data-factory-usql-activity.md) |
 | [Azure SQL](data-factory-compute-linked-services.md#azure-sql-linked-service), [Azure SQL veri ambarı](data-factory-compute-linked-services.md#azure-sql-data-warehouse-linked-service), [SQL Server](data-factory-compute-linked-services.md#sql-server-linked-service) |[Saklı Yordam](data-factory-stored-proc-activity.md) |
 
 ### <a name="how-does-azure-data-factory-compare-with-sql-server-integration-services-ssis"></a>Azure Data Factory SQL Server Integration Services (SSIS) ile nasıl karşılaştırılmaktadır? 
-Bkz. [Azure Data Factory vs. MVP 'larımızdan (en değerli profesyonellerden) SSISsunumu:](https://www.sqlbits.com/Sessions/Event15/Azure_Data_Factory_vs_SSIS) Reza Rad. Data Factory yapılan son değişikliklerden bazıları slayt destede listelenmeyebilir. Azure Data Factory için sürekli olarak daha fazla özellik ekliyoruz. Azure Data Factory için sürekli olarak daha fazla özellik ekliyoruz. Bu güncelleştirmeleri Microsoft 'un bu yıldan daha sonra bir süre içinde veri tümleştirme teknolojilerinin karşılaştırmasına dahil edeceğiz.   
+MVP 'larımızdan (en değerli profesyoneller) [Azure Data Factory vs. SSIS](https://www.sqlbits.com/Sessions/Event15/Azure_Data_Factory_vs_SSIS) sunumuna bakın: Reza Rad. Data Factory yapılan son değişikliklerden bazıları slayt destede listelenmeyebilir. Azure Data Factory için sürekli olarak daha fazla özellik ekliyoruz. Azure Data Factory için sürekli olarak daha fazla özellik ekliyoruz. Bu güncelleştirmeleri Microsoft 'un bu yıldan daha sonra bir süre içinde veri tümleştirme teknolojilerinin karşılaştırmasına dahil edeceğiz.   
 
 ## <a name="activities---faq"></a>Etkinlikler-SSS
 ### <a name="what-are-the-different-types-of-activities-you-can-use-in-a-data-factory-pipeline"></a>Data Factory ardışık düzeninde kullanabileceğiniz farklı etkinlik türleri nelerdir?

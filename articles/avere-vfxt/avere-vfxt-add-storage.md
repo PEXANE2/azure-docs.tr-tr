@@ -47,9 +47,9 @@ Aşağıdaki adımlar bir NAS Core fili ekler:
 
 1. Avere denetim masasından üstteki **Ayarlar** sekmesine tıklayın.
 
-1. **Çekirdek Filer**@no__t ' a tıklayın. sol taraftaki**çekirdek filers 'yi yönetin** .
+1. Sol taraftaki çekirdek **filers 'Yi yönetmek** > **çekirdek filme** ' ye tıklayın.
 
-1. **Oluştur**’a tıklayın.
+1. **Oluştur**'a tıklayın.
 
    ![Oluştur düğmesinin üzerinde bir imlece yeni çekirdek dosyalayıcı ekleme sayfasının ekran görüntüsü](media/avere-vfxt-add-core-filer-start.png)
 
@@ -98,7 +98,7 @@ Kümeyi oluşturduktan sonra blob depolaması eklemek için aşağıdaki adımla
 
    Azure portal kullanabilir veya aşağıdaki "Azure 'a dağıt" düğmesine tıklayabilirsiniz.
 
-   [depolama hesabı oluşturmak için ![düğme](media/deploytoazure.png)](https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAvere%2Fmaster%2Fsrc%2Fvfxt%2Fstorageaccount%2Fazuredeploy.json)
+   [depolama hesabı oluşturmak için ![düğmesi](media/deploytoazure.png)](https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAvere%2Fmaster%2Fsrc%2Fvfxt%2Fstorageaccount%2Fazuredeploy.json)
 
 1. Hesap oluşturulduktan sonra depolama hesabı sayfasına gidin.
 
@@ -112,7 +112,7 @@ Kümeyi oluşturduktan sonra blob depolaması eklemek için aşağıdaki adımla
 
    ![Anahtarı kopyalamak için Azure portal GUI](media/avere-vfxt-copy-storage-key.png) 
 
-1. Kümeniz için avere denetim masasını açın. **Ayarlar**' a tıklayın ve ardından sol gezinti bölmesinde **küme** > **bulut kimlik bilgileri** ' ni açın. Bulut kimlik bilgileri sayfasında **kimlik bilgisi ekle**' ye tıklayın.
+1. Kümeniz için avere denetim masasını açın. **Ayarlar**' a tıklayın, ardından sol gezinti bölmesinde **küme** > **bulut kimlik bilgileri** ' ni açın. Bulut kimlik bilgileri sayfasında **kimlik bilgisi ekle**' ye tıklayın.
 
    ![Bulut kimlik bilgileri yapılandırma sayfasında kimlik bilgisi Ekle düğmesine tıklayın](media/avere-vfxt-new-credential-button.png)
 
@@ -126,11 +126,11 @@ Kümeyi oluşturduktan sonra blob depolaması eklemek için aşağıdaki adımla
    | Abonelik | abonelik kimliği |
    | Depolama erişim anahtarı | Azure depolama hesabı anahtarı (önceki adımda kopyalanmış) | 
 
-   **Gönder**' e tıklayın.
+   **Gönder**'e tıklayın.
 
    ![Avere Denetim Masası 'nda bulut kimlik bilgisi tamamlandı formu](media/avere-vfxt-new-credential-submit.png)
 
-1. Sonra, çekirdek filleyici oluşturun. Avere Denetim Masası ' nın sol tarafında, çekirdek **Filer**@no__t ' a tıklayın,**çekirdek filers 'yi yönetin**. 
+1. Sonra, çekirdek filleyici oluşturun. Avere Denetim Masası ' nın sol tarafında çekirdek **Filer** ' a tıklayın >  **çekirdek filers 'yi yönetin**. 
 
 1. **Çekirdek filers ayarlarını yönetme** sayfasındaki **Oluştur** düğmesine tıklayın.
 
@@ -159,14 +159,14 @@ Sonra [bir birleşim oluşturmanız](#create-a-junction)gerekir.
 
 Birleşim, istemciler için oluşturduğunuz bir yoldur. İstemciler yolu bağlayabilir ve seçtiğiniz hedefe ulaşır.
 
-Örneğin, NetApp Core dosyalayıcı `/vol0/data` dışa aktarma ve `/project/resources` alt dizinine eşlemek için `/avere/files` oluşturabilirsiniz.
+Örneğin, NetApp Core dosyalayıcı `/vol0/data` dışa aktarma ve `/project/resources` alt dizininizdeki eşlemek için `/avere/files` oluşturabilirsiniz.
 
 Junler hakkında daha fazla bilgi [avere kümesi yapılandırma kılavuzunun ad alanı bölümünde](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_namespace.html)bulunabilir.
 
 Avere Denetim Masası ayarları arabirimindeki şu adımları izleyin:
 
 * Sol üst köşedeki **vServer** > **ad alanı** ' na tıklayın.
-* @No__t-0 gibi bir ad alanı yolunu/(eğik çizgi) ile başlayarak belirtin.
+* ``/avere/data``gibi,/(eğik çizgi) ile başlayan bir ad alanı yolu sağlayın.
 * Çekirdek filinizi seçin.
 * Çekirdek dosyalayıcı dışarı aktarmayı seçin.
 * **İleri**’ye tıklayın.

@@ -26,12 +26,12 @@ ms.locfileid: "72299960"
 ## <a name="overview"></a>Genel Bakış
 Bu makalede, C# Azure Tablo depolama hizmeti Ile Azure WEBJOBS SDK sürüm 1. x ' in nasıl kullanılacağını gösteren kod örnekleri sağlanmaktadır. Kod örnekleri, [WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) sürüm 1. x ' i kullanır.
 
-Azure Tablo depolama hizmeti, büyük miktarlarda yapılandırılmış verileri depolamanıza olanak sağlar. Hizmet, Azure bulutu içinden ve dışından kimliği doğrulanmış çağrıları kabul eden bir NoSQL veri deposu olur. Azure tabloları, yapılandırılmış ve ilişkisel olmayan verilerin depolanması için idealdir.  Daha fazla bilgi için bkz. [.NET kullanarak Azure Tablo Depolamayı kullanmaya başlama](../cosmos-db/tutorial-develop-table-dotnet.md#create-a-table) .
+Azure Tablo depolama hizmeti, büyük miktarlarda yapılandırılmış verileri depolamanıza olanak sağlar. Kimliği doğrulanmış çağrılarından içindeki ve Azure Bulutu dışındaki kabul eden bir NoSQL veri deposu hizmetidir. Azure tabloları, yapılandırılmış ve ilişkisel olmayan verilerin depolanması için idealdir.  Daha fazla bilgi için bkz. [.NET kullanarak Azure Tablo Depolamayı kullanmaya başlama](../cosmos-db/tutorial-develop-table-dotnet.md#create-a-table) .
 
 Bazı kod parçacıklarında, tetikleyici özniteliklerinden biri kullanılarak değil, el ile çağrılan işlevlerde kullanılan **tablo** özniteliği gösterilmektedir.
 
 ## <a name="how-to-add-entities-to-a-table"></a>Tabloya varlıklar ekleme
-Bir tabloya varlık eklemek için, **ICollector @ no__t-2T >** veya **ıasynccollector @ No__t-4T >** parametresiyle **tablo** özniteliğini kullanın; burada **t** , eklemek istediğiniz varlıkların şemasını belirtir. Öznitelik Oluşturucusu, tablonun adını belirten bir String parametresi alır.
+Bir tabloya varlık eklemek için, **ICollector\<t >** veya **ıasynccollector\<t >** parametresiyle **tablo** özniteliğini kullanın; burada **t** , eklemek istediğiniz varlıkların şemasını belirtir. Öznitelik Oluşturucusu, tablonun adını belirten bir String parametresi alır.
 
 Aşağıdaki kod örneği, *giriş adlı bir*tabloya **kişi** varlıkları ekler.
 
@@ -80,7 +80,7 @@ Veri giriş işlevleri genellikle büyük hacimlerdeki verileri işletiğinden, 
 ![Giriş işlevi tamamlandı](./media/vs-storage-webjobs-getting-started-tables/ingresssuccess.png)
 
 ## <a name="how-to-read-multiple-entities-from-a-table"></a>Tablodaki birden çok varlığı okuma
-Bir tabloyu okumak için **tablo** özniteliğini bir **IQueryable @ No__t-2T >** parametresi ile birlikte kullanın. tür **t** , **tableentity** 'dan türetilir veya **ıtableentity**uygular.
+Bir tabloyu okumak için, Type **t** 'In **tableentity** 'Dan türetildiği veya **ıtableentity**uygulayan bir **IQueryable\<t >** parametresiyle **Table** özniteliğini kullanın.
 
 Aşağıdaki kod **örneği, giriş tablosundan tüm** satırları okur ve günlüğe kaydeder:
 

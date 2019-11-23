@@ -130,11 +130,11 @@ Bu makalede, Azure dosyaları ile Azure Dosya Eşitleme kullanımı dahil olmak 
     Varsayılan olarak, Azure Dosya Eşitleme aşağıdaki dosyaları dışlar:
   * Desktop. ini
   * thumbs. db
-  * ehThumbs. db
+  * ehthumbs.db
   * ~$\*.\*
-  * \*. laccdb
+  * \*.laccdb
   * \*. tmp
-  * 635D02A9D91C401B97884B82B3BCDADEA.\*
+  * 635D02A9D91C401B97884B82B3BCDAEA.\*
 
     Aşağıdaki klasörler varsayılan olarak da dışarıda bırakılır:
 

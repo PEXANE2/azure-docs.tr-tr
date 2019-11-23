@@ -32,7 +32,7 @@ Bu yöntemlerin aşırı yüklemeleri, kapsayıcıların listeleme işlemi taraf
 
 Varsayılan olarak, bir listeleme işlemi bir seferde en fazla 5000 sonuç döndürür. Daha küçük bir sonuç kümesi döndürmek için, **Listcontainerkesimli** metotlardan birini çağırırken `maxresults` parametresi için sıfır olmayan bir değer sağlayın.
 
-Depolama Hesabınız 5000 ' den fazla kapsayıcı içeriyorsa veya `maxresults` için bir değer belirttiyseniz, listeleme işlemi depolama hesabındaki kapsayıcıların bir alt kümesini döndürürse, Azure depolama, Şu listeye sahip bir *devamlılık belirteci* döndürür kapsayıcıları. Devamlılık belirteci, Azure depolama 'nın bir sonraki sonuç kümesini almak için kullanabileceğiniz donuk bir değerdir.
+Depolama Hesabınız 5000 ' den fazla kapsayıcı içeriyorsa veya `maxresults` için bir değer belirttiyseniz, liste işlemi depolama hesabındaki kapsayıcıların bir alt kümesini döndürürse, Azure Storage kapsayıcı listesini içeren bir *devamlılık belirteci* döndürür. Devamlılık belirteci, Azure depolama 'nın bir sonraki sonuç kümesini almak için kullanabileceğiniz donuk bir değerdir.
 
 Kodunuzda, null olup olmadığını anlamak için devamlılık belirtecinin değerini denetleyin. Devamlılık belirteci null olduğunda, sonuç kümesi tamamlanır. Devamlılık belirteci null değilse, devam belirteci null olana kadar, sonraki sonuç kümesini almak için **Listcontainerskesimli** veya **ListContainersSegmentedAsync** yeniden çağırın.
 
@@ -99,5 +99,5 @@ private static async Task ListContainersWithPrefixAsync(CloudBlobClient blobClie
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-[BLOB kaynaklarını numaralandırma](/rest/api/storageservices/enumerating-blob-resources) 
- [kapsayıcıları listeleyin](/rest/api/storageservices/list-containers2)
+[BLOB kaynaklarını numaralandırma](/rest/api/storageservices/enumerating-blob-resources)
+[kapsayıcıları listeleyin](/rest/api/storageservices/list-containers2)

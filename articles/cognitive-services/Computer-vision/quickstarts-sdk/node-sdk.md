@@ -25,7 +25,7 @@ Node. js için Görüntü İşleme istemci kitaplığını kullanarak şunları 
 * [Resim çözümleme](#analyze-an-image)
 * [Yazdırılmış ve el yazısı metin oku](#read-printed-and-handwritten-text)
 
-[Başvuru belgeleri](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest) | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-computervision) | [paket (NPM)](https://www.npmjs.com/package/azure-cognitiveservices-computervision) | [örnek](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
+[Başvuru belgeleri](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest) | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-computervision) | [paketi (NPM)](https://www.npmjs.com/package/azure-cognitiveservices-computervision) | [örnekleri](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -41,7 +41,7 @@ Azure bilişsel hizmetler, abone olduğunuz Azure kaynakları tarafından temsil
 * Ücretsiz olarak yedi gün boyunca geçerli bir [deneme anahtarı](https://azure.microsoft.com/try/cognitive-services/#decision) alın. Kaydolduktan sonra [Azure Web sitesinde](https://azure.microsoft.com/try/cognitive-services/my-apis/)mevcut olacaktır.  
 * [Azure Portal](https://portal.azure.com/)kaynağı görüntüleyin.
 
-Deneme aboneliğinizden veya kaynağından bir anahtar aldıktan sonra anahtar ve uç nokta URL 'SI için sırasıyla `COMPUTER_VISION_SUBSCRIPTION_KEY` ve `COMPUTER_VISION_ENDPOINT` adlı [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
+Deneme aboneliğinizden veya kaynağından bir anahtar aldıktan sonra, anahtar ve uç nokta URL 'SI için sırasıyla `COMPUTER_VISION_SUBSCRIPTION_KEY` ve `COMPUTER_VISION_ENDPOINT` adlı [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
  
 ### <a name="create-a-new-nodejs-application"></a>Yeni bir Node.js uygulaması oluşturma
 
@@ -51,7 +51,7 @@ Konsol penceresinde (cmd, PowerShell veya Bash gibi), uygulamanız için yeni bi
 mkdir myapp && cd myapp
 ```
 
-@No__t-1 dosyası ile bir düğüm uygulaması oluşturmak için `npm init` komutunu çalıştırın. 
+Bir `package.json` dosyası ile bir düğüm uygulaması oluşturmak için `npm init` komutunu çalıştırın. 
 
 ```console
 npm init
@@ -59,7 +59,7 @@ npm init
 
 ### <a name="install-the-client-library"></a>İstemci kitaplığını yükler
 
-@No__t-0 ve `azure-cognitiveservices-computervision` NPM paketlerini yükler:
+`ms-rest-azure` ve `azure-cognitiveservices-computervision` NPM paketlerini yükler:
 
 ```console
 npm install azure-cognitiveservices-computervision ms-rest-azure
@@ -73,7 +73,7 @@ Yeni bir dosya, *index. js*oluşturun ve bir metin düzenleyicisinde açın. Aş
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_imports)]
 
-Ardından, `computerVision` işlevini tanımlayın ve birincil işlev ve geri çağırma işlevi ile zaman uyumsuz bir seri bildirin. Ön uç kodunuzu birincil işleve ekleyecek ve betiğin alt kısmındaki `computerVision` ' ı çağıracaksınız.
+Ardından, bir işlev `computerVision` tanımlayın ve birincil işlev ve geri çağırma işlevi ile zaman uyumsuz bir seri bildirin. Hızlı başlangıç kodunuzu birincil işleve ekleyecek ve betiğin alt kısmındaki `computerVision` çağıracaksınız.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_functiondef_begin)]
 
@@ -83,7 +83,7 @@ Ardından, `computerVision` işlevini tanımlayın ve birincil işlev ve geri ç
 
 Aşağıdaki sınıflar ve arabirimler Görüntü İşleme Node. js SDK 'sının bazı önemli özelliklerini işler.
 
-|Adı|Açıklama|
+|Ad|Açıklama|
 |---|---|
 | [ComputerVisionClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest) | Bu sınıf tüm Görüntü İşleme işlevleri için gereklidir. Bunu Abonelik bilgileriniz ile birlikte başlatır ve birçok görüntü işlemini yapmak için kullanırsınız.|
 |[VisualFeatureTypes](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/visualfeaturetypes?view=azure-node-latest)| Bu Enum, standart bir çözümle işleminde yapılabilecek farklı görüntü analizi türlerini tanımlar. İhtiyaçlarınıza bağlı olarak bir **Visualfeaturetypes** değeri kümesi belirtirsiniz. |
@@ -106,7 +106,7 @@ Uç noktanız ve anahtarınızla bir istemci örneği oluşturun. Anahtar ve uç
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_client)]
 
-## <a name="analyze-an-image"></a>Bir resmi çözümleme
+## <a name="analyze-an-image"></a>Resim çözümleme
 
 Bu bölümdeki kod, çeşitli görsel özellikleri ayıklamak için uzak görüntüleri analiz eder. Bu işlemleri, istemci nesnesinin **analiz Zeımage** yönteminin bir parçası olarak gerçekleştirebilir veya tek tek yöntemler kullanarak çağırabilirsiniz. Ayrıntılar için [başvuru belgelerine](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest) bakın.
 
@@ -131,7 +131,7 @@ Aşağıdaki kod görüntünün algılanan kategorisini alır. Daha fazla ayrın
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_categories)]
 
-@No__t yardımcısı işlevini tanımlayın-0:
+Yardımcı işlevi `formatCategories`tanımlayın:
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_categories_format)]
 
@@ -141,7 +141,7 @@ Aşağıdaki kod görüntüde algılanan etiketlerin kümesini alır. Daha fazla
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_tags)]
 
-@No__t yardımcısı işlevini tanımlayın-0:
+Yardımcı işlevi `formatTags`tanımlayın:
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_tagsformat)]
 
@@ -151,7 +151,7 @@ Aşağıdaki kod görüntüdeki ortak nesneleri algılar ve konsola yazdırır. 
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_objects)]
 
-@No__t yardımcısı işlevini tanımlayın-0:
+Yardımcı işlevi `formatRectObjects`tanımlayın:
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_objectformat)]
 
@@ -167,7 +167,7 @@ Aşağıdaki kod görüntüde dikdörtgen koordinatlarıyla algılanan yüzeyler
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_faces)]
 
-@No__t yardımcısı işlevini tanımlayın-0:
+Yardımcı işlevi `formatRectFaces`tanımlayın:
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_formatfaces)]
 
@@ -211,11 +211,11 @@ Algılanan yer işaretleriyle ilgili konum verilerini ayrıştırmak için `form
 
 ### <a name="get-the-image-type"></a>Görüntü türünü al
 
-Aşağıdaki kod, küçük resim veya çizgi çizimi olup olmadığını @ no__t-0resminin türü hakkında bilgi yazdırır.
+Aşağıdaki kod, küçük resim veya çizgi çizimi olup olmadığı&mdash;görüntü türü hakkında bilgi yazdırır.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_imagetype)]
 
-@No__t yardımcısı işlevini tanımlayın-0:
+Yardımcı işlevi `describeType`tanımlayın:
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_imagetype_describe)]
 
@@ -238,17 +238,17 @@ Verilen görüntüler için `recognizeText` işlevini çağıran aşağıdaki ko
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_call)]
 
-@No__t-0 işlevini tanımlayın. Bu, istemci nesnesinde, bir işlem KIMLIĞI döndüren ve görüntünün içeriğini okumak için zaman uyumsuz bir işlem başlatan **Recognizetext** yöntemini çağırır. Ardından, sonuçlar döndürülünceye kadar işlemi tek saniyelik aralıklarla denetlemek için işlem KIMLIğINI kullanır. Ardından ayıklanan sonuçları döndürür.
+`recognizeText` işlevini tanımlayın. Bu, istemci nesnesinde, bir işlem KIMLIĞI döndüren ve görüntünün içeriğini okumak için zaman uyumsuz bir işlem başlatan **Recognizetext** yöntemini çağırır. Ardından, sonuçlar döndürülünceye kadar işlemi tek saniyelik aralıklarla denetlemek için işlem KIMLIğINI kullanır. Ardından ayıklanan sonuçları döndürür.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_helper)]
 
-Ardından, bir tanıma işleminin sonuçlarını konsola yazdıran `printRecText` yardımcı işlevini tanımlayın.
+Ardından, bir tanıma işleminin sonuçlarını konsola yazdıran `printRecText`yardımcı işlevini tanımlayın.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_print)]
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-Uygulamayı hızlı başlangıç dosyanızda `node` komutuyla çalıştırın.
+Uygulamayı hızlı başlangıç dosyanızdaki `node` komutuyla çalıştırın.
 
 ```console
 node index.js

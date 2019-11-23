@@ -101,7 +101,7 @@ Mantıksal uygulamanın farklı bir eylem gerçekleştirmesini istiyorsanız iş
 
     Content-Type üst bilgisini ayarlama Content-(media/action-groups-logic-app/content-type-header.png "Type") üst ![bilgisini ayarlama]
 
-10. **@No__t-1** **yeni adım** ' ı seçin ve ardından **Eylem Ekle**' yi seçin.
+10. **+** **yeni adım** ' ı seçin ve ardından **Eylem Ekle**' yi seçin.
 
     ![Eylem ekleme](media/action-groups-logic-app/add-action.png "eylem ekleme")
 
@@ -111,7 +111,7 @@ Mantıksal uygulamanın farklı bir eylem gerçekleştirmesini istiyorsanız iş
 
 12. Microsoft ekipleri eylemini yapılandırın. **Logic Apps tasarımcı** , Office 365 hesabınızda kimlik doğrulaması belirtmenizi ister. İletinin gönderileceği **EKIP kimliğini** ve **Kanal kimliğini** seçin.
 
-13. Statik metin birleşimini ve dinamik içerikte @ no__t-1 \<fields başvurularını kullanarak iletiyi yapılandırın. Aşağıdaki metni kopyalayıp **ileti** alanına yapıştırın:
+13. Statik metin birleşimini ve dinamik içerikte\> \<alanlara başvuruları kullanarak iletiyi yapılandırın. Aşağıdaki metni kopyalayıp **ileti** alanına yapıştırın:
 
     ```text
       Activity Log Alert: <eventSource>
@@ -120,7 +120,7 @@ Mantıksal uygulamanın farklı bir eylem gerçekleştirmesini istiyorsanız iş
       resourceId: <resourceId>
     ```
 
-    Ardından, \<fields @ no__t-1 ' i arayın ve aynı ada sahip dinamik içerik etiketleri ile değiştirin.
+    Sonra, \<alanları\> aynı ada sahip dinamik içerik etiketleriyle arayın ve değiştirin.
 
     > [!NOTE]
     > **Durum**olarak adlandırılan iki dinamik alan vardır. Bu alanların her ikisini de iletiye ekleyin. **ActivityLog** Özellik paketinde bulunan alanını kullanın ve diğer alanı silin. Aşağıdaki ekran görüntüsünde gösterildiği gibi, tam alan başvurusunu görmek için imlecinizi **durum** alanının üzerine getirin:
@@ -187,7 +187,7 @@ Azure hizmet durumu girdileri, etkinlik günlüğü 'nün bir parçasıdır. Uya
 -  9 ve 10 adımları aynıdır.
 -  11 ila 14 arasındaki adımlar için aşağıdaki işlemi kullanın:
 
-   1. **@No__t-1** **yeni adım** ' ı seçin ve ardından **Koşul Ekle**' yi seçin. Aşağıdaki koşulları, mantıksal uygulamanın yalnızca giriş verileri aşağıdaki değerlerle eşleştiğinde yürütülür şekilde ayarlayın.  Metin kutusuna sürüm değeri girerken, bir sayısal tür değil, bir dize olarak değerlendirildiğinden emin olmak için tırnak içine alın ("0.1.1").  Sayfaya geri dönerseniz, sistem tırnak işaretlerini göstermez, ancak temeldeki kod yine de dize türünü korur.   
+   1. **+** **yeni adım** ' ı seçin ve ardından **Koşul Ekle**' yi seçin. Aşağıdaki koşulları, mantıksal uygulamanın yalnızca giriş verileri aşağıdaki değerlerle eşleştiğinde yürütülür şekilde ayarlayın.  Metin kutusuna sürüm değeri girerken, bir sayısal tür değil, bir dize olarak değerlendirildiğinden emin olmak için tırnak içine alın ("0.1.1").  Sayfaya geri dönerseniz, sistem tırnak işaretlerini göstermez, ancak temeldeki kod yine de dize türünü korur.   
        - `schemaId == Microsoft.Insights/activityLogs`
        - `eventSource == ServiceHealth`
        - `version == "0.1.1"`
@@ -196,7 +196,7 @@ Azure hizmet durumu girdileri, etkinlik günlüğü 'nün bir parçasıdır. Uya
 
    1. **Eğer doğruysa** , Microsoft ekipleri eylemini eklemek için [bir etkinlik günlüğü oluşturma uyarısında](#create-an-activity-log-alert-administrative) adım 11 ' den 13 ' e kadar olan yönergeleri izleyin.
 
-   1. Bir HTML ve dinamik içerik birleşimini kullanarak iletiyi tanımlayın. Aşağıdaki içeriği kopyalayıp **ileti** alanına yapıştırın. @No__t-0, `[trackingID]`, `[title]` ve `[communication]` alanlarını aynı ada sahip dinamik içerik etiketleriyle değiştirin:
+   1. Bir HTML ve dinamik içerik birleşimini kullanarak iletiyi tanımlayın. Aşağıdaki içeriği kopyalayıp **ileti** alanına yapıştırın. `[incidentType]`, `[trackingID]`, `[title]`ve `[communication]` alanlarını aynı ada sahip dinamik içerik etiketleriyle değiştirin:
 
        ```html
        <p>
@@ -275,7 +275,7 @@ Azure hizmet durumu girdileri, etkinlik günlüğü 'nün bir parçasıdır. Uya
 - 9 ve 10 adımları aynıdır.
 - 11 ila 14 arasındaki adımlar için aşağıdaki işlemi kullanın:
 
-  1. **@No__t-1** **yeni adım** ' ı seçin ve ardından **Koşul Ekle**' yi seçin. Aşağıdaki koşulları, mantıksal uygulamanın yalnızca giriş verileri aşağıdaki değerlerle eşleştiğinde yürütülür şekilde ayarlayın. Metin kutusuna sürüm değeri girerken, tırnak içine alın ("2,0") ve sayısal bir tür değil, bir dize olarak değerlendirildiğinden emin olun.  Sayfaya geri dönerseniz, sistem tırnak işaretlerini göstermez, ancak temeldeki kod yine de dize türünü korur. 
+  1. **+** **yeni adım** ' ı seçin ve ardından **Koşul Ekle**' yi seçin. Aşağıdaki koşulları, mantıksal uygulamanın yalnızca giriş verileri aşağıdaki değerlerle eşleştiğinde yürütülür şekilde ayarlayın. Metin kutusuna sürüm değeri girerken, tırnak içine alın ("2,0") ve sayısal bir tür değil, bir dize olarak değerlendirildiğinden emin olun.  Sayfaya geri dönerseniz, sistem tırnak işaretlerini göstermez, ancak temeldeki kod yine de dize türünü korur. 
      - `schemaId == AzureMonitorMetricAlert`
      - `version == "2.0"`
        
@@ -285,7 +285,7 @@ Azure hizmet durumu girdileri, etkinlik günlüğü 'nün bir parçasıdır. Uya
 
       !["Ölçüm uyarısı true Condition Post ACTION"](media/action-groups-logic-app/metric-alert-true-condition-post-action.png "ölçüm uyarısı true Condition Post ACTION")
 
-  1. **Eğer false** koşulunda, ölçüm uyarısının mantıksal uygulamanın beklentileriyle eşleşmediğinden iletişim kurmak Için bir Microsoft ekipleri eylemi tanımlayın. JSON yükünü dahil edin. @No__t-1 ifadesinde `triggerBody` dinamik içeriğine nasıl başvurulduğuna dikkat edin.
+  1. **Eğer false** koşulunda, ölçüm uyarısının mantıksal uygulamanın beklentileriyle eşleşmediğinden iletişim kurmak Için bir Microsoft ekipleri eylemi tanımlayın. JSON yükünü dahil edin. `json()` ifadesindeki `triggerBody` dinamik içeriğe nasıl başvurulacağını fark edin.
 
       !["Ölçüm uyarısı yanlış koşulu gönderme eylemi"](media/action-groups-logic-app/metric-alert-false-condition-post-action.png "ölçüm uyarısı yanlış koşulu gönderme eylemi")
 

@@ -1,6 +1,6 @@
 ---
-title: Create an Azure function app with Java and Eclipse
-description: How-to guide to create and publish a simple HTTP triggered serverless app using Java and Eclipse to Azure Functions.
+title: Java ve tutulma ile bir Azure işlev uygulaması oluşturma
+description: Java kullanarak basit bir HTTP ile tetiklenen sunucusuz uygulama oluşturma ve Yayımlama Kılavuzu ve Azure Işlevleri ile çakışan küreler.
 author: jeffhollan
 ms.topic: conceptual
 ms.date: 07/01/2018
@@ -13,9 +13,9 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227118"
 ---
-# <a name="create-your-first-function-with-java-and-eclipse"></a>Create your first function with Java and Eclipse 
+# <a name="create-your-first-function-with-java-and-eclipse"></a>Java ve tutulma ile ilk işlevinizi oluşturma 
 
-This article shows you how to create a [serverless](https://azure.microsoft.com/solutions/serverless/) function project with the Eclipse IDE and Apache Maven, test and debug it, then deploy it to Azure Functions. 
+Bu makalede, tutulma IDE ve Apache Maven ile [sunucusuz](https://azure.microsoft.com/solutions/serverless/) bir işlev projesi oluşturma, test etme ve hata ayıklama ve Azure Işlevlerine dağıtma işlemleri gösterilir. 
 
 <!-- TODO ![Access a Hello World function from the command line with cURL](media/functions-create-java-maven/hello-azure.png) -->
 
@@ -23,62 +23,62 @@ This article shows you how to create a [serverless](https://azure.microsoft.com/
 
 ## <a name="set-up-your-development-environment"></a>Geliştirme ortamınızı kurma
 
-To develop a functions app with Java and Eclipse, you must have the following installed:
+Java ve tutulma ile bir işlevler uygulaması geliştirmek için aşağıdakilerin yüklü olması gerekir:
 
 -  [Java Developer Kit](https://www.azul.com/downloads/zulu/), sürüm 8.
 -  [Apache Maven](https://maven.apache.org), sürüm 3.0 veya üzeri.
--  [Eclipse](https://www.eclipse.org/downloads/packages/), with Java and Maven support.
+-  Java ve Maven desteğiyle [Çakışan Küreler](https://www.eclipse.org/downloads/packages/).
 -  [Azure CLI](https://docs.microsoft.com/cli/azure)
 
 > [!IMPORTANT] 
 > Bu hızlı başlangıcın tamamlanabilmesi için JAVA_HOME ortam değişkeni JDK’nin yükleme konumu olarak ayarlanmalıdır.
 
-It's highly recommended to also install [Azure Functions Core Tools, version 2](functions-run-local.md#v2), which provide a local environment for running and debugging Azure Functions. 
+Azure Işlevleri 'ni çalıştırmaya ve hata ayıklamaya yönelik yerel bir ortam sağlayan [Azure Functions Core Tools, sürüm 2](functions-run-local.md#v2)' yi da yüklemek kesinlikle önerilir. 
 
-## <a name="create-a-functions-project"></a>Create a Functions project
+## <a name="create-a-functions-project"></a>Işlevler projesi oluşturma
 
-1. In Eclipse, select the **File** menu, then select **New -&gt; Maven Project**. 
-1. Accept the defaults in the **New Maven Project** dialogue and select **Next**.
-1. Select **Add Archetype** and add the entries for the [azure-functions-archetype](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype).
-    - Archetype Group ID: com.microsoft.azure
-    - Archetype Artifact ID: azure-functions-archetype
-    - Version: Use latest version **1.22** from [the central repository](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
-    ![Eclipse Maven create](media/functions-create-first-java-eclipse/functions-create-eclipse.png)  
-1. Click **OK** and then click **Next**.  Be sure to fill in values for all of the fields including `resourceGroup`, `appName`, and `appRegion` (please use a different appName other than **fabrikam-function-20170920120101928**), and eventually **Finish**.
-    ![Eclipse Maven create2](media/functions-create-first-java-eclipse/functions-create-eclipse2.png)  
+1. Tutulma ' da **Dosya** menüsünü seçin ve ardından **New-&gt; Maven projesi**' ni seçin. 
+1. **Yeni Maven proje** iletişim kutusunda varsayılan değerleri kabul edin ve **İleri ' yi**seçin.
+1. [Azure-Functions-arşiv ETYPE](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)Için arşiv **ETYPE Ekle** ' yi seçin ve girişleri ekleyin.
+    - Arşiv grubu KIMLIĞI: com. Microsoft. Azure
+    - Bir arşiv türü yapıt KIMLIĞI: Azure-Functions-arşiv Etype
+    - Sürüm: [Merkezi depodan](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype) en son **1,22** sürümünü kullanın
+    tutulma maven oluştur](media/functions-create-first-java-eclipse/functions-create-eclipse.png) ![  
+1. **Tamam** ' a ve ardından **İleri**' ye tıklayın.  `resourceGroup`, `appName`ve `appRegion` dahil tüm alanların değerlerini doldurduğunuzdan emin olun (lütfen **fabrikam-Function-20170920120101928**dışında farklı bir AppName kullanın) ve sonunda **son**' u kullanın.
+    ![tutulma Maven Create2](media/functions-create-first-java-eclipse/functions-create-eclipse2.png)  
 
-Maven, _artifactId_ adlı yeni bir dosyada proje dosyalarını oluşturur. The generated code in the project is a simple [HTTP triggered](/azure/azure-functions/functions-bindings-http-webhook) function that echoes the body of the triggering HTTP request.
+Maven, _artifactId_ adlı yeni bir dosyada proje dosyalarını oluşturur. Projedeki oluşturulan kod, tetikleme HTTP isteğinin gövdesini yansıtan basit bir [http ile tetiklenen](/azure/azure-functions/functions-bindings-http-webhook) bir işlevdir.
 
-## <a name="run-functions-locally-in-the-ide"></a>Run functions locally in the IDE
+## <a name="run-functions-locally-in-the-ide"></a>İşlevleri IDE 'de yerel olarak çalıştırma
 
 > [!NOTE]
-> [Azure Functions Core Tools, version 2](functions-run-local.md#v2) must be installed to run and debug functions locally.
+> Azure Functions Core Tools, yerel olarak işlevleri çalıştırmak ve hatalarını ayıklamak için [sürüm 2 '](functions-run-local.md#v2) nin yüklü olması gerekir.
 
-1. Right-click on the generated project, then choose **Run As** and **Maven build**.
-1. In the **Edit Configuration** dialog, Enter `package` in the **Goals** and **Name** fields, then select **Run**. This will build and package the function code.
-1. Once the build is complete, create another Run configuration as above, using `azure-functions:run` as the goal and name. Select **Run** to run the function in the IDE.
+1. Oluşturulan projeye sağ tıklayın ve ardından **Farklı Çalıştır** ve **Maven Build**öğesini seçin.
+1. **Yapılandırma Düzenle** Iletişim kutusunda **hedefler** ve **ad** alanlarına `package` girin ve **Çalıştır**' ı seçin. Bu işlem işlev kodunu derleyip paketleyebilir.
+1. Oluşturma işlemi tamamlandıktan sonra, hedef ve ad olarak `azure-functions:run` kullanarak yukarıdaki gibi başka bir çalıştırma yapılandırması oluşturun. İşlevi IDE 'de çalıştırmak için **Çalıştır** ' ı seçin.
 
-Terminate the runtime in the console window when you're done testing your function. Only one function host can be active and running locally at a time.
+İşlevinizi test etmeyi bitirdiğinizde konsol penceresindeki çalışma zamanını sonlandırın. Tek seferde yalnızca bir işlev Konağı etkin ve yerel olarak çalıştırılabilir.
 
-### <a name="debug-the-function-in-eclipse"></a>Debug the function in Eclipse
+### <a name="debug-the-function-in-eclipse"></a>Çakışan Küreler işlevinde hata ayıklama
 
-In your **Run As** configuration set up in the previous step, change `azure-functions:run` to `azure-functions:run -DenableDebug` and run the updated configuration to start the function app in debug mode.
+Önceki adımda bulunan **Farklı Çalıştır** yapılandırmanızda, işlev uygulamasını hata ayıklama modunda başlatmak için `azure-functions:run` `azure-functions:run -DenableDebug` olarak değiştirin ve güncelleştirilmiş yapılandırmayı çalıştırın.
 
-Select the **Run** menu and open **Debug Configurations**. Choose **Remote Java Application** and create a new one. Give your configuration a name and fill in the settings. The port should be consistent with the debug port opened by function host, which by default is `5005`. After setup, click on `Debug` to start debugging.
+**Çalıştır** menüsünü seçin ve **hata ayıklama yapılandırması**' nı açın. **Uzak Java uygulaması** ' nı seçin ve yeni bir tane oluşturun. Yapılandırmanıza bir ad verin ve ayarları girin. Bağlantı noktası, varsayılan olarak `5005`, işlev Konağı tarafından açılan hata ayıklama bağlantı noktasıyla tutarlı olmalıdır. Kurulumdan sonra, hata ayıklamayı başlatmak için `Debug` ' ye tıklayın.
 
-![Debug functions in Eclipse](media/functions-create-first-java-eclipse/debug-configuration-eclipse.PNG)
+![Tutulma 'daki hata ayıklama işlevleri](media/functions-create-first-java-eclipse/debug-configuration-eclipse.PNG)
 
-Set breakpoints and inspect objects in your function using the IDE. When finished, stop the debugger and the running function host. Only one function host can be active and running locally at a time.
+IDE 'yi kullanarak kesme noktaları ayarlayın ve işlevinizdeki nesneleri inceleyin. İşiniz bittiğinde, hata ayıklayıcıyı ve çalışan işlev konağını durdurun. Tek seferde yalnızca bir işlev Konağı etkin ve yerel olarak çalıştırılabilir.
 
 ## <a name="deploy-the-function-to-azure"></a>İşlevi Azure’a dağıtma
 
-Azure İşlevleri’ne dağıtım işlemi, Azure CLI’dan hesap kimlik bilgilerini kullanır. [Log in with the Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) before continuing using your computer's command prompt.
+Azure İşlevleri’ne dağıtım işlemi, Azure CLI’dan hesap kimlik bilgilerini kullanır. Bilgisayarınızın komut istemi ile devam etmeden önce [Azure CLI Ile oturum açın](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) .
 
 ```azurecli
 az login
 ```
 
-Deploy your code into a new Function app using the `azure-functions:deploy` Maven goal in a new **Run As** configuration.
+Yeni bir **Farklı Çalıştır** yapılandırmasında `azure-functions:deploy` Maven hedefini kullanarak kodunuzu yeni bir işlev uygulamasına dağıtın.
 
 Dağıtım tamamlandığında, Azure işlev uygulamanıza erişmek için kullanabileceğiniz URL’yi görürsünüz:
 

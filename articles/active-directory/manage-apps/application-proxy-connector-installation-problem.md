@@ -71,9 +71,9 @@ Bağlayıcının yüklemesi başarısız olduğunda, kök neden genellikle aşa�
 
 **Kimlik bilgilerinin doğru olduğunu doğrulamak için:**
 
-@No__t-0 ' a bağlanın ve aynı kimlik bilgilerini kullanın. Oturum açmanın başarılı olduğundan emin olun. **Azure Active Directory** - @ no__t-2 **kullanıcıları ve grupları** - @ No__t-5 **tüm kullanıcılar**' a giderek Kullanıcı rolünü kontrol edebilirsiniz. 
+<https://login.microsoftonline.com> bağlanın ve aynı kimlik bilgilerini kullanın. Oturum açmanın başarılı olduğundan emin olun. **Azure Active Directory** -&gt; **kullanıcılar ve gruplar** -**tüm kullanıcıları**&gt; giderek Kullanıcı rolünü kontrol edebilirsiniz. 
 
 Kullanıcı hesabınızı ve ardından ortaya çıkan menüdeki "Dizin rolü" nü seçin. Seçili rolün "uygulama Yöneticisi" olduğunu doğrulayın. Bu adımlarla ilgili sayfaların hiçbirine erişemiyorsanız, gerekli rolünüzün olması gerekmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Azure AD Uygulama Ara Sunucusu bağlayıcılarını anlama](application-proxy-connectors.md)
+[Azure AD uygulama ara sunucusu bağlayıcıları anlama](application-proxy-connectors.md)

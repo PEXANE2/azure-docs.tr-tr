@@ -1,5 +1,5 @@
 ---
-title: Tutorial`:` Use a managed identity to access Azure Key Vault - Linux - Azure AD
+title: Eğitim`:` Azure Key Vault erişmek için yönetilen kimlik kullanma-Linux-Azure AD
 description: Linux VM üzerinde bir sistem tarafından atanmış yönetilen kimlik kullanarak Azure Resource Manager’a erişme işleminde size yol gösteren bir öğretici.
 services: active-directory
 documentationcenter: ''
@@ -40,7 +40,7 @@ Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
 ## <a name="grant-your-vm-access-to-a-secret-stored-in-a-key-vault"></a>VM'nize Key Vault'ta depolanan Gizli Diziye erişim verme  
 
-Azure kaynakları için yönetilen hizmet kimlikleri kullanıldığında kodunuz Azure Active Directory kimlik doğrulamasını destekleyen kaynaklarda kimlik doğrulaması yapmak için belirteçlere erişebilir. However, not all Azure services support Azure AD authentication. To use managed identities for Azure resources with those services, store the service credentials in Azure Key Vault, and use managed identities for Azure resources to access Key Vault to retrieve the credentials. 
+Azure kaynakları için yönetilen hizmet kimlikleri kullanıldığında kodunuz Azure Active Directory kimlik doğrulamasını destekleyen kaynaklarda kimlik doğrulaması yapmak için belirteçlere erişebilir. Bununla birlikte, tüm Azure hizmetleri Azure AD kimlik doğrulamasını desteklemez. Azure kaynakları için yönetilen kimlikleri bu hizmetlerle birlikte kullanmak için, hizmet kimlik bilgilerini Azure Key Vault depolayın ve Azure kaynakları için Yönetilen kimlikler kullanarak kimlik bilgilerini almak üzere Key Vault erişin. 
 
 İlk olarak, Key Vault'u oluşturmalı ve VM'mize Key Vault üzerinde sistem tarafından atanan yönetilen kimlik erişimi vermeliyiz.   
 
@@ -49,7 +49,7 @@ Azure kaynakları için yönetilen hizmet kimlikleri kullanıldığında kodunuz
 3. Key Vault'u daha önce oluşturduğunuz VM'yle aynı aboneliğe ve kaynak grubuna yerleştirin. 
 4. **Erişim ilkeleri**’ni seçin ve **Yeni ekle**'ye tıklayın. 
 5. Şablondan yapılandır'da **Gizli Dizi Yönetimi**'ni seçin. 
-6. **Sorumlu Seç**'i seçin ve arama alanına daha önce oluşturduğunuz VM'nin adını girin.  Select the VM in the result list and click **Select**. 
+6. **Sorumlu Seç**'i seçin ve arama alanına daha önce oluşturduğunuz VM'nin adını girin.  Sonuç listesinde VM 'yi seçin ve **Seç**' e tıklayın. 
 7. Yeni erişim ilkesini ekleme işlemini tamamlamak için **Tamam**'a tıklayın ve erişim ilkesi seçimini bitirmek için de **Tamam**'a tıklayın. 
 8. Key Vault oluşturmayı tamamlamak için **Oluştur**'a tıklayın. 
 
@@ -60,17 +60,17 @@ Ardından, Key Vault'a bir gizli dizi ekleyin; böylelikle VM'nizde çalıştır
 1. **Tüm Kaynaklar**'ı seçin, sonra da oluşturduğunuz Key Vault'u bulun ve seçin. 
 2. **Gizli Diziler**'i seçin ve **Ekle**'ye tıklayın. 
 3. **Karşıya yükleme seçenekleri**'nden **El ile** seçeneğini belirtin. 
-4. Gizli dizi için bir ad ve değer girin.  The value can be anything you want. 
+4. Gizli dizi için bir ad ve değer girin.  Değer, istediğiniz herhangi bir şey olabilir. 
 5. Etkinleştirme tarihi ile sona erme tarihini boş bırakın ve **Etkin** seçeneğini **Evet** değerinde bırakın. 
 6. Gizli diziyi oluşturmak için **Oluştur**'a tıklayın. 
  
 ## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-retrieve-the-secret-from-the-key-vault"></a>VM'nin kimliğini kullanarak erişim belirteci alma ve Key Vault'tan gizli diziyi almak için bunu kullanma  
 
-Bu adımları tamamlamak bir SSH istemciniz olmalıdır.  If you are using Windows, you can use the SSH client in the [Windows Subsystem for Linux](https://msdn.microsoft.com/commandline/wsl/about). SSH istemcinizin anahtarlarını yapılandırmak için yardıma ihtiyacınız olursa, bkz. [Azure'da Windows ile SSH anahtarlarını kullanma](../../virtual-machines/linux/ssh-from-windows.md) veya [Azure’da Linux VM’ler için SSH ortak ve özel anahtar çifti oluşturma](../../virtual-machines/linux/mac-create-ssh-keys.md).
+Bu adımları tamamlamak bir SSH istemciniz olmalıdır.  Windows kullanıyorsanız, [Linux Için Windows alt SISTEMINDE](https://msdn.microsoft.com/commandline/wsl/about)SSH istemcisini kullanabilirsiniz. SSH istemcinizin anahtarlarını yapılandırmak için yardıma ihtiyacınız olursa, bkz. [Azure'da Windows ile SSH anahtarlarını kullanma](../../virtual-machines/linux/ssh-from-windows.md) veya [Azure’da Linux VM’ler için SSH ortak ve özel anahtar çifti oluşturma](../../virtual-machines/linux/mac-create-ssh-keys.md).
  
 1. Portalda Linux VM’nize gidin ve **Genel Bakış**’ta **Bağlan**’a tıklayın. 
-2. Tercih ettiğiniz SSH istemciyle VM'ye **bağlanın**. 
-3. In the terminal window, using CURL, make a request to the local managed identities for Azure resources endpoint to get an access token for Azure Key Vault.  
+2. Tercih ettiğiniz SSH istemcisiyle VM’ye bağlanmak için **Bağlan**’ı seçin. 
+3. Terminal penceresinde, KıVRıMLı ' ı kullanarak, Azure Key Vault için bir erişim belirteci almak üzere Azure kaynakları uç noktası için yerel yönetilen kimliklere bir istek oluşturun.  
  
     Erişim belirteci için CURL isteği aşağıda yer alır.  
     
@@ -91,7 +91,7 @@ Bu adımları tamamlamak bir SSH istemciniz olmalıdır.  If you are using Wind
     "token_type":"Bearer"} 
     ```
     
-    Azure Key Vault’ta kimlik doğrulamak için bu erişim belirtecini kullanabilirsiniz.  The next CURL request shows how to read a secret from Key Vault using CURL and the Key Vault REST API.  You’ll need the URL of your Key Vault, which is in the **Essentials** section of the **Overview** page of the Key Vault.  You will also need the access token you obtained on the previous call. 
+    Azure Key Vault’ta kimlik doğrulamak için bu erişim belirtecini kullanabilirsiniz.  Sonraki KıVRıMLı isteği, Key Vault bir gizli dizi ve Key Vault REST API kullanarak bir parolanın nasıl okunacağını gösterir.  Key Vault **genel bakış** sayfasının **temel** bileşenler bölümünde bulunan Key Vault URL 'sine ihtiyacınız vardır.  Ayrıca, önceki çağrıda elde ettiğiniz erişim belirtecine de ihtiyacınız olacak. 
         
     ```bash
     curl https://<YOUR-KEY-VAULT-URL>/secrets/<secret-name>?api-version=2016-10-01 -H "Authorization: Bearer <ACCESS TOKEN>" 

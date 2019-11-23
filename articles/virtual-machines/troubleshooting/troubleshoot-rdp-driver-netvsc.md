@@ -54,7 +54,7 @@ Bu adımları izlemeden önce, etkilenen VM 'nin [sistem diskinin bir anlık gö
 
 2. İlgili güncelleştirmeyi aynı bölgeden çalışan bir sanal makineye bağlı yeni veya mevcut bir veri diskine indirin:
 
-   - **10.0.14393.594**: [KB4073562 veya sonraki bir](https://support.microsoft.com/help/4073562) güncelleştirme
+   - **10.0.14393.594**: [KB4073562](https://support.microsoft.com/help/4073562) veya sonraki bir güncelleştirme
    - **10.0.15063.0**: [KB4016240](https://support.microsoft.com/help/4016240) veya sonraki bir güncelleştirme
 
 3. Yardımcı programı diskini çalışan sanal makineden ayırın ve sonra bozuk VM 'ye bağlayın.
@@ -79,11 +79,11 @@ Bu adımları izlemeden önce, etkilenen VM 'nin [sistem diskinin bir anlık gö
 
 5. Kurtarma VM 'sinde, kayıt defteri Düzenleyicisi 'ni (Regedit. exe) başlatın.
 
-6. **HKEY_LOCAL_MACHINE** anahtarını seçin ve sonra menüden **Dosya** > **yükleme Hive** ' yi seçin.
+6. **HKEY_LOCAL_MACHINE** anahtarını seçin ve sonra menüden > **dosyayı** **Hive yükle** ' yi seçin.
 
 7. **\Windows\system32\config** klasöründeki sistem dosyasını bulun.
 
-8. **Aç**' ı seçin, ad Için **brokensystem** yazın, **HKEY_LOCAL_MACHINE** anahtarını genişletin ve sonra da **brokensystem**adlı ek anahtarı bulun.
+8. **Aç**' ı seçin, ad Için **brokensystem** yazın, **HKEY_LOCAL_MACHINE** anahtarını genişletin ve ardından **brokensystem**adlı ek anahtarı bulun.
 
 9. Şu konuma gidin:
 
@@ -97,7 +97,7 @@ Bu adımları izlemeden önce, etkilenen VM 'nin [sistem diskinin bir anlık gö
 
 12. Uygun güncelleştirmeyi indirin:
 
-    - **10.0.14393.594**: [KB4073562 veya sonraki bir](https://support.microsoft.com/help/4073562) güncelleştirme
+    - **10.0.14393.594**: [KB4073562](https://support.microsoft.com/help/4073562) veya sonraki bir güncelleştirme
     - **10.0.15063.0**: [KB4016240](https://support.microsoft.com/help/4016240) veya sonraki bir güncelleştirme
 
 13. Sistem diskini, üzerinde güncelleştirmeyi indirebileceğiniz bir kurtarma sanal makinesine veri diski olarak ekleyin.
@@ -116,6 +116,6 @@ Bu adımları izlemeden önce, etkilenen VM 'nin [sistem diskinin bir anlık gö
 
 16. [Sistem diskini ayırın ve VM 'yi yeniden oluşturun](../windows/troubleshoot-recovery-disks-portal.md).
 
-## <a name="need-help-contact-support"></a>Yardım mı gerekiyor? Desteğe başvurun
+## <a name="need-help-contact-support"></a>Yardıma mı ihtiyacınız var? Desteğe başvurun
 
 Hala yardıma ihtiyacınız varsa, sorununuzun hızla çözülmesini sağlamak için [Azure desteğine başvurun](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) .

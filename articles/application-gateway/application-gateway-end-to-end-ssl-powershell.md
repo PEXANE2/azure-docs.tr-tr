@@ -70,7 +70,7 @@ Bu bölümde, uygulama ağ geçidini içeren bir kaynak grubu oluşturma işlemi
    New-AzResourceGroup -Name appgw-rg -Location "West US"
    ```
 
-## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>Uygulama ağ geçidi için bir sanal ağ ve bir alt ağ oluşturun
+## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>Uygulama ağ geçidi için bir sanal ağ ve bir alt ağ oluştur
 
 Aşağıdaki örnek, bir sanal ağ ve iki alt ağ oluşturur. Uygulama ağ geçidini tutmak için bir alt ağ kullanılır. Diğer alt ağ, Web uygulamasını barındıran arka uçlar için kullanılır.
 
@@ -167,7 +167,7 @@ Tüm yapılandırma öğeleri, uygulama ağ geçidi oluşturulmadan önce ayarla
    > [!NOTE]
    > Varsayılan araştırma, arka ucun IP adresinde *varsayılan* SSL bağlamasındaki ortak anahtarı alır ve aldığı ortak anahtar değerini burada sağladığınız ortak anahtar değerine karşılaştırır. 
    > 
-   > Arka uçta ana bilgisayar üst bilgileri ve Sunucu Adı Belirtme (SNı) kullanıyorsanız, alınan ortak anahtar trafiğin akabileceği hedeflenen site olmayabilir. Şüpheniz varsa, *varsayılan* SSL bağlaması için hangi sertifikanın kullanıldığını doğrulamak üzere arka uç sunucularındaki https://127.0.0.1/ adresini ziyaret edin. Bu bölümdeki bu istekten ortak anahtarı kullanın. HTTPS bağlamalarında ana başlıklar ve SNı kullanıyorsanız ve arka uç sunucularında bir el ile tarayıcı isteğinden https://127.0.0.1/ ' a bir yanıt ve sertifika almazsanız, bunlar üzerinde varsayılan bir SSL bağlaması ayarlamanız gerekir. Bunu yapmazsanız, yoklamalar başarısız olur ve arka uç daha fazla listede değildir.
+   > Arka uçta ana bilgisayar üst bilgileri ve Sunucu Adı Belirtme (SNı) kullanıyorsanız, alınan ortak anahtar trafiğin akabileceği hedeflenen site olmayabilir. Şüpheniz varsa, *varsayılan* SSL bağlaması için hangi sertifikanın kullanıldığını doğrulamak üzere arka uç sunucularındaki https://127.0.0.1/ adresini ziyaret edin. Bu bölümdeki bu istekten ortak anahtarı kullanın. HTTPS bağlamalarında ana başlıklar ve SNı kullanıyorsanız ve arka uç sunucularında https://127.0.0.1/ el ile tarayıcı isteğinden bir yanıt ve sertifika almazsanız, bunlar üzerinde varsayılan bir SSL bağlaması ayarlamanız gerekir. Bunu yapmazsanız, yoklamalar başarısız olur ve arka uç daha fazla listede değildir.
 
    ```powershell
    $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'allowlistcert1' -CertificateFile C:\cert.cer
@@ -200,7 +200,7 @@ Tüm yapılandırma öğeleri, uygulama ağ geçidi oluşturulmadan önce ayarla
    $rule = New-AzApplicationGatewayRequestRoutingRule -Name 'rule01' -RuleType basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
    ```
 
-10. Uygulama ağ geçidinin örnek boyutunu yapılandırın. Kullanılabilir boyutlar **Standart @ no__t-1Küçük**, **Standart @ No__t-3medium**ve **Standart @ no__t-5büyük**' dir.  Kapasite için, kullanılabilir değerler **1** ile **10**arası değerlerdir.
+10. Uygulama ağ geçidinin örnek boyutunu yapılandırın. Kullanılabilir boyutlar **standart\_küçük**, **Standart\_orta**ve **Standart\_büyük**.  Kapasite için, kullanılabilir değerler **1** ile **10**arası değerlerdir.
 
     ```powershell
     $sku = New-AzApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
@@ -217,7 +217,7 @@ Tüm yapılandırma öğeleri, uygulama ağ geçidi oluşturulmadan önce ayarla
     - **TLSV1_1**
     - **TLSV1_2**
     
-    Aşağıdaki örnek, en düşük protokol sürümünü **TLSv1_2** olarak ayarlar ve **TLS @ NO__T-2ecdhe @ NO__T-3ecdsa @ no__t-4' i @ NO__T-5aes @ no__t-6128 @ NO__T-7gcm @ NO__T-8SHA256**, **TLS @ NO__T-10ecdhe @ no__t-11ECDSA @ no__t-12ile @ No ile etkinleştirilir __T-13AES @ no__t-14256 @ no__t-15GCM @ no__t-16SHA384**ve **TLS @ NO__T-18rsa @ NO__T-19with @ NO__T-20aes @ no__t-21128 @ NO__T-22gcm @ NO__T-23sha256** .
+    Aşağıdaki örnek, en düşük protokol sürümünü **TLSv1_2** olarak ayarlar ve **TLS\_ecdhe\_ECDSA\_** \_AES\_128\_GCM\_SHA256, **tls\_ecdhe\_** \_AES\_256\_GCM\_SHA384 ve TLS\_**RSA 128\_** \_\_\_\_\_
 
     ```powershell
     $SSLPolicy = New-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -PolicyType Custom
@@ -310,7 +310,7 @@ Yukarıdaki adımlar, uçtan uca SSL ile bir uygulama oluşturma ve belirli SSL 
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
 
-2. Bir SSL ilkesi tanımlayın. Aşağıdaki örnekte, **tlsv 1.0** ve **tlsv 1.1** devre dışıdır ve şifre paketleri **TLS @ no__t-3ecdhe @ no__t-4ECDSA @ no__t-5ILE @ no__t-6AES @ no__t-7128 @ no__t-8GCM @ NO__T-9sha256**, **TLS @ no__t-11ECDHE @ no__t-12ecdsa @ no__ t-13WITH @ no__t-14AES @ no__t-15256 @ no__t-16GCM @ no__t-17SHA384**ve **TLS @ NO__T-19rsa @ NO__T-20with @ NO__T-21aes @ no__t-22128 @ NO__T-23gcm @ NO__T-24SHA256** yalnızca izin verilen tek alanlardır.
+2. Bir SSL ilkesi tanımlayın. Aşağıdaki örnekte, **tlsv 1.0** ve **tlsv 1.1** devre dışı bırakılır ve şifreleme paketleri **TLS\_ecdhe\_ecdsa\_\_AES\_128**\_GCM\_SHA256, **tls\_ECDHE\_e dsa**\_\_AES\_**128\_** GCM\_SHA256\_\_\_\_\_\_
 
    ```powershell
    Set-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -PolicyType Custom -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -ApplicationGateway $gw

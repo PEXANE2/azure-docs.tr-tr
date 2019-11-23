@@ -1,6 +1,6 @@
 ---
-title: Connect to an Azure Cosmos account with Azure Private Link
-description: Learn how to securely access the Azure Cosmos account from a VM by creating a Private Endpoint.
+title: Azure özel bağlantısı ile bir Azure Cosmos hesabına bağlanma
+description: Özel bir uç nokta oluşturarak bir VM 'den Azure Cosmos hesabına güvenli bir şekilde erişme hakkında bilgi edinin.
 author: asudbring
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -13,129 +13,129 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74229416"
 ---
-# <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>Connect privately to an Azure Cosmos account using Azure Private Link
+# <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>Azure özel bağlantısını kullanarak bir Azure Cosmos hesabına özel olarak bağlanma
 
-Azure Private Endpoint is the fundamental building block for Private Link in Azure. It enables Azure resources, like virtual machines (VMs), to communicate privately with Private Link resources.
+Azure özel uç noktası, Azure 'da özel bağlantı için temel yapı taşdır. Sanal makineler (VM) gibi Azure kaynaklarının özel bağlantı kaynaklarıyla özel olarak iletişim kurmasına olanak sağlar.
 
-In this article, you will learn how to create a VM on an Azure virtual network and an Azure Cosmos account with a Private Endpoint using the Azure portal. Then, you can securely access the Azure Cosmos account from the VM.
+Bu makalede, bir Azure sanal ağında bir sanal makıne oluşturmayı ve Azure portal kullanarak özel uç nokta olan bir Azure Cosmos hesabını öğreneceksiniz. Ardından, VM 'den Azure Cosmos hesabına güvenli bir şekilde erişebilirsiniz.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-Sign in to the [Azure portal.](https://portal.azure.com)
+Azure portal oturum açın [.](https://portal.azure.com)
 
 ## <a name="create-a-vm"></a>VM oluşturma
 
-### <a name="create-the-virtual-network"></a>Create the virtual network
+### <a name="create-the-virtual-network"></a>Sanal ağı oluşturma
 
-In this section, you will create a virtual network and the subnet to host the VM that is used to access your Private Link resource (an Azure Cosmos account in this example).
+Bu bölümde, özel bağlantı kaynağına erişmek için kullanılan VM 'yi barındırmak için bir sanal ağ ve alt ağ oluşturacaksınız (Bu örnekteki bir Azure Cosmos hesabı).
 
-1. On the upper-left side of the screen, select **Create a resource** > **Networking** > **Virtual network**.
+1. Ekranın sol üst kısmında, **kaynak oluştur** > **ağ** > **sanal ağ**' ı seçin.
 
-1. In **Create virtual network**, enter or select this information:
+1. **Sanal ağ oluştur**' da bu bilgileri girin veya seçin:
 
     | Ayar | Değer |
     | ------- | ----- |
-    | Adı | Enter *MyVirtualNetwork*. |
-    | Adres alanı | Enter *10.1.0.0/16*. |
+    | Ad | *MyVirtualNetwork*girin. |
+    | Adres alanı | *10.1.0.0/16*girin. |
     | Abonelik | Aboneliğinizi seçin.|
-    | Kaynak grubu | Select **Create new**, enter *myResourceGroup*, then select **OK**. |
-    | Konum | Select **WestCentralUS**.|
-    | Subnet - Name | Enter *mySubnet*. |
-    | Alt Ağ - Adres aralığı | Enter *10.1.0.0/24*. |
+    | Kaynak grubu | **Yeni oluştur**' u seçin, *myresourcegroup*yazın ve ardından **Tamam**' ı seçin. |
+    | Konum | **WestCentralUS**öğesini seçin.|
+    | Alt ağ adı | *Mysubnet*yazın. |
+    | Alt Ağ - Adres aralığı | *10.1.0.0/24*girin. |
     |||
 
-1. Leave the rest as default and select **Create**.
+1. Rest 'i varsayılan olarak bırakın ve **Oluştur**' u seçin.
 
 ### <a name="create-the-virtual-machine"></a>Sanal makineyi oluşturma
 
-1. On the upper-left side of the screen in the Azure portal, select **Create a resource** > **Compute** > **Virtual machine**.
+1. Azure portal ekranın sol üst kısmında, **sanal makine** > **Işlem** > **kaynak oluştur** ' u seçin.
 
-1. In **Create a virtual machine - Basics**, enter or select this information:
+1. **Sanal makine oluşturma-temel bilgiler**bölümünde, bu bilgileri girin veya seçin:
 
     | Ayar | Değer |
     | ------- | ----- |
-    | **PROJECT DETAILS** | |
+    | **PROJE AYRıNTıLARı** | |
     | Abonelik | Aboneliğinizi seçin. |
-    | Kaynak grubu | Select **myResourceGroup**. You created this in the previous section.  |
-    | **INSTANCE DETAILS** |  |
-    | Sanal makine adı | Enter *myVm*. |
-    | Bölge | Select **WestCentralUS**. |
-    | Availability options | Leave the default **No infrastructure redundancy required**. |
-    | Resim | Select **Windows Server 2019 Datacenter**. |
-    | Boyut | Leave the default **Standard DS1 v2**. |
-    | **ADMINISTRATOR ACCOUNT** |  |
-    | Kullanıcı adı | Enter a username of your choice. |
-    | Parola | Enter a password of your choice. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
-    | Confirm Password | Reenter the password. |
-    | **INBOUND PORT RULES** |  |
-    | Public inbound ports | Leave the default **None**. |
-    | **SAVE MONEY** |  |
-    | Already have a Windows license? | Leave the default **No**. |
+    | Kaynak grubu | **Myresourcegroup**öğesini seçin. Bu, önceki bölümde oluşturdunuz.  |
+    | **ÖRNEK AYRıNTıLARı** |  |
+    | Sanal makine adı | *Myvm*' i girin. |
+    | Bölge | **WestCentralUS**öğesini seçin. |
+    | Kullanılabilirlik seçenekleri | Varsayılan **altyapı yedekliliği gerekli değildir**. |
+    | Görüntü | **Windows Server 2019 Datacenter**öğesini seçin. |
+    | Boyut | Varsayılan **Standart DS1 v2**' i bırakın. |
+    | **YÖNETICI HESABı** |  |
+    | Kullanıcı adı | Tercih ettiğiniz bir Kullanıcı adı girin. |
+    | Parola | Tercih ettiğiniz parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
+    | Parolayı Onayla | Parolayı yeniden girin. |
+    | **GELEN BAĞLANTı NOKTASı KURALLARı** |  |
+    | Ortak gelen bağlantı noktaları | Varsayılanı **yok**olarak bırakın. |
+    | **TASARRUF EDIN** |  |
+    | Zaten bir Windows lisansınız var mı? | Varsayılan **Hayır**olarak bırakın. |
     |||
 
-1. Select **Next: Disks**.
+1. **İleri ' yi seçin: diskler**.
 
-1. In **Create a virtual machine - Disks**, leave the defaults and select **Next: Networking**.
+1. **Sanal makine oluşturma-diskler**' de, varsayılan değerleri bırakın ve **İleri ' yi seçin: ağ**.
 
-1. In **Create a virtual machine - Networking**, select this information:
+1. **Sanal makine oluşturma-ağ oluşturma**bölümünde şu bilgileri seçin:
 
     | Ayar | Değer |
     | ------- | ----- |
-    | Sanal ağ | Leave the default **MyVirtualNetwork**.  |
-    | Adres alanı | Leave the default **10.1.0.0/24**.|
-    | Alt ağ | Leave the default **mySubnet (10.1.0.0/24)** .|
-    | Genel IP | Leave the default **(new) myVm-ip**. |
-    | Public inbound ports | Select **Allow selected ports**. |
-    | Select inbound ports | Select **HTTP** and **RDP**.|
+    | Sanal ağ | Varsayılan **MyVirtualNetwork**bırakın.  |
+    | Adres alanı | Varsayılan **10.1.0.0/24**' i bırakın.|
+    | Alt ağ | Varsayılan **Mysubnet (10.1.0.0/24)** olarak bırakın.|
+    | Genel IP | Varsayılan **(yeni) myVm-ip**' i bırakın. |
+    | Ortak gelen bağlantı noktaları | **Seçili bağlantı noktalarına Izin ver**' i seçin. |
+    | Gelen bağlantı noktalarını seçin | **Http** ve **RDP**' yi seçin.|
     ||
 
-1. **İncele ve oluştur**’u seçin. You're taken to the **Review + create** page where Azure validates your configuration.
+1. **İncele ve oluştur**’u seçin. Azure 'un yapılandırmanızı doğruladığı, **gözden geçir + oluştur** sayfasına götürülürsünüz.
 
-1. When you see the **Validation passed** message, select **Create**.
+1. **Doğrulama başarılı** Iletisini gördüğünüzde **Oluştur**' u seçin.
 
 ## <a name="create-an-azure-cosmos-account"></a>Azure Cosmos hesabı oluşturma
 
-Create an [Azure Cosmos SQL API account](../cosmos-db/create-cosmosdb-resources-portal.md#create-an-azure-cosmos-db-account). For simplicity, you can create the Azure Cosmos account in the same region as the other resources (that is "WestCentralUS").
+[Azure Cosmos SQL API hesabı](../cosmos-db/create-cosmosdb-resources-portal.md#create-an-azure-cosmos-db-account)oluşturun. Kolaylık olması için, Azure Cosmos hesabını diğer kaynaklarla aynı bölgede ("WestCentralUS") oluşturabilirsiniz.
 
-## <a name="create-a-private-endpoint-for-your-azure-cosmos-account"></a>Create a Private Endpoint for your Azure Cosmos account
+## <a name="create-a-private-endpoint-for-your-azure-cosmos-account"></a>Azure Cosmos hesabınız için özel bir uç nokta oluşturma
 
-Create a Private Link for your Azure Cosmos account as described in the [Create a Private Link using the Azure portal](../cosmos-db/how-to-configure-private-endpoints.md#create-a-private-endpoint-by-using-the-azure-portal) section of the linked article.
+Bağlantılı makalenin [Azure Portal bölümünü kullanarak özel bağlantı oluşturma](../cosmos-db/how-to-configure-private-endpoints.md#create-a-private-endpoint-by-using-the-azure-portal) bölümünde açıklandığı gibi Azure Cosmos hesabınız için özel bir bağlantı oluşturun.
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>İnternet'ten bir sanal makineye bağlanma
 
-Connect to the VM *myVm* from the internet as follows:
+Aşağıdaki gibi, internet *'ten gelen VM VM* 'sine bağlanın:
 
-1. In the portal's search bar, enter *myVm*.
+1. Portalın arama çubuğunda *Myvm*' i girin.
 
-1. **Bağlan** düğmesini seçin. After selecting the **Connect** button, **Connect to virtual machine** opens.
+1. **Bağlan** düğmesini seçin. **Bağlan** düğmesini seçtikten sonra **sanal makineye bağlan** açılır.
 
-1. Select **Download RDP File**. Azure creates a Remote Desktop Protocol ( *.rdp*) file and downloads it to your computer.
+1. Seçin **RDP dosyasını indir**. Azure bir Uzak Masaüstü Protokolü ( *. rdp*) dosyası oluşturur ve bilgisayarınıza indirir.
 
-1. Open the downloaded *.rdp* file.
+1. İndirilen *. rdp* dosyasını açın.
 
     1. İstendiğinde **Bağlan**’ı seçin.
 
-    1. Enter the username and password you specified when creating the VM.
+    1. VM oluştururken belirttiğiniz kullanıcı adını ve parolayı girin.
 
         > [!NOTE]
-        > You may need to select **More choices** > **Use a different account**, to specify the credentials you entered when you created the VM.
+        > VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için **farklı bir hesap kullanmak** > **daha fazla seçenek** belirlemeniz gerekebilir.
 
 1. **Tamam**’ı seçin.
 
-1. Oturum açma işlemi sırasında bir sertifika uyarısı alabilirsiniz. If you receive a certificate warning, select **Yes** or **Continue**.
+1. Oturum açma işlemi sırasında bir sertifika uyarısı alabilirsiniz. Bir sertifika uyarısı alırsanız **Evet** ' i veya **devam et**' i seçin.
 
-1. Once the VM desktop appears, minimize it to go back to your local desktop.  
+1. VM masaüstü seçildikten sonra, bunu yerel masaüstünüze geri dönmek için simge durumuna küçültün.  
 
-## <a name="access-the-azure-cosmos-account-privately-from-the-vm"></a>Access the Azure Cosmos account privately from the VM
+## <a name="access-the-azure-cosmos-account-privately-from-the-vm"></a>Azure Cosmos hesabına VM 'den özel olarak erişin
 
-In this section, you will connect privately to the Azure Cosmos account using the Private Endpoint. 
+Bu bölümde, Özel uç nokta kullanarak Azure Cosmos hesabına özel olarak bağlanacaksınız. 
 
 > [!IMPORTANT]
-> The DNS configuration for the Azure Cosmos account needs a manual modification on the hosts file to include the FQDN of the specific account. In production scenarios you will configure the DNS server to use the private IP addresses. However for the demo purpose, you can use administrator permissions on the VM and modify the `c:\Windows\System32\Drivers\etc\hosts` file (on Windows) or `/etc/hosts` file (on Linux) to include the IP address and DNS mapping.
+> Azure Cosmos hesabının DNS yapılandırması, belirli bir hesabın FQDN 'sini içermesi için konaklar dosyasında el ile bir değişikliğe ihtiyaç duyuyor. Üretim senaryolarında, DNS sunucusunu özel IP adreslerini kullanacak şekilde yapılandıracaksınız. Ancak tanıtım amacıyla, sanal makine üzerinde yönetici izinlerini kullanabilir ve `c:\Windows\System32\Drivers\etc\hosts` dosyayı (Windows üzerinde) veya `/etc/hosts` dosyasını (Linux 'ta) IP adresi ve DNS eşlemesini içerecek şekilde değiştirebilirsiniz.
 
-1. To include the IP address and DNS mapping, sign into your Virtual machine *myVM*, open the `c:\Windows\System32\Drivers\etc\hosts` file and include the DNS information from previous step in the following format:
+1. IP adresi ve DNS eşlemesini dahil etmek için, sanal makinenizde *Myvm*'de oturum açın, `c:\Windows\System32\Drivers\etc\hosts` dosyasını açın ve ÖNCEKI adımdan DNS bilgilerini aşağıdaki biçimde ekleyin:
 
-   [Private IP Address] [Account endpoint].documents.azure.com
+   [Özel IP adresi] [Hesap uç noktası]. Documents. Azure. com
 
    **Örnek:**
 
@@ -144,40 +144,40 @@ In this section, you will connect privately to the Azure Cosmos account using th
    10.1.255.14 mycosmosaccount-eastus.documents.azure.com
 
 
-1. In the Remote Desktop of *myVM*, install [Microsoft Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=windows).
+1.  *Myvm*uzak masaüstünde [Microsoft Azure Depolama Gezgini](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=windows)' yi yükleyip.
 
-1. Select **Cosmos DB Accounts (Preview)** with the right-click.
+1. Sağ tıklama ile **Cosmos DB hesapları (Önizleme)** öğesini seçin.
 
-1. Select **Connect to Cosmos DB**.
+1. **Cosmos DB Bağlan**' ı seçin.
 
 1. **API**’yi seçin.
 
-1. Enter the connection string by pasting the information previously copied.
+1. Daha önce kopyalanmış bilgileri yapıştırarak bağlantı dizesini girin.
 
 1. **İleri**’yi seçin.
 
 1. **Bağlan**’ı seçin.
 
-1. Browse the Azure Cosmos databases and containers from *mycosmosaccount*.
+1. *Mycosmosaccount*Içindeki Azure Cosmos veritabanlarına ve kapsayıcılarına gözatamazsınız.
 
-1. (Optionally) add new items to *mycosmosaccount*.
+1. (İsteğe bağlı olarak) *mycosmosaccount*öğesine yeni öğeler ekleyin.
 
-1. Close the remote desktop connection to *myVM*.
+1.  *Myvm*ile uzak masaüstü bağlantısını kapatın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-When you're done using the Private Endpoint, Azure Cosmos account and the VM, delete the resource group and all of the resources it contains: 
+Özel uç nokta, Azure Cosmos hesabı ve VM 'yi kullanarak işiniz bittiğinde, kaynak grubunu ve içerdiği tüm kaynakları silin: 
 
-1. Enter *myResourceGroup* in the **Search** box at the top of the portal and select *myResourceGroup* from the search results.
+1. Portalın üst kısmındaki **arama** kutusuna *myresourcegroup* girin ve arama sonuçlarından *myresourcegroup* öğesini seçin.
 
 1. **Kaynak grubunu sil**'i seçin.
 
-1. Enter *myResourceGroup* for **TYPE THE RESOURCE GROUP NAME** and select **Delete**.
+1. **Kaynak grubu adını yazmak** Için *myresourcegroup* girin ve **Sil**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-In this article, you created a VM on a virtual network, an Azure Cosmos account and a Private Endpoint. You connected to the VM from the internet and securely communicated to the Azure Cosmos account using Private Link.
+Bu makalede bir sanal ağ, bir Azure Cosmos hesabı ve özel uç nokta üzerinde bir VM oluşturdunuz. VM 'ye internet 'ten bağlı ve özel bağlantı kullanarak Azure Cosmos hesabına güvenli bir şekilde Iletilecaksınız.
 
-* To learn more about Private Endpoint, see [What is Azure Private Endpoint?](private-endpoint-overview.md).
+* Özel uç nokta hakkında daha fazla bilgi edinmek için bkz. [Azure özel uç noktası nedir?](private-endpoint-overview.md).
 
-* To learn more about limitation of Private Endpoint when using with Azure Cosmos DB, see [Azure Private Link with Azure Cosmos DB](../cosmos-db/how-to-configure-private-endpoints.md) article.
+* Azure Cosmos DB ile kullanırken özel uç nokta sınırlaması hakkında daha fazla bilgi için, bkz. [Azure özel bağlantı Azure Cosmos DB](../cosmos-db/how-to-configure-private-endpoints.md) makalesi.

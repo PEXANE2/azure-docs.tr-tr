@@ -97,7 +97,7 @@ DDoS koruma standardı, DDoS saldırısı süresince [Azure izleyici](/azure/azu
 
 ##### <a name="ddos-mitigation-policies"></a>DDoS risk azaltma ilkeleri
 
-Azure portal, **izleme**  > **ölçümleri**' ni seçin. **Ölçümler** bölmesinde, kaynak grubunu seçin, **ortak IP adresi**kaynak türünü SEÇIN ve Azure genel IP adresinizi seçin. DDoS ölçümleri **kullanılabilir ölçümler** bölmesinde görünür.
+Azure portal, **izleme** > **ölçümleri**' ni seçin. **Ölçümler** bölmesinde, kaynak grubunu seçin, **ortak IP adresi**kaynak türünü SEÇIN ve Azure genel IP adresinizi seçin. DDoS ölçümleri **kullanılabilir ölçümler** bölmesinde görünür.
 
 DDoS koruması standardı, korumalı kaynağın her genel IP 'si için, DDoS özellikli olan sanal ağdaki üç etkin Azaltma ilkesi (TCP SYN, TCP ve UDP) uygular. **DDoS risk azaltma tetiklenecek ölçüm gelen paketleri**seçerek ilke eşiklerini görüntüleyebilirsiniz.
 
@@ -235,7 +235,7 @@ Bu mimaride, DDoS koruma standardı sanal ağ üzerinde etkinleştirilmiştir. S
 
 #### <a name="paas-web-application"></a>PaaS web uygulaması
 
-Bu başvuru mimarisi, tek bir bölgede Azure App Service uygulamasının çalıştığını gösterir. Bu mimari, [Azure SQL veritabanı](https://azure.microsoft.com/documentation/services/sql-database/) and [Azure App Service](https://azure.microsoft.com/documentation/services/app-service/) kullanan bir Web uygulaması için kanıtlanmış bir yöntemler kümesi gösterir.
+Bu başvuru mimarisi, tek bir bölgede Azure App Service uygulamasının çalıştığını gösterir. Bu mimari, [Azure App Service](https://azure.microsoft.com/documentation/services/app-service/) ve [Azure SQL veritabanı](https://azure.microsoft.com/documentation/services/sql-database/)kullanan bir Web uygulaması için kanıtlanmış bir yöntemler kümesi gösterir.
 Yük devretme senaryoları için bir bekleme bölgesi ayarlanır.
 
 ![PaaS Web uygulaması için başvuru mimarisinin diyagramı](./media/ddos-best-practices/image11.png)

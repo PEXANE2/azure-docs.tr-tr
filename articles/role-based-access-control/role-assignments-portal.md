@@ -29,7 +29,7 @@ ms.locfileid: "71337612"
 
 Rol atamaları eklemek ve kaldırmak için şunları yapmanız gerekir:
 
-- `Microsoft.Authorization/roleAssignments/write` ve @no__t- [Kullanıcı erişimi Yöneticisi](built-in-roles.md#user-access-administrator) veya [sahibi](built-in-roles.md#owner) gibi-1 izinleri
+- `Microsoft.Authorization/roleAssignments/write` ve `Microsoft.Authorization/roleAssignments/delete` izinleri ( [Kullanıcı erişimi Yöneticisi](built-in-roles.md#user-access-administrator) veya [sahibi](built-in-roles.md#owner) gibi)
 
 ## <a name="overview-of-access-control-iam"></a>Erişim denetimine genel bakış (ıAM)
 
@@ -41,7 +41,7 @@ Aşağıdaki tabloda bazı öğelerin ne için kullanıldığı açıklanmaktad�
 
 | # | Öğe | Ne kullanıyorsunuz? |
 | --- | --- | --- |
-| 1\. | Erişim denetimi (ıAM) açıldığı kaynak | Kapsamı tanımla (Bu örnekteki abonelik) |
+| 1 | Erişim denetimi (ıAM) açıldığı kaynak | Kapsamı tanımla (Bu örnekteki abonelik) |
 | 2 | Düğme **Ekle** | Rol atamaları ekleme |
 | 3 | **Erişim sekmesini denetle** | Tek bir kullanıcı için rol atamalarını görüntüleme |
 | 4 | **Rol atamaları** sekmesi | Rol atamalarını geçerli kapsamda görüntüle |
@@ -69,13 +69,13 @@ Karar vermeniz gereken ilk şey, erişim denetimi (ıAM) dikey penceresinin aç�
 
 1. Belirli kaynağa tıklayın.
 
-1. Tıklayın **erişim denetimi (IAM)** .
+1. **Erişim denetimi (IAM)** öğesine tıklayın.
 
     Aşağıda bir abonelik için erişim denetimi (ıAM) dikey penceresi örneği gösterilmektedir. Burada herhangi bir erişim denetimi değişikliği yaparsanız, bu değişiklikler tüm abonelik için geçerlidir.
 
     ![Abonelik için erişim denetimi (ıAM) dikey penceresi](./media/role-assignments-portal/access-control-subscription.png)
 
-## <a name="view-roles-and-permissions"></a>Rolleri ve izinleri görüntüleyin
+## <a name="view-roles-and-permissions"></a>Rolleri ve izinleri görüntüleme
 
 Rol tanımı, rol atamaları için kullandığınız izin koleksiyonudur. Azure ['Da Azure kaynakları için 70 yerleşik rol](built-in-roles.md)vardır. Kullanılabilir rolleri ve izinleri görüntülemek için bu adımları izleyin.
 
@@ -137,7 +137,7 @@ RBAC 'de, erişim izni vermek için, bir Kullanıcı, Grup, hizmet sorumlusu vey
 
 1. Bu kapsamdaki tüm rol atamalarını görüntülemek için **rol atamaları** sekmesine tıklayın.
 
-1. Rol **ataması Ekle bölmesini**açmak için**rol ataması** Ekle ' ye tıklayın. > 
+1. **Rol ataması ekle > ** **Ekle** ' ye tıklayın.
 
    Rol atama izniniz yoksa rol ataması Ekle seçeneği devre dışı bırakılır.
 
@@ -165,7 +165,7 @@ Bir kullanıcıyı bir Azure aboneliğinin Yöneticisi yapmak için, abonelik ka
 
 1. Bu aboneliğin tüm rol atamalarını görüntülemek için **Rol atamaları** sekmesine tıklayın.
 
-1. Rol **ataması Ekle bölmesini**açmak için**rol ataması** Ekle ' ye tıklayın. > 
+1. **Rol ataması ekle > ** **Ekle** ' ye tıklayın.
 
    Rol atama izniniz yoksa rol ataması Ekle seçeneği devre dışı bırakılır.
 
@@ -181,7 +181,7 @@ Bir kullanıcıyı bir Azure aboneliğinin Yöneticisi yapmak için, abonelik ka
 
    Birkaç dakika sonra kullanıcıya abonelik kapsamında Sahip rolü atanmış olur.
 
-## <a name="remove-role-assignments"></a>Rol atamalarını kaldırın
+## <a name="remove-role-assignments"></a>Rol atamalarını kaldır
 
 RBAC'de erişimi kaldırmak için rol atamasını kaldırmanız gerekir. Erişimi kaldırmak için aşağıdaki adımları izleyin.
 
@@ -205,7 +205,7 @@ RBAC'de erişimi kaldırmak için rol atamasını kaldırmanız gerekir. Erişim
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Öğretici: RBAC ve Azure portal @ no__t-0 kullanarak Azure kaynaklarına Kullanıcı erişimi verme
-* [Öğretici: RBAC kullanarak Azure kaynaklarına Kullanıcı erişimi verme ve Azure PowerShell @ no__t-0
+* [Öğretici: RBAC ve Azure portal kullanarak Azure kaynaklarına Kullanıcı erişimi verme](quickstart-assign-role-user-portal.md)
+* [Öğretici: RBAC ve Azure PowerShell kullanarak Azure kaynaklarına Kullanıcı erişimi verme](tutorial-role-assignments-user-powershell.md)
 * [Azure kaynakları için RBAC sorunlarını giderme](troubleshooting.md)
-* [Kaynaklarınızı Azure Yönetim grupları ile düzenleme](../governance/management-groups/overview.md)
+* [Kaynaklarınızı Azure yönetim gruplarıyla düzenleme](../governance/management-groups/overview.md)

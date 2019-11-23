@@ -100,7 +100,7 @@ Yöntemi, gelecekte özel etkinlikleri zincirlemek için kullanılabilecek bir s
 ### <a name="procedure"></a>Yordam
 1. **.NET sınıf kitaplığı** projesi oluşturun.
    <ol type="a">
-     <li>Visual Studio 'Yu başlatın.</li>
+     <li>Visual Studio'yu başlatın.</li>
      <li><b>Dosya</b>’ya tıklayın, <b>Yeni</b>’nin üzerine gelin ve <b>Proje</b>’ye tıklayın.</li>
      <li><b>Şablonlar</b>’ı genişletin ve <b>Visual C#</b> seçeneğini belirleyin. Bu kılavuzda kullanın C#, ancak özel etkinlik geliştirmek için herhangi bir .net dili kullanabilirsiniz.</li>
      <li>Sağ taraftaki proje türleri listesinden <b>sınıf kitaplığı</b> ' nı seçin. Visual Studio 'da <b>Sınıf Kitaplığı ' nı (.NET Framework)</b> seçin </li>
@@ -694,12 +694,12 @@ Sorun giderme birkaç temel teknikten oluşur:
 
    Etkinlik çalıştırmaya tıkladığınızda, **etkınlık çalıştırma ayrıntıları** dikey penceresini bir günlük dosyaları listesiyle görürsünüz. Günlüğe kaydedilen iletileri user_0. log dosyasında görürsünüz. Bir hata oluştuğunda, yeniden deneme sayısı ardışık düzen/etkinlik JSON 'u 3 olarak ayarlandığından, üç etkinlik çalıştırması görürsünüz. Etkinlik çalıştırmaya tıkladığınızda, hatayı gidermek için gözden geçirebileceğiniz günlük dosyalarını görürsünüz.
 
-   Günlük dosyaları listesinde **User-0. log**dosyasına tıklayın. Sağ bölmede **ıactivitygünlükçü. Write** metodunu kullanmanın sonuçları vardır. Tüm iletileri görmüyorsanız: user_1. log, user_2. log vb. adlı daha fazla günlük dosyasına sahip olup olmadığınızı denetleyin. Aksi takdirde, kod son günlüğe kaydedilen iletiden sonra başarısız olmuş olabilir.
+   Günlük dosyaları listesinde **User-0. log**dosyasına tıklayın. Sağ bölmede **ıactivitygünlükçü. Write** metodunu kullanmanın sonuçları vardır. Tüm iletileri görmüyorsanız, şu adlı günlük dosyasına sahip olup olmadığınızı denetleyin: user_1. log, user_2. log vb. Aksi takdirde, kod son günlüğe kaydedilen iletiden sonra başarısız olmuş olabilir.
 
    Ayrıca, tüm sistem hata iletileri ve özel durumlar için **System-0. log** ' u denetleyin.
 4. Hata ayrıntılarının bir hata oluştuğunda **çağrı yığını** gibi bilgileri Içermesi için **pdb** dosyasını ZIP dosyasına ekleyin.
 5. Özel etkinliğin zip dosyasındaki tüm dosyalar alt klasör olmadan **en üst düzeyde** olmalıdır.
-6. **AssemblyName** (MyDotNetActivity. dll), **entryPoint**(MyDotNetActivityNS. MyDotNetActivity), **PackageFile** (customactivitycontainer/MyDotNetActivity. zip) ve **packageLinkedService** (işaret etmelidir) olduğundan emin olun. ZIP dosyasını içeren **genel amaçlı**Azure Blob depolama alanı, doğru değerlere ayarlanır.
+6. **AssemblyName** (MyDotNetActivity. dll), **entryPoint**(MyDotNetActivityNS. MyDotNetActivity), **PackageFile** (customactivitycontainer/MyDotNetActivity. zip) ve **packageLinkedService** (ZIP dosyasını içeren **genel amaçlı**Azure Blob depolama 'ya işaret etmelidir) doğru değerlere ayarlandığından emin olun.
 7. Bir hatayı düzelttiyseniz ve dilimi yeniden işlemek istiyorsanız **OutputDataset** dikey penceresindeki dilime sağ tıklayın ve **Çalıştır**’a tıklayın.
 8. Aşağıdaki hatayı görürseniz, > 4.3.0 sürümünün Azure depolama paketini kullanıyorsunuz. Data Factory hizmet başlatıcısı, WindowsAzure. Storage 'un 4,3 sürümünü gerektirir. Azure Storage derlemesinin sonraki sürümünü kullanmanız gerekiyorsa, bir iş için [AppDomain yalıtım](#appdomain-isolation) bölümüne bakın.
 

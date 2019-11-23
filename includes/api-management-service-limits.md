@@ -16,7 +16,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 09/18/2019
 ms.locfileid: "67188774"
 ---
-| Resource | Sınır |
+| Kaynak | Sınır |
 | --- | --- |
 | En fazla ölçek birimi sayısı | Bölge başına 10<sup>1</sup> |
 | Önbellek boyutu | <sup>2</sup> birim BAŞıNA 5 GB |
@@ -38,7 +38,7 @@ ms.locfileid: "67188774"
 <sup>2</sup> Birim başına önbellek boyutu fiyatlandırma katmanına bağlıdır. Fiyatlandırma katmanlarını ve ölçekleme sınırlarını görmek için bkz. [API Management fiyatlandırması](https://azure.microsoft.com/pricing/details/api-management/).<br/>
 <sup>3</sup> Bağlantılar havuza alınır ve arka uç tarafından açıkça kapanmadığı takdirde yeniden kullanılır.<br/>
 <sup>4</sup> Bu sınır, temel, standart ve Premium katmanların birimi başına olur. Geliştirici katmanı 1.024 ile sınırlıdır. Bu sınır, tüketim katmanına uygulanmaz.<br/> 
-<sup>5</sup> Bu sınır, temel, standart ve Premium katmanları için geçerlidir. Tüketim katmanında, ilke belgesi boyutu 4 KB ile sınırlıdır.<br/>
+<sup>5</sup>bu sınır, temel, standart ve Premium katmanları için geçerlidir. Tüketim katmanında, ilke belgesi boyutu 4 KB ile sınırlıdır.<br/>
 <sup>6</sup> Bu kaynak yalnızca Premium katmanda kullanılabilir.<br/>
 <sup>7</sup> Bu kaynak yalnızca tüketim katmanı için geçerlidir.<br/>
 

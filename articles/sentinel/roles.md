@@ -24,19 +24,19 @@ ms.locfileid: "71316795"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Azure Sentinel izinleri
 
-Azure Sentinel, Azure 'daki kullanıcılara, gruplara ve hizmetlere atanabilen [yerleşik roller](../role-based-access-control/built-in-roles.md) sağlamak için [rol tabanlı Access Control (RBAC)](../role-based-access-control/role-assignments-portal.md)kullanır.
+Azure Sentinel, Azure 'daki kullanıcılara, gruplara ve hizmetlere atanabileceği  [yerleşik roller](../role-based-access-control/built-in-roles.md) sağlamak Için [rol tabanlı Access Control (RBAC)](../role-based-access-control/role-assignments-portal.md)kullanır.
 
 RBAC kullanarak, Azure Sentinel 'e uygun erişim sağlamak için güvenlik işlemleri ekibiniz dahilinde roller kullanabilir ve oluşturabilirsiniz. Rollere bağlı olarak, Azure Sentinel 'e erişimi olan kullanıcıların neleri görebileceklerini ayrıntılı olarak denetleyebilirsiniz. RBAC rollerini doğrudan Azure Sentinel çalışma alanında veya çalışma alanının ait olduğu bir aboneliğe veya kaynak grubuna atayabilirsiniz.
 
 Üç özel yerleşik Azure Sentinel rolü vardır.  
 **Tüm Azure Sentinel yerleşik rolleri, Azure Sentinel çalışma alanınızdaki verilere yönelik okuma erişimi verir.**
-- **Azure Sentinel okuyucusu**: Bu rolle atanan bir kullanıcının Azure Sentinel 'e yönelik hakları görüntüleme hakkı vardır. Kullanıcı olayları ve verileri görüntüleyebilir, ancak değişiklik yapamaz.
-- **Azure Sentinel Yanıtlayıcısı**: Bu rolle atanan bir kullanıcı atama ve önem derecesi değişiklikleri gibi olaylar için okuma ve eylemleri gerçekleştirebilir.
-- **Azure Sentinel katılımcısı**: Bu rolle atanan bir Kullanıcı, olaylar üzerinde eylemler okuyup gerçekleştirebilir ve analitik kuralları oluşturabilir ve silebilir.
+- **Azure Sentinel okuyucusu**: bu rolle atanan bir kullanıcının Azure Sentinel 'e yönelik hakları görüntüleme hakkı vardır. Kullanıcı olayları ve verileri görüntüleyebilir, ancak değişiklik yapamaz.
+- **Azure Sentinel Yanıtlayıcısı**: bu rolle atanan bir kullanıcı atama ve önem derecesi değişiklikleri gibi olaylar için okuma ve eylemleri gerçekleştirebilir.
+- **Azure Sentinel katılımcısı**: bu rolle atanan bir Kullanıcı, olaylar üzerinde eylemler okuyup gerçekleştirebilir ve analitik kuralları oluşturabilir ve silebilir.
 
 Azure Sentinel adanmış RBAC rollerinin yanı sıra Azure ve Log Analytics RBAC rolleri, Azure Sentinel çalışma alanınıza ve diğer kaynaklara erişimi de içeren daha geniş bir izin kümesine izin verebilir:
 
-- **Azure rolleri:** [Sahip](../role-based-access-control/built-in-roles.md#owner), [katkıda bulunan](../role-based-access-control/built-in-roles.md#contributor)ve [okuyucu](../role-based-access-control/built-in-roles.md#reader). Azure rolleri, Log Analytics çalışma alanları ve Azure Sentinel kaynakları dahil olmak üzere tüm Azure kaynaklarınız genelinde erişim izni verir.
+- **Azure rolleri:** [sahip](../role-based-access-control/built-in-roles.md#owner), [katkıda bulunan](../role-based-access-control/built-in-roles.md#contributor)ve [okuyucu](../role-based-access-control/built-in-roles.md#reader). Azure rolleri, Log Analytics çalışma alanları ve Azure Sentinel kaynakları dahil olmak üzere tüm Azure kaynaklarınız genelinde erişim izni verir.
 
 -   **Log Analytics roller:** [Log Analytics katkıda bulunan](../role-based-access-control/built-in-roles.md#log-analytics-contributor) [Log Analytics okuyucu](../role-based-access-control/built-in-roles.md#log-analytics-reader). Log Analytics roller tüm Log Analytics çalışma alanlarınız genelinde erişim izni verir. 
 
@@ -56,7 +56,7 @@ Azure Sentinel adanmış RBAC rollerinin yanı sıra Azure ve Log Analytics RBAC
 
 Aşağıdaki tabloda, Azure Sentinel 'de roller ve izin verilen eylemler görüntülenmektedir. X, bu rol için eyleme izin verildiğini gösterir.
 
-| Role | PlayBook 'lar oluşturma ve çalıştırma| Panolar, analitik kurallar ve diğer Azure Sentinel kaynakları oluşturma ve düzenleme | Olayları yönetme (Kapat, ata, vb.) | Verileri, olayları, panoları ve diğer Azure Sentinel kaynaklarını görüntüleyin |
+| Rol | PlayBook 'lar oluşturma ve çalıştırma| Panolar, analitik kurallar ve diğer Azure Sentinel kaynakları oluşturma ve düzenleme | Olayları yönetme (Kapat, ata, vb.) | Verileri, olayları, panoları ve diğer Azure Sentinel kaynaklarını görüntüleyin |
 |--- |---|---|---|---|
 | Azure Sentinel okuyucusu | -- | -- | -- | X |
 | Azure Sentinel Yanıtlayıcısı|--|--| X | X |

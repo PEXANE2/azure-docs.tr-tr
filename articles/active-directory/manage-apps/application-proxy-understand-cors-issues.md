@@ -20,7 +20,7 @@ ms.locfileid: "72025793"
 ---
 # <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>Azure Active Directory Uygulama Ara Sunucusu CORS sorunlarını anlama ve çözme
 
-[Çıkış noktaları arası kaynak paylaşımı (CORS)](https://www.w3.org/TR/cors/) bazen, Azure Active Directory uygulama ara sunucusu üzerinden yayımladığınız uygulamalar ve API 'ler için sorunlar oluşturabilir. Bu makalede Azure AD Uygulama Ara Sunucusu CORS sorunları ve çözümleri açıklanmaktadır.
+[Çıkış noktaları arası kaynak paylaşımı (CORS)](https://www.w3.org/TR/cors/) bazen Azure Active Directory uygulama ara sunucusu aracılığıyla yayımladığınız uygulamalar ve API 'ler için zorluk sunabilir. Bu makalede Azure AD Uygulama Ara Sunucusu CORS sorunları ve çözümleri açıklanmaktadır.
 
 Tarayıcı güvenliği genellikle bir Web sayfasının başka bir etki alanına AJAX istekleri yapmasını engeller. Bu kısıtlamaya *aynı-Origin ilkesi*adı verilir ve kötü amaçlı bir sitenin başka bir siteden hassas verileri okumasını önler. Ancak, bazen diğer sitelerin Web API 'nizi çağırmasını sağlamak isteyebilirsiniz. CORS, bir sunucunun aynı kaynaklı ilkeyi daha rahat ve bazı çapraz kaynak isteklerine izin veren bir W3C standardıdır.
 
@@ -28,15 +28,15 @@ Tarayıcı güvenliği genellikle bir Web sayfasının başka bir etki alanına 
 
 Aynı şemalara, ana bilgisayarlara ve bağlantı noktalarına ([RFC 6454](https://tools.ietf.org/html/rfc6454)) sahip olmaları durumunda iki URL aynı kaynağa sahiptir:
 
--   http: \//contoso.com/foo.html
--   http: \//contoso.com/bar.html
+-   http:\//contoso.com/foo.html
+-   http:\//contoso.com/bar.html
 
 Aşağıdaki URL 'Lerin önceki iki değerden farklı kaynakları vardır:
 
--   http: \//contoso. net-farklı etki alanı
--   http: \//contoso.com:9000/foo.html-farklı bağlantı noktası
--   https: \//contoso.com/foo.html-farklı düzen
--   http: \//www.contoso.com/foo.html-farklı alt etki alanı
+-   http:\//contoso.net-farklı etki alanı
+-   http:\//contoso.com:9000/foo.html-farklı bağlantı noktası
+-   https:\//contoso.com/foo.html-farklı düzen
+-   http:\//www.contoso.com/foo.html-farklı alt etki alanı
 
 Aynı kaynak ilkesi, doğru erişim denetimi üstbilgilerini kullanmadıkları takdirde uygulamaların diğer kaynaklardan kaynaklara erişmesini önler. CORS üst bilgileri eksik veya yanlış ise, çapraz kaynak istekleri başarısız olur. 
 
@@ -46,7 +46,7 @@ CORS sorunlarını tarayıcı hata ayıklama araçlarını kullanarak tanımlaya
 1. Hata ayıklama konsolunu açmak için **F12** tuşuna basın.
 1. İşlemi yeniden oluşturmaya çalışın ve konsol iletisini gözden geçirin. CORS ihlali, kaynak hakkında bir konsol hatası oluşturur.
 
-Aşağıdaki ekran görüntüsünde, **deneyin** düğmesine seçilmesi, https: \//corswebclient-contoso. msappproxy. net ' in Access-Control-Allow-Origin başlığında bulunamadığını BELIRTEN bir CORS hata iletisine neden oldu.
+Aşağıdaki ekran görüntüsünde, **deneyin** düğmesine seçilmesi, https:\//corswebclient-contoso.msappproxy.net ' nin erişim-denetim-Izin-kaynak üstbilgisinde bulunamadığını BELIRTEN bir CORS hata iletisine neden oldu.
 
 ![CORS sorunu](./media/application-proxy-understand-cors-issues/image3.png)
 
@@ -82,8 +82,8 @@ Bunun yerine, hem *Corswebclient* hem de *corswebservice* dizinlerini içeren ü
 
 Elde edilen uygulama URL 'Leri, CORS sorununu etkili bir şekilde çözümler:
 
-- https: \//corswebclient-contoso. msappproxy. net/CORSWebService
-- https: \//corswebclient-contoso. msappproxy. net/CORSWebClient
+- https:\//corswebclient-contoso.msappproxy.net/CORSWebService
+- https:\//corswebclient-contoso.msappproxy.net/CORSWebClient
 
 ### <a name="option-3-update-http-headers"></a>Seçenek 3: HTTP üstbilgilerini güncelleştirme
 
@@ -93,7 +93,7 @@ Kaynak isteğiyle eşleşmesi için Web hizmetine özel bir HTTP yanıt üst bil
 
 Bu değişiklik herhangi bir kod değişikliği gerektirmez. Bunu Fiddler izlerinde doğrulayabilirsiniz:
 
-**Üst bilgi ekleme**\
+**Üst bilgi ek\ gönder**
 HTTP/1.1 200 TAMAM \
 Cache-Control: No-Cache \
 Pragma: No-Cache \
@@ -101,7 +101,7 @@ Pragma: No-Cache \
 Süre sonu:-1 \
 Farklılık: kabul-kodlama \
 Sunucu: Microsoft-IIS/8.5 Microsoft-HTTPAPı/2.0 \
-**Erişim-denetim-izin-kaynak: https @ no__t-1//corswebclient-contoso. msappproxy. net**\
+**Erişim-denetim-izin-kaynak: https\://corswebclient-contoso.msappproxy.net**\
 X-AspNet-sürüm: 4.0.30319 \
 X-destekli-by: ASP.NET \
 İçerik-Uzunluk: 17

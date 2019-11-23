@@ -47,7 +47,7 @@ Ne zaman artırılacağına ve ne zaman azaltılacağını nasıl karar verirsin
 ## <a name="keep-your-app-and-business-running"></a>Uygulamanızın ve işinizin hiç kesintiye uğramamasını sağlayın
 Azure'ın Microsoft yönetimindeki veri merkezlerinin küresel bir ağı tarafından desteklenen ve endüstri lideri niteliğinde %99,99'luk bir kullanılabilirlik oranı sunan hizmet düzeyi sözleşmesi (SLA), uygulamanızın 7/24 kesintiye uğramamasına yardımcı olur. Her MySQL için Azure veritabanı sunucusunda, satın almanız veya tasarlamanız, oluşturmanız ve yönetmeniz gereken yerleşik güvenlik, hataya dayanıklılık ve veri korumasından yararlanabilirsiniz. MySQL için Azure veritabanı ile, bir sunucuyu daha önceki bir duruma geri yüklemek için, 35 gün olarak geri yükleme yapabilirsiniz.
 
-## <a name="secure-your-data"></a>Verilerinizi güvenli hale getirin
+## <a name="secure-your-data"></a>Verilerinizin güvenliğini sağlama
 Azure veritabanı Hizmetleri, MySQL için Azure veritabanı 'nın, erişimi sınırlayan, verileri REST ve hareket halindeyken koruyan özelliklerle ve etkinliği izlemenize yardımcı olan bir gelenek veri güvenliği içerir. Azure'ın platform güvenliği hakkında bilgi edinmek için [Azure Güven Merkezi](https://www.microsoft.com/en-us/trustcenter/security)'ni ziyaret edin.
 
 MySQL için Azure veritabanı hizmeti, bekleyen verilerin depolama şifrelemesi için FIPS 140-2 tarafından doğrulanan şifreleme modülünü kullanır. Yedeklemeler de dahil olmak üzere veriler, sorgular çalıştırılırken oluşturulan geçici dosyalar hariç olmak üzere diskte şifrelenir. Hizmet, Azure depolama şifrelemesi kapsamında yer alan AES 256-bit şifrelemesini kullanır ve anahtarlar sistem tarafından yönetilir. Depolama şifrelemesi her zaman açıktır ve devre dışı bırakılamaz.
@@ -55,7 +55,7 @@ MySQL için Azure veritabanı hizmeti, bekleyen verilerin depolama şifrelemesi 
 Varsayılan olarak, MySQL için Azure veritabanı hizmeti, ağ üzerinden hareket halindeki veriler için [SSL bağlantısı güvenliği](./concepts-ssl-connection-security.md) gerektirecek şekilde yapılandırılmıştır. Veritabanı sunucunuzla istemci uygulamalarınız arasında SSL bağlantılarının zorunlu tutulması, sunucuya uygulamanız arasındaki veri akışını şifreleyerek "bağlantıyı izinsiz izleme" saldırılarına karşı korumaya yardımcı olur. İsteğe bağlı olarak, istemci uygulamanızın SSL bağlantısını desteklememesi durumunda veritabanı hizmetinize bağlanmak için SSL zorunluluğunu devre dışı bırakabilirsiniz.
 
 ## <a name="contacts"></a>Kişiler
-MySQL için Azure veritabanı ile çalışmaya yönelik herhangi bir soru veya öneri için, MySQL için Azure veritabanı ekibine ([@no__t-MySQL Için Azure DB](mailto:AskAzureDBforMySQL@service.microsoft.com)) bir e-posta gönderin. Bu e-posta adresi bir teknik destek diğer adı değil.
+MySQL için Azure veritabanı ile çalışmaya yönelik herhangi bir soru veya öneri için, MySQL için Azure veritabanı ekibine bir e-posta gönderin ([@Ask MySQL Için Azure DB](mailto:AskAzureDBforMySQL@service.microsoft.com)). Bu e-posta adresi bir teknik destek diğer adı değil.
 
 Buna ek olarak, aşağıdaki iletişim noktalarını uygun şekilde göz önünde bulundurun:
 
@@ -68,4 +68,4 @@ Artık MySQL için Azure veritabanı 'na giriş okuduğunuzu ve "MySQL için Azu
 
 - Maliyet karşılaştırmaları ve hesaplayıcıları için fiyatlandırma sayfasına bakın. [Fiyatlandırma](https://azure.microsoft.com/pricing/details/mysql/)
 - İlk sunucunuzu oluşturarak başlayın. [Azure portalını kullanarak MySQL için Azure Veritabanı sunucusu oluşturma](quickstart-create-mysql-server-database-using-azure-portal.md)
-- Tercih ettiğiniz dili kullanarak ilk uygulamanızı oluşturun: [Python](./connect-python.md) | [Node. js](./connect-nodejs.md) | [Java](./connect-java.md) | [Ruby](./connect-ruby.md) | [php](./connect-php.md) | [.net (C#)](./connect-csharp.md)2[Go](./connect-go.md)
+- Tercih ettiğiniz dili kullanarak ilk uygulamanızı oluşturun: [Python](./connect-python.md) | [Node. js](./connect-nodejs.md) | [Java](./connect-java.md) | [Ruby](./connect-ruby.md) | [php](./connect-php.md) | [.net (C#)](./connect-csharp.md) | [Go](./connect-go.md)

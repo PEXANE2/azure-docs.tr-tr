@@ -44,8 +44,8 @@ Hızlı bir karşılaştırma aşağıda verilmiştir:
 
 || Machine Learning Studio (klasik) | Azure Machine Learning |
 |---| --- | --- |
-| Sürükle ve bırak arabirimi | Evet | Evet- [Azure Machine Learning tasarımcı (Önizleme)](../service/concept-designer.md) |
-| Deneyin | Ölçeklenebilir (10 GB eğitim veri limiti) | İşlem hedefi ile ölçeklendirme |
+| Sürükle ve bırak arabirimi | Yes | Evet- [Azure Machine Learning tasarımcı (Önizleme)](../service/concept-designer.md) |
+| Deneme | Ölçeklenebilir (10 GB eğitim veri limiti) | İşlem hedefi ile ölçeklendirme |
 | Sürükle ve bırak arabirimi için modüller | Sayısı | İlk popüler [modüller](../algorithm-module-reference/module-reference.md) kümesi|
 |Eğitim işlem hedefleri| Özel işlem hedefi, yalnızca CPU desteği| Azure Machine Learning işlem (GPU veya CPU) ve Not defteri VM 'lerini destekler.<br/>([SDK 'da desteklenen diğer hesaplar](../service/concept-compute-target.md#train))|
 |Inlekrime işlem hedefleri| Özel Web hizmeti biçimi özelleştirilebilir değil |  Azure Kubernetes hizmeti ve AML Işlem <br/>([SDK 'da desteklenen diğer hesaplar](../service/how-to-deploy-and-where.md)) |

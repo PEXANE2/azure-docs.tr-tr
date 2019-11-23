@@ -25,7 +25,7 @@ Bu nasıl yapılır kılavuzunda ilerlemek için şunlar gerekir:
 ## <a name="configure-logging"></a>Günlüğe kaydetmeyi yapılandırma
 Sunucuyu sorgu günlüklerine ve hata günlüklerine erişecek şekilde yapılandırabilirsiniz. Hata günlükleri otomatik vakum, bağlantı ve denetim noktası bilgilerine sahip olabilir.
 1. Günlüğe kaydetmeyi açın.
-2. Sorgu günlüğünü etkinleştirmek için **log @ no__t-1ifadesini** ve **log @ no__t-3min @ no__t-4duration @ no__t-5ifadesini**güncelleştirin.
+2. Sorgu günlüğünü etkinleştirmek için **log\_ifadesini** güncelleştirin ve **\_min\_Duration\_ifadesini günlüğe kaydedin**.
 3. Güncelleştirme bekletme süresi.
 
 Daha fazla bilgi için bkz. [sunucu yapılandırma parametrelerini özelleştirme](howto-configure-server-parameters-using-cli.md).
@@ -33,7 +33,7 @@ Daha fazla bilgi için bkz. [sunucu yapılandırma parametrelerini özelleştirm
 ## <a name="list-logs"></a>Günlükleri Listele
 Sunucunuzun kullanılabilir günlük dosyalarını listelemek için [az Postgres Server-Logs List](/cli/azure/postgres/server-logs) komutunu çalıştırın.
 
-Sunucu **mydemoserver.Postgres.Database.Azure.com** için günlük dosyalarını **myresourcegroup**kaynak grubu altında listeleyebilirsiniz. Ardından günlük dosyaları listesini **log @ no__t-1files\_list.txt**adlı bir metin dosyasına yönlendirin.
+Sunucu **mydemoserver.Postgres.Database.Azure.com** için günlük dosyalarını **myresourcegroup**kaynak grubu altında listeleyebilirsiniz. Ardından günlük dosyaları listesini **günlük\_dosyaları\_List. txt**adlı bir metin dosyasına yönlendirin.
 ```azurecli-interactive
 az postgres server-logs list --resource-group myresourcegroup --server mydemoserver > log_files_list.txt
 ```

@@ -181,7 +181,7 @@ Kopyalama etkinliği yürütme ayrıntıları ve performans özellikleri de ayn�
 | rowsCopied | Havuza kopyalanmış satır sayısı (ikili kopya için geçerli değildir). | Int64 değeri (birim) |
 | rowsSkipped | Atlanan uyumsuz satır sayısı. `enableSkipIncompatibleRow` true olarak ayarlayarak, uyumsuz satırların atlanmasını etkinleştirebilirsiniz. | Int64 değeri (birim) |
 | copyDuration | Kopya çalıştırmasının süresi. | Int32 değeri, saniye cinsinden |
-| throughput | Veri aktarımı oranı. | Kayan nokta sayısı, KBps cinsinden |
+| Aktarım hızı | Veri aktarımı oranı. | Kayan nokta sayısı, KBps cinsinden |
 | Kaynakcepeakconnections | Kopyalama etkinliği sırasında kaynak veri deposuna kurulan en yüksek eşzamanlı bağlantı sayısı. | Int32 değeri (birim yok) |
 | sinkPeakConnections| Kopyalama etkinliği sırasında havuz veri deposuna kurulan en yüksek eşzamanlı bağlantı sayısı.| Int32 değeri (birim yok) |
 | sqlDwPolyBase | Veriler SQL veri ambarı 'na kopyalandığında PolyBase 'in kullanılıp kullanılmayacağını belirtir. | Boole |

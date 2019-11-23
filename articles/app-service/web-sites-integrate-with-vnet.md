@@ -62,7 +62,7 @@ VNet tümleştirmesinin şunları dahil desteklemediği bazı şeyler vardır:
 * AD tümleştirmesi 
 * NetBios
 
-## <a name="regional-vnet-integration"></a>Bölgesel VNet tümleştirmesi 
+## <a name="regional-vnet-integration"></a>bölgesel VNet tümleştirmesi 
 
 > [!NOTE]
 > Eşleme, Linux tabanlı App Service için henüz kullanılabilir değil.
@@ -112,7 +112,7 @@ Bölgesel VNet tümleştirmesi, tümleştirme alt ağınızın Microsoft. Web 'e
 Uygulamanızın VNet bağlantısını kesmek için **bağlantıyı kes**' i seçin. Bu işlem Web uygulamanızı yeniden başlatacak. 
 
 
-#### <a name="web-app-for-containers"></a>Kapsayıcılar için Web Apps
+#### <a name="web-app-for-containers"></a>Kapsayıcılar için Web App
 
 Yerleşik görüntülerle Linux üzerinde App Service kullanıyorsanız, bölgesel VNet tümleştirme özelliği ek değişiklik yapılmadan işe yarar. Kapsayıcılar için Web App kullanıyorsanız, VNet tümleştirmesini kullanabilmeniz için Docker görüntünüzü değiştirmeniz gerekir. Docker yansımanıza, sabit kodlanmış bir bağlantı noktası numarası kullanmak yerine ana Web sunucusunun dinleme bağlantı noktası olarak bağlantı noktası ortam değişkenini kullanın. Bağlantı noktası ortam değişkeni, kapsayıcı başlangıç saatinde App Service platformu tarafından otomatik olarak ayarlanır. SSH kullanıyorsanız, SSH Daemon 'ın bölgesel VNet tümleştirmesi kullanılırken SSH_PORT ortam değişkeni tarafından belirtilen bağlantı noktası numarasını dinlemek üzere yapılandırılması gerekir.
 
@@ -149,7 +149,7 @@ Bu özellik şunları desteklemez:
 * ExpressRoute üzerinden kaynaklara erişme 
 * Hizmet Uç Noktaları üzerinden kaynaklara erişme 
 
-### <a name="getting-started"></a>Başlangıç
+### <a name="getting-started"></a>Başlarken
 
 Web uygulamanızı bir sanal ağa bağlamadan önce göz önünde bulundurmanız gereken bazı noktalar şunlardır:
 
@@ -175,13 +175,13 @@ Yalnızca App Service VNet tümleştirmesiyle kullanmak üzere ağ geçidini olu
 Uygulamanızda VNet tümleştirmesini etkinleştirmek için: 
 
 1. Azure portal uygulamanıza gidin ve uygulama ayarları ' nı açın ve ağ > VNet tümleştirmesi ' ni seçin. ASP 'niz standart bir SKU 'da olmalıdır veya VNet tümleştirme özelliğinin kullanılması daha iyidir. 
- ![VNet tümleştirmesi Kullanıcı arabirimi @ no__t-1
+ ![VNet tümleştirmesi Kullanıcı arabirimi][1]
 
 1. **VNET Ekle**' yi seçin. 
- ![Vnet tümleştirmesi ekleme @ no__t-1
+ ![VNet tümleştirmesi ekleme][2]
 
 1. VNet ' i seçin. 
-  @no__t-VNet 'iniz @ no__t-1 ' i seçin
+  VNet ![][8] seçin
   
 Uygulamanız, bu son adımdan sonra yeniden başlatılacak.  
 
@@ -258,11 +258,11 @@ Ağ Geçidi gerekli VNet tümleştirme özelliğinin kullanımına yönelik üç
 Özelliği kolayca ayarlanabilir, bu da deneyiminizin ücretsiz olacağı anlamına gelmez. İstenen uç noktanıza erişmede sorun yaşamanız gerekir, bu, uygulama konsolundan bağlantıyı test etmek için kullanabileceğiniz bazı yardımcı programlar vardır. Kullanabileceğiniz iki konsol vardır. Birisi kudu konsoludur ve diğeri Azure portal konsoludur. Uygulamanızın kudu konsoluna ulaşmak için Araçlar-> kudu ' ye gidin. Ayrıca, Kudo konsoluna [SiteName]. scm. azurewebsites. net adresinden ulaşabilirsiniz. Web sitesi yüklendiğinde, hata ayıklama konsolu sekmesine gidin. Daha sonra Azure portal barındırılan konsola ulaşmak için Araçlar-> konsoluna gidin. 
 
 #### <a name="tools"></a>Araçlar
-Araçlar **ping**, **nslookup** ve **tracert** , güvenlik kısıtlamaları nedeniyle konsolda çalışmaz. Void 'yi dolduracak şekilde iki ayrı araç eklenmiştir. DNS işlevselliğini test etmek için, nameresolver. exe adlı bir araç ekledik. Söz dizimi aşağıdaki gibidir:
+Araçlar **ping**, **nslookup** ve **tracert** , güvenlik kısıtlamaları nedeniyle konsolda çalışmaz. Void 'yi dolduracak şekilde iki ayrı araç eklenmiştir. DNS işlevselliğini test etmek için, nameresolver. exe adlı bir araç ekledik. Sözdizimi şöyledir:
 
     nameresolver.exe hostname [optional: DNS Server]
 
-Uygulamanızın bağımlı olduğu ana bilgisayar adlarını denetlemek için **nameresolver** kullanabilirsiniz. Bu şekilde, DNS 'niz ile yanlış yapılandırılmış herhangi bir şey varsa veya belki DNS sunucunuza erişiminiz yoksa test edebilirsiniz. Uygulamanızın konsolda kullanacağı DNS sunucusunu WEBSITE_DNS_SERVER ve WEBSITE_DNS_ALT_SERVER ortam değişkenlerine bakarak görebilirsiniz.
+Uygulamanızın bağımlı olduğu ana bilgisayar adlarını denetlemek için **nameresolver** kullanabilirsiniz. Bu şekilde, DNS 'niz ile yanlış yapılandırılmış herhangi bir şey varsa veya belki DNS sunucunuza erişiminiz yoksa test edebilirsiniz. Uygulamanızın konsolda kullanacağı DNS sunucusunu, WEBSITE_DNS_SERVER ve WEBSITE_DNS_ALT_SERVER ortam değişkenlerine bakarak görebilirsiniz.
 
 Sonraki araç, bir konak ve bağlantı noktası birleşimine TCP bağlantısı için test etmenizi sağlar. Bu araca, **tcma** adı verilir ve sözdizimi şöyledir:
 
@@ -302,7 +302,7 @@ Uygulamanızın gerçekten kullanacağı adresi bilmiyorsanız unutmayın. Tüml
 
 Ek hata ayıklama adımları şunlardır:
 
-* VNet 'iniz içindeki bir VM 'ye bağlanın ve kaynak konağınız üzerinde bağlantı noktasını buradan ulaşmaya çalışın. TCP erişimini test etmek için PowerShell komut **testi-NetConnection**komutunu kullanın. Söz dizimi aşağıdaki gibidir:
+* VNet 'iniz içindeki bir VM 'ye bağlanın ve kaynak konağınız üzerinde bağlantı noktasını buradan ulaşmaya çalışın. TCP erişimini test etmek için PowerShell komut **testi-NetConnection**komutunu kullanın. Sözdizimi şöyledir:
 
       test-netconnection hostname [optional: -Port]
 

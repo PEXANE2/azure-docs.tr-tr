@@ -107,7 +107,7 @@ Bu bölümde, AdventureWorks veritabanında bulunan bir tablodan (örneğin, **S
 
 ## <a name="write-data-into-azure-sql-database"></a>Azure SQL veritabanı 'na veri yazma
 
-Bu bölümde, Azure SQL veritabanı 'nda tablo oluşturmak ve verileri veriyle doldurmak için kümede bulunan örnek bir CSV dosyası kullanıyoruz. Örnek CSV dosyası (**HVAC. csv**) `HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv` ' deki tüm HDInsight kümelerinde kullanılabilir.
+Bu bölümde, Azure SQL veritabanı 'nda tablo oluşturmak ve verileri veriyle doldurmak için kümede bulunan örnek bir CSV dosyası kullanıyoruz. Örnek CSV dosyası (**HVAC. csv**) `HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv`tüm HDInsight kümelerinde kullanılabilir.
 
 1. Yeni bir Jupyter not defterinde, bir kod hücresinde aşağıdaki kod parçacığını yapıştırın ve yer tutucu değerlerini Azure SQL veritabanınızın değerleriyle değiştirin.
 
@@ -130,12 +130,12 @@ Bu bölümde, Azure SQL veritabanı 'nda tablo oluşturmak ve verileri veriyle d
        connectionProperties.put("user", s"${jdbcUsername}")
        connectionProperties.put("password", s"${jdbcPassword}")
 
-1. HVAC. csv içindeki verilerin şemasını ayıklamak için aşağıdaki kod parçacığını kullanın ve veri çerçevesindeki CSV 'den verileri yüklemek için şemayı kullanın, `readDf`. Parçacığı bir kod hücresine yapıştırın ve çalıştırmak için **SHIFT + enter** tuşlarına basın.
+1. HVAC. csv içindeki verilerin şemasını ayıklamak için aşağıdaki kod parçacığını kullanın ve veri çerçevesindeki CSV 'den verileri yüklemek için şemayı kullanın `readDf`. Parçacığı bir kod hücresine yapıştırın ve çalıştırmak için **SHIFT + enter** tuşlarına basın.
 
        val userSchema = spark.read.option("header", "true").csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv").schema
        val readDf = spark.read.format("csv").schema(userSchema).load("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
 
-1. Geçici bir tablo oluşturmak için `readDf` dataframe ' i `temphvactable` ' i kullanın. Sonra bir Hive tablosu oluşturmak için geçici tabloyu kullanın, `hvactable_hive`.
+1. Geçici bir tablo oluşturmak için `readDf` dataframe kullanın `temphvactable`. Ardından, `hvactable_hive`bir Hive tablosu oluşturmak için geçici tabloyu kullanın.
 
        readDf.createOrReplaceTempView("temphvactable")
        spark.sql("create table hvactable_hive as select * from temphvactable")
@@ -144,7 +144,7 @@ Bu bölümde, Azure SQL veritabanı 'nda tablo oluşturmak ve verileri veriyle d
 
        spark.table("hvactable_hive").write.jdbc(jdbc_url, "hvactable", connectionProperties)
 
-1. SSMS kullanarak Azure SQL veritabanı 'na bağlanın ve bir @no__t olduğunu doğrulayın.
+1. SSMS kullanarak Azure SQL veritabanına bağlanın ve orada bir `dbo.hvactable` gördiğinizi doğrulayın.
 
     a. SSMS 'yi başlatın ve aşağıdaki ekran görüntüsünde gösterildiği gibi bağlantı ayrıntılarını sağlayarak Azure SQL veritabanına bağlanın.
 
@@ -178,7 +178,7 @@ Bu bölümde, önceki bölümde yer alan Azure SQL veritabanı 'nda zaten oluşt
        import org.apache.spark.sql.streaming._
        import java.sql.{Connection,DriverManager,ResultSet}
 
-1. **HVAC. csv** dosyasından hboş tabloya veri akışı yaptık. HVAC. csv dosyası `/HdiSamples/HdiSamples/SensorSampleData/HVAC/` ' da kümede kullanılabilir. Aşağıdaki kod parçacığında, ilk olarak akışa alınacak verilerin şemasını alırız. Daha sonra, bu şemayı kullanarak bir akış veri çerçevesi oluşturacağız. Parçacığı bir kod hücresine yapıştırın ve çalıştırmak için **SHIFT + enter** tuşlarına basın.
+1. **HVAC. csv** dosyasından hboş tabloya veri akışı yaptık. HVAC. csv dosyası `/HdiSamples/HdiSamples/SensorSampleData/HVAC/`kümesinde kullanılabilir. Aşağıdaki kod parçacığında, ilk olarak akışa alınacak verilerin şemasını alırız. Daha sonra, bu şemayı kullanarak bir akış veri çerçevesi oluşturacağız. Parçacığı bir kod hücresine yapıştırın ve çalıştırmak için **SHIFT + enter** tuşlarına basın.
 
        val userSchema = spark.read.option("header", "true").csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv").schema
        val readStreamDf = spark.readStream.schema(userSchema).csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/") 

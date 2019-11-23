@@ -20,7 +20,7 @@ ms.locfileid: "73826435"
 
 Bu belge, Microsoft 'un yayımcılar, satıcılar ve müşteriler için ticari Market 'in yanında bir görünüm sağlar. Bu, yaptığımız önemli özelliklerden bazılarını yakalar, ne zaman bunları görmeyi bekletireceğiz için kaba bir zaman karesi olur ve aylık olarak yenilenir. Tüm yeni özelliklerin kapsamlı bir listesi değildir ancak önemli yatırımlarımıza görünürlük sağlamak üzere tasarlanmıştır. Bu özellik kümeleri ve teslim süresi çerçeveleri geçerli ve değişikliğe tabidir.
 
-Önerileriniz size hoş geldiniz! Yeni yetenekler, programlar ve olaylar hakkında en son güncelleştirmeleri almak için [Microsoft Iş ortağı topluluğu](https://www.microsoftpartnercommunity.com/) 'nda konuşmaya katın.
+Önerilerinizi duymaktan mutluluk duyarız! Yeni yetenekler, programlar ve olaylar hakkında en son güncelleştirmeleri almak için [Microsoft Iş ortağı topluluğu](https://www.microsoftpartnercommunity.com/) 'nda konuşmaya katın.
 
 ## <a name="roadmap"></a>Yol Haritası
 ![Kasım 2019 için Market yol haritası](./media/marketplace-publishers-guide/roadmap-nov19.png)

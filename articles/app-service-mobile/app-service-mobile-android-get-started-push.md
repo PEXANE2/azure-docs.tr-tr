@@ -28,7 +28,7 @@ ms.locfileid: "72389020"
 > [!NOTE]
 > Visual Studio App Center mobil uygulama dağıtımında merkezi konumdaki uçtan uca ve tümleşik hizmetleri destekler. Geliştiriciler Sürekli Tümleştirme ve Teslim işlem hattını ayarlamak için **Oluşturma**, **Test** ve **Dağıtım** hizmetlerini kullanabilir. Uygulama dağıtıldıktan sonra, geliştiriciler **Analiz** ve **Tanılama** hizmetlerini kullanarak uygulamanın durumunu ve kullanımını izleyebilir, **Gönderme** hizmetini kullanarak kullanıcılarla etkileşim kurabilir. Geliştiriciler ayrıca kullanıcıların kimliğini doğrulamak için **Kimlik Doğrulaması**'ndan ve uygulama verilerini bulutta kalıcı hale getirmek ve eşitlemek için **Veri** hizmetinden yararlanabilir.
 >
-> Mobil uygulamanızda bulut hizmetlerini tümleştirmek istiyorsanız bugün [App Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) kaydolun.
+> Bulut hizmetlerini mobil uygulamanızla tümleştirmek istiyorsanız [App Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc)'a hemen kaydolun.
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -63,7 +63,7 @@ Bu öğreticide, bir kayıt her eklendiğinde cihaza anında iletme bildirimi g�
 
 [!INCLUDE [app-service-mobile-dotnet-backend-configure-push-google](../../includes/app-service-mobile-dotnet-backend-configure-push-google.md)]
 
-## <a name="add-push-notifications-to-your-app"></a>Uygulamanıza anında iletme bildirimleri ekleyin
+## <a name="add-push-notifications-to-your-app"></a>Uygulamanıza anında iletme bildirimleri ekleme
 
 Bu bölümde, anında iletme bildirimlerini işleyecek istemci Android uygulamanızı güncelleştirmeniz gerekir.
 
@@ -94,7 +94,7 @@ Bu öğreticiyi tamamladığınıza göre, aşağıdaki öğreticilerden birine 
 * [Android uygulamanıza kimlik doğrulaması ekleyin](app-service-mobile-android-get-started-users.md).
   Desteklenen bir kimlik sağlayıcısı kullanarak Android 'de ToDoList hızlı başlangıç projesine nasıl kimlik doğrulaması ekleneceğini öğrenin.
 * [Android uygulamanız için çevrimdışı eşitlemeyi etkinleştirin](app-service-mobile-android-get-started-offline-data.md).
-  Mobile Apps arka ucu kullanarak uygulamanıza çevrimdışı destek eklemeyi öğrenin. Çevrimdışı eşitleme sayesinde, kullanıcılar bir mobil uygulama olan @ no__t-0görüntüleme, ekleme veya değiştirme, ağ bağlantısı olmadığında bile @ no__t-1verileri ile etkileşime geçebilir.
+  Mobile Apps arka ucu kullanarak uygulamanıza çevrimdışı destek eklemeyi öğrenin. Çevrimdışı eşitleme sayesinde, kullanıcılar bir mobil uygulamayla etkileşime geçerek, ağ bağlantısı olmasa bile veri&mdash;görüntüleme, ekleme veya değiştirme&mdash;.
 
 <!-- URLs -->
 [Android hızlı başlangıç]: app-service-mobile-android-get-started.md

@@ -45,7 +45,7 @@ Azure Active Directory sayfasını kullanarak dizininize Konuk Kullanıcı eklem
 
 1. Kuruluşunuzun dış işbirliği ayarlarının, konukları davet etmenize izin verilecek şekilde yapılandırıldığından emin olun. Daha fazla bilgi için bkz. [B2B dış Işbirliğini etkinleştirme ve konukları kimlerin davet edebileceğini yönetme](../active-directory/b2b/delegate-invitations.md).
 
-1. Azure portal, **Azure Active Directory** > **Kullanıcı** > **Yeni Konuk Kullanıcı**' ya tıklayın.
+1. Azure portal, **Kullanıcılar** **yeni konuk kullanıcı** >  > **Azure Active Directory** ' e tıklayın.
 
     ![Azure portal yeni Konuk Kullanıcı özelliği](./media/role-assignments-external-users/invite-guest-user.png)
 
@@ -79,7 +79,7 @@ RBAC 'de, erişim izni vermek için bir rol atarsınız. Konuk kullanıcıya eri
 
 1. Bu kapsamdaki tüm rol atamalarını görüntülemek için **rol atamaları** sekmesine tıklayın.
 
-1. Rol ataması Ekle bölmesini açmak için @no__t **Ekle**-1**rol ataması Ekle** ' ye tıklayın.
+1. **Rol ataması ekle > ** **Ekle** ' ye tıklayın.
 
     Rol atama izniniz yoksa rol ataması Ekle seçeneği devre dışı bırakılır.
 
@@ -111,7 +111,7 @@ Konuk Kullanıcı henüz dizininizde değilse, kullanıcıyı doğrudan rol atam
 
 1. Bu kapsamdaki tüm rol atamalarını görüntülemek için **rol atamaları** sekmesine tıklayın.
 
-1. Rol ataması Ekle bölmesini açmak için @no__t **Ekle**-1**rol ataması Ekle** ' ye tıklayın.
+1. **Rol ataması ekle > ** **Ekle** ' ye tıklayın.
 
     ![Menü ekle](./media/role-assignments-external-users/add-menu.png)
 
@@ -203,7 +203,7 @@ Bir konuk kullanıcıya bir dizin erişimi verildiyse, ancak Azure portal erişi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure portal Azure Active Directory B2B işbirliği kullanıcıları ekleyin](../active-directory/b2b/add-users-administrator.md)
+- [Azure portalında Azure Active Directory B2B işbirliği kullanıcıları ekleme](../active-directory/b2b/add-users-administrator.md)
 - [Azure Active Directory B2B işbirliği kullanıcısının özellikleri](../active-directory/b2b/user-properties.md)
 - [B2B işbirliği davetiyesi e-postası öğeleri-Azure Active Directory](../active-directory/b2b/invitation-email-elements.md)
 - [Konuk kullanıcıyı ortak yönetici olarak ekleme](classic-administrators.md#adding-a-guest-user-as-a-co-administrator)

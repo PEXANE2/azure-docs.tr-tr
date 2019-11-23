@@ -30,7 +30,7 @@ Hayır. Uzantı Visual Studio Team Foundation Server İndiriyor ve yüklenmeye h
 
 ### <a name="do-i-have-to-run-microsoft-security-code-analysis-with-my-build"></a>Microsoft Güvenlik kodu çözümlemesini benim yapımda çalıştırdım mı? 
 
-Belki. Analiz aracının türüne bağlıdır. Kaynak kodu, gereken tek şey olabilir veya derleme çıktısı gerekli olabilir.
+Olabilir. Analiz aracının türüne bağlıdır. Kaynak kodu, gereken tek şey olabilir veya derleme çıktısı gerekli olabilir.
 
 Örneğin, kimlik bilgisi tarayıcısı (CredScan), dosyaları kod deposunun klasör yapısı içinde analiz eder. Bu analiz nedeniyle, sonuçları almak için bir tek başına derlemede CredScan ve güvenlik Analizi günlüklerini Yayımla oluşturma görevlerini çalıştırabilirsiniz.
 
@@ -48,7 +48,7 @@ Analiz sonrası görevinin Kullanıcı arabiriminde, herhangi bir araç yalnızc
 
 Dikkat çekici farklılıklar:
 
-- Araçlar, aracının $ (Build. SourcesDirectory) kaynak klasöründen veya% BUILD_SOURCESDIRECTORY% öğesinden çalıştırılır. Örnek: C:\agent @ no__t-0work\1\s.
+- Araçlar, aracının $ (Build. SourcesDirectory) kaynak klasöründen veya% BUILD_SOURCESDIRECTORY% öğesinden çalıştırılır. Örnek, C:\agent\_work\1\dizinidir.
 - Bağımsız değişkenlerdeki yollar, daha önce listelenen kaynak dizinin köküne göre olabilir. Yollar da mutlak olabilir. Azure DevOps derleme değişkenlerini kullanarak ya da yerel kaynakların bilinen dağıtım konumlarına sahip şirket içi bir aracı çalıştırarak mutlak yollar alırsınız.
 - Araçlar otomatik olarak bir çıkış dosyası yolu veya klasörü sağlar. Derleme görevi için bir çıkış konumu sağlarsanız, bu konum derleme aracısındaki iyi bilinen günlüklerin konumuyla birlikte değişir
 - Bazı araçlar için bazı ek komut satırı bağımsız değişkenleri değiştirilmiştir. Bir örnek, GUI 'nin başlatılmasından emin olan seçeneklerin eklenmesi veya kaldırılması.
@@ -63,7 +63,7 @@ Derleme görevleri bazı kullanıcı girişlerini filtreleyebilir. Özellikle bu
 
 ### <a name="where-are-the-output-files-generated-by-the-tools-saved"></a>Araçlar tarafından oluşturulan çıkış dosyaları nerede kaydedilir? 
 
-Derleme görevleri, derleme aracısındaki bu iyi bilinen konuma çıkış yollarını otomatik olarak ekler: $ (Agent. BuildDirectory) \_sdt \ Günlükler. Bu konumda standartlaştırdığımız için, kod analizi günlüklerini üreten veya kullanan tüm ekipler çıkışa erişebilir.
+Derleme görevleri, derleme aracısındaki bu iyi bilinen konuma çıkış yollarını otomatik olarak ekler: $ (Agent. BuildDirectory)\_sdt\logs. Bu konumda standartlaştırdığımız için, kod analizi günlüklerini üreten veya kullanan tüm ekipler çıkışa erişebilir.
 
 ### <a name="can-i-queue-a-build-to-run-these-tasks-on-a-hosted-build-agent"></a>Bu görevleri barındırılan bir yapı aracısında çalıştırmak için bir derlemeyi sıraya alabilir miyim? 
 
@@ -154,10 +154,10 @@ Geçerli gizleme kuralları örnekleri:
 
 Aşağıdaki kaynaklar, gizli dizileri güvenli bir şekilde yönetmenize ve uygulamalarınızın içinden hassas bilgilere erişmenize yardımcı olur:
 
- - [Azure Key Vault](../../key-vault/index.yml)
+ - [Azure Anahtar Kasası.](../../key-vault/index.yml)
  - [Azure Active Directory (Azure AD)](../../sql-database/sql-database-aad-authentication.md)
  - [Azure AD Yönetilen Hizmet Kimliği (MSI)](https://azure.microsoft.com/blog/keep-credentials-out-of-code-introducing-azure-ad-managed-service-identity/)
- - [Azure kaynakları için Yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md)
+ - [Azure kaynakları için yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md)
  - [Azure App Service ve Azure Işlevlerinde Yönetilen kimlikler](../../app-service/overview-managed-identity.md)
  - [AppAuthentication kitaplığı](../../key-vault/service-to-service-authentication.md)
 
@@ -173,7 +173,7 @@ Bir içerik arayici aşağıdaki gibi tanımlanır:
 - **Ad**: kimlik bilgisi tarayıcısı çıktı dosyalarında kullanılacak açıklayıcı Arayıcının adı. Arayıcının adları için Camel-Case adlandırma kuralını kullanmanızı öneririz.
 - **RuleId**: Searcher 'ın KARARLı donuk kimliği:
     - Kimlik bilgisi tarayıcısı varsayılan Arayıcının, CSCAN0010, CSCAN0020 veya CSCAN0030 gibi bir **RuleId** değeri atanır. Son basamak, normal ifadeler (Regex) yoluyla arama gruplarını birleştirmek veya bölmek için ayrılmıştır.
-    - Özelleştirilmiş bir Arayıcının için **RuleId** değeri kendi ad alanına sahip olmalıdır. Örnek olarak CSCAN-\<Namespace @ no__t-10010, CSCAN-\<Namespace @ no__t-30020 ve CSCAN-\<Namespace @ no__t-50030 verilebilir.
+    - Özelleştirilmiş bir Arayıcının için **RuleId** değeri kendi ad alanına sahip olmalıdır. Örnek olarak, CSCAN-\<ad alanı\>0010, CSCAN-\<ad alanı\>0020 ve CSCAN-\<ad alanı\>0030 sayılabilir.
     - Tam bir Arayıcının adı **RuleId** değerinin ve bir Arayıcının adının birleşimidir. Örnekler şunlardır CSCAN0010. KeyStoreFiles ve CSCAN0020. Base64EncodedCertificate.
 - **Resourcematchmodel**: araya karşı Denetlenecek dosya uzantılarının Regex.
 - **Contentsearchpatterns**: eşleştirilecek Regex deyimlerini içeren bir dizeler dizisi. Arama desenleri tanımlanmamışsa, **Resourcematchmodel** değeriyle eşleşen tüm dosyalar döndürülür.
@@ -202,13 +202,13 @@ Ana derleme ve Roslyn Çözümleyicileri adımları arasındaki bir adım, kayna
 
 Tam hata iletisi:
 
-"' CSC. exe", 1 hata koduyla çıkıldı--C: \\*bbbb*. dll ' den bir Analyzer *aaaa* örneği oluşturulamıyor: ' Microsoft. CodeAnalysis, Version =*X. x. x. x*, Culture = neutral, PublicKeyToken = 31bf3856ad364e35 ' veya bağımlılıklarından biri. Sistem belirtilen dosyayı bulamıyor. "
+"' CSC. exe" hata koduyla çıkıldı--C:\\*bbbb*. dll ' den bir çözümleyici *aaaa* örneği oluşturulamıyor: dosya veya ' Microsoft. CodeAnalysis, Version =*X.* x. x. x, Culture = neutral, PublicKeyToken = 31bf3856ad364e35 ' dosyası ya da bağımlılıklarından biri yüklenemedi. Sistem belirtilen dosyayı bulamıyor."
 
 Derleyicisinin Roslyn çözümleyicilerinin desteklediğinden emin olun. **CSC. exe/Version** komutunu çalıştırmak, 2,6 veya üzeri bir sürüm değeri bildirmelidir.
 
 Bazen bir. csproj dosyası, Microsoft.Net. derleyicileri bir pakete başvurarak derleme makinesinin Visual Studio yüklemesini geçersiz kılabilir. Derleyicinin belirli bir sürümünü kullanmayı düşünmüyorsanız, Microsoft.Net. derleyicilere başvuruları kaldırın. Aksi takdirde, başvurulan paketin sürümünün de 2,6 veya üzeri olduğundan emin olun.
 
-**CSC. exe/Errorlog** seçeneğinde belirtilen hata günlüğü yolunu almayı deneyin. Seçenek ve yol, Roslyn Çözümleyicileri derleme görevinin günlüğünde görüntülenir. **/Errorlog: F:\ts-Services-123 @ no__t-1work\456\s\Some\Project\Code\Code.csproj.Sarif** gibi bir şey görünebilir
+**CSC. exe/Errorlog** seçeneğinde belirtilen hata günlüğü yolunu almayı deneyin. Seçenek ve yol, Roslyn Çözümleyicileri derleme görevinin günlüğünde görüntülenir. **/Errorlog: F:\ts-Services-123\_work\456\s\Some\Project\Code\Code.csproj.Sarif** gibi bir şeyler görünebilir
 
 ##### <a name="the-c-compiler-version-isnt-recent-enough"></a>C# Derleyici sürümü yeterince yeni değil
 

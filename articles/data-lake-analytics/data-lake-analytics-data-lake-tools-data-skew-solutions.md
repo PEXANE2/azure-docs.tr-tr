@@ -20,7 +20,7 @@ ms.locfileid: "71802546"
 ## <a name="what-is-data-skew"></a>Veri eğriltme nedir?
 
 Kısaca belirtilen veri eğimi, daha fazla temsil edilen bir değerdir. Vergi dönüşlerine yönelik 50 vergi Examiners, her ABD durumu için bir Examiner atandığını düşünün. Wyote Examiner, popülasyon küçük olduğu için çok daha az. Ancak California 'da, durumun büyük popülasyonu nedeniyle Examiner çok meşgul tutulur.
-    ![Data-skew sorun örneği @ no__t-1
+    ![veri eğriltme sorun örneği](./media/data-lake-analytics-data-lake-tools-data-skew-solutions/data-skew-problem.png)
 
 Senaryolarımızda, veriler tüm vergi Examiners arasında eşit olarak dağıtılmaktadır, bu da bazı Examiners diğerlerinden daha fazla çalışması gerektiği anlamına gelir. Kendi işiniz, burada Tax-Examiner örneği gibi durumlar hakkında daha fazla durum yaşarsınız. Daha fazla teknik koşullarda, bir köşe eşlerinden çok daha fazla veri alır, köşeyi diğerlerinden daha fazla çalışma ve sonunda işin tamamını yavaşlatan bir durumdur. Ne kadar kötü olursa iş başarısız olabilir, çünkü köşeler, örneğin 5 saatlik çalışma zamanı sınırlaması ve 6 GB bellek sınırlaması olabilir.
 

@@ -41,7 +41,7 @@ Veri ambarınızda çalıştırılacak birincil işlemleri ve sorguları öncede
 | Tasarım | Öneri |
 |:--- |:--- |
 | Dağıtım | Hepsini Bir Kez Deneme |
-| Dizinleme | Yığın |
+| Dizin Oluşturma | Yığın |
 | Bölümleme | None |
 | Kaynak Sınıfı | largerc veya xlargerc |
 

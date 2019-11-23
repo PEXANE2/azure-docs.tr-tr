@@ -54,12 +54,12 @@ Bir SQL veri ambarı için TDE ' yi devre dışı bırakmak için aşağıdaki a
 Şifreleme Aşağıdaki DMVs ile onaylanır:
 
 * [sys. databases]
-* [sys. DM _pdw_nodes_database_encryption_keys]
+* [sys.dm_pdw_nodes_database_encryption_keys]
 
 <!--MSDN references-->
 [Transparent Data Encryption (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx
 [sys. databases]: https://msdn.microsoft.com/library/ms178534.aspx
-[sys. DM _pdw_nodes_database_encryption_keys]: https://msdn.microsoft.com/library/mt203922.aspx
+[sys.dm_pdw_nodes_database_encryption_keys]: https://msdn.microsoft.com/library/mt203922.aspx
 
 <!--Image references-->
 [1]: ./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings.png

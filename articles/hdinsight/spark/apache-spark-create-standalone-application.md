@@ -113,7 +113,7 @@ Scala eklentisini yüklemek için aşağıdaki adımları gerçekleştirin:
 
 10. Proje adını ve konumunu doğrulayıp **Son**’u seçin.  Projenin içeri aktarılması birkaç dakika sürer.
 
-11. Proje içe aktarıldıktan sonra sol bölmeden, > **src** > **Test** > **Scala** > **com** > **Microsoft** > **Spark** ' **a gidin @no__t_13** _ **örneği**. >   **Myspec**öğesine sağ tıklayın ve ardından **Sil...** öğesini seçin. Uygulama için bu dosyaya ihtiyacınız yoktur.  İletişim kutusunda **Tamam ' ı** seçin.
+11. Proje içe aktarıldıktan sonra sol bölmeden, > **src** > **Test** > **Scala** > **com** > **Microsoft** > **Spark** > **örneği**' **ne gidin.**  **Myspec**öğesine sağ tıklayın ve ardından **Sil...** öğesini seçin. Uygulama için bu dosyaya ihtiyacınız yoktur.  İletişim kutusunda **Tamam ' ı** seçin.
   
 12. Sonraki adımlarda, Spark Scala uygulamasının bağımlılıklarını tanımlamak için **Pod. xml** ' yi güncelleştirdik. Bu bağımlılıkların otomatik olarak indirilip çözümlenmesi için Maven’i uygun şekilde yapılandırmanız gerekir.
 
@@ -123,7 +123,7 @@ Scala eklentisini yüklemek için aşağıdaki adımları gerçekleştirin:
 
 15. **Maven projelerini otomatik olarak Içeri aktar** onay kutusunu seçin.
 
-16. **Uygula**’yı ve sonra **Tamam**’ı seçin.  Ardından proje penceresine döndürülecektir.
+16. Seçin **Uygula**ve ardından **Tamam**.  Ardından proje penceresine döndürülecektir.
 
     ![Maven’i otomatik yüklemeler için yapılandırma](./media/apache-spark-create-standalone-application/configure-maven-download.png)
 
@@ -218,7 +218,7 @@ Bu uygulamayı kullanmaya devam etmeyecekecekseniz, oluşturduğunuz kümeyi aş
 
 1. Görüntülenen HDInsight kümeleri listesinde, bu öğretici için oluşturduğunuz kümenin yanındaki **...** seçeneğini belirleyin.
 
-1. **Sil**’i seçin. **Evet**' i seçin.
+1. **Sil**’i seçin. **Evet**’i seçin.
 
 ![HDInsight Azure portalı kümeyi silme](./media/apache-spark-create-standalone-application/hdinsight-azure-portal-delete-cluster.png "HDInsight kümesini Sil")
 

@@ -27,7 +27,7 @@ Azure NetApp Files NFS ve SMBv3 birimlerini destekler. Birimin kapasite kullanı
 
 ## <a name="before-you-begin"></a>Başlamadan önce 
 Zaten bir kapasite havuzu ayarlamış olmalısınız.   
-@No__t [Kapasite havuzu ayarlama](azure-netapp-files-set-up-capacity-pool.md)-1  
+[Kapasite havuzu ayarlama](azure-netapp-files-set-up-capacity-pool.md)   
 Azure NetApp Files için bir alt ağ atanmış olmalıdır.  
 [Azure NetApp Files için bir alt ağ temsilcisi seçme](azure-netapp-files-delegate-subnet.md)
 
@@ -44,21 +44,21 @@ Azure NetApp Files için bir alt ağ atanmış olmalıdır.
     |-----------------------|--------------|------------------|
     |    AD Web Hizmetleri    |    9389      |    TCP           |
     |    DNS                |    53        |    TCP           |
-    |    DNS                |    53        |    PROTOKOLLERINDEN           |
+    |    DNS                |    53        |    UDP           |
     |    Icmpv4             |    Yok       |    Yankı yanıtı    |
     |    Kerberos           |    464       |    TCP           |
-    |    Kerberos           |    464       |    PROTOKOLLERINDEN           |
+    |    Kerberos           |    464       |    UDP           |
     |    Kerberos           |    88        |    TCP           |
-    |    Kerberos           |    88        |    PROTOKOLLERINDEN           |
+    |    Kerberos           |    88        |    UDP           |
     |    LDAP               |    389       |    TCP           |
-    |    LDAP               |    389       |    PROTOKOLLERINDEN           |
+    |    LDAP               |    389       |    UDP           |
     |    LDAP               |    3268      |    TCP           |
-    |    NetBIOS adı       |    138       |    PROTOKOLLERINDEN           |
+    |    NetBIOS adı       |    138       |    UDP           |
     |    SAM/LSA            |    445       |    TCP           |
-    |    SAM/LSA            |    445       |    PROTOKOLLERINDEN           |
+    |    SAM/LSA            |    445       |    UDP           |
     |    Güvenli LDAP        |    636       |    TCP           |
     |    Güvenli LDAP        |    3269      |    TCP           |
-    |    W32Time            |    123       |    PROTOKOLLERINDEN           |
+    |    W32Time            |    123       |    UDP           |
 
 * Hedeflenen Active Directory Domain Services yönelik site topolojisi, Azure NetApp Files dağıtıldığı Azure VNet 'te en iyi yöntemlere uymalıdır.  
 
@@ -88,7 +88,7 @@ Azure NetApp Files için bir alt ağ atanmış olmalıdır.
         Bu, Active Directory etki alanına ekleme ve SMB kimlik doğrulama işlemleri için gereken DNS 'dir. 
     * **IKINCIL DNS**   
         Bu, gereksiz ad hizmetleri sağlamak için ikincil DNS sunucusudur. 
-    * **Alanını**  
+    * **Etki alanı**  
         Bu, birleştirmek istediğiniz Active Directory Domain Services etki alanı adıdır.
     * **SMB sunucusu (bilgisayar hesabı) ön eki**  
         Bu, Azure NetApp Files yeni hesapların oluşturulması için kullanacağı Active Directory makine hesabının adlandırma ön ekidir.
@@ -100,7 +100,7 @@ Azure NetApp Files için bir alt ağ atanmış olmalıdır.
     * **Kuruluş birimi yolu**  
         Bu, SMB sunucu makinesi hesaplarının oluşturulacağı kuruluş birimi (OU) için LDAP yoludur. Diğer bir deyişle, OU = ikinci düzey, OU = ilk düzey. 
 
-        Azure Active Directory Domain Services ile Azure NetApp Files kullanıyorsanız, NetApp hesabınız için Active Directory yapılandırdığınızda kuruluş birimi yolu `OU=AADDC Computers` ' dır.
+        Azure Active Directory Domain Services ile Azure NetApp Files kullanıyorsanız, NetApp hesabınız için Active Directory yapılandırdığınızda kuruluş birimi yolu `OU=AADDC Computers`.
         
     * **Kullanıcı adınız** ve **Parolanız** dahil kimlik bilgileri
 

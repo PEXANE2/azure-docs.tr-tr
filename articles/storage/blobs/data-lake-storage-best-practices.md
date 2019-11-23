@@ -39,7 +39,7 @@ Azure Active Directory hizmet sorumluları, genellikle Data Lake Storage 2. veri
 
 ### <a name="enable-the-data-lake-storage-gen2-firewall-with-azure-service-access"></a>Azure hizmet erişimi ile Data Lake Storage 2. güvenlik duvarını etkinleştirme
 
-Data Lake Storage 2., bir güvenlik duvarını açma ve yalnızca Azure hizmetlerine erişimi sınırlandırma seçeneğini destekler, bu da dış saldırıların vektörünü sınırlamak için önerilir. Güvenlik Duvarı, güvenlik duvarı üzerinden Azure portal bir depolama hesabında **etkinleştirilebilir @no__t-** 1**güvenlik DUVARıNı etkinleştir (açık)**  > **Azure hizmetleri seçeneklerine erişime izin verir** .
+Data Lake Storage 2., bir güvenlik duvarını açma ve yalnızca Azure hizmetlerine erişimi sınırlandırma seçeneğini destekler, bu da dış saldırıların vektörünü sınırlamak için önerilir. Güvenlik Duvarı, **Azure hizmetleri seçeneklerine erişime Izin vermek** ** > güvenlik duvarını** **etkinleştirmek** > güvenlik duvarı aracılığıyla Azure Portal bir depolama hesabında etkinleştirilebilir.
 
 Depolama hesabınıza Azure Databricks erişmek için, Azure Databricks sanal ağınıza dağıtın ve ardından bu sanal ağı güvenlik duvarınızdan ekleyin. Bkz. [Azure Storage güvenlik duvarlarını ve sanal ağları yapılandırma](https://docs.microsoft.com/azure/storage/common/storage-network-security).
 
@@ -47,7 +47,7 @@ Depolama hesabınıza Azure Databricks erişmek için, Azure Databricks sanal a�
 
 Data Lake Storage 2. veya herhangi bir bulut hizmeti ile bir sistemi mimarmaya çalışırken, kullanılabilirlik gereksinimlerinizi göz önünde bulundurmanız ve Hizmette oluşabilecek kesintilere yanıt verebilmeniz gerekir. Bir sorun belirli bir örneğe veya bölge genelinde yerelleştirilebilir, bu nedenle her ikisi için bir plana sahip olmak önemlidir. Kurtarma zamanı hedefine ve iş yükünüz için kurtarma noktası hedefi SLA 'larına bağlı olarak yüksek kullanılabilirlik ve olağanüstü durum kurtarma için daha fazla veya daha az ısrarlı bir strateji seçebilirsiniz.
 
-### <a name="high-availability-and-disaster-recovery"></a>Yüksek erişilebilirlik ve felaketten kurtarma
+### <a name="high-availability-and-disaster-recovery"></a>Yüksek kullanılabilirlik ve olağanüstü durum kurtarma
 
 Yüksek kullanılabilirlik (HA) ve olağanüstü durum kurtarma (DR) bazen birlikte birleştirilebilir, ancak özellikle de verilere geldiklerinde, her birinin biraz farklı bir stratejisi vardır. Data Lake Storage 2., yerelleştirilmiş donanım hatalarıyla karşı koruma kapsamında 3x çoğaltmasını zaten işliyor. Ayrıca, ZRS veya GZRS (Önizleme) gibi diğer çoğaltma seçenekleri, GRS & RA-GRS, DR 'yi iyileştirirken HA 'yi geliştirir. Bir HA planı oluştururken, hizmet kesintisi durumunda iş yükünün, ayrı olarak çoğaltılan bir örneğe yerel olarak veya yeni bir bölgede geçiş yaparak en son verilere en kısa sürede erişmesi gerekir.
 
@@ -100,4 +100,4 @@ Bazen veri bozulması veya beklenmeyen biçimler nedeniyle dosya işleme başar�
     NA/Extracts/ACMEPaperCo/In/2017/08/14/updates_08142017.csv
     NA/Extracts/ACMEPaperCo/Out/2017/08/14/processed_updates_08142017.csv
 
-Toplu iş verilerinin doğrudan Hive veya geleneksel SQL veritabanları gibi veritabanlarına işlendiği durumlarda, çıkış zaten Hive tablosu veya dış için ayrı bir klasöre gitdiğinden bir **/ın** veya **/Out** klasörü gerekmez veritabanınızı. Örneğin, müşterilerden günlük ayıklamalar ilgili klasörlerine giderek Azure Data Factory, Apache Oozie veya Apache Airflow gibi bir şey tarafından düzenleme, günlük bir Hive veya Spark işinin verileri bir Hive tablosuna işlemesi ve yazması için tetikleyecektir.
+Toplu iş verilerinin doğrudan Hive veya geleneksel SQL veritabanları gibi veritabanlarına işlendiği durumlarda, çıkış zaten Hive tablosu veya dış veritabanı için ayrı bir klasöre geçtiğinde bir **/ın** veya **/Out** klasörüne gerek yoktur. Örneğin, müşterilerden günlük ayıklamalar ilgili klasörlerine giderek Azure Data Factory, Apache Oozie veya Apache Airflow gibi bir şey tarafından düzenleme, günlük bir Hive veya Spark işinin verileri bir Hive tablosuna işlemesi ve yazması için tetikleyecektir.

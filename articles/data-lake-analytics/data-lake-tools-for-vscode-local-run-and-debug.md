@@ -32,11 +32,11 @@ Yalnızca Visual Studio için Azure Data Lake Araçları Windows yüklemeleri U-
 
    ![Bağımlılık paketlerini bulma](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/LocateDependencyPath.png)
 
-   2,1 **Buildtools**'u yüklemek Için LocalRunDependency klasöründeki visualcppbuildtools_full. exe ' ye tıklayın ve ardından sihirbaz yönergelerini izleyin.   
+   2,1 **Buildtools**'u yüklemek Için LocalRunDependency klasöründe visualcppbuildtools_full. exe ' ye tıklayın ve ardından sihirbaz yönergelerini izleyin.   
 
     ![BuildTools 'ı yükler](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/InstallBuildTools.png)
 
-   2,2 **Win10SDK 10240**yüklemek Için, LocalRunDependency/win10sdk_ 10.0.10240 _2 klasöründeki sdksetup. exe ' ye tıklayın ve ardından sihirbaz yönergelerini izleyin.  
+   2,2 **Win10SDK 10240**yüklemek Için, LocalRunDependency/Win10SDK_10.0.10240 _2 klasöründe sdksetup. exe ' ye tıklayın ve ardından sihirbaz yönergelerini izleyin.  
 
     ![Win10SDK 10240 'yi yükler](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/InstallWin10SDK.png)
 
@@ -59,7 +59,8 @@ Yalnızca Visual Studio için Azure Data Lake Araçları Windows yüklemeleri U-
    ![Visual Studio Code Data Lake Araçlar yerel seçin](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-select-local.png)
 5. İşi gönderdikten sonra, gönderim ayrıntılarını görüntüleyebilirsiniz. Gönderim ayrıntılarını görüntülemek için **Çıkış** penceresinde **joburl** ' yi seçin. İş gönderme durumunu cmd konsolundan da görüntüleyebilirsiniz. Daha fazla iş ayrıntısı hakkında bilgi edinmek istiyorsanız cmd konsoluna **7** girin.
 
-   Visual Studio Code yerel çalıştırma çıkışı için ![Data Lake araçları @ no__t-1 @ no__t-2Data Lake araçları Visual Studio Code yerel çalıştırma cmd durumu @ no__t-3 
+   Visual Studio Code yerel çalıştırma çıkışı](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-local-run-result.png)
+   için ![Data Lake araçları ![yerel çalıştırma cmd Data Lake Visual Studio Code araçları](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-localrun-cmd-status.png) 
 
 
 ## <a name="start-a-local-debug-for-the-u-sql-job"></a>U-SQL işi için yerel bir hata ayıklama başlatma  
@@ -68,7 +69,7 @@ Yalnızca Visual Studio için Azure Data Lake Araçları Windows yüklemeleri U-
 1.  [U-SQL yerel çalıştırma ortamı ayarlanmamışsa](#set-up-the-u-sql-local-run-environment)yerel çalıştırma paketlerini Indirmek Için **adl: Yerel çalıştırma paketini indir** ' i kullanın.
 2. Yüklü değilse, ileti kutusuna önerildiği gibi .NET Core SDK 2,0 ' i yükleme.
  
-   @ no__t-1anımsatıcı DotNet @ no__t-2 değerini yüklüyor
+  ![anımsatıcısı DotNet](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/remind-install-dotnet.png) yüklüyor
 3. Yüklü C# değilse ileti kutusunda önerilen Visual Studio Code için yükleme yapın. Devam etmek için **yüklensin** ' e tıklayın ve ardından vscode 'u yeniden başlatın.
 
     ![Yüklenecek anımsatıcıC#](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/install-csharp.png)

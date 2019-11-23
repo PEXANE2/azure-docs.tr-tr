@@ -42,7 +42,7 @@ Bazı hizmetlerde, [Configpackage](./service-fabric-application-and-service-mani
 
 ### <a name="using-x509-securitycredentialstype"></a>X509 SecurityCredentialsType kullanma
 
-.NET veya Java SDK 'Ları Ile **Securitycredentialstype**için **x509** belirtebilirsiniz. Bu, `SecurityCredentials` ' ün `X509Credentials` ([.net](https://msdn.microsoft.com/library/system.fabric.x509credentials.aspx)/[Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials)) türüne karşılık gelir ([.net](https://msdn.microsoft.com/library/system.fabric.securitycredentials.aspx)/[Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)).
+.NET veya Java SDK 'Ları Ile **Securitycredentialstype**için **x509** belirtebilirsiniz. Bu, `SecurityCredentials` ([.net](https://msdn.microsoft.com/library/system.fabric.securitycredentials.aspx)/[Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)) `X509Credentials` ([.net](https://msdn.microsoft.com/library/system.fabric.x509credentials.aspx)/[Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials)) türüne karşılık gelir.
 
 **X509** başvurusu, sertifikayı bir sertifika deposunda konumlandırır. Aşağıdaki XML, sertifikanın konumunu belirtmek için kullanılan parametreleri gösterir:
 
@@ -52,7 +52,7 @@ Bazı hizmetlerde, [Configpackage](./service-fabric-application-and-service-mani
     <Parameter Name="CertificateStoreName" Value="My" />
 ```
 
-Linux üzerinde çalışan bir hizmet için, **LocalMachine**@no__t **-1,** sertifikalar için varsayılan konuma işaret ediyor, */var/lib/sfcerts* dizini. Linux için, **Certificatestorelocation** ve **CertificateStoreName** 'in diğer birleşimleri tanımsızdır. 
+Linux üzerinde çalışan bir hizmet için, **LocalMachine**/ **,** */var/lib/sfcerts* dizinini, sertifikalar için varsayılan konuma yönlendirir. Linux için, **Certificatestorelocation** ve **CertificateStoreName** 'in diğer birleşimleri tanımsızdır. 
 
 Her zaman **Certificatestorelocation** parametresi için **LocalMachine** belirtin. Varsayılan "My" olarak ayarlandığından **CertificateStoreName** parametresinin belirtilmesi gerekmez. **X509** başvurusuyla, sertifika dosyalarının küme düğümündeki */var/lib/sfcerts* dizininde bulunması gerekir.  
 
@@ -73,9 +73,9 @@ Aşağıdaki XML, bu stile dayalı bir **TransportSettings** bölümünü göste
 
 ### <a name="using-x509_2-securitycredentialstype"></a>X509_2 SecurityCredentialsType kullanma
 
-Java SDK 'Sı ile **Securitycredentialstype**için **X509_2** belirtebilirsiniz. Bu, `SecurityCredentials` ' nin ([Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)) `X509Credentials2` ([Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials2)) türüne karşılık gelir. 
+Java SDK 'Sı ile **Securitycredentialstype**için **X509_2** belirtebilirsiniz. Bu, `SecurityCredentials` ([Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)) `X509Credentials2` ([Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials2)) türüne karşılık gelir. 
 
-Bir **X509_2** başvurusuyla, sertifikayı */var/lib/sfcerts*dışında bir dizinde bulmak için bir yol parametresi belirtirsiniz.  Aşağıdaki XML, sertifikanın konumunu belirtmek için kullanılan parametreleri gösterir: 
+Bir **X509_2** başvurusuyla, sertifikayı */var/lib/sfcerts*dışında bir dizinde bulabilmeniz için bir yol parametresi belirtirsiniz.  Aşağıdaki XML, sertifikanın konumunu belirtmek için kullanılan parametreleri gösterir: 
 
 ```xml
      <Parameter Name="SecurityCredentialsType" Value="X509_2" />

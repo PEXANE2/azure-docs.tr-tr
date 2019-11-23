@@ -17,22 +17,22 @@ ms.locfileid: "71844731"
 
 [MariaDB yavaş sorgu günlükleri Için Azure veritabanı](concepts-server-logs.md) 'nı Azure Portal yapılandırabilir, listeleyebilir ve indirebilirsiniz.
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 Bu makaledeki adımlarda, [MariaDB sunucusu Için Azure veritabanı](quickstart-create-mariadb-server-database-using-azure-portal.md)'nın olması gerekir.
 
 ## <a name="configure-logging"></a>Günlüğe kaydetmeyi yapılandırma
 Yavaş sorgu günlüğüne erişimi yapılandırın. 
 
-1. [Azure Portal](https://portal.azure.com/)oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 2. MariaDB sunucusu için Azure veritabanınızı seçin.
 
 3. Kenar çubuğu 'ndaki **izleme** bölümünde **sunucu günlükleri**' ni seçin. 
-   ![ sunucu günlüğü seçeneklerinin @ ekran görüntüsü @ no__t-1
+   Sunucu günlüğü seçeneklerinin ekran görüntüsünü ![](./media/howto-configure-server-logs-portal/1-select-server-logs-configure.png)
 
 4. Sunucu parametrelerini görmek için, **günlükleri etkinleştirmek ve günlük parametrelerini yapılandırmak için buraya tıklayın ' ı**seçin.
 
-5. Ayarlamanız gereken parametreleri değiştirme de dahil olmak üzere **slow_query_log** özelliğini **on**olarak değiştirin. Bu oturumda yaptığınız tüm değişiklikler mor renkle vurgulanır. 
+5. Ayarlamanız gereken parametreleri, **slow_query_log** açma da dahil **olmak üzere değiştirin.** Bu oturumda yaptığınız tüm değişiklikler mor renkle vurgulanır. 
 
    Parametreleri değiştirdikten sonra **Kaydet**' i seçin. Ya da değişikliklerinizi atabilirsiniz.
 
@@ -43,7 +43,7 @@ Yavaş sorgu günlüğüne erişimi yapılandırın.
 ## <a name="view-list-and-download-logs"></a>Listeyi görüntüle ve günlükleri indir
 Günlüğe kaydetme başladıktan sonra, kullanılabilir yavaş sorgu günlüklerinin bir listesini görüntüleyebilir ve günlük dosyalarını tek tek indirebilirsiniz. 
 
-1. Azure portal açın.
+1. Azure portalı açın.
 
 2. MariaDB sunucusu için Azure veritabanınızı seçin.
 
@@ -60,7 +60,7 @@ Günlüğe kaydetme başladıktan sonra, kullanılabilir yavaş sorgu günlükle
 
    ![Aşağı ok simgesi vurgulanmış şekilde sunucu günlükleri sayfasının ekran görüntüsü](./media/howto-configure-server-logs-portal/5-download.png)
 
-## <a name="set-up-diagnostic-logs"></a>Tanılama günlüklerini ayarlama
+## <a name="set-up-diagnostic-logs"></a>Tanılama günlükleri ayarlama
 
 1. Kenar çubuğu 'ndaki **izleme** bölümünde **Tanılama ayarları** > **Tanılama ayarı Ekle**' yi seçin.
 
@@ -71,10 +71,10 @@ Günlüğe kaydetme başladıktan sonra, kullanılabilir yavaş sorgu günlükle
 1. Yavaş sorgu günlüklerinin (depolama hesabı, Olay Hub 'ı veya Log Analytics çalışma alanı) hangi veri havuzlarını gönderileceğini belirtin.
 
 1. Günlük türü olarak **Mysqlyavaşlogs** ' u seçin.
-![Tanılama ayarları yapılandırma seçeneklerinin @ no__t-1 ekran görüntüsü
+Tanılama ayarları yapılandırma seçeneklerinin ekran görüntüsünü ![](./media/howto-configure-server-logs-portal/configure-diagnostic-setting.png)
 
 1. Yavaş sorgu günlüklerini kanala yönelten veri havuzlarını yapılandırdıktan sonra **Kaydet**' i seçin.
-@no__t-{Diagnostic Settings yapılandırma seçeneklerinin, vurgulanmış olan @ no__t-1 ile
+Tanılama ayarları yapılandırma seçeneklerinin ekran görüntüsünü ![vurgulanmış şekilde kaydet](./media/howto-configure-server-logs-portal/save-diagnostic-setting.png)
 
 1. Bunları yapılandırdığınız veri havuzları içinde inceleyerek yavaş sorgu günlüklerine erişin. Günlüklerin görünmesi 10 dakikaya kadar sürebilir.
 

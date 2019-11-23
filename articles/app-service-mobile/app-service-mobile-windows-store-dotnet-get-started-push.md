@@ -28,7 +28,7 @@ ms.locfileid: "72388623"
 > [!NOTE]
 > Visual Studio App Center mobil uygulama dağıtımında merkezi konumdaki uçtan uca ve tümleşik hizmetleri destekler. Geliştiriciler Sürekli Tümleştirme ve Teslim işlem hattını ayarlamak için **Oluşturma**, **Test** ve **Dağıtım** hizmetlerini kullanabilir. Uygulama dağıtıldıktan sonra, geliştiriciler **Analiz** ve **Tanılama** hizmetlerini kullanarak uygulamanın durumunu ve kullanımını izleyebilir, **Gönderme** hizmetini kullanarak kullanıcılarla etkileşim kurabilir. Geliştiriciler ayrıca kullanıcıların kimliğini doğrulamak için **Kimlik Doğrulaması**'ndan ve uygulama verilerini bulutta kalıcı hale getirmek ve eşitlemek için **Veri** hizmetinden yararlanabilir.
 >
-> Mobil uygulamanızda bulut hizmetlerini tümleştirmek istiyorsanız bugün [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) kaydolun.
+> Bulut hizmetlerini mobil uygulamanızla tümleştirmek istiyorsanız [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc)'a hemen kaydolun.
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -66,7 +66,7 @@ Uygulamanızı Microsoft Store göndermeniz ve sonra sunucu projenizi, push gön
 
 ## <a id="update-service"></a>Sunucuyu anında iletme bildirimleri gönderecek şekilde Güncelleştir
 
-Aşağıdaki yordamı kullanarak, arka uç proje türü olan @ no__t-0, [.net arka ucu](#dotnet) veya [Node. js arka ucu](#nodejs)ile eşleşen prosedürü kullanın.
+[.Net arka ucu](#dotnet) veya [Node. js arka ucu](#nodejs)&mdash;arka uç proje türü ile eşleşen aşağıdaki yordamı kullanın.
 
 ### <a name="dotnet"></a>.NET arka uç projesi
 

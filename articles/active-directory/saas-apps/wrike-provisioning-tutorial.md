@@ -31,7 +31,7 @@ Bu öğreticinin amacı, Azure AD 'yi otomatik olarak sağlamak ve Kullanıcı v
 >
 > Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -68,7 +68,7 @@ Azure AD ile otomatik Kullanıcı sağlaması için Wrike 'yi yapılandırmadan 
 
     ![Taban URL 'SI](media/Wrike-provisioning-tutorial/Wrike-tenanturl.png)
 
-4. **Apı** > **Azure SCIM öğesini**seçin.
+4. **Azure SCIM** > **API 'yi** seçin.
 
     ![Azure SCıM](media/Wrike-provisioning-tutorial/Wrike-add-scim.png)
 
@@ -97,7 +97,7 @@ Azure AD Uygulama Galerisi 'nden Wrike eklemek için aşağıdaki adımları izl
 
 3. Yeni bir uygulama eklemek için bölmenin üst kısmındaki **Yeni uygulama** düğmesini seçin.
 
-    ![Yeni uygulama düğmesi](common/add-new-app.png)
+    ![Yeni Uygulama düğmesi](common/add-new-app.png)
 
 4. Arama kutusuna **Wrike**yazın, sonuçlar panelinde **Wrike** ' ı seçin ve ardından uygulamayı eklemek için **Ekle** ' yi seçin.
 
@@ -113,7 +113,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni Azure AD 'de Kullanıcı veya grup a
 
 ### <a name="configure-automatic-user-provisioning-for-wrike-in-azure-ad"></a>Azure AD 'de Wrike için otomatik Kullanıcı sağlamayı yapılandırma
 
-1. [Azure Portal](https://portal.azure.com)oturum açın. **Tüm uygulamalar**@no__t **Kurumsal uygulamalar**' ı seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. **Tüm uygulamalar** > **Kurumsal uygulamalar** ' ı seçin.
 
     ![Tüm uygulamalar](common/enterprise-applications.png)
 
@@ -137,7 +137,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni Azure AD 'de Kullanıcı veya grup a
 
     ![Bildirim e-postası](common/provisioning-notification-email.png)
 
-8. **Kaydet**' i seçin.
+8. **Kaydet**’i seçin.
 
 9. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Wrike olarak eşitler**' ı seçin.
 
@@ -168,7 +168,7 @@ Bu işlem, **Ayarlar** bölümünde **kapsamda** tanımlanan tüm kullanıcılar
 ## <a name="additional-resources"></a>Ek kaynaklar
 
 * [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

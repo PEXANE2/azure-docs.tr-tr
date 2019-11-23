@@ -114,12 +114,12 @@ Aşağıdaki tablolarda, şu anda PostgreSQL için Azure veritabanı tarafından
 > | [sayfalık\_görünürlüğü](https://www.postgresql.org/docs/current/pgvisibility.html) | Görünürlük haritasını (VM) ve sayfa düzeyi görünürlük bilgilerini inceleyin. |
 > | [pgrowlocks](https://www.postgresql.org/docs/9.6/static/pgrowlocks.html) | Satır düzeyinde kilitleme bilgilerini göstermek için bir yol sağlar. |
 > | [pgstattuple](https://www.postgresql.org/docs/9.6/static/pgstattuple.html) | Demet düzeyi istatistiklerini göstermek için bir yol sağlar. |
-> | [Postgres\_FDW](https://www.postgresql.org/docs/9.6/static/postgres-fdw.html) | Dış PostgreSQL sunucularında depolanan verilere erişmek için kullanılan yabancı veri sarmalayıcı. Bu uzantı hakkında bilgi için "dblink ve postgres_fdw" bölümüne bakın.|
+> | [Postgres\_FDW](https://www.postgresql.org/docs/9.6/static/postgres-fdw.html) | Dış PostgreSQL sunucularında depolanan verilere erişmek için kullanılan yabancı veri sarmalayıcı. Bu uzantı hakkında bilgi için bkz. "dblink and postgres_fdw" bölümü.|
 > | [sslinfo](https://www.postgresql.org/docs/current/sslinfo.html) | SSL sertifikaları hakkında bilgi. |
 > | [TSD\_sistem\_satırları](https://www.postgresql.org/docs/current/tsm-system-rows.html) | Bir sınır olarak satır sayısını kabul eden, bu yöntem. |
 > | [TSD\_sistem\_saati](https://www.postgresql.org/docs/current/tsm-system-time.html) | Bir sınır olarak milisaniye olarak zaman kabul eden, bu yöntem. |
 > | [hypopg](https://hypopg.readthedocs.io/en/latest/) | CPU veya disk maliyeti olmayan kuramsal dizinler oluşturmak için bir yol sağlar. |
-> | [dblink](https://www.postgresql.org/docs/current/dblink.html) | Bir veritabanı oturumunda diğer PostgreSQL veritabanlarına bağlantıları destekleyen bir modül. Bu uzantı hakkında bilgi için "dblink ve postgres_fdw" bölümüne bakın. |
+> | [dblink](https://www.postgresql.org/docs/current/dblink.html) | Bir veritabanı oturumunda diğer PostgreSQL veritabanlarına bağlantıları destekleyen bir modül. Bu uzantı hakkında bilgi için bkz. "dblink and postgres_fdw" bölümü. |
 > | [xml2](https://www.postgresql.org/docs/current/xml2.html) | XPath sorgulama ve XSLT. |
 
 
@@ -140,7 +140,7 @@ Aşağıdaki tablolarda, şu anda PostgreSQL için Azure veritabanı tarafından
 
 Ayar `pg_stat_statements.track`, uzantı tarafından hangi deyimlerin sayıldığını denetler. Varsayılan olarak, istemci tarafından doğrudan verilen tüm deyimlerin izlendiği anlamına gelen `top`. Diğer iki izleme düzeyi `none` ve `all`. Bu ayar, [Azure Portal](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-portal) veya [Azure CLI](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-cli)aracılığıyla bir sunucu parametresi olarak yapılandırılabilir.
 
-Sorgu yürütme bilgileri pg_stat_statements 'nin sağladığı ve her SQL bildirisini günlüğe kaydettiği için sunucu performansı üzerindeki etkilerden oluşan bir zorunluluğunu getirir vardır. Pg_stat_statements uzantısını etkin bir şekilde kullanmıyorsanız, `pg_stat_statements.track` `none`ayarlamanızı öneririz. Bazı üçüncü taraf izleme Hizmetleri, sorgu performansı öngörülerini sunabilmeniz için pg_stat_statements 'i kullanabilir, bu nedenle bunun sizin için mi olduğunu doğrulayın.
+Pg_stat_statements sorgu yürütme bilgileri ile her SQL bildirisini günlüğe kaydettiği için sunucu performansı üzerindeki etki arasında bir zorunluluğunu getirir vardır. Pg_stat_statements uzantısını etkin bir şekilde kullanmıyorsanız, `pg_stat_statements.track` `none`olarak ayarlamanızı öneririz. Bazı üçüncü taraf izleme Hizmetleri sorgu Performans öngörüleri sunmak için pg_stat_statements kullanabilir, bu nedenle bunun sizin için mi olduğunu doğrulayın.
 
 ## <a name="dblink-and-postgres_fdw"></a>dblink ve postgres_fdw
 Tek bir PostgreSQL sunucusundan diğerine veya aynı sunucuda başka bir veritabanına bağlanmak için dblink ve postgres_fdw kullanabilirsiniz. Alıcı sunucunun, gönderme sunucusundan güvenlik duvarı aracılığıyla bağlantılara izin verilmesi gerekir. Bu uzantıları, PostgreSQL için Azure veritabanı sunucuları arasında bağlanmak üzere kullanmak için **Azure hizmetlerine erişime Izin ver** ' i açık olarak ayarlayın. Aynı sunucuya geri dönmek için uzantıları kullanmak istiyorsanız, bu ayarı da açmanız gerekir. **Azure hizmetlerine erişime Izin ver** ayarı, **bağlantı güvenliği**altındaki postgres sunucusunun Azure Portal sayfasında bulunabilir. **Azure hizmetlerine erişime Izin ver** ' in etkinleştirilmesi, tüm Azure IP 'lerini beyaz listeler.

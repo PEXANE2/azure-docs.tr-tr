@@ -68,7 +68,7 @@ IoT Central bir cihaz şablonu oluşturmak için:
 1. IoT Central uygulamanızda **cihaz şablonları** sayfasına gidin.
 1. **+ Yeni**' yi seçin ve ardından **özel**' i seçin.
 1. Şablonunuz için **ortam algılayıcısı**gibi bir ad girin.
-1. **Enter**'a basın. IoT Central boş bir cihaz şablonu oluşturur.
+1. Tuşuna **girin**. IoT Central boş bir cihaz şablonu oluşturur.
 
 ## <a name="manage-a-device-template"></a>Bir cihaz şablonunu yönetme
 

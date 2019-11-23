@@ -45,7 +45,7 @@ Küme için ağ ayarları hakkında daha fazla bilgi edinmek için, küme yapıl
 
 * Active Directory ve Kullanıcı adı/grup adı İndirmeleri yapılandırma (gerekirse)
 
-  Ağınız Active Directory veya başka bir tür dış dizin hizmeti kullanıyorsa, kümenin Kullanıcı adı ve grup bilgilerini nasıl indirdiği ayarlamak için kümenin Dizin Hizmetleri yapılandırmasını değiştirmeniz gerekir. Ayrıntılar **Için küme yapılandırma kılavuzundaki @no__t-** 1**dizin hizmetlerini** okuyun.
+  Ağınız Active Directory veya başka bir tür dış dizin hizmeti kullanıyorsa, kümenin Kullanıcı adı ve grup bilgilerini nasıl indirdiği ayarlamak için kümenin Dizin Hizmetleri yapılandırmasını değiştirmeniz gerekir. Ayrıntılar için küme yapılandırma kılavuzundaki **küme** > **Dizin Hizmetleri** ' ni okuyun.
 
   SMB desteğini istiyorsanız bir AD sunucusu gereklidir. SMB 'yi ayarlamaya başlamadan önce AD 'yi yapılandırın.
 
@@ -76,7 +76,7 @@ FXT Edge Filer kümesi, bu işlevler için X. 509.440 sertifikalarını kullanı
 
 Sertifikaları kümeye yüklemeniz gerekiyorsa, **küme** > **sertifikaları** ayarları sayfasını kullanın. Ayrıntılar, küme yapılandırma kılavuzunun [küme > sertifikaları](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_certificates.html) sayfasında bulunur.
 
-Küme yönetimi iletişimini şifrelemek için, yönetim SSL için kullanılacak sertifikayı seçmek üzere **cluster** > **genel kurulum** ayarları sayfasını kullanın.
+Küme yönetimi iletişimini şifrelemek için, yönetim SSL için kullanılacak sertifikayı seçmek üzere **küme** > **genel kurulum** ayarları sayfasını kullanın.
 
 > [!Note] 
 > Bulut hizmeti erişim anahtarları, **bulut kimlik bilgileri** yapılandırma sayfası kullanılarak depolanır. Yukarıdaki [çekirdek dosyalayıcı ekleme](fxt-add-storage.md#add-a-core-filer) bölümü bir örnek gösterir; Ayrıntılar için küme yapılandırma kılavuzu [bulut kimlik bilgileri](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_credentials.html) bölümünü okuyun. 
@@ -105,13 +105,14 @@ En iyi performans için, DNS sunucunuzu aşağıdaki diyagramda gösterildiği g
 
 Sol tarafta bir küme vServer gösterilir ve IP adresleri ortadaki ve sağ tarafta görüntülenir. Her bir istemci erişim noktasını, gösterildiği gibi bir kayıt ve işaretçilerle yapılandırın.
 
-![Cluster hepsini bir kez deneme DNS diyagramı-ayrıntılı alt metin bağlantısı resmi şu şekilde izler @ no__t-1[ayrıntılı metin açıklaması](https://azure.github.io/Avere/legacy/Azure-FXT-EdgeFilerDNSconfiguration-alt-text.html)
+![kümesi hepsini bir kez deneme DNS diyagramı-ayrıntılı alt metin bağlantısı resmi izler](media/fxt-cluster-config/fxt-rrdns-diagram.png) 
+[ayrıntılı metin açıklaması](https://azure.github.io/Avere/legacy/Azure-FXT-EdgeFilerDNSconfiguration-alt-text.html)
 
 Her bir istemciye yönelik IP adresinin, küme tarafından iç kullanım için benzersiz bir adı olmalıdır. (Bu diyagramda istemci IP 'Leri, açıklık için VS1-Client-IP-* olarak adlandırılır, ancak üretimde, istemci * gibi daha kısa bir ad kullanmanız gerekir.)
 
 İstemciler, sanal sunucu adını sunucu bağımsız değişkeni olarak kullanarak kümeyi bağlayabilir. 
 
-DNS sunucunuzun ``named.conf`` dosyasını değiştirip sanal sunucunuza sorgular için döngüsel sıra ayarlayın. Bu seçenek, tüm kullanılabilir değerlerin üzerinden kaydırılmasını sağlar. Aşağıdakine benzer bir ifade ekleyin:
+Sanal sunucunuza sorgular için döngüsel sıra ayarlamak üzere DNS sunucunuzun ``named.conf`` dosyasını değiştirin. Bu seçenek, tüm kullanılabilir değerlerin üzerinden kaydırılmasını sağlar. Aşağıdakine benzer bir ifade ekleyin:
 
 ```
 options {
@@ -137,7 +138,7 @@ update add 12.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-12.example.com
 
 ### <a name="enable-dns-in-the-cluster"></a>Kümede DNS 'yi etkinleştirme 
 
-**Kümenin @no__t-** 1**Yönetim ağı** ayarları sayfasında kullandığı DNS sunucusunu belirtin. Bu sayfadaki ayarlar şunlardır:
+Kümenin kullandığı DNS sunucusunu **Yönetim ağ** ayarları sayfasında **belirtin > .** Bu sayfadaki ayarlar şunlardır:
 
 * DNS sunucusu adresi
 * DNS etki alanı adı

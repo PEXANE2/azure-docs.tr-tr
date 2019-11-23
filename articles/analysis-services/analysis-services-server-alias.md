@@ -43,7 +43,7 @@ Bu örnekte, Visual Studio 'da bir ASP.NET Web Forms uygulaması oluşturulur. A
 <%@ Page Title="Home Page" Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="FriendlyRedirect._Default" %>
 ```
 
-Default.aspx.cs ' deki Page_Load olayı, Azure Analysis Services sunucu adını döndürmek için Response. Write () yöntemini kullanır.
+Default.aspx.cs ' deki Page_Load olayı Azure Analysis Services sunucu adını döndürmek için Response. Write () yöntemini kullanır.
 
 ```
 protected void Page_Load(object sender, EventArgs e)

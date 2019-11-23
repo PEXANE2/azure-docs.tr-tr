@@ -84,7 +84,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://<SUBDOMAIN>.freshworks.com/login`
 
-    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusuna şu kalıbı kullanarak bir URL yazın: `https://<SUBDOMAIN>.freshworks.com/sp/SAML/<MODULE_ID>/metadata`
+    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://<SUBDOMAIN>.freshworks.com/sp/SAML/<MODULE_ID>/metadata`
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için, en güncel [istemci desteği ekibine](mailto:support@freshworks.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
@@ -93,7 +93,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-1.  **İmzalama** seçeneklerini gereksiniminize göre değiştirmek için,  Düğmesini **Düzenle**' ye tıklayarak **SAML imzalama sertifikası** İletişim kutusunu açın.
+1.  **İmzalama** seçeneklerini gereksiniminize göre değiştirmek için,  **Düzenle** ' ye tıklayarak **SAML imzalama sertifikası** iletişim kutusunu açın.
 
      ![image](common/edit-certificate.png)
 
@@ -101,25 +101,25 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     a. **SAML yanıtını** **Imzalama seçeneği**olarak imzala seçeneğini belirleyin.
 
-    b. **Kaydet** düğmesine tıklayın.
+    b. **Kaydet**’e tıklayın.
 
 1. **En güncel çalışmaları ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
 
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
 1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. Seçin **yeni kullanıcı** ekranın üstünde.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına username@companydomain.extension girin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
 Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak En Iyi şekilde çalışmasına erişim vererek B. Simon 'u etkinleştireceksiniz.
 
@@ -127,7 +127,7 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak En Iyi şekilde 
 1. Uygulamalar listesinde, **yeniden Seç ' i seçin**.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
-   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
+   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
 
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
@@ -157,15 +157,15 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak En Iyi şekilde 
 
     d. Base64 Ile kodlanmış sertifikayı not defteri 'nde açın, içeriğini kopyalayın ve **güvenlik sertifikası** metin kutusuna yapıştırın.
 
-    e. **Kaydet** düğmesine tıklayın.
+    e. **Kaydet**’e tıklayın.
 
 ### <a name="create-freshworks-test-user"></a>Yalnızca bir test kullanıcısı oluştur
 
-Bu bölümde, En Iyi şekilde çalışması için B. Simon adlı bir Kullanıcı oluşturacaksınız. En güncel kullanıcıları [istemci destek ekibi](mailto:support@freshworks.com) ile çalışarak, kullanıcıları en iyi çalışma platformunda ekleyin. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir. 
+Bu bölümde, En Iyi şekilde çalışması için B. Simon adlı bir Kullanıcı oluşturacaksınız. En güncel kullanıcıları [istemci destek ekibi](mailto:support@freshworks.com) ile çalışarak, kullanıcıları en iyi çalışma platformunda ekleyin. Kullanıcı oluşturulmalı ve çoklu oturum açma kullanmadan önce etkinleştirildi. 
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
 
 Erişim panelinde otomatik olarak çalışma kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız otomatik olarak çalışır durumda oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 

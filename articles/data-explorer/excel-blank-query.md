@@ -39,7 +39,7 @@ Azure Veri Gezgini, Excel 'deki verilere bağlanmak için iki seçenek sunar: ye
 
 1. **Microsoft Excel**'i açın.
 
-1. **Veri** sekmesinde,**diğer kaynaklardaki** >  > verileri Al**boş sorgu**' yı seçin.
+1. **Veri** sekmesinde, **boş sorgu** > **diğer kaynaklardan** **veri > al** ' ı seçin.
 
     ![Veri al ve boş sorgu Seç](media/excel-blank-query/get-data-blank-query.png)
 

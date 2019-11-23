@@ -31,7 +31,7 @@ ms.locfileid: "72024613"
 
 Bu öğretici, Azure Sentinel ile olayları araştırmanıza yardımcı olur. Veri kaynaklarınızı Azure Sentinel 'e bağladıktan sonra, şüpheli bir sorun olduğunda bildirim almak istersiniz. Bunu yapmanızı sağlamak için Azure Sentinel, atayabileceğiniz ve araştırmanız gereken olayları üreten gelişmiş uyarı kuralları oluşturmanıza olanak sağlar.
 
-Bu makalede şunları ele alınmaktadır:
+Bu makalede ele alınmıştır:
 > [!div class="checklist"]
 > * Olayları araştırma
 > * Araştırma grafiğini kullanma
@@ -97,7 +97,7 @@ Araştırma grafiğini kullanmak için:
 
     ![İlgili Uyarıları görüntüle](media/tutorial-investigate-cases/related-alerts.png)
 
-1. Her araştırma sorgusu için, **@ no__t-1 olaylarını**seçerek Ham olay sonuçlarını ve Log Analytics ' de kullanılan sorguyu açma seçeneğini belirleyebilirsiniz.
+1. Her araştırma sorgusu için, **olayları\>** seçerek Log Analytics Ham olay sonuçları ve sorgu açma seçeneğini belirleyebilirsiniz.
 
 1. Olayı anlamak için, grafik size paralel bir zaman çizelgesi sunar.
 

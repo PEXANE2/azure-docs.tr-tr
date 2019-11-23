@@ -18,42 +18,42 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2019
 ms.locfileid: "72177084"
 ---
-# <a name="use-connected-services-in-visual-studio-to-connect-to-the-computer-vision-api"></a>Görüntü İşleme API'si bağlanmak için Visual Studio 'da bağlı hizmetleri kullanın
+# <a name="use-connected-services-in-visual-studio-to-connect-to-the-computer-vision-api"></a>Visual Studio'daki Bağlı Hizmetler özelliğini kullanarak Görüntü İşleme API'sine bağlanma
 
-Bu makale ve yardımcı makaleler, bilişsel hizmetler Görüntü İşleme API'si için Visual Studio bağlı hizmet özelliğini kullanma hakkında ayrıntılı bilgi sağlar. Özelliği, bilişsel hizmetler uzantısı yüklü olan Visual Studio 2017 15,7 veya üzeri sürümlerde kullanılabilir.
+Bu makalede ve beraberindeki destek makalelerinde, Bilişsel Hizmetler Görüntü İşleme API'si için Visual Studio Bağlı Hizmet özelliğinin kullanımına ilişkin ayrıntılar sağlanmaktadır. Özellik, Bilişsel Hizmetler uzantısının yüklendiği Visual Studio 2017 15.7 ve sonraki sürümlerde mevcuttur.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Bir Azure aboneliği. Bir [hesabınız yoksa ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/)için kaydolabilirsiniz.
-- **Web geliştirme** iş yükü yüklüyken Visual Studio 2017 sürüm 15,7 veya üzeri. [Şimdi indirin](https://visualstudio.microsoft.com/downloads/).
+- Azure aboneliği. Bir aboneliğiniz yoksa [ücretsiz hesap](https://azure.microsoft.com/pricing/free-trial/) için kaydolabilirsiniz.
+- **Web geliştirme** iş yükü yüklüyken Visual Studio 2017 sürüm 15,7 veya üzeri. [Şimdi indir](https://visualstudio.microsoft.com/downloads/).
 
 [!INCLUDE [vs-install-cognitive-services-vsix](../../../includes/vs-install-cognitive-services-vsix.md)]
 
-## <a name="add-support-to-your-project-for-cognitive-services-computer-vision-api"></a>Bilişsel hizmetler için projenize destek ekleyin Görüntü İşleme API'si
+## <a name="add-support-to-your-project-for-cognitive-services-computer-vision-api"></a>Projenize Bilişsel Hizmetler Görüntü İşleme API'si desteği ekleme
 
-1. Yeni bir ASP.NET Core Web projesi oluşturun. Boş proje şablonunu kullanın. 
+1. Yeni bir ASP.NET Core web projesi oluşturun. Boş proje şablonunu kullanın. 
 
-1. **Çözüm Gezgini**, @no__t 2 ' ye**bağlı hizmet** **Ekle**' yi seçin.
-   Bağlı hizmet sayfası, projenize ekleyebileceğiniz hizmetlerle birlikte görüntülenir.
+1. **Çözüm Gezgini**’nde **Ekle** > **Bağlı Hizmet** seçeneklerini belirleyin.
+   Projenize ekleyebileceğiniz hizmetlerle birlikte Bağlı Hizmet sayfası görüntülenir.
 
    ![Visual Studio projesinde menü sağ tıklama: > bağlı hizmet ekle](../media/vs-common/Connected-Service-Menu.PNG)
 
-1. Kullanılabilir hizmetler menüsünde bilişsel **hizmetler görüntü işleme API'si**' yi seçin.
+1. Kullanılabilir hizmetler menüsünde **Bilişsel Hizmetler Görüntü İşleme API'sini** seçin.
 
    ![Bağlı hizmetler menüsü: görüntüleri çözümle... Seviyelendirilmiş](./media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-0.PNG)
 
-   Visual Studio 'da oturum açtıysanız ve hesabınızla ilişkili bir Azure aboneliğiniz varsa, aboneliklerinizle bir açılan liste içeren bir sayfa görüntülenir.
+   Visual Studio’da oturum açtıysanız ve hesabınızla ilişkili bir Azure aboneliğiniz varsa, aboneliklerinizi içeren bir açılır listenin yer aldığı bir sayfa görüntülenir.
 
    ![Abonelik açılan menüsü vurgulanmış Görüntü İşleme API'si pencere](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-1.PNG)
 
-1. Kullanmak istediğiniz aboneliği seçin ve ardından Görüntü İşleme API'si için bir ad seçin veya otomatik olarak oluşturulan adı değiştirmek için Düzenle bağlantısını seçin, kaynak grubunu ve fiyatlandırma katmanını seçin.
+1. Kullanmak istediğiniz aboneliği seçin ve sonra Görüntü İşleme API'si için bir ad seçin veya otomatik olarak oluşturulan adı değiştirmek için Düzenle bağlantısını seçin, kaynak grubunu ve Fiyatlandırma Katmanını seçin.
 
-   ![Bağlı hizmet ayrıntılarını Düzenle](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-2.PNG)
+   ![Bağlı hizmet ayrıntılarını düzenleme](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-2.PNG)
 
-   Fiyatlandırma katmanlarında Ayrıntılar için bağlantıyı izleyin.
+   Fiyatlandırma katmanları ile ilgili ayrıntılar için bağlantıyı izleyin.
 
-1. Bağlı hizmet için desteklenen eklemek için Ekle ' yi seçin.
-   Visual Studio, NuGet paketlerini, yapılandırma dosyası girişlerini ve Görüntü İşleme API'si bir bağlantıyı destekleyecek diğer değişiklikleri eklemek için projenizi değiştirir. Çıkış Penceresi, projenizde neler olduğunu gösteren günlüğü gösterir. Aşağıdakine benzer bir şey görmeniz gerekir:
+1. Ekle’yi seçerek, Bağlı Hizmet için destek ekleyin.
+   Visual Studio; Görüntü İşleme API'si bağlantısını desteklemek üzere NuGet paketlerini, yapılandırma dosyası girdilerini ve diğer değişiklikleri eklemek için projenizi değiştirir. Çıkış Penceresi’nde projenizde olup bitenlerin günlüğü gösterilir. Aşağıdakine benzer bir şey görmeniz gerekir:
 
    ```output
    [4/26/2018 5:15:31.664 PM] Adding Computer Vision API to the project.
@@ -67,9 +67,9 @@ Bu makale ve yardımcı makaleler, bilişsel hizmetler Görüntü İşleme API's
    [4/26/2018 5:15:46.747 PM] Successfully added Computer Vision API to the project.
    ```
  
-## <a name="use-the-computer-vision-api-to-detect-attributes-of-an-image"></a>Bir görüntünün özniteliklerini algılamak için Görüntü İşleme API'si kullanma
+## <a name="use-the-computer-vision-api-to-detect-attributes-of-an-image"></a>Bir görüntüdeki öznitelikleri algılamak için Görüntü İşleme API'sini kullanma
 
-1. Startup.cs ' ye aşağıdaki using deyimlerini ekleyin.
+1. Startup.cs’de deyimleri kullanarak aşağıdakileri ekleyin:
  
    ```csharp
    using System.IO;
@@ -79,7 +79,7 @@ Bu makale ve yardımcı makaleler, bilişsel hizmetler Görüntü İşleme API's
    using System.Net.Http.Headers;
    ```
  
-1. Bir yapılandırma alanı ekleyin ve programınızda yapılandırmayı etkinleştirmek için `Startup` sınıfındaki yapılandırma alanını Başlatan bir Oluşturucu ekleyin.
+1. Bir yapılandırma alanı ekleyin ve `Startup` sınıfında yapılandırma alanını başlatan bir oluşturucu ekleyerek programınızda yapılandırmayı etkinleştirin.
 
    ```csharp
       private IConfiguration configuration;
@@ -90,15 +90,15 @@ Bu makale ve yardımcı makaleler, bilişsel hizmetler Görüntü İşleme API's
       }
    ```
 
-1. Projenizdeki Wwwroot klasöründe bir görüntüler klasörü ekleyin ve Wwwroot klasörünüze bir görüntü dosyası ekleyin. Örnek olarak, bu [görüntü işleme API'si sayfasındaki](https://azure.microsoft.com/services/cognitive-services/computer-vision/)görüntülerden birini kullanabilirsiniz. Görüntülerden birine sağ tıklayın, yerel sabit sürücünüze kaydedin, ardından Çözüm Gezgini, görüntüler klasörüne sağ tıklayın ve sonra da @no__t**var olan öğe** **Ekle**' yi seçerek projenize ekleyin. Projeniz Çözüm Gezgini şöyle görünmelidir: 
+1. Projenizdeki wwwroot klasörüne bir görüntüler klasörü ekleyin ve wwwroot klasörünüz için bir görüntü dosyası ekleyin. Örneğin, bu [Görüntü İşleme API'si sayfasındaki](https://azure.microsoft.com/services/cognitive-services/computer-vision/) görüntülerden birini kullanabilirsiniz. Görüntülerden birine sağ tıklayın, yerel sabit sürücünüze kaydedin, ardından Çözüm Gezgini, görüntüler klasörüne sağ tıklayın ve > **var olan öğe** **Ekle** ' yi seçerek projenize ekleyin. Projeniz Çözüm Gezgini’nde aşağıdakine benzer şekilde görünmelidir: 
   
    ![Bir resim dosyası seçiliyken Çözüm Gezgini görünümünün ekran görüntüsü](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-3.PNG) 
 
-1. Görüntü dosyasına sağ tıklayın, Özellikler ' i seçin ve **daha sonra Kopyala**' yı seçin. 
+1. Görüntü dosyasına sağ tıklayın, Özellikler’i seçin ve ardından **Yeniyse kopyala** seçeneğini belirleyin. 
 
    ![görüntü özellikleri penceresi; Daha yeniyse, çıkış dizinine Kopyala ayarla](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-5.PNG) 
  
-1. Görüntü İşleme API'si erişmek ve bir görüntüyü sınamak için Configure metodunu aşağıdaki kodla değiştirin.
+1. Görüntü İşleme API'sine erişmek ve bir görüntüyü test etmek için aşağıdaki kod ile Yapılandırma yöntemini değiştirin.
 
    ```csharp
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -162,9 +162,9 @@ Bu makale ve yardımcı makaleler, bilişsel hizmetler Görüntü İşleme API's
     }
    ```
 
-    Buradaki kod, Görüntü İşleme REST API çağrısı için ikili içerik olarak URI ve görüntüyle bir HTTP isteği oluşturur.
+    Buradaki kod Görüntü İşleme API'sine bir çağrı göndermek için URI'ye ve ikili içerik olarak görüntüye sahip olan bir HTTP isteği oluşturur.
 
-1. Getımageasbytearray ve JsonPrettyPrint yardımcı işlevlerini ekleyin.
+1. GetImageAsByteArray ve JsonPrettyPrint yardımcı işlevlerini ekleyin.
 
    ```csharp
     /// <summary>
@@ -246,17 +246,17 @@ Bu makale ve yardımcı makaleler, bilişsel hizmetler Görüntü İşleme API's
     }
    ```
 
-1. Web uygulamasını çalıştırın ve görüntinizdeki Görüntü İşleme API'si bulunan öğeleri görüntüleyin.
+1. Web uygulamasını çalıştırın ve Görüntü İşleme API'sinin görüntünüzde ne bulduğunu görün.
 
-   ![Görüntü İşleme API'si resim ve biçimlendirilen sonuçlar](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-4.PNG)  
+   ![Görüntü İşleme API'si görüntü ve biçimlendirilmiş sonuçlar](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-4.PNG)  
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli olmadığında kaynak grubunu silin. Bu, bilişsel hizmeti ve ilgili kaynakları siler. Portal üzerinden kaynak grubunu silmek için:
+Artık gerekli değilse kaynak grubunu silin. Böylece bilişsel hizmet ve ilgili kaynaklar silinir. Kaynak grubunu portal aracılığıyla silmek için:
 
-1. Portalın üst kısmındaki arama kutusuna kaynak grubunuzun adını girin. Bu hızlı başlangıçta arama sonuçlarında kullanılan kaynak grubunu gördüğünüzde, seçin.
-2. **Kaynak grubunu sil**' i seçin.
-3. **Kaynak grubu adını yazın:** kutusuna kaynak grubunun adını yazın ve **Sil**' i seçin.
+1. Portalın üst kısmındaki Arama kutusuna kaynak grubunuzun adını girin. Bu hızlı başlangıçta kullanılan kaynak grubunu arama sonuçlarında gördüğünüzde seçin.
+2. **Kaynak grubunu sil**'i seçin.
+3. **KAYNAK GRUBU ADINI YAZIN:** kutusuna kaynak grubunun adını yazın ve **Sil**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -98,7 +98,7 @@ Yalnızca **Deployifnotexists** ilke tanımı girişim parametrelerini kullanır
 
 Kuralın **dağıtım** kısmı _ınstaltadadpplication_ parametresini sanal makinedeki konuk yapılandırma aracısına geçirir. Bu yapılandırma, aracının **Denetim** ilkesi tanımıyla doğrulamaları ve rapor uyumluluğunu geri gerçekleştirmesini sağlar.
 
-## <a name="azure-portal"></a>Azure portalında
+## <a name="azure-portal"></a>Azure portal
 
 Portalda **audit** ve **Deployifnotexists** tanımları oluşturulduktan sonra, atamaları atama için bir [girişimde](../concepts/definition-structure.md#initiatives) gruplamak önerilir.
 

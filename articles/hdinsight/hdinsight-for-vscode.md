@@ -36,7 +36,7 @@ Bu makaledeki adımları tamamlamak için aşağıdaki öğeler gereklidir:
 
 1. Visual Studio Code'u açın.
 
-2. Menü çubuğundan  > **uzantılarını** **görüntüle**' ye gidin.
+2. Menü çubuğunda > **uzantıları** **görüntüle** ' ye gidin.
 
 3. Arama kutusuna **Spark & Hive**girin.
 
@@ -50,19 +50,19 @@ Bu makaledeki adımları tamamlamak için aşağıdaki öğeler gereklidir:
 
 Bir iş klasörü açmak ve Visual Studio Code bir dosya oluşturmak için aşağıdaki adımları izleyin:
 
-1. Menü çubuğundan **dosya** >  klasörü aç ' a gidin **...**  > **C:\hd\hdex,** ve ardından **Klasör Seç** düğmesini seçin. Klasör sol taraftaki **Gezgin** görünümünde görüntülenir.
+1. Menü çubuğundan **dosya** > **klasöre gidin...**  > **c:\hd\hdexor**klasörünü seçin ve ardından **Klasör Seç** düğmesini seçin. Klasör sol taraftaki **Gezgin** görünümünde görüntülenir.
 
 2. **Gezgin** görünümü ' nde, **hdexas** klasörünü seçin ve sonra Iş klasörünün yanındaki **yeni dosya** simgesini seçin:
 
    ![Visual Studio Code yeni dosya simgesi](./media/hdinsight-for-vscode/visual-studio-code-new-file.png)
 
-3. @No__t-0 (Hive sorguları) veya `.py` (Spark betiği) dosya uzantısını kullanarak yeni dosyayı adlandırın. Bu örnek **HelloWorld. HQL**kullanır.
+3. `.hql` (Hive sorguları) ya da `.py` (Spark betiği) dosya uzantısını kullanarak yeni dosyayı adlandırın. Bu örnek **HelloWorld. HQL**kullanır.
 
 ## <a name="set-the-azure-environment"></a>Azure ortamını ayarlama
 
 Ulusal bir bulut kullanıcısı için, önce Azure ortamını ayarlamak için aşağıdaki adımları izleyin ve ardından Azure **: oturum aç** komutunu kullanarak Azure 'da oturum açın:
 
-1. **Dosya** > **tercihleri** > **ayarları**' na gidin.
+1. **Dosya** > **tercihleri** > **Ayarlar**' a gidin.
 2. Şu dizeyi arayın: **Azure: Cloud**.
 3. Listeden Ulusal bulutu seçin:
 
@@ -72,7 +72,7 @@ Ulusal bir bulut kullanıcısı için, önce Azure ortamını ayarlamak için a�
 
 Visual Studio Code kümenize komut dosyaları gönderebilmeniz için önce Azure hesabınıza bağlanmanız veya bir kümeyi bağlamanız gerekir (Apache ambarı Kullanıcı adı ve parola kimlik bilgilerini veya etki alanına katılmış bir hesabı kullanarak). Azure 'a bağlanmak için şu adımları izleyin:
 
-1. Menü çubuğundan **görüntüle** > **komut paleti...** ' a gidin ve **Azure: oturum aç**: ' ı girin.
+1. Menü çubuğundan **görüntüle** > **komut paleti...** ' a gidin ve **Azure: oturum aç**' ı girin:
 
     ![Visual Studio Code oturum açma için Spark & Hive araçları](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-login.png)
 
@@ -84,7 +84,7 @@ Visual Studio Code kümenize komut dosyaları gönderebilmeniz için önce Azure
 
 [Apache ambarı](https://ambari.apache.org/)ile yönetilen bir Kullanıcı adı kullanarak normal kümeyi bağlayabilir veya bir etki alanı Kullanıcı adı (örneğin: `user1@contoso.com`) kullanarak bir kurumsal güvenlik paketi güvenli Hadoop kümesini bağlayabilirsiniz.
 
-1. Menü çubuğundan  >  komut paleti ' ni **görüntüle** **...** ' a gidin ve **Spark/Hive: bir kümeyi bağla**' yı girin.
+1. Menü çubuğundan **görüntüle** > **komut paleti...** ' a gidin ve **Spark/Hive: bir kümeyi bağla**' yı girin.
 
    ![Komut paleti bağlantı kümesi komutu](./media/hdinsight-for-vscode/link-cluster-command.png)
 
@@ -107,11 +107,11 @@ Visual Studio Code kümenize komut dosyaları gönderebilmeniz için önce Azure
 
 ### <a name="link-generic-livy-endpoint"></a>Bağlantı: genel Livy uç noktası
 
-1. Menü çubuğundan  >  komut paleti ' ni **görüntüle** **...** ' a gidin ve **Spark/Hive: bir kümeyi bağla**' yı girin.
+1. Menü çubuğundan **görüntüle** > **komut paleti...** ' a gidin ve **Spark/Hive: bir kümeyi bağla**' yı girin.
 
 2. Bağlı küme türü **genel Livy uç noktası**seçin.
 
-3. Genel Livy uç noktasını girin. Örneğin: http @ no__t-0//10.172.41.42:18080.
+3. Genel Livy uç noktasını girin. Örneğin: http\://10.172.41.42:18080.
 
 4. Yetkilendirme türü **temel** veya **yok**' u seçin.  **Temel**' i seçerseniz:  
     &emsp;a. Ambarı Kullanıcı adınızı girin; **yönetici**varsayılandır.  
@@ -121,7 +121,7 @@ Visual Studio Code kümenize komut dosyaları gönderebilmeniz için önce Azure
 
 ## <a name="list-clusters"></a>Kümeleri Listele
 
-1. Menü çubuğundan  >  komut paleti ' ni **görüntüle** **...** ' a gidin ve **Spark/Hive: List kümesini**girin.
+1. Menü çubuğundan **görüntüle** > **komut paleti...** ' a gidin ve **Spark/Hive: List kümesini**girin.
 
 2. İstediğiniz aboneliği seçin.
 
@@ -265,7 +265,7 @@ Bir Python işi gönderdikten sonra, gönderim günlükleri Visual Studio Code *
 <a id="triggerlivyconf"></a>**Livy yapılandırması tetiklenmesi**
 
 Yöntem 1  
-1. Menü çubuğundan **dosya** > **tercihleri** > **ayarları**' na gidin.
+1. Menü çubuğundan **dosya** > **tercihleri** > **Ayarlar**' a gidin.
 2. **Arama ayarları** kutusuna **HDInsight Iş gönderimi: Livy conf**yazın.  
 3. İlgili arama sonucu için **Settings. JSON Içinde Düzenle '** yi seçin.
 
@@ -284,19 +284,19 @@ Yöntem 2 bir dosya gönderir ve. vscode klasörünün otomatik olarak iş klas�
 
     | ad | açıklama | type |
     | :- | :- | :- |
-    | Dosyasýný | Yürütülecek uygulamayı içeren dosya | Yol (gerekli) |
+    | file | Yürütülecek uygulamayı içeren dosya | Yol (gerekli) |
     | proxyUser | İşi çalıştırırken taklit edilecek Kullanıcı | Dize |
-    | Sınıf | Uygulama Java/Spark ana sınıfı | Dize |
+    | className | Uygulama Java/Spark ana sınıfı | Dize |
     | args | Uygulama için komut satırı bağımsız değişkenleri | Dizelerin listesi |
-    | jar dosyaları dışındaki | Bu oturumda kullanılacak jars | Dizelerin listesi | 
+    | jars | Bu oturumda kullanılacak jars | Dizelerin listesi | 
     | pyFiles | Bu oturumda kullanılacak Python dosyaları | Dizelerin listesi |
-    | dosyalarý | Bu oturumda kullanılacak dosyalar | Dizelerin listesi |
+    | files | Bu oturumda kullanılacak dosyalar | Dizelerin listesi |
     | driverMemory | Sürücü işlemi için kullanılacak bellek miktarı | Dize |
-    | Driverçekirdekler | Sürücü işlemi için kullanılacak çekirdek sayısı | 'Tir |
-    | Yürütişbelleği | Yürütücü işlemi başına kullanılacak bellek miktarı | Dize |
-    | Executorçekirdekler | Her yürütücü için kullanılacak çekirdek sayısı | 'Tir |
-    | numExecutors | Bu oturum için başlatılacak yürüticilerinin sayısı | 'Tir |
-    | Arşivi | Bu oturumda kullanılacak Arşivler | Dizelerin listesi |
+    | driverCores | Sürücü işlemi için kullanılacak çekirdek sayısı | Int |
+    | executorMemory | Yürütücü işlemi başına kullanılacak bellek miktarı | Dize |
+    | executorCores | Her yürütücü için kullanılacak çekirdek sayısı | Int |
+    | numExecutors | Bu oturum için başlatılacak yürüticilerinin sayısı | Int |
+    | archives | Bu oturumda kullanılacak Arşivler | Dizelerin listesi |
     | kuyruk | Gönderilecek YARN kuyruğunun adı| Dize |
     | ad | Bu oturumun adı | Dize |
     | conf | Spark yapılandırma özellikleri | Anahtar = Val eşlemesi |
@@ -305,11 +305,11 @@ Yöntem 2 bir dosya gönderir ve. vscode klasörünün otomatik olarak iş klas�
 
     | ad | açıklama | type |
     | :- | :- | :- |
-    | id | Oturum kimliği | 'Tir |
+    | id | Oturum kimliği | Int |
     | appId | Bu oturumun uygulama kimliği | Dize |
     | appInfo | Ayrıntılı uygulama bilgileri | Anahtar = Val eşlemesi |
-    | açmasını | Günlük satırları | Dizelerin listesi |
-    | durum |Toplu iş durumu | Dize |
+    | log | Günlük satırları | Dizelerin listesi |
+    | state |Toplu iş durumu | Dize |
 
     > [!NOTE]
     > Atanan Livy yapılandırması, betiği gönderdiğinizde çıkış bölmesinde görüntülenir.
@@ -407,7 +407,7 @@ Data Lake Storage 2. kullanarak bir HDInsight kümesine iş gönderdiğinizde, A
 
 ## <a name="unlink-cluster"></a>Kümenin bağlantısını kaldır
 
-1. Menü çubuğundan  > **komut paletini** **görüntüle**' ye gidin ve **Spark/Hive: bir kümenin bağlantısını kaldır**' ı girin.  
+1. Menü çubuğundan **görüntüle** > **komut paleti**' ne gidin ve **Spark/Hive: bir kümenin bağlantısını kaldır**' ı girin.  
 
 2. Bağlantısını kaldırmak için bir küme seçin.  
 
@@ -415,7 +415,7 @@ Data Lake Storage 2. kullanarak bir HDInsight kümesine iş gönderdiğinizde, A
 
 ## <a name="sign-out"></a>Oturumu kapat  
 
-Menü çubuğundan  > **komut paletini** **görüntüle**' ye gidin ve **Azure: oturumu Kapat**' ı girin.
+Menü çubuğundan **görüntüle** > **komut paleti**' ne gidin ve **Azure: oturumu Kapat**' ı girin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

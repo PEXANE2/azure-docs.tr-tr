@@ -24,7 +24,7 @@ ms.locfileid: "72298757"
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
 ## <a name="overview"></a>Genel Bakış
-Bu makalede, Visual Studio **bağlı hizmetler Ekle** iletişim kutusunu kullanarak bir Azure depolama hesabı oluşturduktan veya başvurduktan sonra bir Visual Studio Azure WebJob projesinde Azure kuyruk depolama hizmetini kullanmaya başlama işlemi açıklanır. Visual Studio **bağlı hizmetler Ekle** iletişim kutusunu kullanarak bir Web işi projesine bir depolama hesabı eklediğinizde, uygun Azure depolama NuGet paketleri yüklenir, projeye uygun .NET başvuruları eklenir ve için bağlantı dizeleri depolama hesabı App. config dosyasında güncelleştirilir.  
+Bu makalede, Visual Studio **bağlı hizmetler Ekle** iletişim kutusunu kullanarak bir Azure depolama hesabı oluşturduktan veya başvurduktan sonra bir Visual Studio Azure WebJob projesinde Azure kuyruk depolama hizmetini kullanmaya başlama işlemi açıklanır. Visual Studio **bağlı hizmetler Ekle** iletişim kutusunu kullanarak bir Web işi projesine bir depolama hesabı eklediğinizde, uygun Azure depolama NuGet paketleri yüklenir, projeye uygun .NET başvuruları eklenir ve depolama hesabının bağlantı dizeleri App. config dosyasında güncelleştirilir.  
 
 Bu makalede, C# Azure kuyruk depolama hizmeti Ile Azure WEBJOBS SDK sürüm 1. x ' in nasıl kullanılacağını gösteren kod örnekleri sağlanmaktadır.
 
@@ -89,7 +89,7 @@ public async static Task ProcessQueueMessageAsyncCancellationToken(
 ## <a name="types-the-queuetrigger-attribute-works-with"></a>QueueTrigger özniteliği ile birlikte çalışarak türler
 Aşağıdaki türlerle **Queuetrigger** kullanabilirsiniz:
 
-* **dizisinde**
+* **dize**
 * JSON olarak seri hale getirilmiş bir POCO türü
 * **Byte []**
 * **CloudQueueMessage**
@@ -191,7 +191,7 @@ Daha fazla bilgi için bkz. [WebJobs düzgün kapanma](http://blog.amitapple.com
 Yeni bir kuyruk iletisi oluşturan bir işlev yazmak için **Queue** özniteliğini kullanın. **Queuetrigger**gibi, kuyruk adını bir dize olarak geçitirsiniz veya [kuyruk adını dinamik olarak ayarlayabilirsiniz](#how-to-set-configuration-options).
 
 ### <a name="string-queue-messages"></a>Dize sırası iletileri
-Aşağıdaki zaman uyumsuz olmayan kod örneği, "InputQueue" adlı kuyrukta alınan sıra iletisiyle aynı içeriğe sahip "outputqueue" adlı sırada yeni bir kuyruk iletisi oluşturur. (Zaman uyumsuz işlevler için bu bölümün ilerleyen kısımlarında gösterildiği gibi **ıasynccollector @ no__t-1T >** kullanın.)
+Aşağıdaki zaman uyumsuz olmayan kod örneği, "InputQueue" adlı kuyrukta alınan sıra iletisiyle aynı içeriğe sahip "outputqueue" adlı sırada yeni bir kuyruk iletisi oluşturur. (Async işlevleri için, bu bölümün ilerleyen kısımlarında gösterildiği gibi **ıasynccollector\<t >** kullanın.)
 
 ```csharp
 public static void CreateQueueMessage(
@@ -217,7 +217,7 @@ public static void CreateQueueMessage(
 SDK, nesneyi otomatik olarak JSON 'a serileştirir. Nesne null olsa bile kuyruk iletisi her zaman oluşturulur.
 
 ### <a name="create-multiple-messages-or-in-async-functions"></a>Birden çok ileti veya zaman uyumsuz işlevlerde oluşturma
-Birden çok ileti oluşturmak için, aşağıdaki örnekte gösterildiği gibi, **ICollector @ no__t-1T >** veya **ıasynccollector @ No__t-3T >** çıkış sırasının parametre türünü yapın.
+Birden çok ileti oluşturmak için, aşağıdaki örnekte gösterildiği gibi, **ICollector\<t >** veya **ıasynccollector\<t >** çıkış sırasının parametre türünü yapın.
 
 ```csharp
 public static void CreateQueueMessages(
@@ -545,7 +545,7 @@ WebJobs SDK panosunda, WebJob 'un en son 100 satırı, Web Işi sayfasına gitti
 
 ![Çıkışı geç](./media/vs-storage-webjobs-getting-started-queues/dashboardapplogs.png)
 
-Sürekli bir WebJob 'ta uygulama günlükleri, Web uygulaması dosya sisteminde/Data/Jobs/Continuous/ *{webjobname}* /job_log.txt içinde görünür.
+Sürekli bir WebJob 'ta uygulama günlükleri, Web uygulaması dosya sisteminde/Data/Jobs/Continuous/ *{webjobname}* /job_log. txt dosyasında görünür.
 
         [09/26/2014 21:01:13 > 491e54: INFO] Console.Write - Hello world!
         [09/26/2014 21:01:13 > 491e54: ERR ] Console.Error - Hello world!

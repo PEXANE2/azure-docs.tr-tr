@@ -53,7 +53,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 3. Bir veri kaynağınız yoksa, veri kaynağı oluşturma bağlantısını görürsünüz. **Veri kaynağı olarak yükle**’yi seçin. Ayrıca **Veri kaynakları** > **Veri yükle** menüsünü kullanabilirsiniz.
 
     ![](./media/notification-hubs-geofence/bing-maps-create-data.png)
-4. Aşağıdaki içeriğe sahip sabit sürücünüzde bir dosya @no__t (0) oluşturun: Bu öğreticide, San Francisco kasasının bir alanını gösteren örnek bir kanal tabanlı dosya kullanırsınız:
+4. Aşağıdaki içeriğe sahip sabit diskinizde bir dosya `NotificationHubsGeofence.pipe` oluşturun: Bu öğreticide, San Francisco kasamasının ön bir alanını gösteren örnek bir kanal tabanlı dosya kullanırsınız:
 
     ```text
     Bing Spatial Data Services, 1.0, TestBoundaries
@@ -66,7 +66,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
     ![](./media/notification-hubs-geofence/bing-maps-geofence.png)
 5. **Veri kaynağını karşıya yükleyin** sayfasında aşağıdaki eylemleri yapın:
    1. **Veri biçimi** için **kanal**’ı seçin.
-   2. Önceki adımda oluşturduğunuz `NotificationHubGeofence.pipe` dosyasına gözatıp seçin.
+   2. Önceki adımda oluşturduğunuz `NotificationHubGeofence.pipe` dosyasına gidip seçin.
    3. **Karşıya Yükle** düğmesini seçin.
 
       > [!NOTE]
@@ -119,7 +119,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
    * **Bing Haritalar API'si Anahtarı**: Daha önce Bing Geliştirme Merkezi hesabı oluşturduğunuzda edindiğiniz anahtardır.
 
      Veri kaynağınız hazır olduktan sonra UWP uygulaması üzerinde çalışmaya başlayabilirsiniz.
-2. Uygulamanız için konum hizmetlerini etkinleştirin. **Çözüm Gezgini**'nde `Package.appxmanifest` dosyasını açın.
+2. Uygulamanız için konum hizmetlerini etkinleştirin. `Package.appxmanifest`Çözüm Gezgini **'nde**  dosyasını açın.
 
     ![](./media/notification-hubs-geofence/vs-package-manifest.png)
 3. Açtığınız paket özellikleri sekmesinde **Özellikler** sekmesine geçip **Konum**'u seçin.
@@ -165,7 +165,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
     ```
 
     UWP uygulamalarında kullanıcının konumunu alma hakkında daha fazla bilgi için bkz. [Kullanıcının konumunu alma](https://msdn.microsoft.com/library/windows/apps/mt219698.aspx).
-5. Konum almanın çalışıp çalışmadığını denetlemek için ana sayfanızın kod tarafını açın (`MainPage.xaml.cs`). `MainPage` oluşturucusunda `Loaded` olayı için yeni bir olay işleyicisi oluşturun.
+5. Konum almanın çalışıp çalışmadığını denetlemek için ana sayfanızın kod tarafını açın (`MainPage.xaml.cs`). `Loaded` oluşturucusunda `MainPage` olayı için yeni bir olay işleyicisi oluşturun.
 
     ```csharp
     public MainPage()

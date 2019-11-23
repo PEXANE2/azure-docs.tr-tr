@@ -36,7 +36,7 @@ Bu öğreticide şunları öğrenirsiniz:
 
 Çeşitli SaaS tasarım ve yönetim düzenlerini araştırmak için bir [dizi ilgili öğretici](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials) sunulmaktadır. Öğreticiler, bu ilk dağıtımın ötesinde derleme içerir. Öğreticileri kullandığınızda, farklı SaaS desenlerinin nasıl uygulandığını görmek için, belirtilen betikleri inceleyebilirsiniz. Betikler, SQL Database özelliklerinin SaaS uygulamalarının geliştirilmesini nasıl basitleştireceğinizi gösterir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için Azure PowerShell yüklü olduğundan emin olun. Daha fazla bilgi için bkz. [Azure PowerShell kullanmaya başlayın](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
@@ -130,7 +130,7 @@ Wingtip Application, gelen isteklerin dağıtımını denetlemek için [*Azure 
     | :-------------- | :---------------- |
     | http://events.wingtip-dpt | Wingtip uygulamasının olaylar bölümü.<br /><br /> *-DPT* , Wingtip bilet 'nin *kiracı başına veritabanı* uygulamasını diğer uygulamalardan ayırır. Bu örnek, *tek* kiracılı kiracı ( *-sa*) veya *çok kiracılı veritabanı* ( *-MT*) uygulamalarından örnektir. |
     | . *&lt;kullanıcı&gt;* | örnekteki *AF1* . |
-    | . trafficmanager.net/ | Traffic Manager, temel URL. |
+    | .trafficmanager.net/ | Traffic Manager, temel URL. |
     | fabrikamjazzclub | Fabrikam Cakulüler adlı kiracıyı tanımlar. |
     | &nbsp; | &nbsp; |
 

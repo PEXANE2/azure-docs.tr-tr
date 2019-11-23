@@ -33,13 +33,13 @@ Başvuru verilerinizi yapılandırmak için önce **başvuru verileri**türünde
 |---------|---------|
 |Girdi Diğer Adı   | Bu girişe başvurmak için iş sorgusunda kullanılacak kolay bir ad.   |
 |Depolama Hesabı   | Bloblarınızın bulunduğu depolama hesabının adı. Stream Analytics Işiniz ile aynı abonelikte yer alıyorsa, açılır listeden seçim yapabilirsiniz.   |
-|Depolama hesabı anahtarı   | Depolama hesabıyla ilişkili gizli anahtar. Depolama hesabı Stream Analytics işle aynı abonelikte ise bu otomatik olarak doldurulur.   |
-|Depolama kapsayıcısı   | Kapsayıcılar Microsoft Azure Blob hizmetinde depolanan Bloblar için mantıksal bir gruplama sağlar. Blob hizmetine bir blob yüklediğinizde, o blob için bir kapsayıcı belirtmeniz gerekir.   |
-|Yol Deseni   | Belirtilen kapsayıcı içindeki bloblarınızı bulmak için kullanılan yol. Yol içinde, aşağıdaki 2 değişkenlerin bir veya daha fazla örneğini belirtmeyi seçebilirsiniz:<BR>{date}, {Time}<BR>Örnek 1: Ürünler/{Date}/{Time}/Product-List. csv<BR>Örnek 2: Ürünler/{Date}/Product-List. csv<BR>Örnek 3: Product-List. csv<BR><br> Blob belirtilen yolda yoksa, blob 'un kullanılabilir olması için Stream Analytics işi süresiz olarak bekler.   |
+|Depolama Hesabı Anahtarı   | Depolama hesabı ile ilişkili gizli anahtar. Depolama hesabı Stream Analytics işle aynı abonelikte ise bu otomatik olarak doldurulur.   |
+|Depolama kapsayıcısı   | Kapsayıcıları Microsoft Azure Blob hizmetinde depolanan bloblar için mantıksal bir gruplandırmasını sağlar. Blob hizmeti için bir blob karşıya yüklediğinizde, bu blob kapsayıcısı belirtmeniz gerekir.   |
+|Yol Deseni   | Belirtilen kapsayıcı içindeki bloblarınızı bulmak için kullanılan yol. Yol içinde, aşağıdaki 2 değişkenlerin bir veya daha fazla örneğini belirtmeyi seçebilirsiniz:<BR>{date} {time}<BR>Örnek 1: Ürünler/{Date}/{Time}/Product-List. csv<BR>Örnek 2: Ürünler/{Date}/Product-List. csv<BR>Örnek 3: Product-List. csv<BR><br> Blob belirtilen yolda yoksa, blob 'un kullanılabilir olması için Stream Analytics işi süresiz olarak bekler.   |
 |Tarih biçimi [isteğe bağlı]   | Belirttiğiniz yol deseninin içinde {Date} kullandıysanız, bloblarınızın desteklenen biçimlerin açılan listesinden düzenlendiği tarih biçimini seçebilirsiniz...<BR>Örnek: YYYY/AA/GG, AA/GG/YYYY vb.   |
 |Saat biçimi [isteğe bağlı]   | Belirttiğiniz yol deseninin içinde {Time} kullandıysanız, bloblarınızın desteklenen biçimlerin açılan listesinden düzenlendiği zaman biçimini seçebilirsiniz...<BR>Örnek: HH, HH/mm veya HH-mm.  |
 |Olay serileştirme biçimi   | Sorgularınızın istediğiniz şekilde çalıştığından emin olmak için, Stream Analytics gelen veri akışları için hangi serileştirme biçimini kullandığınızı bilmeniz gerekir. Başvuru verileri için desteklenen biçimler CSV ve JSON ' tır.  |
-|Encoding   | Şu anda desteklenen tek kodlama biçimi UTF-8 ' i destekler.  |
+|Encoding   | Şu anda desteklenen tek kodlama biçimi UTF-8'dir.  |
 
 ### <a name="static-reference-data"></a>Statik başvuru verileri
 
@@ -47,16 +47,16 @@ Başvuru verilerinizin değiştirilmesi beklenmiyorsa, giriş yapılandırmasın
 
 ### <a name="generate-reference-data-on-a-schedule"></a>Bir zamanlamaya göre başvuru verileri oluşturma
 
-Başvuru verileriniz yavaş değişen bir veri kümesi ise, başvuru verilerinin yenilenmesi desteği, giriş yapılandırmasında {Date} ve {Time} değiştirme belirteçlerini kullanarak bir yol kalıbı belirtilerek etkinleştirilir. Stream Analytics, bu yol düzenine göre güncelleştirilmiş başvuru verileri tanımlarını seçer. Örneğin, tarih biçimi **"yyyy-aa-gg"** ve saat biçimi **"hh-mm"** olan `sample/{date}/{time}/products.csv` ' ın bir deseninin, 16 Nisan 2015 UTC saat diliminde 5:30: ' de güncelleştirilmiş blob @no__t 'u seçmesini Stream Analytics söyler.
+Başvuru verileriniz yavaş değişen bir veri kümesi ise, başvuru verilerinin yenilenmesi desteği, giriş yapılandırmasında {Date} ve {Time} değiştirme belirteçlerini kullanarak bir yol kalıbı belirtilerek etkinleştirilir. Stream Analytics, bu yol düzenine göre güncelleştirilmiş başvuru verileri tanımlarını seçer. Örneğin, tarih biçimi **"yyyy-aa-gg"** ve saat biçimi **"hh-mm"** olan bir `sample/{date}/{time}/products.csv` bir deseninin, 16 Nisan 2015 UTC saat diliminde 5:30: ' de güncelleştirilmiş blob `sample/2015-04-16/17-30/products.csv` seçmesini Stream Analytics söyler.
 
 Azure Stream Analytics, yenilenen başvuru verileri bloblarını bir dakikalık aralıklarla otomatik olarak tarar. Zaman damgası 10:30:00 olan bir blob küçük bir gecikmeyle karşıya yüklenirse (örneğin, 10:30:30), bu bloba başvuran Stream Analytics işinde küçük bir gecikme fark edeceksiniz. Bu senaryolara engel olmak için, blob 'u bellek içinde bulup yüklemek ve işlemleri gerçekleştirmek için yeterli zaman Stream Analytics izin vermek üzere hedef geçerlilik zamanından (Bu örnekteki 10:30:00) daha önce blob yüklemeniz önerilir. 
 
 > [!NOTE]
-> Şu anda Stream Analytics işleri yalnızca makine süresi blob adında kodlanan zamana ilerlediği zaman blob yenilemesini arar. Örneğin, iş, 16 Nisan 2015 UTC saat diliminde en kısa sürede @no__t, ancak 5:30 ' den önceki bir süre boyunca görünür. Bir blob, bulunan son değerden daha önce kodlanmış bir saat ile *hiçbir zaman* aramaz.
+> Şu anda Stream Analytics işleri yalnızca makine süresi blob adında kodlanan zamana ilerlediği zaman blob yenilemesini arar. Örneğin, iş en kısa sürede `sample/2015-04-16/17-30/products.csv`, ancak 16 Nisan 2015 UTC saat diliminde 5:30 PM 'tan önceki bir süre içinde görünür. Bir blob, bulunan son değerden daha önce kodlanmış bir saat ile *hiçbir zaman* aramaz.
 > 
-> Örneğin, iş blobu bulduktan sonra `sample/2015-04-16/17-30/products.csv` 2015 ' dan önceki kodlanmış bir tarih içeren tüm dosyaları 16 Nisan 5:30 ' den daha eski bir kez, bir geç gelen `sample/2015-04-16/17-25/products.csv` blobu aynı kapsayıcıda oluşturulduktan sonra iş bunu kullanmayacak.
+> Örneğin, iş blobu bulduktan sonra `sample/2015-04-16/17-30/products.csv` 12 Nisan 5:30 2015 ' den önceki kodlanmış bir tarih içeren tüm dosyaları yok sayar. bu nedenle, bir geç gelen `sample/2015-04-16/17-25/products.csv` blobu aynı kapsayıcıda oluşturulduysa iş onu kullanmaz.
 > 
-> Benzer şekilde, `sample/2015-04-16/17-30/products.csv` yalnızca 16 Nisan 2015 ' de 10:03, ancak kapsayıcıda daha önceki bir tarih içeren bir blob yoksa, iş bu 10:03 dosyayı 16 Nisan, 2015 ve önceki başvuru verilerini kullanarak kullanır.
+> Benzer şekilde, `sample/2015-04-16/17-30/products.csv` yalnızca 16 Nisan 2015 ' de 10:03 ' de üretilediyse, kapsayıcıda daha önceki bir tarih içeren bir blob yoksa, iş bu 10:03 dosyayı 16 Nisan, 2015 ve önceki başvuru verilerini kullanacak şekilde kullanır.
 > 
 > Bunun bir özel durumu, işin, verileri zamanında yeniden işlemesi veya işin ilk başlatılışında olması gerekir. Başlangıç zamanında iş, belirtilen iş başlangıç zamanından önce üretilen en son blobu arıyor. Bu, iş başladığında **boş olmayan** bir başvuru veri kümesi olduğundan emin olmak için yapılır. Bir tane bulunamazsa, iş şu tanılamayı görüntüler: `Initializing input without a valid reference data blob for UTC time <start time>`.
 
@@ -90,9 +90,9 @@ SQL veritabanı başvuru verilerinizi yapılandırmak için önce **başvuru ver
 
 |**Özellik adı**|**Açıklama**  |
 |---------|---------|
-|Girdi diğer adı|Bu girişe başvurmak için iş sorgusunda kullanılacak kolay bir ad.|
+|Giriş diğer adı|Bu girişe başvurmak için iş sorgusunda kullanılacak kolay bir ad.|
 |Abonelik|Aboneliğinizi seçin|
-|Database|Başvuru verilerinizi içeren Azure SQL veritabanı. Azure SQL veritabanı yönetilen örneği için 3342 numaralı bağlantı noktasını belirtmeniz gerekir. Örneğin, *sampleserver. public. Database. Windows. net, 3342*|
+|Veritabanı|Başvuru verilerinizi içeren Azure SQL veritabanı. Azure SQL veritabanı yönetilen örneği için 3342 numaralı bağlantı noktasını belirtmeniz gerekir. Örneğin, *sampleserver. public. Database. Windows. net, 3342*|
 |Kullanıcı adı|Azure SQL veritabanınız ile ilişkilendirilen Kullanıcı adı.|
 |Parola|Azure SQL veritabanınız ile ilişkilendirilen parola.|
 |Düzenli aralıklarla Yenile|Bu seçenek, yenileme ücreti seçmenizi sağlar. "Açık" seçilirse yenileme hızını gg: ss: dd olarak belirtmenize izin verirsiniz.|
@@ -101,7 +101,7 @@ SQL veritabanı başvuru verilerinizi yapılandırmak için önce **başvuru ver
 
 ## <a name="size-limitation"></a>Boyut sınırlaması
 
-Stream Analytics **en fazla 300 MB boyutlu**başvuru verilerini destekler. En büyük başvuru verisi boyutu 300 MB sınırı yalnızca basit sorgularla ulaşılabilir. Sorgu karmaşıklığı, pencereli toplamalar, zamana bağlı birleşimler ve zamana bağlı analitik işlevler gibi durum bilgisi içeren işleme dahil olmak üzere arttıkça, başvuru verilerinin en fazla desteklenen boyutunun azalttığı beklenmektedir. Azure Stream Analytics başvuru verilerini yükleyemez ve karmaşık işlemler gerçekleştirmeyebilir, iş belleği tükenme ve başarısız olur. Bu gibi durumlarda% SU kullanım ölçümü% 100 ' ye ulaşacaktır.    
+Stream Analytics **en fazla 300 MB boyutlu**başvuru verilerini destekler. En büyük başvuru verisi boyutu 300 MB sınırı yalnızca basit sorgularla ulaşılabilir. Sorgu karmaşıklığı, pencereli toplamalar, zamana bağlı birleşimler ve zamana bağlı analitik işlevler gibi durum bilgisi içeren işleme dahil olmak üzere arttıkça, başvuru verilerinin en fazla desteklenen boyutunun azalttığı beklenmektedir. Azure Stream Analytics başvuru verilerini yükleyemez ve karmaşık işlemler gerçekleştirmeyebilir, iş belleği tükenme ve başarısız olur. Bu gibi durumlarda% SU kullanım ölçümü %100 ' ye ulaşacaktır.    
 
 |**Akış birimi sayısı**  |**Yaklaşık olarak desteklenen en büyük boyut (MB)**  |
 |---------|---------|
@@ -111,11 +111,11 @@ Stream Analytics **en fazla 300 MB boyutlu**başvuru verilerini destekler. En b�
 
 6 ' dan fazla bir işin akış birimi sayısının artırılması, en fazla desteklenen başvuru verileri boyutunu artırmaz.
 
-Başvuru verileri için sıkıştırma desteği kullanılamaz. 
+Sıkıştırma desteğine başvuru verileri için kullanılabilir değil. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 > [!div class="nextstepaction"]
-> [Hızlı başlangıç: Azure portal kullanarak Stream Analytics işi oluşturma](stream-analytics-quick-create-portal.md)
+> [Hızlı Başlangıç: Azure portalını kullanarak Stream Analytics işi oluşturma](stream-analytics-quick-create-portal.md)
 
 <!--Link references-->
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md

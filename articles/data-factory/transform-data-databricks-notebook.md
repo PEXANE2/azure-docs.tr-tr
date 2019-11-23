@@ -59,11 +59,11 @@ Aşağıdaki tabloda JSON tanımında kullanılan JSON özellikleri açıklanmak
 
 |Özellik|Açıklama|Gerekli|
 |---|---|---|
-|ad|İşlem hattındaki etkinliğin adı.|Evet|
+|ad|İşlem hattındaki etkinliğin adı.|Yes|
 |açıklama|Etkinliğin ne yaptığını açıklayan metin.|Hayır|
-|type|Databricks Not defteri etkinliği için etkinlik türü Databricksnot Defterinizdir.|Evet|
-|linkedServiceName|Databricks Not defterinin çalıştığı Databricks bağlı hizmetinin adı. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlantılı hizmetleri](compute-linked-services.md) makalesi.|Evet|
-|Not Defteriyolu|Databricks çalışma alanında çalıştırılacak olan Not defterinin mutlak yolu. Bu yol bir eğik çizgiyle başlamalıdır.|Evet|
+|type|Databricks Not defteri etkinliği için etkinlik türü Databricksnot Defterinizdir.|Yes|
+|linkedServiceName|Databricks Not defterinin çalıştığı Databricks bağlı hizmetinin adı. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlantılı hizmetleri](compute-linked-services.md) makalesi.|Yes|
+|Not Defteriyolu|Databricks çalışma alanında çalıştırılacak olan Not defterinin mutlak yolu. Bu yol bir eğik çizgiyle başlamalıdır.|Yes|
 |baseParameters|Anahtar-değer çiftleri dizisi. Temel parametreler her etkinlik çalıştırması için kullanılabilir. Not defteri belirtilmemiş bir parametre alırsa, not defterindeki varsayılan değer kullanılacaktır. [Databricks not defterlerinde](https://docs.databricks.com/api/latest/jobs.html#jobsparampair)parametreler hakkında daha fazla bilgi bulabilirsiniz.|Hayır|
 |Kütüphaneler|İşi yürütecek olan kümeye yüklenecek kitaplıkların listesi. \<dize, nesne > dizisi olabilir.|Hayır|
 

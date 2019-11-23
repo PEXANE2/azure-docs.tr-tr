@@ -34,14 +34,14 @@ Listelenen parametrelerin her birinin tanımı için [sunucu sistem değişkenle
 ## <a name="show-server-configuration-parameter-details"></a>Sunucu yapılandırma parametresi ayrıntılarını göster
 Bir sunucu için belirli bir yapılandırma parametresi ayrıntılarını göstermek üzere [az MySQL Server Configuration Show](/cli/azure/mysql/server/configuration#az-mysql-server-configuration-show) komutunu çalıştırın.
 
-Bu örnekte, **myresourcegroup** kaynak grubu altındaki Server **mydemoserver.MySQL.Database.Azure.com** için **yavaş @ no__t-1query @ no__t-2Log** Server yapılandırma parametresinin ayrıntıları gösterilmektedir.
+Bu örnekte, **myresourcegroup** kaynak grubu altındaki Server **mydemoserver.mysql.database.azure.com** için **yavaş\_Query\_log** Server yapılandırma parametresinin ayrıntıları gösterilmektedir.
 ```azurecli-interactive
 az mysql server configuration show --name slow_query_log --resource-group myresourcegroup --server mydemoserver
 ```
 ## <a name="modify-a-server-configuration-parameter-value"></a>Sunucu yapılandırma parametre değerini değiştirme
 Ayrıca, MySQL Server altyapısının temel yapılandırma değerini güncelleştiren belirli bir sunucu yapılandırma parametresinin değerini de değiştirebilirsiniz. Yapılandırmayı güncelleştirmek için [az MySQL Server Configuration set](/cli/azure/mysql/server/configuration#az-mysql-server-configuration-set) komutunu kullanın. 
 
-**\ Sunucu \** kaynak grubu altında Server **mydemoserver.MySQL.Database.Azure.com** 'ın **yavaş @ no__t-1query @ no__t-2Log** Server yapılandırma parametresini güncelleştirmek için.
+Mydemoserver.mysql.database.azure.com kaynak grubu altında Server 'ın **yavaş\_sorgu\_günlük** sunucusu yapılandırma parametresini güncelleştirmek için **.**
 ```azurecli-interactive
 az mysql server configuration set --name slow_query_log --resource-group myresourcegroup --server mydemoserver --value ON
 ```
@@ -49,7 +49,7 @@ Bir yapılandırma parametresinin değerini sıfırlamak istiyorsanız, isteğe 
 ```azurecli-interactive
 az mysql server configuration set --name slow_query_log --resource-group myresourcegroup --server mydemoserver
 ```
-Bu kod, **yavaş @ no__t-1query @ no__t-2Log** yapılandırmasını varsayılan değere **sıfırlar.** 
+Bu kod, **yavaş\_sorgu\_günlük** yapılandırmasını **varsayılan değere sıfırlar**. 
 
 ## <a name="working-with-the-time-zone-parameter"></a>Saat dilimi parametresi ile çalışma
 
@@ -74,7 +74,7 @@ SELECT name FROM mysql.time_zone_name;
 
 Genel düzey saat dilimi, [az MySQL Server yapılandırma kümesi](/cli/azure/mysql/server/configuration#az-mysql-server-configuration-set) komutu kullanılarak ayarlanabilir.
 
-Aşağıdaki komut, **myresourcegroup** kaynak grubu altındaki Server **mydemoserver.MySQL.Database.Azure.com** 'ın **@ no__t-1Zone** sunucu yapılandırma parametresini **US/Pasifik**olarak güncelleştirir.
+Aşağıdaki komut, **myresourcegroup** kaynak grubu altındaki Server **mydemoserver.mysql.database.azure.com** 'ın **saat\_bölge** sunucusu yapılandırma parametresini **ABD/Pasifik**olarak güncelleştirir.
 
 ```azurecli-interactive
 az mysql server configuration set --name time_zone --resource-group myresourcegroup --server mydemoserver --value "US/Pacific"

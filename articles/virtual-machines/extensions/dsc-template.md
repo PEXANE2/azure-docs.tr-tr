@@ -188,7 +188,7 @@ Varsayılan yapılandırma betiği için kullanılabilen bağımsız değişkenl
 | Settings. privacy. dataCollection |string |Telemetri toplamayı etkinleştirilir veya devre dışı bırakır. Bu özelliğin olası tek değeri **Etkinleştir**, **devre dışı bırak**, **' '** veya **$null**. Bu özelliğin boş veya null bırakılması telemetri sunar. Varsayılan değer **' '** . Daha fazla bilgi için bkz. [Azure DSC Uzantısı veri toplama](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/). |
 | Settings. Advancedoçen. downloadMappings |Koleksiyon |WMF 'nin indirileceği alternatif konumları tanımlar. Daha fazla bilgi için bkz. [Azure DSC uzantısı 2,8 ve uzantı bağımlılıklarını karşıdan yüklemelerin kendi konumunuza nasıl eşleneceğini öğrenin](https://blogs.msdn.com/b/powershell/archive/2015/10/21/azure-dsc-extension-2-2-amp-how-to-map-downloads-of-the-extension-dependencies-to-your-own-location.aspx). |
 | protectedSettings. configurationArguments |Koleksiyon |DSC yapılandırmanıza geçirmek istediğiniz parametreleri tanımlar. Bu özellik şifrelenir. |
-| protectedSettings. configurationUrlSasToken |string |**Settings. Configuration. URL** tarafından tanımlanan URL 'ye erişmek IÇIN kullanılacak SAS belirtecini belirtir. Bu özellik şifrelenir. |
+| protectedSettings.configurationUrlSasToken |string |**Settings. Configuration. URL** tarafından tanımlanan URL 'ye erişmek IÇIN kullanılacak SAS belirtecini belirtir. Bu özellik şifrelenir. |
 | protectedSettings. configurationDataUrlSasToken |string |**Settings. configurationData. URL** tarafından tanımlanan URL 'ye erişmek IÇIN kullanılacak SAS belirtecini belirtir. Bu özellik şifrelenir. |
 
 ## <a name="default-configuration-script"></a>Varsayılan yapılandırma betiği
@@ -294,7 +294,7 @@ Aşağıdaki örnek, Azure Otomasyonu hesap özelliklerine başvurarak ve birinc
 
 ## <a name="update-from-a-previous-format"></a>Önceki bir biçimden Güncelleştir
 
-Uzantının önceki biçimindeki tüm ayarlar (ve genel Özellikler **ModulesUrl**, **modulesource**, **moduleversion**, **configurationfunction**, **sastoken**veya **Özellikler**) otomatik olarak uzantının geçerli biçimine uyarlayın.
+Uzantının önceki biçimindeki tüm ayarlar (ve genel Özellikler **ModulesUrl**, **modulesource**, **moduleversion**, **configurationfunction**, **sastoken**veya **Özellikler**), uzantının geçerli biçimine otomatik olarak uyum sağlar.
 Yalnızca daha önce olduğu gibi çalışır.
 
 Aşağıdaki şemada, önceki ayarlar şemasının nasıl göründüğünü gösterilmektedir:
@@ -333,8 +333,8 @@ Aşağıdaki şemada, önceki ayarlar şemasının nasıl göründüğünü gös
 | --- | --- |
 | Settings. wmfVersion |Ayarlar. WMFVersion |
 | Settings. Configuration. URL |Ayarlar. ModulesUrl |
-| Settings. Configuration. Script |Ayarların ilk bölümü. ConfigurationFunction (\\ @ no__t-1) |
-| Settings. Configuration. Function |Ayarların ikinci bölümü. ConfigurationFunction (@no__t sonra-0 @ no__t-1) |
+| Settings. Configuration. Script |Ayarların ilk bölümü. ConfigurationFunction (\\\\önce) |
+| Settings. Configuration. Function |Ayarların ikinci bölümü. ConfigurationFunction (\\\\sonra) |
 | settings.configuration.module.name | Ayarlar. ModuleSource |
 | Settings. Configuration. Module. Version | Ayarlar. ModuleVersion |
 | Settings. configurationArguments |Ayarlar. Özelliklerinin |
@@ -342,7 +342,7 @@ Aşağıdaki şemada, önceki ayarlar şemasının nasıl göründüğünü gös
 | Settings. privacy. dataCollection |Ayarlar. Gizlilik. dataCollection |
 | Settings. Advancedoçen. downloadMappings |Ayarlar. Advancedoçen. DownloadMappings |
 | protectedSettings. configurationArguments |protectedSettings. Properties |
-| protectedSettings. configurationUrlSasToken |Ayarlar. SasToken |
+| protectedSettings.configurationUrlSasToken |Ayarlar. SasToken |
 | protectedSettings. configurationDataUrlSasToken |ProtectedSettings. Dadburi 'den SAS belirteci |
 
 ## <a name="troubleshooting"></a>Sorun giderme
@@ -351,9 +351,9 @@ Aşağıdaki şemada, önceki ayarlar şemasının nasıl göründüğünü gös
 
 ### <a name="invalid-values"></a>Geçersiz değerler
 
-"Privacy. dataCollection ' {0} '.
+"Gizlilik. dataCollection '{0}'.
 Tek olası değerler şunlardır ' ', ' Enable ' ve ' Disable ' ".
-"WmfVersion ' {0} '.
+"WmfVersion '{0}'.
 Yalnızca olası değerler şunlardır... ve ' Latest ' ".
 
 **Sorun**: belirtilen değere izin verilmiyor.
@@ -363,7 +363,7 @@ Daha fazla bilgi için [Ayrıntılar](#details)bölümündeki tabloya bakın.
 
 ### <a name="invalid-url"></a>Geçersiz URL
 
-"ConfigurationData. URL ' {0} '. Bu geçerli bir URL değil "" Otabloburi, ' {0} '. Bu geçerli bir URL "" yapılandırması değil. URL ' {0} '. Bu geçerli bir URL değil "
+"ConfigurationData. URL '{0}'. Bu geçerli bir URL değil "" Otabloburi, '{0}'. Bu geçerli bir URL "" yapılandırması değil. URL '{0}'. Bu geçerli bir URL değil "
 
 **Sorun**: BELIRTILEN bir URL geçerli değil.
 
@@ -398,7 +398,7 @@ Yukarıdaki örneklerde belirtilen biçimi izleyin. Tırnak işaretleri, virgül
 
 ### <a name="duplicate-configurationarguments"></a>Yinelenen ConfigurationArguments
 
-"Hem genel hem de korumalı configurationArguments içinde yinelenen bağımsız değişkenler ' {0} ' bulundu"
+"Hem genel hem de korumalı configurationArguments içinde yinelenen bağımsız değişkenler '{0}' bulundu"
 
 **Sorun**: ortak ayarlarındaki *configurationarguments* ve korunan ayarlarındaki *configurationarguments* aynı ada sahip özelliklere sahip.
 

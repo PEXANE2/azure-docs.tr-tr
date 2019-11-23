@@ -23,7 +23,7 @@ ms.locfileid: "72792905"
 
 ### <a name="how-is-azure-cognitive-search-different-from-full-text-search-in-my-dbms"></a>Azure Bilişsel Arama, DBMS 'imde tam metin aramasından farklı midir?
 
-Azure Bilişsel Arama birden çok veri kaynağını, [birçok dil için dil analizini](https://docs.microsoft.com/rest/api/searchservice/language-support), [ilginç ve olağandışı veri girişlerinin özel analizini](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search), [Puanlama profilleri](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)aracılığıyla arama derecelendirme denetimleri ve Kullanıcı deneyimini destekler typeahead, isabet vurgulama ve çok yönlü gezinme gibi özellikler. Ayrıca, eş anlamlılar ve zengin sorgu söz dizimi gibi diğer özellikleri de içerir, ancak bunlar genellikle özellikleri farklılaştırmaz.
+Azure Bilişsel Arama birden çok veri kaynağını, [birçok dil için dil analizini](https://docs.microsoft.com/rest/api/searchservice/language-support), [ilginç ve olağandışı veri girişlerinin özel analizini](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search), [Puanlama profilleri](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)aracılığıyla arama derecelendirme denetimleri ve typeahead, isabet vurgulama ve çok yönlü gezinme gibi kullanıcı deneyimi özelliklerini destekler. Ayrıca, eş anlamlılar ve zengin sorgu söz dizimi gibi diğer özellikleri de içerir, ancak bunlar genellikle özellikleri farklılaştırmaz.
 
 ### <a name="what-is-the-difference-between-azure-cognitive-search-and-elasticsearch"></a>Azure Bilişsel Arama ve Elakıa araması arasındaki fark nedir?
 

@@ -82,7 +82,7 @@ var app = PublicClientApplicationBuilder.Create(clientId)
                                         .Build();
 ```
 
-UI üst öğesini, varsayılan yetkiyi geçersiz kılmayı, bir istemci adı ve sürümünü (telemetri için), yeniden yönlendirme URI 'sini, kullanılacak http fabrikasını (örneğin, proxy 'leri işlemek için) belirten*parametre* yöntemleriyle birlikte ek olarak telemetri ve günlüğe kaydetme). Aşağıdaki paragrafların konusu budur.
+UI üst öğesini, varsayılan yetkiyi geçersiz kılmayı, bir istemci adı ve sürümünü (telemetri için), yeniden yönlendirme URI 'sini, kullanılacak http fabrikasını belirten (örneğin, proxy 'leri işlemek için telemetri ve günlüğe kaydetme) belirten*parametre* yöntemleriyle birlikte ek vardır. Aşağıdaki paragrafların konusu budur.
 
 ##### <a name="specifying-the-parent-uiwindowactivity"></a>Üst Kullanıcı arabirimini/pencereyi/etkinliği belirtme
 
@@ -113,7 +113,7 @@ var pca = PublicClientApplicationBuilder
 
 Xamarin iOS üzerinde MSAL.NET kullanırken dikkate almanız gereken birkaç önemli noktalar vardır:
 
-1. [`AppDelegate``OpenUrl` işlevini geçersiz kılın ve uygulayın](msal-net-xamarin-ios-considerations.md#implement-openurl)
+1. [`AppDelegate` `OpenUrl` işlevini geçersiz kılın ve uygulayın](msal-net-xamarin-ios-considerations.md#implement-openurl)
 1. [Anahtarlık gruplarını etkinleştir](msal-net-xamarin-ios-considerations.md#enable-keychain-access)
 1. [Belirteç önbelleği paylaşımını etkinleştir](msal-net-xamarin-ios-considerations.md#enable-token-cache-sharing-across-ios-applications)
 1. [Anahtarlık erişimini etkinleştir](msal-net-xamarin-ios-considerations.md#enable-keychain-access)

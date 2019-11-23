@@ -21,12 +21,12 @@ ms.locfileid: "67188362"
 **Standart SSD yönetilen diskler**
 [!INCLUDE [disk-storage-standard-ssd-sizes](disk-storage-standard-ssd-sizes.md)]
 
-**Premium SSD yönetilen diskler: Disk başına sınırlar**
+**Premium SSD yönetilen diskler: disk başına sınırlar**
 [!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
 
 **Premium SSD yönetilen diskler: VM başına sınırlar**
 
-| Resource | Varsayılan limit |
+| Kaynak | Varsayılan limit |
 | --- | --- |
 | VM başına maksimum ıOPS |GS5 VM ile 80.000 ıOPS |
 | VM başına en fazla aktarım hızı |GS5 VM ile 2.000 MB/s |

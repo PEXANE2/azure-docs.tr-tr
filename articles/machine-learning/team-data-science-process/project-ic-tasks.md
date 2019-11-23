@@ -1,5 +1,5 @@
 ---
-title: Ekip veri bilimi Işleminde bireysel katkıda bulunan görevler
+title: Team Data Science Process içinde tek bir katkıda bulunan görevleri
 description: Bir veri bilimi takım projesindeki bireysel katkıda bulunan görevlere ilişkin ayrıntılı bir anlatım.
 author: marktab
 manager: cgronlun
@@ -17,7 +17,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 10/10/2019
 ms.locfileid: "72244304"
 ---
-# <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>Ekip veri bilimi Işleminde bireysel katkıda bulunan görevler
+# <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>Team Data Science Process içinde tek bir katkıda bulunan görevleri
 
 Bu konu, bir *bireyin* [ekip veri bilimi işleminde](overview.md) (TDSP) bir proje ayarlamak için tamamladığı görevleri özetler. Amaç, TDSP üzerinde standartlayan bir ortak ekip ortamında çalışır. TDSP, işbirliğinin ve Team Learning 'in artırılmasına yardımcı olmak için tasarlanmıştır. Personel rollerinin ve TDSP üzerinde standartlaştırarak bir veri bilimi ekibi tarafından işlenen ilişkili görevlerinin bir özeti için bkz. [Team Data Science işlem rolleri ve görevleri](roles-tasks.md).
 
@@ -45,7 +45,7 @@ Bu öğreticide, aşağıdaki kaynakların ve izinlerin [Grup yöneticiniz](grou
 Depoları kopyalamak ve yerel makinenizde veya DSVM 'nizin içeriğini değiştirmek ya da Azure dosya depolama alanını DSVM 'nize bağlamak için şunlar gerekir:
 
 - Azure aboneliği.
-- Git makinenizde yüklü. DSVM kullanıyorsanız git önceden yüklüdür. Aksi takdirde, [platformlar ve araçlar ek](platforms-and-tools.md#appendix)bölümüne bakın.
+- Git makinenizde yüklü. DSVM kullanıyorsanız git önceden yüklüdür. Aksi takdirde bkz [platformları ve araçlarıyla ek](platforms-and-tools.md#appendix).
 - DSVM 'yi, Azure 'da oluşturulan ve yapılandırılan Windows veya Linux DSVM 'yi kullanmak istiyorsanız. Daha fazla bilgi ve yönergeler için [veri bilimi sanal makinesi belgelerine](/azure/machine-learning/data-science-virtual-machine/)bakın.
 - Bir Windows DSVM için, makinenizde yüklü [Git kimlik bilgileri Yöneticisi (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) . *README.MD* dosyasında, **indir ve yükle** bölümüne gidin ve **en son yükleyiciyi**seçin. Yükleyici sayfasından *. exe* yükleyicisini indirin ve çalıştırın. 
 - Bir Linux DSVM için, DSVM 'niz üzerinde ayarlanan ve Azure DevOps 'a eklenen bir SSH ortak anahtarı. Daha fazla bilgi ve yönergeler için [platformlar ve araçlar EKINDE](platforms-and-tools.md#appendix) **SSH ortak anahtarı oluşturma** bölümüne bakın. 
@@ -55,7 +55,7 @@ Depoları kopyalamak ve yerel makinenizde veya DSVM 'nizin içeriğini değişti
 
 Depolarla yerel olarak çalışmak ve değişikliklerinizi paylaşılan ekibe ve proje depolarına iletmek *için, önce* depoları yerel makinenize kopyalamanız veya kopyalamanız gerekir. 
 
-1. Azure DevOps 'da, *https: \/ @ no__t-2 @ no__t-3sunucu adı >/\<kuruluş adı >/\<team name >* (örneğin, **https: \//dev. Azure. com/Databilimenceunit/myTeam**) konumundaki takımınızın Proje Özeti sayfasına gidin.
+1. Azure DevOps 'da, *https:\//\<sunucu adı >/\<kuruluş adı >/\<takım adı*>, örneğin, **https:\//dev.Azure.com/DataScienceUnit/myTeam**.
    
 1. Sol **Gezinti bölmesinde depo** ' ı seçin ve sayfanın üst kısmında, kopyalamak istediğiniz depoyu seçin.
    
@@ -72,7 +72,7 @@ Depolarla yerel olarak çalışmak ve değişikliklerinizi paylaşılan ekibe ve
    
 1. Oluşturduğunuz dizine geçin.
    
-1. Git Bash 'de, kopyalamak istediğiniz her depo için `git clone <clone URL>` komutunu çalıştırın. 
+1. Git Bash ' te, kopyalamak istediğiniz her depo için `git clone <clone URL>` komutunu çalıştırın. 
    
    Örneğin, aşağıdaki komut, **Teamutilities** deposunu yerel makinenizde *myTeam* dizinine kopyalar. 
    
@@ -100,7 +100,7 @@ Takımınız veya projeniz Azure dosya depolama alanında paylaşılan varlıkla
 
 Team Data Science Işlemi tarafından tanımlanan diğer roller ve görevler hakkında ayrıntılı açıklamaların bağlantıları aşağıda verilmiştir:
 
-- [Veri bilimi ekibi için Grup Yöneticisi görevleri](group-manager-tasks.md)
-- [Bir veri bilimi ekibi için ekip sağlama görevleri](team-lead-tasks.md)
-- [Veri bilimi ekibi için proje lideri görevleri](project-lead-tasks.md)
+- [Bir veri bilimi takım için Grup yöneticisi görevleri](group-manager-tasks.md)
+- [Bir veri bilimi takım için takım sağlama görevleri](team-lead-tasks.md)
+- [Proje için bir veri bilimi ekibi müşteri adayı görevleri](project-lead-tasks.md)
 

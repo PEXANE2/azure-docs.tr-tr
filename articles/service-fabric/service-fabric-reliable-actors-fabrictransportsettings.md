@@ -60,7 +60,7 @@ Varsayılan yapılandırmayı değiştirmek için bir [yapılandırma paketi](se
 
 Settings. xml dosyasına bir TransportSettings bölümü ekleyin.
 
-Varsayılan olarak, aktör kodu SectionName 'i "&lt;ActorName @ no__t-1TransportSettings" olarak arar. Bu bulunamazsa, SectionName 'i "TransportSettings" olarak denetler.
+Varsayılan olarak, aktör kodu SectionName 'i "&lt;ActorName&gt;TransportSettings" olarak arar. Bu bulunamazsa, SectionName 'i "TransportSettings" olarak denetler.
 
   ```xml
   <Section Name="MyActorServiceTransportSettings">
@@ -79,7 +79,7 @@ Varsayılan olarak, aktör kodu SectionName 'i "&lt;ActorName @ no__t-1Transport
 
 ### <a name="configure-fabrictransport-settings-for-the-actor-client-assembly"></a>Aktör istemci derlemesi için FabricTransport ayarlarını yapılandırma
 
-İstemci bir hizmetin parçası olarak çalışmıyorsa, Client. exe dosyası ile aynı konumda bir "&lt;Client exe Name&gt;.settings.xml" dosyası oluşturabilirsiniz. Ardından bu dosyaya bir TransportSettings bölümü ekleyin. SectionName "TransportSettings" olmalıdır.
+İstemci bir hizmetin parçası olarak çalışmıyorsa, Client. exe dosyası ile aynı konumda bir "&lt;Client exe name&gt;. Settings. xml" dosyası oluşturabilirsiniz. Ardından bu dosyaya bir TransportSettings bölümü ekleyin. SectionName "TransportSettings" olmalıdır.
 
   ```xml
   <?xml version="1.0" encoding="utf-8"?>

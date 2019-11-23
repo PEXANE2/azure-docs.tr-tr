@@ -27,7 +27,7 @@ Java için Azure Blob depolama istemci kitaplığını kullanarak şunları yap�
 * Bir kapsayıcıdaki tüm Blobları listeleme
 * Kapsayıcı silme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 * Azure depolama hesabı- [depolama hesabı oluşturma](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
@@ -40,7 +40,7 @@ Bu kılavuz, "Java geliştiricileri için tutulma IDE" yapılandırması ile [Ç
 
 [Örnek uygulama](https://github.com/Azure-Samples/storage-blobs-java-quickstart) , temel bir konsol uygulamasıdır.
 
-Uygulamanın bir kopyasını geliştirme ortamınıza indirmek içi [Git](https://git-scm.com/)’i kullanın.
+Uygulamanın bir kopyasını geliştirme ortamınıza indirmek için [Git](https://git-scm.com/)’i kullanın.
 
 ```bash
 git clone https://github.com/Azure-Samples/storage-blobs-java-quickstart.git
@@ -54,7 +54,7 @@ Projenin içeri aktarılması tamamlandığında, **AzureApp.java**’yı açın
 
 ## <a name="configure-your-storage-connection-string"></a>Depolama bağlantı dizelerinizi yapılandırma
 
-Bu uygulamada, depolama hesabınız için bağlantı dizesi sağlamanız gerekir. **AzureApp.Java** dosyasını açın. `storageConnectionString` değişkenini bulun ve önceki bölümde kopyaladığınız bağlantı dizesi değerini yapıştırın. `storageConnectionString` değişkeni, aşağıdaki kod örneğine benzer olmalıdır:
+Uygulamada, depolama hesabınız için bağlantı dizesi sağlamanız gerekir. **AzureApp.Java** dosyasını açın. `storageConnectionString` değişkenini bulun ve önceki bölümde kopyaladığınız bağlantı dizesi değerini yapıştırın. `storageConnectionString` değişkeni, aşağıdaki kod örneğine benzer olmalıdır:
 
 ```java
 public static final String storageConnectionString =

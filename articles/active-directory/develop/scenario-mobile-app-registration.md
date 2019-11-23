@@ -54,10 +54,10 @@ Bu deneyim, uygulamanızın Microsoft Authenticator (ve Android 'de Intune Şirk
 İOS ve Android uygulamaları için aracılı yanıt URI 'sini hesaplamanıza yardımcı olmak üzere uygulama kayıt portalında bir önizleme deneyimi olduğunu unutmayın:
 
 1. Uygulama kaydı ' nda, **kimlik doğrulama** ve seçim ' i seçin
-   **yeni deneyim**![görüntüsünü deneyin](https://user-images.githubusercontent.com/13203188/60799285-2d031b00-a173-11e9-9d28-ac07a7ae894a.png)
+   **yeni deneyim** ![görüntüsünü deneyin](https://user-images.githubusercontent.com/13203188/60799285-2d031b00-a173-11e9-9d28-ac07a7ae894a.png)
 
 2. 
-   **platform**![görüntü Ekle ' yi seçin](https://user-images.githubusercontent.com/13203188/60799366-4c01ad00-a173-11e9-934f-f02e26c9429e.png)
+   **platform** ![görüntü Ekle ' yi seçin](https://user-images.githubusercontent.com/13203188/60799366-4c01ad00-a173-11e9-934f-f02e26c9429e.png)
 
 3. Platformların listesi desteklenmiş olduğunda **iOS**
    ![görüntüsü ' nü seçin](https://user-images.githubusercontent.com/13203188/60799411-60de4080-a173-11e9-9dcc-d39a45826d42.png)
@@ -76,7 +76,7 @@ Yeniden yönlendirme URI 'sini el ile yapılandırmayı tercih ediyorsanız, bun
 
 ### <a name="username-password"></a>Kullanıcı adı parolası
 
-Uygulamanız yalnızca Kullanıcı adı/parola kullanıyorsa, uygulamanız için bir yeniden yönlendirme URI 'SI kaydetmeniz gerekmez. Gerçekten, bu akış Microsoft Identity platform v 2.0 uç noktasına gidiş dönüş yapar ve uygulamanız belirli bir URI üzerinde geri çağrılmayacaktır. Ancak, uygulamanızın ortak bir istemci uygulaması olduğunu ifade etmeniz gerekir. Bu yapılandırma, uygulamanızın **kimlik doğrulama** bölümüne giderek elde edilir ve **Gelişmiş ayarlar** alt bölümünde **Evet**' i seçin. Bu, soruya **ortak bir istemci olarak davran** ( **varsayılan istemci türü** paragraf)
+Uygulamanız yalnızca Kullanıcı adı/parola kullanıyorsa, uygulamanız için bir yeniden yönlendirme URI 'SI kaydetmeniz gerekmez. Gerçekten, bu akış Microsoft Identity platform v 2.0 uç noktasına gidiş dönüş yapar ve uygulamanız belirli bir URI üzerinde geri çağrılmayacaktır. Ancak, uygulamanızın ortak bir istemci uygulaması olduğunu ifade etmeniz gerekir. Bu yapılandırma, uygulamanızın **kimlik doğrulama** bölümüne giderek elde edilir ve **Gelişmiş ayarlar** alt bölümünde **Evet**' i seçerek **uygulamayı ortak istemci olarak işle** ( **varsayılan istemci türü** paragrafında)
 
 ## <a name="api-permissions"></a>API izinleri
 

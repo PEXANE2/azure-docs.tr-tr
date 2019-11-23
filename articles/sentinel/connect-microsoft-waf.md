@@ -40,7 +40,7 @@ Microsoft Web uygulaması güvenlik duvarınız dağıtıldıktan ve veriler al�
     
 1. Azure Sentinel portalında **veri bağlayıcıları**' nı seçin.
 1. Veri bağlayıcıları sayfasında **WAF** kutucuğunu seçin.
-1. [Application Gateway kaynak](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAllResourcesBlade/resourceType/Microsoft.Network%2FapplicationGateways) adresine gıdıp WAF 'nizi seçin.
+1. [Application Gateway kaynak](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAllResourcesBlade/resourceType/Microsoft.Network%2FapplicationGateways) gidin ve WAF 'nizi seçin.
     1. **Tanılama ayarları**' nı seçin.
     1. Tablo altında **+ Tanılama ayarı Ekle** ' yi seçin.
     1. **Tanılama ayarları** sayfasında, bir **ad** yazın ve **Log Analytics gönder**' i seçin.

@@ -1,5 +1,5 @@
 ---
-title: Projenin görevleri ekip veri bilimi Işleminde ortaya çıkmasına neden
+title: Team Data Science Process içinde proje için görevleri sağlama
 description: Takım veri bilimi süreç ekibi üzerinde bir proje için görevlere ilişkin ayrıntılı bir anlatım
 author: marktab
 manager: cgronlun
@@ -48,7 +48,7 @@ Bu öğreticide, [Grup Yöneticisi](group-manager-tasks.md) ve [ekip lideri](tea
 Depoları kopyalamak ve yerel makinenizde veya Veri Bilimi Sanal Makinesi (DSVM) içeriğini değiştirmek ya da Azure dosya depolama alanını ayarlayıp DSVM 'nize bağlamak için şunlar gerekir:
 
 - Azure aboneliği.
-- Git makinenizde yüklü. DSVM kullanıyorsanız git önceden yüklüdür. Aksi takdirde, [platformlar ve araçlar ek](platforms-and-tools.md#appendix)bölümüne bakın.
+- Git makinenizde yüklü. DSVM kullanıyorsanız git önceden yüklüdür. Aksi takdirde bkz [platformları ve araçlarıyla ek](platforms-and-tools.md#appendix).
 - DSVM 'yi, Azure 'da oluşturulan ve yapılandırılan Windows veya Linux DSVM 'yi kullanmak istiyorsanız. Daha fazla bilgi ve yönergeler için [veri bilimi sanal makinesi belgelerine](/azure/machine-learning/data-science-virtual-machine/)bakın.
 - Bir Windows DSVM için, makinenizde yüklü [Git kimlik bilgileri Yöneticisi (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) . *README.MD* dosyasında, **indir ve yükle** bölümüne gidin ve **en son yükleyiciyi**seçin. Yükleyici sayfasından *. exe* yükleyicisini indirin ve çalıştırın. 
 - Bir Linux DSVM için, DSVM 'niz üzerinde ayarlanan ve Azure DevOps 'a eklenen bir SSH ortak anahtarı. Daha fazla bilgi ve yönergeler için [platformlar ve araçlar EKINDE](platforms-and-tools.md#appendix) **SSH ortak anahtarı oluşturma** bölümüne bakın. 
@@ -57,7 +57,7 @@ Depoları kopyalamak ve yerel makinenizde veya Veri Bilimi Sanal Makinesi (DSVM)
 
 Takımınızın **myTeam** projesinde bir proje deposu oluşturmak için:
 
-1. *Https: \/ @ no__t-3 @ no__t-4Sunucu adı >/\< kuruluş adı >/\<team name >* (örneğin, **https: \//dev. Azure. com/Databilimenceunit/myTeam**) konumundaki takımınızın proje **Özeti** sayfasına gidin ve sol gezinmede bulunan **depoları** seçin. 
+1. *Https:\//\<sunucu adı >/\<kuruluş adı >/\<takım adı*> (örneğin, **https:\//dev.Azure.com/DataScienceUnit/myTeam**) ve sol gezinti ' **ı seçerek takımınızın** proje **Özet** sayfasına gidin. 
    
 1. Sayfanın üst kısmındaki depo adını seçin ve ardından açılan menüden **yeni depo** ' ı seçin.
    
@@ -83,7 +83,7 @@ Proje deponuzu takım şablonu deponuzun içeriğiyle doldurmak için:
    
    ![Içeri aktar 'ı seçin](./media/project-lead-tasks/project-leads-5-create-project-repo-4.png)
    
-1. **Git deposunu Içeri aktar** iletişim kutusunda, **kaynak türü**olarak **Git** ' i seçin ve **kopya URL**'si altında **teamtemplate** deponuzun URL 'sini girin. URL, *https: \/ @ no__t-2 @ no__t-3sunucu adı >/\<kuruluş adı >/\< ekip adı >/_git/\<team Template Repository adı >* . Örneğin: **https: \//dev. Azure. com/Databilimenceunit veya MyTeam/_Git/TeamTemplate**. 
+1. **Git deposunu Içeri aktar** iletişim kutusunda, **kaynak türü**olarak **Git** ' i seçin ve **kopya URL**'si altında **teamtemplate** deponuzun URL 'sini girin. URL *: https:\//\<sunucu adı >/\<kuruluş adı >/\<takım adı >/_Git/\<takım şablonu Depo adı >* . Örneğin: **https:\//dev.Azure.com/DataScienceUnit/myTeam/_Git/TeamTemplate**. 
    
 1. **Içeri aktar**' ı seçin. Ekip şablonu deponuzun içeriği proje deponuza aktarılır. 
    
@@ -95,6 +95,6 @@ Projenizin özel ihtiyaçlarını karşılamak için proje deponuzun içeriğini
 
 Team Data Science Işlemi tarafından tanımlanan diğer roller ve görevler hakkında ayrıntılı açıklamaların bağlantıları aşağıda verilmiştir:
 
-- [Veri bilimi ekibi için Grup Yöneticisi görevleri](group-manager-tasks.md)
-- [Bir veri bilimi ekibi için ekip sağlama görevleri](team-lead-tasks.md)
+- [Bir veri bilimi takım için Grup yöneticisi görevleri](group-manager-tasks.md)
+- [Bir veri bilimi takım için takım sağlama görevleri](team-lead-tasks.md)
 - [Bir veri bilimi ekibi için bireysel katkıda bulunan görevler](project-ic-tasks.md)

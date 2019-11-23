@@ -26,7 +26,7 @@ ms.locfileid: "72388586"
 > [!NOTE]
 > Visual Studio App Center mobil uygulama dağıtımında merkezi konumdaki uçtan uca ve tümleşik hizmetleri destekler. Geliştiriciler Sürekli Tümleştirme ve Teslim işlem hattını ayarlamak için **Oluşturma**, **Test** ve **Dağıtım** hizmetlerini kullanabilir. Uygulama dağıtıldıktan sonra, geliştiriciler **Analiz** ve **Tanılama** hizmetlerini kullanarak uygulamanın durumunu ve kullanımını izleyebilir, **Gönderme** hizmetini kullanarak kullanıcılarla etkileşim kurabilir. Geliştiriciler ayrıca kullanıcıların kimliğini doğrulamak için **Kimlik Doğrulaması**'ndan ve uygulama verilerini bulutta kalıcı hale getirmek ve eşitlemek için **Veri** hizmetinden yararlanabilir.
 >
-> Mobil uygulamanızda bulut hizmetlerini tümleştirmek istiyorsanız bugün [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) kaydolun.
+> Bulut hizmetlerini mobil uygulamanızla tümleştirmek istiyorsanız [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc)'a hemen kaydolun.
 
 ## <a name="what-is-offline-data-sync"></a>Çevrimdışı veri eşitleme nedir?
 Çevrimdışı veri eşitleme, geliştiricilerin bir ağ bağlantısı olmadan işlevsel uygulamalar oluşturmasını kolaylaştıran bir Azure Mobile Apps istemci ve sunucu SDK özelliğidir.
@@ -52,7 +52,7 @@ Aşağıdaki öğreticilerde, Azure Mobile Apps kullanarak mobil istemcilerinize
 * [Evrensel Windows Platformu: çevrimdışı eşitlemeyi etkinleştir]
 
 ## <a name="what-is-a-sync-table"></a>Eşitleme tablosu nedir?
-"/Tables" uç noktasına erişmek için Azure mobil istemci SDK 'Ları `IMobileServiceTable` (.NET istemci SDK) veya `MSTable` (iOS istemci) gibi arabirimler sağlar. Bu API 'Ler doğrudan Azure Mobil uygulama arka ucuna bağlanır ve istemci cihazının bir ağ bağlantısı yoksa başarısız olur.
+"/Tables" uç noktasına erişmek için Azure mobil istemci SDK 'Ları `IMobileServiceTable` (.NET istemci SDK) veya `MSTable` (iOS istemcisi) gibi arabirimler sağlar. Bu API 'Ler doğrudan Azure Mobil uygulama arka ucuna bağlanır ve istemci cihazının bir ağ bağlantısı yoksa başarısız olur.
 
 Çevrimdışı kullanımı desteklemek için uygulamanızın bunun yerine `IMobileServiceSyncTable` (.NET istemci SDK) veya `MSSyncTable` (iOS istemcisi) gibi *Eşitleme tablosu* API 'lerini kullanması gerekir. Aynı CRUD işlemleri (oluşturma, okuma, güncelleştirme, silme), eşitleme tablosu API 'Lerine göre çalışarak, artık *yerel bir mağazadan*okudukları veya yazdıkları durumlar hariç. Tüm eşitleme tablosu işlemleri gerçekleştirilemeden önce, yerel deponun başlatılmış olması gerekir.
 
@@ -64,7 +64,7 @@ Windows Phone veya Microsoft Store üzerinde SQLite tabanlı uygulama kullanmak 
 Geliştiriciler, kendi yerel mağazalarını da uygulayabilir. Örneğin, verileri mobil istemcide şifreli bir biçimde depolamak isterseniz, şifreleme için SQLCipher kullanan bir yerel depo tanımlayabilirsiniz.
 
 ## <a name="what-is-a-sync-context"></a>Eşitleme bağlamı nedir?
-Bir *eşitleme bağlamı* , bir mobil istemci nesnesiyle (`IMobileServiceClient` veya `MSClient`) ilişkilendirilir ve eşitleme tabloları ile yapılan değişiklikleri izler. Eşitleme bağlamı, daha sonra sunucusuna gönderilen CUD işlemlerinin sıralı bir listesini (oluşturma, güncelleştirme, silme) tutan bir *işlem kuyruğu*tutar.
+Bir *eşitleme bağlamı* , bir mobil istemci nesnesiyle (`IMobileServiceClient` veya `MSClient`gibi) ilişkilendirilir ve eşitleme tabloları ile yapılan değişiklikleri izler. Eşitleme bağlamı, daha sonra sunucusuna gönderilen CUD işlemlerinin sıralı bir listesini (oluşturma, güncelleştirme, silme) tutan bir *işlem kuyruğu*tutar.
 
 Yerel bir depo, [.NET istemci SDK 'Sı]`IMobileServicesSyncContext.InitializeAsync(localstore)` gibi bir başlatma yöntemi kullanılarak eşitleme bağlamıyla ilişkilendirilir.
 
@@ -74,9 +74,9 @@ Eşitleme tabloları kullanılırken, yerel değişiklikler bir Azure Mobil uygu
 * **Gönderim**: push, eşitleme bağlamındaki bir işlemdir ve son göndermeden bu yana tüm CUD değişikliklerini gönderir. Aksi takdirde, bazı işlemler sırada gönderilemediğinden yalnızca tek bir tablonun değişikliklerini gönderemeyebilir. Gönderim, Azure Mobil uygulama arka ucunuza bir dizi REST çağrısı yürütür, bu da sunucu veritabanınızı değiştirir.
 * **Çekme**: çekme, tablo başına temelinde gerçekleştirilir ve sunucu verilerinin yalnızca bir alt kümesini almak için bir sorguyla özelleştirilebilir. Azure mobil istemci SDK 'Ları, sonuçta elde edilen verileri yerel depoya ekler.
 * **Örtük gönderim**: bekleyen yerel güncelleştirmeleri olan bir tabloya karşı bir çekme yürütülürse, çekme önce eşitleme bağlamında bir `push()` yürütür. Bu gönderim, zaten kuyruğa alınan değişiklikler ve sunucudan yeni veriler arasındaki çakışmaların en aza indirilmesine yardımcı olur.
-* **Artımlı eşitleme**: çekme işlemine ilk parametre yalnızca istemcide kullanılan bir *sorgu adıdır* . Null olmayan bir sorgu adı kullanırsanız, Azure Mobile SDK *artımlı eşitleme*gerçekleştirir. Bir çekme işlemi bir sonuç kümesi döndürdüğünde, bu sonuç kümesinden en son @no__t 1 zaman damgası SDK yerel sistem tablolarında depolanır. Sonraki çekme işlemleri yalnızca bu zaman damgasından sonraki kayıtları alır.
+* **Artımlı eşitleme**: çekme işlemine ilk parametre yalnızca istemcide kullanılan bir *sorgu adıdır* . Null olmayan bir sorgu adı kullanırsanız, Azure Mobile SDK *artımlı eşitleme*gerçekleştirir. Bir çekme işlemi bir sonuç kümesi döndürdüğünde, bu sonuç kümesinden en son `updatedAt` zaman damgası SDK yerel sistem tablolarında depolanır. Sonraki çekme işlemleri yalnızca bu zaman damgasından sonraki kayıtları alır.
 
-  Artımlı eşitleme kullanmak için sunucunuzun anlamlı `updatedAt` değerleri döndürmesi ve ayrıca bu alana göre sıralamayı desteklemesi gerekir. Ancak SDK, updatedAt alanına kendi sıralamasını eklediğinden, kendi `orderBy` yan tümcesine sahip bir çekme sorgusu kullanamazsınız.
+  Artımlı eşitleme kullanmak için sunucunuzun anlamlı `updatedAt` değerler döndürmesi ve ayrıca bu alana göre sıralamayı desteklemesi gerekir. Ancak, SDK updatedAt alanına kendi sıralamasını eklediğinden, kendi `orderBy` yan tümcesine sahip bir çekme sorgusu kullanamazsınız.
 
   Sorgu adı seçtiğiniz herhangi bir dize olabilir, ancak uygulamanızdaki her bir mantıksal sorgu için benzersiz olmalıdır.
   Aksi takdirde, farklı çekme işlemleri aynı artımlı eşitleme zaman damgasının üzerine yazabilir ve sorgularınız hatalı sonuçlar döndürebilir.
@@ -87,8 +87,8 @@ Eşitleme tabloları kullanılırken, yerel değişiklikler bir Azure Mobil uygu
         await todoTable.PullAsync("todoItems" + userid,
             syncTable.Where(u => u.UserId == userid));
 
-  Artımlı eşitlemeyi devre dışı bırakmak istiyorsanız, sorgu KIMLIĞI olarak `null` geçirin. Bu durumda, tüm kayıtlar, büyük olasılıkla verimsiz olan `PullAsync` ' a her çağrıda alınır.
-* **Temizleniyor**: `IMobileServiceSyncTable.PurgeAsync` kullanarak yerel deponun içeriğini temizleyebilirsiniz.
+  Artımlı eşitleme ' yi devre dışı bırakmak istiyorsanız, `null` sorgu KIMLIĞI olarak geçirin. Bu durumda, tüm kayıtlar, potansiyel olarak verimsiz olan `PullAsync`her çağrısıyla alınır.
+* **Temizleme**: `IMobileServiceSyncTable.PurgeAsync`kullanarak yerel deponun içeriğini temizleyebilirsiniz.
   İstemci veritabanında eski veriler varsa veya bekleyen tüm değişiklikleri atmak istiyorsanız Temizleme işlemi gerekebilir.
 
   Bir Temizleme, bir tabloyu yerel depodan temizler. Sunucu veritabanıyla eşitleme bekleyen işlemler varsa Temizleme, *temizlemeyi zorla* parametresi ayarlanmadığı takdirde bir özel durum oluşturur.

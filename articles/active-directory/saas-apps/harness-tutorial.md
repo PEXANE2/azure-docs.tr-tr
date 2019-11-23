@@ -99,19 +99,19 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
 1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. Seçin **yeni kullanıcı** ekranın üstünde.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına username@companydomain.extension girin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
 Bu bölümde, B. Simon 'u, imzalanacak erişim vererek Azure çoklu oturum açma özelliğini kullanacak şekilde etkinleştireceksiniz.
 
@@ -119,7 +119,7 @@ Bu bölümde, B. Simon 'u, imzalanacak erişim vererek Azure çoklu oturum açma
 1. Uygulamalar listesinde, **bandı**' ni seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
-   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
+   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
 
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
@@ -145,7 +145,7 @@ Bu bölümde, B. Simon 'u, imzalanacak erişim vererek Azure çoklu oturum açma
 
     ![Bandı yapılandırma](./media/harness-tutorial/configure01.png)
 
-5. **SSO sağlayıcıları** bölümünde, ve 2**SAML**@no__t **SSO sağlayıcıları Ekle**' ye tıklayın.
+5. **SSO sağlayıcıları** bölümünde, ve **SAML** > **SSO sağlayıcıları Ekle** ' ye tıklayın.
 
     ![Bandı yapılandırma](./media/harness-tutorial/configure03.png)
 
@@ -169,7 +169,7 @@ Azure AD kullanıcılarının, ana oturum açmasını sağlamak için, bu kullan
 
 1. Yönetici olarak oturum açın.
 
-1. Sayfanın sağ üst kısmında, **sürekli güvenlik** > **erişim yönetimi** > **Kullanıcı**' ya tıklayın.
+1. Sayfanın sağ üst kısmında, **sürekli güvenlik** > **erişim yönetimi** > **Kullanıcılar**' a tıklayın.
 
     ![Bandı yapılandırma](./media/harness-tutorial/configure04.png)
 
@@ -181,15 +181,15 @@ Azure AD kullanıcılarının, ana oturum açmasını sağlamak için, bu kullan
 
     ![Bandı yapılandırma](./media/harness-tutorial/configure06.png)
 
-    a. **E-posta adresi (es)** metin kutusuna, `B.simon@contoso.com` gibi kullanıcının e-postasını girin.
+    a. **E-posta adresi (es)** metin kutusuna, `B.simon@contoso.com`gibi kullanıcının e-postasını girin.
 
     b. **Kullanıcı gruplarınızı**seçin.
 
-    c. **Gönder**' e tıklayın.
+    c. **Gönder**'e tıklayın.
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
 
 Erişim panelinde bir ara Kutucuğa tıkladığınızda, SSO 'yu ayarladığınız bir şekilde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 

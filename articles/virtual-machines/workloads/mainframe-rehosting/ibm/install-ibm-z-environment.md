@@ -62,11 +62,11 @@ Bu makalede, Azure 'da Z geliştirme ve test ortamı (zD & T) Enterprise Edition
 
 3. **Bağlan** DÜĞMESI aracılığıyla VM 'Nin **genel bakış** dikey penceresinde gösterilen SSH kimlik bilgilerini alın. **SSH** sekmesini SEÇIN ve SSH oturum açma komutunu panoya kopyalayın.
 
-4. Yerel BILGISAYARıNıZDAN bir [bash kabuğu](/azure/cloud-shell/quickstart) 'nda oturum açın ve komutu yapıştırın. **SSH @ no__t-1User ID @ no__t-2 @ no__t-3 @ no__t-4ıP Address @ no__t-5**biçiminde olacaktır. Kimlik bilgileriniz istendiğinde, Giriş dizininize bir bağlantı kurmak için bu bilgileri girin.
+4. Yerel BILGISAYARıNıZDAN bir [bash kabuğu](/azure/cloud-shell/quickstart) 'nda oturum açın ve komutu yapıştırın. **Ssh\<Kullanıcı kimliği\>\@\<IP adresi\>** biçiminde olacaktır. Kimlik bilgileriniz istendiğinde, Giriş dizininize bir bağlantı kurmak için bu bilgileri girin.
 
 ## <a name="copy-the-installation-file-to-the-server"></a>Yükleme dosyasını sunucuya Kopyala
 
-Web sunucusunun yükleme dosyası **Zdt @ no__t-1ınstall @ no__t-2EE\_V12.0.0.1.tgz**. IBM tarafından sağlanan medyaya dahildir. Bu dosyayı Ubuntu sanal makinenize yüklemeniz gerekir.
+Web sunucusunun yükleme dosyası **Zdt\_Install\_EE\_v 12.0.0.1. tgz**' dir. IBM tarafından sağlanan medyaya dahildir. Bu dosyayı Ubuntu sanal makinenize yüklemeniz gerekir.
 
 1. Yeni oluşturulan görüntüde her şeyin güncel olduğundan emin olmak için komut satırından aşağıdaki komutu girin:
 
@@ -91,7 +91,7 @@ Web sunucusunun yükleme dosyası **Zdt @ no__t-1ınstall @ no__t-2EE\_V12.0.0.1
 
 ## <a name="install-the-enterprise-edition"></a>Enterprise Edition 'ı yükleyin
 
-1. ZDT dizinine gidin ve aşağıdaki komutları kullanarak ZDT @ no__t-0ınstall @ no__t-1EE\_V12.0.0.1.tgz dosyasını açın:
+1. ZDT dizinine gidin ve aşağıdaki komutları kullanarak ZDT\_Install\_EE\_V 12.0.0.1. tgz dosyasını açın:
 
     ```
     cd ZDT

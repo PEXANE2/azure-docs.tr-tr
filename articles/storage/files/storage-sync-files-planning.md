@@ -142,11 +142,11 @@ Sonuçları CSV 'de göstermek için:
 | Dosya/klasör | Not |
 |-|-|
 | Desktop. ini | Sisteme özel dosya |
-| ethumbs. db $ | Küçük resimler için geçici dosya |
+| ethumbs.db$ | Küçük resimler için geçici dosya |
 | ~$\*.\* | Office geçici dosyası |
 | \*. tmp | Geçici dosya |
-| \*. laccdb | DB kilitleme dosyasına erişin|
-| 635D02A9D91C401B97884B82B3BCDADEA. * | İç eşitleme dosyası|
+| \*.laccdb | DB kilitleme dosyasına erişin|
+| 635D02A9D91C401B97884B82B3BCDAEA.* | İç eşitleme dosyası|
 | Sistem birimi bilgilerini \\ | Birime özgü klasör |
 | $RECYCLE. BÖLME| Klasör |
 | \\eşitleme | Eşitleme klasörü |
@@ -249,21 +249,21 @@ Azure Dosya Eşitleme yalnızca aşağıdaki bölgelerde kullanılabilir:
 
 | Bölge | Veri merkezi konumu |
 |--------|---------------------|
-| Avustralya Doğu | New South Wales |
+| Avustralya Doğu | Yeni Güney Galler |
 | Avustralya Güneydoğu | Victoria |
 | Güney Brezilya | Sao Paulo Eyaleti |
-| Kanada Orta | Toronto |
+| Orta Kanada | Toronto |
 | Doğu Kanada | Quebec City |
 | Orta Hindistan | Pune |
 | Orta ABD | Iowa |
-| Doğu Asya | Hong Kong ÖIB |
+| Doğu Asya | Hong Kong SAR |
 | Doğu ABD | Virginia |
 | Doğu ABD 2 | Virginia |
 | Fransa Orta | Paris |
 | Fransa Güney * | Marseille |
-| Kore Orta | Seoul |
+| Kore Orta | Seul |
 | Kore Güney | Busan |
-| Doğu Japonya | Tokyo, Saitama |
+| Japonya Doğu | Tokyo, Saitama |
 | Japonya Batı | Osaka |
 | Orta Kuzey ABD | Illinois |
 | Kuzey Avrupa | İrlanda |
@@ -301,8 +301,8 @@ Coğrafi olarak yedekli depolama ve Azure Dosya Eşitleme arasında yük devretm
 | Avustralya Doğu      | Avustralya Güneydoğu|
 | Avustralya Güneydoğu | Avustralya Doğu     |
 | Güney Brezilya        | Orta Güney ABD   |
-| Kanada Orta      | Doğu Kanada        |
-| Doğu Kanada         | Kanada Orta     |
+| Orta Kanada      | Doğu Kanada        |
+| Doğu Kanada         | Orta Kanada     |
 | Orta Hindistan       | Güney Hindistan        |
 | Orta ABD          | Doğu ABD 2          |
 | Doğu Asya           | Güneydoğu Asya     |
@@ -310,8 +310,8 @@ Coğrafi olarak yedekli depolama ve Azure Dosya Eşitleme arasında yük devretm
 | Doğu ABD 2           | Orta ABD         |
 | Fransa Orta      | Fransa Güney       |
 | Fransa Güney        | Fransa Orta     |
-| Doğu Japonya          | Japonya Batı         |
-| Japonya Batı          | Doğu Japonya         |
+| Japonya Doğu          | Japonya Batı         |
+| Japonya Batı          | Japonya Doğu         |
 | Kore Orta       | Kore Güney        |
 | Kore Güney         | Kore Orta      |
 | Kuzey Avrupa        | Batı Avrupa        |

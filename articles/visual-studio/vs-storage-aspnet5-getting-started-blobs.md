@@ -46,7 +46,7 @@ ASP.NET Core projelerindeki bloblara programlı bir şekilde erişmek için, zat
     using LogLevel = Microsoft.Extensions.Logging.LogLevel;
     ```
 
-1. Depolama hesabı bilgilerinizi temsil eden `CloudStorageAccount` nesnesi alın. Azure hizmet yapılandırmasından depolama Bağlantı dizenizi ve depolama hesabı bilgilerinizi almak için aşağıdaki kodu kullanın:
+1. Depolama hesabı bilgilerinizi temsil eden bir `CloudStorageAccount` nesnesi alın. Azure hizmet yapılandırmasından depolama Bağlantı dizenizi ve depolama hesabı bilgilerinizi almak için aşağıdaki kodu kullanın:
 
     ```cs
      CloudStorageAccount storageAccount = new CloudStorageAccount(
@@ -55,7 +55,7 @@ ASP.NET Core projelerindeki bloblara programlı bir şekilde erişmek için, zat
         "<access-key>"), true);
     ```
 
-1. Depolama hesabınızdaki mevcut bir kapsayıcıya `CloudBlobContainer` başvurusu almak için `CloudBlobClient` nesnesi kullanın:
+1. Depolama hesabınızdaki mevcut bir kapsayıcıya `CloudBlobContainer` bir başvuru almak için `CloudBlobClient` nesnesini kullanın:
 
     ```cs
     // Create a blob client.
@@ -67,7 +67,7 @@ ASP.NET Core projelerindeki bloblara programlı bir şekilde erişmek için, zat
 
 ## <a name="create-a-container-in-code"></a>Kodda kapsayıcı oluşturma
 
-@No__t-1 ' i çağırarak depolama hesabınızda bir kapsayıcı oluşturmak için `CloudBlobClient` ' yı da kullanabilirsiniz:
+Ayrıca, `CreateIfNotExistsAsync`çağırarak depolama hesabınızda bir kapsayıcı oluşturmak için `CloudBlobClient` de kullanabilirsiniz:
 
 ```cs
 // Create a blob client.
@@ -91,7 +91,7 @@ await container.SetPermissionsAsync(new BlobContainerPermissions
 
 ## <a name="upload-a-blob-into-a-container"></a>Bir kapsayıcıya bir blob yükleme
 
-Bir blob dosyasını kapsayıcıya yüklemek için bir kapsayıcı başvurusu alın ve bunu bir blob başvurusu almak için kullanın. Sonra `UploadFromStreamAsync` yöntemini çağırarak herhangi bir veri akışını bu başvuruya yükleyin. Bu işlem zaten orada değilse blobu oluşturur ve var olan bir Blobun üzerine yazar. 
+Bir blob dosyasını kapsayıcıya yüklemek için bir kapsayıcı başvurusu alın ve bunu bir blob başvurusu almak için kullanın. Ardından `UploadFromStreamAsync` yöntemini çağırarak bu başvuruya herhangi bir veri akışını karşıya yükleyin. Bu işlem zaten orada değilse blobu oluşturur ve var olan bir Blobun üzerine yazar. 
 
 ```cs
 // Get a reference to a blob named "myblob".
@@ -107,7 +107,7 @@ using (var fileStream = System.IO.File.OpenRead(@"path\myfile"))
 
 ## <a name="list-the-blobs-in-a-container"></a>Blob’ları bir kapsayıcıda listeleme
 
-Bir kapsayıcıdaki Blobları listelemek için, önce bir kapsayıcı başvurusu alın, ardından içindeki Blobları ve/veya dizinleri almak için `ListBlobsSegmentedAsync` yöntemini çağırın. Döndürülen bir @no__t için zengin özellik ve Yöntem kümesine erişmek için, bir `CloudBlockBlob`, `CloudPageBlob` veya `CloudBlobDirectory` nesnesine atayın. Blob türünü bilmiyorsanız, hangisinin üzerine ekleneceğini öğrenmek için bir tür denetimi kullanın.
+Bir kapsayıcıdaki Blobları listelemek için, önce bir kapsayıcı başvurusu alın, sonra, içindeki Blobları ve/veya dizinleri almak için `ListBlobsSegmentedAsync` yöntemini çağırın. Döndürülen bir `IListBlobItem`için zengin özellik ve yöntemlere erişmek için, `CloudBlockBlob`, `CloudPageBlob`veya `CloudBlobDirectory` nesnesine atayın. Blob türünü bilmiyorsanız, hangisinin üzerine ekleneceğini öğrenmek için bir tür denetimi kullanın.
 
 ```cs
 BlobContinuationToken token = null;
@@ -145,7 +145,7 @@ Bkz. hızlı başlangıç: blob kapsayıcısının içeriğini listeetmenin diğ
 
 ## <a name="download-a-blob"></a>Blob indirme
 
-Bir blobu indirmek için, önce blob 'a bir başvuru alın, sonra `DownloadToStreamAsync` yöntemini çağırın. Aşağıdaki örnek, blob içeriğini daha sonra yerel bir dosya olarak kaydedebilmeniz için bir Stream nesnesine aktarmak üzere `DownloadToStreamAsync` yöntemini kullanır.
+Bir blobu indirmek için, önce blob 'a bir başvuru alın, sonra `DownloadToStreamAsync` yöntemini çağırın. Aşağıdaki örnek, blob içeriğini daha sonra yerel bir dosya olarak kaydedebilmeniz için bir Stream nesnesine aktarmak için `DownloadToStreamAsync` yöntemini kullanır.
 
 ```cs
 // Get a reference to a blob named "photo1.jpg".

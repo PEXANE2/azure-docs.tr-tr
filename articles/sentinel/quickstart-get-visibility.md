@@ -72,7 +72,7 @@ Yerleşik çalışma kitapları, bu hizmetlerde oluşturulan olaylara derinlemes
       ![PAL Alto panosu](./media/qs-get-visibility/palo-alto-week-query.png)
 
 
-@No__t-0button @ no__t-1 ana sorgusunu düzenleyerek çalışma kitaplarını özelleştirebilirsiniz. [Sorguyu düzenlemek için](../azure-monitor/log-query/get-started-portal.md)![button @ no__t-Log Analytics 1 düğmesine tıklayabilir ve üç nokta (...) simgesini seçebilir ve **kutucuk verilerini Özelleştir**' i seçerek, ana saat filtresini düzenlemenizi veya belirli kutucukları kaldırmanıza olanak sağlayabilirsiniz. çalışma kitabı.
+Ana sorgu ![düğmesini](./media/qs-get-visibility/edit-query-button.png)düzenleyerek çalışma kitaplarını özelleştirebilirsiniz. [Sorguyu düzenlemek üzere Log Analytics](../azure-monitor/log-query/get-started-portal.md)gitmek için düğme ![düğmesine](./media/qs-get-visibility/go-to-la-button.png) ve üç nokta (...) simgesini seçebilir ve **kutucuk verilerini Özelleştir**' i seçerek ana saat filtresini düzenlemenizi veya belirli kutucukları çalışma kitabından kaldırmanızı sağlayabilirsiniz.
 
 Sorgularla çalışma hakkında daha fazla bilgi için bkz [. Öğretici: Log Analytics Içindeki görsel veriler](../azure-monitor/learn/tutorial-logs-dashboards.md)
 

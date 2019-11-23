@@ -57,7 +57,7 @@ Genellikle, platform varsayılanını kullanmanız önerilir ve bu genellikle si
 | UWP | Yes | Hayır | Eklenen |
 | Xamarin.Android | Yes | Yes  | Sistem |
 | Xamarin.iOS | Yes | Yes  | Sistem |
-| Xamarin. Mac| Yes | Hayır | Eklenen |
+| Xamarin.Mac| Yes | Hayır | Eklenen |
 
 ^ "http://localhost" yeniden yönlendirme URI 'SI gerektirir
 
@@ -211,7 +211,7 @@ authResult = await App.PCA.AcquireTokenInteractive(App.Scopes)
 
 #### <a name="detecting-the-presence-of-custom-tabs-on-xamarinandroid"></a>Xamarin. Android üzerinde özel sekmelerin varlığını algılama
 
-Tarayıcıda çalışan uygulamalarla SSO 'yu etkinleştirmek için sistem Web tarayıcısını kullanmak istiyorsanız, ancak özel sekme desteği olan bir tarayıcıya sahip olmayan Android cihazlara yönelik kullanıcı deneyimiyle ilgili endişeli varsa, @no__t_ `IsSystemWebViewAvailable()` yöntemini çağırarak karar verme seçeneğiniz vardır. 1_. Bu yöntem, PackageManager özel sekmeleri algılarsa ve aygıtta algılanmadığında `false` `true` döndürür.
+Tarayıcıda çalışan uygulamalarla SSO 'yu etkinleştirmek için sistem Web tarayıcısını kullanmak istiyorsanız, ancak özel sekme desteği olan bir tarayıcıya sahip olmayan Android cihazlara yönelik kullanıcı deneyimiyle ilgili endişeli varsa, `IPublicClientApplication``IsSystemWebViewAvailable()` yöntemini çağırarak karar verme seçeneğiniz vardır. Bu yöntem, PackageManager özel sekmeleri algılarsa ve aygıtta algılanmadığında `false` `true` döndürür.
 
 Bu yöntemin döndürdüğü değere ve gereksinimlerinize bağlı olarak, bir karar verebilir:
 

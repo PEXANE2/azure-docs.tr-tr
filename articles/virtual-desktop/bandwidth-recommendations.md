@@ -27,10 +27,10 @@ Aşağıdaki tabloda, sorunsuz bir kullanıcı deneyimi için önerilen en düş
 
 |İş yükü        |Örnek uygulamalar                                                                                           |Önerilen bant genişliği|
 |----------------|--------------------------------------------------------------------------------------------------------------|---------------------|
-|Görev çalışanı     |Microsoft Word, Outlook, Excel, Adobe Reader                                                                  |1,5 @ no__t-0Mbps        |
-|Office çalışanı   |Microsoft Word, Outlook, Excel, Adobe Reader, PowerPoint, Fotoğraf Görüntüleyicisi                                        |3 @ no__t-0Mbps          |
-|Bilgi çalışanı|Microsoft Word, Outlook, Excel, Adobe Reader, PowerPoint, Fotoğraf Görüntüleyicisi, Java                                  |5 @ no__t-0Mbps          |
-|Güç çalışanı    |Microsoft Word, Outlook, Excel, Adobe Reader, PowerPoint, Fotoğraf Görüntüleyicisi, Java, CAD/CAM, çizim/yayımlama|15 @ no__t-0Mbps         |
+|Görev çalışanı     |Microsoft Word, Outlook, Excel, Adobe Reader                                                                  |1,5&nbsp;Mbps        |
+|Office çalışanı   |Microsoft Word, Outlook, Excel, Adobe Reader, PowerPoint, Fotoğraf Görüntüleyicisi                                        |3&nbsp;Mbps          |
+|Bilgi çalışanı|Microsoft Word, Outlook, Excel, Adobe Reader, PowerPoint, Fotoğraf Görüntüleyicisi, Java                                  |5&nbsp;Mbps          |
+|Güç çalışanı    |Microsoft Word, Outlook, Excel, Adobe Reader, PowerPoint, Fotoğraf Görüntüleyicisi, Java, CAD/CAM, çizim/yayımlama|15&nbsp;Mbps         |
 
 >[!NOTE]
 >Bu öneriler, oturumda kaç kullanıcının olduğunu dikkate almaksızın geçerlidir.

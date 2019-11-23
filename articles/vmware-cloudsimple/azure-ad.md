@@ -85,7 +85,7 @@ Başlamadan önce, genel yönetici ayrıcalıklarıyla Azure aboneliğinize eri�
 
     | **Seçenek** | **Açıklama** |
     |------------|-----------------|
-    | **Ad** | Kimlik kaynağının adı. |
+    | **Adı** | Kimlik kaynağının adı. |
     | **Kullanıcılar için temel DN** | Kullanıcılar için temel ayırt edici ad.  Azure AD için şunu kullanın: `OU=AADDC Users,DC=<domain>,DC=<domain suffix>` örnek: `OU=AADDC Users,DC=cloudsimplecustomer,DC=com`.|
     | **Etki alanı adı** | Etki alanının FDQN 'ı, örneğin, example.com. Bu metin kutusunda bir IP adresi sağlamaın. |
     | **Etki alanı diğer adı** | *(isteğe bağlı)* Etki alanı NetBIOS adı. SSPI kimlik doğrulamaları kullanıyorsanız, Active Directory etki alanının NetBIOS adını kimlik kaynağının diğer adı olarak ekleyin. |

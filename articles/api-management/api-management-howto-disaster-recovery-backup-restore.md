@@ -35,7 +35,7 @@ Bu kılavuzda, yedekleme ve geri yükleme işlemlerinin nasıl otomatikleştiril
 > Yedekleme işlemi, Azure portal analiz dikey penceresinde gösterilen raporlarda kullanılan önceden toplanmış günlük verilerini yakalamaz.
 
 > [!WARNING]
-> Her yedeklemenin süresi 30 gün sonra dolar. 30 günlük süre dolduktan sonra bir yedeklemeyi geri yüklemeye çalışırsanız, geri yükleme `Cannot restore: backup expired` iletisiyle başarısız olur.
+> Her yedeklemenin süresi 30 gün sonra dolar. 30 günlük süre dolduktan sonra bir yedeklemeyi geri yüklemeye çalışırsanız, geri yükleme `Cannot restore: backup expired` bir iletiyle başarısız olur.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -54,20 +54,20 @@ Azure Resource Manager kullanan kaynaklarda yaptığınız tüm görevlerin aşa
 
 ### <a name="create-an-azure-active-directory-application"></a>Azure Active Directory uygulaması oluşturma
 
-1. [Azure Portal](https://portal.azure.com)oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. API Management hizmeti örneğinizi içeren aboneliği kullanarak **Azure Active Directory** (Azure Active Directory > yönet/Uygulama kayıtları) **uygulama kayıtları** sekmesine gidin.
 
     > [!NOTE]
     > Azure Active Directory varsayılan dizin hesabınıza görünmüyorsa, hesabınıza gerekli izinleri vermek için Azure aboneliğinin yöneticisine başvurun.
 
-3. **Yeni uygulama kaydı**' na tıklayın.
+3. **Yeni uygulama kaydı**’na tıklayın.
 
     Sağ tarafta **Oluştur** penceresi görünür. Bu, AAD uygulamasının ilgili bilgilerini girdiğiniz yerdir.
 
 4. Uygulama için bir ad girin.
 5. Uygulama türü için **Yerel**' i seçin.
 6. **Yeniden YÖNLENDIRME URI**'si için `http://resources` gibi bir yer tutucu URL 'si girin, çünkü bu gerekli bir alandır, ancak değer daha sonra kullanılmaz. Uygulamayı kaydetmek için onay kutusuna tıklayın.
-7. **Oluştur**'u tıklatın.
+7. **Oluştur**'a tıklayın.
 
 ### <a name="add-an-application"></a>Uygulama ekleme
 
@@ -78,7 +78,7 @@ Azure Resource Manager kullanan kaynaklarda yaptığınız tüm görevlerin aşa
 5. **Windows** **Azure hizmet yönetim API'si**seçin.
 6. **Seç**' e basın.
 
-    ![İzin Ekle](./media/api-management-howto-disaster-recovery-backup-restore/add-app.png)
+    ![İzin ekleme](./media/api-management-howto-disaster-recovery-backup-restore/add-app.png)
 
 7. Yeni eklenen uygulamanın yanındaki **temsilci izinleri** ' ne tıklayın, **Azure hizmet yönetimi 'ne (Önizleme) erişim**kutusunu işaretleyin.
 8. **Seç**' e basın.
@@ -113,18 +113,18 @@ namespace GetTokenResourceManagerRequests
 }
 ```
 
-Aşağıdaki yönergeleri kullanarak `{tenant id}`, `{application id}` ve `{redirect uri}` ' yi değiştirin:
+`{tenant id}`, `{application id}`ve `{redirect uri}` aşağıdaki yönergeleri kullanarak değiştirin:
 
-1. @No__t-0 ' yı oluşturduğunuz Azure Active Directory uygulamasının kiracı KIMLIĞIYLE değiştirin. **Uygulama kayıtları** -> **uç noktalarına**tıklayarak kimliğe erişebilirsiniz.
+1. `{tenant id}`, oluşturduğunuz Azure Active Directory uygulamasının kiracı KIMLIĞIYLE değiştirin. **Uygulama kayıtları** -> **uç noktalarına**tıklayarak kimliğe erişebilirsiniz.
 
     ![Uç Noktalar][api-management-endpoint]
 
-2. @No__t-0 ' yı, **Ayarlar** sayfasına giderek aldığınız değerle değiştirin.
-3. @No__t-0 ' ı Azure Active Directory uygulamanızın **yeniden yönlendirme URI** 'si sekmesinden değeri ile değiştirin.
+2. `{application id}`, **Ayarlar** sayfasına giderek aldığınız değerle değiştirin.
+3. `{redirect uri}`, Azure Active Directory uygulamanızın **yeniden yönlendirme URI 'leri** sekmesinden değeri ile değiştirin.
 
     Değerler belirtildiğinde, kod örneği aşağıdaki örneğe benzer bir belirteç döndürmelidir:
 
-    ![Simgesinde][api-management-arm-token]
+    ![Belirteç][api-management-arm-token]
 
     > [!NOTE]
     > Belirtecin belirli bir süre sonunda süresi dolacak. Yeni bir belirteç oluşturmak için kod örneğini yeniden yürütün.
@@ -165,9 +165,9 @@ burada:
 }
 ```
 
-@No__t-0 istek üst bilgisinin değerini `application/json` olarak ayarlayın.
+`Content-Type` istek üst bilgisinin değerini `application/json`olarak ayarlayın.
 
-Yedekleme, tamamlanması bir dakikadan uzun süreolabilecek uzun süredir çalışan bir işlemdir. İstek başarılı olursa ve yedekleme işlemi başladıysa, `Location` üst bilgisine sahip `202 Accepted` yanıt durum kodu alırsınız. İşlemin durumunu öğrenmek için `Location` üstbilgisindeki URL 'ye ' GET ' istekleri yapın. Yedekleme devam ederken, bir ' 202 kabul edildi ' durum kodu almaya devam edersiniz. @No__t-0 yanıt kodu, yedekleme işleminin başarıyla tamamlandığını gösterir.
+Yedekleme, tamamlanması bir dakikadan uzun süreolabilecek uzun süredir çalışan bir işlemdir. İstek başarılı olursa ve yedekleme işlemi başladıysa, `Location` üst bilgisine sahip `202 Accepted` yanıt durum kodu alırsınız. İşlemin durumunu öğrenmek için `Location` üstbilgisindeki URL 'ye ' GET ' istekleri yapın. Yedekleme devam ederken, bir ' 202 kabul edildi ' durum kodu almaya devam edersiniz. `200 OK` yanıt kodu, yedekleme işleminin başarıyla tamamlandığını gösterir.
 
 Yedekleme isteği yaparken aşağıdaki kısıtlamalara göz önünde edin:
 
@@ -192,7 +192,7 @@ burada:
 
 -   `subscriptionId`-bir yedeği geri yüklemekte olduğunuz API Management hizmetini tutan aboneliğin KIMLIĞI
 -   `resourceGroupName`-bir yedeği geri yüklemekte olduğunuz Azure API Management hizmetini tutan kaynak grubunun adı
--   `serviceName`-oluşturma sırasında belirtilen API Management hizmetinin adı.
+-   `serviceName`-API Management hizmetinin oluşturma sırasında belirtilen şekilde geri yüklenmekte olan adı
 -   `api-version`-`2018-06-01-preview` ile Değiştir
 
 İsteğin gövdesinde, yedekleme dosyası konumunu belirtin. Diğer bir deyişle, Azure depolama hesabı adı, erişim anahtarı, blob kapsayıcısı adı ve yedekleme adını ekleyin:
@@ -206,9 +206,9 @@ burada:
 }
 ```
 
-@No__t-0 istek üst bilgisinin değerini `application/json` olarak ayarlayın.
+`Content-Type` istek üst bilgisinin değerini `application/json`olarak ayarlayın.
 
-Restore, tamamlanması 30 veya daha fazla dakika süren uzun süredir çalışan bir işlemdir. İstek başarılı olursa ve geri yükleme işlemi başladıysa, `Location` üst bilgisine sahip `202 Accepted` yanıt durum kodu alırsınız. İşlemin durumunu öğrenmek için `Location` üstbilgisindeki URL 'ye ' GET ' istekleri yapın. Geri yükleme devam ederken, ' 202 kabul edildi ' durum kodunu almaya devam edersiniz. @No__t-0 yanıt kodu, geri yükleme işleminin başarıyla tamamlandığını gösterir.
+Restore, tamamlanması 30 veya daha fazla dakika süren uzun süredir çalışan bir işlemdir. İstek başarılı olursa ve geri yükleme işlemi başladıysa, `Location` üst bilgisine sahip `202 Accepted` yanıt durum kodu alırsınız. İşlemin durumunu öğrenmek için `Location` üstbilgisindeki URL 'ye ' GET ' istekleri yapın. Geri yükleme devam ederken, ' 202 kabul edildi ' durum kodunu almaya devam edersiniz. `200 OK` yanıt kodu, geri yükleme işleminin başarıyla tamamlandığını gösterir.
 
 > [!IMPORTANT]
 > Geri yüklenen hizmetin **SKU 'su** , geri yüklenmekte olan yedeklenen hizmetin SKU 'su **ile aynı olmalıdır** .
@@ -225,8 +225,9 @@ Restore, tamamlanması 30 veya daha fazla dakika süren uzun süredir çalışan
 Yedekleme/geri yükleme işleminin farklı talimatları için aşağıdaki kaynaklara göz atın.
 
 -   [Azure API Management hesaplarını çoğaltma](https://www.returngis.net/en/2015/06/replicate-azure-api-management-accounts/)
--   [Logic Apps ile yedekleme ve geri yükleme API Management otomatikleştirme](https://github.com/Azure/api-management-samples/tree/master/tutorials/automating-apim-backup-restore-with-logic-apps)
--   [Azure API Management: yapılandırma @no__t yedekleme ve geri yükleme](https://blogs.msdn.com/b/stuartleeks/archive/2015/04/29/azure-api-management-backing-up-and-restoring-configuration.aspx)-1_Stuart tarafından ayrıntılı yaklaşım resmi kılavuzumüne uymuyor, ancak ilginç._
+-   [Logic Apps ile API Management Yedekleme ve Geri Yükleme İşlemlerini Otomatikleştirme](https://github.com/Azure/api-management-samples/tree/master/tutorials/automating-apim-backup-restore-with-logic-apps)
+-   [Azure API Management: yapılandırmayı yedekleme ve geri yükleme](https://blogs.msdn.com/b/stuartleeks/archive/2015/04/29/azure-api-management-backing-up-and-restoring-configuration.aspx)
+     _, Stuart tarafından ayrıntılı yaklaşım resmi kılavuzumuzu karşılamıyor ancak ilginç._
 
 [backup an api management service]: #step1
 [restore an api management service]: #step2

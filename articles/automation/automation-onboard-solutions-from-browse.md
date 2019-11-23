@@ -20,7 +20,7 @@ ms.locfileid: "72372798"
 
 Azure Otomasyonu, işletim sistemi güvenlik güncelleştirmelerini yönetmek, değişiklikleri izlemek ve bilgisayarlarınıza nelerin yüklü olduğunu envantere almak için çözümler sağlar. Makineleri eklemek için birden çok yol vardır, çözümü [bir sanal makineden](automation-onboard-solutions-from-vm.md), [Otomasyon hesabınızdan](automation-onboard-solutions-from-automation-account.md), sanal makinelere gözatarken veya [runbook](automation-onboard-solutions.md)'a ekleyebilirsiniz. Bu makalede, Azure 'daki sanal makinelere göz atarken bu çözümleri ekleme ele alınmaktadır.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 https://portal.azure.com adresinden Azure'da oturum açın
 
@@ -99,7 +99,7 @@ Güncelleştirme Yönetimi çözümünü kullandıysanız, isteğe bağlı olara
 
 * Zamanlamayı Güncelleştir-her birinin, oluşturduğunuz güncelleştirme dağıtımlarıyla eşleşen adları olur)
 
-* Çözüm için oluşturulan karma çalışan grupları-her biri, machine1. contoso. com _9ceb8108-26c9-4051-B6B3-227600d715c8 ' e benzer şekilde adlandırılır.
+* Çözüm için oluşturulan karma çalışan grupları-her biri, machine1. contoso. com_9ceb8108-26c9-4051-B6B3-227600d715c8 ' e benzer şekilde adlandırılır.
 
 VM'leri çalışma saatleri dışında başlat/durdur çözümünü kullandıysanız, isteğe bağlı olarak, çözümü kaldırdıktan sonra artık gerekli olmayan aşağıdaki öğeleri kaldırmak isteyebilirsiniz.
 
@@ -113,7 +113,7 @@ Alternatif olarak, Log Analytics çalışma alanınızdan Otomasyon hesabınızd
 
 Birden çok makine eklerken, **etkinleştirilemiyor**olarak gösteren makineler olabilir. Bazı makinelerin etkinleştirilmemesinin farklı nedenleri vardır. Aşağıdaki bölümlerde, eklenmeye çalışılırken bir VM 'de durumu **etkinleştirememek** için olası nedenler gösterilmektedir.
 
-### <a name="vm-reports-to-a-different-workspace-workspacename--change-configuration-to-use-it-for-enabling"></a>VM, farklı bir çalışma alanına rapor verebilir: ' \<Çalışmaalanıadı @ no__t-1 '.  Yapılandırmayı etkinleştirmek için kullanacak şekilde değiştirin
+### <a name="vm-reports-to-a-different-workspace-workspacename--change-configuration-to-use-it-for-enabling"></a>VM, farklı bir çalışma alanına rapor verebilir: '\<Çalışmaalanıadı\>'.  Yapılandırmayı etkinleştirmek için kullanacak şekilde değiştirin
 
 **Neden**: Bu hata, raporları başka bir çalışma alanına eklemek istediğiniz VM 'nin gösterir.
 
@@ -151,7 +151,7 @@ Birden çok makine eklerken, **etkinleştirilemiyor**olarak gösteren makineler 
 
 Bir sanal makineyi Güncelleştirme Yönetimi kaldırmak için:
 
-* Log Analytics çalışma alanınızda, kapsam yapılandırması için kayıtlı aramadan VM 'yi kaldırın `MicrosoftDefaultScopeConfig-Updates`. Kayıtlı aramalar, çalışma alanınızda **genel** altında bulunabilir.
+* Log Analytics çalışma alanınızda, kapsam yapılandırma `MicrosoftDefaultScopeConfig-Updates`için kaydedilen aramadan VM 'yi kaldırın. Kayıtlı aramalar, çalışma alanınızda **genel** altında bulunabilir.
 * Linux için [Microsoft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) 'ı veya [Log Analytics aracısını](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)kaldırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar

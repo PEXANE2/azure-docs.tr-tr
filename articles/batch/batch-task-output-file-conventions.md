@@ -25,7 +25,7 @@ ms.locfileid: "72302681"
 
 [!INCLUDE [batch-task-output-include](../../includes/batch-task-output-include.md)]
 
-Görev verilerini kalıcı hale getirmenin bir yolu, [.NET için Azure Batch dosya kuralları kitaplığını][nuget_package]kullanmaktır. Dosya kuralları kitaplığı, Görev çıkış verilerini Azure depolama 'ya depolama ve alma sürecini basitleştirir. Dosya kuralları kitaplığını hem görev hem de istemci kodundaki &mdash; ' ı kalıcı dosyalar için görev kodunda ve istemci kodunda listelemek ve almak için kullanabilirsiniz. Görev kodunuz Ayrıca, bir [görev bağımlılıkları](batch-task-dependencies.md) senaryosunda olduğu gibi yukarı akış görevlerinin çıkışını almak için kitaplığı da kullanabilir.
+Görev verilerini kalıcı hale getirmenin bir yolu, [.NET için Azure Batch dosya kuralları kitaplığını][nuget_package]kullanmaktır. Dosya kuralları kitaplığı, Görev çıkış verilerini Azure depolama 'ya depolama ve alma sürecini basitleştirir. Dosya kuralları kitaplığını, kalıcı dosyalar için görev kodunda &mdash; hem görev hem de istemci kodunda ve istemci kodunda listelemek ve almak için kullanabilirsiniz. Görev kodunuz Ayrıca, bir [görev bağımlılıkları](batch-task-dependencies.md) senaryosunda olduğu gibi yukarı akış görevlerinin çıkışını almak için kitaplığı da kullanabilir.
 
 Dosya kuralları kitaplığı ile çıkış dosyalarını almak için, belirli bir iş veya görevin dosyalarını KIMLIĞE ve amaca göre listeleyerek bulabilirsiniz. Dosyaların adlarını veya konumlarını bilmeniz gerekmez. Örneğin, belirli bir görevin tüm ara dosyalarını listelemek veya belirli bir iş için bir önizleme dosyası almak üzere dosya kuralları kitaplığını kullanabilirsiniz.
 
@@ -74,7 +74,7 @@ Azure depolama 'da kapsayıcılar ve BLOB 'larla çalışma hakkında daha fazla
 
 Görev çıktısını Azure depolama 'ya kalıcı hale getirmek için, önce [Cloudjob][net_cloudjob]'u çağırarak bir kapsayıcı oluşturun. [Prepareoutputstorageasync][net_prepareoutputasync]. Bu genişletme yöntemi bir [Cloudstorageaccount][net_cloudstorageaccount] nesnesini parametre olarak alır. Dosya kuralları standardına göre adlı bir kapsayıcı oluşturur, böylece içerikleri Azure portal ve makalenin ilerleyen kısımlarında ele alınan alma yöntemleri tarafından bulunabilir.
 
-Genellikle, istemci uygulamanızda bir kapsayıcı oluşturmak için kodu yerleştirebilirsiniz @no__t-havuzlarınızı, işlerinizi ve görevlerinizi oluşturan uygulama.
+Genellikle, havuzlarınızı, işlerinizi ve görevlerinizi oluşturan uygulamayı &mdash; istemci uygulamanızda bir kapsayıcı oluşturmak için kodu yerleştirebilirsiniz.
 
 ```csharp
 CloudJob job = batchClient.JobOperations.CreateJob(
@@ -109,7 +109,7 @@ await taskOutputStorage.SaveAsync(TaskOutputKind.TaskOutput, "frame_full_res.jpg
 await taskOutputStorage.SaveAsync(TaskOutputKind.TaskPreview, "frame_low_res.jpg");
 ```
 
-[Taskoutputstorage](/dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage)'ın `kind` parametresi. [Saveasync](/dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage.saveasync#overloads) yöntemi kalıcı dosyaları kategorilere ayırır. Önceden tanımlanmış dört [Taskoutputkind][net_taskoutputkind] türü vardır: `TaskOutput`, `TaskPreview`, `TaskLog` ve `TaskIntermediate.` özel çıkış kategorileri de tanımlayabilirsiniz.
+[Taskoutputstorage](/dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage)'ın `kind` parametresi. [Saveasync](/dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage.saveasync#overloads) yöntemi kalıcı dosyaları kategorilere ayırır. Önceden tanımlanmış dört [Taskoutputkind][net_taskoutputkind] türü vardır: `TaskOutput`, `TaskPreview`, `TaskLog`ve `TaskIntermediate.` Ayrıca özel çıkış kategorileri tanımlayabilirsiniz.
 
 Bu çıktı türleri, belirli bir görevin kalıcı çıkışları için toplu Işi daha sonra Sorgulayabileceğiniz zaman hangi tür çıkışları listebir belirtmenizi sağlar. Diğer bir deyişle, bir görevin çıkışlarını listelemeniz durumunda, listeyi çıkış türlerinden birindeki filtreleyebilirsiniz. Örneğin, "bana görev *109*için *Önizleme* çıkışı ver." Çıkışları listeleme ve alma hakkında daha fazla bilgi, makalenin sonraki kısımlarında çıktıyı alma ' da görünür.
 
@@ -134,9 +134,9 @@ Görev çıkışları için **Taskoutputkind** türünde olduğu gibi, bir işin
 
 ### <a name="store-task-logs"></a>Görev günlüklerini depola
 
-Bir görev veya iş tamamlandığında, bir dosyayı dayanıklı depolamaya kalıcı hale getirmek için, &mdash; günlük dosyaları veya `stdout.txt` ve `stderr.txt` gibi bir görevin yürütülmesi sırasında güncellenen dosyaları kalıcı hale getirmeniz gerekebilir. Bu amaçla, Azure Batch dosya kuralları Kitaplığı [Taskoutputstorage][net_taskoutputstorage]sağlar. [Savetrackedadsync][net_savetrackedasync] yöntemi. [Savetrackedadsync][net_savetrackedasync]sayesinde, düğümdeki bir dosyadaki güncelleştirmeleri izleyebilir (belirttiğiniz aralıkta) ve bu güncelleştirmeleri Azure Storage 'da kalıcı hale getirebilirsiniz.
+Bir görev veya iş tamamlandığında bir dosyayı dayanıklı depolamaya kalıcı hale getirmek için, bir görevin yürütülmesi sırasında güncelleştirilmiş dosyaları &mdash;, örneğin `stdout.txt` ve `stderr.txt`gibi kalıcı hale getirmeniz gerekebilir. Bu amaçla, Azure Batch dosya kuralları Kitaplığı [Taskoutputstorage][net_taskoutputstorage]sağlar. [Savetrackedadsync][net_savetrackedasync] yöntemi. [Savetrackedadsync][net_savetrackedasync]sayesinde, düğümdeki bir dosyadaki güncelleştirmeleri izleyebilir (belirttiğiniz aralıkta) ve bu güncelleştirmeleri Azure Storage 'da kalıcı hale getirebilirsiniz.
 
-Aşağıdaki kod parçacığında, görevi yürütme sırasında her 15 saniyede bir `stdout.txt` ' i güncelleştirmek için [Savetrackedadsync][net_savetrackedasync] kullanırız:
+Aşağıdaki kod parçacığında, görevi yürütme sırasında her 15 saniyede bir Azure depolama `stdout.txt` güncelleştirmek için [Savetrackedadsync][net_savetrackedasync] kullanırız:
 
 ```csharp
 TimeSpan stdoutFlushDelay = TimeSpan.FromSeconds(3);
@@ -161,9 +161,9 @@ using (ITrackedSaveOperation stdout =
 }
 ```
 
-Açıklamalı bölüm `Code to process data and produce output file(s)`, görevin normalde gerçekleştirdiği kod için bir yer tutucudur. Örneğin, Azure depolama 'dan verileri indiren ve üzerinde dönüştürme veya hesaplama gerçekleştiren bir kodunuz olabilir. Bu kod parçacığının önemli bölümü, bir dosyayı [Savetrackedadsync][net_savetrackedasync]ile düzenli aralıklarla güncelleştirmek üzere `using` bloğunda bu tür kodu nasıl kaydırabileceğinizi gösterir.
+Açıklamalı bölüm `Code to process data and produce output file(s)`, görevin normalde gerçekleştirdiği kod için bir yer tutucudur. Örneğin, Azure depolama 'dan verileri indiren ve üzerinde dönüştürme veya hesaplama gerçekleştiren bir kodunuz olabilir. Bu kod parçacığının önemli bölümü, bir dosyayı [Savetrackedadsync][net_savetrackedasync]ile düzenli aralıklarla güncelleştirmek için bir `using` bloğunda bu tür kodu nasıl kaydırabileceğinizi gösterir.
 
-Düğüm Aracısı, havuzdaki her düğüm üzerinde çalışan ve düğüm ile Batch hizmeti arasında komut ve denetim arabirimini sağlayan bir programdır. Düğüm aracısının düğüm üzerindeki stdout. txt dosyasına standart içeriğini temizleme zamanına sahip olduğundan emin olmak için, bu `using` bloğunun sonunda `Task.Delay` çağrısı gereklidir. Bu gecikme olmadan çıktının son birkaç saniyesini kaçırmak mümkündür. Bu gecikme tüm dosyalar için gerekli olmayabilir.
+Düğüm Aracısı, havuzdaki her düğüm üzerinde çalışan ve düğüm ile Batch hizmeti arasında komut ve denetim arabirimini sağlayan bir programdır. `Task.Delay` çağrısı, düğüm aracısının düğüm üzerindeki stdout. txt dosyasına standart içeriği Temizleme zamanına sahip olduğundan emin olmak için bu `using` bloğunun sonunda gereklidir. Bu gecikme olmadan çıktının son birkaç saniyesini kaçırmak mümkündür. Bu gecikme tüm dosyalar için gerekli olmayabilir.
 
 > [!NOTE]
 > Dosya izlemeyi **Savetrackedadsync**ile etkinleştirdiğinizde, yalnızca izlenen dosyaya *ekler* Azure Storage 'da kalıcı hale getirilir. Bu yöntemi yalnızca, geri dönüş olmayan günlük dosyalarını veya dosyanın sonuna ekleme işlemleri ile öğesine yazılan diğer dosyaları izlemek için kullanın.
@@ -210,7 +210,7 @@ Azure portal görev çıktı dosyalarını ve günlüklerini görüntülemek iç
 1. Projeyi **Visual Studio 2019**' de açın.
 2. Batch ve Storage **hesabı kimlik bilgilerinizi** Microsoft. Azure. Batch. Samples. Common projesindeki **accountsettings. Settings** öğesine ekleyin.
 3. Çözümü **oluşturun** (ancak çalıştırmayın). İstenirse tüm NuGet paketlerini geri yükleyin.
-4. **PersistOutputsTask**için bir [uygulama paketini](batch-application-packages.md) karşıya yüklemek üzere Azure Portal kullanın. . Zip paketine `PersistOutputsTask.exe` ve bağımlı derlemelerini ekleyin, uygulama KIMLIĞINI "PersistOutputsTask" olarak ve uygulama paketi sürümünü "1,0" olarak ayarlayın.
+4. **PersistOutputsTask**için bir [uygulama paketini](batch-application-packages.md) karşıya yüklemek üzere Azure Portal kullanın. `PersistOutputsTask.exe` ve bağımlı derlemelerini. zip paketine dahil edin, uygulama KIMLIĞINI "PersistOutputsTask" olarak ve uygulama paketi sürümünü "1,0" olarak ayarlayın.
 5. **Persistoutkoyar** projesini **başlatın** (çalıştırın).
 6. Örneği çalıştırmak için kullanılacak Kalıcılık teknolojisini seçmeniz istendiğinde, örnek için dosya kuralları kitaplığını kullanarak görev çıkışını kalıcı hale getirmek için **1** girin. 
 

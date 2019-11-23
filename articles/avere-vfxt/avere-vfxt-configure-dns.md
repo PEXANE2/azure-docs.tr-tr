@@ -29,7 +29,7 @@ Bir DNS sunucusunun kullanılıp kullanılmayacağını saptarken şunları göz
 
 * Kerberos kimlik doğrulaması kullanmak istiyorsanız DNS gereklidir.
 
-## <a name="load-balancing"></a>Yük Dengeleme
+## <a name="load-balancing"></a>Yük dengeleme
 
 Genel yükü dağıtmak için DNS etki alanınızı, istemciye yönelik IP adresleri için hepsini bir kez deneme yük dağıtımı kullanacak şekilde yapılandırın.
 
@@ -41,13 +41,14 @@ En iyi performans için, DNS sunucunuzu aşağıdaki diyagramda gösterildiği g
 
 Sol tarafta bir küme vServer gösterilir ve IP adresleri ortadaki ve sağ tarafta görüntülenir. Her bir istemci erişim noktasını, gösterildiği gibi bir kayıt ve işaretçilerle yapılandırın.
 
-![Avere Cluster hepsini bir kez deneme DNS diyagramı @ no__t-1<!--- separate text description file provided  [diagram text description](avere-vfxt-rrdns-alt-text.md) -->
+![avere kümesi hepsini bir kez deneme DNS diyagramı](media/avere-vfxt-rrdns-diagram.png) 
+<!--- separate text description file provided  [diagram text description](avere-vfxt-rrdns-alt-text.md) -->
 
 Her bir istemciye yönelik IP adresinin, küme tarafından iç kullanım için benzersiz bir adı olmalıdır. (Bu diyagramda istemci IP 'Leri, açıklık için VS1-Client-IP-* olarak adlandırılır, ancak üretimde, istemci * gibi daha kısa bir ad kullanmanız gerekir.)
 
 İstemciler, sanal sunucu adını sunucu bağımsız değişkeni olarak kullanarak kümeyi bağlayabilir. 
 
-DNS sunucunuzun ``named.conf`` dosyasını değiştirip sanal sunucunuza sorgular için döngüsel sıra ayarlayın. Bu seçenek, tüm kullanılabilir değerlerin üzerinden kaydırılmasını sağlar. Aşağıdakine benzer bir ifade ekleyin:
+Sanal sunucunuza sorgular için döngüsel sıra ayarlamak üzere DNS sunucunuzun ``named.conf`` dosyasını değiştirin. Bu seçenek, tüm kullanılabilir değerlerin üzerinden kaydırılmasını sağlar. Aşağıdakine benzer bir ifade ekleyin:
 
 ```
 options {
@@ -73,7 +74,7 @@ update add 12.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-12.example.com
 
 ## <a name="cluster-dns-settings"></a>Küme DNS ayarları
 
-VFXT kümesinin **küme** > **Yönetim ağı** ayarları sayfasında kullandığı DNS sunucusunu belirtin. Bu sayfadaki ayarlar şunlardır:
+**Yönetim ağ** ayarları sayfasında, vFXT KÜMESININ kullandığı DNS sunucusunu belirtin ** > .** Bu sayfadaki ayarlar şunlardır:
 
 * DNS sunucusu adresi
 * DNS etki alanı adı

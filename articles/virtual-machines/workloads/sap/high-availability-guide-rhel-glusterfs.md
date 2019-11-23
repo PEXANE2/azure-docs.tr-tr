@@ -120,15 +120,15 @@ Tüm gerekli kaynakları dağıtmak için GitHub 'daki hızlı başlangıç şab
 
 Şu öğeler **[A]** ön eki olan tüm düğümlere uygulanabilir, **[1]** -yalnızca düğüm 1, **[2]** için **geçerlidir-yalnızca** düğüm 3 için geçerlidir.
 
-1. **[A]** kurulum konak adı çözümlemesi
+1. **[A]**  Kurulum ana bilgisayar adı çözümlemesi
 
-   Bir DNS sunucusu kullanabilir veya tüm düğümlerdeki/etc/Konakları değiştirebilirsiniz. Bu örnek,/etc/hosts dosyasının nasıl kullanılacağını gösterir.
+   Bir DNS sunucusu kullanabilir veya/etc/hosts tüm düğümlerde değiştirin. Bu örnek/Etc/Hosts dosyasının nasıl kullanılacağını gösterir.
    Aşağıdaki komutlarda IP adresini ve ana bilgisayar adını değiştirin
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>
 
-   /Etc/hostklasörüne aşağıdaki satırları ekleyin. IP adresini ve ana bilgisayar adını ortamınıza uyacak şekilde değiştirin
+   / Etc/hosts aşağıdaki satırları ekleyin. IP adresi ve ana bilgisayar adını, ortamınızla eşleşecek şekilde değiştirin.
 
    <pre><code># IP addresses of the Gluster nodes
    <b>10.0.0.40 glust-0</b>

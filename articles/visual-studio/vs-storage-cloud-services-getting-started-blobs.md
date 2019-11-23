@@ -24,7 +24,7 @@ ms.locfileid: "72298799"
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## <a name="overview"></a>Genel Bakış
-Bu makalede, Visual Studio Cloud Services projesindeki Visual Studio **bağlı hizmetler Ekle** iletişim kutusunu kullanarak bir Azure depolama hesabı oluşturduktan veya başvurduktan sonra Azure Blob Storage 'ı kullanmaya nasıl başlacağınız açıklanır. Blob kapsayıcılarının nasıl erişebileceğini ve oluşturulacağını ve Blobları karşıya yükleme, listeleme ve indirme gibi genel görevlerin nasıl gerçekleştirileceğini göstereceğiz. Örnekler C @ no__t-0 dilinde yazılır ve [.NET için Microsoft Azure depolama Istemci kitaplığını](https://msdn.microsoft.com/library/azure/dn261237.aspx)kullanır.
+Bu makalede, Visual Studio Cloud Services projesindeki Visual Studio **bağlı hizmetler Ekle** iletişim kutusunu kullanarak bir Azure depolama hesabı oluşturduktan veya başvurduktan sonra Azure Blob Storage 'ı kullanmaya nasıl başlacağınız açıklanır. Blob kapsayıcılarının nasıl erişebileceğini ve oluşturulacağını ve Blobları karşıya yükleme, listeleme ve indirme gibi genel görevlerin nasıl gerçekleştirileceğini göstereceğiz. Örnekler, C\# yazılır ve [.NET için Microsoft Azure depolama Istemci kitaplığı](https://msdn.microsoft.com/library/azure/dn261237.aspx)' nı kullanır.
 
 Azure Blob depolama, dünyanın her yerinden HTTP veya HTTPS aracılığıyla erişilebilen büyük miktarda yapılandırılmamış veriyi depolamaya yönelik bir hizmettir. Tek bir blob herhangi bir boyutta olabilir. Blob 'lar görüntüler, ses ve video dosyaları, ham veriler ve belge dosyaları gibi şeyler olabilir.
 

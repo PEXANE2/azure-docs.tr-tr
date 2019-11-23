@@ -1,6 +1,6 @@
 ---
-title: Create an Azure private link service using Azure PowerShell| Microsoft Docs
-description: Learn how to create an Azure private link service using Azure PowerShell
+title: Azure PowerShell kullanarak bir Azure özel bağlantı hizmeti oluşturun | Microsoft Docs
+description: Azure PowerShell kullanarak bir Azure özel bağlantı hizmeti oluşturmayı öğrenin
 services: private-link
 author: asudbring
 ms.service: private-link
@@ -14,16 +14,16 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74229385"
 ---
-# <a name="create-a-private-link-service-using-azure-powershell"></a>Create a Private Link service using Azure PowerShell
-This article shows you how to create a private link service in Azure using Azure PowerShell.
+# <a name="create-a-private-link-service-using-azure-powershell"></a>Azure PowerShell kullanarak özel bir bağlantı hizmeti oluşturma
+Bu makalede, Azure 'da Azure PowerShell kullanarak özel bir bağlantı hizmeti oluşturma gösterilmektedir.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-If you choose to install and use PowerShell locally, this article requires the latest Azure PowerShell module version. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-Az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
+PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz, bu makalede en son Azure PowerShell modülü sürümü gerekir. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-Az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Before you can create your private link, you must create a resource group with [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). The following example creates a resource group named *myResourceGroup* in the *WestCentralUS* location:
+Özel bağlantıyı oluşturabilmeniz için, [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)ile bir kaynak grubu oluşturmanız gerekir. Aşağıdaki örnek *WestCentralUS* konumunda *myresourcegroup* adlı bir kaynak grubu oluşturur:
 
 ```azurepowershell
 $location = "westcentralus"
@@ -32,8 +32,8 @@ New-AzResourceGroup `
   -ResourceGroupName $rgName `
   -Location $location
 ```
-## <a name="create-a-virtual-network"></a>Sanal ağ oluşturun
-Create a virtual network for your private link with [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). The following example creates a virtual network named *myvnet* with subnet for frontend (*frontendSubnet*), backend (*backendSubnet*), private link (*otherSubnet*):
+## <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
+[New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)ile özel bağlantınız için bir sanal ağ oluşturun. Aşağıdaki örnek, ön uç (*Frontendsubnet*), arka uç (*backendsubnet*), özel bağlantı (*othersubnet*) için alt ağ ile *myvnet* adlı bir sanal ağ oluşturur:
 
 ```azurepowershell
 $virtualNetworkName = "myvnet"
@@ -62,8 +62,8 @@ $vnet = New-AzVirtualNetwork `
 -AddressPrefix "10.0.0.0/16" `
 -Subnet $frontendSubnet,$backendSubnet,$otherSubnet 
 ```
-## <a name="create-internal-load-balancer"></a>Create Internal Load Balancer
-Create an internal Standard Load Balancer with [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer). The following example creates an internal Standard Load Balancer using the frontend IP configuration, probe, rule and backend pool  that you created in the preceding steps:
+## <a name="create-internal-load-balancer"></a>Iç Load Balancer oluştur
+[New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer)ile iç standart Load Balancer oluşturun. Aşağıdaki örnek, önceki adımlarda oluşturduğunuz ön uç IP yapılandırması, araştırma, kural ve arka uç havuzunu kullanarak bir iç Standart Load Balancer oluşturur:
 
 ```azurepowershell
 
@@ -79,8 +79,8 @@ $probe = New-AzLoadBalancerProbeConfig -Name 'myHealthProbe' -Protocol Http -Por
 $rule = New-AzLoadBalancerRuleConfig -Name HTTP -FrontendIpConfiguration $frontendIP -BackendAddressPool  $beaddresspool -Probe $probe -Protocol Tcp -FrontendPort 80 -BackendPort 80
 $NRPLB = New-AzLoadBalancer -ResourceGroupName $rgName -Name $lbName -Location $location -FrontendIpConfiguration $frontendIP -BackendAddressPool $beAddressPool -Probe $probe -LoadBalancingRule $rule -Sku Standard 
 ```
-## <a name="create-a-private-link-service"></a>Create a private link service
-Create a private link service with [New-AzPrivateLinkService](/powershell/module/az.network/new-azloadbalancer).  This example creates a private link service named *myPLS* using Standard Load Balancer in resource group named *myResourceGroup*. 
+## <a name="create-a-private-link-service"></a>Özel bağlantı hizmeti oluşturma
+[New-AzPrivateLinkService](/powershell/module/az.network/new-azloadbalancer)ile özel bir bağlantı hizmeti oluşturun.  Bu örnek, *Myresourcegroup*adlı kaynak grubunda standart Load Balancer kullanarak *mypls* adlı bir özel bağlantı hizmeti oluşturur. 
 ```azurepowershell
 
 $plsIpConfigName = "PLS-ipconfig" 
@@ -102,20 +102,20 @@ $privateLinkService = New-AzPrivateLinkService `
 -IpConfiguration $IPConfig 
 ```
 
-### <a name="get-private-link-service"></a>Get private link service
-Get details about your private link service with [New-AzPrivateLinkService](/powershell/module/az.network/get-azprivatelinkservice) as follows:
+### <a name="get-private-link-service"></a>Özel bağlantı hizmeti al
+[New-AzPrivateLinkService](/powershell/module/az.network/get-azprivatelinkservice) ile özel bağlantı hizmetinize ilişkin ayrıntıları aşağıdaki gibi alın:
 
 ```azurepowershell
 $pls = Get-AzPrivateLinkService -Name $plsName -ResourceGroupName $rgName 
 ```
 
-At this stage, your Private Link Service is successfully created and is ready to receive the traffic. Note that above example is only to demonstrate creating Private Link Service using PowerShell.  We haven't configured the load balancer backend pools or any application on the backend pools to listen to the traffic. If you want to see end to end traffic flows, you can strongly advised to configure your application behind your standard load balancer. 
+Bu aşamada, özel bağlantı hizmetiniz başarıyla oluşturulur ve trafik almaya hazırdır. Yukarıdaki örneğin yalnızca PowerShell kullanarak özel bağlantı hizmeti oluşturmayı gösterdiğine unutmayın.  Trafiği dinlemek için yük dengeleyici arka uç havuzlarını veya arka uç havuzlarındaki herhangi bir uygulamayı yapılandırmadınız. Uçtan uca trafik akışlarını görmek istiyorsanız uygulamanızı standart yük dengeleyicinizin arkasında yapılandırmanız önemle önerilir. 
 
-Next we will demonstrate how to map this service to a private endpoint in different VNet using PowerShell. Again, the example is limited to creating the Private Endpoint and connecting to Private Link Service created above. You can create Virtual Machines in the Virtual Network to send/receive traffic to the private endpoint for building your scenario. 
+Ardından, PowerShell kullanarak bu hizmeti farklı VNet 'teki özel bir uç noktaya nasıl eşleneceğini göstereceğiz. Bu örnek, Özel uç nokta oluşturma ve yukarıda oluşturulan özel bağlantı hizmetine bağlanma ile sınırlıdır. Senaryonuzu oluşturmak için özel uç noktaya trafik göndermek/almak için sanal ağda sanal makineler oluşturabilirsiniz. 
 
 ## <a name="create-a-private-endpoint"></a>Özel Uç Nokta oluşturma
-### <a name="create-a-virtual-network"></a>Sanal ağ oluşturun
-Create a virtual network for your private endpoint with [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). This example creates a virtual network named *vnetPE* in resource group named *myResourceGroup*:
+### <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
+[New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)ile özel uç noktanız için bir sanal ağ oluşturun. Bu örnek, *Myresourcegroup*adlı kaynak grubunda *vnetpe* adlı bir sanal ağ oluşturur:
  
 ```azurepowershell
 $virtualNetworkNamePE = "vnetPE"
@@ -134,8 +134,8 @@ $vnetPE = New-AzVirtualNetwork `
 -Subnet $peSubnet 
 ```
 
-### <a name="create-a-private-endpoint"></a>Create a private endpoint
-Create a private endpoint for consuming private link service created above in your virtual network:
+### <a name="create-a-private-endpoint"></a>Özel uç nokta oluşturma
+Sanal ağınızda yukarıda oluşturulan özel bağlantı hizmeti için özel bir uç nokta oluşturun:
  
 ```azurepowershell
  
@@ -146,8 +146,8 @@ $plsConnection= New-AzPrivateLinkServiceConnection `
 $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName -Name $peName -Location $location -Subnet $vnetPE.subnets[0] -PrivateLinkServiceConnection $plsConnection -ByManualRequest 
 ```
  
-### <a name="get-private-endpoint"></a>Get private endpoint
-Get the IP address of the private endpoint with `Get-AzPrivateEndpoint` as follows:
+### <a name="get-private-endpoint"></a>Özel uç nokta al
+`Get-AzPrivateEndpoint` aşağıdaki gibi özel uç noktanın IP adresini alın:
 
 ```azurepowershell
 # Get Private Endpoint and its IP Address 
@@ -160,8 +160,8 @@ $pe.NetworkInterfaces[0].IpConfigurations[0].PrivateIpAddress
 
 ```
 
-### <a name="approve-the-private-endpoint-connection"></a>Approve the private endpoint connection
-Approve the private end point connection to the private link service with 'Approve-AzPrivateEndpointConnection`.
+### <a name="approve-the-private-endpoint-connection"></a>Özel uç nokta bağlantısını onaylama
+Özel bağlantı hizmetine özel uç noktası bağlantısını ' Onayla-AzPrivateEndpointConnection ' ile onaylayın.
 
 ```azurepowershell   
 
@@ -174,5 +174,5 @@ Approve-AzPrivateEndpointConnection -ResourceId $pls.PrivateEndpointConnections[
 ``` 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Learn more about [Azure private link](private-link-overview.md)
+- [Azure özel bağlantısı](private-link-overview.md) hakkında daha fazla bilgi edinin
  

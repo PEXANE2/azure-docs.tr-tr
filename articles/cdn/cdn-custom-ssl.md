@@ -176,7 +176,7 @@ Kendi sertifikanızı kullanıyorsanız etki alanı doğrulaması gerekmez.
 
 CNAME kaydınız, *Ad*’ın özel etki alanınız, *Değer*’in ise CDN uç noktası ana bilgisayar adınız olduğu aşağıdaki biçimde olmalıdır:
 
-| Adı            | Tür  | Değer                 |
+| Ad            | Tür  | Değer                 |
 |-----------------|-------|-----------------------|
 | < www. contoso. com > | CNAME | contoso.azureedge.net |
 
@@ -192,7 +192,7 @@ Otomatik doğrulama genellikle birkaç saat sürer. Etki alanınızı 24 saat i�
 ### <a name="custom-domain-is-not-mapped-to-your-cdn-endpoint"></a>Özel etki alanı, CDN uç noktanızla eşlenmedi
 
 >[!NOTE]
->**Akamai ' dan Azure CDN**kullanıyorsanız, otomatik etki alanı doğrulamasını etkinleştirmek IÇIN aşağıdaki CNAME ayarlanmalıdır. "_acme-Challenge. &lt;Özel etki alanı ana bilgisayar adı @ no__t-1-> CNAME-> &lt;Özel etki alanı hostname&gt;.ak-acme-challenge.azureedge.net"
+>**Akamai ' dan Azure CDN**kullanıyorsanız, otomatik etki alanı doğrulamasını etkinleştirmek IÇIN aşağıdaki CNAME ayarlanmalıdır. "_acme-Challenge.&lt;özel etki alanı konak adı&gt;-> CNAME-> &lt;özel etki alanı konak adı&gt;. ak-acme-challenge.azureedge.net "
 
 CNAME kayıt girişi cdnverify alt etki alanını içeriyorsa, bu adımdaki yönergelerin geri kalanını izleyin.
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory security defaults
-description: Security default policies that help protect organizations from common attacks
+title: Azure Active Directory güvenlik Varsayılanları
+description: Kuruluşların yaygın saldırılara karşı korunmasına yardımcı olan güvenlik varsayılan ilkeleri
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -18,116 +18,116 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74208388"
 ---
-# <a name="what-are-security-defaults"></a>What are security defaults?
+# <a name="what-are-security-defaults"></a>Güvenlik Varsayılanları nelerdir?
 
-Managing security can be difficult when common identity-related attacks are becoming more and more popular. These attacks include password spray, replay, and phishing.
+Kimlik ile ilgili yaygın saldırılar daha fazla ve popüler olduğunda güvenliği yönetmek zor olabilir. Bu saldırılar parola spreyi, yeniden oynama ve kimlik avı içerir.
 
-Security defaults in Azure Active Directory (Azure AD) make it easier to be secure and help protect your organization. Security defaults contain preconfigured security settings for common attacks. 
+Azure Active Directory (Azure AD) içindeki güvenlik Varsayılanları, güvenli olmasını ve kuruluşunuzu korumanıza yardımcı olmasını kolaylaştırır. Güvenlik Varsayılanları, yaygın saldırılar için önceden yapılandırılmış güvenlik ayarlarını içerir. 
 
-Microsoft is making security defaults available to everyone. The goal is to ensure that all organizations have a basic level of security enabled at no extra cost. You turn on security defaults in the Azure portal.
+Microsoft, güvenlik varsayılanlarını herkes için kullanılabilir hale yapıyor. Amaç, tüm kuruluşların hiçbir ek maliyet olmadan etkin bir temel güvenlik düzeyi olmasını sağlamaktır. Azure portal güvenlik varsayılanlarını açın.
 
-![Screenshot of the Azure portal with the toggle to enable security defaults](./media/concept-conditional-access-security-defaults/security-defaults-azure-ad-portal.png)
+![Güvenlik varsayılanlarını etkinleştirmek için geçiş ile birlikte Azure portal ekran görüntüsü](./media/concept-conditional-access-security-defaults/security-defaults-azure-ad-portal.png)
  
-The following security configurations will be turned on in your tenant. 
+Kiracınızda aşağıdaki güvenlik yapılandırması açılır. 
 
-## <a name="unified-multi-factor-authentication-registration"></a>Unified Multi-Factor Authentication registration
+## <a name="unified-multi-factor-authentication-registration"></a>Birleşik Multi-Factor Authentication kaydı
 
-All users in your tenant must register for multi-factor authentication (MFA) in the form of the Azure Multi-Factor Authentication service. Users have 14 days to register for Multi-Factor Authentication by using the Microsoft Authenticator app. After the 14 days have passed, the user won't be able to sign in until Multi-Factor Authentication registration is finished.
+Kiracınızdaki tüm kullanıcıların, Azure Multi-Factor Authentication hizmeti biçiminde Multi-Factor Authentication (MFA) için kaydolmalıdır. Kullanıcıların, Microsoft Authenticator uygulamasını kullanarak Multi-Factor Authentication için kaydolmak üzere 14 gün vardır. 14 gün geçtikten sonra, Multi-Factor Authentication kaydı tamamlanana kadar Kullanıcı oturum açamaz.
 
-We understand that some users might be out of office or won't sign in during the 14 days immediately after enabling security defaults. To ensure that every user has ample time to register for Multi-Factor Authentication, the 14-day period is unique for each user. A user's 14-day period begins after their first successful interactive sign-in after you enable security defaults.
+Bazı kullanıcıların Office dışı olabileceğini veya güvenlik varsayılanlarını etkinleştirdikten hemen sonra 14 gün boyunca oturum açmasını anladık. Her kullanıcının Multi-Factor Authentication için yeterli zamana sahip olduğundan emin olmak için, her kullanıcı için 14 günlük süre benzersizdir. Kullanıcının 14 günlük süresi, güvenlik varsayılanlarını etkinleştirdikten sonra, ilk başarılı etkileşimli oturum açma işleminden sonra başlar.
 
-## <a name="multi-factor-authentication-enforcement"></a>Multi-Factor Authentication enforcement
+## <a name="multi-factor-authentication-enforcement"></a>Multi-Factor Authentication zorlama
 
-### <a name="protecting-administrators"></a>Protecting administrators
+### <a name="protecting-administrators"></a>Yöneticileri koruma
 
-Users with access to privileged accounts have increased access to your environment. Due to the power these accounts have, you should treat them with special care. One common method to improve the protection of privileged accounts is to require a stronger form of account verification for sign-in. In Azure AD, you can get a stronger account verification by requiring Multi-Factor Authentication.
+Ayrıcalıklı hesaplara erişimi olan kullanıcıların ortamınıza erişimi artar. Bu hesapların gücüyle ilgili olan güç nedeniyle, onlara özel bir dikkatli davranmanız gerekir. Ayrıcalıklı hesapların korunmasını artırmanın yaygın bir yöntemi, oturum açma için daha güçlü bir hesap doğrulama biçimi gerektirmaktır. Azure AD 'de Multi-Factor Authentication isteyerek daha güçlü bir hesap doğrulaması edinebilirsiniz.
 
-After registration with Multi-Factor Authentication is finished, the following nine Azure AD administrator roles will be required to perform additional authentication every time they sign in:
+Multi-Factor Authentication kaydı tamamlandıktan sonra, her oturum açtıklarında ek kimlik doğrulaması gerçekleştirmek için aşağıdaki dokuz Azure AD yönetici rolü gerekecektir:
 
 - Genel yönetici
 - SharePoint yöneticisi
-- Exchange administrator
-- Conditional Access administrator
+- Exchange Yöneticisi
+- Koşullu Erişim Yöneticisi
 - Güvenlik yöneticisi
-- Helpdesk administrator or password administrator
+- Yardım Masası yönetici veya parola Yöneticisi
 - Faturalama yöneticisi
-- User administrator
-- Authentication administrator
+- Kullanıcı Yöneticisi
+- Kimlik doğrulama Yöneticisi
 
-### <a name="protecting-all-users"></a>Protecting all users
+### <a name="protecting-all-users"></a>Tüm kullanıcıları koruma
 
-We tend to think that administrator accounts are the only accounts that need extra layers of authentication. Administrators have broad access to sensitive information and can make changes to subscription-wide settings. But attackers tend to target end users. 
+Yönetici hesaplarının, çok fazla kimlik doğrulama katmanı gerektiren tek hesaplar olduğunu düşündük. Yöneticiler hassas bilgilere geniş erişime sahiptir ve abonelik genelindeki ayarlarda değişiklik yapabilir. Ancak saldırganlar, son kullanıcıları hedefleyecek şekilde eğilimlidir. 
 
-After these attackers gain access, they can request access to privileged information on behalf of the original account holder. They can even download the entire directory to perform a phishing attack on your whole organization. 
+Bu saldırganlar erişim kazandıktan sonra, özgün hesap sahibi adına ayrıcalıklı bilgilere erişim talep edebilir. Hatta tüm kuruluşunuzda kimlik avı saldırısı gerçekleştirmek için tüm dizini indirebilir. 
 
-One common method to improve protection for all users is to require a stronger form of account verification, such as Multi-Factor Authentication, for everyone. After users finish Multi-Factor Authentication registration, they'll be prompted for additional authentication whenever necessary.
+Tüm kullanıcılar için korumayı geliştirmenin yaygın bir yöntemi, herkes için Multi-Factor Authentication gibi daha güçlü bir hesap doğrulama biçimi gerektirmaktır. Kullanıcılar Multi-Factor Authentication kaydı tamamladıktan sonra gerektiğinde ek kimlik doğrulaması istenir.
 
-### <a name="blocking-legacy-authentication"></a>Blocking legacy authentication
+### <a name="blocking-legacy-authentication"></a>Eski kimlik doğrulaması engelleniyor
 
-To give your users easy access to your cloud apps, Azure AD supports a variety of authentication protocols, including legacy authentication. *Legacy authentication* is a term that refers to an authentication request made by:
+Kullanıcılarınıza bulut uygulamalarınıza kolay erişim sağlamak için Azure AD, eski kimlik doğrulaması dahil olmak üzere çeşitli kimlik doğrulama protokollerini destekler. *Eski kimlik doğrulaması* , tarafından yapılan bir kimlik doğrulama isteğine başvuran bir terimdir:
 
-- Older Office clients that don't use modern authentication (for example, an Office 2010 client).
-- Any client that uses older mail protocols such as IMAP, SMTP, or POP3.
+- Modern kimlik doğrulaması kullanmayan eski Office istemcileri (örneğin, bir Office 2010 istemcisi).
+- IMAP, SMTP veya POP3 gibi eski posta protokollerini kullanan tüm istemciler.
 
-Today, the majority of compromising sign-in attempts come from legacy authentication. Legacy authentication does not support Multi-Factor Authentication. Even if you have a Multi-Factor Authentication policy enabled on your directory, an attacker can authenticate by using an older protocol and bypass Multi-Factor Authentication. 
+Günümüzde, oturum açma girişimlerinin çoğu eski kimlik doğrulamasından geliyor. Eski kimlik doğrulama Multi-Factor Authentication desteklemez. Dizininizde etkinleştirilmiş bir Multi-Factor Authentication ilkeniz olsa da, bir saldırgan eski bir protokolü kullanarak kimlik doğrulaması yapabilir ve Multi-Factor Authentication atlayabilirsiniz. 
 
-After security defaults are enabled in your tenant, all authentication requests made by an older protocol will be blocked. Security defaults don't block Exchange ActiveSync.
+Kiracınızda güvenlik Varsayılanları etkinleştirildikten sonra, eski bir protokol tarafından yapılan tüm kimlik doğrulama istekleri engellenir. Güvenlik Varsayılanları Exchange ActiveSync 'ı engellemez.
 
-### <a name="protecting-privileged-actions"></a>Protecting privileged actions
+### <a name="protecting-privileged-actions"></a>Ayrıcalıklı eylemleri koruma
 
-Organizations use a variety of Azure services managed through the Azure Resource Manager API, including:
+Kuruluşlar, aşağıdakiler dahil olmak üzere Azure Resource Manager API 'SI aracılığıyla yönetilen çeşitli Azure hizmetleri kullanır:
 
-- Azure portalı 
+- Azure portal 
 - Azure PowerShell 
 - Azure CLI
 
-Using Azure Resource Manager to manage your services is a highly privileged action. Azure Resource Manager can alter tenant-wide configurations, such as service settings and subscription billing. Single-factor authentication is vulnerable to a variety of attacks like phishing and password spray. 
+Hizmetlerinizi yönetmek için Azure Resource Manager kullanmak, yüksek ayrıcalıklı bir işlemdir. Azure Resource Manager, hizmet ayarları ve abonelik faturalandırması gibi kiracı genelinde yapılandırmaların üzerinde değişiklik yapabilir. Tek faktörlü kimlik doğrulaması, kimlik avı ve parola spreyi gibi çeşitli saldırılara açıktır. 
 
-It's important to verify the identity of users who want to access Azure Resource Manager and update configurations. You verify their identity by requiring additional authentication before you allow access.
+Azure Resource Manager erişmek ve yapılandırmaya güncelleştirmek isteyen kullanıcıların kimliğini doğrulamak önemlidir. Erişim izni vermeden önce ek kimlik doğrulaması gerektirerek kimliklerini doğrularsınız.
 
-After you enable security defaults in your tenant, any user who's accessing the Azure portal, Azure PowerShell, or the Azure CLI will need to complete additional authentication. This policy applies to all users who are accessing Azure Resource Manager, whether they're an administrator or a user. 
+Kiracınızda güvenlik varsayılanlarını etkinleştirdikten sonra, Azure portal, Azure PowerShell veya Azure CLı 'ye erişen tüm kullanıcıların ek kimlik doğrulamasını tamamlaması gerekir. Bu ilke, yönetici veya Kullanıcı olup olmadıkları gibi Azure Resource Manager erişen tüm kullanıcılar için geçerlidir. 
 
-If the user isn't registered for Multi-Factor Authentication, the user will be required to register by using the Microsoft Authenticator app in order to proceed. No 14-day Multi-Factor Authentication registration period will be provided.
+Kullanıcı Multi-Factor Authentication için kayıtlı değilse, kullanıcının devam edebilmesi için Microsoft Authenticator uygulamasını kullanarak kaydetmesi gerekecektir. 14 günlük Multi-Factor Authentication kayıt süresi sağlanmaz.
 
 ## <a name="deployment-considerations"></a>Dağıtma konuları
 
-The following additional considerations are related to deployment of security defaults for your tenant.
+Aşağıdaki ek konular kiracınızın güvenlik varsayılanlarını dağıtma ile ilgilidir.
 
-### <a name="older-protocols"></a>Older protocols
+### <a name="older-protocols"></a>Eski protokoller
 
-Mail clients use older authentication protocols (like IMAP, SMTP, and POP3) to make authentication requests. These protocols don't support Multi-Factor Authentication. Most of the account compromises that Microsoft sees are from attacks against older protocols that are trying to bypass Multi-Factor Authentication. 
+Posta istemcileri, kimlik doğrulama isteklerini yapmak için eski kimlik doğrulama protokollerini (IMAP, SMTP ve POP3 gibi) kullanır. Bu protokoller Multi-Factor Authentication desteklemez. Microsoft 'un gördüğü hesabın çoğu, Multi-Factor Authentication atlamaya çalışan eski protokollere karşı saldırılara karşı bir çalışmalardır. 
 
-To ensure that Multi-Factor Authentication is required for signing in to an administrative account and that attackers can't bypass it, security defaults block all authentication requests made to administrator accounts from older protocols.
+Multi-Factor Authentication, bir yönetici hesapta oturum açmak için gerekli olduğundan ve saldırganların onu atlayamazsa, güvenlik Varsayılanları eski protokollerden yönetici hesaplarına yapılan tüm kimlik doğrulama isteklerini engeller.
 
 > [!WARNING]
-> Before you enable this setting, make sure your administrators aren't using older authentication protocols. For more information, see [How to move away from legacy authentication](concept-conditional-access-block-legacy-authentication.md).
+> Bu ayarı etkinleştirmeden önce, yöneticileriniz tarafından daha eski kimlik doğrulama protokolleri kullanmıyor olduğundan emin olun. Daha fazla bilgi için bkz. [eski kimlik doğrulamasından nasıl uzaklaşın](concept-conditional-access-block-legacy-authentication.md).
 
 ### <a name="conditional-access"></a>Koşullu Erişim
 
-You can use Conditional Access to configure policies that provide the same behavior enabled by security defaults. If you're using Conditional Access and have Conditional Access policies enabled in your environment, security defaults won't be available to you. If you have a license that provides Conditional Access but don't have any Conditional Access policies enabled in your environment, you are welcome to use security defaults until you enable Conditional Access policies.
+Güvenlik Varsayılanları tarafından etkinleştirilen aynı davranışı sağlayan ilkeleri yapılandırmak için koşullu erişimi kullanabilirsiniz. Koşullu erişim kullanıyorsanız ve ortamınızda koşullu erişim ilkeleri etkinleştirilmişse, güvenlik Varsayılanları sizin için kullanılamaz. Koşullu erişim sağlayan ancak ortamınızda hiç koşullu erişim ilkesi etkinleştirilmemiş bir lisansınız varsa, koşullu erişim ilkelerini etkinleştirene kadar güvenlik varsayılanlarını kullanmaya hoş geldiniz.
 
-![Warning message that you can have security defaults or Conditional Access not both](./media/concept-conditional-access-security-defaults/security-defaults-conditional-access.png)
+![Uyarı iletisi yalnızca güvenlik varsayılanlarına veya koşullu erişime sahip olabilirsiniz](./media/concept-conditional-access-security-defaults/security-defaults-conditional-access.png)
 
-Here are step-by-step guides on how you can use Conditional Access to configure equivalent policies:
+Eşdeğer ilkeleri yapılandırmak için koşullu erişimi nasıl kullanabileceğinizi gösteren adım adım kılavuzlar aşağıda verilmiştir:
 
-- [Require MFA for administrators](howto-conditional-access-policy-admin-mfa.md)
-- [Require MFA for Azure management](howto-conditional-access-policy-azure-management.md)
-- [Block legacy authentication](howto-conditional-access-policy-block-legacy.md)
-- [Require MFA for all users](howto-conditional-access-policy-all-users-mfa.md)
-- [Require Azure MFA registration](../identity-protection/howto-identity-protection-configure-mfa-policy.md) - Requires Azure AD Identity Protection
+- [Yöneticiler için MFA gerektir](howto-conditional-access-policy-admin-mfa.md)
+- [Azure yönetimi için MFA gerektir](howto-conditional-access-policy-azure-management.md)
+- [Eski kimlik doğrulamasını engelle](howto-conditional-access-policy-block-legacy.md)
+- [Tüm kullanıcılar için MFA gerektir](howto-conditional-access-policy-all-users-mfa.md)
+- [Azure MFA kaydı gerektir](../identity-protection/howto-identity-protection-configure-mfa-policy.md) -Azure AD kimlik koruması gerekir
 
-## <a name="enabling-security-defaults"></a>Enabling security defaults
+## <a name="enabling-security-defaults"></a>Güvenlik varsayılanlarını etkinleştirme
 
-To enable security defaults in your directory:
+Dizininizde güvenlik varsayılanlarını etkinleştirmek için:
 
-1. Sign in to the [Azure portal](https://portal.azure.com) as a security administrator, Conditional Access administrator, or global administrator.
-1. Browse to **Azure Active Directory** > **Properties**.
-1. Select **Manage security defaults**.
-1. Set the **Enable security defaults** toggle to **Yes**.
+1.  [Azure portal](https://portal.azure.com) bir güvenlik yöneticisi, koşullu erişim Yöneticisi veya genel yönetici olarak oturum açın.
+1.  **Azure Active Directory** > **özelliklerine**gidin.
+1. **Güvenlik varsayılanlarını Yönet**' i seçin.
+1. **Güvenlik varsayılanlarını etkinleştir** ayarını **Evet**olarak ayarlayın.
 1. **Kaydet**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Common Conditional Access policies](concept-conditional-access-policy-common.md)
+[Ortak koşullu erişim ilkeleri](concept-conditional-access-policy-common.md)
 
-[What is Conditional Access?](overview.md)
+[Koşullu erişim nedir?](overview.md)

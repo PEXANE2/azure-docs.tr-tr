@@ -27,12 +27,12 @@ Azure Active Directory (Azure AD) toplu Kullanıcı oluşturma ve silme işlemle
 ## <a name="to-bulk-restore-users"></a>Kullanıcıları toplu geri yüklemek için
 
 1. Azure AD kuruluşunda Kullanıcı Yöneticisi olan bir hesapla [Azure AD kuruluşunuzda oturum açın](https://aad.portal.azure.com) .
-1. Azure AD 'de @no__t **Kullanıcılar**' ı**seçin.**
+1. Azure AD 'de, Kullanıcı > **silinen** **Kullanıcılar** ' ı seçin.
 1. **Silinen kullanıcılar** sayfasında, kullanıcıların geri yüklenecek GEÇERLI bir CSV dosyasını karşıya yüklemek için **toplu geri yükleme** ' yi seçin.
 
    ![Silinen kullanıcılar sayfasında toplu geri yükleme komutunu seçin](./media/users-bulk-restore/bulk-restore.png)
 
-1. CSV dosyasını açın ve geri yüklemek istediğiniz her kullanıcı için bir satır ekleyin. Yalnızca **ObjectID**değeri gereklidir. Sonra dosyayı kaydedin.
+1. CSV dosyasını açın ve geri yüklemek istediğiniz her kullanıcı için bir satır ekleyin. Yalnızca **ObjectID**değeri gereklidir. Ardından dosyayı kaydedin.
 
    ![İçinde eklemek istediğiniz kullanıcıları listeettiğiniz yerel bir CSV dosyası seçin](./media/users-bulk-restore/upload-button.png)
 
@@ -43,7 +43,7 @@ Azure Active Directory (Azure AD) toplu Kullanıcı oluşturma ve silme işlemle
 
 Hatalar varsa, sonuçlar dosyasını **toplu işlem sonuçları** sayfasında indirebilir ve görüntüleyebilirsiniz. Dosya her hatanın nedenini içerir.
 
-## <a name="check-status"></a>Durumu Denetle
+## <a name="check-status"></a>Durumu kontrol etme
 
 Tüm bekleyen toplu isteklerinizin durumunu **toplu işlem sonuçları (Önizleme)** sayfasında görebilirsiniz.
 
@@ -55,7 +55,7 @@ Daha sonra, geri yüklediğiniz kullanıcıların Azure portal veya PowerShell k
 
 1. Kuruluşunuzda Kullanıcı Yöneticisi olan bir hesapla [Azure AD Yönetim merkezinde oturum açın](https://aad.portal.azure.com) .
 1. Gezinti bölmesinde **Azure Active Directory**' yi seçin.
-1. **Yönet**altında **Kullanıcılar**' ı seçin.
+1. **Yönet** bölümünde **Kullanıcılar**’ı seçin.
 1. **Göster**altında, **tüm kullanıcılar** ' ı seçin ve geri yüklediğiniz kullanıcıların listelendiğini doğrulayın.
 
 ### <a name="view-users-with-powershell"></a>PowerShell ile kullanıcıları görüntüleme

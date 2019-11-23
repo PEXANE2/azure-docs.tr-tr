@@ -24,8 +24,8 @@ Bu nasıl yapılır kılavuzunda ilerlemek için şunlar gerekir:
 
 ## <a name="configure-logging-for-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı günlüğünü yapılandırma
 Aşağıdaki adımları gerçekleştirerek, sunucuyu MariaDB yavaş sorgu günlüğüne erişecek şekilde yapılandırabilirsiniz:
-1. **Yavaş @ no__t-1query @ no__t-2Log** parametresini açık olarak ayarlayarak günlüğe kaydetmeyi etkinleştirin.
-2. **Long @ no__t-1query @ no__t-2time** ve **log @ no__t-4yavaş @ no__t-5admin @ no__t-6deyimlerini**gibi diğer parametreleri ayarlayın.
+1. **Yavaş\_sorgu\_günlük** parametresini açık olarak ayarlayarak günlüğe kaydetmeyi etkinleştirin.
+2. **Uzun\_sorgu\_zaman** ve **günlük\_yavaş\_yönetici\_deyimleri**gibi diğer parametreleri ayarlayın.
 
 Bu parametrelerin değerini Azure CLı aracılığıyla ayarlamayı öğrenmek için bkz. [sunucu parametrelerini yapılandırma](howto-configure-server-parameters-cli.md).
 
@@ -40,7 +40,7 @@ az mariadb server configuration list --resource-group myresourcegroup --server m
 ## <a name="list-logs-for-azure-database-for-mariadb-server"></a>MariaDB sunucusu için Azure veritabanı günlüklerini listeleme
 Sunucunuzun kullanılabilir yavaş sorgu günlük dosyalarını listelemek için [az MariaDB Server-Logs List](/cli/azure/mariadb/server-logs#az-mariadb-server-logs-list) komutunu çalıştırın.
 
-Sunucu **mydemoserver.MariaDB.Database.Azure.com** için günlük dosyalarını **myresourcegroup**kaynak grubu altında listeleyebilirsiniz. Ardından günlük dosyaları listesini **log @ no__t-1files\_list.txt**adlı bir metin dosyasına yönlendirin.
+Sunucu **mydemoserver.MariaDB.Database.Azure.com** için günlük dosyalarını **myresourcegroup**kaynak grubu altında listeleyebilirsiniz. Ardından günlük dosyaları listesini **günlük\_dosyaları\_List. txt**adlı bir metin dosyasına yönlendirin.
 ```azurecli-interactive
 az mariadb server-logs list --resource-group myresourcegroup --server mydemoserver > log_files_list.txt
 ```

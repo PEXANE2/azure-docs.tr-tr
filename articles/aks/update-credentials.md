@@ -20,7 +20,7 @@ Varsayılan olarak, AKS kümeleri bir yıllık sona erme saati olan bir hizmet s
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Azure CLı sürüm 2.0.65 veya sonraki bir sürümün yüklü ve yapılandırılmış olması gerekir. Sürümü bulmak için @ no__t-0 ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
+Azure CLı sürüm 2.0.65 veya sonraki bir sürümün yüklü ve yapılandırılmış olması gerekir. Sürümü bulmak için `az --version` çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
 
 ## <a name="choose-to-update-or-create-a-service-principal"></a>Hizmet sorumlusu güncelleştirmeyi veya oluşturmayı seçin
 
@@ -67,7 +67,7 @@ az ad sp create-for-rbac --skip-assignment
 }
 ```
 
-Şimdi, aşağıdaki örnekte gösterildiği gibi, [az ad SP Create-for-RBAC][az-ad-sp-create] komutunuzu kullanarak HIZMET sorumlusu kimliği ve istemci gizli anahtarı için değişkenleri tanımlayın. *SP_ID* , *uygulama*uygulamasıdır ve *SP_SECRET* *parolandır*:
+Şimdi, aşağıdaki örnekte gösterildiği gibi, [az ad SP Create-for-RBAC][az-ad-sp-create] komutunuzu kullanarak HIZMET sorumlusu kimliği ve istemci gizli anahtarı için değişkenleri tanımlayın. *SP_ID* *uygulama* *uygulamasıdır*ve *SP_SECRET* parolanız olur:
 
 ```azurecli-interactive
 SP_ID=7d837646-b1f3-443d-874c-fd83c7c739c5

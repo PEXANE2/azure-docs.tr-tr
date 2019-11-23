@@ -27,7 +27,7 @@ Rol izinleri şunları içerir:
 
 Tablosal model projesi oluştururken, Visual Studio 'da Analysis Services projelerle rol Yöneticisi kullanarak roller oluşturur ve bu rollere kullanıcı veya grup ekleyebilirsiniz. Bir sunucuya dağıtıldığında, rol ve Kullanıcı üyeleri eklemek veya kaldırmak için SQL Server Management Studio (SSMS), [Analysis Services PowerShell cmdlet 'leri](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)veya [tablo modeli komut dosyası dili](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference) (tmsl) kullanırsınız.
 
-**Güvenlik grupları** , `MailEnabled` özelliği `True` olarak ayarlanmış [posta etkin](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) olmalıdır. Bir grup e-posta adresi belirtirken `obj:groupid@tenantid` kullanın.
+**Güvenlik grupları** , `MailEnabled` özelliği `True`olarak ayarlanmış [posta etkin](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) olmalıdır. E-posta adresi ile bir grup belirtirken `obj:groupid@tenantid`kullanın.
 
 
 ## <a name="to-add-or-manage-roles-and-users-in-visual-studio"></a>Visual Studio 'da rol ve Kullanıcı ekleme veya yönetme  
@@ -44,7 +44,7 @@ Tablosal model projesi oluştururken, Visual Studio 'da Analysis Services projel
   
     |İzin|Açıklama|  
     |----------------|-----------------|  
-    |**Seçim**|Üyeler model şemasını değiştiremez ve verileri sorgulayamaz.|  
+    |**Yok.**|Üyeler model şemasını değiştiremez ve verileri sorgulayamaz.|  
     |**Okuma**|Üyeler veri sorgulayabilir (satır filtrelerine göre), ancak model şemasını değiştiremezler.|  
     |**Okuma ve Işleme**|Üyeler, verileri sorgulayabilir (satır düzeyi filtrelere göre) ve Işlemi çalıştırabilir ve tüm işlemleri Işleyebilir, ancak model şemasını değiştiremezler.|  
     |**İşle**|Üyeler, Işlem çalıştırabilir ve tüm işlemleri Işleyebilir. Model şeması değiştirilemiyor ve veri sorgulanamıyor.|  
@@ -52,7 +52,7 @@ Tablosal model projesi oluştururken, Visual Studio 'da Analysis Services projel
   
 5.  Oluşturmakta olduğunuz rolün okuma veya okuma ve Işleme izni varsa, bir DAX formülü kullanarak satır filtreleri ekleyebilirsiniz. **Satır filtreleri** sekmesine tıklayın, sonra bir tablo seçin, sonra **DAX filtresi** alanına tıklayın ve ardından bir DAX formülü yazın.
   
-6.  **Üyeler** > **Harici Ekle**' ye tıklayın.  
+6.   > **Üyeler** ' e tıklayarak **dış Ekle**' ye tıklayın.  
   
 8.  **Dış üye Ekle**' de, kiracınızdaki kullanıcıları veya grupları e-posta adresine göre Azure AD 'ye girin. Tamam ' a tıkladıktan sonra Rol Yöneticisi ' ni kapattıktan sonra, roller ve rol üyeleri tablosal Model Gezgini 'nde görünür. 
  
@@ -65,7 +65,7 @@ Tablosal model projesi oluştururken, Visual Studio 'da Analysis Services projel
 
 Dağıtılan bir model veritabanına roller ve kullanıcılar eklemek için sunucu yöneticisi olarak sunucuya veya yönetici izinlerine sahip bir veritabanı rolünde zaten olmalıdır.
 
-1. Nesne dışarı Exporer 'da, **roller** > **Yeni rol**' e sağ tıklayın.
+1. Nesne Exporer 'da, **Yeni rol** > **Roller** ' e sağ tıklayın.
 
 2. **Rol oluştur**' da bir rol adı ve açıklama girin.
 

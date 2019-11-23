@@ -59,7 +59,7 @@ Sorunu tanılamak için gereken adımlar aşağıda verilmiştir. İlki, tüm hi
 
 * Aracıların en son sürümlerinin yüklü olduğundan emin olun. [Yayın geçmişini](reference-connect-health-version-history.md)görüntüleyin. 
 * Makinede Azure AD Connect Health Agents hizmetlerinin **çalıştığından** emin olun. Örneğin, AD FS için Connect Health üç hizmete sahip olmalıdır.
-  ![Verify Azure AD Connect Health @ no__t-1
+  ![doğrulama Azure AD Connect Health](./media/how-to-connect-health-agent-install/install5.png)
 
 * [Gereksinimler bölümünü](how-to-connect-health-agent-install.md#requirements)ziyaret edin ve bunları karşıladığınızdan emin olun.
 * Bağlantı sorunlarını saptamak için [Test Bağlantısı aracını](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) kullanın.

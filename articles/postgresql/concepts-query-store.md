@@ -17,7 +17,7 @@ ms.locfileid: "72331312"
 
 **Uygulama hedefi:** PostgreSQL için Azure veritabanı-tek sunuculu sürümler 9,6, 10, 11
 
-PostgreSQL için Azure veritabanı 'ndaki sorgu depolama özelliği zaman içinde sorgu performansını izlemek için bir yol sağlar. Sorgu deposu, en uzun çalışan ve en fazla kaynak yoğunluklu sorguları hızlı bir şekilde bulmanıza yardımcı olarak performans sorunlarını basitleştirir. Sorgu deposu sorgular ve çalışma zamanı istatistikleri geçmişini otomatik olarak yakalar ve bunları gözden geçirmeniz için saklar. Veritabanı kullanım düzenlerini görebilmeniz için verileri zaman pencereleri ile ayırır. Tüm kullanıcılar, veritabanları ve sorgular için veriler PostgreSQL için Azure veritabanı örneğine **azure_sys** adlı bir veritabanında depolanır.
+PostgreSQL için Azure veritabanı 'ndaki sorgu depolama özelliği zaman içinde sorgu performansını izlemek için bir yol sağlar. Sorgu deposu, en uzun çalışan ve en fazla kaynak yoğunluklu sorguları hızlı bir şekilde bulmanıza yardımcı olarak performans sorunlarını basitleştirir. Sorgu deposu sorgular ve çalışma zamanı istatistikleri geçmişini otomatik olarak yakalar ve bunları gözden geçirmeniz için saklar. Veritabanı kullanım düzenlerini görebilmeniz için verileri zaman pencereleri ile ayırır. Tüm kullanıcılar, veritabanları ve sorgular için veriler, PostgreSQL için Azure veritabanı örneğine **azure_sys** adlı bir veritabanında depolanır.
 
 > [!IMPORTANT]
 > **Azure_sys** veritabanını veya şemalarını değiştirmeyin. Bunun yapılması, sorgu deposunun ve ilgili performans özelliklerinin düzgün çalışmasını engeller.
@@ -28,12 +28,12 @@ Sorgu deposu bir katılım özelliğidir, bu nedenle bir sunucuda varsayılan ol
 ### <a name="enable-query-store-using-the-azure-portal"></a>Azure portal kullanarak sorgu deposunu etkinleştirin
 1. Azure portal oturum açın ve PostgreSQL için Azure veritabanı sunucunuzu seçin.
 2. Menüdeki **Ayarlar** bölümünde **sunucu parametreleri** ' ni seçin.
-3. @No__t-0 parametresini arayın.
-4. Değeri `TOP` olarak ayarlayın ve **kaydedin**.
+3. `pg_qs.query_capture_mode` parametresini arayın.
+4. Değeri `TOP` ve **Kaydet**olarak ayarlayın.
 
 Sorgu deponuzda bekleme istatistiklerini etkinleştirmek için: 
-1. @No__t-0 parametresini arayın.
-1. Değeri `ALL` olarak ayarlayın ve **kaydedin**.
+1. `pgms_wait_sampling.query_capture_mode` parametresini arayın.
+1. Değeri `ALL` ve **Kaydet**olarak ayarlayın.
 
 
 Alternatif olarak, Azure CLı kullanarak bu parametreleri ayarlayabilirsiniz.
@@ -42,7 +42,7 @@ az postgres server configuration set --name pg_qs.query_capture_mode --resource-
 az postgres server configuration set --name pgms_wait_sampling.query_capture_mode --resource-group myresourcegroup --server mydemoserver --value ALL
 ```
 
-İlk veri toplu iş için azure_sys veritabanında kalıcı hale getirilmesi için 20 dakikaya kadar izin verin.
+İlk veri toplu işi azure_sys veritabanında kalıcı hale getirilemediği için 20 dakikaya kadar izin verin.
 
 ## <a name="information-in-query-store"></a>Sorgu deposundaki bilgiler
 Sorgu deposunda iki depo vardır:
@@ -91,22 +91,22 @@ Sorgu deposu etkinleştirildiğinde, verileri 15 dakikalık toplama Windows 'a k
 
 Sorgu deposu parametrelerini yapılandırmak için aşağıdaki seçenekler kullanılabilir.
 
-| **Parametresinin** | **Açıklama** | **Varsayılan** | **Aralık**|
+| **Parametre** | **Açıklama** | **Varsayılan** | **Aralık**|
 |---|---|---|---|
-| pg_qs.query_capture_mode | Hangi deyimlerin izleneceğini ayarlar. | yok | hiçbiri, üst, tümü |
-| pg_qs. Max _query_text_length | Kaydedilebilecek maksimum sorgu uzunluğunu ayarlar. Daha uzun sorgular kesilecek. | 6000 | 100-10.000 |
+| pg_qs. query_capture_mode | Hangi deyimlerin izleneceğini ayarlar. | yok | hiçbiri, üst, tümü |
+| pg_qs.max_query_text_length | Kaydedilebilecek maksimum sorgu uzunluğunu ayarlar. Daha uzun sorgular kesilecek. | 6000 | 100-10.000 |
 | pg_qs.retention_period_in_days | Saklama süresini ayarlar. | 7 | 1 - 30 |
-| pg_qs.track_utility | Yardımcı program komutlarının izlenip izlenmeyeceğini ayarlar | dayanır | açık, kapalı |
+| pg_qs.track_utility | Yardımcı program komutlarının izlenip izlenmeyeceğini ayarlar | açık | açık, kapalı |
 
 Aşağıdaki seçenekler özellikle bekleme istatistikleri için geçerlidir.
 
-| **Parametresinin** | **Açıklama** | **Varsayılan** | **Aralık**|
+| **Parametre** | **Açıklama** | **Varsayılan** | **Aralık**|
 |---|---|---|---|
-| pgms_wait_sampling.query_capture_mode | Bekleme istatistikleri için hangi deyimlerin izleneceğini ayarlar. | yok | hiçbiri, tümü|
-| Pgms_wait_sampling.history_period | Bekleme olaylarının örneklendiği sıklığı milisaniye cinsinden ayarlayın. | 100 | 1-600000 |
+| pgms_wait_sampling. query_capture_mode | Bekleme istatistikleri için hangi deyimlerin izleneceğini ayarlar. | yok | hiçbiri, tümü|
+| Pgms_wait_sampling. history_period | Bekleme olaylarının örneklendiği sıklığı milisaniye cinsinden ayarlayın. | 100 | 1-600000 |
 
 > [!NOTE] 
-> **pg_qs. query_capture_mode** , **pgms_wait_sampling. query_capture_mode**yerine geçiyor. Pg_qs. query_capture_mode NONE ise, pgms_wait_sampling. query_capture_mode ayarının etkisi yoktur.
+> **pg_qs. query_capture_mode** **pgms_wait_sampling. query_capture_mode**yerine geçiyor. Pg_qs. query_capture_mode NONE ise, pgms_wait_sampling. query_capture_mode ayarı etkisizdir.
 
 
 Bir parametre için farklı bir değer almak veya ayarlamak için [Azure Portal](howto-configure-server-parameters-using-portal.md) veya [Azure CLI](howto-configure-server-parameters-using-cli.md) kullanın.
@@ -116,14 +116,14 @@ Aşağıdaki görünümleri ve işlevleri kullanarak sorgu deposunu görüntüle
 
 Sorgular, sabit değerler ve sabitler kaldırıldıktan sonra yapısına bakılarak normalleştirilmelidir. İki sorgu özdeş değerler hariç aynıysa, aynı karma değerine sahip olur.
 
-### <a name="query_storeqs_view"></a>query_store.qs_view
+### <a name="query_storeqs_view"></a>query_store. qs_view
 Bu görünüm, sorgu deposundaki tüm verileri döndürür. Her farklı veritabanı KIMLIĞI, Kullanıcı KIMLIĞI ve sorgu KIMLIĞI için bir satır vardır. 
 
 |**Adı**   |**Tür** | **Başvur**  | **Açıklama**|
 |---|---|---|---|
 |runtime_stats_entry_id |bigint | | Runtime_stats_entries tablosundan KIMLIK|
-|user_id    |id    |pg_authid. OID  |İfadeyi yürüten kullanıcının OID 'si|
-|db_id  |id    |pg_database. OID    |Deyimin yürütüldüğü veritabanının OID 'si|
+|user_id    |oid    |pg_authid. OID  |İfadeyi yürüten kullanıcının OID 'si|
+|db_id  |oid    |pg_database.oid    |Deyimin yürütüldüğü veritabanının OID 'si|
 |query_id   |bigint  || Deyimin ayrıştırma ağacından hesaplanan iç karma kod|
 |query_sql_text |Varchar (10000)  || Temsili ifadesinin metni. Aynı yapıya sahip farklı sorgular birlikte kümelenir; Bu metin, kümedeki sorguların ilki için metindir.|
 |plan_id    |bigint |   |Bu sorguya karşılık gelen planın KIMLIĞI henüz kullanılamaz|
@@ -135,7 +135,7 @@ Bu görünüm, sorgu deposundaki tüm verileri döndürür. Her farklı veritaba
 |max_time   |çift duyarlık   ||  En fazla sorgu yürütme süresi (milisaniye)|
 |mean_time  |çift duyarlık   ||  Ortalama sorgu yürütme süresi (milisaniye)|
 |stddev_time|   çift duyarlık    ||  Sorgu yürütme süresinin milisaniye cinsinden standart sapması |
-|Sütunları   |bigint ||  Deyimden alınan veya etkilenen toplam satır sayısı|
+|sütunları   |bigint ||  Deyimden alınan veya etkilenen toplam satır sayısı|
 |shared_blks_hit|   bigint  ||  Deyimle toplam paylaşılan blok önbelleği isabetli okuma sayısı|
 |shared_blks_read|  bigint  ||  İfadesiyle okunan paylaşılan blokların toplam sayısı|
 |shared_blks_dirtied|   bigint   || Deyimle bağlanmış olan paylaşılan blokların toplam sayısı |
@@ -146,10 +146,10 @@ Bu görünüm, sorgu deposundaki tüm verileri döndürür. Her farklı veritaba
 |local_blks_written|    bigint  ||  İfadesiyle yazılan toplam yerel blok sayısı|
 |temp_blks_read |bigint  || Deyimle okunan toplam geçici blok sayısı|
 |temp_blks_written| bigint   || Deyimle yazılan toplam geçici blok sayısı|
-|blk_read_time  |çift duyarlık    || İfadenin blokları okumak için harcadığı toplam süre (track_io_timing etkinse, yoksa sıfır)|
-|blk_write_time |çift duyarlık    || İfadenin (track_io_timing etkinse, yoksa sıfır) blokları yazarken harcadığı toplam süre.|
+|blk_read_time  |çift duyarlık    || Deyimin (track_io_timing etkinse, yoksa sıfır) blokları okumak için harcadığı toplam süre (milisaniye cinsinden)|
+|blk_write_time |çift duyarlık    || Deyimin (track_io_timing etkinse, yoksa sıfır) blokları yazarken harcadığı toplam süre (milisaniye cinsinden)|
     
-### <a name="query_storequery_texts_view"></a>query_store.query_texts_view
+### <a name="query_storequery_texts_view"></a>query_store. query_texts_view
 Bu görünüm sorgu deposunda sorgu metin verileri döndürür. Her ayrı query_text için bir satır vardır.
 
 |**Adı**|  **Tür**|   **Açıklama**|
@@ -157,27 +157,27 @@ Bu görünüm sorgu deposunda sorgu metin verileri döndürür. Her ayrı query_
 |query_text_id  |bigint     |Query_texts tablosunun KIMLIĞI|
 |query_sql_text |Varchar (10000)     |Temsili ifadesinin metni. Aynı yapıya sahip farklı sorgular birlikte kümelenir; Bu metin, kümedeki sorguların ilki için metindir.|
 
-### <a name="query_storepgms_wait_sampling_view"></a>query_store.pgms_wait_sampling_view
+### <a name="query_storepgms_wait_sampling_view"></a>query_store. pgms_wait_sampling_view
 Bu görünüm sorgu deposundaki bekleme olayları verilerini döndürür. Her farklı veritabanı KIMLIĞI, Kullanıcı KIMLIĞI, sorgu KIMLIĞI ve olay için bir satır vardır.
 
 |**Adı**|  **Tür**|   **Başvur**| **Açıklama**|
 |---|---|---|---|
-|user_id    |id    |pg_authid. OID  |İfadeyi yürüten kullanıcının OID 'si|
-|db_id  |id    |pg_database. OID    |Deyimin yürütüldüğü veritabanının OID 'si|
+|user_id    |oid    |pg_authid. OID  |İfadeyi yürüten kullanıcının OID 'si|
+|db_id  |oid    |pg_database.oid    |Deyimin yürütüldüğü veritabanının OID 'si|
 |query_id   |bigint     ||Deyimin ayrıştırma ağacından hesaplanan iç karma kod|
 |event_type |metin       ||Arka ucun beklediği olay türü|
-|olay  |metin       ||Arka uç Şu anda bekliyorsa bekleme olayı adı|
+|event  |metin       ||Arka uç Şu anda bekliyorsa bekleme olayı adı|
 |aramalarda  |Tamsayı        ||Yakalanan aynı olay sayısı|
 
 
 ### <a name="functions"></a>İşlevler
 Query_store. qs_reset () void döndürüyor
 
-`qs_reset` @ no__t-1şimdiye kadar toplanan tüm istatistikleri sorgu deposu tarafından atar. Bu işlev yalnızca sunucu yöneticisi rolü tarafından yürütülebilir.
+`qs_reset` , şimdiye kadar toplanan tüm istatistikleri sorgu deposu tarafından atar. Bu işlev yalnızca sunucu yöneticisi rolü tarafından yürütülebilir.
 
 Query_store. staging_data_reset () void döndürüyor
 
-`staging_data_reset` @ no__t-1Sorgu deposu tarafından bellekte toplanan tüm istatistikleri atar (diğer bir deyişle, bellekteki veriler henüz veritabanına temizlenmemiştir). Bu işlev yalnızca sunucu yöneticisi rolü tarafından yürütülebilir.
+`staging_data_reset` , sorgu deposu tarafından bellekte toplanan tüm istatistikleri atar (diğer bir deyişle, bellekteki veriler henüz veritabanına temizlenmemiştir). Bu işlev yalnızca sunucu yöneticisi rolü tarafından yürütülebilir.
 
 ## <a name="limitations-and-known-issues"></a>Sınırlamalar ve bilinen sorunlar
 - Bir PostgreSQL sunucusunda default_transaction_read_only parametresi varsa, sorgu deposu veri yakalayamaz.

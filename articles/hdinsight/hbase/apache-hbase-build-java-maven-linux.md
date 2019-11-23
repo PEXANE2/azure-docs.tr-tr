@@ -56,13 +56,13 @@ cd C:\HDI
     mkdir conf
     ```
 
-    Bu komut, temel bir Maven projesi içeren geçerli konumda `hbaseapp` adlı bir dizin oluşturur. İkinci komut, çalışma dizinini `hbaseapp` olarak değiştirir. Üçüncü komut daha sonra kullanılacak yeni bir dizin @no__t (0) oluşturur. @No__t-0 dizini aşağıdaki öğeleri içerir:
+    Bu komut, temel bir Maven projesi içeren geçerli konumda `hbaseapp` adlı bir dizin oluşturur. İkinci komut, çalışma dizinini `hbaseapp`olarak değiştirir. Üçüncü komut daha sonra kullanılacak yeni bir dizin `conf`oluşturur. `hbaseapp` dizin aşağıdaki öğeleri içerir:
 
     * `pom.xml`: proje nesne modeli ([Pod](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html)), projeyi oluşturmak için kullanılan bilgileri ve yapılandırma ayrıntılarını içerir.
     * `src\main\java\com\microsoft\examples`: uygulama kodunuzu Içerir.
     * `src\test\java\com\microsoft\examples`: uygulamanız için testler Içerir.
 
-2. Oluşturulan örnek kodu kaldırın. Oluşturulan test ve uygulama dosyalarını `AppTest.java` ve aşağıdaki komutları girerek `App.java` ' i silin:
+2. Oluşturulan örnek kodu kaldırın. Oluşturulan test ve uygulama dosyalarını `AppTest.java`silin ve aşağıdaki komutları girerek `App.java`:
 
     ```cmd
     DEL src\main\java\com\microsoft\examples\App.java
@@ -71,7 +71,7 @@ cd C:\HDI
 
 ## <a name="update-the-project-object-model"></a>Proje nesne modelini Güncelleştir
 
-Poz. xml dosyasının tam başvurusu için bkz. https://maven.apache.org/pom.html.  Aşağıdaki komutu girerek `pom.xml` ' yı açın:
+Poz. xml dosyasının tam başvurusu için bkz. https://maven.apache.org/pom.html.  Aşağıdaki komutu girerek `pom.xml` açın:
 
 ```cmd
 notepad pom.xml
@@ -79,7 +79,7 @@ notepad pom.xml
 
 ### <a name="add-dependencies"></a>Bağımlılık Ekle
 
-@No__t-0 ' da, `<dependencies>` bölümüne aşağıdaki metni ekleyin:
+`pom.xml`, `<dependencies>` bölümüne aşağıdaki metni ekleyin:
 
 ```xml
 <dependency>
@@ -101,8 +101,8 @@ Bu bölüm, projenin **HBase-Client** ve **Phoenix-Core** bileşenleri gerektiğ
 
 | HDInsight küme sürümü | Kullanılacak Apache HBase sürümü |
 | --- | --- |
-| 3,6 | 1.1.2 |
-| 4,0 | 2.0.0 |
+| 3.6 | 1.1.2 |
+| 4.0 | 2.0.0 |
 
 HDInsight sürümleri ve bileşenleri hakkında daha fazla bilgi için bkz. [HDInsight ile kullanılabilen farklı Apache Hadoop bileşenleri nelerdir](../hdinsight-component-versioning.md).
 
@@ -110,7 +110,7 @@ HDInsight sürümleri ve bileşenleri hakkında daha fazla bilgi için bkz. [HDI
 
 Maven eklentileri projenin derleme aşamalarını özelleştirmenizi sağlar. Bu bölüm eklenti, kaynak ve diğer derleme yapılandırma seçeneklerini eklemek için kullanılır.
 
-Aşağıdaki kodu `pom.xml` dosyasına ekleyin ve dosyayı kaydedin ve kapatın. Bu metin, dosyadaki `<project>...</project>` etiketlerinin içinde olmalıdır, örneğin, `</dependencies>` ile `</project>` arasında.
+Aşağıdaki kodu `pom.xml` dosyasına ekleyin ve dosyayı kaydedin ve kapatın. Bu metin, dosyadaki `<project>...</project>` etiketlerinin içinde olmalıdır, örneğin, `</dependencies>` ve `</project>`.
 
 ```xml
 <build>
@@ -160,15 +160,15 @@ Aşağıdaki kodu `pom.xml` dosyasına ekleyin ve dosyayı kaydedin ve kapatın.
 Bu bölüm, HBase için yapılandırma bilgilerini içeren bir kaynağı (`conf/hbase-site.xml`) yapılandırır.
 
 > [!NOTE]  
-> Ayrıca, yapılandırma değerlerini kod aracılığıyla da ayarlayabilirsiniz. @No__t-0 örnekteki açıklamalara bakın.
+> Ayrıca, yapılandırma değerlerini kod aracılığıyla da ayarlayabilirsiniz. `CreateTable` örnekteki açıklamalara bakın.
 
-Bu bölüm ayrıca [Apache Maven derleyicisi eklentisini](https://maven.apache.org/plugins/maven-compiler-plugin/) ve [Apache Maven gölge eklentisini](https://maven.apache.org/plugins/maven-shade-plugin/)yapılandırır. Derleyici eklentisi, topolojiyi derlemek için kullanılır. Gölge eklentisi, Maven tarafından oluşturulan JAR paketindeki lisans çoğaltmasını engellemek için kullanılır. Bu eklenti, HDInsight kümesinde çalışma zamanında bir "yinelenen lisans dosyaları" hatası oluşmasını engellemek için kullanılır. Maven-gölgelendirme eklentisinin `ApacheLicenseResourceTransformer` uygulamasıyla kullanılması hatayı önler.
+Bu bölüm ayrıca [Apache Maven derleyicisi eklentisini](https://maven.apache.org/plugins/maven-compiler-plugin/) ve [Apache Maven gölge eklentisini](https://maven.apache.org/plugins/maven-shade-plugin/)yapılandırır. Derleyici eklentisi, topolojiyi derlemek için kullanılır. Gölge eklentisi, Maven tarafından oluşturulan JAR paketindeki lisans çoğaltmasını engellemek için kullanılır. Bu eklenti, HDInsight kümesinde çalışma zamanında bir "yinelenen lisans dosyaları" hatası oluşmasını engellemek için kullanılır. Maven-gölge-eklentisi `ApacheLicenseResourceTransformer` uygulamayla birlikte kullanıldığında hata önlenir.
 
 Maven-gölge-eklentisi, uygulamanın gerektirdiği tüm bağımlılıkları içeren bir Uber jar de oluşturur.
 
 ### <a name="download-the-hbase-sitexml"></a>HBase-site. xml ' i indirin
 
-HBase kümesinden HBase yapılandırmasını `conf` dizinine kopyalamak için aşağıdaki komutu kullanın. @No__t-0 ' ı HDInsight küme adınızla değiştirin ve ardından şu komutu girin:
+HBase kümesinden HBase yapılandırmasını `conf` dizinine kopyalamak için aşağıdaki komutu kullanın. `CLUSTERNAME`, HDInsight küme adınızla değiştirin ve ardından şu komutu girin:
 
 ```cmd
 scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/etc/hbase/conf/hbase-site.xml ./conf/hbase-site.xml
@@ -178,7 +178,7 @@ scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/etc/hbase/conf/hbase-site.xml ./
 
 ### <a name="implement-a-createtable-class"></a>CreateTable sınıfı uygulama
 
-Yeni bir dosya oluşturmak ve açmak için aşağıdaki komutu girin `CreateTable.java`. Yeni bir dosya oluşturmak için istemde **Evet** ' i seçin.
+`CreateTable.java`yeni bir dosya oluşturmak ve açmak için aşağıdaki komutu girin. Yeni bir dosya oluşturmak için istemde **Evet** ' i seçin.
 
 ```cmd
 notepad src\main\java\com\microsoft\examples\CreateTable.java
@@ -260,7 +260,7 @@ Bu kod, `people` adlı bir tablo oluşturan `CreateTable` sınıfıdır ve önce
 
 ### <a name="implement-a-searchbyemail-class"></a>SearchByEmail sınıfı uygulama
 
-Yeni bir dosya oluşturmak ve açmak için aşağıdaki komutu girin `SearchByEmail.java`. Yeni bir dosya oluşturmak için istemde **Evet** ' i seçin.
+`SearchByEmail.java`yeni bir dosya oluşturmak ve açmak için aşağıdaki komutu girin. Yeni bir dosya oluşturmak için istemde **Evet** ' i seçin.
 
 ```cmd
 notepad src\main\java\com\microsoft\examples\SearchByEmail.java
@@ -341,11 +341,11 @@ public class SearchByEmail {
 }
 ```
 
-@No__t-0 sınıfı, satırları e-posta adresine göre sorgulamak için kullanılabilir. Bir normal ifade filtresi kullandığından, sınıfı kullanırken bir dize ya da normal ifade sağlayabilirsiniz.
+`SearchByEmail` sınıfı, satırları e-posta adresine göre sorgulamak için kullanılabilir. Bir normal ifade filtresi kullandığından, sınıfı kullanırken bir dize ya da normal ifade sağlayabilirsiniz.
 
 ### <a name="implement-a-deletetable-class"></a>DeleteTable sınıfı uygulama
 
-Yeni bir dosya oluşturmak ve açmak için aşağıdaki komutu girin `DeleteTable.java`. Yeni bir dosya oluşturmak için istemde **Evet** ' i seçin.
+`DeleteTable.java`yeni bir dosya oluşturmak ve açmak için aşağıdaki komutu girin. Yeni bir dosya oluşturmak için istemde **Evet** ' i seçin.
 
 ```cmd
 notepad src\main\java\com\microsoft\examples\DeleteTable.java
@@ -375,11 +375,11 @@ public class DeleteTable {
 }
 ```
 
-@No__t-0 sınıfı, `CreateTable` sınıfı tarafından oluşturulan tabloyu devre dışı bırakarak ve bırakarak bu örnekte oluşturulan HBase tablolarını temizler.
+`DeleteTable` sınıfı, `CreateTable` sınıfı tarafından oluşturulan tabloyu devre dışı bırakarak ve bırakarak bu örnekte oluşturulan HBase tablolarını temizler.
 
 ## <a name="build-and-package-the-application"></a>Uygulamayı derleyin ve paketleyin
 
-1. @No__t-0 dizininden, uygulamayı içeren bir JAR dosyası oluşturmak için aşağıdaki komutu kullanın:
+1. `hbaseapp` dizininden, uygulamayı içeren bir JAR dosyası oluşturmak için aşağıdaki komutu kullanın:
 
     ```cmd
     mvn clean package
@@ -387,22 +387,22 @@ public class DeleteTable {
 
     Bu komut, uygulamayı oluşturur ve bir. jar dosyasında paketler.
 
-2. Komut tamamlandığında `hbaseapp/target` dizini `hbaseapp-1.0-SNAPSHOT.jar` adlı bir dosya içerir.
+2. Komut tamamlandığında `hbaseapp/target` Dizin, `hbaseapp-1.0-SNAPSHOT.jar`adlı bir dosya içerir.
 
    > [!NOTE]  
-   > @No__t-0 dosyası bir Uber jar. Uygulamayı çalıştırmak için gereken tüm bağımlılıkları içerir.
+   > `hbaseapp-1.0-SNAPSHOT.jar` dosyası bir Uber jar. Uygulamayı çalıştırmak için gereken tüm bağımlılıkları içerir.
 
 ## <a name="upload-the-jar-and-run-jobs-ssh"></a>JAR 'yi karşıya yükleme ve işleri çalıştırma (SSH)
 
-Aşağıdaki adımlarda, JAR 'yi HDInsight kümesindeki Apache HBase 'in birincil baş düğümüne kopyalamak için `scp` kullanılır. @No__t-0 komutu daha sonra kümeye bağlanmak ve örneği doğrudan baş düğümde çalıştırmak için kullanılır.
+Aşağıdaki adımlar, JAR 'yi HDInsight kümesindeki Apache HBase 'in birincil baş düğümüne kopyalamak için `scp` kullanır. Daha sonra `ssh` komutu kümeye bağlanmak ve örneği doğrudan baş düğümde çalıştırmak için kullanılır.
 
-1. Jar 'yi kümeye yükleyin. @No__t-0 ' ı HDInsight kümenizin adıyla değiştirin ve aşağıdaki komutu girin:
+1. Jar 'yi kümeye yükleyin. `CLUSTERNAME` HDInsight kümenizin adıyla değiştirin ve aşağıdaki komutu girin:
 
     ```cmd
     scp ./target/hbaseapp-1.0-SNAPSHOT.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net:hbaseapp-1.0-SNAPSHOT.jar
     ```
 
-2. HBase kümesine bağlanın. @No__t-0 ' ı HDInsight kümenizin adıyla değiştirin ve aşağıdaki komutu girin:
+2. HBase kümesine bağlanın. `CLUSTERNAME` HDInsight kümenizin adıyla değiştirin ve aşağıdaki komutu girin:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -441,7 +441,7 @@ Aşağıdaki adımlarda, JAR 'yi HDInsight kümesindeki Apache HBase 'in birinci
 
 Aşağıdaki adımlarda, Apache HBase kümeniz için JAR 'yi varsayılan depolamaya yüklemek için Azure PowerShell [az Module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) kullanılır. HDInsight cmdlet 'leri, örnekleri uzaktan çalıştırmak için kullanılır.
 
-1. AZ Module yükledikten ve yapılandırdıktan sonra, `hbase-runner.psm1` adlı bir dosya oluşturun. Bu dosyanın içeriği olarak aşağıdaki metni kullanın:
+1. AZ Module 'ü yükledikten ve yapılandırdıktan sonra, `hbase-runner.psm1`adlı bir dosya oluşturun. Bu dosyanın içeriği olarak aşağıdaki metni kullanın:
 
    ```powershell
     <#
@@ -645,9 +645,9 @@ Aşağıdaki adımlarda, Apache HBase kümeniz için JAR 'yi varsayılan depolam
    * **Add-HDInsightFile** -kümeye dosya yüklemek için kullanılır
    * **Start-HBaseExample** -daha önce oluşturulan sınıfları çalıştırmak için kullanılır
 
-2. @No__t-0 dosyasını `hbaseapp` dizinine kaydedin.
+2. `hbase-runner.psm1` dosyasını `hbaseapp` dizinine kaydedin.
 
-3. Modülleri Azure PowerShell kaydedin. Yeni bir Azure PowerShell penceresi açın ve aşağıdaki komutu düzenleyerek `CLUSTERNAME` ' i kümenizin adıyla değiştirin. Ardından aşağıdaki komutları girin:
+3. Modülleri Azure PowerShell kaydedin. Yeni bir Azure PowerShell penceresi açın ve `CLUSTERNAME` kümenizin adıyla değiştirerek aşağıdaki komutu düzenleyin. Ardından aşağıdaki komutları girin:
 
     ```powershell
     cd C:\HDI\hbaseapp
@@ -655,15 +655,15 @@ Aşağıdaki adımlarda, Apache HBase kümeniz için JAR 'yi varsayılan depolam
     Import-Module .\hbase-runner.psm1
     ```
 
-4. @No__t-0 ' i kümenize yüklemek için aşağıdaki komutu kullanın.
+4. `hbaseapp-1.0-SNAPSHOT.jar` kümenize yüklemek için aşağıdaki komutu kullanın.
 
     ```powershell
     Add-HDInsightFile -localPath target\hbaseapp-1.0-SNAPSHOT.jar -destinationPath example/jars/hbaseapp-1.0-SNAPSHOT.jar -clusterName $myCluster
     ```
 
-    İstendiğinde, küme oturum açma (yönetici) adını ve parolasını girin. Komutu, `hbaseapp-1.0-SNAPSHOT.jar` ' i kümenizin birincil depolama alanındaki `example/jars` konumuna yükler.
+    İstendiğinde, küme oturum açma (yönetici) adını ve parolasını girin. Komutu `hbaseapp-1.0-SNAPSHOT.jar`, kümenizin birincil depolama alanındaki `example/jars` konuma yükler.
 
-5. @No__t-0 kullanarak tablo oluşturmak için aşağıdaki komutu kullanın:
+5. `hbaseapp`kullanarak tablo oluşturmak için aşağıdaki komutu kullanın:
 
     ```powershell
     Start-HBaseExample -className com.microsoft.examples.CreateTable -clusterName $myCluster
@@ -681,7 +681,7 @@ Aşağıdaki adımlarda, Apache HBase kümeniz için JAR 'yi varsayılan depolam
 
     İstendiğinde, küme oturum açma (yönetici) adını ve parolasını girin.
 
-    Bu komut, `contactinformation` sütun ailesi ve `email` sütununun `contoso.com` dizesini içerdiği herhangi bir satırı aramak için `SearchByEmail` sınıfını kullanır. Aşağıdaki sonuçları almalısınız:
+    Bu komut, `contactinformation` sütun ailesi ve `email` sütununun dize `contoso.com`içerdiği herhangi bir satırı aramak için `SearchByEmail` sınıfını kullanır. Aşağıdaki sonuçları almalısınız:
 
           Franklin Holtz - ID: 2
           Franklin Holtz - franklin@contoso.com - ID: 2
@@ -690,7 +690,7 @@ Aşağıdaki adımlarda, Apache HBase kümeniz için JAR 'yi varsayılan depolam
           Gabriela Ingram - ID: 6
           Gabriela Ingram - gabriela@contoso.com - ID: 6
 
-    @No__t-1 değeri için **fabrikam.com** kullanılması, e-posta alanında **fabrikam.com** olan kullanıcıları döndürür. Normal ifadeleri arama terimi olarak da kullanabilirsiniz. Örneğin, **^ r** , ' r ' harfiyle başlayan e-posta adreslerini döndürür.
+    `-emailRegex` değeri için **fabrikam.com** kullanılması, e-posta alanında **fabrikam.com** olan kullanıcıları döndürür. Normal ifadeleri arama terimi olarak da kullanabilirsiniz. Örneğin, **^ r** , ' r ' harfiyle başlayan e-posta adreslerini döndürür.
 
 7. Tabloyu silmek için aşağıdaki komutu kullanın:
 

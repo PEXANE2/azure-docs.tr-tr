@@ -33,7 +33,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Kendi bilgisayarınızda yüklü olan [Azure CLI](https://docs.microsoft.com/cli/azure/overview). 
 * [Git](https://git-scm.com/)
@@ -238,7 +238,7 @@ Uygulama başlatıldıktan sonra Spring TODO uygulamasına bu bağlantıyı kull
 </plugins>
 ```
 
-## <a name="deploy-to-app-service-on-linux"></a>Linux üzerinde App Service dağıtma
+## <a name="deploy-to-app-service-on-linux"></a>Linux üzerinde App Service'e dağıtma
 
 `azure-webapp:deploy` Maven hedefini kullanarak, TODO uygulamasını Linux üzerinde Azure App Service için dağıtın.
 

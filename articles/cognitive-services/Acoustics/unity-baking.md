@@ -143,7 +143,7 @@ Sahne adı, sahneyi araştırma noktası yerleşimini ve voxelileştirme 'u depo
 2. Bu sekmede neler yapabileceğinize ilişkin kısa bir açıklama.
 3. Kaba veya ince simülasyon çözünürlüğü ayarlamak için bu seçenekleri kullanın. Kaba bir daha hızlıdır, ancak bir denge vardır. Ayrıntılar için bkz. [Bake çözünürlüğü](bake-resolution.md).
 4. Acoustics veri dosyalarının nereye yerleştirileceğini belirtir. Klasör seçicisine erişmek için " **...** " düğmesini seçin. Varsayılan konum *varlıklardır/AcousticsData*. Bu konumda bir *Düzenleyici* alt klasörü de oluşturulur. Daha fazla bilgi için, bu makalenin ilerleyen kısımlarında yer [alarak, hazırlama işlemi tarafından eklenen veri dosyaları](#Data-Files)bölümüne bakın.
-5. Burada belirtilen ön ek, bu sahnenin veri dosyalarını adlandırmak için kullanılır. Varsayılan değer "Acoustics_ *[Sahname]* " dir.
+5. Burada belirtilen ön ek, bu sahnenin veri dosyalarını adlandırmak için kullanılır. Varsayılan değer "Acoustics_ *[sahnenin adı]* " dir.
 6. Yoklamalar hesaplandıktan sonra, az önce açıklandığımız denetimler devre dışı bırakılmıştır. Hesaplamaları silmek ve yeni ayarlarla yeniden hesaplayabilmeniz için denetimleri etkinleştirmek üzere **Temizle** düğmesini seçin.
 7. Sahneyi tıklatıp araştırma noktası konumlarını hesaplamak için **Hesapla** ' yı seçin. Hesaplama, makinenizde yerel olarak yapılır. Bir bakmadan önce yapılmalıdır.
 
@@ -162,7 +162,7 @@ Azure Batch hizmetini kullanarak sahneye bulutta bir işlem kümesi üzerinden b
 3. Azure hesabınız oluşturulduktan sonra bu alanlara Azure kimlik bilgilerinizi girin. Daha fazla bilgi için bkz. [Azure Batch hesabı oluşturma](create-azure-account.md).
 4. Acoustics araç takımı için Docker Image etiketi alanı.
 5. Aboneliklerinizi yönetmek, kullanımı izlemek ve fatura bilgilerini görüntülemek için Azure portal açar.
-6. Hesaplama için kullanılacak Azure Batch işlem düğümü türünü belirtir. Düğüm türü, Azure veri merkezi konumunuz tarafından desteklenmelidir. Emin değilseniz, **Standard_F8s_v2**olarak bırakın.
+6. Hesaplama için kullanılacak Azure Batch işlem düğümü türünü belirtir. Düğüm türü, Azure veri merkezi konumunuz tarafından desteklenmelidir. Emin değilseniz **Standard_F8s_v2**olarak bırakın.
 7. Hesaplama için kullanılacak düğüm sayısı. Bu sayı, FIRE süresini etkiler. Azure Batch çekirdek ayırdınız ile sınırlıdır. Varsayılan ayırma yalnızca iki 8 çekirdekli düğüm veya 1 16 çekirdekli düğüme izin verir, ancak Genişletilebilir. Çekirdek ayırma kısıtlamaları hakkında daha fazla bilgi için bkz. [Azure Batch hesabı oluşturma](create-azure-account.md).
 8. İşlem havuzunuzu [düşük öncelikli düğümleri](https://docs.microsoft.com/azure/batch/batch-low-pri-vms)kullanacak şekilde yapılandırmak için bu onay kutusunu işaretleyin. Düşük öncelikli işlem düğümleri çok daha düşük maliyetlidir. Ancak, her zaman kullanılabilir olmayabilir veya herhangi bir zamanda yok edilebilir.
 9. **Yoklamanız** sekmesinde hesaplanan şekilde sahnenin araştırma sayısı. Yoklamaların sayısı, bulutta çalıştırılması gereken benzetimleri sayısını belirler. Yoklamalara göre daha fazla düğüm belirtemezsiniz.
@@ -205,7 +205,7 @@ Güvenlik için Azure kimlik bilgileri yerel makinenizde depolanır ve Unity dü
 
 Ne kadar fazla maliyet olacağını tahmin etmek için bir süre olan **Tahmini Işlem maliyeti** değeri ile başlayın. Seçtiğiniz **VM düğüm türü** için bu değeri, yerel para biriminizde saatlik maliyet ile çarpın. Sonucun, düğümlerin çalışır duruma getirmek için gereken düğüm süresini içermediğini unutmayın.
 
-Örneğin, bir $0.40/hr maliyeti olan düğüm türü için **Standard_F8s_v2** ' i seçtiğinizi varsayalım. **Tahmini Işlem maliyeti** 3 saat ve 57 dakika ise, işi çalıştırmak için tahmini maliyet $0,40 * ~ 4 saat = ~ $1,60 olur. Düğümlerin çalışmaya başladığı ek süre nedeniyle gerçek maliyet büyük olasılıkla biraz daha yüksek olacaktır.
+Örneğin, bir $0.40/hr maliyeti olan düğüm türü için **Standard_F8s_v2** istediğinizi varsayalım. **Tahmini Işlem maliyeti** 3 saat ve 57 dakika ise, işi çalıştırmak için tahmini maliyet $0,40 * ~ 4 saat = ~ $1,60 olur. Düğümlerin çalışmaya başladığı ek süre nedeniyle gerçek maliyet büyük olasılıkla biraz daha yüksek olacaktır.
 
 Saatlik düğüm maliyetlerini [Azure Batch fiyatlandırmayla](https://azure.microsoft.com/pricing/details/virtual-machines/linux)bulun. (Kategori olarak iyileştirilmiş veya **yüksek performanslı** bilgi **işlem** ' i seçin.)
 
@@ -224,9 +224,9 @@ Ayrıca, sahsitenizin kendinize ait bir BILGISAYAR üzerinde de bir bakın. Bu y
 Simülasyonu işleyecek BILGISAYARA Docker 'ı yükleyip yapılandırın:
 1. [Docker Desktop](https://www.docker.com/products/docker-desktop)'ı yükler.
 2. Docker ayarlarını açın, **Gelişmiş**' e gidin ve kaynakları en az 8 GB RAM için yapılandırın. Docker 'a ayırabileceğiniz CPU sayısı ne kadar yüksekse, fırt daha hızlı tamamlanır.  
-![ örnek Docker ayarları @ no__t-1
+![örnek Docker ayarları](media/docker-settings.png)
 1. **Paylaşılan sürücüler**' e gidin ve işlemek için kullanılan sürücü için paylaşımı açın.  
-![Docker paylaşılan sürücü seçenekleri @ no__t-1
+Docker paylaşılan sürücü seçeneklerini ![](media/docker-shared-drives.png)
 
 ### <a name="run-the-local-bake"></a>Yerel bakışta Çalıştır
 1. **Bake** sekmesinde **Yerel Bake 'yi hazırla** düğmesini seçin. Ardından, giriş dosyalarını ve yürütme komut dosyalarını kaydetmek için bir klasör konumu seçin. Daha sonra, en düşük donanım gereksinimlerini karşılayan ve bu makineye klasörü kopyalayarak Docker 'ı yüklediğiniz sürece hazırlama 'yi herhangi bir makinede çalıştırabilirsiniz.
@@ -238,14 +238,14 @@ Simülasyonu işleyecek BILGISAYARA Docker 'ı yükleyip yapılandırın:
 Aşağıdaki dört veri dosyası, hazırlama işlemi sırasında oluşturulur. Biri simülasyon sonuçlarını içerir ve başlığınız ile birlikte gelir. Diğer kullanıcılar Unity Düzenleyicisi ile ilgili verileri depolar.
 
 Simülasyon sonucu:
-* *Varlıklar/AcousticsData/Acoustics @ no__t-1 [manzara adı]. Ace. Bytes*: Bu dosya, çalışma zamanı arama tablosudur. Simülasyonu sonuçları ve voxeli, akustik sahne öğeleri içerir. Bu dosyanın adını ve konumunu **yoklamalar** sekmesinden değiştirebilirsiniz.
+* *Varlıklar/AcousticsData/Acoustics\_[manzara adı]. Ace. Bytes*: Bu dosya, çalışma zamanı arama tablosudur. Simülasyonu sonuçları ve voxeli, akustik sahne öğeleri içerir. Bu dosyanın adını ve konumunu **yoklamalar** sekmesinden değiştirebilirsiniz.
 
    *Simülasyon sonuç dosyasını silmemeye dikkat edin. Sahnenin geri bakmasının dışında kurtarılabilir.*
 
 Düzenleyici veri dosyaları:
-* *Varlıklar/düzenleyici/[manzara adı] \_AcousticsParameters. varlık*: Bu dosya, Acoustics Kullanıcı arabirimindeki alanlara girdiğiniz verileri depolar. Bu dosyanın adını ve konumunu değiştiremezsiniz.
-* *Varlıklar/AcousticsData/Editor/Acoustics_ [manzara adı].* II: Bu **Dosya, araştırma sekmesindeki** **Hesapla** düğmesini seçtiğinizde hesaplanan voxeli, Acoustics geometrisini ve malzeme özelliklerini depolar. Bu dosyanın adını ve konumunu **yoklamalar** sekmesinden değiştirebilirsiniz.
-* *Varlıklar/AcousticsData/Editor/Acoustics @ no__t-1 [manzara adı] @no__t -2config. xml*: Bu dosya **Calculate**' i seçtiğinizde hesaplanan simülasyon parametrelerini depolar. Bu dosyanın adını ve konumunu **yoklamalar** sekmesinden değiştirebilirsiniz.
+* *Varlıklar/düzenleyici/[manzara adı]\_AcousticsParameters. varlık*: Bu dosya, Acoustics Kullanıcı arabirimindeki alanlara girdiğiniz verileri depolar. Bu dosyanın adını ve konumunu değiştiremezsiniz.
+* *Varlıklar/AcousticsData/Editor/Acoustics_ [manzara adı].* II: Bu **Dosya, araştırma sekmesindeki** **Hesapla** düğmesini seçtiğinizde hesaplanan voxeliAcoustics geometrisini ve malzeme özelliklerini depolar. Bu dosyanın adını ve konumunu **yoklamalar** sekmesinden değiştirebilirsiniz.
+* *Varlıklar/AcousticsData/Editor/Acoustics\_[manzara adı]\_config. xml*: Bu dosya **Calculate**' i seçtiğinizde hesaplanan simülasyon parametrelerini depolar. Bu dosyanın adını ve konumunu **yoklamalar** sekmesinden değiştirebilirsiniz.
 
 ## <a name="set-up-the-acoustics-lookup-table"></a>Acoustics arama tablosunu ayarlama
 Projeyi Proje panelinden **Acoustics** prefab 'den sahneye sürükleyin:

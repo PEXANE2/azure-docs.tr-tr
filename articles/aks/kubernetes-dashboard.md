@@ -22,7 +22,7 @@ Kubernetes panosu hakkında daha fazla bilgi için bkz. [Kubernetes Web UI panos
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu belgede açıklanan adımlarda bir aks kümesi oluşturduğunuz ve kümeyle bir `kubectl` bağlantı oluşturmuş olduğunuz varsayılmaktadır. AKS kümesi oluşturmanız gerekiyorsa bkz. [aks hızlı][aks-quickstart]başlangıcı.
+Bu belgede açıklanan adımlarda bir AKS kümesi oluşturdunuz ve kümeyle `kubectl` bir bağlantı oluşturmuş olduğunuz varsayılmaktadır. AKS kümesi oluşturmanız gerekiyorsa bkz. [aks hızlı][aks-quickstart]başlangıcı.
 
 Ayrıca Azure CLI sürüm 2.0.46 veya üzerini yüklemiş ve yapılandırmış olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
 
@@ -34,7 +34,7 @@ Kubernetes panosunu başlatmak için [az aks zat][az-aks-browse] komutunu kullan
 az aks browse --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Bu komut, geliştirme sisteminiz ile Kubernetes API 'niz arasında bir ara sunucu oluşturur ve Kubernetes panosuna bir Web tarayıcısı açar. Bir Web tarayıcısı Kubernetes panosuna açılmazsa, genellikle `http://127.0.0.1:8001`Azure CLı 'de belirtilen URL adresini kopyalayıp yapıştırın.
+Bu komut, geliştirme sisteminiz ile Kubernetes API 'niz arasında bir ara sunucu oluşturur ve Kubernetes panosuna bir Web tarayıcısı açar. Bir Web tarayıcısı Kubernetes panosuna açılmazsa, Azure CLı 'de belirtilen URL adresini kopyalayıp, genellikle `http://127.0.0.1:8001`yapıştırın.
 
 <!--
 ![The login page of the Kubernetes web dashboard](./media/kubernetes-dashboard/dashboard-login.png)
@@ -119,7 +119,7 @@ Bir dağıtımı düzenlemek için:
 
 1. Sol taraftaki menüden **dağıtımlar** ' ı seçin ve ardından *NGINX* dağıtımınızı seçin.
 1. Sağ üst gezinti çubuğunda **Düzenle** ' yi seçin.
-1. `spec.replica` Değeri, 20. satırın etrafında bulun. Uygulamanın çoğaltma sayısını artırmak için bu değeri *1* ' den *3*' e değiştirin.
+1. `spec.replica` değerini, 20. satırın etrafında bulun. Uygulamanın çoğaltma sayısını artırmak için bu değeri *1* ' den *3*' e değiştirin.
 1. Hazırsanız **Güncelleştir** ' i seçin.
 
 ![Kopyaların sayısını güncelleştirmek için dağıtımı düzenleyin](./media/kubernetes-dashboard/edit-deployment.png)

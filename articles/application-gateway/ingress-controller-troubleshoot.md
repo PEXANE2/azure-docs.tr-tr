@@ -236,7 +236,7 @@ Diğer yandan 5. düzey, ARM 'ye uygulanan yapılandırma için ayıklanmış i�
 Kubernetes topluluğu, [kubectl](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#kubectl-output-verbosity-and-debugging) aracı için 9 günlük kayıt kurdu. Bu depoda, benzer anlamlarla birlikte bunlardan 3 ' ü kullanıyoruz:
 
 
-| Ayrıntı | Açıklama |
+| Verbosity | Açıklama |
 |-----------|-------------|
 |  1        | Varsayılan günlük düzeyi; başlangıç ayrıntılarını, uyarıları ve hataları gösterir |
 |  3        | Olaylar ve değişiklikler hakkında genişletilmiş bilgiler; oluşturulan nesne listeleri |

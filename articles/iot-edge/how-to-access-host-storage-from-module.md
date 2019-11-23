@@ -21,16 +21,16 @@ Azure depolama hizmetleri 'ni veya cihazınızın kapsayıcı depolama alanını
 
 ## <a name="link-module-storage-to-device-storage"></a>Modül depolama alanını cihaz depolamaya bağlama
 
-Modül depolamadaki bir bağlantıyı konak sistemindeki depolamaya etkinleştirmek için modülünüzün kapsayıcıda bir depolama klasörünü işaret eden bir ortam değişkeni oluşturun. Ardından, bu depolama klasörünü konak makinesindeki bir klasöre bağlamak için oluşturma seçeneklerini kullanın.
+Modül depolamadaki bir bağlantıyı konak sistemindeki depolamaya etkinleştirmek için modülünüzün kapsayıcıda bir depolama klasörünü işaret eden bir ortam değişkeni oluşturun. Ardından, bu depolama klasörü konak makinedeki bir klasöre bağlamak için oluşturma seçenekleri kullanın.
 
-Örneğin, IoT Edge hub 'ını cihazınızın yerel depolamadaki iletileri depolamak ve daha sonra almak için etkinleştirmek istiyorsanız, **Gelişmiş Edge çalışma zamanı ayarlarını yapılandırma içindeki Azure Portal ortam değişkenlerini ve oluşturma seçeneklerini yapılandırabilirsiniz.** bölümüne.
+Örneğin, IoT Edge hub 'ını cihazınızın yerel depolamadaki iletileri depolamak ve daha sonra almak için etkinleştirmek istiyorsanız, **Gelişmiş Edge çalışma zamanı ayarlarını yapılandırma** bölümündeki Azure Portal ortam değişkenlerini ve oluşturma seçeneklerini yapılandırabilirsiniz.
 
 1. IoT Edge hub ve IoT Edge Aracısı için, modüldeki bir dizini işaret eden **StorageFolder** adlı bir ortam değişkeni ekleyin.
-1. IoT Edge hub ve IoT Edge Aracısı için, konak makinedeki yerel bir dizini modüldeki bir dizine bağlamak üzere bağlamalar ekleyin. Örnek:
+1. IoT Edge hub ve IoT Edge Aracısı için, konak makinedeki yerel bir dizini modüldeki bir dizine bağlamak üzere bağlamalar ekleyin. Örneğin:
 
    ![Yerel depolama için oluşturma seçenekleri ve ortam değişkenleri ekleme](./media/how-to-access-host-storage-from-module/offline-storage.png)
 
-Ya da, yerel depolamayı doğrudan dağıtım bildiriminde yapılandırabilirsiniz. Örnek:
+Ya da, yerel depolamayı doğrudan dağıtım bildiriminde yapılandırabilirsiniz. Örneğin:
 
 ```json
 "systemModules": {
@@ -70,11 +70,11 @@ Ya da, yerel depolamayı doğrudan dağıtım bildiriminde yapılandırabilirsin
 }
 ```
 
-@No__t-0 ve `<ModuleStoragePath>` ' i konak ve modülle depolama yolunuza göre değiştirin; Her iki değer de mutlak bir yol olmalıdır.
+`<HostStoragePath>` ve `<ModuleStoragePath>`, ana bilgisayar ve modülle depolama yolunuza göre değiştirin; Her iki değer de mutlak bir yol olmalıdır.
 
-Örneğin, bir Linux sisteminde `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]`; konak sisteminizdeki **/etc/ıotedge/Storage** dizini, kapsayıcıda **/iotedge/Storage/** dizinine eşlenir. Bir Windows sisteminde, başka bir örnek olarak `"Binds":["C:\\temp:C:\\contemp"]`, ana bilgisayar sisteminizdeki **c: \\temp** dizininin, kapsayıcıda **c: \\contemp** dizinine eşlendiği anlamına gelir.
+Örneğin, bir Linux sisteminde `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]`, ana bilgisayar sisteminizdeki **/etc/ıotedge/Storage** dizininin, kapsayıcıda **/iotedge/Storage/** dizinine eşlendiği anlamına gelir. Bir Windows sisteminde, başka bir örnek olarak `"Binds":["C:\\temp:C:\\contemp"]`, ana bilgisayar sisteminizde **c:\\Temp** dizininin, kapsayıcıda **c:\\Contemp** dizinine eşlendiği anlamına gelir.
 
-Ayrıca, Linux cihazlarda modülünüzün Kullanıcı profilinin konak sistem dizini için gereken okuma, yazma ve yürütme izinlerine sahip olduğundan emin olun. Cihazınızın yerel depolamasına iletileri depolamak üzere IoT Edge hub 'ı etkinleştirmeye yönelik daha önceki örneğe dönerek, Kullanıcı profili, UID 1000 için izin vermeniz gerekir. (IoT Edge Aracısı kök olarak çalışır, bu nedenle ek izin gerektirmez.) @No__t-0 ' ı kullanarak, Dizin sahibini değiştirme ve sonra izinleri değiştirmek için-1 @no__t dahil olmak üzere Linux sistemlerinde dizin izinlerini yönetmenin birkaç yolu vardır:
+Ayrıca, Linux cihazlarda modülünüzün Kullanıcı profilinin konak sistem dizini için gereken okuma, yazma ve yürütme izinlerine sahip olduğundan emin olun. Cihazınızın yerel depolamasına iletileri depolamak üzere IoT Edge hub 'ı etkinleştirmeye yönelik daha önceki örneğe dönerek, Kullanıcı profili, UID 1000 için izin vermeniz gerekir. (IoT Edge Aracısı kök olarak çalışır, bu nedenle ek izin gerektirmez.) Linux sistemlerinde dizin izinlerini yönetmenin birkaç yolu vardır. bu da, Dizin sahibini değiştirmek için `chown` kullanma ve sonra izinleri değiştirmek için `chmod`:
 
 ```bash
 sudo chown 1000 <HostStoragePath>

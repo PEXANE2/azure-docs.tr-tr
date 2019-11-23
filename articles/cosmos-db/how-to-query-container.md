@@ -19,7 +19,7 @@ Bu makalede, Azure Cosmos DB bir kapsayıcının (koleksiyon, grafik veya tablo)
 
 ## <a name="in-partition-query"></a>Bölüm içi sorgu
 
-Kapsayıcılardan veri sorguladığınızda, sorguda bir bölüm anahtarı filtresi belirtilmişse Azure Cosmos DB sorguyu otomatik olarak işler. Sorguyu, filtrede belirtilen bölüm anahtarı değerlerine karşılık gelen bölümlere yönlendirir. Örneğin, aşağıdaki sorgu bölüm anahtarı değerine `DeviceId` `XMS-0001`karşılık gelen tüm belgeleri tutan bölüme yönlendirilir.
+Kapsayıcılardan veri sorguladığınızda, sorguda bir bölüm anahtarı filtresi belirtilmişse Azure Cosmos DB sorguyu otomatik olarak işler. Sorguyu, filtrede belirtilen bölüm anahtarı değerlerine karşılık gelen bölümlere yönlendirir. Örneğin, aşağıdaki sorgu, bölüm anahtarı değer `XMS-0001`karşılık gelen tüm belgeleri tutan `DeviceId` bölümüne yönlendirilir.
 
 ```csharp
 // Query using partition key into a class called, DeviceReading
@@ -30,7 +30,7 @@ IQueryable<DeviceReading> query = client.CreateDocumentQuery<DeviceReading>(
 
 ## <a name="cross-partition-query"></a>Bölümler arası sorgu
 
-Aşağıdaki sorgu, bölüm anahtarı (`DeviceId`) üzerinde bir filtreye sahip değildir ve bölümün dizininde çalıştığı tüm bölümlere göre belirlenir. Bölümler arasında bir sorgu çalıştırmak için, true `EnableCrossPartitionQuery` (veya `x-ms-documentdb-query-enablecrosspartition`  REST API) olarak ayarlayın.
+Aşağıdaki sorgu, Bölüm anahtarında (`DeviceId`) bir filtreye sahip değildir ve bölümün dizininde çalıştığı tüm bölümlere göre belirlenir. Bölümler arasında bir sorgu çalıştırmak için, `EnableCrossPartitionQuery` true (veya REST API  `x-ms-documentdb-query-enablecrosspartition`) olarak ayarlayın.
 
 Enable, Spartitionquery özelliği bir Boole değeri kabul eder. True olarak ayarlandığında ve sorgunuzun bölüm anahtarı yoksa, Azure Cosmos DB. Fanı, tüm bölümlere tek sorgular vererek yapılır. Sorgu sonuçlarını okumak için, istemci uygulamaların, FeedResponse sonuçlarını kullanması ve ContinuationToken özelliğini denetlemesi gerekir. Tüm sonuçları okumak için, ContinuationToken null olana kadar verilerde yinelenmesine devam edin. 
 
@@ -59,9 +59,9 @@ IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<Devic
 
 Aşağıdaki parametreleri ayarlayarak paralel sorgu yürütme işlemini yönetebilirsiniz:
 
-- **Maxdegreeofparalellik**: Kapsayıcının bölümlerine en fazla eşzamanlı ağ bağlantısı sayısını ayarlar. Bu özelliği-1 olarak ayarlarsanız, SDK paralellik derecesini yönetir.  `MaxDegreeOfParallelism`Belirtilmemişseveyavarsayılandeğerolan0olarakayarlandıysa,kapsayıcınınbölümlerinetek bir ağ bağlantısı vardır.
+- **MaxDegreeOfParallelism**: Kapsayıcının bölümlerine yönelik eşzamanlı ağ bağlantıları sayısı üst sınırını ayarlar. Bu özelliği-1 olarak ayarlarsanız, SDK paralellik derecesini yönetir.  `MaxDegreeOfParallelism` belirtilmemişse veya varsayılan değer olan 0 olarak ayarlandıysa, kapsayıcının bölümlerine tek bir ağ bağlantısı vardır.
 
-- **Maxbuffereditemcount**: Sorgu gecikmesini, istemci tarafı bellek kullanımına karşı Trat. Bu seçenek atlanırsa veya-1 ' e ayarlanırsa, SDK paralel sorgu yürütme sırasında arabelleğe alınan öğe sayısını yönetir.
+- **MaxBufferedItemCount**: Sorgu gecikme süresiyle istemci tarafı bellek kullanımı arasında denge kurar. Bu seçenek atlanırsa veya-1 ' e ayarlanırsa, SDK paralel sorgu yürütme sırasında arabelleğe alınan öğe sayısını yönetir.
 
 Koleksiyonun aynı durumuyla, paralel bir sorgu sonuçları seri yürütme ile aynı sırada döndürür. Sıralama işleçlerini (ORDER BY, TOP) içeren bir çapraz bölümlü sorgu gerçekleştirirken, Azure Cosmos DB SDK sorguyu bölümler arasında paralel olarak verir. Genel olarak sıralanmış sonuçlar oluşturmak için istemci tarafında kısmen sıralanmış sonuçları birleştirir.
 

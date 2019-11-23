@@ -22,26 +22,26 @@ Bu genel bakışta, Microsoft Genomiks ile iletişim kurmak için bir destek ist
 
 
 ## <a name="file-a-support-ticket-through-the-azure-portal"></a>Azure portal aracılığıyla bir destek bileti dosyası oluşturma
-İlk olarak, Azure portal Azure hesabınızda oturum açın. Sağ üst köşedeki soru işaretine tıklayın ve `Help + support` ' ı seçin.
+İlk olarak, Azure portal Azure hesabınızda oturum açın. Sağ üst köşedeki soru işaretine tıklayın ve `Help + support`' yi seçin.
 
 ![](./media/file-support-ticket/genomics-contact-support.png "Azure Portal") Azure Portal desteğe başvurun 
 
 
 
-Sonra `New support request` ' ı seçin. 
+Ardından `New support request`' yi seçin. 
 
 ![Yeni destek isteği](./media/file-support-ticket/new-support-request.png "Yeni destek isteği") 
 
-@No__t-1 ve `Subscription` ' yi içeren `Basics` ' ı doldurun. Sorununuzla ilgili en uygun @no__t seçin; Aşağıdaki görüntüde örnek olarak `Technical` seçilidir. İlgili hizmet olarak `Microsoft Genomics` ' ı seçtiğinizden emin olun.  `Microsoft Genomics`, `Intelligence and Analytics` kategorisinin altında listelenecektir.   @No__t-0 ' ı seçtikten sonra, `Support plan` türünü de sağlamanız istenecektir.
+`Issue type` ve `Subscription`dahil `Basics`doldurun. Sorununuz için en ilgili `Issue type` seçin; Aşağıdaki görüntüde örnek olarak `Technical` seçilidir. İlgili hizmet olarak `Microsoft Genomics` ' yi seçtiğinizden emin olun.  `Microsoft Genomics`, `Intelligence and Analytics` kategorisinin altında listelenecektir.   `Microsoft Genomics`seçtikten sonra, `Support plan` türünü de girmeniz istenir.
 
 Temel bilgileri(./media/file-support-ticket/support-request-basics.png "Destek isteği") ![destek isteği temel]bilgiler
 
 
-Sonra sorununuzla ilgili ayrıntıları ekleyin. İstek Aracı, size yardımcı olabilecek mevcut belgelere de bağlanır. Bu örnekte, sorun `Genomics keys` ile ilgilidir, ancak birkaç diğer seçenek de mevcuttur.
+Sonra sorununuzla ilgili ayrıntıları ekleyin. İstek Aracı, size yardımcı olabilecek mevcut belgelere de bağlanır. Bu örnekte, sorun `Genomics keys`ile ilgilidir, ancak birkaç diğer seçenek de mevcuttur.
 
 Sorun(./media/file-support-ticket/support-request-problem.png "Destek isteği") ![destek isteği sorunu]
 
-Son olarak, destek isteğinizi göndermek için iletişim bilgilerinizi ekleyin ve ekranın alt kısmındaki `Create` ' ı seçin.
+Son olarak, destek isteğinizi göndermek için iletişim bilgilerinizi ekleyin ve ekranın altındaki `Create` seçin.
 
 ![Destek isteği kişi](./media/file-support-ticket/support-request-contact.png "destek isteği iletişim")
 

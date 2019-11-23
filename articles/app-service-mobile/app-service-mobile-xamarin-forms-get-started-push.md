@@ -28,7 +28,7 @@ ms.locfileid: "72388526"
 > [!NOTE]
 > Visual Studio App Center mobil uygulama dağıtımında merkezi konumdaki uçtan uca ve tümleşik hizmetleri destekler. Geliştiriciler Sürekli Tümleştirme ve Teslim işlem hattını ayarlamak için **Oluşturma**, **Test** ve **Dağıtım** hizmetlerini kullanabilir. Uygulama dağıtıldıktan sonra, geliştiriciler **Analiz** ve **Tanılama** hizmetlerini kullanarak uygulamanın durumunu ve kullanımını izleyebilir, **Gönderme** hizmetini kullanarak kullanıcılarla etkileşim kurabilir. Geliştiriciler ayrıca kullanıcıların kimliğini doğrulamak için **Kimlik Doğrulaması**'ndan ve uygulama verilerini bulutta kalıcı hale getirmek ve eşitlemek için **Veri** hizmetinden yararlanabilir.
 >
-> Mobil uygulamanızda bulut hizmetlerini tümleştirmek istiyorsanız bugün [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) kaydolun.
+> Bulut hizmetlerini mobil uygulamanızla tümleştirmek istiyorsanız [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc)'a hemen kaydolun.
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -67,7 +67,7 @@ Arka ucu FCM ile yapılandırılmışsa, FCM ile kaydolmak için istemciye bile�
 1. **DROID** projesinde,, **NuGet Paketlerini Yönet > başvurular**' a sağ tıklayın....
 1. NuGet Paket Yöneticisi penceresinde, **Xamarin. Firebase. Messaging** paketini arayın ve projeye ekleyin.
 1. **DROID** projesinin proje özellikleri ' nde, uygulamayı Android sürüm 7,0 veya üstünü kullanarak derlemek üzere ayarlayın.
-1. Firebase konsolundan indirilen **Google-Services. JSON** dosyasını, **DROID** projesinin köküne ekleyin ve Build eylemini **GoogleServicesJson**olarak ayarlayın. Daha fazla bilgi için bkz. [Google SERVICES JSON dosyası ekleme](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/#Add_the_Google_Services_JSON_File).
+1. Firebase konsolundan indirilen **Google-Services. JSON** dosyasını, **DROID** projesinin köküne ekleyin ve Build eylemini **GoogleServicesJson**olarak ayarlayın. Daha fazla bilgi için [Google Hizmetleri JSON dosyası ekleme](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/#Add_the_Google_Services_JSON_File).
 
 #### <a name="registering-with-firebase-cloud-messaging"></a>Firebase Cloud Messaging ile kaydolma
 
@@ -84,9 +84,9 @@ Arka ucu FCM ile yapılandırılmışsa, FCM ile kaydolmak için istemciye bile�
     </receiver>
     ```
 
-#### <a name="implementing-the-firebase-instance-id-service"></a>Firebase örnek KIMLIĞI hizmetini uygulama
+#### <a name="implementing-the-firebase-instance-id-service"></a>Firebase örnek kimlik hizmetinin uygulama
 
-1. @No__t-1 adlı **DROID** projesine yeni bir sınıf ekleyin ve aşağıdaki `using` deyimlerinin dosyanın en üstünde bulunduğundan emin olun:
+1. `FirebaseRegistrationService`adlı **DROID** projesine yeni bir sınıf ekleyin ve aşağıdaki `using` deyimlerinin dosyanın en üstünde bulunduğundan emin olun:
 
     ```csharp
     using System.Threading.Tasks;
@@ -123,13 +123,13 @@ Arka ucu FCM ile yapılandırılmışsa, FCM ile kaydolmak için istemciye bile�
     }
     ```
 
-    @No__t-0 sınıfı, uygulamanın FCM 'ye erişmesini yetkilendirecek güvenlik belirteçleri oluşturmaktan sorumludur. @No__t-0 yöntemi, uygulama FCM 'den bir kayıt belirteci aldığında çağrılır. Yöntemi, FCM tarafından zaman uyumsuz olarak güncellenen `FirebaseInstanceId.Instance.Token` özelliğinden belirteci alır. @No__t-0 yöntemi seyrek çağrılır, çünkü belirteç yalnızca uygulama yüklendiğinde veya kaldırıldığında, Kullanıcı uygulama verilerini sildiğinde, uygulama örnek KIMLIĞINI sildiğinde veya belirtecin güvenliği olduğunda barýn. Ayrıca, FCM örnek KIMLIĞI hizmeti uygulamanın belirtecini düzenli aralıklarla ve genellikle 6 ayda bir yenilemelerini ister.
+    `FirebaseRegistrationService` sınıfı, uygulamanın FCM 'ye erişmesini yetkilendirecek güvenlik belirteçleri oluşturmaktan sorumludur. `OnTokenRefresh` Yöntemi uygulama FCM kayıt belirtecinizi aldığında çağrılır. Belirteçten yöntemi alır `FirebaseInstanceId.Instance.Token` özelliği FCM ile zaman uyumsuz olarak güncelleştirilir. `OnTokenRefresh` Yöntemi nadiren çağrılır, uygulamanın yüklenmesi veya kaldırılması, kullanıcı uygulama verileri sildiğinde uygulamanın örnek kimliği vuruşunu sildiğinde, belirteç yalnızca güncelleştirildiğinden veya güvenlik belirtecinin olduğunda gizliliği. Ayrıca, uygulama, belirteci düzenli olarak, genellikle her 6 ayda bir yenileme FCM örnek kimliği hizmeti ister.
 
-    @No__t-0 Yöntemi ayrıca kullanıcının kayıt belirtecini Azure Bildirim Hub 'ı ile ilişkilendirmek için kullanılan `SendRegistrationTokenToAzureNotificationHub` yöntemini çağırır.
+    `OnTokenRefresh` Yöntemini de çağırır `SendRegistrationTokenToAzureNotificationHub` Azure bildirim Hub'ınızla kullanıcının kayıt belirtecini ilişkilendirmek için kullanılan yöntem.
 
-#### <a name="registering-with-the-azure-notification-hub"></a>Azure Notification Hub 'ına kaydolma
+#### <a name="registering-with-the-azure-notification-hub"></a>Azure bildirim Hub'ıyla
 
-1. @No__t-1 adlı **DROID** projesine yeni bir sınıf ekleyin ve aşağıdaki `using` deyimlerinin dosyanın en üstünde bulunduğundan emin olun:
+1. `AzureNotificationHubService`adlı **DROID** projesine yeni bir sınıf ekleyin ve aşağıdaki `using` deyimlerinin dosyanın en üstünde bulunduğundan emin olun:
 
     ```csharp
     using System;
@@ -168,11 +168,11 @@ Arka ucu FCM ile yapılandırılmışsa, FCM ile kaydolmak için istemciye bile�
     }
     ```
 
-    @No__t-0 yöntemi JSON olarak basit bir bildirim iletisi şablonu oluşturur ve Firebase kayıt belirtecini kullanarak Bildirim Hub 'ından şablon bildirimleri almak için kayıt yapar. Bu, Azure Bildirim Hub 'ından gönderilen tüm bildirimlerin kayıt belirteci tarafından temsil edilen cihazı hedeflemesini sağlar.
+    `RegisterAsync` yöntemi, JSON olarak basit bir bildirim iletisi şablonu oluşturur ve Firebase kayıt belirtecini kullanarak Bildirim Hub 'ından şablon bildirimleri almak için kayıt yapar. Bu, Azure bildirim Hub'ından gönderilen tüm bildirimler kayıt belirtecinizi tarafından temsil edilen cihaz hedeflediğiniz sağlar.
 
-#### <a name="displaying-the-contents-of-a-push-notification"></a>Anında Iletme bildiriminin Içeriğini görüntüleme
+#### <a name="displaying-the-contents-of-a-push-notification"></a>Anında iletme bildirimi içeriğini görüntüleme
 
-1. @No__t-1 adlı **DROID** projesine yeni bir sınıf ekleyin ve aşağıdaki `using` deyimlerinin dosyanın en üstünde bulunduğundan emin olun:
+1. `FirebaseNotificationService`adlı **DROID** projesine yeni bir sınıf ekleyin ve aşağıdaki `using` deyimlerinin dosyanın en üstünde bulunduğundan emin olun:
 
     ```csharp
     using Android.App;
@@ -225,7 +225,7 @@ Arka ucu FCM ile yapılandırılmışsa, FCM ile kaydolmak için istemciye bile�
     }
     ```
 
-    Bir uygulama FCM 'den bildirim aldığında çağrılan `OnMessageReceived` yöntemi, ileti içeriğini ayıklar ve `SendNotification` yöntemini çağırır. Bu yöntem ileti içeriğini, bildirim alanında görüntülenen bildirim ile uygulama çalışırken başlatılan bir yerel bildirime dönüştürür.
+    Bir uygulama FCM 'den bildirim aldığında çağrılan `OnMessageReceived` yöntemi, ileti içeriğini ayıklar ve `SendNotification` yöntemini çağırır. Bu yöntem, uygulama çalışırken bildirim alanında görüntülenen bildirim ile başlatılan bir yerel bildirim iletisi içeriği dönüştürür.
 
 Şimdi, Android cihazda veya Öykünücüde çalışan uygulamada test anında iletme bildirimleri hazır olursunuz.
 
@@ -358,7 +358,7 @@ Bu bölüm, Windows cihazları için Xamarin. Forms WinApp ve WinPhone81 projele
     using <your_TodoItemManager_portable_class_namespace>;
     ```
 
-    @No__t-0 ' i, `TodoItemManager` sınıfını içeren taşınabilir projenizin ad alanı ile değiştirin.
+    `<your_TodoItemManager_portable_class_namespace>`, `TodoItemManager` sınıfını içeren taşınabilir projenizin ad alanıyla değiştirin.
 
 2. App.xaml.cs ' de, aşağıdaki **ınitnotificationsasync** yöntemini ekleyin:
 
@@ -403,7 +403,7 @@ Bu bölüm, Windows cihazları için Xamarin. Forms WinApp ve WinPhone81 projele
 
 1. Visual Studio 'da bir Windows projesine sağ tıklayın ve **Başlangıç projesi olarak ayarla**' ya tıklayın.
 2. Projeyi oluşturmak ve uygulamayı başlatmak için **Çalıştır** düğmesine basın.
-3. Uygulamada, yeni bir TodoItem için bir ad yazın ve ardından artı ( **+** ) simgesine tıklayarak ekleyin.
+3. Uygulamada, yeni bir TodoItem için bir ad yazın ve ardından eklemek için artı ( **+** ) simgesine tıklayın.
 4. Öğe eklendiğinde bir bildirimin alındığını doğrulayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -411,7 +411,7 @@ Bu bölüm, Windows cihazları için Xamarin. Forms WinApp ve WinPhone81 projele
 Anında iletme bildirimleri hakkında daha fazla bilgi edinebilirsiniz:
 
 * [Azure Mobile Apps anında Iletme bildirimleri gönderme](https://developer.xamarin.com/guides/xamarin-forms/cloud-services/push-notifications/azure/)
-* [Firebase bulut mesajlaşma](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/firebase-cloud-messaging/)
+* [Firebase Cloud Messaging](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/firebase-cloud-messaging/)
 * [Firebase Cloud Messaging ile uzak bildirimler](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/)
 * [Anında iletme bildirimi sorunlarını tanılama](../notification-hubs/notification-hubs-push-notification-fixer.md)  
   Bildirimlerin bırakılmış olmasının çeşitli nedenleri vardır veya cihazlar üzerinde bitmeyebilir. Bu konuda, anında iletme bildirimi hatalarının asıl nedenini çözümleme ve oluşturma işlemlerinin nasıl yapılacağı gösterilmektedir.
@@ -421,7 +421,7 @@ Aşağıdaki öğreticilerden birine de devam edebilirsiniz:
 * [Uygulamanıza kimlik doğrulaması ekleme](app-service-mobile-xamarin-forms-get-started-users.md)  
   Uygulamanızdaki kullanıcıların kimliklerini bir kimlik sağlayıcısı ile nasıl doğrulayacağınızı öğrenin.
 * [Uygulamanız için çevrimdışı eşitlemeyi etkinleştirme](app-service-mobile-xamarin-forms-get-started-offline-data.md)  
-  Mobile Apps arka ucu kullanarak uygulamanıza çevrimdışı destek eklemeyi öğrenin. Çevrimdışı eşitleme sayesinde, kullanıcılar bir mobil uygulama olan @ no__t-0görüntüleme, ekleme veya değiştirme, ağ bağlantısı olmadığında bile @ no__t-1verileri ile etkileşime geçebilir.
+  Mobile Apps arka ucu kullanarak uygulamanıza çevrimdışı destek eklemeyi öğrenin. Çevrimdışı eşitleme sayesinde, kullanıcılar bir mobil uygulamayla etkileşime geçerek, ağ bağlantısı olmasa bile veri&mdash;görüntüleme, ekleme veya değiştirme&mdash;.
 
 <!-- Images. -->
 

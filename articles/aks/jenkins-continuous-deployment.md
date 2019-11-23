@@ -33,11 +33,11 @@ Bu öğreticiyi tamamlayabilmeniz için şu öğeler gereklidir:
 
 - Kubernetes, git, CI/CD ve kapsayıcı görüntülerinin temel olarak anlaşılmasına
 
-- Aks kümesi [kimlik bilgileriyle][aks-credentials] yapılandırılan [aks kümesi][aks-quickstart] ve `kubectl`
+- Aks kümesi [kimlik bilgileriyle][aks-credentials] yapılandırılan bir [aks kümesi][aks-quickstart] ve `kubectl`
 
 - [ACR kayıt defteriyle kimlik doğrulaması][acr-authentication] yapacak şekilde yapılandırılmış bir [Azure Container Registry (ACR) kayıt defteri][acr-quickstart], ACR oturum açma sunucusu adı ve aks kümesi
 
-- Azure CLı sürüm 2.0.46 veya üzeri yüklendi ve yapılandırıldı. Sürümü bulmak için @ no__t-0 ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
+- Azure CLı sürüm 2.0.46 veya üzeri yüklendi ve yapılandırıldı. Sürümü bulmak için `az --version` çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
 
 - Geliştirme sisteminizde [yüklü Docker][docker-install]
 
@@ -52,7 +52,7 @@ Bu makalede, bir veya daha fazla pods 'de barındırılan bir Web arabirimi içe
 > [!NOTE]
 > Örnek Azure oy uygulaması, Linux düğümünde çalışmak üzere zamanlanmış bir Linux Pod kullanır. Bu makalede özetlenen akış, Windows Server düğümünde zamanlanan bir Windows Server pod için de geçerlidir.
 
-Örnek uygulama için aşağıdaki GitHub deposunu çatal- [https://github.com/Azure-Samples/azure-voting-app-redis](https://github.com/Azure-Samples/azure-voting-app-redis). Depo için GitHub hesabınızda çatal oluşturmak üzere sağ üst köşedeki **Fork** (Çatal Oluştur) düğmesini seçin.
+Örnek uygulama için aşağıdaki GitHub deposunu çatalla [https://github.com/Azure-Samples/azure-voting-app-redis](https://github.com/Azure-Samples/azure-voting-app-redis). Depoyu kendi GitHub hesabınızla çatallamak için sağ üst köşedeki **Çatal Oluştur** düğmesini seçin.
 
 Çatalınızı geliştirme sisteminize kopyalayın. Bu depoyu kopyalarken çatalınızın URL 'sini kullandığınızdan emin olun:
 
@@ -66,13 +66,13 @@ Klonlanan çatalınızın dizinine geçin:
 cd azure-voting-app-redis
 ```
 
-Örnek uygulama için gereken kapsayıcı görüntülerini oluşturmak için *Docker-Compose. YAML* dosyasını `docker-compose` ile kullanın:
+Örnek uygulama için gereken kapsayıcı görüntülerini oluşturmak için *Docker-Compose. YAML* dosyasını `docker-compose`kullanın:
 
 ```console
 docker-compose up -d
 ```
 
-Gerekli temel görüntüler çekilir ve uygulama kapsayıcıları oluşturulur. Ardından, oluşturulan görüntüyü görmek için [Docker görüntüleri][docker-images] komutunu kullanabilirsiniz. Üç görüntü indirilir veya oluşturulur. `azure-vote-front` görüntüsü uygulamayı içerir ve temel olarak `nginx-flask` görüntüsünü kullanır. @No__t-0 görüntüsü bir Redsıs örneği başlatmak için kullanılır:
+Gerekli temel görüntüler çekilir ve uygulama kapsayıcıları oluşturulur. Ardından, oluşturulan görüntüyü görmek için [Docker görüntüleri][docker-images] komutunu kullanabilirsiniz. Üç görüntü indirilir veya oluşturulur. `azure-vote-front` görüntüsü uygulamayı içerir ve temel olarak `nginx-flask` görüntüsünü kullanır. `redis` görüntüsü bir Redsıs örneğini başlatmak için kullanılır:
 
 ```
 $ docker images
@@ -89,13 +89,13 @@ tiangolo/uwsgi-nginx-flask   flask      788ca94b2313        9 months ago        
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-Resmi, ACR oturum açma sunucusu adı ve @no__t sürüm numarası ile etiketlemek için [Docker Tag][docker-tag] komutunu kullanın. Önceki adımda elde edilen `<acrLoginServer>` adını sağlayın:
+Resmi, ACR oturum açma sunucusu adı ve `v1`sürüm numarasıyla etiketlemek için [Docker Tag][docker-tag] komutunu kullanın. Önceki adımda elde edilen `<acrLoginServer>` adınızı sağlayın:
 
 ```console
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v1
 ```
 
-Son olarak, *Azure-oyön* görüntüsünü ACR Kayıt defterinize gönderin. Yeniden `<acrLoginServer>` değerini kendi ACR kayıt defterinizin oturum açma sunucusu adıyla değiştirin; Örneğin, `myacrregistry.azurecr.io`:
+Son olarak, *Azure-oyön* görüntüsünü ACR Kayıt defterinize gönderin. `<acrLoginServer>`, `myacrregistry.azurecr.io`gibi kendi ACR kayıt defterinizin oturum açma sunucusu adıyla değiştirin:
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:v1
@@ -103,7 +103,7 @@ docker push <acrLoginServer>/azure-vote-front:v1
 
 ## <a name="deploy-the-sample-application-to-aks"></a>Örnek uygulamayı AKS 'e dağıtma
 
-Örnek uygulamayı AKS kümenize dağıtmak için, Azure oy deposu deposunun kökündeki Kubernetes bildirim dosyasını kullanabilirsiniz. *Azure-oy-hepsi-redin. YAML* bildirim dosyasını `vi` gibi bir düzenleyiciyle açın. `microsoft` yerine ACR oturum açma sunucunuzun adını yazın. Bu değer, bildirim dosyasının **47** . satırında bulunur:
+Örnek uygulamayı AKS kümenize dağıtmak için, Azure oy deposu deposunun kökündeki Kubernetes bildirim dosyasını kullanabilirsiniz. *Azure-oy-hepsi-bir-redin. YAML* bildirim dosyasını `vi`gibi bir düzenleyiciyle açın. `microsoft` yerine ACR oturum açma sunucunuzun adını yazın. Bu değer, bildirim dosyasının **47** . satırında bulunur:
 
 ```yaml
 containers:
@@ -159,7 +159,7 @@ Görüntülenecek URL 'ye bir Web tarayıcısı açın ve kilit açma anahtarın
 - İlk yönetici kullanıcıyı oluşturun. *Azureuser*gibi bir Kullanıcı adı girin ve sonra kendi güvenli parolanızı sağlayın. Son olarak, bir tam ad ve e-posta adresi yazın.
 - **Kaydet ve Bitir**’i seçin
 - Jenkins hazır olduktan sonra **Jenkins kullanmaya başla**’yı seçin
-    - Jenkins kullanmaya başladığınızda web tarayıcınız boş bir sayfa görüntülerse, Jenkins hizmetini yeniden başlatın. Hizmeti yeniden başlatmak için Jenkins örneğinizin genel IP adresine SSH ve `sudo service jenkins restart` yazın. Hizmet yeniden başlatıldıktan sonra, Web tarayıcınızı yenileyin.
+    - Jenkins kullanmaya başladığınızda web tarayıcınız boş bir sayfa görüntülerse, Jenkins hizmetini yeniden başlatın. Hizmeti yeniden başlatmak için Jenkins örneğinizin genel IP adresine SSH yapın ve `sudo service jenkins restart`yazın. Hizmet yeniden başlatıldıktan sonra, Web tarayıcınızı yenileyin.
 - Jenkins 'de, yüklemek için oluşturduğunuz Kullanıcı adı ve parolayla oturum açın.
 
 ## <a name="create-a-jenkins-environment-variable"></a>Jenkins ortam değişkeni oluşturma
@@ -167,7 +167,7 @@ Görüntülenecek URL 'ye bir Web tarayıcısı açın ve kilit açma anahtarın
 Bir Jenkins ortam değişkeni, ACR oturum açma sunucusu adını tutmak için kullanılır. Bu değişkene Jenkins derleme işi sırasında başvurulur. Bu ortam değişkenini oluşturmak için aşağıdaki adımları izleyin:
 
 - Jenkins portalının sol tarafındaki **Jenkins 'ı yönet** > **sistemi Yapılandır** ' ı seçin.
-- **Genel Özellikler**altında **ortam değişkenleri**' ni seçin. Adı `ACR_LOGINSERVER` ve ACR oturum açma sunucunuzun değeri olan bir değişken ekleyin.
+- **Genel Özellikler**altında **ortam değişkenleri**' ni seçin. Ad `ACR_LOGINSERVER` ve ACR oturum açma sunucunuzun değeri ile bir değişken ekleyin.
 
     ![Jenkins ortam değişkenleri](media/aks-jenkins/env-variables.png)
 
@@ -211,7 +211,7 @@ az role assignment create --assignee 626dd8ea-042d-4043-a8df-4ef56273670f --role
 
 Azure 'da rol atama ile, artık ACR kimlik bilgilerinizi bir Jenkins kimlik bilgileri nesnesinde depolayın. Bu kimlik bilgilerine Jenkins derleme işi sırasında başvurulur.
 
-Jenkins portalının sol tarafında, **kimlik bilgileri** > **jenkins** > **genel kimlik bilgileri (Kısıtlamasız)**  > **kimlik bilgileri ekle** ' ye tıklayın
+Jenkins portalının sol tarafında bulunan **kimlik** bilgileri > **jenkins** > **genel kimlik bilgileri (Kısıtlamasız)**  > **kimlik bilgileri ekle** ' ye tıklayın
 
 Kimlik bilgisi türünün **parola Ile Kullanıcı adı** olduğundan emin olun ve aşağıdaki öğeleri girin:
 
@@ -230,13 +230,13 @@ Bu tamamlandığında, kimlik bilgileri formu aşağıdaki örneğe benzer şeki
 Jenkins portalınızın ana sayfasında, sol taraftaki **Yeni öğe** ' yi seçin:
 
 1. *Azure-oy* ' i iş adı olarak girin. **Freestyle projesi**seçin, sonra **Tamam** ' ı seçin.
-1. **Genel** bölümünde, **GitHub projesi** ' ni seçin ve *https: \//GitHub. com/\<' i-GitHub-Account @ no__t-5/Azure-oylama-App-redsıs* gibi, çatallanmış depo URL 'nizi girin.
-1. **Kaynak kodu yönetimi** bölümünde **Git**' i seçin. *https: \//GitHub. com/\<sizin-GitHub-Account @ no__t-6/Azure-Voting-App-Redis. git* ' i seçin *.* git URL 'sini girin.
+1. **Genel** bölümünde, **GitHub projesi** ' ni seçin ve *https:\//github.com/\<-GitHub hesabı\>/Azure-Voting-App-Redis*
+1. **Kaynak kodu yönetimi** bölümünde **Git**' i seçin, ardından *github.com/-GitHub-account\>için https:\//\<* *. git* URL 'sini girin.
 
 1. **Derleme tetikleyicileri** bölümünde, **Gıtscm yoklaması yoklaması için GitHub kanca tetikleyicisi** ' ni seçin.
 1. **Yapı ortamı**altında **Gizli metinleri veya dosyaları kullan** ' ı seçin.
-1. **Bağlamalar**altında, @no__t **Ekle**-2**Kullanıcı adı ve parola (ayrılmış)** seçeneğini belirleyin
-   - **Kullanıcı adı değişkeni**için `ACR_ID` ve **parola değişkeni** için-2 @no__t girin
+1. **Bağlamalar**altında, >  **Kullanıcı adı ve parola Ekle (ayrılmış)** seçeneğini belirleyin.
+   - **Kullanıcı adı değişkeni**için `ACR_ID` girin ve **parola değişkeni** için `ACR_PASSWORD`
 
      ![Jenkins bağlamaları](media/aks-jenkins/bindings.png)
 
@@ -280,7 +280,7 @@ Başarılı bir el ile derleme tamamlandı, Şimdi GitHub 'ı Jenkins derlemesi 
 
 1. Bir Web tarayıcısında, çatallanmış GitHub deponuza gidin.
 1. **Ayarlar**' ı seçin ve ardından sol taraftaki **Web kancaları** ' nı seçin.
-1. **Web kancası eklemeyi**seçin. *Yük URL 'si*için `http://<publicIp:8080>/github-webhook/` girin; burada `<publicIp>`, Jenkins sunucusunun IP adresidir. Sondaki/dahil ettiğinizden emin olun. İçerik türü için diğer varsayılan değerleri bırakın ve *anında iletme* olayları tetikleyin.
+1. **Web kancası eklemeyi**seçin. *Yük URL 'si*için `http://<publicIp:8080>/github-webhook/`girin; burada `<publicIp>` Jenkins sunucusunun IP adresidir. Sondaki/dahil ettiğinizden emin olun. İçerik türü için diğer varsayılan değerleri bırakın ve *anında iletme* olayları tetikleyin.
 1. **Web kancası Ekle**' yi seçin.
 
     ![Jenkins için GitHub Web kancası oluşturma](media/aks-jenkins/webhook.png)
@@ -295,7 +295,7 @@ Artık CI/CD işlem hattının tamamını test edebilirsiniz. GitHub 'a kod yür
 1. Bu yeni kapsayıcı görüntüsü Azure Container Registry gönderilir.
 1. Uygulamanız Azure Kubernetes hizmet güncelleştirmelerine dağıtıldı Azure Container Registry kayıt defterinden en son kapsayıcı görüntüsü ile.
 
-Geliştirme makinenizde, kopyalanmış uygulamayı bir kod düzenleyicisiyle açın. */Azure-Vote/Azure-Vote* dizininde, **config_file. cfg**adlı dosyayı açın. Aşağıdaki örnekte gösterildiği gibi, bu dosyadaki oy değerlerini kediler ve köpekler dışında bir şeye güncelleştirin:
+Geliştirme makinenizde, kopyalanmış uygulamayı bir kod düzenleyicisiyle açın. */Azure-Vote/Azure-Vote* dizininde **config_file. cfg**adlı dosyayı açın. Aşağıdaki örnekte gösterildiği gibi, bu dosyadaki oy değerlerini kediler ve köpekler dışında bir şeye güncelleştirin:
 
 ```
 # UI Configurations

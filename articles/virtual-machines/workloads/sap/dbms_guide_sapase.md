@@ -313,7 +313,7 @@ Bu belgede, Azure IaaS 'de SAP aşırı dağıtıldığında göz önünde bulun
 ## <a name="specifics-to-sap-ase-on-windows"></a>Windows üzerinde SAP Ao 'nun özellikleri
 Microsoft Azure başlayarak, mevcut SAP Ao uygulamalarınızı Azure sanal makinelerine geçirebilirsiniz. Bir Azure sanal makinesinde SAP ASE, bu uygulamaları kolayca Microsoft Azure bir şekilde geçirerek kurumsal ayırt edilen uygulamaların dağıtım, yönetim ve bakımının toplam maliyetini düşürmenizi sağlar. Bir Azure sanal makinesinde SAP Ao ile yöneticiler ve geliştiriciler, şirket içinde bulunan aynı geliştirme ve yönetim araçlarını kullanmaya devam edebilir.
 
-Azure sanal makineler için SLA 'Lar şurada bulunabilir:<https://azure.microsoft.com/support/legal/sla/virtual-machines>
+Azure sanal makineler için SLA 'Lar şurada bulunabilir: <https://azure.microsoft.com/support/legal/sla/virtual-machines>
 
 Microsoft Azure, en küçük SAP sistemlerini ve ıdscapes 'yi binlerce kullanıcıyla büyük SAP sistemlerine ve Langes 'ye kadar olan çok sayıda farklı sanal makine türü sunar. SAP Note [1928533]' de farklı SAP sertifikalı VM SKU 'larının SAP boyutlandırma SAPS numaraları sunulmaktadır.
 
@@ -372,19 +372,19 @@ Veritabanı platformu olarak SAP AAS kullanan SAP sistemleri için Dbakokpit, i�
 
 > ICM/server_port_0 = PROT = HTTP, bağlantı noktası = 8000, PROCTIMEOUT = 600, zaman AŞıMı = 600
 > 
-> ICM/server_port_1 = PROT = HTTPS, bağlantı noktası = 443 $ $, PROCTIMEOUT = 600, TIMEOUT = 600
+> ICM/server_port_1 = PROT = HTTPS, PORT = 443 $ $, PROCTIMEOUT = 600, TIMEOUT = 600
 > 
 > 
 
 ve işlem Dbakokpit içinde oluşturulan bağlantılar şuna benzer:
 
-> https:\//fullyqualifiedhostname>:44300/SAP/BC/WebDynpro/SAP/dba_cockpit\<
+> https:\//\<fullyqualifiedhostname >: 44300/SAP/BC/WebDynpro/SAP/dba_cockpit
 > 
-> http:\//fullyqualifiedhostname>:8000/SAP/BC/WebDynpro/SAP/dba_cockpit\<
+> http:\//\<fullyqualifiedhostname >: 8000/SAP/BC/WebDynpro/SAP/dba_cockpit
 > 
 > 
 
-SAP sistemini barındıran Azure sanal makinesinin AD ve DNS 'nize nasıl bağlı olduğuna bağlı olarak, ICM 'nin Dbakokpit 'yi açtığınız makinede çözümlenebileceğiniz tam bir ana bilgisayar adı kullandığını doğrulayın. ICM 'nin profil parametrelerine bağlı olarak tam ana bilgisayar adını nasıl belirlediğini ve gerekirse ICM/host_name_full parametresini ayarlama hakkında bilgi edinmek için bkz. SAP Note [773830] .
+SAP sistemini barındıran Azure sanal makinesinin AD ve DNS 'nize nasıl bağlı olduğuna bağlı olarak, ICM 'nin Dbakokpit 'yi açtığınız makinede çözümlenebileceğiniz tam bir ana bilgisayar adı kullandığını doğrulayın. ICM 'nin profil parametrelerine bağlı olarak tam ana bilgisayar adını nasıl belirlediğini ve gerekirse açık bir şekilde (ICM/host_name_full parametresi ayarlama) anlamak için bkz. SAP Note [773830] .
 
 VM 'yi şirket içi ve Azure arasında şirketler arası bağlantı olmadan yalnızca bulut senaryosunda dağıttıysanız, bir genel IP adresi ve domainlabel tanımlamanız gerekir. VM 'nin Genel DNS adının biçimi şöyle görünür:
 
@@ -394,11 +394,11 @@ VM 'yi şirket içi ve Azure arasında şirketler arası bağlantı olmadan yaln
 
 DNS adıyla ilgili daha fazla ayrıntıyı [burada][virtual-machines-azurerm-versus-azuresm]bulabilirsiniz.
 
-SAP profili parametresini ICM/host_name_full olarak ayarlamak, bağlantının şuna benzeyebilir:
+SAP profili parametresini ICM/host_name_full olarak ayarlama, bağlantının şuna benzeyebilir:
 
-> https:\//mydomainlabel.westeurope.cloudapp.net:44300/SAP/BC/WebDynpro/SAP/dba_cockpit
+> https:\//mydomainlabel.westeurope.cloudapp.net:44300/sap/bc/webdynpro/sap/dba_cockpit
 > 
-> http:\//mydomainlabel.westeurope.cloudapp.net:8000/SAP/BC/WebDynpro/SAP/dba_cockpit
+> http:\//mydomainlabel.westeurope.cloudapp.net:8000/sap/bc/webdynpro/sap/dba_cockpit
 
 Bu durumda şunları yapmanız gerekir:
 
@@ -448,7 +448,7 @@ Yazılacak hedef sayısını artırmak için, gereksinimlerinize bağlı olarak 
 * Bu şeritli birimde ıOPS verimini artırmak için, birden çok bağlı disk üzerinde yedekleme hedefi birimini şeritli hale
 * Döküm yazmak için birden fazla hedef dizin kullanan SAP Ao düzeyinde bir döküm yapılandırması oluşturma
 
-Birden çok bağlı disk üzerinde disk birimi şeridi oluşturma, [SAP iş yükü Için Azure sanal MAKINELER DBMS dağıtımı ile Ilgili konular](dbms_guide_general.md)açıklanmaktadır. SAP asa döküm yapılandırmasında birden çok dizin kullanma hakkında daha fazla bilgi için, [Sybase bilgi merkezi](http://infocenter.sybase.com/help/index.jsp)'nde döküm yapılandırması oluşturmak Için kullanılan saklı yordam sp_config_dump hakkındaki belgelere bakın.
+Birden çok bağlı disk üzerinde disk birimi şeridi oluşturma, [SAP iş yükü Için Azure sanal MAKINELER DBMS dağıtımı ile Ilgili konular](dbms_guide_general.md)açıklanmaktadır. SAP asa döküm yapılandırmasında birden çok dizin kullanma hakkında daha fazla bilgi için, [Sybase bilgi merkezinde](http://infocenter.sybase.com/help/index.jsp)döküm yapılandırması oluşturmak üzere kullanılan saklı yordam sp_config_dump belgelerine bakın.
 
 ### <a name="disaster-recovery-with-azure-vms"></a>Azure VM 'lerinde olağanüstü durum kurtarma
 #### <a name="data-replication-with-sap-sybase-replication-server"></a>SAP Sybase çoğaltma sunucusu ile veri çoğaltma
@@ -461,9 +461,9 @@ SAP Ao HADR, bir Azure Iç Load Balancer gerektirmez ve işletim sistemi düzeyi
 ## <a name="specifics-to-sap-ase-on-linux"></a>Linux üzerinde SAP Ao 'nun özellikleri
 Microsoft Azure başlayarak, mevcut SAP Ao uygulamalarınızı Azure sanal makinelerine kolayca geçirebilirsiniz. Bir sanal makinedeki SAP ASE, bu uygulamaları kolayca Microsoft Azure bir şekilde geçirerek Kurumsal tek uygulamaların dağıtım, yönetim ve bakımının toplam maliyetini düşürmenizi sağlar. Bir Azure sanal makinesinde SAP Ao ile yöneticiler ve geliştiriciler, şirket içinde bulunan aynı geliştirme ve yönetim araçlarını kullanmaya devam edebilir.
 
-Azure VM 'Leri dağıtmak için burada bulunan resmi SLA 'Ları bilmemiz önemlidir:<https://azure.microsoft.com/support/legal/sla>
+Azure VM 'Leri dağıtmak için burada bulunan resmi SLA 'Ları bilmemiz önemlidir: <https://azure.microsoft.com/support/legal/sla>
 
-SAP Note [1928533]' de SAP boyutlandırma BILGILERI ve SAP sertifikalı VM SKU 'larının listesi sunulmaktadır. Azure sanal makineleri için ek SAP boyutlandırma belgeleri burada <https://blogs.msdn.com/b/saponsqlserver/archive/2015/06/19/how-to-size-sap-systems-running-on-azure-vms.aspx> ve burada bulunabilir<https://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx>
+SAP Note [1928533]' de SAP boyutlandırma BILGILERI ve SAP sertifikalı VM SKU 'larının listesi sunulmaktadır. Azure sanal makineleri için ek SAP boyutlandırma belgeleri burada <https://blogs.msdn.com/b/saponsqlserver/archive/2015/06/19/how-to-size-sap-systems-running-on-azure-vms.aspx> ve burada bulunabilir <https://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx>
 
 Azure depolama 'nın kullanımıyla ilgili deyimler ve öneriler, SAP VM 'lerinin dağıtımı veya SAP Izleme, bu belgenin ilk dört bölümünde belirtilen SAP uygulamalarıyla birlikte SAP Ao 'nun dağıtımları için geçerlidir.
 
@@ -525,19 +525,19 @@ Veritabanı platformu olarak SAP AAS kullanan SAP sistemleri için Dbakokpit, i�
 
 > ICM/server_port_0 = PROT = HTTP, bağlantı noktası = 8000, PROCTIMEOUT = 600, zaman AŞıMı = 600
 > 
-> ICM/server_port_1 = PROT = HTTPS, bağlantı noktası = 443 $ $, PROCTIMEOUT = 600, TIMEOUT = 600
+> ICM/server_port_1 = PROT = HTTPS, PORT = 443 $ $, PROCTIMEOUT = 600, TIMEOUT = 600
 > 
 > 
 
 ve işlem Dbakokpitinde oluşturulan bağlantılar şuna benzer olacaktır:
 
-> https:\//fullyqualifiedhostname>:44300/SAP/BC/WebDynpro/SAP/dba_cockpit\<
+> https:\//\<fullyqualifiedhostname >: 44300/SAP/BC/WebDynpro/SAP/dba_cockpit
 > 
-> http:\//fullyqualifiedhostname>:8000/SAP/BC/WebDynpro/SAP/dba_cockpit\<
+> http:\//\<fullyqualifiedhostname >: 8000/SAP/BC/WebDynpro/SAP/dba_cockpit
 > 
 > 
 
-SAP sistemini barındıran Azure sanal makinesinin AD ve DNS 'nize nasıl bağlı olduğuna bağlı olarak, ICM 'nin Dbakokpit 'yi açtığınız makinede çözümlenebileceğiniz tam bir ana bilgisayar adı kullandığını doğrulayın. Bkz. SAP Note [773830] , profil parametrelerine bağlı olarak tam konak adını nasıl belirlediğini ve gerekirse ICM/host_name_full parametresini nasıl ayarlayabileceğinizi anlamak için.
+SAP sistemini barındıran Azure sanal makinesinin AD ve DNS 'nize nasıl bağlı olduğuna bağlı olarak, ICM 'nin Dbakokpit 'yi açtığınız makinede çözümlenebileceğiniz tam bir ana bilgisayar adı kullandığını doğrulayın. Bkz. SAP Note [773830] : profil parametrelerine bağlı olarak tam ana bilgisayar adını nasıl belirlediğini ve gerekirse açık bir şekilde (ıcm/host_name_full parametresini) öğrenin.
 
 VM 'yi şirket içi ve Azure arasında şirketler arası bağlantı olmadan yalnızca bulut senaryosunda dağıttıysanız, bir genel IP adresi ve domainlabel tanımlamanız gerekir. VM 'nin Genel DNS adının biçimi şöyle görünür:
 
@@ -547,11 +547,11 @@ VM 'yi şirket içi ve Azure arasında şirketler arası bağlantı olmadan yaln
 
 DNS adıyla ilgili daha fazla ayrıntıyı [burada][virtual-machines-azurerm-versus-azuresm]bulabilirsiniz.
 
-SAP profili parametresini ICM/host_name_full olarak ayarlamak, bağlantının şuna benzeyebilir:
+SAP profili parametresini ICM/host_name_full olarak ayarlama, bağlantının şuna benzeyebilir:
 
-> https:\//mydomainlabel.westeurope.cloudapp.net:44300/SAP/BC/WebDynpro/SAP/dba_cockpit
+> https:\//mydomainlabel.westeurope.cloudapp.net:44300/sap/bc/webdynpro/sap/dba_cockpit
 > 
-> http:\//mydomainlabel.westeurope.cloudapp.net:8000/SAP/BC/WebDynpro/SAP/dba_cockpit
+> http:\//mydomainlabel.westeurope.cloudapp.net:8000/sap/bc/webdynpro/sap/dba_cockpit
 
 Bu durumda şunları yapmanız gerekir:
 
@@ -601,7 +601,7 @@ Yazılacak hedef sayısını artırmak için, gereksinimlerinize bağlı olarak 
 * Bu şeritli birimde ıOPS verimini artırmak için, birden çok bağlı disk üzerinde yedekleme hedefi birimini şeritli hale
 * Döküm yazmak için birden fazla hedef dizin kullanan SAP Ao düzeyinde bir döküm yapılandırması oluşturma
 
-Birden çok bağlı disk üzerinde disk birimi şeridi oluşturma, [SAP iş yükü Için Azure sanal MAKINELER DBMS dağıtımı ile Ilgili konular](dbms_guide_general.md)açıklanmaktadır. SAP asa döküm yapılandırmasında birden çok dizin kullanma hakkında daha fazla bilgi için, [Sybase bilgi merkezi](http://infocenter.sybase.com/help/index.jsp)'nde döküm yapılandırması oluşturmak Için kullanılan saklı yordam sp_config_dump hakkındaki belgelere bakın.
+Birden çok bağlı disk üzerinde disk birimi şeridi oluşturma, [SAP iş yükü Için Azure sanal MAKINELER DBMS dağıtımı ile Ilgili konular](dbms_guide_general.md)açıklanmaktadır. SAP asa döküm yapılandırmasında birden çok dizin kullanma hakkında daha fazla bilgi için, [Sybase bilgi merkezinde](http://infocenter.sybase.com/help/index.jsp)döküm yapılandırması oluşturmak üzere kullanılan saklı yordam sp_config_dump belgelerine bakın.
 
 ### <a name="disaster-recovery-with-azure-vms"></a>Azure VM 'lerinde olağanüstü durum kurtarma
 #### <a name="data-replication-with-sap-sybase-replication-server"></a>SAP Sybase çoğaltma sunucusu ile veri çoğaltma
@@ -609,4 +609,4 @@ SAP Sybase çoğaltma sunucusu (SRS) ile SAP ATıCı, veritabanı işlemlerini u
 
 SRS 'nin yüklenmesi ve işleyişi, şirket içinde çalıştığı gibi Azure sanal makine Hizmetleri 'nde barındırılan bir VM 'de de işlevsel olarak çalışmaktadır.
 
-SAP çoğaltma sunucusu aracılığıyla Ao HADR desteklenir. Bu tür bir yapılandırmayı denemek için SAP ASE 16,03 kullanılması önemle önerilir. Bu tür konfigürasyonları yüklemeye yönelik daha ayrıntılı yönergeler, bu blogda ayrıntılı olarak [](https://blogs.msdn.microsoft.com/saponsqlserver/2018/06/18/installation-procedure-for-sybase-16-3-patch-level-3-always-on-dr-on-suse-12-3-recent-customer-proof-of-concept/)bulunabilir.
+SAP çoğaltma sunucusu aracılığıyla Ao HADR desteklenir. Bu tür bir yapılandırmayı denemek için SAP ASE 16,03 kullanılması önemle önerilir. Bu tür konfigürasyonları yüklemeye yönelik daha ayrıntılı yönergeler, bu [blogda](https://blogs.msdn.microsoft.com/saponsqlserver/2018/06/18/installation-procedure-for-sybase-16-3-patch-level-3-always-on-dr-on-suse-12-3-recent-customer-proof-of-concept/)ayrıntılı olarak bulunabilir.

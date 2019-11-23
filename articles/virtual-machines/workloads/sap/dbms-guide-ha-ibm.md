@@ -201,7 +201,7 @@ Birincil IBM DB2 LUW veritabanı örneğini ayarlamak için:
 
 SAP homojen sistem kopyalama yordamını kullanarak bekleme veritabanı sunucusunu ayarlamak için aşağıdaki adımları yürütün:
 
-1. > **Hedef sistemler** > **Dağıtılmış** > **veritabanı örneği**olan **sistem kopyalama** seçeneğini belirleyin.
+1. **Hedef sistemler** > **Dağıtılmış** > **veritabanı örneğini**> **sistem kopyalama** seçeneğini belirleyin.
 1. Bir kopyalama yöntemi olarak, yedek sunucu örneğindeki bir yedeği geri yüklemek için yedekleme kullanabilmeniz için **homojen sistemi** ' ni seçin.
 1. Homojen sistem kopyası için veritabanını geri yüklemek üzere çıkış adımına ulaştığınızda yükleyiciden çıkın. Veritabanını birincil ana bilgisayarın yedeğinden geri yükleyin. Sonraki yükleme aşamaları, birincil veritabanı sunucusunda zaten yürütüldü.
 1. IBM DB2 için HADR 'yi ayarlayın.
@@ -409,7 +409,7 @@ sudo crm configure property maintenance-mode=false</pre></code>
 #  <a name="stonith-sbd----stonithexternalsbd-started-azibmdb02"></a>stonith-SBD (stonith: dış/SBD): başlatıldı azibmdb02
 #  <a name="resource-group-g_ip_db2ptr_ptr"></a>Kaynak grubu: g_ip_db2ptr_PTR
 #      <a name="rsc_ip_db2ptr_ptr--ocfheartbeatipaddr2-------started-azibmdb02"></a>rsc_ip_db2ptr_PTR (OCF:: sinyal: IPaddr2): başlatıldı azibmdb02
-#      <a name="rsc_nc_db2ptr_ptr--ocfheartbeatanything------started-azibmdb02"></a>rsc_nc_db2ptr_PTR (OCF:: sinyal: herhangi bir şey): başlatıldı azibmdb02
+#      <a name="rsc_nc_db2ptr_ptr--ocfheartbeatanything------started-azibmdb02"></a>rsc_nc_db2ptr_PTR (OCF:: sinyal: her şey): başlatılan azibmdb02
 #  <a name="masterslave-set-msl_db2_db2ptr_ptr-rsc_db2_db2ptr_ptr"></a>Ana/bağımlı kümesi: msl_Db2_db2ptr_PTR [rsc_Db2_db2ptr_PTR]
 #      <a name="masters--azibmdb02-"></a>Ana bilgisayarlar: [azibmdb02]
 #      <a name="slaves--azibmdb01-"></a>SLA 'lar: [azibmdb01]
@@ -478,12 +478,12 @@ Azure Load Balancer yapılandırmak için, [Azure Standart Load Balancer SKU](ht
 ### <a name="make-changes-to-sap-profiles-to-use-virtual-ip-for-connection"></a>Bağlantı için sanal IP 'yi kullanmak üzere SAP profillerinde değişiklikler yapın
 HADR yapılandırmasının birincil örneğine bağlanmak için, SAP uygulama katmanının Azure Load Balancer için tanımladığınız ve yapılandırdığınız sanal IP adresini kullanması gerekir. Aşağıdaki değişiklikler gereklidir:
 
-/sapmnt/\<SıD >/profile/DEFAULT. PFL
+/sapmnt/\<SID >/profile/DEFAULT. PFL
 <pre><code>SAPDBHOST = db-virt-hostname
 j2ee/dbhost = db-virt-hostname
 </code></pre>
 
-/sapmnt/\<SıD >/Global/DB6/Db2cli.ini
+/sapmnt/\<SID >/Global/DB6/Db2cli.ini
 <pre><code>Hostname=db-virt-hostname
 </code></pre>
 
@@ -499,9 +499,9 @@ DB2 HADR yapılandırmasını oluşturmadan önce yüklemeyi gerçekleştirdiyse
 
 JDBC URL 'sini denetlemek veya güncelleştirmek için J2EE yapılandırma aracını kullanın. J2EE yapılandırma aracı bir grafik araç olduğundan, X sunucusunun yüklü olması gerekir:
  
-1. J2EE örneğinin birincil uygulama sunucusunda oturum açın ve şunu çalıştırın: `sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh`
+1. J2EE örneğinin birincil uygulama sunucusunda oturum açın ve şunu yürütün: `sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh`
 1. Sol çerçevede **Güvenlik deposu**' nu seçin.
-1. Sağ çerçevede, anahtar JDBC/havuz/\<SAPSID >/urlu seçin.
+1. Sağ çerçevede, anahtar JDBC/havuz/\<SAPSıD >/URL ' yi seçin.
 1. JDBC URL 'sindeki ana bilgisayar adını sanal ana bilgisayar adıyla değiştirin.
      `jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0`
 1. **Add (Ekle)** seçeneğini belirleyin.
@@ -596,7 +596,7 @@ Kaynağı *azibmdb01* 'e geri geçirin ve konum kısıtlamalarını temizleyin
 crm resource clear msl_<b>Db2_db2ptr_PTR</b>
 </code></pre>
 
-- **CRM kaynak geçişi \<res_name > \<konak >:** Konum kısıtlamaları oluşturur ve ele alınmasına neden olabilir
+- **CRM kaynak geçişi \<res_name > \<ana bilgisayar >:** Konum kısıtlamaları oluşturur ve ele alınmasına neden olabilir
 - **CRM kaynağı temizle \<res_name >** : konum kısıtlamalarını temizler
 - **CRM kaynak temizleme \<res_name >** : kaynağın tüm hatalarını temizler
 

@@ -65,7 +65,7 @@ EXEC sp_drop_feature_restriction N'ErrorMessages', N'User', N'MyUser'
 
 | Sütun adı | Veri türü | Açıklama |
 |-------------|-----------|-------------|
-| sınıfı       | nvarchar (128) | Kısıtlamanın uygulandığı nesne sınıfı |
+| sınıf       | nvarchar (128) | Kısıtlamanın uygulandığı nesne sınıfı |
 | object      | nvarchar (256) | Kısıtlamanın uygulandığı nesnenin adı |
 | Özellik     | nvarchar (128) | Kısıtlanmış Özellik |
 

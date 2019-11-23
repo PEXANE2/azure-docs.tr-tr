@@ -28,7 +28,7 @@ Bu makalede, bir aks kümesi için bir sanal ağ alt ağı oluşturmak ve kullan
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Azure CLı sürüm 2.0.65 veya sonraki bir sürümün yüklü ve yapılandırılmış olması gerekir. Sürümü bulmak için @ no__t-0 ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
+Azure CLı sürüm 2.0.65 veya sonraki bir sürümün yüklü ve yapılandırılmış olması gerekir. Sürümü bulmak için `az --version` çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
 
 ## <a name="overview-of-kubenet-networking-with-your-own-subnet"></a>Kendi alt ağınızla Kubernetes kullanan ağlarına genel bakış
 
@@ -85,7 +85,7 @@ Hangi ağ modelini kullanacağınıza karar vermenize yardımcı olacak daha faz
 
 ## <a name="create-a-virtual-network-and-subnet"></a>Sanal ağ ve alt ağ oluşturma
 
-*Kubernetes kullanan* ve kendi sanal ağ alt ağınızı kullanmaya başlamak için önce [az Group Create][az-group-create] komutunu kullanarak bir kaynak grubu oluşturun. Aşağıdaki örnek *eastus* konumunda *myresourcegroup* adlı bir kaynak grubu oluşturur:
+*Kubernetes kullanan* ve kendi sanal ağ alt ağınızı kullanmaya başlamak için önce [az Group Create][az-group-create] komutunu kullanarak bir kaynak grubu oluşturun. Aşağıdaki örnek *eastus* konumunda *myResourceGroup* adlı bir kaynak grubu oluşturur:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -131,7 +131,7 @@ VNET_ID=$(az network vnet show --resource-group myResourceGroup --name myAKSVnet
 SUBNET_ID=$(az network vnet subnet show --resource-group myResourceGroup --vnet-name myAKSVnet --name myAKSSubnet --query id -o tsv)
 ```
 
-Şimdi, [az role atama Create][az-role-assignment-create] komutunu kullanarak sanal ağ üzerinde aks kümesi *katılımcısı* izinleriniz için hizmet sorumlusu atayın. Hizmet sorumlusunu oluşturmak için önceki komutun çıktısında gösterildiği gibi, kendi *\<Appıd >* sağlayın:
+Şimdi, [az role atama Create][az-role-assignment-create] komutunu kullanarak sanal ağ üzerinde aks kümesi *katılımcısı* izinleriniz için hizmet sorumlusu atayın. Hizmet sorumlusunu oluşturmak için, önceki komutun çıktısında gösterildiği gibi, kendi *\<appıd >* sağlayın:
 
 ```azurecli-interactive
 az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
@@ -139,7 +139,7 @@ az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
 
 ## <a name="create-an-aks-cluster-in-the-virtual-network"></a>Sanal ağda AKS kümesi oluşturma
 
-Artık bir sanal ağ ve alt ağ oluşturdunuz ve bu ağ kaynaklarını kullanmak için bir hizmet sorumlusu için oluşturduğunuz ve atanan izinler. Şimdi [az aks Create][az-aks-create] komutunu kullanarak sanal ağınızda ve alt ağınızda bir aks kümesi oluşturun. Hizmet sorumlusu oluşturmak için önceki komutun çıktısında gösterildiği gibi, kendi hizmet sorumlusu *\<Appıd >* ve *\<password >* tanımlayın.
+Artık bir sanal ağ ve alt ağ oluşturdunuz ve bu ağ kaynaklarını kullanmak için bir hizmet sorumlusu için oluşturduğunuz ve atanan izinler. Şimdi [az aks Create][az-aks-create] komutunu kullanarak sanal ağınızda ve alt ağınızda bir aks kümesi oluşturun. Hizmet sorumlusu oluşturmak için önceki komutun çıktısında gösterildiği gibi, kendi hizmet sorumlusu *\<appıd >* ve *\<Password >* tanımlayın.
 
 Aşağıdaki IP adresi aralıkları, küme oluşturma işleminin parçası olarak da tanımlanmıştır:
 

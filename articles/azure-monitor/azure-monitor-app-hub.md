@@ -176,7 +176,7 @@ ms.locfileid: "72899154"
                                                     <div class="cardText">
                                                         <h3>Kullanıcı davranışı Analizi</h3>
                                                         <p>
-                                                            <a href="./app/usage-overview.md">Genel Bakış</a><br>
+                                                            <a href="./app/usage-overview.md">Genel bakış</a><br>
                                                             <a href="./app/usage-send-user-context.md">Kullanıcı bağlamı kimlikleri gönder</a><br>
                                                             <a href="./app/usage-segmentation.md">Kullanıcılar, oturumlar ve olaylar</a><br>
                                                             <a href="./app/usage-funnels.md">Huniler</a><br>
@@ -209,7 +209,7 @@ ms.locfileid: "72899154"
                                                         <br><br>
                                                         <h3>Veri modeli</h3>
                                                         <p>
-                                                            <a href="./app/data-model.md">Genel Bakış</a><br>
+                                                            <a href="./app/data-model.md">Genel bakış</a><br>
                                                             <a href="./app/data-model-request-telemetry.md">İstek</a><br>
                                                             <a href="./app/data-model-dependency-telemetry.md">Bağımlılık</a><br>
                                                             <a href="./app/data-model-exception-telemetry.md">Özel durum</a><br>

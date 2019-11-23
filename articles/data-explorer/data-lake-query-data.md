@@ -34,7 +34,7 @@ Azure Veri Gezgini, Azure Blob depolama ve Azure Data Lake Storage 2. tümleşti
  > [!NOTE]
  > Şu anda desteklenen depolama hesapları Azure Blob depolama veya Azure Data Lake Storage 2. Şu anda desteklenen veri biçimleri JSON, CSV, TSV ve txt ' dir.
 
-1. Azure Veri Gezgini 'de dış tablo oluşturmak için komutunukullanın.`.create external table` `.show` ,`.drop`Ve gibi`.alter` ek dış tablo komutları [dış tablo komutlarında](/azure/kusto/management/externaltables)belgelenmiştir.
+1. Azure Veri Gezgini 'de dış tablo oluşturmak için `.create external table` komutunu kullanın. `.show`, `.drop`ve `.alter` gibi ek dış tablo komutları [dış tablo komutlarında](/azure/kusto/management/externaltables)belgelenmiştir.
 
     ```Kusto
     .create external table ArchivedProducts(
@@ -50,7 +50,7 @@ Azure Veri Gezgini, Azure Blob depolama ve Azure Data Lake Storage 2. tümleşti
     > * Daha ayrıntılı bölümlendirme ile artan performans beklenir. Örneğin, günlük bölümleri olan dış tablolar üzerinde sorgular, aylık bölümlenmiş tablolarla bu sorgulardan daha iyi performansa sahip olacaktır.
     > * Bölümler içeren bir dış tablo tanımladığınızda, depolama yapısının aynı olması beklenir.
 Örneğin, tablo YYYY/AA/GG biçiminde bir tarih saat bölümüyle tanımlanmışsa (varsayılan), URI depolama dosya yolu *kapsayıcı1/yyyy/aa/gg/all_exported_blobs*olmalıdır. 
-    > * Dış tablo bir tarih saat sütunuyla bölümlense, sorgunuza kapalı bir Aralık için her zaman bir zaman filtresi ekleyin (örneğin, sorgu- `ArchivedProducts | where Timestamp between (ago(1h) . 10m)` -bundan daha iyi (açılan Aralık) bir- `ArchivedProducts | where Timestamp > ago(1h)` ) gerçekleştirmelidir. 
+    > * Dış tablo, bir tarih saat sütunuyla bölümlense, sorgunuza kapalı bir Aralık için her zaman bir zaman filtresi ekleyin (örneğin, sorgu-`ArchivedProducts | where Timestamp between (ago(1h) . 10m)`-bu değerden (açılan Aralık) bir-`ArchivedProducts | where Timestamp > ago(1h)`) daha iyi gerçekleştirmelidir. 
 
 1. Dış tablo, Web Kullanıcı arabiriminin sol bölmesinde görünür
 
@@ -60,7 +60,7 @@ Azure Veri Gezgini, Azure Blob depolama ve Azure Data Lake Storage 2. tümleşti
 
 JSON biçiminde bir dış tablo oluşturabilirsiniz. Daha fazla bilgi için bkz. [dış tablo komutları](/azure/kusto/management/externaltables)
 
-1. *Externaltablejson*adlı bir tablo oluşturmak için komutunukullanın:`.create external table`
+1. *Externaltablejson*adlı bir tablo oluşturmak için `.create external table` komutunu kullanın:
 
     ```kusto
     .create external table ExternalTableJson (rownumber:int, rowguid:guid) 
@@ -91,7 +91,7 @@ JSON biçiminde bir dış tablo oluşturabilirsiniz. Daha fazla bilgi için bkz.
  
 ## <a name="query-an-external-table"></a>Dış tabloyu sorgulama
  
-Bir dış tabloyu sorgulamak için `external_table()` işlevini kullanın ve işlev bağımsız değişkeni olarak tablo adını sağlayın. Sorgunun geri kalanı standart kusto sorgu dilidir.
+Bir dış tabloyu sorgulamak için `external_table()` işlevini kullanın ve tablo adını işlev bağımsız değişkeni olarak sağlayın. Sorgunun geri kalanı standart kusto sorgu dilidir.
 
 ```Kusto
 external_table("ArchivedProducts") | take 100
@@ -102,7 +102,7 @@ external_table("ArchivedProducts") | take 100
 
 ### <a name="query-an-external-table-with-json-format"></a>JSON biçimiyle bir dış tablo sorgula
 
-JSON biçimine sahip bir dış tabloyu sorgulamak için, `external_table()` işlevini kullanın ve işlev bağımsız değişkenleri olarak hem tablo adını hem de eşleme adını sağlayın. Aşağıdaki sorguda, *MappingName* belirtilmemişse, daha önce oluşturduğunuz bir eşleme kullanılacaktır.
+Bir dış tabloyu JSON biçiminde sorgulamak için `external_table()` işlevini kullanın ve işlev bağımsız değişkenleri olarak hem tablo adını hem de eşleme adını sağlayın. Aşağıdaki sorguda, *MappingName* belirtilmemişse, daha önce oluşturduğunuz bir eşleme kullanılacaktır.
 
 ```kusto
 external_table(‘ExternalTableJson’, ‘mappingName’)
@@ -110,7 +110,7 @@ external_table(‘ExternalTableJson’, ‘mappingName’)
 
 ## <a name="query-external-and-ingested-data-together"></a>Dış ve alınan verileri birlikte sorgula
 
-Aynı sorgu içinde hem harici tabloları hem de alınan veri tablolarını sorgulayabilirsiniz. Siz [`join`](/azure/kusto/query/joinoperator) [veya`union`](/azure/kusto/query/unionoperator) dış tabloyu Azure Veri Gezgini, SQL Server veya diğer kaynaklardan ek verilerle birlikte kullanabilirsiniz. Bir dış [`let( ) statement`](/azure/kusto/query/letstatement) Tablo başvurusuna bir Özet adı atamak için bir kullanın.
+Aynı sorgu içinde hem harici tabloları hem de alınan veri tablolarını sorgulayabilirsiniz. Dış tabloyu Azure Veri Gezgini, SQL Server veya diğer kaynaklardan ek verilerle [`join`](/azure/kusto/query/joinoperator) veya [`union`](/azure/kusto/query/unionoperator) . Dış tablo başvurusuna bir Özet adı atamak için [`let( ) statement`](/azure/kusto/query/letstatement) kullanın.
 
 Aşağıdaki örnekte, *Ürünler* bir veri tablosu ve *ArchivedProducts* Azure Data Lake Storage 2. veri içeren bir dış tablodur:
 
@@ -199,7 +199,7 @@ T1 | join T on ProductId | take 10
 
 ### <a name="query-taxirides-external-table-data"></a>*Taxırides* dış tablo verilerini sorgula 
 
-[https://dataexplorer.azure.com/clusters/help/databases/Samples](https://dataexplorer.azure.com/clusters/help/databases/Samples) *Taxırides* dış tablosunu sorgulamak için ' de oturum açın. 
+*Taxırides* dış tablosunu sorgulamak için [https://dataexplorer.azure.com/clusters/help/databases/Samples](https://dataexplorer.azure.com/clusters/help/databases/Samples) oturum açın. 
 
 #### <a name="query-taxirides-external-table-without-partitioning"></a>Bölümlendirme olmadan *Taxırides* dış tablosunu sorgula
 

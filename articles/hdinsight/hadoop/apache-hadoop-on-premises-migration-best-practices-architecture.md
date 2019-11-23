@@ -32,7 +32,7 @@ Azure HDInsight kümeleri belirli bir işlem kullanımı türü için tasarlanm�
 |IoT/akış|Kafka, fırtınası, Spark|
 |NoSQL Işlem işleme|HBase|
 |Bellek içi önbelleğe alma ile etkileşimli ve daha hızlı sorgular|Interactive Query|
-|Veri Bilimi|ML Hizmetleri, Spark|
+|Veri bilimi|ML Hizmetleri, Spark|
 
 Aşağıdaki tabloda, HDInsight kümesi oluşturmak için kullanılabilecek farklı yöntemler gösterilmektedir.
 

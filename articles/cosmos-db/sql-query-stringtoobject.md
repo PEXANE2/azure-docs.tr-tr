@@ -34,7 +34,7 @@ StringToObject(<str_expr>)
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, `StringToObject` ' ın farklı türler genelinde nasıl davranacağını gösterir. 
+  Aşağıdaki örnek, `StringToObject` farklı türlerde nasıl davrandığını gösterir. 
   
  Aşağıda, geçerli girişi olan örnekler verilmiştir.
 
@@ -56,7 +56,7 @@ Sonuç kümesini burada verilmiştir.
 ```
 
  Aşağıda, geçersiz girişe sahip örnekler verilmiştir.
-Bir sorgu içinde geçerli olsalar bile, geçerli nesnelere ayrıştırılamaz. Nesne dizesindeki dizeler "{\\" a @ no__t-1 ": \\" Str @ no__t-3 "}" ya da çevreleyen teklifin tek bir ' {"a": "Str"} ' olması gerekir.
+Bir sorgu içinde geçerli olsalar bile, geçerli nesnelere ayrıştırılamaz. Nesne dizesindeki dizeler "{\\" bir\\":\\" Str\\"}" ya da çevreleyen teklifin tek bir ' {"a": "Str"} ' olması gerekir.
 
 Özellik adları çevreleyen tek tırnak geçerli bir JSON değil.
 

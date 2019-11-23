@@ -42,7 +42,7 @@ Azure depolama, üç tür paylaşılan erişim imzasını destekler:
 Paylaşılan erişim imzası, iki formdan birini alabilir:
 
 - Geçici **SAS:** Bir geçici SAS oluşturduğunuzda, sa 'lar için başlangıç zamanı, süre sonu zamanı ve izin izinleri SAS URI 'sinde belirtilmiştir (veya başlangıç saati atlanırsa ima edilir). Her tür SAS bir geçici SAS olabilir.
-- **Depolanan erişim Ilkesiyle HIZMET SAS:** Depolanan erişim ilkesi, bir blob kapsayıcısı, tablo, kuyruk veya dosya paylaşma olabilecek bir kaynak kapsayıcısında tanımlanır. Depolanan erişim ilkesi, bir veya daha fazla hizmet paylaşılan erişim imzalarının kısıtlamalarını yönetmek için kullanılabilir. Bir hizmet SAS 'sini depolanan bir erişim ilkesiyle ilişkilendirdiğinizde SAS, saklı erişim ilkesi için tanımlanan @ no__t-0başlangıç saati, süre sonu zamanı ve izinleri @ no__t-1olan kısıtlamaları devralır.
+- **Depolanan erişim Ilkesiyle HIZMET SAS:** Depolanan erişim ilkesi, bir blob kapsayıcısı, tablo, kuyruk veya dosya paylaşma olabilecek bir kaynak kapsayıcısında tanımlanır. Depolanan erişim ilkesi, bir veya daha fazla hizmet paylaşılan erişim imzalarının kısıtlamalarını yönetmek için kullanılabilir. Bir hizmet SAS 'sini depolanan bir erişim ilkesiyle ilişkilendirdiğinizde, SAS, depolanan erişim ilkesi için tanımlanan başlangıç saati, süre sonu zamanı ve&mdash;izinleri&mdash;kısıtlamaları devralır.
 
 > [!NOTE]
 > Kullanıcı temsili SAS veya hesap SA 'ları bir geçici SAS olmalıdır. Depolanan erişim ilkeleri, Kullanıcı temsili SAS veya hesap SAS 'ları için desteklenmez.

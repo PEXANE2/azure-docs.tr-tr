@@ -21,7 +21,7 @@ Azure Cosmos DB, kapsayıcı düzeyinde yaşam süresi (TTL) yapılandırmayı s
 
 Zaman aşımı olmadan bir kapsayıcıda canlı kalma süresini etkinleştirmek için aşağıdaki adımları kullanın. TTL 'nin öğe düzeyinde geçersiz kılınmasına izin vermek için bunu etkinleştirin. TTL 'yi saniye için sıfır olmayan bir değer girerek de ayarlayabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 2. Yeni bir Azure Cosmos hesabı oluşturun veya var olan bir hesabı seçin.
 
@@ -77,7 +77,7 @@ await client.GetDatabase("database").CreateContainerAsync(new ContainerPropertie
 
 ## <a name="set-time-to-live-on-a-container-using-sdk"></a>SDK kullanarak bir kapsayıcıda yaşam süresi belirleme
 
-Bir kapsayıcıda yaşam süresi ayarlamak için saniye cinsinden zaman aralığını belirten sıfır olmayan bir pozitif sayı sağlamalısınız. Yapılandırılmış TTL değerine bağlı olarak, `_ts` öğesinin son değiştirilme zaman damgasından sonra kapsayıcıdaki tüm öğeler silinir.
+Bir kapsayıcıda yaşam süresi ayarlamak için saniye cinsinden zaman aralığını belirten sıfır olmayan bir pozitif sayı sağlamalısınız. Yapılandırılmış TTL değerine bağlı olarak, öğenin `_ts` son değiştirilme zaman damgasından sonra kapsayıcıdaki tüm öğeler silinir.
 
 ### <a id="dotnet-enable-withexpiry"></a>.NET SDK v2 (Microsoft. Azure. DocumentDB)
 
@@ -123,7 +123,7 @@ async function createcontainerWithTTL(db: Database, containerDefinition: Contain
 
 Bir kapsayıcıda yaşam için varsayılan bir zaman ayarlamaya ek olarak, bir öğe için bir süre için canlı olarak ayarlayabilirsiniz. Öğe düzeyinde yaşam süresi ayarı, o kapsayıcıdaki öğenin varsayılan TTL değerini geçersiz kılar.
 
-* Bir öğe üzerindeki TTL 'yi ayarlamak için, öğenin son değiştirilme @no__t zaman damgasından sonra öğenin süresinin dolacağını belirten sıfır olmayan pozitif bir sayı sağlamanız gerekir.-0.
+* Bir öğe üzerindeki TTL 'yi ayarlamak için, öğenin son değiştirilme zaman `_ts`damgasından sonra öğenin süresinin dolacağını belirten sıfır olmayan pozitif bir sayı sağlamanız gerekir.
 
 * Öğenin bir TTL alanı yoksa, varsayılan olarak kapsayıcıya ayarlanan TTL öğe için geçerlidir.
 
@@ -133,7 +133,7 @@ Bir kapsayıcıda yaşam için varsayılan bir zaman ayarlamaya ek olarak, bir �
 
 Bir öğe üzerinde yaşam süresini etkinleştirmek için aşağıdaki adımları kullanın:
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 2. Yeni bir Azure Cosmos hesabı oluşturun veya var olan bir hesabı seçin.
 
@@ -198,7 +198,7 @@ const itemDefinition = {
 
 ## <a name="reset-time-to-live"></a>Zamanı canlı olarak Sıfırla
 
-Öğe üzerinde bir yazma veya güncelleştirme işlemi gerçekleştirerek bir öğe üzerinde canlı kalma süresini sıfırlayabilirsiniz. Yazma veya güncelleştirme işlemi, `_ts` ' ı geçerli saate ayarlar ve öğe için TTL 'nin süresinin dolacağı şekilde yeniden başlaması gerekir. Bir öğenin TTL 'sini değiştirmek isterseniz, alanı başka bir alanı güncelleştirdiğinizde de güncelleştirebilirsiniz.
+Öğe üzerinde bir yazma veya güncelleştirme işlemi gerçekleştirerek bir öğe üzerinde canlı kalma süresini sıfırlayabilirsiniz. Yazma veya güncelleştirme işlemi `_ts` geçerli saate ayarlar ve öğe için TTL 'nin süresi dolacak şekilde yeniden başlaması gerekir. Bir öğenin TTL 'sini değiştirmek isterseniz, alanı başka bir alanı güncelleştirdiğinizde de güncelleştirebilirsiniz.
 
 ### <a id="dotnet-extend-ttl-item"></a>.NET SDK v2 (Microsoft. Azure. DocumentDB)
 

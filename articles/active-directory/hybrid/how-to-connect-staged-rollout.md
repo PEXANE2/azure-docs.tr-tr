@@ -33,7 +33,7 @@ Bu özelliklerin bulut kimlik doğrulamasına geçmeden önce dikkate alınması
 
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 -   Federasyon etki alanları içeren bir Azure AD kiracınız var.
 

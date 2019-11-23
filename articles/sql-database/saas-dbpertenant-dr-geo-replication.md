@@ -91,8 +91,8 @@ Daha sonra, ayrı bir yeniden bir geri alma adımında, kurtarma bölgesindeki K
 Kurtarma işlemine başlamadan önce, uygulamanın normal sağlıklı durumunu gözden geçirin.
 1. Web tarayıcınızda, Wingtip bilet olayları hub 'ını açın (http://events.wingtip-dpt.&lt; User&gt;. trafficmanager.net-&lt;Kullanıcı&gt; dağıtımınızın Kullanıcı değeriyle değiştirin).
     * Sayfanın alt kısmına ilerleyin ve altbilgide katalog sunucusu adı ve konumuna dikkat edin. Konum, uygulamayı dağıttığınız bölgedir.
-    *İpucu: ekranı büyütmek için fareyi konumun üzerine getirin.* özgün bölgede ![Olay Hub 'ı sağlıklı durumunu
-    ](media/saas-dbpertenant-dr-geo-replication/events-hub-original-region.png)
+    *İpucu: fare görüntü büyütmek için konum gelin.* 
+    ![Olayları hub sağlam durumda özgün bölge](media/saas-dbpertenant-dr-geo-replication/events-hub-original-region.png)
 
 2. Contoso Concert Salı kiracısına tıklayın ve olay sayfasını açın.
     * Altbilgide, kiracı sunucu adına dikkat edin. Konum, katalog sunucusunun konumuyla aynı olacaktır.
@@ -302,7 +302,7 @@ Kiracı veritabanları, geri alma sırasında bir süre boyunca kurtarma ve özg
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, şunları öğrendiniz:
+Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 > [!div class="checklist"]
 > 
 > * Veritabanı ve elastik havuz yapılandırma bilgilerini kiracı kataloğu ile eşitleyin

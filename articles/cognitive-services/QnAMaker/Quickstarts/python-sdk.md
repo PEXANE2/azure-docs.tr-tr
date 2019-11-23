@@ -23,11 +23,11 @@ Python için Soru-Cevap Oluşturma istemci kitaplığı ile çalışmaya başlay
 
 Python için Soru-Cevap Oluşturma istemci kitaplığını şu şekilde kullanın:
 
-* Bilgi bankası oluşturun 
+* Bilgi bankası oluşturma 
 * Bilgi Bankası 'nı yönetme
 * Bilgi bankası yayımlama
 
-[Başvuru belgeleri](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker?view=azure-python) | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-knowledge-qnamaker) | [Package (Pypı)](https://pypi.org/project/azure-cognitiveservices-knowledge-qnamaker/) | [Python örnekleri](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py)
+[Başvuru belgeleri](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker?view=azure-python) | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-knowledge-qnamaker) | [paketi (Pypı)](https://pypi.org/project/azure-cognitiveservices-knowledge-qnamaker/) | [Python örnekleri](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -42,7 +42,7 @@ Python için Soru-Cevap Oluşturma istemci kitaplığını şu şekilde kullanı
 
 Azure bilişsel hizmetler, abone olduğunuz Azure kaynakları tarafından temsil edilir. Yerel makinenizde [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) veya [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) kullanarak soru-cevap oluşturma için bir kaynak oluşturun. 
 
-Kaynağından bir anahtar aldıktan sonra, kaynak için `QNAMAKER_KEY` ve `QNAMAKER_HOST` adlı [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) . Azure portal bulunan anahtar ve uç nokta değerlerini kullanın.
+Kaynağından bir anahtar aldıktan sonra, kaynak için `QNAMAKER_KEY` ve `QNAMAKER_HOST`adlı [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) . Azure portal bulunan anahtar ve uç nokta değerlerini kullanın.
 
 ### <a name="install-the-python-library-for-qna-maker"></a>Soru-Cevap Oluşturma için Python kitaplığı 'nı yükler
 
@@ -84,7 +84,7 @@ Kaynağınızın Azure uç noktası ve anahtarı için değişkenler oluşturun.
 |Ortam değişkeni|Python değişkeni|Örnek|
 |--|--|--|
 |`QNAMAKER_KEY`|`subscription_key`|32 karakter GUID 'SI|
-|`QNAMAKER_HOST`|`host`|`https://your-resource-name.api.cognitive.microsoft.com`-1 @no__t kendi kaynak adınızla değiştirin|
+|`QNAMAKER_HOST`|`host`|`https://your-resource-name.api.cognitive.microsoft.com`-`your-resource-name` kendi kaynak adınızla değiştirin|
 ||||
 
 [!code-python[Azure resource variables](~/samples-qnamaker-python/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py?name=resourcekeys)]
@@ -96,7 +96,7 @@ Ardından, anahtarınızla bir Biliveservicescredentials nesnesi oluşturun ve b
 
 [!code-python[Authorization to resource key](~/samples-qnamaker-python/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py?name=authorization)]
 
-## <a name="create-a-knowledge-base"></a>Bilgi bankası oluşturun
+## <a name="create-a-knowledge-base"></a>Bilgi bankası oluşturma
 
  [Bilgi Bankası işlemleri](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.operations.knowledgebaseoperations?view=azure-python) nesnesi almak için istemci nesnesini kullanın.
 
@@ -110,7 +110,7 @@ Bilgi Bankası, üç kaynaktan alınan [Createkbdto](https://docs.microsoft.com/
 
 [!code-python[Create a knowledge base](~/samples-qnamaker-python/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py?name=createkb&highlight=15)]
 
-Bir bilgi bankasını başarıyla oluşturmak için yukarıdaki kodda başvurulan [`_monitor_operation`](#get-status-of-an-operation) işlevini eklediğinizden emin olun. 
+Bir bilgi bankasını başarıyla oluşturmak için yukarıdaki kodda başvurulan [`_monitor_operation`](#get-status-of-an-operation) işlevinin dahil olduğundan emin olun. 
 
 ## <a name="update-a-knowledge-base"></a>Bilgi bankası güncelleştirme
 
@@ -118,7 +118,7 @@ Bilgi Bankası KIMLIĞI ve [güncelleştirme](https://docs.microsoft.com/python/
 
 [!code-python[Update a knowledge base](~/samples-qnamaker-python/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py?name=updatekb&highlight=2)]
 
-Bilgi bankasını başarıyla güncelleştirmek için yukarıdaki kodda başvurulan [`_monitor_operation`](#get-status-of-an-operation) işlevini içer ' in olduğundan emin olun. 
+Bilgi bankasını başarıyla güncelleştirmek için yukarıdaki kodda başvurulan [`_monitor_operation`](#get-status-of-an-operation) işlevinin dahil olduğundan emin olun. 
 
 ## <a name="publish-a-knowledge-base"></a>Bilgi bankası yayımlama
 
@@ -169,5 +169,5 @@ Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağ
 >[Öğretici: bir KB oluşturun ve yanıtlayın](../tutorials/create-publish-query-in-portal.md)
 
 * [Soru-Cevap Oluşturma API'si nedir?](../Overview/overview.md)
-* [Bilgi Bankası düzenleme](../how-to/edit-knowledge-base.md)
+* [Bilgi Bankası Düzenle](../how-to/edit-knowledge-base.md)
 * [Kullanım analizlerini al](../how-to/get-analytics-knowledge-base.md)

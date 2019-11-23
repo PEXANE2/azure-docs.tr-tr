@@ -51,11 +51,11 @@ Bir betik çalıştırıldığında, runbook 'a bir kurtarma planı bağlamını
 | ID |Plan çalışırken kurtarma planındaki grup numarasını tanımlar. |
 | VmMap |Gruptaki tüm VM 'lerin bir dizisi. |
 | VMMap anahtarı |Her VM için benzersiz bir anahtar (GUID). |
-| SubscriptionID |VM 'nin oluşturulduğu Azure abonelik KIMLIĞI. |
-| resourceGroupName | VM 'nin bulunduğu kaynak grubunun adı.
+| SubscriptionId |VM 'nin oluşturulduğu Azure abonelik KIMLIĞI. |
+| ResourceGroupName | VM 'nin bulunduğu kaynak grubunun adı.
 | CloudServiceName |VM 'nin altında oluşturulduğu Azure bulut hizmeti adı. |
 | RoleName |Azure VM 'nin adı. |
-| Recoverypointıd|VM kurtarma için zaman damgası. |
+| RecoveryPointId|VM kurtarma için zaman damgası. |
 
 Aşağıdaki örnek bir bağlam değişkenini gösterir:
 
@@ -100,10 +100,10 @@ Aman parçalara ayırma [bulutlarının](http://harvestingclouds.com) üzerinde 
 - Azure Otomasyonu ' na yeni başladıysanız [örnek komut dosyalarını](https://azure.microsoft.com/documentation/scripts/) [kaydedebilir ve](https://azure.microsoft.com/services/automation/) indirebilirsiniz.
 - Otomasyon hesabının aşağıdaki modüllere sahip olduğundan emin olun:
     - Azurerd. profil
-    - Azurerd. resources
-    - Azurerd. Otomasyon
-    - Azurerd. ağ
-    - Azurerd. Işlem
+    - AzureRM.Resources
+    - AzureRM.Automation
+    - AzureRM.Network
+    - AzureRM.Compute
 
     Tüm modüller uyumlu sürümler olmalıdır. En basit yol, her zaman tüm modüllerin en son sürümlerini kullanmaktır.
 
@@ -117,7 +117,7 @@ Aman parçalara ayırma [bulutlarının](http://harvestingclouds.com) üzerinde 
 
     ![Özelleştir düğmesine tıklayın](media/site-recovery-runbook-automation-new/custom-rp.png)
 
-2. **Grup 1**' in yanındaki üç noktaya (...) ve @no__t Başlat-1 ' i**Gönder eylem Ekle**' yi tıklatın.
+2. **Grup 1** ' in yanındaki üç noktaya (...) ve sonra > **Gönder eylem Ekle**' ye tıklayın.
 3. **Ekle eyleminde** **betiğin** seçili olduğunu doğrulayın ve betik için bir ad belirtin (**Merhaba Dünya**).
 4. Bir Otomasyon hesabı belirtin ve bir runbook seçin. Betiği kaydetmek için **Tamam**' a tıklayın. Komut dosyası **1. Grup: son adımlar**' a eklenir.
 
@@ -189,7 +189,7 @@ Bu senaryoya yönelik tam, uçtan uca bir betik için [bu betiği](https://galle
 
 ### <a name="use-a-complex-variable-to-store-more-information"></a>Daha fazla bilgi depolamak için karmaşık bir değişken kullanın
 
-Bazı senaryolarda, her kurtarma planı için ayrı değişkenler oluşturabilemeyebilirsiniz. Tek bir betiğin belirli sanal makinelere genel IP adresi atamasını istediğiniz bir senaryo düşünün. Başka bir senaryoda farklı sanal makinelere (tüm VM 'lerde değil) farklı NSG 'ler uygulamak isteyebilirsiniz. Unutmayın:
+Bazı senaryolarda, her kurtarma planı için ayrı değişkenler oluşturabilemeyebilirsiniz. Tek bir betiğin belirli sanal makinelere genel IP adresi atamasını istediğiniz bir senaryo düşünün. Başka bir senaryoda farklı sanal makinelere (tüm VM 'lerde değil) farklı NSG 'ler uygulamak isteyebilirsiniz. Aşağıdakilere dikkat edin:
 
 - Herhangi bir kurtarma planı için yeniden kullanılabilir olan bir betiği yapabilirsiniz.
 - Her kurtarma planının değişken sayıda VM olabilir.
@@ -247,11 +247,11 @@ Bunu, Azure PowerShell kullanarak birden çok değer belirterek yapacağız.
 
 Farklı kurtarma planları için aynı betiği kullanabilirsiniz. Farklı değişkenlerde bir kurtarma planına karşılık gelen değeri depolayarak farklı parametreler girin.
 
-## <a name="sample-scripts"></a>Örnek betikler
+## <a name="sample-scripts"></a>Örnek komut dosyaları
 
 Otomasyon hesabınıza örnek betikler dağıtmak için **Azure 'A dağıt** düğmesine tıklayın.
 
-[![Azure 'a dağıtın](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
+[![Azure’a dağıtma](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
 Bu video başka bir örnek sağlar. İki katmanlı bir WordPress uygulamasının Azure 'a nasıl kurtarılacağı gösterilmektedir:
 

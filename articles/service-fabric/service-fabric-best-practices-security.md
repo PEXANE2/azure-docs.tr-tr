@@ -79,7 +79,7 @@ Service Fabric kümesi işlemleriniz için sertifikalarınızı bir ACL uygulama
 
 ## <a name="secure-a-service-fabric-cluster-certificate-by-common-name"></a>Ortak ada göre Service Fabric kümesi sertifikasını güvenli hale getirme
 
-Service Fabric kümenizi @no__t sertifikaya göre güvenli hale getirmek için, aşağıdaki gibi, [Certificatecommonnames](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterproperties#certificatecommonnames)Kaynak Yöneticisi şablon özelliğini kullanın:
+Service Fabric kümenizi sertifika `Common Name`göre güvenli hale getirmek için [Certificatecommonnames](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterproperties#certificatecommonnames)Kaynak Yöneticisi şablon özelliğini aşağıdaki gibi kullanın:
 
 ```json
 "certificateCommonNames": {
@@ -96,16 +96,16 @@ Service Fabric kümenizi @no__t sertifikaya göre güvenli hale getirmek için, 
 > [!NOTE]
 > Service Fabric kümeler, ana bilgisayarınızın sertifika deposunda bulduğu ilk geçerli sertifikayı kullanır. Bu, Windows 'ta, ortak ad ve veren parmak iziyle eşleşen son geçerlilik tarihi olan sertifika olacaktır.
 
-\* @No__t-0SIZIN SUBDOMAIN\>.cloudapp.azure.com veya \<SIZIN SUBDOMAIN\>.trafficmanager.net gibi Azure etki alanları Microsoft 'a aittir. Sertifika yetkilileri, yetkisiz kullanıcılara etki alanları için sertifika yayınmayacak. Çoğu kullanıcının, bir sertifika yetkilisinin bu ortak ada sahip bir sertifika vermesi için bir kayıt grubundan bir etki alanı satın alması veya yetkili bir etki alanı yöneticisi olması gerekir.
+Alt etki alanınızın *\>\<gibi Azure etki alanları. cloudapp.azure.com veya \<alt etkı alanınızın\>. trafficmanager.net, Microsoft 'a aittir. Sertifika yetkilileri, yetkisiz kullanıcılara etki alanları için sertifika yayınmayacak. Çoğu kullanıcının, bir sertifika yetkilisinin bu ortak ada sahip bir sertifika vermesi için bir kayıt grubundan bir etki alanı satın alması veya yetkili bir etki alanı yöneticisi olması gerekir.
 
 DNS hizmetini, etki alanınızı bir Microsoft IP adresine çözümlemek üzere yapılandırma hakkında daha fazla bilgi için, [etki alanınızı barındırmak üzere Azure DNS](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns)yapılandırma konusunu gözden geçirin.
 
 > [!NOTE]
 > Etki alanı adı sunucularınızın Azure DNS bölge adı sunucularınıza yetkisini aldıktan sonra, DNS bölgenize aşağıdaki iki kaydı ekleyin:
-> - Özel etki alanınız çözülecek tüm IP adreslerine `Alias record set` olmayan etki alanı TEPESINDE için bir ' A ' kaydı.
-> - Sağladığınız Microsoft Sub Domains için bir ' C ' kaydı, `Alias record set` DEĞILDIR. Örneğin, Traffic Manager veya Load Balancer DNS adını kullanabilirsiniz.
+> - Özel etki alanınızı çözecek tüm IP adreslerine `Alias record set` olmayan etki alanı TEPESINDE için bir ' A ' kaydı.
+> - Sağladığınız Microsoft Sub Domains için bir `Alias record set`olmayan bir ' C ' kaydı. Örneğin, Traffic Manager veya Load Balancer DNS adını kullanabilirsiniz.
 
-Portalınızı Service Fabric kümeniz için özel bir DNS adı görüntüleyecek şekilde güncelleştirmek üzere `"managementEndpoint"` ' ı Service Fabric kümeyi izle Kaynak Yöneticisi şablon özelliklerini güncelleştirin:
+Portalınızı Service Fabric kümeniz `"managementEndpoint"`için özel bir DNS adı görüntüleyecek şekilde güncelleştirmek üzere Service Fabric kümesini izleyin Kaynak Yöneticisi Şablon Özellikleri:
 
 ```json
  "managementEndpoint": "[concat('https://<YOUR CUSTOM DOMAIN>:',parameters('nt0fabricHttpGatewayPort'))]",
@@ -180,7 +180,7 @@ Bir sanal makine ölçek kümesi veya var olan bir sanal makine ölçek kümesi 
 ```
 Daha fazla bilgi için bkz. [Azure kaynakları için Yönetilen kimlikler nedir?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vmss#system-assigned-managed-identity) .
 
-[Kullanıcı tarafından atanan bir yönetilen kimlik](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm#create-a-user-assigned-managed-identity)oluşturduysanız, sanal makine ölçek kümesine atamak için şablonunuzda aşağıdaki kaynağı bildirin. @No__t-0 ' yı, oluşturduğunuz Kullanıcı tarafından atanan yönetilen kimliğin adıyla değiştirin:
+[Kullanıcı tarafından atanan bir yönetilen kimlik](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm#create-a-user-assigned-managed-identity)oluşturduysanız, sanal makine ölçek kümesine atamak için şablonunuzda aşağıdaki kaynağı bildirin. `\<USERASSIGNEDIDENTITYNAME\>`, oluşturduğunuz Kullanıcı tarafından atanan yönetilen kimliğin adıyla değiştirin:
 
 ```json
 "identity": {
@@ -217,7 +217,7 @@ cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBS
 [Bir taban çizgisi oluşturmak yerine, Microsoft güvenlik temelleri gibi yaygın olarak bilinen ve iyi test edilmiş sektör standardı bir yapılandırma uygulamanızı öneririz](https://docs.microsoft.com/windows/security/threat-protection/windows-security-baselines). bunları sanal makine ölçek kümelerinde sağlamaya yönelik bir seçenek, Azure Istenen durum yapılandırması (DSC) uzantı işleyicisini kullanarak VM 'Leri çevrimiçi olduklarında yapılandırmak için, üretim yazılımını çalıştırırlar.
 
 ## <a name="azure-firewall"></a>Azure Güvenlik Duvarı
-[Azure Güvenlik Duvarı, Azure sanal ağ kaynaklarınızı koruyan, yönetilen, bulut tabanlı bir ağ güvenlik hizmetidir. Yerleşik yüksek kullanılabilirliğe sahip ve sınırsız sayıda bulut ölçeklenebilirliğe sahip bir hizmet olarak tam durum bilgisi olmayan bir güvenlik duvarıdır.](https://docs.microsoft.com/azure/firewall/overview); Bu, giden HTTP/S trafiğini, joker karakterler de dahil olmak üzere, tam etki alanı adları (FQDN) belirtilen bir listeyle sınırlandırmanızı sağlar. Bu özellik SSL sonlandırması gerektirmez. Windows güncelleştirmeleri için [Azure Güvenlik DUVARı FQDN etiketleri](https://docs.microsoft.com/azure/firewall/fqdn-tags) kullanmanız ve Microsoft Windows Update uç noktalarına ağ trafiğini etkinleştirmek için, güvenlik duvarınız üzerinden akabilir. [Şablon kullanarak Azure Güvenlik Duvarı dağıtmak](https://docs.microsoft.com/azure/firewall/deploy-template) , Microsoft. Network/azureFirewalls kaynak şablonu tanımı için bir örnek sağlar. Service Fabric uygulamalarda ortak olan güvenlik duvarı kuralları, kümeleriniz sanal ağınız için aşağıdakilere izin verdir:
+[Azure Güvenlik Duvarı, Azure sanal ağ kaynaklarınızı koruyan, yönetilen, bulut tabanlı bir ağ güvenlik hizmetidir. Yerleşik yüksek kullanılabilirliğe sahip ve sınırsız sayıda bulut ölçeklenebilirliğe sahip bir hizmet olarak tam durum bilgisi olmayan bir güvenlik duvarıdır.](https://docs.microsoft.com/azure/firewall/overview); Bu, giden HTTP/S trafiğini, joker karakterler de dahil olmak üzere, tam etki alanı adları (FQDN) belirtilen bir listeyle sınırlandırmanızı sağlar. Bu özelliğe SSL sonlandırması gerekmez. Windows güncelleştirmeleri için [Azure Güvenlik DUVARı FQDN etiketleri](https://docs.microsoft.com/azure/firewall/fqdn-tags) kullanmanız ve Microsoft Windows Update uç noktalarına ağ trafiğini etkinleştirmek için, güvenlik duvarınız üzerinden akabilir. [Şablon kullanarak Azure Güvenlik Duvarı dağıtmak](https://docs.microsoft.com/azure/firewall/deploy-template) , Microsoft. Network/azureFirewalls kaynak şablonu tanımı için bir örnek sağlar. Service Fabric uygulamalarda ortak olan güvenlik duvarı kuralları, kümeleriniz sanal ağınız için aşağıdakilere izin verdir:
 
 - \* download.microsoft.com
 - \* servicefabric.azure.com
@@ -263,7 +263,7 @@ Varsayılan olarak, Windows Defender virüsten koruma Windows Server 2016 ' ye y
 > Windows Defender kullanmıyorsanız yapılandırma kuralları için kötü amaçlı yazılımdan koruma belgelerinize bakın. Windows Defender, Linux üzerinde desteklenmez.
 
 ## <a name="platform-isolation"></a>Platform yalıtımı
-Varsayılan olarak, Service Fabric uygulamalar, kendisini farklı formlarda bildirimi olan Service Fabric çalışma zamanına sahiptir: [ortam değişkenleri](service-fabric-environment-variables-reference.md) , uygulama ve doku dosyalarına karşılık gelen konaktaki dosya yollarına işaret eden bir uygulamaya özgü istekleri kabul eden, işlem arası iletişim uç noktası ve yapının uygulamanın kimliğini doğrulamak için kullanmasını beklediği istemci sertifikası. Hizmetin güvenilmeyen kodu barındırdığı konusunda, açıkça gerekmedikçe SF çalışma zamanına erişimi devre dışı bırakmanız önerilir. Çalışma zamanına erişim, uygulama bildiriminin Ilkeler bölümünde aşağıdaki bildirim kullanılarak kaldırılır: 
+Varsayılan olarak, Service Fabric uygulamalar, kendisini farklı formlarda bulunan Service Fabric çalışma zamanına sahip olur: uygulama ve doku dosyalarına karşılık gelen konaktaki dosya yollarına işaret eden [ortam değişkenleri](service-fabric-environment-variables-reference.md) , uygulamaya özgü istekleri kabul eden, işlem içi bir iletişim uç noktası ve uygulamanın kendi kimliğini doğrulamak için kullanmasını beklediği istemci sertifikası. Hizmetin güvenilmeyen kodu barındırdığı konusunda, açıkça gerekmedikçe SF çalışma zamanına erişimi devre dışı bırakmanız önerilir. Çalışma zamanına erişim, uygulama bildiriminin Ilkeler bölümünde aşağıdaki bildirim kullanılarak kaldırılır: 
 
 ```xml
 <ServiceManifestImport>

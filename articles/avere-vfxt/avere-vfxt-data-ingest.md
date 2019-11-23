@@ -25,7 +25,7 @@ Verileri bir depolama sisteminden diğerine aktarmak için yaygın olarak kullan
 
 Bu makalede, verileri avere vFXT kümesine taşımak için çok istemci, çok iş parçacıklı dosya kopyalama sistemi oluşturma stratejileri açıklanmaktadır. Birden çok istemci ve basit kopyalama komutları kullanılarak etkili veri kopyalama için kullanılabilen dosya aktarımı kavramlarını ve karar noktalarını açıklar.
 
-Ayrıca yardımcı olabilecek bazı yardımcı programları da açıklar. @No__t-0 yardımcı programı, bir veri kümesini demetlere bölme ve rsync komutlarının kullanımı sürecini kısmen otomatikleştirebilmek için kullanılabilir. @No__t-0 betiği, kaynak dizini okuyan ve komutları otomatik olarak kopyalama ile ilgili başka bir yardımcı programdır.  
+Ayrıca yardımcı olabilecek bazı yardımcı programları da açıklar. ``msrsync`` yardımcı programı, bir veri kümesini demetlere bölme ve rsync komutlarının kullanımı sürecini kısmen otomatikleştirebilmek için kullanılabilir. ``parallelcp`` betiği, kaynak dizini okuyan ve komutları otomatik olarak kopyalama ile ilgili başka bir yardımcı programdır.  
 
 Bir bölüme gitmek için bağlantıya tıklayın:
 
@@ -68,7 +68,7 @@ Bu komutu verdikten sonra, `jobs` komutu iki iş parçacığının çalıştığ
 
 Dosya adları tahmin edilebilir ise, paralel kopyalama iş parçacıkları oluşturmak için ifadeleri kullanabilirsiniz. 
 
-Örneğin, dizininiz `0001` ' dan `1000` ' e ardışık olarak numaralandırılan 1000 dosyaları içeriyorsa, her bir Copy 100 dosyasını izleyen on paralel iş parçacığı oluşturmak için aşağıdaki ifadeleri kullanabilirsiniz:
+Örneğin, dizininiz `1000``0001` sıralı olarak numaralandırılmış 1000 dosya içeriyorsa, her bir kopyalanan 100 dosyasını izleyen on paralel iş parçacığı oluşturmak için aşağıdaki ifadeleri kullanabilirsiniz:
 
 ```bash
 cp /mnt/source/file0* /mnt/destination1/ & \
@@ -87,7 +87,7 @@ cp /mnt/source/file9* /mnt/destination1/
 
 Dosya adlandırma yapınız tahmin edilebilir değilse, dosyaları dizin adlarına göre gruplandırabilirsiniz. 
 
-Bu örnek, ``cp`` komutlarına gönder arka plan görevleri olarak çalışacak tüm dizinleri toplar:
+Bu örnek, arka plan görevleri olarak çalıştırılan ``cp`` komutlarına göndermek için tüm dizinleri toplar:
 
 ```bash
 /root
@@ -123,7 +123,7 @@ Bu durumda, aynı uzak dosya sistemi bağlama yolunu kullanarak diğer vFXT küm
 10.1.1.103:/nfs on /mnt/destination3type nfs (rw,vers=3,proto=tcp,addr=10.1.1.103)
 ```
 
-İstemci tarafı bağlama noktaları eklemek ek `/mnt/destination[1-3]` bağlama noktalarına ek kopyalama komutları ekleyerek daha fazla paralellik elde etmenizi sağlar.  
+İstemci tarafı bağlama noktaları eklemek, ek `/mnt/destination[1-3]` bağlama noktalarına daha fazla paralellik elde etmenizi sağlar.  
 
 Örneğin, dosyalarınız çok büyükse, farklı hedef yolları kullanmak için kopyalama komutlarını tanımlayabilir ve kopyayı gerçekleştiren istemciden paralel olarak daha fazla komut gönderebilirsiniz.
 
@@ -245,7 +245,7 @@ Ve altı.... Gerektiğinde extrapogeç.
 for i in 1 2 3 4 5 6; do sed -n ${i}~6p /tmp/foo > /tmp/client${i}; done
 ```
 
-@No__t-2 komutundan çıktının bir parçası olarak elde edilen düzey dört dizinlere sahip olan *n* istemcilerinden her biri için bir tane olmak üzere *n* sonuç dosyası alacaksınız. 
+`find` komutundan çıktının bir parçası olarak elde edilen düzey dört dizine ait yol adlarına sahip *n istemcilerinden her* biri için bir tane olmak üzere *n* sonuç dosyası alacaksınız. 
 
 Kopyalama komutunu oluşturmak için her dosyayı kullanın:
 
@@ -259,22 +259,22 @@ Amaç, birden çok istemcide paralel olarak bu betiklerin birden çok iş parça
 
 ## <a name="use-the-msrsync-utility-to-populate-cloud-volumes"></a>Bulut birimlerini doldurmak için msrsync yardımcı programını kullanın
 
-@No__t-0 aracı Ayrıca verileri avere kümesi için bir arka uç çekirdeği altına taşımak üzere kullanılabilir. Bu araç birden çok paralel ``rsync`` işlemi çalıştırarak bant genişliği kullanımını iyileştirmek üzere tasarlanmıştır. GitHub 'dan https://github.com/jbd/msrsync ' da kullanılabilir.
+``msrsync`` Aracı, verileri avere kümesi için bir arka uç çekirdeği altına taşımak üzere de kullanılabilir. Bu araç birden çok paralel ``rsync`` işlemi çalıştırarak bant genişliği kullanımını iyileştirmek için tasarlanmıştır. https://github.com/jbd/msrsync'de GitHub 'dan kullanılabilir.
 
-``msrsync``, kaynak dizinini ayrı "demetlere" ayırır ve sonra her bir demet üzerinde tek ``rsync`` işlem çalıştırır.
+``msrsync``, kaynak dizinini ayrı "demetlere" ayırır ve sonra her bir Bucket üzerinde bireysel ``rsync`` süreçlerini çalıştırır.
 
 Dört çekirdekli bir VM kullanan ön test, 64 işlemleri kullanırken en iyi verimliliği gösteriyordu. İşlem sayısını 64 olarak ayarlamak için ``-p`` ``msrsync`` seçeneğini kullanın.
 
-@No__t-0 ' ın yalnızca yerel birimlerden ve ' a yazabildiğini unutmayın. Kaynak ve hedef, kümenin sanal ağındaki yerel başlatmalar olarak erişilebilir olmalıdır.
+``msrsync`` yalnızca yerel birimlerden ve bu birimlere yazabildiğini unutmayın. Kaynak ve hedef, kümenin sanal ağındaki yerel başlatmalar olarak erişilebilir olmalıdır.
 
 Bir Azure bulut birimini bir avere kümesiyle doldurmak üzere msrsync 'i kullanmak için şu yönergeleri izleyin:
 
 1. Msrsync ve önkoşullarını (rsync ve Python 2,6 veya üzeri) yükler
 1. Kopyalanacak toplam dosya ve dizin sayısını belirleme.
 
-   Örneğin, avere yardımcı programını ```prime.py --directory /path/to/some/directory```  (URL 'yi https://github.com/Azure/Avere/blob/master/src/clientapps/dataingestor/prime.py) ) ile birlikte kullanın.
+   Örneğin, avere yardımcı programını ``prime.py`` bağımsız değişkenlerle ```prime.py --directory /path/to/some/directory``` (URL https://github.com/Azure/Avere/blob/master/src/clientapps/dataingestor/prime.py)indirerek kullanılabilir) kullanın.
 
-   @No__t-0 ' ı kullanmıyorsanız, GNU ``find`` aracıyla birlikte öğe sayısını aşağıdaki şekilde hesaplayabilirsiniz:
+   ``prime.py``kullanmıyorsanız, GNU ``find`` aracıyla birlikte öğe sayısını aşağıdaki şekilde hesaplayabilirsiniz:
 
    ```bash
    find <path> -type f |wc -l         # (counts files)
@@ -296,9 +296,9 @@ Bir Azure bulut birimini bir avere kümesiyle doldurmak üzere msrsync 'i kullan
 
 ## <a name="use-the-parallel-copy-script"></a>Paralel kopya betiğini kullanın
 
-@No__t-0 betiği, verileri vFXT kümenizin arka uç depolamasına taşımak için de yararlı olabilir. 
+``parallelcp`` betiği, verileri vFXT kümenizin arka uç depolamasına taşımak için de yararlı olabilir. 
 
-Aşağıdaki komut dosyası yürütülebilir @no__t ekler-0. (Bu betik Ubuntu için tasarlanmıştır; başka bir dağıtım kullanılıyorsa, ``parallel`` ' ı ayrı ayrı yüklemelisiniz.)
+Aşağıdaki komut dosyası yürütülebilir `parallelcp`ekler. (Bu betik Ubuntu için tasarlanmıştır; başka bir dağıtım kullanılıyorsa ``parallel`` ayrı olarak yüklemelisiniz.)
 
 ```bash
 sudo touch /usr/bin/parallelcp && sudo chmod 755 /usr/bin/parallelcp && sudo sh -c "/bin/cat >/usr/bin/parallelcp" <<EOM 
@@ -352,12 +352,12 @@ EOM
 
 ### <a name="parallel-copy-example"></a>Paralel kopya örneği
 
-Bu örnek, avere kümesinden kaynak dosyaları kullanarak ``glibc`` ' i derlemek için paralel kopyalama betiğini kullanır. 
+Bu örnek, avere kümesinden kaynak dosyaları kullanarak ``glibc`` derlemek için paralel kopyalama betiğini kullanır. 
 <!-- xxx what is stored where? what is 'the avere cluster mount point'? xxx -->
 
 Kaynak dosyalar avere kümesi bağlama noktasında depolanır ve nesne dosyaları yerel sabit sürücüde depolanır.
 
-Bu betik, yukarıdaki paralel kopya betiğini kullanır. @No__t-0 seçeneği, paralel hale getirme kazanmak için ``parallelcp`` ve ``make`` ile birlikte kullanılır.
+Bu betik, yukarıdaki paralel kopya betiğini kullanır. ``-j`` seçeneği, paralel hale getirme kazanmak için ``parallelcp`` ve ``make`` kullanılır.
 
 ```bash
 sudo apt-get update

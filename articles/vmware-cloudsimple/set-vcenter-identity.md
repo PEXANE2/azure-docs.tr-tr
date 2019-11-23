@@ -53,7 +53,7 @@ Active Directory etki alanınızı ayarlarken aşağıdaki tablodaki bilgileri k
 
 | **Seçenek** | **Açıklama** |
 |------------|-----------------|
-| **Ad** | Kimlik kaynağının adı. |
+| **Adı** | Kimlik kaynağının adı. |
 | **Kullanıcılar için temel DN** | Kullanıcılar için temel ayırt edici ad. |
 | **Etki alanı adı** | Etki alanının FDQN 'ı, örneğin, example.com. Bu metin kutusunda bir IP adresi sağlamaın. |
 | **Etki alanı diğer adı** | Etki alanı NetBIOS adı. SSPI kimlik doğrulamaları kullanıyorsanız, Active Directory etki alanının NetBIOS adını kimlik kaynağının diğer adı olarak ekleyin. |

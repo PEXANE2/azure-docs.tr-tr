@@ -68,9 +68,9 @@ Durum bilgisi olan mikro hizmetler, yalnızca durum bilgisiz uygulamaların kull
 
 Aşağıdaki diyagramlarda, durum bilgisiz ve durum bilgisi olan bir uygulama tasarlama arasındaki farklar gösterilmektedir. [Reliable Services](service-fabric-reliable-services-introduction.md) ve [Reliable Actors](service-fabric-reliable-actors-introduction.md) programlama modellerinden yararlanarak, durum bilgisi olan hizmetler yüksek aktarım hızı ve düşük gecikme süresi sağlarken uygulama karmaşıklığını azaltır.
 
-Aşağıda durum bilgisi olmayan hizmetler kullanan bir örnek uygulama vardır: ![Uygulama durumsuz hizmetler @ no__t-1
+Aşağıda durum bilgisi olmayan hizmetler kullanan bir örnek uygulama vardır: durum bilgisi olmayan hizmetler kullanan ![uygulama][Image1]
 
-Durum bilgisi olmayan hizmetler kullanan bir örnek uygulama aşağıda verilmiştir: ![Uygulaması durum bilgisi olan hizmetler @ no__t-1
+Durum bilgisi olmayan hizmetler kullanan bir uygulama aşağıda verilmiştir: ![durum bilgisi olan hizmetleri kullanan uygulama][Image2]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

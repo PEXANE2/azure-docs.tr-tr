@@ -29,9 +29,9 @@ Bu öğreticide, Kullanıcı veya grupları Elium 'a otomatik olarak sağlamak v
 > [!NOTE]
 > Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti 'nin üzerine kurulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığı ve nasıl çalıştığı hakkında önemli ayrıntılar ve sık sorulan sorular için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../manage-apps/user-provisioning.md).
 >
-> Bu bağlayıcı Şu anda önizleme aşamasındadır. Önizleme aşamasında Azure özelliklerinin genel kullanım koşulları için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Bu bağlayıcı, şu anda Önizleme aşamasındadır. Önizleme aşamasında Azure özelliklerinin genel kullanım koşulları için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide, aşağıdaki önkoşullara zaten sahip olduğunuz varsayılır:
 
@@ -53,9 +53,9 @@ Bir kullanıcıyı elim 'e atarken atama iletişim kutusunda geçerli, uygulamay
 
 ## <a name="set-up-elium-for-provisioning"></a>Sağlama için Elium ayarlama
 
-Azure AD ile otomatik Kullanıcı sağlama için Elium 'u yapılandırmadan önce, sistemi etki alanları arası kimlik yönetimi (SCıM) sağlama için bir arada etkinleştirmeniz gerekir. Aşağıdaki adımları uygulayın:
+Azure AD ile otomatik Kullanıcı sağlama için Elium 'u yapılandırmadan önce, sistemi etki alanları arası kimlik yönetimi (SCıM) sağlama için bir arada etkinleştirmeniz gerekir. Şu adımları uygulayın:
 
-1. Elim 'de oturum açın ve **profil** > **ayarları**' na gidin.
+1. Elim 'de oturum açın ve **profilimi** > **Ayarlar**' a gidin.
 
     ![Elium 'da ayarlar menü öğesi](media/Elium-provisioning-tutorial/setting.png)
 
@@ -69,7 +69,7 @@ Azure AD ile otomatik Kullanıcı sağlama için Elium 'u yapılandırmadan önc
 
 ## <a name="add-elium-from-the-gallery"></a>Galeriden Elium ekleyin
 
-Azure AD ile otomatik Kullanıcı sağlaması için Elium 'u yapılandırmak için Azure AD Uygulama Galerisi 'nden yönetilen hizmet olarak yazılım (SaaS) uygulamaları listenize da Elium eklemeniz gerekir. Aşağıdaki adımları uygulayın:
+Azure AD ile otomatik Kullanıcı sağlaması için Elium 'u yapılandırmak için Azure AD Uygulama Galerisi 'nden yönetilen hizmet olarak yazılım (SaaS) uygulamaları listenize da Elium eklemeniz gerekir. Şu adımları uygulayın:
 
 1. [Azure Portal](https://portal.azure.com)sol gezinti panelinde **Azure Active Directory**' i seçin.
 
@@ -112,7 +112,7 @@ Azure AD 'de Elium için otomatik Kullanıcı sağlamayı yapılandırmak üzere
 
     ![Sağlama modu için otomatik ayar](common/provisioning-automatic.png)
 
-1. **Yönetici kimlik bilgileri** bölümünde, **kiracı URL 'si** alanına **\<tenanturl @ no__t-3/Scim/v2** yazın. ( **Tenanturl** , daha önce elium Yönetici konsolundan alınan değerdir.) Ayrıca **gizli belirteç** alanına Elium **gizli belirteç** değerini yazın. Son olarak, Azure AD 'nin Elium 'a bağlanabildiğini doğrulamak için **Bağlantıyı Sına** ' yı seçin. Bağlantı başarısız olursa, Elium hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+1. **Yönetici kimlik bilgileri** bölümünde **kiracı URL 'Si** alanına **\<tenanturl\>/Scim/v2** yazın. ( **Tenanturl** , daha önce elium Yönetici konsolundan alınan değerdir.) Ayrıca **gizli belirteç** alanına Elium **gizli belirteç** değerini yazın. Son olarak, Azure AD 'nin Elium 'a bağlanabildiğini doğrulamak için **Bağlantıyı Sına** ' yı seçin. Bağlantı başarısız olursa, Elium hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
     ![Yönetici kimlik bilgilerinde kiracı URL 'SI ve gizli belirteç alanları](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -120,7 +120,7 @@ Azure AD 'de Elium için otomatik Kullanıcı sağlamayı yapılandırmak üzere
 
     ![Bildirim e-postası](common/provisioning-notification-email.png)
 
-1. **Kaydet**'e tıklayın.
+1. **Kaydet**’e tıklayın.
 
 1. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları uyumum olarak eşitler**' ı seçin.
 
@@ -151,7 +151,7 @@ Bu işlem, **Ayarlar** bölümünde **kapsamda** tanımlanan tüm Kullanıcı ve
 ## <a name="additional-resources"></a>Ek kaynaklar
 
 * [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../manage-apps/configure-automatic-user-provisioning-portal.md).
-* [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

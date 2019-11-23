@@ -26,9 +26,9 @@ ms.locfileid: "72299997"
 ## <a name="overview"></a>Genel Bakış
 Bu makalede, Visual Studio **bağlı hizmetler Ekle** iletişim kutusunu kullanarak bir bulut hizmetleri projesinde Azure depolama hesabı oluşturduktan veya başvurduktan sonra Visual Studio 'da Azure Table Storage 'ı kullanmaya nasıl başlacağınız açıklanır. **Bağlı hizmetler ekleme** işlemi, projenizdeki Azure depolama 'ya erişmek Için uygun NuGet paketlerini yükleyerek depolama hesabı için bağlantı dizesini proje yapılandırma dosyalarınıza ekler.
 
-Azure Tablo depolama hizmeti, büyük miktarlarda yapılandırılmış verileri depolamanıza olanak sağlar. Hizmet, Azure bulutu içinden ve dışından kimliği doğrulanmış çağrıları kabul eden bir NoSQL veri deposu olur. Azure tabloları, yapılandırılmış ve ilişkisel olmayan verilerin depolanması için idealdir.
+Azure Tablo depolama hizmeti, büyük miktarlarda yapılandırılmış verileri depolamanıza olanak sağlar. Kimliği doğrulanmış çağrılarından içindeki ve Azure Bulutu dışındaki kabul eden bir NoSQL veri deposu hizmetidir. Azure tabloları, yapılandırılmış ve ilişkisel olmayan verilerin depolanması için idealdir.
 
-Başlamak için önce depolama hesabınızda bir tablo oluşturmanız gerekir. Kodda bir Azure tablosu oluşturmayı ve ayrıca tablo varlıklarını ekleme, değiştirme, okuma ve okuma gibi temel tablo ve varlık işlemlerini gerçekleştirmeyi göstereceğiz. Örnekler C @ no__t-0 kodunda yazılır ve [.NET için Microsoft Azure depolama istemci kitaplığı](https://msdn.microsoft.com/library/azure/dn261237.aspx)' nı kullanır.
+Başlamak için önce depolama hesabınızda bir tablo oluşturmanız gerekir. Kodda bir Azure tablosu oluşturmayı ve ayrıca tablo varlıklarını ekleme, değiştirme, okuma ve okuma gibi temel tablo ve varlık işlemlerini gerçekleştirmeyi göstereceğiz. Örnekler, C\# koduna yazılır ve [.NET için Microsoft Azure depolama istemci kitaplığını](https://msdn.microsoft.com/library/azure/dn261237.aspx)kullanır.
 
 **Note:** Azure depolama 'ya çağrı gerçekleştiren bazı API 'Ler zaman uyumsuzdur. Daha fazla bilgi için bkz. [Async ve await Ile zaman uyumsuz programlama](https://msdn.microsoft.com/library/hh191443.aspx) . Aşağıdaki kod zaman uyumsuz programlama yöntemlerinin kullanıldığını varsayar.
 

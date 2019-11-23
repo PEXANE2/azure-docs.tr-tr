@@ -29,7 +29,7 @@ Bu makalede, Pdee ve Azure AD 'de Azure Active Directory (Azure AD) ' nin nasıl
 > [!NOTE]
 > Makalesinde, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine kurulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını ve nasıl çalıştığını öğrenmek ve sık sorulan sorulara yanıt almak için, bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../manage-apps/user-provisioning.md).
 >
-> Bu bağlayıcı Şu anda önizleme aşamasındadır. Önizleme özellikleri için Azure kullanım koşulları özelliği hakkında daha fazla bilgi için, [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)' na gidin.
+> Bu bağlayıcı, şu anda Önizleme aşamasındadır. Önizleme özellikleri için Azure kullanım koşulları özelliği hakkında daha fazla bilgi için, [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)' na gidin.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -79,13 +79,13 @@ Azure AD uygulama galerisinden Pdee eklemek için aşağıdakileri yapın:
 
     ![Azure Active Directory komutu](common/select-azuread.png)
 
-1. **Tüm uygulamalar**@no__t **Kurumsal uygulamalar**' ı seçin.
+1. **Tüm uygulamalar** > **Kurumsal uygulamalar** ' ı seçin.
 
     ![Kurumsal uygulamalar bölmesi](common/enterprise-applications.png)
 
 1. Yeni bir uygulama eklemek için bölmenin üst kısmındaki **Yeni uygulama** ' yı seçin.
 
-    ![Yeni uygulama düğmesi](common/add-new-app.png)
+    ![Yeni Uygulama düğmesi](common/add-new-app.png)
 
 1. Arama kutusuna **pdee**yazın, sonuçlar bölmesinde **pdee** ' yi seçin ve ardından uygulamayı eklemek için **Ekle** ' yi seçin.
 
@@ -100,7 +100,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı veya grup 
 
 Aşağıdaki işlemleri gerçekleştirerek Azure AD 'de Pdee için otomatik Kullanıcı sağlamayı yapılandırın:
 
-1. [Azure Portal](https://portal.azure.com) **Kurumsal uygulamalar** > **tüm uygulamalar**' ı seçin.
+1. [Azure Portal](https://portal.azure.com), **tüm uygulamalar** > **Kurumsal uygulamalar** ' ı seçin.
 
     ![Kurumsal uygulamalar bölmesi](common/enterprise-applications.png)
 
@@ -118,7 +118,7 @@ Aşağıdaki işlemleri gerçekleştirerek Azure AD 'de Pdee için otomatik Kull
 
 1. **Yönetici kimlik bilgileri**altında şunları yapın:
 
-   a. **Kiracı URL 'si** kutusuna daha önce aldığınız **https: \//concierge. gıda. ee/Scim/v2** değerini girin.
+   a. **Kiracı URL 'si** kutusuna, daha önce aldığınız **https:\//concierge.Food.ee/Scim/v2** değerini girin.
 
    b. **Gizli belirteç** kutusunda, daha önce aldığınız **API belirteç** değerini girin.
    

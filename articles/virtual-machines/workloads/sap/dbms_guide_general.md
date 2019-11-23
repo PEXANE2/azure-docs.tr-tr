@@ -57,14 +57,14 @@ Bu belgede, SAP ile ilgili DBMS sistemlerini Azure VM 'lerinde çalıştırmanı
 ## <a name="definitions"></a>Tanımlar
 Belge boyunca, bu terimler kullanılır:
 
-* **IaaS**: Hizmet olarak altyapı.
-* **PaaS**: Hizmet olarak platform.
-* **SaaS**: Hizmet olarak yazılım.
-* **Sap bileşeni**: ERP merkezi bileşeni (ECC), Iş ambarı (beyaz), çözüm Yöneticisi veya Enterprise Portal (EP) gibi bireysel bir SAP uygulaması. SAP bileşenleri geleneksel ABAP veya Java teknolojilerine veya Iş nesneleri gibi NetWeaver tabanlı olmayan bir uygulamaya dayalı olabilir.
-* **SAP ortamı**: Geliştirme, kalite güvencesi, eğitim, olağanüstü durum kurtarma veya üretim gibi bir iş işlevi gerçekleştirmek için mantıksal olarak gruplanmış bir veya daha fazla SAP bileşeni.
-* **SAP yatay**: Bu terim, bir müşterinin BT yatay içindeki tüm SAP varlıklarını ifade eder. SAP yatay, tüm üretim ve üretim dışı ortamları içerir.
-* **SAP sistemi**: Bir DBMS katmanının ve uygulama katmanının birleşimi; Örneğin, SAP ERP geliştirme sistemi, SAP Business Warehouse test sistemi veya SAP CRM üretim sistemi. Azure dağıtımlarında, bu iki katmanı şirket içi ve Azure arasında bölmek desteklenmez. Sonuç olarak, bir SAP sistemi şirket içinde dağıtılır ya da Azure 'da dağıtılır. SAP 'nin farklı sistemlerini Azure 'da veya şirket içinde dağıtabilirsiniz. Örneğin, Azure 'da SAP CRM geliştirme ve test sistemlerini dağıtabilir, ancak şirket içi SAP CRM üretim sistemini dağıtabilirsiniz.
-* **Şirketler arası**: VM 'Lerin şirket içi veri merkezleri ile Azure arasında siteden siteye, çok siteli veya Azure ExpressRoute bağlantısı olan bir Azure aboneliğine dağıtıldığı bir senaryoyu açıklar. Yaygın Azure belgelerinde, bu tür dağıtımlar şirketler arası senaryolar olarak da açıklanmaktadır. 
+* **IaaS**: hizmet olarak altyapı.
+* **PaaS**: hizmet olarak platform.
+* **SaaS**: hizmet olarak yazılım.
+* **Sap bileşeni**: ERP merkezi BILEŞENI (ECC), iş AMBARı (beyaz), çözüm yöneticisi veya ENTERPRISE Portal (EP) gibi tek bir SAP uygulaması. SAP bileşenleri geleneksel ABAP veya Java teknolojilerine veya Iş nesneleri gibi NetWeaver tabanlı olmayan bir uygulamaya dayalı olabilir.
+* **SAP ortamı**: geliştirme, kalite güvencesi, eğitim, olağanüstü durum kurtarma veya üretim gibi bir iş işlevi gerçekleştirmek için mantıksal olarak gruplanmış bir veya daha fazla sap bileşeni.
+* **SAP yatay**: Bu terim, BIR müşterinin BT yatay IÇINDEKI tüm sap varlıklarını ifade eder. SAP yatay, tüm üretim ve üretim dışı ortamları içerir.
+* **SAP System**: bir DBMS katmanının ve uygulama katmanının birleşimi; ÖRNEĞIN, SAP ERP geliştirme SISTEMI, SAP Business Warehouse test SISTEMI veya SAP CRM üretim sistemi. Azure dağıtımlarında, bu iki katmanı şirket içi ve Azure arasında bölmek desteklenmez. Sonuç olarak, bir SAP sistemi şirket içinde dağıtılır ya da Azure 'da dağıtılır. SAP 'nin farklı sistemlerini Azure 'da veya şirket içinde dağıtabilirsiniz. Örneğin, Azure 'da SAP CRM geliştirme ve test sistemlerini dağıtabilir, ancak şirket içi SAP CRM üretim sistemini dağıtabilirsiniz.
+* **Şirketler arası**: şirket içi veri merkezleri ile Azure arasında siteden siteye, çok siteli veya Azure ExpressRoute bağlantısı olan bir Azure aboneliğine sanal makinelerin dağıtıldığı bir senaryoyu açıklar. Yaygın Azure belgelerinde, bu tür dağıtımlar şirketler arası senaryolar olarak da açıklanmaktadır. 
 
     Bağlantının nedeni şirket içi etki alanlarını, şirket içi Active Directory ve şirket içi DNS 'yi Azure 'a genişletmenin nedenidir. Şirket içi yatay, aboneliğin Azure varlıklarına genişletilir. Bu uzantıyla birlikte VM 'Ler, şirket içi etki alanının bir parçası olabilir. Şirket içi etki alanının etki alanı kullanıcıları sunuculara erişebilir ve bu VM 'lerde DBMS hizmetleri gibi hizmetleri çalıştırabilir. Şirket içinde dağıtılan VM 'Ler ve Azure 'da dağıtılan VM 'ler arasındaki iletişim ve ad çözümlemesi mümkündür. Bu senaryo, Azure 'da SAP varlıklarını dağıtmak için kullanılan en yaygın senaryodur. Daha fazla bilgi için bkz. [VPN Gateway Için planlama ve tasarım](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-plan-design).
 
@@ -78,23 +78,23 @@ Belge boyunca, bu terimler kullanılır:
 Bazı Microsoft belgelerinde, özellikle de DBMS yüksek kullanılabilirlik yapılandırmalarında, şirket içi senaryolar biraz farklı şekilde açıklanmıştır. SAP ile ilgili belgeler söz konusu olduğunda, şirketler arası senaryo siteden siteye veya özel [ExpressRoute](https://azure.microsoft.com/services/expressroute/) bağlantısına ve şirket Içi ile Azure arasında DAĞıTıLAN bir SAP yataya kadar
 
 ## <a name="resources"></a>Kaynaklar
-Azure 'da SAP iş yükünde başka makaleler de mevcuttur. Azure 'da [SAP iş yüküne başlayın: Kullanmaya](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started) başlayın ve ardından ilgilendiğiniz alanı seçin.
+Azure 'da SAP iş yükünde başka makaleler de mevcuttur. [Azure 'Da SAP iş yüküne başlayın: kullanmaya](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started) başlayın ve ardından ilgilendiğiniz alanı seçin.
 
 Aşağıdaki SAP notları, bu belgede ele alınan alanla ilgili olarak Azure 'daki SAP ile ilgilidir.
 
 | Dekont numarası | Başlık |
 | --- | --- |
 | [1928533] |Azure 'da SAP uygulamaları: Desteklenen Ürünler ve Azure VM türleri |
-| [2015553] |Microsoft Azure SAP: Destek önkoşulları |
+| [2015553] |Microsoft Azure SAP: destek önkoşulları |
 | [1999351] |SAP için gelişmiş Azure izleme sorunlarını giderme |
 | [2178632] |Microsoft Azure üzerinde SAP için anahtar izleme ölçümleri |
 | [1409604] |Windows 'da sanallaştırma: Gelişmiş izleme |
 | [2191498] |Azure ile Linux üzerinde SAP: Gelişmiş izleme |
-| [2039619] |Oracle veritabanını kullanarak Microsoft Azure SAP uygulamaları: Desteklenen Ürünler ve sürümler |
-| [2233094] |DB6: Linux, UNIX ve Windows için IBM DB2 kullanarak Azure 'da SAP uygulamaları: Ek bilgiler |
-| [2243692] |Microsoft Azure Linux (IaaS) sanal makinesi: SAP lisans sorunları |
-| [1984787] |SUSE LINUX Enterprise Server 12: Yükleme notları |
-| [2002167] |Red Hat Enterprise Linux 7. x: Yükleme ve yükseltme |
+| [2039619] |Oracle veritabanı 'nı kullanarak Microsoft Azure SAP uygulamaları: Desteklenen Ürünler ve sürümler |
+| [2233094] |DB6: Linux, UNIX ve Windows için IBM DB2 kullanarak Azure 'da SAP uygulamaları: ek bilgiler |
+| [2243692] |Linux on Microsoft Azure (IaaS) VM: SAP lisans sorunları |
+| [1984787] |SUSE LINUX Enterprise Server 12: yükleme notları |
+| [2002167] |Red Hat Enterprise Linux 7. x: yükleme ve yükseltme |
 | [2069760] |Oracle Linux 7. x SAP yüklemesi ve yükseltmesi |
 | [1597355] |Linux için takas boşluğu önerisi |
 | [2171857] |Oracle Database 12c: Linux 'ta dosya sistemi desteği |
@@ -205,7 +205,7 @@ Aşağıdaki öneriler, bu g/ç özelliklerinin standart DBMS için olduğunu va
 
 Standart depolama için olası önbellek türleri şunlardır:
 
-* Yok.
+* None
 * Okuma
 * Okuma/Yazma
 
@@ -213,7 +213,7 @@ Tutarlı ve belirleyici performans sağlamak için, DBMS ile ilgili veri dosyala
 
 Premium Depolama için aşağıdaki önbelleğe alma seçenekleri mevcuttur:
 
-* Yok.
+* None
 * Okuma
 * Okuma/yazma
 * Hiçbiri + yalnızca Azure a serisi VM 'Ler için olan Yazma Hızlandırıcısı
@@ -281,7 +281,7 @@ Bu en iyi uygulamalar yüzlerce müşteri dağıtımı sonucudur:
 - SAP uygulamasının dağıtıldığı sanal ağlar internet erişimi yok.
 - Veritabanı VM 'Leri, uygulama katmanıyla aynı sanal ağda çalışır.
 - Sanal ağ içindeki VM 'Ler, özel IP adresinin statik bir ayırmasını vardır. Daha fazla bilgi için bkz. [Azure 'Da IP adresi türleri ve ayırma yöntemleri](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm).
-- DBMS VM 'lerine ve bu kaynaklardan yönlendirme kısıtlamaları, yerel DBMS sanal makinelerinde yüklü olan güvenlik duvarları ile birlikte ayarlanmamış. Bunun yerine, trafik yönlendirme [ağ güvenlik grupları (NSG 'ler)](https://docs.microsoft.com/azure/virtual-network/security-overview)ile tanımlanır.
+- DBMS VM 'lerine ve bu kaynaklardan yönlendirme kısıtlamaları, yerel DBMS sanal makinelerinde yüklü olan güvenlik duvarları ile *birlikte ayarlanmamış.* Bunun yerine, trafik yönlendirme [ağ güvenlik grupları (NSG 'ler)](https://docs.microsoft.com/azure/virtual-network/security-overview)ile tanımlanır.
 - Trafiği DBMS VM 'ye ayırmak ve yalıtmak için VM 'ye farklı NIC 'ler atayın. Her NIC farklı bir IP adresi alır ve her NIC farklı bir sanal ağ alt ağına atanır. Her alt ağın farklı NSG kuralları vardır. Ağ trafiğinin yalıtımı veya ayrımı, yönlendirme için bir ölçüdür. Ağ işleme kotalarını ayarlamak için kullanılmaz.
 
 > [!NOTE]
@@ -290,7 +290,7 @@ Bu en iyi uygulamalar yüzlerce müşteri dağıtımı sonucudur:
 
 
 > [!IMPORTANT]
-> SAP uygulaması ile SAP NetWeaver-, Hybru-veya S/4HANA tabanlı SAP sisteminin DBMS katmanı arasındaki iletişim yolundaki [ağ sanal](https://azure.microsoft.com/solutions/network-appliances/) gereçlerini yapılandırma desteklenmez. Bu kısıtlama, işlevsellik ve performans nedenleriyle yapılır. SAP uygulama katmanı ve DBMS katmanı arasındaki iletişim yolu doğrudan bir tane olmalıdır. Kısıtlama, bu ASG ve NSG kuralları doğrudan iletişim yoluna izin veriyorsa, [uygulama güvenlik grubu (ASG) ve NSG kurallarını](https://docs.microsoft.com/azure/virtual-network/security-overview) içermez. 
+> SAP uygulaması ile SAP NetWeaver-, Hybru-veya S/4HANA tabanlı SAP sisteminin DBMS katmanı arasındaki iletişim yolundaki [ağ sanal gereçlerini](https://azure.microsoft.com/solutions/network-appliances/) yapılandırma desteklenmez. Bu kısıtlama, işlevsellik ve performans nedenleriyle yapılır. SAP uygulama katmanı ve DBMS katmanı arasındaki iletişim yolu doğrudan bir tane olmalıdır. Kısıtlama, bu ASG ve NSG kuralları doğrudan iletişim yoluna izin veriyorsa, [uygulama güvenlik grubu (ASG) ve NSG kurallarını](https://docs.microsoft.com/azure/virtual-network/security-overview) içermez. 
 >
 > Ağ sanal gereçlerinin desteklenmeyen diğer senaryolar şunlardır:
 >
@@ -301,11 +301,11 @@ Bu en iyi uygulamalar yüzlerce müşteri dağıtımı sonucudur:
 >
 
 > [!IMPORTANT]
-> Desteklenmeyen başka bir tasarım , SAP uygulama KATMANıNıN ve DBMS katmanının birbirleriyle eşlenmeyen farklı Azure sanal ağlarına yayılmasıdır. [](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) Farklı Azure sanal ağları kullanmak yerine bir Azure sanal ağı içindeki alt ağları kullanarak SAP uygulama katmanını ve DBMS katmanını ayırt etmenizi öneririz. 
+> Desteklenmeyen başka bir tasarım, SAP uygulama katmanının ve DBMS katmanının birbirleriyle *eşlenmeyen farklı* Azure sanal [ağlarına yayılmasıdır](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) . Farklı Azure sanal ağları kullanmak yerine bir Azure sanal ağı içindeki alt ağları kullanarak SAP uygulama katmanını ve DBMS katmanını ayırt etmenizi öneririz. 
 >
-> Öneriyi izlemeden ve bunun yerine iki katmanı farklı sanal ağlara katmamaya karar verirseniz, iki sanal ağ eşlenmiş olmalıdır. [](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) 
+> Öneriyi izlemeden ve bunun yerine iki katmanı farklı sanal ağlara katmamaya karar verirseniz, iki sanal ağ eşlenmiş [olmalıdır.](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) 
 >
-> İki Azure sanal ağı arasındaki ağ trafiğinin [](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) aktarma maliyetlerine tabi olduğunu unutmayın. SAP uygulama katmanı ve DBMS katmanı arasında birçok terabayttan oluşan çok büyük veri hacmi alışverişi yapılır. SAP uygulama katmanının ve DBMS katmanının iki eşlenmiş Azure sanal ağı arasında ayrımı varsa, önemli maliyetler birikmesini sağlayabilirsiniz.
+> [İki Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) sanal ağı arasındaki ağ trafiğinin aktarma maliyetlerine tabi olduğunu unutmayın. SAP uygulama katmanı ve DBMS katmanı arasında birçok terabayttan oluşan çok büyük veri hacmi alışverişi yapılır. SAP uygulama katmanının ve DBMS katmanının iki eşlenmiş Azure sanal ağı arasında ayrımı varsa, önemli maliyetler birikmesini sağlayabilirsiniz.
 
 Azure kullanılabilirlik kümesi içindeki üretim DBMS dağıtımınız için iki VM kullanın. Ayrıca, SAP uygulama katmanı için ayrı yönlendirme ve iki DBMS sanal makinesi için yönetim ve işlemler trafiği kullanın. Aşağıdaki resme bakın:
 

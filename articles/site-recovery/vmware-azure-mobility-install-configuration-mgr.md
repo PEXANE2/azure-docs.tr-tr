@@ -26,7 +26,7 @@ Bu makalede dağıtım etkinliğini göstermek için System Center Configuration
 
 Alternatif olarak, [Azure Automation DSC](vmware-azure-mobility-deploy-automation-dsc.md)Ile Mobility hizmeti yüklemesini otomatik hale getirebilirsiniz.
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 1. Ortamınızda zaten dağıtılan Configuration Manager gibi bir yazılım dağıtım aracı.
 2. Site Recovery kullanarak korumak istediğiniz tüm **Windows Server**ve diğer **Linux sunucuları**için bir tane olmak üzere iki [cihaz koleksiyonu](https://technet.microsoft.com/library/gg682169.aspx)oluşturmanız gerekir.
@@ -35,7 +35,7 @@ Alternatif olarak, [Azure Automation DSC](vmware-azure-mobility-deploy-automatio
 
 ## <a name="deploy-on-windows-machines"></a>Windows makinelerde dağıtma
 > [!NOTE]
-> Bu makalede yapılandırma sunucusunun IP adresinin 192.168.3.121 olduğu ve güvenli ağ dosya paylaşımının \\ \ Contososecurefs\\system ityserviceınstallerolduğu varsayılır.
+> Bu makalede yapılandırma sunucusunun IP adresinin 192.168.3.121 olduğu ve güvenli ağ dosya paylaşımının \\\Contososecurefs\bir ityserviceınstallerolduğu varsayılır.
 
 ### <a name="prepare-for-deployment"></a>Dağıtıma hazırlanma
 1. Ağ paylaşımında bir klasör oluşturun ve **Mobsvcwindows**olarak adlandırın.
@@ -50,7 +50,7 @@ Alternatif olarak, [Azure Automation DSC](vmware-azure-mobility-deploy-automatio
 
    `cd %ProgramData%\ASR\home\svsystems\pushinstallsvc\repository`
 
-6. **Microsoft-ASR @ no__t-1UA @ no__t-2*Sürüm*\_Windows @ NO__T-5ga @ no__t-6*Tarih*@no__t -8release. exe** ' yi ağ paylaşımınızda **mobsvcwindows** klasörüne kopyalayın.
+6. **Microsoft-ASR\_UA\_*sürümü*\_Windows\_GA\_*date*\_Release. exe** ' yi ağ paylaşımınızda **mobsvcwindows** klasörüne kopyalayın.
 7. Aşağıdaki kodu kopyalayın ve bu dosyayı **Mobsvcwindows** klasörüne **Install. bat** olarak kaydedin.
 
    > [!NOTE]
@@ -156,11 +156,11 @@ IF NOT %ERRORLEVEL% EQU 0 (
 ### <a name="create-a-package"></a>Paket oluşturma
 
 1. Configuration Manager konsolunda oturum açın.
-2. @No__t-1**uygulama yönetimi** > **paketlerine** **yazılım kitaplığı**'na gidin.
+2. **Uygulama yönetimi** > **paketlerine** > **yazılım kitaplığı** ' na gidin.
 3. **Paketler**' e sağ tıklayın ve **paket oluştur**' u seçin.
 4. Ad, açıklama, üretici, dil ve sürüm için değerler sağlayın.
 5. **Bu paket kaynak dosyaları içerir** onay kutusunu seçin.
-6. **Göz at**' a tıklayın ve yükleyicinin depolandığı ağ payını seçin (\\ \ Contososecurefs\\system Ityserviceınstaller\mobsvcwindows).
+6. **Göz at**' a tıklayın ve yükleyicinin depolandığı ağ payını seçin (\\\Contososecurefs\harekete Maserviceınstaller\mobsvcwindows).
 
    ![Paket ve program oluşturma Sihirbazı ekran görüntüsü](./media/vmware-azure-mobility-install-configuration-mgr/create_sccm_package.png)
 
@@ -172,7 +172,7 @@ IF NOT %ERRORLEVEL% EQU 0 (
 
    | **Parametre adı** | **Değer** |
    |--|--|
-   | Name | Microsoft Azure Mobility hizmetini (Windows) yükler |
+   | Ad | Microsoft Azure Mobility hizmetini (Windows) yükler |
    | Komut satırı | . bat dosyasını install |
    | Program çalışabilir | Kullanıcının oturum açmış olup olmadığı |
 
@@ -187,11 +187,11 @@ IF NOT %ERRORLEVEL% EQU 0 (
 
 ### <a name="deploy-the-package"></a>Paketi dağıtma
 1. Configuration Manager konsolunda paketinize sağ tıklayın ve **Içeriği dağıt**' ı seçin.
-   ![Configuration Manager konsolunun @ ekran görüntüsü @ no__t-1
+   Configuration Manager konsolunun ekran görüntüsünü ![](./media/vmware-azure-mobility-install-configuration-mgr/sccm_distribute.png)
 2. Paketlerin kopyalanacağı **[dağıtım noktalarını](https://technet.microsoft.com/library/gg712321.aspx#BKMK_PlanForDistributionPoints)** seçin.
 3. Sihirbazı tamamlayın. Paket daha sonra belirtilen dağıtım noktalarına çoğaltmaya başlar.
 4. Paket dağıtımı yapıldıktan sonra, pakete sağ tıklayın ve **Dağıt**' ı seçin.
-   ![Configuration Manager konsolunun @ ekran görüntüsü @ no__t-1
+   Configuration Manager konsolunun ekran görüntüsünü ![](./media/vmware-azure-mobility-install-configuration-mgr/sccm_deploy.png)
 5. Dağıtım için hedef koleksiyon olarak Önkoşullar bölümünde oluşturduğunuz Windows Server cihaz koleksiyonunu seçin.
 
    ![Yazılım Dağıtma Sihirbazı ekran görüntüsü](./media/vmware-azure-mobility-install-configuration-mgr/sccm-select-target-collection.png)
@@ -207,13 +207,13 @@ IF NOT %ERRORLEVEL% EQU 0 (
 > [!TIP]
 > Gereksiz yeniden başlatmaların olmaması için, aylık bakım pencerenizde veya yazılım güncelleştirmeleri penceresinde paket yüklemesini zamanlayın.
 
-Configuration Manager konsolunu kullanarak dağıtım ilerlemesini izleyebilirsiniz. @No__t-1**dağıtımlarını** **izleme** >  *[paketinizin adı]* sayfasına gidin.
+Configuration Manager konsolunu kullanarak dağıtım ilerlemesini izleyebilirsiniz. **İzleme** > **dağıtımlar** >  *[paketinizin adı]* bölümüne gidin.
 
   ![Dağıtımları izlemek için Configuration Manager seçeneğinin ekran görüntüsü](./media/vmware-azure-mobility-install-configuration-mgr/report.PNG)
 
 ## <a name="deploy-on-linux-machines"></a>Linux makinelerinde dağıtma
 > [!NOTE]
-> Bu makalede yapılandırma sunucusunun IP adresinin 192.168.3.121 olduğu ve güvenli ağ dosya paylaşımının \\ \ Contososecurefs\\system ityserviceınstallerolduğu varsayılır.
+> Bu makalede yapılandırma sunucusunun IP adresinin 192.168.3.121 olduğu ve güvenli ağ dosya paylaşımının \\\Contososecurefs\bir ityserviceınstallerolduğu varsayılır.
 
 ### <a name="prepare-for-deployment"></a>Dağıtıma hazırlanma
 1. Ağ paylaşımında bir klasör oluşturun ve **Mobsvclinux**olarak adlandırın.
@@ -229,15 +229,15 @@ Configuration Manager konsolunu kullanarak dağıtım ilerlemesini izleyebilirsi
    `cd %ProgramData%\ASR\home\svsystems\pushinstallsvc\repository`
 
 6. Aşağıdaki dosyaları ağ paylaşımınızda **Mobsvclinux** klasörüne kopyalayın:
-   * Microsoft-ASR @ no__t-0UA @ no__t-1RHEL6-64 * Release. tar. gz
-   * Microsoft-ASR @ no__t-0UA @ no__t-1RHEL7-64\*release.tar.gz
-   * Microsoft-ASR @ no__t-0UA @ no__t-1SLES11-SP3-64\*release.tar.gz
-   * Microsoft-ASR @ no__t-0UA @ no__t-1SLES11-SP4-64\*release.tar.gz
-   * Microsoft-ASR @ no__t-0UA @ no__t-1OL6-64\*release.tar.gz
-   * Microsoft-ASR @ no__t-0UA @ no__t-1UBUNTU-14.04-64\*release.tar.gz
+   * Microsoft ASR\_UA\*RHEL6-64*release.tar.gz
+   * Microsoft-ASR\_UA\*RHEL7-64\*Release. tar. gz
+   * Microsoft-ASR\_UA\*SLES11-SP3-64\*Release. tar. gz
+   * Microsoft-ASR\_UA\*SLES11-SP4-64\*Release. tar. gz
+   * Microsoft-ASR\_UA\*OL6-64\*Release. tar. gz
+   * Microsoft-ASR\_UA\*UBUNTU-14.04-64\*Release. tar. gz
 
 
-7. Aşağıdaki kodu kopyalayın ve **install_linux. sh** olarak dosyayı **Mobsvclinux** klasörüne kaydedin.
+7. Aşağıdaki kodu kopyalayın ve **install_linux. sh** olarak, **Mobsvclinux** klasörüne kaydedin.
    > [!NOTE]
    > Bu betikteki [CSıP] yer tutucuları yapılandırma sunucunuzun IP adresinin gerçek değerleriyle değiştirin.
 
@@ -378,11 +378,11 @@ cd /tmp
 ### <a name="create-a-package"></a>Paket oluşturma
 
 1. Configuration Manager konsolunda oturum açın.
-2. @No__t-1**uygulama yönetimi** > **paketlerine** **yazılım kitaplığı**'na gidin.
+2. **Uygulama yönetimi** > **paketlerine** > **yazılım kitaplığı** ' na gidin.
 3. **Paketler**' e sağ tıklayın ve **paket oluştur**' u seçin.
 4. Ad, açıklama, üretici, dil ve sürüm için değerler sağlayın.
 5. **Bu paket kaynak dosyaları içerir** onay kutusunu seçin.
-6. **Göz at**' a tıklayın ve yükleyicinin depolandığı ağ payını seçin (\\ \ Contososecurefs\\system Ityserviceınstaller\mobsvclinux).
+6. **Göz at**' a tıklayın ve yükleyicinin depolandığı ağ payını seçin (\\\Contososecurefs\harekete Maserviceınstaller\mobsvclinux).
 
    ![Paket ve program oluşturma Sihirbazı ekran görüntüsü](./media/vmware-azure-mobility-install-configuration-mgr/create_sccm_package-linux.png)
 
@@ -394,14 +394,14 @@ cd /tmp
 
     | **Parametre adı** | **Değer** |
    |--|--|
-   | Name | Microsoft Azure Mobility hizmeti 'ni (Linux) yükler |
-   | Komut satırı | ./ınstall_linux.exe |
+   | Ad | Microsoft Azure Mobility hizmeti 'ni (Linux) yükler |
+   | Komut satırı | ./install_linux. sh |
    | Program çalışabilir | Kullanıcının oturum açmış olup olmadığı |
 
    ![Paket ve program oluşturma Sihirbazı ekran görüntüsü](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties-linux.png)
 
 9. Sonraki sayfada, **Bu program herhangi bir platformda çalışabilir**' i seçin.
-   @no__t--paket ve program oluşturma Sihirbazı 'nın 0 ekran görüntüsü @ no__t-1
+   Paket ve program oluşturma Sihirbazı 'nın ![ekran görüntüsü](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties-page2-linux.png)
 
 10. Sihirbazı tamamladığınızda, **İleri** ' ye iki kez tıklayın.
 
@@ -410,11 +410,11 @@ cd /tmp
 
 ### <a name="deploy-the-package"></a>Paketi dağıtma
 1. Configuration Manager konsolunda paketinize sağ tıklayın ve **Içeriği dağıt**' ı seçin.
-   ![Configuration Manager konsolunun @ ekran görüntüsü @ no__t-1
+   Configuration Manager konsolunun ekran görüntüsünü ![](./media/vmware-azure-mobility-install-configuration-mgr/sccm_distribute.png)
 2. Paketlerin kopyalanacağı **[dağıtım noktalarını](https://technet.microsoft.com/library/gg712321.aspx#BKMK_PlanForDistributionPoints)** seçin.
 3. Sihirbazı tamamlayın. Paket daha sonra belirtilen dağıtım noktalarına çoğaltmaya başlar.
 4. Paket dağıtımı yapıldıktan sonra, pakete sağ tıklayın ve **Dağıt**' ı seçin.
-   ![Configuration Manager konsolunun @ ekran görüntüsü @ no__t-1
+   Configuration Manager konsolunun ekran görüntüsünü ![](./media/vmware-azure-mobility-install-configuration-mgr/sccm_deploy.png)
 5. Dağıtım için hedef koleksiyon olarak Önkoşullar bölümünde oluşturduğunuz Linux sunucu cihaz koleksiyonunu seçin.
 
    ![Yazılım Dağıtma Sihirbazı ekran görüntüsü](./media/vmware-azure-mobility-install-configuration-mgr/sccm-select-target-collection-linux.png)

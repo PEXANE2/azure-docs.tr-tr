@@ -31,7 +31,7 @@ Bu hızlı başlangıç için kaynak kodu [GitHub](https://go.microsoft.com/fwli
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- [Java @ no__t-1 geliştirme seti (JDK) 7](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) veya üzeri.
+- [Java&trade; geliştirme seti (JDK) 7](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) veya üzeri.
 
 - Bu kitaplıkları Maven deposundan içeri aktar
     - [Java paketindeki JSON](https://mvnrepository.com/artifact/org.json/json)
@@ -57,21 +57,21 @@ Bu hızlı başlangıç için kaynak kodu [GitHub](https://go.microsoft.com/fwli
 
 1. Yukarıda oluşturulan değişkenleri alan `sendRequest()` adlı yeni bir işlev oluşturun. Ardından aşağıdaki adımları gerçekleştirin.
 
-2. API 'ye istek gönderebilen `CloseableHttpClient` nesnesi oluşturun. Uç noktanızı ve mürekkep tanıyıcı URL 'sini birleştirerek isteği bir `HttpPut` istek nesnesine gönderin.
+2. API 'ye istek gönderebilen bir `CloseableHttpClient` nesnesi oluşturun. Uç noktanızı ve mürekkep tanıyıcı URL 'sini birleştirerek isteği bir `HttpPut` istek nesnesine gönderin.
 
-3. @No__t-1 üstbilgisini `application/json` ' e ayarlamak için isteğin `setHeader()` işlevini kullanın ve abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgisine ekleyin.
+3. `Content-Type` üst bilgisini `application/json`olarak ayarlamak için isteğin `setHeader()` işlevini kullanın ve `Ocp-Apim-Subscription-Key` üstbilgisine abonelik anahtarınızı ekleyin.
 
-4. Gönderilecek verilere isteğin `setEntity()` işlevini kullanın.   
+4. Gönderilecek veriler için isteğin `setEntity()` işlevini kullanın.   
 
 5. İsteği göndermek ve bir `CloseableHttpResponse` nesnesine kaydetmek için istemcinin `execute()` işlevini kullanın. 
 
-6. Yanıt içeriğini depolamak için `HttpEntity` nesnesi oluşturun. @No__t-0 ile içerik alın. Yanıt boş değilse, döndürün.
+6. Yanıt içeriğini depolamak için bir `HttpEntity` nesnesi oluşturun. `getEntity()`içeriği alın. Yanıt boş değilse, döndürün.
     
     [!code-java[send a request](~/cognitive-services-rest-samples/java/InkRecognition/quickstart/RecognizeInk.java?name=sendRequest)]
 
 ## <a name="send-an-ink-recognition-request"></a>Mürekkep tanıma isteği gönder
 
-Mürekkep vuruşu verilerinizi tanımak için `recognizeInk()` adlı bir yöntem oluşturun. Uç nokta, URL, abonelik anahtarı ve JSON verileriniz ile yukarıda oluşturulan `sendRequest()` yöntemini çağırın. Sonucu alın ve konsola yazdırın.
+Mürekkep vuruşu verilerinizi tanımak için `recognizeInk()` adlı bir yöntem oluşturun. Uç nokta, URL, abonelik anahtarı ve JSON verileriniz ile yukarıda oluşturulan `sendRequest()` yöntemi çağırın. Sonucu alın ve konsola yazdırın.
 
 [!code-java[recognizeInk](~/cognitive-services-rest-samples/java/InkRecognition/quickstart/RecognizeInk.java?name=recognizeInk)]
 

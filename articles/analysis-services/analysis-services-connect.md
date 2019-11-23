@@ -76,7 +76,7 @@ Excel 'in daha eski sürümleriyle, kullanıcılar bir Office veri bağlantısı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Excel    bağlanma](analysis-services-connect-excel.md)  
+[Excel   bağlanma](analysis-services-connect-excel.md)  
 [Power BI  bağlama](analysis-services-connect-pbi.md)  
 [Sunucunuzu Yönetin](analysis-services-manage.md)   
 

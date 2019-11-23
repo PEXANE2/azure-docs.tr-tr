@@ -32,7 +32,7 @@ Daha az sıklıkta kullanılan bir dilde ifade ettiğiniz bir içeriğiniz varsa
 ## <a name="sentiment-analysis-key-phrase-extraction-and-named-entity-recognition"></a>Yaklaşım Analizi, Anahtar İfade Ayıklama ve adlandırılmış varlık tanıma
 
 Yaklaşım analizi, anahtar ifade ayıklama ve varlık tanıma için, desteklenen dillerin listesi, çözümleyiciler ek dillerin dil kurallarına uyum sağlayacak şekilde iyileştirilmişse daha seçmeli olur. Adlandırılmış varlık tanıma v2 'de, [varlık türlerinin](how-tos/text-analytics-how-to-entity-linking.md#supported-types-for-named-entity-recognition-v2) tam kümesi için destek şu anda aşağıdaki dillerle sınırlıdır: 
-* Türkçe
+* İngilizce
 * Çince-Basitleştirilmiş
 * Fransızca
 * Almanca
@@ -54,8 +54,8 @@ Dil desteği başlangıçta, genel kullanıma açık (GA) duruma, her biri birbi
 | Çince-Basitleştirilmiş    |   `zh-hans`   |  ✔ \*\*   |             |            ✔             |                |                    |
 | Çince-Geleneksel   |   `zh-hant`   |  ✔ \*\*   |             |                          |                |                    |
 | Danca                |     `da`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
-| Hollanda dili                 |     `nl`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
-| Türkçe               |     `en`      |   ✔ \**   |      ✔      |          ✔ \*\*          |     ✔ \**      |                    |
+| Felemenkçe                 |     `nl`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
+| İngilizce               |     `en`      |   ✔ \**   |      ✔      |          ✔ \*\*          |     ✔ \**      |                    |
 | Fince               |     `fi`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
 | Fransızca                |     `fr`      |   ✔ \**   |      ✔      |            ✔             |                |                    |
 | Almanca                |     `de`      |   ✔ \**   |      ✔      |            ✔             |                |                    |

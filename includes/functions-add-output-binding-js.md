@@ -11,7 +11,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 10/03/2019
 ms.locfileid: "71838969"
 ---
-Bir kuyruk iletisi oluşturmak için `context.bindings` üzerinde `msg` çıkış bağlama nesnesini kullanan kodu ekleyin. Bu kodu @ no__t-0 ifadesinden önce ekleyin.
+Kuyruk iletisi oluşturmak için `context.bindings` `msg` çıktı bağlama nesnesini kullanan kodu ekleyin. Bu kodu `context.res` deyiminden önce ekleyin.
 
 ```javascript
 // Add a message to the Storage queue.
