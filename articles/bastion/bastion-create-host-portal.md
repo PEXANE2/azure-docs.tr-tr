@@ -1,83 +1,83 @@
 ---
-title: Azure savunma Konağı oluşturma | Microsoft Docs
-description: Bu makalede, Azure savunma Konağı oluşturmayı öğrenin
+title: Create an Azure Bastion host  | Microsoft Docs
+description: In this article, learn how to create an Azure Bastion host
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 356f8d17dd194c79915600f63683e124cc481b33
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7838e1930a8ccd190c95740a6a8e3dadc68149f0
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498363"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422123"
 ---
-# <a name="create-an-azure-bastion-host"></a>Azure savunma Konağı oluşturma
+# <a name="create-an-azure-bastion-host"></a>Create an Azure Bastion host
 
-Bu makalede bir Azure savunma ana bilgisayarı oluşturma işlemi gösterilmektedir. Sanal ağınızda Azure savunma hizmetini sağladığınızda, sorunsuz RDP/SSH deneyimi aynı sanal ağdaki tüm VM 'leriniz için kullanılabilir. Bu dağıtım, abonelik/hesap veya sanal makine değil sanal ağ başına yapılır.
+This article shows you how to create an Azure Bastion host. Once you provision the Azure Bastion service in your virtual network, the seamless RDP/SSH experience is available to all your VMs in the same virtual network. Bu dağıtım, abonelik/hesap veya sanal makine değil sanal ağ başına yapılır.
 
-Bir savunma ana bilgisayar kaynağı oluşturabileceğiniz iki yol vardır:
+There are two ways that you can create a Bastion host resource:
 
-* Azure portal kullanarak bir savunma kaynağı oluşturun.
-* Mevcut VM ayarlarını kullanarak Azure portal bir savunma kaynağı oluşturun.
+* Create a Bastion resource using the Azure portal.
+* Create a Bastion resource in the Azure portal by using existing VM settings.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Aşağıdaki Azure ortak bölgelerinde kullanıma sunulmuştur:
+Bastion is available in the following Azure public regions:
 
 [!INCLUDE [available regions](../../includes/bastion-regions-include.md)]
 
-## <a name="createhost"></a>Savunma Konağı oluşturma
+## <a name="createhost"></a>Create a bastion host
 
-Bu bölüm Azure portal yeni bir Azure savunma kaynağı oluşturmanıza yardımcı olur.
+This section helps you create a new Azure Bastion resource from the Azure portal.
 
-1. [Azure Portal](https://portal.azure.com)giriş sayfasından **+ kaynak oluştur ' a**tıklayın.
+1. On the [Azure portal](https://portal.azure.com) menu or from the **Home** page, select **Create a resource**.
 
-1. **Yeni** sayfada, *marketi ara* **alanında, giriş yazın ve**ardından arama sonuçlarına ulaşmak için **ENTER** ' a tıklayın.
+1. On the **New** page, in the *Search the Marketplace* field, type **Bastion**, then click **Enter** to get to the search results.
 
-1. Sonuçlardan, savunma ' ye **tıklayın.** Yayımcının *Microsoft* olduğundan ve kategorinin *ağ*olduğundan emin olun.
+1. From the results, click **Bastion**. Make sure the publisher is *Microsoft* and the category is *Networking*.
 
-1. Savunma sayfasında **Oluştur** ' **a tıklayarak bir savunma oluştur** sayfasını açın.
+1. On the **Bastion** page, click **Create** to open the **Create a bastion** page.
 
-1. Savunma **Oluştur** sayfasında, yeni bir savunma kaynağı yapılandırın. Savunma kaynağınız için yapılandırma ayarlarını belirtin.
+1. On the **Create a bastion** page, configure a new Bastion resource. Specify the configuration settings for your Bastion resource.
 
-    ![bir savunma oluşturun](./media/bastion-create-host-portal/settings.png)
+    ![create a bastion](./media/bastion-create-host-portal/settings.png)
 
-    * **Abonelik**: yeni bir savunma kaynağı oluşturmak için kullanmak istediğiniz Azure aboneliği.
-    * **Kaynak grubu**: yeni savunma kaynağının oluşturulacağı Azure Kaynak grubu. Mevcut bir kaynak grubunuz yoksa yeni bir tane oluşturabilirsiniz.
-    * **Ad**: yeni savunma kaynağının adı
-    * **Bölge**: kaynağın oluşturulacağı Azure ortak bölgesi.
-    * **Sanal ağ**: savunma kaynağının oluşturulacağı sanal ağ. Bu işlem sırasında portalda yeni bir sanal ağ oluşturabilirsiniz. Bu durumda, mevcut bir sanal ağı kullanmak zorunda kalmazsınız. Var olan bir sanal ağı kullanıyorsanız, var olan sanal ağın savunma alt ağ gereksinimlerine uyum sağlamak için yeterli boş adres alanı olduğundan emin olun.
-    * **Alt ağ**: sanal ağınızdaki yeni savunma ana bilgisayar kaynağının dağıtılacağı alt ağ. **AzureBastionSubnet**ad değerini kullanarak bir alt ağ oluşturmanız gerekir. Bu değer, Azure 'un savunma kaynaklarını hangi alt ağa dağıtacağınızı bilmesini sağlar. Bu, bir ağ geçidi alt ağından farklıdır. En az bir/27 veya daha büyük alt ağın (/27,/26, vb.) bir alt ağını kullanmanız gerekir. Rota tabloları veya temsilcileri olmadan **AzureBastionSubnet** oluşturun. **AzureBastionSubnet**üzerinde ağ güvenlik grupları kullandığınızda [NSG 'ler ile çalışma](bastion-nsg.md)bölümüne bakın.
-    * **Genel IP adresi**: RDP/SSH 'ye erişilecek savunma kaynağının genel IP 'si (443 numaralı bağlantı noktası üzerinden). Yeni bir genel IP oluşturun veya var olan bir IP 'yi kullanın. Genel IP adresi, oluşturmakta olduğunuz savunma kaynağıyla aynı bölgede olmalıdır.
-    * **Genel IP adresi adı**: genel IP adresi kaynağının adı.
-    * **Genel IP adresi SKU 'su**: varsayılan olarak **Standart**olarak doldurulur. Azure savunma yalnızca standart genel IP SKU 'sunu kullanır/destekler.
-    * **Atama**: varsayılan olarak **statik**' a önceden doldurulur.
+    * **Subscription**: The Azure subscription you want to use to create a new Bastion resource.
+    * **Resource Group**: The Azure resource group in which the new Bastion resource will be created in. If you don’t have an existing resource group, you can create a new one.
+    * **Name**: The name of the new Bastion resource
+    * **Region**: The Azure public region that the resource will be created in.
+    * **Virtual network**: The virtual network in which the Bastion resource will be created in. You can create a new virtual network in the portal during this process, in case you don’t have or don’t want to use an existing virtual network. If you are using an existing virtual network, make sure the existing virtual network has enough free address space to accommodate the Bastion subnet requirements.
+    * **Subnet**: The subnet in your virtual network to which the new Bastion host resource will be deployed. You must create a subnet using the name value **AzureBastionSubnet**. This value lets Azure know which subnet to deploy the Bastion resources to. This is different than a Gateway subnet.You must use a subnet of at least a /27 or larger subnet (/27, /26, and so on). Create the **AzureBastionSubnet** without any route tables or delegations. When you use Network Security Groups on the **AzureBastionSubnet**, refer to [Work with NSGs](bastion-nsg.md).
+    * **Public IP address**: The public IP of the Bastion resource on which RDP/SSH will be accessed (over port 443). Create a new public IP, or use an existing one. The public IP address must be in the same region as the Bastion resource you are creating.
+    * **Public IP address name**: The name of the public IP address resource.
+    * **Public IP address SKU**: Prepopulated by default to **Standard**. Azure Bastion uses/supports only the Standard Public IP SKU.
+    * **Assignment**: Prepopulated by default to **Static**.
 
-1. Ayarları belirtmeyi tamamladığınızda, **gözden geçir + oluştur**' a tıklayın. Bu, değerleri doğrular. Doğrulama başarılı olduktan sonra oluşturma işlemini başlatabilirsiniz.
-1. Savunma Oluştur sayfasında **Oluştur**' a tıklayın.
-1. Dağıtımınızın devam ettiğinden emin olarak bir ileti görürsünüz. Kaynaklar oluşturulduğundan bu sayfada durum görüntülenecektir. Savunma kaynağının oluşturulması ve dağıtılması yaklaşık 5 dakika sürer.
+1. When you have finished specifying the settings, click **Review + Create**. This validates the values. Once validation passes, you can begin the creation process.
+1. On the Create a bastion page, click **Create**.
+1. You will see a message letting you know that your deployment is underway. Status will display on this page as the resources are created. It takes about 5 mins for the Bastion resource to be created and deployed.
 
-## <a name="createvmset"></a>VM ayarlarını kullanarak bir savunma Konağı oluşturma
+## <a name="createvmset"></a>Create a bastion host using VM settings
 
-Portalda var olan bir VM 'yi kullanarak bir savunma Konağı oluşturursanız, sanal makinenize ve/veya sanal ağınıza otomatik olarak varsayılan ayarlar uygulanır.
+If you create a bastion host in the portal by using an existing VM, various settings will automatically default corresponding to your virtual machine and/or virtual network.
 
-1. [Azure portalı](https://portal.azure.com) açın. Sanal makinenize gidin ve **Bağlan**' a tıklayın.
+1. [Azure portalı](https://portal.azure.com) açın. Go to your virtual machine, then click **Connect**.
 
-   ![VM bağlantısı](./media/bastion-create-host-portal/vmsettings.png)
-1. Sağ kenar çubuğunda, savunma ' yı ve ardından **savunma ' yi** **kullanın**.
+   ![VM Connect](./media/bastion-create-host-portal/vmsettings.png)
+1. On the right sidebar, click **Bastion**, then **Use Bastion**.
 
    ![Bastion](./media/bastion-create-host-portal/vmbastion.png)
-1. Savunma sayfasında, aşağıdaki ayarlar alanlarını doldurun:
+1. On the Bastion page, fill out the following settings fields:
 
-   * **Ad**: oluşturmak istediğiniz savunma konağının adı.
-   * **Alt ağ**: sanal ağınızdaki, savunma kaynağına dağıtılacak alt ağ. Alt ağın **AzureBastionSubnet**adıyla oluşturulması gerekir. Bu, Azure 'un savunma kaynağını hangi alt ağa dağıtacağınızı bilmesini sağlar. Bu, bir ağ geçidi alt ağından farklıdır. Azure savunma alt ağını oluşturmak için **alt ağ yapılandırmasını Yönet** ' e tıklayın. En az bir/27 veya daha büyük alt ağ (/27,/26, vb.) kullanmanızı kesinlikle öneririz. Herhangi bir ağ güvenlik grubu, yol tablosu veya temsilci olmadan **AzureBastionSubnet** oluşturun. Alt ağı oluşturmak için **Oluştur** ' a tıklayın ve ardından sonraki ayarlarla devam edin.
-   * **Genel IP adresi**: RDP/SSH 'ye erişilecek savunma kaynağının genel IP 'si (443 numaralı bağlantı noktası üzerinden). Yeni bir genel IP oluşturun veya var olan bir IP 'yi kullanın. Genel IP adresi, oluşturmakta olduğunuz savunma kaynağıyla aynı bölgede olmalıdır.
-   * **Genel IP adresi adı**: genel IP adresi kaynağının adı.
-1. Doğrulama ekranında **Oluştur**' a tıklayın. Savunma kaynağının oluşturulması ve dağıtılması için yaklaşık 5 dakika bekleyin.
+   * **Name**: The name of the bastion host you want to create.
+   * **Subnet**: The subnet inside your virtual network to which Bastion resource will be deployed. The subnet must be created with the name **AzureBastionSubnet**. This lets Azure know which subnet to deploy the Bastion resource to. This is different than a Gateway subnet. Click **Manage subnet configuration** to create the Azure Bastion Subnet. We highly recommend that you use at least a /27 or larger subnet (/27, /26, etc.). Create the **AzureBastionSubnet** without any Network Security Groups, route tables, or delegations. Click **Create** to create the subnet, then proceed with the next settings.
+   * **Public IP address**: The public IP of the Bastion resource on which RDP/SSH will be accessed (over port 443). Create a new public IP, or use an existing one. The public IP address must be in the same region as the Bastion resource you are creating.
+   * **Public IP address name**: The name of the public IP address resource.
+1. On the validation screen, click **Create**. Wait for about 5 mins for the Bastion resource to be created and deployed.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Savunma [hakkında SSS](bastion-faq.md) makalesini okuyun
+Read the [Bastion FAQ](bastion-faq.md)

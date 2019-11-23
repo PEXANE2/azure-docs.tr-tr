@@ -1,6 +1,6 @@
 ---
-title: Ağ iletişimini izleme - öğretici - Azure portalı | Microsoft Docs
-description: Azure Ağ İzleyicisi’nin bağlantı izleme özelliği ile iki sanal makine arasındaki ağ iletişiminin nasıl izleneceğini öğrenin.
+title: Tutorial - Monitor network communication using the Azure portal
+description: In this tutorial, learn how to monitor network communication between two virtual machines with Azure Network Watcher's connection monitor capability.
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 5cac4a46fb35ef955903018028abbe7588c94dc7
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 9d01060a966d55d26d7fc308ee352fb79cc73363
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66233885"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74419703"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak iki sanal makine arasındaki ağ iletişimini izleme
 
@@ -35,9 +35,9 @@ Bir sanal makine (VM) ve başka bir sanal makine gibi bir uç nokta arasındaki 
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="sign-in-to-azure"></a>Oturum açın: Azure
+## <a name="sign-in-to-azure"></a>Azure'da oturum açın
 
-[Azure Portal](https://portal.azure.com) oturum açın.
+[Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 ## <a name="create-vms"></a>VM oluşturma
 
@@ -51,7 +51,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
     |Ayar|Değer|
     |---|---|
-    |Ad|myVm1|
+    |Adı|myVm1|
     |Kullanıcı adı| Seçtiğiniz bir kullanıcı adını girin.|
     |Parola| Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
     |Abonelik| Aboneliğinizi seçin.|
@@ -73,11 +73,11 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 |Adım|Ayar|Değer|
 |---|---|---|
-| 1 | Bir sürümü seçmeniz **Ubuntu Server** |                                                                         |
-| 3 | Ad                                  | myVm2                                                                   |
+| 1 | Select a version of **Ubuntu Server** |                                                                         |
+| 3 | Adı                                  | myVm2                                                                   |
 | 3 | Kimlik doğrulaması türü                   | SSH genel anahtarınızı yapıştırın veya **Parola**’yı seçin bir parola girin. |
 | 3 | Kaynak grubu                        | **Mevcut olanı kullan**’ı seçin ve **myResourceGroup** seçeneğini belirleyin.                 |
-| 6 | Genişletmeler                            | **Linux için Ağ İzleyicisi Aracısı**                                             |
+| 6 | Uzantılar                            | **Network Watcher Agent for Linux**                                             |
 
 Sanal makinenin dağıtılması birkaç dakika sürer. Kalan adımlara devam etmeden önce sanal makinenin dağıtımı tamamlamasını bekleyin.
 
@@ -93,13 +93,13 @@ Sanal makinenin dağıtılması birkaç dakika sürer. Kalan adımlara devam etm
 
     | Ayar                  | Değer               |
     | ---------                | ---------           |
-    | Ad                     | myVm1-myVm2(22)     |
+    | Adı                     | myVm1-myVm2(22)     |
     | Kaynak                   |                     |
     | Sanal makine          | myVm1               |
     | Hedef              |                     |
-    | Sanal makine seçin |                     |
+    | Sanal makine seçme |                     |
     | Sanal makine          | myVm2               |
-    | Port                     | 22                  |
+    | Bağlantı noktası                     | 22                  |
 
     ![Bağlantı İzleyicisi ekleme](./media/connection-monitor/add-connection-monitor.png)
 
@@ -150,9 +150,9 @@ Varsayılan olarak Azure, aynı sanal ağ üzerindeki sanal makineler arasında 
     | Ayar                 | Değer          |
     | ---                     | ---            |
     | Hedef bağlantı noktası aralıkları | 22             |
-    | Eylem                  | Engelle           |
+    | Eylem                  | Deny           |
     | Öncelik                | 100            |
-    | Ad                    | DenySshInbound |
+    | Adı                    | DenySshInbound |
 
 5. Bağlantı izleyicisi 60’ar saniyelik aralıklarla araştırma yaptığından birkaç dakika bekleyin ve sonra portalın sol tarafında **Ağ İzleyicisi**’ni, ardından **Bağlantı izleyicisi**’ni ve sonra tekrar **myVm1-myVm2(22)** izleyicisini seçin. Aşağıdaki resimde gösterildiği gibi sonuçlar şimdi farklıdır:
 
@@ -160,7 +160,7 @@ Varsayılan olarak Azure, aynı sanal ağ üzerindeki sanal makineler arasında 
 
     **myvm2529** ağ arabirimi için durum sütununda kırmızı bir ünlem simgesi olduğunu görebilirsiniz.
 
-6. Durumun neden değiştiğini öğrenmek için önceki resimde 10.0.0.5 seçeneğini belirleyin. Bağlantı İzleyicisi iletişim hatası nedeni olduğunu bildirir: *Trafik aşağıdaki ağ güvenlik grubu kuralı nedeniyle engellendi: UserRule_DenySshInbound*.
+6. Durumun neden değiştiğini öğrenmek için önceki resimde 10.0.0.5 seçeneğini belirleyin. Bağlantı izleyicisi size iletişim hatasının nedenini bildirir: *Trafik aşağıdaki ağ güvenlik grubu kuralı nedeniyle engellendi: UserRule_DenySshInbound*.
 
     Birisinin 4. adımda oluşturduğunuz güvenlik kuralını uyguladığını bilmiyorsanız, bağlantı izleyicisinden bu kuralın iletişim sorununa yol açtığını öğrenirsiniz. Daha sonra sanal makineler arasındaki iletişimi geri yüklemek için kuralı değiştirebilir, geçersiz kılabilir veya kaldırabilirsiniz.
 

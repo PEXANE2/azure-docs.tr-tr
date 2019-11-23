@@ -1,6 +1,6 @@
 ---
 title: Yük devretme grupları
-description: Otomatik yük devretme grupları, bir SQL veritabanı sunucusundaki bir veritabanı grubunun veya yönetilen örnekteki tüm veritabanlarının çoğaltılmasını ve otomatik/Eşgüdümlü yük devretmesini yönetmenizi sağlayan bir SQL veritabanı özelliğidir.
+description: Auto-failover groups is a SQL Database feature that allows you to manage replication and automatic / coordinated failover of a group of databases on a SQL Database server or all databases in managed instance.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -11,382 +11,406 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 11/07/2019
-ms.openlocfilehash: 16fc15a574655f20e3e6e37f164773b41ffe0b78
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 470e9a9c36b6b4ec2e40db5dfc47ae03fb6b5aa8
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839328"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74421378"
 ---
-# <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Birden çok veritabanının saydam ve koordine edilmiş yük devretmesini etkinleştirmek için otomatik yük devretme gruplarını kullanın
+# <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Use auto-failover groups to enable transparent and coordinated failover of multiple databases
 
-Otomatik yük devretme grupları bir SQL veritabanı sunucusundaki bir veritabanı grubunun veya yönetilen bir örnekteki tüm veritabanlarının çoğaltma ve yük devretme özelliklerini başka bir bölgeye yönetmenizi sağlayan bir SQL veritabanı özelliğidir. Bu, var olan [etkin coğrafi çoğaltma](sql-database-active-geo-replication.md) özelliğinin en üstünde, coğrafi olarak çoğaltılan veritabanlarının dağıtım ve yönetimini kolaylaştırmak için tasarlanan, bildirime dayalı bir soyutlamadır. Yük devretmeyi el ile başlatabilir veya Kullanıcı tanımlı bir ilkeye göre SQL veritabanı hizmetine temsilci seçebilirsiniz. İkinci seçenek, bir ikincil bölgedeki birden çok ilişkili veritabanını, birincil bölgede SQL veritabanı hizmetinin kullanılabilirliğinin tamamen veya kısmen kaybedilmesiyle sonuçlanan bir veya daha fazla plansız olaydan sonra otomatik olarak kurtarmanıza olanak sağlar. Yük devretme grubu, genellikle aynı uygulama tarafından kullanılan bir veya daha fazla veritabanı içerebilir. Ayrıca, salt okunur sorgu iş yüklerini boşaltmak için okunabilir ikincil veritabanlarını da kullanabilirsiniz. Otomatik yük devretme grupları birden çok veritabanı içerdiğinden, bu veritabanlarının birincil sunucuda yapılandırılması gerekir. Otomatik yük devretme grupları, gruptaki tüm veritabanlarının farklı bir bölgedeki yalnızca bir ikincil sunucuya çoğaltılmasını destekler.
+Auto-failover groups is a SQL Database feature that allows you to manage replication and failover of a group of databases on a SQL Database server or all databases in a managed instance to another region. It is a declarative abstraction on top of the existing [active geo-replication](sql-database-active-geo-replication.md) feature, designed to simplify deployment and management of geo-replicated databases at scale. You can initiate failover manually or you can delegate it to the SQL Database service based on a user-defined policy. The latter option allows you to automatically recover multiple related databases in a secondary region after a catastrophic failure or other unplanned event that results in full or partial loss of the SQL Database service’s availability in the primary region. A failover group can include one or multiple databases, typically used by the same application. Additionally, you can use the readable secondary databases to offload read-only query workloads. Because auto-failover groups involve multiple databases, these databases must be configured on the primary server. Auto-failover groups support replication of all databases in the group to only one secondary server in a different region.
 
 > [!NOTE]
-> Bir SQL veritabanı sunucusunda tek veya havuza alınmış veritabanlarıyla çalışırken ve aynı ya da farklı bölgelerde birden çok ikincil sunucu istiyorsanız [etkin coğrafi çoğaltma](sql-database-active-geo-replication.md)'yı kullanın. 
+> When working with single or pooled databases on a SQL Database server and you want multiple secondaries in the same or different regions, use [active geo-replication](sql-database-active-geo-replication.md). 
 
-Otomatik yük devretme grupları otomatik yük devretme ilkesiyle kullanılırken, gruptaki bir veya birkaç veritabanını etkileyen herhangi bir kesinti otomatik yük devretmeye neden olur. Bunlar genellikle yerleşik otomatik yüksek kullanılabilirlik işlemleriyle kendini hafiflede azallamayan olaylardır. Yük devretme tetikleyicilerine örnek olarak bir SQL kiracı halkasının neden olduğu bir olay veya birkaç işlem düğümündeki bir işletim sistemi çekirdek belleği sızıntısı nedeniyle bir veya daha fazla kiracı halkasının neden olduğu bir olay vardır Utine donanıma yetki alma.  Daha fazla bilgi için bkz. [SQL veritabanı yüksek kullanılabilirlik](sql-database-high-availability.md).
+When you are using auto-failover groups with automatic failover policy, any outage that impacts one or several of the databases in the group results in automatic failover. Typically these are incidents that cannot be self-mitigated by the built-in automatic high availability operations. The examples of failover triggers include an incident caused by a SQL tenant ring or control ring being down due to an OS kernel memory leak on several compute nodes, or an incident caused by one or more tenant rings being down because a wrong network cable was cut during routine hardware decommissioning.  For more information, see [SQL Database High Availability](sql-database-high-availability.md).
 
-Bunlara ek olarak, otomatik yük devretme grupları, yük devretme sırasında değişmeden kalan okuma/yazma ve salt okuma dinleyicisi uç noktaları sağlar. El ile veya otomatik yük devretme etkinleştirme kullanmanıza bakılmaksızın, yük devretme gruptaki tüm ikincil veritabanlarını birinciye geçirir. Veritabanı yük devretmesi tamamlandıktan sonra DNS kaydı, uç noktaları yeni bölgeye yönlendirmek üzere otomatik olarak güncelleştirilir. Belirli RPO ve RTO verileri için bkz. [Iş sürekliliği 'Ne genel bakış](sql-database-business-continuity.md).
+In addition, auto-failover groups provide read-write and read-only listener end-points that remain unchanged during failovers. Whether you use manual or automatic failover activation, failover switches all secondary databases in the group to primary. After the database failover is completed, the DNS record is automatically updated to redirect the endpoints to the new region. For the specific RPO and RTO data, see [Overview of Business Continuity](sql-database-business-continuity.md).
 
-Otomatik yük devretme grupları otomatik yük devretme ilkesiyle kullanılırken, SQL veritabanı sunucusundaki veya yönetilen örnekteki veritabanlarını etkileyen herhangi bir kesinti otomatik yük devretmeyle sonuçlanır. Şunu kullanarak otomatik yük devretme grubunu yönetebilirsiniz:
+When you are using auto-failover groups with automatic failover policy, any outage that impacts databases in the SQL Database server or managed instance results in automatic failover. You can manage auto-failover group using:
 
 - [Azure portalı](sql-database-implement-geo-distributed-database.md)
-- [PowerShell: yük devretme grubu](scripts/sql-database-add-single-db-to-failover-group-powershell.md)
-- [REST API: yük devretme grubu](https://docs.microsoft.com/rest/api/sql/failovergroups).
+- [PowerShell: Failover Group](scripts/sql-database-add-single-db-to-failover-group-powershell.md)
+- [REST API: Failover group](https://docs.microsoft.com/rest/api/sql/failovergroups).
 
-Yük devretmeden sonra sunucunuzun ve veritabanınızın kimlik doğrulama gereksinimlerinin yeni birincil üzerinde yapılandırıldığından emin olun. Ayrıntılar için bkz. [olağanüstü durum kurtarma sonrasında SQL veritabanı güvenliği](sql-database-geo-replication-security-config.md).
+After failover, ensure the authentication requirements for your server and database are configured on the new primary. For details, see [SQL Database security after disaster recovery](sql-database-geo-replication-security-config.md).
 
-Gerçek iş sürekliliği sağlamak için, veri merkezleri arasında veritabanı yedekliliği eklemek çözümün yalnızca bir parçasıdır. Bir uygulamayı (hizmet) çok zararlı bir hatadan sonra kurtarmak, hizmeti ve bağımlı hizmetleri oluşturan tüm bileşenlerin kurtarılmasını gerektirir. Bu bileşenlere örnek olarak, istemci yazılımı (örneğin, özel JavaScript içeren bir tarayıcı), Web ön uçları, depolama alanı ve DNS sayılabilir. Tüm bileşenlerin aynı hatalara dayanıklı olması ve uygulamanızın kurtarma süresi hedefi (RTO) içinde kullanılabilir olması önemlidir. Bu nedenle, tüm bağımlı hizmetleri belirlemeniz ve sağladıkları garantileri ve özellikleri anlamanız gerekir. Daha sonra, hizmetin bağımlı olduğu hizmetlerin yük devretmesi sırasında işlevlerinizin çalıştığından emin olmak için yeterli adımları uygulamanız gerekir. Olağanüstü durum kurtarma çözümleri tasarlama hakkında daha fazla bilgi için bkz. [etkin coğrafi çoğaltma kullanarak olağanüstü durum kurtarma Için bulut çözümleri tasarlama](sql-database-designing-cloud-solutions-for-disaster-recovery.md).
+To achieve real business continuity, adding database redundancy between datacenters is only part of the solution. Recovering an application (service) end-to-end after a catastrophic failure requires recovery of all components that constitute the service and any dependent services. Examples of these components include the client software (for example, a browser with a custom JavaScript), web front ends, storage, and DNS. It is critical that all components are resilient to the same failures and become available within the recovery time objective (RTO) of your application. Therefore, you need to identify all dependent services and understand the guarantees and capabilities they provide. Then, you must take adequate steps to ensure that your service functions during the failover of the services on which it depends. For more information about designing solutions for disaster recovery, see [Designing Cloud Solutions for Disaster Recovery Using active geo-replication](sql-database-designing-cloud-solutions-for-disaster-recovery.md).
 
-## <a name="auto-failover-group-terminology-and-capabilities"></a>Otomatik yük devretme grubu terimleri ve özellikleri
+## <a name="auto-failover-group-terminology-and-capabilities"></a>Auto-failover group terminology and capabilities
 
-- **Yük devretme grubu (FOG)**
+- **Failover group (FOG)**
 
-  Yük devretme grubu, tek bir SQL veritabanı sunucusu tarafından yönetilen ve tek bir yönetilen örnek içinde, tüm veya bazı birincil veritabanlarının birincil bölgedeki bir kesinti nedeniyle kullanılamaz hale gelebilmesi için bir birim olarak yük devretmeye yönelik adlandırılmış bir grup veritabanıdır. Yönetilen örnekler için oluşturulduğunda, bir yük devretme grubu örnekteki tüm Kullanıcı veritabanlarını içerir ve bu nedenle bir örnek üzerinde yalnızca bir yük devretme grubu yapılandırılabilir.
+  A failover group is a named group of databases managed by a single SQL Database server or within a single managed instance that can fail over as a unit to another region in case all or some primary databases become unavailable due to an outage in the primary region. When created for managed instances, a failover group contains all user databases in the instance and therefore only one failover group can be configured on an instance.
   
   > [!IMPORTANT]
-  > Yük devretme grubunun adı, `.database.windows.net` etki alanı içinde genel olarak benzersiz olmalıdır.
+  > The name of the failover group must be globally unique within the `.database.windows.net` domain.
 
-- **SQL veritabanı sunucuları**
+- **SQL Database servers**
 
-     SQL veritabanı sunucularıyla tek bir SQL veritabanı sunucusundaki kullanıcı veritabanlarının bazıları veya tümü bir yük devretme grubuna yerleştirilebilir. Ayrıca, SQL veritabanı sunucusu tek bir SQL veritabanı sunucusunda birden fazla yük devretme grubunu destekler.
+     With SQL Database servers, some or all of the user databases on a single SQL Database server can be placed in a failover group. Also, a SQL Database server supports multiple failover groups on a single SQL Database server.
 
-- **Birinc**
+- **Primary**
 
-  Yük devretme grubundaki birincil veritabanlarını barındıran SQL veritabanı sunucusu veya yönetilen örnek.
+  The SQL Database server or managed instance that hosts the primary databases in the failover group.
 
-- **İK**
+- **Secondary**
 
-  Yük devretme grubundaki ikincil veritabanlarını barındıran SQL veritabanı sunucusu veya yönetilen örnek. İkincil, birincil ile aynı bölgede olamaz.
+  The SQL Database server or managed instance that hosts the secondary databases in the failover group. The secondary cannot be in the same region as the primary.
 
-- **Yük devretme grubuna tek veritabanları ekleme**
+- **Adding single databases to failover group**
 
-  Aynı SQL veritabanı sunucusuna aynı yük devretme grubuna birkaç tek veritabanı yerleştirebilirsiniz. Yük devretme grubuna tek bir veritabanı eklerseniz, ikincil sunucuda aynı sürümü ve işlem boyutunu kullanarak otomatik olarak ikincil bir veritabanı oluşturur.  Yük devretme grubu oluşturulduğunda bu sunucuyu belirttiniz. İkincil sunucuda zaten ikincil bir veritabanına sahip olan bir veritabanını eklerseniz, bu coğrafi çoğaltma bağlantısı Grup tarafından devralınır. Yük devretme grubunun parçası olmayan bir sunucuda zaten ikincil veritabanına sahip bir veritabanı eklediğinizde, ikincil sunucuda yeni bir ikincil oluşturulur.
-  
+  You can put several single databases on the same SQL Database server into the same failover group. If you add a single database to the failover group, it automatically creates a secondary database using the same edition and compute size on secondary server.  You specified that server when the failover group was created. If you add a database that already has a secondary database in the secondary server, that geo-replication link is inherited by the group. When you add a database that already has a secondary database in a server that is not part of the failover group, a new secondary is created in the secondary server.
+
   > [!IMPORTANT]
-  > İkincil sunucuda, var olan bir ikincil veritabanı olmadığı müddetçe aynı ada sahip bir veritabanı bulunmadığından emin olun. Yönetilen örnek için yük devretme gruplarında tüm kullanıcı veritabanları çoğaltılır. Yük devretme grubundaki çoğaltma için kullanıcı veritabanlarının bir alt kümesini seçemezsiniz.
+  > Make sure that the secondary server doesn't have a database with the same name unless it is an existing secondary database. In failover groups for managed instance all user databases are replicated. You cannot pick a subset of user databases for replication in the failover group.
 
-- **Elastik havuzdaki veritabanlarını yük devretme grubuna ekleme**
+- **Adding databases in elastic pool to failover group**
 
-  Elastik havuz içindeki tüm veya birkaç veritabanını aynı yük devretme grubuna yerleştirebilirsiniz. Birincil veritabanı elastik bir havuzda ise, ikincil havuz aynı ada (ikincil havuz) sahip esnek havuzda otomatik olarak oluşturulur. İkincil sunucunun, yük devretme grubu tarafından oluşturulacak ikincil veritabanlarını barındırmak için aynı tam adı ve yeterli boş kapasiteye sahip esnek bir havuz içerdiğinden emin olmanız gerekir. Havuza ikincil havuzda zaten ikincil bir veritabanı olan bir veritabanı eklerseniz, bu coğrafi çoğaltma bağlantısı Grup tarafından devralınır. Yük devretme grubunun parçası olmayan bir sunucuda zaten ikincil veritabanına sahip bir veritabanı eklediğinizde ikincil havuzda yeni bir ikincil oluşturulur.
+  You can put all or several databases within an elastic pool into the same failover group. If the primary database is in an elastic pool, the secondary is automatically created in the elastic pool with the same name (secondary pool). You must ensure that the secondary server contains an elastic pool with the same exact name and enough free capacity to host the secondary databases that will be created by the failover group. If you add a database in the pool that already has a secondary database in the secondary pool, that geo-replication link is inherited by the group. When you add a database that already has a secondary database in a server that is not part of the failover group, a new secondary is created in the secondary pool.
   
 - **DNS bölgesi**
 
-  Yeni bir örnek oluşturulduğunda otomatik olarak oluşturulan benzersiz bir KIMLIK. Aynı DNS bölgesindeki herhangi bir örneğe istemci bağlantılarının kimliğini doğrulamak için bu örnek için bir çoklu etki alanı (SAN) sertifikası sağlanır. Aynı yük devretme grubundaki iki yönetilen örnek, DNS bölgesini paylaşmalıdır. 
+  A unique ID that is automatically generated when a new instance is created. A multi-domain (SAN) certificate for this instance is provisioned to authenticate the client connections to any instance in the same DNS zone. The two managed instances in the same failover group must share the DNS zone.
   
   > [!NOTE]
-  > SQL veritabanı sunucuları için oluşturulan yük devretme grupları için bir DNS bölge KIMLIĞI gerekli değildir.
+  > A DNS zone ID is not required for failover groups created for SQL Database servers.
 
-- **Yük devretme grubu okuma-yazma dinleyicisi**
+- **Failover group read-write listener**
 
-  Geçerli birincil URL 'yi işaret eden bir DNS CNAME kaydı. Yük devretme grubu oluşturulduğunda otomatik olarak oluşturulur ve yük devretme sonrasında birincil değişiklikler olan okuma/yazma SQL iş yükünün birincil veritabanına şeffaf bir şekilde yeniden bağlanmasına izin verir. Yük devretme grubu bir SQL veritabanı sunucusunda oluşturulduğunda, dinleyici URL 'SI için DNS CNAME kaydı `<fog-name>.database.windows.net`olarak biçimlendirilir. Yönetilen bir örnekte yük devretme grubu oluşturulduğunda, dinleyici URL 'SI için DNS CNAME kaydı `<fog-name>.zone_id.database.windows.net`olarak biçimlendirilir.
+  A DNS CNAME record that points to the current primary's URL. It is created automatically when the failover group is created and allows the read-write SQL workload to transparently reconnect to the primary database when the primary changes after failover. When the failover group is created on a SQL Database server, the DNS CNAME record for the listener URL is formed as `<fog-name>.database.windows.net`. When the failover group is created on a managed instance, the DNS CNAME record for the listener URL is formed as `<fog-name>.zone_id.database.windows.net`.
 
-- **Yük devretme grubu salt okuma dinleyicisi**
+- **Failover group read-only listener**
 
-  İkincil URL 'yi işaret eden salt okunurdur dinleyiciyi işaret eden bir DNS CNAME kaydı. Yük devretme grubu oluşturulduğunda otomatik olarak oluşturulur ve salt okunurdur SQL iş yükünün belirtilen Yük Dengeleme kurallarını kullanarak ikincil sunucuya şeffaf bir şekilde bağlanmasına izin verir. Yük devretme grubu bir SQL veritabanı sunucusunda oluşturulduğunda, dinleyici URL 'SI için DNS CNAME kaydı `<fog-name>.secondary.database.windows.net`olarak biçimlendirilir. Yönetilen bir örnekte yük devretme grubu oluşturulduğunda, dinleyici URL 'SI için DNS CNAME kaydı `<fog-name>.zone_id.secondary.database.windows.net`olarak biçimlendirilir.
+  A DNS CNAME record formed that points to the read-only listener that points to the secondary's URL. It is created automatically when the failover group is created and allows the read-only SQL workload to transparently connect to the secondary using the specified load-balancing rules. When the failover group is created on a SQL Database server, the DNS CNAME record for the listener URL is formed as `<fog-name>.secondary.database.windows.net`. When the failover group is created on a managed instance, the DNS CNAME record for the listener URL is formed as `<fog-name>.zone_id.secondary.database.windows.net`.
 
-- **Otomatik yük devretme ilkesi**
+- **Automatic failover policy**
 
-  Varsayılan olarak, bir yük devretme grubu otomatik yük devretme ilkesiyle yapılandırılır. SQL veritabanı hizmeti, hata algılandıktan ve yetkisiz kullanım süresi dolduktan sonra yük devretmeyi tetikler. Sistem, etkinin ölçeklendirilmesi nedeniyle, [SQL veritabanı hizmetinin yerleşik yüksek kullanılabilirlik altyapısı](sql-database-high-availability.md) tarafından kesinti olup olmadığı doğrulanmalıdır. Yük devretme iş akışını uygulamadan denetlemek istiyorsanız otomatik yük devretmeyi devre dışı bırakabilirsiniz.
+  By default, a failover group is configured with an automatic failover policy. The SQL Database service triggers failover after the failure is detected and the grace period has expired. The system must verify that the outage cannot be mitigated by the built-in [high availability infrastructure of the SQL Database service](sql-database-high-availability.md) due to the scale of the impact. If you want to control the failover workflow from the application, you can turn off automatic failover.
   
   > [!NOTE]
-  > Kesinti ölçeğinde ve ne kadar hızlı bir şekilde azalmayabileceğini doğrulamak için, işlem ekibine yetkisiz kullanım süresi bir saat altına ayarlanamaz.  Bu sınırlama, veri eşitleme durumu ne olursa olsun, yük devretme grubundaki tüm veritabanları için geçerlidir. 
+  > Because verification of the scale of the outage and how quickly it can be mitigated involves human actions by the operations team, the grace period cannot be set below one hour.  This  limitation applies to all databases in the failover group regardless of their data synchronization state. 
 
-- **Salt okuma yük devretme ilkesi**
+- **Read-only failover policy**
 
-  Varsayılan olarak, salt okunurdur dinleyicinin yük devretmesi devre dışıdır. İkincil çevrimdışıyken, birincil performans performansının etkilenmemesini sağlar. Bununla birlikte, ikincil kurtarılana kadar salt okuma oturumlarının bağlanamadığı anlamına gelir. Salt okuma oturumları için kapalı kalma süresini kabul edemez ve birincil olarak hem salt okunurdur hem de okuma-yazma trafiği için birincil olarak birincil olarak kullanmak istiyorsanız, salt okuma dinleyicisi için yük devretmeyi etkinleştirebilirsiniz `AllowReadOnlyFailoverToPrimary` özelliğini yapılandırarak. Bu durumda, ikincil kullanılabilir değilse salt okuma trafiği otomatik olarak birincil olarak yönlendirilir.
+  By default, the failover of the read-only listener is disabled. It ensures that the performance of the primary is not impacted when the secondary is offline. However, it also means the read-only sessions will not be able to connect until the secondary is recovered. If you cannot tolerate downtime for the read-only sessions and are OK to temporarily use the primary for both read-only and read-write traffic at the expense of the potential performance degradation of the primary, you can enable failover for the read-only listener by configuring the `AllowReadOnlyFailoverToPrimary` property. In that case, the read-only traffic will be automatically redirected to the primary if the secondary is not available.
 
-- **Planlı Yük devretme**
+- **Planned failover**
 
-   Planlı Yük devretme, birincil ve ikincil veritabanları arasında birincil role kadar olan tam eşitleme gerçekleştirir. Bu, veri kaybı garantisi vermez. Planlı Yük devretme aşağıdaki senaryolarda kullanılır:
+   Planned failover performs full synchronization between primary and secondary databases before the secondary switches to the primary role. This guarantees no data loss. Planned failover is used in the following scenarios:
 
-  - Veri kaybı kabul edilebilir olmadığında üretimde olağanüstü durum kurtarma (DR) tatbilar gerçekleştirme
-  - Veritabanlarını farklı bir bölgeye yeniden konumlandırma
-  - Kesinti azaltıldıktan sonra veritabanlarını birincil bölgeye döndürün (yeniden çalışma).
+  - Perform disaster recovery (DR) drills in production when the data loss is not acceptable
+  - Relocate the databases to a different region
+  - Return the databases to the primary region after the outage has been mitigated (failback).
 
-- **Planlanmamış yük devretme**
+- **Unplanned failover**
 
-   Planlanmamış veya zorlamalı yük devretme, birincili eşitleme yapmadan ikincili doğrudan birincil role geçirir. Bu işlem, veri kaybına neden olur. Planlanmamış yük devretme, birincil erişim olmadığında kesintiler sırasında kurtarma yöntemi olarak kullanılır. Özgün birincil yeniden çevrimiçi olduğunda, eşitleme olmadan otomatik olarak yeniden bağlanır ve yeni bir ikincil hale gelir.
+   Unplanned or forced failover immediately switches the secondary to the primary role without any synchronization with the primary. This operation will result in data loss. Unplanned failover is used as a recovery method during outages when the primary is not accessible. When the original primary is back online, it will automatically reconnect without synchronization and become a new secondary.
 
-- **El ile yük devretme**
+- **Manual failover**
 
-  Otomatik yük devretme yapılandırması ne olursa olsun, yük devretmeyi dilediğiniz zaman el ile başlatabilirsiniz. Otomatik yük devretme ilkesi yapılandırılmamışsa, yük devretme grubundaki veritabanlarını ikincil gruba kurtarmak için el ile yük devretme gerekir. Zorunlu veya kolay yük devretme (tam veri eşitlemeyle) başlatabilirsiniz. İkincisi ikincil bölgeye yeniden konumlandırmak için kullanılabilir. Yük devretme tamamlandığında, DNS kayıtları, yeni birincili bağlantıyı sağlamak üzere otomatik olarak güncelleştirilir
+  You can initiate failover manually at any time regardless of the automatic failover configuration. If automatic failover policy is not configured, manual failover is required to recover databases in the failover group to the secondary. You can initiate forced or friendly failover (with full data synchronization). The latter could be used to relocate the primary to the secondary region. When failover is completed, the DNS records are automatically updated to ensure connectivity to the new primary
 
-- **Veri kaybı olan yetkisiz kullanım süresi**
+- **Grace period with data loss**
 
-  Birincil ve ikincil veritabanları zaman uyumsuz çoğaltma kullanılarak eşitlendiğinden, yük devretme veri kaybına neden olabilir. Otomatik yük devretme ilkesini, uygulamanızın veri kaybına karşı dayanıklılığını yansıtacak şekilde özelleştirebilirsiniz. `GracePeriodWithDataLossHours`yapılandırarak, sistemin sonuç olarak veri kaybına neden olan yük devretmeyi başlatmadan önce bekleyeceği süreyi kontrol edebilirsiniz.
+  Because the primary and secondary databases are synchronized using asynchronous replication, the failover may result in data loss. You can customize the automatic failover policy to reflect your application’s tolerance to data loss. By configuring `GracePeriodWithDataLossHours`, you can control how long the system waits before initiating the failover that is likely to result data loss.
 
-- **Çoklu yük devretme grupları**
+- **Multiple failover groups**
 
-  Yük devretme ölçeğini denetlemek için aynı sunucu çifti için birden çok yük devretme grubu yapılandırabilirsiniz. Her grup bağımsız olarak devredildi. Çok kiracılı uygulamanız elastik havuzlar kullanıyorsa, bu özelliği kullanarak her havuzda birincil ve ikincil veritabanlarını karıştırabilirsiniz. Bu şekilde, bir kesinti etkisini yalnızca kiracıların yarısını azaltabilirsiniz.
+  You can configure multiple failover groups for the same pair of servers to control the scale of failovers. Each group fails over independently. If your multi-tenant application uses elastic pools, you can use this capability to mix primary and secondary databases in each pool. This way you can reduce the impact of an outage to only half of the tenants.
 
   > [!NOTE]
-  > Yönetilen örnek çoklu yük devretme gruplarını desteklemiyor.
+  > Managed Instance does not support multiple failover groups.
   
 ## <a name="permissions"></a>İzinler
-Yük devretme grubu izinleri [rol tabanlı erişim denetimi (RBAC)](../role-based-access-control/overview.md)aracılığıyla yönetilir. [SQL Server katkıda](../role-based-access-control/built-in-roles.md#sql-server-contributor) bulunan rolü, yük devretme gruplarını yönetmek için gereken tüm izinlere sahiptir. 
 
-### <a name="create-failover-group"></a>Yük devretme grubu oluştur
-Bir yük devretme grubu oluşturmak için, hem birincil hem de ikincil sunuculara ve yük devretme grubundaki tüm veritabanlarına RBAC yazma erişimine sahip olmanız gerekir. Yönetilen bir örnek için, hem birincil hem de ikincil yönetilen örnek için RBAC yazma erişimine ihtiyacınız vardır, ancak bireysel olarak yönetilen örnek veritabanları bir yük devretme grubuna eklenemediği veya bu gruba kaldırıldığı için tek tek veritabanlarındaki izinler ilgili değildir. 
+Permissions for a failover group are managed via [role-based access control (RBAC)](../role-based-access-control/overview.md). The [SQL Server Contributor](../role-based-access-control/built-in-roles.md#sql-server-contributor) role has all the necessary permissions to manage failover groups.
 
-### <a name="update-a-failover-group"></a>Yük devretme grubunu güncelleştirme
-Bir yük devretme grubunu güncelleştirmek için, yük devretme grubuna ve geçerli birincil sunucu veya yönetilen örnekteki tüm veritabanlarına RBAC yazma erişimine sahip olmanız gerekir.  
+### <a name="create-failover-group"></a>Create failover group
 
-### <a name="failover-a-failover-group"></a>Yük devretme grubu yük devretme
-Yük devretme grubu yükünü devretmek için, yeni birincil sunucu veya yönetilen örnekteki yük devretme grubuna RBAC yazma erişimine sahip olmanız gerekir. 
+To create a failover group, you need RBAC write access to both the primary and secondary servers, and to all databases in the failover group. For a managed instance, you need RBAC write access to both the primary and secondary managed instance, but permissions on individual databases are not relevant since individual managed instance databases cannot be added to or removed from a failover group. 
 
-## <a name="best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools"></a>Tek veritabanları ve elastik havuzlarla yük devretme grupları kullanmanın en iyi yöntemleri
+### <a name="update-a-failover-group"></a>Update a failover group
 
-Otomatik yük devretme grubu, birincil SQL veritabanı sunucusunda yapılandırılmalı ve bunu farklı bir Azure bölgesindeki ikincil SQL veritabanı sunucusuna bağlayacaktır. Gruplar, bu sunuculardaki tüm veya bazı veritabanlarını içerebilir. Aşağıdaki diyagramda birden çok veritabanı ve otomatik yük devretme grubu kullanılarak coğrafi olarak yedekli bir bulut uygulamasının tipik bir yapılandırması gösterilmektedir.
+To update a failover group, you need RBAC write access to the failover group, and all databases on the current primary server or managed instance.  
 
-![otomatik yük devretme](./media/sql-database-auto-failover-group/auto-failover-group.png)
+### <a name="failover-a-failover-group"></a>Failover a failover group
+
+To fail over a failover group, you need RBAC write access to the failover group on the new primary server or managed instance.
+
+## <a name="best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools"></a>Best practices of using failover groups with single databases and elastic pools
+
+The auto-failover group must be configured on the primary SQL Database server and will connect it to the secondary SQL Database server in a different Azure region. The groups can include all or some databases in these servers. The following diagram illustrates a typical configuration of a geo-redundant cloud application using multiple databases and auto-failover group.
+
+![auto failover](./media/sql-database-auto-failover-group/auto-failover-group.png)
 
 > [!NOTE]
-> Yük devretme grubuna tek bir veritabanı ekleme hakkında ayrıntılı adım adım öğretici için bkz. bir [Yük devretme grubuna tek veritabanı ekleme](sql-database-single-database-failover-group-tutorial.md) . 
+> See [Add single database to a failover group](sql-database-single-database-failover-group-tutorial.md) for a detailed step-by-step tutorial adding a single database to a failover group.
 
+When designing a service with business continuity in mind, follow these general guidelines:
 
-İş sürekliliği ile bir hizmet tasarlarken aşağıdaki genel yönergeleri izleyin:
+- **Use one or several failover groups to manage failover of multiple databases**
 
-- **Birden çok veritabanının yük devretmesini yönetmek için bir veya birkaç yük devretme grubu kullanın**
-
-  Farklı bölgelerde (birincil ve ikincil sunucular) iki sunucu arasında bir veya daha fazla yük devretme grubu oluşturulabilir. Her grup, birincil bölgedeki bir kesinti nedeniyle tüm veya bazı birincil veritabanlarının kullanılamaz duruma gelmesi durumunda birim olarak kurtarılan bir veya birkaç veritabanı içerebilir. Yük devretme grubu, birincil ile aynı hizmet hedefine sahip coğrafi ikincil veritabanı oluşturur. Yük devretme grubuna mevcut bir coğrafi çoğaltma ilişkisi eklerseniz, coğrafi ikincil öğenin aynı hizmet katmanıyla ve işlem boyutuyla birincil olarak yapılandırıldığından emin olun.
+  One or many failover groups can be created between two servers in different regions (primary and secondary servers). Each group can include one or several databases that are recovered as a unit in case all or some primary databases become unavailable due to an outage in the primary region. The failover group creates geo-secondary database with the same service objective as the primary. If you add an existing geo-replication relationship to the failover group, make sure the geo-secondary is configured with the same service tier and compute size as the primary.
   
   > [!IMPORTANT]
-  > Farklı aboneliklerde iki sunucu arasında yük devretme gruplarının oluşturulması, tek veritabanları ve elastik havuzlar için şu anda desteklenmemektedir. Yük devretme grubu oluşturulduktan sonra birincil veya ikincil sunucuyu farklı bir aboneliğe taşırsanız, yük devretme istekleri ve diğer işlemler hatalara neden olabilir.
+  > Creating failover groups between two servers in different subscriptions is not currently supported for single databases and elastic pools. If you move the primary or secondary server to a different subscription after the failover group has been created, it could result in failures of the failover requests and other operations.
 
-- **OLTP iş yükü için okuma-yazma dinleyicisi kullanma**
+- **Use read-write listener for OLTP workload**
 
-  OLTP işlemleri gerçekleştirirken sunucu URL 'SI olarak `<fog-name>.database.windows.net` kullanın ve bağlantılar otomatik olarak birincil ağa yönlendirilir. Bu URL, yük devretmeden sonra değişmez. Bunun için yük devretme, DNS kaydının güncelleştirilmesini içerir, böylece istemci bağlantıları yalnızca istemci DNS önbelleği yenilendikten sonra yeni birincil yere yönlendirilir.
+  When performing OLTP operations, use `<fog-name>.database.windows.net` as the server URL and the connections are automatically directed to the primary. This URL does not change after the failover. Note the failover involves updating the DNS record so the client connections are redirected to the new primary only after the client DNS cache is refreshed.
 
-- **Salt okunurdur iş yükü için salt okunurdur dinleyicisi kullanın**
+- **Use read-only listener for read-only workload**
 
-  Verilerin belirli bir şekilde kullanılması için dayanıklı bir mantıksal olarak yalıtılmış salt okunurdur, uygulamadaki ikincil veritabanını kullanabilirsiniz. Salt okuma oturumları için sunucu URL 'SI olarak `<fog-name>.secondary.database.windows.net` kullanın ve bağlantı otomatik olarak ikinciye yönlendirilir. `ApplicationIntent=ReadOnly`kullanarak bağlantı dizesi okuma hedefini de belirtmeniz önerilir. Yük devretme sonrasında salt okuma iş yükünün yeniden bağlanabildiğinden emin olmak istiyorsanız veya ikincil sunucunun çevrimdışı olması durumunda, yük devretme ilkesinin `AllowReadOnlyFailoverToPrimary` özelliğini yapılandırdığınızdan emin olun. 
+  If you have a logically isolated read-only workload that is tolerant to certain staleness of data, you can use the secondary database in the application. For read-only sessions, use `<fog-name>.secondary.database.windows.net` as the server URL and the connection is automatically directed to the secondary. It is also recommended that you indicate in connection string read intent by using `ApplicationIntent=ReadOnly`. If you want to ensure that the read-only workload can reconnect after failover or in case the secondary server goes offline, make sure to configure the `AllowReadOnlyFailoverToPrimary` property of the failover policy.
 
-- **Performans düşüklüğüne hazırlıklı olun**
+- **Be prepared for perf degradation**
 
-  SQL yük devretme kararı, uygulamanın geri kalanından veya kullanılan diğer hizmetlerden bağımsızdır. Uygulama bir bölgedeki bazı bileşenlerle ve bazıları başka bir bölgede "karışık" olabilir. Azalmadan kaçınmak için, DR bölgesinde yedekli uygulama dağıtımını doğrulayın ve bu [ağ güvenlik yönergelerini](#failover-groups-and-network-security)izleyin.
+  SQL failover decision is independent from the rest of the application or other services used. The application may be “mixed” with some components in one region and some in another. To avoid the degradation, ensure the redundant application deployment in the DR region and follow these [network security guidelines](#failover-groups-and-network-security).
 
   > [!NOTE]
-  > DR bölgesindeki uygulamanın farklı bir bağlantı dizesi kullanması gerekmez.  
+  > The application in the DR region does not have to use a different connection string.  
 
-- **Veri kaybına hazırlanma**
+- **Prepare for data loss**
 
-  Bir kesinti algılanırsa, SQL `GracePeriodWithDataLossHours`belirttiğiniz dönemi bekler. Varsayılan değer 1 saattir. Veri kaybını uygun hale getirmek için `GracePeriodWithDataLossHours`, 24 saat gibi yeterince büyük bir sayı olarak ayarladığınızdan emin olun. İkincil sunucudan birinciye yeniden yük devretmek için el ile grup yük devretmesini kullanın.
+  If an outage is detected, SQL waits for the period you specified by `GracePeriodWithDataLossHours`. The default value is 1 hour. If you cannot afford data loss, make sure to set `GracePeriodWithDataLossHours` to a sufficiently large number, such as 24 hours. Use manual group failover to fail back from the secondary to the primary.
 
   > [!IMPORTANT]
-  > 800 veya daha az DTU ile esnek havuzlar ve coğrafi çoğaltma kullanan 250 ' den fazla veritabanı, daha uzun planlı yük devretme ve performans düşüklükiyle ilgili sorunlarla karşılaşabilir.  Bu sorunların, yazma yoğunluklu iş yükleri, coğrafi çoğaltma uç noktaları Coğrafya tarafından yaygın olarak ayrıldığı veya her veritabanı için birden çok ikincil uç nokta kullanıldığı durumlarda oluşma olasılığı daha yüksektir.  Bu sorunların belirtileri, coğrafi çoğaltma gecikmesi zaman içinde arttıkça belirtilir.  Bu gecikme, [sys. dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database)kullanılarak izlenebilir.  Bu sorunlar oluşursa, azaltmaları, havuz DTU sayısını artırmayı veya aynı havuzdaki coğrafi çoğaltılan veritabanlarının sayısını azaltmayı içerir.
+  > Elastic pools with 800 or fewer DTUs and more than 250 databases using geo-replication may encounter issues including longer planned failovers and degraded performance.  These issues are more likely to occur for write intensive workloads, when geo-replication endpoints are widely separated by geography, or when multiple secondary endpoints are used for each database.  Symptoms of these issues are indicated when the geo-replication lag increases over time.  This lag can be monitored using [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database).  If these issues occur, then mitigations include increasing the number of pool DTUs, or reducing the number of geo-replicated databases in the same pool.
 
-## <a name="best-practices-of-using-failover-groups-with-managed-instances"></a>Yönetilen örneklerle yük devretme grupları kullanmanın en iyi yöntemleri
+## <a name="best-practices-of-using-failover-groups-with-managed-instances"></a>Best practices of using failover groups with managed instances
 
-Otomatik yük devretme grubu birincil örnekte yapılandırılmalı ve bunu farklı bir Azure bölgesindeki ikincil örneğe bağlayacaktır.  Örnekteki tüm veritabanları ikincil örneğe çoğaltılır. 
+The auto-failover group must be configured on the primary instance and will connect it to the secondary instance in a different Azure region.  All databases in the instance will be replicated to the secondary instance.
 
-Aşağıdaki diyagramda, yönetilen örnek ve otomatik yük devretme grubu kullanılarak coğrafi olarak yedekli bir bulut uygulamasının tipik bir yapılandırması gösterilmektedir.
+The following diagram illustrates a typical configuration of a geo-redundant cloud application using managed instance and auto-failover group.
 
-![otomatik yük devretme](./media/sql-database-auto-failover-group/auto-failover-group-mi.png)
+![auto failover](./media/sql-database-auto-failover-group/auto-failover-group-mi.png)
 
 > [!NOTE]
-> Yük devretme grubunu kullanmak için yönetilen bir örnek ekleme hakkında ayrıntılı adım adım öğretici için bkz. [Yük devretme grubuna yönetilen örnek ekleme](sql-database-managed-instance-failover-group-tutorial.md) . 
+> See [Add managed instance to a failover group](sql-database-managed-instance-failover-group-tutorial.md) for a detailed step-by-step tutorial adding a managed instance to use failover group.
 
-Uygulamanız veri katmanı olarak yönetilen örnek kullanıyorsa, iş sürekliliği için tasarlarken aşağıdaki genel yönergeleri izleyin:
+If your application uses managed instance as the data tier, follow these general guidelines when designing for business continuity:
 
-- **İkincil örneği, birincil örnekle aynı DNS bölgesinde oluşturma**
+- **Create the secondary instance in the same DNS zone as the primary instance**
 
-  Yük devretmeden sonra birincil örneğe kesintiye uğramayan bağlantı sağlamak için hem birincil hem de ikincil örneklerin aynı DNS bölgesinde olması gerekir. Aynı çoklu etki alanı (SAN) sertifikasının, yük devretme grubundaki iki örneklerden birine yönelik istemci bağlantılarının kimliğini doğrulamak için kullanılabilir olmasını garanti eder. Uygulamanız üretim dağıtımı için hazırsanız, farklı bir bölgede ikincil bir örnek oluşturun ve DNS bölgesini birincil örnekle paylaştığından emin olun. Azure portal, PowerShell veya REST API kullanarak isteğe bağlı `DNS Zone Partner` bir parametre belirterek bunu yapabilirsiniz. 
+  To ensure non-interrupted connectivity to the primary instance after failover both the primary and secondary instances must be in the same DNS zone. It will guarantee that the same multi-domain (SAN) certificate can be used to authenticate the client connections to either of the two instances in the failover group. When your application is ready for production deployment, create a secondary instance in a different region and make sure it shares the DNS zone with the primary instance. You can do it by specifying a `DNS Zone Partner` optional parameter using the Azure portal, PowerShell, or the REST API.
 
 > [!IMPORTANT]
-> Alt ağda oluşturulan ilk örnek, aynı alt ağdaki sonraki tüm örnekler için DNS bölgesini belirler. Diğer bir deyişle, aynı alt ağdaki iki örnek farklı DNS bölgelerine ait olamaz.   
+> First instance created in the subnet determines DNS zone for all subsequent instances in the same subnet. This means that two instances from the same subnet cannot belong to different DNS zones.
 
-  Birincil örnekle aynı DNS bölgesinde ikincil örnek oluşturma hakkında daha fazla bilgi için bkz. [İkincil yönetilen örnek oluşturma](sql-database-managed-instance-failover-group-tutorial.md#3---create-a-secondary-managed-instance).
+  For more information about creating the secondary instance in the same DNS zone as the primary instance, see [Create a secondary managed instance](sql-database-managed-instance-failover-group-tutorial.md#3---create-a-secondary-managed-instance).
 
-- **İki örnek arasında çoğaltma trafiğini etkinleştir**
+- **Enable replication traffic between two instances**
 
-  Her örnek kendi VNet 'inde yalıtılmış olduğundan, bu VNET 'ler arasındaki iki yönlü trafiğe izin verilmelidir. Bkz. [Azure VPN ağ geçidi](../vpn-gateway/vpn-gateway-about-vpngateways.md)
+  Because each instance is isolated in its own VNet, two-directional traffic between these VNets must be allowed. See [Azure VPN gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md)
 
-- **Farklı aboneliklerdeki yönetilen örnekler arasında bir yük devretme grubu oluşturma**
+- **Create a failover group between managed instances in different subscriptions**
 
-  Yönetilen örnekler arasında iki farklı abonelikteki bir yük devretme grubu oluşturabilirsiniz. PowerShell API 'sini kullanırken, ikincil örnek için `PartnerSubscriptionId` parametresini belirterek bunu yapabilirsiniz. REST API kullanırken, `properties.managedInstancePairs` parametresinde bulunan her örnek KIMLIĞI kendi SubscriptionID değerine sahip olabilir. 
+  You can create a failover group between managed instances in two different subscriptions. When using PowerShell API you can do it by  specifying the `PartnerSubscriptionId` parameter for the secondary instance. When using REST API, each instance ID included in the `properties.managedInstancePairs` parameter can have its own subscriptionID.
   
   > [!IMPORTANT]
-  > Azure Portal, farklı aboneliklerde yük devretme gruplarını desteklemez.
+  > Azure Portal does not support failover groups across different subscriptions.
 
-  
-- **Tüm örneğin yük devretmesini yönetmek için bir yük devretme grubu yapılandırma**
+- **Configure a failover group to manage failover of entire instance**
 
-  Yük devretme grubu, örnekteki tüm veritabanlarının yük devretmesini yönetecektir. Bir grup oluşturulduğunda, örnekteki her bir veritabanı, ikincil örneğe otomatik olarak coğrafi olarak çoğaltılır. Veritabanlarının bir alt kümesinin kısmi yük devretmesini başlatmak için yük devretme grupları kullanamazsınız.
+  The failover group will manage the failover of all the databases in the instance. When a group is created, each database in the instance will be automatically geo-replicated to the secondary instance. You cannot use failover groups to initiate a partial failover of a subset of the databases.
 
   > [!IMPORTANT]
-  > Birincil örnekten bir veritabanı kaldırılırsa, coğrafi ikincil örneğe de otomatik olarak bırakılır.
+  > If a database is removed from the primary instance, it will also be dropped automatically on the geo secondary instance.
 
-- **OLTP iş yükü için okuma-yazma dinleyicisi kullanma**
+- **Use read-write listener for OLTP workload**
 
-  OLTP işlemleri gerçekleştirirken sunucu URL 'SI olarak `<fog-name>.zone_id.database.windows.net` kullanın ve bağlantılar otomatik olarak birincil ağa yönlendirilir. Bu URL, yük devretmeden sonra değişmez. Yük devretme, DNS kaydının güncelleştirilmesini içerir, bu nedenle istemci bağlantıları yalnızca istemci DNS önbelleği yenilendikten sonra yeni birincil istemciye yönlendirilir. İkincil örnek, DNS bölgesini birincil ile paylaştığından, istemci uygulaması aynı SAN sertifikasını kullanarak buna yeniden bağlanabilir.
+  When performing OLTP operations, use `<fog-name>.zone_id.database.windows.net` as the server URL and the connections are automatically directed to the primary. This URL does not change after the failover. The failover involves updating the DNS record, so the client connections are redirected to the new primary only after the client DNS cache is refreshed. Because the secondary instance shares the DNS zone with the primary, the client application will be able to reconnect to it using the same SAN certificate.
 
-- **Salt okuma sorguları için doğrudan coğrafi çoğaltılan ikinciye bağlanma**
+- **Connect directly to geo-replicated secondary for read-only queries**
 
-  Verilerin belirli bir şekilde kullanılması için dayanıklı bir mantıksal olarak yalıtılmış salt okunurdur, uygulamadaki ikincil veritabanını kullanabilirsiniz. Coğrafi olarak çoğaltılan ikinciye doğrudan bağlanmak için `server.secondary.zone_id.database.windows.net` sunucu URL 'SI olarak kullanın ve bağlantı doğrudan coğrafi çoğaltılan ikincil öğesine yapılır.
+  If you have a logically isolated read-only workload that is tolerant to certain staleness of data, you can use the secondary database in the application. To connect directly to the geo-replicated secondary, use `server.secondary.zone_id.database.windows.net` as the server URL and the connection is made directly to the geo-replicated secondary.
 
   > [!NOTE]
-  > Bazı hizmet katmanlarında Azure SQL veritabanı, salt okunurdur ve salt okuma sorgusu yükünü [dengelemek için salt okunurdur ve](sql-database-read-scale-out.md) bağlantı dizesindeki `ApplicationIntent=ReadOnly` parametresini kullanarak salt okunurdur. Coğrafi olarak çoğaltılan bir ikincil yapılandırdığınız zaman, birincil konumdaki veya coğrafi olarak çoğaltılan konumdaki salt okunurdur bir kopyaya bağlanmak için bu özelliği kullanabilirsiniz.
-  > - Birincil konumdaki bir salt tanımlı çoğaltmaya bağlanmak için `<fog-name>.zone_id.database.windows.net`kullanın.
-  > - İkincil konumdaki bir salt okuma çoğaltmasına bağlanmak için `<fog-name>.secondary.zone_id.database.windows.net`kullanın.
+  > In certain service tiers, Azure SQL Database supports the use of [read-only replicas](sql-database-read-scale-out.md) to load balance read-only query workloads using the capacity of one read-only replica and using the `ApplicationIntent=ReadOnly` parameter in the connection string. When you have configured a geo-replicated secondary, you can use this capability to connect to either a read-only replica in the primary location or in the geo-replicated location.
+  > - To connect to a read-only replica in the primary location, use `<fog-name>.zone_id.database.windows.net`.
+  > - To connect to a read-only replica in the secondary location, use `<fog-name>.secondary.zone_id.database.windows.net`.
 
-- **Performans düşüklüğüne hazırlıklı olun**
+- **Be prepared for perf degradation**
 
-  SQL yük devretme kararı, uygulamanın geri kalanından veya kullanılan diğer hizmetlerden bağımsızdır. Uygulama bir bölgedeki bazı bileşenlerle ve bazıları başka bir bölgede "karışık" olabilir. Azalmadan kaçınmak için, DR bölgesinde yedekli uygulama dağıtımını doğrulayın ve bu [ağ güvenlik yönergelerini](#failover-groups-and-network-security)izleyin.
+  SQL failover decision is independent from the rest of the application or other services used. The application may be “mixed” with some components in one region and some in another. To avoid the degradation, ensure the redundant application deployment in the DR region and follow these [network security guidelines](#failover-groups-and-network-security).
 
-- **Veri kaybına hazırlanma**
+- **Prepare for data loss**
 
-  Bir kesinti algılanırsa, en iyisi hakkında hiç veri kaybı yoksa, SQL otomatik olarak okuma-yazma yük devretmesini tetikler. Aksi takdirde, `GracePeriodWithDataLossHours`belirttiğiniz dönemi bekler. `GracePeriodWithDataLossHours`belirlediyseniz, veri kaybı için hazırlıklı olun. Genel olarak, kesintiler sırasında Azure kullanılabilirliği tercih eder. Veri kaybını uygun hale getirmek için GracePeriodWithDataLossHours, 24 saat gibi yeterince büyük bir sayı olarak ayarladığınızdan emin olun.
+  If an outage is detected, SQL automatically triggers read-write failover if there is zero data loss to the best of our knowledge. Otherwise, it waits for the period you specified by `GracePeriodWithDataLossHours`. If you specified `GracePeriodWithDataLossHours`, be prepared for data loss. In general, during outages, Azure favors availability. If you cannot afford data loss, make sure to set GracePeriodWithDataLossHours to a sufficiently large number, such as 24 hours.
 
-  Okuma-yazma dinleyicisinin DNS güncelleştirmesi, yük devretme başlatıldıktan hemen sonra gerçekleşir. Bu işlem, veri kaybına neden olmaz. Ancak, veritabanı rollerini değiştirme işlemi normal koşullarda 5 dakikaya kadar sürebilir. Tamamlanana kadar, yeni birincil örnekteki bazı veritabanları hala salt okunurdur. Yük devretme PowerShell kullanılarak başlatılmışsa, tüm işlem zaman uyumludur. Azure portal kullanılarak başlatılmışsa, Kullanıcı arabirimi tamamlanma durumunu gösterir. REST API kullanılarak başlatılmışsa, tamamlamayı izlemek için standart Azure Resource Manager yoklama mekanizmasını kullanın.
+  The DNS update of the read-write listener will happen immediately after the failover is initiated. This operation will not result in data loss. However, the process of switching database roles can take up to 5 minutes under normal conditions. Until it is completed, some databases in the new primary instance will still be read-only. If failover is initiated using PowerShell, the entire operation is synchronous. If it is initiated using the Azure portal, the UI will indicate completion status. If it is initiated using the REST API, use standard Azure Resource Manager’s polling mechanism to monitor for completion.
 
   > [!IMPORTANT]
-  > El ile grup yük devretmesini kullanarak özgün konuma doğru bir şekilde geçiş yapın. Yük devretmeye neden olan kesinti azaltıldığında, birincil veritabanlarınızı özgün konuma taşıyabilirsiniz. Bunu yapmak için, grubun el ile yük devretmesini başlatmanız gerekir.
+  > Use manual group failover to move primaries back to the original location. When the outage that caused the failover is mitigated, you can move your primary databases to the original location. To do that you should initiate the manual failover of the group.
 
-- **Yük devretme gruplarının bilinen sınırlamalarını Onayla**
+- **Acknowledge known limitations of failover groups**
 
-  Veritabanı yeniden adlandırma, yük devretme grubundaki örneklerde desteklenmez. Bir veritabanını yeniden adlandırabilmek için yük devretme grubunu geçici olarak silmeniz gerekir.
+  Database rename is not supported for instances in failover group. You will need to temporarily delete failover group to be able to rename a database.
 
-## <a name="failover-groups-and-network-security"></a>Yük devretme grupları ve ağ güvenliği
+## <a name="failover-groups-and-network-security"></a>Failover groups and network security
 
-Bazı uygulamalarda, güvenlik kuralları, veri katmanına ağ erişiminin bir VM, Web hizmeti vb. gibi belirli bir bileşenle veya bileşenlerle sınırlı olmasını gerektirir. Bu gereksinim, iş sürekliliği tasarımı ve yük devretme gruplarının kullanımı için bazı güçlükleri sunmaktadır. Bu tür kısıtlı erişimi uygularken aşağıdaki seçenekleri göz önünde bulundurun.
+For some applications the security rules require that the network access to the data tier is restricted to a specific component or components such as a VM, web service etc. This requirement presents some challenges for business continuity design and the use of the failover groups. Consider the following options when implementing such restricted access.
 
-### <a name="using-failover-groups-and-virtual-network-rules"></a>Yük devretme gruplarını ve sanal ağ kurallarını kullanma
+### <a name="using-failover-groups-and-virtual-network-rules"></a>Using failover groups and virtual network rules
 
-SQL veritabanınıza erişimi kısıtlamak için [sanal ağ hizmet uç noktaları ve kuralları](sql-database-vnet-service-endpoint-rule-overview.md) kullanıyorsanız, her bir sanal ağ hizmeti uç noktasının yalnızca bir Azure bölgesi için geçerli olduğunu unutmayın. Uç nokta diğer bölgelerin alt ağdan iletişim kabul etmesine izin vermez. Bu nedenle, yalnızca aynı bölgede dağıtılan istemci uygulamaları birincil veritabanına bağlanabilir. Yük devretme işlemi SQL istemci oturumlarının farklı bir (ikincil) bölgedeki bir sunucuya tekrar yönlendirilmesine neden olduğundan, Bu oturumlar söz konusu bölgenin dışındaki bir istemciden kaynaklandığından başarısız olur. Bu nedenle, katılan sunucular sanal ağ kurallarında yer alıyorsa otomatik yük devretme ilkesi etkinleştirilemez. El ile yük devretmeyi desteklemek için şu adımları izleyin:
+If you are using [Virtual Network service endpoints and rules](sql-database-vnet-service-endpoint-rule-overview.md) to restrict access to your SQL database, be aware that Each Virtual Network service endpoint applies to only one Azure region. The endpoint does not enable other regions to accept communication from the subnet. Therefore, only the client applications deployed in the same region can connect to the primary database. Since the failover results in the SQL client sessions being rerouted to a server in a different (secondary) region, these sessions will fail if originated from a client outside of that region. For that reason, the automatic failover policy cannot be enabled if the participating servers are included in the Virtual Network rules. To support manual failover, follow these steps:
 
-1. Uygulamanızın ön uç bileşenlerinin (Web hizmeti, sanal makineler vb.) yedek kopyalarını ikincil bölgede sağlama
-2. [Sanal ağ kurallarını](sql-database-vnet-service-endpoint-rule-overview.md) birincil ve ikincil sunucu için ayrı ayrı yapılandırın
-3. [Traffic Manager yapılandırması kullanarak ön uç yük devretmesini](sql-database-designing-cloud-solutions-for-disaster-recovery.md#scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime) etkinleştirme
-4. Kesinti algılandığında el ile yük devretme başlatın. Bu seçenek, ön uç ve veri katmanı arasında tutarlı gecikme süresi gerektiren uygulamalar için en iyi duruma getirilmiştir ve ön uç, veri katmanı veya her ikisi de kesinti tarafından etkilendiğinde kurtarmayı destekler.
+1. Provision the redundant copies of the front-end components of your application (web service, virtual machines etc.) in the secondary region
+2. Configure the [virtual network rules](sql-database-vnet-service-endpoint-rule-overview.md) individually for primary and secondary server
+3. Enable the [front-end failover using a Traffic manager configuration](sql-database-designing-cloud-solutions-for-disaster-recovery.md#scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime)
+4. Initiate manual failover when the outage is detected. This option is optimized for the applications that require consistent latency between the front-end and the data tier and supports recovery when either front end, data tier or both are impacted by the outage.
 
 > [!NOTE]
-> Salt yazılır bir iş yükünü dengelemek için **salt okunurdur dinleyiciyi** kullanıyorsanız, ikincil veritabanına bağlanabilmesi için bu iş yükünün ikincil BÖLGEDEKI bir VM 'de veya diğer bir kaynakta yürütüldüğünden emin olun.
+> If you are using the **read-only listener** to load-balance a read-only workload, make sure that this workload is executed in a VM or other resource in the secondary region so it can connect to the secondary database.
 
-### <a name="using-failover-groups-and-sql-database-firewall-rules"></a>Yük devretme gruplarını ve SQL veritabanı güvenlik duvarı kurallarını kullanma
+### <a name="using-failover-groups-and-sql-database-firewall-rules"></a>Using failover groups and SQL database firewall rules
 
-İş sürekliliği planınız, otomatik yük devretme içeren grupları kullanarak yük devretme gerektiriyorsa, geleneksel güvenlik duvarı kurallarını kullanarak SQL veritabanınıza erişimi kısıtlayabilirsiniz.  Otomatik yük devretmeyi desteklemek için şu adımları izleyin:
+If your business continuity plan requires failover using groups with automatic failover, you can restrict access to your SQL database using the traditional firewall rules. To support automatic failover, follow these steps:
 
-1. [Genel IP oluşturma](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)
-2. [Ortak yük dengeleyici oluşturun](../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-a-basic-load-balancer) ve genel IP 'yi buna atayın.
-3. Ön uç bileşenleriniz için [bir sanal ağ ve sanal makine oluşturma](../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-back-end-servers)
-4. [Ağ güvenlik grubu oluşturun](../virtual-network/security-overview.md) ve gelen bağlantıları yapılandırın.
-5. Giden bağlantıların ' SQL ' [hizmet etiketi](../virtual-network/security-overview.md#service-tags)KULLANıLARAK Azure SQL veritabanı 'na açık olduğundan emin olun.
-6. Adım 1 ' de oluşturduğunuz genel IP adresinden gelen trafiğe izin vermek için bir [SQL veritabanı güvenlik duvarı kuralı](sql-database-firewall-configure.md) oluşturun.
+1. [Create a public IP](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)
+2. [Create a public load balancer](../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-a-basic-load-balancer) and assign the public IP to it.
+3. [Create a virtual network and the virtual machines](../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-back-end-servers) for your front-end components
+4. [Create network security group](../virtual-network/security-overview.md) and configure inbound connections.
+5. Ensure that the outbound connections are open to Azure SQL database by using ‘Sql’ [service tag](../virtual-network/security-overview.md#service-tags).
+6. Create a [SQL database firewall rule](sql-database-firewall-configure.md) to allow inbound traffic from the public IP address you create in step 1.
 
-Giden erişimin nasıl yapılandırılacağı ve güvenlik duvarı kurallarında hangi IP 'nin kullanılacağı hakkında daha fazla bilgi için bkz. [yük dengeleyici giden bağlantıları](../load-balancer/load-balancer-outbound-connections.md).
+For more information about on how to configure outbound access and what IP to use in the firewall rules, see [Load balancer outbound connections](../load-balancer/load-balancer-outbound-connections.md).
 
-Yukarıdaki yapılandırma, otomatik yük devretmenin ön uç bileşenlerinden gelen bağlantıları engelolmamasını ve uygulamanın ön uç ile veri katmanı arasındaki daha uzun gecikme süresine neden olduğunu varsaymaktadır.
+The above configuration will ensure that the automatic failover will not block connections from the front-end components and assumes that the application can tolerate the longer latency between the front end and the data tier.
 
 > [!IMPORTANT]
-> Bölgesel kesintiler için iş sürekliliği sağlamak üzere hem ön uç bileşenleri hem de veritabanları için coğrafi artıklık sağlamalısınız.
+> To guarantee business continuity for regional outages you must ensure geographic redundancy for both front-end components and the databases.
 
-## <a name="enabling-geo-replication-between-managed-instances-and-their-vnets"></a>Yönetilen örnekler ve bunların sanal ağları arasında Coğrafi çoğaltmayı etkinleştirme
+## <a name="enabling-geo-replication-between-managed-instances-and-their-vnets"></a>Enabling geo-replication between managed instances and their VNets
 
-İki farklı bölgede birincil ve ikincil yönetilen örnekler arasında bir yük devretme grubu ayarlarken, her örnek bağımsız bir sanal ağ kullanılarak yalıtılmıştır. Bu sanal ağlar arasındaki çoğaltma trafiğine izin vermek için bu önkoşulların karşılandığından emin olun:
+When you set up a failover group between primary and secondary managed instances in two different regions, each instance is isolated using an independent virtual network. To allow replication traffic between these VNets ensure these prerequisites are met:
 
-1. İki yönetilen örnek farklı Azure bölgelerinde olmalıdır.
-1. İki yönetilen örneğinin aynı hizmet katmanı olması gerekir ve aynı depolama boyutuna sahip olmalıdır. 
-1. İkincil yönetilen örneğinizin boş olması gerekir (Kullanıcı veritabanı yok).
-1. Yönetilen örneklerin kullandığı sanal ağların bir [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) veya Express Route ile bağlanması gerekir. İki sanal ağ, şirket içi bir ağla bağlandığında, 5022 ve 11000-11999 bağlantı noktalarını engelleyen bir güvenlik duvarı kuralı bulunmadığından emin olun. Küresel VNet eşlemesi desteklenmiyor.
-1. İki yönetilen örnek sanal ağ, çakışan IP adreslerine sahip olamaz.
-1. Ağ güvenlik gruplarınızı (NSG), bağlantı noktaları 5022 ve 11000 ~ 12000 aralığı, diğer yönetilen ınstanced alt ağından gelen bağlantılar için açık ve giden olarak ayarlamanız gerekir. Bu, örnekler arasında çoğaltma trafiğine izin vermek için kullanılır
+1. The two managed instances need to be in different Azure regions.
+1. The two managed instances need to be the same service tier, and have the same storage size.
+1. Your secondary managed instance must be empty (no user databases).
+1. The virtual networks used by the managed instances need to be connected through a [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) or Express Route. When two virtual networks connect through an on-premises network, ensure there is no firewall rule blocking ports 5022, and 11000-11999. Global VNet Peering is not supported.
+1. The two managed instance VNets cannot have overlapping IP addresses.
+1. You need to set up your Network Security Groups (NSG) such that ports 5022 and the range 11000~12000 are open inbound and outbound for connections from the other managed instanced subnet. This is to allow replication traffic between the instances
 
    > [!IMPORTANT]
-   > Yanlış yapılandırılmış NSG güvenlik kuralları, veritabanı kopyalama işlemlerinin takılmasına yol açar.
+   > Misconfigured NSG security rules leads to stuck database copy operations.
 
-7. İkincil örnek, doğru DNS bölge KIMLIĞIYLE yapılandırılır. DNS bölgesi, yönetilen bir örnek ve sanal kümenin bir özelliğidir ve KIMLIĞI ana bilgisayar adı adresine dahil edilir. Bölge KIMLIĞI, her VNet 'te ilk yönetilen örnek oluşturulduğunda rastgele bir dize olarak oluşturulur ve aynı KIMLIK aynı alt ağdaki diğer tüm örneklere atanır. Atandıktan sonra DNS bölgesi değiştirilemez. Aynı yük devretme grubuna dahil edilen yönetilen örnekler, DNS bölgesini paylaşmalıdır. Bu, ikincil örneği oluştururken birinci örneğin bölge KIMLIĞINI DnsZonePartner parametresinin değeri olarak geçirerek gerçekleştirirsiniz. 
+1. The secondary instance is configured with the correct DNS zone ID. DNS zone is a property of a managed instance and virtual cluster, and its ID is included in the host name address. The zone ID is generated as a random string when the first managed instance is created in each VNet and the same ID is assigned to all other instances in the same subnet. Once assigned, the DNS zone cannot be modified. Managed instances included in the same failover group must share the DNS zone. You accomplish this by passing the primary instance's zone ID as the value of DnsZonePartner parameter when creating the secondary instance. 
 
    > [!NOTE]
-   > Yönetilen örnek ile yük devretme gruplarını yapılandırmaya ilişkin ayrıntılı bir öğretici için bkz. [bir yük devretme grubuna yönetilen örnek ekleme](sql-database-managed-instance-failover-group-tutorial.md).
+   > For a detailed tutorial on configuring failover groups with managed instance, see [add a managed instance to a failover group](sql-database-managed-instance-failover-group-tutorial.md).
 
-## <a name="upgrading-or-downgrading-a-primary-database"></a>Birincil veritabanını yükseltme veya eski sürüme indirme
+## <a name="upgrading-or-downgrading-a-primary-database"></a>Upgrading or downgrading a primary database
 
-İkincil veritabanlarının bağlantısını kesmeden, birincil veritabanını farklı bir işlem boyutuna yükseltebilir veya indirgeyebilmeniz gerekir (Genel Amaçlı ve İş Açısından Kritik arasında değil aynı hizmet katmanında). ' Yi yükseltirken, önce tüm ikincil veritabanlarını yükseltmeniz ve ardından birincili yükseltmeniz önerilir. Düşürme sırasında, sırayı tersine çevirin: önce birincili düşürme ve sonra tüm ikincil veritabanlarının düzeyini düşürme. Veritabanını yükseltirken veya farklı bir hizmet katmanına indirgemeniz durumunda, bu öneri zorlanır.
+You can upgrade or downgrade a primary database to a different compute size (within the same service tier, not between General Purpose and Business Critical) without disconnecting any secondary databases. When upgrading, we recommend that you upgrade all of the secondary databases first, and then upgrade the primary. When downgrading, reverse the order: downgrade the primary first, and then downgrade all of the secondary databases. When you upgrade or downgrade the database to a different service tier, this recommendation is enforced.
 
-Bu dizi, daha düşük bir SKU 'daki ikincil öğenin aşırı yüklendiği ve yükseltme veya düşürme işlemi sırasında yeniden hazırlanması gereken sorunlardan kaçınmak için özellikle önerilir. Birincil olarak salt okuma yaparak, tüm okuma/yazma iş yüklerini birincili etkileyen masrafına göre de sorunu önleyebilirsiniz. 
-
-> [!NOTE]
-> İkincil veritabanını yük devretme grubu yapılandırmasının bir parçası olarak oluşturduysanız, ikincil veritabanının indirgenmesini öneririz. Bu, veri katmanınızın yük devretme etkinleştirildikten sonra düzenli iş yükünüzü işlemek için yeterli kapasiteye sahip olmasını sağlamaktır.
-
-## <a name="preventing-the-loss-of-critical-data"></a>Kritik verilerin kaybını önlemek
-
-Geniş alan ağlarının yüksek gecikmesi nedeniyle, sürekli kopyalama zaman uyumsuz bir çoğaltma mekanizması kullanır. Zaman uyumsuz çoğaltma, bir hata oluşursa, bazı veri kaybını korumasız hale getirir. Ancak, bazı uygulamalar veri kaybı gerektirmez. Bu kritik güncelleştirmeleri korumak için, bir uygulama geliştiricisi işlemi tamamladıktan hemen sonra [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) sistem yordamını çağırabilir. `sp_wait_for_database_copy_sync` çağırmak, son kaydedilen işlem ikincil veritabanına iletilene kadar çağıran iş parçacığını engeller. Ancak, iletilen işlemlerin yeniden çalınmasını ve ikincil üzerinde gerçekleşmesini beklemez. `sp_wait_for_database_copy_sync`, belirli bir sürekli kopyalama bağlantısının kapsamına alınır. Birincil veritabanında bağlantı hakları olan herhangi bir Kullanıcı, bu yordamı çağırabilir.
+This sequence is recommended specifically to avoid the problem where the secondary at a lower SKU gets overloaded and must be re-seeded during an upgrade or downgrade process. You could also avoid the problem by making the primary read-only, at the expense of impacting all read-write workloads against the primary.
 
 > [!NOTE]
-> `sp_wait_for_database_copy_sync` yük devretmeden sonra veri kaybını önler, ancak okuma erişimi için tam eşitlemeyi garanti etmez. `sp_wait_for_database_copy_sync` yordam çağrısının neden olduğu gecikme önemli olabilir ve çağrı sırasında işlem günlüğünün boyutuna bağlıdır.
+> If you created secondary database as part of the failover group configuration it is not recommended to downgrade the secondary database. This is to ensure your data tier has sufficient capacity to process your regular workload after failover is activated.
 
-## <a name="failover-groups-and-point-in-time-restore"></a>Yük devretme grupları ve zaman içinde bir noktaya geri yükleme
+## <a name="preventing-the-loss-of-critical-data"></a>Preventing the loss of critical data
 
-Yük devretme gruplarıyla noktadan noktaya geri yükleme kullanma hakkında daha fazla bilgi için bkz. [Noktadan noktaya kurtarma (sür)](sql-database-recovery-using-backups.md#point-in-time-restore).
+Due to the high latency of wide area networks, continuous copy uses an asynchronous replication mechanism. Asynchronous replication makes some data loss unavoidable if a failure occurs. However, some applications may require no data loss. To protect these critical updates, an application developer can call the [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) system procedure immediately after committing the transaction. Calling `sp_wait_for_database_copy_sync` blocks the calling thread until the last committed transaction has been transmitted to the secondary database. However, it does not wait for the transmitted transactions to be replayed and committed on the secondary. `sp_wait_for_database_copy_sync` is scoped to a specific continuous copy link. Any user with the connection rights to the primary database can call this procedure.
 
-## <a name="programmatically-managing-failover-groups"></a>Yük devretme gruplarını programlı olarak yönetme
+> [!NOTE]
+> `sp_wait_for_database_copy_sync` prevents data loss after failover, but does not guarantee full synchronization for read access. The delay caused by a `sp_wait_for_database_copy_sync` procedure call can be significant and depends on the size of the transaction log at the time of the call.
 
-Daha önce anlatıldığı gibi otomatik yük devretme grupları ve etkin coğrafi çoğaltma de Azure PowerShell ve REST API kullanılarak programlı bir şekilde yönetilebilir. Aşağıdaki tablolarda kullanılabilen komut kümesi açıklanır. Etkin coğrafi çoğaltma, [Azure SQL veritabanı REST API](https://docs.microsoft.com/rest/api/sql/) ve [Azure PowerShell cmdlet 'leri](https://docs.microsoft.com/powershell/azure/overview)dahil olmak üzere yönetim için Azure Resource Manager API 'ler kümesi içerir. Bu API 'Ler, kaynak gruplarının kullanımını gerektirir ve rol tabanlı güvenliği (RBAC) destekler. Erişim rollerinin nasıl uygulanacağı hakkında daha fazla bilgi için bkz. [Azure rol tabanlı Access Control](../role-based-access-control/overview.md).
+## <a name="failover-groups-and-point-in-time-restore"></a>Failover groups and point-in-time restore
 
-### <a name="powershell-manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>PowerShell: tek veritabanları ve elastik havuzlarla SQL veritabanı yük devretmesini yönetme
+For information about using point-in-time restore with failover groups, see [Point in Time Recovery (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore).
+
+## <a name="programmatically-managing-failover-groups"></a>Programmatically managing failover groups
+
+As discussed previously, auto-failover groups and active geo-replication can also be managed programmatically using Azure PowerShell and the REST API. The following tables describe the set of commands available. Active geo-replication includes a set of Azure Resource Manager APIs for management, including the [Azure SQL Database REST API](https://docs.microsoft.com/rest/api/sql/) and [Azure PowerShell cmdlets](https://docs.microsoft.com/powershell/azure/overview). These APIs require the use of resource groups and support role-based security (RBAC). For more information on how to implement access roles, see [Azure Role-Based Access Control](../role-based-access-control/overview.md).
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
+### <a name="manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>Manage SQL database failover with single databases and elastic pools
 
 | Cmdlet | Açıklama |
 | --- | --- |
-| [New-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabasefailovergroup) |Bu komut bir yük devretme grubu oluşturur ve hem birincil hem de ikincil sunuculara kaydeder|
-| [Remove-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | Yük devretme grubunu sunucudan kaldırır ve grubun içerdiği tüm ikincil veritabanlarını siler |
-| [Get-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Yük devretme grubu yapılandırmasını alır |
-| [Set-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasefailovergroup) |Yük devretme grubunun yapılandırmasını değiştirir |
-| [Switch-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/switch-azsqldatabasefailovergroup) | Yük devretme grubunun ikincil sunucuya yük devretmesini tetikler |
-| [Add-AzSqlDatabaseToFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/add-azsqldatabasetofailovergroup)|Bir Azure SQL veritabanı yük devretme grubuna bir veya daha fazla veritabanı ekler|
-|  | |
+| [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) |This command creates a failover group and registers it on both primary and secondary servers|
+| [Remove-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | Removes the failover group from the server and deletes all secondary databases included the group |
+| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Retrieves the failover group configuration |
+| [Set-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/set-azsqldatabasefailovergroup) |Modifies the configuration of the failover group |
+| [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) | Triggers failover of the failover group to the secondary server |
+| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup)|Adds one or more databases to an Azure SQL Database failover group|
+
+### <a name="manage-sql-database-failover-groups-with-managed-instances"></a>Manage SQL database failover groups with managed instances
+
+| Cmdlet | Açıklama |
+| --- | --- |
+| [New-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup) |This command creates a failover group and registers it on both primary and secondary servers|
+| [Set-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |Modifies the configuration of the failover group|
+| [Get-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) |Retrieves the failover group configuration|
+| [Switch-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) |Triggers failover of the failover group to the secondary server|
+| [Remove-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/remove-azsqldatabaseinstancefailovergroup) | Removes a failover group|
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+### <a name="manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>Manage SQL database failover with single databases and elastic pools
+
+| Komut | Açıklama |
+| --- | --- |
+| [az sql failover-group create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |This command creates a failover group and registers it on both primary and secondary servers|
+| [az sql failover-group delete](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | Removes the failover group from the server and deletes all secondary databases included the group |
+| [az sql failover-group show](/cli/azure/sql/failover-group#az-sql-failover-group-show) | Retrieves the failover group configuration |
+| [az sql failover-group update](/cli/azure/sql/failover-group#az-sql-failover-group-update) |Modifies the configuration of the failover group and/or adds one or more databases to an Azure SQL Database failover group|
+| [az sql failover-group set-primary](/cli/azure/sql/failover-group#az-sql-failover-group-set-primary) | Triggers failover of the failover group to the secondary server |
+
+### <a name="manage-sql-database-failover-groups-with-managed-instances"></a>Manage SQL database failover groups with managed instances
+
+| Komut | Açıklama |
+| --- | --- |
+| [az sql instance-failover-group create](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-create) | This command creates a failover group and registers it on both primary and secondary servers|
+| [az sql instance-failover-group update](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-update) | Modifies the configuration of the failover group|
+| [az sql instance-failover-group show](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-show) | Retrieves the failover group configuration|
+| [az sql instance-failover-group set-primary](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-set-primary) | Triggers failover of the failover group to the secondary server|
+| [az sql instance-failover-group delete](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-delete) | Removes a failover group |
+
+* * *
 
 > [!IMPORTANT]
-> Örnek betik için bkz. [tek bir veritabanı için yük devretme grubunu yapılandırma ve yük devretme](scripts/sql-database-add-single-db-to-failover-group-powershell.md).
->
+> For a sample script, see [Configure and failover a failover group for a single database](scripts/sql-database-add-single-db-to-failover-group-powershell.md).
 
-### <a name="powershell-managing-sql-database-failover-groups-with-managed-instances"></a>PowerShell: yönetilen örneklerle SQL veritabanı yük devretme gruplarını yönetme 
+### <a name="rest-api-manage-sql-database-failover-groups-with-single-and-pooled-databases"></a>REST API: Manage SQL database failover groups with single and pooled databases
 
-| Cmdlet | Açıklama |
+| eklentisi | Açıklama |
 | --- | --- |
-| [New-Azsqldatabaseınstancefailovergroup](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup) |Bu komut bir yük devretme grubu oluşturur ve hem birincil hem de ikincil sunuculara kaydeder|
-| [Set-Azsqldatabaseınstancefailovergroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |Yük devretme grubunun yapılandırmasını değiştirir|
-| [Get-Azsqldatabaseınstancefailovergroup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) |Yük devretme grubu yapılandırmasını alır|
-| [Switch-Azsqldatabaseınstancefailovergroup](https://docs.microsoft.com/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) |Yük devretme grubunun ikincil sunucuya yük devretmesini tetikler|
-| [Remove-Azsqldatabaseınstancefailovergroup](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabaseinstancefailovergroup) | Yük devretme grubunu kaldırır|
-|  | |
+| [Create or Update Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | Creates or updates a failover group |
+| [Delete Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | Removes the failover group from the server |
+| [Failover (Planned)](https://docs.microsoft.com/rest/api/sql/failovergroups/failover) | Fails over from the current primary server to this server. |
+| [Force Failover Allow Data Loss](https://docs.microsoft.com/rest/api/sql/failovergroups/forcefailoverallowdataloss) |ails over from the current primary server to this server. This operation might result in data loss. |
+| [Get Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/get) | Gets a failover group. |
+| [List Failover Groups By Server](https://docs.microsoft.com/rest/api/sql/failovergroups/listbyserver) | Lists the failover groups in a server. |
+| [Update Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/update) | Updates a failover group. |
 
-### <a name="rest-api-manage-sql-database-failover-groups-with-single-and-pooled-databases"></a>REST API: SQL veritabanı yük devretme gruplarını tek ve havuza alınmış veritabanlarıyla yönetme
+### <a name="rest-api-manage-failover-groups-with-managed-instances"></a>REST API: Manage failover groups with Managed Instances
 
-| API | Açıklama |
+| eklentisi | Açıklama |
 | --- | --- |
-| [Yük devretme grubu oluştur veya güncelleştir](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | Yük devretme grubu oluşturur veya güncelleştirir |
-| [Yük devretme grubunu sil](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | Yük devretme grubunu sunucudan kaldırır |
-| [Yük devretme (planlı)](https://docs.microsoft.com/rest/api/sql/failovergroups/failover) | Geçerli birincil sunucudan bu sunucuya devreder. |
-| [Yük devretmeyi zorla veri kaybına Izin ver](https://docs.microsoft.com/rest/api/sql/failovergroups/forcefailoverallowdataloss) |Bu sunucuya geçerli birincil sunucudan gelen ILS. Bu işlem, veri kaybına neden olabilir. |
-| [Yük devretme grubunu al](https://docs.microsoft.com/rest/api/sql/failovergroups/get) | Bir yük devretme grubu alır. |
-| [Yük devretme gruplarını sunucuya göre Listele](https://docs.microsoft.com/rest/api/sql/failovergroups/listbyserver) | Bir sunucudaki yük devretme gruplarını listeler. |
-| [Yük devretme grubunu Güncelleştir](https://docs.microsoft.com/rest/api/sql/failovergroups/update) | Bir yük devretme grubunu güncelleştirir. |
-|  | |
-
-### <a name="rest-api-manage-failover-groups-with-managed-instances"></a>REST API: yönetilen örneklerle yük devretme gruplarını yönetme
-
-| API | Açıklama |
-| --- | --- |
-| [Yük devretme grubu oluştur veya güncelleştir](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | Yük devretme grubu oluşturur veya güncelleştirir |
-| [Yük devretme grubunu sil](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | Yük devretme grubunu sunucudan kaldırır |
-| [Yük devretme (planlı)](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/failover) | Geçerli birincil sunucudan bu sunucuya devreder. |
-| [Yük devretmeyi zorla veri kaybına Izin ver](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/forcefailoverallowdataloss) |Bu sunucuya geçerli birincil sunucudan gelen ILS. Bu işlem, veri kaybına neden olabilir. |
-| [Yük devretme grubunu al](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/get) | Bir yük devretme grubu alır. |
-| [Yük devretme gruplarını listeleme-konuma göre listeleme](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/listbylocation) | Bir konumdaki yük devretme gruplarını listeler. |
+| [Create or Update Failover Group](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | Creates or updates a failover group |
+| [Delete Failover Group](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | Removes the failover group from the server |
+| [Failover (Planned)](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/failover) | Fails over from the current primary server to this server. |
+| [Force Failover Allow Data Loss](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/forcefailoverallowdataloss) |ails over from the current primary server to this server. This operation might result in data loss. |
+| [Get Failover Group](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/get) | Gets a failover group. |
+| [List Failover Groups - List By Location](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/listbylocation) | Lists the failover groups in a location. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Ayrıntılı öğreticiler için bkz.
-    - [Yük devretme grubuna tek veritabanı ekleme](sql-database-single-database-failover-group-tutorial.md)
-    - [Bir yük devretme grubuna elastik havuz ekleme](sql-database-elastic-pool-failover-group-tutorial.md)
-    - [Bir yük devretme grubuna yönetilen örnek ekleme](sql-database-managed-instance-failover-group-tutorial.md)
-- Örnek betikler için bkz.:
-  - [Azure SQL veritabanı 'nda tek bir veritabanı için etkin Coğrafi çoğaltmayı yapılandırmak üzere PowerShell 'i kullanma](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
-  - [Azure SQL veritabanı 'nda havuza alınmış bir veritabanı için etkin Coğrafi çoğaltmayı yapılandırmak için PowerShell 'i kullanma](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
-  - [PowerShell kullanarak bir yük devretme grubuna Azure SQL veritabanı tek veritabanı ekleme](scripts/sql-database-add-single-db-to-failover-group-powershell.md)
-- İş sürekliliği için genel bakış ve senaryolar için bkz. [iş sürekliliği genel bakış](sql-database-business-continuity.md)
-- Azure SQL veritabanı otomatik yedeklemeleri hakkında bilgi edinmek için bkz. [SQL veritabanı otomatik yedeklemeleri](sql-database-automated-backups.md).
-- Kurtarmaya yönelik otomatik yedeklemeleri kullanma hakkında bilgi edinmek için bkz. [hizmet tarafından başlatılan yedeklemelerden bir veritabanını geri yükleme](sql-database-recovery-using-backups.md).
-- Yeni bir birincil sunucu ve veritabanına yönelik kimlik doğrulama gereksinimleri hakkında bilgi edinmek için, bkz. [olağanüstü durum kurtarma sonrasında SQL veritabanı güvenliği](sql-database-geo-replication-security-config.md).
+- For detailed tutorials, see
+    - [Add single database to a failover group](sql-database-single-database-failover-group-tutorial.md)
+    - [Add elastic pool to a failover group](sql-database-elastic-pool-failover-group-tutorial.md)
+    - [Add a managed instance to a failover group](sql-database-managed-instance-failover-group-tutorial.md)
+- For sample scripts, see:
+  - [Use PowerShell to configure active geo-replication for a single database in Azure SQL Database](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
+  - [Use PowerShell to configure active geo-replication for a pooled database in Azure SQL Database](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
+  - [Use PowerShell to add an Azure SQL Database single database to a failover group](scripts/sql-database-add-single-db-to-failover-group-powershell.md)
+- For a business continuity overview and scenarios, see [Business continuity overview](sql-database-business-continuity.md)
+- To learn about Azure SQL Database automated backups, see [SQL Database automated backups](sql-database-automated-backups.md).
+- To learn about using automated backups for recovery, see [Restore a database from the service-initiated backups](sql-database-recovery-using-backups.md).
+- To learn about authentication requirements for a new primary server and database, see [SQL Database security after disaster recovery](sql-database-geo-replication-security-config.md).

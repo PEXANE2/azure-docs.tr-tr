@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: tek sayfalı bir uygulamada kimlik doğrulamasını etkinleştirme-Azure Active Directory B2C'
-description: Tek sayfalı uygulama (JavaScript) için Kullanıcı oturumu açma sağlamak üzere Azure Active Directory B2C nasıl kullanacağınızı öğrenin.
+title: Tutorial - Enable authentication in a single-page application - Azure Active Directory B2C
+description: In this tutorial, learn how to use Azure Active Directory B2C to provide user login for a single page application (JavaScript).
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,72 +10,72 @@ ms.custom: mvc, seo-javascript-september2019
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: f9e4f25c5750ae5c48130140f49f986e20adc745
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 8ece6401484d8f32483d4673384fcce6d7afac4a
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73641768"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420347"
 ---
-# <a name="tutorial-enable-authentication-in-a-single-page-application-using-azure-active-directory-b2c-azure-ad-b2c"></a>Öğretici: Azure Active Directory B2C kullanarak tek sayfalı bir uygulamada kimlik doğrulamasını etkinleştirme (Azure AD B2C)
+# <a name="tutorial-enable-authentication-in-a-single-page-application-using-azure-active-directory-b2c-azure-ad-b2c"></a>Tutorial: Enable authentication in a single-page application using Azure Active Directory B2C (Azure AD B2C)
 
-Bu öğreticide, tek sayfalı bir uygulamada (SPA) oturum açmak ve kullanıcıları kaydolmak için Azure Active Directory B2C (Azure AD B2C) nasıl kullanılacağı gösterilmektedir. Azure AD B2C, uygulamalarınızın, açık standart protokoller kullanarak sosyal hesaplar, kurumsal hesaplar ve Azure Active Directory hesaplar için kimlik doğrulaması yapmasına olanak sağlar.
+This tutorial shows you how to use Azure Active Directory B2C (Azure AD B2C) to sign in and sign up users in a single-page application (SPA). Azure AD B2C enables your applications to authenticate to social accounts, enterprise accounts, and Azure Active Directory accounts using open standard protocols.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Azure AD B2C içinde uygulamayı güncelleştirme
-> * Uygulamayı kullanmak için örneği yapılandırma
-> * Kullanıcı akışını kullanarak kaydolma
+> * Update the application in Azure AD B2C
+> * Configure the sample to use the application
+> * Sign up using the user flow
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticideki adımlara devam etmeden önce aşağıdaki Azure AD B2C kaynaklara sahip olmanız gerekir:
+You need the following Azure AD B2C resources in place before continuing with the steps in this tutorial:
 
-* [Azure AD B2C kiracı](tutorial-create-tenant.md)
-* Kiracınızda [kayıtlı uygulama](tutorial-register-applications.md)
-* Kiracınızda [oluşturulan kullanıcı akışları](tutorial-create-user-flows.md)
+* [Azure AD B2C tenant](tutorial-create-tenant.md)
+* [Application registered](tutorial-register-applications.md) in your tenant
+* [User flows created](tutorial-create-user-flows.md) in your tenant
 
-Ayrıca, yerel geliştirme ortamınızda aşağıdakiler gereklidir:
+Additionally, you need the following in your local development environment:
 
-* Kod Düzenleyicisi, örneğin [Visual Studio Code](https://code.visualstudio.com/) veya [Visual Studio 2019](https://www.visualstudio.com/downloads/)
-* [.NET Core SDK 2,2](https://dotnet.microsoft.com/download) veya üzeri
+* Code editor, for example [Visual Studio Code](https://code.visualstudio.com/) or [Visual Studio 2019](https://www.visualstudio.com/downloads/)
+* [.NET Core SDK 2.2](https://dotnet.microsoft.com/download) or later
 * [Node.js](https://nodejs.org/en/download/)
 
 ## <a name="update-the-application"></a>Uygulamayı güncelleştirme
 
-Önkoşulların bir parçası olarak tamamladığınız ikinci öğreticide, Azure AD B2C bir Web uygulaması kaydettiniz. Öğreticideki örnekle iletişimi etkinleştirmek için, Azure AD B2C içinde uygulamaya bir yeniden yönlendirme URI 'SI eklemeniz gerekir.
+In the second tutorial that you completed as part of the prerequisites, you registered a web application in Azure AD B2C. To enable communication with the sample in the tutorial, you need to add a redirect URI to the application in Azure AD B2C.
 
-Uygulamayı güncelleştirmek için geçerli **uygulamalar** deneyimini veya yeni Birleşik **uygulama kayıtları (Önizleme)** deneyimimizi kullanabilirsiniz. [Yeni deneyim hakkında daha fazla bilgi edinin](https://aka.ms/b2cappregintro).
+You can use the current **Applications** experience or our new unified **App registrations (Preview)** experience to update the application. [Yeni deneyim hakkında daha fazla bilgi edinin](https://aka.ms/b2cappregintro).
 
 #### <a name="applicationstabapplications"></a>[Uygulamalar](#tab/applications/)
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
-1. Üst menüdeki **Dizin + abonelik** filtresini seçip kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
-1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve sonra **Azure AD B2C**' i arayıp seçin.
-1. **Uygulamalar**' ı seçin ve ardından *WebApp1* uygulamasını seçin.
-1. **Yanıt URL 'si**altında `http://localhost:6420`ekleyin.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. Make sure you're using the directory that contains your Azure AD B2C tenant by selecting the **Directory + subscription** filter in the top menu and choosing the directory that contains your tenant.
+1. Select **All services** in the top-left corner of the Azure portal, and then search for and select **Azure AD B2C**.
+1. Select **Applications**, and then select the *webapp1* application.
+1. Under **Reply URL**, add `http://localhost:6420`.
 1. **Kaydet**’i seçin.
-1. Özellikler sayfasında, **uygulama kimliğini**kaydedin. Uygulama KIMLIĞI ' ni, tek sayfalı Web uygulamasındaki kodu güncelleştirdiğinizde sonraki bir adımda kullanırsınız.
+1. On the properties page, record the **Application ID**. You use the app ID in a later step when you update the code in the single-page web application.
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Uygulama kayıtları (Önizleme)](#tab/app-reg-preview/)
+#### <a name="app-registrations-previewtabapp-reg-preview"></a>[App registrations (Preview)](#tab/app-reg-preview/)
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
-1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
-1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
-1. **Uygulama kayıtları (Önizleme)** öğesini seçin, **sahip olunan uygulamalar** sekmesini seçin ve ardından *WebApp1* uygulamasını seçin.
-1. **Kimlik doğrulaması**' nı seçin ve ardından **Yeni deneyimi deneyin** (gösteriliyorsa) seçeneğini belirleyin.
-1. **Web**altında **URI Ekle** bağlantısını seçin, `http://localhost:6420`girin ve ardından **Kaydet**' i seçin.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. Select the **Directory + subscription** filter in the top menu, and then select the directory that contains your Azure AD B2C tenant.
+1. In the left menu, select **Azure AD B2C**. Or, select **All services** and search for and select **Azure AD B2C**.
+1. Select **App registrations (Preview)** , select the **Owned applications** tab, and then select the *webapp1* application.
+1. Select **Authentication**, then select **Try out the new experience** (if shown).
+1. Under **Web**, select the **Add URI** link, enter `http://localhost:6420`, and then select **Save**.
 1. **Genel Bakış**’ı seçin.
-1. Tek sayfalı Web uygulamasındaki kodu güncelleştirdiğinizde daha sonraki bir adımda kullanmak üzere **uygulama (istemci) kimliğini** kaydedin.
+1. Record the **Application (client) ID** for use in a later step when you update the code in the single-page web application.
 
 * * *
 
 ## <a name="get-the-sample-code"></a>Örnek kodunu alma
 
-Bu öğreticide, GitHub 'dan indirdiyseniz bir kod örneği yapılandırırsınız. Örnek, tek sayfalı bir uygulamanın kullanıcı kaydı ve oturum açma için Azure AD B2C nasıl kullanılabileceğini ve korumalı bir Web API 'sini çağırabileceğinizi gösterir.
+In this tutorial, you configure a code sample that you download from GitHub. The sample demonstrates how a single-page application can use Azure AD B2C for user sign-up and sign-in, and to call a protected web API.
 
 GitHub’dan [zip dosyasını indirin](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp/archive/master.zip) veya örneği kopyalayın.
 
@@ -83,12 +83,12 @@ GitHub’dan [zip dosyasını indirin](https://github.com/Azure-Samples/active-d
 git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp.git
 ```
 
-## <a name="update-the-sample"></a>Örneği güncelleştirme
+## <a name="update-the-sample"></a>Update the sample
 
-Örneği edindiğinizden, kodu Azure AD B2C kiracı adınızla ve önceki bir adımda kaydettiğiniz uygulama KIMLIĞIYLE güncelleştirin.
+Now that you've obtained the sample, update the code with your Azure AD B2C tenant name and the application ID you recorded in an earlier step.
 
-1. Örnek dizinin kökündeki `index.html` dosyasını açın.
-1. `msalConfig` tanımında, **ClientID** değerini önceki bir adımda KAYDETTIĞINIZ uygulama kimliğiyle değiştirin. Sonra, Azure AD B2C kiracı adınızla **yetkili** URI değerini güncelleştirin. Ayrıca, ön koşullardan birinde oluşturduğunuz kaydolma/oturum açma Kullanıcı akışının adı ile URI 'yi güncelleştirin (örneğin, *B2C_1_signupsignin1*).
+1. Open the `index.html` file in the root of the sample directory.
+1. In the `msalConfig` definition, modify the **clientId** value with the Application ID you recorded in an earlier step. Next, update the **authority** URI value with your Azure AD B2C tenant name. Also update the URI with the name of the sign-up/sign-in user flow you created in one of the prerequisites (for example, *B2C_1_signupsignin1*).
 
     ```javascript
     var msalConfig = {
@@ -104,11 +104,11 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
     };
     ```
 
-    Bu öğreticide kullanılan Kullanıcı akışının adı **B2C_1_signupsignin1**' dir. Farklı bir Kullanıcı akış adı kullanıyorsanız, `authority` değerinde bu adı belirtin.
+    The name of the user flow used in this tutorial is **B2C_1_signupsignin1**. If you're using a different user flow name, specify that name in the `authority` value.
 
 ## <a name="run-the-sample"></a>Örneği çalıştırma
 
-1. Bir konsol penceresi açın ve örneği içeren dizine geçin. Örneğin:
+1. Open a console window and change to the directory containing the sample. Örnek:
 
     ```console
     cd active-directory-b2c-javascript-msal-singlepageapp
@@ -120,38 +120,38 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
     node server.js
     ```
 
-    Konsol penceresinde yerel olarak çalışan Node. js sunucusunun bağlantı noktası numarası görüntülenir:
+    The console window displays the port number of the locally running Node.js server:
 
     ```
     Listening on port 6420...
     ```
 
-1. Uygulamayı görüntülemek için tarayıcınızda `http://localhost:6420` gidin.
+1. Go to `http://localhost:6420` in your browser to view the application.
 
-Örnek kaydolma, oturum açma, profil düzenlemesi ve parola sıfırlamayı destekler. Bu öğretici, bir kullanıcının e-posta adresi kullanarak nasıl kaydolduğunda vurgular.
+The sample supports sign-up, sign-in, profile editing, and password reset. This tutorial highlights how a user signs up using an email address.
 
 ### <a name="sign-up-using-an-email-address"></a>E-posta adresi kullanarak kaydolma
 
 > [!WARNING]
-> Kaydolma veya oturum açma işleminden sonra [yetersiz bir izin hatası](#error-insufficient-permissions)görebilirsiniz. Kod örneğinin geçerli uygulamasına bağlı olarak, bu hata beklenmektedir. Bu sorun, kod örneğinin gelecek bir sürümünde çözümlenir, bu da uyarının kaldırılması olur.
+> After sign-up or sign-in, you might see an [insufficient permissions error](#error-insufficient-permissions). Due to the code sample's current implementation, this error is expected. This issue will be resolved in a future version of the code sample, at which time this warning will be removed.
 
-1. Daha önceki bir adımda belirttiğiniz *B2C_1_signupsignin1* Kullanıcı akışını başlatmak Için **oturum aç** ' ı seçin.
-1. Azure AD B2C, kayıt bağlantısı içeren bir oturum açma sayfası sunar. Henüz bir hesabınız olmadığından **Şimdi kaydolun** bağlantısını seçin.
-1. Kaydolma iş akışında, kullanıcı kimliğini bir e-posta adresi kullanarak toplamak ve doğrulamak için bir sayfa sunar. Kaydolma iş akışı, kullanıcının parolasını ve Kullanıcı akışında tanımlanan istenen öznitelikleri de toplar.
+1. Select **Login** to initiate the *B2C_1_signupsignin1* user flow you specified in an earlier step.
+1. Azure AD B2C, kayıt bağlantısı içeren bir oturum açma sayfası sunar. Since you don't yet have an account, select the **Sign up now** link.
+1. Kaydolma iş akışında, kullanıcı kimliğini bir e-posta adresi kullanarak toplamak ve doğrulamak için bir sayfa sunar. The sign-up workflow also collects the user's password and the requested attributes defined in the user flow.
 
     Geçerli bir e-posta adresi kullanın ve doğrulama kodunu kullanarak doğrulamayı gerçekleştirin. Parola ayarlayın. İstenen öznitelikler için değerleri girin.
 
-    ![Oturum açma/kaydolma Kullanıcı akışından sunulan kaydolma sayfası](./media/active-directory-b2c-tutorials-spa/azure-ad-b2c-sign-up-workflow.png)
+    ![Sign-up page presented by the sign-in/sign-up user flow](./media/active-directory-b2c-tutorials-spa/azure-ad-b2c-sign-up-workflow.png)
 
-1. Azure AD B2C dizininde yerel bir hesap oluşturmak için **Oluştur** ' u seçin.
+1. Select **Create** to create a local account in the Azure AD B2C directory.
 
-**Oluştur**' u seçtiğinizde, kaydolma sayfası kapanır ve oturum açma sayfası yeniden görüntülenir.
+When you select **Create**, the sign up page closes and the sign in page reappears.
 
-Artık uygulamada oturum açmak için e-posta adresinizi ve parolanızı kullanabilirsiniz.
+You can now use your email address and password to sign in to the application.
 
-### <a name="error-insufficient-permissions"></a>Hata: yetersiz izinler
+### <a name="error-insufficient-permissions"></a>Error: insufficient permissions
 
-Oturum açtıktan sonra, uygulama yetersiz bir izin hatası döndürebilir:
+After you sign in, the application may return an insufficient permissions error:
 
 ```Output
 ServerError: AADB2C90205: This application does not have sufficient permissions against this web resource to perform the operation.
@@ -159,20 +159,20 @@ Correlation ID: ce15bbcc-0000-0000-0000-494a52e95cd7
 Timestamp: 2019-07-20 22:17:27Z
 ```
 
-Web uygulaması, *fabrikamb2c*demo dizini tarafından korunan BIR Web API 'sine erişmeye çalıştığından bu hatayı alırsınız. Erişim belirteciniz yalnızca Azure AD dizininiz için geçerli olduğundan, API çağrısı yetkilendirilmemiş.
+You receive this error because the web application is attempting to access a web API protected by the demo directory, *fabrikamb2c*. Because your access token is valid only for your Azure AD directory, the API call is unauthorized.
 
-Bu hatayı düzeltemedi, dizininiz için korumalı bir Web API 'SI oluşturmak üzere serideki bir sonraki öğreticiye devam edin ( [sonraki adımlara](#next-steps)bakın).
+To fix this error, continue on to the next tutorial in the series (see [Next steps](#next-steps)) to create a protected web API for your directory.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, şu şekilde nasıl yapılacağını öğrendiniz:
+In this article, you learned how to:
 
 > [!div class="checklist"]
-> * Azure AD B2C içinde uygulamayı güncelleştirme
-> * Uygulamayı kullanmak için örneği yapılandırma
-> * Kullanıcı akışını kullanarak kaydolma
+> * Update the application in Azure AD B2C
+> * Configure the sample to use the application
+> * Sign up using the user flow
 
-Artık, SPA 'dan korumalı bir Web API 'sine erişim sağlamak için serideki bir sonraki öğreticiye geçin:
+Now move on to the next tutorial in the series to grant access to a protected web API from the SPA:
 
 > [!div class="nextstepaction"]
-> [Öğretici: Azure AD B2C kullanarak SPA 'dan ASP.NET Core Web API 'sine erişim Izni verme >](active-directory-b2c-tutorials-spa-webapi.md)
+> [Tutorial: Grant access to an ASP.NET Core web API from an SPA using Azure AD B2C >](active-directory-b2c-tutorials-spa-webapi.md)

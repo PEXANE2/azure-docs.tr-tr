@@ -1,7 +1,7 @@
 ---
-title: 'MLOps: ML model yönetimi'
+title: 'MLOps: ML model management'
 titleSuffix: Azure Machine Learning
-description: 'Azure Machine Learning (MLOps) ile model yönetimi hakkında bilgi edinin. Modellerini sürekli olarak geliştirmek için modellerinizi dağıtın, yönetin ve izleyin. '
+description: 'Learn about model management with Azure Machine Learning (MLOps). Deploy, manage, and monitor your models to continuously improve them. '
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,166 +9,160 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: jpe316
 ms.author: jordane
-ms.date: 11/04/2019
+ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 715752072a14a3220d17d0dbda2efd0786a83de4
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 19552747db427bf780a140c15f11bed322d1f867
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74271264"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420077"
 ---
-# <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: model yönetimi, dağıtım ve Azure Machine Learning ile izleme
+# <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: model management, deployment, and monitoring with Azure Machine Learning
 
-Bu makalede, modellerinizin yaşam döngüsünü yönetmek için Azure Machine Learning kullanma hakkında bilgi edinin. Azure Machine Learning, Machine Learning çözümlerinizin kalitesini ve tutarlılığını artıran bir Machine Learning Işlemleri (MLOps) yaklaşımı kullanır. 
+In this article, learn about how to use Azure Machine Learning to manage the lifecycle of your models. Azure Machine Learning uses a Machine Learning Operations (MLOps) approach. MLOps improves the quality and consistency of your machine learning solutions. 
 
-Azure Machine Learning aşağıdaki MLOps yeteneklerini sağlar:
+Azure Machine Learning provides the following MLOps capabilities:
 
-- **ML projelerini her yerden dağıtın**
-- **Çalışma ve ml ile ilgili sorunlar IÇIN ml uygulamalarını izleyin** -eğitim ve çıkarım arasındaki model girişlerini karşılaştırın, modele özgü ölçümleri bulun ve ml altyapınızda izleme ve Uyarılar sağlayın.
-- Modellerden kimin yayımladığına, neden değişikliklerin yapılmakta olduğuna ve modellerin üretimde ne zaman dağıtıldığını veya üretimde kullanıldığına dahil olmak üzere **ml yaşam döngüsünün uçtan uca denetim izi oluşturmak için gereken verileri yakalayın**.
-- **Azure Machine Learning ve Azure DevOps ile uçtan uca ml yaşam döngüsünü otomatikleştirerek** , sıklıkla güncelleştirme, yeni modelleri test etme ve diğer uygulama ve hizmetlerinizle bırlıkte yeni ml modellerini sürekli olarak alma.
+- **Create reproducible ML pipelines**. Pipelines allow you to define repeatable and reusable steps for your data preparation, training, and scoring processes.
+- **Register, package, and deploy models from anywhere** and track associated metadata required to use the model.
+- **Capture the governance data required for capturing the end-to-end ML lifecycle**, including who is publishing models, why changes are being made, and when models were deployed or used in production.
+- **Notify and alert on events in the ML lifecycle** such as experiment completion, model registration, model deployment, and data drift detection.
+- **Monitor ML applications for operational and ML-related issues**. Compare model inputs between training and inference, explore model-specific metrics, and provide monitoring and alerts on your ML infrastructure.
+- **Automate the end-to-end ML lifecycle with Azure Machine Learning and Azure DevOps** to frequently update models, test new models, and continuously roll out new ML models alongside your other applications and services.
 
-MLOps 'nin arkasındaki kavramlar ve bunların Azure Machine Learning nasıl uygulandığı hakkında daha fazla bilgi almak için aşağıdaki videoyu izleyin.
+## <a name="create-reproducible-ml-pipelines"></a>Create reproducible ML pipelines
 
-> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GX]
+Use ML pipelines from Azure Machine Learning to stitch together all of the steps involved in your model training process.
 
-## <a name="deploy-ml-projects-from-anywhere"></a>ML projelerini her yerden dağıtın
+An ML pipeline can contain steps from data preparation to feature extraction to hyperparameter tuning to model evaluation. For more information, see [ML pipelines](concept-ml-pipelines.md).
 
-### <a name="turn-your-training-process-into-a-reproducible-pipeline"></a>Eğitim işleminizi tekrarlanabilir bir işlem hattına dönüştürün
-Model eğitimi sürecinizdeki tüm adımları bir araya toplamak için Azure Machine Learning ' den ML işlem hatlarını kullanın, veri hazırlama ve özellik ayıklama 'den hiper parametre ayarlama ' ya kadar model değerlendirmesi yapın.
+## <a name="register-package-and-deploy-models-from-anywhere"></a>Register, package, and deploy models from anywhere
 
-Daha fazla bilgi için bkz. [ml işlem hatları](concept-ml-pipelines.md).
+### <a name="register-and-track-ml-models"></a>Register and track ML models
 
-### <a name="register-and-track-ml-models"></a>ML modellerini kaydetme ve izleme
-
-Model kaydı, modellerinizi Azure bulutu 'nda çalışma alanınızda depolamanıza ve yapılandırmanıza olanak tanır. Model kayıt defteri, eğitilen modellerinizi düzenlemenizi ve izlemenizi kolaylaştırır.
-
-> [!TIP]
-> Kayıtlı bir model, modelinizi oluşturan bir veya daha fazla dosya için mantıksal bir kapsayıcıdır. Örneğin, birden çok dosyada depolanan bir modeliniz varsa, bunları Azure Machine Learning çalışma alanınızda tek bir model olarak kaydedebilirsiniz. Kayıttan sonra, kayıtlı modeli indirebilir veya dağıtabilir ve kayıtlı tüm dosyaları alabilirsiniz.
- 
-Kayıtlı modeller ad ve sürüm ile tanımlanır. Mevcut bir aynı ada sahip bir model her kaydettirdiğinizde, kayıt defteri sürüm artırır. Ek meta veri etiketleri aramak modellerinde kullanılabilir kayıt sırasında de sağlayabilirsiniz. Azure Machine Learning, Python 3.5.2 veya üzeri kullanılarak yüklenebilecek tüm modelleri destekler.
+Model registration allows you to store and version your models in the Azure cloud, in your workspace. The model registry makes it easy to organize and keep track of your trained models.
 
 > [!TIP]
-> Azure Machine Learning dışında eğitilen modelleri de kaydedebilirsiniz.
+> A registered model is a logical container for one or more files that make up your model. For example, if you have a model that is stored in multiple files, you can register them as a single model in your Azure Machine Learning workspace. After registration, you can then download or deploy the registered model and receive all the files that were registered.
 
-Etkin bir dağıtımda kullanılmakta olan kayıtlı bir modeli silemezsiniz.
-Daha fazla bilgi için, [modelleri dağıtma](how-to-deploy-and-where.md#registermodel)' nın model kaydetme bölümüne bakın.
+Registered models are identified by name and version. Each time you register a model with the same name as an existing one, the registry increments the version. Additional metadata tags can be provided during registration. These tags are then used when searching for a model. Azure Machine Learning supports any model that can be loaded using Python 3.5.2 or higher.
 
-### <a name="package-and-debug-models"></a>Paket ve hata ayıklama modelleri
+> [!TIP]
+> You can also register models trained outside Azure Machine Learning.
 
-Bir modeli üretime dağıtmadan önce, bir Docker görüntüsüne paketlenir. Çoğu durumda, dağıtım sırasında görüntü oluşturma arka planda otomatik olarak gerçekleşir. Gelişmiş senaryolar için görüntüyü el ile belirtebilirsiniz.
+You can't delete a registered model that is being used in an active deployment.
+For more information, see the register model section of [Deploy models](how-to-deploy-and-where.md#registermodel).
 
-Dağıtım ile ilgili sorunlar yaşıyorsanız, sorun giderme ve hata ayıklama için yerel geliştirme ortamınızda dağıtım yapabilirsiniz.
+### <a name="package-and-debug-models"></a>Package and debug models
 
-Daha fazla bilgi için bkz. [modelleri dağıtma](how-to-deploy-and-where.md#registermodel) ve [dağıtım sorunlarını giderme](how-to-troubleshoot-deployment.md).
+Before deploying a model into production, it is packaged into a Docker image. In most cases, image creation happens automatically in the background during deployment. You can manually specify the image.
 
-### <a name="validate-and-profile-models"></a>Model ve profil modellerini doğrulama
+If you run into problems with the deployment, you can deploy on your local development environment for troubleshooting and debugging.
 
-Azure Machine Learning, modelinizi dağıttığınızda kullanılacak ideal CPU ve bellek ayarlarını tespit etmek için profil oluşturmayı kullanabilir. Model doğrulama, profil oluşturma işlemi için sağladığınız verileri kullanarak bu işlemin bir parçası olarak gerçekleşir.
+For more information, see [Deploy models](how-to-deploy-and-where.md#registermodel) and [Troubleshooting deployments](how-to-troubleshoot-deployment.md).
 
-### <a name="convert-and-optimize-models"></a>Modelleri dönüştürme ve iyileştirme
+### <a name="validate-and-profile-models"></a>Validate and profile models
 
-Modelinizi [Open sinir Network Exchange](https://onnx.ai) (onnx) olarak dönüştürmek, performansı iyileştirebilir. ONNX 'e dönüştürmek, ortalama bir 2x performans artışı sağlayabilir.
+Azure Machine Learning can use profiling to determine the ideal CPU and memory settings to use when deploying your model. Model validation happens as part of this process, using data that you supply for the profiling process.
 
-Azure Machine Learning ile ONNX hakkında daha fazla bilgi için bkz. [ml modellerini oluşturma ve hızlandırma](concept-onnx.md) makalesi.
+### <a name="convert-and-optimize-models"></a>Convert and optimize models
 
-### <a name="use-models"></a>Modelleri kullanma
+Converting your model to [Open Neural Network Exchange](https://onnx.ai) (ONNX) may improve performance. On average, converting to ONNX can yield a 2x performance increase.
 
-Eğitilen makine öğrenimi modelleri, bulutta Web Hizmetleri olarak veya geliştirme ortamınızda yerel olarak dağıtılabilir. Modelleri, Azure IoT Edge cihazlara de dağıtabilirsiniz. Dağıtımlar, Inor sınırlaması için CPU, GPU veya alan programlanabilir geçit dizileri (FPGA) kullanabilir. Ayrıca, Power BI modelleri de kullanabilirsiniz.
+For more information on ONNX with Azure Machine Learning, see the [Create and accelerate ML models](concept-onnx.md) article.
 
-Bir modeli Web hizmeti veya IoT Edge cihaz olarak kullanırken, aşağıdaki öğeleri sağlarsınız:
+### <a name="use-models"></a>Use models
 
-* Hizmete/cihaza gönderilen verileri almak için kullanılan model (ler).
-* Bir giriş betiği. Bu betik istekleri kabul eder, verileri öğrenmek için modeli kullanır ve bir yanıt döndürür.
-* Model (ler) ve giriş betiği için gereken bağımlılıkları açıklayan bir Conda ortam dosyası.
-* Model ve giriş betiği için gereken metin, veri vb. gibi diğer varlıklar.
+Trained machine learning models are deployed as web services in the cloud or locally. You can also deploy models to Azure IoT Edge devices. Deployments use CPU, GPU, or field-programmable gate arrays (FPGA) for inferencing. You can also use models from Power BI.
 
-Bu varlıklar bir Docker görüntüsüne paketlenir ve bir Web hizmeti veya IoT Edge modülü olarak dağıtılır.
+When using a model as a web service or IoT Edge device, you provide the following items:
 
-İsteğe bağlı olarak, dağıtımı daha fazla ayarlamak için aşağıdaki parametreleri kullanabilirsiniz:
+* The model(s) that are used to score data submitted to the service/device.
+* An entry script. This script accepts requests, uses the model(s) to score the data, and return a response.
+* A conda environment file that describes the dependencies required by the model(s) and entry script.
+* Any additional assets such as text, data, etc. that are required by the model(s) and entry script.
 
-* GPU 'YU etkinleştir: Docker görüntüsünde GPU desteğini etkinleştirmek için kullanılır. Görüntü, Azure Container Instances, Azure Kubernetes hizmeti, Azure Machine Learning Işlem veya Azure sanal makineleri gibi Microsoft Azure hizmetlerinde kullanılmalıdır.
-* Ek Docker dosya adımları: Docker görüntüsünü oluştururken çalıştırmak için ek Docker adımları içeren bir dosya.
-* Temel görüntü: temel görüntü olarak kullanılacak özel bir görüntü. Özel bir görüntü kullanmıyorsanız, temel görüntü Azure Machine Learning tarafından sağlanır.
+You also provide the configuration of the target deployment platform. For example, the VM family type, available memory, and number of cores when deploying to Azure Kubernetes Service.
 
-Ayrıca, hedef dağıtım platformunun yapılandırmasını da sağlarsınız. Örneğin, sanal makine aile türü, kullanılabilir bellek ve Azure Kubernetes hizmetine dağıtım yaparken çekirdek sayısı.
+When the image is created, components required by Azure Machine Learning are also added. For example, assets needed to run the web service and interact with IoT Edge.
 
-Görüntü oluşturulduğunda, Azure Machine Learning için gereken bileşenler de eklenir. Örneğin, Web hizmetini çalıştırmak ve IoT Edge etkileşimde bulunmak için gereken varlıklar.
+#### <a name="batch-scoring"></a>Toplu İşlem puanlama
+Batch scoring is supported through ML pipelines. For more information, see [Batch predictions on big data](how-to-run-batch-predictions.md).
 
-> [!NOTE]
-> Docker görüntüsünde kullanılan Web sunucusunu veya IoT Edge bileşenlerini değiştiremez veya değiştiremezsiniz. Azure Machine Learning, Microsoft tarafından sınanmış ve desteklenen bir Web sunucusu yapılandırması ve IoT Edge bileşenleri kullanır.
+#### <a name="real-time-web-services"></a>Real-time web services
 
-#### <a name="web-service"></a>Web hizmeti
-
-Aşağıdaki işlem hedefleri ile **Web hizmetlerindeki** modellerinizi kullanabilirsiniz:
+You can use your models in **web services** with the following compute targets:
 
 * Azure Container Örneği
 * Azure Kubernetes Service
-* Yerel geliştirme ortamı
+* Local development environment
 
-Modeli bir Web hizmeti olarak dağıtmak için aşağıdaki öğeleri sağlamanız gerekir:
+To deploy the model as a web service, you must provide the following items:
 
-* Modellerin modeli veya modelini işleme.
-* Modeli kullanmak için gereken bağımlılıklar. Örneğin, istekleri kabul eden ve modeli çağıran bir betik, Conda bağımlılıkları, vb.
-* Modelin nasıl ve nereye dağıtılacağını açıklayan dağıtım yapılandırması.
+* The model or ensemble of models.
+* Dependencies required to use the model. For example, a script that accepts requests and invokes the model, conda dependencies, etc.
+* Deployment configuration that describes how and where to deploy the model.
 
-Daha fazla bilgi için bkz. [modelleri dağıtma](how-to-deploy-and-where.md).
+For more information, see [Deploy models](how-to-deploy-and-where.md).
 
-#### <a name="iot-edge-devices"></a>IoT Edge cihazlar
+#### <a name="iot-edge-devices"></a>IoT Edge devices
 
-IoT cihazlarıyla modelleri **Azure IoT Edge modüller**aracılığıyla kullanabilirsiniz. IoT Edge modüller, cihazda çıkarım veya model Puanlama sağlayan bir donanım cihazına dağıtılır.
+You can use models with IoT devices through **Azure IoT Edge modules**. IoT Edge modules are deployed to a hardware device, which enables inference, or model scoring, on the device.
 
-Daha fazla bilgi için bkz. [modelleri dağıtma](how-to-deploy-and-where.md).
+For more information, see [Deploy models](how-to-deploy-and-where.md).
 
 ### <a name="analytics"></a>Analiz
 
-Microsoft Power BI, veri analizi için makine öğrenimi modellerinin kullanılmasını destekler. Daha fazla bilgi için bkz. [Power BI Azure Machine Learning Tümleştirme (Önizleme)](https://docs.microsoft.com/power-bi/service-machine-learning-integration).
+Microsoft Power BI supports using machine learning models for data analytics. For more information, see [Azure Machine Learning integration in Power BI (preview)](https://docs.microsoft.com/power-bi/service-machine-learning-integration).
 
 
-## <a name="monitor-for-operational--ml-issues"></a>İşlemsel & ML sorunlarını izleme
+## <a name="capture-the-governance-data-required-for-capturing-the-end-to-end-ml-lifecycle"></a>Capture the governance data required for capturing the end-to-end ML lifecycle
 
-İzleme, modelinize hangi verilerin gönderildiğini ve döndürdüğü tahminleri anlamanıza olanak sağlar.
+Azure ML gives you the capability to track the end-to-end audit trail of all of your ML assets. Bu avantajlar şunlardır:
 
-Bu bilgiler, modelinizin nasıl kullanıldığını anlamanıza yardımcı olur. Toplanan giriş verileri, modelin gelecek sürümlerini eğitmek için de yararlı olabilir.
+- Azure ML [integrates with Git](how-to-set-up-training-targets.md#gitintegration) to track information on which repository / branch / commit your code came from.
+- [Azure ML Datasets](how-to-create-register-datasets.md) help you track, profile, and version data. 
+- Azure ML Run history stores a snapshot of the code, data, and compute used to train a model.
+- The Azure ML Model Registry captures all of the metadata associated with your model (which experiment trained it, where it is being deployed, if its deployments are healthy).
 
-Daha fazla bilgi için bkz. [model veri toplamayı etkinleştirme](how-to-enable-data-collection.md).
+## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>Notify, automate, and alert on events in the ML lifecycle
+Azure ML publishes key events to Azure EventGrid, which can be used to notify and automate on events in the ML lifecycle. For more information, please see [this document](how-to-use-event-grid.md).
+
+## <a name="monitor-for-operational--ml-issues"></a>Monitor for operational & ML issues
+
+Monitoring enables you to understand what data is being sent to your model, and the predictions that it returns.
+
+This information helps you understand how your model is being used. The collected input data may also be useful in training future versions of the model.
+
+For more information, see [How to enable model data collection](how-to-enable-data-collection.md).
 
 
-## <a name="audit-trail-of-the-ml-lifecycle"></a>ML yaşam döngüsünün denetim izi
+## <a name="automate-the-ml-lifecycle"></a>Automate the ML lifecycle 
 
-Azure ML, tüm ML varlıklarınızın uçtan uca denetim izini izleme olanağı sunar. Daha ayrıntılı şekilde belirtmek gerekirse:
+You can use GitHub and Azure Pipelines to create a continuous integration process that trains a model. In a typical scenario, when a Data Scientist checks a change into the Git repo for a project, the Azure Pipeline will start a training run. The results of the run can then be inspected to see the performance characteristics of the trained model. You can also create a pipeline that deploys the model as a web service.
 
-- Azure ML, kodunuzun geldiği depoyu/dalı/yürütmeyi belirten bilgileri izlemek için [Git ile tümleşir](how-to-set-up-training-targets.md#gitintegration) .
-- [Azure ML veri kümeleri](how-to-create-register-datasets.md) , verileri izlemenize ve sürümetmenize yardımcı olur.
-- Azure ML çalışma geçmişi, bir modeli eğitmek için kullanılan kodun, verilerin ve işlemin bir anlık görüntüsünü depolar.
-- Azure ML modeli kayıt defteri, modelinizle ilişkili tüm meta verileri yakalar (Bu, dağıtımları, dağıtımı sağlıklı ise, dağıtıldığı yerde).
+The [Azure Machine Learning extension](https://marketplace.visualstudio.com/items?itemName=ms-air-aiagility.vss-services-azureml) makes it easier to work with Azure Pipelines. It provides the following enhancements to Azure Pipelines:
 
-## <a name="automate-the-ml-lifecycle"></a>ML yaşam döngüsünü otomatikleştirin 
+* Enables workspace selection when defining a service connection.
+* Enables release pipelines to be triggered by trained models created in a training pipeline.
 
-Bir modeli gösteren bir sürekli tümleştirme işlemi oluşturmak için GitHub ve Azure Pipelines kullanabilirsiniz. Tipik bir senaryoda, bir veri Bilimconu bir proje için git deposunda değişiklik denetlediğinde, Azure işlem hattı bir eğitim çalıştırması başlatır. Daha sonra, eğitilen modelin performans özelliklerini görmek için çalıştırmanın sonuçları incelenebilir. Ayrıca, modeli bir Web hizmeti olarak dağıtan bir işlem hattı da oluşturabilirsiniz.
-
-[Azure Machine Learning uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-air-aiagility.vss-services-azureml) , Azure Pipelines çalışmayı kolaylaştırır. Azure Pipelines için aşağıdaki geliştirmeleri sağlar:
-
-* Hizmet bağlantısı tanımlarken çalışma alanı seçimini izin vermez.
-* Eğitim ardışık düzeninde oluşturulan eğitilen modeller tarafından tetiklenecek yayın işlem hatlarını sağlar.
-
-Azure Machine Learning ile Azure Pipelines kullanma hakkında daha fazla bilgi için, bkz. Azure Pipelines article ve [Azure Machine Learning MLOps](https://aka.ms/mlops) deposu [Ile ml modellerinin sürekli tümleştirilmesi ve dağıtımı](/azure/devops/pipelines/targets/azure-machine-learning) .
+For more information on using Azure Pipelines with Azure Machine Learning, see the [Continuous integration and deployment of ML models with Azure Pipelines](/azure/devops/pipelines/targets/azure-machine-learning) article and the [Azure Machine Learning MLOps](https://aka.ms/mlops) repository.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Aşağıdaki kaynakları okuyarak ve inceleyerek daha fazla bilgi edinin:
+Learn more by reading and exploring the following resources:
 
-+ Azure Machine Learning ile [modellerin dağıtılacağı konum &](how-to-deploy-and-where.md)
++ [How & where to deploy models](how-to-deploy-and-where.md) with Azure Machine Learning
 
-+ [Öğretici: ACI 'de görüntü sınıflandırma modeli dağıtın](tutorial-deploy-models-with-aml.md).
++ [Tutorial: Deploy an image classification model in ACI](tutorial-deploy-models-with-aml.md).
 
-+ [Uçtan uca MLOps örnekleri deposu](https://github.com/microsoft/MLOps)
++ [End-to-end MLOps examples repo](https://github.com/microsoft/MLOps)
 
-+ [Azure Pipelines ile ML modellerinin CI/CD 'si](/azure/devops/pipelines/targets/azure-machine-learning)
++ [CI/CD of ML models with Azure Pipelines](/azure/devops/pipelines/targets/azure-machine-learning)
 
-+ [Dağıtılan bir modeli](how-to-consume-web-service.md) kullanan istemciler oluşturma
++ Create clients that [consume a deployed model](how-to-consume-web-service.md)
 
 + [Uygun ölçekte makine öğrenimi](/azure/architecture/data-guide/big-data/machine-learning-at-scale)
 
-+ [Azure AI başvuru mimarileri & en iyi yöntemler temsilcisi](https://github.com/microsoft/AI)
++ [Azure AI reference architectures & best practices rep](https://github.com/microsoft/AI)

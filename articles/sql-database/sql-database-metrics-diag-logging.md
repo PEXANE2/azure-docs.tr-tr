@@ -1,6 +1,6 @@
 ---
-title: Ölçümler ve tanılama günlüğü
-description: Kaynak kullanımı ve sorgu yürütme istatistikleri hakkında bilgi depolamak için Azure SQL veritabanı 'nda tanılamayı nasıl etkinleştireceğinizi öğrenin.
+title: Metrics and diagnostics logging
+description: Learn how to enable diagnostics in Azure SQL Database to store information about resource utilization and query execution statistics.
 services: sql-database
 ms.service: sql-database
 ms.subservice: monitor
@@ -11,725 +11,737 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 11/15/2019
-ms.openlocfilehash: ab3667d79827e9548338b5beda00c9992f100deb
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 27810f2ee1bc95c924003cd8a5944860df40db14
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132407"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420810"
 ---
-# <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL veritabanı ölçümleri ve tanılama günlüğü
+# <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metrics and diagnostics logging
 
-Bu konu başlığında, Azure SQL veritabanı için Azure portal, PowerShell, Azure CLı, Azure Izleyici REST API ve Azure Resource Manager şablonu aracılığıyla tanılama telemetrinin günlüğe kaydetmenin nasıl yapılandırılacağını öğreneceksiniz. Bu Tanılamalar, kaynak kullanımını ve sorgu yürütme istatistiklerini ölçmek için kullanılabilir.
+In this topic, you will learn how to configure logging of diagnostics telemetry for Azure SQL Database through the Azure portal, PowerShell, Azure CLI, Azure Monitor REST API, and Azure Resource Manager template. These diagnostics can be used to gauge resource utilization and query execution statistics.
 
-Tek veritabanları, elastik havuzlardaki havuza alınmış veritabanları ve yönetilen bir örnekteki örnek veritabanları, daha kolay performans izleme için ölçümleri ve tanılama günlüklerini akışa alabilir. Kaynak kullanımını, çalışanları ve oturumları ve aşağıdaki Azure kaynaklarından birine bağlantıyı iletmek için bir veritabanı yapılandırabilirsiniz:
+Single databases, pooled databases in elastic pools, and instance databases in a managed instance can stream metrics and diagnostics logs for easier performance monitoring. You can configure a database to transmit resource usage, workers and sessions, and connectivity to one of the following Azure resources:
 
-- **Azure SQL Analytics**: performans raporları, uyarılar ve risk azaltma önerilerini IÇEREN Azure SQL veritabanlarınızın akıllı bir şekilde izlenmesini sağlamak için.
-- **Azure Event Hubs**: SQL veritabanı telemetrisini özel izleme çözümlerinizle veya etkin işlem hatlarınız ile tümleştirin.
-- **Azure depolama**: fiyatın bir bölümü için çok miktarda Telemetriyi arşivlemek için.
+- **Azure SQL Analytics**: to get intelligent monitoring of your Azure SQL databases that includes performance reports, alerts, and mitigation recommendations.
+- **Azure Event Hubs**: to integrate SQL Database telemetry with your custom monitoring solutions or hot pipelines.
+- **Azure Storage**: to archive vast amounts of telemetry for a fraction of the price.
 
     ![Mimari](./media/sql-database-metrics-diag-logging/architecture.png)
 
-Çeşitli Azure hizmetleri tarafından desteklenen ölçümler ve günlük kategorileri hakkında daha fazla bilgi için bkz.:
+For more information about the metrics and log categories supported by the various Azure services, see:
 
-- [Microsoft Azure ölçümlerine genel bakış](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
-- [Azure tanılama günlüklerine genel bakış](../azure-monitor/platform/resource-logs-overview.md)
+- [Overview of metrics in Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
+- [Overview of Azure diagnostics logs](../azure-monitor/platform/resource-logs-overview.md)
 
-Bu makalede, Azure SQL veritabanları, elastik havuzlar ve yönetilen örnekler için tanılama telemetrisini etkinleştirmenize yardımcı olacak rehberlik sunulmaktadır. Ayrıca, veritabanı tanılama telemetrisini görüntülemek için Azure SQL Analytics bir izleme aracı olarak nasıl yapılandırılacağını anlamanıza yardımcı olabilir.
+This article provides guidance to help you enable diagnostics telemetry for Azure SQL databases, elastic pools, and managed instances. It also can help you understand how to configure Azure SQL Analytics as a monitoring tool for viewing database diagnostics telemetry.
 
-## <a name="enable-logging-of-diagnostics-telemetry"></a>Tanılama telemetrinin günlüğe kaydedilmesini etkinleştir
+## <a name="enable-logging-of-diagnostics-telemetry"></a>Enable logging of diagnostics telemetry
 
-Aşağıdaki yöntemlerden birini kullanarak ölçümler ve tanılama telemetri günlüğünü etkinleştirebilir ve yönetebilirsiniz:
+You can enable and manage metrics and diagnostics telemetry logging by using one of the following methods:
 
-- Azure portal
+- Azure portalı
 - PowerShell
 - Azure CLI
-- Azure Izleyici REST API
+- Azure Monitor REST API
 - Azure Resource Manager şablonu
 
-Ölçümleri ve tanılama günlüğünü etkinleştirdiğinizde, tanılama telemetrisini toplamak için Azure Kaynak hedefini belirtmeniz gerekir. Kullanılabilir seçenekler şunlardır:
+When you enable metrics and diagnostics logging, you need to specify the Azure resource destination for collecting the diagnostics telemetry. Available options include:
 
 - Azure SQL Analytics
 - Azure Event Hubs
-- Azure Storage
+- Azure Depolama
 
-Yeni bir Azure kaynağı temin edebilir veya var olan bir kaynağı seçebilirsiniz. **Tanılama ayarları** seçeneğini kullanarak bir kaynak seçtikten sonra toplanacak verileri belirtin.
+You can provision a new Azure resource or select an existing resource. After you choose a resource by using the **Diagnostic settings** option, specify which data to collect.
 
-## <a name="supported-diagnostic-logging-for-azure-sql-databases-and-instance-databases"></a>Azure SQL veritabanları ve örnek veritabanları için desteklenen tanılama günlüğü
+## <a name="supported-diagnostic-logging-for-azure-sql-databases-and-instance-databases"></a>Supported diagnostic logging for Azure SQL databases, and instance databases
 
-SQL veritabanlarında ölçümleri ve tanılama günlüğünü etkinleştirme-varsayılan olarak etkinleştirilmemiştir.
+Enable the metrics and diagnostics logging on SQL databases - they're not enabled by default.
 
-Azure SQL veritabanlarını ve örnek veritabanlarını aşağıdaki tanılama telemetrisini toplayacak şekilde ayarlayabilirsiniz:
+You can set up Azure SQL databases, and instance databases to collect the following diagnostics telemetry:
 
-| Veritabanları için telemetri izleme | Tek veritabanı ve havuza alınmış veritabanı desteği | Örnek veritabanı desteği |
+| Monitoring telemetry for databases | Single database and pooled database support | Instance database support |
 | :------------------- | ----- | ----- |
-| [Temel ölçümler](#basic-metrics): DTU/CPU YÜZDESI, DTU/CPU sınırı, fiziksel veri okuma yüzdesi, günlük yazma yüzdesi, başarılı/başarısız/engellenen güvenlik duvarı bağlantıları, oturum yüzdesi, çalışan yüzdesi, depolama, depolama yüzdesi ve XTP depolama yüzdesi. | Yes | Hayır |
-| [Örnek ve uygulama gelişmiş](#advanced-metrics): tempdb sistem veritabanı verilerini ve günlük dosyası boyutunu ve kullanılan tempdb yüzde günlük dosyasını içerir. | Yes | Hayır |
-| [QueryStoreRuntimeStatistics](#query-store-runtime-statistics): CPU kullanımı ve sorgu süresi istatistikleri gibi sorgu çalışma zamanı istatistikleri hakkındaki bilgileri içerir. | Yes | Yes |
-| [Querystorewaitstatistics](#query-store-wait-statistics): CPU, günlük ve kilitleme gibi sorgu bekleme istatistikleri (sorgularınızın ne kadar bekledikleriniz) hakkındaki bilgileri içerir. | Yes | Yes |
-| [Hatalar](#errors-dataset): BIR veritabanındaki SQL hatalarıyla ilgili bilgileri içerir. | Yes | Yes |
-| [Databasewaitstatistics](#database-wait-statistics-dataset): bir veritabanının farklı bekleme türlerini beklerken ne kadar zaman harcadığını gösteren bilgiler içerir. | Yes | Hayır |
-| [Zaman aşımları](#time-outs-dataset): bir veritabanındaki zaman aşımları hakkında bilgi içerir. | Yes | Hayır |
-| [Bloklar](#blockings-dataset): bir veritabanındaki olayları engelleme hakkında bilgi içerir. | Yes | Hayır |
-| [Kilitlenmeler](#deadlocks-dataset): bir veritabanındaki kilitlenme olayları hakkında bilgi içerir. | Yes | Hayır |
-| Otomatik [ayarlama: bir](#automatic-tuning-dataset)veritabanı için otomatik ayarlama önerileri hakkındaki bilgileri içerir. | Yes | Hayır |
-| [Sqlinsıghts](#intelligent-insights-dataset): bir veritabanının performansına akıllı içgörüler içerir. Daha fazla bilgi için bkz. [akıllı içgörüler](sql-database-intelligent-insights.md). | Yes | Yes |
+| [Basic metrics](#basic-metrics): Contains DTU/CPU percentage, DTU/CPU limit, physical data read percentage, log write percentage, Successful/Failed/Blocked by firewall connections, sessions percentage, workers percentage, storage, storage percentage, and XTP storage percentage. | Yes | Hayır |
+| [Instance and App Advanced](#advanced-metrics):  Contains tempdb system database data and log file size and tempdb percent log file used. | Yes | Hayır |
+| [QueryStoreRuntimeStatistics](#query-store-runtime-statistics): Contains information about the query runtime statistics such as CPU usage and query duration statistics. | Yes | Yes |
+| [QueryStoreWaitStatistics](#query-store-wait-statistics): Contains information about the query wait statistics (what your queries waited on) such are CPU, LOG, and LOCKING. | Yes | Yes |
+| [Errors](#errors-dataset): Contains information about SQL errors on a database. | Yes | Yes |
+| [DatabaseWaitStatistics](#database-wait-statistics-dataset): Contains information about how much time a database spent waiting on different wait types. | Yes | Hayır |
+| [Timeouts](#time-outs-dataset): Contains information about timeouts on a database. | Yes | Hayır |
+| [Blocks](#blockings-dataset): Contains information about blocking events on a database. | Yes | Hayır |
+| [Deadlocks](#deadlocks-dataset): Contains information about deadlock events on a database. | Yes | Hayır |
+| [AutomaticTuning](#automatic-tuning-dataset): Contains information about automatic tuning recommendations for a database. | Yes | Hayır |
+| [SQLInsights](#intelligent-insights-dataset): Contains Intelligent Insights into performance for a database. To learn more, see [Intelligent Insights](sql-database-intelligent-insights.md). | Yes | Yes |
 
 > [!IMPORTANT]
-> Elastik havuzlar ve yönetilen örneklerin içerdikleri veritabanlarından kendi ayrı tanılama telemetrisi vardır. Tanılama telemetrisi, aşağıda belirtildiği gibi, bu kaynakların her biri için ayrı olarak yapılandırıldığından, dikkat edilmesi önemlidir.
+> Elastic pools and managed instances have their own separate diagnostics telemetry from databases they contain. This is important to note as diagnostics telemetry is configured separately for each of these resources, as documented below.
 
 > [!NOTE]
-> Güvenlik denetimi ve SQLSecurityAuditEvents günlükleri, veritabanı tanılama ayarlarından (ekranda gösterilmekle birlikte) etkinleştirilemez. Denetim günlüğü akışını etkinleştirmek için bkz. [Veritabanınız için denetim ayarlama](sql-database-auditing.md#subheading-2)ve [Azure Izleyici günlüklerinde ve Azure Event Hubs günlükleri denetleme](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242).
+> Security Audit and SQLSecurityAuditEvents logs can't be enabled from the database diagnostics settings (although showing on the screen). To enable audit log streaming, see [Set up auditing for your database](sql-database-auditing.md#subheading-2), and [auditing logs in Azure Monitor logs and Azure Event Hubs](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242).
 
-## <a name="azure-portal"></a>Azure portal
+## <a name="azure-portal"></a>Azure portalı
 
-Tanılama telemetrinin akışını yapılandırmak için Azure portal içindeki her bir tek, havuza alınmış veya örnek veritabanı için **Tanılama ayarları** menüsünü kullanabilirsiniz. Ayrıca, tanılama telemetrisi veritabanı kapsayıcıları için ayrı olarak da yapılandırılabilir: elastik havuzlar ve yönetilen örnekler. Tanılama telemetrisini akışa almak için aşağıdaki hedefleri ayarlayabilirsiniz: Azure depolama, Azure Event Hubs ve Azure Izleyici günlükleri.
+You can use the **Diagnostics settings** menu for each single, pooled, or instance database in Azure portal to configure streaming of diagnostics telemetry. In addition, diagnostic telemetry can also be configured separately for database containers: elastic pools and managed instances. You can set the following destinations to stream the diagnostics telemetry: Azure Storage, Azure Event Hubs, and Azure Monitor logs.
 
-### <a name="configure-streaming-of-diagnostics-telemetry-for-elastic-pools"></a>Elastik havuzlar için tanılama telemetrinin akışını yapılandırma
+### <a name="configure-streaming-of-diagnostics-telemetry-for-elastic-pools"></a>Configure streaming of diagnostics telemetry for elastic pools
 
-   ![Elastik havuz simgesi](./media/sql-database-metrics-diag-logging/icon-elastic-pool-text.png)
+   ![Elastic pool icon](./media/sql-database-metrics-diag-logging/icon-elastic-pool-text.png)
 
-Aşağıdaki tanılama telemetrisini toplamak için bir elastik havuz kaynağı ayarlayabilirsiniz:
+You can set up an elastic pool resource to collect the following diagnostics telemetry:
 
-| Kaynak | Telemetri izleme |
+| Kaynak | Monitoring telemetry |
 | :------------------- | ------------------- |
-| **Elastik havuz** | [Temel ölçümler](sql-database-metrics-diag-logging.md#basic-metrics) EDTU/CPU yüzdesi, EDTU/CPU sınırı, fiziksel veri okuma yüzdesi, günlük yazma yüzdesi, oturum yüzdesi, çalışan yüzdesi, depolama, depolama yüzdesi, depolama sınırı ve XTP depolama yüzdesi içerir. |
+| **Elastic pool** | [Basic metrics](sql-database-metrics-diag-logging.md#basic-metrics) contains eDTU/CPU percentage, eDTU/CPU limit, physical data read percentage, log write percentage, sessions percentage, workers percentage, storage, storage percentage, storage limit, and XTP storage percentage. |
 
-Esnek havuzlardaki elastik havuzlar ve veritabanları için tanılama telemetrinin akışını yapılandırmak için, aşağıdakilerin **her ikisini de** ayrı ayrı yapılandırmanız gerekir:
+To configure streaming of diagnostics telemetry for elastic pools and databases in elastic pools, you will need to separately configure **both** of the following:
 
-- Elastik havuz için tanılama telemetrinin akışını etkinleştirin **ve**
-- Elastik havuzdaki her veritabanı için tanılama telemetrinin akışını etkinleştirme
+- Enable streaming of diagnostics telemetry for an elastic pool, **and**
+- Enable streaming of diagnostics telemetry for each database in elastic pool
 
-Bunun nedeni, elastik havuzun kendi telemetrisine sahip bir veritabanı kapsayıcısı olan tek bir veritabanı telemetrisinden ayrı bir veritabanıdır.
+This is because elastic pool is a database container with its own telemetry being separate from an individual database telemetry.
 
-Esnek havuz kaynağı için tanılama telemetrinin akışını etkinleştirmek için şu adımları izleyin:
+To enable streaming of diagnostics telemetry for an elastic pool resource, follow these steps:
 
-1. Azure portal ' deki **elastik havuz** kaynağına gidin.
-1. **Tanılama ayarları**' nı seçin.
-1. Önceki ayarlar yoksa **tanılamayı aç** ' ı seçin veya önceki bir ayarı düzenlemek Için **ayarı Düzenle** ' yi seçin.
+1. Go to the **elastic pool** resource in Azure portal.
+1. Select **Diagnostics settings**.
+1. Select **Turn on diagnostics** if no previous settings exist, or select **Edit setting** to edit a previous setting.
 
-   ![Elastik havuzlar için tanılamayı etkinleştir](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-elasticpool-enable.png)
+   ![Enable diagnostics for elastic pools](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-elasticpool-enable.png)
 
-1. Kendi başvurunuz için bir ayar adı girin.
-1. Akış Tanılama verileri için bir hedef kaynak seçin: **depolama hesabına Arşivle**, **bir olay hub 'ına akış**veya **Log Analytics gönderme**.
-1. Log Analytics için, **Yapılandır** ' ı seçin ve yeni çalışma **alanı oluştur ' u seçerek yeni**bir çalışma alanı oluşturun veya mevcut bir çalışma alanı seçin.
-1. Elastik havuz tanılama telemetrisi için onay kutusunu seçin: **temel** ölçümler.
-   Elastik havuzlar için tanılamayı yapılandırma ![](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-elasticpool-selection.png)
+1. Enter a setting name for your own reference.
+1. Select a destination resource for the streaming diagnostics data: **Archive to storage account**, **Stream to an event hub**, or **Send to Log Analytics**.
+1. For log analytics, select **Configure** and create a new workspace by selecting **+Create New Workspace**, or select an existing workspace.
+1. Select the check box for elastic pool diagnostics telemetry: **Basic** metrics.
+   ![Configure diagnostics for elastic pools](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-elasticpool-selection.png)
+
 1. **Kaydet**’i seçin.
-1. Ayrıca, sonraki bölümde açıklanan adımları izleyerek izlemek istediğiniz elastik havuzda bulunan her bir veritabanı için tanılama telemetrinin akışını yapılandırın.
+1. In addition, configure streaming of diagnostics telemetry for each database within the elastic pool you want to monitor by following steps described in the next section.
 
 > [!IMPORTANT]
-> Esnek havuz için tanılama telemetrisini yapılandırmanın yanı sıra, aşağıda belirtildiği gibi, elastik havuzdaki her veritabanı için de tanılama telemetrisini yapılandırmanız gerekir.
+> In addition to configuring diagnostics telemetry for an elastic pool, you also need to configure diagnostics telemetry for each database in elastic pool, as documented below.
 
-### <a name="configure-streaming-of-diagnostics-telemetry-for-single-database-or-database-in-elastic-pool"></a>Tek veritabanı veya elastik havuzda veritabanı için tanılama telemetrinin akışını yapılandırın
+### <a name="configure-streaming-of-diagnostics-telemetry-for-single-database-or-database-in-elastic-pool"></a>Configure streaming of diagnostics telemetry for single database, or database in elastic pool
 
-   ![SQL veritabanı simgesi](./media/sql-database-metrics-diag-logging/icon-sql-database-text.png)
+   ![SQL Database icon](./media/sql-database-metrics-diag-logging/icon-sql-database-text.png)
 
-Tek veya havuza alınmış veritabanları için tanılama telemetrinin akışını etkinleştirmek için şu adımları izleyin:
+To enable streaming of diagnostics telemetry for single or pooled databases, follow these steps:
 
-1. Azure **SQL veritabanı** kaynağına gidin.
-1. **Tanılama ayarları**' nı seçin.
-1. Önceki ayarlar yoksa **tanılamayı aç** ' ı seçin veya önceki bir ayarı düzenlemek Için **ayarı Düzenle** ' yi seçin.
-   - Akış tanılama telemetrisine en fazla üç paralel bağlantı oluşturabilirsiniz.
-   - Tanılama verilerinin paralel akışını birden çok kaynağa yapılandırmak için **+ Tanılama ayarı Ekle** ' yi seçin.
+1. Go to Azure **SQL database** resource.
+1. Select **Diagnostics settings**.
+1. Select **Turn on diagnostics** if no previous settings exist, or select **Edit setting** to edit a previous setting.
+   - You can create up to three parallel connections to stream diagnostics telemetry.
+   - Select **Add diagnostic setting** to configure parallel streaming of diagnostics data to multiple resources.
 
-   ![Tek, havuza alınmış veya örnek veritabanları için tanılamayı etkinleştirme](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-enable.png)
-1. Kendi başvurunuz için bir ayar adı girin.
-1. Akış Tanılama verileri için bir hedef kaynak seçin: **depolama hesabına Arşivle**, **bir olay hub 'ına akış**veya **Log Analytics gönderme**.
-1. Standart, olay tabanlı izleme deneyimi için, veritabanı tanılama günlüğü telemetrisi için aşağıdaki onay kutularını seçin: **Sqlinsıghts**, **automatictuning**, **QueryStoreRuntimeStatistics**, **querystorewaitstatistics** , **Hatalar**, **databasewaitstatistics**, **zaman aşımları**, **bloklar**ve **kilitlenmeler**.
-1. Gelişmiş, tek dakikalık tabanlı izleme deneyimi için **temel** ölçümler onay kutusunu seçin.
-   tek, havuza alınmış veya örnek veritabanları için tanılamayı yapılandırma ![](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-selection.png)
+   ![Enable diagnostics for single, pooled, or instance databases](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-enable.png)
+
+1. Enter a setting name for your own reference.
+1. Select a destination resource for the streaming diagnostics data: **Archive to storage account**, **Stream to an event hub**, or **Send to Log Analytics**.
+1. For the standard, event-based monitoring experience, select the following check boxes for database diagnostics log telemetry: **SQLInsights**, **AutomaticTuning**, **QueryStoreRuntimeStatistics**, **QueryStoreWaitStatistics**, **Errors**, **DatabaseWaitStatistics**, **Timeouts**, **Blocks**, and **Deadlocks**.
+1. For an advanced, one-minute-based monitoring experience, select the check box for **Basic** metrics.
+   ![Configure diagnostics for single, pooled, or instance databases](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-selection.png)
 1. **Kaydet**’i seçin.
-1. İzlemek istediğiniz her veritabanı için bu adımları tekrarlayın.
+1. Repeat these steps for each database you want to monitor.
 
 > [!NOTE]
-> Güvenlik denetimi ve SQLSecurityAuditEvents günlükleri veritabanı tanılama ayarlarından (ekranda gösterilmese de) etkinleştirilemez. Denetim günlüğü akışını etkinleştirmek için bkz. [Veritabanınız için denetim ayarlama](sql-database-auditing.md#subheading-2)ve [Azure Izleyici günlüklerinde ve Azure Event Hubs günlükleri denetleme](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242).
+> Security Audit and SQLSecurityAuditEvents logs can't be enabled from the database diagnostics settings (although shown on the screen). To enable audit log streaming, see [Set up auditing for your database](sql-database-auditing.md#subheading-2), and [auditing logs in Azure Monitor logs and Azure Event Hubs](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242).
+
 > [!TIP]
-> İzlemek istediğiniz her Azure SQL veritabanı için bu adımları tekrarlayın.
+> Repeat these steps for each Azure SQL Database you want to monitor.
 
-### <a name="configure-streaming-of-diagnostics-telemetry-for-managed-instances"></a>Yönetilen örnekler için tanılama telemetrinin akışını yapılandırın
+### <a name="configure-streaming-of-diagnostics-telemetry-for-managed-instances"></a>Configure streaming of diagnostics telemetry for managed instances
 
-   ![Yönetilen örnek simgesi](./media/sql-database-metrics-diag-logging/icon-managed-instance-text.png)
+   ![Managed instance icon](./media/sql-database-metrics-diag-logging/icon-managed-instance-text.png)
 
-Aşağıdaki tanılama telemetrisini toplamak için bir yönetilen örnek kaynağı ayarlayabilirsiniz:
+You can set up a managed instance resource to collect the following diagnostics telemetry:
 
-| Kaynak | Telemetri izleme |
+| Kaynak | Monitoring telemetry |
 | :------------------- | ------------------- |
-| **Yönetilen örnek** | [Resourceusagestats](#resource-usage-stats-for-managed-instance) sanal çekirdekler sayısını, ortalama CPU YÜZDESINI, GÇ isteklerini, okunan/yazılan bayt, ayrılmış depolama alanını ve kullanılan depolama alanını içerir. |
+| **Managed instance** | [ResourceUsageStats](#resource-usage-stats-for-managed-instance) contains vCores count, average CPU percentage, IO requests, bytes read/written, reserved storage space, and used storage space. |
 
-Yönetilen örnek ve örnek veritabanları için tanılama telemetrinin akışını yapılandırmak için, aşağıdakilerin **her ikisini de** ayrı ayrı yapılandırmanız gerekir:
+To configure streaming of diagnostics telemetry for managed instance and instance databases, you will need to separately configure **both** of the following:
 
-- Yönetilen örnek için tanılama telemetrinin akışını etkinleştirin **ve**
-- Her örnek veritabanı için tanılama telemetrinin akışını etkinleştir
+- Enable streaming of diagnostics telemetry for managed instance, **and**
+- Enable streaming of diagnostics telemetry for each instance database
 
-Bunun nedeni, yönetilen örneğin kendi telemetrisine sahip bir veritabanı kapsayıcısı, tek bir örnek veritabanı telemetrisinden ayrı bir veritabanıdır.
+This is because managed instance is a database container with its own telemetry, separate from an individual instance database telemetry.
 
-Yönetilen örnek kaynağı için tanılama telemetrinin akışını etkinleştirmek için şu adımları izleyin:
+To enable streaming of diagnostics telemetry for a managed instance resource, follow these steps:
 
-1. Azure portal **yönetilen örnek** kaynağına gidin.
-1. **Tanılama ayarları**' nı seçin.
-1. Önceki ayarlar yoksa **tanılamayı aç** ' ı seçin veya önceki bir ayarı düzenlemek Için **ayarı Düzenle** ' yi seçin.
+1. Go to the **managed instance** resource in Azure portal.
+1. Select **Diagnostics settings**.
+1. Select **Turn on diagnostics** if no previous settings exist, or select **Edit setting** to edit a previous setting.
 
-   ![Yönetilen örnek için tanılamayı etkinleştir](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-enable.png)
+   ![Enable diagnostics for managed instance](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-enable.png)
 
-1. Kendi başvurunuz için bir ayar adı girin.
-1. Akış Tanılama verileri için bir hedef kaynak seçin: **depolama hesabına Arşivle**, **bir olay hub 'ına akış**veya **Log Analytics gönderme**.
-1. Log Analytics için, **Yapılandır** ' ı seçin ve yeni çalışma **alanı oluştur ' u seçerek yeni**bir çalışma alanı oluşturun veya mevcut bir çalışma alanını kullanın.
-1. Örnek tanılama telemetrisi: **Resourceusagestats**onay kutusunu seçin.
-   Yönetilen örnek için tanılamayı yapılandırma ![](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-selection.png)
+1. Enter a setting name for your own reference.
+1. Select a destination resource for the streaming diagnostics data: **Archive to storage account**, **Stream to an event hub**, or **Send to Log Analytics**.
+1. For log analytics, select **Configure** and create a new workspace by selecting **+Create New Workspace**, or use an existing workspace.
+1. Select the check box for instance diagnostics telemetry: **ResourceUsageStats**.
+
+   ![Configure diagnostics for managed instance](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-selection.png)
+
 1. **Kaydet**’i seçin.
-1. Ayrıca, sonraki bölümde açıklanan adımları izleyerek, izlemek istediğiniz yönetilen örnek içindeki her örnek veritabanı için tanılama telemetrinin akışını yapılandırın.
+1. In addition, configure streaming of diagnostics telemetry for each instance database within the managed instance you want to monitor by following the steps described in the next section.
 
 > [!IMPORTANT]
-> Yönetilen bir örnek için tanılama telemetrisini yapılandırmaya ek olarak, aşağıda belirtildiği gibi her örnek veritabanı için tanılama telemetrisini de yapılandırmanız gerekir.
+> In addition to configuring diagnostics telemetry for a managed instance, you also need to configure diagnostics telemetry for each instance database, as documented below.
 
-### <a name="configure-streaming-of-diagnostics-telemetry-for-instance-databases"></a>Örnek veritabanları için tanılama telemetrinin akışını yapılandırma
+### <a name="configure-streaming-of-diagnostics-telemetry-for-instance-databases"></a>Configure streaming of diagnostics telemetry for instance databases
 
-   ![Yönetilen örnek 'de örnek veritabanı simgesi](./media/sql-database-metrics-diag-logging/icon-mi-database-text.png)
+   ![Instance database in managed instance icon](./media/sql-database-metrics-diag-logging/icon-mi-database-text.png)
 
-Örnek veritabanları için tanılama telemetrinin akışını etkinleştirmek için şu adımları izleyin:
+To enable streaming of diagnostics telemetry for instance databases, follow these steps:
 
-1. Yönetilen örnek içinde **örnek veritabanı** kaynağına gidin.
-1. **Tanılama ayarları**' nı seçin.
-1. Önceki ayarlar yoksa **tanılamayı aç** ' ı seçin veya önceki bir ayarı düzenlemek Için **ayarı Düzenle** ' yi seçin.
-   - Akış tanılama telemetrisine kadar en fazla üç (3) paralel bağlantı oluşturabilirsiniz.
-   - Tanılama verilerinin paralel akışını birden çok kaynağa yapılandırmak için **+ Tanılama ayarı Ekle** ' yi seçin.
+1. Go to **instance database** resource within managed instance.
+1. Select **Diagnostics settings**.
+1. Select **Turn on diagnostics** if no previous settings exist, or select **Edit setting** to edit a previous setting.
+   - You can create up to three (3) parallel connections to stream diagnostics telemetry.
+   - Select **+Add diagnostic setting** to configure parallel streaming of diagnostics data to multiple resources.
 
-   ![Örnek veritabanları için tanılamayı etkinleştir](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-enable.png)
+   ![Enable diagnostics for instance databases](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-enable.png)
 
-1. Kendi başvurunuz için bir ayar adı girin.
-1. Akış Tanılama verileri için bir hedef kaynak seçin: **depolama hesabına Arşivle**, **bir olay hub 'ına akış**veya **Log Analytics gönderme**.
-1. Database Diagnostics telemetrisi için onay kutularını seçin: **Sqlinsıghts**, **QueryStoreRuntimeStatistics**, **Querystorewaitstatistics** ve **Errors**.
-   örnek veritabanları için tanılamayı yapılandırma ![](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-selection.png)
+1. Enter a setting name for your own reference.
+1. Select a destination resource for the streaming diagnostics data: **Archive to storage account**, **Stream to an event hub**, or **Send to Log Analytics**.
+1. Select the check boxes for database diagnostics telemetry: **SQLInsights**, **QueryStoreRuntimeStatistics**, **QueryStoreWaitStatistics** and **Errors**.
+   ![Configure diagnostics for instance databases](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-selection.png)
 1. **Kaydet**’i seçin.
-1. İzlemek istediğiniz her örnek veritabanı için bu adımları tekrarlayın.
+1. Repeat these steps for each instance database you want to monitor.
 
 > [!TIP]
-> İzlemek istediğiniz her örnek veritabanı için bu adımları tekrarlayın.
+> Repeat these steps for each instance database you want to monitor.
 
 ### <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 > [!IMPORTANT]
-> PowerShell Azure Resource Manager modülü Azure SQL veritabanı tarafından hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. Bu cmdlet 'ler için bkz. [Azurerd. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır.
+> The PowerShell Azure Resource Manager module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. For these cmdlets, see [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). The arguments for the commands in the Az module and in the AzureRm modules are substantially identical.
 
-PowerShell kullanarak ölçümleri ve tanılama günlük kaydını etkinleştirebilirsiniz.
+You can enable metrics and diagnostics logging by using PowerShell.
 
-- Tanılama günlükleri bir depolama hesabında depolama etkinleştirmek için bu komutu kullanın:
+- To enable storage of diagnostics logs in a storage account, use this command:
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
    ```
 
-   Depolama hesabı KIMLIĞI, hedef depolama hesabının kaynak KIMLIĞIDIR.
+   The storage account ID is the resource ID for the destination storage account.
 
-- Tanılama günlükleri Olay hub'ına akışını etkinleştirmek için bu komutu kullanın:
+- To enable streaming of diagnostics logs to an event hub, use this command:
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your service bus rule id] -Enabled $true
    ```
 
-   Azure Service Bus kural kimliği şu biçime sahip bir dizedir:
+   The Azure Service Bus rule ID is a string with this format:
 
    ```powershell
    {service bus resource ID}/authorizationrules/{key name}
    ```
 
-- Log Analytics çalışma alanına gönderme tanılama günlüklerini etkinleştirmek için bu komutu kullanın:
+- To enable sending diagnostics logs to a Log Analytics workspace, use this command:
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
    ```
 
-- Log Analytics çalışma alanınızın kaynak Kimliğini aşağıdaki komutu kullanarak elde edebilirsiniz:
+- You can obtain the resource ID of your Log Analytics workspace by using the following command:
 
    ```powershell
    (Get-AzOperationalInsightsWorkspace).ResourceId
    ```
 
-Birden çok çıkış seçeneği etkinleştirmek için şu parametreleri birleştirebilirsiniz.
+You can combine these parameters to enable multiple output options.
 
-### <a name="to-configure-multiple-azure-resources"></a>Birden çok Azure kaynağını yapılandırmak için
+### <a name="to-configure-multiple-azure-resources"></a>To configure multiple Azure resources
 
-Birden çok aboneliği desteklemek için PowerShell komut dosyasını kullanarak PowerShell 'i [kullanarak Azure Kaynak ölçümleri günlüğünü etkinleştirin](https://blogs.technet.microsoft.com/msoms/20../../enable-azure-resource-metrics-logging-using-powershell/).
+To support multiple subscriptions, use the PowerShell script from [Enable Azure resource metrics logging using PowerShell](https://blogs.technet.microsoft.com/msoms/20../../enable-azure-resource-metrics-logging-using-powershell/).
 
-Birden çok kaynaktan tanılama verilerini çalışma alanına göndermek için komut dosyası `Enable-AzureRMDiagnostics.ps1` yürütürken $WSID\> \<çalışma alanı kaynak KIMLIĞINI bir parametre olarak belirtin.
+Provide the workspace resource ID \<$WSID\> as a parameter when executing the script `Enable-AzureRMDiagnostics.ps1` to send diagnostic data from multiple resources to the workspace.
 
-- Tanılama verilerinize yönelik hedefin $WSID\> \<çalışma alanı KIMLIĞINI almak için aşağıdaki betiği kullanın:
+- To get the workspace ID \<$WSID\> of the destination for your diagnostic data, use the following script:
 
     ```powershell
-    PS C:\> $WSID = "/subscriptions/<subID>/resourcegroups/<RG_NAME>/providers/microsoft.operationalinsights/workspaces/<WS_NAME>"
-    PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
+    $WSID = "/subscriptions/<subID>/resourcegroups/<RG_NAME>/providers/microsoft.operationalinsights/workspaces/<WS_NAME>"
+    .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
     ```
 
-   \<Subıd\> abonelik KIMLIĞIYLE değiştirin, kaynak grubu adıyla \<RG_NAME\> ve \<WS_NAME çalışma alanı adıyla değiştirin.\>
+   Replace \<subID\> with the subscription ID, \<RG_NAME\> with the resource group name, and \<WS_NAME\> with the workspace name.
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Azure CLı kullanarak ölçümleri ve tanılama günlük kaydını etkinleştirebilirsiniz.
+You can enable metrics and diagnostics logging by using the Azure CLI.
 
 > [!NOTE]
-> Tanılama günlüğünü etkinleştirme betikleri Azure CLı v 1.0 için desteklenir. CLı v 2.0 'ın Şu anda desteklendiğine lütfen emin olun.
+> Scripts to enable diagnostics logging are supported for Azure CLI v1.0. Please note that CLI v2.0 is unsupported at this time.
 
-- Bir depolama hesabında tanılama günlüklerinin depolanmasını etkinleştirmek için şu komutu kullanın:
+- To enable the storage of diagnostics logs in a storage account, use this command:
 
    ```azurecli-interactive
    azure insights diagnostic set --resourceId <resourceId> --storageId <storageAccountId> --enabled true
    ```
 
-   Depolama hesabı KIMLIĞI, hedef depolama hesabının kaynak KIMLIĞIDIR.
+   The storage account ID is the resource ID for the destination storage account.
 
-- Tanılama günlüklerinin bir olay hub 'ına akışını etkinleştirmek için şu komutu kullanın:
+- To enable the streaming of diagnostics logs to an event hub, use this command:
 
    ```azurecli-interactive
    azure insights diagnostic set --resourceId <resourceId> --serviceBusRuleId <serviceBusRuleId> --enabled true
    ```
 
-   Service Bus kural KIMLIĞI Şu biçimdeki bir dizedir:
+   The Service Bus rule ID is a string with this format:
 
    ```azurecli-interactive
    {service bus resource ID}/authorizationrules/{key name}
    ```
 
-- Tanılama günlüklerinin bir Log Analytics çalışma alanına gönderilmesini etkinleştirmek için şu komutu kullanın:
+- To enable the sending of diagnostics logs to a Log Analytics workspace, use this command:
 
    ```azurecli-interactive
    azure insights diagnostic set --resourceId <resourceId> --workspaceId <resource id of the log analytics workspace> --enabled true
    ```
 
-Birden çok çıkış seçeneği etkinleştirmek için şu parametreleri birleştirebilirsiniz.
+You can combine these parameters to enable multiple output options.
 
 ### <a name="rest-api"></a>REST API
 
-[Azure izleyici REST API kullanarak tanılama ayarlarını değiştirme](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)hakkında bilgi edinin.
+Read about how to [change diagnostics settings by using the Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings).
 
 ### <a name="resource-manager-template"></a>Resource Manager şablonu
 
-[Kaynak Yöneticisi şablonu kullanarak kaynak oluşturmada tanılama ayarlarının nasıl etkinleştirileceği](../azure-monitor/platform/diagnostic-settings-template.md)hakkında bilgi edinin.
+Read about how to [enable diagnostics settings at resource creation by using a Resource Manager template](../azure-monitor/platform/diagnostic-settings-template.md).
 
-## <a name="stream-into-azure-sql-analytics"></a>Azure SQL Analytics içine akış
+## <a name="stream-into-azure-sql-analytics"></a>Stream into Azure SQL Analytics
 
-Azure SQL Analytics, Azure SQL veritabanlarının, elastik havuzların ve yönetilen örneklerin ölçeğini ölçekteki ve birden çok aboneliğin performansını izleyen bir bulut çözümüdür. Azure SQL veritabanı performans ölçümlerini toplamanıza ve görselleştirmenize yardımcı olabilir ve performans sorunlarını gidermek için yerleşik zekaya sahiptir.
+Azure SQL Analytics is a cloud solution that monitors the performance of Azure SQL databases, elastic pools, and managed instances at scale and across multiple subscriptions. It can help you collect and visualize Azure SQL Database performance metrics, and it has built-in intelligence for performance troubleshooting.
 
-![Azure SQL Analytics genel bakış](../azure-monitor/insights/media/azure-sql/azure-sql-sol-overview.png)
+![Azure SQL Analytics Overview](../azure-monitor/insights/media/azure-sql/azure-sql-sol-overview.png)
 
-SQL veritabanı ölçümleri ve tanılama günlükleri, portalda Tanılama Ayarları sekmesinde yerleşik **Log Analytics gönder** seçeneği kullanılarak Azure SQL Analytics akışı yapılabilir. Log Analytics 'i PowerShell cmdlet 'leri, Azure CLı veya Azure Izleyici REST API aracılığıyla bir tanılama ayarı kullanarak da etkinleştirebilirsiniz.
+SQL Database metrics and diagnostics logs can be streamed into Azure SQL Analytics by using the built-in **Send to Log Analytics** option in the diagnostics settings tab in the portal. You can also enable log analytics by using a diagnostics setting via PowerShell cmdlets, the Azure CLI, or the Azure Monitor REST API.
 
 ### <a name="installation-overview"></a>Yüklemeye genel bakış
 
-Azure SQL Analytics bir SQL veritabanı filosu izleyebilirsiniz. Aşağıdaki adımları uygulayın:
+You can monitor a SQL Database fleet with Azure SQL Analytics. Perform the following  steps:
 
-1. Azure Marketi 'nden bir Azure SQL Analytics çözümü oluşturun.
-2. Çözümde bir izleme çalışma alanı oluşturun.
-3. Tanılama telemetrisini çalışma alanına akışa almak için veritabanlarını yapılandırın.
+1. Create an Azure SQL Analytics solution from the Azure Marketplace.
+2. Create a monitoring workspace in the solution.
+3. Configure databases to stream diagnostics telemetry into the workspace.
 
-Elastik havuzlar veya yönetilen örnekler kullanıyorsanız, bu kaynaklardan tanılama telemetri akışını da yapılandırmanız gerekir.
+If you're using elastic pools or managed instances, you also need to configure diagnostics telemetry streaming from these resources.
 
-### <a name="create-azure-sql-analytics-resource"></a>Azure SQL Analytics kaynağı oluşturma
+### <a name="create-azure-sql-analytics-resource"></a>Create Azure SQL Analytics resource
 
-1. Azure Market 'te Azure SQL Analytics arayın ve seçin.
+1. Search for Azure SQL Analytics in Azure Marketplace and select it.
 
-   ![Portalda Azure SQL Analytics arama](./media/sql-database-metrics-diag-logging/sql-analytics-in-marketplace.png)
+   ![Search for Azure SQL Analytics in portal](./media/sql-database-metrics-diag-logging/sql-analytics-in-marketplace.png)
 
-2. Çözümün genel bakış ekranında **Oluştur** ' u seçin.
+2. Select **Create** on the solution's overview screen.
 
-3. Azure SQL Analytics formunu, gereken ek bilgilerle girin: çalışma alanı adı, abonelik, kaynak grubu, konum ve fiyatlandırma katmanı.
+3. Fill in the Azure SQL Analytics form with the additional information that is required: workspace name, subscription, resource group, location, and pricing tier.
 
-   ![Portalda Azure SQL Analytics yapılandırma](./media/sql-database-metrics-diag-logging/sql-analytics-configuration-blade.png)
+   ![Configure Azure SQL Analytics in portal](./media/sql-database-metrics-diag-logging/sql-analytics-configuration-blade.png)
 
-4. Onaylamak için **Tamam** ' ı seçin ve ardından **Oluştur**' u seçin.
+4. Select **OK** to confirm, and then select **Create**.
 
-### <a name="configure-databases-to-record-metrics-and-diagnostics-logs"></a>Ölçümleri ve tanılama günlüklerini kaydetmek için veritabanlarını yapılandırma
+### <a name="configure-databases-to-record-metrics-and-diagnostics-logs"></a>Configure databases to record metrics and diagnostics logs
 
-Veritabanlarının, ölçüm kayıtlarını nerede Azure portal kullanarak yapılandırmanın en kolay yolu. Daha önce açıklandığı gibi, Azure portal SQL veritabanı kaynağına gidin ve **Tanılama ayarları**' nı seçin.
+The easiest way to configure where databases record metrics is by using the Azure portal. As previously described, go to your SQL Database resource in the Azure portal and select **Diagnostics settings**.
 
-Elastik havuzlar veya yönetilen örnekler kullanıyorsanız, tanılama telemetrinin çalışma alanına akışını sağlamak için bu kaynaklarda tanılama ayarlarını da yapılandırmanız gerekir.
+If you're using elastic pools or managed instances, you also need to configure diagnostics settings in these resources to enable the diagnostics telemetry to stream into the workspace.
 
-### <a name="use-the-sql-analytics-solution-for-monitoring-and-alerting"></a>İzleme ve uyarma için SQL Analytics çözümünü kullanma
+### <a name="use-the-sql-analytics-solution-for-monitoring-and-alerting"></a>Use the SQL Analytics solution for monitoring and alerting
 
-SQL veritabanı kaynaklarınızı görüntülemek için SQL Analytics 'i hiyerarşik bir pano olarak kullanabilirsiniz.
+You can use SQL Analytics as a hierarchical dashboard to view your SQL Database resources.
 
-- SQL Analytics çözümünü nasıl kullanacağınızı öğrenmek için bkz. SQL [Analytics çözümünü kullanarak SQL veritabanını izleme](../log-analytics/log-analytics-azure-sql.md).
-- SQL veritabanı ve yönetilen örnek için SQL Analytics 'e göre uyarıları ayarlamayı öğrenmek için bkz. [SQL veritabanı ve yönetilen örnek için uyarı oluşturma](../azure-monitor/insights/azure-sql.md#analyze-data-and-create-alerts).
+- To learn how to use the SQL Analytics solution, see [Monitor SQL Database by using the SQL Analytics solution](../log-analytics/log-analytics-azure-sql.md).
+- To learn how to setup alerts for SQL Database and managed instance based on SQL Analytics, see [Creating alerts for SQL Database and managed instance](../azure-monitor/insights/azure-sql.md#analyze-data-and-create-alerts).
 
 ## <a name="stream-into-event-hubs"></a>Event Hubs'a akış sağlama
 
-SQL veritabanı ölçümleri ve tanılama günlüklerini, Azure portal **bir olay hub 'ı** seçeneğinde yerleşik akışı kullanarak Event Hubs ' a akışını sağlayabilirsiniz. Ayrıca, PowerShell cmdlet 'leri, Azure CLı veya Azure Izleyici REST API aracılığıyla bir tanılama ayarı kullanarak Service Bus kuralı KIMLIĞINI etkinleştirebilirsiniz.
+You can stream SQL Database metrics and diagnostics logs into Event Hubs by using the built-in **Stream to an event hub** option in the Azure portal. You also can enable the Service Bus rule ID by using a diagnostics setting via PowerShell cmdlets, the Azure CLI, or the Azure Monitor REST API.
 
-### <a name="what-to-do-with-metrics-and-diagnostics-logs-in-event-hubs"></a>Event Hubs ölçümler ve tanılama günlükleri ile ne yapmalı
+### <a name="what-to-do-with-metrics-and-diagnostics-logs-in-event-hubs"></a>What to do with metrics and diagnostics logs in Event Hubs
 
-Seçili veriler Event Hubs akışa alındıktan sonra, Gelişmiş izleme senaryolarına olanak tanımak için bir adım daha yakınına sahip olursunuz. Event Hubs, bir olay işlem hattının ön kapısı olarak davranır. Veriler bir olay hub 'ına toplandıktan sonra, gerçek zamanlı bir analiz sağlayıcısı veya bir depolama bağdaştırıcısı kullanılarak dönüştürülebilir ve depolanabilir. Event Hubs, bir olay akışının üretimini bu olayların kullanımından ayırır. Bu şekilde olay tüketicileri, olaylara kendi zamanlamalarıyla erişebilirler. Event Hubs hakkında daha fazla bilgi için bkz.
+After the selected data is streamed into Event Hubs, you're one step closer to enabling advanced monitoring scenarios. Event Hubs acts as the front door for an event pipeline. After data is collected into an event hub, it can be transformed and stored by using a real-time analytics provider or a storage adapter. Event Hubs decouples the production of a stream of events from the consumption of those events. In this way, event consumers can access the events on their own schedule. For more information on Event Hubs, see:
 
-- [Azure Event Hubs nedir?](../event-hubs/event-hubs-what-is-event-hubs.md)
+- [What are Azure Event Hubs?](../event-hubs/event-hubs-what-is-event-hubs.md)
 - [Event Hubs kullanmaya başlayın](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
 
-Event Hubs için akan ölçümleri kullanabilirsiniz:
+You can use streamed metrics in Event Hubs to:
 
-- **Power BI için etkin yol verilerini akışa alarak hizmet durumunu görüntüleyin**. Event Hubs, Stream Analytics ve Power BI kullanarak ölçümler ve tanılama verilerinizi Azure hizmetlerinizden neredeyse gerçek zamanlı içgörüler halinde kolayca dönüştürebilirsiniz. Bir olay hub 'ı ayarlama, Stream Analytics ile verileri işleme ve çıkış olarak Power BI kullanma hakkında genel bilgi için bkz. [Stream Analytics ve Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md).
+- **View service health by streaming hot-path data to Power BI**
 
-- **Üçüncü taraf günlüğe kaydetme ve telemetri akışlarına yönelik günlükleri akışa**alma. Event Hubs akışı kullanarak, ölçümlerinizi ve tanılama günlüklerinizi çeşitli üçüncü taraf izleme ve Log Analytics çözümlerinde bulabilirsiniz.
+   By using Event Hubs, Stream Analytics, and Power BI, you can easily transform your metrics and diagnostics data into near real-time insights on your Azure services. For an overview of how to set up an event hub, process data with Stream Analytics, and use Power BI as an output, see [Stream Analytics and Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md).
 
-- **Özel telemetri ve günlüğe kaydetme platformu oluşturun**. Zaten özel olarak oluşturulmuş bir telemetri platformudur veya bir tane oluşturmayı düşünülüyor musunuz? Yüksek düzeyde ölçeklenebilir yayımla-abone ol Event Hubs, tanılama günlüklerini esnek bir şekilde almanızı sağlar. [Küresel ölçekli bir telemetri platformunda Event Hubs kullanmak için bkz. Dan Rosanova Kılavuzu](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/).
+- **Stream logs to third-party logging and telemetry streams**
 
-## <a name="stream-into-storage"></a>Depolama alanına akış
+   By using Event Hubs streaming, you can get your metrics and diagnostics logs into various third-party monitoring and log analytics solutions.
 
-Azure depolama 'da SQL veritabanı ölçümleri ve tanılama günlüklerini, Azure portal **bir depolama hesabı** seçeneğinde yerleşik Arşiv ' i kullanarak da saklayabilirsiniz. Ayrıca, PowerShell cmdlet 'leri, Azure CLı veya Azure Izleyici REST API aracılığıyla bir tanılama ayarı kullanarak depolamayı etkinleştirebilirsiniz.
+- **Build a custom telemetry and logging platform**
 
-### <a name="schema-of-metrics-and-diagnostics-logs-in-the-storage-account"></a>Depolama hesabındaki ölçüm ve tanılama günlüklerinin şeması
+   Do you already have a custom-built telemetry platform or are considering building one? The highly scalable publish-subscribe nature of Event Hubs allows you to flexibly ingest diagnostics logs. See [Dan Rosanova's guide to using Event Hubs in a global-scale telemetry platform](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/).
 
-Ölçümler ve tanılama günlükleri koleksiyonu ayarladıktan sonra, ilk veri satırları kullanılabilir olduğunda seçtiğiniz depolama hesabında bir depolama kapsayıcısı oluşturulur. Blobların yapısı şu şekilde olur:
+## <a name="stream-into-storage"></a>Stream into Storage
+
+You can store SQL Database metrics and diagnostics logs in Azure Storage by using the built-in **Archive to a storage account** option in the Azure portal. You  can also enable Storage by using a diagnostics setting via PowerShell cmdlets, the Azure CLI, or the Azure Monitor REST API.
+
+### <a name="schema-of-metrics-and-diagnostics-logs-in-the-storage-account"></a>Schema of metrics and diagnostics logs in the storage account
+
+After you set up metrics and diagnostics logs collection, a storage container is created in the storage account you selected when the first rows of data are available. The structure of the blobs is:
 
 ```powershell
 insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription ID}/ RESOURCEGROUPS/{resource group name}/PROVIDERS/Microsoft.SQL/servers/{resource_server}/ databases/{database_name}/y={four-digit numeric year}/m={two-digit numeric month}/d={two-digit numeric day}/h={two-digit 24-hour clock hour}/m=00/PT1H.json
 ```
 
-Ya da daha basit:
+Or, more simply:
 
 ```powershell
 insights-{metrics|logs}-{category name}/resourceId=/{resource Id}/y={four-digit numeric year}/m={two-digit numeric month}/d={two-digit numeric day}/h={two-digit 24-hour clock hour}/m=00/PT1H.json
 ```
 
-Örneğin, temel ölçümler için bir blob adı şu olabilir:
+For example, a blob name for Basic metrics might be:
 
 ```powershell
 insights-metrics-minute/resourceId=/SUBSCRIPTIONS/s1id1234-5679-0123-4567-890123456789/RESOURCEGROUPS/TESTRESOURCEGROUP/PROVIDERS/MICROSOFT.SQL/ servers/Server1/databases/database1/y=2016/m=08/d=22/h=18/m=00/PT1H.json
 ```
 
-Elastik bir havuzdan veri depolamak için bir blob adı şöyle görünür:
+A blob name for storing data from an elastic pool looks like:
 
 ```powershell
 insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription ID}/ RESOURCEGROUPS/{resource group name}/PROVIDERS/Microsoft.SQL/servers/{resource_server}/ elasticPools/{elastic_pool_name}/y={four-digit numeric year}/m={two-digit numeric month}/d={two-digit numeric day}/h={two-digit 24-hour clock hour}/m=00/PT1H.json
 ```
 
-## <a name="data-retention-policy-and-pricing"></a>Veri bekletme ilkesi ve fiyatlandırma
+## <a name="data-retention-policy-and-pricing"></a>Data retention policy and pricing
 
-Event Hubs veya depolama hesabı ' nı seçerseniz bir bekletme ilkesi belirleyebilirsiniz. Bu ilke seçilen bir zaman aralığından daha eski olan verileri siler. Log Analytics belirtirseniz, bekletme ilkesi seçili fiyatlandırma katmanına bağlıdır. Bu durumda, sunulan ücretsiz veri alma birimleri her ay çeşitli veritabanlarının ücretsiz olarak izlenmesini etkinleştirebilir. Her türlü ücretsiz birimi aşan tanılama telemetrisine ilişkin tüm tüketimler maliyette bulunabilir. Yoğun iş yüklerine sahip etkin veritabanlarının, boştaki veritabanlarından daha fazla veri aldığını unutmayın. Daha fazla bilgi için bkz. [Log Analytics fiyatlandırması](https://azure.microsoft.com/pricing/details/monitor/).
+If you select Event Hubs or a Storage account, you can specify a retention policy. This policy deletes data that is older than a selected time period. If you specify Log Analytics, the retention policy depends on the selected pricing tier. In this case, the provided free units of data ingestion can enable free monitoring of several databases each month. Any consumption of diagnostics telemetry in excess of the free units might incur costs. Be aware that active databases with heavier workloads ingest more data than idle databases. For more information, see [Log analytics pricing](https://azure.microsoft.com/pricing/details/monitor/).
 
-Azure SQL Analytics kullanıyorsanız, Azure SQL Analytics gezinti menüsünde **OMS çalışma alanı** ' nı seçerek ve ardından **kullanım** ve **tahmini maliyetler**' i seçerek, çözüm içindeki veri alma kullanımınızı izleyebilirsiniz.
+If you are using Azure SQL Analytics, you can monitor your data ingestion consumption in the solution by selecting **OMS Workspace** on the navigation menu of Azure SQL Analytics, and then selecting **Usage** and **Estimated Costs**.
 
-## <a name="metrics-and-logs-available"></a>Ölçümler ve Günlükler kullanılabilir
+## <a name="metrics-and-logs-available"></a>Metrics and logs available
 
-Azure SQL veritabanı, elastik havuzlar ve yönetilen örnek için izleme telemetrisini aşağıda bulabilirsiniz. SQL Analytics içinde toplanan izleme telemetrisi, [Azure izleyici günlük sorguları](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries) dilini kullanarak kendi özel analiz ve uygulama geliştirme için kullanılabilir.
+Monitoring telemetry available for Azure SQL Database, elastic pools and managed instance is documented below. Collected monitoring telemetry inside SQL Analytics can be used for your own custom analysis and application development using [Azure Monitor log queries](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries) language.
 
-## <a name="basic-metrics"></a>Temel ölçümler
+## <a name="basic-metrics"></a>Basic metrics
 
-Kaynağa göre temel ölçümler hakkında daha fazla bilgi için aşağıdaki tablolara bakın.
+Refer to the following tables for details about Basic metrics by resource.
 
 > [!NOTE]
-> Temel ölçümler seçeneği önceden tüm ölçümler olarak bilinirdi. Yapılan değişiklik yalnızca adlandırma amaçlıdır ve izlenen ölçümlerde hiçbir değişiklik yapılmadı. Bu değişiklik, gelecekte ek ölçüm kategorilerinin tanıtılmasıyla izin verecek şekilde başlatıldı.
+> Basic metrics option was formerly known as All metrics. The change made was to the naming only and there was no change to the metrics monitored. This change was initiated to allow for introduction of additional metric categories in the future.
 
-### <a name="basic-metrics-for-elastic-pools"></a>Elastik havuzlar için temel ölçümler
-
-|**Kaynak**|**Ölçümler**|
-|---|---|
-|Elastik havuz|eDTU yüzdesi, eDTU kullanımı, eDTU sınırı, CPU yüzdesi, fiziksel veri okuma yüzdesi, günlük yazma yüzdesi, oturum yüzdesi, çalışan yüzdesi, depolama, depolama yüzdesi, depolama sınırı, XTP depolama yüzdesi |
-
-### <a name="basic-metrics-for-azure-sql-databases"></a>Azure SQL veritabanları için temel ölçümler
+### <a name="basic-metrics-for-elastic-pools"></a>Basic metrics for elastic pools
 
 |**Kaynak**|**Ölçümler**|
 |---|---|
-|Azure SQL veritabanı|DTU yüzdesi, DTU kullanımı, DTU sınırı, CPU yüzdesi, fiziksel veri okuma yüzdesi, günlük yazma yüzdesi, başarılı/başarısız/engellenen güvenlik duvarı bağlantıları, oturum yüzdesi, çalışan yüzdesi, depolama, depolama yüzdesi, XTP depolama yüzdesi ve Çık |
+|Elastik havuz|eDTU percentage, eDTU used, eDTU limit, CPU percentage, physical data read percentage, log write percentage, sessions percentage, workers percentage, storage, storage percentage, storage limit, XTP storage percentage |
 
-## <a name="advanced-metrics"></a>Gelişmiş ölçümler
+### <a name="basic-metrics-for-azure-sql-databases"></a>Basic metrics for Azure SQL Databases
 
-Gelişmiş ölçümler hakkındaki ayrıntılar için aşağıdaki tabloya bakın.
+|**Kaynak**|**Ölçümler**|
+|---|---|
+|Azure SQL veritabanı|DTU percentage, DTU used, DTU limit, CPU percentage, physical data read percentage, log write percentage, Successful/Failed/Blocked by firewall connections, sessions percentage, workers percentage, storage, storage percentage, XTP storage percentage, and deadlocks |
 
-|**Ölçüm**|**Ölçüm görünen adı**|**Açıklama**|
+## <a name="advanced-metrics"></a>Advanced metrics
+
+Refer to the following table for details about advanced metrics.
+
+|**Ölçüm**|**Metric Display Name**|**Açıklama**|
 |---|---|---|
-|tempdb_data_size| Tempdb veri dosyası boyutu kilobayt |Tempdb veri dosyası boyutu kilobayt. Veri ambarlarında geçerli değildir. Bu ölçüm, DTU tabanlı satın alma modelleri için vCore satın alma modeli veya 100 DTU ve üzeri kullanan veritabanlarında kullanılabilir. |
-|tempdb_log_size| Tempdb günlük dosyası boyutu kilobayt |Tempdb günlük dosyası boyutu kilobayt. Veri ambarlarında geçerli değildir. Bu ölçüm, DTU tabanlı satın alma modelleri için vCore satın alma modeli veya 100 DTU ve üzeri kullanan veritabanlarında kullanılabilir. |
-|tempdb_log_used_percent| Kullanılan tempdb günlüğü yüzdesi |Kullanılan tempdb günlüğü yüzdesi. Veri ambarlarında geçerli değildir. Bu ölçüm, DTU tabanlı satın alma modelleri için vCore satın alma modeli veya 100 DTU ve üzeri kullanan veritabanlarında kullanılabilir. |
+|tempdb_data_size| Tempdb Data File Size Kilobytes |Tempdb Data File Size Kilobytes. Not applicable to data warehouses. This metric will be available for databases using the vCore purchasing model or 100 DTU and higher for DTU-based purchasing models. |
+|tempdb_log_size| Tempdb Log File Size Kilobytes |Tempdb Log File Size Kilobytes. Not applicable to data warehouses. This metric will be available for databases using the vCore purchasing model or 100 DTU and higher for DTU-based purchasing models. |
+|tempdb_log_used_percent| Tempdb Percent Log Used |Tempdb Percent Log Used. Not applicable to data warehouses. This metric will be available for databases using the vCore purchasing model or 100 DTU and higher for DTU-based purchasing models. |
 
-## <a name="basic-logs"></a>Temel Günlükler
+## <a name="basic-logs"></a>Basic logs
 
-Tüm günlüklerde kullanılabilen telemetri ayrıntıları aşağıdaki tablolarda belgelenmiştir. Lütfen belirli bir veritabanı özelliği için hangi günlüklerin desteklendiğini anlamak için bkz. [desteklenen tanılama günlüğü](#supported-diagnostic-logging-for-azure-sql-databases-and-instance-databases) -Azure SQL Single, havuza alınmış veya örnek veritabanı.
+Details of telemetry available for all logs are documented in the tables below. Please see [supported diagnostic logging](#supported-diagnostic-logging-for-azure-sql-databases-and-instance-databases) to understand which logs are supported for a particular database flavor - Azure SQL single, pooled, or instance database.
 
-### <a name="resource-usage-stats-for-managed-instance"></a>Yönetilen örnek için kaynak kullanım istatistikleri
+### <a name="resource-usage-stats-for-managed-instance"></a>Resource usage stats for managed instance
 
 |Özellik|Açıklama|
 |---|---|
-|Değerine|Kiracı KIMLIĞINIZ |
+|TenantId|Your tenant ID |
 |SourceSystem|Always: Azure|
-|TimeGenerated [UTC]|Günlüğün kaydedildiği zaman damgası |
+|TimeGenerated [UTC]|Time stamp when the log was recorded |
 |Tür|Always: AzureDiagnostics |
-|ResourceProvider|Kaynak sağlayıcının adı. Always: MICROSOFT. SQL |
-|Kategori|Kategorinin adı. Always: ResourceUsageStats |
+|ResourceProvider|Name of the resource provider. Always: MICROSOFT.SQL |
+|Kategori|Name of the category. Always: ResourceUsageStats |
 |Kaynak|Kaynağın adı |
-|ResourceType|Kaynak türünün adı. Always: MANAGEDıNSTANCES |
-|SubscriptionId|Veritabanı için abonelik GUID 'SI |
-|ResourceGroup|Veritabanı için kaynak grubunun adı |
-|LogicalServerName_s|Yönetilen örnek adı |
-|ResourceId|Kaynak URI 'SI |
-|SKU_s|Yönetilen örnek Ürün SKU 'SU |
-|virtual_core_count_s|Kullanılabilir sanal çekirdek sayısı |
-|avg_cpu_percent_s|Ortalama CPU yüzdesi |
-|reserved_storage_mb_s|Yönetilen örnekteki ayrılmış depolama kapasitesi |
-|storage_space_used_mb_s|Yönetilen örnekte kullanılan depolama alanı |
-|io_requests_s|IOPS sayısı |
-|io_bytes_read_s|IOPS bayt okuma |
-|io_bytes_written_s|Bayt yazılan ıOPS |
+|ResourceType|Name of the resource type. Always: MANAGEDINSTANCES |
+|kaynak grubundaki|Subscription GUID for the database |
+|adlı yönetilen örnek,|Name of the resource group for the database |
+|LogicalServerName_s|Name of the managed instance |
+|ResourceId|Resource URI |
+|SKU_s|Managed instance product SKU |
+|virtual_core_count_s|Number of vCores available |
+|avg_cpu_percent_s|Average CPU percentage |
+|reserved_storage_mb_s|Reserved storage capacity on the managed instance |
+|storage_space_used_mb_s|Used storage on the managed instance |
+|io_requests_s|IOPS count |
+|io_bytes_read_s|IOPS bytes read |
+|io_bytes_written_s|IOPS bytes written |
 
-### <a name="query-store-runtime-statistics"></a>Sorgu deposu çalışma zamanı istatistikleri
+### <a name="query-store-runtime-statistics"></a>Query Store runtime statistics
 
 |Özellik|Açıklama|
 |---|---|
-|Değerine|Kiracı KIMLIĞINIZ |
+|TenantId|Your tenant ID |
 |SourceSystem|Always: Azure |
-|TimeGenerated [UTC]|Günlüğün kaydedildiği zaman damgası |
+|TimeGenerated [UTC]|Time stamp when the log was recorded |
 |Tür|Always: AzureDiagnostics |
-|ResourceProvider|Kaynak sağlayıcının adı. Always: MICROSOFT. SQL |
-|Kategori|Kategorinin adı. Always: QueryStoreRuntimeStatistics |
-|ThrottledRequests|İşlemin adı. Always: QueryStoreRuntimeStatisticsEvent |
+|ResourceProvider|Name of the resource provider. Always: MICROSOFT.SQL |
+|Kategori|Name of the category. Always: QueryStoreRuntimeStatistics |
+|için abonelik sınırlarını aştıysanız Hizmet Azaltma gerçekleşir|Name of the operation. Always: QueryStoreRuntimeStatisticsEvent |
 |Kaynak|Kaynağın adı |
-|ResourceType|Kaynak türünün adı. Always: sunucular/VERITABANLARı |
-|SubscriptionId|Veritabanı için abonelik GUID 'SI |
-|ResourceGroup|Veritabanı için kaynak grubunun adı |
-|LogicalServerName_s|Veritabanı için sunucu adı |
-|ElasticPoolName_s|Veritabanı için elastik havuzun adı (varsa) |
-|DatabaseName_s|Veritabanının adı |
-|ResourceId|Kaynak URI 'SI |
-|query_hash_s|Sorgu karması |
-|query_plan_hash_s|Sorgu planı karması |
-|statement_sql_handle_s|Ekstre SQL tanıtıcısı |
-|interval_start_time_d|1900-1-1 arasındaki onay işareti sayısında aralığın DateTimeOffset değerini Başlat |
-|interval_end_time_d|1900-1-1 'den onay işareti sayısı cinsinden aralığın bitiş aralığı. |
-|logical_io_writes_d|Toplam mantıksal GÇ yazma sayısı |
-|max_logical_io_writes_d|Yürütme başına en fazla mantıksal GÇ yazma sayısı |
-|physical_io_reads_d|Toplam fiziksel GÇ okuma sayısı |
-|max_physical_io_reads_d|Yürütme başına en fazla mantıksal GÇ okuma sayısı |
-|logical_io_reads_d|Toplam mantıksal GÇ okuma sayısı |
-|max_logical_io_reads_d|Yürütme başına en fazla mantıksal GÇ okuma sayısı |
-|execution_type_d|Yürütme türü |
-|count_executions_d|Sorgunun yürütmelerinin sayısı |
-|cpu_time_d|Sorgu tarafından mikrosaniye cinsinden tüketilen toplam CPU süresi |
-|max_cpu_time_d|Mikrosaniye cinsinden tek bir yürütme ile en fazla CPU süresi tüketicisi |
-|dop_d|Paralellik derecenin toplamı |
-|max_dop_d|Tek yürütme için kullanılan en yüksek paralellik derecesi |
-|rowcount_d|Döndürülen toplam satır sayısı |
-|max_rowcount_d|Tek yürütmede döndürülen en fazla satır sayısı |
-|query_max_used_memory_d|KB cinsinden kullanılan toplam bellek miktarı |
-|max_query_max_used_memory_d|KB cinsinden tek bir yürütme tarafından kullanılan maksimum bellek miktarı |
-|duration_d|Mikrosaniye cinsinden toplam yürütme süresi |
-|max_duration_d|Tek yürütmenin en fazla yürütme süresi |
-|num_physical_io_reads_d|Toplam fiziksel okuma sayısı |
-|max_num_physical_io_reads_d|Yürütme başına en fazla fiziksel okuma sayısı |
-|log_bytes_used_d|Kullanılan günlük baytlarının toplam miktarı |
-|max_log_bytes_used_d|Yürütme başına kullanılan günlük baytlarının maksimum miktarı |
-|query_id_d|Sorgu deposundaki sorgunun KIMLIĞI |
-|plan_id_d|Sorgu deposundaki planın KIMLIĞI |
+|ResourceType|Name of the resource type. Always: SERVERS/DATABASES |
+|kaynak grubundaki|Subscription GUID for the database |
+|adlı yönetilen örnek,|Name of the resource group for the database |
+|LogicalServerName_s|Name of the server for the database |
+|ElasticPoolName_s|Name of the elastic pool for the database, if any |
+|DatabaseName_s|Name of the database |
+|ResourceId|Resource URI |
+|query_hash_s|Query hash |
+|query_plan_hash_s|Query plan hash |
+|statement_sql_handle_s|Statement sql handle |
+|interval_start_time_d|Start datetimeoffset of the interval in number of ticks from 1900-1-1 |
+|interval_end_time_d|End datetimeoffset of the interval in number of ticks from 1900-1-1 |
+|logical_io_writes_d|Total number of logical IO writes |
+|max_logical_io_writes_d|Max number of logical IO writes per execution |
+|physical_io_reads_d|Total number of physical IO reads |
+|max_physical_io_reads_d|Max number of logical IO reads per execution |
+|logical_io_reads_d|Total number of logical IO reads |
+|max_logical_io_reads_d|Max number of logical IO reads per execution |
+|execution_type_d|Execution type |
+|count_executions_d|Number of executions of the query |
+|cpu_time_d|Total CPU time consumed by the query in microseconds |
+|max_cpu_time_d|Max CPU time consumer by a single execution in microseconds |
+|dop_d|Sum of degrees of parallelism |
+|max_dop_d|Max degree of parallelism used for single execution |
+|rowcount_d|Total number of rows returned |
+|max_rowcount_d|Max number of rows returned in single execution |
+|query_max_used_memory_d|Total amount of memory used in KB |
+|max_query_max_used_memory_d|Max amount of memory used by a single execution in KB |
+|duration_d|Total execution time in microseconds |
+|max_duration_d|Max execution time of a single execution |
+|num_physical_io_reads_d|Total number of physical reads |
+|max_num_physical_io_reads_d|Max number of physical reads per execution |
+|log_bytes_used_d|Total amount of log bytes used |
+|max_log_bytes_used_d|Max amount of log bytes used per execution |
+|query_id_d|ID of the query in Query Store |
+|plan_id_d|ID of the plan in Query Store |
 
-[Sorgu deposu çalışma zamanı istatistikleri verileri](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-runtime-stats-transact-sql)hakkında daha fazla bilgi edinin.
+Learn more about [Query Store runtime statistics data](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-runtime-stats-transact-sql).
 
-### <a name="query-store-wait-statistics"></a>Sorgu deposu bekleme istatistikleri
+### <a name="query-store-wait-statistics"></a>Query Store wait statistics
 
 |Özellik|Açıklama|
 |---|---|
-|Değerine|Kiracı KIMLIĞINIZ |
+|TenantId|Your tenant ID |
 |SourceSystem|Always: Azure |
-|TimeGenerated [UTC]|Günlüğün kaydedildiği zaman damgası |
+|TimeGenerated [UTC]|Time stamp when the log was recorded |
 |Tür|Always: AzureDiagnostics |
-|ResourceProvider|Kaynak sağlayıcının adı. Always: MICROSOFT. SQL |
-|Kategori|Kategorinin adı. Always: QueryStoreWaitStatistics |
-|ThrottledRequests|İşlemin adı. Always: QueryStoreWaitStatisticsEvent |
+|ResourceProvider|Name of the resource provider. Always: MICROSOFT.SQL |
+|Kategori|Name of the category. Always: QueryStoreWaitStatistics |
+|için abonelik sınırlarını aştıysanız Hizmet Azaltma gerçekleşir|Name of the operation. Always: QueryStoreWaitStatisticsEvent |
 |Kaynak|Kaynağın adı |
-|ResourceType|Kaynak türünün adı. Always: sunucular/VERITABANLARı |
-|SubscriptionId|Veritabanı için abonelik GUID 'SI |
-|ResourceGroup|Veritabanı için kaynak grubunun adı |
-|LogicalServerName_s|Veritabanı için sunucu adı |
-|ElasticPoolName_s|Veritabanı için elastik havuzun adı (varsa) |
-|DatabaseName_s|Veritabanının adı |
-|ResourceId|Kaynak URI 'SI |
-|wait_category_s|Bekleme kategorisi |
-|is_parameterizable_s|Sorgu parametreleştirilebilir mi |
-|statement_type_s|Deyimin türü |
-|statement_key_hash_s|Ekstre anahtarı karması |
-|exec_type_d|Yürütme türü |
-|total_query_wait_time_ms_d|Belirli bir bekleme kategorisindeki sorgunun toplam bekleme süresi |
-|max_query_wait_time_ms_d|Belirli bir bekleme kategorisinde tek tek yürütmede sorgunun en fazla bekleme süresi |
+|ResourceType|Name of the resource type. Always: SERVERS/DATABASES |
+|kaynak grubundaki|Subscription GUID for the database |
+|adlı yönetilen örnek,|Name of the resource group for the database |
+|LogicalServerName_s|Name of the server for the database |
+|ElasticPoolName_s|Name of the elastic pool for the database, if any |
+|DatabaseName_s|Name of the database |
+|ResourceId|Resource URI |
+|wait_category_s|Category of the wait |
+|is_parameterizable_s|Is the query parameterizable |
+|statement_type_s|Type of the statement |
+|statement_key_hash_s|Statement key hash |
+|exec_type_d|Type of execution |
+|total_query_wait_time_ms_d|Total wait time of the query on the specific wait category |
+|max_query_wait_time_ms_d|Max wait time of the query in individual execution on the specific wait category |
 |query_param_type_d|0 |
-|query_hash_s|Sorgu deposunda sorgu karması |
-|query_plan_hash_s|Sorgu deposunda sorgu planı karması |
-|statement_sql_handle_s|Sorgu deposundaki ekstre tanıtıcısı |
-|interval_start_time_d|1900-1-1 arasındaki onay işareti sayısında aralığın DateTimeOffset değerini Başlat |
-|interval_end_time_d|1900-1-1 'den onay işareti sayısı cinsinden aralığın bitiş aralığı. |
-|count_executions_d|Sorgunun yürütmelerinin sayısı |
-|query_id_d|Sorgu deposundaki sorgunun KIMLIĞI |
-|plan_id_d|Sorgu deposundaki planın KIMLIĞI |
+|query_hash_s|Query hash in Query Store |
+|query_plan_hash_s|Query plan hash in Query Store |
+|statement_sql_handle_s|Statement handle in Query Store |
+|interval_start_time_d|Start datetimeoffset of the interval in number of ticks from 1900-1-1 |
+|interval_end_time_d|End datetimeoffset of the interval in number of ticks from 1900-1-1 |
+|count_executions_d|Count of executions of the query |
+|query_id_d|ID of the query in Query Store |
+|plan_id_d|ID of the plan in Query Store |
 
-[Sorgu deposu bekleme istatistikleri verileri](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql)hakkında daha fazla bilgi edinin.
+Learn more about [Query Store wait statistics data](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql).
 
-### <a name="errors-dataset"></a>Hatalar veri kümesi
+### <a name="errors-dataset"></a>Errors dataset
 
 |Özellik|Açıklama|
 |---|---|
-|Değerine|Kiracı KIMLIĞINIZ |
+|TenantId|Your tenant ID |
 |SourceSystem|Always: Azure |
-|TimeGenerated [UTC]|Günlüğün kaydedildiği zaman damgası |
+|TimeGenerated [UTC]|Time stamp when the log was recorded |
 |Tür|Always: AzureDiagnostics |
-|ResourceProvider|Kaynak sağlayıcının adı. Always: MICROSOFT. SQL |
-|Kategori|Kategorinin adı. Always: hatalar |
-|ThrottledRequests|İşlemin adı. Always: ErrorEvent |
+|ResourceProvider|Name of the resource provider. Always: MICROSOFT.SQL |
+|Kategori|Name of the category. Always: Errors |
+|için abonelik sınırlarını aştıysanız Hizmet Azaltma gerçekleşir|Name of the operation. Always: ErrorEvent |
 |Kaynak|Kaynağın adı |
-|ResourceType|Kaynak türünün adı. Always: sunucular/VERITABANLARı |
-|SubscriptionId|Veritabanı için abonelik GUID 'SI |
-|ResourceGroup|Veritabanı için kaynak grubunun adı |
-|LogicalServerName_s|Veritabanı için sunucu adı |
-|ElasticPoolName_s|Veritabanı için elastik havuzun adı (varsa) |
-|DatabaseName_s|Veritabanının adı |
-|ResourceId|Kaynak URI 'SI |
-|İleti|Düz metinde hata iletisi |
-|user_defined_b|Hata Kullanıcı tanımlı biti |
+|ResourceType|Name of the resource type. Always: SERVERS/DATABASES |
+|kaynak grubundaki|Subscription GUID for the database |
+|adlı yönetilen örnek,|Name of the resource group for the database |
+|LogicalServerName_s|Name of the server for the database |
+|ElasticPoolName_s|Name of the elastic pool for the database, if any |
+|DatabaseName_s|Name of the database |
+|ResourceId|Resource URI |
+|İleti|Error message in plain text |
+|user_defined_b|Is the error user defined bit |
 |error_number_d|Hata kodu |
-|Severity|Hatanın önem derecesi |
-|state_d|Hatanın durumu |
-|query_hash_s|Varsa, başarısız sorgunun sorgu karması |
-|query_plan_hash_s|Varsa, başarısız sorgunun sorgu planı karması |
+|Önem Derecesi|Severity of the error |
+|state_d|State of the error |
+|query_hash_s|Query hash of the failed query, if available |
+|query_plan_hash_s|Query plan hash of the failed query, if available |
 
-[SQL Server hata iletileri](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors?view=sql-server-ver15)hakkında daha fazla bilgi edinin.
+Learn more about [SQL Server error messages](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors?view=sql-server-ver15).
 
-### <a name="database-wait-statistics-dataset"></a>Veritabanı bekleme istatistikleri veri kümesi
-
-|Özellik|Açıklama|
-|---|---|
-|Değerine|Kiracı KIMLIĞINIZ |
-|SourceSystem|Always: Azure |
-|TimeGenerated [UTC]|Günlüğün kaydedildiği zaman damgası |
-|Tür|Always: AzureDiagnostics |
-|ResourceProvider|Kaynak sağlayıcının adı. Always: MICROSOFT. SQL |
-|Kategori|Kategorinin adı. Always: DatabaseWaitStatistics |
-|ThrottledRequests|İşlemin adı. Always: DatabaseWaitStatisticsEvent |
-|Kaynak|Kaynağın adı |
-|ResourceType|Kaynak türünün adı. Always: sunucular/VERITABANLARı |
-|SubscriptionId|Veritabanı için abonelik GUID 'SI |
-|ResourceGroup|Veritabanı için kaynak grubunun adı |
-|LogicalServerName_s|Veritabanı için sunucu adı |
-|ElasticPoolName_s|Veritabanı için elastik havuzun adı (varsa) |
-|DatabaseName_s|Veritabanının adı |
-|ResourceId|Kaynak URI 'SI |
-|wait_type_s|Bekleme türünün adı |
-|start_utc_date_t [UTC]|Ölçülen dönem başlangıç zamanı |
-|end_utc_date_t [UTC]|Ölçülen dönem bitiş zamanı |
-|delta_max_wait_time_ms_d|Yürütme başına en fazla beklenen süre |
-|delta_signal_wait_time_ms_d|Toplam sinyal bekleme süresi |
-|delta_wait_time_ms_d|Dönemdeki toplam bekleme süresi |
-|delta_waiting_tasks_count_d|Bekleyen görev sayısı |
-
-[Veritabanı bekleme istatistikleri](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)hakkında daha fazla bilgi edinin.
-
-### <a name="time-outs-dataset"></a>Zaman aşımları veri kümesi
+### <a name="database-wait-statistics-dataset"></a>Database wait statistics dataset
 
 |Özellik|Açıklama|
 |---|---|
-|Değerine|Kiracı KIMLIĞINIZ |
+|TenantId|Your tenant ID |
 |SourceSystem|Always: Azure |
-|TimeGenerated [UTC]|Günlüğün kaydedildiği zaman damgası |
+|TimeGenerated [UTC]|Time stamp when the log was recorded |
 |Tür|Always: AzureDiagnostics |
-|ResourceProvider|Kaynak sağlayıcının adı. Always: MICROSOFT. SQL |
-|Kategori|Kategorinin adı. Always: zaman aşımları |
-|ThrottledRequests|İşlemin adı. Always: TimeoutEvent |
+|ResourceProvider|Name of the resource provider. Always: MICROSOFT.SQL |
+|Kategori|Name of the category. Always: DatabaseWaitStatistics |
+|için abonelik sınırlarını aştıysanız Hizmet Azaltma gerçekleşir|Name of the operation. Always: DatabaseWaitStatisticsEvent |
 |Kaynak|Kaynağın adı |
-|ResourceType|Kaynak türünün adı. Always: sunucular/VERITABANLARı |
-|SubscriptionId|Veritabanı için abonelik GUID 'SI |
-|ResourceGroup|Veritabanı için kaynak grubunun adı |
-|LogicalServerName_s|Veritabanı için sunucu adı |
-|ElasticPoolName_s|Veritabanı için elastik havuzun adı (varsa) |
-|DatabaseName_s|Veritabanının adı |
-|ResourceId|Kaynak URI 'SI |
-|error_state_d|Hata durum kodu |
-|query_hash_s|Varsa sorgu karması |
-|query_plan_hash_s|Varsa sorgu planı karması |
+|ResourceType|Name of the resource type. Always: SERVERS/DATABASES |
+|kaynak grubundaki|Subscription GUID for the database |
+|adlı yönetilen örnek,|Name of the resource group for the database |
+|LogicalServerName_s|Name of the server for the database |
+|ElasticPoolName_s|Name of the elastic pool for the database, if any |
+|DatabaseName_s|Name of the database |
+|ResourceId|Resource URI |
+|wait_type_s|Name of the wait type |
+|start_utc_date_t [UTC]|Measured period start time |
+|end_utc_date_t [UTC]|Measured period end time |
+|delta_max_wait_time_ms_d|Max waited time per execution |
+|delta_signal_wait_time_ms_d|Total signals wait time |
+|delta_wait_time_ms_d|Total wait time in the period |
+|delta_waiting_tasks_count_d|Number of waiting tasks |
 
-### <a name="blockings-dataset"></a>Blok veri kümesi
+Learn more about [database wait statistics](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql).
+
+### <a name="time-outs-dataset"></a>Time-outs dataset
 
 |Özellik|Açıklama|
 |---|---|
-|Değerine|Kiracı KIMLIĞINIZ |
+|TenantId|Your tenant ID |
 |SourceSystem|Always: Azure |
-|TimeGenerated [UTC]|Günlüğün kaydedildiği zaman damgası |
+|TimeGenerated [UTC]|Time stamp when the log was recorded |
 |Tür|Always: AzureDiagnostics |
-|ResourceProvider|Kaynak sağlayıcının adı. Always: MICROSOFT. SQL |
-|Kategori|Kategorinin adı. Always: bloklar |
-|ThrottledRequests|İşlemin adı. Always: BlockEvent |
+|ResourceProvider|Name of the resource provider. Always: MICROSOFT.SQL |
+|Kategori|Name of the category. Always: Timeouts |
+|için abonelik sınırlarını aştıysanız Hizmet Azaltma gerçekleşir|Name of the operation. Always: TimeoutEvent |
 |Kaynak|Kaynağın adı |
-|ResourceType|Kaynak türünün adı. Always: sunucular/VERITABANLARı |
-|SubscriptionId|Veritabanı için abonelik GUID 'SI |
-|ResourceGroup|Veritabanı için kaynak grubunun adı |
-|LogicalServerName_s|Veritabanı için sunucu adı |
-|ElasticPoolName_s|Veritabanı için elastik havuzun adı (varsa) |
-|DatabaseName_s|Veritabanının adı |
-|ResourceId|Kaynak URI 'SI |
-|lock_mode_s|Sorgu tarafından kullanılan kilit modu |
-|resource_owner_type_s|Kilidin sahibi |
-|blocked_process_filtered_s|Engellenen işlem raporu XML 'i |
-|duration_d|Mikrosaniye cinsinden kilit süresi |
+|ResourceType|Name of the resource type. Always: SERVERS/DATABASES |
+|kaynak grubundaki|Subscription GUID for the database |
+|adlı yönetilen örnek,|Name of the resource group for the database |
+|LogicalServerName_s|Name of the server for the database |
+|ElasticPoolName_s|Name of the elastic pool for the database, if any |
+|DatabaseName_s|Name of the database |
+|ResourceId|Resource URI |
+|error_state_d|Error state code |
+|query_hash_s|Query hash, if available |
+|query_plan_hash_s|Query plan hash, if available |
 
-### <a name="deadlocks-dataset"></a>Kilitlenmeler veri kümesi
+### <a name="blockings-dataset"></a>Blockings dataset
 
 |Özellik|Açıklama|
 |---|---|
-|Değerine|Kiracı KIMLIĞINIZ |
+|TenantId|Your tenant ID |
 |SourceSystem|Always: Azure |
-|TimeGenerated [UTC] |Günlüğün kaydedildiği zaman damgası |
+|TimeGenerated [UTC]|Time stamp when the log was recorded |
 |Tür|Always: AzureDiagnostics |
-|ResourceProvider|Kaynak sağlayıcının adı. Always: MICROSOFT. SQL |
-|Kategori|Kategorinin adı. Always: kilitlenmeler |
-|ThrottledRequests|İşlemin adı. Always: DeadlockEvent |
+|ResourceProvider|Name of the resource provider. Always: MICROSOFT.SQL |
+|Kategori|Name of the category. Always: Blocks |
+|için abonelik sınırlarını aştıysanız Hizmet Azaltma gerçekleşir|Name of the operation. Always: BlockEvent |
 |Kaynak|Kaynağın adı |
-|ResourceType|Kaynak türünün adı. Always: sunucular/VERITABANLARı |
-|SubscriptionId|Veritabanı için abonelik GUID 'SI |
-|ResourceGroup|Veritabanı için kaynak grubunun adı |
-|LogicalServerName_s|Veritabanı için sunucu adı |
-|ElasticPoolName_s|Veritabanı için elastik havuzun adı (varsa) |
-|DatabaseName_s|Veritabanının adı |
-|ResourceId|Kaynak URI 'SI |
-|deadlock_xml_s|Kilitlenme rapor XML 'i |
+|ResourceType|Name of the resource type. Always: SERVERS/DATABASES |
+|kaynak grubundaki|Subscription GUID for the database |
+|adlı yönetilen örnek,|Name of the resource group for the database |
+|LogicalServerName_s|Name of the server for the database |
+|ElasticPoolName_s|Name of the elastic pool for the database, if any |
+|DatabaseName_s|Name of the database |
+|ResourceId|Resource URI |
+|lock_mode_s|Lock mode used by the query |
+|resource_owner_type_s|Owner of the lock |
+|blocked_process_filtered_s|Blocked process report XML |
+|duration_d|Duration of the lock in microseconds |
 
-### <a name="automatic-tuning-dataset"></a>Otomatik ayarlama veri kümesi
+### <a name="deadlocks-dataset"></a>Deadlocks dataset
 
 |Özellik|Açıklama|
 |---|---|
-|Değerine|Kiracı KIMLIĞINIZ |
+|TenantId|Your tenant ID |
 |SourceSystem|Always: Azure |
-|TimeGenerated [UTC]|Günlüğün kaydedildiği zaman damgası |
+|TimeGenerated [UTC] |Time stamp when the log was recorded |
 |Tür|Always: AzureDiagnostics |
-|ResourceProvider|Kaynak sağlayıcının adı. Always: MICROSOFT. SQL |
-|Kategori|Kategorinin adı. Always: otomatik olarak ayarlama |
+|ResourceProvider|Name of the resource provider. Always: MICROSOFT.SQL |
+|Kategori|Name of the category. Always: Deadlocks |
+|için abonelik sınırlarını aştıysanız Hizmet Azaltma gerçekleşir|Name of the operation. Always: DeadlockEvent |
 |Kaynak|Kaynağın adı |
-|ResourceType|Kaynak türünün adı. Always: sunucular/VERITABANLARı |
-|SubscriptionId|Veritabanı için abonelik GUID 'SI |
-|ResourceGroup|Veritabanı için kaynak grubunun adı |
-|LogicalServerName_s|Veritabanı için sunucu adı |
-|LogicalDatabaseName_s|Veritabanının adı |
-|ElasticPoolName_s|Veritabanı için elastik havuzun adı (varsa) |
-|DatabaseName_s|Veritabanının adı |
-|ResourceId|Kaynak URI 'SI |
-|RecommendationHash_s|Otomatik ayarlama önerisinin benzersiz karması |
-|OptionName_s|Otomatik ayarlama işlemi |
-|Schema_s|Veritabanı şeması |
-|Table_s|Etkilenen tablo |
-|IndexName_s|Dizin adı |
-|IndexColumns_s|Sütun adı |
-|IncludedColumns_s|Dahil edilen sütunlar |
-|EstimatedImpact_s|Otomatik ayarlama önerisi JSON ' inin tahmini etkisi |
-|Event_s|Otomatik ayarlama olayının türü |
-|Timestamp_t|Son güncelleme zaman damgası |
+|ResourceType|Name of the resource type. Always: SERVERS/DATABASES |
+|kaynak grubundaki|Subscription GUID for the database |
+|adlı yönetilen örnek,|Name of the resource group for the database |
+|LogicalServerName_s|Name of the server for the database |
+|ElasticPoolName_s|Name of the elastic pool for the database, if any |
+|DatabaseName_s|Name of the database |
+|ResourceId|Resource URI |
+|deadlock_xml_s|Deadlock report XML |
 
-### <a name="intelligent-insights-dataset"></a>Akıllı İçgörüler veri kümesi
+### <a name="automatic-tuning-dataset"></a>Automatic tuning dataset
 
-[Akıllı içgörüler günlük biçimi](sql-database-intelligent-insights-use-diagnostics-log.md)hakkında daha fazla bilgi edinin.
+|Özellik|Açıklama|
+|---|---|
+|TenantId|Your tenant ID |
+|SourceSystem|Always: Azure |
+|TimeGenerated [UTC]|Time stamp when the log was recorded |
+|Tür|Always: AzureDiagnostics |
+|ResourceProvider|Name of the resource provider. Always: MICROSOFT.SQL |
+|Kategori|Name of the category. Always: AutomaticTuning |
+|Kaynak|Kaynağın adı |
+|ResourceType|Name of the resource type. Always: SERVERS/DATABASES |
+|kaynak grubundaki|Subscription GUID for the database |
+|adlı yönetilen örnek,|Name of the resource group for the database |
+|LogicalServerName_s|Name of the server for the database |
+|LogicalDatabaseName_s|Name of the database |
+|ElasticPoolName_s|Name of the elastic pool for the database, if any |
+|DatabaseName_s|Name of the database |
+|ResourceId|Resource URI |
+|RecommendationHash_s|Unique hash of Automatic tuning recommendation |
+|OptionName_s|Automatic tuning operation |
+|Schema_s|Database schema |
+|Table_s|Table affected |
+|IndexName_s|Index name |
+|IndexColumns_s|Column name |
+|IncludedColumns_s|Columns included |
+|EstimatedImpact_s|Estimated impact of Automatic tuning recommendation JSON |
+|Event_s|Type of Automatic tuning event |
+|Timestamp_t|Last updated timestamp |
+
+### <a name="intelligent-insights-dataset"></a>Intelligent Insights dataset
+
+Learn more about the [Intelligent Insights log format](sql-database-intelligent-insights-use-diagnostics-log.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Günlüğe kaydetmeyi etkinleştirme ve çeşitli Azure hizmetleri tarafından desteklenen ölçümleri ve günlük kategorilerini anlama hakkında bilgi edinmek için bkz.:
+To learn how to enable logging and to understand the metrics and log categories supported by the various Azure services, see:
 
-- [Microsoft Azure ölçümlerine genel bakış](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
-- [Azure tanılama günlüklerine genel bakış](../azure-monitor/platform/resource-logs-overview.md)
+- [Overview of metrics in Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
+- [Overview of Azure diagnostics logs](../azure-monitor/platform/resource-logs-overview.md)
 
-Event Hubs hakkında bilgi edinmek için şunu okuyun:
+To learn about Event Hubs, read:
 
-- [Azure Event Hubs nedir?](../event-hubs/event-hubs-what-is-event-hubs.md)
+- [What is Azure Event Hubs?](../event-hubs/event-hubs-what-is-event-hubs.md)
 - [Event Hubs kullanmaya başlayın](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
 
-Log Analytics 'ten telemetri temelinde uyarı ayarlamayı öğrenmek için bkz.:
+To learn how to setup alerts based on telemetry from log analytics see:
 
-- [SQL veritabanı ve yönetilen örnek için uyarı oluşturma](../azure-monitor/insights/azure-sql.md#analyze-data-and-create-alerts)
+- [Creating alerts for SQL Database and managed instance](../azure-monitor/insights/azure-sql.md#analyze-data-and-create-alerts)

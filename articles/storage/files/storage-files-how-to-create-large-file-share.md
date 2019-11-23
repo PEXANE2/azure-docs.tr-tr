@@ -1,34 +1,38 @@
 ---
-title: Büyük dosya paylaşımlarını etkinleştirme ve oluşturma-Azure dosyaları
-description: Bu makalede, büyük dosya paylaşımlarını etkinleştirme ve oluşturma hakkında bilgi edineceksiniz.
+title: Enable and create large file shares - Azure Files
+description: In this article, you learn how to enable and create large file shares.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 11/20/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 00db5905c008644bc21704179363849756fa7dcc
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 34b8af56a8f2f108b96ca07fa73f90bb9eb5bf13
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72518427"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422736"
 ---
-# <a name="how-to-enable-and-create-large-file-shares"></a>Büyük dosya paylaşımlarını etkinleştirme ve oluşturma
+# <a name="how-to-enable-and-create-large-file-shares"></a>How to enable and create large file shares
 
-İlk olarak standart dosya paylaşımları yalnızca 5 TiB 'a kadar ölçeklendirilebilir, artık büyük dosya paylaşımları sayesinde 100 TiB 'ye kadar ölçeklenebilirler. Premium dosya paylaşımları, varsayılan olarak 100 TiB 'ye kadar ölçeklenir. 
+Originally, standard file shares could only scale up to 5 TiB, now, with large file shares, they can scale up to 100 TiB. Premium file shares scale up to 100 TiB by default. 
 
-Standart dosya paylaşımlarını kullanarak 100 TiB 'ye kadar ölçeklendirebilmek için depolama hesabınızı büyük dosya paylaşımlarını kullanacak şekilde etkinleştirmeniz gerekir. Büyük dosya paylaşımlarını kullanmak için mevcut bir hesabı etkinleştirebilir veya yeni bir hesap oluşturabilirsiniz.
+In order to scale up to 100 TiB using standard file shares, you must enable your storage account to use large file shares. You can either enable an existing account or create a new account to use large file shares.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+- Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+- If you intend to use Azure CLI, make sure you [install the latest version](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+- If you intend to use Azure PowerShell, make sure you [install the latest version](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0).
 
 ## <a name="restrictions"></a>Kısıtlamalar
 
-Büyük dosya paylaşımları etkin hesaplar LRS veya ZRS 'yi destekler. Şimdilik, büyük dosya paylaşımları etkinleştirilmiş hesaplar GZRS, GRS veya RA-GRS 'yi desteklemez. Hesapta büyük dosya paylaşımlarının etkinleştirilmesi geri alınamaz bir işlemdir, etkin olduktan sonra hesabınız GZRS, GRS veya RA-GRS ' e dönüştürülemez.
+Large file shares enabled accounts support LRS or ZRS. For now, large file shares enabled accounts do not support GZRS, GRS, or RA-GRS. Enabling large file shares on an account is an irreversible process, once it is enabled your account cannot be converted to GZRS, GRS, or RA-GRS.
 
 ## <a name="create-a-new-storage-account"></a>Yeni depolama hesabı oluşturma
+
+### <a name="portal"></a>Portal
 
 [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
@@ -40,8 +44,8 @@ Büyük dosya paylaşımları etkin hesaplar LRS veya ZRS 'yi destekler. Şimdil
     ![Portalda kaynak grubu oluşturmayı gösteren ekran görüntüsü](media/storage-files-how-to-create-large-file-share/create-large-file-share.png)
 
 1. Ardından, depolama hesabınız için bir ad girin. Seçtiğiniz ad Azure genelinde benzersiz olmalıdır. Ad ayrıca 3 - 24 karakter uzunluğunda olmalıdır ve yalnızca rakam ve küçük harf içerebilir.
-1. Depolama hesabınız için bir konum seçin, [LFS için desteklenen bölgelerin biri](storage-files-planning.md#regional-availability)olduğundan emin olun.
-1. Çoğaltmayı **yerel olarak yedekli depolama** ya da bölgesel olarak **yedekli depolama**olarak ayarlayın.
+1. Select a location for your storage account, make sure it is [one of the regions supported for LFS](storage-files-planning.md#regional-availability).
+1. Set the replication to either **Locally-redundant storage** or **Zone-redundant storage**.
 1. Bu alanları varsayılan değerlerine ayarlanmış olarak bırakın:
 
    |Alan  |Değer  |
@@ -51,47 +55,139 @@ Büyük dosya paylaşımları etkin hesaplar LRS veya ZRS 'yi destekler. Şimdil
    |Hesap türü     |StorageV2 (genel amaçlı v2)         |
    |Erişim katmanı     |Sık Erişimli         |
 
-1. **Gelişmiş** ' i seçin ve **büyük dosya paylaşımları**için **etkin** ' i seçin.
+1. Select **Advanced** and select **Enabled** for **Large file shares**.
 1. Depolama hesabı ayarlarınızı gözden geçirmek ve hesabı oluşturmak için **Gözden Geçir + Oluştur**’u seçin.
 
-    ![Large-File-Shares-Advanced-Enable. png](media/storage-files-how-to-create-large-file-share/large-file-shares-advanced-enable.png)
+    ![large-file-shares-advanced-enable.png](media/storage-files-how-to-create-large-file-share/large-file-shares-advanced-enable.png)
 
 1. **Oluştur**'u seçin.
 
-## <a name="enable-on-existing-account"></a>Mevcut hesapta etkinleştir
 
-Ayrıca, var olan hesaplarda büyük dosya paylaşımlarını etkinleştirebilirsiniz. Bunu yaparsanız, hesap artık GZRS, GRS veya RA-GRS ' e dönüştürülemez. Bu seçenek bu hesapta geri alınamaz.
+### <a name="cli"></a>CLI
 
-1. [Azure Portal](https://portal.azure.com) açın ve büyük dosya paylaşımlarını etkinleştirmek istediğiniz depolama hesabına gidin.
-1. Depolama hesabını açın ve **yapılandırma**' yı seçin.
-1. **Büyük dosya paylaşımlarında** **etkin** ' i seçin ve ardından Kaydet ' i seçin.
-1. **Genel bakış** ' ı ve **Yenile**' yi seçin.
+First, make sure you [install the latest version](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), so that you can enable this feature.
 
-![Enable-large-File-Shares-on-Existing. png](media/storage-files-how-to-create-large-file-share/enable-large-file-shares-on-existing.png)
+To create a storage account with large file shares enabled, replace `<yourStorageAccountName>`, `<yourResourceGroup>`, and `<yourDesiredRegion>` with your values, then use the following command:
 
-Artık depolama hesabınızda büyük dosya paylaşımlarını etkinleştirdiniz.
+```azurecli-interactive
+## This command creates a large file share enabled account, it will not support GZRS, GRS, or RA-GRS
+az storage account create –name <yourStorageAccountName> -g <yourResourceGroup> -l <yourDesiredRegion> –sku Standard_LRS --kind StorageV2 –enable-large-file-share
+```
 
-Şu hatayı alırsanız: "hesabın büyük dosya paylaşımları henüz kullanılamıyor." Bölgeniz muhtemelen kullanıma alma işleminin ortasında büyük bir süre olduğu için veya acil gereksinimleriniz varsa destek 'e ulaşmak için bir süre beklemeniz gerekebilir.
+### <a name="powershell"></a>PowerShell
 
-## <a name="create-a-large-file-share"></a>Büyük bir dosya paylaşma oluşturma
+First, make sure you [install the latest version](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0), so that you can enable this feature.
 
-Büyük bir dosya paylaşımının oluşturulması, standart bir dosya paylaşımının oluşturulmasıyla neredeyse aynıdır. Temel fark, 100 TiB 'ye kadar bir kota ayarlayabilmeniz gerektiğidir.
+To create a storage account with large file shares enabled, replace `<yourStorageAccountName>`, `<yourResourceGroup>`, and `<yourDesiredRegion>` with your values, then use the following command:
 
-1. Depolama hesabınızdan **dosya paylaşımları**' nı seçin.
-1. **+ Dosya paylaşma**' yı seçin.
-1. Dosya paylaşımınız için bir ad girin ve (isteğe bağlı olarak) istediğiniz kota boyutunu 100 TiB 'ye kadar, ardından **Oluştur**' u seçin. 
+```PowerShell
+## This command creates a large file share enabled account, it will not support GZRS, GRS, or RA-GRS
+New-AzStorageAccount -ResourceGroupName <yourResourceGroup> -Name <yourStorageAccountName> -Location <yourDesiredRegion> -SkuName Standard_LRS -EnableLargeFileShare;
+```
 
-![Large-File-Shares-Create-Share. png](media/storage-files-how-to-create-large-file-share/large-file-shares-create-share.png)
+## <a name="enable-on-existing-account"></a>Enable on existing account
 
-## <a name="expand-existing-file-shares"></a>Mevcut dosya paylaşımlarını Genişlet
+### <a name="portal"></a>Portal
 
-Depolama hesabınızda büyük dosya paylaşımlarını etkinleştirdikten sonra, mevcut paylaşımları daha yüksek kotaya genişletebilirsiniz.
+You can also enable large file shares on existing accounts. If you do this, then the account will no longer be able to convert to GZRS, GRS, or RA-GRS. This choice is irreversible on this account.
 
-1. Depolama hesabınızdan **dosya paylaşımları**' nı seçin.
-1. Dosya paylaşımınıza sağ tıklayıp **Kota**' i seçin.
-1. İstediğiniz yeni boyutu girip **Tamam**' ı seçin.
+1. Open the [Azure portal](https://portal.azure.com) and navigate to the storage account you want to enable large file shares on.
+1. Open the storage account and select **Configuration**.
+1. Select **Enabled** on **Large file shares**, then select save.
+1. Select **Overview** and select **Refresh**.
 
-![Update-Large-File-Share-Quota. png](media/storage-files-how-to-create-large-file-share/update-large-file-share-quota.png)
+![enable-large-file-shares-on-existing.png](media/storage-files-how-to-create-large-file-share/enable-large-file-shares-on-existing.png)
+
+You've now enabled large file shares on your storage account.
+
+If you receive the following error: "Large file shares are not available for the account yet." You can either wait some time, as your region is likely in the middle of completing its roll out, or, if you have urgent needs, reach out to support.
+
+### <a name="cli"></a>CLI
+
+You can enable large file shares on your existing accounts. If you do this, then the account will no longer be able to convert to GZRS, GRS, or RA-GRS. This choice is irreversible on this account.
+
+Replace `<yourStorageAccountName>` and `<yourResourceGroup>` in the following command, then use it to enable large file shares on your existing account:
+
+```azurecli-interactive
+az storage account update –name <yourStorageAccountName> -g <yourResourceGroup> –enable-large-file-share
+```
+
+### <a name="powershell"></a>PowerShell
+
+You can enable large file shares on your existing accounts. If you do this, then the account will no longer be able to convert to GZRS, GRS, or RA-GRS. This choice is irreversible on this account.
+
+Replace `<yourStorageAccountName>` and `<yourResourceGroup>` in the following command, then use it to enable large file shares on your existing account:
+
+```PowerShell
+Set-AzStorageAccount -ResourceGroupName <yourResourceGroup> -Name <yourStorageAccountName> -EnableLargeFileShare
+```
+
+## <a name="create-a-large-file-share"></a>Create a large file share
+
+### <a name="portal"></a>Portal
+
+Creating a large file share is almost identical to creating a standard file share. The main difference is that you can set a quota up to 100 TiB.
+
+1. From your storage account, select **File shares**.
+1. Select **+ File Share**.
+1. Enter a name for your file share and (optionally) the quota size you'd like, up to 100 TiB, then select **Create**. 
+
+![large-file-shares-create-share.png](media/storage-files-how-to-create-large-file-share/large-file-shares-create-share.png)
+
+### <a name="cli"></a>CLI
+
+Once you've enabled large file shares on your storage account, you can create file shares in that account with higher quotas. Replace `<yourStorageAccountName>`, `<yourStorageAccountKey>`, and `<yourFileShareName>` in the following command with your values, then you can use it to create a large file share:
+
+```azurecli-interactive
+az storage share create --account-name <yourStorageAccountName> --account-key <yourStorageAccountKey> --name <yourFileShareName>
+```
+
+### <a name="powershell"></a>PowerShell
+
+Once you've enabled large file shares on your storage account, you can create file shares in that account with higher quotas. Replace `<YourStorageAccountName>`, `<YourStorageAccountKey>`, and `<YourStorageAccountFileShareName>` in the following command with your values, then you can use it to create a large file share:
+
+```PowerShell
+##Config
+$storageAccountName = "<YourStorageAccountName>"
+$storageAccountKey = "<YourStorageAccountKey>"
+$shareName="<YourStorageAccountFileShareName>"
+$ctx = New-AzStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey
+New-AzStorageShare -Name $shareName -Context $ctx
+```
+
+## <a name="expand-existing-file-shares"></a>Expand existing file shares
+
+### <a name="portal"></a>Portal
+
+Once you've enabled large file shares on your storage account, you can expand existing shares to the higher quota.
+
+1. From your storage account, select **File shares**.
+1. Right-click your file share and select **Quota**.
+1. Enter the new size that you desire, then select **OK**.
+
+![update-large-file-share-quota.png](media/storage-files-how-to-create-large-file-share/update-large-file-share-quota.png)
+
+### <a name="cli"></a>CLI
+
+Once you've enabled large file shares on your storage account, you can expand existing file shares in that account to the higher quotas. Replace `<yourStorageAccountName>`, `<yourStorageAccountKey>`, and `<yourFileShareName>` in the following command with your values, then you can use it to set the quota to the maximum size:
+
+```azurecli-interactive
+az storage share update --account-name <yourStorageAccountName> --account-key <yourStorageAccountKey> --name <yourFileShareName> --quota 102400
+```
+
+### <a name="powershell"></a>PowerShell
+
+Once you've enabled large file shares on your storage account, you can expand existing file shares in that account to the higher quotas. Replace `<YourStorageAccountName>`, `<YourStorageAccountKey>`, and `<YourStorageAccountFileShareName>` in the following command with your values, then you can use it to set the quota to the maximum size:
+
+```PowerShell
+##Config
+$storageAccountName = "<YourStorageAccountName>"
+$storageAccountKey = "<YourStorageAccountKey>"
+$shareName="<YourStorageAccountFileShareName>"
+$ctx = New-AzStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey
+# update quota
+Set-AzStorageShareQuota -ShareName $shareName -Context $ctx -Quota 102400
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

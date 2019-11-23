@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/05/2019
+ms.date: 11/23/2019
 ms.author: allensu
-ms.openlocfilehash: 95ef493ed44da8fd8372c11f15c3ab712961783e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 48ce72104c4cc08fc26777aa7111b705c57317f5
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071017"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420271"
 ---
 # <a name="what-is-traffic-manager"></a>Traffic Manager nedir?
 Azure Traffic Manager, trafiği farklı Azure bölgelerindeki hizmetlere en uygun şekilde dağıtırken yüksek kullanılabilirlik ve yanıtlama hızı sağlayan DNS tabanlı bir trafik yük dengeleyicidir.
@@ -25,9 +25,10 @@ Azure Traffic Manager, trafiği farklı Azure bölgelerindeki hizmetlere en uygu
 Traffic Manager, trafik yönlendirme yöntemine ve uç noktaların sistem durumuna bağlı olarak istemci isteklerini en uygun hizmet uç noktasına yönlendirmek için DNS hizmetini kullanır. Uç nokta, Azure içinde veya dışında barındırılan İnternet'e yönelik bir hizmettir. Traffic Manager, farklı uygulama ihtiyaçlarına ve otomatik yük devretme modellerine uyan farklı [trafik yönlendirme yöntemleri](traffic-manager-routing-methods.md) ve [uç nokta izleme seçenekleri](traffic-manager-monitoring.md) sunar. Traffic Manager, bir Azure bölgesinin tamamının devre dışı kalması dahil olmak üzere hatalara dayanıklıdır.
 
 >[!NOTE]
-> Azure, senaryolarınız için tam olarak yönetilen yük dengeleme çözümleri sunar. Aktarım Katmanı Güvenliği (TLS) protokolü sonlandırma ("SSL yük boşaltma") veya HTTP/HTTPS isteği başına uygulama katmanı işleme özellikleri istiyorsanız [Application Gateway](../application-gateway/application-gateway-introduction.md)'i inceleyin. Bölgesel Yük Dengeleme için arıyorsanız, gözden [Load Balancer](../load-balancer/load-balancer-overview.md). Uçtan uca senaryolarınızda bu çözümleri bir arada da kullanabilirsiniz.
-
-Traffic Manager, özellikleri sunar:
+> Azure, senaryolarınız için tam olarak yönetilen yük dengeleme çözümleri sunar. Aktarım Katmanı Güvenliği (TLS) protokolü sonlandırma ("SSL yük boşaltma") veya HTTP/HTTPS isteği başına uygulama katmanı işleme özellikleri istiyorsanız [Application Gateway](../application-gateway/application-gateway-introduction.md)'i inceleyin. If you are looking for regional load balancing, review [Load Balancer](../load-balancer/load-balancer-overview.md). Uçtan uca senaryolarınızda bu çözümleri bir arada da kullanabilirsiniz.
+>
+> For an Azure load-balancing options comparison, see [Overview of load-balancing options in Azure](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview).
+Traffic Manager offers following features:
 
 ## <a name="increase-application-availability"></a>Uygulama kullanılabilirliğini artırma
 
@@ -39,7 +40,7 @@ Azure, dünyanın dört bir yanında bulunan veri merkezlerinde bulut hizmeti ve
 
 ## <a name="perform-service-maintenance-without-downtime"></a>Kesinti süresi olmadan hizmet bakımı gerçekleştirme
 
-Kesinti süresi yaşamadan uygulamalarınızda planlı bakım çalışmaları yürütebilirsiniz. Bakım işlemi devam ederken, traffic Manager alternatif uç noktaları için trafiği yönlendirebilir.
+Kesinti süresi yaşamadan uygulamalarınızda planlı bakım çalışmaları yürütebilirsiniz. Traffic Manager can direct traffic to alternative endpoints while the maintenance is in progress.
 
 ## <a name="combine-hybrid-applications"></a>Hibrit uygulamaları birleştirme
 
@@ -47,7 +48,7 @@ Traffic Manager harici, Azure dışı uç noktalar için sunduğu destek sayesin
 
 ## <a name="distribute-traffic-for-complex-deployments"></a>Karmaşık dağıtımlar için trafiği dağıtma
 
-Kullanarak [iç içe Traffic Manager profillerini](traffic-manager-nested-profiles.md), birden çok trafik yönlendirme yöntemleri, karmaşık ve esnek ölçeklendirme ihtiyaçlarını daha büyük, daha karmaşık dağıtımlar için kurallar oluşturmak için birleştirilebilir.
+Using [nested Traffic Manager profiles](traffic-manager-nested-profiles.md), multiple traffic-routing methods can be combined to create sophisticated and flexible rules to scale to the needs of larger, more complex deployments.
 
 ## <a name="pricing"></a>Fiyatlandırma
 

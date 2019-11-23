@@ -1,6 +1,6 @@
 ---
 title: Veritabanı kopyalama
-description: Aynı sunucuda veya farklı bir sunucuda var olan bir Azure SQL veritabanının işlemsel olarak tutarlı bir kopyasını oluşturun.
+description: Create a transactionally consistent copy of an existing Azure SQL database on either the same server or a different server.
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -11,173 +11,177 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 11/14/2019
-ms.openlocfilehash: 0b8bfff03414dd02360cab1957ea2205e392235d
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: b3bc99d0fbdb551af0fb3711d74db537d3f9b1a5
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082471"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74421337"
 ---
-# <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Azure SQL veritabanı 'nın işlem temelli tutarlı bir kopyasını kopyalama
+# <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Copy a transactionally consistent copy of an Azure SQL database
 
-Azure SQL veritabanı, aynı sunucuda veya farklı bir sunucuda var olan bir Azure SQL veritabanının ([tek veritabanı](sql-database-single-database.md)) işlemsel olarak tutarlı bir kopyasını oluşturmak için çeşitli yöntemler sağlar. Azure portal, PowerShell veya T-SQL ' i kullanarak bir SQL veritabanını kopyalayabilirsiniz. 
+Azure SQL Database provides several methods for creating a transactionally consistent copy of an existing Azure SQL database ([single database](sql-database-single-database.md)) on either the same server or a different server. You can copy a SQL database by using the Azure portal, PowerShell, or T-SQL.
 
 ## <a name="overview"></a>Genel Bakış
 
-Veritabanı kopyası, kopyalama isteği sırasında kaynak veritabanının anlık görüntüsüdür. Aynı sunucuyu veya farklı bir sunucuyu seçebilirsiniz. Ayrıca, hizmet katmanını ve işlem boyutunu tutmayı seçebilir veya aynı hizmet katmanı (Edition) içinde farklı bir işlem boyutu kullanabilirsiniz. Kopyalama işlemi tamamlandıktan sonra, tamamen işlevsel, bağımsız bir veritabanı haline gelir. Bu noktada, dilediğiniz sürüme yükseltebilir veya onu indirgeyede olursunuz. Oturum açmalar, kullanıcılar ve izinler bağımsız olarak yönetilebilir. Kopya, coğrafi çoğaltma teknolojisi kullanılarak oluşturulur ve dengeli dağıtım tamamlandığında, coğrafi çoğaltma bağlantısı otomatik olarak sonlandırılır. Coğrafi çoğaltmanın kullanılmasıyla ilgili tüm gereksinimler veritabanı kopyalama işlemi için geçerlidir. Ayrıntılar için bkz. [etkin coğrafi Çoğaltmaya genel bakış](sql-database-active-geo-replication.md) .
+A database copy is a snapshot of the source database as of the time of the copy request. You can select the same server or a different server. Also you can choose to keep its service tier and compute size, or use a different compute size within the same service tier (edition). After the copy is complete, it becomes a fully functional, independent database. At this point, you can upgrade or downgrade it to any edition. The logins, users, and permissions can be managed independently. The copy is created using the geo-replication technology and once seeding is completed the geo-replication link is automatically terminated. All the requirements for using geo-replication apply to the database copy operation. See [Active geo-replication overview](sql-database-active-geo-replication.md) for details.
 
 > [!NOTE]
-> [Otomatik veritabanı yedeklemeleri](sql-database-automated-backups.md) , bir veritabanı kopyası oluştururken kullanılır.
+> [Automated database backups](sql-database-automated-backups.md) are used when you create a database copy.
 
-## <a name="logins-in-the-database-copy"></a>Veritabanı kopyasında oturum açma işlemleri
+## <a name="logins-in-the-database-copy"></a>Logins in the database copy
 
-Aynı SQL veritabanı sunucusuna bir veritabanını kopyaladığınızda, her iki veritabanında da aynı oturum açma işlemleri kullanılabilir. Veritabanını kopyalamak için kullandığınız güvenlik sorumlusu yeni veritabanında veritabanı sahibi olur. Tüm veritabanı kullanıcıları, izinleri ve güvenlik tanımlayıcıları (SID 'Ler) veritabanı kopyasına kopyalanır.  
+When you copy a database to the same SQL Database server, the same logins can be used on both databases. The security principal you use to copy the database becomes the database owner on the new database. All database users, their permissions, and their security identifiers (SIDs) are copied to the database copy.  
 
-Bir veritabanını farklı bir SQL veritabanı sunucusuna kopyaladığınızda, yeni sunucudaki güvenlik sorumlusu yeni veritabanında veritabanı sahibi olur. Veri erişimi için [Kapsanan Veritabanı kullanıcılarını](sql-database-manage-logins.md) kullanıyorsanız, hem birincil hem de ikincil veritabanlarının her zaman aynı kullanıcı kimlik bilgilerine sahip olduğundan emin olun, böylece kopyalama tamamlandıktan sonra aynı kimlik bilgileriyle hemen erişebilirsiniz. 
+When you copy a database to a different SQL Database server, the security principal on the new server becomes the database owner on the new database. If you use [contained database users](sql-database-manage-logins.md) for data access, ensure that both the primary and secondary databases always have the same user credentials, so that after the copy is complete you can immediately access it with the same credentials.
 
-[Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)kullanıyorsanız, kopyada kimlik bilgilerini yönetme gereksinimini tamamen ortadan kaldırabilirsiniz. Ancak, veritabanını yeni bir sunucuya kopyaladığınızda oturum açma tabanlı erişim çalışmayabilir, çünkü oturum açmalar yeni sunucuda mevcut değildir. Farklı bir SQL veritabanı sunucusuna bir veritabanını kopyaladığınızda, oturum açma işlemlerini yönetme hakkında bilgi edinmek için bkz. [olağanüstü durum kurtarma sonrasında Azure SQL veritabanı güvenliğini yönetme](sql-database-geo-replication-security-config.md). 
+If you use [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md), you can completely eliminate the need for managing credentials in the copy. However, when you copy the database to a new server, the login-based access might not work, because the logins do not exist on the new server. To learn about managing logins when you copy a database to a different SQL Database server, see [How to manage Azure SQL database security after disaster recovery](sql-database-geo-replication-security-config.md).
 
-Kopyalama başarılı olduktan ve diğer kullanıcılar yeniden eşlendikten sonra, yalnızca kopyalamayı Başlatan oturum açma, veritabanı sahibi yeni veritabanında oturum açabilir. Kopyalama işlemi tamamlandıktan sonra oturum açma işlemlerini çözümlemek için bkz. [oturum açma bilgilerini çözümleme](#resolve-logins).
+After the copying succeeds and before other users are remapped, only the login that initiated the copying, the database owner, can log in to the new database. To resolve logins after the copying operation is complete, see [Resolve logins](#resolve-logins).
 
-## <a name="copy-a-database-by-using-the-azure-portal"></a>Azure portal kullanarak bir veritabanını kopyalama
+## <a name="copy-a-database-by-using-the-azure-portal"></a>Copy a database by using the Azure portal
 
-Azure portal kullanarak bir veritabanını kopyalamak için veritabanınızın sayfasını açın ve ardından **Kopyala**' ya tıklayın. 
+To copy a database by using the Azure portal, open the page for your database, and then click **Copy**.
 
-   ![Veritabanı kopyalama](./media/sql-database-copy/database-copy.png)
+   ![Database copy](./media/sql-database-copy/database-copy.png)
 
-## <a name="copy-a-database-by-using-powershell"></a>PowerShell kullanarak bir veritabanını kopyalama
+## <a name="copy-a-database-by-using-powershell"></a>Copy a database by using PowerShell
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+To copy a database, use the following examples.
 
-PowerShell kullanarak bir veritabanını kopyalamak için [New-AzSqlDatabaseCopy](/powershell/module/az.sql/new-azsqldatabasecopy) cmdlet 'ini kullanın. 
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
+For PowerShell, use the [New-AzSqlDatabaseCopy](/powershell/module/az.sql/new-azsqldatabasecopy) cmdlet.
+
+> [!IMPORTANT]
+> The PowerShell Azure Resource Manager (RM) module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. The AzureRM module will continue to receive bug fixes until at least December 2020.  The arguments for the commands in the Az module and in the AzureRm modules are substantially identical. For more about their compatibility, see [Introducing the new Azure PowerShell Az module](/powershell/azure/new-azureps-module-az).
 
 ```powershell
-New-AzSqlDatabaseCopy -ResourceGroupName "myResourceGroup" `
-    -ServerName $sourceserver `
-    -DatabaseName "MySampleDatabase" `
-    -CopyResourceGroupName "myResourceGroup" `
-    -CopyServerName $targetserver `
-    -CopyDatabaseName "CopyOfMySampleDatabase"
+New-AzSqlDatabaseCopy -ResourceGroupName "<resourceGroup>" -ServerName $sourceserver -DatabaseName "<databaseName>" `
+    -CopyResourceGroupName "myResourceGroup" -CopyServerName $targetserver -CopyDatabaseName "CopyOfMySampleDatabase"
 ```
 
-Tüm örnek betik için bkz. [veritabanını yeni bir sunucuya kopyalama](scripts/sql-database-copy-database-to-new-server-powershell.md).
+The database copy is a asynchronous operation but the target database is created immediately after the request is accepted. If you need to cancel the copy operation while still in progress, drop the the target database using the [Remove-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) cmdlet.
 
-Veritabanı kopyası zaman uyumsuz bir işlemdir ancak hedef veritabanı, istek kabul edildikten hemen sonra oluşturulur. Hala devam ederken kopyalama işlemini iptal etmeniz gerekiyorsa, [Remove-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) cmdlet 'ini kullanarak hedef veritabanını bırakın.  
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-## <a name="rbac-roles-to-manage-database-copy"></a>Veritabanı kopyasını yönetmek için RBAC rolleri
+```azure-cli
+az sql db copy --dest-name "CopyOfMySampleDatabase" --dest-resource-group "myResourceGroup" --dest-server $targetserver `
+    --name "<databaseName>" --resource-group "<resourceGroup>" --server $sourceserver
+```
 
-Bir veritabanı kopyası oluşturmak için aşağıdaki rollerde olması gerekir
+The database copy is a asynchronous operation but the target database is created immediately after the request is accepted. If you need to cancel the copy operation while still in progress, drop the the target database using the [az sql db delete](/cli/azure/sql/db#az-sql-db-delete) command.
 
-- Abonelik sahibi veya
-- SQL Server katkıda bulunan rolü veya
-- Kaynak ve hedef veritabanlarında aşağıdaki izinle özel rol:
+* * *
 
-   Microsoft. SQL/Servers/veritabanları/okuma   
-   Microsoft. SQL/Servers/veritabanları/Write   
+For a complete sample script, see [Copy a database to a new server](scripts/sql-database-copy-database-to-new-server-powershell.md).
 
-Bir veritabanı kopyasını iptal etmek için, aşağıdaki rollerde olması gerekir
+## <a name="rbac-roles-to-manage-database-copy"></a>RBAC roles to manage database copy
 
-- Abonelik sahibi veya
-- SQL Server katkıda bulunan rolü veya
-- Kaynak ve hedef veritabanlarında aşağıdaki izinle özel rol:
+To create a database copy, you will need to be in the following roles
 
-   Microsoft. SQL/Servers/veritabanları/okuma   
-   Microsoft. SQL/Servers/veritabanları/Write   
-   
-Veritabanı kopyasını Azure portal kullanarak yönetmek için aşağıdaki izinlere de ihtiyacınız olacaktır:
+- Subscription Owner or
+- SQL Server Contributor role or
+- Custom role on the source and target databases with following permission:
 
-&nbsp; &nbsp; &nbsp; Microsoft. resources/abonelikleri/kaynakları/okuma   
-Microsoft. resources/abonelikleri/kaynakları/Write &nbsp; &nbsp; &nbsp;   
-Microsoft. resources/dağıtımlar/Read &nbsp; &nbsp; &nbsp;   
-Microsoft. resources/dağıtımlar/Write &nbsp; &nbsp; &nbsp;   
-&nbsp; &nbsp; Microsoft. resources/dağıtımlar/operationdurumlarının/Read &nbsp;    
+   Microsoft.Sql/servers/databases/read  Microsoft.Sql/servers/databases/write
 
-Portalda kaynak grubunda bulunan ve SQL işlemleri de dahil olmak üzere birden çok kaynak sağlayıcılarındaki işlemler altında gerçekleştirilen işlemleri görmek isterseniz, bu ek RBAC rollerinin olması gerekir: 
+To cancel a database copy, you will need to be in the following roles
 
-&nbsp; &nbsp; &nbsp; Microsoft. resources/abonelikler/ResourceGroups/dağıtımlar/işlemler/okuma   
-&nbsp; &nbsp; &nbsp; Microsoft. resources/abonelikler/ResourceGroups/dağıtımlar/operationdurumlarının/Read
+- Subscription Owner or
+- SQL Server Contributor role or
+- Custom role on the source and target databases with following permission:
 
+   Microsoft.Sql/servers/databases/read  Microsoft.Sql/servers/databases/write
 
+To manage database copy using Azure portal, you will also need the following permissions:
 
-## <a name="copy-a-database-by-using-transact-sql"></a>Transact-SQL kullanarak bir veritabanını kopyalama
+   Microsoft.Resources/subscriptions/resources/read Microsoft.Resources/subscriptions/resources/write Microsoft.Resources/deployments/read Microsoft.Resources/deployments/write Microsoft.Resources/deployments/operationstatuses/read
 
-Ana veritabanında sunucu düzeyi sorumlu oturum açma veya kopyalamak istediğiniz veritabanını oluşturan oturum açma bilgileriyle oturum açın. Veritabanı kopyalama işleminin başarılı olması için, sunucu düzeyi sorumlu olmayan oturum açma işlemleri dbmanager rolünün üyesi olmalıdır. Oturumlar ve sunucuya bağlanma hakkında daha fazla bilgi için bkz. [oturum açma bilgilerini yönetme](sql-database-manage-logins.md).
+If you want to see the operations under deployments in the resource group on the portal, operations across multiple resource providers including SQL operations, you will need these additional RBAC roles:
 
-[Veritabanı oluştur](https://msdn.microsoft.com/library/ms176061.aspx) ifadesiyle kaynak veritabanını kopyalamaya başlayın. Bu bildirimin yürütülmesi, veritabanı kopyalama işlemini başlatır. Bir veritabanının kopyalanması zaman uyumsuz bir işlem olduğundan, CREATE DATABASE deyimleri, veritabanı kopyalama işlemi tamamlanmadan önce döndürülür.
+   Microsoft.Resources/subscriptions/resourcegroups/deployments/operations/read Microsoft.Resources/subscriptions/resourcegroups/deployments/operationstatuses/read
 
-### <a name="copy-a-sql-database-to-the-same-server"></a>Bir SQL veritabanını aynı sunucuya kopyalama
+## <a name="copy-a-database-by-using-transact-sql"></a>Copy a database by using Transact-SQL
 
-Ana veritabanında sunucu düzeyi sorumlu oturum açma veya kopyalamak istediğiniz veritabanını oluşturan oturum açma bilgileriyle oturum açın. Veritabanı kopyalama işleminin başarılı olması için, sunucu düzeyi sorumlu olmayan oturum açma işlemleri dbmanager rolünün üyesi olmalıdır.
+Log in to the master database with the server-level principal login or the login that created the database you want to copy. For database copying to succeed, logins that are not the server-level principal must be members of the dbmanager role. For more information about logins and connecting to the server, see [Manage logins](sql-database-manage-logins.md).
 
-Bu komut, Veritabanı1 adlı yeni bir veritabanına aynı sunucuda Veritabanı2 kopyalar. Veritabanınızın boyutuna bağlı olarak kopyalama işleminin tamamlanması biraz zaman alabilir.
+Start copying the source database with the [CREATE DATABASE](https://msdn.microsoft.com/library/ms176061.aspx) statement. Executing this statement initiates the database copying process. Because copying a database is an asynchronous process, the CREATE DATABASE statement returns before the database copying is complete.
 
-    -- Execute on the master database.
-    -- Start copying.
-    CREATE DATABASE Database2 AS COPY OF Database1;
+### <a name="copy-a-sql-database-to-the-same-server"></a>Copy a SQL database to the same server
 
-### <a name="copy-a-sql-database-to-a-different-server"></a>SQL veritabanını farklı bir sunucuya kopyalama
+Log in to the master database with the server-level principal login or the login that created the database you want to copy. For database copying to succeed, logins that are not the server-level principal must be members of the dbmanager role.
 
-Yeni veritabanının oluşturulacağı SQL veritabanı sunucusu hedef sunucunun ana veritabanında oturum açın. Kaynak SQL veritabanı sunucusundaki kaynak veritabanının veritabanı sahibiyle aynı ada ve parolaya sahip bir oturum açma kullanın. Hedef sunucudaki oturum açma, dbmanager rolünün bir üyesi olmalıdır veya sunucu düzeyinde asıl oturum açma olmalıdır.
+This command copies Database1 to a new database named Database2 on the same server. Depending on the size of your database, the copying operation might take some time to complete.
 
-Bu komut Sunucu1 üzerindeki Veritabanı1 öğesini Sunucu2 üzerinde Veritabanı2 adlı yeni bir veritabanına kopyalar. Veritabanınızın boyutuna bağlı olarak kopyalama işleminin tamamlanması biraz zaman alabilir.
+   ```sql
+   -- execute on the master database to start copying
+   CREATE DATABASE Database2 AS COPY OF Database1;
+   ```
 
-    -- Execute on the master database of the target server (server2)
-    -- Start copying from Server1 to Server2
-    CREATE DATABASE Database2 AS COPY OF server1.Database1;
-    
-> [!IMPORTANT]
-> Her iki sunucu da güvenlik duvarı, T-SQL COPY komutunu veren istemcinin IP 'sinden gelen bağlantıya izin verecek şekilde yapılandırılmalıdır.
+### <a name="copy-a-sql-database-to-a-different-server"></a>Copy a SQL database to a different server
 
-### <a name="copy-a-sql-database-to-a-different-subscription"></a>SQL veritabanını farklı bir aboneliğe kopyalama
+Log in to the master database of the destination server, the SQL Database server where the new database is to be created. Use a login that has the same name and password as the database owner of the source database on the source SQL Database server. The login on the destination server must also be a member of the dbmanager role or be the server-level principal login.
 
-Veritabanınızı farklı bir abonelikte SQL veritabanı sunucusuna kopyalamak için önceki bölümde açıklanan adımları kullanabilirsiniz. Kaynak veritabanının veritabanı sahibiyle aynı ada ve parolaya sahip bir oturum açma ve dbmanager rolünün bir üyesi veya sunucu düzeyinde asıl oturum açma olduğundan emin olun. 
+This command copies Database1 on server1 to a new database named Database2 on server2. Depending on the size of your database, the copying operation might take some time to complete.
 
-> [!NOTE]
-> [Azure Portal](https://portal.azure.com) , Portal ARM API 'sini çağırdığından ve coğrafi çoğaltma işleminde yer alan her iki sunucuya erişmek için abonelik sertifikalarını kullandığından, farklı bir aboneliğe kopyalama desteklenmez.  
-
-### <a name="monitor-the-progress-of-the-copying-operation"></a>Kopyalama işleminin ilerlemesini izleme
-
-Sys. databases ve sys. dm_database_copies görünümlerini sorgulayarak kopyalama işlemini izleyin. Kopyalama işlemi devam ederken, yeni veritabanı için sys. databases görünümünün **state_desc** sütunu **kopyalama**olarak ayarlanır.
-
-* Kopyalama başarısız olursa, yeni veritabanı için sys. databases görünümünün **state_desc** sütunu **şüpheli**olarak ayarlanır. DROP ifadesini yeni veritabanında yürütün ve daha sonra yeniden deneyin.
-* Kopyalama başarılı olursa, yeni veritabanı için sys. databases görünümünün **state_desc** sütunu **çevrimiçi**olarak ayarlanır. Kopyalama tamamlanmıştır ve yeni veritabanı, kaynak veritabanından bağımsız olarak değiştirilebilen normal bir veritabanıdır.
-
-> [!NOTE]
-> Kopyalama işlemi devam ederken iptal etmeyi seçerseniz, yeni veritabanında [drop database](https://msdn.microsoft.com/library/ms178613.aspx) ifadesini yürütün. Alternatif olarak, kaynak veritabanında DROP DATABASE ifadesinin yürütülmesi kopyalama işlemini de iptal eder.
+```sql
+-- Execute on the master database of the target server (server2) to start copying from Server1 to Server2
+CREATE DATABASE Database2 AS COPY OF server1.Database1;
+```
 
 > [!IMPORTANT]
-> Kaynağından önemli ölçüde daha küçük bir SLO kopyası oluşturmanız gerekiyorsa, hedef veritabanı dengeli işlem işlemini tamamlayacak yeterli kaynağa sahip olmayabilir ve kopyalama işlemi başarısız olmasına neden olabilir. Bu senaryoda, farklı bir sunucuda ve/veya farklı bir bölgede bir kopya oluşturmak için bir coğrafi geri yükleme isteği kullanın. Daha fazla bilgi için bkz. [veritabanı yedeklerini kullanarak bir Azure SQL veritabanını kurtarma](sql-database-recovery-using-backups.md#geo-restore) .
+> Both servers' firewalls must be configured to allow inbound connection from the IP of the client issuing the T-SQL COPY command.
 
+### <a name="copy-a-sql-database-to-a-different-subscription"></a>Copy a SQL database to a different subscription
 
-## <a name="resolve-logins"></a>Oturum açma işlemlerini çözümle
+You can use the steps described in the previous section to copy your database to a SQL Database server in a different subscription. Make sure you use a login that has the same name and password as the database owner of the source database and it is a member of the dbmanager role or is the server-level principal login. 
 
-Yeni veritabanı hedef sunucuda çevrimiçi olduktan sonra, kullanıcıları yeni veritabanından hedef sunucudaki oturum açmayla yeniden eşlemek için [alter User](https://msdn.microsoft.com/library/ms176060.aspx) deyimini kullanın. Yalnız bırakılmış kullanıcıları çözümlemek için bkz. [yalnız bırakılmış kullanıcılarda sorun giderme](https://msdn.microsoft.com/library/ms175475.aspx). Ayrıca bkz. [olağanüstü durum kurtarma sonrasında Azure SQL veritabanı güvenliğini yönetme](sql-database-geo-replication-security-config.md).
+> [!NOTE]
+> The [Azure portal](https://portal.azure.com) does not support copy to a different subscription because Portal calls the ARM API and it uses the subscription certificates to access both servers involved in geo-replication.  
 
-Yeni veritabanındaki tüm kullanıcılar, kaynak veritabanında sahip oldukları izinleri korurlar. Veritabanı kopyasını Başlatan Kullanıcı, yeni veritabanının veritabanı sahibi olur ve yeni bir güvenlik tanımlayıcısı (SID) atanır. Kopyalama başarılı olduktan ve diğer kullanıcılar yeniden eşlendikten sonra, yalnızca kopyalamayı Başlatan oturum açma, veritabanı sahibi yeni veritabanında oturum açabilir.
+### <a name="monitor-the-progress-of-the-copying-operation"></a>Monitor the progress of the copying operation
 
-Bir veritabanını farklı bir SQL veritabanı sunucusuna kopyaladığınızda kullanıcıları ve oturum açma işlemlerini yönetme hakkında bilgi edinmek için bkz. [Azure SQL veritabanı güvenliğini olağanüstü durum kurtarma sonrasında yönetme](sql-database-geo-replication-security-config.md).
+Monitor the copying process by querying the sys.databases and sys.dm_database_copies views. While the copying is in progress, the **state_desc** column of the sys.databases view for the new database is set to **COPYING**.
 
-## <a name="database-copy-errors"></a>Veritabanı kopyalama hataları
+* If the copying fails, the **state_desc** column of the sys.databases view for the new database is set to **SUSPECT**. Execute the DROP statement on the new database, and try again later.
+* If the copying succeeds, the **state_desc** column of the sys.databases view for the new database is set to **ONLINE**. The copying is complete, and the new database is a regular database that can be changed independent of the source database.
 
-Azure SQL veritabanı 'nda bir veritabanı kopyalanırken aşağıdaki hatalarla karşılaşılabilir. Daha fazla bilgi için bkz. [Azure SQL Veritabanını kopyalama](sql-database-copy.md).
+> [!NOTE]
+> If you decide to cancel the copying while it is in progress, execute the [DROP DATABASE](https://msdn.microsoft.com/library/ms178613.aspx) statement on the new database. Alternatively, executing the DROP DATABASE statement on the source database also cancels the copying process.
 
-| Hata kodu | Severity | Açıklama |
+> [!IMPORTANT]
+> If you need to create a copy with a substantially smaller SLO than the source, the target database may not have sufficient resources to complete the seeding process and it can cause the copy operaion to fail. In this scenario use a geo-restore request to create a copy in a different server and/or a different region. See [Recover an Azure SQL database using database backups](sql-database-recovery-using-backups.md#geo-restore) for more informaion.
+
+## <a name="resolve-logins"></a>Resolve logins
+
+After the new database is online on the destination server, use the [ALTER USER](https://msdn.microsoft.com/library/ms176060.aspx) statement to remap the users from the new database to logins on the destination server. To resolve orphaned users, see [Troubleshoot Orphaned Users](https://msdn.microsoft.com/library/ms175475.aspx). See also [How to manage Azure SQL database security after disaster recovery](sql-database-geo-replication-security-config.md).
+
+All users in the new database retain the permissions that they had in the source database. The user who initiated the database copy becomes the database owner of the new database and is assigned a new security identifier (SID). After the copying succeeds and before other users are remapped, only the login that initiated the copying, the database owner, can log in to the new database.
+
+To learn about managing users and logins when you copy a database to a different SQL Database server, see [How to manage Azure SQL database security after disaster recovery](sql-database-geo-replication-security-config.md).
+
+## <a name="database-copy-errors"></a>Database copy errors
+
+The following errors can be encountered while copying a database in Azure SQL Database. Daha fazla bilgi için bkz. [Azure SQL Veritabanını kopyalama](sql-database-copy.md).
+
+| Hata kodu | Önem Derecesi | Açıklama |
 | ---:| ---:|:--- |
-| 40635 |16 |İstemci IP adresi '%.&#x2a;ls' geçici olarak devre dışıdır. |
-| 40637 |16 |Veritabanı kopyası oluşturma şu anda devre dışı. |
-| 40561 |16 |Veritabanı kopyalama başarısız oldu. Kaynak ya da hedef veritabanı yok. |
-| 40562 |16 |Veritabanı kopyalama başarısız oldu. Kaynak veritabanı bırakılmış. |
-| 40563 |16 |Veritabanı kopyalama başarısız oldu. Hedef veritabanı bırakılmış. |
-| 40564 |16 |Veritabanı kopyalama bir iç hata nedeniyle başarısız oldu. Lütfen hedef veritabanını bırakın ve yeniden deneyin. |
-| 40565 |16 |Veritabanı kopyalama başarısız oldu. Aynı kaynaktan 1 ' den fazla eşzamanlı veritabanı kopyası yapılmasına izin verilmez. Lütfen hedef veritabanını bırakın ve daha sonra yeniden deneyin. |
-| 40566 |16 |Veritabanı kopyalama bir iç hata nedeniyle başarısız oldu. Lütfen hedef veritabanını bırakın ve yeniden deneyin. |
-| 40567 |16 |Veritabanı kopyalama bir iç hata nedeniyle başarısız oldu. Lütfen hedef veritabanını bırakın ve yeniden deneyin. |
-| 40568 |16 |Veritabanı kopyalama başarısız oldu. Kaynak veritabanı kullanılamaz duruma geldi. Lütfen hedef veritabanını bırakın ve yeniden deneyin. |
-| 40569 |16 |Veritabanı kopyalama başarısız oldu. Hedef veritabanı kullanılamaz duruma geldi. Lütfen hedef veritabanını bırakın ve yeniden deneyin. |
-| 40570 |16 |Veritabanı kopyalama bir iç hata nedeniyle başarısız oldu. Lütfen hedef veritabanını bırakın ve daha sonra yeniden deneyin. |
-| 40571 |16 |Veritabanı kopyalama bir iç hata nedeniyle başarısız oldu. Lütfen hedef veritabanını bırakın ve daha sonra yeniden deneyin. |
+| 40635 |16 |Client with IP address '%.&#x2a;ls' is temporarily disabled. |
+| 40637 |16 |Create database copy is currently disabled. |
+| 40561 |16 |Database copy failed. Either the source or target database does not exist. |
+| 40562 |16 |Database copy failed. The source database has been dropped. |
+| 40563 |16 |Database copy failed. The target database has been dropped. |
+| 40564 |16 |Database copy failed due to an internal error. Please drop target database and try again. |
+| 40565 |16 |Database copy failed. No more than 1 concurrent database copy from the same source is allowed. Please drop target database and try again later. |
+| 40566 |16 |Database copy failed due to an internal error. Please drop target database and try again. |
+| 40567 |16 |Database copy failed due to an internal error. Please drop target database and try again. |
+| 40568 |16 |Database copy failed. Source database has become unavailable. Please drop target database and try again. |
+| 40569 |16 |Database copy failed. Target database has become unavailable. Please drop target database and try again. |
+| 40570 |16 |Database copy failed due to an internal error. Please drop target database and try again later. |
+| 40571 |16 |Database copy failed due to an internal error. Please drop target database and try again later. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Oturumlar hakkında daha fazla bilgi için bkz. [oturum açma bilgilerini yönetme](sql-database-manage-logins.md) ve [olağanüstü durum kurtarma sonrasında Azure SQL veritabanı güvenliğini yönetme](sql-database-geo-replication-security-config.md).
-* Bir veritabanını dışarı aktarmak için bkz. [veritabanını BACPAC 'e aktarma](sql-database-export.md).
+- For information about logins, see [Manage logins](sql-database-manage-logins.md) and [How to manage Azure SQL database security after disaster recovery](sql-database-geo-replication-security-config.md).
+- To export a database, see [Export the database to a BACPAC](sql-database-export.md).

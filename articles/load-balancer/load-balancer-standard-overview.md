@@ -1,7 +1,7 @@
 ---
-title: Azure Standart Load Balancer nedir?
+title: What is Azure Standard Load Balancer?
 titleSuffix: Azure Load Balancer
-description: Bu öğrenme yoluyla Azure Standart Load Balancer özelliklerine genel bir bakış ile çalışmaya başlayın.
+description: With this learning path, get started with an overview of Azure Standard Load Balancer features.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,239 +14,239 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/21/2019
 ms.author: allensu
-ms.openlocfilehash: ce85c3ab1bf642dc7e9a92f08acdec2bd754d2f9
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 36035d844237115361ccb3c1e1bc0dcb91250881
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278040"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74423878"
 ---
-# <a name="azure-standard-load-balancer-overview"></a>Azure Standart Load Balancer genel bakış
+# <a name="azure-standard-load-balancer-overview"></a>Azure Standard Load Balancer overview
 
-Azure Load Balancer, uygulamalarınızı ölçeklendirmenize ve hizmetleriniz için yüksek kullanılabilirlik oluşturmanıza olanak sağlar. Load Balancer, gelen ve giden senaryolar için kullanılabilir ve düşük gecikme süresi, yüksek aktarım hızı ve tüm TCP ve UDP uygulamaları için milyonlarca akışa kadar ölçeği ölçeklendirir. 
+Azure Load Balancer allows you to scale your applications and create high availability for your services. Load Balancer can be used for inbound as well as outbound scenarios and provides low latency, high throughput, and scales up to millions of flows for all TCP and UDP applications. 
 
-Bu makale Standart Load Balancer odaklanılmıştır.  Azure Load Balancer daha genel bir genel bakış için [Load Balancer genel bakış](load-balancer-overview.md) konusunu gözden geçirin.
+This article is focused on Standard Load Balancer.  For a more general overview for Azure Load Balancer, review [Load Balancer Overview](load-balancer-overview.md) as well.
 
 ## <a name="what-is-standard-load-balancer"></a>Standart Load Balancer nedir?
 
-Standart Load Balancer, temel Load Balancer üzerinde genişletilmiş ve daha ayrıntılı bir özellik kümesine sahip tüm TCP ve UDP uygulamalarına yönelik yeni bir Load Balancer ürünüdür.  Birçok benzerlikler olsa da, bu makalede özetlenen farklılığı öğrenmek önemlidir.
+Standard Load Balancer is a new Load Balancer product for all TCP and UDP applications with an expanded and more granular feature set over Basic Load Balancer.  While there are many similarities, it is important to familiarize yourself with the differences as outlined in this article.
 
-Standart Load Balancer, genel veya iç Load Balancer olarak kullanabilirsiniz. Ve bir sanal makine, bir genel ve bir iç Load Balancer kaynağına bağlanabilir.
+You can use Standard Load Balancer as a public or internal Load Balancer. And a virtual machine can be connected to one public and one internal Load Balancer resource.
 
-Load Balancer kaynağının işlevleri her zaman ön uç, bir kural, sistem durumu araştırması ve arka uç havuzu tanımı olarak ifade edilir.  Bir kaynak, birden çok kural içerebilir. Sanal makinenin NIC kaynağından arka uç havuzunu belirterek, sanal makineleri arka uç havuzuna yerleştirebilirsiniz.  Bu parametre ağ profili aracılığıyla geçirilir ve sanal makine ölçek kümeleri kullanılırken genişletilir.
+The Load Balancer resource's functions are always expressed as a frontend, a rule, a health probe, and a backend pool definition.  A resource can contain multiple rules. You can place virtual machines into the backend pool by specifying the backend pool from the virtual machine's NIC resource.  This parameter is passed through the network profile and expanded when using virtual machine scale sets.
 
-Bir anahtar yönü, kaynak için sanal ağın kapsamıdır.  Temel Load Balancer bir kullanılabilirlik kümesi kapsamında mevcut olsa da, bir Standart Load Balancer sanal ağın kapsamıyla tamamen tümleşiktir ve tüm sanal ağ kavramları geçerlidir.
+One key aspect is the scope of the virtual network for the resource.  While Basic Load Balancer exists within the scope of an availability set, a Standard Load Balancer is fully integrated with the scope of a virtual network and all virtual network concepts apply.
 
-Load Balancer kaynaklar, Azure 'un, oluşturmak istediğiniz senaryoya ulaşmak için çok kiracılı altyapısını nasıl programtabileceği hakkında ifade ettiğiniz nesnelerdir.  Load Balancer kaynakları ile gerçek altyapı arasında doğrudan ilişki yoktur; Load Balancer oluşturmak bir örnek oluşturmaz, kapasite her zaman kullanılabilir olur ve göz önünde bulundurulması gereken başlangıç veya ölçeklendirme gecikmeleri yoktur. 
+Load Balancer resources are objects within which you can express how Azure should program its multi-tenant infrastructure to achieve the scenario you wish to create.  There is no direct relationship between Load Balancer resources and actual infrastructure; creating a Load Balancer doesn't create an instance, capacity is always available, and there are no start-up or scaling delays to consider. 
 
 >[!NOTE]
-> Azure, senaryolarınız için tam olarak yönetilen yük dengeleme çözümleri sunar. Aktarım Katmanı Güvenliği (TLS) protokolü sonlandırma ("SSL boşaltması") veya HTTP/HTTPS isteği, uygulama katmanı işleme için arıyorsanız bkz. [Azure Application Gateway nedir?](../application-gateway/overview.md). Küresel DNS yük dengeleyiciyi arıyorsanız bkz. [ne > Traffic Manager](../traffic-manager/traffic-manager-overview.md). Uçtan uca senaryolarınız, bu çözümleri birleştirmenin avantajlarından yararlanabilir.
+> Azure, senaryolarınız için tam olarak yönetilen yük dengeleme çözümleri sunar. If you're looking for Transport Layer Security (TLS) protocol termination ("SSL offload") or per-HTTP/HTTPS request, application-layer processing, see [What is Azure Application Gateway?](../application-gateway/overview.md) If you're looking for global DNS load balancing, see [What is Traffic Manager?](../traffic-manager/traffic-manager-overview.md) Your end-to-end scenarios may benefit from combining these solutions.
 >
-> Azure yük dengeleme seçenekleri karşılaştırması için bkz. [Azure 'da Yük Dengeleme seçeneklerine genel bakış](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview).
+> For an Azure load-balancing options comparison, see [Overview of load-balancing options in Azure](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview).
 
-## <a name="why-use-standard-load-balancer"></a>Neden Standart Load Balancer kullanmalıyım?
+## <a name="why-use-standard-load-balancer"></a>Why use Standard Load Balancer?
 
 Standart Load Balancer uygulamalarınızı ölçeklendirmenizi ve küçük ölçekli dağıtımlardan büyük ve karmaşık çok bölgeli mimarilere kadar yüksek düzeyde kullanılabilirlik oluşturmanızı sağlar.
 
-Standart Load Balancer ve temel Load Balancer arasındaki farklılıklara genel bakış için aşağıdaki tabloyu gözden geçirin:
+Review the table below for an overview of the differences between Standard Load Balancer and Basic Load Balancer:
 
 >[!NOTE]
 > Yeni tasarımlarda Standart Load Balancer kullanılmalıdır. 
 
 [!INCLUDE [comparison table](../../includes/load-balancer-comparison-table.md)]
 
-Load Balancer, [fiyatlandırma](https://aka.ms/lbpricing)ve [SLA](https://aka.ms/lbsla) [için hizmet sınırlarını](https://aka.ms/lblimits)gözden geçirin.
+Review [service limits for Load Balancer](https://aka.ms/lblimits), as well as [pricing](https://aka.ms/lbpricing), and [SLA](https://aka.ms/lbsla).
 
 
-### <a name="backend"></a>Arka uç havuzu
+### <a name="backend"></a>Backend pool
 
-Standart Load Balancer arka uç havuzları, sanal bir ağdaki herhangi bir sanal makine kaynağına genişletilir.  Bu, en fazla 1000 arka uç örneği içerebilir.  Bir arka uç örneği, NIC kaynağının bir özelliği olan bir IP yapılandırmadır.
+Standard Load Balancer backend pools expand to any virtual machine resource in a virtual network.  It can contain up to 1000 backend instances.  A backend instance is an IP configuration, which is a property of a NIC resource.
 
-Arka uç havuzunda tek başına sanal makineler, kullanılabilirlik kümeleri veya sanal makine ölçek kümeleri bulunabilir.  Ayrıca, arka uç havuzundaki kaynakları karıştırabilirsiniz. Load Balancer kaynak başına arka uç havuzunda en fazla 150 kaynak birleştirebilirsiniz.
+The backend pool can contain standalone virtual machines, availability sets, or virtual machine scale sets.  You can also blend resources in the backend pool. You can combine up to 150 resources in the backend pool per Load Balancer resource.
 
-Arka uç havuzunuzu nasıl tasarlayabileceğinizi düşünürken, yönetim işlemlerinin süresini daha iyi iyileştirmek için en az sayıda ayrı arka uç havuzu kaynağı tasarlayabilirsiniz.  Veri düzlemi performansı veya ölçeğinde farklılık yoktur.
+When considering how to design your backend pool, you can design for the least number of individual backend pool resources to further optimize the duration of management operations.  There is no difference in data plane performance or scale.
 
-### <a name="probes"></a>Durum araştırmaları
+### <a name="probes"></a>Health probes
   
-Standart Load Balancer, https uygulamalarınızı doğru şekilde izlemek için [https durum araştırmaları](load-balancer-custom-probe-overview.md#httpprobe) (Aktarım katmanı GÜVENLIĞI (TLS) sarmalayıcısı ile http araştırması) için destek ekler.  
+Standard Load Balancer adds support for [HTTPS health probes](load-balancer-custom-probe-overview.md#httpprobe) (HTTP probe with Transport Layer Security (TLS) wrapper) to accurately monitor your HTTPS applications.  
 
-Ayrıca, arka uç havuzunun tamamı [araştırdığınızda](load-balancer-custom-probe-overview.md#probedown), standart Load Balancer tüm kurulu TCP bağlantılarının devam etmesine izin verir. (Temel Load Balancer, tüm örneklere tüm TCP bağlantılarını sonlandırır).
+In addition, when the entire backend pool [probes down](load-balancer-custom-probe-overview.md#probedown), Standard Load Balancer allows all established TCP connections to continue. (Basic Load Balancer will terminate all TCP connections to all instances).
 
-Ayrıntılar için [Load Balancer sistem durumu araştırmalarını](load-balancer-custom-probe-overview.md) gözden geçirin.
+Review [Load Balancer health probes](load-balancer-custom-probe-overview.md) for details.
 
-### <a name="az"></a>Kullanılabilirlik Alanları
+### <a name="az"></a>Availability Zones
 
 >[!IMPORTANT]
->Bölgeye özgü bilgiler de dahil olmak üzere ilgili konular için [kullanılabilirlik alanları](../availability-zones/az-overview.md) gözden geçirin.
+>Review [Availability Zones](../availability-zones/az-overview.md) for related topics, including any region specific information.
 
-Standart Load Balancer, Kullanılabilirlik Alanları kullanılabildiği bölgelerde ek yetkileri destekler.  Bu özellikler, tüm Standart Load Balancer için artımlı olarak yapılır.  Kullanılabilirlik Alanları yapılandırma ortak ve iç Standart Load Balancer için kullanılabilir.
+Standard Load Balancer supports additional abilities in regions where Availability Zones are available.  These features are incremental to all Standard Load Balancer provides.  Availability Zones configurations are available for public and internal Standard Load Balancer.
 
-ZGen olmayan ön uçlar, Kullanılabilirlik Alanları bir bölgede dağıtıldığında varsayılan olarak bölge yedekli hale gelir.   Bölgesel olarak yedekli bir ön uç, bölge hatası ve tüm bölgelerde aynı anda adanmış altyapı tarafından sunulur. 
+Non-zonal frontends become zone-redundant by default when deployed in a region with Availability Zones.   A zone-redundant frontend survives zone failure and is served by dedicated infrastructure in all of the zones simultaneously. 
 
-Ayrıca, belirli bir bölgenin ön uç olduğunu garanti edebilirsiniz. İlgili bölgeyi içeren ve yalnızca tek bir bölgedeki adanmış altyapı tarafından sunulan bir ön uç ön uç paylaşır.
+Additionally, you can guarantee a frontend to a specific zone. A zonal frontend shares fate with the respective zone and is served only by dedicated infrastructure in a single zone.
 
-Platformlar arası yük dengeleme, arka uç havuzu için kullanılabilir ve VNET 'teki herhangi bir sanal makine kaynağı bir arka uç havuzunun parçası olabilir.
+Cross-zone load balancing is available for the backend pool, and any virtual machine resource in a vnet can be part of a backend pool.
 
-[Kullanılabilirlik alanları ilgili yetenekler hakkında ayrıntılı tartışmayı](load-balancer-standard-availability-zones.md)gözden geçirin.
+Review [detailed discussion of Availability Zones related abilities](load-balancer-standard-availability-zones.md).
 
-### <a name="diagnostics"></a>'Ya
+### <a name="diagnostics"></a> Diagnostics
 
-Standart Load Balancer, Azure Izleyici aracılığıyla çok boyutlu ölçümler sağlar.  Bu ölçümler, belirli bir boyut için filtrelenebilir, gruplandırılabilir ve parçalanılabilir.  Bu kişiler, hizmetinizin performansı ve durumuyla ilgili güncel ve geçmiş öngörüler sağlar.  Kaynak Durumu de desteklenir.  Aşağıda, desteklenen Tanılamalar hakkında kısa bir genel bakış verilmiştir:
+Standard Load Balancer provides multi-dimensional metrics through Azure Monitor.  These metrics can be filtered, grouped, and broken out for a given dimension.  They provide current and historic insights into performance and health of your service.  Resource Health is also supported.  Following is a brief overview of supported diagnostics:
 
 | Ölçüm | Açıklama |
 | --- | --- |
-| VIP kullanılabilirliği | Standart Load Balancer, bir bölgedeki veri yolunu, VM 'nizi destekleyen SDN yığınına kadar her zaman Load Balancer ön uca bir şekilde alıştırın. Sağlıklı örnekler kaldığı sürece ölçüm, uygulamanızın yük dengeli trafiğiyle aynı yolu izler. Müşterileriniz tarafından kullanılan veri yolu da onaylanır. Ölçüm, uygulamanız için görünmez ve diğer işlemleri engellemez.|
-| DIP kullanılabilirliği | Standart Load Balancer, yapılandırma ayarlarınıza göre uygulama uç noktanızın sistem durumunu izleyen dağıtılmış bir sistem durumu yoklama hizmeti kullanır. Bu ölçüm, Load Balancer havuzundaki her bir örnek uç noktasının bir toplama veya bitiş noktası başına filtrelenmiş görünümünü sağlar.  Durum araştırma yapılandırmanızla gösterildiği gibi Load Balancer uygulamanızın durumunu nasıl görüntüleyerek görebilirsiniz.
-| SYN paketleri | Standart Load Balancer TCP bağlantılarını sonlandıramaz veya TCP veya UDP paket akışlarıyla etkileşime almaz. Akışlar ve bunların el sıkışmaları her zaman kaynak ve sanal makine örneği arasındadır. TCP protokol senaryolarınızı daha iyi gidermek için, kaç TCP bağlantı denemesi yapıldığını anlamak üzere SYN paketleri sayaçlarını kullanabilirsiniz. Ölçüm, alınan TCP SYN paketlerinin sayısını bildirir.|
-| SNAT bağlantıları | Standart Load Balancer, genel IP adresi ön ucuna bağlı olan giden akış sayısını raporlar. SNAT bağlantı noktaları, tüketilülmüş bir kaynaktır. Bu ölçüm, uygulamanızın giden kaynaklı akışlar için SNAT 'ye ne kadar yoğun bir şekilde bağlı olduğunu belirten bir gösterge verebilir.  Başarılı ve başarısız giden SNAT akışları için sayaçlar raporlanır ve giden akışlarınızın durumunu gidermek ve anlamak için kullanılabilir.|
-| Bayt sayaçları | Standart Load Balancer, ön uç başına işlenen verileri raporlar.|
-| Paket sayaçları | Standart Load Balancer, ön uç başına işlenen paketleri raporlar.|
+| VIP availability | Standard Load Balancer continuously exercises the data path from within a region to the Load Balancer front-end all the way to the SDN stack that supports your VM. As long as healthy instances remain, the measurement follows the same path as your application's load-balanced traffic. The data path that is used by your customers is also validated. The measurement is invisible to your application and does not interfere with other operations.|
+| DIP availability | Standard Load Balancer uses a distributed health probing service that monitors your application endpoint's health according to your configuration settings. This metric provides an aggregate or per endpoint filtered-view of each individual instance endpoint in the Load Balancer pool.  You can see how Load Balancer views the health of your application as indicated by your health probe configuration.
+| SYN packets | Standard Load Balancer does not terminate TCP connections or interact with TCP or UDP packet flows. Flows and their handshakes are always between the source and the VM instance. To better troubleshoot your TCP protocol scenarios, you can make use of SYN packets counters to understand how many TCP connection attempts are made. The metric reports the number of TCP SYN packets that were received.|
+| SNAT connections | Standard Load Balancer reports the number of outbound flows that are masqueraded to the Public IP address front-end. SNAT ports are an exhaustible resource. This metric can give an indication of how heavily your application is relying on SNAT for outbound originated flows.  Counters for successful and failed outbound SNAT flows are reported and can be used to troubleshoot and understand the health of your outbound flows.|
+| Byte counters | Standard Load Balancer reports the data processed per front-end.|
+| Packet counters | Standard Load Balancer reports the packets processed per front-end.|
 
-[Standart Load Balancer Tanılamanın ayrıntılı tartışmasını](load-balancer-standard-diagnostics.md)gözden geçirin.
+Review [detailed discussion of Standard Load Balancer Diagnostics](load-balancer-standard-diagnostics.md).
 
-### <a name="haports"></a>HA bağlantı noktaları
+### <a name="haports"></a>HA Ports
 
-Standart Load Balancer yeni bir kural türünü destekler.  
+Standard Load Balancer supports a new type of rule.  
 
-Uygulamanızı ölçeklendirmenizi ve son derece güvenilir olmasını sağlamak için Yük Dengeleme kurallarını yapılandırabilirsiniz. HA bağlantı noktaları Yük Dengeleme kuralı kullandığınızda Standart Load Balancer, bir iç Standart Load Balancer ön uç IP adresinin her kısa ömürlü bağlantı noktasında akış başına yük dengelemesi sağlar.  Özelliği, tek tek bağlantı noktalarını belirtmek pratik veya istenmeyen olan diğer senaryolar için yararlıdır.
+You can configure load-balancing rules to make your application scale and be highly reliable. When you use an HA Ports load-balancing rule, Standard Load Balancer will provide per flow load balancing on every ephemeral port of an internal Standard Load Balancer's frontend IP address.  The feature is useful for other scenarios where it is impractical or undesirable to specify individual ports.
 
-Bir HA bağlantı noktaları Yük Dengeleme kuralı, ağ sanal gereçleri ve tüm uygulamalar için etkin-Pasif veya etkin-etkin n + 1 senaryoları oluşturmanıza izin verir ve bu da büyük sayıda gelen bağlantı noktası gerektirir.  Bir sistem durumu araştırması, hangi arka uçları yeni akışlar almak gerektiğini tespit etmek için kullanılabilir.  Bir bağlantı noktası aralığı senaryosuna öykünmek için bir ağ güvenlik grubu kullanabilirsiniz.
+An HA Ports load-balancing rule allows you to create active-passive or active-active n+1 scenarios for Network Virtual Appliances and any application, which requires large ranges of inbound ports.  A health probe can be used to determine which backends should be receiving new flows.  You can use a Network Security Group to emulate a port range scenario.
 
 >[!IMPORTANT]
-> Bir ağ sanal gereci kullanmayı planlıyorsanız, ürünün HA bağlantı noktalarıyla test edilip edilmeyeceğini ve uygulama için kendi özel kılavuzlarını izlemesini sağlamak için satıcınıza başvurun. 
+> If you are planning to use a Network Virtual Appliance, check with your vendor for guidance on whether their product has been tested with HA Ports and follow their specific guidance for implementation. 
 
-[Ha bağlantı noktalarının ayrıntılı tartışmasını](load-balancer-ha-ports-overview.md)gözden geçirin.
+Review [detailed discussion of HA Ports](load-balancer-ha-ports-overview.md).
 
-### <a name="securebydefault"></a>Varsayılan olarak güvenli
+### <a name="securebydefault"></a>Secure by default
 
-Standart Load Balancer sanal ağa tamamen eklendi.  Sanal ağ, özel, kapalı bir ağ.  Standart yük dengeleyiciler ve standart genel IP adresleri, sanal ağın dışından bu sanal ağa erişilmesine izin verecek şekilde tasarlandığından, bu kaynaklar artık açılmadığınız takdirde varsayılan olarak kapalı olur. Bu, artık izin verilen trafiğe açıkça izin vermek ve bunları yeniden listelemek için ağ güvenlik grupları (NSG 'ler) kullanıldığı anlamına gelir.  Tüm sanal veri merkezinizi oluşturabilir ve ne zaman kullanılabilir olması gerektiği konusunda NSG 'ye karar verebilirsiniz.  Sanal makine kaynağınızın bir alt ağda veya NIC 'inde bir NSG 'niz yoksa, trafiğin bu kaynağa erişmesine izin verilmez.
+Standard Load Balancer is fully onboarded to the virtual network.  The virtual network is a private, closed network.  Because Standard Load Balancers and Standard public IP addresses are designed to allow this virtual network to be accessed from outside of the virtual network, these resources now default to closed unless you open them. This means Network Security Groups (NSGs) are now used to explicitly permit and whitelist allowed traffic.  You can create your entire virtual data center and decide through NSG what and when it should be available.  If you do not have an NSG on a subnet or NIC of your virtual machine resource, traffic is not allowed to reach this resource.
 
-NSG 'ler ve senaryonuz için nasıl uygulanacağı hakkında daha fazla bilgi edinmek için bkz. [ağ güvenlik grupları](../virtual-network/security-overview.md).
+To learn more about NSGs and how to apply them for your scenario, see [Network Security Groups](../virtual-network/security-overview.md).
 
-### <a name="outbound"></a>Giden bağlantılar
+### <a name="outbound"></a> Outbound connections
 
-Load Balancer gelen ve giden senaryoları destekler.  Standart Load Balancer, giden bağlantılara göre temel Load Balancer önemli ölçüde farklıdır.
+Load Balancer supports inbound and outbound scenarios.  Standard Load Balancer is significantly different than Basic Load Balancer with respect to outbound connections.
 
-Kaynak ağ adresi çevirisi (SNAT), sanal ağınızdaki iç, özel IP adreslerini Load Balancer ön uçların genel IP adreslerine eşlemek için kullanılır.
+Source Network Address Translation (SNAT) is used to map internal, private IP addresses on your virtual network to public IP addresses on Load Balancer frontends.
 
-Standart Load Balancer [daha sağlam, ölçeklenebilir ve öngörülebilir BIR SNAT algoritması](load-balancer-outbound-connections.md#snat) için yeni bir algoritma sunar ve yeni yetenekler sağlar, belirsizlik kaldırır ve yan etkileri yerine açık yapılandırmalara zorlar. Bu değişiklikler, yeni özelliklerin ortaya çıkmasına izin vermek için gereklidir. 
+Standard Load Balancer introduces a new algorithm for a [more robust, scalable, and predictable SNAT algorithm](load-balancer-outbound-connections.md#snat) and enables new abilities, removes ambiguity, and forces explicit configurations rather side effects. These changes are necessary to allow for new features to emerge. 
 
-Bunlar, Standart Load Balancer çalışırken hatırlayamamanız gereken anahtarlardır:
+These are the key tenets to remember when working with Standard Load Balancer:
 
-- bir kuralın tamamlanması Load Balancer kaynağını sürücüler.  Tüm Azure programlamasında yapılandırmadan türetiliyor.
-- birden çok ön uç kullanılabilir olduğunda, tüm ön uçlar kullanılır ve her ön uç, kullanılabilir SNAT bağlantı noktası sayısını çarpar
-- giden bağlantılar için belirli bir ön uç için kullanmak istemiyorsanız, öğesini seçebilir ve kontrol edebilirsiniz.
-- giden senaryolar açık ve giden bağlantı belirtilene kadar yok.
-- Yük Dengeleme kuralları, SNAT 'nin nasıl programlandığı hakkında bir görüntü çıkarır. Yük Dengeleme kuralları protokole özeldir. SNAT protokolüne özgüdür ve yapılandırma, yan bir efekt oluşturmak yerine bunu yansıtmalıdır.
+- the completion of a rule drives the Load Balancer resource.  all programming of Azure derives from its configuration.
+- when multiple frontends are available, all frontends are used and each frontend multiplies the number of available SNAT ports
+- you can choose and control if you do not wish for a particular frontend to be used for outbound connections.
+- outbound scenarios are explicit and outbound connectivity does not exist until it has been specified.
+- load-balancing rules infer how SNAT is programmed. Load balancing rules are protocol specific. SNAT is protocol specific and configuration should reflect this rather than create a side effect.
 
 #### <a name="multiple-frontends"></a>Birden çok ön uç
-Zaten giden bağlantılar için yüksek taleple karşılaştığınızdan veya daha önce büyük bir talep yaşıyor olduğunuzdan, daha fazla SNAT bağlantı noktası isterseniz, aynı sanal makineye ek ön uçlar, kurallar ve arka uç havuzları yapılandırarak artımlı SNAT bağlantı noktası envanterini de ekleyebilirsiniz kaynakların.
+If you want more SNAT ports because you are expecting or are already experiencing a high demand for outbound connections, you can also add incremental SNAT port inventory by configuring additional frontends, rules, and backend pools to the same virtual machine resources.
 
-#### <a name="control-which-frontend-is-used-for-outbound"></a>Giden için hangi ön uç kullanıldığını denetleme
-Giden bağlantıları yalnızca belirli bir ön uç IP adresinden kaynaklanacak şekilde kısıtlamak istiyorsanız, isteğe bağlı olarak giden eşlemeyi ifade eden kuralda giden SNAT 'yi devre dışı bırakabilirsiniz.
+#### <a name="control-which-frontend-is-used-for-outbound"></a>Control which frontend is used for outbound
+If you want to constrain outbound connections to only originate from a specific frontend IP address, you can optionally disable outbound SNAT on the rule that expresses the outbound mapping.
 
-#### <a name="control-outbound-connectivity"></a>Giden bağlantıyı denetleme
-Standart Load Balancer sanal ağın bağlamı içinde var.  Bir sanal ağ yalıtılmış, özel bir ağ.  Genel IP adresi ile bir ilişki mevcut değilse, genel bağlantıya izin verilmez.  Sanal ağınızda ve yerelde olduklarından [VNET hizmet uç noktalarına](../virtual-network/virtual-network-service-endpoints-overview.md) ulaşabilirsiniz.  Sanal ağınızın dışında bir hedefe giden bağlantı kurmak istiyorsanız iki seçeneğiniz vardır:
-- Standart SKU genel IP adresini, sanal makine kaynağına örnek düzeyi genel IP adresi olarak atayın veya
-- sanal makine kaynağını ortak bir Standart Load Balancer arka uç havuzuna yerleştirin.
+#### <a name="control-outbound-connectivity"></a>Control outbound connectivity
+Standard Load Balancer exists within the context of the virtual network.  A virtual network is an isolated, private network.  Unless an association with a public IP address exists, public connectivity is not allowed.  You can reach [VNet Service Endpoints](../virtual-network/virtual-network-service-endpoints-overview.md) because they are inside of and local to your virtual network.  If you want to establish outbound connectivity to a destination outside of your virtual network, you have two options:
+- assign a Standard SKU public IP address as an Instance-Level Public IP address to the virtual machine resource or
+- place the virtual machine resource in the backend pool of a public Standard Load Balancer.
 
-Her ikisi de sanal ağın dışından sanal ağın dışına giden bağlantıya izin verir. 
+Both will allow outbound connectivity from the virtual network to outside of the virtual network. 
 
-_Yalnızca_ sanal makine kaynağınızın bulunduğu arka uç havuzuyla ilişkili bir dahili standart Load Balancer varsa, sanal makineniz yalnızca sanal ağ kaynaklarına ve [VNET hizmet uç noktalarına](../virtual-network/virtual-network-service-endpoints-overview.md)ulaşabilir.  Giden bağlantı oluşturmak için önceki paragrafta açıklanan adımları izleyebilirsiniz.
+If you _only_ have an internal Standard Load Balancer associated with the backend pool in which your virtual machine resource is located, your virtual machine can only reach virtual network resources and [VNet Service Endpoints](../virtual-network/virtual-network-service-endpoints-overview.md).  You can follow the steps described in the preceding paragraph to create outbound connectivity.
 
-Standart SKU 'Lar ile ilişkilendirilmemiş bir sanal makine kaynağının giden bağlantısı, daha önce olduğu gibi kalır.
+Outbound connectivity of a virtual machine resource not associated with Standard SKUs remains as before.
 
-[Giden bağlantıların ayrıntılı tartışmasını](load-balancer-outbound-connections.md)gözden geçirin.
+Review [detailed discussion of Outbound Connections](load-balancer-outbound-connections.md).
 
-### <a name="multife"></a>Birden çok ön uç
-Load Balancer birden çok ön uç içeren birden çok kuralı destekler.  Standart Load Balancer bunu giden senaryolara genişletir.  Giden senaryolar temelde bir gelen yük dengeleme kuralının tersidir.  Gelen yük dengeleme kuralı, giden bağlantılar için bir ilişkilendirme de oluşturur. Standart Load Balancer, bir yük dengeleme kuralı aracılığıyla bir sanal makine kaynağıyla ilişkili tüm ön uçları kullanır.  Ayrıca, Yük Dengeleme kuralındaki bir parametre ve bir yük dengeleme kuralını giden bağlantı amacıyla bastırarak, yok dahil belirli ön uçlar seçimine izin verir.
+### <a name="multife"></a>Multiple frontends
+Load Balancer supports multiple rules with multiple frontends.  Standard Load Balancer expands this to outbound scenarios.  Outbound scenarios are essentially the inverse of an inbound load-balancing rule.  The inbound load-balancing rule also creates an associate for outbound connections. Standard Load Balancer uses all frontends associated with a virtual machine resource through a load-balancing rule.  Additionally, a parameter on the load-balancing rule and allows you to suppress a load-balancing rule for the purposes of outbound connectivity, which allows the selection of specific frontends including none.
 
-Karşılaştırma için temel Load Balancer rastgele tek bir ön uç seçer ve hangisinin seçili olduğunu denetleyebilme özelliği yoktur.
+For comparison, Basic Load Balancer selects a single frontend at random and there is no ability to control which one was selected.
 
-[Giden bağlantıların ayrıntılı tartışmasını](load-balancer-outbound-connections.md)gözden geçirin.
+Review [detailed discussion of Outbound Connections](load-balancer-outbound-connections.md).
 
-### <a name="operations"></a>Yönetim Işlemleri
+### <a name="operations"></a> Management Operations
 
-Standart Load Balancer kaynaklar tamamen yeni bir altyapı platformunda mevcuttur.  Bu, standart SKU 'Lar ve tamamlanma süreleri için daha hızlı yönetim işlemlerini standart SKU kaynağı başına 30 saniyeden daha kısa bir süre sağlar.  Arka uç havuzlarının boyutu artdıkça, arka uç havuzu değişiklikleri için gereken süre de artar.
+Standard Load Balancer resources exist on an entirely new infrastructure platform.  This enables faster management operations for Standard SKUs and completion times are typically less than 30 seconds per Standard SKU resource.  As backend pools increase in size, the duration required for backend pool changes also increase.
 
-Standart Load Balancer kaynaklarını değiştirebilir ve standart bir genel IP adresini bir sanal makineden diğerine daha hızlı taşıyabilirsiniz.
+You can modify Standard Load Balancer resources and move a Standard public IP address from one virtual machine to another much faster.
 
-## <a name="migration-between-skus"></a>SKU 'Lar arasında geçiş
+## <a name="migration-between-skus"></a>Migration between SKUs
 
-SKU 'Lar değişebilir değildir. Bir kaynak SKU 'sundan diğerine geçmek için bu bölümdeki adımları izleyin.
-
->[!IMPORTANT]
->SKU 'Lar arasındaki farkları anlamak için bu belgeyi tamamen gözden geçirin ve senaryonuzu dikkatle inceledi.  Senaryonuzu hizalamak için ek değişiklikler yapmanız gerekebilir.
-
-### <a name="migrate-from-basic-to-standard-sku"></a>Temel bilgisayardan standart SKU 'ya geçiş
-
-1. Yeni bir standart kaynak (Load Balancer ve gerektiğinde genel IP 'Ler) oluşturun. Kurallarınızı ve araştırma tanımlarınızı yeniden oluşturun.  Daha önce 443/TCP için TCP araştırması kullanıyorsanız, bu araştırma protokolünü bir HTTPS araştırması olarak değiştirmeyi ve bir yol eklemeyi düşünün.
-
-2. Yük dengeli trafiği, araştırmayı ve izin vermek istediğiniz diğer trafiği beyaz listeye almak için NIC veya alt ağ üzerinde yeni bir NSG oluşturun veya var olan NSG 'yi güncelleştirin.
-
-3. Tüm sanal makine örneklerinden temel SKU kaynaklarını (uygun olduğu gibi Load Balancer ve genel IP 'Leri) kaldırın. Bir kullanılabilirlik kümesinin tüm sanal makine örneklerini de kaldırdığınızdan emin olun.
-
-4. Tüm sanal makine örneklerini yeni standart SKU kaynaklarına ekleyin.
-
-### <a name="migrate-from-standard-to-basic-sku"></a>Standart 'ten temel SKU 'ya geçiş
-
-1. Yeni bir temel kaynak (Load Balancer ve genel IP 'Leri gerektiği şekilde) oluşturun. Kurallarınızı ve araştırma tanımlarınızı yeniden oluşturun.  HTTPS araştırmasını TCP araştırmasına, 443/TCP 'ye değiştirin. 
-
-2. Tüm sanal makine örneklerinden standart SKU kaynaklarını (geçerli olduğu gibi Load Balancer ve genel IP 'Leri) kaldırın. Bir kullanılabilirlik kümesinin tüm sanal makine örneklerini de kaldırdığınızdan emin olun.
-
-3. Tüm sanal makine örneklerini yeni temel SKU kaynaklarına ekleyin.
+SKUs are not mutable. Follow the steps in this section to move from one resource SKU to another.
 
 >[!IMPORTANT]
->
->Temel ve standart SKU 'ların kullanımıyla ilgili sınırlamalar vardır.
->
->Standart SKU 'nun HA bağlantı noktaları ve tanılama özellikleri yalnızca standart SKU 'da kullanılabilir. Standart SKU 'dan temel SKU 'ya geçiş yapamazsınız ve ayrıca bu özellikleri de koruyabilirsiniz.
->
->Hem temel hem de standart SKU, bu makalede özetlenen sayıda farklılık vardır.  Bunları anladığınızdan ve hazırlandığınızdan emin olun.
->
->Eşleşen SKU 'Ların Load Balancer ve genel IP kaynakları için kullanılması gerekir. Temel SKU kaynakları ve standart SKU kaynaklarının bir karışımı olamaz. Tek başına sanal makineleri, bir kullanılabilirlik kümesi kaynağındaki sanal makineleri veya sanal makine ölçek kümesi kaynaklarını aynı anda iki SKU’ya iliştiremezsiniz.
+>Review this document in its entirety to understand the differences between SKUs and have carefully examined your scenario.  You may need to make additional changes to align your scenario.
 
-## <a name="region-availability"></a>Bölge kullanılabilirliği
+### <a name="migrate-from-basic-to-standard-sku"></a>Migrate from Basic to Standard SKU
 
-Standart Load Balancer Şu anda tüm genel bulut bölgelerinde kullanılabilir.
+1. Create a new Standard resource (Load Balancer and Public IPs, as needed). Recreate your rules and probe definitions.  If you were using a TCP probe to 443/tcp previously, consider changing this probe protocol to an HTTPS probe and add a path.
+
+2. Create new or update existing NSG on NIC or subnet to whitelist load balanced traffic, probe, as well as any other traffic you wish to permit.
+
+3. Remove the Basic SKU resources (Load Balancer and Public IPs, as applicable) from all VM instances. Be sure to also remove all VM instances of an availability set.
+
+4. Attach all VM instances to the new Standard SKU resources.
+
+### <a name="migrate-from-standard-to-basic-sku"></a>Migrate from Standard to Basic SKU
+
+1. Create a new Basic resource (Load Balancer and Public IPs, as needed). Recreate your rules and probe definitions.  Change an HTTPS probe to a TCP probe to 443/tcp. 
+
+2. Remove the Standard SKU resources (Load Balancer and Public IPs, as applicable) from all VM instances. Be sure to also remove all VM instances of an availability set.
+
+3. Attach all VM instances to the new Basic SKU resources.
+
+>[!IMPORTANT]
+>
+>There are limitations regarding use of the Basic and Standard SKUs.
+>
+>HA Ports and Diagnostics of the Standard SKU are only available in the Standard SKU. You can't migrate from the Standard SKU to the Basic SKU and also retain these features.
+>
+>Both Basic and Standard SKU have a number of differences as outlined in this article.  Make sure you understand and prepare for them.
+>
+>Matching SKUs must be used for Load Balancer and Public IP resources. You can't have a mixture of Basic SKU resources and Standard SKU resources. Tek başına sanal makineleri, bir kullanılabilirlik kümesi kaynağındaki sanal makineleri veya sanal makine ölçek kümesi kaynaklarını aynı anda iki SKU’ya iliştiremezsiniz.
+
+## <a name="region-availability"></a>Bölgelere göre kullanılabilirlik
+
+Standard Load Balancer is currently available in all public cloud regions.
 
 ## <a name="sla"></a>SLA
 
-Standart yük dengeleyiciler% 99,99 SLA ile kullanılabilir.  Ayrıntılar için [Standart Load Balancer SLA 'sını](https://aka.ms/lbsla) gözden geçirin.
+Standard Load Balancers are available with a 99.99% SLA.  Review the [Standard Load Balancer SLA](https://aka.ms/lbsla) for details.
 
 ## <a name="pricing"></a>Fiyatlandırma
 
-Standart Load Balancer kullanım ücretlendirilir.
+Standard Load Balancer usage is charged.
 
-- Yapılandırılmış yük dengeleme ve giden kural sayısı (gelen NAT kuralları toplam kural sayısına göre sayılmaz)
-- Kural ne olursa olsun gelen ve giden işlenen veri miktarı. 
+- Number of configured load-balancing and outbound rules (inbound NAT rules do not count against the total number of rules)
+- Amount of data processed inbound and outbound irrespective of rule. 
 
 Standart Load Balancer fiyatlandırma bilgileri için [Load Balancer fiyatlandırması](https://azure.microsoft.com/pricing/details/load-balancer/) sayfasını inceleyin.
 
 ## <a name="limitations"></a>Sınırlamalar
 
-- SKU 'Lar değişebilir değildir. Mevcut bir kaynağın SKU 'sunu değiştiremeyebilirsiniz.
-- Tek başına bir sanal makine kaynağı, kullanılabilirlik kümesi kaynağı veya sanal makine ölçek kümesi kaynağı, her ikisi de tek bir SKU 'ya başvurabilir.
-- Load Balancer kuralı iki sanal ağı yayamaz.  Ön uçlar ve ilgili arka uç örnekleri aynı sanal ağda bulunmalıdır.  
-- [Abonelik taşıma Işlemleri](../azure-resource-manager/resource-group-move-resources.md) standart SKU lb ve PIP kaynakları için desteklenmez.
-- VNet ve diğer Microsoft Platformu Hizmetleri olmayan Web çalışanı rolleri, ön VNet Hizmetleri ve diğer platform hizmetleri işlevinin yan etkisi nedeniyle yalnızca bir iç Standart Load Balancer kullanıldığında erişilebilir. İlgili hizmetin kendisi veya temeldeki platformun hiçbir bildirimde bulunulmadan değişiklik yapabilmediği için bu bunu temel almalısınız. Yalnızca dahili Standart Load Balancer kullandığınızda istenirse, açıkça [giden bağlantı](load-balancer-outbound-connections.md) oluşturmanız gerektiğini varsaymanız gerekir.
-- Load Balancer, TCP veya UDP IP protokolleri için yük dengeleme ve bağlantı noktası iletme özellikleri sunan bir üründür.  Yük dengeleme kuralları ve gelen NAT kuralları, TCP ve UDP için desteklenir ancak ICMP dahil olmak üzere diğer IP protokolleri için desteklenmez. Load Balancer, UDP veya TCP akışlarının yüklerini sonlandırmaz, yanıtlamaz veya başka bir şekilde etkileşim kurmaz. Bir ara sunucu değildir. Ön uca bağlantının başarıyla doğrulanması, Yük Dengeleme veya gelen NAT kuralında (TCP veya UDP) aynı protokolle aynı protokol ile bant içinde yer almalıdır _ve_ sanal makinelerinizden en az birinin bir istemcinin ön ucundan yanıt görmesini sağlamak için bir yanıt oluşturması gerekir.  Load Balancer ön uca bir bant içi yanıt alınamayacak sanal makinelerin yanıt veremediğini belirtir.  Bir sanal makine yanıt veremeden bir Load Balancer ön ucuna etkileşimde bulunmak mümkün değildir.  Bu durum [port masquerade SNAT](load-balancer-outbound-connections.md#snat) öğesinin yalnızca TCP ve UDP için desteklendiği giden bağlantılar için de geçerlidir. ICMP de dahil olmak üzere diğer bağlantılar başarısız olacaktır.  Azaltmak için bir örnek düzeyinde Genel IP adresi atayın.
-- Sanal ağ içindeki özel IP adreslerinden ortak IP adreslerine geçiş yaparken [giden bağlantılar](load-balancer-outbound-connections.md) sağlayan genel yük dengeleyiciler farklı olarak, Iç yük dengeleyiciler giden kaynaklı bağlantıları, her ikisi de özel IP adresi alanında olan bir iç Load Balancer ön ucuna çevirmez.  Bu, çevirinin gerekli olmadığı benzersiz iç IP adresi alanı içinde SNAT tükenmesi olasılığını ortadan kaldırır.  Yan etkisi, arka uç havuzundaki bir VM 'den giden bir akışın, bulunduğu _ve_ kendisine geri eşlendiği iç Load Balancer ön uca akmasını denediğinde akışın her iki tarafının da eşleşmediğine ve akışın başarısız olmasına neden olur.  Akış ön uca akışı oluşturan arka uç havuzundaki aynı VM 'ye geri eşlenmediyseniz, akış başarılı olur.   Akış kendisine geri eşleniyorsa giden akış VM 'den ön uca, buna karşılık gelen gelen akış ise VM 'den kendisine doğru şekilde görünür. Konuk işletim sisteminin açısından bakıldığında aynı akışın gelen ve giden bölümleri sanal makine ile eşleşmez. Kaynak ve hedef eşleşmediğinden TCP yığını aynı akışın iki yarısını aynı akışa ait gibi görmez.  Akış, arka uç havuzundaki diğer herhangi bir sanal makineye eşleniyorsa, akışın kilitlenme eşleşir ve VM akışa başarıyla yanıt verebilir.  Bu senaryonun belirtisi aralıklı bağlantı zaman aşımları. Bu senaryoyu güvenilir bir şekilde sağlamak için birkaç yaygın geçici çözüm vardır (bir arka uç havuzundan, iç Load Balancer veya [DSR stil kurallarını kullanarak](load-balancer-multivip-overview.md)bir üçüncü taraf proxy 'nin eklenmesini içeren arka uç Load Balancer havuzlarına giden akışlar).  Karmaşıklığı azaltmak için genel Load Balancer kullanabilirsiniz ancak elde edeceğiniz senaryo [SNAT tükenmesi](load-balancer-outbound-connections.md#snat) olasılığına sahip olur ve dikkatli bir şekilde yönetilmediği sürece kaçınılmalıdır.
+- SKUs are not mutable. You may not change the SKU of an existing resource.
+- A standalone virtual machine resource, availability set resource, or virtual machine scale set resource can reference one SKU, never both.
+- A Load Balancer rule cannot span two virtual networks.  Frontends and their related backend instances must be located in the same virtual network.  
+- [Move subscription operations](../azure-resource-manager/resource-group-move-resources.md) are not supported for Standard SKU LB and PIP resources.
+- Web Worker Roles without a VNet and other Microsoft platform services can be accessible when only an internal Standard Load Balancer is used due to a side effect from how pre-VNet services and other platform services function. You must not rely on this as the respective service itself or the underlying platform can change without notice. You must always assume you need to create [outbound connectivity](load-balancer-outbound-connections.md) explicitly if desired when using an internal Standard Load Balancer only.
+- Load Balancer, TCP veya UDP IP protokolleri için yük dengeleme ve bağlantı noktası iletme özellikleri sunan bir üründür.  Yük dengeleme kuralları ve gelen NAT kuralları, TCP ve UDP için desteklenir ancak ICMP dahil olmak üzere diğer IP protokolleri için desteklenmez. Load Balancer, UDP veya TCP akışlarının yüklerini sonlandırmaz, yanıtlamaz veya başka bir şekilde etkileşim kurmaz. Bir ara sunucu değildir. Successful validation of connectivity to a front-end must take place in-band with the same protocol used in a load balancing or inbound NAT rule (TCP or UDP) _and_ at least one of your virtual machines must generate a response for a client to see a response from a front-end.  Not receiving an in-band response from the Load Balancer front-end indicates no virtual machines were able to respond.  It is not possible to interact with a Load Balancer front-end without a virtual machine able to respond.  Bu durum [port masquerade SNAT](load-balancer-outbound-connections.md#snat) öğesinin yalnızca TCP ve UDP için desteklendiği giden bağlantılar için de geçerlidir. ICMP de dahil olmak üzere diğer bağlantılar başarısız olacaktır.  Azaltmak için bir örnek düzeyinde Genel IP adresi atayın.
+- Unlike public Load Balancers which provide [outbound connections](load-balancer-outbound-connections.md) when transitioning from private IP addresses inside the virtual network to public IP addresses, internal Load Balancers do not translate outbound originated connections to the front-end of an internal Load Balancer as both are in private IP address space.  This avoids potential for SNAT exhaustion inside unique internal IP address space where translation is not required.  The side effect is that if an outbound flow from a VM in the back-end pool attempts a flow to front-end of the internal Load Balancer in which pool it resides _and_ is mapped back to itself, both legs of the flow don't match and the flow will fail.  If the flow did not map back to the same VM in the back-end pool which created the flow to the front-end, the flow will succeed.   When the flow maps back to itself the outbound flow appears to originate from the VM to the front-end and the corresponding inbound flow appears to originate from the VM to itself. Konuk işletim sisteminin açısından bakıldığında aynı akışın gelen ve giden bölümleri sanal makine ile eşleşmez. Kaynak ve hedef eşleşmediğinden TCP yığını aynı akışın iki yarısını aynı akışa ait gibi görmez.  When the flow maps to any other VM in the back-end pool, the halves of the flow will match and the VM can successfully respond to the flow.  The symptom for this scenario is intermittent connection timeouts. There are several common workarounds for reliably achieving this scenario (originating flows from a back-end pool to the back-end pools respective internal Load Balancer front-end) which include either insertion of a third-party proxy behind the internal Load Balancer or [using DSR style rules](load-balancer-multivip-overview.md).  Karmaşıklığı azaltmak için genel Load Balancer kullanabilirsiniz ancak elde edeceğiniz senaryo [SNAT tükenmesi](load-balancer-outbound-connections.md#snat) olasılığına sahip olur ve dikkatli bir şekilde yönetilmediği sürece kaçınılmalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Standart Load Balancer ve kullanılabilirlik alanları](load-balancer-standard-availability-zones.md)kullanma hakkında bilgi edinin.
-- [Sistem durumu araştırmaları](load-balancer-custom-probe-overview.md)hakkında bilgi edinin.
-- [Kullanılabilirlik alanları](../availability-zones/az-overview.md)hakkında daha fazla bilgi edinin.
-- [Standart Load Balancer tanılama](load-balancer-standard-diagnostics.md)hakkında bilgi edinin.
-- [Azure izleyici](../monitoring-and-diagnostics/monitoring-overview.md)'de Tanılama için [desteklenen çok boyutlu ölçümler](../azure-monitor/platform/metrics-supported.md#microsoftnetworkloadbalancers) hakkında bilgi edinin.
-- Kullanma hakkında bilgi edinin [giden bağlantılar için yük dengeleyici](load-balancer-outbound-connections.md).
-- [Giden kuralları](load-balancer-outbound-rules-overview.md)hakkında bilgi edinin.
-- [Boşta durumunda TCP sıfırlaması](load-balancer-tcp-reset.md)hakkında bilgi edinin.
-- [Ha bağlantı noktaları Yük Dengeleme kurallarıyla standart Load Balancer](load-balancer-ha-ports-overview.md)hakkında bilgi edinin.
-- [Birden çok ön uç ile Load Balancer](load-balancer-multivip-overview.md)kullanma hakkında bilgi edinin.
-- [Sanal ağlar](../virtual-network/virtual-networks-overview.md)hakkında bilgi edinin.
-- [Ağ güvenlik grupları](../virtual-network/security-overview.md)hakkında daha fazla bilgi edinin.
-- Sanal ağ [hizmeti uç noktaları](../virtual-network/virtual-network-service-endpoints-overview.md)hakkında bilgi edinin.
-- Azure 'daki diğer bazı anahtar [ağ özellikleri](../networking/networking-overview.md) hakkında bilgi edinin.
-- [Load Balancer](load-balancer-overview.md)hakkında daha fazla bilgi edinin.
+- Learn about using [Standard Load Balancer and Availability Zones](load-balancer-standard-availability-zones.md).
+- Learn about [Health Probes](load-balancer-custom-probe-overview.md).
+- Learn more about [Availability Zones](../availability-zones/az-overview.md).
+- Learn about [Standard Load Balancer Diagnostics](load-balancer-standard-diagnostics.md).
+- Learn about [supported multi-dimensional metrics](../azure-monitor/platform/metrics-supported.md#microsoftnetworkloadbalancers) for diagnostics  in [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md).
+- Learn about using [Load Balancer for outbound connections](load-balancer-outbound-connections.md).
+- Learn about [Outbound Rules](load-balancer-outbound-rules-overview.md).
+- Learn about [TCP Reset on Idle](load-balancer-tcp-reset.md).
+- Learn about [Standard Load Balancer with HA Ports load balancing rules](load-balancer-ha-ports-overview.md).
+- Learn about using [Load Balancer with Multiple Frontends](load-balancer-multivip-overview.md).
+- Learn about [Virtual Networks](../virtual-network/virtual-networks-overview.md).
+- Learn more about [Network Security Groups](../virtual-network/security-overview.md).
+- Learn about [VNet Service Endpoints](../virtual-network/virtual-network-service-endpoints-overview.md).
+- Learn about some of the other key [networking capabilities](../networking/networking-overview.md) in Azure.
+- Learn more about [Load Balancer](load-balancer-overview.md).

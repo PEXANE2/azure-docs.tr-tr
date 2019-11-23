@@ -1,6 +1,6 @@
 ---
-title: Dinamik bir grup kuralını güncelleştirme ve yönetme ve üyelik sorunlarını giderme-Azure Active Directory | Microsoft Docs
-description: Azure portal bir grup üyeliği kuralı oluşturma, durumu denetleme.
+title: Update and manage a dynamic group rule and troubleshoot membership - Azure Active Directory | Microsoft Docs
+description: How to create a group membership rule in the Azure portal, check status.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -14,79 +14,79 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84290ee3c242b5ccb91bdca8a6b82fc0bf963751
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: c387e2d78adcaebc430073a2a45818c4a0928b9f
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194593"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422359"
 ---
-# <a name="update-a-dynamic-group-to-manage-membership-in-azure-active-directory"></a>Azure Active Directory üyeliğini yönetmek için dinamik bir grubu güncelleştirme
+# <a name="update-a-dynamic-group-to-manage-membership-in-azure-active-directory"></a>Update a dynamic group to manage membership in Azure Active Directory
 
-Azure Active Directory (Azure AD) ' de, Kullanıcı veya cihaz özelliklerine göre grup üyeliğini Belirleme kurallarını kullanabilirsiniz. Bu makalede, Azure portal bir dinamik grup için nasıl bir kural ayarlanacağı açıklanır.
-Dinamik üyelik güvenlik grupları veya Office 365 grupları için desteklenir. Bir grup üyeliği kuralı uygulandığında, Kullanıcı ve cihaz öznitelikleri üyelik kuralıyla eşleşmeler için değerlendirilir. Bir kullanıcı veya cihaz için bir öznitelik değiştiğinde, kuruluştaki tüm dinamik grup kuralları üyelik değişiklikleri için işlenir. Kullanıcılar ve cihazlar bir grubun koşullarını karşılıyorsa eklenir veya kaldırılır.
+In Azure Active Directory (Azure AD), you can use rules to determine group membership based on user or device properties. This article tells how to set up a rule for a dynamic group in the Azure portal.
+Dynamic membership is supported for security groups or Office 365 groups. When a group membership rule is applied, user and device attributes are evaluated for matches with the membership rule. When an attribute changes for a user or device, all dynamic group rules in the organization are processed for membership changes. Users and devices are added or removed if they meet the conditions for a group.
 
-## <a name="rule-builder-in-the-azure-portal"></a>Azure portal kural Oluşturucu
+## <a name="rule-builder-in-the-azure-portal"></a>Rule builder in the Azure portal
 
-Azure AD, önemli kurallarınızı daha hızlı bir şekilde oluşturmak ve güncelleştirmek için bir kural Oluşturucusu sağlar. Kural Oluşturucu, en fazla beş ifadeye kadar oluşturmayı destekler. Kural Oluşturucu, birkaç basit ifadeye sahip bir kural oluşturulmasını kolaylaştırır, ancak her kuralı yeniden oluşturmak için kullanılamaz. Kural Oluşturucu oluşturmak istediğiniz kuralı desteklemiyorsa, metin kutusunu kullanabilirsiniz.
+Azure AD provides a rule builder to create and update your important rules more quickly. The rule builder supports the construction up to five expressions. The rule builder makes it easier to form a rule with a few simple expressions, however, it can't be used to reproduce every rule. If the rule builder doesn't support the rule you want to create, you can use the text box.
 
-Aşağıda, metin kutusunu kullanarak oluşturmanızı önerdiğimiz gelişmiş kuralların veya sözdizimi örnekleri verilmiştir:
+Here are some examples of advanced rules or syntax for which we recommend that you construct using the text box:
 
-- Beşten fazla ifadeye sahip kural
-- Doğrudan raporlar kuralı
-- [İşleç önceliğini](groups-dynamic-membership.md#operator-precedence) ayarlama
-- [Karmaşık Ifadelerle kurallar](groups-dynamic-membership.md#rules-with-complex-expressions); Örneğin`(user.proxyAddresses -any (_ -contains "contoso"))`
+- Rule with more than five expressions
+- The Direct reports rule
+- Setting [operator precedence](groups-dynamic-membership.md#operator-precedence)
+- [Rules with complex expressions](groups-dynamic-membership.md#rules-with-complex-expressions); for example `(user.proxyAddresses -any (_ -contains "contoso"))`
 
 > [!NOTE]
-> Kural Oluşturucu, metin kutusunda oluşturulan bazı kuralları görüntüleyemeyebilir. Kural Oluşturucu kuralı görüntüleyebilmediğinden bir ileti görebilirsiniz. Kural Oluşturucu, desteklenen sözdizimini, doğrulamayı veya dinamik grup kurallarının işlenmesini herhangi bir şekilde değiştirmez.
+> The rule builder might not be able to display some rules constructed in the text box. You might see a message when the rule builder is not able to display the rule. The rule builder doesn't change the supported syntax, validation, or processing of dynamic group rules in any way.
 
-![Dinamik bir grup için üyelik kuralı ekle](./media/groups-update-rule/update-dynamic-group-rule.png)
+![Add membership rule for a dynamic group](./media/groups-update-rule/update-dynamic-group-rule.png)
 
-Bir üyelik kuralı için sözdizimi, desteklenen özellikler, işleçler ve değerler örnekleri için bkz. [Azure Active Directory gruplar Için dinamik üyelik kuralları](groups-dynamic-membership.md).
+For examples of syntax, supported properties, operators, and values for a membership rule, see [Dynamic membership rules for groups in Azure Active Directory](groups-dynamic-membership.md).
 
-## <a name="to-update-a-group-membership-rule"></a>Bir grup üyeliği kuralını güncelleştirmek için
+## <a name="to-update-a-group-membership-rule"></a>To update a group membership rule
 
-1. [Azure AD Yönetim merkezinde](https://aad.portal.azure.com) , Kiracıdaki genel yönetici, Intune Yöneticisi veya Kullanıcı Yöneticisi rolündeki bir hesapla oturum açın.
-1. **Gruplar** > **tüm gruplar**' ı seçin.
-1. Profilini açmak için bir grup seçin.
-1. Grubun profil sayfasında **dinamik üyelik kuralları**' nı seçin. Kural Oluşturucusu en fazla beş ifadeyi destekler. Beşten fazla ifade eklemek için metin kutusunu kullanmanız gerekir.
+1. Sign in to the [Azure AD admin center](https://aad.portal.azure.com) with an account that is in the Global administrator, Group administrator, Intune administrator, or User administrator role in the tenant.
+1. Select **Groups** > **All groups**.
+1. Select a group to open its profile.
+1. On the profile page for the group, select **Dynamic membership rules**. The rule builder supports up to five expressions. To add more than five expressions, you must use the text box.
 
-   ![Dinamik bir grup için üyelik kuralı ekle](./media/groups-update-rule/update-dynamic-group-rule.png)
+   ![Add membership rule for a dynamic group](./media/groups-update-rule/update-dynamic-group-rule.png)
 
-1. Üyelik kuralınız için kullanılabilen özel uzantı özelliklerini görmek için:
-   1. **Özel uzantı özelliklerini al** seçeneğini belirleyin
-   1. Uygulama KIMLIĞI ' ni girin ve ardından **özellikleri Yenile**' yi seçin.
-1. Kuralı güncelleştirdikten sonra **Kaydet**' i seçin.
+1. To see the custom extension properties available for your membership rule:
+   1. Select **Get custom extension properties**
+   1. Enter the application ID, and then select **Refresh properties**.
+1. After updating the rule, select **Save**.
 
-Girdiğiniz kural geçerli değilse, kuralın neden işlenmediği hakkında bir açıklama portalda bir Azure bildiriminde görüntülenir. Kuralı nasıl düzelteceğinizi anlamak için dikkatle okuyun.
+If the rule you entered isn't valid, an explanation of why the rule couldn't be processed is displayed in an Azure notification in the portal. Read it carefully to understand how to fix the rule.
 
-## <a name="check-processing-status-for-a-rule"></a>Bir kural için işleme durumunu denetleme
+## <a name="check-processing-status-for-a-rule"></a>Check processing status for a rule
 
-Grubun **genel bakış** sayfasında Üyelik işleme durumu ve son güncelleştirilme tarihi ' ni görebilirsiniz.
+You can see the membership processing status and the last updated date on the **Overview** page for the group.
   
-  ![dinamik grup durumunu görüntüleme](./media/groups-create-rule/group-status.png)
+  ![display of dynamic group status](./media/groups-create-rule/group-status.png)
 
-**Üyelik işleme** durumu için aşağıdaki durum iletileri görüntülenebilir:
+The following status messages can be shown for **Membership processing** status:
 
-- **Değerlendiriliyor**:  Grup değişikliği alındı ve güncelleştirmeler değerlendiriliyor.
-- **İşleme**: Güncelleştirmeler işleniyor.
-- **Güncelleştirme Tamam**: İşlem tamamlandı ve geçerli tüm güncelleştirmeler yapıldı.
-- **İşlem hatası**:  Üyelik kuralı değerlendirilirken bir hata nedeniyle işlem tamamlanamadı.
-- **Güncelleştirme duraklatıldı**: Dinamik üyelik kuralı güncelleştirmeleri yönetici tarafından duraklatıldı. MembershipRuleProcessingState, "duraklatıldı" olarak ayarlandı.
+- **Evaluating**:  The group change has been received and the updates are being evaluated.
+- **Processing**: Updates are being processed.
+- **Update complete**: Processing has completed and all applicable updates have been made.
+- **Processing error**:  Processing couldn't be completed because of an error evaluating the membership rule.
+- **Update paused**: Dynamic membership rule updates have been paused by the administrator. MembershipRuleProcessingState is set to “Paused”.
 
-**Üyelik son güncelleştirilme** durumu için aşağıdaki durum iletileri görüntülenebilir:
+The following status messages can be shown for **Membership last updated** status:
 
-- **Tarih ve saat**: Üyeliğin güncelleştirildiği son zaman.
-- **Devam ediyor**: Güncelleştirmeler Şu anda devam ediyor.
-- **Bilinmiyor**: Son güncelleştirme saati alınamıyor. Grup yeni olabilir.
+- **Date and time**: The last time the membership was updated.
+- **In Progress**: Updates are currently in progress.
+- **Unknown**: The last update time can't be retrieved. The group might be new.
 
-Belirli bir grup için üyelik kuralı işlenirken bir hata oluşursa, grubun **Genel Bakış sayfasının** üst kısmında bir uyarı gösterilir. Kiracıdaki tüm gruplar için bekleyen dinamik üyelik güncelleştirmeleri, daha sonra 24 saat boyunca işlenemezse, **tüm grupların**en üstünde bir uyarı gösterilir.
+If an error occurs while processing the membership rule for a specific group, an alert is shown on the top of the **Overview page** for the group. If no pending dynamic membership updates can be processed for all the groups within the tenant for more then 24 hours, an alert is shown on the top of **All groups**.
 
-![işlem hata iletisi uyarıları](./media/groups-create-rule/processing-error.png)
+![processing error message alerts](./media/groups-create-rule/processing-error.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makaleler, Azure AD 'de dinamik gruplarla çalışma hakkında ek bilgiler sağlar.
+These articles provide additional information on working with dynamic groups in Azure AD.
 
-- Dinamik kural yapısına yönelik kapsamlı bir başvuru için bkz. [dinamik üyelik kuralı sözdizimi](groups-dynamic-membership.md).
-- [Statik bir üyelik grubu oluşturun ve üye ekleyin](../fundamentals/active-directory-groups-create-azure-portal.md).
+- For a complete reference to dynamic rule structure, see [Dynamic membership rule syntax](groups-dynamic-membership.md).
+- [Create a static membership group and add members](../fundamentals/active-directory-groups-create-azure-portal.md).

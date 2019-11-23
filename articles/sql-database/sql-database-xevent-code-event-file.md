@@ -1,6 +1,6 @@
 ---
-title: XEvent olay dosyası kodu
-description: Azure SQL veritabanı 'nda genişletilmiş bir olayda olay dosyası hedefini gösteren iki aşamalı kod örneği için PowerShell ve Transact-SQL sağlar. Azure depolama, bu senaryonun gerekli bir parçasıdır.
+title: XEvent Event File code
+description: Provides PowerShell and Transact-SQL for a two-phase code sample that demonstrates the Event File target in an extended event on Azure SQL Database. Azure Storage is a required part of this scenario.
 services: sql-database
 ms.service: sql-database
 ms.subservice: monitor
@@ -11,67 +11,70 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 03/12/2019
-ms.openlocfilehash: 3b1e8881b2e2004a94064e472690ee40414ea02d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 00f31bdf147c4711715cd600fa8a8fd4bac2162a
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822379"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422482"
 ---
-# <a name="event-file-target-code-for-extended-events-in-sql-database"></a>SQL veritabanı 'nda genişletilmiş olaylar için olay dosyası hedef kodu
+# <a name="event-file-target-code-for-extended-events-in-sql-database"></a>Event File target code for extended events in SQL Database
 
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
 
-Genişletilmiş bir olay için bilgileri yakalamak ve raporlamak için sağlam bir yol için bir kod örneği istersiniz.
+You want a complete code sample for a robust way to capture and report information for an extended event.
 
-Microsoft SQL Server, olay [dosyası hedefi](https://msdn.microsoft.com/library/ff878115.aspx) , olay çıktılarını yerel bir sabit sürücü dosyasına depolamak için kullanılır. Ancak bu tür dosyalar Azure SQL veritabanı için kullanılamaz. Bunun yerine, olay dosyası hedefini desteklemek için Azure Storage hizmetini kullanırız.
+In Microsoft SQL Server, the [Event File target](https://msdn.microsoft.com/library/ff878115.aspx) is used to store event outputs into a local hard drive file. But such files are not available to Azure SQL Database. Instead we use the Azure Storage service to support the Event File target.
 
-Bu konuda, iki aşamalı bir kod örneği sunulmaktadır:
+This topic presents a two-phase code sample:
 
-* PowerShell, bulutta bir Azure depolama kapsayıcısı oluşturmak için.
-* Transact-SQL:
+- PowerShell, to create an Azure Storage container in the cloud.
+- Transact-SQL:
   
-  * Azure depolama kapsayıcısını bir olay dosyası hedefine atamak için.
-  * Olay oturumu oluşturmak ve başlatmak için ve bu şekilde devam edin.
+  - To assign the Azure Storage container to an Event File target.
+  - To create and start the event session, and so on.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 > [!IMPORTANT]
-> PowerShell Azure Resource Manager modülü Azure SQL veritabanı tarafından hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. Bu cmdlet 'ler için bkz. [Azurerd. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır.
+> The PowerShell Azure Resource Manager module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. For these cmdlets, see [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). The arguments for the commands in the Az module and in the AzureRm modules are substantially identical.
 
-* Bir Azure hesabı ve aboneliği [Ücretsiz deneme sürümü](https://azure.microsoft.com/pricing/free-trial/) için kaydolabilirsiniz.
-* İçinde tablo oluşturabileceğiniz herhangi bir veritabanı.
+- Bir Azure hesabı ve aboneliği [Ücretsiz deneme sürümü](https://azure.microsoft.com/pricing/free-trial/) için kaydolabilirsiniz.
+- Any database you can create a table in.
   
-  * İsteğe bağlı olarak, dakikalar içinde [bir **AdventureWorksLT** demo veritabanı oluşturabilirsiniz](sql-database-get-started.md) .
-* SQL Server Management Studio (SSMS. exe), en son aylık güncelleştirme sürümünü idealdir. 
-  En son SSMS. exe ' yi şuradan indirebilirsiniz:
+  - Optionally you can [create an **AdventureWorksLT** demonstration database](sql-database-get-started.md) in minutes.
+
+- SQL Server Management Studio (ssms.exe), ideally its latest monthly update version.
+  You can download the latest ssms.exe from:
   
-  * [SQL Server Management Studio indirme](https://msdn.microsoft.com/library/mt238290.aspx)başlıklı konu.
-  * [İndirmenin doğrudan bağlantısı.](https://go.microsoft.com/fwlink/?linkid=616025)
-* [Azure PowerShell modüllerinin](https://go.microsoft.com/?linkid=9811175) yüklü olması gerekir.
-  
-  * Modüller- **New-AzStorageAccount**gibi komutlar sağlar.
+  - Topic titled [Download SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
+  - [A direct link to the download.](https://go.microsoft.com/fwlink/?linkid=616025)
 
-## <a name="phase-1-powershell-code-for-azure-storage-container"></a>1\. Aşama: Azure depolama kapsayıcısı için PowerShell kodu
+- You must have the [Azure PowerShell modules](https://go.microsoft.com/?linkid=9811175) installed.
 
-Bu PowerShell, iki aşamalı kod örneğinin Aşama 1 ' dir.
+  - The modules provide commands such as - **New-AzStorageAccount**.
 
-Betik, bir önceki çalıştırıldıktan sonra temizlik komutları ile başlar ve yeniden başlatılamaz.
+## <a name="phase-1-powershell-code-for-azure-storage-container"></a>Phase 1: PowerShell code for Azure Storage container
 
-1. PowerShell betiğini Notepad. exe gibi bir basit metin düzenleyicisine yapıştırın ve betiği **. ps1**uzantısına sahip bir dosya olarak kaydedin.
-2. PowerShell ıSE 'yi yönetici olarak başlatın.
-3. İsteminde şunu yazın:<br/>`Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser`<br/>ve ardından ENTER tuşuna basın.
-4. PowerShell ıSE 'de **. ps1** dosyanızı açın. Betiği çalıştırın.
-5. Betik ilk olarak Azure 'da oturum açarken yeni bir pencere başlatır.
-   
-   * Oturumunuzu kesintiye uğratmadan betiği yeniden çalıştırırsanız, **Add-AzureAccount** komutunu açıklama eklemek uygun bir seçeneğe sahip olursunuz.
+This PowerShell is phase 1 of the two-phase code sample.
 
-![Azure modülü yüklü olan PowerShell ıSE, betiği çalıştırmaya hazırlanıyor.][30_powershell_ise]
+The script starts with commands to clean up after a possible previous run, and is rerunnable.
 
-### <a name="powershell-code"></a>PowerShell kodu
+1. Paste the PowerShell script into a simple text editor such as Notepad.exe, and save the script as a file with the extension **.ps1**.
+2. Start PowerShell ISE as an Administrator.
+3. At the prompt, type<br/>`Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser`<br/>and then press Enter.
+4. In PowerShell ISE, open your **.ps1** file. Betiği çalıştırın.
+5. The script first starts a new window in which you log in to Azure.
 
-Bu PowerShell betiği az Module 'ü zaten yüklediğinizi varsayar. Bilgi için bkz. [Azure PowerShell modülünü Install](/powershell/azure/install-Az-ps).
+   - If you rerun the script without disrupting your session, you have the convenient option of commenting out the **Add-AzureAccount** command.
+
+![PowerShell ISE, with Azure module installed, ready to run script.][30_powershell_ise]
+
+### <a name="powershell-code"></a>PowerShell code
+
+This PowerShell script assumes you have already installed the Az module. For information, see [Install the Azure PowerShell module](/powershell/azure/install-Az-ps).
 
 ```powershell
 ## TODO: Before running, find all 'TODO' and make each edit!!
@@ -123,8 +126,7 @@ Select-AzSubscription -Subscription $subscriptionName;
 Clean up the old Azure Storage Account after any previous run, 
 before continuing this new run.';
 
-If ($storageAccountName)
-{
+if ($storageAccountName) {
     Remove-AzStorageAccount `
         -Name              $storageAccountName `
         -ResourceGroupName $resourceGroupName;
@@ -196,15 +198,13 @@ New-AzStorageContainerStoredAccessPolicy `
 '
 Generate a SAS token for the container.
 ';
-Try
-{
+try {
     $sasTokenWithPolicy = New-AzStorageContainerSASToken `
         -Name    $containerName `
         -Context $context `
         -Policy  $policySasToken;
 }
-Catch 
-{
+catch {
     $Error[0].Exception.ToString();
 }
 
@@ -230,31 +230,28 @@ Now shift to the Transact-SQL portion of the two-part code sample!';
 # EOFile
 ```
 
+Take note of the few named values that the PowerShell script prints when it ends. You must edit those values into the Transact-SQL script that follows as phase 2.
 
-PowerShell betiğinin bittiği sırada yazdırdığı birkaç adlandırılmış değeri unutmayın. Bu değerleri, Aşama 2 olarak takip eden Transact-SQL betiğine düzenlemeniz gerekir.
+## <a name="phase-2-transact-sql-code-that-uses-azure-storage-container"></a>Phase 2: Transact-SQL code that uses Azure Storage container
 
-## <a name="phase-2-transact-sql-code-that-uses-azure-storage-container"></a>2\. Aşama: Azure Storage kapsayıcısını kullanan Transact-SQL kodu
+- In phase 1 of this code sample, you ran a PowerShell script to create an Azure Storage container.
+- Next in phase 2, the following Transact-SQL script must use the container.
 
-* Bu kod örneğinin 1. aşamasında, bir Azure depolama kapsayıcısı oluşturmak için bir PowerShell betiği çalıştırdınız.
-* Sonraki aşama 2 ' de, aşağıdaki Transact-SQL betiği kapsayıcıyı kullanmalıdır.
+The script starts with commands to clean up after a possible previous run, and is rerunnable.
 
-Betik, bir önceki çalıştırıldıktan sonra temizlik komutları ile başlar ve yeniden başlatılamaz.
+The PowerShell script printed a few named values when it ended. You must edit the Transact-SQL script to use those values. Find **TODO** in the Transact-SQL script to locate the edit points.
 
-PowerShell betiği, sona erdikten sonra birkaç adlandırılmış değer yazdırılmıştır. Bu değerleri kullanmak için Transact-SQL betiğini düzenlemeniz gerekir. Düzenleme noktalarını bulmak için Transact-SQL komut dosyasında **Todo** bulun.
-
-1. SQL Server Management Studio açın (SSMS. exe).
-2. Azure SQL veritabanı veritabanınıza bağlanın.
-3. Yeni bir sorgu bölmesi açmak için tıklayın.
-4. Aşağıdaki Transact-SQL betiğini sorgu bölmesine yapıştırın.
-5. Betikteki her **Todo** bulun ve uygun düzenlemeleri yapın.
-6. Betiği kaydedin ve çalıştırın.
-
+1. Open SQL Server Management Studio (ssms.exe).
+2. Connect to your Azure SQL Database database.
+3. Click to open a new query pane.
+4. Paste the following Transact-SQL script into the query pane.
+5. Find every **TODO** in the script and make the appropriate edits.
+6. Save, and then run the script.
 
 > [!WARNING]
-> Önceki PowerShell betiği tarafından oluşturulan SAS anahtarı değeri '? ' ile başlayabilir (soru işareti). SAS anahtarını aşağıdaki T-SQL komut dosyasında kullandığınızda, *önde gelen '? ' öğesini kaldırmanız*gerekir. Aksi takdirde, çalışmalarınız güvenlik tarafından engelleniyor olabilir.
+> The SAS key value generated by the preceding PowerShell script might begin with a '?' (question mark). When you use the SAS key in the following T-SQL script, you must *remove the leading '?'* . Otherwise your efforts might be blocked by security.
 
-
-### <a name="transact-sql-code"></a>Transact-SQL kodu
+### <a name="transact-sql-code"></a>Transact-SQL code
 
 ```sql
 ---- TODO: First, run the earlier PowerShell portion of this two-part code sample.
@@ -262,14 +259,11 @@ PowerShell betiği, sona erdikten sonra birkaç adlandırılmış değer yazdır
 
 ---- Transact-SQL code for Event File target on Azure SQL Database.
 
-
 SET NOCOUNT ON;
 GO
 
-
 ----  Step 1.  Establish one little table, and  ---------
 ----  insert one row of data.
-
 
 IF EXISTS
     (SELECT * FROM sys.objects
@@ -278,7 +272,6 @@ BEGIN
     DROP TABLE gmTabEmployee;
 END
 GO
-
 
 CREATE TABLE gmTabEmployee
 (
@@ -289,15 +282,12 @@ CREATE TABLE gmTabEmployee
 );
 GO
 
-
 INSERT INTO gmTabEmployee ( EmployeeDescr )
     VALUES ( 'Jane Doe' );
 GO
 
-
 ------  Step 2.  Create key, and  ------------
 ------  Create credential (your Azure Storage container must already exist).
-
 
 IF NOT EXISTS
     (SELECT * FROM sys.symmetric_keys
@@ -306,7 +296,6 @@ BEGIN
     CREATE MASTER KEY ENCRYPTION BY PASSWORD = '0C34C960-6621-4682-A123-C7EA08E3FC46' -- Or any newid().
 END
 GO
-
 
 IF EXISTS
     (SELECT * FROM sys.database_scoped_credentials
@@ -318,7 +307,6 @@ BEGIN
         [https://gmstorageaccountxevent.blob.core.windows.net/gmcontainerxevent] ;
 END
 GO
-
 
 CREATE
     DATABASE SCOPED
@@ -332,7 +320,6 @@ CREATE
         SECRET = 'sv=2014-02-14&sr=c&si=gmpolicysastoken&sig=EjAqjo6Nu5xMLEZEkMkLbeF7TD9v1J8DNB2t8gOKTts%3D'
     ;
 GO
-
 
 ------  Step 3.  Create (define) an event session.  --------
 ------  The event session has an event with an action,
@@ -348,7 +335,6 @@ BEGIN
         ON DATABASE;
 END
 GO
-
 
 CREATE
     EVENT SESSION
@@ -375,7 +361,6 @@ CREATE
     ;
 GO
 
-
 ------  Step 4.  Start the event session.  ----------------
 ------  Issue the SQL Update statements that will be traced.
 ------  Then stop the session.
@@ -390,7 +375,6 @@ ALTER
     STATE = START;
 GO
 
-
 SELECT 'BEFORE_Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 
 UPDATE gmTabEmployee
@@ -404,14 +388,12 @@ UPDATE gmTabEmployee
 SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 GO
 
-
 ALTER
     EVENT SESSION
         gmeventsessionname240b
     ON DATABASE
     STATE = STOP;
 GO
-
 
 -------------- Step 5.  Select the results. ----------
 
@@ -427,7 +409,6 @@ SELECT
                 null, null, null
             );
 GO
-
 
 -------------- Step 6.  Clean up. ----------
 
@@ -450,8 +431,7 @@ PRINT 'Use PowerShell Remove-AzStorageAccount to delete your Azure Storage accou
 GO
 ```
 
-
-Çalıştırdığınızda hedef iliştirilemezse olay oturumunu durdurmanız ve yeniden başlatmanız gerekir:
+If the target fails to attach when you run, you must stop and restart the event session:
 
 ```sql
 ALTER EVENT SESSION ... STATE = STOP;
@@ -460,13 +440,11 @@ ALTER EVENT SESSION ... STATE = START;
 GO
 ```
 
-
 ## <a name="output"></a>Çıktı
 
-Transact-SQL betiği tamamlandığında, **event_data_XML** sütun üst bilgisinin altındaki bir hücreye tıklayın. Tek bir UPDATE ifadesini gösteren bir **\<event >** öğesi görüntülenir.
+When the Transact-SQL script completes, click a cell under the **event_data_XML** column header. One **\<event>** element is displayed which shows one UPDATE statement.
 
-Test sırasında oluşturulan bir **\<event >** öğesi aşağıda verilmiştir:
-
+Here is one **\<event>** element that was generated during testing:
 
 ```xml
 <event name="sql_statement_starting" package="sqlserver" timestamp="2015-09-22T19:18:45.420Z">
@@ -507,40 +485,34 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 </event>
 ```
 
+The preceding Transact-SQL script used the following system function to read the event_file:
 
-Yukarıdaki Transact-SQL betiği, event_file okumak için aşağıdaki sistem işlevini kullandı:
+- [sys.fn_xe_file_target_read_file (Transact-SQL)](https://msdn.microsoft.com/library/cc280743.aspx)
 
-* [sys. fn_xe_file_target_read_file (Transact-SQL)](https://msdn.microsoft.com/library/cc280743.aspx)
+An explanation of advanced options for the viewing of data from extended events is available at:
 
-Genişletilmiş olaylardan verilerin görüntülenmesine yönelik gelişmiş seçeneklerin açıklaması şurada bulunabilir:
+- [Advanced Viewing of Target Data from Extended Events](https://msdn.microsoft.com/library/mt752502.aspx)
 
-* [Genişletilmiş olaylardaki hedef verilerin gelişmiş görüntüleme](https://msdn.microsoft.com/library/mt752502.aspx)
+## <a name="converting-the-code-sample-to-run-on-sql-server"></a>Converting the code sample to run on SQL Server
 
+Suppose you wanted to run the preceding Transact-SQL sample on Microsoft SQL Server.
 
-## <a name="converting-the-code-sample-to-run-on-sql-server"></a>Kod örneğini SQL Server üzerinde çalışacak şekilde dönüştürme
-
-Yukarıdaki Transact-SQL örneğini Microsoft SQL Server çalıştırmak istediğinizi varsayalım.
-
-* Kolaylık olması için, Azure depolama kapsayıcısının kullanımını **C:\myeventdata.XEL**gibi basit bir dosyayla tamamen değiştirmek isteyebilirsiniz. Dosya, SQL Server barındıran bilgisayarın yerel sabit sürücüsüne yazılır.
-* **Ana anahtar oluştur** ve **kimlik bilgisi oluşturma**için HERHANGI bir Transact-SQL deyimlerine ihtiyacınız yoktur.
-* **Olay oturumu oluştur** Ifadesinde, **add target** yan tümcesinde, **filename =** için atanan http değerini, **C:\MyFile.XEL**gibi bir tam yol dizesiyle değiştirirsiniz.
+- For simplicity, you would want to completely replace use of the Azure Storage container with a simple file such as *C:\myeventdata.xel*. The file would be written to the local hard drive of the computer that hosts SQL Server.
+- You would not need any kind of Transact-SQL statements for **CREATE MASTER KEY** and **CREATE CREDENTIAL**.
+- In the **CREATE EVENT SESSION** statement, in its **ADD TARGET** clause, you would replace the Http value assigned made to **filename=** with a full path string like *C:\myfile.xel*.
   
-  * Azure depolama hesabı gerekmez.
+  - No Azure Storage account need be involved.
 
 ## <a name="more-information"></a>Daha fazla bilgi
 
-Azure depolama hizmetindeki hesaplar ve kapsayıcılar hakkında daha fazla bilgi için bkz.:
+For more info about accounts and containers in the Azure Storage service, see:
 
-* [.NET 'ten blob depolamayı kullanma](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
-* [Kapsayıcıları, Blobları ve Meta Verileri Adlandırma ve Bunlara Başvurma](https://msdn.microsoft.com/library/azure/dd135715.aspx)
-* [Kök Kapsayıcınle çalışma](https://msdn.microsoft.com/library/azure/ee395424.aspx)
-* [1. ders: bir Azure kapsayıcısında depolanan erişim ilkesi ve paylaşılan erişim imzası oluşturma](https://msdn.microsoft.com/library/dn466430.aspx)
-  * [2. ders: paylaşılan erişim imzası kullanarak SQL Server kimlik bilgileri oluşturma](https://msdn.microsoft.com/library/dn466435.aspx)
-* [Microsoft SQL Server için genişletilmiş olaylar](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events)
+- [How to use Blob storage from .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
+- [Kapsayıcıları, Blobları ve Meta Verileri Adlandırma ve Bunlara Başvurma](https://msdn.microsoft.com/library/azure/dd135715.aspx)
+- [Working with the Root Container](https://msdn.microsoft.com/library/azure/ee395424.aspx)
+- [Lesson 1: Create a stored access policy and a shared access signature on an Azure container](https://msdn.microsoft.com/library/dn466430.aspx)
+  - [Lesson 2: Create a SQL Server credential using a shared access signature](https://msdn.microsoft.com/library/dn466435.aspx)
+- [Extended Events for Microsoft SQL Server](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events)
 
-<!--
-Image references.
--->
-
+<!-- Image references. -->
 [30_powershell_ise]: ./media/sql-database-xevent-code-event-file/event-file-powershell-ise-b30.png
-
