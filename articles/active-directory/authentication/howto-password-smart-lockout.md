@@ -1,89 +1,89 @@
 ---
-title: Azure AD akıllı kilitleme-Azure Active Directory kullanarak deneme yanılma saldırıları engelleniyor
-description: Azure Active Directory akıllı kilitleme, parolaların tahmin edilmeye çalıştığı deneme yanılma saldırılarına karşı kuruluşunuzun korunmasına yardımcı olur
+title: Preventing attacks using smart lockout - Azure Active Directory
+description: Azure Active Directory smart lockout helps protect your organization from brute-force attacks trying to guess passwords
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/25/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4cb2d424d242fd9ea078d981a85516a00c8115f
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 066c4cb598d9a8c14ab5d6ee893376266e104d15
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74268659"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381524"
 ---
-# <a name="azure-active-directory-smart-lockout"></a>Akıllı kilitleme Azure Active Directory
+# <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory smart lockout
 
-Akıllı kilitleme, kullanıcılarınızın parolalarını tahmin etmeye çalışan kötü aktörlerin kilitlenmesini sağlar veya almak için deneme yanılma yöntemlerini kullanır. Geçerli kullanıcılardan gelen oturum açma işlemlerini algılayabilir ve bunları saldırganlar ve diğer bilinmeyen kaynaklardan farklı şekilde ele alabilir. Akıllı kilitleme saldırganları kilitler, böylece kullanıcılarınız hesaplarına erişmeye devam eder ve üretken olabilirler.
+Smart lockout assists in locking out bad actors who are trying to guess your users’ passwords or use brute-force methods to get in. It can recognize sign-ins coming from valid users and treat them differently than ones of attackers and other unknown sources. Smart lockout locks out the attackers, while letting your users continue to access their accounts and be productive.
 
-Varsayılan olarak, akıllı kilitleme, hesabı 10 başarısız girişimden bir dakika sonra oturum açma denemelerinde kilitler. Sonraki denemelerde ilk ve daha uzun bir süre sonra, hesap, sonraki başarısız oturum açma denemesinden sonra bir dakika sonra kilitlenir.
+By default, smart lockout locks the account from sign-in attempts for one minute after 10 failed attempts. The account locks again after each subsequent failed sign-in attempt, for one minute at first and longer in subsequent attempts.
 
-Akıllı kilitleme, aynı parolanın kilitleme sayacını arttırmaktan kaçınmak için son üç hatalı parola karmalarını izler. Birisi aynı hatalı parolayı birden çok kez girerse, bu davranış hesabın kilitlenmesine neden olmaz.
+Smart lockout tracks the last three bad password hashes to avoid incrementing the lockout counter for the same password. If someone enters the same bad password multiple times, this behavior will not cause the account to lockout.
 
  > [!NOTE]
- > Karma izleme işlevselliği, kimlik doğrulama etkin olan müşteriler için, bulutta olmayan şirket içi bir işlem olduğu için kullanılamaz.
+ > Hash tracking functionality is not available for customers with pass-through authentication enabled as authentication happens on-premises not in the cloud.
 
-AD FS 2016 ve AF FS 2019 kullanan Federasyon dağıtımları, [AD FS Extranet kilitleme ve extranet akıllı kilitleme](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection)kullanarak benzer avantajları etkinleştirebilir.
+Federated deployments using AD FS 2016 and AF FS 2019 can enable similar benefits using [AD FS Extranet Lockout and Extranet Smart Lockout](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection).
 
-Akıllı kilitleme, güvenlik ve kullanışlılığın doğru karışımını sunan bu varsayılan ayarlarla tüm Azure AD müşterileri için her zaman açıktır. Akıllı kilitleme ayarlarının kuruluşunuza özgü değerlerle özelleştirilmesi, kullanıcılarınız için ücretli Azure AD lisanslarına ihtiyaç duyar.
+Smart lockout is always on for all Azure AD customers with these default settings that offer the right mix of security and usability. Customization of the smart lockout settings, with values specific to your organization, requires paid Azure AD licenses for your users.
 
-Akıllı kilitleme kullanmak, orijinal bir kullanıcının hiçbir şekilde kilitlenmeyeceğini garanti etmez. Akıllı kilitleme bir kullanıcı hesabını kilitlediğinde, orijinal kullanıcıyı kilitlemeleri için en iyi şekilde deneme yaptık. Kilitleme hizmeti, kötü aktörlerin orijinal bir kullanıcı hesabına erişmesini sağlamaya çalışır.  
+Using smart lockout does not guarantee that a genuine user will never be locked out. When smart lockout locks a user account, we try our best to not lockout the genuine user. The lockout service attempts to ensure that bad actors can’t gain access to a genuine user account.  
 
-* Her Azure Active Directory veri merkezi, kilitlemeyi bağımsız olarak izler. Kullanıcı her veri merkezini ziyaret eden bir Kullanıcı (threshold_limit * datacenter_count) deneme sayısına sahip olacaktır.
-* Akıllı kilitleme, kötü bir aktör ve orijinal kullanıcı arasında ayrım yapmak için tanıdık konum ve bilinmeyen konum kullanır. Bilmediğiniz ve tanıdık konumların her ikisi de ayrı kilitleme sayaçlarına sahip olur.
+* Each Azure Active Directory data center tracks lockout independently. A user will have (threshold_limit * datacenter_count) number of attempts, if the user hits each data center.
+* Smart Lockout uses familiar location vs unfamiliar location to differentiate between a bad actor and the genuine user. Unfamiliar and familiar locations will both have separate lockout counters.
 
-Akıllı kilitleme karma dağıtımlarla tümleştirilebilir, şirket içi Active Directory hesapların saldırganlar tarafından kilitlenmesini sağlamak için Parola karması eşitlemesi veya geçişli kimlik doğrulaması kullanılarak tümleştirilir. Azure AD 'de akıllı kilitleme ilkelerini uygun şekilde ayarlayarak, saldırılar şirket içi Active Directory erişmeden önce bu saldırıları filtrelenebilir.
+Smart lockout can be integrated with hybrid deployments, using password hash sync or pass-through authentication to protect on-premises Active Directory accounts from being locked out by attackers. By setting smart lockout policies in Azure AD appropriately, attacks can be filtered out before they reach on-premises Active Directory.
 
-[Doğrudan kimlik doğrulaması](../hybrid/how-to-connect-pta.md)kullanırken şunları yaptığınızdan emin olun:
+When using [pass-through authentication](../hybrid/how-to-connect-pta.md), you need to make sure that:
 
-* Azure AD kilitleme eşiği Active Directory hesap kilitleme eşiğinden **daha azdır** . Active Directory hesap kilitleme eşiği, Azure AD kilitleme eşiğinden en az iki veya üç kat daha uzun olacak şekilde değerleri ayarlayın. 
-* Azure AD kilitleme süresi, süreden sonra hesap kilitleme sayacını Active Directory daha uzun bir süre önce ayarlanmalıdır. AD süresi dakika cinsinden ayarlandığında Azure AD süresinin saniye cinsinden ayarlandığını unutmayın. 
+* The Azure AD lockout threshold is **less** than the Active Directory account lockout threshold. Set the values so that the Active Directory account lockout threshold is at least two or three times longer than the Azure AD lockout threshold. 
+* The Azure AD lockout duration must be set longer than the Active Directory reset account lockout counter after duration. Be aware that the Azure AD duration is set in seconds, while the AD duration is set in minutes. 
 
-Örneğin, Azure AD Sayacınızı AD 'den daha yüksek olmasını istiyorsanız, şirket içi AD 'niz 1 dakikaya (60 saniye) ayarlandığında Azure AD 120 saniye (2 dakika) olacaktır.
+For example, if you want your Azure AD counter to be higher than AD, then Azure AD would be 120 seconds (2 minutes) while your on-premises AD is set to 1 minute (60 seconds).
 
 > [!IMPORTANT]
-> Şu anda, bir yönetici akıllı kilitleme özelliği tarafından kilitlenmişse kullanıcıların bulut hesaplarının kilidini açamaz. Yöneticinin kilitleme süresinin dolmasını beklemesi gerekir. Ancak Kullanıcı, güvenilen bir cihazdan veya konumdan self servis parola sıfırlama (SSPR) kullanarak kilidini açabilir.
+> Currently, an administrator can't unlock the users' cloud accounts if they have been locked out by the Smart Lockout capability. The administrator must wait for the lockout duration to expire. However, the user can unlock by using self-service password reset (SSPR) from a trusted device or location.
 
-## <a name="verify-on-premises-account-lockout-policy"></a>Şirket içi hesap kilitleme ilkesini doğrulama
+## <a name="verify-on-premises-account-lockout-policy"></a>Verify on-premises account lockout policy
 
-Şirket içi Active Directory hesabı kilitleme ilkenizi doğrulamak için aşağıdaki yönergeleri kullanın:
+Use the following instructions to verify your on-premises Active Directory account lockout policy:
 
-1. Grup ilkesi yönetim aracını açın.
-2. Kuruluşunuzun hesap kilitleme ilkesini (örneğin, **varsayılan etki alanı ilkesi**) içeren Grup ilkesini düzenleyin.
-3. **Windows ayarları** > **güvenlik ayarları** ** > hesap** **kilitleme ilkesi** > **bilgisayar yapılandırma** >  > **ilkelerine** gidin.
-4. **Hesap kilitleme eşikinizi** doğrulayın ve değerlerden **sonra hesap kilitleme sayacını sıfırlayın** .
+1. Open the Group Policy Management tool.
+2. Edit the group policy that includes your organization's account lockout policy, for example, the **Default Domain Policy**.
+3. Browse to **Computer Configuration** > **Policies** > **Windows Settings** > **Security Settings** > **Account Policies** > **Account Lockout Policy**.
+4. Verify your **Account lockout threshold** and **Reset account lockout counter after** values.
 
-![Şirket içi Active Directory hesabı kilitleme ilkesini değiştirme](./media/howto-password-smart-lockout/active-directory-on-premises-account-lockout-policy.png)
+![Modify the on-premises Active Directory account lockout policy](./media/howto-password-smart-lockout/active-directory-on-premises-account-lockout-policy.png)
 
-## <a name="manage-azure-ad-smart-lockout-values"></a>Azure AD akıllı kilitleme değerlerini yönetme
+## <a name="manage-azure-ad-smart-lockout-values"></a>Manage Azure AD smart lockout values
 
-Kuruluş gereksinimlerinize bağlı olarak, akıllı kilitleme değerlerinin özelleştirilmesi gerekebilir. Akıllı kilitleme ayarlarının kuruluşunuza özgü değerlerle özelleştirilmesi, kullanıcılarınız için ücretli Azure AD lisanslarına ihtiyaç duyar.
+Based on your organizational requirements, smart lockout values may need to be customized. Customization of the smart lockout settings, with values specific to your organization, requires paid Azure AD licenses for your users.
 
-Kuruluşunuzun akıllı kilitleme değerlerini denetlemek veya değiştirmek için aşağıdaki adımları kullanın:
+To check or modify the smart lockout values for your organization, use the following steps:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
-1. Arama yapın ve *Azure Active Directory*seçin. **Parola koruması** > **kimlik doğrulama yöntemlerini** seçin.
-1. İlk kilitlenmeden önce bir hesapta kaç tane başarısız oturum açma izni verileceğini temel alarak **kilitleme eşiğini**ayarlayın. Varsayılan değer 10 ' dur.
-1. **Kilitleme süresini saniye cinsinden**, her kilitin saniye cinsinden uzunluğu olarak ayarlayın. Varsayılan değer 60 saniyedir (bir dakika).
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. Search for and select *Azure Active Directory*. Select **Authentication methods** > **Password protection**.
+1. Set the **Lockout threshold**, based on how many failed sign-ins are allowed on an account before its first lockout. The default is 10.
+1. Set the **Lockout duration in seconds**, to the length in seconds of each lockout. The default is 60 seconds (one minute).
 
 > [!NOTE]
-> Kilitleme sonrasında ilk oturum açma işlemi başarısız olursa, hesap yeniden kilitlenir. Bir hesap sürekli olarak kilitlense, kilitleme süresi artar.
+> If the first sign-in after a lockout also fails, the account locks out again. If an account locks repeatedly, the lockout duration increases.
 
-![Azure portal Azure AD akıllı kilitleme ilkesini özelleştirme](./media/howto-password-smart-lockout/azure-active-directory-custom-smart-lockout-policy.png)
+![Customize the Azure AD smart lockout policy in the Azure portal](./media/howto-password-smart-lockout/azure-active-directory-custom-smart-lockout-policy.png)
 
-## <a name="how-to-determine-if-the-smart-lockout-feature-is-working-or-not"></a>Akıllı kilitleme özelliğinin çalışıp çalışmadığını belirleme
+## <a name="how-to-determine-if-the-smart-lockout-feature-is-working-or-not"></a>How to determine if the Smart lockout feature is working or not
 
-Akıllı kilitleme eşiği tetiklendiğinde, hesap kilitliyken şu iletiyi alırsınız:
+When the smart lockout threshold is triggered, you will get the following message while the account is locked:
 
-**Hesabınız yetkisiz kullanımı engellemek için geçici olarak kilitlidir. Daha sonra tekrar deneyin ve sorun yaşamaya devam ediyorsanız yöneticinizle iletişime geçin.**
+**Your account is temporarily locked to prevent unauthorized use. Try again later, and if you still have trouble, contact your admin.**
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure AD kullanarak kuruluşunuzda hatalı parolaların nasıl yapılacağını öğrenin.](howto-password-ban-bad.md)
-* [Kullanıcıların kendi hesaplarının kilidini açmalarına izin vermek için self servis parola sıfırlamayı yapılandırın.](quickstart-sspr.md)
+* [Find out how to ban bad passwords in your organization using Azure AD.](howto-password-ban-bad.md)
+* [Configure self-service password reset to allow users to unlock their own accounts.](quickstart-sspr.md)

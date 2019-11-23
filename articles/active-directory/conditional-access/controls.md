@@ -1,116 +1,116 @@
 ---
-title: Azure Active Directory koşullu erişim erişim denetimleri nelerdir? | Microsoft Docs
-description: Erişimi Azure Active Directory koşullu erişim işlerinde nasıl denetimleri hakkında bilgi edinin.
+title: Access controls in Azure Active Directory Conditional Access
+description: Learn how access controls in Azure Active Directory Conditional Access work.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 06/15/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5fc672898a56d8b3e1486b1d8d84cf532fa2b6d
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: cac92da744b3d5b7aeaa325c7cc564a3d7e2abdd
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509397"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74380802"
 ---
-# <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Azure Active Directory koşullu erişim erişim denetimleri nelerdir?
+# <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>What are access controls in Azure Active Directory Conditional Access?
 
-İle [Azure Active Directory (Azure AD) koşullu erişim](../active-directory-conditional-access-azure-portal.md), bulut uygulamalarınızı nasıl yetkili kullanıcılara erişimi denetleyebilirsiniz. Bir koşullu erişim ilkesinde ("Bu durumda") ilkeniz tetikleme nedeni için ("bunu") yanıtı tanımlayın.
+With [Azure Active Directory (Azure AD) Conditional Access](../active-directory-conditional-access-azure-portal.md), you can control how authorized users access your cloud apps. In a Conditional Access policy, you define the response ("do this") to the reason for triggering your policy ("when this happens").
 
 ![Denetim](./media/controls/10.png)
 
-Koşullu erişim bağlamında
+In the context of Conditional Access,
 
-- "**Bu durumda**" olarak adlandırılır **koşulları**
-- "**Bunu yapmak**" olarak adlandırılır **erişim denetimleri**
+- "**When this happens**" is called **conditions**
+- "**Then do this**" is called **access controls**
 
-Bir koşul deyimi, denetimleri ile koşullu erişim ilkesi temsil eder.
+The combination of a condition statement with your controls represents a Conditional Access policy.
 
 ![Denetim](./media/controls/61.png)
 
-Kişi tarafından yerine getirilmesi gereken bir gereksinim ya da sistem oturum açarken her denetimidir ve hangi kullanıcının bir kısıtlama oturum açtıktan sonra yapabilirsiniz.
+Each control is either a requirement that must be fulfilled by the person or system signing in, or a restriction on what the user can do after signing in.
 
-Denetimlerin iki tür vardır:
+There are two types of controls:
 
-- **İzin verme denetimleri** - kapı erişimi
-- **Oturum denetimleri** - oturum içindeki erişimi kısıtlamak için
+- **Grant controls** - To gate access
+- **Session controls** - To restrict access within a session
 
-Bu konuda, Azure AD koşullu erişim kullanılabilen çeşitli denetimleri açıklanmaktadır. 
+This topic explains the various controls that are available in Azure AD Conditional Access. 
 
-## <a name="grant-controls"></a>İzin verme denetimleri
+## <a name="grant-controls"></a>Grant controls
 
-Verme denetimleri sayesinde, erişimi tamamen engelleme veya istenen denetimleri seçerek ek gereksinimler ile erişim izni. Birden fazla denetim için gerektirebilir:
+With grant controls, you can either block access altogether or allow access with additional requirements by selecting the desired controls. For multiple controls, you can require:
 
-- Tüm seçilen yerine getirilmesi için denetimleri (*ve*)
-- Seçili tek getirilmesi için denetimi (*veya*)
+- All selected controls to be fulfilled (*AND*)
+- One selected control to be fulfilled (*OR*)
 
 ![Denetim](./media/controls/18.png)
 
-### <a name="multi-factor-authentication"></a>Multi-factor authentication
+### <a name="multi-factor-authentication"></a>Çok faktörlü kimlik doğrulama
 
-Bu denetim, belirtilen bulut uygulamasına erişmek için çok faktörlü kimlik doğrulama isteyecek şekilde kullanabilirsiniz. Bu denetimi aşağıdaki multi-Factor Authentication sağlayıcılarını destekler:
+You can use this control to require multi-factor authentication to access the specified cloud app. This control supports the following multi-factor providers:
 
 - Azure Multi-Factor Authentication
-- Active Directory Federasyon Hizmetleri (AD FS) ile birlikte bir şirket içi multi-Factor authentication sağlayıcısı.
+- An on-premises multi-factor authentication provider, combined with Active Directory Federation Services (AD FS).
 
-Multi-Factor authentication kullanarak, geçerli kullanıcının birincil kimlik bilgilerini erişim elde etmiştir yetkisiz bir kullanıcı tarafından erişilen kaynaklar korunmasına yardımcı olur.
+Using multi-factor authentication helps protect resources from being accessed by an unauthorized user who might have gained access to the primary credentials of a valid user.
 
 ### <a name="compliant-device"></a>Uyumlu cihaz
 
-Cihaz tabanlı koşullu erişim ilkelerini yapılandırabilirsiniz. Seçilen bulut uygulamalarınızdan yalnızca erişim vermek için cihaz tabanlı koşullu erişim ilkesi amacı olan [yönetilen cihazlar](require-managed-devices.md). Bir cihazın uyumlu olarak işaretlenmesini gerektiren yönetilen cihazlara erişimi sınırlamak için sahip olduğunuz bir seçenektir. Bir cihaz uyumlu olarak (herhangi bir cihaz için işletim sistemi) Intune veya üçüncü taraf MDM sisteminiz Windows 10 cihazları için işaretlenebilir. Windows 10 dışında cihaz işletim sistemi türleri için üçüncü taraf MDM sistemleri desteklenmez. 
+You can configure Conditional Access policies that are device-based. The objective of a device-based Conditional Access policy is to only grant access to the selected cloud apps from [managed devices](require-managed-devices.md). Requiring a device to be marked as compliant is one option you have to limit access to managed devices. A device can be marked as compliant by Intune (for any device OS) or by your third-party MDM system for Windows 10 devices. Third-party MDM systems for device OS types other than Windows 10 are not supported. 
 
-Cihazınızın uyumlu olarak işaretlenebilir önce Azure AD'ye kayıtlı olması gerekir. Bir cihazı kaydetmek için üç seçeneğiniz vardır: 
+Your device needs to be registered to Azure AD before it can be marked as compliant. To register a device, you have three options: 
 
 - Azure AD kayıtlı cihazlar
 - Azure AD’ye katılmış cihazlar  
 - Hibrit Azure AD’ye katılmış cihazlar
 
-Bu üç seçenek makalesinde açıklanan [bir cihaz Kimliği nedir?](../devices/overview.md)
+These three options are discussed in the article [What is a device identity?](../devices/overview.md)
 
-Daha fazla bilgi için [yönetilen cihazlar için koşullu erişim ile bulut uygulaması erişimi zorunlu kılma](require-managed-devices.md).
+For more information, see [how to require managed devices for cloud app access with Conditional Access](require-managed-devices.md).
 
-### <a name="hybrid-azure-ad-joined-device"></a>Hibrit Azure AD'ye katılmış
+### <a name="hybrid-azure-ad-joined-device"></a>Hybrid Azure AD joined device
 
-Karma Azure AD'ye katılmış cihaz tabanlı koşullu erişim ilkeleri yapılandırmak için sahip olduğunuz başka bir seçenek olan gerek. Bu gereksinim, Windows Masaüstü, dizüstü bilgisayarlar ve bir şirket içi Active Directory'ye katılmış Kurumsal tabletler ifade eder. Bu seçenek belirlenirse, koşullu erişim ilkenizi, şirket içi Active Directory'niz ve Azure Active Directory'nize katılmış cihazları yapılan erişimi için erişim girişimlerini verir.  
+Requiring a Hybrid Azure AD joined device is another option you have to configure device-based Conditional Access policies. This requirement refers to Windows desktops, laptops, and enterprise tablets that are joined to an on-premises Active Directory. If this option is selected, your Conditional Access policy grants access to access attempts made with devices that are joined to your on-premises Active Directory and your Azure Active Directory.  
 
-Daha fazla bilgi için [Azure Active Directory cihaz tabanlı koşullu erişim ilkeleri ayarlama](require-managed-devices.md).
+For more information, see [set up Azure Active Directory device-based Conditional Access policies](require-managed-devices.md).
 
-### <a name="approved-client-app"></a>Onaylı istemci uygulaması
+### <a name="approved-client-app"></a>Approved client app
 
-Çalışanlarınız hem kişisel mobil cihazları ve çalışma görevlerini kullandığından, durumda bile nerede bunlar sizin tarafınızdan yönetilmeyen cihazları kullanarak erişilen şirket verilerini koruma özelliğine sahip olmak isteyebilirsiniz.
-Kullanabileceğiniz [Intune uygulama koruma ilkeleri](https://docs.microsoft.com/intune/app-protection-policy) tüm mobil cihaz Yönetimi (MDM) çözümünden bağımsız Şirketinizin verilerini korumaya yardımcı olmak için.
+Because your employees use mobile devices for both personal and work tasks, you might want to have the ability to protect company data accessed using devices even in the case where they are not managed by you.
+You can use [Intune app protection policies](https://docs.microsoft.com/intune/app-protection-policy) to help protect your company’s data independent of any mobile-device management (MDM) solution.
 
-Onaylı istemci uygulamaları ile bulut uygulamalarınızı destekleyecek şekilde erişmeyi denediği bir istemci uygulaması gerektirebilir [Intune uygulama koruma ilkeleri](https://docs.microsoft.com/intune/app-protection-policy). Örneğin, erişimi Exchange Online için Outlook uygulamasında kısıtlayabilirsiniz. Onaylı istemci uygulamalarını gerektiren bir koşullu erişim ilkesi de denir [uygulama tabanlı koşullu erişim ilkesi](app-based-conditional-access.md). Desteklenen onaylı istemci uygulamalarının listesi için bkz. [onaylı istemci uygulaması gereksinimi](technical-reference.md#approved-client-app-requirement).
+With approved client apps, you can require a client app that attempts to access your cloud apps to support [Intune app protection policies](https://docs.microsoft.com/intune/app-protection-policy). For example, you can restrict access to Exchange Online to the Outlook app. A Conditional Access policy that requires approved client apps is  also known as [app-based Conditional Access policy](app-based-conditional-access.md). For a list of supported approved client apps, see [approved client app requirement](technical-reference.md#approved-client-app-requirement).
 
-### <a name="app-protection-policy-preview"></a>Uygulama koruma İlkesi (Önizleme)
+### <a name="app-protection-policy-preview"></a>App protection policy (preview)
 
-Çalışanlarınız hem kişisel mobil cihazları ve çalışma görevlerini kullandığından, durumda bile nerede bunlar sizin tarafınızdan yönetilmeyen cihazları kullanarak erişilen şirket verilerini koruma özelliğine sahip olmak isteyebilirsiniz.
-Kullanabileceğiniz [Intune uygulama koruma ilkeleri](https://docs.microsoft.com/intune/app-protection-policy) tüm mobil cihaz Yönetimi (MDM) çözümünden bağımsız Şirketinizin verilerini korumaya yardımcı olmak için.
+Because your employees use mobile devices for both personal and work tasks, you might want to have the ability to protect company data accessed using devices even in the case where they are not managed by you.
+You can use [Intune app protection policies](https://docs.microsoft.com/intune/app-protection-policy) to help protect your company’s data independent of any mobile-device management (MDM) solution.
 
-Uygulama koruma İlkesi ile Azure'a bildirilen istemci uygulamaları için erişimi sınırlayabilirsiniz AD sahip alınan [Intune uygulama koruma ilkeleri](https://docs.microsoft.com/intune/app-protection-policy). Örneğin, erişimi Exchange Online için Intune uygulama koruma ilkesi olan Outlook uygulamasında kısıtlayabilirsiniz. Uygulama koruma İlkesi gerektiren bir koşullu erişim ilkesi de denir [uygulama koruma tabanlı koşullu erişim ilkesi](app-protection-based-conditional-access.md). 
+With app protection policy, you can limit access to client applications that have reported to Azure AD has having received [Intune app protection policies](https://docs.microsoft.com/intune/app-protection-policy). For example, you can restrict access to Exchange Online to the Outlook app that has an Intune app protection policy. A Conditional Access policy that requires app protection policy is also known as [app protection-based Conditional Access policy](app-protection-based-conditional-access.md). 
 
-Cihazınızı bir uygulama ilkesi korumalı işaretlenebilir önce Azure AD'ye kayıtlı olması gerekir.
+Your device must be registered to Azure AD before an application can be marked as policy protected.
 
-Korumalı istemci uygulamaları, desteklenen ilke listesi için bkz. [uygulama koruma İlkesi gereksinimi](technical-reference.md#app-protection-policy-requirement).
+For a list of supported policy protected client apps, see [app protection policy requirement](technical-reference.md#app-protection-policy-requirement).
 
 ### <a name="terms-of-use"></a>Kullanım koşulları
 
-Bir kullanıcı bir kaynağa erişim izni verilmeden önce kullanım koşullarını kabul kiracınızdaki gerektirebilir. Yönetici olarak, yapılandırma ve kullanım koşullarını PDF'yi karşıya yükleyerek özelleştirin. Bir kullanıcı kalırsa bu denetimi bir uygulamaya erişim kapsamını yalnızca kullanım koşullarını kabul verilir.
+You can require a user in your tenant to consent to the terms of use before being granted access to a resource. As an administrator, you can configure and customize terms of use by uploading a PDF document. If a user falls in scope of this control access to an application is only granted if the terms of use have been agreed.
 
-## <a name="custom-controls-preview"></a>Özel denetimler (Önizleme)
+## <a name="custom-controls-preview"></a>Custom controls (preview)
 
-Özel denetimler, Azure Active Directory Premium P1 edition özellikleridir. Özel denetimleri kullanarak, kullanıcılarınızın daha fazla Azure Active Directory dışında gereksinimlerini karşılamak için uyumlu bir hizmete yönlendirilir. Bu denetimi gerçekleştirmek için bir kullanıcının tarayıcı dış hizmete yönlendirilir, gerekli herhangi bir kimlik doğrulaması veya doğrulama etkinliklerini gerçekleştirir ve ardından Azure Active Directory'ye yönlendirilir. Azure Active Directory yanıt doğrular ve kullanıcı başarıyla kimlik doğrulaması veya doğrulanan kullanıcı koşullu erişim akışı devam eder.
+Custom controls are a capability of the Azure Active Directory Premium P1 edition. When using custom controls, your users are redirected to a compatible service to satisfy further requirements outside of Azure Active Directory. To satisfy this control, a user’s browser is redirected to the external service, performs any required authentication or validation activities, and is then redirected back to Azure Active Directory. Azure Active Directory verifies the response and, if the user was successfully authenticated or validated, the user continues in the Conditional Access flow.
 
-Bu denetimler belirli dış veya özel hizmetler koşullu erişim denetimleri olarak kullanılmasına izin verin ve genellikle koşullu erişim özelliklerini genişleten.
+These controls allow the use of certain external or custom services as Conditional Access controls, and generally extend the capabilities of Conditional Access.
 
-Şu anda uyumlu bir hizmet teklifi sağlayıcıları içerir:
+Providers currently offering a compatible service include:
 
-- [Duo güvenlik](https://duo.com/docs/azure-ca)
+- [Duo Security](https://duo.com/docs/azure-ca)
 - [Entrust Datacard](https://www.entrustdatacard.com/products/authentication/intellitrust)
 - [GSMA](https://mobileconnect.io/azure/)
 - [Ping Identity](https://documentation.pingidentity.com/pingid/pingidAdminGuide/index.shtml#pid_c_AzureADIntegration.html)
@@ -121,52 +121,52 @@ Bu denetimler belirli dış veya özel hizmetler koşullu erişim denetimleri ol
 - [Thales (Gemalto)](https://resources.eu.safenetid.com/help/AzureMFA/Azure_Help/Index.htm)
 - [Trusona](https://www.trusona.com/docs/azure-ad-integration-guide)
 
-Bu hizmetler hakkında daha fazla bilgi için sağlayıcı doğrudan başvurun.
+For more information on those services, contact the providers directly.
 
-### <a name="creating-custom-controls"></a>Özel denetimler oluşturma
+### <a name="creating-custom-controls"></a>Creating custom controls
 
-Özel bir denetim oluşturmak için kullanmak istediğiniz sağlayıcıyı başvurmalısınız. Her bir Microsoft dışı sağlayıcısı, kendi işlem ve kaydolun, abone olmanızı veya aksi halde hizmetin bir parçası haline gelir ve koşullu erişim ile tümleştirmek istediğiniz belirtmek için gereksinimleri vardır. Bu noktada, sağlayıcı, JSON biçiminde bir veri bloğunu sağlayacak. Bu veri sağlayıcısı ve koşullu erişim, kiracınız için birlikte çalışmasına olanak sağlar, yeni denetimi oluşturur ve koşullu erişimi nasıl anlayabilirim tanımlar, kullanıcılarınızın doğrulama sağlayıcısı ile başarıyla gerçekleştirdiyseniz.
+To create a custom control, you should first contact the provider that you wish to utilize. Each non-Microsoft provider has its own process and requirements to sign up, subscribe, or otherwise become a part of the service, and to indicate that you wish to integrate with Conditional Access. At that point, the provider will provide you with a block of data in JSON format. This data allows the provider and Conditional Access to work together for your tenant, creates the new control and defines how Conditional Access can tell if your users have successfully performed verification with the provider.
 
-Özel denetimler, çok faktörlü kimlik doğrulaması gerektiren kimlik Koruması'nın Otomasyonu ile ya da rolleri Privileged Identity Manager (PIM) olarak yükseltmek için kullanılamaz.
+Custom controls cannot be used with Identity Protection's automation requiring multi-factor authentication or to elevate roles in Privileged Identity Manager (PIM).
 
-JSON verilerini kopyalayın ve ardından ilgili metin kutusuna yapıştırın. Açıkça hale getirildiği değişiklik anlamadan JSON herhangi bir değişiklik yapmayın. Herhangi bir değişiklik yapmadan, sağlayıcısı ile Microsoft arasındaki bağlantıyı kesin ve potansiyel olarak siz ve kullanıcılarınız hesaplarınızı dışında kilitleyin.
+Copy the JSON data and then paste it into the related textbox. Do not make any changes to the JSON unless you explicitly understand the change you’re making. Making any change could break the connection between the provider and Microsoft and potentially lock you and your users out of your accounts.
 
-Özel bir denetim oluşturmak için seçeneği **Yönet** bölümünü **koşullu erişim** sayfası.
+The option to create a custom control is in the **Manage** section of the **Conditional Access** page.
 
 ![Denetim](./media/controls/82.png)
 
-Tıklayarak **yeni özel denetim**, bir metin kutusu denetiminizin JSON verilerini içeren bir dikey pencere açılır.  
+Clicking **New custom control**, opens a blade with a textbox for the JSON data of your control.  
 
 ![Denetim](./media/controls/81.png)
 
-### <a name="deleting-custom-controls"></a>Özel denetim siliniyor
+### <a name="deleting-custom-controls"></a>Deleting custom controls
 
-Özel denetim silmek için önce tüm koşullu erişim ilkesinde kullanılmadığından emin olmalısınız. Bir kez tamamlayın:
+To delete a custom control, you must first ensure that it isn’t being used in any Conditional Access policy. Once complete:
 
-1. Özel denetimleri listesine Git
-1. Tıklayın...  
+1. Go to the Custom controls list
+1. Click …  
 1. **Sil**’i seçin.
 
-### <a name="editing-custom-controls"></a>Özel denetimleri düzenleme
+### <a name="editing-custom-controls"></a>Editing custom controls
 
-Özel denetim düzenlemek için geçerli denetim silin ve güncelleştirilmiş bilgileri ile yeni bir denetim oluşturmak gerekir.
+To edit a custom control, you must delete the current control and create a new control with the updated information.
 
-## <a name="session-controls"></a>Oturum denetimleri
+## <a name="session-controls"></a>Session controls
 
-Oturum denetimleri, bulut uygulaması içinde sınırlı deneyim sağlar. Oturum denetimleri, bulut uygulamaları tarafından zorunlu tutulmaz ve oturumla ilgili uygulamayı Azure AD'ye tarafından sağlanan ek bilgiler dayanır.
+Session controls enable limited experience within a cloud app. The session controls are enforced by cloud apps and rely on additional information provided by Azure AD to the app about the session.
 
 ![Denetim](./media/controls/31.png)
 
-### <a name="use-app-enforced-restrictions"></a>Uygulama tarafından zorlanan kısıtlamaları kullan
+### <a name="use-app-enforced-restrictions"></a>Use app enforced restrictions
 
-Bu denetim, seçili bulut uygulamaları için cihaz bilgilerini geçirmek Azure AD zorunlu tutmak için kullanabilirsiniz. Cihaz bilgilerini bir bağlantı uyumlu veya etki alanına katılmış bir CİHAZDAN başlatılır bilmeniz bulut uygulamaları sağlar. Bu denetim yalnızca SharePoint Online ve Exchange Online seçilen bulut uygulamaları destekler. Bulut uygulaması seçili olduğunda, aygıt bilgisi sınırlı veya tam bir deneyim ile cihaz durumuna bağlı olarak kullanıcılara sağlamanız kullanır.
+You can use this control to require Azure AD to pass device information to the selected cloud apps. The device information enables the cloud apps to know whether a connection is initiated from a compliant or domain-joined device. This control only supports SharePoint Online and Exchange Online as selected cloud apps. When selected, the cloud app uses the device information to provide users, depending on the device state, with a limited or full experience.
 
 Daha fazla bilgi için bkz:
 
-- [SharePoint Online ile sınırlı erişimini etkinleştirme](https://aka.ms/spolimitedaccessdocs)
-- [Exchange Online ile sınırlı erişimini etkinleştirme](https://aka.ms/owalimitedaccess)
+- [Enabling limited access with SharePoint Online](https://aka.ms/spolimitedaccessdocs)
+- [Enabling limited access with Exchange Online](https://aka.ms/owalimitedaccess)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Koşullu erişim ilkesi yapılandırmak için bkz. nasıl bilmek istiyorsanız [gerektiren MFA belirli uygulamalar için Azure Active Directory koşullu erişim ile](app-based-mfa.md).
-- Ortamınız için koşullu erişim ilkelerini yapılandırmaya hazırsanız bkz [Azure Active Directory'de koşullu erişim için en iyi uygulamalar](best-practices.md).
+- If you want to know how to configure a Conditional Access policy, see [Require MFA for specific apps with Azure Active Directory Conditional Access](app-based-mfa.md).
+- If you are ready to configure Conditional Access policies for your environment, see the [best practices for Conditional Access in Azure Active Directory](best-practices.md).

@@ -1,166 +1,166 @@
 ---
-title: Azure AD self servis parola sıfırlama ilkeleri-Azure Active Directory
-description: Azure AD self servis parola sıfırlama İlkesi seçeneklerini yapılandırma
+title: Self-service password reset policies - Azure Active Directory
+description: Configure Azure AD self-service password reset policy options
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 05/16/2018
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8f5371334fb383b15514c879ceb262fa78d7fca
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 5af0c2ecde539c9737249e4251f7eab276affb9c
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084949"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381911"
 ---
-# <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Azure Active Directory 'deki parola ilkeleri ve kısıtlamaları
+# <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Password policies and restrictions in Azure Active Directory
 
-Bu makalede, Azure Active Directory (Azure AD) kiracınızdaki Kullanıcı hesaplarıyla ilişkili parola ilkeleri ve karmaşıklık gereksinimleri açıklanmaktadır.
+This article describes the password policies and complexity requirements associated with user accounts in your Azure Active Directory (Azure AD) tenant.
 
-## <a name="administrator-reset-policy-differences"></a>Yönetici ilke farklarını sıfırlama
+## <a name="administrator-reset-policy-differences"></a>Administrator reset policy differences
 
-**Microsoft, herhangi bir Azure yönetici rolü için güçlü bir varsayılan *iki Gate* parola sıfırlama ilkesi uygular** ve bu ilke kullanıcılarınız için tanımladığınız bir kaynaktan farklı olabilir ve değiştirilemez. Parola sıfırlama işlevini her zaman, hiçbir Azure yönetici rolü atanmadan Kullanıcı olarak sınamalısınız.
+**Microsoft enforces a strong default *two-gate* password reset policy for any Azure administrator role** this policy may be different from the one you have defined for your users and cannot be changed. You should always test password reset functionality as a user without any Azure administrator roles assigned.
 
-İki ağ geçidi ilkesiyle, **Yöneticilerin güvenlik sorularını kullanma yeteneği yoktur**.
+With a two-gate policy, **administrators don't have the ability to use security questions**.
 
-İki kapı ilkesi, **e-posta adresi**, **kimlik doğrulayıcı uygulaması**veya **telefon numarası**gibi iki kimlik doğrulama verisi gerektirir. İki kapı ilkesi aşağıdaki koşullarda geçerlidir:
+The two-gate policy requires two pieces of authentication data, such as an **email address**, **authenticator app**, or a **phone number**. A two-gate policy applies in the following circumstances:
 
-* Aşağıdaki Azure Yönetici rollerinin tümü etkilenir:
-  * Yardım Masası Yöneticisi
-  * Hizmet desteği Yöneticisi
+* All the following Azure administrator roles are affected:
+  * Helpdesk administrator
+  * Service support administrator
   * Faturalama yöneticisi
-  * Partner Tier1 Desteği
-  * Partner Tier2 Desteği
-  * Exchange yöneticisi
-  * Skype Kurumsal yöneticisi
-  * Kullanıcı yöneticisi
-  * Dizin yazıcıları
-  * Genel yönetici veya Şirket Yöneticisi
+  * Partner Tier1 Support
+  * Partner Tier2 Support
+  * Exchange administrator
+  * Skype for Business administrator
+  * User administrator
+  * Directory writers
+  * Global administrator or company administrator
   * SharePoint yöneticisi
-  * Uyumluluk yöneticisi
-  * Uygulama yöneticisi
+  * Compliance administrator
+  * Application administrator
   * Güvenlik yöneticisi
-  * Ayrıcalıklı rol yöneticisi
-  * Intune yöneticisi
-  * Uygulama Proxy Hizmeti Yöneticisi
-  * Dynamics 365 yöneticisi
-  * Power BI hizmeti Yöneticisi
-  * Kimlik doğrulaması yöneticisi
-  * Ayrıcalıklı kimlik doğrulama Yöneticisi
+  * Privileged role administrator
+  * Intune administrator
+  * Application proxy service administrator
+  * Dynamics 365 administrator
+  * Power BI service administrator
+  * Authentication administrator
+  * Privileged Authentication administrator
 
-* Deneme aboneliğinde 30 gün geçtikten sonra veya
-* Contoso.com gibi bir gösterim etki alanı vardır. veya
-* Azure AD Connect, şirket içi dizininizdeki kimlikler eşitleniyor
+* If 30 days have elapsed in a trial subscription; or
+* A vanity domain is present, such as contoso.com; or
+* Azure AD Connect is synchronizing identities from your on-premises directory
 
-### <a name="exceptions"></a>Özel durumlar
+### <a name="exceptions"></a>Özel Durumlar
 
-Tek bir geçit ilkesi, bir e-posta adresi *veya* telefon numarası gibi bir dizi kimlik doğrulama verisi gerektirir. Tek bir geçit ilkesi aşağıdaki koşullarda geçerlidir:
+A one-gate policy requires one piece of authentication data, such as an email address *or* phone number. A one-gate policy applies in the following circumstances:
 
-* Deneme aboneliğinin ilk 30 günü içinde olur; veya
-* Bir gösterim etki alanı yok (*. onmicrosoft.com); '
-* Azure AD Connect kimlikleri eşitlemiyor
+* It's within the first 30 days of a trial subscription; or
+* A vanity domain isn't present (*.onmicrosoft.com); and
+* Azure AD Connect isn't synchronizing identities
 
-## <a name="userprincipalname-policies-that-apply-to-all-user-accounts"></a>Tüm Kullanıcı hesaplarına uygulanan UserPrincipalName ilkeleri
+## <a name="userprincipalname-policies-that-apply-to-all-user-accounts"></a>UserPrincipalName policies that apply to all user accounts
 
-Azure AD 'de oturum açması gereken her kullanıcı hesabının, hesabıyla ilişkilendirilmiş benzersiz bir Kullanıcı asıl adı (UPN) özniteliği değeri olmalıdır. Aşağıdaki tabloda, hem bulut hem de yalnızca bulut Kullanıcı hesapları ile eşitlenen şirket içi Active Directory Kullanıcı hesapları için uygulanan ilkeler özetlenmektedir:
+Every user account that needs to sign in to Azure AD must have a unique user principal name (UPN) attribute value associated with their account. The following table outlines the policies that apply to both on-premises Active Directory user accounts that are synchronized to the cloud and to cloud-only user accounts:
 
-| Özellik | UserPrincipalName gereksinimleri |
+| Özellik | UserPrincipalName requirements |
 | --- | --- |
-| İzin verilen karakterler |<ul> <li>A – Z</li> <li>a-z</li><li>0 – 9</li> <li> ' \. - \_ ! \# ^ \~</li></ul> |
-| Karakterlere izin verilmiyor |<ul> <li>Herhangi bir\@ "\" Kullanıcı adını etki alanından ayıran karakter.</li> <li>Nokta karakteri içeremez "." hemen önceki "\@sembol \"</li></ul> |
-| Uzunluk kısıtlamaları |<ul> <li>Toplam uzunluk 113 karakterden uzun olmamalıdır</li><li>\@ "\" Simgesinden önce en fazla 64 karakter olabilir</li><li>\@ "\" Simgesinden sonra en fazla 48 karakter olabilir</li></ul> |
+| Characters allowed |<ul> <li>A – Z</li> <li>a - z</li><li>0 – 9</li> <li> ' \. - \_ ! \# ^ \~</li></ul> |
+| Characters not allowed |<ul> <li>Any "\@\" character that's not separating the username from the domain.</li> <li>Can't contain a period character "." immediately preceding the "\@\" symbol</li></ul> |
+| Length constraints |<ul> <li>The total length must not exceed 113 characters</li><li>There can be up to 64 characters before the "\@\" symbol</li><li>There can be up to 48 characters after the "\@\" symbol</li></ul> |
 
-## <a name="password-policies-that-only-apply-to-cloud-user-accounts"></a>Yalnızca bulut Kullanıcı hesapları için uygulanan parola ilkeleri
+## <a name="password-policies-that-only-apply-to-cloud-user-accounts"></a>Password policies that only apply to cloud user accounts
 
-Aşağıdaki tabloda, Azure AD 'de oluşturulup yönetilen Kullanıcı hesaplarına uygulanan parola ilkesi ayarları açıklanmaktadır:
+The following table describes the password policy settings applied to user accounts that are created and managed in Azure AD:
 
 | Özellik | Gereksinimler |
 | --- | --- |
-| İzin verilen karakterler |<ul><li>A – Z</li><li>a-z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / \`~ " ( ) ;</li> <li>boş alan</li></ul> |
-| Karakterlere izin verilmiyor | Unicode karakterler. |
-| Parola kısıtlamaları |<ul><li>En az 8 karakter ve en fazla 256 karakter.</li><li>Aşağıdakilerden üç tanesi olmalıdır:<ul><li>Küçük harfli karakterler.</li><li>Büyük harfli karakterler.</li><li>Sayılar (0-9).</li><li>Semboller (önceki parola kısıtlamalarına bakın).</li></ul></li></ul> |
-| Parola süre sonu süresi (en fazla parola yaşı) |<ul><li>Varsayılan değer: **90** gün.</li><li>Değer, Windows PowerShell için Azure Active Directory modülünden `Set-MsolPasswordPolicy` cmdlet kullanılarak yapılandırılabilir.</li></ul> |
-| Parola süre sonu bildirimi (kullanıcıların parola süre sonu hakkında bilgilendirmesi durumunda) |<ul><li>Varsayılan değer: **14** gün (parolanın süresi dolmadan önce).</li><li>Değer, `Set-MsolPasswordPolicy` cmdlet 'i kullanılarak yapılandırılabilir.</li></ul> |
-| Parola süre sonu (parolaların süresi doluyor) |<ul><li>Varsayılan değer: **false** gün (parola süre sonu etkin olduğunu gösterir).</li><li>Değer, `Set-MsolUser` cmdlet 'i kullanılarak bireysel kullanıcı hesapları için yapılandırılabilir.</li></ul> |
-| Parola değiştirme geçmişi | Kullanıcı bir parolayı değiştirdiğinde son parola yeniden kullanılamaz. |
-| Parola sıfırlama geçmişi | Son parola, Kullanıcı unutulan bir parolayı sıfırladığında yeniden kullanılabilir. |
-| Hesap kilitleme | 10 başarısız oturum açma denemesi yanlış parola ile çalıştıktan sonra, Kullanıcı bir dakika boyunca kilitlenir. Daha fazla hatalı oturum açma denemesi, Kullanıcı süresini artırmak için kullanıcıyı kilitler. [Akıllı kilitleme](howto-password-smart-lockout.md) , aynı parolanın kilitleme sayacını arttırmaktan kaçınmak için son üç hatalı parola karmalarını izler. Birisi aynı hatalı parolayı birden çok kez girerse, bu davranış hesabın kilitlenmesine neden olmaz. |
+| Characters allowed |<ul><li>A – Z</li><li>a - z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / \` ~ " ( ) ;</li> <li>blank space</li></ul> |
+| Characters not allowed | Unicode characters. |
+| Password restrictions |<ul><li>A minimum of 8 characters and a maximum of 256 characters.</li><li>Requires three out of four of the following:<ul><li>Lowercase characters.</li><li>Uppercase characters.</li><li>Numbers (0-9).</li><li>Symbols (see the previous password restrictions).</li></ul></li></ul> |
+| Password expiry duration (Maximum password age) |<ul><li>Default value: **90** days.</li><li>The value is configurable by using the `Set-MsolPasswordPolicy` cmdlet from the Azure Active Directory Module for Windows PowerShell.</li></ul> |
+| Password expiry notification (When are users notified of password expiration) |<ul><li>Default value: **14** days (before password expires).</li><li>The value is configurable by using the `Set-MsolPasswordPolicy` cmdlet.</li></ul> |
+| Password expiry (Do passwords ever expire) |<ul><li>Default value: **false** days (indicates that password expiry is enabled).</li><li>The value can be configured for individual user accounts by using the `Set-MsolUser` cmdlet.</li></ul> |
+| Password change history | The last password *can't* be used again when the user changes a password. |
+| Password reset history | The last password *can* be used again when the user resets a forgotten password. |
+| Account lockout | After 10 unsuccessful sign-in attempts with the wrong password, the user is locked out for one minute. Further incorrect sign-in attempts lock out the user for increasing durations of time. [Smart lockout](howto-password-smart-lockout.md) tracks the last three bad password hashes to avoid incrementing the lockout counter for the same password. If someone enters the same bad password multiple times, this behavior will not cause the account to lockout. |
 
-## <a name="set-password-expiration-policies-in-azure-ad"></a>Azure AD 'de parola süre sonu ilkelerini ayarlama
+## <a name="set-password-expiration-policies-in-azure-ad"></a>Set password expiration policies in Azure AD
 
-Bir Microsoft bulut hizmeti için genel yönetici veya Kullanıcı Yöneticisi, kullanıcı parolalarının kullanım süresini sona ermeyecek şekilde ayarlamak için Windows PowerShell için Microsoft Azure AD Modülü kullanabilir. Windows PowerShell cmdlet 'lerini, hiçbir zaman sona erme yapılandırmasını kaldırmak veya hangi kullanıcı parolalarının süresi dolmayacak şekilde ayarlandığını görmek için de kullanabilirsiniz. 
+A global administrator or user administrator for a Microsoft cloud service can use the Microsoft Azure AD Module for Windows PowerShell to set user passwords not to expire. You can also use Windows PowerShell cmdlets to remove the never-expires configuration or to see which user passwords are set to never expire. 
 
-Bu kılavuz, Intune ve Office 365 gibi diğer sağlayıcılar için geçerlidir; bu da kimlik ve Dizin Hizmetleri için Azure AD 'ye bağımlıdır. Parola süre sonu, ilkenin değiştirilebilecek tek bölümüdür.
+This guidance applies to other providers, such as Intune and Office 365, which also rely on Azure AD for identity and directory services. Password expiration is the only part of the policy that can be changed.
 
 > [!NOTE]
-> Yalnızca dizin eşitleme üzerinden eşitlenmemiş Kullanıcı hesapları için parolalar sona ermeyecek şekilde yapılandırılabilir. Dizin eşitleme hakkında daha fazla bilgi için bkz. [Azure AD Ile ad bağlama](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect).
+> Only passwords for user accounts that are not synchronized through directory synchronization can be configured to not expire. For more information about directory synchronization, see [Connect AD with Azure AD](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect).
 
-## <a name="set-or-check-the-password-policies-by-using-powershell"></a>PowerShell kullanarak parola ilkelerini ayarlama veya denetleme
+## <a name="set-or-check-the-password-policies-by-using-powershell"></a>Set or check the password policies by using PowerShell
 
-Başlamak için [Azure AD PowerShell modülünü indirip yüklemeniz](https://docs.microsoft.com/powershell/module/Azuread/?view=azureadps-2.0)gerekir. Yüklendikten sonra, her alanı yapılandırmak için aşağıdaki adımları kullanabilirsiniz.
+To get started, you need to [download and install the Azure AD PowerShell module](https://docs.microsoft.com/powershell/module/Azuread/?view=azureadps-2.0). After you have it installed, you can use the following steps to configure each field.
 
-### <a name="check-the-expiration-policy-for-a-password"></a>Parola için süre sonu ilkesini denetleme
+### <a name="check-the-expiration-policy-for-a-password"></a>Check the expiration policy for a password
 
-1. Kullanıcı yöneticinize veya Şirket Yöneticisi kimlik bilgilerinizi kullanarak Windows PowerShell 'e bağlanın.
-1. Aşağıdaki komutlardan birini yürütün:
+1. Connect to Windows PowerShell by using your user administrator or company administrator credentials.
+1. Execute one of the following commands:
 
-   * Tek bir kullanıcının parolasının süresiz olarak ayarlanmış olup olmadığını görmek için, UPN 'yi (örneğin, *aprilr\@contoso.onmicrosoft.com*) veya denetlemek istediğiniz kullanıcının kullanıcı kimliğini kullanarak aşağıdaki cmdlet 'i çalıştırın:
+   * To see if a single user’s password is set to never expire, run the following cmdlet by using the UPN (for example, *aprilr\@contoso.onmicrosoft.com*) or the user ID of the user you want to check:
 
    ```powershell
    Get-AzureADUser -ObjectId <user ID> | Select-Object @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}
    ```
 
-   * Tüm kullanıcılar için **parola süresi dolmasın** ayarını görmek için aşağıdaki cmdlet 'i çalıştırın:
+   * To see the **Password never expires** setting for all users, run the following cmdlet:
 
    ```powershell
    Get-AzureADUser -All $true | Select-Object UserPrincipalName, @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}
    ```
 
-### <a name="set-a-password-to-expire"></a>Bir parolayı sona ermek üzere ayarla
+### <a name="set-a-password-to-expire"></a>Set a password to expire
 
-1. Kullanıcı yöneticinize veya Şirket Yöneticisi kimlik bilgilerinizi kullanarak Windows PowerShell 'e bağlanın.
-1. Aşağıdaki komutlardan birini yürütün:
+1. Connect to Windows PowerShell by using your user administrator or company administrator credentials.
+1. Execute one of the following commands:
 
-   * Parolanın süresi dolmadan bir kullanıcının parolasını ayarlamak için, UPN veya kullanıcının kullanıcı KIMLIĞINI kullanarak aşağıdaki cmdlet 'i çalıştırın:
+   * To set the password of one user so that the password expires, run the following cmdlet by using the UPN or the user ID of the user:
 
    ```powershell
    Set-AzureADUser -ObjectId <user ID> -PasswordPolicies None
    ```
 
-   * Kuruluştaki tüm kullanıcıların parolalarını süreleri dolacak şekilde ayarlamak için aşağıdaki cmdlet 'i kullanın:
+   * To set the passwords of all users in the organization so that they expire, use the following cmdlet:
 
    ```powershell
    Get-AzureADUser -All $true | Set-AzureADUser -PasswordPolicies None
    ```
 
-### <a name="set-a-password-to-never-expire"></a>Süresiz olarak bir parola ayarlayın
+### <a name="set-a-password-to-never-expire"></a>Set a password to never expire
 
-1. Kullanıcı yöneticinize veya Şirket Yöneticisi kimlik bilgilerinizi kullanarak Windows PowerShell 'e bağlanın.
-1. Aşağıdaki komutlardan birini yürütün:
+1. Connect to Windows PowerShell by using your user administrator or company administrator credentials.
+1. Execute one of the following commands:
 
-   * Bir kullanıcının parolasını hiçbir zaman dolmayacak şekilde ayarlamak için, UPN 'yi veya kullanıcının kullanıcı KIMLIĞINI kullanarak aşağıdaki cmdlet 'i çalıştırın:
+   * To set the password of one user to never expire, run the following cmdlet by using the UPN or the user ID of the user:
 
    ```powershell
    Set-AzureADUser -ObjectId <user ID> -PasswordPolicies DisablePasswordExpiration
    ```
 
-   * Bir kuruluştaki tüm kullanıcıların parolalarını hiçbir zaman sona ermeyecek şekilde ayarlamak için aşağıdaki cmdlet 'i çalıştırın:
+   * To set the passwords of all the users in an organization to never expire, run the following cmdlet:
 
    ```powershell
    Get-AzureADUser -All $true | Set-AzureADUser -PasswordPolicies DisablePasswordExpiration
    ```
 
    > [!WARNING]
-   > Parolalar, `-PasswordPolicies DisablePasswordExpiration` `pwdLastSet` özniteliğe göre hala yaş olarak ayarlanmıştır. Kullanıcı parolalarını hiçbir zaman sona ermez ve 90 + gün sonra, parolaların süre sonu olarak ayarlayabilirsiniz. `pwdLastSet` Özniteliğini temel alarak, süre sonunu olarak `-PasswordPolicies None`değiştirirseniz, 90 günden `pwdLastSet` eski olan tüm parolalar kullanıcının bir sonraki oturum açışlarında değiştirmesini gerektirir. Bu değişiklik, çok sayıda kullanıcıyı etkileyebilir.
+   > Passwords set to `-PasswordPolicies DisablePasswordExpiration` still age based on the `pwdLastSet` attribute. If you set the user passwords to never expire and then 90+ days go by, the passwords expire. Based on the `pwdLastSet` attribute, if you change the expiration to `-PasswordPolicies None`, all passwords that have a `pwdLastSet` older than 90 days require the user to change them the next time they sign in. This change can affect a large number of users.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Aşağıdaki makalelerde, Azure AD ile parola sıfırlama hakkında ek bilgiler sağlanmaktadır:
+The following articles provide additional information about password reset through Azure AD:
 
 * [SSPR’yi başarılı bir şekilde nasıl piyasaya çıkarabilirim?](howto-sspr-deployment.md)
 * [Parolanızı sıfırlama veya değiştirme](../user-help/active-directory-passwords-update-your-own-password.md).
@@ -171,5 +171,5 @@ Aşağıdaki makalelerde, Azure AD ile parola sıfırlama hakkında ek bilgiler 
 * [Parola geri yazma nedir ve neden önemlidir?](howto-sspr-writeback.md)
 * [SSPR’de etkinliği nasıl bildirebilirim?](howto-sspr-reporting.md)
 * [SSPR’deki tüm seçenekler nelerdir ve ne anlama gelir?](concept-sspr-howitworks.md)
-* [Bir arıza olduğunu düşünüyorum. SSPR’de nasıl sorun giderebilirim?](active-directory-passwords-troubleshoot.md)
+* [I think something is broken. How do I troubleshoot SSPR?](active-directory-passwords-troubleshoot.md)
 * [Başka bir yerde ele alınmayan bir sorum var](active-directory-passwords-faq.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory Kimlik Koruması bildirimleri | Microsoft Docs
-description: Bildirimlerin araştırma etkinliklerinizi nasıl desteklediğini öğrenin.
+title: Azure Active Directory Identity Protection notifications
+description: Learn how notifications support your investigation activities.
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -11,60 +11,60 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81452f4d1f77c07222bbff05093a7e8d5d0a1bee
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 0c83aa6e476bbd898999fb6efe490c7847a809ff
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72887552"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74382163"
 ---
-# <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Kimlik Koruması bildirimleri
+# <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Identity Protection notifications
 
-Azure AD Kimlik Koruması, Kullanıcı riskini ve risk algılamalarını yönetmenize yardımcı olmak üzere iki tür otomatik bildirim e-postası gönderir:
+Azure AD Identity Protection sends two types of automated notification emails to help you manage user risk and risk detections:
 
-- Risk altındaki kullanıcılar e-posta algıladı
-- Haftalık Özet e-postası
+- Users at risk detected email
+- Weekly digest email
 
-Bu makalede her iki bildirim e-postası için bir genel bakış sunulmaktadır.
+This article provides you with an overview of both notification emails.
 
-## <a name="users-at-risk-detected-email"></a>Risk altındaki kullanıcılar e-posta algıladı
+## <a name="users-at-risk-detected-email"></a>Users at risk detected email
 
-Risk altında algılanan bir hesaba yanıt olarak Azure AD Kimlik Koruması, **risk altındaki kullanıcılar** konu olarak algılanan bir e-posta uyarısı oluşturur. E-posta, **[risk için Işaretlenmiş kullanıcılar](../reports-monitoring/concept-user-at-risk.md)** raporu için bir bağlantı içerir. En iyi uygulama olarak, risk altındaki kullanıcıları hemen araştırmanız gerekir.
+In response to a detected account at risk, Azure AD Identity Protection generates an email alert with **Users at risk detected** as subject. The email includes a link to the **[Users flagged for risk](../reports-monitoring/concept-user-at-risk.md)** report. As a best practice, you should immediately investigate the users at risk.
 
-Bu uyarının yapılandırması, uyarının oluşturulmasını istediğiniz Kullanıcı risk düzeyini belirtmenize olanak tanır. Bu e-posta, kullanıcının risk düzeyi belirtdiklerinize ulaştığında oluşturulacaktır; Bununla birlikte, risk bu Kullanıcı risk düzeyine geçtikten sonra bu kullanıcı için e-posta uyarılarını tespit eden yeni kullanıcıları almazsınız. Örneğin, ilkeyi orta Kullanıcı riski üzerine uyarı olarak ayarlarsanız ve Kullanıcı John, orta riske geçerse, kullanıcılardan John için algılanan risk için e-posta olduğunu görürsünüz. Ancak, John daha sonra yüksek riske geçerse veya ek risk algılamaları varsa, risk tespit eden ikinci bir Kullanıcı almazsınız.
+The configuration for this alert allows you to specify at what user risk level you want the alert to be generated. The email will be generated when the user's risk level reaches what you have specified; however, you will not receive new users at risk detected email alerts for this user after they move to this user risk level. For example, if you set the policy to alert on medium user risk and your user John moves to medium risk, you will receive the users at risk detected email for John. However, you will not receive a second user at risk detected alert if John then moves to high risk or has additional risk detections.
 
-![Risk altındaki kullanıcılar e-posta algıladı](./media/howto-identity-protection-configure-notifications/01.png)
+![Users at risk detected email](./media/howto-identity-protection-configure-notifications/01.png)
 
-### <a name="configure-users-at-risk-detected-alerts"></a>Risk halinde algılanan kullanıcıları yapılandırma uyarıları
+### <a name="configure-users-at-risk-detected-alerts"></a>Configure users at risk detected alerts
 
-Yönetici olarak şunları yapabilirsiniz:
+As an administrator, you can set:
 
-- **Bu e-postanın oluşturulmasını tetikleyen Kullanıcı risk düzeyi** -varsayılan olarak, risk düzeyi "yüksek" riskli olarak ayarlanır.
-- **Bu e-postanın alıcıları** varsayılan olarak tüm genel yöneticileri içerir. Genel Yöneticiler, diğer genel Yöneticiler, güvenlik yöneticileri, güvenlik okuyucularını da alıcı olarak ekleyebilir.
-   - İsteğe bağlı olarak, **uyarı bildirimleri almak için ek e-postalar ekleyebilirsiniz** . Bu özellik bir önizlemedir ve tanımlanan kullanıcılar Azure Portal bağlantılı raporları görüntülemek için uygun izinlere sahip olmalıdır.
+- **The user risk level that triggers the generation of this email** - By default, the risk level is set to “High” risk.
+- **The recipients of this email** - By default, recipients include all Global Admins. Global Admins can also add other Global Admins, Security Admins, Security Readers as recipients.
+   - Optionally you can **Add additional emails to receive alert notifications** this feature is a preview and users defined must have the appropriate permissions to view the linked reports in the Azure portal.
 
-Risk altındaki **Azure Portal** Kullanıcı e-postalarını **Azure Active Directory** > **güvenlik** > **kimlik koruması** > **kullanıcıların, riskli uyarılar algıladığına**yönelik olarak yapılandırın.
+Configure the users at risk email in the **Azure portal** under **Azure Active Directory** > **Security** > **Identity Protection** > **Users at risk detected alerts**.
 
-## <a name="weekly-digest-email"></a>Haftalık Özet e-postası
+## <a name="weekly-digest-email"></a>Weekly digest email
 
-Haftalık Özet e-postası yeni risk algılamaları özetini içerir.  
-Şunları içerir:
+The weekly digest email contains a summary of new risk detections.  
+It includes:
 
 - Risk altındaki kullanıcılar
-- Şüpheli etkinlikler
-- Algılanan güvenlik açıkları
-- Kimlik koruması 'nda ilgili raporların bağlantıları
+- Suspicious activities
+- Detected vulnerabilities
+- Links to the related reports in Identity Protection
 
-![Haftalık Özet e-postası](./media/howto-identity-protection-configure-notifications/400.png)
+![Weekly digest email](./media/howto-identity-protection-configure-notifications/400.png)
 
-Varsayılan olarak, alıcılar tüm genel yöneticileri içerir. Genel Yöneticiler, diğer genel Yöneticiler, güvenlik yöneticileri, güvenlik okuyucularını da alıcı olarak ekleyebilir.
+By default, recipients include all Global Admins. Global Admins can also add other Global Admins, Security Admins, Security Readers as recipients.
 
-### <a name="configure-weekly-digest-email"></a>Haftalık Özet e-postasını Yapılandırma
+### <a name="configure-weekly-digest-email"></a>Configure weekly digest email
 
-Yönetici olarak, haftalık bir Özet e-postası göndermeyi veya kapatmayı değiştirebilir ve e-postayı almak için atanan kullanıcıları seçebilirsiniz.
+As an administrator, you can switch sending a weekly digest email on or off and choose the users assigned to receive the email.
 
-**Azure portal** **Azure Active Directory** altındaki haftalık özet e-postasını > **güvenlik** > **kimlik koruması** > **Haftalık Özet**olarak yapılandırın.
+Configure the weekly digest email in the **Azure portal** under **Azure Active Directory** > **Security** > **Identity Protection** > **Weekly digest**.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Azure Active Directory Kimlik Koruması](../active-directory-identityprotection.md)
+- [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)
