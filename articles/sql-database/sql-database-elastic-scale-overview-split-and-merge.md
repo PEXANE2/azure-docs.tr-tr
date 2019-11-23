@@ -1,6 +1,6 @@
 ---
 title: Ölçeği genişletilen bulut veritabanları arasında veri taşıma
-description: Elastik veritabanı API 'Leri kullanarak parçaların nasıl düzenleneceğini ve verileri şirket içinde barındırılan bir hizmet aracılığıyla nasıl taşıyabileceğinizi açıklar.
+description: Explains how to manipulate shards and move data via a self-hosted service using elastic database APIs.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -11,264 +11,270 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 00f579017ce4dd79e913565ee27698398b5feb38
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 8b0db4a1e55b53165e40e176834d66b62926e24b
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823598"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74421564"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Ölçeği genişletilen bulut veritabanları arasında veri taşıma
 
-Bir hizmet geliştiricisi olarak yazılımınız varsa ve uygulamanız büyük ölçüde talep alıyorsa, büyümeye uyum sağlaması gerekir. Daha fazla veritabanı (parça) ekleyebilirsiniz. Veri bütünlüğünü kesintiye uğratmadan verileri yeni veritabanlarına nasıl dağıtırın? Verileri kısıtlanmış veritabanlarından yeni veritabanlarına taşımak için **bölünmüş birleştirme aracını** kullanın.  
+If you are a Software as a Service developer, and suddenly your app undergoes tremendous demand, you need to accommodate the growth. So you add more databases (shards). How do you redistribute the data to the new databases without disrupting the data integrity? Use the **split-merge tool** to move data from constrained databases to the new databases.  
 
-Bölünmüş birleştirme aracı bir Azure Web hizmeti olarak çalışır. Yönetici veya geliştirici, farklı veritabanları (parçalar) arasında parçaları (parçalardan veriler) taşımak için aracı kullanır. Araç, hizmet meta veri veritabanını korumak için parça eşleme yönetimini kullanır ve tutarlı eşlemeler sağlar.
+The split-merge tool runs as an Azure web service. An administrator or developer uses the tool to move shardlets (data from a shard) between different databases (shards). The tool uses shard map management to maintain the service metadata database, and ensure consistent mappings.
 
 ![Genel Bakış][1]
 
-## <a name="download"></a>İndir
+## <a name="download"></a>İndirin
 
-[Microsoft. Azure. SqlDatabase. Elayapışscale. Service. SplitMerge](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/)
+[Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/)
 
 ## <a name="documentation"></a>Belgeler
 
-1. [Elastik veritabanı bölünmüş birleştirme araç öğreticisi](sql-database-elastic-scale-configure-deploy-split-and-merge.md)
-2. [Bölünmüş birleştirme güvenlik yapılandırması](sql-database-elastic-scale-split-merge-security-configuration.md)
-3. [Bölünmüş birleştirme güvenlik konuları](sql-database-elastic-scale-split-merge-security-configuration.md)
+1. [Elastic database Split-Merge tool tutorial](sql-database-elastic-scale-configure-deploy-split-and-merge.md)
+2. [Split-Merge security configuration](sql-database-elastic-scale-split-merge-security-configuration.md)
+3. [Split-merge security considerations](sql-database-elastic-scale-split-merge-security-configuration.md)
 4. [Parça eşleme yönetimi](sql-database-elastic-scale-shard-map-management.md)
 5. [Ölçeği genişletilen mevcut veritabanlarını geçirme](sql-database-elastic-convert-to-use-elastic-tools.md)
-6. [Elastik veritabanı araçları](sql-database-elastic-scale-introduction.md)
-7. [Elastik veritabanı araçları sözlüğü](sql-database-elastic-scale-glossary.md)
+6. [Elastic database tools](sql-database-elastic-scale-introduction.md)
+7. [Elastic Database tools glossary](sql-database-elastic-scale-glossary.md)
 
-## <a name="why-use-the-split-merge-tool"></a>Ayırma-birleştirme aracını neden kullanmalısınız?
+## <a name="why-use-the-split-merge-tool"></a>Why use the split-merge tool
 
-- **Yapılandırmada**
+- **Flexibility**
 
-  Uygulamaların tek bir Azure SQL DB veritabanı sınırlarının ötesine esnek bir şekilde genişlemek gerekir. Bütünlüğü korurken verileri gerektiğinde yeni veritabanlarına taşımak için aracını kullanın.
+  Applications need to stretch flexibly beyond the limits of a single Azure SQL DB database. Use the tool to move data as needed to new databases while retaining integrity.
 
-- **Büyütmek için Böl**
+- **Split to grow**
 
-  Patlayıcı büyümeyi işlemek için genel kapasiteyi artırmak amacıyla, verileri birleştirerek ve kapasite ihtiyaçları karşılanana kadar artımlı olarak daha fazla veritabanına dağıtarak ek kapasite oluşturun. Bu, **bölünmüş** özelliğin ana bir örneğidir.
+  To increase overall capacity to handle explosive growth, create additional capacity by sharding the data and by distributing it across incrementally more databases until capacity needs are fulfilled. This is a prime example of the **split** feature.
 
-- **Küçültme ile Birleştir**
+- **Merge to shrink**
 
-  Bir işletmenin mevsimsel doğası nedeniyle kapasite 'nin küçültülmesi gerekir. Araç, iş yavaştığı sırada ölçeği daha az ölçek birimlerine ölçeklendirmenize imkan tanır. Elastik ölçek bölünmüş birleştirme hizmetindeki ' Merge ' özelliği bu gereksinimi kapsıyor.
+  Capacity needs shrink due to the seasonal nature of a business. The tool lets you scale down to fewer scale units when business slows. The ‘merge’ feature in the Elastic Scale split-merge Service covers this requirement.
 
-- **Parçalamayı taşıyarak etkin noktaları yönetme**
+- **Manage hotspots by moving shardlets**
 
-  Veritabanı başına birden çok kiracı ile, parçaların parçalara ayrılması bazı parçalar üzerinde kapasite performans sorunlarına neden olabilir. Bu, parçaları yeniden ayırmayı veya meşgul parçaların yeni veya daha az kullanılan parçalara taşınmasını gerektirir.
+  With multiple tenants per database, the allocation of shardlets to shards can lead to capacity bottlenecks on some shards. This requires re-allocating shardlets or moving busy shardlets to new or less utilized shards.
 
-## <a name="concepts--key-features"></a>Kavramlar & temel özellikler
+## <a name="concepts--key-features"></a>Concepts & key features
 
-- **Müşteri tarafından barındırılan hizmetler**
+- **Customer-hosted services**
 
-  Bölünmüş birleştirme, müşteri tarafından barındırılan bir hizmet olarak dağıtılır. Hizmeti Microsoft Azure aboneliğinizde dağıtmanız ve barındırmalısınız. NuGet 'den indirdiğinizde yüklediğiniz paket, belirli dağıtımınız için bilgilerle tamamlanacak bir yapılandırma şablonu içerir. Ayrıntılar için [bölünmüş birleştirme öğreticisine](sql-database-elastic-scale-configure-deploy-split-and-merge.md) bakın. Hizmet Azure aboneliğinizde çalıştığından, hizmetin güvenlik yönlerinin çoğunu denetleyebilir ve yapılandırabilirsiniz. Varsayılan şablon, SSL, sertifika tabanlı istemci kimlik doğrulaması, depolanan kimlik bilgileri için şifreleme, DoS koruma ve IP kısıtlamaları yapılandırma seçeneklerini içerir. Aşağıdaki belge [bölünmüş birleştirme güvenlik yapılandırmasındaki](sql-database-elastic-scale-split-merge-security-configuration.md)güvenlik yönleri hakkında daha fazla bilgi edinebilirsiniz.
+  The split-merge is delivered as a customer-hosted service. You must deploy and host the service in your Microsoft Azure subscription. The package you download from NuGet contains a configuration template to complete with the information for your specific deployment. See the [split-merge tutorial](sql-database-elastic-scale-configure-deploy-split-and-merge.md) for details. Since the service runs in your Azure subscription, you can control and configure most security aspects of the service. The default template includes the options to configure SSL, certificate-based client authentication, encryption for stored credentials, DoS guarding and IP restrictions. You can find more information on the security aspects in the following document [split-merge security configuration](sql-database-elastic-scale-split-merge-security-configuration.md).
 
-  Varsayılan dağıtılan hizmet bir çalışan ve bir Web rolüyle çalışır. Her biri Azure Cloud Services a1 VM boyutunu kullanır. Paketi dağıttığınızda bu ayarları değiştiremeyeceğiniz sürece, çalışan bulut hizmetindeki başarılı bir dağıtımdan sonra (Azure portal aracılığıyla) bu ayarları değiştirebilirsiniz. Çalışan rolünün teknik nedenlerle tek bir örnek için yapılandırılmamalıdır.
+  The default deployed service runs with one worker and one web role. Each uses the A1 VM size in Azure Cloud Services. While you cannot modify these settings when deploying the package, you could change them after a successful deployment in the running cloud service, (through the Azure portal). Note that the worker role must not be configured for more than a single instance for technical reasons.
 
-- **Parça eşleme tümleştirmesi**
+- **Shard map integration**
 
-  Bölünmüş birleştirme hizmeti, uygulamanın parça eşlemesiyle etkileşime girer. Aralıkları ayırmak veya birleştirmek için bölünmüş birleştirme hizmetini kullanırken ya da parçalar arasındaki parçaları taşımak için, hizmet otomatik olarak parça eşlemini güncel tutar. Bunu yapmak için hizmet, uygulamanın parça eşleme Yöneticisi veritabanına bağlanır ve bölme/birleştirme/taşıma isteği ilerlemesiyle aralıkları ve eşlemeleri tutar. Bu, bölünmüş birleştirme işlemleri yapıldığında parça haritasının her zaman güncel bir görünüm sunmasını sağlar. Bölünmüş, birleştirme ve parçalanm taşıma işlemleri, kaynak parçalardan hedef parça olarak bir toplu iş izin verlim grubu taşıyarak uygulanır. Parça taşıma işlemi sırasında, parçalara geçerli toplu iş, parça eşlemesinde çevrimdışı olarak işaretlenir ve **Openconnectionforkey** API kullanılarak verilere bağımlı yönlendirme bağlantıları için kullanılamaz.
+  The split-merge service interacts with the shard map of the application. When using the split-merge service to split or merge ranges or to move shardlets between shards, the service automatically keeps the shard map up-to-date. To do so, the service connects to the shard map manager database of the application and maintains ranges and mappings as split/merge/move requests progress. This ensures that the shard map always presents an up-to-date view when split-merge operations are going on. Split, merge and shardlet movement operations are implemented by moving a batch of shardlets from the source shard to the target shard. During the shardlet movement operation the shardlets subject to the current batch are marked as offline in the shard map and are unavailable for data-dependent routing connections using the **OpenConnectionForKey** API.
 
-- **Tutarlı kıardlet bağlantıları**
+- **Consistent shardlet connections**
 
-  Veri taşıma işlemi yeni bir parçalar toplu işi için başladığında, parça eşleme API 'Leri, parçalara yönelik olan ve parça Haritası API 'Lerinden sonraki bağlantılar, veri taşıma işlemi olduğu sürece engellenir. Tutarsızlıklardan kaçınmak için devam ediyor. Aynı parça üzerindeki diğer parçalardaki bağlantılar da sonlandırılabilir, ancak yeniden denemeye hemen sonra başarılı olur. Toplu işlem taşındıktan sonra, parçalar hedef parça için çevrimiçi olarak yeniden işaretlenir ve kaynak veriler kaynak parçadan kaldırılır. Bu hizmet, tüm parçalar taşınana kadar her toplu işlem için bu adımları gider. Bu, tüm bölünmüş/birleştirme/taşıma işleminin kursu sırasında birkaç bağlantı sonlandırma işlemine yol açacaktır.  
+  When data movement starts for a new batch of shardlets, any shard-map provided data-dependent routing connections to the shard storing the shardlet are killed and subsequent connections from the shard map APIs to the shardlets are blocked while the data movement is in progress in order to avoid inconsistencies. Connections to other shardlets on the same shard will also get killed, but will succeed again immediately on retry. Once the batch is moved, the shardlets are marked online again for the target shard and the source data is removed from the source shard. The service goes through these steps for every batch until all shardlets have been moved. This will lead to several connection kill operations during the course of the complete split/merge/move operation.  
 
-- **Kıardlet kullanılabilirliğini yönetme**
+- **Managing shardlet availability**
 
-  Yukarıda bahsedildiği gibi, yukarıdaki geçerli yığın toplu işi ile bağlantı altına alınanı sınırlamak, bir kerede tek bir yığın toplu işi için kullanım dışı bir toplu iş grubu kapsamını kısıtlar. Bu, bir bölme veya birleştirme işlemi sırasında tüm parçalar için tüm parçalar çevrimdışı kaldığı bir yaklaşım üzerinde tercih edilir. Tek seferde farklı parçalamayı izin veren olarak tanımlanan bir toplu işin boyutu, bir yapılandırma parametresidir. Uygulamanın kullanılabilirlik ve performans gereksinimlerine bağlı olarak, her bölünmüş ve birleştirme işlemi için tanımlanabilir. Parça eşlemesinde kilitlemekte olan aralığın, belirtilen toplu iş boyutundan daha büyük olabileceğini unutmayın. Bunun nedeni, hizmetin, verilerdeki parçalı anahtar değerlerinin gerçek sayısının, toplu iş boyutuyla yaklaşık olarak eşleşmesini sağlayan Aralık boyutunu seçer. Bu, özellikle de ayrılmış parça anahtarları için özel olarak dikkat edilmesi açısından önemlidir.
+  Limiting the connection killing to the current batch of shardlets as discussed above restricts the scope of unavailability to one batch of shardlets at a time. This is preferred over an approach where the complete shard would remain offline for all its shardlets during the course of a split or merge operation. The size of a batch, defined as the number of distinct shardlets to move at a time, is a configuration parameter. It can be defined for each split and merge operation depending on the application’s availability and performance needs. Note that the range that is being locked in the shard map may be larger than the batch size specified. This is because the service picks the range size such that the actual number of sharding key values in the data approximately matches the batch size. This is important to remember in particular for sparsely populated sharding keys.
 
-- **Meta veri depolama**
+- **Metadata storage**
 
-  Bölünmüş birleştirme hizmeti, durumunu korumak ve istek işleme sırasında günlükleri tutmak için bir veritabanı kullanır. Kullanıcı bu veritabanını aboneliklerinde oluşturur ve hizmet dağıtımı için yapılandırma dosyasında bağlantı dizesini sağlar. Kullanıcının kuruluşundaki Yöneticiler ayrıca, istek ilerlemesini gözden geçirmek ve olası hatalarla ilgili ayrıntılı bilgileri araştırmak için bu veritabanına bağlanabilir.
+  The split-merge service uses a database to maintain its status and to keep logs during request processing. The user creates this database in their subscription and provides the connection string for it in the configuration file for the service deployment. Administrators from the user’s organization can also connect to this database to review request progress and to investigate detailed information regarding potential failures.
 
-- **Parçalı tanıma**
+- **Sharding-awareness**
 
-  Bölünmüş birleştirme hizmeti, (1) parçalı tablolar, (2) başvuru tabloları ve (3) normal tablo arasında ayrım yapar. Bölünmüş/birleştirme/taşıma işleminin semantiği, kullanılan tablo türüne bağlıdır ve aşağıdaki gibi tanımlanır:
+  The split-merge service differentiates between (1) sharded tables, (2) reference tables, and (3) normal tables. The semantics of a split/merge/move operation depend on the type of the table used and are defined as follows:
 
-  - **Parçalı tablolar**
+  - **Sharded tables**
 
-    Bölünmüş, birleştirme ve taşıma işlemleri, parçalanarak kaynaktan hedef parçasına geçiş yapmanızı sağlar. Genel isteğin başarıyla tamamlanmasından sonra, bu parçalar kaynak üzerinde artık mevcut değildir. Hedef tabloların hedef parça üzerinde mevcut olması gerektiğini ve işlem işlenmeden önce hedef aralıktaki verileri içermemesi gerektiğini unutmayın.
+    Split, merge, and move operations move shardlets from source to target shard. After successful completion of the overall request, those shardlets are no longer present on the source. Note that the target tables need to exist on the target shard and must not contain data in the target range prior to processing of the operation.
 
-  - **Başvuru tabloları**
+  - **Reference tables**
 
-    Başvuru tablolarında, bölünmüş, birleştirme ve taşıma işlemleri verileri kaynaktan hedef parçaya kopyalar. Ancak, hedefte bu tabloda zaten bir satır varsa, belirli bir tablo için hedef parça üzerinde hiçbir değişiklik gerçekleşmediğini unutmayın. İşlenmek üzere herhangi bir başvuru tablosu kopyalama işlemi için tablo boş olmalıdır.
+    For reference tables, the split, merge and move operations copy the data from the source to the target shard. Note, however, that no changes occur on the target shard for a given table if any row is already present in this table on the target. The table has to be empty for any reference table copy operation to get processed.
 
-  - **Diğer tablolar**
+  - **Other Tables**
 
-    Diğer tablolar, bir bölünmüş ve birleştirme işleminin kaynağında ya da hedefinde bulunabilir. Bölünmüş birleştirme hizmeti, veri taşıma veya kopyalama işlemleri için bu tabloları yoksayar. Ancak, kısıtlamalar söz konusu olduğunda bu işlemleri kesintiye uğratabilecekleri unutulmamalıdır.
+    Other tables can be present on either the source or the target of a split and merge operation. The split-merge service disregards these tables for any data movement or copy operations. Note, however, that they can interfere with these operations in case of constraints.
 
-    Başvuru ile parçalı tablolardaki bilgiler, parça eşlemesindeki `SchemaInfo` API 'Leri tarafından sağlanır. Aşağıdaki örnek, belirli bir parça eşleme Yöneticisi nesnesinde bu API 'lerin kullanımını göstermektedir:
+    The information on reference vs. sharded tables is provided by the `SchemaInfo` APIs on the shard map. The following example illustrates the use of these APIs on a given shard map manager object:
 
     ```csharp
     // Create the schema annotations
     SchemaInfo schemaInfo = new SchemaInfo();
 
-    // Reference tables
+    // reference tables
     schemaInfo.Add(new ReferenceTableInfo("dbo", "region"));
     schemaInfo.Add(new ReferenceTableInfo("dbo", "nation"));
 
-    // Sharded tables
+    // sharded tables
     schemaInfo.Add(new ShardedTableInfo("dbo", "customer", "C_CUSTKEY"));
     schemaInfo.Add(new ShardedTableInfo("dbo", "orders", "O_CUSTKEY"));
-    // Publish
+
+    // publish
     smm.GetSchemaInfoCollection().Add(Configuration.ShardMapName, schemaInfo);
     ```
 
-    ' Region ' ve ' Nation ' tabloları başvuru tabloları olarak tanımlanır ve bölünmüş/birleştirme/taşıma işlemleri ile kopyalanır. sırasıyla ' Customer ' ve ' Orders ', parçalı tablolar olarak tanımlanmıştır. `C_CUSTKEY` ve `O_CUSTKEY` parçalı anahtar olarak görev yapar.
+    The tables ‘region’ and ‘nation’ are defined as reference tables and will be copied with split/merge/move operations. ‘customer’ and ‘orders’ in turn are defined as sharded tables. `C_CUSTKEY` and `O_CUSTKEY` serve as the sharding key.
 
-- **Bilgi tutarlılığı**
+- **Referential Integrity**
 
-  Bölünmüş birleştirme hizmeti, tablolar arasındaki bağımlılıkları analiz eder ve başvuru tablolarının ve parçalanmalarına yönelik işlemleri hazırlamak için yabancı anahtar birincil anahtar ilişkilerini kullanır. Genel olarak, başvuru tabloları ilk olarak bağımlılık sırasında kopyalanır, sonra da her bir toplu iş içindeki bağımlılıkları sırasıyla silinir. Bu, hedef parçada FK-PK kısıtlamalarının yeni veriler ulaştığı için kabul edilecek şekilde gereklidir.
+  The split-merge service analyzes dependencies between tables and uses foreign key-primary key relationships to stage the operations for moving reference tables and shardlets. In general, reference tables are copied first in dependency order, then shardlets are copied in order of their dependencies within each batch. This is necessary so that FK-PK constraints on the target shard are honored as the new data arrives.
 
-- **Parça Haritası tutarlılığı ve nihai tamamlama**
+- **Shard Map Consistency and Eventual Completion**
 
-  Başarısızlık durumunda, bölünmüş birleştirme hizmeti herhangi bir kesinti ve amaçlar sonrasında devam eden istekleri tamamladıktan sonra işlemleri sürdürür. Ancak, hedef parça, onarım ötesinde kayıp veya tehlikeye atıldığında, kurtarılamaz durumlar olabilir. Bu koşullarda, taşınması beklenen bazı parçalar kaynak parça üzerinde olmaya devam edebilir. Hizmet, yalnızca gerekli veriler hedefe başarıyla kopyalandıktan sonra eşlemelerin güncelleştirilmesini sağlar. Parçalarla ilgili tüm veriler hedefe kopyalandıktan sonra ve karşılık gelen eşlemeler başarıyla güncelleştirildikten sonra yalnızca kaynakta silinir. Silme işlemi, hedef parça üzerinde zaten çevrimiçi olduğu sürece arka planda gerçekleşir. Bölünmüş birleştirme hizmeti, parça eşlemesinde depolanan eşlemelerin doğruluğunu her zaman sağlar.
+  In the presence of failures, the split-merge service resumes operations after any outage and aims to complete any in progress requests. However, there may be unrecoverable situations, e.g., when the target shard is lost or compromised beyond repair. Under those circumstances, some shardlets that were supposed to be moved may continue to reside on the source shard. The service ensures that shardlet mappings are only updated after the necessary data has been successfully copied to the target. Shardlets are only deleted on the source once all their data has been copied to the target and the corresponding mappings have been updated successfully. The deletion operation happens in the background while the range is already online on the target shard. The split-merge service always ensures correctness of the mappings stored in the shard map.
 
-## <a name="the-split-merge-user-interface"></a>Bölünmüş birleştirme Kullanıcı arabirimi
+## <a name="the-split-merge-user-interface"></a>The split-merge user interface
 
-Bölünmüş birleştirme hizmeti paketi bir çalışan rolü ve bir Web rolü içerir. Web rolü, bölünmüş birleştirme isteklerini etkileşimli bir şekilde göndermek için kullanılır. Kullanıcı arabiriminin ana bileşenleri şunlardır:
+The split-merge service package includes a worker role and a web role. The web role is used to submit split-merge requests in an interactive way. The main components of the user interface are as follows:
 
-- **İşlem türü**
+- **Operation Type**
 
-  İşlem türü, bu istek için hizmet tarafından gerçekleştirilen işlem türünü denetleyen bir radyo düğmesidir. Bölünmüş, birleştirme ve taşıma senaryoları arasından seçim yapabilirsiniz. Ayrıca, daha önce gönderilen bir işlemi iptal edebilirsiniz. Aralık parça haritaları için bölünmüş, birleştirme ve taşıma isteklerini kullanabilirsiniz. Liste parça haritaları yalnızca taşıma işlemlerini destekler.
+  The operation type is a radio button that controls the kind of operation performed by the service for this request. You can choose between the split, merge and move scenarios. You can also cancel a previously submitted operation. You can use split, merge and move requests for range shard maps. List shard maps only support move operations.
 
-- **Parça Haritası**
+- **Shard Map**
 
-  İstek parametrelerinin sonraki bölümü parça eşlemesiyle ilgili bilgileri ve parça eşlemenizi barındıran veritabanını içerir. Özellikle, shardmap 'i barındıran Azure SQL veritabanı sunucusunun ve veritabanının adını, parça eşleme veritabanına bağlanmak için kimlik bilgilerini ve son olarak parça haritasının adını belirtmeniz gerekir. Şu anda işlem yalnızca tek bir kimlik bilgileri kümesi kabul eder. Bu kimlik bilgilerinin parça eşlemesinde ve parçaları üzerindeki Kullanıcı verilerinde değişiklik yapmak için yeterli izinlere sahip olması gerekir.
+  The next section of request parameters covers information about the shard map and the database hosting your shard map. In particular, you need to provide the name of the Azure SQL Database server and database hosting the shardmap, credentials to connect to the shard map database, and finally the name of the shard map. Currently, the operation only accepts a single set of credentials. These credentials need to have sufficient permissions to perform changes to the shard map as well as to the user data on the shards.
 
-- **Kaynak aralığı (bölme ve birleştirme)**
+- **Source Range (split and merge)**
 
-  Bölünmüş ve birleştirme işlemi, düşük ve yüksek anahtarını kullanarak bir aralığı işler. Sınırsız bir yüksek anahtar değeri olan bir işlem belirtmek için, "yüksek anahtar en yüksek" onay kutusunu işaretleyin ve yüksek anahtar alanını boş bırakın. Belirttiğiniz Aralık anahtarı değerlerinin, parça Haritalarınızın eşlemesiyle bir eşleme ve sınırlarının tam olarak eşleşmesi gerekmez. Tüm hizmette herhangi bir Aralık sınırı belirtmezseniz, en yakın aralığı sizin için otomatik olarak çıkarmaz. Belirli bir parça eşlemesindeki geçerli eşlemeleri almak için GetMappings. ps1 PowerShell betiğini kullanabilirsiniz.
+  A split and merge operation processes a range using its low and high key. To specify an operation with an unbounded high key value, check the “High key is max” check box and leave the high key field empty. The range key values that you specify do not need to precisely match a mapping and its boundaries in your shard map. If you do not specify any range boundaries at all the service will infer the closest range for you automatically. You can use the GetMappings.ps1 PowerShell script to retrieve the current mappings in a given shard map.
 
-- **Bölünmüş kaynak davranışı (bölünmüş)**
+- **Split Source Behavior (split)**
 
-  Bölme işlemleri için, kaynak aralığın bölüneceği noktayı tanımlayın. Bunu, bölünmesinin gerçekleşmesini istediğiniz yere parçalama anahtarı vererek yapabilirsiniz. Aralığın alt kısmının (bölünmüş anahtar hariç) mi taşınacağını yoksa üst parçanın (bölünmüş anahtar dahil) mi taşınacağını isteyip istemediğinizi belirtin radyo düğmesini kullanın.
+  For split operations, define the point to split the source range. You do this by providing the sharding key where you want the split to occur. Use the radio button specify whether you want the lower part of the range (excluding the split key) to move, or whether you want the upper part to move (including the split key).
 
-- **Kaynak KIM (taşıma)**
+- **Source Shardlet (move)**
 
-  Taşıma işlemleri, bölünmüş veya birleştirme işlemlerinden farklıdır, bu da kaynağı tanımlamaya yönelik bir Aralık gerektirmez. Taşıma kaynağı yalnızca taşımayı planladığınız parçalama anahtar değeri tarafından tanımlanır.
+  Move operations are different from split or merge operations as they do not require a range to describe the source. A source for move is simply identified by the sharding key value that you plan to move.
 
-- **Hedef parça (bölünmüş)**
+- **Target Shard (split)**
 
-  Bölünmüş işlemin kaynağı hakkında bilgi sağladıktan sonra, hedef için Azure SQL veritabanı sunucusu ve veritabanı adı sağlayarak verilerin nereye kopyalanmasını istediğinizi tanımlamanız gerekir.
+  Once you have provided the information on the source of your split operation, you need to define where you want the data to be copied to by providing the Azure SQL Db server and database name for the target.
 
-- **Hedef Aralık (birleştirme)**
+- **Target Range (merge)**
 
-  Birleştirme işlemleri, parçalamayı var olan bir parçaya taşır. Mevcut parçayı, birleştirmek istediğiniz mevcut aralığın Aralık sınırlarını sağlayarak belirlersiniz.
+  Merge operations move shardlets to an existing shard. You identify the existing shard by providing the range boundaries of the existing range that you want to merge with.
 
-- **Toplu iş boyutu**
+- **Batch Size**
 
-  Toplu iş boyutu, veri taşıma sırasında aynı anda çevrimdışı olacak parçalar sayısını denetler. Bu, kısma izin veren uzun süreli kapalı kalma süresine duyarlı olduğunuzda daha küçük değerler kullanabileceğiniz bir tamsayı değeridir. Daha büyük değerler, belirli bir parçanın çevrimdışı olmasına karşın performansı iyileştirebilecek süreyi artıracaktır.
+  The batch size controls the number of shardlets that will go offline at a time during the data movement. This is an integer value where you can use smaller values when you are sensitive to long periods of downtime for shardlets. Larger values will increase the time that a given shardlet is offline but may improve performance.
 
-- **İşlem KIMLIĞI (Iptal)**
+- **Operation ID (Cancel)**
 
-  Artık gerekli olmayan devam eden bir işlem varsa, bu alanda işlem KIMLIĞI sağlayarak işlemi iptal edebilirsiniz. İşlem KIMLIĞINI istek durumu tablosundan alabilirsiniz (bkz. Bölüm 8,1) veya isteği gönderdiğiniz Web tarayıcısında çıkış.
+  If you have an ongoing operation that is no longer needed, you can cancel the operation by providing its operation ID in this field. You can retrieve the operation ID from the request status table (see Section 8.1) or from the output in the web browser where you submitted the request.
 
-## <a name="requirements-and-limitations"></a>Gereksinimler ve sınırlamalar
+## <a name="requirements-and-limitations"></a>Requirements and Limitations
 
-Bölünmüş birleştirme hizmetinin geçerli uygulanması aşağıdaki gereksinimlere ve sınırlamalara tabidir:
+The current implementation of the split-merge service is subject to the following requirements and limitations:
 
-- Parçaların bu parçalar üzerinde bir bölünmüş birleştirme işleminden önce bulunması ve parça eşlemesinde kayıtlı olması gerekir.
-- Hizmet, işlemlerinin bir parçası olarak tabloları veya diğer veritabanı nesnelerini otomatik olarak oluşturmaz. Bu, tüm parçalı tablolar ve başvuru tabloları için şemanın, herhangi bir bölme/birleştirme/taşıma işleminden önce hedef parça üzerinde bulunması gerektiği anlamına gelir. Özel olarak bulunan parçalı tablolar, yeni parçaların bölünmüş/birleştirme/taşıma işlemi tarafından ekleneceği aralıkta boş olması gerekir. Aksi takdirde, işlem hedef parça üzerinde ilk tutarlılık denetimi başarısız olur. Ayrıca, başvuru verileri yalnızca başvuru tablosu boş ise ve başvuru tablolarında diğer eşzamanlı yazma işlemleriyle ilgili tutarlılık garantisi yoksa kopyalanır. Bunu öneririz: bölünmüş/birleştirme işlemlerini çalıştırırken, başka bir yazma işlemi başvuru tablolarında değişiklik yapalım.
-- Hizmet, büyük parçalar için performansı ve güvenilirliği artırmak üzere parçalama anahtarını içeren benzersiz bir dizin veya anahtarla belirlenen satır kimliğini kullanır. Bu, hizmetin verileri yalnızca parçalı anahtar değerinden daha ayrıntılı bir şekilde taşımasına olanak tanır. Bu, işlem sırasında gereken maksimum günlük alanı ve kilitleme miktarını azaltmaya yardımcı olur. Bu tabloyu bölme/birleştirme/taşıma istekleri ile kullanmak istiyorsanız, belirli bir tabloda bulunan parçalı anahtar dahil olmak üzere benzersiz bir dizin veya birincil anahtar oluşturmayı düşünün. Performans nedenleriyle, parçalı anahtar anahtar veya dizinde önde gelen sütun olmalıdır.
-- İstek işleme sürecinde, bazı kıardı verileri hem kaynak hem de hedef parça üzerinde bulunabilir. Bu, kıarde hareketi sırasında hatalara karşı korunmak için gereklidir. Bölünmüş birleştirme ile parça eşleme tümleştirmesi, parça eşlemesindeki **Openconnectionforkey** yöntemi kullanılarak veriye bağımlı yönlendirme API 'leri üzerinden bağlantıların tutarsız bir ara durum görmemesini sağlar. Ancak, **Openconnectionforkey** metodunu kullanmadan kaynak veya hedef parçalara bağlanırken, ayırma/birleştirme/taşıma istekleri devam edildiğinde tutarsız ara durumlar görünebilir. Bu bağlantılar, bağlantının temelindeki zamanlamaya veya parçaya göre kısmi veya yinelenen sonuçları gösterebilir. Bu kısıtlama Şu anda elastik ölçekli çok parçalı-sorgular tarafından yapılan bağlantıları içerir.
-- Bölünmüş birleştirme hizmeti için meta veri veritabanı farklı roller arasında paylaşılmamalıdır. Örneğin, hazırlama aşamasında çalışan bölünmüş birleştirme hizmetinin bir rolü, üretim rolünden farklı bir meta veri veritabanına işaret ediyor olmalıdır.
+- The shards need to exist and be registered in the shard map before a split-merge operation on these shards can be performed.
+- The service does not create tables or any other database objects automatically as part of its operations. This means that the schema for all sharded tables and reference tables needs to exist on the target shard prior to any split/merge/move operation. Sharded tables in particular are required to be empty in the range where new shardlets are to be added by a split/merge/move operation. Otherwise, the operation will fail the initial consistency check on the target shard. Also note that reference data is only copied if the reference table is empty and that there are no consistency guarantees with regard to other concurrent write operations on the reference tables. We recommend this: when running split/merge operations, no other write operations make changes to the reference tables.
+- The service relies on row identity established by a unique index or key that includes the sharding key to improve performance and reliability for large shardlets. This allows the service to move data at an even finer granularity than just the sharding key value. This helps to reduce the maximum amount of log space and locks that are required during the operation. Consider creating a unique index or a primary key including the sharding key on a given table if you want to use that table with split/merge/move requests. For performance reasons, the sharding key should be the leading column in the key or the index.
+- During the course of request processing, some shardlet data may be present both on the source and the target shard. This is necessary to protect against failures during the shardlet movement. The integration of split-merge with the shard map ensures that connections through the data-dependent routing APIs using the **OpenConnectionForKey** method on the shard map do not see any inconsistent intermediate states. However, when connecting to the source or the target shards without using the **OpenConnectionForKey** method, inconsistent intermediate states might be visible when split/merge/move requests are going on. These connections may show partial or duplicate results depending on the timing or the shard underlying the connection. This limitation currently includes the connections made by Elastic Scale Multi-Shard-Queries.
+- The metadata database for the split-merge service must not be shared between different roles. For example, a role of the split-merge service running in staging needs to point to a different metadata database than the production role.
 
 ## <a name="billing"></a>Faturalandırma
 
-Bölünmüş birleştirme hizmeti Microsoft Azure aboneliğinizde bir bulut hizmeti olarak çalışır. Bu nedenle, bulut hizmetleri için ücretler hizmet örneğiniz için geçerlidir. Bölünmüş/birleştirme/taşıma işlemleri sıklıkla gerçekleştirmediğiniz takdirde, bölünmüş birleştirme bulut hizmetinizi silmeniz önerilir. Bu, çalışan veya dağıtılan bulut hizmeti örneklerinin maliyetlerini kaydeder. Her bölme veya birleştirme işlemini gerçekleştirmeniz gerektiğinde, kolayca çalıştırılabilir yapılandırmayı yeniden dağıtabilir ve başlatabilirsiniz.
+The split-merge service runs as a cloud service in your Microsoft Azure subscription. Therefore charges for cloud services apply to your instance of the service. Unless you frequently perform split/merge/move operations, we recommend you delete your split-merge cloud service. That saves costs for running or deployed cloud service instances. You can re-deploy and start your readily runnable configuration whenever you need to perform split or merge operations.
 
 ## <a name="monitoring"></a>İzleme
 
-### <a name="status-tables"></a>Durum tabloları
+### <a name="status-tables"></a>Status tables
 
-Bölünmüş birleştirme hizmeti, tamamlanan ve devam eden isteklerin izlenmesi için meta veri deposu veritabanında **RequestStatus** tablosu sağlar. Tablo, bölünmüş birleştirme hizmetinin bu örneğine gönderilen her bölünmüş birleştirme isteği için bir satır listeler. Her istek için aşağıdaki bilgileri verir:
+The split-merge Service provides the **RequestStatus** table in the metadata store database for monitoring of completed and ongoing requests. The table lists a row for each split-merge request that has been submitted to this instance of the split-merge service. It gives the following information for each request:
 
-- **İlişkin**
+- **Timestamp**
 
-  İsteğin başlatıldığı saat ve tarih.
+  The time and date when the request was started.
 
 - **OperationId**
 
-  İsteği benzersiz bir şekilde tanımlayan GUID. Bu istek hala devam ederken işlemi iptal etmek için de kullanılabilir.
+  A GUID that uniquely identifies the request. This request can also be used to cancel the operation while it is still ongoing.
 
 - **Durum**
 
-  İsteğin geçerli durumu. Devam eden istekler için, isteğin olduğu geçerli aşamayı de listeler.
+  The current state of the request. For ongoing requests, it also lists the current phase in which the request is.
 
 - **CancelRequest**
 
-  İsteğin iptal edilip edilmeyeceğini gösteren bayrak.
+  A flag that indicates whether the request has been canceled.
 
-- **Lemesine**
+- **Progress**
 
-  İşlem için tamamlanma yüzdesi tahmini. 50 değeri, işlemin yaklaşık %50 tamamlandığını gösterir.
+  A percentage estimate of completion for the operation. A value of 50 indicates that the operation is approximately 50% complete.
 
 - **Ayrıntılar**
 
-  Daha ayrıntılı ilerleme raporu sağlayan bir XML değeri. Satır kümeleri kaynaktan hedefe kopyalanırken ilerleme raporu düzenli olarak güncelleştirilir. Hatalar veya özel durumlar söz konusu olduğunda, bu sütunda hata hakkında daha ayrıntılı bilgiler de yer alır.
+  An XML value that provides a more detailed progress report. The progress report is periodically updated as sets of rows are copied from source to target. In case of failures or exceptions, this column also includes more detailed information about the failure.
 
 ### <a name="azure-diagnostics"></a>Azure Tanılama
 
-Bölünmüş birleştirme hizmeti, izleme ve Tanılama için Azure SDK 2,5 temel alınarak Azure Tanılama kullanır. Tanılama yapılandırmasını burada açıklandığı gibi denetlersiniz: [Azure Cloud Services ve sanal makinelerde tanılamayı etkinleştirme](../cloud-services/cloud-services-dotnet-diagnostics.md). İndirme paketi iki tanılama yapılandırması içerir-biri web rolü için bir diğeri de çalışan rolü içindir. Günlük performans sayaçlarını, IIS günlüklerini, Windows olay günlüklerini ve bölünmüş birleştirme uygulama olay günlüklerini içeren tanımları içerir.
+The split-merge service uses Azure Diagnostics based on Azure SDK 2.5 for monitoring and diagnostics. You control the diagnostics configuration as explained here: [Enabling Diagnostics in Azure Cloud Services and Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md). The download package includes two diagnostics configurations - one for the web role and one for the worker role. It includes the definitions to log Performance Counters, IIS logs, Windows Event Logs, and split-merge application event logs.
 
-## <a name="deploy-diagnostics"></a>Tanılamayı dağıt
+## <a name="deploy-diagnostics"></a>Deploy Diagnostics
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-> [!IMPORTANT]
-> PowerShell Azure Resource Manager modülü Azure SQL veritabanı tarafından hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. Bu cmdlet 'ler için bkz. [Azurerd. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır.
 
-NuGet paketi tarafından sunulan Web ve çalışan rolleri için tanılama yapılandırmasını kullanarak izlemeyi ve tanılamayı etkinleştirmek için Azure PowerShell kullanarak aşağıdaki komutları çalıştırın:
+> [!IMPORTANT]
+> The PowerShell Azure Resource Manager module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. For these cmdlets, see [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). The arguments for the commands in the Az module and in the AzureRm modules are substantially identical.
+
+To enable monitoring and diagnostics using the diagnostic configuration for the web and worker roles provided by the NuGet package, run the following commands using Azure PowerShell:
 
 ```powershell
-    $storage_name = "<YourAzureStorageAccount>"
-    $key = "<YourAzureStorageAccountKey"
-    $storageContext = New-AzStorageContext -StorageAccountName $storage_name -StorageAccountKey $key  
-    $config_path = "<YourFilePath>\SplitMergeWebContent.diagnostics.xml"
-    $service_name = "<YourCloudServiceName>"
-    Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -DiagnosticsConfigurationPath $config_path -ServiceName $service_name -Slot Production -Role "SplitMergeWeb"
-    $config_path = "<YourFilePath>\SplitMergeWorkerContent.diagnostics.xml"
-    $service_name = "<YourCloudServiceName>"
-    Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -DiagnosticsConfigurationPath $config_path -ServiceName $service_name -Slot Production -Role "SplitMergeWorker"
+$storageName = "<azureStorageAccount>"
+$key = "<azureStorageAccountKey"
+$storageContext = New-AzStorageContext -StorageAccountName $storageName -StorageAccountKey $key
+$configPath = "<filePath>\SplitMergeWebContent.diagnostics.xml"
+$serviceName = "<cloudServiceName>"
+
+Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext `
+    -DiagnosticsConfigurationPath $configPath -ServiceName $serviceName `
+    -Slot Production -Role "SplitMergeWeb"
+
+Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext `
+    -DiagnosticsConfigurationPath $configPath -ServiceName $serviceName `
+    -Slot Production -Role "SplitMergeWorker"
 ```
 
-Tanılama ayarlarını yapılandırma ve dağıtma hakkında daha fazla bilgiye buradan ulaşabilirsiniz: [Azure Cloud Services ve sanal makinelerde tanılamayı etkinleştirme](../cloud-services/cloud-services-dotnet-diagnostics.md).
+You can find more information on how to configure and deploy diagnostics settings here: [Enabling Diagnostics in Azure Cloud Services and Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md).
 
-## <a name="retrieve-diagnostics"></a>Tanılamayı al
+## <a name="retrieve-diagnostics"></a>Retrieve diagnostics
 
-Sunucu Gezgini ağacının Azure bölümünde Visual Studio Sunucu Gezgini tanılamalara kolayca erişebilirsiniz. Bir Visual Studio örneği açın ve menü çubuğunda görüntüle ' ye tıklayın ve Sunucu Gezgini. Azure aboneliğinize bağlanmak için Azure simgesine tıklayın. Ardından Azure-> Storage-> `<your storage account>`-> tabloları-> WADLogsTable ' a gidin. Daha fazla bilgi için bkz. [Sunucu Gezgini](https://msdn.microsoft.com/library/x603htbk.aspx).
+You can easily access your diagnostics from the Visual Studio Server Explorer in the Azure part of the Server Explorer tree. Open a Visual Studio instance, and in the menu bar click View, and Server Explorer. Click the Azure icon to connect to your Azure subscription. Then navigate to Azure -> Storage -> `<your storage account>` -> Tables -> WADLogsTable. For more information, see [Server Explorer](https://msdn.microsoft.com/library/x603htbk.aspx).
 
 ![WADLogsTable][2]
 
-Yukarıdaki şekilde vurgulanan WADLogsTable, bölünmüş birleştirme hizmetinin uygulama günlüğünden alınan ayrıntılı olayları içerir. İndirilen paketin varsayılan yapılandırmasının bir üretim dağıtımına yönelik olduğunu unutmayın. Bu nedenle, günlüklerin ve sayaçların hizmet örneklerinden çekilme aralığı büyük (5 dakika). Test ve geliştirme için, Web veya çalışan rolünün tanılama ayarlarını gereksinimlerinize göre ayarlayarak aralığı azaltın. Visual Studio Sunucu Gezgini role (yukarıya bakın) sağ tıklayın ve ardından tanılama yapılandırma ayarları iletişim kutusunda aktarım dönemini ayarlayın:
+The WADLogsTable highlighted in the figure above contains the detailed events from the split-merge service’s application log. Note that the default configuration of the downloaded package is geared towards a production deployment. Therefore the interval at which logs and counters are pulled from the service instances is large (5 minutes). For test and development, lower the interval by adjusting the diagnostics settings of the web or the worker role to your needs. Right-click on the role in the Visual Studio Server Explorer (see above) and then adjust the Transfer Period in the dialog for the Diagnostics configuration settings:
 
 ![Yapılandırma][3]
 
 ## <a name="performance"></a>Performans
 
-Genel olarak, Azure SQL veritabanı 'nda daha yüksek ve daha iyi performans hizmeti katmanlarından daha iyi performans beklenmelidir. Daha yüksek hizmet katmanları için yüksek GÇ, CPU ve bellek ayırmaları, bölünmüş birleştirme hizmetinin kullandığı toplu kopyalama ve silme işlemlerine yarar. Bu nedenle, tanımlanmış, sınırlı bir süre için hizmet katmanını yalnızca bu veritabanları için artırın.
+In general, better performance is to be expected from the higher, more performant service tiers in Azure SQL Database. Higher IO, CPU and memory allocations for the higher service tiers benefit the bulk copy and delete operations that the split-merge service uses. For that reason, increase the service tier just for those databases for a defined, limited period of time.
 
-Hizmet, normal işlemlerinin bir parçası olarak doğrulama sorguları da gerçekleştirir. Bu doğrulama sorguları, hedef aralıktaki beklenmeyen veri varlığını denetler ve herhangi bir bölünmüş/birleştirme/taşıma işleminin tutarlı bir durumdan başlamasını sağlamaktır. Bu sorgular, işlem kapsamı ve istek tanımının bir parçası olarak belirtilen toplu iş boyutu tarafından tanımlanan temel anahtar aralıkları üzerinde çalışır. Bu sorgular, önde gelen sütun olarak parçalı anahtar içeren bir dizin bulunduğunda en iyi şekilde gerçekleştirilir.
+The service also performs validation queries as part of its normal operations. These validation queries check for unexpected presence of data in the target range and ensure that any split/merge/move operation starts from a consistent state. These queries all work over sharding key ranges defined by the scope of the operation and the batch size provided as part of the request definition. These queries perform best when an index is present that has the sharding key as the leading column.
 
-Ayrıca, önde gelen sütun olarak parçalı anahtar içeren bir benzersizlik özelliği, hizmetin, günlük alanı ve bellek bakımından kaynak tüketimini sınırlayan iyileştirilmiş bir yaklaşım kullanmasına izin verir. Büyük veri boyutlarını taşımak için bu benzersizlik özelliği gereklidir (genellikle 1 GB üzerinde).
+In addition, a uniqueness property with the sharding key as the leading column will allow the service to use an optimized approach that limits resource consumption in terms of log space and memory. This uniqueness property is required to move large data sizes (typically above 1GB).
 
-## <a name="how-to-upgrade"></a>Yükseltme
+## <a name="how-to-upgrade"></a>How to upgrade
 
-1. [Bölünmüş birleştirme hizmeti dağıtma](sql-database-elastic-scale-configure-deploy-split-and-merge.md)bölümündeki adımları izleyin.
-2. Bölünmüş birleştirme dağıtımınız için bulut hizmeti yapılandırma dosyanızı, yeni yapılandırma parametrelerini yansıtacak şekilde değiştirin. Yeni bir gerekli parametre, şifreleme için kullanılan sertifikayla ilgili bilgiler. Bunu yapmanın kolay bir yolu, yeni yapılandırma şablonu dosyasını mevcut yapılandırmanıza karşı indirerek karşılaştırmaktır. Hem Web hem de çalışan rolü için "DataEncryptionPrimaryCertificateThumbprint" ve "DataEncryptionPrimary" ayarlarını eklediğinizden emin olun.
-3. Güncelleştirmeyi Azure 'a dağıtmak için, şu anda çalışan tüm bölünmüş birleştirme işlemlerinin tamamlandığından emin olun. Bu, devam eden istekler için bölünmüş birleştirme meta veri veritabanındaki RequestStatus ve Pendingiş akışları tablolarını sorgulayarak kolayca yapabilirsiniz.
-4. Yeni paket ve güncelleştirilmiş hizmet yapılandırma dosyanız ile Azure aboneliğinizde bölünmüş birleştirme için mevcut bulut hizmeti dağıtımınızı güncelleştirin.
+1. Follow the steps in [Deploy a split-merge service](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
+2. Change your cloud service configuration file for your split-merge deployment to reflect the new configuration parameters. A new required parameter is the information about the certificate used for encryption. An easy way to do this is to compare the new configuration template file from the download against your existing configuration. Make sure you add the settings for “DataEncryptionPrimaryCertificateThumbprint” and “DataEncryptionPrimary” for both the web and the worker role.
+3. Before deploying the update to Azure, ensure that all currently running split-merge operations have finished. You can easily do this by querying the RequestStatus and PendingWorkflows tables in the split-merge metadata database for ongoing requests.
+4. Update your existing cloud service deployment for split-merge in your Azure subscription with the new package and your updated service configuration file.
 
-Yükseltilecek birleştirme için yeni bir meta veri veritabanı sağlamanız gerekmez. Yeni sürüm, var olan meta veri veritabanınızı yeni sürüme otomatik olarak yükseltir.
+You do not need to provision a new metadata database for split-merge to upgrade. The new version will automatically upgrade your existing metadata database to the new version.
 
-## <a name="best-practices--troubleshooting"></a>En iyi yöntemler & sorun giderme
+## <a name="best-practices--troubleshooting"></a>Best practices & troubleshooting
 
-- Test kiracısı tanımlayın ve çeşitli parçalar arasında test kiracısıyla en önemli bölünmüş/birleştirme/taşıma işlemlerinizi yapın. Tüm meta verilerin parça haritanızda doğru tanımlandığından ve işlemlerin kısıtlamaları veya yabancı anahtarları ihlal etmediğinden emin olun.
-- Veri boyutuyla ilgili sorunlarla karşılaşmatığınızdan emin olmak için, test kiracı veri boyutunu en büyük kiracınızın en büyük veri boyutunun üzerinde tutun. Bu, tek bir kiracının etrafında taşınması için gereken süre üst sınırını değerlendirmenize yardımcı olur.
-- Şemanızın silme izni verdiğinden emin olun. Bölünmüş birleştirme hizmeti, veriler başarıyla hedefe kopyalandıktan sonra kaynak parçadan verileri kaldırabilme özelliği gerektirir. Örneğin, **silme tetikleyicileri** hizmetin kaynaktaki verileri silmesini engelleyebilir ve işlemlerin başarısız olmasına neden olabilir.
-- Parçalı anahtar, birincil anahtarınızdaki veya benzersiz dizin tanımınızda önde gelen sütun olmalıdır. Bu, bölünmüş veya birleştirme doğrulama sorguları için en iyi performansı ve her zaman parçalı anahtar aralıklarında her zaman çalışan gerçek veri taşıma ve silme işlemlerini sağlar.
-- Bölünmüş birleştirme hizmetinizi, veritabanlarınızın bulunduğu bölge ve veri merkezinde birlikte bulun.
+- Define a test tenant and exercise your most important split/merge/move operations with the test tenant across several shards. Ensure that all metadata is defined correctly in your shard map and that the operations do not violate constraints or foreign keys.
+- Keep the test tenant data size above the maximum data size of your largest tenant to ensure you are not encountering data size related issues. This helps you assess an upper bound on the time it takes to move a single tenant around.
+- Make sure that your schema allows deletions. The split-merge service requires the ability to remove data from the source shard once the data has been successfully copied to the target. For example, **delete triggers** can prevent the service from deleting the data on the source and may cause operations to fail.
+- The sharding key should be the leading column in your primary key or unique index definition. That ensures the best performance for the split or merge validation queries, and for the actual data movement and deletion operations which always operate on sharding key ranges.
+- Collocate your split-merge service in the region and data center where your databases reside.
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

@@ -1,196 +1,198 @@
 ---
-title: Kaynakları izlemek için Azure etkinlik günlüklerini görüntüleme
-description: Kullanıcı eylemlerini ve hataları gözden geçirmek için etkinlik günlüklerini kullanın. PowerShell, Azure CLı ve REST Azure portal gösterir.
+title: View Azure activity logs to monitor resources
+description: Use the activity logs to review user actions and errors. Shows Azure portal PowerShell, Azure CLI, and REST.
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 3ac407fa4cfef1530cb6bbfde2ec666b5a07e324
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 7b70d2a8c158b6f8b3dc87c22e5ca90f2861aebb
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150869"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422284"
 ---
-# <a name="view-activity-logs-to-monitor-actions-on-resources"></a>Kaynaklardaki eylemleri izlemek için etkinlik günlüklerini görüntüleme
+# <a name="view-activity-logs-to-monitor-actions-on-resources"></a>View activity logs to monitor actions on resources
 
 Etkinlik günlükleri ile aşağıdakileri belirleyebilirsiniz:
 
-* aboneliğinizdeki kaynaklarda gerçekleştirilen işlemler
-* işlemi kim başlattı
-* işlem oluştuğunda
-* işlemin durumu
-* işlemi araştırmanıza yardımcı olabilecek diğer özelliklerin değerleri
+* what operations were taken on the resources in your subscription
+* who started the operation
+* when the operation occurred
+* the status of the operation
+* the values of other properties that might help you research the operation
 
-Etkinlik günlüğü, kaynaklarınız için tüm yazma işlemlerini (PUT, POST, SIL) içerir. Okuma işlemlerini (GET) içermez. Kaynak eylemlerinin bir listesi için bkz. [Azure Resource Manager kaynak sağlayıcısı işlemleri](../role-based-access-control/resource-provider-operations.md). Sorun giderme sırasında bir hata bulmak veya kuruluşunuzdaki kullanıcının bir kaynağı nasıl değiştirdiğini izlemek için etkinlik günlüklerini kullanabilirsiniz.
+The activity log contains all write operations (PUT, POST, DELETE) for your resources. Okuma işlemlerini (GET) içermez. For a list of resource actions, see [Azure Resource Manager Resource Provider operations](../role-based-access-control/resource-provider-operations.md). Sorun giderme sırasında bir hata bulmak veya kuruluşunuzdaki kullanıcının bir kaynağı nasıl değiştirdiğini izlemek için etkinlik günlüklerini kullanabilirsiniz.
 
 Etkinlik günlükleri 90 gün boyunca tutulur. Başlangıç tarihi 90 günden eski olmamak şartıyla istediğiniz tarih aralığını sorgulayabilirsiniz.
 
-Portal, PowerShell, Azure CLı, Öngörüler REST API veya [Öngörüler .NET kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.Insights/)aracılığıyla etkinlik günlüklerinden bilgi alabilirsiniz.
+You can retrieve information from the activity logs through the portal, PowerShell, Azure CLI, Insights REST API, or [Insights .NET Library](https://www.nuget.org/packages/Microsoft.Azure.Insights/).
 
-## <a name="azure-portal"></a>Azure portal
+## <a name="azure-portal"></a>Azure portalı
 
-1. Etkinlik günlüklerini Portal üzerinden görüntülemek için **izleyici**' yi seçin.
+To view the activity logs through the portal, follow these steps:
 
-    ![İzleme Seç](./media/resource-group-audit/select-monitor.png)
+1. On the Azure portal menu, select **Monitor**, or search for and select **Monitor** from any page.
 
-1. **Etkinlik günlüğü**' nü seçin.
+    ![Select monitor](./media/resource-group-audit/select-monitor-from-menu.png)
 
-    ![Etkinlik günlüğü seçin](./media/resource-group-audit/select-activity-log.png)
+1. Select **Activity Log**.
 
-1. Son işlemlerin özetini görürsünüz. İşlemlere varsayılan bir filtre kümesi uygulanır. Özet hakkındaki bilgilere kimin ne zaman başladığını ve ne zaman oluştuğunu görürsünüz.
+    ![Select activity log](./media/resource-group-audit/select-activity-log.png)
 
-    ![Son işlemlerin özetini görüntüle](./media/resource-group-audit/audit-summary.png)
+1. You see a summary of recent operations. A default set of filters is applied to the operations. Notice the information on the summary includes who started the action and when it happened.
 
-1. Önceden tanımlanmış bir filtre kümesini hızlı bir şekilde çalıştırmak için **hızlı içgörüler**' yi seçin.
+    ![View summary of recent operations](./media/resource-group-audit/audit-summary.png)
 
-    ![Hızlı öngörüler seçin](./media/resource-group-audit/select-quick-insights.png)
+1. To quickly run a pre-defined set of filters, select **Quick Insights**.
 
-1. Seçeneklerden birini belirleyin. Örneğin, dağıtımların hatalarını görmek için **başarısız dağıtımlar** ' ı seçin.
+    ![Select quick insights](./media/resource-group-audit/select-quick-insights.png)
 
-    ![Başarısız dağıtımları seçin](./media/resource-group-audit/select-failed-deployments.png)
+1. Select one of the options. For example, select **Failed deployments** to see errors from deployments.
 
-1. Son 24 saat içindeki dağıtım hatalarına odaklanmak için filtrelerin değiştirildiğini unutmayın. Yalnızca filtrelerle eşleşen işlemler görüntülenir.
+    ![Select failed deployments](./media/resource-group-audit/select-failed-deployments.png)
+
+1. Notice the filters have been changed to focus on deployment errors in the last 24 hours. Only operations that match the filters are displayed.
 
     ![Filtreleri görüntüleme](./media/resource-group-audit/view-filters.png)
 
-1. Belirli işlemlere odaklanmak için filtreleri değiştirin veya yenilerini uygulayın. Örneğin, aşağıdaki görüntüde **TimeSpan** ve **kaynak türü** için yeni bir değer gösterilir ve depolama hesapları olarak ayarlanır.
+1. To focus on specific operations, change the filters or apply new ones. For example, the following image shows a new value for the **Timespan** and **Resource type** is set to storage accounts.
 
-    ![Filtre seçeneklerini ayarla](./media/resource-group-audit/set-filter.png)
+    ![Set filter options](./media/resource-group-audit/set-filter.png)
 
-1. Sorguyu daha sonra tekrar çalıştırmanız gerekiyorsa, **Geçerli filtreleri sabitle**' yi seçin.
+1. If you need to run the query again later, select **Pin current filters**.
 
-    ![PIN filtreleri](./media/resource-group-audit/pin-filters.png)
+    ![Pin filters](./media/resource-group-audit/pin-filters.png)
 
-1. Filtreye bir ad verin.
+1. Give the filter a name.
 
-    ![Ad filtreleri](./media/resource-group-audit/name-filters.png)
+    ![Name filters](./media/resource-group-audit/name-filters.png)
 
-1. Filtre panoda kullanılabilir.
+1. The filter is available in the dashboard. On the Azure portal menu, select **Dashboard**.
 
-    ![Panoda filtre göster](./media/resource-group-audit/show-dashboard.png)
+    ![Show filter on dashboard](./media/resource-group-audit/activity-log-on-dashboard.png)
 
-1. Portaldan, bir kaynaktaki değişiklikleri görüntüleyebilirsiniz. Izleyici ' de varsayılan görünüme dönün ve bir kaynağı değiştiren bir işlem seçin.
+1. From the portal, you can view changes to a resource. Go back to the default view in Monitor, and select an operation that involved changing a resource.
 
-    ![İşlem seçin](./media/resource-group-audit/select-operation.png)
+    ![Select operation](./media/resource-group-audit/select-operation.png)
 
-1. **Değişiklik geçmişi (Önizleme)** seçeneğini belirleyin ve kullanılabilir işlemlerden birini seçin.
+1. Select **Change history (Preview)** and pick one of the available operations.
 
-    ![Değişiklik geçmişini seçin](./media/resource-group-audit/select-change-history.png)
+    ![Select change history](./media/resource-group-audit/select-change-history.png)
 
-1. Kaynaktaki değişiklikler görüntülenir.
+1. The changes in the resource are displayed.
 
-    ![Değişiklikleri göster](./media/resource-group-audit/show-changes.png)
+    ![Show changes](./media/resource-group-audit/show-changes.png)
 
-Değişiklik geçmişi hakkında daha fazla bilgi edinmek için bkz. [kaynak değişikliklerini alma](../governance/resource-graph/how-to/get-resource-changes.md).
+To learn more about change history, see [Get resource changes](../governance/resource-graph/how-to/get-resource-changes.md).
 
 ## <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Günlük girişlerini almak için **Get-AzLog** komutunu çalıştırın. Giriş listesini filtrelemek için ek parametreler sağlarsınız. Başlangıç ve bitiş zamanı belirtmezseniz, son yedi güne ait girişler döndürülür.
+To retrieve log entries, run the **Get-AzLog** command. You provide additional parameters to filter the list of entries. If you don't specify a start and end time, entries for the last seven days are returned.
 
 ```azurepowershell-interactive
 Get-AzLog -ResourceGroup ExampleGroup
 ```
 
-Aşağıdaki örnek, belirli bir süre boyunca gerçekleştirilen işlemleri araştırmak için etkinlik günlüğü 'nü nasıl kullanacağınızı gösterir. Başlangıç ve bitiş tarihleri bir tarih biçiminde belirtilir.
+The following example shows how to use the activity log to research operations taken during a specified time. The start and end dates are specified in a date format.
 
 ```azurepowershell-interactive
 Get-AzLog -ResourceGroup ExampleGroup -StartTime 2019-05-05T06:00 -EndTime 2019-05-09T06:00
 ```
 
-Veya tarih işlevlerini, son 14 gün gibi tarih aralığını belirtmek için de kullanabilirsiniz.
+Or, you can use date functions to specify the date range, such as the last 14 days.
 
 ```azurepowershell-interactive
 Get-AzLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-14)
 ```
 
-Belirli bir kullanıcı tarafından alınan işlemleri arayabilirsiniz.
+You can look up the actions taken by a particular user.
 
 ```azurepowershell-interactive
 Get-AzLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-14) -Caller someone@contoso.com
 ```
 
-Başarısız işlemler için filtre uygulayabilirsiniz.
+You can filter for failed operations.
 
 ```azurepowershell-interactive
 Get-AzLog -ResourceGroup ExampleGroup -Status Failed
 ```
 
-Bu girdinin durum iletisine bakarak bir hataya odaklanırsınız.
+You can focus on one error by looking at the status message for that entry.
 
 ```azurepowershell-interactive
 (Get-AzLog -ResourceGroup ExampleGroup -Status Failed).Properties.Content.statusMessage | ConvertFrom-Json
 ```
 
-Döndürülen verileri sınırlamak için belirli değerler seçebilirsiniz.
+You can select specific values to limit the data that is returned.
 
 ```azurepowershell-interactive
 Get-AzLog -ResourceGroupName ExampleGroup | Format-table EventTimeStamp, Caller, @{n='Operation'; e={$_.OperationName.value}}, @{n='Status'; e={$_.Status.value}}, @{n='SubStatus'; e={$_.SubStatus.LocalizedValue}}
 ```
 
-Belirttiğiniz başlangıç zamanına bağlı olarak, önceki komutlar kaynak grubu için uzun bir işlem listesi döndürebilir. Arama ölçütü sağlayarak Aradığınız kadar sonuçları filtreleyebilirsiniz. Örneğin, işlem türüne göre filtre uygulayabilirsiniz.
+Depending on the start time you specify, the previous commands can return a long list of operations for the resource group. You can filter the results for what you are looking for by providing search criteria. For example, you can filter by the type of operation.
 
 ```azurepowershell-interactive
 Get-AzLog -ResourceGroup ExampleGroup | Where-Object {$_.OperationName.value -eq "Microsoft.Resources/deployments/write"}
 ```
 
-Kaynak grafiğini, bir kaynağın değişiklik geçmişini görmek için kullanabilirsiniz. Daha fazla bilgi için bkz. [kaynak değişikliklerini al](../governance/resource-graph/how-to/get-resource-changes.md).
+You can use Resource Graph to see the change history for a resource. For more information, see [Get resource changes](../governance/resource-graph/how-to/get-resource-changes.md).
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Günlük girişlerini almak için [az Monitor Activity-Log List](/cli/azure/monitor/activity-log#az-monitor-activity-log-list) komutunu, zaman aralığını belirtmek için bir uzaklığa sahip olarak çalıştırın.
+To retrieve log entries, run the [az monitor activity-log list](/cli/azure/monitor/activity-log#az-monitor-activity-log-list) command with an offset to indicate the time span.
 
 ```azurecli-interactive
 az monitor activity-log list --resource-group ExampleGroup --offset 7d
 ```
 
-Aşağıdaki örnek, belirli bir süre boyunca gerçekleştirilen işlemleri araştırmak için etkinlik günlüğü 'nü nasıl kullanacağınızı gösterir. Başlangıç ve bitiş tarihleri bir tarih biçiminde belirtilir.
+The following example shows how to use the activity log to research operations taken during a specified time. The start and end dates are specified in a date format.
 
 ```azurecli-interactive
 az monitor activity-log list -g ExampleGroup --start-time 2019-05-01 --end-time 2019-05-15
 ```
 
-Artık mevcut olmayan bir kaynak grubu için bile belirli bir kullanıcı tarafından alınan eylemleri arayabilirsiniz.
+You can look up the actions taken by a particular user, even for a resource group that no longer exists.
 
 ```azurecli-interactive
 az monitor activity-log list -g ExampleGroup --caller someone@contoso.com --offset 5d
 ```
 
-Başarısız işlemler için filtre uygulayabilirsiniz.
+You can filter for failed operations.
 
 ```azurecli-interactive
 az monitor activity-log list -g ExampleGroup --status Failed --offset 1d
 ```
 
-Bu girdinin durum iletisine bakarak bir hataya odaklanırsınız.
+You can focus on one error by looking at the status message for that entry.
 
 ```azurecli-interactive
 az monitor activity-log list -g ExampleGroup --status Failed --offset 1d --query [].properties.statusMessage
 ```
 
-Döndürülen verileri sınırlamak için belirli değerler seçebilirsiniz.
+You can select specific values to limit the data that is returned.
 
 ```azurecli-interactive
 az monitor activity-log list -g ExampleGroup --offset 1d --query '[].{Operation: operationName.value, Status: status.value, SubStatus: subStatus.localizedValue}'
 ```
 
-Belirttiğiniz başlangıç zamanına bağlı olarak, önceki komutlar kaynak grubu için uzun bir işlem listesi döndürebilir. Arama ölçütü sağlayarak Aradığınız kadar sonuçları filtreleyebilirsiniz. Örneğin, işlem türüne göre filtre uygulayabilirsiniz.
+Depending on the start time you specify, the previous commands can return a long list of operations for the resource group. You can filter the results for what you are looking for by providing search criteria. For example, you can filter by the type of operation.
 
 ```azurecli-interactive
 az monitor activity-log list -g ExampleGroup --offset 1d --query "[?operationName.value=='Microsoft.Storage/storageAccounts/write']"
 ```
 
-Kaynak grafiğini, bir kaynağın değişiklik geçmişini görmek için kullanabilirsiniz. Daha fazla bilgi için bkz. [kaynak değişikliklerini al](../governance/resource-graph/how-to/get-resource-changes.md).
+You can use Resource Graph to see the change history for a resource. For more information, see [Get resource changes](../governance/resource-graph/how-to/get-resource-changes.md).
 
 ## <a name="rest-api"></a>REST API
 
-Etkinlik günlüğü ile çalışmaya yönelik REST işlemleri [öngörülerin](/rest/api/monitor/)bir parçasıdır REST API. Etkinlik günlüğü olaylarını almak için bkz. [bir abonelikteki yönetim olaylarını listeleme](/rest/api/monitor/activitylogs).
+The REST operations for working with the activity log are part of the [Insights REST API](/rest/api/monitor/). To retrieve activity log events, see [List the management events in a subscription](/rest/api/monitor/activitylogs).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure etkinlik günlükleri, aboneliğinizdeki eylemler hakkında daha fazla öngörü kazanmak için Power BI ile kullanılabilir. Bkz. [Power BI ve daha fazlasını Azure etkinlik günlüklerini görüntüleme ve çözümleme](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/).
-* Güvenlik ilkelerini ayarlama hakkında bilgi edinmek için bkz. [Azure rol tabanlı Access Control](../role-based-access-control/role-assignments-portal.md).
-* Altyapı katmanından uygulama dağıtımına kadar olan uygulamalardaki değişikliklerle ilgili daha fazla ayrıntı görüntülemek için bkz. [Azure izleyici 'de uygulama değişikliği analizini kullanma](../azure-monitor/app/change-analysis.md).
-* Dağıtım işlemlerini görüntüleme komutları hakkında bilgi edinmek için bkz. [dağıtım Işlemlerini görüntüleme](resource-manager-deployment-operations.md).
-* Tüm kullanıcılar için bir kaynaktaki silme işlemlerini nasıl önleyeceğinizi öğrenmek için bkz. [Azure Resource Manager ile kaynakları kilitleme](resource-group-lock-resources.md).
-* Her bir Microsoft Azure Kaynak Yöneticisi sağlayıcısı için kullanılabilen işlemlerin listesini görmek için bkz. [Azure Resource Manager kaynak sağlayıcısı işlemleri](../role-based-access-control/resource-provider-operations.md)
+* Azure Activity logs can be used with Power BI to gain greater insights about the actions in your subscription. See [View and analyze Azure Activity Logs in Power BI and more](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/).
+* To learn about setting security policies, see [Azure Role-based Access Control](../role-based-access-control/role-assignments-portal.md).
+* To view more details about the changes to your applications from the infrastructure layer all the way to application deployment, see [Use Application Change Analysis in Azure Monitor](../azure-monitor/app/change-analysis.md).
+* To learn about the commands for viewing deployment operations, see [View deployment operations](resource-manager-deployment-operations.md).
+* To learn how to prevent deletions on a resource for all users, see [Lock resources with Azure Resource Manager](resource-group-lock-resources.md).
+* To see the list of operations available for each Microsoft Azure Resource Manager provider, see [Azure Resource Manager Resource Provider operations](../role-based-access-control/resource-provider-operations.md)

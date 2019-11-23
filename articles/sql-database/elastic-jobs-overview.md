@@ -1,6 +1,6 @@
 ---
 title: Elastik Veritabanı İşleri (Önizleme)
-description: Bir veya daha fazla Azure SQL veritabanı kümesi üzerinde Transact-SQL (T-SQL) betikleri çalıştırmak için elastik veritabanı Işlerini (Önizleme) yapılandırma
+description: Configure Elastic Database Jobs (preview) to run Transact-SQL (T-SQL) scripts across a set of one or more Azure SQL databases
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -11,33 +11,35 @@ author: srinia
 ms.author: srinia
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: f5eaed807e69dcc1a0b7ad426bab91abd2f8309a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 283b4004f34372104eb083496400772884f5965e
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827258"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420388"
 ---
-# <a name="create-configure-and-manage-elastic-jobs"></a>Elastik işler oluşturma, yapılandırma ve yönetme
+# <a name="create-configure-and-manage-elastic-jobs"></a>Create, configure, and manage elastic jobs
 
-Bu makalede, elastik işler oluşturmayı, yapılandırmayı ve yönetmeyi öğreneceksiniz. Elastik işler kullandıysanız, [Azure SQL veritabanı 'nda iş Otomasyonu kavramları hakkında daha fazla bilgi edinin](sql-database-job-automation-overview.md).
+In this article, you will learn how to create, configure, and manage elastic jobs.
+
+If you have not used Elastic jobs, [learn more about the job automation concepts in Azure SQL Database](sql-database-job-automation-overview.md).
 
 ## <a name="create-and-configure-the-agent"></a>Aracıyı oluşturma ve yapılandırma
 
-1. Boş bir S0 veya üzeri SQL veritabanı oluşturun ya da tanımlayın. Bu veritabanı, elastik Iş Aracısı oluşturma sırasında *iş veritabanı* olarak kullanılacaktır.
-2. [Portalda](https://portal.azure.com/#create/Microsoft.SQLElasticJobAgent) veya [PowerShell](elastic-jobs-powershell.md#create-the-elastic-job-agent) kullanarak bir Elastik İş aracısı oluşturun.
+1. Boş bir S0 veya üzeri SQL veritabanı oluşturun ya da tanımlayın. This database will be used as the *Job database* during Elastic Job agent creation.
+2. Create an Elastic Job agent in the [portal](https://portal.azure.com/#create/Microsoft.SQLElasticJobAgent) or with [PowerShell](elastic-jobs-powershell.md#create-the-elastic-job-agent).
 
-   ![Elastik Iş Aracısı oluşturma](media/elastic-jobs-overview/create-elastic-job-agent.png)
+   ![Creating Elastic Job agent](media/elastic-jobs-overview/create-elastic-job-agent.png)
 
 ## <a name="create-run-and-manage-jobs"></a>İşleri oluşturma, çalıştırma ve yönetme
 
-1. *PowerShell* veya [T-SQL](elastic-jobs-powershell.md#create-job-credentials-so-that-jobs-can-execute-scripts-on-its-targets) kullanarak [İş veritabanında](elastic-jobs-tsql.md#create-a-credential-for-job-execution) iş yürütme kimlik bilgisi oluşturun.
-2. [PowerShell](elastic-jobs-powershell.md#define-the-target-databases-you-want-to-run-the-job-against) veya [T-SQL](elastic-jobs-tsql.md#create-a-target-group-servers) kullanarak hedef grubu (işi çalıştırmak istediğiniz veritabanları) tanımlayın.
-3. İşin çalışacağı her veritabanında bir iş aracısı kimlik bilgisi oluşturun [(kullanıcıyı (veya rolü) gruptaki her bir veritabanına ekleyin)](sql-database-control-access.md). Örnek için bkz. [PowerShell öğreticisi](elastic-jobs-powershell.md#create-job-credentials-so-that-jobs-can-execute-scripts-on-its-targets).
-4. [PowerShell](elastic-jobs-powershell.md#create-a-job) veya [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases) kullanarak bir iş oluşturun.
-5. [PowerShell](elastic-jobs-powershell.md#create-a-job-step) veya [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases) kullanarak iş adımlarını ekleyin.
-6. [PowerShell](elastic-jobs-powershell.md#run-the-job) veya [T-SQL](elastic-jobs-tsql.md#begin-ad-hoc-execution-of-a-job) kullanarak bir işi çalıştırın.
-7. Portal, [PowerShell](elastic-jobs-powershell.md#monitor-status-of-job-executions) veya [T-SQL](elastic-jobs-tsql.md#monitor-job-execution-status) kullanarak iş yürütme durumunu izleyin.
+1. Create a credential for job execution in the *Job database* using [PowerShell](elastic-jobs-powershell.md) or [T-SQL](elastic-jobs-tsql.md#create-a-credential-for-job-execution).
+2. Define the target group (the databases you want to run the job against) using [PowerShell](elastic-jobs-powershell.md) or [T-SQL](elastic-jobs-tsql.md#create-a-target-group-servers).
+3. İşin çalışacağı her veritabanında bir iş aracısı kimlik bilgisi oluşturun [(kullanıcıyı (veya rolü) gruptaki her bir veritabanına ekleyin)](sql-database-control-access.md). Örnek için bkz. [PowerShell öğreticisi](elastic-jobs-powershell.md).
+4. Create a job using [PowerShell](elastic-jobs-powershell.md) or [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases).
+5. [PowerShell](elastic-jobs-powershell.md) veya [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases) kullanarak iş adımlarını ekleyin.
+6. Run a job using [PowerShell](elastic-jobs-powershell.md#run-the-job) or [T-SQL](elastic-jobs-tsql.md#begin-ad-hoc-execution-of-a-job).
+7. Monitor job execution status using the portal, [PowerShell](elastic-jobs-powershell.md#monitor-status-of-job-executions) or [T-SQL](elastic-jobs-tsql.md#monitor-job-execution-status).
 
    ![Portal](media/elastic-jobs-overview/elastic-job-executions-overview.png)
 
@@ -48,8 +50,8 @@ Bu makalede, elastik işler oluşturmayı, yapılandırmayı ve yönetmeyi öğr
 Bir işi çalıştırmak için uygun kimlik bilgilerinin ayarlanması kafa karışıklığına neden olabileceğinden aşağıdaki noktaları göz önünde bulundurun:
 
 - Veritabanı kapsamlı kimlik bilgileri *İş veritabanında* oluşturulmalıdır.
-- **Tüm hedef veritabanlarının, işin başarıyla tamamlanabilmesi için [yeterli izinlere](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) sahip bir oturum açma işlemi olması gerekir** (Aşağıdaki diyagramda`jobuser`).
-- Kimlik bilgileri işler arasında yeniden kullanılabilir ve kimlik bilgisi parolaları, iş nesnelerine salt okuma erişimi olan kullanıcılardan şifrelenir ve bunların güvenliğini sağlar.
+- **All target databases must have a login with [sufficient permissions](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) for the job to complete successfully** (`jobuser` in the diagram below).
+- Credentials can be reused across jobs, and the credential passwords are encrypted and secured from users who have read-only access to job objects.
 
 Aşağıdaki resim, uygun iş kimlik bilgilerinin anlaşılması ve ayarlanması konusunda yardımcı olmak üzere tasarlanmıştır. **Kullanıcının, işin çalıştırılacağı her veritabanında (tüm *hedef kullanıcı veritabanlarında*) oluşturulması gerektiğini unutmayın**.
 
@@ -60,8 +62,8 @@ Aşağıdaki resim, uygun iş kimlik bilgilerinin anlaşılması ve ayarlanması
 Elastik İşlerle çalışırken dikkat etmeniz gereken en iyi deneyimlerin bazıları:
 
 - API’lerin kullanımını güvenilir kişilerle sınırlayın.
-- Kimlik bilgileri iş adımını gerçekleştirmek için gerekli olan en düşük ayrıcalıklara sahip olmalıdır. Daha fazla bilgi için bkz. [Yetkilendirme ve izinler SQL Server](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server).
-- Sunucu ve/veya havuz hedef grubu üyesini kullanırken, iş yürütmeden önce sunucu (ler) ve/veya havuzların veritabanı listelerini genişletmek için kullanılan veritabanlarını görüntülemek/listelemek için ana veritabanında haklara sahip ayrı bir kimlik bilgisi oluşturmanız önerilir.
+- Kimlik bilgileri iş adımını gerçekleştirmek için gerekli olan en düşük ayrıcalıklara sahip olmalıdır. For more information, see [Authorization and Permissions SQL Server](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server).
+- When using a server and/or pool target group member, it is highly suggested to create a separate credential with rights on the master database to view/list databases that is used to expand the database lists of the server(s) and/or pool(s) prior to the job execution.
 
 ## <a name="agent-performance-capacity-and-limitations"></a>Aracı performansı, kapasitesi ve sınırlamaları
 
@@ -75,7 +77,7 @@ Hedef veritabanı grubunun boyutuna ve bir işin istenen yürütme süresine (e�
 
 Bir SQL elastik havuzundaki veritabanları üzerinde iş çalıştırılması sırasında kaynakların aşırı yüklenmesini önlemek için işler aynı anda üzerinde çalışılabilecek veritabanı sayısını sınırlayacak şekilde yapılandırılabilir.
 
-`sp_add_jobstep` saklı yordamın T-SQL içinde `@max_parallelism` parametresini veya PowerShell 'de `Add-AzSqlElasticJobStep -MaxParallelism` ayarlayarak bir işin üzerinde çalıştığı eşzamanlı veritabanlarının sayısını ayarlayın.
+Set the number of concurrent databases a job runs on by setting the `sp_add_jobstep` stored procedure's `@max_parallelism` parameter in T-SQL, or `Add-AzSqlElasticJobStep -MaxParallelism` in PowerShell.
 
 ## <a name="best-practices-for-creating-jobs"></a>İş oluşturmak için en iyi deneyimler
 

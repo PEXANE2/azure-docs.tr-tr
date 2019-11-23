@@ -1,6 +1,6 @@
 ---
 title: Uzun süreli yedek saklamayı yönetme
-description: Otomatik yedeklemeleri SQL Azure depolama alanında depolamayı ve sonra geri yüklemeyi öğrenin
+description: Learn how to store automated backups in the SQL Azure storage and then restore them
 services: sql-database
 ms.service: sql-database
 ms.subservice: backup-restore
@@ -12,203 +12,197 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 08/21/2019
-ms.openlocfilehash: ea9a1da775a64f8ee405ced52df01d0824836c42
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: a560f4f1399792a7b150b37c3c048ccc0079b98d
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820028"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420795"
 ---
-# <a name="manage-azure-sql-database-long-term-backup-retention"></a>Azure SQL veritabanı uzun süreli yedekleme bekletmesini yönetme
+# <a name="manage-azure-sql-database-long-term-backup-retention"></a>Manage Azure SQL Database long-term backup retention
 
-Azure SQL veritabanı 'nda, veritabanı yedeklerini 10 yıla kadar ayrı Azure Blob depolama kapsayıcılarında otomatik olarak saklamak için [uzun süreli yedek saklama](sql-database-long-term-retention.md) IlkesI (LTR) ile tek veya havuza alınmış bir veritabanı yapılandırabilirsiniz. Daha sonra Azure portal veya PowerShell kullanarak bu yedeklemeleri kullanarak bir veritabanını kurtarabilirsiniz.
-
-> [!IMPORTANT]
-> [Azure SQL veritabanı yönetilen örneği](sql-database-managed-instance.md) Şu anda uzun süreli yedekleme bekletmesini desteklememektedir.
-
-## <a name="use-the-azure-portal-to-manage-long-term-backups"></a>Uzun süreli yedeklemeleri yönetmek için Azure portal kullanma
-
-Aşağıdaki bölümlerde, uzun süreli saklama 'yi yapılandırmak, uzun süreli bekletmede yedeklemeleri görüntülemek ve uzun süreli bekletmede yedeklemeyi geri yüklemek için Azure portal nasıl kullanılacağı gösterilmektedir.
-
-### <a name="configure-long-term-retention-policies"></a>Uzun süreli saklama ilkelerini yapılandırma
-
-SQL veritabanını, [Otomatik yedeklemeleri](sql-database-long-term-retention.md) hizmet katmanınızın saklama süresinden daha uzun bir süre koruyacak şekilde yapılandırabilirsiniz. 
-
-1. Azure portal SQL Server 'nizi seçin ve ardından **Yedeklemeleri Yönet**' e tıklayın. **Ilkeleri Yapılandır** sekmesinde, *uzun süreli yedek saklama ilkelerini ayarlamak veya değiştirmek istediğiniz veritabanının onay kutusunu seçin*. Veritabanının yanındaki onay kutusu seçili değilse, ilkeye yönelik değişiklikler bu veritabanına uygulanmaz.  
-
-   ![Yedeklemeleri Yönet bağlantısı](./media/sql-database-long-term-retention/ltr-configure-ltr.png)
-
-2. **Ilkeleri Yapılandır** bölmesinde haftalık, aylık veya yıllık yedeklemeleri sürdürmek ve her biri için bekletme dönemini belirtmek istediğinizi seçin. 
-
-   ![ilkeleri yapılandırma](./media/sql-database-long-term-retention/ltr-configure-policies.png)
-
-3. Tamamlandığında, **Uygula**' ya tıklayın.
+In Azure SQL Database, you can configure a single or a pooled database with a [long-term backup retention](sql-database-long-term-retention.md) policy (LTR) to automatically retain the database backups in separate Azure Blob storage containers for up to 10 years. You can then recover a database using these backups using the Azure portal or PowerShell.
 
 > [!IMPORTANT]
-> Uzun süreli yedek saklama ilkesini etkinleştirdiğinizde, ilk yedeklemenin görünür olması ve geri yükleme için kullanılabilir olması 7 güne kadar sürebilir. LTR yedekleme cadans ayrıntıları için bkz. [uzun süreli yedek saklama](sql-database-long-term-retention.md).
+> [Azure SQL database managed instance](sql-database-managed-instance.md) does not currently support long-term backup retention.
 
-### <a name="view-backups-and-restore-from-a-backup-using-azure-portal"></a>Azure portal kullanarak yedeklemeleri ve yedekten geri yüklemeyi görüntüleme
+## <a name="using-azure-portal"></a>Azure portalını kullanma
 
-Bir LTR ilkesiyle belirli bir veritabanı için tutulan yedeklemeleri görüntüleyin ve bu yedeklerden geri yükleyin. 
+The following sections show you how to use the Azure portal to configure the long-term retention, view backups in long-term retention, and restore backup from long-term retention.
 
-1. Azure portal SQL Server 'nizi seçin ve ardından **Yedeklemeleri Yönet**' e tıklayın. **Kullanılabilir yedeklemeler** sekmesinde, kullanılabilir yedeklemeleri görmek istediğiniz veritabanını seçin.
+### <a name="configure-long-term-retention-policies"></a>Configure long-term retention policies
 
-   ![Veritabanı Seç](./media/sql-database-long-term-retention/ltr-available-backups-select-database.png)
+You can configure SQL Database to [retain automated backups](sql-database-long-term-retention.md) for a period longer than the retention period for your service tier.
 
-3. **Kullanılabilir yedeklemeler** bölmesinde, kullanılabilir yedeklemeleri gözden geçirin. 
+1. In the Azure portal, select your SQL server and then click **Manage Backups**. On the **Configure policies** tab, select the checkbox for the database on which you want to set or modify long-term backup retention policies. If the checkbox next to the database is not selected, the changes for the policy will not apply to that database.  
 
-   ![yedeklemeleri görüntüle](./media/sql-database-long-term-retention/ltr-available-backups.png)
+   ![manage backups link](./media/sql-database-long-term-retention/ltr-configure-ltr.png)
 
-4. Geri yüklemek istediğiniz yedeği seçin ve ardından yeni veritabanı adını belirtin.
+2. In the **Configure policies** pane, select if want to retain weekly, monthly or yearly backups and specify the retention period for each.
+
+   ![configure policies](./media/sql-database-long-term-retention/ltr-configure-policies.png)
+
+3. When complete, click **Apply**.
+
+> [!IMPORTANT]
+> When you enable a long-term backup retention policy, it may take up to 7 days for the first backup to become visible and available to restore. For details of the LTR backup cadance, see [long-term backup retention](sql-database-long-term-retention.md).
+
+### <a name="view-backups-and-restore-from-a-backup"></a>View backups and restore from a backup
+
+View the backups that are retained for a specific database with a LTR policy, and restore from those backups.
+
+1. In the Azure portal, select your SQL server and then click **Manage Backups**. On the **Available backups** tab, select the database for which you want to see available backups.
+
+   ![select database](./media/sql-database-long-term-retention/ltr-available-backups-select-database.png)
+
+1. In the **Available backups** pane, review the available backups.
+
+   ![view backups](./media/sql-database-long-term-retention/ltr-available-backups.png)
+
+1. Select the backup from which you want to restore, and then specify the new database name.
 
    ![geri yükleme](./media/sql-database-long-term-retention/ltr-restore.png)
 
-5. Veritabanınızı Azure SQL depolama 'daki yedekten yeni veritabanına geri yüklemek için **Tamam** ' a tıklayın.
+1. Click **OK** to restore your database from the backup in Azure SQL storage to the new database.
 
-6. Geri yükleme işinin durumunu görüntülemek için araç çubuğundaki bildirim simgesine tıklayın.
+1. Geri yükleme işinin durumunu görüntülemek için araç çubuğundaki bildirim simgesine tıklayın.
 
    ![geri yükleme işi ilerleme durumu](./media/sql-database-get-started-backup-recovery/restore-job-progress-long-term.png)
 
-5. Geri yükleme işi tamamlandığında, yeni geri yüklenen veritabanını görüntülemek için **SQL veritabanları** sayfasını açın.
+1. When the restore job is completed, open the **SQL databases** page to view the newly restored database.
 
 > [!NOTE]
 > Buradan [var olan veritabanına kopyalamak için geri yüklenen veritabanından veri ayıklama veya var olan veritabanını silerek geri yüklenen veritabanının adını var olan veritabanının adıyla değiştirme](sql-database-recovery-using-backups.md#point-in-time-restore) gibi görevleri gerçekleştirmek için SQL Server Management Studio kullanarak geri yüklenen veritabanına bağlanabilirsiniz.
->
 
-## <a name="use-powershell-to-manage-long-term-backups"></a>Uzun süreli yedeklemeleri yönetmek için PowerShell 'i kullanma
+## <a name="using-powershell"></a>PowerShell'i kullanma
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 > [!IMPORTANT]
-> PowerShell Azure Resource Manager modülü Azure SQL veritabanı tarafından hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. Bu cmdlet 'ler için bkz. [Azurerd. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır.
+> The PowerShell Azure Resource Manager module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. For these cmdlets, see [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). The arguments for the commands in the Az module and in the AzureRm modules are substantially identical.
 
-Aşağıdaki bölümlerde, PowerShell kullanarak uzun süreli yedek saklama, Azure SQL depolamada yedeklemeleri görüntüleme ve Azure SQL depolama 'daki bir yedekten geri yükleme işlemleri gösterilmektedir.
+The following sections show you how to use PowerShell to configure the long-term backup retention, view backups in Azure SQL storage, and restore from a backup in Azure SQL storage.
 
+### <a name="rbac-roles-to-manage-long-term-retention"></a>RBAC roles to manage long-term retention
 
-### <a name="rbac-roles-to-manage-long-term-retention"></a>Uzun süreli saklama yönetimi için RBAC rolleri
+For **Get-AzSqlDatabaseLongTermRetentionBackup** and **Restore-AzSqlDatabase**, you will need to have one of the following roles:
 
-**Get-AzSqlDatabaseLongTermRetentionBackup** ve **restore-azsqldatabase**için aşağıdaki rollerden birine sahip olmanız gerekir:
+- Subscription Owner role or
+- SQL Server Contributor role or
+- Custom role with the following permissions:
 
-- Abonelik sahibi rolü veya
-- SQL Server katkıda bulunan rolü veya
-- Aşağıdaki izinlerle özel rol:
+   Microsoft.Sql/locations/longTermRetentionBackups/read  Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionBackups/read  Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/read
 
-   Microsoft. SQL/Locations/longTermRetentionBackups/Read Microsoft. SQL/Locations/longTermRetentionServers/longTermRetentionBackups/Read Microsoft. SQL/Locations/longTermRetentionServers/longTermRetentionDatabases/ longTermRetentionBackups/okuma
- 
-**Remove-AzSqlDatabaseLongTermRetentionBackup**için aşağıdaki rollerden birine sahip olmanız gerekir:
+For **Remove-AzSqlDatabaseLongTermRetentionBackup**, you will need to have one of the following roles:
 
-- Abonelik sahibi rolü veya
-- Aşağıdaki izne sahip özel rol:
+- Subscription Owner role or
+- Custom role with the following permission:
 
-   Microsoft. SQL/Locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/Delete
-
+   Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/delete
 
 > [!NOTE]
-> SQL Server katkıda bulunan rolünün LTR yedeklemeleri silme izni yok.
+> The SQL Server Contributor role does not have permission to delete LTR backups.
 
-*Abonelik* ya da *kaynak grubu* kapsamında RBAC izinleri verilebilir. Ancak, bırakılan bir sunucuya ait olan LTR yedeklemelerine erişmek için, bu sunucunun *abonelik* kapsamında izin verilmesi gerekir.
+RBAC permissions could be granted in either *subscription* or *resource group* scope. However, to access LTR backups that belong to a dropped server, the permission must be granted in the *subscription* scope of that server.
 
+- Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/delete
 
-### <a name="create-an-ltr-policy"></a>Bir LTR ilkesi oluşturma
+### <a name="create-an-ltr-policy"></a>Create an LTR policy
 
 ```powershell
-# Get the SQL server 
-# $subId = “{subscription-id}”
-# $serverName = “{server-name}”
-# $resourceGroup = “{resource-group-name}” 
-# $dbName = ”{database-name}”
+# get the SQL server
+$subId = "<subscriptionId>"
+$serverName = "<serverName>"
+$resourceGroup = "<resourceGroupName>"
+$dbName = "<databaseName>"
 
 Connect-AzAccount
 Select-AzSubscription -SubscriptionId $subId
 
-# get the server
 $server = Get-AzSqlServer -ServerName $serverName -ResourceGroupName $resourceGroup
 
 # create LTR policy with WeeklyRetention = 12 weeks. MonthlyRetention and YearlyRetention = 0 by default.
-Set-AzSqlDatabaseBackupLongTermRetentionPolicy -ServerName $serverName -DatabaseName $dbName -ResourceGroupName $resourceGroup -WeeklyRetention P12W 
+Set-AzSqlDatabaseBackupLongTermRetentionPolicy -ServerName $serverName -DatabaseName $dbName `
+    -ResourceGroupName $resourceGroup -WeeklyRetention P12W
 
 # create LTR policy with WeeklyRetention = 12 weeks, YearlyRetention = 5 years and WeekOfYear = 16 (week of April 15). MonthlyRetention = 0 by default.
-Set-AzSqlDatabaseBackupLongTermRetentionPolicy -ServerName $serverName -DatabaseName $dbName -ResourceGroupName $resourceGroup -WeeklyRetention P12W -YearlyRetention P5Y -WeekOfYear 16
+Set-AzSqlDatabaseBackupLongTermRetentionPolicy -ServerName $serverName -DatabaseName $dbName `
+    -ResourceGroupName $resourceGroup -WeeklyRetention P12W -YearlyRetention P5Y -WeekOfYear 16
 ```
 
-### <a name="view-ltr-policies"></a>LTR ilkelerini görüntüle
-Bu örnek, bir sunucu içinde LTR ilkelerinin nasıl ekleneceğini gösterir
+### <a name="view-ltr-policies"></a>View LTR policies
+
+This example shows how to list the LTR policies within a server
 
 ```powershell
-# Get all LTR policies within a server
-$ltrPolicies = Get-AzSqlDatabase -ResourceGroupName Default-SQL-WestCentralUS -ServerName trgrie-ltr-server | Get-AzSqlDatabaseLongTermRetentionPolicy -Current 
+# get all LTR policies within a server
+$ltrPolicies = Get-AzSqlDatabase -ResourceGroupName Default-SQL-WestCentralUS -ServerName trgrie-ltr-server | `
+    Get-AzSqlDatabaseLongTermRetentionPolicy -Current
 
-# Get the LTR policy of a specific database 
-$ltrPolicies = Get-AzSqlDatabaseBackupLongTermRetentionPolicy -ServerName $serverName -DatabaseName $dbName  -ResourceGroupName $resourceGroup -Current
-```
-### <a name="clear-an-ltr-policy"></a>Bir LTR ilkesini Temizleme
-Bu örnekte, bir veritabanından bir LTR ilkesinin nasıl temizlediğiniz gösterilmektedir
-
-```powershell
-Set-AzSqlDatabaseBackupLongTermRetentionPolicy -ServerName $serverName -DatabaseName $dbName -ResourceGroupName $resourceGroup -RemovePolicy
+# get the LTR policy of a specific database
+$ltrPolicies = Get-AzSqlDatabaseBackupLongTermRetentionPolicy -ServerName $serverName -DatabaseName $dbName `
+    -ResourceGroupName $resourceGroup -Current
 ```
 
-### <a name="view-ltr-backups"></a>LTR yedeklemeleri görüntüle
+### <a name="clear-an-ltr-policy"></a>Clear an LTR policy
 
-Bu örnek, bir sunucu içinde LTR yedeklemelerin nasıl ekleneceğini gösterir. 
+This example shows how to clear an LTR policy from a database
 
 ```powershell
-# List all LTR backups under the current subscription in a specific Azure region 
-# The list includes backups for existing servers and dropped servers grouped by the logical database id.
-# Within each group they are ordered by the timestamp, the earliest backup first.
-# Requires Subscription scope permission
-$ltrBackups = Get-AzSqlDatabaseLongTermRetentionBackup -Location $server.Location 
+Set-AzSqlDatabaseBackupLongTermRetentionPolicy -ServerName $serverName -DatabaseName $dbName `
+    -ResourceGroupName $resourceGroup -RemovePolicy
+```
 
-# List the LTR backups under a specific resource group in a specific Azure region 
-# The list includes backups from the existing servers only grouped by the logical database id.
-# Within each group they are ordered by the timestamp, the earliest backup first. 
-$ltrBackups = Get-AzSqlDatabaseLongTermRetentionBackup -Location $server.Location -ResourceGroupName $resourceGroup
+### <a name="view-ltr-backups"></a>View LTR backups
 
-# List the LTR backups under an existing server
-# The list includes backups from the existing servers only grouped by the logical database id.
-# Within each group they are ordered by the timestamp, the earliest backup first. 
-$ltrBackups = Get-AzSqlDatabaseLongTermRetentionBackup -Location $server.Location -ResourceGroupName $resourceGroup -ServerName $serverName
+This example shows how to list the LTR backups within a server.
 
-# List the LTR backups for a specific database 
-# The backups are ordered by the timestamp, the earliest backup first. 
+```powershell
+# get the list of all LTR backups in a specific Azure region
+# backups are grouped by the logical database id, within each group they are ordered by the timestamp, the earliest backup first
+$ltrBackups = Get-AzSqlDatabaseLongTermRetentionBackup -Location $server.Location
+
+# get the list of LTR backups from the Azure region under the named server
+$ltrBackups = Get-AzSqlDatabaseLongTermRetentionBackup -Location $server.Location -ServerName $serverName
+
+# get the LTR backups for a specific database from the Azure region under the named server
 $ltrBackups = Get-AzSqlDatabaseLongTermRetentionBackup -Location $server.Location -ServerName $serverName -DatabaseName $dbName
 
-# List LTR backups only from live databases (you have option to choose All/Live/Deleted)
-# The list includes backups for existing servers and dropped servers grouped by the logical database id.
-# Within each group they are ordered by the timestamp, the earliest backup first.  
-# Requires Subscription scope permission
+# list LTR backups only from live databases (you have option to choose All/Live/Deleted)
 $ltrBackups = Get-AzSqlDatabaseLongTermRetentionBackup -Location $server.Location -DatabaseState Live
 
-# Only list the latest LTR backup for each database under a server
+# only list the latest LTR backup for each database
 $ltrBackups = Get-AzSqlDatabaseLongTermRetentionBackup -Location $server.Location -ServerName $serverName -OnlyLatestPerDatabase
 ```
 
-### <a name="delete-ltr-backups"></a>LTR yedeklemeleri Sil
+### <a name="delete-ltr-backups"></a>Delete LTR backups
 
-Bu örnek, yedeklemeler listesinden bir LTR yedeklemenin nasıl silineceğini gösterir.
+This example shows how to delete an LTR backup from the list of backups.
 
 ```powershell
-# Remove the earliest backup from the list of backups
+# remove the earliest backup
 $ltrBackup = $ltrBackups[0]
 Remove-AzSqlDatabaseLongTermRetentionBackup -ResourceId $ltrBackup.ResourceId
 ```
-> [!IMPORTANT]
-> LTR yedeklemenin silinmesi geri alınamaz. Sunucu silindikten sonra bir LTR yedeklemesini silmek için abonelik kapsamı izninizin olması gerekir. Azure Izleyici 'de her silme hakkında bildirimleri, ' uzun süreli bekletme yedeklemesini siler ' işlemi için filtreleyerek ayarlayabilirsiniz. Etkinlik günlüğü, ne zaman ve ne zaman istek yaptığı hakkında bilgiler içerir. Ayrıntılı yönergeler için bkz. [etkinlik günlüğü uyarıları oluşturma](../azure-monitor/platform/alerts-activity-log.md) .
->
 
-### <a name="restore-from-ltr-backups"></a>LTR yedeklemelerden geri yükleme
-Bu örnek, bir LTR yedeğinden nasıl geri yükleneceğini gösterir. Bu arabirim değişmediği halde kaynak kimliği parametresi artık LTR yedekleme kaynağı kimliğini gerektiriyor. 
+> [!IMPORTANT]
+> Deleting LTR backup is non-reversible. To delete an LTR backup after the server has been deleted you must have Subscription scope permission. You can set up notifications about each delete in Azure Monitor by filtering for operation ‘Deletes a long term retention backup’. The activity log contains information on who and when made the request. See [Create activity log alerts](../azure-monitor/platform/alerts-activity-log.md) for detailed instructions.
+
+### <a name="restore-from-ltr-backups"></a>Restore from LTR backups
+
+This example shows how to restore from an LTR backup. Note, this interface did not change but the resource id parameter now requires the LTR backup resource id.
 
 ```powershell
-# Restore a specific LTR backup as an P1 database on the server $serverName of the resource group $resourceGroup 
-Restore-AzSqlDatabase -FromLongTermRetentionBackup -ResourceId $ltrBackup.ResourceId -ServerName $serverName -ResourceGroupName $resourceGroup -TargetDatabaseName $dbName -ServiceObjectiveName P1
+# restore a specific LTR backup as an P1 database on the server $serverName of the resource group $resourceGroup
+Restore-AzSqlDatabase -FromLongTermRetentionBackup -ResourceId $ltrBackup.ResourceId -ServerName $serverName -ResourceGroupName $resourceGroup `
+    -TargetDatabaseName $dbName -ServiceObjectiveName P1
 ```
 
 > [!IMPORTANT]
-> Sunucu silindikten sonra bir LTR yedeklemesinden geri yüklemek için, sunucunun aboneliğine yönelik izinlere sahip olmanız ve bu aboneliğin etkin olması gerekir. İsteğe bağlı-ResourceGroupName parametresini de atmalısınız.  
->
+> To restore from an LTR backup after the server has been deleted, you must have permissions scoped to the server's subscription and that subscription must be active. You must also omit the optional -ResourceGroupName parameter.
 
 > [!NOTE]
-> Buradan, var olan veritabanına kopyalamak için geri yüklenen veritabanından veri ayıklama veya var olan veritabanını silme ve geri yükleme işlemini yeniden adlandırma gibi gerekli görevleri gerçekleştirmek için SQL Server Management Studio kullanarak geri yüklenen veritabanına bağlanabilirsiniz. veritabanı adının mevcut olduğunu. Bkz. [zaman noktası geri yükleme](sql-database-recovery-using-backups.md#point-in-time-restore).
+> From here, you can connect to the restored database using SQL Server Management Studio to perform needed tasks, such as to extract a bit of data from the restored database to copy into the existing database or to delete the existing database and rename the restored database to the existing database name. See [point in time restore](sql-database-recovery-using-backups.md#point-in-time-restore).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

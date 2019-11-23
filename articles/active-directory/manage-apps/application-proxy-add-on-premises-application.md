@@ -1,6 +1,6 @@
 ---
-title: Azure AD 'de şirket içi uygulama-uygulama proxy 'Si ekleme
-description: Azure Active Directory (Azure AD), kullanıcıların Azure AD hesabıyla oturum açarak şirket içi uygulamalara erişmesini sağlayan bir uygulama proxy hizmeti içerir. Bu öğreticide, ortamınızı uygulama proxy 'Si ile kullanım için nasıl hazırlayacağınız gösterilmektedir. Daha sonra, Azure AD kiracınıza şirket içi bir uygulama eklemek için Azure portal kullanır.
+title: Tutorial - Add an on-premises app - Application Proxy in Azure AD
+description: Azure Active Directory (Azure AD) has an Application Proxy service that enables users to access on-premises applications by signing in with their Azure AD account. This tutorial shows you how to prepare your environment for use with Application Proxy. Then, it uses the Azure portal to add an on-premises application to your Azure AD tenant.
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -12,61 +12,61 @@ ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87b8a76c94af1578423668becf4b7955862314cb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: e6f1f812bb7d31319476e6b940443e067fac895f
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275666"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420459"
 ---
-# <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Öğretici: Azure Active Directory içindeki uygulama proxy 'Si aracılığıyla uzaktan erişim için şirket içi uygulama ekleme
+# <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Tutorial: Add an on-premises application for remote access through Application Proxy in Azure Active Directory
 
-Azure Active Directory (Azure AD), kullanıcıların Azure AD hesabıyla oturum açarak şirket içi uygulamalara erişmesini sağlayan bir uygulama proxy hizmeti içerir. Bu öğretici, ortamınızı uygulama proxy 'Si ile kullanılmak üzere hazırlar. Ortamınız hazırlandıktan sonra, Azure AD kiracınıza şirket içi bir uygulama eklemek için Azure portal kullanırsınız.
+Azure Active Directory (Azure AD) has an Application Proxy service that enables users to access on-premises applications by signing in with their Azure AD account. This tutorial prepares your environment for use with Application Proxy. Once your environment is ready, you'll use the Azure portal to add an on-premises application to your Azure AD tenant.
 
 Bu öğreticide:
 
 > [!div class="checklist"]
-> * Giden trafik için bağlantı noktaları açar ve belirli URL 'lere erişim sağlar
-> * Bağlayıcıyı Windows sunucunuza yükleyip uygulama proxy 'Sine kaydeder
-> * Yüklü olan bağlayıcıyı doğrular ve doğru şekilde kaydedilir
-> * Azure AD kiracınıza şirket içi bir uygulama ekler
-> * Bir sınama kullanıcısının Azure AD hesabı kullanarak uygulamada oturum açmasını doğrular
+> * Opens ports for outbound traffic and allows access to specific URLs
+> * Installs the connector on your Windows server, and registers it with Application Proxy
+> * Verifies the connector installed and registered correctly
+> * Adds an on-premises application to your Azure AD tenant
+> * Verifies a test user can sign on to the application by using an Azure AD account
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Azure AD 'ye şirket içi bir uygulama eklemek için şunlar gerekir:
+To add an on-premises application to Azure AD, you need:
 
-* [Microsoft Azure AD Premium aboneliği](https://azure.microsoft.com/pricing/details/active-directory)
-* Bir uygulama yöneticisi hesabı
-* Kullanıcı kimlikleri, şirket içi bir dizinden eşitlenmeli veya doğrudan Azure AD kiracılarınız içinde oluşturulmuş olmalıdır. Kimlik eşitlemesi, Azure AD 'nin uygulama proxy 'Si yayımlanmış uygulamalarına erişim vermeden önce kullanıcıların kimliğini doğrulamasına ve çoklu oturum açma (SSO) gerçekleştirmesi için gerekli Kullanıcı tanımlayıcı bilgilerine sahip olmasına olanak sağlar.
+* A [Microsoft Azure AD premium subscription](https://azure.microsoft.com/pricing/details/active-directory)
+* An application administrator account
+* User identities must be synchronized from an on-premises directory or created directly within your Azure AD tenants. Identity synchronization allows Azure AD to pre-authenticate users before granting them access to App Proxy published applications and to have the necessary user identifier information to perform single sign-on (SSO).
 
 ### <a name="windows-server"></a>Windows server
 
-Uygulama proxy 'Sini kullanmak için, Windows Server 2012 R2 veya üstünü çalıştıran bir Windows Server gerekir. Uygulama proxy bağlayıcısını sunucuya yüklersiniz. Bu bağlayıcı sunucusunun Azure 'daki uygulama proxy hizmetlerine ve yayımlamayı planladığınız şirket içi uygulamalara bağlanması gerekir.
+To use Application Proxy, you need a Windows server running Windows Server 2012 R2 or later. You'll install the Application Proxy connector on the server. This connector server needs to connect to the Application Proxy services in Azure, and the on-premises applications that you plan to publish.
 
-Üretim ortamınızda yüksek kullanılabilirlik için birden fazla Windows Server olması önerilir. Bu öğretici için, bir Windows Server yeterlidir.
+For high availability in your production environment, we recommend having more than one Windows server. For this tutorial, one Windows server is sufficient.
 
 > [!IMPORTANT]
-> Bağlayıcıyı Windows Server 2019 ' ye yüklüyorsanız HTTP2 sınırlaması vardır. Bağlayıcıyı bu sürümde kullanma geçici çözümü aşağıdaki kayıt defteri anahtarını ekleyip sunucuyu yeniden başlatmayı sağlar. Bu bir makine kayıt defteri geniş anahtarıdır. 
+> If you are installing the connector on Windows Server 2019 there is a HTTP2 limitation. A workaround to use the connector on this version is adding the following registry key and restarting the server. Note, this is a machine registry wide key. 
     ```
     HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
     ```
 
-#### <a name="recommendations-for-the-connector-server"></a>Bağlayıcı sunucusu için öneriler
+#### <a name="recommendations-for-the-connector-server"></a>Recommendations for the connector server
 
-1. Bağlayıcı ile uygulama arasındaki performansı iyileştirmek için bağlayıcı sunucusunu uygulama sunucularına yakın fiziksel olarak bulun. Daha fazla bilgi için bkz. [ağ topolojisi konuları](application-proxy-network-topology.md).
-1. Bağlayıcı sunucusu ve Web uygulamaları sunucuları aynı Active Directory etki alanına ait olmalıdır veya güvenen etki alanlarını kapsamalıdır. Sunucuların aynı etki alanında veya güvenen etki alanlarında olması, tümleşik Windows kimlik doğrulaması (ıWA) ve Kerberos kısıtlanmış temsili (KCD) ile çoklu oturum açma (SSO) kullanma gereksinimidir. Bağlayıcı sunucusu ve Web uygulaması sunucuları farklı Active Directory etki alanlarındaysa, çoklu oturum açma için kaynak tabanlı temsilciyi kullanmanız gerekir. Daha fazla bilgi için bkz. [uygulama proxy 'si ile çoklu oturum açma Için KCD](application-proxy-configure-single-sign-on-with-kcd.md).
+1. Physically locate the connector server close to the application servers to optimize performance between the connector and the application. For more information, see [Network topology considerations](application-proxy-network-topology.md).
+1. The connector server and the web applications servers should belong to the same Active Directory domain or span trusting domains. Having the servers in the same domain or trusting domains is a requirement for using single sign-on (SSO) with Integrated Windows Authentication (IWA) and Kerberos Constrained Delegation (KCD). If the connector server and web application servers are in different Active Directory domains, you need to use resource-based delegation for single sign-on. For more information, see [KCD for single sign-on with Application Proxy](application-proxy-configure-single-sign-on-with-kcd.md).
 
 > [!WARNING]
-> Azure AD parola koruma proxy 'Si dağıttıysanız, Azure AD Uygulama Ara Sunucusu ve Azure AD parola koruma proxy 'yi aynı makinede yüklemeyin. Azure AD Uygulama Ara Sunucusu ve Azure AD parola koruma proxy, Azure AD Connect Aracısı Güncelleştirici hizmeti 'nin farklı sürümlerini yükler. Aynı makinede birlikte yüklendiğinde bu farklı sürümler uyumlu değildir.
+> If you've deployed Azure AD Password Protection Proxy, do not install Azure AD Application Proxy and Azure AD Password Protection Proxy together on the same machine. Azure AD Application Proxy and Azure AD Password Protection Proxy install different versions of the Azure AD Connect Agent Updater service. These different versions are incompatible when installed together on the same machine.
 
-#### <a name="tls-requirements"></a>TLS gereksinimleri
+#### <a name="tls-requirements"></a>TLS requirements
 
-Uygulama proxy bağlayıcısını yüklemeden önce Windows Bağlayıcısı sunucusunda TLS 1,2 özelliğinin etkinleştirilmiş olması gerekir.
+The Windows connector server needs to have TLS 1.2 enabled before you install the Application Proxy connector.
 
-TLS 1.2 etkinleştirmek için:
+To enable TLS 1.2:
 
-1. Aşağıdaki kayıt defteri anahtarlarını ayarlayın:
+1. Set the following registry keys:
     
     ```
     [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2]
@@ -75,166 +75,166 @@ TLS 1.2 etkinleştirmek için:
     [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319] "SchUseStrongCrypto"=dword:00000001
     ```
 
-1. Sunucuyu yeniden başlatın.
+1. Restart the server.
 
 > [!IMPORTANT]
-> Müşterilerimize en iyi sınıf şifrelemeyi sağlamak için, uygulama proxy hizmeti yalnızca TLS 1,2 protokollerine erişimi sınırlandırır. Bu değişiklikler 31 Ağustos 2019 tarihinden itibaren kademeli olarak alındı ve geçerli. Tüm istemci sunucu ve tarayıcı-sunucu birleşimlerinizin, uygulama proxy hizmeti ile bağlantı sağlamak için TLS 1,2 kullanacak şekilde güncelleştirildiğinden emin olun. Bunlar, kullanıcılarınızın uygulama proxy 'Si aracılığıyla yayımlanan uygulamalara erişmek için kullandığı istemcileri içerir. Faydalı başvurular ve kaynaklar için bkz. [Office 365 ' de TLS 1,2](https://support.microsoft.com/help/4057306/preparing-for-tls-1-2-in-office-365) için hazırlanma.
+> To provide the best-in-class encryption to our customers, the Application Proxy service limits access to only TLS 1.2 protocols. These changes were gradually rolled out and effective since August 31, 2019. Make sure that all your client-server and browser-server combinations are updated to use TLS 1.2 to maintain connection to Application Proxy service. These include clients your users are using to access applications published through Application Proxy. See Preparing for [TLS 1.2 in Office 365](https://support.microsoft.com/help/4057306/preparing-for-tls-1-2-in-office-365) for useful references and resources.
 
-## <a name="prepare-your-on-premises-environment"></a>Şirket içi ortamınızı hazırlama
+## <a name="prepare-your-on-premises-environment"></a>Prepare your on-premises environment
 
-Azure AD Uygulama Ara Sunucusu için ortamınızı hazırlamak üzere Azure veri merkezlerine iletişimi etkinleştirerek başlayın. Yolda bir güvenlik duvarı varsa, açık olduğundan emin olun. Açık bir güvenlik duvarı, bağlayıcının uygulama proxy 'sine HTTPS (TCP) istekleri yapmasına izin verir.
+Start by enabling communication to Azure data centers to prepare your environment for Azure AD Application Proxy. If there's a firewall in the path, make sure it's open. An open firewall allows the connector to make HTTPS (TCP) requests to the Application Proxy.
 
-### <a name="open-ports"></a>Açık bağlantı noktaları
+### <a name="open-ports"></a>Open ports
 
-**Giden** trafiğe aşağıdaki bağlantı noktalarını açın.
+Open the following ports to **outbound** traffic.
 
-   | Bağlantı noktası numarası | Nasıl kullanılır? |
+   | Bağlantı noktası numarası | How it's used |
    | --- | --- |
-   | 80 | SSL sertifikası doğrulanırken sertifika iptal listelerinin (CRL 'Ler) indirilmesi |
-   | 443 | Uygulama proxy 'Si hizmeti ile giden tüm iletişim |
+   | 80 | Downloading certificate revocation lists (CRLs) while validating the SSL certificate |
+   | 443 | All outbound communication with the Application Proxy service |
 
-Güvenlik duvarınız kaynak kullanıcılara göre trafiği zorlarsa, ağ hizmeti olarak çalışan Windows hizmetlerinden gelen trafik için 80 ve 443 bağlantı noktalarını da açın.
+If your firewall enforces traffic according to originating users, also open ports 80 and 443 for traffic from Windows services that run as a Network Service.
 
-### <a name="allow-access-to-urls"></a>URL 'lere erişime izin ver
+### <a name="allow-access-to-urls"></a>Allow access to URLs
 
-Aşağıdaki URL 'Lere erişime izin ver:
+Allow access to the following URLs:
 
-| URL'si | Nasıl kullanılır? |
+| URL | How it's used |
 | --- | --- |
-| \*. msappproxy.net<br>\*. servicebus.windows.net | Bağlayıcı ile uygulama proxy 'Si bulut hizmeti arasındaki iletişim |
-| mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Azure, sertifikaları doğrulamak için bu URL 'Leri kullanır. |
-| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>\*. microsoftonline.com<br>\*. microsoftonline-p.com<br>\*. msauth.net<br>\*. msauthimages.net<br>\*. msecnd.net<br>\*. msftauth.net<br>\*. msftauthimages.net<br>\*. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net | Bağlayıcı, kayıt işlemi sırasında bu URL 'Leri kullanır. |
+| \*.msappproxy.net<br>\*.servicebus.windows.net | Communication between the connector and the Application Proxy cloud service |
+| mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Azure uses these URLs to verify certificates. |
+| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>\*.microsoftonline.com<br>\*.microsoftonline-p.com<br>\*.msauth.net<br>\*.msauthimages.net<br>\*.msecnd.net<br>\*.msftauth.net<br>\*.msftauthimages.net<br>\*.phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net | The connector uses these URLs during the registration process. |
 
-Güvenlik duvarınız veya proxy 'niz DNS izin verilenler listelerine olanak tanımak için \*. msappproxy.net ve \*. servicebus.windows.net bağlantılarına izin verebilirsiniz. Aksi takdirde, [Azure IP aralıklarına ve hizmet etiketlerine genel buluta](https://www.microsoft.com/download/details.aspx?id=56519)erişime izin vermeniz gerekir. IP aralıkları her hafta güncellenir.
+You can allow connections to \*.msappproxy.net and \*.servicebus.windows.net if your firewall or proxy lets you configure DNS allow lists. If not, you need to allow access to the [Azure IP ranges and Service Tags - Public Cloud](https://www.microsoft.com/download/details.aspx?id=56519). The IP ranges are updated each week.
 
-## <a name="install-and-register-a-connector"></a>Bağlayıcı yükleyip kaydetme
+## <a name="install-and-register-a-connector"></a>Install and register a connector
 
-Uygulama proxy 'Sini kullanmak için, uygulama proxy 'Si hizmeti ile kullandığınız her Windows sunucusuna bir bağlayıcı yüklersiniz. Bağlayıcı, şirket içi uygulama sunucularından Azure AD 'deki uygulama proxy 'sine giden bağlantıyı yöneten bir aracıdır. Ayrıca, Azure AD Connect gibi diğer kimlik doğrulama aracılarının de yüklü olduğu sunuculara bir bağlayıcı yükleyebilirsiniz.
+To use Application Proxy, install a connector on each Windows server you're using with the Application Proxy service. The connector is an agent that manages the outbound connection from the on-premises application servers to Application Proxy in Azure AD. You can install a connector on servers that also have other authentication agents installed such as Azure AD Connect.
 
-Bağlayıcıyı yüklemek için:
+To install the connector:
 
-1. Uygulama proxy 'Si kullanan dizinin uygulama Yöneticisi olarak [Azure Portal](https://portal.azure.com/) oturum açın. Örneğin, kiracı etki alanı contoso.com ise yönetici bu etki alanında admin@contoso.com veya başka bir yönetici diğer adı olmalıdır.
-1. Sağ üst köşedeki Kullanıcı adınızı seçin. Uygulama proxy 'Si kullanan bir dizine oturum açtığınızdan emin olun. Dizinleri değiştirmeniz gerekiyorsa, **dizini** Değiştir ' i seçin ve uygulama proxy 'si kullanan bir dizin seçin.
-1. Sol gezinti panelinde **Azure Active Directory**' yi seçin.
-1. **Yönet**altında **uygulama proxy 'si**' ni seçin.
-1. **Bağlayıcı hizmetini indir**' i seçin.
+1. Sign in to the [Azure portal](https://portal.azure.com/) as an application administrator of the directory that uses Application Proxy. For example, if the tenant domain is contoso.com, the admin should be admin@contoso.com or any other admin alias on that domain.
+1. Select your username in the upper-right corner. Verify you're signed in to a directory that uses Application Proxy. If you need to change directories, select **Switch directory** and choose a directory that uses Application Proxy.
+1. In left navigation panel, select **Azure Active Directory**.
+1. Under **Manage**, select **Application proxy**.
+1. Select **Download connector service**.
 
-    ![Hizmet koşullarını görmek için bağlayıcı hizmetini indirin](./media/application-proxy-add-on-premises-application/application-proxy-download-connector-service.png)
+    ![Download connector service to see the Terms of Service](./media/application-proxy-add-on-premises-application/application-proxy-download-connector-service.png)
 
-1. Hizmet koşullarını okuyun. Hazırsanız **& koşulları kabul et**' i seçin.
-1. Pencerenin alt kısmında, bağlayıcıyı yüklemek için **Çalıştır** ' ı seçin. Bir Install Sihirbazı açılır.
-1. Hizmeti yüklemek için sihirbazdaki yönergeleri izleyin. Bağlayıcıyı Azure AD kiracınızın uygulama proxy 'Si ile kaydetmeniz istendiğinde, uygulama yöneticinizin kimlik bilgilerini sağlayın.
-    - Internet Explorer (IE) için, **IE artırılmış güvenlik yapılandırması** **Açık**olarak ayarlandıysa, kayıt ekranını göremeyebilirsiniz. Erişim sağlamak için hata iletisindeki yönergeleri izleyin. **Internet Explorer Artırılmış Güvenlik Yapılandırması** 'nın **kapalı**olduğundan emin olun.
+1. Read the Terms of Service. When you're ready, select **Accept terms & Download**.
+1. At the bottom of the window, select **Run** to install the connector. An install wizard opens.
+1. Follow the instructions in the wizard to install the service. When you're prompted to register the connector with the Application Proxy for your Azure AD tenant, provide your application administrator credentials.
+    - For Internet Explorer (IE), if **IE Enhanced Security Configuration** is set to **On**, you may not see the registration screen. To get access, follow the instructions in the error message. Make sure that **Internet Explorer Enhanced Security Configuration** is set to **Off**.
 
-### <a name="general-remarks"></a>Genel açıklamalar
+### <a name="general-remarks"></a>General remarks
 
-Daha önce bir bağlayıcı yüklediyseniz, en son sürümü almak için yeniden yükleyin. Önceden yayınlanan sürümler ve içerdikleri değişiklikler hakkında bilgi için bkz. [uygulama proxy 'si: sürüm yayınlama geçmişi](application-proxy-release-version-history.md).
+If you've previously installed a connector, reinstall to get the latest version. To see information about previously released versions and what changes they include, see [Application Proxy: Version Release History](application-proxy-release-version-history.md).
 
-Şirket içi uygulamalarınız için birden fazla Windows Server 'ı seçerseniz, bağlayıcıyı her bir sunucuya yükleyip kaydetmeniz gerekir. Bağlayıcıları bağlayıcı grupları halinde düzenleyebilirsiniz. Daha fazla bilgi için bkz. [bağlayıcı grupları](application-proxy-connector-groups.md).
+If you choose to have more than one Windows server for your on-premises applications, you'll need to install and register the connector on each server. You can organize the connectors into connector groups. For more information, see [Connector groups](application-proxy-connector-groups.md).
 
-Kuruluşunuz internet 'e bağlanmak için proxy sunucuları kullanıyorsa, bunları uygulama proxy 'Si için yapılandırmanız gerekir.  Daha fazla bilgi için bkz. [mevcut şirket içi proxy sunucularıyla çalışma](application-proxy-configure-connectors-with-proxy-servers.md). 
+If your organization uses proxy servers to connect to the internet, you need to configure them for Application Proxy.  For more information, see [Work with existing on-premises proxy servers](application-proxy-configure-connectors-with-proxy-servers.md). 
 
-Bağlayıcılar, kapasite planlaması ve bunların güncel kalması hakkında bilgi için bkz. [Azure AD uygulama ara sunucusu bağlayıcıları anlama](application-proxy-connectors.md).
+For information about connectors, capacity planning, and how they stay up-to-date, see [Understand Azure AD Application Proxy connectors](application-proxy-connectors.md).
 
-## <a name="verify-the-connector-installed-and-registered-correctly"></a>Bağlayıcının yüklendiğini ve doğru şekilde kaydedildiğini doğrulama
+## <a name="verify-the-connector-installed-and-registered-correctly"></a>Verify the connector installed and registered correctly
 
-Yeni bir bağlayıcının doğru bir şekilde yüklendiğini doğrulamak için Azure portal veya Windows Server 'ı kullanabilirsiniz.
+You can use the Azure portal or your Windows server to confirm that a new connector installed correctly.
 
-### <a name="verify-the-installation-through-azure-portal"></a>Azure portal aracılığıyla yüklemeyi doğrulama
+### <a name="verify-the-installation-through-azure-portal"></a>Verify the installation through Azure portal
 
-Bağlayıcının yüklendiğini ve doğru şekilde kaydedildiğini doğrulamak için:
+To confirm the connector installed and registered correctly:
 
-1. [Azure Portal](https://portal.azure.com)kiracı dizininizde oturum açın.
-1. Sol gezinti panelinde **Azure Active Directory**' yi seçin ve ardından **Yönet** bölümünün altındaki **uygulama proxy 'si** ' ni seçin. Tüm bağlayıcılar ve bağlayıcı gruplarınız bu sayfada görüntülenir.
-1. Ayrıntılarını doğrulamak için bir bağlayıcı görüntüleyin. Bağlayıcılar varsayılan olarak genişletilmelidir. Görüntülemek istediğiniz bağlayıcı genişletilmemişse, ayrıntıları görüntülemek için bağlayıcıyı genişletin. Etkin yeşil etiket, bağlayıcının hizmete bağlanamadığını gösterir. Ancak, etiket yeşil olsa da bir ağ sorunu bağlayıcının ileti almasını engelliyor olabilir.
+1. Sign in to your tenant directory in the [Azure portal](https://portal.azure.com).
+1. In the left navigation panel, select **Azure Active Directory**, and then select **Application Proxy** under the **Manage** section. All of your connectors and connector groups appear on this page.
+1. View a connector to verify its details. The connectors should be expanded by default. If the connector you want to view isn't expanded, expand the connector to view the details. An active green label indicates that your connector can connect to the service. However, even though the label is green, a network issue could still block the connector from receiving messages.
 
-    ![Azure AD Uygulama Ara Sunucusu bağlayıcıları](./media/application-proxy-add-on-premises-application/app-proxy-connectors.png)
+    ![Azure AD Application Proxy Connectors](./media/application-proxy-add-on-premises-application/app-proxy-connectors.png)
 
-Bağlayıcının yüklenmesiyle ilgili daha fazla yardım için bkz. [uygulama proxy bağlayıcısını yükleme sorunu](application-proxy-connector-installation-problem.md).
+For more help with installing a connector, see [Problem installing the Application Proxy Connector](application-proxy-connector-installation-problem.md).
 
-### <a name="verify-the-installation-through-your-windows-server"></a>Windows sunucunuz aracılığıyla yüklemeyi doğrulama
+### <a name="verify-the-installation-through-your-windows-server"></a>Verify the installation through your Windows server
 
-Bağlayıcının yüklendiğini ve doğru şekilde kaydedildiğini doğrulamak için:
+To confirm the connector installed and registered correctly:
 
-1. **Windows anahtarı '** nı ve *Services. msc*' yi girerek Windows Hizmetleri Yöneticisi 'ni açın.
-1. Aşağıdaki iki hizmetin durumunun **çalışır**durumda olup olmadığını denetleyin.
-   - **MICROSOFT AAD uygulama proxy Bağlayıcısı** bağlantı imkanı sunar.
-   - **Microsoft AAD uygulama ara sunucusu bağlayıcı güncelleştiricisi** , otomatik bir güncelleştirme hizmetidir. Güncelleştirici, bağlayıcının yeni sürümlerini denetler ve bağlayıcıyı gerektiği şekilde güncelleştirir.
+1. Open the Windows Services Manager by clicking the **Windows** key and entering *services.msc*.
+1. Check to see if the status for the following two services is **Running**.
+   - **Microsoft AAD Application Proxy Connector** enables connectivity.
+   - **Microsoft AAD Application Proxy Connector Updater** is an automated update service. The updater checks for new versions of the connector and updates the connector as needed.
 
      ![Uygulama Ara Sunucusu Bağlayıcısı hizmetleri - ekran görüntüsü](./media/application-proxy-add-on-premises-application/app_proxy_services.png)
 
-1. Hizmetlerin durumu **çalışmıyorsa**, her bir hizmeti seçmek için sağ tıklayın ve **Başlat**' ı seçin.
+1. If the status for the services isn't **Running**, right-click to select each service and choose **Start**.
 
-## <a name="add-an-on-premises-app-to-azure-ad"></a>Azure AD 'ye şirket içi uygulama ekleme
+## <a name="add-an-on-premises-app-to-azure-ad"></a>Add an on-premises app to Azure AD
 
-Ortamınızı hazırladığınıza ve bir bağlayıcı yükleolduğunuza göre, Azure AD 'ye şirket içi uygulamalar eklemeye hazırsınız.  
+Now that you've prepared your environment and installed a connector, you're ready to add on-premises applications to Azure AD.  
 
-1. [Azure Portal](https://portal.azure.com/)yönetici olarak oturum açın.
-2. Sol gezinti panelinde **Azure Active Directory**' yi seçin.
-3. **Kurumsal uygulamalar**' ı seçin ve ardından **Yeni uygulama**' yı seçin.
-4. Şirket **içi uygulamalar** bölümünde Şirket **içi uygulama ekle**' yi seçin.
-5. **Kendi şirket içi uygulamanızı ekleyin** bölümünde, uygulamanız hakkında aşağıdaki bilgileri sağlayın:
-
-    | Alan | Açıklama |
-    | :---- | :---------- |
-    | **Adı** | Erişim panelinde ve Azure portal görünecek uygulamanın adı. |
-    | **İç URL** | Özel ağınızın içinden uygulamaya erişim URL 'SI. Arka uç sunucusundaki belirli bir yolun yayımlanmasını sağlayabilirsiniz. Sunucunun geri kalanı yayımlanmaz. Bu şekilde, farklı siteleri farklı uygulamalarla aynı sunucuda yayımlayabilir ve her birine kendi ad ve erişim kurallarına sahip olabilirsiniz.<br><br>Bir yol yayımlarsanız uygulamanıza ilişkin tüm gerekli görüntüleri, betikleri ve stil sayfalarını içerdiğinden emin olun. Örneğin, uygulamanız https:\//yourapp/App ise ve https:\//yourapp/Media konumunda bulunan görüntüleri kullanıyorsa, https:\//yourapp/yolunu yol olarak yayımlamanız gerekir. Bu iç URL 'nin kullanıcılarınızın göreceği giriş sayfası olması gerekmez. Daha fazla bilgi için bkz. [yayımlanan uygulamalar için özel bir giriş sayfası ayarlama](application-proxy-configure-custom-home-page.md). |
-    | **Dış URL** | Kullanıcıların uygulamaya ağınızın dışından erişebileceği adres. Varsayılan uygulama proxy 'Si etki alanını kullanmak istemiyorsanız, [Azure AD uygulama ara sunucusu özel etki alanları](application-proxy-configure-custom-domain.md)hakkında bilgi edinin.|
-    | **Ön kimlik doğrulama** | Uygulama proxy 'Si, uygulamanıza erişim vermeden önce kullanıcıları nasıl doğrular.<br><br>**Azure Active Directory** -uygulama proxy 'si, kullanıcıların dizin ve uygulama için izinlerinin kimliğini doğrulayan Azure AD ile oturum açmasını yeniden yönlendirir. Koşullu erişim ve Multi-Factor Authentication gibi Azure AD güvenlik özelliklerinin avantajlarından yararlanabilmek için bu seçeneği varsayılan olarak tutmanız önerilir. Uygulamayı Microsoft Bulut uygulama güvenliği ile izlemek için **Azure Active Directory** gereklidir.<br><br>**Geçiş** -kullanıcıların uygulamaya erişmek IÇIN Azure AD 'de kimlik doğrulaması yapması gerekmez. Arka uçta kimlik doğrulama gereksinimlerini ayarlamaya devam edebilirsiniz. |
-    | **Bağlayıcı grubu** | Bağlayıcılar uygulamanıza uzaktan erişimi işler ve bağlayıcı grupları, bağlayıcıları ve uygulamaları bölgeye, ağa veya amaca göre düzenlemenize yardımcı olur. Henüz oluşturulmuş bağlayıcı grubunuz yoksa, uygulamanız **varsayılan**olarak atanır.<br><br>Uygulamanız bağlanmak için WebSockets kullanıyorsa, gruptaki tüm bağlayıcılar sürüm 1.5.612.0 veya üzeri olmalıdır.|
-
-6. Gerekirse, **ek ayarları**yapılandırın. Çoğu uygulama için, bu ayarları varsayılan durumlarında tutmanız gerekir. 
+1. Sign in as an administrator in the [Azure portal](https://portal.azure.com/).
+2. In the left navigation panel, select **Azure Active Directory**.
+3. Select **Enterprise applications**, and then select **New application**.
+4. In the **On-premises applications** section, select **Add an on-premises application**.
+5. In the **Add your own on-premises application** section, provide the following information about your application:
 
     | Alan | Açıklama |
     | :---- | :---------- |
-    | **Arka uç uygulama zaman aşımı** | Bu değeri yalnızca uygulamanızın kimlik doğrulaması ve bağlanma yavaş olması durumunda **uzun** olarak ayarlayın. Varsayılan olarak, arka uç uygulama zaman aşımı 85 saniye uzunluğuna sahiptir. Long olarak ayarlandığında, arka uç zaman aşımı 180 saniyeye yükseltilir. |
-    | **Yalnızca HTTP tanımlama bilgisini kullan** | Uygulama proxy 'Si tanımlama bilgilerinin HTTP yanıt üstbilgisinde HTTPOnly bayrağını içermesi için bu değeri **Evet** olarak ayarlayın. Uzak Masaüstü Hizmetleri kullanıyorsanız, bu değeri **Hayır**olarak ayarlayın.|
-    | **Güvenli tanımlama bilgisi kullan**| Şifrelenmiş HTTPS isteği gibi güvenli bir kanal üzerinden tanımlama bilgilerini iletmek için bu değeri **Evet** olarak ayarlayın.
-    | **Kalıcı tanımlama bilgisi kullan**| Bu değeri **Hayır**olarak ayarlayın. Bu ayarı yalnızca süreçler arasında tanımlama bilgilerini paylaşabilen uygulamalar için kullanın. Tanımlama bilgisi ayarları hakkında daha fazla bilgi için bkz. [Azure Active Directory ' de şirket içi uygulamalara erişmek Için tanımlama bilgisi ayarları](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-cookie-settings).
-    | **Üst bilgilerdeki URL 'Leri çevir** | Uygulamanız kimlik doğrulaması isteğindeki orijinal ana bilgisayar üst bilgisini gerektirmediğiniz sürece bu değeri **Evet** olarak tutun. |
-    | **Uygulama gövdesinde URL 'Leri çevir** | Diğer şirket içi uygulamalara yönelik olarak kodlanmış HTML bağlantıları yoksa ve özel etki alanları kullanmadıkça bu değeri **Hayır** olarak tutun. Daha fazla bilgi için bkz. [uygulama proxy 'si Ile bağlantı çevirisi](application-proxy-configure-hard-coded-link-translation.md).<br><br>Bu uygulamayı Microsoft Cloud App Security (MCAS) ile izlemeyi planlıyorsanız, bu değeri **Evet** olarak ayarlayın. Daha fazla bilgi için bkz. [Microsoft Cloud App Security ve Azure Active Directory ile gerçek zamanlı uygulama erişimi Izlemeyi yapılandırma](application-proxy-integrate-with-microsoft-cloud-application-security.md). |
+    | **Adı** | The name of the application that will appear on the access panel and in the Azure portal. |
+    | **Internal URL** | The URL for accessing the application from inside your private network. Arka uç sunucusundaki belirli bir yolun yayımlanmasını sağlayabilirsiniz. Sunucunun geri kalanı yayımlanmaz. In this way, you can publish different sites on the same server as different apps, and give each one its own name and access rules.<br><br>Bir yol yayımlarsanız uygulamanıza ilişkin tüm gerekli görüntüleri, betikleri ve stil sayfalarını içerdiğinden emin olun. For example, if your app is at https:\//yourapp/app and uses images located at https:\//yourapp/media, then you should publish https:\//yourapp/ as the path. This internal URL doesn't have to be the landing page your users see. For more information, see [Set a custom home page for published apps](application-proxy-configure-custom-home-page.md). |
+    | **External URL** | The address for users to access the app from outside your network. If you don't want to use the default Application Proxy domain, read about [custom domains in Azure AD Application Proxy](application-proxy-configure-custom-domain.md).|
+    | **Pre Authentication** | How Application Proxy verifies users before giving them access to your application.<br><br>**Azure Active Directory** - Application Proxy redirects users to sign in with Azure AD, which authenticates their permissions for the directory and application. We recommend keeping this option as the default so that you can take advantage of Azure AD security features like Conditional Access and Multi-Factor Authentication. **Azure Active Directory** is required for monitoring the application with Microsoft Cloud Application Security.<br><br>**Passthrough** - Users don't have to authenticate against Azure AD to access the application. You can still set up authentication requirements on the backend. |
+    | **Connector Group** | Connectors process the remote access to your application, and connector groups help you organize connectors and apps by region, network, or purpose. If you don't have any connector groups created yet, your app is assigned to **Default**.<br><br>If your application uses WebSockets to connect, all connectors in the group must be version 1.5.612.0 or later.|
+
+6. If necessary, configure **Additional settings**. For most applications, you should keep these settings in their default states. 
+
+    | Alan | Açıklama |
+    | :---- | :---------- |
+    | **Backend Application Timeout** | Set this value to **Long** only if your application is slow to authenticate and connect. At default, the backend application timeout has a length of 85 seconds. When set to long, the backend timeout is increased to 180 seconds. |
+    | **Use HTTP-Only Cookie** | Set this value to **Yes** to have Application Proxy cookies include the HTTPOnly flag in the HTTP response header. If using Remote Desktop Services, set this value to **No**.|
+    | **Use Secure Cookie**| Set this value to **Yes** to transmit cookies over a secure channel such as an encrypted HTTPS request.
+    | **Use Persistent Cookie**| Keep this value set to **No**. Only use this setting for applications that can't share cookies between processes. For more information about cookie settings, see [Cookie settings for accessing on-premises applications in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-cookie-settings).
+    | **Translate URLs in Headers** | Keep this value as **Yes** unless your application required the original host header in the authentication request. |
+    | **Translate URLs in Application Body** | Keep this value as **No** unless you have hardcoded HTML links to other on-premises applications and don't use custom domains. For more information, see [Link translation with Application Proxy](application-proxy-configure-hard-coded-link-translation.md).<br><br>Set this value to **Yes** if you plan to monitor this application with Microsoft Cloud App Security (MCAS). For more information, see [Configure real-time application access monitoring with Microsoft Cloud App Security and Azure Active Directory](application-proxy-integrate-with-microsoft-cloud-application-security.md). |
 
 7. **Add (Ekle)** seçeneğini belirleyin.
 
 ## <a name="test-the-application"></a>Uygulamayı test etme
 
-Uygulamanın doğru şekilde ekleneceğini test etmeye hazırsınız. Aşağıdaki adımlarda, uygulamaya bir kullanıcı hesabı ekleyecek ve oturum açmayı denemeniz gerekir.
+You're ready to test the application is added correctly. In the following steps, you'll add a user account to the application, and try signing in.
 
-### <a name="add-a-user-for-testing"></a>Test için Kullanıcı ekleme
+### <a name="add-a-user-for-testing"></a>Add a user for testing
 
-Uygulamaya Kullanıcı eklemeden önce, Kullanıcı hesabının şirket ağının içinden uygulamaya erişim izni olduğunu doğrulayın.
+Before adding a user to the application, verify the user account already has permissions to access the application from inside the corporate network.
 
-Bir test kullanıcısı eklemek için:
+To add a test user:
 
-1. **Kurumsal uygulamalar**' ı seçin ve ardından test etmek istediğiniz uygulamayı seçin.
-2. **Başlarken**' i seçin ve ardından **test için Kullanıcı ata**' yı seçin.
-3. **Kullanıcılar ve gruplar**altında **Kullanıcı Ekle**' yi seçin.
-4. **Atama Ekle**altında **Kullanıcılar ve gruplar**' ı seçin. **Kullanıcı ve gruplar** bölümü görüntülenir.
-5. Eklemek istediğiniz hesabı seçin.
-6. **Seç**' i seçin ve ardından **ata**' yı seçin.
+1. Select **Enterprise applications**, and then select the application you want to test.
+2. Select **Getting started**, and then select **Assign a user for testing**.
+3. Under **Users and groups**, select **Add user**.
+4. Under **Add assignment**, select **Users and groups**. The **User and groups** section appears.
+5. Choose the account you want to add.
+6. Choose **Select**, and then select **Assign**.
 
-### <a name="test-the-sign-on"></a>Oturum açmayı test etme
+### <a name="test-the-sign-on"></a>Test the sign-on
 
-Uygulamanın oturum açma sınamasını test etmek için:
+To test the sign-on to the application:
 
-1. Tarayıcınızda, yayımlama adımı sırasında yapılandırdığınız dış URL 'ye gidin. Başlangıç ekranını görmeniz gerekir.
-1. Önceki bölümde oluşturduğunuz Kullanıcı olarak oturum açın.
+1. In your browser, navigate to the external URL that you configured during the publish step. You should see the start screen.
+1. Sign in as the user you created in the previous section.
 
-Sorun giderme için bkz. [uygulama proxy 'si sorunlarını ve hata Iletilerini sorun giderme](application-proxy-troubleshoot.md).
+For troubleshooting, see [Troubleshoot Application Proxy problems and error messages](application-proxy-troubleshoot.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, şirket içi ortamınızı uygulama proxy 'Si ile çalışacak şekilde hazırladınız ve ardından uygulama proxy bağlayıcısını yükleyip kaydettiniz. Daha sonra, Azure AD kiracınıza bir uygulama eklediniz. Bir kullanıcının Azure AD hesabı kullanarak uygulamada oturum açmasını doğruladınız.
+In this tutorial, you prepared your on-premises environment to work with Application Proxy, and then installed and registered the Application Proxy connector. Next, you added an application to your Azure AD tenant. You verified that a user can sign on to the application by using an Azure AD account.
 
 Şu işlemleri yaptınız:
 > [!div class="checklist"]
-> * Giden trafik için açılan bağlantı noktaları ve belirli URL 'lere erişim izni verildi
-> * Bağlayıcı Windows sunucunuza yüklendi ve uygulama proxy 'Si ile kaydedildi
-> * Bağlayıcı yüklendi ve doğru şekilde kaydedildi
-> * Azure AD kiracınıza şirket içi uygulama eklendi
-> * Bir test kullanıcısının Azure AD hesabı kullanarak uygulamada oturum açmasını doğrulayan
+> * Opened ports for outbound traffic and allowed access to specific URLs
+> * Installed the connector on your Windows server, and registered it with Application Proxy
+> * Verified the connector installed and registered correctly
+> * Added an on-premises application to your Azure AD tenant
+> * Verified a test user can sign on to the application by using an Azure AD account
 
-Uygulamayı çoklu oturum açma için yapılandırmaya hazırsınız. Tek bir oturum açma yöntemi seçmek ve çoklu oturum açma öğreticilerini bulmak için aşağıdaki bağlantıyı kullanın.
+You're ready to configure the application for single sign-on. Use the following link to choose a single sign-on method and to find single sign-on tutorials.
 
 > [!div class="nextstepaction"]
 > [Çoklu oturum açmayı yapılandırma](what-is-single-sign-on.md#choosing-a-single-sign-on-method)

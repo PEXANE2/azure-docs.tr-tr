@@ -1,59 +1,59 @@
 ---
-title: Authentication
+title: Kimlik Doğrulaması
 titleSuffix: Azure Cognitive Services
-description: 'Azure bilişsel hizmetler kaynağına yönelik bir isteğin kimlik doğrulamasının üç yolu vardır: abonelik anahtarı, bir taşıyıcı belirteç veya bir çoklu hizmet aboneliği. Bu makalede her bir yöntem ve bir istek oluşturma hakkında bilgi edineceksiniz.'
+description: "There are three ways to authenticate a request to an Azure Cognitive Services resource: a subscription key, a bearer token, or a multi-service subscription. In this article, you'll learn about each method, and how to make a request."
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 07/24/2019
+ms.date: 11/22/2019
 ms.author: erhopf
-ms.openlocfilehash: ae3530af7741b8ce48e08c2a85589ffae8a83f49
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 1c13c2cc4d4e562d3512de90338d874091dfeef6
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70276787"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74423932"
 ---
-# <a name="authenticate-requests-to-azure-cognitive-services"></a>Azure bilişsel hizmetler 'e yönelik isteklerin kimliğini doğrulama
+# <a name="authenticate-requests-to-azure-cognitive-services"></a>Authenticate requests to Azure Cognitive Services
 
-Azure bilişsel hizmet hizmetine yapılan her istek bir kimlik doğrulama üst bilgisi içermelidir. Bu üst bilgi, bir hizmet veya hizmet grubu aboneliğinizi doğrulamak için kullanılan bir abonelik anahtarı veya erişim belirteci boyunca geçer. Bu makalede, bir isteğin kimliğini doğrulamak için üç yol ve her biri için gereksinimler hakkında bilgi edineceksiniz.
+Each request to an Azure Cognitive Service must include an authentication header. This header passes along a subscription key or access token, which is used to validate your subscription for a service or group of services. In this article, you'll learn about three ways to authenticate a request and the requirements for each.
 
-* [Tek servis abonelik anahtarı ile kimlik doğrulama](#authenticate-with-a-single-service-subscription-key)
-* [Birden çok hizmet aboneliği anahtarıyla kimlik doğrulama](#authenticate-with-a-multi-service-subscription-key)
-* [Belirteç ile kimlik doğrulama](#authenticate-with-an-authentication-token)
-* [Azure Active Directory (AAD) ile kimlik doğrulama](#authenticate-with-azure-active-directory)
+* [Authenticate with a single-service subscription key](#authenticate-with-a-single-service-subscription-key)
+* [Authenticate with a multi-service subscription key](#authenticate-with-a-multi-service-subscription-key)
+* [Authenticate with a token](#authenticate-with-an-authentication-token)
+* [Authenticate with Azure Active Directory (AAD)](#authenticate-with-azure-active-directory)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bir istek yapmadan önce, bir Azure hesabı ve bir Azure bilişsel hizmetler aboneliğiniz olması gerekir. Zaten bir hesabınız varsa, devam edin ve sonraki bölüme atlayın. Hesabınız yoksa, birkaç dakika içinde ayarlamanıza yardımcı olacak bir kılavuz sunuyoruz: [Azure için bilişsel Hizmetler hesabı oluşturun](cognitive-services-apis-create-account.md).
+Before you make a request, you need an Azure account and an Azure Cognitive Services subscription. If you already have an account, go ahead and skip to the next section. If you don't have an account, we have a guide to get you set up in minutes: [Create a Cognitive Services account for Azure](cognitive-services-apis-create-account.md).
 
-Hesabınızı oluşturduktan sonra [Azure Portal](cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) abonelik anahtarınızı alabilir veya [ücretsiz denemeyi](https://azure.microsoft.com/try/cognitive-services/my-apis)etkinleştirebilirsiniz.
+You can get your subscription key from the [Azure portal](cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) after creating your account, or activating a [free trial](https://azure.microsoft.com/try/cognitive-services/my-apis).
 
-## <a name="authentication-headers"></a>Kimlik doğrulama üstbilgileri
+## <a name="authentication-headers"></a>Authentication headers
 
-Azure bilişsel hizmetler ile kullanılabilen kimlik doğrulama üstbilgilerini hızlıca gözden geçirelim.
+Let's quickly review the authentication headers available for use with Azure Cognitive Services.
 
-| Üstbilgi | Açıklama |
+| Üst bilgi | Açıklama |
 |--------|-------------|
-| Ocp-Apim-Subscription-Key | Bu üstbilgiyi, belirli bir hizmet veya çok servis abonelik anahtarı için bir abonelik anahtarıyla kimlik doğrulaması yapmak için kullanın. |
-| OCP-apim-Subscription-Region | Bu üst bilgi yalnızca [Translator metin çevirisi API'si](./Translator/reference/v3-0-reference.md)bir çoklu hizmet aboneliği anahtarı kullanılırken gereklidir. Abonelik bölgesini belirtmek için bu üstbilgiyi kullanın. |
-| Authorization | Bir kimlik doğrulama belirteci kullanıyorsanız bu üstbilgiyi kullanın. Belirteç değişimi gerçekleştirme adımları aşağıdaki bölümlerde ayrıntılı olarak verilmiştir. Belirtilen değer şu biçimdedir: `Bearer <TOKEN>`. |
+| Ocp-Apim-Subscription-Key | Use this header to authenticate with a subscription key for a specific service or a multi-service subscription key. |
+| Ocp-Apim-Subscription-Region | This header is only required when using a multi-service subscription key with the [Translator Text API](./Translator/reference/v3-0-reference.md). Use this header to specify the subscription region. |
+| Yetkilendirme | Use this header if you are using an authentication token. The steps to perform a token exchange are detailed in the following sections. The value provided follows this format: `Bearer <TOKEN>`. |
 
-## <a name="authenticate-with-a-single-service-subscription-key"></a>Tek servis abonelik anahtarı ile kimlik doğrulama
+## <a name="authenticate-with-a-single-service-subscription-key"></a>Authenticate with a single-service subscription key
 
-İlk seçenek, Translator Metin Çevirisi gibi belirli bir hizmet için bir abonelik anahtarıyla bir isteğin kimliğini doğrular. Anahtarlar, oluşturduğunuz her kaynak için Azure portal kullanılabilir. Bir isteğin kimliğini doğrulamak üzere bir abonelik anahtarı kullanmak için, `Ocp-Apim-Subscription-Key` üst bilgi olarak geçirilmesi gerekir.
+The first option is to authenticate a request with a subscription key for a specific service, like Translator Text. The keys are available in the Azure portal for each resource that you've created. To use a subscription key to authenticate a request, it must be passed along as the `Ocp-Apim-Subscription-Key` header.
 
-Bu örnek istekler, `Ocp-Apim-Subscription-Key` üstbilgiyi nasıl kullanacağınızı gösterir. Bu örneği kullanırken geçerli bir abonelik anahtarı eklemeniz gerektiğini aklınızda bulundurun.
+These sample requests demonstrates how to use the `Ocp-Apim-Subscription-Key` header. Keep in mind, when using this sample you'll need to include a valid subscription key.
 
-Bu, Bing Web Araması API'si örnek bir çağrıdır:
+This is a sample call to the Bing Web Search API:
 ```cURL
 curl -X GET 'https://api.cognitive.microsoft.com/bing/v7.0/search?q=Welsch%20Pembroke%20Corgis' \
 -H 'Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY' | json_pp
 ```
 
-Bu, Translator Metin Çevirisi API'si örnek bir çağrıdır:
+This is a sample call to the Translator Text API:
 ```cURL
 curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de' \
 -H 'Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY' \
@@ -61,26 +61,26 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 --data-raw '[{ "text": "How much for the cup of coffee?" }]' | json_pp
 ```
 
-Aşağıdaki videoda bilişsel hizmetler anahtarının kullanılması gösterilmektedir.
+The following video demonstrates using a Cognitive Services key.
 
-## <a name="authenticate-with-a-multi-service-subscription-key"></a>Birden çok hizmet aboneliği anahtarıyla kimlik doğrulama
+## <a name="authenticate-with-a-multi-service-subscription-key"></a>Authenticate with a multi-service subscription key
 
 >[!WARNING]
-> Şu anda, **Bu hizmetler çoklu** hizmet anahtarlarını desteklemez: Soru-Cevap Oluşturma, konuşma Hizmetleri, Özel Görüntü İşleme ve anomali algılayıcısı.
+> At this time, these services **don't** support multi-service keys: QnA Maker, Speech Services, Custom Vision, and Anomaly Detector.
 
-Bu seçenek ayrıca isteklerin kimliğini doğrulamak için bir abonelik anahtarı kullanır. Temel fark, bir abonelik anahtarının belirli bir hizmete bağlı olmaması, bunun yerine, birden fazla bilişsel hizmet için isteklerin kimliğini doğrulamak için tek bir anahtar kullanılabilir. Bölgesel kullanılabilirlik, desteklenen özellikler ve fiyatlandırma hakkında bilgi için bkz. bilişsel [Hizmetler fiyatlandırması](https://azure.microsoft.com/pricing/details/cognitive-services/) .
+This option also uses a subscription key to authenticate requests. The main difference is that a subscription key is not tied to a specific service, rather, a single key can be used to authenticate requests for multiple Cognitive Services. See [Cognitive Services pricing](https://azure.microsoft.com/pricing/details/cognitive-services/) for information about regional availability, supported features, and pricing.
 
-Her istekte, `Ocp-Apim-Subscription-Key` üst bilgi olarak abonelik anahtarı sağlanır.
+The subscription key is provided in each request as the `Ocp-Apim-Subscription-Key` header.
 
-[![Bilişsel hizmetler için çoklu hizmet aboneliği anahtar gösterimi](./media/index/single-key-demonstration-video.png)](https://www.youtube.com/watch?v=psHtA1p7Cas&feature=youtu.be)
+[![Multi-service subscription key demonstration for Cognitive Services](./media/index/single-key-demonstration-video.png)](https://www.youtube.com/watch?v=psHtA1p7Cas&feature=youtu.be)
 
 ### <a name="supported-regions"></a>Desteklenen bölgeler
 
-İstek yapmak için Multi-Service abonelik anahtarını kullanırken `api.cognitive.microsoft.com`, bu bölgeyi URL 'ye eklemeniz gerekir. Örneğin: `westus.api.cognitive.microsoft.com`
+When using the multi-service subscription key to make a request to `api.cognitive.microsoft.com`, you must include the region in the URL. Örneğin: `westus.api.cognitive.microsoft.com`.
 
-Translator metin çevirisi API'si birden çok servis abonelik anahtarı kullanırken, `Ocp-Apim-Subscription-Region` üst bilgiyle abonelik bölgesi belirtmeniz gerekir.
+When using multi-service subscription key with the Translator Text API, you must specify the subscription region with the `Ocp-Apim-Subscription-Region` header.
 
-Bu bölgelerde çoklu hizmet kimlik doğrulaması desteklenir:
+Multi-service authentication is supported in these regions:
 
 | | | |
 |-|-|-|
@@ -91,16 +91,16 @@ Bu bölgelerde çoklu hizmet kimlik doğrulaması desteklenir:
 | `westeurope` | `westus` | `westus2` |
 
 
-### <a name="sample-requests"></a>Örnek istekler
+### <a name="sample-requests"></a>Sample requests
 
-Bu, Bing Web Araması API'si örnek bir çağrıdır:
+This is a sample call to the Bing Web Search API:
 
 ```cURL
 curl -X GET 'https://YOUR-REGION.api.cognitive.microsoft.com/bing/v7.0/search?q=Welsch%20Pembroke%20Corgis' \
 -H 'Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY' | json_pp
 ```
 
-Bu, Translator Metin Çevirisi API'si örnek bir çağrıdır:
+This is a sample call to the Translator Text API:
 
 ```cURL
 curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de' \
@@ -110,27 +110,27 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 --data-raw '[{ "text": "How much for the cup of coffee?" }]' | json_pp
 ```
 
-## <a name="authenticate-with-an-authentication-token"></a>Kimlik doğrulama belirteciyle kimlik doğrulaması
+## <a name="authenticate-with-an-authentication-token"></a>Authenticate with an authentication token
 
-Bazı Azure bilişsel hizmetler kabul eder ve bazı durumlarda bir kimlik doğrulama belirteci gerektirir. Şu anda bu hizmetler kimlik doğrulama belirteçlerini destekler:
+Some Azure Cognitive Services accept, and in some cases require, an authentication token. Currently, these services support authentication tokens:
 
-* Metin çevirisi API 'SI
-* Konuşma Hizmetleri: Konuşmayı metne REST API
-* Konuşma Hizmetleri: Metin okuma REST API
+* Text Translation API
+* Speech Services: Speech-to-text REST API
+* Speech Services: Text-to-speech REST API
 
 >[!NOTE]
-> Soru-Cevap Oluşturma Ayrıca yetkilendirme üst bilgisini kullanır, ancak bir uç nokta anahtarı gerektirir. Daha fazla bilgi için bkz [. soru-cevap oluşturma: Bilgi bankasından](./qnamaker/quickstarts/get-answer-from-kb-using-curl.md)yanıt alın.
+> QnA Maker also uses the Authorization header, but requires an endpoint key. For more information, see [QnA Maker: Get answer from knowledge base](./qnamaker/quickstarts/get-answer-from-knowledge-base-using-url-tool.md).
 
 >[!WARNING]
-> Kimlik doğrulama belirteçlerini destekleyen hizmetler zaman içinde değişebilir, lütfen bu kimlik doğrulama yöntemini kullanmadan önce bir hizmetin API başvurusunu denetleyin.
+> The services that support authentication tokens may change over time, please check the API reference for a service before using this authentication method.
 
-Kimlik doğrulama belirteçleri için hem tek hizmet hem de çok servis abonelik anahtarları değiştirilebilir. Kimlik doğrulama belirteçleri 10 dakika için geçerlidir.
+Both single service and multi-service subscription keys can be exchanged for authentication tokens. Authentication tokens are valid for 10 minutes.
 
-Kimlik doğrulama belirteçleri bir isteğe `Authorization` üst bilgi olarak dahil edilir. Belirtilen belirteç değeri önünde `Bearer`olmalıdır, örneğin:. `Bearer YOUR_AUTH_TOKEN`
+Authentication tokens are included in a request as the `Authorization` header. The token value provided must be preceded by `Bearer`, for example: `Bearer YOUR_AUTH_TOKEN`.
 
-### <a name="sample-requests"></a>Örnek istekler
+### <a name="sample-requests"></a>Sample requests
 
-Kimlik doğrulama belirteci için bir abonelik anahtarı alışverişi yapmak üzere bu URL 'YI `https://YOUR-REGION.api.cognitive.microsoft.com/sts/v1.0/issueToken`kullanın:.
+Use this URL to exchange a subscription key for an authentication token: `https://YOUR-REGION.api.cognitive.microsoft.com/sts/v1.0/issueToken`.
 
 ```cURL
 curl -v -X POST \
@@ -140,7 +140,7 @@ curl -v -X POST \
 -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY"
 ```
 
-Bu çoklu hizmet bölgeleri belirteç değişimini destekler:
+These multi-service regions support token exchange:
 
 | | | |
 |-|-|-|
@@ -150,7 +150,7 @@ Bu çoklu hizmet bölgeleri belirteç değişimini destekler:
 | `southeastasia` | `uksouth` | `westcentralus` |
 | `westeurope` | `westus` | `westus2` |
 
-Bir kimlik doğrulama belirteci aldıktan sonra, her istekte onu `Authorization` üst bilgi olarak geçirmeniz gerekir. Bu, Translator Metin Çevirisi API'si örnek bir çağrıdır:
+After you get an authentication token, you'll need to pass it in each request as the `Authorization` header. This is a sample call to the Translator Text API:
 
 ```cURL
 curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de' \
@@ -165,4 +165,4 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 * [Bilişsel Hizmetler nedir?](welcome.md)
 * [Bilişsel Hizmetler fiyatlandırması](https://azure.microsoft.com/pricing/details/cognitive-services/)
-* [Özel alt etki alanları](cognitive-services-custom-subdomains.md)
+* [Custom subdomains](cognitive-services-custom-subdomains.md)
