@@ -1,7 +1,7 @@
 ---
-title: Hızlı başlangıç-Python 'da Bing yerel Iş Arama API 'sine bir sorgu gönderme
+title: Quickstart - Send a query to the API in Python - Bing Local Business Search
 titleSuffix: Azure Cognitive Services
-description: Python 'da Bing yerel Iş Arama API 'sini kullanmaya başlamak için bu makaleyi kullanın.
+description: Use this article to start using the Bing Local Business Search API in Python.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,33 +10,33 @@ ms.subservice: bing-local-business
 ms.topic: quickstart
 ms.date: 11/06/2019
 ms.author: aahi
-ms.openlocfilehash: ec13555b478404c7e2169af5bcb33f37d8afc5bb
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: da8a0a7c27294838f8f5c4459eda890c1cbbec7a
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796150"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326680"
 ---
-# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-python"></a>Hızlı başlangıç: Python 'da Bing yerel Iş Arama API 'sine bir sorgu gönderme
+# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-python"></a>Quickstart: Send a query to the Bing Local Business Search API in Python
 
-Azure bilişsel hizmeti olan Bing yerel Iş Arama API 'sine istek göndermeye başlamak için bu hızlı başlangıcı kullanın. Bu basit uygulama Python 'da yazıldığı sırada, API, HTTP istekleri yapma ve JSON 'u ayrıştırma yeteneğine sahip olan herhangi bir programlama diliyle uyumlu olan bir yeniden takip eden Web hizmetidir.
+Use this quickstart to begin sending requests to the Bing Local Business Search API, which is an Azure Cognitive Service. While this simple application is written in Python, the API is a RESTful Web service compatible with any programming language capable of making HTTP requests and parsing JSON.
 
-Bu örnek uygulama, arama sorgusu `hotel in Bellevue`için API 'den gelen yerel yanıt verilerini alır.
+This example application gets local response data from the API for the search query `hotel in Bellevue`.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* [Python](https://www.python.org/) 2. x veya 3. x
+* [Python](https://www.python.org/) 2.x or 3.x
  
-Bing API 'lerle bir bilişsel [Hizmetler API 'si hesabınızın](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) olması gerekir. [Ücretsiz deneme](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) bu hızlı başlangıç için yeterlidir. Ücretsiz deneme tarafından sunulan erişim anahtarını kullanın.  Ayrıca bkz. bilişsel [Hizmetler fiyatlandırması-BING arama API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+You must have a [Cognitive Services API account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) with Bing APIs. [Ücretsiz deneme](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) bu hızlı başlangıç için yeterlidir. Use the access key provided by the free trial.  See also [Cognitive Services Pricing - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
-## <a name="run-the-complete-application"></a>Uygulamanın tamamını Çalıştır
+## <a name="run-the-complete-application"></a>Run the complete application
 
-Aşağıdaki kod yerelleştirilmiş sonuçları alır. Aşağıdaki adımları izler:
+The following code gets localized results. Aşağıdaki adımları izler:
 1. Ana bilgisayar ve yol ile uç noktayı belirtmek için değişkenleri bildirme.
-2. Sorgu parametresini belirtin. 
-3. İsteği oluşturan arama işlevini tanımlayın ve OCP-apim-Subscription-Key üstbilgisini ekler.
-4. OCP-apim-Subscription-Key üst bilgisini ayarlayın. 
-5. Bağlantıyı yapın ve isteği gönderin.
+2. Specify the query parameter. 
+3. Define the Search function that creates the request and adds the Ocp-Apim-Subscription-Key header.
+4. Set the Ocp-Apim-Subscription-Key header. 
+5. Make the connection and send the request.
 6. JSON sonuçlarını yazdırma.
 
 Bu tanıtımda kullanılan kodun tamamı aşağıda verilmiştir:
@@ -68,6 +68,6 @@ print (json.dumps(json.loads(result), indent=4))
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Yerel Iş arama Java hızlı başlangıç](local-search-java-quickstart.md)
-- [Yerel Iş araması C# hızlı başlangıç](local-quickstart.md)
-- [Yerel Iş arama düğümü hızlı başlangıç](local-search-node-quickstart.md)
+- [Local Business Search Java Quickstart](local-search-java-quickstart.md)
+- [Local Business Search C# Quickstart](local-quickstart.md)
+- [Local Business Search Node Quickstart](local-search-node-quickstart.md)

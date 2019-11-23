@@ -1,68 +1,67 @@
 ---
-title: Kaynak kilitlemeyi anlama
-description: Şeması atarken kaynakları korumak için kilitleme seçenekleri hakkında bilgi edinin.
+title: Understand resource locking
+description: Learn about the locking options in Azure Blueprints to protect resources when assigning a blueprint.
 ms.date: 04/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 754b9d7f73c6111abf7505e222a1ca5a8712ae45
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 50f506cc57f67ca2ae2b07e342750d6c5099e739
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960477"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406403"
 ---
-# <a name="understand-resource-locking-in-azure-blueprints"></a>Azure şemaları 'nda kaynak kilitlemeyi anlama
+# <a name="understand-resource-locking-in-azure-blueprints"></a>Understand resource locking in Azure Blueprints
 
-Ölçekteki tutarlı ortamların oluşturulması, bu tutarlılığı sürdürmek için bir mekanizma varsa gerçek anlamda değerlidir. Bu makalede, Azure şemaları 'nda kaynak kilitleme 'nin nasıl çalıştığı açıklanmaktadır. Kaynak kilitleme ve _reddetme atamalarından_oluşan bir örnek görmek için bkz. [yeni kaynakları koruma](../tutorials/protect-new-resources.md) öğreticisi.
+The creation of consistent environments at scale is only truly valuable if there's a mechanism to maintain that consistency. This article explains how resource locking works in Azure Blueprints. To see an example of resource locking and application of _deny assignments_, see the [protecting new resources](../tutorials/protect-new-resources.md) tutorial.
 
-## <a name="locking-modes-and-states"></a>Kilitleme modları ve durumlar
+## <a name="locking-modes-and-states"></a>Locking modes and states
 
-Kilitleme modu, şema ataması için geçerlidir ve üç seçeneğe sahiptir: **kilitleme**, **salt okuma**veya **silme**. Kilitleme modu, bir şema ataması sırasında yapıt dağıtımı sırasında yapılandırılır. Şema ataması güncelleştirilerek farklı bir kilitleme modu ayarlanabilir.
-Ancak, kilitleme modları, şema dışında değiştirilemez.
+Locking Mode applies to the blueprint assignment and it has three options: **Don't Lock**, **Read Only**, or **Do Not Delete**. The locking mode is configured during artifact deployment during a blueprint assignment. A different locking mode can be set by updating the blueprint assignment.
+Locking modes, however, can't be changed outside of Blueprints.
 
-Şema atamasında yapıtlar tarafından oluşturulan kaynakların dört durumu vardır: **kilitli değil**, **salt okunurdur**, **düzenleme/silme yapılamaz** **veya silinemez**. Her yapıt türü **kilitli değil** durumunda olabilir. Aşağıdaki tablo bir kaynağın durumunu belirlemede kullanılabilir:
+Resources created by artifacts in a blueprint assignment have four states: **Not Locked**, **Read Only**, **Cannot Edit / Delete**, or **Cannot Delete**. Each artifact type can be in the **Not Locked** state. The following table can be used to determine the state of a resource:
 
-|Mod|Yapıt kaynak türü|Durum|Açıklama|
+|Mod|Artifact Resource Type|Eyalet|Açıklama|
 |-|-|-|-|
-|Kilitleme|*|Kilitlenmedi|Kaynaklar, planlar tarafından korunmuyor. Bu durum, bir **salt okunurdur** veya bir şema atamasının dışında kaynak grubu yapıtı **silme** ' ya eklenen kaynaklar için de kullanılır.|
-|Salt Okunur|Kaynak grubu|Düzenleme/silme yapılamıyor|Kaynak grubu salt okunurdur ve kaynak grubundaki Etiketler değiştirilemez. **Kilitli** kaynaklar bu kaynak grubundan eklenebilir, taşınabilir, değiştirilebilir veya silinebilir.|
-|Salt Okunur|Kaynak olmayan Grup|Salt Okunur|Kaynak hiçbir şekilde değiştirilemez--değişiklik yok ve silinemez.|
-|Silme|*|Silinemiyor|Kaynaklar değiştirilebilir, ancak silinemez. **Kilitli** kaynaklar bu kaynak grubundan eklenebilir, taşınabilir, değiştirilebilir veya silinebilir.|
+|Don't Lock|*|Not Locked|Resources aren't protected by Blueprints. This state is also used for resources added to a **Read Only** or **Do Not Delete** resource group artifact from outside a blueprint assignment.|
+|Salt Okunur|Kaynak grubu|Cannot Edit / Delete|The resource group is read only and tags on the resource group can't be modified. **Not Locked** resources can be added, moved, changed, or deleted from this resource group.|
+|Salt Okunur|Non-resource group|Salt Okunur|The resource can't be altered in any way -- no changes and it can't be deleted.|
+|Do Not Delete|*|Cannot Delete|The resources can be altered, but can't be deleted. **Not Locked** resources can be added, moved, changed, or deleted from this resource group.|
 
-## <a name="overriding-locking-states"></a>Kilitleme durumlarını geçersiz kılma
+## <a name="overriding-locking-states"></a>Overriding locking states
 
-Genellikle abonelikte, ' sahip ' rolü gibi uygun [rol tabanlı erişim denetimi](../../../role-based-access-control/overview.md) (RBAC) ile herhangi bir kaynağı değiştirme veya silme izni verilmesi olasıdır. Bu erişim, bir dağıtılan atama kapsamında, şemalar kilitlemeyi uygularken durum değildir. Atama salt **okuma** veya **silme** seçeneği ile ayarlandıysa, abonelik sahibi korumalı kaynak üzerinde engellenmiş eylemi gerçekleştirebilir.
+It's typically possible for someone with appropriate [role-based access control](../../../role-based-access-control/overview.md) (RBAC) on the subscription, such as the 'Owner' role, to be allowed to alter or delete any resource. This access isn't the case when Blueprints applies locking as part of a deployed assignment. If the assignment was set with the **Read Only** or **Do Not Delete** option, not even the subscription owner can perform the blocked action on the protected resource.
 
-Bu güvenlik ölçüsü, tanımlanan şema 'in ve yanlışlıkla ya da programlı silme veya değiştirme işleminden oluşturmakta tasarlanan ortamın tutarlılığını korur.
+This security measure protects the consistency of the defined blueprint and the environment it was designed to create from accidental or programmatic deletion or alteration.
 
-## <a name="removing-locking-states"></a>Kilitleme durumları kaldırılıyor
+## <a name="removing-locking-states"></a>Removing locking states
 
-Atama tarafından korunan bir kaynağı değiştirmek veya silmek için gerekli hale gelirse, bunu iki şekilde yapabilirsiniz.
+If it becomes necessary to modify or delete a resource protected by an assignment, there are two ways to do so.
 
-- Şema atamasını kilitleme **moduna yükseltme**
-- Şema atamasını silme
+- Updating the blueprint assignment to a locking mode of **Don't Lock**
+- Delete the blueprint assignment
 
-Atama kaldırıldığında, planlar tarafından oluşturulan kilitler kaldırılır. Ancak, kaynak arka planda bırakılır ve normal yollarla silinmelidir.
+When the assignment is removed, the locks created by Blueprints are removed. However, the resource is left behind and would need to be deleted through normal means.
 
-## <a name="how-blueprint-locks-work"></a>Şema kilitleri nasıl çalışır?
+## <a name="how-blueprint-locks-work"></a>How blueprint locks work
 
-Atama **yalnızca okuma** veya **silme** seçeneği belirlenmişse, bir şema atama sırasında yapıt [kaynaklarına reddetme izni reddetme eylemi](../../../role-based-access-control/deny-assignments.md) uygulanır. Reddetme eylemi, BLUEPRINT atamasının yönetilen kimliği tarafından eklenir ve yalnızca aynı yönetilen kimliğe göre yapıt kaynaklarından kaldırılabilir. Bu güvenlik ölçüsü, kilitleme mekanizmasını zorlar ve şema kilidi 'nin şemalar dışında kaldırılmasını önler.
+An RBAC [deny assignments](../../../role-based-access-control/deny-assignments.md) deny action is applied to artifact resources during assignment of a blueprint if the assignment selected the **Read Only** or **Do Not Delete** option. The deny action is added by the managed identity of the blueprint assignment and can only be removed from the artifact resources by the same managed identity. This security measure enforces the locking mechanism and prevents removing the blueprint lock outside Blueprints.
 
-![Kaynak grubunda Blueprint reddetme ataması](../media/resource-locking/blueprint-deny-assignment.png)
+![Blueprint deny assignment on resource group](../media/resource-locking/blueprint-deny-assignment.png)
 
-Her modun [reddetme atama özellikleri](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties) aşağıdaki gibidir:
+The [deny assignment properties](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties) of each mode are as follows:
 
-|Mod |İzinler. eylemler |Permissions. NotActions |Sorumlular [i]. Türüyle |Excludesorumlularını [i]. Numarasını | DoNotApplyToChildScopes |
+|Mod |Permissions.Actions |Permissions.NotActions |Principals[i].Type |ExcludePrincipals[i].Id | DoNotApplyToChildScopes |
 |-|-|-|-|-|-|
-|Salt Okunur |**\*** |**\*/Read** |SystemDefined (herkes) |**Excludedsorumlularını** içinde şema atama ve Kullanıcı tanımlı |Kaynak grubu- _true_; Kaynak- _yanlış_ |
-|Silme |**\*/Delete** | |SystemDefined (herkes) |**Excludedsorumlularını** içinde şema atama ve Kullanıcı tanımlı |Kaynak grubu- _true_; Kaynak- _yanlış_ |
+|Salt Okunur |**\*** |**\*/read** |SystemDefined (Everyone) |blueprint assignment and user-defined in **excludedPrincipals** |Resource group - _true_; Resource - _false_ |
+|Do Not Delete |**\*/delete** | |SystemDefined (Everyone) |blueprint assignment and user-defined in **excludedPrincipals** |Resource group - _true_; Resource - _false_ |
 
 > [!IMPORTANT]
-> Azure Resource Manager, rol atama ayrıntılarını 30 dakikaya kadar önbelleğe alır. Sonuç olarak, şemayı reddetme, şema kaynaklarını reddetme eylemini reddetme işlemleri hemen etkili olmayabilir. Bu süre boyunca, BLUEPRINT kilitleri tarafından korunması amaçlanan bir kaynağı silmek mümkün olabilir.
+> Azure Resource Manager caches role assignment details for up to 30 minutes. As a result, deny assignments deny action's on blueprint resources may not immediately be in full effect. During this period of time, it might be possible to delete a resource intended to be protected by blueprint locks.
 
-## <a name="exclude-a-principal-from-a-deny-assignment"></a>Bir sorumluyu reddetme atamasından dışlama
+## <a name="exclude-a-principal-from-a-deny-assignment"></a>Exclude a principal from a deny assignment
 
-Bazı tasarım veya güvenlik senaryolarında, şema atamasının oluşturduğu [reddetme atamasından](../../../role-based-access-control/deny-assignments.md) bir sorumluyu dışlamak gerekebilir. Bu, [atamayı oluştururken](/rest/api/blueprints/assignments/createorupdate) **kilitler** özelliğindeki **excludedsorumlularını** dizisine en fazla beş değer eklenerek REST API yapılır.
-Bu, **Excludedsorumlularını**içeren bir istek gövdesi örneğidir:
+In some design or security scenarios, it may be necessary to exclude a principal from the [deny assignment](../../../role-based-access-control/deny-assignments.md) the blueprint assignment creates. This is done in REST API by adding up to five values to the **excludedPrincipals** array in the **locks** property when [creating the assignment](/rest/api/blueprints/assignments/createorupdate). This is an example of a request body that includes **excludedPrincipals**:
 
 ```json
 {
@@ -106,7 +105,7 @@ Bu, **Excludedsorumlularını**içeren bir istek gövdesi örneğidir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Yeni kaynakları koru](../tutorials/protect-new-resources.md) öğreticisini izleyin.
+- Follow the [protect new resources](../tutorials/protect-new-resources.md) tutorial.
 - [Şema yaşam döngüsü](lifecycle.md) hakkında bilgi edinin.
 - [Statik ve dinamik parametrelerin](parameters.md) kullanımını anlayın.
 - [Şema sıralama düzenini](sequencing-order.md) özelleştirmeyi öğrenin.

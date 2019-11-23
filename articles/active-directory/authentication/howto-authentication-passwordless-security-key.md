@@ -1,108 +1,108 @@
 ---
-title: Azure AD (Önizleme) için passwordless güvenlik anahtarı oturum açma özelliğini etkinleştirme-Azure Active Directory
-description: FIDO2 güvenlik anahtarlarını (Önizleme) kullanarak Azure AD 'de passwordless güvenlik anahtarı oturum açma özelliğini etkinleştirme
+title: Passwordless security key sign (preview) - Azure Active Directory
+description: Enable passwordless security key sign-in to Azure AD using FIDO2 security keys (preview)
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50af82e79e7ba8b979ab28a1b3f608ec7e41bfb2
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 9f87f1b2561b65590dfe29d7d2c8d1318e3d35e1
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603443"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381848"
 ---
-# <a name="enable-passwordless-security-key-sign-in-preview"></a>Passwordless güvenlik anahtarı oturum açma özelliğini etkinleştir (Önizleme)
+# <a name="enable-passwordless-security-key-sign-in-preview"></a>Enable passwordless security key sign in (preview)
 
-Bugün parola kullanan ve paylaşılan bir BILGISAYAR ortamına sahip olan kuruluşlar için güvenlik anahtarları, çalışanların Kullanıcı adı veya parola girmeden kimlik doğrulamasının sorunsuz bir yolunu sağlar. Güvenlik anahtarları, çalışanlar için geliştirilmiş üretkenlik sağlar ve daha iyi güvenliğe sahiptir.
+For enterprises that use passwords today and have a shared PC environment, security keys provide a seamless way for workers to authenticate without entering a username or password. Security keys provide improved productivity for workers, and have better security.
 
-Bu belge güvenlik anahtarı tabanlı passwordless kimlik doğrulamasını etkinleştirmeye odaklanır. Bu makalenin sonunda, FIDO2 güvenlik anahtarı kullanarak Azure AD hesabınızla Web tabanlı uygulamalarda oturum açabilirsiniz.
+This document focuses on enabling security key based passwordless authentication. At the end of this article, you will be able to sign in to web-based applications with your Azure AD account using a FIDO2 security key.
 
 |     |
 | --- |
-| FIDO2 güvenlik anahtarları Azure Active Directory genel önizleme özelliğidir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
+| FIDO2 security keys are a public preview feature of Azure Active Directory. For more information about previews, see  [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
 |     |
 
 ## <a name="requirements"></a>Gereksinimler
 
 - [Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
-- [Birleşik güvenlik bilgileri kayıt önizlemesi](concept-registration-mfa-sspr-combined.md)
-- Uyumlu [FIDO2 güvenlik anahtarları](concept-authentication-passwordless.md#fido2-security-keys)
-- WebAuthN, Windows 10 sürüm 1809 veya üstünü gerektirir * *
+- [Combined security information registration preview](concept-registration-mfa-sspr-combined.md)
+- Compatible [FIDO2 security keys](concept-authentication-passwordless.md#fido2-security-keys)
+- WebAuthN requires Windows 10 version 1809 or higher**
 
-Web Apps ve hizmetlerinde oturum açmak için güvenlik anahtarlarını kullanmak üzere, WebAuthN protokolünü destekleyen bir tarayıcıya sahip olmanız gerekir. Bunlara Microsoft Edge, Chrome, Firefox ve Safari dahildir.
+To use security keys for logging in to web apps and services, you must have a browser that supports the WebAuthN protocol. These include Microsoft Edge, Chrome, Firefox, and Safari.
 
-## <a name="prepare-devices-for-preview"></a>Cihazları önizleme için hazırlama
+## <a name="prepare-devices-for-preview"></a>Prepare devices for preview
 
-İle pillendirilecektir, Windows 10 sürüm 1809 veya üstünü çalıştırıyor olmalıdır. En iyi deneyim Windows 10 sürüm 1903 veya daha yüksektir.
+Devices that you will be piloting with must be running Windows 10 version 1809 or higher. The best experience is on Windows 10 version 1903 or higher.
 
-## <a name="enable-passwordless-authentication-method"></a>Passwordless kimlik doğrulama yöntemini Etkinleştir
+## <a name="enable-passwordless-authentication-method"></a>Enable passwordless authentication method
 
-### <a name="enable-the-combined-registration-experience"></a>Birleşik kayıt deneyimini etkinleştir
+### <a name="enable-the-combined-registration-experience"></a>Enable the combined registration experience
 
-Passwordless kimlik doğrulama yöntemlerinin kayıt özellikleri, Birleşik kayıt önizlemesine bağımlıdır. Birleşik kayıt önizlemesini etkinleştirmek için [Birleşik güvenlik bilgileri kaydını (Önizleme) etkinleştirme](howto-registration-mfa-sspr-combined.md)makalesindeki adımları izleyin.
+Registration features for passwordless authentication methods rely on the combined registration preview. Follow the steps in the article [Enable combined security information registration (preview)](howto-registration-mfa-sspr-combined.md), to enable the combined registration preview.
 
-### <a name="enable-fido2-security-key-method"></a>FIDO2 güvenlik anahtarı yöntemini Etkinleştir
+### <a name="enable-fido2-security-key-method"></a>Enable FIDO2 security key method
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
-1. **Kimlik doğrulama yöntemi ilkesi (Önizleme)**  > **Azure Active Directory** > **güvenlik** > **kimlik doğrulama yöntemlerini** inceleyin.
-1. Method **FIDO2 Security Key**altında aşağıdaki seçenekleri belirleyin:
-   1. **Etkinleştir** -Evet veya Hayır
-   1. **Hedef** -tüm kullanıcılar veya kullanıcıları seçin
-1. Yapılandırmayı **kaydedin** .
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. Browse to **Azure Active Directory** > **Security** > **Authentication methods** > **Authentication method policy (Preview)** .
+1. Under the method **FIDO2 Security Key**, choose the following options:
+   1. **Enable** - Yes or No
+   1. **Target** - All users or Select users
+1. **Save** the configuration.
 
-## <a name="user-registration-and-management-of-fido2-security-keys"></a>FIDO2 güvenlik anahtarlarının Kullanıcı kaydı ve yönetimi
+## <a name="user-registration-and-management-of-fido2-security-keys"></a>User registration and management of FIDO2 security keys
 
-1. [https://myprofile.microsoft.com](https://myprofile.microsoft.com)gidin.
-1. Henüz yoksa oturum açın.
-1. **Güvenlik bilgileri**' ne tıklayın.
-   1. Kullanıcının kayıtlı en az bir Azure Multi-Factor Authentication yöntemi zaten varsa, bir FIDO2 güvenlik anahtarını hemen kaydedebilirler.
-   1. Kayıtlı en az bir Azure Multi-Factor Authentication yöntemi yoksa, bir tane eklemesi gerekir.
-1. **Yöntem Ekle** ' ye tıklayıp **güvenlik anahtarı**' nı seçerek bir FIDO2 güvenlik anahtarı ekleyin.
-1. **USB cihazı** veya **NFC cihazını**seçin.
-1. Anahtarınızı hazırlayın ve **İleri ' yi**seçin.
-1. Bir kutu görünür ve kullanıcıdan güvenlik anahtarınız için bir PIN oluşturmasını/girmesini ister ve ardından anahtar için Biyometri ya da Touch için gerekli hareketi gerçekleştirir.
-1. Kullanıcı, Birleşik kayıt deneyimine döndürülür ve kullanıcının birden çok tane varsa bunu belirleyebilmesi için anahtar için anlamlı bir ad sağlaması istenir. **İleri**’ye tıklayın.
-1. İşlemi gerçekleştirmek için **bitti** ' ye tıklayın.
+1. Browse to [https://myprofile.microsoft.com](https://myprofile.microsoft.com).
+1. Sign in if not already.
+1. Click **Security Info**.
+   1. If the user already has at least one Azure Multi-Factor Authentication method registered, they can immediately register a FIDO2 security key.
+   1. If they don’t have at least one Azure Multi-Factor Authentication method registered, they must add one.
+1. Add a FIDO2 Security key by clicking **Add method** and choosing **Security key**.
+1. Choose **USB device** or **NFC device**.
+1. Have your key ready and choose **Next**.
+1. A box will appear and ask the user to create/enter a PIN for your security key, then perform the required gesture for the key, either biometric or touch.
+1. The user will be returned to the combined registration experience and asked to provide a meaningful name for the key so the user can identify which one if they have multiple. **İleri**’ye tıklayın.
+1. Click **Done** to complete the process.
 
-## <a name="sign-in-with-passwordless-credential"></a>Passwordless kimlik bilgileriyle oturum açın
+## <a name="sign-in-with-passwordless-credential"></a>Sign in with passwordless credential
 
-Aşağıdaki örnekte, bir Kullanıcı FIDO2 güvenlik anahtarını zaten sağladı. Kullanıcı, Windows 10 sürüm 1809 veya üzeri sürümlerde desteklenen bir tarayıcı içinde FIDO2 güvenlik anahtarı ile Web 'de oturum açmayı tercih edebilir.
+In the example below a user has already provisioned their FIDO2 security key. The user can choose to sign in on the web with their FIDO2 security key inside of a supported browser on Windows 10 version 1809 or higher.
 
-![Güvenlik anahtarı oturum açma Microsoft Edge](./media/howto-authentication-passwordless-security-key/fido2-windows-10-1903-edge-sign-in.png)
+![Security key sign-in Microsoft Edge](./media/howto-authentication-passwordless-security-key/fido2-windows-10-1903-edge-sign-in.png)
 
-## <a name="troubleshooting-and-feedback"></a>Sorun giderme ve geri bildirim
+## <a name="troubleshooting-and-feedback"></a>Troubleshooting and feedback
 
-Bu özelliğin önizlemesini yaparken geri bildirimde bulunmak veya sorun yaşarsanız, lütfen Windows Geri Bildirim Hub 'ı uygulaması aracılığıyla paylaşabilirsiniz.
+If you would like to share feedback or encounter issues while previewing this feature, please share via the Windows Feedback Hub app.
 
-1. **Geri Bildirim Hub 'ını** başlatın ve oturum açtığınızdan emin olun.
-1. Aşağıdaki kategoriye göre geri bildirim gönderin:
-   1. Kategori: güvenlik ve Gizlilik
-   1. Alt Kategori: FıDO
-1. Günlükleri yakalamak için, şu seçeneği kullanın: **sorunum yeniden oluştur**
+1. Launch **Feedback Hub** and make sure you're signed in.
+1. Submit feedback under the following categorization:
+   1. Category: Security and Privacy
+   1. Subcategory: FIDO
+1. To capture logs, use the option: **Recreate my Problem**
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 
-### <a name="security-key-provisioning"></a>Güvenlik anahtarı sağlama
+### <a name="security-key-provisioning"></a>Security key provisioning
 
-Güvenlik anahtarlarının yönetici tarafından sağlanması ve devre dışı sağlanması genel önizlemede bulunmamaktadır.
+Administrator provisioning and de-provisioning of security keys is not available in the public preview.
 
-### <a name="upn-changes"></a>UPN değişiklikleri
+### <a name="upn-changes"></a>UPN changes
 
-Bir kullanıcının UPN 'si değişirse değişiklik için FIDO2 güvenlik anahtarlarını artık değiştiremezsiniz. Çözüm, cihazı sıfırlamadır ve Kullanıcı FIDO2 güvenlik anahtarlarını yeniden kaydetmek zorunda olur.
+If a user’s UPN changes, you can no longer modify FIDO2 security keys to account for the change. The resolution is to reset the device and the user has to re-register their FIDO2 security keys.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[FIDO2 güvenlik anahtarı Windows 10 oturum açma](howto-authentication-passwordless-security-key-windows.md)
+[FIDO2 security key Windows 10 sign in](howto-authentication-passwordless-security-key-windows.md)
 
-[Şirket içi kaynaklarda FIDO2 kimlik doğrulamasını etkinleştirme](howto-authentication-passwordless-security-key-on-premises.md)
+[Enable FIDO2 authentication to on-premises resources](howto-authentication-passwordless-security-key-on-premises.md)
 
-[Cihaz kaydı hakkında daha fazla bilgi edinin](../devices/overview.md)
+[Learn more about device registration](../devices/overview.md)
 
-[Azure Multi-Factor Authentication hakkında daha fazla bilgi](../authentication/howto-mfa-getstarted.md)
+[Learn more about Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)

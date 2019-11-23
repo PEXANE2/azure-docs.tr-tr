@@ -1,20 +1,20 @@
 ---
-title: Java ve VS Code kullanarak birden çok bağımlı hizmet çalıştırma
+title: 'Running multiple dependent services: Java & Visual Studio Code'
 services: azure-dev-spaces
 ms.date: 11/21/2018
 ms.topic: tutorial
 description: Azure’da kapsayıcılar ve mikro hizmetlerle hızlı Kubernetes geliştirme
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
-ms.openlocfilehash: ed46bfa67d3d5066c9380cfcaad8796bf646d4fc
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
-ms.translationtype: HT
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, service mesh, service mesh routing, kubectl, k8s
+ms.openlocfilehash: 3fe19997ab54f02b6a5f029abbdb69d5ea6532f7
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279904"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325707"
 ---
-# <a name="multi-service-development-with-azure-dev-spaces"></a>Azure Dev Spaces ile çoklu hizmet geliştirme
+# <a name="running-multiple-dependent-services-java-and-visual-studio-code-with-azure-dev-spaces"></a>Running multiple dependent services: Java and Visual Studio Code with Azure Dev Spaces
 
-Bu öğreticide, dev alanlarının sağladığı bazı avantajlarla birlikte Azure Dev Spaces kullanarak çok hizmet uygulamaları geliştirmeyi öğreneceksiniz.
+In this tutorial, you'll learn how to develop multi-service applications using Azure Dev Spaces, along with some of the added benefits that Dev Spaces provides.
 
 ## <a name="call-a-service-running-in-a-separate-container"></a>Ayrı kapsayıcıda çalıştırılan hizmeti çağırma
 
@@ -23,25 +23,25 @@ Bu bölümde `mywebapi` adlı ikinci bir hizmet oluşturacak ve bu hizmetin `web
 ![Birden çok kapsayıcı](media/common/multi-container.png)
 
 ### <a name="download-sample-code-for-mywebapi"></a>*mywebapi* için örnek kod indirme
-Zamandan kazanmak adına örnek kodu bir GitHub deposundan indirelim. [https://github.com/Azure/dev-spaces](https://github.com/Azure/dev-spaces) adresine gidip **Kopyala veya İndir**’i seçerek GitHub deposunu indirin. Bu bölümün kodu `samples/java/getting-started/mywebapi` konumundadır.
+Zamandan kazanmak adına örnek kodu bir GitHub deposundan indirelim. https://github.com/Azure/dev-spaces adresine gidip **Kopyala veya İndir**’i seçerek GitHub deposunu indirin. Bu bölümün kodu `samples/java/getting-started/mywebapi` konumundadır.
 
 ### <a name="run-mywebapi"></a>*mywebapi* hizmetini çalıştırın
-1. `mywebapi`Ayrı bir VS Code penceresinde klasörünü açın.
+1. *Ayrı bir VS Code penceresinde* `mywebapi` klasörünü açın.
 1. **Komut Paleti**'ni açın (**Görünüm | Komut Paleti** menüsünü kullanarak) ve otomatik tamamlama özelliğini kullanarak komutu yazın ve seçin: `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`.
-1. F5'e bastıktan sonra hizmetin oluşturulup dağıtılmasını bekleyin. Hata ayıklama konsolunda aşağıdakine benzer bir ileti göründüğünde bu dosyanın size daha fazla olduğunu bilirsiniz:
+1. F5'e bastıktan sonra hizmetin oluşturulup dağıtılmasını bekleyin. You'll know it's ready when a message similar to the below appears in the debug console:
 
     ```cmd
     2019-03-11 17:02:35.935  INFO 216 --- [           main] com.ms.sample.mywebapi.Application       : Started Application in 8.164 seconds (JVM running for 9.272)
     ```
 
-1. Uç nokta URL'si `http://localhost:<portnumber>` benzeri bir URL olacaktır. **İpucu: VS Code durum çubuğu turuncu olarak açılır ve tıklatılabilir bir URL görüntüler.** Kapsayıcı yerel olarak çalışıyor gibi görünebilir, ancak gerçekte Azure’daki geliştirme ortamımızda çalışıyordur. Bunun localhost adresi olmasının nedeni `mywebapi` hizmetinin hiçbir genel uç nokta tanımlamamış olması ve buna yalnızca Kubernetes örneğinin içinden erişilebilmesidir. Size rahatlık sağlamak ve yerel makinenizden özel hizmetle etkileşimi kolaylaştırmak için, Azure Dev Spaces Azure'da çalıştırılan kapsayıcıya geçici bir SSH tüneli oluşturur.
+1. Uç nokta URL'si `http://localhost:<portnumber>` benzeri bir URL olacaktır. **Tip: The VS Code status bar will turn orange and display a clickable URL.** Kapsayıcı yerel olarak çalışıyor gibi görünebilir, ancak gerçekte Azure’daki geliştirme ortamımızda çalışıyordur. Bunun localhost adresi olmasının nedeni `mywebapi` hizmetinin hiçbir genel uç nokta tanımlamamış olması ve buna yalnızca Kubernetes örneğinin içinden erişilebilmesidir. Size rahatlık sağlamak ve yerel makinenizden özel hizmetle etkileşimi kolaylaştırmak için, Azure Dev Spaces Azure'da çalıştırılan kapsayıcıya geçici bir SSH tüneli oluşturur.
 1. `mywebapi` hazır olduğunda, tarayıcınızda localhost adresini açın.
 1. Tüm adımları başarılı olduysa, `mywebapi` hizmetinden bir yanıt alındığını görebilmelisiniz.
 
 ### <a name="make-a-request-from-webfrontend-to-mywebapi"></a>*webfrontend*’den *mywebapi*’ye istek gönderme
 Şimdi `webfrontend` uygulamasında `mywebapi` hizmetine istek gönderen bir kod yazalım.
 1. `webfrontend` için VS Code penceresine geçin.
-1. Aşağıdaki *deyimlerini* deyimi altına `import`ekleyin`package`:
+1. Aşağıdaki `import` deyimlerini `package` deyimi altına *ekleyin*:
 
    ```java
    import java.io.*;
@@ -65,7 +65,7 @@ Zamandan kazanmak adına örnek kodu bir GitHub deposundan indirelim. [https://g
 
 ### <a name="debug-across-multiple-services"></a>Birden çok hizmette hata ayıklama
 1. Bu noktada, `mywebapi` hizmetinin hata ayıklayıcısı ekli bir şekilde çalışmaya devam ediyor olması gerekir. Devam etmiyorsa, `mywebapi` projesinde F5'e basın.
-1. `mywebapi` projenin `index()` yönteminde, [19. satırda](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/mywebapi/src/main/java/com/ms/sample/mywebapi/Application.java#L19) bir kesme noktası ayarlayın `Application.java`
+1. Set a breakpoint in the `index()` method of the `mywebapi` project, on [line 19 of `Application.java`](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/mywebapi/src/main/java/com/ms/sample/mywebapi/Application.java#L19)
 1. `webfrontend` projesinde, `mywebapi` konumuna GET isteği göndermeden hemen önce, `try` ile başlayan satırda bir kesme noktası ayarlayın.
 1. `webfrontend` projesinde F5’e basın (veya o sırada çalışıyorsa, hata ayıklayıcıyı yeniden başlatın).
 1. Web uygulamasını çağırın ve her iki hizmette de kodun üzerinden geçin.
@@ -78,4 +78,4 @@ Artık her kapsayıcının ayrı ayrı geliştirilip dağıtılabileceği çok k
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Geliştirme alanlarında takım geliştirme hakkında bilgi edinin](team-development-java.md)
+> [Learn about team development in Dev Spaces](team-development-java.md)

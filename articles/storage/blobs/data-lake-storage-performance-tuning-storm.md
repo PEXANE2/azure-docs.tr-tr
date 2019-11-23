@@ -1,119 +1,119 @@
 ---
-title: Azure Data Lake Storage 2. fırtınası performansı ayarlama yönergeleri | Microsoft Docs
-description: Azure Data Lake Storage 2. fırtınası performansı ayarlama yönergeleri
+title: 'Tune performance: Storm, HDInsight & Azure Data Lake Storage Gen2 | Microsoft Docs'
+description: Azure Data Lake Storage Gen2 Storm performance tuning guidelines
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 108eeb03c0ed484e40b884372018bbbef686ee62
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 125c583512f6bae34c2dd3c3dd76a1b96a181ac1
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159867"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327914"
 ---
-# <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen2"></a>HDInsight ve Azure Data Lake Storage 2. için performans ayarlama Kılavuzu
+# <a name="tune-performance-storm-hdinsight--azure-data-lake-storage-gen2"></a>Tune performance: Storm, HDInsight & Azure Data Lake Storage Gen2
 
-Azure fırtınası topolojisinin performansını ayarladığınızda göz önünde bulundurmanız gereken faktörleri anlayın. Örneğin, Spog 'ler ve cıvatalar tarafından gerçekleştirilen işin özelliklerinin anlaşılması önemlidir (çalışmanın g/ç veya bellek yoğun olup olmadığı). Bu makalede, yaygın sorunları giderme dahil olmak üzere bir dizi performans ayarlama Kılavuzu ele alınmaktadır.
+Understand the factors that should be considered when you tune the performance of an Azure Storm topology. For example, it's important to understand the characteristics of the work done by the spouts and the bolts (whether the work is I/O or memory intensive). This article covers a range of performance tuning guidelines, including troubleshooting common issues.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 * **Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
-* **Azure Data Lake Storage 2. hesabı**. Bir oluşturma hakkında yönergeler için bkz. [hızlı başlangıç: analitik için depolama hesabı oluşturma](data-lake-storage-quickstart-create-account.md).
-* Data Lake Storage 2. hesabına erişimi olan **Azure HDInsight kümesi** . Bkz. [Azure HDInsight kümeleri ile Azure Data Lake Storage 2. kullanma](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2). Küme için Uzak Masaüstü 'Nü etkinleştirdiğinizden emin olun.
-* **Data Lake Storage 2. bir fırtınası kümesi çalıştırılıyor**. Daha fazla bilgi için bkz. [HDInsight 'Ta fırtınası](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview).
-* **Data Lake Storage 2. performans ayarlama yönergeleri**.  Genel performans kavramları için [Data Lake Storage 2. performans ayarlama Kılavuzu](data-lake-storage-performance-tuning-guidance.md)' na bakın.   
+* **An Azure Data Lake Storage Gen2 account**. For instructions on how to create one, see [Quickstart: Create a storage account for analytic](data-lake-storage-quickstart-create-account.md).
+* **Azure HDInsight cluster** with access to a Data Lake Storage Gen2 account. See [Use Azure Data Lake Storage Gen2 with Azure HDInsight clusters](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2). Make sure you enable Remote Desktop for the cluster.
+* **Running a Storm cluster on Data Lake Storage Gen2**. For more information, see [Storm on HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview).
+* **Performance tuning guidelines on Data Lake Storage Gen2**.  For general performance concepts, see [Data Lake Storage Gen2 Performance Tuning Guidance](data-lake-storage-performance-tuning-guidance.md).   
 
-## <a name="tune-the-parallelism-of-the-topology"></a>Topolojinin paralelliğini ayarlama
+## <a name="tune-the-parallelism-of-the-topology"></a>Tune the parallelism of the topology
 
-G/ç 'nin eşzamanlılık düzeyini Data Lake Storage 2. artırarak performansı artırabilirsiniz. Bir fırtınası topolojisi paralelliği tespit eden bir yapılandırma kümesine sahiptir:
-* Çalışan işlem sayısı (çalışanlar VM 'lerde eşit olarak dağıtılır).
-* Spout yürütücü örneklerinin sayısı.
-* Rulo yürütücü örneklerinin sayısı.
-* Spout görevlerinin sayısı.
-* Cıvatın görevi sayısı.
+You might be able to improve performance by increasing the concurrency of the I/O to and from Data Lake Storage Gen2. A Storm topology has a set of configurations that determine the parallelism:
+* Number of worker processes (the workers are evenly distributed across the VMs).
+* Number of spout executor instances.
+* Number of bolt executor instances.
+* Number of spout tasks.
+* Number of bolt tasks.
 
-Örneğin, 4 VM ve 4 çalışan işlem, 32 Spout yürütmesi ve 32 Spout görevi ve 256 sürgüler ve 512 cıvatların bulunduğu bir kümede aşağıdakileri göz önünde bulundurun:
+For example, on a cluster with 4 VMs and 4 worker processes, 32 spout executors and 32 spout tasks, and 256 bolt executors and 512 bolt tasks, consider the following:
 
-Çalışan düğümü olan her gözetmen, tek bir çalışan Java sanal makinesi (JVM) işlemine sahiptir. Bu JVM işlemi 4 Spout iş parçacığını ve 64 rulut iş parçacığını yönetir. Her iş parçacığı içinde görevler sırayla çalıştırılır. Yukarıdaki yapılandırmayla, her Spout iş parçacığının 1 görevi vardır ve her bir cıvacın iş parçacığının 2 görevi vardır.
+Each supervisor, which is a worker node, has a single worker Java virtual machine (JVM) process. This JVM process manages 4 spout threads and 64 bolt threads. Within each thread, tasks are run sequentially. With the preceding configuration, each spout thread has 1 task, and each bolt thread has 2 tasks.
 
-Bu durumda, dahil edilen çeşitli bileşenler ve sahip olduğunuz paralellik düzeyini nasıl etkilediği aşağıda verilmiştir:
-* İş göndermek ve yönetmek için baş düğüm (Nimbus ' de fırtınası olarak adlandırılır) kullanılır. Bu düğümlerin paralellik derecesi üzerinde hiçbir etkisi yoktur.
-* Gözetmen düğümleri. HDInsight 'ta, bu bir çalışan düğümü olan Azure VM 'sine karşılık gelir.
-* Çalışan görevleri VM 'lerde çalışan bir fırtınası işlemleridir. Her çalışan görevi bir JVM örneğine karşılık gelir. Fırtınası, belirttiğiniz çalışan işlem sayısını olabildiğince eşit şekilde çalışan düğümlere dağıtır.
-* Spout ve cıvam yürütücü örnekleri. Her yürütücü örneği çalışanlar içinde çalışan bir iş parçacığına karşılık gelir (JVM 'Ler).
-* Fırtınası görevleri. Bunlar, bu iş parçacıklarının her birinin çalıştırdığı mantıksal görevlerdir. Bu, paralellik düzeyini değiştirmez, bu nedenle yürütücü başına birden çok görev gerekip gerekmediğini değerlendirmelisiniz.
+In Storm, here are the various components involved, and how they affect the level of parallelism you have:
+* The head node (called Nimbus in Storm) is used to submit and manage jobs. These nodes have no impact on the degree of parallelism.
+* The supervisor nodes. In HDInsight, this corresponds to a worker node Azure VM.
+* The worker tasks are Storm processes running in the VMs. Each worker task corresponds to a JVM instance. Storm distributes the number of worker processes you specify to the worker nodes as evenly as possible.
+* Spout and bolt executor instances. Each executor instance corresponds to a thread running within the workers (JVMs).
+* Storm tasks. These are logical tasks that each of these threads run. This does not change the level of parallelism, so you should evaluate if you need multiple tasks per executor or not.
 
-### <a name="get-the-best-performance-from-data-lake-storage-gen2"></a>Data Lake Storage 2. en iyi performansı elde edin
+### <a name="get-the-best-performance-from-data-lake-storage-gen2"></a>Get the best performance from Data Lake Storage Gen2
 
-Data Lake Storage 2. ile çalışırken, aşağıdakileri yaparsanız en iyi performansı elde edersiniz:
-* Küçük Birleşik değişikliklerinizi daha büyük boyutlarda birleştirin.
-* Birçok eşzamanlı istek yapabilirsiniz. Her bir sürgüle iş parçacığı engelleme okumaları yaptığından, çekirdek başına 8-12 iş parçacığı aralığında bir yere sahip olmak istiyorsunuz. Bu, NIC 'i ve CPU 'YU iyi şekilde korur. Daha büyük bir VM daha fazla eşzamanlı istek sunar.  
+When working with Data Lake Storage Gen2, you get the best performance if you do the following:
+* Coalesce your small appends into larger sizes.
+* Do as many concurrent requests as you can. Because each bolt thread is doing blocking reads, you want to have somewhere in the range of 8-12 threads per core. This keeps the NIC and the CPU well utilized. A larger VM enables more concurrent requests.  
 
-### <a name="example-topology"></a>Örnek topoloji
+### <a name="example-topology"></a>Example topology
 
-D13v2 Azure VM ile 8 çalışan düğüm kümeniz olduğunu varsayalım. Bu VM 8 çekirdeğe sahiptir, bu nedenle 8 çalışan düğümleri arasında toplam 64 çekirdeğe sahip olursunuz.
+Let’s assume you have an 8 worker node cluster with a D13v2 Azure VM. This VM has 8 cores, so among the 8 worker nodes, you have 64 total cores.
 
-Çekirdek başına 8 rulumu iş parçacığı yaptık. Verilen 64 çekirdek, bu, 512 toplam (iş parçacığı). Bu durumda, sanal makine başına tek bir JVM ile başlayacağız ve genellikle eşzamanlılık elde etmek için JVM içinde eşzamanlılık iş parçacığı kullanır. Bu, 8 çalışan görevlerine (Azure VM başına bir tane) ve 512 cıvatörlerine ihtiyaç duyduğumuz anlamına gelir. Bu yapılandırma verildiğinde, fırtınası çalışanları çalışan düğümleri arasında eşit olarak (gözetmen düğümleri olarak da bilinir) dağıtmayı dener ve her çalışan düğümü 1 JVM 'yi verir. Artık süper vizörlerin içinde, fırtınası, her gözetmen (yani, JVM) 8 iş parçacığını sunarak, yürüticileri, her bir gözetmen (yani, JVM) 8 iş parçacığı arasında eşit olarak
+Let’s say we do 8 bolt threads per core. Given 64 cores, that means we want 512 total bolt executor instances (that is, threads). In this case, let’s say we start with one JVM per VM, and mainly use the thread concurrency within the JVM to achieve concurrency. That means we need 8 worker tasks (one per Azure VM), and 512 bolt executors. Given this configuration, Storm tries to distribute the workers evenly across worker nodes (also known as supervisor nodes), giving each worker node 1 JVM. Now within the supervisors, Storm tries to distribute the executors evenly between supervisors, giving each supervisor (that is, JVM) 8 threads each.
 
-## <a name="tune-additional-parameters"></a>Ek parametreleri ayarla
-Temel topolojiden sonra, parametrelerden herhangi birini ince ayar isteyip istemediğinizi göz önünde bulundurun:
-* **Çalışan düğümü başına JVM sayısı.** Bellekte barındırdığınızda büyük bir veri yapınız (örneğin, bir arama tablosu) varsa, her JVM ayrı bir kopya gerektirir. Alternatif olarak, daha az JVM varsa veri yapısını birçok iş parçacığı üzerinde kullanabilirsiniz. Cıvatanın g/ç için, JVM 'lerin sayısı bu JVM 'Ler genelinde eklenen iş parçacığı sayısı kadar farklılık yapmaz. Kolaylık olması açısından, çalışan başına bir JVM olması iyi bir fikirdir. Aradığınıza bağlı olarak veya ihtiyacınız olan uygulama işlemlerini, ancak bu numarayı değiştirmeniz gerekebilir.
-* **Spout yürüticileri sayısı.** Yukarıdaki örnek Data Lake Storage 2. yazmak için cıvatları kullandığından, spotların sayısı, doğrudan cıvatiye uygun değildir. Ancak, Spout 'daki işleme veya g/ç miktarına bağlı olarak en iyi performansı elde etmek iyi bir fikirdir. Cıvatları meşgul tutmaya yetecek kadar biriktirmeolduğunuzdan emin olun. Spotların çıkış ücretleri cıvatların verimlilik ile aynı olmalıdır. Gerçek yapılandırma Spout 'a bağlıdır.
-* **Görev sayısı.** Her bir sürgüsü tek bir iş parçacığı olarak çalışır. Her bir ek görev, ek eşzamanlılık sağlamaz. Yalnızca kullanım açısından, kayıt düzeni elde etmek için gereken tek zaman, rulonun yürütme süresinin büyük bir oranını alırsa. Daha fazla tanımlama grubunu daha büyük bir ekleme için, fiteleten bir onay göndermeden önce bu çok sayıda grubu gruplamak iyi bir fikirdir. Bu nedenle, çoğu durumda birden çok görev ek bir avantaj sağlamaz.
-* **Yerel veya karıştırma gruplandırması.** Bu ayar etkinleştirildiğinde, diziler aynı çalışan işlemi içinde cıvatlara gönderilir. Bu işlem işlemler arası iletişimi ve ağ çağrılarını azaltır. Bu çoğu topolojilerde önerilir.
+## <a name="tune-additional-parameters"></a>Tune additional parameters
+After you have the basic topology, you can consider whether you want to tweak any of the parameters:
+* **Number of JVMs per worker node.** If you have a large data structure (for example, a lookup table) that you host in memory, each JVM requires a separate copy. Alternatively, you can use the data structure across many threads if you have fewer JVMs. For the bolt’s I/O, the number of JVMs does not make as much of a difference as the number of threads added across those JVMs. For simplicity, it's a good idea to have one JVM per worker. Depending on what your bolt is doing or what application processing you require, though, you may need to change this number.
+* **Number of spout executors.** Because the preceding example uses bolts for writing to Data Lake Storage Gen2, the number of spouts is not directly relevant to the bolt performance. However, depending on the amount of processing or I/O happening in the spout, it's a good idea to tune the spouts for best performance. Ensure that you have enough spouts to be able to keep the bolts busy. The output rates of the spouts should match the throughput of the bolts. The actual configuration depends on the spout.
+* **Number of tasks.** Each bolt runs as a single thread. Additional tasks per bolt don't provide any additional concurrency. The only time they are of benefit is if your process of acknowledging the tuple takes a large proportion of your bolt execution time. It's a good idea to group many tuples into a larger append before you send an acknowledgement from the bolt. So, in most cases, multiple tasks provide no additional benefit.
+* **Local or shuffle grouping.** When this setting is enabled, tuples are sent to bolts within the same worker process. This reduces inter-process communication and network calls. This is recommended for most topologies.
 
-Bu temel senaryo, iyi bir başlangıç noktasıdır. En iyi performansı elde etmek için yukarıdaki parametreleri ince ayar için kendi verilerinize test edin.
+This basic scenario is a good starting point. Test with your own data to tweak the preceding parameters to achieve optimal performance.
 
-## <a name="tune-the-spout"></a>Spout ayarla
+## <a name="tune-the-spout"></a>Tune the spout
 
-Spout 'yi ayarlamak için aşağıdaki ayarları değiştirebilirsiniz.
+You can modify the following settings to tune the spout.
 
-- **Demet zaman aşımı: topoloji. Message. Timeout. secs**. Bu ayar, bir iletinin tamamlanma süresini belirler ve başarısız kabul edilmeden önce onay alır.
+- **Tuple timeout: topology.message.timeout.secs**. This setting determines the amount of time a message takes to complete, and receive acknowledgement, before it is considered failed.
 
-- **Çalışan işlemi başına en fazla bellek: Worker. childopts**. Bu ayar, Java çalışanlarına ek komut satırı parametreleri belirtmenizi sağlar. Burada en yaygın olarak kullanılan ayar, bir JVM 'nin yığınına ayrılan maksimum belleği belirleyen XmX ' dir.
+- **Max memory per worker process: worker.childopts**. This setting lets you specify additional command-line parameters to the Java workers. The most commonly used setting here is XmX, which determines the maximum memory allocated to a JVM’s heap.
 
-- **Maksimum Spout bekliyor: topoloji. Max. Spout. Pending**. Bu ayar, herhangi bir zamanda Spout iş parçacığı başına uçuş (henüz topoloji olmayan tüm düğümlerde onaylanmamış) tanımlama gruplarının sayısını belirler.
+- **Max spout pending: topology.max.spout.pending**. This setting determines the number of tuples that can in be flight (not yet acknowledged at all nodes in the topology) per spout thread at any time.
 
-  İçin iyi bir hesaplama, her bir tanımlama grubu için boyut tahminidir. Daha sonra, bir Spout iş parçacığının ne kadar bellek olduğunu anlamak. Bu değere bölünen bir iş parçacığına ayrılan toplam bellek, en fazla Spout bekleyen parametresi için üst sınır vermelidir.
+  A good calculation to do is to estimate the size of each of your tuples. Then figure out how much memory one spout thread has. The total memory allocated to a thread, divided by this value, should give you the upper bound for the max spout pending parameter.
 
-Varsayılan Data Lake Storage 2. fırtınası işareti, bu parametreyi ayarlamak için kullanılabilen bir boyut eşitleme ilkesi parametresine (fileBufferSize) sahiptir.
+The default Data Lake Storage Gen2 Storm bolt has a size sync policy parameter (fileBufferSize) that can be used to tune this parameter.
 
-G/ç yoğunluklu topolojilerde, her bir soıt iş parçacığının kendi dosyasına yazması ve bir dosya döndürme ilkesi (fileRotationSize) ayarlaması iyi bir fikirdir. Dosya belirli bir boyuta ulaştığında, akış otomatik olarak temizlenir ve üzerine yeni bir dosya yazılır. Döndürme için önerilen dosya boyutu 1 GB 'tır.
+In I/O-intensive topologies, it's a good idea to have each bolt thread write to its own file, and to set a file rotation policy (fileRotationSize). When the file reaches a certain size, the stream is automatically flushed and a new file is written to. The recommended file size for rotation is 1 GB.
 
-## <a name="monitor-your-topology-in-storm"></a>Topolojinizi fırtınası içinde izleyin  
-Topolojiniz çalışırken, bunu fırtınası Kullanıcı arabiriminde izleyebilirsiniz. Bakılacak ana parametreler şunlardır:
+## <a name="monitor-your-topology-in-storm"></a>Monitor your topology in Storm  
+While your topology is running, you can monitor it in the Storm user interface. Here are the main parameters to look at:
 
-* **Toplam işlem yürütme gecikmesi.** Bu, bir tanımlama grubunun Spout tarafından, cıvata işlenen ve onaylanan ortalama süredir.
+* **Total process execution latency.** This is the average time one tuple takes to be emitted by the spout, processed by the bolt, and acknowledged.
 
-* **Toplam rulo işlem gecikmesi.** Bu, bir onay alana kadar, cıvata kayıt düzeni tarafından harcanan ortalama süredir.
+* **Total bolt process latency.** This is the average time spent by the tuple at the bolt until it receives an acknowledgement.
 
-* **Toplam cıvata yürütme gecikmesi.** Bu, Execute yöntemindeki cıvatın harcadığı ortalama süredir.
+* **Total bolt execute latency.** This is the average time spent by the bolt in the execute method.
 
-* **Başarısızlık sayısı.** Bu, zaman aşımına uğramadan önce tam olarak işlenemeyen tanımlama grubu sayısını ifade eder.
+* **Number of failures.** This refers to the number of tuples that failed to be fully processed before they timed out.
 
-* **Kü.** Bu, sisteminizin ne kadar meşgul olduğunu gösteren bir ölçüdür. Bu sayı 1 ise, cıvatları, olabildiğince hızlı çalışır. 1 ' den küçükse paralellik düzeyini artırın. 1 ' den büyükse paralelliği azaltın.
+* **Capacity.** This is a measure of how busy your system is. If this number is 1, your bolts are working as fast as they can. If it is less than 1, increase the parallelism. If it is greater than 1, reduce the parallelism.
 
-## <a name="troubleshoot-common-problems"></a>Sık karşılaşılan sorunları giderme
-Yaygın olarak karşılaşılan birkaç sorun giderme senaryosu aşağıda verilmiştir.
-* **Birçok tanımlama grubu zaman aşımına uğruyor.** Performans sorununa nerede olduğunu öğrenmek için topolojideki her düğüme bakın. Bunun en yaygın nedeni, cıvatların spokörlerle devam edebilmemelidir. Bu, işlenmek üzere bekleyen iç arabelleklerin iş gruplarını oluşturmayı sağlar. Zaman aşımı değerini artırmayı veya en fazla Spout bekletmeyi azaltmayı düşünün.
+## <a name="troubleshoot-common-problems"></a>Troubleshoot common problems
+Here are a few common troubleshooting scenarios.
+* **Many tuples are timing out.** Look at each node in the topology to determine where the bottleneck is. The most common reason for this is that the bolts are not able to keep up with the spouts. This leads to tuples clogging the internal buffers while waiting to be processed. Consider increasing the timeout value or decreasing the max spout pending.
 
-* **Yüksek toplam işlem yürütme gecikmesi vardır, ancak düşük bir işlem gecikmesi vardır.** Bu durumda, tanımlama gruplarının yeterince hızlı bir şekilde onaylanmaması mümkündür. Yeterli sayıda bildirimlerin olup olmadığını denetleyin. Diğer bir olasılık ise, cıvatları işlemeden önce kuyrukta çok uzun süre beklemelidir. En fazla Spout bekleyen değerini azaltın.
+* **There is a high total process execution latency, but a low bolt process latency.** In this case, it is possible that the tuples are not being acknowledged fast enough. Check that there are a sufficient number of acknowledgers. Another possibility is that they are waiting in the queue for too long before the bolts start processing them. Decrease the max spout pending.
 
-* **Yüksek bir cıvata yürütme gecikmesi vardır.** Bu, cıvatlarınızın Execute () yönteminin çok uzun sürmesi anlamına gelir. Kodu iyileştirin veya yazma boyutlarına ve Temizleme davranışına bakın.
+* **There is a high bolt execute latency.** This means that the execute() method of your bolt is taking too long. Optimize the code, or look at write sizes and flush behavior.
 
-### <a name="data-lake-storage-gen2-throttling"></a>Data Lake Storage 2. azaltma
-Data Lake Storage 2. tarafından belirtilen bant genişliği sınırlarına ulaşırsanız, görev hatalarıyla karşılaşabilirsiniz. Azaltma hataları için görev günlüklerine bakın. Kapsayıcının boyutunu artırarak paralellik değerini azaltabilirsiniz.    
+### <a name="data-lake-storage-gen2-throttling"></a>Data Lake Storage Gen2 throttling
+If you hit the limits of bandwidth provided by Data Lake Storage Gen2, you might see task failures. Check task logs for throttling errors. You can decrease the parallelism by increasing container size.    
 
-Kısıtlanıyor olup olmadığınızı denetlemek için istemci tarafında hata ayıklama günlüğünü etkinleştirin:
+To check if you are getting throttled, enable the debug logging on the client side:
 
-1. **Ambarı** > **fırtınası** > **config** > **gelişmiş fırtınası-çalışan-Log4J**, **&lt;kök düzeyi = "Info"** &gt;&lt;**kök düzeyi = "Debug"** &gt;olarak değiştirin. Yapılandırmanın etkili olması için tüm düğümleri/hizmeti yeniden başlatın.
-2. &gt;azaltma özel durumları için çalışan düğümlerinde (/var/log/Storm/Worker-Artifacts/&lt;Topologyıname&gt;/&lt;bağlantı noktası Data Lake Storage 2./Worker.log) yer alan fırtınası topolojisi günlüklerini izleyin.
+1. In **Ambari** > **Storm** > **Config** > **Advanced storm-worker-log4j**, change **&lt;root level="info"&gt;** to **&lt;root level="debug"&gt;** . Restart all the nodes/service for the configuration to take effect.
+2. Monitor the Storm topology logs on worker nodes (under /var/log/storm/worker-artifacts/&lt;TopologyName&gt;/&lt;port&gt;/worker.log) for Data Lake Storage Gen2 throttling exceptions.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Bu blogda](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/), fırtınası için ek performans ayarlamaya başvurulabilir.
+Additional performance tuning for Storm can be referenced in [this blog](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/).
 
-Çalıştırmak için ek bir örnek için bkz. [GitHub 'da bu](https://github.com/hdinsight/storm-performance-automation).
+For an additional example to run, see [this one on GitHub](https://github.com/hdinsight/storm-performance-automation).

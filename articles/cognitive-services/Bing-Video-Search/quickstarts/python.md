@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı Başlangıç: Bing Video Arama REST API ve Python kullanarak video arayın'
+title: 'Quickstart: Search for videos using the REST API and Python - Bing Video Search'
 titleSuffix: Azure Cognitive Services
-description: Python kullanarak Bing Video Arama REST API video arama istekleri göndermek için bu hızlı başlangıcı kullanın.
+description: Use this quickstart to send video search requests to the Bing Video Search REST API using Python.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,37 +10,37 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 06/26/2019
 ms.author: aahi
-ms.openlocfilehash: 36d4035913b8e9b7c3e4a12fa208608ffa55151e
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 270117430b997921e0df486b1760db317bcb1611
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68500682"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383764"
 ---
-# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-python"></a>Hızlı Başlangıç: Bing Video Arama REST API ve Python kullanarak video arayın
+# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-python"></a>Quickstart: Search for videos using the Bing Video Search REST API and Python
 
-Bing Video Arama API'si ilk çağrısını yapmak ve JSON yanıtından bir arama sonucu görüntülemek için bu hızlı başlangıcı kullanın. Bu basit Python uygulaması, API 'ye bir HTTP video arama sorgusu gönderir ve yanıtı görüntüler. Bu uygulama Python ile yazılmış olmakla birlikte API, çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir. Bu örneğin kaynak kodu, ek hata işleme ve kod açıklama notları ile [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingVideoSearchv7.py)’da bulunabilir.
+Use this quickstart to make your first call to the Bing Video Search API and view a search result from the JSON response. This simple Python application sends an HTTP video search query to the API, and displays the response. Bu uygulama Python ile yazılmış olmakla birlikte API, çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir. Bu örneğin kaynak kodu, ek hata işleme ve kod açıklama notları ile [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingVideoSearchv7.py)’da bulunabilir.
 
-Bu örneği başlatma Bağlayıcı rozetine tıklayarak [Bağlayıcım](https://mybinder.org)’da bir Jupyter not defteri olarak çalıştırabilirsiniz: 
+Bu örneği başlatma Bağlayıcı rozetine tıklayarak [Bağlayıcım](https://mybinder.org)'da bir Jupyter not defteri olarak çalıştırabilirsiniz: 
 
 [![Bağlayıcı](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingVideoSearchAPI.ipynb)
 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Python [2. x veya 3. x](https://python.org)
+* Python [2.x or 3.x](https://python.org)
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](../../../../includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
-## <a name="initialize-the-application"></a>Uygulamayı başlatma
+## <a name="initialize-the-application"></a>Initialize the application
 
-1. En sevdiğiniz IDE veya düzenleyicide yeni bir Python dosyası oluşturun ve aşağıdaki kitaplıkları içeri aktarın
+1. Create a new Python file in your favorite IDE or editor and import the following libraries,
 
     ```python
     import requests
     from IPython.display import HTML
     ```
-2.  Abonelik anahtarınız, arama uç noktası ve arama teriminiz için değişkenler oluşturun.
+2.  Create variables for your subscription key, search endpoint, and a search term.
     
     ```python
     subscription_key = None
@@ -49,21 +49,21 @@ Bu örneği başlatma Bağlayıcı rozetine tıklayarak [Bağlayıcım](https://
     search_term = "kittens"
     ```
 
-3. Üst bilgi dizesini anahtarınızla ilişkilendirmek `Ocp-Apim-Subscription-Key` için yeni bir sözlük oluşturarak abonelik anahtarınızı bir üstbilgiye ekleyin.
+3. Add your subscription key to a `Ocp-Apim-Subscription-Key` header by creating a new dictionary to associate the header string to your key.
 
     ```python
     headers = {"Ocp-Apim-Subscription-Key" : subscription_key}
     ```
 
-## <a name="send-your-request"></a>İsteğinizi gönderin
+## <a name="send-your-request"></a>Send your request
 
-1. Adlı `params`bir sözlük oluşturarak isteğinize parametreleri ekleyin. Döndürülen videoların fiyatlandırması ve `q` `short` video uzunluğu için, arama teriminizi parametreye, video `free` sayısı 5 ' e ekleyin.
+1. Add the parameters to your request by creating a dictionary named `params`. Add your search term to the `q` parameter, a video count of 5, `free` for the pricing of returned videos, and `short` for the video length.
 
     ```python
     params  = {"q": search_term, "count":5, "pricing": "free", "videoLength":"short"}
     ```
 
-2. Bing video arama API'si çağırmak için Python 'da kitaplığıkullanın.`requests` `headers` Ve`params` sözlüğünü kullanarak API anahtarını ve arama parametrelerini geçirin.
+2. Use the `requests` library in Python to call the Bing Video Search API. Pass the API key and search parameters by using the `headers` and `params` dictionary.
     
     ```python
     response = requests.get(search_url, headers=headers, params=params)
@@ -71,7 +71,7 @@ Bu örneği başlatma Bağlayıcı rozetine tıklayarak [Bağlayıcım](https://
     search_results = response.json()
     ```
 
-3. Döndürülen videolardan `search_results` birini görüntülemek için nesnesinden bir arama sonucu alın. Sonucun `embedHtml` özelliğini bir `IFrame`öğesine ekleyin.  
+3. To view one of the returned videos, get a search result from the `search_results` object. Insert the result's `embedHtml` property into an `IFrame`.  
     
     ```python
     HTML(search_results["value"][0]["embedHtml"].replace("autoplay=1","autoplay=0"))
@@ -191,8 +191,8 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Tek sayfalı Web uygulaması oluşturma](../tutorial-bing-video-search-single-page-app.md)
+> [Build a single-page web app](../tutorial-bing-video-search-single-page-app.md)
 
 ## <a name="see-also"></a>Ayrıca bkz. 
 
- [Bing Video Arama API'si nedir?](../overview.md)
+ [What is the Bing Video Search API?](../overview.md)

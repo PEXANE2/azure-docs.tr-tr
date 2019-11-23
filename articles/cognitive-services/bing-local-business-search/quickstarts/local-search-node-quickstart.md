@@ -1,7 +1,7 @@
 ---
-title: Hızlı başlangıç-Node. js kullanarak Bing yerel Iş Arama API 'sine bir sorgu gönderme
+title: Quickstart - Send a query to the API using Node.js - Bing Local Business Search
 titleSuffix: Azure Cognitive Services
-description: Azure bilişsel hizmeti olan Bing yerel Iş Arama API 'sine istek göndermeye başlamak için bu hızlı başlangıcı kullanın.
+description: Use this quickstart to begin sending requests to the Bing Local Business Search API, which is an Azure Cognitive Service.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,35 +10,35 @@ ms.subservice: bing-local-business
 ms.topic: quickstart
 ms.date: 09/13/2019
 ms.author: aahi
-ms.openlocfilehash: 925e3bfb4a89832d5cde7e35d5ce5e3be3a5bcbb
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: db9132936604e8eed17bbdf173ce1b766fb1b334
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075622"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326700"
 ---
-# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-nodejs"></a>Hızlı başlangıç: node. js kullanarak Bing yerel Iş Arama API 'sine bir sorgu gönderme
+# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-nodejs"></a>Quickstart: Send a query to the Bing Local Business Search API using Node.js
 
-Azure bilişsel hizmeti olan Bing yerel Iş Arama API 'sine istek göndermeye başlamak için bu hızlı başlangıcı kullanın. Bu basit uygulama Node. js ' de yazıldığı sırada, API, HTTP istekleri yapma ve JSON 'u ayrıştırma yeteneğine sahip olan herhangi bir programlama diliyle uyumlu olan bir yeniden takip eden Web hizmetidir.
+Use this quickstart to begin sending requests to the Bing Local Business Search API, which is an Azure Cognitive Service. While this simple application is written in Node.js, the API is a RESTful Web service compatible with any programming language capable of making HTTP requests and parsing JSON.
 
-Bu örnek uygulama, arama sorgusu `hotel in Bellevue`için API 'den gelen yerel yanıt verilerini alır.
+This example application gets local response data from the API for the search query `hotel in Bellevue`.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 * [Node.js](https://nodejs.org/en/download/)’in en son sürümü.
 
-* [JavaScript Istek kitaplığı](https://github.com/request/request)
+* The [JavaScript Request Library](https://github.com/request/request)
 
-Bing API 'lerle bir bilişsel [Hizmetler API 'si hesabınızın](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) olması gerekir. [Ücretsiz deneme](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) bu hızlı başlangıç için yeterlidir. Ücretsiz deneme tarafından sunulan erişim anahtarını kullanın.  Ayrıca bkz: [Bilişsel hizmetler fiyatlandırması - Bing arama API'si](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+You must have a [Cognitive Services API account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) with Bing APIs. [Ücretsiz deneme](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) bu hızlı başlangıç için yeterlidir. Use the access key provided by the free trial.  See also [Cognitive Services Pricing - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="code-scenario"></a>Kod senaryosu
 
-Aşağıdaki kod, isteği tanımlar ve gönderir. Aşağıdaki adımları izler:
+The following code gets defines and sends the request. Aşağıdaki adımları izler:
 
 1. Ana bilgisayar ve yol ile uç noktayı belirtmek için değişkenleri bildirme.
-2. Sorguyu belirtin ve sorgu parametresini ekleyin.
+2. Specify the query, and add the query parameter.
 3. Yanıt için bir işleyici işlevi oluşturma.
-4. İsteği oluşturan arama işlevini tanımlayın ve OCP-apim-Subscription-Key üstbilgisini ekler.
+4. Define the Search function that creates the request and adds the Ocp-Apim-Subscription-Key header.
 5. Search işlevini çalıştırma.
 
 Bu tanıtımda kullanılan kodun tamamı aşağıda verilmiştir:
@@ -94,6 +94,6 @@ Search();
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Yerel Iş araması hızlı başlangıç](local-quickstart.md)
-* [Yerel Iş arama Java hızlı başlangıç](local-search-java-quickstart.md)
-* [Yerel Iş arama Python hızlı başlangıç](local-search-python-quickstart.md)
+* [Local Business Search quickstart](local-quickstart.md)
+* [Local Business Search Java quickstart](local-search-java-quickstart.md)
+* [Local Business Search Python quickstart](local-search-python-quickstart.md)

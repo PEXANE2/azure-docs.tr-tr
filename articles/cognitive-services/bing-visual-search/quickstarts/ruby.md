@@ -1,7 +1,7 @@
 ---
-title: "Hızlı Başlangıç: Bing görsel arama REST API'si ve Ruby kullanarak görüntü Öngörüler elde edin"
+title: 'Quickstart: Get image insights using the REST API and Ruby - Bing Visual Search'
 titleSuffix: Azure Cognitive Services
-description: Bing görsel arama API'sine bir görüntüyü karşıya yükleme ve ilgili Öngörüler alma hakkında bilgi edinin.
+description: Learn how to upload an image to the Bing Visual Search API and get insights about it.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,29 +10,29 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 4/02/2019
 ms.author: rosh
-ms.openlocfilehash: 563c0d39eb5c057aef9b9c7cdcba798dc6ee4cbb
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 55bf189195cc2d9eca0700fd703840da38c71592
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796509"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383128"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-ruby"></a>Hızlı Başlangıç: Bing görsel arama REST API'si ve Ruby kullanarak görüntü Öngörüler elde edin
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-ruby"></a>Quickstart: Get image insights using the Bing Visual Search REST API and Ruby
 
-Bu hızlı başlangıçta, Bing görsel arama çağırmak ve sonuçları görüntülemek için Ruby programlama dilini kullanır. Bir POST isteği API uç noktasına yönelik bir görüntüyü karşıya yükler. Sonuçlar URL'leri ve görüntüleri karşıya yüklenen görüntüyü benzer hakkında açıklayıcı bilgiler içerir.
+This quickstart uses the Ruby programming language to call Bing Visual Search and display results. A POST request uploads an image to the API endpoint. The results include URLs and descriptive information about images similar to the uploaded image.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu Hızlı Başlangıç'ı çalıştırmak için:
+To run this quickstart:
 
-* Yükleme [Ruby 2.4 veya sonraki bir sürümü](https://www.ruby-lang.org/en/downloads/)
-* Bir abonelik anahtarı alın:
+* Install [Ruby 2.4 or later](https://www.ruby-lang.org/en/downloads/)
+* Get a subscription key:
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
-## <a name="project-and-required-modules"></a>Proje ve gerekli modülleri
+## <a name="project-and-required-modules"></a>Project and required modules
 
-Yeni bir Ruby projesi, IDE'niz veya düzenleyicinizle oluşturun. İçeri aktarma `net/http`, `uri` , ve `json` JSON metnini sonuçları işlemek için. `base64` Kitaplık, dosya adı dizesi olarak kodlamak için kullanılır: 
+Create a new Ruby project in your IDE or editor. Import `net/http`, `uri` , and `json` to handle the JSON text of results. The `base64` library is used to encode the file name string: 
 
 ```
 require 'net/https'
@@ -44,7 +44,7 @@ require 'base64'
 
 ## <a name="define-variables"></a>Değişkenleri tanımlama
 
-Aşağıdaki kod gereken değişkenleri atar. Uç nokta doğru olduğundan emin olun ve değiştirme `accessKey` Azure hesabınızdan bir abonelik anahtarı değeri.  `batchNumber` Olan baştaki ve sondaki gönderme verisi sınırları için gerekli bir GUID.  `fileName` Değişken POST için resim dosyası tanımlar.  `if` Bir geçerli abonelik anahtarı için testleri engelleyin.
+The following code assigns required variables. Confirm that the endpoint is correct and replace the `accessKey` value with a subscription key from your Azure account.  The `batchNumber` is a GUID required for leading and trailing boundaries of the POST data.  The `fileName` variable identifies the image file for the POST.  The `if` block tests for a valid subscription key.
 
 ```
 accessKey = "ACCESS-KEY"
@@ -61,9 +61,9 @@ end
 
 ```
 
-## <a name="form-data-for-post-request"></a>Form verileri için POST isteği
+## <a name="form-data-for-post-request"></a>Form data for POST request
 
-POST için görüntü verilerini, baştaki ve sondaki sınırları içine alınır. Aşağıdaki işlevleri sınırlar ayarlayın:
+The image data to POST is enclosed by leading and trailing boundaries. The following functions set the boundaries:
 
 ```
 def BuildFormDataStart(batNum, fileName)
@@ -76,7 +76,7 @@ def BuildFormDataEnd(batNum)
 end
 ```
 
-Ardından, uç nokta URI'si ve POST gövdesini içeren bir dizi oluşturun.  Başlangıç sınır diziye yüklemek için önceki işlevini kullanın. Görüntü dosyası diziye okuyun. Ardından, uç sınır diziye okuyun:
+Next, construct the endpoint URI and an array to contain the POST body.  Use the previous function to load the start boundary into the array. Read the image file into the array. Then, read the end boundary into the array:
 
 ```
 uri = URI(uri + path)
@@ -92,9 +92,9 @@ post_body << File.read(fileName) #Base64.encode64(File.read(fileName))
 post_body << BuildFormDataEnd(batchNumber)
 ```
 
-## <a name="create-the-http-request"></a>HTTP isteği oluştur
+## <a name="create-the-http-request"></a>Create the HTTP request
 
-Ayarlama `Ocp-Apim-Subscription-Key` başlığı.  İsteği oluşturma. Ardından, üst bilgi ve içerik türü atayın. İstek için daha önce oluşturduğunuz POST gövdesini Katıl:
+Set the `Ocp-Apim-Subscription-Key` header.  İsteği oluşturma. Then, assign the header and content type. Join the POST body created previously to the request:
 
 ```
 header = {'Ocp-Apim-Subscription-Key': accessKey}
@@ -106,9 +106,9 @@ request.body = post_body.join
 
 ```
 
-## <a name="request-and-response"></a>İstek ve yanıt
+## <a name="request-and-response"></a>Request and response
 
-Ruby isteği gönderir ve yanıtı aşağıdaki kod satırını alır:
+Ruby sends the request and gets the response with the following line of code:
 
 ```
 response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
@@ -117,9 +117,9 @@ end
 
 ```
 
-## <a name="print-the-results"></a>Sonuçları yazdırma
+## <a name="print-the-results"></a>Print the results
 
-Yanıt Üstbilgileri yazdırma ve JSON kitaplık çıktıyı biçimlendirmek için kullanın:
+Print the headers of the response, and use the JSON library to format output:
 
 ```
 puts "\nRelevant Headers:\n\n"
@@ -136,7 +136,7 @@ puts JSON::pretty_generate(JSON(response.body))
 
 ## <a name="results"></a>Sonuçlar
 
-Aşağıdaki JSON çıktısını bir parçası olan:
+The following JSON is a segment of the output:
 
 ```
 Relevant Headers:
@@ -284,5 +284,5 @@ JSON Response:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Bing görsel arama genel bakış](../overview.md)
-> [görsel arama tek sayfa web uygulaması derleme](../tutorial-bing-visual-search-single-page-app.md)
+> [Bing Visual Search overview](../overview.md)
+> [Build a Visual Search single-page web app](../tutorial-bing-visual-search-single-page-app.md)

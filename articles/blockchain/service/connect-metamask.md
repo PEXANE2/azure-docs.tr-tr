@@ -1,75 +1,69 @@
 ---
-title: MetaMask 'i Azure blok zinciri hizmeti ağına bağlama
-description: MetaMask kullanarak bir Azure blok zinciri hizmeti ağına bağlanın ve akıllı bir sözleşme dağıtın.
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
+title: Connect MetaMask to an Azure Blockchain Service network
+description: Connect to an Azure Blockchain Service network using MetaMask and deploy a smart contract.
 ms.date: 09/12/2019
 ms.topic: quickstart
-ms.service: azure-blockchain
-ms.reviewer: jackyhsu
-manager: femila
-ms.openlocfilehash: b89e75d406a738fb685bb3294dca8d79a2b9170c
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.reviewer: janders
+ms.openlocfilehash: 8b60f26f1ab5283c7abc5a2f164fbb0c780c92ad
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70966625"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326268"
 ---
-# <a name="quickstart-use-metamask-to-connect-and-deploy-a-smart-contract"></a>Hızlı Başlangıç: MetaMask kullanarak akıllı bir sözleşmeyi bağlama ve dağıtma
+# <a name="quickstart-use-metamask-to-connect-and-deploy-a-smart-contract"></a>Quickstart: Use MetaMask to connect and deploy a smart contract
 
-Bu hızlı başlangıçta, bir Azure blok zinciri hizmeti ağına bağlanmak ve akıllı bir sözleşmeyi dağıtmak için yeniden karışımı kullanmak üzere MetaMask kullanacaksınız. Metamask, bir Ether cüzdan yönetmek ve akıllı sözleşme eylemleri gerçekleştirmek için bir tarayıcı uzantısıdır.
+In this quickstart, you'll use MetaMask to connect to an Azure Blockchain Service network and use Remix to deploy a smart contract. Metamask is a browser extension to manage an Ether wallet and perform smart contract actions.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* [Hızlı başlangıç: Azure Portal](create-member.md) veya[hızlı başlangıcı kullanarak bir blok zinciri üyesi oluşturun: Azure CLı kullanarak Azure blok zinciri hizmeti blok zinciri üyesi oluşturma](create-member-cli.md)
-* [MetaMask Browser uzantısını](https://metamask.io) yükler
-* MetaMask [cüzdan](https://metamask.zendesk.com/hc/en-us/articles/360015488971-New-to-MetaMask-Learn-How-to-Setup-MetaMask-the-First-Time) oluşturma
+* Complete [Quickstart: Create a blockchain member using the Azure portal](create-member.md) or [Quickstart: Create an Azure Blockchain Service blockchain member using Azure CLI](create-member-cli.md)
+* Install [MetaMask browser extension](https://metamask.io)
+* Generate a MetaMask [wallet](https://metamask.zendesk.com/hc/en-us/articles/360015488971-New-to-MetaMask-Learn-How-to-Setup-MetaMask-the-First-Time)
 
-## <a name="get-endpoint-address"></a>Uç nokta adresini al
+## <a name="get-endpoint-address"></a>Get endpoint address
 
-Blok zinciri ağına bağlanmak için Azure blok zinciri hizmeti uç noktası adresine ihtiyacınız vardır. Uç nokta adresini ve erişim anahtarlarını Azure portal bulabilirsiniz.
+You need the Azure Blockchain Service endpoint address to connect to the blockchain network. You can find the endpoint address and access keys in the Azure portal.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-1. Azure blok zinciri hizmeti üyesine gidin. **İşlem düğümleri** ve varsayılan işlem düğümü bağlantısı ' nı seçin.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. Navigate to your Azure Blockchain Service member. Select **Transaction nodes** and the default transaction node link.
 
-    ![Varsayılan işlem düğümünü seçin](./media/connect-metamask/transaction-nodes.png)
+    ![Select default transaction node](./media/connect-metamask/transaction-nodes.png)
 
-1. **Erişim anahtarlarına > bağlantı dizeleri**seçin.
-1. Endpoint adresini **https 'den (erişim anahtarı 1)** kopyalayın. Sonraki bölüm için adrese ihtiyacınız vardır.
+1. Select **Connection strings > Access keys**.
+1. Copy the endpoint address from **HTTPS (Access key 1)** . You need the address for the next section.
 
     ![Bağlantı dizesi](./media/connect-metamask/connection-string.png)
 
-## <a name="connect-metamask"></a>MetaMask bağlama
+## <a name="connect-metamask"></a>Connect MetaMask
 
-1. MetaMask Browser uzantısını açın ve oturum açın.
-1. Ağ açılan menüsünde **özel RPC**' yi seçin.
+1. Open MetaMask browser extension and sign in.
+1. In the network dropdown, select  **Custom RPC**.
 
-    ![Özel RPC](./media/connect-metamask/custom-rpc.png)
+    ![Custom RPC](./media/connect-metamask/custom-rpc.png)
 
-1. Yeni **ağ > yenı RPC URL 'si**' nde, önceki bölümden kopyalanmış olan bitiş noktası adresinizi girin.
+1. In **New Network > New RPC URL**, enter your endpoint address copied from the previous section.
 1. **Kaydet**’i seçin.
 
-    Bağlantı başarılı olduysa, ağ açılan menüsünde özel ağ görüntülenir.
+    If connection was successful, the private network is displayed in the network dropdown.
 
-    ![Yeni ağ](./media/connect-metamask/new-network.png)
+    ![New network](./media/connect-metamask/new-network.png)
 
-## <a name="deploy-smart-contract"></a>Akıllı sözleşme dağıtma
+## <a name="deploy-smart-contract"></a>Deploy smart contract
 
-Yeniden karıştırma, tarayıcı tabanlı bir Solidity geliştirme ortamıdır. MetaMask ve yeniden karıştır kullanarak akıllı sözleşmeleri dağıtabilir ve bunlar üzerinde işlem yapabilirsiniz.
+Remix is a browser-based Solidity development environment. Using MetaMask and Remix together, you can deploy and take actions on smart contracts.
 
 1. Tarayıcınızda `https://remix.ethereum.org` adresine gidin.
-1. **Dosya**altındaki **giriş** sekmesinde **yeni dosya** ' yı seçin.
+1. Select **New file** in the **Home** tab under **File**.
 
-    Yeni dosyayı `simple.sol`adlandırın.
+    Name the new file `simple.sol`.
 
-    ![Dosya oluştur](./media/connect-metamask/create-file.png)
+    ![Create file](./media/connect-metamask/create-file.png)
 
     **Tamam**’ı seçin.
-1. Yeniden karıştır düzenleyicisinde, aşağıdaki **basit akıllı sözleşme** kodunu yapıştırın.
+1. In the Remix editor, paste in the following **simple smart contract** code.
 
     ```solidity
     pragma solidity ^0.5.0;
@@ -91,57 +85,57 @@ Yeniden karıştırma, tarayıcı tabanlı bir Solidity geliştirme ortamıdır.
     }
     ```
 
-    **Basit sözleşme** , **Bakiye**adlı bir durum değişkeni bildirir. Tanımlanmış iki işlev vardır. **Add** işlevi **dengelemek**için bir sayı ekler. **Get** işlevi, **Bakiyenin**değerini döndürür.
-1. Sözleşmeyi derlemek için önce Solidity derleyici bölmesini seçin, sonra **Simple. Nuevo derlemesini**seçin. 
+    The **simple contract** declares a state variable named **balance**. There are two functions defined. The **add** function adds a number to **balance**. The **get** function returns the value of **balance**.
+1. To compile the contract, first select the Solidity compiler pane then select the  **Compile simple.sol**. 
 
-    ![Derleme](./media/connect-metamask/compile.png)
+    ![Compile](./media/connect-metamask/compile.png)
 
-1. **Dağıtım & Çalıştır** bölmesini seçin ve ardından **ortamı** , MetaMask ile blok zinciri üyesine bağlamak üzere **eklenmiş Web3** olarak ayarlayın.
+1. Select the **Deploy & Run** pane then set the **Environment** to **Injected Web3** to connect through MetaMask to your blockchain member.
 
-    ![Çalışma sekmesi](./media/connect-metamask/injected-web3.png)
+    ![Run tab](./media/connect-metamask/injected-web3.png)
 
-1. **Basit** sözleşmeyi seçin ve ardından **dağıtın**.
+1. Select the **simple** contract then **Deploy**.
 
-    ![Dağıtma](./media/connect-metamask/deploy.png)
+    ![Kurulum](./media/connect-metamask/deploy.png)
 
 
-1. Bir MetaMask bildirimi, işlemi gerçekleştirmek için yeterli fon olduğunu uyarır.
+1. A MetaMask notification is displayed alerting you of insufficient funds to perform the transaction.
 
-    Ortak bir blok zinciri ağı için, işlem maliyeti için ödeme yapmanız gerekir. Bu bir konsorsiyumde özel bir ağ olduğundan, gaz fiyatını sıfır olarak ayarlayabilirsiniz.
+    For a public blockchain network, you would need Ether to pay for the transaction cost. Since this is a private network in a consortium, you can set gas price to zero.
 
-1.  **Gaz ücretini seçin > gelişmiş > düzenleyin**, **gaz fiyatını** 0 olarak ayarlayın.
+1.  Select **Gas Fee > Edit > Advanced**,  set the **Gas Price** to 0.
 
-    ![Gaz fiyatı](./media/connect-metamask/gas-price.png)
+    ![Gas price](./media/connect-metamask/gas-price.png)
 
     **Kaydet**’i seçin.
 
-1. Akıllı sözleşmeyi blok zincirine dağıtmak için **Onayla** ' yı seçin.
-1. **Dağıtılan sözleşmeler** bölümünde, **basit** sözleşmeyi genişletin.
+1. Select **Confirm** to deploy the smart contract to the blockchain.
+1. In the **Deployed Contracts** section, expand the **simple** contract.
 
-    ![Dağıtılan sözleşme](./media/connect-metamask/deployed-contract.png)
+    ![Deployed contract](./media/connect-metamask/deployed-contract.png)
 
-    İki eylem **ekleyin** **ve bu** , sözleşmede tanımlanan işlevlere eşleyin.
+    There are two actions **add** and **get** that map to the functions defined in the contract.
 
-1. Blok zincirinde bir işlem **ekleme** işlemi gerçekleştirmek için, eklenecek bir sayı girin ve **Ekle**' yi seçin. Yeniden karışmaya yönelik bir gaz tahmin hatası iletisi alabilirsiniz. İşlemi, gaz gerektirmeyen özel bir blok zincirine gönderiyorsunuz. İşlemi zorlamak için **Işlem gönder** ' i seçin.
-1. Sözleşmeyi dağıttığınıza benzer şekilde, işlemi gerçekleştirmek için yeterli fon MetaMask bildirimi görüntülenir.
+1. To perform an **add** transaction on the blockchain, enter a number to add then select **add**. You may get a gas estimation failure message from Remix. You are sending the transaction to a private blockchain that does not require gas. Select **Send Transaction** to force the transaction.
+1. Similar to when you deployed the contract, a MetaMask notification is displayed alerting you of insufficient funds to perform the transaction.
 
-    Bu bir konsorsiyumun özel bir ağı olduğundan, gaz fiyatını sıfıra ayarlayabiliriz.
+    Since this is a private network in a consortium, we can set gas price to zero.
 
-1.  **Gaz ücretini seçin > gelişmiş > düzenleyin**, **gaz fiyatını** 0 olarak ayarlayın ve **Kaydet**' i seçin.
-1. İşlemi blok zincirine göndermek için **Onayla** ' yı seçin.
-1. Eylem **Al** ' ı seçin. Bu, düğüm verilerini sorgulamak için bir çağrıdır. Bir işlem gerekli değildir.
-1. Yeniden karıştırma 'nın hata ayıklama bölmesinde, blok zincirindeki işlemler hakkındaki ayrıntıları görebilirsiniz.
+1.  Select **Gas Fee > Edit > Advanced**,  set the **Gas Price** to 0, and select **Save**.
+1. Select **Confirm** to send the transaction to the blockchain.
+1. Select **get** action. This is a call to query node data. A transaction isn't needed.
+1. In the debug pane of Remix, you can see details about the transactions on the blockchain.
 
-    ![Hata ayıklama geçmişi](./media/connect-metamask/debug.png)
+    ![Debug history](./media/connect-metamask/debug.png)
 
-    **Basit sözleşme oluşturma** , **basit. Ekle**için işlem ve **basit. Get**öğesine çağrı yapabilirsiniz.
+    You can see the **simple** contract creation, transaction for **simple.add**, and call to **simple.get**.
 
-1. Ayrıca, MetaMask içinde işlem geçmişini görebilirsiniz. MetaMask Browser uzantısını açın.
-1. **Geçmiş** bölümünde, dağıtılan sözleşmenin ve işlemlerin günlüğünü görebilirsiniz.
+1. You can also see transaction history in MetaMask. Open the MetaMask browser extension.
+1. In the **History** section, you can see a log of the deployed contract and transactions.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir Azure blok zinciri hizmeti işlem düğümüne bağlanmak, akıllı bir sözleşme dağıtmak ve blok zincirine bir işlem göndermek için MetaMask Browser uzantısını kullandınız. Bir işlem aracılığıyla akıllı sözleşme işlevi oluşturmak, derlemek, dağıtmak ve yürütmek için Ethereum ve truffle için Azure blok zinciri geliştirme setini kullanmak üzere bir sonraki öğreticiyi deneyin.
+In this quickstart, you used the MetaMask browser extension to connect to an Azure Blockchain Service transaction node, deploy a smart contract, and send a transaction to the blockchain. Try the next tutorial to use Azure Blockchain Development Kit for Ethereum and Truffle to create, build, deploy, and execute a smart contract function via a transaction.
 
 > [!div class="nextstepaction"]
-> [Akıllı sözleşmeleri oluşturmak, derlemek ve dağıtmak için Visual Studio Code kullanma](send-transaction.md)
+> [Use Visual Studio Code to create, build, and deploy smart contracts](send-transaction.md)

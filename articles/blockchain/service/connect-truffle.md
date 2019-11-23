@@ -1,79 +1,73 @@
 ---
-title: Azure blok zinciri hizmeti 'ne bağlanmak için Truffle kullanın
-description: Truffle kullanarak bir Azure blok zinciri hizmeti ağına bağlanma
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
+title: Use Truffle to connect to Azure Blockchain Service
+description: Connect to an Azure Blockchain Service network using Truffle
 ms.date: 11/20/2019
 ms.topic: quickstart
-ms.service: azure-blockchain
 ms.reviewer: janders
-manager: femila
-ms.openlocfilehash: f5d752c99331d454e7f9f98c06b9ba0209de8cc7
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
-ms.translationtype: HT
+ms.openlocfilehash: b83685ccaf29f1004b01f9125a2a438251bc9239
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74285353"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325295"
 ---
-# <a name="quickstart-use-truffle-to-connect-to-azure-blockchain-service"></a>Hızlı başlangıç: Azure blok zinciri hizmetine bağlanmak için Truffle kullanın
+# <a name="quickstart-use-truffle-to-connect-to-azure-blockchain-service"></a>Quickstart: Use Truffle to connect to Azure Blockchain Service
 
-Bu hızlı başlangıçta, Azure blok zinciri hizmeti işlem düğümünü kullanarak Truffle bağlantısını kullanırsınız. Daha sonra, blok zinciri ağınızla etkileşim kurmak için **Web3** yöntemlerini çağırmak üzere Truffle etkileşimli konsolunu kullanırsınız.
+In this quickstart, you use Truffle connect to an Azure Blockchain Service transaction node. You then use the Truffle interactive console to call **web3** methods to interact with your blockchain network.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* [Hızlı başlangıç: Azure Portal veya hızlı başlangıç kullanarak bir blok zinciri üyesi oluşturma](create-member.md) [: Azure CLI kullanarak bir Azure blok zinciri hizmeti blok zinciri üyesi](create-member-cli.md) oluşturma
-* [Truffle](https://github.com/trufflesuite/truffle)'yi yükler. Truffle, [Node. js](https://nodejs.org), [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)gibi çeşitli araçların yüklenmesini gerektirir.
-* [Python 2.7.15](https://www.python.org/downloads/release/python-2715/)'i yükler. Web3 için Python gereklidir.
+* Complete [Quickstart: Create a blockchain member using the Azure portal](create-member.md) or [Quickstart: Create an Azure Blockchain Service blockchain member using Azure CLI](create-member-cli.md)
+* Install [Truffle](https://github.com/trufflesuite/truffle). Truffle requires several tools to be installed including [Node.js](https://nodejs.org), [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+* Install [Python 2.7.15](https://www.python.org/downloads/release/python-2715/). Python is needed for Web3.
 
-## <a name="create-truffle-project"></a>Truffle projesi oluştur
+## <a name="create-truffle-project"></a>Create Truffle project
 
-1. Node. js komut istemi veya kabuğu açın.
-1. Dizini, Truffle proje dizinini oluşturmak istediğiniz yere değiştirin.
-1. Proje için bir dizin oluşturun ve yolu yeni dizin ile değiştirin. Örneğin,
+1. Open a Node.js command prompt or shell.
+1. Change directory to where you want to create the Truffle project directory.
+1. Create a directory for the project and change your path to the new directory. Örneğin,
 
     ``` bash
     mkdir truffledemo
     cd truffledemo
     ```
 
-1. Truffle projesini başlatın.
+1. Initialize the Truffle project.
 
     ``` bash
     truffle init
     ```
 
-1. Proje klasörüne Ethereum JavaScript API Web3 'yi yükler. Şu anda sürüm Web3 sürüm 1.0.0-Beta. 37 gereklidir.
+1. Install Ethereum JavaScript API web3 in the project folder. Currently, version web3 version 1.0.0-beta.37 is required.
 
     ``` bash
     npm install web3@1.0.0-beta.37
     ```
 
-    Yükleme sırasında NPM uyarıları alabilirsiniz.
+    You may receive npm warnings during installation.
     
-## <a name="configure-truffle-project"></a>Truffle projesini yapılandırma
+## <a name="configure-truffle-project"></a>Configure Truffle project
 
-Truffle projesini yapılandırmak için Azure portal işlem düğümü bilgilerine ihtiyacınız vardır.
+To configure the Truffle project, you need some transaction node information from the Azure portal.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
-1. Azure blok zinciri hizmeti üyesine gidin. **İşlem düğümleri** ve varsayılan işlem düğümü bağlantısı ' nı seçin.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. Go to your Azure Blockchain Service member. Select **Transaction nodes** and the default transaction node link.
 
-    ![Varsayılan işlem düğümünü seçin](./media/connect-truffle/transaction-nodes.png)
+    ![Select default transaction node](./media/connect-truffle/transaction-nodes.png)
 
-1. **Bağlantı dizelerini**seçin.
-1. Bağlantı dizesini **https 'den (erişim anahtarı 1)** kopyalayın. Sonraki bölüm için dizeye ihtiyacınız vardır.
+1. Select **Connection strings**.
+1. Copy the connection string from **HTTPS (Access key 1)** . You need the string for the next section.
 
     ![Bağlantı dizesi](./media/connect-truffle/connection-string.png)
 
-### <a name="edit-configuration-file"></a>Yapılandırma dosyasını Düzenle
+### <a name="edit-configuration-file"></a>Edit configuration file
 
-Ardından, Truffle yapılandırma dosyasını işlem düğümü uç noktasıyla güncelleştirmeniz gerekir.
+Next, you need to update the Truffle configuration file with the transaction node endpoint.
 
-1. **Trufftademo** proje klasöründe, bir düzenleyicide `truffle-config.js` Truffle yapılandırma dosyasını açın.
-1. Dosyanın içeriğini aşağıdaki yapılandırma bilgileriyle değiştirin. Uç nokta adresini içeren bir değişken ekleyin. Açılı ayracını önceki bölümden topladığınız değerlerle değiştirin.
+1. In the **truffledemo** project folder, open the Truffle configuration file `truffle-config.js` in an editor.
+1. Replace the contents of the file with the following configuration information. Add a variable containing the endpoint address. Replace the angle bracket with values you collected from the previous section.
 
     ``` javascript
     var defaultnode = "<default transaction node connection string>";   
@@ -89,23 +83,23 @@ Ardından, Truffle yapılandırma dosyasını işlem düğümü uç noktasıyla 
     }
     ```
 
-1. Değişiklikleri `truffle-config.js`kaydedin.
+1. Save the changes to `truffle-config.js`.
 
 ## <a name="connect-to-transaction-node"></a>İşlem düğümüne bağlanma
 
-İşlem düğümüne bağlanmak için *Web3* kullanın.
+Use *Web3* to connect to the transaction node.
 
-1. Varsayılan işlem düğümüne bağlanmak için Truffle konsolunu kullanın. Komut isteminde veya kabukta aşağıdaki komutu çalıştırın:
+1. Use the Truffle console to connect to the default transaction node. At a command prompt or shell, run the following command:
 
     ``` bash
     truffle console --network defaultnode
     ```
 
-    Truffle varsayılan işlem düğümüne bağlanır ve etkileşimli bir konsol sağlar.
+    Truffle connects to the default transaction node and provides an interactive console.
 
-    Blok zinciri ağınızla etkileşim kurmak için **Web3** nesnesi üzerinde yöntemler çağırabilirsiniz.
+    You can call methods on the **web3** object to interact with your blockchain network.
 
-1. Geçerli blok numarasını döndürmek için **Getblocknumber** yöntemini çağırın.
+1. Call the **getBlockNumber** method to return the current block number.
 
     ```bash
     web3.eth.getBlockNumber();
@@ -117,7 +111,7 @@ Ardından, Truffle yapılandırma dosyasını işlem düğümü uç noktasıyla 
     truffle(defaultnode)> web3.eth.getBlockNumber();
     18567
     ```
-1. Truffle konsolundan çıkın.
+1. Exit the Truffle console.
 
     ```bash
     .exit
@@ -125,9 +119,9 @@ Ardından, Truffle yapılandırma dosyasını işlem düğümü uç noktasıyla 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, Azure blok zinciri hizmeti varsayılan işlem düğümüne bağlanın ve geçerli blok zinciri blok numarasını döndürmek için etkileşimli konsolu kullandınız.
+In this quickstart, you used Truffle connect to an Azure Blockchain Service default transaction node and used the interactive console to return the current blockchain block number.
 
-Bir işlem aracılığıyla akıllı sözleşme işlevi oluşturmak, derlemek, dağıtmak ve yürütmek için Ethereum için Azure blok zinciri geliştirme setini kullanmak üzere bir sonraki öğreticiyi deneyin.
+Try the next tutorial to use Azure Blockchain Development Kit for Ethereum to create, build, deploy, and execute a smart contract function via a transaction.
 
 > [!div class="nextstepaction"]
-> [Akıllı sözleşmeleri oluşturmak, derlemek ve dağıtmak için Visual Studio Code kullanma](send-transaction.md)
+> [Use Visual Studio Code to create, build, and deploy smart contracts](send-transaction.md)

@@ -1,70 +1,70 @@
 ---
 title: Sık karşılaşılan hataları giderme
-description: Şemaları oluşturma, atama ve kaldırma ile ilgili sorunların nasıl giderileceği hakkında bilgi edinin.
-ms.date: 12/11/2018
+description: Learn how to troubleshoot issues creating, assigning, and removing blueprints such as policy violations and blueprint parameter functions.
+ms.date: 11/22/2019
 ms.topic: troubleshooting
-ms.openlocfilehash: b6f1d6c40f7268e90f09457e680a3ef33996c341
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 4e7ea1760e000a167c4329d6f12f3acc18d18f7c
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960284"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406604"
 ---
-# <a name="troubleshoot-errors-using-azure-blueprints"></a>Azure şemaları 'nı kullanarak hatalarda sorun giderme
+# <a name="troubleshoot-errors-using-azure-blueprints"></a>Troubleshoot errors using Azure Blueprints
 
-Şemaları oluştururken veya atarken hatalarla karşılaşabilirsiniz. Bu makalede, oluşabilecek çeşitli hatalar ve bunların nasıl çözümleneceği açıklanmaktadır.
+You may run into errors when creating or assigning blueprints. This article describes various errors that may occur and how to resolve them.
 
-## <a name="finding-error-details"></a>Hata ayrıntılarını bulma
+## <a name="finding-error-details"></a>Finding error details
 
-Birçok hata, bir kapsamda şema atamanın sonucu olacaktır. Bir atama başarısız olduğunda, şema başarısız dağıtım hakkında ayrıntılar sağlar. Bu bilgiler sorunu çözülecektir ve sonraki dağıtım başarılı olur.
+Many errors will be the result of assigning a blueprint to a scope. When an assignment fails, the blueprint provides details about the failed deployment. This information indicates the issue so that it can be fixed and the next deployment succeeds.
 
-1. Sol bölmedeki **tüm hizmetler** ' i seçin. **Şemaları**arayın ve seçin.
+1. Select **All services** in the left pane. Search for and select **Blueprints**.
 
-1. Sol taraftaki sayfadan **atanan** şemalar ' ı seçin ve başarısız atamayı bulmak için şema atamalarını filtrelemek için arama kutusunu kullanın. Ayrıca, tüm başarısız atamaları birlikte gruplanmış olarak görmek için Atamalar tablosunu **sağlama durumu** sütununa göre sıralayabilirsiniz.
+1. Select **Assigned blueprints** from the page on the left and use the search box to filter the blueprint assignments to find the failed assignment. You can also sort the table of assignments by the **Provisioning State** column to see all failed assignments grouped together.
 
-1. _Hatalı_ duruma sahip şema üzerine sol tıklayın veya sağ tıklayıp **atama ayrıntılarını görüntüle**' yi seçin.
+1. Left-click on the blueprint with the _Failed_ status or right-click and select **View assignment details**.
 
-1. Atamanın başarısız olduğu kırmızı bir başlık, BLUEPRINT atama sayfasının en üstünde yer alan bir uyarı. Daha fazla ayrıntı edinmek için başlık üzerinde herhangi bir yere tıklayın.
+1. A red banner warning that the assignment has failed is at the top of the blueprint assignment page. Click anywhere on the banner to get more details.
 
-Hatanın bir bütün olarak değil bir yapıtın neden olması yaygındır. Bir yapıt Key Vault oluşturursa ve Azure Ilkesi Key Vault oluşturmayı engelliyorsa, tüm atama başarısız olur.
+It's common for the error to be caused by an artifact and not the blueprint as a whole. If an artifact creates a Key Vault and Azure Policy prevents Key Vault creation, the entire assignment will fail.
 
-## <a name="general-errors"></a>Genel hatalar
+## <a name="general-errors"></a>General errors
 
-### <a name="policy-violation"></a>Senaryo: Ilke Ihlali
-
-#### <a name="issue"></a>Sorun
-
-İlke ihlali nedeniyle şablon dağıtımı başarısız oldu.
-
-#### <a name="cause"></a>Nedeni
-
-Bir ilke, birkaç nedenden dolayı dağıtımla çakışabilir:
-
-- Oluşturulan kaynak ilkeyle kısıtlıdır (genellikle SKU veya konum kısıtlamaları)
-- Dağıtım, ilke tarafından yapılandırılan alanları ayarlıyor (etiketlerle ortak)
-
-#### <a name="resolution"></a>Çözüm
-
-Şema, hata ayrıntılarında ilkelerle çakışmayacak şekilde değiştirin. Bu değişiklik mümkün değilse, ilke atamasının kapsamının, şema ile çakışmadan, artık ilkeyle çakışmamasını sağlamak için alternatif bir seçenek bulunur.
-
-### <a name="escape-function-parameter"></a>Senaryo: Blueprint parametresi bir işlevdir
+### <a name="policy-violation"></a>Scenario: Policy Violation
 
 #### <a name="issue"></a>Sorun
 
-İşlevler olan Blueprint parametreleri yapıtlara geçirilmeden önce işlenir.
+The template deployment failed because of policy violation.
 
 #### <a name="cause"></a>Nedeni
 
-Bir yapıya `[resourceGroup().tags.myTag]`gibi bir işlevi kullanan bir şema parametresinin geçirilmesi, dinamik işlev yerine yapıtın üzerinde ayarlanan işlevin işlenmiş sonucuna neden olur.
+A policy may conflict with the deployment for a number of reasons:
 
-#### <a name="resolution"></a>Çözüm
+- The resource being created is restricted by policy (commonly SKU or location restrictions)
+- The deployment is setting fields that are configured by policy (common with tags)
 
-Bir işlevi parametre olarak kullanarak geçirmek için, `[` tüm dizeyi, şema parametresinin `[[resourceGroup().tags.myTag]`gibi görünmesini sağlar. Kaçış karakteri, şema, şema işlerken değeri bir dize olarak işlemeye neden olur. Daha sonra, planlar, işlevin beklenen şekilde dinamik olmasını sağlayan yapıtı üzerine koyar. Daha fazla bilgi için bkz. [Azure Resource Manager şablonlarındaki sözdizimi ve ifadeler](../../../azure-resource-manager/template-expressions.md).
+#### <a name="resolution"></a>Çözünürlük
+
+Change the blueprint so it doesn't conflict with the policies in the error details. If this change isn't possible, an alternative option is to have the scope of the policy assignment changed so the blueprint is no longer in conflict with the policy.
+
+### <a name="escape-function-parameter"></a>Scenario: Blueprint parameter is a function
+
+#### <a name="issue"></a>Sorun
+
+Blueprint parameters that are functions are processed before being passed to artifacts.
+
+#### <a name="cause"></a>Nedeni
+
+Passing a blueprint parameter that uses a function, such as `[resourceGroup().tags.myTag]`, to an artifact results in the processed outcome of the function being set on the artifact instead of the dynamic function.
+
+#### <a name="resolution"></a>Çözünürlük
+
+To pass a function through as a parameter, escape the entire string with `[` such that the blueprint parameter looks like `[[resourceGroup().tags.myTag]`. The escape character causes Blueprints to treat the value as a string when processing the blueprint. Blueprints then places the function on the artifact allowing it to be dynamic as expected. For more information, see [Syntax and expressions in Azure Resource Manager templates](../../../azure-resource-manager/template-expressions.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek için aşağıdaki kanallardan birini ziyaret edin:
+If you didn't see your problem or are unable to solve your issue, visit one of the following channels for more support:
 
-- Azure [forumları](https://azure.microsoft.com/support/forums/)aracılığıyla Azure uzmanlarından yanıtlar alın.
+- Get answers from Azure experts through [Azure Forums](https://azure.microsoft.com/support/forums/).
 - [@AzureSupport](https://twitter.com/azuresupport) hesabı ile bağlantı kurun. Bu resmi Microsoft Azure hesabı, müşteri deneyimini geliştirmek için Azure topluluğunu doğru kaynaklara ulaştırır: yanıtlar, destek ve uzmanlar.
-- Daha fazla yardıma ihtiyacınız varsa, bir Azure destek olayı dosyası gönderebilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve **Destek Al**' ı seçin.
+- If you need more help, you can file an Azure support incident. Go to the [Azure support site](https://azure.microsoft.com/support/options/) and select **Get Support**.

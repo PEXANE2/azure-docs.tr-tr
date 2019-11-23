@@ -1,26 +1,26 @@
 ---
-title: Hibrit Azure Active Directory sorun giderme, alt düzey cihazları katılmış | Microsoft Docs
-description: Hibrit Azure Active Directory sorun giderme alt düzey cihazları katıldı.
+title: Troubleshoot legacy hybrid Azure Active Directory joined devices
+description: Troubleshooting hybrid Azure Active Directory joined down-level devices.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: troubleshooting
-ms.date: 06/28/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7f02937555f7637a6d2f81be717aaad83bab74f
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: e168deea1ba442d48f483264c1e97ce618040f18
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481448"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74379114"
 ---
-# <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Alt düzey cihazları katılmış karma Azure Active Directory sorun giderme 
+# <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Troubleshooting hybrid Azure Active Directory joined down-level devices 
 
-Bu makalede, yalnızca aşağıdaki cihazlar için geçerlidir: 
+This article is applicable only to the following devices: 
 
 - Windows 7 
 - Windows 8.1 
@@ -28,81 +28,81 @@ Bu makalede, yalnızca aşağıdaki cihazlar için geçerlidir:
 - Windows Server 2012 
 - Windows Server 2012 R2 
 
-Windows 10 veya Windows Server 2016 için bkz: [sorun giderme hibrit Azure Active Directory'ye katılmış Windows 10 ve Windows Server 2016 cihazları](troubleshoot-hybrid-join-windows-current.md).
+For Windows 10 or Windows Server 2016, see [Troubleshooting hybrid Azure Active Directory joined Windows 10 and Windows Server 2016 devices](troubleshoot-hybrid-join-windows-current.md).
 
-Bu makalede, sahibi olduğunuzu varsayar [yapılandırılmış hibrit Azure Active Directory alanına katılmış cihazlar](hybrid-azuread-join-plan.md) aşağıdaki senaryoları desteklemek için:
+This article assumes that you have [configured hybrid Azure Active Directory joined devices](hybrid-azuread-join-plan.md) to support the following scenarios:
 
-- Cihaz tabanlı koşullu erişim
+- Device-based Conditional Access
 
-Bu makalede, sorun giderme rehberi olası sorunların nasıl giderileceğini üzerinde ile sunulmaktadır.  
+This article provides you with troubleshooting guidance on how to resolve potential issues.  
 
-**Bilmeniz gerekenler:** 
+**What you should know:** 
 
-- Hibrit Azure AD'ye katılma için Windows cihazları works biraz daha farklı daha alt düzey Windows 10'da gerçekleştirir. Birçok müşteri AD FS (Federasyon etki alanları için) ihtiyaç duydukları veya sorunsuz çoklu oturum açma (için yönetilen etki alanları) yapılandırılmış başlığımız dikkatinizi çekmiş olabilir değil.
-- Hizmet bağlantı noktası (SCP) (örneğin, contoso.onmicrosoft.com, contoso.com yerine), yönetilen etki alanı adına işaret şekilde yapılandırıldıysa, alt düzey Windows cihazlar için Azure AD'ye katılım hibrit Federasyon etki alanlarında olan müşteriler için ardından olur çalışmıyor.
-- Şu anda kullanıcı başına cihaz sayısı, alt düzey hibrit Azure AD'ye katılmış cihazlar için de geçerlidir. 
-- Aynı fiziksel cihaza ne zaman birden çok etki alanı kullanıcıları alt düzey hibrit Azure AD'ye katılmış cihazların oturum birden çok kez Azure AD'de görünür.  Örneğin, varsa *jdoe* ve *jharnett* oturum açma ayrı bir kayıt (DeviceID) bir cihaza oluşturulur bunlardan her biri için **kullanıcı** bilgileri sekmesi. 
-- Ayrıca birden çok girişi bir cihazda kullanıcı bilgileri sekmesi için işletim sistemi veya bir el ile yeniden kayıt yüklenmesinden dolayı alabilirsiniz.
-- İlk kayıt / cihazların birleştirme girişimi oturum açma veya kilit gerçekleştirmek / kilidini açmak için yapılandırılır. Zamanlayıcı görevi tarafından tetiklenen 5 dakika gecikme olabilir. 
-- Emin [KB4284842](https://support.microsoft.com/help/4284842) Windows 7 SP1 veya Windows Server 2008 R2 SP1 durumunda yüklenir. Bu güncelleştirme, parolayı değiştirdikten sonra korumalı anahtarları gelecekteki kimlik doğrulama hataları nedeniyle müşterinin erişim kaybını engeller.
+- Hybrid Azure AD join for downlevel Windows devices works slightly differently than it does in Windows 10. Many customers do not realize that they need AD FS (for federated domains) or Seamless SSO configured (for managed domains).
+- For customers with federated domains, if the Service Connection Point (SCP) was configured such that it points to the managed domain name (for example, contoso.onmicrosoft.com, instead of contoso.com), then Hybrid Azure AD Join for downlevel Windows devices will not work.
+- The maximum number of devices per user currently also applies to downlevel hybrid Azure AD joined devices. 
+- The same physical device appears multiple times in Azure AD when multiple domain users sign-in the downlevel hybrid Azure AD joined devices.  For example, if *jdoe* and *jharnett* sign-in to a device, a separate registration (DeviceID) is created for each of them in the **USER** info tab. 
+- You can also get multiple entries for a device on the user info tab because of a reinstallation of the operating system or a manual re-registration.
+- The initial registration / join of devices is configured to perform an attempt at either sign-in or lock / unlock. There could be 5-minute delay triggered by a task scheduler task. 
+- Make sure [KB4284842](https://support.microsoft.com/help/4284842) is installed, in case of Windows 7 SP1 or Windows Server 2008 R2 SP1. This update prevents future authentication failures due to customer's access loss to protected keys after changing password.
 
-## <a name="step-1-retrieve-the-registration-status"></a>1\. adım: Kayıt durumu alma 
+## <a name="step-1-retrieve-the-registration-status"></a>Step 1: Retrieve the registration status 
 
-**Kayıt durumunu doğrulamak için:**  
+**To verify the registration status:**  
 
-1. Hibrit Azure AD'ye katılım gerçekleştirilen bir kullanıcı hesabıyla oturum açın.
-1. Komut istemini açın 
-1. Türü `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe" /i`
+1. Sign on with the user account that has performed a hybrid Azure AD join.
+1. Open the command prompt 
+1. `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe" /i` yazın
 
-Bu komut, birleşim durumu hakkında ayrıntılar sağlayan bir iletişim kutusu görüntüler.
+This command displays a dialog box that provides you with details about the join status.
 
-![Windows için çalışma alanına katılma](./media/troubleshoot-hybrid-join-windows-legacy/01.png)
+![Workplace Join for Windows](./media/troubleshoot-hybrid-join-windows-legacy/01.png)
 
-## <a name="step-2-evaluate-the-hybrid-azure-ad-join-status"></a>2\. adım: Hibrit Azure AD'ye katılma durumu değerlendirin 
+## <a name="step-2-evaluate-the-hybrid-azure-ad-join-status"></a>Step 2: Evaluate the hybrid Azure AD join status 
 
-Cihaz hibrit Azure AD'ye katılmış başarısız olduysa, "Birleştirme" düğmesine tıklayarak hibrit Azure AD'ye katılma yapmak deneyebilirsiniz. Hibrit Azure AD'ye katılım yapmak için deneme başarısız olursa, hata hakkındaki ayrıntılar gösterilir.
+If the device was not hybrid Azure AD joined, you can attempt to do hybrid Azure AD join by clicking on the "Join" button. If the attempt to do hybrid Azure AD join fails, the details about the failure will be shown.
 
-**En yaygın sorunlar şunlardır:**
+**The most common issues are:**
 
-- AD FS veya Azure AD yanlış yapılandırılmış veya ağ sorunları
+- A misconfigured AD FS or Azure AD or Network issues
 
-    ![Windows için çalışma alanına katılma](./media/troubleshoot-hybrid-join-windows-legacy/02.png)
+    ![Workplace Join for Windows](./media/troubleshoot-hybrid-join-windows-legacy/02.png)
     
-   - Azure AD veya AD FS ile sessizce kimlik doğrulaması Autoworkplace.exe silemiyor. Bu, eksik neden olmuş olabilir veya AD FS (için Federasyon etki alanları) veya eksik veya yanlış yapılandırılmış Azure AD sorunsuz çoklu oturum açma (için yönetilen etki alanları) veya ağ sorunları yanlış yapılandırılmış. 
-   - Çok faktörlü kimlik doğrulaması (MFA) kullanıcı için etkin/yapılandırılan ve AD FS sunucusunda WIAORMULTIAUTHN yapılandırılmamış olabilir. 
-   - Bu giriş bölgesi bulma (HRD) sayfasını engelleyen kullanıcı etkileşimi için bekleyen başka bir olasılıktır **autoworkplace.exe** sessiz bir belirteç isteyen öğesinden.
-   - AD FS ve Azure AD URL'leri IE'nin Intranet istemci üzerinde eksik olduğundan emin olabilir.
-   - Ağ bağlantı sorunları engelliyor **autoworkplace.exe** AD FS veya Azure AD URL'leri ulaşmasını. 
-   - **Autoworkplace.exe** gerektirir istemcinin doğrudan görebilmesi istemciden kuruluşun şirket içi AD etki alanı denetleyicisi, hibrit Azure AD'ye katılma başarılı yalnızca kuruluşunuzun intranet istemci bağlandığında anlamına gelir.
-   - Azure AD sorunsuz çoklu oturum açma, kuruluşunuzun kullandığı `https://autologon.microsoftazuread-sso.com` veya `https://aadg.windows.net.nsatc.net` cihazın IE intranet ayarlarını, mevcut olmayan ve **izin vermek için durum çubuğu komut dosyası aracılığıyla güncelleştirmeleri** Intranet bölgesi için etkin değil.
-- Bir etki alanı kullanıcısı olarak imzalı değil
+   - Autoworkplace.exe is unable to silently authenticate with Azure AD or AD FS. This could be caused by missing or misconfigured AD FS (for federated domains) or missing or misconfigured Azure AD Seamless Single Sign-On (for managed domains) or network issues. 
+   - It could be that multi-factor authentication (MFA) is enabled/configured for the user and WIAORMULTIAUTHN is not configured at the AD FS server. 
+   - Another possibility is that home realm discovery (HRD) page is waiting for user interaction, which prevents **autoworkplace.exe** from silently requesting a token.
+   - It could be that AD FS and Azure AD URLs are missing in IE's intranet zone on the client.
+   - Network connectivity issues may be preventing **autoworkplace.exe** from reaching AD FS or the Azure AD URLs. 
+   - **Autoworkplace.exe** requires the client to have direct line of sight from the client to the organization's on-premises AD domain controller, which means that hybrid Azure AD join succeeds only when the client is connected to organization's intranet.
+   - Your organization uses Azure AD Seamless Single Sign-On, `https://autologon.microsoftazuread-sso.com` or `https://aadg.windows.net.nsatc.net` are not present on the device's IE intranet settings, and **Allow updates to status bar via script** is not enabled for the Intranet zone.
+- You are not signed on as a domain user
 
-   ![Windows için çalışma alanına katılma](./media/troubleshoot-hybrid-join-windows-legacy/03.png)
+   ![Workplace Join for Windows](./media/troubleshoot-hybrid-join-windows-legacy/03.png)
 
-   Neden bu durum ortaya çıkabilir birkaç farklı nedeni vardır:
+   There are a few different reasons why this can occur:
 
-   - Oturum açmış olan kullanıcının etki alanı kullanıcısı (örneğin, yerel bir kullanıcı) değil. Alt düzey cihazlar karma Azure AD join, yalnızca etki alanı kullanıcıları için desteklenir.
-   - İstemci, bir etki alanı denetleyicisine bağlanmak kuramıyor.    
-- Bir kotasına ulaşıldı
+   - The signed in user is not a domain user (for example, a local user). Hybrid Azure AD join on down-level devices is supported only for domain users.
+   - The client is not able to connect to a domain controller.    
+- A quota has been reached
 
-    ![Windows için çalışma alanına katılma](./media/troubleshoot-hybrid-join-windows-legacy/04.png)
+    ![Workplace Join for Windows](./media/troubleshoot-hybrid-join-windows-legacy/04.png)
 
-- Hizmeti yanıt vermiyor 
+- The service is not responding 
 
-    ![Windows için çalışma alanına katılma](./media/troubleshoot-hybrid-join-windows-legacy/05.png)
+    ![Workplace Join for Windows](./media/troubleshoot-hybrid-join-windows-legacy/05.png)
 
-Ayrıca, altında olay günlüğüne durum bilgileri de bulabilirsiniz: **Uygulamaları ve Hizmetleri Log\Microsoft-çalışma alanına katılma**
+You can also find the status information in the event log under: **Applications and Services Log\Microsoft-Workplace Join**
   
-**Başarısız hibrit Azure AD'ye katılma en yaygın nedenleri şunlardır:** 
+**The most common causes for a failed hybrid Azure AD join are:** 
 
-- Bilgisayarınız, kuruluşunuzun iç ağ veya VPN ile şirket içi bağlantı bağlanmadı AD etki alanı denetleyicisi.
-- Bilgisayarınızın yerel bilgisayar hesabı ile günlüğe kaydedilir. 
-- Hizmet yapılandırma sorunları: 
-   - AD FS sunucusuna desteklemek üzere yapılandırılmamış **WIAORMULTIAUTHN**. 
-   - Doğrulanmış etki alanı adınızı Azure AD'ye işaret eden hizmet bağlantı noktası nesne bilgisayarınızın ormanda vardır 
-   - Veya etki alanınızda yönetilen ardından sorunsuz çoklu oturum açma yapılandırılmamış veya çalışma.
-   - Bir kullanıcı cihaz sınırına ulaştı. 
+- Your computer is not connected to your organization’s internal network or to a VPN with a connection to your on-premises AD domain controller.
+- You are logged on to your computer with a local computer account. 
+- Service configuration issues: 
+   - The AD FS server has not been configured to support **WIAORMULTIAUTHN**. 
+   - Your computer's forest has no Service Connection Point object that points to your verified domain name in Azure AD 
+   - Or if your domain is managed, then Seamless SSO was not configured or working.
+   - A user has reached the limit of devices. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sorularınız varsa bkz [cihaz yönetimi hakkında SSS](faq.md)  
+For questions, see the [device management FAQ](faq.md)  

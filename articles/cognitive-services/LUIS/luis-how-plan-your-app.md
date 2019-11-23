@@ -1,7 +1,7 @@
 ---
-title: Uygulamanızı planlayın-LUSıS
+title: Plan your app - LUIS
 titleSuffix: Azure Cognitive Services
-description: İlgili uygulama amaçlarını ve varlıklarını ana hatlarıyla oluşturun ve ardından Language Understanding akıllı hizmetler (LUU) içinde uygulama planlarınızı oluşturun.
+description: Outline relevant app intents and entities, and then create your application plans in Language Understanding Intelligent Services (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,52 +9,56 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 11/20/2019
 ms.author: diberry
-ms.openlocfilehash: b5e5df111b81cb60b6d194be190421bdb5ce2683
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6a155f4c43da03ccdc40d289742918973aa6da7b
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467704"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326786"
 ---
-# <a name="plan-your-luis-app-schema-with-subject-domain-and-data-extraction"></a>LUSıS uygulama şemanızı konu etki alanı ve veri ayıklama ile planlayın
+# <a name="plan-your-luis-app-schema-with-subject-domain-and-data-extraction"></a>Plan your LUIS app schema with subject domain and data extraction
 
-Bir LUSıS uygulama şeması, konu etki alanınız ile ilgili amaçları ve varlıkları içerir. Amaç, Kullanıcı araslarını sınıflandırır ve varlıklar, Kullanıcı dıklarındaki verileri ayıklar. 
+A LUIS app schema contains [intents](luis-glossary.md#intent) and [entities](luis-glossary.md#entity) relevant to your subject [domain](luis-glossary.md#domain). The intents classify user [utterances](luis-glossary.md#utterance), and the entities extract data from the user utterances.
 
-## <a name="identify-your-domain"></a>Etki alanınızı tanımla
+## <a name="identify-your-domain"></a>Identify your domain
 
-Bir LUSıS uygulaması, etki alanına özgü bir konunun etrafında ortalanır.  Örneğin, Bilet, fışıklar, otel ve Kiralama otomobillerini gerçekleştiren bir seyahat uygulamasına sahip olabilirsiniz. Başka bir uygulama uygulamayla ilgili içerik sunabilir, uygunluk çalışmalarını izleme ve amaçları ayarlama. Etki alanını tanımlamak, etki alanınız için önemli olan kelimeleri veya tümceleri bulmanıza yardımcı olur.
+A LUIS app is centered around a subject domain. For example, you may have a travel app that handles booking of tickets, flights, hotels, and rental cars. Another app may provide content related to exercising, tracking fitness efforts and setting goals. Identifying the domain helps you find words or phrases that are relevant to your domain.
 
 > [!TIP]
-> LUSıS birçok yaygın senaryo için [önceden oluşturulmuş etki alanları](luis-how-to-use-prebuilt-domains.md) sunar.
-> Önceden oluşturulmuş bir etki alanını uygulamanız için başlangıç noktası olarak kullanıp kullananağınızın olup olmadığını kontrol edin.
+> LUIS offers [prebuilt domains](luis-how-to-use-prebuilt-domains.md) for many common scenarios. Check to see if you can use a prebuilt domain as a starting point for your app.
 
-## <a name="identify-your-intents"></a>Amaçlarınızı tanımla
+## <a name="identify-your-intents"></a>Identify your intents
 
-Uygulamanızın görevi için önemli olan [amaçları](luis-concept-intent.md) göz önünde bulundurun. 
+Think about the [intents](luis-concept-intent.md) that are important to your application's task.
 
-Bir uçuş ve Kullanıcı hedefindeki hava durumunu denetlemek için işlevlerle bir seyahat uygulaması örneğini ele alalım. Bu eylemler için `BookFlight` ve `GetWeather` amaçlarını tanımlayabilirsiniz. 
+Let's take the example of a travel app, with functions to book a flight and check the weather at the user's destination. You can define the `BookFlight` and `GetWeather` intents for these actions.
 
-Daha fazla işlev içeren daha karmaşık bir uygulamada, daha fazla amaç vardır ve bu amaçları dikkatle tanımlamanız gerekir, böylelikle amaçlar çok özgü değildir. Örneğin, `BookFlight` ve `BookHotel` ayrı amaçlar olması gerekebilir, ancak `BookInternationalFlight` ve `BookDomesticFlight` çok benzer olabilir.
+In a more complex app with more functions, you have more intents, and you should define them carefully so the intents aren't too specific. For example, `BookFlight` and `BookHotel` may need to be separate intents, but `BookInternationalFlight` and `BookDomesticFlight` may be too similar.
 
 > [!NOTE]
-> Uygulamanızın işlevlerini gerçekleştirmek için ihtiyaç duyduğunuz kadar çok amaç kullanmak en iyi uygulamadır. Çok fazla amaç tanımlarsanız, YAĞıNLARı doğru şekilde sınıflandırılması zor olur. Çok az sayıda tanımlarsanız, bu durum örtüşeceğinden genel olabilir.
+> It is a best practice to use only as many intents as you need to perform the functions of your app. If you define too many intents, it becomes harder for LUIS to classify utterances correctly. If you define too few, they may be so general that they overlap.
 
-Genel Kullanıcı amacını belirlemeniz gerekmiyorsa, tüm örnek Kullanıcı araslarını hiçbiri amacına ekleyin. Uygulamanız daha fazla amaç gerektiren bir şekilde büyürse, daha sonra oluşturabilirsiniz. 
+If you don't need to identify overall user intention, add all the example user utterances to the `None` intent. If your app grows into needing more intents, you can create them later.
 
-## <a name="create-example-utterances-for-each-intent"></a>Her amaç için örnek oluşturma
+## <a name="create-example-utterances-for-each-intent"></a>Create example utterances for each intent
 
-Hedefleri belirledikten sonra her bir amaç için 15 ila 30 örnek oluşturma oluşturun. Kullanmaya başlamak için bu sayıdan daha az sahip değildir veya her bir amaç için çok fazla sayıda utterme oluşturun. Her söylük, önceki söyleyden farklı olmalıdır. Söyleyenlerdeki her şey genel sözcük sayısı, kelime seçimi, fiil zaman hali ve noktalama işaretleri içerir. 
+To begin with, avoid creating too many utterances for each intent. Once you have determined the intents, create 15 to 30 example utterances per intent. Each utterance should be different from the previously provided utterances. A good variety in utterances include overall word count, word choice, verb tense, and punctuation.
 
-Daha fazla [bilgi için,](luis-concept-utterance.md) bu bilgileri gözden geçirin.
+For more information, see [understanding good utterances for LUIS apps](luis-concept-utterance.md).
 
-## <a name="identify-your-entities"></a>Varlıklarınızı tanımla
+## <a name="identify-your-entities"></a>Identify your entities
 
-Örnekte, ayıklanmak istediğiniz varlıkları belirler. Bir uçuş sağlamak için hedef, tarih, Airline, Bilet kategorisi ve seyahat sınıfı gibi bilgilere ihtiyacınız vardır. Bu veri türleri için varlıklar oluşturun ve ardından, bir amacı elde etmek için önemli olduklarından, örnek türlerdeki [varlıkları](luis-concept-entity-types.md) işaretleyin. 
+In the example utterances, identify the entities you want extracted. To book a flight, you need information like the destination, date, airline, ticket category, and travel class. Create entities for these data types and then mark the [entities](luis-concept-entity-types.md) in the example utterances. Entities are important for accomplishing an intent.
 
-Uygulamanızda hangi varlıkların kullanılacağını belirlediğinizde, nesne türleri arasındaki ilişkileri yakalamak için farklı türde varlıkların olduğunu aklınızda bulundurun. [Luve Içindeki varlıklar](luis-concept-entity-types.md) , farklı türler hakkında daha fazla ayrıntı sağlar.
+When determining which entities to use in your app, keep in mind that there are different types of entities for capturing relationships between object types. [Entities in LUIS](luis-concept-entity-types.md) provides more detail about the different types.
+
+> [!TIP]
+> LUIS offers [prebuilt entities](luis-prebuilt-entities.md) for common, conversational user scenarios. Consider using prebuilt entities as a starting point for your application development.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Tipik [geliştirme çevrimi](luis-concept-app-iteration.md)hakkında bilgi edinin.  
+> [!div class="nextstepaction"]
+> [Learning the LUIS development lifecylce](luis-concept-app-iteration.md)
+

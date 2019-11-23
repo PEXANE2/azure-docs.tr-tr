@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Central Azure IoT Edge bir cihaz ekleme | Microsoft Docs
-description: Bir operatör olarak, Azure IoT Central Azure IoT Edge bir cihaz ekleyin
+title: Add an Azure IoT Edge device to Azure IoT Central | Microsoft Docs
+description: As an operator, add an Azure IoT Edge device to your Azure IoT Central application
 author: rangv
 ms.author: rangv
 ms.date: 10/22/2019
@@ -9,185 +9,177 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: ae80a624ed1f85a1f59fea79b152a4bc31067ad1
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: f16db7ebff087b164228f2b23d6fa7ec302705bb
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73893483"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406340"
 ---
-# <a name="tutorial-add-an-azure-iot-edge-device-to-your-azure-iot-central-application-preview-features"></a>Öğretici: Azure IoT Central uygulamanıza Azure IoT Edge bir cihaz ekleme (Önizleme özellikleri)
+# <a name="tutorial-add-an-azure-iot-edge-device-to-your-azure-iot-central-application"></a>Tutorial: Add an Azure IoT Edge device to your Azure IoT Central application
 
 [!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-Bu öğreticide, *Azure IOI Edge cihazını* Microsoft Azure IoT Central uygulamanıza nasıl ekleyeceğiniz ve yapılandırabileceğiniz gösterilmektedir. Bu öğreticide, Azure Marketi 'nden Azure IoT Edge etkinleştirilmiş bir Linux sanal makinesi seçtik.
+This tutorial shows you how to add and configure an Azure IoT Edge device to your Azure IoT Central application. In this tutorial, we chose an IoT Edge-enabled Linux VM from Azure Marketplace.
 
 Bu öğretici iki bölümden oluşur:
 
-* İlk olarak, bir operatör olarak, bir Azure IoT Edge cihazının bulut ilk sağlamasını yapmayı öğrenirsiniz.
-* Daha sonra, cihaz Azure IoT Edge cihazının ilk sağlamasını yapmayı öğreneceksiniz.
+* First, as an operator, you learn how to do cloud first provisioning of an IoT Edge device.
+* Then, you learn how to do "device first" provisioning of an IoT Edge device.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Yeni bir Azure IoT Edge cihaz ekleme
-> * SAS anahtarı kullanarak sağlamaya yardımcı olmak için Azure IoT Edge cihazı yapılandırma
-> * IoT Central panoları, modül durumunu görüntüleme
-> * Azure IoT Edge cihazda çalışan bir modüle Komut gönder
-> * Azure IoT Edge cihazda çalışan bir modülün özelliklerini ayarlama
+> * Add a new IoT Edge device
+> * Configure the IoT Edge device to help provision by using a shared access signature (SAS) key
+> * View dashboards and module health in IoT Central
+> * Send commands to a module running on the IoT Edge device
+> * Set properties on a module running on the IoT Edge device
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticiyi tamamlamak için bir Azure IoT Central uygulamanızın olması gerekir. [Azure IoT Central uygulaması oluşturmak](./quick-deploy-iot-central.md)için bu hızlı başlangıcı izleyin.
+Bu öğreticiyi tamamlamak için bir Azure IoT Central uygulamanızın olması gerekir. Follow [this quickstart to create an Azure IoT Central application](./quick-deploy-iot-central.md).
 
-## <a name="enable-azure-iot-edge-enrollment-group"></a>Azure IoT Edge kayıt grubunu etkinleştir
-Yönetim sayfasından Azure IoT Edge kayıt grubu için SAS anahtarlarını etkinleştirin.
+## <a name="enable-azure-iot-edge-enrollment-group"></a>Enable Azure IoT Edge enrollment group
+From the **Administration** page, enable SAS keys for Azure IoT Edge enrollment group.
 
-![Cihaz şablonu-Azure IoT Edge](./media/tutorial-add-edge-as-leaf-device/groupenrollment.png)
+![Screenshot of Administration page, with Device connection highlighted](./media/tutorial-add-edge-as-leaf-device/groupenrollment.png)
 
-## <a name="cloud-first-azure-iot-edge-device-provisioning"></a>İlk Azure IoT Edge cihaz hazırlama bulutu   
-Bu bölümde, **ortam algılayıcı şablonunu** kullanarak yeni bir Azure IoT Edge cihaz oluşturacak ve bir cihaz sağlayacaksınız. Sol gezinti bölmesinde cihazlar ' a tıklayın ve ortam algılayıcı şablonu ' na tıklayın. 
+## <a name="provision-a-cloud-first-azure-iot-edge-device"></a>Provision a "cloud first" Azure IoT Edge device  
+In this section, you create a new IoT Edge device by using the environment sensor template, and you provision a device. Select **Devices** > **Environment Sensor Template**. 
 
-![Cihaz şablonu-Azure IoT Edge](./media/tutorial-add-edge-as-leaf-device/deviceexplorer.png)
+![Screenshot of Devices page, with Environment Sensor Template highlighted](./media/tutorial-add-edge-as-leaf-device/deviceexplorer.png)
 
-**+ Yeni** ' ye tıklayın ve size uygun BIR cihaz kimliği ve adı girin. 
+Select **+ New**, and enter a device ID and name of your choosing. **Oluştur**'u seçin.
 
-![Cihaz şablonu-Azure IoT Edge](./media/tutorial-add-edge-as-leaf-device/cfdevicecredentials.png)
+![Screenshot of Create new device dialog box, with Device ID and Create highlighted](./media/tutorial-add-edge-as-leaf-device/cfdevicecredentials.png)
 
-Cihaz **kayıtlı** moda gider.
+The device goes into **Registered** mode.
 
-![Cihaz şablonu-Azure IoT Edge](./media/tutorial-add-edge-as-leaf-device/cfregistered.png)
+![Screenshot of Environment Sensor Template page, with Device status highlighted](./media/tutorial-add-edge-as-leaf-device/cfregistered.png)
 
-## <a name="deploy-an-azure-iot-edge-enabled-linux-vm"></a>Azure IoT Edge özellikli bir Linux sanal makinesi dağıtma
+## <a name="deploy-an-iot-edge-enabled-linux-vm"></a>Deploy an IoT Edge enabled Linux VM
 
->Note: herhangi bir makineyi veya cihazı kullanmayı seçebilirsiniz. İşletim sistemi: Linux veya Windows)
+> [!NOTE]
+> You can choose to use any machine or device. The operating system can be Linux or Windows.
 
-Bu öğreticide, Azure 'da oluşturabileceğiniz bir Azure IoT etkin Linux VM 'si seçtik. [Azure Market](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu?tab=Overview) 'e götürülecektir ve **Şimdi al** düğmesine tıklayabilirsiniz. 
+For this tutorial, we're using an Azure IoT enabled Linux VM, created on Azure. In [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu?tab=Overview), select **GET IT NOW**. 
 
-![Azure Market](./media/tutorial-add-edge-as-leaf-device/cfmarketplace.png)
+![Screenshot of Azure Marketplace, with GET IT NOW highlighted](./media/tutorial-add-edge-as-leaf-device/cfmarketplace.png)
 
-**Devam** ' a tıklayın
+**Devam**'ı seçin.
 
-![Azure Market](./media/tutorial-add-edge-as-leaf-device/cfmarketplacecontinue.png)
+![Screenshot of Create this app in Azure dialog box, with Continue highlighted](./media/tutorial-add-edge-as-leaf-device/cfmarketplacecontinue.png)
 
 
-Azure portal alınacaktır. **Oluştur** düğmesine tıklayın
+You're taken to the Azure portal. **Oluştur**'u seçin.
 
-![Azure Market](./media/tutorial-add-edge-as-leaf-device/cfubuntu.png)
+![Screenshot of the Azure portal, with Create highlighted](./media/tutorial-add-edge-as-leaf-device/cfubuntu.png)
 
-Abonelik ' ı seçin, yeni bir kaynak grubu oluşturun tercihen VM kullanılabilirliği için ABD Batı 2 ' yi seçin, Kullanıcı ve parola girin. Kullanıcıyı anımsa, sonraki adımlar için parola gerekli olacaktır. **Gözden geçir + oluştur** 'a tıklayın
+Select **Subscription**, create a new resource group, and select **(US) West US 2** for VM availability. Then, enter user and password information. These will be required for future steps, so remember them. **İncele ve oluştur**’u seçin.
 
-![Ubuntu VM](./media/tutorial-add-edge-as-leaf-device/cfvm.png)
+![Screenshot of Create a virtual machine details page, with various options highlighted](./media/tutorial-add-edge-as-leaf-device/cfvm.png)
 
-Doğrulandıktan sonra **Oluştur** ' a tıklayın.
+After validation, select **Create**.
 
-![Ubuntu VM](./media/tutorial-add-edge-as-leaf-device/cfvmvalidated.png)
+![Screenshot of Create a virtual machine page, with Validation passed and Create highlighted](./media/tutorial-add-edge-as-leaf-device/cfvmvalidated.png)
 
-Kaynakların oluşturulması birkaç dakika sürer. **Kaynağa** git ' e tıklayın
+It takes a few minutes to create the resources. Select **Go to resource**.
 
-![Ubuntu VM](./media/tutorial-add-edge-as-leaf-device/cfvmdeploymentcomplete.png)
+![Screenshot of deployment completion page, with Go to resource highlighted](./media/tutorial-add-edge-as-leaf-device/cfvmdeploymentcomplete.png)
 
-### <a name="provision-vm-as-azure-iot-edge-device"></a>VM 'yi Azure IoT Edge cihaz olarak sağlama 
+### <a name="provision-vm-as-an-iot-edge-device"></a>Provision VM as an IoT Edge device 
 
-Sol gezinti bölmesinde destek + sorun giderme ' nin altında, Seri konsol ' ye tıklayın.
+Under **Support + troubleshooting**, select **Serial console**.
 
-![Ubuntu VM](./media/tutorial-add-edge-as-leaf-device/cfserialconsole.png)
+![Screenshot of Support + troubleshooting options, with Serial console highlighted](./media/tutorial-add-edge-as-leaf-device/cfserialconsole.png)
 
-Aşağıda olduğu gibi bir ekran göreceksiniz
+You'll see a screen similar to the following:
 
-![Ubuntu VM](./media/tutorial-add-edge-as-leaf-device/cfconsole.png)
+![Screenshot of console](./media/tutorial-add-edge-as-leaf-device/cfconsole.png)
 
-ENTER tuşuna basın ve istendiğinde Kullanıcı adı ve parola girin ve ENTER 'a basın. 
+Press Enter, provide the user name and password as prompted, and then press Enter again. 
 
-![Ubuntu VM](./media/tutorial-add-edge-as-leaf-device/cfconsolelogin.png)
+![Screenshot of console](./media/tutorial-add-edge-as-leaf-device/cfconsolelogin.png)
 
-Bir komutu yönetici/kök olarak çalıştırmak için şu komutu çalıştırın: **sudo su –**
+To run a command as administrator (user "root"), enter: **sudo su –**
 
-![Ubuntu VM](./media/tutorial-add-edge-as-leaf-device/cfsudo.png)
+![Screenshot of console](./media/tutorial-add-edge-as-leaf-device/cfsudo.png)
 
-Azure IoT Edge çalışma zamanı sürümünü denetleyin. Geçerli GA sürümü 1.0.8
+Check the IoT Edge runtime version. At the time of this writing, the current GA version is 1.0.8.
 
-![Ubuntu VM](./media/tutorial-add-edge-as-leaf-device/cfconsoleversion.png)
+![Screenshot of console](./media/tutorial-add-edge-as-leaf-device/cfconsoleversion.png)
 
-VIM Düzenleyicisi 'ni veya tercihinize sahipseniz nano 'yi kullanın. 
+Install the vim editor, or use nano if you prefer. 
 
-![Ubuntu VM](./media/tutorial-add-edge-as-leaf-device/cfconsolevim.png)
+![Screenshot of console](./media/tutorial-add-edge-as-leaf-device/cfconsolevim.png)
 
-![Ubuntu VM](./media/tutorial-add-edge-as-leaf-device/cfvim.png)
+![Screenshot of console](./media/tutorial-add-edge-as-leaf-device/cfvim.png)
 
-Azure IoT Edge config. YAML dosyasını Düzenle
+Edit the IoT Edge config.yaml file.
 
-![Ubuntu VM](./media/tutorial-add-edge-as-leaf-device/cfconsoleconfig.png)
+![Screenshot of console](./media/tutorial-add-edge-as-leaf-device/cfconsoleconfig.png)
 
-YAML dosyasının bağlantı dizesi kısmını aşağı kaydırın ve not edin. 
+Scroll down, and comment out the connection string portion of the yaml file. 
 
-**Eklenmeden**
+**Before**
 
-![Ubuntu VM](./media/tutorial-add-edge-as-leaf-device/cfmanualprovisioning.png)
+![Screenshot of console](./media/tutorial-add-edge-as-leaf-device/cfmanualprovisioning.png)
 
-**Sonra** (ESC tuşuna basın ve küçük harf a 'ya basın, düzenlenmek için)
+**After** (Press Esc, and press lowercase a, to start editing.)
 
-![Ubuntu VM](./media/tutorial-add-edge-as-leaf-device/cfmanualprovisioningcomments.png)
+![Screenshot of console](./media/tutorial-add-edge-as-leaf-device/cfmanualprovisioningcomments.png)
 
-YAML dosyasının simetrik anahtar bölümünün açıklamasını kaldırın. 
+Uncomment the symmetric key portion of the yaml file. 
 
-**Eklenmeden**
+**Before**
 
-![Ubuntu VM](./media/tutorial-add-edge-as-leaf-device/cfconsolesymmcomments.png)
+![Screenshot of console](./media/tutorial-add-edge-as-leaf-device/cfconsolesymmcomments.png)
 
-**Sonra**
+**After**
 
-![Ubuntu VM](./media/tutorial-add-edge-as-leaf-device/cfconsolesymmuncomments.png)
+![Screenshot of console](./media/tutorial-add-edge-as-leaf-device/cfconsolesymmuncomments.png)
 
-IoT Central gidin ve cihaz bağlantısı ![Azure IoT Edge cihazın kapsam KIMLIĞINI, cihaz KIMLIĞINI ve simetrik anahtarını alın](./media/tutorial-add-edge-as-leaf-device/cfdeviceconnect.png)
+Go to IoT Central. Get the scope ID, device ID, and symmetric key of the IoT Edge device.
+![Screenshot of IoT Central, with various device connection options highlighted](./media/tutorial-add-edge-as-leaf-device/cfdeviceconnect.png)
 
-Linux kutusuna gidin ve kapsam KIMLIĞINI, kayıt KIMLIĞINI cihaz KIMLIĞI ve simetrik anahtarla değiştirin
+Go to the Linux computer, and replace the scope ID and registration ID with the device ID and symmetric key.
 
-**ESC** tuşuna basın ve şunu yazın **: WQ!** ve yaptığınız değişiklikleri kaydetmek için **ENTER** tuşuna basın
+Press Esc, and type **:wq!** . Press Enter to save your changes.
 
-Değişikliklerinizi işlemek için Azure IoT Edge yeniden başlatın ve **ENTER** 'a basın
+Restart IoT Edge to process your changes, and press Enter.
 
-![Cihaz bağlantısı](./media/tutorial-add-edge-as-leaf-device/cfrestart.png)
+![Screenshot of console](./media/tutorial-add-edge-as-leaf-device/cfrestart.png)
 
-Tür: **ıotedge listesi**, birkaç dakika sürer ve dağıtılan üç modül görüntülenir
+Type **iotedge list**. After a few minutes, you'll see three modules deployed.
 
-![Cihaz bağlantısı](./media/tutorial-add-edge-as-leaf-device/cfconsolemodulelist.png)
+![Screenshot of console](./media/tutorial-add-edge-as-leaf-device/cfconsolemodulelist.png)
 
 
-## <a name="iot-central-device-explorer"></a>Cihaz Gezgini IoT Central 
+## <a name="iot-central-device-explorer"></a>IoT Central device explorer 
 
-IoT Central cihazınız, sağlanan duruma geçer
+In IoT Central, your device moves into provisioned state.
 
-![Cihaz bağlantısı](./media/tutorial-add-edge-as-leaf-device/cfprovisioned.png)
+![Screenshot of IoT Central Devices options, with Device status highlighted](./media/tutorial-add-edge-as-leaf-device/cfprovisioned.png)
 
-Modüller sekmesi IoT Central üzerindeki cihaz ve modülün durumunu gösterir 
+The **Modules** tab shows the status of the device and module on IoT Central. 
 
-![Cihaz bağlantısı](./media/tutorial-add-edge-as-leaf-device/cfiotcmodulestatus.png)
+![Screenshot of IoT Central Modules tab](./media/tutorial-add-edge-as-leaf-device/cfiotcmodulestatus.png)
 
 
-Bulut özellikleri bir formda görünür (önceki adımlarda oluşturduğunuz cihaz şablonundan). Değerleri girin ve **Kaydet**' e tıklayın. 
+You'll see cloud properties in a form, from the device template you created in the previous steps. Enter values, and select **Save**. 
 
-![Cihaz bağlantısı](./media/tutorial-add-edge-as-leaf-device/deviceinfo.png)
+![Screenshot of My Linux Edge Device form](./media/tutorial-add-edge-as-leaf-device/deviceinfo.png)
 
-Pano kutucuğu
+Here's a view presented in the form of a dashboard tile.
 
-![Cihaz bağlantısı](./media/tutorial-add-edge-as-leaf-device/dashboard.png)
-
-Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
-
-* Yeni bir Azure IoT Edge cihaz ekleme
-* SAS anahtarı kullanarak sağlamaya yardımcı olmak için Azure IoT Edge cihazı yapılandırma
-* IoT Central panoları, modül durumunu görüntüleme
-* Azure IoT Edge cihazda çalışan bir modüle Komut gönder
-* Azure IoT Edge cihazda çalışan bir modülün özelliklerini ayarlama
+![Screenshot of My Linux Edge Device dashboard tiles](./media/tutorial-add-edge-as-leaf-device/dashboard.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık IoT Central Azure IoT Edge cihazları yönetme ile nasıl çalışabileceğinizi öğrendiğinize göre, aşağıda önerilen sonraki adım verilmiştir:
+Now that you've learned how to work with and manage IoT Edge devices in IoT Central, here's the suggested next step:
 
 <!-- Next how-tos in the sequence -->
 
-Saydam bir ağ geçidi yapılandırma, bu öğreticiyi izleyin
-
 > [!div class="nextstepaction"]
-> [Saydam ağ geçidini yapılandırma](../../iot-edge/how-to-create-transparent-gateway.md)
+> [Configure transparent gateway](../../iot-edge/how-to-create-transparent-gateway.md)

@@ -1,65 +1,59 @@
 ---
-title: Blok zinciri uygulama sürümü oluşturma-Azure blok zinciri çalışma ekranı
-description: Azure blok zinciri çalışma ekranı önizlemesinde uygulama sürümlerini kullanma.
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
+title: Blockchain app versioning - Azure Blockchain Workbench
+description: How to use application versions in Azure Blockchain Workbench Preview.
 ms.date: 11/20/2019
 ms.topic: article
-ms.service: azure-blockchain
 ms.reviewer: brendal
-manager: femila
-ms.openlocfilehash: 35d9be219d1473ac56ca501f80fca96a265e814f
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
-ms.translationtype: HT
+ms.openlocfilehash: 45219790cf0cd064e0fcd456e262b2f93aa03ac9
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74284842"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74323904"
 ---
-# <a name="azure-blockchain-workbench-preview-application-versioning"></a>Azure blok zinciri çalışma ekranı önizleme uygulaması sürümü oluşturma
+# <a name="azure-blockchain-workbench-preview-application-versioning"></a>Azure Blockchain Workbench Preview application versioning
 
-Azure blok zinciri çalışma ekranı önizleme uygulamasının birden çok sürümünü oluşturup kullanabilirsiniz. Aynı uygulamanın birden fazla sürümü karşıya yüklenirse, bir sürüm geçmişi kullanılabilir ve kullanıcılar hangi sürümü kullanmak istediğinizi seçebilir.
+You can create and use multiple versions of an Azure Blockchain Workbench Preview app. If multiple versions of the same application are uploaded, a version history is available and users can choose which version they want to use.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Blok zinciri çalışma ekranı dağıtımı. Daha fazla bilgi için bkz. dağıtım ayrıntıları için [Azure blok zinciri çalışma ekranı dağıtımı](deploy.md)
-* Blok zinciri çalışma ekranı 'nda dağıtılan bir blok zinciri uygulaması. Bkz. [Azure blok zinciri üzerinde blok zinciri uygulaması oluşturma çalışma ekranı](create-app.md)
+* A Blockchain Workbench deployment. For more information, see [Azure Blockchain Workbench deployment](deploy.md) for details on deployment
+* A deployed blockchain application in Blockchain Workbench. See [Create a blockchain application in Azure Blockchain Workbench](create-app.md)
 
-## <a name="add-an-app-version"></a>Uygulama sürümü Ekle
+## <a name="add-an-app-version"></a>Add an app version
 
-Yeni bir sürüm eklemek için yeni yapılandırmayı ve akıllı sözleşme dosyalarını blok zinciri çalışma ekranına yükleyin.
+To add a new version, upload the new configuration and smart contract files to Blockchain Workbench.
 
-1. Bir Web tarayıcısında, blok zinciri çalışma ekranı web adresine gidin. Örneğin `https://{workbench URL}.azurewebsites.net/`, blok zinciri çalışma ekranı web adresini bulma hakkında bilgi Için, bkz. [blok zinciri Web URL 'si](deploy.md#blockchain-workbench-web-url)
-2. [Blok zinciri çalışma ekranı Yöneticisi](manage-users.md#manage-blockchain-workbench-administrators)olarak oturum açın.
-3. Başka bir sürümle güncelleştirmek istediğiniz blok zinciri uygulamasını seçin.
-4. **Sürüm Ekle**' yi seçin. **Sürüm Ekle** bölmesi görüntülenir.
-5. Karşıya yüklenecek yeni sürüm sözleşmesi yapılandırması ve sözleşme kodu dosyalarını seçin. Yapılandırma dosyası otomatik olarak onaylanır. Uygulamayı dağıtmadan önce tüm doğrulama hatalarını düzeltin.
-6. Yeni blok zinciri uygulama sürümünü eklemek için **Sürüm Ekle** ' yi seçin.
+1. In a web browser, navigate to the Blockchain Workbench web address. For example, `https://{workbench URL}.azurewebsites.net/` For information on how to find your Blockchain Workbench web address, see [Blockchain Workbench Web URL](deploy.md#blockchain-workbench-web-url)
+2. Sign in as a [Blockchain Workbench administrator](manage-users.md#manage-blockchain-workbench-administrators).
+3. Select the blockchain application you want to update with another version.
+4. Select **Add version**. The **Add version** pane is displayed.
+5. Choose the new version contract configuration and contract code files to upload. The configuration file is automatically validated. Fix any validation errors before you deploy the application.
+6. Select **Add version** to add the new blockchain application version.
 
     ![Yeni bir sürüm ekleme](media/version-app/add-version.png)
 
-Blok zinciri uygulamasının dağıtılması birkaç dakika sürebilir. Dağıtım tamamlandığında, uygulama sayfasını yenileyin. Uygulamayı seçme ve **Sürüm geçmişi** düğmesini seçme, uygulamanın sürüm geçmişini görüntüler.
+Deployment of the blockchain application can take a few minutes. When deployment is finished, refresh the application page. Choosing the application and selecting the **Version history** button, displays the version history of the application.
 
 > [!IMPORTANT]
-> Uygulamanın önceki sürümleri devre dışı bırakıldı. Eski sürümleri tek tek yeniden etkinleştirebilirsiniz.
+> Previous versions of the application are disabled. You can individually re-enable past versions.
 >
-> Yeni sürümdeki uygulama rollerinde değişiklik yapılırsa, uygulamayı uygulama rollerine yeniden eklemeniz gerekebilir.
+> You may need to re-add members to application roles if changes were made to the application roles in the new version.
 
-## <a name="using-app-versions"></a>Uygulama sürümlerini kullanma
+## <a name="using-app-versions"></a>Using app versions
 
-Varsayılan olarak, uygulamanın en son etkin sürümü blok zinciri çalışma ekranı 'nda kullanılır. Uygulamanın önceki bir sürümünü kullanmak istiyorsanız, önce uygulama sayfasından sürümü seçmeniz gerekir.
+By default, the latest enabled version of the application is used in Blockchain Workbench. If you want to use a previous version of an application, you need to choose the version from the application page first.
 
-1. Blok zinciri çalışma ekranı uygulaması bölümünde, kullanmak istediğiniz sözleşmeyi içeren uygulama onay kutusunu seçin. Önceki sürümler etkinleştirilmişse, sürüm geçmişi düğmesi kullanılabilir.
-2. **Sürüm geçmişi** düğmesini seçin.
-3. Sürüm Geçmişi bölmesinde, *değiştirilen tarih* sütunundaki bağlantıyı seçerek uygulamanın sürümünü seçin.
+1. In Blockchain Workbench application section, select the application checkbox that contains the contract you want to use. If previous versions are enabled, the version history button is available.
+2. Select the **Version history** button.
+3. In the version history pane, choose the version of the application by selecting the link in the *Date modified* column.
 
-    ![Önceki bir sürümü seçin](media/version-app/use-version.png)
+    ![Choose a previous version](media/version-app/use-version.png)
 
-    Yeni sözleşmeler oluşturabilir veya önceki sürüm sözleşmeleri üzerinde işlem yapabilirsiniz. Uygulamanın sürümü uygulama adının ardından görüntülenir ve eski sürüm hakkında bir uyarı görüntülenir.
+    You can create new contracts or take actions on previous version contracts. The version of the application is displayed following the application name and a warning is displayed about the older version.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure blok zinciri ve sorun giderme](troubleshooting.md)
+* [Azure Blockchain Workbench troubleshooting](troubleshooting.md)

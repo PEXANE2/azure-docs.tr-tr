@@ -1,92 +1,86 @@
 ---
-title: Azure blok zinciri çalışma ekranı yapılandırma başvurusu
-description: Azure blok zinciri çalışma ekranı önizleme uygulama yapılandırmasına genel bakış.
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
+title: Azure Blockchain Workbench configuration metadata reference
+description: Azure Blockchain Workbench Preview application configuration metadata overview.
 ms.date: 09/05/2019
 ms.topic: article
-ms.service: azure-blockchain
 ms.reviewer: brendal
-manager: femila
-ms.openlocfilehash: 1c737106b47b95fcc6d1abdadc81398a3bc9256d
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 2ee1d1da1a9a5d8e890a6578eaec42cc6bf9f3ed
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845105"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326077"
 ---
-# <a name="azure-blockchain-workbench-configuration-reference"></a>Azure blok zinciri çalışma ekranı yapılandırma başvurusu
+# <a name="azure-blockchain-workbench-configuration-reference"></a>Azure Blockchain Workbench configuration reference
 
-Azure blok zinciri çalışma ekranı uygulamaları, yapılandırma meta verileri ve akıllı sözleşme kodu tarafından tanımlanan çok taraflı iş akışlarıdır. Yapılandırma meta verileri, blok zinciri uygulamasının üst düzey iş akışlarını ve etkileşim modelini tanımlar. Akıllı sözleşmeler, blok zinciri uygulamasının iş mantığını tanımlar. Çalışma ekranı, blok zinciri uygulaması kullanıcı deneyimleri oluşturmak için yapılandırma ve akıllı sözleşme kodunu kullanır.
+Azure Blockchain Workbench applications are multi-party workflows defined by configuration metadata and smart contract code. Configuration metadata defines the high-level workflows and interaction model of the blockchain application. Smart contracts define the business logic of the blockchain application. Workbench uses configuration and smart contract code to generate blockchain application user experiences.
 
-Yapılandırma meta verileri her blok zinciri uygulaması için aşağıdaki bilgileri belirtir:
+Configuration metadata specifies the following information for each blockchain application:
 
-* Blok zinciri uygulamasının adı ve açıklaması
-* Blok zinciri uygulamasına davranabilir veya katılabilen kullanıcılar için benzersiz roller
-* Bir veya daha fazla iş akışı. Her iş akışı, iş mantığının akışını denetlemek için bir durum makinesi işlevi görür. İş akışları birbirleriyle bağımsızdır veya birbirleriyle etkileşim kurabilir.
+* Name and description of the blockchain application
+* Unique roles for users who can act or participate within the blockchain application
+* One or more workflows. Each workflow acts as a state machine to control the flow of the business logic. Workflows can be independent or interact with one another.
 
-Tanımlı her iş akışı şunları belirtir:
+Each defined workflow specifies the following:
 
-* İş akışının adı ve açıklaması
-* İş akışının durumları.  Her durum iş mantığının denetim akışındaki bir aşamadır. 
-* Sonraki duruma geçiş eylemleri
-* Her eylemi başlatmalarına izin verilen kullanıcı rolleri
-* Kod dosyalarında iş mantığını temsil eden akıllı sözleşmeler
+* Name and description of the workflow
+* States of the workflow.  Each state is a stage in the business logic's control flow. 
+* Actions to transition to the next state
+* User roles permitted to initiate each action
+* Smart contracts that represent business logic in code files
 
 ## <a name="application"></a>Uygulama
 
-Bir blok zinciri uygulaması, yapılandırma meta verilerini, iş akışlarını ve uygulama içinde davranabilir veya katılabilen kullanıcı rollerini içerir.
+A blockchain application contains configuration metadata, workflows, and user roles who can act or participate within the application.
 
-| Alan | Description | Gerekli |
+| Alan | Açıklama | Gereklidir |
 |-------|-------------|:--------:|
-| ApplicationName | Benzersiz uygulama adı. İlgili akıllı sözleşmenin geçerli sözleşme sınıfı için aynı **ApplicationName** kullanması gerekir.  | Evet |
-| DisplayName | Uygulamanın kolay görünen adı. | Evet |
-| Description | Uygulamanın açıklaması. | Hayır |
-| applicationRoles | [ApplicationRoles](#application-roles)koleksiyonu. Uygulama içinde davranabilir veya katılabilen kullanıcı rolleri.  | Evet |
-| Workflows | [Iş akışlarının](#workflows)toplanması. Her iş akışı, iş mantığının akışını denetlemek için bir durum makinesi işlevi görür. | Evet |
+| ApplicationName | Unique application name. The corresponding smart contract must use the same **ApplicationName** for the applicable contract class.  | Yes |
+| DisplayName | Friendly display name of the application. | Yes |
+| Açıklama | Description of the application. | Hayır |
+| ApplicationRoles | Collection of [ApplicationRoles](#application-roles). User roles who can act or participate within the application.  | Yes |
+| İş akışları | Collection of  [Workflows](#workflows). Each workflow acts as a state machine to control the flow of the business logic. | Yes |
 
-Bir örnek için bkz. [yapılandırma dosyası örneği](#configuration-file-example).
+For an example, see [configuration file example](#configuration-file-example).
 
-## <a name="workflows"></a>Workflows
+## <a name="workflows"></a>İş akışları
 
-Bir uygulamanın iş mantığı, bir eylem gerçekleşmeden bir durum makinesi olarak modellenebilir ve iş mantığının akışının bir durumdan diğerine taşınmasına neden olur. Bir iş akışı, bu tür durumlar ve eylemlerin bir koleksiyonudur. Her iş akışı, kod dosyalarındaki iş mantığını temsil eden bir veya daha fazla akıllı sözleşmeden oluşur. Yürütülebilir bir sözleşme, bir iş akışının örneğidir.
+An application's business logic may be modeled as a state machine where taking an action causes the flow of the business logic to move from one state to another. A workflow is a collection of such states and actions. Each workflow consists of one or more smart contracts, which represent the business logic in code files. An executable contract is an instance of a workflow.
 
-| Alan | Description | Gerekli | En fazla uzunluk |
+| Alan | Açıklama | Gereklidir | Max length |
 |-------|-------------|:--------:|-----------:|
-| Name | Benzersiz iş akışı adı. İlgili akıllı sözleşmenin ilgili sözleşme sınıfı için aynı **adı** kullanması gerekir. | Evet | 50 |
-| DisplayName | İş akışının kolay görünen adı. | Evet | 255 |
-| Description | İş akışının açıklaması. | Hayır | 255 |
-| Initiators | [ApplicationRoles](#application-roles)koleksiyonu. İş akışında sözleşme oluşturma yetkisine sahip kullanıcılara atanan roller. | Evet | |
-| StartState | İş akışının ilk durumunun adı. | Evet | |
-| Properties | [Tanımlayıcılar](#identifiers)koleksiyonu. Bir kullanıcı deneyimi aracında, zincir dışı veya görselleştirilmemiş verileri temsil eder. | Evet | |
-| Constructor | İş akışının bir örneğini oluşturmak için giriş parametrelerini tanımlar. | Evet | |
-| Functions | İş akışında yürütülebilecek [işlevlerin](#functions) bir koleksiyonu. | Evet | |
-| States | İş akışı [durumları](#states)koleksiyonu. | Evet | |
+| Adı | Unique workflow name. The corresponding smart contract must use the same **Name** for the applicable contract class. | Yes | 50 |
+| DisplayName | Friendly display name of the workflow. | Yes | 255 |
+| Açıklama | Description of the workflow. | Hayır | 255 |
+| Initiators | Collection of [ApplicationRoles](#application-roles). Roles that are assigned to users who are authorized to create contracts in the workflow. | Yes | |
+| StartState | Name of the initial state of the workflow. | Yes | |
+| Özellikler | Collection of [identifiers](#identifiers). Represents data that can be read off-chain or visualized in a user experience tool. | Yes | |
+| Constructor | Defines input parameters for creating an instance of the workflow. | Yes | |
+| İşlevler | A collection of [functions](#functions) that can be executed in the workflow. | Yes | |
+| Durumlar | A collection of workflow [states](#states). | Yes | |
 
-Bir örnek için bkz. [yapılandırma dosyası örneği](#configuration-file-example).
+For an example, see [configuration file example](#configuration-file-example).
 
-## <a name="type"></a>Type
+## <a name="type"></a>Tür
 
-Desteklenen veri türleri.
+Supported data types.
 
-| Type | Description |
+| Tür | Açıklama |
 |-------|-------------|
-| address  | *Sözleşmeler* veya *Kullanıcılar*gibi blok zinciri adres türü. |
-| array    | Tamsayı, bool, para veya saat türünde tek düzeyli dizi. Diziler statik veya dinamik olabilir. Dizide bulunan öğelerin veri türünü belirtmek için **ElementType** kullanın. Bkz. [örnek yapılandırma](#example-configuration-of-type-array). |
-| bool     | Boole veri türü. |
-| contract | Sözleşme türü adresi. |
-| enum     | Adlandırılmış değerler kümesi numaralandırılıyor. Sabit listesi türünü kullanırken, EnumValues listesini de belirtirsiniz. Her değer 255 karakterle sınırlıdır. Geçerli değer karakterleri, büyük ve küçük harfler (A-Z, A-z) ve sayılar (0-9) içerir. Bkz. [Solidity 'de örnek yapılandırma ve kullanım](#example-configuration-of-type-enum). |
-| int      | Tamsayı veri türü. |
-| money    | Para veri türü. |
-| state    | İş akışı durumu. |
-| dize  | Dize veri türü. maksimum 4000 karakter. Bkz. [örnek yapılandırma](#example-configuration-of-type-string). |
-| user     | Kullanıcı türü adresi. |
-| time     | Saat veri türü. |
-|`[ Application Role Name ]`| Uygulama rolünde belirtilen ad. Kullanıcıları bu rol türünde olacak şekilde sınırlandırır. |
+| address  | Blockchain address type, such as *contracts* or *users*. |
+| array    | Single level array of type integer, bool, money, or time. Arrays can be static or dynamic. Use **ElementType** to specify the datatype of the elements within the array. See [example configuration](#example-configuration-of-type-array). |
+| bool     | Boolean data type. |
+| contract | Address of type contract. |
+| enum     | Enumerated set of named values. When using the enum type, you also specify a list of EnumValues. Each value is limited to 255 characters. Valid value characters include upper and lower case letters (A-Z, a-z) and numbers (0-9). See [example configuration and use in Solidity](#example-configuration-of-type-enum). |
+| int      | Integer data type. |
+| money    | Money data type. |
+| durum    | Workflow state. |
+| string  | String data type. 4000 character maximum. See [example configuration](#example-configuration-of-type-string). |
+| user     | Address of type user. |
+| time     | Time data type. |
+|`[ Application Role Name ]`| Any name specified in application role. Limits users to be of that role type. |
 
-### <a name="example-configuration-of-type-array"></a>Dizi türünde örnek yapılandırma
+### <a name="example-configuration-of-type-array"></a>Example configuration of type array
 
 ```json
 {
@@ -102,9 +96,9 @@ Desteklenen veri türleri.
 }
 ```
 
-#### <a name="using-a-property-of-type-array"></a>Dizi türünde bir özelliği kullanma
+#### <a name="using-a-property-of-type-array"></a>Using a property of type array
 
-Yapılandırmada tür dizisi olarak bir özellik tanımlarsanız, Solidity içinde dizi türünün public özelliğini döndürmek için bir açık get işlevi eklemeniz gerekir. Örneğin:
+If you define a property as type array in configuration, you need to include an explicit get function to return the public property of the array type in Solidity. Örnek:
 
 ```
 function GetQuotes() public constant returns (int[]) {
@@ -112,7 +106,7 @@ function GetQuotes() public constant returns (int[]) {
 }
 ```
 
-### <a name="example-configuration-of-type-string"></a>Tür dizesinin örnek yapılandırması
+### <a name="example-configuration-of-type-string"></a>Example configuration of type string
 
 ``` json
 {
@@ -125,7 +119,7 @@ function GetQuotes() public constant returns (int[]) {
 }
 ```
 
-### <a name="example-configuration-of-type-enum"></a>Enum türünde örnek yapılandırma
+### <a name="example-configuration-of-type-enum"></a>Example configuration of type enum
 
 ``` json
 {
@@ -139,23 +133,23 @@ function GetQuotes() public constant returns (int[]) {
 }
 ```
 
-#### <a name="using-enumeration-type-in-solidity"></a>Solidity içinde numaralandırma türü kullanma
+#### <a name="using-enumeration-type-in-solidity"></a>Using enumeration type in Solidity
 
-Yapılandırmada bir numaralandırma tanımlandıktan sonra, Solidity içinde numaralandırma türlerini kullanabilirsiniz. Örneğin, PropertyTypeEnum adlı bir sabit listesi tanımlayabilirsiniz.
+Once an enum is defined in configuration, you can use enumeration types in Solidity. For example, you can define an enum called PropertyTypeEnum.
 
 ```
 enum PropertyTypeEnum {House, Townhouse, Condo, Land} PropertyTypeEnum public PropertyType; 
 ```
 
-Dizelerin listesi, yapılandırma ve akıllı sözleşme arasında geçerli ve tutarlı bildirimler ile blok zinciri çalışma ekranı arasında eşleşmesi gerekir.
+The list of strings needs to match between the configuration and smart contract to be valid and consistent declarations in Blockchain Workbench.
 
-Atama örneği:
+Assignment example:
 
 ```
 PropertyType = PropertyTypeEnum.Townhouse;
 ```
 
-İşlev parametresi örneği: 
+Function parameter example: 
 
 ``` 
 function AssetTransfer(string description, uint256 price, PropertyTypeEnum propertyType) public
@@ -172,13 +166,13 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 
 ## <a name="constructor"></a>Constructor
 
-Bir iş akışı örneği için giriş parametrelerini tanımlar.
+Defines input parameters for an instance of a workflow.
 
-| Alan | Description | Gerekli |
+| Alan | Açıklama | Gereklidir |
 |-------|-------------|:--------:|
-| Parametreler | Akıllı sözleşme başlatmak için gereken [tanımlayıcıların](#identifiers) toplanması. | Evet |
+| Parametreler | Collection of [identifiers](#identifiers) required to initiate a smart contract. | Yes |
 
-### <a name="constructor-example"></a>Oluşturucu örneği
+### <a name="constructor-example"></a>Constructor example
 
 ``` json
 {
@@ -203,18 +197,18 @@ Bir iş akışı örneği için giriş parametrelerini tanımlar.
 }
 ```
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>İşlevler
 
-İş akışında yürütülebilecek işlevleri tanımlar.
+Defines functions that can be executed on the workflow.
 
-| Alan | Description | Gerekli | En fazla uzunluk |
+| Alan | Açıklama | Gereklidir | Max length |
 |-------|-------------|:--------:|-----------:|
-| Name | İşlevin benzersiz adı. İlgili akıllı sözleşmenin, uygulanabilir işlev için aynı **adı** kullanması gerekir. | Evet | 50 |
-| DisplayName | İşlevin kolay görünen adı. | Evet | 255 |
-| Description | İşlevin açıklaması | Hayır | 255 |
-| Parametreler | İşlevin parametrelerine karşılık gelen [tanımlayıcıların](#identifiers) koleksiyonu. | Evet | |
+| Adı | The unique name of the function. The corresponding smart contract must use the same **Name** for the applicable function. | Yes | 50 |
+| DisplayName | Friendly display name of the function. | Yes | 255 |
+| Açıklama | Description of the function | Hayır | 255 |
+| Parametreler | Collection of [identifiers](#identifiers) corresponding to the parameters of the function. | Yes | |
 
-### <a name="functions-example"></a>İşlevler örneği
+### <a name="functions-example"></a>Functions example
 
 ``` json
 "Functions": [
@@ -251,20 +245,20 @@ Bir iş akışı örneği için giriş parametrelerini tanımlar.
 
 ```
 
-## <a name="states"></a>States
+## <a name="states"></a>Durumlar
 
-Bir iş akışı içindeki benzersiz durumlar koleksiyonu. Her durum iş mantığının Denetim akışında bir adım yakalar. 
+A collection of unique states within a workflow. Each state captures a step in the business logic's control flow. 
 
-| Alan | Description | Gerekli | En fazla uzunluk |
+| Alan | Açıklama | Gereklidir | Max length |
 |-------|-------------|:--------:|-----------:|
-| Name | Durumun benzersiz adı. İlgili akıllı sözleşmenin geçerli durum için aynı **adı** kullanması gerekir. | Evet | 50 |
-| DisplayName | Durumun kolay görünen adı. | Evet | 255 |
-| Description | Durumun açıklaması. | Hayır | 255 |
-| Tamamlanmatamam | İş mantığı denetim akışındaki ilerlemeyi göstermek için blok zinciri çalışma ekranı Kullanıcı arabiriminde görünen bir tamsayı değeri. | Evet | |
-| Stil | Durumun başarı veya başarısızlık durumunu temsil edip etmediğini belirten görsel ipucu. İki geçerli değer vardır: `Success` veya. `Failure` | Evet | |
-| Lere | Geçerli durumdan sonraki durum kümesine kullanılabilir [geçişlerin](#transitions) toplanması. | Hayır | |
+| Adı | Unique name of the state. The corresponding smart contract must use the same **Name** for the applicable state. | Yes | 50 |
+| DisplayName | Friendly display name of the state. | Yes | 255 |
+| Açıklama | Description of the state. | Hayır | 255 |
+| PercentComplete | An integer value displayed in the Blockchain Workbench user interface to show the progress within the business logic control flow. | Yes | |
+| Style | Visual hint indicating whether the state represents a success or failure state. There are two valid values: `Success` or `Failure`. | Yes | |
+| Transitions | Collection of available [transitions](#transitions) from the current state to the next set of states. | Hayır | |
 
-### <a name="states-example"></a>Durumlar örneği
+### <a name="states-example"></a>States example
 
 ``` json
 "States": [
@@ -320,20 +314,20 @@ Bir iş akışı içindeki benzersiz durumlar koleksiyonu. Her durum iş mantı�
   ]
 ```
 
-## <a name="transitions"></a>Lere
+## <a name="transitions"></a>Transitions
 
-Sonraki duruma yönelik kullanılabilir eylemler. Bir veya daha fazla kullanıcı rolü her durumda bir eylem gerçekleştirebilir, burada bir eylem iş akışındaki bir durumu başka bir duruma geçirebilir. 
+Available actions to the next state. One or more user roles may perform an action at each state, where an action may transition a state to another state in the workflow. 
 
-| Alan | Description | Gerekli |
+| Alan | Açıklama | Gereklidir |
 |-------|-------------|:--------:|
-| AllowedRoles | Geçişi başlatmalarına izin verilen uygulama rollerinin listesi. Belirtilen rolün tüm kullanıcıları eylemi gerçekleştirebilir. | Hayır |
-| Allowedınstanceroles | Geçişi başlatmalarına izin verilen akıllı sözleşmeye katılan veya belirtilen kullanıcı rollerinin listesi. Örnek rolleri iş akışlarının içindeki **özelliklerde** tanımlanmıştır. Allowedınstanceroles, akıllı bir sözleşmenin bir örneğine katılan bir kullanıcıyı temsil eder. Allowedınstanceroles, bir eylemi bir sözleşme örneğinde Kullanıcı rolüne göre kısıtlama olanağı sağlar.  Örneğin, rolü AllowedRoles ' de belirtmeniz durumunda, rolü (InstanceOwner) oluşturan kullanıcının rol türü (sahip) içindeki tüm kullanıcılar yerine sonlanmasına izin vermek isteyebilirsiniz. | Hayır |
-| DisplayName | Geçişin kolay görünen adı. | Evet |
-| Description | Geçişin açıklaması. | Hayır |
-| İşlev | Geçişi başlatacak işlevin adı. | Evet |
-| NextStates | Başarılı bir geçişten sonra olası bir sonraki durumlardan oluşan bir koleksiyon. | Evet |
+| AllowedRoles | List of applications roles allowed to initiate the transition. All users of the specified role may be able to perform the action. | Hayır |
+| AllowedInstanceRoles | List of user roles participating or specified in the smart contract allowed to initiate the transition. Instance roles are defined in **Properties** within workflows. AllowedInstanceRoles represent a user participating in an instance of a smart contract. AllowedInstanceRoles give you the ability to restrict taking an action to a user role in a contract instance.  For example, you may only want to allow the user who created the contract (InstanceOwner) to be able to terminate rather than all users in role type (Owner) if you specified the role in AllowedRoles. | Hayır |
+| DisplayName | Friendly display name of the transition. | Yes |
+| Açıklama | Description of the transition. | Hayır |
+| İşlev | The name of the function to initiate the transition. | Yes |
+| NextStates | A collection of potential next states after a successful transition. | Yes |
 
-### <a name="transitions-example"></a>Geçişler örneği
+### <a name="transitions-example"></a>Transitions example
 
 ``` json
 "Transitions": [
@@ -367,14 +361,14 @@ Sonraki duruma yönelik kullanılabilir eylemler. Bir veya daha fazla kullanıc�
 
 ## <a name="application-roles"></a>Uygulama rolleri
 
-Uygulama rolleri, uygulama içinde çalışmak veya katılmak isteyen kullanıcılara atanabilecek bir rol kümesi tanımlar. Uygulama rolleri, eylemleri kısıtlamak ve blok zinciri uygulaması ile ilgili iş akışları arasında katılım sağlamak için kullanılabilir. 
+Application roles define a set of roles that can be assigned to users who want to act or participate within the application. Application roles can be used to restrict actions and participation within the blockchain application and corresponding workflows. 
 
-| Alan | Description | Gerekli | En fazla uzunluk |
+| Alan | Açıklama | Gereklidir | Max length |
 |-------|-------------|:--------:|-----------:|
-| Name | Uygulama rolünün benzersiz adı. İlgili akıllı sözleşmenin ilgili rol için aynı **adı** kullanması gerekir. Temel tür adları ayrılmıştır. Aynı ada sahip bir uygulama rolünü [türle](#type) birlikte adı| Evet | 50 |
-| Description | Uygulama rolünün açıklaması. | Hayır | 255 |
+| Adı | The unique name of the application role. The corresponding smart contract must use the same **Name** for the applicable role. Base type names are reserved. You cannot name an application role with the same name as [Type](#type)| Yes | 50 |
+| Açıklama | Description of the application role. | Hayır | 255 |
 
-### <a name="application-roles-example"></a>Uygulama rolleri örneği
+### <a name="application-roles-example"></a>Application roles example
 
 ``` json
 "ApplicationRoles": [
@@ -388,17 +382,17 @@ Uygulama rolleri, uygulama içinde çalışmak veya katılmak isteyen kullanıc�
   }
 ]
 ```
-## <a name="identifiers"></a>Tanımlayıcılar
+## <a name="identifiers"></a>Identifiers
 
-Tanımlayıcılar, iş akışı özelliklerini, oluşturucuyu ve işlev parametrelerini anlatmak için kullanılan bir bilgi koleksiyonunu temsil eder. 
+Identifiers represent a collection of information used to describe workflow properties, constructor, and function parameters. 
 
-| Alan | Description | Gerekli | En fazla uzunluk |
+| Alan | Açıklama | Gereklidir | Max length |
 |-------|-------------|:--------:|-----------:|
-| Name | Özelliğin veya parametrenin benzersiz adı. İlgili akıllı sözleşmenin ilgili özellik veya parametre için aynı **adı** kullanması gerekir. | Evet | 50 |
-| DisplayName | Özellik veya parametre için kolay görünen ad. | Evet | 255 |
-| Description | Özelliğin veya parametrenin açıklaması. | Hayır | 255 |
+| Adı | The unique name of the property or parameter. The corresponding smart contract must use the same **Name** for the applicable property or parameter. | Yes | 50 |
+| DisplayName | Friendly display name for the property or parameter. | Yes | 255 |
+| Açıklama | Description of the property or parameter. | Hayır | 255 |
 
-### <a name="identifiers-example"></a>Tanımlayıcılar örneği
+### <a name="identifiers-example"></a>Identifiers example
 
 ``` json
 "Properties": [
@@ -421,13 +415,13 @@ Tanımlayıcılar, iş akışı özelliklerini, oluşturucuyu ve işlev parametr
 ]
 ```
 
-## <a name="configuration-file-example"></a>Yapılandırma dosyası örneği
+## <a name="configuration-file-example"></a>Configuration file example
 
-Varlık aktarımı, bir Inspector ve Appraiser gerektiren yüksek değerli varlıklar satın alıp satmaya yönelik bir akıllı sözleşme senaryosudur. Satıcılar bir varlık aktarımı akıllı sözleşmesi oluşturarak varlıklarını listeleyebilir. Alıcılar akıllı sözleşmede bir eylem gerçekleştirerek teklifleri gerçekleştirebilir ve diğer taraflar varlığı incelemek veya uygulamak için işlem gerçekleştirebilir. Varlık hem incelenen hem de apptetiklenir olarak işaretlendikten sonra, sözleşme tamamlanana kadar önce satıcı satışı yeniden onaylanır. İşlemdeki her bir noktada, tüm katılımcılar, güncelleştirildiği sırada sözleşmenin durumuna göre görünürlüğe sahiptir. 
+Asset transfer is a smart contract scenario for buying and selling high value assets, which require an inspector and appraiser. Sellers can list their assets by instantiating an asset transfer smart contract. Buyers can make offers by taking an action on the smart contract, and other parties can take actions to inspect or appraise the asset. Once the asset is marked both inspected and appraised, the buyer and seller will confirm the sale again before the contract is set to complete. At each point in the process, all participants have visibility into the state of the contract as it is updated. 
 
-Kod dosyaları dahil daha fazla bilgi için bkz. [Azure blok zinciri için varlık aktarım örneği çalışma ekranı](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer)
+For more information including the code files, see [asset transfer sample for Azure Blockchain Workbench](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer)
 
-Aşağıdaki yapılandırma dosyası varlık aktarım örneği içindir:
+The following configuration file is for the asset transfer sample:
 
 ``` json
 {

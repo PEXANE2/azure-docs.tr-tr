@@ -1,25 +1,25 @@
 ---
 title: Şablon başvurusunu kullanma
-description: Şifrelenmiş depolama hesabında dağıtmak için bir şablon oluşturmak için Azure Resource Manager şablon başvurusu kullanır.
+description: Utilize the Azure Resource Manager template reference to create a template for deploying an encrypted storage account.
 author: mumian
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 8957f661665811679c088de7ac4a4b026e9d28c7
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 99ec64529b90c7a80aea62090f80c55cf4e23510
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149360"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326490"
 ---
-# <a name="tutorial-utilize-the-azure-resource-manager-template-reference"></a>Öğretici: Azure Resource Manager şablon başvurusu kullanır.
+# <a name="tutorial-utilize-the-azure-resource-manager-template-reference"></a>Tutorial: Utilize the Azure Resource Manager template reference
 
 Şablon şema bilgilerini bulmayı ve bu bilgileri kullanarak Azure Resource Manager şablonu oluşturmayı öğrenin.
 
 Bu öğreticide Azure Hızlı Başlangıç şablonları arasından temel bir şablon kullanırsınız. Şablon başvuru belgelerini kullanarak şablonu özelleştirecek ve şifrelenmiş bir Depolama hesabı kullanmasını sağlayacaksınız.
 
-![Kaynak Yöneticisi Şablon başvurusu şifrelenmiş depolama hesabı dağıt](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-tutorial-deploy-encrypted-storage-account.png)
+![Resource Manager template reference deploy encrypted storage account](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-tutorial-deploy-encrypted-storage-account.png)
 
 Bu öğretici aşağıdaki görevleri kapsar:
 
@@ -30,13 +30,13 @@ Bu öğretici aşağıdaki görevleri kapsar:
 > * Şablonu düzenleme
 > * Şablonu dağıtma
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaleyi tamamlamak için gerekenler:
 
-* [Resource Manager Araçları uzantısı](https://code.visualstudio.com/) içeren [Visual Studio Code](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites).
+* Visual Studio Code with Resource Manager Tools extension. See [Use Visual Studio Code to create Azure Resource Manager templates](./resource-manager-tools-vs-code.md).
 
 ## <a name="open-a-quickstart-template"></a>Hızlı başlangıç şablonunu açma
 
@@ -49,7 +49,7 @@ Bu makaleyi tamamlamak için gerekenler:
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
     ```
 3. Dosyayı açmak için **Aç**’ı seçin.
-4. Dosyayı yerel bilgisayarınıza **azuredeploy.json** olarak kaydetmek için >Dosya**Farklı Kaydet**’i seçin.
+4. Dosyayı yerel bilgisayarınıza **azuredeploy.json** olarak kaydetmek için **Dosya**>**Farklı Kaydet**’i seçin.
 
 ## <a name="understand-the-schema"></a>Şemayı anlama
 
@@ -70,15 +70,15 @@ Bu makaleyi tamamlamak için gerekenler:
 
 ## <a name="find-the-template-reference"></a>Şablon başvurusunu bulma
 
-1. [Azure şablon başvurusuna](https://docs.microsoft.com/azure/templates/)gidin.
-2. **Başlığa göre filtrele** kutusuna **depolama hesapları**' nı girin.
-3. Aşağıdaki ekran görüntüsünde gösterildiği gibi **referans/şablon başvurusu/depolama/&lt;sürümü >/Storage hesaplarını** seçin:
+1. Browse to [Azure Template reference](https://docs.microsoft.com/azure/templates/).
+2. In the **Filter by title** box, enter **storage accounts**.
+3. Select **Reference/Template reference/Storage/&lt;Version>/Storage Accounts** as shown in the following screenshot:
 
     ![Resource Manager şablon başvurusu depolama hesabı](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-resources-reference-storage-accounts.png)
 
-    Seçmek için hangi sürümünü bilmiyorsanız, en son sürümünü kullanın.
+    If you don't know which version to choose, use the latest version.
 
-4. Şifrelemeyle ilgili tanım bilgilerini bulun.  
+4. Şifrelemeyle ilgili tanım bilgilerini bulun.
 
     ```json
     "encryption": {

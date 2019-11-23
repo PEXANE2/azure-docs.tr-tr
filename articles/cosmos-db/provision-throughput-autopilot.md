@@ -1,101 +1,112 @@
 ---
-title: Autopilot modunda Azure Cosmos kapsayıcıları ve veritabanları oluşturun.
-description: Avantajlar, kullanım durumları ve Autopilot modunda Azure Cosmos veritabanları ve kapsayıcıları sağlama hakkında bilgi edinin.
+title: Create Azure Cosmos containers and databases in autopilot mode.
+description: Learn about the benefits, use cases, and how to provision Azure Cosmos databases and containers in autopilot mode.
 author: kirillg
 ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 0e9f909aba11d35307e02a98a41ffa04e36e4db2
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 584fedc2ebe93b2a3cfd8a3b538a410d29aebe9d
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953116"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383099"
 ---
-# <a name="create-azure-cosmos-containers-and-databases-in-autopilot-mode-preview"></a>Autopilot modunda Azure Cosmos kapsayıcıları ve veritabanları oluşturma (Önizleme)
+# <a name="create-azure-cosmos-containers-and-databases-in-autopilot-mode-preview"></a>Create Azure Cosmos containers and databases in autopilot mode (Preview)
 
-Azure Cosmos DB, kapsayıcılarınızdaki iş üretimini el ile veya Autopilot modunda sağlamanıza olanak tanır. Bu makalede, Autopilot modunun avantajları ve kullanım durumları açıklanmaktadır.
+Azure Cosmos DB allows you to provision throughput on your containers in either manual or autopilot mode. This article describes the benefits and use cases of autopilot mode.
 
 > [!NOTE]
-> Autopilot modu şu anda genel önizlemede kullanılabilir. Azure Cosmos hesabınız için Autopilot özelliğini etkinleştirmek üzere, bu makalenin [Autopilot 'i etkinleştir](#enable-autopilot) bölümüne bakın. Yalnızca yeni veritabanları ve kapsayıcılar için Autopilot etkinleştirebilirsiniz; bu, mevcut kapsayıcılar ve veritabanları için kullanılamaz.
+> Autopilot mode is currently available in public preview. To enable autopilot feature for your Azure Cosmos account, see the [enable autopilot](#enable-autopilot) section of this article. You can enable autopilot for new databases and containers only,it's not available for existing containers and databases.
 
-Aktarım hızını el ile sağlamaya ek olarak, artık Autopilot modundaki Azure Cosmos kapsayıcıları ' nı yapılandırabilirsiniz. Autopilot modunda yapılandırılan Azure Cosmos kapsayıcıları ve veritabanları, **SLA 'lara ödün vermeden uygulama gereksinimlerinize göre sağlanan üretilen işi otomatik olarak ve anında ölçeklendirecektir.**
+In addition to manual provisioning of throughput, you can now configure Azure cosmos containers in autopilot mode. Azure Cosmos containers and databases configured in autopilot mode will **automatically and instantly scale the provisioned throughput based on your application needs without compromising the SLAs.**
 
-Artık sağlanan üretilen işi el ile yönetmeniz veya hız sınırlandırma sorunlarını ele almanız gerekmez. Autopilot modunda yapılandırılan Azure Cosmos kapsayıcıları, iş yükünün kullanılabilirliğini, gecikmesini, verimini veya küresel olarak performansını etkilemeden iş yüküne anında ölçeklendirilebilir. Yüksek kullanım altında, Autopilot modunda yapılandırılan Azure Cosmos kapsayıcıları, devam eden işlemleri etkilemeden ölçeği artırılabilecek veya azaltılabilir.
+You no longer need to manually manage the provisioned throughput or handle rate-limiting issues. Azure Cosmos containers configured in autopilot mode can be scaled instantly in response to the workload without any impacting the availability, latency, throughput, or performance of the workload globally. Under high utilization, Azure Cosmos containers configured in autopilot mode can be scaled up or down without impacting the ongoing operations.
 
-Autopilot modunda kapsayıcılar ve veritabanları yapılandırılırken, aşılmayacak `Tmax` en yüksek aktarım hızını belirtmeniz gerekir. Kapsayıcılar daha sonra `0.1*Tmax < T < Tmax` aralığında iş yükü ihtiyaçlarına göre anında ölçeklendirebilir. Diğer bir deyişle, kapsayıcılar ve veritabanları, yapılandırılan en yüksek aktarım hızı değerinin %10 ' u kadar ve yapılandırılan maksimum üretilen iş değerine kadar, iş yükü ihtiyaçlarına göre anında ölçeklenir. Autopilot veritabanı veya kapsayıcısındaki en fazla üretilen iş (Tmax) ayarını dilediğiniz zaman değiştirebilirsiniz. Autopilot seçeneğiyle, kapsayıcı veya veritabanı başına 400 RU/sn en düşük aktarım hızı artık geçerli değildir.
+When configuring containers and databases in autopilot mode, you need to specify the maximum throughput `Tmax`  not to be exceeded. Containers can then scale instantly based on the workload needs within the `0.1*Tmax < T < Tmax` range. In other words, containers and databases scale instantly based on the workload needs, from as low as 10% of the maximum throughput value that you have configured, and up to the configured maximum throughput value. You can change the maximum throughput (Tmax) setting on autopilot database or container at any point in time. With autopilot option, the 400 RU/s minimum throughput per container or database is no longer applicable.
 
-Autopilot önizlemesi sırasında, kapsayıcıda veya veritabanında bulunan belirtilen en yüksek aktarım hızı için sistem, hesaplanan depolama sınırı içinde çalışmasına izin verir. Depolama sınırı aşılırsa, en yüksek aktarım hızı otomatik olarak daha yüksek bir değere ayarlanır. Autopilot modu ile veritabanı düzeyinde aktarım hızı kullanılırken, bir veritabanı içinde izin verilen kapsayıcıların sayısı şu şekilde hesaplanır: (0,001 * en fazla aktarım hızı). Örneğin, 20.000 Autopilot RU/s temin ediyorsanız, veritabanında 20 kapsayıcı olabilir.
+During the preview of autopilot, for the specified maximum throughput on the container or the database, the system allows operating within the calculated storage limit. If the storage limit is exceeded, then the maximum throughput is automatically adjusted to a higher value. When using database level throughput with autopilot mode, the number of containers allowed within a database is calculated as: (0.001 * Max throughput ). For example, if you provision 20,000 autopilot RU/s, then the database can have 20 containers.
 
-## <a name="benefits-of-autopilot-mode"></a>Autopilot modunun avantajları
+## <a name="benefits-of-autopilot-mode"></a>Benefits of autopilot mode
 
-Autopilot modunda yapılandırılan Azure Cosmos kapsayıcıları aşağıdaki avantajlara sahiptir:
+Azure Cosmos containers that are configured in autopilot mode have the following benefits:
 
-* **Basit:** Autopilot modundaki kapsayıcılar, çeşitli kapsayıcılar için sağlanan üretilen işi (ru) ve kapasitesini el ile yönetme karmaşıklığını ortadan kaldırır.
+* **Simple:** Containers in autopilot mode remove the complexity to manage provisioned throughput (RUs) and capacity manually for various containers.
 
-* **Ölçeklenebilir:** Autopilot modundaki kapsayıcılar, sağlanan verimlilik kapasitesini gerektiği şekilde sorunsuz bir şekilde ölçeklendirin. İstemci bağlantıları, uygulamalar ve mevcut SLA 'Ları etkilemez.
+* **Scalable:** Containers in autopilot mode seamlessly scale the provisioned throughput capacity as needed. There is no disruption to client connections, applications and they don’t impact any existing SLAs.
 
-* Uygun **maliyetli:** Autopilot modunda yapılandırılmış Azure Cosmos kapsayıcıları kullandığınızda, yalnızca iş yüklerinizin saat başına ihtiyaç duyduğu kaynaklar için ödeme yaparsınız.
+* **Cost-effective:** When you use Azure Cosmos containers configured in autopilot mode, you only pay for the resources that your workloads need on a per-hour basis.
 
-* **Yüksek oranda kullanılabilir:** Autopilot modundaki Azure Cosmos kapsayıcıları, veri dayanıklılığı ve her zaman yüksek kullanılabilirlik sağlamak için aynı küresel olarak dağıtılmış, hataya dayanıklı, yüksek oranda kullanılabilir arka uca sahiptir.
+* **Highly available:** Azure Cosmos containers in autopilot mode use the same globally distributed, fault-tolerant, highly available backend to ensure data durability, and high availability always.
 
-## <a name="use-cases-of-autopilot-mode"></a>Autopilot modunun kullanım durumları
+## <a name="use-cases-of-autopilot-mode"></a>Use cases of autopilot mode
 
-Autopilot modunda yapılandırılan Azure Cosmos kapsayıcıları için kullanım örnekleri şunları içerir:
+The use cases for Azure Cosmos containers configured in autopilot mode include:
 
-* **Değişken iş yükleri:** En yüksek kullanımı 1 saat ile her gün birkaç saat arasında veya yılda birkaç kez kullanıldığında, hafif olarak kullanılan bir uygulama çalıştırırken. Örnek olarak insan kaynakları, bütçeleme ve operasyonel raporlama için uygulamalar sayılabilir. Bu tür senaryolar için Autopilot modunda yapılandırılan kapsayıcılar kullanılabilir, artık yoğun veya ortalama kapasite için el ile sağlamanız gerekmez.
+* **Variable workloads:** When you are running a lightly used application with peak usage of 1 hour to several hours few times each day, or several times per year. Examples include applications for human resources, budgeting, and operational reporting. For such scenarios, containers configured in autopilot mode can be used, you no longer need to manually provision for either peak or average capacity.
 
-* **Öngörülemeyen iş yükleri:** Gün boyunca veritabanı kullanımı olan iş yüklerini çalıştırırken, aynı zamanda tahmin edilmesi zor olan etkinlik de çok fazla olur. Örnek, hava durumu tahmini değiştiğinde etkinliğin ani bir durumunu gösteren bir trafik sitesi içerir. Autopilot modunda yapılandırılan kapsayıcılar, uygulamanın en yoğun yük ihtiyaçlarını karşılamak için kapasiteyi ayarlayın ve etkinliğin aşırı dönmesi üzerindeyken ölçeği yeniden azaltın.
+* **Unpredictable workloads:** When you are running workloads where there is database usage throughout the day, but also peaks of activity that are hard to predict. An example includes a traffic site that sees a surge of activity when weather forecast changes. Containers configured in autopilot mode adjust the capacity to meet the needs of the application's peak load and scale back down when the surge of activity is over.
 
-* **Yeni uygulamalar:** Yeni bir uygulama dağıtıyorsanız ve ne kadar sağlanan aktarım hızı (yani, ne kadar ru) gerektiği konusunda emin değilseniz. Autopilot modunda yapılandırılmış kapsayıcılar ile uygulamanızın kapasite ihtiyaçlarına ve gereksinimlerine otomatik olarak ölçeklendirebilirsiniz.
+* **New applications:** If you are deploying a new application and are unsure about how much provisioned throughput (i.e., how many RUs) you need. With containers configured in autopilot mode, you can automatically scale to the capacity needs and requirements of your application.
 
-* **Sık kullanılmayan uygulamalar:** Yalnızca birkaç saat için günde bir veya haftada bir veya ayda birkaç kez kullanılan bir uygulamanız varsa (düşük hacimli bir uygulama/web/blog sitesi gibi).
+* **Infrequently used applications:** If you have an application that is only used for a few hours several times per day or week or month, such as a low-volume application/web/blog site.
 
-* **Geliştirme ve test veritabanları:** Geliştiriciler iş saatlerinde Azure Cosmos hesaplarını kullanır, ancak bunları gece veya hafta sonları üzerinde gerektirmez. Autopilot modunda yapılandırılmış kapsayıcılar ile, kullanımda olmadığında en düşük olarak ölçeklenir.
+* **Development and test databases:** Developers use the Azure Cosmos accounts during work hours but don't need them on nights or weekends. With containers configured in autopilot mode, they scale down to minimum when not in use.
 
-* **Zamanlanan üretim iş yükleri/sorguları:** Tek bir kapsayıcıda bir dizi zamanlanmış istek/işlem/sorgu varsa ve mutlak düşük bir verimlilik üzerinde çalıştırmak istediğiniz boşta dönemler varsa, artık bu işlemi kolayca yapabilirsiniz. Zamanlanan bir sorgu/istek Autopilot modunda yapılandırılmış bir kapsayıcıya gönderildiğinde, otomatik olarak gerektiği kadar ölçeklendirecektir ve işlemi çalıştırır.
+* **Scheduled production workloads/queries:** When you have a series of scheduled requests/operations/queries on a single container, and if there are idle periods where you want to run at an absolute low throughput, you can now do that easily. When a scheduled query/request is submitted to a container configured in autopilot mode, it will automatically scale up as much as needed and run the operation.
 
-Önceki sorunlara yönelik çözümler uygulamada yalnızca çok büyük bir süre gerektirmez, ancak aynı zamanda yapılandırmada veya kodunuzda karmaşıklık sağlar ve genellikle el ile müdahale gerektirir. Autopilot modu, yukarıdaki senaryolara izin vermez, böylece artık bu sorunlar hakkında endişelenmenize gerek kalmaz.
+Solutions to the previous problems not only require an enormous amount of time in implementation, but they also introduce complexity in configuration or your code, and frequently require manual intervention to address them. The autopilot mode enables above scenarios out of the box, so that you do not need to worry about these problems anymore.
 
-## <a name="comparison--containers-configured-in-manual-mode-vs-autopilot-mode"></a>Karşılaştırma – manuel modda ve Autopilot modunda yapılandırılmış kapsayıcılar
+## <a name="comparison--containers-configured-in-manual-mode-vs-autopilot-mode"></a>Comparison – Containers configured in manual mode vs. autopilot mode
 
-|  | El ile modda yapılandırılmış kapsayıcılar  | Autopilot modunda yapılandırılmış kapsayıcılar |
+|  | Containers configured in manual mode  | Containers configured in autopilot mode |
 |---------|---------|---------|
-| **Sağlanan aktarım hızı** | El ile sağlanmış | Otomatik olarak ve anında iş yükü kullanım desenlerine göre ölçeklendirildi. |
-| **İsteklerin/işlemlerin hız sınırlaması (429)**  | Tüketim sağlanan kapasiteyi aşarsa meydana gelebilir. | Tüketilen verimlilik, Autopilot modu ile seçtiğiniz en fazla aktarım hızı içindeyse gerçekleşmeyecektir.   |
-| **Kapasite planlaması** |  Bir ilk kapasite planlaması ve ihtiyacınız olan aktarım hızını temin etmeniz gerekir. |    Kapasite planlaması konusunda endişelenmeniz gerekmez. Sistem, kapasite planlama ve kapasite yönetimini otomatik olarak gerçekleştirir. |
-| **Fiyatlandırma** | Saat başına el ile sağlanan RU/s. | Tek bir yazma bölgesi hesabında, saat başına Autopilot RU/s 'yi kullanarak saatlik olarak kullanılan aktarım hızı için ödeme yaparsınız. <br/><br/>Birden fazla yazma bölgesi olan hesaplar için Autopilot için ek ücret alınmaz. Saat başına aynı çok yöneticili RU/sn 'yi kullanarak saatlik olarak kullanılan aktarım hızı için ödeme yaparsınız. |
-| **İş yükü türleri için en uygun** |  Öngörülebilir ve kararlı iş yükleri|   Tahmin edilemeyen ve değişken iş yükleri  |
+| **Provisioned throughput** | Manually provisioned | Automatically and instantaneously scaled based on the workload usage patterns. |
+| **Rate-limiting of requests/operations (429)**  | May happen, if consumption exceeds provisioned capacity. | Will not happen if the throughput consumed is within the max throughput that you choose with autopilot mode.   |
+| **Kapasite planlaması** |  You have to do an initial capacity planning and provision of the throughput you need. |    You don’t have to worry about capacity planning. The system automatically takes care of capacity planning and capacity management. |
+| **Fiyatlandırma** | Manually provisioned RU/s per hour. | For single write region accounts, you pay for the throughput used on an hourly basis, by using the autopilot RU/s per hour rate. <br/><br/>For accounts with multiple write regions, there is no extra charge for autopilot. You pay for the throughput used on hourly basis using the same multi-master RU/s per hour rate. |
+| **Best suited for workload types** |  Predictable and stable workloads|   Unpredictable and variable workloads  |
 
-## <a name="a-idenable-autopilot-enable-autopilot-from-azure-portal"></a>Azure portal Autopilot <a id="enable-autopilot"> etkinleştir
+## <a id="enable-autopilot"></a> Enable autopilot from Azure portal
 
-Azure portal ' den ' i etkinleştirerek Azure Cosmos hesaplarınızda Autopilot deneyebilirsiniz. Autopilot seçeneğini etkinleştirmek için aşağıdaki adımları kullanın:
+You can try out autopilot in your Azure Cosmos accounts by enabling in from Azure portal. Use the following steps to enable the autopilot option:
 
-1. Azure portal oturum açın [.](https://portal.azure.com)
+1. Sign in to the [Azure portal.](https://portal.azure.com)
 
-2. Azure Cosmos hesabınıza gidin ve **yeni özellikler** sekmesini açın. aşağıdaki ekran görüntüsünde gösterildiği gibi **Auto Pilot** ve **register** ' ı seçin:
+2. Navigate to your Azure Cosmos account and open the **New Features** tab. Select **Auto Pilot** and **Register** as shown in the following screenshot:
 
-![Autopilot modunda kapsayıcı oluşturma](./media/provision-throughput-autopilot/enable-autopilot-azure-portal.png)
+![Create a container in autopilot mode](./media/provision-throughput-autopilot/enable-autopilot-azure-portal.png)
 
-## <a name="create-a-database-or-a-container-with-autopilot-mode"></a>Autopilot modu ile bir veritabanı veya kapsayıcı oluşturma
+## <a name="create-a-database-or-a-container-with-autopilot-mode"></a>Create a database or a container with autopilot mode
 
-Veritabanları veya kapsayıcılar oluşturma sırasında Autopilot yapılandırabilirsiniz. Aşağıdaki adımları yeni bir veritabanı veya kapsayıcıya kullanın, Autopilot etkinleştirin ve en yüksek aktarım hızını belirtin.
+You can configure autopilot for databases or containers while creating them. Use the following steps to a new database or container, enable autopilot, and specify the maximum throughput.
 
-1. [Azure Portal](https://portal.azure.com) veya [Azure Cosmos Gezgini](https://cosmos.azure.com/) ' nde oturum açın.
+1. Sign in to the [Azure portal](https://portal.azure.com) or the [Azure Cosmos explorer.](https://cosmos.azure.com/)
 
-1. Azure Cosmos hesabınıza gidin ve **Veri Gezgini** sekmesini açın.
+1. Navigate to your Azure Cosmos account and open the **Data Explorer** tab.
 
-1. **Yeni kapsayıcı**' yı seçin, bir bölüm anahtarı olan Kapsayıcınız için bir ad girin. **Autopilot** seçeneğini belirleyin ve Autopilot seçeneğini kullanırken kapsayıcının aşmadığı maksimum aktarım hızını seçin.
+1. Select **New Container**, enter a name for your container, a partition key. Select the **Autopilot** option, and choose the maximum throughput that the container cannot exceed when using the autopilot option.
 
-   ![Autopilot modunda kapsayıcı oluşturma](./media/provision-throughput-autopilot/create-container-autopilot-mode.png)
+   ![Create a container in autopilot mode](./media/provision-throughput-autopilot/create-container-autopilot-mode.png)
 
 1. **Tamam**’ı seçin
 
-Benzer adımlarla, Autopilot modunda sağlanan aktarım hızına sahip bir veritabanı da oluşturabilirsiniz.
+With similar steps, you can also create a database with provisioned throughput in autopilot mode.
+
+## <a id="autopilot-limits"></a> Throughput and storage limits for autopilot
+
+The following table shows the maximum throughout and storage limits for different options in autopilot mode:
+
+|Maximum throughput limit  |Maximum storage limit  |
+|---------|---------|
+|4000 RU/s  |   50 GB    |
+|20,000 RU/s  |  200 GB  |
+|100,000 RU/s    |  1 TB   |
+|500,000 RU/s    |  5 TB  |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Mantıksal bölümler](partition-data.md)hakkında daha fazla bilgi edinin.
-* [Azure Cosmos kapsayıcısında üretilen iş sağlama](how-to-provision-container-throughput.md)hakkında bilgi edinin.
-* [Azure Cosmos veritabanında üretilen iş sağlama](how-to-provision-database-throughput.md)hakkında bilgi edinin.
+* Learn more about [logical partitions](partition-data.md).
+* Learn how to [provision throughput on an Azure Cosmos container](how-to-provision-container-throughput.md).
+* Learn how to [provision throughput on an Azure Cosmos database](how-to-provision-database-throughput.md).

@@ -1,7 +1,7 @@
 ---
-title: "Hızlı Başlangıç: Bing Video arama için SDK'sı kullanarak video arayınC#"
+title: 'Quickstart: Search for videos using the SDK for C# - Bing Video Search'
 titleSuffix: Azure Cognitive Services
-description: Bing Video arama için SDK'sı kullanarak video arama istekleri göndermek için bu hızlı başlangıçta kullanmak C#.
+description: Use this quickstart to send video search requests using the Bing Video Search SDK for C#.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,25 +10,25 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 06/26/2019
 ms.author: aahi
-ms.openlocfilehash: 3673f18ff38b2ae98180f470b9f76f1fc57ee8b6
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: d29aef614b8308dfeba8da7925bd2880c25fe72d
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442529"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383751"
 ---
-# <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-c"></a>Hızlı Başlangıç: Bing Video arama için SDK ile video aramasıC#
+# <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-c"></a>Quickstart: Perform a video search with the Bing Video Search SDK for C#
 
-Bing Video arama için SDK'sı ile haberler için aramaya başlamak için bu hızlı başlangıçta kullanmak C#. Bing Video arama çoğu programlama dilleri ile uyumlu bir REST API olsa da SDK hizmeti uygulamalarınızla tümleştirmek için kolay bir yol sağlar. Bu örnek için kaynak kodu bulunabilir [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingVideoSearch) ilave ek açıklamaların ve özelliklerine sahip.
+Use this quickstart to begin searching for news with the Bing Video Search SDK for C#. While Bing Video Search has a REST API compatible with most programming languages, the SDK provides an easy way to integrate the service into your applications. The source code for this sample can be found on [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingVideoSearch) with additional annotations, and features.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Herhangi bir sürümünü [Visual Studio 2017 veya üstü](https://visualstudio.microsoft.com/downloads/).
-* Kullanılabilir Json.NET framework [bir NuGet paketi olarak](https://www.nuget.org/packages/Newtonsoft.Json/).
+* Any edition of [Visual Studio 2017 or later](https://visualstudio.microsoft.com/downloads/).
+* The Json.NET framework, available [as a NuGet package](https://www.nuget.org/packages/Newtonsoft.Json/).
 
-Bing Video arama SDK'sını projenize eklemek için seçin **NuGet paketlerini Yönet** gelen **Çözüm Gezgini** Visual Studio'da. `Microsoft.Azure.CognitiveServices.Search.VideoSearch` paketini ekleyin.
+To add the Bing Video Search SDK to your project, select **Manage NuGet Packages** from **Solution Explorer** in Visual Studio. `Microsoft.Azure.CognitiveServices.Search.VideoSearch` paketini ekleyin.
 
-Yükleme [[videoyu Search SDK'sı NuGet paketi]](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.VideoSearch/1.2.0) de aşağıdaki bağımlılıkları yükler:
+Installing the [[NuGet Video Search SDK package]](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.VideoSearch/1.2.0) also installs the following dependencies:
 
 * Microsoft.Rest.ClientRuntime
 * Microsoft.Rest.ClientRuntime.Azure
@@ -39,7 +39,7 @@ Yükleme [[videoyu Search SDK'sı NuGet paketi]](https://www.nuget.org/packages/
 
 ## <a name="create-and-initialize-a-project"></a>Proje oluşturma ve başlatma
 
-1. Yeni bir C# çözümünü Visual Studio'da konsol. Ardından ana kod dosyasına aşağıdakileri ekleyin.
+1. Create a new C# console solution in Visual Studio. Then add the following into the main code file.
 
     ```csharp
     using System;
@@ -49,21 +49,21 @@ Yükleme [[videoyu Search SDK'sı NuGet paketi]](https://www.nuget.org/packages/
     using Microsoft.Azure.CognitiveServices.Search.VideoSearch.Models;
     ```
 
-2. İstemci yeni bir örneğini `ApiKeyServiceClientCredentials` nesne abonelik anahtarınız ve yapılandırıcının çağrılmasıyla.
+2. Instantiate the client by creating a new `ApiKeyServiceClientCredentials` object with your subscription key, and calling the constructor.
 
     ```csharp
     var client = new VideoSearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
     ```
 
-## <a name="send-a-search-request-and-process-the-results"></a>Arama isteği göndermek ve sonuçları işlemek
+## <a name="send-a-search-request-and-process-the-results"></a>Send a search request and process the results
 
-1. İstemci, bir arama isteği göndermek üzere kullanın. "SwiftKey" için arama sorgusu kullanın.
+1. Use the client to send a search request. Use "SwiftKey" for the search query.
 
     ```csharp
     var videoResults = client.Videos.SearchAsync(query: "SwiftKey").Result;
     ```
 
-2. Hiçbir sonuç döndürülmedi, birinci ile alma `videoResults.Value[0]`. Ardından, videonun kimliği, başlık ve url yazdırın.
+2. If any results were returned, get the first one with `videoResults.Value[0]`. Then print the video's ID, title, and url.
 
     ```csharp
     if (videoResults.Value.Count > 0)
@@ -84,9 +84,9 @@ Yükleme [[videoyu Search SDK'sı NuGet paketi]](https://www.nuget.org/packages/
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Tek sayfalı bir web uygulaması oluşturma](../tutorial-bing-video-search-single-page-app.md)
+> [Create a single page web app](../tutorial-bing-video-search-single-page-app.md)
 
 ## <a name="see-also"></a>Ayrıca bkz. 
 
-* [Bing Video arama API'si nedir?](../overview.md)
+* [What is the Bing Video Search API?](../overview.md)
 * [Bilişsel Hizmetler .NET SDK örnekleri](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)

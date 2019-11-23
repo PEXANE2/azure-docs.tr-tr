@@ -1,51 +1,51 @@
 ---
-title: Azure Kubernetes hizmet kümesi kaynağı oluşturma
+title: Create an Azure Kubernetes Service cluster resource
 titleSuffix: Azure Cognitive Services
-description: Azure Kubernetes hizmeti (AKS) kaynağı oluşturmayı öğrenin.
+description: Learn how to create an Azure Kubernetes Service (AKS) resource.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 7/3/2019
+ms.date: 11/21/2019
 ms.author: dapine
-ms.openlocfilehash: 5e442f38a8e81170eeeac2f31f00a7d0eeb08d2b
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.openlocfilehash: 4e3102912e88ef904fed3e680f8cdd23242b1f17
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377388"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383498"
 ---
-## <a name="create-an-azure-kubernetes-service-cluster-resource"></a>Azure Kubernetes hizmet kümesi kaynağı oluşturma
+## <a name="create-an-azure-kubernetes-service-cluster-resource"></a>Create an Azure Kubernetes Service cluster resource
 
-1. [Azure Kubernetes hizmetine](https://ms.portal.azure.com/#create/microsoft.aks)gidin ve **Oluştur**' u seçin.
+1. Go to [Azure Kubernetes Service](https://ms.portal.azure.com/#create/microsoft.aks), and select **Create**.
 
-1. **Temel bilgiler** sekmesinde, aşağıdaki bilgileri girin:
-
-    |Ayar|Value|
-    |--|--|
-    |Subscription|Uygun bir abonelik seçin.|
-    |Resource group|Kullanılabilir bir kaynak grubu seçin.|
-    |Kubernetes küme adı|Bir ad girin (küçük harf).|
-    |Bölge|Yakın bir konum seçin.|
-    |Kubernetes sürümü|1.12.8 (varsayılan).|
-    |DNS adı ön eki|Otomatik olarak oluşturulur, ancak geçersiz kılabilirsiniz.|
-    |Düğüm boyutu|Standart DS2 v2:<br>`2 vCPUs`, `7 GB`|
-    |Düğüm sayısı|Kaydırıcıyı varsayılan değerde bırakın.|
-
-1. **Ölçek** sekmesinde **sanal düğümleri** ve **sanal makine ölçek kümelerini (Önizleme)** varsayılan değerlere ayarlayın.
-1. **Kimlik doğrulama** sekmesinde **hizmet sorumlusu** ' nı bırakın ve **RBAC** kümesini varsayılan değerlere etkinleştirin.
-1. **Ağ** sekmesinde, aşağıdaki seçimleri girin:
+1. On the **Basics** tab, enter the following information:
 
     |Ayar|Değer|
     |--|--|
-    |HTTP uygulama yönlendirmesi|Hayır|
-    |Ağ yapılandırması|Temel|
+    |Abonelik|Uygun bir abonelik seçin.|
+    |Kaynak grubu|Select an available resource group.|
+    |Kubernetes cluster name|Enter a name (lowercase).|
+    |Bölge|Select a nearby location.|
+    |Kubernetes version|Whatever value is marked as **(default)** .|
+    |DNS name prefix|Created automatically, but you can override.|
+    |Node size|Standard DS2 v2:<br>`2 vCPUs`, `7 GB`|
+    |Node count|Leave the slider at the default value.|
 
-1. **İzleme** sekmesinde, **kapsayıcı izlemeyi etkinleştir** ' in **Evet**olarak ayarlandığından emin olun ve **Log Analytics çalışma alanını** varsayılan değer olarak bırakın.
-1. **Etiketler** sekmesinde, ad/değer çiftlerini şimdilik boş bırakın.
-1. **Gözden geçir ve Oluştur '** u seçin.
-1. Doğrulama geçtikten sonra **Oluştur**' u seçin.
+1. On the **Scale** tab, leave **Virtual nodes** and **VM scale sets** set to their default values.
+1. On the **Authentication** tab, leave **Service principal** and **Enable RBAC** set to their default values.
+1. On the **Networking** tab, enter the following selections:
+
+    |Ayar|Değer|
+    |--|--|
+    |HTTP uygulaması yönlendirme|Hayır|
+    |Networking configuration|Temel|
+
+1. On the **Monitoring** tab, make sure that **Enable container monitoring** is set to **Yes**, and leave **Log Analytics workspace** as the default value.
+1. On the **Tags** tab, leave the name/value pairs blank for now.
+1. Select **Review and Create**.
+1. After validation passes, select **Create**.
 
 > [!NOTE]
-> Doğrulama başarısız olursa, bunun nedeni "hizmet sorumlusu" hatası olabilir. **Kimlik doğrulama** sekmesine dönün ve ardından doğrulama ' nın ardından Pass ve sonra geçmesi gereken **İnceleme + oluştur**' a geri dönün.
+> If validation fails, it might be because of a "Service principal" error. Go back to the **Authentication** tab and then go back to **Review + create**, where validation should run and then pass.

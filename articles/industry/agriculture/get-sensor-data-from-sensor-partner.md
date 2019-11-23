@@ -1,61 +1,61 @@
 ---
-title: İş ortaklarından algılayıcı verileri al
-description: İş ortaklarından algılayıcı verilerinin nasıl alınacağını açıklar
+title: Get sensor data from the partners
+description: Describes how to get sensor data from partners
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 33fd2221d3f3a0562abf83f014a7b84df972eebc
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: b985dfc1f16372c3fad1b0a5c0894931b4c15dcc
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74128851"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406496"
 ---
-# <a name="get-sensor-data-from-sensor-partners"></a>Algılayıcı iş ortaklarından algılayıcı verileri al
+# <a name="get-sensor-data-from-sensor-partners"></a>Get sensor data from sensor partners
 
-Azure Farm, IoT cihazlarınızdan ve sensörlerden veri merkezine akış verileri almanıza yardımcı olur. Şu anda aşağıdaki algılayıcı cihaz iş ortakları desteklenir:
+Azure FarmBeats helps you to bring streaming data from your IoT devices and sensors into Data hub. Currently, the following Sensor device partners are supported:
 
-  ![Proje grubu ları](./media/get-sensor-data-from-sensor-partner/partner-information-1.png)
+  ![Project Farm Beats](./media/get-sensor-data-from-sensor-partner/partner-information-1.png)
 
-Cihaz verilerinin Azure Farmile tümleştirilmesi, grubunuzda veri hub 'ına dağıtılan IoT sensörlerinden veri almanıza yardımcı olur. Veriler, kullanılabilir olduğunda, Farmtts Hızlandırıcısı aracılığıyla görselleştirilir ve Farmtts kullanarak veri Fusion ve AI/ML modeli oluşturma için kullanılabilir.
+Integrating Device data with Azure FarmBeats helps you get ground data from the IoT Sensors deployed in your farm to the Data hub. The data, once available can be visualized through the FarmBeats Accelerator and can be used for data fusion and AI/ML model building using FarmBeats.
 
-Algılayıcı veri akışını başlatmak için aşağıdakilerden emin olun:
+To start sensor data streaming, ensure the following:
 
--  Azure Marketi 'nden Farmtts yüklediniz.
--  Grubunuza yüklemek istediğiniz sensörlerden ve cihazlara karar verdiniz.
--  Soil nemi sensörlerinden birini kullanmayı planlıyorsanız, algılayıcı sayısına ve tam olarak sensörler yerleştirmeli bir öneri almak için farmtts SOIL nemi algılayıcı yerleştirme haritasını kullanabilirsiniz. Daha fazla bilgi için bkz. [haritalar oluşturma](generate-maps.md).
+-  You have installed FarmBeats from Azure Marketplace.
+-  You have decided on the sensors and devices that you want to install on your farm.
+-  If you are planning to use soil moisture sensors, you can use FarmBeats Soil Moisture Sensor Placement map to get a recommendation on the number of       sensors and where exactly should place the sensors. For more information, see [Generate Maps](generate-maps.md).
 
-- Grubunuzdaki cihaz/sensörlerden cihaz/algılayıcılar satın alıp dağıtın. Algılayıcı verilerine cihaz iş ortaklarınızın çözümü aracılığıyla erişebildiğinizden emin olun.
+- Purchase and deploy device/sensors from your device partner in your farm. Make sure you can access the sensor data via your device partners’ solution.
 
-### <a name="enable-device-integration-with-farmbeats"></a>Cihaz tümleştirmesini Farmtempts ile etkinleştirme   
+### <a name="enable-device-integration-with-farmbeats"></a>Enable device integration with FarmBeats   
 
-Algılayıcı verilerinin akışını başlattığınızda, verileri Farmtts sisteminize alma sürecini başlatabilirsiniz. Farmto 'Lar için tümleştirmeyi etkinleştirmek üzere cihaz sağlayıcınıza aşağıdaki bilgileri sağlamanız gerekir:  
+Once you have started the streaming of sensor data, you can start the process of getting the data into your FarmBeats system. You need to provide the following information to your device provider to enable the integration to FarmBeats:  
 
  - API Uç Noktası  
  - Kiracı Kimliği  
  - İstemci Kimliği  
- - İstemci Gizli Anahtarı  
- - EventHub bağlantı dizesi
+ - Client Secret  
+ - EventHub Connection String
 
-Yukarıdaki bilgiler, sistem tümleştiricisi tarafından size sunulmaktadır. Cihaz tümleştirmelerini etkinleştirirken oluşan herhangi bir sorun için sistem tümleştirmelerine başvurun.
+The above information is provided to you by your system integrator. For any issues while enabling the device integrations, contact your system integrator.
 
-Alternatif olarak, Azure Cloud Shell bu betiği çalıştırarak kimlik bilgilerini oluşturabilirsiniz. Aşağıdaki adımları izleyin:
+Alternatively, you can generate the credentials by running this script from the Azure Cloud Shell. Follow the below steps:
 
-1. [ZIP dosyasını](https://aka.ms/farmbeatspartnerscript) indirin ve yerel sürücünüze ayıklayın. ZIP dosyasının içinde iki dosya bulacaksınız.
-2. https://portal.azure.com/ oturum açın ve Cloud Shell açın (Bu seçenek portalın sağ üst çubuğunda bulunur)  
+1. Download the [ZIP file](https://aka.ms/farmbeatspartnerscript) and extract to your local drive. You will find two files inside the ZIP file.
+2. Sign in to https://portal.azure.com/ and open Cloud Shell (This option is available on the top right bar of the portal)  
 
-    ![Proje grubu ları](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
+    ![Project Farm Beats](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-3. Ortamın **PowerShell** olarak ayarlandığından ve varsayılan olarak Bash olarak ayarlandığından emin olun.
+3. Ensure the environment is set to **PowerShell** - by default it is set to Bash.
 
-    ![Proje grubu ları](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
+    ![Project Farm Beats](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
 
-4. Cloud Shell iki dosyayı (yukarıdaki 1. adımdan) karşıya yükleyin.
+4. Upload the two files (from step 1 above) in your Cloud Shell.
 
-    ![Proje grubu ları](./media/get-sensor-data-from-sensor-partner/power-shell-two-1.png)
+    ![Project Farm Beats](./media/get-sensor-data-from-sensor-partner/power-shell-two-1.png)
 
-5. Dosyaların karşıya yüklendiği dizine gidin (varsayılan olarak, > Kullanıcı adı giriş dizinine yüklenir).
+5. Go to the directory where the files were uploaded (by default it gets uploaded to the home directory> username).
 6. Şu betiği çalıştırın:
 
     ```azurepowershell-interactive 
@@ -63,97 +63,97 @@ Alternatif olarak, Azure Cloud Shell bu betiği çalıştırarak kimlik bilgiler
     ./generateCredentials.ps1   
 
     ```
-7. Değerleri yakalamak için ekrandaki yönergeleri izleyin. (API uç noktası, kiracı KIMLIĞI, Istemci KIMLIĞI, Istemci parolası ve EventHub bağlantı dizesi).
+7. Follow the onscreen instructions to capture the values. (API Endpoint, Tenant ID, Client ID, Client Secret and EventHub Connection String). The EventHub Connection String will be available as part of the API response in the swagger.
 
-**Oluşturulan kimlik bilgilerini kullanarak cihaz verilerini tümleştirme**
+**Integrate device data using the generated credentials**
 
-Önceki bölümde oluşturduğunuz kimlik bilgileri kümesini kullanarak Farmtts 'yi bağlamak için cihaz iş ortağı portalını ziyaret edin.
+Visit the device partner portal, to link FarmBeats using the set of credentials you generated in the previous section.
 
  - API Uç Noktası  
- - EventHub bağlantı dizesi  
+ - EventHub Connection String  
  - İstemci Kimliği  
- - İstemci Gizli Anahtarı  
+ - Client Secret  
  - Kiracı Kimliği  
 
- Cihaz sağlayıcısı başarılı bir tümleştirmeyi onaylar. Onay sonrasında, tüm cihazları ve algılayıcıları Azure Farmtts üzerinde görüntüleyebilirsiniz.
+ The device provider confirms a successful integration. Upon confirmation, you can view all the devices and sensors on Azure FarmBeats.
 
-## <a name="view-devices-and-sensors"></a>Cihazları ve algılayıcıları görüntüleme
+## <a name="view-devices-and-sensors"></a>View devices and sensors
 
-Grubunuzdaki cihazları ve algılayıcıları görüntülemek için aşağıdaki bölümü kullanın.
+Use the following section to view the devices and sensors in your farm.
 
 ### <a name="view-devices"></a>Cihazları görüntüleme
 
-Şu anda Farmtts aşağıdaki cihazları destekler:
+Currently FarmBeats supports the following devices:
 
-- **Düğüm**: bir veya daha fazla sensörün eklendiği cihaz.
-- **Ağ geçidi**: bir veya daha fazla düğümün eklendiği cihaz.
-
-Aşağıdaki adımları kullanın:
-
-1. Giriş sayfasında, menüden **cihazlar** ' ı seçin.
-  Cihazlar sayfası cihaz türünü, modeli, durumu, yerleştirildiği grubu ve meta verilerin son güncelleştirilme tarihini görüntüler. Varsayılan olarak, Grup sütunu NULL olarak ayarlanır. Bir gruba bir cihaz atamayı seçebilirsiniz. Daha fazla bilgi için bkz. [cihaz atama](#assign-devices).
-2. Cihaza bağlı cihaz özelliklerini, telemetri ve alt cihazları görüntülemek için cihazı seçin.  
-
-    ![Proje grubu ları](./media/get-sensor-data-from-sensor-partner/view-devices-1.png)
-
-### <a name="view-sensors"></a>Algılayıcıları görüntüle
+- **Node**: a device to which one or more sensors are attached to.
+- **Gateway**: a device to which one or more nodes are attached to.
 
 Aşağıdaki adımları kullanın:
 
-1. Giriş sayfasında, menüden **Algılayıcılar** ' ı seçin.
-  Algılayıcılar sayfasında, algılayıcı türü, bağlandığı grup, ana cihaz, bağlantı noktası adı, bağlantı noktası türü ve son güncel durum hakkındaki ayrıntılar gösterilir.
-2. Sensörden algılayıcı özelliklerini, etkin uyarıları ve telemetrisini görüntülemek için sensör seçin.
+1. On the home page, select **Devices** from the menu.
+  The Devices page displays the device type, model, status, the farm it’s placed in, and the last updated date for metadata. By default, the farm column is set to NULL. You can choose to assign a device to a farm. For more information, see [Assign devices](#assign-devices).
+2. Select the device to view the device properties, telemetry and child devices connected to the device.  
 
-    ![Proje grubu ları](./media/get-sensor-data-from-sensor-partner/view-sensors-1.png)
+    ![Project Farm Beats](./media/get-sensor-data-from-sensor-partner/view-devices-1.png)
 
-## <a name="assign-devices"></a>Cihazları ata  
-
-Algılayıcı verilerinin akışını yaptıktan sonra, Sensörlerinizi dağıttığınız gruba atayabilirsiniz.
-
-1. Giriş sayfasında, menüden **gruplar** ' ı seçin, **gruplar** listesi sayfası görüntülenir.  
-2. Cihazı atamak istediğiniz grubu seçin ve cihaz **Ekle**' yi seçin.  
-3. **Cihaz Ekle** penceresi görüntülenir. Gruba atamak istediğiniz cihazı seçin.
-
-    ![Proje grubu ları](./media/get-sensor-data-from-sensor-partner/add-devices-1.png)
-
-4. **Cihaz Ekle**' yi seçin. Alternatif olarak, **cihazlar** menüsüne gidin, bir gruba atamak istediğiniz cihazları seçin ve **cihazları ilişkilendir**' i seçin.  
-5. **Cihazları ilişkilendir** penceresinde, açılan listeden grubu seçin ve grubu tüm seçili cihazlarla Ilişkilendirmek Için **Tümüne Uygula** ' yı seçin.
-
-    ![Proje grubu ları](./media/get-sensor-data-from-sensor-partner/associate-devices-1.png)
-
-6. Her bir cihazı farklı bir grupla ilişkilendirmek için, **gruba ata** sütunundaki açılan eklentiyi seçin ve her bir cihaz satırı için bir grup seçin.  
-7. Cihaz atamasını tamamlamaya **ata** ' yı seçin.
-
-### <a name="visualize-sensor-data"></a>Algılayıcı verilerini görselleştirin
+### <a name="view-sensors"></a>View sensors
 
 Aşağıdaki adımları kullanın:
 
-1. Giriş sayfasında, **gruplar** sayfasını görüntülemek Için menüden **gruplar** ' ı seçin.  
-2. Algılayıcı verilerini görmek istediğiniz **grubu** seçin.  
-3. **Grup** panosunda telemetri verilerini görüntüleyebilirsiniz. Canlı Telemetriyi görüntülemeyi veya **özel Aralık** kullanmayı seçerek belirli bir tarih aralığında görüntüleme yapabilirsiniz.
+1. On the home page, select **Sensors** from the menu.
+  The Sensors page displays details about type of sensor, the farm it's connected to, the parent device, port name, port type and the last updated status.
+2. Select the sensor to view sensor properties, active alerts and telemetry from the sensor.
 
-    ![Proje grubu ları](./media/get-sensor-data-from-sensor-partner/telemetry-data-1.png)
+    ![Project Farm Beats](./media/get-sensor-data-from-sensor-partner/view-sensors-1.png)
 
-## <a name="delete-sensor"></a>Algılayıcıyı Sil
+## <a name="assign-devices"></a>Assign devices  
+
+Once you have the sensor data flowing in, you can assign it to the farm in which you have deployed the sensors.
+
+1. On the home page, select **Farms** from the menu, the **Farms** list page is displayed.  
+2. Select the Farm to which you want to assign the device and select **Add Devices**.  
+3. The **Add Devices** window displays. Select the device you want to assign to the farm.
+
+    ![Project Farm Beats](./media/get-sensor-data-from-sensor-partner/add-devices-1.png)
+
+4. Select **Add Devices**. Alternatively, go to the **Devices** menu, select the devices you want to assign to a farm and select **Associate Devices**.  
+5. In the **Associate Devices** window, select the farm from drop-down and select **Apply to All** to associate the farm to all the selected devices.
+
+    ![Project Farm Beats](./media/get-sensor-data-from-sensor-partner/associate-devices-1.png)
+
+6. To associate each device to a different farm, select the drop-down in the **Assign to Farm** column and select a farm for each device row.  
+7. Select **Assign** to complete device assignment.
+
+### <a name="visualize-sensor-data"></a>Visualize sensor data
+
+Aşağıdaki adımları kullanın:
+
+1. On the home page, select **Farms** from the menu to view the **Farms** page.  
+2. Select the **Farm** for which you want to see the sensor data.  
+3. On the **Farm** dashboard, you can view telemetry data. You can choose to view live telemetry or use **Custom Range** to view in a specific date range.
+
+    ![Project Farm Beats](./media/get-sensor-data-from-sensor-partner/telemetry-data-1.png)
+
+## <a name="delete-sensor"></a>Delete sensor
 
 Şu adımları uygulayın:
 
-1. Giriş sayfasında, **sensör** sayfasını görüntülemek Için menüden **Algılayıcılar** ' ı seçin.  
-2. Silmek istediğiniz cihazı seçin ve onay penceresinden **Sil** ' i seçin.
+1. On the home page, select **Sensors** from the menu to view the **Sensors** page.  
+2. Select the device you want to delete and select **Delete** from confirmation window.
 
-    ![Proje grubu ları](./media/get-sensor-data-from-sensor-partner/delete-sensors-1.png)
+    ![Project Farm Beats](./media/get-sensor-data-from-sensor-partner/delete-sensors-1.png)
 
-Bir onay iletisi, sensör başarıyla silindiğini gösterir.  
+A confirmation message shows that the sensor is successfully deleted.  
 
-## <a name="delete-devices"></a>Cihazları Sil
+## <a name="delete-devices"></a>Delete devices
 
 Şu adımları uygulayın:
 
-1. Giriş sayfasında, cihazlar sayfasını görüntülemek için menüdeki **cihazlar** ' ı seçin.  
-2. Silmek istediğiniz cihazı seçin ve onay penceresinden **Sil** ' i seçin.
+1. On the home page, select **Devices** from the menu to view the devices page.  
+2. Select the device you want to delete and select **Delete** from the confirmation window.
 
-    ![Proje grubu ları](./media/get-sensor-data-from-sensor-partner/delete-device-1.png)
+    ![Project Farm Beats](./media/get-sensor-data-from-sensor-partner/delete-device-1.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık Azure Farmtts örneğiniz için sensör verileri akar. Şimdi, gruplar için [haritalar oluşturmayı](generate-maps.md#generate-maps) öğrenin.
+You now have sensor data flowing into your Azure FarmBeats instance. Now, learn how to [generate maps](generate-maps.md#generate-maps) for your farms.

@@ -1,61 +1,61 @@
 ---
-title: Yöneticiler kullanıcıları ve cihazları yönetme-Azure MFA-Azure Active Directory
-description: Yöneticiler, kullanıcıları düzeltme işlemini yeniden yapma gibi Kullanıcı ayarlarını nasıl değiştirebilir.
+title: Manage users and devices Azure MFA - Azure Active Directory
+description: How can administrators change user settings such as forcing the users to do the proof-up process again.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 808faaed76ff63d69feb8170eaac72021c7bd49d
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 5fd03ea807e48f6f0e287bb4497e4d20268995db
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73042116"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74404176"
 ---
-# <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>Bulutta Azure Multi-Factor Authentication ile Kullanıcı ayarlarını yönetme
+# <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>Manage user settings with Azure Multi-Factor Authentication in the cloud
 
-Yönetici olarak, aşağıdaki Kullanıcı ve cihaz ayarlarını yönetebilirsiniz:
+As an administrator, you can manage the following user and device settings:
 
-* Kullanıcıların iletişim yöntemlerini yeniden sağlamasını gerektir
-* Uygulama parolalarını silme
-* Tüm güvenilen cihazlarda MFA gerektir
+* Require users to provide contact methods again
+* Delete app passwords
+* Require MFA on all trusted devices
 
-## <a name="manage-authentication-methods"></a>Kimlik doğrulama yöntemlerini yönetme
+## <a name="manage-authentication-methods"></a>Manage authentication methods
 
-Yönetici kimlik doğrulama Yöneticisi rolünü atadıkları için kullanıcıların parolalarını sıfırlamasını, MFA için yeniden kaydolmayı veya mevcut MFA oturumlarını kullanıcı nesnesinden iptal etmeyi zorunlu kılabilirsiniz.
+As an administrator assigned the Authentication Administrator role you can require users to reset their password, re-register for MFA, or revoke existing MFA sessions from their user object.
 
-![Azure portal kimlik doğrulama yöntemlerini yönetin](./media/howto-mfa-userdevicesettings/manage-authentication-methods.png)
-
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
-1. Sol tarafta,**kullanıcılar**  > **tüm kullanıcıları** **Azure Active Directory**  >  seçin.
-1. Üzerinde bir eylem gerçekleştirmek istediğiniz kullanıcıyı seçin ve **kimlik doğrulama yöntemleri**' ni seçin.
-   - **Parola sıfırlama** , kullanıcının parolasını sıfırlayıp bir sonraki oturum açma sırasında değiştirilmesi gereken geçici bir parola atacaktır.
-   - **MFA 'Yı yeniden kaydettirmek** için, Kullanıcı bir sonraki sefer oturum açtığında yenı bir MFA kimlik doğrulama yöntemi kurmak istemeleri gerekir.
-   - **MFA oturumlarını Iptal etme** , kullanıcının HATıRLANAN MFA oturumlarını temizler ve cihazdaki ilke için bir sonraki ihtiyaç DUYULıŞıNDA MFA gerçekleştirmesini gerektirir.
-
-## <a name="delete-users-existing-app-passwords"></a>Kullanıcı var olan uygulama parolalarını silme
-
-Bu ayar, bir kullanıcının oluşturduğu tüm uygulama parolalarını siler. Bu uygulama parolalarıyla ilişkilendirilen tarayıcı olmayan uygulamalar, yeni bir uygulama parolası oluşturuluncaya kadar çalışmayı durdurur. Bu eylemi gerçekleştirmek için genel yönetici izinleri gereklidir.
-
-### <a name="how-to-delete-users-existing-app-passwords"></a>Kullanıcı var olan uygulama parolalarını silme
+![Manage authentication methods from the Azure portal](./media/howto-mfa-userdevicesettings/manage-authentication-methods.png)
 
 1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
-2. Sol tarafta,**kullanıcılar**  > **tüm kullanıcıları** **Azure Active Directory**  >  seçin.
-3. Sağ tarafta, araç çubuğunda **Multi-Factor Authentication** ' yi seçin. Multi-Factor Authentication sayfası açılır.
-4. Yönetmek istediğiniz kullanıcı veya kullanıcıların yanındaki kutuyu işaretleyin. Sağ tarafta hızlı adım seçeneklerinin bir listesi görüntülenir.
-5. **Kullanıcı ayarlarını yönet**' i seçin.
-6. **Seçilen kullanıcılar tarafından oluşturulan mevcut tüm uygulama parolalarını Sil**kutusunu işaretleyin.
-   ![mevcut tüm uygulama parolalarını Sil](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
+1. On the left, select **Azure Active Directory** > **Users** > **All users**.
+1. Choose the user you wish to perform an action on and select **Authentication methods**.
+   - **Reset Password** will reset the user's password and assign a temporary password that must be changed on the next sign in.
+   - **Require Re-register MFA** will make it so that when the user signs in next time, they will be requested to setup a new MFA authentication method.
+   - **Revoke MFA Sessions** clears the user's remembered MFA sessions and requires them to perform MFA the next time it is required by the policy on the device.
+
+## <a name="delete-users-existing-app-passwords"></a>Delete users existing app passwords
+
+This setting deletes all of the app passwords that a user has created. Non-browser apps that were associated with these app passwords stop working until a new app password is created. Global administrator permissions are required to perform this action.
+
+### <a name="how-to-delete-users-existing-app-passwords"></a>How to delete users existing app passwords
+
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+2. On the left, select **Azure Active Directory** > **Users** > **All users**.
+3. On the right, select **Multi-Factor Authentication** on the toolbar. The multi-factor authentication page opens.
+4. Check the box next to the user or users that you wish to manage. A list of quick step options appears on the right.
+5. Select **Manage user settings**.
+6. Check the box for **Delete all existing app passwords generated by the selected users**.
+   ![Delete all existing app passwords](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
 7. **Kaydet**’e tıklayın.
-8. **Kapat**' a tıklayın.
+8. Click **close**.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Multi-Factor Authentication ayarlarını yapılandırma](howto-mfa-mfasettings.md) hakkında daha fazla bilgi alın
-- Kullanıcılarınızın yardıma ihtiyacı varsa, [iki adımlı doğrulama Için Kullanıcı kılavuzuna](../user-help/multi-factor-authentication-end-user.md) gelin
+- Get more information about how to [Configure Azure Multi-Factor Authentication settings](howto-mfa-mfasettings.md)
+- If your users need help, point them towards the [User guide for two-step verification](../user-help/multi-factor-authentication-end-user.md)

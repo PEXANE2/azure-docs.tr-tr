@@ -1,7 +1,7 @@
 ---
-title: "Hızlı Başlangıç: Bing görsel arama REST API'si ve Java kullanarak görüntü Öngörüler elde edin"
+title: 'Quickstart: Get image insights using the REST API and Java - Bing Visual Search'
 titleSuffix: Azure Cognitive Services
-description: Bing görsel arama API'sine bir görüntüyü karşıya yükleme ve ilgili Öngörüler alma hakkında bilgi edinin.
+description: Learn how to upload an image to the Bing Visual Search API and get insights about it.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 4/02/2019
 ms.author: scottwhi
-ms.openlocfilehash: 2fe4e9dad0b198fe54e06ce07100d231f1f7d157
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: eecca2372c7265d456276a966cc441b15c17272a
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60512424"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383599"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-java"></a>Hızlı Başlangıç: Bing görsel arama REST API'si ve Java kullanarak görüntü Öngörüler elde edin
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-java"></a>Quickstart: Get image insights using the Bing Visual Search REST API and Java
 
-Bu hızlı başlangıçta, ilk sonuçlarını görüntülemek ve Bing görsel arama API'sine çağrı yapmak için kullanın. Bu Java uygulaması, API için bir görüntüyü karşıya yükler ve döndürdüğü bilgileri görüntüler. Bu uygulama, Java dilinde yazılmış olsa, çoğu programlama dilleri ile uyumlu bir RESTful Web hizmeti API'dir.
+Use this quickstart to make your first call to the Bing Visual Search API and view the results. This Java application uploads an image to the API and displays the information it returns. Though this application is written in Java, the API is a RESTful Web service compatible with most programming languages.
 
-Yerel bir görüntüyü karşıya yüklediğinizde, form verilerini içermelidir `Content-Disposition` başlığı. Ayarlamanız gerekir, `name` "image" ve parametre ayarlayabilirsiniz `filename` herhangi bir dize parametresi. Form içeriğini görüntünün ikili verileri içerir. Karşıya yüklediğiniz en yüksek görüntü boyutu 1 MB'dir.
+When you upload a local image, the form data must include the `Content-Disposition` header. You must set its `name` parameter to "image", and you can set the `filename` parameter to any string. The contents of the form include the binary data of the image. The maximum image size you can upload is 1 MB.
 
 ```
 --boundary_1234-abcd
@@ -34,15 +34,15 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* [Java Geliştirme Seti (JDK) 7 veya 8](https://aka.ms/azure-jdks)
-* [Gson Java kitaplığı](https://github.com/google/gson)
+* The [Java Development Kit (JDK) 7 or 8](https://aka.ms/azure-jdks)
+* The [Gson Java library](https://github.com/google/gson)
 * [Apache HttpComponents](https://hc.apache.org/downloads.cgi)
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>Proje oluşturma ve başlatma
 
-1. Sık kullandığınız IDE veya düzenleyici yeni bir Java projesi oluşturun ve aşağıdaki kitaplıkları içeri aktarma:
+1. Create a new Java project in your favorite IDE or editor, and import the following libraries:
 
     ```java
     import java.util.*;
@@ -63,7 +63,7 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
     import org.apache.http.impl.client.HttpClientBuilder;
     ```
 
-2. API uç noktanız abonelik anahtarı ve görüntü yolu için değişkenler oluşturun:
+2. Create variables for your API endpoint, subscription key, and the path to your image:
 
     ```java
     static String endpoint = "https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch";
@@ -71,9 +71,9 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
     static String imagePath = "path-to-your-image";
     ```
 
-## <a name="create-the-json-parser"></a>JSON ayrıştırıcının oluşturma
+## <a name="create-the-json-parser"></a>Create the JSON parser
 
-Daha fazla API'sinden bir JSON yanıtı yapmak için bir yöntem oluşturma okunabilir kullanarak `JsonParser`:
+Create a method to make the JSON response from the API more readable using `JsonParser`:
 
     ```java
     public static String prettify(String json_text) {
@@ -86,13 +86,13 @@ Daha fazla API'sinden bir JSON yanıtı yapmak için bir yöntem oluşturma okun
 
 ## <a name="construct-the-search-request-and-query"></a>Arama isteği ve sorgu oluşturma
 
-1. Uygulamanızın ana yöntemi kullanarak bir HTTP istemci oluşturun `HttpClientBuilder.create().build();`:
+1. In the main method of your application, create an HTTP client using `HttpClientBuilder.create().build();`:
 
     ```java
     CloseableHttpClient httpClient = HttpClientBuilder.create().build();
     ```
 
-2. Oluşturma bir `HttpEntity` nesne API'sine görüntünüzü karşıya yüklemek için:
+2. Create an `HttpEntity` object to upload your image to the API:
 
     ```java
     HttpEntity entity = MultipartEntityBuilder
@@ -101,7 +101,7 @@ Daha fazla API'sinden bir JSON yanıtı yapmak için bir yöntem oluşturma okun
         .build();
     ```
 
-3. Oluşturma bir `httpPost` nesne uç noktanız ile ve abonelik anahtarınızı kullanmayı üst bilgisini ayarlayın:
+3. Create an `httpPost` object with your endpoint, and set the header to use your subscription key:
 
     ```java
     HttpPost httpPost = new HttpPost(endpoint);
@@ -111,14 +111,14 @@ Daha fazla API'sinden bir JSON yanıtı yapmak için bir yöntem oluşturma okun
 
 ## <a name="receive-and-process-the-json-response"></a>JSON yanıtını alma ve işleme
 
-1. Kullanım `HttpClient.execute()` API'sine bir istek gönderir ve yanıt olarak depolamak için yöntem bir `InputStream` nesnesi:
+1. Use the `HttpClient.execute()` method to send a request to the API, and store the response in an `InputStream` object:
     
     ```java
     HttpResponse response = httpClient.execute(httpPost);
     InputStream stream = response.getEntity().getContent();
     ```
 
-2. JSON dizesi Store ve yanıt yazdırın:
+2. Store the JSON string, and print the response:
 
 ```java
 String json = new Scanner(stream).useDelimiter("\\A").next();
@@ -129,4 +129,4 @@ System.out.println(prettify(json));
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Bir görsel arama tek sayfa web uygulaması derleme](../tutorial-bing-visual-search-single-page-app.md)
+> [Build a Visual Search single-page web app](../tutorial-bing-visual-search-single-page-app.md)

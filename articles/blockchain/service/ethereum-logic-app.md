@@ -1,293 +1,287 @@
 ---
-title: Azure Logic Apps ile Ethereum blok zinciri bağlayıcısını kullanın
-description: Akıllı sözleşme işlevlerini tetiklemek ve akıllı sözleşme olaylarına yanıt vermek için Azure Logic Apps ile Ethereum blok zinciri bağlayıcısını kullanın.
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
+title: Use Ethereum Blockchain connector with Azure Logic Apps - Azure Blockchain Service
+description: Use the Ethereum Blockchain connector with Azure Logic Apps to trigger smart contract functions and respond to smart contract events.
 ms.date: 10/14/2019
 ms.topic: article
-ms.service: azure-blockchain
 ms.reviewer: chrisseg
-manager: femila
-ms.openlocfilehash: bb23d6b9b42e1c51646765255870a14a1b5d39f7
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 4a9acfd6098ed45fd92c7e3047b5d1446eeddbd6
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579934"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325215"
 ---
-# <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>Azure Logic Apps ile Ethereum blok zinciri bağlayıcısını kullanın
+# <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>Use the Ethereum Blockchain connector with Azure Logic Apps
 
-Akıllı sözleşme eylemleri gerçekleştirmek ve akıllı sözleşme olaylarına yanıt vermek için [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/) Ile [Ethereum blok zinciri bağlayıcısını](https://docs.microsoft.com/connectors/blockchainethereum/) kullanın. Örneğin, bir blok zinciri muhasebenden bilgi döndüren bir REST tabanlı mikro hizmet oluşturmak istediğinizi varsayalım. Bir mantıksal uygulama kullanarak, blok zinciri defterinde depolanan bilgileri sorgulayan HTTP isteklerini kabul edebilirsiniz.
+Use the [Ethereum Blockchain connector](https://docs.microsoft.com/connectors/blockchainethereum/) with [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/) to perform smart contract actions and respond to smart contract events. For example, let's say you want to create a REST-based microservice that returns information from a blockchain ledger. By using a logic app, you can accept HTTP requests that query information stored in a blockchain ledger.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-İsteğe bağlı önkoşul hızlı başlangıcını doldurun [: Azure blok zinciri hizmeti Consortium ağına bağlanmak için Visual Studio Code kullanın](connect-vscode.md). Hızlı başlangıç, [Ethereum Için Azure blok zinciri geliştirme seti 'ni](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) yükleyip blok zinciri geliştirme ortamınızı ayarlamayı gösterir.
+Complete the optional prerequisite [Quickstart: Use Visual Studio Code to connect to an Azure Blockchain Service consortium network](connect-vscode.md). The quickstart guides you though installing [Azure Blockchain Development Kit for Ethereum](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) and setting up your blockchain development environment.
 
 ## <a name="create-a-logic-app"></a>Mantıksal uygulama oluşturma
 
-Azure Logic Apps, sistemleri ve Hizmetleri tümleştirmeniz gerektiğinde iş süreçlerini ve iş akışlarını zamanlamanıza ve otomatikleştirmenize yardımcı olur. İlk olarak, Ethereum blok zinciri bağlayıcısını kullanan bir mantık oluşturursunuz.
+Azure Logic Apps helps you schedule and automate business processes and workflows when you need to integrate systems and services. First, you create a logic that uses the Ethereum Blockchain connector.
 
 1. [Azure portalında](https://portal.azure.com) **Kaynak oluştur** > **Tümleştirme** > **Mantıksal Uygulama**’yı seçin.
-1. **Mantıksal uygulama oluştur**altında, mantıksal uygulamanızı nerede oluşturacağınız hakkında ayrıntılı bilgi sağlayın. İşiniz bittiğinde **Oluştur**' u seçin.
+1. Under **Create logic app**, provide details on where to create your logic app. After you're done, select **Create**.
 
-    Mantıksal uygulamalar oluşturma hakkında daha fazla bilgi için bkz. [Azure Logic Apps otomatik iş akışları oluşturma](../../logic-apps/quickstart-create-first-logic-app-workflow.md).
+    For more information on creating logic apps, see [Create automated workflows with Azure Logic Apps](../../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-1. Azure uygulamanızı dağıtduktan sonra mantıksal uygulama kaynağınızı seçin.
-1. Logic Apps tasarımcısında **Şablonlar**altında **boş mantıksal uygulama**' yı seçin.
+1. After Azure deploys your app, select your logic app resource.
+1. In the Logic Apps Designer, under **Templates**, select **Blank Logic App**.
 
 Her mantıksal uygulama, belirli bir olay gerçekleştiğinde ya da belirli bir koşul karşılandığında tetiklenen bir tetikleyiciyle başlamalıdır. Tetikleyici her etkinleştirildiğinde Logic Apps altyapısı iş akışınızı başlatan ve çalıştıran bir mantıksal uygulama örneği oluşturur.
 
-Ethereum blok zinciri bağlayıcısının bir tetikleyicisi ve birkaç eylemi vardır. Kullandığınız tetikleyici veya eylem, senaryonuza bağlıdır.
+The Ethereum Blockchain connector has one trigger and several actions. Which trigger or action you use depends on your scenario.
 
-İş akışınız:
+If your workflow:
 
-* Blok zincirinde bir olay gerçekleştiğinde tetikler, [olay tetikleyicisini kullanın](#use-the-event-trigger).
-* Akıllı bir sözleşmeyi sorgular veya dağıtır, [eylemleri kullanın](#use-actions).
-* Ortak bir senaryoyu takip [eden, geliştirici setini kullanarak iş akışı oluşturma](#generate-a-workflow).
+* Triggers when an event occurs on the blockchain, [Use the event trigger](#use-the-event-trigger).
+* Queries or deploys a smart contract, [Use actions](#use-actions).
+* Follows a common scenario, [Generate a workflow by using the developer kit](#generate-a-workflow).
 
-## <a name="use-the-event-trigger"></a>Olay tetikleyicisini kullanma
+## <a name="use-the-event-trigger"></a>Use the event trigger
 
-Akıllı bir anlaşma olayı oluştuktan sonra bir mantıksal uygulamanın çalışmasını istediğinizde Ethereum blok zinciri olay tetikleyicilerini kullanın. Örneğin, bir akıllı anlaşma işlevi çağrıldığında bir e-posta göndermek istersiniz.
+Use Ethereum Blockchain event triggers when you want a logic app to run after a smart contract event occurs. For example, you want to send an email when a smart contract function is called.
 
-1. Logic Apps tasarımcısında, Ethereum blok zinciri bağlayıcısını seçin.
-1. **Tetikleyiciler** sekmesinden **bir akıllı anlaşma olayının ne zaman gerçekleşeceğini**seçin.
-1. Azure blok zinciri hizmeti ile [BIR API bağlantısı](#create-an-api-connection) değiştirin veya oluşturun.
-1. Olayları denetlemek istediğiniz akıllı sözleşmeyle ilgili ayrıntıları girin.
+1. In the Logic Apps Designer, select the Ethereum Blockchain connector.
+1. From the **Triggers** tab, select **When a smart contract event occurs**.
+1. Change or [create an API connection](#create-an-api-connection) to Azure Blockchain Service.
+1. Enter the details about the smart contract that you want to check for events.
 
-    ![Olay tetikleyicisi özellikleriyle Logic Apps tasarımcı](./media/ethereum-logic-app/event-properties.png)
+    ![Logic Apps Designer with Event trigger properties](./media/ethereum-logic-app/event-properties.png)
 
     | Özellik | Açıklama |
     |----------|-------------|
-    | **Sözleşme ABı** | Sözleşme uygulaması ikili arabirimi (ABı) akıllı sözleşme arabirimlerini tanımlar. Daha fazla bilgi için bkz. [sözleşmeyi edınme ABI](#get-the-contract-abi). |
-    | **Akıllı sözleşme adresi** | Sözleşme adresi, Ethereum blok zincirindeki akıllı anlaşma hedef adresidir. Daha fazla bilgi için bkz. [sözleşme adresini alın](#get-the-contract-address). |
-    | **Olay adı** | Denetlenecek akıllı sözleşme olayını seçin. Olay mantıksal uygulamayı tetikler. |
-    | **Aralık** ve **Sıklık** | Olayı ne sıklıkta denetlemek istediğinizi seçin. |
+    | **Contract ABI** | The contract application binary interface (ABI) defines the smart contract interfaces. For more information, see [Get the contract ABI](#get-the-contract-abi). |
+    | **Smart contract address** | The contract address is the smart contract destination address on the Ethereum blockchain. For more information, see [Get the contract address](#get-the-contract-address). |
+    | **Event name** | Select a smart contract event to check. The event triggers the logic app. |
+    | **Interval** and **Frequency** | Select how often you want to check for the event. |
 
 1. **Kaydet**’i seçin.
 
-Mantıksal uygulamanızı tamamlayabilmeniz için Ethereum blok zinciri olay tetikleyicisine dayalı bir eylem gerçekleştiren yeni bir adım ekleyebilirsiniz. Örneğin, bir e-posta gönderin.
+To complete your logic app, you can add a new step that performs an action based on the Ethereum Blockchain event trigger. For example, send an email.
 
-## <a name="use-actions"></a>Kullanım eylemleri
+## <a name="use-actions"></a>Use actions
 
-Mantıksal uygulamanın blok zinciri defterinde bir eylem gerçekleştirmesini istediğinizde Ethereum blok zinciri eylemlerini kullanın. Örneğin, bir mantıksal uygulamaya HTTP isteği yapıldığında bir akıllı anlaşma işlevi çağıran bir REST tabanlı mikro hizmet oluşturmak istersiniz.
+Use the Ethereum Blockchain actions when you want a logic app to perform an action on the blockchain ledger. For example, you want to create a REST-based microservice that calls a smart contract function when an HTTP request is made to a logic app.
 
-Bağlayıcı eylemleri bir tetikleyici gerektirir. Bir mikro hizmet için HTTP istek tetikleyicisi gibi bir tetikleyiciden sonra bir sonraki adımla bir Ethereum blok zinciri bağlayıcı eylemini kullanabilirsiniz.
+Connector actions require a trigger. You can use an Ethereum Blockchain connector action as the next step after a trigger, such as an HTTP request trigger for a microservice.
 
-1. Logic Apps tasarımcısında, bir tetikleyiciyi izleyen **yeni adım** ' ı seçin.
-1. Ethereum blok zinciri bağlayıcısını seçin.
-1. **Eylemler** sekmesinde, kullanılabilir eylemlerden birini seçin.
+1. In the Logic Apps Designer, select **New step** following a trigger.
+1. Select the Ethereum Blockchain connector.
+1. From the **Actions** tab, select one of the available actions.
 
-    ![Eylem özellikleriyle Logic Apps tasarımcı](./media/ethereum-logic-app/action-properties.png)
+    ![Logic Apps Designer with Actions properties](./media/ethereum-logic-app/action-properties.png)
 
-1. Azure blok zinciri hizmeti ile [BIR API bağlantısı](#create-an-api-connection) değiştirin veya oluşturun.
-1. Seçtiğiniz eyleme bağlı olarak, akıllı sözleşme işleviniz hakkında aşağıdaki ayrıntıları sağlayın.
+1. Change or [create an API connection](#create-an-api-connection) to Azure Blockchain Service.
+1. Depending on the action you chose, provide the following details about your smart contract function.
 
     | Özellik | Açıklama |
     |----------|-------------|
-    | **Sözleşme ABı** | Sözleşme ABı, akıllı sözleşme arabirimlerini tanımlar. Daha fazla bilgi için bkz. [sözleşmeyi edınme ABI](#get-the-contract-abi). |
-    | **Sözleşme bytecode 'u** | Derlenen akıllı sözleşme bayt kodu. Daha fazla bilgi için bkz. [sözleşme bytecode bilgilerini edinme](#get-the-contract-bytecode). |
-    | **Akıllı sözleşme adresi** | Sözleşme adresi, Ethereum blok zincirindeki akıllı anlaşma hedef adresidir. Daha fazla bilgi için bkz. [sözleşme adresini alın](#get-the-contract-address). |
-    | **Akıllı sözleşme işlev adı** | Eylem için akıllı sözleşme işlev adını seçin. Liste, sözleşme ABı ayrıntılarından doldurulur. |
+    | **Contract ABI** | The contract ABI defines the smart contract interfaces. For more information, see [Get the contract ABI](#get-the-contract-abi). |
+    | **Contract bytecode** | The compiled smart contract bytecode. For more information, see [Get the contract bytecode](#get-the-contract-bytecode). |
+    | **Smart contract address** | The contract address is the smart contract destination address on the Ethereum blockchain. For more information, see [Get the contract address](#get-the-contract-address). |
+    | **Smart contract function name** | Select the smart contract function name for the action. The list is populated from the details in the contract ABI. |
 
-    Akıllı sözleşme işlev adını seçtikten sonra, işlev parametreleri için gerekli alanları görebilirsiniz. Senaryonuz için gereken değerleri veya dinamik içeriği girin.
+    After selecting a smart contract function name, you might see required fields for function parameters. Enter the values or dynamic content required for your scenario.
 
-Artık mantıksal uygulamanızı kullanabilirsiniz. Mantıksal uygulama olayı tetiklendiğinde, Ethereum blok zinciri eylemi çalışır. Örneğin, bir HTTP isteği tetikleyicisi akıllı bir sözleşmenin durum değerini sorgulamak için bir Ethereum blok zinciri eylemi çalıştırır. Bu sorgu, değeri döndüren bir HTTP yanıtına neden olur.
+You can now use your logic app. When the logic app event is triggered, the Ethereum Blockchain action runs. For example, an HTTP request trigger runs an Ethereum blockchain action to query a smart contract state value. This query results in an HTTP response that returns the value.
 
-## <a name="generate-a-workflow"></a>İş akışı oluşturma
+## <a name="generate-a-workflow"></a>Generate a workflow
 
-Ethereum Visual Studio Code uzantısı için Azure blok zinciri geliştirme seti, yaygın senaryolar için mantıksal uygulama iş akışları oluşturabilir. Dört senaryo mevcuttur:
+The Azure Blockchain Development Kit for Ethereum Visual Studio Code extension can generate logic app workflows for common scenarios. Four scenarios are available:
 
-* Azure SQL veritabanı örneğine veri yayımlama
-* Azure Event Grid veya Azure Service Bus bir örneğine olay yayımlama
-* Rapor yayımlama
-* REST tabanlı mikro hizmet
+* Data publishing to an Azure SQL Database instance
+* Event publishing to an instance of Azure Event Grid or Azure Service Bus
+* Report publishing
+* REST-based microservice
 
- Azure blok zinciri geliştirme seti, blok zinciri geliştirmeyi basitleştirmek için Truffle kullanır. Akıllı sözleşmeye dayalı bir mantıksal uygulama oluşturmak için akıllı sözleşme için bir truffle çözümüne ihtiyacınız vardır. Ayrıca Azure blok zinciri hizmeti Consortium ağınıza da bir bağlantı gerekir. Daha fazla bilgi için bkz. [Visual Studio Code kullanarak bir Azure blok zinciri hizmeti konsorsiyum ağı hızlı başlangıç bağlantısı](connect-vscode.md).
+ The Azure Blockchain Development Kit uses Truffle to simplify blockchain development. To generate a logic app based on a smart contract, you need a Truffle solution for the smart contract. You also need a connection to your Azure Blockchain Service consortium network. For more information, see [Use Visual Studio Code to connect to an Azure Blockchain Service consortium network quickstart](connect-vscode.md).
 
-Örneğin, aşağıdaki adımlar hızlı başlangıç **Helloblockzincirine** akıllı sözleşmeye DAYALı bir REST tabanlı mikro hizmet mantıksal uygulaması oluşturur:
+For example, the following steps generate a REST-based microservice logic app based on the quickstart **HelloBlockchain** smart contract:
 
-1. Visual Studio Code Explorer kenar çubuğunda çözümünüzdeki **sözleşmeler** klasörünü genişletin.
-1. **Helloblockzincirine. Nuevo** öğesine sağ tıklayın ve menüden **akıllı sözleşmeler Için mikro hizmetler oluştur** ' u seçin.
+1. In the Visual Studio Code explorer sidebar, expand the **contracts** folder in your solution.
+1. Right-click **HelloBlockchain.sol** and select **Generate Microservices for Smart Contracts** from the menu.
 
-    ![Akıllı sözleşmeler için mikro hizmetler oluşturma seçimine sahip Visual Studio Code bölmesi](./media/ethereum-logic-app/generate-logic-app.png)
+    ![Visual Studio Code pane with the Generate Microservices for Smart Contracts selection](./media/ethereum-logic-app/generate-logic-app.png)
 
-1. Komut paletinde **Logic App**' i seçin.
-1. **Sözleşme adresini**girin. Daha fazla bilgi için bkz. [sözleşme adresini alın](#get-the-contract-address).
-1. Mantıksal uygulama için Azure aboneliğini ve kaynak grubunu seçin.
+1. In the command palette, select **Logic App**.
+1. Enter the **contract address**. For more information, see [Get the contract address](#get-the-contract-address).
+1. Select the Azure subscription and resource group for the logic app.
 
-    Mantıksal uygulama yapılandırması ve kod dosyaları **generatedLogicApp** dizininde oluşturulur.
+    The logic app configuration and code files are generated in the **generatedLogicApp** directory.
 
-1. **GeneratedLogicApp/Helloblockzincirleri** dizinini görüntüleyin. Her akıllı sözleşme işlevi, olayı ve özelliği için bir mantıksal uygulama JSON dosyası vardır.
-1. **GeneratedLogicApp/Helloblockzincirleri/Service/Property ' i açın. RequestMessage. logicapp. JSON** dosyası ve içeriğini kopyalayın.
+1. View the **generatedLogicApp/HelloBlockchain** directory. There's a logic app JSON file for each smart contract function, event, and property.
+1. Open the **generatedLogicApp/HelloBlockchain/Service/property.RequestMessage.logicapp.json** file and copy the contents.
 
-    ![Kopyalanacak kodu içeren JSON dosyası](./media/ethereum-logic-app/requestmessage.png)
+    ![JSON file with code to copy](./media/ethereum-logic-app/requestmessage.png)
 
-1. Mantıksal uygulamanızda **mantıksal uygulama kod görünümü**' nü seçin. Var olan JSON 'ı oluşturulan mantıksal uygulama JSON ile değiştirin.
+1. In your logic app, select **Logic app code view**. Replace the existing JSON with the generated logic app JSON.
 
-    ![Yeni değiştirilmiş uygulama kodu ile mantıksal uygulama kod görünümü](./media/ethereum-logic-app/code-view.png)
+    ![Logic app code view with new replaced app code](./media/ethereum-logic-app/code-view.png)
 
-1. Tasarımcı görünümüne geçiş yapmak için **Tasarımcı** ' yı seçin.
-1. Mantıksal uygulama, senaryoya yönelik temel adımları içerir. Ancak, Ethereum blok zinciri bağlayıcısının yapılandırma ayrıntılarını güncelleştirmeniz gerekir.
-1. **Bağlantılar** adımını seçin ve Azure blok zinciri hizmeti Ile [bir API bağlantısı oluşturun](#create-an-api-connection) veya değiştirin.
+1. Select **Designer** to switch to the designer view.
+1. The logic app includes the basic steps for the scenario. However, you need to update the configuration details for the Ethereum Blockchain connector.
+1. Select the **Connections** step and change or [create an API connection](#create-an-api-connection) to Azure Blockchain Service.
 
-    ![Bağlantı seçimiyle Tasarımcı görünümü](./media/ethereum-logic-app/microservice-logic-app.png)
+    ![Designer view with the Connections selection](./media/ethereum-logic-app/microservice-logic-app.png)
 
-1. Artık mantıksal uygulamanızı kullanabilirsiniz. REST tabanlı mikro hizmeti test etmek için mantıksal uygulama isteği URL 'sine bir HTTP POST isteği verin. Http **isteği alındığında** , ÖĞESINDEN **http post URL 'si** içeriğini kopyalayın.
+1. You can now use your logic app. To test the REST-based microservice, issue an HTTP POST request to the logic app request URL. Copy the **HTTP POST URL** contents from the **When a HTTP request is received** step.
 
-    ![HTTP POST URL 'SI ile Logic Apps tasarımcı bölmesi](./media/ethereum-logic-app/post-url.png)
+    ![Logic Apps Designer pane with the HTTP POST URL](./media/ethereum-logic-app/post-url.png)
 
-1. Bir HTTP POST isteği oluşturmak için kıvrımlı kullanın. \<yer tutucu metnini, *http post URL 'sini\>* ÖNCEKI adımdaki URL ile değiştirin.
+1. Use cURL to create an HTTP POST request. Replace the placeholder text *\<HTTP POST URL\>* with the URL from the previous step.
 
     ``` bash
     curl -d "{}" -H "Content-Type: application/json" -X POST "<HTTP POST URL>"
     ```
 
-    Kıvrımlı komutu mantıksal uygulamadan bir yanıt döndürür. Bu durumda, yanıt **RequestMessage** akıllı sözleşme işlevinin çıktıdır.
+    The cURL command returns a response from the logic app. In this case, the response is the output from the **RequestMessage** smart contract function.
 
-    ![RequestMessage akıllı sözleşme işlevinin kod çıktısı](./media/ethereum-logic-app/curl.png)
+    ![Code output from the RequestMessage smart contract function](./media/ethereum-logic-app/curl.png)
 
-Geliştirme setini kullanma hakkında daha fazla bilgi için bkz. [Ethereum wiki Için Azure blok zinciri geliştirme seti sayfası](https://github.com/Microsoft/vscode-azure-blockchain-ethereum/wiki).
+For more information about using the development kit, see the [Azure Blockchain Development Kit for Ethereum wiki page](https://github.com/Microsoft/vscode-azure-blockchain-ethereum/wiki).
 
-## <a name="create-an-api-connection"></a>API bağlantısı oluşturma
+## <a name="create-an-api-connection"></a>Create an API connection
 
-Ethereum blok zinciri Bağlayıcısı için bir blok zincirine yönelik bir API bağlantısı gereklidir. Birden çok Logic Apps için API bağlayıcısını kullanabilirsiniz. Bazı özellikler gereklidir ve diğerleri senaryonuza bağlıdır.
+An API connection to a blockchain is required for the Ethereum Blockchain connector. You can use the API connector for multiple logic apps. Some properties are required and others depend on your scenario.
 
 > [!IMPORTANT]
-> Bir blok zincirinde işlem oluşturmak için bir özel anahtar veya hesap adresi ve parola gereklidir. Yalnızca bir kimlik doğrulama biçimi gereklidir. Hem özel anahtar hem de hesap ayrıntılarını sağlamanız gerekmez. Sözleşmelerin sorgulanması bir işlem gerektirmez. Sözleşme durumunu sorgulayan eylemler kullanıyorsanız, özel anahtar veya hesap adresi ve parola gerekli değildir.
+> A private key or account address and password are required for creating transactions on a blockchain. Only one form of authentication is needed. You don't need to provide both the private key and account details. Querying contracts does not require a transaction. If you are using actions that query contract state, the private key or account address and password are not required.
 
-Azure blok zinciri hizmeti üyesine bağlantı ayarlamanıza yardımcı olması için aşağıdaki listede, senaryonuza bağlı olarak gereken özellikler vardır.
+To help you set up a connection to an Azure Blockchain Service member, the following list has possible properties you might need depending on your scenario.
 
 | Özellik | Açıklama |
 |----------|-------------|
-|**Bağlantı adı** | API bağlantısının adı. Gereklidir. |
-|**Ethereum RPC uç noktası** | Azure blok zinciri hizmeti işlem düğümünün HTTP adresi. Gereklidir. Daha fazla bilgi için bkz. [RPC uç noktasını edinme](#get-the-rpc-endpoint). |
-|**Özel anahtar** | Ethereum hesabı özel anahtarı. İşlemler için özel anahtar veya hesap adresi ve parola gereklidir. Daha fazla bilgi için bkz. [özel anahtarı edinme](#get-the-private-key). |
-|**Hesap adresi** | Azure blok zinciri hizmeti üyesi hesap adresi. İşlemler için özel anahtar veya hesap adresi ve parola gereklidir. Daha fazla bilgi için bkz. [Hesap adresini alın](#get-the-account-address). |
-|**Hesap parolası** | Üye oluşturduğunuzda hesap parolası ayarlanır. Parolayı sıfırlama hakkında daha fazla bilgi için bkz. [Ethereum hesabı](consortium.md#ethereum-account).|
+|**Bağlantı adı** | Name of the API connection. Gereklidir. |
+|**Ethereum RPC endpoint** | HTTP address of the Azure Blockchain Service transaction node. Gereklidir. For more information, see [Get the RPC endpoint](#get-the-rpc-endpoint). |
+|**Private key** | Ethereum account private key. Private key or account address and password are required for transactions. For more information, see [Get the private key](#get-the-private-key). |
+|**Account address** | Azure Blockchain Service member account address. Private key or account address and password are required for transactions. For more information, see [Get the account address](#get-the-account-address). |
+|**Account password** | The account password is set when you create the member. For information on resetting the password, see [Ethereum account](consortium.md#ethereum-account).|
 
-## <a name="get-the-rpc-endpoint"></a>RPC uç noktasını alın
+## <a name="get-the-rpc-endpoint"></a>Get the RPC endpoint
 
-Blok zinciri ağına bağlanmak için Azure blok zinciri hizmeti RPC uç noktası adresi gereklidir. Ethereum veya Azure portal için Azure blok zinciri geliştirme setini kullanarak uç nokta adresini alabilirsiniz.
+The Azure Blockchain Service RPC endpoint address is required to connect to a blockchain network. You can get the endpoint address by using the Azure Blockchain Development Kit for Ethereum or the Azure portal.
 
-**Geliştirme setini kullanmak için:**
+**To use the development kit:**
 
-1. Visual Studio Code 'de **Azure blok zinciri hizmeti** altında, konsorsiya sağ tıklayın.
-1. **RPC uç nokta adresini kopyala**' yı seçin.
+1. Under **Azure Blockchain Service** in Visual Studio Code, right-click the consortium.
+1. Select **Copy RPC Endpoint Address**.
 
-    ![RPC uç nokta adres seçimi ile konsorsiyumun gösterildiği Visual Studio Code bölmesi](./media/ethereum-logic-app/devkit-rpc.png)
+    ![Visual Studio Code pane showing the consortium with the Copy RPC Endpoint Address selection](./media/ethereum-logic-app/devkit-rpc.png)
 
-    RPC uç noktası panonuza kopyalanır.
+    The RPC endpoint is copied to your clipboard.
 
-**Azure portal kullanmak için:**
+**To use the Azure portal:**
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
-1. Azure blok zinciri hizmeti üyesine gidin. **İşlem düğümleri** ve varsayılan işlem düğümü bağlantısı ' nı seçin.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. Go to your Azure Blockchain Service member. Select **Transaction nodes** and the default transaction node link.
 
-    ![İşlem düğümleri sayfası (varsayılan düğüm) seçimi](./media/ethereum-logic-app/transaction-nodes.png)
+    ![Transaction nodes page with the (default node) selection](./media/ethereum-logic-app/transaction-nodes.png)
 
-1. **Erişim anahtarlarına** > **bağlantı dizeleri** seçin.
-1. Endpoint adresini **https (erişim anahtarı 1)** veya **https (erişim anahtarı 2)** konumundan kopyalayın.
+1. Select **Connection strings** > **Access keys**.
+1. Copy the endpoint address from **HTTPS (Access key 1)** or **HTTPS (Access key 2)** .
 
-    ![Bağlantı dizesi erişim anahtarlarıyla Azure portal](./media/ethereum-logic-app/connection-string.png)
+    ![Azure portal with the connection string access keys](./media/ethereum-logic-app/connection-string.png)
 
-    RPC uç noktası, Azure blok zinciri hizmeti üye işlem düğümünüz için adres ve erişim anahtarını içeren HTTPS URL 'sidir.
+    The RPC endpoint is the HTTPS URL, which includes the address and access key of your Azure Blockchain Service member transaction node.
 
-## <a name="get-the-private-key"></a>Özel anahtarı al
+## <a name="get-the-private-key"></a>Get the private key
 
-Blok zincirine bir işlem gönderirken kimlik doğrulaması yapmak için Ethereum hesabının özel anahtarını kullanabilirsiniz. Ethereum hesabınızın ortak ve özel anahtarları 12 sözcüklü bir anımsatıcı tarafından oluşturulmuştur. Ethereum için Azure blok zinciri geliştirme seti, bir Azure blok zinciri hizmeti Consortium üyesine bağlandığınızda bir anımsatıcı oluşturur. Endpoint adresini geliştirme seti uzantısını kullanarak alabilirsiniz.
+You can use the Ethereum account's private key to authenticate when sending a transaction to the blockchain. Your Ethereum account's public and private keys are generated from a 12-word mnemonic. The Azure Blockchain Development Kit for Ethereum generates a mnemonic when you connect to an Azure Blockchain Service consortium member. You can get the endpoint address by using the development kit extension.
 
-1. Visual Studio Code ' de, komut paleti ' ni (F1) açın.
-1. **Azure blok zincirini seçin: özel anahtar al**.
-1. Consortium üyesine bağlanırken kaydettiğiniz anımsatıcı ' u seçin.
+1. In Visual Studio Code, open the command palette (F1).
+1. Select **Azure Blockchain: Retrieve private key**.
+1. Select the mnemonic you saved when connecting to the consortium member.
 
-    ![Anımsatıcı seçme seçeneği içeren komut paleti](./media/ethereum-logic-app/private-key.png)
+    ![Command palette with an option to select the mnemonic](./media/ethereum-logic-app/private-key.png)
 
-    Özel anahtar panonuza kopyalanır.
+    The private key is copied to your clipboard.
 
-## <a name="get-the-account-address"></a>Hesap adresini al
+## <a name="get-the-account-address"></a>Get the account address
 
-Blok zincirine bir işlem gönderdiğinizde kimlik doğrulamak için üye hesabını ve parolayı kullanabilirsiniz. Üye oluşturduğunuzda parola ayarlanır.
+You can use the member account and password to authenticate when you send a transaction to the blockchain. The password is set when you create the member.
 
-1. Azure portal Azure blok zinciri hizmetine genel bakış sayfasına gidin.
-1. **Üye hesabı** adresini kopyalayın.
+1. In the Azure portal, go to your Azure Blockchain Service overview page.
+1. Copy the **Member account** address.
 
-    ![Üye hesap adresiyle genel bakış sayfası](./media/ethereum-logic-app/member-account.png)
+    ![Overview page with the member account address](./media/ethereum-logic-app/member-account.png)
 
-Hesap adresi ve parola hakkında daha fazla bilgi için bkz. [Ethereum hesabı](consortium.md#ethereum-account).
+For more information on the account address and password, see [Ethereum account](consortium.md#ethereum-account).
 
-## <a name="get-the-contract-abi"></a>Sözleşmeyi al ABı
+## <a name="get-the-contract-abi"></a>Get the contract ABI
 
-Sözleşme ABı, akıllı sözleşme arabirimlerini tanımlar. Akıllı sözleşmeyle nasıl etkileşim kuracağınızı açıklar. Ethereum için Azure blok zinciri geliştirme setini kullanarak sözleşme ABı edinebilirsiniz. Ayrıca, Solidity derleyicisi tarafından oluşturulan sözleşme meta verileri dosyasından de alabilirsiniz.
+The contract ABI defines the smart contract interfaces. It describes how to interact with the smart contract. You can get the contract ABI by using the Azure Blockchain Development Kit for Ethereum. You can also get it from the contract metadata file created by the Solidity compiler.
 
-**Geliştirme setini kullanmak için:**
+**To use the development kit:**
 
-Akıllı sözleşmenizi derlemek için geliştirme setini veya Truffle kullandıysanız, ABı sözleşmesini panoya kopyalamak için uzantısını kullanabilirsiniz.
+If you used the development kit or Truffle to build your smart contract, you can use the extension to copy the contract ABI to the clipboard.
 
-1. Visual Studio Code gezgin bölmesinde, Solidity projenizin **Build/Contracts** klasörünü genişletin.
-1. Sözleşme meta verileri JSON dosyasına sağ tıklayın. Dosya adı akıllı sözleşme adı ve ardından **. JSON** uzantısıdır.
-1. **Sözleşme ABI Kopyala**' yı seçin.
+1. In the Visual Studio Code explorer pane, expand the **build/contracts** folder of your Solidity project.
+1. Right-click the contract metadata JSON file. The file name is the smart contract name followed by the **.json** extension.
+1. Select **Copy Contract ABI**.
 
-    ![Sözleşmeyi Kopyala ABı seçimiyle Visual Studio Code bölmesi](./media/ethereum-logic-app/abi-devkit.png)
+    ![Visual Studio Code pane with the Copy Contract ABI selection](./media/ethereum-logic-app/abi-devkit.png)
 
-    Sözleşme ABı, panoya kopyalanır.
+    The contract ABI is copied to the clipboard.
 
-**Sözleşme meta verileri dosyasını kullanmak için:**
+**To use the contract metadata file:**
 
-1. Solidity projenizin **Build/Contracts** klasöründe yer alan Sözleşme meta veri dosyasını açın. Dosya adı akıllı sözleşme adı ve ardından **. JSON** uzantısıdır.
-1. JSON dosyasında **ABI** bölümünü bulun.
-1. **ABI** JSON dizisini kopyalayın.
+1. Open the contract metadata file contained in the **build/contracts** folder of your Solidity project. The file name is the smart contract name followed by the **.json** extension.
+1. Find the **abi** section in the JSON file.
+1. Copy the **abi** JSON array.
 
-    ![ABı kodu sözleşme meta veri dosyasında](./media/ethereum-logic-app/abi-metadata.png)
+    ![ABI code in the contract metadata file](./media/ethereum-logic-app/abi-metadata.png)
 
-## <a name="get-the-contract-bytecode"></a>Sözleşme bayt kodunu al
+## <a name="get-the-contract-bytecode"></a>Get the contract bytecode
 
-Sözleşme bayt kodu, Ethereum sanal makinesi tarafından yürütülen derlenmiş akıllı sözleşmedir. Ethereum için Azure blok zinciri geliştirme setini kullanarak sözleşme bytecode ' ü edinebilirsiniz. Ayrıca, Solidity derleyicisinden da alabilirsiniz.
+The contract bytecode is the compiled smart contract executed by the Ethereum virtual machine. You can get the contract bytecode by using the Azure Blockchain Development Kit for Ethereum. You can also get it from the Solidity compiler.
 
-**Geliştirme setini kullanmak için:**
+**To use the development kit:**
 
-Akıllı sözleşmenizi derlemek için geliştirme seti 'ni veya Truffle 'yı kullandıysanız, uzantıyı Pano bytecode 'suna kopyalamak için kullanabilirsiniz.
+If you used the development kit or Truffle to build your smart contract, you can use the extension to copy the contract bytecode to the clipboard.
 
-1. Visual Studio Code gezgin bölmesinde, Solidity projenizin **Build/Contracts** klasörünü genişletin.
-1. Sözleşme meta verileri JSON dosyasına sağ tıklayın. Dosya adı akıllı sözleşme adı ve ardından **. JSON** uzantısıdır.
-1. **Sözleşme bayt kodunu kopyala**' yı seçin.
+1. In the Visual Studio Code explorer pane, expand the **build/contracts** folder of your Solidity project.
+1. Right-click the contract metadata JSON file. The file name is the smart contract name followed by the **.json** extension.
+1. Select **Copy Contract Bytecode**.
 
-    ![Sözleşmeyi Kopyala bytecode seçimine sahip Visual Studio Code bölmesi](./media/ethereum-logic-app/bytecode-devkit.png)
+    ![Visual Studio Code pane with the Copy Contract Bytecode selection](./media/ethereum-logic-app/bytecode-devkit.png)
 
-    Sözleşme bayt kodu panoya kopyalanır.
+    The contract bytecode is copied to the clipboard.
 
-**Sözleşme meta verileri dosyasını kullanmak için:**
+**To use the contract metadata file:**
 
-1. Solidity projenizin **Build/Contracts** klasöründe yer alan Sözleşme meta veri dosyasını açın. Dosya adı akıllı sözleşme adı ve ardından **. JSON** uzantısıdır.
-1. JSON dosyasında **bytecode** öğesini bulun.
-1. **Bytecode** değerini kopyalayın.
+1. Open the contract metadata file contained in the **build/contracts** folder of your Solidity project. The file name is the smart contract name followed by the **.json** extension.
+1. Find the **bytecode** element in the JSON file.
+1. Copy the **bytecode** value.
 
-    ![Meta verilerde bytecode ile Visual Studio Code bölmesi](./media/ethereum-logic-app/bytecode-metadata.png)
+    ![Visual Studio Code pane with bytecode in the metadata](./media/ethereum-logic-app/bytecode-metadata.png)
 
-**Solidity derleyicisini kullanmak için:**
+**To use the Solidity compiler:**
 
-Sözleşme bytecode 'u oluşturmak için komut `solc --bin <smart contract>.sol` kullanın.
+Use the command `solc --bin <smart contract>.sol` to generate the contract bytecode.
 
-## <a name="get-the-contract-address"></a>Sözleşme adresini al
+## <a name="get-the-contract-address"></a>Get the contract address
 
-Sözleşme adresi, Ethereum blok zincirindeki akıllı anlaşma hedef adresidir. Bu adresi, bir akıllı sözleşmenin işlemini veya sorgu durumunu göndermek için kullanırsınız. Sözleşme adresini Truffle geçiş çıktısından veya anlaşma meta veri dosyasından alabilirsiniz.
+The contract address is the smart contract destination address on the Ethereum blockchain. You use this address to send a transaction or query state of a smart contract. You can get the contract address from the Truffle migration output or the contract metadata file.
 
-**Truffle geçişi çıkışını kullanmak için:**
+**To use the Truffle migrate output:**
 
-Truffle, akıllı sözleşmenin dağıtımından sonra sözleşme adresini görüntüler. **Sözleşme adresini** çıktıdan kopyalayın.
+Truffle displays the contract address after deployment of the smart contract. Copy the **contract address** from the output.
 
-![Visual Studio Code içindeki sözleşme adresiyle Truffle geçiş çıkışı](./media/ethereum-logic-app/contract-address-truffle.png)
+![Truffle migration output with the contract address in Visual Studio Code](./media/ethereum-logic-app/contract-address-truffle.png)
 
-**Sözleşme meta verileri dosyasını kullanmak için:**
+**To use the contract metadata file:**
 
-1. Solidity projenizin **Build/Contracts** klasöründe yer alan Sözleşme meta veri dosyasını açın. Dosya adı akıllı sözleşme adı ve ardından **. JSON** uzantısıdır.
-1. JSON dosyasındaki **ağlar** bölümünü bulun.
-1. Özel ağlar bir tamsayı ağ KIMLIĞI ile tanımlanır. Ağ bölümünün içinde adres değerini bulun.
-1. **Adres** değerini kopyalayın.
+1. Open the contract metadata file contained in the **build/contracts** folder of your Solidity project. The file name is the smart contract name followed by the **.json** extension.
+1. Find the **networks** section in the JSON file.
+1. Private networks are identified by an integer network ID. Find the address value within the network section.
+1. Copy the **address** value.
 
-![Visual Studio Code içinde adres değeri olan meta veriler](./media/ethereum-logic-app/contract-address-metadata.png)
+![Metadata with the address value in Visual Studio Code](./media/ethereum-logic-app/contract-address-metadata.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Logic Apps daha fazlasını yaparak](https://channel9.msdn.com/Shows/Blocktalk/Doing-more-with-Logic-Apps?term=logic%20apps%20blockchain&lang-en=true)videodaki yaygın senaryoları izleyin.
+Watch common scenarios in the video [Doing more with Logic Apps](https://channel9.msdn.com/Shows/Blocktalk/Doing-more-with-Logic-Apps?term=logic%20apps%20blockchain&lang-en=true).

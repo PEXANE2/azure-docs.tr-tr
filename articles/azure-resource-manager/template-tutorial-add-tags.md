@@ -1,48 +1,48 @@
 ---
-title: Öğretici-şablondaki kaynaklara etiketler ekleme
-description: Azure Resource Manager şablonunuzda dağıttığınız kaynaklara Etiketler ekleyin. Etiketler, kaynakları mantıksal olarak düzenlemenizi sağlar.
+title: Tutorial - add tags to resources in template
+description: Add tags to resources that you deploy in your Azure Resource Manager template. Tags let you logically organize resources.
 author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 663de1e341815eac039c49cee63f8a492b0cb7a9
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 078d85b3120baf5b8bea9c305fb1f97763f8df59
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150179"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406059"
 ---
-# <a name="tutorial-add-tags-in-your-resource-manager-template"></a>Öğretici: Kaynak Yöneticisi şablonunuzda etiketler ekleme
+# <a name="tutorial-add-tags-in-your-resource-manager-template"></a>Tutorial: Add tags in your Resource Manager template
 
-Bu öğreticide, şablonunuzda kaynaklara nasıl etiket ekleneceğini öğreneceksiniz. [Etiketler](resource-group-using-tags.md) , kaynaklarınızı mantıksal olarak düzenlemenize yardımcı olur. Etiket değerleri, maliyet raporlarında gösterilir. Bu öğreticinin tamamlandığı **8 dakika** sürer.
+In this tutorial, you learn how to add tags to resources in your template. [Tags](resource-group-using-tags.md) help you logically organize your resources. The tag values show up in cost reports. This tutorial takes **8 minutes** to complete.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-[Hızlı başlangıç şablonları hakkında öğreticiyi](template-tutorial-quickstart-template.md)tamamlamanızı öneririz, ancak bu gerekli değildir.
+We recommend that you complete the [tutorial about Quickstart templates](template-tutorial-quickstart-template.md), but it's not required.
 
-Kaynak Yöneticisi Araçları uzantısı ve Azure PowerShell ya da Azure CLı ile Visual Studio Code olması gerekir. Daha fazla bilgi için bkz. [şablon araçları](template-tutorial-create-first-template.md#get-tools).
+You must have Visual Studio Code with the Resource Manager Tools extension, and either Azure PowerShell or Azure CLI. For more information, see [template tools](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-your-template"></a>Şablonunuzu gözden geçirin
+## <a name="review-template"></a>Review template
 
-Önceki şablonunuz bir depolama hesabı, App Service planı ve Web uygulaması dağıttı.
+Your previous template deployed a storage account, App Service plan, and web app.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/quickstart-template/azuredeploy.json)]
 
-Bu kaynakları dağıttıktan sonra, maliyetleri izlemeniz ve bir kategoriye ait kaynakları bulmanız gerekebilir. Bu sorunları çözmeye yardımcı olmak için Etiketler ekleyebilirsiniz.
+After deploying these resources, you might need to track costs and find resources that belong to a category. You can add tags to help solve these issues.
 
 ## <a name="add-tags"></a>Etiket ekleme
 
-Kullanımları tanımlamanızı sağlayacak değerler eklemek için kaynakları etiketlerseniz. Örneğin, ortamı ve projeyi listelemek için Etiketler ekleyebilirsiniz. Bir maliyet merkezini veya kaynağa sahip olan takımı tanımlayan etiketler ekleyebilirsiniz. Kuruluşunuz için anlamlı olan tüm değerleri ekleyin.
+You tag resources to add values that help you identify their use. For example, you can add tags that list the environment and the project. You could add tags that identify a cost center or the team that owns the resource. Add any values that make sense for your organization.
 
-Aşağıdaki örnek, şablonda yapılan değişiklikleri vurgular. Tüm dosyayı kopyalayın ve şablonunuzu içeriğiyle değiştirin.
+The following example highlights the changes to the template. Copy the whole file and replace your template with its contents.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.json?range=1-118&highlight=46-52,64,78,100)]
 
-## <a name="deploy-the-template"></a>Şablonu dağıtma
+## <a name="deploy-template"></a>Şablon dağıtma
 
-Şablonun dağıtılması ve sonuçlara bakmaları zaman alabilir.
+It's time to deploy the template and look at the results.
 
-Kaynak grubunu oluşturmadıysanız, bkz. [kaynak grubu oluşturma](template-tutorial-create-first-template.md#create-resource-group). Örnek, **TemplateFile** değişkenini, [ilk öğreticide](template-tutorial-create-first-template.md#deploy-template)gösterildiği gibi şablon dosyası yolu olarak ayarlamış olduğunuzu varsayar.
+If you haven't created the resource group, see [Create resource group](template-tutorial-create-first-template.md#create-resource-group). The example assumes you've set the **templateFile** variable to the path to the template file, as shown in the [first tutorial](template-tutorial-create-first-template.md#deploy-template).
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -68,22 +68,22 @@ az group deployment create \
 
 ---
 
-## <a name="verify-the-deployment"></a>Dağıtımı doğrulama
+## <a name="verify-deployment"></a>Dağıtımı doğrulama
 
-Kaynak grubunu Azure portal inceleyerek dağıtımı doğrulayabilirsiniz.
+You can verify the deployment by exploring the resource group from the Azure portal.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
-1. Sol menüden **kaynak grupları**' nı seçin.
-1. Dağıttığınız kaynak grubunu seçin.
-1. Depolama hesabı kaynağı gibi kaynaklardan birini seçin. Artık etiketlere sahip olduğunu görürsünüz.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. From the left menu, select **Resource groups**.
+1. Select the resource group you deployed to.
+1. Select one of the resources, such as the storage account resource. You see that it now has tags.
 
-   ![Etiketleri göster](./media/template-tutorial-add-tags/show-tags.png)
+   ![Show tags](./media/template-tutorial-add-tags/show-tags.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bir sonraki öğreticiye geçiş yapıyorsanız, kaynak grubunu silmeniz gerekmez.
+If you're moving on to the next tutorial, you don't need to delete the resource group.
 
-Şimdi duruyorsa, kaynak grubunu silerek dağıttığınız kaynakları temizlemeniz gerekebilir.
+If you're stopping now, you might want to clean up the resources you deployed by deleting the resource group.
 
 1. Azure portalda, sol menüden **Kaynak grubu**’nu seçin.
 2. **Ada göre filtrele** alanına kaynak grubu adını girin.
@@ -92,7 +92,7 @@ Bir sonraki öğreticiye geçiş yapıyorsanız, kaynak grubunu silmeniz gerekme
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, kaynaklara Etiketler eklediniz. Sonraki öğreticide, değerleri şablona geçirmeyi kolaylaştırmak için parametre dosyalarını nasıl kullanacağınızı öğreneceksiniz.
+In this tutorial, you added tags to the resources. In the next tutorial, you'll learn how to use parameter files to simplify passing in values to the template.
 
 > [!div class="nextstepaction"]
-> [Parametre dosyası kullan](template-tutorial-use-parameter-file.md)
+> [Use parameter file](template-tutorial-use-parameter-file.md)

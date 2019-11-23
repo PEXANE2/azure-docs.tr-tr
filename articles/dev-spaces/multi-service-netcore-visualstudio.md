@@ -1,43 +1,43 @@
 ---
-title: .NET Core ve Visual Studio kullanarak birden çok bağımlı hizmet çalıştırma
+title: 'Running multiple dependent services: .NET Core & Visual Studio'
 services: azure-dev-spaces
 ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 07/09/2018
 ms.topic: tutorial
 description: Azure’da kapsayıcılar ve mikro hizmetlerle hızlı Kubernetes geliştirme
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
-ms.openlocfilehash: e1e4d12591ec969b70ab1b0eaef430f5a7c7b276
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
-ms.translationtype: HT
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, service mesh, service mesh routing, kubectl, k8s
+ms.openlocfilehash: 9fb6993c913454d67e2118cd3ff5a4b8fea6464b
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279576"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325696"
 ---
-# <a name="multi-service-development-with-azure-dev-spaces"></a>Azure Dev Spaces ile çoklu hizmet geliştirme
+# <a name="running-multiple-dependent-services-net-core-and-visual-studio-with-azure-dev-spaces"></a>Running multiple dependent services: .NET Core and Visual Studio with Azure Dev Spaces
 
-Bu öğreticide, dev alanlarının sağladığı bazı avantajlarla birlikte Azure Dev Spaces kullanarak çok hizmet uygulamaları geliştirmeyi öğreneceksiniz.
+In this tutorial, you'll learn how to develop multi-service applications using Azure Dev Spaces, along with some of the added benefits that Dev Spaces provides.
 
 ## <a name="call-another-container"></a>Başka bir kapsayıcı çağırma
-Bu bölümde, `mywebapi`ikinci bir hizmet oluşturacaksınız ve `webfrontend` bunu çağıracağız. Her hizmet ayrı kapsayıcılarda çalışır. Ardından her iki kapsayıcıda da hata ayıklayacaksınız.
+In this section, you're going to create a second service, `mywebapi`, and have `webfrontend` call it. Her hizmet ayrı kapsayıcılarda çalışır. Ardından her iki kapsayıcıda da hata ayıklayacaksınız.
 
 ![](media/common/multi-container.png)
 
 ### <a name="download-sample-code-for-mywebapi"></a>*mywebapi* için örnek kod indirme
-Zamandan kazanmak adına örnek kodu bir GitHub deposundan indirelim. [https://github.com/Azure/dev-spaces](https://github.com/Azure/dev-spaces) adresine gidip **Kopyala veya İndir**’i seçerek GitHub deposunu indirin. Bu bölümün kodu `samples/dotnetcore/getting-started/mywebapi` konumundadır.
+Zamandan kazanmak adına örnek kodu bir GitHub deposundan indirelim. https://github.com/Azure/dev-spaces adresine gidip **Kopyala veya İndir**’i seçerek GitHub deposunu indirin. Bu bölümün kodu `samples/dotnetcore/getting-started/mywebapi` konumundadır.
 
 ### <a name="run-mywebapi"></a>*mywebapi* hizmetini çalıştırın
 1. `mywebapi` projesini *ayrı bir Visual Studio penceresinde* açın.
-1. Daha önce **projesinde yaptığınız gibi başlatma ayarları açılır listesinden**Azure Dev Spaces`webfrontend` seçeneğini belirleyin. Bu sefer yeni bir AKS kümesi oluşturmak yerine, önceden oluşturduğunuz ortamı seçin. Önceki seferde olduğu gibi, Alan açılır listesini varsayılan `default` değerinde bırakın ve **Tamam**’a tıklayın. Çıkış penceresinde, hata ayıklamaya başladığınızda bunları hızlandırmak için Visual Studio 'Nun geliştirme alanınızda bu yeni hizmeti "ısınma" olarak başlatabileceğini fark edebilirsiniz.
+1. Daha önce `webfrontend` projesinde yaptığınız gibi başlatma ayarları açılır listesinden **Azure Dev Spaces** seçeneğini belirleyin. Bu sefer yeni bir AKS kümesi oluşturmak yerine, önceden oluşturduğunuz ortamı seçin. Önceki seferde olduğu gibi, Alan açılır listesini varsayılan `default` değerinde bırakın ve **Tamam**’a tıklayın. In the Output window, you may notice Visual Studio starts to "warm up" this new service in your dev space in order to speed up things when you start debugging.
 1. F5'e bastıktan sonra hizmetin oluşturulup dağıtılmasını bekleyin. Visual Studio durum çubuğu turuncuya döndüğünde hazır olduğunu biliyor olacaksınız
-1. **Çıkış** penceresindeki **aks için Azure dev Spaces** ' de görünen uç nokta URL 'sini göz önünde yararlanın. `http://localhost:<portnumber>` gibi görünür. Kapsayıcı yerel olarak çalışıyor gibi görünebilir, ancak gerçekte Azure’daki geliştirme ortamında çalışıyordur.
-2. `mywebapi` hazır olduğunda, tarayıcınızı localhost adresine açın ve `/api/values` için varsayılan GET API’yi çağırmak üzere URL’ye `ValuesController` öğesini ekleyin. 
+1. Take note of the endpoint URL displayed in the **Azure Dev Spaces for AKS** pane in the **Output** window. `http://localhost:<portnumber>` gibi görünür. Kapsayıcı yerel olarak çalışıyor gibi görünebilir, ancak gerçekte Azure’daki geliştirme ortamında çalışıyordur.
+2. `mywebapi` hazır olduğunda, tarayıcınızı localhost adresine açın ve `ValuesController` için varsayılan GET API’yi çağırmak üzere URL’ye `/api/values` öğesini ekleyin. 
 3. Tüm adımları başarılı olursa, `mywebapi` hizmetinden şöyle bir yanıt görebilmelisiniz.
 
     ![](media/get-started-netcore-visualstudio/WebAPIResponse.png)
 
 ### <a name="make-a-request-from-webfrontend-to-mywebapi"></a>*webfrontend*’den *mywebapi*’ye istek gönderme
-Şimdi `webfrontend` uygulamasında `mywebapi` hizmetine istek gönderen bir kod yazalım. `webfrontend` projesinin bulunduğu Visual Studio penceresine geçin. `HomeController.cs` dosyasında, hakkında yöntemi için kodu aşağıdaki kodla *değiştirin* :
+Şimdi `webfrontend` uygulamasında `mywebapi` hizmetine istek gönderen bir kod yazalım. `webfrontend` projesinin bulunduğu Visual Studio penceresine geçin. In the `HomeController.cs` file, *replace* the code for the About method with the following code:
 
    ```csharp
    public async Task<IActionResult> About()
@@ -62,14 +62,14 @@ Zamandan kazanmak adına örnek kodu bir GitHub deposundan indirelim. [https://g
    }
    ```
 
-Önceki kod örneğinde `azds-route-as` üst bilgisi gelen istekten giden isteğe iletilmektedir. Daha sonra bu, [Takım senaryolarında](team-development-netcore-visualstudio.md)daha üretken bir geliştirme deneyimini nasıl kolaylaştırdığını göreceksiniz.
+Önceki kod örneğinde `azds-route-as` üst bilgisi gelen istekten giden isteğe iletilmektedir. You'll see later how this facilitates a more productive development experience in [team scenarios](team-development-netcore-visualstudio.md).
 
 ### <a name="debug-across-multiple-services"></a>Birden çok hizmette hata ayıklama
 1. Bu noktada, `mywebapi` hizmetinin hata ayıklayıcısı ekli bir şekilde çalışmaya devam ediyor olması gerekir. Devam etmiyorsa, `mywebapi` projesinde F5'e basın.
-1. `Get(int id)` GET isteklerini işleyen `Controllers/ValuesController.cs` dosyasının içerdiği `api/values/{id}` yönteminde bir kesme noktası ayarlayın.
+1. `api/values/{id}` GET isteklerini işleyen `Controllers/ValuesController.cs` dosyasının içerdiği `Get(int id)` yönteminde bir kesme noktası ayarlayın.
 1. Yukarıdaki kodu yapıştırdığınız `webfrontend` projesinde, `mywebapi/api/values` konumuna GET isteği göndermeden hemen önce bir kesme noktası ayarlayın.
 1. `webfrontend` projesinde F5'e basın. Visual Studio yeniden uygun localhost bağlantı noktasına bir tarayıcı açar ve web uygulaması görüntülenir.
-1. **projesindeki kesme noktasını tetiklemek için sayfanın üst kısmındaki**Hakkında`webfrontend` bağlantısına tıklayın. 
+1. `webfrontend` projesindeki kesme noktasını tetiklemek için sayfanın üst kısmındaki **Hakkında** bağlantısına tıklayın. 
 1. Devam etmek için F10'a basın. `mywebapi` projesindeki kesme noktası tetiklenir.
 1. Devam etmek üzere F5’e basarak `webfrontend` projesindeki koda dönersiniz.
 1. F5’e bir kez daha bastığınızda istek tamamlanır ve tarayıcıda bir sayfa döndürülür. Web uygulamasında Hakkında sayfası iki hizmet tarafından birleştirilmiş bir ileti görüntüler: "Hello from webfrontend and Hello from mywebapi."
@@ -80,4 +80,4 @@ Artık her kapsayıcının ayrı ayrı geliştirilip dağıtılabileceği çok k
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Geliştirme alanlarında takım geliştirme hakkında bilgi edinin](team-development-netcore-visualstudio.md)
+> [Learn about team development in Dev Spaces](team-development-netcore-visualstudio.md)

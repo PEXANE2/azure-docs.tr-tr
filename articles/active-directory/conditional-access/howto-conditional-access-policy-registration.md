@@ -1,6 +1,6 @@
 ---
-title: Koşullu erişim-Birleşik güvenlik bilgileri-Azure Active Directory
-description: Güvenlik bilgileri kaydı için güvenilir bir konum gerektirmek üzere özel bir koşullu erişim ilkesi oluşturma
+title: Conditional Access - Combined security information - Azure Active Directory
+description: Create a custom Conditional Access policy to require a trusted location for security info registration
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,44 +11,44 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 771e4e0ecbda4baf1f38aacd1f39397875bbd0dc
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5864424f003ce9254a6452d8374d78c54516f2bc
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73150768"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74322742"
 ---
-# <a name="conditional-access-require-trusted-location-for-mfa-registration"></a>Koşullu erişim: MFA kaydı için güvenilen konum gerektir
+# <a name="conditional-access-require-trusted-location-for-mfa-registration"></a>Conditional Access: Require trusted location for MFA registration
 
-Kullanıcıların Azure Multi-Factor Authentication ve self servis parola sıfırlaması için ne zaman ve nasıl kaydoldığına ilişkin güvenlik, koşullu erişim ilkesindeki Kullanıcı eylemleri ile mümkün değildir. Bu önizleme özelliği, [birleştirilmiş kayıt önizlemesini](../authentication/concept-registration-mfa-sspr-combined.md)etkinleştirmiş kuruluşlar tarafından kullanılabilir. Bu işlev, kullanıcıların Azure Multi-Factor Authentication ve SSPR 'ye, HR ekleme sırasında güvenilen ağ konumu gibi merkezi bir konumdan kaydolmaları istedikleri kuruluşlarda etkinleştirilebilir. Koşullu erişimde güvenilen konumlar oluşturma hakkında daha fazla bilgi için [Azure Active Directory Koşullu erişim bölümünde konum koşulunun ne olduğuna](../conditional-access/location-condition.md#named-locations) bakın.
+Securing when and how users register for Azure Multi-Factor Authentication and self-service password reset is now possible with user actions in Conditional Access policy. This preview feature is available to organizations who have enabled the [combined registration preview](../authentication/concept-registration-mfa-sspr-combined.md). This functionality may be enabled in organizations where they want users to register for Azure Multi-Factor Authentication and SSPR from a central location such as a trusted network location during HR onboarding. For more information about creating trusted locations in Conditional Access, see the article [What is the location condition in Azure Active Directory Conditional Access?](../conditional-access/location-condition.md#named-locations)
 
-## <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>Güvenilen bir konumdan kayıt gerektirecek bir ilke oluşturun
+## <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>Create a policy to require registration from a trusted location
 
-Aşağıdaki ilke, birleştirilmiş kayıt deneyimini kullanarak kaydolmayı deneyen ve güvenilen ağ olarak işaretlenen bir konumdan bağlanmadıkları sürece erişimi engelleyen tüm seçili kullanıcılar için geçerlidir.
+The following policy applies to all selected users, who attempt to register using the combined registration experience, and blocks access unless they are connecting from a location marked as trusted network.
 
-1. **Azure Portal**, **koşullu erişim** > **Azure Active Directory** gidin.
-1. **Yeni ilke**' yi seçin.
-1. Ad alanına bu ilke için bir ad girin. Örneğin, **güvenilir ağlarda Birleşik güvenlik bilgileri kaydı**.
-1. **Atamalar**' ın altında, **Kullanıcılar ve gruplar**' a tıklayın ve bu ilkenin uygulanmasını istediğiniz kullanıcıları ve grupları seçin.
+1. In the **Azure portal**, browse to **Azure Active Directory** > **Conditional Access**.
+1. Select **New policy**.
+1. In Name, Enter a Name for this policy. For example, **Combined Security Info Registration on Trusted Networks**.
+1. Under **Assignments**, click **Users and groups**, and select the users and groups you want this policy to apply to.
 
    > [!WARNING]
-   > [Birleşik kayıt önizlemesi](../authentication/howto-registration-mfa-sspr-combined.md)için kullanıcıların etkinleştirilmiş olması gerekir.
+   > Users must be enabled for the [combined registration preview](../authentication/howto-registration-mfa-sspr-combined.md).
 
-1. **Bulut uygulamaları veya eylemler**altında **Kullanıcı eylemleri**' ni seçin, **güvenlik bilgilerini kaydet ' i (Önizleme)** işaretleyin.
-1. **Koşullar** ' ın altında **konumlar** > .
-   1. **Evet 'i**yapılandırın.
-   1. **Herhangi bir konum**ekleyin.
-   1. **Tüm güvenilen konumları**hariç tutun.
-   1. Konumlar dikey penceresinde **bitti** ' ye tıklayın.
-   1. Koşullar dikey penceresinde **bitti** ' ye tıklayın.
-1. **Erişim denetimleri** > **izin ver**' in altında.
-   1. **Erişimi engelle**' ye tıklayın.
+1. Under **Cloud apps or actions**, select **User actions**, check **Register security information (preview)** .
+1. Under **Conditions** > **Locations**.
+   1. Configure **Yes**.
+   1. Include **Any location**.
+   1. Exclude **All trusted locations**.
+   1. Click **Done** on the Locations blade.
+   1. Click **Done** on the Conditions blade.
+1. Under **Access controls** > **Grant**.
+   1. Click **Block access**.
    1. Ardından **Seç**'e tıklayın.
-1. **Etkin Ilkeyi** **Açık**olarak ayarlayın.
-1. Sonra **Oluştur**’a tıklayın.
+1. Set **Enable policy** to **On**.
+1. Daha sonra **Kaydet**'e tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Koşullu erişim ortak ilkeleri](concept-conditional-access-policy-common.md)
+[Conditional Access common policies](concept-conditional-access-policy-common.md)
 
-[Koşullu erişim What If aracını kullanarak oturum açma davranışının benzetimini yapma](troubleshoot-conditional-access-what-if.md)
+[Simulate sign in behavior using the Conditional Access What If tool](troubleshoot-conditional-access-what-if.md)

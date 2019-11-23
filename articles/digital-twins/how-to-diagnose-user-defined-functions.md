@@ -1,6 +1,6 @@
 ---
-title: UDF 'ler hata ayıklama-Azure dijital TWINS | Microsoft Docs
-description: Azure dijital TWINS 'de Kullanıcı tanımlı işlevlerde hata ayıklama için önerilen yaklaşımlar hakkında bilgi edinin.
+title: How to debug UDFs - Azure Digital Twins | Microsoft Docs
+description: Learn about recommended approaches to debug user-defined functions in Azure Digital Twins.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -9,103 +9,103 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 130250156f0fae3e6c40742278479b5d4612657b
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: a5f5729836e031b895fdb584efd971f2b8653353
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74005929"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383373"
 ---
-# <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Azure dijital TWINS 'de Kullanıcı tanımlı işlevlerde hata ayıklama
+# <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>How to debug user-defined functions in Azure Digital Twins
 
-Bu makalede, Azure dijital TWINS 'de Kullanıcı tanımlı işlevlerin nasıl tanılanacağı ve ayıklanacağı özetlenmektedir. Daha sonra, hata ayıklama sırasında bulunan en yaygın senaryolardan bazılarını tanımlar.
+This article summarizes how to diagnose and debug user-defined functions in Azure Digital Twins. Then, it identifies some of the most common scenarios found when debugging them.
 
 >[!TIP]
-> Etkinlik günlükleri, tanılama günlükleri ve Azure Izleyici kullanarak Azure dijital TWINS 'te hata ayıklama araçları ayarlama hakkında daha fazla bilgi edinmek için [izleme ve günlüğe kaydetme 'Yi nasıl yapılandıracağınızı](./how-to-configure-monitoring.md) okuyun.
+> Read [How to configure monitoring and logging](./how-to-configure-monitoring.md) to learn more about setting up debugging tools in Azure Digital Twins using Activity Logs, Diagnostic Logs, and Azure Monitor.
 
-## <a name="debug-issues"></a>Hata ayıklama sorunları
+## <a name="debug-issues"></a>Debug issues
 
-Azure dijital TWINS içindeki sorunların nasıl tanınacağına bilmek, sorunları etkili bir şekilde analiz etmenizi, sorunların nedenlerini belirlemenize ve bunlara uygun çözümler sağlamanıza olanak tanır.
+Knowing how to diagnose issues within Azure Digital Twins allows you to effectively analyze issues, identify the causes of problems, and provide appropriate solutions for them.
 
-Bu uca çeşitli günlük kaydı, analiz ve tanılama araçları sunulmaktadır.
+A variety of logging, analytics, and diagnostic tools are provided to that end.
 
-### <a name="enable-logging-for-your-instance"></a>Örneğiniz için günlüğe kaydetmeyi etkinleştirme
+### <a name="enable-logging-for-your-instance"></a>Enable logging for your instance
 
-Azure dijital TWINS, sağlam günlük kaydı, izleme ve analiz desteği. Çözümler geliştiricileri, IoT uygulamasının karmaşık izleme ihtiyaçlarını desteklemek için Azure Izleyici günlüklerini, tanılama günlüklerini, etkinlik günlüklerini ve diğer hizmetleri kullanabilirler. Günlüğe kaydetme seçenekleri, çeşitli hizmetlerde kayıtları sorgulamak veya göstermek ve birçok hizmet için parçalı günlük kapsamı sağlamak üzere birleştirilebilir.
+Azure Digital Twins supports robust logging, monitoring, and analytics. Solutions developers can use Azure Monitor logs, diagnostic logs, activity logs, and other services to support the complex monitoring needs of an IoT app. Logging options can be combined to query or display records across several services and to provide granular logging coverage for many services.
 
-* Azure dijital TWINS 'e özgü günlüğe kaydetme yapılandırması için, [izleme ve günlüğe kaydetmeyi yapılandırma](./how-to-configure-monitoring.md)makalesini okuyun.
-* Azure Izleyici ile etkin olan güçlü günlük ayarları hakkında bilgi edinmek için [Azure izleyicisine](../azure-monitor/overview.md) genel bakış bölümüne başvurun.
-* Azure dijital TWINS 'de Azure portal, Azure CLı veya PowerShell aracılığıyla tanılama günlüğü ayarlarını yapılandırmak için [Azure kaynaklarınızdaki günlük verilerini toplama ve](../azure-monitor/platform/resource-logs-overview.md) kullanma makalesini inceleyin.
+* For logging configuration specific to Azure Digital Twins, read [How to configure monitoring and logging](./how-to-configure-monitoring.md).
+* Consult the [Azure Monitor](../azure-monitor/overview.md) overview to learn about powerful log settings enabled through Azure Monitor.
+* Review the article [Collect and consume log data from your Azure resources](../azure-monitor/platform/resource-logs-overview.md) for configuring diagnostic log settings in Azure Digital Twins through the Azure portal, Azure CLI, or PowerShell.
 
-Yapılandırıldıktan sonra tüm günlük kategorilerini, ölçümleri seçebilir ve güçlü Azure Izleyici Log Analytics çalışma alanlarını kullanarak hata ayıklama çabalarınızı destekleyebilirsiniz.
+Once configured, you'll be able to select all log categories, metrics, and use powerful Azure Monitor log analytics workspaces to support your debugging efforts.
 
-### <a name="trace-sensor-telemetry"></a>İzleme algılayıcı telemetrisi
+### <a name="trace-sensor-telemetry"></a>Trace sensor telemetry
 
-Algılayıcı telemetrisini izlemek için, Azure dijital TWINS örneğiniz için tanılama ayarlarının etkinleştirildiğini doğrulayın. Sonra, istenen tüm günlük kategorilerinin seçili olduğundan emin olun. Son olarak, istenen günlüklerin Azure Izleyici günlüklerine gönderildiğinden emin olun.
+To trace sensor telemetry, verify that diagnostic settings are enabled for your Azure Digital Twins instance. Then, ensure that all desired log categories are selected. Lastly, confirm that the desired logs are being sent to Azure Monitor logs.
 
-Bir algılayıcı telemetri iletisini ilgili günlükleriyle eşleştirmek için, gönderilmekte olan olay verileri üzerinde bir bağıntı KIMLIĞI belirtebilirsiniz. Bunu yapmak için `x-ms-client-request-id` özelliğini bir GUID olarak ayarlayın.
+To match a sensor telemetry message to its respective logs, you can specify a Correlation ID on the event data being sent. To do so, set the `x-ms-client-request-id` property to a GUID.
 
-Telemetri gönderdikten sonra, set bağıntı KIMLIĞINI kullanarak günlükleri sorgulamak için Azure Izleyici Log Analytics 'i açın:
+After sending telemetry, open Azure Monitor log analytics to query for logs using the set Correlation ID:
 
 ```Kusto
 AzureDiagnostics
 | where CorrelationId == 'YOUR_CORRELATION_IDENTIFIER'
 ```
 
-| Sorgu değeri | Şununla değiştir |
+| Query value | Şununla değiştir |
 | --- | --- |
-| YOUR_CORRELATION_IDENTIFIER | Olay verilerinde belirtilen bağıntı KIMLIĞI |
+| YOUR_CORRELATION_IDENTIFIER | The Correlation ID that was specified on the event data |
 
-Tüm son telemetri günlükleri sorgusunu görmek için:
+To see all recent telemetry logs query:
 
 ```Kusto
 AzureDiagnostics
 | order by CorrelationId desc
 ```
 
-Kullanıcı tanımlı işleviniz için günlük kaydını etkinleştirirseniz, bu Günlükler Log Analytics Örneğinizde kategori `UserDefinedFunction`görüntülenir. Bunları almak için Log Analytics 'te aşağıdaki sorgu koşulunu girin:
+If you enable logging for your user-defined function, those logs appear in your log analytics instance with the category `UserDefinedFunction`. To retrieve them, enter the following query condition in log analytics:
 
 ```Kusto
 AzureDiagnostics
 | where Category == 'UserDefinedFunction'
 ```
 
-Güçlü sorgu işlemleri hakkında daha fazla bilgi için [sorguları](../azure-monitor/log-query/get-started-queries.md)kullanmaya başlama makalesini okuyun.
+For more information about powerful query operations, read [Getting started with queries](../azure-monitor/log-query/get-started-queries.md).
 
-## <a name="identify-common-issues"></a>Yaygın sorunları tanımla
+## <a name="identify-common-issues"></a>Identify common issues
 
-Hem tanılama hem de tanımlama yaygın sorunlar, çözümünüzde sorun giderirken önemlidir. Kullanıcı tanımlı işlevlerin geliştirilmesi sırasında yaygın olarak karşılaşılan birkaç sorun aşağıdaki alt bölümlerde özetlenir.
+Both diagnosing and identifying common issues are important when troubleshooting your solution. Several issues that are commonly encountered when developing user-defined functions are summarized in the following subsections.
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
-### <a name="check-if-a-role-assignment-was-created"></a>Rol atamasının oluşturulup oluşturulmadıysa denetle
+### <a name="check-if-a-role-assignment-was-created"></a>Check if a role assignment was created
 
-Yönetim API 'SI içinde oluşturulmuş bir rol ataması olmadan, Kullanıcı tanımlı işlevin bildirimleri gönderme, meta verileri alma ve topoloji içinde hesaplanan değerleri ayarlama gibi eylemleri gerçekleştirmek için erişimi yoktur.
+Without a role assignment created within the Management API, the user-defined function doesn't have access to perform any actions such as sending notifications, retrieving metadata, and setting computed values within the topology.
 
-Yönetim API 'niz aracılığıyla Kullanıcı tanımlı işleviniz için bir rol atamasının mevcut olup olmadığını denetleyin:
+Check if a role assignment exists for your user-defined function through your Management API:
 
-```plaintext
+```URL
 GET YOUR_MANAGEMENT_API_URL/roleassignments?path=/&traverse=Down&objectId=YOUR_USER_DEFINED_FUNCTION_ID
 ```
 
-| Parametre değeri | Şununla değiştir |
+| Parameter value | Şununla değiştir |
 | --- | --- |
-| YOUR_USER_DEFINED_FUNCTION_ID | Rol atamalarını almak için Kullanıcı tanımlı işlevin KIMLIĞI|
+| YOUR_USER_DEFINED_FUNCTION_ID | The ID of the user-defined function to retrieve role assignments for|
 
-Rol [ataması yoksa, Kullanıcı tanımlı işleviniz için rol ataması oluşturmayı](./how-to-user-defined-functions.md)öğrenin.
+Learn [How to create a role assignment for your user-defined function](./how-to-user-defined-functions.md), if no role assignments exist.
 
-### <a name="check-if-the-matcher-works-for-a-sensors-telemetry"></a>Eşleştirici 'nin bir sensör telemetri için çalışıp çalışmadığını denetle
+### <a name="check-if-the-matcher-works-for-a-sensors-telemetry"></a>Check if the matcher works for a sensor's telemetry
 
-Azure Digital TWINS örneklerinizin yönetim API 'sine karşı aşağıdaki çağrıdan, belirli bir eşleştirici belirtilen algılayıcı için geçerli olup olmadığını belirleyebilirsiniz.
+With the following call against your Azure Digital Twins instances' Management API, you're able to determine if a given matcher applies for the given sensor.
 
-```plaintext
+```URL
 GET YOUR_MANAGEMENT_API_URL/matchers/YOUR_MATCHER_IDENTIFIER/evaluate/YOUR_SENSOR_IDENTIFIER?enableLogging=true
 ```
 
 | Parametre | Şununla değiştir |
 | --- | --- |
-| *YOUR_MATCHER_IDENTIFIER* | Değerlendirmek istediğiniz eşleştirici KIMLIĞI |
-| *YOUR_SENSOR_IDENTIFIER* | Değerlendirmek istediğiniz sensör KIMLIĞI |
+| *YOUR_MATCHER_IDENTIFIER* | The ID of the matcher you wish to evaluate |
+| *YOUR_SENSOR_IDENTIFIER* | The ID of the sensor you wish to evaluate |
 
 Yanıt:
 
@@ -118,17 +118,17 @@ Yanıt:
 }
 ```
 
-### <a name="check-what-a-sensor-triggers"></a>Sensörlerin nasıl tetikleyeceğini denetleme
+### <a name="check-what-a-sensor-triggers"></a>Check what a sensor triggers
 
-Azure dijital TWINS yönetim API 'Lerine yönelik aşağıdaki çağrı sayesinde, belirtilen algılayıcı gelen telemetri tarafından tetiklenen Kullanıcı tanımlı işlevlerinizin tanımlayıcılarını belirleyebileceksiniz:
+With the following call against the Azure Digital Twins Management APIs, you're able to determine the identifiers of your user-defined functions triggered by the given sensor's incoming telemetry:
 
-```plaintext
+```URL
 GET YOUR_MANAGEMENT_API_URL/sensors/YOUR_SENSOR_IDENTIFIER/matchers?includes=UserDefinedFunctions
 ```
 
 | Parametre | Şununla değiştir |
 | --- | --- |
-| *YOUR_SENSOR_IDENTIFIER* | Telemetri göndermek için sensör KIMLIĞI |
+| *YOUR_SENSOR_IDENTIFIER* | The ID of the sensor to send telemetry |
 
 Yanıt:
 
@@ -159,11 +159,11 @@ Yanıt:
 ]
 ```
 
-### <a name="issue-with-receiving-notifications"></a>Bildirim alma ile ilgili sorun
+### <a name="issue-with-receiving-notifications"></a>Issue with receiving notifications
 
-Tetiklenen Kullanıcı tanımlı işlevden bildirimler almadığınızda, topoloji nesne türü parametresinin kullanılmakta olan tanımlayıcı türüyle eşleştiğini doğrulayın.
+When you're not receiving notifications from the triggered user-defined function, confirm that your topology object type parameter matches the type of identifier that's being used.
 
-**Yanlış** Örneğinde
+**Incorrect** Example:
 
 ```JavaScript
 var customNotification = {
@@ -173,9 +173,9 @@ var customNotification = {
 sendNotification(telemetry.SensorId, "Space", JSON.stringify(customNotification));
 ```
 
-Bu senaryo, kullanılan tanımlayıcı bir sensöre başvurduğundan, belirtilen topoloji nesne türü `Space`olduğu için ortaya çıkar.
+This scenario arises because the used identifier refers to a sensor while the topology object type specified is `Space`.
 
-**Doğru** Örneğinde
+**Correct** Example:
 
 ```JavaScript
 var customNotification = {
@@ -185,7 +185,7 @@ var customNotification = {
 sendNotification(telemetry.SensorId, "Sensor", JSON.stringify(customNotification));
 ```
 
-Bu sorunu çözmek için en kolay yol, meta veri nesnesi üzerinde `Notify` yöntemi kullanmaktır.
+The easiest way to not run into this issue is to use the `Notify` method on the metadata object.
 
 Örnek:
 
@@ -202,18 +202,18 @@ function process(telemetry, executionContext) {
 }
 ```
 
-## <a name="common-diagnostic-exceptions"></a>Yaygın tanılama özel durumları
+## <a name="common-diagnostic-exceptions"></a>Common diagnostic exceptions
 
-Tanılama ayarlarını etkinleştirirseniz, bu ortak özel durumlarla karşılaşabilirsiniz:
+If you enable diagnostic settings, you might encounter these common exceptions:
 
-1. **Daraltma**: Kullanıcı tanımlı Işleviniz, [hizmet limitleri](./concepts-service-limits.md) makalesinde özetlenen yürütme hızı sınırlarını aşarsa, bu kısıtlanacak. Azaltma sınırları sona erene kadar başka işlem başarılı bir şekilde yürütülmedi.
+1. **Throttling**: if your user-defined function exceeds the execution rate limits outlined in the [Service Limits](./concepts-service-limits.md) article, it will be throttled. No further operations are successfully executed until the throttling limits expire.
 
-1. **Veri bulunamadı**: Kullanıcı tanımlı işleviniz mevcut olmayan meta verilere erişmeye çalışırsa, işlem başarısız olur.
+1. **Data Not Found**: if your user-defined function attempts to access metadata that does not exist, the operation fails.
 
-1. **Yetkilendirilmemiş**: Kullanıcı tanımlı işlevinizde bir rol atama kümesi yoksa veya topolojiden belirli meta verilere erişmek için yeterli izin yoksa işlem başarısız olur.
+1. **Not Authorized**: if your user-defined function doesn't have a role assignment set or lacks enough permission to access certain metadata from the topology, the operation fails.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure dijital TWINS 'de [izleme ve günlükleri](./how-to-configure-monitoring.md) etkinleştirme hakkında bilgi edinin.
+- Learn how to enable [monitoring and logs](./how-to-configure-monitoring.md) in Azure Digital Twins.
 
-- Azure günlük seçenekleri hakkında daha fazla bilgi için [Azure etkinlik günlüğü ' ne genel bakış](../azure-monitor/platform/activity-logs-overview.md) makalesini okuyun.
+- Read the [Overview of Azure Activity log](../azure-monitor/platform/activity-logs-overview.md) article for more Azure logging options.

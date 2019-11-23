@@ -1,135 +1,135 @@
 ---
-title: Azure Farmtts dağıtma
-description: Farmtts 'nin nasıl dağıtılacağını açıklar
+title: Deploy Azure FarmBeats
+description: Describes how to deploy FarmBeats
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: acc64486ac8bd15a9abab1f2010ea56b752a1e86
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: ccd8fc293d284150d7318242b71a46a99fec12fa
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927678"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406317"
 ---
 # <a name="deploy-farmbeats"></a>FarmBeats'i dağıtma
 
-Bu makalede, Azure Farmtts 'nin nasıl ayarlanacağı açıklanır.
+This article describes how to set up Azure FarmBeats.
 
-Azure Farm, Azure bulutuna, telemetri veri toplamaya ve toplamaya yönelik sorunsuz sağlama ve cihaz bağlantısı sağlayan, verilere dayalı farkliğe yönelik sektöre özgü, genişletilebilir bir çözümdür. Azure Farmırts; kameralar, Drones, SOIL sensörleri ve buluttan cihazların yönetimi gibi çeşitli sensörler içerir. bu sayede, IoT-Ready (Nesnelerin İnterneti) cihazlar için Azure 'daki altyapı ve hizmetler, bir genişletilmiş Web ve mobil uygulamaya sağlanacak görselleştirme, uyarılar ve Öngörüler.
+Azure FarmBeats is an industry-specific, extensible solution for data-driven farming that enables seamless provisioning and sensor devices connectivity to Azure cloud, telemetry data collection, and aggregation. Azure FarmBeats has various sensors such as cameras, drones, soil sensors, and management of devices from the cloud, which includes infrastructure and services in Azure for the IoT-ready (Internet of Things) devices to an extendible web and mobile app to provide visualization, alerts, and insights.
 
 > [!NOTE]
-> Azure Farmtts yalnızca genel bulut ortamlarında desteklenir. Bulut ortamı hakkında daha fazla bilgi için bkz. [Azure](https://azure.microsoft.com/overview/what-is-a-public-cloud/).
+> Azure FarmBeats is supported only in Public Cloud Environments. For more information about cloud environment, see [Azure](https://azure.microsoft.com/overview/what-is-a-public-cloud/).
 
-Azure Farmtts aşağıdaki iki bileşene sahiptir:
+Azure FarmBeats has the following two components:
 
-- **Veri merkezi** -veri hub 'ı, mevcut veya yeni veri işlem hatlarından veri oluşturmanıza, depolamanıza, işlemenize ve Öngörüler sağlamanıza olanak tanıyan Azure Farmtts 'nin platform katmanıdır. Bu platform katmanı, tarım veri işlem hatlarınızı ve modellerini çalıştırmak ve oluşturmak için kullanışlıdır.
+- **Data hub** - Data hub is the platform layer of Azure FarmBeats that lets you build, store, process data and draw insights from existing or new data pipelines. This platform layer is useful to run and build your agriculture data pipelines and models.
 
-- **Hızlandırıcı** -Hızlandırıcı, önceden oluşturulmuş agricdefinitions modellerini kullanarak Azure farmtilerinin yeteneklerini göstermek üzere yerleşik bir uygulamaya sahip Azure farmtts 'nin çözüm katmanıdır. Bu çözüm katmanı, Grup sınırları oluşturmanıza ve grup sınırının bağlamı içindeki agricbir veri kaynağından Öngörüler çizmenize imkan tanır.
+- **Accelerator** - Accelerator is the solution layer of Azure FarmBeats that has a built-in application to illustrate the capabilities of Azure FarmBeats using the pre-created agriculture models. This solution layer lets you create farm boundaries and draw insights from the agriculture data within the context of the farm boundary.
 
-Azure Farmtts 'nin hızlı dağıtımı bir saatten kısa sürer. Veri merkezi ve hızlandırıcının maliyetleri, kullanıma göre farklılık gösterir.
+A quick deployment of Azure FarmBeats should take less than an hour. Costs for the Data hub and Accelerator vary based on usage.
 
-## <a name="deployed-resources"></a>Dağıtılan kaynaklar
+## <a name="deployed-resources"></a>Deployed resources
 
-Azure Farmtts dağıtımı, aboneliğiniz dahilinde aşağıdaki listelenen kaynakları oluşturur:
+Azure FarmBeats deployment creates the below listed resources within your subscription:
 
-|S.No  |Kaynak Adı  |Azure Farmtempts bileşeni  |
+|S.No  |Kaynak Adı  |Azure FarmBeats Component  |
 |---------|---------|---------|
-|1  |       Azure Cosmos DB   |  Veri Merkezi       |
-|2  |    Application Insights      |     Veri merkezi/Hızlandırıcı     |
-|3  |Redis için Azure Önbelleği   |Veri Merkezi   |
-|4  |       Azure Keykasası    |  Veri merkezi/Hızlandırıcı        |
-|5  |    Zaman Serisi Öngörüleri       |     Veri Merkezi      |
-|6 |      EventHub ad alanı    |  Veri Merkezi       |
-|7  |    Azure Data Factory V2       |     Veri merkezi/Hızlandırıcı      |
-|8  |Batch hesabı    |Veri Merkezi   |
-|9  |       Depolama hesabı     |  Veri merkezi/Hızlandırıcı        |
-|10  |    Mantıksal uygulama        |     Veri Merkezi      |
-|11  |    API bağlantısı        |     Veri Merkezi      |
-|12|      App Service      |  Veri merkezi/Hızlandırıcı       |
-|13 |    App Service planı        |     Veri merkezi/Hızlandırıcı      |
-|14 |Azure haritalar hesabı     |Hızlandır    |
-|15 |       Zaman Serisi Öngörüleri      |  Veri Merkezi     |
+|1  |       Azure Cosmos DB   |  Data hub       |
+|2  |    Application Insights      |     Data hub/Accelerator     |
+|3  |Redis için Azure Cache   |Data hub   |
+|4  |       Azure KeyVault    |  Data hub/ Accelerator        |
+|5  |    Zaman Serisi İçgörüleri       |     Data hub      |
+|6 |      EventHub Namespace    |  Data hub       |
+|7  |    Azure Data Factory V2       |     Data hub/ Accelerator      |
+|8  |Batch hesabı    |Data hub   |
+|9  |       Depolama hesabı     |  Data hub/ Accelerator        |
+|10  |    Mantıksal uygulama        |     Data hub      |
+|11  |    API connection        |     Data hub      |
+|12|      App service      |  Data hub/Accelerator       |
+|13 |    App service plan        |     Data hub/ Accelerator      |
+|14 |Azure Maps account     |Accelerator    |
+|15 |       Zaman Serisi İçgörüleri      |  Data hub     |
 
-Azure Farmırts, Azure Marketi 'nden indirebilirsiniz. Doğrudan Azure portal erişebilirsiniz.  
+Azure FarmBeats is available for you to download from the Azure Marketplace. You can access it directly from Azure portal.  
 
-## <a name="create-azure-farmbeats-offer-on-marketplace"></a>Market 'te Azure Farmırts teklifi oluşturma
+## <a name="create-azure-farmbeats-offer-on-marketplace"></a>Create Azure FarmBeats offer on marketplace
 
-Market 'te bir Azure Farmırts teklifi oluşturmak için aşağıdaki adımları kullanın:
+Use these steps to create an Azure FarmBeats offer in the marketplace:
 
-1. Azure portal oturum açın ve sağ üst köşedeki hesabınızı seçin ve Microsoft Azure Farmtts 'yi dağıtmak istediğiniz Azure AD kiracısına geçiş yapın.
-2. Azure Farmırts, Azure Marketi 'nde kullanılabilir. Market sayfasında "Şimdi al" seçeneğini belirleyin.
-3. Oluştur ' u seçin ve aşağıdaki bilgileri girin:
-    - Abonelik adı.
-    - Mevcut bir kaynak grubu adı (yalnızca boş kaynak grubu) veya Azure Farmtempts dağıtmak için yeni bir kaynak grubu oluşturun. Sonraki bölümlerde bu kaynak grubunu bir yere iade edin.
-4. Azure Farmtts 'yi yüklemek istediğiniz bölge. Şu anda şu bölgeleri aşağıda verilmiştir: Orta ABD, Batı Avrupa, Doğu ABD 2, Kuzey Avrupa, Batı ABD, Güneydoğu Asya, Doğu ABD, Avustralya Doğu, Batı ABD 2.
+1. Sign-in to the Azure portal and select your account in the top-right corner, and switch to the Azure AD tenant where you want to deploy Microsoft Azure FarmBeats.
+2. Azure FarmBeats is available at Azure Marketplace. On the marketplace page, select on “Get it Now”.
+3. Select Create and enter the following information:
+    - subscription name.
+    - an existing resource group name (empty resource group only) or create a new resource group for deploying Azure FarmBeats. Make a note of this resource group in subsequent sections.
+4. The region you want to install Azure FarmBeats. Currently Azure FarmBeats is supported in the following regions: Central US, West Europe, East US 2, North Europe, West US, Southeast Asia, East US, Australia East, West US 2.
 5. **Tamam**’ı seçin.
-Kullanım koşulları sayfası görüntülenir. Standart Market şartlarını gözden geçirin veya kullanım koşullarını gözden geçirmek için köprüyü seçin.
-6. **Kapat**' ı, sonra "kabul ediyorum" onay kutusunu seçin ve ardından **Oluştur**' u seçin.
-7. Azure Farmtts 'nin Son Kullanıcı Lisans Sözleşmesi 'ni (EULA) Market 'te başarıyla kapattınız.  
-7. Dağıtıma devam etmek için bu kılavuzdaki sonraki adımları izleyin.
+The Terms of use page appears. Review the standard marketplace terms or select the hyperlink to review the Terms of Use.
+6. Select **Close**, then the "I agree" checkbox and then select **Create**.
+7. You have now successfully signed Azure FarmBeats's End-user License agreement (EULA) on the marketplace.  
+7. To continue with the deployment, follow the next steps in this guide.
 
-## <a name="prepare"></a>Hazırlama
+## <a name="prepare"></a>Hazırlanın
 
-Azure Farmduytaları dağıtmak için aşağıdaki izinlere ihtiyacınız vardır:
+You need the following permissions for deploying Azure FarmBeats:
 
-- Kiracı: okuma erişimi
-- Abonelik: katkıda bulunan veya sahip
-- Kaynak grubu: sahip
+- Tenant: Read Access
+- Subscription: contributor or owner
+- Resource group: owner
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Dağıtımı başlatmadan önce aşağıdakilerden emin olun:
+Before initiating the deployment, ensure you've the following:
 
-- Sentinel hesabı
-- Azure Active Directory (AD) uygulama kaydı
+- Sentinel account
+- Azure Active Directory (AD) app registration
 
-## <a name="create-a-sentinel-account"></a>Sentinel hesabı oluşturma    
+## <a name="create-a-sentinel-account"></a>Create a sentinel account    
 
-Sentinel 'e sahip bir hesap, resmi web sitesinden cihazınızdan, Sentinel uydu canlandırın 'yi yüklemenize yardımcı olur. Ücretsiz bir hesap oluşturmak için aşağıdaki adımları izleyin:
+An account with sentinel helps you to download the sentinel satellite imagery from their official website to your device. Follow these steps to create a free account:
 
-https://scihub.copernicus.eu/dhus/#/self-registration kısmına gidin. Kayıt sayfasında, bir ad, soyadı, Kullanıcı adı, parola ve e-posta sağlayın.
-Onay için kayıtlı e-posta adresine bir doğrulama e-postası gönderilir. Bağlantıyı seçin ve onaylayın. Kayıt işleminiz tamamlanmıştır.
+https://scihub.copernicus.eu/dhus/#/self-registration kısmına gidin. In the registration page, provide a first name, last name, username, password, and email.
+A verification email will be sent to the registered email address for confirmation. Select the link and confirm. Your registration process is complete.
 
-## <a name="create-azure-ad-app-registration"></a>Azure AD uygulama kaydı oluşturma
+## <a name="create-azure-ad-app-registration"></a>Create Azure AD app registration
 
-Azure Farm, kimlik doğrulaması ve yetkilendirme için, aşağıdakileri içeren bir Azure Active Directory uygulaması kaydınız olmalıdır:
+For authentication and authorization on Azure FarmBeats, you must have an Azure active directory application registration which:
 
-- Durum 1: yükleyici otomatik olarak oluşturulabilir (gerekli kiracı, abonelik ve kaynak grubu erişim izinlerine sahip olmanız şartıyla).
-- 2\. durum: Azure Farmtts 'yi dağıtmaya başlamadan önce oluşturabilir ve yapılandırabilirsiniz (el ile adımlar gerekir).
+- Case 1: Installer can create automatically (provided you have the required tenant, subscription, and resource group access permissions).
+- Case 2: You can create and configure before deploying Azure FarmBeats (requires manual steps).
 
-**Durum 1**:: AAD uygulama kaydı oluşturma erişiminiz varsa, bu adımı atlayabilir ve yükleyicinin uygulama kaydını oluşturmasını sağlayabilirsiniz. Lütfen sonraki bölüme devam edin: [input. json dosyasını hazırlama](#prepare-input-json-file)
+**Case 1**: : If you have access to create an AAD app registration, you may skip this step and let the installer create the app registration. Please continue to the next section: [Prepare input.json file](#prepare-input-json-file)
 
-Zaten bir aboneliğiniz varsa, doğrudan bir sonraki yordama taşıyabilirsiniz.
+If you already have a subscription, you can directly moved to the next procedure.
 
-**Durum 2**: aboneliğiniz dahilinde BIR Azure AD uygulama kaydı oluşturmak ve yapılandırmak için yeterli haklara sahip olmadığınız durumlarda bu yöntem tercih edilen adımdır. Yöneticinizin, BT yöneticisinin Azure portal Azure AD uygulama kaydını otomatik olarak oluşturup yapılandırmasına yardımcı olacak [özel betiği](https://aka.ms/FarmBeatsAADScript)kullanmasını isteyin. PowerShell ortamını kullanarak bu özel betiği çalıştırmanın bir çıkışı olarak BT yöneticisinin sizinle bir Azure Active Directory Uygulama Istemci KIMLIĞI ve parola gizli anahtarı paylaşması gerekir. Bu değerleri bir yere unutmayın.
+**Case 2**: This method is the preferred step when you don't have enough rights to create and configure an Azure AD app registration within your subscription. Request your  admin to use the [custom script](https://aka.ms/FarmBeatsAADScript), which will help IT admin automatically generate and configure the Azure AD app registration on the Azure portal. As an output to running this custom script using PowerShell environment the IT admin needs to share an Azure Active Directory Application Client ID and password secret with you. Make a note of these values.
 
-Azure AD uygulaması kayıt betiğini çalıştırmak için aşağıdaki adımları kullanın:
+Use the following steps to run the Azure AD application registration script:
 
-1. [Betiği](https://aka.ms/FarmBeatsAADScript)indirin.
-2. Azure portal oturum açın ve aboneliğinizi ve AD kiracınızı seçin.
+1. Download [script](https://aka.ms/FarmBeatsAADScript).
+2. Sign in to Azure portal and select your subscription and AD tenant.
 3. Cloud Shell’i Azure portalında en üst gezinti bölmesinden başlatın.
 
-    ![Proje grubu ları](./media/prepare-for-deployment/navigation-bar-1.png)
+    ![Project Farm Beats](./media/prepare-for-deployment/navigation-bar-1.png)
 
 
-4. İlk kullanıcıdan, bir depolama hesabı ve Microsoft Azure dosya paylaşımının oluşturulması için bir abonelik seçmesi istenir. **Depolama oluştur**'u seçin.
-5. Kullanıcılardan ilk kez tercih edilen kabuk deneyimi (bash veya PowerShell seçimi) istenir. PowerShell ' i seçin.
-6. Betiği (adım 1 ' den Cloud Shell) karşıya yükleyin ve karşıya yüklenen dosyanın konumunu aklınızda edin.
+4. First-time users will be prompted to select a subscription to create a storage account and Microsoft Azure Files share. **Depolama oluştur**'u seçin.
+5. First time users will be prompted with a choice of preferred shell experience- Bash or PowerShell. Choose PowerShell.
+6. Upload the script (from step 1) to the Cloud Shell and note the location of the uploaded file.
 
     > [!NOTE]
-    > Varsayılan olarak, Giriş dizininize yüklenir.
+    > By default, it is uploaded to your home directory.
 
-    Aşağıdaki betiği kullanın:
+    Use the following script:
 
     ```azurepowershell-interactive
     ./create_aad_script.ps1
     ```
-7. Azure Farmıd 'leri dağıtan kişilerle paylaşmak için Azure AD uygulama KIMLIĞI ve istemci gizli anahtarı ' nı bir yere göz önünde yapın.
+7. Make a note of the Azure AD application ID and client secret to share with person deploying Azure FarmBeats.
 
-### <a name="prepare-input-json-file"></a>Giriş json dosyasını hazırla
+### <a name="prepare-input-json-file"></a>Prepare Input Json file
 
-Yükleme kapsamında, aşağıdaki gibi bir input. JSON dosyası oluşturun:
+As part of the installation, create an input.json file as follows:
 
 ```json
     {  
@@ -146,46 +146,46 @@ Yükleme kapsamında, aşağıdaki gibi bir input. JSON dosyası oluşturun:
     }
 ```
 
-Bu dosya, Azure Cloud Shell ve yükleme sırasında değerleri kullanılan parametrelere sahip olan giriş dosyasıdır. JSON 'daki tüm parametrelerin uygun değerlerle değiştirilmeleri veya kaldırılması gerekir; kaldırılırsa, yükleyici yükleme sırasında sizden istemde yer alacak
+This file is your input file to Azure Cloud Shell and parameters whose values are used during the installation. All params in the json needs to be replaced with appropriate values or removed; if removed, installer will prompt you during installation
 
 
-Dosyayı hazırlamadan önce parametreleri gözden geçirin.
+Review the parameters before preparing the file.
 
 |Komut | Açıklama|
 |--- | ---|
-|isteyin  | Azure Farmtts bileşenlerinin birini ya da her ikisini de indirmek için bir seçenek sağlar. Hangi bileşenlerin indirileceği belirtir. Yalnızca veri merkezini yüklemek için "onlydatabhub" kullanın. Veri merkezini ve hızlandırıcıyı yüklemek için "her ikisi de" kullanın|
-|subscriptionId | Farmtts yükleme aboneliğini belirtir|
-|datahubResourceGroup| Veri merkezi kaynakları için kaynak grubu adı|
-|location |Kaynakları oluşturmak istediğiniz konum|
-|Ivatorwebsitename |Veri merkezinizi adlandırmak için benzersiz URL öneki|
-|Ivatorresourcegroup  | Hızlandırıcı Web sitenizi adlandırmak için benzersiz URL ön eki.|
-|datahubWebsiteName  | Veri Merkezi Web sitenizi adlandırmak için Uıunique URL öneki. |
-|sentinelUsername | oturum açmak için Kullanıcı adı: https://scihub.copernicus.eu/dhus/#/self-registration.|
-|Notificationemapostaadresi  | Veri merkezi içinde yapılandırdığınız tüm uyarılar için bildirimleri alacak e-posta adresi.|
-|updateIfExists|Seçim Yalnızca var olan bir Farmtts örneğini yükseltmek istiyorsanız Input. JSON içine dahil edilecek parametre. Yükseltme için diğer ayrıntılar örn. kaynak grubu adları, konumlar vb. aynı olmalıdır.|
-|Aadappclientıd | [**Isteğe bağlı**] Yalnızca Azure AD uygulaması zaten varsa Input. JSON içine dahil edilecek parametre.  |
-|aadAppClientSecret  | [**Isteğe bağlı**] Yalnızca Azure AD uygulaması zaten varsa Input. JSON içine dahil edilecek parametre.|
+|sku  | Provides a choice to download either or both the components of Azure FarmBeats. Specifies which components to download. To install only Data hub, use “onlydatabhub”. To install Data hub and Accelerator, use “both”|
+|subscriptionId | Specifies the subscription for installing Azure FarmBeats|
+|datahubResourceGroup| Resource group name for Data hub resources|
+|location |Location where you would like to create the resources|
+|acceleratorWebsiteName |Unique URL prefix to name your Data hub|
+|acceleratorResourceGroup  | Unique URL prefix to name your accelerator website.|
+|datahubWebsiteName  | UUnique URL prefix to name your Data hub website. |
+|sentinelUsername | user name to sign into: https://scihub.copernicus.eu/dhus/#/self-registration.|
+|notificationEmailAddress  | Email address to receive the notifications for any alerts that you configure within Data hub.|
+|updateIfExists|[Optional] Parameter to be included within Input.Json only if you want to upgrade an existing Azure FarmBeats instance. For upgrade, other details eg. the resource group names, locations etc. need to be the same.|
+|aadAppClientId | [**Optional**] Parameter to be included within Input.Json only if Azure AD app already exists.  |
+|aadAppClientSecret  | [**Optional**] Parameter to be included within Input.Json only if Azure AD app already exists.|
 
-## <a name="deploy-within-cloud-shell-browser-based-command-line"></a>Cloud Shell tarayıcı tabanlı komut satırı içinde dağıtın
+## <a name="deploy-within-cloud-shell-browser-based-command-line"></a>Deploy within Cloud Shell browser-based command line
 
-Yukarıdaki Market iş akışının bir parçası olarak, bir kaynak grubu oluşturmuş ve Son Kullanıcı Lisans sözleşmesini imzaladığınızdan, bu, gerçek dağıtımın bir parçası olarak bir kez daha gözden geçirilebilmeniz gerekir. Dağıtım, Bash ortamı kullanılarak Azure Cloud Shell (tarayıcı tabanlı komut satırı) aracılığıyla yapılabilir. Lütfen Cloud Shell aracılığıyla dağıtılacak sonraki bölümlere devam edin.
+As part of the marketplace workflow above, you must have created one Resource Group and signed the End-user License Agreement, which can be reviewed once again as part of the actual deployment. The deployment can be done via Azure Cloud Shell (browser-based command line) using Bash environment. Please continue to the next sections to deploy via the Cloud Shell.
 
 > [!NOTE]
-> Etkin olmayan Cloud Shell oturumlarının süresi 20 dakika sonra dolacak. Bu süre içinde dağıtımı tamamlamayı deneyin.
+> Inactive Cloud Shell sessions expire after 20 minutes. Try to complete the deployment within this time.
 
-1. Azure portal oturum açın ve istediğiniz aboneliği ve AD kiracıyı seçin.
+1. Sign into Azure portal and select the desired subscription and AD tenant.
 2. Cloud Shell’i Azure portalında en üst gezinti bölmesinden başlatın.
-3. Cloud Shell ilk kez kullanıyorsanız, bir depolama hesabı ve Microsoft Azure dosya paylaşımının oluşturulması için bir abonelik seçmeniz istenir.
-4. **Depolama oluştur**' u seçin.  
+3. If you are using the Cloud Shell for the first time, you will be prompted to select a subscription to create a storage account and Microsoft Azure Files share.
+4. Select **Create Storage**.  
 
-Ortamı Bash (PowerShell değil) olarak seçin.
+Select the environment as Bash (and not PowerShell).
 
-## <a name="deployment-scenario-1"></a>Dağıtım senaryosu 1
+## <a name="deployment-scenario-1"></a>Deployment scenario 1
 
-Yükleyici Azure AD Uygulaması kaydını (Yukarıdaki durum 1) oluşturur
+Installer creates the Azure AD App Registration (Case 1 above)
 
-1. Aşağıdaki şablonu kopyalayın ve input. JSON olarak adlandırın.  
-Örnek JSON girişi:
+1. Copy the following template and name it to input.json.  
+Sample JSON input:
 
     ```json
     {  
@@ -202,40 +202,40 @@ Yükleyici Azure AD Uygulaması kaydını (Yukarıdaki durum 1) oluşturur
     }
     ```
 
-2. Dosyayı kaydedin ve yolu (yerel bilgisayarınızda) bir yere göz önünde yapın.
-3. Azure Cloud Shell gidin ve başarılı kimlik doğrulamasından sonra karşıya yükle ' yi seçin (aşağıdaki görüntüde vurgulanan simgeye bakın) ve input. json dosyasını Cloud Shell depolama alanına yükleyin.  
+2. Save the file and make a note of the path (on your local computer).
+3. Go to Azure Cloud Shell and after successful authentication, select the upload (see highlighted icon in below image) and upload the input.json file to Cloud Shell storage.  
 
-    ![Proje grubu ları](./media/prepare-for-deployment/bash-2-1.png)
+    ![Project Farm Beats](./media/prepare-for-deployment/bash-2-1.png)
 
-4. Cloud Shell 'de Giriş dizininize gidin. Varsayılan olarak,/Home/<username>
-5. Aşağıdaki komutu Cloud Shell yazın veya yapıştırın. Girişin yolunu değiştirdiğinizden emin olun. JSON dosyası ve ENTER tuşuna basın.
+4. Go to your home directory in the cloud shell. By default, it is /home/<username>
+5. Type or paste the following command into the Cloud Shell. Make sure to modify the path to input. Json file and press enter.
 
    ```bash
       wget -O farmbeats-installer.sh https://aka.ms/AzureFarmbeatsInstallerScript && bash farmbeats-installer.sh /home/<username>/input.json
     ```
-     Yükleyici tüm bağımlılıkları otomatik olarak indirir ve dağıtıcıyı oluşturur. Azure Farmınts Son Kullanıcı Lisans Sözleşmesi 'ni (EULA) kabul etmeniz istenir.
+     The installer automatically downloads all dependencies and builds the deployer. You will be prompted to agree to the Azure FarmBeats End-user license agreement (EULA).
 
-     - Kabul ediyorsanız ' Y ' yazın ve sonraki adıma ilerlemeniz gerekir.
-     - Koşulları kabul etmiyorsanız ve dağıtım sonlanacak olursa ' N ' girin.
+     - Enter ‘Y’ if you agree and you will proceed to the next step.
+     - Enter ‘N’ if you do not agree to the terms and the deployment will terminate.
 
-6. Ardından dağıtım için bir erişim belirteci girmeniz istenir. Oluşturulan kodu kopyalayın ve Azure kimlik bilgilerinizle https://microsoft.com/devicelogin oturum açın.
+6. Then you will be prompted to enter an access token for the deployment. Copy the code generated and login to https://microsoft.com/devicelogin with your Azure credentials.
 
     > [!NOTE]
-    > Belirtecin süresi 60 dakika sonra dolar. Süresi sona erdiğinde, dağıtım komutunu yeniden yazarak yeniden başlatabilirsiniz.
+    > The token expires after 60 minutes. When it expires you can restart by typing the deployment command again.
 
-7. İstendiğinde, Sentinel hesap parolanızı girin.
-8. Yükleyici şimdi doğrular ve dağıtımı başlatır. Bu işlem 20 dakika sürebilir.
-9. Dağıtım başarılı olduktan sonra aşağıdaki çıkış bağlantılarını alacaksınız:
+7. When prompted, enter your Sentinel account password.
+8. The installer now validates and starts deploying, which can take about 20 minutes.
+9. Once the deployment is successful, you will receive the below output links:
 
- - **Veri merkezi URL 'si**: Azure Farmtts API 'lerini denemek için Swagger bağlantısı.
- - **HıZLANDıRıCı URL**: Azure Farmtts akıllı grup hızlandırıcıyı keşfetmeye yönelik kullanıcı arabirimi.
- - **Deployer günlük dosyası**-dağıtım sırasında oluşturulan günlük dosyası. Gerekirse, sorun giderme için kullanılabilir.
+ - **Data hub URL**: Swagger link to try Azure FarmBeats APIs.
+ - **Accelerator URL**: User Interface to explore Azure FarmBeats Smart Farm Accelerator.
+ - **Deployer log file**- Log file created during deployment. It can be used for troubleshooting if required.
 
-## <a name="deployment-scenario-2"></a>Dağıtım senaryosu 2
+## <a name="deployment-scenario-2"></a>Deployment scenario 2
 
-Dağıtım için mevcut Azure Active Directory uygulama kaydı kullanılıyor (Yukarıdaki durum 2)
+Existing Azure Active Directory app registration is used to deploy (Case 2 above)
 
-1. Azure Uygulama Istemci KIMLIĞINI ve parolayı input. JSON içinde içeren aşağıdaki JSON dosyasını kopyalayın ve kaydedin.
+1. Copy the below JSON file, which includes the Azure Application Client ID and password in the input.json, and save it.
 
     ```json
    {
@@ -256,109 +256,109 @@ Dağıtım için mevcut Azure Active Directory uygulama kaydı kullanılıyor (Y
    }
    ```
 
-Kalan adımları izleyin:
+Follow the rest of the steps:
 
-2. İnput. JSON dosyanızın yolunu (yerel bilgisayarınızda) bir yere unutmayın.
-3. Azure Cloud Shell yeniden bir kez daha gidin ve başarıyla kimliğiniz doğrulandıktan sonra karşıya yükle düğmesini (aşağıdaki görüntüde vurgulanan simgeye bakın) seçin ve input. json dosyasını Cloud Shell depolama alanına yükleyin.
+2. Make a note of the path to your input.json file (on your local computer).
+3. Go to Azure Cloud Shell once again and you're successfully authenticated, select the upload button (see highlighted icon in below image) and upload the input.json file to Cloud Shell storage.
 
-    ![Proje grubu ları](./media/prepare-for-deployment/bash-2-1.png)
+    ![Project Farm Beats](./media/prepare-for-deployment/bash-2-1.png)
 
-4. Cloud Shell 'de Giriş dizininize gidin. Varsayılan olarak,/Home/<username>
-5. Aşağıdaki komutu Cloud Shell yazın veya yapıştırın. Girişin yolunu değiştirdiğinizden emin olun. JSON dosyası ve ENTER tuşuna basın.
+4. Go to your home directory in the cloud shell. By default, it is /home/<username>
+5. Type or paste the following command into the Cloud Shell. Make sure to modify the path to input. Json file and press enter.
 
     ```bash
     wget -O farmbeats-installer.sh https://aka.ms/AzureFarmbeatsInstallerScript && bash farmbeats-installer.sh /home/<username>/input.json
     ```
 
-Ekrandaki yönergeleri izleyin.
+Follow the onscreen instructions.
 
-6. Komut dosyası tüm bağımlılıkları otomatik olarak indirir ve dağıtıcı oluşturur.
-7. Azure Farmınts Son Kullanıcı Lisans Sözleşmesi 'ni (EULA) okuyup kabul etmeniz istenir.
+6. The script automatically downloads all dependencies and builds the deployer.
+7. You will be prompted to read and agree to the Azure FarmBeats End-user license agreement (EULA).
 
-    - Kabul ediyorsanız ' Y ' girin ve sonraki adımla devam edersiniz.
-    - Koşulları kabul etmiyorsanız ve dağıtım sonlanacak olursa ' N ' girin.
+    - Enter 'Y' if you agree and you will continue to the next step.
+    - Enter 'N' if you don't agree to the terms and the deployment will terminate.
 
-8. Dağıtım için bir erişim belirteci girmeniz istenir. Oluşturulan kodu kopyalayın ve Azure kimlik bilgilerinizle https://microsoft.com/devicelogin oturum açın.
-9. Yükleyici artık 20 dakika sürebilecek kaynakları doğrular ve oluşturmaya başlar. Bu süre boyunca Cloud Shell oturumun etkin kalmasını sağlayın.
-10. Dağıtım başarıyla tamamlandıktan sonra aşağıdaki çıkış bağlantılarını alacaksınız:
+8. You will be prompted to enter an access token for the deployment. Copy the code generated and sign in to https://microsoft.com/devicelogin with your Azure credentials.
+9. The installer will now validate and start creating the resources, which can take about 20 minutes. Keep the session active on Cloud Shell during this time.
+10. Once the deployment goes through successfully, you will receive the below output links:
 
- - **Veri merkezi URL 'si**: Farmtts API 'lerini denemek için Swagger bağlantısı.
- - **HıZLANDıRıCı URL**: Farmtts akıllı grup hızlandırıcıyı keşfetmeye yönelik kullanıcı arabirimi.
- - **Deployer günlüğü dosyası**: dağıtım sırasında günlük dosyası oluşturuldu. Gerekirse, sorun giderme için kullanılabilir.
+ - **Data hub URL**: Swagger link to try Azure FarmBeats APIs.
+ - **Accelerator URL**: User Interface to explore Azure FarmBeats Accelerator.
+ - **Deployer log file**: Log file created during deployment. It can be used for troubleshooting if required.
 
-Herhangi bir sorunla karşılaşırsanız [sorun giderme](troubleshoot-project-farmbeats.md)' yi gözden geçirin.
+If you encounter any issues, review [Troubleshoot](troubleshoot-project-farmbeats.md).
 
 
-## <a name="validate-deployment"></a>Dağıtımı doğrula
+## <a name="validate-deployment"></a>Validate deployment
 
-### <a name="data-hub"></a>Veri Merkezi
+### <a name="data-hub"></a>Data hub
 
-Veri merkezi yüklemesi tamamlandıktan sonra, Şu biçimdeki Swagger arabirimi aracılığıyla Azure Farmınts API 'Lerine erişmek için URL 'YI alacaksınız: https://\<yourdatahub-website-name >. azurewebsites. net
+Once the data hub installation is complete, you'll receive the URL to access Azure FarmBeats APIs via the Swagger interface in the format: https://\<yourdatahub-website-name>.azurewebsites.net/swagger
 
-1. Swagger aracılığıyla oturum açmak için URL 'YI kopyalayıp tarayıcıya yapıştırın.
-2. Azure portal kimlik bilgileriyle oturum açın.
-3. Sanity testi (Isteğe bağlı)
+1. To sign in via Swagger, copy and paste the URL in the browser.
+2. Sign in with Azure portal credentials.
+3. Sanity test (Optional)
 
-     - Başarılı bir dağıtıma çıkış olarak aldığınız veri merkezi bağlantısını kullanarak Swagger portalında başarıyla oturum açabiliyor.
-     - Genişletilmiş türler API al-"deneyin/kapat" seçeneğini belirleyin
-     - Sunucu yanıt kodu 200 ' i almalısınız ve 403 "yetkisiz Kullanıcı" gibi bir özel durum değil.
+     - Able to successfully sign in to the Swagger portal using the Data hub link, which you received as an output to a successful deployment.
+     - Extended types Get API- Select "Try it out /Execute"
+     - You should receive the server response Code 200 and not an exception such as 403 "unauthorized user".
 
-### <a name="accelerator"></a>Hızlandır
+### <a name="accelerator"></a>Accelerator
 
-Hızlandırıcı yüklemesi tamamlandıktan sonra, Şu biçimdeki Farmtts Kullanıcı arabirimine erişmek için URL 'YI alacaksınız: https://\<Hızlandırıcısı-Web sitesi-adı >. azurewebsites. net
+Once the Accelerator installation is complete, you'll receive the URL to access Azure FarmBeats user-interface in the format: https://\<accelerator-website-name>.azurewebsites.net
 
-1. Hızlandırıcının oturumunu açmak için URL 'YI kopyalayıp tarayıcıya yapıştırın.
-2. Azure portal kimlik bilgileriyle oturum açın.
+1. To sign in from Accelerator, copy and paste the URL in the browser.
+2. Sign in with Azure portal credentials.
 
-## <a name="upgrade"></a>Yükseltme
+## <a name="upgrade"></a>Yükseltin
 
-Yükseltme adımları, ilk kez yüklemeye benzerdir. Şu adımları uygulayın:
+The steps for upgrade are similar to the first-time installation. Şu adımları uygulayın:
 
-1. Azure portal için oturum açın ve istediğiniz abonelik ve AD kiracınızı seçin.
+1. Sign in to Azure portal and select your desired subscription and AD tenant.
 2. Cloud Shell’i Azure portalında en üst gezinti bölmesinden başlatın.
 
-   ![Proje grubu ları](./media/prepare-for-deployment/navigation-bar-1.png)
+   ![Project Farm Beats](./media/prepare-for-deployment/navigation-bar-1.png)
 
-3. Kabuğun solundaki açılan listeden "Bash" olarak ortamı seçin.
-4. Yalnızca gerektiğinde input. JSON dosyanızda değişiklik yapın ve Azure Cloud Shell yükleyin. Örneğin, e-posta adresinizi almak istediğiniz bildirim için güncelleştirebilirsiniz.
-5. Input. json dosyasını Azure Cloud Shell karşıya yükleyin.
-6. Aşağıdaki iki komutu Cloud Shell yazın veya yapıştırın. İnput. json dosyasının yolunu değiştirdiğinizden emin olun ve ENTER tuşuna basın.
+3. Select the environment as “Bash” from the drop-down from the left of the of shell.
+4. Make changes to your input.json file only if needed and upload to the Azure Cloud Shell. For example, you can update your email address for the notification you want to receive.
+5. Upload the input.json file to Azure Cloud Shell.
+6. Type or paste the following two commands into the Cloud Shell. Make sure to modify the path to input.json file and press enter.
 
     ```bash
     wget -O farmbeats-installer.sh https://aka.ms/AzureFarmbeatsInstallerScript && bash farmbeats-installer.sh /home/<username>/input.json
     ```
-Ekrandaki yönergeleri izleyin:
+Follow the onscreen instructions:
 
-7. Yükleyici, çalışma zamanında gerekli girdileri otomatik olarak sorar:
-8. Dağıtım için bir erişim belirteci girin. Oluşturulan kodu kopyalayın ve Azure kimlik bilgilerinizle https://microsoft.com/devicelogin oturum açın.
-9. Sentinel parolası
-10. Yükleyici artık 20 dakikadan uzun sürebilen ve kaynakları oluşturmayı doğrular ve başlatır.
-11. Dağıtım başarılı olduktan sonra aşağıdaki çıkış bağlantılarını alacaksınız:
- - **Veri merkezi URL 'si**: Farmtts API 'lerini denemek için Swagger bağlantısı.
- - **HıZLANDıRıCı URL**: Farmtts akıllı grup hızlandırıcıyı keşfetmeye yönelik kullanıcı arabirimi.
- - **Deployer günlüğü dosyası**: dağıtım sırasında günlükleri kaydeder. Sorun giderme için kullanılabilir.
+7. The Installer automatically prompts the required inputs at run-time:
+8. Enter an access token for deployment. Copy the code generated and sign in to https://microsoft.com/devicelogin with your Azure credentials.
+9. Sentinel password
+10. The installer now validates and starts creating the resources, which can take about 20 minutes.
+11. Once the deployment is successful, you will receive the below output links:
+ - **Data hub URL**: Swagger link to try Azure FarmBeats APIs.
+ - **Accelerator URL**: User interface to explore Azure FarmBeats Accelerator.
+ - **Deployer log file**: saves logs during deployment. It can be used for troubleshooting.
 
 > [!NOTE]
-> Daha sonra kullanmak için yukarıdaki değerleri unutmayın.
+> Make note of the above values for future use.
 
 
 ## <a name="uninstall"></a>Kaldırma
 
-Şu anda, yükleyiciyi kullanarak Farmof 'ları otomatik olarak kaldırmayı desteklemiyoruz. Veri hub 'ını veya hızlandırıcıyı kaldırmak için Azure portal, bu bileşenlerin yüklendiği kaynak grubunu silin veya kaynakları el ile silin.
+Currently we don't support automated uninstallation of Azure FarmBeats using the installer. To remove the Data hub or  Accelerator, in the Azure portal, delete the resource group in which these components are installed, or delete resources manually.
 
-Örneğin, veri hub 'ı ve hızlandırıcıyı iki farklı kaynak grubunda dağıttıysanız, bu kaynak gruplarını aşağıdaki şekilde silersiniz:
+For example, if you deployed Data hub and Accelerator in two different resource groups, you delete those resource groups as follows:
 
-1. Azure portal oturum açın.
-2. Sağ üst köşede hesabınızı seçin ve Microsoft Farmtts 'yi dağıtmak istediğiniz Azure AD kiracısına geçiş yapın.
+1. Sign into the Azure portal.
+2. Select your account in the top right corner, and switch to the desired Azure AD tenant where you want to deploy Azure FarmBeats.
 
    > [!NOTE]
-   > Hızlandırıcının düzgün çalışması için veri hub 'ı gerekir. Hızlandırıcı 'Yı kaldırmadan veri merkezini kaldırmayı önermiyoruz.
+   > Data hub is needed for Accelerator to work properly. We don’t recommend uninstalling Data hub without uninstalling Accelerator.
 
-3. Kaynak grupları ' nı seçin ve silmek istediğiniz veri hub 'ının veya hızlandırıcı kaynak grubunun adını yazın.
-4. Kaynak grubu adını seçin. Yeniden denetlemek için adı tekrar yazın ve kaynak grubunu ve tüm temel kaynaklarını kaldırmak için Sil ' i seçin.
-5. Alternatif olarak, her kaynağı el ile silebilirsiniz, bu önerilmez.
-7. Veri merkezini silmek/kaldırmak için doğrudan Azure 'da kaynak grubuna gidin ve kaynak grubunu buradan silin.
+3. Select Resource Groups, and type in the name of the Data hub or Accelerator resource group that you want to delete.
+4. Kaynak grubu adını seçin. Type in the name again to double-check, and select Delete to remove the resource group, and all its underlying resources.
+5. Alternatively, you can delete each resource manually, which is not recommended.
+7. To delete/uninstall data hub, go to the Resource group directly on Azure and delete the resource group from there.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Farmtts 'yi dağıttıysanız. Şimdi [gruplar oluşturmayı](manage-farms.md#create-farms)öğrenin.
+You have deployed Azure FarmBeats. Now, learn how to [create farms](manage-farms.md#create-farms).

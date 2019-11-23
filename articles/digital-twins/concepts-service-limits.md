@@ -1,78 +1,78 @@
 ---
-title: Genel Önizleme hizmeti limitleri-Azure dijital TWINS | Microsoft Docs
-description: Azure dijital TWINS için genel önizleme hizmeti sınırları hakkında bilgi edinin.
+title: Public preview service limits - Azure Digital Twins | Microsoft Docs
+description: Learn about public preview service, subscription, instance, and rate limits for Azure Digital Twins.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/22/2019
-ms.openlocfilehash: 3cea4fe65e49bfa2d49822d443103ae6cc6ce69f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 11/21/2019
+ms.openlocfilehash: f54311af65d9678b2a51b23a38bab66111a818ca
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014163"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383081"
 ---
 # <a name="public-preview-service-limits"></a>Genel önizleme hizmet sınırları
 
-Genel Önizleme sırasında Azure dijital TWINS 'in aşağıdaki geçici abonelik, örnek ve hız sınırları vardır.
+During the public preview, Azure Digital Twins has the following temporary subscription, instance, and rate limits.
 
-Bu kısıtlamalar, yeni hizmet ve birçok özelliği hakkında bilgi edinmeye yardımcı olmak için mevcuttur.
+These constraints exist to help simplify learning about the new service and its many features.
 
 > [!NOTE]
-> Bu sınırlar, genel kullanıma (GA) göre artar veya kaldırılır.
+> These limits will be increased or removed by general availability (GA).
 
-## <a name="per-subscription-limits"></a>Abonelik başına sınırlar
+## <a name="per-subscription-limits"></a>Per-subscription limits
 
-Genel Önizleme sırasında, her bir Azure aboneliği tek seferde yalnızca bir Azure dijital TWINS örneği oluşturabilir veya çalıştırabilir.
+During the public preview, each Azure subscription can create or run only one Azure Digital Twins instance at a time.
 
 > [!TIP]
-> Örneğinizi silerseniz yeni bir tane oluşturabilirsiniz.
+> If you delete your instance, you can create a new one.
 
-## <a name="per-instance-limits"></a>Örnek başına sınırlar
+## <a name="per-instance-limits"></a>Per-instance limits
 
-Sırasıyla, her Azure dijital TWINS örneği şunları içerebilir:
+In turn, each Azure Digital Twins instance can have:
 
-- Hizmet sağlama sırasında otomatik olarak oluşturulan bir Embedded **ıothub** kaynağı.
-- Olay türü **Devicemessage**için tam olarak bir **EventHub** uç noktası.
-- **Sensorchange**, **spacechange**, **Topologyoperation**veya **udfcustom**olay türü için en fazla üç **EventHub**, **ServiceBus**veya **eventgrid** uç noktası.
+- Exactly one embedded **IoTHub** resource that's created automatically during service provisioning.
+- Exactly One **EventHub** endpoint for the event type **DeviceMessage**.
+- Up to three **EventHub**, **ServiceBus**, or **EventGrid** endpoints of the event type **SensorChange**, **SpaceChange**, **TopologyOperation**, or **UdfCustom**.
 
 > [!NOTE]
-> Genellikle yukarıdaki Azure IoT varlıklarının oluşturulması sırasında tanımlanan bazı parametreler genel önizleme sırasında gerekli değildir.
-> - En son API belirtimleri için [Swagger başvuru belgelerine](./how-to-use-swagger.md) bakın.
+> Some parameters that are usually defined in creating the above Azure IoT entities are not required during public preview.
+> - Consult the [Swagger reference documentation](./how-to-use-swagger.md) for the most recent API specifications.
 
-## <a name="azure-digital-twins-management-api-limits"></a>Azure dijital TWINS yönetim API sınırları
+## <a name="azure-digital-twins-management-api-limits"></a>Azure Digital Twins Management API limits
 
-Azure dijital TWINS yönetim API 'niz için istek oranı sınırları şunlardır:
+The request rate limits for your Azure Digital Twins Management API are:
 
-- Azure Digital TWINS yönetim API 'sine saniye başına 100 istek.
-- Tek bir Azure dijital TWINS yönetim API sorgusu tarafından döndürülen en fazla 1.000 nesne.
+- 100 requests per second to the Azure Digital Twins Management API.
+- Up to 1,000 objects returned by a single Azure Digital Twins Management API query.
 
 > [!IMPORTANT]
-> 1\.000-nesne sınırını aşarsanız bir hata alırsınız ve sorgunuzu basitleştirmelidir.
+> If you exceed the 1,000-object limit, you receive an error and must simplify your query.
 
-## <a name="user-defined-functions-rate-limits"></a>Kullanıcı tanımlı işlevlerin hız sınırları
+## <a name="user-defined-functions-rate-limits"></a>User-defined functions rate limits
 
-Aşağıdaki sınırlar, Azure dijital TWINS örneğiniz için yapılan tüm Kullanıcı tanımlı işlev çağrılarının toplam sayısını ayarlar:
+The following limits set the total number of all user-defined function calls made to your Azure Digital Twins instance:
 
-- saniye başına 400 istemci kitaplığı çağrısı
-- 100 **SendNotification** çağrısı/saniye
+- 400 client library calls per second
+- 100 **SendNotification** calls per second
 
 > [!NOTE]
-> Aşağıdaki eylemler ek hız sınırlarının geçici olarak uygulanmasına neden olabilir:
-> - Topoloji nesnesi meta verilerinde yapılan düzenlemeler
-> - Kullanıcı tanımlı işlev tanımında yapılan güncelleştirmeler
-> - İlk kez telemetri gönderen cihazlar
+> The following actions might cause additional rate limits to be applied temporarily:
+> - Edits made to the topology object metadata
+> - Updates made to the user-defined function definition
+> - Devices that send telemetry for the first time
 
-## <a name="device-telemetry-limits"></a>Cihaz telemetri limitleri
+## <a name="device-telemetry-limits"></a>Device telemetry limits
 
-Aşağıdaki sınırlar, cihazlarınızın Azure dijital TWINS örneğine gönderebileceği tüm iletilerin toplam sayısıdır:
+The following limits cap the total number of all messages your devices can send to your Azure Digital Twins instance:
 
-- tüm cihazlarda saniye başına 100 ileti
--   cihaz başına saniyede 25 ileti
+- 100 messages per second across all devices
+-   25 messages per second per device
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bir Azure dijital TWINS örneği denemek için hızlı başlangıç bölümüne giderek [kullanılabilir odaları bulun](./quickstart-view-occupancy-dotnet.md).
+- To try out an Azure Digital Twins sample, go to [Quickstart to find available rooms](./quickstart-view-occupancy-dotnet.md).

@@ -1,55 +1,61 @@
 ---
-title: Soru-Cevap Oluşturma hizmetindeki yenilikler nelerdir?
+title: What's new in QnA Maker service?
 titleSuffix: Azure Cognitive Services
-description: Bu makale Soru-Cevap Oluşturma hakkındaki haberleri içerir.
+description: This article contains news about QnA Maker.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
-ms.date: 10/14/2019
+ms.date: 11/08/2019
 ms.author: diberry
-ms.openlocfilehash: 0ce44429c7222e4eaa0ef523dadf0fa08723e975
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 94c2f86b6d0a592e53c2ab1f9833bdb045f81583
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72327892"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325884"
 ---
-# <a name="whats-new-in-qna-maker"></a>Soru-Cevap Oluşturma yenilikleri
+# <a name="whats-new-in-qna-maker"></a>What's new in QnA Maker
 
-Hizmette nelerin yeni olduğunu öğrenin. Bu öğeler notları, Videoları, blog yayınlarını ve diğer bilgi türlerini bırakabilir. Hizmetle güncel kalmasını sağlamak için bu sayfaya yer işareti ekleyin.  
+Learn what's new in the service. These items may release notes, videos, blog posts, and other types of information. Bookmark this page to keep up-to-date with the service.  
 
 ## <a name="release-notes"></a>Sürüm notları 
 
-Soru-Cevap Oluşturma yenilikleri öğrenin.
+Learn what's new with QnA Maker.
 
-### <a name="october-2019"></a>2019 Ekim
+### <a name="november-2019"></a>Kasım 2019
 
-* Soru-Cevap Oluşturma hizmetindeki tüm bilgi tabanları için [dili açıkça ayarlama](./how-to/language-knowledge-base.md#select-language-when-creating-first-knowledge-base) . 
+* [US Government cloud support](https://docs.microsoft.com/azure/azure-government/documentation-government-services-aiandcognitiveservices#qna-maker) for QnA Maker
+* [Multi-turn](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/multiturn-conversation) feature in GA
+* [Chit-chat support](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/chit-chat-knowledge-base#language-support) available in tier-1 languages
+
+### <a name="october-2019"></a>Ekim 2019
+
+* [Explicitly setting the language](./how-to/language-knowledge-base.md#select-language-when-creating-first-knowledge-base) for all knowledge bases in the  QnA Maker service. 
 
 ### <a name="september-2019"></a>Eylül 2019
 
-* [Xls dosya biçimiyle](concepts/data-sources-supported.md) içeri ve dışarı aktarma 
+* Import and export with [XLS file format](concepts/data-sources-supported.md) 
 
 ### <a name="june-2019"></a>Haziran 2019
 
-* Fransızca, İtalyanca, Almanca, İspanyolca ve Portekizce için geliştirilmiş [derecelendiricisini modeli](concepts/knowledge-base.md#ranker-process)
+* Improved [ranker model](concepts/knowledge-base.md#ranker-process) for French, Italian, German, Spanish, Portuguese
 
-### <a name="april-2019"></a>2019 Nisan
+### <a name="april-2019"></a>Nisan 2019
 
-* Destek Web sitesi içeriği ayıklama
-* Kimliği doğrulanmış erişimden [SharePoint belge](how-to/add-sharepoint-datasources.md) desteği
+* Support website content extraction
+* [SharePoint document](how-to/add-sharepoint-datasources.md) support from authenticated access
 
 ### <a name="march-2019"></a>Mart 2019
 
-* [Etkin öğrenme](how-to/improve-knowledge-base.md) , gerçek Kullanıcı sorularına göre yeni soru alternatifleri için öneriler sağlar
-* İngilizce için geliştirilmiş doğal dil işleme (NLP) [derecelendiricisini](concepts/knowledge-base.md#ranker-process) modeli 
+* [Active learning](how-to/improve-knowledge-base.md) provides suggestions for new question alternatives based on real user questions
+* Improved natural language processing (NLP) [ranker](concepts/knowledge-base.md#ranker-process) model for English 
 
 > [!div class="nextstepaction"]
 > [Soru-Cevap Oluşturma hizmeti oluşturma](how-to/set-up-qnamaker-service-azure.md)
 
-## <a name="cognitive-service-updates"></a>Bilişsel hizmet güncelleştirmeleri
+## <a name="cognitive-service-updates"></a>Cognitive Service updates
 
-[Bilişsel hizmetler için Azure Update duyuruları](https://azure.microsoft.com/updates/?product=cognitive-services)
+[Azure update announcements for Cognitive Services](https://azure.microsoft.com/updates/?product=cognitive-services)

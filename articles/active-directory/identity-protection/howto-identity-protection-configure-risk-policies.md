@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory Kimlik Koruması 'de risk ilkelerini yapılandırma ve etkinleştirme
-description: Azure Active Directory Kimlik Koruması risk ilkelerini etkinleştirme ve yapılandırma
+title: Risk policies - Azure Active Directory Identity Protection
+description: Enable and configure risk policies in Azure Active Directory Identity Protection
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -11,73 +11,73 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79f919633f6b1912ef07b7ff636eb60fb3d5859f
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 37091b2551d68e241c7179949c3eb1db9a381de6
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72886967"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74382170"
 ---
-# <a name="how-to-configure-and-enable-risk-policies"></a>Nasıl yapılır: risk ilkelerini yapılandırma ve etkinleştirme
+# <a name="how-to-configure-and-enable-risk-policies"></a>How To: Configure and enable risk policies
 
-Önceki makalede öğrendiğimiz gibi, [kimlik koruma ilkeleri](concept-identity-protection-policies.md) dizinimizde etkinleştirediğimiz iki risk ilkemiz var. 
+As we learned in the previous article, [Identity Protection policies](concept-identity-protection-policies.md) we have two risk policies that we can enable in our directory. 
 
-- Oturum açma risk ilkesi
-- Kullanıcı risk ilkesi
+- Sign-in risk policy
+- User risk policy
 
-![Kullanıcı ve oturum açma risk ilkelerini etkinleştirmek için güvenlik genel bakış sayfası](./media/howto-identity-protection-configure-risk-policies/identity-protection-security-overview.png)
+![Security overview page to enable user and sign-in risk policies](./media/howto-identity-protection-configure-risk-policies/identity-protection-security-overview.png)
 
-Her iki ilke de ortamınızda risk algılamalarını otomatik hale getirmek ve risk algılandığında kullanıcıların kendiliğinden düzelmesini sağlamak için çalışır. 
+Both policies work to automate the response to risk detections in your environment and allow users to self-remediate when risk is detected. 
 
 > [!VIDEO https://www.youtube.com/embed/zEsbbik-BTE]
 
 ## <a name="prerequisites"></a>Önkoşullar 
 
-Kuruluşunuz, risk algılandığında kullanıcıların kendi kendini düzeltmesine izin vermek isterse, kullanıcıların hem self servis parola sıfırlama hem de Azure Multi-Factor Authentication için kayıtlı olmaları gerekir. En iyi deneyim için [Birleşik güvenlik bilgileri kayıt deneyiminin etkinleştirilmesini](../authentication/howto-registration-mfa-sspr-combined.md) öneririz. Kullanıcıların kendi kendini düzeltmesine izin vermek, yönetici müdahalesine gerek kalmadan onları daha hızlı bir şekilde daha hızlı bir şekilde geri alır. Yöneticiler bu olayları görmeye devam edebilir ve bunu bulduktan sonra araştırabilir. 
+If your organization wants to allow users to self-remediate when risks are detected, users must be registered for both self-service password reset and Azure Multi-Factor Authentication. We recommend [enabling the combined security information registration experience](../authentication/howto-registration-mfa-sspr-combined.md) for the best experience. Allowing users to self-remediate gets them back to a productive state more quickly without requiring administrator intervention. Administrators can still see these events and investigate them after the fact. 
 
-## <a name="choosing-acceptable-risk-levels"></a>Kabul edilebilir risk düzeylerini seçme
+## <a name="choosing-acceptable-risk-levels"></a>Choosing acceptable risk levels
 
-Kuruluşlar, Kullanıcı deneyimini ve güvenlik duruşunu kabul etmek isteyen risk düzeyine karar vermelidir. 
+Organizations must decide the level of risk they are willing to accept balancing user experience and security posture. 
 
-Microsoft 'un önerisi, Kullanıcı risk ilkesi eşiğini **yüksek** olarak ve oturum açma riski ilkesini **Orta ve üst düzeyde**ayarlamak.
+Microsoft's recommendation is to set the user risk policy threshold to **High** and the sign-in risk policy to **Medium and above**.
 
-**Yüksek** bir eşik seçilmesi, bir ilkenin tetiklenme sayısını azaltır ve kullanıcılara etkiyi en aza indirir. Ancak, ilkeden **düşük** ve **Orta ölçekli** risk algılamalarını dışarıda bırakır, bu da bir saldırganın güvenliği aşılmış bir kimlik kötüye yararlanmasıyla engelleyemeyebilir. **Düşük** eşiğin seçilmesi ek Kullanıcı kesintileri tanıtır, ancak güvenlik sonrası artar.
+Choosing a **High** threshold reduces the number of times a policy is triggered and minimizes the impact to users. However, it excludes **Low** and **Medium** risk detections from the policy, which may not block an attacker from exploiting a compromised identity. Selecting a **Low** threshold introduces additional user interrupts, but increased security posture.
 
 ## <a name="exclusions"></a>İstisnalar
 
-Tüm ilkeler, [acil erişim veya kesme camı yönetici hesaplarınız](../users-groups-roles/directory-emergency-access.md)gibi kullanıcıların dışlanmasını sağlar. Kuruluşlar, hesapların kullanıldığı yönteme göre diğer hesapları belirli ilkelerden hariç tutmaları gerektiğini tespit edebilir. Hala geçerli olup olmadığını görmek için tüm dışlamaları düzenli olarak incelenmelidir.
+All of the policies allow for excluding users such as your [emergency access or break-glass administrator accounts](../users-groups-roles/directory-emergency-access.md). Organizations may determine they need to exclude other accounts from specific policies based on the way the accounts are used. All exclusions should be reviewed regularly to see if they are still applicable.
 
-## <a name="enable-policies"></a>İlkeleri etkinleştir
+## <a name="enable-policies"></a>Enable policies
 
-Kullanıcı riskini ve oturum açma risk ilkelerini etkinleştirmek için aşağıdaki adımları izleyin.
+To enable the user risk and sign-in risk policies complete the following steps.
 
 1. [Azure portalına](https://portal.azure.com) gidin.
-1. **Azure Active Directory** > **güvenlik** > **kimlik koruması** > **Genel Bakış ' a**göz atın.
-1. **Kullanıcı risk Ilkesini Yapılandır**' ı seçin.
-   1. **Atamalar** altında
-      1. **Kullanıcılar** - **tüm kullanıcılar** ' ı seçin veya dağıtımı sınırlandırdıysanız **bireyler ve gruplar ' ı seçin** .
-         1. İsteğe bağlı olarak, kullanıcıların ilkeden hariç tutulmasını seçebilirsiniz.
-      1. **Koşullar** - **Kullanıcı riski** Microsoft 'un önerisi, bu seçeneğin **yüksek**olarak ayarlanmalarıdır.
-   1. **Denetimler** altında
-      1. **Erişim** -Microsoft 'un önerisi **erişime izin vermek** ve **parola değişikliğine gerek duyar**.
-   1. **İlke** - zorla
-   1. **Kaydet** -bu eylem sizi **genel bakış** sayfasına verecektir.
-1. **Oturum açma risk Ilkesini Yapılandır**' ı seçin.
-   1. **Atamalar** altında
-      1. **Kullanıcılar** - **tüm kullanıcılar** ' ı seçin veya dağıtımı sınırlandırdıysanız **bireyler ve gruplar ' ı seçin** .
-         1. İsteğe bağlı olarak, kullanıcıların ilkeden hariç tutulmasını seçebilirsiniz.
-      1. **Koşullar** - **oturum açma riskini** Microsoft 'un önerisi, bu seçeneği **Orta ve üzeri**olarak ayarlamanıza olanak sağlar.
-   1. **Denetimler** altında
-      1. **Erişim** -Microsoft 'un önerisi, **erişime izin vermek** ve **Multi-Factor Authentication gerektirir**.
-   1. **İlke** - zorla
-   1. **Kaydet**
+1. Browse to **Azure Active Directory** > **Security** > **Identity Protection** > **Overview**.
+1. Select **Configure user risk policy**.
+   1. Under **Assignments**
+      1. **Users** - Choose **All users** or **Select individuals and groups** if limiting your rollout.
+         1. Optionally you can choose to exclude users from the policy.
+      1. **Conditions** - **User risk** Microsoft's recommendation is to set this option to **High**.
+   1. Under **Controls**
+      1. **Access** - Microsoft's recommendation is to **Allow access** and **Require password change**.
+   1. **Enforce Policy** - **On**
+   1. **Save** - This action will return you to the **Overview** page.
+1. Select **Configure sign-in risk policy**.
+   1. Under **Assignments**
+      1. **Users** - Choose **All users** or **Select individuals and groups** if limiting your rollout.
+         1. Optionally you can choose to exclude users from the policy.
+      1. **Conditions** - **Sign-in risk** Microsoft's recommendation is to set this option to **Medium and above**.
+   1. Under **Controls**
+      1. **Access** - Microsoft's recommendation is to **Allow access** and **Require multi-factor authentication**.
+   1. **Enforce Policy** - **On**
+   1. **Save**
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Multi-Factor Authentication kayıt ilkesini etkinleştirme](howto-identity-protection-configure-mfa-policy.md)
+- [Enable Azure Multi-Factor Authentication registration policy](howto-identity-protection-configure-mfa-policy.md)
 
-- [Risk nedir?](concept-identity-protection-risks.md)
+- [What is risk](concept-identity-protection-risks.md)
 
-- [Risk algılamalarını araştırın](howto-identity-protection-investigate-risk.md)
+- [Investigate risk detections](howto-identity-protection-investigate-risk.md)
 
-- [Risk algılamalarını benzet](howto-identity-protection-simulate-risk.md)
+- [Simulate risk detections](howto-identity-protection-simulate-risk.md)

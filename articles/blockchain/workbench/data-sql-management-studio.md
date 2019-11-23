@@ -1,25 +1,20 @@
 ---
-title: SQL veritabanı ile Azure blok zinciri çalışma ekranı verilerini kullanma
+title: Query Azure Blockchain Workbench data using SQL Server Management Studio
 description: SQL Server Management Studio’nun içinden Azure Blockchain Workbench'in SQL Veritabanı’na bağlanmayı öğrenin.
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
 ms.date: 11/20/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
-manager: femila
-ms.openlocfilehash: 3a734c09b3a74fbe4165f4de25ce450fd3fbde1d
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
-ms.translationtype: HT
+ms.openlocfilehash: f87d1880c90202fa26b0477e3b4dfbed5965bb82
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286720"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326031"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-sql-server-management-studio"></a>Azure Blockchain Workbench verilerini SQL Server Management Studio ile kullanma
 
-Microsoft SQL Server Management Studio Azure blok zinciri çalışma ekranının SQL DB 'ye yönelik sorguları hızlı bir şekilde yazma ve test etme olanağı sağlar. Bu bölümde, Azure blok zinciri 'nin SQL veritabanına SQL Server Management Studio içinden nasıl bağlanabilmeniz için adım adım yönergeler yer almaktadır.
+Microsoft SQL Server Management Studio provides the ability to rapidly write and test queries against Azure Blockchain Workbench's SQL DB. This section contains a step-by-step walkthrough of how to connect to Azure Blockchain Workbench's SQL Database from within SQL Server Management Studio.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -43,7 +38,7 @@ Microsoft SQL Server Management Studio Azure blok zinciri çalışma ekranının
       ![Veritabanı listesi](./media/data-sql-management-studio/db-list.png)
 
 5. Veritabanı görünümlerinin herhangi biri ile ilişkili verileri görüntülemek için aşağıdaki adımlarla otomatik olarak bir select deyimi oluşturabilirsiniz.
-6. Nesne Gezgini veritabanı görünümlerinden birine sağ tıklayın.
+6. Right-click any of the database views in the Object Explorer.
 7. **Betiği Farklı Görüntüle** seçeneğini belirleyin.
 8. **Şuna kadar SEÇ:** seçeneğini belirleyin.
 9. **Yeni Sorgu Düzenleyicisi Penceresi**‘ni seçin.

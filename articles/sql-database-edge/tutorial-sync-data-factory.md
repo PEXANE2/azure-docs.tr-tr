@@ -1,7 +1,7 @@
 ---
-title: Azure Data Factory kullanarak Azure SQL veritabanı kenarından verileri eşitleyin | Microsoft Docs
-description: Verileri Azure SQL veritabanı Edge ve Azure Blob depolama arasında eşitleme hakkında bilgi edinin
-keywords: SQL veritabanı Edge, SQL veritabanı kenarından veri eşitleme, SQL veritabanı Edge Veri Fabrikası
+title: Sync data from Azure SQL Database Edge by using Azure Data Factory | Microsoft Docs
+description: Learn about syncing data between Azure SQL Database Edge and Azure Blob storage
+keywords: sql database edge,sync data from sql database edge, sql database edge data factory
 services: sql-database-edge
 ms.service: sql-database-edge
 ms.topic: tutorial
@@ -9,44 +9,44 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: 0e75da9516303bb4250b6847a4b381d07b3d7dad
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2bfa65117bf31ad9cb9917fd8a643a0358e02be0
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501326"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74384215"
 ---
-# <a name="tutorial-sync-data-from-sql-database-edge-to-azure-blob-storage-using-azure-data-factory"></a>Öğretici: Azure Data Factory kullanarak SQL veritabanı kenarından Azure Blob depolama 'ya veri eşitleme
+# <a name="tutorial-sync-data-from-sql-database-edge-to-azure-blob-storage-by-using-azure-data-factory"></a>Tutorial: Sync data from SQL Database Edge to Azure Blob storage by using Azure Data Factory
 
-Bu öğreticide, Azure SQL veritabanı Edge örneğindeki bir tablodaki verileri Azure Blob depolama alanına artımlı olarak eşitlemek için Azure Data Factory kullanırsınız.
+In this tutorial, you'll use Azure Data Factory to incrementally sync data to Azure Blob storage from a table in an instance of Azure SQL Database Edge.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Azure SQL veritabanı kenar dağıtımınızda henüz bir veritabanı veya tablo oluşturmadıysanız, bir tane oluşturmak için aşağıdaki yöntemlerden birini kullanın:
+If you haven't already created a database or table in your Azure SQL Database Edge deployment, use one of these methods to create one:
 
-* SQL veritabanı kenarına bağlanmak ve veritabanı ve tablo oluşturmak için bir SQL betiği yürütmek üzere [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms/) veya [Azure Data Studio](/sql/azure-data-studio/download/) kullanın.
-* SQL veritabanı Edge modülüne doğrudan bağlanarak [sqlcmd](/sql/tools/sqlcmd-utility/) kullanarak bir SQL veritabanı ve tablo oluşturun. Daha fazla bilgi için bkz. [sqlcmd kullanarak veritabanı altyapısına bağlanma](/sql/ssms/scripting/sqlcmd-connect-to-the-database-engine/).
-* SQL veritabanı kenar kapsayıcısına bir dacpac dosyası dağıtmak için SQLPackage. exe ' yi kullanın. Bu, modüller istenen özellikler yapılandırması kapsamında SQLPackage dosya URI 'SI belirtilerek veya bir dacpac 'i SQL veritabanı ucuna dağıtmak için doğrudan SqlPackage. exe istemci Aracı kullanılarak otomatikleştirilebilir.
+* Use [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms/) or [Azure Data Studio](/sql/azure-data-studio/download/) to connect to SQL Database Edge. Run a SQL script to create the database and table.
+* Create a SQL database and table by using [SQLCMD](/sql/tools/sqlcmd-utility/) by directly connecting to the SQL Database Edge module. For more information, see [Connect to the Database Engine by using sqlcmd](/sql/ssms/scripting/sqlcmd-connect-to-the-database-engine/).
+* Use SQLPackage.exe to deploy a DAC package file to the SQL Database Edge container. You can automate this process by specifying the SqlPackage file URI as part of the module's desired properties configuration. You can also directly use the SqlPackage.exe client tool to deploy a DAC package to SQL Database Edge.
 
-    SqlPackage 'i indirmek için bkz. [SqlPackage 'ı indirme ve yükleme](/sql/tools/sqlpackage-download/). SqlPackage. exe için aşağıdaki örnek komutlar sağlanır, ancak daha fazla bilgi için SqlPackage belgelerine bakın.
+    For information about how to download SqlPackage.exe, see [Download and install sqlpackage](/sql/tools/sqlpackage-download/). Following are some sample commands for SqlPackage.exe. For more information, see the SqlPackage.exe documentation.
 
-    **Dacpac oluştur**:
+    **Create a DAC package**
 
     ```cmd
-    sqlpackage /Action:Extract /SourceConnectionString:"Data Source=<Server_Name>,<port>;Initial Catalog=<DB_name>;User ID=<user>;Password=<password>" /TargetFile:<dacpac_file_name> 
+    sqlpackage /Action:Extract /SourceConnectionString:"Data Source=<Server_Name>,<port>;Initial Catalog=<DB_name>;User ID=<user>;Password=<password>" /TargetFile:<dacpac_file_name>
     ```
 
-    **Dacpac Uygula**:
+    **Apply a DAC package**
 
     ```cmd
     sqlpackage /Action:Publish /Sourcefile:<dacpac_file_name> /TargetServerName:<Server_Name>,<port> /TargetDatabaseName:<DB_Name> /TargetUser:<user> /TargetPassword:<password>
     ```
 
-## <a name="create-a-sql-table-and-procedure-to-store-and-update-the-watermark-levels"></a>Filigran düzeylerini depolamak ve güncelleştirmek için bir SQL tablosu ve yordamı oluşturma
+## <a name="create-a-sql-table-and-procedure-to-store-and-update-the-watermark-levels"></a>Create a SQL table and procedure to store and update the watermark levels
 
-Filigran tablosu, verilerin Azure depolama ile zaten eşitlenmiş olduğu son zaman damgasını depolamak için kullanılır. Transact-SQL (T-SQL) saklı yordamı her eşitlemeden sonra filigran tablosunu güncelleştirmek için kullanılır. 
+A watermark table is used to store the last timestamp up to which data has already been synchronized with Azure Storage. A Transact-SQL (T-SQL) stored procedure is used to update the watermark table after every sync.
 
-SQL veritabanı Edge örneğinde aşağıdaki komutları yürütün:
+Run these commands on the SQL Database Edge instance:
 
 ```sql
     Create table [dbo].[watermarktable]
@@ -65,161 +65,159 @@ SQL veritabanı Edge örneğinde aşağıdaki komutları yürütün:
     Go
 ```
 
-## <a name="create-a-data-factory-workflow"></a>Data Factory Iş akışı oluşturma
+## <a name="create-a-data-factory-pipeline"></a>Create a Data Factory pipeline
 
-Bu bölümde, Azure SQL veritabanı Edge içindeki bir tablodaki verileri Azure Blob depolama alanına eşitlemek için bir Azure Data Factory işlem hattı oluşturacaksınız.
+In this section, you'll create an Azure Data Factory pipeline to sync data to Azure Blob storage from a table in Azure SQL Database Edge.
 
-### <a name="create-data-factory-using-the-data-factory-ui"></a>Data Factory Kullanıcı arabirimini kullanarak Data Factory oluşturma
+### <a name="create-a-data-factory-by-using-the-data-factory-ui"></a>Create a data factory by using the Data Factory UI
 
-Bu [öğreticideki](../data-factory/quickstart-create-data-factory-portal.md#create-a-data-factory)yönergeleri kullanarak bir Data Factory oluşturun.
+Create a data factory by following the instructions in [this tutorial](../data-factory/quickstart-create-data-factory-portal.md#create-a-data-factory).
 
-### <a name="create-a-data-factory-pipeline"></a>Data Factory işlem hattı oluşturma
+### <a name="create-a-data-factory-pipeline"></a>Create a Data Factory pipeline
 
-1. Data Factory Kullanıcı arabiriminin **Başlarken sayfasında Işlem** **hattı oluştur** kutucuğunu seçin.
+1. On the **Let's get started** page of the Data Factory UI, select **Create pipeline**.
 
-    ![Data Factory-işlem hattı oluşturma](media/tutorial-sync-data-factory/data-factory-get-started.png)
+    ![Create a Data Factory pipeline](media/tutorial-sync-data-factory/data-factory-get-started.png)
 
-2. İşlem hattının **Özellikler** penceresinin **genel** sayfasında, **dönemsiz eşitleme** adı ' nı girin.
+2. On the **General** page of the **Properties** window for the pipeline, enter **PeriodicSync** for the name.
 
-3. Eski eşik değerini almak için **arama** etkinliğini ekleyin. **Etkinlikler Araç kutusunda** **genel**' i genişletin & sürükleyin ve **arama** etkinliğini işlem hattı tasarımcısının yüzeyine bırakın. Etkinliğin adını *Oldfiligrandan*değiştirin.
+3. Add the Lookup activity to get the old watermark value. In the **Activities** pane, expand **General** and drag the **Lookup** activity to the pipeline designer surface. Change the name of the activity to **OldWatermark**.
 
-    ![Eski filigran arama](media/tutorial-sync-data-factory/create-old-watermark-lookup.png)
+    ![Add the old watermark lookup](media/tutorial-sync-data-factory/create-old-watermark-lookup.png)
 
-4. **Ayarlar** sekmesine geçin ve **kaynak veri kümesi**için **+ Yeni** ' yi seçin. Bu adımda, su marktable içindeki verileri temsil eden bir veri kümesi oluşturacaksınız. Bu tablo, önceki kopyalama işleminde kullanılan eski filigranı içerir.
+4. Switch to the **Settings** tab and select **New** for **Source Dataset**. You'll now create a dataset to represent data in the watermark table. Bu tablo, önceki kopyalama işleminde kullanılan eski filigranı içerir.
 
-5. **Yeni veri kümesi** penceresinde **Azure SQL Server**' yi seçin ve **devam**' ı seçin.  
+5. In the **New Dataset** window, select **Azure SQL Server**, and then select **Continue**.  
 
-6. Veri kümesinin **Özellikler** penceresinde, ad Için *sulu markmarkdataset* girin.
+6. In the **Set properties** window for the dataset, under **Name**, enter **WatermarkDataset**.
 
-7. **Bağlı hizmet**için **Yeni**' yi seçin ve ardından aşağıdaki adımları gerçekleştirin:
+7. For **Linked Service**, select **New**, and then complete these steps:
 
-    1. **Ad**için *SQLDBEdgeLinkedService* girin.
+    1. Under **Name**, enter **SQLDBEdgeLinkedService**.
 
-    2. **Sunucu adı**Için SQL veritabanı uç sunucu ayrıntılarınızı girin.
+    2. Under **Server name**, enter your SQL Database Edge server details.
 
-    3. **Veritabanı adınızı** açılan listeden girin.
+    3. Select your **Database name** from the list.
 
-    4. **Kullanıcı adınızı** ve **parolanızı**girin.
+    4. Enter your **User name** and **Password**.
 
-    5. SQL veritabanı Edge örneğiyle bağlantıyı test etmek için **Bağlantıyı Sına**' yı seçin.
+    5. To test the connection to the SQL Database Edge instance, select **Test connection**.
 
     6. **Oluştur**'u seçin.
 
-    ![bağlı hizmet oluştur](media/tutorial-sync-data-factory/create-linked-service.png)
+    ![Bağlı hizmet oluşturma](media/tutorial-sync-data-factory/create-linked-service.png)
 
-    7. **Tamam 'ı** seçin
+    7. **Tamam**’ı seçin.
 
-8. **Ayarlar** sekmesinde **Düzenle**' yi seçin.
+8. On the **Settings** tab, select **Edit**.
 
-9. **Bağlantı** sekmesinde *[dbo] öğesini seçin. [ Tablo için su marktable]* . Tablodaki verileri önizlemek istiyorsanız, **Verileri Önizle**' yi seçin.
+9. On the **Connection** tab, select **[dbo].[watermarktable]** for **Table**. If you want to preview data in the table, select **Preview data**.
 
-10. En üstteki işlem hattı sekmesini seçerek veya soldaki ağaç görünümünde işlem hattının adını seçerek işlem hattı düzenleyicisine geçin. **Arama etkinliğinin**Özellikler penceresinde, **kaynak veri kümesi** alanı Için **sulu markmarkdataset** ' in seçili olduğunu onaylayın.
+10. Switch to the pipeline editor by selecting the pipeline tab at the top or by selecting the name of the pipeline in the tree view on the left. In the properties window for the Lookup activity, confirm that **WatermarkDataset** is selected in the **Source dataset** list.
 
-11. **Etkinlikler** araç kutusunda **genel**' i genişletin, başka bir **arama** etkinliğini işlem hattı Tasarımcısı yüzeyine sürükleyip bırakın ve Özellikler penceresinin **genel** sekmesinde adı **newfiligran** olarak ayarlayın. Bu Arama etkinliği, kaynak verileri içeren tablodan hedefe kopyalanacak yeni filigran değerini alır.
+11. In the **Activities** pane, expand **General** and drag another **Lookup** activity to the pipeline designer surface. Set the name to **NewWatermark** on the **General** tab of the properties window. This Lookup activity gets the new watermark value from the table that contains the source data so it can be copied to the destination.
 
-12. İkinci **arama** etkinliğinin Özellikler penceresinde, **Ayarlar** sekmesine geçin **ve yeni ' yi seçerek yeni** filigran değerini içeren kaynak tabloya işaret eden bir veri kümesi oluşturun.
+12. In the properties window for the second Lookup activity, switch to the **Settings** tab and select **New** to create a dataset to point to the source table that contains the new watermark value.
 
-13. **Yeni veri kümesi** penceresinde SQL veritabanı Edge örneği ' ni seçin ve **devam**' ı seçin.
+13. In the **New Dataset** window, select **SQL Database Edge instance**, and then select **Continue**.
 
-    1. **Özellikleri ayarla** penceresinde, **ad**için **sourceDataset** girin. Bağlı hizmet için *SQLDBEdgeLinkedService* seçin.
+    1. In the **Set properties** window, under **Name**, enter **SourceDataset**. Under **Linked service**, select **SQLDBEdgeLinkedService**.
 
-    2. Tablo için ***eşitlenmesini istediğiniz tabloyu*** seçin. Bu veri kümesi için öğreticide daha sonra bahsedildiği gibi bir sorgu de belirtebilirsiniz. Bu sorgu, bu adımda belirttiğiniz tablodan önceliklidir.
+    2. Under **Table**, select the table that you want to synchronize. You can also specify a query for this dataset, as described later in this tutorial. The query takes precedence over the table you specify in this step.
 
     3. **Tamam**’ı seçin.
 
-14. En üstteki işlem hattı sekmesini seçerek veya soldaki ağaç görünümünde işlem hattının adını seçerek işlem hattı düzenleyicisine geçin. **Arama** etkinliğinin özellikler penceresinde **Kaynak Veri Kümesi** alanı için **SourceDataset** seçeneğinin belirlendiğinden emin olun.
+14. Switch to the pipeline editor by selecting the pipeline tab at the top or by selecting the name of the pipeline in the tree view on the left. In the properties window for the Lookup activity, confirm that **SourceDataset** is selected in the **Source dataset** list.
 
-15. Sorgu **kullan** alanı için **sorgu** ' yı seçin ve sorgudaki tablo adını güncelleştirdikten sonra aşağıdaki sorguyu girin: yalnızca tablodaki zaman damgasının en büyük değerini seçersiniz. Lütfen **yalnızca ilk satırı**da seçtiğinizden emin olun.
+15. Select **Query** under **Use query**. Update the table name in the following query and then enter the query. You're selecting only the maximum value of `timestamp` from the table. Be sure to select **First row only**.
 
     ```sql
     select MAX(timestamp) as NewWatermarkvalue from [TableName]
     ```
 
-    ![Sorgu Seç](media/tutorial-sync-data-factory/select-query-data-factory.png)
+    ![select query](media/tutorial-sync-data-factory/select-query-data-factory.png)
 
-16. **Etkinlikler** araç kutusunda, **Taşı & Dönüştür**' ü genişletin, etkinlikler araç kutusundan **kopyalama** etkinliğini sürükleyip bırakın ve adı **IncrementalCopy**olarak ayarlayın.
+16. In the **Activities** pane, expand **Move & Transform** and drag the **Copy** activity from the **Activities** pane to the designer surface. Set the name of the activity to **IncrementalCopy**.
 
-17. **Arama** etkinliklerine eklenen **yeşil düğmeyi** **kopyalama** etkinliğine sürükleyerek, her iki **arama** etkinliğini **kopyalama** etkinliğine bağlayın. Kopyalama etkinliğinin kenarlık rengini mavi olarak değiştirip fare düğmesini bırakın.
+17. Connect both Lookup activities to the Copy activity by dragging the green button attached to the Lookup activities to the Copy activity. Release the mouse button when you see the border color of the Copy activity change to blue.
 
-18. **Kopyalama** etkinliğini seçin ve **Özellikler** penceresinde etkinliğin özelliklerini görtığınızdan emin olun.
+18. Select the Copy activity and confirm that you see the properties for the activity in the **Properties** window.
 
-19. **Özellikler** penceresinde **Kaynak** sekmesine geçin ve aşağıdaki adımları uygulayın:
+19. Switch to the **Source** tab in the **Properties** window and complete these steps:
 
-    1. **Kaynak Veri Kümesi** alanı için **SourceDataset**’i seçin.
+    1. In the **Source dataset** box, select **SourceDataset**.
 
-    2. **Sorgu Kullan** alanı için **Sorgu**’yu seçin.
+    2. Under **Use query**, select **Query**.
 
-    3. **Sorgu** alanı için SQL sorgusunu girin. Aşağıdaki örnek sorgu
-
-    4. SQL sorgusu:
+    3. Enter the SQL query in the **Query** box. Here's a sample query:
 
     ```sql
     select * from TemperatureSensor where timestamp > '@{activity('OldWaterMark').output.firstRow.WatermarkValue}' and timestamp <= '@{activity('NewWaterMark').output.firstRow.NewWatermarkvalue}'
     ```
 
-20. **Havuz** sekmesine geçin ve **Havuz veri kümesi** alanı için **+ Yeni** ' yi seçin.
+20. On the **Sink** tab, select **New** under **Sink Dataset**.
 
-21. Bu öğreticide, havuz veri deposu **Azure Blob depolama**türünde. **Azure Blob depolama**' yı seçin ve **Yeni veri kümesi** penceresinde **devam** ' ı seçin.
+21. In this tutorial, the sink data store is an Azure Blob storage data store. Select **Azure Blob storage**, and then select **Continue** in the **New Dataset** window.
 
-22. **Biçim Seç** penceresinde, verilerinizin biçim türünü seçin ve **devam**' ı seçin.
+22. In the **Select Format** window, select the format of your data, and then select **Continue**.
 
-23. **Özellikleri ayarla** penceresinde ad Için **sinkdataset** girin. Bağlı hizmet için **+ Yeni**' yi seçin. Bu adımda, **Azure Blob Depolama**’nıza yönelik bir bağlantı (bağlı hizmet) oluşturursunuz.
+23. In the **Set Properties** window, under **Name**, enter **SinkDataset**. Under **Linked service**, select **New**. You'll now create a connection (a linked service) to your Azure Blob storage.
 
-24. **Yeni bağlı hizmet (Azure Blob depolama)** penceresinde aşağıdaki adımları uygulayın:
+24. In the **New Linked Service (Azure Blob storage)** window, complete these steps:
 
-    1. Ad için *AzureStorageLinkedService* girin.
+    1. In the **Name** box, enter **AzureStorageLinkedService**.
 
-    2. Azure aboneliğiniz ile **depolama hesabı adı** Için Azure depolama hesabınızı seçin.
+    2. Under **Storage account name**, select the Azure storage account for your Azure subscription.
 
-    3. **Bağlantıyı** test edin ve ardından **son**' u seçin.
+    3. Test the connection and then select **Finish**.
 
-25. **Özellikleri ayarla** penceresinde, **bağlı hizmet**için *AzureStorageLinkedService* ' nin seçili olduğunu doğrulayın. Sonra **Oluştur** ve **Tamam**' ı seçin.
+25. In the **Set Properties** window, confirm that **AzureStorageLinkedService** is selected under **Linked service**. Select **Create** and **OK**.
 
-26. **Havuz** sekmesinde **Düzenle**' yi seçin.
+26. On **Sink** tab, select **Edit**.
 
-27. *Sinkdataset* 'in **bağlantı** sekmesine gidin ve aşağıdaki adımları uygulayın:
+27. Go to the **Connection** tab of SinkDataset and complete these steps:
 
-    1. **Dosya yolu** alanı için *asdedatasync/incrementalcopy*girin; burada **adföğreticisi** blob kapsayıcısı adı, **incrementalcopy** ise klasör adıdır. Henüz yoksa kapsayıcıyı oluşturun veya var olan bir kapsayıcının adına ayarlayın. *incrementalcopy* adlı çıktı dosyası mevcut değilse Azure Data Factory tarafından otomatik olarak oluşturulur. Bir blob kapsayıcısındaki klasörlerden birine gitmek istiyorsanız **Dosya yolu** için **Gözat** düğmesini de kullanabilirsiniz.
+    1. Under **File path**, enter *asdedatasync/incrementalcopy*, where *adftutorial* is the blob container name and *incrementalcopy* is the folder name. Create the container if it doesn't exist, or use the name of an existing one. Azure Data Factory automatically creates the output folder *incrementalcopy* if it doesn't exist. Bir blob kapsayıcısındaki klasörlerden birine gitmek istiyorsanız **Dosya yolu** için **Gözat** düğmesini de kullanabilirsiniz.
 
-    2. **Dosya yolu** alanının **Dosya** bölümü Için, **dinamik Içerik Ekle [alt + P]** öğesini seçin ve ardından *@CONCAT(' artımlı-', işlem hattı () girin. RunId, '. txt ')* açılan pencerede. Ardından **Son**’u seçin. Dosya adı, ifade kullanılarak dinamik olarak oluşturulur. Her işlem hattı çalıştırması benzersiz bir kimliğe sahiptir. Kopyalama etkinliği, dosya adını oluşturmak için çalışma kimliğini kullanır.
+    2. For the **File** part of the **File path**, select **Add dynamic content [Alt+P]** , and then enter **@CONCAT('Incremental-', pipeline().RunId, '.txt')** in the window that opens. **Son**’u seçin. The file name is dynamically generated by the expression. Her işlem hattı çalıştırması benzersiz bir kimliğe sahiptir. Kopyalama etkinliği, dosya adını oluşturmak için çalışma kimliğini kullanır.
 
-28. En üstteki işlem hattı sekmesini seçerek veya soldaki ağaç görünümünde işlem hattının adını seçerek işlem **hattı** düzenleyicisine geçin.
+28. Switch to the pipeline editor by selecting the pipeline tab at the top or by selecting the name of the pipeline in the tree view on the left.
 
-29. **Etkinlikler** araç kutusunda **Genel**’i genişletin ve **Etkinlikler** araç kutusundan **Saklı Yordam** etkinliğini sürükleyip işlem hattı tasarımcısının yüzeyine bırakın. **Kopyalama** etkinliğinin yeşil (Başarılı) çıktısını **Saklı Yordam** etkinliğine **bağlayın**.
+29. In the **Activities** pane, expand **General** and drag the **Stored Procedure** activity from the **Activities** pane to the pipeline designer surface. Connect the green (success) output of the Copy activity to the Stored Procedure activity.
 
-30. Işlem hattı tasarımcısında **saklı yordam etkinliği** ' ni seçin, adını *Sptoupdatesulu markactivity*olarak değiştirin.
+30. Select **Stored Procedure Activity** in the pipeline designer and change its name to **SPtoUpdateWatermarkActivity**.
 
-31. **SQL hesabı** sekmesine geçin ve **bağlı hizmet**için *SQLDBEdgeLinkedService* öğesini seçin.
+31. Switch to the **SQL Account** tab, and select ***QLDBEdgeLinkedService** under **Linked service**.
 
-32. **Saklı Yordam** sekmesine geçin ve aşağıdaki adımları uygulayın:
+32. Switch to the **Stored Procedure** tab and complete these steps:
 
-    1. **Saklı yordam adı**için *[dbo] öğesini seçin. [ usp_write_watermark]* .
+    1. Under **Stored procedure name**, select **[dbo].[usp_write_watermark]** .
 
-    2. Saklı yordam parametrelerinin değerlerini belirtmek için, parametreyi Içeri Aktar ' ı seçin ve parametreler için aşağıdaki değerleri girin:
+    2. To specify values for the stored procedure parameters, select **Import parameter** and enter these values for the parameters:
 
-    |Ad|Tür|Değer|
+    |Adı|Tür|Değer|
     |-----|----|-----|
-    |LastModifiedtime|DateTime|@ {Activity (' Newfiligran '). Output. firstRow. Newsulu Markvalue}|
-    |TableName|Dize|@ {Activity (' Oldfiligran '). Output. firstRow. TableName}|
+    |LastModifiedtime|Tarih Saat|@{activity('NewWaterMark').output.firstRow.NewWatermarkvalue}|
+    |TableName|Dize|@{activity('OldWaterMark').output.firstRow.TableName}|
 
-33. İşlem hattı ayarlarını doğrulamak için araç çubuğunda **Doğrula** ' yı seçin. Doğrulama hatası olmadığından emin olun. İşlem **hattı doğrulama raporu** penceresini kapatmak için **>>** ' yi seçin.
+33. To validate the pipeline settings, select **Validate** on the toolbar. Doğrulama hatası olmadığından emin olun. To close the **Pipeline Validation Report** window, select **>>** .
 
-34. **Tümünü Yayımla** düğmesine tıklayarak varlıkları (bağlı hizmetler, veri kümeleri ve işlem hatları) Azure Data Factory hizmetinde yayımlayın. Yayımlamanın başarılı olduğunu belirten bir ileti görene kadar bekleyin.
+34. Publish the entities (linked services, datasets, and pipelines) to the Azure Data Factory service by selecting the **Publish All** button. Wait until you see a message confirming that the publish operation has succeeded.
 
-## <a name="trigger-a-pipeline-on-schedule"></a>Zamanlamaya göre işlem hattı tetikleme
+## <a name="trigger-a-pipeline-based-on-a-schedule"></a>Trigger a pipeline based on a schedule
 
-1. İşlem hattı araç çubuğunda **tetikleyici Ekle**' yi seçin ve **Yeni/Düzenle**' yi seçin ve **+ Yeni**' yi seçin
+1. On the pipeline toolbar, select **Add Trigger**, select **New/Edit**, and then select **New**.
 
-2. Tetikleyiciyi *HourlySync*ile adlandırın, zamanlama olarak **yazın** ' ı seçin ve **yinelenme** 'yi her 1 saat olarak ayarlayın.
+2. Name your trigger **HourlySync**. Under **Type**, select **Schedule**. Set the **Recurrence** to every 1 hour.
 
 3. **Tamam**’ı seçin.
 
 4. **Tümünü Yayımla**.
 
-5. **Şimdi Tetikle**' yi seçin.
+5. Select **Trigger Now**.
 
-6. Soldaki **İzleyici** sekmesine geçin. El ile tetikleme işlemi tarafından tetiklenen işlem hattı çalıştırmasının durumunu görebilirsiniz. Listeyi yenilemek için **Yenile** düğmesini seçin.
+6. Soldaki **İzleyici** sekmesine geçin. El ile tetikleme işlemi tarafından tetiklenen işlem hattı çalıştırmasının durumunu görebilirsiniz. Listeyi yenilemek için **Yenile**’yi seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticideki Azure Data Factory işlem hattı, SQL veritabanı Edge örneğindeki bir tablodan verileri saatlik bir sıklıkta Azure Blob depolamada bir konuma kopyalar. Daha fazla senaryoda Data Factory kullanma hakkında daha fazla bilgi edinmek için bu [öğreticilerle](../data-factory/tutorial-copy-data-portal.md)gidin.
+The Azure Data Factory pipeline in this tutorial copies data from a table on a SQL Database Edge instance to a location in Azure Blob storage once every hour. To learn about using Data Factory in other scenarios, see these [tutorials](../data-factory/tutorial-copy-data-portal.md).

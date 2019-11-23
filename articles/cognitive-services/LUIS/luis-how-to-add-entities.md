@@ -1,7 +1,7 @@
 ---
-title: Varlık Ekle-LUSıS
+title: Add entities - LUIS
 titleSuffix: Azure Cognitive Services
-description: Language Understanding (LUSıS) uygulamalarındaki Kullanıcı dıklarından anahtar verileri ayıklamak için varlıklar oluşturun. Ayıklanan varlık verileri, istemci uygulama tarafından fullfıbcustomer istekleri için kullanılır.
+description: Create entities to extract key data from user utterances in Language Understanding (LUIS) apps. Extracted entity data is used by the client application to fullfil customer requests.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,182 +11,186 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: diberry
-ms.openlocfilehash: 7de1a1e24c2863b90fe5f1f3ff19124318912cff
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 1f2b293acdc77e25e6b932c47d466cc28a04a2b6
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132679"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383671"
 ---
-# <a name="add-entities-to-extract-data"></a>Verileri ayıklamak için varlık ekleme 
+# <a name="add-entities-to-extract-data"></a>Add entities to extract data 
 
-Language Understanding (LUSıS) uygulamalarındaki Kullanıcı dıklarından anahtar verileri ayıklamak için varlıklar oluşturun. Ayıklanan varlık verileri, istemci uygulamanız tarafından fullfıbcustomer istekleri için kullanılır.
+Create entities to extract key data from user utterances in Language Understanding (LUIS) apps. Extracted entity data is used by your client application to fullfil customer requests.
 
-Varlık, bir sözcük veya tümcecik ayıklanan istediğiniz utterance içinde temsil eder. Bazen uygulamanızın görevini gerçekleştirmek gerekli olan ve bilgi ıntent'e ilgili varlıkları anlatmaktadır. Hedefe bir örnek ekleme veya bir amaca göre örnek ekleme (önce veya sonrası) bir amaca bakış ekleyerek varlıklar oluşturabilirsiniz.
+The entity represents a word or phrase inside the utterance that you want extracted. Entities describe information relevant to the intent, and sometimes they are essential for your app to perform its task. You can create entities when you add an example utterance to an intent or apart from (before or after) adding an example utterance to an intent.
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
-## <a name="plan-entities-then-create-and-label"></a>Varlıkları planlayın, ardından Oluştur ve etiketle
+## <a name="plan-entities-then-create-and-label"></a>Plan entities, then create and label
 
-Makine tarafından öğrenilen varlıklar, örnek dıklarından oluşturabilir veya **varlıklar** sayfasından oluşturulabilir. 
+Machine-learned entities can be created from the example utterances or created from the **Entities** page. 
 
-Genel olarak, portalda makine tarafından öğrenilen bir varlık oluşturmadan önce varlıkları planlama süresini harcamanız en iyi uygulamadır. Daha sonra örnekte, makinenizde öğrendiğiniz şekilde, alt bileşenlere ve tanımlayıcılara ve kısıtlamalara göre daha ayrıntılı bilgi vererek makine tarafından öğrenilen varlığı oluşturun. [Birleştirilebilen varlık öğreticisi](tutorial-machine-learned-entity.md) , bu yöntemin nasıl kullanılacağını gösterir. 
+In general, a best practice is to spend time planning the entities before creating a machine-learned entity in the portal. Then create the machine-learned entity from the example utterance with as much detail in the subcomponents and descriptors and constraints as you know at the time. The [decomposable entity tutorial](tutorial-machine-learned-entity.md) demonstrates how to use this method. 
 
-Varlıkları planlamanın bir parçası olarak, metin ile eşleşen varlıklara (önceden oluşturulmuş varlıklar, normal ifade varlıkları veya liste varlıkları gibi) ihtiyacınız olduğunu bilirsiniz. Bunları örnek bir şekilde etiketlendirmeleri için **varlıklar** sayfasından oluşturabilirsiniz. 
+As part of planning the entities, you may know you need text-matching entities (such as prebuilt entities, regular expression entities, or list entities). You can create these from the **Entities** page before they are labeled in example utterances. 
 
-Etiketleme sırasında tek tek varlıkları etiketleyebilir ve ardından bir üst makineye öğrenilen varlık oluşturabilirsiniz. Ya da bir üst makine öğrenmiş varlıkla başlayabilir ve alt varlıklarda bir varlık oluşturabilir. 
+When labeling, you can either label individual entities then build up to a parent machine-learned entity. Or you can start with a parent machine-learned entity and decompose into child entities. 
 
 > [!TIP] 
->Sözcükler, istemci uygulamasında ayıklandığında kullanılmasa bile, bir varlığı gösterebilen tüm kelimeleri etiketleyebilir. 
+>Label all words that may indicate an entity, even if the words are not used when extracted in the client application. 
 
-## <a name="creating-an-entity-before-or-with-labeling"></a>Etiketleme öncesinde veya etiketleyerek bir varlık oluşturma
+## <a name="creating-an-entity-before-or-with-labeling"></a>Creating an entity before or with labeling
 
-Her bir varlığın hangi varlıkları oluşturmak veya uygulamaya ekleneceğini anlamak için aşağıdaki tabloyu kullanın. 
+Use the following table to understand which entities where to create or add each entity to the app. 
 
-|Varlık türü|LUSıS portalında varlık oluşturma|
+|Entity type|Where to create entity in the LUIS portal|
 |--|--|
-|Makine tarafından öğrenilen varlık|Varlıklar veya amaç ayrıntısı|
-|Liste varlığı|Varlıklar veya amaç ayrıntısı|
+|Makine tarafından öğrenilen varlık|Entities or Intent detail|
+|Liste varlığı|Entities or Intent detail|
 |Normal ifade varlığı|Varlıklar|
 |Pattern.any varlığı|Varlıklar|
-|Önceden oluşturulmuş varlık|Varlıklar|
-|Önceden oluşturulmuş etki alanı varlığı|Varlıklar|
+|Prebuilt entity|Varlıklar|
+|Prebuilt domain entity|Varlıklar|
 
-**Varlıklar** sayfasından tüm varlıkları oluşturabilir veya **Amaç ayrıntısı** sayfasında, varlığı etiketlemenin bir parçası olarak bir dizi varlık oluşturabilirsiniz. Bir varlığı yalnızca **Amaç ayrıntısı** sayfasından bir örnek olarak _etiketleyebilir_ . 
+You can create all the entities from the **Entities** page, or you can create a couple of the entities as part of labeling the entity in the example utterance on the **Intent detail** page. You can only _label_ an entity in an example utterance from the **Intent detail** page. 
 
-## <a name="create-a-machine-learned-entity"></a>Makine tarafından öğrenilen bir varlık oluşturma
+## <a name="create-a-machine-learned-entity"></a>Create a machine-learned entity
 
 [!INCLUDE [Create and label entities in machine-learned tutorial](includes/decomposable-tutorial-links.md)]
 
-## <a name="create-a-text-matching-entity"></a>Metin ile eşleşen bir varlık oluşturma
+## <a name="create-a-text-matching-entity"></a>Create a text-matching entity
 
-Metin eşleştirme varlıklarını kullanma, verileri ayıklamak için çeşitli yollar sağlar:
+Use text-matching entities provide several ways to extract data:
 
-|Metin eşleştirme varlıkları|Amaç|
+|Text-matching entities|Amaç|
 |--|--|
-|[Varlık listeleme](#add-list-entities-for-exact-matches)|alternatif formlar olarak eş anlamlılarla birlikte kurallı adların listesi|
-|Normal ifade varlığı|normal ifade varlığı kullanarak metni Eşleştir|
-|[Önceden oluşturulmuş varlık](tutorial-machine-learned-entity.md#add-prebuilt-number-to-app-to-help-extract-data)|sayı, e-posta, tarih gibi ortak veri türlerini Eşleştir|
-|Önceden oluşturulmuş etki alanı varlığı|seçili konu etki alanlarını kullanarak Eşleştir|
-|[Pattern.Any](#add-a-patternany-entity)| çevreleyen metinle kolayca karışabilme varlıkları eşleştirmek için|  
+|[List entity](#add-list-entities-for-exact-matches)|list of canonical names along with synonyms as alternative forms|
+|Normal ifade varlığı|match text using a regular expression entity|
+|[Prebuilt entity](tutorial-machine-learned-entity.md#add-prebuilt-number-to-help-extract-data)|match common data types such as number, email, date|
+|Prebuilt domain entity|match using selected subject domains|
+|[Pattern.any](#add-a-patternany-entity)| to match entities that may be easily confused with the surrounding text|  
 
-Önceden oluşturulmuş varlıklar, herhangi bir özel eğitim verisi sağlamadan çalışır. Diğer varlıkların, müşteri eğitim verileri (liste varlığının öğeleri gibi) veya bir ifade (normal ifade veya model gibi) sağlamanız gerekir.
+Prebuilt entities work without providing any custom training data. The other entities need you to provide either customer training data (such as List entity's items) or an expression (such as a regular expression or pattern.any).
 
 <a name="add-list-entities"></a>
 
-### <a name="how-to-create-a-new-custom-entity"></a>Yeni bir özel varlık oluşturma
+### <a name="how-to-create-a-new-custom-entity"></a>How to create a new custom entity
 
-1. LUU portalında **Yönet** bölümüne, ardından **varlıklar** sayfasına gidin. 
-1. **+ Oluştur**' u seçin ve varlık türünü seçin. 
-1. Varlığı yapılandırmaya devam edin, sonra işiniz bittiğinde **Oluştur** ' u seçin. 
+1. In the LUIS portal, goto the **Manage** section, then the **Entities** page. 
+1. Select **+ Create**, then select the entity type. 
+1. Continue configuring the entity then select **Create** when you are done. 
 
-### <a name="add-list-entities-for-exact-matches"></a>Tam eşleşmeler için liste varlıkları ekleme
+### <a name="add-list-entities-for-exact-matches"></a>Add list entities for exact matches
 
-Liste varlık ilgili sözcükler sabit, kapalı bir kümesini temsil eder. Yazar olarak, yazar olarak listeyi değiştireyken, LUYA listeyi küçültmez veya küçülemez. Ayrıca, bir [list Entity. JSON biçimi (başvuru-varlık-List. MD # örnek-JSON------------------------- 
+List entities represent a fixed, closed set of related words. While you, as the author, can change the list, LUIS won't grow or shrink the list. You can also import to an existing list entity using a [list entity .json format(reference-entity-list.md#example-json-to-import-into-list-entity). 
 
-Aşağıdaki listede kurallı adı ve eş anlamlılar gösterilmektedir. 
+The following list demonstrates the canonical name and the synonyms. 
 
-|Renk listesi öğe adı|Renk eşanlamlıları|
+|Color - list item name|Color - synonyms|
 |--|--|
-|Kırmızı|Crimson, kan, Apple, Fire-Engine|
-|Mavi|gök, Azure, Cobalt|
-|Yeşil|Kelly, limon sarısı|
+|Kırmızı|crimson, blood, apple, fire-engine|
+|Mavi|sky, azure, cobalt|
+|Yeşil|kelly, lime|
 
-Bir liste varlığı oluşturmak için yordamını kullanın. Liste varlığı oluşturulduktan sonra, bir amaç için örnek söyleyeni etiketlemenize gerek yoktur. Liste öğeleri ve eş anlamlılar, tam metin kullanılarak eşleştirilir. 
+Use the procedure to create a list entity. Once the list entity is created, you don't need to label example utterances in an intent. List items and synonyms are matched using exact text. 
 
-1. **Derleme** bölümünde, sol paneldeki **varlıklar** ' ı seçin ve ardından **+ Oluştur**' u seçin.
+1. From the **Build** section, select **Entities** in the left panel, and then select **+ Create**.
 
-1. **Varlık türü oluştur** iletişim kutusunda, varlığın adını girin, örneğin `Colors` ve **liste**seçin.
-1. **Liste varlığı oluştur** iletişim kutusunda **Yeni alt liste ekle...** ' da, `Green`gibi bir liste öğesi adı girin ve sonra eşanlamlı ekleyin.
+1. In the **Create an entity type** dialog box, enter the name of the entity, such as `Colors` and select **List**.
+1. In the **Create a list entity** dialog box, in the **Add new sublist....** , enter the list item name, such as `Green`, then add synonyms.
 
     > [!div class="mx-imgBorder"]
-    > ![varlık ayrıntısı sayfasında bir liste varlığı olarak renklerin bir listesini oluşturun.](media/how-to-add-entities/create-list-entity-of-colors.png) 
+    > ![Create a list of colors as a list entity in the Entity detail page.](media/how-to-add-entities/create-list-entity-of-colors.png) 
 
-1. Liste öğeleri ve eş anlamlılar ekleme işiniz bittiğinde **Oluştur**' u seçin.
+1. When you are finished adding list items and synonyms, select **Create**.
 
-    Uygulamada bir değişiklik grubuyla işiniz bittiğinde, uygulamayı **eğiten** unutmayın. Uygulamayı tek bir değişiklikten sonra eğmeyin. 
+    When you are done with a group of changes to the app, remember to **Train** the app. Do not train the app after a single change. 
 
     > [!NOTE]
-    > Bu yordam, **Amaç ayrıntısı** sayfasında bir liste varlığının bir örnek ile oluşturulmasını ve etiketlenmesini gösterir. Aynı varlığı **varlıklar** sayfasından da oluşturabilirsiniz.
+    > This procedure demonstrates creating and labeling a list entity from an example utterance in the **Intent detail** page. You can also create the same entity from the **Entities** page.
 
-## <a name="add-a-role-for-an-entity"></a>Bir varlık için rol ekleme
+## <a name="add-a-role-for-an-entity"></a>Add a role for an entity
 
-Rol, bir varlığın bağlam temelinde adlandırılmış bir alt türüdür. 
+A role is a named subtype of an entity, based on context. 
 
-### <a name="add-a-role-to-distinguish-different-contexts"></a>Farklı bağlamları ayırt etmek için rol ekleme
+### <a name="add-a-role-to-distinguish-different-contexts"></a>Add a role to distinguish different contexts
 
-Aşağıdaki söyleyde iki konum vardır ve her biri, `to` ve `from`gibi sözcükler tarafından anlam olarak belirtilmiştir: 
+In the following utterance, there are two locations, and each is specified semantically by the words around it such as `to` and `from`: 
 
 `Pick up the package from Seattle and deliver to New York City.`
 
-Bu yordamda, önceden oluşturulmuş bir geographyV2 varlığına `origin` ve `destination` rolleri ekleyin.
+In this procedure, add `origin` and `destination` roles to a prebuilt geographyV2 entity.
 
-1. Gelen **derleme** bölümünden **varlıkları** sol bölmesinde.
+1. From the **Build** section, select **Entities** in the left panel.
 
-1. **+ Önceden oluşturulmuş varlık Ekle**' yi seçin. **GeographyV2** ' ı seçin ve **bitti**' yi seçin. Bu, uygulamaya önceden oluşturulmuş bir varlık ekler.
+1. Select **+ Add prebuilt entity**. Select **geographyV2** then select **Done**. This adds a prebuilt entity to the app.
     
     Pattern.any içerdiğinde deseninizin varlıkları yanlış ayıkladığını fark ederseniz bu sorunu gidermek için [açık liste](reference-pattern-syntax.md#explicit-lists) kullanın. 
 
-1. **Varlıklar sayfa listesinden** yeni eklenen önceden oluşturulmuş geographyV2 varlığını seçin. 
-1. Yeni bir rol eklemek için, **rol eklenmemiş** **+** ileri ' yi seçin.
-1. **Rol... TextBox yazın** `Origin` rolün adını girin ve ardından girin. İkinci bir rol adı `Destination` ekleyin ve ardından girin. 
+1. Select the newly added prebuilt geographyV2 entity from the **Entities** page list of entities. 
+1. To add a new role, select **+** next to **No roles added**.
+1. In the **Type role...** textbox, enter the name of the role `Origin` then enter. Add a second role name of `Destination` then enter. 
 
     > [!div class="mx-imgBorder"]
-    > Konum varlığına kaynak rolü eklemenin ekran görüntüsünü ![](media/how-to-add-entities//add-role-to-prebuilt-geographyv2-entity.png)
+    > ![Screenshot of adding Origin role to Location entity](media/how-to-add-entities//add-role-to-prebuilt-geographyv2-entity.png)
 
-    Rol önceden oluşturulmuş varlığa eklenir, ancak bu varlık kullanılarak herhangi bir söyleye eklenmez. 
+    The role is added to the prebuilt entity but isn't added to any utterances using that entity. 
 
-### <a name="label-text-with-a-role-in-an-example-utterance"></a>Örnekte bir rol ile metin etiketle
+### <a name="label-text-with-a-role-in-an-example-utterance"></a>Label text with a role in an example utterance
 
-1. Rolü kullanan örnek bir parametre olan amaç ayrıntıları sayfasına gidin. 
-1. Rol ile etiketlemek için, örnekte varlık etiketini (metin altında Solid Line) seçin ve ardından açılır listeden **varlık paletinde görüntüle** ' yi seçin. 
-
-    > [!div class="mx-imgBorder"]
-    > varlık paletinde görünüm seçme ![ekran görüntüsü](media/how-to-add-entities/select-text-label-with-entity-palette-for-role.png)   
-
-    Varlık paleti sağ tarafta açılır. 
-
-1. Varlığı seçin, sonra paletin en altına gidin ve rolü seçin. 
+1. Go to the Intent details page, which has example utterances that use the role. 
+1. To label with the role, select the entity label (solid line under text) in the example utterance, then select **View in entity palette** from the drop-down list. 
 
     > [!div class="mx-imgBorder"]
-    > varlık paletinde görünüm seçme ![ekran görüntüsü](media/how-to-add-entities/select-role-from-entity-palette-entity-inspector.png)
+    > ![Screenshot of selecting View in entity Palette](media/how-to-add-entities/select-text-label-with-entity-palette-for-role.png)   
+
+    The entity palette opens to the right. 
+
+1. Select the entity, then go to the bottom of the palette and select the role. 
+
+    > [!div class="mx-imgBorder"]
+    > ![Screenshot of selecting View in entity Palette](media/how-to-add-entities/select-role-from-entity-palette-entity-inspector.png)
 
 <a name="add-pattern-any-entities"></a>
 
-## <a name="add-a-patternany-entity"></a>Bir model ekleyin. herhangi bir varlık
+## <a name="add-a-patternany-entity"></a>Add a pattern.any entity
 
-[Desen. tüm](luis-concept-entity-types.md) varlıklar yalnızca [desenlere](luis-how-to-model-intent-pattern.md)göre geçerlidir, amaç örnekleri değildir. Bu varlık türü, değişken uzunluğu ve sözcük seçimi varlıklarının sonuna Bul LUIS yardımcı olur. Bu varlık içindeki bir desenle kullanıldığından LUIS son varlık utterance şablonda olduğu bilir.
+[Pattern.any](luis-concept-entity-types.md) entities are only valid in [patterns](luis-how-to-model-intent-pattern.md), not intents' example utterances. This type of entity helps LUIS find the end of entities of varying length and word choice. Because this entity is used in a pattern, LUIS knows where the end of the entity is in the utterance template.
 
-### <a name="steps-to-create-a-patternany-entity"></a>Bir model oluşturma adımları. herhangi bir varlık
+### <a name="steps-to-create-a-patternany-entity"></a>Steps to create a pattern.any entity
 
-1. **Derleme** bölümünde, sol paneldeki **varlıklar** ' ı seçin ve ardından **+ Oluştur**' u seçin.
+1. From the **Build** section, select **Entities** in the left panel, and then select **+ Create**.
 
-1. **Varlık türü seç** iletişim kutusunda, **ad** kutusuna varlık adını girin ve ardından model ' i seçin **.** tür olarak **yazın** ve **Oluştur**' u seçin.
+1. In the **Choose an entity type** dialog box, enter the entity name in the **Name** box, and select **Pattern.Any** as the **Type** then select **Create**.
 
-    Bu varlığı kullanarak [bir desen oluşturduktan](luis-how-to-model-intent-pattern.md) sonra varlık, birleştirilmiş bir makine tarafından öğrenilen ve metin eşleştirme algoritması ile ayıklanır. 
+    Once you [create a pattern utterance](luis-how-to-model-intent-pattern.md) using this entity, the entity is extracted with a combined machine-learned and text-matching algorithm. 
 
-### <a name="create-a-pattern-template-utterance-to-use-patternany-entity"></a>Desen kullanmak için desen şablonu oluşturma. herhangi bir varlık
+### <a name="create-a-pattern-template-utterance-to-use-patternany-entity"></a>Create a pattern template utterance to use pattern.any entity
 
-Pattern.any varlık kullanmak için üzerinde bir desen Ekle **desenleri** sayfasında **uygulama performansını** doğru küme ayracı sözdizimi bölümündeki `Where is **{HumanResourcesFormTitle}** on the server?`.
+To use the pattern.any entity, add a pattern on the **Patterns** page, in the **Improve app performance** section, with the correct curly brace syntax, such as `Where is **{HumanResourcesFormTitle}** on the server?`.
 
 Pattern.any içerdiğinde deseninizin varlıkları yanlış ayıkladığını fark ederseniz bu sorunu gidermek için [açık liste](reference-pattern-syntax.md#explicit-lists) kullanın. 
 
-## <a name="do-not-change-entity-type"></a>Varlık türünü değiştirme
+## <a name="do-not-change-entity-type"></a>Do not change entity type
 
-LUIS, ekleme veya kaldırma, varlık oluşturmak için gerekenler bilmediği varlık türünü değiştirmek izin vermez. Türü değiştirmek için biraz daha farklı bir adla doğru türde yeni bir varlık oluşturmak iyidir. Varlık oluşturulduktan sonra eski etiketli varlık adı her utterance içinde kaldırıp yeni varlık adı ekleyin. Tüm sesleri relabeled sonra eski varlığı silin. 
+LUIS does not allow you to change the type of the entity because it doesn't know what to add or remove to construct that entity. In order to change the type, it is better to create a new entity of the correct type with a slightly different name. Once the entity is created, in each utterance, remove the old labeled entity name and add the new entity name. Once all the utterances have been relabeled, delete the old entity. 
 
 <a name="create-a-pattern-from-an-utterance"></a>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Desenler hakkında daha fazla bilgi edinin:
+> [!div class="nextstepaction"] 
+> [Use prebuilt models](howto-add-prebuilt-models.md) 
 
-* [Desenler kavramları](luis-concept-patterns.md)
-* [Desenler sözdizimi](reference-pattern-syntax.md)
+Aşağıdakiler hakkında daha fazla bilgi edinin:
+* How to [train](luis-how-to-train.md)
+* How to [test](luis-interactive-test.md)
+* How to [publish](luis-how-to-publish-app.md)
+* Patterns:
+    * [Kavramlar ](luis-concept-patterns.md)
+    * [Syntax](reference-pattern-syntax.md)
+* [Prebuilt entities GitHub repository](https://github.com/Microsoft/Recognizers-Text)
+* [Data Extraction concepts](luis-concept-data-extraction.md)
 
-Önceden oluşturulmuş varlıklarla ilgili daha fazla bilgi için bkz. [tanıyıcıları metin](https://github.com/Microsoft/Recognizers-Text) proje. 
 
-Varlık JSON uç nokta sorgu yanıtına görüntülenme şeklini hakkında daha fazla bilgi için bkz: [veri ayıklama](luis-concept-data-extraction.md)
-
-Hedefleri ve konuşma varlıklarını ekledikten sonra temel bir LUIS uygulaması sahip. Bilgi nasıl [eğitme](luis-how-to-train.md), [test](luis-interactive-test.md), ve [yayımlama](luis-how-to-publish-app.md) uygulamanızı.
  

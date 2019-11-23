@@ -1,88 +1,88 @@
 ---
-title: Öğretici-Azure portal şablonu dışarı aktarma
-description: Şablon geliştirmeyi tamamlamaya yönelik olarak, aktarılmış bir şablonu nasıl kullanacağınızı öğrenin.
+title: Tutorial - Export template from the Azure portal
+description: Learn how to use an exported template to complete your template development.
 author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6dae5d494ac71ace41586e89de5aab745962cc90
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 6c22a8e2b479ed7d3a225bc649d89f5302d0f536
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74147926"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406022"
 ---
-# <a name="tutorial-use-exported-template-from-the-azure-portal"></a>Öğretici: Azure portal dışarıya aktarılmış şablon kullanma
+# <a name="tutorial-use-exported-template-from-the-azure-portal"></a>Tutorial: Use exported template from the Azure portal
 
-Bu öğretici serisinde, Azure depolama hesabı dağıtmak için bir şablon oluşturdunuz. Sonraki iki öğreticilerde, bir *App Service planı* ve bir *Web sitesi*eklersiniz. Sıfırdan şablon oluşturmak yerine, Azure portal şablonları dışarı aktarmayı ve [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/)örnek şablonları kullanmayı öğreneceksiniz. Bu şablonları kullanım için özelleştirirsiniz. Bu öğretici, şablonları dışarı aktarmaya ve şablonunuzun sonucunu özelleştirmeye odaklanır. Yaklaşık **14 dakika** sürer.
+In this tutorial series, you've created a template to deploy an Azure storage account. In the next two tutorials, you add an *App Service plan* and a *website*. Instead of creating templates from scratch, you learn how to export templates from the Azure portal and how to use sample templates from the [Azure Quickstart templates](https://azure.microsoft.com/resources/templates/). You customize those templates for your use. This tutorial focuses on exporting templates, and customizing the result for your template. It takes about **14 minutes** to complete.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-[Çıktılar hakkında öğreticiyi](template-tutorial-add-outputs.md)tamamlamanızı öneririz, ancak bu gerekli değildir.
+We recommend that you complete the [tutorial about outputs](template-tutorial-add-outputs.md), but it's not required.
 
-Kaynak Yöneticisi Araçları uzantısı ve Azure PowerShell ya da Azure CLı ile Visual Studio Code olması gerekir. Daha fazla bilgi için bkz. [şablon araçları](template-tutorial-create-first-template.md#get-tools).
+You must have Visual Studio Code with the Resource Manager Tools extension, and either Azure PowerShell or Azure CLI. For more information, see [template tools](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-your-template"></a>Şablonunuzu gözden geçirin
+## <a name="review-template"></a>Review template
 
-Önceki öğreticinin sonunda, şablonunuz aşağıdaki JSON 'a sahipti:
+At the end of the previous tutorial, your template had the following JSON:
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.json)]
 
-Bu şablon, depolama hesaplarının dağıtımı için iyi bir sonuç verir, ancak buna daha fazla kaynak eklemek isteyebilirsiniz. Var olan bir kaynaktan bir şablonu dışarı aktarmak için bu kaynağın JSON 'sini hızlıca alabilirsiniz.
+This template works well for deploying storage accounts, but you might want to add more resources to it. You can export a template from an existing resource to quickly get the JSON for that resource.
 
 ## <a name="create-app-service-plan"></a>App Service planı oluşturma
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
-1. Seçin **kaynak Oluştur**.
-1. **Markette ara**' te **App Service planı**girin ve **App Service planı**' nı seçin.  **App Service planı seçme (klasik)**
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. Select **Create a resource**.
+1. In **Search the Marketplace**, enter **App Service plan**, and then select **App Service plan**.  Don’t select **App Service plan (classic)**
 1. **Oluştur**'u seçin.
-1. Girmesini
+1. Enter:
 
     - **Abonelik**: Azure aboneliğinizi seçin.
-    - **Kaynak grubu**: **Yeni oluştur** ' u seçin ve ardından bir ad belirtin. Bu öğretici serisinde kullandığınızdan farklı bir kaynak grubu adı belirtin.
-    - **Ad**: App Service planı için bir ad girin.
-    - **Işletim sistemi**: **Linux**' u seçin.
-    - **Bölge**: bir Azure konumu seçin. Örneğin, **Orta ABD**.
-    - **Fiyatlandırma katmanı**: maliyetleri kaydetmek için SKU 'Yu **temel B1** (geliştirme/test altında) olarak değiştirin.
+    - **Resource Group**: Select **Create new** and then specify a name. Provide a different resource group name than the one you have been using in this tutorial series.
+    - **Name**: enter a name for the App service plan.
+    - **Operating System**: select **Linux**.
+    - **Region**: select an Azure location. For example, **Central US**.
+    - **Pricing tier**: to save costs, change the SKU to **Basic B1** (under Dev/Test).
 
-    ![Kaynak Yöneticisi şablonu dışarı aktarma şablonu portalı](./media/template-tutorial-export-template/resource-manager-template-export.png)
-1. **Gözden geçir ve Oluştur '** u seçin.
-1. **Oluştur**'u seçin. Kaynağı oluşturmak birkaç dakika sürer.
+    ![Resource Manager template export template portal](./media/template-tutorial-export-template/resource-manager-template-export.png)
+1. Select **Review and create**.
+1. **Oluştur**'u seçin. It takes a few moments to create the resource.
 
-## <a name="export-the-template"></a>Şablonu dışarı aktarma
+## <a name="export-template"></a>Şablonu dışarı aktarma
 
-1. **Kaynağa Git**' i seçin.
+1. Select **Go to resource**.
 
     ![Kaynağa git](./media/template-tutorial-export-template/resource-manager-template-export-go-to-resource.png)
 
-1. **Şablonu dışarı aktar**' ı seçin.
+1. Select **Export template**.
 
-    ![Kaynak Yöneticisi şablonu dışarı aktarma şablonu](./media/template-tutorial-export-template/resource-manager-template-export-template.png)
+    ![Resource Manager template export template](./media/template-tutorial-export-template/resource-manager-template-export-template.png)
 
-   Şablonu dışarı aktar özelliği, bir kaynağın geçerli durumunu alır ve bunu dağıtmak için bir şablon oluşturur. Bir şablonu dışarı aktarmak, bir kaynağı dağıtmanız için ihtiyacınız olan JSON 'ı hızlı bir şekilde almanın yararlı bir yolu olabilir.
+   The export template feature takes the current state of a resource and generates a template to deploy it. Exporting a template can be a helpful way of quickly getting the JSON you need to deploy a resource.
 
-1. **Microsoft. Web/sunucugrupları** tanımını ve parametre tanımını şablonunuza kopyalayın.
+1. Copy the **Microsoft.Web/serverfarms** definition and the parameter definition to your template.
 
-    ![Kaynak Yöneticisi şablonu dışarı aktarma şablonu dışarı aktarma şablonu](./media/template-tutorial-export-template/resource-manager-template-exported-template.png)
+    ![Resource Manager template export template exported template](./media/template-tutorial-export-template/resource-manager-template-exported-template.png)
 
 > [!IMPORTANT]
-> Genellikle, içe aktarılmış şablon, bir şablon oluştururken kullanmak isteyebileceğiniz daha ayrıntılıdır. Örneğin, verdiğiniz şablondaki SKU nesnesinin beş özelliği vardır. Bu şablon işe yarar, ancak yalnızca **Name** özelliğini kullanabilirsiniz. Verdiğiniz şablonla başlayabilir ve sonra gereksinimlerinize uyacak şekilde değiştirebilirsiniz.
+> Typically, the exported template is more verbose than you might want when creating a template. For example, the SKU object in the exported template has five properties. This template works, but you could just use the **name** property. You can start with the exported template, and then modify it as you like to fit your requirements.
 
-## <a name="revise-the-existing-template"></a>Mevcut şablonu gözden geçir
+## <a name="revise-existing-template"></a>Revise existing template
 
-İçe aktarılmış şablon size ihtiyacınız olan JSON 'ın çoğunu verir, ancak şablonunuz için özelleştirmeniz gerekir. Şablonlarınız ve aktarılmış şablon arasındaki parametrelerde ve değişkenlerde farklara dikkat edin. Kuşkusuz, dışarı aktarma işlemi şablonunuzda zaten tanımladığınız parametreleri ve değişkenleri bilmez.
+The exported template gives you most of the JSON you need, but you need to customize it for your template. Pay particular attention to differences in parameters and variables between your template and the exported template. Obviously, the export process doesn't know the parameters and variables that you've already defined in your template.
 
-Aşağıdaki örnek, şablonlarınızın eklemelerini vurgular. Bu, içe aktarılmış kodu ve bazı değişiklikleri içerir. İlk olarak, parametre adını adlandırma kuralınızın eşleşmesi için değiştirir. İkincisi, App Service planının konumu için konum parametresini kullanır. Üçüncü olarak, bu değer kaynak düzeyinde **Name** özelliği ile Artıklı olduğundan, **Özellikler** nesnesinin içindeki **adı** kaldırır.
+The following example highlights the additions to your template. It contains the exported code plus some changes. First, it changes the name of the parameter to match your naming convention. Second, it uses your location parameter for the location of the app service plan. Third, it removes the **name** inside the **properties** object because this value is redundant with the **name** property at the resource level.
 
-Tüm dosyayı kopyalayın ve şablonunuzu içeriğiyle değiştirin.
+Copy the whole file and replace your template with its contents.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/export-template/azuredeploy.json?range=1-77&highlight=28-31,50-69)]
 
-## <a name="deploy-the-template"></a>Şablonu dağıtma
+## <a name="deploy-template"></a>Şablon dağıtma
 
-Bir şablonu dağıtmak için Azure CLı veya Azure PowerShell kullanın.
+Use either Azure CLI or Azure PowerShell to deploy a template.
 
-Kaynak grubunu oluşturmadıysanız, bkz. [kaynak grubu oluşturma](template-tutorial-create-first-template.md#create-resource-group). Örnek, **TemplateFile** değişkenini, [ilk öğreticide](template-tutorial-create-first-template.md#deploy-template)gösterildiği gibi şablon dosyası yolu olarak ayarlamış olduğunuzu varsayar.
+If you haven't created the resource group, see [Create resource group](template-tutorial-create-first-template.md#create-resource-group). The example assumes you've set the **templateFile** variable to the path to the template file, as shown in the [first tutorial](template-tutorial-create-first-template.md#deploy-template).
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -109,18 +109,18 @@ az group deployment create \
 
 ## <a name="verify-deployment"></a>Dağıtımı doğrulama
 
-Kaynak grubunu Azure portal inceleyerek dağıtımı doğrulayabilirsiniz.
+You can verify the deployment by exploring the resource group from the Azure portal.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
-1. Sol menüden **kaynak grupları**' nı seçin.
-1. Dağıttığınız kaynak grubunu seçin.
-1. Kaynak grubu, bir depolama hesabı ve bir App Service planı içerir.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. From the left menu, select **Resource groups**.
+1. Select the resource group you deployed to.
+1. The resource group contains a storage account and an App Service plan.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bir sonraki öğreticiye geçiş yapıyorsanız, kaynak grubunu silmeniz gerekmez.
+If you're moving on to the next tutorial, you don't need to delete the resource group.
 
-Şimdi duruyorsa, kaynak grubunu silerek dağıttığınız kaynakları temizlemeniz gerekebilir.
+If you're stopping now, you might want to clean up the resources you deployed by deleting the resource group.
 
 1. Azure portalda, sol menüden **Kaynak grubu**’nu seçin.
 2. **Ada göre filtrele** alanına kaynak grubu adını girin.
@@ -129,7 +129,7 @@ Bir sonraki öğreticiye geçiş yapıyorsanız, kaynak grubunu silmeniz gerekme
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure portal bir şablonu nasıl dışarı aktarıp şablon geliştirmede dışarı aktarılmış şablonu nasıl kullanacağınızı öğrendiniz. Şablon geliştirmeyi basitleştirmek için Azure hızlı başlangıç şablonlarını da kullanabilirsiniz.
+You learned how to export a template from the Azure portal, and how to use the exported template for your template development. You can also use the Azure Quickstart templates to simplify template development.
 
 > [!div class="nextstepaction"]
-> [Azure hızlı başlangıç şablonlarını kullanma](template-tutorial-quickstart-template.md)
+> [Use Azure Quickstart templates](template-tutorial-quickstart-template.md)

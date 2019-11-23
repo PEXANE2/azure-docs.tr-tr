@@ -1,33 +1,33 @@
 ---
-title: Azure Işlevleri 2. x için Host. JSON başvurusu
-description: V2 çalışma zamanına sahip Azure Işlevleri Host. JSON dosyası için başvuru belgeleri.
+title: host.json reference for Azure Functions 2.x
+description: Reference documentation for the Azure Functions host.json file with the v2 runtime.
 ms.topic: conceptual
 ms.date: 09/08/2018
-ms.openlocfilehash: 03abacf6bb18a4d3b6e9b01328806d2dcb6971e1
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
-ms.translationtype: HT
+ms.openlocfilehash: bb10f15db1d152ff1d8fd8d38ba22e312a2031b7
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304792"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74323071"
 ---
-# <a name="hostjson-reference-for-azure-functions-2x"></a>Azure Işlevleri 2. x için Host. JSON başvurusu  
+# <a name="hostjson-reference-for-azure-functions-2x"></a>host.json reference for Azure Functions 2.x  
 
-> [!div class="op_single_selector" title1="Kullanmakta olduğunuz Azure Işlevleri çalışma zamanının sürümünü seçin: "]
+> [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
 > * [Sürüm 1](functions-host-json-v1.md)
 > * [Sürüm 2](functions-host-json.md)
 
-*Host. JSON* meta veri dosyası, bir işlev uygulaması için tüm işlevleri etkileyen genel yapılandırma seçeneklerini içerir. Bu makalede v2 çalışma zamanı için kullanılabilen ayarlar listelenir.  
+The *host.json* metadata file contains global configuration options that affect all functions for a function app. This article lists the settings that are available for the v2 runtime.  
 
 > [!NOTE]
-> Bu makale, Azure Işlevleri 2. x içindir.  İşlevlerde host.json başvurusu için 1.x, bkz: [Azure işlevleri için host.json başvurusu 1.x](functions-host-json-v1.md).
+> This article is for Azure Functions 2.x.  For a reference of host.json in Functions 1.x, see [host.json reference for Azure Functions 1.x](functions-host-json-v1.md).
 
-Diğer işlev uygulaması yapılandırma seçenekleri [uygulama ayarlarınızda](functions-app-settings.md)yönetilir.
+Other function app configuration options are managed in your [app settings](functions-app-settings.md).
 
-Bazı Host. JSON ayarları yalnızca [yerel. Settings. JSON](functions-run-local.md#local-settings-file) dosyasında yerel olarak çalıştırılırken kullanılır.
+Some host.json settings are only used when running locally in the [local.settings.json](functions-run-local.md#local-settings-file) file.
 
-## <a name="sample-hostjson-file"></a>Örnek Host. JSON dosyası
+## <a name="sample-hostjson-file"></a>Sample host.json file
 
-Aşağıdaki örnek *Host. JSON* dosyaları tüm olası seçenekleri belirtti.
+The following sample *host.json* files have all possible options specified.
 
 ```json
 {
@@ -85,17 +85,17 @@ Aşağıdaki örnek *Host. JSON* dosyaları tüm olası seçenekleri belirtti.
 }
 ```
 
-Bu makalenin aşağıdaki bölümlerinde her üst düzey özellik açıklanmaktadır. Aksi belirtilmedikçe tümü isteğe bağlıdır.
+The following sections of this article explain each top-level property. All are optional unless otherwise indicated.
 
-## <a name="aggregator"></a>'yı
+## <a name="aggregator"></a>aggregator
 
 [!INCLUDE [aggregator](../../includes/functions-host-json-aggregator.md)]
 
 ## <a name="applicationinsights"></a>applicationInsights
 
-Bu ayar [günlüğe kaydetme](#logging)işleminin bir alt öğesidir.
+This setting is a child of [logging](#logging).
 
-[Application Insights 'de örnekleme özelliğini](./functions-monitoring.md#configure-sampling)denetler.
+Controls the [sampling feature in Application Insights](./functions-monitoring.md#configure-sampling).
 
 ```json
 {
@@ -109,41 +109,41 @@ Bu ayar [günlüğe kaydetme](#logging)işleminin bir alt öğesidir.
 ```
 
 > [!NOTE]
-> Günlük örnekleme, bazı yürütmelerin Application Insights İzleyicisi dikey penceresinde gösterilmemesine neden olabilir.
+> Log sampling may cause some executions to not show up in the Application Insights monitor blade.
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
-|isEnabled|true|Örneklemeyi etkinleştirilir veya devre dışı bırakır.| 
-|maxTelemetryItemsPerSecond|20|Örneklemenin başladığı eşik.| 
-|Enableliveölçümleri |true|Canlı ölçüm toplamayı etkin bir şekilde sunar.|
-|EnableDependencyTracking|true|Bağımlılık izlemeyi etkinleştirilir.|
-|EnablePerformanceCountersCollection|true|Kudu performans sayaçlarını toplamayı etkinleştirilir.|
+|isEnabled|doğru|Enables or disables sampling.| 
+|maxTelemetryItemsPerSecond|20|The threshold at which sampling begins.| 
+|EnableLiveMetrics |doğru|Enables live metrics collection.|
+|EnableDependencyTracking|doğru|Enables dependency tracking.|
+|EnablePerformanceCountersCollection|doğru|Enables Kudu performance counters collection.|
 
 ## <a name="cosmosdb"></a>cosmosDb
 
-Yapılandırma ayarı, [Cosmos DB Tetikleyiciler ve bağlamalarda](functions-bindings-cosmosdb-v2.md#host-json)bulunabilir.
+Configuration setting can be found in [Cosmos DB triggers and bindings](functions-bindings-cosmosdb-v2.md#host-json).
 
 ## <a name="durabletask"></a>durableTask
 
-Yapılandırma ayarı, [dayanıklı işlevler bağlamalarında](durable/durable-functions-bindings.md#host-json)bulunabilir.
+Configuration setting can be found in [bindings for Durable Functions](durable/durable-functions-bindings.md#host-json).
 
 ## <a name="eventhub"></a>eventHub
 
-Yapılandırma ayarları, [Olay Hub 'ı Tetikleyicileri ve bağlamaları](functions-bindings-event-hubs.md#host-json)' nda bulunabilir. 
+Configuration settings can be found in [Event Hub triggers and bindings](functions-bindings-event-hubs.md#host-json). 
 
-## <a name="extensions"></a>Uzantılardan
+## <a name="extensions"></a>extensions
 
-[Http](#http) ve [eventHub](#eventhub)gibi bağlamaya özgü tüm ayarları içeren bir nesne döndüren özellik.
+Property that returns an object that contains all of the binding-specific settings, such as [http](#http) and [eventHub](#eventhub).
 
-## <a name="extensionbundle"></a>Extensiondemeti 
+## <a name="extensionbundle"></a>extensionBundle 
 
-Uzantı demeti, işlev uygulamanıza uygun bir Işlev kümesi bağlama uzantısı eklemenize olanak tanır. Daha fazla bilgi için bkz. [yerel geliştirme Için uzantı paketleri](functions-bindings-register.md#extension-bundles).
+Extension bundles lets you add a compatible set of Functions binding extensions to your function app. To learn more, see [Extension bundles for local development](functions-bindings-register.md#extension-bundles).
 
 [!INCLUDE [functions-extension-bundles-json](../../includes/functions-extension-bundles-json.md)]
 
-## <a name="functions"></a>işlevleri
+## <a name="functions"></a>işlevler
 
-İş konağının çalıştığı işlevlerin listesi. Boş bir dizi tüm işlevleri Çalıştır anlamına gelir. Yalnızca [yerel olarak çalışırken](functions-run-local.md)kullanılmak üzere tasarlanmıştır. Azure 'daki işlev uygulamaları ' nda, bu ayarı kullanmak yerine belirli işlevleri devre dışı bırakmak için [Azure işlevlerinde işlevleri devre dışı](disable-function.md) bırakma bölümündeki adımları izlemeniz gerekir.
+A list of functions that the job host runs. An empty array means run all functions. Intended for use only when [running locally](functions-run-local.md). In function apps in Azure, you should instead follow the steps in [How to disable functions in Azure Functions](disable-function.md) to disable specific functions rather than using this setting.
 
 ```json
 {
@@ -153,8 +153,11 @@ Uzantı demeti, işlev uygulamanıza uygun bir Işlev kümesi bağlama uzantıs�
 
 ## <a name="functiontimeout"></a>functionTimeout
 
-Tüm işlevler için zaman aşımı süresini gösterir. TimeSpan dize biçimini izler. Sunucusuz tüketim planında geçerli Aralık 1 saniye ila 10 dakika ve varsayılan değer 5 dakikadır.  
-Adanmış bir (App Service) planında, genel bir sınır yoktur ve varsayılan değer 30 dakikadır. `-1` değeri, sınırsız yürütmeyi gösterir, ancak sabit bir üst sınırı korumak önerilir.
+Indicates the timeout duration for all functions. It follows the timespan string format. In a serverless Consumption plan, the valid range is from 1 second to 10 minutes, and the default value is 5 minutes.  
+
+In the Premium plan the valid range is from 1 second to 60 minutes, and the default value is 30 minutes.
+
+In a Dedicated (App Service) plan, there is no overall limit, and the default value is 30 minutes. A value of `-1` indicates unbounded execution, but keeping a fixed upper bound is recommended.
 
 ```json
 {
@@ -164,7 +167,7 @@ Adanmış bir (App Service) planında, genel bir sınır yoktur ve varsayılan d
 
 ## <a name="healthmonitor"></a>healthMonitor
 
-[Konak sistem durumu izleyicisinin](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Host-Health-Monitor)yapılandırma ayarları.
+Configuration settings for [Host health monitor](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Host-Health-Monitor).
 
 ```
 {
@@ -180,19 +183,19 @@ Adanmış bir (App Service) planında, genel bir sınır yoktur ve varsayılan d
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
-|enabled|true|Özelliğin etkinleştirilip etkinleştirilmeyeceğini belirtir. | 
-|Healthcheckınterval|10 saniye|Düzenli arka plan sistem durumu denetimleri arasındaki zaman aralığı. | 
-|healthCheckWindow|2 dakika|`healthCheckThreshold` ayarıyla birlikte kullanılan bir kayan zaman penceresi.| 
-|healthCheckThreshold|6|Konak geri dönüşüm başlatılmadan önce sistem durumu denetiminin başarısız olması için en fazla sayı.| 
-|Onay eşiği|0,80|Performans sayacının sağlıksız olduğu kabul edilecek eşik.| 
+|enabled|doğru|Specifies whether the feature is enabled. | 
+|healthCheckInterval|10 saniye|The time interval between the periodic background health checks. | 
+|healthCheckWindow|2 minutes|A sliding time window used in conjunction with the `healthCheckThreshold` setting.| 
+|healthCheckThreshold|6|Maximum number of times the health check can fail before a host recycle is initiated.| 
+|counterThreshold|0.80|The threshold at which a performance counter will be considered unhealthy.| 
 
 ## <a name="http"></a>http
 
-Yapılandırma ayarları, [http Tetikleyicileri ve bağlamaları](functions-bindings-http-webhook.md#hostjson-settings)içinde bulunabilir.
+Configuration settings can be found in [http triggers and bindings](functions-bindings-http-webhook.md#hostjson-settings).
 
-## <a name="logging"></a>açmak
+## <a name="logging"></a>logging
 
-Application Insights dahil olmak üzere, işlev uygulamasının günlük davranışlarını denetler.
+Controls the logging behaviors of the function app, including Application Insights.
 
 ```json
 "logging": {
@@ -212,14 +215,14 @@ Application Insights dahil olmak üzere, işlev uygulamasının günlük davran�
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------|
-|fileLoggingMode|yalnızca Debug|Hangi dosya günlüğü düzeyinin etkin olduğunu tanımlar.  Seçenekler `never`, `always``debugOnly`. |
-|logLevel|yok|Uygulamadaki işlevler için günlük kategorisi filtrelemeyi tanımlayan nesne. Sürüm 2. x, günlük kategorisi filtrelemesinin ASP.NET Core yerleşimini izler. Bu, belirli işlevler için günlüğü filtrelemenizi sağlar. Daha fazla bilgi için ASP.NET Core belgelerine [günlük filtreleme](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) bölümüne bakın. |
-|console|yok| [console](#console) günlüğü ayarı. |
-|applicationInsights|yok| [ApplicationInsights](#applicationinsights) ayarı. |
+|fileLoggingMode|debugOnly|Defines what level of file logging is enabled.  Options are `never`, `always`, `debugOnly`. |
+|logLevel|Yok|Object that defines the log category filtering for functions in the app. Version 2.x follows the ASP.NET Core layout for log category filtering. This lets you filter logging for specific functions. For more information, see [Log filtering](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) in the ASP.NET Core documentation. |
+|console|Yok| The [console](#console) logging setting. |
+|applicationInsights|Yok| The [applicationInsights](#applicationinsights) setting. |
 
 ## <a name="console"></a>console
 
-Bu ayar [günlüğe kaydetme](#logging)işleminin bir alt öğesidir. Hata ayıklama modunda olmadığında konsol günlüğünü denetler.
+This setting is a child of [logging](#logging). It controls the console logging when not in debugging mode.
 
 ```json
 {
@@ -235,11 +238,11 @@ Bu ayar [günlüğe kaydetme](#logging)işleminin bir alt öğesidir. Hata ayık
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
-|isEnabled|yanlış|Konsol günlüğünü etkinleştir veya devre dışı bırakır.| 
+|isEnabled|yanlış|Enables or disables console logging.| 
 
-## <a name="manageddependency"></a>managedDependency bağımlılığı
+## <a name="manageddependency"></a>managedDependency
 
-Yönetilen bağımlılık Şu anda yalnızca PowerShell tabanlı işlevlerde desteklenen bir özelliktir. Bağımlılıkların hizmet tarafından otomatik olarak yönetilmesine olanak sağlar. `enabled` özelliği `true`olarak ayarlandığında `requirements.psd1` dosyası işlenir. Tüm küçük sürümler bırakıldığında bağımlılıklar güncelleştirilir. Daha fazla bilgi için bkz. PowerShell makalesinde [yönetilen bağımlılık](functions-reference-powershell.md#dependency-management) .
+Managed dependency is a feature that is currently only supported with PowerShell based functions. It enables dependencies to be automatically managed by the service. When the `enabled` property is set to `true`, the `requirements.psd1` file is processed. Dependencies are updated when any minor versions are released. For more information, see [Managed dependency](functions-reference-powershell.md#dependency-management) in the PowerShell article.
 
 ```json
 {
@@ -249,21 +252,21 @@ Yönetilen bağımlılık Şu anda yalnızca PowerShell tabanlı işlevlerde des
 }
 ```
 
-## <a name="queues"></a>klarında
+## <a name="queues"></a>queues
 
-Yapılandırma ayarları, [depolama kuyruğu Tetikleyicileri ve bağlamaları](functions-bindings-storage-queue.md#host-json)bölümünde bulunabilir.  
+Configuration settings can be found in [Storage queue triggers and bindings](functions-bindings-storage-queue.md#host-json).  
 
 ## <a name="sendgrid"></a>sendGrid
 
-Yapılandırma ayarı, [SendGrid Tetikleyicileri ve bağlamaları](functions-bindings-sendgrid.md#host-json)içinde bulunabilir.
+Configuration setting can be found in [SendGrid triggers and bindings](functions-bindings-sendgrid.md#host-json).
 
 ## <a name="servicebus"></a>serviceBus
 
-Yapılandırma ayarı, [Service Bus Tetikleyiciler ve bağlamalarda](functions-bindings-service-bus.md#host-json)bulunabilir.
+Configuration setting can be found in [Service Bus triggers and bindings](functions-bindings-service-bus.md#host-json).
 
-## <a name="singleton"></a>Adet
+## <a name="singleton"></a>singleton
 
-Tek kilit davranışı için yapılandırma ayarları. Daha fazla bilgi için bkz. [Singleton desteği hakkında GitHub sorunu](https://github.com/Azure/azure-webjobs-sdk-script/issues/912).
+Configuration settings for Singleton lock behavior. For more information, see [GitHub issue about singleton support](https://github.com/Azure/azure-webjobs-sdk-script/issues/912).
 
 ```json
 {
@@ -279,19 +282,19 @@ Tek kilit davranışı için yapılandırma ayarları. Daha fazla bilgi için bk
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
-|Kilit dönemi|00:00:15|İşlev düzeyi kilitlerinin alındığı dönem için. Kilitleri otomatik yenileme.| 
-|listenerLockPeriod|00:01:00|Dinleyici kilitlerinin alındığı dönem.| 
-|listenerLockRecoveryPollingInterval|00:01:00|Başlangıçta dinleyici kilidi alınamadığından, dinleyici kilidi kurtarma için kullanılan zaman aralığı.| 
-|Locktanışılationtimeout|00:01:00|Çalışma zamanının kilit edinmeye çalışacak en uzun süre.| 
-|Locktanışmalationpollingınterval|yok|Kilit alma denemeleri arasındaki Aralık.| 
+|lockPeriod|00:00:15|The period that function level locks are taken for. The locks auto-renew.| 
+|listenerLockPeriod|00:01:00|The period that listener locks are taken for.| 
+|listenerLockRecoveryPollingInterval|00:01:00|The time interval used for listener lock recovery if a listener lock couldn't be acquired on startup.| 
+|lockAcquisitionTimeout|00:01:00|The maximum amount of time the runtime will try to acquire a lock.| 
+|lockAcquisitionPollingInterval|Yok|The interval between lock acquisition attempts.| 
 
 ## <a name="version"></a>version
 
-Sürüm dizesi `"version": "2.0"`, v2 çalışma zamanını hedefleyen bir işlev uygulaması için gereklidir.
+The version string `"version": "2.0"` is required for a function app that targets the v2 runtime.
 
 ## <a name="watchdirectories"></a>watchDirectories
 
-Değişiklikler için izlenmesi gereken bir [paylaşılan kod dizinleri](functions-reference-csharp.md#watched-directories) kümesi.  Bu dizinlerdeki kod değiştirildiğinde, değişikliklerin işlevleriniz tarafından çekilmesini sağlar.
+A set of [shared code directories](functions-reference-csharp.md#watched-directories) that should be monitored for changes.  Ensures that when code in these directories is changed, the changes are picked up by your functions.
 
 ```json
 {
@@ -302,7 +305,7 @@ Değişiklikler için izlenmesi gereken bir [paylaşılan kod dizinleri](functio
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Host. json dosyasını güncelleştirme hakkında bilgi edinin](functions-reference.md#fileupdate)
+> [Learn how to update the host.json file](functions-reference.md#fileupdate)
 
 > [!div class="nextstepaction"]
-> [Ortam değişkenlerinde genel ayarları gör](functions-app-settings.md)
+> [See global settings in environment variables](functions-app-settings.md)

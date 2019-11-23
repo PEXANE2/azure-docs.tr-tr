@@ -1,21 +1,21 @@
 ---
-title: Azure portal arama dizini oluşturma
+title: Create a search index in the Azure portal
 titleSuffix: Azure Cognitive Search
-description: Azure Bilişsel Arama 'de ilk arama dizininizi oluşturmak, yüklemek ve sorgulamak için veri alma Sihirbazı 'nı kullanın.
+description: In this portal quickstart, learn how to use the Import Data wizard to create, load, and query your first search index in Azure Cognitive Search.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: ee4e9bd5487382ebb6f57996aac5d3de1ff6162a
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: be2425d97573e7990ea7f0dfd4c2d999e85fe922
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889964"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74407006"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal Azure Bilişsel Arama dizini oluşturma
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Quickstart: Create an Azure Cognitive Search index in the Azure portal
 > [!div class="op_single_selector"]
 > * [Portal](search-get-started-portal.md)
 > * [C#](search-get-started-dotnet.md)
@@ -25,113 +25,106 @@ ms.locfileid: "73889964"
 > * [Postman](search-get-started-postman.md)
 > * [Python](search-get-started-python.md)
 
-Kavramları hızlı bir şekilde artırma ve dakikalar içinde bir dizine yönelik ilginç sorgular yazmak için portalını kullanın.
+Use the portal's **Import data** wizard and **Search explorer** tools to quickly ramp up on concepts, and write interesting queries against an index within minutes.
 
-> [!div class="checklist"]
-> * Azure 'da barındırılan ücretsiz bir genel örnek veri kümesiyle başlayın
-> * Veri yüklemek ve bir dizin oluşturmak için Azure Bilişsel Arama **veri alma** Sihirbazı 'nı çalıştırın
-> * Portalda dizin oluşturma ilerlemesini izleme
-> * Var olan bir dizini ve değiştirme seçeneklerini görüntüleme
-> * **Arama Gezgini** ile tam metin arama, filtreler, modeller, belirsiz arama ve coğrafi arama 'yı keşfet
-
-Araçlar çok sınırlandırıyorsa, [.net bilişsel arama Azure 'da programlamaya yönelik kod tabanlı bir giriş](search-howto-dotnet-sdk.md) veya [REST API çağrı yapmak için Postman](search-get-started-postman.md)kullanabilirsiniz. 
+If the tools are too limiting, you can consider a [code-based introduction to programming Azure Cognitive Search in .NET](search-howto-dotnet-sdk.md) or use [Postman for making REST API calls](search-get-started-postman.md). 
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Geçerli aboneliğinizde [bir Azure bilişsel arama hizmeti oluşturun](search-create-service-portal.md) veya [var olan bir hizmeti bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) . Bu hızlı başlangıç için ücretsiz bir hizmet kullanabilirsiniz. 
+[Create an Azure Cognitive Search service](search-create-service-portal.md) or [find an existing service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) under your current subscription. You can use a free service for this quickstart. 
 
 ### <a name="check-for-space"></a>Alan denetleme
 
 Birçok müşteri ücretsiz hizmetle başlar. Bu sürüm üç dizin, üç veri kaynağı ve üç dizin oluşturucu ile sınırlıdır. Başlamadan önce ek öğeler için yeriniz olduğundan emin olun. Bu öğreticide her nesneden birer tane oluşturulur.
 
-Hizmet panosundaki bölümler, kaç Dizin, Dizin Oluşturucu ve veri kaynağı olduğunu gösterir. 
+Sections on the service dashboard show how many indexes, indexers, and data sources you already have. 
 
-![Dizin, Dizin oluşturucular ve veri kaynakları listesi](media/search-get-started-portal/tiles-indexers-datasources.png)
+![Lists of indexes, indexers, and datasources](media/search-get-started-portal/tiles-indexers-datasources.png)
 
 ## <a name="create-index"></a> Dizin oluşturma ve verileri yükleme
 
 Arama sorguları aranabilir veriler, meta veriler ve arama davranışlarını iyileştiren ek yapılar içeren bir [*dizin*](search-what-is-an-index.md) kullanır.
 
-Bu öğreticide, [ **veri alma** Sihirbazı](search-import-data-portal.md)aracılığıyla bir [*Dizin Oluşturucu*](search-indexer-overview.md) kullanılarak gezinilebilen yerleşik bir örnek veri kümesi kullanırız. Dizin oluşturucu, kaynağa özgü bir gezgindir ve desteklenen Azure veri kaynaklarındaki meta verileri ve içeriği okuyabilir. Normalde, Dizin oluşturucular programlı olarak kullanılır, ancak portalda **verileri Içeri aktarma** Sihirbazı aracılığıyla erişebilirsiniz. 
+For this tutorial, we use a built-in sample dataset that can be crawled using an [*indexer*](search-indexer-overview.md) via the [**Import data** wizard](search-import-data-portal.md). Dizin oluşturucu, kaynağa özgü bir gezgindir ve desteklenen Azure veri kaynaklarındaki meta verileri ve içeriği okuyabilir. Normally, indexers are used programmatically, but in the portal, you can access them through the **Import data** wizard. 
 
-### <a name="step-1---start-the-import-data-wizard-and-create-a-data-source"></a>1\. adım-veri alma Sihirbazı 'nı başlatın ve bir veri kaynağı oluşturun
+### <a name="step-1---start-the-import-data-wizard-and-create-a-data-source"></a>Step 1 - Start the Import data wizard and create a data source
 
-1. Azure Bilişsel Arama hizmeti panosunda, bir arama dizini oluşturmak ve doldurmak için komut çubuğunda **verileri Içeri aktar** ' a tıklayın.
+1. On the Azure Cognitive Search service dashboard, click **Import data** on the command bar to create and populate a search index.
 
    ![Verileri içeri aktar komutu](media/search-get-started-portal/import-data-cmd.png)
 
-2. Sihirbazda, veri >  > **oteller-Sample** **örneklerine** **bağlanın ' a** tıklayın. Bu veri kaynağı yerleşik olarak bulunur. Kendi veri kaynağınızı oluşturuyorsanız ad, tür ve bağlantı bilgilerini belirtmeniz gerekir. Oluşturulan kaynak, diğer içeri aktarma işlemlerinde yeniden kullanılabilecek bir “mevcut veri kaynağı” olur.
+2. In the wizard, click **Connect to your data** > **Samples** > **hotels-sample**. This data source is built-in. If you were creating your own data source, you would need to specify a name, type, and connection information. Oluşturulan kaynak, diğer içeri aktarma işlemlerinde yeniden kullanılabilecek bir “mevcut veri kaynağı” olur.
 
    ![Örnek veri kümesi seçme](media/search-get-started-portal/import-datasource-sample.png)
 
-3. Sonraki sayfaya devam edin.
+3. Continue to the next page.
 
-### <a name="step-2---skip-the-enrich-content-page"></a>2\. adım-"zenginleştirme içerik" sayfasını atlayın
+### <a name="step-2---skip-the-enrich-content-page"></a>Step 2 - Skip the "Enrich content" page
 
-Sihirbaz bilişsel hizmetler AI algoritmalarını dizine eklemek için bir [AI zenginleştirme ardışık düzeni](cognitive-search-concept-intro.md) oluşturmayı destekler. 
+The wizard supports the creation of an [AI enrichment pipeline](cognitive-search-concept-intro.md) for incorporating the Cognitive Services AI algorithms into indexing. 
 
-Bu adımı şimdilik atlayacağız ve **hedef dizini özelleştirmek**için doğrudan üzerine ilerliyoruz.
+We'll skip this step for now, and move directly on to **Customize target index**.
 
    ![Bilişsel beceri adımını atlama](media/search-get-started-portal/skip-cog-skill-step.png)
 
 > [!TIP]
-> Bir [hızlı başlangıç](cognitive-search-quickstart-blob.md) veya [öğreticide](cognitive-search-tutorial-blob.md)bir AI dizin oluşturma örneği aracılığıyla ilerlemesini sağlayabilirsiniz.
+> You can step through an AI-indexing example in a [quickstart](cognitive-search-quickstart-blob.md) or [tutorial](cognitive-search-tutorial-blob.md).
 
-### <a name="step-3---configure-index"></a>3\. adım-dizini yapılandırma
+### <a name="step-3---configure-index"></a>Step 3 - Configure index
 
-Genellikle, dizin oluşturma, veri yüklenmeden önce tamamlanan kod tabanlı bir uygulamadır. Ancak, Bu öğreticinin gösterdiği gibi, sihirbaz gezinebileceği herhangi bir veri kaynağı için temel bir dizin oluşturabilir. Dizin için en azından bir ad ve alan koleksiyonu gerekir ve her belgenin benzersiz olarak tanımlanabilmesi için bir alanın belge anahtarı olarak işaretlenmiş olması gerekir. Ayrıca, otomatik tamamlama veya önerilen sorguları isterseniz dil Çözümleyicileri veya öneri araçları belirtebilirsiniz.
+Typically, index creation is a code-based exercise, completed prior to loading data. However, as this tutorial indicates, the wizard can generate a basic index for any data source it can crawl. Dizin için en azından bir ad ve alan koleksiyonu gerekir ve her belgenin benzersiz olarak tanımlanabilmesi için bir alanın belge anahtarı olarak işaretlenmiş olması gerekir. Additionally, you can specify language analyzers or suggesters if you want autocomplete or suggested queries.
 
 Alanların veri türleri ve öznitelikleri vardır. Üstteki onay kutuları, alanın nasıl kullanılacağını denetleyen *dizin öznitelikleridir*.
 
-* **Alınabilir**, arama sonuçları listesinde çıktığı anlamına gelir. Bu onay kutusunu temizleyerek, örneğin yalnızca filtre ifadelerinde kullanılan alanlar için, bu onay kutusunu temizleyerek, tek tek alanları, arama sonuçları için sınırlı olarak işaretleyebilirsiniz.
-* **Anahtar** , benzersiz belge tanımlayıcısıdır. Her zaman bir dizedir ve gereklidir.
-* **Filtrelenebilir**, **sıralanabilir**ve çok **yönlü tablo** , alanların bir filtre, sıralama veya çok yönlü gezinti yapısında kullanılıp kullanılmadığını belirtir.
+* **Alınabilir**, arama sonuçları listesinde çıktığı anlamına gelir. You can mark individual fields as off limits for search results by clearing this checkbox, for example for fields used only in filter expressions.
+* **Key** is the unique document identifier. It's always a string, and it is required.
+* **Filterable**, **Sortable**, and **Facetable** determine whether fields are used in a filter, sort, or faceted navigation structure.
 * **Aranabilir**, bir alanın tam metin aramasına dahil olduğu anlamına gelir. Dizelerde arama yapılabilir. Sayısal alanlar ve Boolean alanları genellikle aranamaz olarak işaretlenir.
 
-Depolama gereksinimleri, seçiminizin sonucu olarak farklılık gösterir. Örneğin, birden çok alanda **alınabilir** özniteliğini ayarlarsanız, depolama gereksinimleri güncel değildir.
+Storage requirements do not vary as a result of your selection. For example, if you set the **Retrievable** attribute on multiple fields, storage requirements do not go up.
 
-Varsayılan olarak sihirbaz tarafından anahtar alanının temeli olarak benzersiz tanımlayıcıların bulunması için veri kaynağı taranır. *Dizeler* **alınabilir** ve **aranabilir**olarak atanır. *Tamsayılar* **alınabilir**, **filtrelenebilir**, **sıralanabilir**ve çok **yönlü tablo**olarak atanır.
+Varsayılan olarak sihirbaz tarafından anahtar alanının temeli olarak benzersiz tanımlayıcıların bulunması için veri kaynağı taranır. *Strings* are attributed as **Retrievable** and **Searchable**. *Integers* are attributed as **Retrievable**, **Filterable**, **Sortable**, and **Facetable**.
 
 1. Varsayılanları kabul edin. 
 
-   Sihirbazı ikinci kez mevcut bir oteller veri kaynağını kullanarak yeniden çalıştırırsanız, dizin varsayılan özniteliklerle yapılandırılmaz. Gelecekteki içeri aktarmalardan öznitelikleri el ile seçmeniz gerekir. 
+   If you rerun the wizard a second time using an existing hotels data source, the index won't be configured with default attributes. You'll have to manually select attributes on future imports. 
 
-   ![Oluşturulan oteller dizini](media/search-get-started-portal/hotelsindex.png)
+   ![Generated hotels index](media/search-get-started-portal/hotelsindex.png)
 
-2. Sonraki sayfaya devam edin.
+2. Continue to the next page.
 
 
-### <a name="step-4---configure-indexer"></a>4\. adım-Dizin oluşturucuyu yapılandırma
+### <a name="step-4---configure-indexer"></a>Step 4 - Configure indexer
 
 **Verileri içeri aktarma** sihirbazından çıkmadan **Dizin Oluşturucu** > **Ad**’a tıklayın ve dizin oluşturucu için bir ad yazın.
 
-Bu nesne, yürütülebilir bir işlemi tanımlar. Yinelenen bir zamanlamaya göre koyabilirsiniz, ancak şimdilik Dizin oluşturucuyu hemen çalıştırmak için varsayılan seçeneği kullanın.
+Bu nesne, yürütülebilir bir işlemi tanımlar. You could put it on recurring schedule, but for now use the default option to run the indexer once, immediately.
 
-Dizin oluşturucuyu oluşturmak ve aynı anda çalıştırmak için **Gönder** ' e tıklayın.
+Click **Submit** to create and simultaneously run the indexer.
 
-  ![oteller Dizin Oluşturucusu](media/search-get-started-portal/hotels-indexer.png)
+  ![hotels indexer](media/search-get-started-portal/hotels-indexer.png)
 
-## <a name="monitor-progress"></a>İlerlemeyi izleme
+## <a name="monitor-progress"></a>Monitor progress
 
-Sihirbaz sizi ilerlemeyi izleyebileceğiniz Dizin oluşturucular listesine götürebilmelidir. Kendi kendine gezinme için genel bakış sayfasına gidin ve **Dizin oluşturucular**' ye tıklayın.
+The wizard should take you to the Indexers list where you can monitor progress. For self-navigation, go to the Overview page and click **Indexers**.
 
-Portalın sayfayı güncelleştirmesi birkaç dakika sürebilir, ancak "devam ediyor" veya Success, "sürüyor" veya Success (Dizin oluşturulmuş belge sayısıyla birlikte) durumuyla yeni oluşturulan dizin oluşturucuyu görmeniz gerekir.
+It can take a few minutes for the portal to update the page, but you should see the newly created indexer in the list, with status indicating "in progress" or success, along with the number of documents indexed.
 
    ![Dizin oluşturucu ilerleme durumu iletisi](media/search-get-started-portal/indexers-inprogress.png)
 
 ## <a name="view-the-index"></a>Dizini görüntüleme
 
-Ana hizmet sayfası, Azure Bilişsel Arama hizmetinizde oluşturulan kaynaklara bağlantılar sağlar.  Yeni oluşturduğunuz dizini görüntülemek için bağlantılar listesinden **dizinler** ' e tıklayın. 
+The main service page provides links to the resources created in your Azure Cognitive Search service.  To view the index you just created, click **Indexes** from the list of links. 
 
-Portal sayfasının yenilenmesini bekleyin. Birkaç dakika sonra, dizini bir belge sayısı ve depolama boyutuyla görmeniz gerekir.
+Wait for the portal page to refresh. After a few minutes, you should see the index with a document count and storage size.
 
-   ![Hizmet panosundaki dizinler listesi](media/search-get-started-portal/indexes-list.png)
+   ![Indexes list on the service dashboard](media/search-get-started-portal/indexes-list.png)
 
-Bu listeden, yeni oluşturduğunuz *oteller-örnek* dizinine tıklayabilirsiniz, Dizin şemasını görüntüleyebilirsiniz. ve isteğe bağlı olarak yeni alanlar ekleyin. 
+From this list, you can click on the *hotels-sample* index that you just created, view the index schema. and optionally add new fields. 
 
-**Alanlar** sekmesi Dizin şemasını gösterir. Yeni bir alan girmek için listenin en altına gidin. Çoğu durumda, mevcut alanları değiştiremezsiniz. Mevcut alanlar Azure Bilişsel Arama bir fiziksel gösterimine sahiptir ve bu nedenle kodda bile değil, değiştirilemeyen değildir. Var olan bir alanı temel olarak değiştirmek için yeni bir dizin oluşturun ve özgün olanı bırakarak.
+The **Fields** tab shows the index schema. Scroll to the bottom of the list to enter a new field. In most cases, you cannot change existing fields. Existing fields have a physical representation in Azure Cognitive Search and are thus non-modifiable, not even in code. To fundamentally change an existing field, create a new index, dropping the original.
 
    ![Örnek dizin tanımı](media/search-get-started-portal/sample-index-def.png)
 
@@ -139,49 +132,49 @@ Puanlama profilleri ve CORS seçenekleri gibi diğer yapılar herhangi bir nokta
 
 Dizin tasarımı sırasında düzenleme yapabileceğiniz ve yapamayacağınız alanları kavramak için birkaç dakikanızı ayırarak dizin tanımı seçeneklerini görüntüleyin. Gri renkli seçenekler, bir değerin değiştirme veya silme işlemleri için uygun olmadığını gösterir. 
 
-## <a name="query-index"></a>Arama Gezgini 'ni kullanarak sorgulama
+## <a name="query-index"></a> Query using Search explorer
 
 Artık yerleşik [**Arama gezgini**](search-explorer.md) sorgu sayfasını kullanarak sorgulayabileceğiniz bir arama dizinine sahipsiniz. Bu sayfada rastgele sorgu dizelerini test etmek için kullanabileceğiniz bir arama kutusu bulunur.
 
-**Arama Gezgini** yalnızca [REST API isteklerini](https://docs.microsoft.com/rest/api/searchservice/search-documents)işleyecek şekilde donatılmış, ancak hem [basit sorgu söz dizimi](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) hem de [tam Lucene sorgu ayrıştırıcısı](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)için sözdizimi kabul eder, ayrıca [arama belgesinde](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) bulunan tüm arama parametreleri de kullanılabilir REST API operasyonları.
+**Search explorer** is only equipped to handle [REST API requests](https://docs.microsoft.com/rest/api/searchservice/search-documents), but it accepts syntax for both [simple query syntax](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) and [full Lucene query parser](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search), plus all the search parameters available in [Search Document REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) operations.
 
 > [!TIP]
-> Aşağıdaki adımlar, 6m08s ' de [Azure bilişsel arama genel bakış videosu ' ne](https://channel9.msdn.com/Events/Connect/2016/138)gösterilmiştir.
+> The following steps are demonstrated at 6m08s into the [Azure Cognitive Search Overview video](https://channel9.msdn.com/Events/Connect/2016/138).
 >
 
 1. Komut çubuğunda **Arama gezgini**'ne tıklayın.
 
    ![Search gezgini komutu](media/search-get-started-portal/search-explorer-cmd.png)
 
-2. **Dizin** açılan listesinden *oteller-örnek-dizin*' i seçin. Hangi REST API 'Lerinin kullanılabilir olduğunu görmek için **API sürümü** açılan listesine tıklayın. Aşağıdaki sorgular için genel kullanıma sunulan sürümü (2019-05-06) kullanın.
+2. From the **Index** dropdown, choose  *hotels-sample-index*. Click the **API Version** dropdown, to see which REST APIs are available. For the queries below, use the generally available version (2019-05-06).
 
    ![Dizin ve API komutları](media/search-get-started-portal/search-explorer-changeindex.png)
 
-3. Arama çubuğunda, aşağıdaki sorgu dizelerini yapıştırın ve **Ara**' ya tıklayın.
+3. In the search bar, paste in the query strings below and click **Search**.
 
-   ![Sorgu dizesi ve arama düğmesi](media/search-get-started-portal/search-explorer-query-string-example.png)
+   ![Query string and search button](media/search-get-started-portal/search-explorer-query-string-example.png)
 
-## <a name="example-queries"></a>Örnek sorgular
+## <a name="example-queries"></a>Example queries
 
-Bing veya Google aramasında yapabileceklerinize benzer şekilde hüküm ve ifadeler girebilir veya tam olarak belirtilen sorgu ifadeleriyle karşılaşabilirsiniz. Sonuçlar ayrıntılı JSON belgeleri olarak döndürülür.
+You can enter terms and phrases, similar to what you might do in a Bing or Google search, or fully-specified query expressions. Results are returned as verbose JSON documents.
 
 ### <a name="simple-query-with-top-n-results"></a>İlk N sonucu içeren basit sorgu
 
-#### <a name="example-string-query-searchspa"></a>Örnek (dize sorgusu): `search=spa`
+#### <a name="example-string-query-searchspa"></a>Example (string query): `search=spa`
 
-* **Arama** parametresi, tam metin araması için bir anahtar sözcük arama girişi yapmak için kullanılır, bu durumda, belgedeki aranabilir herhangi bir alanda *Spa* 'yı içeren kişiler için otel verileri döndürür.
+* The **search** parameter is used to input a keyword search for full text search, in this case, returning hotel data for those containing *spa* in any searchable field in the document.
 
-* **Search gezgini** sonuçları JSON biçiminde döndürülür. Bu biçim ayrıntılı olmakla birlikte, belgelerin yoğun bir yapısı varsa okunması zordur. Bu bilerek yapılır; belgenin tamamına ilişkin görünürlük, özellikle test sırasında geliştirme amaçlarıyla önemlidir. Daha iyi bir kullanıcı deneyimi sunmak için [arama sonuçlarını işleyerek](search-pagination-page-layout.md) önemli öğeleri öne çıkaran bir kod yazmanız gerekir.
+* **Search gezgini** sonuçları JSON biçiminde döndürülür. Bu biçim ayrıntılı olmakla birlikte, belgelerin yoğun bir yapısı varsa okunması zordur. This is intentional; visibility into the entire document is important for development purposes, especially during testing. Daha iyi bir kullanıcı deneyimi sunmak için [arama sonuçlarını işleyerek](search-pagination-page-layout.md) önemli öğeleri öne çıkaran bir kod yazmanız gerekir.
 
-* Belgeler, dizinde "alınabilir" olarak işaretlenmiş tüm alanlardan oluşur. Portalda Dizin özniteliklerini görüntülemek için, **dizinler** listesinde *oteller-Sample* ' a tıklayın.
+* Belgeler, dizinde "alınabilir" olarak işaretlenmiş tüm alanlardan oluşur. To view index attributes in the portal, click *hotels-sample* in the **Indexes** list.
 
-#### <a name="example-parameterized-query-searchspacounttruetop10"></a>Örnek (parametreli sorgu): `search=spa&$count=true&$top=10`
+#### <a name="example-parameterized-query-searchspacounttruetop10"></a>Example (parameterized query): `search=spa&$count=true&$top=10`
 
 * **&** simgesi, herhangi bir sırada belirtilebilen arama parametreleri eklemek için kullanılır.
 
-* **$Count = true** parametresi, döndürülen tüm belgelerin toplam sayısını döndürür. Bu değer arama sonuçlarının en üstüne yakın bir konumda görünür. **$count=true** tarafından bildirilen değişiklikleri izleyerek filtre sorgularını doğrulayabilirsiniz. Daha küçük sayılar filtrenizin çalıştığını gösterir.
+* The **$count=true** parameter returns the total count of all documents returned. Bu değer arama sonuçlarının en üstüne yakın bir konumda görünür. **$count=true** tarafından bildirilen değişiklikleri izleyerek filtre sorgularını doğrulayabilirsiniz. Daha küçük sayılar filtrenizin çalıştığını gösterir.
 
-* **$Top = 10** , toplamda en yüksek dereceli 10 belgeyi döndürür. Varsayılan olarak, Azure Bilişsel Arama en iyi 50 eşleşme döndürür. **$top** ile bu miktarı artırabilir veya azaltabilirsiniz.
+* The **$top=10** returns the highest ranked 10 documents out of the total. By default, Azure Cognitive Search returns the first 50 best matches. **$top** ile bu miktarı artırabilir veya azaltabilirsiniz.
 
 ### <a name="filter-query"></a> Sorguyu filtreleme
 
@@ -189,7 +182,7 @@ Bing veya Google aramasında yapabileceklerinize benzer şekilde hüküm ve ifad
 
 #### <a name="example-filtered-searchbeachfilterrating-gt-4"></a>Örnek (filtrelenmiş): `search=beach&$filter=Rating gt 4`
 
-* **$filter** parametresi, sağladığınız ölçütlerle eşleşen sonuçları döndürür. Bu durumda, 4 ' ten büyük derecelendirmeler.
+* **$filter** parametresi, sağladığınız ölçütlerle eşleşen sonuçları döndürür. In this case, ratings greater than 4.
 
 * Filtre söz dizimi bir OData yapısıdır. Daha fazla bilgi edinmek için bkz. [OData söz dizimini filtreleme](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search).
 
@@ -199,18 +192,18 @@ Model filtreleri arama isteklerine dahil edilir. Sağladığınız model değeri
 
 #### <a name="example-faceted-with-scope-reduction-searchfacetcategorytop2"></a>Örnek (kapsamı azaltılarak modellenmiş): `search=*&facet=Category&$top=2`
 
-* **search=** * boş bir aramadır. Boş aramalar her şeyi arar. Boş sorgu göndermenin nedenlerinden biri, belge kümesinin tamamını filtrelemek veya görüntülemektir. Örneğin, dizin içindeki tüm otellerden oluşan bir gezinti yapısının olmasını istersiniz.
-* **facet**, bir kullanıcı arabirimi denetimine geçirebileceğiniz bir gezinti yapısı döndürür. Kategorileri ve bir sayımı döndürür. Bu durumda, kategoriler *Kategori*olarak adlandırılan bir alanı temel alır. Azure Bilişsel Arama 'de toplama yoktur, ancak her kategoride belge sayısı sağlayan `facet`aracılığıyla toplamayı yaklaşık olarak görebilirsiniz.
+* **search=** * boş bir aramadır. Boş aramalar her şeyi arar. Boş sorgu göndermenin nedenlerinden biri, belge kümesinin tamamını filtrelemek veya görüntülemektir. For example, you want a faceting navigation structure to consist of all hotels in the index.
+* **facet**, bir kullanıcı arabirimi denetimine geçirebileceğiniz bir gezinti yapısı döndürür. Kategorileri ve bir sayımı döndürür. In this case, categories are based on a field conveniently called *Category*. There is no aggregation in Azure Cognitive Search, but you can approximate aggregation via `facet`, which gives a count of documents in each category.
 
 * **$top=2** iki belge getirir ve sonuçları azaltmak veya artırmak için `top` kullanabileceğinizi gösterir.
 
-#### <a name="example-facet-on-numeric-values-searchspafacetrating"></a>Örnek (sayısal değerler için model): `search=spa&facet=Rating`
+#### <a name="example-facet-on-numeric-values-searchspafacetrating"></a>Example (facet on numeric values): `search=spa&facet=Rating`
 
-* Bu sorgu, *Spa*'nın metin aramasında derecelendirme için bir model. Alan, dizinde alınabilir, *filtrelenebilir ve* çok yönlü tablo olarak işaretlendiğinden ve içerdiği değerler (sayısal, 1 ' den 5 ' e kadar), listelerin gruplar halinde kategorilere ayrılması için uygundur.
+* This query is facet for rating, on a text search for *spa*. The term *Rating* can be specified as a facet because the field is marked as retrievable, filterable, and facetable in the index, and the values it contains (numeric, 1 through 5), are suitable for categorizing listings into groups.
 
 * Yalnızca filtrelenebilir alanlardan görünüm oluşturulabilir. Yalnızca getirilebilir alanlar sonuçlarda döndürülebilir.
 
-* *Derecelendirme* alanı çift duyarlıklı kayan nokta ve gruplama kesin değere göre yapılır. Aralığa göre gruplandırma hakkında daha fazla bilgi için (örneğin, "3 yıldız derecelendirmesi," "4 yıldız derecelendirmesi" vb.), bkz. [Azure bilişsel arama 'da çok yönlü gezintiyi uygulama](https://docs.microsoft.com/azure/search/search-faceted-navigation#filter-based-on-a-range).
+* The *Rating* field is double-precision floating point and the grouping will be by precise value. For more information on grouping by interval (for instance, "3 star ratings," "4 star ratings," etc.), see [How to implement faceted navigation in Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-faceted-navigation#filter-based-on-a-range).
 
 
 ### <a name="highlight-query"></a> Arama sonuçlarını vurgulama
@@ -219,17 +212,17 @@ Model filtreleri arama isteklerine dahil edilir. Sağladığınız model değeri
 
 #### <a name="example-highlighter-searchbeachhighlightdescription"></a>Örnek (vurgulama): `search=beach&highlight=Description`
 
-* Bu örnekte, biçimlendirilen sözcük *plaj* , açıklama alanında daha kolay olacak.
+* In this example, the formatted word *beach* is easier to spot in the description field.
 
 #### <a name="example-linguistic-analysis-searchbeacheshighlightdescription"></a>Örnek (dilbilimsel analiz): `search=beaches&highlight=Description`
 
-* Tam metin araması, Word formlarında temel çeşitlemeleri tanır. Bu durumda, arama sonuçları "plaj" için vurgulanmış metni, bu sözcüğü "Güzeller" üzerinde bir anahtar sözcük aramasına yanıt olarak, bu sözcüğe sahip olan oteller için "plaj" için vurgulanmış metni içerir. Dilbilimsel analiz nedeniyle sonuçlarda aynı kelimenin farklı biçimleri görüntülenebilir. 
+* Full text search recognizes basic variations in word forms. In this case, search results contain highlighted text for "beach", for hotels that have that word in their searchable fields, in response to a keyword search on "beaches". Dilbilimsel analiz nedeniyle sonuçlarda aynı kelimenin farklı biçimleri görüntülenebilir. 
 
-* Azure Bilişsel Arama, Lucene ve Microsoft 'tan 56 Çözümleyicileri destekler. Azure Bilişsel Arama tarafından kullanılan varsayılan değer standart Lucene çözümleyicisidir.
+* Azure Cognitive Search supports 56 analyzers from both Lucene and Microsoft. The default used by Azure Cognitive Search is the standard Lucene analyzer.
 
 ### <a name="fuzzy-search"></a> Belirsiz aramayı deneme
 
-Varsayılan olarak, "Seattle" için *Seatle* gibi yanlış yazılmış sorgu terimleri, tipik aramada eşleşmeleri döndürmeyebilir. Aşağıdaki örnek sonuç döndürmez.
+By default, misspelled query terms, like *seatle* for "Seattle", fail to return matches in typical search. Aşağıdaki örnek sonuç döndürmez.
 
 #### <a name="example-misspelled-term-unhandled-searchseatle"></a>Örnek (yanlış yazılmış terim, işlenmiyor): `search=seatle`
 
@@ -237,13 +230,13 @@ Yazım hatalarını işlemek için belirsiz aramayı kullanabilirsiniz. Belirsiz
 
 #### <a name="example-misspelled-term-handled-searchseatlequerytypefull"></a>Örnek (yanlış yazılmış terim, işleniyor): `search=seatle~&queryType=full`
 
-Bu örnek şimdi "Seattle" ile eşleşmeleri içeren belgeleri geri döndürüyor.
+This example now returns documents that include matches on "Seattle".
 
 **queryType** belirtildiğinde varsayılan basit sorgu ayrıştırıcı kullanılır. Basit sorgu ayrıştırıcı daha hızlıdır ancak belirsiz arama, normal ifadeler, yakınlık araması ya da diğer gelişmiş sorgu türlerini kullanmanız gerekiyorsa tam söz dizimi gereklidir.
 
-Belirsiz arama ve joker karakter araması, arama sonucunu etkiler. Bu sorgu biçimlerinde dilbilimsel analiz gerçekleştirilmez. Benzer ve joker karakter aramasını kullanmadan önce, [tam metin aramasının Azure bilişsel arama 'de nasıl çalıştığını](search-lucene-query-architecture.md#stage-2-lexical-analysis) gözden geçirin ve sözcük temelli analize yönelik özel durumlar hakkındaki bölümü bulun.
+Belirsiz arama ve joker karakter araması, arama sonucunu etkiler. Bu sorgu biçimlerinde dilbilimsel analiz gerçekleştirilmez. Before using fuzzy and wildcard search, review [How full text search works in Azure Cognitive Search](search-lucene-query-architecture.md#stage-2-lexical-analysis) and look for the section about exceptions to lexical analysis.
 
-Tam sorgu ayrıştırıcısı tarafından etkinleştirilen sorgu senaryoları hakkında daha fazla bilgi için bkz. [Azure bilişsel arama 'de Lucene sorgu söz dizimi](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search).
+For more information about query scenarios enabled by the full query parser, see [Lucene query syntax in Azure Cognitive Search](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search).
 
 ### <a name="geo-search"></a> Jeo-uzamsal aramayı deneme
 
@@ -253,30 +246,29 @@ Koordinat içeren bir alanda [edm.GeographyPoint veri türü](https://docs.micro
 
 Örnek sorgu tüm sonuçları konumsal verilere göre filtreler ve belirli bir noktaya 5 kilometreden daha yakın olan sonuçlar (enlem ve boylam koordinatları olarak belirtilir) döndürülür. **$count** ekleyerek mesafeyi veya koordinatları değiştirdiğinizde döndürülen sonuç sayısını görebilirsiniz.
 
-Arama uygulamanız "yakınımda bul" özelliği içeriyorsa ya da harita navigasyonu kullanıyorsa jeo-uzamsal arama kullanışlıdır. Ancak tam metin arama değildir. Ada göre şehir veya ülke/bölge aramak için Kullanıcı gereksinimleriniz varsa, koordinatlara ek olarak şehir veya ülke/bölge adlarını içeren alanları ekleyin.
+Arama uygulamanız "yakınımda bul" özelliği içeriyorsa ya da harita navigasyonu kullanıyorsa jeo-uzamsal arama kullanışlıdır. Ancak tam metin arama değildir. If you have user requirements for searching on a city or country/region by name, add fields containing city or country/region names, in addition to coordinates.
 
 ## <a name="takeaways"></a>Paketler
 
-Bu öğretici, Azure Bilişsel Arama Azure portal kullanılarak hızlı bir giriş sağlamıştır.
+This tutorial provided a quick introduction to Azure Cognitive Search using the Azure portal.
 
 **Verileri içeri aktar** sihirbazını kullanarak arama dizini oluşturmayı öğrendiniz. [Dizin oluşturucuların](search-indexer-overview.md) yanı sıra [yayımlanmış dizinler için desteklenen değişiklikler](https://docs.microsoft.com/rest/api/searchservice/update-index) gibi dizin tasarımıyla ilgili temel iş akışı hakkında bilgi edindiniz.
 
 Azure portalda **Arama gezginini** kullanarak filtreler, sonuç vurgulama, belirsiz arama ve coğrafi arama gibi önemli özelliklerin gösterildiği örneklerle temel sorgu söz dizimini öğrendiniz.
 
-Ayrıca, portalda Dizin, Dizin oluşturucular ve veri kaynaklarını bulmayı de öğrendiniz. Gelecekte yeni verilerle karşılaştığınızda portalı kullanarak tanımlarını veya alan koleksiyonlarını hızlı bir şekilde denetleyebilirsiniz.
+You also learned how to find indexes, indexers, and data sources in the portal. Gelecekte yeni verilerle karşılaştığınızda portalı kullanarak tanımlarını veya alan koleksiyonlarını hızlı bir şekilde denetleyebilirsiniz.
 
-## <a name="clean-up"></a>Temizleme
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Kendi aboneliğinizde çalışırken, sizin oluşturduğunuz kaynaklara hala ihtiyacınız olup olmadığını belirlemek için bir projenin sonunda iyi bir fikir olur. Çalışan kaynaklar sizin için ücret verebilir. Kaynakları tek tek silebilir veya kaynak grubunu silerek tüm kaynak kümesini silebilirsiniz.
+When you're working in your own subscription, it's a good idea at the end of a project to identify whether you still need the resources you created. Resources left running can cost you money. You can delete resources individually or delete the resource group to delete the entire set of resources.
 
-Sol gezinti bölmesindeki **tüm kaynaklar** veya **kaynak grupları** bağlantısını kullanarak portalda kaynakları bulabilir ve yönetebilirsiniz.
+You can find and manage resources in the portal, using the **All resources** or **Resource groups** link in the left-navigation pane.
 
-Ücretsiz bir hizmet kullanıyorsanız, üç Dizin, Dizin Oluşturucu ve veri kaynağı ile sınırlı olduğunu unutmayın. Sınırın altında kalmak için portalda ayrı ayrı öğeleri silebilirsiniz. 
+If you are using a free service, remember that you are limited to three indexes, indexers, and data sources. You can delete individual items in the portal to stay under the limit. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Programlama araçlarını kullanarak Azure Bilişsel Arama fazlasını inceleyebilirsiniz:
+While the portal is useful for initial exploration and small tasks, reviewing the APIs early on will help you understand the concepts and workflow on a deeper level:
 
-* [.NET SDK kullanarak dizin oluşturma](https://docs.microsoft.com/azure/search/search-create-index-dotnet)
-* [REST API 'Leri kullanarak dizin oluşturma](https://docs.microsoft.com/azure/search/search-create-index-rest-api)
-* [Postman veya Fiddler kullanarak bir dizin oluşturma ve Azure Bilişsel Arama REST API 'Leri](search-get-started-postman.md)
+> [!div class="nextstepaction"]
+> [Create an index using .NET SDK](https://docs.microsoft.com/azure/search/search-create-index-dotnet)

@@ -1,7 +1,7 @@
 ---
-title: "Hızlı Başlangıç: Java için Bing haber arama SDK'sını kullanarak bir haber arama yapın"
+title: 'Quickstart: Perform a news search using the SDK for Java - Bing News Search'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, Java için Bing haber arama SDK'sını kullanarak haber aramak için kullanın ve işlem yanıt.
+description: Use this quickstart to search for news using the Bing News Search SDK for Java, and process the response.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,20 +11,20 @@ ms.topic: quickstart
 ms.date: 06/18/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: d84b47feb91a9165a4bc03b20b0b7d079aa8f6ae
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: def964dd932f8a41a877a3d9568a8ec4825874b8
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203364"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383925"
 ---
-# <a name="quickstart-search-for-news-with-the-bing-news-search-sdk-for-java"></a>Hızlı Başlangıç: Java için Bing haber arama SDK'sı ile haberler için arama
+# <a name="quickstart-search-for-news-with-the-bing-news-search-sdk-for-java"></a>Quickstart: Search for news with the Bing News Search SDK for Java
 
-Bu hızlı başlangıçta, Java için Bing haber arama SDK'sı ile haberler için aramaya başlamak için kullanın. Bing haber arama çoğu programlama dilleri ile uyumlu bir REST API olsa da SDK hizmeti uygulamalarınızla tümleştirmek için kolay bir yol sağlar. Bu örnek için kaynak kodu bulunabilir [GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingNewsSearch).
+Use this quickstart to begin searching for news with the Bing News Search SDK for Java. While Bing News Search has a REST API compatible with most programming languages, the SDK provides an easy way to integrate the service into your applications. The source code for this sample can be found on [GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingNewsSearch).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Maven, Gradle veya başka bir bağımlılık yönetim sistemi kullanarak Bing haber arama SDK bağımlılıklarını yükleyin. Maven POM dosyası şu bildirimi gerektirir:
+Install the Bing News Search SDK dependencies using Maven, Gradle, or another dependency management system. Maven POM dosyası şu bildirimi gerektirir:
 
 ```xml
     <dependencies>
@@ -55,9 +55,9 @@ import okhttp3.Response;
 import java.io.IOException;
 ```
 
-## <a name="create-a-search-client-and-store-credentials"></a>Bir arama istemci ve depolama kimlik bilgileri oluştur
+## <a name="create-a-search-client-and-store-credentials"></a>Create a search client and store credentials
 
-1. Adlı bir yöntem oluşturma `getClient()` yeni döndüren `NewsSearchAPIImpl` arama istemci. İlk parametre olarak yeni uç noktanızı eklemeyi`NewsSearchAPIImpl` nesne ve yeni bir `ServiceClientCredentials` kimlik bilgilerinizi depolamak için nesne.
+1. Create a method called `getClient()` that returns a new `NewsSearchAPIImpl` search client. Add your endpoint as the first parameter for the new`NewsSearchAPIImpl` object, and a new `ServiceClientCredentials` object to store your credentials.
 
     ```java
     public static NewsSearchAPIImpl getClient(final String subscriptionKey) {
@@ -67,7 +67,7 @@ import java.io.IOException;
     }
     ```
 
-2. Oluşturulacak `ServiceClientCredentials` nesne, geçersiz kılma `applyCredentialsFilter()` işlevi. Başarılı bir `OkHttpClient.Builder` yöntemi ve kullanım Oluşturucu 's `addNetworkInterceptor()` SDK çağrısı için kimlik bilgilerinizi oluşturmak için yöntemi.
+2. To create the `ServiceClientCredentials` object, override the `applyCredentialsFilter()` function. Pass a `OkHttpClient.Builder` to the method, and use the builder's `addNetworkInterceptor()` method to create your credentials for the SDK call.
 
     ```java
     new ServiceClientCredentials() {
@@ -90,9 +90,9 @@ import java.io.IOException;
     });
     ```
 
-## <a name="send-and-receive-a-search-request"></a>Arama isteği gönderip
+## <a name="send-and-receive-a-search-request"></a>Send and receive a search request
 
-1. Çağıran bir yöntem oluşturma `getClient()` ve Bing haber arama hizmetine arama isteği gönderir. Arama filtre *Pazar* ve *sayısı* parametreleri, ilk haber sonucu ile ilgili bilgiler daha sonra yazdırma: ad, URL, yayın tarihi, açıklama, sağlayıcı adı ve toplam sayısı tahmini Aramanız için eşleşmeleri.
+1. Create a method that calls `getClient()` and sends a search request to the Bing News Search service. Filter the search with the *market* and *count* parameters, then print information about the first news result: name, URL, publication date, description, provider name, and total number of estimated matches for your search.
 
     ```java
     public static void newsSearch(String subscriptionKey)
@@ -126,7 +126,7 @@ import java.io.IOException;
     
     ```
 
-2. Arama yönteminize ekleyin bir `main()` kod yürütmek için yöntemi.
+2. Add your search method to a `main()` method to execute the code.
 
     ```java 
     public static void main(String[] args) {

@@ -3,12 +3,12 @@ title: Kanada Federal PBMM şema örneği - Genel bakış
 description: Kanada Federal PBMM şeması örneğine genel bakış. Bu şema örneği, müşterilerin belirli Kanada Federal PBMM denetimlerini değerlendirmesine yardımcı olur.
 ms.date: 09/04/2019
 ms.topic: sample
-ms.openlocfilehash: 5bfe1fe4916f47e678899159d86d1679def3610a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 2640ba05be69cdb9432307b89027c30a27b4ad1c
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038390"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406303"
 ---
 # <a name="overview-of-the-canada-federal-pbmm-blueprint-sample"></a>Kanada Federal PBMM şeması örneğine genel bakış
 

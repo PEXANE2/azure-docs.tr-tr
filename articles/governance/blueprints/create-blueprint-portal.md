@@ -1,26 +1,20 @@
 ---
 title: 'Quickstart: Create a blueprint in the portal'
 description: In this quickstart, you use Azure Blueprints to create, define, and deploy artifacts through the Azure portal.
-ms.date: 03/11/2019
+ms.date: 11/21/2019
 ms.topic: quickstart
-ms.openlocfilehash: 47c225f3a3e51dc965580e48b8f838f557676d2e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: efef8db6086f050829b60b5051ad683bbae9ab75
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74210488"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74321938"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Quickstart: Define and assign a blueprint in the portal
 
 When you learn how to create and assign blueprints, you can define common patterns to develop reusable and rapidly deployable configurations based on Azure Resource Manager templates, policy, security, and more. In this tutorial, you learn to use Azure Blueprints to do some of the common tasks related to creating, publishing, and assigning a blueprint within your organization. These tasks include:
 
-> [!div class="checklist"]
-> - Yeni bir şema oluşturma ve çeşitli desteklenen yapıtlar ekleme
-> - **Taslak** durumundaki bir şemada değişiklik yapma
-> - Bir şemayı **Yayımlandı** durumuna getirerek atamaya hazır hale getirme
-> - Bir şemayı var olan bir aboneliğe atama
-> - Atanmış bir şemanın durumunu ve ilerlemesini denetleme
-> - Bir aboneliğe atanmış olan şemayı kaldırma
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun.
 
@@ -296,9 +290,7 @@ If you no longer need a blueprint assignment, remove it from a subscription. The
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Şema yaşam döngüsü](./concepts/lifecycle.md) hakkında bilgi edinin.
-- [Statik ve dinamik parametrelerin](./concepts/parameters.md) kullanımını anlayın.
-- [Şema sıralama düzenini](./concepts/sequencing-order.md) özelleştirmeyi öğrenin.
-- [Şema kaynak kilitleme](./concepts/resource-locking.md) özelliğini kullanmayı öğrenin.
-- [Mevcut atamaları güncelleştirmeyi](./how-to/update-existing-assignments.md) öğrenin.
-- [Genel sorun giderme](./troubleshoot/general.md) adımlarıyla şema atama sorunlarını giderin.
+In this quickstart, you've created, assigned, and removed a blueprint with Azure portal. To learn more about Azure Blueprints, continue to the blueprint lifecycle article.
+
+> [!div class="nextstepaction"]
+> [Learn about the blueprint lifecycle](./concepts/lifecycle.md)

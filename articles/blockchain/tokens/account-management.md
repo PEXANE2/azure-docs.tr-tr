@@ -1,40 +1,36 @@
 ---
-title: Azure blok zinciri belirteçleri hesap yönetimi
-description: Azure blok zinciri belirteçleri hesap yönetimini kullanarak, blok zinciri eylemlerine erişimi denetlemek için gruplar oluşturabilir ve blok zinciri hesapları bağlayabilirsiniz.
-services: azure-blockchain
-author: PatAltimore
-ms.author: patricka
+title: Azure Blockchain Tokens account management
+description: Using Azure Blockchain Tokens account management, you can create groups and link blockchain accounts to control access to blockchain actions.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.service: azure-blockchain
 ms.reviewer: brendal
-ms.openlocfilehash: 91dcadd3c7704b7b8c6cab45005bc83e1bba18bb
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 9931ef59e613501ba6feaedf3ac5d4721f0df752
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579767"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326110"
 ---
-# <a name="azure-blockchain-tokens-account-management"></a>Azure blok zinciri belirteçleri hesap yönetimi
+# <a name="azure-blockchain-tokens-account-management"></a>Azure Blockchain Tokens account management
 
 [!INCLUDE [Preview note](./includes/preview.md)]
 
-Bir blok zinciri çözümü için, kullanıcılar Azure blok zinciri belirteçleri hizmeti ile oluşturulan belirteçlere farklı düzeylerde erişim gerektirebilir. Çoğu blok zinciri senaryosunda, genel muhasebede bulunan farklı blok zinciri hesapları planlamanız ve dağıtmanız gerekir. Ayrıca katılımcılar arasındaki erişimi de yönetmeniz gerekir. Azure blok zinciri belirteçleri hesap yönetimini kullanarak, blok zinciri eylemlerine erişimi denetlemek için gruplar oluşturabilir ve blok zinciri hesapları bağlayabilirsiniz.
+For a blockchain solution, users may require different levels of access to the tokens that are created with the Azure Blockchain Tokens service. In most blockchain scenarios, you need to plan and deploy different blockchain accounts that exist on the ledger. You also need to manage access across participants. Using Azure Blockchain Tokens account management, you can create groups and link blockchain accounts to control access to blockchain actions.
 
-## <a name="blockchain-networks"></a>Blok zinciri ağları
+## <a name="blockchain-networks"></a>Blockchain networks
 
-Azure blok zinciri belirteçleri, bir blok zinciri ağları kümesi genelinde belirteçlerin dağıtımını ve yönetilmesini mümkün bir şekilde sunar. Hizmete tek bir blok zinciri defteri veya çeşitli blok zinciri bağlantısı bağlayabilirsiniz.
+Azure Blockchain Tokens enables deployment and management of tokens across a set of blockchain networks. You can connect a single blockchain ledger or several blockchain ledgers to the service.
 
 ## <a name="accounts"></a>Hesaplar
 
-Azure blok zinciri belirteçlerine bağlı blok zinciri ağları için hizmet, hesap özel ortak anahtar çiftlerini oluşturup yönetir ve işlem imzalama ve gönderme gerçekleştirir. Azure blok zinciri belirteçleri, hesap için ortak anahtar kimliği olan hesapları eşleştirmek üzere kimlik eşlemesi de sağlar.
+For blockchain networks connected to Azure Blockchain Tokens, the service creates and manages the account private-public key pairs and performs transaction signing and submission. Azure Blockchain Tokens also provides identity mapping to match accounts with the public key identity on the ledger.
 
 ## <a name="groups"></a>Gruplar
 
-Gruplar, bağlı ağlarda çok sayıda blok zinciri hesabını yönetmenizi sağlar. Dizindeki hangi uygulamaların ve kullanıcıların Azure blok zinciri belirteçleri API 'Leri aracılığıyla hesapları kullanma yeteneğinin olduğunu izleyip denetleyebilirsiniz. Örneğin, farklı iş hatlarını veya farklı rolleri temsil eden bir hesap kümesini gruplandırabilir ve blok zinciri belirteçlerine erişin.
+Groups lets you manage a large number of blockchain accounts across connected networks. You can track and audit which applications and users in the directory have the ability to use accounts through Azure Blockchain Tokens APIs. For example, you could group a set of accounts that represent different lines of business or different roles and access to blockchain tokens.
 
-Ayrıca, bir grubu Azure Active Directory Kullanıcı veya hizmet sorumlusu ile ilişkilendirebilirsiniz ve bu sorumlunun grup ve ilişkili hesapları için izinleri vardır.  
+You can also associate a group to an Azure Active Directory user or service principal and this principal has permissions to the group and its associated accounts.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kullanılabilir [Azure blok zinciri belirteçleri şablonları](templates.md)hakkında daha fazla bilgi edinin.
+Learn more about available [Azure Blockchain Tokens templates](templates.md).

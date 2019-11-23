@@ -1,7 +1,7 @@
 ---
-title: "Hızlı başlangıç: REST API 'Leri kullanarak PowerShell 'de arama dizini oluşturma"
+title: 'Quickstart: Create a search index in PowerShell using REST APIs'
 titleSuffix: Azure Cognitive Search
-description: PowerShell 'in Invoke-RestMethod ve Azure Bilişsel Arama REST API kullanarak dizin oluşturmayı, verileri yüklemeyi ve sorguları çalıştırmayı açıklar.
+description: In this REST API quickstart, learn how to create an index, load data, and run queries using PowerShell's Invoke-RestMethod and the Azure Cognitive Search REST API.
 manager: nitinme
 author: heidisteen
 ms.author: heidist
@@ -9,14 +9,14 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 11/04/2019
-ms.openlocfilehash: e9b2b8e8b3585bc747efb5b2916ddf1fe07d3645
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: db474b7e880ec2d65b9b9a71194964740e4fb329
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792244"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406908"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-index-in-powershell-using-rest-apis"></a>Hızlı başlangıç: REST API 'Leri kullanarak PowerShell 'de Azure Bilişsel Arama dizini oluşturma
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-powershell-using-rest-apis"></a>Quickstart: Create an Azure Cognitive Search index in PowerShell using REST APIs
 > [!div class="op_single_selector"]
 > * [PowerShell (REST)](search-create-index-rest-api.md)
 > * [C#](search-create-index-dotnet.md)
@@ -25,33 +25,33 @@ ms.locfileid: "72792244"
 > * [Portal](search-create-index-portal.md)
 > 
 
-Bu makalede, PowerShell ve [azure BILIŞSEL arama REST API 'leri](https://docs.microsoft.com/rest/api/searchservice/)kullanarak bir Azure bilişsel arama dizini oluşturma, yükleme ve sorgulama işlemi adım adım açıklanmaktadır. Bu makalede, PowerShell komutlarının etkileşimli olarak nasıl çalıştırılacağı açıklanmaktadır. Alternatif olarak, aynı işlemleri gerçekleştiren [bir PowerShell betiğini indirebilir ve çalıştırabilirsiniz](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart) .
+This article walks you through the process of creating, loading, and querying an Azure Cognitive Search index using PowerShell and the [Azure Cognitive Search REST APIs](https://docs.microsoft.com/rest/api/searchservice/). This article explains how to run PowerShell commands interactively. Alternatively, you can [download and run a Powershell script](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart) that performs the same operations.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu hızlı başlangıç için aşağıdaki hizmetler ve araçlar gereklidir. 
+The following services and tools are required for this quickstart. 
 
-+ Sıralı ve etkileşimli adımlar için [Invoke-RestMethod](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) kullanarak [PowerShell 5,1 veya sonraki bir sürümü](https://github.com/PowerShell/PowerShell).
++ [PowerShell 5.1 or later](https://github.com/PowerShell/PowerShell), using [Invoke-RestMethod](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) for sequential and interactive steps.
 
-+ Geçerli aboneliğinizde [bir Azure bilişsel arama hizmeti oluşturun](search-create-service-portal.md) veya [var olan bir hizmeti bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) . Bu hızlı başlangıç için ücretsiz bir hizmet kullanabilirsiniz. 
++ [Create an Azure Cognitive Search service](search-create-service-portal.md) or [find an existing service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) under your current subscription. You can use a free service for this quickstart. 
 
-## <a name="get-a-key-and-url"></a>Anahtar ve URL al
+## <a name="get-a-key-and-url"></a>Get a key and URL
 
-REST çağrıları için her istekte hizmet URL'sinin ve bir erişim anahtarının iletilmesi gerekir. Her ikisiyle de bir arama hizmeti oluşturulur. bu nedenle, aboneliğinize Azure Bilişsel Arama eklediyseniz, gerekli bilgileri almak için aşağıdaki adımları izleyin:
+REST çağrıları için her istekte hizmet URL'sinin ve bir erişim anahtarının iletilmesi gerekir. A search service is created with both, so if you added Azure Cognitive Search to your subscription, follow these steps to get the necessary information:
 
-1. [Azure Portal oturum açın](https://portal.azure.com/)ve arama hizmetine **genel bakış** sayfasında URL 'yi alın. Örnek uç nokta `https://mydemo.search.windows.net` şeklinde görünebilir.
+1. [Sign in to the Azure portal](https://portal.azure.com/), and in your search service **Overview** page, get the URL. Örnek uç nokta `https://mydemo.search.windows.net` şeklinde görünebilir.
 
-2. **Ayarlar** > **anahtarlar**' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
+2. In **Settings** > **Keys**, get an admin key for full rights on the service. There are two interchangeable admin keys, provided for business continuity in case you need to roll one over. You can use either the primary or secondary key on requests for adding, modifying, and deleting objects.
 
-![HTTP uç noktası ve erişim anahtarı al](media/search-get-started-postman/get-url-key.png "HTTP uç noktası ve erişim anahtarı al")
+![Get an HTTP endpoint and access key](media/search-get-started-postman/get-url-key.png "Get an HTTP endpoint and access key")
 
-Tüm istekler hizmetinize gönderilen her istekte bir API anahtarı gerektirir. İstek başına geçerli bir anahtara sahip olmak, isteği gönderen uygulama ve bunu işleyen hizmet arasında güven oluşturur.
+All requests require an api-key on every request sent to your service. İstek başına geçerli bir anahtara sahip olmak, isteği gönderen uygulama ve bunu işleyen hizmet arasında güven oluşturur.
 
-## <a name="connect-to-azure-cognitive-search"></a>Azure Bilişsel Arama bağlanma
+## <a name="connect-to-azure-cognitive-search"></a>Connect to Azure Cognitive Search
 
-1. PowerShell 'de, içerik türü ve API anahtarını depolamak için bir **$Headers** nesnesi oluşturun. Yönetim API anahtarını (-ADMIN-API-KEY), arama hizmetiniz için geçerli olan bir anahtarla değiştirin. Bu üst bilgiyi oturum süresince bir kez ayarlamanız yeterlidir, ancak bu üstbilgiyi her isteğe eklersiniz. 
+1. In PowerShell, create a **$headers** object to store the content-type and API key. Replace the admin API key (YOUR-ADMIN-API-KEY) with a key that is valid for your search service. You only have to set this header once for the duration of the session, but you will add it to every request. 
 
     ```powershell
     $headers = @{
@@ -60,19 +60,19 @@ Tüm istekler hizmetinize gönderilen her istekte bir API anahtarı gerektirir. 
     'Accept' = 'application/json' }
     ```
 
-2. Hizmetin dizinler koleksiyonunu belirten bir **$URL** nesnesi oluşturun. Hizmet adını (-SEARCH-SERVICE-NAME) geçerli bir arama hizmeti ile değiştirin.
+2. Create a **$url** object that specifies the service's indexes collection. Replace the service name (YOUR-SEARCH-SERVICE-NAME) with a valid search service.
 
     ```powershell
     $url = "https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes?api-version=2019-05-06&$select=name"
     ```
 
-3. Hizmete bir GET isteği göndermek ve bağlantıyı doğrulamak için **Invoke-RestMethod** komutunu çalıştırın. Hizmetten geri gönderilen yanıtları görüntüleyebilmek **için, ConvertTo-JSON** ekleyin.
+3. Run **Invoke-RestMethod** to send a GET request to the service and verify the connection. Add **ConvertTo-Json** so that you can view the responses sent back from the service.
 
     ```powershell
     Invoke-RestMethod -Uri $url -Headers $headers | ConvertTo-Json
     ```
 
-   Hizmet boşsa ve dizin yoksa, sonuçlar aşağıdaki örneğe benzer. Aksi takdirde, Dizin tanımlarının JSON gösterimini görürsünüz.
+   If the service is empty and has no indexes, results are similar to the following example. Otherwise, you'll see a JSON representation of index definitions.
 
     ```
     {
@@ -85,13 +85,13 @@ Tüm istekler hizmetinize gönderilen her istekte bir API anahtarı gerektirir. 
 
 ## <a name="1---create-an-index"></a>1 - Dizin oluşturma
 
-Portalı kullanmıyorsanız, verileri yükleyebilmeniz için önce hizmette bir dizin bulunmalıdır. Bu adım, dizini tanımlar ve hizmete gönderir. [Create ındex REST API](https://docs.microsoft.com/rest/api/searchservice/create-index) , bu adım için kullanılır.
+Unless you are using the portal, an index must exist on the service before you can load data. This step defines the index and pushes it to the service. The [Create Index REST API](https://docs.microsoft.com/rest/api/searchservice/create-index) is used for this step.
 
-Bir dizinin gerekli öğeleri bir ad ve alanlar koleksiyonu içerir. Alanlar koleksiyonu bir *belgenin*yapısını tanımlar. Her bir alan, nasıl kullanıldığını tanımlayan bir ad, tür ve özniteliklere sahiptir (örneğin, tam metin aranabilir, filtrelenebilir veya arama sonuçlarında alınabilir mi olduğunu belirtir). Bir dizin içinde, `Edm.String` türündeki alanlardan biri belge kimliği için *anahtar* olarak atanmalıdır.
+Required elements of an index include a name and a fields collection. The fields collection defines the structure of a *document*. Each field has a name, type, and attributes that determine how it's used (for example, whether it is full-text searchable, filterable, or retrievable in search results). Within an index, one of the fields of type `Edm.String` must be designated as the *key* for document identity.
 
-Bu dizin "oteller-QuickStart" olarak adlandırılmıştır ve aşağıda gördüğünüz alan tanımlarına sahiptir. Diğer izlenecek yollarda kullanılan daha büyük bir [oteller dizininin](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON) bir alt kümesidir. Bu hızlı başlangıçta breçekimi için kırpıyoruz.
+This index is named "hotels-quickstart" and has the field definitions you see below. It's a subset of a larger [Hotels index](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON) used in other walkthroughs. We trimmed it in this quickstart for brevity.
 
-1. Dizin şemasını içeren bir **$Body** nesnesi oluşturmak için bu örneği PowerShell 'e yapıştırın.
+1. Paste this example into PowerShell to create a **$body** object containing the index schema.
 
     ```powershell
     $body = @"
@@ -120,19 +120,19 @@ Bu dizin "oteller-QuickStart" olarak adlandırılmıştır ve aşağıda gördü
     "@
     ```
 
-2. URI 'yi hizmetinize ve *oteller-hızlı başlangıç* dizininde dizin koleksiyonuna ayarlayın.
+2. Set the URI to the indexes collection on your service and the *hotels-quickstart* index.
 
     ```powershell
     $url = "https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart?api-version=2019-05-06"
     ```
 
-3. Sunucuda dizin oluşturmak için **$URL**, **$Headers**ve **$Body** ile komutu çalıştırın. 
+3. Run the command with **$url**, **$headers**, and **$body** to create the index on the service. 
 
     ```powershell
     Invoke-RestMethod -Uri $url -Headers $headers -Method Put -Body $body | ConvertTo-Json
     ```
 
-    Sonuçlar şuna benzer görünmelidir (breçekimi için ilk iki alana kesilir):
+    Results should look similar to this (truncated to the first two fields for brevity):
 
     ```
     {
@@ -173,17 +173,17 @@ Bu dizin "oteller-QuickStart" olarak adlandırılmıştır ve aşağıda gördü
     ```
 
 > [!Tip]
-> Doğrulama için portaldaki dizinler listesini de kontrol edebilirsiniz.
+> For verification, you could also check the Indexes list in the portal.
 
 <a name="load-documents"></a>
 
-## <a name="2---load-documents"></a>2-belge yükleme
+## <a name="2---load-documents"></a>2 - Load documents
 
-Belgeleri göndermek için, dizininizin URL uç noktasına bir HTTP POST isteği kullanın. Bu görevin REST API [belge ekleme, güncelleştirme veya silme](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
+To push documents, use an HTTP POST request to your index's URL endpoint. The REST API for this task is [Add, Update, or Delete Documents](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
 
-1. Karşıya yüklemek istediğiniz belgeleri içeren **$Body** bir nesne oluşturmak için bu örneği PowerShell 'e yapıştırın. 
+1. Paste this example into PowerShell to create a **$body** object containing the documents you want to upload. 
 
-    Bu istek iki tam ve bir kısmi kayıt içerir. Kısmi kayıt, eksik belgeleri karşıya yükleyebileceğinizi gösterir. `@search.action` parametresi, dizin oluşturmanın nasıl yapılacağını belirtir. Geçerli değerler karşıya yükleme, birleştirme, mergeOrUpload ve DELETE değerleridir. MergeOrUpload davranışı, Hotelıd = 3 için yeni bir belge oluşturur ya da zaten varsa içeriği güncelleştirir.
+    This request includes two full and one partial record. The partial record demonstrates that you can upload incomplete documents. The `@search.action` parameter specifies how indexing is done. Valid values include upload, merge, mergeOrUpload, and delete. The mergeOrUpload behavior either creates a new document for hotelId = 3, or updates the contents if it already exists.
 
     ```powershell
     $body = @"
@@ -270,18 +270,18 @@ Belgeleri göndermek için, dizininizin URL uç noktasına bir HTTP POST isteği
     "@
     ```
 
-1. Uç noktayı *oteller-hızlı başlangıç* belgeleri koleksiyonuna ayarlayın ve Dizin işlemini (dizinler/oteller-hızlı başlangıç/docs/dizin) ekleyin.
+1. Set the endpoint to the *hotels-quickstart* docs collection and include the index operation (indexes/hotels-quickstart/docs/index).
 
     ```powershell
     $url = "https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs/index?api-version=2019-05-06"
     ```
 
-1. **$URL**, **$Headers**ve **$Body** kullanarak, dosyaları oteller-hızlı başlangıç dizinine yüklemek için komutunu çalıştırın.
+1. Run the command with **$url**, **$headers**, and **$body** to load documents into the hotels-quickstart index.
 
     ```powershell
     Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $body | ConvertTo-Json
     ```
-    Sonuçlar aşağıdaki örneğe benzer görünmelidir. 201 için bir [durum kodu](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes)görmeniz gerekir.
+    Results should look similar to the following example. You should see a [status code of 201](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes).
 
     ```
     {
@@ -317,25 +317,25 @@ Belgeleri göndermek için, dizininizin URL uç noktasına bir HTTP POST isteği
 
 ## <a name="3---search-an-index"></a>3 - Dizin arama
 
-Bu adımda, [belgeleri ara API 'sini](https://docs.microsoft.com/rest/api/searchservice/search-documents)kullanarak bir dizinin nasıl sorgulanyapılacağı gösterilir.
+This step shows you how to query an index using the [Search Documents API](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 
-Arama $urls tek tırnakları kullandığınızdan emin olun. Sorgu dizeleri **$** karakterler içerir ve tüm dize tek tırnak içine alınsa bunları kaçış zorunluluğunu atlayabilirsiniz.
+Be sure to use single quotes on search $urls. Query strings include **$** characters, and you can omit having to escape them if the entire string is enclosed in single quotes..
 
-1. Son noktayı *oteller-hızlı başlangıç* belgeleri koleksiyonuna ayarlayın ve sorgu dizesinde geçirilecek bir **arama** parametresi ekleyin. 
+1. Set the endpoint to the *hotels-quickstart* docs collection and add a **search** parameter to pass in a query string. 
   
-   Bu dize, rastgele belgeler için bir boş arama (Search = *) yürütür ve dereceli bir liste (arama puanı = 1,0) döndürüyor. Azure Bilişsel Arama, varsayılan olarak her seferinde 50 eşleşme döndürür. Yapılandırılmış olarak, bu sorgu tüm belge yapısını ve değerlerini döndürür. Sonuçlarda tüm belgelerin sayısını almak için **$Count = true** ekleyin.
+   This string executes an empty search (search=*), returning an unranked list (search score  = 1.0) of arbitrary documents. By default, Azure Cognitive Search returns 50 matches at a time. As structured, this query returns an entire document structure and values. Add **$count=true** to get a count of all documents in the results.
 
     ```powershell
     $url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=*&$count=true'
     ```
 
-1. **$URL** hizmete göndermek için komutunu çalıştırın.
+1. Run the command to send the **$url** to the service.
 
     ```powershell
     Invoke-RestMethod -Uri $url -Headers $headers | ConvertTo-Json
     ```
 
-    Sonuçlar aşağıdaki çıktıya benzer görünmelidir.
+    Results should look similar to the following output.
 
     ```
     {
@@ -369,7 +369,7 @@ Arama $urls tek tırnakları kullandığınızdan emin olun. Sorgu dizeleri **$*
                 . . . 
     ```
 
-Söz dizimi için bir fikir almak üzere birkaç başka sorgu örneği deneyin. Dize araması yapabilir, tam $filter sorgular yapabilir, sonuç kümesini sınırlayabilir, aramanın belirli alanlarla kapsamını ve daha fazlasını yapabilirsiniz.
+Try a few other query examples to get a feel for the syntax. You can do a string search, verbatim $filter queries, limit the results set, scope the search to specific fields, and more.
 
 ```powershell
 # Query example 1
@@ -391,17 +391,17 @@ $url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quicksta
 
 $url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=pool&$orderby=Address/City asc&$select=HotelName, Address/City, Tags, Rating'
 ```
-## <a name="clean-up"></a>Temizleme 
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Kendi aboneliğinizde çalışırken, sizin oluşturduğunuz kaynaklara hala ihtiyacınız olup olmadığını belirlemek için bir projenin sonunda iyi bir fikir olur. Çalışan kaynaklar sizin için ücret verebilir. Kaynakları tek tek silebilir veya kaynak grubunu silerek tüm kaynak kümesini silebilirsiniz.
+When you're working in your own subscription, it's a good idea at the end of a project to identify whether you still need the resources you created. Resources left running can cost you money. You can delete resources individually or delete the resource group to delete the entire set of resources.
 
-Sol gezinti bölmesindeki **tüm kaynaklar** veya **kaynak grupları** bağlantısını kullanarak portalda kaynakları bulabilir ve yönetebilirsiniz.
+You can find and manage resources in the portal, using the **All resources** or **Resource groups** link in the left-navigation pane.
 
-Ücretsiz bir hizmet kullanıyorsanız, üç Dizin, Dizin Oluşturucu ve veri kaynağı ile sınırlı olduğunu unutmayın. Sınırın altında kalmak için portalda ayrı ayrı öğeleri silebilirsiniz. 
+If you are using a free service, remember that you are limited to three indexes, indexers, and data sources. You can delete individual items in the portal to stay under the limit. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, Azure Bilişsel Arama 'da içerik oluşturma ve bunlara erişme için temel iş akışını adım adım yapmak üzere PowerShell kullandınız. Kavramlar göz önünde bulundurularak, Azure veri kaynaklarından dizin oluşturma gibi daha gelişmiş senaryolara geçmeyi öneririz;
+In this quickstart, you used PowerShell to  step through the basic workflow for creating and accessing content in Azure Cognitive Search. With the concepts in mind, we recommend moving on to more advanced scenarios, such as indexing from Azure data sources;
 
 > [!div class="nextstepaction"]
-> [REST öğreticisi: Azure Bilişsel Arama yarı yapılandırılmış verileri (JSON blob 'ları) dizin ve arama](search-semi-structured-data.md)
+> [REST Tutorial: Index and search semi-structured data (JSON blobs) in Azure Cognitive Search](search-semi-structured-data.md)

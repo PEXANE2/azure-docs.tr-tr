@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Central yeni bir IoT cihaz türü tanımlayın | Microsoft Docs
-description: Bu öğreticide, Azure IoT Central uygulamanızda yeni bir Azure IoT cihaz şablonu oluşturma, Oluşturucu olarak gösterilir. Türü için telemetri, durum, özellik ve komutları tanımlarsınız.
+title: Define a new IoT device type in Azure IoT Central | Microsoft Docs
+description: This tutorial shows you, as a builder, how to create a new Azure IoT device template in your Azure IoT Central application. You define the telemetry, state, properties, and commands for your type.
 author: rangv
 ms.author: rangv
 ms.date: 10/22/2019
@@ -9,426 +9,434 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 5642ce6065c4b76bdbd6d772c74fed894de0888f
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 177caaa5400c10ed8de80b04a3305dce7cae77d6
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73893357"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74407017"
 ---
-# <a name="tutorial-define-a-new-iot-device-type-in-your-azure-iot-central-application-preview-features"></a>Öğretici: Azure IoT Central uygulamanızda yeni bir IoT cihaz türü tanımlama (Önizleme özellikleri)
+# <a name="tutorial-define-a-new-iot-device-type-in-your-azure-iot-central-application-preview-features"></a>Tutorial: Define a new IoT device type in your Azure IoT Central application (preview features)
 
 [!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-Bir cihaz şablonu, bir Azure IoT Central uygulamasına bağlanan bir cihaz türünün özelliklerini ve davranışlarını tanımlayan bir şema.
+A device template is a blueprint that defines the characteristics and behaviors of a type of device that connects to an Azure IoT Central application.
 
-Örneğin, bir Oluşturucu, bağlı bir fan için aşağıdaki özelliklere sahip bir cihaz şablonu oluşturabilir:
+For example, a builder can create a device template for a connected fan that has the following characteristics:
 
-- Sıcaklık telemetrisini gönderir
-- Location özelliğini gönderir
-- Fan Motoru hata olaylarını gönderir
-- Fan çalışma durumunu gönderir
-- Yazılabilir fan hızı özelliği
-- Cihazı yeniden başlatma komutu
-- Size cihazın genel görünümünü veren Pano
+- Sends temperature telemetry
+- Sends location property
+- Sends fan motor error events
+- Sends fan operating state
+- Provides a writeable fan speed property
+- Provides a command to restart the device
+- Gives you an overall view of the device via a dashboard
 
-Bu cihaz şablonundan bir operatör gerçek fan cihazları oluşturup bağlayabilirler. Tüm bu fanların, işleçlerini izlemek ve yönetmek için kullandığı ölçümleri, özellikleri ve komutları vardır. İşleçler, fan cihazlarıyla etkileşim kurmak için cihaz panoları ve formları kullanır.
+From this device template, an operator can create and connect real fan devices. All these fans have measurements, properties, and commands that operators use to monitor and manage them. Operators use the device dashboards and forms to interact with the fan devices.
 
 > [!NOTE]
-> Yalnızca oluşturucular ve yöneticiler cihaz şablonları oluşturabilir, düzenleyebilir ve silebilir. Herhangi bir Kullanıcı, mevcut cihaz şablonlarından **cihazlar** sayfasında cihaz oluşturabilir.
+> Only builders and administrators can create, edit, and delete device templates. Any user can create devices on the **Devices** page from existing device templates.
 
-[Iot Tak ve kullan](../../iot-pnp/overview-iot-plug-and-play.md) , hiçbir katıştırılmış cihaz kodu yazmadan IoT Central cihazları tümleştirmenize olanak sağlar. IoT Tak ve Kullan 'nin çekirdeği, cihaz yeteneklerini açıklayan bir cihaz yetenek modeli şemadır. IoT Central önizleme uygulamasında, cihaz şablonları bu IoT Tak ve Kullan cihaz yeteneği modellerini kullanır.
+[IoT Plug and Play](../../iot-pnp/overview-iot-plug-and-play.md) enables IoT Central to integrate devices, without you writing any embedded device code. At the core of IoT Plug and Play is a device capability model schema that describes device capabilities. In an IoT Central Preview application, device templates use these IoT Plug and Play device capability models.
 
-Bir Oluşturucu olarak, cihaz şablonları oluşturmak için çeşitli seçenekleriniz vardır:
+As a builder, you have several options for creating device templates:
 
-- IoT Central cihaz şablonunu tasarlayın ve cihaz kodunuzda cihaz yetenek modelini uygulayın.
-- [IoT cihaz kataloğu Için Azure Sertifikalı](https://aka.ms/iotdevcat) bir cihaz yetenek modeli içeri aktarın ve ardından IoT Central uygulamanızın ihtiyaç duyacağı tüm bulut özelliklerini, özelleştirmeleri ve panoları ekleyin.
-- Visual Studio Code 'u kullanarak bir cihaz yetenek modeli oluşturun. Modelden cihaz kodunuzu uygulayın. Cihaz yetenek modelini IoT Central uygulamanıza el ile aktarın ve ardından IoT Central uygulamanızın ihtiyaç duyacağı tüm bulut özelliklerini, özelleştirmeleri ve panoları ekleyin.
-- Visual Studio Code 'u kullanarak bir cihaz yetenek modeli oluşturun. Cihazdan cihaz kodunuzu uygulayın ve cihaz ilk bağlantısı kullanarak gerçek cihazınızı IoT Central uygulamanıza bağlayın. IoT Central, cihaz yetenek modelini sizin için ortak depodan bulur ve içeri aktarır. Daha sonra IoT Central uygulamanızın ihtiyaç duyacağı tüm bulut özelliklerini, özelleştirmeleri ve panoları cihaz şablonuna ekleyebilirsiniz.
+- Design the device template in IoT Central, and then implement its device capability model in your device code.
+- Import a device capability model from the [Azure Certified for IoT device catalog](https://aka.ms/iotdevcat). Then add any cloud properties, customizations, and dashboards your IoT Central application needs.
+- Create a device capability model by using Visual Studio Code. Implement your device code from the model. Manually import the device capability model into your IoT Central application, and then add any cloud properties, customizations, and dashboards your IoT Central application needs.
+- Create a device capability model by using Visual Studio Code. Implement your device code from the model, and connect your real device to your IoT Central application by using a device-first connection. IoT Central finds and imports the device capability model from the public repository for you. You can then add any cloud properties, customizations, and dashboards your IoT Central application needs to the device template.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticiyi tamamlamak için bir Azure IoT Central uygulamanızın olması gerekir. [Azure IoT Central uygulaması oluşturmak](quick-deploy-iot-central.md)için bu hızlı başlangıcı izleyin.
+To complete this tutorial, you need to [create an Azure IoT Central application](quick-deploy-iot-central.md).
 
-## <a name="create-a-device-template-from-the-device-catalog"></a>Cihaz kataloğundan cihaz şablonu oluşturma
+## <a name="create-a-device-template-from-the-device-catalog"></a>Create a device template from the device catalog
 
-Bir Oluşturucu olarak, [Azure IoT cihaz kataloğunda](https://catalog.azureiotsolutions.com/alldevices)listelenen bir IoT Tak ve kullan sertifikalı cihaz kullanarak çözümünüzü oluşturmaya hemen başlayabilirsiniz. IoT Central, bu IoT Tak ve Kullan sertifikalı cihazlardan bir cihaz yetenek modeli aktarmanıza olanak sağlamak üzere cihaz kataloğu ile tümleşir. IoT Central içinde bu cihazlardan birini bir cihaz şablonu oluşturmak için:
+As a builder, you can quickly start building out your solution by using an IoT Plug and Play certified device. See the list in the [Azure IoT Device Catalog](https://catalog.azureiotsolutions.com/alldevices). IoT Central integrates with the device catalog so you can import a device capability model from any of these IoT Plug and Play certified devices. To create a device template from one of these devices in IoT Central:
 
-1. IoT Central uygulamanızda **cihaz şablonları** sayfasına gidin.
-1. **+ Yeni**' yi seçin ve ardından aşağıda listelenen katalogdan IoT Tak ve kullan sertifikalı cihazlardan birini seçin. IoT Central, bu cihaz yetenek modelini temel alan bir cihaz şablonu oluşturur.
-1. Cihaz şablonunuza tüm bulut özelliklerini, özelleştirmeleri veya görünümlerini ekleyin.
-1. Operatörlerin cihazları görüntülemesini ve bağlanmasını sağlamak için bu cihaz şablonunu yayımlamak üzere **Yayımla** ' yı seçin.
+1. Go to the **Device Templates** page in your IoT Central application.
+1. Select **+ New**, and then select any of the IoT Plug and Play certified devices from the catalog. IoT Central creates a device template based on this device capability model.
+1. Add any cloud properties, customizations, or views to your device template.
+1. Select **Publish** to make the template available for operators to view and connect devices.
 
-## <a name="create-a-device-template-from-scratch"></a>Sıfırdan bir cihaz şablonu oluşturma
+## <a name="create-a-device-template-from-scratch"></a>Create a device template from scratch
 
-Bir cihaz şablonu şunları içerir:
+A device template contains:
 
-- Cihazın uyguladığı telemetri, özellik ve komutları belirten bir _cihaz yetenek modeli_ . Bu yetenekler bir veya daha fazla arabirim halinde düzenlenmiştir.
-- IoT Central uygulamanızın cihazlarınızla ilgili depoladığını belirten bilgileri tanımlayan _bulut özellikleri_ . Örneğin, bir bulut özelliği bir cihaza en son hizmet verilen verileri kaydedebilir. Bu bilgiler hiçbir şekilde cihazla paylaşılmaz.
-- _Özelleştirmeler_ , oluşturucunun cihaz yetenek modelindeki bazı tanımları geçersiz kılmasına izin verir. Örneğin, Oluşturucu bir cihaz özelliğinin adını geçersiz kılabilir. Özellik adları IoT Central panolar ve formlarda görüntülenir.
-- _Panolar ve formlar_ , oluşturucunun uygulamanıza bağlı olan cihazları izleyip yönetmesine olanak tanıyan bir kullanıcı arabirimi oluşturmasını sağlar.
+- A _device capability model_ that specifies the telemetry, properties, and commands that the device implements. These capabilities are organized into one or more interfaces.
+- _Cloud properties_ that define information that your IoT Central application stores about your devices. For example, a cloud property might record the date a device was last serviced. This information is never shared with the device.
+- _Customizations_ let the builder override some of the definitions in the device capability model. For example, the builder can override the name of a device property. Property names appear in IoT Central dashboards and forms.
+- _Dashboards and forms_ let the builder create a UI that lets operators monitor and manage the devices connected to your application.
 
-IoT Central bir cihaz şablonu oluşturmak için:
+To create a device template in IoT Central:
 
-1. IoT Central uygulamanızda **cihaz şablonları** sayfasına gidin.
-1. **+ Yeni**' yi seçin ve ardından **özel**' i seçin.
-1. Şablonunuz için **ortam algılayıcısı**gibi bir ad girin.
-1. **Enter**'a basın. IoT Central boş bir cihaz şablonu oluşturur.
+1. Go to the **Device Templates** page in your IoT Central application.
+1. Select **+ New** > **Custom**.
+1. Enter a name for your template, such as **Environmental Sensor**.
+1. **Enter**'a basın. IoT Central creates an empty device template.
 
-## <a name="manage-a-device-template"></a>Bir cihaz şablonunu yönetme
+## <a name="manage-a-device-template"></a>Manage a device template
 
-Şablonun giriş sayfasından bir şablonu yeniden adlandırabilir veya silebilirsiniz.
+You can rename or delete a template from the template's home page.
 
-Şablonunuza bir cihaz yetenek modeli ekledikten sonra, bunu yayımlayabilirsiniz. Bu şablonu temel alan bir cihazı, şablon yayımlalana kadar **cihazlar** sayfasında görmek için bu şablona göre bağlanamazsınız.
+After you've added a device capability model to your template, you can publish it. Until you've published the template, you can't connect a device based on this template for your operators to see in the **Devices** page.
 
-## <a name="create-a-capability-model"></a>Yetenek modeli oluşturma
+## <a name="create-a-capability-model"></a>Create a capability model
 
-Bir cihaz yetenek modeli oluşturmak için şunları yapabilirsiniz:
+To create a device capability model, you can:
 
-- Sıfırdan özel bir model oluşturmak için IoT Central kullanın.
-- JSON dosyasından bir model içeri aktarın. Bir cihaz Oluşturucu, uygulamanız için bir cihaz yetenek modeli yazmak üzere Visual Studio Code kullanmış olabilir.
-- Cihaz kataloğundan cihazlardan birini seçin. Bu seçenek, üreticinin Bu cihaz için yayımladığı cihaz yetenek modelini içe aktarır. Bu şekilde içeri aktarılan bir cihaz yetenek modeli otomatik olarak yayımlanır.
+- Use IoT Central to create a custom model from scratch.
+- Import a model from a JSON file. A device builder might have used Visual Studio Code to author a device capability model for your application.
+- Select one of the devices from the Device Catalog. This option imports the device capability model that the manufacturer has published for this device. A device capability model imported like this is automatically published.
 
-## <a name="manage-a-capability-model"></a>Yetenek modeli yönetme
+## <a name="manage-a-capability-model"></a>Manage a capability model
 
-Bir cihaz yetenek modeli oluşturduktan sonra şunları yapabilirsiniz:
+After you create a device capability model, you can:
 
-- Modele arabirimler ekleyin. Bir modelde en az bir arabirim olmalıdır.
-- KIMLIĞI, ad alanı ve adı gibi model meta verilerini düzenleyin.
-- Modeli silin.
+- Add interfaces to the model. A model must have at least one interface.
+- Edit model metadata, such as its ID, namespace, and name.
+- Delete the model.
 
-## <a name="create-an-interface"></a>Arabirim oluşturma
+## <a name="create-an-interface"></a>Create an interface
 
-Cihaz yeteneğinin en az bir arabirimi olmalıdır. Arabirim, yeniden kullanılabilir bir özellik koleksiyonudur.
+A device capability must have at least one interface. An interface is a reusable collection of capabilities.
 
-Bir arabirim oluşturmak için:
+To create an interface:
 
-1. Cihaz yetenek modelinize gidin ve **+ arabirim Ekle**' yi seçin.
+1. Go to your device capability model, and choose **+ Add Interface**.
 
-1. **Bir arabirim seçin** sayfasında şunları yapabilirsiniz:
+1. On the **Select an Interface** page, you can:
 
-    - Sıfırdan özel bir arabirim oluşturun.
-    - Varolan bir arabirimi dosyadan içeri aktarın. Cihaz Oluşturucu, cihazınızın arabirimini yazmak için Visual Studio Code kullanmış olabilir.
-    - **Cihaz bilgileri** arabirimi gibi standart arabirimlerden birini seçin. Standart arabirimler, birçok cihaz için ortak olan özellikleri belirtir. Bu standart arabirimler Microsoft Azure IoT tarafından yayımlanır ve sürümü oluşturulamaz veya düzenlenemez.
+    - Create a custom interface from scratch.
+    - Import an existing interface from a file. A device builder might have used Visual Studio Code to author an interface for your device.
+    - Choose one of the standard interfaces, such as the **Device Information** interface. Standard interfaces specify the capabilities common to many devices. These standard interfaces are published by Azure IoT, and can't be versioned or edited.
 
-1. Arabirim oluşturduktan sonra, arabirimin görünen adını değiştirmek için **kimliği Düzenle** ' yi seçin.
+1. After you create an interface, choose **Edit Identity** to change the display name of the interface.
 
-1. Sıfırdan özel bir arabirim oluşturmayı seçerseniz, cihazınızın yeteneklerini ekleyebilirsiniz. Cihaz özellikleri telemetri, Özellikler ve komutlardır.
+1. If you choose to create a custom interface from scratch, you can add your device's capabilities. Device capabilities are telemetry, properties, and commands.
 
 ### <a name="telemetry"></a>Telemetri
 
-Telemetri, genellikle bir sensörden cihazdan gönderilen değerlerin bir akışıdır. Örneğin, bir algılayıcı çevresel sıcaklığa rapor verebilir.
+Telemetry is a stream of values sent from the device, typically from a sensor. For example, a sensor might report the ambient temperature.
 
-Aşağıdaki tabloda bir telemetri yeteneğinin yapılandırma ayarları gösterilmektedir:
+The following table shows the configuration settings for a telemetry capability:
 
 | Alan | Açıklama |
 | ----- | ----------- |
-| Görünen Ad | Panolar ve formlarda kullanılan telemetri değeri için görünen ad. |
-| Ad | Telemetri iletisindeki alanın adı. IoT Central görünen adından Bu alan için bir değer oluşturur, ancak gerekirse kendi değerini seçebilirsiniz. |
-| Yetenek türü | Telemetri. |
-| Anlamsal tür | Sıcaklık, durum veya olay gibi telemetrinin anlam türü. Anlamsal tür seçimi aşağıdaki alanlardan hangisinin kullanılabildiğini belirler. |
-| Şema | Çift, dize veya vektör gibi telemetri veri türü. Kullanılabilir seçimler anlamsal tür tarafından belirlenir. Şema, olay ve durum anlam türleri için kullanılamaz. |
-| Severity | Yalnızca olay anlam türü için kullanılabilir. **Hata**, **bilgi**veya **Uyarı**. |
-| Durum değerleri | Yalnızca durum anlam türü için kullanılabilir. Her birinin görünen adı, adı, sabit listesi türü ve değeri olan olası durum değerlerini tanımlayın. |
-| Birim | **Mph**, **%** veya **&deg;C**gibi telemetri değeri için bir birim. |
-| Görüntüleme birimi | Panolar ve formlarda kullanılacak bir görüntüleme birimi. |
-| Açıklama | Telemetri yeteneği hakkında herhangi bir yorum. |
-| Açıklama | Telemetri yeteneğinin açıklaması. |
+| Görünen Ad | The display name for the telemetry value used on dashboards and forms. |
+| Adı | The name of the field in the telemetry message. IoT Central generates a value for this field from the display name, but you can choose your own value if necessary. |
+| Capability Type | Telemetry. |
+| Semantic Type | The semantic type of the telemetry, such as temperature, state, or event. The choice of semantic type determines which of the following fields are available. |
+| Şema | The telemetry data type, such as double, string, or vector. The available choices are determined by the semantic type. Schema isn't available for the event and state semantic types. |
+| Önem Derecesi | Only available for the event semantic type. The severities are **Error**, **Information**, or **Warning**. |
+| State Values | Only available for the state semantic type. Define the possible state values, each of which has display name, name, enumeration type, and value. |
+| Birim | A unit for the telemetry value, such as **mph**, **%** , or **&deg;C**. |
+| Display Unit | A display unit for use on dashboards and forms. |
+| Açıklama | Any comments about the telemetry capability. |
+| Açıklama | A description of the telemetry capability. |
 
 ### <a name="properties"></a>Özellikler
 
-Özellikler zaman değerlerini nokta cinsinden temsil eder. Örneğin, bir cihaz, ulaşmaya çalıştığı hedef sıcaklığını raporlamak için bir özelliği kullanabilir. IoT Central yazılabilir özellikleri ayarlayabilirsiniz.
+Properties represent point-in-time values. For example, a device can use a property to report the target temperature it's trying to reach. You can set writeable properties from IoT Central.
 
-Aşağıdaki tabloda bir özellik yeteneği için yapılandırma ayarları gösterilmektedir:
+The following table shows the configuration settings for a property capability:
 
 | Alan | Açıklama |
 | ----- | ----------- |
-| Görünen Ad | Panolar ve formlarda kullanılan özellik değeri için görünen ad. |
-| Ad | Özelliğin adı. IoT Central görünen adından Bu alan için bir değer oluşturur, ancak gerekirse kendi değerini seçebilirsiniz. |
-| Yetenek türü | özelliði. |
-| Anlamsal tür | Özelliğin sıcaklık, durum veya olay gibi anlam türü. Anlamsal tür seçimi aşağıdaki alanlardan hangisinin kullanılabildiğini belirler. |
-| Şema | Double, String veya Vector gibi özellik veri türü. Kullanılabilir seçimler anlamsal tür tarafından belirlenir. Şema, olay ve durum anlam türleri için kullanılamaz. |
-| Yazılabilir | Özellik yazılabilir değilse, cihaz özellik değerlerini IoT Central rapor edebilir. Özellik yazılabilir ise, cihaz özellik değerlerini IoT Central rapor edebilir ve IoT Central Özellik güncelleştirmelerini cihaza gönderebilir.
-| Severity | Yalnızca olay anlam türü için kullanılabilir. **Hata**, **bilgi**veya **Uyarı**. |
-| Durum değerleri | Yalnızca durum anlam türü için kullanılabilir. Her birinin görünen adı, adı, sabit listesi türü ve değeri olan olası durum değerlerini tanımlayın. |
-| Birim | **Mph**, **%** veya **&deg;C**gibi özellik değeri için bir birim. |
-| Görüntüleme birimi | Panolar ve formlarda kullanılacak bir görüntüleme birimi. |
-| Açıklama | Özellik yeteneği hakkında herhangi bir açıklama. |
-| Açıklama | Özellik yeteneğinin açıklaması. |
+| Görünen Ad | The display name for the property value used on dashboards and forms. |
+| Adı | The name of the property. IoT Central generates a value for this field from the display name, but you can choose your own value if necessary. |
+| Capability Type | Property. |
+| Semantic Type | The semantic type of the property, such as temperature, state, or event. The choice of semantic type determines which of the following fields are available. |
+| Şema | The property data type, such as double, string, or vector. The available choices are determined by the semantic type. Schema isn't available for the event and state semantic types. |
+| Writeable | If the property isn't writeable, the device can report property values to IoT Central. If the property is writeable, the device can report property values to IoT Central and IoT Central can send property updates to the device.
+| Önem Derecesi | Only available for the event semantic type. The severities are **Error**, **Information**, or **Warning**. |
+| State Values | Only available for the state semantic type. Define the possible state values, each of which has display name, name, enumeration type, and value. |
+| Birim | A unit for the property value, such as **mph**, **%** , or **&deg;C**. |
+| Display Unit | A display unit for use on dashboards and forms. |
+| Açıklama | Any comments about the property capability. |
+| Açıklama | A description of the property capability. |
 
 ### <a name="commands"></a>Komutlar
 
-IoT Central 'tan cihaz komutlarını çağırabilirsiniz. Komutlar isteğe bağlı olarak parametreleri cihaza iletir ve cihazdan bir yanıt alır. Örneğin, bir cihazı 10 saniye içinde yeniden başlatmak için bir komut çağırabilirsiniz.
+You can call device commands from IoT Central. Commands optionally pass parameters to the device and receive a response from the device. For example, you can call a command to reboot a device in 10 seconds.
 
-Aşağıdaki tabloda, bir komut özelliğine ait yapılandırma ayarları gösterilmektedir:
-
-| Alan | Açıklama |
-| ----- | ----------- |
-| Görünen Ad | Panolar ve formlarda kullanılan komutun görünen adı. |
-| Ad | Komutun adı. IoT Central görünen adından Bu alan için bir değer oluşturur, ancak gerekirse kendi değerini seçebilirsiniz. |
-| Yetenek türü | Komut |
-| Komut | SynchronousExecutionType. |
-| Açıklama | Komut özelliğiyle ilgili herhangi bir yorum. |
-| Açıklama | Komut yeteneğinin açıklaması. |
-| İstek | Etkinleştirilirse, istek parametresinin tanımı: ad, görünen ad, şema, birim ve görüntü birimi. |
-| Yanıt | Etkinleştirilirse, şunu içeren komut yanıtının bir tanımı: ad, görünen ad, şema, birim ve görüntü birimi. |
-
-## <a name="manage-an-interface"></a>Arabirim yönetme
-
-Arabirimi yayımlamadıysanız, arabirim tarafından tanımlanan özellikleri düzenleyebilirsiniz. Arabirim yayımlandıktan sonra, herhangi bir değişiklik yapmak için cihaz şablonunun yeni bir sürümünü oluşturmanız ve arabirimi sürümüne uygulamanız gerekir. Görüntü adları veya birimleri gibi sürüm oluşturma gerektirmeyen değişiklikler **Özelleştirme** bölümünde yapılabilir.
-
-Ayrıca, başka bir yetenek modelinde yeniden kullanmak istiyorsanız, bir JSON dosyası olarak arayüzü dışarı aktarabilirsiniz.
-
-## <a name="add-cloud-properties"></a>Bulut özellikleri ekle
-
-IoT Central içindeki cihazlarla ilgili bilgileri depolamak için bulut özelliklerini kullanın. Bulut özellikleri hiçbir şekilde cihaza gönderilmez. Örneğin, bulut özelliklerini, cihazı yüklemiş olan müşterinin adını veya cihazın son hizmet tarihini depolamak için kullanabilirsiniz.
-
-Aşağıdaki tabloda bir bulut özelliğinin yapılandırma ayarları gösterilmektedir:
+The following table shows the configuration settings for a command capability:
 
 | Alan | Açıklama |
 | ----- | ----------- |
-| Görünen Ad | Panolar ve formlarda kullanılan bulut özelliği değeri için görünen ad. |
-| Ad | Bulut özelliğinin adı. IoT Central görünen adından Bu alan için bir değer oluşturur, ancak gerekirse kendi değerini seçebilirsiniz. |
-| Anlamsal tür | Özelliğin sıcaklık, durum veya olay gibi anlam türü. Anlamsal tür seçimi aşağıdaki alanlardan hangisinin kullanılabildiğini belirler. |
-| Şema | Çift, dize veya vektör gibi bulut özelliği veri türü. Kullanılabilir seçimler anlamsal tür tarafından belirlenir. |
+| Görünen Ad | The display name for the command used on dashboards and forms. |
+| Adı | The name of the command. IoT Central generates a value for this field from the display name, but you can choose your own value if necessary. |
+| Capability Type | Command. |
+| Komut | `SynchronousExecutionType`. |
+| Açıklama | Any comments about the command capability. |
+| Açıklama | A description of the command capability. |
+| İste | If enabled, a definition of the request parameter, including: name, display name, schema, unit, and display unit. |
+| Yanıt | If enabled, a definition of the command response, including: name, display name, schema, unit, and display unit. |
 
-## <a name="add-customizations"></a>Özelleştirmeler ekleme
+## <a name="manage-an-interface"></a>Manage an interface
 
-İçeri aktarılan bir arabirimi değiştirmeniz veya bir özelliğe IoT Central özgü özellikler eklemeniz gerektiğinde özelleştirmeleri kullanın. Yalnızca arabirim uyumluluğunu kesen alanları özelleştirebilirsiniz. Örneğin, şunları yapabilirsiniz:
+If you haven't published the interface, you can edit the capabilities defined by the interface. After you publish the interface, if you want to make any changes, you'll need to create a new version of the device template and version the interface. You can make changes that don't require versioning, such as display names or units, in the **Customize** section.
 
-- Bir özelliğin görünen adını ve birimlerini özelleştirin.
-- Değer bir grafikte göründüğünde kullanılacak varsayılan rengi ekleyin.
-- Bir özellik için başlangıçtaki, minimum ve maksimum değerleri belirtin.
+You can also export the interface as a JSON file if you want to reuse it in another capability model.
 
-Yetenek adını veya yetenek türünü özelleştiremezsiniz. **Özelleştirme** bölümünde yapameyeceğiniz değişiklikler varsa, özelliği değiştirmek için cihaz şablonunuzu ve arabirimini sürüm yapmanız gerekir.
+## <a name="add-cloud-properties"></a>Add cloud properties
 
-### <a name="generate-default-views"></a>Varsayılan görünümleri oluştur
+Use cloud properties to store information about devices in IoT Central. Cloud properties are never sent to a device. For example, you can use cloud properties to store the name of the customer who has installed the device, or the device's last service date.
 
-Varsayılan görünümleri oluşturmak, önemli cihaz bilgilerinizi görselleştirmeyi kullanmaya başlamak için hızlı bir yoldur. Cihaz şablonunuz için en fazla üç varsayılan görünümün oluşturulması gerekir:
+The following table shows the configuration settings for a cloud property:
 
-- **Komutlar** , cihaz komutlarının bulunduğu bir görünüm sağlar ve işletmenizin bu cihazları cihazınıza göndermek için izin verir.
-- **Genel bakış** cihaz telemetrisine sahip bir görünüm sağlar ve bu da grafikleri ve ölçümleri görüntüler.
-- **Hakkında** , cihaz özelliklerini görüntüleyen cihaz bilgilerini içeren bir görünüm sağlar.
+| Alan | Açıklama |
+| ----- | ----------- |
+| Görünen Ad | The display name for the cloud property value used on dashboards and forms. |
+| Adı | The name of the cloud property. IoT Central generates a value for this field from the display name, but you can choose your own value if necessary. |
+| Semantic Type | The semantic type of the property, such as temperature, state, or event. The choice of semantic type determines which of the following fields are available. |
+| Şema | The cloud property data type, such as double, string, or vector. The available choices are determined by the semantic type. |
 
-**Varsayılan görünümleri oluşturma** ' yı seçtikten sonra, cihaz şablonunuzun **Görünümler** bölümü altında otomatik olarak eklendiğini görürsünüz.
+## <a name="add-customizations"></a>Add customizations
 
-## <a name="add-dashboards"></a>Pano ekleme
+Use customizations when you need to modify an imported interface or add IoT Central-specific features to a capability. You can only customize fields that don't break interface compatibility. Örneğin, şunları yapabilirsiniz:
 
-Operatörlerin grafikleri ve ölçümleri kullanarak bir cihazı görselleştirmesini sağlamak için bir cihaz şablonuna panolar ekleyin. Bir cihaz şablonu için birden çok panonuz olabilir.
+- Customize the display name and units of a capability.
+- Add a default color to use when the value appears on a chart.
+- Specify initial, minimum, and maximum values for a property.
 
-Bir cihaz şablonuna Pano eklemek için:
+You can't customize the capability name or capability type. If there are changes you can't make in the **Customize** section, you'll need to version your device template and interface to modify the capability.
 
-- Cihaz şablonunuza gidin ve **Görünümler**' i seçin.
-- Ardından **cihazı görselleştirmeyi**seçin.
-- Pano **adı**bölümünde panonuz için bir ad girin.
-- Statik, özellik, bulut özelliği, telemetri ve komut kutucukları listesinden panonuza kutucuk ekleyin. Panonuza eklemek istediğiniz kutucukları sürükleyip bırakın.
-- Tek bir grafik kutucuğunda birden çok telemetri değeri çizmek için telemetri değerlerini seçin ve ardından **Birleştir**' i seçin.
-- Dişli simgesini seçerek veya grafik kutucuğunda **yapılandırma Değiştir** düğmesini seçerek, verileri nasıl görüntülediğini özelleştirmek için eklediğiniz her kutucuğu yapılandırın.
-- Panonuzdaki kutucukları düzenleyin ve yeniden boyutlandırın.
-- Değişiklikleri kaydedin.
+### <a name="generate-default-views"></a>Generate default views
 
-### <a name="configure-preview-device-to-view-dashboard"></a>Panoyu görüntülemek için Önizleme cihazını yapılandırma
+Generating default views is a quick way to visualize your important device information. You have up to three default views generated for your device template:
 
-Panonuzu görüntülemek ve test etmek için **Önizleme cihazını Yapılandır**' ı seçebilirsiniz. Bu işlem, işletmeni yayımlandıktan sonra bu panoyu görmenizi sağlar. Bu seçenek, görünümlerinizin doğru verileri göstermesini doğrulamanızı sağlar. Cihaz KIMLIĞI kullanarak bir önizleme cihazı, cihaz şablonunuz için yapılandırdığınız gerçek test cihazını veya uygulamanızdaki mevcut bir cihazı seçebilirsiniz.
+- **Commands** provides a view with device commands, and allows your operator to dispatch them to your device.
+- **Overview** provides a view with device telemetry, displaying charts and metrics.
+- **About** provides a view with device information, displaying device properties.
 
-## <a name="add-forms"></a>Form Ekle
+After you've selected **Generate default views**, you see that they have been automatically added under the **Views** section of your device template.
 
-İşleçleri, özellikleri görüntüleyip ayarlayarak bir cihazı yönetmesine olanak tanımak için bir cihaz şablonuna form ekleyin. İşleçler yalnızca bulut özelliklerini ve yazılabilir cihaz özelliklerini düzenleyebilir. Bir cihaz şablonu için birden çok form kullanabilirsiniz.
+## <a name="add-dashboards"></a>Add dashboards
 
-Bir cihaz şablonuna form eklemek için:
+Add dashboards to a device template to enable operators to visualize a device by using charts and metrics. You can have multiple dashboards for a device template.
 
-1. Cihaz şablonunuza gidin ve **Görünümler**' i seçin.
-1. Sonra **Cihaz ve bulut verilerini Düzenle '** yi seçin.
-1. Form **adı**' na formunuz için bir ad girin.
-1. Formunuzu düzenlemek için kullanılacak sütun sayısını seçin.
-1. Formunuzdaki mevcut bir bölüme özellikler ekleyin veya Özellikler ' i seçin ve **Bölüm Ekle**' yi seçin. Formunuzdaki özellikleri gruplamak için bölümleri kullanın. Bir bölüme başlık ekleyebilirsiniz.
-1. Davranışını özelleştirmek için formdaki her özelliği yapılandırın.
-1. Formunuzdaki özellikleri düzenleyin.
+To add a dashboard to a device template:
+
+1. Go to your device template, and select **Views**.
+1. Choose **Visualizing the Device**.
+1. Enter a name for your dashboard in **Dashboard Name**.
+1. Add tiles to your dashboard from the list of static, property, cloud property, telemetry, and command tiles. Drag and drop the tiles you want to add to your dashboard.
+1. To plot multiple telemetry values on a single chart tile, select the telemetry values, and then select **Combine**.
+1. Configure each tile you add to customize how it displays data. You can do this by selecting the gear icon, or by selecting **Change configuration** on your chart tile.
+1. Arrange and resize the tiles on your dashboard.
 1. Değişiklikleri kaydedin.
 
-## <a name="publish-a-device-template"></a>Bir cihaz şablonu yayımlama
+### <a name="configure-preview-device-to-view-dashboard"></a>Configure preview device to view dashboard
 
-Cihaz yetenek modelinizi uygulayan bir cihazı bağlayabilmeniz için önce cihaz şablonunuzu yayımlamanız gerekir.
+To view and test your dashboard, select **Configure preview device**. This enables you to see the dashboard as your operator sees it after it's published. Use this option to validate that your views show the correct data. You can choose from the following:
 
-Bir cihaz şablonu yayımladıktan sonra, yalnızca cihaz yetenek modelinde sınırlı değişiklikler yapabilirsiniz. Bir arabirimi değiştirmek için [Yeni bir sürüm oluşturmanız ve yayımlamanız](./howto-version-device-template.md)gerekir.
+- No preview device.
+- The real test device you've configured for your device template.
+- An existing device in your application, by using the device ID.
 
-Bir cihaz şablonu yayımlamak için, cihaz şablonunuza gidin ve **Yayımla**' yı seçin.
+## <a name="add-forms"></a>Add forms
 
-Bir cihaz şablonunu yayımladıktan sonra, bir operatör **cihazlar** sayfasına gidebilir ve cihaz şablonunuzu kullanan gerçek ya da sanal cihazları ekleyebilir. Değişiklik yaptığınız sırada cihaz şablonunuzu değiştirmeye ve kaydetmeye devam edebilirsiniz, ancak bu değişiklikleri **cihazlar** sayfasında görüntülemek için operatöre göndermek istediğinizde, her seferinde **Yayımla** ' yı seçmeniz gerekir.
+Add forms to a device template to enable operators to manage a device by viewing and setting properties. Operators can only edit cloud properties and writeable device properties. You can have multiple forms for a device template.
 
-## <a name="define-a-new-iot-gateway-device-type-preview-features"></a>Yeni bir IoT Ağ Geçidi cihaz türü tanımlama (Önizleme özellikleri)
+To add a form to a device template:
+
+1. Go to your device template, and select **Views**.
+1. Choose **Editing Device and Cloud data**.
+1. Enter a name for your form in **Form Name**.
+1. Select the number of columns to use to lay out your form.
+1. Add properties to an existing section on your form, or select properties and choose **Add Section**. Use sections to group properties on your form. You can add a title to a section.
+1. Configure each property on the form to customize its behavior.
+1. Arrange the properties on your form.
+1. Değişiklikleri kaydedin.
+
+## <a name="publish-a-device-template"></a>Publish a device template
+
+Before you can connect a device that implements your device capability model, you must publish your device template.
+
+After you publish a device template, you can only make limited changes to the device capability model. To modify an interface, you need to [create and publish a new version](./howto-version-device-template.md).
+
+To publish a device template, go to you your device template, and select **Publish**.
+
+After you publish a device template, an operator can go to the **Devices** page, and add either real or simulated devices that use your device template. You can continue to modify and save your device template as you're making changes. When you want to push these changes out to the operator to view under the **Devices** page, you must select **Publish** each time.
+
+## <a name="define-a-new-iot-gateway-device-type-preview-features"></a>Define a new IoT gateway device type (preview features)
 
 [!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-Bu öğreticide, bir Oluşturucu olarak, Azure IoT Central uygulamanızda yeni bir Azure IoT cihazı türü tanımlamak için bir ağ geçidi cihaz şablonunun nasıl kullanılacağı gösterilmektedir. 
+This tutorial shows you, as a builder, how to use a gateway device template to define a new type of IoT device in your IoT Central application. 
 
-Bu bölümde, **akıllı bir bina** cihaz şablonu oluşturacaksınız. Akıllı bir bina ağ geçidi cihazı:
+In this section, you create a **Smart Building** device template. A Smart Building gateway device:
 
-* Sıcaklık ve doluluk gibi telemetri gönderir.
-* Bulutta, telemetri gönderme aralığı gibi bir güncelleştirildiği zaman yazılabilir özelliklere yanıt verir.
-* Sıcaklığı sıfırlama gibi komutlara yanıt verir.
-* Diğer cihaz yetenek modelleriyle ilişkilerin yapılmasına izin verir
+* Sends telemetry, such as temperature and occupancy.
+* Responds to writeable properties when updated in the cloud, such as telemetry send interval.
+* Responds to commands, such as resetting temperature.
+* Allows relationships to other device capability models.
 
-### <a name="create-iot-device-templates"></a>IoT cihaz şablonları oluşturma
+### <a name="create-iot-device-templates"></a>Create IoT device templates
 
-IoT cihaz şablonları oluşturacaksınız. 
+Here's how to create IoT device templates: 
 
-Sol gezinti bölmesinde cihaz şablonları ' na tıklayın, **+ Yeni**' ye tıklayın, **IoT cihaz** Kutucuğu ' nı seçin ve doluluk algılayıcısı ' nı seçip İleri ' ye tıklayın **.**
+1. In the left navigation, select **Device Templates**. Then select **+ New**, and select the **IoT Device** tile and occupancy sensor tile. Select **Next: Customize**.
 
-![IoT cihazı](./media/tutorial-define-iot-device-type/gateway-downstream-new.png)
+   ![Screenshot of Device Templates page and options](./media/tutorial-define-iot-device-type/gateway-downstream-new.png)
 
-İnceleme sayfası sunulacaktır. **Oluştur** düğmesine tıklayın. 
+1. On the **Review** page, select **Create**. 
 
-![IoT cihazı](./media/tutorial-define-iot-device-type/gateway-downstream-review.png)
+   ![Screenshot of Review page](./media/tutorial-define-iot-device-type/gateway-downstream-review.png)
 
-Yeni cihaz şablonu oluşturulur. 
+1. A new device template is created. 
 
-![IoT cihazı](./media/tutorial-define-iot-device-type/occupancy-sensor.png)
+   ![Screenshot of new device template](./media/tutorial-define-iot-device-type/occupancy-sensor.png)
 
-S1 algılayıcısı için bir cihaz şablonu oluşturacaksınız. 
+Here's how to create a device template for S1 Sensor:
 
-Sol gezinti bölmesinde cihaz şablonları ' na tıklayın, **+ Yeni**' ye tıklayın, **IoT cihaz** Kutucuğu ' nı seçin ve doluluk algılayıcısı ' nı seçip İleri ' ye tıklayın **.**
+1. In the left navigation, select **Device Templates**. Then select **+ New**, and select the **IoT Device** tile and select occupancy sensor tile. Select **Next: Customize**.
 
-![IoT cihazı](./media/tutorial-define-iot-device-type/s1-sensor.png)
+   ![Screenshot of Device Templates page and options](./media/tutorial-define-iot-device-type/s1-sensor.png)
 
-İnceleme sayfası sunulacaktır. **Oluştur** düğmesine tıklayın. 
+1. On the **Review** page, select **Create**. 
 
-![Aşağı akış cihazı](./media/tutorial-define-iot-device-type/s1-review.png)
+   ![Screenshot of Review page](./media/tutorial-define-iot-device-type/s1-review.png)
 
-Yeni cihaz şablonu oluşturulur. 
+1. A new device template is created. 
 
-![Aşağı akış cihazı](./media/tutorial-define-iot-device-type/s1-template.png)
+   ![Screenshot of new device template](./media/tutorial-define-iot-device-type/s1-template.png)
 
-## <a name="create-an-iot-gateway-device-template"></a>IoT Ağ Geçidi cihaz şablonu oluşturma
+## <a name="create-an-iot-gateway-device-template"></a>Create an IoT gateway device template
 
-IoT Ağ Geçidi cihaz şablonu oluşturmayı seçebilirsiniz. Ağ Geçidi cihazında, ağ geçidi cihazından IoT Central bağlanan aşağı akış cihazlarıyla ilişkiler olur. 
+You can choose to create an IoT gateway device template. The gateway device has relationships with downstream devices that connect into IoT Central through the gateway device. 
 
-### <a name="downstream-device-relationships-with-gateway-device"></a>Ağ Geçidi cihazındaki aşağı akış cihaz ilişkileri
+### <a name="downstream-device-relationships-with-gateway-device"></a>Downstream device relationships with gateway device
 
-IoT cihazları, Azure IoT Ağ Geçidi cihazına bağlanabilir 
+IoT devices can connect to an IoT gateway device.
 
-![Merkezi uygulama sayfası](./media/tutorial-define-iot-device-type/gatewaypattern.png)
+![Diagram of relationship between gateway device and downstream devices](./media/tutorial-define-iot-device-type/gatewaypattern.png)
 
-Bir Oluşturucu olarak, uygulamanızda Azure IoT Gateway cihaz şablonları oluşturabilir ve düzenleyebilirsiniz. Bir cihaz şablonu yayımladıktan sonra, cihaz şablonunu uygulayan gerçek cihazlara bağlanabilirsiniz.
+As a builder, you can create and edit IoT gateway device templates in your application. After you publish a device template, you can connect real devices that implement the device template.
 
-### <a name="select-device-template-type"></a>Cihaz şablonu türünü seçin 
+### <a name="select-a-device-template-type"></a>Select a device template type 
 
-Uygulamanıza yeni bir cihaz şablonu eklemek için **cihaz şablonları** sayfasına gidin. Bunu yapmak için sol bölmedeki **cihaz şablonları** sekmesini seçin.
+To add a new device template to your application:
 
-![Merkezi uygulama sayfası](./media/tutorial-define-iot-device-type/devicetemplate.png)
+1. From the left pane, select the **Device Templates** tab.
 
-Yeni bir cihaz şablonu oluşturmaya başlamak için **+ Yeni** seçeneğine tıklayın.
+   ![Screenshot of Device templates page](./media/tutorial-define-iot-device-type/devicetemplate.png)
 
-![Cihaz şablonları-yeni](./media/tutorial-define-iot-device-type/devicetemplatenew.png)
+1. Select **+ New** to start creating a new device template.
 
-![Cihaz şablonları seçimi-ağ geçidi](./media/tutorial-define-iot-device-type/gateway-review.png)
+   ![Screenshot of Device templates page, with New highlighted](./media/tutorial-define-iot-device-type/devicetemplatenew.png)
 
-Cihaz şablonu türü seçimi sayfasına tacaksınız. **Azure IoT** kutucuğunu seçin ve alt kısımdaki **İleri: Özelleştir** düğmesine tıklayın
+   ![Screenshot of Customize device page](./media/tutorial-define-iot-device-type/gateway-review.png)
 
-Ağ geçidi onay kutusunu seçin ve **Oluştur** 'a tıklayın 
+1. On the **Select template type** page, select **Azure IoT**, and then select **Next: Customize**.
 
-![Cihaz şablonları seçimi-ağ geçidi](./media/tutorial-define-iot-device-type/gateway-customize.png)
+   ![Screenshot of Select template type page](./media/tutorial-define-iot-device-type/gateway-customize.png)
 
-Bir inceleme sayfası sunulacaktır, **Oluştur** ' a tıklayın. 
+1. Select the gateway check box, and select **Create**.
 
-![Cihaz şablonu-ağ geçidi](./media/tutorial-define-iot-device-type/gateway-review.png)
+   ![Screenshot of Customize device page, with gateway highlighted](./media/tutorial-define-iot-device-type/gateway-review.png)
 
-Ağ Geçidi şablonu adı **akıllı bina ağ geçidi şablonunu**girin. Özel kutucuk ' **e** tıklayın.
+1. On the review page, select **Create**. 
 
-Standart arabirim **cihaz bilgileri**ekleyin.
+1. Enter the gateway template name, **Smart Building Gateway Template**. Select the **Custom** tile.
 
-### <a name="add-relationships"></a>İlişki Ekle
+1. Add a standard interface **Device Information**.
 
-Ağ Geçidi cihazına bağlanacak cihazlar için cihaz yetenek modellerine aşağı akış ilişkileri ekleyebilirsiniz.
+### <a name="add-relationships"></a>Add relationships
 
-Aşağı akış cihazı yetenek modelleriyle ilişkiler oluşturun. **Kaydet**’e tıklayın
+You can add downstream relationships to device capability models for devices you connect to a gateway device.
 
-![Cihaz şablonu-ağ geçidi](./media/tutorial-define-iot-device-type/gateway-occupancy-s1-rel.png)
+Create relationships to downstream device capability models. **Kaydet**’i seçin.
 
-### <a name="add-cloud-properties"></a>Bulut özellikleri ekle
+![Screenshot of Smart Building Gateway Template, with various options highlighted](./media/tutorial-define-iot-device-type/gateway-occupancy-s1-rel.png)
 
-Bir cihaz şablonu, bulut özellikleri içerebilir. Bulut özellikleri yalnızca IoT Central uygulamasında bulunur ve bir cihaza hiçbir şekilde gönderilmez veya buradan alınmaz.
+### <a name="add-cloud-properties"></a>Add cloud properties
 
-1. **Bulut özellikleri** ' ni seçin ve **+ bulut özelliği Ekle**' ye tıklayın. Cihaz şablonunuza bir bulut özelliği eklemek için aşağıdaki tablodaki bilgileri kullanın.
+A device template can include cloud properties. Cloud properties only exist in the IoT Central application, and are never sent to, or received from, a device.
 
-    | Görünen Ad      | Anlamsal tür | Şema |
+1. Select **Cloud Properties** >  **+ Add Cloud Property**. Use the information in the following table to add a cloud property to your device template.
+
+    | Görünen ad      | Semantic type | Şema |
     | ----------------- | ------------- | ------ |
-    | Son Hizmet Tarihi | None          | Tarih   |
-    | Müşteri adı     | None          | Dize |
+    | Son Hizmet Tarihi | Hiçbiri          | Tarih   |
+    | Customer name     | Hiçbiri          | Dize |
 
-2. Değişikliklerinizi kaydetmek için **Kaydet** ' i seçin:
+2. **Kaydet**’i seçin.
 
-### <a name="add-customizations"></a>Özelleştirmeler ekleme
+### <a name="add-customizations"></a>Add customizations
 
-Bir arabirimi değiştirmeniz veya cihaz yetenek modelinizi sürümünüzü gerektirmeyen bir işleve IoT Central özgü özellikler eklemeniz gerektiğinde özelleştirmeleri kullanın. Yetenek modeli taslak veya Yayımlanma durumundaysa alanları özelleştirebilirsiniz. Yalnızca arabirim uyumluluğunu kesen alanları özelleştirebilirsiniz. Örneğin, şunları yapabilirsiniz:
+Use customizations to modify an interface, or to add IoT Central-specific features to a capability that doesn't require you to version your device capability model. You can customize fields when the capability model is in a draft or published state. You can only customize fields that don't break interface compatibility. Örneğin, şunları yapabilirsiniz:
 
-- Bir özelliğin görünen adını ve birimlerini özelleştirin.
-- Değer bir grafikte göründüğünde kullanılacak varsayılan rengi ekleyin.
-- Bir özellik için başlangıçtaki, minimum ve maksimum değerleri belirtin.
+- Customize the display name and units of a capability.
+- Add a default color to use when the value appears on a chart.
+- Specify initial, minimum, and maximum values for a property.
 
-Yetenek adını veya yetenek türünü özelleştiremezsiniz. **Kaydet**’e tıklayın
+You can't customize the capability name or capability type.
 
-### <a name="create-views"></a>Görünüm oluşturma
+When you're finished customizing, select **Save**.
 
-Bir Oluşturucu olarak, uygulamayı bir işlecine çevresel algılayıcı cihazı hakkındaki ilgili bilgileri görüntüleyecek şekilde özelleştirebilirsiniz. Özelleştirmeleriniz, uygulamaya bağlı çevresel algılayıcı cihazlarını yönetmek için işlecini etkinleştirir. Cihazlarla etkileşim kurmak için kullanılacak bir operatör için iki tür görünüm oluşturabilirsiniz:
+### <a name="create-views"></a>Create views
 
-* Cihaz ve bulut özelliklerini görüntüleme ve düzenleme için formlar.
-* Cihazları görselleştirmek için panolar.
+As a builder, you can customize the application to display relevant information about the environmental sensor device to an operator. Your customizations enable the operator to manage the environmental sensor devices connected to the application. You can create two types of views for an operator to use to interact with devices:
 
-### <a name="generate-default-views"></a>Varsayılan görünümleri oluştur
+* Forms to view and edit device and cloud properties.
+* Dashboards to visualize devices.
 
-Bu öğretici için varsayılan görünümleri oluştur ' a tıklayın. Panolar hakkında genel bakış & oluşturulur. 
+### <a name="generate-default-views"></a>Generate default views
 
-## <a name="publish-device-template"></a>Cihaz şablonunu Yayımla
+If you select **Generate default views**, you can generate the **Overview** and **About** dashboards. 
 
-Sanal bir ortam algılayıcısı oluşturmadan veya gerçek bir ortam sensöre bağlanmadan önce, cihaz şablonunuzu yayımlamanız gerekir.
+## <a name="publish-a-device-template"></a>Publish a device template
 
-Bir cihaz şablonunu yayımlamak için:
+Before you can create a simulated environmental sensor, or connect a real environmental sensor, you need to publish your device template.
 
-1. Cihaz **şablonları** sayfasından cihaz şablonunuza gidin.
+To publish a device template:
+
+1. Go to your device template from the **Device Templates** page.
 
 2. **Yayımla**’yı seçin.
 
-3. **Cihaz şablonu Yayımla** Iletişim kutusunda **Yayımla**' yı seçin.
+3. In the **Publish a Device Template** dialog box, choose **Publish**.
 
-Bir cihaz şablonu yayımlandıktan sonra **cihazlar** sayfasında ve işlecine görünür. Yayımlanmış bir cihaz şablonunda, yeni bir sürüm oluşturmadan bir cihaz yetenek modeli düzenleyemezsiniz. Ancak, bulut özellikleri, özelleştirmeler ve görünümlerde, sürüm oluşturmadan yayımlanmış bir cihaz şablonunda güncelleştirmeler yapabilirsiniz. Herhangi bir değişiklik yaptıktan sonra, bu değişiklikleri işletmenizin dışına göndermek için **Yayımla** ' yı seçin.
+After a device template is published, it's visible on the **Devices** page and to the operator. In a published device template, you can't edit a device capability model without creating a new version. However, you can make updates to cloud properties, customizations, and views, in a published device template. These updates don't cause a new version to be created. After making any changes, select **Publish**  to push those changes out to your operator.
 
-## <a name="create-gateway-simulated-device"></a>Ağ Geçidi sanal cihazı oluştur
+## <a name="create-a-gateway-simulated-device"></a>Create a gateway simulated device
 
-Cihaz Gezgini ' nden sanal bir akıllı bina Ağ Geçidi oluşturun. 
+From the device explorer, create a simulated smart building gateway. 
 
-![Cihaz şablonu-ağ geçidi](./media/tutorial-define-iot-device-type/smartbuildingdevice.png)
+![Screenshot of Create new device dialog box](./media/tutorial-define-iot-device-type/smartbuildingdevice.png)
 
-## <a name="create-downstream-simulated-devices"></a>Aşağı akış sanal cihazlar oluşturma
+## <a name="create-downstream-simulated-devices"></a>Create downstream simulated devices
 
-Cihaz Gezgini ' nden, sanal bir issör algılayıcısı oluşturun. 
+From the device explorer, create a simulated occupancy sensor. 
 
-![Cihaz şablonu-doluluk](./media/tutorial-define-iot-device-type/occupancydevice.png)
+![Screenshot of Create new device dialog box](./media/tutorial-define-iot-device-type/occupancydevice.png)
 
-Cihaz Gezgini ' nden, sanal bir S1 algılayıcısı oluşturun. 
+From the device explorer, create a simulated S1 sensor. 
 
-![Cihaz şablonu-S1](./media/tutorial-define-iot-device-type/s1device.png)
+![Screenshot of Create new device dialog box](./media/tutorial-define-iot-device-type/s1device.png)
 
-## <a name="add-downstream-devices-relationships-to-gateway-device"></a>Ağ Geçidi cihazına aşağı akış cihazları ekleme
+## <a name="add-downstream-devices-relationships-to-a-gateway-device"></a>Add downstream devices relationships to a gateway device
 
-S1 algılayıcı ve doluluk algılayıcısı ' nı seçin ve **ağ geçidine Bağlan**' a tıklayın. 
+Select S1 Sensor and Occupancy Sensor, and select **Connect to gateway**. 
 
-![Cihaz şablonu-S1](./media/tutorial-define-iot-device-type/connecttogateway.png)
+![Screenshot of Occupancy Sensor, with Connect to gateway highlighted](./media/tutorial-define-iot-device-type/connecttogateway.png)
 
-Ağ Geçidi cihaz şablonu, ağ geçidi cihaz örneği ' ni seçin ve **katılmayı**tıklatın.
+Select a gateway device template and gateway device instance, and select **Join**.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 
-* Cihaz şablonu olarak yeni bir IoT Ağ geçidi oluşturma
-* Bulut özellikleri oluşturun.
-* Özelleştirmeler oluşturun.
-* Cihaz telemetrisi için görselleştirme tanımlayın.
-* İlişki Ekle
-* Cihaz şablonunuzu yayımlayın.
+* Create a new IoT gateway as a device template.
+* Create cloud properties.
+* Create customizations.
+* Define a visualization for the device telemetry.
+* Add relationships.
+* Publish your device template.
 
-Önerilen sonraki adım aşağıda verilmiştir:
+Next, you can:
 
 > [!div class="nextstepaction"]
-> [Cihaz bağlama](tutorial-connect-pnp-device.md)
+> [Connect a device](tutorial-connect-pnp-device.md)

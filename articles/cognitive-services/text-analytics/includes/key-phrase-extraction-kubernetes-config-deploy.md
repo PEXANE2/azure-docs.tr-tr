@@ -1,54 +1,54 @@
 ---
-title: Kubernetes config ve Deploy adımları Anahtar İfade Ayıklama
+title: Key Phrase Extraction Kubernetes config and deploy steps
 titleSuffix: Azure Cognitive Services
-description: Kubernetes config ve Deploy adımları Anahtar İfade Ayıklama
+description: Key Phrase Extraction Kubernetes config and deploy steps
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/19/2019
+ms.date: 11/21/2019
 ms.author: dapine
-ms.openlocfilehash: 5ec535fe2ce23a2ead1163e870aae97fd104ef09
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 35e7b85d31e9696f04dce610b6f2cf942543dc68
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130063"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383451"
 ---
-### <a name="deploy-the-key-phrase-extraction-container-to-an-aks-cluster"></a>Anahtar İfade Ayıklama kapsayıcısını bir AKS kümesine dağıtma
+### <a name="deploy-the-key-phrase-extraction-container-to-an-aks-cluster"></a>Deploy the Key Phrase Extraction container to an AKS cluster
 
-1. Azure CLı 'yi açın ve Azure 'da oturum açın.
+1. Open the Azure CLI, and sign in to Azure.
 
     ```azurecli
     az login
     ```
 
-1. AKS kümesinde oturum açın. `your-cluster-name` Ve`your-resource-group` değerlerini uygun değerlerle değiştirin.
+1. Sign in to the AKS cluster. Replace `your-cluster-name` and `your-resource-group` with the appropriate values.
 
     ```azurecli
     az aks get-credentials -n your-cluster-name -g -your-resource-group
     ```
 
-    Bu komut çalıştıktan sonra şuna benzer bir ileti bildirir:
+    After this command runs, it reports a message similar to the following:
 
     ```console
     Merged "your-cluster-name" as current context in /home/username/.kube/config
     ```
 
     > [!WARNING]
-    > Azure hesabınızda kullanabileceğiniz birden çok aboneliğiniz varsa ve `az aks get-credentials` komut bir hatayla döndürülürse, yaygın bir sorun, yanlış aboneliği kullanıyor olmanız olabilir. Azure CLı oturumunuzun bağlamını, kaynaklarını oluşturduğunuz aboneliğin aynısını kullanacak şekilde ayarlayın ve yeniden deneyin.
+    > If you have multiple subscriptions available to you on your Azure account and the `az aks get-credentials` command returns with an error, a common problem is that you're using the wrong subscription. Set the context of your Azure CLI session to use the same subscription that you created the resources with and try again.
     > ```azurecli
     >  az account set -s subscription-id
     > ```
 
-1. İstediğiniz metin düzenleyicisini açın. Bu örnek Visual Studio Code kullanır.
+1. Open the text editor of choice. This example uses Visual Studio Code.
 
     ```azurecli
     code .
     ```
 
-1. Metin Düzenleyicisi içinde *keyphrase. YAML*adlı yeni bir dosya oluşturun ve içine aşağıdaki YAML 'yi yapıştırın. `billing/value` Ve`apikey/value` bilgilerinizi kendi bilgileriniz ile değiştirdiğinizden emin olun.
+1. Within the text editor, create a new file named *keyphrase.yaml*, and paste the following YAML into it. Be sure to replace `billing/value` and `apikey/value` with your own information.
 
     ```yaml
     apiVersion: apps/v1beta1
@@ -66,6 +66,13 @@ ms.locfileid: "71130063"
             image: mcr.microsoft.com/azure-cognitive-services/keyphrase
             ports:
             - containerPort: 5000
+            resources:
+              requests:
+                memory: 2Gi
+                cpu: 1
+              limits:
+                memory: 4Gi
+                cpu: 1
             env:
             - name: EULA
               value: "accept"
@@ -87,39 +94,39 @@ ms.locfileid: "71130063"
         app: keyphrase-app
     ```
 
-1. Dosyayı kaydedin ve metin düzenleyicisini kapatın.
-1. `apply` *Keyphrase. YAML* dosyası ile Kubernetes komutunu hedefi olarak çalıştırın:
+1. Save the file, and close the text editor.
+1. Run the Kubernetes `apply` command with the *keyphrase.yaml* file as its target:
 
     ```console
-    kuberctl apply -f keyphrase.yaml
+    kubectl apply -f keyphrase.yaml
     ```
 
-    Komut, dağıtım yapılandırmasını başarılı bir şekilde uyguladıktan sonra aşağıdaki çıktıya benzer bir ileti görünür:
+    After the command successfully applies the deployment configuration, a message appears similar to the following output:
 
     ```console
     deployment.apps "keyphrase" created
     service "keyphrase" created
     ```
-1. Pod 'ın dağıtıldığını doğrulayın:
+1. Verify that the pod was deployed:
 
     ```console
     kubectl get pods
     ```
 
-    Pod 'un çalışma durumunun çıkışı:
+    The output for the running status of the pod:
 
     ```console
     NAME                         READY     STATUS    RESTARTS   AGE
     keyphrase-5c9ccdf575-mf6k5   1/1       Running   0          1m
     ```
 
-1. Hizmetin kullanılabilir olduğunu doğrulayın ve IP adresini alın.
+1. Verify that the service is available, and get the IP address.
 
     ```console
     kubectl get services
     ```
 
-    Pod 'da *keyphrase* hizmetinin çalışma durumunun çıkışı:
+    The output for the running status of the *keyphrase* service in the pod:
 
     ```console
     NAME         TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)          AGE

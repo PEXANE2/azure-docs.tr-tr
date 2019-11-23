@@ -1,60 +1,60 @@
 ---
-title: Öğretici-şablona değişken ekleme
-description: Sözdizimini basitleştirmek için Azure Resource Manager şablonunuza değişken ekleyin.
+title: Tutorial - add variable to template
+description: Add variables to your Azure Resource Manager template to simplify the syntax.
 author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 9af6b9028dbc5b01c3d0ec9dc41f145e37c31b0e
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 0598da3c060b8a8055ffb045fe4aae60b3806060
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74147968"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406045"
 ---
-# <a name="tutorial-add-variables-to-your-resource-manager-template"></a>Öğretici: Kaynak Yöneticisi şablonunuza değişkenler ekleme
+# <a name="tutorial-add-variables-to-your-resource-manager-template"></a>Tutorial: Add variables to your Resource Manager template
 
-Bu öğreticide, şablonunuza nasıl değişken ekleneceğini öğrenirsiniz. Değişkenler, bir ifadeyi bir kez yazmanızı ve şablon boyunca yeniden kullanılmasını sağlayarak şablonlarınızı basitleştirir. Bu öğreticinin tamamlana **7 dakika** sürer.
+In this tutorial, you learn how to add a variable to your template. Variables simplify your templates by enabling you to write an expression once and reuse it throughout the template. This tutorial takes **7 minutes** to complete.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-[İşlevlerle ilgili öğreticiyi](template-tutorial-add-functions.md)tamamlamanızı öneririz, ancak bu gerekli değildir.
+We recommend that you complete the [tutorial about functions](template-tutorial-add-functions.md), but it's not required.
 
-Kaynak Yöneticisi Araçları uzantısı ve Azure PowerShell ya da Azure CLı ile Visual Studio Code olması gerekir. Daha fazla bilgi için bkz. [şablon araçları](template-tutorial-create-first-template.md#get-tools).
+You must have Visual Studio Code with the Resource Manager Tools extension, and either Azure PowerShell or Azure CLI. For more information, see [template tools](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-your-template"></a>Şablonunuzu gözden geçirin
+## <a name="review-template"></a>Review template
 
-Önceki öğreticinin sonunda, şablonunuz aşağıdaki JSON 'a sahipti:
+At the end of the previous tutorial, your template had the following JSON:
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-location/azuredeploy.json)]
 
-Benzersiz bir ad sağlamanız gerektiğinden, depolama hesabı adı için parametre kullanımı zor. Bu serideki önceki öğreticileri tamamladıysanız, büyük olasılıkla benzersiz bir ad tahmin etmeniz çok yorsunuzdur. Depolama hesabı için benzersiz bir ad oluşturan bir değişken ekleyerek bu sorunu çözebilirsiniz.
+The parameter for the storage account name is hard-to-use because you have to provide a unique name. If you've completed the earlier tutorials in this series, you're probably tired of guessing a unique name. You solve this problem by adding a variable that constructs a unique name for the storage account.
 
-## <a name="use-variable"></a>Değişken kullan
+## <a name="use-variable"></a>Use variable
 
-Aşağıdaki örnek, şablonunuza benzersiz bir depolama hesabı adı oluşturan bir değişken ekleme değişikliklerini vurgular. Tüm dosyayı kopyalayın ve şablonunuzu içeriğiyle değiştirin.
+The following example highlights the changes to add a variable to your template that creates a unique storage account name. Copy the whole file and replace your template with its contents.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json?range=1-47&highlight=5-9,29-31,36)]
 
-**Unisorgtoraygename**adlı bir değişken içerdiğine dikkat edin. Bu değişken bir dize değeri oluşturmak için dört işlevi kullanır.
+Notice that it includes a variable named **uniqueStorageName**. This variable uses four functions to construct a string value.
 
-[Parameters](resource-group-template-functions-deployment.md#parameters) işlevini zaten öğreniyoruz, bu yüzden bunu inceleyeceğiz.
+You're already familiar with the [parameters](resource-group-template-functions-deployment.md#parameters) function, so we won't examine it.
 
-Ayrıca, [resourceGroup](resource-group-template-functions-resource.md#resourcegroup) işlevi hakkında bilgi sahibisiniz. Bu durumda, önceki öğreticide gösterildiği gibi **Location** özelliği yerine **ID** özelliğini alırsınız. **ID** özelliği, abonelik kimliği ve kaynak grubu adı dahil olmak üzere kaynak grubunun tam tanımlayıcısını döndürür.
+You're also familiar with the [resourceGroup](resource-group-template-functions-resource.md#resourcegroup) function. In this case, you get the **id** property instead of the **location** property, as shown in the previous tutorial. The **id** property returns the full identifier of the resource group, including the subscription ID and resource group name.
 
-[Uniquestring](resource-group-template-functions-string.md#uniquestring) işlevi bir 13 karakterlik karma değeri oluşturur. Döndürülen değer geçirdiğiniz parametrelere göre belirlenir. Bu öğreticide, karma değer girişi olarak kaynak grubu KIMLIĞINI kullanırsınız. Bu, bu şablonu farklı kaynak gruplarına dağıtabileceğiniz ve farklı bir benzersiz dize değeri alabileceğiniz anlamına gelir. Ancak, aynı kaynak grubuna dağıtırsanız aynı değeri alırsınız.
+The [uniqueString](resource-group-template-functions-string.md#uniquestring) function creates a 13 character hash value. The returned value is determined by the parameters you pass in. For this tutorial, you use the resource group ID as the input for the hash value. That means you could deploy this template to different resource groups and get a different unique string value. However, you get the same value if you deploy to the same resource group.
 
-[Concat](resource-group-template-functions-string.md#concat) işlevi değerleri alır ve bunları birleştirir. Bu değişken için, dizeden ve uniqueString işlevindeki dizeden dize alır ve bunları tek bir dize olarak birleştirir.
+The [concat](resource-group-template-functions-string.md#concat) function takes values and combines them. For this variable, it takes the string from the parameter and the string from the uniqueString function, and combines them into one string.
 
-**Storageprefix** parametresi, depolama hesaplarını belirlemenize yardımcı olan bir ön ek geçirmenize olanak sağlar. Depolama hesaplarının uzun bir kaynak listesinden dağıtımdan sonra tanımlanmasını kolaylaştıran kendi adlandırma kuralınızın oluşturulmasını sağlayabilirsiniz.
+The **storagePrefix** parameter enables you to pass in a prefix that helps you identify storage accounts. You can create your own naming convention that makes it easier to identify storage accounts after deployment from a long list of resources.
 
-Son olarak, depolama adının bir parametre yerine artık değişkene ayarlı olduğuna dikkat edin.
+Finally, notice that the storage name is now set to the variable instead of a parameter.
 
-## <a name="deploy-the-template"></a>Şablonu dağıtma
+## <a name="deploy-template"></a>Şablon dağıtma
 
-Şablonu dağıtalım. Yalnızca depolama adı için ön ek sağlamanız gerektiğinden, bu şablonu dağıtmak önceki şablonlardan daha kolaydır.
+Let's deploy the template. Deploying this template is easier than the previous templates because you provide just the prefix for the storage name.
 
-Kaynak grubunu oluşturmadıysanız, bkz. [kaynak grubu oluşturma](template-tutorial-create-first-template.md#create-resource-group). Örnek, **TemplateFile** değişkenini, [ilk öğreticide](template-tutorial-create-first-template.md#deploy-template)gösterildiği gibi şablon dosyası yolu olarak ayarlamış olduğunuzu varsayar.
+If you haven't created the resource group, see [Create resource group](template-tutorial-create-first-template.md#create-resource-group). The example assumes you've set the **templateFile** variable to the path to the template file, as shown in the [first tutorial](template-tutorial-create-first-template.md#deploy-template).
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -79,20 +79,20 @@ az group deployment create \
 
 ---
 
-## <a name="verify-the-deployment"></a>Dağıtımı doğrulama
+## <a name="verify-deployment"></a>Dağıtımı doğrulama
 
-Kaynak grubunu Azure portal inceleyerek dağıtımı doğrulayabilirsiniz.
+You can verify the deployment by exploring the resource group from the Azure portal.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
-1. Sol menüden **kaynak grupları**' nı seçin.
-1. Dağıttığınız kaynak grubunu seçin.
-1. Bir depolama hesabı kaynağının dağıtıldığını görürsünüz. Depolama hesabının adı, **Depo** ve rastgele karakterlerden oluşan bir dizedir.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. From the left menu, select **Resource groups**.
+1. Select the resource group you deployed to.
+1. You see that a storage account resource has been deployed. The name of the storage account is **store** plus a string of random characters.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bir sonraki öğreticiye geçiş yapıyorsanız, kaynak grubunu silmeniz gerekmez.
+If you're moving on to the next tutorial, you don't need to delete the resource group.
 
-Şimdi duruyorsa, kaynak grubunu silerek dağıttığınız kaynakları temizlemeniz gerekebilir.
+If you're stopping now, you might want to clean up the resources you deployed by deleting the resource group.
 
 1. Azure portalda, sol menüden **Kaynak grubu**’nu seçin.
 2. **Ada göre filtrele** alanına kaynak grubu adını girin.
@@ -101,7 +101,7 @@ Bir sonraki öğreticiye geçiş yapıyorsanız, kaynak grubunu silmeniz gerekme
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, depolama hesabı için benzersiz bir ad oluşturan bir değişken eklediniz. Sonraki öğreticide, dağıtılan depolama hesabından bir değer döndürürler.
+In this tutorial, you added a variable that creates a unique name for a storage account. In the next tutorial, you return a value from the deployed storage account.
 
 > [!div class="nextstepaction"]
-> [Çıkış Ekle](template-tutorial-add-outputs.md)
+> [Add outputs](template-tutorial-add-outputs.md)

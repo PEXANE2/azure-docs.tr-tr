@@ -1,103 +1,103 @@
 ---
-title: Azure Multi-Factor Authentication Kullanıcı durumları-Azure Active Directory
-description: Azure Multi-Factor Authentication 'daki Kullanıcı durumları hakkında bilgi edinin.
+title: Per-user Multi-Factor Authentication - Azure Active Directory
+description: Enable MFA by changing user states in Azure Multi-Factor Authentication.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 316d82cbfd0c96fba2ac9714f8025d71c743d7d5
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 258675a343387eb6930cd3511bf885bf510050c6
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74269551"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74404204"
 ---
-# <a name="how-to-require-two-step-verification-for-a-user"></a>Bir kullanıcı için iki aşamalı doğrulama gerektirme
+# <a name="how-to-require-two-step-verification-for-a-user"></a>How to require two-step verification for a user
 
-İki adımlı doğrulama gerektiren iki yaklaşımdan birini, her ikisi de genel yönetici hesabı kullanılmasını gerektirir. İlk seçenek, her kullanıcıyı Azure Multi-Factor Authentication (MFA) için etkinleştirmektir. Kullanıcılar ayrı ayrı etkinleştirildiğinde, her oturum açtıklarında iki aşamalı doğrulama gerçekleştirir (güvenilir IP adreslerinden oturum açtıklarında veya _anımsanan cihazlar_ özelliği açık olduğunda olduğu gibi bazı özel durumlarla birlikte). İkinci seçenek, belirli koşullarda iki adımlı doğrulama gerektiren bir koşullu erişim ilkesi ayarlamaya yönelik bir seçenektir.
+You can take one of two approaches for requiring two-step verification, both of which require using a global administrator account. The first option is to enable each user for Azure Multi-Factor Authentication (MFA). When users are enabled individually, they perform two-step verification each time they sign in (with some exceptions, such as when they sign in from trusted IP addresses or when the _remembered devices_ feature is turned on). The second option is to set up a Conditional Access policy that requires two-step verification under certain conditions.
 
 > [!TIP]
-> Koşullu erişim ilkelerini kullanarak Azure Multi-Factor Authentication etkinleştirme önerilen yaklaşımdır. Lisanslarınız, kullanıcıların her oturum açtıklarında MFA gerçekleştirmesini gerektirecek şekilde koşullu erişim içermediği sürece Kullanıcı durumlarının değiştirilmesi artık önerilmez.
+> Enabling Azure Multi-Factor Authentication using Conditional Access policies is the recommended approach. Changing user states is no longer recommended unless your licenses do not include Conditional Access as it will require users to perform MFA every time they sign in.
 
-## <a name="choose-how-to-enable"></a>Nasıl etkinleştirileceğini seçin
+## <a name="choose-how-to-enable"></a>Choose how to enable
 
-**Kullanıcı durumu değiştirilerek etkinleştirildi** -bu, iki adımlı doğrulama gerektirmek için geleneksel bir yöntemdir ve bu makalede ele alınmıştır. Hem bulutta hem de Azure MFA sunucusunda Azure MFA ile birlikte kullanılabilir. Bu yöntemin kullanılması, kullanıcıların **her** oturum açtıklarında iki aşamalı doğrulama gerçekleştirmesini gerektirir ve koşullu erişim ilkelerini geçersiz kılar.
+**Enabled by changing user state** - This is the traditional method for requiring two-step verification and is discussed in this article. It works with both Azure MFA in the cloud and Azure MFA Server. Using this method requires users to perform two-step verification **every time** they sign in and overrides Conditional Access policies.
 
-Koşullu erişim ilkesi tarafından etkinleştirildi-kullanıcılarınız için iki aşamalı doğrulamayı etkinleştirmek üzere en esnek yollardan biridir. Koşullu erişim ilkesini kullanmanın etkinleştirilmesi yalnızca Bulutta Azure MFA için geçerlidir ve Azure AD 'nin Premium bir özelliğidir. Bu yöntem hakkında daha fazla bilgi, [bulut tabanlı Azure Multi-Factor Authentication dağıtma](howto-mfa-getstarted.md)bölümünde bulunabilir.
+Enabled by Conditional Access policy - This is the most flexible means to enable two-step verification for your users. Enabling using Conditional Access policy only works for Azure MFA in the cloud and is a premium feature of Azure AD. More information on this method can be found in [Deploy cloud-based Azure Multi-Factor Authentication](howto-mfa-getstarted.md).
 
-Azure AD Kimlik Koruması tarafından etkinleştirildi-bu yöntem, yalnızca tüm bulut uygulamaları için oturum açma riskini temel alan iki adımlı doğrulama istemek için Azure AD Kimlik Koruması risk ilkesini kullanır. Bu yöntem Azure Active Directory P2 lisanslama gerektirir. Bu yöntem hakkında daha fazla bilgi için [Azure Active Directory kimlik koruması](../identity-protection/howto-sign-in-risk-policy.md) bulunabilir
+Enabled by Azure AD Identity Protection - This method uses the Azure AD Identity Protection risk policy to require two-step verification based only on sign-in risk for all cloud applications. This method requires Azure Active Directory P2 licensing. More information on this method can be found in [Azure Active Directory Identity Protection](../identity-protection/howto-sign-in-risk-policy.md)
 
 > [!Note]
-> Lisanslar ve fiyatlandırma hakkında daha fazla bilgi için [Azure AD](https://azure.microsoft.com/pricing/details/active-directory/
-) ve [Multi-Factor Authentication](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) fiyatlandırma sayfalarında bulabilirsiniz.
+> More information about licenses and pricing can be found on the [Azure AD](https://azure.microsoft.com/pricing/details/active-directory/
+) and [Multi-Factor Authentication](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) pricing pages.
 
-## <a name="enable-azure-mfa-by-changing-user-state"></a>Kullanıcı durumunu değiştirerek Azure MFA 'yı etkinleştirme
+## <a name="enable-azure-mfa-by-changing-user-state"></a>Enable Azure MFA by changing user state
 
-Azure Multi-Factor Authentication Kullanıcı hesapları aşağıdaki üç farklı duruma sahiptir:
+User accounts in Azure Multi-Factor Authentication have the following three distinct states:
 
-| Durum | Açıklama | Etkilenen tarayıcı olmayan uygulamalar | Etkilenen tarayıcı uygulamaları | Modern kimlik doğrulaması etkilendi |
+| Durum | Açıklama | Non-browser apps affected | Browser apps affected | Modern authentication affected |
 |:---:|:---:|:---:|:--:|:--:|
-| Devre dışı |Azure MFA 'da kayıtlı olan yeni bir kullanıcının varsayılan durumu. |Hayır |Hayır |Hayır |
-| Etkin |Kullanıcı Azure MFA 'ya kaydoldu, ancak kaydolmadı. Bir sonraki oturum açışlarında kaydolmak için bir istem alırlar. |Hayır.  Kayıt işlemi tamamlanana kadar çalışmaya devam eder. | Evet. Oturumun süresi dolduktan sonra, Azure MFA kaydı gereklidir.| Evet. Erişim belirtecinin süresi dolduktan sonra, Azure MFA kaydı gereklidir. |
-| Uygulandı |Kullanıcı kaydedildi ve Azure MFA için kayıt işlemini tamamladı. |Evet. Uygulamalar uygulama parolaları gerektirir. |Evet. Azure MFA, oturum açma sırasında gereklidir. | Evet. Azure MFA, oturum açma sırasında gereklidir. |
+| Devre dışı |The default state for a new user not enrolled in Azure MFA. |Hayır |Hayır |Hayır |
+| Etkin |The user has been enrolled in Azure MFA, but has not registered. They receive a prompt to register the next time they sign in. |Hayır.  They continue to work until the registration process is completed. | Evet. After the session expires, Azure MFA registration is required.| Evet. After the access token expires, Azure MFA registration is required. |
+| Uygulandı |The user has been enrolled and has completed the registration process for Azure MFA. |Evet. Apps require app passwords. |Evet. Azure MFA is required at login. | Evet. Azure MFA is required at login. |
 
-Bir kullanıcının durumu, yöneticinin Azure MFA 'ya kaydolduğunu ve kayıt sürecini tamamlamadığını yansıtır.
+A user's state reflects whether an admin has enrolled them in Azure MFA, and whether they completed the registration process.
 
-Tüm kullanıcılar *devre dışı bırakıldı*. Azure MFA 'da kullanıcıları kaydettiğinizde, durumları *etkin*olarak değişir. Etkin kullanıcılar oturum açıp kayıt işlemini tamamladıktan sonra, durumu *Zorlanmış*olarak değişir.  
+All users start out *Disabled*. When you enroll users in Azure MFA, their state changes to *Enabled*. When enabled users sign in and complete the registration process, their state changes to *Enforced*.  
 
-### <a name="view-the-status-for-a-user"></a>Kullanıcının durumunu görüntüleme
+### <a name="view-the-status-for-a-user"></a>View the status for a user
 
-Kullanıcı durumlarını görüntüleyebileceğiniz ve yönetebileceğiniz sayfaya erişmek için aşağıdaki adımları kullanın:
+Use the following steps to access the page where you can view and manage user states:
 
 1. [Azure Portal](https://portal.azure.com)’da yönetici olarak oturum açın.
-2. Arama yapın ve *Azure Active Directory*seçin. **Kullanıcıları** > **tüm kullanıcılar**' ı seçin.
-3. **Multi-Factor Authentication**seçin.
-   ![Multi-Factor Authentication seçin](./media/howto-mfa-userstates/selectmfa.png)
-4. Kullanıcı durumlarını görüntüleyen yeni bir sayfa açılır.
-   Multi-Factor Authentication Kullanıcı durumunu ![-ekran görüntüsü](./media/howto-mfa-userstates/userstate1.png)
+2. Search for and select *Azure Active Directory*. Select **Users** > **All users**.
+3. Select **Multi-Factor Authentication**.
+   ![Select Multi-Factor Authentication](./media/howto-mfa-userstates/selectmfa.png)
+4. A new page that displays the user states opens.
+   ![multi-factor authentication user status - screenshot](./media/howto-mfa-userstates/userstate1.png)
 
-### <a name="change-the-status-for-a-user"></a>Kullanıcının durumunu değiştirme
+### <a name="change-the-status-for-a-user"></a>Change the status for a user
 
-1. Azure Multi-Factor Authentication **kullanıcıları** sayfasına ulaşmak için yukarıdaki adımları kullanın.
-2. Azure MFA için etkinleştirmek istediğiniz kullanıcıyı bulun. Üstteki görünümü değiştirmeniz gerekebilir.
-   ![kullanıcılar sekmesinden durumu değiştirmek için kullanıcıyı seçin](./media/howto-mfa-userstates/enable1.png)
-3. Adının yanındaki kutuyu işaretleyin.
-4. Sağ tarafta **hızlı adımlar**' ın altında **Etkinleştir** veya **devre dışı bırak**' ı seçin.
-   ![hızlı adımlar menüsünde Etkinleştir ' i tıklatarak seçili kullanıcıyı etkinleştirin](./media/howto-mfa-userstates/user1.png)
+1. Use the preceding steps to get to the Azure Multi-Factor Authentication **users** page.
+2. Find the user you want to enable for Azure MFA. You might need to change the view at the top.
+   ![Select the user to change status for from the users tab](./media/howto-mfa-userstates/enable1.png)
+3. Check the box next to their name.
+4. On the right, under **quick steps**, choose **Enable** or **Disable**.
+   ![Enable selected user by clicking Enable on the quick steps menu](./media/howto-mfa-userstates/user1.png)
 
    > [!TIP]
-   > *Etkin* kullanıcılar, Azure MFA için kaydolduklarında otomatik olarak *zorlandı* . Kullanıcı durumunu *Zorlanmış*olarak el ile değiştirmeyin.
+   > *Enabled* users are automatically switched to *Enforced* when they register for Azure MFA. Do not manually change the user state to *Enforced*.
 
-5. Açılan pencere penceresinde seçiminizi onaylayın.
+5. Confirm your selection in the pop-up window that opens.
 
-Kullanıcıları etkinleştirdikten sonra, e-posta ile bildirim alın. Bunlara bir dahaki sefer oturum açtıklarında kaydolmaları istenir. Ayrıca, kuruluşunuz modern kimlik doğrulamayı desteklemeyen tarayıcı olmayan uygulamalar kullanıyorsa, uygulama parolaları oluşturmaları gerekir. Kullanmaya başlamanıza yardımcı olması için [Azure MFA Son Kullanıcı Kılavuzu ' na](../user-help/multi-factor-authentication-end-user.md) de bir bağlantı ekleyebilirsiniz.
+After you enable users, notify them via email. Tell them that they'll be asked to register the next time they sign in. Also, if your organization uses non-browser apps that don't support modern authentication, they need to create app passwords. You can also include a link to the [Azure MFA end-user guide](../user-help/multi-factor-authentication-end-user.md) to help them get started.
 
-### <a name="use-powershell"></a>PowerShell kullanma
+### <a name="use-powershell"></a>PowerShell'i kullanma
 
-[Azure AD PowerShell](/powershell/azure/overview)kullanarak Kullanıcı durumunu değiştirmek için `$st.State`değiştirin. Üç olası durum vardır:
+To change the user state by using [Azure AD PowerShell](/powershell/azure/overview), change `$st.State`. There are three possible states:
 
 * Etkin
 * Uygulandı
 * Devre dışı  
 
-Kullanıcıları doğrudan *Zorlanmış* duruma taşımayın. Bunu yaparsanız, tarayıcı tabanlı olmayan uygulamalar çalışmayı durdurur çünkü Kullanıcı Azure MFA kaydını ve bir [uygulama parolası](howto-mfa-mfasettings.md#app-passwords)elde etmez.
+Don't move users directly to the *Enforced* state. If you do, non-browser-based apps stop working because the user has not gone through Azure MFA registration and obtained an [app password](howto-mfa-mfasettings.md#app-passwords).
 
-Önce modülünü, şunu kullanarak yüklemeniz gerekir:
+Install the Module first, using:
 
    ```PowerShell
    Install-Module MSOnline
    ```
 
 > [!TIP]
-> **Connect-MsolService** kullanarak önce bağlanmayı unutmayın
+> Don't forget to connect first using **Connect-MsolService**
 
-Bu örnek PowerShell betiği, tek bir kullanıcı için MFA 'yı sunar:
+This example PowerShell script enables MFA for an individual user:
 
    ```PowerShell
    Import-Module MSOnline
@@ -108,7 +108,7 @@ Bu örnek PowerShell betiği, tek bir kullanıcı için MFA 'yı sunar:
    Set-MsolUser -UserPrincipalName bsimon@contoso.com -StrongAuthenticationRequirements $sta
    ```
 
-Kullanıcıları toplu olarak etkinleştirmeniz gerektiğinde PowerShell kullanmak iyi bir seçenektir. Örnek olarak, aşağıdaki komut dosyası bir kullanıcı listesi ile geçer ve hesaplarında MFA 'yı sunar:
+Using PowerShell is a good option when you need to bulk enable users. As an example, the following script loops through a list of users and enables MFA on their accounts:
 
    ```PowerShell
    $users = "bsimon@contoso.com","jsmith@contoso.com","ljacobson@contoso.com"
@@ -122,23 +122,23 @@ Kullanıcıları toplu olarak etkinleştirmeniz gerektiğinde PowerShell kullanm
    }
    ```
 
-MFA 'yı devre dışı bırakmak için şu betiği kullanın:
+To disable MFA, use this script:
 
    ```PowerShell
    Get-MsolUser -UserPrincipalName user@domain.com | Set-MsolUser -StrongAuthenticationMethods @()
    ```
 
-Ayrıca, şu şekilde kısaltılarak:
+which can also be shortened to:
 
    ```PowerShell
    Set-MsolUser -UserPrincipalName user@domain.com -StrongAuthenticationRequirements @()
    ```
 
-### <a name="convert-users-from-per-user-mfa-to-conditional-access-based-mfa"></a>Kullanıcı başına MFA 'dan koşullu erişim tabanlı MFA 'ya Kullanıcı dönüştürme
+### <a name="convert-users-from-per-user-mfa-to-conditional-access-based-mfa"></a>Convert users from per-user MFA to Conditional Access based MFA
 
-Aşağıdaki PowerShell, koşullu erişim tabanlı Azure Multi-Factor Authentication dönüştürmeyi yaparken size yardımcı olabilir.
+The following PowerShell can assist you in making the conversion to Conditional Access based Azure Multi-Factor Authentication.
 
-Bu PowerShell 'i bir ıSE penceresinde çalıştırın veya olarak kaydedin. Yerel olarak çalıştırılacak PS1 dosyası.
+Run this PowerShell in an ISE window or save as a .PS1 file to run locally.
 
 ```PowerShell
 # Sets the MFA requirement state
@@ -175,10 +175,10 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 ```
 
 > [!NOTE]
-> Kısa süre önce yukarıdaki davranışı ve PowerShell betiğini değiştirdik. Daha önce, komut dosyası MFA yöntemlerine kaydedilir, MFA 'yı devre dışı bırakmış ve yöntemleri geri yükledi. Artık devre dışı bırakma için varsayılan davranış metotları temizlemez.
+> We recently changed the behavior and PowerShell script above accordingly. Previously, the script saved off the MFA methods, disabled MFA, and restored the methods. This is no longer necessary now that the default behavior for disable doesn't clear the methods.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Bir Kullanıcı neden MFA gerçekleştirmedi ya da istenmedi? [Azure Multi-Factor Authentication 'Daki raporlarda Azure AD oturum açma işlemleri raporu](howto-mfa-reporting.md#azure-ad-sign-ins-report)bölümüne bakın.
-* Güvenilen IP 'Ler, özel ses iletileri ve sahtekarlık uyarıları gibi ek ayarları yapılandırmak için [Azure Multi-Factor Authentication ayarlarını yapılandırma](howto-mfa-mfasettings.md) makalesine bakın
-* Azure Multi-Factor Authentication için Kullanıcı ayarlarını yönetme hakkında bilgiler, [bulutta azure Multi-Factor Authentication ile Kullanıcı ayarlarını yönetme](howto-mfa-userdevicesettings.md) makalesinde bulunabilir.
+* Why was a user prompted or not prompted to perform MFA? See the section [Azure AD sign-ins report in the Reports in Azure Multi-Factor Authentication document](howto-mfa-reporting.md#azure-ad-sign-ins-report).
+* To configure additional settings like trusted IPs, custom voice messages, and fraud alerts, see the article [Configure Azure Multi-Factor Authentication settings](howto-mfa-mfasettings.md)
+* Information about managing user settings for Azure Multi-Factor Authentication can be found in the article [Manage user settings with Azure Multi-Factor Authentication in the cloud](howto-mfa-userdevicesettings.md)

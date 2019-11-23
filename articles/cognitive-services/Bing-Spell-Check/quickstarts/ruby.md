@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı Başlangıç: Bing Yazım Denetimi REST API ve Ruby ile yazım denetimi yapma'
+title: 'Quickstart: Check spelling with the REST API and Ruby - Bing Spell Check'
 titleSuffix: Azure Cognitive Services
-description: Yazım ve dilbilgisini denetlemek için Bing Yazım Denetimi REST API kullanmaya başlayın.
+description: Get started using the Bing Spell Check REST API to check spelling and grammar.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,27 +10,27 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 09/13/2019
 ms.author: aahi
-ms.openlocfilehash: bf038b97335db20349577f754bfa41e1b98ee9b7
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: e80a7bd3b56ccfd13a20c11f845d076271448b76
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996740"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383833"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-ruby"></a>Hızlı Başlangıç: Bing Yazım Denetimi REST API ve Ruby ile yazım denetimi yapma
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-ruby"></a>Quickstart: Check spelling with the Bing Spell Check REST API and Ruby
 
-Ruby kullanarak Bing Yazım Denetimi REST API ilk çağrlarınızı yapmak için bu hızlı başlangıcı kullanın. Bu basit uygulama, API 'ye bir istek gönderir ve tanımadığı sözcüklerin bir listesini, ardından önerilen düzeltmeleri döndürür. Bu uygulama, Ruby ile yazılmış olmakla birlikte API, çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir. Bu uygulamanın kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingSpellCheckv7.rb) 'da kullanılabilir
+Use this quickstart to make your first call to the Bing Spell Check REST API using Ruby. This simple application sends a request to the API and returns a list of words it didn't recognize, followed by suggested corrections. Bu uygulama, Ruby ile yazılmış olmakla birlikte API, çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir. The source code for this application is available on [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingSpellCheckv7.rb)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* [Ruby 2,4](https://www.ruby-lang.org/en/downloads/) veya üzeri.
+* [Ruby 2.4](https://www.ruby-lang.org/en/downloads/) or later.
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
 
 ## <a name="create-and-initialize-the-application"></a>Uygulamayı oluşturma ve başlatma
 
-1. En sevdiğiniz düzenleyicide veya IDE 'de yeni bir Ruby dosyası oluşturun ve aşağıdaki gereksinimleri ekleyin. 
+1. Create a new Ruby file in your favorite editor or IDE, and add the following requirements. 
 
     ```javascript
     require 'net/http'
@@ -38,7 +38,7 @@ Ruby kullanarak Bing Yazım Denetimi REST API ilk çağrlarınızı yapmak için
     require 'json'
     ```
 
-2. Abonelik anahtarınız, uç nokta URI 'SI ve yolu için değişkenler oluşturun. Bir `mkt=` parametreyi pazarınıza ve `&mode` `proof` kanıt moduna ekleyerek istek parametrelerinizi oluşturun.
+2. Create variables for your subscription key, endpoint URI and path. Create your request parameters by appending the `mkt=` parameter to your market, and `&mode` to the `proof` proof mode.
 
     ```ruby
     key = 'ENTER YOUR KEY HERE'
@@ -47,9 +47,9 @@ Ruby kullanarak Bing Yazım Denetimi REST API ilk çağrlarınızı yapmak için
     params = 'mkt=en-us&mode=proof'
     ```
 
-## <a name="send-a-spell-check-request"></a>Yazım denetimi isteği gönder
+## <a name="send-a-spell-check-request"></a>Send a spell check request
 
-1. Konak Uri 'si, yolu ve parametre dizinizden bir URI oluşturun. Sorgu, yazım denetimi yapmak istediğiniz metni içerecek şekilde ayarlanır.
+1. Create a URI from your host uri, path, and parameters string. Set its query to contain the text you want to spell check.
 
    ```ruby
    uri = URI(uri + path + params)
@@ -59,7 +59,7 @@ Ruby kullanarak Bing Yazım Denetimi REST API ilk çağrlarınızı yapmak için
    })
    ```
 
-2. Yukarıda oluşturulan URI 'yi kullanarak bir istek oluşturun. Anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgiye ekleyin.
+2. Create a request using the URI constructed above. Add your key to the `Ocp-Apim-Subscription-Key` header.
 
     ```ruby
     request = Net::HTTP::Post.new(uri)
@@ -75,14 +75,14 @@ Ruby kullanarak Bing Yazım Denetimi REST API ilk çağrlarınızı yapmak için
     end
     ```
 
-4. JSON yanıtını alın ve konsolunda yazdırın. 
+4. Get the JSON response, and print it to the console. 
 
     ```ruby
     result = JSON.pretty_generate(JSON.parse(response.body))
     puts result
     ```
 
-## <a name="example-json-response"></a>Örnek JSON yanıtı
+## <a name="example-json-response"></a>Example JSON response
 
 Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde döndürülür: 
 
@@ -127,7 +127,7 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Tek sayfalı Web uygulaması oluşturma](../tutorials/spellcheck.md)
+> [Create a single page web-app](../tutorials/spellcheck.md)
 
-- [Bing Yazım Denetimi API'si nedir?](../overview.md)
+- [What is the Bing Spell Check API?](../overview.md)
 - [Bing Yazım Denetimi API’si v7 Başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

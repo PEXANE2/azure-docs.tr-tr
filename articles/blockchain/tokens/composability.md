@@ -1,88 +1,84 @@
 ---
-title: Azure blok zinciri belirteçleri bileşim
-description: Azure blok zinciri belirteçleri bileşim, gelişmiş senaryolar için belirteçler oluşturma esnekliği sağlar.
-services: azure-blockchain
-author: PatAltimore
-ms.author: patricka
+title: Azure Blockchain Tokens composability
+description: Azure Blockchain Tokens composability provides flexibility to create tokens for advanced scenarios.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.service: azure-blockchain
 ms.reviewer: brendal
-ms.openlocfilehash: a82d7ba606eac5dcafc26b1a8527810a5a21840d
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a3fe1b290917de20b7c3af31fe386ed93580d850
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577108"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325114"
 ---
-# <a name="azure-blockchain-tokens-composability"></a>Azure blok zinciri belirteçleri bileşim
+# <a name="azure-blockchain-tokens-composability"></a>Azure Blockchain Tokens composability
 
 [!INCLUDE [Preview note](./includes/preview.md)]
 
-Belirteç bileşim, gelişmiş senaryolar için belirteçler oluşturma esnekliği sağlar. [Önceden oluşturulmuş dört belirteç şablonu](templates.md#base-token-types)kullanılarak uygulanamaz karmaşık bir senaryonuz olabilir. Belirteç bileşim, kendi belirteç şablonunuzu oluşturmak için tanımlı davranışları ekleyerek veya kaldırarak kendi belirteç şablonlarınızı tasarlamanıza olanak sağlar. Yeni bir belirteç şablonu oluştururken, Azure blok zinciri belirteçleri tüm belirteç dilbilgisi kurallarını doğrular. Oluşturulan şablonlar, bağlantılı blok zinciri ağlarında yayımlamak için Azure blok zinciri belirteçleri hizmetine kaydedilir.
+Token composability provides flexibility to create tokens for advanced scenarios. You may have a complex scenario that cannot be implemented using the [four pre-built token templates](templates.md#base-token-types). Token composability allows you to design your own token templates by adding or removing defined behaviors to build your own token template. When creating a new token template, Azure Blockchain Tokens verifies all token grammar rules. Composed templates are saved in Azure Blockchain Tokens service for issuing on connected blockchain networks.
 
-Belirteç şablonunuzu tasarlamak için aşağıdaki bölümlerdeki [belirteç davranışlarını](templates.md#token-behaviors) kullanabilirsiniz.
+You can use the [token behaviors](templates.md#token-behaviors) in the following sections to design your token template.
 
-## <a name="burnable-b"></a>Burleştir (b)
+## <a name="burnable-b"></a>Burnable (b)
 
-Belirteçleri tedariğin kaldırabilme özelliği.
+Ability to remove the tokens from supply.
 
-Örneğin, bir hediye kartı için çevrimiçi kredi kartı noktaları kullandığınızda, kredi kartı noktaları yazılır.
+For example, when you redeem online credit card points for a gift card, the credit card points are burned.
 
-## <a name="delegable-g"></a>Temsilci seçilebilen (g)
+## <a name="delegable-g"></a>Delegable (g)
 
-Sahip olduğunuz belirteç üzerinde gerçekleştirilen eylemleri temsil etme yeteneği.
+Ability to delegate the actions taken on the token that you own.
 
-Temsilci, belirteç sahibi olarak eylemleri gerçekleştirebilir. Örneğin, bir oyu uygulamak için bir temsilci seçilebilen belirteci kullanabilirsiniz. Bir temsilci seçilebilen belirteci, oy belirteci sahibinin adına başka birinin oymasına izin verir.
+The delegate can perform actions as the owner of the token. For example, you could use a delegable token to implement a vote. A delegable token allows the vote token owner to have someone else vote on their behalf.
 
-## <a name="logable-l"></a>Günlüklenebilir (l)
+## <a name="logable-l"></a>Logable (l)
 
-Günlüğe kaydetme özelliği.
+Ability to log.
 
-Örneğin, belirli bir filmi gösteren her bir sineması için bir film dağıtımı için günlüğe kaydedebilir bir belirteç verebilirsiniz. Filmin yürütülmesi için, bir işlemin her biri için bir işlem çalıştırması gerekir, çünkü bu, telif ücreti ödemeler, filmin yayın çalıştırması sırasında gösterilmelidir. Aktör derlemesi, dağıtım sırasında her bir sineması gösteren film başına ödeme sayısını doğrulamak için film belirteçlerini kullanabilir.
+For example, you can issue a logable token for a movie distribution to each theater showing a specific movie. For the movie to be played, the showing must log a transaction for each showing because royalty payouts are per showing during the movie's release run. The actors build can use the movie tokens to validate payouts per movie showing per theater in the distribution.
 
-## <a name="mint-able-m"></a>Mint-Able (d)
+## <a name="mint-able-m"></a>Mint-able (m)
 
-Belirteç sınıfı için ek belirteçleri mini gösterme özelliği. Minter rolü mintable davranışını içerir.
+Ability to mint additional tokens for the token class. The minter role includes the mintable behavior.
 
-Örneğin, bir bağlılık programı programını uygulamak isteyen bir perakende şirketi, bağlılık programı programları için mintable belirteçlerini kullanabilir. Müşteri tabanı büyüdükçe müşterileri için ek bağlılık programı noktalarından daha fazla programlama yapabilir.  
+For example, a retail company, which wants to implement a loyalty program can use mintable tokens for their loyalty program. They can mint additional loyalty points for their customers as their customer base grows.  
 
-## <a name="non-subdividable-or-whole-d"></a>Alt veya tam olmayan (~ d)
+## <a name="non-subdividable-or-whole-d"></a>Non-subdividable or whole (~d)
 
-Belirtecin daha küçük parçalara bölünmesine engel olan kısıtlama.
+Restriction to prevent a token from being divided into smaller parts.
 
-Örneğin, tek bir resim boyama, birden çok küçük parçaya ayrılabilir. 
+For example, a single art painting cannot be subdivided into multiple smaller parts. 
 
-## <a name="non-transferable-t"></a>Aktarılamayan (~ t)
+## <a name="non-transferable-t"></a>Non-transferable (~t)
 
-İlk belirteç sahibinden sahiplik değişikliğini önleme kısıtlaması.
+Restriction to prevent a change of ownership from the initial token owner.
 
-Örneğin, bir üniversite DISA, aktarılamayan bir belirteçtir. Bir gönderdikten sonra, bir sevenma verildiğinde, mezun 'den başka bir kişiye aktarılamaz.
+For example, a university diploma is a non-transferable token. Once a diploma is given to a graduate, it cannot be transferred from the graduate to another person.
 
-## <a name="roles-r"></a>Roller (r)
+## <a name="roles-r"></a>Roles (r)
 
-Belirli davranışlar için belirteç şablonu sınıfında Roller tanımlama yeteneği.
+Ability to define roles within the token template class for specific behaviors.
 
-Belirtecin, belirteç oluşturma sırasında desteklediği rol adlarının listesini sağlayabilirsiniz. Roller belirtildiğinde, Kullanıcı bu davranışlara roller atayabilir. Şu anda yalnızca Minter rolü destekleniyor.
+You can provide a list of role names that a token supports at the token creation time. When roles are specified, the user can assign roles to these behaviors. Currently, only the minter role is supported.
 
-## <a name="singleton-s"></a>Tekli (lar)
+## <a name="singleton-s"></a>Singleton (s)
 
-Bir belirteç sağlamak için kısıtlama.
+Restriction to allow a supply of one token.
 
-Örneğin, bir Museum yapıtı tek bir belirteçtir. Museum yapıtları benzersizdir. Yapıtı temsil eden belirtecin yalnızca TEDARİKTEKİ tek bir öğesi vardır.
+For example, a museum artifact is a singleton token. Museum artifacts are unique. A token representing an artifact only has a single item in the supply.
 
-## <a name="subdividable-d"></a>Alt (d)
+## <a name="subdividable-d"></a>Subdividable (d)
 
-Bir belirteci daha küçük parçalara bölebilme.
+Ability to divide a token into smaller parts.
 
-Örneğin, bir dolar, ilal 'ye ayrılabilir.
+For example, a dollar can be subdivided into cents.
 
-## <a name="transferable-t"></a>Transfer edilebilir (t)
+## <a name="transferable-t"></a>Transferable (t)
 
-Belirtecin sahipliğini aktarma özelliği.
+Ability to transfer ownership of the token.
 
-Örneğin, bir özellik başlığı, özellik satıldığında bir kişiden diğerine aktarılabilen bir aktarılabilir belirteç olur.
+For example, a property title is a transferable token, which can be transferred from one person to another when the property is sold.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure blok zinciri belirteçleri hesap yönetimi](account-management.md)hakkında bilgi edinin.
+Learn about [Azure Blockchain Tokens account management](account-management.md).

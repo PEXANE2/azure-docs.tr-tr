@@ -1,119 +1,119 @@
 ---
-title: Azure portalında çok faktörlü kimlik doğrulaması gerektiren bir Klasik ilke geçişi
-description: Bu makalede, Azure portalında çok faktörlü kimlik doğrulaması gerektiren bir Klasik ilke geçirme gösterilmektedir.
+title: Migrate Conditional Access policies - Azure Active Directory
+description: This article shows how to migrate a classic policy that requires multi-factor authentication in the Azure portal.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: tutorial
-ms.date: 06/13/2018
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4819c283a136057ad7c3ffd755fd9e157d99a1bf
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: ca00ae62ba114aecef48117fd8a54b7f2e962dfd
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509460"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74380319"
 ---
-# <a name="migrate-a-classic-policy-that-requires-multi-factor-authentication-in-the-azure-portal"></a>Azure portalında çok faktörlü kimlik doğrulaması gerektiren bir Klasik ilke geçişi
+# <a name="migrate-a-classic-policy-that-requires-multi-factor-authentication-in-the-azure-portal"></a>Migrate a classic policy that requires multi-factor authentication in the Azure portal
 
-Bu öğreticide gerektiren bir Klasik ilke geçirme gösterilmektedir **çok faktörlü kimlik doğrulaması** bulut uygulaması için. Bir önkoşul olmamasına karşın, okumanızı öneririz [Azure portalında Klasik ilkeleri geçirme](policy-migration.md) , Klasik ilkeleri geçirme işlemine başlamadan önce.
+This tutorial shows how to migrate a classic policy that requires **multi-factor authentication** for a cloud app. Although it is not a prerequisite, we recommend that you read [Migrate classic policies in the Azure portal](policy-migration.md) before you start migrating your classic policies.
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu makaledeki senaryoda gerektiren bir Klasik ilke geçirme gösterilmektedir **çok faktörlü kimlik doğrulaması** bulut uygulaması için.
+The scenario in this article shows how to migrate a classic policy that requires **multi-factor authentication** for a cloud app.
 
 ![Azure Active Directory](./media/policy-migration/33.png)
 
-Geçiş işlemi aşağıdaki adımlardan oluşur:
+The migration process consists of the following steps:
 
-1. [Klasik ilke açın](#open-a-classic-policy) yapılandırma ayarlarını almak için.
-1. Klasik ilkeniz değiştirmek için yeni bir Azure AD koşullu erişim ilkesi oluşturun. 
-1. Klasik ilke devre dışı bırakın.
+1. [Open the classic policy](#open-a-classic-policy) to get the configuration settings.
+1. Create a new Azure AD Conditional Access policy to replace your classic policy. 
+1. Disable the classic policy.
 
-## <a name="open-a-classic-policy"></a>Klasik ilke açın
+## <a name="open-a-classic-policy"></a>Open a classic policy
 
-1. İçinde [Azure portalında](https://portal.azure.com), sol gezinti tıklatın **Azure Active Directory**.
+1. In the [Azure portal](https://portal.azure.com), on the left navbar, click **Azure Active Directory**.
 
    ![Azure Active Directory](./media/policy-migration-mfa/01.png)
 
-1. Üzerinde **Azure Active Directory** sayfasında **Yönet** bölümünde **koşullu erişim**.
+1. On the **Azure Active Directory** page, in the **Manage** section, click **Conditional Access**.
 
    ![Koşullu Erişim](./media/policy-migration-mfa/02.png)
 
-1. İçinde **Yönet** bölümünde **Klasik ilkeleri (Önizleme)** .
+1. In the **Manage** section, click **Classic policies (preview)** .
 
-   ![Klasik ilkeler](./media/policy-migration-mfa/12.png)
+   ![Classic policies](./media/policy-migration-mfa/12.png)
 
-1. Klasik ilkeleri listesinde gerektiren ilkeye tıklayın **çok faktörlü kimlik doğrulaması** bulut uygulaması için.
+1. In the list of classic policies, click the policy that requires **multi-factor authentication** for a cloud app.
 
-   ![Klasik ilkeler](./media/policy-migration-mfa/13.png)
+   ![Classic policies](./media/policy-migration-mfa/13.png)
 
-## <a name="create-a-new-conditional-access-policy"></a>Yeni bir koşullu erişim ilkesi oluşturma
+## <a name="create-a-new-conditional-access-policy"></a>Create a new Conditional Access policy
 
-1. İçinde [Azure portalında](https://portal.azure.com), sol gezinti tıklatın **Azure Active Directory**.
+1. In the [Azure portal](https://portal.azure.com), on the left navbar, click **Azure Active Directory**.
 
    ![Azure Active Directory](./media/policy-migration/01.png)
 
-1. Üzerinde **Azure Active Directory** sayfasında **Yönet** bölümünde **koşullu erişim**.
+1. On the **Azure Active Directory** page, in the **Manage** section, click **Conditional Access**.
 
    ![Koşullu Erişim](./media/policy-migration/02.png)
 
-1. Üzerinde **koşullu erişim** sayfasında açmak için **yeni** sayfasında, üstteki araç çubuğunda tıklatın **Ekle**.
+1. On the **Conditional Access** page, to open the **New** page, in the toolbar on the top, click **Add**.
 
    ![Koşullu Erişim](./media/policy-migration/03.png)
 
-1. Üzerinde **yeni** sayfasında **adı** metin ilkeniz için bir ad yazın.
+1. On the **New** page, in the **Name** textbox, type a name for your policy.
 
    ![Koşullu Erişim](./media/policy-migration/29.png)
 
-1. İçinde **atamaları** bölümünde **kullanıcılar ve gruplar**.
+1. In the **Assignments** section, click **Users and groups**.
 
    ![Koşullu Erişim](./media/policy-migration/05.png)
 
-   1. Tüm kullanıcıları seçtiyseniz Klasik ilkeniz varsa tıklayın **tüm kullanıcılar**. 
+   1. If you have all users selected in your classic policy, click **All users**. 
 
       ![Koşullu Erişim](./media/policy-migration/35.png)
 
-   1. Klasik ilkeniz seçili grupları varsa, tıklayın **kullanıcıları ve grupları seçin**ve ardından gerekli kullanıcılar ve Gruplar'ı seçin.
+   1. If you have groups selected in your classic policy, click **Select users and groups**, and then select the required users and groups.
 
       ![Koşullu Erişim](./media/policy-migration/36.png)
 
-   1. Dışlanan grupları varsa, tıklayın **hariç** sekmesini ve sonra gerekli kullanıcıları ve grupları seçin. 
+   1. If you have the excluded groups, click the **Exclude** tab, and then select the required users and groups. 
 
       ![Koşullu Erişim](./media/policy-migration/37.png)
 
-1. Üzerinde **yeni** sayfasında açmak için **bulut uygulamaları** sayfasında **atama** bölümünde **bulut uygulamaları**.
-1. Üzerinde **bulut uygulamaları** sayfasında, aşağıdaki adımları gerçekleştirin:
-   1. Tıklayın **uygulamaları Seç**.
+1. On the **New** page, to open the **Cloud apps** page, in the **Assignment** section, click **Cloud apps**.
+1. On the **Cloud apps** page, perform the following steps:
+   1. Click **Select apps**.
    1. **Seç**'e tıklayın.
-   1. Üzerinde **seçin** sayfasında bulut uygulamanızı seçin ve ardından **seçin**.
-   1. Üzerinde **bulut uygulamaları** sayfasında **Bitti**.
-1. Varsa **çok faktörlü kimlik doğrulaması gerektiren** seçili:
+   1. On the **Select** page, select your cloud app, and then click **Select**.
+   1. On the **Cloud apps** page, click **Done**.
+1. If you have **Require multi-factor authentication** selected:
 
    ![Koşullu Erişim](./media/policy-migration/26.png)
 
-   1. İçinde **erişim denetimleri** bölümünde **Grant**.
+   1. In the **Access controls** section, click **Grant**.
 
       ![Koşullu Erişim](./media/policy-migration/27.png)
 
-   1. Üzerinde **Grant** sayfasında **erişim ver**ve ardından **çok faktörlü kimlik doğrulaması gerektiren**.
+   1. On the **Grant** page, click **Grant access**, and then click **Require multi-factor authentication**.
    1. **Seç**'e tıklayın.
-1. Tıklayın **üzerinde** ilkenizi etkinleştirmek için.
+1. Click **On** to enable your policy.
 
    ![Koşullu Erişim](./media/policy-migration/30.png)
 
-## <a name="disable-the-classic-policy"></a>Klasik ilke devre dışı bırak
+## <a name="disable-the-classic-policy"></a>Disable the classic policy
 
-Klasik ilkeniz devre dışı bırakmak için **devre dışı** içinde **ayrıntıları** görünümü.
+To disable your classic policy, click **Disable** in the **Details** view.
 
-![Klasik ilkeler](./media/policy-migration-mfa/14.png)
+![Classic policies](./media/policy-migration-mfa/14.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Klasik ilke geçişi hakkında daha fazla bilgi için bkz. [Azure portalında Klasik ilkeleri geçirme](policy-migration.md).
-- Koşullu erişim ilkesi yapılandırmak için bkz. nasıl bilmek istiyorsanız [gerektiren MFA belirli uygulamalar için Azure Active Directory koşullu erişim ile](app-based-mfa.md).
-- Ortamınız için koşullu erişim ilkelerini yapılandırmaya hazırsanız bkz [Azure Active Directory'de koşullu erişim için en iyi uygulamalar](best-practices.md).
+- For more information about the classic policy migration, see [Migrate classic policies in the Azure portal](policy-migration.md).
+- If you want to know how to configure a Conditional Access policy, see [Require MFA for specific apps with Azure Active Directory Conditional Access](app-based-mfa.md).
+- If you are ready to configure Conditional Access policies for your environment, see the [best practices for Conditional Access in Azure Active Directory](best-practices.md).

@@ -1,27 +1,27 @@
 ---
-title: Azure Dev Spaces içinde özel bir NuGet akışı kullanma
+title: Özel NuGet akışı kullanma
 services: azure-dev-spaces
 author: zr-msft
 ms.author: zarhoads
 ms.date: 07/17/2019
 ms.topic: conceptual
-description: Azure dev alanında NuGet paketlerine erişmek ve bunları kullanmak için özel bir NuGet akışı kullanın.
-keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kapsayıcılar
+description: Use a custom NuGet feed to access and use NuGet packages in an Azure Dev Space.
+keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, containers
 manager: gwallace
-ms.openlocfilehash: ee14d999872f6e739321c144831d60a4ae6f9388
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
-ms.translationtype: HT
+ms.openlocfilehash: 39984a3b3a1be64a497fb8088559ccfcdee4f1c6
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279961"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325737"
 ---
-#  <a name="use-a-custom-nuget-feed-in-an-azure-dev-space"></a>Azure dev alanında özel bir NuGet akışı kullanma
+# <a name="use-a-custom-nuget-feed-with-azure-dev-spaces"></a>Use a custom NuGet feed with Azure Dev Spaces
 
-Bir NuGet akışı, paket kaynaklarını bir projeye dahil etmek için uygun bir yol sağlar. Bağımlılıkların Docker kapsayıcısına düzgün şekilde yüklenmesi için Azure Dev Spaces bu akışa erişmesi gerekir.
+A NuGet feed provides a convenient way to include package sources in a project. Azure Dev Spaces needs to access this feed in order for dependencies to be properly installed in the Docker container.
 
-## <a name="set-up-a-nuget-feed"></a>NuGet akışı ayarlama
+## <a name="set-up-a-nuget-feed"></a>Set up a NuGet feed
 
-`PackageReference` düğümü altındaki `*.csproj` dosyasına bağımlılığı için bir [paket başvurusu](https://docs.microsoft.com/nuget/consume-packages/package-references-in-project-files) ekleyin. Örneğin:
+Add a [package reference](https://docs.microsoft.com/nuget/consume-packages/package-references-in-project-files) for your dependency in the `*.csproj` file under the `PackageReference` node. Örnek:
 
 ```xml
 <ItemGroup>
@@ -31,7 +31,7 @@ Bir NuGet akışı, paket kaynaklarını bir projeye dahil etmek için uygun bir
 </ItemGroup>
 ```
 
-Proje klasöründe bir [NuGet. config](https://docs.microsoft.com/nuget/reference/nuget-config-file) dosyası oluşturun ve NuGet akışınız için `packageSources` ve `packageSourceCredentials` bölümlerini ayarlayın. `packageSources` bölümü, AKS kümenizdeki erişilebilir olması gereken akış URL 'nizi içerir. `packageSourceCredentials`, akışa erişim için kimlik bilgileridir. Örneğin:
+Create a [NuGet.Config](https://docs.microsoft.com/nuget/reference/nuget-config-file) file in the project folder and set the `packageSources` and `packageSourceCredentials` sections for your NuGet feed. The `packageSources` section contains your feed url, which must be accessible from your AKS cluster. The `packageSourceCredentials` are the credentials for accessing the feed. Örnek:
 
 ```xml
 <packageSources>
@@ -46,17 +46,17 @@ Proje klasöründe bir [NuGet. config](https://docs.microsoft.com/nuget/referenc
 </packageSourceCredentials>
 ```
 
-`NuGet.Config` dosyasını görüntüye kopyalamak için Dockerfiles 'ı güncelleştirin. Örneğin:
+Update your Dockerfiles to copy the `NuGet.Config` file to the image. Örnek:
 
 ```console
 COPY ["<project folder>/NuGet.Config", "./NuGet.Config"]
 ```
 
 > [!TIP]
-> Windows 'da, `NuGet.Config`, `Nuget.Config`ve `nuget.config` tümü geçerli dosya adları olarak çalışmaktadır. Linux 'ta yalnızca `NuGet.Config`, bu dosya için geçerli bir dosya adıdır. Azure Dev Spaces Docker ve Linux kullandığından, bu dosya `NuGet.Config`olarak adlandırılmalıdır. Adlandırmayı el ile veya `dotnet restore --configfile nuget.config`çalıştırarak giderebilirsiniz.
+> On Windows, `NuGet.Config`, `Nuget.Config`, and `nuget.config` all works as valid file names. On Linux, only `NuGet.Config` is a valid file name for this file. Since Azure Dev Spaces uses Docker and Linux, this file must be named `NuGet.Config`. You can fix the naming manually or by running `dotnet restore --configfile nuget.config`.
 
 
-Git kullanıyorsanız, sürüm denetiminde NuGet akışınız için kimlik bilgilerine sahip olmanız gerekmez. `NuGet.Config` dosyasının sürüm denetimine eklenmemesi için, projeniz için `.gitignore` `NuGet.Config` ekleyin. Azure Dev Spaces kapsayıcı görüntüsü oluşturma işlemi sırasında bu dosya gerekecektir, ancak varsayılan olarak, eşitleme sırasında `.gitignore` ve `.dockerignore` tanımlanan kurallara uyar. Varsayılanı değiştirmek ve Azure Dev Spaces `NuGet.Config` dosyayı eşitlemesine izin vermek için `azds.yaml` dosyasını güncelleştirin:
+If you are using Git, you should not have the credentials for your NuGet feed in version control. Add `NuGet.Config` to the `.gitignore` for your project so that the `NuGet.Config` file is not added to version control. Azure Dev Spaces will needs this file during the container image build process, but by default, it respects the rules defined in `.gitignore` and `.dockerignore` during synchronization. To change the default and allow Azure Dev Spaces to synchronize the `NuGet.Config` file, update the `azds.yaml` file:
 
 ```yaml
 build:
@@ -65,10 +65,10 @@ ignore:
 - "!NuGet.Config"
 ```
 
-Git kullanmıyorsanız, bu adımı atlayabilirsiniz.
+If you are not using Git, you can skip this step.
 
-`azds up` veya Visual Studio Code ya da Visual Studio 'da `F5` bir sonraki sefer çalıştırdığınızda Azure Dev Spaces, paket bağımlılıklarını yüklemek için `NuGet.Config` dosyasını eşitler.
+The next time you run `azds up` or hit `F5` in Visual Studio Code or Visual Studio, Azure Dev Spaces will synchronize the `NuGet.Config` file use it to install package dependencies.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[NuGet ve nasıl çalıştığı](https://docs.microsoft.com/nuget/what-is-nuget)hakkında daha fazla bilgi edinin.
+Learn more about [NuGet and how it works](https://docs.microsoft.com/nuget/what-is-nuget).

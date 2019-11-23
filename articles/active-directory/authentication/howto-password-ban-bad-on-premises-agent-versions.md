@@ -1,139 +1,139 @@
 ---
-title: Şirket içi Azure AD parola koruması Aracı sürüm yayımlama geçmişi - Azure Active Directory
-description: Belgeler sürüm ve davranışı değişiklik geçmişi
+title: Password protection agent release history - Azure Active Directory
+description: Documents version release and behavior change history
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: article
-ms.date: 02/01/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c024954053588537ac3363703876f716a38f41d9
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 6458f31b21d09e54afb080ffc73598903a9831e0
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67702942"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381727"
 ---
-# <a name="azure-ad-password-protection-agent-version-history"></a>Azure AD parola koruması Aracı sürüm geçmişi
+# <a name="azure-ad-password-protection-agent-version-history"></a>Azure AD Password Protection agent version history
 
 ## <a name="121250"></a>1.2.125.0
 
-Yayın Tarihi: 3/22/2019
+Release date: 3/22/2019
 
-* Olay günlüğü iletilerinde Önemsiz yazım hatalarını Düzelt
-* EULA anlaşmasını genel kullanılabilirlik, son sürüme güncelleştirme
+* Fix minor typo errors in event log messages
+* Update EULA agreement to final General Availability version
 
 > [!NOTE]
-> Derleme 1.2.125.0 Genel kullanılabilirlik yapıdır. Ürün geri bildirim sağlanan herkes için tekrar teşekkür ederiz!
+> Build 1.2.125.0 is the General Availability build. Thank you again to everyone has provided feedback on the product!
 
 ## <a name="121160"></a>1.2.116.0
 
-Yayın Tarihi: 3/13/2019
+Release date: 3/13/2019
 
-* Aşağıdaki kısıtlamalarla rapor yazılım sürümü ve geçerli Azure Kiracı artık Get-AzureADPasswordProtectionProxy ve Get-AzureADPasswordProtectionDCAgent cmdlet'leri:
-  * Yazılım sürümü ve Azure kiracısına ilişkin veriler yalnızca DC aracılar ve proxy'ler 1.2.116.0 sürümünü çalıştıran veya sonraki kullanılabilir.
-  * Azure Kiracı verilerini bir yeniden kayıt (veya yenileme) proxy kadar bildirilmeyebilir veya orman oluştu.
-* Proxy Hizmeti, artık .NET 4.7 yüklü olmasını gerektirir.
-  * .NET 4.7 zaten tamamen güncelleştirilmiş bir Windows sunucusuna yüklenmesi gerekir. Durum bu değilse, indirmek ve bulunan yükleyiciyi çalıştırın [Windows için .NET Framework 4.7 çevrimdışı yükleyici](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows).
-  * Sunucu Çekirdeği sistemlerine başarılı şekilde almak için .NET 4.7 yükleyici için /q bayrak geçirmek için gerekli olabilir.
-* Proxy Hizmeti, artık otomatik yükseltmeyi destekler. Otomatik yükseltme yüklü yan yana Proxy hizmeti olan Microsoft Azure AD Connect aracı Updater hizmeti kullanır. Otomatik yükseltme varsayılan olarak açıktır.
-* Otomatik yükseltme etkinleştirilebilir veya Set-AzureADPasswordProtectionProxyConfiguration cmdlet'i kullanılarak devre dışı. Geçerli ayarı, Get-AzureADPasswordProtectionProxyConfiguration cmdlet'ini kullanarak sorgulanabilir.
-* DC Aracı hizmeti için hizmet ikili AzureADPasswordProtectionDCAgent.exe için yeniden adlandırıldı.
-* Proxy Hizmeti için hizmet ikili AzureADPasswordProtectionProxy.exe için yeniden adlandırıldı. Güvenlik duvarı kuralları, bir üçüncü taraf güvenlik duvarı kullanımda olup olmadığını buna uygun olarak değiştirilmesi gerekebilir.
-  * Not: bir http proxy yapılandırma dosyası önceki Proxy kullanıldıysa yüklemek, yeniden adlandırılması gerekir (gelen *proxyservice.exe.config* için *AzureADPasswordProtectionProxy.exe.config*) bundan sonra yükseltin.
-* Tüm süre sınırlı işlevsellik denetimleri DC Aracısı'ndan kaldırıldı.
-* Küçük hata düzeltmeleri ve günlüğe kaydetme geliştirmeleri.
+* The Get-AzureADPasswordProtectionProxy and Get-AzureADPasswordProtectionDCAgent cmdlets now report software version and the current Azure tenant with the following limitations:
+  * Software version and Azure tenant data are only available for DC agents and proxies running version 1.2.116.0 or later.
+  * Azure tenant data may not be reported until a re-registration (or renewal) of the proxy or forest has occurred.
+* The Proxy service now requires that .NET 4.7 is installed.
+  * .NET 4.7 should already be installed on a fully updated Windows Server. If this is not the case, download and run the installer found at [The .NET Framework 4.7 offline installer for Windows](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows).
+  * On Server Core systems it may be necessary to pass the /q flag to the .NET 4.7 installer to get it to succeed.
+* The Proxy service now supports automatic upgrade. Automatic upgrade uses the Microsoft Azure AD Connect Agent Updater service which is installed side-by-side with the Proxy service. Automatic upgrade is on by default.
+* Automatic upgrade can be enabled or disabled using the Set-AzureADPasswordProtectionProxyConfiguration cmdlet. The current setting can be queried using the Get-AzureADPasswordProtectionProxyConfiguration cmdlet.
+* The service binary for the DC agent service has been renamed to AzureADPasswordProtectionDCAgent.exe.
+* The service binary for the Proxy service has been renamed to AzureADPasswordProtectionProxy.exe. Firewall rules may need to be modified accordingly if a third-party firewall is in-use.
+  * NOTE: if an http proxy config file was being used in a previous Proxy install, it will need to be renamed (from *proxyservice.exe.config* to *AzureADPasswordProtectionProxy.exe.config*) after this upgrade.
+* All time-limited functionality checks have been removed from the DC agent.
+* Minor bugs fixes and logging improvements.
 
 ## <a name="12650"></a>1.2.65.0
 
-Yayın Tarihi: 2/1/2019
+Release date: 2/1/2019
 
-Değişiklikler:
+Changes:
 
-* DC aracı ve proxy hizmeti sunucu Çekirdeğinde artık desteklenmektedir. Önce değiştirilmemiştir Mininimum işletim sistemi gereksinimleri şunlardır: Windows Server 2012 DC aracılar ve proxy'leri için Windows Server 2012 R2.
-* Register-AzureADPasswordProtectionProxy ve kayıt AzureADPasswordProtectionForest cmdlet'leri artık cihaz kod tabanlı Azure kimlik doğrulama modlarını destekler.
-* Get-AzureADPasswordProtectionDCAgent cmdlet karıştırılmış ve/veya geçersiz hizmet bağlantı noktaları göz ardı eder. Bu, burada etki alanı denetleyicileri bazen birden çok kez çıkışında gösterilmesini hatayı düzeltir.
-* Get-AzureADPasswordProtectionSummaryReport cmdlet karıştırılmış ve/veya geçersiz hizmet bağlantı noktaları göz ardı eder. Bu, burada etki alanı denetleyicileri bazen birden çok kez çıkışında gösterilmesini hatayı düzeltir.
-* Proxy powershell modülünü % ProgramFiles%\WindowsPowerShell\Modules artık kaydedilmiştir. Makinenin PSModulePath ortam değişkeni artık değiştirildi.
-* Bir orman veya etki alanında kayıtlı proxy'ler bulunuyor yardımcı olmak için yeni cmdlet Get-AzureADPasswordProtectionProxy eklendi.
-* DC Aracısı'nı, parola ilkeleri ve diğer dosyaları çoğaltmak için sysvol paylaşımı içinde yeni bir klasör kullanır.
+* DC agent and proxy service are now supported on Server Core. Mininimum OS requirements are unchanged from before: Windows Server 2012 for DC agents, and Windows Server 2012 R2 for proxies.
+* The Register-AzureADPasswordProtectionProxy and Register-AzureADPasswordProtectionForest cmdlets now support device-code-based Azure authentication modes.
+* The Get-AzureADPasswordProtectionDCAgent cmdlet will ignore mangled and/or invalid service connection points. This fixes the bug where domain controllers would sometimes show up multiple times in the output.
+* The Get-AzureADPasswordProtectionSummaryReport cmdlet will ignore mangled and/or invalid service connection points. This fixes the bug where domain controllers would sometimes show up multiple times in the output.
+* The Proxy powershell module is now registered from %ProgramFiles%\WindowsPowerShell\Modules. The machine's PSModulePath environment variable is no longer modified.
+* A new Get-AzureADPasswordProtectionProxy cmdlet has been added to aid in discovering registered proxies in a forest or domain.
+* The DC agent uses a new folder in the sysvol share for replicating password policies and other files.
 
-   Eski klasör konumu:
+   Old folder location:
 
    `\\<domain>\sysvol\<domain fqdn>\Policies\{4A9AB66B-4365-4C2A-996C-58ED9927332D}`
 
-   Yeni klasör konumu:
+   New folder location:
 
    `\\<domain>\sysvol\<domain fqdn>\AzureADPasswordProtection`
 
-   (Bu değişiklik "hatalı pozitif sonuç GPO artık" uyarılarından kaçınmak için yapılmıştır.)
+   (This change was made to avoid false-positive "orphaned GPO" warnings.)
 
    > [!NOTE]
-   > Eski klasör ve yeni klasör arasında herhangi bir geçiş veya verilerin paylaşımını gerçekleştirilir. Eski DC Aracı sürümleri, bu sürümü veya sonraki bir sürüme yükseltildiğinde kadar eski konumu kullanmak üzere devam eder. Daha sonra eski sysvol klasörünü el ile silinebilir veya sürüm 1.2.65.0 tüm DC aracılar çalıştırıldıktan sonra.
+   > No migration or sharing of data will be done between the old folder and the new folder. Older DC agent versions will continue to use the old location until upgraded to this version or later. Once all DC agents are running version 1.2.65.0 or later, the old sysvol folder may be manually deleted.
 
-* DC aracı ve proxy hizmeti, artık algılayın ve bunların ilgili hizmet bağlantı noktaları karıştırılmış bir kopyasını silebilirsiniz.
-* Her bir DC aracı, düzenli aralıklarla karıştırılmış ve eski hizmet bağlantı noktaları hem DC aracı ve proxy hizmet bağlantı noktaları için kendi etki alanındaki siler. Her iki DC aracı ve proxy hizmet bağlantı noktaları, sinyal zaman damgası yedi günden daha eskiyse eski olarak kabul edilir.
-* DC aracı şimdi, gerektiğinde orman sertifika yenilenir.
-* Proxy Hizmeti proxy sertifikası artık gerektiği şekilde yenilenir.
-* Parola doğrulama algoritması güncelleştirmeleri: Genel yasaklı parola listesi ve (yapılandırılmışsa) müşteriye özgü yasaklı parola listesi önce parola doğrulamaları birleştirilir. Verilen parola artık reddedildi (başarısız veya yalnızca denetim) belirteçleri genel ve müşteriye özgü listesinden içeriyorsa. Olay günlüğü belgeler, bu yansıtacak şekilde güncelleştirildi; Lütfen [İzleyici Azure AD parola koruması](howto-password-ban-bad-on-premises-monitor.md).
-* Performans ve sağlamlık düzeltmeleri
-* Gelişmiş günlük kaydı
+* The DC agent and proxy service will now detect and delete mangled copies of their respective service connection points.
+* Each DC agent will periodically delete mangled and stale service connection points in its domain, for both DC agent and proxy service connection points. Both DC agent and proxy service connection points are considered stale if its heartbeat timestamp is older than seven days.
+* The DC agent will now renew the forest certificate as needed.
+* The Proxy service will now renew the proxy certificate as needed.
+* Updates to password validation algorithm: the global banned password list and customer-specific banned password list (if configured) are combined prior to password validations. A given password may now be rejected (fail or audit-only) if it contains tokens from both the global and customer-specific list. The event log documentation has been updated to reflect this; please see [Monitor Azure AD Password Protection](howto-password-ban-bad-on-premises-monitor.md).
+* Performance and robustness fixes
+* Improved logging
 
 > [!WARNING]
-> Süre sınırlı işlevsellik: 1 Eylül 2019 tarihinde parola doğrulama isteği işleme (1.2.65.0) bu sürümde DC aracı hizmetini durdurur.  DC Aracısı hizmetlerinin önceki sürümlerinde (aşağıdaki listeye bakın), 1 Temmuz 2019'den itibaren işlemi durdurur. DC Aracı hizmeti tüm sürümlerde 10021 olayları, bu son tarihleri önde gelen iki ay içinde yönetici olay günlüğüne kayıt. Tüm zaman sınırı kısıtlamalar kaldırılır GA sürümünde gelecek. Proxy Aracısı hizmeti herhangi bir sürümle süre sınırlı değildir, ancak sonraki tüm hata düzeltmeleri ve diğer iyileştirmeleri yararlanmak için en son sürüme hala yükseltilmelidir.
+> Time-limited functionality:  the DC agent service in this release (1.2.65.0) will stop processing password validation requests as of September 1st 2019.  DC agent services in prior releases (see list below) will stop processing as of July 1st 2019. The DC agent service in all versions will log 10021 events to the Admin event log in the two months leading up these deadlines. All time-limit restrictions will be removed in the upcoming GA release. The Proxy agent service is not time-limited in any version but should still be upgraded to the latest version in order to take advantage of all subsequent bug fixes and other improvements.
 
 ## <a name="12250"></a>1.2.25.0
 
-Yayın Tarihi: 11/01/2018
+Release date: 11/01/2018
 
-Düzeltmeleri:
+Fixes:
 
-* DC aracı ve proxy hizmeti artık sertifika güven hataları nedeniyle başarısız olması.
-* DC aracı ve proxy hizmeti FIPS uyumlu makineler için ek düzeltmelere sahip.
-* Proxy hizmeti artık düzgün şekilde TLS 1.2 yalnızca ağ ortamında çalışır.
-* Küçük bir performans ve sağlamlık düzeltmeleri
-* Gelişmiş günlük kaydı
+* DC agent and proxy service should no longer fail due to certificate trust failures.
+* DC agent and proxy service have additional fixes for FIPS-compliant machines.
+* Proxy service will now work properly in a TLS 1.2-only networking environment.
+* Minor performance and robustness fixes
+* Improved logging
 
-Değişiklikler:
+Changes:
 
-* Gereken en düşük işletim sistemi düzeyinde Proxy Hizmeti için artık Windows Server 2012 R2. DC Aracı hizmeti için en düşük gerekli işletim sistemi düzeyi Windows Server 2012 kalır.
-* Proxy Hizmeti artık .NET sürüm 4.6.2 gerektirir.
-* Parola doğrulama algoritması bir Genişletilmiş karakter normalleştirme tablosunu kullanır. Bu, önceki sürümlerde kabul edildi reddediliyor parolalarda neden olabilir.
+* The minimum required OS level for the Proxy service is now Windows Server 2012 R2. The minimum required OS level for the DC agent service remains at Windows Server 2012.
+* The Proxy service now requires .NET version 4.6.2.
+* The password validation algorithm uses an expanded character normalization table. This may result in passwords being rejected that were accepted in prior versions.
 
 ## <a name="12100"></a>1.2.10.0
 
-Yayın Tarihi: 8/17/2018
+Release date: 8/17/2018
 
-Düzeltmeleri:
+Fixes:
 
-* Register-AzureADPasswordProtectionProxy ve kayıt AzureADPasswordProtectionForest artık çok faktörlü kimlik doğrulaması desteği
-* WS2012 veya üzeri etki alanı denetleyicisi etki alanında şifreleme hataları önlemek için kayıt AzureADPasswordProtectionProxy gerektirir.
-* DC Aracısı hizmetini yeni bir parola ilkesi Azure'dan başlangıçta isteme hakkında daha güvenilir oldu.
-* DC Aracısı hizmetini yeni bir parola ilkesi Azure'dan saatte gerekirse ister, ancak bir rastgele seçilen başlangıç zamanında artık bunu yapar.
-* DC Aracısı hizmeti artık yeni DC tanıtım bir kopya olarak, yükseltmeden önce bir sunucu üzerinde yüklü olduğunda, belirsiz bir gecikme neden olur.
-* DC Aracısı hizmeti, "Windows Server Active Directory parola korumasını etkinleştir" yapılandırma ayarı artık dokunmaz
-* Sonraki sürümlere yükseltme yapılırken, her iki DC aracı ve proxy yükleyici yerinde yükseltme artık destekleyecektir.
+* Register-AzureADPasswordProtectionProxy and Register-AzureADPasswordProtectionForest now support multi-factor authentication
+* Register-AzureADPasswordProtectionProxy requires a WS2012 or later domain controller in the domain to avoid encryption errors.
+* DC agent service is more reliable about requesting a new password policy from Azure on startup.
+* DC agent service will request a new password policy from Azure every hour if necessary, but will now do so on a randomly selected start time.
+* DC agent service will no longer cause an indefinite delay in new DC advertisement when installed on a server prior to its promotion as a replica.
+* DC agent service will now honor the “Enable password protection on Windows Server Active Directory” configuration setting
+* Both DC agent and proxy installers will now support in-place upgrade when upgrading to future versions.
 
 > [!WARNING]
-> 1\.1.10.3 sürümünden yerinde yükseltme desteklenmez ve bir yükleme hataya neden olur. Çok 1.2.10 sürüme yükseltin veya sonraki sürümlerde, önce tamamen DC aracı ve proxy hizmeti yazılımı kaldırın, ardından gerekir sıfırdan yeni sürümünü yükleyin. Azure AD parola koruması Proxy Hizmeti yeniden kayıt gereklidir.  Orman yeniden kaydolmak için gerekli değildir.
+> In-place upgrade from version 1.1.10.3 is not supported and will result in an installation error. To upgrade to version 1.2.10 or later, you must first completely uninstall the DC agent and proxy service software, then install the new version from scratch. Re-registration of the Azure AD password protection Proxy service is required.  It is not required to re-register the forest.
 
 > [!NOTE]
-> Yerinde yükseltme DC Aracısı yazılım yeniden başlatma gerektirir.
+> In-place upgrades of the DC agent software will require a reboot.
 
-* DC aracı ve proxy hizmet desteği yalnızca FIPS uyumlu algoritmalar kullanmak için yapılandırılmış bir sunucuda çalıştırmak.
-* Küçük bir performans ve sağlamlık düzeltmeleri
-* Gelişmiş günlük kaydı
+* DC agent and proxy service now support running on a server configured to only use FIPS-compliant algorithms.
+* Minor performance and robustness fixes
+* Improved logging
 
 ## <a name="11103"></a>1.1.10.3
 
-Yayın Tarihi: 6/15/2018
+Release date: 6/15/2018
 
-İlk genel Önizleme sürümü
+Initial public preview release
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure AD parola koruması dağıtma](howto-password-ban-bad-on-premises-deploy.md)
+[Deploy Azure AD Password Protection](howto-password-ban-bad-on-premises-deploy.md)

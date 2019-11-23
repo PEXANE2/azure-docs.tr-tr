@@ -1,93 +1,87 @@
 ---
-title: Azure blok zinciri çalışma ekranı 'nda uygulama kullanma
-description: Azure blok zinciri çalışma ekranı önizlemesinde uygulama sözleşmelerini kullanma hakkında öğretici.
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
+title: Using applications in Azure Blockchain Workbench
+description: Tutorial on how to use application contracts in Azure Blockchain Workbench Preview.
 ms.date: 10/14/2019
 ms.topic: tutorial
-ms.service: azure-blockchain
 ms.reviewer: brendal
-manager: femila
-ms.openlocfilehash: 1dee101ad87776a1c22b719274569df25c4e161d
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 5761bf1294691c2d50e0e389fe69ec286df4a06c
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72328949"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74324053"
 ---
-# <a name="tutorial-using-applications-in-azure-blockchain-workbench"></a>Öğretici: Azure blok zinciri çalışma ekranı 'nda uygulama kullanma
+# <a name="tutorial-using-applications-in-azure-blockchain-workbench"></a>Tutorial: Using applications in Azure Blockchain Workbench
 
-Blokları oluşturmak ve sözleşme işlemleri yapmak için blok zinciri çalışma ekranı ' nı kullanabilirsiniz. Ayrıca, durum ve işlem geçmişi gibi sözleşme ayrıntılarını da görüntüleyebilirsiniz.
+You can use Blockchain Workbench to create and take actions on contracts. You can also view contract details such as status and transaction history.
 
 Şunları öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Yeni sözleşme oluştur
-> * Bir sözleşmede eylem gerçekleştirin
+> * Create a new contract
+> * Take an action on a contract
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Blok zinciri çalışma ekranı dağıtımı. Daha fazla bilgi için bkz. dağıtım ayrıntıları için [Azure blok zinciri çalışma ekranı dağıtımı](deploy.md)
-* Blok zinciri çalışma ekranı 'nda dağıtılan bir blok zinciri uygulaması. Bkz. [Azure blok zinciri üzerinde blok zinciri uygulaması oluşturma çalışma ekranı](create-app.md)
+* A Blockchain Workbench deployment. For more information, see [Azure Blockchain Workbench deployment](deploy.md) for details on deployment
+* A deployed blockchain application in Blockchain Workbench. See [Create a blockchain application in Azure Blockchain Workbench](create-app.md)
 
-Tarayıcınızda [blok zinciri çalışma ekranı](deploy.md#blockchain-workbench-web-url) ' nı açın.
+[Open the Blockchain Workbench](deploy.md#blockchain-workbench-web-url) in your browser.
 
 ![Blockchain Workbench](./media/use/workbench.png)
 
-Blok zinciri çalışma ekranının bir üyesi olarak oturum açmanız gerekir. Listelenen bir uygulama yoksa, blok zinciri çalışma ekranı 'nın bir üyesi olursunuz, ancak herhangi bir uygulamanın üyesi değildir. Blok zinciri çalışma ekranı Yöneticisi uygulamalara üye atayabilir.
+You need to sign in as a member of the Blockchain Workbench. If there are no applications listed, you are a member of Blockchain Workbench but not a member of any applications. The Blockchain Workbench administrator can assign members to applications.
 
-## <a name="create-new-contract"></a>Yeni sözleşme oluştur
+## <a name="create-new-contract"></a>Create new contract
 
-Yeni bir sözleşme oluşturmak için, sözleşme **başlatıcısı**olarak belirtilen bir üye olmanız gerekir. Sözleşmeye yönelik uygulama rollerini ve başlatıcılarını tanımlama hakkında bilgi için bkz. [yapılandırmaya genel bakış](configuration.md#workflows). Uygulama rollerine üye atama hakkında daha fazla bilgi için bkz. [uygulamaya üye ekleme](manage-users.md#add-member-to-application).
+To create a new contract, you need to be a member specified as a contract **initiator**. For information defining application roles and initiators for the contract, see [workflows in the configuration overview](configuration.md#workflows). For information on assigning members to application roles, see [add a member to application](manage-users.md#add-member-to-application).
 
-1. Blok zinciri çalışma ekranı uygulaması bölümünde, oluşturmak istediğiniz sözleşmeyi içeren uygulama kutucuğunu seçin. Etkin sözleşmelerin bir listesi görüntülenir.
+1. In Blockchain Workbench application section, select the application tile that contains the contract you want to create. A list of active contracts is displayed.
 
-2. Yeni sözleşme oluşturmak için **yeni sözleşme**' yi seçin.
+2. To create a new contract, select **New contract**.
 
-    ![Yeni sözleşme düğmesi](./media/use/contract-list.png)
+    ![New contract button](./media/use/contract-list.png)
 
-3. **Yeni sözleşme** bölmesi görüntülenir. İlk parametre değerlerini belirtin. **Oluştur**'u seçin.
+3. The **New contract** pane is displayed. Specify the initial parameters values. **Oluştur**'u seçin.
 
-    ![Yeni sözleşme bölmesi](./media/use/new-contract.png)
+    ![New contract pane](./media/use/new-contract.png)
 
-    Yeni oluşturulan sözleşme, diğer etkin sözleşmelerin bulunduğu listede görüntülenir.
+    The newly created contract is displayed in the list with the other active contracts.
 
-    ![Etkin sözleşmeler listesi](./media/use/active-contracts.png)
+    ![Active contracts list](./media/use/active-contracts.png)
 
-## <a name="take-action-on-contract"></a>Sözleşme üzerinde işlem yap
+## <a name="take-action-on-contract"></a>Take action on contract
 
-Sözleşmenin bulunduğu duruma bağlı olarak, Üyeler sözleşmenin bir sonraki durumuna geçiş yapmak için işlemler gerçekleştirebilir. Eylemler bir [durum](configuration.md#states)içinde [geçiş](configuration.md#transitions) olarak tanımlanır. Geçişe izin verilen bir uygulamaya ait Üyeler veya örnek rolü bu eylemi gerçekleştirebilir. 
+Depending on the state the contract is in, members can take actions to transition to the next state of the contract. Actions are defined as [transitions](configuration.md#transitions) within a [state](configuration.md#states). Members belonging to an allowed application or instance role for the transition can take the action. 
 
-1. Blok zinciri çalışma ekranı uygulaması bölümünde, eylemi gerçekleştirmek için sözleşmeyi içeren uygulama kutucuğunu seçin.
-2. Listeden sözleşmeyi seçin. Sözleşmeyle ilgili ayrıntılar farklı bölümlerde görüntülenir. 
+1. In Blockchain Workbench application section, select the application tile that contains the contract to take the action.
+2. Select the contract in the list. Details about the contract are displayed in different sections. 
 
-    ![Sözleşme ayrıntıları](./media/use/contract-details.png)
+    ![Contract details](./media/use/contract-details.png)
 
     | Section  | Açıklama  |
     |---------|---------|
-    | Durum | Sözleşme aşamaları dahilinde geçerli ilerlemeyi listeler |
-    | Ayrıntılar | Sözleşmenin geçerli değerleri |
-    | Eylem | Son eylemle ilgili ayrıntılar |
-    | Etkinlik | Sözleşmenin işlem geçmişi |
+    | Durum | Lists the current progress within the contract stages |
+    | Ayrıntılar | The current values of the contract |
+    | Eylem | Details about the last action |
+    | Etkinlik | Transaction history of the contract |
     
-3. **Eylem** bölümünde **eylem al**' ı seçin.
+3. In the **Action** section, select **Take action**.
 
-4. Sözleşmenin geçerli durumuyla ilgili ayrıntılar bir bölmede görüntülenir. Açılan kutuda almak istediğiniz eylemi seçin. 
+4. The details about the current state of the contract are displayed in a pane. Choose the action you want to take in the drop-down. 
 
-    ![Eylem seçin](./media/use/choose-action.png)
+    ![Choose action](./media/use/choose-action.png)
 
-5. Eylemi başlatmak için **eylem al** ' ı seçin.
-6. Eylem için parametreler gerekliyse, eylem için değerleri belirtin.
+5. Select **Take action** to initiate the action.
+6. If parameters are required for the action, specify the values for the action.
 
-    ![İşlem yapın](./media/use/take-action.png)
+    ![Take action](./media/use/take-action.png)
 
-7. Eylemi yürütmek için **eylem al** ' ı seçin.
+7. Select **Take action** to execute the action.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure blok zinciri uygulama sürümü oluşturma](version-app.md)
+> [Azure Blockchain Workbench application versioning](version-app.md)

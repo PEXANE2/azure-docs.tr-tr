@@ -1,28 +1,24 @@
 ---
 title: 'Quickstart: Create a blueprint with REST API'
 description: In this quickstart, you use Azure Blueprints to create, define, and deploy artifacts using the REST API.
-ms.date: 02/04/2019
+ms.date: 11/21/2019
 ms.topic: quickstart
-ms.openlocfilehash: 40ae1eb3647f1eba6df920459fcc3673b31bfa01
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0338afb3dbcb7b2c6d7d204d4387873ac7607182
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74217054"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74322167"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Quickstart: Define and Assign an Azure Blueprint with REST API
 
 Şema oluşturma ve atama süreçlerini anlamak, ortak tutarlılık desenlerini tanımlamanızı ve Resource Manager şablonlarını, ilkelerini, güvenlik düzeyini ve daha fazlasını temel alan yeniden kullanılabilir ve hızla dağıtılabilir yapılandırmalar geliştirmenizi sağlar. Bu öğreticide kuruluşunuzda aşağıdakiler gibi şema oluşturma, yayımlama ve atama konusundaki yaygın görevlerin bazılarını yerine getirmek için Azure Blueprints'i kullanmayı öğreneceksiniz:
 
-> [!div class="checklist"]
-> - Yeni bir şema oluşturma ve çeşitli desteklenen yapıtlar ekleme
-> - **Taslak** durumundaki bir şemada değişiklik yapma
-> - Bir şemayı **Yayımlandı** durumuna getirerek atamaya hazır hale getirme
-> - Bir şemayı var olan bir aboneliğe atama
-> - Atanmış bir şemanın durumunu ve ilerlemesini denetleme
-> - Bir aboneliğe atanmış olan şemayı kaldırma
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun.
+
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="getting-started-with-rest-api"></a>REST API'sini kullanmaya başlama
 
@@ -393,7 +389,8 @@ Her bir REST API URI'sinde kendi değerlerinizle değiştirmeniz gereken değiş
 
    - User-assigned managed identity
 
-     A blueprint assignment can also use a [user-assigned managed identity](../../active-directory/managed-identities-azure-resources/overview.md). In this case, the **identity** portion of the request body changes as follows.  Replace `{yourRG}` and `{userIdentity}` with your resource group name and the name of your user-assigned managed identity, respectively.
+     A blueprint assignment can also use a [user-assigned managed identity](../../active-directory/managed-identities-azure-resources/overview.md).
+     In this case, the **identity** portion of the request body changes as follows. Replace `{yourRG}` and `{userIdentity}` with your resource group name and the name of your user-assigned managed identity, respectively.
 
      ```json
      "identity": {
@@ -432,9 +429,7 @@ Bir şemanın kendisini kaldırmak için aşağıdaki REST API işlemini kullan�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Şema yaşam döngüsü](./concepts/lifecycle.md) hakkında bilgi edinin.
-- [Statik ve dinamik parametrelerin](./concepts/parameters.md) kullanımını anlayın.
-- [Şema sıralama düzenini](./concepts/sequencing-order.md) özelleştirmeyi öğrenin.
-- [Şema kaynak kilitleme](./concepts/resource-locking.md) özelliğini kullanmayı öğrenin.
-- [Mevcut atamaları güncelleştirmeyi](./how-to/update-existing-assignments.md) öğrenin.
-- [Genel sorun giderme](./troubleshoot/general.md) adımlarıyla şema atama sorunlarını giderin.
+In this quickstart, you've created, assigned, and removed a blueprint with REST API. To learn more about Azure Blueprints, continue to the blueprint lifecycle article.
+
+> [!div class="nextstepaction"]
+> [Learn about the blueprint lifecycle](./concepts/lifecycle.md)

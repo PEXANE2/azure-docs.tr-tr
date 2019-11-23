@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory Kimlik Koruması 'de Multi-Factor Authentication kayıt ilkesini yapılandırma
-description: Azure AD Kimlik Koruması Multi-Factor Authentication kayıt ilkesini nasıl yapılandıracağınızı öğrenin.
+title: Configure the MFA registration policy - Azure Active Directory Identity Protection
+description: Learn how to configure the Azure AD Identity Protection multi-factor authentication registration policy.
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -11,52 +11,52 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc98f645c6b24069e090560a049ccb4fcd03dfec
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 2fa6a4cf184b426355f62117ea51642127eee529
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72887578"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74382136"
 ---
-# <a name="how-to-configure-the-azure-multi-factor-authentication-registration-policy"></a>Nasıl yapılır: Azure Multi-Factor Authentication kayıt ilkesini yapılandırma
+# <a name="how-to-configure-the-azure-multi-factor-authentication-registration-policy"></a>How To: Configure the Azure Multi-Factor Authentication registration policy
 
-Azure AD Kimlik Koruması, bir koşullu erişim ilkesini, oturum açmak istediğiniz modern kimlik doğrulama uygulamasına bakılmaksızın MFA kaydı gerektirecek şekilde yapılandırarak Azure Multi-Factor Authentication (MFA) kaydını yönetmenize yardımcı olur.
+Azure AD Identity Protection helps you manage the roll-out of Azure Multi-Factor Authentication (MFA) registration by configuring a Conditional Access policy to require MFA registration no matter what modern authentication app you are signing in to.
 
-## <a name="what-is-the-azure-multi-factor-authentication-registration-policy"></a>Azure Multi-Factor Authentication kayıt ilkesi nedir?
+## <a name="what-is-the-azure-multi-factor-authentication-registration-policy"></a>What is the Azure Multi-Factor Authentication registration policy?
 
-Azure Multi-Factor Authentication, yalnızca bir Kullanıcı adı ve paroladan fazlasını kullandığınızı doğrulamak için bir yol sağlar. Kullanıcı oturum açma işlemlerinin ikinci bir güvenlik katmanını sağlar. Kullanıcıların MFA istemlerine yanıt verebilmeleri için önce Azure Multi-Factor Authentication 'e kaydolmaları gerekir.
+Azure Multi-Factor Authentication provides a means to verify who you are using more than just a username and password. It provides a second layer of security to user sign-ins. In order for users to be able to respond to MFA prompts, they must first register for Azure Multi-Factor Authentication.
 
-Kullanıcı oturum açma işlemleri için Azure Multi-Factor Authentication gerektirmenizi öneririz, çünkü:
+We recommend that you require Azure Multi-Factor Authentication for user sign-ins because it:
 
-- Bir dizi doğrulama seçeneği aracılığıyla güçlü kimlik doğrulaması sunar.
-- Kuruluşunuzun kimlik korumasında risk algılamalarını kendi kendine düzeltmesini sağlamak için temel bir rol oynar.
+- Delivers strong authentication through a range of verification options.
+- Plays a key role in preparing your organization to self-remediate from risk detections in Identity Protection.
 
-Azure Multi-Factor Authentication hakkında daha fazla bilgi için bkz. [azure Multi-Factor Authentication nedir?](../authentication/howto-mfa-getstarted.md)
+For more information on Azure Multi-Factor Authentication, see [What is Azure Multi-Factor Authentication?](../authentication/howto-mfa-getstarted.md)
 
 ## <a name="policy-configuration"></a>İlke yapılandırması
 
 1. [Azure portalına](https://portal.azure.com) gidin.
-1. **Azure Active Directory** > **güvenlik** > **kimlik koruması** > **MFA kayıt ilkesi**' ne gidin.
-   1. **Atamalar** altında
-      1. **Kullanıcılar** - **tüm kullanıcılar** ' ı seçin veya dağıtımı sınırlandırdıysanız **bireyler ve gruplar ' ı seçin** .
-         1. İsteğe bağlı olarak, kullanıcıların ilkeden hariç tutulmasını seçebilirsiniz.
-   1. **Denetimler** altında
-      1. CheckBox 'ın **Azure MFA kaydının** seçili olduğundan emin olun ve **Seç ' i**seçin.
-   1. **İlke** - zorla
-   1. **Kaydet**
+1. Browse to **Azure Active Directory** > **Security** > **Identity Protection** > **MFA registration policy**.
+   1. Under **Assignments**
+      1. **Users** - Choose **All users** or **Select individuals and groups** if limiting your rollout.
+         1. Optionally you can choose to exclude users from the policy.
+   1. Under **Controls**
+      1. Ensure the checkbox **Require Azure MFA registration** is checked and choose **Select**.
+   1. **Enforce Policy** - **On**
+   1. **Save**
 
-## <a name="user-experience"></a>Kullanıcı deneyimi
+## <a name="user-experience"></a>User experience
 
-Azure Active Directory Kimlik Koruması, kullanıcılarınıza etkileşimli olarak oturum açtıklarında kaydolmaları istenir ve kayıt işleminin tamamlanışında 14 gün daha olur. Bu 14 günlük süre boyunca kayıt atlayabilir, ancak sürenin sonunda oturum açma işlemini tamamlayabilmeleri için önce kaydolmaları gerekecektir.
+Azure Active Directory Identity Protection will prompt your users to register the next time they sign in interactively and they will have 14 days to complete registration. During this 14-day period, they can bypass registration but at the end of the period they will be required to register before they can complete the sign-in process.
 
-İlgili Kullanıcı deneyimine genel bir bakış için bkz.:
+For an overview of the related user experience, see:
 
-- [Azure AD kimlik koruması Ile oturum açma deneyimleri](concept-identity-protection-user-experience.md).  
+- [Sign-in experiences with Azure AD Identity Protection](concept-identity-protection-user-experience.md).  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Oturum açma ve Kullanıcı risk ilkelerini etkinleştir](howto-identity-protection-configure-risk-policies.md)
+- [Enable sign-in and user risk policies](howto-identity-protection-configure-risk-policies.md)
 
-- [Azure AD self servis parola sıfırlamayı etkinleştirme](../authentication/howto-sspr-deployment.md)
+- [Enable Azure AD self-service password reset](../authentication/howto-sspr-deployment.md)
 
-- [Azure Multi-Factor Authentication etkinleştirme](../authentication/howto-mfa-getstarted.md)
+- [Enable Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure VM için sistemin yeniden başlatılmasını anlama | Microsoft Docs
-description: Bir VM 'nin yeniden başlatılmasına neden olabilecek olayları listeler
+title: Understand a system reboot for an Azure VM | Microsoft Docs
+description: Lists the events that can cause a VM to reboot
 services: virtual-machines
 documentationcenter: ''
 author: genlin
@@ -13,113 +13,113 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: a536eb89f2040333617329e963ce00f5c6b1ba7a
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 4026de0b13a143a6bd3905e3d4fbb5071e196c21
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086974"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74384239"
 ---
-# <a name="understand-a-system-reboot-for-azure-vm"></a>Azure VM için sistemin yeniden başlatılmasını anlama
+# <a name="understand-a-system-reboot-for-azure-vm"></a>Understand a system reboot for Azure VM
 
-Azure sanal makineleri (VM 'Ler) bazen, yeniden başlatma işlemini başlatmaktan herhangi bir kanıt olmadan, görünür bir nedenle yeniden başlatılabilir. Bu makalede, sanal makinelerin yeniden başlatılmasına neden olabilecek eylemler ve olaylar listelenmekte ve beklenmeyen yeniden başlatma sorunlarından kaçının veya bu sorunların etkilerini azaltabilirsiniz.
+Azure virtual machines (VMs) might sometimes reboot for no apparent reason, without evidence of your having initiated the reboot operation. This article lists the actions and events that can cause VMs to reboot and provides insight into how to avoid unexpected reboot issues or reduce the impact of such issues.
 
-## <a name="configure-the-vms-for-high-availability"></a>Yüksek kullanılabilirlik için VM 'Leri yapılandırma
+## <a name="configure-the-vms-for-high-availability"></a>Configure the VMs for high availability
 
-Azure 'da çalışan bir uygulamayı VM yeniden başlatmaları ve kapalı kalma süresine karşı korumanın en iyi yolu, VM 'Leri yüksek kullanılabilirlik için yapılandırmaktır.
+The best way to protect an application that's running on Azure against VM reboots and downtime is to configure the VMs for high availability.
 
-Uygulamanızda bu artıklık düzeyini sağlamak için bir kullanılabilirlik kümesinde iki veya daha fazla VM 'yi gruplandırmalarını öneririz. Bu yapılandırma, planlı veya plansız bir bakım olayı sırasında en az bir VM 'nin kullanılabilmesini ve yüzde 99,95 [Azure SLA 'sını](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_5/)karşılamasını sağlar.
+To provide this level of redundancy to your application, we recommend that you group two or more VMs in an availability set. This configuration ensures that during either a planned or unplanned maintenance event, at least one VM is available and meets the 99.95 percent [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_5/).
 
-Kullanılabilirlik kümeleri hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
+For more information about availability sets, see the following articles:
 
-- [VM 'lerin kullanılabilirliğini yönetme](../windows/manage-availability.md)
-- [VM 'lerin kullanılabilirliğini yapılandırma](../windows/classic/configure-availability.md)
+- [Manage the availability of VMs](../windows/manage-availability.md)
+- [Configure availability of VMs](../windows/classic/configure-availability.md)
 
-## <a name="resource-health-information"></a>Kaynak Durumu bilgileri
+## <a name="resource-health-information"></a>Resource Health information
 
-Azure Kaynak Durumu, bireysel Azure kaynaklarının sistem durumunu ortaya çıkaran ve sorun giderme sorunları için eyleme dönüştürülebilir rehberlik sağlayan bir hizmettir. Sunuculara veya altyapı öğelerine doğrudan erişmek mümkün olmayan bir bulut ortamında, Kaynak Durumu amacı, sorun giderme sırasında harcadığınız süreyi azaltmaktır. Özellikle, bu, sorunun kökünün uygulamada mı yoksa Azure platformunun içindeki bir olayda mi olduğunu belirlemek için harcadığınız süreyi azaltmaktır. Daha fazla bilgi için bkz. [kaynak durumu anlama ve kullanma](../../resource-health/resource-health-overview.md).
+Azure Resource Health is a service that exposes the health of individual Azure resources and provides actionable guidance for troubleshooting problems. In a cloud environment where it isn’t possible to directly access servers or infrastructure elements, the goal of Resource Health is to reduce the time that you spend on troubleshooting. In particular, the aim is to reduce the time that you spend determining whether the root of the problem lies in the application or in an event inside the Azure platform. For more information, see [Understand and use Resource Health](../../resource-health/resource-health-overview.md).
 
-## <a name="actions-and-events-that-can-cause-the-vm-to-reboot"></a>VM 'nin yeniden başlatılmasına neden olabilecek eylemler ve olaylar
+## <a name="actions-and-events-that-can-cause-the-vm-to-reboot"></a>Actions and events that can cause the VM to reboot
 
 ### <a name="planned-maintenance"></a>Planlı bakım
 
-Microsoft Azure, VM 'Leri kapsayan konak altyapısının güvenilirliğini, performansını ve güvenliğini geliştirmek için düzenli olarak dünya genelinde güncelleştirmeler yapar. Bellek koruma güncelleştirmeleri de dahil olmak üzere bu güncelleştirmelerin birçoğu, sanal makinelerinize veya bulut hizmetlerinize herhangi bir etki olmadan gerçekleştirilir.
+Microsoft Azure periodically performs updates across the globe to improve the reliability, performance, and security of the host infrastructure that underlies VMs. Many of these updates, including memory-preserving updates, are performed without any impact on your VMs or cloud services.
 
-Ancak bazı güncelleştirmeler için yeniden başlatma gerekir. Bu gibi durumlarda, altyapı düzeltme eki uygulanırken sanal makineler kapatılır ve sonra sanal makineler yeniden başlatılır.
+However, some updates do require a reboot. In such cases, the VMs are shut down while we patch the infrastructure, and then the VMs are restarted.
 
-Azure planlı bakımın ne olduğunu ve Linux sanal makinelerinizin kullanılabilirliğini nasıl etkileyebileceğini anlamak için burada listelenen makalelere bakın. Makaleler Azure planlı bakım işlemi ve etkiyi daha da azaltmak için planlı bakımın nasıl zamanlanacağı hakkında arka plan bilgileri sağlar.
+To understand what Azure planned maintenance is and how it can affect the availability of your Linux VMs, see the articles listed here. Makaleler Azure planlı bakım işlemi ve etkiyi daha da azaltmak için planlı bakımın nasıl zamanlanacağı hakkında arka plan bilgileri sağlar.
 
 - [Azure’da VM’ler için planlı bakım](../windows/planned-maintenance.md)
 - [Azure sanal makinelerinde planlı bakımı zamanlama](../windows/classic/planned-maintenance-schedule.md)
 
 ### <a name="memory-preserving-updates"></a>Bellek koruma güncelleştirmeleri
 
-Microsoft Azure Bu güncelleştirme sınıfı için, kullanıcılar çalışan VM 'Leri üzerinde hiçbir etkisi olmaz. Bu güncelleştirmelerin çoğu, çalışan örneği engellemeden güncelleştirilebilecek bileşenlere veya hizmetler içindir. Bazıları, VM 'lerin yeniden başlatılması olmadan uygulanabilen ana bilgisayar işletim sistemindeki platform altyapı güncelleştirmeleridir.
+For this class of updates in Microsoft Azure, users experience no impact on their running VMs. Bu güncelleştirmelerin çoğu, çalışan örneği engellemeden güncelleştirilebilecek bileşenlere veya hizmetler içindir. Some are platform infrastructure updates on the host operating system that can be applied without a reboot of the VMs.
 
-Bu bellek koruma güncelleştirmeleri, yerinde dinamik geçiş olanağı sağlayan teknolojiyle gerçekleştirilir. Güncelleştirilebileceği zaman, sanal makine *duraklatılmış* duruma gelir. Bu durum RAM belleğini korur ve bu arada alttaki konak işletim sistemi gerekli güncelleştirmeleri ve düzeltme eklerini alır. VM duraklatıldıktan sonra 30 saniye içinde devam ettirilir. VM devam ettirildikten sonra saati otomatik olarak eşitlenir.
+Bu bellek koruma güncelleştirmeleri, yerinde dinamik geçiş olanağı sağlayan teknolojiyle gerçekleştirilir. When it is being updated, the VM is placed in a *paused* state. Bu durum RAM belleğini korur ve bu arada alttaki konak işletim sistemi gerekli güncelleştirmeleri ve düzeltme eklerini alır. VM duraklatıldıktan sonra 30 saniye içinde devam ettirilir. VM devam ettirildikten sonra saati otomatik olarak eşitlenir.
 
-Kısa duraklama süresi nedeniyle, bu mekanizmadan güncelleştirme dağıtmak VM 'lerdeki etkiyi büyük ölçüde azaltır. Ancak, tüm güncelleştirmeler bu şekilde dağıtılamaz. 
+Because of the short pause period, deploying updates through this mechanism greatly reduces the impact on the VMs. However, not all updates can be deployed in this way. 
 
 Çok örnekli güncelleştirmeler (bir kullanılabilirlik kümesindeki VM'ler için), bir seferde bir güncelleme etki alanı şeklinde uygulanır.
 
 > [!NOTE]
-> Eski çekirdek sürümlerine sahip Linux makineler, bu güncelleştirme yöntemi sırasında bir çekirdek panik tarafından etkilendi. Bu sorundan kaçınmak için çekirdek sürümü 3.10.0-327.10.1 veya sonraki bir sürüme güncelleştirin. Daha fazla bilgi için bkz. [ana bilgisayar düğümü yükseltildikten sonra 3,10 tabanlı çekirdek bölmeleri üzerinde Azure Linux sanal makinesi](https://support.microsoft.com/help/3212236).
+> Linux machines that have old kernel versions are affected by a kernel panic during this update method. To avoid this issue, update to kernel version 3.10.0-327.10.1 or later. For more information, see [An Azure Linux VM on a 3.10-based kernel panics after a host node upgrade](https://support.microsoft.com/help/3212236).
 
-### <a name="user-initiated-reboot-or-shutdown-actions"></a>Kullanıcı tarafından başlatılan yeniden başlatma veya kapalı eylemler
+### <a name="user-initiated-reboot-or-shutdown-actions"></a>User-initiated reboot or shutdown actions
 
-Azure portal, Azure PowerShell, komut satırı arabiriminden veya API 'yi sıfırladıktan sonra, olayı [Azure etkinlik günlüğünde](../../azure-monitor/platform/activity-logs-overview.md)bulabilirsiniz.
+If you perform a reboot from the Azure portal, Azure PowerShell, command-line interface, or REST API, you can find the event in the [Azure Activity Log](../../azure-monitor/platform/activity-logs-overview.md).
 
-Eylemi VM 'nin işletim sisteminden gerçekleştirirseniz, olayı sistem günlüklerinde bulabilirsiniz.
+If you perform the action from the VM's operating system, you can find the event in the system logs.
 
-Genellikle VM 'nin yeniden başlatılmasına neden olan diğer senaryolar, birden çok yapılandırma değiştirme eylemi içerir. Genellikle, belirli bir eylemi yürütmenin VM 'nin yeniden başlatılmasının sonucuna işaret edecek bir uyarı iletisi görürsünüz. Örnek olarak, tüm VM yeniden boyutlandırma işlemleri, yönetim hesabının parolasını değiştirme ve statik bir IP adresi ayarlama sayılabilir.
+Other scenarios that usually cause the VM to reboot include multiple configuration-change actions. You'll ordinarily see a warning message indicating that executing a particular action will result in a reboot of the VM. Examples include any VM resize operations, changing the password of the administrative account, and setting a static IP address.
 
-### <a name="azure-security-center-and-windows-update"></a>Azure Güvenlik Merkezi ve Windows Update
+### <a name="azure-security-center-and-windows-update"></a>Azure Security Center and Windows Update
 
-Azure Güvenlik Merkezi, eksik işletim sistemi güncelleştirmeleri için günlük Windows ve Linux VM 'lerini izler. Güvenlik Merkezi, Windows VM 'de hangi hizmetin yapılandırıldığına bağlı olarak Windows Update veya Windows Server Update Services (WSUS) ' dan kullanılabilen güvenlik ve kritik güncelleştirmeler listesini alır. Güvenlik Merkezi, Linux sistemleri için en son güncelleştirmeleri de denetler. SANAL makinenizde bir sistem güncelleştirmesi eksikse, Güvenlik Merkezi, sistem güncelleştirmelerini uygulamanızı önerir. Bu sistem güncelleştirmelerinin uygulaması, Azure portal Güvenlik Merkezi aracılığıyla denetlenir. Bazı güncelleştirmeler uygulandıktan sonra, VM yeniden başlatmaları gerekebilir. Daha fazla bilgi için bkz. [Azure Güvenlik Merkezi 'nde sistem güncelleştirmelerini uygulama](../../security-center/security-center-apply-system-updates.md).
+Azure Security Center monitors daily Windows and Linux VMs for missing operating-system updates. Security Center retrieves a list of available security and critical updates from Windows Update or Windows Server Update Services (WSUS), depending on which service is configured on a Windows VM. Security Center also checks for the latest updates for Linux systems. If your VM is missing a system update, Security Center recommends that you apply system updates. The application of these system updates is controlled through the Security Center in the Azure portal. After you apply some updates, VM reboots might be required. For more information, see [Apply system updates in Azure Security Center](../../security-center/security-center-apply-system-updates.md).
 
-Şirket içi sunucular gibi, Azure, bu makinelerin kullanıcıları tarafından yönetilmesi amaçlanan için Windows Update güncelleştirmeleri Windows VM 'lerine itelemez. Ancak, otomatik Windows Update ayarını etkin bırakmanız önerilir. Güncelleştirmelerin Windows Update otomatik olarak yüklenmesi Ayrıca güncelleştirmeler uygulandıktan sonra yeniden başlatma işleminin oluşmasına neden olabilir. Daha fazla bilgi için bkz. [WINDOWS Update SSS](https://support.microsoft.com/help/12373/windows-update-faq).
+Like on-premises servers, Azure does not push updates from Windows Update to Windows VMs, because these machines are intended to be managed by their users. You are, however, encouraged to leave the automatic Windows Update setting enabled. Automatic installation of updates from Windows Update can also cause reboots to occur after the updates are applied. For more information, see [Windows Update FAQ](https://support.microsoft.com/help/12373/windows-update-faq).
 
-### <a name="other-situations-affecting-the-availability-of-your-vm"></a>VM 'nizin kullanılabilirliğini etkileyen diğer durumlar
+### <a name="other-situations-affecting-the-availability-of-your-vm"></a>Other situations affecting the availability of your VM
 
-Azure 'un VM kullanımını etkin bir şekilde askıya alabileceği başka durumlar da vardır. Bu eylem yapılmadan önce e-posta bildirimleri alacaksınız, bu nedenle temeldeki sorunları çözme şansı elde edersiniz. Sanal makine kullanılabilirliğini etkileyen sorunların örnekleri, güvenlik ihlallerinin yanı sıra ödeme yöntemlerinin sona erme süresini içerir.
+There are other cases in which Azure might actively suspend the use of a VM. You'll receive email notifications before this action is taken, so you'll have a chance to resolve the underlying issues. Examples of issues that affect VM availability include security violations and the expiration of payment methods.
 
-### <a name="host-server-faults"></a>Ana sunucu hataları
+### <a name="host-server-faults"></a>Host server faults
 
-VM, bir Azure veri merkezinde çalışan fiziksel bir sunucuda barındırılır. Fiziksel sunucu, diğer diğer Azure bileşenlerine ek olarak konak Aracısı adlı bir aracı çalıştırır. Fiziksel sunucudaki bu Azure yazılım bileşenleri yanıt vermemeye başlarsa, izleme sistemi, kurtarmayı denemek için ana bilgisayar sunucusunun yeniden başlatılmasını tetikler. VM genellikle beş dakika içinde yeniden kullanılabilir ve daha önceden aynı ana bilgisayarda canlı olmaya devam eder.
+The VM is hosted on a physical server that is running inside an Azure datacenter. The physical server runs an agent called the Host Agent in addition to a few other Azure components. When these Azure software components on the physical server become unresponsive, the monitoring system triggers a reboot of the host server to attempt recovery. The VM is usually available again within five minutes and continues to live on the same host as previously.
 
-Sunucu hataları genellikle bir sabit disk veya katı hal sürücüsü arızası gibi donanım arızasından kaynaklanır. Azure bu oluşumları sürekli izler, temeldeki hataları tanımlar ve hafifletme uygulandıktan ve sınandıktan sonra güncelleştirmeleri kaydeder.
+Server faults are usually caused by hardware failure, such as the failure of a hard disk or solid-state drive. Azure continuously monitors these occurrences, identifies the underlying bugs, and rolls out updates after the mitigation has been implemented and tested.
 
-Bazı ana bilgisayar sunucusu hataları bu sunucuya özgü olabileceğinden, sanal makineyi el ile başka bir konak sunucusuna yeniden dağıtarak yinelenen bir VM yeniden başlatma durumu artırılabilir. Bu işlem, VM 'nin Ayrıntılar sayfasındaki yeniden **dağıtma** seçeneği kullanılarak veya Azure Portal VM 'yi durdurup yeniden başlatarak tetiklenebilir.
+Because some host server faults can be specific to that server, a repeated VM reboot situation might be improved by manually redeploying the VM to another host server. This operation can be triggered by using the **redeploy** option on the details page of the VM, or by stopping and restarting the VM in the Azure portal.
 
-### <a name="auto-recovery"></a>Otomatik kurtarma
+### <a name="auto-recovery"></a>Auto-recovery
 
-Ana bilgisayar sunucusu herhangi bir nedenle yeniden başlatılamediğinde, Azure platformu, daha fazla araştırma için hatalı ana bilgisayar sunucusunu döndürmeden geri almak üzere bir otomatik kurtarma eylemi başlatır. 
+If the host server cannot reboot for any reason, the Azure platform initiates an auto-recovery action to take the faulty host server out of rotation for further investigation. 
 
-Bu konaktaki tüm VM 'Ler otomatik olarak farklı, sağlıklı bir konak sunucusuna yeniden konumlandırılır. Bu işlem genellikle 15 dakika içinde tamamlanır. Otomatik kurtarma işlemi hakkında daha fazla bilgi edinmek için bkz. [sanal makinelerin otomatik olarak kurtarılması](https://azure.microsoft.com/blog/service-healing-auto-recovery-of-virtual-machines).
+All VMs on that host are automatically relocated to a different, healthy host server. This process is usually complete within 15 minutes. To learn more about the auto-recovery process, see [Auto-recovery of VMs](https://azure.microsoft.com/blog/service-healing-auto-recovery-of-virtual-machines).
 
-### <a name="unplanned-maintenance"></a>Planlanmamış bakım
+### <a name="unplanned-maintenance"></a>Unplanned maintenance
 
-Nadir durumlarda Azure işlem ekibinin, Azure platformunun genel durumunu sağlamak için bakım etkinlikleri gerçekleştirmesi gerekebilir. Bu davranış, VM kullanılabilirliğini etkileyebilir ve genellikle daha önce açıklandığı gibi otomatik kurtarma eylemine neden olur.  
+On rare occasions, the Azure operations team might need to perform maintenance activities to ensure the overall health of the Azure platform. This behavior might affect VM availability, and it usually results in the same auto-recovery action as described earlier.  
 
-Planlanmamış bakım şunları içerir:
+Unplanned maintenance include the following:
 
-- Acil düğüm birleştirme
-- Acil ağ anahtarı güncelleştirmeleri
+- Urgent node defragmentation
+- Urgent network switch updates
 
-### <a name="vm-crashes"></a>VM çöküyor
+### <a name="vm-crashes"></a>VM crashes
 
-VM 'deki sorunlar nedeniyle sanal makineler yeniden başlatılabilir. VM üzerinde çalışan iş yükü veya rol, Konuk işletim sistemi içinde bir hata denetimi tetiklenebilir. Kilitlenme nedenini belirlemede yardımcı olması için, Windows VM 'Leri için sistem ve uygulama günlüklerini ve Linux VM 'lerinin seri günlüklerini görüntüleyin.
+VMs might restart because of issues within the VM itself. The workload or role that's running on the VM might trigger a bug check within the guest operating system. For help determining the reason for the crash, view the system and application logs for Windows VMs, and the serial logs for Linux VMs.
 
-### <a name="storage-related-forced-shutdowns"></a>Depolama ile ilgili zorlamalı kapatmalar
+### <a name="storage-related-forced-shutdowns"></a>Storage-related forced shutdowns
 
-Azure 'daki VM 'Ler, Azure depolama altyapısında barındırılan işletim sistemi ve veri depolama için sanal disklere bağımlıdır. VM ve ilişkili sanal diskler arasındaki kullanılabilirlik veya bağlantı 120 saniyeden uzun bir süre boyunca etkilendiğinde, Azure platformu veri bozulmasını önlemek için VM 'lerin zorla kapatılmasını gerçekleştirir. Depolama bağlantısı geri yüklendikten sonra VM 'Ler otomatik olarak yeniden desteklenir. 
+VMs in Azure rely on virtual disks for operating system and data storage that is hosted on the Azure Storage infrastructure. Whenever the availability or connectivity between the VM and the associated virtual disks is affected for more than 120 seconds, the Azure platform performs a forced shutdown of the VMs to avoid data corruption. The VMs are automatically powered back on after storage connectivity has been restored. 
 
-Kapatılma süresi beş dakika kadar kısa olabilir, ancak önemli ölçüde uzun sürebilir. Aşağıda, depolama ile ilgili zorlanan kapatmalar ile ilişkili belirli durumlardan biri verilmiştir: 
+The duration of the shutdown can be as short as five minutes but can be significantly longer. The following is one of the specific cases that is associated with storage-related forced shutdowns: 
 
-**GÇ sınırlarını aşma**
+**Exceeding IO limits**
 
-G/ç istekleri sürekli kısıtlandığı için VM 'Ler, saniye başına g/ç işlemi (ıOPS) birimi disk için g/ç sınırlarını aştığından geçici olarak devre dışı olabilir. (Standart disk depolaması 500 ıOPS ile sınırlıdır.) Bu sorunu azaltmak için, iş yüküne bağlı olarak disk şeritleme veya Konuk VM 'nin içindeki depolama alanını yapılandırma ' yı kullanın. Ayrıntılar için bkz. [Azure VM 'Leri En Iyi depolama performansı Için yapılandırma](https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx).
+VMs might be temporarily shut down when I/O requests are consistently throttled because the volume of I/O operations per second (IOPS) exceeds the I/O limits for the disk. (Standard disk storage is limited to 500 IOPS.) To mitigate this issue, use disk striping or configure the storage space inside the guest VM, depending on the workload. For details, see [Configuring Azure VMs for Optimal Storage Performance](https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx).
 
-### <a name="other-incidents"></a>Diğer olaylar
+### <a name="other-incidents"></a>Other incidents
 
-Nadir koşullarda, yaygın olarak karşılaşılan bir sorun, bir Azure veri merkezinde birden çok sunucuyu etkileyebilir. Bu sorun oluşursa, Azure ekibi etkilenen aboneliklere e-posta bildirimleri gönderir. [Azure hizmet durumu panosu](https://azure.microsoft.com/status/) ' nu ve devam eden kesintiler ve geçmiş olayların durumu için Azure Portal kontrol edebilirsiniz.
+In rare circumstances, a widespread issue can affect multiple servers in an Azure datacenter. If this issue occurs, the Azure team sends email notifications to the affected subscriptions. You can check the [Azure Service Health dashboard](https://azure.microsoft.com/status/) and the Azure portal for the status of ongoing outages and past incidents.

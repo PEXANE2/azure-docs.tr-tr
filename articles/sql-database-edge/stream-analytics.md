@@ -1,7 +1,7 @@
 ---
-title: SQL veritabanı DAC paketini kullanma ve Azure SQL veritabanı Edge ile Stream Analytics işleri | Microsoft Docs
-description: SQL veritabanı Edge 'de Stream Analytics işlerini kullanma hakkında bilgi edinin
-keywords: SQL veritabanı Edge, Stream Analytics, SqlPackage
+title: Using SQL Database DAC packages and Stream Analytics jobs with Azure SQL Database Edge | Microsoft Docs
+description: Learn about using Stream Analytics jobs in SQL Database Edge
+keywords: sql database edge, stream analytics, sqlpackage
 services: sql-database-edge
 ms.service: sql-database-edge
 ms.topic: conceptual
@@ -9,20 +9,20 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: c3ed84e06f693925ed8b484070616e223929e401
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 21a8bb6953fd879b17816361f536596571678697
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74108753"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74384168"
 ---
-# <a name="using-sql-database-dac-package-and-stream-analytics-job-with-sql-database-edge"></a>SQL veritabanı ile SQL veritabanı DAC paketi ve Stream Analytics işi kullanma
+# <a name="using-sql-database-dac-packages-and-stream-analytics-jobs-with-sql-database-edge"></a>Using SQL Database DAC packages and Stream Analytics jobs with SQL Database Edge
 
-Azure SQL veritabanı Edge önizlemesi, IoT ve Edge dağıtımları için iyileştirilmiş bir ilişkisel veritabanı altyapısıdır. Bu, sektör lideri performans, güvenlik ve sorgu işleme özellikleri sağlayan Microsoft SQL Server veritabanı altyapısının en son sürümlerinde oluşturulmuştur. Azure SQL veritabanı Edge, SQL Server sektör lideri ilişkisel veritabanı yönetim özelliklerinin yanı sıra gerçek zamanlı analiz ve karmaşık olay işleme için yerleşik akış özelliği sağlar.
+Azure SQL Database Edge Preview is an optimized relational database engine geared for IoT and edge deployments. It's built on the latest versions of the Microsoft SQL Server Database Engine, which provides industry-leading performance, security, and query processing capabilities. Along with the industry-leading relational database management capabilities of SQL Server, Azure SQL Database Edge provides in-built streaming capability for real-time analytics and complex event-processing.
 
-Azure SQL veritabanı Edge Ayrıca, SQL veritabanı kenarının dağıtımı sırasında kullanıcıların bir [SQL VERITABANı dac](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications) paketi dağıtmasını sağlayan, SqlPackage. exe ' nin yerel bir uygulamasını sağlar.
+Azure SQL Database Edge also provides a native implementation of SqlPackage.exe that enables you to deploy a [SQL Database DAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications) package during the deployment of SQL Database Edge.
 
-Azure SQL veritabanı Edge, IoT Edge modülünün *istenen özellikler* seçeneği aracılığıyla isteğe bağlı iki parametre sunar.
+Azure SQL Database Edge exposes two optional parameters through the `module twin's desired properties` option of the IoT Edge module:
 
 ```json
 {
@@ -36,35 +36,35 @@ Azure SQL veritabanı Edge, IoT Edge modülünün *istenen özellikler* seçene�
 
 |Alan | Açıklama |
 |------|-------------|
-| SQLPackage | SQL veritabanı DAC paketini içeren *. zip dosyası için Azure Blob depolama URI 'SI.
-| Aşama Jobınfo | ASA Edge işi için Azure Blob depolama URI 'SI. ASA Edge işini yayımlama hakkında daha fazla bilgi için [SQL veritabanı Edge için BIR asa Edge Işi yayımlama](/azure/sql-database-edge/stream-analytics#using-streaming-jobs-with-sql-database-edge)konusuna bakın.
+| SqlPackage | Azure Blob storage URI for the *.zip file that contains the SQL Database DAC package.
+| ASAJobInfo | Azure Blob storage URI for the ASA Edge job. For more information, see [Publishing an ASA Edge job for SQL Database Edge](/azure/sql-database-edge/stream-analytics#using-streaming-jobs-with-sql-database-edge).
 
-## <a name="using-sql-database-dac-packages-with-sql-database-edge"></a>SQL veritabanı kenarıyla SQL veritabanı DAC paketlerini kullanma
+## <a name="using-sql-database-dac-packages-with-sql-database-edge"></a>Using SQL Database DAC packages with SQL Database Edge
 
-SQL veritabanı kenarıyla SQL veritabanı DAC paketi (*. dacpac) kullanmak için lütfen aşağıda belirtilen adımları izleyin.
+To use a SQL Database DAC package (*.dacpac) with SQL Database Edge, take these steps:
 
-1. Bir SQL veritabanı DAC paketi oluşturun veya ayıklayın. Mevcut bir SQL veritabanı için bir DacPac oluşturmak üzere [mevcut bir VERITABANıNDAN dac ayıklama](/sql/relational-databases/data-tier-applications/extract-a-dac-from-a-database/) bölümünde bahsedilen kavramları kullanabilirsiniz.
+1. Create or extract a SQL Database DAC package. See [Extracting a DAC from a database](/sql/relational-databases/data-tier-applications/extract-a-dac-from-a-database/) for information on how to generate a DAC package for an existing SQL Server database.
 
-2. * *. Dacpac* kodu ve bir Azure Blob depolama hesabına yükleyin. Azure Blob depolamaya dosya yükleme hakkında daha fazla bilgi için bkz. [Azure Portal blob 'Ları yükleme, indirme ve listeleme](../storage/blobs/storage-quickstart-blobs-portal.md).
+2. Zip the *.dacpac and upload it to an Azure Blob storage account. For more information on uploading files to Azure Blob storage, see [Upload, download, and list blobs with the Azure portal](../storage/blobs/storage-quickstart-blobs-portal.md).
 
-3. Azure portal kullanarak ZIP dosyası için bir SAS imzası oluşturun. Daha fazla bilgi için bkz. [paylaşılan erişim imzaları (SAS) ile erişim temsilcisi](../storage/common/storage-sas-overview.md).
+3. Generate a shared access signature for the zip file by using the Azure portal. For more information, see [Delegate access with shared access signatures (SAS)](../storage/common/storage-sas-overview.md).
 
-4. SQL veritabanı Edge modülü yapılandırmasını DAC paketi için SAS URI 'sini içerecek şekilde güncelleştirin. SQL veritabanı Edge modülünü güncelleştirmek için
+4. Update the SQL Database Edge module configuration to include the shared access URI for the DAC package. To update the SQL Database Edge module, take these steps:
 
-    1. Azure portal, IoT Hub dağıtımınıza gidin.
+    1. In the Azure portal, go to your IoT Hub deployment.
 
-    2. Sol taraftaki bölmede **IoT Edge**' ye tıklayın.
+    2. In the left pane, select **IoT Edge**.
 
-    3. **IoT Edge** sayfasında SQL veritabanı Edge modülünün dağıtıldığı IoT Edge bulup tıklayın.
+    3. On the **IoT Edge** page, find and select the IoT edge where the SQL Database Edge module is deployed.
 
-    4. Cihaz aygıtı *IoT Edge* sayfasında, **modülü ayarla**' ya tıklayın. 
+    4. On the **IoT Edge Device** device page, select **Set Module**.
 
-    5. **Modül ayarla** sayfasında SQL veritabanı Edge modülüne göre *Yapılandır* ' a tıklayın. 
+    5. On the **Set modules** page, select **Configure** against the SQL Database Edge module.
 
-    6. **IoT Edge özel modüller** bölmesinde, *Modül Ikizi istenen özelliklerini ayarla* ' yı seçin ve ardından istediğiniz özellikleri aşağıdaki örnekte gösterildiği gıbı SqlPackage seçeneğinin URI 'sini içerecek şekilde güncelleştirin. 
+    6. In the **IoT Edge Custom Modules** pane, select **Set module twin's desired properties**. Update the desired properties to include the URI for the `SQLPackage` option, as shown in the following example.
 
         > [!NOTE]
-        > Aşağıdaki SAS URI 'SI yalnızca gösterim amaçlıdır. Lütfen URI 'yi dağıtımınızdaki gerçek URI ile değiştirin.
+        > The SAS URI in the following JSON is just an example. Replace the URI with the actual URI from your deployment.
 
         ```json
             {
@@ -75,40 +75,40 @@ SQL veritabanı kenarıyla SQL veritabanı DAC paketi (*. dacpac) kullanmak içi
             }
         ```
 
-    7. **Kaydet**’e tıklayın.
+    7. **Kaydet**’i seçin.
 
-    8. **Modülleri ayarla** sayfasında *İleri*' ye tıklayın.
+    8. On the **Set modules** page, select **Next**.
 
-    9. **Modülleri ayarla** sayfasında *İleri* ' ye ve ardından **Gönder**' e tıklayın.
+    9. On the **Set modules** page, select **Next** and then **Submit**.
 
-5. Modül güncelleştirmesini gönderin, dacpac dosyası indirilir, sıkıştırıldı ve SQL veritabanı Edge örneğine göre dağıtılır.
+5. After the module update, the DAC package file is downloaded, unzipped, and deployed against the SQL Database Edge instance.
 
-## <a name="using-streaming-jobs-with-sql-database-edge"></a>SQL veritabanı kenarıyla akış işlerini kullanma
+## <a name="using-streaming-jobs-with-sql-database-edge"></a>Using streaming jobs with SQL Database Edge
 
-Azure SQL veritabanı ucunun, Stream Analytics çalışma zamanının yerel bir uygulamasına sahip olması. Bu, kullanıcıların bir Azure Stream Analytics Edge işi oluşturmalarına ve bu işi SQL veritabanı Edge akış işi olarak dağıtmasına olanak sağlar. Stream Analytics Edge işi oluşturmak için aşağıdaki adımları izleyin.
+Azure SQL Database Edge has a native implementation of the stream analytics runtime. This implementation enables you to create an Azure Stream Analytics edge job and deploy that job as a SQL Database Edge streaming job. To create a Stream Analytics edge job, complete these steps:
 
-1. Önizleme [URL 'sini](https://portal.azure.com/?microsoft_azure_streamanalytics_edgeadapterspreview=true)kullanarak Azure Portal gidin. Bu önizleme URL 'SI kullanıcıların Stream Analytics Edge işi için SQL veritabanı çıktısını yapılandırmalarına olanak sağlar.
+1. Go to the Azure portal by using the preview [URL](https://portal.azure.com/?microsoft_azure_streamanalytics_edgeadapterspreview=true). This preview URL enables you to configure SQL Database output for a Stream Analytics edge job.
 
-2. Yeni bir **IoT Edge üzerinde Azure Stream Analytics** işi oluşturun ve ana bilgisayar hedefleme **ucunu**seçin.
+2. Create a new **Azure Stream Analytics on IoT Edge** job. Choose the hosting environment that targets **Edge**.
 
-3. Azure Stream Analytics işi için *giriş* ve *Çıkış* tanımlayın. Her SQL çıktısı (aşağıda yapılandırılan), veritabanı içindeki tek bir tabloya bağlıdır. Verilerin birden çok tabloya akışını sağlamak için birden çok SQL veritabanı çıkışı oluşturmanız gerekir. SQL çıktıları farklı veritabanlarına işaret etmek üzere yapılandırılabilir.
+3. Define an input and output for the Azure Stream Analytics job. Each SQL output, which you'll set up here, is tied to a single table in the database. If you need to stream data to multiple tables, you'll need to create multiple SQL Database outputs. You can configure the SQL outputs to point to different databases.
 
-    *Giriş-kenar işinin girişi olarak EdgeHub ' ı seçin ve kaynak bilgilerini girin.*
+    **Input**. Choose EdgeHub as the input for the edge job, and provide the resource info.
 
-    *Çıkış-SQL veritabanını çıkış olarak seç, "SQL veritabanı ayarlarını el ile sağlayın" ve veritabanı ve tablo için yapılandırma ayrıntılarını sağlayın.*
+    **Output**. Select SQL Database the as output. Select **Provide SQL Database settings manually**. Provide the configuration details for the database and table.
 
     |Alan      | Açıklama |
     |---------------|-------------|
-    |Çıktı diğer adı | Çıkış diğer adının adı.|
-    |Veritabanı | SQL veritabanının adı. Bunun SQL veritabanı Edge örneğinde bulunan geçerli bir veritabanı adı olması gerekir.|
-    |Sunucu adı | SQL örneği için ad (veya IP adresi) ve bağlantı noktası numarası ayrıntıları. Bir SQL veritabanı Edge dağıtımı için sunucu adı olarak **TCP:., 1433** kullanabilirsiniz.|
-    |Kullanıcı adı | Yukarıda belirtilen veritabanına veri okuyucu ve veri yazıcı erişimi olan SQL oturum açma hesabı.|
-    |Parola | Yukarıda bahsedilen SQL oturum açma hesabının parolası.|
-    |Tablo | Akış işi için çıkış olacak tablonun adı.|
-    |Bölümlendirmeyi devralma| Bu SQL çıkış yapılandırma seçeneği, önceki sorgu adımlarınızın veya girişinin bölümleme düzeninin devralınmasını mümkün. Bu etkinken, disk tabanlı bir tabloya yazma ve işiniz için tamamen paralel topolojiye sahip olmak için daha iyi aktarım hızı görmeniz beklenir.|
-    |Toplu iş boyutu| Toplu iş boyutu, her toplu ekleme hareketiyle gönderilen en fazla kayıt sayısıdır.|
+    |Çıkış diğer adı | Name of the output alias.|
+    |Database | Name of the SQL database. It needs to be a valid name of a database that exists on the SQL Database Edge instance.|
+    |Sunucu adı | Name (or IP address) and port number details for the SQL instance. For a SQL Database Edge deployment, you can use **tcp:.,1433** for the server name.|
+    |Kullanıcı adı | SQL sign-in account that has data reader and data writer access to the database that you specified earlier.|
+    |Parola | Password for the SQL sign-in account that you specified earlier.|
+    |Tablo | Name of the table that will be output for the streaming job.|
+    |Inherit Partitioning| Enables inheriting the partitioning scheme of your previous query step or input. When this option is enabled, you can expect to see better throughput when you write to a disk-based table and have a fully parallel topology for your job.|
+    |Batch Size| The maximum number of records that's sent with every bulk insert transaction.|
 
-    Örnek giriş/çıkış yapılandırması aşağıda verilmiştir:
+    Here's a sample input/output configuration:
 
     ```txt
         Input:
@@ -118,7 +118,7 @@ Azure SQL veritabanı ucunun, Stream Analytics çalışma zamanının yerel bir 
             Encoding: UTF-8
             Event compression type: None
 
-        Output :
+        Output:
             Output alias: output
             Database:  MeasurementsDB
             Server name: tcp:.,1433
@@ -130,32 +130,32 @@ Azure SQL veritabanı ucunun, Stream Analytics çalışma zamanının yerel bir 
     ```
 
     > [!NOTE]
-    > Azure Stream Analytics için SQL çıkış bağdaştırıcısı hakkında daha fazla bilgi için bkz. [Azure SQL veritabanı 'na Azure Stream Analytics çıktısı](../stream-analytics/stream-analytics-sql-output-perf.md).
+    > For more information on the SQL output adapter for Azure Stream Analytics, see [Azure Stream Analytics output to Azure SQL Database](../stream-analytics/stream-analytics-sql-output-perf.md).
 
-4. Edge işi için ASA iş sorgusunu tanımlayın. Bu sorgu, sorguda giriş ve çıkış adları olarak tanımlanmış giriş/çıkış diğer adlarını kullanmalıdır. Daha fazla bilgi için bkz. [Stream Analytics sorgu dili başvurusu](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference).
+4. Define the ASA job query for the edge job. This query should use the defined input/output aliases as the input and output names in the query. For more information, see [Stream Analytics Query Language reference](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference).
 
-5. Edge işi için depolama hesabı ayarlarını belirleyin. Depolama hesabı, kenar işi için yayımlama hedefi olarak kullanılır.
+5. Set the storage account settings for the edge job. The storage account is used as the publishing target for the edge job.
 
-6. Yapılandır altında Yayımla ' yı seçin ve Yayımla düğmesine tıklayın. SQL veritabanı Edge modülü ile kullanmak için SAS URL 'sini kaydedin.
+6. Under **Configure**, select **Publish**, and then select the **Publish** button. Save the SAS URI for use with the SQL Database Edge module.
 
-### <a name="deploy-the-stream-analytics-edge-job-to-the-sql-database-edge"></a>Stream Analytics Edge işini SQL veritabanı kenarına dağıtma
+### <a name="deploy-the-stream-analytics-edge-job-to-sql-database-edge"></a>Deploy the Stream Analytics edge job to SQL Database Edge
 
-Akış işini SQL veritabanı Edge modülüne dağıtmak için SQL veritabanı Edge modülü yapılandırmasını, yukarıdaki adımdan akış işi için SAS URI 'sini içerecek şekilde güncelleştirin. SQL veritabanı Edge modülünü güncelleştirmek için
+To deploy the streaming job to the SQL Database Edge module, update the SQL Database Edge module configuration to include the SAS URI for the streaming job from the earlier step. To update the SQL Database Edge module:
 
-1. Azure portal, IoT Hub dağıtımınıza gidin.
+1. In the Azure portal, go to your IoT Hub deployment.
 
-2. Sol taraftaki bölmede **IoT Edge**' ye tıklayın.
+2. In the left pane, select **IoT Edge**.
 
-3. **IoT Edge** sayfasında SQL veritabanı Edge modülünün dağıtıldığı IoT Edge bulup tıklayın.
+3. On the **IoT Edge** page, find and select the IoT edge where the SQL Database Edge module is deployed.
 
-4. Cihaz aygıtı *IoT Edge* sayfasında, **modülü ayarla**' ya tıklayın. 
+4. On the **IoT Edge Device** device page, select **Set Module**.
 
-5. **Modül ayarla** sayfasında SQL veritabanı Edge modülüne göre *Yapılandır* ' a tıklayın. 
+5. On the **Set modules** page, select **Configure** against the SQL Database Edge module.
 
-6. **IoT Edge özel modüller** bölmesinde, *modülleri ayarla ikizi 'ın istenen özelliklerini* seçin ve ardından istediğiniz özellikleri aşağıdaki örnekte gösterildiği gibi ASAJOBıNFO seçeneğinin URI 'sini içerecek şekilde güncelleştirin. 
+6. In the **IoT Edge Custom Modules** pane, select **Set module twin's desired properties**. Update the desired properties to include the URI for the `ASAJobInfo` option, as shown in the following example.
 
     > [!NOTE]
-    > Aşağıdaki SAS URI 'SI yalnızca gösterim amaçlıdır. Lütfen URI 'yi dağıtımınızdaki gerçek URI ile değiştirin.
+    > The SAS URI in the following JSON is just an example. Replace the URI with the actual URI from your deployment.
 
     ```json
         {
@@ -166,17 +166,16 @@ Akış işini SQL veritabanı Edge modülüne dağıtmak için SQL veritabanı E
         }
     ```
 
-7. **Kaydet**’e tıklayın.
+7. **Kaydet**’i seçin.
 
-8. **Modülleri ayarla** sayfasında *İleri*' ye tıklayın.
+8. On the **Set modules** page, select **Next**.
 
-9. **Modülleri ayarla** sayfasında *İleri* ' ye ve ardından **Gönder**' e tıklayın.
+9. On the **Set modules** page, select **Next** and then **Submit**.
 
-10. Modül güncelleştirmesini gönderin, Stream Analytics iş dosyası SQL veritabanı Edge örneğine göre indirilir, sıkıştırıldı ve dağıtılır.
+10. After the module update, the stream analytics job file is downloaded, unzipped, and deployed against the SQL Database Edge instance.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Fiyatlandırma ve kullanılabilirliğe ilişkin ayrıntılar için bkz. [Azure SQL veritabanı Edge](https://azure.microsoft.com/services/sql-database-edge/).
-- Aboneliğiniz için Azure SQL veritabanı Edge 'i etkinleştirme isteği.
-- Başlamak için aşağıdakilere bakın:
-  - [Azure portal aracılığıyla SQL veritabanı ucunu dağıtma](deploy-portal.md)
+- For pricing and availability details, see [Azure SQL Database Edge](https://azure.microsoft.com/services/sql-database-edge/).
+- Request enabling Azure SQL Database Edge for your subscription.
+- To get started, see [Deploy SQL Database Edge through Azure portal](deploy-portal.md).

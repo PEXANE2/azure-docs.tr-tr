@@ -1,47 +1,47 @@
 ---
-title: Şema tanımlarını PowerShell ile içeri ve dışarı aktarma
-description: Şema tanımlarınız kodu olarak nasıl çalışacağınızı öğrenin. Dışarı aktarma ve içeri aktarma komutlarını kullanarak bunları paylaşabilirsiniz, kaynak denetimi yapın ve yönetin.
+title: Import and export blueprints with PowerShell
+description: Learn how to work with your blueprint definitions as code. Share, source control, and manage them using the export and import commands.
 ms.date: 09/03/2019
 ms.topic: conceptual
-ms.openlocfilehash: ca756ed093d5d423f6f83e5ca3953a8ecfce7d5a
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 2822fd1aea1911ba264113d43595346a612ebc50
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960379"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406349"
 ---
-# <a name="import-and-export-blueprint-definitions-with-powershell"></a>Şema tanımlarını PowerShell ile içeri ve dışarı aktarma
+# <a name="import-and-export-blueprint-definitions-with-powershell"></a>Import and export blueprint definitions with PowerShell
 
-Azure şemaları, Azure portal aracılığıyla tam olarak yönetilebilir. Kuruluşlar, şemaları kullanımıyla ilerletikçe, şema tanımlarını yönetilen kod olarak düşünmeye başlamalıdır. Bu kavram genellikle kod olarak altyapı (IAC) olarak adlandırılır. Şema tanımlarınızın kod olarak davranılması, Azure portal sunduğu avantajlardan daha fazla avantaj sunar. Bu avantajlar şunlardır:
+Azure Blueprints can be fully managed through Azure portal. As organizations advance in their use of Blueprints, they should start thinking of blueprint definitions as managed code. This concept is often referred to as Infrastructure as Code (IaC). Treating your blueprint definitions as code offers additional advantages beyond what Azure portal offers. These benefits include:
 
-- Şema tanımlarını paylaşma
-- Şema tanımlarınızı yedekleme
-- Farklı kiracılarda veya aboneliklerde şema tanımlarını yeniden kullanma
-- Şema tanımlarını kaynak denetimine yerleştirme
-  - Test ortamlarında şema tanımlarının otomatik testi
-  - Sürekli tümleştirme ve sürekli dağıtım (CI/CD) işlem hatları desteği
+- Sharing blueprint definitions
+- Backing up your blueprint definitions
+- Reusing blueprint definitions in different tenants or subscriptions
+- Placing the blueprint definitions in source control
+  - Automated testing of blueprint definitions in test environments
+  - Support of continuous integration and continuous deployment (CI/CD) pipelines
 
-Nedenleriniz ne olursa olsun, şema tanımlarınızı kod olarak yönetme avantajlara sahiptir. Bu makalede, [az. Blueprint](https://powershellgallery.com/packages/Az.Blueprint/) modülünde `Import-AzBlueprintWithArtifact` ve `Export-AzBlueprintWithArtifact` komutlarının nasıl kullanılacağı gösterilmektedir.
+Whatever your reasons, managing your blueprint definitions as code has benefits. This article shows how to use the `Import-AzBlueprintWithArtifact` and `Export-AzBlueprintWithArtifact` commands in the [Az.Blueprint](https://powershellgallery.com/packages/Az.Blueprint/) module.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu makalede, Azure şemaları hakkında orta düzeyde çalışma bilgisi varsayılmaktadır. Henüz yapmadıysanız, aşağıdaki makalelerle çalışın:
+This article assumes a moderate working knowledge of Azure Blueprints. If you haven't done so yet, work through the following articles:
 
-- [Portalda bir şema oluşturma](../create-blueprint-portal.md)
-- [Dağıtım aşamaları](../concepts/deployment-stages.md) ve [şema yaşam döngüsü](../concepts/lifecycle.md) hakkında bilgi edinin
-- PowerShell ile şema tanımlarını ve atamalarını [oluşturma](../create-blueprint-powershell.md) ve [yönetme](./manage-assignments-ps.md)
+- [Create a blueprint in the portal](../create-blueprint-portal.md)
+- Read about [deployment stages](../concepts/deployment-stages.md) and [the blueprint lifecycle](../concepts/lifecycle.md)
+- [Creating](../create-blueprint-powershell.md) and [managing](./manage-assignments-ps.md) blueprint definitions and assignments with PowerShell
 
-Zaten yüklü değilse, PowerShell Galerisi **az** . Blueprint modülünü yüklemek ve doğrulamak için [az. Blueprint modülünü ekleme](./manage-assignments-ps.md#add-the-azblueprint-module) bölümündeki yönergeleri izleyin.
+If it isn't already installed, follow the instructions in [Add the Az.Blueprint module](./manage-assignments-ps.md#add-the-azblueprint-module) to install and validate the **Az.Blueprint** module from the PowerShell Gallery.
 
-## <a name="folder-structure-of-a-blueprint-definition"></a>Şema tanımının klasör yapısı
+## <a name="folder-structure-of-a-blueprint-definition"></a>Folder structure of a blueprint definition
 
-Şemaları dışarı ve içeri aktarmaya geçmeden önce, şema tanımını oluşturan dosyaların nasıl yapılandırıldığını inceleyelim. Şema tanımının kendi klasöründe depolanması gerekir.
+Before looking at exporting and importing blueprints, let's look at how the files that make up the blueprint definition are structured. A blueprint definition should be stored in its own folder.
 
 > [!IMPORTANT]
-> `Import-AzBlueprintWithArtifact` cmdlet 'inin **Name** parametresine hiçbir değer geçirilmemişse, şema tanımının depolandığı klasörün adı kullanılır.
+> If no value is passed to the **Name** parameter of the `Import-AzBlueprintWithArtifact` cmdlet, the name of the folder the blueprint definition is stored in is used.
 
-`blueprint.json`adlandırılması gereken şema tanımıyla birlikte, şema tanımının meydana gelen yapıtlardır. Her yapıt `artifacts`adlı alt klasörde olmalıdır.
-Birlikte yerleştirin, şema tanımınızın yapısı klasörlerde JSON dosyaları olarak aşağıdaki gibi görünmelidir:
+Along with the blueprint definition, which must be named `blueprint.json`, are the artifacts that the blueprint definition is composed of. Each artifact must be in the subfolder named `artifacts`.
+Put together, the structure of your blueprint definition as JSON files in folders should look as follows:
 
 ```text
 .
@@ -56,20 +56,20 @@ Birlikte yerleştirin, şema tanımınızın yapısı klasörlerde JSON dosyalar
 
 ```
 
-## <a name="export-your-blueprint-definition"></a>Şema tanımınızı dışarı aktarma
+## <a name="export-your-blueprint-definition"></a>Export your blueprint definition
 
-Şema tanımınızı dışa aktarma adımları basittir. Şema tanımını dışarı aktarmak, paylaşım, yedekleme veya kaynak denetimine yerleştirme için yararlı olabilir.
+The steps to exporting your blueprint definition are straightforward. Exporting the blueprint definition can be useful for sharing, backup, or placing into source control.
 
-- **Blueprint** [gerekli]
-  - Şema tanımını belirtir
-  - Başvuru nesnesini almak için `Get-AzBlueprint` kullanın
-- **OutputPath** [gerekli]
-  - Şema tanımı JSON dosyalarının kaydedileceği yolu belirtir
-  - Çıktı dosyaları, şema tanımının adını taşıyan bir alt klasördeyse
-- **Sürüm** (isteğe bağlı)
-  - **Blueprint** başvuru nesnesi birden fazla sürüme başvurular içeriyorsa, çıktının sürümünü belirtir.
+- **Blueprint** [required]
+  - Specifies the blueprint definition
+  - Use `Get-AzBlueprint` to get the reference object
+- **OutputPath** [required]
+  - Specifies the path to save the blueprint definition JSON files to
+  - The output files are in a subfolder with the name of the blueprint definition
+- **Version** (optional)
+  - Specifies the version to output if the **Blueprint** reference object contains references to more than one version.
 
-1. `{subId}`gösterilen abonelikten dışarı aktarmak için şema tanımına bir başvuru alın:
+1. Get a reference to the blueprint definition to export from the subscription represented as `{subId}`:
 
    ```azurepowershell-interactive
    # Login first with Connect-AzAccount if not using Cloud Shell
@@ -78,31 +78,31 @@ Birlikte yerleştirin, şema tanımınızın yapısı klasörlerde JSON dosyalar
    $bpDefinition = Get-AzBlueprint -SubscriptionId '{subId}' -Name 'MyBlueprint' -Version '1.1'
    ```
 
-1. Belirtilen şema tanımını dışarı aktarmak için `Export-AzBlueprintWithArtifact` cmdlet 'ini kullanın:
+1. Use the `Export-AzBlueprintWithArtifact` cmdlet to export the specified blueprint definition:
 
    ```azurepowershell-interactive
    Export-AzBlueprintWithArtifact -Blueprint $bpDefinition -OutputPath 'C:\Blueprints'
    ```
 
-## <a name="import-your-blueprint-definition"></a>Şema tanımınızı içeri aktarma
+## <a name="import-your-blueprint-definition"></a>Import your blueprint definition
 
-[Dışarı aktarılan bir şema tanımınız](#export-your-blueprint-definition) veya [gerekli klasör yapısında](#folder-structure-of-a-blueprint-definition)el ile oluşturulmuş bir şema Definition olduktan sonra, bu şema tanımını farklı bir yönetim grubuna veya aboneliğine aktarabilirsiniz.
+Once you have either an [exported blueprint definition](#export-your-blueprint-definition) or have a manually created blueprint definition in the [required folder structure](#folder-structure-of-a-blueprint-definition), you can import that blueprint definition to a different management group or subscription.
 
-Yerleşik şema tanımlarının örnekleri için bkz. [GitHub deposu Azure Blueprint](https://github.com/Azure/azure-blueprints/tree/master/samples/builtins).
+For examples of built-in blueprint definitions, see the [Azure Blueprint GitHub repo](https://github.com/Azure/azure-blueprints/tree/master/samples/builtins).
 
-- **Ad** [gerekli]
-  - Yeni şema tanımının adını belirtir
-- **Inputpath** [gerekli]
-  - Şema tanımının oluşturulacağı yolu belirtir
-  - [Gerekli klasör yapısıyla](#folder-structure-of-a-blueprint-definition) eşleşmesi gerekir
-- **ManagementGroupId** (isteğe bağlı)
-  - Geçerli bağlam varsayılanı değilse, şema tanımını kaydetmek için yönetim grubu kimliği
-  - **ManagementGroupId** veya **SubscriptionID** belirtilmelidir
-- **Abonelik kimliği** (isteğe bağlı)
-  - Geçerli bağlam varsayılanı değilse, şema tanımının kaydedileceği abonelik kimliği
-  - **ManagementGroupId** veya **SubscriptionID** belirtilmelidir
+- **Name** [required]
+  - Specifies the name for the new blueprint definition
+- **InputPath** [required]
+  - Specifies the path to create the blueprint definition from
+  - Must match the [required folder structure](#folder-structure-of-a-blueprint-definition)
+- **ManagementGroupId** (optional)
+  - The management group ID to save the blueprint definition to if not the current context default
+  - Either **ManagementGroupId** or **SubscriptionId** must be specified
+- **SubscriptionId** (optional)
+  - The subscription ID to save the blueprint definition to if not the current context default
+  - Either **ManagementGroupId** or **SubscriptionId** must be specified
 
-1. Belirtilen şema tanımını içeri aktarmak için `Import-AzBlueprintWithArtifact` cmdlet 'ini kullanın:
+1. Use the `Import-AzBlueprintWithArtifact` cmdlet to import the specified blueprint definition:
 
    ```azurepowershell-interactive
    # Login first with Connect-AzAccount if not using Cloud Shell
@@ -110,14 +110,14 @@ Yerleşik şema tanımlarının örnekleri için bkz. [GitHub deposu Azure Bluep
    Import-AzBlueprintWithArtifact -Name 'MyBlueprint' -ManagementGroupId 'DevMG' -InputPath 'C:\Blueprints\MyBlueprint'
    ```
 
-Şema tanımı içeri aktarıldıktan sonra, [PowerShell ile atayın](./manage-assignments-ps.md#create-blueprint-assignments).
+Once the blueprint definition is imported, [assign it with PowerShell](./manage-assignments-ps.md#create-blueprint-assignments).
 
-Gelişmiş şema tanımları oluşturma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
+For information about creating advanced blueprint definitions, see the following articles:
 
-- [Statik ve dinamik parametreleri](../concepts/parameters.md)kullanın.
-- [Şema sıralama düzenini](../concepts/sequencing-order.md)özelleştirin.
-- [Şema kaynak kilitleme](../concepts/resource-locking.md)ile dağıtımları koruyun.
-- [Şemaları kod olarak yönetin](https://github.com/Azure/azure-blueprints/blob/master/README.md).
+- Use [static and dynamic parameters](../concepts/parameters.md).
+- Customize the [blueprint sequencing order](../concepts/sequencing-order.md).
+- Protect deployments with [blueprint resource locking](../concepts/resource-locking.md).
+- [Manage Blueprints as Code](https://github.com/Azure/azure-blueprints/blob/master/README.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

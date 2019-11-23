@@ -1,7 +1,7 @@
 ---
-title: "Hızlı Başlangıç: Bing haber arama SDK'sı için Node.js kullanarak bir haber arama yapın"
+title: 'Quickstart: Perform a news search using the SDK for Node.js - Bing News Search'
 titleSuffix: Azure Cognitive Services
-description: Yanıta işlemek ve bu hızlı başlangıçta Node.js için Bing haber arama SDK'sını kullanarak haber arama için kullanın.
+description: Use this quickstart to search for news using the Bing News Search SDK for Node.js, and process the response.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,31 +11,31 @@ ms.topic: quickstart
 ms.date: 06/18/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: c71d76e93eb1a121163d40fe61dcd5a8546d63f8
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 9bbad7685cf7d562189871bb5fa4a56d69287db4
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203352"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383895"
 ---
-# <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-nodejs"></a>Hızlı Başlangıç: Node.js için Bing haber arama SDK'sı ile haber araması
+# <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-nodejs"></a>Quickstart: Perform a news search with the Bing News Search SDK for Node.js
 
-Bu hızlı başlangıçta, Haberler Bing haber arama SDK'sı için Node.js için aramaya başlamak için kullanın. Bing haber arama çoğu programlama dilleri ile uyumlu bir REST API olsa da SDK hizmeti uygulamalarınızla tümleştirmek için kolay bir yol sağlar. Bu örnek için kaynak kodu bulunabilir [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/newsSearch.js).
+Use this quickstart to begin searching for news with the Bing News Search SDK for Node.js. While Bing News Search has a REST API compatible with most programming languages, the SDK provides an easy way to integrate the service into your applications. The source code for this sample can be found on [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/newsSearch.js).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 * [Node.js](https://nodejs.org/en/)
 
-Bing haber arama SDK'sını kullanarak bir konsol uygulaması ayarlamak için:
-1. Çalıştırma `npm install ms-rest-azure` geliştirme ortamınızda.
-2. Çalıştırma `npm install azure-cognitiveservices-newssearch` geliştirme ortamınızda.
+To set up a console application using the Bing News Search SDK:
+1. Run `npm install ms-rest-azure` in your development environment.
+2. Run `npm install azure-cognitiveservices-newssearch` in your development environment.
 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-the-application"></a>Uygulamayı oluşturma ve başlatma
 
-1. `CognitiveServicesCredentials` nesnesinin bir örneğini oluşturun. Abonelik anahtarınız ve bir arama terimi için değişkenler oluşturun.
+1. `CognitiveServicesCredentials` nesnesinin bir örneğini oluşturun. Create variables for your subscription key, and a search term.
 
     ```javascript
     const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
@@ -43,16 +43,16 @@ Bing haber arama SDK'sını kullanarak bir konsol uygulaması ayarlamak için:
     let search_term = 'Winter Olympics'
     ```
 
-2. İstemci örneği:
+2. instantiate the client:
     
     ```javascript
     const NewsSearchAPIClient = require('azure-cognitiveservices-newssearch');
     let client = new NewsSearchAPIClient(credentials);
     ```
 
-## <a name="send-a-search-query"></a>Bir arama sorgusu gönderin
+## <a name="send-a-search-query"></a>Send a search query
 
-1. İstemci, bu durumda "Kış Olimpiyatları" bir sorgu terimine bulmak için kullanın:
+1. Use the client to search with a query term, in this case "Winter Olympics":
     
     ```javascript
     client.newsOperations.search(search_term).then((result) => {

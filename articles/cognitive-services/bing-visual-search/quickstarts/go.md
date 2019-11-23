@@ -1,7 +1,7 @@
 ---
-title: "Hızlı Başlangıç: Bing görsel arama REST API'si ve Git kullanarak görüntü Öngörüler elde edin"
+title: 'Quickstart: Get image insights using the REST API and Go - Bing Visual Search'
 titleSuffix: Azure Cognitive Services
-description: Bing görsel arama API'sine bir görüntüyü karşıya yükleme ve ilgili Öngörüler alma hakkında bilgi edinin.
+description: Learn how to upload an image to the Bing Visual Search API and get insights about it.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,27 +10,27 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 4/02/2019
 ms.author: rosh
-ms.openlocfilehash: dcfb2d7dc49dae03c733a3016d37425e33fb0535
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: d1612db9b0c0f6a5ec85734d5a26ed0e25cb8c07
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796476"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383205"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-go"></a>Hızlı Başlangıç: Bing görsel arama REST API'si ve Git kullanarak görüntü Öngörüler elde edin
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-go"></a>Quickstart: Get image insights using the Bing Visual Search REST API and Go
 
-Bu hızlı başlangıçta, Bing görsel arama API'sine çağrı ve sonuçları görüntülemek için Go programlama dili kullanır. Bir POST isteği API uç noktasına yönelik bir görüntüyü karşıya yükler. Sonuçlar URL'leri ve görüntüleri karşıya yüklenen görüntüyü benzer hakkında açıklayıcı bilgiler içerir.
+This quickstart uses the Go programming language to call the Bing Visual Search API and display results. A POST request uploads an image to the API endpoint. The results include URLs and descriptive information about images similar to the uploaded image.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Yükleme [Git ikili dosyaları](https://golang.org/dl/).
-* Git-çıktısının derin güzel yazıcı sonuçları görüntülemek için kullanılır. Git-çıktısının ile yükleyebileceğiniz `$ go get -u https://github.com/davecgh/go-spew` komutu.
+* Install the [Go binaries](https://golang.org/dl/).
+* The go-spew deep pretty printer is used to display results. You can install go-spew with the `$ go get -u https://github.com/davecgh/go-spew` command.
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
-## <a name="project-and-libraries"></a>Proje ve kitaplıkları
+## <a name="project-and-libraries"></a>Project and libraries
 
-Go projesi, IDE'niz veya düzenleyicinizle oluşturun. Ardından içeri `net/http` istekleri `ioutil` yanıt okumak için ve `encoding/json` JSON metnini sonuçları işlemek için. `go-spew` Kitaplığı JSON sonuçlarını ayrıştırmak için kullanılır.
+Create a Go project in your IDE or editor. Then import `net/http` for requests, `ioutil` to read the response, and `encoding/json` to handle the JSON text of results. The `go-spew` library is used to parse JSON results.
 
 ```
 package main
@@ -50,9 +50,9 @@ import (
 
 ```
 
-## <a name="struct-to-format-results"></a>Yapı sonuçlarını biçimlendirmek için
+## <a name="struct-to-format-results"></a>Struct to format results
 
-`BingAnswer` Yapısı çok düzeyli ve karmaşık JSON yanıtta döndürülen veriler biçimlendirir. Aşağıdaki uygulama bazı temel bilgileri içerir:
+The `BingAnswer` structure formats data returned in the JSON response, which is multilevel and complex. The following implementation covers some of the essentials:
 
 ```
 type BingAnswer struct {
@@ -107,9 +107,9 @@ type BingAnswer struct {
 
 ```
 
-## <a name="main-function-and-variables"></a>Main işlevi ve değişkenler  
+## <a name="main-function-and-variables"></a>Main function and variables  
 
-Aşağıdaki kod ana işlevini bildirir ve gerekli değişkenleri atar. Uç noktasının geçerli olduğunu doğrulayın ve `token` değerini Azure hesabınızdan geçerli bir abonelik anahtarı ile değiştirin. `batchNumber` Olan baştaki ve sondaki gönderme verisi sınırları için gerekli bir GUID. `fileName` Değişken POST için resim dosyası tanımlar. Aşağıdaki bölümlerde, kodun Ayrıntılar açıklanmaktadır:
+The following code declares the main function and assigns required variables. Uç noktasının geçerli olduğunu doğrulayın ve `token` değerini Azure hesabınızdan geçerli bir abonelik anahtarı ile değiştirin. The `batchNumber` is a GUID required for leading and trailing boundaries of the POST data. The `fileName` variable identifies the image file for the POST. The following sections explain the details of the code:
 
 ```
 func main() {
@@ -157,9 +157,9 @@ func main() {
 
 ```
 
-## <a name="boundaries-of-post-body"></a>POST gövdesini sınırları
+## <a name="boundaries-of-post-body"></a>Boundaries of POST body
 
-Görsel arama uç noktasına bir POST isteği gönderme verisi kapsayan baştaki ve sondaki sınırları gerektirir. Önde gelen sınır içerik türü tanımlayıcısı bir toplu iş sayı içeren `Content-Disposition: form-data; name="image"; filename=`, artı gönderisinin görüntüsünün dosya adı. Sondaki sınır yalnızca batch sayısıdır. Bu işlevler dahil edilmeyen `main` engelle:
+A POST request to the Visual Search endpoint requires leading and trailing boundaries enclosing the POST data. The leading boundary includes a batch number, the content type identifier `Content-Disposition: form-data; name="image"; filename=`, plus the filename of the image to POST. The trailing boundary is simply the batch number. These functions are not included in the `main` block:
 
 ```
 func BuildFormDataStart(batNum string, fileName string) string{
@@ -176,9 +176,9 @@ func BuildFormDataEnd(batNum string) string{
 }
 
 ```
-## <a name="add-image-bytes-to-post-body"></a>POST gövdesini görüntü baytları Ekle
+## <a name="add-image-bytes-to-post-body"></a>Add image bytes to POST body
 
-Bu kod kesimi resim verilerini içeren bir POST isteği oluşturur:
+This code segment creates the POST request that contains image data:
 
 ```
 func createRequestBody(fileName string, batchNumber string) (*bytes.Buffer, string) {
@@ -205,9 +205,9 @@ func createRequestBody(fileName string, batchNumber string) (*bytes.Buffer, stri
 
 ```
 
-## <a name="send-the-request"></a>İsteği Gönder
+## <a name="send-the-request"></a>Send the request
 
-Aşağıdaki kod, istek gönderir ve sonuçları okur:
+The following code sends the request and reads the results:
 
 ```
 resp, err := client.Do(req)
@@ -226,7 +226,7 @@ resp, err := client.Do(req)
 
 ## <a name="handle-the-response"></a>Yanıtı işleme
 
-`Unmarshall` İşlevi, görsel arama API'si tarafından döndürülen JSON metninde bilgileri ayıklar. `go-spew` Güzel yazıcı sonuçları görüntüler:
+The `Unmarshall` function extracts information from the JSON text returned by the Visual Search API. The `go-spew` pretty printer displays the results:
 
 ```
     // Create a new answer.  
@@ -245,11 +245,11 @@ resp, err := client.Do(req)
 
 ```
 > [!NOTE]
-> Bu örnek kodu Francesco Giordano katkıda.
+> Francesco Giordano contributed code to this example.
 
 ## <a name="results"></a>Sonuçlar
 
-Sonuçlar, POST gövdesinde yer alan uyarı görüntüye benzer görüntülerin belirlenmesi. Yararlı alanlar `WebSearchUrl` ve `Name`:
+The results identify images similar to the image contained in the POST body. The useful fields are `WebSearchUrl` and `Name`:
 
 ```
     Value: ([]struct { WebSearchUrl string "json:\"webSearchUrl\""; Name string "json:\"name\"" }) (len=66 cap=94) {
@@ -287,5 +287,5 @@ Sonuçlar, POST gövdesinde yer alan uyarı görüntüye benzer görüntülerin 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Bing görsel arama API'si nedir? ](../overview.md) 
->  [Git hızlı Bing Web araması](../../Bing-Web-Search/quickstarts/go.md)
+> [What is the Bing Visual Search API?](../overview.md)
+> [Bing Web Search quickstart in Go](../../Bing-Web-Search/quickstarts/go.md)

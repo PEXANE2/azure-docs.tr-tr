@@ -1,6 +1,6 @@
 ---
-title: VM 'Ler için özel IP adreslerini Yapılandırma-Azure CLı
-description: Azure komut satırı arabirimi 'ni (CLı) kullanarak sanal makineler için özel IP adreslerini yapılandırmayı öğrenin.
+title: Configure private IP addresses for VMs - Azure CLI
+description: Learn how to configure private IP addresses for virtual machines using the Azure command-line interface (CLI).
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: kumud
-ms.openlocfilehash: 5734b96466801efaa991a971bd87f60aafc9df32
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: dfc56d86d2e516a7c7bb82ef7a5e84105e049188
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196624"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74404454"
 ---
-# <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>Azure CLı kullanarak bir sanal makine için özel IP adresleri yapılandırma
+# <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>Configure private IP addresses for a virtual machine using the Azure CLI
 
 [!INCLUDE [virtual-networks-static-private-ip-selectors-arm-include](../../includes/virtual-networks-static-private-ip-selectors-arm-include.md)]
 
@@ -30,23 +30,23 @@ ms.locfileid: "74196624"
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-Bu makalede Resource Manager dağıtım modeli anlatılmaktadır. Ayrıca, [klasik dağıtım modelindeki statik özel IP adresini de yönetebilirsiniz](virtual-networks-static-private-ip-classic-cli.md).
+Bu makalede Resource Manager dağıtım modeli anlatılmaktadır. You can also [manage static private IP address in the classic deployment model](virtual-networks-static-private-ip-classic-cli.md).
 
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
 > [!NOTE]
-> Aşağıdaki örnek Azure CLı komutları var olan basit bir ortamı bekler. Bu belgede gösterildiği komutları çalıştırmak istiyorsanız, önce açıklanan test ortamında yapı [vnet oluşturma](quick-create-cli.md).
+> The following sample Azure CLI commands expect an existing simple environment. If you want to run the commands as they are displayed in this document, first build the test environment described in [create a vnet](quick-create-cli.md).
 
-## <a name="specify-a-static-private-ip-address-when-creating-a-vm"></a>VM oluştururken statik bir özel IP adresi belirtin
+## <a name="specify-a-static-private-ip-address-when-creating-a-vm"></a>Specify a static private IP address when creating a VM
 
-*192.168.1.101*statik özel IP 'Si Ile *Testvnet* adlı VNET 'in *ön uç* alt ağında *DNS01* adlı bir VM oluşturmak için aşağıdaki adımları izleyin:
+To create a VM named *DNS01* in the *FrontEnd* subnet of a VNet named *TestVNet* with a static private IP of *192.168.1.101*, complete the following steps:
 
-1. Henüz yapmadıysanız, en son [Azure CLI](/cli/azure/install-azure-cli) 'yı yükleyip yapılandırın ve [az Login](/cli/azure/reference-index)kullanarak bir Azure hesabında oturum açın.
+1. If you haven't yet, install and configure the latest [Azure CLI](/cli/azure/install-azure-cli) and log in to an Azure account using [az login](/cli/azure/reference-index).
 
-2. [Az Network public-IP Create](/cli/azure/network/public-ip) komutuyla VM IÇIN genel IP oluşturun. Çıktıdan sonra gösterilen listede kullanılan parametreler açıklanmaktadır.
+2. Create a public IP for the VM with the [az network public-ip create](/cli/azure/network/public-ip) command. Çıktıdan sonra gösterilen listede kullanılan parametreler açıklanmaktadır.
 
     > [!NOTE]
-    > Ortamınıza bağlı olarak bu ve sonraki adımlarda bağımsız değişkenlerinizin farklı değerlerini kullanmanız gerekebilir.
+    > You may want or need to use different values for your arguments in this and subsequent steps, depending upon your environment.
 
     ```azurecli
     az network public-ip create \
@@ -70,11 +70,11 @@ Bu makalede Resource Manager dağıtım modeli anlatılmaktadır. Ayrıca, [klas
     }
     ```
 
-   * `--resource-group`: genel IP 'nin oluşturulacağı kaynak grubunun adı.
-   * `--name`: genel IP 'nin adı.
-   * `--location`: genel IP 'nin oluşturulacağı Azure bölgesi.
+   * `--resource-group`: Name of the resource group in which to create the public IP.
+   * `--name`: Name of the public IP.
+   * `--location`: Azure region in which to create the public IP.
 
-3. Statik özel IP 'si olan bir NIC oluşturmak için [az Network Nic Create](/cli/azure/network/nic) komutunu çalıştırın. Çıktıdan sonra gösterilen listede kullanılan parametreler açıklanmaktadır. 
+3. Run the [az network nic create](/cli/azure/network/nic) command to create a NIC with a static private IP. Çıktıdan sonra gösterilen listede kullanılan parametreler açıklanmaktadır. 
    
     ```azurecli
     az network nic create \
@@ -122,11 +122,11 @@ Bu makalede Resource Manager dağıtım modeli anlatılmaktadır. Ayrıca, [klas
     
     Parametreler:
 
-    * `--private-ip-address`: NIC için statik özel IP adresi.
-    * `--vnet-name`: NIC 'nin oluşturulacağı VNet 'in adı.
-    * `--subnet`: NIC 'nin oluşturulacağı alt ağın adı.
+    * `--private-ip-address`: Static private IP address for the NIC.
+    * `--vnet-name`: Name of the VNet in which to create the NIC.
+    * `--subnet`: Name of the subnet in which to create the NIC.
 
-4. Daha önce oluşturulan genel IP ve NIC 'yi kullanarak VM oluşturmak için [Azure VM oluşturma](/cli/azure/vm/nic) komutunu çalıştırın. Çıktıdan sonra gösterilen listede kullanılan parametreler açıklanmaktadır.
+4. Run the [azure vm create](/cli/azure/vm/nic) command to create the VM using the public IP and NIC created previously. Çıktıdan sonra gösterilen listede kullanılan parametreler açıklanmaktadır.
    
     ```azurecli
     az vm create \
@@ -154,15 +154,15 @@ Bu makalede Resource Manager dağıtım modeli anlatılmaktadır. Ayrıca, [klas
     }
     ```
    
-   Temel [az VM Create](/cli/azure/vm) parametrelerinden farklı parametreler.
+   Parameters other than the basic [az vm create](/cli/azure/vm) parameters.
 
-   * `--nics`: VM 'nin eklendiği NIC 'in adı.
+   * `--nics`: Name of the NIC to which the VM is attached.
    
-[Bir WINDOWS VM 'ye birden çok IP adresi atarken](virtual-network-multiple-ip-addresses-cli.md), GEREKMEDIKÇE, sanal makinenin işletim sistemi içinde Azure sanal makinesine atanan özel IP 'yi statik olarak atamanız önerilir. İşletim sistemi içinde özel IP adresini el ile ayarlarsanız, Azure [ağ arabirimine](virtual-network-network-interface-addresses.md#change-ip-address-settings)ATANMıŞ özel IP adresi ile aynı adres olduğundan emin olun veya sanal makineyle olan bağlantıyı kaybedebilirsiniz. [Özel IP adresi](virtual-network-network-interface-addresses.md#private) ayarları hakkında daha fazla bilgi edinin.
+It’s recommended that you do not statically assign the private IP assigned to the Azure virtual machine within the operating system of a VM, unless necessary, such as when [assigning multiple IP addresses to a Windows VM](virtual-network-multiple-ip-addresses-cli.md). If you do manually set the private IP address within the operating system, ensure that it is the same address as the private IP address assigned to the Azure [network interface](virtual-network-network-interface-addresses.md#change-ip-address-settings), or you can lose connectivity to the virtual machine. Learn more about [private IP address](virtual-network-network-interface-addresses.md#private) settings.
 
-## <a name="retrieve-static-private-ip-address-information-for-a-vm"></a>Bir VM için statik özel IP adresi bilgilerini alma
+## <a name="retrieve-static-private-ip-address-information-for-a-vm"></a>Retrieve static private IP address information for a VM
 
-*Özel IP ayırma yöntemi* ve *özel IP adresi*değerlerini gözlemlemek için aşağıdaki Azure CLI komutunu çalıştırın:
+Run the following Azure CLI command to observe the values for *Private IP alloc-method* and *Private IP address*:
 
 ```azurecli
 az vm show -g TestRG -n DNS01 --show-details --query 'privateIps'
@@ -174,7 +174,7 @@ Beklenen çıktı:
 "192.168.1.101"
 ```
 
-Bu VM için NIC 'nin belirli IP bilgilerini göstermek için NIC 'i özellikle sorgulayın:
+To display the specific IP information of the NIC for that VM, query the NIC specifically:
 
 ```azurecli
 az network nic show \
@@ -195,15 +195,15 @@ rivateIpAllocationMethod,PublicAddress:publicIpAddress}'
 }
 ```
 
-## <a name="remove-a-static-private-ip-address-from-a-vm"></a>Statik özel IP adresini bir VM 'den kaldırma
+## <a name="remove-a-static-private-ip-address-from-a-vm"></a>Remove a static private IP address from a VM
 
-Azure Resource Manager dağıtımları için Azure CLı içindeki bir NIC 'den statik bir özel IP adresi kaldıramazsınız. Şunları yapmanız gerekir:
-- Dinamik IP kullanan yeni bir NIC oluşturma
-- SANAL makinede NIC 'yi ayarlama yeni oluşturulan NIC 'yi yapın. 
+You cannot remove a static private IP address from a NIC in Azure CLI for Azure Resource Manager deployments. You must:
+- Create a new NIC that uses a dynamic IP
+- Set the NIC on the VM do the newly created NIC. 
 
-Önceki komutlarda kullanılan VM 'nin NIC 'sini değiştirmek için aşağıdaki adımları izleyin:
+To change the NIC for the VM used in the previous commands, complete the following steps:
 
-1. Yeni bir IP adresi ile dinamik IP ayırmayı kullanarak yeni bir NIC oluşturmak için **Azure ağ NIC oluştur** komutunu çalıştırın. Hiçbir IP adresi belirtilmediğinden, ayırma yöntemi **dinamik**olur.
+1. Run the **azure network nic create** command to create a new NIC using dynamic IP allocation with a new IP address. Because no IP address is specified, the allocation method is **Dynamic**.
 
     ```azurecli
     az network nic create     \
@@ -248,10 +248,10 @@ Azure Resource Manager dağıtımları için Azure CLı içindeki bir NIC 'den s
     }
     ```
 
-2. VM tarafından kullanılan NIC 'ı değiştirmek için **Azure VM set** komutunu çalıştırın.
+2. Run the **azure vm set** command to change the NIC used by the VM.
    
     ```azurecli
-    azure vm set -g TestRG -n DNS01 -N TestNIC2
+   az vm nic set --resource-group TestRG --vm-name DNS01 --nics TestNIC2
     ```
 
     Beklenen çıktı:
@@ -267,8 +267,8 @@ Azure Resource Manager dağıtımları için Azure CLı içindeki bir NIC 'den s
     ```
 
     > [!NOTE]
-    > VM birden fazla NIC 'ye sahip olacak kadar büyükse, eski NIC 'yi silmek için **Azure ağ NIC silme** komutunu çalıştırın.
+    > If the VM is large enough to have more than one NIC, run the **azure network nic delete** command to delete the old NIC.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[IP adresi ayarlarını](virtual-network-network-interface-addresses.md)yönetme hakkında bilgi edinin.
+Learn about managing [IP address settings](virtual-network-network-interface-addresses.md).

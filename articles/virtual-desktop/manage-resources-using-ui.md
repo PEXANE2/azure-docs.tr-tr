@@ -1,120 +1,119 @@
 ---
-title: Yönetim aracını dağıtma-Azure
-description: Windows sanal masaüstü kaynaklarını yönetmek için bir kullanıcı arabirimi aracı nasıl yüklenir.
+title: Deploy management tool - Azure
+description: How to install a user interface tool to manage Windows Virtual Desktop resources.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 11/09/2019
 ms.author: helohr
-ms.openlocfilehash: c7ef648dd2610c337bc9146e7a52c04d91907c8e
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: ad0c67cea6a5a9b487cd47aa7c10d10da1438050
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904904"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74384276"
 ---
-# <a name="tutorial-deploy-a-management-tool"></a>Öğretici: bir yönetim aracı dağıtın
+# <a name="tutorial-deploy-a-management-tool"></a>Tutorial: Deploy a management tool
 
-Yönetim Aracı, Microsoft sanal masaüstü kaynaklarını yönetmek için bir kullanıcı arabirimi (UI) sağlar. Bu öğreticide, yönetim aracını dağıtmayı ve bu sunucuya bağlanmayı öğreneceksiniz.
+The management tool provides a user interface (UI) for managing Microsoft Virtual Desktop resources. In this tutorial, you'll learn how to deploy and connect to the management tool.
 
 >[!NOTE]
->Bu yönergeler, kuruluşunuzun mevcut işlemleriyle kullanılabilecek Windows sanal masaüstüne özgü bir yapılandırma içindir.
+>These instructions are for a Windows Virtual Desktop-specific configuration that can be used with your organization's existing processes.
 
-## <a name="important-considerations"></a>Önemli konular
+## <a name="important-considerations"></a>Important considerations
 
-Uygulamanın Windows sanal masaüstü ile etkileşime girmesine izin gerektirdiğinden, bu araç Işletmeler arası (B2B) senaryolarını desteklemez. Her Azure Active Directory (AAD) kiracının aboneliğinin kendi ayrı yönetim aracı dağıtımına ihtiyacı olacaktır.
+Since the app requires consent to interact with Windows Virtual Desktop, this tool doesn't support Business-to-Business (B2B) scenarios. Each Azure Active Directory (AAD) tenant's subscription will need its own separate deployment of the management tool.
 
-Bu yönetim aracı bir örnektir. Microsoft, önemli güvenlik ve kalite güncelleştirmeleri sağlayacaktır. [Kaynak kodu GitHub ' da kullanılabilir](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy). Müşterilerin ve iş ortaklarının, aracı iş ihtiyaçlarına uyacak şekilde özelleştirmesi önerilir.
+This management tool is a sample. Microsoft will provide important security and quality updates. The [source code is available in GitHub](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy). Customers and partners are encouraged to customize the tool to fit their business needs.
 
-Aşağıdaki tarayıcılar yönetim aracıyla uyumludur:
-- Google Chrome 68 veya üzeri
-- Microsoft Edge 40,15063 veya üzeri
-- Mozilla Firefox 52,0 veya üzeri
-- Safari 10 veya üzeri (yalnızca macOS)
+To following browsers are compatible with the management tool:
+- Google Chrome 68 or later
+- Microsoft Edge 40.15063 or later
+- Mozilla Firefox 52.0 or later
+- Safari 10 or later (macOS only)
 
-## <a name="what-you-need-to-run-the-azure-resource-manager-template"></a>Azure Resource Manager şablonunu çalıştırmak için gerekenler
+## <a name="what-you-need-to-run-the-azure-resource-manager-template"></a>What you need to run the Azure Resource Manager template
 
-Azure Resource Manager şablonu dağıtmadan önce, yönetim Kullanıcı ARABIRIMINI dağıtmak için Azure Active Directory bir kullanıcıya ihtiyacınız vardır. Bu Kullanıcı şunları sağlamalıdır:
+Before deploying the Azure Resource Manager template, you'll need an Azure Active Directory user to deploy the management UI. This user must:
 
-- Azure Multi-Factor Authentication (MFA) devre dışı
-- Azure aboneliğinizde kaynak oluşturma izniniz var
-- Azure AD uygulaması oluşturma izniniz vardır. Kullanıcının [gerekli izinlere](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions)sahip olup olmadığını denetlemek için bu adımları izleyin.
+- Have Azure Multi-Factor Authentication (MFA) disabled
+- Have permission to create resources in your Azure subscription
+- Have permission to create an Azure AD application. Follow these steps to check if your user has the [required permissions](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions).
 
-Azure Resource Manager şablonu dağıttıktan sonra, doğrulamak üzere yönetim kullanıcı arabirimini başlatmak isteyeceksiniz. Bu Kullanıcı şunları sağlamalıdır:
-- Windows sanal masaüstü kiracınızı görüntülemek veya düzenlemek için bir rol ataması yapın
+After deploying the Azure Resource Manager template, you'll want to launch the management UI to validate. This user must:
+- Have a role assignment to view or edit your Windows Virtual Desktop tenant
 
-## <a name="run-the-azure-resource-manager-template-to-provision-the-management-ui"></a>Yönetim Kullanıcı arabirimini sağlamak için Azure Resource Manager şablonunu çalıştırma
+## <a name="run-the-azure-resource-manager-template-to-provision-the-management-ui"></a>Run the Azure Resource Manager template to provision the management UI
 
-Başlamadan önce, temsil edilen Azure Active Directory (AAD) için [Windows sanal masaüstü onay sayfasını](https://rdweb.wvd.microsoft.com) ziyaret ederek sunucu ve istemci uygulamalarının onay aldığından emin olun.
+Before you start, ensure the server and client apps have consent by visiting the [Windows Virtual Desktop Consent Page](https://rdweb.wvd.microsoft.com) for the Azure Active Directory (AAD) represented.
 
-Azure Kaynak Yönetimi şablonunu dağıtmak için aşağıdaki yönergeleri izleyin:
+Follow these instructions to deploy the Azure Resource Management template:
 
-1. [GitHub Azure RDS-templates sayfasına](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy)gidin.
-2. Şablonu Azure 'a dağıtın.
-    - Kurumsal abonelikte dağıtım yapıyorsanız, aşağı kaydırın ve **Azure 'A dağıt**' ı seçin. Bkz. [şablon parametreleri Için rehberlik](#guidance-for-template-parameters).
-    - ' Yi bir bulut çözümü sağlayıcısı aboneliğine dağıtıyorsanız, Azure 'a dağıtmak için aşağıdaki yönergeleri izleyin:
-        1. Aşağı kaydırın ve **Azure 'A dağıt**' a sağ tıkladıktan sonra **bağlantı konumunu Kopyala**' yı seçin.
-        2. Not Defteri gibi bir metin Düzenleyicisi açın ve bağlantıyı buraya yapıştırın.
-        3. <https://portal.azure.com/> ve diyez etiketinden (#) önce, bir at işareti (@) ve ardından kiracı etki alanı adını girin. Şöyle bir örnek: <https://portal.azure.com/@Contoso.onmicrosoft.com#create/>.
-        4. Bulut çözümü sağlayıcısı aboneliğine yönetici/katkıda bulunan izinleri olan bir kullanıcı olarak Azure portal oturum açın.
-        5. Metin düzenleyicisine kopyaladığınız bağlantıyı adres çubuğuna yapıştırın.
+1. Go to the [GitHub Azure RDS-Templates page](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy).
+2. Deploy the template to Azure.
+    - If you're deploying in an Enterprise subscription, scroll down and select **Deploy to Azure**. See [Guidance for template parameters](#guidance-for-template-parameters).
+    - If you're deploying in a Cloud Solution Provider subscription, follow these instructions to deploy to Azure:
+        1. Scroll down and right-click **Deploy to Azure**, then select **Copy Link Location**.
+        2. Open a text editor like Notepad and paste the link there.
+        3. Right after <https://portal.azure.com/> and before the hashtag (#), enter an at sign (@) followed by the tenant domain name. Here's an example of the format: <https://portal.azure.com/@Contoso.onmicrosoft.com#create/>.
+        4. Sign in to the Azure portal as a user with Admin/Contributor permissions to the Cloud Solution Provider subscription.
+        5. Paste the link you copied to the text editor into the address bar.
 
-### <a name="guidance-for-template-parameters"></a>Şablon parametreleri Kılavuzu
-Araç yapılandırmasına yönelik parametrelerin nasıl girilmesi aşağıda verilmiştir:
+### <a name="guidance-for-template-parameters"></a>Guidance for template parameters
+Here's how to enter parameters for configuring the tool:
 
-- Bu, RD Aracısı URL 'sidir: https:\//rdbroker.wvd.microsoft.com/
-- Bu, kaynak URL 'sidir: https:\//mrs-prod.ame.gbl/mrs-RDInfra-prod
-- Azure 'da oturum açmak için AAD kimlik bilgilerinizi MFA devre dışı olarak kullanın. [Azure Resource Manager şablonunu çalıştırmak Için gerekenler](#what-you-need-to-run-the-azure-resource-manager-template)bölümüne bakın.
-- Yönetim aracı için Azure Active Directory kaydedilecek uygulama için benzersiz bir ad kullanın; Örneğin, Apr3UX.
+- For the **isServicePrincipal** parameter, select **false**.
+- For the credentials, enter your Azure Active Directory credentials with multi-factor authentication disabled. These credentials will be the ones you use to sign in to Azure and create the Azure AD application and Azure web app resources. To learn more, see [What you need to run the Azure Resource Manager template](#what-you-need-to-run-the-azure-resource-manager-template).
+- For the **applicationName**, use a unique name for your app that will be registered in your Azure Active Directory. This name will also be used for the web app URL. For example, you can use a name like "Apr3UX."
 
-## <a name="provide-consent-for-the-management-tool"></a>Yönetim aracı için onay sağlayın
+## <a name="provide-consent-for-the-management-tool"></a>Provide consent for the management tool
 
-GitHub Azure Resource Manager şablonu tamamlandıktan sonra, Azure portal bir App Service planıyla birlikte iki uygulama hizmeti içeren bir kaynak grubu bulacaksınız.
+After the GitHub Azure Resource Manager template completes, you'll find a resource group containing two app services along with one app service plan in the Azure portal.
 
-Oturum açmadan ve yönetim aracını kullanmadan önce, yönetim aracı ile ilişkili yeni Azure Active Directory uygulamasına izin vermeniz gerekir. Onay sunarak, yönetim aracının, araçta oturum açan kullanıcı adına Windows sanal masaüstü yönetimi çağrıları yapmasına izin vermiş olursunuz.
+Before you sign in and use the management tool, you'll need to provide consent for the new Azure Active Directory application that is associated with the management tool. By providing consent, you are allowing the management tool to make Windows Virtual Desktop management calls on behalf of the user who's signed into the tool.
 
-![UI yönetim aracına izin verdiğiniz zaman girilen izinleri gösteren ekran görüntüsü.](media/management-ui-delegated-permissions.png)
+![A screenshot showing the permissions being provided when you consent to the UI management tool.](media/management-ui-delegated-permissions.png)
 
-Araçta oturum açmak için hangi kullanıcıyı kullanabileceğinizi öğrenmek için [Azure Active Directory Kullanıcı ayarları sayfanıza](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) gidin ve **kullanıcıların kendi adına şirket verilerine erişen uygulamalara izin verebilmeleri**için değeri göz önünde bulabilirsiniz.
+To determine which user you can use to sign in to the tool, go to your [Azure Active Directory user settings page](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) and take note of the value for **Users can consent to apps accessing company data on their behalf**.
 
-![Kullanıcıların yalnızca kendi kullanıcıları için izin verip veremediğini gösteren ekran görüntüsü.](media/management-ui-user-consent-allowed.png)
+![A screenshot showing if users can grant consent to applications for just their user.](media/management-ui-user-consent-allowed.png)
 
-- Değer **Evet**olarak ayarlanırsa, Azure Active Directory herhangi bir kullanıcı hesabıyla oturum açabilir ve yalnızca bu kullanıcı için onay sağlayabilirsiniz. Bununla birlikte, yönetim aracında daha sonra başka bir kullanıcıyla oturum açarsanız, aynı onayı tekrar gerçekleştirmeniz gerekir.
-- Değer **Hayır**olarak ayarlanırsa, Azure Active Directory genel yönetici olarak oturum açmanız ve dizindeki tüm kullanıcılar için yönetici onayı sağlamanız gerekir. Başka hiçbir Kullanıcı onay istemi istemez.
+- If the value is set to **Yes**, you can sign in with any user account in the Azure Active Directory and provide consent for that user only. However, if you sign in to the management tool with a different user later, you must perform the same consent again.
+- If the value is set to **No**, you must sign in as a Global Administrator in the Azure Active Directory and provide admin consent for all users in the directory. No other users will face a consent prompt.
 
 
-İzin sağlamak için hangi kullanıcıyı kullanacağınızı belirledikten sonra, araca onay sağlamak için aşağıdaki yönergeleri izleyin:
+Once you decide which user you will use to provide consent, follow these instructions to provide consent to the tool:
 
-1. Azure kaynaklarınıza gidin, şablonda verdiğiniz adı taşıyan Azure App Services kaynağını seçin (örneğin, Apr3UX) ve onunla ilişkili URL 'ye gidin. Örneğin, <https://rdmimgmtweb-210520190304.azurewebsites.net>.
-2. Uygun Azure Active Directory Kullanıcı hesabını kullanarak oturum açın.
-3. Bir genel yönetici ile kimlik doğrulaması yaptıysanız, artık **kuruluşunuz adına izin**vermek için onay kutusunu işaretleyebilirsiniz. Onay sağlamak için **kabul et** ' i seçin.
+1. Go to your Azure resources, select the Azure App Services resource with the name you provided in the template (for example, Apr3UX) and navigate to the URL associated with it; for example,  <https://rdmimgmtweb-210520190304.azurewebsites.net>.
+2. Sign in using the appropriate Azure Active Directory user account.
+3. If you authenticated with a Global Administrator, you can now select the checkbox to **Consent on behalf of your organization**. Select **Accept** to provide consent.
    
-   ![Kullanıcının veya yöneticinin göreceği tam izin sayfasını gösteren ekran görüntüsü.](media/management-ui-consent-page.png)
+   ![A screenshot showing the full consent page that the user or admin will see.](media/management-ui-consent-page.png)
 
-Bu işlem sizi yönetim aracına götürür.
+This will now take you to the management tool.
 
-## <a name="use-the-management-tool"></a>Yönetim aracını kullanma
+## <a name="use-the-management-tool"></a>Use the management tool
 
-Kuruluş için veya belirli bir kullanıcı için onay sağladıktan sonra yönetim aracına dilediğiniz zaman erişebilirsiniz.
+After providing consent for the organization or for a specified user, you can access the management tool at any time.
 
-Aracı başlatmak için aşağıdaki yönergeleri izleyin:
+Follow these instructions to launch the tool:
 
-1. Şablonda belirttiğiniz adı taşıyan Azure App Services kaynağını seçin (örneğin, Apr3UX) ve onunla ilişkili URL 'ye gidin. Örneğin, <https://rdmimgmtweb-210520190304.azurewebsites.net>.
-2. Windows sanal masaüstü kimlik bilgilerinizi kullanarak oturum açın.
-3. Bir kiracı grubu seçmeniz istendiğinde, açılan listeden **varsayılan kiracı grubu** ' nu seçin.
-4. Varsayılan kiracı grubu ' nu seçtiğinizde, pencerenizin sağ tarafında bir menü görünür. Bu menüde, kiracı grubunuzun adını bulun ve seçin.
+1. Select the Azure App Services resource with the name you provided in the template (for example, Apr3UX) and navigate to the URL associated with it; for example,  <https://rdmimgmtweb-210520190304.azurewebsites.net>.
+2. Sign in using your Windows Virtual Desktop credentials.
+3. When prompted to choose a Tenant Group, select **Default Tenant Group** from the drop-down list.
+4. When you select Default Tenant Group, a menu should appear on the right side of your window. On this menu, find the name of your tenant group and select it.
 
 > [!NOTE]
-> Özel bir kiracı grubunuz varsa, açılan listeden seçim yapmak yerine adı el ile girin.
+> If you have a custom Tenant Group, enter the name manually instead of choosing from the drop-down list.
 
-## <a name="report-issues"></a>Sorunları raporla
+## <a name="report-issues"></a>Report issues
 
-Yönetim Aracı veya diğer Windows Sanal Masaüstü araçlarıyla ilgili herhangi bir sorunla karşılaşırsanız, GitHub 'da raporlamak için [Uzak Masaüstü Hizmetleri ARM şablonlarındaki](https://github.com/Azure/RDS-Templates/blob/master/README.md) yönergeleri izleyin.
+If you encounter any issues with the management tool or other Windows Virtual Desktop tools, follow the directions in [ARM Templates for Remote Desktop Services](https://github.com/Azure/RDS-Templates/blob/master/README.md) to report them on GitHub.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Yönetim aracına nasıl dağıtılacağını ve bağlandığınızı öğrendiğinize göre, hizmet sorunlarını ve sistem durumu belgelerini izlemek için Azure hizmet durumunu nasıl kullanacağınızı öğrenebilirsiniz.
+Now that you've learned how to deploy and connect to the management tool, you can learn how to use Azure Service Health to monitor service issues and health advisories.
 
 > [!div class="nextstepaction"]
-> [Hizmet uyarıları ayarlama öğreticisi](./set-up-service-alerts.md)
+> [Set up service alerts tutorial](./set-up-service-alerts.md)

@@ -1,7 +1,7 @@
 ---
-title: "Hızlı Başlangıç: Java için Bing Video arama SDK'sını kullanarak video Ara"
+title: 'Quickstart: Search for videos using the SDK for Java - Bing Video Search'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, Java için Bing Video arama SDK'sını kullanarak video arama istekleri göndermek için kullanın.
+description: Use this quickstart to send video search requests using the Bing Video Search SDK for Java.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 06/26/2019
 ms.author: aahi
-ms.openlocfilehash: 3051f663f277c216fe18513b816bb86478a2efbd
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: cbe5f0023b16aec1ed68e7a78ddb3103f40eb85b
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447000"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74378587"
 ---
-# <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-java"></a>Hızlı Başlangıç: Java için bir video arama Bing Video arama SDK ile gerçekleştirme
+# <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-java"></a>Quickstart: Perform a video search with the Bing Video Search SDK for Java
 
-Bu hızlı başlangıçta, Java için Bing Video arama SDK'sı ile haberler için aramaya başlamak için kullanın. Bing Video arama çoğu programlama dilleri ile uyumlu bir REST API olsa da SDK hizmeti uygulamalarınızla tümleştirmek için kolay bir yol sağlar. Bu örnek için kaynak kodu bulunabilir [GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingVideoSearch)ilave ek açıklamaların ve özellikleri.
+Use this quickstart to begin searching for news with the Bing Video Search SDK for Java. While Bing Video Search has a REST API compatible with most programming languages, the SDK provides an easy way to integrate the service into your applications. The source code for this sample can be found on [GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingVideoSearch), with additional annotations, and features.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* [Java geliştirme Kit(JDK)](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html)
+* The [Java Development Kit(JDK)](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html)
 
 * [Gson kitaplığı](https://github.com/google/gson)
 
@@ -59,9 +59,9 @@ Sık kullandığınız IDE ortamında veya düzenleyicide yeni bir Java projesi 
     import java.util.List; 
     ```
 
-## <a name="create-a-search-client"></a>Bir arama istemcisi oluşturma
+## <a name="create-a-search-client"></a>Create a search client
 
-1. Uygulama `VideoSearchAPIImpl` API uç noktanız ve bir örneğini gerektirir ve istemci `ServiceClientCredentials` sınıfı.
+1. Implement the `VideoSearchAPIImpl` client, which requires your API endpoint, and an instance of the `ServiceClientCredentials` class.
 
     ```java
     public static VideoSearchAPIImpl getClient(final String subscriptionKey) {
@@ -72,9 +72,9 @@ Sık kullandığınız IDE ortamında veya düzenleyicide yeni bir Java projesi 
     )};
     ```
 
-    Uygulamak için `ServiceClientCredentials`, şu adımları izleyin:
+    To implement `ServiceClientCredentials`, follow these steps:
 
-    1. geçersiz kılma `applyCredentialsFilter()` işlevi ile bir `OkHttpClient.Builder` bir parametre olarak nesne. 
+    1. override the `applyCredentialsFilter()` function, with a `OkHttpClient.Builder` object as a parameter. 
         
         ```java
         //...
@@ -86,7 +86,7 @@ Sık kullandığınız IDE ortamında veya düzenleyicide yeni bir Java projesi 
         //...
         ```
     
-    2. İçinde `applyCredentialsFilter()`, çağrı `builder.addNetworkInterceptor()`. Yeni bir `Interceptor` nesne ve geçersiz kılma kendi `intercept()` gerçekleştirilecek yöntemi bir `Chain` dinleyiciyi nesne.
+    2. Within `applyCredentialsFilter()`, call `builder.addNetworkInterceptor()`. Create a new `Interceptor` object, and override its `intercept()` method to take a `Chain` interceptor object.
 
         ```java
         //...
@@ -100,7 +100,7 @@ Sık kullandığınız IDE ortamında veya düzenleyicide yeni bir Java projesi 
         ///...
         ```
 
-    3. İçinde `intercept` işlev, isteğiniz için değişkenler oluşturun. Kullanım `Request.Builder()` isteğinizi oluşturmak için. Abonelik anahtarınızı ekleme `Ocp-Apim-Subscription-Key` üst bilgi ve dönüş `chain.proceed()` istek nesnesi üzerinde.
+    3. Within the `intercept` function, create variables for your request. Use `Request.Builder()` to build your request. Add your subscription key to the `Ocp-Apim-Subscription-Key` header, and return `chain.proceed()` on the request object.
             
         ```java
         //...
@@ -115,9 +115,9 @@ Sık kullandığınız IDE ortamında veya düzenleyicide yeni bir Java projesi 
         //...
         ```
 
-## <a name="send-a-search-request-and-receive-the-response"></a>Arama isteği gönderme ve yanıt 
+## <a name="send-a-search-request-and-receive-the-response"></a>Send a search request and receive the response 
 
-1. Çağrılan bir işlev oluşturma `VideoSearch()` , abonelik anahtarınız bir dize olarak alır. Daha önce oluşturduğunuz arama istemci örneği oluşturun.
+1. Create a function called `VideoSearch()` that takes your subscription key as a string. Instantiate the search client created earlier.
     
     ```java
     public static void VideoSearch(String subscriptionKey){
@@ -125,7 +125,7 @@ Sık kullandığınız IDE ortamında veya düzenleyicide yeni bir Java projesi 
         //...
     }
     ```
-2. İçinde `VideoSearch()`, istemci kullanarak bir video arama isteği Gönder `SwiftKey` arama terimi. Video arama API'si bir sonuç döndürdü, ilk sonucu alın ve kimliği, adı ve URL, döndürülen videoları toplam sayısını yazdırın. 
+2. Within `VideoSearch()`, Send a video search request using the client, with `SwiftKey` as the search term. If the Video Search API returned a result, get the first result and print its id, name, and URL, along with the total number of videos returned. 
     
     ```java
     VideosInner videoResults = client.searchs().list("SwiftKey");
@@ -148,7 +148,7 @@ Sık kullandığınız IDE ortamında veya düzenleyicide yeni bir Java projesi 
     }
     ```
 
-3. Ana yönteminiz arama yöntemi çağırın.
+3. Call the search method from your main method.
 
     ```java
     public static void main(String[] args) {
@@ -159,9 +159,9 @@ Sık kullandığınız IDE ortamında veya düzenleyicide yeni bir Java projesi 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Tek sayfalı bir web uygulaması oluşturma](../tutorial-bing-video-search-single-page-app.md)
+> [Create a single page web app](../tutorial-bing-video-search-single-page-app.md)
 
 ## <a name="see-also"></a>Ayrıca bkz. 
 
-* [Bing Video arama API'si nedir?](../overview.md)
+* [What is the Bing Video Search API?](../overview.md)
 * [Bilişsel Hizmetler .NET SDK örnekleri](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
