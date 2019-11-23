@@ -1,82 +1,82 @@
 ---
-title: 'Öğretici: Azure depolama Azure CDN kullanarak statik bir Web sitesinde SSL ile özel etki alanını etkinleştirme'
-description: Statik Web sitesi barındırmak için özel bir etki alanı yapılandırma konusunda bilgi edinin.
+title: 'Tutorial: Enable custom domain & SSL for a static website in Azure'
+description: Learn how to configure a custom domain for static website hosting.
 author: normesta
 ms.service: storage
 ms.topic: tutorial
-ms.date: 05/22/2019
+ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: a65c0e677182eb224f6bfa7ed834740458b97098
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 893ac53dc9f0b6b162c5ec22e478cd15706e50fb
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847013"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327504"
 ---
-# <a name="tutorial-use-azure-cdn-to-enable-a-custom-domain-with-ssl-for-a-static-website"></a>Öğretici: Statik bir Web sitesi için SSL ile özel etki alanını etkinleştirmek üzere Azure CDN kullanma
+# <a name="tutorial-enable-custom-domain--ssl-for-a-static-website-in-azure"></a>Tutorial: Enable custom domain & SSL for a static website in Azure
 
-Bu öğretici, bir dizinin ikinci bölümüdür. İçinde statik bir Web siteniz için SSL ile bir özel etki alanı endpoint etkinleştirmeyi öğrenin. 
+Bu öğretici, bir dizinin ikinci bölümüdür. In it, you learn to enable a custom domain endpoint with SSL for your static website. 
 
-Öğreticinin nasıl kullanılacağını gösterir [Azure CDN](../../cdn/cdn-overview.md) özel etki alanı için uç nokta statik Web sitenizi yapılandırmak için. Azure CDN ile özel SSL sertifikalarını sağlama, özel bir etki alanı kullanın ve tümünü aynı anda özel yeniden yazma kuralları yapılandırın. Azure CDN yapılandırma ek ücretlere neden olur, ancak tutarlı düşük gecikme süreleriyle Web sitenize yerden sağlar dünyanın. Azure CDN, ayrıca kendi sertifikanızı ile SSL şifrelemesi sağlar. Azure CDN fiyatlandırması hakkında daha fazla bilgi için bkz: [Azure CDN fiyatlandırması](https://azure.microsoft.com/pricing/details/cdn/).
+The tutorial shows how to use [Azure CDN](../../cdn/cdn-overview.md) to configure the custom domain endpoint for your static website. With Azure CDN, you can provision custom SSL certificates, use a custom domain, and configure custom rewrite rules all at the same time. Configuring Azure CDN results in additional charges, but provides consistent low latencies to your website from anywhere in the world. Azure CDN also provides SSL encryption with your own certificate. For information on Azure CDN pricing, see [Azure CDN pricing](https://azure.microsoft.com/pricing/details/cdn/).
 
 Serinin ikinci bölümünde şunları öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Statik Web sitesi uç noktada bir CDN uç noktası oluşturma
-> * Özel etki alanı ve SSL etkinleştir
+> * Create a CDN endpoint on the static website endpoint
+> * Enable custom domain and SSL
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticiye başlamadan önce birinci kısmı izleyin, [öğretici: Blob depolamada](storage-blob-static-website-host.md)statik bir Web sitesi barındırın. 
+Before you begin this tutorial, complete part one, [Tutorial: Host a static website on Blob Storage](storage-blob-static-website-host.md). 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-Oturum [Azure portalında](https://portal.azure.com/) kullanmaya başlamak için.
+Sign in to the [Azure portal](https://portal.azure.com/) to get started.
 
-## <a name="create-a-cdn-endpoint-on-the-static-website-endpoint"></a>Statik Web sitesi uç noktada bir CDN uç noktası oluşturma
+## <a name="create-a-cdn-endpoint-on-the-static-website-endpoint"></a>Create a CDN endpoint on the static website endpoint
 
-1. Azure portal depolama hesabınızı bulun ve hesaba genel bakış ' ı görüntüleyin.
-1. Seçin **Azure CDN** altında **Blob hizmeti** Azure CDN yapılandırmak için menüsünde.
-1. **CDN profili** bölümünde yeni veya var olan bir CDN profili belirtin. Daha fazla bilgi için bkz [. hızlı başlangıç: Azure CDN profili ve uç noktası](../../cdn/cdn-create-new-endpoint.md)oluşturun.
-1. CDN uç noktası için bir fiyatlandırma katmanı belirtin. Bu öğretici, genellikle birkaç dakika içinde hızla yaydığı için **Standart Akamai** fiyatlandırma katmanını kullanır. Diğer fiyatlandırma katmanlarının yayılması daha uzun sürebilir, ancak başka avantajlar da sunabilir. Daha fazla bilgi için bkz. [Azure CDN ürün özelliklerini karşılaştırma](../../cdn/cdn-features.md).
-1. **CDN uç noktası adı** alanında, CDN uç noktanız için bir ad belirtin. CDN uç noktası Azure genelinde benzersiz olmalıdır.
-1. **Kaynak ana bilgisayar adı** alanında, sizin için statik Web sitesi uç noktası olduğunuzu belirtin. Statik Web sitesi uç noktanızı bulmak için, depolama hesabınız için **statik Web sitesi** ayarları ' na gidin. Birincil uç noktayı kopyalayın ve CDN yapılandırmasına yapıştırarak protokol tanımlayıcısını (*örn.* https) kaldırır.
+1. Locate your storage account in the Azure portal and display the account overview.
+1. Select **Azure CDN** under the **Blob Service** menu to configure Azure CDN.
+1. In the **CDN profile** section, specify a new or existing CDN profile. Daha fazla bilgi için bkz. [Hızlı Başlangıç: Azure CDN profili ve uç noktası oluşturma](../../cdn/cdn-create-new-endpoint.md).
+1. Specify a pricing tier for the CDN endpoint. This tutorial uses the **Standard Akamai** pricing tier, because it propagates quickly, typically within a few minutes. Other pricing tiers may take longer to propagate, but may also offer other advantages. For more information, see [Compare Azure CDN product features](../../cdn/cdn-features.md).
+1. In the **CDN endpoint name** field, specify a name for your CDN endpoint. The CDN endpoint must be unique across Azure.
+1. Specify your the static website endpoint in the **Origin hostname** field. To find your static website endpoint, navigate to the **Static website** settings for your storage account. Copy the primary endpoint and paste it into the CDN configuration, removing the protocol identifier (*e.g.* , HTTPS).
 
-    Aşağıdaki görüntüde örnek bir uç nokta yapılandırması gösterilmektedir:
+    The following image shows an example endpoint configuration:
 
-    ![Örnek CDN uç noktası yapılandırmasını gösteren ekran görüntüsü](media/storage-blob-static-website-custom-domain/add-cdn-endpoint.png)
+    ![Screenshot showing sample CDN endpoint configuration](media/storage-blob-static-website-custom-domain/add-cdn-endpoint.png)
 
-1. CDN uç noktasını oluşturun ve yaymasını bekleyin.
-1. CDN uç noktasının doğru şekilde yapılandırıldığını doğrulamak için, ayarlarına gitmek üzere uç noktaya tıklayın. Depolama hesabınız için CDN genel görünümünde, uç nokta ana bilgisayar adını bulun ve aşağıdaki görüntüde gösterildiği gibi uç noktaya gidin. CDN uç noktanızın biçimi şuna benzer `https://staticwebsitesamples.azureedge.net`olacaktır.
+1. Create the CDN endpoint and wait for it to propagate.
+1. To verify that the CDN endpoint is configured correctly, click on the endpoint to navigate to its settings. From the CDN overview for your storage account, locate the endpoint hostname, and navigate to the endpoint, as shown in the following image. The format of your CDN endpoint will be similar to `https://staticwebsitesamples.azureedge.net`.
 
-    ![CDN uç noktasına genel bakış gösteren ekran görüntüsü](media/storage-blob-static-website-custom-domain/verify-cdn-endpoint.png)
+    ![Screenshot showing overview of CDN endpoint](media/storage-blob-static-website-custom-domain/verify-cdn-endpoint.png)
 
-    CDN uç noktası yayma işlemi tamamlandıktan sonra, CDN uç noktasına gitmek daha önce statik Web sitenize yüklediğiniz index. html dosyasının içeriğini görüntüler.
+    Once the CDN endpoint propagation is complete, navigating to the CDN endpoint displays the contents of the index.html file that you previously uploaded to your static website.
 
-1. CDN uç noktanıza ait kaynak ayarlarını gözden geçirmek için, CDN uç noktanıza ilişkin **Ayarlar** bölümünde **kaynak** ' a gidin. **Kaynak türü** alanının *özel kaynak* olarak ayarlandığını ve **kaynak konak adı** alanının statik Web sitesi uç noktasını görüntülediğini görürsünüz.
+1. To review the origin settings for your CDN endpoint, navigate to **Origin** under the **Settings** section for your CDN endpoint. You will see that the **Origin type** field is set to *Custom Origin* and that the **Origin hostname** field displays your static website endpoint.
 
-    ![CDN uç noktası için kaynak ayarlarını gösteren ekran görüntüsü](media/storage-blob-static-website-custom-domain/verify-cdn-origin.png)
+    ![Screenshot showing Origin settings for CDN endpoint](media/storage-blob-static-website-custom-domain/verify-cdn-origin.png)
 
-## <a name="enable-custom-domain-and-ssl"></a>Özel etki alanı ve SSL etkinleştir
+## <a name="enable-custom-domain-and-ssl"></a>Enable custom domain and SSL
 
-1. Özel etki alanınızı CDN uç noktasına yönlendirmek için etki alanı adı sağlayıcınızla bir CNAME kaydı oluşturun. CNAME kaydı *www* alt etki alanı aşağıdakine benzer olmalıdır:
+1. Create a CNAME record with your domain name provider to redirect your custom domain to the CDN endpoint. The CNAME record for the *www* subdomain should be similar to the following:
 
-    ![Www alt etki alanı için CNAME kaydı belirtin](media/storage-blob-static-website-custom-domain/subdomain-cname-record.png)
+    ![Specify CNAME record for subdomain www](media/storage-blob-static-website-custom-domain/subdomain-cname-record.png)
 
-1. Azure portal, CDN uç noktanız için ayarları görüntüleyin. Özel etki alanı ve SSL sertifikasını yapılandırmak için **Ayarlar** altında **özel etki alanları** ' na gidin.
-1. Seçin **özel etki alanı Ekle** ve etki alanı adınızı girin ve ardından tıklayın **Ekle**.
-1. Bir SSL sertifikası sağlamak için yeni özel etki alanı eşlemesini seçin.
-1. **Özel etki alanı https** 'yi **Açık**olarak ayarlayın ve **Kaydet**' e tıklayın. Özel etki alanınızı yapılandırmak birkaç saat sürebilir. Portal, aşağıdaki görüntüde gösterildiği gibi ilerlemeyi gösterir.
+1. In the Azure portal, display the settings for your CDN endpoint. Navigate to **Custom domains** under **Settings** to configure the custom domain and the SSL certificate.
+1. Select **Add custom domain** and enter your domain name, then click **Add**.
+1. Select the new custom domain mapping to provision an SSL certificate.
+1. Set **Custom Domain HTTPS** to **ON**, then click **Save**. It may take several hours to configure your custom domain. The portal displays progress as shown in the following image.
 
-    ![Özel etki alanı yapılandırmasının ilerlemesini gösteren ekran görüntüsü](media/storage-blob-static-website-custom-domain/configure-custom-domain-https.png)
+    ![Screenshot showing progress of custom domain configuration](media/storage-blob-static-website-custom-domain/configure-custom-domain-https.png)
 
-1. Özel etki alanınız için URL 'ye erişerek, statik Web sitenizin özel etki alanınızı eşlemesini test edin.
+1. Test the mapping of your static website to your custom domain by accessing the URL for your custom domain.
 
-Özel etki alanları için https 'yi etkinleştirme hakkında daha fazla bilgi [için bkz. Öğretici: Azure CDN özel bir etki alanında](../../cdn/cdn-custom-ssl.md)https 'yi yapılandırın.
+For more information about enabling HTTPS for custom domains, see [Tutorial: Configure HTTPS on an Azure CDN custom domain](../../cdn/cdn-custom-ssl.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Öğreticinin bu iki, statik Web siteniz için SSL Azure CDN ile özel bir etki alanı yapılandırma hakkında bilgi edindiniz.
+In part two of this tutorial, you learned how to configure a custom domain with SSL in Azure CDN for your static website.
 
-Azure CDN yapılandırma ve kullanma hakkında daha fazla bilgi için bkz. [Azure CDN nedir?](../../cdn/cdn-overview.md).
+For more information about configuring and using Azure CDN, see [What is Azure CDN?](../../cdn/cdn-overview.md).

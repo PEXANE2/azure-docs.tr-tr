@@ -1,176 +1,172 @@
 ---
-title: Blok zincirini yapılandırma Veri Yöneticisi-Azure portal
-description: Azure portal kullanarak blok zinciri oluşturma ve yönetme Veri Yöneticisi.
-services: azure-blockchain
-author: PatAltimore
-ms.author: patricka
+title: Configure Blockchain Data Manager using Azure portal - Azure Blockchain Service
+description: Create and manage Blockchain Data Manager for Azure Blockchain Service using the Azure portal.
 ms.date: 11/04/2019
 ms.topic: article
-ms.service: azure-blockchain
 ms.reviewer: chroyal
-ms.openlocfilehash: 484322fb0486eeb4ab67366d32350c69a18da743
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 2ab6c3333635e6c830bc2a36a0c5152fe3b78c49
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605914"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326229"
 ---
-# <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>Azure portal kullanarak blok zinciri Veri Yöneticisi yapılandırma
+# <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>Azure portalını kullanarak Blok Zinciri Veri Yöneticisi'ni yapılandırma
 
-Blok zinciri verilerini yakalamak ve bir Azure Event Grid konusuna göndermek için Azure blok zinciri hizmeti için Blockzincirini Veri Yöneticisi yapılandırın.
+Configure Blockchain Data Manager for Azure Blockchain Service to capture blockchain data and send it to an Azure Event Grid Topic.
 
-Bir blok zinciri Veri Yöneticisi örneği yapılandırmak için şunları yapın:
+To configure a Blockchain Data Manager instance, you:
 
-* Azure blok zinciri hizmeti işlem düğümü için bir blok zinciri Veri Yöneticisi örneği oluşturma
-* Blok zinciri uygulamalarınızı ekleyin
+* Create a Blockchain Data Manager instance for an Azure Blockchain Service transaction node
+* Add your blockchain applications
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* [Hızlı başlangıç: Azure Portal veya hızlı başlangıç kullanarak bir blok zinciri üyesi oluşturma](create-member.md) [: Azure CLI kullanarak bir Azure blok zinciri hizmeti blok zinciri üyesi](create-member-cli.md) oluşturma
-* [Event Grid konu başlığı](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic) oluşturma
-* [Azure Event Grid Içindeki olay işleyicileri](../../event-grid/event-handlers.md) hakkında bilgi edinin
+* Complete [Quickstart: Create a blockchain member using the Azure portal](create-member.md) or [Quickstart: Create an Azure Blockchain Service blockchain member using Azure CLI](create-member-cli.md)
+* Create an [Event Grid Topic](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)
+* Learn about [Event handlers in Azure Event Grid](../../event-grid/event-handlers.md)
 
-## <a name="create-instance"></a>Örnek Oluştur
+## <a name="create-instance"></a>Create instance
 
-Bir blok zinciri Veri Yöneticisi örneği, bir Azure blok zinciri hizmeti işlem düğümünü bağlar ve izler. Yalnızca işlem düğümüne erişimi olan kullanıcılar bir bağlantı oluşturabilir. Örnek, işlem düğümünden tüm ham blok ve ham işlem verilerini yakalar.
+A Blockchain Data Manager instance connects and monitors an Azure Blockchain Service transaction node. Only users with access to the transaction node can create a connection. An instance captures all raw block and raw transaction data from the transaction node.
 
-Giden bağlantı, blok zinciri verilerini Azure Event Grid gönderir. Örneği oluştururken tek bir giden bağlantı yapılandırırsınız. Blok zinciri Veri Yöneticisi, belirli bir blok zinciri Veri Yöneticisi örneği için birden çok Event Grid konu giden bağlantısını destekler. Blok zinciri verilerini tek bir hedefe gönderebilir veya birden çok hedefe blok zinciri verileri gönderebilirsiniz. Başka bir hedef eklemek için örneğe ek giden bağlantılar eklemeniz yeterlidir.
+An outbound connection sends blockchain data to Azure Event Grid. You configure a single outbound connection when you create the instance. Blockchain Data Manager supports multiple Event Grid Topic outbound connections for any given Blockchain Data Manager instance. You can send blockchain data to a single destination or send blockchain data to multiple destinations. To add another destination, just add additional outbound connections to the instance.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
-1. Blok zinciri Veri Yöneticisi bağlamak istediğiniz Azure blok zinciri hizmeti üyesine gidin. **Blok zinciri veri Yöneticisi**seçin.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. Go to the Azure Blockchain Service member you want to connect to Blockchain Data Manager. Select **Blockchain Data Manager**.
 1. **Add (Ekle)** seçeneğini belirleyin.
 
-    ![Blok zinciri ekleme Veri Yöneticisi](./media/data-manager-portal/add-instance.png)
+    ![Add Blockchain Data Manager](./media/data-manager-portal/add-instance.png)
 
     Şu ayrıntıları girin:
 
     Ayar | Açıklama
     --------|------------
-    Ad | Bağlı bir blok zinciri Veri Yöneticisi için benzersiz bir ad girin. Blok zinciri Veri Yöneticisi adı küçük harf ve rakam içerebilir ve en fazla 20 karakter uzunluğunda olabilir.
-    İşlem düğümü | Bir işlem düğümü seçin. Yalnızca okuma erişiminizin bulunduğu işlem düğümleri listelenir.
-    Bağlantı adı | Blok zinciri işlem verilerinin gönderildiği giden bağlantıya ilişkin benzersiz bir ad girin.
-    Olay Kılavuzu uç noktası | Blok zinciri Veri Yöneticisi örneğiyle aynı abonelikte bir olay Kılavuzu konusu seçin.
+    Adı | Enter a unique name for a connected Blockchain Data Manager. The Blockchain Data Manager name can contain lower case letters and numbers and has a maximum length of 20 characters.
+    Transaction node | Choose a transaction node. Only transaction nodes you have read access are listed.
+    Bağlantı adı | Enter a unique name of the outbound connection where blockchain transaction data is sent.
+    Event grid endpoint | Choose an event grid topic in the same subscription as the Blockchain Data Manager instance.
 
 1. **Tamam**’ı seçin.
 
-    Bir blok zinciri Veri Yöneticisi örneği oluşturmak bir dakikadan kısa sürer. Örnek dağıtıldıktan sonra otomatik olarak başlatılır. Çalışan bir blok zinciri Veri Yöneticisi örneği, işlem düğümündeki blok zinciri olaylarını yakalar ve giden bağlantılara veri gönderir.
+    It takes less than a minute to create a Blockchain Data Manager instance. After the instance is deployed, it is automatically started. A running Blockchain Data Manager instance captures blockchain events from the transaction node and sends data to the outbound connections.
 
-    Yeni örnek, Azure blok zinciri hizmeti üyesine yönelik blok zinciri Veri Yöneticisi örnekleri listesinde görünür.
+    The new instance appears in the list of Blockchain Data Manager instances for the Azure Blockchain Service member.
 
-    ![Blok zinciri veri üyesi örneklerinin listesi](./media/data-manager-portal/instance-list.png)
+    ![List of Blockchain Data Member instances](./media/data-manager-portal/instance-list.png)
 
-## <a name="add-blockchain-application"></a>Blok zinciri uygulaması ekleme
+## <a name="add-blockchain-application"></a>Add blockchain application
 
-Bir blok zinciri uygulaması eklerseniz, blok zinciri uygulama için olay ve özellik durumunun kodunu çözer Veri Yöneticisi. Aksi takdirde, yalnızca ham blok ve ham işlem verileri gönderilir. Blok zinciri Veri Yöneticisi sözleşme dağıtıldığında sözleşme adreslerini de bulur. Bir blok zinciri Veri Yöneticisi örneğine birden çok blok zinciri uygulaması ekleyebilirsiniz.
+If you add a blockchain application, Blockchain Data Manager decodes event and property state for the application. Otherwise, only raw block and raw transaction data is sent. Blockchain Data Manager also discovers contract addresses when the contract is deployed. You can add multiple blockchain applications to a Blockchain Data Manager instance.
 
 > [!IMPORTANT]
-> Şu anda, Solidity [dizi türlerini](https://solidity.readthedocs.io/en/v0.5.12/types.html#arrays) veya [eşleme türlerini](https://solidity.readthedocs.io/en/v0.5.12/types.html#mapping-types) bildiren blok zinciri uygulamaları tam olarak desteklenmez. Bir dizi veya eşleme türü olarak tanımlanan özellikler, *Contractpropertiesmsg* veya *Decodedcontracteventsmsg* iletilerinde kodu çözülür.
+> Currently, blockchain applications that declare Solidity [array types](https://solidity.readthedocs.io/en/v0.5.12/types.html#arrays) or [mapping types](https://solidity.readthedocs.io/en/v0.5.12/types.html#mapping-types) are not fully supported. Properties declared as array or mapping types will not be decoded in *ContractPropertiesMsg* or *DecodedContractEventsMsg* messages.
 
-Blok zinciri Veri Yöneticisi, uygulamayı eklemek için akıllı sözleşme ABı ve dağıtılan bir bytecode dosyası gerektirir.
+Blockchain Data Manager requires a smart contract ABI and deployed bytecode file to add the application.
 
-### <a name="get-contract-abi-and-bytecode"></a>Sözleşme ABı ve bytecode 'u al
+### <a name="get-contract-abi-and-bytecode"></a>Get Contract ABI and bytecode
 
-Sözleşme ABı, akıllı sözleşme arabirimlerini tanımlar. Akıllı sözleşmeyle nasıl etkileşim kuracağınızı açıklar. Contract ABı 'ı panoya kopyalamak için [Ethereum uzantısı Için Azure blok zinciri geliştirme seti](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) ' ni kullanabilirsiniz.
+The contract ABI defines the smart contract interfaces. It describes how to interact with the smart contract. You can use the [Azure Blockchain Development Kit for Ethereum extension](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) to copy the contract ABI to the clipboard.
 
-1. Visual Studio Code gezgin bölmesinde, Solidity projenizin **Build/Contracts** klasörünü genişletin.
-1. Sözleşme meta verileri JSON dosyasına sağ tıklayın. Dosya adı akıllı sözleşme adı ve ardından **. JSON** uzantısıdır.
-1. **Sözleşme ABI Kopyala**' yı seçin.
+1. In the Visual Studio Code explorer pane, expand the **build/contracts** folder of your Solidity project.
+1. Right-click the contract metadata JSON file. The file name is the smart contract name followed by the **.json** extension.
+1. Select **Copy Contract ABI**.
 
-    ![Sözleşmeyi Kopyala ABı seçimiyle Visual Studio Code bölmesi](./media/data-manager-portal/abi-devkit.png)
+    ![Visual Studio Code pane with the Copy Contract ABI selection](./media/data-manager-portal/abi-devkit.png)
 
-    Sözleşme ABı, panoya kopyalanır.
+    The contract ABI is copied to the clipboard.
 
-1. **ABI** DIZISINI bir JSON dosyası olarak kaydedin. Örneğin, *ABI. JSON*. Dosyayı sonraki bir adımda kullanırsınız.
+1. Save the **abi** array as a JSON file. For example, *abi.json*. You use the file in a later step.
 
-Blok zinciri Veri Yöneticisi, akıllı sözleşme için dağıtılan bayt kodunu gerektirir. Dağıtılan bytecode, akıllı sözleşme bytecode değerinden farklı. Derlenen anlaşma meta veri dosyasından dağıtılan bayt kodunu alabilirsiniz.
+Blockchain Data Manager requires the deployed bytecode for the smart contract. The deployed bytecode is different than the smart contract bytecode. You can get the deployed bytecode from the compiled contract metadata file.
 
-1. Solidity projenizin **Build/Contracts** klasöründe yer alan Sözleşme meta veri dosyasını açın. Dosya adı akıllı sözleşme adı ve ardından **. JSON** uzantısıdır.
-1. JSON dosyasında **Deployedbytecode** öğesini bulun.
-1. Tırnak işaretleri olmadan onaltılık değeri kopyalayın.
+1. Open the contract metadata file contained in the **build/contracts** folder of your Solidity project. The file name is the smart contract name followed by the **.json** extension.
+1. Find the **deployedBytecode** element in the JSON file.
+1. Copy the hexadecimal value without the quotes.
 
-    ![Meta verilerde bytecode ile Visual Studio Code bölmesi](./media/data-manager-portal/bytecode-metadata.png)
+    ![Visual Studio Code pane with bytecode in the metadata](./media/data-manager-portal/bytecode-metadata.png)
 
-1. **Bytecode** DEĞERINI bir JSON dosyası olarak kaydedin. Örneğin, *bytecode. JSON*. Dosyayı sonraki bir adımda kullanırsınız.
+1. Save the **bytecode** value as a JSON file. For example, *bytecode.json*. You use the file in a later step.
 
-Aşağıdaki örnek, VS Code düzenleyicide açık olan *ABI. JSON* ve *bytecode. JSON* dosyalarını gösterir. Dosyalarınız benzer görünmelidir.
+The following example shows *abi.json* and *bytecode.json* files open in the VS Code editor. Your files should look similar.
 
-![ABI. JSON ve bytecode. JSON dosyaları örneği](./media/data-manager-portal/contract-files.png)
+![Example of abi.json and bytecode.json files](./media/data-manager-portal/contract-files.png)
 
-### <a name="create-contract-abi-and-bytecode-url"></a>Sözleşme ABı ve bytecode URL 'SI oluştur
+### <a name="create-contract-abi-and-bytecode-url"></a>Create contract ABI and bytecode URL
 
-Blok zinciri Veri Yöneticisi, bir uygulama eklenirken sözleşme ABı ve bytecode dosyalarına bir URL tarafından erişilebilmesini gerektirir. Bir Azure depolama hesabı kullanarak özel olarak erişilebilen bir URL sağlayabilirsiniz.
+Blockchain Data Manager requires the contract ABI and bytecode files to be accessible by a URL when adding an application. You can use an Azure Storage account to provide a privately accessible URL.
 
 #### <a name="create-storage-account"></a>Depolama hesabı oluştur
 
 [!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
-#### <a name="upload-contract-files"></a>Sözleşme dosyalarını karşıya yükle
+#### <a name="upload-contract-files"></a>Upload contract files
 
-1. Depolama hesabı için yeni bir kapsayıcı oluşturun. **Kapsayıcı > kapsayıcıları**seçin.
+1. Create a new container for the storage account. Select **Containers > Container**.
 
-    ![Depolama hesabı kapsayıcısı oluşturma](./media/data-manager-portal/create-container.png)
+    ![Create a storage account container](./media/data-manager-portal/create-container.png)
 
     | Alan | Açıklama |
     |-------|-------------|
-    | Ad  | Kapsayıcıyı adlandırın. Örneğin, *smartcontract* |
-    | Genel erişim düzeyi | *Özel (anonim erişim yok)* seçeneğini belirleyin |
+    | Adı  | Name the container. For example, *smartcontract* |
+    | Public access level | Choose *Private (no anonymous access)* |
 
 1. Kapsayıcıyı oluşturmak için **Tamam**'ı seçin.
-1. Kapsayıcıyı seçin ve ardından **karşıya yükle**' yi seçin.
-1. [Sözleşmeyi al ABI ve bytecode](#get-contract-abi-and-bytecode) bölümünde oluşturduğunuz JSON dosyalarını seçin.
+1. Select the container then select **Upload**.
+1. Choose both JSON files you created in the [Get Contract ABI and bytecode](#get-contract-abi-and-bytecode) section.
 
-    ![Blobu karşıya yükle](./media/data-manager-portal/upload-blobs.png)
+    ![Upload blob](./media/data-manager-portal/upload-blobs.png)
 
     **Karşıya Yükle**’yi seçin.
 
-#### <a name="generate-url"></a>URL Oluştur
+#### <a name="generate-url"></a>Generate URL
 
-Her blob için, paylaşılan erişim imzası oluşturun.
+For each blob, generate a shared access signature.
 
-1. ABı JSON blob 'unu seçin.
-1. **SAS oluştur** ' u seçin
-1. İstenen erişim imzası süre sonunu ayarlayın **ve ardından blob SAS belirteci oluştur ve URL 'yi**seçin.
+1. Select the ABI JSON blob.
+1. Select **Generate SAS**
+1. Set desired access signature expiration then select **Generate blob SAS token and URL**.
 
-    ![SAS belirteci oluştur](./media/data-manager-portal/generate-sas.png)
+    ![Generate SAS token](./media/data-manager-portal/generate-sas.png)
 
-1. **BLOB SAS URL 'sini** kopyalayın ve sonraki bölüm için kaydedin.
-1. Bytecode JSON blobu için [URL Oluştur](#generate-url) adımlarını yineleyin.
+1. Copy the **Blob SAS URL** and save it for the next section.
+1. Repeat the [Generate URL](#generate-url) steps for the bytecode JSON blob.
 
-### <a name="add-application-to-instance"></a>Örneğe uygulama ekle
+### <a name="add-application-to-instance"></a>Add application to instance
 
-1. Örnek listesinden Blockzincirine Veri Yöneticisi örneğinizi seçin.
-1. **Blok zinciri uygulamaları**' nı seçin.
+1. Select your Blockchain Data Manager instance from the instance list.
+1. Select **Blockchain applications**.
 1. **Add (Ekle)** seçeneğini belirleyin.
 
-    ![Blok zinciri uygulaması ekleme](./media/data-manager-portal/add-application.png)
+    ![Add a blockchain application](./media/data-manager-portal/add-application.png)
 
-    Blok zinciri uygulamasının adını ve akıllı sözleşme ABı ve bytecode URL 'Lerini girin.
+    Enter the name of the blockchain application and the smart contract ABI and bytecode URLs.
 
     Ayar | Açıklama
     --------|------------
-    Ad | İzlenecek blok zinciri uygulaması için benzersiz bir ad girin.
-    Sözleşme ABı | Sözleşme ABı dosyasının URL yolu. Daha fazla bilgi için bkz. [sözleşme ABI ve bytecode URL 'Si oluşturma](#create-contract-abi-and-bytecode-url).
-    Sözleşme bytecode 'u | Bytecode dosyasının URL yolu. Daha fazla bilgi için bkz. [sözleşme ABI ve bytecode URL 'Si oluşturma](#create-contract-abi-and-bytecode-url).
+    Adı | Enter a unique name for the blockchain application to track.
+    Contract ABI | URL path to the Contract ABI file. For more information, see [Create contract ABI and bytecode URL](#create-contract-abi-and-bytecode-url).
+    Contract Bytecode | URL path to bytecode file. For more information, see [Create contract ABI and bytecode URL](#create-contract-abi-and-bytecode-url).
 
 1. **Tamam**’ı seçin.
 
-    Uygulama oluşturulduktan sonra uygulama, blok zinciri uygulamaları listesinde görünür.
+    Once the application is created, the application appears in the list of blockchain applications.
 
-    ![Blok zinciri uygulama listesi](./media/data-manager-portal/artifact-list.png)
+    ![Blockchain application list](./media/data-manager-portal/artifact-list.png)
 
-Azure Storage hesabını silebilir veya daha fazla blok zinciri uygulaması yapılandırmak için kullanabilirsiniz. Azure Depolama hesabını silmek isterseniz, kaynak grubunu silebilirsiniz. Kaynak grubunun silinmesi, ilişkili depolama hesabını ve kaynak grubuyla ilişkili diğer tüm kaynakları da siler.
+You can delete the Azure Storage account or use it to configure more blockchain applications. If you wish to delete the Azure Storage account, you can delete the resource group. Kaynak grubunun silinmesi, ilişkili depolama hesabını ve kaynak grubuyla ilişkili diğer tüm kaynakları da siler.
 
-## <a name="stop-instance"></a>Örneği durdur
+## <a name="stop-instance"></a>Stop instance
 
-Blok zinciri olaylarını yakalamayı durdurmak ve giden bağlantılara veri göndermek istediğinizde blok zinciri Yöneticisi örneğini durdurun. Örnek durdurulduğunda, blok zinciri Veri Yöneticisi için ücret alınmaz. Daha fazla bilgi için bkz. [Fiyatlandırma](https://azure.microsoft.com/pricing/details/blockchain-service).
+Stop the Blockchain Manager instance when you want to stop capturing blockchain events and sending data to the outbound connections. When the instance is stopped, no charges are incurred for Blockchain Data Manager. Daha fazla bilgi için bkz. [Fiyatlandırma](https://azure.microsoft.com/pricing/details/blockchain-service).
 
-1. **Genel Bakış ' a** gidin ve **Durdur**' u seçin.
+1. Go to **Overview** and select **Stop**.
 
-    ![Örneği durdur](./media/data-manager-portal/stop-instance.png)
+    ![Stop instance](./media/data-manager-portal/stop-instance.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Blok zinciri Veri Yöneticisi ve Azure Cosmos DB kullanarak bir blok zinciri işlem iletisi Gezgini oluşturmayı deneyin.
+Try creating a blockchain transaction message explorer using Blockchain Data Manager and Azure Cosmos DB.
 
 > [!div class="nextstepaction"]
-> [Öğretici: Azure Cosmos DB 'a veri göndermek için blok zinciri Veri Yöneticisi kullanma](data-manager-cosmosdb.md)
+> [Tutorial: Use Blockchain Data Manager to send data to Azure Cosmos DB](data-manager-cosmosdb.md)

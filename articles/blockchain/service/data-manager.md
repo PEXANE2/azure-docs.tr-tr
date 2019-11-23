@@ -1,50 +1,46 @@
 ---
-title: Azure blok zinciri hizmeti için blok zinciri Veri Yöneticisi nedir?
-description: Blok zinciri, Event Grid konularına blok zinciri verilerini yakalayan, dönüştüren ve teslim eden Veri Yöneticisi.
-services: azure-blockchain
-author: PatAltimore
-ms.author: patricka
+title: What is Blockchain Data Manager for Azure Blockchain Service
+description: Blockchain Data Manager to captures, transforms, and delivers blockchain data to Event Grid Topics.
 ms.date: 11/04/2019
 ms.topic: overview
-ms.service: azure-blockchain
 ms.reviewer: chroyal
-ms.openlocfilehash: 94534d9b98f6c93d1d439775d3269df71f587ca4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 6583a99ef6efaefa732178d0228708cea82365b1
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577496"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326210"
 ---
-# <a name="what-is-blockchain-data-manager-for-azure-blockchain-service"></a>Azure blok zinciri hizmeti için blok zinciri Veri Yöneticisi nedir?
+# <a name="what-is-blockchain-data-manager-for-azure-blockchain-service"></a>Azure Blok Zinciri Hizmeti için Blok Zinciri Veri Yöneticisi nedir?
 
-Blok Veri Yöneticisi zinciri, Azure hizmetleri ile güvenilir ve ölçeklenebilir blok zinciri ile tümleştirme sağlayan Azure Event Grid konularda Azure blok zinciri hizmeti işlem verilerini yakalar, dönüştürür ve sunar.
+Blockchain Data Manager captures, transforms, and delivers Azure Blockchain Service transaction data to Azure Event Grid Topics providing reliable and scalable blockchain ledger integration with Azure services.
 
-Çoğu kurumsal blok zinciri senaryosunda bir blok zinciri defteri bir çözümün bir parçasıdır. Örneğin, bir varlığı bir varlıktan diğerine aktarmak için, işlemi göndermek için bir mekanizmaya ihtiyacınız vardır. Daha sonra işlemin gerçekleşdiğine, kabul edildiğinden ve sonuçta elde edilen durum değişikliklerinin uçtan uca çözümünüzle tümleştirileceği için, defter verilerini okumak için bir mekanizmaya ihtiyacınız vardır. Bu örnekte, varlıkları aktarmak için bir akıllı sözleşme yazarsanız, zincir dışı uygulamaları ve veri depolarını bütünleştirmek için Blockzincirini Veri Yöneticisi kullanabilirsiniz. Varlık aktarımı örneği için, blok zincirinde bir varlık aktarıldığında, olaylar ve özellik durumu değişiklikleri blok zinciri tarafından Event Grid aracılığıyla alınır Veri Yöneticisi. Daha sonra blok zinciri verilerini zincirden depolamak veya gerçek zamanlı olarak durum değişikliklerine tepki vermek için Event Grid için birden çok olası olay işleyicisi kullanabilirsiniz.
+In most enterprise blockchain scenarios, a blockchain ledger is one part of a solution. For example, to transfer an asset from one entity to another, you need a mechanism for submitting the transaction. You then need a mechanism for reading ledger data to ensure the transaction occurred, was accepted, and the resulting state changes are then integrated with your end-to-end solution. In this example, if you write a smart contract to transfer assets, you can use Blockchain Data Manager to integrate off-chain applications and data stores. For the asset transfer example, when an asset is transferred on the blockchain, events and property state changes are delivered by Blockchain Data Manager via Event Grid. You can then use multiple possible event handlers for Event Grid to store blockchain data off-chain or react to state changes in real time.
 
-Blok zinciri Veri Yöneticisi üç ana işlev gerçekleştirir: yakalama, dönüştürme ve sunma.
+Blockchain Data Manager performs three main functions: capture, transform, and deliver.
 
-![Blok zinciri Veri Yöneticisi işlevleri](./media/data-manager/functions.png)
+![Blockchain Data Manager functions](./media/data-manager/functions.png)
 
-## <a name="capture"></a>Capture
+## <a name="capture"></a>Yakalama
 
-Her blok zinciri Veri Yöneticisi örneği, bir Azure blok zinciri hizmeti üye işlem düğümüne bağlanır. Yalnızca işlem düğümüne erişimi olan kullanıcılar, müşteri verilerine doğru erişim denetimi sağlayan bir bağlantı oluşturabilir. Bir blok zinciri Veri Yöneticisi örneği, işlem düğümünden tüm ham blok ve ham işlem verilerini güvenilir bir şekilde yakalar ve kurumsal iş yüklerini destekleyecek şekilde ölçeklendirebilir.
+Each Blockchain Data Manager instance connects to one Azure Blockchain Service member transaction node. Only users with access to the transaction node can create a connection ensuring proper access control to customer data. A Blockchain Data Manager instance reliably captures all raw block and raw transaction data from the transaction node and can scale to support enterprise workloads.
 
 ## <a name="transform"></a>Dönüşüm
 
-Blok zinciri Veri Yöneticisi içindeki akıllı sözleşme uygulamalarını yapılandırarak olay ve özellik durumunun kodunu çözmek için Blockzincirini Veri Yöneticisi kullanabilirsiniz. Akıllı sözleşme eklemek için sözleşme ABı ve bayt kodu sağlarsınız. Blok zinciri Veri Yöneticisi, anlaşma adreslerini çözmek ve çözmek için akıllı sözleşme yapıtlarını kullanır. Blok zinciri uygulamasını örneğe ekledikten sonra, blok Veri Yöneticisi zinciri akıllı sözleşme Consortium 'a dağıtıldığında akıllı sözleşme adresini dinamik olarak bulur ve yapılandırılan hedeflere kodu çözülmüş olay ve özellik durumunu gönderir.
+You can use Blockchain Data Manager to decode event and property state by configuring smart contract applications within Blockchain Data Manager. To add a smart contract, you provide the contract ABI and bytecode. Blockchain Data Manager uses the smart contract artifacts to decode and discover contract addresses. After adding the blockchain application to the instance, Blockchain Data Manager dynamically discovers the smart contract address when the smart contract is deployed to the consortium and sends decoded event and property state to configured destinations.
 
-## <a name="deliver"></a>Teslim etme
+## <a name="deliver"></a>Sunma
 
-Blok zinciri Veri Yöneticisi, belirli bir blok zinciri Veri Yöneticisi örneği için birden çok Event Grid konu giden bağlantısını destekler. Blok zinciri verilerini tek bir hedefe gönderebilir veya birden çok hedefe blok zinciri verileri gönderebilirsiniz. Blok zinciri Veri Yöneticisi kullanarak, herhangi bir blok zinciri dağıtımı için ölçeklenebilir bir olay tabanlı veri yayımlama çözümü oluşturabilirsiniz.
+Blockchain Data Manager supports multiple Event Grid Topic outbound connections for any given Blockchain Data Manager instance. You can send blockchain data to a single destination or send blockchain data to multiple destinations. Using Blockchain Data Manager, you can build a scalable event-based data publishing solution for any blockchain deployment.
 
 ## <a name="configuration-options"></a>Yapılandırma seçenekleri
 
-Blockzincirini, çözümünüzün ihtiyaçlarını karşılayacak şekilde yapılandırabilirsiniz Veri Yöneticisi. Örneğin, şunları sağlayabilirsiniz:
+You can configure Blockchain Data Manager to meet the needs of your solution. For example, you can provision:
 
-* Azure blok zinciri hizmeti üyesi için tek bir blok zinciri Veri Yöneticisi örneği.
-* Azure blok zinciri hizmeti işlem düğümü başına bir blok zinciri Veri Yöneticisi örneği. Örneğin, özel işlem düğümleri, gizliliği korumak için kendi blok zinciri Veri Yöneticisi örneğine sahip olabilir.
-* Bir blok zinciri Veri Yöneticisi örneği, birden çok çıkış bağlantısını destekleyebilir. Bir blok zinciri Veri Yöneticisi örneği, bir Azure blok zinciri hizmeti üyesine yönelik tüm veri yayımlama tümleştirme noktalarını yönetmek için kullanılabilir.
+* A single Blockchain Data Manager instance for an Azure Blockchain Service member.
+* A Blockchain Data Manager instance per Azure Blockchain Service transaction node. For example, private transaction nodes can have their own Blockchain Data Manager instance to maintain confidentiality.
+* A Blockchain Data Manager instance can support multiple output connections. One Blockchain Data Manager instance can be used to manage all data publishing integration points for an Azure Blockchain Service member.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure blok zinciri hizmeti üyesi için [bir blok zinciri veri Yöneticisi örneği oluşturmayı](data-manager-portal.md) deneyin.
+Try [creating a Blockchain Data Manager instance](data-manager-portal.md) for an Azure Blockchain Service member.

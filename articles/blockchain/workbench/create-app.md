@@ -1,55 +1,49 @@
 ---
-title: Blok zinciri uygulaması oluşturma-Azure blok zinciri çalışma ekranı
-description: Azure blok zinciri çalışma ekranı önizlemesinde bir blok zinciri uygulaması oluşturma öğreticisi.
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
+title: Create a blockchain application - Azure Blockchain Workbench
+description: Tutorial on how to create a blockchain application for Azure Blockchain Workbench Preview.
 ms.date: 10/14/2019
 ms.topic: tutorial
-ms.service: azure-blockchain
 ms.reviewer: brendal
-manager: femila
-ms.openlocfilehash: a7d7c68840999772461655090d0213ada0997a7a
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 33a9e9c10c07d0808626353a7edfd505e0f60bc9
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329102"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74324817"
 ---
-# <a name="tutorial-create-a-blockchain-application-in-azure-blockchain-workbench"></a>Öğretici: Azure blok zinciri çalışma ekranı 'nda bir blok zinciri uygulaması oluşturma
+# <a name="tutorial-create-a-blockchain-application-for-azure-blockchain-workbench"></a>Tutorial: Create a blockchain application for Azure Blockchain Workbench
 
-Yapılandırma ve akıllı anlaşma kodu tarafından tanımlanan çok taraflı iş akışlarını temsil eden blok zinciri uygulamaları oluşturmak için Azure blok zinciri çalışma ekranı ' nı kullanabilirsiniz.
+You can use Azure Blockchain Workbench to create blockchain applications that represent multi-party workflows defined by configuration and smart contract code.
 
 Şunları öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Blok zinciri uygulaması yapılandırma
-> * Akıllı sözleşme kod dosyası oluşturma
-> * Blok zinciri uygulaması çalışma ekranına blok zinciri uygulaması ekleme
-> * Blok zinciri uygulamasına üye ekleme
+> * Configure a blockchain application
+> * Create a smart contract code file
+> * Add a blockchain application to Blockchain Workbench
+> * Add members to the blockchain application
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Blok zinciri çalışma ekranı dağıtımı. Daha fazla bilgi için bkz. dağıtım ayrıntıları için [Azure blok zinciri çalışma ekranı dağıtımı](deploy.md) .
-* Kiracıdaki blok zinciri çalışma ekranı ile ilişkili kullanıcıları Azure Active Directory. Daha fazla bilgi için bkz. Azure [blok zinciri çalışma ekranı 'Nda Azure AD kullanıcıları ekleme](manage-users.md#add-azure-ad-users).
-* Blok zinciri çalışma ekranı yönetici hesabı. Daha fazla bilgi için bkz. [Azure blok zinciri çalışma ekranında blok zinciri ekleme ekranı yöneticileri](manage-users.md#manage-blockchain-workbench-administrators).
+* A Blockchain Workbench deployment. For more information, see [Azure Blockchain Workbench deployment](deploy.md) for details on deployment.
+* Azure Active Directory users in the tenant associated with Blockchain Workbench. For more information, see [add Azure AD users in Azure Blockchain Workbench](manage-users.md#add-azure-ad-users).
+* A Blockchain Workbench administrator account. For more information, see add [Blockchain Workbench administrators in Azure Blockchain Workbench](manage-users.md#manage-blockchain-workbench-administrators).
 
-## <a name="hello-blockchain"></a>Merhaba, blok zinciri!
+## <a name="hello-blockchain"></a>Hello, Blockchain!
 
-Bir istek sahibinin isteği gönderdiği temel bir uygulama ve bir yanıtlayanın yanıt göndermesini sağlar.
-Örneğin bir istek, "Merhaba, nasıl yapılır?" olabilir ve yanıt, "Ben harika!" olabilir. Hem istek hem de yanıt, temel alınan blok zincirine kaydedilir.
+Let's build a basic application in which a requestor sends a request and a responder send a response to the request.
+For example, a request can be, "Hello, how are you?", and the response can be, "I'm great!". Both the request and the response are recorded on the underlying blockchain.
 
-Uygulama dosyalarını oluşturmak için adımları izleyin veya [örneği GitHub 'dan indirebilirsiniz](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/hello-blockchain).
+Follow the steps to create the application files or you can [download the sample from GitHub](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/hello-blockchain).
 
-## <a name="configuration-file"></a>Yapılandırma dosyası
+## <a name="configuration-file"></a>Configuration file
 
-Yapılandırma meta verileri, blok zinciri uygulamasının üst düzey iş akışlarını ve etkileşim modelini tanımlar. Yapılandırma meta verileri, blok zinciri uygulamasının iş akışı aşamalarını ve etkileşim modelini temsil eder.
+Configuration metadata defines the high-level workflows and interaction model of the blockchain application. Configuration metadata represents the workflow stages and interaction model of the blockchain application.
 
-1. En sevdiğiniz düzenleyicide `HelloBlockchain.json` adlı bir dosya oluşturun.
-2. Blok zinciri uygulamasının yapılandırmasını tanımlamak için aşağıdaki JSON öğesini ekleyin.
+1. In your favorite editor, create a file named `HelloBlockchain.json`.
+2. Add the following JSON to define the configuration of the blockchain application.
 
     ``` json
     {
@@ -204,57 +198,57 @@ Yapılandırma meta verileri, blok zinciri uygulamasının üst düzey iş akı�
 
 3. `HelloBlockchain.json` dosyasını kaydedin.
 
-Yapılandırma dosyasında birkaç bölüm vardır. Her bölüm hakkındaki ayrıntılar aşağıdaki gibidir:
+The configuration file has several sections. Details about each section are as follows:
 
-### <a name="application-metadata"></a>Uygulama meta verileri
+### <a name="application-metadata"></a>Application metadata
 
-Yapılandırma dosyasının başlangıcında uygulama adı ve açıklaması dahil olmak üzere uygulamayla ilgili bilgiler yer alır.
+The beginning of the configuration file contains information about the application including application name and description.
 
 ### <a name="application-roles"></a>Uygulama rolleri
 
-Uygulama rolleri bölümü, blok zinciri uygulamasına davranabilir veya katılabilen kullanıcı rollerini tanımlar. İşlevlere göre ayrı roller kümesi tanımlarsınız. İstek-yanıt senaryosunda, bir istek sahibinin işlevselliği, yanıtları üreten bir varlık olarak istek ve Yanıtlayıcı veren bir varlık olarak bir farklılık vardır.
+The application roles section defines the user roles who can act or participate within the blockchain application. You define a set of distinct roles based on functionality. In the request-response scenario, there is a distinction between the functionality of a requestor as an entity that produces requests and a responder as an entity that produces responses.
 
 ### <a name="workflows"></a>İş akışları
 
-İş akışları, sözleşmenin bir veya daha fazla aşamasını ve eylemini tanımlar. İstek-yanıt senaryosunda, iş akışının ilk aşaması (durum) bir istek sahibi (rol) istek (işlev) göndermek için bir eylem (geçiş) alır. Sonraki aşama (durum) bir yanıtlayanın (rol) yanıt göndermek için bir eylem (geçiş) alır (işlev). Bir uygulamanın iş akışı, bir sözleşmenin akışını betimleyen özellikleri, işlevleri ve durumları içerebilir.
+Workflows define one or more stages and actions of the contract. In the request-response scenario, the first stage (state) of the workflow is a requestor (role) takes an action (transition) to send a request (function). The next stage (state) is a responder (role) takes an action (transition) to send a response (function). An application's workflow can involve properties, functions, and states required describe the flow of a contract.
 
-Yapılandırma dosyalarının içerikleri hakkında daha fazla bilgi için bkz. [Azure blok zinciri Iş akışı yapılandırma başvurusu](configuration.md).
+For more information about the contents of configuration files, see [Azure Blockchain Workflow configuration reference](configuration.md).
 
-## <a name="smart-contract-code-file"></a>Akıllı sözleşme kod dosyası
+## <a name="smart-contract-code-file"></a>Smart contract code file
 
-Akıllı sözleşmeler, blok zinciri uygulamasının iş mantığını temsil eder. Şu anda blok zinciri çalışma ekranı, blok zinciri defteri için Ethereum 'u destekliyor. Ethereum akıllı sözleşmeleri kendi kendine zorlama iş mantığını yazmak için programlama dili olarak [Solidity](https://solidity.readthedocs.io) kullanır.
+Smart contracts represent the business logic of the blockchain application. Currently, Blockchain Workbench supports Ethereum for the blockchain ledger. Ethereum uses [Solidity](https://solidity.readthedocs.io) as its programming language for writing self-enforcing business logic for smart contracts.
 
-Solidity ' deki akıllı sözleşmeler, nesne odaklı dillerdeki sınıflara benzerdir. Her sözleşme, akıllı sözleşmenin aşamalarını ve eylemlerini uygulamak için durum ve işlevler içerir.
+Smart contracts in Solidity are similar to classes in object-oriented languages. Each contract contains state and functions to implement stages and actions of the smart contract.
 
-En sevdiğiniz düzenleyicide `HelloBlockchain.sol` adlı bir dosya oluşturun.
+In your favorite editor, create a file called `HelloBlockchain.sol`.
 
-### <a name="version-pragma"></a>Sürüm pragması
+### <a name="version-pragma"></a>Version pragma
 
-En iyi uygulama olarak, hedeflediğiniz Solidity sürümünü belirtin. Sürümü belirtmek gelecekteki Solidity sürümlerle uyumsuzluktan kaçınmanıza yardımcı olur.
+As a best practice, indicate the version of Solidity you are targeting. Specifying the version helps avoid incompatibilities with future Solidity versions.
 
-@No__t-0 akıllı sözleşme kodu dosyasının en üstüne aşağıdaki sürüm pragmasını ekleyin.
+Add the following version pragma at the top of `HelloBlockchain.sol` smart contract code file.
 
 ``` solidity
 pragma solidity >=0.4.25 <0.6.0;
 ```
 
-### <a name="configuration-and-smart-contract-code-relationship"></a>Yapılandırma ve akıllı sözleşme kodu ilişkisi
+### <a name="configuration-and-smart-contract-code-relationship"></a>Configuration and smart contract code relationship
 
-Blok zinciri çalışma ekranı, blok zinciri uygulaması oluşturmak için yapılandırma dosyasını ve akıllı anlaşma kodu dosyasını kullanır. Yapılandırma ve akıllı sözleşmede kod arasında tanımlananla ilişkili bir ilişki vardır. Uygulamayı oluşturmak için, sözleşme ayrıntıları, işlevler, parametreler ve türlerin eşleşmesi gerekir. Blok zinciri çalışma ekranı, uygulama oluşturmadan önce dosyaları doğrular.
+Blockchain Workbench uses the configuration file and smart contract code file to create a blockchain application. There is a relationship between what is defined in the configuration and the code in the smart contract. Contract details, functions, parameters, and types are required to match to create the application. Blockchain Workbench verifies the files prior to application creation.
 
-### <a name="contract"></a>Sözleşmesi
+### <a name="contract"></a>Contract
 
-**Sözleşme** üst bilgisini `HelloBlockchain.sol` akıllı sözleşme kod dosyanıza ekleyin.
+Add the **contract** header to your `HelloBlockchain.sol` smart contract code file.
 
 ``` solidity
 contract HelloBlockchain {
 ```
 
-### <a name="state-variables"></a>Durum değişkenleri
+### <a name="state-variables"></a>State variables
 
-Durum değişkenleri, her bir sözleşme örneği için durumun değerlerini depolar. Sözleşinizdeki durum değişkenlerinin yapılandırma dosyasında tanımlanan iş akışı özellikleriyle eşleşmesi gerekir.
+State variables store values of the state for each contract instance. The state variables in your contract must match the workflow properties defined in the configuration file.
 
-Durum değişkenlerini `HelloBlockchain.sol` akıllı sözleşme kod dosyanızdaki sözleşmeye ekleyin.
+Add the state variables to your contract in your `HelloBlockchain.sol` smart contract code file.
 
 ``` solidity
     //Set of States
@@ -271,11 +265,11 @@ Durum değişkenlerini `HelloBlockchain.sol` akıllı sözleşme kod dosyanızda
 
 ### <a name="constructor"></a>Constructor
 
-Oluşturucu, bir iş akışının yeni bir akıllı sözleşme örneği için giriş parametrelerini tanımlar. Oluşturucu için gerekli parametreler yapılandırma dosyasında Oluşturucu parametreleri olarak tanımlanmıştır. Parametrelerin sayısı, sırası ve türü her iki dosyada da eşleşmelidir.
+The constructor defines input parameters for a new smart contract instance of a workflow. Required parameters for the constructor are defined as constructor parameters in the configuration file. The number, order, and type of parameters must match in both files.
 
-Oluşturucu işlevinde, sözleşmeyi oluşturmadan önce gerçekleştirmek istediğiniz iş mantığını yazın. Örneğin, başlangıç değerleriyle durum değişkenlerini başlatın.
+In the constructor function, write any business logic you want to perform prior to creating the contract. For example, initialize the state variables with starting values.
 
-Oluşturucu işlevini `HelloBlockchain.sol` akıllı sözleşme kod dosyanızdaki sözleşmeye ekleyin.
+Add the constructor function to your contract in your `HelloBlockchain.sol` smart contract code file.
 
 ``` solidity
     // constructor function
@@ -289,11 +283,11 @@ Oluşturucu işlevini `HelloBlockchain.sol` akıllı sözleşme kod dosyanızdak
 
 ### <a name="functions"></a>İşlevler
 
-İşlevler, bir sözleşmede iş mantığının çalıştırılabilir birimleridir. İşlevi için gerekli parametreler, yapılandırma dosyasında işlev parametreleri olarak tanımlanmıştır. Parametrelerin sayısı, sırası ve türü her iki dosyada da eşleşmelidir. İşlevler, yapılandırma dosyasında bir blok zinciri çalışma iş akışındaki geçişlere ilişkilendirilir. Geçiş, bir uygulamanın iş akışının sözleşme tarafından belirlendiği bir sonraki aşamasına geçmek için gerçekleştirilen bir eylemdir.
+Functions are the executable units of business logic within a contract. Required parameters for the function are defined as function parameters in the configuration file. The number, order, and type of parameters must match in both files. Functions are associated to transitions in a Blockchain Workbench workflow in the configuration file. A transition is an action performed to move to the next stage of an application's workflow as determined by the contract.
 
-İşlevinde gerçekleştirmek istediğiniz herhangi bir iş mantığını yazın. Örneğin, bir durum değişkeninin değerini değiştirme.
+Write any business logic you want to perform in the function. For example, modifying a state variable's value.
 
-1. Aşağıdaki işlevleri `HelloBlockchain.sol` akıllı sözleşme kod dosyanızdaki sözleşmeye ekleyin.
+1. Add the following functions to your contract in your `HelloBlockchain.sol` smart contract code file.
 
     ``` solidity
         // call this function to send a request
@@ -319,42 +313,42 @@ Oluşturucu işlevini `HelloBlockchain.sol` akıllı sözleşme kod dosyanızdak
     }
     ```
 
-2. @No__t-0 akıllı sözleşme kodu dosyanızı kaydedin.
+2. Save your `HelloBlockchain.sol` smart contract code file.
 
-## <a name="add-blockchain-application-to-blockchain-workbench"></a>Blockzincirle blok zinciri uygulaması ekleme çalışma ekranı
+## <a name="add-blockchain-application-to-blockchain-workbench"></a>Add blockchain application to Blockchain Workbench
 
-Blok zinciri çalışma ekranına blok zinciri uygulaması eklemek için, uygulamayı tanımlamak üzere yapılandırmayı ve akıllı sözleşme dosyalarını karşıya yüklersiniz.
+To add a blockchain application to Blockchain Workbench, you upload the configuration and smart contract files to define the application.
 
-1. Bir Web tarayıcısında, blok zinciri çalışma ekranı web adresine gidin. Örneğin, `https://{workbench URL}.azurewebsites.net/`, blok zinciri çalışma ekranı dağıtılırken Web uygulaması oluşturulur. Blok zinciri Web adresinizi bulma hakkında daha fazla bilgi için bkz. [blok zinciri çalışma ekranı web URL 'si](deploy.md#blockchain-workbench-web-url)
-2. [Blok zinciri çalışma ekranı Yöneticisi](manage-users.md#manage-blockchain-workbench-administrators)olarak oturum açın.
-3. @No__t-1**Yeni**bir **uygulama**seçin. **Yeni uygulama** bölmesi görüntülenir.
-4. **Sözleşme yapılandırmasını karşıya yükle** >  ' e**giderek** oluşturduğunuz **helloblockzincirine. JSON** yapılandırma dosyasını bulun. Yapılandırma dosyası otomatik olarak onaylanır. Doğrulama hatalarını görüntülemek için bağlantıyı **göster** ' i seçin. Uygulamayı dağıtmadan önce doğrulama hatalarını düzeltir.
-5. @No__t **sözleşme kodunu karşıya yükle**' yi seçin, **Helloblockzincirine. Nuevo** akıllı sözleşme kodu dosyasını bulmak için-1 ' e**gidin** . Kod dosyası otomatik olarak onaylanır. Doğrulama hatalarını görüntülemek için bağlantıyı **göster** ' i seçin. Uygulamayı dağıtmadan önce doğrulama hatalarını düzeltir.
-6. Yapılandırma ve akıllı sözleşme dosyalarına göre blok zinciri uygulamasını oluşturmak için **Dağıt** ' ı seçin.
+1. In a web browser, navigate to the Blockchain Workbench web address. For example, `https://{workbench URL}.azurewebsites.net/` The web application is created when you deploy Blockchain Workbench. For information on how to find your Blockchain Workbench web address, see [Blockchain Workbench Web URL](deploy.md#blockchain-workbench-web-url)
+2. Sign in as a [Blockchain Workbench administrator](manage-users.md#manage-blockchain-workbench-administrators).
+3. Select **Applications** > **New**. The **New application** pane is displayed.
+4. Select **Upload the contract configuration** > **Browse** to locate the **HelloBlockchain.json** configuration file you created. The configuration file is automatically validated. Select the **Show** link to display validation errors. Fix validation errors before you deploy the application.
+5. Select **Upload the contract code** > **Browse** to locate the **HelloBlockchain.sol** smart contract code file. The code file is automatically validated. Select the **Show** link to display validation errors. Fix validation errors before you deploy the application.
+6. Select **Deploy** to create the blockchain application based on the configuration and smart contract files.
 
-Blok zinciri uygulamasının dağıtılması birkaç dakika sürer. Dağıtım tamamlandığında, yeni uygulama **uygulamalarda**görüntülenir. 
+Deployment of the blockchain application takes a few minutes. When deployment is finished, the new application is displayed in **Applications**. 
 
 > [!NOTE]
-> Ayrıca, [Azure blok zinciri çalışma ekranı REST API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench)kullanarak blok zinciri uygulamaları da oluşturabilirsiniz.
+> You can also create blockchain applications by using the [Azure Blockchain Workbench REST API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench).
 
-## <a name="add-blockchain-application-members"></a>Blok zinciri uygulama üyeleri Ekle
+## <a name="add-blockchain-application-members"></a>Add blockchain application members
 
-Uygulama üyelerini uygulamanıza ekleyerek, sözleşmeleri başlatın ve sözleşme işlemleri gerçekleştirin. Uygulama üyelerini eklemek için, [blok zinciri çalışma ekranı Yöneticisi](manage-users.md#manage-blockchain-workbench-administrators)olmanız gerekir.
+Add application members to your application to initiate and take actions on contracts. To add application members, you need to be a [Blockchain Workbench administrator](manage-users.md#manage-blockchain-workbench-administrators).
 
-1. @No__t-1**Merhaba, blok zinciri!** **uygulama**seçin.
-2. Uygulamayla ilişkili üyelerin sayısı sayfanın sağ üst köşesinde görüntülenir. Yeni bir uygulama için üye sayısı sıfır olacaktır.
-3. Sayfanın sağ üst köşesindeki **Üyeler** bağlantısını seçin. Uygulamanın geçerli bir üye listesi görüntülenir.
-4. Üyelik listesinde **üye Ekle**' yi seçin.
-5. Eklemek istediğiniz üyenin adını seçin veya girin. Yalnızca blok zinciri çalışma ekranı kiracısında mevcut olan Azure AD kullanıcıları listelenir. Kullanıcı bulunamazsa, [Azure AD kullanıcıları eklemeniz](manage-users.md#add-azure-ad-users)gerekir.
-6. Üyenin **rolünü** seçin. İlk üye için rol olarak **Istek sahibi** ' i seçin.
-7. İlişkili rolün bulunduğu üyeyi uygulamaya eklemek için **Ekle** ' yi seçin.
-8. **Yanıtlayıcı** rolüyle uygulamaya başka bir üye ekleyin.
+1. Select **Applications** > **Hello, Blockchain!** .
+2. The number of members associated to the application is displayed in the upper right corner of the page. For a new application, the number of members will be zero.
+3. Select the **members** link in the upper right corner of the page. A current list of members for the application is displayed.
+4. In the membership list, select **Add members**.
+5. Select or enter the member's name you want to add. Only Azure AD users that exist in the Blockchain Workbench tenant are listed. If the user is not found, you need to [add Azure AD users](manage-users.md#add-azure-ad-users).
+6. Select the **Role** for the member. For the first member, select **Requestor** as the role.
+7. Select **Add** to add the member with the associated role to the application.
+8. Add another member to the application with the **Responder** role.
 
-Blok zinciri çalışma ekranı 'nda kullanıcıları yönetme hakkında daha fazla bilgi için bkz. [Azure blok zinciri üzerinde kullanıcıları yönetme çalışma ekranı](manage-users.md)
+For more information about managing users in Blockchain Workbench, see [managing users in Azure Blockchain Workbench](manage-users.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu nasıl yapılır makalesinde, temel bir istek ve yanıt uygulaması oluşturdunuz. Uygulamayı nasıl kullanacağınızı öğrenmek için, sonraki nasıl yapılır makalesine ilerleyin.
+In this how-to article, you've created a basic request and response application. To learn how to use the application, continue to the next how-to article.
 
 > [!div class="nextstepaction"]
-> [Blok zinciri uygulaması kullanma](use.md)
+> [Using a blockchain application](use.md)
