@@ -1,37 +1,37 @@
 ---
 title: Dağıtımlarla ilgili sorunları giderme
-description: Azure Resource Manager şablonu dağıtımlarını izlemeyi ve sorun gidermeyi öğrenin. Etkinlik günlüklerini ve dağıtım geçmişini gösterir.
+description: Learn how to monitor and troubleshoot Azure Resource Manager template deployments. Shows activity logs and deployment history.
 author: mumian
 ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: be390b35a69f44aae38bec100deb2d3c07ad6355
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 32f3f55df2b87b35672d811c63a21b956a8a4b52
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149340"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325350"
 ---
-# <a name="tutorial-troubleshoot-resource-manager-template-deployments"></a>Öğretici: Kaynak Yöneticisi şablonu dağıtımlarının sorunlarını giderme
+# <a name="tutorial-troubleshoot-resource-manager-template-deployments"></a>Tutorial: Troubleshoot Resource Manager template deployments
 
-Kaynak Yöneticisi şablonu dağıtım hatalarını giderme hakkında bilgi edinin. Bu öğreticide, bir şablonda iki hata ayarlarsınız ve sorunları çözmek için etkinlik günlüklerinin ve dağıtım geçmişinin nasıl kullanılacağını öğreneceksiniz.
+Learn how to troubleshoot Resource Manager template deployment errors. In this tutorial, you set up two errors in a template, and learn how to use the activity logs and deployment history to resolve the issues.
 
-Şablon dağıtımıyla ilgili iki tür hata vardır:
+There are two types of errors that are related to template deployment:
 
-- Dağıtımdan önce belirlenebileceği senaryolardan **doğrulama hataları** oluşur. Bunlar şablonunuzdaki söz dizimi hataları veya abonelik kotalarınızı aşabilecek kaynak dağıtımı denemeleri olabilir. 
-- Dağıtım işlemi sırasında oluşan koşullardan **dağıtım hataları** oluşur. Bu paralel olarak dağıtılan bir kaynağa erişme denemesi olabilir.
+- **Validation errors** arise from scenarios that can be determined before deployment. Bunlar şablonunuzdaki söz dizimi hataları veya abonelik kotalarınızı aşabilecek kaynak dağıtımı denemeleri olabilir.
+- **Deployment errors** arise from conditions that occur during the deployment process. Bu paralel olarak dağıtılan bir kaynağa erişme denemesi olabilir.
 
-Her iki tür hata da dağıtım sorunlarını gidermek için kullanabileceğiniz bir hata kodu döndürür. Etkinlik günlüğünde her iki tür hata da görünür. Öte yandan doğrulama hataları dağıtım geçmişinizde görüntülenmez çünkü dağıtım hiç başlatılmamıştır.
+Her iki tür hata da dağıtım sorunlarını gidermek için kullanabileceğiniz bir hata kodu döndürür. Both types of errors appear in the activity log. Öte yandan doğrulama hataları dağıtım geçmişinizde görüntülenmez çünkü dağıtım hiç başlatılmamıştır.
 
 Bu öğretici aşağıdaki görevleri kapsar:
 
 > [!div class="checklist"]
-> * Sorunlu şablon oluşturma
-> * Doğrulama hatalarında sorun giderme
+> * Create a problematic template
+> * Troubleshoot validation errors
 > * Dağıtım hatalarını giderme
 > * Kaynakları temizleme
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -39,11 +39,11 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](htt
 
 Bu makaleyi tamamlamak için gerekenler:
 
-- [Resource Manager Araçları uzantısı](https://code.visualstudio.com/) içeren [Visual Studio Code](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites).
+* Visual Studio Code with Resource Manager Tools extension. See [Use Visual Studio Code to create Azure Resource Manager templates](./resource-manager-tools-vs-code.md).
 
-## <a name="create-a-problematic-template"></a>Sorunlu şablon oluşturma
+## <a name="create-a-problematic-template"></a>Create a problematic template
 
-[Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/) [Standart depolama hesabı oluşturma](https://azure.microsoft.com/resources/templates/101-storage-account-create/) adlı bir şablon açın ve iki şablon sorunu kurun.
+Open a template called [Create a standard storage account](https://azure.microsoft.com/resources/templates/101-storage-account-create/) from [Azure QuickStart Templates](https://azure.microsoft.com/resources/templates/), and setup two template issues.
 
 1. Visual Studio Code’dan **Dosya**>**Dosya Aç**’ı seçin.
 2. **Dosya adı**’na şu URL’yi yapıştırın:
@@ -52,35 +52,35 @@ Bu makaleyi tamamlamak için gerekenler:
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
     ```
 3. Dosyayı açmak için **Aç**’ı seçin.
-4. **Apiversion** satırını şu satıra değiştirin:
+4. Change the **apiVersion** line to the following line:
 
     ```json
     "apiVersion1": "2018-07-02",
     ```
-    - **apiVersion1** geçersiz öğe adı. Bu bir doğrulama hatasıdır.
-    - API sürümü "2018-07-01" olacaktır.  Bu bir dağıtım hatasıdır.
+    - **apiVersion1** is invalid element name. It is a validation error.
+    - The API version shall be "2018-07-01".  It is a deployment error.
 
-5. Dosyayı yerel bilgisayarınıza **azuredeploy.json** olarak kaydetmek için >Dosya**Farklı Kaydet**’i seçin.
+5. Dosyayı yerel bilgisayarınıza **azuredeploy.json** olarak kaydetmek için **Dosya**>**Farklı Kaydet**’i seçin.
 
-## <a name="troubleshoot-the-validation-error"></a>Doğrulama hatası sorunlarını giderme
+## <a name="troubleshoot-the-validation-error"></a>Troubleshoot the validation error
 
-Şablonu dağıtmak için [şablonu dağıtma](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#deploy-the-template) bölümüne bakın.
+Refer to the [Deploy the template](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#deploy-the-template) section to deploy the template.
 
-Kabuktan şuna benzer bir hata alacaksınız:
+You shall get an error from the shell similar to:
 
 ```
 New-AzResourceGroupDeployment : 4:29:24 PM - Error: Code=InvalidRequestContent; Message=The request content was invalid and could not be deserialized: 'Could not find member 'apiVersion1' on object of type 'TemplateResource'. Path 'properties.template.resources[0].apiVersion1', line 36, position 24.'.
 ```
 
-Hata iletisi, sorunun **apiVersion1**olduğunu gösterir.
+The error message indicates the problem is with **apiVersion1**.
 
-**ApiVersion1** to **apiversion**ile değiştirerek sorunu düzeltmek için Visual Studio Code kullanın ve şablonu kaydedin.
+Use Visual Studio Code to correct the problem by changing **apiVersion1** to **apiVersion**, and then save the template.
 
-## <a name="troubleshoot-the-deployment-error"></a>Dağıtım hatası sorunlarını giderme
+## <a name="troubleshoot-the-deployment-error"></a>Troubleshoot the deployment error
 
-Şablonu dağıtmak için [şablonu dağıtma](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#deploy-the-template) bölümüne bakın.
+Refer to the [Deploy the template](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#deploy-the-template) section to deploy the template.
 
-Kabuktan şuna benzer bir hata alacaksınız:
+You shall get an error from the shell similar to:
 
 ```
 New-AzResourceGroupDeployment : 4:48:50 PM - Resource Microsoft.Storage/storageAccounts 'storeqii7x2rce77dc' failed with message '{
@@ -91,31 +91,31 @@ New-AzResourceGroupDeployment : 4:48:50 PM - Resource Microsoft.Storage/storageA
 }'
 ```
 
-Dağıtım hatası, aşağıdaki yordam kullanılarak Azure portal bulunabilir:
+The deployment error can be found from the Azure portal using the following procedure:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
-2. Kaynak **grupları** ' nı ve ardından kaynak grubu adı ' nı seçerek kaynak grubunu açın. **Dağıtım**altında **1 başarısız** olduğunu göreceksiniz.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+2. Open the resource group by selecting **Resource groups** and then the resource group name. You shall see **1 Failed** under **Deployment**.
 
-    ![Kaynak Yöneticisi öğretici sorunlarını giderme](./media/resource-manager-tutorial-troubleshoot/resource-manager-template-deployment-error.png)
-3. **Hata ayrıntılarını**seçin.
+    ![Resource Manager tutorial troubleshoot](./media/resource-manager-tutorial-troubleshoot/resource-manager-template-deployment-error.png)
+3. Select **Error details**.
 
-    ![Kaynak Yöneticisi öğretici sorunlarını giderme](./media/resource-manager-tutorial-troubleshoot/resource-manager-template-deployment-error-details.png)
+    ![Resource Manager tutorial troubleshoot](./media/resource-manager-tutorial-troubleshoot/resource-manager-template-deployment-error-details.png)
 
-    Hata iletisi, daha önce gösterilenle aynıdır:
+    The error message is the same as the one shown earlier:
 
-    ![Kaynak Yöneticisi öğretici sorunlarını giderme](./media/resource-manager-tutorial-troubleshoot/resource-manager-template-deployment-error-summary.png)
+    ![Resource Manager tutorial troubleshoot](./media/resource-manager-tutorial-troubleshoot/resource-manager-template-deployment-error-summary.png)
 
-Ayrıca, etkinlik günlüklerinden hatayı bulabilirsiniz:
+You can also find the error from the activity logs:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
-2. **İzleme** > **etkinlik günlüğü**' nü seçin.
-3. Günlüğü bulmak için filtreleri kullanın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+2. Select **Monitor** > **Activity log**.
+3. Use the filters to find the log.
 
-    ![Kaynak Yöneticisi öğretici sorunlarını giderme](./media/resource-manager-tutorial-troubleshoot/resource-manager-template-deployment-activity-log.png)
+    ![Resource Manager tutorial troubleshoot](./media/resource-manager-tutorial-troubleshoot/resource-manager-template-deployment-activity-log.png)
 
-Sorunu düzeltmek için Visual Studio Code kullanın ve ardından şablonu yeniden dağıtın.
+Use Visual Studio Code to correct the problem, and then redeploy the template.
 
-Yaygın hataların listesi için bkz. [Azure Resource Manager ile yaygın Azure dağıtım hatalarıyla Ilgili sorunları giderme](./resource-manager-common-deployment-errors.md).
+For a list of common errors, see [Troubleshoot common Azure deployment errors with Azure Resource Manager](./resource-manager-common-deployment-errors.md).
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -128,4 +128,4 @@ Artık Azure kaynakları gerekli değilse, kaynak grubunu silerek dağıttığı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, Kaynak Yöneticisi şablonu dağıtım hatalarını giderme hakkında öğrenirsiniz.  Daha fazla bilgi için bkz. [Azure Resource Manager ile yaygın Azure dağıtım hatalarıyla Ilgili sorunları giderme](./resource-manager-common-deployment-errors.md).
+In this tutorial, you learned how to troubleshoot Resource Manager template deployment errors.  For more information, see [Troubleshoot common Azure deployment errors with Azure Resource Manager](./resource-manager-common-deployment-errors.md).

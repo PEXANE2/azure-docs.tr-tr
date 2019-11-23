@@ -1,68 +1,62 @@
 ---
-title: Azure blok zinciri hizmeti güvenliği
-description: Azure blok zinciri hizmeti veri erişimi ve güvenlik kavramları
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
+title: Azure Blockchain Service security
+description: Azure Blockchain Service data access and security concepts
 ms.date: 05/02/2019
 ms.topic: conceptual
-ms.service: azure-blockchain
-ms.reviewer: seal
-manager: femila
-ms.openlocfilehash: 63e61844ddb5bd0f0ed52b67e26ea5bf1857fd2b
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.reviewer: janders
+ms.openlocfilehash: 3c68ea237f3026f4f670b156e63989ceca857cad
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579914"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325210"
 ---
-# <a name="azure-blockchain-service-security"></a>Azure blok zinciri hizmeti güvenliği
+# <a name="azure-blockchain-service-security"></a>Azure Blockchain Service security
 
 Azure Blok Zinciri Hizmeti, verilerinizi güvende tutup bunların kullanılabilir olmasını sağlamak için çeşitli Azure özelliklerini kullanır. Verilerin güvenli hale getirilmesi için yalıtım, şifreleme ve kimlik doğrulaması olanaklarından faydalanılır.
 
 ## <a name="isolation"></a>Yalıtım
 
-Azure blok zinciri hizmeti kaynakları özel bir sanal ağda yalıtılmıştır. Her işlem ve doğrulama düğümü bir sanal makinedir (VM). Bir sanal ağdaki VM 'Ler, farklı bir sanal ağdaki VM 'Ler ile doğrudan iletişim kuramaz. Yalıtım, sanal ağ içinde iletişimin özel kalmasını sağlar. Azure sanal ağ yalıtımı hakkında daha fazla bilgi için bkz. [Azure genel bulutundaki yalıtım](../../security/fundamentals/isolation-choices.md#networking-isolation).
+Azure Blockchain Service resources are isolated in a private virtual network. Each transaction and validation node is a virtual machine (VM). VMs in one virtual network cannot communicate directly to VMs in a different virtual network. Isolation ensures communication remains private within the virtual network. For more information on Azure virtual network isolation, see [isolation in the Azure Public Cloud](../../security/fundamentals/isolation-choices.md#networking-isolation).
 
-![VNET diyagramı](./media/data-security/vnet.png)
+![VNET diagram](./media/data-security/vnet.png)
 
 ## <a name="encryption"></a>Şifreleme
 
-Kullanıcı verileri Azure depolama 'da depolanır. Kullanıcı verileri, güvenlik ve gizlilik için hareket halindeyken ve geri kalanında şifrelenir. Daha fazla bilgi için bkz. [Azure depolama Güvenlik Kılavuzu](../../storage/common/storage-security-guide.md).
+User data is stored in Azure storage. User data is encrypted in motion and at rest for security and confidentiality. For more information, see: [Azure Storage security guide](../../storage/common/storage-security-guide.md).
 
 ## <a name="authentication"></a>Kimlik Doğrulaması
 
-İşlemler, blok zinciri düğümlerine bir RPC uç noktası aracılığıyla gönderilebilir. İstemciler, Kullanıcı kimlik doğrulamasını işleyen ve SSL üzerinden verileri şifreleyen bir ters ara sunucu kullanarak bir işlem düğümüyle iletişim kurar.
+Transactions can be sent to blockchain nodes via an RPC endpoint. Clients communicate with a transaction node using a reverse proxy server that handles user authentication and encrypts data over SSL.
 
-![Kimlik doğrulama diyagramı](./media/data-security/authentication.png)
+![Authentication diagram](./media/data-security/authentication.png)
 
-RPC erişimi için üç kimlik doğrulama modu vardır.
+There are three modes of authentication for RPC access.
 
 ### <a name="basic-authentication"></a>Temel kimlik doğrulama
 
-Temel kimlik doğrulaması, Kullanıcı adını ve parolasını içeren bir HTTP kimlik doğrulama üstbilgisi kullanır. Kullanıcı adı, blok zinciri düğümünün adıdır. Parola, bir üye veya düğümün sağlanması sırasında ayarlanır. Parola Azure portal veya CLı kullanılarak değiştirilebilir.
+Basic authentication uses an HTTP authentication header containing the user name and password. User name is the name of the blockchain node. Password is set during provisioning of a member or node. The password can be changed using the Azure portal or CLI.
 
 ### <a name="access-keys"></a>Erişim tuşları
 
-Erişim anahtarları, uç nokta URL 'sinde bulunan rastgele oluşturulmuş bir dize kullanır. İki erişim anahtarı, anahtar döndürmeyi etkinleştirmeye yardımcı olur. Anahtarlar Azure portal ve CLı 'dan yeniden oluşturulabilir.
+Access keys use a randomly generated string included in the endpoint URL. Two access keys help enable key rotation. Keys can be regenerated from the Azure portal and CLI.
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
-Azure Active Directory (Azure AD), kullanıcının kimlik doğrulamasının Azure AD Kullanıcı kimlik bilgilerini kullanarak Azure AD tarafından doğrulandığını talep tabanlı bir kimlik doğrulama mekanizması kullanır. Azure AD, bulut tabanlı kimlik yönetimi sağlar ve müşterilerin bulutta tüm kurumsal ve erişim uygulamalarına tek bir kimlik kullanmasına izin verir. Azure blok zinciri hizmeti, Azure AD etkinleştirme KIMLIK Federasyonu, çoklu oturum açma ve Multi-Factor Authentication ile tümleşir. Kullanıcıları, grupları ve uygulama rollerini blok zinciri üyesi ve düğüm erişimi için kuruluşunuza atayabilirsiniz.
+Azure Active Directory (Azure AD) uses a claim-based authentication mechanism where the user is authenticated by Azure AD using Azure AD user credentials. Azure AD provides cloud-based identity management and allows customers to use a single identity across an entire enterprise and access applications on the cloud. Azure Blockchain Service integrates with Azure AD enabling ID federation, single sign-on and multi-factor authentication. You can assign users, groups, and application roles in your organization for blockchain member and node access.
 
-Azure AD İstemci proxy 'si [GitHub](https://github.com/Microsoft/azure-blockchain-connector/releases)' da kullanılabilir. İstemci proxy 'si, kullanıcıyı Azure AD oturum açma sayfasına yönlendirir ve başarılı kimlik doğrulamasından sonra bir taşıyıcı belirteci edinir. Daha sonra Kullanıcı, geth veya Truffle gibi bir Ethereum istemci uygulamasını istemci proxy 'sinin uç noktasına bağlar. Son olarak, bir işlem gönderildiğinde, istemci proxy 'si http üstbilgisindeki taşıyıcı belirtecini çıkartır ve ters proxy, OAuth protokolünü kullanarak belirteci doğrular.
+The Azure AD client proxy is available on [GitHub](https://github.com/Microsoft/azure-blockchain-connector/releases). The client proxy directs the user to the Azure AD sign-in page and obtains a bearer token upon successful authentication. Subsequently, the user connects an Ethereum client application such as Geth or Truffle to the client proxy's endpoint. Finally, when a transaction is submitted, the client proxy injects the bearer token in the http header and the reverse proxy validates the token using OAuth protocol.
 
-## <a name="keys-and-ethereum-accounts"></a>Anahtarlar ve Ethereum hesapları
+## <a name="keys-and-ethereum-accounts"></a>Keys and Ethereum accounts
 
-Bir Azure blok zinciri hizmeti üyesi sağlanırken, bir Ethereum hesabı ve ortak ve özel anahtar çifti oluşturulur. Özel anahtar, işlemleri blok zincirine göndermek için kullanılır. Ethereum hesabı, ortak anahtarın karmasının son 20 bayttır. Ethereum hesabına cüzdan da denir.
+When provisioning an Azure Blockchain Service member, an Ethereum account and a public and private key pair is generated. The private key is used to send transactions to the blockchain. The Ethereum account is the last 20 bytes of the public key's hash. The Ethereum account is also called a wallet.
 
-Özel ve ortak anahtar çifti, JSON biçiminde bir anahtar dosyası olarak depolanır. Özel anahtar, blok zinciri defter hizmeti oluşturulduğunda girilen parola kullanılarak şifrelenir.
+The private and public key pair is stored as a keyfile in JSON format. The private key is encrypted using the password entered when the blockchain ledger service is created.
 
-Özel anahtarlar, işlemleri dijital olarak imzalamak için kullanılır. Özel blok zincirleriyle, özel bir anahtar tarafından imzalanan akıllı sözleşme, İmzalayanın kimliğini temsil eder. İmza geçerliliğini doğrulamak için alıcı, imzalayanın ortak anahtarını imzadan hesaplanan adresle karşılaştırabilirler.
+Private keys are used to digitally sign transactions. In private blockchains, a smart contract signed by a private key represents the signer's identity. To verify the validity of the signature, the receiver can compare the public key of the signer with the address computed from the signature.
 
-Constellation anahtarları, bir çekirdek düğümünü benzersiz bir şekilde tanımlamak için kullanılır. Constellation anahtarları, düğüm sağlama sırasında oluşturulur ve çekirdekte özel bir işlemin privateFor parametresinde belirtilir.
+Constellation keys are used to uniquely identify a Quorum node. Constellation keys are generated at the time of node provisioning and are specified in the privateFor parameter of a private transaction in Quorum.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure blok zinciri hizmeti işlem düğümlerini yapılandırma](configure-transaction-nodes.md)
+[Configure Azure Blockchain Service transaction nodes](configure-transaction-nodes.md)

@@ -8,60 +8,60 @@ ms.topic: include
 ms.date: 07/02/2018
 ms.author: shants
 ms.custom: include file
-ms.openlocfilehash: 50a215175d7305834a64b7e0cfbc153431b10b7c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 2dbe8a1bf8c4fd0ead20c50a320265a3acefa43c
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188350"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74328308"
 ---
-## <a name="view-vms-scheduled-for-maintenance-in-the-portal"></a>Portalda bakım için zamanlanmış Vm'leri görüntüleme
+## <a name="view-vms-scheduled-for-maintenance-in-the-portal"></a>View VMs scheduled for maintenance in the portal
 
-Bir planlı bakım dalgası zamanlanmış sonra gelecek bakım dalgasından etkilenen sanal makinelerin listesini görebilirsiniz. 
+Once a planned maintenance wave is scheduled, you can observe the list of virtual machines that are impacted by the upcoming maintenance wave. 
 
-Azure portalını kullanın ve bakım için zamanlanmış Vm'leri arayın.
+You can use the Azure portal and look for VMs scheduled for maintenance.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
-2. Sol gezinti bölmesinde tıklayın **sanal makineler**.
+2. In the left navigation, click **Virtual Machines**.
 
-3. Sanal makineler bölmesinden **sütunları** düğmesi kullanılabilir sütunlar listesini açın.
+3. In the Virtual Machines pane, click the **Columns** button to open the list of available columns.
 
-4. Seçin ve aşağıdaki sütunları ekleyin:
+4. Select and add the following columns:
 
-   **Bakım**: VM için bakım durumu gösterilir. Olası değerler şunlardır:
+   **Maintenance**: Shows the maintenance status for the VM. The following are the potential values:
       
       | Değer | Açıklama |
       |-------|-------------|
-      | Şimdi başlayın | Bakım kendiniz başlatmak sağlayan Self Servis bakım penceresinde vm'dir. Sanal makinenizde bakım başlatma konusunda aşağıya bakın. | 
-      | Zamanlanmış | VM, size başlatma seçeneği sunulmayan bir bakım için zamanlanır. Bakım - bu görünümde veya VM'ye tıklayarak zamanlanmış penceresini seçerek bakım penceresi öğrenebilirsiniz. | 
-      | Zaten güncelleştirildi | Sanal makinenizin zaten güncelleştirilmiş ve şu anda başka bir eylem gerekli değildir. | 
-      | Daha sonra yeniden deneyin | Bakım başarısız oldu başlattınız. Daha sonraki bir zamanda Self Servis Bakım seçeneğini kullanmanız mümkün olacaktır. | 
-      | Şimdi yeniden deneyin | Daha önce başarısız bir kendi kendine başlatılan bakım yeniden deneyebilir. | 
-      | - | Sanal makinenize bir planlı bakım dalgası parçası değil. |
+      | Şimdi başlayın | The VM is in the self-service maintenance window that lets you initiate the maintenance yourself. See below on how to start maintenance on your VM. | 
+      | Zamanlanan | VM, size başlatma seçeneği sunulmayan bir bakım için zamanlanır. You can learn of the maintenance window by selecting the Maintenance - Scheduled window in this view or by clicking on the VM. | 
+      | Already updated | Your VM is already updated and no further action is required at this time. | 
+      | Retry later | You have initiated maintenance with no success. You will be able to use the self-service maintenance option at a later time. | 
+      | Retry now | You can retry a previously unsuccessful self-initiated maintenance. | 
+      | - | Your VM is not part of a planned maintenance wave. |
       
 
-   **Bakım - Self Servis pencere**: Vm'lerinizde kendi kendine Bakımı başlayabilirsiniz zaman penceresi gösterilir.
+   **Maintenance - Self-service window**: Shows the time window when you can self-start maintenance on your VMs.
    
-   **Bakım - zamanlanmış pencere**: Azure, sanal Makinenizin bakım tamamlamak için bakımını yaparken zaman penceresini gösterir. 
+   **Maintenance - Scheduled window**: Shows the time window when Azure will maintain your VM in order to complete maintenance. 
 
 
 
-## <a name="notification-and-alerts-in-the-portal"></a>Bildirim ve Portalı'nda uyarılar
+## <a name="notification-and-alerts-in-the-portal"></a>Notification and alerts in the portal
 
-Azure aboneliğine sahip ve ikincil sahipler gruba e-posta göndererek planlı bakım için zamanlama iletişim kurar. Azure etkinlik günlüğü uyarıları oluşturarak, bu iletişim için ek alıcılar ve kanallar ekleyebilirsiniz. Daha fazla bilgi için [etkinlik günlüğü uyarıları hizmet bildirimlerinde oluşturma](../articles/azure-monitor/platform/alerts-activity-log-service-notifications.md).
+Azure communicates a schedule for planned maintenance by sending an email to the subscription owners group. You can add additional recipients and channels to this communication by creating Azure activity log alerts. For more information, see [Create activity log alerts on service notifications](../articles/azure-monitor/platform/alerts-activity-log-service-notifications.md).
 
-Ayarladığınızdan emin olun **olay türü** olarak **planlı Bakım** ve **Hizmetleri** olarak **sanal makine ölçek kümeleri** ve/veya **Sanal makineler**
+Make sure you set the **Event type** as **Planned maintenance** and **Services** as **Virtual Machine Scale Sets** and/or **Virtual Machines**
     
     
-## <a name="start-maintenance-on-your-vm-from-the-portal"></a>Portaldan vm'nizde Bakımı Başlat
+## <a name="start-maintenance-on-your-vm-from-the-portal"></a>Start Maintenance on your VM from the portal
 
-Sanal makine ayrıntıları bakarken bakımı ile ilgili daha fazla ayrıntı mümkün olacaktır.  
-Sanal makinenize bir planlı bakım dalgası içinde yer alıyorsa, VM Ayrıntılar görünümü üst kısmında yeni bir bildirim Şerit eklenir. Ayrıca, mümkünse bakım başlatmak için yeni bir seçenek eklendi. 
+While looking at the VM details, you will be able to see more maintenance-related details.  
+At the top of the VM details view, a new notification ribbon will be added if your VM is included in a planned maintenance wave. In addition, a new option is added to start maintenance when possible. 
 
 
-Bakım bildirimi planlı bakım hakkında daha fazla ayrıntı içeren koruma sayfasını görmek için tıklayın. Buradan, şunları yapabilecek **Bakımı Başlat** vm'nizde.
+Click on the maintenance notification to see the maintenance page with more details on the planned maintenance. From there, you will be able to **start maintenance** on your VM.
 
-Bakım başlattıktan sonra sanal makine korunur ve Bakım durumu birkaç dakika içinde sonucu yansıtacak şekilde güncelleştirilir.
+Once you start maintenance, your virtual machine will be maintained and the maintenance status will be updated to reflect the result within few minutes.
 
-Self Servis penceresi Kaçırıldı, VM'niz Azure tarafından korunur, pencerenin görmeye devam edersiniz. 
+If you missed the self-service window, you will still be able to see the window when your VM will be maintained by Azure. 

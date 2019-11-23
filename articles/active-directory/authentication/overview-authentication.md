@@ -1,28 +1,28 @@
 ---
-title: Azure Active Directory kullanıcı kimlik doğrulama - Azure Active Directory
+title: Authenticating and securing users - Azure Active Directory
 description: Azure AD yöneticisi olarak son kullanıcıya fazla yansıtmadan kullanıcı kimlik doğrulamasını nasıl koruyabilirim?
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: overview
-ms.date: 07/11/2018
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2f53243e49cc961f50ef09cf43a7ed174a82a9c
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: ccbb754f03f77ce0571912a5443dc9b18c66b463
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65997264"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381097"
 ---
 # <a name="what-methods-are-available-for-authentication"></a>Hangi kimlik doğrulama yöntemleri kullanılabilir?
 
 Her gün çalınan parolalar ve gizliliği tehlikeye giren kimliklerle ilgili yeni haberler görüyoruz. Parolaya ek olarak ikinci bir adımın eklenmesi, kuruluşunuzun güvenliğini anında artıran yöntemlerden biridir. Microsoft Azure Active Directory (Azure AD), ek kimlik doğrulama yöntemleri ile yöneticilerin kuruluşlarının ve kullanıcılarının güvenliğini korumasına yardımcı olmak için Azure Multi-Factor Authentication (Azure MFA) ve Azure AD self servis parola sıfırlama (SSPR) gibi özellikler sunmaktadır.
 
-Dahil birçok senaryo vardır: Windows Hello ve diğerleri etkinleştirme parolasını sıfırlama bir uygulamada oturum açarken, kullanıcılarınızın ek doğrulama kimin söyledikleri olmalarını sağlamak için istenebilir.
+There are many scenarios that include: signing in to an application, resetting their password, enabling Windows Hello, and others, your users may be asked to provide additional verification that they are who they say they are.
 
 Ek doğrulama adımları aşağıdaki gibi kimlik doğrulama yöntemleri olabilir:
 
@@ -43,9 +43,9 @@ Self servis parola sıfırlama, kullanıcıların istediği yerden ve istediği 
 
 Self servis parola sıfırlama şu adımlardan oluşur:
 
-* **Parola değiştirme:** Parolamı biliyorum, ancak yeni bir şeyle değiştirmek istediğiniz bildirimi.
-* **Parola sıfırlama:** Ben oturum açamaz ve bir veya daha fazla onaylanmış kimlik doğrulama yöntemleri kullanan parolamı sıfırlamak istiyor.
-* **Hesap kilidinizi açın:** Hesabımı kilitli ve bir veya daha fazla onaylanmış kimlik doğrulama yöntemleri kullanarak kilidini açmak istediğiniz olduğundan oturum açamıyorum.
+* **Parola değiştirme:** Parolamı biliyorum ancak değiştirmek istiyorum.
+* **Parola sıfırlama:** Oturum açamıyorum ve onaylı kimlik doğrulama yöntemlerinden birini veya daha fazlasını kullanarak parolamı sıfırlamak istiyorum.
+* **Hesap kilidini açma:** Hesabım kilitlendiğinden oturum açamıyorum ve onaylı kimlik doğrulama yöntemlerinden birini veya daha fazlasını kullanarak hesabımın kilidini açmak istiyorum.
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
@@ -61,6 +61,6 @@ Bir sonraki adım self servis parola sıfırlama ve Azure Multi-Factor Authentic
 
 Self servis parola sıfırlama özelliğini kullanmaya başlamak için bkz. [SSPR 'yi etkinleştirme hızlı başlangıç makalesi](quickstart-sspr.md).
 
-Self Servis parola sıfırlama makalede hakkında daha fazla bilgi [nasıl çalışır: Azure AD Self Servis parola sıfırlama](concept-sspr-howitworks.md)
+Self servis parola sıfırlama özelliği hakkında daha fazla bilgi için bkz. [Nasıl çalışır? Azure AD self servis parola sıfırlama](concept-sspr-howitworks.md)
 
-Makalede, Azure multi-Factor Authentication hakkında daha fazla bilgi edinin [nasıl çalışır: Azure Multi-Factor Authentication](concept-mfa-howitworks.md)
+Azure Multi-Factor Authentication hakkında daha fazla bilgi için bkz. [Nasıl çalışır? Azure Multi-Factor Authentication](concept-mfa-howitworks.md)

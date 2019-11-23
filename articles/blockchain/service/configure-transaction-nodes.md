@@ -1,143 +1,137 @@
 ---
-title: Azure blok zinciri hizmeti işlem düğümlerini yapılandırma
-description: Azure blok zinciri hizmeti işlem düğümlerini yapılandırma
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
+title: Configure Azure Blockchain Service transaction nodes
+description: How to configure Azure Blockchain Service transaction nodes
 ms.date: 11/20/2019
 ms.topic: article
-ms.service: azure-blockchain
 ms.reviewer: janders
-manager: femila
-ms.openlocfilehash: 2885e5c9376264875cba03865c45b6b1e5d4aaf2
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
-ms.translationtype: HT
+ms.openlocfilehash: 4a9a4f660dd171e65b600ec4cd66714ca476b091
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286798"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326313"
 ---
-# <a name="configure-azure-blockchain-service-transaction-nodes"></a>Azure blok zinciri hizmeti işlem düğümlerini yapılandırma
+# <a name="configure-azure-blockchain-service-transaction-nodes"></a>Configure Azure Blockchain Service transaction nodes
 
-İşlem düğümleri ortak bir uç nokta aracılığıyla Azure blok zinciri hizmetine blok zinciri işlemleri göndermek için kullanılır. Varsayılan işlem düğümü, blok zincirinde kayıtlı olan Ethereum hesabının özel anahtarını içerir ve bu nedenle silinemez.
+Transaction nodes are used to send blockchain transactions to Azure Blockchain Service through a public endpoint. The default transaction node contains the private key of the Ethereum account registered on the blockchain, and as such cannot be deleted.
 
-Varsayılan işlem düğümü ayrıntılarını görüntülemek için:
+To view the default transaction node details:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
-1. Azure blok zinciri hizmeti üyesine gidin. **İşlem düğümlerini**seçin.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. Navigate to your Azure Blockchain Service member. Select **Transaction nodes**.
 
-    ![Varsayılan işlem düğümünü seçin](./media/configure-transaction-nodes/nodes.png)
+    ![Select default transaction node](./media/configure-transaction-nodes/nodes.png)
 
-    Genel Bakış ayrıntıları genel uç nokta adreslerini ve ortak anahtarı içerir.
+    Overview details include public endpoint addresses and public key.
 
-## <a name="create-transaction-node"></a>İşlem düğümü oluştur
+## <a name="create-transaction-node"></a>Create transaction node
 
-Blok zinciri üyesine toplam 10 işlem düğümü için en fazla dokuz ek işlem düğümü ekleyebilirsiniz. İşlem düğümleri ekleyerek ölçeklenebilirliği artırabilir veya yükü dağıtabilirsiniz. Örneğin, farklı istemci uygulamaları için bir işlem düğümü uç noktasına sahip olabilirsiniz.
+You can add up to nine additional transaction nodes to your blockchain member, for a total of 10 transaction nodes. By adding transaction nodes, you can increase scalability or distribute load. For example, you could have a transaction node endpoint for different client applications.
 
-İşlem düğümü eklemek için:
+To add a transaction node:
 
-1. Azure portal Azure blok zinciri hizmeti üyesine gidin ve **ekle > işlem düğümleri**' ni seçin.
-1. Yeni işlem düğümü için ayarları doldurun.
+1. In the Azure portal, navigate to your Azure Blockchain Service member and select **Transaction nodes > Add**.
+1. Complete the settings for the new transaction node.
 
-    ![İşlem düğümü Ekle](./media/configure-transaction-nodes/add-node.png)
+    ![Add transaction node](./media/configure-transaction-nodes/add-node.png)
 
     | Ayar | Açıklama |
     |---------|-------------|
-    | Ad | İşlem düğümü adı. Ad, işlem düğümü uç noktasının DNS adresini oluşturmak için kullanılır. Örneğin, `newnode-myblockchainmember.blockchain.azure.com`. Düğüm adı, oluşturulduktan sonra değiştirilemez. |
-    | Parola | Güçlü bir parola ayarlayın. Temel kimlik doğrulamasıyla işlem düğümü uç noktasına erişmek için parolayı kullanın.
+    | Adı | Transaction node name. The name is used to create the DNS address for the transaction node endpoint. Örneğin, `newnode-myblockchainmember.blockchain.azure.com`. The node name cannot be changed once it is created. |
+    | Parola | Set a strong password. Use the password to access the transaction node endpoint with basic authentication.
 
 1. **Oluştur**'u seçin.
 
-    Yeni bir işlem düğümü sağlanması yaklaşık 10 dakika sürer. Ek işlem düğümleri ücret doğurur. Maliyetler hakkında daha fazla bilgi için bkz. [Azure fiyatlandırması](https://aka.ms/ABSPricing).
+    Provisioning a new transaction node takes about 10 minutes. Additional transaction nodes incur cost. For more information on costs, see [Azure pricing](https://aka.ms/ABSPricing).
 
 ## <a name="endpoints"></a>Uç Noktalar
 
-İşlem düğümlerinin benzersiz bir DNS adı ve genel uç noktaları vardır.
+Transaction nodes have a unique DNS name and public endpoints.
 
-İşlem düğümünün uç nokta ayrıntılarını görüntülemek için:
+To view a transaction node's endpoint details:
 
-1. Azure portal Azure blok zinciri hizmeti üye işlem düğümlerinizin birine gidin ve **genel bakış**' ı seçin.
+1. In the Azure portal, navigate to one of your Azure Blockchain Service member transaction nodes and select **Overview**.
 
     ![Uç Noktalar](./media/configure-transaction-nodes/endpoints.png)
 
-İşlem düğümü uç noktaları güvenlidir ve kimlik doğrulaması gerekir. Azure AD kimlik doğrulaması, HTTPS temel kimlik doğrulaması kullanarak bir işlem uç noktasına bağlanabilir ve HTTPS veya SSL üzerinden WebSocket üzerinden bir erişim anahtarı kullanabilirsiniz.
+Transaction node endpoints are secure and require authentication. You can connect to a transaction endpoint using Azure AD authentication, HTTPS basic authentication, and using an access key over HTTPS or Websocket over SSL.
 
 ### <a name="azure-active-directory-access-control"></a>Azure Active Directory erişim denetimi
 
-Azure blok zinciri hizmeti işlem düğümü uç noktaları, Azure Active Directory (Azure AD) kimlik doğrulamasını destekler. Uç noktanız için Azure AD kullanıcısına, gruba ve hizmet sorumlusu erişimine izin verebilirsiniz.
+Azure Blockchain Service transaction node endpoints support Azure Active Directory (Azure AD) authentication. You can grant Azure AD user, group, and service principal access to your endpoint.
 
-Uç noktanıza Azure AD erişim denetimi sağlamak için:
+To grant Azure AD access control to your endpoint:
 
-1. Azure portal, Azure blok zinciri hizmeti üyesine gidin ve **işlem düğümleri > erişim denetimi (IAM) > ekleme > rol ataması Ekle**' yi seçin.
-1. Kullanıcı, Grup veya hizmet sorumlusu (uygulama rolleri) için yeni bir rol ataması oluşturun.
+1. In the Azure portal, navigate to your Azure Blockchain Service member and select **Transaction nodes > Access control (IAM) > Add > Add role assignment**.
+1. Create a new role assignment for a user, group, or service principal (application roles).
 
-    ![IAM rolü Ekle](./media/configure-transaction-nodes/add-role.png)
+    ![Add IAM role](./media/configure-transaction-nodes/add-role.png)
 
     | Ayar | Eylem |
     |---------|-------------|
-    | Rol | **Sahip**, **katkıda bulunan**veya **Reader**' ı seçin.
-    | Erişim ata | **Azure AD Kullanıcı, Grup veya hizmet sorumlusu**' nı seçin.
-    | Seçim | Eklemek istediğiniz kullanıcı, Grup veya hizmet sorumlusu için arama yapın.
+    | Rol | Select **Owner**, **Contributor**, or **Reader**.
+    | Assign access to | Select **Azure AD user, group, or service principal**.
+    | Seçin | Search for the user, group, or service principal you want to add.
 
-1. Rol atamasını eklemek için **Kaydet** ' i seçin.
+1. Select **Save** to add the role assignment.
 
-Azure AD erişim denetimi hakkında daha fazla bilgi için bkz [. RBAC kullanarak Azure kaynaklarına erişimi yönetme ve Azure Portal](../../role-based-access-control/role-assignments-portal.md)
+For more information on Azure AD access control, see [Manage access to Azure resources using RBAC and the Azure portal](../../role-based-access-control/role-assignments-portal.md)
 
-Azure AD kimlik doğrulamasını kullanarak bağlanma hakkında daha fazla bilgi için bkz. [AAD kimlik doğrulaması kullanarak düğümünüz bağlama](configure-aad.md).
+For details on how to connect using Azure AD authentication, see [connect to your node using AAD authentication](configure-aad.md).
 
 ### <a name="basic-authentication"></a>Temel kimlik doğrulama
 
-HTTPS temel kimlik doğrulaması için, Kullanıcı adı ve parola kimlik bilgileri isteğin HTTPS üst bilgisinde uç noktaya geçirilir.
+For HTTPS basic authentication, user name and password credentials are passed in the HTTPS header of the request to the endpoint.
 
-İşlem düğümünün temel kimlik doğrulama uç noktası ayrıntılarını Azure portal görüntüleyebilirsiniz. Azure blok zinciri hizmeti üye işlem düğümlerinizin birine gidin ve Ayarlar ' da **temel kimlik doğrulaması** ' nı seçin.
+You can view a transaction node's basic authentication endpoint details in the Azure portal. Navigate to one of your Azure Blockchain Service member transaction nodes and select **Basic Authentication** in settings.
 
 ![Temel kimlik doğrulama](./media/configure-transaction-nodes/basic.png)
 
-Kullanıcı adı, düğümünüz adıdır ve değiştirilemez.
+The user name is the name of your node and cannot be changed.
 
-URL 'YI kullanmak için, \<Password\>, düğüm sağlandığında ayarlanan parola ile değiştirin. Parolayı **Sıfırla**' yı seçerek parolayı güncelleştirebilirsiniz.
+To use the URL, replace \<password\> with the password set when the node was provisioned. You can update the password by selecting **Reset password**.
 
-### <a name="access-keys"></a>Erişim anahtarları
+### <a name="access-keys"></a>Erişim tuşları
 
-Erişim anahtarı kimlik doğrulaması için, erişim anahtarı uç nokta URL 'sine dahildir. İşlem düğümü sağlandığında, iki erişim anahtarı oluşturulur. Kimlik doğrulaması için erişim anahtarı kullanılabilir. İki anahtar, anahtarları değiştirmenize ve döndürmenize olanak tanır.
+For access key authentication, the access key is included in the endpoint URL. When the transaction node is provisioned, two access keys are generated. Either access key can be used for authentication. Two keys enable you to change and rotate keys.
 
-İşlem düğümünün erişim anahtarı ayrıntılarını görüntüleyebilir ve erişim anahtarlarını içeren uç nokta adreslerini kopyalayabilirsiniz. Azure blok zinciri hizmeti üye işlem düğümlerinizin birine gidin ve Ayarlar ' da **erişim anahtarları** ' nı seçin.
+You can view a transaction node's access key details and copy endpoint addresses that include the access keys. Navigate to one of your Azure Blockchain Service member transaction nodes and select **Access Keys** in settings.
 
 ### <a name="firewall-rules"></a>Güvenlik duvarı kuralları
 
-Güvenlik duvarı kuralları, işlem düğümünüz için kimlik doğrulaması gerçekleştirmeye çalışmayan IP adreslerini sınırlamanıza olanak tanır.  İşlem düğümünüz için bir güvenlik duvarı kuralı yapılandırılmamışsa, hiçbir taraf tarafından erişilemez.  
+Firewall rules enable you to limit the IP addresses that can attempt to authenticate to your transaction node.  If no firewall rules are configured for your transaction node, it cannot be accessed by any party.  
 
-İşlem düğümünün güvenlik duvarı kurallarını görüntülemek için Azure blok zinciri hizmeti üye işlem düğümlerinizin birine gidin ve Ayarlar ' da **güvenlik duvarı kuralları** ' nı seçin.
+To view a transaction node's firewall rules, navigate to one of your Azure Blockchain Service member transaction nodes and select **Firewall rules** in settings.
 
-Güvenlik Duvarı **kuralları** kılavuzunda bir kural adı, başlangıç IP adresi ve bitiş IP adresi girerek güvenlik duvarı kuralları ekleyebilirsiniz.
+You can add firewall rules by entering a rule name, starting IP address, and an ending IP address in the **Firewall rules** grid.
 
 ![Güvenlik duvarı kuralları](./media/configure-transaction-nodes/firewall-rules.png)
 
-Şunları etkinleştirmek için:
+To enable:
 
-* **Tek IP adresi:** Başlangıç ve bitiş IP adresleri için aynı IP adresini yapılandırın.
-* **IP adresi aralığı:** Başlangıç ve bitiş IP adresi aralığını yapılandırın. Örneğin, 10.221.34.0 adresinden başlayan ve 10.221.34.255 ile biten bir Aralık tüm 10.221.34.xxx alt ağını etkinleştirir.
-* **Tüm IP adreslerine Izin ver:** Başlangıç IP adresini 0.0.0.0 ve bitiş IP adresini 255.255.255.255 olarak yapılandırın.
+* **Single IP address:** Configure the same IP address for the starting and ending IP addresses.
+* **IP address range:** Configure the starting and ending IP address range. For example, a range starting at 10.221.34.0 and ending at 10.221.34.255 would enable the entire 10.221.34.xxx subnet.
+* **Allow all IP addresses:** Configure the starting IP address to 0.0.0.0 and the ending IP address to 255.255.255.255.
 
 ## <a name="connection-strings"></a>Bağlantı dizeleri
 
-İşlem düğümünüz için bağlantı dizesi sözdizimi, temel kimlik doğrulaması veya erişim anahtarları kullanılarak sağlanır. HTTPS ve WebSockets üzerinden erişim anahtarları dahil bağlantı dizeleri sağlanır.
+Connection string syntax for your transaction node is provided for basic authentication or using access keys. Connection strings including access keys over HTTPS and WebSockets are provided.
 
-İşlem düğümünün bağlantı dizelerini görüntüleyebilir ve uç nokta adreslerini kopyalayabilirsiniz. Azure blok zinciri hizmeti üye işlem düğümlerinizin birine gidin ve Ayarlar ' da **bağlantı dizeleri** ' ni seçin.
+You can view a transaction node's connection strings and copy endpoint addresses. Navigate to one of your Azure Blockchain Service member transaction nodes and select **Connection strings** in settings.
 
 ![Bağlantı dizeleri](./media/configure-transaction-nodes/connection-strings.png)
 
 ## <a name="sample-code"></a>Örnek kod
 
-Örnek kod, Web3, netes, Web3js ve truffle aracılığıyla işlem düğümünüz için hızlı bir şekilde yapılandırılabilir.
+Sample code is provided to quickly enable connecting to your transaction node via Web3, Nethereum, Web3js, and Truffle.
 
-Bir işlem düğümünün örnek bağlantı kodunu görüntüleyebilir ve popüler geliştirici araçlarıyla kullanmak üzere kopyalayabilirsiniz. Azure blok zinciri hizmeti üye işlem düğümlerinizin birine gidin ve Ayarlar ' da **örnek kod** ' ı seçin.
+You can view a transaction node's sample connection code and copy it to use with popular developer tools. Go to one of your Azure Blockchain Service member transaction nodes and select **Sample Code** in settings.
 
-Kullanmak istediğiniz kod örneğini görüntülemek için Web3, netes, Truffle veya Web3j sekmesini seçin.
+Choose the Web3, Nethereum, Truffle, or Web3j tab to view the code sample you want to use.
 
 ![Örnek kod](./media/configure-transaction-nodes/sample-code.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure CLı kullanarak işlem düğümlerini yapılandırma](manage-cli.md)
+> [Configure transaction nodes using Azure CLI](manage-cli.md)

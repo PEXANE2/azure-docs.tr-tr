@@ -1,48 +1,42 @@
 ---
-title: Azure blok zinciri çalışma ekranı iletileri tümleştirmesine genel bakış
-description: Azure blok zinciri çalışma ekranı önizlemesinde ileti kullanımına genel bakış.
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
+title: Use messages to integrate with Azure Blockchain Workbench
+description: Overview of using messages to integrate Azure Blockchain Workbench Preview with other systems.
 ms.date: 09/05/2019
 ms.topic: article
-ms.service: azure-blockchain
 ms.reviewer: brendal
-manager: femila
-ms.openlocfilehash: 99159b15ea663d43d125748d6db1f334b72931ae
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 14bd0f84bc9490d95d3dbe0b9f122882f0d2059d
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161803"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74324503"
 ---
-# <a name="azure-blockchain-workbench-messaging-integration"></a>Azure blok zinciri çalışma ekranı mesajlaşma tümleştirmesi
+# <a name="azure-blockchain-workbench-messaging-integration"></a>Azure Blockchain Workbench messaging integration
 
-Azure blok zinciri de REST API sağlamaya ek olarak, mesajlaşma tabanlı tümleştirme de sağlar. Çalışma ekranı, Azure Event Grid aracılığıyla defter merkezli olayları yayımlar ve bu olaylara dayalı olarak aşağı akış tüketicilerini verileri alacak veya işlem yapması için etkinleştirir. Güvenilir Mesajlaşma gerektiren istemciler için, Azure blok zinciri çalışma ekranı, iletileri bir Azure Service Bus uç noktasına da sunar.
+In addition to providing a REST API, Azure Blockchain Workbench also provides messaging-based integration. Workbench publishes ledger-centric events via Azure Event Grid, enabling downstream consumers to ingest data or take action based on these events. For those clients that require reliable messaging, Azure Blockchain Workbench delivers messages to an Azure Service Bus endpoint as well.
 
-## <a name="input-apis"></a>Giriş API 'Leri
+## <a name="input-apis"></a>Input APIs
 
-Kullanıcıları oluşturmak, sözleşmeleri oluşturmak ve sözleşmeleri güncelleştirmek için dış sistemlerden işlem başlatmak istiyorsanız, bir muhasebe üzerinde işlem gerçekleştirmek için mesajlaşma girişi API 'Lerini kullanabilirsiniz. Giriş API 'Lerini gösteren bir örnek için [mesajlaşma tümleştirme örneklerine](https://aka.ms/blockchain-workbench-integration-sample) bakın.
+If you want to initiate transactions from external systems to create users, create contracts, and update contracts, you can use messaging input APIs to perform transactions on a ledger. See [messaging integration samples](https://aka.ms/blockchain-workbench-integration-sample) for a sample that demonstrates input APIs.
 
-Şu anda kullanılabilir giriş API 'Leri aşağıda verilmiştir.
+The following are the currently available input APIs.
 
-### <a name="create-user"></a>Kullanıcı Oluştur
+### <a name="create-user"></a>Create user
 
-Yeni bir kullanıcı oluşturur.
+Creates a new user.
 
-İstek aşağıdaki alanları gerektiriyor:
+The request requires the following fields:
 
 | **Adı**             | **Açıklama**                                      |
 |----------------------|------------------------------------------------------|
-| No            | İstemci tarafından sağlanan GUID                                |
-| firstName            | Kullanıcının adı                              |
-| Soyadı             | Kullanıcının soyadı                               |
-| emailAddress         | Kullanıcının e-posta adresi                           |
-| externalID           | Kullanıcının Azure AD nesne KIMLIĞI                      |
-| ConnectionID         | Blok zinciri bağlantısı için benzersiz tanımlayıcı |
-| Iletichemaversion | Mesajlaşma şeması sürümü                            |
-| Ileti Gename          | **CreateUserRequest**                               |
+| requestId            | Client supplied GUID                                |
+| firstName            | First name of the user                              |
+| lastName             | Last name of the user                               |
+| emailAddress         | Email address of the user                           |
+| externalId           | Azure AD object ID of the user                      |
+| connectionId         | Unique identifier for the blockchain connection |
+| messageSchemaVersion | Messaging schema version                            |
+| messageName          | **CreateUserRequest**                               |
 
 Örnek:
 
@@ -59,20 +53,20 @@ Yeni bir kullanıcı oluşturur.
 }
 ```
 
-Blok zinciri çalışma ekranı aşağıdaki alanlarla bir yanıt döndürür:
+Blockchain Workbench returns a response with the following fields:
 
 | **Adı**              | **Açıklama**                                                                                                             |
 |-----------------------|-----------------------------------------------------------------------------------------------------------------------------|
-| No             | İstemci tarafından sağlanan GUID |
-| userId                | Oluşturulan kullanıcının KIMLIĞI |
-| Userchainıdentifier   | Blok zinciri ağında oluşturulan kullanıcının adresi. Ethereum 'da, adres kullanıcının **zincir** adresidir. |
-| ConnectionID          | Blok zinciri bağlantısı için benzersiz tanımlayıcı|
-| Iletichemaversion  | Mesajlaşma şeması sürümü |
-| Ileti Gename           | **CreateUserUpdate** |
-| durum                | Kullanıcı oluşturma isteğinin durumu.  Başarılı olursa, değer **başarılı**olur. Hata durumunda, değer **hata**.     |
-| AdditionalInformation | Durum temelinde sunulan ek bilgiler |
+| requestId             | Client supplied GUID |
+| userId                | ID of the user that was created |
+| userChainIdentifier   | Address of the user that was created on the blockchain network. In Ethereum, the address is the user's **on-chain** address. |
+| connectionId          | Unique identifier for the blockchain connection|
+| messageSchemaVersion  | Messaging schema version |
+| messageName           | **CreateUserUpdate** |
+| durum                | Status of the user creation request.  If successful, value is **Success**. On failure, value is **Failure**.     |
+| additionalInformation | Additional information provided based on the status |
 
-Blok zinciri çalışma ekranı 'ndan başarılı bir şekilde **Kullanıcı yanıtı oluştur** :
+Example successful **create user** response from Blockchain Workbench:
 
 ``` json
 { 
@@ -87,7 +81,7 @@ Blok zinciri çalışma ekranı 'ndan başarılı bir şekilde **Kullanıcı yan
 } 
 ```
 
-İstek başarısız olduysa, hata hakkındaki ayrıntılar ek bilgilere dahil edilir.
+If the request was unsuccessful, details about the failure are included in additional information.
 
 ``` json
 {
@@ -105,23 +99,23 @@ Blok zinciri çalışma ekranı 'ndan başarılı bir şekilde **Kullanıcı yan
 }
 ```
 
-### <a name="create-contract"></a>Sözleşme Oluştur
+### <a name="create-contract"></a>Create contract
 
-Yeni bir sözleşme oluşturur.
+Creates a new contract.
 
-İstek aşağıdaki alanları gerektiriyor:
+The request requires the following fields:
 
 | **Adı**             | **Açıklama**                                                                                                           |
 |----------------------|---------------------------------------------------------------------------------------------------------------------------|
-| No            | İstemci tarafından sağlanan GUID |
-| Userchainıdentifier  | Blok zinciri ağında oluşturulan kullanıcının adresi. Ethereum 'da, bu adres kullanıcının **zincir** adresidir. |
-| ApplicationName      | Uygulamanın adı |
-| version              | Uygulamanın sürümü. Uygulamanın birden çok sürümünün etkinleştirilmiş olması halinde gereklidir. Aksi takdirde, sürüm isteğe bağlıdır. Uygulama sürümü oluşturma hakkında daha fazla bilgi için bkz. [Azure blok zinciri uygulama sürümü oluşturma](version-app.md). |
-| workflowName         | İş akışının adı |
-| parametreler           | Sözleşme oluşturma için parametreler girişi |
-| ConnectionID         | Blok zinciri bağlantısı için benzersiz tanımlayıcı |
-| Iletichemaversion | Mesajlaşma şeması sürümü |
-| Ileti Gename          | **CreateContractRequest** |
+| requestId            | Client supplied GUID |
+| userChainIdentifier  | Address of the user that was created on the blockchain network. In Ethereum, this address is the user’s **on chain** address. |
+| applicationName      | Name of the application |
+| version              | Version of the application. Required if you have multiple versions of the application enabled. Otherwise, version is optional. For more information on application versioning, see [Azure Blockchain Workbench application versioning](version-app.md). |
+| workflowName         | Name of the workflow |
+| parametreler           | Parameters input for contract creation |
+| connectionId         | Unique identifier for the blockchain connection |
+| messageSchemaVersion | Messaging schema version |
+| messageName          | **CreateContractRequest** |
 
 Örnek:
 
@@ -148,20 +142,20 @@ Yeni bir sözleşme oluşturur.
 }
 ```
 
-Blok zinciri çalışma ekranı aşağıdaki alanlarla bir yanıt döndürür:
+Blockchain Workbench returns a response with the following fields:
 
 | **Adı**                 | **Açıklama**                                                                   |
 |--------------------------|-----------------------------------------------------------------------------------|
-| No                | İstemci tarafından sağlanan GUID                                                             |
-| sözleşme kimliği               | Azure blok zinciri çalışma ekranı içindeki sözleşme için benzersiz tanımlayıcı |
-| Contractledgerıdentifier | Muhasebedeki sözleşmenin adresi                                            |
-| ConnectionID             | Blok zinciri bağlantısı için benzersiz tanımlayıcı                               |
-| Iletichemaversion     | Mesajlaşma şeması sürümü                                                         |
-| Ileti Gename              | **CreateContractUpdate**                                                      |
-| durum                   | Sözleşme oluşturma isteğinin durumu.  Olası değerler: **gönderildi**, **kaydedildi**, **başarısız**.  |
-| AdditionalInformation    | Durum temelinde sunulan ek bilgiler                              |
+| requestId                | Client supplied GUID                                                             |
+| contractId               | Unique identifier for the contract inside Azure Blockchain Workbench |
+| contractLedgerIdentifier | Address of the contract on the ledger                                            |
+| connectionId             | Unique identifier for the blockchain connection                               |
+| messageSchemaVersion     | Messaging schema version                                                         |
+| messageName              | **CreateContractUpdate**                                                      |
+| durum                   | Status of the contract creation request.  Possible values: **Submitted**, **Committed**, **Failure**.  |
+| additionalInformation    | Additional information provided based on the status                              |
 
-Blok zinciri için gönderilen bir **sözleşme yanıtı oluşturma** çalışma ekranı örneği:
+Example of a submitted **create contract** response from Blockchain Workbench:
 
 ``` json
 {
@@ -176,7 +170,7 @@ Blok zinciri için gönderilen bir **sözleşme yanıtı oluşturma** çalışma
 }
 ```
 
-Blok zinciri çalışma ekranı 'ndan kaydedilmiş bir **sözleşme yanıtı oluşturma** örneği:
+Example of a committed **create contract** response from Blockchain Workbench:
 
 ``` json
 {
@@ -191,7 +185,7 @@ Blok zinciri çalışma ekranı 'ndan kaydedilmiş bir **sözleşme yanıtı olu
 }
 ```
 
-İstek başarısız olduysa, hata hakkındaki ayrıntılar ek bilgilere dahil edilir.
+If the request was unsuccessful, details about the failure are included in additional information.
 
 ``` json
 {
@@ -209,23 +203,23 @@ Blok zinciri çalışma ekranı 'ndan kaydedilmiş bir **sözleşme yanıtı olu
 }
 ```
 
-### <a name="create-contract-action"></a>Sözleşme oluşturma eylemi
+### <a name="create-contract-action"></a>Create contract action
 
-Yeni bir sözleşme eylemi oluşturur.
+Creates a new contract action.
 
-İstek aşağıdaki alanları gerektiriyor:
+The request requires the following fields:
 
 | **Adı**                 | **Açıklama**                                                                                                           |
 |--------------------------|---------------------------------------------------------------------------------------------------------------------------|
-| No                | İstemci tarafından sağlanan GUID |
-| Userchainıdentifier      | Blok zinciri ağında oluşturulan kullanıcının adresi. Ethereum 'da, bu adres kullanıcının **zincir** adresidir. |
-| Contractledgerıdentifier | Muhasebedeki sözleşmenin adresi |
-| version                  | Uygulamanın sürümü. Uygulamanın birden çok sürümünün etkinleştirilmiş olması halinde gereklidir. Aksi takdirde, sürüm isteğe bağlıdır. Uygulama sürümü oluşturma hakkında daha fazla bilgi için bkz. [Azure blok zinciri uygulama sürümü oluşturma](version-app.md). |
-| Workflowfonksiyonadı     | İş akışı işlevinin adı |
-| parametreler               | Sözleşme oluşturma için parametreler girişi |
-| ConnectionID             | Blok zinciri bağlantısı için benzersiz tanımlayıcı |
-| Iletichemaversion     | Mesajlaşma şeması sürümü |
-| Ileti Gename              | **CreateContractActionRequest** |
+| requestId                | Client supplied GUID |
+| userChainIdentifier      | Address of the user that was created on the blockchain network. In Ethereum, this address is the user’s **on chain** address. |
+| contractLedgerIdentifier | Address of the contract on the ledger |
+| version                  | Version of the application. Required if you have multiple versions of the application enabled. Otherwise, version is optional. For more information on application versioning, see [Azure Blockchain Workbench application versioning](version-app.md). |
+| workflowFunctionName     | Name of the workflow function |
+| parametreler               | Parameters input for contract creation |
+| connectionId             | Unique identifier for the blockchain connection |
+| messageSchemaVersion     | Messaging schema version |
+| messageName              | **CreateContractActionRequest** |
 
 Örnek:
 
@@ -252,19 +246,19 @@ Yeni bir sözleşme eylemi oluşturur.
 }
 ```
 
-Blok zinciri çalışma ekranı aşağıdaki alanlarla bir yanıt döndürür:
+Blockchain Workbench returns a response with the following fields:
 
 | **Adı**              | **Açıklama**                                                                   |
 |-----------------------|-----------------------------------------------------------------------------------|
-| No             | İstemci tarafından sağlanan GUID|
-| sözleşme kimliği            | Azure blok zinciri çalışma ekranı içindeki sözleşme için benzersiz tanımlayıcı |
-| ConnectionID          | Blok zinciri bağlantısı için benzersiz tanımlayıcı |
-| Iletichemaversion  | Mesajlaşma şeması sürümü |
-| Ileti Gename           | **CreateContractActionUpdate** |
-| durum                | Sözleşme eylemi isteğinin durumu. Olası değerler: **gönderildi**, **kaydedildi**, **başarısız**.                         |
-| AdditionalInformation | Durum temelinde sunulan ek bilgiler |
+| requestId             | Client supplied GUID|
+| contractId            | Unique identifier for the contract inside Azure Blockchain Workbench |
+| connectionId          | Unique identifier for the blockchain connection |
+| messageSchemaVersion  | Messaging schema version |
+| messageName           | **CreateContractActionUpdate** |
+| durum                | Status of the contract action request. Possible values: **Submitted**, **Committed**, **Failure**.                         |
+| additionalInformation | Additional information provided based on the status |
 
-Blok zinciri çalışma ekranı 'ndan gönderilen **sözleşme oluşturma eylem** yanıtı örneği:
+Example of a submitted **create contract action** response from Blockchain Workbench:
 
 ``` json
 {
@@ -278,7 +272,7 @@ Blok zinciri çalışma ekranı 'ndan gönderilen **sözleşme oluşturma eylem*
 }
 ```
 
-Blok zinciri çalışma ekranı 'ndan kaydedilmiş bir **sözleşme oluşturma eylem** yanıtı örneği:
+Example of a committed **create contract action** response from Blockchain Workbench:
 
 ``` json
 {
@@ -292,7 +286,7 @@ Blok zinciri çalışma ekranı 'ndan kaydedilmiş bir **sözleşme oluşturma e
 }
 ```
 
-İstek başarısız olduysa, hata hakkındaki ayrıntılar ek bilgilere dahil edilir.
+If the request was unsuccessful, details about the failure are included in additional information.
 
 ``` json
 {
@@ -309,108 +303,108 @@ Blok zinciri çalışma ekranı 'ndan kaydedilmiş bir **sözleşme oluşturma e
 }
 ```
 
-### <a name="input-api-error-codes-and-messages"></a>Giriş API 'SI hata kodları ve iletileri
+### <a name="input-api-error-codes-and-messages"></a>Input API error codes and messages
 
-**Hata kodu 4000: Hatalı istek hatası**
-- Geçersiz ConnectionID
-- CreateUserRequest seri durumdan çıkarılamadı
-- CreateContractRequest seri durumdan çıkarılamadı
-- CreateContractActionRequest seri durumundan çıkarılamadı
-- {Uygulama adı tarafından tanımlanan} uygulaması yok
-- {Application Name tarafından tanımlanan} uygulamasının iş akışı yok
-- Userchainıdentifier yok
-- {Muhasebe tanımlayıcısı ile tanımlanan} sözleşmesi yok
-- {Muhasebe tanımlayıcısına göre tanımlanan} sözleşmede {Workflow Function Name} işlevi yok
-- Userchainıdentifier yok
+**Error code 4000: Bad request error**
+- Invalid connectionId
+- CreateUserRequest deserialization failed
+- CreateContractRequest deserialization failed
+- CreateContractActionRequest deserialization failed
+- Application {identified by application name} does not exist
+- Application {identified by application name} does not have workflow
+- UserChainIdentifier does not exist
+- Contract {identified by ledger identifier} does not exist
+- Contract {identified by ledger identifier} does not have function {workflow function name}
+- UserChainIdentifier does not exist
 
-**Hata kodu 4090: çakışma hatası**
-- Kullanıcı zaten var
-- Sözleşme zaten var
-- Sözleşme eylemi zaten var
+**Error code 4090: Conflict error**
+- User already exists
+- Contract already exists
+- Contract action already exists
 
-**Hata kodu 5000: Iç sunucu hatası**
-- Özel durum iletileri
+**Error code 5000: Internal server error**
+- Exception messages
 
 ## <a name="event-notifications"></a>Olay bildirimleri
 
-Olay bildirimleri, blok zinciri çalışma ekranı ve bağlı olduğu blok zinciri ağı 'nda oluşan olayların kullanıcılarına ve aşağı akış sistemlerine bildirimde bulunabilir. Olay bildirimleri doğrudan kodda tüketilebilir veya Logic Apps ve Flow gibi araçlarla, aşağı akış sistemlerine veri akışını tetiklemek için kullanılabilir.
+Event notifications can be used to notify users and downstream systems of events that happen in Blockchain Workbench and the blockchain network it is connected to. Event notifications can be consumed directly in code or used with tools such as Logic Apps and Flow to trigger flow of data to downstream systems.
 
-Alınabilecek çeşitli mesajların ayrıntıları için bkz. [bildirim iletisi başvurusu](#notification-message-reference) .
+See [Notification message reference](#notification-message-reference) for details of various messages that can be received.
 
-### <a name="consuming-event-grid-events-with-azure-functions"></a>Azure Işlevleri ile Event Grid olayları kullanma
+### <a name="consuming-event-grid-events-with-azure-functions"></a>Consuming Event Grid events with Azure Functions
 
-Bir Kullanıcı blok zinciri çalışma ekranı 'nda oluşan olaylar hakkında bildirim almak için Event Grid kullanmak isterse, Azure Işlevleri 'ni kullanarak Event Grid olayları kullanabilirsiniz.
+If a user wants to use Event Grid to be notified about events that happen in Blockchain Workbench, you can consume events from Event Grid by using Azure Functions.
 
-1. Azure portal **Azure işlev uygulaması** oluşturun.
-2. Yeni bir işlev oluşturun.
-3. Event Grid şablonunu bulun. İletiyi okumak için temel şablon kodu gösterilir. Kodu gereken şekilde değiştirin.
-4. Işlevi kaydedin. 
-5. Blok zinciri çalışma ekranının kaynak grubundaki Event Grid seçin.
+1. Create an **Azure Function App** in the Azure portal.
+2. Create a new function.
+3. Locate the template for Event Grid. Basic template code for reading the message is shown. Modify the code as needed.
+4. Save the Function. 
+5. Select the Event Grid from Blockchain Workbench’s resource group.
 
-### <a name="consuming-event-grid-events-with-logic-apps"></a>Logic Apps Event Grid olaylarını kullanma
+### <a name="consuming-event-grid-events-with-logic-apps"></a>Consuming Event Grid events with Logic Apps
 
-1. Azure portal yeni bir **Azure mantıksal uygulaması** oluşturun.
-2. Portalda Azure Logic App 'i açarken bir tetikleyici seçmeniz istenir. **Bir kaynak olay gerçekleştiğinde Azure Event Grid**seçin.
-3. İş akışı Tasarımcısı görüntülendiğinde oturum açmanız istenir.
-4. Aboneliği seçin. **Microsoft. EventGrid. konular**olarak kaynak. Azure blok zinciri çalışma ekranı kaynak grubundaki kaynak adı listesinden **kaynak adı** ' nı seçin.
-5. Blok zinciri çalışma ekranının kaynak grubundaki Event Grid seçin.
+1. Create a new **Azure Logic App** in the Azure portal.
+2. When opening the Azure Logic App in the portal, you will be prompted to select a trigger. Select **Azure Event Grid -- When a resource event occurs**.
+3. When the workflow designer is displayed, you will be prompted to sign in.
+4. Select the Subscription. Resource as **Microsoft.EventGrid.Topics**. Select the **Resource Name** from the name of the resource from the Azure Blockchain Workbench resource group.
+5. Select the Event Grid from Blockchain Workbench's resource group.
 
-## <a name="using-service-bus-topics-for-notifications"></a>Bildirimler için Service Bus konuları kullanma
+## <a name="using-service-bus-topics-for-notifications"></a>Using Service Bus Topics for notifications
 
-Service Bus konular, kullanıcılara blok zinciri çalışma ekranı 'nda meydana gelen olayları bildirmek için kullanılabilir. 
+Service Bus Topics can be used to notify users about events that happen in Blockchain Workbench. 
 
-1. Çalışma ekranının kaynak grubu içindeki Service Bus gidin.
-2. **Konular**' ı seçin.
-3. **Çıkış konusunu**seçin.
-4. Bu konuda yeni bir abonelik oluşturun. Bunun için bir anahtar edinin.
-5. Bu abonelikteki olaylara abone olan bir program oluşturun.
+1. Browse to the Service Bus within the Workbench’s resource group.
+2. Select **Topics**.
+3. Select **egress-topic**.
+4. Create a new subscription to this topic. Obtain a key for it.
+5. Create a program, which subscribes to events from this subscription.
 
-### <a name="consuming-service-bus-messages-with-logic-apps"></a>Logic Apps Service Bus Iletileri kullanma
+### <a name="consuming-service-bus-messages-with-logic-apps"></a>Consuming Service Bus Messages with Logic Apps
 
-1. Azure portal yeni bir **Azure mantıksal uygulaması** oluşturun.
-2. Portalda Azure Logic App 'i açarken bir tetikleyici seçmeniz istenir. Arama kutusuna **Service Bus** yazın ve Service Bus sahip olmasını istediğiniz etkileşim türü için uygun tetikleyiciyi seçin. Örneğin, **Service Bus--bir konu aboneliğinde bir ileti alındığında (otomatik olarak tamamlanır)** .
-3. İş akışı Tasarımcısı görüntülendiğinde Service Bus için bağlantı bilgilerini belirtin.
-4. Aboneliğinizi seçin ve çalışma **ekranı-dış**konusunu belirtin.
-5. Uygulamanız için bu tetikleyiciden gelen iletiden yararlanan mantığı geliştirin.
+1. Create a new **Azure Logic App** in the Azure portal.
+2. When opening the Azure Logic App in the portal, you will be prompted to select a trigger. Type **Service Bus** into the search box and select the trigger appropriate for the type of interaction you want to have with the Service Bus. For example, **Service Bus -- When a message is received in a topic subscription (auto-complete)** .
+3. When the workflow designer is displayed, specify the connection information for the Service Bus.
+4. Select your subscription and specify the topic of **workbench-external**.
+5. Develop the logic for your application that utilizes the message from this trigger.
 
-## <a name="notification-message-reference"></a>Bildirim iletisi başvurusu
+## <a name="notification-message-reference"></a>Notification message reference
 
-**MessageName**öğesine bağlı olarak, bildirim iletileri aşağıdaki ileti türlerinden birine sahiptir.
+Depending on the **messageName**, the notification messages have one of the following message types.
 
-### <a name="block-message"></a>İletiyi engelle
+### <a name="block-message"></a>Block message
 
-Ayrı bloklarla ilgili bilgiler içerir. *Blockmessage* , blok düzeyi bilgileri olan bir bölüm ve işlem bilgileri içeren bir bölüm içerir.
+Contains information about individual blocks. The *BlockMessage* includes a section with block level information and a section with transaction information.
 
 | Adı | Açıklama |
 |------|-------------|
-| engelleyin | [Engelleme bilgilerini](#block-information) içerir |
-| işlem | Blok için bir koleksiyon [işlem bilgileri](#transaction-information) içerir |
-| ConnectionID | Bağlantı için benzersiz tanımlayıcı |
-| Iletichemaversion | Mesajlaşma şeması sürümü |
-| Ileti Gename | **Blok Ileti** |
-| AdditionalInformation | Ek bilgiler belirtildi |
+| block | Contains [block information](#block-information) |
+| işlem | Contains a collection [transaction information](#transaction-information) for the block |
+| connectionId | Unique identifier for the connection |
+| messageSchemaVersion | Messaging schema version |
+| messageName | **BlockMessage** |
+| additionalInformation | Additional information provided |
 
-#### <a name="block-information"></a>Engelleme bilgileri
+#### <a name="block-information"></a>Block information
 
 | Adı              | Açıklama |
 |-------------------|-------------|
-| blockID 'si           | Azure blok zinciri çalışma ekranı içindeki bloğun benzersiz tanımlayıcısı |
-| Blok numarası       | Genel muhasebedeki bir bloğun benzersiz tanımlayıcısı |
-| Blok karması         | Bloğun karması |
-| Previousblockkarması | Önceki bloğun karması |
-| blockTimestamp    | Bloğun zaman damgası |
+| blockId           | Unique identifier for the block inside Azure Blockchain Workbench |
+| blockNumber       | Unique identifier for a block on the ledger |
+| blockHash         | The hash of the block |
+| previousBlockHash | The hash of the previous block |
+| blockTimestamp    | The timestamp of the block |
 
-#### <a name="transaction-information"></a>İşlem bilgileri
+#### <a name="transaction-information"></a>Transaction information
 
 | Adı               | Açıklama |
 |--------------------|-------------|
-| TransactionId      | Azure blok zinciri çalışma ekranı içindeki işlem için benzersiz tanımlayıcı |
-| Işlem karması    | Genel muhasebedeki işlemin karması |
-| Kaynak               | İşlem kaynağı için genel muhasebedeki benzersiz tanımlayıcı |
-| -                 | İşlem hedefi için genel muhasebedeki benzersiz tanımlayıcı |
-| provisioningStatus | İşlem için sağlama işleminin geçerli durumunu tanımlar. Olası değerler şunlardır: </br>0 – işlem, veritabanında API tarafından oluşturulmuştur</br>1 – işlem, genel muhasebeye gönderildi</br>2 – işlem, genel muhasebeye başarıyla yürütüldü</br>3 veya 4-işlem, genel muhasebeye işlenemedi</br>5-işlem, genel muhasebeye başarıyla yürütüldü |
+| transactionId      | Unique identifier for the transaction inside Azure Blockchain Workbench |
+| transactionHash    | The hash of the transaction on the ledger |
+| from               | Unique identifier on the ledger for the transaction origin |
+| -                 | Unique identifier on the ledger for the transaction destination |
+| provisioningStatus | Identifies the current status of the provisioning process for the transaction. Olası değerler şunlardır: </br>0 – The transaction has been created by the API in the database</br>1 – The transaction has been sent to the ledger</br>2 – The transaction has been successfully committed to the ledger</br>3 or 4 - The transaction failed to be committed to the ledger</br>5 - The transaction was successfully committed to the ledger |
 
-Blok zinciri çalışma ekranı 'ndan bir *blok iletisi* örneği:
+Example of a *BlockMessage* from Blockchain Workbench:
 
 ``` json
 {
@@ -444,42 +438,42 @@ Blok zinciri çalışma ekranı 'ndan bir *blok iletisi* örneği:
 }
 ```
 
-### <a name="contract-message"></a>Sözleşme iletisi
+### <a name="contract-message"></a>Contract message
 
-Bir sözleşme hakkındaki bilgileri içerir. İleti, sözleşme özelliklerine ve işlem bilgilerine sahip bir bölüme sahip bir bölüm içerir. Belirli bir bloğun sözleşmesini değiştiren tüm işlemler, işlem bölümüne dahil edilir.
+Contains information about a contract. The message includes a section with contract properties and a section with transaction information. All transactions that have modified the contract for the particular block are included in the transaction section.
 
 | Adı | Açıklama |
 |------|-------------|
-| blockID 'si | Azure blok zinciri çalışma ekranı içindeki bloğun benzersiz tanımlayıcısı |
-| Blok karması | Bloğun karması |
-| modifyingTransactions | Sözleşmeyi [değiştiren işlemler](#modifying-transaction-information) |
-| sözleşme kimliği | Azure blok zinciri çalışma ekranı içindeki sözleşme için benzersiz tanımlayıcı |
-| Contractledgerıdentifier | Muhasebedeki sözleşme için benzersiz tanımlayıcı |
-| contractProperties | [Sözleşmenin özellikleri](#contract-properties) |
-| ınewcontract | Bu sözleşmenin yeni oluşturulup oluşturulmayacağını gösterir. Olası değerler: true: Bu sözleşme oluşturulan yeni bir sözleşiydi. yanlış: Bu sözleşme bir sözleşme güncelleştirmesidir. |
-| ConnectionID | Bağlantı için benzersiz tanımlayıcı |
-| Iletichemaversion | Mesajlaşma şeması sürümü |
-| Ileti Gename | **ContractMessage** |
-| AdditionalInformation | Ek bilgiler belirtildi |
+| blockId | Unique identifier for the block inside Azure Blockchain Workbench |
+| blockHash | Hash of the block |
+| modifyingTransactions | [Transactions that modified](#modifying-transaction-information) the contract |
+| contractId | Unique identifier for the contract inside Azure Blockchain Workbench |
+| contractLedgerIdentifier | Unique identifier for the contract on the ledger |
+| contractProperties | [Properties of the contract](#contract-properties) |
+| isNewContract | Indicates whether or not this contract was newly created. Possible values are: true: this contract was a new contract created. false: this contract is a contract update. |
+| connectionId | Unique identifier for the connection |
+| messageSchemaVersion | Messaging schema version |
+| messageName | **ContractMessage** |
+| additionalInformation | Additional information provided |
 
-#### <a name="modifying-transaction-information"></a>İşlem bilgilerini değiştirme
-
-| Adı               | Açıklama |
-|--------------------|-------------|
-| TransactionId | Azure blok zinciri çalışma ekranı içindeki işlem için benzersiz tanımlayıcı |
-| Işlem karması | Genel muhasebedeki işlemin karması |
-| Kaynak | İşlem kaynağı için genel muhasebedeki benzersiz tanımlayıcı |
-| - | İşlem hedefi için genel muhasebedeki benzersiz tanımlayıcı |
-
-#### <a name="contract-properties"></a>Sözleşme Özellikleri
+#### <a name="modifying-transaction-information"></a>Modifying transaction information
 
 | Adı               | Açıklama |
 |--------------------|-------------|
-| Workflowpropertyıd | Azure blok zinciri çalışma ekranı içindeki iş akışı özelliği için benzersiz tanımlayıcı |
-| ad | Workflow özelliğinin adı |
-| değer | Workflow özelliğinin değeri |
+| transactionId | Unique identifier for the transaction inside Azure Blockchain Workbench |
+| transactionHash | The hash of the transaction on the ledger |
+| from | Unique identifier on the ledger for the transaction origin |
+| - | Unique identifier on the ledger for the transaction destination |
 
-Blok zinciri çalışma ekranı 'ndan bir *ContractMessage* örneği:
+#### <a name="contract-properties"></a>Contract properties
+
+| Adı               | Açıklama |
+|--------------------|-------------|
+| workflowPropertyId | Unique identifier for the workflow property inside Azure Blockchain Workbench |
+| ad | Name of the workflow property |
+| değer | Value of the workflow property |
+
+Example of a *ContractMessage* from Blockchain Workbench:
 
 ``` json
 {
@@ -556,50 +550,50 @@ Blok zinciri çalışma ekranı 'ndan bir *ContractMessage* örneği:
 }
 ```
 
-### <a name="event-message-contract-function-invocation"></a>Olay iletisi: sözleşme işlevi çağırma
+### <a name="event-message-contract-function-invocation"></a>Event message: Contract function invocation
 
-İşlev adı, parametreler girişi ve işlevin çağıranı gibi bir anlaşma işlevi çağrıldığında bilgiler içerir.
-
-| Adı | Açıklama |
-|------|-------------|
-| eventName                   | **Contractfunctionınvocation** |
-| yapana                      | [Arayan bilgileri](#caller-information) |
-| sözleşme kimliği                  | Azure blok zinciri çalışma ekranı içindeki sözleşme için benzersiz tanımlayıcı |
-| Contractledgerıdentifier    | Muhasebedeki sözleşme için benzersiz tanımlayıcı |
-| Ifadelerini                | İşlevin adı |
-| parametreler                  | [Parametre bilgileri](#parameter-information) |
-| işlem                 | İşlem bilgileri |
-| inTransactionSequenceNumber | Bloktaki işlemin sıra numarası |
-| ConnectionID                | Bağlantı için benzersiz tanımlayıcı |
-| Iletichemaversion        | Mesajlaşma şeması sürümü |
-| Ileti Gename                 | **EventMessage** |
-| AdditionalInformation       | Ek bilgiler belirtildi |
-
-#### <a name="caller-information"></a>Arayan bilgileri
+Contains information when a contract function is invoked, such as the function name, parameters input, and the caller of the function.
 
 | Adı | Açıklama |
 |------|-------------|
-| type | Arayan türü, Kullanıcı veya sözleşme gibi |
-| id | Azure blok zinciri çalışma ekranı içindeki arayan için benzersiz tanımlayıcı |
-| Ledgerıdentifier | Genel muhasebedeki arayan için benzersiz tanımlayıcı |
+| eventName                   | **ContractFunctionInvocation** |
+| caller                      | [Caller information](#caller-information) |
+| contractId                  | Unique identifier for the contract inside Azure Blockchain Workbench |
+| contractLedgerIdentifier    | Unique identifier for the contract on the ledger |
+| functionName                | Name of the function |
+| parametreler                  | [Parameter information](#parameter-information) |
+| transaction                 | Transaction information |
+| inTransactionSequenceNumber | The sequence number of the transaction in the block |
+| connectionId                | Unique identifier for the connection |
+| messageSchemaVersion        | Messaging schema version |
+| messageName                 | **EventMessage** |
+| additionalInformation       | Additional information provided |
 
-#### <a name="parameter-information"></a>Parametre bilgileri
+#### <a name="caller-information"></a>Caller information
+
+| Adı | Açıklama |
+|------|-------------|
+| type | Type of the caller, like a user or a contract |
+| id | Unique identifier for the caller inside Azure Blockchain Workbench |
+| ledgerIdentifier | Unique identifier for the caller on the ledger |
+
+#### <a name="parameter-information"></a>Parameter information
 
 | Adı | Açıklama |
 |------|-------------|
 | ad | Parametre adı |
-| değer | Parametre değeri |
+| değer | Parameter value |
 
-#### <a name="event-message-transaction-information"></a>Olay iletisi işlem bilgileri
+#### <a name="event-message-transaction-information"></a>Event message transaction information
 
 | Adı               | Açıklama |
 |--------------------|-------------|
-| TransactionId      | Azure blok zinciri çalışma ekranı içindeki işlem için benzersiz tanımlayıcı |
-| Işlem karması    | Genel muhasebedeki işlemin karması |
-| Kaynak               | İşlem kaynağı için genel muhasebedeki benzersiz tanımlayıcı |
-| -                 | İşlem hedefi için genel muhasebedeki benzersiz tanımlayıcı |
+| transactionId      | Unique identifier for the transaction inside Azure Blockchain Workbench |
+| transactionHash    | The hash of the transaction on the ledger |
+| from               | Unique identifier on the ledger for the transaction origin |
+| -                 | Unique identifier on the ledger for the transaction destination |
 
-Blok zinciri çalışma ekranı 'ndan *Eventmessage Contractfunctionınvocation* örneği:
+Example of an *EventMessage ContractFunctionInvocation* from Blockchain Workbench:
 
 ``` json
 {
@@ -636,77 +630,77 @@ Blok zinciri çalışma ekranı 'ndan *Eventmessage Contractfunctionınvocation*
 }
 ```
 
-### <a name="event-message-application-ingestion"></a>Olay iletisi: uygulama alımı
+### <a name="event-message-application-ingestion"></a>Event message: Application ingestion
 
-Karşıya yüklenen uygulamanın adı ve sürümü gibi bir uygulama çalışma ekranına yüklendiğinde bilgiler içerir.
-
-| Adı | Açıklama |
-|------|-------------|
-| eventName | **Uygulama alımı** |
-| Uygulama | Azure blok zinciri çalışma ekranı içindeki uygulama için benzersiz tanımlayıcı |
-| ApplicationName | Uygulama adı |
-| applicationDisplayName | Uygulama görünen adı |
-| applicationVersion | Uygulama sürümü |
-| applicationDefinitionLocation | Uygulama yapılandırma dosyasının bulunduğu URL |
-| contractCodes | Uygulama için [sözleşme kodları](#contract-code-information) koleksiyonu |
-| applicationRoles | Uygulama için [uygulama rollerinin](#application-role-information) toplanması |
-| Applicationiş akışları | Uygulama için [uygulama iş akışlarının](#application-workflow-information) toplanması |
-| ConnectionID | Bağlantı için benzersiz tanımlayıcı |
-| Iletichemaversion | Mesajlaşma şeması sürümü |
-| Ileti Gename | **EventMessage** |
-| AdditionalInformation | Burada sunulan ek bilgiler, uygulama iş akışı durumlarını ve geçiş bilgilerini içerir. |
-
-#### <a name="contract-code-information"></a>Sözleşme kodu bilgileri
+Contains information when an application is uploaded to Workbench, such as the name and version of the application uploaded.
 
 | Adı | Açıklama |
 |------|-------------|
-| id | Azure blok zinciri çalışma ekranı içindeki sözleşme kodu dosyası için benzersiz tanımlayıcı |
-| LedgerID | Azure blok zinciri çalışma ekranı içindeki genel muhasebe için benzersiz tanımlayıcı |
-| location | Anlaşma kodu dosyasının bulunduğu URL |
+| eventName | **ApplicationIngestion** |
+| applicationId | Unique identifier for the application inside Azure Blockchain Workbench |
+| applicationName | Uygulama adı |
+| applicationDisplayName | Application display name |
+| applicationVersion | Application version |
+| applicationDefinitionLocation | URL where the application configuration file is located |
+| contractCodes | Collection of [contract codes](#contract-code-information) for the application |
+| applicationRoles | Collection of [application roles](#application-role-information) for the application |
+| applicationWorkflows | Collection of [application workflows](#application-workflow-information) for the application |
+| connectionId | Unique identifier for the connection |
+| messageSchemaVersion | Messaging schema version |
+| messageName | **EventMessage** |
+| additionalInformation | Additional information provided here includes the application workflow states and transition information. |
 
-#### <a name="application-role-information"></a>Uygulama rolü bilgileri
-
-| Adı | Açıklama |
-|------|-------------|
-| id | Azure blok zinciri çalışma ekranı içindeki uygulama rolü için benzersiz tanımlayıcı |
-| ad | Uygulama rolünün adı |
-
-#### <a name="application-workflow-information"></a>Uygulama iş akışı bilgileri
-
-| Adı | Açıklama |
-|------|-------------|
-| id | Azure blok zinciri çalışma ekranı içindeki uygulama iş akışı için benzersiz tanımlayıcı |
-| ad | Uygulama iş akışı adı |
-| DisplayName | Uygulama iş akışı görünen adı |
-| işlevler | [Uygulama iş akışı için işlevlerin](#workflow-function-information) toplanması|
-| aşama | [Uygulama iş akışı için durum](#workflow-state-information) koleksiyonu |
-| properties | Uygulama [iş akışı özellikleri bilgileri](#workflow-property-information) |
-
-##### <a name="workflow-function-information"></a>İş akışı işlev bilgileri
+#### <a name="contract-code-information"></a>Contract code information
 
 | Adı | Açıklama |
 |------|-------------|
-| id | Azure blok zinciri çalışma ekranı içindeki uygulama iş akışı işlevinin benzersiz tanımlayıcısı |
-| ad | İşlev adı |
-| parametreler | İşlevin parametreleri |
+| id | Unique identifier for the contract code file inside Azure Blockchain Workbench |
+| ledgerId | Unique identifier for the ledger inside Azure Blockchain Workbench |
+| location | URL where the contract code file is located |
 
-##### <a name="workflow-state-information"></a>İş akışı durum bilgileri
-
-| Adı | Açıklama |
-|------|-------------|
-| ad | Durum adı |
-| DisplayName | Durum görünen adı |
-| Biçim | Durum stili (başarı veya hata) |
-
-##### <a name="workflow-property-information"></a>İş akışı özelliği bilgileri
+#### <a name="application-role-information"></a>Application role information
 
 | Adı | Açıklama |
 |------|-------------|
-| id | Azure blok zinciri çalışma ekranı içindeki uygulama iş akışı özelliği için benzersiz tanımlayıcı |
+| id | Unique identifier for the application role inside Azure Blockchain Workbench |
+| ad | Name of the application role |
+
+#### <a name="application-workflow-information"></a>Application workflow information
+
+| Adı | Açıklama |
+|------|-------------|
+| id | Unique identifier for the application workflow inside Azure Blockchain Workbench |
+| ad | Application workflow name |
+| displayName | Application workflow display name |
+| işlevler | Collection of [functions for the application workflow](#workflow-function-information)|
+| states | Collection of [states for the application workflow](#workflow-state-information) |
+| properties | Application [workflow properties information](#workflow-property-information) |
+
+##### <a name="workflow-function-information"></a>Workflow function information
+
+| Adı | Açıklama |
+|------|-------------|
+| id | Unique identifier for the application workflow function inside Azure Blockchain Workbench |
+| ad | Function name |
+| parametreler | Parameters for the function |
+
+##### <a name="workflow-state-information"></a>Workflow state information
+
+| Adı | Açıklama |
+|------|-------------|
+| ad | State name |
+| displayName | State display name |
+| style | State style (success or failure) |
+
+##### <a name="workflow-property-information"></a>Workflow property information
+
+| Adı | Açıklama |
+|------|-------------|
+| id | Unique identifier for the application workflow property inside Azure Blockchain Workbench |
 | ad | Özellik adı |
-| type | Özellik türü |
+| type | Property type |
 
-Blok zinciri çalışma ekranı 'ndan bir *Eventmessage applicationın* örneği:
+Example of an *EventMessage ApplicationIngestion* from Blockchain Workbench:
 
 ``` json
 {
@@ -830,49 +824,49 @@ Blok zinciri çalışma ekranı 'ndan bir *Eventmessage applicationın* örneği
 }
 ```
 
-### <a name="event-message-role-assignment"></a>Olay iletisi: rol atama
+### <a name="event-message-role-assignment"></a>Event message: Role assignment
 
-Bir kullanıcıya, rol atamasını gerçekleştirme ve rolün adı ve ilgili uygulama gibi çalışma ekranına bir rol atandığında bilgiler içerir.
+Contains information when a user is assigned a role in Workbench, such as who performed the role assignment and the name of the role and corresponding application.
 
 | Adı | Açıklama |
 |------|-------------|
 | eventName | **RoleAssignment** |
-| Uygulama | Azure blok zinciri çalışma ekranı içindeki uygulama için benzersiz tanımlayıcı |
-| ApplicationName | Uygulama adı |
-| applicationDisplayName | Uygulama görünen adı |
-| applicationVersion | Uygulama sürümü |
-| applicationRole        | [Uygulama rolü](#roleassignment-application-role) hakkında bilgi |
-| atayan               | [Asimzalayan](#roleassignment-assigner) hakkında bilgi |
-| atanan               | [Atanan](#roleassignment-assignee) hakkında bilgi |
-| ConnectionID           | Bağlantı için benzersiz tanımlayıcı |
-| Iletichemaversion   | Mesajlaşma şeması sürümü |
-| Ileti Gename            | **EventMessage** |
-| AdditionalInformation  | Ek bilgiler belirtildi |
+| applicationId | Unique identifier for the application inside Azure Blockchain Workbench |
+| applicationName | Uygulama adı |
+| applicationDisplayName | Application display name |
+| applicationVersion | Application version |
+| applicationRole        | Information about the [application role](#roleassignment-application-role) |
+| assigner               | Information about the [assigner](#roleassignment-assigner) |
+| assignee               | Information about the [assignee](#roleassignment-assignee) |
+| connectionId           | Unique identifier for the connection |
+| messageSchemaVersion   | Messaging schema version |
+| messageName            | **EventMessage** |
+| additionalInformation  | Additional information provided |
 
-#### <a name="roleassignment-application-role"></a>Roleatama uygulama rolü
-
-| Adı | Açıklama |
-|------|-------------|
-| id | Azure blok zinciri çalışma ekranı içindeki uygulama rolü için benzersiz tanımlayıcı |
-| ad | Uygulama rolünün adı |
-
-#### <a name="roleassignment-assigner"></a>Roleatama asimzalayan
+#### <a name="roleassignment-application-role"></a>RoleAssignment application role
 
 | Adı | Açıklama |
 |------|-------------|
-| id | Azure blok zinciri çalışma ekranı içindeki kullanıcının benzersiz tanımlayıcısı |
-| type | Asimzalayan türü |
-| Chainıdentifier | Kullanıcının muhasebedeki benzersiz tanımlayıcısı |
+| id | Unique identifier for the application role inside Azure Blockchain Workbench |
+| ad | Name of the application role |
 
-#### <a name="roleassignment-assignee"></a>Roleatama atane
+#### <a name="roleassignment-assigner"></a>RoleAssignment assigner
 
 | Adı | Açıklama |
 |------|-------------|
-| id | Azure blok zinciri çalışma ekranı içindeki kullanıcının benzersiz tanımlayıcısı |
-| type | Atanan kişiye ait tür |
-| Chainıdentifier | Kullanıcının muhasebedeki benzersiz tanımlayıcısı |
+| id | Unique identifier of the user inside Azure Blockchain Workbench |
+| type | Type of the assigner |
+| chainIdentifier | Unique identifier of the user on the ledger |
 
-Blok zinciri çalışma ekranının bir *Eventmessage Roleatama* örneği:
+#### <a name="roleassignment-assignee"></a>RoleAssignment assignee
+
+| Adı | Açıklama |
+|------|-------------|
+| id | Unique identifier of the user inside Azure Blockchain Workbench |
+| type | Type of the assignee |
+| chainIdentifier | Unique identifier of the user on the ledger |
+
+Example of an *EventMessage RoleAssignment* from Blockchain Workbench:
 
 ``` json
 {
@@ -904,4 +898,4 @@ Blok zinciri çalışma ekranının bir *Eventmessage Roleatama* örneği:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Akıllı sözleşme tümleştirme desenleri](integration-patterns.md)
+- [Smart contract integration patterns](integration-patterns.md)

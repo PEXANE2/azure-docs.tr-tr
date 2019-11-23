@@ -1,7 +1,7 @@
 ---
-title: 'Öğretici: amaçları tahmin etme-LUO'
+title: 'Tutorial: Predict intentions - LUIS'
 titleSuffix: Azure Cognitive Services
-description: Bu öğreticide, kullanıcının amaç 'ı tahmin eden özel bir uygulama oluşturun. E-posta adresleri veya tarihler gibi konuşma metinlerinden çeşitli veri öğeleri ayıklamadığından bu uygulama en basit LUIS uygulaması türüdür.
+description: In this tutorial, create a custom app that predicts a user's intention. E-posta adresleri veya tarihler gibi konuşma metinlerinden çeşitli veri öğeleri ayıklamadığından bu uygulama en basit LUIS uygulaması türüdür.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 11/05/2019
+ms.date: 11/20/2019
 ms.author: diberry
-ms.openlocfilehash: 1e39126324de486d118f808b37672c9fd08af711
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4d096ee829a425af3763c212daf5049acccf9f19
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822753"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325911"
 ---
-# <a name="tutorial-build-luis-app-to-determine-user-intentions"></a>Öğretici: Kullanıcı amaçları 'nı öğrenmek için LUSıS uygulaması oluşturma
+# <a name="tutorial-build-a-luis-app-to-determine-user-intentions"></a>Tutorial: Build a LUIS app to determine user intentions
 
-Bu öğreticide, bir kullanıcının, söylenişi (metin) temelinde bir amaç tahmin eden özel bir uygulama oluşturacaksınız. 
+In this tutorial, you create a custom app that predicts a user's intention based on the utterance (text). 
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
@@ -32,14 +32,14 @@ Bu öğreticide, bir kullanıcının, söylenişi (metin) temelinde bir amaç ta
 > * Örnek konuşmalar ekleme
 > * Uygulamayı eğitme
 > * Uygulama yayımlama
-> * Uç noktadan amaç tahminini al
+> * Get intent prediction from endpoint
 
 
 [!INCLUDE [LUIS Free account](includes/quickstart-tutorial-use-free-starter-key.md)]
 
-## <a name="user-intentions-as-intents"></a>Amaç olarak Kullanıcı amaçları
+## <a name="user-intentions-as-intents"></a>User intentions as intents
 
-Uygulamanın amacı, konuşma, doğal dil metinleriyle bir amaç belirlemektir: 
+The purpose of the app is to determine the intention of conversational, natural language text: 
 
 `I'd like to order a veggie pizza with a salad on the side.`
 
@@ -47,10 +47,10 @@ Bunlar **Amaçlar** şeklinde kategorilere ayrılır.
 
 |Amaç|Amaç|
 |--|--|
-|`ModifyOrder`|Kullanıcının pizza sırasını belirleme.|
-|`Greeting`|Bot konuşmasına başla.|
-|`ConfirmOrder`|Pizza sırasını onaylayın.|
-|`None`|Kullanıcının uygulamanın yanıt vermesi beklenen bir şeyi isteyip istemediğini sorar. Bu amaç, uygulama oluşturmanın bir parçası olarak sağlanmışsa ve silinemezler. |
+|`ModifyOrder`|Determine user's pizza order.|
+|`Greeting`|Begin bot conversation.|
+|`ConfirmOrder`|Confirm pizza order.|
+|`None`|Determine if user is asking something the app is not supposed to answer. This intent if provided as part of app creation and can't be deleted. |
 
 ## <a name="create-a-new-app"></a>Yeni bir uygulama oluşturma
 
@@ -58,13 +58,13 @@ Bunlar **Amaçlar** şeklinde kategorilere ayrılır.
 
 ## <a name="create-a-new-intent"></a>Yeni amaç oluşturma 
 
-1. [ÖNIZLEME Luu portalında](https://preview.luis.ai), uygulamanın **Build** bölümünde **+ Oluştur**' u seçin. Aşağıda listelenen yeni amaç adını girip **bitti**' yi seçin.
+1. In the portal, inside the app's **Build** section, select **+ Create**. Enter the new intent name, `OrderPizza`, then select **Done**.
 
-    `OrderPizza` amacı tahmin edilir: bir Kullanıcı bir pizza siparişi ister. 
+    The `OrderPizza` intent is predicted when: a user wants to order a pizza. 
 
-1. Bir kullanıcının sormasını beklediğinizi bu amaca birkaç örnek ekleyin:
+1. Add several example utterances to this intent that you expect a user to ask:
 
-    |`OrderPizza` örnek söylenme|
+    |`OrderPizza` example utterances|
     |--|
     |`can i get a pepperoni pizza and a can of coke please`|
     |`can i get a small pizza with onions peppers and olives`|
@@ -74,15 +74,15 @@ Bunlar **Amaçlar** şeklinde kategorilere ayrılır.
 
     ![Örnek konuşmalar ekleme](media/tutorial-intents-only/add-example-utterances-for-pizza-order.png)
 
-    _Örnek_bir amaç sunarak, bu amaçla ne tür bir anlamı tahmin etmeniz gerektiğini eğitme. 
+    By providing _example utterances_, you are training LUIS about what kinds of utterances should be predicted for this intent. 
 
     [!INCLUDE [Do not use too few utterances](includes/do-not-use-too-few-utterances.md)]    
 
-## <a name="create-remaining-intents"></a>Kalan amaçları oluştur
+## <a name="create-remaining-intents"></a>Create remaining intents
 
-1. `Greeting` hedefini oluşturun ve aşağıdaki örnek söyleyeni ekleyin. Bu, bir kullanıcının yeni bir pizza siparişi konuşmasıyla başlayıp kullanmadığını belirleme amacınızı belirlemektir.
+1. Create the `Greeting` intent and add the following example utterances. This is the intent to determine if a user is beginning a new pizza order conversation.
 
-    |`Greeting` örnek söylenme|
+    |`Greeting` example utterances|
     |--|
     |`Hi`|
     |`Hello`|
@@ -90,9 +90,9 @@ Bunlar **Amaçlar** şeklinde kategorilere ayrılır.
     |`Start`|
     |`Begin`|
 
-1. `Confirm` hedefini oluşturun ve aşağıdaki örnek söyleyeni ekleyin. Bu, bir kullanıcının sıralamayı ve sipariş ayrıntılarını kabul edip etmeyeceğini belirleme amacınızı belirlemektir. 
+1. Create the `Confirm` intent and add the following example utterances. This is the intent to determine if a user is done ordering and accepts the order details. 
 
-    |`Confirm` örnek söylenme|
+    |`Confirm` example utterances|
     |--|
     |`Go ahead`|
     |`ok`|
@@ -100,7 +100,7 @@ Bunlar **Amaçlar** şeklinde kategorilere ayrılır.
     |`Sure`|
 
 
-## <a name="none-intent-example-utterances"></a>Hiçbiri amacı örnek söyliği
+## <a name="none-intent-example-utterances"></a>None intent example utterances
 
 [!INCLUDE [Follow these steps to add the None intent to the app](includes/add-example-utterances-none-intent.md)]
 
@@ -108,21 +108,21 @@ Bunlar **Amaçlar** şeklinde kategorilere ayrılır.
 
 [!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
-## <a name="publish-the-app"></a>Uygulamayı yayımlama 
+## <a name="publish-the-app"></a>Publish the app 
 
 [!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)] 
 
-## <a name="get-intent-prediction"></a>Amaç tahminini al
+## <a name="get-intent-prediction"></a>Get intent prediction
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. Adres çubuğunda URL 'nin sonuna gidin ve şunu girin:
+1. Go to the end of the URL in the address bar and enter:
 
     `get a medium vegetarian pizza for delivery` 
 
-    Bu, bir örnek ile tam olarak aynı değildir. bu nedenle, LUYA 'nın bu amaçla ne tahmin edilebilir olduğunu öğreniyor olup olmadığını görmek için iyi bir test olması gerekir.
+    This is not exactly the same as an example utterance so it is a good test to see if LUIS can learn what should be predicted with this intent.
 
-    Son sorgu dizesi parametresi konuşma `q`sorgusu**olan** öğesidir. Bu konuşma, örnek konuşmalarından hiçbiriyle aynı değil. İyi bir test olduğundan `OrderPizza` amacını en yüksek puanlı amaç olarak döndürmelidir. 
+    Son sorgu dizesi parametresi konuşma **sorgusu** olan `query` öğesidir. Bu konuşma, örnek konuşmalarından hiçbiriyle aynı değil. İyi bir test olduğundan `OrderPizza` amacını en yüksek puanlı amaç olarak döndürmelidir. 
 
     ```JSON
     {
@@ -148,15 +148,15 @@ Bunlar **Amaçlar** şeklinde kategorilere ayrılır.
     }
     ```
 
-    Bu uygulamanın şu anda bir varlığı olmadığından varlıklar dizisi boştur. 
+    The entities array is empty because this app currently does not have any entities (unit of data inside the utterance to extract). 
 
-    JSON sonucu, en yüksek puanlı amacı **`prediction.topIntent`** özelliği olarak tanımlar. Tüm puanlar 1 ile 0 arasındadır ve 1 ' e daha iyi puan elde edilir. 
+    JSON sonucu, en yüksek puanlı amacı **`prediction.topIntent`** özelliği olarak tanımlar. All scores are between 1 and 0, with the better score being closer to 1. 
 
-1. **Selamlama** hedefini HEDEFLEMEK için URL **sorgu** parametresini değiştirin:
+1. Change the URL **query** parameter to target the **Greeting** intent:
 
     `Howdy`
 
-    Bu, bir örnek ile tam olarak aynı değildir. bu nedenle, LUYA 'nın bu amaçla ne tahmin edilebilir olduğunu öğreniyor olup olmadığını görmek için iyi bir test olması gerekir. 
+    This is not exactly the same as an example utterance so it is a good test to see if LUIS can learn what should be predicted with this intent. 
 
     ```json
     {
@@ -182,27 +182,27 @@ Bunlar **Amaçlar** şeklinde kategorilere ayrılır.
     }    
     ```
  
-    Bu tahminde %44 Güvenirlik puanı vardır. Güven Puanını artırmak için, 15 ila 30 örnek Aralık ekleyin.  
+    This prediction has a 44% confidence score. To increase the confidence score, add between 15 and 30 example utterances.  
 
-## <a name="client-application-next-steps"></a>İstemci-uygulama sonraki adımları
+## <a name="client-application-next-steps"></a>Client-application next steps
 
-JSON yanıtı döndürdükten sonra LUIS’in istekle işi biter. LUIS kullanıcı konuşmalarını yanıtlamaz, yalnızca doğal dilde sorulan bilgi türünü tanımlar. Konuşma izleme, Azure bot gibi istemci uygulaması tarafından sağlanır. 
+JSON yanıtı döndürdükten sonra LUIS’in istekle işi biter. LUIS kullanıcı konuşmalarını yanıtlamaz, yalnızca doğal dilde sorulan bilgi türünü tanımlar. The conversational follow-up is provided by the client application such as an Azure Bot. 
 
 
 [!INCLUDE [LUIS How to clean up resources](includes/quickstart-tutorial-cleanup-resources.md)]
 
 ## <a name="related-information"></a>İlgili bilgiler
 
-* [Varlık türleri](luis-concept-entity-types.md)
-* [Eğitme](luis-how-to-train.md)
+* [Types of entities](luis-concept-entity-types.md)
+* [How to train](luis-how-to-train.md)
 * [Yayımlama nasıl yapılır?](luis-how-to-publish-app.md)
-* [LUSıS portalında test etme](luis-interactive-test.md)
-* [Azure bot](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
+* [How to test in LUIS portal](luis-interactive-test.md)
+* [Azure Bot](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğretici, bir LUSıS uygulaması, oluşturma amaçları, her amaca yönelik eklenen örnek, eklenen örnek ve son noktadaki yok etme, eğitilen, yayımlanan ve test edilen bir örnek ile oluşturulmuştur. Bunlar, LUIS modeli oluşturmanın temel adımlarıdır. 
+This tutorial created a LUIS app, created intents, added example utterances to each intent, added example utterances to the None intent, trained, published, and tested at the endpoint. Bunlar, LUIS modeli oluşturmanın temel adımlarıdır. 
 
 > [!div class="nextstepaction"]
-> [Bu uygulamaya önceden derlenmiş amaçlar ve varlıklar ekleme](tutorial-machine-learned-entity.md)
+> [Add a decomposable entity to this app](tutorial-machine-learned-entity.md)

@@ -1,33 +1,27 @@
 ---
-title: Azure CLı kullanarak Azure blok zinciri hizmetini yönetme
-description: Azure CLı ile Azure blok zinciri hizmeti oluşturma ve yönetme
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
+title: Manage Azure Blockchain Service using Azure CLI
+description: How to manage Azure Blockchain Service with Azure CLI
 ms.date: 05/02/2019
 ms.topic: article
-ms.service: azure-blockchain
-ms.reviewer: seal
-manager: femila
-ms.openlocfilehash: 4dd58f2542674633f2d5e2a1724adc7934d7f030
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.reviewer: janders
+ms.openlocfilehash: 2a749387baee4881ffd6960e64666ede366a36ec
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307055"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325150"
 ---
-# <a name="manage-azure-blockchain-service-using-azure-cli"></a>Azure CLı kullanarak Azure blok zinciri hizmetini yönetme
+# <a name="manage-azure-blockchain-service-using-azure-cli"></a>Manage Azure Blockchain Service using Azure CLI
 
-Azure portal ek olarak Azure CLı 'yi kullanarak Azure blok zinciri hizmetinize yönelik blok zinciri üyelerini ve işlem düğümlerini yönetebilirsiniz.
+In addition to the Azure portal, you can use Azure CLI to manage blockchain members and transaction nodes for your Azure Blockchain Service.
 
-En son [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 'yi yüklediğinizden ve ' de `az login`bir Azure hesabında oturum açtığınızdan emin olun.
+Make sure that you have installed the latest [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) and logged in to an Azure account in with `az login`.
 
-Aşağıdaki örneklerde örneği `<parameter names>` kendi değerlerinizle değiştirin.
+In the following examples, replace example `<parameter names>` with your own values.
 
-## <a name="create-blockchain-member"></a>Blok zinciri üyesi oluştur
+## <a name="create-blockchain-member"></a>Create blockchain member
 
-Örnek, Azure blok zinciri hizmetinde yeni bir konsorsiyumun çekirdek defter protokolünü çalıştıran bir blok zinciri üyesi oluşturur.
+Example creates a blockchain member in Azure Blockchain Service that runs the Quorum ledger protocol in a new consortium.
 
 ```azurecli
 az resource create --resource-group <myResourceGroup> --name <myMemberName> --resource-type Microsoft.Blockchain/blockchainMembers --is-full-object --properties "{ \"location\": \"<myBlockchainLocation>\", \"properties\": {\"password\": \"<myStrongPassword>\", \"protocol\": \"Quorum\", \"consortium\": \"<myConsortiumName>\", \"consortiumManagementAccountPassword\": \"<myConsortiumManagementAccountPassword>\", \"firewallRules\": [ { \"ruleName\": \"<myRuleName>\", \"startIpAddress\": \"<myStartIpAddress>\", \"endIpAddress\": \"<myEndIpAddress>\" } ] }, \"sku\": { \"name\": \"<skuName>\" } }"
@@ -35,34 +29,34 @@ az resource create --resource-group <myResourceGroup> --name <myMemberName> --re
 
 | Parametre | Açıklama |
 |---------|-------------|
-| **kaynak grubu** | Azure blok zinciri hizmeti kaynaklarının oluşturulduğu kaynak grubu adı. |
-| **name** | Azure blok zinciri hizmeti blok zinciri üyesini tanımlayan benzersiz bir ad. Ad, genel uç nokta adresi için kullanılır. Örneğin: `myblockchainmember.blockchain.azure.com`. |
-| **konum** | Blok zinciri üyesinin oluşturulduğu Azure bölgesi. Örneğin: `eastus`. Kullanıcılarınıza veya diğer Azure uygulamalarınıza en yakın konumu seçin. |
-| **Parola** | Üye hesabı parolası. Üye hesabı parolası, blok zinciri üyesinin genel uç noktasında temel kimlik doğrulaması kullanılarak kimlik doğrulaması için kullanılır. Parola aşağıdaki dört gereksinimden üçünü karşılamalıdır: uzunluğun 12 & 72 karakter, 1 küçük harf karakter, 1 büyük harf karakter, 1 sayı ve 1 özel karakter (sayı işareti (#), yüzde (%), virgül (,), yıldız (*), arka tırnak işareti içinde olması gerekir. (\`), çift tırnak ("), tek tırnak ('), tire (-) ve semicolumn (;)|
-| **Protocol** | Genel Önizleme, çekirdeğini destekler. |
-| **unun** | Katılacak veya oluşturulacak konsorsiyumun adı. |
-| **consortiumManagementAccountPassword** | Konsorsiyum yönetimi parolası. Parola, bir konsorsiya katılmak için kullanılır. |
-| **ruleName** | Bir IP adresi aralığı için beyaz listeye yönelik kural adı. Güvenlik duvarı kuralları için isteğe bağlı parametre.|
-| **Startıpaddress** | Beyaz listeye yönelik IP adresi aralığının başlangıcı. Güvenlik duvarı kuralları için isteğe bağlı parametre. |
-| **Endıpaddress değerini** | Beyaz listeye yönelik IP adresi aralığının sonu. Güvenlik duvarı kuralları için isteğe bağlı parametre. |
-| **skuName** | Katman türü. Standart için S0 ve temel için B0 kullanın. |
+| **resource-group** | Resource group name where Azure Blockchain Service resources are created. |
+| **name** | A unique name that identifies your Azure Blockchain Service blockchain member. The name is used for the public endpoint address. Örneğin, `myblockchainmember.blockchain.azure.com`. |
+| **konum** | Azure region where the blockchain member is created. Örneğin, `eastus`. Kullanıcılarınıza veya diğer Azure uygulamalarınıza en yakın konumu seçin. |
+| **password** | The member account password. The member account password is used to authenticate to the blockchain member's public endpoint using basic authentication. The password must meet three of the following four requirements: length needs to be between 12 & 72 characters, 1 lower case character, 1 upper case character, 1 number, and 1 special character that is not number sign(#), percent(%), comma(,), star(*), back quote(\`), double quote("), single quote('), dash(-) and semicolumn(;)|
+| **protocol** | Public preview supports Quorum. |
+| **consortium** | Name of the consortium to join or create. |
+| **consortiumManagementAccountPassword** | The consortium management password. The password is used for joining a consortium. |
+| **ruleName** | Rule name for whitelisting an IP address range. Optional parameter for firewall rules.|
+| **startIpAddress** | Start of the IP address range for whitelisting. Optional parameter for firewall rules. |
+| **endIpAddress** | End of the IP address range for whitelisting. Optional parameter for firewall rules. |
+| **skuName** | Tier type. Use S0 for Standard and B0 for Basic. |
 
-## <a name="change-blockchain-member-password"></a>Blok zinciri üye parolasını değiştir
+## <a name="change-blockchain-member-password"></a>Change blockchain member password
 
-Örnek, blok zinciri üyesinin parolasını değiştirir.
+Example changes a blockchain member's password.
 
 ```azurecli
 az resource update --resource-group <myResourceGroup> --name <myMemberName> --resource-type Microsoft.Blockchain/blockchainMembers --set properties.password="<myStrongPassword>" --remove properties.consortiumManagementAccountAddress
 ```
 | Parametre | Açıklama |
 |---------|-------------|
-| **kaynak grubu** | Azure blok zinciri hizmeti kaynaklarının oluşturulduğu kaynak grubu adı. |
-| **name** | Azure blok zinciri hizmeti üyesini tanımlayan ad. |
-| **Parola** | Üye hesabı parolası. Parola aşağıdaki dört gereksinimden üçünü karşılamalıdır: uzunluğun 12 & 72 karakter, 1 küçük harf karakter, 1 büyük harf karakter, 1 sayı ve 1 özel karakter (sayı işareti (#), yüzde (%), virgül (,), yıldız (*), arka tırnak işareti içinde olması gerekir. (\`), çift tırnak ("), tek tırnak ('), tire (-) ve noktalı virgül (;). |
+| **resource-group** | Resource group name where Azure Blockchain Service resources are created. |
+| **name** | Name that identifies your Azure Blockchain Service member. |
+| **password** | The member account password. The password must meet three of the following four requirements: length needs to be between 12 & 72 characters, 1 lower case character, 1 upper case character, 1 number, and 1 special character that is not number sign(#), percent(%), comma(,), star(*), back quote(\`), double quote("), single quote('), dash(-) and semicolon(;). |
 
-## <a name="create-transaction-node"></a>İşlem düğümü oluştur
+## <a name="create-transaction-node"></a>Create transaction node
 
-Varolan bir blok zinciri üyesinin içinde bir işlem düğümü oluşturun. İşlem düğümleri ekleyerek güvenlik yalıtımını artırabilir ve yükü dağıtabilirsiniz. Örneğin, farklı istemci uygulamaları için bir işlem düğümü uç noktasına sahip olabilirsiniz.
+Create a transaction node inside an existing blockchain member. By adding transaction nodes, you can increase security isolation and distribute load. For example, you could have a transaction node endpoint for different client applications.
 
 ```azurecli
 az resource create --resource-group <myResourceGroup> --name <myMemberName>/transactionNodes/<myTransactionNode> --resource-type Microsoft.Blockchain/blockchainMembers  --is-full-object --properties "{ \"location\": \"<myRegion>\", \"properties\": { \"password\": \"<myStrongPassword>\", \"firewallRules\": [ { \"ruleName\": \"<myRuleName>\", \"startIpAddress\": \"<myStartIpAddress>\", \"endIpAddress\": \"<myEndIpAddress>\" } ] } }"
@@ -70,17 +64,17 @@ az resource create --resource-group <myResourceGroup> --name <myMemberName>/tran
 
 | Parametre | Açıklama |
 |---------|-------------|
-| **kaynak grubu** | Azure blok zinciri hizmeti kaynaklarının oluşturulduğu kaynak grubu adı. |
-| **name** | Yeni işlem düğümü adını da içeren Azure blok zinciri hizmeti blok zinciri üyesinin adı. |
-| **konum** | Blok zinciri üyesinin oluşturulduğu Azure bölgesi. Örneğin: `eastus`. Kullanıcılarınıza veya diğer Azure uygulamalarınıza en yakın konumu seçin. |
-| **Parola** | İşlem düğümü parolası. Parola aşağıdaki dört gereksinimden üçünü karşılamalıdır: uzunluğun 12 & 72 karakter, 1 küçük harf karakter, 1 büyük harf karakter, 1 sayı ve 1 özel karakter (sayı işareti (#), yüzde (%), virgül (,), yıldız (*), arka tırnak işareti içinde olması gerekir. (\`), çift tırnak ("), tek tırnak ('), tire (-) ve noktalı virgül (;). |
-| **ruleName** | Bir IP adresi aralığı için beyaz listeye yönelik kural adı. Güvenlik duvarı kuralları için isteğe bağlı parametre. |
-| **Startıpaddress** | Beyaz listeye yönelik IP adresi aralığının başlangıcı. Güvenlik duvarı kuralları için isteğe bağlı parametre. |
-| **Endıpaddress değerini** | Beyaz listeye yönelik IP adresi aralığının sonu. Güvenlik duvarı kuralları için isteğe bağlı parametre.|
+| **resource-group** | Resource group name where Azure Blockchain Service resources are created. |
+| **name** | Name of the Azure Blockchain Service blockchain member that also includes the new transaction node name. |
+| **konum** | Azure region where the blockchain member is created. Örneğin, `eastus`. Kullanıcılarınıza veya diğer Azure uygulamalarınıza en yakın konumu seçin. |
+| **password** | The transaction node password. The password must meet three of the following four requirements: length needs to be between 12 & 72 characters, 1 lower case character, 1 upper case character, 1 number, and 1 special character that is not number sign(#), percent(%), comma(,), star(*), back quote(\`), double quote("), single quote('), dash(-) and semicolon(;). |
+| **ruleName** | Rule name for whitelisting an IP address range. Optional parameter for firewall rules. |
+| **startIpAddress** | Start of the IP address range for whitelisting. Optional parameter for firewall rules. |
+| **endIpAddress** | End of the IP address range for whitelisting. Optional parameter for firewall rules.|
 
-## <a name="change-transaction-node-password"></a>İşlem düğümü parolasını değiştir
+## <a name="change-transaction-node-password"></a>Change transaction node password
 
-Örnek, işlem düğümü parolasını değiştirir.
+Example changes a transaction node password.
 
 ```azurecli
 az resource update --resource-group <myResourceGroup> --name <myMemberName>/transactionNodes/<myTransactionNode> --resource-type Microsoft.Blockchain/blockchainMembers  --set properties.password="<myStrongPassword>"
@@ -88,13 +82,13 @@ az resource update --resource-group <myResourceGroup> --name <myMemberName>/tran
 
 | Parametre | Açıklama |
 |---------|-------------|
-| **kaynak grubu** | Azure blok zinciri hizmeti kaynaklarının mevcut olduğu kaynak grubu adı. |
-| **name** | Yeni işlem düğümü adını da içeren Azure blok zinciri hizmeti blok zinciri üyesinin adı. |
-| **Parola** | İşlem düğümü parolası. Parola aşağıdaki dört gereksinimden üçünü karşılamalıdır: uzunluğun 12 & 72 karakter, 1 küçük harf karakter, 1 büyük harf karakter, 1 sayı ve 1 özel karakter (sayı işareti (#), yüzde (%), virgül (,), yıldız (*), arka tırnak işareti içinde olması gerekir. (\`), çift tırnak ("), tek tırnak ('), tire (-) ve noktalı virgül (;). |
+| **resource-group** | Resource group name where Azure Blockchain Service resources exist. |
+| **name** | Name of the Azure Blockchain Service blockchain member that also includes the new transaction node name. |
+| **password** | The transaction node password. The password must meet three of the following four requirements: length needs to be between 12 & 72 characters, 1 lower case character, 1 upper case character, 1 number, and 1 special character that is not number sign(#), percent(%), comma(,), star(*), back quote(\`), double quote("), single quote('), dash(-) and semicolon(;). |
 
-## <a name="change-consortium-management-account-password"></a>Konsorsiyumun yönetim hesabı parolasını değiştirme
+## <a name="change-consortium-management-account-password"></a>Change consortium management account password
 
-Konsorsiyum yönetim hesabı, konsorsiyum Üyelik yönetimi için kullanılır. Her üye bir konsorsiyum yönetim hesabı tarafından benzersiz bir şekilde tanımlanır ve bu hesabın parolasını aşağıdaki komutla değiştirebilirsiniz.
+The consortium management account is used for consortium membership management. Each member is uniquely identified by a consortium management account and you can change the password of this account with the following command.
 
 ```azurecli
 az resource update --resource-group <myResourceGroup> --name <myMemberName> --resource-type Microsoft.Blockchain/blockchainMembers --set properties.consortiumManagementAccountPassword="<myConsortiumManagementAccountPassword>" --remove properties.consortiumManagementAccountAddress
@@ -102,11 +96,11 @@ az resource update --resource-group <myResourceGroup> --name <myMemberName> --re
 
 | Parametre | Açıklama |
 |---------|-------------|
-| **kaynak grubu** | Azure blok zinciri hizmeti kaynaklarının oluşturulduğu kaynak grubu adı. |
-| **name** | Azure blok zinciri hizmeti üyesini tanımlayan ad. |
-| **consortiumManagementAccountPassword** | Konsorsiyum yönetimi hesabı parolası. Parola aşağıdaki dört gereksinimden üçünü karşılamalıdır: uzunluğun 12 & 72 karakter, 1 küçük harf karakter, 1 büyük harf karakter, 1 sayı ve 1 özel karakter (sayı işareti (#), yüzde (%), virgül (,), yıldız (*), arka tırnak işareti içinde olması gerekir. (\`), çift tırnak ("), tek tırnak ('), tire (-) ve noktalı virgül (;). |
+| **resource-group** | Resource group name where Azure Blockchain Service resources are created. |
+| **name** | Name that identifies your Azure Blockchain Service member. |
+| **consortiumManagementAccountPassword** | The consortium management account password. The password must meet three of the following four requirements: length needs to be between 12 & 72 characters, 1 lower case character, 1 upper case character, 1 number, and 1 special character that is not number sign(#), percent(%), comma(,), star(*), back quote(\`), double quote("), single quote('), dash(-) and semicolon(;). |
   
-## <a name="update-firewall-rules"></a>Güvenlik duvarı kurallarını güncelleştirme
+## <a name="update-firewall-rules"></a>Update firewall rules
 
 ```azurecli
 az resource update --resource-group <myResourceGroup> --name <myMemberName> --resource-type Microsoft.Blockchain/blockchainMembers --set properties.firewallRules="[ { \"ruleName\": \"<myRuleName>\", \"startIpAddress\": \"<myStartIpAddress>\", \"endIpAddress\": \"<myEndIpAddress>\" } ]" --remove properties.consortiumManagementAccountAddress
@@ -114,15 +108,15 @@ az resource update --resource-group <myResourceGroup> --name <myMemberName> --re
 
 | Parametre | Açıklama |
 |---------|-------------|
-| **kaynak grubu** | Azure blok zinciri hizmeti kaynaklarının mevcut olduğu kaynak grubu adı. |
-| **name** | Azure blok zinciri hizmeti blok zinciri üyesinin adı. |
-| **ruleName** | Bir IP adresi aralığı için beyaz listeye yönelik kural adı. Güvenlik duvarı kuralları için isteğe bağlı parametre.|
-| **Startıpaddress** | Beyaz listeye yönelik IP adresi aralığının başlangıcı. Güvenlik duvarı kuralları için isteğe bağlı parametre.|
-| **Endıpaddress değerini** | Beyaz listeye yönelik IP adresi aralığının sonu. Güvenlik duvarı kuralları için isteğe bağlı parametre.|
+| **resource-group** | Resource group name where Azure Blockchain Service resources exist. |
+| **name** | Name of the Azure Blockchain Service blockchain member. |
+| **ruleName** | Rule name for whitelisting an IP address range. Optional parameter for firewall rules.|
+| **startIpAddress** | Start of the IP address range for whitelisting. Optional parameter for firewall rules.|
+| **endIpAddress** | End of the IP address range for whitelisting. Optional parameter for firewall rules.|
 
-## <a name="list-api-keys"></a>API anahtarlarını Listele
+## <a name="list-api-keys"></a>List API keys
 
-API anahtarları, Kullanıcı adı ve parolaya benzer düğüm erişimi için kullanılabilir. Anahtar döndürmeyi desteklemek için iki API anahtarı vardır. API anahtarlarınızı listelemek için aşağıdaki komutu kullanın.
+API keys can be used for node access similar to user name and password. There are two API keys to support key rotation. Use the following command to list your API keys.
 
 ```azurecli
 az resource invoke-action --resource-group <myResourceGroup> --name <myMemberName>/transactionNodes/<myTransactionNode> --action "listApiKeys" --resource-type Microsoft.Blockchain/blockchainMembers
@@ -130,12 +124,12 @@ az resource invoke-action --resource-group <myResourceGroup> --name <myMemberNam
 
 | Parametre | Açıklama |
 |---------|-------------|
-| **kaynak grubu** | Azure blok zinciri hizmeti kaynaklarının mevcut olduğu kaynak grubu adı. |
-| **name** | Yeni işlem düğümü adını da içeren Azure blok zinciri hizmeti blok zinciri üyesinin adı. |
+| **resource-group** | Resource group name where Azure Blockchain Service resources exist. |
+| **name** | Name of the Azure Blockchain Service blockchain member that also includes the new transaction node name. |
 
-## <a name="regenerate-api-keys"></a>API anahtarlarını yeniden oluştur
+## <a name="regenerate-api-keys"></a>Regenerate API keys
 
-API anahtarlarınızı yeniden oluşturmak için aşağıdaki komutu kullanın.
+Use the following command to regenerate your API keys.
 
 ```azurecli
 az resource invoke-action --resource-group <myResourceGroup> --name <myMemberName>/transactionNodes/<myTransactionNode> --action "regenerateApiKeys" --resource-type Microsoft.Blockchain/blockchainMembers --request-body '{"keyName":"<keyValue>"}'
@@ -144,13 +138,13 @@ az resource invoke-action --resource-group <myResourceGroup> --name <myMemberNam
 
 | Parametre | Açıklama |
 |---------|-------------|
-| **kaynak grubu** | Azure blok zinciri hizmeti kaynaklarının mevcut olduğu kaynak grubu adı. |
-| **name** | Yeni işlem düğümü adını da içeren Azure blok zinciri hizmeti blok zinciri üyesinin adı. |
-| **Işareti** | \<KeyValue\> öğesini KEY1 veya key2 ile değiştirin. |
+| **resource-group** | Resource group name where Azure Blockchain Service resources exist. |
+| **name** | Name of the Azure Blockchain Service blockchain member that also includes the new transaction node name. |
+| **keyName** | Replace \<keyValue\> with either key1 or key2. |
 
-## <a name="delete-a-transaction-node"></a>İşlem düğümünü silme
+## <a name="delete-a-transaction-node"></a>Delete a transaction node
 
-Örnek, blok zinciri üye işlem düğümünü siler.
+Example deletes a blockchain member transaction node.
 
 ```azurecli
 az resource delete --resource-group <myResourceGroup> --name <myMemberName>/transactionNodes/<myTransactionNode> --resource-type Microsoft.Blockchain/blockchainMembers
@@ -158,12 +152,12 @@ az resource delete --resource-group <myResourceGroup> --name <myMemberName>/tran
 
 | Parametre | Açıklama |
 |---------|-------------|
-| **kaynak grubu** | Azure blok zinciri hizmeti kaynaklarının mevcut olduğu kaynak grubu adı. |
-| **name** | Silinecek yeni işlem düğümü adını da içeren Azure blok zinciri hizmeti blok zinciri üyesinin adı. |
+| **resource-group** | Resource group name where Azure Blockchain Service resources exist. |
+| **name** | Name of the Azure Blockchain Service blockchain member that also includes the new transaction node name to be deleted. |
 
-## <a name="delete-a-blockchain-member"></a>Blok zinciri üyesini silme
+## <a name="delete-a-blockchain-member"></a>Delete a blockchain member
 
-Örnek, blok zinciri üyesini siler.
+Example deletes a blockchain member.
 
 ```azurecli
 az resource delete --resource-group <myResourceGroup> --name <myMemberName> --resource-type Microsoft.Blockchain/blockchainMembers
@@ -171,12 +165,12 @@ az resource delete --resource-group <myResourceGroup> --name <myMemberName> --re
 
 | Parametre | Açıklama |
 |---------|-------------|
-| **kaynak grubu** | Azure blok zinciri hizmeti kaynaklarının mevcut olduğu kaynak grubu adı. |
-| **name** | Silinecek Azure blok zinciri hizmeti blok zinciri üyesinin adı. |
+| **resource-group** | Resource group name where Azure Blockchain Service resources exist. |
+| **name** | Name of the Azure Blockchain Service blockchain member to be deleted. |
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
 
-### <a name="grant-access-for-azure-ad-user"></a>Azure AD kullanıcısı için erişim izni verme
+### <a name="grant-access-for-azure-ad-user"></a>Grant access for Azure AD user
 
 ```azurecli
 az role assignment create --role <role> --assignee <assignee> --scope /subscriptions/<subId>/resourceGroups/<groupName>/providers/Microsoft.Blockchain/blockchainMembers/<myMemberName>
@@ -184,13 +178,13 @@ az role assignment create --role <role> --assignee <assignee> --scope /subscript
 
 | Parametre | Açıklama |
 |---------|-------------|
-| **rolü** | Azure AD rolünün adı. |
-| **atanan** | Azure AD Kullanıcı KIMLIĞI. Örneğin, `user@contoso.com` |
-| **kapsam** | Rol atamasının kapsamı. Bir blok zinciri üyesi ya da işlem düğümü olabilir. |
+| **role** | Name of the Azure AD role. |
+| **assignee** | Azure AD user ID. Örneğin, `user@contoso.com` |
+| **scope** | Scope of the role assignment. Can be either a blockchain member or transaction node. |
 
 **Örnek:**
 
-Azure AD kullanıcısı için blok zinciri **üyesine**düğüm erişimi verme:
+Grant node access for Azure AD user to blockchain **member**:
 
 ```azurecli
 az role assignment create \
@@ -201,7 +195,7 @@ az role assignment create \
 
 **Örnek:**
 
-Azure AD kullanıcısı için blok zinciri **işlem düğümüne**düğüm erişimi verme:
+Grant node access for Azure AD user to blockchain **transaction node**:
 
 ```azurecli
 az role assignment create \
@@ -210,20 +204,20 @@ az role assignment create \
   --scope /subscriptions/mySubscriptionId/resourceGroups/contosoResourceGroup/providers/Microsoft.Blockchain/blockchainMembers/contosoMember1/transactionNodes/contosoTransactionNode1
 ```
 
-### <a name="grant-node-access-for-azure-ad-group-or-application-role"></a>Azure AD grubu veya uygulama rolü için düğüm erişimi verme
+### <a name="grant-node-access-for-azure-ad-group-or-application-role"></a>Grant node access for Azure AD group or application role
 
 ```azurecli
 az role assignment create --role <role> --assignee-object-id <assignee_object_id>
 ```
 | Parametre | Açıklama |
 |---------|-------------|
-| **rolü** | Azure AD rolünün adı. |
-| **atane-nesne kimliği** | Azure AD Grup KIMLIĞI veya uygulama KIMLIĞI. |
-| **kapsam** | Rol atamasının kapsamı. Bir blok zinciri üyesi ya da işlem düğümü olabilir. |
+| **role** | Name of the Azure AD role. |
+| **assignee-object-id** | Azure AD group ID or application ID. |
+| **scope** | Scope of the role assignment. Can be either a blockchain member or transaction node. |
 
 **Örnek:**
 
-**Uygulama rolü** için düğüm erişimi verme
+Grant node access for **application role**
 
 ```azurecli
 az role assignment create \
@@ -232,7 +226,7 @@ az role assignment create \
   --scope /subscriptions/mySubscriptionId/resourceGroups/contosoResourceGroup/providers/Microsoft.Blockchain/blockchainMembers/contosoMember1
 ```
 
-### <a name="remove-azure-ad-node-access"></a>Azure AD düğüm erişimini kaldırma
+### <a name="remove-azure-ad-node-access"></a>Remove Azure AD node access
 
 ```azurecli
 az role assignment delete --role <myRole> --assignee <assignee> --scope /subscriptions/mySubscriptionId/resourceGroups/<myResourceGroup>/providers/Microsoft.Blockchain/blockchainMembers/<myMemberName>/transactionNodes/<myTransactionNode>
@@ -240,11 +234,11 @@ az role assignment delete --role <myRole> --assignee <assignee> --scope /subscri
 
 | Parametre | Açıklama |
 |---------|-------------|
-| **rolü** | Azure AD rolünün adı. |
-| **atanan** | Azure AD Kullanıcı KIMLIĞI. Örneğin, `user@contoso.com` |
-| **kapsam** | Rol atamasının kapsamı. Bir blok zinciri üyesi ya da işlem düğümü olabilir. |
+| **role** | Name of the Azure AD role. |
+| **assignee** | Azure AD user ID. Örneğin, `user@contoso.com` |
+| **scope** | Scope of the role assignment. Can be either a blockchain member or transaction node. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure blok zinciri hizmeti işlem düğümlerini Azure portal ile yapılandırma](configure-transaction-nodes.md)
+> [Configure Azure Blockchain Service transaction nodes with the Azure portal](configure-transaction-nodes.md)

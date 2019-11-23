@@ -2,165 +2,174 @@
 title: include dosyası
 description: include dosyası
 services: notification-hubs
-author: spelluru
+author: sethmanheim
 ms.service: notification-hubs
 ms.topic: include
-ms.date: 08/28/2018
-ms.author: spelluru
+ms.date: 11/21/2019
+ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: 3e4549a21ec32f1a2c1c869c3b2e0bd8c2e4204e
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ef2b98821b28d8a49e5f16bf1c6ac176eb8b5793
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446559"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74407263"
 ---
-## <a name="generate-the-certificate-signing-request-file"></a>Sertifika imzalama isteği dosyası oluşturma
+## <a name="generate-the-certificate-signing-request-file"></a>Generate the certificate-signing request file
 
-Apple anında iletilen bildirim servisi (APNs) anında iletme bildirimlerinizi doğrulamak için sertifikaları kullanır. Bildirim gönderip almak için gereken bildirim sertifikasını oluşturacak bu talimatları uygulayın. Bu kavramlarla ilgili daha fazla bilgi için resmi [Apple Anında İletilen Bildirim Servisi](https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html) belgelerine bakın.
+The Apple Push Notification Service (APNs) uses certificates to authenticate your push notifications. Bildirim gönderip almak için gereken bildirim sertifikasını oluşturacak bu talimatları uygulayın. Bu kavramlarla ilgili daha fazla bilgi için resmi [Apple Anında İletilen Bildirim Servisi](https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html) belgelerine bakın.
 
-İmzalı bir bildirim sertifikası oluşturmak için Apple kullandığı sertifika imzalama isteği (CSR) dosyası oluşturun.
+Generate the Certificate Signing Request (CSR) file, which Apple uses to generate a signed push certificate.
 
-1. Mac’inizde Anahtar Zinciri Erişimi aracını çalıştırın. Gelen açılabilir **yardımcı programları** klasör veya **diğer** Launchpad klasöründedir.
+1. Mac’inizde Anahtar Zinciri Erişimi aracını çalıştırın. It can be opened from the **Utilities** folder or the **Other** folder on the Launchpad.
 
-1. Seçin **Anahtarlık erişimi**, genişletme **sertifika Yardımcısı**ve ardından **bir sertifika yetkilisinden bir sertifika isteği**.
+1. Select **Keychain Access**, expand **Certificate Assistant**, and then select **Request a Certificate from a Certificate Authority**.
 
     ![Anahtarlık Erişimi kullanarak yeni sertifika isteğinde bulunma](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-request-cert-from-ca.png)
 
-1. Seçin, **kullanıcı e-posta adresi**, girin, **ortak ad** değerini, belirttiğiniz emin **diske kaydedilmiş**ve ardından **devam**. Bırakın **CA e-posta adresi** boş olarak gerekli değildir.
+1. Select your **User Email Address**, enter your **Common Name** value, make sure that you specify **Saved to disk**, and then select **Continue**. Leave **CA Email Address** blank as it isn't required.
 
     ![Gerekli sertifika bilgileri](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-csr-info.png)
 
-1. CSR dosyasında için bir ad girin **Kaydet**, konum seçin **burada**ve ardından **Kaydet**.
+1. Enter a name for the CSR file in **Save As**, select the location in **Where**, and then select **Save**.
 
-    ![Sertifika için bir dosya adı seçin](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-save-csr.png)
+    ![Choose a file name for the certificate](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-save-csr.png)
 
-    Bu eylem CSR dosyasını seçili konuma kaydeder. Varsayılan konum **Masaüstü**. Bu dosya için seçilen konumu unutmayın.
+    This action saves the CSR file in the selected location. The default location is **Desktop**. Bu dosya için seçilen konumu unutmayın.
 
-Ardından, uygulamanızı Apple'a kaydedeceksiniz, anında iletme bildirimlerini etkinleştirin ve anında iletme sertifikası oluşturmak için dışa aktarılan CSR dosyasını karşıya yükleyin.
+Next, register your app with Apple, enable push notifications, and upload the exported CSR to create a push certificate.
 
 ## <a name="register-your-app-for-push-notifications"></a>Anında iletme bildirimleri için uygulamanızı kaydetme
 
-Bir iOS uygulamasına anında iletme bildirimleri için uygulamanızı Apple'a kaydedeceksiniz ve ayrıca anında iletme bildirimleri için kaydedin.  
+To send push notifications to an iOS app, register your application with Apple, and also register for push notifications.  
 
-1. Uygulamanızı henüz kaydolmadıysanız, Gözat [iOS sağlama portalı](https://go.microsoft.com/fwlink/p/?LinkId=272456) Apple Developer Center'da. Bundan sonra seçin, Apple Kimliğiyle oturum **tanımlayıcıları**seçin **uygulama kimlikleri**ve son olarak **+** yeni uygulamayı kaydedin.
+1. If you haven't already registered your app, browse to the [iOS Provisioning Portal](https://go.microsoft.com/fwlink/p/?LinkId=272456) at the Apple Developer Center. Sign in to the portal with your Apple ID, and select **Identifiers**. Then select **+** to register a new app.
 
     ![iOS Hazırlama Portalı Uygulama Kimlikleri sayfası](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-ios-appids.png)
 
-1. Yeni uygulamanız için aşağıdaki üç değerlerini güncelleştirin ve ardından **devam**:
+2. On the **Register a New Identifier** screen, select the **App IDs** radio button. Daha sonra **Devam** seçeneğini belirleyin.
 
-   * **Ad**: Uygulamanız için açıklayıcı bir ad yazın **adı** kutusunda **uygulama kimliği açıklaması** bölümü.
+    ![iOS Provisioning Portal register new ID page](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-ios-appids-new.png)
 
-   * **Paket grubu tanımlayıcısı**: İçinde **açık uygulama kimliği** bölümünde, girin bir **paket grubu tanımlayıcısı** formun `<Organization Identifier>.<Product Name>` belirtildiği gibi [uygulama Dağıtım Kılavuzu'na](https://help.apple.com/xcode/mac/current/#/dev91fe7130a). *Kuruluş tanımlayıcısı* ve *ürün adı* değerleri, Xcode projenizi oluşturduğunuzda kullandığınız kuruluş tanımlayıcısı ve ürün adıyla eşleşmelidir. Aşağıdaki ekran görüntüsünde *NotificationHubs* değeri kuruluş tanımlayıcı olarak kullanılır ve *GetStarted* değeri, ürün adı olarak kullanılır. Emin **paket grubu tanımlayıcısı** değerle eşleşen değeri Xcode projenizde, böylece doğru yayımlama profili Xcode kullanacaktır.
+3. Update the following three values for your new app, and then select **Continue**:
 
-   * **Anında iletme bildirimleri**: Denetleme **anında iletme bildirimleri** seçeneğini **uygulama hizmetleri** bölümü.
+   * **Description**: Type a descriptive name for your app.
 
-     ![Yeni Uygulama Kimliği kaydetme formu](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-appid-info.png)
+   * **Bundle ID**: Enter a Bundle ID of the form **Organization Identifier.Product Name** as mentioned in the [App Distribution Guide](https://help.apple.com/xcode/mac/current/#/dev91fe7130a). The *Organization Identifier* and *Product Name* values must match the organization identifier and product name you use when you create your Xcode project. In the following screenshot, the **NotificationHubs** value is used as an organization identifier and the **GetStarted** value is used as the product name. Make sure the **Bundle Identifier** value matches the value in your Xcode project, so that Xcode uses the correct publishing profile.
 
-     Bu eylem, uygulama Kimliğiniz ve bilgiyi onaylamanız istenir istekleri oluşturur. Seçin **kaydetme** yeni uygulama kimliğini onaylamak için
+      ![iOS Provisioning Portal register app ID page](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-appid-bundle.png)
 
-     Seçtikten sonra **kaydetme**, gördüğünüz **kaydı tamamlamak** ekran aşağıdaki görüntüde gösterildiği gibi. **Done** (Bitti) öğesini seçin.
+   * **Push Notifications**: Check the **Push Notifications** option in the **Capabilities** section.
 
-     ![Yetkilendirmeleri gösteren tamamlanmış Uygulama Kimliği kaydı](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-registration-complete.png)
+      ![Yeni Uygulama Kimliği kaydetme formu](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-appid-push.png)
 
-1. Geliştirici Merkezi'nde altında **uygulama kimlikleri**oluşturduğunuz uygulama Kimliğini bulup satırına seçin.
+      This action generates your App ID and requests that you confirm the information. Select **Continue**, then select **Register** to confirm the new App ID.
 
-    ![Uygulama Kimliği listesi](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-ios-appids2.png)
+      ![Confirm new App ID](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-appid-register.png)
 
-    Uygulama ayrıntılarını görüntülemek ve ardından uygulama Kimliğini seçin **Düzenle** altındaki düğmesini.
+      After you select **Register**, you see the new App ID as a line item in the **Certificates, Identifiers & Profiles** page.
+
+4. In the **Certificates, Identifiers & Profiles** page, under **Identifiers**, locate the App ID line item that you just created, and select its row to display the **Edit your App ID Configuration** screen.
+
+5. Scroll down to the checked **Push Notifications** option, and then select **Configure** to create the certificate.
 
     ![Uygulama Kimliğini Düzenle sayfası](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-edit-appid.png)
 
-1. Seçin ve ekranı en alta kadar kaydır **oluşturduğunuz sertifika** düğmesini **geliştirme bildirimi SSL sertifikası** bölümü.
+6. The **Apple Push Notification service SSL Certificates** window appears. Select the **Create Certificate** button under the **Development SSL Certificate** section.
 
     ![Uygulama Kimliği için sertifika oluştur düğmesi](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-create-cert.png)
 
-    Şimdi **iOS sertifikası Ekle** Yardımcısı.
+    The **Create a new Certificate** screen is displayed.
 
     > [!NOTE]
     > Bu öğretici geliştirme sertifikası kullanır. Aynı işlem üretim sertifika kaydedildiğinde de kullanılır. Bildirimleri gönderirken aynı sertifika türünü kullandığınızdan kesinlikle emin olun.
 
-1. Seçin **Dosya Seç**CSR dosyasını kaydettiğiniz ilk görevden konuma göz atın ve ardından **Oluştur**.
+1. Select **Choose File**, browse to the location where you saved the CSR file from the first task, and then double-click the certificate name to load it. Daha sonra **Devam** seçeneğini belirleyin.
 
-    ![Oluşturulan sertifika CSR karşıya yükleme sayfası](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-cert-choose-csr.png)
-
-1. Portal sertifikayı oluşturduktan sonra seçin **indirme** düğmesine ve ardından **Bitti**.
+1. After the portal creates the certificate, select the **Download** button. Save the certificate, and remember the location to which it's saved.
 
     ![Oluşturulan sertifika indirme sayfası](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-download-cert.png)
 
-    Sertifika indirilir ve bilgisayarınızın kaydedildi, **indirir** klasör.
+    The certificate is downloaded and saved to your computer in your **Downloads** folder.
 
     ![İndirilenler klasöründe sertifika dosyasını bulma](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-cert-downloaded.png)
 
     > [!NOTE]
-    > Varsayılan olarak, indirilen geliştirme sertifikası adlı **aps_development.cer**.
+    > By default, the downloaded development certificate is named **aps_development.cer**.
 
-1. İndirilen anında iletme sertifikası seçin **aps_development.cer**.
-
-    Bu eylem yeni sertifikayı Anahtar Zinciri’ne aşağıdaki resimde gösterildiği gibi yüklenir:
+1. İndirilen **aps_development.cer** bildirim sertifikasına çift tıklayın. Bu eylem yeni sertifikayı Anahtar Zinciri’ne aşağıdaki resimde gösterildiği gibi yüklenir:
 
     ![Yeni sertifikanın gösterildiği anahtarlık erişim sertifikaları listesi](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-cert-in-keychain.png)
 
     > [!NOTE]
-    > Sertifikanızdaki ad farklı olabilir, ancak adı ile önek alacaktır **Apple geliştirme iOS Bildirim Hizmetleri**.
+    > Although the name in your certificate might be different, the name will be prefixed with **Apple Development iOS Push Services**.
 
-1. Anahtar Zinciri Erişimi’nde **Sertifikalar** kategorisinde oluşturduğunuz yeni bildirim sertifikasına sağ tıklayın. Seçin **dışarı**, dosya adı, seçin **.p12** biçimlendirmek ve ardından **Kaydet**.
+1. Anahtar Zinciri Erişimi’nde **Sertifikalar** kategorisinde oluşturduğunuz yeni bildirim sertifikasına sağ tıklayın. Select **Export**, name the file, select the **.p12** format, and then select **Save**.
 
     ![Sertifikayı p12 biçiminde dışarı aktarma](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-export-cert-p12.png)
 
-    Dışarı aktarılan .p12 sertifikanın dosya adını ve konumunu not edin. APNs kimlik doğrulamasını etkinleştirmek için kullanılırlar.
+    You can choose to protect the certificate with a password, but this is optional. Click **OK** if you want to bypass password creation. Dışarı aktarılan .p12 sertifikanın dosya adını ve konumunu not edin. They are used to enable authentication with APNs.
 
     > [!NOTE]
-    > Bu öğreticide adlı bir dosya oluşturur **QuickStart.p12**. Dosyanızın adı ve konumu farklı olabilir.
+    > Your .p12 file name and location might be different than what is pictured in this tutorial.
 
 ## <a name="create-a-provisioning-profile-for-the-app"></a>Uygulama için bir sağlama profili oluşturun
 
-1. İçinde [iOS sağlama portalı](https://go.microsoft.com/fwlink/p/?LinkId=272456)seçin **sağlama profilleri**seçin **tüm**ve ardından **+** oluşturmak için bir Yeni profili. Gördüğünüz **iOS sağlama profili ekleme** Sihirbazı.
+1. Return to the [iOS Provisioning Portal](https://go.microsoft.com/fwlink/p/?LinkId=272456), select **Certificates, Identifiers & Profiles**, select **Profiles** from the left menu, and then select **+** to create a new profile. The **Register a New Provisioning Profile** screen appears.
+
+1. Select **iOS App Development** under **Development** as the provisioning profile type, and then select **Continue**.
 
     ![Sağlama profili listesi](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-provisioning-profile.png)
 
-1. Seçin **iOS uygulama geliştirmeyi** altında **geliştirme** sağlama olarak profil türü seçin ve **devam**.
-
-1. Ardından, oluşturduğunuz uygulama Kimliğini seçin **uygulama kimliği** seçin ve açılır listede **devam**.
+1. Next, select the app ID you created from the **App ID** drop-down list, and select **Continue**.
 
     ![Uygulama Kimliği'ni seçin](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-select-appid-for-provisioning.png)
 
-1. İçinde **sertifikaları Seç** penceresinde, kod imzalama için kullanılan normal geliştirme sertifikanızı seçin ve seçin **devam**. Bu sertifika, oluşturduğunuz bildirim sertifikası değildir.
+1. In the **Select certificates** window, select the development certificate that you use for code signing, and select **Continue**. This certificate isn't the push certificate you created. If one does not exist, you must create it. If a certificate does exist, skip to the next step. To create a development certificate if one does not exist:
 
-    ![Sertifikayı seçin](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-select-cert.png)
+    1. If you see **No Certificates are available**, select **Create Certificate**.
+    2. In the **Software** section, select **Apple Development**. Daha sonra **Devam** seçeneğini belirleyin.
+    3. In the **Create a New Certificate** screen, select **Choose File**.
+    4. Browse to the **Certificate Signing Request** certificate you created earlier, select it, and then select **Open**.
+    5. **Devam**'ı seçin.
+    6. Download the development certificate, and remember the location to which it's saved.
 
-1. Ardından, test etmek için kullanılacak aygıtlar seçip **devam**.
+1. Return to the **Certificates, Identifiers & Profiles** page, select **Profiles** from the left menu, and then select **+** to create a new profile. The **Register a New Provisioning Profile** screen appears.
 
-    ![Cihazları seçin](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-select-devices.png)
+1. In the **Select certificates** window, select the development certificate that you just created. Daha sonra **Devam** seçeneğini belirleyin.
 
-1. Son olarak, profili için bir ad seçin **profil adı**seçip **Oluştur**.
+1. Next, select the devices to use for testing, and select **Continue**.
+
+1. Finally, choose a name for the profile in **Provisioning Profile Name**, and select **Generate**.
 
     ![Sağlama profili adını seçin](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-name-profile.png)
 
-1. Yeni sağlama profili oluşturulduğunda indirmek ve Xcode geliştirme makinenizde yüklemek seçin. Ardından **Bitti**'yi seçin.
+1. When the new provisioning profile is created, select **Download**. Remember the location to which it's saved.
 
-    ![Sağlama profilini indirin](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-profile-ready.png)
+1. Browse to the location of the provisioning profile, and then double-click it to install it on your Xcode development machine.
 
 ## <a name="create-a-notification-hub"></a>Bildirim hub’ı oluşturma
 
-Bu bölümde, bildirim hub'ı oluşturma ve önceden oluşturduğunuz .p12 anında iletme sertifikasını kullanarak APNs ile kimlik doğrulamasını yapılandırma. Önceden oluşturduğunuz bir bildirim hub'ı kullanmak istiyorsanız, 5. adıma atlayabilirsiniz.
+In this section, you create a notification hub and configure authentication with APNs by using the .p12 push certificate that you previously created. If you want to use a notification hub that you've already created, you can skip to step 5.
 
 [!INCLUDE [notification-hubs-portal-create-new-hub](notification-hubs-portal-create-new-hub.md)]
 
-## <a name="configure-your-notification-hub-with-apns-information"></a>Bildirim hub'ınızı APNs bilgilerle yapılandırın.
+## <a name="configure-your-notification-hub-with-apns-information"></a>Configure your notification hub with APNs information
 
 1. **Bildirim Hizmetleri** bölümünde **Apple (APNS)** seçeneğini belirleyin.
 
 1. **Sertifika**’yı seçin.
 
-1. Dosya simgesini seçin.
+1. Select the file icon.
 
-1. Daha önce dışarı aktarılan .p12 dosyası seçin.
+1. Select the .p12 file that you exported earlier, and then select **Open**.
 
-1. Doğru parolayı belirtin.
+1. If required, specify the correct password.
 
 1. **Korumalı alan** modunu seçin. Yalnızca uygulamanızı mağazadan satın alan kullanıcılara anında iletme bildirimleri göndermek istiyorsanız **Üretim** modunu kullanın.
 
     ![Azure portal'da APNs sertifikasını yapılandırma](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-apple-config-cert.png)
 
-Şimdi, bildirim hub'ınızı APNs ile birlikte yapılandırdınız. Ayrıca uygulamanızı kaydetmenizi ve anında iletme bildirimleri göndermek için bağlantı dizelerini de vardır.
+1. **Kaydet**’i seçin.
+
+You've now configured your notification hub with APNs. You also have the connection strings to register your app and send push notifications.

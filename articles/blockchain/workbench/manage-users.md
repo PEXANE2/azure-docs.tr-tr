@@ -1,121 +1,115 @@
 ---
-title: Azure Blockchain Workbench'i kullanıcıları yönetme
-description: Azure Blockchain Workbench kullanıcıları yönetmek nasıl.
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
+title: Manage users in Azure Blockchain Workbench
+description: How to manage users in Azure Blockchain Workbench.
 ms.date: 05/09/2019
 ms.topic: article
-ms.service: azure-blockchain
-ms.reviewer: zeyadr
-manager: femila
-ms.openlocfilehash: 15babefda36ba37cf6df7820ac888668e4a502be
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.reviewer: brendal
+ms.openlocfilehash: 573ec477a3e75beb91f90da0545fb7d4c0f9bf39
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65509914"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74324705"
 ---
-# <a name="manage-users-in-azure-blockchain-workbench"></a>Azure Blockchain Workbench'i kullanıcıları yönetme
+# <a name="manage-users-in-azure-blockchain-workbench"></a>Manage Users in Azure Blockchain Workbench
 
-Azure Blockchain Workbench, kişiler ve, consortium parçası olan kuruluşlar için kullanıcı yönetimi içerir.
+Azure Blockchain Workbench includes user management for people and organizations that are part of your consortium.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Blockchain Workbench'i dağıtım gerekli değildir. Bkz: [Azure Blockchain Workbench dağıtım](deploy.md) dağıtımı hakkında ayrıntılı bilgi için.
+A Blockchain Workbench deployment is required. See [Azure Blockchain Workbench deployment](deploy.md) for details on deployment.
 
-## <a name="add-azure-ad-users"></a>Azure AD kullanıcı ekleme
+## <a name="add-azure-ad-users"></a>Add Azure AD users
 
-Azure Blockchain Workbench, kimlik doğrulaması, erişimi ve rolleri için Azure Active Directory (Azure AD) kullanır. Blockchain Workbench'i Azure AD kiracısındaki kullanıcılar, kimlik doğrulaması ve Blockchain Workbench'i kullanın. Kullanıcılar, etkileşim ve eylemler gerçekleştirmek için yönetici uygulama rolüne ekleyin.
+The Azure Blockchain Workbench uses Azure Active Directory (Azure AD) for authentication, access control, and roles. Users in the Blockchain Workbench Azure AD tenant can authenticate and use Blockchain Workbench. Add users to the Administrator application role to interact and perform actions.
 
-Blockchain Workbench'i kullanıcıların uygulamaları ve rolleri için bunları atamadan önce Azure AD kiracısında mevcut gerekir. Azure AD'ye kullanıcı eklemek için aşağıdaki adımları kullanın:
+Blockchain Workbench users need to exist in the Azure AD tenant before you can assign them to applications and roles. To add users to Azure AD, use the following steps:
 
-1.  [Azure Portal](https://portal.azure.com) oturum açın.
-2.  Sağ üst köşedeki hesabınızı seçin ve Blockchain Workbench'i ilişkili Azure AD kiracısı geçin.
-3.  Seçin **Azure Active Directory > kullanıcılar**. Dizininizdeki kullanıcıların bir listesini görürsünüz.
-4.  Kullanıcı dizine eklemek için seçin **yeni kullanıcı**. Dış kullanıcılar için **yeni Konuk kullanıcı**.
+1.  [Azure Portal](https://portal.azure.com)’ında oturum açın.
+2.  Select your account in the top right corner, and switch to the Azure AD tenant associated to Blockchain Workbench.
+3.  Select **Azure Active Directory > Users**. You see a list of users in your directory.
+4.  To add users to the directory, select **New user**. For external users, select **New guest user**.
 
-    ![Yeni kullanıcı](./media/manage-users/add-ad-user.png)
+    ![New user](./media/manage-users/add-ad-user.png)
 
-5.  Yeni kullanıcı için gerekli alanları doldurun. **Oluştur**’u seçin.
+5.  Complete the required fields for the new user. **Oluştur**'u seçin.
 
-Ziyaret [Azure AD'ye](../../active-directory/fundamentals/add-users-azure-active-directory.md) içinde Azure AD kullanıcıları yönetme hakkında daha fazla ayrıntı için belgeleri.
+Visit [Azure AD](../../active-directory/fundamentals/add-users-azure-active-directory.md) documentation for more details on how to manage users within Azure AD.
 
-## <a name="manage-blockchain-workbench-administrators"></a>Blockchain Workbench'i yöneticileri yönetme
+## <a name="manage-blockchain-workbench-administrators"></a>Manage Blockchain Workbench administrators
 
-Kullanıcıların dizine eklendikten sonra sonraki adımda hangi kullanıcıların Blockchain Workbench'i yöneticilerdir seçmektir. Kullanıcıların **yönetici** grubu ile ilişkili **yönetici uygulama rolü** Blockchain Workbench içinde. Yöneticiler ekleme veya kullanıcıları kaldırmak, belirli senaryolar için kullanıcı atama ve yeni uygulamalar oluşturun.
+Once users have been added to the directory, the next step is to choose which users are Blockchain Workbench administrators. Users in the **Administrator** group are associated with the **Administrator application role** in Blockchain Workbench. Administrators can add or remove users, assign users to specific scenarios, and create new applications.
 
-Kullanıcıları eklemek için **yönetici** grubunda Azure AD dizini:
+To add users to the **Administrator** group in the Azure AD directory:
 
-1.  [Azure Portal](https://portal.azure.com) oturum açın.
-2.  Sağ üst köşedeki hesabınızı seçerek Blockchain Workbench'i ilişkili Azure AD kiracısında olduğundan emin olun.
-3.  Seçin **Azure Active Directory > Kurumsal uygulamalar**.
-4.  Blockchain Workbench'i için Azure AD İstemci uygulamayı seçin
+1.  [Azure Portal](https://portal.azure.com)’ında oturum açın.
+2.  Verify you are in the Azure AD tenant associated to Blockchain Workbench by selecting your account in the top-right corner.
+3.  Select **Azure Active Directory >  Enterprise applications**.
+4.  Select the Azure AD client application for Blockchain Workbench
     
-    ![Tüm kurumsal uygulama kayıtları](./media/manage-users/select-blockchain-client-app.png)
+    ![All enterprise application registrations](./media/manage-users/select-blockchain-client-app.png)
 
-5.  Seçin **kullanıcılar ve Gruplar > Kullanıcı Ekle**.
-6.  İçinde **atama Ekle**seçin **kullanıcılar**. Seçin veya bir yönetici olarak eklemek istediğiniz kullanıcı için arama yapın. Tıklayın **seçin** bittiğinde seçme.
+5.  Select **Users and groups > Add user**.
+6.  In **Add Assignment**, select **Users**. Choose or search for the user you want to add as an administrator. Click **Select** when finished choosing.
 
-    ![Atama Ekle](./media/manage-users/add-user-assignment.png)
+    ![Add assignment](./media/manage-users/add-user-assignment.png)
 
-9.  Doğrulama **rol** ayarlanır **yönetici**
-10. **Ata**'yı seçin. Eklenen kullanıcılar Yönetici rolü atanan listesinde görüntülenir.
+9.  Verify **Role** is set to **Administrator**
+10. **Ata**'yı seçin. The added users are displayed in the list with the administrator role assigned.
 
-    ![Blok zinciri istemci uygulama kullanıcıları](./media/manage-users/blockchain-admin-list.png)
+    ![Blockchain client app users](./media/manage-users/blockchain-admin-list.png)
 
-## <a name="managing-blockchain-workbench-members"></a>Blockchain Workbench'i üyeleri yönetme
+## <a name="managing-blockchain-workbench-members"></a>Managing Blockchain Workbench members
 
-Blockchain Workbench uygulaması, consortium parçası olan kuruluşların yönetmek için kullanın. Ekleyebilir veya kullanıcılara uygulamaları ve rolleri kaldırın.
+Use the Blockchain Workbench application to manage users and organizations that are part of your consortium. You can add or remove users to applications and roles.
 
-1. [Blockchain Workbench'i açın](deploy.md#blockchain-workbench-web-url) tarayıcısı ve bir yönetici olarak oturum açın.
+1. [Open the Blockchain Workbench](deploy.md#blockchain-workbench-web-url) in your browser and sign in as an administrator.
 
     ![Blockchain Workbench](./media/manage-users/blockchain-workbench-applications.png)
 
-    Üyeler her uygulamaya eklenir. Sözleşmeler başlatmak veya eylemi için bir veya daha fazla uygulama rolleri üyeleri olabilir.
+    Members are added to each application. Members can have one or more application roles to initiate contracts or take actions.
 
-2. Bir uygulama için üyeleri yönetmek için bir uygulama kutucuğunda seçin **uygulamaları** bölmesi.
+2. To manage members for an application, select an application tile in the **Applications** pane.
 
-    Seçili uygulama için ilişkili üye sayısı üyeleri kutucukta yansıtılır.
+    The number of members associated to the selected application is reflected in the members tile.
 
-    ![Uygulama seçin](./media/manage-users/blockchain-workbench-select-application.png)
+    ![Select application](./media/manage-users/blockchain-workbench-select-application.png)
 
 
-#### <a name="add-member-to-application"></a>Üye için uygulama ekleme
+#### <a name="add-member-to-application"></a>Add member to application
 
-1. Geçerli üyelerin listesi görüntülemek için üye kutucuğu seçin.
-2. Seçin **üye ekleme**.
+1. Select the member tile to display a list of the current members.
+2. Select **Add members**.
 
-    ![Üye Ekle](./media/manage-users/application-add-members.png)
+    ![Add members](./media/manage-users/application-add-members.png)
 
-3. Kullanıcının adını arayın.  Blockchain Workbench'i kiracısında mevcut Azure AD kullanıcıları yalnızca listelenir. Kullanıcı bulunamazsa, yapmanız [Azure AD kullanıcı ekleme](#add-azure-ad-users).
+3. Search for the user's name.  Only Azure AD users that exist in the Blockchain Workbench tenant are listed. If the user is not found, you need to [Add Azure AD users](#add-azure-ad-users).
 
-    ![Üye Ekle](./media/manage-users/find-user.png)
+    ![Add members](./media/manage-users/find-user.png)
 
-4. Seçin bir **rol** açılır listeden.
+4. Select a **Role** from the drop-down.
 
-    ![Rol üyeleri seçin](./media/manage-users/application-select-role.png)
+    ![Select role members](./media/manage-users/application-select-role.png)
 
-5. Seçin **Ekle** uygulama ile ilişkili rol üyesi eklemek için.
+5. Select **Add** to add the member with the associated role to the application.
 
-#### <a name="remove-member-from-application"></a>Uygulamadan üye kaldırma
+#### <a name="remove-member-from-application"></a>Remove member from application
 
-1. Geçerli üyelerin listesi görüntülemek için üye kutucuğu seçin.
-2. Kaldırmak istediğiniz kullanıcı için **Kaldır** rolünden açılır.
+1. Select the member tile to display a list of the current members.
+2. For the user you want to remove, choose **Remove** from the role drop-down.
 
-    ![Üyeyi Kaldır](./media/manage-users/application-remove-member.png)
+    ![Remove member](./media/manage-users/application-remove-member.png)
 
-#### <a name="change-or-add-role"></a>Değiştirme veya rol ekleme
+#### <a name="change-or-add-role"></a>Change or add role
 
-1. Geçerli üyelerin listesi görüntülemek için üye kutucuğu seçin.
-2. Değiştirmek istediğiniz bu kullanıcı için açılan listeyi tıklatın ve yeni rol seçin.
+1. Select the member tile to display a list of the current members.
+2. For the user you want to change, click the drop-down and select the new role.
 
-    ![Rolü değiştir](./media/manage-users/application-change-role.png)
+    ![Change role](./media/manage-users/application-change-role.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Nasıl yapılır bu makalede, Azure Blockchain Workbench için kullanıcıları yönetmek öğrendiniz. Bir blok zinciri uygulaması oluşturmayı öğrenmek için sonraki nasıl yapılır makalesi için devam edin.
+In this how-to article, you have learned how to manage users for Azure Blockchain Workbench. To learn how to create a blockchain application, continue to the next how-to article.
 
 > [!div class="nextstepaction"]
-> [Azure Blockchain Workbench uygulamasında bir blok zinciri uygulaması oluşturma](create-app.md)
+> [Create a blockchain application in Azure Blockchain Workbench](create-app.md)

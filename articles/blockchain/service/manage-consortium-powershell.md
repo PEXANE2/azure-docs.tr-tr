@@ -1,59 +1,53 @@
 ---
-title: Azure PowerShell kullanarak Azure blok zinciri hizmeti üyelerini yönetme
-description: Azure PowerShell kullanarak Azure blok zinciri hizmeti Consortium üyelerini yönetmeyi öğrenin.
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
+title: Manage Azure Blockchain Service consortium members - PowerShell
+description: Learn how to manage Azure Blockchain Service consortium members by using Azure PowerShell.
 ms.date: 10/14/2019
 ms.topic: article
-ms.service: azure-blockchain
 ms.reviewer: zeyadr
-manager: femila
-ms.openlocfilehash: c35a3bd99518825805c2f29cfdc586e1ccf5b0bb
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: dd87e475d7e3202cf34f7222ae6b012d035bcfc9
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329172"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326143"
 ---
-# <a name="manage-consortium-members-in-azure-blockchain-service-by-using-powershell"></a>PowerShell kullanarak Azure blok zinciri hizmeti 'nde konsorsiyum üyelerini yönetme
+# <a name="manage-consortium-members-in-azure-blockchain-service-by-using-powershell"></a>Manage consortium members in Azure Blockchain Service by using PowerShell
 
-PowerShell 'i kullanarak Azure blok zinciri hizmetinize yönelik blok zinciri Konsorsiyumu üyelerini yönetebilirsiniz. Yönetici ayrıcalıklarına sahip Üyeler blok zinciri Konsorsiyumu içindeki tüm katılımcılar için rolleri davet edebilir, ekleyebilir, kaldırabilir ve değiştirebilir. Kullanıcı ayrıcalıklarına sahip Üyeler blok zinciri Konsorsiyumu içindeki tüm katılımcıları görüntüleyebilir ve üye görünen adını değiştirebilir.
+You can use PowerShell to manage blockchain consortium members for your Azure Blockchain Service. Members who have administrator privileges can invite, add, remove, and change roles for all participants in the blockchain consortium. Members who have user privileges can view all participants in the blockchain consortium and change their member display name.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* [Azure Portal](create-member.md)kullanarak bir blok zinciri üyesi oluşturun.
-* Yarışmada, Üyeler ve düğümler hakkında daha fazla bilgi için bkz. [Azure blok zinciri hizmeti Consortium](consortium.md).
+* Create a blockchain member by using the [Azure portal](create-member.md).
+* For more information about consortia, members, and nodes, see [Azure Blockchain Service consortium](consortium.md).
 
 ## <a name="open-azure-cloud-shell"></a>Azure Cloud Shell’i açma
 
-Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz, ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır.
+Azure Cloud Shell is a free interactive shell that you can use to run the steps in this article. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır.
 
-Ayrıca, [Shell.Azure.com/PowerShell](https://shell.azure.com/powershell)' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell açabilirsiniz. Kod bloklarını kopyalamak için **Kopyala** ' yı seçin, Cloud Shell yapıştırın ve çalıştırmak için **ENTER** ' u seçin.
+You can also open Cloud Shell in a separate browser tab by going to [shell.azure.com/powershell](https://shell.azure.com/powershell). Select **Copy** to copy the blocks of code, paste it into Cloud Shell, and select **Enter** to run it.
 
-## <a name="install-the-powershell-module"></a>PowerShell modülünü yükler
+## <a name="install-the-powershell-module"></a>Install the PowerShell module
 
-PowerShell Galerisi Microsoft.AzureBlockchainService.ConsortiumManagement.PS paketini yükler.
+Install the Microsoft.AzureBlockchainService.ConsortiumManagement.PS package from the PowerShell Gallery.
 
 ```powershell-interactive
 Install-Module -Name Microsoft.AzureBlockchainService.ConsortiumManagement.PS -Scope CurrentUser
 Import-Module Microsoft.AzureBlockchainService.ConsortiumManagement.PS
 ```
 
-## <a name="set-the-information-preference"></a>Bilgi tercihini ayarla
+## <a name="set-the-information-preference"></a>Set the information preference
 
-Bilgi tercih değişkenini ayarlayarak cmdlet 'leri yürütürken daha fazla bilgi edinebilirsiniz. Varsayılan olarak, *$InformationPreference* *SilentlyContinue*olarak ayarlanır.
+You can get more information when executing the cmdlets by setting the information preference variable. By default, *$InformationPreference* is set to *SilentlyContinue*.
 
-Cmdlet 'lerden daha ayrıntılı bilgi için, PowerShell 'de tercihi aşağıdaki gibi ayarlayın:
+For more verbose information from cmdlets, set the preference in the PowerShell as follows:
 
 ```powershell-interactive
 $InformationPreference = 'Continue'
 ```
 
-## <a name="establish-a-web3-connection"></a>Web3 bağlantısı oluşturma
+## <a name="establish-a-web3-connection"></a>Establish a Web3 connection
 
-Consortium üyelerini yönetmek için, blok zinciri hizmeti üye uç noktanıza bir Web3 bağlantısı kurun. Bu betiği, konsorsiyum yönetimi cmdlet 'lerini çağırmak için genel değişkenleri ayarlamak üzere kullanabilirsiniz.
+To manage consortium members, establish a Web3 connection to your Blockchain Service member endpoint. You can use this script to set global variables for calling the consortium management cmdlets.
 
 ```powershell-interactive
 $Connection = New-Web3Connection -RemoteRPCEndpoint '<Endpoint address>'
@@ -61,38 +55,38 @@ $MemberAccount = Import-Web3Account -ManagedAccountAddress '<Member account addr
 $ContractConnection = Import-ConsortiumManagementContracts -RootContractAddress '<RootContract address>' -Web3Client $Connection
 ```
 
-*@No__t-1üye hesabı parolasını @ no__t-2* ' i, üyeyi oluştururken kullandığınız üye hesap parolasıyla değiştirin.
+Replace *\<Member account password\>* with the member account password that you used when you created the member.
 
-Azure portal diğer değerleri bulun:
+Find the other values in the Azure portal:
 
 1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
-1. Varsayılan blok zinciri hizmeti üyesine **genel bakış** sayfasına gidin.
+1. Go to your default Blockchain Service member **Overview** page.
 
-    ![Üyeye genel bakış](./media/manage-consortium-powershell/member-overview.png)
+    ![Member overview](./media/manage-consortium-powershell/member-overview.png)
 
-    *@No__t-1Üye hesabı @ no__t-2* ve *\<rootcontract adresi @ no__t-5* ' i portaldan alınan değerlerle değiştirin.
+    Replace *\<Member account\>* and *\<RootContract address\>* with the values from the portal.
 
-1. Uç nokta adresi için **işlem düğümleri**' ni seçin ve ardından **varsayılan işlem düğümünü**seçin. Varsayılan düğüm, blok zinciri üyesiyle aynı ada sahiptir.
-1. **Bağlantı dizelerini**seçin.
+1. For the endpoint address, select **Transaction nodes**, and then select the **default transaction node**. The default node has the same name as the blockchain member.
+1. Select **Connection strings**.
 
     ![Bağlantı dizeleri](./media/manage-consortium-powershell/connection-strings.png)
 
-    *@No__t-1Endpoint Address @ no__t-2* ' i **https (erişim anahtarı 1)** veya **https (erişim anahtarı 2)** değeriyle değiştirin.
+    Replace *\<Endpoint address\>* with the value from **HTTPS (Access key 1)** or **HTTPS (Access key 2)** .
 
-## <a name="manage-the-network-and-smart-contracts"></a>Ağ ve akıllı sözleşmeleri yönetme
+## <a name="manage-the-network-and-smart-contracts"></a>Manage the network and smart contracts
 
-Blok zinciri uç noktasının, konsorsiyumun yönetiminden sorumlu akıllı sözleşmeleri ile bağlantı kurmak için ağ ve akıllı anlaşma cmdlet 'lerini kullanın.
+Use the network and smart contract cmdlets to establish a connection to the blockchain endpoint's smart contracts responsible for consortium management.
 
-### <a name="import-consortiummanagementcontracts"></a>İçeri aktarma-Consortiummanagementsözleşmeleri
+### <a name="import-consortiummanagementcontracts"></a>Import-ConsortiumManagementContracts
 
-Bu cmdlet 'i, konsorsiyum yönetiminin akıllı sözleşmelerine bağlamak için kullanın. Bu sözleşmeler, konsorsiyumun içindeki üyeleri yönetmek ve zorlamak için kullanılır.
+Use this cmdlet to connect to the consortium management's smart contracts. These contracts are used to manage and enforce members within the consortium.
 
 `Import-ConsortiumManagementContracts -RootContractAddress <String> -Web3Client <IClient>`
 
 | Parametre | Açıklama | Gereklidir |
 |-----------|-------------|:--------:|
-| RootContractAddress | Konsorsiyum yönetimi akıllı sözleşmelerinin kök sözleşme adresi | Yes |
-| Web3Client | New-Web3Connection ' den edinilen Web3Client nesnesi | Yes |
+| RootContractAddress | Root contract address of the consortium management smart contracts | Yes |
+| Web3Client | Web3Client object obtained from New-Web3Connection | Yes |
 
 #### <a name="example"></a>Örnek
 
@@ -102,14 +96,14 @@ Import-ConsortiumManagementContracts -RootContractAddress '<RootContract address
 
 ### <a name="import-web3account"></a>Import-Web3Account
 
-Bu cmdlet 'i, uzak düğümün yönetim hesabının bilgilerini tutacak bir nesne oluşturmak için kullanın.
+Use this cmdlet to create an object to hold the information for a remote node's management account.
 
 `Import-Web3Account -ManagedAccountAddress <String> -ManagedAccountPassword <String>`
 
 | Parametre | Açıklama | Gereklidir |
 |-----------|-------------|:--------:|
-| ManagedAccountAddress | Blok zinciri üyesi hesap adresi | Yes |
-| ManagedAccountPassword | Hesap adresi parolası | Yes |
+| ManagedAccountAddress | Blockchain member account address | Yes |
+| ManagedAccountPassword | Account address password | Yes |
 
 #### <a name="example"></a>Örnek
 
@@ -119,13 +113,13 @@ Import-Web3Account -ManagedAccountAddress '<Member account address>'  -ManagedAc
 
 ### <a name="new-web3connection"></a>New-Web3Connection
 
-İşlem düğümünün RPC uç noktasıyla bağlantı kurmak için bu cmdlet 'i kullanın.
+Use this cmdlet to establish a connection to the RPC endpoint of a transaction node.
 
 `New-Web3Connection [-RemoteRPCEndpoint <String>]`
 
 | Parametre | Açıklama | Gereklidir |
 |-----------|-------------|:--------:|
-| RemoteRPCEndpoint | Blok zinciri üye uç nokta adresi | Yes |
+| RemoteRPCEndpoint | Blockchain member endpoint address | Yes |
 
 #### <a name="example"></a>Örnek
 
@@ -133,31 +127,31 @@ Import-Web3Account -ManagedAccountAddress '<Member account address>'  -ManagedAc
 New-Web3Connection -RemoteRPCEndpoint '<Endpoint address>'
 ```
 
-## <a name="manage-the-consortium-members"></a>Konsorsiyum üyelerini yönetme
+## <a name="manage-the-consortium-members"></a>Manage the consortium members
 
-Konsorsiyumun içindeki üyeleri yönetmek için konsorsiyum üye yönetimi cmdlet 'lerini kullanın. Kullanılabilir eylemler, konsorsiyumun rolüne bağlıdır.
+Use consortium member management cmdlets to manage members within the consortium. The available actions depend on your consortium role.
 
 ### <a name="get-blockchainmember"></a>Get-BlockchainMember
 
-Bu cmdlet 'i kullanarak, konsorsiyumun üye ayrıntılarını veya listesini alın.
+Use this cmdlet to get member details or list members of the consortium.
 
 `Get-BlockchainMember [[-Name] <String>] -Members <IContract> -Web3Client <IClient>`
 
 | Parametre | Açıklama | Gereklidir |
 |-----------|-------------|:--------:|
-| Adı | Ayrıntılarını almak istediğiniz blok zinciri hizmeti üyesinin adı. Bir ad girildiğinde, üyenin ayrıntılarını döndürür. Bir ad atlandığında, tüm konsorsiyum üyelerinin bir listesini döndürür. | Hayır |
-| Üyeleri | Import-ConsortiumManagementContracts öğesinden edinilen Üyeler nesnesi | Yes |
-| Web3Client | New-Web3Connection ' den edinilen Web3Client nesnesi | Yes |
+| Adı | The name of the Blockchain Service member that you want to retrieve details about. When a name is entered, it returns the member's details. When a name is omitted, it returns a list of all consortium members. | Hayır |
+| Members | Members object obtained from Import-ConsortiumManagementContracts | Yes |
+| Web3Client | Web3Client object obtained from New-Web3Connection | Yes |
 
 #### <a name="example"></a>Örnek
 
-$ContractConnection değişkenini ayarlamak için [bir Web3 bağlantısı kurun](#establish-a-web3-connection) .
+[Establish a Web3 connection](#establish-a-web3-connection) to set the $ContractConnection variable.
 
 ```powershell-interactive
 $ContractConnection | Get-BlockchainMember -Name <Member Name>
 ```
 
-#### <a name="example-output"></a>Örnek çıkış
+#### <a name="example-output"></a>Example output
 
 ```
 Name           : myblockchainmember
@@ -170,20 +164,20 @@ Role           : ADMIN
 
 ### <a name="remove-blockchainmember"></a>Remove-BlockchainMember
 
-Bir blok zinciri üyesini kaldırmak için bu cmdlet 'i kullanın.
+Use this cmdlet to remove a blockchain member.
 
 `Remove-BlockchainMember -Name <String> -Members <IContract> -Web3Account <IAccount> -Web3Client <IClient>`
 
 | Parametre | Açıklama | Gereklidir |
 |-----------|-------------|:--------:|
-| Adı | Kaldırılacak üye adı | Yes |
-| Üyeleri | Import-ConsortiumManagementContracts öğesinden edinilen Üyeler nesnesi | Yes |
-| Web3Account | Import-Web3Account öğesinden elde edilen Web3Account nesnesi | Yes |
-| Web3Client | New-Web3Connection ' den edinilen Web3Client nesnesi | Yes |
+| Adı | Member name to remove | Yes |
+| Members | Members object obtained from Import-ConsortiumManagementContracts | Yes |
+| Web3Account | Web3Account object obtained from Import-Web3Account | Yes |
+| Web3Client | Web3Client object obtained from New-Web3Connection | Yes |
 
 #### <a name="example"></a>Örnek
 
-$ContractConnection ve $MemberAccount değişkenlerini ayarlamak için [bir Web3 bağlantısı kurun](#establish-a-web3-connection) .
+[Establish a Web3 connection](#establish-a-web3-connection) to set the $ContractConnection and $MemberAccount variables.
 
 ```powershell-interactive
 $ContractConnection | Remove-BlockchainMember -Name <Member Name> -Web3Account $MemberAccount
@@ -191,9 +185,9 @@ $ContractConnection | Remove-BlockchainMember -Name <Member Name> -Web3Account $
 
 ### <a name="set-blockchainmember"></a>Set-BlockchainMember
 
-Bu cmdlet 'i, görünen ad ve konsorsiyum rolü de dahil olmak üzere blok zinciri üye özniteliklerini ayarlamak için kullanın.
+Use this cmdlet to set blockchain member attributes, including the display name and the consortium role.
 
-Konsorsiyum yöneticileri, tüm Üyeler için **DisplayName** ve **role** ayarlayabilir. Kullanıcı rolüne sahip bir konsorsiyum üyesi yalnızca kendi üyesinin görünen adını değiştirebilir.
+Consortium administrators can set **DisplayName** and **Role** for all members. A consortium member with the user role can change only their own member's display name.
 
 ```
 Set-BlockchainMember -Name <String> [-DisplayName <String>] [-AccountAddress <String>] [-Role <String>]
@@ -202,28 +196,28 @@ Set-BlockchainMember -Name <String> [-DisplayName <String>] [-AccountAddress <St
 
 | Parametre | Açıklama | Gereklidir |
 |-----------|-------------|:--------:|
-| Adı | Blok zinciri üyesinin adı | Yes |
-| DisplayName | Yeni görünen ad | Hayır |
-| AccountAddress | Hesap adresi | Hayır |
-| Üyeleri | Import-ConsortiumManagementContracts öğesinden edinilen Üyeler nesnesi | Yes |
-| Web3Account | Import-Web3Account öğesinden elde edilen Web3Account nesnesi | Yes |
-| Web3Client |  New-Web3Connection ' den edinilen Web3Client nesnesi| Yes |
+| Adı | Name of the blockchain member | Yes |
+| DisplayName | New display name | Hayır |
+| AccountAddress | Account address | Hayır |
+| Members | Members object obtained from Import-ConsortiumManagementContracts | Yes |
+| Web3Account | Web3Account object obtained from Import-Web3Account | Yes |
+| Web3Client |  Web3Client object obtained from New-Web3Connection| Yes |
 
 #### <a name="example"></a>Örnek
 
-$ContractConnection ve $MemberAccount değişkenlerini ayarlamak için [bir Web3 bağlantısı kurun](#establish-a-web3-connection) .
+[Establish a Web3 connection](#establish-a-web3-connection) to set the $ContractConnection and $MemberAccount variables.
 
 ```powershell-interactive
 $ContractConnection | Set-BlockchainMember -Name <Member Name> -DisplayName <Display name> -Web3Account $MemberAccount
 ```
 
-## <a name="manage-the-consortium-members-invitations"></a>Konsorsiyumun üyelerinin davetlerini yönetin
+## <a name="manage-the-consortium-members-invitations"></a>Manage the consortium members' invitations
 
-Konsorsiyum üyelerinin davetlerini yönetmek için konsorsiyum üye davetiyesi yönetimi cmdlet 'lerini kullanın. Kullanılabilir eylemler, konsorsiyumun rolüne bağlıdır.
+Use the consortium member invitation management cmdlets to manage consortium members' invitations. The available actions depend on your consortium role.
 
-### <a name="new-blockchainmemberinvitation"></a>New-Blockchainmemberdavetiyesi
+### <a name="new-blockchainmemberinvitation"></a>New-BlockchainMemberInvitation
 
-Yeni üyeleri konsorsiya davet etmek için bu cmdlet 'i kullanın.
+Use this cmdlet to invite new members to the consortium.
 
 ```
 New-BlockchainMemberInvitation -SubscriptionId <String> -Role <String> -Members <IContract>
@@ -232,41 +226,41 @@ New-BlockchainMemberInvitation -SubscriptionId <String> -Role <String> -Members 
 
 | Parametre | Açıklama | Gereklidir |
 |-----------|-------------|:--------:|
-| kaynak grubundaki | Davet edilecek üyenin Azure abonelik KIMLIĞI | Yes |
-| Rol | Konsorsiyum rolü. Değerler yönetıcı veya Kullanıcı olabilir. YÖNETICI, konsorsiyum Yöneticisi rolüdür. Kullanıcı, konsorsiyum üyesi rolüdür. | Yes |
-| Üyeleri | Import-ConsortiumManagementContracts öğesinden edinilen Üyeler nesnesi | Yes |
-| Web3Account | Import-Web3Account öğesinden elde edilen Web3Account nesnesi | Yes |
-| Web3Client | New-Web3Connection ' den edinilen Web3Client nesnesi | Yes |
+| kaynak grubundaki | Azure subscription ID of the member to invite | Yes |
+| Rol | The consortium role. Values can be ADMIN or USER. ADMIN is the consortium administrator role. USER is the consortium member role. | Yes |
+| Members | Members object obtained from Import-ConsortiumManagementContracts | Yes |
+| Web3Account | Web3Account object obtained from Import-Web3Account | Yes |
+| Web3Client | Web3Client object obtained from New-Web3Connection | Yes |
 
 #### <a name="example"></a>Örnek
 
-$ContractConnection ve $MemberAccount değişkenlerini ayarlamak için [bir Web3 bağlantısı kurun](#establish-a-web3-connection) .
+[Establish a Web3 connection](#establish-a-web3-connection) to set the $ContractConnection and $MemberAccount variables.
 
 ```powershell-interactive
 $ContractConnection | New-BlockchainMemberInvitation -SubscriptionId <Azure Subscription ID> -Role USER -Web3Account $MemberAccount
 ```
 
-### <a name="get-blockchainmemberinvitation"></a>Get-Blockchainmemberdavetiyesi
+### <a name="get-blockchainmemberinvitation"></a>Get-BlockchainMemberInvitation
 
-Bu cmdlet 'i bir konsorsiyum üyesinin davetiye durumunu almak veya listelemek için kullanın.
+Use this cmdlet to retrieve or list a consortium member's invitation status.
 
 `Get-BlockchainMemberInvitation [[-SubscriptionId] <String>] -Members <IContract> -Web3Client <IClient>`
 
 | Parametre | Açıklama | Gereklidir |
 |-----------|-------------|:--------:|
-| kaynak grubundaki | Davet edilecek üyenin Azure abonelik KIMLIĞI. Abonelik KIMLIĞI sağlanmışsa, abonelik KIMLIĞININ davet ayrıntılarını döndürür. Abonelik KIMLIĞI atlanırsa, tüm üye davetlerinin bir listesini döndürür. | Hayır |
-| Üyeleri | Import-ConsortiumManagementContracts öğesinden edinilen Üyeler nesnesi | Yes |
-| Web3Client | New-Web3Connection ' den edinilen Web3Client nesnesi | Yes |
+| kaynak grubundaki | The Azure subscription ID of the member to invite. If the subscription ID is provided, it returns the subscription ID's invitation details. If the subscription ID is omitted, it returns a list of all member invitations. | Hayır |
+| Members | Members object obtained from Import-ConsortiumManagementContracts | Yes |
+| Web3Client | Web3Client object obtained from New-Web3Connection | Yes |
 
 #### <a name="example"></a>Örnek
 
-$ContractConnection değişkenini ayarlamak için [bir Web3 bağlantısı kurun](#establish-a-web3-connection) .
+[Establish a Web3 connection](#establish-a-web3-connection) to set the $ContractConnection variable.
 
 ```powershell-interactive
 $ContractConnection | Get-BlockchainMemberInvitation – SubscriptionId <Azure subscription ID>
 ```
 
-#### <a name="example-output"></a>Örnek çıkış
+#### <a name="example-output"></a>Example output
 
 ```
 SubscriptionId                       Role CorrelationId
@@ -274,9 +268,9 @@ SubscriptionId                       Role CorrelationId
 <Azure subscription ID>              USER             2
 ```
 
-### <a name="remove-blockchainmemberinvitation"></a>Remove-Blockchainmemberdavetiyesi
+### <a name="remove-blockchainmemberinvitation"></a>Remove-BlockchainMemberInvitation
 
-Bir konsorsiyum üyesinin davetini iptal etmek için bu cmdlet 'i kullanın.
+Use this cmdlet to revoke a consortium member's invitation.
 
 ```
 Remove-BlockchainMemberInvitation -SubscriptionId <String> -Members <IContract> -Web3Account <IAccount>
@@ -285,22 +279,22 @@ Remove-BlockchainMemberInvitation -SubscriptionId <String> -Members <IContract> 
 
 | Parametre | Açıklama | Gereklidir |
 |-----------|-------------|:--------:|
-| kaynak grubundaki | İptal edilecek üyenin Azure abonelik KIMLIĞI | Yes |
-| Üyeleri | Import-ConsortiumManagementContracts öğesinden edinilen Üyeler nesnesi | Yes |
-| Web3Account | Import-Web3Account öğesinden elde edilen Web3Account nesnesi | Yes |
-| Web3Client | New-Web3Connection ' den edinilen Web3Client nesnesi | Yes |
+| kaynak grubundaki | Azure subscription ID of the member to revoke | Yes |
+| Members | Members object obtained from Import-ConsortiumManagementContracts | Yes |
+| Web3Account | Web3Account object obtained from Import-Web3Account | Yes |
+| Web3Client | Web3Client object obtained from New-Web3Connection | Yes |
 
 #### <a name="example"></a>Örnek
 
-$ContractConnection ve $MemberAccount değişkenlerini ayarlamak için [bir Web3 bağlantısı kurun](#establish-a-web3-connection) .
+[Establish a Web3 connection](#establish-a-web3-connection) to set the $ContractConnection and $MemberAccount variables.
 
 ```powershell-interactive
 $ContractConnection | Remove-BlockchainMemberInvitation -SubscriptionId <Subscription ID> -Web3Account $MemberAccount
 ```
 
-### <a name="set-blockchainmemberinvitation"></a>Set-Blockchainmemberdavetiyesi
+### <a name="set-blockchainmemberinvitation"></a>Set-BlockchainMemberInvitation
 
-Mevcut bir davetin **rolünü** ayarlamak için bu cmdlet 'i kullanın. Yalnızca konsorsiyum yöneticileri davetleri değiştirebilir.
+Use this cmdlet to set the **Role** for an existing invitation. Only consortium administrators can change invitations.
 
 ```
 Set-BlockchainMemberInvitation -SubscriptionId <String> -Role <String> -Members <IContract>
@@ -309,15 +303,15 @@ Set-BlockchainMemberInvitation -SubscriptionId <String> -Role <String> -Members 
 
 | Parametre | Açıklama | Gereklidir |
 |-----------|-------------|:--------:|
-| kaynak grubundaki | Davet edilecek üyenin Azure abonelik KIMLIĞI | Yes |
-| Rol | Davet için yeni konsorsiyum rolü. Değerler **Kullanıcı** veya **yönetici**olabilir. | Yes |
-| Üyeleri |  Import-ConsortiumManagementContracts öğesinden edinilen Üyeler nesnesi | Yes |
-| Web3Account | Import-Web3Account öğesinden elde edilen Web3Account nesnesi | Yes |
-| Web3Client | New-Web3Connection ' den edinilen Web3Client nesnesi | Yes |
+| kaynak grubundaki | Azure subscription ID of the member to invite | Yes |
+| Rol | New consortium role for invitation. Values can be **USER** or **ADMIN**. | Yes |
+| Members |  Members object obtained from Import-ConsortiumManagementContracts | Yes |
+| Web3Account | Web3Account object obtained from Import-Web3Account | Yes |
+| Web3Client | Web3Client object obtained from New-Web3Connection | Yes |
 
 #### <a name="example"></a>Örnek
 
-$ContractConnection ve $MemberAccount değişkenlerini ayarlamak için [bir Web3 bağlantısı kurun](#establish-a-web3-connection) .
+[Establish a Web3 connection](#establish-a-web3-connection) to set the $ContractConnection and $MemberAccount variables.
 
 ```powershell-interactive
 $ContractConnection | Set-BlockchainMemberInvitation -SubscriptionId <Azure subscription ID> -Role USER -Web3Account $MemberAccount
@@ -325,7 +319,7 @@ $ContractConnection | Set-BlockchainMemberInvitation -SubscriptionId <Azure subs
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Yarışmao, Üyeler ve düğümler hakkında daha fazla bilgi için bkz.:
+For more information about consortia, members, and nodes, see:
 
 > [!div class="nextstepaction"]
-> [Azure blok zinciri hizmeti Consortium](consortium.md)
+> [Azure Blockchain Service consortium](consortium.md)

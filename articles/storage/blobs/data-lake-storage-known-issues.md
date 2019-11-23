@@ -1,6 +1,6 @@
 ---
-title: Azure Data Lake depolama Gen2 ile'ilgili bilinen sorunlar | Microsoft Docs
-description: Azure Data Lake depolama Gen2 ile'ilgili bilinen sorunlar ve sınırlamalar hakkında bilgi edinin
+title: Known issues with Azure Data Lake Storage Gen2 | Microsoft Docs
+description: Learn about the limitations and known issues with Azure Data Lake Storage Gen2
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -8,67 +8,67 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 78693dceaac119279b1c1d06a6c3a18cc4fdb485
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 5253ab1d9599c2758127156e46e1dbf2e8e1eddc
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033933"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327952"
 ---
-# <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake depolama Gen2 ile'ilgili bilinen sorunlar
+# <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Known issues with Azure Data Lake Storage Gen2
 
-Bu makalede henüz desteklenmeyen veya hiyerarşik ad alanı (Azure Data Lake Storage 2.) olan depolama hesaplarıyla kısmen desteklenen özellikler ve araçlar listelenmektedir.
+This article lists the features and tools that are not yet supported or only partially supported with storage accounts that have a hierarchical namespace (Azure Data Lake Storage Gen2).
 
 <a id="blob-apis-disabled" />
 
-## <a name="issues-and-limitations-with-using-blob-apis"></a>Blob API 'Leri kullanma ile ilgili sorunlar ve sınırlamalar
+## <a name="issues-and-limitations-with-using-blob-apis"></a>Issues and limitations with using Blob APIs
 
-Blob API 'Leri ve Data Lake Storage 2. API 'Leri aynı verilerde çalışabilir.
+Blob APIs and Data Lake Storage Gen2 APIs can operate on the same data.
 
-Bu bölümde, aynı verilerde çalışacak blob API 'Leri ve Data Lake Storage 2. API 'Leri kullanımıyla ilgili sorunlar ve sınırlamalar açıklanmaktadır.
+This section describes issues and limitations with using blob APIs and Data Lake Storage Gen2 APIs to operate on the same data.
 
-* Aynı dosyanın aynı örneğine yazmak için hem blob API 'Leri hem de Data Lake Storage API 'Leri kullanamazsınız. Data Lake Storage 2. API 'Leri kullanarak bir dosyaya yazarsanız, bu dosyanın blokları [Get Block list](https://docs.microsoft.com/rest/api/storageservices/get-block-list) blob API 'sine yapılan çağrılara görünmez. Data Lake Storage 2. API 'leri ya da blob API 'Lerini kullanarak bir dosyanın üzerine yazabilirsiniz. Bu dosya özelliklerini etkilemez.
+* You can't use both Blob APIs and Data Lake Storage APIs to write to the same instance of a file. If you write to a file by using Data Lake Storage Gen2 APIs, then that file's blocks won't be visible to calls to the [Get Block List](https://docs.microsoft.com/rest/api/storageservices/get-block-list) blob API. You can overwrite a file by using either Data Lake Storage Gen2 APIs or Blob APIs. This won't affect file properties.
 
-* Bir sınırlayıcı belirtmeden [Blobları Listele](https://docs.microsoft.com/rest/api/storageservices/list-blobs) işlemini kullandığınızda, sonuçlar hem dizinleri hem de Blobları içerecektir. Bir sınırlayıcı kullanmayı seçerseniz yalnızca eğik çizgi kullanın (`/`). Bu, desteklenen tek sınırlayıcıdır.
+* When you use the [List Blobs](https://docs.microsoft.com/rest/api/storageservices/list-blobs) operation without specifying a delimiter, the results will include both directories and blobs. If you choose to use a delimiter, use only a forward slash (`/`). This is the only supported delimiter.
 
-* Bir dizini silmek için [blobu silme](https://docs.microsoft.com/rest/api/storageservices/delete-blob) API 'sini kullanırsanız, bu dizin yalnızca boşsa silinir. Bu, blob API 'SI silme dizinlerini yinelemeli olarak kullanamayacağı anlamına gelir.
+* If you use the [Delete Blob](https://docs.microsoft.com/rest/api/storageservices/delete-blob) API to delete a directory, that directory will be deleted only if it's empty. This means that you can't use the Blob API delete directories recursively.
 
-Bu blob REST API 'Leri desteklenmez:
+These Blob REST APIs aren't supported:
 
-* [Blobu Yerleştir (sayfa)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
-* [Yerleştirme sayfası](https://docs.microsoft.com/rest/api/storageservices/put-page)
-* [Sayfa aralıklarını al](https://docs.microsoft.com/rest/api/storageservices/get-page-ranges)
-* [Artımlı kopya blobu](https://docs.microsoft.com/rest/api/storageservices/incremental-copy-blob)
-* [URL 'den sayfa koy](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)
-* [Blobu Yerleştir (Ekle)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
-* [Ekleme bloğu](https://docs.microsoft.com/rest/api/storageservices/append-block)
-* [URL 'den ekleme bloğu](https://docs.microsoft.com/rest/api/storageservices/append-block-from-url)
+* [Put Blob (Page)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
+* [Put Page](https://docs.microsoft.com/rest/api/storageservices/put-page)
+* [Get Page Ranges](https://docs.microsoft.com/rest/api/storageservices/get-page-ranges)
+* [Incremental Copy Blob](https://docs.microsoft.com/rest/api/storageservices/incremental-copy-blob)
+* [Put Page from URL](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)
+* [Put Blob (Append)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
+* [Append Block](https://docs.microsoft.com/rest/api/storageservices/append-block)
+* [Append Block from URL](https://docs.microsoft.com/rest/api/storageservices/append-block-from-url)
 
-Yönetilmeyen VM diskleri hiyerarşik bir ad alanına sahip hesaplarda desteklenmez. Bir depolama hesabında hiyerarşik bir ad alanı etkinleştirmek istiyorsanız, yönetilmeyen VM disklerini hiyerarşik ad alanı özelliği etkin olmayan bir depolama hesabına yerleştirin.
+Unmanaged VM disks are not supported in accounts that have a hierarchical namespace. If you want to enable a hierarchical namespace on a storage account, place unmanaged VM disks into a storage account that doesn't have the hierarchical namespace feature enabled.
 
-## <a name="support-for-other-blob-storage-features"></a>Diğer BLOB depolama özellikleri için destek
+## <a name="support-for-other-blob-storage-features"></a>Support for other Blob Storage features
 
-Aşağıdaki tabloda henüz desteklenmeyen veya hiyerarşik ad alanı (Azure Data Lake Storage 2.) olan depolama hesaplarıyla kısmen desteklenen tüm diğer özellikler ve araçlar listelenmektedir.
+The following table lists all other features and tools that are not yet supported or only partially supported with storage accounts that have a hierarchical namespace (Azure Data Lake Storage Gen2).
 
-| Özellik/Araç    | Daha fazla bilgi    |
+| Feature / Tool    | Daha fazla bilgi    |
 |--------|-----------|
-| **Data Lake Storage 2. API 'Leri** | Kısmen destekleniyor <br><br>Geçerli sürümde, dizinler ile etkileşim kurmak ve erişim denetim listeleri (ACL 'Ler) ayarlamak için Data Lake Storage 2. **rest** API 'leri kullanabilirsiniz, ancak bu görevleri gerçekleştirmek Için başka SDK 'lar (örneğin, .net, Java veya Python) yoktur. Dosya yükleme ve indirme gibi diğer görevleri gerçekleştirmek için blob SDK 'larını kullanabilirsiniz.  |
-| **AzCopy** | Sürüme özgü destek <br><br>AzCopy 'in yalnızca en son sürümünü kullanın ([AzCopy ile v10 arasındaki](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). AzCopy v 8.1 gibi önceki AzCopy sürümleri desteklenmez.|
-| **Azure Blob depolama yaşam döngüsü yönetim ilkeleri** | Tüm erişim katmanları desteklenir. Arşiv erişim katmanı Şu anda önizleme aşamasındadır. Blob anlık görüntülerini silme henüz desteklenmiyor. |
-| **Azure Content Delivery Network (CDN)** | Henüz desteklenmiyor|
-| **Azure Arama** |Desteklenir (Önizleme)|
-| **Azure Depolama Gezgini** | Sürüme özgü destek <br><br>Yalnızca `1.10.0``1.6.0` sürümleri kullanın. <br> Sürüm `1.10.0` [ücretsiz bir indirme](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-relnotes)olarak sunulmaktadır. Sürüm `1.11.0` henüz desteklenmiyor.|
-| **Blob kapsayıcı ACL 'Leri** |Henüz desteklenmiyor|
-| **Blobsigortası** |Henüz desteklenmiyor|
-| **Özel etki alanları** |Henüz desteklenmiyor|
-| **Azure portal Depolama Gezgini** | Sınırlı destek. ACL 'Ler henüz desteklenmiyor. |
-| **Tanılama günlüğüne kaydetme** |Tanılama günlükleri desteklenir (Önizleme).<br><br>Azure portal günlüklerin etkinleştirilmesi Şu anda desteklenmiyor. Günlükleri PowerShell kullanarak nasıl etkinleştireceğinizi gösteren bir örnek aşağıda verilmiştir. <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>`Set-AzStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>`. <br><br>Bu örnekte gösterildiği gibi, `-ServiceType` parametresinin değeri olarak `Blob` belirttiğinizden emin olun. <br><br>Şu anda Azure Depolama Gezgini tanılama günlüklerini görüntülemek için kullanılamaz. Günlükleri görüntülemek için lütfen AzCopy veya SDK 'Ları kullanın.
-| **Sabit depolama** |Henüz desteklenmiyor <br><br>Sabit depolama, verileri bir solucan içinde depolamanıza olanak tanır [(bir kez yaz, çok oku)](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) durumu sağlar.|
-| **Nesne düzeyi katmanları** |Seyrek erişimli ve arşiv katmanları desteklenir. Arşiv katmanı önizlemededir. Diğer tüm erişim katmanları henüz desteklenmiyor.|
-| **PowerShell ve CLı desteği** | Sınırlı işlevsellik <br><br>Blob işlemleri desteklenir. Dizinlerle çalışma ve erişim denetim listelerini (ACL 'Ler) ayarlama henüz desteklenmiyor. |
-| **Statik Web siteleri** |Henüz desteklenmiyor <br><br>Özellikle, dosyaları [statik Web sitelerine](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website)sunma özelliği.|
-| **Üçüncü taraf uygulamalar** | Sınırlı destek <br><br>REST API 'Leri kullanan üçüncü taraf uygulamalar, Data Lake Storage 2. ile birlikte kullandığınızda çalışmaya devam edecektir. <br>Blob API 'Leri çağıran uygulamalar muhtemelen işe sunulacaktır.|
-|**Geçici silme** |Henüz desteklenmiyor|
-| **Sürüm oluşturma özellikleri** |Henüz desteklenmiyor <br><br>Bu, [geçici silme](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)ve [anlık görüntüler](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob)gibi diğer sürüm oluşturma özelliklerini içerir.|
+| **Data Lake Storage Gen2 APIs** | Partially supported <br><br>In the current release, you can use Data Lake Storage Gen2 **REST** APIs to interact with directories and set access control lists (ACLs), but there are no other SDKs (For example: .NET, Java, or Python) to perform those tasks. To perform other tasks such as uploading and downloading files, you can use the Blob SDKs.  |
+| **AzCopy** | Version-specific support <br><br>Use only the latest version of AzCopy ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). Earlier versions of AzCopy such as AzCopy v8.1, are not supported.|
+| **Azure Blob Storage lifecycle management policies** | All access tiers are supported. The archive access tier is currently in preview. The deletion of blob snapshots is not yet supported. |
+| **Azure Content Delivery Network (CDN)** | Not yet supported|
+| **Azure search** |Supported (Preview)|
+| **Azure Depolama Gezgini** | Version-specific support. <br><br>Use only versions `1.6.0` or higher. <br> There is currently a storage bug affecting version `1.11.0` that can result in authentication errors in certain scenarios. A fix for the storage bug is being rolled out, but as a workaround, we recommend that you use version `1.10.x` which is available as a [free download](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-relnotes). `1.10.x` is not affected by the storage bug.|
+| **Blob container ACLs** |Not yet supported|
+| **Blobfuse** |Not yet supported|
+| **Özel etki alanları** |Not yet supported|
+| **Storage Explorer in the Azure portal** | Limited support. ACLs are not yet supported. |
+| **Tanılama günlüğüne kaydetme** |Diagnostic logs are supported (Preview).<br><br>Enabling logs in the Azure portal is not currently supported. Here's an example of how to enable the logs by using PowerShell. <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>`Set-AzStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>`. <br><br>Make sure to specify `Blob` as the value of the `-ServiceType` parameter as shown in this example. <br><br>Currently, Azure Storage Explorer can't be used for viewing diagnostic logs. To view logs, please use AzCopy or SDKs.
+| **Immutable storage** |Not yet supported <br><br>Immutable storage gives the ability to store data in a [WORM (Write Once, Read Many)](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) state.|
+| **Object-level tiers** |Cool and archive tiers are supported. The archive tier is in preview. All other access tiers are not yet supported.|
+| **Powershell and CLI support** | Limited functionality <br><br>Blob operations are supported. Working with directories and setting access control lists (ACLs) is not yet supported. |
+| **Static websites** |Not yet supported <br><br>Specifically, the ability to serve files to [Static websites](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website).|
+| **Third party applications** | Limited support <br><br>Third party applications that use REST APIs to work will continue to work if you use them with Data Lake Storage Gen2. <br>Applications that call Blob APIs will likely work.|
+|**Geçici Silme** |Not yet supported|
+| **Versioning features** |Not yet supported <br><br>This includes  [soft delete](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete), and other versioning features such as [snapshots](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob).|
 
 

@@ -1,386 +1,386 @@
 ---
-title: Azure MFA NPS Uzantısı ile Uzak Masaüstü Ağ Geçidi tümleştirme-Azure Active Directory
-description: Uzak Masaüstü Ağ Geçidi altyapınızı Azure mfa'yı Microsoft Azure için ağ ilkesi sunucusu uzantısı kullanarak tümleştirin
+title: Integrate RDG with Azure MFA NPS extension - Azure Active Directory
+description: Integrate your Remote Desktop Gateway infrastructure with Azure MFA using the Network Policy Server extension for Microsoft Azure
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 12/03/2018
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf9188502dd2b17bcd898e2655138b06cfe5cebf
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 6ec402cf2c741d88d230e5734485bf9eb0dd1b03
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898545"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381825"
 ---
-# <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Ağ İlkesi Sunucusu (NPS) uzantısı ve Azure AD kullanarak Uzak Masaüstü Ağ Geçidi altyapınızı tümleştirin
+# <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrate your Remote Desktop Gateway infrastructure using the Network Policy Server (NPS) extension and Azure AD
 
-Bu makalede ayrıntıları Uzak Masaüstü Ağ Geçidi altyapınızı Azure multi-Factor Authentication (MFA) ile tümleştirmek için Microsoft Azure için ağ ilkesi sunucusu (NPS) uzantısını kullanarak sağlar.
+This article provides details for integrating your Remote Desktop Gateway infrastructure with Azure Multi-Factor Authentication (MFA) using the Network Policy Server (NPS) extension for Microsoft Azure.
 
-Ağ İlkesi Sunucusu (NPS) uzantısı için Azure, müşterilerin korumanıza olanak tanır. uzak kimlik denetimi içeri arama kullanıcı hizmeti (RADIUS) istemci kimlik doğrulaması Azure'ı kullanarak bulut tabanlı [multi-Factor Authentication (MFA)](multi-factor-authentication.md). Bu çözüm, kullanıcı oturum açmaları ve işlemleri için ikinci bir güvenlik katmanı eklemek için iki aşamalı doğrulama sağlar.
+The Network Policy Server (NPS) extension for Azure allows customers to safeguard Remote Authentication Dial-In User Service (RADIUS) client authentication using Azure’s cloud-based [Multi-Factor Authentication (MFA)](multi-factor-authentication.md). This solution provides two-step verification for adding a second layer of security to user sign-ins and transactions.
 
-Bu makalede, Azure için NPS uzantısı kullanarak NPS altyapı ile Azure mfa'yı tümleştirmek için adım adım yönergeler sağlar. Bu, bir Uzak Masaüstü Ağ Geçidi oturum açmaya çalışan kullanıcılar için güvenli doğrulama sağlar.
+This article provides step-by-step instructions for integrating the NPS infrastructure with Azure MFA using the NPS extension for Azure. This enables secure verification for users attempting to sign in to a Remote Desktop Gateway.
 
 > [!NOTE]
-> Bu makale MFA sunucu dağıtımlarıyla kullanılmamalıdır ve yalnızca Azure MFA (bulut tabanlı) dağıtımlarıyla birlikte kullanılmalıdır.
+> This article should not be used with MFA Server deployments and should only be used with Azure MFA (Cloud-based) deployments.
 
-Ağ İlkesi ve erişim Hizmetleri'ni (NPS) kuruluşlar yeteneği aşağıdakileri sağlar:
+The Network Policy and Access Services (NPS) gives organizations the ability to do the following:
 
-* Yönetim Merkezi konumlarını ve denetim kimin bağlanabilir belirterek ağ isteklerinin gün bağlantıların ne zaman izin verilir, bağlantıları süresini ve istemcilerin bağlanın ve benzeri güvenlik düzeyini tanımlar. Bu ilkelerin her VPN ya da Uzak Masaüstü (RD) Ağ Geçidi sunucusuna belirtmek yerine, bu ilkeler, bir kez merkezi bir konumda belirtilebilir. RADIUS protokolü, merkezi kimlik doğrulaması, yetkilendirme ve hesap işlemleri (AAA) sağlar.
-* Kurmak ve cihazları Kısıtlanmamış veya kısıtlanmış ağ kaynaklarına erişim izni olup olmadığını belirleyen Ağ Erişim Koruması (NAP) istemci sistem durumu ilkeleri uygular.
-* Kimlik doğrulama ve yetkilendirme erişim için 802.1 zorlamak için sağladıkları x özellikli kablosuz erişim noktaları ve Ethernet anahtarları.
+* Define central locations for the management and control of network requests by specifying who can connect, what times of day connections are allowed, the duration of connections, and the level of security that clients must use to connect, and so on. Rather than specifying these policies on each VPN or Remote Desktop (RD) Gateway server, these policies can be specified once in a central location. The RADIUS protocol provides the centralized Authentication, Authorization, and Accounting (AAA).
+* Establish and enforce Network Access Protection (NAP) client health policies that determine whether devices are granted unrestricted or restricted access to network resources.
+* Provide a means to enforce authentication and authorization for access to 802.1x-capable wireless access points and Ethernet switches.
 
-Genellikle kuruluşlar VPN ilkelerinin yönetimini basitleştirmek ve merkezileştirmek için NPS (RADIUS) kullanır. Ancak, çoğu kuruluş ayrıca NPS RD Masaüstü Bağlantısı Yetkilendirme İlkeleri (RD Cap'leri) yönetimini merkezden gerçekleştirin ve kolaylaştırmak için kullanır.
+Typically, organizations use NPS (RADIUS) to simplify and centralize the management of VPN policies. However, many organizations also use NPS to simplify and centralize the management of RD Desktop Connection Authorization Policies (RD CAPs).
 
-Kuruluşlar, NPS güvenliğini ve yüksek düzeyde uyumluluk sağlamak için Azure MFA ile de tümleştirebilirsiniz. Bu kullanıcılar oturum açmak için Uzak Masaüstü Ağ geçidi için iki aşamalı doğrulama oluşturmanızı sağlar. Kullanıcıların erişim verilmesi için kendi denetimde kullanıcının sahip olduğu bilgilerle birlikte, kullanıcı adı/parola bileşimini sağlamanız gerekir. Bu bilgileri güvenilir ve kolayca yinelenen, bir cep telefonu numarası, telefona numarası, uygulamayı bir mobil cihaz ve benzeri gibi. RDG Şu anda 2FA için Microsoft Authenticator uygulama yöntemlerinden telefon aramasını ve anında iletme bildirimlerini desteklemektedir. Desteklenen kimlik doğrulama yöntemleri hakkında daha fazla bilgi için, bkz [kullanıcılarınızın kimlik doğrulama yöntemlerini kullanma belirleme](howto-mfa-nps-extension.md#determine-which-authentication-methods-your-users-can-use).
+Organizations can also integrate NPS with Azure MFA to enhance security and provide a high level of compliance. This helps ensure that users establish two-step verification to sign in to the Remote Desktop Gateway. For users to be granted access, they must provide their username/password combination along with information that the user has in their control. This information must be trusted and not easily duplicated, such as a cell phone number, landline number, application on a mobile device, and so on. RDG currently supports phone call and push notifications from Microsoft authenticator app methods for 2FA. For more information about supported authentication methods see the section [Determine which authentication methods your users can use](howto-mfa-nps-extension.md#determine-which-authentication-methods-your-users-can-use).
 
-Azure için NPS uzantısı kullanıma açılmadan önce yapılandırın ve ayrı bir MFA sunucusu şirket içi ortamda içindeaçıklandığıgibikorumaktümleşikNPSveAzuremfa'yıortamlarıiçinikiaşamalıdoğrulamayıuygulamaayarlarınışahsenyapmasınıistedinizmüşterilervardı.[ Uzak Masaüstü Ağ geçidi ve Azure multi-Factor Authentication sunucusu RADIUS kullanan](howto-mfaserver-nps-rdg.md).
+Prior to the availability of the NPS extension for Azure, customers who wished to implement two-step verification for integrated NPS and Azure MFA environments had to configure and maintain a separate MFA Server in the on-premises environment as documented in [Remote Desktop Gateway and Azure Multi-Factor Authentication Server using RADIUS](howto-mfaserver-nps-rdg.md).
 
-Azure için NPS uzantısı kullanılabilirliğini artık kuruluşların güvenli RADIUS istemci kimlik doğrulaması için şirket içi tabanlı MFA çözümünü veya bir bulut tabanlı MFA çözümünü dağıtmak için seçmenizi sağlar.
+The availability of the NPS extension for Azure now gives organizations the choice to deploy either an on-premises based MFA solution or a cloud-based MFA solution to secure RADIUS client authentication.
 
-## <a name="authentication-flow"></a>Kimlik doğrulama akışı
+## <a name="authentication-flow"></a>Authentication Flow
 
-Kullanıcıların Uzak Masaüstü Ağ Geçidi aracılığıyla ağ kaynaklarına erişim verilmesi için bir RD Bağlantı Yetkilendirme İlkesi (RD CAP) ve bir RD kaynak yetkilendirme ilkesi (RD RAP) belirtilen koşulları karşılaması gerekir. RD CAP kimin RD ağ geçitlerine bağlanmak için yetkili belirtin. Uzak Masaüstü veya kullanıcı RD Ağ geçidi üzerinden bağlanmasına izin verilen uzaktan uygulamaları gibi ağ kaynaklarına RD RAP belirtin.
+For users to be granted access to network resources through a Remote Desktop Gateway, they must meet the conditions specified in one RD Connection Authorization Policy (RD CAP) and one RD Resource Authorization Policy (RD RAP). RD CAPs specify who is authorized to connect to RD Gateways. RD RAPs specify the network resources, such as remote desktops or remote apps, that the user is allowed to connect to through the RD Gateway.
 
-RD Ağ geçidi için RD Cap'leri bir merkezi ilke deposunu kullanmak üzere yapılandırılabilir. RD Ağ Geçidi üzerinde işlendikçe RD RAP bir merkezi ilke kullanamazsınız. Merkezi ilke deposu olarak hizmet veren başka bir NPS sunucusunun RADIUS istemcisi için RD Cap'leri merkezi ilke deposu kullanmak üzere yapılandırılmış bir RD Ağ Geçidi örneğidir.
+An RD Gateway can be configured to use a central policy store for RD CAPs. RD RAPs cannot use a central policy, as they are processed on the RD Gateway. An example of an RD Gateway configured to use a central policy store for RD CAPs is a RADIUS client to another NPS server that serves as the central policy store.
 
-Azure için NPS uzantısı NPS ve Uzak Masaüstü Ağ geçidi ile tümleştirildiğinde, başarılı kimlik doğrulaması akışı aşağıdaki gibidir:
+When the NPS extension for Azure is integrated with the NPS and Remote Desktop Gateway, the successful authentication flow is as follows:
 
-1. Uzak Masaüstü Ağ Geçidi sunucusu, Uzak Masaüstü oturumu gibi bir kaynağa bağlanmak için bir Uzak Masaüstü kullanıcı kimlik doğrulama isteği alır. Bir RADIUS istemcisi işlevi gören, Uzak Masaüstü Ağ Geçidi sunucusu, RADIUS erişim isteğini ileti isteği dönüştürür ve NPS uzantısı, yüklü olduğu, RADIUS (NPS'yi) sunucusuna ileti gönderir.
-1. Kullanıcı adı ve parola birleşimini Active Directory'de doğrulanır ve kullanıcının kimliği doğrulanır.
-1. NPS bağlantı isteği ve ağ ilkelerinde belirtilen tüm koşullar karşılanıyorsa (örneğin, zaman gün veya grubun üyelik kısıtlamaları), bir istek için ikincil kimlik doğrulaması ile Azure MFA NPS uzantısı tetikler.
-1. Azure MFA, Azure AD ile iletişim kurar, kullanıcının ayrıntılarını alır ve desteklenen bir yöntemle ikincil kimlik doğrulaması gerçekleştirir.
-1. MFA testini başarılı olduktan sonra Azure MFA NPS uzantısı sonucu iletişim kurar.
-1. Uzantının yüklü, NPS sunucusunun bir RADIUS Erişim Kabul iletisi RD CAP ilkesi için Uzak Masaüstü Ağ Geçidi sunucusuna gönderir.
-1. Kullanıcı, RD Ağ Geçidi aracılığıyla istenen ağ kaynağına erişim izni verilir.
+1. The Remote Desktop Gateway server receives an authentication request from a remote desktop user to connect to a resource, such as a Remote Desktop session. Acting as a RADIUS client, the Remote Desktop Gateway server converts the request to a RADIUS Access-Request message and sends the message to the RADIUS (NPS) server where the NPS extension is installed.
+1. The username and password combination is verified in Active Directory and the user is authenticated.
+1. If all the conditions as specified in the NPS Connection Request and the Network Policies are met (for example, time of day or group membership restrictions), the NPS extension triggers a request for secondary authentication with Azure MFA.
+1. Azure MFA communicates with Azure AD, retrieves the user’s details, and performs the secondary authentication using supported methods.
+1. Upon success of the MFA challenge, Azure MFA communicates the result to the NPS extension.
+1. The NPS server, where the extension is installed, sends a RADIUS Access-Accept message for the RD CAP policy to the Remote Desktop Gateway server.
+1. The user is granted access to the requested network resource through the RD Gateway.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu bölümde, Uzak Masaüstü Ağ geçidi ile Azure mfa'yı tümleştirme önce gerekli önkoşulları açıklanmaktadır. Başlamadan önce aşağıdaki önkoşulların yerinde olması gerekir.  
+This section details the prerequisites necessary before integrating Azure MFA with the Remote Desktop Gateway. Before you begin, you must have the following prerequisites in place.  
 
-* Uzak Masaüstü Hizmetleri (RDS) altyapısı
-* Azure MFA lisans
-* Windows Server yazılımı
-* Ağ İlkesi ve erişim Hizmetleri'ni (NPS) rol
-* Azure Active Directory, şirket içi Active Directory ile eşitlenmiş
-* Azure Active Directory GUID kimliği
+* Remote Desktop Services (RDS) infrastructure
+* Azure MFA License
+* Windows Server software
+* Network Policy and Access Services (NPS) role
+* Azure Active Directory synched with on-premises Active Directory
+* Azure Active Directory GUID ID
 
-### <a name="remote-desktop-services-rds-infrastructure"></a>Uzak Masaüstü Hizmetleri (RDS) altyapısı
+### <a name="remote-desktop-services-rds-infrastructure"></a>Remote Desktop Services (RDS) infrastructure
 
-Çalışan bir Uzak Masaüstü Hizmetleri (RDS) altyapısının yerinde olması gerekir. Bunu yapmazsanız, aşağıdaki hızlı başlangıç şablonunu kullanarak bu altyapıyı Azure 'da hızlıca oluşturabilirsiniz: [Uzak Masaüstü oturumu koleksiyonu dağıtımı oluşturun](https://github.com/Azure/azure-quickstart-templates/tree/ad20c78b36d8e1246f96bb0e7a8741db481f957f/rds-deployment).
+You must have a working Remote Desktop Services (RDS) infrastructure in place. If you do not, then you can quickly create this infrastructure in Azure using the following quickstart template: [Create Remote Desktop Session Collection deployment](https://github.com/Azure/azure-quickstart-templates/tree/ad20c78b36d8e1246f96bb0e7a8741db481f957f/rds-deployment).
 
-El ile test etmek için hızlı bir şekilde şirket içi RDS altyapı oluşturmak istiyorsanız, bir dağıtmak için adımları izleyin.
-**Daha fazla bilgi**: Azure hızlı başlangıç ve [temel RDS altyapı dağıtımı](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure) [Ile RDS 'yi dağıtın](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-in-azure) .
+If you wish to manually create an on-premises RDS infrastructure quickly for testing purposes, follow the steps to deploy one.
+**Learn more**: [Deploy RDS with Azure quickstart](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-in-azure) and [Basic RDS infrastructure deployment](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure).
 
-### <a name="azure-mfa-license"></a>Azure MFA lisans
+### <a name="azure-mfa-license"></a>Azure MFA License
 
-Gerekli bir lisans Azure MFA için hangi Azure AD Premium ya da dahil diğer grupları kullanılabilir. Tüketim tabanlı lisans gibi kullanıcı başına veya kimlik doğrulaması lisans başına Azure mfa NPS uzantısı ile uyumlu değildir. Daha fazla bilgi için [Azure multi-Factor Authentication'ı alma](concept-mfa-licensing.md). Sınama amacıyla bir deneme aboneliğini kullanabilirsiniz.
+Required is a license for Azure MFA, which is available through Azure AD Premium or other bundles that include it. Consumption-based licenses for Azure MFA, such as per user or per authentication licenses, are not compatible with the NPS extension. For more information, see [How to get Azure Multi-Factor Authentication](concept-mfa-licensing.md). For testing purposes, you can use a trial subscription.
 
-### <a name="windows-server-software"></a>Windows Server yazılımı
+### <a name="windows-server-software"></a>Windows Server software
 
-NPS uzantısı, Windows Server 2008 R2 SP1 gerektirir veya üstü yüklü NPS rol hizmetine sahip. Bu bölümdeki tüm adımlar, Windows Server 2016'yı kullanarak gerçekleştirildi.
+The NPS extension requires Windows Server 2008 R2 SP1 or above with the NPS role service installed. All the steps in this section were performed using Windows Server 2016.
 
-### <a name="network-policy-and-access-services-nps-role"></a>Ağ İlkesi ve erişim Hizmetleri'ni (NPS) rol
+### <a name="network-policy-and-access-services-nps-role"></a>Network Policy and Access Services (NPS) role
 
-NPS rol hizmetinin işlevselliğinin yanı sıra ağ erişim ilkesi sistem sağlığı hizmeti RADIUS sunucusu ve istemci sağlar. Bu rol, altyapınızdaki en az iki bilgisayara yüklenmelidir: Uzak Masaüstü Ağ Geçidi ve başka bir üye sunucu veya etki alanı denetleyicisi. Varsayılan olarak, zaten Uzak Masaüstü Ağ geçidi olarak yapılandırılmış bilgisayarda rolüdür.  Ayrıca NPS rolü üzerinde en az bir etki alanı denetleyicisi veya üye sunucu gibi başka bir bilgisayar üzerinde yüklemeniz gerekir.
+The NPS role service provides the RADIUS server and client functionality as well as Network Access Policy health service. This role must be installed on at least two computers in your infrastructure: The Remote Desktop Gateway and another member server or domain controller. By default, the role is already present on the computer configured as the Remote Desktop Gateway.  You must also install the NPS role on at least on another computer, such as a domain controller or member server.
 
-NPS rolü yükleme hakkında bilgi için Windows Server 2012 veya daha eski hizmet bkz [NAP sistem durumu ilkesi sunucusu yükleme](https://technet.microsoft.com/library/dd296890.aspx). NPS, bir etki alanı denetleyicisinde NPS'yi yüklemek için öneri de dahil olmak üzere en iyi bir açıklaması için bkz. [NPS için en iyi](https://technet.microsoft.com/library/cc771746).
+For information on installing the NPS role service Windows Server 2012 or older, see [Install a NAP Health Policy Server](https://technet.microsoft.com/library/dd296890.aspx). For a description of best practices for NPS, including the recommendation to install NPS on a domain controller, see [Best Practices for NPS](https://technet.microsoft.com/library/cc771746).
 
-### <a name="azure-active-directory-synched-with-on-premises-active-directory"></a>Azure Active Directory, şirket içi Active Directory ile eşitlenmiş
+### <a name="azure-active-directory-synched-with-on-premises-active-directory"></a>Azure Active Directory synched with on-premises Active Directory
 
-NPS uzantısını kullanmak için şirket içi kullanıcıları Azure AD ile eşitlenen ve MFA için etkinleştirilmiş olmalıdır. Bu bölümde, şirket içi kullanıcıların AD Connect kullanarak Azure AD ile eşitlenir varsayılır. Azure AD hakkında bilgi için bkz [şirket içi dizinlerinizi Azure Active Directory ile tümleştirme](../hybrid/whatis-hybrid-identity.md).
+To use the NPS extension, on-premises users must be synced with Azure AD and enabled for MFA. This section assumes that on-premises users are synched with Azure AD using AD Connect. For information on Azure AD connect, see [Integrate your on-premises directories with Azure Active Directory](../hybrid/whatis-hybrid-identity.md).
 
-### <a name="azure-active-directory-guid-id"></a>Azure Active Directory GUID kimliği
+### <a name="azure-active-directory-guid-id"></a>Azure Active Directory GUID ID
 
-NPS uzantısını yüklemek için Azure AD'nin GUID bilmeniz gerekir. Azure AD GUID'i bulmak için yönergeler aşağıda verilmiştir.
+To install NPS extension, you need to know the GUID of the Azure AD. Instructions for finding the GUID of the Azure AD are provided below.
 
-## <a name="configure-multi-factor-authentication"></a>Çok faktörlü kimlik doğrulamasını yapılandırma
+## <a name="configure-multi-factor-authentication"></a>Configure Multi-Factor Authentication
 
-Bu bölümde, Azure mfa'yı Uzak Masaüstü Ağ geçidi ile tümleştirmeye yönelik yönergeler sağlar. Yönetici olarak, kullanıcılar şirket içinde çok faktörlü cihazlar ya da uygulamaları kaydedebilmek için önce Azure MFA hizmetini yapılandırmanız gerekir.
+This section provides instructions for integrating Azure MFA with the Remote Desktop Gateway. As an administrator, you must configure the Azure MFA service before users can self-register their multi-factor devices or applications.
 
-Bağlantısındaki [bulutta Azure multi Factor Authentication kullanmaya başlama](howto-mfa-getstarted.md) , Azure AD kullanıcıları için mfa'yı etkinleştirmek için.
+Follow the steps in [Getting started with Azure Multi-Factor Authentication in the cloud](howto-mfa-getstarted.md) to enable MFA for your Azure AD users.
 
-### <a name="configure-accounts-for-two-step-verification"></a>İki aşamalı doğrulama için hesaplarını yapılandırma
+### <a name="configure-accounts-for-two-step-verification"></a>Configure accounts for two-step verification
 
-Bir hesap için mfa'yı etkinleştirildikten sonra ikinci kimlik doğrulama faktörü için kullanın ve iki aşamalı doğrulama kullanarak kimlik doğrulaması güvenilir bir cihaz başarılı bir şekilde yapılandırmadığınız sürece MFA İlkesi tarafından yönetilen kaynaklara oturum açamazsınız.
+Once an account has been enabled for MFA, you cannot sign in to resources governed by the MFA policy until you have successfully configured a trusted device to use for the second authentication factor and have authenticated using two-step verification.
 
-Bağlantısındaki [Azure multi-Factor Authentication benim için ne demektir?](../user-help/multi-factor-authentication-end-user.md) anlamak ve cihazlarınızı MFA için kullanıcı hesabınız ile düzgün şekilde yapılandırmak için.
+Follow the steps in [What does Azure Multi-Factor Authentication mean for me?](../user-help/multi-factor-authentication-end-user.md) to understand and properly configure your devices for MFA with your user account.
 
-## <a name="install-and-configure-nps-extension"></a>Yükleme ve NPS uzantısı yapılandırma
+## <a name="install-and-configure-nps-extension"></a>Install and configure NPS extension
 
-Bu bölümde, Uzak Masaüstü Ağ Geçidi istemci kimlik doğrulaması için Azure mfa'yı kullanmak için RDS altyapı yapılandırma için yönergeler sağlar.
+This section provides instructions for configuring RDS infrastructure to use Azure MFA for client authentication with the Remote Desktop Gateway.
 
-### <a name="acquire-azure-active-directory-guid-id"></a>Azure Active Directory GUID kimliği Al
+### <a name="acquire-azure-active-directory-guid-id"></a>Acquire Azure Active Directory GUID ID
 
-NPS uzantısı yapılandırma işleminin bir parçası olarak, Azure AD kiracınız için yönetici kimlik bilgileri ve Azure AD Kimliğini sağlamanız gerekir. Aşağıdaki adımlar Kiracı kimliğini almak nasıl gösterir
+As part of the configuration of the NPS extension, you need to supply admin credentials and the Azure AD ID for your Azure AD tenant. The following steps show you how to get the tenant ID.
 
-1. Oturum [Azure portalında](https://portal.azure.com) Azure kiracısının genel Yöneticisi olarak.
-1. Sol gezinti bölmesinde **Azure Active Directory** simgesi.
-1. Seçin **özellikleri**.
-1. Özellikler dikey penceresinde, dizin Kimliği'nin yanındaki tıklayın **kopyalama** kimliği panoya kopyalamak için aşağıda gösterildiği gibi simgesi.
+1. Sign in to the [Azure portal](https://portal.azure.com) as the global administrator of the Azure tenant.
+1. In the left navigation, select the **Azure Active Directory** icon.
+1. **Özellikler**’i seçin.
+1. In the Properties blade, beside the Directory ID, click the **Copy** icon, as shown below, to copy the ID to clipboard.
 
-   ![Azure portal dizin KIMLIĞI alınıyor](./media/howto-mfa-nps-extension-rdg/image1.png)
+   ![Getting the Directory ID from the Azure portal](./media/howto-mfa-nps-extension-rdg/image1.png)
 
-### <a name="install-the-nps-extension"></a>NPS uzantısını yükleme
+### <a name="install-the-nps-extension"></a>Install the NPS extension
 
-NPS uzantısı, Ağ İlkesi ve erişim Hizmetleri'ni (NPS) rolü yüklü bir sunucuya yükleyin. Tasarımınızı için RADIUS sunucusu olarak işlev görür.
+Install the NPS extension on a server that has the Network Policy and Access Services (NPS) role installed. This functions as the RADIUS server for your design.
 
 > [!Important]
-> Uzak Masaüstü Ağ Geçidi sunucunuzda NPS uzantısı yüklemeyin emin olun.
+> Be sure you do not install the NPS extension on your Remote Desktop Gateway server.
 >
 
-1. İndirme [NPS uzantısı](https://aka.ms/npsmfa).
-1. Yürütülebilir kurulum dosyası (NpsExtnForAzureMfaInstaller.exe) NPS sunucusuna kopyalayın.
-1. NPS sunucusunda çift **NpsExtnForAzureMfaInstaller.exe**. İstenirse, tıklayın **çalıştırma**.
-1. NPS uzantısı için Azure mfa'yı Kurulum iletişim kutusunda, yazılım lisans koşullarını gözden geçirin. kontrol **lisans hüküm ve koşulları kabul ediyorum**, tıklatıp **yükleme**.
-1. NPS uzantısı için Azure mfa'yı Kurulum iletişim kutusunda **Kapat**.
+1. Download the [NPS extension](https://aka.ms/npsmfa).
+1. Copy the setup executable file (NpsExtnForAzureMfaInstaller.exe) to the NPS server.
+1. On the NPS server, double-click **NpsExtnForAzureMfaInstaller.exe**. If prompted, click **Run**.
+1. In the NPS Extension For Azure MFA Setup dialog box, review the software license terms, check **I agree to the license terms and conditions**, and click **Install**.
+1. In the NPS Extension For Azure MFA Setup dialog box, click **Close**.
 
-### <a name="configure-certificates-for-use-with-the-nps-extension-using-a-powershell-script"></a>Bir PowerShell betiğini kullanarak NPS uzantısı ile kullanım için sertifikaları yapılandırma
+### <a name="configure-certificates-for-use-with-the-nps-extension-using-a-powershell-script"></a>Configure certificates for use with the NPS extension using a PowerShell script
 
-Ardından, iletişimlerin güvenliğini sağlamak ve güvencesi sağlamak için NPS uzantısı tarafından sertifikalar kullanmak için yapılandırmanız gerekir. NPS bileşenleri otomatik olarak imzalanan bir sertifika kullanmak için NPS ile yapılandıran bir Windows PowerShell Betiği içerir.
+Next, you need to configure certificates for use by the NPS extension to ensure secure communications and assurance. The NPS components include a Windows PowerShell script that configures a self-signed certificate for use with NPS.
 
-Komut aşağıdaki eylemleri gerçekleştirir:
+The script performs the following actions:
 
-* Otomatik olarak imzalanan bir sertifika oluşturur
-* Hizmet sorumlusu Azure AD için sertifikanın ortak anahtarını ilişkilendirir
-* Sertifika yerel makine deposu
-* Sertifikanın özel anahtarı ağ kullanıcı erişimi verir
-* Ağ İlkesi Sunucusu hizmetini yeniden başlatır
+* Creates a self-signed certificate
+* Associates public key of certificate to service principal on Azure AD
+* Stores the cert in the local machine store
+* Grants access to the certificate’s private key to the network user
+* Restarts Network Policy Server service
 
-Kendi sertifikalarını kullanmak istiyorsanız, Azure AD'de hizmet sorumlusu sertifikanıza ortak anahtarı ilişkilendirmek vb. gerekir.
+If you want to use your own certificates, you need to associate the public key of your certificate to the service principal on Azure AD, and so on.
 
-Betiği kullanmak için Azure AD yönetici kimlik bilgilerinizi ve daha önce kopyaladığınız Azure AD Kiracı Kimliğinizi uzantısı sağlar. Betik, NPS uzantısı yüklü olduğu her NPS sunucusunda çalıştırın. Ardından şunları yapın:
+To use the script, provide the extension with your Azure AD Admin credentials and the Azure AD tenant ID that you copied earlier. Run the script on each NPS server where you installed the NPS extension. Ardından şunları yapın:
 
-1. Bir yönetici Windows PowerShell istemi açın.
-1. PowerShell isteminde `cd ‘c:\Program Files\Microsoft\AzureMfa\Config’`basın **ENTER**.
-1. Tür `.\AzureMfaNpsExtnConfigSetup.ps1`basın **ENTER**. Betik, Azure Active Directory PowerShell Modülü yüklü olup olmadığını denetler. Yüklü değilse, komut sizin için modülünü yükler.
+1. Open an administrative Windows PowerShell prompt.
+1. At the PowerShell prompt, type `cd ‘c:\Program Files\Microsoft\AzureMfa\Config’`, and press **ENTER**.
+1. Type `.\AzureMfaNpsExtnConfigSetup.ps1`, and press **ENTER**. The script checks to see if the Azure Active Directory PowerShell module is installed. If not installed, the script installs the module for you.
 
-   ![Azure AD PowerShell 'de AzureMfaNpsExtnConfigSetup. ps1 çalıştırma](./media/howto-mfa-nps-extension-rdg/image4.png)
+   ![Running AzureMfaNpsExtnConfigSetup.ps1 in Azure AD PowerShell](./media/howto-mfa-nps-extension-rdg/image4.png)
   
-1. PowerShell modülünün yükleme betiği doğruladıktan sonra Azure Active Directory PowerShell modülü iletişim kutusunu görüntüler. İletişim kutusunda, Azure AD yönetici kimlik bilgilerini ve parolayı girin ve tıklayın **oturum**.
+1. After the script verifies the installation of the PowerShell module, it displays the Azure Active Directory PowerShell module dialog box. In the dialog box, enter your Azure AD admin credentials and password, and click **Sign In**.
 
-   ![PowerShell 'de Azure AD kimlik doğrulaması](./media/howto-mfa-nps-extension-rdg/image5.png)
+   ![Authenticating to Azure AD in PowerShell](./media/howto-mfa-nps-extension-rdg/image5.png)
 
-1. İstendiğinde, pano 'ya kopyaladığınız Dizin KIMLIĞINI daha önce yapıştırın ve **ENTER**tuşuna basın.
+1. When prompted, paste the Directory ID you copied to the clipboard earlier, and press **ENTER**.
 
-   ![PowerShell 'de dizin KIMLIĞI yerleştirme](./media/howto-mfa-nps-extension-rdg/image6.png)
+   ![Inputting the Directory ID in PowerShell](./media/howto-mfa-nps-extension-rdg/image6.png)
 
-1. Betik, otomatik olarak imzalanan bir sertifika oluşturur ve başka yapılandırma değişiklikleri gerçekleştirir. Çıktı, görüntüyü aşağıda gösterildiği gibi olması gerekir.
+1. The script creates a self-signed certificate and performs other configuration changes. The output should be like the image shown below.
 
-   ![Otomatik olarak imzalanan sertifikayı gösteren PowerShell çıkışı](./media/howto-mfa-nps-extension-rdg/image7.png)
+   ![Output of PowerShell showing self-signed certificate](./media/howto-mfa-nps-extension-rdg/image7.png)
 
-## <a name="configure-nps-components-on-remote-desktop-gateway"></a>Uzak Masaüstü Ağ Geçidi üzerinde NPS bileşenlerini yapılandırma
+## <a name="configure-nps-components-on-remote-desktop-gateway"></a>Configure NPS components on Remote Desktop Gateway
 
-Bu bölümde, Uzak Masaüstü Ağ Geçidi bağlantısı Yetkilendirme İlkeleri ve diğer RADIUS ayarlarını yapılandırın.
+In this section, you configure the Remote Desktop Gateway connection authorization policies and other RADIUS settings.
 
-Kimlik doğrulama akışı, Uzak Masaüstü Ağ Geçidi ile NPS uzantısının yüklendiği NPS sunucusu arasında RADIUS iletilerinin değiştirilmesini gerektirir. Başka bir deyişle, Uzak Masaüstü Ağ Geçidi hem NPS uzantısı, yüklü olduğu bir NPS sunucusunun RADIUS istemci ayarları yapılandırmalısınız.
+The authentication flow requires that RADIUS messages be exchanged between the Remote Desktop Gateway and the NPS server where the NPS extension is installed. This means that you must configure RADIUS client settings on both Remote Desktop Gateway and the NPS server where the NPS extension is installed.
 
-### <a name="configure-remote-desktop-gateway-connection-authorization-policies-to-use-central-store"></a>Uzak Masaüstü Ağ Geçidi bağlantısı yetkilendirme ilkeleri merkezi deposunu kullanmak üzere yapılandırma
+### <a name="configure-remote-desktop-gateway-connection-authorization-policies-to-use-central-store"></a>Configure Remote Desktop Gateway connection authorization policies to use central store
 
-Uzak Masaüstü Bağlantısı Yetkilendirme İlkeleri (RD Cap'leri) bir Uzak Masaüstü Ağ Geçidi sunucusuna bağlanmak için koşulları belirtin. RD CAP yerel olarak depolanabilir (varsayılan) ya da depolanabilir NPS çalıştıran merkezi bir RD CAP Deposu içinde. RDS ile Azure mfa'yı tümleştirmesini yapılandırmak için merkezi bir depo kullanımını belirtmeniz gerekir.
+Remote Desktop connection authorization policies (RD CAPs) specify the requirements for connecting to a Remote Desktop Gateway server. RD CAPs can be stored locally (default) or they can be stored in a central RD CAP store that is running NPS. To configure integration of Azure MFA with RDS, you need to specify the use of a central store.
 
-1. RD Ağ Geçidi sunucusunda açın **Sunucu Yöneticisi**.
-1. Menüsünde **Araçları**, işaret **Uzak Masaüstü Hizmetleri**ve ardından **Uzak Masaüstü Ağ Geçidi Yöneticisi**.
-1. RD Ağ Geçidi Yöneticisi'nde sağ  **\[sunucu adı\] (yerel)** , tıklatıp **özellikleri**.
-1. Özellikler iletişim kutusunda, seçmek **RD CAP Store** sekmesi.
-1. RD CAP Store sekmesinde **NPS çalıştıran merkezi sunucu**. 
-1. İçinde **NPS çalıştıran sunucu için bir ad veya IP adresi girin** alan, NPS uzantısını yüklediğiniz sunucunun IP adresini veya sunucu adını yazın.
+1. On the RD Gateway server, open **Server Manager**.
+1. On the menu, click **Tools**, point to **Remote Desktop Services**, and then click **Remote Desktop Gateway Manager**.
+1. In the RD Gateway Manager, right-click **\[Server Name\] (Local)** , and click **Properties**.
+1. In the Properties dialog box, select the **RD CAP Store** tab.
+1. On the RD CAP Store tab, select **Central server running NPS**. 
+1. In the **Enter a name or IP address for the server running NPS** field, type the IP address or server name of the server where you installed the NPS extension.
 
-   ![NPS sunucunuzun adını veya IP adresini girin](./media/howto-mfa-nps-extension-rdg/image10.png)
+   ![Enter the name or IP Address of your NPS Server](./media/howto-mfa-nps-extension-rdg/image10.png)
   
-1. **Ekle**'yi tıklatın.
-1. İçinde **paylaşılan gizli diziyi** iletişim kutusunda, paylaşılan gizlilik girin ve ardından **Tamam**. Bu paylaşılan gizli dizinin kaydedin ve kaydı güvenli bir şekilde saklayın emin olun.
+1. **Ekle**'ye tıklayın.
+1. In the **Shared Secret** dialog box, enter a shared secret, and then click **OK**. Ensure you record this shared secret and store the record securely.
 
    >[!NOTE]
-   >Paylaşılan gizliliğin, RADIUS sunucuları ve istemciler arasında güven oluşturmak için kullanılır. Uzun ve karmaşık bir parola oluşturun.
+   >Shared secret is used to establish trust between the RADIUS servers and clients. Create a long and complex secret.
    >
 
-   ![Güven sağlamak için paylaşılan gizlilik oluşturma](./media/howto-mfa-nps-extension-rdg/image11.png)
+   ![Creating a shared secret to establish trust](./media/howto-mfa-nps-extension-rdg/image11.png)
 
 1. **Tamam**’a tıklayarak iletişim kutusunu kapatın.
 
-### <a name="configure-radius-timeout-value-on-remote-desktop-gateway-nps"></a>Uzak Masaüstü Ağ Geçidi NPS'ye RADIUS zaman aşımı değerini yapılandırma
+### <a name="configure-radius-timeout-value-on-remote-desktop-gateway-nps"></a>Configure RADIUS timeout value on Remote Desktop Gateway NPS
 
-Kullanıcıların kimlik bilgilerini doğrulamak için zaman olduğundan emin olmak için iki aşamalı doğrulamanın, yanıtlar almasına ve yanıt RADIUS iletiler için RADIUS zaman aşımı değeri ayarlamak gereklidir.
+To ensure there is time to validate users’ credentials, perform two-step verification, receive responses, and respond to RADIUS messages, it is necessary to adjust the RADIUS timeout value.
 
-1. RD Ağ Geçidi sunucusunda, Sunucu Yöneticisi'ni açın. Menüsünde **Araçları**ve ardından **ağ ilkesi sunucusu**.
-1. İçinde **NPS (yerel)** genişletin **RADIUS istemcileri ve sunucuları**seçip **uzak RADIUS sunucu**.
+1. On the RD Gateway server, open Server Manager. On the menu, click **Tools**, and then click **Network Policy Server**.
+1. In the **NPS (Local)** console, expand **RADIUS Clients and Servers**, and select **Remote RADIUS Server**.
 
-   ![Uzak RADIUS sunucusunu gösteren ağ Ilkesi sunucusu yönetim konsolu](./media/howto-mfa-nps-extension-rdg/image12.png)
+   ![Network Policy Server management console showing Remote RADIUS Server](./media/howto-mfa-nps-extension-rdg/image12.png)
 
-1. Ayrıntılar bölmesinde **TS Ağ Geçidi sunucusu GRUBUNU**.
+1. In the details pane, double-click **TS GATEWAY SERVER GROUP**.
 
    >[!NOTE]
-   >NPS ilkelerinin merkezi sunucu yapılandırıldığında bu RADIUS sunucu grubu oluşturuldu. RD Ağ Geçidi grubunda birden daha fazla olması durumunda bu sunucuya veya sunucu grubu RADIUS iletileri iletir.
+   >This RADIUS Server Group was created when you configured the central server for NPS policies. The RD Gateway forwards RADIUS messages to this server or group of servers, if more than one in the group.
    >
 
-1. İçinde **TS Ağ Geçidi sunucusu grubu özellikleri** iletişim kutusunda, RD Cap'leri depolamak ve ardından yapılandırılmış NPS sunucusu adı ve IP adresi seçin **Düzenle**.
+1. In the **TS GATEWAY SERVER GROUP Properties** dialog box, select the IP address or name of the NPS server you configured to store RD CAPs, and then click **Edit**.
 
-   ![Daha önce yapılandırılan NPS sunucusunun IP veya adını seçin](./media/howto-mfa-nps-extension-rdg/image13.png)
+   ![Select the IP or name of the NPS Server configured earlier](./media/howto-mfa-nps-extension-rdg/image13.png)
 
-1. İçinde **RADIUS sunucusu Düzenle** iletişim kutusunda **Yük Dengeleme** sekmesi.
-1. İçinde **Yük Dengeleme** sekmesinde **istek kabul etmeden önce yanıt almadan saniye sayısını bırakılan** alan, varsayılan değer 3 ila 30 ila 60 saniye arasında bir değer olarak değiştirin.
-1. İçinde **sunucu kullanılamaz olarak tanımlandığında istekler arasındaki saniye sayısını** alanında, önceki adımda belirtilen değerden büyük veya ona eşit bir değer 30 saniye varsayılan değeri değiştirin.
+1. In the **Edit RADIUS Server** dialog box, select the **Load Balancing** tab.
+1. In the **Load Balancing** tab, in the **Number of seconds without response before request is considered dropped** field, change the default value from 3 to a value between 30 and 60 seconds.
+1. In the **Number of seconds between requests when server is identified as unavailable** field, change the default value of 30 seconds to a value that is equal to or greater than the value you specified in the previous step.
 
-   ![Yük Dengeleme sekmesinde RADIUS sunucusu zaman aşımı ayarlarını düzenleyin](./media/howto-mfa-nps-extension-rdg/image14.png)
+   ![Edit Radius Server timeout settings on the load balancing tab](./media/howto-mfa-nps-extension-rdg/image14.png)
 
-1. Tıklayın **Tamam** iletişim kutularını kapatmak için iki kez.
+1. Click **OK** two times to close the dialog boxes.
 
-### <a name="verify-connection-request-policies"></a>Bağlantı isteği ilkeleri doğrulayın
+### <a name="verify-connection-request-policies"></a>Verify Connection Request Policies
 
-RD Ağ Geçidi bağlantısı Yetkilendirme İlkeleri için bir merkezi ilke deposunu kullanmak üzere yapılandırdığınızda, varsayılan olarak, RD Ağ Geçidi UÇ istekleri NPS sunucusuna iletmek için yapılandırılır. NPS sunucusu ile Azure mfa'yı uzantısı yüklü, RADIUS erişim isteğini işler. Aşağıdaki adımlar varsayılan bağlantı isteği ilkesi nasıl gösterir.
+By default, when you configure the RD Gateway to use a central policy store for connection authorization policies, the RD Gateway is configured to forward CAP requests to the NPS server. The NPS server with the Azure MFA extension installed, processes the RADIUS access request. The following steps show you how to verify the default connection request policy.
 
-1. NPS (yerel) konsolunda, RD Ağ Geçidi üzerinde genişletin **ilkeleri**seçip **bağlantı isteği ilkeleri**.
-1. Çift **TS Ağ Geçidi kimlik doğrulama İlkesi**.
-1. İçinde **TS Ağ Geçidi kimlik doğrulama İlkesi Özellikleri** iletişim kutusu, tıklayın **ayarları** sekmesi.
-1. Üzerinde **ayarları** iletme, bağlantı isteği altında sekmesini **kimlik doğrulaması**. RADIUS istemcisi, kimlik doğrulama istekleri iletmek için yapılandırılır.
+1. On the RD Gateway, in the NPS (Local) console, expand **Policies**, and select **Connection Request Policies**.
+1. Double-click **TS GATEWAY AUTHORIZATION POLICY**.
+1. In the **TS GATEWAY AUTHORIZATION POLICY properties** dialog box, click the **Settings** tab.
+1. On **Settings** tab, under Forwarding Connection Request, click **Authentication**. RADIUS client is configured to forward requests for authentication.
 
-   ![Sunucu grubunu belirten kimlik doğrulama ayarlarını yapılandırın](./media/howto-mfa-nps-extension-rdg/image15.png)
+   ![Configure Authentication Settings specifying the server group](./media/howto-mfa-nps-extension-rdg/image15.png)
 
-1. Tıklayın **iptal**.
+1. Click **Cancel**.
 
-## <a name="configure-nps-on-the-server-where-the-nps-extension-is-installed"></a>NPS uzantısı, yüklü olduğu sunucuda NPS yapılandırma
+## <a name="configure-nps-on-the-server-where-the-nps-extension-is-installed"></a>Configure NPS on the server where the NPS extension is installed
 
-NPS uzantısı, yüklü olduğu bir NPS sunucusu ile NPS sunucu Uzak Masaüstü Ağ Geçidi üzerinde RADIUS mesaj alışverişi gerekir. Bu ileti değişim etkinleştirmek için NPS uzantısı Hizmeti'nin yüklendiği sunucuda NPS bileşenleri yapılandırmanız gerekir.
+The NPS server where the NPS extension is installed needs to be able to exchange RADIUS messages with the NPS server on the Remote Desktop Gateway. To enable this message exchange, you need to configure the NPS components on the server where the NPS extension service is installed.
 
-### <a name="register-server-in-active-directory"></a>Sunucusu Active Directory'de Kaydettir
+### <a name="register-server-in-active-directory"></a>Register Server in Active Directory
 
-Bu senaryoda düzgün çalışması için NPS sunucusunun Active Directory'de kayıtlı olması gerekir.
+To function properly in this scenario, the NPS server needs to be registered in Active Directory.
 
-1. NPS sunucusunda açın **Sunucu Yöneticisi**.
-1. Sunucu Yöneticisi'nde **Araçları**ve ardından **ağ ilkesi sunucusu**.
-1. Sağ tıklayın ağ ilkesi sunucusu konsolunda **NPS (yerel)** ve ardından **Active Directory'de kayıt sunucusu**.
-1. Tıklayın **Tamam** iki kez.
+1. On the NPS server, open **Server Manager**.
+1. In Server Manager, click **Tools**, and then click **Network Policy Server**.
+1. In the Network Policy Server console, right-click **NPS (Local)** , and then click **Register server in Active Directory**.
+1. Click **OK** two times.
 
-   ![NPS sunucusunu Active Directory kaydetme](./media/howto-mfa-nps-extension-rdg/image16.png)
+   ![Register the NPS server in Active Directory](./media/howto-mfa-nps-extension-rdg/image16.png)
 
-1. Konsolunu sonraki yordam için açık bırakın.
+1. Leave the console open for the next procedure.
 
-### <a name="create-and-configure-radius-client"></a>Oluşturma ve RADIUS istemci yapılandırma
+### <a name="create-and-configure-radius-client"></a>Create and configure RADIUS client
 
-Uzak Masaüstü Ağ Geçidi NPS sunucusunun RADIUS istemcisi olarak yapılandırılması gerekir.
+The Remote Desktop Gateway needs to be configured as a RADIUS client to the NPS server.
 
-1. NPS uzantısı yüklü olduğu, buna NPS sunucusunda **NPS (yerel)** konsolunda, sağ **RADIUS istemcileri** tıklatıp **yeni**.
+1. On the NPS server where the NPS extension is installed, in the **NPS (Local)** console, right-click **RADIUS Clients** and click **New**.
 
-   ![NPS konsolunda yeni bir RADIUS Istemcisi oluşturma](./media/howto-mfa-nps-extension-rdg/image17.png)
+   ![Create a New RADIUS Client in the NPS console](./media/howto-mfa-nps-extension-rdg/image17.png)
 
-1. İçinde **yeni RADIUS istemcisi** iletişim kutusunda, gibi kolay bir ad verin _ağ geçidi_ve IP adresi ya da Uzak Masaüstü Ağ Geçidi sunucusunun DNS adı.
-1. İçinde **paylaşılan gizlilik** ve **paylaşılan gizliliği onayla** alanları önceden kullanmış olduğunuz aynı parolayı girin.
+1. In the **New RADIUS Client** dialog box, provide a friendly name, such as _Gateway_, and the IP address or DNS name of the Remote Desktop Gateway server.
+1. In the **Shared secret** and the **Confirm shared secret** fields, enter the same secret that you used before.
 
-   ![Kolay bir ad ve IP veya DNS adresi yapılandırın](./media/howto-mfa-nps-extension-rdg/image18.png)
+   ![Configure a friendly name and the IP or DNS address](./media/howto-mfa-nps-extension-rdg/image18.png)
 
-1. Tıklayın **Tamam** yeni RADIUS istemcisi iletişim kutusunu kapatın.
+1. Click **OK** to close the New RADIUS Client dialog box.
 
-### <a name="configure-network-policy"></a>Ağ İlkesi yapılandırma
+### <a name="configure-network-policy"></a>Configure Network Policy
 
-NPS sunucusu ile Azure mfa'yı uzantısı atanmış merkezi ilke deposu bağlantı yetkilendirme ilkesi (CAP) için olduğunu hatırlayın. Bu nedenle, bir büyük harf geçerli bağlantı isteklerini yetkilendirmek için NPS sunucusuna uygulamak gerekir.  
+Recall that the NPS server with the Azure MFA extension is the designated central policy store for the Connection Authorization Policy (CAP). Therefore, you need to implement a CAP on the NPS server to authorize valid connections requests.  
 
-1. NPS sunucusunda, NPS (yerel) konsolunu açın, **ilkeleri**, tıklatıp **ağ ilkeleri**.
-1. Sağ **diğer erişim sunucularına bağlantı**, tıklatıp **yinelenen ilke**.
+1. On the NPS Server, open the NPS (Local) console, expand **Policies**, and click **Network Policies**.
+1. Right-click **Connections to other access servers**, and click **Duplicate Policy**.
 
-   ![Diğer erişim sunucuları ilkesiyle bağlantıyı çoğaltın](./media/howto-mfa-nps-extension-rdg/image19.png)
+   ![Duplicate the connection to other access servers policy](./media/howto-mfa-nps-extension-rdg/image19.png)
 
-1. Sağ **diğer erişim sunucularına bağlantı kopyalama**, tıklatıp **özellikleri**.
-1. İçinde **diğer erişim sunucularına bağlantı kopyalama** iletişim kutusundaki **ilke adı**, gibi uygun bir ad girin _RDG_CAP_. Denetleme **etkin ilke**seçip **erişim ver**. İsteğe bağlı olarak **ağ erişim sunucusu türü**seçin **Uzak Masaüstü Ağ Geçidi**, veya olarak bırakılabilir **belirtilmemiş**.
+1. Right-click **Copy of Connections to other access servers**, and click **Properties**.
+1. In the **Copy of Connections to other access servers** dialog box, in **Policy name**, enter a suitable name, such as _RDG_CAP_. Check **Policy enabled**, and select **Grant access**. Optionally, in **Type of network access server**, select **Remote Desktop Gateway**, or you can leave it as **Unspecified**.
 
-   ![İlkeyi adlandırın, etkinleştirin ve erişim izni verin](./media/howto-mfa-nps-extension-rdg/image21.png)
+   ![Name the policy, enable, and grant access](./media/howto-mfa-nps-extension-rdg/image21.png)
 
-1. Tıklayın **kısıtlamaları** sekmesini tıklatıp denetleyin **istemcilerin kimlik doğrulama yöntemi anlaşmadan bağlanmasına izin ver**.
+1. Click the **Constraints** tab, and check **Allow clients to connect without negotiating an authentication method**.
 
-   ![İstemcilerin bağlanmasına izin vermek için kimlik doğrulama yöntemlerini değiştirme](./media/howto-mfa-nps-extension-rdg/image22.png)
+   ![Modify authentication methods to allow clients to connect](./media/howto-mfa-nps-extension-rdg/image22.png)
 
-1. İsteğe bağlı olarak, tıklayın **koşullar** sekmesini ve bağlantının, örneğin, belirli bir Windows grubu üyeliği'da yetkilendirilmesi karşılanması gereken koşulları ekleyin.
+1. Optionally, click the **Conditions** tab and add conditions that must be met for the connection to be authorized, for example, membership in a specific Windows group.
 
-   ![İsteğe bağlı olarak bağlantı koşullarını belirtin](./media/howto-mfa-nps-extension-rdg/image23.png)
+   ![Optionally specify connection conditions](./media/howto-mfa-nps-extension-rdg/image23.png)
 
-1. **Tamam**'ı tıklatın. İlgili Yardım konusunu görüntülemek için sorulduğunda **Hayır**.
-1. Erişim verir ve yeni ilkeniz ilkenin etkinleştirildiğini listenin başında olduğundan emin olun.
+1. **Tamam**’a tıklayın. When prompted to view the corresponding Help topic, click **No**.
+1. Ensure that your new policy is at the top of the list, that the policy is enabled, and that it grants access.
 
-   ![İlkenizi listenin en üstüne taşıyın](./media/howto-mfa-nps-extension-rdg/image24.png)
+   ![Move your policy to the top of the list](./media/howto-mfa-nps-extension-rdg/image24.png)
 
-## <a name="verify-configuration"></a>Yapılandırmayı doğrulama
+## <a name="verify-configuration"></a>Verify configuration
 
-Yapılandırmayı doğrulamak için uygun bir RDP istemcisi ile Uzak Masaüstü Ağ geçidi için oturum açmanız gerekir. Bağlantı Yetkilendirme ilkelerinizi tarafından izin verilen ve Azure MFA için etkinleştirilmiş bir hesap kullandığınızdan emin olun.
+To verify the configuration, you need to sign in to the Remote Desktop Gateway with a suitable RDP client. Be sure to use an account that is allowed by your Connection Authorization Policies and is enabled for Azure MFA.
 
-Aşağıdaki görüntüde gösterdiği gibi kullandığınız **Uzak Masaüstü Web erişimi** sayfası.
+As show in the image below, you can use the **Remote Desktop Web Access** page.
 
-![Uzak Masaüstü Web Erişimi test etme](./media/howto-mfa-nps-extension-rdg/image25.png)
+![Testing in Remote Desktop Web Access](./media/howto-mfa-nps-extension-rdg/image25.png)
 
-Kimlik bilgilerinizi birincil kimlik doğrulaması için başarıyla girildikten sonra Uzak Masaüstü Bağlantısı iletişim kutusu başlatma uzak bağlantı durumunu aşağıda gösterildiği gibi gösterir. 
+Upon successfully entering your credentials for primary authentication, the Remote Desktop Connect dialog box shows a status of Initiating remote connection, as shown below. 
 
-Başarılı bir şekilde Azure mfa'yı daha önce yapılandırdığınız ikincil kimlik doğrulama yöntemi ile kimlik doğrulaması, kaynağa bağlıdır. Ancak, ikincil kimlik doğrulaması başarılı olmazsa, kaynağa erişimi reddedilir. 
+If you successfully authenticate with the secondary authentication method you previously configured in Azure MFA, you are connected to the resource. However, if the secondary authentication is not successful, you are denied access to the resource. 
 
-![Uzak bağlantı başlatma Uzak Masaüstü Bağlantısı](./media/howto-mfa-nps-extension-rdg/image26.png)
+![Remote Desktop Connection initiating a remote connection](./media/howto-mfa-nps-extension-rdg/image26.png)
 
-Aşağıdaki örnekte, kimlik doğrulayıcı uygulamasını bir Windows phone'da ikincil kimlik doğrulaması sağlamak için kullanılır.
+In the example below, the Authenticator app on a Windows phone is used to provide the secondary authentication.
 
-![Doğrulamayı gösteren Windows Phone Authenticator uygulaması örneği](./media/howto-mfa-nps-extension-rdg/image27.png)
+![Example Windows Phone Authenticator app showing verification](./media/howto-mfa-nps-extension-rdg/image27.png)
 
-İkincil kimlik doğrulama yöntemi başarıyla doğruladıktan sonra Uzak Masaüstü Ağ Geçidi normal şekilde oturum açtığınız. Ancak, güvenilir bir cihazda bir mobil uygulama kullanarak ikincil bir kimlik doğrulama yöntemi kullanmanız gerektiğinden oturum açma işlemi, aksi takdirde daha güvenlidir.
+Once you have successfully authenticated using the secondary authentication method, you are logged into the Remote Desktop Gateway as normal. However, because you are required to use a secondary authentication method using a mobile app on a trusted device, the sign in process is more secure than it would be otherwise.
 
-### <a name="view-event-viewer-logs-for-successful-logon-events"></a>Başarılı oturum açma olayları için Olay Görüntüleyicisi günlüklerini görüntüle
+### <a name="view-event-viewer-logs-for-successful-logon-events"></a>View Event Viewer logs for successful logon events
 
-Başarılı oturum açma olaylarını Windows Olay Görüntüleyicisi günlükleri görüntülemek için Windows Terminal Hizmetleri ve Windows güvenlik günlükleri sorgulamak için aşağıdaki Windows PowerShell komutunu verebilir.
+To view the successful sign-in events in the Windows Event Viewer logs, you can issue the following Windows PowerShell command to query the Windows Terminal Services and Windows Security logs.
 
-Ağ geçidi işlem günlüklerinde başarılı oturum açma olaylarını sorgulamak için _(olay görüntüleyicisi\uygulama ve hizmet Logs\Microsoft\Windows\TerminalServices-Gateway\Operational)_ , aşağıdaki PowerShell komutlarını kullanın:
+To query successful sign-in events in the Gateway operational logs _(Event Viewer\Applications and Services Logs\Microsoft\Windows\TerminalServices-Gateway\Operational)_ , use the following PowerShell commands:
 
 * `Get-WinEvent -Logname Microsoft-Windows-TerminalServices-Gateway/Operational | where {$_.ID -eq '300'} | FL`
-* Bu komut, kullanıcının kaynak yetkilendirme ilkesi gereksinimlerini (RD RAP) sağlandığından ve erişim izni verildi gösteren Windows olayları görüntüler.
+* This command displays Windows events that show the user met resource authorization policy requirements (RD RAP) and was granted access.
 
-![PowerShell kullanarak olayları görüntüleme](./media/howto-mfa-nps-extension-rdg/image28.png)
+![Viewing events using PowerShell](./media/howto-mfa-nps-extension-rdg/image28.png)
 
 * `Get-WinEvent -Logname Microsoft-Windows-TerminalServices-Gateway/Operational | where {$_.ID -eq '200'} | FL`
-* Bu komut, kullanıcı bağlantısı yetkilendirme ilkesi gereksinimleri sağlandığında gösteren olayları görüntüler.
+* This command displays the events that show when user met connection authorization policy requirements.
 
-![PowerShell kullanarak bağlantı yetkilendirme ilkesini görüntüleme](./media/howto-mfa-nps-extension-rdg/image29.png)
+![viewing the connection authorization policy using PowerShell](./media/howto-mfa-nps-extension-rdg/image29.png)
 
-Bu günlük ve filtre olay kimlikleri, 300 ve 200 üzerinde görüntüleyebilirsiniz. Başarılı oturum açma olaylarını Güvenlik Olay Görüntüleyicisi günlüklerinde sorgulamak için aşağıdaki komutu kullanın:
+You can also view this log and filter on event IDs, 300 and 200. To query successful logon events in the Security event viewer logs, use the following command:
 
 * `Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL`
-* Bu komut, merkezi NPS veya RD Ağ Geçidi sunucusu üzerinde çalıştırılabilir.
+* This command can be run on either the central NPS or the RD Gateway Server.
 
-![Başarılı oturum açma olayları örneği](./media/howto-mfa-nps-extension-rdg/image30.png)
+![Sample successful logon events](./media/howto-mfa-nps-extension-rdg/image30.png)
 
-Aşağıda gösterildiği gibi güvenlik günlüğü ya da Ağ İlkesi ve Erişim Hizmetleri özel görünümü da görüntüleyebilirsiniz:
+You can also view the Security log or the Network Policy and Access Services custom view, as shown below:
 
-![Ağ Ilkesi ve erişim Hizmetleri Olay Görüntüleyicisi](./media/howto-mfa-nps-extension-rdg/image31.png)
+![Network Policy and Access Services Event Viewer](./media/howto-mfa-nps-extension-rdg/image31.png)
 
-Azure MFA için NPS uzantısı yüklendiği sunucuda Olay Görüntüleyicisi'ni uygulama günlükleri uzantısına özel bulabilirsiniz _uygulama ve Hizmetleri Logs\Microsoft\AzureMfa_.
+On the server where you installed the NPS extension for Azure MFA, you can find Event Viewer application logs specific to the extension at _Application and Services Logs\Microsoft\AzureMfa_.
 
-![Olay Görüntüleyicisi AuthZ uygulama günlükleri](./media/howto-mfa-nps-extension-rdg/image32.png)
+![Event Viewer AuthZ application logs](./media/howto-mfa-nps-extension-rdg/image32.png)
 
-## <a name="troubleshoot-guide"></a>Sorun giderme kılavuzu
+## <a name="troubleshoot-guide"></a>Troubleshoot Guide
 
-Yapılandırma beklendiği gibi çalışmıyorsa, sorun giderme başlamak için ilk kullanıcının Azure mfa'yı kullanmak için yapılandırıldığını doğrulamak için yerdir. Bağlanma kullanıcının [Azure portalında](https://portal.azure.com). Kullanıcıların ikincil doğrulama için istenir ve başarıyla kimlik doğrulaması, Azure MFA'ın hatalı bir yapılandırma ortadan kaldırabilir.
+If the configuration is not working as expected, the first place to start to troubleshoot is to verify that the user is configured to use Azure MFA. Have the user connect to the [Azure portal](https://portal.azure.com). If users are prompted for secondary verification and can successfully authenticate, you can eliminate an incorrect configuration of Azure MFA.
 
-Azure MFA için kullanıcı olarak çalışıyorsa, ilgili olay günlüklerini gözden geçirmelisiniz. Bunlar, güvenlik olayı, ağ geçidi işletimsel ve önceki bölümde açıklanan Azure mfa'yı günlükleri içerir.
+If Azure MFA is working for the user(s), you should review the relevant Event logs. These include the Security Event, Gateway operational, and Azure MFA logs that are discussed in the previous section.
 
-Aşağıda güvenlik günlüğü başarısız oturum açma olayı (olay kimliği 6273) gösteren bir örnek çıktı verilmiştir.
+Below is an example output of Security log showing a failed logon event (Event ID 6273).
 
-![Başarısız oturum açma olayının örneği](./media/howto-mfa-nps-extension-rdg/image33.png)
+![Sample of a Failed logon event](./media/howto-mfa-nps-extension-rdg/image33.png)
 
-İlgili bir olay AzureMFA günlüklerinden aşağıdadır:
+Below is a related event from the AzureMFA logs:
 
-![Örnek Azure MFA oturum açma Olay Görüntüleyicisi](./media/howto-mfa-nps-extension-rdg/image34.png)
+![Sample Azure MFA log in Event Viewer](./media/howto-mfa-nps-extension-rdg/image34.png)
 
-Gerçekleştirmek için Gelişmiş Seçenekleri sorun giderin, NPS hizmetinin yüklendiği NPS veritabanı biçimi günlük dosyalarına başvurun. Bu günlük dosyaları oluşturulur _%SystemRoot%\System32\Logs_ klasör virgülle ayrılmış metin dosyalarını olarak.
+To perform advanced troubleshoot options, consult the NPS database format log files where the NPS service is installed. These log files are created in _%SystemRoot%\System32\Logs_ folder as comma-delimited text files.
 
-Bunlar bir açıklaması için günlük dosyaları, bkz: [NPS veritabanı biçimi günlük dosyalarını yorumlamak](https://technet.microsoft.com/library/cc771748.aspx). Bu günlük dosyaları girişleri bir elektronik tablo veya bir veritabanı aktarmadan yorumlamak zor olabilir. Günlük dosyaları yorumlama içinde yardımcı olmak için birkaç IAS Çözümleyicileri çevrimiçi bulabilirsiniz.
+For a description of these log files, see [Interpret NPS Database Format Log Files](https://technet.microsoft.com/library/cc771748.aspx). The entries in these log files can be difficult to interpret without importing them into a spreadsheet or a database. You can find several IAS parsers online to assist you in interpreting the log files.
 
-Aşağıdaki resimde bir çıktı gösterir böyle indirilebilir [paylaşılan yazılım uygulama](https://www.deepsoftware.com/iasviewer).
+The image below shows the output of one such downloadable [shareware application](https://www.deepsoftware.com/iasviewer).
 
-![Örnek paylaşılan yazılım uygulaması IAS ayrıştırıcısı](./media/howto-mfa-nps-extension-rdg/image35.png)
+![Sample Shareware app IAS parser](./media/howto-mfa-nps-extension-rdg/image35.png)
 
-Son olarak, için ek sorun giderme seçenekleri, bir protokol çözümleyici kullanabileceğiniz gibi [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx).
+Finally, for additional troubleshoot options, you can use a protocol analyzer, such [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx).
 
-Microsoft Message Analyzer görüntüden aşağıdaki kullanıcı adını içeren RADIUS protokolü filtrelenmiş ağ trafiğini gösterir **CONTOSO\AliceC**.
+The image below from Microsoft Message Analyzer shows network traffic filtered on RADIUS protocol that contains the user name **CONTOSO\AliceC**.
 
-![Filtrelenmiş trafiği gösteren Microsoft Ileti Çözümleyicisi](./media/howto-mfa-nps-extension-rdg/image36.png)
+![Microsoft Message Analyzer showing filtered traffic](./media/howto-mfa-nps-extension-rdg/image36.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

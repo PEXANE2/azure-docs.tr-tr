@@ -1,95 +1,91 @@
 ---
-title: Azure blok zinciri belirteçleri şablonları
-description: Azure blok zinciri belirteçleri şablonları, defter tabanlı belirteçlerin oluşturulmasını ve dağıtılmasını kolaylaştıran standartlaştırılmış ve yeniden kullanılabilir şablonlardır.
-services: azure-blockchain
-author: PatAltimore
-ms.author: patricka
+title: Azure Blockchain Tokens templates
+description: Azure Blockchain Tokens templates are standardized and reusable templates that simplify the creation and deployment of ledger-based tokens.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.service: azure-blockchain
 ms.reviewer: brendal
-ms.openlocfilehash: 5b8fc2bd4d2cedadb4c50f7ec11def8bea7b37c4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 9600a6a251552acd319cc68d2bd281584d65546d
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577287"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74324982"
 ---
-# <a name="azure-blockchain-tokens-templates"></a>Azure blok zinciri belirteçleri şablonları
+# <a name="azure-blockchain-tokens-templates"></a>Azure Blockchain Tokens templates
 
 [!INCLUDE [Preview note](./includes/preview.md)]
 
-Azure blok zinciri belirteçleri şablonu, genel muhasebe tabanlı belirteçlerin oluşturulmasını ve dağıtılmasını kolaylaştıran standartlaştırılmış ve yeniden kullanılabilir bir şablondur. Şablon, [belirteç taksonomi çerçevesi (ttf)](overview.md#token-taxonomy-framework) dilbilgisini temel alarak formülden oluşur. Dilbilgisi taban belirteç türünü ve belirtecin davranış kümesini kapsar.  
+An Azure Blockchain Tokens template is a standardized and reusable template that simplifies the creation and deployment of ledger-based tokens. A template consists of a formula, which is based off the [Token Taxonomy Framework (TTF)](overview.md#token-taxonomy-framework) grammar. The grammar encompasses the base token type and the set of behaviors for the token.  
 
-Örneğin, **τϜ {d, m, b, r}** belirteç şablonu, alt, daha okunaklı, mintable, Bur ve rol desteği olan, uygun bir temel belirteci açıklar.
+For example, **τϜ{d,m,b,r}** token template describes a fungible base token that is sub-dividable, mintable, burnable, and has role support.
   
-## <a name="base-token-types"></a>Taban belirteç türleri
+## <a name="base-token-types"></a>Base token types
 
-Belirli varlığınız için genel muhasebe tabanlı belirteci tanımlayıp oluştururken, hangi temel belirtecin kullanılacağını göz önünde bulundurmanız önemlidir.
+When defining and creating the ledger-based token for your particular asset, it is important to consider what base token to use.
 
-### <a name="fungible"></a>Farklı
+### <a name="fungible"></a>Fungible
 
-Uygun olmayan belirteçlerin (τF), aynı sınıfta veya dizide oldukları sürece birbirleriyle değiştirilebilir değer vardır. Bir belirteç, başka bir belirteçle aynı değere sahip veya belirli bir belirteç miktarı aynı değere sahip başka bir eşit miktarla aynı değere sahip. Örneğin, bir dolar, komik bir belirteçtir. Her biri dolar faturanız iki kişi tarafından kullanılıyorsa, bu dolar faturaları hiçbir sonuç olmadan değiş tokuş edebilirler. Dolar faturaları eşittir değeri vardır. 
+Fungible tokens (𝜏F) have interchangeable value with each other as long as they are in the same class or series. One token has the same value as another token or a given quantity of tokens has the same value as another equal quantity. For example, a dollar is a fungible token. If two people are each holding a dollar bill, they can exchange these dollar bills without consequence. The dollar bills have equal value. 
 
-### <a name="non-fungible"></a>Komik olmayan
+### <a name="non-fungible"></a>Non-Fungible
 
-Komik olmayan belirteçler (τN), genellikle farklı değerlere sahip olan aynı türdeki diğer belirteçlerle birlikte kullanılamaz. Örneğin, bir özellik başlığı, komik olmayan bir belirteçtir. Bir grup karmadında bulunan iki farklı apartmandaki Özellik başlıkları, birimin konumu ya da birimin bulunduğu kata bağlı olarak eşit değer değildir. İki özellik başlığı belirtecinin algılanan değeri eşit değil.
+Non-fungible tokens (𝜏N) are not interchangeable with other tokens of the same type as they typically have different values. For example, a property title is a non-fungible token. Property titles to two different apartments in an apartment complex are not necessarily of equal value, due to either the location of the unit or which floor the unit is on. The perceived value of the two property title tokens are not equal.
 
-### <a name="hybrid"></a>Karma
+### <a name="hybrid"></a>hibrit
 
-Karma belirteçler, hem uygun olmayan belirteçlerin hem de bir komik olmayan belirteçlerin bileşenlerine sahip belirteçlerdir. Karma belirteç, diğer belirteç türündeki bir sınıfa sahip olan bir taban belirteç türüdür.
+Hybrid tokens are tokens that have components of both fungible tokens and non-fungible tokens. A hybrid token is a base token type that owns a class of the other token type.
 
-#### <a name="hybrid-non-fungible-base-with-fungible-segments"></a>Komik olmayan kesimlerle karma, komik olmayan taban
+#### <a name="hybrid-non-fungible-base-with-fungible-segments"></a>Hybrid non-fungible base with fungible segments
 
-Komik olmayan kesimlerdeki karma olmayan bir temel, uygun olmayan belirteç kesimlerine sahip, komik olmayan bir temel sahiptir.
-Örneğin, konser bileti, konser 'ın tarih ve saatinin, komik olmayan temel belirteç olduğu karma bir belirteçtir. Verilen konser için çeşitli parçalar bölümündeki biletler, komik belirteçlere sahip segmentlerdir. Biletler, bölümler arasında değil, kendi bireysel bölümlerinin yerini alırlar.
+A hybrid non-fungible base with fungible segments token has a non-fungible base with fungible token segments.
+For example, a concert ticket is a hybrid token where the date and time of the concert is the non-fungible base token. The tickets in various seating sections for the given concert are the segments with fungible tokens. The tickets are exchangeable in their individual seating sections, but not across sections.
 
-#### <a name="hybrid-fungible-base-with-non-fungible-segments"></a>Komik olmayan kesimlerle karma değerli temel
+#### <a name="hybrid-fungible-base-with-non-fungible-segments"></a>Hybrid fungible base with non-fungible segments
 
-Komik olmayan bir kesim belirtecine sahip bir karma değerli temel, değerli olmayan belirteç kesimlerine sahip komik bir temel sahiptir. Örneğin, ipotek sağlayan bir güvenlik, birçok Sahibe bölünen, çok sayıda sahibe sahip olan bir karma belirteçtir. Güvenlik, değiştirilebilir. Tek tek Mortgages, belirli ipotek düzeyli güvenliği temsil eden, komik olmayan kesimlerdir.
+A hybrid fungible base with a non-fungible segments token has a fungible base with non-fungible token segments. For example, a mortgage backed security is a hybrid token where multiple owners are the fungible base that is split across many owners. The security is interchangeable. The individual mortgages are the non-fungible segments that represent the specific mortgage backed security.
 
-## <a name="token-behaviors"></a>Belirteç davranışları
+## <a name="token-behaviors"></a>Token behaviors
 
-Belirteç davranışı, belirtecin yeteneklerini veya kısıtlamalarını tanımlar. Davranışı, belirteç tanımının bir parçası olan destekleyici özellikleri içerir. Davranışlar, tüm belirteç türlerine veya yalnızca birine uygulanabilir. Davranışlar, davranışın etkilerinin ne olduğuna bağlı olarak iç veya dış olabilir. Bir iç davranış, belirtecin kendisindeki özellikleri sağlar veya kısıtlar. Dış bir davranış, bir dış aktörden davranışın çağrılmasını sağlar veya kısıtlar.
+A token behavior defines capabilities or restrictions of the token. The behavior includes supporting properties that are a part of the token definition. Behaviors can be applied across all token types or just one. Behaviors can be internal or external depending on what the behavior effects. An internal behavior enables or restricts properties on the token itself. An external behavior enables or restricts the invocation of the behavior from an external actor.
 
-Azure blok zinciri belirteçleri desteklenen belirteç taksonomi çerçevesi (TTF) belirteci davranışları hakkında daha fazla bilgi için bkz. [belirteç bileşim](composability.md).
+For more information about Azure Blockchain Tokens supported Token Taxonomy Framework (TTF) token behaviors, see [token composability](composability.md).
 
-## <a name="pre-built-token-templates"></a>Önceden oluşturulmuş belirteç şablonları
+## <a name="pre-built-token-templates"></a>Pre-built token templates
 
-Azure blok zinciri belirteçleri, değişiklik yapılmadan kullanılabilecek dört önceden oluşturulmuş belirteç şablonu sağlar. Belirteçlerinizi hızlıca oluşturmaya, dağıtmaya ve yönetmeye başlamak için kullanım örneklerinin çoğu için önceden oluşturulmuş bu şablonlara çağrı yapabilirsiniz.
+Azure Blockchain Tokens provides four pre-built token templates that can be used without modification. You can call into these pre-built templates for most use cases to get started creating, deploying, and managing your tokens quickly.
 
-### <a name="commodity-tokens"></a>Emtia belirteçleri
+### <a name="commodity-tokens"></a>Commodity tokens
 
-Emtia belirteçleri tutarlı bir değere sahiptir ve bu şekilde aktarılabilir. Örneğin, yağ veya enerji birimi gibi.
+Commodity tokens have consistent value and are transferrable. For example, a barrel of oil or a unit of energy.
 
-**τF {~ d, t, m, b, r}** -komik, tam, transferlenebilir, mintable, burlik, ve rol desteği var
+**𝜏F{~d,t,m,b,r}** - fungible, whole, transferable, mintable, burnable, and have role support
 
-Birçok blok zinciri senaryosu, tedarik zinciri veya birden çok kuruluş genelinde saydamlık ve görünürlük gerektirir. Emtia belirteçleri, bu genel kullanım durumlarını temel alınır. Belirteçler, değiştirilebilir ve tutarlıdır. Emtia belirteci şablonu esnektir ve meta verilerle özelleştirilebilir.
+Many blockchain scenarios require transparency and visibility across the supply chain or multiple organizations. Commodity tokens are based off these common use cases. The tokens are interchangeable and consistent. The commodity token template is flexible and customizable with metadata.
 
-### <a name="qualified-tokens"></a>Nitelikli belirteçler
+### <a name="qualified-tokens"></a>Qualified tokens
 
-Nitelikli belirteçler, kazanılan bir şeyi temsil eder ve genellikle bir varlıkla ilişkilendirilir ve aktarılamaz. Örneğin, bir dıloma veya park ihlali.
+Qualified tokens represent something earned and are usually associated with one entity and cannot be transferred. For example, a diploma or a parking violation.
 
-**τN {s, ~ t}** -komik olmayan, tek ve aktarılamayan olmayan
+**𝜏N{s,~t}** - non-fungible, singleton, and non-transferable
 
-Çeşitli denetim ve kanıtlama senaryoları, belirtecin sahipliğinin değiştirilmesini gerektirir. İlişkilendirmenin iyi veya hatalı olup olmadığını tam bir belirteç sağlaması gereken bir dizi kullanım durumu vardır.
+Various audit and attestation scenarios require that the ownership of the token cannot be changed. There is a set of use cases, which have a need to provide a qualified token whether the association is good or bad.
 
-### <a name="asset-tokens"></a>Varlık belirteçleri
+### <a name="asset-tokens"></a>Asset tokens
 
-Varlık belirteçlerinin öğeye bağımlı benzersiz bir değeri vardır ve commoditized değildir. Örneğin, bir Museum yapıtı veya bir özellik başlığı.
+Asset tokens have unique value dependent on the item and are not commoditized. For example, a museum artifact or a property title.
 
-**τN {s, t}** -komik olmayan, tek ve aktarılamayan
+**𝜏N{s,t}** - non-fungible, singleton, and transferable
 
-Varlık belirteçleri, emtia belirteçleriyle karıştırılır. İki belirteç arasındaki önemli fark, varlık belirteçlerinin doğal olarak benzersiz olması ve değerin olduğu belirteç türünden bağımsız olması olabilir. Örneğin, kurulu bir sanatçının yağ boyama gibi bir resim parçası bir varlık belirtecidir. Ancak, Mona Lisa 'nın bir sanat basımı, bir emtia belirteci olarak kabul edilir. Benzer şekilde, Özellik başlığı özelliğin öznel kalitede bulunduğundan bir varlık belirtecidir.
+Asset tokens may be confused with commodity tokens. The major difference between the two tokens is that asset tokens are inherently unique, and value is independent of the type of token it is. For example, a piece of art like an oil painting by an established artist is an asset token. However, an art print of the Mona Lisa is considered a commodity token. Similarly, a property title is an asset token since the value exists in the subjective qualities of the property.
 
-### <a name="ticket-tokens"></a>Bilet belirteçleri
+### <a name="ticket-tokens"></a>Ticket tokens
 
-Bilet belirteçleri tutarlı bir değere sahiptir, ancak genellikle sona erer. Örneğin, bir düzlem bileti.
+Ticket tokens have consistent value but typically expire. For example, a plane ticket.
 
-**τN {m, b, r}** -komik olmayan, mintable, patlama ve rol desteği var.
+**𝜏N{m,b,r}** - non-fungible, mintable, burnable, and have role support.
 
-Bilet belirteçlerinin tipik olarak normal bir emtia belirtecinden farklı hale getiren bir sona erme tarihi vardır. Örneğin, bir uçak bileti, konser bileti veya spor bileti, belirli kullanım tarihleriyle atanmış atama seçeneklerine sahiptir. Tarihler veya alan bölümleri arasındaki anahtarları kolayca değiştiremezsiniz.
+Ticket tokens typically have an expiry date that makes them different from a regular commodity token. For example, an airplane ticket, concert ticket, or sports ticket all have options of assigned seating with specific dates of use. You cannot easily interchange tickets between dates or seating areas.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Senaryonuz için daha fazla esneklik gerekiyorsa, [belirteç bileşmesini](composability.md)kullanarak kendi belirteç şablonlarınızı oluşturma hakkında bilgi edinin.
+If you require more flexibility for your scenario, learn about creating your own token templates using [token composability](composability.md).

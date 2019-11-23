@@ -1,69 +1,69 @@
 ---
-title: Sertifika tabanlı kimlik doğrulaması ile - Azure Active Directory kullanmaya başlayın
-description: Ortamınızda sertifika tabanlı kimlik doğrulaması yapılandırma hakkında bilgi edinin
+title: Certificate-based authentication - Azure Active Directory
+description: Learn how to configure certificate-based authentication in your environment
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: article
-ms.date: 01/15/2018
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f57d4615fc80df6c5df9ba295288ad71ae12fa23
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8bfe306f089a26258ba9c7a07c54925f4540b44b
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60359084"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74382018"
 ---
-# <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Azure Active Directory'de sertifika tabanlı kimlik doğrulamasını kullanmaya başlama
+# <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Get started with certificate-based authentication in Azure Active Directory
 
-Sertifika tabanlı kimlik doğrulaması Azure Active Directory tarafından Windows, Android veya iOS aygıtında bir istemci sertifikası ile Exchange online hesabınıza bağlanırken kimlik doğrulaması yapmanızı sağlar:
+Certificate-based authentication enables you to be authenticated by Azure Active Directory with a client certificate on a Windows, Android, or iOS device when connecting your Exchange online account to:
 
-- Microsoft Outlook ve Microsoft Word gibi Microsoft mobil uygulamaları
-- Exchange ActiveSync (EAS) istemcileri
+- Microsoft mobile applications such as Microsoft Outlook and Microsoft Word
+- Exchange ActiveSync (EAS) clients
 
-Bu özelliği yapılandıran bir kullanıcı adı ve parola birleşimini belirli e-posta ve Microsoft Office uygulamaları ile mobil Cihazınızda girilmesi gereğini ortadan kaldırır.
+Configuring this feature eliminates the need to enter a username and password combination into certain mail and Microsoft Office applications on your mobile device.
 
-Bu konuda:
+This topic:
 
-- Sertifika tabanlı kimlik doğrulaması kullanıcılar için kiracının Office 365 Kurumsal, iş, eğitim ve ABD kamu planlarında yazılımınız olması ve yapılandırma adımları sağlar. Bu özellik, Office 365 Çin, ABD kamu savunma ve ABD kamu Federal planlarında önizlemede kullanılabilir.
-- Zaten sahip olduğunuzu varsayar bir [ortak anahtar altyapısı (PKI)](https://go.microsoft.com/fwlink/?linkid=841737) ve [AD FS](../hybrid/how-to-connect-fed-whatis.md) yapılandırılmış.
+- Provides you with the steps to configure and utilize certificate-based authentication for users of tenants in Office 365 Enterprise, Business, Education, and US Government plans. This feature is available in preview in Office 365 China, US Government Defense, and US Government Federal plans.
+- Assumes that you already have a [public key infrastructure (PKI)](https://go.microsoft.com/fwlink/?linkid=841737) and [AD FS](../hybrid/how-to-connect-fed-whatis.md) configured.
 
 ## <a name="requirements"></a>Gereksinimler
 
-Sertifika tabanlı kimlik doğrulaması yapılandırmak için aşağıdaki deyimleri doğru olması gerekir:
+To configure certificate-based authentication, the following statements must be true:
 
-- Sertifika tabanlı kimlik doğrulaması (CBA), yalnızca tarayıcı uygulamalarında veya modern kimlik doğrulaması (ADAL) kullanan yerel istemciler için federe ortamlar için desteklenir. Exchange Active Sync (EAS) için Exchange Online (Federasyon ve yönetilen hesapları için kullanılabilecek EXO), bir işlemdir.
-- Kök sertifika yetkilisini ve ara sertifika yetkilileri herhangi bir Azure Active Directory'de yapılandırılması gerekir.
-- Her sertifika yetkilisi, bir internet'e yönelik URL'si ile başvurulan bir sertifika iptal listesini (CRL) olmalıdır.
-- Azure Active Directory içinde yapılandırılan en az bir sertifika yetkilisi olması gerekir. İlgili adımları bulabilirsiniz [sertifika yetkililerini Yapılandır](#step-2-configure-the-certificate-authorities) bölümü.
-- Exchange ActiveSync istemcileri için istemci sertifikası kullanıcının yönlendirilebilir e-posta adresi Exchange online asıl adı veya konu alternatif adı alanında RFC822 adı değerini olmalıdır. Azure Active Directory dizin Proxy adresi özniteliğine RFC822 değeri eşler.
-- İstemci Cihazınızı, istemci sertifikaları veren en az bir sertifika yetkilisi erişiminiz olması gerekir.
-- İstemci kimlik doğrulaması için bir istemci sertifikası istemciniz için verilmiş olmalıdır.
+- Certificate-based authentication (CBA) is only supported for Federated environments for browser applications or native clients using modern authentication (ADAL). The one exception is Exchange Active Sync (EAS) for Exchange Online (EXO), which can be used for  federated and managed accounts.
+- The root certificate authority and any intermediate certificate authorities must be configured in Azure Active Directory.
+- Each certificate authority must have a certificate revocation list (CRL) that can be referenced via an internet-facing URL.
+- You must have at least one certificate authority configured in Azure Active Directory. You can find related steps in the [Configure the certificate authorities](#step-2-configure-the-certificate-authorities) section.
+- For Exchange ActiveSync clients, the client certificate must have the user’s routable email address in Exchange online in either the Principal Name or the RFC822 Name value of the Subject Alternative Name field. Azure Active Directory maps the RFC822 value to the Proxy Address attribute in the directory.
+- Your client device must have access to at least one certificate authority that issues client certificates.
+- A client certificate for client authentication must have been issued to your client.
 
-## <a name="step-1-select-your-device-platform"></a>1\. adım: Cihaz platformunuzu seçin
+## <a name="step-1-select-your-device-platform"></a>Step 1: Select your device platform
 
-Önem verdiğiniz cihaz platformu için bir ilk adım olarak aşağıdaki inceleyin yapmanız gerekir:
+As a first step, for the device platform you care about, you need to review the following:
 
-- Office mobil uygulamaları desteği
-- Belirli uygulama gereksinimleri
+- The Office mobile applications support
+- The specific implementation requirements
 
-İlgili bilgiler için aşağıdaki cihaz platformlarını bulunmaktadır:
+The related information exists for the following device platforms:
 
 - [Android](active-directory-certificate-based-authentication-android.md)
 - [iOS](active-directory-certificate-based-authentication-ios.md)
 
-## <a name="step-2-configure-the-certificate-authorities"></a>2\. adım: Sertifika yetkililerini Yapılandır
+## <a name="step-2-configure-the-certificate-authorities"></a>Step 2: Configure the certificate authorities
 
-Sertifikanızı yapılandırmak için Azure Active Directory'de yetkilileri her sertifika yetkilisi için aşağıdakileri yükleyin:
+To configure your certificate authorities in Azure Active Directory, for each certificate authority, upload the following:
 
-* Sertifika ortak kısmını, *.cer* biçimi
-* Sertifika iptal listelerini (CRL'ler) bulunduğu internet'e yönelik URL'ler
+* The public portion of the certificate, in *.cer* format
+* The internet-facing URLs where the Certificate Revocation Lists (CRLs) reside
 
-Bir sertifika yetkilisi için şema şu şekilde görünür:
+The schema for a certificate authority looks as follows:
 
     class TrustedCAsForPasswordlessAuth
     {
@@ -87,30 +87,30 @@ Bir sertifika yetkilisi için şema şu şekilde görünür:
         IntermediateAuthority = 1
     }
 
-Yapılandırma için kullandığınız [Azure Active Directory PowerShell sürüm 2](/powershell/azure/install-adv2?view=azureadps-2.0):
+For the configuration, you can use the [Azure Active Directory PowerShell Version 2](/powershell/azure/install-adv2?view=azureadps-2.0):
 
-1. Windows PowerShell'i yönetici ayrıcalıklarıyla başlatın.
-2. Azure AD modülü sürümü yükleme [2.0.0.33](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) veya üzeri.
+1. Start Windows PowerShell with administrator privileges.
+2. Install the Azure AD module version [2.0.0.33](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) or higher.
 
         Install-Module -Name AzureAD –RequiredVersion 2.0.0.33
 
-İlk yapılandırma adımı olarak, kiracınız ile bir bağlantı oluşturmanız gerekir. Kiracınız için bir bağlantı var. hemen sonra inceleme, ekleme, silme ve dizininizde tanımlanan güvenilen sertifika yetkilileri değiştirin.
+As a first configuration step, you need to establish a connection with your tenant. As soon as a connection to your tenant exists, you can review, add, delete, and modify the trusted certificate authorities that are defined in your directory.
 
-### <a name="connect"></a>Bağlan
+### <a name="connect"></a>Bağlayın
 
-Kiracınız ile bağlantı kurmak için kullanmanın [Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0) cmdlet:
+To establish a connection with your tenant, use the [Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0) cmdlet:
 
     Connect-AzureAD
 
-### <a name="retrieve"></a>Alma
+### <a name="retrieve"></a>Retrieve
 
-Dizininizde tanımlanan güvenilen sertifika yetkilileri almak için kullanın [Get-AzureADTrustedCertificateAuthority](/powershell/module/azuread/get-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet'i.
+To retrieve the trusted certificate authorities that are defined in your directory, use the [Get-AzureADTrustedCertificateAuthority](/powershell/module/azuread/get-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet.
 
     Get-AzureADTrustedCertificateAuthority
 
 ### <a name="add"></a>Ekle
 
-Güvenilen bir sertifika yetkilisi oluşturmak için kullanın [yeni AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet'i ve **crlDistributionPoint** doğru bir değer özniteliği:
+To create a trusted certificate authority, use the [New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet and set the **crlDistributionPoint** attribute to a correct value:
 
     $cert=Get-Content -Encoding byte "[LOCATION OF THE CER FILE]"
     $new_ca=New-Object -TypeName Microsoft.Open.AzureAD.Model.CertificateAuthorityInformation
@@ -121,89 +121,89 @@ Güvenilen bir sertifika yetkilisi oluşturmak için kullanın [yeni AzureADTrus
 
 ### <a name="remove"></a>Kaldır
 
-Güvenilen bir sertifika yetkilisi kaldırmak için [Remove-AzureADTrustedCertificateAuthority](/powershell/module/azuread/remove-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet:
+To remove a trusted certificate authority, use the [Remove-AzureADTrustedCertificateAuthority](/powershell/module/azuread/remove-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet:
 
     $c=Get-AzureADTrustedCertificateAuthority
     Remove-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $c[2]
 
 ### <a name="modify"></a>Değiştir
 
-Güvenilen bir sertifika yetkilisi değiştirmek için [kümesi AzureADTrustedCertificateAuthority](/powershell/module/azuread/set-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet:
+To modify a trusted certificate authority, use the [Set-AzureADTrustedCertificateAuthority](/powershell/module/azuread/set-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet:
 
     $c=Get-AzureADTrustedCertificateAuthority
     $c[0].AuthorityType=1
     Set-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $c[0]
 
-## <a name="step-3-configure-revocation"></a>3\. adım: İptal yapılandırın
+## <a name="step-3-configure-revocation"></a>Step 3: Configure revocation
 
-Bir istemci sertifikasını iptal etmek için Azure Active Directory Sertifika iptal listesini (CRL) sertifika yetkilisi bilgileri bir parçası olarak yüklenen URL'lerden getirir ve onu önbelleğe alır. Son zaman damgası yayımlama (**geçerlilik tarihi** özelliği) CRL'ye CRL hala geçerli olduğundan emin olmak için kullanılır. CRL listesinin bir parçası olan sertifikaları erişimini iptal etmek için düzenli olarak başvuruluyor.
+To revoke a client certificate, Azure Active Directory fetches the certificate revocation list (CRL) from the URLs uploaded as part of certificate authority information and caches it. The last publish timestamp (**Effective Date** property) in the CRL is used to ensure the CRL is still valid. The CRL is periodically referenced to revoke access to certificates that are a part of the list.
 
-(Örneğin bir kullanıcı cihazını kaybederse) daha hızlı iptali gerekiyorsa, kullanıcının yetkilendirme belirteci geçersiz kılınabilir. Yetkilendirme belirteci geçersiz kılmak üzere ayarla **StsRefreshTokenValidFrom** Windows PowerShell kullanarak belirli bir kullanıcı için alan. Güncelleştirmeniz gerekir **StsRefreshTokenValidFrom** alanındaki her kullanıcı erişimini iptal etmek istiyor.
+If a more instant revocation is required (for example, if a user loses a device), the authorization token of the user can be invalidated. To invalidate the authorization token, set the **StsRefreshTokenValidFrom** field for this particular user using Windows PowerShell. You must update the **StsRefreshTokenValidFrom** field for each user you want to revoke access for.
 
-İptal devam ederse, ayarlamalısınız emin olmak için **geçerlilik tarihi** bir tarihten sonra ayarlanan değer CRL'nin **StsRefreshTokenValidFrom** ve söz konusu sertifikanın CRL'de olduğundan emin olun.
+To ensure that the revocation persists, you must set the **Effective Date** of the CRL to a date after the value set by **StsRefreshTokenValidFrom** and ensure the certificate in question is in the CRL.
 
-Aşağıdaki adımlar, güncelleştiriliyor ve yetkilendirme belirteci geçersiz kılmalarını ayarlayarak sürecini özetlemektedir **StsRefreshTokenValidFrom** alan.
+The following steps outline the process for updating and invalidating the authorization token by setting the **StsRefreshTokenValidFrom** field.
 
-**İptal yapılandırmak için:**
+**To configure revocation:**
 
-1. Yönetici kimlik MSOL hizmetine bağlanın:
+1. Connect with admin credentials to the MSOL service:
 
         $msolcred = get-credential
         connect-msolservice -credential $msolcred
 
-2. Bir kullanıcı için geçerli StsRefreshTokensValidFrom değeri alın:
+2. Retrieve the current StsRefreshTokensValidFrom value for a user:
 
         $user = Get-MsolUser -UserPrincipalName test@yourdomain.com`
         $user.StsRefreshTokensValidFrom
 
-3. Kullanıcı eşit geçerli zaman damgası için yeni bir StsRefreshTokensValidFrom değeri yapılandırın:
+3. Configure a new StsRefreshTokensValidFrom value for the user equal to the current timestamp:
 
         Set-MsolUser -UserPrincipalName test@yourdomain.com -StsRefreshTokensValidFrom ("03/05/2016")
 
-Ayarladığınız tarihin gelecekte olması gerekir. Tarih gelecekte değilse **StsRefreshTokensValidFrom** özelliği ayarlı değil. Tarihin gelecekte olması halinde **StsRefreshTokensValidFrom** geçerli saatten (Set-MsolUser komutu tarafından belirtilen tarihi değil) ayarlayın.
+The date you set must be in the future. If the date is not in the future, the **StsRefreshTokensValidFrom** property is not set. If the date is in the future, **StsRefreshTokensValidFrom** is set to the current time (not the date indicated by Set-MsolUser command).
 
-## <a name="step-4-test-your-configuration"></a>4\. Adım: Yapılandırmanızı test etme
+## <a name="step-4-test-your-configuration"></a>Step 4: Test your configuration
 
-### <a name="testing-your-certificate"></a>Sertifikanızı test etme
+### <a name="testing-your-certificate"></a>Testing your certificate
 
-İlk yapılandırması test olarak oturum açmak denemelisiniz [Outlook Web Access](https://outlook.office365.com) veya [SharePoint Online](https://microsoft.sharepoint.com) kullanarak, **cihazda tarayıcı**.
+As a first configuration test, you should try to sign in to [Outlook Web Access](https://outlook.office365.com) or [SharePoint Online](https://microsoft.sharepoint.com) using your **on-device browser**.
 
-Oturum açma işleminiz başarılı olursa, daha sonra bildiğiniz:
+If your sign-in is successful, then you know that:
 
-- Kullanıcı sertifikası test cihazınıza sağlanmış
-- AD FS düzgün yapılandırılıp yapılandırılmadığını
+- The user certificate has been provisioned to your test device
+- AD FS is configured correctly
 
-### <a name="testing-office-mobile-applications"></a>Office mobil uygulamalarını test etme
+### <a name="testing-office-mobile-applications"></a>Testing Office mobile applications
 
-**Sertifika tabanlı kimlik doğrulaması mobil Office uygulamanızda test etmek için:**
+**To test certificate-based authentication on your mobile Office application:**
 
-1. Test Cihazınızda Office mobil uygulaması (örneğin OneDrive) yükleyin.
-3. Uygulamayı başlatın.
-4. Kullanıcı adınızı girin ve ardından kullanmak istediğiniz sertifikayı seçin.
+1. On your test device, install an Office mobile application (for example, OneDrive).
+3. Launch the application.
+4. Enter your username, and then select the user certificate you want to use.
 
-Başarıyla oturum açmanız.
+You should be successfully signed in.
 
-### <a name="testing-exchange-activesync-client-applications"></a>Exchange ActiveSync istemci uygulamalarını test etme
+### <a name="testing-exchange-activesync-client-applications"></a>Testing Exchange ActiveSync client applications
 
-Sertifika tabanlı kimlik doğrulaması Exchange ActiveSync (EAS) erişmek için istemci sertifikasını içeren bir EAS profili bir uygulama için kullanılabilir olmalıdır.
+To access Exchange ActiveSync (EAS) via certificate-based authentication, an EAS profile containing the client certificate must be available to the application.
 
-EAS profili, aşağıdaki bilgileri içermelidir:
+The EAS profile must contain the following information:
 
-- Kimlik doğrulaması için kullanılacak kullanıcı sertifikası
+- The user certificate to be used for authentication
 
-- EAS uç noktası (örneğin, outlook.office365.com)
+- The EAS endpoint (for example, outlook.office365.com)
 
-EAS profili yapılandırılan ve mobil cihaz Yönetimi (MDM) gibi Intune ya da el ile EAS profili cihazda sertifika verme kullanımı üzerinden cihazın yerleştirilir.
+An EAS profile can be configured and placed on the device through the utilization of Mobile device management (MDM) such as Intune or by manually placing the certificate in the EAS profile on the device.
 
-### <a name="testing-eas-client-applications-on-android"></a>EAS istemci uygulamaları android'de test etme
+### <a name="testing-eas-client-applications-on-android"></a>Testing EAS client applications on Android
 
-**Sertifika kimlik doğrulamasını test etmek için:**
+**To test certificate authentication:**
 
-1. Önceki bölümdeki gereksinimlerini karşılayan bir uygulamada bir EAS profili yapılandırın.
-2. Uygulamayı açmak ve posta eşitleme olduğunu doğrulayın.
+1. Configure an EAS profile in the application that satisfies the requirements in the prior section.
+2. Open the application, and verify that mail is synchronizing.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Android cihazlara sertifika tabanlı kimlik doğrulaması hakkında ek bilgi almak için.](active-directory-certificate-based-authentication-android.md)
+[Additional information about certificate-based authentication on Android devices.](active-directory-certificate-based-authentication-android.md)
 
-[İOS cihazları sertifika tabanlı kimlik doğrulaması hakkında ek bilgi almak için.](active-directory-certificate-based-authentication-ios.md)
+[Additional information about certificate-based authentication on iOS devices.](active-directory-certificate-based-authentication-ios.md)

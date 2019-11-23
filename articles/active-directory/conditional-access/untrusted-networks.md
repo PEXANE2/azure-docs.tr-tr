@@ -1,72 +1,72 @@
 ---
-title: Azure Active Directory (Azure AD) koşullu erişimi olan güvenilmeyen ağlardan erişim için Multi-Factor Authentication (MFA) gerektirme | Microsoft Docs
-description: Güvenilir olmayan ağlardan erişim girişimleri için Azure Active Directory (Azure AD) ' de koşullu erişim ilkesini nasıl yapılandıracağınızı öğrenin.
+title: Require MFA from untrusted networks - Azure Active Directory
+description: Learn how to configure a Conditional Access policy in Azure Active Directory (Azure AD) to for access attempts from untrusted networks.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 12/10/2018
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39ec09c1ecb94a5ae189317d89cce4bc8f279b48
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 4cedec7f0bd51460796d8138f8d481d2982098f4
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175693"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74379999"
 ---
-# <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>Nasıl yapılır: koşullu erişimi olan güvenilmeyen ağlardan erişim için MFA gerektirme   
+# <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>How to: Require MFA for access from untrusted networks with Conditional Access   
 
-Azure Active Directory (Azure AD) her yerden cihazlarda, uygulamalarda ve hizmetlerde çoklu oturum açma imkanı sağlar. Kullanıcılarınız, bulut uygulamalarınıza yalnızca kuruluşunuzun ağından değil, ayrıca güvenilmeyen Internet konumlarından de erişebilirler. Güvenilmeyen ağlardan erişim için en iyi yöntem, çok faktörlü kimlik doğrulaması (MFA) gerektirir.
+Azure Active Directory (Azure AD) enables single sign-on to devices, apps, and services from anywhere. Your users can access your cloud apps not only from your organization's network, but also from any untrusted Internet location. A common best practice for access from untrusted networks is to require multi-factor authentication (MFA).
 
-Bu makale, güvenilmeyen ağlardan erişim için MFA gerektiren bir koşullu erişim ilkesini yapılandırmak için gereken bilgileri sağlar. 
+This article gives you the information you need to configure a Conditional Access policy that requires MFA for access from untrusted networks. 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu makalede, hakkında bilgi sahibi olduğunuz varsayılmaktadır: 
+This article assumes that you are familiar with: 
 
-- Azure AD koşullu erişim 'in [temel kavramları](overview.md) 
-- Azure portal koşullu erişim ilkelerini yapılandırmaya yönelik [en iyi yöntemler](best-practices.md)
+- The [basic concepts](overview.md) of Azure AD Conditional Access 
+- The [best practices](best-practices.md) for configuring Conditional Access policies in the Azure portal
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Güvenlik ve üretkenlik arasındaki dengeyi temel almak için, kuruluşunuzun ağından yalnızca oturum açma işlemleri için bir parola gerekli olabilir. Ancak, güvenilmeyen bir ağ konumundan erişim için, oturum açma işlemlerinin meşru kullanıcılar tarafından gerçekleştirilmediğinden daha fazla risk vardır. Bu sorunu gidermek için güvenilmeyen ağlardan erişimi engelleyebilirsiniz. Alternatif olarak, hesabın meşru sahibi tarafından yapılan bir girişimin daha fazla güvence kazanması için çok faktörlü kimlik doğrulaması (MFA) de gerekebilir. 
+To master the balance between security and productivity, it might be sufficient for you to only require a password for sign-ins from your organization's network. However, for access from an untrusted network location, there is an increased risk that sign-ins are not performed by legitimate users. To address this concern, you can block access from untrusted networks. Alternatively, you can also require multi-factor authentication (MFA) to gain back additional assurance that an attempt was made by the legitimate owner of the account. 
 
-Azure AD koşullu erişimi sayesinde, erişim izni veren tek bir ilkeyle bu gereksinimi ele alabilirsiniz: 
+With Azure AD Conditional Access, you can address this requirement with a single policy that grants access: 
 
-- Seçili bulut uygulamalarına
-- Seçili kullanıcılar ve gruplar için  
-- Multi-Factor Authentication gerektirme 
-- Erişim kaynağı: 
-   - Güvenilir olmayan bir konum
+- To selected cloud apps
+- For selected users and groups  
+- Requiring multi-factor authentication 
+- When access is originated from: 
+   - A location that is not trusted
 
 ## <a name="implementation"></a>Uygulama
 
-Bu senaryonun çekişmesi, *güvenilir olmayan bir ağ konumundan* bir koşullu erişim koşuluna erişimi çevirmektir. Bir koşullu erişim ilkesinde, [konum koşulunu](location-condition.md) ağ konumlarıyla ilgili senaryolara yönelik olarak yapılandırmak için yapılandırabilirsiniz. Konumlar koşulu, IP adresi aralıklarının, ülkelerin ve bölgelerin mantıksal gruplandırmaları olan adlandırılmış konumları seçmenize olanak sağlar.  
+The challenge of this scenario is to translate *access from an untrusted network location* into a Conditional Access condition. In a Conditional Access policy, you can configure the [locations condition](location-condition.md) to address scenarios that are related to network locations. The locations condition enables you to select named locations, which are logical groupings of IP address ranges, countries and regions.  
 
-Genellikle, kuruluşunuz bir veya daha fazla adres aralığına sahip olur, örneğin, 199.30.16.0-199.30.16.15.
-Adlandırılmış bir konumu şu şekilde yapılandırabilirsiniz:
+Typically, your organization owns one or more address ranges, for example, 199.30.16.0 - 199.30.16.15.
+You can configure a named location by:
 
-- Bu aralığı belirtme (199.30.16.0/28) 
-- **Şirket ağı** gibi açıklayıcı bir ad atama 
+- Specifying this range (199.30.16.0/28) 
+- Assigning a descriptive name such as **Corporate Network** 
 
-Güvenilir olmayan tüm konumların ne olduğunu tanımlamaya çalışmak yerine şunları yapabilirsiniz:
+Instead of trying to define what all locations are that are not trusted, you can:
 
-- Herhangi bir konum Ekle 
+- Include any location 
 
    ![Koşullu Erişim](./media/untrusted-networks/02.png)
 
-- Tüm güvenilen konumları Dışla 
+- Exclude all trusted locations 
 
    ![Koşullu Erişim](./media/untrusted-networks/01.png)
 
-## <a name="policy-deployment"></a>İlke dağıtımı
+## <a name="policy-deployment"></a>Policy deployment
 
-Bu makalede açıklanan yaklaşımla birlikte, artık güvenilmeyen konumlar için bir koşullu erişim ilkesi yapılandırabilirsiniz. İlkenizin beklenildiği gibi çalıştığından emin olmak için önerilen en iyi yöntem, üretime geçmeden önce test sağlamaktır. İdeal olarak, yeni ilkenizin istendiği gibi çalışıp çalışmadığını doğrulamak için bir test kiracısı kullanın. Daha fazla bilgi için bkz. [Yeni ilke dağıtma](best-practices.md#how-should-you-deploy-a-new-policy). 
+With the approach outlined in this article, you can now configure a Conditional Access policy for untrusted locations. To make sure that your policy works as expected, the recommended best practice is to test it before rolling it out into production. Ideally, use a test tenant to verify whether your new policy works as intended. For more information, see [How to deploy a new policy](best-practices.md#how-should-you-deploy-a-new-policy). 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Koşullu erişim hakkında daha fazla bilgi edinmek istiyorsanız bkz. [Azure Active Directory Koşullu erişim nedir?](../active-directory-conditional-access-azure-portal.md)
+If you would like to learn more about Conditional Access, see [What is Conditional Access in Azure Active Directory?](../active-directory-conditional-access-azure-portal.md)

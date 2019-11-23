@@ -1,387 +1,380 @@
 ---
-title: Ethereum yetki kanıtı-Azure
-description: Çok siteli bir konsorsiyumum ağını dağıtmak ve yapılandırmak için Ethereum yetki kanıtlama Konsorsiyumu çözümünü kullanın
-services: azure-blockchain
-keywords: ''
-author: CodyBorn
-ms.author: coborn
+title: Deploy Ethereum Proof-of-Authority consortium solution template on Azure
+description: Use the Ethereum Proof-of-Authority Consortium solution to deploy and configure a multi-member consortium Ethereum network on Azure
 ms.date: 04/08/2019
 ms.topic: article
-ms.service: azure-blockchain
-ms.reviewer: brendal
-manager: vamelech
-ms.openlocfilehash: 01b9f7f74077737ea95a56bbe81f440db425bf0c
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.reviewer: coborn
+ms.openlocfilehash: c3e449c1d6ebaf7c6cb2c35dc9f91d55f569447a
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698464"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326165"
 ---
-# <a name="ethereum-proof-of-authority-consortium"></a>Ethereum yetki kanıtlama Konsorsiyumu
+# <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Deploy Ethereum proof-of-authority consortium solution template on Azure
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="overview"></a>Genel Bakış
-[Bu çözüm](https://portal.azure.com/?pub_source=email&pub_status=success#create/microsoft-azure-blockchain.azure-blockchain-ethereumethereum-poa-consortium) , en az Azure ve Ethereum bilgisine sahip çok üyeli bir konsorsiyum yetkilisi olan çok kullanıcılı bir ağ kanıtı ağı dağıtmayı, yapılandırmayı ve yönetimini kolaylaştırmak için tasarlanmıştır.
+[The Ethereum Proof-of-Authority Consortium Azure solution template](https://portal.azure.com/?pub_source=email&pub_status=success#create/microsoft-azure-blockchain.azure-blockchain-ethereumethereum-poa-consortium) is designed to make it easier to deploy, configure, and govern a multi-member consortium Proof-of-authority Ethereum network with minimal Azure and Ethereum knowledge.
 
-Azure portal aracılığıyla Kullanıcı girişleri ve tek tıklamayla dağıtım ile her üye, dünya genelinde Microsoft Azure Işlem, ağ ve depolama hizmetleri kullanarak bir ağ ayak izi sağlayabilir. Her üyenin ağ izi, bir uygulamanın veya kullanıcının Ethereum işlemlerini göndermek için etkileşime girebileceği yük dengeli bir doğrulayıcı düğümleri kümesinden oluşur.
+With a handful of user inputs and a single-click deployment through the Azure portal, each member can provision a network footprint, using Microsoft Azure Compute, networking, and storage services across the globe. Each member's network footprint consists of a set of load-balanced validator nodes with which an application or user can interact to submit Ethereum transactions.
 
 ## <a name="concepts"></a>Kavramlar
 
 ### <a name="terminology"></a>Terminoloji
 
--   **Consensus** -blok doğrulaması ve oluşturma aracılığıyla dağıtılmış ağ genelinde verileri eşitleme işlemidir.
+-   **Consensus** - The act of synchronizing data across the distributed network through block validation and creation.
 
--   **Konsorsiyum üyesi** -blok zinciri ağı üzerinde konsensus 'a katılan bir varlık.
+-   **Consortium member** - An entity that participates in consensus on the Blockchain network.
 
--   **Admin** -belirli bir Konsorsiyumu üyesine katılımı yönetmek için kullanılan bir Ethereum hesabı.
+-   **Admin** - An Ethereum account that is used to manage participation for a given consortium member.
 
--   **Validator** -yönetici adına konsensus 'a katılan bir Ethereum hesabıyla ilişkili bir makine.
+-   **Validator** - A machine associated with an Ethereum account that participates in consensus on behalf of an Admin.
 
-### <a name="proof-of-authority"></a>Yetki kanıtı
+### <a name="proof-of-authority"></a>Proof-of-authority
 
-Blok zinciri topluluğuyla yeni olan kullanıcılar için, bu çözümün yayını Azure 'da kolay ve yapılandırılabilir bir şekilde teknoloji hakkında bilgi edinmek için harika bir fırsattır. İş kanıtı, ağı kendi kendine düzenleyen ve dengeli bir katılımaya izin veren hesaplama maliyetlerinden yararlanan bir Sybil direncidir. Bu, şifreli para birimi rekabeti ağ üzerindeki güvenliği yükseltir anonim, açık blok zinciri ağlarında harika bir şekilde çalışmaktadır. Ancak, özel/konsorsiyum ağlarında temeldeki en önemli bir değer yoktur. Alternatif bir protokol ve yetki kanıtı, tüm yarışmaya katılanların bilinen ve saygın olduğu izin verilen ağlarda daha uygundur. Araştırma gereksinimi olmadan, Byzantine hata toleransını sürdürirken yetki kanıtı daha etkilidir.
+For those of you who are new to the blockchain community, the release of this solution is a great opportunity to learn about the technology in an easy and configurable manner on Azure. Proof-of-work is a Sybil-resistance mechanism that leverages computation costs to self-regulate the network and allow fair participation. This works great in anonymous, open blockchain networks where competition for cryptocurrency promotes security on the network. However, in private/consortium networks the underlying Ether has no value. An alternative protocol, proof-of-authority, is more suitable for permitted networks where all consensus participants are known and reputable. Without the need for mining, Proof-of-authority is more efficient while still retaining Byzantine fault tolerance.
 
-### <a name="consortium-governance"></a>Consortium idare
+### <a name="consortium-governance"></a>Consortium governance
 
-Yetki kanıtı, ağın sağlıklı kalmasını sağlamak için izin verilen bir ağ yetkilileri listesine bağlı olduğundan, bu izin listesinde değişiklik yapmak için bir yetkili mekanizma sağlanması önemlidir. Her dağıtım, izin verilen bu listenin zinciri için bir dizi akıllı sözleşme ve Portal ile birlikte sunulur. Önerilen bir değişiklik, konsorsiyum üyelerinden oluşan bir büyük oyuna ulaştığında, değişiklik yapılır. Bu, yeni yarışma katılımcılarının eklenmesine veya riskli bir ağı teşvik eden bir saydam şekilde kaldırılmasına olanak sağlar.
+Since proof-of-authority relies upon a permitted list of network authorities to keep the network healthy, it's important to provide a fair mechanism to make modifications to this permission list. Each deployment comes with a set of smart-contracts and portal for on-chain governance of this permitted list. Once a proposed change reaches a majority vote by consortium members, the change is enacted. This allows new consensus participants to be added or compromised participants to be removed in a transparent way that encourages an honest network.
 
-### <a name="admin-account"></a>Yönetici hesabı
+### <a name="admin-account"></a>Admin account
 
-Yetkili olmayan düğümlerin dağıtımı sırasında yönetici Ethereum adresi istenir. Bu Ethereum hesabını oluşturmak ve güvenli hale getirmek için birkaç farklı mekanizma kullanabilirsiniz. Bu adres ağ üzerinde bir yetkili olarak eklendikten sonra, bu hesabı idare 'e katılmak için kullanabilirsiniz. Bu yönetici hesabı, bu dağıtımın bir parçası olarak oluşturulan Doğrulayıcı düğümlerine konsensus katılımı sağlamak için de kullanılacaktır. Yalnızca ortak Ethereum adresi kullanıldığından, her yöneticinin kendi özel anahtarlarını istenen güvenlik modeliyle takip eden bir şekilde güvenli hale getirme esnekliği vardır.
+During the deployment of the proof-of-authority nodes, you'll be asked for an Admin Ethereum address. You may use several different mechanisms to generate and secure this Ethereum account. Once this address is added as an authority on the network, you can use this account to participate in governance. This admin account will also be used to delegate consensus participation to the validator nodes that are created as part of this deployment. Since only the public Ethereum address is used, each admin has the flexibility to secure their private keys in a way that follows their wanted security model.
 
-### <a name="validator-node"></a>Doğrulayıcı düğümü
+### <a name="validator-node"></a>Validator node
 
-Yetki kanıtlama protokolünde, doğrulayıcı düğümleri geleneksel Miner düğümlerinin yerini alır. Her doğrulayıcının, bir akıllı anlaşma izin listesine eklenen benzersiz bir Ethereum kimliği vardır. Doğrulayıcı bu listede olduktan sonra blok oluşturma işlemine katılabilir. Bu işlem hakkında daha fazla bilgi edinmek için bkz. [yetkili gidiş konsensus](https://wiki.parity.io/Aura)hakkında eşlik eden belgeler. Her konsorsiyum üyesi, coğrafi yedeklilik için beş bölge genelinde iki veya daha fazla Doğrulayıcı düğümü sağlayabilir. Doğrulayıcı düğümleri, temel alınan dağıtılmış defter durumunda konsensus 'a gelmesi için diğer Doğrulayıcı düğümleriyle iletişim kurar.
-Ağa yönelik dengeli bir katılım sağlamak için, her bir konsorsiyumun, ağdaki ilk Üyeden daha fazla Doğrulayıcıları kullanmasını yasaktır (ilk üye üç Doğrulayıcıları dağıttığında, her üye yalnızca üç Doğrulayıcıları olabilir).
+In the proof-of-authority protocol, validator nodes take the place of traditional miner nodes. Each validator has a unique Ethereum identity that gets added to a smart-contract permission list. Once a validator is on this list, it can participate in the block creation process. To learn more about this process, see Parity's documentation on [Authority Round consensus](https://wiki.parity.io/Aura). Each consortium member can provision two or more validator nodes across five regions, for geo-redundancy. Validator nodes communicate with other validator nodes to come to consensus on the state of the underlying distributed ledger.
+To ensure fair participation on the network, each consortium member is prohibited from using more validators than the first member on the network (if the first member deploys three validators, each member can only have up to three validators).
 
-### <a name="identity-store"></a>Kimlik deposu
+### <a name="identity-store"></a>Identity store
 
-Her üye aynı anda birden çok doğrulayıcı düğümüne sahip olacak ve her düğümde izin verilen bir kimlik olması gerektiğinden, doğrulayıcılar ağ üzerinde güvenli bir şekilde benzersiz bir etkin kimlik elde edebilir. Bunun daha kolay olması için, oluşturulan Ethereum kimliklerini güvenli bir şekilde tutan her üyenin aboneliğine dağıtılan bir kimlik deposu geliştirdik. Dağıtım sonrasında, düzenleme kapsayıcısı her Doğrulayıcı için bir Ethereum özel anahtarı oluşturur ve bunu Azure Key Vault depolar. Eşlik düğümü başlamadan önce, kimliğin başka bir düğüm tarafından çekilmediğinden emin olmak için kullanılmayan bir kimlik üzerinde bir kira edinir. Kimlik, istemciye, blok oluşturmaya başlama yetkisi veren istemciye sağlanır. Barındırma VM 'si bir kesinti yaşıyorsa, kimlik kirası serbest bırakılır ve bu, bir değişiklik düğümünün gelecekte kimliğini sürdürmesini sağlar.
+Since each member will have multiple validator nodes running simultaneously and each node must have a permitted identity, it's important that the validators can safely acquire a unique active identity on the network. To make this easier, we've built an Identity Store that gets deployed in each member's subscription that securely holds the generated Ethereum identities. Upon deployment, the orchestration container will generate an Ethereum private key for each validator and store it in Azure Key Vault. Before the parity node starts up, it first acquires a lease on an unused identity to ensure the identity isn't picked up by another node. The identity is provided to the client which gives it the authority to start creating blocks. If the hosting VM experiences an outage, the identity lease will be released, allowing a replacement node to resume its identity in the future.
 
-### <a name="bootnode-registrar"></a>Bootnode Kaydedicisi
+### <a name="bootnode-registrar"></a>Bootnode registrar
 
-Bağlantı kolaylığı sağlamak için, her üye [VERI API uç noktasında](#data-api)bir bağlantı bilgileri kümesi barındırır. Bu veriler, katılan üye için eşleme düğümleri olarak sağlanmış olan bootnodes listesini içerir. Bu veri API 'sinin bir parçası olarak, bu bootnode listesini güncel tutduk
+To enable the ease of connectivity, each member will host a set of connection information at the [data API endpoint](#data-api). This data includes a list of bootnodes that are provided as peering nodes for the joining member. As part of this data API, we keep this bootnode list up-to-date
 
-### <a name="bring-your-own-operator"></a>Kendi operatörüzü getir
+### <a name="bring-your-own-operator"></a>Bring your own operator
 
-Genellikle bir konsorsiyum üyesi ağ İdaresi 'ne katılmak, ancak altyapısını çalıştırmak ve bakımını yapmak istemeyecektir. Geleneksel sistemlerden farklı olarak ağ genelinde tek bir operatör olması, blok zinciri sistemlerinin merkezi olmayan modeline karşı çalışır. Her bir konsorsiyum üyesi, bir ağı işletmek için merkezi bir aracı çalıştırmak yerine, altyapı yönetimini kendi tercih eden işleçle temsil edebilir. Bu, her üyenin kendi altyapısını veya temsilci işlemini farklı bir iş ortağıyla çalıştırmayı seçebildiği bir karma modele izin verir. Temsilci olan işlem iş akışı aşağıdaki gibi çalışmaktadır:
+Often a consortium member will want to participate in network governance but don't want to operate and maintain their infrastructure. Unlike traditional systems, having a single operator across the network works against the decentralized model of blockchain systems. Instead of hiring a centralized intermediary to operate a network, each consortium member can delegate infrastructure management to the operator of their choosing. This allows a hybrid model where each member can choose to operate their own infrastructure or delegate operation to a different partner. The delegated operation workflow works as follows:
 
-1.  **Konsorsiyum üyesi** bir Ethereum adresi oluşturuyor (özel anahtarı barındırır)
+1.  **Consortium Member** generates an Ethereum address (holds private key)
 
-2.  **Konsorsiyum üyesi** , genel Ethereum adresini **işlece** sağlar
+2.  **Consortium Member** provides public Ethereum address to **Operator**
 
-3.  **İşleç** Azure Resource Manager çözümümüzü kullanarak POA Doğrulayıcı düğümlerini dağıtır ve yapılandırır
+3.  **Operator** deploys and configures the PoA validator nodes using our Azure Resource Manager solution
 
-4.  **İşleç** , **Consortium üyesine** RPC ve yönetim uç noktasını sağlar
+4.  **Operator** provides the RPC and management endpoint to **Consortium Member**
 
-5.  **Konsorsiyum üyesi** , doğrulayıcı düğümlerini kabul eden bir isteği imzalamak için özel anahtarını kullanır ve kendi adına katılmak Için bu **işleci** dağıtıldı
+5.  **Consortium Member** uses their private key to sign a request accepting the validator nodes **Operator** has deployed to participate on their behalf
 
 ### <a name="azure-monitor"></a>Azure İzleyici
 
-Bu çözüm, düğüm ve ağ istatistiklerini izlemek için Azure Izleyici ile de birlikte gelir. Uygulama geliştiricileri için, bu, blok oluşturma istatistiklerini izlemek üzere temeldeki blok zincirine yönelik görünürlük sağlar. Ağ işletmenleri, altyapı istatistikleri ve sorgulanabilir Günlükler aracılığıyla ağ kesintilerini hızla algılamak ve engellemek için Azure Izleyici 'yi kullanabilir. Daha fazla bilgi için bkz. [hizmet izleme](#service-monitoring).
+This solution also comes with Azure Monitor to track node and network statistics. For application developers, this provides visibility into the underlying blockchain to track block generation statistics. Network operators can use Azure Monitor to quickly detect and prevent network outages through infrastructure statistics and queryable logs. For more information, see [Service monitoring](#service-monitoring).
 
-### <a name="deployment-architecture"></a>Dağıtım mimarisi
+### <a name="deployment-architecture"></a>Deployment architecture
 
 #### <a name="description"></a>Açıklama
 
-Bu çözüm, tek veya çok bölgeli bir çok üyeli bir Ethereum Konsorsiyumu ağını dağıtabilir. Varsayılan olarak, RPC ve eşleme uç noktalarına, abonelikler ve bulutlar arasında basitleştirilmiş bağlantı sağlamak için genel IP üzerinden erişilebilir. Uygulama düzeyinde erişim denetimleri için [eşlik 'nın permissioning sözleşmelerini](https://wiki.parity.io/Permissioning) kullanmanızı öneririz. Ayrıca, sanal ağlar arası bağlantı için VNet ağ geçitlerinden yararlanan VPN 'lerin arkasında dağıtılan ağları da destekliyoruz. Bu dağıtımlar daha karmaşıktır, bu nedenle önce genel IP modeliyle başlamanız önerilir.
+This solution can deploy a single or multi-region based multi-member Ethereum consortium network. By default, the RPC and peering endpoints are accessible over public IP to enable simplified connectivity across subscriptions and clouds. We recommend leveraging [Parity's permissioning contracts](https://wiki.parity.io/Permissioning) for application level access-controls. We also support networks deployed behind VPNs, which leverage VNet gateways for cross-subscription connectivity. These deployments are more complex, so it is recommended to start with the public IP model first.
 
-#### <a name="consortium-member-overview"></a>Consortium üyesine genel bakış
+#### <a name="consortium-member-overview"></a>Consortium member overview
 
-Her bir konsorsiyum üye dağıtımı şunları içerir:
+Each consortium member deployment includes:
 
--   PoA Doğrulayıcıları çalıştırmaya yönelik sanal makineler
+-   Virtual Machines for running the PoA validators
 
--   RPC, eşleme ve Idare DApp isteklerini dağıtmaya yönelik Azure Load Balancer
+-   Azure Load Balancer for distributing RPC, peering, and Governance DApp requests
 
--   Doğrulayıcı kimliklerini güvenli hale getirmek için Azure Key Vault
+-   Azure Key Vault for securing the validator identities
 
--   Kalıcı ağ bilgilerini barındırmak ve kiralamayı koordine etmek için Azure depolama
+-   Azure Storage for hosting persistent network information and coordinating leasing
 
--   Günlük ve performans istatistikleri toplamak için Azure Izleyici
+-   Azure Monitor for aggregating logs and performance statistics
 
--   Özel VNET 'lerde VPN bağlantılarına izin vermek için sanal ağ geçidi (isteğe bağlı)
+-   VNet Gateway (optional) for allowing VPN connections across private VNets
 
-![dağıtım mimarisi](./media/ethereum-poa-deployment/deployment-architecture.png)
+![deployment architecture](./media/ethereum-poa-deployment/deployment-architecture.png)
 
-Güvenilirlik ve modülerlilik için Docker kapsayıcılarından faydalanır. Her dağıtımın parçası olarak sürümlü görüntüleri barındırmak ve barındırmak için Azure Container Registry kullanırız. Kapsayıcı görüntüleri aşağıdakilerden oluşur:
+We leverage Docker containers for reliability and modularity. We use Azure Container Registry to host and serve versioned images as part of each deployment. The container images consist of:
 
 -   Orchestrator
 
-    -   Dağıtım sırasında bir kez çalışır
+    -   Runs once during deployment
 
-    -   Kimlikler ve idare sözleşmeleri oluşturur
+    -   Generates identities and governance contracts
 
-    -   Kimlikleri kimlik deposunda depolar
+    -   Stores identities in Identity Store
 
--   Eşlik Istemcisi
+-   Parity Client
 
-    -   Kimlik deposundan kimlik kiralamaları
+    -   Leases identity from Identity Store
 
-    -   Eşleri bulur ve eşler arasında bağlanır
+    -   Discovers and connects to peers
 
--   Etden stats Aracısı
+-   EthStats Agent
 
-    -   RPC ve Azure Izleyici 'ye gönderim aracılığıyla yerel günlükleri ve istatistikleri toplar
+    -   Collects local logs and stats via RPC and pushes to Azure Monitor
 
--   İdare DApp
+-   Governance DApp
 
-    -   Idare sözleşmeleri ile etkileşim için Web arabirimi
+    -   Web interface for interacting with Governance contracts
 
 ## <a name="how-to-guides"></a>Nasıl yapılır kılavuzları
-### <a name="governance-dapp"></a>İdare DApp
+### <a name="governance-dapp"></a>Governance DApp
 
-Yetki kanıtlama kalbi, yönetim açısından idare edilir. İdare DApp, önceden dağıtılan [akıllı sözleşmeleri](https://github.com/Azure-Samples/blockchain/tree/master/ethereum-on-azure/) ve ağdaki yetkilileri yönetmek için kullanılan bir Web uygulamasını bir kümesidir.
-Yetkililer, yönetici kimliklerine ve doğrulayıcı düğümlerine bölünmüştür.
-Yöneticiler, konsensus katılımını bir doğrulayıcı düğümleri kümesine devretmek için güce sahiptir. Yöneticiler ayrıca diğer yöneticileri ağ içine veya dışına da oylayabilir.
+At the heart of proof-of-authority is decentralized governance. The governance DApp is a set of pre-deployed [smart contracts](https://github.com/Azure-Samples/blockchain/tree/master/ethereum-on-azure/) and a web application that are used to govern the authorities on the network.
+Authorities are broken up into Admin identities and Validator nodes.
+Admins have the power to delegate consensus participation to a set of Validator nodes. Admins also may vote other admins into or out of the network.
 
-![idare dapp](./media/ethereum-poa-deployment/governance-dapp.png)
+![governance dapp](./media/ethereum-poa-deployment/governance-dapp.png)
 
--   Merkezi **olmayan idare-** Ağ yetkililerinde yapılan değişiklikler, select yöneticileri tarafından zincir üzerinde oylama aracılığıyla yönetilir.
+-   **Decentralized Governance -** Changes in network authorities are administered through on-chain voting by select administrators.
 
--   **Doğrulayıcı temsili-** Yetkililer, her bir bir dağıtımda ayarlanan Doğrulayıcı düğümlerini yönetebilir.
+-   **Validator Delegation -** Authorities can manage their validator nodes that are set up in each PoA deployment.
 
--   **Denetlenebilir değişiklik geçmişi-** Her değişiklik, saydam ve seslebilirlik sağlayan blok zincirinde kaydedilir.
+-   **Auditable Change History -** Each change is recorded on the blockchain providing transparency and auditability.
 
-#### <a name="getting-started-with-governance"></a>İdare ile çalışmaya başlama
-Idare DApp aracılığıyla herhangi bir türde işlem gerçekleştirmek için bir Ethereum cüzdan kullanmanız gerekir.  En kolay yaklaşım, [MetaMask](https://metamask.io)gibi bir tarayıcı içi cüzdan kullanmaktır. Bununla birlikte, bunlar ağa dağıtılmış akıllı sözleşmelerde, Idare sözleşmenize yönelik etkileşimlerinizi de otomatikleştirebiliriz.
+#### <a name="getting-started-with-governance"></a>Getting started with governance
+To perform any kind of transactions through the Governance DApp, you'll need to leverage an Ethereum wallet.  The most straightforward approach is to use an in-browser wallet such as [MetaMask](https://metamask.io); however, because these are smart contracts deployed on the network you may also automate your interactions to the Governance contract.
 
-MetaMask yükledikten sonra, tarayıcıdaki Idare DApp 'ye gidin.  URL 'YI dağıtım onay e-postasında veya dağıtım çıkışında Azure portal aracılığıyla bulabilirsiniz.  Tarayıcı içi bir cüzdan yüklü değilse herhangi bir eylem gerçekleştiremezsiniz; Ancak yine de yönetici durumunu okuyabilirsiniz.  
+After installing MetaMask, navigate to the Governance DApp in the browser.  You can locate the URL in the deployment confirmation email or through Azure portal in the deployment output.  If you don't have an in-browser wallet installed you'll not be able to perform any actions; however, you still can read the administrator state.  
 
-#### <a name="becoming-an-admin"></a>Yönetici olma
-Ağa dağıtılan ilk üyesiyse, otomatik olarak yönetici olacak ve eşlik düğümleriniz doğrulayıcılar olarak listelenecektir.  Ağa katılırsanız, büyük bir yönetici olarak (% 50 ' dan fazla) erişmeniz gerekir var olan yönetici kümesi.  Yönetici olmaya devam ederseniz, düğümleriniz blok zincirini eşitler ve doğrular; Ancak, bu kişiler blok oluşturma işlemine katılmaz. Bir yönetici olmak üzere oylama işlemini başlatmak için __aday ' a__ tıklayın ve Ethereum adresinizi ve diğer adınızı girin.
+#### <a name="becoming-an-admin"></a>Becoming an admin
+If you're the first member that deployed on the network, then you'll automatically become an Admin and your Parity nodes will be listed as Validators.  If you're joining the network, you'll need to get voted in as an Admin by a majority (greater than 50%) of the existing Admin set.  If you choose not to become an Admin then your nodes will still sync and validate the blockchain; however, they will not participate in the block creation process. To start the voting process to become an Admin, click __Nominate__ and enter your Ethereum address and alias.
 
-![Belirle](./media/ethereum-poa-deployment/governance-dapp-nominate.png)
+![Adaylık](./media/ethereum-poa-deployment/governance-dapp-nominate.png)
 
-#### <a name="candidates"></a>Larınızdan
-__Adaylar__ sekmesinin seçilmesi, geçerli aday Yöneticiler kümesini gösterir.  Bir aday, geçerli yöneticiler tarafından bir çoğunluk oyuna ulaştığında aday bir yöneticiye yükseltilir.  Bir aday üzerinde oy vermek için satırı seçin ve üst kısımdaki "oyın" düğmesine tıklayın.  Oyunuzu bir oyda değiştirirseniz, adayı seçebilir ve "rescind oyı" düğmesine tıklayabilirsiniz.
+#### <a name="candidates"></a>Candidates
+Selecting the __Candidates__ tab will show you the current set of candidate administrators.  Once a Candidate reaches a majority vote by the current Admins, the Candidate will get promoted to an Admin.  To vote on a Candidate, select the row and click "Vote in" at the top.  If you change your mind on a vote, you may select the candidate and click "Rescind vote".
 
-![Larınızdan](./media/ethereum-poa-deployment/governance-dapp-candidates.png)
+![Candidates](./media/ethereum-poa-deployment/governance-dapp-candidates.png)
 
 
-#### <a name="admins"></a>Yöneticiler
-__Yöneticiler__ sekmesi geçerli yönetici kümesini gösterir ve size bir oy verme özelliği sağlar.  Yönetici% 50 ' den fazla destek kaybettikten sonra ağ üzerinde yönetici olarak kaldırılacaktır.  Bu yöneticinin sahip olduğu tüm Doğrulayıcı düğümleri, Doğrulayıcı durumunu kaybeder ve ağ üzerinde işlem düğümleri olur.  Herhangi bir sayıda nedenden dolayı yönetici kaldırılabilir. Ancak, bir ilkeyi önceden kabul etmek için konsorsiyumun bir üyesi vardır.
+#### <a name="admins"></a>Admins
+The __Admins__ tab will show the current set of Admins and provide you the ability to vote against.  Once an Admin loses more than 50% support, they'll be removed as an Admin on the network.  Any validator nodes that this Admin owns will lose validator status and become transaction nodes on the network.  An Admin may be removed for any number of reasons; however, it's up to the consortium to agree on a policy in advance.
 
-![Yöneticiler](./media/ethereum-poa-deployment/governance-dapp-admins.png)
+![Admins](./media/ethereum-poa-deployment/governance-dapp-admins.png)
 
-#### <a name="validators"></a>Metninin
-Sol menüdeki __doğrulayıcılar__ sekmesini seçtiğinizde, bu örnek için dağıtılan geçerli eşlik düğümleri ve bunların geçerli durumu (düğüm türü) görüntülenir.  Bu görünüm geçerli dağıtılmış Consortium üyesini temsil ettiğinden, her Consortium üyesinin bu listede farklı bir doğrulayıcılar kümesi olur.  Bu yeni bir dağıtılmış örneğidir ve henüz Doğrulayıcıları eklemediyseniz, ' doğrulayıcılar Ekle ' seçeneği gösterilir.  Bunun belirlenmesi, bölgesel olarak dengeli bir eşlik düğümleri kümesini otomatik olarak seçer ve bunları Doğrulayıcı kümesine atar.  İzin verilen kapasiteden daha fazla düğüm dağıttıysanız, kalan düğümler ağ üzerinde işlem düğümleri olur.
+#### <a name="validators"></a>Validators
+Selecting the __Validators__ tab in the left menu will display the current deployed Parity nodes for this instance and their current status (Node type).  Each consortium member will have a different set of validators in this list, since this view represents the current deployed consortium member.  If this is a newly deployed instance and you haven't yet added your validators, you'll be shown the option to 'Add Validators'.  Selecting this will automatically choose a regionally balanced set of Parity nodes and assign them to your validator set.  If you have deployed more nodes than the allowed capacity, the remaining nodes will become transaction nodes on the network.
 
-Her doğrulayıcının adresi, Azure 'daki [kimlik deposu](#identity-store) aracılığıyla otomatik olarak atanır.  Bir düğüm kapanıyorsa, kendi kimliğini bir yere alır ve dağıtımınızdaki başka bir düğümün yerini almak için bu bir düğüme izin verir.  Bu, konsensus katılımınızı yüksek oranda kullanılabilir olmasını sağlar.
+The address of each validator is automatically assigned via the [identity store](#identity-store) in Azure.  If a node goes down, it will relinquish its identity, allowing another node in your deployment to take its place.  This ensures that your consensus participation is highly available.
 
-![Metninin](./media/ethereum-poa-deployment/governance-dapp-validators.png)
+![Validators](./media/ethereum-poa-deployment/governance-dapp-validators.png)
 
-#### <a name="consortium-name"></a>Konsorsiyum adı
-Herhangi bir yönetici, sayfanın üstünde görünen konsorsiyumun adını güncelleştirebilir.  Konsorsiyumun adını güncelleştirmek için sol üstteki dişli simgesini seçin.
+#### <a name="consortium-name"></a>Consortium name
+Any Admin may update the Consortium Name, displayed at the top of the page.  Select the gear icon in the top left to update the Consortium Name.
 
-#### <a name="account-menu"></a>Hesap menüsü
-Sağ üst köşede, Ethereum hesabınızın diğer adı ve identicon.  Yönetici değilseniz, diğer adınızı güncelleştirebilirsiniz.
+#### <a name="account-menu"></a>Account menu
+In the top-right is your Ethereum account alias and identicon.  If you're an Admin you'll have the ability to update your alias.
 
 ![Hesap](./media/ethereum-poa-deployment/governance-dapp-account.png)
 
-### <a name="deploy-ethereum-proof-of-authority"></a>Ethereum yetki kanıtı dağıtma
+### <a name="deploy-ethereum-proof-of-authority"></a>Deploy Ethereum Proof-of-Authority
 
-Çok taraflı dağıtım akışına bir örnek aşağıda verilmiştir:
+Here's an example of a multi-party deployment flow:
 
-1.  Üç üye, her biri MetaMask kullanarak bir Ethereum hesabı oluşturur
+1.  Three members each generate an Ethereum account using MetaMask
 
-2.  *A üyesi bir* Ethereum POA dağıtır ve bu kişilerin Ethereum ortak adresini sağlar
+2.  *Member A* deploys Ethereum PoA, providing their Ethereum Public Address
 
-3.  *A üyesi* , *B üyesine* ve *C üyesine* yönelik Consortium URL 'sini sağlar
+3.  *Member A* provides the consortium URL to *Member B* and *Member C*
 
-4.  *Üye B* ve *üye C* dağıtımı, Ethereum POA, Ethereum ortak adresi ve *ÜYESI A*'nın Konsorsiyumu URL 'si
+4.  *Member B* and *Member C* deploy, Ethereum PoA, providing their Ethereum Public Address and *Member A*'s consortium URL
 
-5.  *B üyesi B* 'de yönetici olarak *bir oy üyesi*
+5.  *Member A* votes in *Member B* as an admin
 
-6.  Üye *A* ve *üye B* üye *C* 'yi yönetici olarak Oylar
+6.  *Member A* and *Member B* both vote *Member C* as an admin
 
-Bu işlem, birkaç sanal makine ve yönetilen disk dağıtımı destekleyebilen bir Azure aboneliği gerektirir. Gerekirse, başlamak için [ücretsiz bir Azure hesabı oluşturun](https://azure.microsoft.com/free/) .
+This process requires an Azure subscription that can support deploying several virtual machines and managed disks. If necessary, [create a free Azure account](https://azure.microsoft.com/free/) to begin.
 
-Abonelik güvenli hale getirildikten sonra Azure portal ' a gidin. ' + ', Market (' tümünü görüntüle ') öğesini seçin ve Ethereum PoA Konsorsiyumu arayın.
+Once a subscription is secured, go to Azure portal. Select '+', Marketplace ('See all'), and search for Ethereum PoA Consortium.
 
-Aşağıdaki bölümde, ağdaki ilk üyenin parmak izini yapılandırma işleminde size yol gösterilir. Dağıtım akışı beş adıma bölünür: Temel bilgiler, dağıtım bölgeleri, ağ boyutu ve performans, Ethereum ayarları, Azure Izleyici.
+The following section will walk you through configuring the first member's footprint in the network. The deployment flow is divided into five steps: Basics, Deployment regions, Network size and performance, Ethereum settings, Azure Monitor.
 
-#### <a name="basics"></a>Temel
+#### <a name="basics"></a>Temel Bilgiler
 
-**Temel bilgiler**altında, abonelik, kaynak grubu ve temel sanal makine özellikleri gibi herhangi bir dağıtım için standart parametrelerin değerlerini belirtin.
+Under **Basics**, specify values for standard parameters for any deployment, such as subscription, resource group and basic virtual machine properties.
 
-Her parametrenin ayrıntılı açıklaması aşağıdadır:
+A detailed description of each parameter follows:
 
 Parametre adı|Açıklama|İzin verilen değerler|Varsayılan değerler
 ---|---|---|---
-Yeni bir ağ oluşturun veya var olan bir ağa katılarak emin misiniz?|Yeni bir ağ oluşturun veya önceden var olan bir konsorsiyum ağı ekleyin|Yeni bir JOIN oluştur var|Yeni Oluştur
-E-posta adresi (Isteğe bağlı)|Dağıtımınız hakkında bilgi ile dağıtım tamamlandığında bir e-posta bildirimi alacaksınız.|Geçerli e-posta adresi|NA
-VM Kullanıcı adı|Dağıtılan her VM 'nin Yönetici Kullanıcı adı (yalnızca alfasayısal karakterler)|1-64 karakter|NA
-Kimlik doğrulaması türü|Sanal makinede kimlik doğrulama yöntemi.|Parola veya SSH ortak anahtarı|istemcisiyle yönetilen bir cihaz için)
-Parola (kimlik doğrulama türü = parola)|Dağıtılan sanal makinelerin her biri için yönetici hesabının parolası.  Parolanın aşağıdakilerden 3 ' ü içermesi gerekir: 1 büyük harf karakter, 1 küçük harf, 1 sayı ve 1 özel karakter. Tüm VM 'Ler başlangıçta aynı parolaya sahip olsa da, sağlama sonrasında parolayı değiştirebilirsiniz.|12-72 karakter|NA
-SSH anahtarı (kimlik doğrulama türü = ortak anahtar)|Uzaktan oturum açma için kullanılan güvenli kabuk anahtarı.||NA
-Subscription|Consortium ağının dağıtılacağı abonelik||NA
-Kaynak Grubu|Consortium ağının dağıtılacağı kaynak grubu.||NA
-Location|Kaynak grubu için Azure bölgesi.||NA
+Create a new network or join existing network?|Create a new network or join a pre-existing consortium network|Create New Join Existing|Yeni Oluştur
+Email Address (Optional)|You'll receive an email notification when your deployment completes with information about your deployment.|Valid email address|Yok
+VM user name|Administrator username of each deployed VM (alphanumeric characters only)|1-64 characters|Yok
+Kimlik doğrulaması türü|The method to authenticate to the virtual machine.|Password or SSH public key|Parola
+Password (Authentication type = Password)|The password for the administrator account for each of the virtual machines deployed.  The password must contain 3 of the following: 1 upper case character, 1 lower case character, 1 number, and 1 special character. While all VMs initially have the same password, you can change the password after provisioning.|12-72 characters|Yok
+SSH Key (Authentication type = Public Key)|The secure shell key used for remote login.||Yok
+Abonelik|The subscription to which to deploy the consortium network||Yok
+Kaynak Grubu|The resource group to which to deploy the consortium network.||Yok
+Konum|The Azure region for resource group.||Yok
 
-Örnek dağıtım aşağıda gösterilmiştir: ![temel dikey pencere](./media/ethereum-poa-deployment/basic-blade.png)
+A sample deployment is shown below: ![basic blade](./media/ethereum-poa-deployment/basic-blade.png)
 
-#### <a name="deployment-regions"></a>Dağıtım bölgeleri
+#### <a name="deployment-regions"></a>Deployment regions
 
-Ardından, dağıtım bölgeleri ' nin altında, konsorsiyumun sayısını ve verilen bölge sayısına göre Azure bölgelerinin seçimini yapmak için bölge sayısı girdilerini belirtin. Kullanıcı en fazla 5 bölgede dağıtım yapabilir. Temel bilgiler bölümünden kaynak grubu konumuyla eşleşecek ilk bölgeyi seçmeyi öneririz. Geliştirme veya test ağları için üye başına tek bir bölge önerilir. Üretim için, yüksek kullanılabilirlik için iki veya daha fazla bölgede dağıtım yapmanızı öneririz.
+Next, under Deployment regions, specify inputs for number of region(s) to deploy the consortium network and selection of Azure regions based on the number of regions given. User can deploy in maximum of 5 regions. We recommend choosing the first region to match the resource group location from Basics section. For development or test networks, a single region per member is recommended. For production, we recommend deploying across two or more regions for high-availability.
 
-Her parametrenin ayrıntılı açıklaması aşağıdadır:
-
-  Parametre adı|Açıklama|İzin verilen değerler|Varsayılan değerler
-  ---|---|---|---
-  Bölge sayısı|Konsorsiyum ağını dağıtmak için bölge sayısı|1, 2, 3, 4, 5|1\.
-  İlk bölge|Consortium ağını dağıtmaya yönelik ilk bölge|Tüm izin verilen Azure bölgeleri|NA
-  İkinci bölge|Consortium ağını dağıtmanın ikinci bölgesi (yalnızca bölge sayısı 2 olarak seçildiğinde görünür)|Tüm izin verilen Azure bölgeleri|NA
-  Üçüncü bölge|Konsorsiyum ağını dağıtmaya yönelik üçüncü bölge (yalnızca bölge sayısı 3 olarak seçildiğinde görünür)|Tüm izin verilen Azure bölgeleri|NA
-  Dördüncü bölge|Konsorsiyum ağını dağıtmaya yönelik dördüncü bölge (yalnızca bölge sayısı 4 olarak seçildiğinde görünür)|Tüm izin verilen Azure bölgeleri|NA
-  Beşinci bölge|Konsorsiyum ağını dağıtmaya yönelik beşinci bölge (yalnızca bölge sayısı 5 olarak seçildiğinde görünür)|Tüm izin verilen Azure bölgeleri|NA
-
-Örnek dağıtım aşağıda gösterilmiştir: ![dağıtım bölgeleri](./media/ethereum-poa-deployment/deployment-regions.png)
-
-#### <a name="network-size-and-performance"></a>Ağ boyutu ve performansı
-
-Ardından, ' ağ boyutu ve performans ' altında, bir konsorsiyumun, doğrulayıcı düğümlerinin sayısı ve boyutu gibi bir ağ boyutu için giriş belirtin.
-Doğrulayıcı düğüm depolama boyutu, blok zincirinin olası boyutunu dikte eder. Bu, dağıtımdan sonra değiştirilebilir.
-
-Her parametrenin ayrıntılı açıklaması aşağıdadır:
+A detailed description of each parameter follows:
 
   Parametre adı|Açıklama|İzin verilen değerler|Varsayılan değerler
   ---|---|---|---
-  Yük dengeli Doğrulayıcı düğümlerinin sayısı|Ağın bir parçası olarak sağlanacak Doğrulayıcı düğümlerinin sayısı|2-15|2
-  Doğrulayıcı düğümü depolama performansı|Dağıtılan Doğrulayıcı düğümlerinin her birini yedekleyen yönetilen disk türü.|Standart SSD veya Premium|Standart SSD
-  Doğrulayıcı düğümü sanal makine boyutu|Doğrulayıcı düğümleri için kullanılan sanal makine boyutu.|Standart A, standart D, standart D-v2, standart F serisi, standart DS ve standart FS|Standart D1 v2
+  Number of region(s)|Number of regions to deploy the consortium network|1, 2, 3, 4, 5|1
+  First region|First region to deploy the consortium network|All allowed Azure regions|Yok
+  Second region|Second region to deploy the consortium network (Visible only when number of regions is selected as 2)|All allowed Azure regions|Yok
+  Third region|Third region to deploy the consortium network (Visible only when number of regions is selected as 3)|All allowed Azure regions|Yok
+  Fourth region|Fourth region to deploy the consortium network (Visible only when number of regions is selected as 4)|All allowed Azure regions|Yok
+  Fifth region|Fifth region to deploy the consortium network (Visible only when number of regions is selected as 5)|All allowed Azure regions|Yok
 
-[Depolama fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/managed-disks/)
+A sample deployment is shown below: ![deployment regions](./media/ethereum-poa-deployment/deployment-regions.png)
 
-[Sanal makine fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)
+#### <a name="network-size-and-performance"></a>Network size and performance
 
-Sanal makine ve depolama katmanı, ağ performansını etkileyecektir.  İstenen maliyet verimliliği temelinde aşağıdaki SKU 'Ların kullanılması önerilir:
+Next, under 'Network size and performance' specify inputs for the size of the consortium network, such as number and size of validator nodes.
+The validator node storage size will dictate the potential size of the blockchain. This can be changed after deployment.
 
-  Sanal makine SKU 'SU|Depolama katmanı|Fiyat|Aktarım hızı|Gecikme süresi
+A detailed description of each parameter follows:
+
+  Parametre adı|Açıklama|İzin verilen değerler|Varsayılan değerler
+  ---|---|---|---
+  Number of load balanced validator nodes|The number of validator nodes to provision as part of the network|2-15|2
+  Validator node storage performance|The type of managed disk backing each of the deployed validator nodes.|Standard SSD or Premium|Standart SSD
+  Validator node virtual machine size|The virtual machine size used for validator nodes.|Standard A, Standard D, Standard D-v2, Standard F series, Standard DS, and Standard FS|Standard D1 v2
+
+[Storage Pricing Details](https://azure.microsoft.com/pricing/details/managed-disks/)
+
+[Virtual Machine Pricing Details](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)
+
+Virtual Machine and Storage Tier will affect network performance.  We recommend the following SKUs based on desired cost-efficiency:
+
+  Virtual Machine SKU|Storage Tier|Fiyat|İşleme|Gecikme süresi
   ---|---|---|---|---
-  F1|Standart SSD|düşük|düşük|geniş
-  D2_v3|Standart SSD|orta|orta|orta
-  F16s|Premium SSD|geniş|geniş|düşük
+  F1|Standart SSD|low|low|high
+  D2_v3|Standart SSD|medium|medium|medium
+  F16s|Premium SSD|high|high|low
 
-Örnek dağıtım aşağıda gösterilmiştir: ![ağ boyutu ve performansı](./media/ethereum-poa-deployment/network-size-and-performance.png)
+A sample deployment is shown below: ![network size and performance](./media/ethereum-poa-deployment/network-size-and-performance.png)
 
-#### <a name="ethereum-settings"></a>Ethereum ayarları
+#### <a name="ethereum-settings"></a>Ethereum settings
 
-Ardından, Ethereum ayarları altında, Ethernet KIMLIĞI ve Ethereum hesabı parolası ya da genesu bloğu gibi Ethereum ile ilgili yapılandırma ayarlarını belirtin.
+Next, under Ethereum settings, specify Ethereum-related configuration settings, like the network ID and Ethereum account password or genesis block.
 
-Her parametrenin ayrıntılı açıklaması aşağıdadır:
+A detailed description of each parameter follows:
 
   Parametre adı|Açıklama|İzin verilen değerler|Varsayılan değerler
   ---|---|---|---
-Konsorsiyum üye KIMLIĞI|Konsorsiyumdan kaçınmak için IP adresi alanlarını yapılandırmak için kullanılan Consortium ağına katılan her üyeyle ilişkili KIMLIK. Özel ağ söz konusu olduğunda, üye KIMLIĞI aynı ağdaki farklı kuruluşlar arasında benzersiz olmalıdır.  Aynı kuruluş birden çok bölgeye dağıttığında bile benzersiz bir üye KIMLIĞI gereklidir. Bu parametrenin değerini, çakışma olmadığından emin olmak için diğer birleştirme üyeleriyle paylaşmanız gerekecektir.|0-255|NA
-Ağ kimliği|Dağıtmakta olan konsorsiyumum ağının ağ KIMLIĞI.  Her bir Ethereum ağının kendi ağ KIMLIĞI vardır ve bu, genel ağın KIMLIĞI olan 1 ' dir.|5-999.999.999|10101010
-Yönetici Ethereum adresi|PoA İdaresi içine katılmak için kullanılan Ethereum hesap adresi.  Ethereum adresini oluşturmak için MetaMask kullanmanızı öneririz.|0x ile başlayan 42 alfasayısal karakter|NA
-Gelişmiş Seçenekler|Ethereum ayarları için Gelişmiş Seçenekler|Etkinleştir veya devre dışı bırak|Devre Dışı Bırak
-Genel IP (Gelişmiş Seçenekler = etkinleştir)|Ağı VNet ağ geçidinin arkasında dağıtır ve eşleme erişimini kaldırır. Bu seçenek işaretliyse, bağlantının uyumlu olması için tüm üyelerin VNet Gateway kullanması gerekir.|Genel IP özel VNet|Genel IP
-Blok gaz sınırı (Gelişmiş Seçenekler = etkinleştir)|Ağın başlangıç blok gaz sınırı|Herhangi bir sayısal|50000000
-Yeniden mühürlemek süresi (sn)|Ağ üzerinde işlem olmadığında boş blokların oluşturulma sıklığı. Daha yüksek bir sıklık daha hızlı ve daha fazla depolama maliyetine sahip olacaktır.|Herhangi bir sayısal|15
-İşlem Izin Sözleşmesi (Gelişmiş Seçenekler = etkinleştir)|Işlem Izinleri sözleşmesi için bayt kodu. Akıllı sözleşme dağıtımını ve yürütmeyi, izin verilen Ethereum hesapları listesine kısıtlar.|Sözleşme bytecode 'u|NA
+Consortium Member ID|The ID associated with each member participating in the consortium network used to configure IP address spaces to avoid collision. In the case of a private network, Member ID should be unique across different organizations in the same network.  A unique member ID is needed even when the same organization deploys to multiple regions. Make note of the value of this parameter since you'll need to share it with other joining members to ensure there’s no collision.|0-255|Yok
+Network ID|The network ID for the consortium Ethereum network being deployed.  Each Ethereum network has its own Network ID, with 1 being the ID for the public network.|5 - 999,999,999|10101010
+Admin Ethereum Address|Ethereum account address that is used for participating in PoA governance.  We recommend using MetaMask for generating an Ethereum address.|42 alphanumeric characters starting with 0x|Yok
+Advanced Options|Advanced options for Ethereum settings|Enable or Disable|Devre dışı bırakma
+Public IP (Advanced Options = Enable)|Deploys the network behind a VNet Gateway and removes peering access. If this option is selected, all members must use a VNet Gateway for the connection to be compatible.|Public IP Private VNet|Genel IP
+Block Gas Limit (Advanced Options = Enable)|The starting block gas limit of the network|Any numeric|50000000
+Block Reseal Period (sec)|The frequency at which empty blocks will be created when there are no transactions on the network. A higher frequency will have faster finality but increased storage costs.|Any numeric|15
+Transaction Permission Contract (Advanced Options = Enable)|Bytecode for the Transaction Permissioning contract. Restricts smart contract deployment and execution to a permitted list of Ethereum accounts.|Contract bytecode|Yok
 
-Örnek dağıtım aşağıda gösterilmiştir: ![Ethereum ayarları](./media/ethereum-poa-deployment/ethereum-settings.png)
+A sample deployment is shown below: ![ethereum settings](./media/ethereum-poa-deployment/ethereum-settings.png)
 
 #### <a name="monitoring"></a>İzleme
 
-Izleme dikey penceresi ağınız için bir Azure Izleyici günlükleri kaynağı yapılandırmanıza olanak tanır. İzleme Aracısı, ağ durumu veya hata ayıklama sorunlarını hızla denetleyebilme olanağı sunarak, ağınıza ait yararlı ölçümleri ve günlükleri toplayıp sunacaktır.
+The Monitoring blade allows you to configure an Azure Monitor logs resource for your network. The monitoring agent will collect and surface useful metrics and logs from your network, providing the ability to quickly check the network health or debug issues.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
   Parametre adı|Açıklama|İzin verilen değerler|Varsayılan değerler
   ---|---|---|---
-İzleme|Izlemeyi etkinleştirme seçeneği|Etkinleştir veya devre dışı bırak|Etkinleştir
-Mevcut Azure Izleyici günlüklerine bağlanma|Yeni bir Azure Izleyici günlükleri örneği oluşturun veya var olan bir örneğe katın|Yeni oluştur veya var olanı Birleştir|Yeni oluştur
-İzleyici konumu (mevcut Azure Izleyici günlüklerine Bağlan = yeni oluştur)|Yeni Azure Izleyici günlükleri örneğinin dağıtılacağı bölge|Tüm Azure Izleyici günlük bölgeleri|NA
-Mevcut Log Analytics çalışma alanı KIMLIĞI (mevcut Azure Izleyici günlüklerine Bağlan = var olanı Birleştir)|Mevcut Azure Izleyici günlükleri örneğinin çalışma alanı KIMLIĞI||NA
-Mevcut Log Analytics birincil anahtarı (mevcut Azure Izleyici günlüklerine bağlanma = var olanı Birleştir)|Mevcut Azure Izleyici günlükleri örneğine bağlanmak için kullanılan birincil anahtar||NA
+İzleme|Option to enable Monitoring|Enable or Disable|Etkinleştirme
+Connect to existing Azure Monitor logs|Create a new Azure Monitor logs instance or join an existing instance|Create new or Join existing|Yeni oluştur
+Monitor Location(Connect to existing Azure Monitor logs= Create new)|The region where the new Azure Monitor logs instance will be deployed|All Azure Monitor logs regions|Yok
+Existing log analytics workspace ID (Connect to existing Azure Monitor logs = Join Existing)|Workspace ID of the existing Azure Monitor logs instance||Yok
+Existing log analytics primary key (Connect to existing Azure Monitor logs = Join Existing)|The primary key used to connect to the existing Azure Monitor logs instance||Yok
 
 
-Örnek dağıtım aşağıda gösterilmiştir: ![Azure izleyici](./media/ethereum-poa-deployment/azure-monitor.png)
+A sample deployment is shown below: ![azure monitor](./media/ethereum-poa-deployment/azure-monitor.png)
 
 #### <a name="summary"></a>Özet
 
-Temel dağıtım öncesi doğrulamayı çalıştırmak için ve belirtilen girişleri gözden geçirmek için Özet dikey penceresine tıklayın. Dağıtılmadan önce şablonu ve parametreleri indirebilirsiniz.
+Click through the summary blade to review the inputs specified and to run basic pre-deployment validation. Before deploying you may download the template and parameters.
 
-Yasal ve gizlilik koşullarını gözden geçirin ve dağıtım için ' satın al ' seçeneğine tıklayın. Dağıtım VNet ağ geçitleri içeriyorsa, dağıtım 50 45 dakika sürer.
+Review legal and privacy terms and click 'Purchase' to deploy. If the deployment includes VNet Gateways, the deployment will take up 45 to 50 minutes.
 
-#### <a name="post-deployment"></a>Dağıtım sonrası
+#### <a name="post-deployment"></a>Post deployment
 
-##### <a name="deployment-output"></a>Dağıtım çıkışı
+##### <a name="deployment-output"></a>Deployment output
 
-Dağıtım tamamlandıktan sonra, onay e-postası veya Azure portal aracılığıyla gerekli parametrelere erişebilirsiniz. Bu parametrelerde şunları bulacaksınız:
+Once the deployment has completed, you can access the necessary parameters via the confirmation email or through the Azure portal. In these parameters you'll find:
 
--   Ethereum RPC uç noktası
+-   Ethereum RPC endpoint
 
--   İdare panosu URL 'SI
+-   Governance Dashboard URL
 
--   Azure Izleyici URL 'SI
+-   Azure Monitor URL
 
--   Veri URL 'SI
+-   Data URL
 
--   VNet ağ geçidi kaynak KIMLIĞI (isteğe bağlı)
+-   VNet Gateway Resource ID (optional)
 
-##### <a name="confirmation-email"></a>Onay e-postası
+##### <a name="confirmation-email"></a>Confirmation email
 
-Bir e-posta adresi ([temel bilgiler bölümü](#basics)) sağlarsanız, dağıtım çıkış bilgilerine sahip e-posta adresine bir e-posta gönderilir.
+If you provide an email address ([Basics Section](#basics)), an email would be sent to the email address with the deployment output information.
 
-![Dağıtım e-postası](./media/ethereum-poa-deployment/deployment-email.png)
+![deployment email](./media/ethereum-poa-deployment/deployment-email.png)
 
 ##### <a name="portal"></a>Portal
 
-Dağıtım başarıyla tamamlandıktan sonra ve tüm kaynaklar sağlandıktan sonra, kaynak grubunuzda çıkış parametrelerini görüntüleyebilirsiniz.
+Once the deployment has completed successfully and all resources have been provisioned you can view the output parameters in your resource group.
 
-1.  Portalda kaynak grubunuzu bulma
+1.  Locate your resource group in the portal
 
-2.  *Dağıtımlar* 'a git
+2.  Navigate to *Deployments*
 
-3.  Kaynak grubunuz ile aynı adda en iyi dağıtımı seçin
+3.  Select the top deployment with the same name as your resource group
 
-4.  *Çıkışları* Seç
+4.  Select *Outputs*
 
-### <a name="growing-the-consortium"></a>Konsorsiyumun büyümesi
+### <a name="growing-the-consortium"></a>Growing the consortium
 
-Konsorsiyumu genişletmek için önce fiziksel ağı bağlamanız gerekir.
-Bu ilk adım, genel IP tabanlı dağıtımı kullanarak sorunsuz bir şekilde gerçekleştirilir. VPN arkasında dağıtım yapıyorsanız, yeni üye dağıtımının bir parçası olarak ağ bağlantısını yapmak için [VNET ağ geçidini bağlama](#connecting-vnet-gateways) bölümüne bakın.  Dağıtımınız tamamlandıktan sonra, bir ağ yöneticisi olmak için [Idare DApp](#governance-dapp) 'yi kullanın.
+To expand your consortium, you must first connect the physical network.
+Using the Public IP-based deployment this first step is seamless. If deploying behind a VPN, see the section [Connecting VNet Gateway](#connecting-vnet-gateways) to do the network connection as part of the new member deployment.  Once your deployment completes use the [Governance DApp](#governance-dapp) to become a network Admin.
 
-#### <a name="new-member-deployment"></a>Yeni üye dağıtımı
+#### <a name="new-member-deployment"></a>New member deployment
 
-1.  Aşağıdaki bilgileri katılım üyesiyle paylaşabilirsiniz. Bu bilgiler, dağıtım sonrası e-postanız veya Portal dağıtım çıkışında bulunabilir.
+1.  Share the following information with the joining member. This information can be found in your post-deployment email or in the portal deployment output.
 
-    -  Konsorsiyum verileri URL 'Si
+    -  Consortium Data Url
 
-    -  Dağıttığınız düğümlerin sayısı
+    -  The number of nodes you've deployed
 
-    -  VNet ağ geçidi kaynak KIMLIĞI (VPN kullanılıyorsa)
+    -  VNet Gateway Resource ID (if using VPN)
 
-2.  Dağıtım üyesi, ağ varlığını, aşağıdakileri aklınızda tutarak [dağıtmada aynı çözümü](https://portal.azure.com/?pub_source=email&pub_status=success#create/microsoft-azure-blockchain.azure-blockchain-ethereumethereum-poa-consortium) kullanmalıdır:
+2.  The deploying member should use the [same solution](https://portal.azure.com/?pub_source=email&pub_status=success#create/microsoft-azure-blockchain.azure-blockchain-ethereumethereum-poa-consortium) when deploying their network presence with keeping the following in mind:
 
-    -  *Varolanı katılmayı* seçin
+    -  Select *Join Existing*
 
-    -  Dengeli gösterimi sağlamak için ağdaki diğer üyelerin geri kalanı ile aynı sayıda Doğrulayıcı düğümünü seçin
+    -  Choose the same number of validator nodes as the rest of the  members on the network to ensure fair representation
 
-    -  Önceki adımda sağlanmış olan Ethereum adresini kullanın
+    -  Use the same Ethereum address that was provided in the previous  step
 
-    -  *Ethereum ayarları* sekmesinde belirtilen *konsorsiyum veri URL 'sini* geçirin
+    -  Pass in the provided *Consortium Data Url* on the *Ethereum  Settings* tab
 
-    -  Ağın geri kalanı VPN 'in arkasındaysa Gelişmiş bölüm altında *özel VNET* ' i seçin.
+    -  If the rest of the network is behind a VPN, select *Private  VNet* under the advanced section
 
-#### <a name="connecting-vnet-gateways"></a>VNet ağ geçitlerini bağlama
+#### <a name="connecting-vnet-gateways"></a>Connecting VNet gateways
 
-Varsayılan genel IP ayarlarını kullanarak dağıttıysanız, bu adımı yoksayabilirsiniz. Özel ağ söz konusu olduğunda, farklı Üyeler VNet Gateway bağlantıları aracılığıyla bağlanır. Bir üyenin ağa katılabilmesi ve işlem trafiğini görmeniz için, mevcut bir üyenin VPN ağ geçidinde son bir yapılandırmayı bağlantıyı kabul etmesi gerekir. Bu, katılan üyenin Ethereum düğümlerinin bağlantı kurulana kadar çalıştırılmayacağı anlamına gelir. Tek bir hata noktası olasılığını azaltmak için konsorsiyumde yedekli ağ bağlantıları (ağ) oluşturmanız önerilir.
+You may ignore this step if you've deployed using the default Public IP settings. In the case of a private network, the different members are connected via VNet gateway connections. Before a member can join the network and see transaction traffic, an existing member must do a final configuration on their VPN gateway to accept the connection. This means that the Ethereum nodes of the joining member won't run until a connection is established. It's recommended to create redundant network connections (mesh) into the consortium to reduce chances of a single point of failure.
 
-Yeni üye dağıtıldıktan sonra, mevcut üye yeni üyeye VNet ağ geçidi bağlantısı ayarlayarak iki yönlü bağlantıyı tamamlamalıdır. Bunu başarmak için, mevcut üyeye şunlar gerekir:
+After the new member deploys, the existing member must complete the bi-directional connection by setting up a VNet gateway connection to the new member. To achieve this, existing member will need:
 
-1.  Bağlanan üyenin VNet Gateway RESOURCEID (bkz. dağıtım çıktısı)
+1.  The VNet gateway ResourceID of the connecting member (see deployment output)
 
-2.  Paylaşılan bağlantı anahtarı
+2.  The shared connection key
 
-Mevcut üyenin bağlantıyı tamamlaması için aşağıdaki PowerShell betiğini çalıştırması gerekir. Portalın sağ üst gezinti çubuğunda bulunan Azure Cloud Shell kullanmanızı öneririz.
+The existing member must run the following PowerShell script to complete the connection. We recommend using Azure Cloud Shell located in the top-right navigation bar in the portal.
 
-![Cloud Shell](./media/ethereum-poa-deployment/cloud-shell.png)
+![cloud shell](./media/ethereum-poa-deployment/cloud-shell.png)
 
 ```Powershell
 $MyGatewayResourceId = "<EXISTING_MEMBER_RESOURCEID>"
@@ -415,25 +408,25 @@ New-AzVirtualNetworkGatewayConnection -Name $ConnectionName -ResourceGroupName $
 
 ### <a name="service-monitoring"></a>Hizmet izleme
 
-Dağıtım e-postasında bağlantıyı izleyerek veya dağıtım \[çıkışı OMS\_portalı\_URL 'sindeki\]parametreyi bularak Azure izleyici portalınızı bulabilirsiniz.
+You can locate your Azure Monitor portal either by following the link in the deployment email or locating the parameter in the deployment output \[OMS\_PORTAL\_URL\].
 
-Portal önce üst düzey ağ istatistiklerini ve düğüme genel bakış görüntülenir.
+The portal will first display high-level network statistics and node overview.
 
-![izleme kategorileri](./media/ethereum-poa-deployment/monitor-categories.png)
+![monitor categories](./media/ethereum-poa-deployment/monitor-categories.png)
 
-**Düğüm genel bakış** seçimine, düğüm başına altyapı istatistiklerini görüntülemek için sizi bir portala yönlendirirsiniz.
+Selecting **Node Overview** will direct you to a portal to view per-node infrastructure statistics.
 
-![düğüm istatistikleri](./media/ethereum-poa-deployment/node-stats.png)
+![node stats](./media/ethereum-poa-deployment/node-stats.png)
 
-**Ağ istatistiklerini** seçmek sizi Ethereum ağ istatistiklerini görüntülemenize yönlendirir.
+Selecting **Network Stats** will direct you to view Ethereum network statistics.
 
-![Ağ İstatistikleri](./media/ethereum-poa-deployment/network-stats.png)
+![network stats](./media/ethereum-poa-deployment/network-stats.png)
 
-#### <a name="sample-kusto-queries"></a>Örnek kusto sorguları
+#### <a name="sample-kusto-queries"></a>Sample Kusto queries
 
-Bu panoların arkasında bir sorgulanabilir ham Günlükler kümesi bulunur. Bu ham günlükleri panoları özelleştirmek, sorunları araştırmak veya eşik uyarısı ayarlamak için kullanabilirsiniz. Aşağıda, günlük araması aracında çalıştıracağımız örnek bir sorgu kümesi bulacaksınız:
+Behind these dashboards is a set of queryable raw logs. You can use these raw logs to customize the dashboards, investigate failures, or setup threshold alerting. Below you'll find a set of example queries that can be ran in the Log Search tool:
 
-##### <a name="lists-blocks-that-have-been-reported-by-more-than-one-validator-useful-to-help-find-chain-forks"></a>Birden fazla Doğrulayıcı tarafından raporlanan blokları listeler. Zincir çatallarını bulmaya yardımcı olması yararlı olur.
+##### <a name="lists-blocks-that-have-been-reported-by-more-than-one-validator-useful-to-help-find-chain-forks"></a>Lists blocks that have been reported by more than one validator. Useful to help find chain forks.
 
 ```sql
 MinedBlock_CL
@@ -441,7 +434,7 @@ MinedBlock_CL
 | where DistinctMiners > 1
 ```
 
-##### <a name="get-average-peer-count-for-a-specified-validator-node-averaged-over-5-minute-buckets"></a>5 dakikalık demetlerden ortalama olarak belirtilen bir doğrulayıcı düğümü için Ortalama eşdüzey sayı alın.
+##### <a name="get-average-peer-count-for-a-specified-validator-node-averaged-over-5-minute-buckets"></a>Get average peer count for a specified validator node averaged over 5 minute buckets.
 
 ```sql
 let PeerCountRegex = @"Syncing with peers: (\d+) active, (\d+) confirmed, (\d+)";
@@ -453,72 +446,72 @@ ParityLog_CL
 | summarize avg(ActivePeers) by bin(TimeGenerated, 5m)
 ```
 
-### <a name="ssh-access"></a>SSH erişimi
+### <a name="ssh-access"></a>SSH access
 
-Güvenlik nedenleriyle, SSH bağlantı noktası erişimi varsayılan olarak bir ağ grubu güvenlik kuralı tarafından reddedilir. POA ağındaki sanal makine örneklerine erişmek için bu kuralı izin ver olarak \"değiştirmeniz gerekir\"
+For security reasons, the SSH port access is denied by a network group security rule by default. To access the virtual machine instances in the PoA network, you'll need to change this rule to \"Allow\"
 
-1.  Azure portal ' den dağıtılan kaynak grubunun genel bakış bölümünden başlayın.
+1.  Start in the Overview section of the deployed resource group from Azure portal.
 
-    ![SSH genel bakış](./media/ethereum-poa-deployment/ssh-overview.png)
+    ![ssh overview](./media/ethereum-poa-deployment/ssh-overview.png)
 
-2.  Erişmek istediğiniz VM 'nin bölgesi için ağ güvenlik grubunu seçin
+2.  Select the Network Security Group for the region of the VM that you are wanting to access
 
-    ![SSH NSG](./media/ethereum-poa-deployment/ssh-nsg.png)
+    ![ssh nsg](./media/ethereum-poa-deployment/ssh-nsg.png)
 
-3.  Allow-SSH\"kuralınıseçin \"
+3.  Select the \"allow-ssh\" rule
 
-    ![SSH-izin ver](./media/ethereum-poa-deployment/ssh-allow.png)
+    ![ssh-allow](./media/ethereum-poa-deployment/ssh-allow.png)
 
-4.  \"Eylemi\" izin ver olarak değiştir
+4.  Change \"Action\" to Allow
 
-    ![SSH etkinleştirme izin ver](./media/ethereum-poa-deployment/ssh-enable-allow.png)
+    ![ssh enable allow](./media/ethereum-poa-deployment/ssh-enable-allow.png)
 
-5.  \"Kaydet\" ' e tıklayın (değişikliklerin uygulanması birkaç dakika sürebilir)
+5.  Click \"Save\" (Changes may take a few minutes to apply)
 
-Artık, belirtilen Yönetici Kullanıcı adı ve parola/SSH anahtarı ile SSH aracılığıyla Doğrulayıcı düğümlerine yönelik sanal makinelere uzaktan bağlanabilirsiniz.
-İlk Doğrulayıcı düğümüne erişmek için çalıştırılacak SSH komutu, şablon dağıtım çıkış parametresinde, ' SSH\_to\_First\_VL\_node\_REGION1 ' olarak listelenir (örnek dağıtım için: SSH-p 4000 poaadmin\@leader4vb.eastus.cloudapp.Azure.com). Ek işlem düğümlerine ulaşmak için, bağlantı noktası numarasını bir kez artırın (örneğin, ilk işlem düğümü 4000 numaralı bağlantı noktasıdır).
+You can now remotely connect to the virtual machines for the validator nodes via SSH with your provided admin username and password/SSH key.
+The SSH command to run to access the first validator node is listed in the template deployment output parameter as, 'SSH\_TO\_FIRST\_VL\_NODE\_REGION1' (for the sample deployment: ssh -p 4000 poaadmin\@leader4vb.eastus.cloudapp.azure.com). To get to additional transaction nodes, increment the port number by one (For example, the first transaction node is on port 4000).
 
-Birden fazla bölgeye dağıttıysanız, yukarıdaki komutu bu bölgedeki yük dengeleyicinin DNS adı veya IP adresi ile değiştirin. Diğer bölgelerin DNS adını veya IP adresini bulmak için, \*adlandırma kuralı \* \* \* \*-lbpı-reg\#olan kaynağı bulun ve DNS adını ve IP adresi özelliklerini görüntüleyin.
+If you deployed to more than one region, change the above command to the DNS name or IP address of the load balancer in that region. To find the DNS name or IP address of the other regions, find the resource with the naming convention \*\*\*\*\*-lbpip-reg\#, and view its DNS name and IP address properties.
 
-### <a name="azure-traffic-manager-load-balancing"></a>Azure Traffic Manager yük dengelemesi
+### <a name="azure-traffic-manager-load-balancing"></a>Azure Traffic Manager load balancing
 
-Azure Traffic Manager, gelen trafiği farklı bölgelerde birden fazla dağıtımda yönlendirerek, kapalı kalma süresini azaltabilir ve ağ yanıt hızını artırır. Yerleşik sistem durumu denetimleri ve otomatik yeniden yönlendirme, RPC uç noktalarının ve Idare DApp 'nin yüksek oranda kullanılabilir olmasını sağlamaya yardımcı olur. Bu özellik, birden fazla bölgeye dağıttığınız ve üretime hazırsanız faydalıdır.
+Azure Traffic Manager can help reduce downtime and improve responsiveness of the PoA network by routing incoming traffic across multiple deployments in different regions. Built-in health checks and automatic re-routing help ensure high availability of the RPC endpoints and the Governance DApp. This feature is useful if you have deployed to multiple regions and are production ready.
 
 Traffic Manager'ı aşağıdaki amaçlarla kullanabilirsiniz:
 
--   Otomatik yük devretme ile bir ağ kullanılabilirliğini geliştirme.
+-   Improve PoA network availability with automatic failover.
 
--   Son kullanıcıları en düşük ağ gecikmesi ile Azure konumuna yönlendirerek ağlarınızın yanıt verme hızını artırın.
+-   Increase your networks responsiveness by routing end users to the Azure location with lowest network latency.
 
-Bir Traffic Manager profili oluşturmaya karar verirseniz, ağınıza erişmek için profilin DNS adını kullanabilirsiniz. Ağa diğer konsorsiyum üyeleri eklendikten sonra, dağıtılan doğrulayıcıların yükünü dengelemek için de Traffic Manager kullanılabilir.
+If you decide to create a Traffic Manager profile, you can use the DNS name of the profile to access your network. Once other consortium members have been added to the network, the Traffic Manager can also be used to load balance across their deployed validators.
 
-#### <a name="creating-a-traffic-manager-profile"></a>Traffic Manager profili oluşturma
+#### <a name="creating-a-traffic-manager-profile"></a>Creating a Traffic Manager profile
 
-Azure Portal kaynak \" Oluşturdüğmesinetıkladıktan\"sonra\" Traffic Manager profili arayın ve seçin.\"
+Search for and select \"Traffic Manager profile\" after clicking the \"Create a resource\" button in the Azure portal.
 
-![Azure Traffic Manager 'ı arama](./media/ethereum-poa-deployment/traffic-manager-search.png)
+![search for azure traffic manager](./media/ethereum-poa-deployment/traffic-manager-search.png)
 
-Profile benzersiz bir ad verin ve PoA dağıtımı sırasında oluşturulan kaynak grubunu seçin. Dağıtmak için "Oluştur" düğmesine tıklayın.
+Give the profile a unique name and select the Resource Group that was created during the PoA deployment. Click the "Create" button to deploy.
 
-![Traffic Manager oluşturma](./media/ethereum-poa-deployment/traffic-manager-create.png)
+![create traffic manager](./media/ethereum-poa-deployment/traffic-manager-create.png)
 
-Dağıtıldıktan sonra kaynak grubundaki örneği seçin. Traffic Manager 'a erişim için DNS adı genel bakış sekmesinde bulunabilir
+Once it's deployed, then select the instance in the resource group. The DNS name to access the traffic manager can be found in the Overview tab
 
-![Traffic Manager DNS 'yi bulma](./media/ethereum-poa-deployment/traffic-manager-dns.png)
+![Locate traffic manager DNS](./media/ethereum-poa-deployment/traffic-manager-dns.png)
 
-Uç noktalar sekmesini seçin ve Ekle düğmesine tıklayın. Uç noktaya benzersiz bir ad verin. Hedef kaynak türünü genel IP adresi olarak değiştirin. Ardından, ilk bölgenin\'yük dengeleyicinin genel IP adresini seçin.
+Select the Endpoints tab and click the Add button. Give the endpoint a unique name. Change the Target resource type to Public IP address. Then select the public IP address of the first region\'s load balancer.
 
-![Yönlendirme trafiği Yöneticisi](./media/ethereum-poa-deployment/traffic-manager-routing.png)
+![Routing traffic manager](./media/ethereum-poa-deployment/traffic-manager-routing.png)
 
-Dağıtılan ağdaki her bölge için tekrarlayın. Uç noktalar \"etkin\" duruma getirildikten sonra otomatik olarak yüklenir ve trafik yöneticisinin DNS adına bölge dengelemesi yapılır. Artık bu DNS adını belgenin diğer \[adımlarında konsorsiyum\_veri\_URL 'si\] parametresi yerine kullanabilirsiniz.
+Repeat for each region in the deployed network. Once the endpoints are in the \"enabled\" status, they'll be automatically load and region balanced at the DNS name of the traffic manager. You can now use this DNS name in place of the \[CONSORTIUM\_DATA\_URL\] parameter in other steps of the document.
 
-### <a name="data-api"></a>Veri API 'SI
+### <a name="data-api"></a>Data API
 
-Her bir konsorsiyum üyesi başkalarının ağa bağlanması için gerekli bilgileri barındırır. Mevcut üye, üyenin dağıtımından önce [CONSORTIUM_DATA_URL] sağlar. Dağıtım sonrasında, bir katılım üyesi JSON arabiriminden aşağıdaki uç noktada bilgi alacaktır:
+Each consortium member hosts the necessary information for others to connect to the network. The existing member will provide the [CONSORTIUM_DATA_URL] before the member's deployment. Upon deployment, a joining member will retrieve information from the JSON interface at the following endpoint:
 
 `<CONSORTIUM_DATA_URL>/networkinfo`
 
-Yanıt, üyeleri (Genessıs bloğu, doğrulayıcı kümesi sözleşmesi ABı, bootnodes) ve mevcut üye için yararlı olan bilgileri (Doğrulayıcı adresleri) birleştirmek için yararlı bilgiler içerir. Bu standartlaştırma 'yi bulut sağlayıcıları genelinde konsorsiyunuzu uzatmak için kullanmanızı öneririz. Bu API aşağıdaki yapıyla JSON biçimli bir yanıt döndürür:
+The response will contain information useful for joining members (Genesis block, Validator Set contract ABI, bootnodes) and information useful to the existing member (validator addresses). We encourage use of this standardization to extend the consortium across cloud providers. This API will return a JSON formatted response with the following structure:
 ```json
 {
   "$id": "",
@@ -629,14 +622,14 @@ Yanıt, üyeleri (Genessıs bloğu, doğrulayıcı kümesi sözleşmesi ABı, bo
 ```
 ## <a name="tutorials"></a>Öğreticiler
 
-### <a name="programmatically-interacting-with-a-smart-contract"></a>Programlı bir şekilde akıllı sözleşmeyle etkileşim kurma
+### <a name="programmatically-interacting-with-a-smart-contract"></a>Programmatically interacting with a smart contract
 
 > [!WARNING]
-> Ethereum özel anahtarınızı hiçbir şekilde ağ üzerinden göndermeyin! Her bir işlemin önce yerel olarak imzalandığından ve imzalı işlemin ağ üzerinden gönderildiğinden emin olun.
+> Never send your Ethereum private key over the network! Ensure that each transaction is signed locally first and the signed transaction is sent over the network.
 
-Aşağıdaki örnekte, ethereumjs *-Wallet* ' ı kullanarak yerel olarak Imzalanacak bir ethereumjs *-TX* ve ham IŞLEMI Ethereum RPC uç noktasına göndermek için *Web3* .
+In the following example, we use *ethereumjs-wallet* to generate an Ethereum address, *ethereumjs-tx* to sign locally, and *web3* to send the raw transaction to the Ethereum RPC endpoint.
 
-Bu örnek için bu basit Merhaba-Dünya Akıllı sözleşmesini kullanacağız:
+We'll use this simple Hello-World smart contract for this example:
 
 ```javascript
 pragma solidity ^0.4.11;
@@ -651,19 +644,19 @@ contract postBox {
 }
 ```
 
-Bu örnekte, sözleşmenin zaten dağıtıldığı varsayılır. Bir sözleşmeyi programlı bir şekilde dağıtmak için *Solc* ve *Web3* kullanabilirsiniz. Önce aşağıdaki düğüm modüllerini yüklemeniz gerekir:
+This example assumes the contract is already deployed. You can use *solc* and *web3* for deploying a contract programmatically. First install the following node modules:
 ```
 sudo npm install web3@0.20.2
 sudo npm install ethereumjs-tx@1.3.6
 sudo npm install ethereumjs-wallet@0.6.1
 ```
-Bu nodeJS betiği şunları yapar:
+This nodeJS script will perform the following:
 
--   Ham işlem oluşturun: postMsg
+-   Construct a raw transaction: postMsg
 
--   Oluşturulan özel anahtarı kullanarak işlemi imzalayın
+-   Sign the transaction using the generated private key
 
--   İmzalı işlemi Ethereum ağına gönder
+-   Submit the signed transaction to the Ethereum network
 
 ```javascript
 var ethereumjs = require('ethereumjs-tx')
@@ -706,16 +699,16 @@ web3.eth.getTransactionCount(accountAddress, function (err, nonce) {
  });
 ```
 
-### <a name="deploy-smart-contract-with-truffle"></a>Truffle ile akıllı sözleşme dağıtma
+### <a name="deploy-smart-contract-with-truffle"></a>Deploy smart contract with Truffle
 
--   Gerekli kitaplıkları yükler
+-   Install necessary libraries
 
 ```javascript
 npm init
 
 npm install truffle-hdwallet-provider --save
 ```
--   Truffle. js ' de, MetaMask hesabınızın kilidini açmak için aşağıdaki kodu ekleyin ve anımsatıcı tümceciğini (MetaMask/ayarlar/açığa çıkar çekirdek sözcüklerini) girerek PoA düğümünü giriş noktası olarak yapılandırın
+-   In truffle.js, add following code to unlock your MetaMask account and configure the PoA node as entry point by providing the mnemonic phrase (MetaMask / Settings / Reveal Seed Words)
 
 ```javascript
 var HDWalletProvider = require("truffle-hdwallet-provider");
@@ -740,65 +733,65 @@ module.exports = {
 
 ```
 
--   PoA ağına dağıtın
+-   Deploy to PoA network
 
 ```javascript
 $ truffle migrate --network poa
 ```
 
-### <a name="debug-smart-contract-with-truffle"></a>Truffle ile akıllı sözleşmede hata ayıklama
+### <a name="debug-smart-contract-with-truffle"></a>Debug smart contract with Truffle
 
-Truffle akıllı sözleşmede hata ayıklama için kullanılabilen bir yerel geliştirme ağı içerir. Öğreticiyi tam olarak [buradan](https://truffleframework.com/tutorials/debugging-a-smart-contract)edinebilirsiniz.
+Truffle has a local develop network that is available for debugging smart contract. You can find the full tutorial [here](https://truffleframework.com/tutorials/debugging-a-smart-contract).
 
-### <a name="webassembly-wasm-support"></a>WebAssembly (ıSSTREAM) desteği
+### <a name="webassembly-wasm-support"></a>WebAssembly (WASM) support
 
-WebAssembly desteği yeni dağıtılan PoA ağlarında zaten etkin. Web derlemesine (Rust, C, C++) transpiles olan herhangi bir dilde akıllı anlaşma geliştirmesi sağlar. Daha fazla bilgi için aşağıdaki bağlantılara bakın
+WebAssembly support is already enabled for you on newly deployed PoA networks. It allows for smart-contract development in any language that transpiles to Web-Assembly (Rust, C, C++). See the links below for additional information
 
--   WebAssembly 'A eşlik genel bakışı-<https://wiki.parity.io/WebAssembly-Home>
+-   Parity Overview of WebAssembly - <https://wiki.parity.io/WebAssembly-Home>
 
--   Eşlik üzerinden teknik eğitim-<https://github.com/paritytech/pwasm-tutorial>
+-   Tutorial from Parity Tech - <https://github.com/paritytech/pwasm-tutorial>
 
 ## <a name="reference"></a>Başvuru
 
 ### <a name="faq"></a>SSS
 
-#### <a name="i-notice-there-are-many-transactions-on-the-network-that-i-didnt-send-where-are-these-coming-from"></a>Ağda gönderdiğim\'çok sayıda işlem olduğunu fark ediyorum. Bunlar nereden geliyor?
+#### <a name="i-notice-there-are-many-transactions-on-the-network-that-i-didnt-send-where-are-these-coming-from"></a>I notice there are many transactions on the network that I didn\'t send. Where are these coming from?
 
-[KIşIsel API](https://web3js.readthedocs.io/en/v1.2.0/web3-eth-personal.html)'nin kilidini açmak güvenli değildir. Botlar, kilitlenmemiş Ethereum hesaplarını dinler ve fonları boşaltmaya çalışır. Bot, bu hesapların gerçek zamanlı olarak olduğunu varsayar ve bakiyedeki ilk olarak bu hesapları yapmaya çalışır. Ağda kişisel API 'yi etkinleştirmeyin. Bunun yerine, MetaMask gibi bir cüzdan kullanarak el ile veya program aracılığıyla [akıllı bir sözleşmeyle etkileşim kuran](#programmatically-interacting-with-a-smart-contract)bölümde özetlendiği gibi, işlemleri önceden imzalayın.
+It is insecure to unlock the [personal API](https://web3js.readthedocs.io/en/v1.2.0/web3-eth-personal.html). Bots listen for unlocked Ethereum accounts and attempt to drain the funds. The bot assumes these accounts contain real-ether and attempt to be the first to siphon the balance. Do not enable the personal API on the network. Instead pre-sign the transactions either manually using a wallet like MetaMask or programmatically as outlined in the section [Programmatically Interacting with a Smart Contract](#programmatically-interacting-with-a-smart-contract).
 
-#### <a name="how-to-ssh-onto-a-vm"></a>VM üzerinde SSH kullanma
+#### <a name="how-to-ssh-onto-a-vm"></a>How to SSH onto a VM?
 
-SSH bağlantı noktası güvenlik nedenleriyle gösterilmez. [SSH bağlantı noktasını etkinleştirmek için bu kılavuzu](#ssh-access)izleyin.
+The SSH port is not exposed for security reasons. Follow [this guide to enable the SSH port](#ssh-access).
 
-#### <a name="how-do-i-set-up-an-audit-member-or-transaction-nodes"></a>Nasıl yaparım? bir denetim üyesi veya işlem düğümleri ayarlamak mı istiyorsunuz?
+#### <a name="how-do-i-set-up-an-audit-member-or-transaction-nodes"></a>How do I set up an audit member or transaction nodes?
 
-İşlem düğümleri, ağla ilişkilendirilen ancak Consensus 'a katılmayan bir dizi eşlik istemcisi. Bu düğümler, Ethereum işlemlerini göndermek ve akıllı sözleşmenin durumunu okumak için hala kullanılabilir.
-Bu, ağ üzerindeki yetkili olmayan konsorsiyum üyelerine seslebilirlik sağlamaya yönelik bir mekanizma olarak da geçerlidir. Bunu başarmak için, konsorsiyumun büyümesinin 2. adımını izlemeniz yeterlidir.
+Transaction nodes are a set of Parity clients that are peered with the network but are not participating in consensus. These nodes can still be used to submit Ethereum transactions and read the smart contract state.
+This works well as a mechanism for providing auditability to non-authority consortium members on the network. To achieve this simply follow Step 2 from Growing the Consortium.
 
-#### <a name="why-are-metamask-transactions-taking-a-long-time"></a>Neden MetaMask işlemleri uzun sürüyor?
+#### <a name="why-are-metamask-transactions-taking-a-long-time"></a>Why are MetaMask transactions taking a long time?
 
-İşlemlerin doğru sırada alındığından emin olmak için, her bir Ethereum işlemi bir artırma nonce ile gelir. Farklı bir ağda MetaMask içinde bir hesap kullandıysanız, nonce değerini sıfırlamanız gerekir. Ayarlar simgesine (3-çubuklar), ayarlar, hesabı Sıfırla ' ya tıklayın. İşlem geçmişi silinecek ve artık işlemi yeniden gönderebilirsiniz.
+To ensure transactions are received in the correct order, each Ethereum transaction comes with an incrementing nonce. If you've used an account in MetaMask on a different network, you'll need to reset the nonce value. Click on the settings icon (3-bars), Settings, Reset Account. The transaction history will be cleared and now you can resubmit the transaction.
 
-#### <a name="do-i-need-to-specify-gas-fee-in-metamask"></a>MetaMask 'te gaz ücreti belirtmem gerekir mi?
+#### <a name="do-i-need-to-specify-gas-fee-in-metamask"></a>Do I need to specify gas fee in MetaMask?
 
-Ether, yetkili bir konsorsiyumun bir amacını vermez. Bu nedenle, MetaMask içinde işlem gönderilirken gaz ücreti belirtmeye gerek yoktur.
+Ether doesn't serve a purpose in proof-of-authority consortium. Hence there is no need to specify gas fee when submitting transactions in MetaMask.
 
-#### <a name="what-should-i-do-if-my-deployment-fails-due-to-failure-to-provision-azure-oms"></a>Azure OMS 'yi sağlama hatası nedeniyle dağıtımım başarısız olursa ne yapmam gerekir?
+#### <a name="what-should-i-do-if-my-deployment-fails-due-to-failure-to-provision-azure-oms"></a>What should I do if my deployment fails due to failure to provision Azure OMS?
 
-İzleme isteğe bağlı bir özelliktir. Azure izleyici kaynağını başarıyla sağlayamamasından dolayı dağıtımınızın başarısız olduğu bazı nadir durumlarda Azure Izleyici olmadan yeniden dağıtabilirsiniz.
+Monitoring is an optional feature. In some rare cases where your deployment fails because of inability to successfully provision Azure Monitor resource you can redeploy without Azure Monitor.
 
-#### <a name="are-public-ip-deployments-compatible-with-private-network-deployments"></a>Özel ağ dağıtımlarıyla uyumlu genel IP dağıtımları mı var?
+#### <a name="are-public-ip-deployments-compatible-with-private-network-deployments"></a>Are public IP deployments compatible with private network deployments?
 
-Hayır, eşleme iki yönlü iletişim gerektirir, böylece tüm ağ genel veya özel olmalıdır.
+No, peering requires two-way communication so the entire network must either be public or private.
 
-#### <a name="what-is-the-expected-transaction-throughput-of-proof-of-authority"></a>Yetki kanıtlama için beklenen işlem performansı nedir?
+#### <a name="what-is-the-expected-transaction-throughput-of-proof-of-authority"></a>What is the expected transaction throughput of Proof-of-Authority?
 
-İşlem aktarım hızı, işlem türlerine ve ağ topolojisine bağlı olarak yüksek ölçüde bağımlıdır.  Basit işlemler kullanarak, birden çok bölgede dağıtılan bir ağ ile saniye başına ortalama 400 işlem işaretledi.
+The transaction throughput will be highly dependent upon the types of transactions and the network topology.  Using simple transactions, we've benchmarked an average of 400 transactions per second with a network deployed across multiple regions.
 
-#### <a name="how-do-i-subscribe-to-smart-contract-events"></a>Nasıl yaparım? akıllı sözleşme olaylarına abone misiniz?
+#### <a name="how-do-i-subscribe-to-smart-contract-events"></a>How do I subscribe to smart contract events?
 
-Ethereum yetki kanıtı artık Web-Sockets 'i desteklemektedir.  Web yuvası URL 'sini ve bağlantı noktasını bulmak için dağıtım e-postanızı veya dağıtım çıktılarınızı denetleyin.
+Ethereum Proof-of-Authority now supports web-sockets.  Check your deployment email or deployment output to locate the web-socket URL and port.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Ethereum yetkili bir Konsorsiyumu](https://portal.azure.com/?pub_source=email&pub_status=success#create/microsoft-azure-blockchain.azure-blockchain-ethereumethereum-poa-consortium) çözümünü kullanarak başlayın.
+Get started by using the [Ethereum Proof-of-Authority Consortium](https://portal.azure.com/?pub_source=email&pub_status=success#create/microsoft-azure-blockchain.azure-blockchain-ethereumethereum-poa-consortium) solution.
