@@ -8,19 +8,19 @@ ms.custom: include file
 ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
-ms.date: 09/02/2018
+ms.date: 09/02/2019
 ms.author: diberry
-ms.openlocfilehash: 591e6f1fc114994dd29b0f41d92fc4f099b6ea49
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 3064211fe44a416a6288b86c977ed7e2337a7ccd
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70256838"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74451453"
 ---
-Ortak çalışanların katkılarının yönetimi, uygulamanın geçerli durumuna bağlıdır.
+Management of contributions from collaborators depends on the current status of the app.
 
-**[Kaynak geçişi](../luis-migration-authoring.md) yapılan uygulamalar yazmak için**: _katkıda bulunanlar_ , **Access Control (IAM)** sayfasını kullanarak yazma kaynağı için Azure Portal yönetilir. Ortak çalışan e-posta adresini ve _katkıda_ bulunan rolünü kullanarak bir kullanıcı ekleyin. 
+**For [authoring resource migrated](../luis-migration-authoring.md) apps**: _contributors_ are managed in the Azure portal for the authoring resource, using the **Access control (IAM)** page. Add a user, using the collaborator's email address and the _contributor_ role. 
 
-**Henüz geçirilmeyen uygulamalar için**: tüm _ortak çalışanlar_ , her uygulamanın **Manage-> ortak çalışanlar** sayfasından Luo portalında yönetilir. Bu sayfada, [bir kullanıcının e-posta adresini ekleyin](../luis-how-to-collaborate.md). Bu, yalnızca bu uygulamaya yazma erişimi sağlar. 
+**For apps that have not migrated yet**: all _collaborators_ are managed in the LUIS portal from each app's **Manage -> Collaborators** page. On this page, [add a user's email address](../luis-how-to-collaborate.md). This provides authoring access to this app only. 
 
 
