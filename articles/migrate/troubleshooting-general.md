@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: hamusa
-ms.openlocfilehash: 12f8f64c051d33ac2518edbe8b937521318a9e71
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 96c5190988d79885f3a1335b6fd431e028bba8fc
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74284496"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74384057"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Azure Geçişi sorunlarını giderme
 
@@ -231,7 +231,9 @@ Hata 50004: "sunucu adı çözümlenemediği için bir konağa veya kümeye bağ
 
 ## <a name="application-discovery-issues"></a>Uygulama bulma sorunları
 
-Uygulamaları bulma işlemi şu anda yalnızca VMware VM 'Leri için desteklenir. Hyper-V VM 'Leri ve fiziksel sunucular için destek daha sonra etkinleştirilecek. Uygulamaları bulma işlemi, Gereç içinde VM kimlik bilgilerini sağlamanızı gerektirir. VCenter Server ve VMware VM 'Leri için gereken erişim ayrıcalıkları hakkında daha fazla bilgi edinin. Bulma işlemi aşağıdaki sorunlardan biri nedeniyle başarısız olabilir, lütfen sorunu çözmek için aşağıda açıklandığı gibi önerilen eylemi gözden geçirin:
+Uygulamaları bulma işlemi şu anda yalnızca VMware VM 'Leri için desteklenir. Hyper-V VM 'Leri ve fiziksel sunucular için destek daha sonra etkinleştirilecek.
+
+Uygulamaları bulma işlemi, Gereç içinde VM kimlik bilgilerini sağlamadıysanız, uygulama bulma işlemi çalışmayacaktır. VCenter Server ve VMware VM 'Leri için gereken erişim ayrıcalıkları hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#assessment-vcenter-server-permissions) . Gereç içinde VM kimlik bilgileri sağladıysanız ve uygulama bulma başarısız olursa, hata ve düzeltme eyleminin nedenini belirlemek için aşağıdaki tabloyu gözden geçirin:
 
 **Hata kodu** | **İleti** | **Olası nedeni** | **Önerilen eylem**
 --- | --- | --- | ---

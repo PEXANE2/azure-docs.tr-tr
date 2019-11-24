@@ -10,19 +10,59 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/20/2019
+ms.date: 11/21/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 5f57ea658df0569c4e69e476513863abe6940471
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 268913fb7aebd1d6c8b377b95939c3bc1f77daca
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692899"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383986"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-azure-resource-manager-templates"></a>RBAC ve Azure Resource Manager şablonlarını kullanarak Azure kaynaklarına erişimi yönetme
 
 [Rol tabanlı erişim denetimi (RBAC)](overview.md) , Azure kaynaklarına erişimi yönetme yöntemidir. Azure PowerShell veya Azure CLı kullanmanın yanı sıra, [Azure Resource Manager şablonlarını](../azure-resource-manager/resource-group-authoring-templates.md)kullanarak Azure kaynaklarına erişimi de yönetebilirsiniz. Kaynakları sürekli ve sürekli olarak dağıtmanız gerektiğinde şablonlar yararlı olabilir. Bu makalede, RBAC ve şablonlar kullanarak erişimi nasıl yönetebileceğinizi anlatmaktadır.
+
+## <a name="get-object-ids"></a>Nesne kimliklerini al
+
+Rol atamak için, rolü atamak istediğiniz kullanıcı, Grup veya uygulamanın KIMLIĞINI belirtmeniz gerekir. KIMLIğIN biçimi: `11111111-1111-1111-1111-111111111111`. Azure portal, Azure PowerShell veya Azure CLı kullanarak KIMLIĞI edinebilirsiniz.
+
+### <a name="user"></a>Kullanıcı
+
+Bir kullanıcının KIMLIĞINI almak için [Get-AzADUser](/powershell/module/az.resources/get-azaduser) veya [az ad User Show](/cli/azure/ad/user#az-ad-user-show) komutlarını kullanabilirsiniz.
+
+```azurepowershell
+$objectid = (Get-AzADUser -DisplayName "{name}").id
+```
+
+```azurecli
+objectid=$(az ad user show --id "{email}" --query objectId --output tsv)
+```
+
+### <a name="group"></a>Grup
+
+Bir grubun KIMLIĞINI almak için [Get-AzADGroup](/powershell/module/az.resources/get-azadgroup) veya [az Ad Group Show](/cli/azure/ad/group#az-ad-group-show) komutlarını kullanabilirsiniz.
+
+```azurepowershell
+$objectid = (Get-AzADGroup -DisplayName "{name}").id
+```
+
+```azurecli
+objectid=$(az ad group show --group "{name}" --query objectId --output tsv)
+```
+
+### <a name="application"></a>Uygulama
+
+Bir hizmet sorumlusunun KIMLIĞINI (bir uygulama tarafından kullanılan kimlik) almak için [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal) veya [az ad SP List](/cli/azure/ad/sp#az-ad-sp-list) komutlarını kullanabilirsiniz. Hizmet sorumlusu için uygulama KIMLIĞINI **değil** , nesne kimliğini kullanın.
+
+```azurepowershell
+$objectid = (Get-AzADServicePrincipal -DisplayName "{name}").id
+```
+
+```azurecli
+objectid=$(az ad sp list --display-name "{name}" --query [].objectId --output tsv)
+```
 
 ## <a name="create-a-role-assignment-at-a-resource-group-scope-without-parameters"></a>Kaynak grubu kapsamında (parametresiz) bir rol ataması oluşturma
 
@@ -33,7 +73,7 @@ RBAC'de erişim vermek için bir rol ataması oluşturmanız gerekir. Aşağıda
 Şablonu kullanmak için aşağıdakileri yapmanız gerekir:
 
 - Yeni bir JSON dosyası oluşturun ve şablonu kopyalayın
-- @No__t_0, rolün atanacağı bir Kullanıcı, Grup veya uygulamanın benzersiz tanımlayıcısı ile değiştirin. Tanımlayıcı şu biçimdedir: `11111111-1111-1111-1111-111111111111`
+- `<your-principal-id>` rolün atanacağı bir Kullanıcı, Grup veya uygulamanın KIMLIĞIYLE değiştirin
 
 ```json
 {
@@ -76,9 +116,8 @@ Aşağıda, şablonu dağıttıktan sonra bir kaynak grubu için kullanıcıya o
 
 Şablonu kullanmak için aşağıdaki girişleri belirtmeniz gerekir:
 
-- Rolün atanacağı bir kullanıcının, grubun veya uygulamanın benzersiz tanımlayıcısı
-- Atanacak rol
-- Rol ataması için kullanılacak benzersiz bir tanımlayıcı ya da varsayılan tanımlayıcıyı kullanabilirsiniz
+- Rolün atanacağı bir kullanıcının, grubun veya uygulamanın KIMLIĞI
+- Rol ataması için kullanılacak benzersiz bir KIMLIK veya varsayılan KIMLIĞI kullanabilirsiniz
 
 ```json
 {
@@ -129,38 +168,28 @@ Aşağıda, şablonu dağıttıktan sonra bir kaynak grubu için kullanıcıya o
 }
 ```
 
-Rolü atamak üzere bir kullanıcının benzersiz tanımlayıcısını almak için [Get-AzADUser](/powershell/module/az.resources/get-azaduser) veya [az ad User Show](/cli/azure/ad/user#az-ad-user-show) komutlarını kullanabilirsiniz.
-
-```azurepowershell
-$userid = (Get-AzADUser -DisplayName "{name}").id
-```
-
-```azurecli
-userid=$(az ad user show --upn-or-object-id "{email}" --query objectId --output tsv)
-```
+> [!NOTE]
+> Bu şablon, şablon dağıtımı için bir parametre olarak aynı `roleNameGuid` değeri sağlanmamışsa ıdempotent değildir. `roleNameGuid` sağlanmazsa, varsayılan olarak her dağıtımda yeni bir GUID oluşturulur ve sonraki dağıtımlar `Conflict: RoleAssignmentExists` hata ile başarısız olur.
 
 Rol atamasının kapsamı, dağıtımın düzeyinden belirlenir. Örnek [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) ve bir kaynak grubu kapsamında dağıtımın nasıl başlatılacağı hakkında daha [az grup dağıtımı oluşturma](/cli/azure/group/deployment#az-group-deployment-create) komutları aşağıda verilmiştir.
 
 ```azurepowershell
-New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-test.json -principalId $userid -builtInRoleType Reader
+New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-test.json -principalId $objectid -builtInRoleType Reader
 ```
 
 ```azurecli
-az group deployment create --resource-group ExampleGroup --template-file rbac-test.json --parameters principalId=$userid builtInRoleType=Reader
+az group deployment create --resource-group ExampleGroup --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
 ```
 
 Aşağıda örnek [New-azdeployment](/powershell/module/az.resources/new-azdeployment) ve dağıtım [oluşturma](/cli/azure/deployment#az-deployment-create) komutları bir abonelik kapsamında başlatılır ve konumu belirtebilirsiniz.
 
 ```azurepowershell
-New-AzDeployment -Location centralus -TemplateFile rbac-test.json -principalId $userid -builtInRoleType Reader
+New-AzDeployment -Location centralus -TemplateFile rbac-test.json -principalId $objectid -builtInRoleType Reader
 ```
 
 ```azurecli
-az deployment create --location centralus --template-file rbac-test.json --parameters principalId=$userid builtInRoleType=Reader
+az deployment create --location centralus --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
 ```
-
-> [!NOTE]
-> Bu şablon, şablon dağıtımı için bir parametre olarak aynı `roleNameGuid` değeri sağlanmamışsa ıdempotent değildir. @No__t_0 sağlanmazsa, varsayılan olarak her dağıtımda yeni bir GUID oluşturulur ve sonraki dağıtımlar `Conflict: RoleAssignmentExists` hata ile başarısız olur.
 
 ## <a name="create-a-role-assignment-at-a-resource-scope"></a>Kaynak kapsamında rol ataması oluşturma
 
@@ -181,8 +210,7 @@ Aşağıdaki şablonda şunları gösterilmektedir:
 
 Şablonu kullanmak için aşağıdaki girişleri belirtmeniz gerekir:
 
-- Rolün atanacağı bir kullanıcının, grubun veya uygulamanın benzersiz tanımlayıcısı
-- Atanacak rol
+- Rolün atanacağı bir kullanıcının, grubun veya uygulamanın KIMLIĞI
 
 ```json
 {
@@ -248,11 +276,11 @@ Aşağıdaki şablonda şunları gösterilmektedir:
 Önceki şablonu dağıtmak için kaynak grubu komutlarını kullanırsınız. Örnek [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) ve bir kaynak kapsamında dağıtımın başlatılması için [az Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create) komutları aşağıda verilmiştir.
 
 ```azurepowershell
-New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-test.json -principalId $userid -builtInRoleType Contributor
+New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-test.json -principalId $objectid -builtInRoleType Contributor
 ```
 
 ```azurecli
-az group deployment create --resource-group ExampleGroup --template-file rbac-test.json --parameters principalId=$userid builtInRoleType=Contributor
+az group deployment create --resource-group ExampleGroup --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Contributor
 ```
 
 Aşağıda, şablonu dağıttıktan sonra bir depolama hesabı için kullanıcıya katkıda bulunan rol atamasının bir örneği gösterilmektedir.
@@ -266,7 +294,7 @@ Yeni bir hizmet sorumlusu oluşturur ve bu hizmet sorumlusuna hemen bir rol atam
 Aşağıdaki şablonda şunları gösterilmektedir:
 
 - Yeni bir yönetilen kimlik hizmeti sorumlusu oluşturma
-- @No__t_0 belirtme
+- `principalType` belirtme
 - Kaynak grubu kapsamındaki bu hizmet sorumlusuna katkıda bulunan rolü atama
 
 Şablonu kullanmak için aşağıdaki girişleri belirtmeniz gerekir:
