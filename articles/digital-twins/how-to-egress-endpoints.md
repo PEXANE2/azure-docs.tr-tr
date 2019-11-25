@@ -1,31 +1,31 @@
 ---
-title: Çıkış ve uç noktalar-Azure dijital TWINS | Microsoft Docs
-description: Azure dijital TWINS 'de olay uç noktaları oluşturmayı ve çıkış yapmayı öğrenin.
+title: Egress and endpoints - Azure Digital Twins | Microsoft Docs
+description: Learn how to create and egress event endpoints in Azure Digital Twins.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/02/2019
-ms.openlocfilehash: 33e8a6a281fbc6620a4608c7b0821b196043423e
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 11/22/2019
+ms.openlocfilehash: 95dbed72aeca639041d259e9c92c2a3b73ef63fe
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74010064"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456918"
 ---
-# <a name="egress-and-endpoints-in-azure-digital-twins"></a>Azure dijital TWINS 'teki çıkış ve uç noktalar
+# <a name="egress-and-endpoints-in-azure-digital-twins"></a>Egress and endpoints in Azure Digital Twins
 
-Azure dijital TWINS *uç noktaları* , bir kullanıcının Azure aboneliğindeki bir iletiyi veya olay aracısını temsil eder. Olaylar ve iletiler Azure Event Hubs, Azure Event Grid ve Azure Service Bus konularına gönderilebilir.
+Azure Digital Twins *endpoints* represent a message or event broker within a user's Azure subscription. Events and messages can be sent to Azure Event Hubs, Azure Event Grid, and Azure Service Bus topics.
 
-Olaylar, önceden tanımlanmış yönlendirme tercihlerine göre uç noktalara yönlendirilir. Kullanıcılar, her uç noktanın alabileceği *olay türlerini* belirtir.
+Events are routed to endpoints according to predefined routing preferences. Users specify which *event types* each endpoint may receive.
 
-Olaylar, Yönlendirme ve olay türleri hakkında daha fazla bilgi edinmek için bkz. [Azure dijital TWINS 'de yönlendirme olayları ve iletileri](./concepts-events-routing.md).
+To learn more about events, routing, and event types, refer to [Routing events and messages in Azure Digital Twins](./concepts-events-routing.md).
 
-## <a name="events"></a>Olaylar
+## <a name="events"></a>Etkinlikler
 
-Olaylar, Azure ileti ve olay aracıları tarafından işlenmek üzere IoT nesneleri (cihazlar ve algılayıcılar gibi) tarafından gönderilir. Olaylar aşağıdaki [Azure Event Grid olay şeması başvurusu](../event-grid/event-schema.md)tarafından tanımlanır.
+Events are sent by IoT objects (such as devices and sensors) for processing by Azure message and event brokers. Events are defined by the following [Azure Event Grid event schema reference](../event-grid/event-schema.md).
 
 ```JSON
 {
@@ -49,23 +49,23 @@ Olaylar, Azure ileti ve olay aracıları tarafından işlenmek üzere IoT nesnel
 
 | Öznitelik | Tür | Açıklama |
 | --- | --- | --- |
-| id | string | Etkinliğin benzersiz tanımlayıcısı. |
-| subject | string | Olay konusunun yayımcı tanımlı yolu. |
-| data | object | Kaynak sağlayıcısına özel olay verileri. |
-| eventType | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
-| eventTime | string | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
-| dataVersion | string | Veri nesnesinin şema sürümü. Yayımcı, şema sürümünü tanımlar. |
-| metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
-| konu başlığı | string | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
+| id | string | Unique identifier for the event. |
+| subject | string | Publisher-defined path to the event subject. |
+| data | object | Event data specific to the resource provider. |
+| eventType | string | One of the registered event types for this event source. |
+| eventTime | string | The time the event is generated based on the provider's UTC time. |
+| dataVersion | string | The schema version of the data object. The publisher defines the schema version. |
+| metadataVersion | string | The schema version of the event metadata. Event Grid defines the schema of the top-level properties. Event Grid provides this value. |
+| konu başlığı | string | Full resource path to the event source. This field isn't writeable. Event Grid provides this value. |
 
-Event Grid olay şeması hakkında daha fazla bilgi için:
+For more information about the Event Grid event schema:
 
-- [Azure Event Grid olay şeması başvurusunu](../event-grid/event-schema.md)gözden geçirin.
-- [Azure EventGrid Node. js SDK EventGridEvent başvurusunu](https://docs.microsoft.com/javascript/api/@azure/eventgrid/eventgridevent?view=azure-node-latest)okuyun.
+- Review the [Azure Event Grid event schema reference](../event-grid/event-schema.md).
+- Read the [Azure EventGrid Node.js SDK EventGridEvent reference](https://docs.microsoft.com/javascript/api/@azure/eventgrid/eventgridevent?view=azure-node-latest).
 
-## <a name="event-types"></a>Olay türleri
+## <a name="event-types"></a>Event types
 
-Olay türleri olayın yapısını sınıflandırır ve **EventType** alanında ayarlanır. Kullanılabilir olay türleri aşağıdaki liste tarafından verilmiştir:
+Events types classify the nature of the event and are set in the **eventType** field. Available event types are given by the following list:
 
 - TopologyOperation
 - UdfCustom
@@ -73,28 +73,28 @@ Olay türleri olayın yapısını sınıflandırır ve **EventType** alanında a
 - SpaceChange
 - DeviceMessage
 
-Her olay türü için olay biçimleri aşağıdaki alt bölümlerde daha ayrıntılı olarak açıklanmıştır.
+The event formats for each event type are further described in the following subsections.
 
 ### <a name="topologyoperation"></a>TopologyOperation
 
-**Topologyoperation** , grafik değişiklikleri için geçerlidir. **Subject** özelliği, etkilenen nesne türünü belirtir. Aşağıdaki nesne türleri bu olayı tetikleyebilir:
+**TopologyOperation** applies to graph changes. The **subject** property specifies the type of object affected. The following types of objects might trigger this event:
 
 - Cihaz
 - DeviceBlobMetadata
 - DeviceExtendedProperty
 - ExtendedPropertyKey
 - ExtendedType
-- Anahtar deposu
+- KeyStore
 - Rapor
 - RoleDefinition
-- Algılayıcısı
+- Sensor
 - SensorBlobMetadata
 - SensorExtendedProperty
 - Uzay
 - SpaceBlobMetadata
 - SpaceExtendedProperty
 - SpaceResource
-- Spaceroleatama
+- SpaceRoleAssignment
 - Sistem
 - Kullanıcı
 - UserBlobMetadata
@@ -124,14 +124,14 @@ Her olay türü için olay biçimleri aşağıdaki alt bölümlerde daha ayrınt
 
 | Değer | Şununla değiştir |
 | --- | --- |
-| YOUR_TOPIC_NAME | Özelleştirilmiş konunun adı |
+| YOUR_TOPIC_NAME | The name of your customized topic |
 
 ### <a name="udfcustom"></a>UdfCustom
 
-**Udfcustom** , Kullanıcı tanımlı bir Işlev (UDF) tarafından gönderilen bir olaydır.
+**UdfCustom** is an event sent by a user-defined function (UDF).
   
 > [!IMPORTANT]  
-> Bu olay UDF 'den açıkça gönderilmesi gerekir.
+> This event must be explicitly sent from the UDF itself.
 
 #### <a name="example"></a>Örnek
 
@@ -155,11 +155,11 @@ Her olay türü için olay biçimleri aşağıdaki alt bölümlerde daha ayrınt
 
 | Değer | Şununla değiştir |
 | --- | --- |
-| YOUR_TOPIC_NAME | Özelleştirilmiş konunun adı |
+| YOUR_TOPIC_NAME | The name of your customized topic |
 
 ### <a name="sensorchange"></a>SensorChange
 
-**Sensorchange** , telemetri değişikliklerine bağlı olarak bir sensörin durumunun güncelleştirmesidir.
+**SensorChange** is an update to a sensor's state based on telemetry changes.
 
 #### <a name="example"></a>Örnek
 
@@ -190,11 +190,11 @@ Her olay türü için olay biçimleri aşağıdaki alt bölümlerde daha ayrınt
 
 | Değer | Şununla değiştir |
 | --- | --- |
-| YOUR_TOPIC_NAME | Özelleştirilmiş konunun adı |
+| YOUR_TOPIC_NAME | The name of your customized topic |
 
 ### <a name="spacechange"></a>SpaceChange
 
-**Spacechange** , telemetri değişikliklerine göre bir alanın durumunun bir güncelleştirmesidir.
+**SpaceChange** is an update to a space's state based on telemetry changes.
 
 #### <a name="example"></a>Örnek
 
@@ -225,34 +225,34 @@ Her olay türü için olay biçimleri aşağıdaki alt bölümlerde daha ayrınt
 
 | Değer | Şununla değiştir |
 | --- | --- |
-| YOUR_TOPIC_NAME | Özelleştirilmiş konunun adı |
+| YOUR_TOPIC_NAME | The name of your customized topic |
 
 ### <a name="devicemessage"></a>DeviceMessage
 
-**Devicemessage**kullanarak, ham telemetri olaylarının Azure dijital TWINS 'ten de yönlendirilebilmesi Için bir **EventHub** bağlantısı belirtebilirsiniz.
+By using **DeviceMessage**, you can specify an **EventHub** connection to which raw telemetry events can be routed as well from Azure Digital Twins.
 
 > [!NOTE]
-> - **Devicemessage** yalnızca **EventHub**ile combinable. **Devicemessage** ' i diğer olay türlerinden herhangi biriyle birleştiremezsiniz.
-> - **EventHub** veya **devicemessage**türü birleşiminin yalnızca bir uç noktasını belirtebilirsiniz.
+> - **DeviceMessage** is combinable only with **EventHub**. You can't combine **DeviceMessage** with any of the other event types.
+> - You can specify only one endpoint of the combination of type **EventHub** or **DeviceMessage**.
 
 ## <a name="configure-endpoints"></a>Uç noktaları yapılandırma
 
-Uç nokta yönetimi uç noktalar API 'SI aracılığıyla yapılır.
+Endpoint management is exercised through the Endpoints API.
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
-Aşağıdaki örneklerde desteklenen uç noktaların nasıl yapılandırılacağı gösterilmektedir.
+The following examples demonstrate how to configure the supported endpoints.
 
 >[!IMPORTANT]
-> **EventTypes** özniteliğinde dikkatli bir dikkat ödeyin. Hangi olay türlerinin bitiş noktası tarafından işleneceğini tanımlar ve bu nedenle yönlendirmeyi belirler.
+> Pay careful attention to the **eventTypes** attribute. It defines which event types are handled by the endpoint and thus determine its routing.
 
-Kimliği doğrulanmış bir HTTP POST isteği şu şekilde yapılır:
+An authenticated HTTP POST request against:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/endpoints
 ```
 
-- Service Bus olay türlerine yönlendirme **Sensorchange**, **Spacechange**ve **topologyoperation**:
+- Route to Service Bus event types **SensorChange**, **SpaceChange**, and **TopologyOperation**:
 
   ```JSON
   {
@@ -270,12 +270,12 @@ YOUR_MANAGEMENT_API_URL/endpoints
 
     | Değer | Şununla değiştir |
     | --- | --- |
-    | YOUR_NAMESPACE | Uç noktanızın ad alanı |
-    | YOUR_PRIMARY_KEY | Kimlik doğrulaması için kullanılan birincil bağlantı dizesi |
-    | YOUR_SECONDARY_KEY | Kimlik doğrulaması için kullanılan ikincil bağlantı dizesi |
-    | YOUR_TOPIC_NAME | Özelleştirilmiş konunun adı |
+    | YOUR_NAMESPACE | The namespace of your endpoint |
+    | YOUR_PRIMARY_KEY | The primary connection string used to authenticate |
+    | YOUR_SECONDARY_KEY | The secondary connection string used to authenticate |
+    | YOUR_TOPIC_NAME | The name of your customized topic |
 
-- Event Grid olay türlerine yönlendirme **Sensorchange**, **Spacechange**ve **topologyoperation**:
+- Route to Event Grid event types **SensorChange**, **SpaceChange**, and **TopologyOperation**:
 
   ```JSON
   {
@@ -293,11 +293,11 @@ YOUR_MANAGEMENT_API_URL/endpoints
 
     | Değer | Şununla değiştir |
     | --- | --- |
-    | YOUR_PRIMARY_KEY | Kimlik doğrulaması için kullanılan birincil bağlantı dizesi|
-    | YOUR_SECONDARY_KEY | Kimlik doğrulaması için kullanılan ikincil bağlantı dizesi |
-    | YOUR_TOPIC_NAME | Özelleştirilmiş konunun adı |
+    | YOUR_PRIMARY_KEY | The primary connection string used to authenticate|
+    | YOUR_SECONDARY_KEY | The secondary connection string used to authenticate |
+    | YOUR_TOPIC_NAME | The name of your customized topic |
 
-- Event Hubs olay türlerine yönlendirme **Sensorchange**, **Spacechange**ve **topologyoperation**:
+- Route to Event Hubs event types **SensorChange**, **SpaceChange**, and **TopologyOperation**:
 
   ```JSON
   {
@@ -315,12 +315,12 @@ YOUR_MANAGEMENT_API_URL/endpoints
 
     | Değer | Şununla değiştir |
     | --- | --- |
-    | YOUR_NAMESPACE | Uç noktanızın ad alanı |
-    | YOUR_PRIMARY_KEY | Kimlik doğrulaması için kullanılan birincil bağlantı dizesi |
-    | YOUR_SECONDARY_KEY | Kimlik doğrulaması için kullanılan ikincil bağlantı dizesi |
-    | YOUR_EVENT_HUB_NAME | Olay Hub 'ınızın adı |
+    | YOUR_NAMESPACE | The namespace of your endpoint |
+    | YOUR_PRIMARY_KEY | The primary connection string used to authenticate |
+    | YOUR_SECONDARY_KEY | The secondary connection string used to authenticate |
+    | YOUR_EVENT_HUB_NAME | The name of your event hub |
 
-- Event Hubs olay türü **Devicemessage**'ye yönlendir. **ConnectionString** 'e `EntityPath` eklenmesi zorunludur:
+- Route to Event Hubs event type **DeviceMessage**. The inclusion of `EntityPath` in the **connectionString** is mandatory:
 
   ```JSON
   {
@@ -336,28 +336,28 @@ YOUR_MANAGEMENT_API_URL/endpoints
 
     | Değer | Şununla değiştir |
     | --- | --- |
-    | YOUR_NAMESPACE | Uç noktanızın ad alanı |
-    | YOUR_PRIMARY_KEY | Kimlik doğrulaması için kullanılan birincil bağlantı dizesi |
-    | YOUR_SECONDARY_KEY | Kimlik doğrulaması için kullanılan ikincil bağlantı dizesi |
-    | YOUR_EVENT_HUB_NAME | Olay Hub 'ınızın adı |
+    | YOUR_NAMESPACE | The namespace of your endpoint |
+    | YOUR_PRIMARY_KEY | The primary connection string used to authenticate |
+    | YOUR_SECONDARY_KEY | The secondary connection string used to authenticate |
+    | YOUR_EVENT_HUB_NAME | The name of your event hub |
 
 > [!NOTE]  
-> Yeni bir uç nokta oluşturulduktan sonra, uç noktada olayların alınmasına başlaması 5 ila 10 dakika kadar sürebilir.
+> Upon the creation of a new endpoint, it might take up to 5 to 10 minutes to start receiving events at the endpoint.
 
-## <a name="primary-and-secondary-connection-keys"></a>Birincil ve ikincil bağlantı anahtarları
+## <a name="primary-and-secondary-connection-keys"></a>Primary and secondary connection keys
 
-Birincil bağlantı anahtarı yetkisiz hale geldiğinde, sistem otomatik olarak ikincil bağlantı anahtarını dener. Bu, bir yedekleme sağlar ve uç noktalar API 'SI aracılığıyla birincil anahtarı düzgün şekilde kimlik doğrulaması ve güncelleştirme olasılığının olmasını sağlar.
+When a primary connection key becomes unauthorized, the system automatically tries the secondary connection key. That provides a backup and allows the possibility to gracefully authenticate and update the primary key through the Endpoints API.
 
-Birincil ve ikincil bağlantı anahtarlarının her ikisi de yetkisiz olursa, sistem en fazla 30 dakikalık bir üstel geri dönme bekleme süresi girer. Olaylar, tetiklenen her geri dönme saatinde bırakılır.
+If both the primary and secondary connection keys are unauthorized, the system enters an exponential back-off wait time of up to 30 minutes. Events are dropped on each triggered back-off wait time.
 
-Sistem bir geri alma bekleme durumunda olduğunda, bağlantı anahtarlarının uç noktalar API 'SI aracılığıyla güncelleştirilmesi 30 dakika kadar sürebilir.
+Whenever the system is in a back-off wait state, updating connections keys through the Endpoints API might take up to 30 minutes to take effect.
 
-## <a name="unreachable-endpoints"></a>Erişilemeyen uç noktalar
+## <a name="unreachable-endpoints"></a>Unreachable endpoints
 
-Bir uç nokta ulaşılamaz hale geldiğinde, sistem en fazla 30 dakikalık bir üstel geri dönme bekleme süresi girer. Olaylar, tetiklenen her geri dönme saatinde bırakılır.
+When an endpoint becomes unreachable, the system enters an exponential back-off wait time of up to 30 minutes. Events are dropped on each triggered back-off wait time.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure dijital TWINS Swagger kullanmayı](how-to-use-swagger.md)öğrenin.
+- Learn [how to use Azure Digital Twins Swagger](how-to-use-swagger.md).
 
-- Azure dijital TWINS 'de [olayları ve iletileri yönlendirme](concepts-events-routing.md) hakkında daha fazla bilgi edinin.
+- Learn more about [routing events and messages](concepts-events-routing.md) in Azure Digital Twins.

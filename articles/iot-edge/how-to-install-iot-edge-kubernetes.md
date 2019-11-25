@@ -1,6 +1,6 @@
 ---
-title: Kubernetes 'e IoT Edge yüklemesi | Microsoft Docs
-description: Yerel bir geliştirme kümesi ortamı kullanarak Kubernetes 'e IoT Edge nasıl yükleneceğinizi öğrenin
+title: How to install IoT Edge on Kubernetes | Microsoft Docs
+description: Learn on how to install IoT Edge on Kubernetes using a local development cluster environment
 author: kgremban
 manager: philmea
 ms.author: veyalla
@@ -8,63 +8,62 @@ ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.custom: seodec18
-ms.openlocfilehash: a453779ffe4ae20acf55510d0ac9f9483763af21
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 7f3627a79cad6833b5fb20f3c829c1e3bcbd9c3e
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72964828"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74457350"
 ---
-# <a name="how-to-install-iot-edge-on-kubernetes-preview"></a>Kubernetes 'e IoT Edge nasıl yüklenir (Önizleme)
+# <a name="how-to-install-iot-edge-on-kubernetes-preview"></a>How to install IoT Edge on Kubernetes (Preview)
 
-IoT Edge, Kubernetes ile, dayanıklı ve yüksek oranda kullanılabilir bir altyapı katmanı olarak yararlanarak tümleştirilebilir. Kubernetes API sunucusuyla IoT Edge *özel bir kaynak tanımı* (CRD) kaydeder. Ayrıca, bulut tarafından yönetilen istenen durumu yerel küme durumuyla bağdaştıran bir *operatör* (IoT Edge Aracısı) sağlar. 
+IoT Edge can integrate with Kubernetes using it as a resilient, highly available infrastructure layer. It registers an IoT Edge *Custom Resource Definition* (CRD) with the Kubernetes API Server. Additionally, it provides an *Operator* (IoT Edge agent) that reconciles cloud-managed desired state with the local cluster state. 
 
-Modül ömrü, modül kullanılabilirliğini tutan ve yerleştirmesini seçen Kubernetes Zamanlayıcı tarafından yönetilir. IoT Edge, en üstte çalışan Edge uygulaması platformunu yönetir ve IoT Hub belirtilen istenen durumu, uç kümedeki durumuyla sürekli olarak mutabık kılma. Edge uygulama modeli, IoT Edge modülleri ve yolları temel alan tanıdık modeldir. IoT Edge Agent işleci, pods, dağıtımlar, hizmetler vb. Kubernetes 'in küller yapılarına *Otomatik* çeviri gerçekleştirir.
+Module lifetime is managed by the Kubernetes scheduler, which maintains module availability and chooses their placement. IoT Edge manages the edge application platform running on top, continuously reconciling the desired state specified in IoT Hub with the state on the edge cluster. The edge application model is still the familiar model based on IoT Edge modules and routes. The IoT Edge agent operator performs *automatic* translation to the Kubernetes natives constructs like pods, deployments, services etc.
 
-Üst düzey bir mimari diyagramı aşağıda verilmiştir:
+Here is a high-level architecture diagram:
 
-![Kubernetes yay](./media/how-to-install-iot-edge-kubernetes/k8s-arch.png)
+![kubernetes arch](./media/how-to-install-iot-edge-kubernetes/k8s-arch.png)
 
-Edge dağıtımının her bileşeni, cihaza özel bir Kubernetes ad alanı kapsamına alınır ve aynı küme kaynaklarının birden çok uç cihaz ve dağıtımları arasında paylaşılmasını mümkün kılar.
+Every component of the edge deployment is scoped to a Kubernetes namespace specific to the device, making it possible to share the same cluster resources among multiple edge devices and their deployments.
 
 >[!NOTE]
->Kubernetes üzerinde IoT Edge [genel önizlemede](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>IoT Edge on Kubernetes is in [public preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="install-locally-for-a-quick-test-environment"></a>Hızlı test ortamı için yerel olarak yükler
+## <a name="install-locally-for-a-quick-test-environment"></a>Install locally for a quick test environment
 
 ### <a name="prerequisites"></a>Önkoşullar
 
-* Kubernetes 1,10 veya sonraki bir sürümü. Var olan bir küme kurulumuna sahip değilseniz, [Minikube](https://kubernetes.io/docs/setup/minikube/) kullanarak yerel bir küme ortamı oluşturabilirsiniz. 
+* Kubernetes 1.10 or newer. If you don't have an existing cluster setup, you can use [Minikube](https://kubernetes.io/docs/setup/minikube/) for a local cluster environment. 
 
-* Kubernetes paket yöneticisi olan [helk](https://helm.sh/docs/using_helm/#quickstart-guide).
+* [Helm](https://helm.sh/docs/using_helm/#quickstart-guide), the Kubernetes package manager.
 
-* [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) , küme görüntüleme ve bunlarla etkileşim kurma.
+* [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) for viewing and interacting with the cluster.
 
-### <a name="setup-steps"></a>Kurulum adımları
+### <a name="setup-steps"></a>Setup steps
 
-1. **Minikube** Başlat
+1. Start **Minikube**
 
     ``` shell
     minikube start
     ```
 
-1. Kümenizdeki **Held** sunucu bileşenini (*Tiller*) başlatma
+1. Initialize the **Helm** server component (*tiller*) in your cluster
 
     ``` shell
     helm init
     ```
 
-1. IoT Edge deposu ekleme ve Held yüklemesini güncelleştirme
+1. Add IoT Edge repo and update the helm installation
 
     ``` shell
     helm repo add edgek8s https://edgek8s.blob.core.windows.net/helm/
     helm repo update
     ```
 
-1. [Bir IoT Hub oluşturun](../iot-hub/iot-hub-create-through-portal.md), [bir IoT Edge cihazı kaydedin](how-to-register-device.md)ve bağlantı dizesini aklınızda edin.
+1. [Create an IoT Hub](../iot-hub/iot-hub-create-through-portal.md), [register an IoT Edge device](how-to-register-device.md), and note its connection string.
 
-1. Kümelendirmek için ıtedşlı ve IoT Edge Aracısı 'nı yükler
+1. Install iotedged and IoT Edge agent into your cluster
 
     ```shell
     helm install \
@@ -72,21 +71,21 @@ Edge dağıtımının her bileşeni, cihaza özel bir Kubernetes ad alanı kapsa
     --set "deviceConnectionString=replace-with-device-connection-string" \
     edgek8s/edge-kubernetes
     ```
-1. Kubernetes panosunu tarayıcıda açın
+1. Open the Kubernetes dashboard in the browser
 
     ```shell
     minikube dashboard
     ```
 
-    Küme ad alanları altında, IoT Edge cihaz için bir tane, *msıot-\<ıothub-name >-\<edgedevice-name >* kuralını izleyerek görürsünüz. IoT Edge Aracısı ve ııttedpods 'ler, bu ad alanında çalışır durumda olmalıdır.
+    Under the cluster namespaces, you will see one for the IoT Edge device following the convention *msiot-\<iothub-name>-\<edgedevice-name>* . The IoT Edge agent and iotedged pods should be up and running in this namespace.
 
-1. Hızlı başlangıçta [Modül dağıtma](quickstart-linux.md#deploy-a-module) bölümündeki adımları kullanarak bir sanal sıcaklık algılayıcı modülü ekleyin. IoT Edge modül yönetimi, IoT Hub portalından, tıpkı diğer IoT Edge cihazlarından farklı olarak yapılır. Kubernetes araçları aracılığıyla modül yapılandırmasında yerel değişiklikler yapılması, üzerine yazıldıklarında önerilmez.
+1. Add a simulated temperature sensor module using the steps in the [Deploy a module](quickstart-linux.md#deploy-a-module) section of the quickstart. IoT Edge module management is done from the IoT Hub portal just like any other IoT Edge device. Making local changes to module configuration via Kubernetes tools is not recommended as they might get overwritten.
 
-1. Birkaç saniye içinde, pano 'daki Edge cihazı ad alanı altındaki **Pod** sayfasının yenilenmesi, verileri IoT Hub IoT Edge merkezi Pod ile birlikte çalışan IoT Edge hub 'ını ve sanal algılayıcı benzetimini listelecektir.
+1. In a few seconds, refreshing the **Pods** page under the edge device namespace in the dashboard will list the IoT Edge hub and simulated sensor pods as running with the IoT Edge hub pod ingesting data into IoT Hub.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Edge dağıtımı tarafından oluşturulan tüm kaynakları kaldırmak için, önceki bölümün 5. adımında kullanılan adla aşağıdaki komutu kullanın.
+To remove all resources created by the edge deployment, use the following command with the name used in step 5 of the previous section.
 
 ``` shell
 helm delete --purge k8s-edge1
@@ -94,6 +93,6 @@ helm delete --purge k8s-edge1
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-### <a name="deploy-as-a-highly-available-edge-gateway"></a>Yüksek oranda kullanılabilir uç ağ geçidi olarak dağıtın 
+### <a name="deploy-as-a-highly-available-edge-gateway"></a>Deploy as a highly available edge gateway 
 
-Bir Kubernetes kümesindeki uç cihaz, aşağı akış cihazları için IoT Ağ geçidi olarak kullanılabilir. Bu, uç dağıtımlar için yüksek kullanılabilirlik sağlayan düğüm hatasına dayanıklı olacak şekilde yapılandırılabilir. Bu senaryoda IoT Edge kullanmak için bu [ayrıntılı izlenecek yolu](https://github.com/Azure-Samples/iotedge-gateway-on-kubernetes) inceleyin.
+The edge device in a Kubernetes cluster can be used as an IoT gateway for downstream devices. It can be configured to be resilient to node failure thus providing high availability to edge deployments. See this [detailed walkthrough](https://github.com/Azure-Samples/iotedge-gateway-on-kubernetes) to use IoT Edge in this scenario.

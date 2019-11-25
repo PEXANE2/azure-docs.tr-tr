@@ -1,39 +1,34 @@
 ---
-title: Container Instances Azure Container Registry erişim
-description: Azure Active Directory hizmet sorumlusu kullanarak Azure Container Instances özel kapsayıcı kayıt defterinizde görüntülere nasıl erişim sağlayacağınızı öğrenin.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
+title: Access from Container Instances
+description: Learn how to provide access to images in your private container registry from Azure Container Instances by using an Azure Active Directory service principal.
 ms.topic: article
 ms.date: 04/23/2018
-ms.author: danlep
-ms.openlocfilehash: 53cdca72587dafd39abd3f13ad488dcb460bf622
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: b1bc8119c495dea99c6bdc4923db198d041a1e9e
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931668"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456511"
 ---
-# <a name="authenticate-with-azure-container-registry-from-azure-container-instances"></a>Azure Container Instances Azure Container Registry ile kimlik doğrulama
+# <a name="authenticate-with-azure-container-registry-from-azure-container-instances"></a>Authenticate with Azure Container Registry from Azure Container Instances
 
-Azure Container Registry içindeki özel kapsayıcı kayıt defterlerine erişim sağlamak için bir Azure Active Directory (Azure AD) hizmet sorumlusu kullanabilirsiniz.
+You can use an Azure Active Directory (Azure AD) service principal to provide access to your private container registries in Azure Container Registry.
 
-Bu makalede, Kayıt defterinize yönelik *çekme* Izinleriyle BIR Azure AD hizmet sorumlusu oluşturup yapılandırmayı öğreneceksiniz. Daha sonra, kimlik doğrulaması için hizmet sorumlusu kullanarak görüntüsünü özel Kayıt defterinizden alan Azure Container Instances (acı) içinde bir kapsayıcı başlatabilirsiniz.
+In this article, you learn to create and configure an Azure AD service principal with *pull* permissions to your registry. Then, you start a container in Azure Container Instances (ACI) that pulls its image from your private registry, using the service principal for authentication.
 
-## <a name="when-to-use-a-service-principal"></a>Hizmet sorumlusu ne zaman kullanılır?
+## <a name="when-to-use-a-service-principal"></a>When to use a service principal
 
-Bir hizmet sorumlusu kullanarak, bir otomatik veya başka şekilde katılımsız bir şekilde kapsayıcı örnekleri oluşturan uygulama veya hizmetlerde gibi, **gözetimsiz senaryolarda**kimlik doğrulaması için bir hizmet sorumlusu kullanmanız gerekir.
+You should use a service principal for authentication from ACI in **headless scenarios**, such as in applications or services that create container instances in an automated or otherwise unattended manner.
 
-Örneğin, gecelik çalıştıran bir otomatik betiğe sahipseniz ve bazı verileri işlemek için [görev tabanlı bir kapsayıcı örneği](../container-instances/container-instances-restart-policy.md) oluşturursa, kayıt defterinde kimlik doğrulamak için yalnızca çekme izinleriyle bir hizmet sorumlusu kullanabilir. Daha sonra hizmet sorumlusunun kimlik bilgilerini döndürebilir veya diğer hizmetleri ve uygulamaları etkilemeden erişimi tamamen iptal edebilirsiniz.
+For example, if you have an automated script that runs nightly and creates a [task-based container instance](../container-instances/container-instances-restart-policy.md) to process some data, it can use a service principal with pull-only permissions to authenticate to the registry. You can then rotate the service principal's credentials or revoke its access completely without affecting other services and applications.
 
-Hizmet sorumluları, kayıt defteri [Yönetici kullanıcısı](container-registry-authentication.md#admin-account) devre dışı olduğunda da kullanılmalıdır.
+Service principals should also be used when the registry [admin user](container-registry-authentication.md#admin-account) is disabled.
 
 [!INCLUDE [container-registry-service-principal](../../includes/container-registry-service-principal.md)]
 
-## <a name="authenticate-using-the-service-principal"></a>Hizmet sorumlusunu kullanarak kimlik doğrulama
+## <a name="authenticate-using-the-service-principal"></a>Authenticate using the service principal
 
-Hizmet sorumlusu kullanarak Azure Container Instances bir kapsayıcı başlatmak için `--registry-username`KIMLIĞINI ve `--registry-password`parolasını belirtin.
+To launch a container in Azure Container Instances using a service principal, specify its ID for `--registry-username`, and its password for `--registry-password`.
 
 ```azurecli-interactive
 az container create \
@@ -47,17 +42,17 @@ az container create \
 
 ## <a name="sample-scripts"></a>Örnek komut dosyaları
 
-Azure CLı için yukarıdaki örnek betikleri GitHub 'da ve Azure PowerShell için de bulabilirsiniz:
+You can find the preceding sample scripts for Azure CLI on GitHub, as well versions for Azure PowerShell:
 
 * [Azure CLI][acr-scripts-cli]
 * [Azure PowerShell][acr-scripts-psh]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Aşağıdaki makalelerde hizmet sorumluları ve ACR ile çalışma hakkında ek ayrıntılar yer alır:
+The following articles contain additional details on working with service principals and ACR:
 
-* [Hizmet sorumluları ile kimlik doğrulamasını Azure Container Registry](container-registry-auth-service-principal.md)
-* [Azure Kubernetes Service (AKS) Azure Container Registry ile kimlik doğrulama](../aks/cluster-container-registry-integration.md)
+* [Azure Container Registry authentication with service principals](container-registry-auth-service-principal.md)
+* [Authenticate with Azure Container Registry from Azure Kubernetes Service (AKS)](../aks/cluster-container-registry-integration.md)
 
 <!-- IMAGES -->
 

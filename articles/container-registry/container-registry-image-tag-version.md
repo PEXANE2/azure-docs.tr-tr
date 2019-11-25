@@ -1,63 +1,61 @@
 ---
-title: Azure Container Registry etiket ve sürüm görüntüleri
-description: Resimleri bir Azure Container Registry 'ye gönderirken ve resimleri çekirken Docker kapsayıcı görüntülerini etiketleme ve sürüm oluşturma için en iyi uygulamalar
-services: container-registry
+title: Image tag best practices
+description: Best practices for tagging and versioning Docker container images when pushing images to and pulling images from an Azure container registry
 author: stevelasker
-ms.service: container-registry
 ms.topic: article
 ms.date: 07/10/2019
 ms.author: stevelas
-ms.openlocfilehash: 41013fb5831d09d7a4334e94d2b8b39e0cafe4d2
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 2d407f041456ea3856fbeedf98147356eaeb61d6
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931571"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74455005"
 ---
-# <a name="recommendations-for-tagging-and-versioning-container-images"></a>Kapsayıcı görüntülerini etiketleme ve sürüm oluşturma önerileri
+# <a name="recommendations-for-tagging-and-versioning-container-images"></a>Recommendations for tagging and versioning container images
 
-Kapsayıcı görüntüleri bir kapsayıcı kayıt defterine dağıtmaya ve sonra dağıttıktan sonra, görüntü etiketleme ve sürüm oluşturma stratejisine ihtiyacınız vardır. Bu makalede, her birinin kapsayıcı yaşam döngüsü sırasında uygun olduğu iki yaklaşım ele alınmaktadır:
+When pushing deploying container images to a container registry and then deploying them, you need a strategy for image tagging and versioning. This article discusses two approaches and where each fits during the container lifecycle:
 
-* **Kararlı Etiketler** -Örneğin, *mycontainerımage: 1.0*gibi büyük veya küçük bir sürümü göstermek için yeniden kullandığınız Etiketler.
-* **Benzersiz Etiketler** -bir kayıt defterine gönderdiğiniz her görüntü için, *mycontainerımage: abc123*gibi farklı bir etiket.
+* **Stable tags** - Tags that you reuse, for example, to indicate a major or minor version such as *mycontainerimage:1.0*.
+* **Unique tags** - A different tag for each image you push to a registry, such as *mycontainerimage:abc123*.
 
-## <a name="stable-tags"></a>Kararlı Etiketler
+## <a name="stable-tags"></a>Stable tags
 
-**Öneri**: kapsayıcı derlemelerinizin **temel görüntülerini** sürdürmek için kararlı Etiketler kullanın. Bu Etiketler güncelleştirmeleri almaya devam ettiğinden ve üretim ortamlarında tutarsızlıklar getirebildiğinden, kararlı etiketlere sahip dağıtımlardan kaçının.
+**Recommendation**: Use stable tags to maintain **base images** for your container builds. Avoid deployments with stable tags, because those tags continue to receive updates and can introduce inconsistencies in production environments.
 
-*Kararlı Etiketler* bir geliştirici veya bir yapı sistemi anlamına gelir. Bu, güncelleştirmeleri almaya devam eden belirli bir etiketi çekmeye devam edebilir. Kararlı değildir çünkü içeriğin dondurulmuş olması anlamına gelir. Bunun yerine, kararlı bir şekilde görüntünün bu sürümün amacı için kararlı olması gerektiğini belirtir. "Kararlı" kalmak için güvenlik düzeltme eklerini veya çerçeve güncelleştirmelerini uygulamak üzere hizmet vermiş olabilir.
+*Stable tags* mean a developer, or a build system, can continue to pull a specific tag, which continues to get updates. Stable doesn’t mean the contents are frozen. Rather, stable implies the image should be stable for the intent of that version. To stay “stable”, it might be serviced to apply security patches or framework updates.
 
 ### <a name="example"></a>Örnek
 
-Bir çerçeve ekibi 1,0 sürümünü sevk eder. Bunlar, küçük güncelleştirmeler de dahil olmak üzere güncelleştirmeleri sevk edeceğiz. Belirli bir ana ve alt sürüm için kararlı etiketleri desteklemek üzere iki kararlı etiket kümesi vardır.
+A framework team ships version 1.0. They know they’ll ship updates, including minor updates. To support stable tags for a given major and minor version, they have two sets of stable tags.
 
-* `:1`: Ana sürüm için kararlı bir etiket. `1` "en yeni" veya "en son" 1. * sürümünü temsil eder.
-* `:1.0`sürüm 1,0 ' e yönelik kararlı bir etiket, bir geliştiricinin güncelleştirme 1,0 güncelleştirmelerine bağlanması ve piyasaya sürülmediği zaman 1,1 'e geri alınana izin verir.
+* `:1` – a stable tag for the major version. `1` represents the “newest” or “latest” 1.* version.
+* `:1.0`- a stable tag for version 1.0, allowing a developer to bind to updates of 1.0, and not be rolled forward to 1.1 when it is released.
 
-Takım Ayrıca, geçerli ana sürümün ne olduğuna bakılmaksızın, en son kararlı etiketi işaret eden `:latest` etiketini kullanır.
+The team also uses the `:latest` tag, which points to the latest stable tag, no matter what the current major version is.
 
-Temel görüntü güncelleştirmeleri kullanılabilir olduğunda veya Framework 'ün herhangi bir hizmet sürümü sürümünde, kararlı etiketlere sahip görüntüler, bu sürümün en güncel kararlı sürümünü temsil eden en yeni Özet olarak güncelleştirilir.
+When base image updates are available, or any type of servicing release of the framework, images with the stable tags are updated to the newest digest that represents the most current stable release of that version.
 
-Bu durumda, hem birincil hem de ikincil etiketlere sürekli olarak bakım yapılıyor. Temel görüntü senaryosundan bu, görüntü sahibinin hizmet verilen görüntüleri sağlamasına izin verir.
+In this case, both the major and minor tags are continually being serviced. From a base image scenario, this allows the image owner to provide serviced images.
 
-## <a name="unique-tags"></a>Benzersiz Etiketler
+## <a name="unique-tags"></a>Unique tags
 
-**Öneri**: özellikle birden çok düğümde ölçeklenebilen bir ortamda **dağıtımlar**için benzersiz Etiketler kullanın. Büyük olasılıkla bileşenlerin tutarlı bir sürümünün bilinçli dağıtımlarını istersiniz. Kapsayıcınız yeniden başlatılırsa veya bir Orchestrator daha fazla örnek ölçeklendiyse, ana bilgisayarınız yanlışlıkla daha yeni bir sürüm çekmez ve diğer düğümlerle tutarsız.
+**Recommendation**: Use unique tags for **deployments**, especially in an environment that could scale on multiple nodes. You likely want deliberate deployments of a consistent version of components. If your container restarts or an orchestrator scales out more instances, your hosts won’t accidentally pull a newer version, inconsistent with the other nodes.
 
-Benzersiz etiketleme, bir kayıt defterine gönderilen her görüntünün benzersiz bir etiketi olduğu anlamına gelir. Etiketler yeniden kullanılmaz. Aşağıdakiler de dahil olmak üzere benzersiz Etiketler oluşturmak için izleyebileceğiniz çeşitli desenler vardır:
+Unique tagging simply means that every image pushed to a registry has a unique tag. Tags are not reused. There are several patterns you can follow to generate unique tags, including:
 
-* **Tarih-saat damgası** -bu yaklaşım oldukça yaygındır çünkü görüntünün ne zaman oluşturulduğunu açıkça anlayabilirsiniz. Ancak, derleme sisteminize nasıl geri bağıntılı? Aynı zamanda tamamlanan derlemeyi bulmanız gerekiyor mu? Hangi saat dilimini kullanıyorsunuz? Tüm derleme sistemleriniz UTC 'ye göre ayarlanmış mı?
-* **Git yürütmesi** – bu yaklaşım, temel görüntü güncelleştirmelerini desteklemeye başlamadan işe yarar. Bir temel görüntü güncelleştirmesi gerçekleşdiğinde, derleme sisteminiz önceki derleme ile aynı git yürütmesiyle birlikte çıkar. Ancak, temel görüntüde yeni içerik bulunur. Genel olarak, bir git yürütmesi *yarı*kararlı bir etiket sağlar.
-* **Bildirim Özeti** -bir kapsayıcı kayıt defterine gönderilen her kapsayıcı görüntüsü, BENZERSIZ bir SHA-256 karması veya Özet tarafından tanımlanan bir bildirimle ilişkilendirilir. Benzersiz olsa da Özet, derleme ortamınızla bağıntılı, okunması ve bağıntısız bir biçimde yapılır.
-* **Derleme kimliği** -Bu seçenek büyük olasılıkla artımlı olduğundan en iyi şekilde olabilir ve tüm yapıtları ve günlükleri bulmak için belirli bir yapıya geri ilişki kurmanıza olanak tanır. Bununla birlikte, bir bildirim Özeti gibi, insanların okuması zor olabilir.
+* **Date-time stamp** - This approach is fairly common, since you can clearly tell when the image was built. But, how to correlate it back to your build system? Do you have to find the build that was completed at the same time? What time zone are you in? Are all your build systems calibrated to UTC?
+* **Git commit**  – This approach works until you start supporting base image updates. If a base image update happens, your build system  kicks off with the same Git commit as the previous build. However, the base image has new content. In general, a Git commit provides a *semi*-stable tag.
+* **Manifest digest** - Each container image pushed to a container registry is associated with a manifest, identified by a unique SHA-256 hash, or digest. While unique, the digest is long, difficult to read, and uncorrelated with your build environment.
+* **Build ID** - This option may be best since it's likely incremental, and it allows you to correlate back to the specific build to find all the artifacts and logs. However, like a manifest digest, it might be difficult for a human to read.
 
-  Kuruluşunuzun çeşitli yapı sistemleri varsa, yapı sistemi adı ile etiketin önüne önek bu seçenekte bir çeşittir: `<build-system>-<build-id>`. Örneğin, derlemeleri API ekibinin Jenkins derleme sisteminden ve Web ekibinin Azure Pipelines derleme sisteminden ayırt edebilirsiniz.
+  If your organization has several build systems, prefixing the tag with the build system name is a variation on this option: `<build-system>-<build-id>`. For example, you could differentiate builds from the API team’s Jenkins build system and the web team's Azure Pipelines build system.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makaledeki kavramların daha ayrıntılı bir açıklaması için, Docker [resimlerini etiketleme ve sürüm oluşturma Için en iyi uygulamalar](https://stevelasker.blog/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/)bölümüne bakın.
+For a more detailed discussion of the concepts in this article, see the blog post [Docker Tagging: Best practices for tagging and versioning docker images](https://stevelasker.blog/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/).
 
-Azure Container Registry 'nizin performansını ve düşük maliyetli kullanımını en üst düzeye çıkarmak için bkz. [Azure Container Registry Için en iyi uygulamalar](container-registry-best-practices.md).
+To help maximize the performance and cost-effective use of your Azure container registry, see [Best practices for Azure Container Registry](container-registry-best-practices.md).
 
 <!-- IMAGES -->
 

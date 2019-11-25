@@ -1,6 +1,6 @@
 ---
-title: Aşağı akış cihazların kimliğini doğrulama-Azure IoT Edge | Microsoft Docs
-description: IoT Hub için aşağı akış cihazlarının veya yaprak cihazların kimliğini doğrulama ve bağlantı Azure IoT Edge ağ geçidi cihazları aracılığıyla yönlendirme.
+title: Authenticate downstream devices - Azure IoT Edge | Microsoft Docs
+description: How to authenticate downstream devices or leaf devices to IoT Hub, and route their connection through Azure IoT Edge gateway devices.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,104 +8,103 @@ ms.date: 09/23/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.custom: seodec18
-ms.openlocfilehash: 1e184691ebbd34de0f69e93419d9c34ab18edbe6
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 922654a6947a21eeee945762100abe086c552ad7
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73025945"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74457231"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Azure IoT Hub’da bir aşağı akış cihazının kimliğini doğrulama
 
-Saydam bir ağ geçidi senaryosunda, aşağı akış cihazları (bazen yaprak cihazlar veya alt cihazlar olarak adlandırılır), diğer tüm cihazlar gibi IoT Hub kimliklere ihtiyaç duyar. Bu makalede, IoT Hub için bir aşağı akış cihazının kimliğini doğrulama seçenekleri anlatılır ve sonra Ağ Geçidi bağlantısının nasıl bildirildiği gösterilmektedir.
+In a transparent gateway scenario, downstream devices (sometimes called leaf devices or child devices) need identities in IoT Hub like any other device. This article walks through the options for authenticating a downstream device to IoT Hub, and then demonstrates how to declare the gateway connection.
 
-Başarılı bir saydam ağ geçidi bağlantısı kurmak için üç genel adım vardır. Bu makalede ikinci adım ele alınmaktadır:
+There are three general steps to set up a successful transparent gateway connection. This article covers the second step:
 
-1. Ağ Geçidi cihazının aşağı akış cihazlarına güvenli bir şekilde bağlanabilmesi, aşağı akış cihazlarından iletişim alabilmesi ve iletileri uygun hedefe yönlendirmesi gerekir. Daha fazla bilgi için bkz. bir [IoT Edge cihazını saydam bir ağ geçidi olarak davranacak şekilde yapılandırma](how-to-create-transparent-gateway.md).
-2. **Aşağı akış cihazının IoT Hub kimlik doğrulaması yapabilmesi ve ağ geçidi cihazından iletişim kurmayı bilmesi için bir cihaz kimliği olması gerekir.**
-3. Aşağı akış cihazının ağ geçidi cihazına güvenli bir şekilde bağlanabiliyor olması gerekir. Daha fazla bilgi için bkz. bir [aşağı akış cihazını Azure IoT Edge bir ağ geçidine bağlama](how-to-connect-downstream-device.md).
+1. The gateway device needs to be able to securely connect to downstream devices, receive communications from downstream devices, and route messages to the proper destination. For more information, see [Configure an IoT Edge device to act as a transparent gateway](how-to-create-transparent-gateway.md).
+2. **The downstream device needs to have a device identity to be able to authenticate with IoT Hub, and know to communicate through its gateway device.**
+3. The downstream device needs to be able to securely connect to its gateway device. For more information, see [Connect a downstream device to an Azure IoT Edge gateway](how-to-connect-downstream-device.md).
 
-Aşağı akış cihazları şu üç yöntemden birini kullanarak IoT Hub kimlik doğrulaması yapabilir: simetrik anahtarlar (bazen paylaşılan erişim anahtarları olarak adlandırılır), X. 509.440 otomatik olarak imzalanan sertifikalar veya X. 509.440 sertifika yetkilisi (CA) imzalı sertifikalar. Kimlik doğrulama adımları, ağ geçidi ilişkisini bildirmek için küçük farklılıklar ile, IoT Edge olmayan bir cihazı IoT Hub kurmak için kullanılan adımlara benzerdir.
+Downstream devices can authenticate with IoT Hub using one of three methods: symmetric keys (sometimes referred to as shared access keys), X.509 self-signed certificates, or X.509 certificate authority (CA) signed certificates. The authentication steps are similar to the steps used to set up any non-IoT-Edge device with IoT Hub, with small differences to declare the gateway relationship.
 
-Bu makaledeki adımlarda, Azure IoT Hub cihaz sağlama hizmeti ile otomatik sağlama değil el ile cihaz sağlama gösterilmektedir. 
+The steps in this article show manual device provisioning, not automatic provisioning with the Azure IoT Hub Device Provisioning Service. 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-[Bir IoT Edge cihazını, saydam bir ağ geçidi olarak davranacak şekilde yapılandırma](how-to-create-transparent-gateway.md)adımlarını uygulayın. Aşağı akış cihazınız için X. 509.440 kimlik doğrulaması kullanıyorsanız, saydam ağ geçidi makalesinde ayarladığınız betiği üreten sertifikayı kullanmanız gerekir. 
+Complete the steps in [Configure an IoT Edge device to act as a transparent gateway](how-to-create-transparent-gateway.md). If you're using X.509 authentication for your downstream device, you need to use the same certificate generating script that you set up in the transparent gateway article. 
 
-Bu makale, *ağ geçidi ana bilgisayar adına* birkaç noktada başvurur. Ağ geçidi ana bilgisayar adı, IoT Edge ağ geçidi cihazında config. YAML dosyasının **hostname** parametresinde bildirilmiştir. Bu makaledeki sertifikaları oluşturmak için kullanılır ve aşağı akış cihazlarının bağlantı dizesinde öğesine başvurulur. Ağ geçidi ana bilgisayar adının DNS veya ana bilgisayar dosya girişi kullanılarak bir IP adresi ile çözümlenebilmelidir.
+This article refers to the *gateway hostname* at several points. The gateway hostname is declared in the **hostname** parameter of the config.yaml file on the IoT Edge gateway device. It's used to create the certificates in this article, and is referred to in the connection string of the downstream devices. The gateway hostname needs to be resolvable to an IP Address, either using DNS or a host file entry.
 
-## <a name="symmetric-key-authentication"></a>Simetrik anahtar kimlik doğrulaması
+## <a name="symmetric-key-authentication"></a>Symmetric key authentication
 
-Simetrik anahtar kimlik doğrulaması veya paylaşılan erişim anahtarı kimlik doğrulaması, IoT Hub kimlik doğrulamasının en kolay yoludur. Simetrik anahtar kimlik doğrulamasıyla, IoT Hub ' deki IoT cihaz KIMLIĞINIZLE bir Base64 anahtarı ilişkilendirilir. Cihazınızın IoT Hub bağlandığı sırada sunabilmesi için bu anahtarı IoT uygulamalarınıza dahil edersiniz. 
+Symmetric key authentication, or shared access key authentication, is the simplest way to authenticate with IoT Hub. With symmetric key authentication, a base64 key is associated with your IoT device ID in IoT Hub. You include that key in your IoT applications so that your device can present it when it connects to IoT Hub. 
 
-### <a name="create-the-device-identity"></a>Cihaz kimliği oluşturma 
+### <a name="create-the-device-identity"></a>Create the device identity 
 
-Visual Studio Code için Azure portal, Azure CLı veya IoT uzantısını kullanarak IoT Hub 'ınıza yeni bir IoT cihazı ekleyin. Aşağı akış cihazlarının, IoT Edge cihazlar değil, normal IoT cihazı olarak IoT Hub tanımlanması gerektiğini unutmayın. 
+Add a new IoT device in your IoT hub, using either the Azure portal, Azure CLI, or the IoT extension for Visual Studio Code. Remember that downstream devices need to be identified in IoT Hub as regular IoT device, not IoT Edge devices. 
 
-Yeni cihaz kimliğini oluşturduğunuzda, aşağıdaki bilgileri sağlayın: 
+When you create the new device identity, provide the following information: 
 
-* Cihazınız için bir KIMLIK oluşturun.
+* Create an ID for your device.
 
-* Kimlik doğrulama türü olarak **simetrik anahtar** ' ı seçin. 
+* Select **Symmetric key** as the authentication type. 
 
-* İsteğe bağlı olarak, **bir üst cihaz ayarlamayı** seçin ve bu aşağı akış cihazının bağlanacağı IoT Edge ağ geçidi cihazını seçin. Bu adım simetrik anahtar kimlik doğrulaması için isteğe bağlıdır, ancak bir üst cihaz ayarlandığında, aşağı akış cihazınız için [çevrimdışı yetenekler](offline-capabilities.md) sağladığından önerilir. Üst öğeyi daha sonra eklemek veya değiştirmek için cihaz ayrıntılarını her zaman güncelleştirebilirsiniz. 
+* Optionally, choose to **Set a parent device** and select the IoT Edge gateway device that this downstream device will connect through. This step is optional for symmetric key authentication, but it's recommended because setting a parent device enables [offline capabilities](offline-capabilities.md) for your downstream device. You can always update the device details to add or change the parent later. 
 
-   ![Portalda simetrik anahtar kimlik doğrulaması ile cihaz KIMLIĞI oluşturma](./media/how-to-authenticate-downstream-device/symmetric-key-portal.png)
+   ![Create device ID with symmetric key auth in portal](./media/how-to-authenticate-downstream-device/symmetric-key-portal.png)
 
-Aynı işlemi gerçekleştirmek için [Azure CLI Için IoT uzantısı](https://github.com/Azure/azure-iot-cli-extension) 'nı kullanabilirsiniz. Aşağıdaki örnek, simetrik anahtar kimlik doğrulaması ile yeni bir IoT cihazı oluşturur ve bir üst cihaz atar: 
+You can use the [IoT extension for Azure CLI](https://github.com/Azure/azure-iot-cli-extension) to complete the same operation. The following example creates a new IoT device with symmetric key authentication and assigns a parent device: 
 
 ```cli
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID}
 ```
 
-Cihaz oluşturma ve üst/alt yönetim için Azure CLı komutları hakkında daha fazla bilgi için bkz. [az IoT Hub cihaz kimliği](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) komutları için başvuru içeriği.
+For more information about Azure CLI commands for device creation and parent/child management, see the reference content for [az iot hub device-identity](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) commands.
 
-### <a name="connect-to-iot-hub-through-a-gateway"></a>Bir ağ geçidi üzerinden IoT Hub bağlanma
+### <a name="connect-to-iot-hub-through-a-gateway"></a>Connect to IoT Hub through a gateway
 
-Aynı işlem, simetrik anahtarlarla IoT Hub için normal IoT cihazlarının kimlik doğrulaması için kullanılır ve ayrıca aşağı akış cihazları için de geçerlidir. Tek fark, bağlantıyı yönlendirmek için ağ geçidi cihazına bir işaretçi eklemeniz ya da çevrimdışı senaryolarda IoT Hub adına kimlik doğrulamasını işlemek için gerekli olacaktır. 
+The same process is used to authenticate regular IoT devices to IoT Hub with symmetric keys also applies to downstream devices. The only difference is that you need to add a pointer to the gateway device to route the connection or, in offline scenarios, to handle the authentication on behalf of IoT Hub. 
 
-Simetrik anahtar kimlik doğrulaması için cihazınızda IoT Hub kimlik doğrulaması yapmak üzere yapmanız gereken ek adımlar yoktur. [Bir aşağı akış cihazını bir Azure IoT Edge ağ geçidine bağlama](how-to-connect-downstream-device.md)bölümünde açıklandığı gibi, aşağı akış cihazınızın ağ geçidi cihazına bağlanabilmesi için yine de sertifikalara ihtiyacınız vardır.
+For symmetric key authentication, there's no additional steps that you need to take on your device for it to authenticate with IoT Hub. You still need the certificates in place so that your downstream device can connect to its gateway device, as described in [Connect a downstream device to an Azure IoT Edge gateway](how-to-connect-downstream-device.md).
 
-Portalda IoT cihaz kimliği oluşturduktan sonra, birincil veya ikincil anahtarlarını alabilirsiniz. Bu anahtarlardan birinin, IoT Hub ile iletişim kuran herhangi bir uygulamaya dahil ettiğiniz bağlantı dizesine eklenmesi gerekir. Simetrik anahtar kimlik doğrulaması için IoT Hub, kolaylık sağlamak üzere cihaz ayrıntılarında tamamen biçimlendirilmiş bağlantı dizesi sağlar. Ağ geçidi cihazı hakkında bağlantı dizesine ek bilgi eklemeniz gerekir. 
+After creating an IoT device identity in the portal, you can retrieve its primary or secondary keys. One of these keys needs to be included in the connection string that you include in any application that communicates with IoT Hub. For symmetric key authentication, IoT Hub provides the fully formed connection string in the device details for your convenience. You need to add extra information about the gateway device to the connection string. 
 
-Aşağı akış cihazları için simetrik anahtar bağlantı dizeleri aşağıdaki bileşenlere ihtiyaç duyar: 
+Symmetric key connection strings for downstream devices need the following components: 
 
-* Cihazın bağlandığı IoT Hub 'ı: `Hostname={iothub name}.azure-devices.net`
-* Hub 'a kayıtlı cihaz KIMLIĞI: `DeviceID={device ID}`
-* Birincil veya ikincil anahtar: `SharedAccessKey={key}`
-* Cihazın bağlandığı ağ geçidi cihazı. IoT Edge ağ geçidi cihazının config. YAML dosyasından **konak adı** değerini sağlayın: `GatewayHostName={gateway hostname}`
+* The IoT hub that the device connects to: `Hostname={iothub name}.azure-devices.net`
+* The device ID registered with the hub: `DeviceID={device ID}`
+* Either the primary or secondary key: `SharedAccessKey={key}`
+* The gateway device that the device connects through. Provide the **hostname** value from the IoT Edge gateway device's config.yaml file: `GatewayHostName={gateway hostname}`
 
-Hepsi birlikte, bir bağlantı dizesinin tamamı şöyle görünür:
+All together, a complete connection string looks like:
 
 ``` 
 HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz;GatewayHostName=myGatewayDevice
 ```
 
-Bu aşağı akış cihazı için bir üst/alt ilişki kurduysanız, ağ geçidini doğrudan bağlantı ana bilgisayarı olarak çağırarak bağlantı dizesini basitleştirebilirsiniz. Örnek: 
+If you established a parent/child relationship for this downstream device, then you can simplify the connection string by calling the gateway directly as the connection host. Örnek: 
 
 ```
 HostName=myGatewayDevice;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz
 ```
 
-## <a name="x509-authentication"></a>X. 509.440 kimlik doğrulaması 
+## <a name="x509-authentication"></a>X.509 authentication 
 
-X. 509.440 sertifikalarını kullanarak IoT cihazının kimlik doğrulamasının iki yolu vardır. Kimlik doğrulamayı seçtiğiniz şekilde, cihazınızı IoT Hub bağlama adımları aynıdır. Kimlik doğrulaması için otomatik olarak imzalanan veya CA imzalı sertifikalar ' ı seçin, sonra IoT Hub nasıl bağlanacağınızı öğrenmeye devam edin. 
+There are two ways to authenticate an IoT device using X.509 certificates. Whichever way you choose to authenticate, the steps to connect your device to IoT Hub are the same. Choose either self-signed or CA-signed certs for authentication, then continue to learn how to connect to IoT Hub. 
 
-IoT Hub X. 509.440 kimlik doğrulamasını kullanma hakkında daha fazla bilgi için aşağıdaki makalelere bakın: 
-* [X. 509.440 CA sertifikalarını kullanarak cihaz kimlik doğrulaması](../iot-hub/iot-hub-x509ca-overview.md)
-* [IoT sektöründe X. 509.440 CA sertifikalarının kavramsal olarak anlaşılmasına](../iot-hub/iot-hub-x509ca-concept.md)
+For more information about how IoT Hub uses X.509 authentication, see the following articles: 
+* [Device authentication using X.509 CA certificates](../iot-hub/iot-hub-x509ca-overview.md)
+* [Conceptual understanding of X.509 CA certificates in the IoT industry](../iot-hub/iot-hub-x509ca-concept.md)
 
-### <a name="create-the-device-identity-with-x509-self-signed-certificates"></a>X. 509.440 otomatik olarak imzalanan sertifikalarla cihaz kimliği oluşturma
+### <a name="create-the-device-identity-with-x509-self-signed-certificates"></a>Create the device identity with X.509 self-signed certificates
 
-X. 509.440 otomatik imzalı kimlik doğrulaması için bazen parmak izi kimlik doğrulaması olarak da adlandırılan, IoT cihazınıza yerleştirilecek yeni sertifikalar oluşturmanız gerekir. Bu sertifikaların kimlik doğrulaması için IoT Hub paylaştığınız bir parmak izi vardır. 
+For X.509 self-signed authentication, sometimes referred to as thumbprint authentication, you need to create new certificates to place on your IoT device. These certificates have a thumbprint in them that you share with IoT Hub for authentication. 
 
-Bu senaryoyu test etmenin en kolay yolu, bir [IoT Edge cihazını, saydam bir ağ geçidi olarak davranacak şekilde yapılandırma](how-to-create-transparent-gateway.md)bölümünde sertifika oluşturmak için kullandığınız makinenin aynısını kullanmaktır. Bu makine, IoT cihaz sertifikalarını oluşturmak için doğru araç, kök CA sertifikası ve ara CA sertifikası ile önceden ayarlanmalıdır. Son sertifikaları ve bunların özel anahtarlarını, daha sonra aşağı akış cihazınıza kopyalayabilirsiniz. Ağ Geçidi makalesindeki adımları izleyerek, makinenizde OpenSSL 'yi ayarlar ve sonra sertifika oluşturma betiklerine erişmek için IoT Edge depoyu klonlanır. Daha sonra, sertifikaları tutmak için **\<WRKDIR >** çağırdığımız bir çalışma dizini yaptınız. Varsayılan sertifikalar geliştirme ve test için, bu nedenle yalnızca son 30 gün için tasarlanmıştır. Bir kök CA sertifikası ve ara sertifika oluşturmuş olmanız gerekir. 
+The easiest way to test this scenario is to use the same machine that you used to create certificates in [Configure an IoT Edge device to act as a transparent gateway](how-to-create-transparent-gateway.md). That machine should already be set up with the right tool, root CA certificate, and intermediate CA certificate to create the IoT device certificates. You can copy the final certificates and their private keys over to your downstream device afterwards. Following the steps in the gateway article, you set up openssl on your machine, then cloned the IoT Edge repo to access certificate creation scripts. Then, you made a working directory that we call **\<WRKDIR>** to hold the certificates. The default certificates are meant for developing and testing, so only last 30 days. You should have created a root CA certificate and an intermediate certificate. 
 
-1. Çalışma dizininize bir bash veya PowerShell penceresinde gidin. 
+1. Navigate to your working directory in either a bash or PowerShell window. 
 
-2. Aşağı akış cihazı için iki sertifika (birincil ve ikincil) oluşturun. Cihazınızın adını ve ardından birincil veya ikincil etiketi sağlayın. Bu bilgiler, birden çok cihaza yönelik sertifikaların izini tutabilmeniz için dosyaları adlandırmak üzere kullanılır. 
+2. Create two certificates (primary and secondary) for the downstream device. Provide your device name and then the primary or secondary label. This information is used to name the files so that you can keep track of certificates for multiple devices. 
 
    ```PowerShell
    New-CACertsDevice "<device name>-primary"
@@ -117,21 +116,21 @@ Bu senaryoyu test etmenin en kolay yolu, bir [IoT Edge cihazını, saydam bir a�
    ./certGen.sh create_device_certificate "<device name>-secondary"
    ```
 
-3. 40 onaltılık bir karakter dizesi olan her bir sertifikadan SHA1 parmak izini (IoT Hub arabiriminde parmak izi denir) alın. Sertifikayı görüntülemek ve parmak izini bulmak için aşağıdaki OpenSSL komutunu kullanın:
+3. Retrieve the SHA1 fingerprint (called a thumbprint in the IoT Hub interface) from each certificate, which is a 40 hexadecimal character string. Use the following openssl command to view the certificate and find the fingerprint:
 
    ```PowerShell/bash
    openssl x509 -in <WORKDIR>/certs/iot-device-<device name>-primary.cert.pem -text -fingerprint | sed 's/[:]//g'
    ```
 
-4. Azure portal IoT Hub 'ınıza gidin ve aşağıdaki değerlerle yeni bir IoT cihaz kimliği oluşturun: 
+4. Navigate to your IoT hub in the Azure portal and create a new IoT device identity with the following values: 
 
-   * Kimlik doğrulama türü olarak **X. 509.440 otomatik olarak imzalanan** ' ı seçin.
-   * Cihazınızın birincil ve ikincil sertifikalarından kopyaladığınız onaltılık dizeleri yapıştırın.
-   * **Bir üst cihaz ayarla** ' yı seçin ve bu aşağı akış cihazının bağlanacağı IoT Edge ağ geçidi cihazını seçin. Bir aşağı akış cihazının X. 509.440 kimlik doğrulaması için bir üst cihaz gereklidir. 
+   * Select **X.509 Self-Signed** as the authentication type.
+   * Paste the hexadecimal strings that you copied from your device's primary and secondary certificates.
+   * Select **Set a parent device** and choose the IoT Edge gateway device that this downstream device will connect through. A parent device is required for X.509 authentication of a downstream device. 
 
-   ![Portalda X. 509.440 otomatik imzalı kimlik doğrulaması ile cihaz KIMLIĞI oluşturma](./media/how-to-authenticate-downstream-device/x509-self-signed-portal.png)
+   ![Create device ID with X.509 self-signed auth in portal](./media/how-to-authenticate-downstream-device/x509-self-signed-portal.png)
 
-5. Aşağıdaki dosyaları aşağı akış cihazınızdaki herhangi bir dizine kopyalayın:
+5. Copy the following files to any directory on your downstream device:
 
    * `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
    * `<WRKDIR>\certs\iot-device-<device name>*.cert.pem`
@@ -139,28 +138,28 @@ Bu senaryoyu test etmenin en kolay yolu, bir [IoT Edge cihazını, saydam bir a�
    * `<WRKDIR>\certs\iot-device-<device name>*-full-chain.cert.pem`
    * `<WRKDIR>\private\iot-device-<device name>*.key.pem`
 
-   Bu dosyalara IoT Hub bağlanan yaprak cihaz uygulamalarında başvuracağız. Sertifika dosyalarını taşımak için [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) veya [Güvenli kopya Protokolü](https://www.ssh.com/ssh/scp/) gibi bir işlev gibi bir hizmet kullanabilirsiniz.
+   You'll reference these files in the leaf device applications that connect to IoT Hub. You can use a service like [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) or a function like [Secure copy protocol](https://www.ssh.com/ssh/scp/) to move the certificate files.
 
-Aynı cihaz oluşturma işlemini gerçekleştirmek için [Azure CLI Için IoT uzantısı](https://github.com/Azure/azure-iot-cli-extension) 'nı kullanabilirsiniz. Aşağıdaki örnek, X. 509.440 otomatik imzalı kimlik doğrulaması ile yeni bir IoT cihazı oluşturur ve bir üst cihaz atar: 
+You can use the [IoT extension for Azure CLI](https://github.com/Azure/azure-iot-cli-extension) to complete the same device creation operation. The following example creates a new IoT device with X.509 self-signed authentication and assigns a parent device: 
 
 ```cli
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_thumbprint --ptp {primary thumbprint} --stp {secondary thumbprint}
 ```
 
-Cihaz oluşturma, sertifika oluşturma ve üst ve alt yönetim için Azure CLı komutları hakkında daha fazla bilgi için bkz. [az IoT Hub cihaz kimliği](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) komutları için başvuru içeriği.
+For more information about Azure CLI commands for device creation, certificate generation, and parent and child management, see the reference content for [az iot hub device-identity](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) commands.
 
-### <a name="create-the-device-identity-with-x509-ca-signed-certificates"></a>X. 509.440 CA imzalı sertifikalarla cihaz kimliği oluşturma
+### <a name="create-the-device-identity-with-x509-ca-signed-certificates"></a>Create the device identity with X.509 CA signed certificates
 
-X. 509.440 sertifika yetkilisi (CA) imzalı kimlik doğrulaması için, IoT cihazınız için sertifikaları imzalamak üzere kullandığınız IoT Hub kayıtlı bir kök CA sertifikasına ihtiyacınız vardır. Kök CA sertifikası veya ara sertifikalarının herhangi biri tarafından karşılaşılan bir sertifikayı kullanan herhangi bir cihazın kimlik doğrulamasına izin verilir. 
+For X.509 certificate authority (CA) signed authentication, you need a root CA certificate registered in IoT Hub that you use to sign certificates for your IoT device. Any device using a certificate that was issues by the root CA certificate or any of its intermediate certificates will be permitted to authenticate. 
 
-Bu bölüm, [Azure IoT Hub 'ınızda X. 509.440 güvenliğini ayarlama](../iot-hub/iot-hub-security-x509-get-started.md)IoT Hub makalesinde açıklanan yönergeleri temel alır. Bir ağ geçidi üzerinden bağlanan bir aşağı akış cihazını ayarlamak için hangi değerlerin kullanılacağını bilmek için bu bölümdeki adımları izleyin. 
+This section is based on the instructions detailed in the IoT Hub article [Set up X.509 security in your Azure IoT hub](../iot-hub/iot-hub-security-x509-get-started.md). Follow the steps in this section to know which values to use to set up a downstream device that connects through a gateway. 
 
-Bu senaryoyu test etmenin en kolay yolu, bir [IoT Edge cihazını, saydam bir ağ geçidi olarak davranacak şekilde yapılandırma](how-to-create-transparent-gateway.md)bölümünde sertifika oluşturmak için kullandığınız makinenin aynısını kullanmaktır. Bu makine, IoT cihaz sertifikalarını oluşturmak için doğru araç, kök CA sertifikası ve ara CA sertifikası ile önceden ayarlanmalıdır. Son sertifikaları ve bunların özel anahtarlarını, daha sonra aşağı akış cihazınıza kopyalayabilirsiniz. Ağ Geçidi makalesindeki adımları izleyerek, makinenizde OpenSSL 'yi ayarlar ve sonra sertifika oluşturma betiklerine erişmek için IoT Edge depoyu klonlanır. Daha sonra, sertifikaları tutmak için **\<WRKDIR >** çağırdığımız bir çalışma dizini yaptınız. Varsayılan sertifikalar geliştirme ve test için, bu nedenle yalnızca son 30 gün için tasarlanmıştır. Bir kök CA sertifikası ve ara sertifika oluşturmuş olmanız gerekir. 
+The easiest way to test this scenario is to use the same machine that you used to create certificates in [Configure an IoT Edge device to act as a transparent gateway](how-to-create-transparent-gateway.md). That machine should already be set up with the right tool, root CA certificate, and intermediate CA certificate to create the IoT device certificates. You can copy the final certificates and their private keys over to your downstream device afterwards. Following the steps in the gateway article, you set up openssl on your machine, then cloned the IoT Edge repo to access certificate creation scripts. Then, you made a working directory that we call **\<WRKDIR>** to hold the certificates. The default certificates are meant for developing and testing, so only last 30 days. You should have created a root CA certificate and an intermediate certificate. 
 
-1. *Azure IoT Hub 'ınızda x. 509.952 güvenliğini ayarlama*konusunun [IoT Hub 'ınıza x. 509.952 CA sertifikalarını kaydetme](../iot-hub/iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub) bölümündeki yönergeleri izleyin. Bu bölümde, aşağıdaki adımları gerçekleştirirsiniz: 
+1. Follow the instructions in the [Register X.509 CA certificates to your IoT hub](../iot-hub/iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub) section of *Set up X.509 security in your Azure IoT hub*. In that section, you perform the following steps: 
 
-   1. Kök CA sertifikasını karşıya yükleyin. Saydam ağ geçidi makalesinde oluşturduğunuz sertifikaları kullanıyorsanız, kök sertifika dosyası olarak **\<WRKDIR >/certs/Azure-iot-test-only.root.ca.cert.pem** yükleyin. 
-   2. Bu kök CA sertifikasına sahip olduğunuzu doğrulayın. \<WRKDIR > sertifika araçlarıyla birlikte bulunan ' i doğrulayabilirsiniz. 
+   1. Upload a root CA certificate. If you're using the certificates that you created in the transparent gateway article, upload **\<WRKDIR>/certs/azure-iot-test-only.root.ca.cert.pem** as the root certificate file. 
+   2. Verify that you own that root CA certificate. You can verify possession with the cert tools in \<WRKDIR>. 
 
       ```powershell
       New-CACertsVerificationCert "<verification code from Azure portal>"
@@ -170,12 +169,12 @@ Bu senaryoyu test etmenin en kolay yolu, bir [IoT Edge cihazını, saydam bir a�
       ./certGen.sh create_verification_certificate <verification code from Azure portal>"
       ```
 
-2. *Azure IoT Hub 'ınızda x. 509.440 güvenliği ayarlama*konusunun [IoT Hub 'ınız için x. 509.952 cihazı oluşturma](../iot-hub/iot-hub-security-x509-get-started.md#create-an-x509-device-for-your-iot-hub) bölümündeki yönergeleri izleyin. Bu bölümde, aşağıdaki adımları gerçekleştirirsiniz: 
+2. Follow the instructions in the [Create an X.509 device for your IoT hub](../iot-hub/iot-hub-security-x509-get-started.md#create-an-x509-device-for-your-iot-hub) section of *Set up X.509 security in your Azure IoT hub*. In that section, you perform the following steps: 
 
-   1. Yeni bir cihaz ekleyin. **CIHAZ kimliği**için küçük harfli bir ad girin ve **X. 509.440 CA imzalı**kimlik doğrulama türünü seçin. 
-   2. Bir üst cihaz ayarlayın. Aşağı akış cihazları için **bir üst cihaz ayarla** ' yı seçin ve IoT Hub bağlantısını sağlayacak IoT Edge ağ geçidi cihazını seçin. 
+   1. Add a new device. Provide a lowercase name for **device ID**, and choose the authentication type **X.509 CA Signed**. 
+   2. Set a parent device. For downstream devices, select **Set a parent device** and choose the IoT Edge gateway device that will provide the connection to IoT Hub. 
 
-3. Aşağı akış cihazınız için bir sertifika zinciri oluşturun. IoT Hub için karşıya yüklediğiniz aynı kök CA sertifikasını kullanın ve bu zinciri oluşturun. Portalda cihaz kimliğinize verdiğiniz küçük harfli cihaz KIMLIĞINI kullanın.
+3. Create a certificate chain for your downstream device. Use the same root CA certificate that you uploaded to IoT Hub to make this chain. Use the same lowercase device ID that you gave to your device identity in the portal.
 
    ```powershell
    New-CACertsDevice "<device id>"
@@ -185,7 +184,7 @@ Bu senaryoyu test etmenin en kolay yolu, bir [IoT Edge cihazını, saydam bir a�
    ./certGen.sh create_device_certificate "<device id>"
    ```
 
-4. Aşağıdaki dosyaları aşağı akış cihazınızdaki herhangi bir dizine kopyalayın: 
+4. Copy the following files to any directory on your downstream device: 
 
    * `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
    * `<WRKDIR>\certs\iot-device-<device id>*.cert.pem`
@@ -193,33 +192,33 @@ Bu senaryoyu test etmenin en kolay yolu, bir [IoT Edge cihazını, saydam bir a�
    * `<WRKDIR>\certs\iot-device-<device id>*-full-chain.cert.pem`
    * `<WRKDIR>\private\iot-device-<device id>*.key.pem`
 
-   Bu dosyalara IoT Hub bağlanan yaprak cihaz uygulamalarında başvuracağız. Sertifika dosyalarını taşımak için [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) veya [Güvenli kopya Protokolü](https://www.ssh.com/ssh/scp/) gibi bir işlev gibi bir hizmet kullanabilirsiniz.
+   You'll reference these files in the leaf device applications that connect to IoT Hub. You can use a service like [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) or a function like [Secure copy protocol](https://www.ssh.com/ssh/scp/) to move the certificate files.
 
-Aynı cihaz oluşturma işlemini gerçekleştirmek için [Azure CLI Için IoT uzantısı](https://github.com/Azure/azure-iot-cli-extension) 'nı kullanabilirsiniz. Aşağıdaki örnek, X. 509.952 CA imzalı kimlik doğrulaması ile yeni bir IoT cihazı oluşturur ve bir üst cihaz atar: 
+You can use the [IoT extension for Azure CLI](https://github.com/Azure/azure-iot-cli-extension) to complete the same device creation operation. The following example creates a new IoT device with X.509 CA signed authentication and assigns a parent device: 
 
 ```cli
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_ca
 ```
 
-Cihaz oluşturma ve üst/alt yönetim için Azure CLı komutları hakkında daha fazla bilgi için bkz. [az IoT Hub cihaz kimliği](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) komutları için başvuru içeriği.
+For more information about Azure CLI commands for device creation and parent/child management, see the reference content for [az iot hub device-identity](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) commands.
 
 
-### <a name="connect-to-iot-hub-through-a-gateway"></a>Bir ağ geçidi üzerinden IoT Hub bağlanma
+### <a name="connect-to-iot-hub-through-a-gateway"></a>Connect to IoT Hub through a gateway
 
-Her Azure IoT SDK 'Sı X. 509.440 kimlik doğrulamasını biraz farklı işler. Ancak, aynı işlem, X ile IoT Hub için düzenli IoT cihazlarının kimlik doğrulaması yapmak için kullanılır. 509.440 sertifikaları da aşağı akış cihazları için de geçerlidir. Tek fark, bağlantıyı yönlendirmek için ağ geçidi cihazına bir işaretçi eklemeniz ya da çevrimdışı senaryolarda IoT Hub adına kimlik doğrulamasını işlemek için gerekli olacaktır. Genel olarak, tüm IoT Hub cihazlar için aynı X. 509.952 kimlik doğrulama adımlarını izleyebilir, sonra bağlantı dizesindeki **ana bilgisayar adının** değerini ağ geçidi cihazınızın ana bilgisayar adı olacak şekilde değiştirebilirsiniz. 
+Each Azure IoT SDK handles X.509 authentication a little differently. However, the same process is used to authenticate regular IoT devices to IoT Hub with X.509 certificates also applies to downstream devices. The only difference is that you need to add a pointer to the gateway device to route the connection or, in offline scenarios, to handle the authentication on behalf of IoT Hub. In general, you can follow the same X.509 authentication steps for all IoT Hub devices, then simply replace the value of **Hostname** in the connection string to be the hostname of your gateway device. 
 
-Aşağıdaki bölümlerde, farklı SDK dilleri için bazı örnekler gösterilmektedir. 
+The following sections show some examples for different SDK languages. 
 
 >[!IMPORTANT]
->Aşağıdaki örneklerde IoT Hub SDK 'larının cihazların kimliğini doğrulamak için sertifikaları nasıl kullanacağı gösterilmektedir. Bir üretim dağıtımında, özel veya SAS anahtarları gibi tüm gizli dizileri bir donanım güvenli modülünde (HSM) depolamanız gerekir. 
+>The following samples demonstrate how the IoT Hub SDKs use certificates to authenticate devices. In a production deployment, you should store all secrets like private or SAS keys in a hardware secure module (HSM). 
 
 #### <a name="net"></a>.NET
 
-X. 509.440 sertifikalarıyla C# IoT Hub kimlik doğrulaması yapan bir program örneği için bkz. [Azure IoT Hub 'ınızda x. 509.440 güvenliğini ayarlama](../iot-hub/iot-hub-security-x509-get-started.md#authenticate-your-x509-device-with-the-x509-certificates). Bu örneğin önemli satırlarından bazıları, kimlik doğrulama işlemini göstermek için buraya eklenmiştir.
+For an example of a C# program authenticating to IoT Hub with X.509 certificates, see [Set up X.509 security in your Azure IoT hub](../iot-hub/iot-hub-security-x509-get-started.md#authenticate-your-x509-device-with-the-x509-certificates). Some of the key lines of that sample are included here to demonstrate the authentication process.
 
-DeviceClient örneğiniz için ana bilgisayar adını bildirirken, IoT Edge ağ geçidi cihazının ana bilgisayar adını kullanın. Ana bilgisayar adı, ağ geçidi cihazının config. YAML dosyasında bulunabilir. 
+When declaring the hostname for your DeviceClient instance, use the IoT Edge gateway device's hostname. The hostname can be found in the gateway device's config.yaml file. 
 
-IoT Edge git deposu tarafından sunulan test sertifikalarını kullanıyorsanız, sertifikaların anahtarı **1234**olur.
+If you're using the test certificates provided by the IoT Edge git repository, the key to the certificates is **1234**.
 
 ```csharp
 try
@@ -248,9 +247,9 @@ catch (Exception ex)
 
 #### <a name="c"></a>C
 
-X. 509.440 sertifikalarıyla IoT Hub kimlik doğrulaması yapan bir C programı örneği için bkz. C IoT SDK 'sının [iotedge_downstream_device_sample](https://github.com/Azure/azure-iot-sdk-c/tree/x509_edge_bugbash/iothub_client/samples/iotedge_downstream_device_sample) örneği. Bu örneğin önemli satırlarından bazıları, kimlik doğrulama işlemini göstermek için buraya eklenmiştir.
+For an example of a C program authenticating to IoT Hub with X.509 certificates, see the C IoT SDK's [iotedge_downstream_device_sample](https://github.com/Azure/azure-iot-sdk-c/tree/x509_edge_bugbash/iothub_client/samples/iotedge_downstream_device_sample) sample. Some of the key lines of that sample are included here to demonstrate the authentication process.
 
-Aşağı akış cihazınız için bağlantı dizesi tanımlarken, **ana bilgisayar adı** parametresi için IoT Edge Gateway cihazının ana bilgisayar adını kullanın. Ana bilgisayar adı, ağ geçidi cihazının config. YAML dosyasında bulunabilir. 
+When defining the connection string for your downstream device, use the IoT Edge gateway device's hostname for the **HostName** parameter. The hostname can be found in the gateway device's config.yaml file. 
 
 ```C
 // If your downstream device uses X.509 authentication (self signed or X.509 CA) then
@@ -296,11 +295,11 @@ int main(void)
 
 #### <a name="nodejs"></a>Node.js
 
-X. 509.440 sertifikalarıyla IoT Hub kimlik doğrulaması yapan bir Node. js programı örneği için bkz. Node. js IoT SDK 'nın [simple_sample_device_x509. js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device_x509.js) örneği. Bu örneğin önemli satırlarından bazıları, kimlik doğrulama işlemini göstermek için buraya eklenmiştir.
+For an example of a Node.js program authenticating to IoT Hub with X.509 certificates, see the Node.js IoT SDK's [simple_sample_device_x509.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device_x509.js) sample. Some of the key lines of that sample are included here to demonstrate the authentication process.
 
-Aşağı akış cihazınız için bağlantı dizesi tanımlarken, **ana bilgisayar adı** parametresi için IoT Edge Gateway cihazının ana bilgisayar adını kullanın. Ana bilgisayar adı, ağ geçidi cihazının config. YAML dosyasında bulunabilir. 
+When defining the connection string for your downstream device, use the IoT Edge gateway device's hostname for the **HostName** parameter. The hostname can be found in the gateway device's config.yaml file. 
 
-IoT Edge git deposu tarafından sunulan test sertifikalarını kullanıyorsanız, sertifikaların anahtarı **1234**olur.
+If you're using the test certificates provided by the IoT Edge git repository, the key to the certificates is **1234**.
 
 ```node
 // String containing Hostname and Device Id in the following format:
@@ -325,9 +324,9 @@ client.setOptions(options);
 
 #### <a name="python"></a>Python
 
-Python SDK Şu anda yalnızca x509 sertifikalarını ve dosyalarını kullanarak satır içi tanımlı olmayan dosyalardan değil, dosyaları destekler. Aşağıdaki örnekte, ilgili dosya yolları ortam değişkenlerinde depolanır.
+The Python SDK currently only supports using X509 certificates and and keys from files, not ones which are defined inline. In the following example, relevant filepaths are stored in environment variables.
 
-Aşağı akış cihazınız için ana bilgisayar adını tanımlarken, **ana bilgisayar** adı parametresi için IoT Edge Gateway cihazının ana bilgisayar adını kullanın. Ana bilgisayar adı, ağ geçidi cihazının config. YAML dosyasında bulunabilir. 
+When defining the hostname for your downstream device, use the IoT Edge gateway device's hostname for the **HostName** parameter. The hostname can be found in the gateway device's config.yaml file. 
 
 ```python
 import os
@@ -355,9 +354,9 @@ if __name__ == '__main__':
 
 #### <a name="java"></a>Java
 
-X. 509.440 sertifikalarıyla IoT Hub kimlik doğrulaması yapan bir Java programı örneği için bkz. Java IoT SDK 'nın [SendEventX509. Java](https://github.com/Azure/azure-iot-sdk-python/blob/master/device/samples/iothub_client_sample_x509.py) örneği. Bu örneğin önemli satırlarından bazıları, kimlik doğrulama işlemini göstermek için buraya eklenmiştir.
+For an example of a Java program authenticating to IoT Hub with X.509 certificates, see the Java IoT SDK's [SendEventX509.java](https://github.com/Azure/azure-iot-sdk-python/blob/master/device/samples/iothub_client_sample_x509.py) sample. Some of the key lines of that sample are included here to demonstrate the authentication process.
 
-Aşağı akış cihazınız için bağlantı dizesi tanımlarken, **ana bilgisayar adı** parametresi için IoT Edge Gateway cihazının ana bilgisayar adını kullanın. Ana bilgisayar adı, ağ geçidi cihazının config. YAML dosyasında bulunabilir. 
+When defining the connection string for your downstream device, use the IoT Edge gateway device's hostname for the **HostName** parameter. The hostname can be found in the gateway device's config.yaml file. 
 
 ```java
 //PEM encoded representation of the public key certificate
@@ -388,4 +387,4 @@ DeviceClient client = new DeviceClient(connectionString, protocol, publicKeyCert
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makaleyi tamamlayarak, saydam bir ağ geçidi olarak çalışan bir IoT Edge cihazının ve IoT Hub ile kaydedilmiş bir aşağı akış cihazının olması gerekir. Sonra, ağ geçidi cihazına güvenmek ve ona ileti göndermek için aşağı akış cihazlarınızı yapılandırmanız gerekir. Daha fazla bilgi için bkz. bir [aşağı akış cihazını Azure IoT Edge bir ağ geçidine bağlama](how-to-connect-downstream-device.md).
+By completing this article, you should have an IoT Edge device working as a transparent gateway and a downstream device registered with an IoT hub. Next, you need to configure your downstream devices to trust the gateway device and send messages to it. For more information, see [Connect a downstream device to an Azure IoT Edge gateway](how-to-connect-downstream-device.md).

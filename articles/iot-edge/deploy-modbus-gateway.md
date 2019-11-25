@@ -1,5 +1,5 @@
 ---
-title: Ağ geçidi - Azure IOT Edge modbus protokollerini çevirme | Microsoft Docs
+title: Translate modbus protocols with gateways - Azure IoT Edge | Microsoft Docs
 description: IoT Edge ağ geçidi cihazı oluşturarak Modbus TCP kullanan cihazların Azure IoT Hub ile iletişim kurmasına imkan sağlama
 author: kgremban
 manager: philmea
@@ -8,48 +8,47 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: kgremban
-ms.custom: seodec18
-ms.openlocfilehash: 325b69eb7b9b069db0ba49b4578541ee801c3444
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 649c7f620b83464d1bb56cf4b8191b0747105f01
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476172"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74457204"
 ---
-# <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>Bir IOT Edge ağ geçidi cihazı aracılığıyla Modbus TCP cihazlarını bağlama
+# <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>Connect Modbus TCP devices through an IoT Edge device gateway
 
 Modbus TCP veya RTU protokollerini kullanan IoT cihazlarını bir Azure IoT hub’ına bağlamak istiyorsanız ağ geçidi olarak bir IoT Edge cihazı kullanın. Ağ geçidi cihazı Modbus cihazlarınızdan verileri okur, sonra desteklenen bir protokolü kullanarak bu verileri buluta iletir.
 
-![Modbus cihazları IOT Edge ağ geçidi üzerinden IOT hub'a bağlama](./media/deploy-modbus-gateway/diagram.png)
+![Modbus devices connect to IoT Hub through IoT Edge gateway](./media/deploy-modbus-gateway/diagram.png)
 
 Bu makalede, bir Modbus modülü için kendi kapsayıcı görüntünüzü oluşturma (dilerseniz önceden oluşturulmuş bir örneği de kullanabilirsiniz) ve bu görüntüyü ağ geçidi olarak kullanacağınız IoT Edge cihazına dağıtma işlemleri açıklanmaktadır.
 
-Bu makalede Modbus TCP protokolünü kullandığınız varsayılır. Modülün Modbus RTU'yu destekleyecek şekilde yapılandırma hakkında daha fazla bilgi için bkz. [Azure IOT Edge Modbus Modülü](https://github.com/Azure/iot-edge-modbus) github'daki proje.
+Bu makalede Modbus TCP protokolünü kullandığınız varsayılır. For more information about how to configure the module to support Modbus RTU, see the [Azure IoT Edge Modbus module](https://github.com/Azure/iot-edge-modbus) project on GitHub.
 
 ## <a name="prerequisites"></a>Önkoşullar
-* Bir Azure IoT Edge cihazı. Ayarlama konusunda bir kılavuz için bkz. [Windows üzerinde Azure IOT Edge'e dağıtma](quickstart.md) veya [Linux](quickstart-linux.md).
+* Bir Azure IoT Edge cihazı. For a walkthrough on how to set up one, see [Deploy Azure IoT Edge on Windows](quickstart.md) or [Linux](quickstart-linux.md).
 * IoT Edge cihazı için birincil anahtar bağlantı dizesi.
 * Modbus TCP’yi destekleyen fiziksel veya sanal bir cihaz.
 
 ## <a name="prepare-a-modbus-container"></a>Modbus kapsayıcısı hazırlama
 
-Modbus ağ geçidinin işlevselliğini test etmek istiyorsanız Microsoft tarafından sağlanan örnek modülü kullanabilirsiniz. Modül Azure Market'ten erişebileceğiniz [Modbus](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft_iot.edge-modbus?tab=Overview), veya URI görüntüyle **mcr.microsoft.com/azureiotedge/modbus:1.0**.
+Modbus ağ geçidinin işlevselliğini test etmek istiyorsanız Microsoft tarafından sağlanan örnek modülü kullanabilirsiniz. You can access the module from the Azure Marketplace, [Modbus](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft_iot.edge-modbus?tab=Overview), or with the image URI, **mcr.microsoft.com/azureiotedge/modbus:1.0**.
 
-Kendi modülünüzü oluşturmak ve ortamınız için özelleştirmek istiyorsanız, açık kaynaklı yoktur [Azure IOT Edge Modbus Modülü](https://github.com/Azure/iot-edge-modbus) github'daki proje. Kendi kapsayıcı görüntünüzü oluşturmak için bu projedeki yönergeleri izleyin. Kapsayıcı görüntüsünü oluşturmak için bkz [geliştirme C# Visual Studio'daki modüller](how-to-visual-studio-develop-csharp-module.md) veya [Visual Studio code'da modülleri geliştirme](how-to-vs-code-develop-module.md). Bu makaleler, yeni modülleri oluşturma ve kapsayıcı görüntülerini bir kayıt defterine yayımlama yönergeleri sağlar.
+If you want to create your own module and customize it for your environment, there is an open-source [Azure IoT Edge Modbus module](https://github.com/Azure/iot-edge-modbus) project on GitHub. Kendi kapsayıcı görüntünüzü oluşturmak için bu projedeki yönergeleri izleyin. To create a container image, refer to [Develop C# modules in Visual Studio](how-to-visual-studio-develop-csharp-module.md) or [Develop modules in Visual Studio Code](how-to-vs-code-develop-module.md). Those articles provide instructions on creating new modules and publishing container images to a registry.
 
-## <a name="try-the-solution"></a>Çözümü deneyin
+## <a name="try-the-solution"></a>Try the solution
 
-Bu bölümde, Microsoft'un örnek Modbus modülü IOT Edge cihazınıza dağıtma işlemi gösterilir.
+This section walks through deploying Microsoft's sample Modbus module to your IoT Edge device.
 
 1. [Azure portalında](https://portal.azure.com/) IoT hub'ınıza gidin.
 
-2. Git **IOT Edge** ve IOT Edge Cihazınızda'ı tıklatın.
+2. Go to **IoT Edge** and click on your IoT Edge device.
 
 3. **Modül ayarla**’yı seçin.
 
 4. Modbus modülünü ekleyin:
 
-   1. Tıklayın **Ekle** seçip **IOT Edge Modülü**.
+   1. Click **Add** and select **IoT Edge module**.
 
    2. **Ad** alanına "modbus" yazın.
 
@@ -85,7 +84,7 @@ Bu bölümde, Microsoft'un örnek Modbus modülü IOT Edge cihazınıza dağıtm
 
 5. **Modül Ekle** adımına dönüp **İleri**’yi seçin.
 
-7. **Yolları Belirtin** adımında, aşağıdaki JSON’u metin kutusuna kopyalayın. Bu yol, Modbus modülü tarafından toplanan tüm iletileri IoT Hub’a gönderir. Bu rotada **modbusOutput** , Modbus modülü kullanan veri çıkış uç noktadır ve **Yukarı Akış $** IOT Edge hub'ı iletileri IOT hub'a göndermesini söyleyen bir hedeftir.
+7. **Yolları Belirtin** adımında, aşağıdaki JSON’u metin kutusuna kopyalayın. Bu yol, Modbus modülü tarafından toplanan tüm iletileri IoT Hub’a gönderir. In this route, **modbusOutput** is the endpoint that Modbus module uses to output data and **$upstream** is a special destination that tells IoT Edge hub to send messages to IoT Hub.
 
    ```JSON
    {
@@ -99,7 +98,7 @@ Bu bölümde, Microsoft'un örnek Modbus modülü IOT Edge cihazınıza dağıtm
 
 9. **Dağıtımı Gözden Geçirin** adımında **Gönder**'i seçin.
 
-10. Cihaz ayrıntıları sayfasına dönüp **Yenile**’yi seçin. Yeni görmelisiniz **modbus** IOT Edge çalışma zamanıyla birlikte çalıştığını modülü.
+10. Cihaz ayrıntıları sayfasına dönüp **Yenile**’yi seçin. You should see the new **modbus** module running along with the IoT Edge runtime.
 
 ## <a name="view-data"></a>Verileri görüntüleme
 Modbus modülü üzerinden gelen verileri görüntüleyin:
@@ -107,9 +106,9 @@ Modbus modülü üzerinden gelen verileri görüntüleyin:
 iotedge logs modbus
 ```
 
-Ayrıca cihaz kullanarak gönderdiği telemetriyi görüntüleyebilirsiniz [Visual Studio Code için Azure IOT hub'ı Toolkit uzantısını](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (eski adıyla Azure IOT Toolkit uzantısını).
+You can also view the telemetry the device is sending by using the [Azure IoT Hub Toolkit extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (formerly Azure IoT Toolkit extension).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- IOT Edge cihazları nasıl ağ geçidi olarak görev yapabilir hakkında daha fazla bilgi için bkz: [saydam bir ağ geçidi olarak davranır bir IOT Edge cihazı oluşturma](./how-to-create-transparent-gateway.md).
-- IOT Edge modüllerinin nasıl çalıştığı hakkında daha fazla bilgi için bkz. [anlamak Azure IOT Edge modülleri](iot-edge-modules.md).
+- To learn more about how IoT Edge devices can act as gateways, see [Create an IoT Edge device that acts as a transparent gateway](./how-to-create-transparent-gateway.md).
+- For more information about how IoT Edge modules work, see [Understand Azure IoT Edge modules](iot-edge-modules.md).

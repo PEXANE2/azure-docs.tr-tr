@@ -1,6 +1,6 @@
 ---
-title: Yönetilen geliştirici portalına erişme ve bunları özelleştirme-Azure API Management | Microsoft Docs
-description: API Management 'de geliştirici portalının yönetilen sürümünü nasıl kullanacağınızı öğrenin.
+title: Access and customize the managed developer portal - Azure API Management | Microsoft Docs
+description: Learn how to use the managed version of the developer portal in API Management.
 services: api-management
 documentationcenter: API Management
 author: mikebudzynski
@@ -10,121 +10,124 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/04/2019
+ms.date: 11/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 28ef082d6aac5557998f7b67443d4dafd3a0fb15
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 8629d07830622770c3b30dacdd1fabc8417d7f52
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74285589"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74454428"
 ---
-# <a name="access-and-customize-developer-portal"></a>Geliştirici portalına erişme ve özelleştirme
+# <a name="access-and-customize-developer-portal"></a>Access and customize developer portal
 
-Geliştirici portalı, API 'lerinizin belgelerinde otomatik olarak oluşturulan ve tamamen özelleştirilebilir bir Web sitesidir. API tüketicilerinin API 'lerinizi keşfedebileceği, nasıl kullanılacağını ve nasıl erişim isteyeceğini burada bulabilirsiniz.
+Developer portal is an automatically generated, fully customizable website with the documentation of your APIs. It is where API consumers can discover your APIs, learn how to use them, and request access.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Geliştirici portalının yönetilen sürümüne erişin
-> * Yönetim arabiriminde gezin
-> * İçeriği özelleştirme
-> * Değişiklikleri Yayımla
-> * Yayınlanan portalı görüntüleme
+> * Access the managed version of the developer portal
+> * Navigate its administrative interface
+> * Customize the content
+> * Publish the changes
+> * View the published portal
 
-Geliştirici Portalında daha fazla ayrıntı için [Azure API Management geliştirici portalına genel bakış ' a](api-management-howto-developer-portal.md)ulaşabilirsiniz.
+You can find more details on the developer portal in the [Azure API Management developer portal overview](api-management-howto-developer-portal.md).
 
-![API Management Geliştirici Portalı-yönetici modu](media/api-management-howto-developer-portal-customize/cover.png)
+![API Management developer portal - admin mode](media/api-management-howto-developer-portal-customize/cover.png)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 - Şu hızlı başlangıcı tamamlayın: [Azure API Management örneği oluşturma](get-started-create-service-instance.md)
-- Azure API Management örneğini içeri aktarın ve yayımlayın. Daha fazla bilgi için bkz. [Içeri aktarma ve yayımlama](import-and-publish.md)
+- Import and publish an Azure API Management instance. For more information, see [Import and publish](import-and-publish.md)
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="access-the-portal-as-an-administrator"></a>Portala yönetici olarak erişin
+## <a name="access-the-portal-as-an-administrator"></a>Access the portal as an administrator
 
-Portalın yönetilen sürümüne erişmek için aşağıdaki adımları izleyin.
+Follow the steps below to access the managed version of the portal.
 
-1. Azure portal API Management hizmet örneğinize gidin.
-1. Üst gezinti çubuğundaki **Geliştirici Portalı** düğmesine tıklayın. Portalın yönetici sürümüne sahip yeni bir tarayıcı sekmesi açılır.
+1. Go to your API Management service instance in the Azure portal.
+1. Click on the **Developer portal** button in the top navigation bar. A new browser tab with an administrative version of the portal will open.
 
-## <a name="understand-the-portals-administrative-interface"></a>Portalın yönetim arabirimini anlayın
+## <a name="understand-the-portals-administrative-interface"></a>Understand the portal's administrative interface
 
-### <a name="default-content"></a>Varsayılan içerik 
+### <a name="default-content"></a>Default content 
 
-Portala ilk kez erişiyorsanız, varsayılan içerik arka planda otomatik olarak sağlanır. Varsayılan içerik, portalın yeteneklerini göstermek ve portalınızı kişiselleştirmek için gereken özelleştirme miktarını en aza indirmek için tasarlanmıştır. [Azure API Management geliştirici portalına genel bakış](api-management-howto-developer-portal.md)bölümünde Portal içeriğine nelerin dahil olduğu hakkında daha fazla bilgi edinebilirsiniz.
+If you're accessing the portal for the first time, the default content will be automatically provisioned in the background. Default content has been designed to showcase portal's capabilities and minimize the amount of customizations needed to personalize your portal. You can learn more about what is included in the portal content in the [Azure API Management developer portal overview](api-management-howto-developer-portal.md).
 
-### <a name="visual-editor"></a>Görsel düzenleyici
+### <a name="visual-editor"></a>Visual editor
 
-Portalın içeriğini görsel düzenleyiciyle özelleştirebilirsiniz. Sol taraftaki menü bölümleri; sayfaları, medyayı, düzenleri, menüleri, stilleri veya Web sitesi ayarlarını oluşturmanıza veya değiştirmenize olanak sağlar. Alt kısımdaki menü öğeleri, görünüm pencereleri (örneğin, mobil veya masaüstü) arasında geçiş yapmanızı, portalın öğelerini kimliği doğrulanmış veya anonim kullanıcılarla görüntülemeyi veya eylemleri kaydetmenizi veya geri almanızı sağlar.
+You can customize the content of the portal with the visual editor. The menu sections on the left let you create or modify pages, media, layouts, menus, styles, or website settings. The menu items on the bottom let you switch between viewports (for example, mobile or desktop), view the elements of the portal visible to authenticated or anonymous users, or save or undo actions.
 
-Bir sayfaya, artı işareti ile mavi simgesine tıklayarak satır ekleyebilirsiniz. Pencere öğeleri (örneğin, metin, görüntüler veya API listesi), artı işaretiyle bir gri simgeye basılarak eklenebilir. Sürükle ve bırak etkileşimi ile bir sayfadaki öğeleri yeniden düzenleyebilirsiniz. 
+You can add rows to a page by clicking on a blue icon with a plus sign. Widgets (for example, text, images, or APIs list) can be added by pressing a grey icon with a plus sign. You can rearrange items in a page with the drag-and-drop interaction. 
 
-### <a name="layouts-and-pages"></a>Düzenler ve sayfalar
+### <a name="layouts-and-pages"></a>Layouts and pages
 
-![Sayfalar ve düzenler](media/api-management-howto-developer-portal-customize/pages-layouts.png)
+![Pages and layouts](media/api-management-howto-developer-portal-customize/pages-layouts.png)
 
-Düzenler sayfaların nasıl görüntüleneceğini tanımlar. Örneğin, varsayılan içerikte iki düzen vardır-diğeri giriş sayfasına, diğeri de kalan tüm sayfalara uygulanır.
+Layouts define how pages are displayed. For example, in the default content, there are two layouts - one applies to the home page, and the other to all remaining pages.
 
-Bir düzen, URL şablonuyla sayfanın URL 'siyle eşleştirerek bir sayfaya uygulanır. Örneğin, URL şablonu `/wiki/*` olan düzen, URL 'deki `/wiki/` kesimine sahip her sayfaya uygulanır: `/wiki/getting-started`, `/wiki/styles`, vb.
+A layout gets applied to a page by matching its URL template to the page's URL. For example, layout with a URL template of `/wiki/*` will be applied to every page with the `/wiki/` segment in the URL: `/wiki/getting-started`, `/wiki/styles`, etc.
 
-Yukarıdaki görüntüde, sayfa kırmızı olarak işaretlenirken düzene ait içerikler mavi olarak işaretlenir. Menü bölümleri sırasıyla işaretlenir.
+In the image above, content belonging to the layout is marked in blue, while the page is marked in red. The menu sections are marked respectively.
 
-### <a name="styling-guide"></a>Stil Kılavuzu
+### <a name="styling-guide"></a>Styling guide
 
-![Stil Kılavuzu](media/api-management-howto-developer-portal-customize/styling-guide.png)
+![Styling guide](media/api-management-howto-developer-portal-customize/styling-guide.png)
 
-Stil Kılavuzu, tasarımcılara göz önünde bulundurularak oluşturulan bir paneldir. Portalınızdaki tüm görsel öğeleri fazla görmeye ve stillendirilmesini sağlar. Stil hiyerarşik bir öğelerdir; birçok öğe diğer öğelerden özellikleri miras alır. Örneğin düğme öğeleri metin ve arka plan renklerini kullanır. Bir düğmenin rengini değiştirmek için özgün renk türevini değiştirmeniz gerekir.
+Styling guide is a panel created with designers in mind. It allows for overseeing and styling all the visual elements in your portal. The styling is hierarchical - many elements inherit properties from other elements. For example, button elements use colors for text and background. To change a button's color, you need to change the original color variant.
 
-Bir varyantı düzenlemek için, üzerine tıklayın ve sayfanın üstünde görünen kalem simgesini seçin. Açılır penceredeki değişiklikleri yaptıktan sonra kapatın.
+To edit a variant, click on it and select the pencil icon that appears on top of it. Once you make the changes in the pop-up window, close it.
 
-### <a name="save-button"></a>Kaydet düğmesi
+### <a name="save-button"></a>Save button
 
-![Kaydet düğmesi](media/api-management-howto-developer-portal-customize/save-button.png)
+![Save button](media/api-management-howto-developer-portal-customize/save-button.png)
 
-Portalda her değişiklik yaptığınızda, alt kısımdaki menüdeki **Kaydet** düğmesine basarak el ile kaydetmeniz gerekir. Değişikliklerinizi kaydettiğinizde, değiştirilen içerik API Management hizmetinize otomatik olarak yüklenir.
+Whenever you make a change in the portal, you need to save it manually by pressing the **Save** button in the menu at the bottom. When you save your changes, the modified content is automatically uploaded to your API Management service.
 
-## <a name="customize-the-portals-content"></a>Portalın içeriğini özelleştirme
+## <a name="customize-the-portals-content"></a>Customize the portal's content
 
-Portalınızı ziyaretçi tarafından kullanılabilir yapmadan önce, otomatik olarak oluşturulan içeriği kişiselleştirmelisiniz. Önerilen değişiklikler, ana sayfanın düzenlerini, stillerini ve içeriğini içerir.
+Before you make your portal available to the visitors, you should personalize the automatically generated content. Recommended changes include the layouts, styles, and the content of the home page.
 
 > [!NOTE]
-> Tümleştirme konuları nedeniyle, aşağıdaki sayfalar farklı bir URL altında kaldırılamaz veya taşınamaz: `/404`, `/500`, `/captcha`, `/change-password`, `/config.json`, `/confirm/invitation`, `/confirm-v2/identities/basic/signup`, `/confirm-v2/password`, `/internal-status-0123456789abcdef`, `/publish`, `/signin`, `/signin-sso``/signup`.
+> Due to integration considerations, the following pages can't be removed or moved under a different URL: `/404`, `/500`, `/captcha`, `/change-password`, `/config.json`, `/confirm/invitation`, `/confirm-v2/identities/basic/signup`, `/confirm-v2/password`, `/internal-status-0123456789abcdef`, `/publish`, `/signin`, `/signin-sso`, `/signup`.
 
 ### <a name="home-page"></a>Giriş sayfası
 
-Varsayılan **giriş** sayfası, kukla içerikle doldurulmuştur. Tüm bölümleri içeriğe göre kaldırabilir ya da yapıyı tutabilir ve öğeleri tek tek düzenleyebilirsiniz. Oluşturulan metin ve görüntüleri kendi kendinize değiştirin ve bağlantıların istenen konumlara işaret ettiğinizden emin olun.
+The default **Home** page is filled with dummy content. You can either remove the whole sections with the content or keep the structure and adjust the elements one by one. Replace the generated text and images with your own and make sure the links point to desired locations.
 
-### <a name="layouts"></a>Düzenler
+### <a name="layouts"></a>Layouts
 
-Gezinti çubuğundaki otomatik olarak oluşturulan logoyu kendi görüntünüz ile değiştirin.
+Replace the automatically generated logo in the navigation bar with your own image.
 
-### <a name="styling"></a>Sağlayan
+### <a name="styling"></a>Styling
 
-Herhangi bir stili ayarlamanız gerekmez, ancak belirli öğeleri ayarlamayı düşünebilirsiniz. Örneğin, birincil rengi markaınızın rengine uyacak şekilde değiştirin.
+Although you don't need to adjust any styles, you may consider adjusting particular elements. For example, change the primary color to match your brand's color.
 
-### <a name="customization-example"></a>Özelleştirme örneği
+### <a name="customization-example"></a>Customization example
 
-Aşağıdaki videoda portalın içeriğini düzenlemeyi, Web sitesinin görünümünü özelleştirmeyi ve değişiklikleri yayımlamayı göstereceğiz.
+In the video below we demonstrate how to edit the content of the portal, customize the website's look, and publish the changes.
 
 > [!VIDEO https://www.youtube.com/embed/5mMtUSmfUlw]
 
-## <a name="publish-the-portal"></a>Portalı yayımlama
+## <a name="publish"> </a>Publish the portal
 
-Portalınızın ve en son değişikliklerinin ziyaretçi tarafından kullanılabilmesini sağlamak için, onu yayımlamanız gerekir.
+To make your portal and its latest changes available to visitors, you need to publish it.
 
-1. **Kaydet** simgesine tıklayarak değişikliklerinizi kaydettiğinizden emin olun.
-1. Menüdeki **işlemler** bölümünde **Web sitesine yayımla** ' ya tıklayın. Bu işlem birkaç dakika sürebilir.  
-    ![portalını Yayımla](media/api-management-howto-developer-portal-customize/publish-portal.png)
+1. Make sure you saved your changes by clicking on the **Save** icon.
+1. Click on **Publish website** in the **Operations** section of the menu. Bu işlem birkaç dakika sürebilir.  
+    ![Publish portal](media/api-management-howto-developer-portal-customize/publish-portal.png)
 
-## <a name="visit-the-published-portal"></a>Yayınlanan portalı ziyaret edin
+> [!NOTE]
+> The portal needs to be republished after API Management service configuration changes, such as assigning a custom domain, updating the identity providers, setting delegation, specifying sign-in and product terms, and more.
 
-Portalı yayımladıktan sonra, yönetim paneliyle aynı URL 'de buna erişebilirsiniz, örneğin `https://contoso-api.developer.azure-api.net`. Bunu, dış ziyaretçi olarak ayrı bir tarayıcı oturumunda (bilito/Private gözatma modu) görüntüleyin.
+## <a name="visit-the-published-portal"></a>Visit the published portal
+
+After you publish the portal, you can access it at the same URL as the administrative panel, for example `https://contoso-api.developer.azure-api.net`. View it in a separate browser session (incognito / private browsing mode) as an external visitor.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Geliştirici portalı hakkında daha fazla bilgi edinin:
+Learn more about the developer portal:
 
-- [Azure API Management geliştirici portalına genel bakış](api-management-howto-developer-portal.md)
+- [Azure API Management developer portal overview](api-management-howto-developer-portal.md)

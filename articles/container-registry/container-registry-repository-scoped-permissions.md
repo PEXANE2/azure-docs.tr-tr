@@ -1,53 +1,48 @@
 ---
-title: Azure Container Registry içindeki depoların izinleri
-description: Görüntü çekmek veya göndermek için bir kayıt defterindeki belirli depolara kapsamlı izinlere sahip bir belirteç oluşturun
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
+title: Permissions to repositories
+description: Create a token with permissions scoped to specific repositories in a registry to pull or push images
 ms.topic: article
 ms.date: 10/31/2019
-ms.author: danlep
-ms.openlocfilehash: 7b9d220ac7e507513458eab6b55276b3aa434739
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: cf36a49ffd6c04897e6f44b844f0c813d0992b18
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73742753"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74454917"
 ---
-# <a name="repository-scoped-permissions-in-azure-container-registry"></a>Azure Container Registry içinde depo kapsamlı izinler 
+# <a name="repository-scoped-permissions-in-azure-container-registry"></a>Repository-scoped permissions in Azure Container Registry 
 
-Azure Container Registry, tüm kayıt defterine [rol tabanlı erişim](container-registry-roles.md) olan kimlikleri kullanarak çeşitli [kimlik doğrulama seçeneklerini](container-registry-authentication.md) destekler. Ancak, belirli senaryolarda yalnızca bir kayıt defterindeki belirli *depolara* erişim sağlamanız gerekebilir. 
+Azure Container Registry supports several [authentication options](container-registry-authentication.md) using identities that have [role-based access](container-registry-roles.md) to an entire registry. However, for certain scenarios, you might need to provide access only to specific *repositories* in a registry. 
 
-Bu makalede, bir kayıt defterindeki yalnızca belirli depolarda eylem gerçekleştirme izinleri olan bir erişim belirtecinin nasıl oluşturulacağı ve kullanılacağı gösterilir. Bir erişim belirteciyle, görüntü çekmek veya göndermek veya başka eylemler gerçekleştirmek için depolara kapsamlı, zaman sınırlı erişim sağlayan kullanıcılar veya hizmetler sağlayabilirsiniz. 
+This article shows how to create and use an access token that has permissions to perform actions on only specific repositories in a registry. With an access token, you can provide users or services with scoped, time-limited access to repositories to pull or push images or perform other actions. 
 
-Belirteç kavramları ve senaryolar hakkında arka plan için bu makalenin sonraki kısımlarında yer alarak, [Depo kapsamındaki Izinler hakkında](#about-repository-scoped-permissions)bölümüne bakın.
+See [About repository-scoped permissions](#about-repository-scoped-permissions), later in this article, for background about token concepts and scenarios.
 
 > [!IMPORTANT]
-> Bu özellik şu anda önizleme aşamasındadır ve bazı [sınırlamalar geçerlidir](#preview-limitations). Önizlemeler, [ek kullanım koşullarını][terms-of-use] kabul etmeniz şartıyla kullanımınıza sunulur. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
+> This feature is currently in preview, and some [limitations apply](#preview-limitations). Önizlemeler, [ek kullanım koşullarını][terms-of-use] kabul etmeniz şartıyla kullanımınıza sunulur. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
 
-## <a name="preview-limitations"></a>Önizleme sınırlamaları
+## <a name="preview-limitations"></a>Preview limitations
 
-* Bu özellik yalnızca bir **Premium** kapsayıcı kayıt defterinde kullanılabilir. Kayıt defteri hizmeti katmanları ve limitleri hakkında bilgi için bkz. [Azure Container Registry SKU 'lar](container-registry-skus.md).
-* Şu anda, hizmet sorumlusu veya yönetilen kimlik gibi bir Azure Active Directory nesnesine depo kapsamlı izinler atayamazsınız.
+* This feature is only available in a **Premium** container registry. For information about registry service tiers and limits, see [Azure Container Registry SKUs](container-registry-skus.md).
+* You can't currently assign repository-scoped permissions to an Azure Active Directory object such as a service principal or managed identity.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* **Azure CLI** -Bu makale, Azure CLI 'nin (sürüm 2.0.76 veya üzeri) yerel olarak yüklenmesini gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme]( /cli/azure/install-azure-cli).
-* **Docker** -kayıt defteriyle kimlik doğrulaması yapmak için yerel bir Docker yüklemesine de ihtiyacınız vardır. Docker, [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) ve [Linux](https://docs.docker.com/engine/installation/#supported-platforms) sistemleri için yükleme yönergeleri sağlar.
-* **Depolarla kapsayıcı kayıt defteri** -bir tane yoksa, Azure aboneliğinizde bir kapsayıcı kayıt defteri oluşturun. Örneğin, [Azure Portal](container-registry-get-started-portal.md) veya [Azure CLI](container-registry-get-started-azure-cli.md)'yi kullanın. 
+* **Azure CLI** - This article requires a local installation of the Azure CLI (version 2.0.76 or later). Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme]( /cli/azure/install-azure-cli).
+* **Docker** - To authenticate with the registry, you also need a local Docker installation. Docker, [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) ve [Linux](https://docs.docker.com/engine/installation/#supported-platforms) sistemleri için yükleme yönergeleri sağlar.
+* **Container registry with repositories** - If you don't have one, create a container registry in your Azure subscription. For example, use the [Azure portal](container-registry-get-started-portal.md) or the [Azure CLI](container-registry-get-started-azure-cli.md). 
 
-  Test amaçları için kayıt defterine bir veya daha fazla örnek görüntü [gönderin](container-registry-get-started-docker-cli.md) veya [içeri aktarın](container-registry-import-images.md) . Bu makaledeki örnekler, iki depoda aşağıdaki görüntülere başvurur: `samples/hello-world:v1` ve `samples/nginx:v1`. 
+  For test purposes, [push](container-registry-get-started-docker-cli.md) or [import](container-registry-import-images.md) one or more sample images to the registry. Examples in this article refer to the following images in two repositories: `samples/hello-world:v1` and `samples/nginx:v1`. 
 
-## <a name="create-an-access-token"></a>Erişim belirteci oluşturma
+## <a name="create-an-access-token"></a>Create an access token
 
-[Az ACR Token Create][az-acr-token-create] komutunu kullanarak bir belirteç oluşturun. Bir belirteç oluştururken, her depoda bir veya daha fazla depo ve ilişkili eylem belirtin ya da bu ayarlarla mevcut bir kapsam Haritası belirtin.
+Create a token using the [az acr token create][az-acr-token-create] command. When creating a token, specify one or more repositories and associated actions on each repository, or specify an existing scope map with those settings.
 
-### <a name="create-access-token-and-specify-repositories"></a>Erişim belirteci oluşturma ve depoları belirtme
+### <a name="create-access-token-and-specify-repositories"></a>Create access token and specify repositories
 
-Aşağıdaki örnek, `samples/hello-world` deposunda `content/write` ve `content/read` eylemleri ve `samples/nginx` deposundaki `content/read` eylemini gerçekleştirmek için izinlere sahip bir erişim belirteci oluşturur. Varsayılan olarak, komut iki parola üretir. 
+The following example creates an access token with permissions to perform `content/write` and `content/read` actions on the `samples/hello-world` repository, and the `content/read` action on the `samples/nginx` repository. By default, the command generates two passwords. 
 
-Bu örnek, belirteç durumunu `enabled` (varsayılan ayar) olarak ayarlar, ancak belirteci dilediğiniz zaman güncelleştirebilir ve durumu `disabled`olarak ayarlayabilirsiniz.
+This example sets the token status to `enabled` (the default setting), but you can update the token at any time and set the status to `disabled`.
 
 ```azurecli
 az acr token create --name MyToken --registry myregistry \
@@ -55,9 +50,9 @@ az acr token create --name MyToken --registry myregistry \
   --repository samples/nginx content/read --status enabled
 ```
 
-Çıktı, oluşturulan parolalar ve kapsam Haritası dahil olmak üzere belirteçle ilgili ayrıntıları gösterir. Daha sonra `docker login`ile kullanmak için parolaları güvenli bir yere kaydetmeniz önerilir. Parolalar tekrar alınamaz, ancak yeni olanlar oluşturulabilir.
+The output shows details about the token, including generated passwords and scope map. It's recommended to save the passwords in a safe place to use later with `docker login`. The passwords can't be retrieved again but new ones can be generated.
 
-Çıktı Ayrıca, `MyToken-scope-map`adlı bir kapsam eşlemesinin otomatik olarak oluşturulduğunu gösterir. Aynı depo eylemlerini diğer belirteçlere uygulamak için kapsam eşlemesini kullanabilirsiniz. Ya da, belirteç izinlerini değiştirmek için kapsam eşlemini daha sonra güncelleştirin.
+The output also shows that a scope map is automatically created, named `MyToken-scope-map`. You can use the scope map to apply the same repository actions to other tokens. Or, update the scope map later to change the token permissions.
 
 ```console
 {
@@ -90,11 +85,11 @@ az acr token create --name MyToken --registry myregistry \
   "type": "Microsoft.ContainerRegistry/registries/tokens"
 ```
 
-### <a name="create-a-scope-map-and-associated-token"></a>Kapsam eşlemesi ve ilişkili belirteç oluşturma
+### <a name="create-a-scope-map-and-associated-token"></a>Create a scope map and associated token
 
-Alternatif olarak, bir belirteç oluştururken depolarla ve ilişkili eylemlerle bir kapsam Haritası belirtin. Kapsam eşlemesi oluşturmak için [az ACR Scope-Map Create][az-acr-scope-map-create] komutunu kullanın.
+Alternatively, specify a scope map with repositories and associated actions when creating a token. To create a scope map, use the [az acr scope-map create][az-acr-scope-map-create] command.
 
-Aşağıdaki örnek komut, önceki örnekte kullanılan izinlerle aynı izinlere sahip bir kapsam haritası oluşturur. `samples/hello-world` deposunda `content/write` ve `content/read` eylemlere ve `samples/nginx` deposundaki `content/read` eylemine izin verir:
+The following example command creates a scope map with the same permissions used in the previous example. It allows `content/write` and `content/read` actions on the `samples/hello-world` repository, and the `content/read` action on the `samples/nginx` repository:
 
 ```azurecli
 az acr scope-map create --name MyScopeMap --registry myregistry \
@@ -121,21 +116,21 @@ az acr scope-map create --name MyScopeMap --registry myregistry \
   "type": "Microsoft.ContainerRegistry/registries/scopeMaps"
 ```
 
-*Kapsamım* kapsam eşlemesiyle ilişkili bir belirteç oluşturmak için [az ACR Token Create][az-acr-token-create] komutunu çalıştırın. Varsayılan olarak, komut iki parola üretir. Bu örnek, belirteç durumunu `enabled` (varsayılan ayar) olarak ayarlar, ancak belirteci dilediğiniz zaman güncelleştirebilir ve durumu `disabled`olarak ayarlayabilirsiniz.
+Run [az acr token create][az-acr-token-create] to create a token associated with the *MyScopeMap* scope map. By default, the command generates two passwords. This example sets the token status to `enabled` (the default setting), but you can update the token at any time and set the status to `disabled`.
 
 ```azurecli
 az acr token create --name MyToken --registry myregistry --scope-map MyScopeMap --status enabled
 ```
 
-Çıktı, oluşturulan parolalar ve uyguladığınız kapsam Haritası dahil olmak üzere belirteçle ilgili ayrıntıları gösterir. Daha sonra `docker login`ile kullanmak için parolaları güvenli bir yere kaydetmeniz önerilir. Parolalar tekrar alınamaz, ancak yeni olanlar oluşturulabilir.
+The output shows details about the token, including generated passwords and the scope map you applied. It's recommended to save the passwords in a safe place to use later with `docker login`. The passwords can't be retrieved again but new ones can be generated.
 
-## <a name="generate-passwords-for-token"></a>Belirteç için parolalar oluştur
+## <a name="generate-passwords-for-token"></a>Generate passwords for token
 
-Belirteci oluştururken parolalar oluşturulduysa, [kayıt defteri Ile kimlik doğrulaması](#authenticate-using-token)yapmaya devam edin.
+If passwords were created when you created the token, proceed to [Authenticate with registry](#authenticate-using-token).
 
-Belirteç parolanız yoksa veya yeni parolalar oluşturmak istiyorsanız [az ACR Token Credential Generate][az-acr-token-credential-generate] komutunu çalıştırın.
+If you don't have a token password, or you want to generate new passwords, run the [az acr token credential generate][az-acr-token-credential-generate] command.
 
-Aşağıdaki örnek, 30 günlük süre sonu süresi ile oluşturduğunuz belirteç için yeni bir parola oluşturur. Parolayı TOKEN_PWD ortam değişkeninde depolar. Bu örnek bash kabuğu için biçimlendirilir.
+The following example generates a new password for the token you created, with an expiration period of 30 days. It stores the password in the environment variable TOKEN_PWD. This example is formatted for the bash shell.
 
 ```azurecli
 TOKEN_PWD=$(az acr token credential generate \
@@ -143,9 +138,9 @@ TOKEN_PWD=$(az acr token credential generate \
   --password1 --query 'passwords[0].value' --output tsv)
 ```
 
-## <a name="authenticate-using-token"></a>Belirteç kullanarak kimlik doğrulama
+## <a name="authenticate-using-token"></a>Authenticate using token
 
-Belirteç kimlik bilgilerini kullanarak kayıt defteri ile kimlik doğrulaması yapmak için `docker login` çalıştırın. Kullanıcı adı olarak belirteç adını girin ve parolalarından birini sağlayın. Aşağıdaki örnek bash kabuğu için biçimlendirilir ve ortam değişkenlerini kullanarak değerleri sağlar.
+Run `docker login` to authenticate with the registry using the token credentials. Enter the token name as the user name and provide one of its passwords. The following example is formatted for the bash shell, and provides the values using environment variables.
 
 ```bash
 TOKEN_NAME=MyToken
@@ -154,22 +149,22 @@ TOKEN_PWD=<token password>
 echo $TOKEN_PWD | docker login --username $TOKEN_NAME --password-stdin myregistry.azurecr.io
 ```
 
-Çıkış başarılı kimlik doğrulaması göstermelidir:
+Output should show successful authentication:
 
 ```console
 Login Succeeded
 ```
 
-## <a name="verify-scoped-access"></a>Kapsamlı erişimi doğrulama
+## <a name="verify-scoped-access"></a>Verify scoped access
 
-Belirtecin kayıt defterindeki depolara kapsamlı izinler sağladığını doğrulayabilirsiniz. Bu örnekte, aşağıdaki `docker pull` komutları `samples/hello-world` ve `samples/nginx` depolarında bulunan görüntüleri çekmek için başarıyla tamamlanır:
+You can verify that the token provides scoped permissions to the repositories in the registry. In this example, the following `docker pull` commands complete successfully to pull images available in the `samples/hello-world` and `samples/nginx` repositories:
 
 ```console
 docker pull myregistry.azurecr.io/samples/hello-world:v1
 docker pull myregistry.azurecr.io/samples/nginx:v1
 ```
 
-Örnek belirteç `content/write` eyleme yalnızca `samples/hello-world` deposunda izin verdiğinden `docker push`, bu depoya başarılı olur ancak `samples/nginx`için başarısız olur:
+Because the example token allows the `content/write` action only on the `samples/hello-world` repository, `docker push` succeeds to that repository but fails for `samples/nginx`:
 
 ```console
 # docker push succeeds
@@ -179,90 +174,90 @@ docker pull myregistry.azurecr.io/samples/hello-world:v1
 docker pull myregistry.azurecr.io/samples/nginx:v1
 ```
 
-## <a name="update-scope-map-and-token"></a>Kapsam eşlemesini ve belirtecini Güncelleştir
+## <a name="update-scope-map-and-token"></a>Update scope map and token
 
-Belirteç izinlerini güncelleştirmek için, [az ACR Scope-Map Update][az-acr-scope-map-update]kullanarak ilişkili kapsam eşlemesindeki izinleri güncelleştirin. Örneğin, `samples/hello-world` deposundaki `content/write` eylemini kaldırmak üzere *hayal Copemap* 'i güncelleştirmek için:
+To update token permissions, update the permissions in the associated scope map, using [az acr scope-map update][az-acr-scope-map-update]. For example, to update *MyScopeMap* to remove the `content/write` action on the `samples/hello-world` repository:
 
 ```azurecli
 az acr scope-map update --name MyScopeMap --registry myregistry \
   --remove samples/hello-world content/write
 ```
 
-Kapsam eşlemesi birden fazla belirteçle ilişkiliyse, komut tüm ilişkili belirteçlerin iznini günceller.
+If the scope map is associated with more than one token, the command updates the permission of all associated tokens.
 
-Farklı bir kapsam eşlemesine sahip bir belirteci güncelleştirmek istiyorsanız [az ACR Token Update][az-acr-token-update]' i çalıştırın. Örneğin:
+If you want to update a token with a different scope map, run [az acr token update][az-acr-token-update]. Örnek:
 
 ```azurecli
 az acr token update --name MyToken --registry myregistry \
   --scope-map MyNewScopeMap
 ```
 
-Bir belirteci güncelleştirdikten veya bir belirteçle ilişkili kapsam eşlemesinden sonra, izin değişiklikleri, belirteci kullanarak bir sonraki `docker login` veya diğer kimlik doğrulamasında geçerli olur.
+After updating a token, or a scope map associated with a token, the permission changes take effect at the next `docker login` or other authentication using the token.
 
-Bir belirteci güncelleştirdikten sonra, kayıt defterine erişmek için yeni parolalar oluşturmak isteyebilirsiniz. Çalıştır [az ACR Token Credential Generate][az-acr-token-credential-generate]. Örneğin:
+After updating a token, you might want to generate new passwords to access the registry. Run [az acr token credential generate][az-acr-token-credential-generate]. Örnek:
 
 ```azurecli
 az acr token credential generate \
   --name MyToken --registry myregistry --days 30
 ```
 
-## <a name="about-repository-scoped-permissions"></a>Depo kapsamlı izinler hakkında
+## <a name="about-repository-scoped-permissions"></a>About repository-scoped permissions
 
 ### <a name="concepts"></a>Kavramlar
 
-Depo kapsamındaki izinleri yapılandırmak için, Azure CLı 'daki komutları kullanarak bir *erişim belirteci* ve ilişkili *Kapsam haritası* oluşturursunuz.
+To configure repository-scoped permissions, you create an *access token* and an associated *scope map* using commands in the Azure CLI.
 
-* **Erişim belirteci** , kayıt defteri ile kimlik doğrulaması için parola ile kullanılan bir kimlik bilgileridir. Her belirteçle ilişkili, bir veya daha fazla depo kapsamındaki *eylemlere* izin verilir. Her belirteç için bir sona erme saati ayarlayabilirsiniz. 
+* An **access token** is a credential used with a password to authenticate with the registry. Associated with each token are permitted *actions* scoped to one or more repositories. You can set an expiration time for each token. 
 
-* Belirtilen her bir depodaki **Eylemler** aşağıdakilerden birini veya daha fazlasını içerir.
+* **Actions** on each specified repository include one or more of the following.
 
   |Eylem  |Açıklama  |
   |---------|---------|
-  |`content/read`     |  Depodan verileri okuyun. Örneğin, bir yapıt çekin.  |
-  |`metadata/read`    | Depodan meta verileri okuyun. Örneğin, etiketleri listeleyin veya bildirim meta verilerini gösterebilirsiniz.   |
-  |`content/write`     |  Verileri depoya yazın. Yapıtı göndermek için `content/read` ile kullanın.    |
-  |`metadata/write`     |  Meta verileri depoya yazın. Örneğin, bildirim özniteliklerini güncelleştirin.  |
-  |`content/delete`    | Verileri depodan kaldırın. Örneğin, bir depoyu veya bildirimi silin. |
+  |`content/read`     |  Read data from the repository. For example, pull an artifact.  |
+  |`metadata/read`    | Read metadata from the repository. For example, list tags or show manifest metadata.   |
+  |`content/write`     |  Write data to the repository. Use with `content/read` to push an artifact.    |
+  |`metadata/write`     |  Write metadata to the repository. For example, update manifest attributes.  |
+  |`content/delete`    | Remove data from the repository. For example, delete a repository or a manifest. |
 
-* **Kapsam eşlemesi** , bir belirteç için uyguladığınız depo izinlerini gruplandıran veya diğer belirteçlere yeniden uygulayabileceğiniz bir kayıt defteri nesnesidir. Bir belirteç oluştururken kapsam eşlemesi uygulamazsanız, izin ayarlarını kaydetmek için bir kapsam eşlemesi sizin için otomatik olarak oluşturulur. 
+* A **scope map** is a registry object that groups repository permissions you apply to a token, or can reapply to other tokens. If you don't apply a scope map when creating a token, a scope map is automatically created for you, to save the permission settings. 
 
-  Kapsam eşlemesi, birden fazla kullanıcıyı aynı depolar kümesine aynı erişimle yapılandırmanıza yardımcı olur. Azure Container Registry, erişim belirteçleri oluştururken uygulayabileceğiniz sistem tanımlı kapsam eşlemeleri de sağlar.
+  A scope map helps you configure multiple users with identical access to a set of repositories. Azure Container Registry also provides system-defined scope maps that you can apply when creating access tokens.
 
-Aşağıdaki görüntüde belirteçler ve kapsam haritaları arasındaki ilişki özetlenmektedir. 
+The following image summarizes the relationship between tokens and scope maps. 
 
-![Kayıt defteri kapsamı haritaları ve belirteçleri](media/container-registry-repository-scoped-permissions/token-scope-map-concepts.png)
+![Registry scope maps and tokens](media/container-registry-repository-scoped-permissions/token-scope-map-concepts.png)
 
 ### <a name="scenarios"></a>Senaryolar
 
-Erişim belirteci kullanmaya yönelik senaryolar şunlardır:
+Scenarios for using an access token include:
 
-* Bir depodan bir görüntü çekmek için bağımsız belirteçler olan IoT cihazları sağlama
-* Belirli bir depoya yönelik izinlere sahip bir dış kuruluş sağlayın 
-* Depolama erişimini kuruluşunuzdaki belirli kullanıcı gruplarıyla sınırlayın. Örneğin, belirli depoları hedefleyen görüntüler oluşturan geliştiriciler için yazma ve okuma erişimi ve bu depolardan dağıtım yapan takımlara okuma erişimi sağlayın.
+* Provide IoT devices with individual tokens to pull an image from a repository
+* Provide an external organization with permissions to a specific repository 
+* Limit repository access to specific user groups in your organization. For example, provide write and read access to developers who build images that target specific repositories, and read access to teams that deploy from those repositories.
 
-### <a name="authentication-using-token"></a>Belirteç kullanarak kimlik doğrulama
+### <a name="authentication-using-token"></a>Authentication using token
 
-Hedef kayıt defteriyle kimlik doğrulamak için Kullanıcı adı ve ilişkili parolalarından biri olarak bir belirteç adı kullanın. Kimlik doğrulama yöntemi yapılandırılan eylemlere bağlıdır.
+Use a token name as a user name and one of its associated passwords to authenticate with the target registry. The authentication method depends on the configured actions.
 
-### <a name="contentread-or-contentwrite"></a>İçerik/okuma veya içerik/yazma
+### <a name="contentread-or-contentwrite"></a>content/read or content/write
 
-Belirteç yalnızca `content/read` veya `content/write` eylemlerine izin veriyorsa, aşağıdaki kimlik doğrulama akışlarının her birinde belirteç kimlik bilgilerini sağlayın:
+If the token permits only `content/read` or `content/write` actions, provide token credentials in either of the following authentication flows:
 
-* `docker login` kullanarak Docker ile kimlik doğrulama
-* Azure CLı 'de [az ACR Login][az-acr-login] komutunu kullanarak kayıt defteriyle kimlik doğrulama
+* Authenticate with Docker using `docker login`
+* Authenticate with the registry using the [az acr login][az-acr-login] command in the Azure CLI
 
-Aşağıdaki kimlik doğrulama, belirteç kapsamlı depoda veya depolarda yapılandırılan eylemlere izin verir. Örneğin, belirteç bir depodaki `content/read` eyleme izin veriyorsa, bu depodaki görüntülerde `docker pull` işlemlerine izin verilir.
+Following authentication, the token permits the configured actions on the scoped repository or repositories. For example, if the token permits the `content/read` action on a repository, `docker pull` operations are permitted on images in that repository.
 
-#### <a name="metadataread-metadatawrite-or-contentdelete"></a>meta veri/okuma, meta veri/yazma veya içerik/silme
+#### <a name="metadataread-metadatawrite-or-contentdelete"></a>metadata/read, metadata/write, or content/delete
 
-Belirteç bir depoda `metadata/read`, `metadata/write`veya `content/delete` eylemlere izin veriyorsa, belirteç kimlik bilgileri, Azure CLı 'de ilgili [az ACR Repository][az-acr-repository] komutlarıyla birlikte parametre olarak sağlanmalıdır.
+If the token permits `metadata/read`, `metadata/write`, or `content/delete` actions on a repository, token credentials must be provided as parameters with the related [az acr repository][az-acr-repository] commands in the Azure CLI.
 
-Örneğin, bir depoda `metadata/read` eylemlere izin verildiğinde, etiketleri listelemek için [az ACR Repository Show-Tags][az-acr-repository-show-tags] komutunu çalıştırırken belirteç kimlik bilgilerini geçirin.
+For example, if `metadata/read` actions are permitted on a repository, pass the token credentials when running the [az acr repository show-tags][az-acr-repository-show-tags] command to list tags.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Kapsam haritalarını ve erişim belirteçlerini yönetmek için [az ACR Scope-Map][az-acr-scope-map] ve [az ACR Token][az-acr-token] komut gruplarındaki ek komutları kullanın.
-* Yönetici hesabı veya Azure Active Directory kimliği kullanarak bir Azure Container Registry ile kimlik doğrulaması yapmak için bkz. senaryolara [genel bakış](container-registry-authentication.md) .
+* To manage scope maps and access tokens, use additional commands in the [az acr scope-map][az-acr-scope-map] and [az acr token][az-acr-token] command groups.
+* See the [authentication overview](container-registry-authentication.md) for scenarios to authenticate with an Azure container registry using an admin account or an Azure Active Directory identity.
 
 
 <!-- LINKS - External -->

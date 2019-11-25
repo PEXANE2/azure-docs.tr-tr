@@ -1,113 +1,108 @@
 ---
-title: Azure Container Registry etiketlenmemiş bildirimleri tutma ilkesi
-description: Tanımlı bir dönemden sonra etiketlenmemiş bildirimlerin otomatik olarak silinmesi için, Azure Container kayıt defterinizde bekletme ilkesini etkinleştirmeyi öğrenin.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
+title: Policy to retain untagged manifests
+description: Learn how to enable a retention policy in your Azure container registry, for automatic deletion of untagged manifests after a defined period.
 ms.topic: article
 ms.date: 10/02/2019
-ms.author: danlep
-ms.openlocfilehash: 79b3e48373114bfcee6dca2e6142f23bed1699e6
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 912616b6ab95cdff91e70477c7d6de476ccfdfa7
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972645"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74454822"
 ---
-# <a name="set-a-retention-policy-for-untagged-manifests"></a>Etiketlenmemiş bildirimler için bekletme ilkesi ayarlama
+# <a name="set-a-retention-policy-for-untagged-manifests"></a>Set a retention policy for untagged manifests
 
-Azure Container Registry, ilişkili etiketleri (*etiketlenmemiş bildirimler*) olmayan depolanan görüntü bildirimleri için bir *bekletme ilkesi* ayarlama seçeneği sunar. Bir bekletme ilkesi etkinleştirildiğinde, kayıt defterindeki etiketlenmemiş bildirimler, bir dizi gün sonra otomatik olarak silinir. Bu özellik, kayıt defterinin gerekmeyen yapıtlara doldurmasını ve depolama maliyetlerinden tasarruf etmenize yardımcı olmasını önler. Etiketlenmemiş bir bildirimin `delete-enabled` özniteliği `false`olarak ayarlanırsa, bildirim silinemez ve bekletme ilkesi uygulanmaz.
+Azure Container Registry gives you the option to set a *retention policy* for stored image manifests that don't have any associated tags (*untagged manifests*). When a retention policy is enabled, untagged manifests in the registry are automatically deleted after a number of days you set. This feature prevents the registry from filling up with artifacts that aren't needed and helps you save on storage costs. If the `delete-enabled` attribute of an untagged manifest is set to `false`, the manifest can't be deleted, and the retention policy doesn't apply.
 
-Bu makaledeki komut örneklerini çalıştırmak için Azure CLı 'nın Azure Cloud Shell veya yerel bir yüklemesini kullanabilirsiniz. Yerel olarak kullanmak isterseniz, 2.0.74 veya üzeri sürümü gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme][azure-cli].
+You can use the Azure Cloud Shell or a local installation of the Azure CLI to run the command examples in this article. If you'd like to use it locally, version 2.0.74 or later is required. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme][azure-cli].
 
 > [!IMPORTANT]
-> Bu özellik şu anda önizleme aşamasındadır ve bazı [sınırlamalar geçerlidir](#preview-limitations). Önizlemeler, [ek kullanım koşullarını][terms-of-use] kabul etmeniz şartıyla kullanımınıza sunulur. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
+> This feature is currently in preview, and some [limitations apply](#preview-limitations). Önizlemeler, [ek kullanım koşullarını][terms-of-use] kabul etmeniz şartıyla kullanımınıza sunulur. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
 
 > [!WARNING]
-> Bakım ile bir bekletme ilkesi ayarlama--silinen görüntü verileri KURTARıLAMAZ. Bildirim özetine (görüntü adından farklı olarak) görüntüleri çeken sistemleriniz varsa, etiketlenmemiş bildirimler için bir bekletme ilkesi ayarlanmamalıdır. Etiketlenmemiş görüntüleri silmek, bu sistemlerin Kayıt defterinizden görüntüleri çekmesini engeller. Bildirime göre çekmek yerine, [Önerilen en iyi yöntem](container-registry-image-tag-version.md)olan *benzersiz etiketleme* düzenini benimsede düşünün.
+> Set a retention policy with care--deleted image data is UNRECOVERABLE. If you have systems that pull images by manifest digest (as opposed to image name), you should not set a retention policy for untagged manifests. Deleting untagged images will prevent those systems from pulling the images from your registry. Instead of pulling by manifest, consider adopting a *unique tagging* scheme, a [recommended best practice](container-registry-image-tag-version.md).
 
-## <a name="preview-limitations"></a>Önizleme sınırlamaları
+## <a name="preview-limitations"></a>Preview limitations
 
-* Yalnızca bir **Premium** kapsayıcı kayıt defteri, bekletme ilkesiyle yapılandırılabilir. Kayıt defteri hizmeti katmanları hakkında bilgi için bkz. [Azure Container Registry SKU 'lar](container-registry-skus.md).
-* Etiketlenmemiş bildirimler için yalnızca bir bekletme ilkesi ayarlayabilirsiniz.
-* Bekletme ilkesi Şu anda yalnızca ilke etkinleştirildikten *sonra* etiketlenmemiş bildirimler için geçerlidir. Kayıt defterindeki mevcut etiketlenmemiş bildirimler ilkeye tabi değildir. Mevcut etiketlenmemiş bildirimleri silmek için, bkz. [Azure Container Registry kapsayıcı resimlerini silme](container-registry-delete.md)örnekleri.
+* Only a **Premium** container registry can be configured with a retention policy. For information about registry service tiers, see [Azure Container Registry SKUs](container-registry-skus.md).
+* You can only set a retention policy for untagged manifests.
+* The retention policy currently applies only to manifests that are untagged *after* the policy is enabled. Existing untagged manifests in the registry aren't subject to the policy. To delete existing untagged manifests, see examples in [Delete container images in Azure Container Registry](container-registry-delete.md).
 
-## <a name="about-the-retention-policy"></a>Bekletme ilkesi hakkında
+## <a name="about-the-retention-policy"></a>About the retention policy
 
-Azure Container Registry, kayıt defterindeki bildirimler için başvuru saymasına sahiptir. Bir bildirim etiketsiz olduğunda, bekletme ilkesini denetler. Bir bekletme ilkesi etkinse, ilkede ayarlanan gün sayısına göre belirli bir tarihle bir bildirim silme işlemi sıraya alınır.
+Azure Container Registry does reference counting for manifests in the registry. When a manifest is untagged, it checks the retention policy. If a retention policy is enabled, a manifest delete operation is queued, with a specific date, according to the number of days set in the policy.
 
-Ayrı bir kuyruk yönetimi işi sürekli olarak iletileri işler ve gerektikçe ölçeklendirin. Örnek olarak, 30 günlük bir bekletme ilkesiyle bir kayıt defterindeki 1 saat olmak üzere iki bildirimin etiketlenmemiş olduğunu varsayalım. İki ileti sıraya alınır. Ardından, 30 gün sonra yaklaşık 1 saat sonra, iletiler kuyruktan alınır ve işlenir ve bu da ilkenin hala geçerli olduğu kabul edilir.
+A separate queue management job constantly processes messages, scaling as needed. As an example, suppose you untagged two manifests, 1 hour apart, in a registry with a retention policy of 30 days. Two messages would be queued. Then, 30 days later, approximately 1 hour apart, the messages would be retrieved from the queue and processed, assuming the policy was still in effect.
 
-## <a name="set-a-retention-policy---cli"></a>Bekletme ilkesi ayarlama-CLı
+## <a name="set-a-retention-policy---cli"></a>Set a retention policy - CLI
 
-Aşağıdaki örnekte, bir kayıt defterindeki etiketlenmemiş bildirimler için bir bekletme ilkesi ayarlamak üzere Azure CLı 'nın nasıl kullanılacağı gösterilmektedir.
+The following example shows you how to use the Azure CLI to set a retention policy for untagged manifests in a registry.
 
-### <a name="enable-a-retention-policy"></a>Bekletme ilkesini etkinleştirme
+### <a name="enable-a-retention-policy"></a>Enable a retention policy
 
-Varsayılan olarak, bir kapsayıcı kayıt defterinde hiçbir bekletme ilkesi ayarlanmadı. Bir bekletme ilkesi ayarlamak veya güncelleştirmek için, Azure CLı 'de [az ACR config bekletme güncelleştirme][az-acr-config-retention-update] komutunu çalıştırın. Etiketlenmemiş bildirimleri sürdürmek için 0 ile 365 arasında bir gün sayısı belirtebilirsiniz. Gün sayısı belirtmezseniz, komut varsayılan olarak 7 gün ayarlar. Saklama süresinden sonra, kayıt defterindeki etiketlenmemiş tüm bildirimler otomatik olarak silinir.
+By default, no retention policy is set in a container registry. To set or update a retention policy, run the [az acr config retention update][az-acr-config-retention-update] command in the Azure CLI. You can specify a number of days between 0 and 365 to retain the untagged manifests. If you don't specify a number of days, the command sets a default of 7 days. After the retention period, all untagged manifests in the registry are automatically deleted.
 
-Aşağıdaki örnek, kayıt defteri *myregistry*içindeki etiketlenmemiş bildirimler için 30 günlük bir bekletme ilkesi ayarlar:
+The following example sets a retention policy of 30 days for untagged manifests in the registry *myregistry*:
 
 ```azurecli
 az acr config retention update --registry myregistry --status enabled --days 30 --type UntaggedManifests
 ```
 
-Aşağıdaki örnek, kayıt defterindeki herhangi bir bildirimi etiketsiz olduğu anda silmek için bir ilke ayarlar. 0 günlük bir bekletme dönemi ayarlayarak bu ilkeyi oluşturun. 
+The following example sets a policy to delete any manifest in the registry as soon as it's untagged. Create this policy by setting a retention period of 0 days. 
 
 ```azurecli
 az acr config retention update --registry myregistry --status enabled --days 0 --type UntaggedManifests
 ```
 
-### <a name="validate-a-retention-policy"></a>Bekletme ilkesini doğrulama
+### <a name="validate-a-retention-policy"></a>Validate a retention policy
 
-Önceki ilkeyi 0 günlük bir bekletme süresiyle etkinleştirirseniz etiketlenmemiş bildirimlerin silindiğini hızlı bir şekilde doğrulayabilirsiniz:
+If you enable the preceding policy with a retention period of 0 days, you can quickly verify that untagged manifests are deleted:
 
-1. Kayıt defterinize bir test görüntüsünü `hello-world:latest` görüntüsünü gönderin veya seçtiğiniz başka bir test görüntüsünü değiştirin.
-1. `hello-world:latest` görüntüsünün etiketini kaldırın, örneğin, [az ACR Repository untag][az-acr-repository-untag] komutunu kullanma. Etiketlenmemiş bildirim kayıt defterinde kalır.
+1. Push a test image `hello-world:latest` image to your registry, or substitute another test image of your choice.
+1. Untag the `hello-world:latest` image, for example, using the [az acr repository untag][az-acr-repository-untag] command. The untagged manifest remains in the registry.
     ```azurecli
     az acr repository untag --name myregistry --image hello-world:latest
     ```
-1. Birkaç saniye içinde etiketlenmemiş bildirim silinir. Örneğin, [az ACR Repository Show-bildirimleri][az-acr-repository-show-manifests] komutunu kullanarak depodaki bildirimleri listeleyerek silme işlemini doğrulayabilirsiniz. Test görüntüsü depodaki tek tek ise, deponun kendisi silinir.
+1. Within a few seconds, the untagged manifest is deleted. You can verify the deletion by listing manifests in the repository, for example, using the [az acr repository show-manifests][az-acr-repository-show-manifests] command. If the test image was the only one in the repository, the repository itself is deleted.
 
-### <a name="disable-a-retention-policy"></a>Bekletme ilkesini devre dışı bırakma
+### <a name="disable-a-retention-policy"></a>Disable a retention policy
 
-Kayıt defterinde ayarlanan bekletme ilkesini görmek için [az ACR config bekletme göster][az-acr-config-retention-show] komutunu çalıştırın:
+To see the retention policy set in a registry, run the [az acr config retention show][az-acr-config-retention-show] command:
 
 ```azurecli
 az acr config retention show --registry myregistry
 ```
 
-Bir kayıt defterinde bekletme ilkesini devre dışı bırakmak için [az ACR config bekletme güncelleştirme][az-acr-config-retention-update] komutunu çalıştırın ve `--status disabled`ayarlayın:
+To disable a retention policy in a registry, run the [az acr config retention update][az-acr-config-retention-update] command and set `--status disabled`:
 
 ```azurecli
 az acr config retention update --registry myregistry --status disabled --type UntaggedManifests
 ```
 
-## <a name="set-a-retention-policy---portal"></a>Bekletme ilkesi ayarlama-Portal
+## <a name="set-a-retention-policy---portal"></a>Set a retention policy - portal
 
-Ayrıca, [Azure Portal](https://portal.azure.com)bir kayıt defterinin bekletme ilkesini ayarlayabilirsiniz. Aşağıdaki örnekte, bir kayıt defterindeki etiketlenmemiş bildirimler için bir bekletme ilkesi ayarlamak üzere portalın nasıl kullanılacağı gösterilmektedir.
+You can also set a registry's retention policy in the [Azure portal](https://portal.azure.com). The following example shows you how to use the portal to set a retention policy for untagged manifests in a registry.
 
-### <a name="enable-a-retention-policy"></a>Bekletme ilkesini etkinleştirme
+### <a name="enable-a-retention-policy"></a>Enable a retention policy
 
-1. Azure Container Registry 'nize gidin. **İlkeler**altında, **bekletme** (Önizleme) öğesini seçin.
-1. **Durum**' da **etkin**' i seçin.
-1. Etiketlenmemiş bildirimleri sürdürmek için 0 ile 365 arasında bir gün sayısı seçin. **Kaydet**’i seçin.
+1. Navigate to your Azure container registry. Under **Policies**, select **Retention** (Preview).
+1. In **Status**, select **Enabled**.
+1. Select a number of days between 0 and 365 to retain the untagged manifests. **Kaydet**’i seçin.
 
-![Azure portal bir bekletme ilkesi etkinleştirme](media/container-registry-retention-policy/container-registry-retention-policy01.png)
+![Enable a retention policy in Azure portal](media/container-registry-retention-policy/container-registry-retention-policy01.png)
 
-### <a name="disable-a-retention-policy"></a>Bekletme ilkesini devre dışı bırakma
+### <a name="disable-a-retention-policy"></a>Disable a retention policy
 
-1. Azure Container Registry 'nize gidin. **İlkeler**altında, **bekletme** (Önizleme) öğesini seçin.
-1. **Durum**' da **devre dışı**' yı seçin. **Kaydet**’i seçin.
+1. Navigate to your Azure container registry. Under **Policies**, select **Retention** (Preview).
+1. In **Status**, select **Disabled**. **Kaydet**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Container Registry [görüntüleri ve depoları silmeye](container-registry-delete.md) yönelik seçenekler hakkında daha fazla bilgi edinin
+* Learn more about options to [delete images and repositories](container-registry-delete.md) in Azure Container Registry
 
-* Seçili görüntüleri ve bildirimleri bir kayıt defterinden [otomatik olarak temizlemeyi](container-registry-auto-purge.md) öğrenin
+* Learn how to [automatically purge](container-registry-auto-purge.md) selected images and manifests from a registry
 
-* Kayıt defterindeki [görüntüleri ve bildirimleri kilitleme](container-registry-image-lock.md) seçenekleri hakkında daha fazla bilgi edinin
+* Learn more about options to [lock images and manifests](container-registry-image-lock.md) in a registry
 
 <!-- LINKS - external -->
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/

@@ -1,51 +1,46 @@
 ---
-title: Azure Container Registry resim kaynaklarını silme
-description: Azure CLı komutları kullanılarak kapsayıcı görüntüsü verilerini silerek kayıt defteri boyutunu etkin bir şekilde yönetme hakkında ayrıntılar.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
+title: Delete image resources
+description: Details on how to effectively manage registry size by deleting container image data using Azure CLI commands.
 ms.topic: article
 ms.date: 07/31/2019
-ms.author: danlep
-ms.openlocfilehash: d415bef80ed8c96ff6e5df81ae9281ae681a4879
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 8d20bf2be1d472855c3e67dd79ea1725c152e3d2
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300179"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74455273"
 ---
-# <a name="delete-container-images-in-azure-container-registry-using-the-azure-cli"></a>Azure CLı kullanarak Azure Container Registry kapsayıcı görüntülerini silme
+# <a name="delete-container-images-in-azure-container-registry-using-the-azure-cli"></a>Delete container images in Azure Container Registry using the Azure CLI
 
-Azure Container Registry 'nizin boyutunu korumak için eski görüntü verilerini düzenli aralıklarla silmelisiniz. Üretime dağıtılan bazı kapsayıcı görüntüleri, daha uzun süreli depolama gerektirebilir, ancak diğerleri genellikle daha hızlı silinebilir. Örneğin, bir otomatik derleme ve test senaryosunda, kayıt defteriniz hiçbir şekilde dağıtılmayan görüntülerle hızla doldurabilir ve derleme ve test geçişini tamamladıktan sonra kısa bir süre sonra temizlenir.
+To maintain the size of your Azure container registry, you should periodically delete stale image data. While some container images deployed into production may require longer-term storage, others can typically be deleted more quickly. For example, in an automated build and test scenario, your registry can quickly fill with images that might never be deployed, and can be purged shortly after completing the build and test pass.
 
-Görüntü verilerini birçok farklı şekilde silebildiğinden, her silme işleminin depolama kullanımını nasıl etkilediğini anlamak önemlidir. Bu makalede, görüntü verilerini silmeye yönelik çeşitli yöntemler ele alınmaktadır:
+Because you can delete image data in several different ways, it's important to understand how each delete operation affects storage usage. This article covers several methods for deleting image data:
 
-* [Depoyu](#delete-repository)silme: Tüm görüntüleri ve depodaki tüm benzersiz katmanları siler.
-* [Etikete](#delete-by-tag)göre Sil: Görüntüyü, etiketi, görüntünün başvurduğu tüm benzersiz katmanları ve görüntüyle ilişkili diğer tüm etiketleri siler.
-* [Bildirim özetine](#delete-by-manifest-digest)göre Sil: Görüntü tarafından başvurulan tüm benzersiz katmanları ve görüntüyle ilişkili tüm etiketleri siler.
+* Delete a [repository](#delete-repository): Deletes all images and all unique layers within the repository.
+* Delete by [tag](#delete-by-tag): Deletes an image, the tag, all unique layers referenced by the image, and all other tags associated with the image.
+* Delete by [manifest digest](#delete-by-manifest-digest): Deletes an image, all unique layers referenced by the image, and all tags associated with the image.
 
-Örnek betikler, silme işlemlerinin otomatikleştirilmesine yardımcı olmak için sağlanır.
+Sample scripts are provided to help automate delete operations.
 
-Bu kavramlara giriş için bkz. [kayıt defterleri, depolar ve görüntüler hakkında](container-registry-concepts.md).
+For an introduction to these concepts, see [About registries, repositories, and images](container-registry-concepts.md).
 
-## <a name="delete-repository"></a>Depoyu Sil
+## <a name="delete-repository"></a>Delete repository
 
-Bir deponun silinmesi, tüm Etiketler, benzersiz katmanlar ve bildirimler dahil olmak üzere depodaki tüm görüntüleri siler. Bir depoyu sildiğinizde, bu depodaki benzersiz katmanlara başvuran görüntüler tarafından kullanılan depolama alanını kurtarmanız gerekir.
+Deleting a repository deletes all of the images in the repository, including all tags, unique layers, and manifests. When you delete a repository, you recover the storage space used by the images that reference unique layers in that repository.
 
-Aşağıdaki Azure CLı komutu, "ACR-HelloWorld" deposunu ve depo içindeki tüm etiketleri ve bildirimleri siler. Silinen bildirimler tarafından başvurulan katmanlara kayıt defterindeki diğer görüntülerde başvurulmuyorsa, depolama alanını kurtararak bunların katman verileri de silinir.
+The following Azure CLI command deletes the "acr-helloworld" repository and all tags and manifests within the repository. If layers referenced by the deleted manifests are not referenced by any other images in the registry, their layer data is also deleted, recovering the storage space.
 
 ```azurecli
  az acr repository delete --name myregistry --repository acr-helloworld
 ```
 
-## <a name="delete-by-tag"></a>Etikete göre Sil
+## <a name="delete-by-tag"></a>Delete by tag
 
-Silme işleminde depo adını ve etiketini belirterek, bir depodan tek tek görüntüleri silebilirsiniz. Etiketine göre sildiğinizde, görüntüdeki tüm benzersiz katmanlar tarafından kullanılan depolama alanını kurtarmanız gerekir (Bu, kayıt defterindeki diğer görüntüler tarafından paylaşılmayan Katmanlar).
+You can delete individual images from a repository by specifying the repository name and tag in the delete operation. When you delete by tag, you recover the storage space used by any unique layers in the image (layers not shared by any other images in the registry).
 
-Etikete göre silmek için [az ACR Repository Delete][az-acr-repository-delete] kullanın ve `--image` parametre içinde görüntü adını belirtin. Görüntüye özgü tüm katmanlar ve görüntüyle ilişkili diğer Etiketler silinir.
+To delete by tag, use [az acr repository delete][az-acr-repository-delete] and specify the image name in the `--image` parameter. All layers unique to the image, and any other tags associated with the image are deleted.
 
-Örneğin, "ACR-HelloWorld: latest" görüntüsünü "myregistry" kayıt defterinden silme:
+For example, deleting the "acr-helloworld:latest" image from registry "myregistry":
 
 ```azurecli
 $ az acr repository delete --name myregistry --image acr-helloworld:latest
@@ -54,13 +49,13 @@ Are you sure you want to continue? (y/n): y
 ```
 
 > [!TIP]
-> Etikete *göre* silme bir etiketi (etiketlemesini kaldırma) ile karıştırılmamalıdır. Azure CLı komutu ile bir etiketi silmek için [az ACR Repository untag][az-acr-repository-untag]. Bir görüntünün etiketini kaldırdığınızda hiçbir boşluk serbest bırakılmaz çünkü [bildirim](container-registry-concepts.md#manifest) ve katman verileri kayıt defterinde kalır. Yalnızca etiket başvurusunun kendisi silinir.
+> Deleting *by tag* shouldn't be confused with deleting a tag (untagging). You can delete a tag with the Azure CLI command [az acr repository untag][az-acr-repository-untag]. No space is freed when you untag an image because its [manifest](container-registry-concepts.md#manifest) and layer data remain in the registry. Only the tag reference itself is deleted.
 
-## <a name="delete-by-manifest-digest"></a>Bildirim özetine göre Sil
+## <a name="delete-by-manifest-digest"></a>Delete by manifest digest
 
-Bir [bildirim Özeti](container-registry-concepts.md#manifest-digest) bir, None veya birden çok etiketle ilişkilendirilebilir. Özet ile sildiğinizde, bildirim tarafından başvurulan tüm Etiketler, görüntüye özgü tüm katmanlarda katman verileri olduğu gibi silinir. Paylaşılan katman verileri silinmedi.
+A [manifest digest](container-registry-concepts.md#manifest-digest) can be associated with one, none, or multiple tags. When you delete by digest, all tags referenced by the manifest are deleted, as is layer data for any layers unique to the image. Shared layer data is not deleted.
 
-Özet olarak silmek için, önce silmek istediğiniz görüntüleri içeren deponun bildirim bildirimlerini listeleyin. Örneğin:
+To delete by digest, first list the manifest digests for the repository containing the images you wish to delete. Örnek:
 
 ```console
 $ az acr repository show-manifests --name myregistry --repository acr-helloworld
@@ -83,13 +78,13 @@ $ az acr repository show-manifests --name myregistry --repository acr-helloworld
 ]
 ```
 
-Ardından, [az ACR Repository Delete][az-acr-repository-delete] komutunda silmek istediğiniz Özeti belirtin. Komut biçimi şu şekildedir:
+Next, specify the digest you wish to delete in the [az acr repository delete][az-acr-repository-delete] command. Komut biçimi şu şekildedir:
 
 ```azurecli
 az acr repository delete --name <acrName> --image <repositoryName>@<digest>
 ```
 
-Örneğin, önceki çıktıda listelenen son bildirimi silmek için ("v2" etiketiyle birlikte):
+For example, to delete the last manifest listed in the preceding output (with the tag "v2"):
 
 ```console
 $ az acr repository delete --name myregistry --image acr-helloworld@sha256:3168a21b98836dda7eb7a846b3d735286e09a32b0aa2401773da518e7eba3b57
@@ -97,23 +92,23 @@ This operation will delete the manifest 'sha256:3168a21b98836dda7eb7a846b3d73528
 Are you sure you want to continue? (y/n): y
 ```
 
-`acr-helloworld:v2` Görüntü, söz konusu görüntüye özgü herhangi bir katman verisi olduğundan, kayıt defterinden silinir. Bir bildirim birden çok etiketle ilişkiliyse, ilişkili tüm Etiketler de silinir.
+The `acr-helloworld:v2` image is deleted from the registry, as is any layer data unique to that image. If a manifest is associated with multiple tags, all associated tags are also deleted.
 
-## <a name="delete-digests-by-timestamp"></a>Zaman damgasına göre özetleri 'yi Sil
+## <a name="delete-digests-by-timestamp"></a>Delete digests by timestamp
 
-Bir deponun veya kayıt defterinin boyutunu korumak için belirli bir tarihten daha eski bildirim türlerini düzenli olarak silmeniz gerekebilir.
+To maintain the size of a repository or registry, you might need to periodically delete manifest digests older than a certain date.
 
-Aşağıdaki Azure CLı komutu, belirli bir zaman damgasından daha eski bir depodaki tüm bildirim özetini artan düzende listeler. `<acrName>` Ve`<repositoryName>` değerlerini ortamınız için uygun değerlerle değiştirin. Bu örnekte olduğu gibi, zaman damgası tam bir tarih-saat ifadesi veya tarih olabilir.
+The following Azure CLI command lists all manifest digest in a repository older than a specified timestamp, in ascending order. Replace `<acrName>` and `<repositoryName>` with values appropriate for your environment. The timestamp could be a full date-time expression or a date, as in this example.
 
 ```azurecli
 az acr repository show-manifests --name <acrName> --repository <repositoryName> \
 --orderby time_asc -o tsv --query "[?timestamp < '2019-04-05'].[digest, timestamp]"
 ```
 
-Eski bildirim dallarını tanımladıktan sonra, belirtilen zaman damgasından daha eski bildirim bildirimlerini silmek için aşağıdaki Bash betiğini çalıştırabilirsiniz. Azure CLı ve **xargs**gerektirir. Varsayılan olarak, komut dosyası silme işlemini gerçekleştirir. Görüntüyü silme işlemini etkinleştirmek `true` için değeriniolarakdeğiştirin.`ENABLE_DELETE`
+After identifying stale manifest digests, you can run the following Bash script to delete manifest digests older than a specified timestamp. It requires the Azure CLI and **xargs**. By default, the script performs no deletion. Change the `ENABLE_DELETE` value to `true` to enable image deletion.
 
 > [!WARNING]
-> Aşağıdaki örnek betiği dikkatle kullanın--silinen görüntü verileri KURTARıLAMAZ. Bildirim özetine (görüntü adından farklı olarak) görüntüleri çeken sistemleriniz varsa, bu betikleri çalıştırmamalıdır. Bildirim özetleri silindiğinde, bu sistemlerin Kayıt defterinizden görüntüleri çekmesini engeller. Bildirime göre çekmek yerine, [Önerilen en iyi yöntem](container-registry-image-tag-version.md)olan *benzersiz etiketleme* düzenini benimsede düşünün. 
+> Use the following sample script with caution--deleted image data is UNRECOVERABLE. If you have systems that pull images by manifest digest (as opposed to image name), you should not run these scripts. Deleting the manifest digests will prevent those systems from pulling the images from your registry. Instead of pulling by manifest, consider adopting a *unique tagging* scheme, a [recommended best practice](container-registry-image-tag-version.md). 
 
 ```bash
 #!/bin/bash
@@ -146,12 +141,12 @@ else
 fi
 ```
 
-## <a name="delete-untagged-images"></a>Etiketlenmemiş görüntüleri Sil
+## <a name="delete-untagged-images"></a>Delete untagged images
 
-[Bildirim Özeti](container-registry-concepts.md#manifest-digest) bölümünde belirtildiği gibi, var olan bir etiketi kullanarak değiştirilmiş bir görüntüyü, daha önce gönderilen görüntünün etiketlerini, bir tek kalan (veya "Dangling") görüntüsüne neden olacak şekilde **çıkarır** . Daha önce gönderilen görüntünün bildirimi ve katman verileri--kayıt defterinde kalır. Aşağıdaki olay sırasını göz önünde bulundurun:
+As mentioned in the [Manifest digest](container-registry-concepts.md#manifest-digest) section, pushing a modified image using an existing tag **untags** the previously pushed image, resulting in an orphaned (or "dangling") image. The previously pushed image's manifest--and its layer data--remains in the registry. Consider the following sequence of events:
 
-1. İlet resmi *ACR-HelloWorld* WITH Tag **latest**:`docker push myregistry.azurecr.io/acr-helloworld:latest`
-1. Depo *ACR-HelloWorld*için bildirimleri denetle:
+1. Push image *acr-helloworld* with tag **latest**: `docker push myregistry.azurecr.io/acr-helloworld:latest`
+1. Check manifests for repository *acr-helloworld*:
 
    ```console
    $ az acr repository show-manifests --name myregistry --repository acr-helloworld
@@ -166,9 +161,9 @@ fi
    ]
    ```
 
-1. *ACR-HelloWorld* dockerfile 'ı değiştirme
-1. İlet resmi *ACR-HelloWorld* WITH Tag **latest**:`docker push myregistry.azurecr.io/acr-helloworld:latest`
-1. Depo *ACR-HelloWorld*için bildirimleri denetle:
+1. Modify *acr-helloworld* Dockerfile
+1. Push image *acr-helloworld* with tag **latest**: `docker push myregistry.azurecr.io/acr-helloworld:latest`
+1. Check manifests for repository *acr-helloworld*:
 
    ```console
    $ az acr repository show-manifests --name myregistry --repository acr-helloworld
@@ -188,24 +183,24 @@ fi
    ]
    ```
 
-Sıradaki son adımın çıktısında görebileceğiniz gibi, artık `"tags"` özelliği boş bir liste olan bir yalnız bırakılmış bildirim vardır. Bu bildirim, başvurduğu benzersiz katman verileriyle birlikte kayıt defteri içinde de bulunur. **Bu tür yalnız bırakılmış görüntüleri ve bunların katman verilerini silmek için bildirim özetine göre silmeniz gerekir**.
+As you can see in the output of the last step in the sequence, there is now an orphaned manifest whose `"tags"` property is an empty list. This manifest still exists within the registry, along with any unique layer data that it references. **To delete such orphaned images and their layer data, you must delete by manifest digest**.
 
-## <a name="delete-all-untagged-images"></a>Etiketlenmemiş tüm görüntüleri Sil
+## <a name="delete-all-untagged-images"></a>Delete all untagged images
 
-Aşağıdaki Azure CLı komutunu kullanarak, Deponuzdaki tüm etiketlenmemiş görüntüleri listeleyebilirsiniz. `<acrName>` Ve`<repositoryName>` değerlerini ortamınız için uygun değerlerle değiştirin.
+You can list all untagged images in your repository using the following Azure CLI command. Replace `<acrName>` and `<repositoryName>` with values appropriate for your environment.
 
 ```azurecli
 az acr repository show-manifests --name <acrName> --repository <repositoryName> --query "[?tags[0]==null].digest"
 ```
 
-Bu komutu bir betikte kullanarak, bir depodaki tüm etiketlenmemiş görüntüleri silebilirsiniz.
+Using this command in a script, you can delete all untagged images in a repository.
 
 > [!WARNING]
-> Aşağıdaki örnek komut dosyalarını dikkatli bir şekilde kullanın--silinen görüntü verileri KURTARıLAMAZ. Bildirim özetine (görüntü adından farklı olarak) görüntüleri çeken sistemleriniz varsa, bu betikleri çalıştırmamalıdır. Etiketlenmemiş görüntüleri silmek, bu sistemlerin Kayıt defterinizden görüntüleri çekmesini engeller. Bildirime göre çekmek yerine, [Önerilen en iyi yöntem](container-registry-image-tag-version.md)olan *benzersiz etiketleme* düzenini benimsede düşünün.
+> Use the following sample scripts with caution--deleted image data is UNRECOVERABLE. If you have systems that pull images by manifest digest (as opposed to image name), you should not run these scripts. Deleting untagged images will prevent those systems from pulling the images from your registry. Instead of pulling by manifest, consider adopting a *unique tagging* scheme, a [recommended best practice](container-registry-image-tag-version.md).
 
-**Bash 'de Azure CLı**
+**Azure CLI in Bash**
 
-Aşağıdaki Bash betiği, bir depodaki tüm etiketlenmemiş görüntüleri siler. Azure CLı ve **xargs**gerektirir. Varsayılan olarak, komut dosyası silme işlemini gerçekleştirir. Görüntüyü silme işlemini etkinleştirmek `true` için değeriniolarakdeğiştirin.`ENABLE_DELETE`
+The following Bash script deletes all untagged images from a repository. It requires the Azure CLI and **xargs**. By default, the script performs no deletion. Change the `ENABLE_DELETE` value to `true` to enable image deletion.
 
 ```bash
 #!/bin/bash
@@ -233,9 +228,9 @@ else
 fi
 ```
 
-**PowerShell 'de Azure CLı**
+**Azure CLI in PowerShell**
 
-Aşağıdaki PowerShell betiği, bir depodaki tüm etiketlenmemiş görüntüleri siler. PowerShell ve Azure CLı gerektirir. Varsayılan olarak, komut dosyası silme işlemini gerçekleştirir. Görüntüyü silme işlemini etkinleştirmek `$TRUE` için değeriniolarakdeğiştirin.`$enableDelete`
+The following PowerShell script deletes all untagged images from a repository. It requires PowerShell and the Azure CLI. By default, the script performs no deletion. Change the `$enableDelete` value to `$TRUE` to enable image deletion.
 
 ```powershell
 # WARNING! This script deletes data!
@@ -262,13 +257,13 @@ if ($enableDelete) {
 
 ## <a name="automatically-purge-tags-and-manifests-preview"></a>Etiketleri ve bildirimleri otomatik olarak temizleme (önizleme)
 
-Azure CLı komutlarını komut dosyası oluşturmaya alternatif olarak, belirli bir süreden daha eski olan veya belirtilen bir ad filtresiyle eşleşen tüm etiketleri silmek için isteğe bağlı veya zamanlanmış bir ACR görevi çalıştırın. Daha fazla bilgi için bkz. [Azure Container Registry 'den görüntüleri otomatik olarak temizleme](container-registry-auto-purge.md).
+As an alternative to scripting Azure CLI commands, run an on-demand or scheduled ACR task to delete all tags that are older than a certain duration or match a specified name filter. For more information, see [Automatically purge images from an Azure container registry](container-registry-auto-purge.md).
 
-Etiketlenmemiş bildirimleri yönetmek için isteğe bağlı olarak her kayıt defteri için bir [bekletme ilkesi](container-registry-retention-policy.md) ayarlayın. Bir bekletme ilkesini etkinleştirdiğinizde, ilişkili etiketi olmayan kayıt defterindeki görüntü bildirimleri ve temel alınan katman verileri bir ayarlanan dönemden sonra otomatik olarak silinir.
+Optionally set a [retention policy](container-registry-retention-policy.md) for each registry, to manage untagged manifests. When you enable a retention policy, image manifests in the registry that don't have any associated tags, and the underlying layer data, are automatically deleted after a set period.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Container Registry görüntü depolama hakkında daha fazla bilgi için bkz. [Azure Container Registry Içindeki kapsayıcı görüntü depolaması](container-registry-storage.md).
+For more information about image storage in Azure Container Registry see [Container image storage in Azure Container Registry](container-registry-storage.md).
 
 <!-- IMAGES -->
 [manifest-digest]: ./media/container-registry-delete/01-manifest-digest.png

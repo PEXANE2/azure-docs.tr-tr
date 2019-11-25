@@ -1,58 +1,54 @@
 ---
-title: Azure Container Registry görevde dış kimlik doğrulaması
-description: Görevin bir Azure Anahtar Kasası 'nda depolanan Docker Hub kimlik bilgilerini okumasına izin vermek için bir Azure Container Registry (ACR) görevinde Azure kaynakları için yönetilen bir kimliği etkinleştirin.
-services: container-registry
-author: dlepow
-ms.service: container-registry
+title: External authentication from ACR task
+description: Enable a managed identity for Azure Resources in an Azure Container Registry (ACR) task to allow the task to read Docker Hub credentials stored in an Azure key vault.
 ms.topic: article
 ms.date: 07/12/2019
-ms.author: danlep
-ms.openlocfilehash: bcaf2918c92ec7b8223d394290a1d7c624fc451c
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: a7086050a4aef380f11298c819817692396216b2
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69509230"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456228"
 ---
-# <a name="external-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Azure tarafından yönetilen kimlik kullanarak bir ACR görevinde dış kimlik doğrulama 
+# <a name="external-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>External authentication in an ACR task using an Azure-managed identity 
 
-Bir [ACR görevinde](container-registry-tasks-overview.md), [Azure kaynakları için yönetilen bir kimliği etkinleştirebilirsiniz](container-registry-tasks-authentication-managed-identity.md). Görev, kimlik bilgilerini sağlamaya veya yönetmeye gerek kalmadan diğer Azure kaynaklarına erişmek için kimliği kullanabilir. 
+In an [ACR task](container-registry-tasks-overview.md), you can [enable a managed identity for Azure resources](container-registry-tasks-authentication-managed-identity.md). The task can use the identity to access other Azure resources, without needing to provide or manage credentials. 
 
-Bu makalede, bir Azure Anahtar Kasası 'nda depolanan gizli dizileri 'ne erişen bir görevde yönetilen bir kimliği nasıl etkinleştireceğinizi öğreneceksiniz. 
+In this article, you learn how to enable a managed identity in a task that accesses secrets stored in an Azure key vault. 
 
-Azure kaynaklarını oluşturmak için bu makale, Azure CLı sürüm 2.0.68 veya üstünü çalıştırmanızı gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme][azure-cli].
+To create the Azure resources, this article requires that you run the Azure CLI version 2.0.68 or later. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme][azure-cli].
 
 ## <a name="scenario-overview"></a>Senaryoya genel bakış
 
-Örnek görev, bir Azure Anahtar Kasası 'nda depolanan Docker Hub kimlik bilgilerini okur. Kimlik bilgileri, Docker Hub 'daki özel bir depoya yazma (gönderme) izinlerine sahip bir Docker Hub hesabı içindir. Kimlik bilgilerini okumak için, görevi yönetilen bir kimlikle yapılandırın ve ilgili izinleri buna atayın. Kimlik ile ilişkili görev bir görüntü oluşturur ve resmi özel depoya göndermek için Docker Hub 'da oturum açar. 
+The example task reads Docker Hub credentials stored in an Azure key vault. The credentials are for a Docker Hub account with write (push) permissions to a private repository in Docker Hub. To read the credentials, you configure the task with a managed identity and assign appropriate permissions to it. The task associated with the identity builds an image, and signs into Docker Hub to push the image to the private repo. 
 
-Bu örnek, Kullanıcı tarafından atanan veya sistem tarafından atanan yönetilen kimlik kullanarak adımları gösterir. Kimlik seçiminiz, kuruluşunuzun ihtiyaçlarına bağlıdır.
+This example shows steps using either a user-assigned or system-assigned managed identity. Your choice of identity depends on your organization's needs.
 
-Gerçek dünyada bir senaryoda, bir şirket, bir yapı işleminin parçası olarak Docker Hub 'daki özel bir depoya görüntü yayımlayabilir. 
+In a real-world scenario, a company might publish images to a private repo in Docker Hub as part of a build process. 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Görevi çalıştırdığınız bir Azure Container Registry 'ye ihtiyacınız vardır. Bu makalede, bu kayıt defteri *myregistry*olarak adlandırılmıştır. Sonraki adımlarda kendi kayıt defteriniz adıyla değiştirin.
+You need an Azure container registry in which you run the task. In this article, this registry is named *myregistry*. Replace with your own registry name in later steps.
 
-Zaten bir Azure Container kayıt defteriniz [yoksa hızlı başlangıç: Azure CLı](container-registry-get-started-azure-cli.md)kullanarak özel bir kapsayıcı kayıt defteri oluşturun. Görüntüleri kayıt defterine henüz göndermeniz gerekmez.
+If you don't already have an Azure container registry, see [Quickstart: Create a private container registry using the Azure CLI](container-registry-get-started-azure-cli.md). You don't need to push images to the registry yet.
 
-Ayrıca, Docker Hub 'da özel bir depoya ve depoya yazma izinlerine sahip bir Docker Hub hesabına ihtiyacınız vardır. Bu örnekte, bu depo, *hubuser/hubrepo*olarak adlandırılmıştır. 
+You also need a private repository in Docker Hub, and a Docker Hub account with permissions to write to the repo. In this example, this repo is named *hubuser/hubrepo*. 
 
-## <a name="create-a-key-vault-and-store-secrets"></a>Anahtar Kasası oluşturma ve gizli dizileri depolama
+## <a name="create-a-key-vault-and-store-secrets"></a>Create a key vault and store secrets
 
-İlk olarak, gerekirse, *eastus* konumunda *myresourcegroup* adlı bir kaynak grubunu aşağıdaki [az Group Create][az-group-create] komutuyla oluşturun:
+First, if you need to, create a resource group named *myResourceGroup* in the *eastus* location with the following [az group create][az-group-create] command:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Bir Anahtar Kasası oluşturmak için [az keykasacreate][az-keyvault-create] komutunu kullanın. Benzersiz bir Anahtar Kasası adı belirttiğinizden emin olun. 
+Use the [az keyvault create][az-keyvault-create] command to create a key vault. Be sure to specify a unique key vault name. 
 
 ```azurecli-interactive
 az keyvault create --name mykeyvault --resource-group myResourceGroup --location eastus
 ```
 
-[Az keykasasecret set][az-keyvault-secret-set] komutunu kullanarak gerekli Docker Hub kimlik bilgilerini anahtar kasasında depolayın. Bu komutlarda, değerler ortam değişkenlerine geçirilir:
+Store the required Docker Hub credentials in the key vault using the [az keyvault secret set][az-keyvault-secret-set] command. In these commands, the values are passed in environment variables:
 
 ```azurecli
 # Store Docker Hub user name
@@ -68,11 +64,11 @@ az keyvault secret set \
   --vault-name mykeyvault
 ```
 
-Gerçek dünyada bir senaryoda, gizli dizi büyük olasılıkla ayrı bir işlemde ayarlanabilir ve korunur.
+In a real-world scenario, secrets would likely be set and maintained in a separate process.
 
-## <a name="define-task-steps-in-yaml-file"></a>YAML dosyasında görev adımlarını tanımlama
+## <a name="define-task-steps-in-yaml-file"></a>Define task steps in YAML file
 
-Bu örnek görevin adımları bir [YAML dosyasında](container-registry-tasks-reference-yaml.md)tanımlanmıştır. Yerel çalışma dizininde adlı `dockerhubtask.yaml` bir dosya oluşturun ve aşağıdaki içeriği yapıştırın. Dosyadaki Anahtar Kasası adını anahtar kasanızın adıyla değiştirdiğinizden emin olun.
+The steps for this example task are defined in a [YAML file](container-registry-tasks-reference-yaml.md). Create a file named `dockerhubtask.yaml` in a local working directory and paste the following contents. Be sure to replace the key vault name in the file with the name of your key vault.
 
 ```yml
 version: v1.0.0
@@ -92,22 +88,22 @@ steps:
     - {{.Values.PrivateRepo}}:{{.Run.ID}}
 ```
 
-Görev adımları şunları yapın:
+The task steps do the following:
 
-* Docker Hub ile kimlik doğrulamak için gizli kimlik bilgilerini yönetin.
-* Gizli `docker login` dizileri komuta geçirerek Docker Hub ile kimlik doğrulaması yapın.
-* [Azure-Samples/ACR-Tasks](https://github.com/Azure-Samples/acr-tasks.git) deposunda örnek bir Dockerfile kullanarak bir görüntü oluşturun.
-* Görüntüyü özel Docker Hub deposuna gönderin.
+* Manage secret credentials to authenticate with Docker Hub.
+* Authenticate with Docker Hub by passing the secrets to the `docker login` command.
+* Build an image using a sample Dockerfile in the [Azure-Samples/acr-tasks](https://github.com/Azure-Samples/acr-tasks.git) repo.
+* Push the image to the private Docker Hub repository.
 
-## <a name="option-1-create-task-with-user-assigned-identity"></a>Seçenek 1: Kullanıcı tarafından atanan kimlikle görev oluştur
+## <a name="option-1-create-task-with-user-assigned-identity"></a>Option 1: Create task with user-assigned identity
 
-Bu bölümdeki adımlar bir görev oluşturur ve Kullanıcı tarafından atanan bir kimliği etkinleştirir. Bunun yerine sistem tarafından atanan bir kimliği etkinleştirmek istiyorsanız, bkz [. seçenek 2: Sistem tarafından atanan kimlikle](#option-2-create-task-with-system-assigned-identity)görev oluşturun. 
+The steps in this section create a task and enable a user-assigned identity. If you want to enable a system-assigned identity instead, see [Option 2: Create task with system-assigned identity](#option-2-create-task-with-system-assigned-identity). 
 
 [!INCLUDE [container-registry-tasks-user-assigned-id](../../includes/container-registry-tasks-user-assigned-id.md)]
 
-### <a name="create-task"></a>Görev Oluştur
+### <a name="create-task"></a>Create task
 
-Aşağıdaki [az ACR Task Create][az-acr-task-create] komutunu yürüterek görev *dockerhubtask* 'ı oluşturun. Görev, kaynak kodu bağlamı olmadan çalışır ve komut çalışma dizinindeki dosyasına `dockerhubtask.yaml` başvurur. `--assign-identity` Parametresi, Kullanıcı tarafından atanan kimliğin kaynak kimliğini geçirir. 
+Create the task *dockerhubtask* by executing the following [az acr task create][az-acr-task-create] command. The task runs without a source code context, and the command references the file `dockerhubtask.yaml` in the working directory. The `--assign-identity` parameter passes the resource ID of the user-assigned identity. 
 
 ```azurecli
 az acr task create \
@@ -120,13 +116,13 @@ az acr task create \
 
 [!INCLUDE [container-registry-tasks-user-id-properties](../../includes/container-registry-tasks-user-id-properties.md)]
 
-## <a name="option-2-create-task-with-system-assigned-identity"></a>Seçenek 2: Sistem tarafından atanan kimlikle görev oluştur
+## <a name="option-2-create-task-with-system-assigned-identity"></a>Option 2: Create task with system-assigned identity
 
-Bu bölümdeki adımlar bir görev oluşturur ve sistem tarafından atanan bir kimliği etkinleştirir. Bunun yerine Kullanıcı tarafından atanan bir kimliği etkinleştirmek istiyorsanız, bkz [. seçenek 1: Kullanıcı tarafından atanan kimlikle](#option-1-create-task-with-user-assigned-identity)görev oluşturun. 
+The steps in this section create a task and enable a system-assigned identity. If you want to enable a user-assigned identity instead, see [Option 1: Create task with user-assigned identity](#option-1-create-task-with-user-assigned-identity). 
 
-### <a name="create-task"></a>Görev Oluştur
+### <a name="create-task"></a>Create task
 
-Aşağıdaki [az ACR Task Create][az-acr-task-create] komutunu yürüterek görev *dockerhubtask* 'ı oluşturun. Görev, kaynak kodu bağlamı olmadan çalışır ve komut çalışma dizinindeki dosyasına `dockerhubtask.yaml` başvurur. Değer `--assign-identity` içermeyen parametre, görevde sistem tarafından atanan kimliği etkinleştirmesine izin vermez.  
+Create the task *dockerhubtask* by executing the following [az acr task create][az-acr-task-create] command. The task runs without a source code context, and the command references the file `dockerhubtask.yaml` in the working directory. The `--assign-identity` parameter with no value enables the system-assigned identity on the task.  
 
 ```azurecli
 az acr task create \
@@ -139,23 +135,23 @@ az acr task create \
 
 [!INCLUDE [container-registry-tasks-system-id-properties](../../includes/container-registry-tasks-system-id-properties.md)]
 
-## <a name="grant-identity-access-to-key-vault"></a>Anahtar kasasına kimlik erişimi verme
+## <a name="grant-identity-access-to-key-vault"></a>Grant identity access to key vault
 
-Anahtar kasasında bir erişim ilkesi ayarlamak için aşağıdaki [az keykasası Set-Policy][az-keyvault-set-policy] komutunu çalıştırın. Aşağıdaki örnek, kimliğin anahtar kasasından gizli dizileri okumasına izin verir. 
+Run the following [az keyvault set-policy][az-keyvault-set-policy] command to set an access policy on the key vault. The following example allows the identity to read secrets from the key vault. 
 
 ```azurecli
 az keyvault set-policy --name mykeyvault --resource-group myResourceGroup --object-id $principalID --secret-permissions get
 ```
 
-## <a name="manually-run-the-task"></a>Görevi el ile çalıştırın
+## <a name="manually-run-the-task"></a>Manually run the task
 
-Yönetilen bir kimliği etkinleştirdiğiniz görevin başarıyla çalıştığını doğrulamak için, görevi [az ACR Task Run][az-acr-task-run] komutuyla el ile tetikleyin. `--set` Parametresi, özel depo adını göreve geçirmek için kullanılır. Bu örnekte, yer tutucu Depo adı *hubuser/* hubdepodır.
+To verify that the task in which you enabled a managed identity runs successfully, manually trigger the task with the [az acr task run][az-acr-task-run] command. The `--set` parameter is used to pass the private repo name to the task. In this example, the placeholder repo name is *hubuser/hubrepo*.
 
 ```azurecli
 az acr task run --name dockerhubtask --registry myregistry --set PrivateRepo=hubuser/hubrepo 
 ```
 
-Görev başarıyla çalıştırıldığında, çıkış Docker Hub 'a başarılı kimlik doğrulaması gösterir ve görüntü başarıyla oluşturulup özel depoya gönderilir:
+When the task runs successfully, output shows successful authentication to Docker Hub, and the image is successfully built and pushed to the private repo:
 
 ```console
 Queued a run with ID: cf24
@@ -202,12 +198,12 @@ Sending build context to Docker daemon    129kB
 Run ID: cf24 was successful after 15s
 ```
 
-Görüntünün itildiğini onaylamak için, özel Docker Hub deposunda`cf24` etiketi (Bu örnekte) denetleyin.
+To confirm the image is pushed, check for the tag (`cf24` in this example) in the private Docker Hub repo.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Bir [ACR görevinde yönetilen kimliği etkinleştirme](container-registry-tasks-authentication-managed-identity.md)hakkında daha fazla bilgi edinin.
-* [ACR görevlerine YAML başvurusunu](container-registry-tasks-reference-yaml.md) gör
+* Learn more about [enabling a managed identity in an ACR task](container-registry-tasks-authentication-managed-identity.md).
+* See the [ACR Tasks YAML reference](container-registry-tasks-reference-yaml.md)
 
 
 <!-- LINKS - Internal -->

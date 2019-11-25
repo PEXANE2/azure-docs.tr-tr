@@ -1,101 +1,90 @@
 ---
-title: Azure Container Registry için kaynak günlükleri | Microsoft Docs
-description: Kimlik doğrulama, görüntü gönderme ve resim çekme gibi Azure Container Registry kaynak günlüğü olaylarını kaydedin ve çözümleyin.
-services: container-registry
-documentationcenter: ''
-author: dlepow
-manager: gwallace
-editor: ''
-ms.assetid: ''
-ms.service: container-registry
-ms.devlang: na
+title: Collect & analyze resource logs
+description: Record and analyze resource log events for Azure Container Registry such as authentication, image push, and image pull.
 ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: ''
 ms.date: 10/30/2019
-ms.author: danlep
-ms.openlocfilehash: e419f8c5cf06efc93294f9c428e9102c1f81b36a
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: ada8502724c1779b9bdab2e8ac7e8ea61c256e44
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73180822"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456418"
 ---
-# <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>Tanılama değerlendirmesi ve denetimi için Azure Container Registry günlükleri
+# <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>Azure Container Registry logs for diagnostic evaluation and auditing
 
-Bu makalede, Azure [izleyici](../azure-monitor/overview.md)'nin özellikleri kullanılarak Azure Container Registry için günlük verilerinin nasıl toplanacağı açıklanır. Azure Izleyici, kayıt defterinizde Kullanıcı odaklı olaylar için [kaynak günlüklerini](../azure-monitor/platform/resource-logs-overview.md) (eski adıyla *tanılama günlükleri*olarak adlandırılır) toplar. Bu verileri toplayın ve aşağıdaki gibi gereksinimlerinizi karşılayacak şekilde kullanın:
+This article explains how to collect log data for an Azure container registry using features of [Azure Monitor](../azure-monitor/overview.md). Azure Monitor collects [resource logs](../azure-monitor/platform/resource-logs-overview.md) (formerly called *diagnostic logs*) for user-driven events in your registry. Collect and consume this data to meet needs such as:
 
-* Güvenlik ve uyumluluk sağlamak için kayıt defteri kimlik doğrulama olaylarını denetleme 
+* Audit registry authentication events to ensure security and compliance 
 
-* Kayıt defterlerinizle ilgili işlem sorunlarını tanılamanıza olanak tanımak için çekme ve çekme olayları gibi kayıt defteri yapıtlarına yönelik kapsamlı bir etkinlik izi sağlayın 
+* Provide a complete activity trail on registry artifacts such as pull and pull events so you can diagnose operational issues with your registry 
 
-Azure Izleyici 'yi kullanarak kaynak günlük verilerinin toplanması ek maliyetlere neden olabilir. Bkz. [Azure izleyici fiyatlandırması](https://azure.microsoft.com/pricing/details/monitor/). 
+Collecting resource log data using Azure Monitor may incur additional costs. See [Azure Monitor pricing](https://azure.microsoft.com/pricing/details/monitor/). 
 
 
 > [!IMPORTANT]
-> Bu özellik şu anda önizleme aşamasındadır ve bazı [sınırlamalar](#preview-limitations) geçerlidir. Önizlemeler, [ek kullanım koşullarını][terms-of-use] kabul etmeniz şartıyla kullanımınıza sunulur. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
+> This feature is currently in preview, and some [limitations](#preview-limitations) apply. Önizlemeler, [ek kullanım koşullarını][terms-of-use] kabul etmeniz şartıyla kullanımınıza sunulur. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
 
-## <a name="preview-limitations"></a>Önizleme sınırlamaları
+## <a name="preview-limitations"></a>Preview limitations
 
-Depo düzeyindeki olayların günlüğe kaydedilmesi şu anda olayları silme veya etiketi kaldırma içermiyor. Yalnızca aşağıdaki depo olayları günlüğe kaydedilir:
-* Görüntüler ve diğer yapıtlar için **anında iletme olayları**
-* Görüntüler ve diğer yapıtlar için **çekme olayları**
+Logging of repository-level events doesn't currently include delete or untag events. Only the following repository events are logged:
+* **Push events** for images and other artifacts
+* **Pull events** for images and other artifacts
 
-## <a name="registry-resource-logs"></a>Kayıt defteri kaynak günlükleri
+## <a name="registry-resource-logs"></a>Registry resource logs
 
-Kaynak günlükleri, iç işlemlerini tanımlayan Azure kaynakları tarafından yayılan bilgiler içerir. Azure Container Registry 'de, Günlükler aşağıdaki tablolarda depolanan kimlik doğrulama ve depo düzeyi olaylarını içerir. 
+Resource logs contain information emitted by Azure resources that describe their internal operation. For an Azure container registry, the logs contain authentication and repository-level events stored in the following tables. 
 
-* **Kapsayıcıregistryloginevents** -kayıt defteri doğrulama olayları ve gelen KIMLIK ve IP adresi dahil olmak üzere durum
-* **Containerregistryhavuzuyevents** -kayıt defteri depolarındaki görüntüler ve diğer yapılar için gönderme ve çekme gibi işlemler
-* Toplu gönderim ve çekme sayıları gibi **AzureMetrics** - [kapsayıcı kayıt defteri ölçümleri](../azure-monitor/platform/metrics-supported.md#microsoftcontainerregistryregistries) .
+* **ContainerRegistryLoginEvents**  - Registry authentication events and status, including the incoming identity and IP address
+* **ContainerRegistryRepositoryEvents** - Operations such as push and pull for images and other artifacts in registry repositories
+* **AzureMetrics** - [Container registry metrics](../azure-monitor/platform/metrics-supported.md#microsoftcontainerregistryregistries) such as aggregated push and pull counts.
 
-İşlemler için günlük verileri şunları içerir:
-  * Başarı veya başarısızlık durumu
-  * Başlangıç ve bitiş zaman damgaları
+For operations, log data includes:
+  * Success or failure status
+  * Start and end time stamps
 
-Azure, kaynak günlüklerine ek olarak, bir kapsayıcı kayıt defterinin oluşturulması veya silinmesi gibi Azure Yönetim olaylarının tek abonelik düzeyinde bir kaydı olan bir [etkinlik günlüğü](../azure-monitor/platform/activity-logs-overview.md)sağlar.
+In addition to resource logs, Azure provides an [activity log](../azure-monitor/platform/activity-logs-overview.md), a single subscription-level record of Azure management events such as the creation or deletion of a container registry.
 
-## <a name="enable-collection-of-resource-logs"></a>Kaynak günlüklerinin toplanmasını etkinleştir
+## <a name="enable-collection-of-resource-logs"></a>Enable collection of resource logs
 
-Bir kapsayıcı kayıt defteri için kaynak günlüklerinin toplanması varsayılan olarak etkin değildir. İzlemek istediğiniz her kayıt defteri için tanılama ayarlarını açık bir şekilde etkinleştirin. Tanılama ayarlarını etkinleştirme seçenekleri için bkz. [Azure 'da platform günlüklerini ve ölçümlerini toplamak için tanılama ayarı oluşturma](../azure-monitor/platform/diagnostic-settings.md).
+Collection of resource logs for a container registry isn't enabled by default. Explicitly enable diagnostic settings for each registry you want to monitor. For options to enable diagnostic settings, see [Create diagnostic setting to collect platform logs and metrics in Azure](../azure-monitor/platform/diagnostic-settings.md).
 
-Örneğin, Azure Izleyici 'de neredeyse gerçek zamanlı bir kapsayıcı kayıt defteri için günlükleri ve ölçümleri görüntülemek için, Log Analytics çalışma alanında kaynak günlüklerini toplayın. Azure portal kullanarak bu tanılama ayarını etkinleştirmek için:
+For example, to view logs and metrics for a container registry in near real-time in Azure Monitor, collect the resource logs in a Log Analytics workspace. To enable this diagnostic setting using the Azure portal:
 
-1. Zaten bir çalışma alanınız yoksa [Azure Portal](../azure-monitor/learn/quick-create-workspace.md)kullanarak bir çalışma alanı oluşturun. Veri koleksiyonundaki gecikme süresini en aza indirmek için, çalışma alanının kapsayıcı kayıt defteriyle **aynı bölgede** olduğundan emin olun.
-1. Portalda, kayıt defteri ' ni seçin ve **izleme > Tanılama ayarları > Tanılama ayarı Ekle**' yi seçin.
-1. Ayar için bir ad girin ve **Log Analytics gönder**' i seçin.
-1. Kayıt defteri tanılama günlükleri için çalışma alanını seçin.
-1. Toplamak istediğiniz günlük verilerini seçin ve **Kaydet**' e tıklayın.
+1. If you don't already have a workspace, create a workspace using the [Azure portal](../azure-monitor/learn/quick-create-workspace.md). To minimize latency in data collection, ensure that the workspace is in the **same region** as your container registry.
+1. In the portal, select the registry, and select **Monitoring > Diagnostic settings > Add diagnostic setting**.
+1. Enter a name for the setting, and select **Send to Log Analytics**.
+1. Select the workspace for the registry diagnostic logs.
+1. Select the log data you want to collect, and click **Save**.
 
-Aşağıdaki görüntüde, portalı kullanarak bir kayıt defteri için tanılama ayarının oluşturulması gösterilmektedir.
+The following image shows creation of a diagnostic setting for a registry using the portal.
 
 ![Tanılama ayarlarını etkinleştirme](media/container-registry-diagnostics-audit-logs/diagnostic-settings.png)
 
 > [!TIP]
-> Yalnızca ihtiyacınız olan verileri, ücret maliyetini ve izleme gereksinimlerinizi toplayın. Örneğin, yalnızca kimlik doğrulama olaylarını denetlemeniz gerekiyorsa yalnızca **Containerregistryloginevents** günlüğünü seçin. 
+> Collect only the data that you need, balancing cost and your monitoring needs. For example, if you only need to audit authentication events, select only the **ContainerRegistryLoginEvents** log. 
 
-## <a name="view-data-in-azure-monitor"></a>Azure Izleyici 'de verileri görüntüleme
+## <a name="view-data-in-azure-monitor"></a>View data in Azure Monitor
 
-Log Analytics tanılama günlüklerini toplamayı etkinleştirdikten sonra, verilerin Azure Izleyici 'de gösterilmesi birkaç dakika sürebilir. Portalda verileri görüntülemek için kayıt defterini seçin ve **> günlüklerini izleme**' yi seçin. Kayıt defteri için veri içeren tablolardan birini seçin. 
+After you enable collection of diagnostic logs in Log Analytics, it can take a few minutes for data to appear in Azure Monitor. To view the data in the portal, select the registry, and select **Monitoring > Logs**. Select one of the tables that contains data for the registry. 
 
-Verileri görüntülemek için sorguları çalıştırın. Birkaç örnek sorgu sağlanır veya kendi kendinize çalıştırılır. Örneğin, aşağıdaki sorgu **Containerregistrydepotoryevents** tablosundan en son 24 saat verileri alır:
+Run queries to view the data. Several sample queries are provided, or run your own. For example, the following query retrieves the most recent 24 hours of data from the **ContainerRegistryRepositoryEvents** table:
 
 ```Kusto
 ContainerRegistryRepositoryEvents
 | where TimeGenerated > ago(1d) 
 ```
 
-Aşağıdaki görüntüde örnek çıkış gösterilmektedir:
+The following image shows sample output:
 
 ![Günlük verilerini sorgulama](media/container-registry-diagnostics-audit-logs/azure-monitor-query.png)
 
-Azure portal Log Analytics kullanmaya yönelik bir öğretici için bkz. [Azure izleyici 'yi kullanmaya başlama Log Analytics](../azure-monitor/log-query/get-started-portal.md)veya Log Analytics [demo ortamını](https://portal.loganalytics.io/demo)deneme. 
+For a tutorial on using Log Analytics in the Azure portal, see [Get started with Azure Monitor Log Analytics](../azure-monitor/log-query/get-started-portal.md), or try the Log Analytics [Demo environment](https://portal.loganalytics.io/demo). 
 
-Günlük sorguları hakkında daha fazla bilgi için bkz. [Azure izleyici 'de günlük sorgularına genel bakış](../azure-monitor/log-query/log-query-overview.md).
+For more information on log queries, see [Overview of log queries in Azure Monitor](../azure-monitor/log-query/log-query-overview.md).
 
-### <a name="additional-query-examples"></a>Ek sorgu örnekleri
+### <a name="additional-query-examples"></a>Additional query examples
 
-#### <a name="100-most-recent-registry-events"></a>100 en son kayıt defteri olayları
+#### <a name="100-most-recent-registry-events"></a>100 most recent registry events
 
 ```Kusto
 ContainerRegistryRepositoryEvents
@@ -104,16 +93,16 @@ ContainerRegistryRepositoryEvents
 | project TimeGenerated, LoginServer , OperationName , Identity , Repository , DurationMs , Region , ResultType
 ```
 
-## <a name="additional-log-destinations"></a>Ek günlük hedefleri
+## <a name="additional-log-destinations"></a>Additional log destinations
 
-Günlükleri Log Analytics veya alternatif olarak göndermenin yanı sıra, bir Azure Depolama hesabını günlük hedefi olarak seçmek da yaygın bir senaryodur. Azure depolama 'da günlükleri arşivlemek için Tanılama ayarları aracılığıyla arşivlemeyi etkinleştirmeden önce bir depolama hesabı oluşturun.
+In addition to sending the logs to Log Analytics, or as an alternative, a common scenario is to select an Azure Storage account as a log destination. To archive logs in Azure Storage, create a storage account before enabling archiving through the diagnostic settings.
 
-Ayrıca, tanılama günlüğü olaylarını bir [Azure Olay Hub 'ına](../event-hubs/event-hubs-what-is-event-hubs.md)akışla aktarabilirsiniz. Event Hubs, saniye başına milyonlarca olayı alabilir ve bu sayede herhangi bir gerçek zamanlı analiz sağlayıcısını kullanarak dönüştürebilir ve depolayabilirler. 
+You can also stream diagnostic log events to an [Azure Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md). Event Hubs can ingest millions of events per second, which you can then transform and store using any real-time analytics provider. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Log Analytics](../azure-monitor/log-query/get-started-portal.md) kullanma ve [günlük sorguları](../azure-monitor/log-query/get-started-queries.md)oluşturma hakkında daha fazla bilgi edinin.
-* Azure 'un farklı katmanlarında kullanılabilen platform günlükleri hakkında bilgi edinmek için bkz. [Azure platform günlüklerine genel bakış](../azure-monitor/platform/platform-logs-overview.md) .
+* Learn more about using [Log Analytics](../azure-monitor/log-query/get-started-portal.md) and creating [log queries](../azure-monitor/log-query/get-started-queries.md).
+* See [Overview of Azure platform logs](../azure-monitor/platform/platform-logs-overview.md) to learn about platform logs that are available at different layers of Azure.
 
 <!-- LINKS - External -->
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/

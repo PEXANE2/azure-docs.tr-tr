@@ -1,277 +1,277 @@
 ---
-title: Azure IoT Edge için modüller geliştirin ve hata ayıklayın | Microsoft Docs
-description: ', Python, Node. js, Java veya C kullanarak C#Azure IoT Edge için modül geliştirmek, derlemek ve hata ayıklamak için Visual Studio Code kullanın'
+title: Develop and debug modules for Azure IoT Edge | Microsoft Docs
+description: Use Visual Studio Code to develop, build, and debug a module for Azure IoT Edge using C#, Python, Node.js, Java, or C
 services: iot-edge
 keywords: ''
 author: shizn
 ms.author: xshi
 ms.date: 08/07/2019
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 788d5eb049a27500a6518b7be9bb6caedd543637
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 5b37ea92869468001581c9299b1633869671886a
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276164"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74457070"
 ---
-# <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Azure IoT Edge için modülleri geliştirmek ve hatalarını ayıklamak için Visual Studio Code kullanın
+# <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Use Visual Studio Code to develop and debug modules for Azure IoT Edge
 
-İçin Azure IOT Edge modülleri, iş mantığınızı kapatabilirsiniz. Bu makalede, modülleri geliştirme ve hata ayıklama için ana araç olarak Visual Studio Code nasıl kullanacağınız gösterilmektedir.
+You can turn your business logic into modules for Azure IoT Edge. This article shows you how to use Visual Studio Code as the main tool to develop and debug modules.
 
-Visual Studio Code ' de, Node. js veya Java C#'da yazılan modüllerde hata ayıklamanın iki yolu vardır: bir işlemi bir modül kapsayıcısına iliştirebilir veya hata ayıklama modunda modül kodunu başlatabilirsiniz. Python veya C 'de yazılan modüllerde hata ayıklamak için yalnızca Linux AMD64 kapsayıcılarındaki bir işleme ekleyebilirsiniz.
+There are two ways to debug modules written in C#, Node.js, or Java in Visual Studio Code: You can either attach a process in a module container or launch the module code in debug mode. To debug modules written in Python or C, you can only attach to a process in Linux amd64 containers.
 
-Visual Studio Code hata ayıklama yeteneklerini bilmiyorsanız, [hata ayıklama](https://code.visualstudio.com/Docs/editor/debugging)hakkında bilgi edinin.
+If you aren't familiar with the debugging capabilities of Visual Studio Code, read about [Debugging](https://code.visualstudio.com/Docs/editor/debugging).
 
-Bu makalede birden çok mimaride birden çok dilde modül geliştirme ve hata ayıklama için yönergeler sağlanmaktadır. Şu anda Visual Studio Code, C, Python, Node C#. js ve Java 'da yazılan modüller için destek sağlar. Desteklenen cihaz mimarileri x64 ve ARM32. Desteklenen işletim sistemleri, diller ve mimariler hakkında daha fazla bilgi için bkz. [dil ve mimari desteği](module-development.md#language-and-architecture-support).
+This article provides instructions for developing and debugging modules in multiple languages for multiple architectures. Currently, Visual Studio Code provides support for modules written in C#, C, Python, Node.js, and Java. The supported device architectures are X64 and ARM32. For more information about supported operating systems, languages, and architectures, see [Language and architecture support](module-development.md#language-and-architecture-support).
 
 >[!NOTE]
->Linux ARM64 cihazları için geliştirme ve hata ayıklama desteği [genel önizlemeye](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)sunuldu. Daha fazla bilgi için bkz. [Visual Studio Code IoT Edge modüllerini geliştirme ve hata ayıklama (Önizleme)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview).
+>Develop and debugging support for Linux ARM64 devices is in [public preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). For more information, see [Develop and debug ARM64 IoT Edge modules in Visual Studio Code (preview)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Geliştirme makineniz olarak Windows, macOS veya Linux çalıştıran bir bilgisayar veya sanal makine kullanabilirsiniz. Windows bilgisayarlarda, Windows veya Linux modülleri geliştirebilirsiniz. Windows modülleri geliştirmek için 1809/Build 17763 veya daha yeni sürümünü çalıştıran bir Windows bilgisayarı kullanın. Linux modülleri geliştirmek için, [Docker Desktop gereksinimlerini](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install)karşılayan bir Windows bilgisayarı kullanın. 
+You can use a computer or a virtual machine running Windows, macOS, or Linux as your development machine. On Windows computers you can develop either Windows or Linux modules. To develop Windows modules, use a Windows computer running version 1809/build 17763 or newer. To develop Linux modules, use a Windows computer that meets the [requirements for Docker Desktop](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install). 
 
-Önce [Visual Studio Code](https://code.visualstudio.com/) yükleyip aşağıdaki uzantıları ekleyin:
+Install [Visual Studio Code](https://code.visualstudio.com/) first and then add the following extensions:
 
-- [Azure IoT araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
-- [Docker uzantısı](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
-- Geliştirmekte olduğunuz dile özel Visual Studio uzantıları:
-  - C#Azure işlevleri dahil: [ C# uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
-  - Python: [Python uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
-  - Java: [Visual Studio Code Için Java Uzantı paketi](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
-  - C: [c/C++ Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
+- [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
+- [Docker extension](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
+- Visual Studio extension(s) specific to the language you're developing in:
+  - C#, including Azure Functions: [C# extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
+  - Python: [Python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
+  - Java: [Java Extension Pack for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
+  - C: [C/C++ extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
 
-Ayrıca modülünüzü geliştirmek için dile özgü bazı ek araçlar yüklemeniz gerekir:
+You'll also need to install some additional, language-specific tools to develop your module:
 
-- C#Azure Işlevleri dahil: [.NET Core 2,1 SDK](https://www.microsoft.com/net/download)
+- C#, including Azure Functions: [.NET Core 2.1 SDK](https://www.microsoft.com/net/download)
 
-- Python: Python paketlerini yüklemek için [Python](https://www.python.org/downloads/) ve [PIP](https://pip.pypa.io/en/stable/installing/#installation) (genellikle Python yüklemenize dahildir).
+- Python: [Python](https://www.python.org/downloads/) and [Pip](https://pip.pypa.io/en/stable/installing/#installation) for installing Python packages (typically included with your Python installation).
 
-- Node. js: [Node. js](https://nodejs.org). [Yeumman](https://www.npmjs.com/package/yo) ve [Azure IoT Edge Node. js modül oluşturucuyu](https://www.npmjs.com/package/generator-azure-iot-edge-module)de yüklemek isteyeceksiniz.
+- Node.js: [Node.js](https://nodejs.org). You'll also want to install [Yeoman](https://www.npmjs.com/package/yo) and the [Azure IoT Edge Node.js Module Generator](https://www.npmjs.com/package/generator-azure-iot-edge-module).
 
-- Java: [Java SE Development Kit 10](https://aka.ms/azure-jdks) ve [Maven](https://maven.apache.org/). [`JAVA_HOME` ortam değişkenini](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) JDK yüklemenize işaret etmek için ayarlamanız gerekir.
+- Java: [Java SE Development Kit 10](https://aka.ms/azure-jdks) and [Maven](https://maven.apache.org/). You'll need to [set the `JAVA_HOME` environment variable](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) to point to your JDK installation.
 
-Modül görüntünüzü derlemek ve dağıtmak için, modül görüntüsünü ve modül görüntüsünü tutacak bir kapsayıcı kayıt defteri oluşturmak üzere Docker gereklidir:
+To build and deploy your module image, you need Docker to build the module image and a container registry to hold the module image:
 
-- Geliştirme makinenizde [Docker Community Edition](https://docs.docker.com/install/) .
+- [Docker Community Edition](https://docs.docker.com/install/) on your development machine.
 
-- [Azure kapsayıcı kayıt defteri](https://docs.microsoft.com/azure/container-registry/) veya [Docker hub'ı](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
+- [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) or [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
 
     > [!TIP]
-    > Prototip ve test etme amacıyla bir bulut kayıt defteri yerine yerel bir Docker kayıt defteri kullanabilirsiniz.
+    > You can use a local Docker registry for prototype and testing purposes instead of a cloud registry.
 
-Modülünüzü C 'de geliştirmediğiniz takdirde, IoT Edge çözümünüzü hata ayıklamak, çalıştırmak ve test etmek üzere yerel geliştirme ortamınızı ayarlamak için Python tabanlı [Azure IoT EdgeHub geliştirme aracına](https://pypi.org/project/iotedgehubdev/) da ihtiyacınız vardır. Daha önce yapmadıysanız, [Python (2.7/3.6/3.7) ve PIP](https://www.python.org/) 'yi yükleyip bu komutu terminalinizde çalıştırarak **ıotedgehubdev** ' i yükleyebilirsiniz.
+Unless you're developing your module in C, you also need the Python-based [Azure IoT EdgeHub Dev Tool](https://pypi.org/project/iotedgehubdev/) in order to set up your local development environment to debug, run, and test your IoT Edge solution. If you haven't already done so, install [Python (2.7/3.6/3.7) and Pip](https://www.python.org/) and then install **iotedgehubdev** by running this command in your terminal.
 
    ```cmd
    pip install --upgrade iotedgehubdev
    ```
 > [!NOTE]
-> Şu anda, ıotedgehubdev, Python 3,8 ile uyumlu olmayan bir Docker-çi kitaplığı kullanıyor.
+> Currently, iotedgehubdev uses a docker-py library that is not compatible with Python 3.8.
 >
-> Önceden yüklenmiş Python 2,7 (örneğin, Ubuntu veya macOS) dahil birden çok Python varsa, **ıotedgehubdev** 'yi yüklemek için doğru `pip` veya `pip3` kullandığınızdan emin olun
+> If you have multiple Python including pre-installed python 2.7 (for example, on Ubuntu or macOS), make sure you are using the correct `pip` or `pip3` to install **iotedgehubdev**
 
-Modülünüzü bir cihazda test etmek için en az bir IoT Edge cihazıyla etkin bir IoT Hub 'ınız olması gerekir. Bilgisayarınızı IoT Edge bir cihaz olarak kullanmak için, [Linux](quickstart-linux.md) veya [Windows](quickstart.md)Hızlı Başlangıç bölümündeki adımları izleyin. Geliştirme makinenizde IoT Edge Daemon çalıştırıyorsanız, bir sonraki adıma geçmeden önce EdgeHub ve EdgeAgent 'ı durdurmanız gerekebilir.
+To test your module on a device, you'll need an active IoT hub with at least one IoT Edge device. To use your computer as an IoT Edge device, follow the steps in the quickstart for [Linux](quickstart-linux.md) or [Windows](quickstart.md). If you are running IoT Edge daemon on your development machine, you might need to stop EdgeHub and EdgeAgent before you move to next step.
 
-## <a name="create-a-new-solution-template"></a>Yeni bir çözüm şablonu oluşturun
+## <a name="create-a-new-solution-template"></a>Create a new solution template
 
-Aşağıdaki adımlarda, Visual Studio Code ve Azure IoT araçları kullanarak tercih ettiğiniz geliştirme dilinizde (Azure Işlevleri de dahil olmak üzere C#) IoT Edge bir modülün nasıl oluşturulacağı gösterilmektedir. Bir çözüm oluşturup sonra bu çözümdeki ilk modülü oluşturarak başlayın. Her çözüm birden çok modül içerebilir.
+The following steps show you how to create an IoT Edge module in your preferred development language (including Azure Functions, written in C#) using Visual Studio Code and the Azure IoT Tools. You start by creating a solution, and then generating the first module in that solution. Each solution can contain multiple modules.
 
-1. Seçin **görünümü** > **komut paleti**.
+1. Select **View** > **Command Palette**.
 
-1. Komut Paleti'nde girin ve şu komutu çalıştırın **Azure IOT Edge: IOT Edge çözüm yeni**.
+1. In the command palette, enter and run the command **Azure IoT Edge: New IoT Edge Solution**.
 
-   ![Yeni IoT Edge çözüm Çalıştır](./media/how-to-develop-csharp-module/new-solution.png)
+   ![Run New IoT Edge Solution](./media/how-to-develop-csharp-module/new-solution.png)
 
-1. Yeni çözümü oluşturmak istediğiniz klasöre gidin ve ardından **Klasör Seç**' i seçin.
+1. Browse to the folder where you want to create the new solution and then select **Select folder**.
 
-1. Çözümünüz için bir ad girin.
+1. Enter a name for your solution.
 
-1. Tercih ettiğiniz geliştirme diliniz için çözümdeki ilk modül olacak bir modül şablonu seçin.
+1. Select a module template for your preferred development language to be the first module in the solution.
 
-1. Modülünüzün adını girin. Kapsayıcı kayıt defteriniz dahilinde benzersiz olan bir ad seçin.
+1. Enter a name for your module. Choose a name that's unique within your container registry.
 
-1. Modülün görüntü deposunun adını belirtin. Visual Studio Code, modül adını **localhost: 5000/< modülünüzün adı\>** olarak doldurur. Kayıt defteri kendi bilgilerinizle değiştirin. Test için yerel bir Docker kayıt defteri kullanıyorsanız, **localhost** sorunsuz olur. Azure Container Registry kullanırsanız, oturum açma sunucusu defterinizin ayarlarından'ni kullanın. Oturum açma sunucusu,  **_\<\>. azurecr.io kayıt defteri adı_** gibi görünür. Yalnızca dizenin **localhost: 5000** kısmını, son sonucun **\<*kayıt defteri adı*\>. azurecr.io/ _\<modülünüzün adı\>_** gibi görünmesi için değiştirin.
+1. Provide the name of the module's image repository. Visual Studio Code autopopulates the module name with **localhost:5000/<your module name\>** . Replace it with your own registry information. If you use a local Docker registry for testing, then **localhost** is fine. If you use Azure Container Registry, then use the login server from your registry's settings. The login server looks like **_\<registry name\>_ .azurecr.io**. Only replace the **localhost:5000** part of the string so that the final result looks like **\<*registry name*\>.azurecr.io/ _\<your module name\>_** .
 
    ![Docker görüntü deposunu sağlama](./media/how-to-develop-csharp-module/repository.png)
 
-Visual Studio Code verdiğiniz bilgileri alır, bir IoT Edge çözümü oluşturur ve sonra yeni bir pencerede yükler.
+Visual Studio Code takes the information you provided, creates an IoT Edge solution, and then loads it in a new window.
 
-Çözüm içinde dört öğe vardır:
+There are four items within the solution:
 
-- Bir **. vscode** klasörü hata ayıklama yapılandırması içerir.
+- A **.vscode** folder contains debug configurations.
 
-- **Modüller** klasörü her modül için alt klasörlere sahiptir.  Her modülün klasörü içinde, modüllerin nasıl oluşturulup dağıtıldığını denetleyen **Module. JSON**dosyası vardır.  Bu dosyanın modül dağıtım kapsayıcısı kayıt defteri 'ni localhost 'dan uzak bir kayıt defterine değiştirmek için değiştirilmesi gerekir. Bu noktada yalnızca bir modüldür.  Ancak, komut paletinde **Azure IoT Edge: add IoT Edge Module**komutuyla daha fazla ek ekleyebilirsiniz.
+- A **modules** folder has subfolders for each module.  Within the folder for each module there is a file, **module.json**, that controls how modules are built and deployed.  This file would need to be modified to change the module deployment container registry from localhost to a remote registry. At this point, you only have one module.  But you can add more in the command palette with the command **Azure IoT Edge: Add IoT Edge Module**.
 
-- Bir **. env** dosyası ortam değişkenlerinizi listeler. Kayıt defteriniz Azure Container Registry, içinde bir Azure Container Registry Kullanıcı adı ve parola görürsünüz.
+- An **.env** file lists your environment variables. If Azure Container Registry is your registry, you'll have an Azure Container Registry username and password in it.
 
   > [!NOTE]
-  > Ortam dosyası yalnızca modül için bir görüntü deposu sağlarsanız oluşturulur. Yerel olarak test etme ve hata ayıklama için localhost varsayılan değerlerini kabul ettiyseniz, ortam değişkenlerini bildirmeniz gerekmez.
+  > The environment file is only created if you provide an image repository for the module. If you accepted the localhost defaults to test and debug locally, then you don't need to declare environment variables.
 
-- Bir **Deployment. Template. JSON** dosyası yeni modülünüzü, test için kullanabileceğiniz verileri taklit eden örnek bir **SimulatedTemperatureSensor** modülüyle birlikte listeler. Dağıtım bildirimlerinin nasıl çalıştığı hakkında daha fazla bilgi için bkz. [dağıtım bildirimlerini kullanarak modül dağıtma ve rotalar oluşturma](module-composition.md)hakkında bilgi edinin.
+- A **deployment.template.json** file lists your new module along with a sample **SimulatedTemperatureSensor** module that simulates data you can use for testing. For more information about how deployment manifests work, see [Learn how to use deployment manifests to deploy modules and establish routes](module-composition.md).
 
-## <a name="add-additional-modules"></a>Ek modüller ekleme
+## <a name="add-additional-modules"></a>Add additional modules
 
-Çözümünüze ek modüller eklemek için, komut paletinden **Azure IoT Edge: IoT Edge modülü Ekle** komutunu çalıştırın. Ayrıca, Visual Studio Code Gezgini görünümündeki **modüller** klasörüne veya `deployment.template.json` dosyasına sağ tıklayıp **IoT Edge modülü Ekle**' yi seçebilirsiniz.
+To add additional modules to your solution, run the command **Azure IoT Edge: Add IoT Edge Module** from the command palette. You can also right-click the **modules** folder or the `deployment.template.json` file in the Visual Studio Code Explorer view and then select **Add IoT Edge Module**.
 
-## <a name="develop-your-module"></a>Modülü geliştirme
+## <a name="develop-your-module"></a>Develop your module
 
-Çözümle birlikte gelen varsayılan modül kodu şu konumda bulunur:
+The default module code that comes with the solution is located at the following location:
 
-- Azure işlevi (C#): **modülünüzün adını > *&lt;Modüladı&gt;* . > CS olarak  *&lt;adlandırın&gt;***
-- C#: **modüller > *&lt;modül adınızı&gt;* > program.cs**
-- Python: **modüller > *&lt;modül adınızı&gt;* > Main.py**
-- Node. js: **modüller > *&lt;modül adınızı&gt;* app. js >**
-- Java: **modüller > *&lt;&gt;modül adınızı* > src > main > java > com > edgemodulemodules > App. Java**
-- C: **modüller > *&lt;modül adınızı&gt;* > Main. c**
+- Azure Function (C#): **modules > *&lt;your module name&gt;*  >  *&lt;your module name&gt;* .cs**
+- C#: **modules > *&lt;your module name&gt;* > Program.cs**
+- Python: **modules > *&lt;your module name&gt;* > main.py**
+- Node.js: **modules > *&lt;your module name&gt;* > app.js**
+- Java: **modules > *&lt;your module name&gt;* > src > main > java > com > edgemodulemodules > App.java**
+- C: **modules > *&lt;your module name&gt;* > main.c**
 
-Çözümü derleyin, kapsayıcı kayıt defterinize itme ve herhangi bir kod dokunmadan testi başlatmak için bir aygıta dağıtmak modülü ve deployment.template.json dosya ayarlanır. Modül, bir kaynaktan giriş yapmak için oluşturulmuştur (Bu durumda, verileri taklit eden SimulatedTemperatureSensor modülü) ve IoT Hub için kanal oluşturma.
+The module and the deployment.template.json file are set up so that you can build the solution, push it to your container registry, and deploy it to a device to start testing without touching any code. The module is built to simply take input from a source (in this case, the SimulatedTemperatureSensor module that simulates data) and pipe it to IoT Hub.
 
-Şablonu kendi kodunuzla özelleştirmeye hazır olduğunuzda, güvenlik, cihaz yönetimi ve güvenilirlik gibi IoT çözümlerinin temel ihtiyaçlarını ele alan modüller oluşturmak için [Azure IoT Hub SDK](../iot-hub/iot-hub-devguide-sdks.md) 'larını kullanın.
+When you're ready to customize the template with your own code, use the [Azure IoT Hub SDKs](../iot-hub/iot-hub-devguide-sdks.md) to build modules that address the key needs for IoT solutions such as security, device management, and reliability.
 
-## <a name="debug-a-module-without-a-container-c-nodejs-java"></a>Kapsayıcı olmadan bir modülün hatalarını ayıklama (C#, Node. js, Java)
+## <a name="debug-a-module-without-a-container-c-nodejs-java"></a>Debug a module without a container (C#, Node.js, Java)
 
-, Node. js veya C#Java 'da geliştiriyorsanız, modülünüzün iletileri başlatabilmesi, çalıştırmaları ve yönlendirebilmesi için varsayılan modül kodunda bir **moduleclient** nesnesinin kullanılması gerekir. Ayrıca, modül iletileri aldığında işlem yapmak için varsayılan **input1** giriş kanalını da kullanacaksınız.
+If you're developing in C#, Node.js, or Java, your module requires use of a **ModuleClient** object in the default module code so that it can start, run, and route messages. You'll also use the default input channel **input1** to take action when the module receives messages.
 
-### <a name="set-up-iot-edge-simulator-for-iot-edge-solution"></a>IoT Edge çözümü için IoT Edge simülatör ayarlama
+### <a name="set-up-iot-edge-simulator-for-iot-edge-solution"></a>Set up IoT Edge simulator for IoT Edge solution
 
-Geliştirme makinenizde, IoT Edge çözümünüzü çalıştırabilmeniz için IoT Edge güvenlik cini yüklemek yerine IoT Edge simülatörü başlatabilirsiniz.
+On your development machine, you can start an IoT Edge simulator instead of installing the IoT Edge security daemon so that you can run your IoT Edge solution.
 
-1. Cihaz Gezgini ' nde, sol taraftaki IoT Edge cihaz KIMLIĞINIZ ' ne sağ tıklayın ve ardından cihaz bağlantı dizesiyle simülatör 'yi başlatmak için **IoT Edge simülatör kurulum** ' u seçin.
-1. Tümleşik terminalde ilerleme ayrıntısı ' nı okuyarak IoT Edge Benzeticisinin başarıyla ayarlandığını görebilirsiniz.
+1. In device explorer on the left side, right-click on your IoT Edge device ID, and then select **Setup IoT Edge Simulator** to start the simulator with the device connection string.
+1. You can see the IoT Edge Simulator has been successfully set up by reading the progress detail in the integrated terminal.
 
-### <a name="set-up-iot-edge-simulator-for-single-module-app"></a>Tek modüllü uygulama için IoT Edge simülatör ayarlama
+### <a name="set-up-iot-edge-simulator-for-single-module-app"></a>Set up IoT Edge simulator for single module app
 
-Simülatörü ayarlamak ve başlatmak için, Visual Studio Code komut paletinden **tek bir modül için Azure IoT Edge: IoT Edge hub simülatörü başlatma** komutunu çalıştırın. İstendiğinde, uygulamanızın giriş adı olarak varsayılan modül kodundan (veya kodunuzda eşdeğer değerden) **input1** değerini kullanın. Komut, **ıotedgehubdev** CLI öğesini tetikler ve ardından IoT Edge simülatörü ve bir test yardımcı programı modül kapsayıcısını başlatır. Simülatör Tek modüllü modda başarıyla başlatılmışsa, tümleşik terminalde aşağıdaki çıktıları görebilirsiniz. Ayrıca, ile ileti gönderilmesine yardımcı olması için bir `curl` komutu görebilirsiniz. Daha sonra bu adı kullanacaksınız.
+To set up and start the simulator, run the command **Azure IoT Edge: Start IoT Edge Hub Simulator for Single Module** from the Visual Studio Code command palette. When prompted, use the value **input1** from the default module code (or the equivalent value from your code) as the input name for your application. The command triggers the **iotedgehubdev** CLI and then starts the IoT Edge simulator and a testing utility module container. You can see the outputs below in the integrated terminal if the simulator has been started in single module mode successfully. You can also see a `curl` command to help send message through. Daha sonra bu adı kullanacaksınız.
 
-   ![Tek modüllü uygulama için IoT Edge simülatör ayarlama](media/how-to-develop-csharp-module/start-simulator-for-single-module.png)
+   ![Set up IoT Edge simulator for single module app](media/how-to-develop-csharp-module/start-simulator-for-single-module.png)
 
-   Modülün çalışır durumda olduğunu görmek için Visual Studio Code Docker Gezgin görünümünü kullanabilirsiniz.
+   You can use the Docker Explorer view in Visual Studio Code to see the module's running status.
 
-   ![Simülatör modülü durumu](media/how-to-develop-csharp-module/simulator-status.png)
+   ![Simulator module status](media/how-to-develop-csharp-module/simulator-status.png)
 
-   **Edgehubdev** kapsayıcısı, yerel IoT Edge simülatör 'in temel sayısıdır. Geliştirme makinenizde IoT Edge güvenlik cini olmadan çalışabilir ve yerel modül uygulamanız veya modül kapsayıcılarınız için ortam ayarları sağlar. **Giriş** kapsayıcısı, iletilerinizi modüldeki hedef giriş kanalına KÖPRÜLEMEK Için REST API 'lerini kullanıma sunar.
+   The **edgeHubDev** container is the core of the local IoT Edge simulator. It can run on your development machine without the IoT Edge security daemon and provides environment settings for your native module app or module containers. The **input** container exposes REST APIs to help bridge messages to the target input channel on your module.
 
-### <a name="debug-module-in-launch-mode"></a>Başlatma modunda hata ayıklama modülü
+### <a name="debug-module-in-launch-mode"></a>Debug module in launch mode
 
-1. Geliştirme dilinizin gereksinimlerine göre ortamınızı hata ayıklama için hazırlayın, modülünüzün bir kesme noktası ayarlayın ve kullanılacak hata ayıklama yapılandırmasını seçin:
+1. Prepare your environment for debugging according to the requirements of your development language, set a breakpoint in your module, and select the debug configuration to use:
    - **C#**
-     - Visual Studio Code tümleşik terminalde, dizini ***Modül adı&gt;klasörü&lt;*** değiştirin ve ardından .NET Core uygulaması derlemek için aşağıdaki komutu çalıştırın.
+     - In the Visual Studio Code integrated terminal, change the directory to the ***&lt;your module name&gt;*** folder, and then run the following command to build .NET Core application.
 
        ```cmd
        dotnet build
        ```
 
-     - `Program.cs` dosyasını açın ve bir kesme noktası ekleyin.
+     - Open the file `Program.cs` and add a breakpoint.
 
-     - Visual Studio Code hata ayıklama görünümüne giderek **görünüm > hata ayıkla**' yı seçin. ***Modül adınızın* açılan menüden yerel hata ayıklama (.net Core)&gt;&lt;** hata ayıklama yapılandırmasını seçin.
+     - Navigate to the Visual Studio Code Debug view by selecting **View > Debug**. Select the debug configuration ***&lt;your module name&gt;* Local Debug (.NET Core)** from the dropdown.
 
         > [!NOTE]
-        > .NET Core `TargetFramework` `launch.json`program yolunuza uygun değilse, Visual Studio Code bu programı başarıyla başlatabilmesi için `launch.json` program yolunu. csproj dosyanızdaki `TargetFramework` eşleşecek şekilde el ile güncelleştirmeniz gerekir.
+        > If your .NET Core `TargetFramework` is not consistent with your program path in `launch.json`, you'll need to manually update the program path in `launch.json` to match the `TargetFramework` in your .csproj file so that Visual Studio Code can successfully launch this program.
 
    - **Node.js**
-     - Visual Studio Code tümleşik terminalde, dizini ***Modül adı&gt;klasörü&lt;*** değiştirin ve ardından düğüm paketlerini yüklemek için aşağıdaki komutu çalıştırın
+     - In the Visual Studio Code integrated terminal, change the directory to the ***&lt;your module name&gt;*** folder, and then run the following command to install Node packages
 
        ```cmd
        npm install
        ```
 
-     - `app.js` dosyasını açın ve bir kesme noktası ekleyin.
+     - Open the file `app.js` and add a breakpoint.
 
-     - Visual Studio Code hata ayıklama görünümüne giderek **görünüm > hata ayıkla**' yı seçin. ***Modül adınızın* açılan menüden yerel hata ayıklama (node. js)&gt;&lt;** hata ayıklama yapılandırmasını seçin.
+     - Navigate to the Visual Studio Code Debug view by selecting **View > Debug**. Select the debug configuration ***&lt;your module name&gt;* Local Debug (Node.js)** from the dropdown.
    - **Java**
-     - `App.java` dosyasını açın ve bir kesme noktası ekleyin.
+     - Open the file `App.java` and add a breakpoint.
 
-     - Visual Studio Code hata ayıklama görünümüne giderek **görünüm > hata ayıkla**' yı seçin. ***Modül adınızın* açılan menüden yerel hata ayıklama (Java)&gt;&lt;** hata ayıklama yapılandırmasını seçin.
+     - Navigate to the Visual Studio Code Debug view by selecting **View > Debug**. Select the debug configuration ***&lt;your module name&gt;* Local Debug (Java)** from the dropdown.
 
-1. Hata **ayıklamayı Başlat** ' a tıklayın veya hata ayıklama oturumu başlatmak için **F5** 'e basın.
+1. Click **Start Debugging** or press **F5** to start the debug session.
 
-1. Visual Studio Code tümleşik terminalde, modülünüzü bir **Merhaba Dünya** iletisi göndermek için aşağıdaki komutu çalıştırın. Bu, önceki adımlarda IoT Edge simülatör ' i ayarlarken gösterilen komuttur.
+1. In the Visual Studio Code integrated terminal, run the following command to send a **Hello World** message to your module. This is the command shown in previous steps when you set up IoT Edge simulator.
 
     ```bash
     curl --header "Content-Type: application/json" --request POST --data '{"inputName": "input1","data":"hello world"}' http://localhost:53000/api/v1/messages
     ```
 
    > [!NOTE]
-   > Windows kullanıyorsanız, Visual Studio Code tümleşik terminalinin kabuğun **Git Bash** veya **WSL Bash**olduğundan emin olun. PowerShell veya komut isteminden `curl` komutunu çalıştıramazsınız.
+   > If you are using Windows, making sure the shell of your Visual Studio Code integrated terminal is **Git Bash** or **WSL Bash**. You cannot run the `curl` command from a PowerShell or command prompt.
    > [!TIP]
-   > Ayrıca [PostMan](https://www.getpostman.com/) veya yerine üzerinden ileti göndermek için API araçlara `curl`.
+   > You can also use [PostMan](https://www.getpostman.com/) or other API tools to send messages through instead of `curl`.
 
-1. Visual Studio Code hata ayıklama görünümünde, sol panelde değişkenleri görürsünüz.
+1. In the Visual Studio Code Debug view, you'll see the variables in the left panel.
 
-1. Hata ayıklama oturumunuzu durdurmak için Durdur düğmesini seçin veya **SHIFT + F5**tuşlarına basın ve ardından Azure IoT Edge çalıştırın: benzeticiyi durdurmak ve temizlemek için komut paletinde **IoT Edge simülatörü durdur** .
+1. To stop your debugging session, select the Stop button or press **Shift + F5**, and then run **Azure IoT Edge: Stop IoT Edge Simulator** in the command palette to stop the simulator and clean up.
 
-## <a name="debug-in-attach-mode-with-iot-edge-simulator-c-nodejs-java-azure-functions"></a>IoT Edge simülatör ile iliştirme modunda hata ayıklamaC#(, Node. js, Java, Azure işlevleri)
+## <a name="debug-in-attach-mode-with-iot-edge-simulator-c-nodejs-java-azure-functions"></a>Debug in attach mode with IoT Edge Simulator (C#, Node.js, Java, Azure Functions)
 
-Varsayılan çözümünüz iki modül içerir, biri sanal bir sıcaklık algılayıcısı modülüdür ve diğeri kanal modülüdür. Sanal sıcaklık algılayıcısı, kanal modülüne ileti gönderir ve ardından iletilerin IoT Hub gönderilir. Oluşturduğunuz modül klasöründe, farklı kapsayıcı türleri için birkaç Docker dosyası vardır. Modülle biten dosyaları kullanın. test için modülünüzü derlemek için **hata ayıklayın** .
+Your default solution contains two modules, one is a simulated temperature sensor module and the other is the pipe module. The simulated temperature sensor sends messages to the pipe module and then the messages are piped to the IoT Hub. In the module folder you created, there are several Docker files for different container types. Use any of the files that end with the extension **.debug** to build your module for testing.
 
-Şu anda iliştirme modunda hata ayıklama yalnızca aşağıdaki gibi desteklenir:
+Currently, debugging in attach mode is supported only as follows:
 
-- C#Azure Işlevleri dahil olmak üzere modüller, Linux AMD64 kapsayıcılarında hata ayıklamayı destekler
-- Node. js modülleri, Linux amd64 ve arm32v7 kapsayıcılarında ve Windows AMD64 kapsayıcılarında hata ayıklamayı destekler
-- Java modülleri, Linux amd64 ve arm32v7 kapsayıcılarında hata ayıklamayı destekler
+- C# modules, including those for Azure Functions, support debugging in Linux amd64 containers
+- Node.js modules support debugging in Linux amd64 and arm32v7 containers, and Windows amd64 containers
+- Java modules support debugging in Linux amd64 and arm32v7 containers
 
 > [!TIP]
-> Visual Studio Code durum çubuğundaki öğeye tıklayarak IoT Edge çözümünüz için varsayılan platformun seçenekleri arasında geçiş yapabilirsiniz.
+> You can switch among options for the default platform for your IoT Edge solution by clicking the item in the Visual Studio Code status bar.
 
-### <a name="set-up-iot-edge-simulator-for-iot-edge-solution"></a>IoT Edge çözümü için IoT Edge simülatör ayarlama
+### <a name="set-up-iot-edge-simulator-for-iot-edge-solution"></a>Set up IoT Edge simulator for IoT Edge solution
 
-Geliştirme makinenizde, IoT Edge çözümünüzü çalıştırabilmeniz için IoT Edge güvenlik cini yüklemek yerine IoT Edge simülatörü başlatabilirsiniz.
+In your development machine, you can start an IoT Edge simulator instead of installing the IoT Edge security daemon so that you can run your IoT Edge solution.
 
-1. Cihaz Gezgini ' nde, sol taraftaki IoT Edge cihaz KIMLIĞINIZ ' ne sağ tıklayın ve ardından cihaz bağlantı dizesiyle simülatör 'yi başlatmak için **IoT Edge simülatör kurulum** ' u seçin.
+1. In device explorer on the left side, right-click on your IoT Edge device ID, and then select **Setup IoT Edge Simulator** to start the simulator with the device connection string.
 
-1. Tümleşik terminalde ilerleme ayrıntısı ' nı okuyarak IoT Edge Benzeticisinin başarıyla ayarlandığını görebilirsiniz.
+1. You can see the IoT Edge Simulator has been successfully set up by reading the progress detail in the integrated terminal.
 
-### <a name="build-and-run-container-for-debugging-and-debug-in-attach-mode"></a>Hata ayıklama ve hata ayıklama için kapsayıcıyı iliştirme modunda oluştur ve Çalıştır
+### <a name="build-and-run-container-for-debugging-and-debug-in-attach-mode"></a>Build and run container for debugging and debug in attach mode
 
-1. Modül dosyanızı açın (`Program.cs`, `app.js`, `App.java`veya `<your module name>.cs`) ve bir kesme noktası ekleyin.
+1. Open your module file (`Program.cs`, `app.js`, `App.java`, or `<your module name>.cs`) and add a breakpoint.
 
-1. Visual Studio Code gezgin görünümünde, çözümünüz için `deployment.debug.template.json` dosyasına sağ tıklayın ve ardından **derleme ve çalıştır IoT Edge çözümünü Benzetici**' ı seçin. Tüm modül kapsayıcısı günlüklerini aynı pencerede izleyebilirsiniz. Ayrıca, kapsayıcı durumunu izlemek için Docker görünümüne gidebilirsiniz.
+1. In the Visual Studio Code Explorer view, right-click the `deployment.debug.template.json` file for your solution and then select **Build and Run IoT Edge solution in Simulator**. You can watch all the module container logs in the same window. You can also navigate to the Docker view to watch container status.
 
-   ![Değişkenleri izle](media/how-to-vs-code-develop-module/view-log.png)
+   ![Watch Variables](media/how-to-vs-code-develop-module/view-log.png)
 
-1. Visual Studio Code hata ayıklama görünümüne gidin ve modülünüzün hata ayıklama yapılandırma dosyasını seçin. Hata ayıklama seçeneği adı  ***modül adınızı&gt;* uzaktan hata ayıklama&lt;benzer olmalıdır**
+1. Navigate to the Visual Studio Code Debug view and select the debug configuration file for your module. The debug option name should be similar to ***&lt;your module name&gt;* Remote Debug**
 
-1. **Hata ayıklamayı Başlat** ' ı seçin veya **F5**tuşuna basın. İliştirilecek işlemi seçin.
+1. Select **Start Debugging** or press **F5**. Select the process to attach to.
 
-1. Visual Studio Code hata ayıklama görünümünde, sol panelde değişkenleri görürsünüz.
+1. In Visual Studio Code Debug view, you'll see the variables in the left panel.
 
-1. Hata ayıklama oturumunu durdurmak için öncelikle Durdur düğmesini seçin veya **SHIFT + F5**tuşlarına basın ve ardından **Azure IoT Edge: komut paletinden IoT Edge simülatörünü durdur** ' u seçin.
+1. To stop the debugging session, first select the Stop button or press **Shift + F5**, and then select **Azure IoT Edge: Stop IoT Edge Simulator** from the command palette.
 
 > [!NOTE]
-> Yukarıdaki örnekte, kapsayıcılarda IoT Edge modüllerinin nasıl ayıklanacağı gösterilmektedir. Modülünüzün kapsayıcı `createOptions` ayarlarına sunulan bağlantı noktalarını ekledi. Modüllerinizin hatalarını ayıklamayı bitirdikten sonra, bu açık bağlantı noktalarını üretime yönelik IoT Edge modüller için kaldırmanızı öneririz.
+> The preceding example shows how to debug IoT Edge modules on containers. It added exposed ports to your module's container `createOptions` settings. After you finish debugging your modules, we recommend you remove these exposed ports for production-ready IoT Edge modules.
 >
-> Azure Işlevleri de dahil C#olmak üzere, içinde yazılan modüller için bu örnek, derleme sırasında kapsayıcı görüntünde .NET Core komut satırı hata ayıklayıcısını (vsdbg) içeren `Dockerfile.amd64.debug`hata ayıklama sürümünü temel alır. Modüllerinizi C# hata ayıkladıktan sonra, üretim için hazır IoT Edge modüller Için Dockerfile 'ı vsdbg olmadan doğrudan kullanmanızı öneririz.
+> For modules written in C#, including Azure Functions, this example is based on the debug version of `Dockerfile.amd64.debug`, which includes the .NET Core command-line debugger (VSDBG) in your container image while building it. After you debug your C# modules, we recommend that you directly use the Dockerfile without VSDBG for production-ready IoT Edge modules.
 
-## <a name="debug-a-module-with-the-iot-edge-runtime"></a>IoT Edge çalışma zamanına sahip bir modülün hatalarını ayıklama
+## <a name="debug-a-module-with-the-iot-edge-runtime"></a>Debug a module with the IoT Edge runtime
 
-Her modül klasöründe, farklı kapsayıcı türleri için birkaç Docker dosyası vardır. Modülle biten dosyaları kullanın. test için modülünüzü derlemek için **hata ayıklayın** .
+In each module folder, there are several Docker files for different container types. Use any of the files that end with the extension **.debug** to build your module for testing.
 
-Bu yöntemi kullanarak modüller hata ayıklarken, modülleriniz IoT Edge çalışma zamanının üstünde çalışmaktadır. IoT Edge cihaz ve Visual Studio Code aynı makinede olabilir veya daha fazla genellikle geliştirme makinesinde Visual Studio Code ve IoT Edge çalışma zamanı ve modüller başka bir fiziksel makinede çalışıyor. Visual Studio Code hata ayıklamak için şunları yapmanız gerekir:
+When debugging modules using this method, your modules are running on top of the IoT Edge runtime. The IoT Edge device and your Visual Studio Code can be on the same machine, or more typically, Visual Studio Code is on the development machine and the IoT Edge runtime and modules are running on another physical machine. In order to debug from Visual Studio Code, you must:
 
-- IoT Edge cihazınızı ayarlayın, IoT Edge modüllerinizi **. Debug** dockerfile ile derleyin ve ardından IoT Edge cihaza dağıtın.
-- Hata ayıklayıcının iliştirilebileceği şekilde modülün IP ve bağlantı noktasını kullanıma sunun.
-- Visual Studio Code uzak makinedeki kapsayıcıda işleme eklenebilmesi için `launch.json` güncelleştirin. Bu dosya, çalışma alanınızdaki `.vscode` klasöründe bulunur ve hata ayıklamayı destekleyen yeni bir modül eklediğiniz her seferinde güncellenir.
+- Set up your IoT Edge device, build your IoT Edge module(s) with the **.debug** Dockerfile, and then deploy to the IoT Edge device.
+- Expose the IP and port of the module so that the debugger can be attached.
+- Update the `launch.json` so that Visual Studio Code can attach to the process in the container on the remote machine. This file is located in the `.vscode` folder in your workspace and updates each time you add a new module that supports debugging.
 
-### <a name="build-and-deploy-your-module-to-the-iot-edge-device"></a>Modülünüzü IoT Edge cihaza derleyin ve dağıtın
+### <a name="build-and-deploy-your-module-to-the-iot-edge-device"></a>Build and deploy your module to the IoT Edge device
 
-1. Visual Studio Code ' de, uygun `createOptions` değerler ayarlanmış modül görüntülerinin hata ayıklama sürümünü içeren `deployment.debug.template.json` dosyasını açın.
+1. In Visual Studio Code, open the `deployment.debug.template.json` file, which contains the debug version of your module images with the proper `createOptions` values set.
 
-1. Modülünüzü Python 'da geliştiriyorsanız devam etmeden önce şu adımları izleyin:
-   - Dosya `main.py` açın ve içeri aktarma bölümünden sonra bu kodu ekleyin:
+1. If you're developing your module in Python, follow these steps before proceeding:
+   - Open the file `main.py` and add this code after the import section:
 
       ```python
       import ptvsd
       ptvsd.enable_attach(('0.0.0.0',  5678))
       ```
 
-   - Hata ayıklamak istediğiniz geri aramaya aşağıdaki tek satırlık kod satırını ekleyin:
+   - Add the following single line of code to the callback you want to debug:
 
       ```python
       ptvsd.break_into_debugger()
       ```
 
-     Örneğin, `receive_message_listener` işlevinde hata ayıklamak istiyorsanız, bu kod satırını aşağıda gösterildiği gibi ekleyebilirsiniz:
+     For example, if you want to debug the `receive_message_listener` function, you would insert that line of code as shown below:
 
       ```python
       def receive_message_listener(client):
@@ -289,79 +289,79 @@ Bu yöntemi kullanarak modüller hata ayıklarken, modülleriniz IoT Edge çalı
               print("Message successfully forwarded")
       ```
 
-1. Visual Studio Code komut paletinde:
-   1. Komutu çalıştırın **Azure IoT Edge: IoT Edge çözüm oluşturun ve gönderin**.
+1. In the Visual Studio Code command palette:
+   1. Run the command **Azure IoT Edge: Build and Push IoT Edge solution**.
 
-   1. Çözümünüz için `deployment.debug.template.json` dosyasını seçin.
+   1. Select the `deployment.debug.template.json` file for your solution.
 
-1. Visual Studio Code Gezgini görünümündeki **Azure IoT Hub cihazları** bölümünde:
-   1. IoT Edge cihaz KIMLIĞINE sağ tıkladıktan sonra **tek cihaz Için dağıtım oluştur**' u seçin.
+1. In the **Azure IoT Hub Devices** section of the Visual Studio Code Explorer view:
+   1. Right-click an IoT Edge device ID and then select **Create Deployment for Single Device**.
 
       > [!TIP]
-      > Seçtiğiniz cihazın IoT Edge bir cihaz olduğunu doğrulamak için, modül listesini genişletmek ve **$edgeHub** ve **$edgeAgent**varlığını doğrulamak için seçin. Her IoT Edge cihaz bu iki modülü içerir.
+      > To confirm that the device you've chosen is an IoT Edge device, select it to expand the list of modules and verify the presence of **$edgeHub** and **$edgeAgent**. Every IoT Edge device includes these two modules.
 
-   1. Çözümünüzün **yapılandırma** klasörüne gidin, `deployment.debug.amd64.json` dosyasını seçin ve ardından **kenar dağıtım bildirimini Seç**' i seçin.
+   1. Navigate to your solution's **config** folder, select the `deployment.debug.amd64.json` file, and then select **Select Edge Deployment Manifest**.
 
-Dağıtımı, tümleşik terminalde bir dağıtım KIMLIĞIYLE başarıyla oluşturulduğunu görürsünüz.
+You'll see the deployment successfully created with a deployment ID in the integrated terminal.
 
-Terminalde `docker ps` komutunu çalıştırarak kapsayıcı durumunuzu kontrol edebilirsiniz. Visual Studio Code ve IoT Edge çalışma zamanı aynı makinede çalışıyorsa, Visual Studio Code Docker görünümündeki durumu da denetleyebilirsiniz.
+You can check your container status by running the `docker ps` command in the terminal. If your Visual Studio Code and IoT Edge runtime are running on the same machine, you can also check the status in the Visual Studio Code Docker view.
 
-### <a name="expose-the-ip-and-port-of-the-module-for-the-debugger"></a>Hata ayıklayıcı için modülün IP ve bağlantı noktasını kullanıma sunma
+### <a name="expose-the-ip-and-port-of-the-module-for-the-debugger"></a>Expose the IP and port of the module for the debugger
 
-Modülleriniz Visual Studio Code ile aynı makinede çalışıyorsa, kapsayıcıya eklemek için localhost kullandığınızda ve **. Debug** dockerfile, modülünün kapsayıcı `createOptions` ayarları ve `launch.json` dosyasında zaten doğru bağlantı noktası ayarları varsa, bu bölümü atlayabilirsiniz. Modülleriniz ve Visual Studio Code ayrı makinelerde çalışıyorsa, geliştirme diliniz için adımları izleyin.
+You can skip this section if your modules are running on the same machine as Visual Studio Code, as you are using localhost to attach to the container and already have the correct port settings in the **.debug** Dockerfile, module's container `createOptions` settings, and `launch.json` file. If your modules and Visual Studio Code are running on separate machines, follow the steps for your development language.
 
-- **C#Azure Işlevleri dahil**
+- **C#, including Azure Functions**
 
-  [Geliştirme makinenizde ve cihaz IoT Edge SSH kanalını yapılandırın](https://github.com/OmniSharp/omnisharp-vscode/wiki/Attaching-to-remote-processes) ve sonra iliştirilecek `launch.json` dosyayı düzenleyin.
+  [Configure the SSH channel on your development machine and IoT Edge device](https://github.com/OmniSharp/omnisharp-vscode/wiki/Attaching-to-remote-processes) and then edit `launch.json` file to attach.
 
 - **Node.js**
 
-  - Hata ayıklamakta olan makinedeki modülün çalışır durumda olduğundan ve hata ayıklayıcılarına eklemek için, bağlantı noktası 9229 ' nin dışarıdan erişilebilir olduğundan emin olun. Bunu, hata ayıklayıcı makinesinde `http://<target-machine-IP>:9229/json` açarak doğrulayabilirsiniz. Bu URL, Ayıklanacak Node. js modülüyle ilgili bilgileri göstermelidir.
+  - Make sure the module on the machine to be debugged is running and ready for debuggers to attach, and that port 9229 is accessible externally. You can verify this by opening `http://<target-machine-IP>:9229/json` on the debugger machine. This URL should show information about the Node.js module to be debugged.
   
-  - Geliştirme makinenizde Visual Studio Code açın ve `launch.json` düzenleyin; böylece modül  ***adı&lt;&gt;* uzak hata ayıklama (node. js)** profili (ya da modül  ***adı&lt;* uzak hata ayıklama (Windows kapsayıcısında Node. js** ) profili, hata ayıklanmakta olan makinenin IP 'si olur.&gt;
+  - On your development machine, open Visual Studio Code and then edit `launch.json` so that the address value of the ***&lt;your module name&gt;* Remote Debug (Node.js)** profile (or ***&lt;your module name&gt;* Remote Debug (Node.js in Windows Container)** profile if the module is running as a Windows container) is the IP of the machine being debugged.
 
 - **Java**
 
-  - `ssh -f <username>@<target-machine> -L 5005:127.0.0.1:5005 -N`çalıştırarak hata ayıklaması yapılacak makineye bir SSH tüneli oluşturun.
+  - Build an SSH tunnel to the machine to be debugged by running `ssh -f <username>@<target-machine> -L 5005:127.0.0.1:5005 -N`.
   
-  - Geliştirme makinenizde Visual Studio Code açın ve hedef makineye iliştirebilmeniz için  ***modül adı&gt;* uzaktan hata ayıklama (Java)** profili `launch.json`&lt;düzenleyin. Visual Studio Code ile Java `launch.json` ve hata ayıklama hakkında daha fazla bilgi edinmek için, [hata ayıklayıcıyı yapılandırma](https://code.visualstudio.com/docs/java/java-debugging#_configuration)konusundaki bölümüne bakın.
+  - On your development machine, open Visual Studio Code and edit the ***&lt;your module name&gt;* Remote Debug (Java)** profile in `launch.json` so that you can attach to the target machine. To learn more about editing `launch.json` and debugging Java with Visual Studio Code, see the section on [configuring the debugger](https://code.visualstudio.com/docs/java/java-debugging#_configuration).
 
 - **Python**
 
-  - Hata ayıklamakta olan makinedeki 5678 numaralı bağlantı noktasının açık ve erişilebilir olduğundan emin olun.
+  - Make sure that port 5678 on the machine to be debugged is open and accessible.
 
-  - Daha önce `main.py`içine eklediğiniz kod `ptvsd.enable_attach(('0.0.0.0', 5678))`, **0.0.0.0** değerini, hata AYıKLANACAK makinenin IP adresine değiştirin. IoT Edge modülünüzü yeniden derleyin, gönderin ve dağıtın.
+  - In the code `ptvsd.enable_attach(('0.0.0.0', 5678))` that you earlier inserted into `main.py`, change **0.0.0.0** to the IP address of the machine to be debugged. Build, push, and deploy your IoT Edge module again.
 
-  - Geliştirme makinenizde Visual Studio Code açın ve ardından `launch.json` düzenleyerek  ***modül adı&gt;* uzaktan hata ayıklama (Python)** profilinizin `host`&lt;değeri, `localhost`yerine hedef makinenin IP adresini kullanır.
+  - On your development machine, open Visual Studio Code and then edit `launch.json` so that the `host` value of the ***&lt;your module name&gt;* Remote Debug (Python)** profile uses the IP address of the target machine instead of `localhost`.
 
-### <a name="debug-your-module"></a>Modülünüzün hatalarını ayıklama
+### <a name="debug-your-module"></a>Debug your module
 
-1. Visual Studio Code hata ayıklama görünümünde modülünüzün hata ayıklama yapılandırma dosyasını seçin. Hata ayıklama seçeneği adı  ***modül adınızı&gt;* uzaktan hata ayıklama&lt;benzer olmalıdır**
+1. In the Visual Studio Code Debug view, select the debug configuration file for your module. The debug option name should be similar to ***&lt;your module name&gt;* Remote Debug**
 
-1. Geliştirme diliniz için modül dosyasını açın ve bir kesme noktası ekleyin:
+1. Open the module file for your development language and add a breakpoint:
 
-   - **Azure işlevi (C#)** : kesme noktasını dosyaya ekleyin `<your module name>.cs`.
-   - **C#** : Kesme noktasını dosyaya `Program.cs`ekleyin.
-   - **Node. js**: kesme noktasını dosyaya `app.js`ekleyin.
-   - **Java**: dosya `App.java`kesme noktası ekleyin.
-   - **Python**: `ptvsd.break_into_debugger()` satırını eklediğiniz geri çağırma yönteminde dosya `main.py`kesme noktası ekleyin.
-   - **C**: kesme noktasını dosyaya `main.c`ekleyin.
+   - **Azure Function (C#)** : Add your breakpoint to the file `<your module name>.cs`.
+   - **C#** : Add your breakpoint to the file `Program.cs`.
+   - **Node.js**: Add your breakpoint to the file `app.js`.
+   - **Java**: Add your breakpoint to the file `App.java`.
+   - **Python**: Add your breakpoint to the file `main.py`in the callback method where you added the `ptvsd.break_into_debugger()` line.
+   - **C**: Add your breakpoint to the file `main.c`.
 
-1. **Hata ayıklamayı Başlat** ' ı veya **F5**' i seçin. İliştirilecek işlemi seçin.
+1. Select **Start Debugging** or select **F5**. Select the process to attach to.
 
-1. Visual Studio Code hata ayıklama görünümünde, sol panelde değişkenleri görürsünüz.
+1. In the Visual Studio Code Debug view, you'll see the variables in the left panel.
 
 > [!NOTE]
-> Yukarıdaki örnekte, kapsayıcılarda IoT Edge modüllerinin nasıl ayıklanacağı gösterilmektedir. Modülünüzün kapsayıcı `createOptions` ayarlarına sunulan bağlantı noktalarını ekledi. Modüllerinizin hatalarını ayıklamayı bitirdikten sonra, bu açık bağlantı noktalarını üretime yönelik IoT Edge modüller için kaldırmanızı öneririz.
+> The preceding example shows how to debug IoT Edge modules on containers. It added exposed ports to your module's container `createOptions` settings. After you finish debugging your modules, we recommend you remove these exposed ports for production-ready IoT Edge modules.
 
-## <a name="build-and-debug-a-module-remotely"></a>Modülde uzaktan derleme ve hata ayıklama
+## <a name="build-and-debug-a-module-remotely"></a>Build and debug a module remotely
 
-Hem Docker hem de Moby altyapılarında SSH bağlantılarını destekleyen son değişiklikler ve Azure IoT araçlarında ortam ayarlarının Visual Studio Code komut paleti ve Azure IoT Edge terminallere eklenmesine izin veren yeni bir ayar ile, artık derleme ve hata ayıklama yapabilirsiniz uzak cihazlardaki modüller.
+With recent changes in both the Docker and Moby engines to support SSH connections, and a new setting in Azure IoT Tools that enables injection of environment settings into the Visual Studio Code command palette and Azure IoT Edge terminals, you can now build and debug modules on remote devices.
 
-Daha fazla bilgi ve adım adım yönergeler için bu [IoT Geliştirici blogu girişine](https://devblogs.microsoft.com/iotdev/easily-build-and-debug-iot-edge-modules-on-your-remote-device-with-azure-iot-edge-for-vs-code-1-9-0/) bakın.
+See this [IoT Developer blog entry](https://devblogs.microsoft.com/iotdev/easily-build-and-debug-iot-edge-modules-on-your-remote-device-with-azure-iot-edge-for-vs-code-1-9-0/) for more information and step-by-step instructions.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Modülünüzü oluşturduktan sonra [Visual Studio Code Azure IoT Edge modüllerin nasıl dağıtılacağını](how-to-deploy-modules-vscode.md)öğrenin.
+After you've built your module, learn how to [deploy Azure IoT Edge modules from Visual Studio Code](how-to-deploy-modules-vscode.md).
 
-Cihazlarınızı IOT Edge modülleri geliştirmek için [kavrama ve kullanma Azure IOT Hub SDK'ları](../iot-hub/iot-hub-devguide-sdks.md).
+To develop modules for your IoT Edge devices, [Understand and use Azure IoT Hub SDKs](../iot-hub/iot-hub-devguide-sdks.md).

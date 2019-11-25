@@ -1,54 +1,49 @@
 ---
-title: Docker görüntüsünü özel Azure Container Registry 'ye gönderme
+title: Push & pull Docker image
 description: Docker CLI’yı kullanarak Azure’da özel bir kapsayıcı kayıt defterine Docker görüntüleri itme ve kapsayıcıdan görüntü çekme
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
 ms.topic: article
 ms.date: 01/23/2019
-ms.author: danlep
 ms.custom: seodec18, H1Hack27Feb2017
-ms.openlocfilehash: 6944755619ea5e8e63af04b9b3bca6f7376e29a9
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6751a04c3c1bfe826334161704c20c1ba2e5a6d2
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68309438"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456363"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Docker CLI’yı kullanarak özel bir Dockler kapsayıcı kayıt defterine ilk görüntünüzü itme
 
-Azure kapsayıcısı kayıt defteri, [Docker Hub](https://hub.docker.com/)’ın genel Docker görüntülerini depolama yöntemine benzer şekilde özel [Docker](https://hub.docker.com) kapsayıcı görüntülerini depolar ve yönetir. Kapsayıcı kayıt defterinizde [oturum açma](https://docs.docker.com/engine/reference/commandline/login/), [gönderim](https://docs.docker.com/engine/reference/commandline/push/), [çekme](https://docs.docker.com/engine/reference/commandline/pull/)ve diğer işlemler için [DOCKER komut satırı arabirimini](https://docs.docker.com/engine/reference/commandline/cli/) (Docker CLI) kullanabilirsiniz.
+Azure kapsayıcısı kayıt defteri, [Docker Hub](https://hub.docker.com/)’ın genel Docker görüntülerini depolama yöntemine benzer şekilde özel [Docker](https://hub.docker.com) kapsayıcı görüntülerini depolar ve yönetir. You can use the [Docker command-line interface](https://docs.docker.com/engine/reference/commandline/cli/) (Docker CLI) for [login](https://docs.docker.com/engine/reference/commandline/login/), [push](https://docs.docker.com/engine/reference/commandline/push/), [pull](https://docs.docker.com/engine/reference/commandline/pull/), and other operations on your container registry.
 
-Aşağıdaki adımlarda, genel Docker Hub kayıt defterinden resmi bir [NGINX görüntüsü](https://store.docker.com/images/nginx) indirir, özel Azure Container kayıt defteriniz için etiketleyerek Kayıt defterinize gönderirsiniz ve sonra kayıt defterinden çekebilirsiniz.
+In the following steps, you download an official [Nginx image](https://store.docker.com/images/nginx) from the public Docker Hub registry, tag it for your private Azure container registry, push it to your registry, and then pull it from the registry.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* **Azure kapsayıcısı kayıt defteri** -Azure aboneliğinizde bir kapsayıcı kayıt defteri oluşturun. Örneğin, [Azure Portal](container-registry-get-started-portal.md) veya [Azure CLI](container-registry-get-started-azure-cli.md)'yi kullanın.
-* **DOCKER CLI** -Ayrıca Docker 'ın yerel olarak yüklü olması gerekir. Docker, tüm [MacOS][docker-mac], [Windows][docker-windows]veya [Linux][docker-linux] sistemlerinde Docker 'ı kolayca yapılandıran paketler sağlar.
+* **Azure kapsayıcısı kayıt defteri** -Azure aboneliğinizde bir kapsayıcı kayıt defteri oluşturun. For example, use the [Azure portal](container-registry-get-started-portal.md) or the [Azure CLI](container-registry-get-started-azure-cli.md).
+* **Docker CLI** - You must also have Docker installed locally. Docker provides packages that easily configure Docker on any [macOS][docker-mac], [Windows][docker-windows], or [Linux][docker-linux] system.
 
 ## <a name="log-in-to-a-registry"></a>Kayıt defterinde oturum açma
 
-Özel kapsayıcı kayıt defterinizde [kimlik doğrulamanın birkaç yolu](container-registry-authentication.md) vardır. Komut satırında çalışırken önerilen yöntem, [az ACR Login](/cli/azure/acr?view=azure-cli-latest#az-acr-login)Azure CLI komutuna sahip olur. Örneğin, *myregistry*adlı bir kayıt defterinde oturum açmak için:
+There are [several ways to authenticate](container-registry-authentication.md) to your private container registry. The recommended method when working in a command line is with the Azure CLI command [az acr login](/cli/azure/acr?view=azure-cli-latest#az-acr-login). For example, to log in to a registry named *myregistry*:
 
 ```azurecli
 az acr login --name myregistry
 ```
 
-[Docker oturum açma](https://docs.docker.com/engine/reference/commandline/login/)ile de oturum açabilirsiniz. Örneğin, bir Otomasyon senaryosunda Kayıt defterinize [bir hizmet sorumlusu atamış](container-registry-authentication.md#service-principal) olabilirsiniz. Aşağıdaki komutu çalıştırdığınızda, istendiğinde hizmet sorumlusu AppID (Kullanıcı adı) ve parolayı etkileşimli olarak sağlayın. Oturum açma kimlik bilgilerini yönetmek için en iyi uygulamalar için bkz. [Docker Login](https://docs.docker.com/engine/reference/commandline/login/) komut başvurusu:
+You can also log in with [docker login](https://docs.docker.com/engine/reference/commandline/login/). For example, you might have [assigned a service principal](container-registry-authentication.md#service-principal) to your registry for an automation scenario. When you run the following command, interactively provide the service principal appID (username) and password when prompted. For best practices to manage login credentials, see the [docker login](https://docs.docker.com/engine/reference/commandline/login/) command reference:
 
 ```
 docker login myregistry.azurecr.io
 ```
 
-Her iki komut `Login Succeeded` de tamamlandığında döndürülür.
+Both commands return `Login Succeeded` once completed.
 
 > [!TIP]
-> `docker login` ' İ kullanırken ve Kayıt defterinize göndermek üzere resimleri etiketlediğinizde, her zaman tam olarak nitelenmiş kayıt defteri adını (tümü küçük harf) belirtin. Bu makaledeki örneklerde, tam nitelikli ad *myregistry.azurecr.io*' dir.
+> Always specify the fully qualified registry name (all lowercase) when you use `docker login` and when you tag images for pushing to your registry. In the examples in this article, the fully qualified name is *myregistry.azurecr.io*.
 
-## <a name="pull-the-official-nginx-image"></a>Resmi NGINX görüntüsünü çekme
+## <a name="pull-the-official-nginx-image"></a>Pull the official Nginx image
 
-İlk olarak, genel NGINX görüntüsünü yerel bilgisayarınıza çekin.
+First, pull the public Nginx image to your local computer.
 
 ```
 docker pull nginx
@@ -56,67 +51,67 @@ docker pull nginx
 
 ## <a name="run-the-container-locally"></a>Kapsayıcıyı yerel olarak çalıştırma
 
-8080 numaralı bağlantı noktasında NGINX kapsayıcısının etkileşimli (`-it`) yerel bir örneğini başlatmak için aşağıdaki [Docker Run](https://docs.docker.com/engine/reference/run/) komutunu yürütün. `--rm` Bağımsız değişkeni kapsayıcıyı durdurduğunuzda kaldırılması gerektiğini belirtir.
+Execute following [docker run](https://docs.docker.com/engine/reference/run/) command to start a local instance of the Nginx container interactively (`-it`) on port 8080. The `--rm` argument specifies that the container should be removed when you stop it.
 
 ```
 docker run -it --rm -p 8080:80 nginx
 ```
 
-Çalışan kapsayıcıda `http://localhost:8080` NGINX tarafından sunulan varsayılan Web sayfasını görüntülemek için öğesine gidin. Aşağıdakine benzer bir sayfa görmeniz gerekir:
+Browse to `http://localhost:8080` to view the default web page served by Nginx in the running container. You should see a page similar to the following:
 
 ![Yerel bilgisayarda Nginx](./media/container-registry-get-started-docker-cli/nginx.png)
 
-Kapsayıcıyı ile `-it`etkileşimli olarak başlattığınız için, tarayıcınızda gezindikten sonra, komut satırında NGINX sunucusunun çıkışını görebilirsiniz.
+Because you started the container interactively with `-it`, you can see the Nginx server's output on the command line after navigating to it in your browser.
 
-Kapsayıcıyı durdurmak ve kaldırmak için tuşuna basın `Control`. + `C`
+To stop and remove the container, press `Control`+`C`.
 
-## <a name="create-an-alias-of-the-image"></a>Görüntünün diğer adını oluşturma
+## <a name="create-an-alias-of-the-image"></a>Create an alias of the image
 
-Kayıt defterinizin tam yolunu içeren görüntünün diğer adını oluşturmak için [Docker Tag](https://docs.docker.com/engine/reference/commandline/tag/) ' i kullanın. Bu örnek, kayıt defterinin kökünde dağınıklığı önlemek için `samples` ad alanını belirtir.
+Use [docker tag](https://docs.docker.com/engine/reference/commandline/tag/) to create an alias of the image with the fully qualified path to your registry. Bu örnek, kayıt defterinin kökünde dağınıklığı önlemek için `samples` ad alanını belirtir.
 
 ```
 docker tag nginx myregistry.azurecr.io/samples/nginx
 ```
 
-Ad alanları ile etiketleme hakkında daha fazla bilgi için, [Azure Container Registry Için en iyi yöntemlerin](container-registry-best-practices.md) [Depo ad alanları](container-registry-best-practices.md#repository-namespaces) bölümüne bakın.
+For more information about tagging with namespaces, see the [Repository namespaces](container-registry-best-practices.md#repository-namespaces) section of [Best practices for Azure Container Registry](container-registry-best-practices.md).
 
-## <a name="push-the-image-to-your-registry"></a>Görüntüyü Kayıt defterinize gönderin
+## <a name="push-the-image-to-your-registry"></a>Push the image to your registry
 
-Görüntüyü özel kayıt defterinizin tam yoluna etiketledikten sonra [Docker Push](https://docs.docker.com/engine/reference/commandline/push/)ile kayıt defterine gönderebilirsiniz:
+Now that you've tagged the image with the fully qualified path to your private registry, you can push it to the registry with [docker push](https://docs.docker.com/engine/reference/commandline/push/):
 
 ```
 docker push myregistry.azurecr.io/samples/nginx
 ```
 
-## <a name="pull-the-image-from-your-registry"></a>Görüntüyü Kayıt defterinizden çekin
+## <a name="pull-the-image-from-your-registry"></a>Pull the image from your registry
 
-Görüntüyü kayıt defterinden çekmek için [Docker Pull](https://docs.docker.com/engine/reference/commandline/pull/) komutunu kullanın:
+Use the [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) command to pull the image from your registry:
 
 ```
 docker pull myregistry.azurecr.io/samples/nginx
 ```
 
-## <a name="start-the-nginx-container"></a>NGINX kapsayıcısını başlatma
+## <a name="start-the-nginx-container"></a>Start the Nginx container
 
-Kayıt defterinizden çekolduğunuz görüntüyü çalıştırmak için [Docker Run](https://docs.docker.com/engine/reference/run/) komutunu kullanın:
+Use the [docker run](https://docs.docker.com/engine/reference/run/) command to run the image you've pulled from your registry:
 
 ```
 docker run -it --rm -p 8080:80 myregistry.azurecr.io/samples/nginx
 ```
 
-Çalışan kapsayıcıyı `http://localhost:8080` görüntülemek için öğesine gidin.
+Browse to `http://localhost:8080` to view the running container.
 
-Kapsayıcıyı durdurmak ve kaldırmak için tuşuna basın `Control`. + `C`
+To stop and remove the container, press `Control`+`C`.
 
-## <a name="remove-the-image-optional"></a>Görüntüyü kaldırma (isteğe bağlı)
+## <a name="remove-the-image-optional"></a>Remove the image (optional)
 
-Artık NGINX görüntüsüne ihtiyacınız yoksa [Docker rmi](https://docs.docker.com/engine/reference/commandline/rmi/) komutuyla yerel olarak silebilirsiniz.
+If you no longer need the Nginx image, you can delete it locally with the [docker rmi](https://docs.docker.com/engine/reference/commandline/rmi/) command.
 
 ```
 docker rmi myregistry.azurecr.io/samples/nginx
 ```
 
-Azure Container Registry 'nizden görüntüleri kaldırmak için [az ACR Repository Delete](/cli/azure/acr/repository#az-acr-repository-delete)Azure CLI komutunu kullanabilirsiniz. Örneğin, aşağıdaki komut `samples/nginx:latest` etiket tarafından başvurulan bildirimi, tüm benzersiz katman verilerini ve bildirime başvuran diğer tüm etiketleri siler.
+To remove images from your Azure container registry, you can use the Azure CLI command [az acr repository delete](/cli/azure/acr/repository#az-acr-repository-delete). For example, the following command deletes the manifest referenced by the `samples/nginx:latest` tag, any unique layer data, and all other tags referencing the manifest.
 
 ```azurecli
 az acr repository delete --name myregistry --image samples/nginx:latest
@@ -124,13 +119,13 @@ az acr repository delete --name myregistry --image samples/nginx:latest
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Temel bilgileri öğrenmiş olduğunuza göre artık kayıt defterinizi kullanmaya başlamaya hazırsınız demektir! Örneğin, Kayıt defterinizden kapsayıcı görüntülerini şu şekilde dağıtın:
+Now that you know the basics, you're ready to start using your registry! For example, deploy container images from your registry to:
 
-* [Azure Kubernetes Service'i (AKS)](../aks/tutorial-kubernetes-prepare-app.md)
+* [Azure Kubernetes Service (AKS)](../aks/tutorial-kubernetes-prepare-app.md)
 * [Azure Container Instances](../container-instances/container-instances-tutorial-prepare-app.md)
 * [Service Fabric](../service-fabric/service-fabric-tutorial-create-container-images.md)
 
-İsteğe bağlı olarak [Visual Studio Code Için Docker uzantısını](https://code.visualstudio.com/docs/azure/docker) ve Azure Container Registry 'larınız ile birlikte çalışmak Için [Azure hesap](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) uzantısını yükler. Azure Container Registry 'ye görüntü çekme ve gönderme veya ACR görevlerini Visual Studio Code.
+Optionally install the [Docker Extension for Visual Studio Code](https://code.visualstudio.com/docs/azure/docker) and the [Azure Account](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) extension to work with your Azure container registries. Pull and push images to an Azure container registry, or run ACR Tasks, all within Visual Studio Code.
 
 
 <!-- LINKS - external -->

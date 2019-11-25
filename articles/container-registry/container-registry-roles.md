@@ -1,25 +1,20 @@
 ---
-title: Azure Container Registry-roller ve izinler
-description: Azure Container Registry 'deki kaynaklara yönelik ayrıntılı izinler sağlamak için Azure rol tabanlı erişim denetimi (RBAC) ve kimlik ve erişim yönetimi (ıAM) kullanın.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
+title: RBAC roles and permissions
+description: Use Azure role-based access control (RBAC) and identity and access management (IAM) to provide fine-grained permissions to resources in an Azure container registry.
 ms.topic: article
 ms.date: 03/20/2019
-ms.author: danlep
-ms.openlocfilehash: 69104cdaeb4abfc15e2ac4209e1ddbc610656c13
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 8ef4f26dfd59c7b3b177ef58fa23e08f7e66d328
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793976"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456244"
 ---
-# <a name="azure-container-registry-roles-and-permissions"></a>Azure Container Registry roller ve izinler
+# <a name="azure-container-registry-roles-and-permissions"></a>Azure Container Registry roles and permissions
 
-Azure Container Registry hizmeti, bir Azure Container Registry 'ye farklı düzeylerde izinler sağlayan bir dizi Azure rolünü destekler. Azure [rol tabanlı erişim denetimi](../role-based-access-control/index.yml) 'ni (RBAC) kullanarak, bir kayıt defteriyle etkileşimde bulunmak gereken kullanıcılara veya hizmet sorumlularına belirli izinler atayın.
+The Azure Container Registry service supports a set of Azure roles that provide different levels of permissions to an Azure container registry. Use Azure [role-based access control](../role-based-access-control/index.yml) (RBAC) to assign specific permissions to users or service principals that need to interact with a registry.
 
-| Rol/Izin       | [Erişim Kaynak Yöneticisi](#access-resource-manager) | [Kayıt Defteri Oluştur/Sil](#create-and-delete-registry) | [Görüntü gönder](#push-image) | [Çekme resmi](#pull-image) | [Görüntü verilerini sil](#delete-image-data) | [İlkeleri Değiştir](#change-policies) |   [Görüntüleri imzala](#sign-images)  |
+| Role/Permission       | [Access Resource Manager](#access-resource-manager) | [Create/delete registry](#create-and-delete-registry) | [Push image](#push-image) | [Pull image](#pull-image) | [Delete image data](#delete-image-data) | [Change policies](#change-policies) |   [Sign images](#sign-images)  |
 | ---------| --------- | --------- | --------- | --------- | --------- | --------- | --------- |
 | Sahip | X | X | X | X | X | X |  |  
 | Katılımcı | X | X | X |  X | X | X |  |  
@@ -27,54 +22,54 @@ Azure Container Registry hizmeti, bir Azure Container Registry 'ye farklı düze
 | AcrPush |  |  | X | X | |  |  |  
 | AcrPull |  |  |  | X |  |  |  |  
 | AcrDelete |  |  |  |  | X |  |  |
-| Acrimageimzalayan |  |  |  |  |  |  | X |
+| AcrImageSigner |  |  |  |  |  |  | X |
 
-## <a name="differentiate-users-and-services"></a>Kullanıcıları ve Hizmetleri ayırt etme
+## <a name="differentiate-users-and-services"></a>Differentiate users and services
 
-Her zaman izin uygulandığında en iyi yöntem, bir kişiye veya hizmete bir görevi gerçekleştirmek için en sınırlı sayıda izin sağlamaktır. Aşağıdaki izin kümeleri, insanların ve gözetimsiz hizmetler tarafından kullanılabilen bir özellik kümesini temsil eder.
+Any time permissions are applied, a best practice is to provide the most limited set of permissions for a person, or service, to accomplish a task. The following permission sets represent a set of capabilities that may be used by humans and headless services.
 
-### <a name="cicd-solutions"></a>CI/CD çözümleri
+### <a name="cicd-solutions"></a>CI/CD solutions
 
-CI/CD çözümlerinde `docker build` komutları otomatikleştirmede `docker push` yetenekler gerekir. Bu gözetimsiz hizmet senaryolarında **Acrpush** rolünü atamayı öneririz. Bu rol, daha geniş **katkıda bulunan** rolünün aksine, hesabın diğer kayıt defteri işlemlerini gerçekleştirmesini veya Azure Resource Manager erişmesini önler.
+When automating `docker build` commands from CI/CD solutions, you need `docker push` capabilities. For these headless service scenarios, we suggest assigning the **AcrPush** role. This role, unlike the broader **Contributor** role, prevents the account from performing other registry operations or accessing Azure Resource Manager.
 
-### <a name="container-host-nodes"></a>Kapsayıcı konak düğümleri
+### <a name="container-host-nodes"></a>Container host nodes
 
-Benzer şekilde, Kapsayıcılarınızı çalıştıran düğümlerin **Acrpull** rolü olması gerekir, ancak **okuyucu** becerileri gerektirmemelidir.
+Likewise, nodes running your containers need the **AcrPull** role, but shouldn't require **Reader** capabilities.
 
-### <a name="visual-studio-code-docker-extension"></a>Docker uzantısını Visual Studio Code
+### <a name="visual-studio-code-docker-extension"></a>Visual Studio Code Docker extension
 
-Visual Studio Code [Docker uzantısı](https://code.visualstudio.com/docs/azure/docker)gibi araçlar için, kullanılabilir Azure Container kayıt defterlerini listelemek üzere ek kaynak sağlayıcısı erişimi gerekir. Bu durumda, kullanıcılarınıza **okuyucu** veya **katkıda bulunan** rolü erişimi sağlayın. Bu roller `docker pull`, `docker push`, `az acr list`, `az acr build`ve diğer özellikleri sağlar. 
+For tools like the Visual Studio Code [Docker extension](https://code.visualstudio.com/docs/azure/docker), additional resource provider access is required to list the available Azure container registries. In this case, provide your users access to the **Reader** or **Contributor** role. These roles allow `docker pull`, `docker push`, `az acr list`, `az acr build`, and other capabilities. 
 
-## <a name="access-resource-manager"></a>Erişim Kaynak Yöneticisi
+## <a name="access-resource-manager"></a>Access Resource Manager
 
-[Azure CLI](/cli/azure/)ile Azure Portal ve kayıt defteri yönetimi için Azure Resource Manager erişim gerekir. Örneğin, `az acr list` komutunu kullanarak kayıt defterlerinin listesini almak için, bu izin kümesine ihtiyacınız vardır. 
+Azure Resource Manager access is required for the Azure portal and registry management with the [Azure CLI](/cli/azure/). For example, to get a list of registries by using the `az acr list` command, you need this permission set. 
 
-## <a name="create-and-delete-registry"></a>Kayıt defteri oluştur ve Sil
+## <a name="create-and-delete-registry"></a>Create and delete registry
 
-Azure Container Registry oluşturma ve silme özelliği.
+The ability to create and delete Azure container registries.
 
-## <a name="push-image"></a>Görüntü gönder
+## <a name="push-image"></a>Push image
 
-Bir görüntüyü `docker push` veya bir hele grafiği gibi başka bir [desteklenen yapıtı](container-registry-image-formats.md) bir kayıt defterine gönderebilirsiniz. Yetkili kimliği kullanarak kayıt defteriyle [kimlik doğrulaması](container-registry-authentication.md) gerektirir. 
+The ability to `docker push` an image, or push another [supported artifact](container-registry-image-formats.md) such as a Helm chart, to a registry. Requires [authentication](container-registry-authentication.md) with the registry using the authorized identity. 
 
-## <a name="pull-image"></a>Çekme resmi
+## <a name="pull-image"></a>Pull image
 
-Bir kayıt defterinden, karantinaya alınmamış bir görüntü `docker pull` veya Held grafik gibi başka bir [desteklenen yapıt](container-registry-image-formats.md) çekebilirsiniz. Yetkili kimliği kullanarak kayıt defteriyle [kimlik doğrulaması](container-registry-authentication.md) gerektirir.
+The ability to `docker pull` a non-quarantined image, or pull another [supported artifact](container-registry-image-formats.md) such as a Helm chart, from a registry. Requires [authentication](container-registry-authentication.md) with the registry using the authorized identity.
 
-## <a name="delete-image-data"></a>Görüntü verilerini sil
+## <a name="delete-image-data"></a>Delete image data
 
-[Kapsayıcı görüntülerini silme](container-registry-delete.md)veya HELI grafikleri gibi desteklenen diğer [yapıtları](container-registry-image-formats.md) bir kayıt defterinden silme özelliği.
+The ability to [delete container images](container-registry-delete.md), or delete other [supported artifacts](container-registry-image-formats.md) such as Helm charts, from a registry.
 
-## <a name="change-policies"></a>İlkeleri Değiştir
+## <a name="change-policies"></a>Change policies
 
-Bir kayıt defterinde ilkeleri yapılandırma özelliği. , Görüntü Temizleme, karantina etkinleştirme ve görüntü imzalama dahil olmak üzere ilkeler.
+The ability to configure policies on a registry. Policies include image purging, enabling quarantine, and image signing.
 
-## <a name="sign-images"></a>Görüntüleri imzala
+## <a name="sign-images"></a>Sign images
 
-Genellikle bir hizmet sorumlusu kullanan otomatik bir işleme atanan görüntüleri imzalama özelliği. Bu izin, bir kayıt defterine güvenilir bir görüntü göndermeye olanak tanımak için genellikle [anında iletme görüntüsüyle](#push-image) birleştirilir. Ayrıntılar için bkz. [Azure Container Registry içerik güveni](container-registry-content-trust.md).
+The ability to sign images, usually assigned to an automated process, which would use a service principal. This permission is typically combined with [push image](#push-image) to allow pushing a trusted image to a registry. For details, see [Content trust in Azure Container Registry](container-registry-content-trust.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Identity 'a [Azure Portal](../role-based-access-control/role-assignments-portal.md), [Azure CLI](../role-based-access-control/role-assignments-cli.md)veya DIĞER Azure araçlarını kullanarak RBAC rolleri atama hakkında daha fazla bilgi edinin.
+* Learn more about assigning RBAC roles to an Azure identity by using the [Azure portal](../role-based-access-control/role-assignments-portal.md), the [Azure CLI](../role-based-access-control/role-assignments-cli.md), or other Azure tools.
 
-* Azure Container Registry için [kimlik doğrulama seçenekleri](container-registry-authentication.md) hakkında bilgi edinin.
+* Learn about [authentication options](container-registry-authentication.md) for Azure Container Registry.

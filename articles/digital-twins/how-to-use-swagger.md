@@ -1,131 +1,133 @@
 ---
-title: Başvuru Swagger belgelerini kullanma-Azure dijital TWINS | Microsoft Docs
-description: Azure Digital TWINS Swagger başvuru belgelerinin nasıl kullanılacağını anlama.
+title: How to use reference Swagger documentation - Azure Digital Twins | Microsoft Docs
+description: Understanding how to use Azure Digital Twins Swagger reference documentation.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: ccea63e8edee739ce6743d7638b4e5300ad07f8f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 3d4470a89455fd4b49fb7bb5ae26375f9cf9884c
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74009892"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456998"
 ---
-# <a name="azure-digital-twins-swagger-reference-documentation"></a>Azure dijital TWINS Swagger başvuru belgeleri
+# <a name="azure-digital-twins-swagger-reference-documentation"></a>Azure Digital Twins Swagger reference documentation
 
-Sağlanan her Azure dijital TWINS örneği, kendi otomatik olarak oluşturulan Swagger başvuru belgelerini içerir.
+Each provisioned Azure Digital Twins instance includes its own automatically generated Swagger reference documentation.
 
-[Swagger](https://swagger.io/)veya [openapı](https://www.openapis.org/), karmaşık API bilgilerini etkileşimli ve dilden bağımsız bir başvuru kaynağına ayırır. Swagger, bir API 'ye karşı işlem gerçekleştirmek için kullanılacak olan JSON yükleri, HTTP yöntemleri ve belirli uç noktalar hakkında kritik başvuru malzemeleri sağlar.
+[Swagger](https://swagger.io/), or [OpenAPI](https://www.openapis.org/), unites complex API information into an interactive and language-agnostic reference resource. Swagger provides critical reference material about which JSON payloads, HTTP methods, and specific endpoints to use to perform operations against an API.
 
-## <a name="swagger-summary"></a>Swagger Özeti
+## <a name="swagger-summary"></a>Swagger summary
 
-Swagger, API 'nizin etkileşimli bir özetini sağlar ve şunları içerir:
+Swagger provides an interactive summary of your API, which includes:
 
-* API ve nesne modeli bilgileri.
-* Gerekli istek yüklerini, üstbilgileri, parametreleri, bağlam yollarını ve HTTP yöntemlerini belirten uç noktalar REST API.
-* API işlevlerini test etme.
-* HTTP yanıtlarını doğrulamak ve doğrulamak için kullanılan örnek yanıt bilgileri.
-* Hata kodu bilgileri.
+* API and object model information.
+* REST API endpoints that specify the required request payloads, headers, parameters, context paths, and HTTP methods.
+* Testing of API functionalities.
+* Example response information used to validate and confirm HTTP responses.
+* Error code information.
 
-Swagger, Azure Digital TWINS yönetim API 'Lerine yapılan geliştirme ve test çağrılarına yardımcı olan kullanışlı bir araçtır.
+Swagger is a convenient tool to assist with development and testing calls made to the Azure Digital Twins Management APIs.
 
 [!INCLUDE [Digital Twins Swagger](../../includes/digital-twins-swagger.md)]
 
 ## <a name="reference-material"></a>Başvuru kaynakları
 
-Otomatik olarak oluşturulan Swagger başvuru malzemeleri, önemli kavramlara, kullanılabilir yönetim API uç noktalarına ve geliştirme ve test etmeye yardımcı olmak için her nesne modelinin açıklamasına yönelik hızlı bir genel bakış sağlar.
+The automatically generated Swagger reference material supplies a quick overview of important concepts, available Management API endpoints, and a description of each object model to assist development and testing.
 
-Kısa bir Özet API 'YI tanımlar.
+A concise summary describes the API.
 
-[![Swagger üst](media/how-to-use-swagger/swagger-management-top-img.png)](media/how-to-use-swagger/swagger-management-top-img.png#lightbox)
+[![Swagger summary and API overview information](media/how-to-use-swagger/swagger-management-top-img.png)](media/how-to-use-swagger/swagger-management-top-img.png#lightbox)
 
-Yönetim API 'SI nesne modelleri de listelenir.
+Management API object models are also listed.
 
-[Swagger modellerini ![](media/how-to-use-swagger/swagger-management-models-img.png)](media/how-to-use-swagger/swagger-management-models-img.png#lightbox)
+[![Swagger models listed at bottom of Swagger UI](media/how-to-use-swagger/swagger-management-models-img.png)](media/how-to-use-swagger/swagger-management-models-img.png#lightbox)
 
-Anahtar özniteliklerinin daha ayrıntılı bir özeti için listelenen her nesne modelini seçebilirsiniz.
+You can select each listed object model for a more detailed summary of key attributes.
 
-[![Swagger modeli](media/how-to-use-swagger/swagger-management-model-img.png)](media/how-to-use-swagger/swagger-management-model-img.png#lightbox)
+[![Swagger models expanded to see contents of models](media/how-to-use-swagger/swagger-management-model-img.png)](media/how-to-use-swagger/swagger-management-model-img.png#lightbox)
 
-Oluşturulan Swagger nesne modelleri, tüm kullanılabilir Azure dijital TWINS [nesnelerini ve API 'leri](./concepts-objectmodel-spatialgraph.md)görmek için uygundur. Geliştiriciler, Azure dijital TWINS üzerinde çözümler oluştururken bu kaynağı kullanabilir.
+The generated Swagger object models are convenient to see all available Azure Digital Twins [objects and APIs](./concepts-objectmodel-spatialgraph.md). Developers can use this resource when they build solutions on Azure Digital Twins.
 
-## <a name="endpoint-summary"></a>Uç nokta Özeti
+## <a name="endpoint-summary"></a>Endpoint summary
 
-Swagger ayrıca yönetim API 'Lerini oluşturan tüm uç noktalara kapsamlı bir genel bakış sağlar.
+Swagger also provides a thorough overview of all endpoints that compose the Management APIs.
 
-Listelenen her uç nokta, aşağıdakiler gibi gerekli istek bilgilerini de içerir:
+Each listed endpoint also includes the required request information, such as the:
 
-* Gerekli parametreler.
-* Gerekli parametre veri türleri.
-* Kaynağa erişmek için HTTP yöntemi.
+* Required parameters.
+* Required parameter data types.
+* HTTP method to access the resource.
 
-[![Swagger uç noktaları](media/how-to-use-swagger/swagger-management-endpoints-img.png)](media/how-to-use-swagger/swagger-management-endpoints-img.png#lightbox)
+[![Swagger endpoints displayed in Swagger UI](media/how-to-use-swagger/swagger-management-endpoints-img.png)](media/how-to-use-swagger/swagger-management-endpoints-img.png#lightbox)
 
-Daha ayrıntılı bir genel bakış görmek için her bir kaynağı seçin.
+To see a more detailed overview, select each resource.
 
-## <a name="use-swagger-to-test-endpoints"></a>Uç noktaları test etmek için Swagger kullanın
+## <a name="use-swagger-to-test-endpoints"></a>Use Swagger to test endpoints
 
-Swagger, bir API uç noktasını doğrudan belgeler kullanıcı arabiriminden test edebilmesidir.
+One of the powerful functionalities Swagger provides is the ability to test an API endpoint directly through the documentation UI.
 
-Belirli bir uç noktayı seçtikten sonra, **deneyin**seçeneğini görürsünüz.
+After you select a specific endpoint, you see **Try it out**.
 
-[![Swagger TRY](media/how-to-use-swagger/swagger-management-try-img.png)](media/how-to-use-swagger/swagger-management-try-img.png#lightbox)
+[![Swagger Try it out button](media/how-to-use-swagger/swagger-management-try-img.png)](media/how-to-use-swagger/swagger-management-try-img.png#lightbox)
 
-Gerekli ve isteğe bağlı her bir parametre için giriş alanlarını getirmek üzere bu bölümü genişletin. Doğru değerleri girip **Yürüt**' ü seçin.
+Expand that section to bring up input fields for each required and optional parameter. Enter the correct values, and select **Execute**.
 
-[![Swagger çalıştı](media/how-to-use-swagger/swagger-management-tried-img.png)](media/how-to-use-swagger/swagger-management-tried-img.png#lightbox)
+[![Swagger Try it out result example](media/how-to-use-swagger/swagger-management-tried-img.png)](media/how-to-use-swagger/swagger-management-tried-img.png#lightbox)
 
-Testi yürütmeden sonra, yanıt verilerini doğrulayabilirsiniz.
+After you execute the test, you can validate the response data.
 
-## <a name="swagger-response-data"></a>Swagger yanıt verileri
+## <a name="swagger-response-data"></a>Swagger response data
 
-Listelenen her uç nokta, geliştirme ve testlerinizi doğrulamak için yanıt gövdesi verilerini de içerir. Bu örnekler, başarılı HTTP istekleri için görmek istediğiniz durum kodlarını ve JSON 'yi içerir.
+Each listed endpoint also includes response body data to validate your development and tests. These examples include the status codes and JSON you want to see for successful HTTP requests.
 
-[![Swagger yanıtı](media/how-to-use-swagger/swagger-management-response-img.png)](media/how-to-use-swagger/swagger-management-response-img.png#lightbox)
+[![Swagger JSON response example](media/how-to-use-swagger/swagger-management-response-img.png)](media/how-to-use-swagger/swagger-management-response-img.png#lightbox)
 
-Örnekler Ayrıca hata ayıklama veya başarısız testleri geliştirmek için hata kodlarını içerir.
+The examples also include error codes to help debug or improve failing tests.
 
-## <a name="swagger-oauth-20-authorization"></a>Swagger OAuth 2,0 yetkilendirmesi
+## <a name="swagger-oauth-20-authorization"></a>Swagger OAuth 2.0 authorization
 
 > [!NOTE]
-> * Azure dijital TWINS kaynağını oluşturan kullanıcı sorumlusunun bir alan Yöneticisi rol ataması olacak ve diğer kullanıcılar için ek rol atamaları oluşturabileceksiniz. Bu tür kullanıcılar ve rollerinin API 'Leri çağırma yetkisi bulunabilir.
+> * The user principal that created the Azure Digital Twins resource will have a Space Administrator role assignment and will be able to create additional role assignments for other users. Such users and their roles can be authorized to call the APIs.
 
-1. Bir Azure AD uygulaması oluşturmak ve yapılandırmak için [Bu hızlı](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) başlangıçta bulunan adımları izleyin. Alternatif olarak, var olan bir uygulama kaydını yeniden kullanabilirsiniz.
+1. Follow the steps in [this quickstart](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) to create and configure an Azure AD application. Alternatively, you can reuse an existing app registration.
 
-1. Aşağıdaki yanıt URL 'sini uygulama kaydına ekleyin:
+1. Add the following **Redirect url** to your Azure AD app registration:
+
+    [![Register Swagger redirect url in AAD](media/how-to-use-swagger/swagger-aad-redirect-url-registration.png)](media/how-to-use-swagger/swagger-aad-redirect-url-registration.png#lightbox)
 
     ```plaintext
     https://YOUR_SWAGGER_URL/ui/oauth2-redirect-html
     ```
-    | Ad  | Şununla değiştir | Örnek |
+    | Adı  | Şununla değiştir | Örnek |
     |---------|---------|---------|
-    | YOUR_SWAGGER_URL | Portalda yönetim REST API belge URL 'SI bulundu  | `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` |
+    | YOUR_SWAGGER_URL | Your Management REST API documentation URL found in the portal  | `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` |
 
-1. Azure AD uygulamanızın KIMLIĞINI kopyalayın.
+1. Copy the **Client ID** of your Azure AD app.
 
-Azure Active Directory kaydını tamamladıktan sonra:
+After completing the Azure Active Directory registration:
 
-1. Swagger sayfanızda **Yetkilendir** düğmesini seçin.
+1. Select the **Authorize** button on your swagger page.
 
-    [![Swagger Yetkilendir düğmesini seçin](media/how-to-use-swagger/swagger-select-authorize-btn.png)](media/how-to-use-swagger/swagger-select-authorize-btn.png#lightbox)
+    [![Select the Swagger authorize button](media/how-to-use-swagger/swagger-select-authorize-btn.png)](media/how-to-use-swagger/swagger-select-authorize-btn.png#lightbox)
 
-1. Uygulama KIMLIĞINI **client_id** alanına yapıştırın.
+1. Paste the application ID into the **client_id** field.
 
-    [![Swagger client_id alanı](media/how-to-use-swagger/swagger-auth-form.png)](media/how-to-use-swagger/swagger-auth-form.png#lightbox)
+    [![Swagger client_id field](media/how-to-use-swagger/swagger-auth-form.png)](media/how-to-use-swagger/swagger-auth-form.png#lightbox)
 
-1. Ardından, aşağıdaki başarılı kalıcı öğesine yönlendirilirsiniz.
+1. You will then be redirected to the following success modal.
 
-    [![Swagger yeniden yönlendirme kalıcı](media/how-to-use-swagger/swagger-auth-redirect-img.png)](media/how-to-use-swagger/swagger-auth-redirect-img.png#lightbox)
+    [![Swagger redirect modal](media/how-to-use-swagger/swagger-auth-redirect-img.png)](media/how-to-use-swagger/swagger-auth-redirect-img.png#lightbox)
 
-OAuth 2,0 tarafından korunan etkileşimli test istekleri hakkında daha fazla bilgi edinmek için [resmi belgelere](https://swagger.io/docs/specification/authentication/oauth2/)bakın.
+To learn more about interactively testing requests protected by OAuth 2.0, see the [official documentation](https://swagger.io/docs/specification/authentication/oauth2/).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure dijital TWINS nesne modelleri ve uzamsal zeka grafiği hakkında daha fazla bilgi edinmek için bkz. [Azure Digital TWINS nesne modellerini anlama](./concepts-objectmodel-spatialgraph.md).
+- To read more about Azure Digital Twins object models and the spatial intelligence graph, read [Understand Azure Digital Twins object models](./concepts-objectmodel-spatialgraph.md).
 
-- Yönetim API 'niz ile kimlik doğrulaması yapmayı öğrenmek için, [API 'Lerle kimlik doğrulamasını](./security-authenticating-apis.md)okuyun.
+- To learn how to authenticate with your Management API, read [Authenticate with APIs](./security-authenticating-apis.md).

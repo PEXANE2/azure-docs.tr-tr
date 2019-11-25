@@ -1,6 +1,6 @@
 ---
-title: Saydam bir ağ geçidi cihazı - Azure IOT Edge oluştur | Microsoft Docs
-description: Azure IOT Edge cihazı, aşağı akış cihazlardan bilgi işleyebilen saydam bir ağ geçidi olarak kullanma
+title: Create transparent gateway device - Azure IoT Edge | Microsoft Docs
+description: Use an Azure IoT Edge device as a transparent gateway that can process information from downstream devices
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,99 +8,98 @@ ms.date: 08/17/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.custom: seodec18
-ms.openlocfilehash: 467ec25bb9e41180da36f118094324e4fea48cf8
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: d0ac7fa3a1dbb1c91da5b9919bc2c62de74213b5
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266093"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456789"
 ---
-# <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Saydam bir ağ geçidi olarak görev yapacak bir IOT Edge cihazı yapılandırma
+# <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Configure an IoT Edge device to act as a transparent gateway
 
-Bu makalede, bir IoT Edge cihazının diğer cihazların IoT Hub iletişim kurması için saydam bir ağ geçidi olarak çalışacak şekilde yapılandırılması için ayrıntılı yönergeler sağlanmaktadır. Bu makalede, terim *IOT Edge ağ geçidi* saydam bir ağ geçidi olarak kullanılan bir IOT Edge cihazı gösterir. Daha fazla bilgi için bkz. [bir IoT Edge cihazının ağ geçidi olarak nasıl kullanılabileceği](./iot-edge-as-gateway.md).
-
->[!NOTE]
->Şu anda:
-> * Edge özellikli cihazlar IOT Edge ağ geçidi için bağlantı kurulamıyor. 
-> * Aşağı Akış cihazları karşıya dosya yükleme kullanamazsınız.
-
-Başarılı bir saydam ağ geçidi bağlantısı kurmak için üç genel adım vardır. Bu makalede ilk adım ele alınmaktadır:
-
-1. **Ağ Geçidi cihazının aşağı akış cihazlarına güvenli bir şekilde bağlanabilmesi, aşağı akış cihazlarından iletişim alabilmesi ve iletileri uygun hedefe yönlendirmesi gerekir.**
-2. Aşağı akış cihazının IoT Hub kimlik doğrulaması yapabilmesi ve ağ geçidi cihazından iletişim kurmayı bilmesi için bir cihaz kimliği olması gerekir. Daha fazla bilgi için bkz. [Azure 'da bir aşağı akış cihazının kimliğini doğrulama IoT Hub](how-to-authenticate-downstream-device.md).
-3. Aşağı akış cihazının ağ geçidi cihazına güvenli bir şekilde bağlanabiliyor olması gerekir. Daha fazla bilgi için [bir Azure IOT Edge ağ geçidi için aşağı akış cihaz Bağlayamama](how-to-connect-downstream-device.md).
-
-
-Bir cihazın ağ geçidi olarak çalışması için, onun aşağı akış cihazlarına güvenli bir şekilde bağlanabilmesi gerekir. Azure IOT Edge cihazları arasında güvenli bağlantılar kurmak için bir ortak anahtar altyapısı (PKI) kullanmanıza olanak tanır. Bu durumda, biz saydam bir ağ geçidi olarak görev yapan bir IOT Edge cihazına bağlamak için bir aşağı akış cihazı vermiş olursunuz. Makul güvenliği korumak için, aşağı akış cihazının ağ geçidi cihazının kimliğini onaylamasını gerekir. Bu kimlik denetimi, cihazlarınızın potansiyel olarak kötü amaçlı ağ geçitlerine bağlanmasını engeller.
-
-Saydam bir ağ geçidi senaryosunda bir aşağı akış cihazı, [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub) bulut hizmeti ile oluşturulmuş bir kimliği olan herhangi bir uygulama veya platform olabilir. Çoğu durumda, bu uygulamaları kullanma [Azure IOT cihaz SDK'sını](../iot-hub/iot-hub-devguide-sdks.md). Tüm pratik amacıyla bir aşağı akış cihazın IOT Edge ağ geçidi cihazın kendisinde çalışan bir uygulama bile olabilir. Ancak, bir IoT Edge cihaz IoT Edge bir ağ geçidinin bir aşağı akış olamaz. 
-
-Ağ geçidi cihazı topolojiniz için gerekli güven sağlayan herhangi bir sertifika altyapısı oluşturabilirsiniz. Bu makalede, belirli bir IoT Hub (IoT Hub 'ı kök CA) ile ilişkili bir X. 509.952 CA sertifikası içeren ve bu CA ile imzalanan bir dizi sertifika olan IoT Hub [x. 509.952 CA güvenliğini](../iot-hub/iot-hub-x509ca-overview.md) etkinleştirmek için kullandığınız sertifika kurulumunu kabul ediyoruz. ve IoT Edge cihaz için bir CA.
-
-![Ağ geçidi sertifikası Kurulumu](./media/how-to-create-transparent-gateway/gateway-setup.png)
+This article provides detailed instructions for configuring an IoT Edge device to function as a transparent gateway for other devices to communicate with IoT Hub. In this article, the term *IoT Edge gateway* refers to an IoT Edge device used as a transparent gateway. For more information, see [How an IoT Edge device can be used as a gateway](./iot-edge-as-gateway.md).
 
 >[!NOTE]
->Bu makale boyunca kullanılan "kök CA" terimi, bir dağıtılmış sertifika yetkilisinin sertifika kökü olması gerekmeyen PKI sertifika zincirinin en üst yetkili ortak sertifikasına başvurur. Çoğu durumda, aslında bir ara CA genel sertifikasıdır. 
+>Currently:
+> * Edge-enabled devices can't connect to IoT Edge gateways. 
+> * Downstream devices can't use file upload.
 
-Ağ Geçidi, bağlantının başlatılması sırasında IoT Edge cihaz CA sertifikasını aşağı akış cihazına sunar. Aşağı akış cihazı, IoT Edge cihaz CA sertifikasının kök CA sertifikası tarafından imzalandığından emin olmak için kontrol eder. Bu işlem, aşağı akış cihazının ağ geçidinin güvenilir bir kaynaktan geldiğini onaylamasını sağlar.
+There are three general steps to set up a successful transparent gateway connection. This article covers the first step:
 
-Aşağıdaki adımlar, sertifikaları oluşturma ve bunları ağ geçidine doğru yerlere yükleme sürecinde size yol gösterir. Herhangi bir makine sertifikalarını oluşturmak için kullanın ve ardından bunları IOT Edge cihazınıza kopyalayabilirsiniz. 
+1. **The gateway device needs to be able to securely connect to downstream devices, receive communications from downstream devices, and route messages to the proper destination.**
+2. The downstream device needs to have a device identity to be able to authenticate with IoT Hub, and know to communicate through its gateway device. For more information, see [Authenticate a downstream device to Azure IoT Hub](how-to-authenticate-downstream-device.md).
+3. The downstream device needs to be able to securely connect to its gateway device. For more information, see [Connect a downstream device to an Azure IoT Edge gateway](how-to-connect-downstream-device.md).
+
+
+For a device to function as a gateway, it needs to be able to securely connect to its downstream devices. Azure IoT Edge allows you to use a public key infrastructure (PKI) to set up secure connections between devices. In this case, we’re allowing a downstream device to connect to an IoT Edge device acting as a transparent gateway. To maintain reasonable security, the downstream device should confirm the identity of the gateway device. This identity check prevents your devices from connecting to potentially malicious gateways.
+
+A downstream device in a transparent gateway scenario can be any application or platform that has an identity created with the [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub) cloud service. In many cases, these applications use the [Azure IoT device SDK](../iot-hub/iot-hub-devguide-sdks.md). For all practical purposes, a downstream device could even be an application running on the IoT Edge gateway device itself. However, an IoT Edge device cannot be downstream of an IoT Edge gateway. 
+
+You can create any certificate infrastructure that enables the trust required for your device-gateway topology. In this article, we assume the same certificate setup that you would use to enable [X.509 CA security](../iot-hub/iot-hub-x509ca-overview.md) in IoT Hub, which involves an X.509 CA certificate associated to a specific IoT hub (the IoT hub root CA), a series of certificates signed with this CA, and a CA for the IoT Edge device.
+
+![Gateway certificate setup](./media/how-to-create-transparent-gateway/gateway-setup.png)
+
+>[!NOTE]
+>The term "root CA" used throughout this article refers to the topmost authority public certificate of the PKI certificate chain, and not necessarily the certificate root of a syndicated certificate authority. In many cases, it is actually an intermediate CA public certificate. 
+
+The gateway presents its IoT Edge device CA certificate to the downstream device during the initiation of the connection. The downstream device checks to make sure the IoT Edge device CA certificate is signed by the root CA certificate. This process allows the downstream device to confirm that the gateway comes from a trusted source.
+
+The following steps walk you through the process of creating the certificates and installing them in the right places on the gateway. You can use any machine to generate the certificates, and then copy them over to your IoT Edge device. 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Sertifika oluşturmak için bir geliştirme makinesi. 
-* Bir ağ geçidi olarak yapılandırmak için Azure IOT Edge cihazı. Aşağıdaki işletim sistemlerinden biri için IoT Edge yükleme adımlarını kullanın:
+* A development machine to create certificates. 
+* An Azure IoT Edge device to configure as a gateway. Use the IoT Edge installation steps for one of the following operating systems:
   * [Windows](how-to-install-iot-edge-windows.md)
   * [Linux](how-to-install-iot-edge-linux.md)
 
-## <a name="generate-certificates-with-windows"></a>Windows ile sertifikalar oluşturma
+## <a name="generate-certificates-with-windows"></a>Generate certificates with Windows
 
-Windows üzerinde test sertifikaları oluşturmak için bu bölümdeki adımları kullanın. Sertifikaları oluşturmak için bir Windows makinesi kullanabilir ve ardından bunları desteklenen herhangi bir işletim sisteminde çalışan herhangi bir IoT Edge cihaza kopyalayabilirsiniz. 
+Use the steps in this section to generate test certificates on Windows. You can use a Windows machine to generate the certificates, and then copy them over to any IoT Edge device running on any supported operating system. 
 
-Bu bölümde oluşturulan sertifikaları yalnızca test amaçlarına yöneliktir. 
+The certificates generated in this section are intended for testing purposes only. 
 
-### <a name="install-openssl"></a>OpenSSL yükleyin
+### <a name="install-openssl"></a>Install OpenSSL
 
-OpenSSL için Windows sertifikalarını oluşturmak için kullanmakta olduğunuz makineye yükleyin. Windows cihazınızda OpenSSL zaten yüklüyse, bu adımı atlayabilirsiniz, ancak PATH ortam değişkeninizdeki OpenSSL. exe ' nin kullanılabilir olduğundan emin olabilirsiniz. 
+Install OpenSSL for Windows on the machine that you're using to generate the certificates. If you already have OpenSSL installed on your Windows device, you may skip this step, but ensure that openssl.exe is available in your PATH environment variable. 
 
-OpenSSL 'yi yüklemenin çeşitli yolları vardır; örneğin:
+There are several ways to install OpenSSL, including:
 
-* **Kolay** [Üçüncü taraf OpenSSL ikililerini](https://wiki.openssl.org/index.php/Binaries)indirin ve yükleyin, örneğin, [SourceForge üzerinde OpenSSL](https://sourceforge.net/projects/openssl/). Tam yolunu openssl.exe, PATH ortam değişkenine ekleyin. 
+* **Easier:** Download and install any [third-party OpenSSL binaries](https://wiki.openssl.org/index.php/Binaries), for example, from [OpenSSL on SourceForge](https://sourceforge.net/projects/openssl/). Add the full path to openssl.exe to your PATH environment variable. 
    
-* **Önerilen** OpenSSL kaynak kodunu indirin ve ikili dosyaları kendi makinenizde veya [vcpkg](https://github.com/Microsoft/vcpkg)aracılığıyla derleyin. Aşağıda listelenen yönergeleri vcpkg kaynak kodu, derleme ve yükleme OpenSSL kolay adımda Windows makinenize indirmek için kullanın.
+* **Recommended:** Download the OpenSSL source code and build the binaries on your machine by yourself or via [vcpkg](https://github.com/Microsoft/vcpkg). The instructions listed below use vcpkg to download source code, compile, and install OpenSSL on your Windows machine with easy steps.
 
-   1. Vcpkg yüklemek istediğiniz bir dizine gidin. Bu dizine başvuracağınız  *\<VCPKGDIR >* . İndirme ve yükleme yönergelerini [vcpkg](https://github.com/Microsoft/vcpkg).
+   1. Navigate to a directory where you want to install vcpkg. We'll refer to this directory as *\<VCPKGDIR>* . Follow the instructions to download and install [vcpkg](https://github.com/Microsoft/vcpkg).
    
-   2. Vcpkg yüklendikten sonra, Windows x64 için OpenSSL paketini yüklemek üzere bir PowerShell isteminden aşağıdaki komutu çalıştırın. Yükleme, genellikle tamamlanması yaklaşık 5 dakika sürer.
+   2. Once vcpkg is installed, run the following command from a powershell prompt to install the OpenSSL package for Windows x64. The installation typically takes about 5 mins to complete.
 
       ```powershell
       .\vcpkg install openssl:x64-windows
       ```
-   3. Ekleme `<VCPKGDIR>\installed\x64-windows\tools\openssl` , PATH ortam değişkenine böylece openssl.exe dosya çağırma için kullanılabilir.
+   3. Add `<VCPKGDIR>\installed\x64-windows\tools\openssl` to your PATH environment variable so that the openssl.exe file is available for invocation.
 
-### <a name="prepare-creation-scripts"></a>Oluşturma betikleri hazırlama
+### <a name="prepare-creation-scripts"></a>Prepare creation scripts
 
-Git deposu Azure IoT Edge test sertifikaları oluşturmak için kullanabileceğiniz betikleri içerir. Bu bölümde, IoT Edge depoyu klonlayın ve betikleri yürütün. 
+The Azure IoT Edge git repository contains scripts that you can use to generate test certificates. In this section, you clone the IoT Edge repo and execute the scripts. 
 
-1. Yönetici modunda bir PowerShell penceresi açın. 
+1. Open a PowerShell window in administrator mode. 
 
-2. Üretim dışı sertifikalarını oluşturmak için komut dosyalarını içeren bir git deposunu kopyalayın. Bu betikler, saydam bir ağ geçidini ayarlamak için gerekli sertifikaları oluşturmanıza yardımcı olur. Kullanım `git clone` komutu veya [ZIP indir](https://github.com/Azure/iotedge/archive/master.zip). 
+2. Clone the git repo that contains scripts to generate non-production certificates. These scripts help you create the necessary certificates to set up a transparent gateway. Use the `git clone` command or [download the ZIP](https://github.com/Azure/iotedge/archive/master.zip). 
 
    ```powershell
    git clone https://github.com/Azure/iotedge.git
    ```
 
-3. Çalışmak istediğiniz dizine gidin. Bu makalenin tamamında, bu dizini  *\<WRKDIR >* çağıracağız. Tüm sertifikalar ve anahtarlar bu çalışma dizininde oluşturulacak.
+3. Navigate to the directory in which you want to work. Throughout this article, we'll call this directory *\<WRKDIR>* . All certificates and keys will be created in this working directory.
 
-4. Kopyalanan deponun yapılandırma ve betik dosyalarını çalışma dizininize kopyalayın. 
+4. Copy the configuration and script files from the cloned repo into your working directory. 
 
    ```powershell
    copy <path>\iotedge\tools\CACertificates\*.cnf .
    copy <path>\iotedge\tools\CACertificates\ca-certs.ps1 .
    ```
 
-   Depoyu ZIP olarak indirdiyseniz, klasör adı olur `iotedge-master` ve yolun geri kalanı aynıdır. 
+   If you downloaded the repo as a ZIP, then the folder name is `iotedge-master` and the rest of the path is the same. 
 <!--
 5. Set environment variable OPENSSL_CONF to use the openssl_root_ca.cnf configuration file.
 
@@ -108,21 +107,21 @@ Git deposu Azure IoT Edge test sertifikaları oluşturmak için kullanabileceği
     $env:OPENSSL_CONF = "$PWD\openssl_root_ca.cnf"
     ```
 -->
-5. PowerShell komut dosyalarını çalıştırmak etkinleştirin.
+5. Enable PowerShell to run the scripts.
 
    ```powershell
    Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
    ```
 
-7. Betikler tarafından kullanılan işlevleri PowerShell 'in genel ad alanına taşıyın.
+7. Bring the functions used by the scripts into PowerShell's global namespace.
    
    ```powershell
    . .\ca-certs.ps1
    ```
 
-   PowerShell penceresi, bu komut dosyası tarafından oluşturulan sertifikaların yalnızca test amaçlı olduğunu ve üretim senaryolarında kullanılmamalıdır bir uyarı görüntüler.
+   The PowerShell window will display a warning that the certificates generated by this script are only for testing purposes, and should not be used in production scenarios.
 
-8. OpenSSL 'nin doğru şekilde yüklendiğini doğrulayın ve var olan sertifikalarla ad çakışmaları olmadığından emin olun. İlgili sorun varsa betiği nasıl düzeltileceğini sisteminizde açıklamalıdır.
+8. Verify that OpenSSL has been installed correctly and make sure that there won't be name collisions with existing certificates. If there are problems, the script should describe how to fix them on your system.
 
    ```powershell
    Test-CACertsPrerequisites
@@ -130,51 +129,51 @@ Git deposu Azure IoT Edge test sertifikaları oluşturmak için kullanabileceği
 
 ### <a name="create-certificates"></a>Sertifika oluşturma
 
-Bu bölümde, üç sertifikaları oluşturma ve bunları bir zincirinde bağlayın. Sertifika zinciri dosyasında yerleştirme, bunları, IOT Edge ağ geçidi cihazı ve herhangi bir aşağı akış cihazlarda kolayca yüklemenize olanak tanır.  
+In this section, you create three certificates and then connect them in a chain. Placing the certificates in a chain file allows you to install them easily on your IoT Edge gateway device and any downstream devices.  
 
-1. Kök CA sertifikasını oluşturun ve bir ara sertifikayı imzalayıp imzalayın. Sertifikalar çalışma dizininize yerleştirilir.
+1. Create the root CA certificate and have it sign one intermediate certificate. The certificates are all placed in your working directory.
 
    ```powershell
    New-CACertsCertChain rsa
    ```
 
-   Bu betik komutu birkaç sertifika ve anahtar dosyası oluşturur, ancak bu makalenin ilerleyen kısımlarında bir sonraki bölümüne başvuracağız:
+   This script command creates several certificate and key files, but we're going to refer to one in particular later in this article:
    * `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
 
-2. Aşağıdaki komutla IoT Edge cihaz CA sertifikasını ve özel anahtarı oluşturun. CA sertifikası için bir ad sağlayın (örneğin, **Myedgedeviceca**). Ad, dosya adlandırmak için ve sertifika oluşturma sırasında kullanılır. 
+2. Create the IoT Edge device CA certificate and private key with the following command. Provide a name for the CA certificate, for example **MyEdgeDeviceCA**. The name is used to name the files and during certificate generation. 
 
    ```powershell
    New-CACertsEdgeDeviceCA "MyEdgeDeviceCA"
    ```
 
-   Bu betik komutu, bu makalede daha sonra başvurabileceğiniz iki sertifika ve anahtar dosyası oluşturur:
+   This script command creates several certificate and key files, including two that we're going to refer to later in this article:
    * `<WRKDIR>\certs\iot-edge-device-ca-MyEdgeDeviceCA-full-chain.cert.pem`
    * `<WRKDIR>\private\iot-edge-device-ca-MyEdgeDeviceCA.key.pem`
 
    >[!TIP]
-   >**Myedgedeviceca**dışında bir ad sağlarsanız, bu komut tarafından oluşturulan sertifikalar ve anahtarlar bu adı yansıtır. 
+   >If you provide a name other than **MyEdgeDeviceCA**, then the certificates and keys created by this command will reflect that name. 
 
-Artık sertifikalara sahip olduğunuza [göre, ağ geçidine sertifika yüklemeye](#install-certificates-on-the-gateway) Şimdi atlayın
+Now that you have the certificates, skip ahead to [Install certificates on the gateway](#install-certificates-on-the-gateway)
 
-## <a name="generate-certificates-with-linux"></a>Linux ile sertifikalar oluşturma
+## <a name="generate-certificates-with-linux"></a>Generate certificates with Linux
 
-Linux 'ta test sertifikaları oluşturmak için bu bölümdeki adımları kullanın. Sertifikaları oluşturmak için bir Linux makinesi kullanabilir ve ardından bunları desteklenen herhangi bir işletim sisteminde çalışan herhangi bir IoT Edge cihaza kopyalayabilirsiniz. 
+Use the steps in this section to generate test certificates on Linux. You can use a Linux machine to generate the certificates, and then copy them over to any IoT Edge device running on any supported operating system. 
 
-Bu bölümde oluşturulan sertifikaları yalnızca test amaçlarına yöneliktir. 
+The certificates generated in this section are intended for testing purposes only. 
 
-### <a name="prepare-creation-scripts"></a>Oluşturma betikleri hazırlama
+### <a name="prepare-creation-scripts"></a>Prepare creation scripts
 
-Git deposu Azure IoT Edge test sertifikaları oluşturmak için kullanabileceğiniz betikleri içerir. Bu bölümde, IoT Edge depoyu klonlayın ve betikleri yürütün. 
+The Azure IoT Edge git repository contains scripts that you can use to generate test certificates. In this section, you clone the IoT Edge repo and execute the scripts. 
 
-1. Üretim dışı sertifikalarını oluşturmak için komut dosyalarını içeren bir git deposunu kopyalayın. Bu betikler, saydam bir ağ geçidini ayarlamak için gerekli sertifikaları oluşturmanıza yardımcı olur. 
+1. Clone the git repo that contains scripts to generate non-production certificates. These scripts help you create the necessary certificates to set up a transparent gateway. 
 
    ```bash
    git clone https://github.com/Azure/iotedge.git
    ```
 
-2. Çalışmak istediğiniz dizine gidin. *\<WRKDIR >* olarak makale genelinde bu dizine başvuracağız. Tüm sertifika ve anahtar dosyaları bu dizinde oluşturulacaktır.
+2. Navigate to the directory in which you want to work. We'll refer to this directory throughout the article as *\<WRKDIR>* . All certificate and key files will be created in this directory.
   
-3. Yapılandırma ve betik dosyalarını kopyalanan IoT Edge deposundan çalışma dizininize kopyalayın.
+3. Copy the config and script files from the cloned IoT Edge repo into your working directory.
 
    ```bash
    cp <path>/iotedge/tools/CACertificates/*.cnf .
@@ -191,50 +190,50 @@ Git deposu Azure IoT Edge test sertifikaları oluşturmak için kullanabileceği
 
 ### <a name="create-certificates"></a>Sertifika oluşturma
 
-Bu bölümde, üç sertifikaları oluşturma ve bunları bir zincirinde bağlayın. IOT Edge ağ geçidi cihazınıza ve herhangi bir aşağı akış cihazlarda kolayca yüklemek için sertifika zinciri dosyasında yerleştirme sağlar.  
+In this section, you create three certificates and then connect them in a chain. Placing the certificates in a chain file allows to easily install them on your IoT Edge gateway device and any downstream devices.  
 
-1. Kök CA sertifikasını ve bir ara sertifikayı oluşturun. Bu sertifikalar yerleştirilir  *\<WRKDIR >* .
+1. Create the root CA certificate and one intermediate certificate. These certificates are placed in *\<WRKDIR>* .
 
-   Bu çalışma dizininde zaten kök ve ara sertifikalar oluşturduysanız, bu betiği yeniden çalıştırmayın. Bu betiği yeniden çalıştırmak var olan sertifikaların üzerine yazacak. Bunun yerine, sonraki adıma geçin. 
+   If you've already created root and intermediate certificates in this working directory, don't run this script again. Rerunning this script will overwrite the existing certificates. Instead, proceed to the next step. 
 
    ```bash
    ./certGen.sh create_root_and_intermediate
    ```
 
-   Betik birkaç sertifika ve anahtar oluşturur. Bir sonraki bölümde başvurabileceğiniz bir tane olduğunu unutmayın:
+   The script creates several certificates and keys. Make note of one, which we'll refer to in the next section:
    * `<WRKDIR>/certs/azure-iot-test-only.root.ca.cert.pem`
 
-2. Aşağıdaki komutla IoT Edge cihaz CA sertifikasını ve özel anahtarı oluşturun. CA sertifikası için bir ad sağlayın (örneğin, **Myedgedeviceca**). Ad, dosya adlandırmak için ve sertifika oluşturma sırasında kullanılır. 
+2. Create the IoT Edge device CA certificate and private key with the following command. Provide a name for the CA certificate, for example **MyEdgeDeviceCA**. The name is used to name the files and during certificate generation. 
 
    ```bash
    ./certGen.sh create_edge_device_ca_certificate "MyEdgeDeviceCA"
    ```
 
-   Betik birkaç sertifika ve anahtar oluşturur. Bir sonraki bölümde başvurabileceğiniz iki örneğini unutmayın: 
+   The script creates several certificates and keys. Make note of two, which we'll refer to in the next section: 
    * `<WRKDIR>/certs/iot-edge-device-ca-MyEdgeDeviceCA-full-chain.cert.pem`
    * `<WRKDIR>/private/iot-edge-device-ca-MyEdgeDeviceCA.key.pem`
 
    >[!TIP]
-   >**Myedgedeviceca**dışında bir ad sağlarsanız, bu komut tarafından oluşturulan sertifikalar ve anahtarlar bu adı yansıtır. 
+   >If you provide a name other than **MyEdgeDeviceCA**, then the certificates and keys created by this command will reflect that name. 
 
-## <a name="install-certificates-on-the-gateway"></a>Sertifika ağ geçidi yükleme
+## <a name="install-certificates-on-the-gateway"></a>Install certificates on the gateway
 
-Bir sertifika zinciri yaptığınız, IOT Edge ağ geçidi cihazında yükleyin ve yeni sertifikalar başvurmak için IOT Edge çalışma zamanı yapılandırma gerekir. 
+Now that you've made a certificate chain, you need to install it on the IoT Edge gateway device and configure the IoT Edge runtime to reference the new certificates. 
 
-1. Aşağıdaki dosyaları kopyalayın  *\<WRKDIR >* . Bunları herhangi bir IOT Edge cihazı kaydedin. IOT Edge cihazınız olarak hedef dizine başvuracağınız  *\<CERTDIR >* . 
+1. Copy the following files from *\<WRKDIR>* . Save them anywhere on your IoT Edge device. We'll refer to the destination directory on your IoT Edge device as *\<CERTDIR>* . 
 
-   * Cihaz CA sertifikası-  `<WRKDIR>\certs\iot-edge-device-ca-MyEdgeDeviceCA-full-chain.cert.pem`
-   * Cihaz CA özel anahtarı- `<WRKDIR>\private\iot-edge-device-ca-MyEdgeDeviceCA.key.pem`
-   * Kök CA-`<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
+   * Device CA certificate -  `<WRKDIR>\certs\iot-edge-device-ca-MyEdgeDeviceCA-full-chain.cert.pem`
+   * Device CA private key - `<WRKDIR>\private\iot-edge-device-ca-MyEdgeDeviceCA.key.pem`
+   * Root CA - `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
 
-   Sertifika dosyalarını taşımak için [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) veya [Güvenli kopya Protokolü](https://www.ssh.com/ssh/scp/) gibi bir işlev gibi bir hizmet kullanabilirsiniz.  Sertifikaları IoT Edge cihazında oluşturduysanız, bu adımı atlayabilir ve çalışma dizininin yolunu kullanabilirsiniz.
+   You can use a service like [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) or a function like [Secure copy protocol](https://www.ssh.com/ssh/scp/) to move the certificate files.  If you generated the certificates on the IoT Edge device itself, you can skip this step and use the path to the working directory.
 
-2. IOT Edge güvenlik daemon yapılandırma dosyasını açın. 
+2. Open the IoT Edge security daemon config file. 
 
    * Windows: `C:\ProgramData\iotedge\config.yaml`
    * Linux: `/etc/iotedge/config.yaml`
 
-3. Config. YAML dosyasındaki **sertifika** özelliklerini, IoT Edge cihazdaki sertifika ve anahtar dosyalarının tam yoluna ayarlayın. Dört satırın açıklamasını kaldırmak için, sertifika özelliklerinden önceki karakterikaldırın.`#` YAML 'deki girintiler iki boşluk olduğunu unutmayın.
+3. Set the **certificate** properties in the config.yaml file to the full path to the certificate and key files on the IoT Edge device. Remove the `#` character before the certificate properties to uncomment the four lines. Remember that indents in yaml are two spaces.
 
    * Windows:
 
@@ -253,23 +252,23 @@ Bir sertifika zinciri yaptığınız, IOT Edge ağ geçidi cihazında yükleyin 
         trusted_ca_certs: "<CERTDIR>/certs/azure-iot-test-only.root.ca.cert.pem"
       ```
 
-4. Linux cihazlarda, kullanıcının **ıotedge** 'in sertifikaları tutan dizin için okuma izinlerine sahip olduğundan emin olun. 
+4. On Linux devices, make sure that the user **iotedge** has read permissions for the directory holding the certificates. 
 
-## <a name="deploy-edgehub-to-the-gateway"></a>Ağ geçidine EdgeHub dağıtma
+## <a name="deploy-edgehub-to-the-gateway"></a>Deploy EdgeHub to the gateway
 
-IoT Edge bir cihaza ilk kez yüklediğinizde, otomatik olarak yalnızca bir sistem modülü başlatılır: IoT Edge Aracısı. Cihazınızı bir ağ geçidi olarak çalışmak her iki sistem modüllerini gerekir. Daha önce ağ geçidinize herhangi bir modül dağıtmadıysanız ikinci sistem modülünü IoT Edge hub 'ı başlatmak için cihazınız için bir başlangıç dağıtımı oluşturun. Sihirbazda hiçbir modül eklemediğinizden, dağıtım boş görünür, ancak her iki sistem modüllerinin de çalıştığından emin olur. 
+When you first install IoT Edge on a device, only one system module starts automatically: the IoT Edge agent. For your device to work as a gateway, you need both system modules. If you haven't deployed any modules to your gateway device before, create an initial deployment for your device to start the second system module, the IoT Edge hub. The deployment will look empty because you don't add any modules in the wizard, but it will make sure that both system modules are running. 
 
-Komutu ile bir cihaz üzerinde çalışan modüllerine denetleyebilirsiniz `iotedge list`. Liste yalnızca **Edgehub**olmadan **edgeagent** modülünü döndürürse aşağıdaki adımları kullanın:
+You can check which modules are running on a device with the command `iotedge list`. If the list only returns the module **edgeAgent** without **edgeHub**, use the following steps:
 
 1. Azure portalında IoT Hub'ınıza gidin.
 
-2. Git **IOT Edge** ve ağ geçidi olarak kullanacağınız IOT Edge Cihazınızı seçin.
+2. Go to **IoT Edge** and select your IoT Edge device that you want to use as a gateway.
 
 3. **Modülleri Ayarlama**'yı seçin.
 
 4. **İleri**’yi seçin.
 
-5. İçinde **yolları belirtin** sayfasında, tüm iletileri tüm modüllerden IOT Hub'ına gönderir ve varsayılan bir yol olmalıdır. Yoksa aşağıdaki kodu ekleyip **İleri**'yi seçin.
+5. In the **Specify routes** page, you should have a default route that sends all messages from all modules to IoT Hub. Yoksa aşağıdaki kodu ekleyip **İleri**'yi seçin.
 
    ```JSON
    {
@@ -279,26 +278,26 @@ Komutu ile bir cihaz üzerinde çalışan modüllerine denetleyebilirsiniz `iote
    }
    ```
 
-6. İçinde **gözden geçirme şablonu** sayfasında **Gönder**.
+6. In the **Review template** page, select **Submit**.
 
-## <a name="open-ports-on-gateway-device"></a>Ağ Geçidi cihazında bağlantı noktalarını açma
+## <a name="open-ports-on-gateway-device"></a>Open ports on gateway device
 
-Standart IoT Edge cihazların herhangi bir gelen bağlantısı olması gerekmez, çünkü IoT Hub tüm iletişimler giden bağlantılar aracılığıyla yapılır. Ağ Geçidi cihazları, akış aygıtlarından iletiler alması gerektiğinden farklıdır. Bir güvenlik duvarının aşağı akış cihazları ve ağ geçidi cihazı arasında olması durumunda, iletişimin de güvenlik duvarından alınması gerekir.
+Standard IoT Edge devices don't need any inbound connectivity to function, because all communication with IoT Hub is done through outbound connections. Gateway devices are different because they need to receive messages from their downstream devices. If a firewall is between the downstream devices and the gateway device, then communication needs to be possible through the firewall as well.
 
-Bir ağ geçidi senaryosunun çalışması için, IoT Edge hub 'ın desteklenen protokollerinden en az birinin, aşağı akış cihazlarından gelen trafik için açık olması gerekir. Desteklenen protokoller MQTT, AMQP ve HTTPS 'DIR. 
+For a gateway scenario to work, at least one of the IoT Edge hub's supported protocols must be open for inbound traffic from downstream devices. The supported protocols are MQTT, AMQP, and HTTPS. 
 
-| Port | Protocol |
+| Bağlantı noktası | Protokol |
 | ---- | -------- |
 | 8883 | MQTT |
 | 5671 | AMQP |
-| 443 | HTTPS <br> MQTT + WS <br> AMQP + WS | 
+| 443 | HTTPS <br> MQTT+WS <br> AMQP+WS | 
 
-## <a name="route-messages-from-downstream-devices"></a>Aşağı Akış cihazlardan yönlendirme iletileri
-IOT Edge çalışma zamanı yalnızca modülleri tarafından gönderilen iletiler gibi aşağı akış cihazlardan gönderilen iletiler yönlendirebilirsiniz. Bu özellik, buluta veri göndermeden önce ağ geçidinde çalışan bir modülde analiz gerçekleştirmenize olanak tanır. 
+## <a name="route-messages-from-downstream-devices"></a>Route messages from downstream devices
+The IoT Edge runtime can route messages sent from downstream devices just like messages sent by modules. This feature allows you to perform analytics in a module running on the gateway before sending any data to the cloud. 
 
-Şu anda, aşağı akış cihazlar tarafından gönderilen iletileri yönlendiren bunları modülleri tarafından gönderilen iletilerden farklılaştırılması tarafından yoludur. Tüm modüller tarafından gönderilen iletiler olarak adlandırılan bir sistem özelliği içeren **connectionModuleId** ancak aşağı akış cihazlar tarafından gönderilen iletileri yapın. Bu sistem özelliği içeren herhangi bir iletiyi hariç tutmak için rota WHERE yan tümcesini kullanabilirsiniz. 
+Currently, the way that you route messages sent by downstream devices is by differentiating them from messages sent by modules. Messages sent by modules all contain a system property called **connectionModuleId** but messages sent by downstream devices do not. You can use the WHERE clause of the route to exclude any messages that contain that system property. 
 
-Aşağıdaki yol, herhangi bir aşağı akış aygıtından, adlı `ai_insights`bir modüle ve `ai_insights` sonra IoT Hub ' ye ileti gönderen bir örnektir.
+The below route is an example that would send messages from any downstream device to a module named `ai_insights`, and then from `ai_insights` to IoT Hub.
 
 ```json
 {
@@ -309,17 +308,17 @@ Aşağıdaki yol, herhangi bir aşağı akış aygıtından, adlı `ai_insights`
 }
 ```
 
-İleti yönlendirme hakkında daha fazla bilgi için bkz. [modülleri dağıtma ve yollar'kurmak](./module-composition.md#declare-routes).
+For more information about message routing, see [Deploy modules and establish routes](./module-composition.md#declare-routes).
 
 
-## <a name="enable-extended-offline-operation"></a>Genişletilmiş çevrimdışı işlemi etkinleştir
+## <a name="enable-extended-offline-operation"></a>Enable extended offline operation
 
-IoT Edge çalışma zamanının [v 1.0.4 sürümü](https://github.com/Azure/azure-iotedge/releases/tag/1.0.4) ile başlayarak, buna bağlanan ağ geçidi cihazı ve aşağı akış cihazları genişletilmiş çevrimdışı işlem için yapılandırılabilir. 
+Starting with the [v1.0.4 release](https://github.com/Azure/azure-iotedge/releases/tag/1.0.4) of the IoT Edge runtime, the gateway device and downstream devices connecting to it can be configured for extended offline operation. 
 
-Bu özellik sayesinde, yerel modüller veya aşağı akış cihazları gerektiği gibi IoT Edge cihazla yeniden kimlik doğrulaması yapabilir ve IoT Hub 'ından bağlantısı kesilse bile ileti ve yöntemleri kullanarak birbirleriyle iletişim kurabilir. Daha fazla bilgi için [anlayın cihazları, modülleri ve alt cihazlar bu çevrimdışı özellikleri IOT Edge için Genişletilmiş](offline-capabilities.md).
+With this capability, local modules or downstream devices can re-authenticate with the IoT Edge device as needed and communicate with each other using messages and methods even when disconnected from the IoT hub. For more information, see [Understand extended offline capabilities for IoT Edge devices, modules, and child devices](offline-capabilities.md).
 
-Genişletilmiş çevrimdışı özellikleri etkinleştirmek için, bir IoT Edge ağ geçidi cihazı ile Bağlanılacak olan aşağı akış cihazları arasında bir üst-alt ilişkisi kurarsınız. Bu adımlar, [bir aşağı akış cihazının Azure IoT Hub kimlik doğrulaması](how-to-authenticate-downstream-device.md)konusunda daha ayrıntılı olarak açıklanmıştır.
+To enable extended offline capabilities, you establish a parent-child relationship between an IoT Edge gateway device and downstream devices that will connect to it. Those steps are explained in more detail in [Authenticate a downstream device to Azure IoT Hub](how-to-authenticate-downstream-device.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Saydam bir ağ geçidi olarak çalışan bir IOT Edge cihazına sahip olduğunuza göre ağ geçidi güven ve iletileri göndermek için aşağı akış cihazlarınızı yapılandırmak gerekir. Saydam ağ geçidi senaryonuzu ayarlamanın sonraki adımları için [bir aşağı akış cihazının kimliğini Azure IoT Hub doğrulamak](how-to-authenticate-downstream-device.md) için devam edin. 
+Now that you have an IoT Edge device working as a transparent gateway, you need to configure your downstream devices to trust the gateway and send messages to it. Continue on to [Authenticate a downstream device to Azure IoT Hub](how-to-authenticate-downstream-device.md) for the next steps in setting up your transparent gateway scenario. 
