@@ -173,11 +173,14 @@
           href: troubleshoot-recovery-disks-linux.md
         - name: Azure portal
           href: troubleshoot-recovery-disks-portal-linux.md
-- name: Önyükleme hataları
-  href: boot-error-troubleshoot.md
+- name: Önyükleme hataları Linux
+  href: boot-error-troubleshoot-linux.md
   items:
     - name: Grub Rescue
       href: troubleshoot-vm-boot-error.md
+- name: Önyükleme hataları Windows
+  href: boot-error-troubleshoot.md
+  items:
     - name: Önyükleme tanılamaları
       href: boot-diagnostics.md
     - name: BitLocker hataları

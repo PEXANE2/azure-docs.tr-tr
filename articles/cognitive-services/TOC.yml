@@ -59,6 +59,8 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Uyumluluk
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Destek ve yardım seçenekleri
+      href: cognitive-services-support-options.md
     - name: Hizmet Düzeyi Sözleşmesi (SLA)
       href: 'https://azure.microsoft.com/support/legal/sla/cognitive-services/v1_1/'
     - name: Videolar

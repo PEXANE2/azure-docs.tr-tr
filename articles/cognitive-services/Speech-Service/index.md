@@ -4,12 +4,12 @@ ms.date: 10-19-2019
 ms.topic: hub-page
 title: Konuşma Tanıma Hizmeti Belgeleri
 description: Konuşma tanıma hizmetini kullanmaya başlayın.
-ms.openlocfilehash: 0a07125764908b661216c20279ab4bdf80ae91ca
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: e9fda2788b28ba882b5c5eb232bfd2ffbc85f049
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580324"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406181"
 ---
 <div id="main" class="v2">    
     <div class="container">
@@ -271,7 +271,7 @@ ms.locfileid: "73580324"
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Konuşmayı, amaçları ve varlıkları tanıma</h3>
-                                                    <p>Konuşmayı, amaçları ve varlıkları tanımak için Konuşma SDK'sını ve LUIS'i kullanın.</p>
+                                                    <p>Konuşmayı, amaçları ve varlıkları tanımak için Konuşma SDK'sını ve Language Understanding’i (LUIS) kullanın.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -289,7 +289,7 @@ ms.locfileid: "73580324"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>LUIS belgeleri</h3>
+                                                    <h3>Language Understanding (LUIS) belgeleri</h3>
                                                     <p>Language Understanding Service (LUIS) ve Doğal Dil İşleme (NLP) hakkında daha fazla bilgi edinin.</p>
                                                 </div>
                                             </div>
@@ -308,7 +308,7 @@ ms.locfileid: "73580324"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>LUIS portalı</h3>
+                                                    <h3>Language Understanding (LUIS) portalı</h3>
                                                     <p>Uygulamalara, botlara ve IoT cihazlarına doğal dil özelliği ekleyin.</p>
                                                 </div>
                                             </div>

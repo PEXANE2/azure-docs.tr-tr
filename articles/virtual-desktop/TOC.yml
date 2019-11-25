@@ -34,32 +34,42 @@
           href: connect-macos.md
         - name: iOS istemcisiyle bağlanma
           href: connect-ios.md
-    - name: Azure Resource Manager şablonuyla ana bilgisayar havuzu oluşturma
-      href: create-host-pools-arm-template.md
-    - name: PowerShell ile ana bilgisayar havuzu oluşturma
-      href: create-host-pools-powershell.md
-    - name: Windows Sanal Masaüstü’nde Windows 7 sanal makinesi dağıtma
-      href: deploy-windows-7-virtual-machine.md
-    - name: Windows Sanal Masaüstü oturum sahiplerine Windows lisansı uygulama
+    - name: Konak havuzu ve oturum konakları oluşturma
+      items:
+        - name: Azure Resource Manager şablonu
+          href: create-host-pools-arm-template.md
+        - name: PowerShell
+          href: create-host-pools-powershell.md
+        - name: Bir Windows 7 sanal makinesi dağıtma
+          href: deploy-windows-7-virtual-machine.md
+        - name: GPU tabanlı bir oturum konağı dağıtma
+          href: configure-vm-gpu.md
+    - name: Profil kapsayıcısı oluşturma
+      items:
+        - name: VM tabanlı dosya paylaşımı kullanma
+          href: create-host-pools-user-profile.md
+        - name: Azure NetApp Files kullanma
+          href: create-fslogix-profile-container.md
+    - name: Konak havuzu ayarlarını yapılandırma
+      items:
+        - name: RDP özellikleri
+          href: customize-rdp-properties.md
+        - name: Havuza alınmış konak havuzları için yük dengeleme
+          href: configure-host-pool-load-balancing.md
+    - name: Windows Sanal Masaüstü lisansı kullanma
       href: apply-windows-license.md
     - name: Dosya paylaşımı kullanarak ana bilgisayar havuzu için profil kapsayıcısı oluşturma
       href: create-host-pools-user-profile.md
-    - name: Azure NetApp Files kullanarak ana bilgisayar havuzu için profil kapsayıcısı oluşturma
-      href: create-fslogix-profile-container.md
-    - name: Windows Sanal Masaüstü yük dengeleme yöntemini yapılandırma
-      href: configure-host-pool-load-balancing.md
-    - name: Ana VHD görüntüsünü hazırlama ve özelleştirme
-      href: set-up-customize-master-image.md
-    - name: Ana VHD görüntüsü üzerinde Office yükleme
-      href: install-office-on-wvd-master-image.md
-    - name: Windows Sanal Masaüstü için GPU'yu yapılandırma
-      href: configure-vm-gpu.md
+    - name: Oturum konak görüntüsünü özelleştirme
+      items:
+        - name: Ana VHD görüntüsü ayarlama
+          href: set-up-customize-master-image.md
+        - name: Ana VHD görüntüsü üzerinde Office yükleme
+          href: install-office-on-wvd-master-image.md
     - name: Oturum konaklarını dinamik olarak ölçeklendirme
       href: set-up-scaling-script.md
-    - name: Windows Sanal Masaüstü kullanıcıları için akışı özelleştirme
+    - name: Akışı özelleştirme
       href: customize-feed-for-virtual-desktop-users.md
-    - name: RDP Özelliklerini Özelleştirme
-      href: customize-rdp-properties.md
     - name: Tanılama aracını dağıtma
       href: deploy-diagnostics.md
     - name: MSIX uygulama iliştirmeyi ayarlama

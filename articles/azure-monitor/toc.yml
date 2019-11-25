@@ -836,8 +836,10 @@
               href: insights/container-insights-update-metrics.md
             - name: Sistem durumu izleme yapılandırması
               href: insights/container-insights-health-monitors-config.md
-            - name: İzlemeyi devre dışı bırakma
+            - name: AKS’yi izlemeyi devre dışı bırakma
               href: insights/container-insights-optout.md
+            - name: Red Hat OpenShift’i izlemeyi devre dışı bırakma
+              href: insights/container-insights-optout-openshift.md
             - name: Sorun giderme
               href: insights/container-insights-troubleshoot.md
         - name: Docker ve Windows Kapsayıcıları’nı izleme

@@ -1,14 +1,14 @@
 ---
 title: CAF Foundation şema örneği - Genel Bakış
-description: CAF Foundation şema örneğinin genel bakış bilgileri ve mimarisi.
+description: Azure Foundation şema örneği için Bulut Benimseme Çerçevesi’ne (CAF) genel bakış ve mimari.
 ms.date: 08/20/2019
 ms.topic: sample
-ms.openlocfilehash: a353f92be995412702a93219c8fb1af967368beb
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 2943d3327fe6ea3c935694118aaa995b8e96ace6
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038498"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74404791"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Azure Foundation şema örneği için Microsoft Bulutu Benimseme çerçevesine genel bakış
 
@@ -50,7 +50,7 @@ Daha fazla bilgi için bkz. [Azure için Microsoft Bulut Benimseme Çerçevesi -
 CAF Foundation şema örneğinin genel bakış bilgilerini ve mimarisini gözden geçirdiniz.
 
 > [!div class="nextstepaction"]
->  [CAF Foundation şeması - Dağıtım adımları](./deploy.md)
+> [CAF Foundation şeması - Dağıtım adımları](./deploy.md)
 
 Şemalar ve bunların kullanımı hakkındaki diğer makaleler:
 

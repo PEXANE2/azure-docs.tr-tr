@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Language Understanding (LUIS) belgeleri
-summary: Language Understanding hizmetini kullanarak bir kişinin kendi sözcükleriyle ifade ettiği isteği uygulamanızın anlamasını sağlama hakkında bilgi edinin.
+summary: Language Understanding’in, bir kişinin kendi sözcükleriyle ifade ettiği isteği uygulamanızın anlamasını nasıl sağladığını öğrenin.
 metadata:
   ms.topic: landing-page
-  ms.date: 09/19/2019
+  ms.date: 11/22/2019
   ms.author: nitinme
   author: nitinme
   ms.service: cognitive-services
@@ -11,13 +11,13 @@ metadata:
   services: cognitive-services
   title: Language Understanding (LUIS) Belgeleri
   titleSuffix: Azure Cognitive Services
-  description: Language Understanding (LUIS), bir kişinin kendi sözcükleriyle ifade ettiği isteği uygulamanızın anlamasını sağlar. LUIS, geliştiricilerin doğal dilde kullanıcı girdisi alabilen ve bu girdiden anlam çıkarabilen uygulamalar derlemesini sağlamak için makine öğrenimini kullanır.
-  ms.openlocfilehash: 70249b540e53ab8182a25f81d7401697b2b888c1
-  ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+  description: Language Understanding (LUIS) hizmeti, bir kişinin kendi sözcükleriyle ifade ettiği isteği uygulamanızın anlamasını sağlar. LUIS, geliştiricilerin doğal dilde kullanıcı girdisi alabilen ve bu girdiden anlam çıkarabilen uygulamalar derlemesini sağlamak için makine öğrenimini kullanır.
+  ms.openlocfilehash: 14386a08b92814b16fb007e4dd01cb4bb5238c0a
+  ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 09/20/2019
-  ms.locfileid: "71155027"
+  ms.lasthandoff: 11/22/2019
+  ms.locfileid: "74406145"
 landingContent:
 - title: Language Understanding (LUIS) hakkında
   linkLists:
@@ -25,16 +25,18 @@ landingContent:
     links:
     - text: Language Understanding nedir?
       url: what-is-luis.md
-    - text: Yenilikler
-      url: whats-new.md
     - text: LUIS portalı
       url: https://www.luis.ai
   - linkListType: concept
     links:
     - text: Uygulamanızı planlama
       url: luis-how-plan-your-app.md
-    - text: Uygulamanızı yazma döngüsü
+    - text: Yinelemeli uygulama tasarımı
       url: luis-concept-app-iteration.md
+  - linkListType: whats-new
+    links:
+    - text: Yenilikler
+      url: whats-new.md
   - linkListType: video
     links:
     - text: 'AI Tanıtım Turu: LUIS'
@@ -47,7 +49,7 @@ landingContent:
       url: luis-concept-intent.md
     - text: Varlıklar
       url: luis-concept-entity-types.md
-    - text: İyi bir ifade örneği
+    - text: Konuşmalar
       url: luis-concept-utterance.md
     - text: Tümcecik listesi özellikleri
       url: luis-concept-feature.md
@@ -89,15 +91,15 @@ landingContent:
       url: sdk-python-quickstart-authoring-app.md#train-the-app
   - linkListType: how-to-guide
     links:
-    - text: Uygulamanızın sürümü oluşturma
+    - text: Uygulamanızın sürümünü oluşturma
       url: luis-how-to-manage-versions.md
-    - text: Etkileşimli test
+    - text: Etkileşimli test gerçekleştirme
       url: luis-interactive-test.md
-    - text: Toplu işe testi
+    - text: Toplu iş testi gerçekleştirme
       url: luis-how-to-batch-test.md
     - text: Uygulamanızı eğitme
       url: luis-how-to-train.md
-    - text: Tahmin uç noktasını kullanmak için yayımlama
+    - text: Tahmin uç noktasını yayımlama
       url: luis-how-to-publish-app.md
 - title: Uç noktadan tahmin alma
   linkLists:
@@ -123,7 +125,7 @@ landingContent:
     links:
     - text: Geliştirici kaynakları
       url: developer-reference-resource.md
-    - text: Uygulama sınırları
+    - text: Uygulama sınırlamaları
       url: luis-boundaries.md
     - text: Önceden oluşturulmuş varlıklar
       url: luis-reference-prebuilt-entities.md

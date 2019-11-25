@@ -12,12 +12,8 @@
       href: quickstarts/create-publish-knowledge-base.md
     - name: Meta verilerle soru ekleme
       href: quickstarts/add-question-metadata-portal.md
-    - name: Yanıt alma
-      items:
-        - name: Postman'i kullanma
-          href: Quickstarts/get-answer-from-kb-using-postman.md
-        - name: cURL'yi kullanma
-          href: Quickstarts/get-answer-from-kb-using-cURL.md
+    - name: Postman veya cURL ile yanıtlar alma
+      href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
     - name: REST API’sini kullanma
       items:
         - name: Yeni bilgi bankası oluşturma
