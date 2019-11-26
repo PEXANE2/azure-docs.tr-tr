@@ -667,7 +667,21 @@
               href: ../blobs/data-lake-storage-explorer.md
             - name: Depolama hesabını yükseltme
               href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Veriyi çekme
+        - name: 'Dizin, dosya ve ACL’leri yönetme'
+          items:
+            - name: .NET
+              href: data-lake-storage-directory-file-acl-dotnet.md
+            - name: Java
+              href: data-lake-storage-directory-file-acl-java.md
+            - name: Python
+              href: data-lake-storage-directory-file-acl-python.md
+            - name: PowerShell
+              href: data-lake-storage-directory-file-acl-powershell.md
+            - name: CLI
+              href: data-lake-storage-directory-file-acl-cli.md
+            - name: Depolama Gezgini
+              href: data-lake-storage-how-to-set-permissions-storage-explorer.md
+        - name: Veri aktarma
           items:
             - name: AzCopy
               items:
@@ -717,10 +731,16 @@
               href: ../blobs/data-lake-storage-performance-tuning-storm.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Dosyaları yönetme (bloblar)
           items:
-            - name: PowerShell
-              href: /powershell/module/azure.storage
-            - name: Azure CLI
-              href: ../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Genel Bakış
+              href: ../blobs/data-lake-storage-performance-tuning-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: HDInsight üzerinde Spark'ı iyileştirme
+              href: ../blobs/data-lake-storage-performance-tuning-spark.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: HDInsight üzerinde Hive'ı iyileştirme
+              href: ../blobs/data-lake-storage-performance-tuning-hive.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: HDInsight üzerinde MapReduce'u iyileştirme
+              href: ../blobs/data-lake-storage-performance-tuning-mapreduce.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: HDInsight üzerinde Storm'u iyileştirme
+              href: ../blobs/data-lake-storage-performance-tuning-storm.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Geçiş verileri
           items:
             - name: Data Lake Storage 1. Nesil’den yükseltme

@@ -45,6 +45,8 @@ sections:
         style: unordered
         items:
           - html: <a href="/azure/azure-maps/tutorial-geofence">Bölge sınırı ayarlama</a>
+          - html: <a href="/azure-maps/tutorial-iot-hub-maps">Uzamsal analiz</a>
+          - html: <a href=/azure/azure-maps/tutorial-ev-routing">Azure Notebooks kullanarak EV yönlendirme (Python)</a>
   - title: Başvuru
     items:
       - type: list
@@ -52,6 +54,6 @@ sections:
         className: cardsW
         items:
           - title: JavaScript
-            html: '<p><a href="https://docs.microsoft.com/javascript/api/azure-maps-javascript/">Harita denetimi</a></p>'
+            html: '<p><a href="https://docs.microsoft.com/javascript/api/azure-maps-javascript/">Harita denetimi</a></p><p><a href="https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/">Çizim araçları modülü</a></p><p><a href="https://docs.microsoft.com/javascript/api/azure-maps-rest/">Hizmetler modülü</a></p>'
           - title: REST
             html: '<p><a href="https://docs.microsoft.com/rest/api/maps/data">Veri hizmeti</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/geolocation">Coğrafi Konum hizmeti</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/mobility">Ulaşım hizmeti</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/render">İşleme hizmeti</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/route">Yönlendirme hizmeti</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/search">Arama hizmeti</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/spatial">Uzamsal hizmet</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/timezone">Saat dilimi hizmeti</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/traffic">Trafik hizmeti</a></p>'

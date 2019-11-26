@@ -61,6 +61,8 @@
   items:
     - name: Ölçek
       items:
+        - name: Tek örnek
+          href: signalr-howto-scale-signalr.md
         - name: Birden çok örnek
           href: signalr-howto-scale-multi-instances.md
     - name: Güvenlik
