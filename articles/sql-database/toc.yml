@@ -124,8 +124,6 @@
               href: sql-database-threat-detection-overview.md
             - name: Güvenlik öznitelikleri
               href: sql-database-security-attributes.md
-            - name: Özellik kısıtlamaları
-              href: sql-database-feature-restrictions.md
         - name: Tek veritabanı güvenliği
           items:
             - name: Ağ erişim denetimleri

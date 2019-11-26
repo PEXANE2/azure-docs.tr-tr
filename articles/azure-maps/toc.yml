@@ -127,7 +127,7 @@
               href: map-add-custom-html.md
             - name: Trafiği gösterme
               href: map-show-traffic.md
-            - name: Fare olayları ile etkileşim kurma
+            - name: Olaylara tepki verme
               href: map-events.md
             - name: Uygulamanızın erişilebilir olmasını sağlama
               href: map-accessibility.md

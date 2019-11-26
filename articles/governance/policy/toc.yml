@@ -2,7 +2,7 @@
   href: index.yml
 - name: Genel Bakış
   items:
-    - name: Azure İlkesine Genel Bakış
+    - name: Azure İlkesi nedir?
       displayName: 'rbac, assign, initiative, parameters, count'
       href: overview.md
 - name: Hızlı Başlangıçlar

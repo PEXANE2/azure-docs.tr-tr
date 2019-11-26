@@ -71,6 +71,8 @@
           href: howto-version-device-template.md
         - name: Cihazlarınızı yönetme
           href: howto-manage-devices.md
+        - name: Kuralları yapılandırma
+          href: howto-configure-rules.md
         - name: Cihaz verilerinizi analiz etme
           href: howto-create-analytics.md
         - name: Panonuza kutucuklar ekleme

@@ -337,7 +337,7 @@
     - name: Senaryolar
       items:
         - name: Çağrı merkezleri
-          href: get-started.md
+          href: call-center-transcription.md
           displayName: 'IVRs, IVR, Telephony Data, Transcription for Telephony Data, Real-time Transcription for Call Centers'
     - name: Nasıl yapılır kılavuzları
       items:
