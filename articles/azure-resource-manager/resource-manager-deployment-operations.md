@@ -1,93 +1,93 @@
 ---
-title: Dağıtım geçmişi
-description: Portal, PowerShell, Azure CLı ve REST API Azure Resource Manager dağıtım işlemlerinin nasıl görüntüleneceğini açıklar.
+title: Deployment history
+description: Describes how to view Azure Resource Manager deployment operations with the portal, PowerShell, Azure CLI, and REST API.
 tags: top-support-issue
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: d8daf7191bb22f7c7057f6ef6b220a18868872cc
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 23687ddcfb7911a999ee06ac8df8badf341b41d9
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149576"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74484202"
 ---
-# <a name="view-deployment-history-with-azure-resource-manager"></a>Azure Resource Manager ile dağıtım geçmişini görüntüle
+# <a name="view-deployment-history-with-azure-resource-manager"></a>View deployment history with Azure Resource Manager
 
-Azure Resource Manager, dağıtım geçmişinizi görüntülemenize ve geçmiş dağıtımlarda belirli işlemleri incelemenize olanak sağlar. Dağıtılan kaynakları görebilir ve hatalar hakkında bilgi alabilirsiniz.
+Azure Resource Manager enables you to view your deployment history and examine specific operations in past deployments. You can see the resources that were deployed, and get information about any errors.
 
-Belirli dağıtım hatalarını çözümlemede yardım için bkz. [Azure 'a kaynak dağıtılırken sık karşılaşılan hataları çözümleme Azure Resource Manager](resource-manager-common-deployment-errors.md).
+For help with resolving particular deployment errors, see [Resolve common errors when deploying resources to Azure with Azure Resource Manager](resource-manager-common-deployment-errors.md).
 
 ## <a name="portal"></a>Portal
 
-Dağıtım geçmişinden bir dağıtım hakkındaki ayrıntıları almak için.
+To get details about a deployment from the deployment history.
 
-1. İncelemek istediğiniz kaynak grubunu seçin.
+1. Select the resource group you want to examine.
 
-1. **Dağıtımlar**altındaki bağlantıyı seçin.
+1. Select the link under **Deployments**.
 
-   ![Dağıtım geçmişini seçin](./media/resource-manager-deployment-operations/select-deployment-history.png)
+   ![Select deployment history](./media/resource-manager-deployment-operations/select-deployment-history.png)
 
-1. Dağıtım geçmişinden dağıtımlardan birini seçin.
+1. Select one of the deployments from the deployment history.
 
-   ![Dağıtım seçin](./media/resource-manager-deployment-operations/select-details.png)
+   ![Select deployment](./media/resource-manager-deployment-operations/select-details.png)
 
-1. Dağıtılan kaynakların bir listesi de dahil olmak üzere dağıtımın bir özeti görüntülenir.
+1. A summary of the deployment is displayed, including a list of the resources that were deployed.
 
-    ![Dağıtım Özeti](./media/resource-manager-deployment-operations/view-deployment-summary.png)
+    ![Deployment summary](./media/resource-manager-deployment-operations/view-deployment-summary.png)
 
-1. Dağıtım için kullanılan şablonu görüntülemek için **şablon**' u seçin. Şablonu yeniden kullanmak için indirebilirsiniz.
+1. To view the template used for the deployment, select **Template**. You can download the template to reuse it.
 
-    ![Şablonu göster](./media/resource-manager-deployment-operations/show-template-from-history.png)
+    ![Show template](./media/resource-manager-deployment-operations/show-template-from-history.png)
 
-1. Dağıtımınız başarısız olursa, bir hata iletisi görürsünüz. Daha fazla ayrıntı için hata iletisini seçin.
+1. If your deployment failed, you see an error message. Select the error message for more details.
 
-    ![Başarısız dağıtımı görüntüle](./media/resource-manager-deployment-operations/show-error.png)
+    ![View failed deployment](./media/resource-manager-deployment-operations/show-error.png)
 
-1. Ayrıntılı hata iletisi görüntülenir.
+1. The detailed error message is displayed.
 
-    ![Hata ayrıntılarını görüntüle](./media/resource-manager-deployment-operations/show-details.png)
+    ![View error details](./media/resource-manager-deployment-operations/show-details.png)
 
-1. Bağıntı KIMLIĞI ilgili olayları izlemek için kullanılır ve bir dağıtımda sorun gidermeye yönelik teknik destekle çalışırken yararlı olabilir.
+1. The correlation ID is used to track related events, and can be helpful when working with technical support to troubleshoot a deployment.
 
-    ![Bağıntı KIMLIĞI al](./media/resource-manager-deployment-operations/get-correlation-id.png)
+    ![Get correlation ID](./media/resource-manager-deployment-operations/get-correlation-id.png)
 
-1. Başarısız olan adım hakkında daha fazla bilgi edinmek için **işlem ayrıntıları**' nı seçin.
+1. To learn more about the step that failed, select **Operation details**.
 
-    ![Dağıtım işlemlerini seçin](./media/resource-manager-deployment-operations/select-deployment-operations.png)
+    ![Select deployment operations](./media/resource-manager-deployment-operations/select-deployment-operations.png)
 
-1. Dağıtım adımının ayrıntılarını görürsünüz.
+1. You see the details for that step of the deployment.
 
-    ![İşlem ayrıntılarını göster](./media/resource-manager-deployment-operations/show-operation-details.png)
+    ![Show operation details](./media/resource-manager-deployment-operations/show-operation-details.png)
 
 ## <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Bir dağıtımın genel durumunu almak için **Get-AzResourceGroupDeployment** komutunu kullanın.
+To get the overall status of a deployment, use the **Get-AzResourceGroupDeployment** command.
 
 ```azurepowershell-interactive
 Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup
 ```
 
-Ya da sonuçları yalnızca başarısız olan dağıtımlar için filtreleyebilirsiniz.
+Or, you can filter the results for only those deployments that have failed.
 
 ```azurepowershell-interactive
 Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup | Where-Object ProvisioningState -eq Failed
 ```
 
-Bağıntı KIMLIĞI ilgili olayları izlemek için kullanılır ve bir dağıtımda sorun gidermeye yönelik teknik destekle çalışırken yararlı olabilir. Bağıntı KIMLIĞINI almak için şunu kullanın:
+The correlation ID is used to track related events, and can be helpful when working with technical support to troubleshoot a deployment. To get the correlation ID, use:
 
 ```azurepowershell-interactive
 (Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName azuredeploy).CorrelationId
 ```
 
-Her dağıtım birden çok işlem içerir. Her işlem, dağıtım işlemindeki bir adımı temsil eder. Dağıtım ile ilgili ne olduğunu öğrenmek için genellikle dağıtım işlemleriyle ilgili ayrıntıları görmeniz gerekir. **Get-AzResourceGroupDeploymentOperation**ile işlemlerin durumunu görebilirsiniz.
+Each deployment includes multiple operations. Each operation represents a step in the deployment process. To discover what went wrong with a deployment, you usually need to see details about the deployment operations. You can see the status of the operations with **Get-AzResourceGroupDeploymentOperation**.
 
 ```azurepowershell-interactive
 Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName azuredeploy
 ```
 
-Her biri aşağıdaki biçimde olan birden çok işlem döndürür:
+Which returns multiple operations with each one in the following format:
 
 ```powershell
 Id             : /subscriptions/{guid}/resourceGroups/ExampleGroup/providers/Microsoft.Resources/deployments/Microsoft.Template/operations/A3EB2DA598E0A780
@@ -99,13 +99,13 @@ PropertiesText : {duration:PT23.0227078S, provisioningOperation:Create, provisio
                 serviceRequestId:0196828d-8559-4bf6-b6b8-8b9057cb0e23...}
 ```
 
-Başarısız işlemler hakkında daha fazla ayrıntı edinmek için **başarısız** durumundaki işlemler için özellikleri alın.
+To get more details about failed operations, retrieve the properties for operations with **Failed** state.
 
 ```azurepowershell-interactive
 (Get-AzResourceGroupDeploymentOperation -DeploymentName azuredeploy -ResourceGroupName ExampleGroup).Properties | Where-Object ProvisioningState -eq Failed
 ```
 
-Her biri aşağıdaki biçimde olan tüm başarısız işlemleri döndürür:
+Which returns all the failed operations with each one in the following format:
 
 ```powershell
 provisioningOperation : Create
@@ -121,15 +121,15 @@ targetResource        : @{id=/subscriptions/{guid}/resourceGroups/ExampleGroup/p
                        resourceType=Microsoft.Network/publicIPAddresses; resourceName=myPublicIP}
 ```
 
-İşlem için serviceRequestId ve Trackingıd değerlerini aklınızda edin. ServiceRequestId, bir dağıtımda sorun gidermeye yönelik teknik destekle çalışırken yararlı olabilir. Belirli bir işleme odaklanmak için sonraki adımda Trackingıd ' i kullanacaksınız.
+Note the serviceRequestId and the trackingId for the operation. The serviceRequestId can be helpful when working with technical support to troubleshoot a deployment. You'll use the trackingId in the next step to focus on a particular operation.
 
-Belirli bir başarısız işlemin durum iletisini almak için aşağıdaki komutu kullanın:
+To get the status message of a particular failed operation, use the following command:
 
 ```azurepowershell-interactive
 ((Get-AzResourceGroupDeploymentOperation -DeploymentName azuredeploy -ResourceGroupName ExampleGroup).Properties | Where-Object trackingId -eq f4ed72f8-4203-43dc-958a-15d041e8c233).StatusMessage.error
 ```
 
-Şunu döndürür:
+Which returns:
 
 ```powershell
 code           message                                                                        details
@@ -137,9 +137,9 @@ code           message                                                          
 DnsRecordInUse DNS record dns.westus.cloudapp.azure.com is already used by another public IP. {}
 ```
 
-Azure 'daki her dağıtım işlemi istek ve yanıt içeriğini içerir. Dağıtım sırasında, istek ve/veya yanıtın günlüğe kaydedileceğini belirtmek için **Deploymentdebugloglevel** parametresini kullanabilirsiniz.
+Every deployment operation in Azure includes request and response content. During deployment, you can use **DeploymentDebugLogLevel** parameter to specify that the request and/or response are logged.
 
-Bu bilgileri günlüğünden alır ve aşağıdaki PowerShell komutlarını kullanarak yerel olarak kaydedin:
+You get that information from the log, and save it locally by using the following PowerShell commands:
 
 ```powershell
 (Get-AzResourceGroupDeploymentOperation -DeploymentName "TestDeployment" -ResourceGroupName "Test-RG").Properties.request | ConvertTo-Json |  Out-File -FilePath <PathToFile>
@@ -149,19 +149,19 @@ Bu bilgileri günlüğünden alır ve aşağıdaki PowerShell komutlarını kull
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Bir dağıtımın genel durumunu almak için **Azure grup dağıtımı göster** komutunu kullanın.
+To get the overall status of a deployment, use the **azure group deployment show** command.
 
 ```azurecli-interactive
 az group deployment show -g ExampleGroup -n ExampleDeployment
 ```
   
-Bağıntı KIMLIĞI ilgili olayları izlemek için kullanılır ve bir dağıtımda sorun gidermeye yönelik teknik destekle çalışırken yararlı olabilir.
+The correlation ID is used to track related events, and can be helpful when working with technical support to troubleshoot a deployment.
 
 ```azurecli-interactive
 az group deployment show -g ExampleGroup -n ExampleDeployment --query properties.correlationId
 ```
 
-Bir dağıtımın işlemlerini görmek için şunu kullanın:
+To see the operations for a deployment, use:
 
 ```azurecli-interactive
 az group deployment operation list -g ExampleGroup -n ExampleDeployment
@@ -169,13 +169,13 @@ az group deployment operation list -g ExampleGroup -n ExampleDeployment
 
 ## <a name="rest"></a>REST
 
-Bir dağıtım hakkında bilgi almak için, [bir şablon dağıtımı hakkında bilgi al](https://docs.microsoft.com/rest/api/resources/deployments) işlemini kullanın.
+The following example shows how to get information about a deployment. For documentation about the latest API version, see the [Deployments - Get](/rest/api/resources/deployments/get) operation.
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.resources/deployments/{deployment-name}?api-version={api-version}
 ```
 
-Yanıtta, özellikle **Provisioningstate**, **bağıntıkimliği**ve **Error** öğelerine göz önünde. **CorrelationId** , ilgili olayları izlemek için kullanılır ve bir dağıtımda sorun gidermeye yönelik teknik destekle çalışırken yararlı olabilir.
+In the response, note in particular the **provisioningState**, **correlationId**, and **error** elements. The **correlationId** is used to track related events, and can be helpful when working with technical support to troubleshoot a deployment.
 
 ```json
 { 
@@ -192,13 +192,13 @@ Yanıtta, özellikle **Provisioningstate**, **bağıntıkimliği**ve **Error** �
 }
 ```
 
-Dağıtımlar hakkında bilgi almak için, [tüm şablon dağıtım Işlemlerini Listele](https://docs.microsoft.com/rest/api/resources/deployments)seçeneğini kullanın. 
+The following example shows how to get deployment operations. For documentation about the latest API version, see the [Deployment Operations - List](/rest/api/resources/deploymentoperations/list) operation.
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.resources/deployments/{deployment-name}/operations?$skiptoken={skiptoken}&api-version={api-version}
 ```
    
-Yanıt, dağıtım sırasında **Debugsetting** özelliğinde belirtdiklerinizi temel alarak istek ve/veya yanıt bilgilerini içerir.
+The response includes request and/or response information based on what you specified in the **debugSetting** property during deployment.
 
 ```json
 {
@@ -226,7 +226,7 @@ Yanıt, dağıtım sırasında **Debugsetting** özelliğinde belirtdiklerinizi 
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Belirli dağıtım hatalarını çözümlemede yardım için bkz. [Azure 'a kaynak dağıtılırken sık karşılaşılan hataları çözümleme Azure Resource Manager](resource-manager-common-deployment-errors.md).
-* Diğer eylem türlerini izlemek için etkinlik günlüklerini kullanma hakkında bilgi edinmek için bkz. [Azure kaynaklarını yönetmek için etkinlik günlüklerini görüntüleme](resource-group-audit.md).
-* Yürütmeden önce dağıtımınızı doğrulamak için, bkz. [Azure Resource Manager şablonuyla kaynak grubu dağıtma](resource-group-template-deploy.md).
+* For help with resolving particular deployment errors, see [Resolve common errors when deploying resources to Azure with Azure Resource Manager](resource-manager-common-deployment-errors.md).
+* To learn about using the activity logs to monitor other types of actions, see [View activity logs to manage Azure resources](resource-group-audit.md).
+* To validate your deployment before executing it, see [Deploy a resource group with Azure Resource Manager template](resource-group-template-deploy.md).
 

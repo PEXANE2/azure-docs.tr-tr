@@ -1,6 +1,6 @@
 ---
-title: V1 ve v2 Dizin oluşturucudan Azure Media Services Video Indexer | Microsoft Docs
-description: Bu konu, Azure Media Indexer v1 ve v2 'den Azure Media Services Video Indexer geçiş yapılacağını açıklamaktadır.
+title: Migrate from Indexer v1 and v2 to Azure Media Services Video Indexer | Microsoft Docs
+description: This topic discusses how to migrate from Azure Media Indexer v1 and v2 to Azure Media Services Video Indexer.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,77 +13,75 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2019
 ms.author: juliako
-ms.openlocfilehash: d38b11b8fc4351c6b074ccfdf47df06a71e0a0a4
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 791287d693903007d09c2e82025bfe195f9f15d1
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823963"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74464043"
 ---
-# <a name="migrate-from-media-indexer-and-media-indexer-2-to-video-indexer"></a>Media Indexer ve Media Indexer 2 ' den Video Indexer 'e geçiş
+# <a name="migrate-from-media-indexer-and-media-indexer-2-to-video-indexer"></a>Migrate from Media Indexer and Media Indexer 2 to Video Indexer
 
-[Azure Media Indexer](media-services-index-content.md) medya işlemcisi, 1 Ekim 2020 ' de kullanımdan kaldırılacaktır. [Azure Media Indexer 2 Preview](media-services-process-content-with-indexer2.md) medya Işlemcileri 1 Ocak 2020 tarihinde kullanımdan kaldırılacaktır.  [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) bu eski medya işlemcilerinin yerini alır.
+The [Azure Media Indexer](media-services-index-content.md) media processor will be retired on October 1st of 2020. The [Azure Media Indexer 2 Preview](media-services-process-content-with-indexer2.md) media processors will be retired on January 1 of 2020.  [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) replaces these legacy media processors.
 
-Azure Media Services Video Indexer Azure Media Analytics, Azure Bilişsel Arama, bilişsel hizmetler (Yüz Tanıma API'si, Microsoft Translator, Görüntü İşleme API'si ve Özel Konuşma Tanıma hizmeti) üzerinde oluşturulmuştur. Video Indexer’ın görüntülü ve sesli modellerini kullanarak videolarınızdan içgörü ayıklamanıza olanak sağlar. Hangi senaryolar Video Indexer kullanılabileceğini, hangi özellikleri sunduğunu ve nasıl başladıklarınızı görmek için bkz. [video Indexer video ve ses modelleri](../video-indexer/video-indexer-overview.md). 
+Azure Media Services Video Indexer is built on Azure Media Analytics, Azure Cognitive Search, Cognitive Services (such as the Face API, Microsoft Translator, the Computer Vision API, and Custom Speech Service). Video Indexer’ın görüntülü ve sesli modellerini kullanarak videolarınızdan içgörü ayıklamanıza olanak sağlar. To see what scenarios Video Indexer can be used in, what features it offers, and how to get started, see [Video Indexer video and audio models](../video-indexer/video-indexer-overview.md). 
 
-[Azure Media Services v3 çözümleyici önayarlarını](../latest/analyzing-video-audio-files-concept.md) kullanarak veya doğrudan [video Indexer API 'lerini](https://api-portal.videoindexer.ai/)kullanarak video ve ses dosyalarınızda öngörüleri ayıklayabilirsiniz. Şu anda, Video Indexer API 'leri ve Media Services v3 API 'Leri tarafından sunulan özellikler arasında bir çakışma var.
+You can extract insights from your video and audio files by using the [Azure Media Services v3 analyzer presets](../latest/analyzing-video-audio-files-concept.md) or directly by using the [Video Indexer APIs](https://api-portal.videoindexer.ai/). Currently, there is an overlap between features offered by the Video Indexer APIs and the Media Services v3 APIs.
 
 > [!NOTE]
-> Video Indexer ve Media Services çözümleyici önayarlarının ne zaman kullanılacağını anlamak için [karşılaştırma belgesine](../video-indexer/compare-video-indexer-with-media-services-presets.md)göz atın. 
+> To understand when you would want to use Video Indexer vs. Media Services analyzer presets, check out the [comparison document](../video-indexer/compare-video-indexer-with-media-services-presets.md). 
 
-Bu makalede, Azure Media Indexer geçiş adımlarını ve Azure Media Indexer 2 ' ye Azure Media Services Video Indexer.  
+This article discusses the steps for migrating from the Azure Media Indexer and Azure Media Indexer 2 to Azure Media Services Video Indexer.  
 
-## <a name="migration-options"></a>Geçiş seçenekleri 
+## <a name="migration-options"></a>Migration options 
 
-|İhtiyacınız varsa  |Ni |
+|If you require  |then |
 |---|---|
-|Kapalı açıklamalı altyazı dosyası biçimlerinde herhangi bir medya dosyası biçimi için konuşmayı metne dönüştürme sağlayan bir çözüm: VTT, SRT veya TTML<br/>Aşağıdakiler gibi ek ses içgörüler: anahtar sözcükler, konu ınilleme, akustik etkinlikler, konuşmacı atlama, varlık ayıklama ve çeviri| uygulamalarınızı, Video Indexer v2 REST API veya Azure Media Services v3 ses Çözümleyicisi önceden ayarı aracılığıyla Azure Video Indexer yeteneklerini kullanacak şekilde güncelleştirin.|
-|Konuşmadan metne özellikleri| bilişsel hizmetler konuşma API 'sini doğrudan kullanın.|  
+|a solution that provides a speech-to-text transcription for any media file format in a closed caption file formats: VTT, SRT, or TTML<br/>as well as additional audio insights such as: keywords, topic inferencing, acoustic events, speaker diarization, entities extraction and translation| update your applications to use the Azure Video Indexer capabilities through the Video Indexer v2 REST API or the Azure Media Services v3 Audio Analyzer preset.|
+|speech-to-text capabilities| use the Cognitive Services Speech API directly.|  
 
-## <a name="getting-started-with-video-indexer"></a>Video Indexer kullanmaya başlama
+## <a name="getting-started-with-video-indexer"></a>Getting started with Video Indexer
 
-Aşağıdaki bölümde ilgili bağlantılar [gösterilmektedir: video Indexer kullanmaya nasıl başlamalıyım?](https://docs.microsoft.com/azure/media-services/video-indexer/video-indexer-overview#how-can-i-get-started-with-video-indexer) 
+The following section points you to relevant links: [How can I get started with Video Indexer?](https://docs.microsoft.com/azure/media-services/video-indexer/video-indexer-overview#how-can-i-get-started-with-video-indexer) 
 
-## <a name="getting-started-with-media-services-v3-apis"></a>Media Services v3 API 'Leri ile çalışmaya başlama
+## <a name="getting-started-with-media-services-v3-apis"></a>Getting started with Media Services v3 APIs
 
-Azure Media Services v3 API, [Azure Media Services v3 Çözümleyicisi ön ayarları](../latest/analyzing-video-audio-files-concept.md)aracılığıyla video ve ses dosyalarından öngörüleri ayıklamanızı sağlar. 
+Azure Media Services v3 API enables you to extract insights from your video and audio files through the [Azure Media Services v3 analyzer presets](../latest/analyzing-video-audio-files-concept.md). 
 
-**Audioanalsete önceden ayarlanmış** , bir ses veya video dosyasından birden çok ses öngörülerini ayıklamanızı sağlar. Çıktı, ses dökümü için bir VTT veya TTML dosyası ve bir JSON dosyası (tüm ek ses öngörüleri ile) içerir. Ses öngörüleri, anahtar sözcükleri, konuşmacı dizin oluşturma ve konuşma yaklaşımı analizini içerir. Audioanalönayarı belirli diller için dil algılamayı de destekler. Ayrıntılı bilgi için bkz. [dönüşümler](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset).
+**AudioAnalyzerPreset** enables you to extract multiple audio insights from an audio or video file. The output includes a VTT or TTML file for the audio transcript and a JSON file (with all the additional audio insights). The audio insights include keywords, speaker indexing, and speech sentiment analysis. AudioAnalyzerPreset also supports language detection for specific languages. For detailed information, see [Transforms](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset).
 
-### <a name="get-started"></a>Başlarken
+### <a name="get-started"></a>Kullanmaya Başlayın
 
-Başlamak için bkz:
+To get started see:
 
 * [Öğretici](../latest/analyze-videos-tutorial-with-api.md)
-* Audioanaliz Zerönayar örnekleri: [Java SDK](https://github.com/Azure-Samples/media-services-v3-java/tree/master/AudioAnalytics/AudioAnalyzer) veya [.NET SDK](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/AudioAnalytics/AudioAnalyzer)
-* Videoanaliz Zerönayar örnekleri: [Java SDK](https://github.com/Azure-Samples/media-services-v3-java/tree/master/VideoAnalytics/VideoAnalyzer) veya [.NET SDK](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/VideoAnalytics/VideoAnalyzer)
+* AudioAnalyzerPreset samples: [Java SDK](https://github.com/Azure-Samples/media-services-v3-java/tree/master/AudioAnalytics/AudioAnalyzer) or [.NET SDK](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/AudioAnalytics/AudioAnalyzer)
+* VideoAnalyzerPreset samples: [Java SDK](https://github.com/Azure-Samples/media-services-v3-java/tree/master/VideoAnalytics/VideoAnalyzer) or [.NET SDK](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/VideoAnalytics/VideoAnalyzer)
 
-## <a name="getting-started-with-cognitive-services-speech-services"></a>Bilişsel hizmetler konuşma Hizmetleri 'ni kullanmaya başlama
+## <a name="getting-started-with-cognitive-services-speech-services"></a>Getting started with Cognitive Services Speech Services
 
-[Azure](https://docs.microsoft.com/azure/cognitive-services/) bilişsel hizmetler, uygulamalarınızın, araçlarınızın veya cihazlarınızın tüketebileceği veya görüntülemesi için ses akışlarını gerçek zamanlı olarak metne aktarmak için bir konuşma konuşmadan metne bir hizmet sağlar. [Kendi akustik modelinizi, dil modelinizi veya telaffuz modelinizi özelleştirmek](../../cognitive-services/speech-service/how-to-custom-speech-train-model.md)için konuşmayı metne dönüştürme özelliğini kullanabilirsiniz. Daha fazla bilgi için bkz. bilişsel [Hizmetler konuşmayı metne](../../cognitive-services/speech-service/speech-to-text.md)dönüştürme. 
+[Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/) provides a speech-to-text service that transcribes audio streams to text in real time that your applications, tools, or devices can consume or display. You can  use speech-to-text to [customize your own acoustic model, language model, or pronunciation model](../../cognitive-services/speech-service/how-to-custom-speech-train-model.md). For more information, see [Cognitive Services speech-to-text](../../cognitive-services/speech-service/speech-to-text.md). 
 
 > [!NOTE] 
-> Konuşmaya metin hizmeti video dosya biçimlerini almaz ve yalnızca [belirli ses biçimlerini](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-speech-to-text#audio-formats)alır. 
+> The speech-to-text service does not take video file formats and only takes [certain audio formats](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-speech-to-text#audio-formats). 
 
-Metinden konuşmaya hizmeti ile çalışmaya başlama hakkında daha fazla bilgi için bkz. [konuşmayı metne](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-to-text) dönüştürme nedir?
+For more information about the text-to-speech service and how to get started, see [What is speech-to-text?](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-to-text)
 
-## <a name="known-differences-from-deprecated-services"></a>Kullanım dışı hizmetler 'den bilinen farklılıklar 
+## <a name="known-differences-from-deprecated-services"></a>Known differences from deprecated services 
 
-Video Indexer, Azure Media Services v3 Audioanalönayarı ve bilişsel hizmetler konuşma Hizmetleri hizmetlerinin daha güvenilir olduğunu ve kullanımdan kaldırılan Azure Media Indexer 1 ve Azure Media Indexer 2 işlemcinden daha iyi kaliteli çıkış ürettiğini göreceksiniz.  
+You will find that Video Indexer, Azure Media Services v3 AudioAnalyzerPreset, and Cognitive Services Speech Services services are more reliable and produces better quality output than the retired Azure Media Indexer 1 and Azure Media Indexer 2 processors.  
 
-Bazı bilinen farklılıklar şunlardır: 
+Some known differences include: 
 
-* SAMı biçimindeki kapalı açıklamalı altyazı dosyaları artık desteklenmeyecektir. Bu, artık yaygın olarak kullanılmayan eski bir başlık biçimidir. TTML, WebVTT ve SRT ile değiştirilmiştir.  
-* Ses dizin oluşturma Blobu (AıB) dosyaları artık desteklenmeyecektir. Bu özellik, Dizin Oluşturucu 1 teknolojisine özeldir ve artık sunulmamaktadır.  
-* Bilişsel hizmetler konuşma Hizmetleri anahtar sözcüğünün ayıklanmasını desteklemez. Ancak, Video Indexer ve Media Services v3 Audioanalönayarı, JSON dosya biçiminde daha sağlam bir anahtar sözcük kümesi sunmaktadır. 
+* Cognitive Services Speech Services does not support keyword extraction. However, Video Indexer and Media Services v3 AudioAnalyzerPreset both offer a more robust set of keywords in JSON file format. 
 
 ## <a name="need-help"></a>Yardım mı gerekiyor?
 
-[Yeni destek isteğine](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) giderek bir destek bileti açabilirsiniz
+You can open a support ticket by navigating to [New support request](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Eski bileşenler](legacy-components.md)
-* [Fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/media-services/#encoding)
+* [Legacy components](legacy-components.md)
+* [Pricing page](https://azure.microsoft.com/pricing/details/media-services/#encoding)
 
 

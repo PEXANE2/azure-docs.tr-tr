@@ -1,6 +1,6 @@
 ---
-title: Azure Güvenlik Merkezi 'nde özel güvenlik ilkeleri oluşturma | Microsoft Docs
-description: Azure Güvenlik Merkezi tarafından izlenen Azure özel ilke tanımları.
+title: Create custom security policies in Azure Security Center | Microsoft Docs
+description: Azure custom policy definitions monitored by Azure Security Center.
 services: security-center
 author: memildin
 manager: rkarlin
@@ -8,65 +8,67 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: d1ef8852916e598373c104fb98a1c09ab656fbaf
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 3e60c0e165b8f9ec79aac2048011d9e315b0ce18
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196216"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483969"
 ---
-# <a name="using-custom-security-policies-preview"></a>Özel güvenlik ilkeleri kullanma (Önizleme)
+# <a name="using-custom-security-policies-preview"></a>Using custom security policies (Preview)
 
-Azure Güvenlik Merkezi, sistem ve ortamınızın güvenliğini sağlamaya yardımcı olmak için güvenlik önerileri oluşturur. Bu öneriler, tüm müşterilere sağlanan genel, varsayılan güvenlik ilkesine dahil olan sektör en iyi uygulamalarına dayalıdır. Ayrıca, güvenlik merkezi 'nin sektör ve mevzuat standartları hakkında bilgi edinmeleri de gelebilir.
+To help secure your systems and environment, Azure Security Center generates security recommendations. These recommendations are based on industry best practices, which are incorporated into the generic, default security policy supplied to all customers. They can also come from Security Center's knowledge of industry and regulatory standards.
 
-Bu önizleme özelliği ile kendi *özel* girişimlerinizi ekleyebilirsiniz. Daha sonra ortamınız oluşturduğunuz ilkeleri izmazsa öneriler alacaksınız.
+With this preview feature, you can add your own *custom* initiatives. You'll then receive recommendations if your environment doesn't follow the policies you create.
 
-[Burada](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#definition-location) açıklandığı gibi, Azure ilke belgelerinde, özel girişim'niz için bir konum belirttiğinizde bir yönetim grubu veya abonelik olması gerekir. 
+As discussed [here](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#definition-location) in the Azure Policy documentation, when you specify a location for your custom initiative, it must be a management group or a subscription. 
 
-## <a name="to-add-a-custom-initiative-to-your-subscription"></a>Aboneliğinize özel bir girişim eklemek için 
+## <a name="to-add-a-custom-initiative-to-your-subscription"></a>To add a custom initiative to your subscription 
 
-1. Güvenlik Merkezi 'nin kenar çubuğundan **güvenlik ilkesi** sayfasını açın.
+1. From Security Center's sidebar, open the **Security policy** page.
 
-1. Özel bir girişim eklemek istediğiniz bir abonelik veya yönetim grubu seçin.
+1. Select a subscription or Management Group to which you would like to add a custom initiative.
 
-    [Özel ilkenizi oluşturacağınız bir abonelik ![seçin](media/custom-security-policies/custom-policy-selecting-a-subscription.png)](media/custom-security-policies/custom-policy-selecting-a-subscription.png#lightbox)
-
-    > [!NOTE]
-    > Özel bir standart eklediğinizde, bu kapsama bir *girişim* atar. Bu nedenle, bu atama için gereken en geniş kapsamı seçmenizi öneririz. 
-
-1. Güvenlik İlkesi sayfasında, özel girişimlerinizin (Önizleme) altında **özel girişim Ekle**' ye tıklayın.
-
-    [![* * özel girişim Ekle * * öğesine tıklayın.](media/custom-security-policies/custom-policy-add-initiative.png)](media/custom-security-policies/custom-policy-add-initiative.png#lightbox)
-
-    Aşağıdaki sayfa görüntülenir:
-
-    ![İlke oluşturma veya ekleme](media/custom-security-policies/create-or-add-custom-policy.png)
-
-1. Özel girişimler Ekle sayfasında, kuruluşunuzda önceden oluşturulmuş özel ilkelerin listesini gözden geçirin. Aboneliğinize atamak istediğiniz bir tane görürseniz **Ekle**' ye tıklayın. Listede gereksinimlerinizi karşılayan bir girişim yoksa, bu adımı atlayın.
-
-1. Yeni bir özel girişim oluşturmak için:
-
-    1. **Yeni oluştur**' a tıklayın.
-    1. Tanımın konumunu ve adını girin.
-    1. Dahil edilecek ilkeleri seçin ve **Ekle**' ye tıklayın.
-    1. İstediğiniz parametreleri girin.
-    1. **Kaydet**’e tıklayın.
-    1. Özel girişimler Ekle sayfasında Yenile ' ye tıklayın ve yeni girişim kullanılabilir olarak gösterilir.
-    1. **Ekle** ' ye tıklayın ve aboneliğinize atayın.
+    [![Selecting a subscription for which you'll create your custom policy](media/custom-security-policies/custom-policy-selecting-a-subscription.png)](media/custom-security-policies/custom-policy-selecting-a-subscription.png#lightbox)
 
     > [!NOTE]
-    > Yeni girişimler oluşturmak için abonelik sahibi kimlik bilgileri gerekir. Azure rolleri hakkında daha fazla bilgi için bkz. [Azure Güvenlik Merkezi 'Nde izinler](security-center-permissions.md).
+    > You must add custom standards at the subscription level (or higher) for them to be evaluated and displayed in Security Center. 
+    >
+    > When you add a custom standard, it assigns an *initiative* to that scope. We therefore recommend that you select the widest scope required for that assignment.
 
-1. İlkenize yönelik sonuç önerilerini görmek için kenar çubuğundan **öneriler** ' e tıklayarak öneriler sayfasını açın. Öneriler "özel" bir etiketle görüntülenir ve yaklaşık bir saat içinde kullanılabilir.
+1. In the Security policy page, under Your custom initiatives (Preview), click **Add a custom initiative**.
 
-    [![özel öneriler](media/custom-security-policies/custom-policy-recommendations.png)](media/custom-security-policies/custom-policy-recommendations-in-context.png#lightbox)
+    [![Click **Add a custom initiative**](media/custom-security-policies/custom-policy-add-initiative.png)](media/custom-security-policies/custom-policy-add-initiative.png#lightbox)
+
+    The following page appears:
+
+    ![Create or add a policy](media/custom-security-policies/create-or-add-custom-policy.png)
+
+1. In the Add custom initiatives page, review the list of custom policies already created in your organization. If you see one you want to assign to your subscription, click **Add**. If there isn't an initiative in the list that meets your needs, skip this step.
+
+1. To create a new custom initiative:
+
+    1. Click **Create new**.
+    1. Enter the definition's location and name.
+    1. Select the policies to include and click **Add**.
+    1. Enter any desired parameters.
+    1. **Kaydet** düğmesine tıklayın.
+    1. In the Add custom initiatives page, click refresh and your new initiative will be shown as available.
+    1. Click **Add** and assign it to your subscription.
+
+    > [!NOTE]
+    > Creating new initiatives requires subscription owner credentials. For more information about Azure roles, see [Permissions in Azure Security Center](security-center-permissions.md).
+
+1. To see the resulting recommendations for your policy, click **Recommendations** from the sidebar to open the recommendations page. The recommendations will appear with a “Custom” label and be available within approximately one hour.
+
+    [![Custom recommendations](media/custom-security-policies/custom-policy-recommendations.png)](media/custom-security-policies/custom-policy-recommendations-in-context.png#lightbox)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, özel güvenlik ilkeleri oluşturmayı öğrendiniz. 
+In this article, you learned how to create custom security policies. 
 
-Diğer ilgili malzemeler için aşağıdaki makalelere bakın: 
+For other related material, see the following articles: 
 
-- [Güvenlik ilkelerine genel bakış](tutorial-security-policy.md)
-- [Yerleşik güvenlik ilkelerinin listesi](security-center-policy-definitions.md)
+- [The overview of security policies](tutorial-security-policy.md)
+- [A list of the built-in security policies](security-center-policy-definitions.md)

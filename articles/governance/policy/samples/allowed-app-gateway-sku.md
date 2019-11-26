@@ -1,16 +1,16 @@
 ---
-title: Örnek Izin verilen Application Gateway SKU 'Ları
-description: Bu örnek ilke tanımı, uygulama ağ geçitlerinin onaylanmış bir SKU kullanmasını gerektirir.
+title: Sample - Allowed application gateway SKUs
+description: This sample policy definition requires that application gateways use an approved SKU defined in a parameter.
 ms.date: 01/23/2019
 ms.topic: sample
-ms.openlocfilehash: 1d146fbe4966e3ba2d99077280f02253ae4af02d
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 89a1f7f60639f31d79690d0ddb1ea11d26ae4bdc
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076526"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463758"
 ---
-# <a name="sample---allowed-application-gateway-skus"></a>Örnek Izin verilen Application Gateway SKU 'Ları
+# <a name="sample---allowed-application-gateway-skus"></a>Sample - Allowed application gateway SKUs
 
 Bu ilke, uygulama ağ geçitlerinin onaylı bir SKU kullanmasını gerektirir. Onaylı bir SKU dizisi belirtirsiniz.
 
@@ -24,7 +24,7 @@ Bu ilke, uygulama ağ geçitlerinin onaylı bir SKU kullanmasını gerektirir. O
 
 ## <a name="deploy-with-the-portal"></a>Portal ile dağıtma
 
-[![Ilke örneğini Azure 'a dağıtma](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Fapplication-gateway-skus%2Fazurepolicy.json)
+[![Deploy the Policy sample to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Fapplication-gateway-skus%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>PowerShell ile dağıtma
 

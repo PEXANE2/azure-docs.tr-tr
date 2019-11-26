@@ -1,58 +1,58 @@
 ---
 title: Şema dağıtımının aşamaları
-description: Azure Blueprint hizmetlerinin dağıtım sırasında gittiği adımları öğrenin.
+description: Learn the security and artifact related steps the Azure Blueprint services goes through while creating a blueprint assignment.
 ms.date: 11/13/2019
 ms.topic: conceptual
-ms.openlocfilehash: b329613e4e4954a1ea1452017a6e6c8b7343f2d3
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 4c1d0cd47e0f43b73e3178e18a4ba5d705048a72
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048607"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463560"
 ---
 # <a name="stages-of-a-blueprint-deployment"></a>Şema dağıtımının aşamaları
 
-Bir şema dağıtıldığında, şema içinde tanımlanan kaynakları dağıtmak için Azure plan hizmeti tarafından bir dizi eylem alınır. Bu makalede, her adımın neler olduğu hakkında ayrıntılı bilgi sağlanır.
+When a blueprint gets deployed, a series of actions is taken by the Azure Blueprints service to deploy the resources defined in the blueprint. This article provides details about what each step involves.
 
-Şema dağıtımı, bir aboneliğe bir şema atanarak veya [var olan bir atamayı güncelleştirerek](../how-to/update-existing-assignments.md)tetiklenir. Dağıtım sırasında, planlar aşağıdaki üst düzey adımları alır:
+Blueprint deployment is triggered by assigning a blueprint to a subscription or [updating an existing assignment](../how-to/update-existing-assignments.md). During the deployment, Blueprints takes the following high-level steps:
 
 > [!div class="checklist"]
-> - Sahip hakları verilen planlar
-> - Şema atama nesnesi oluşturuldu
-> - İsteğe bağlı-planlar **sistem tarafından atanan** yönetilen kimlik oluşturur
-> - Yönetilen kimlik, şema yapıtları dağıtır
-> - Blueprint hizmeti ve **sistem tarafından atanan** yönetilen kimlik hakları iptal edilir
+> - Blueprints granted owner rights
+> - The blueprint assignment object is created
+> - Optional - Blueprints creates **system-assigned** managed identity
+> - The managed identity deploys blueprint artifacts
+> - Blueprint service and **system-assigned** managed identity rights are revoked
 
-## <a name="blueprints-granted-owner-rights"></a>Sahip hakları verilen planlar
+## <a name="blueprints-granted-owner-rights"></a>Blueprints granted owner rights
 
-Azure planları hizmet sorumlusu, atanan abonelik veya aboneliklerde, [sistem tarafından atanan yönetilen kimlik](../../../active-directory/managed-identities-azure-resources/overview.md) yönetimli bir kimlik kullanıldığında sahip hakları verilir. Verilen rol, **sistem tarafından atanan** yönetilen kimliği, planların oluşturulmasına ve daha sonra iptal etmesine olanak tanır. **Kullanıcı tarafından atanan** yönetilen kimlik kullanılıyorsa Azure planları hizmet sorumlusu, abonelik üzerinde sahip haklarına sahip değildir ve bu haklara gerek kalmaz.
+The Azure Blueprints service principal is granted owner rights to the assigned subscription or subscriptions when a [system-assigned managed identity](../../../active-directory/managed-identities-azure-resources/overview.md) managed identity is used. The granted role allows Blueprints to create, and later revoke, the **system-assigned** managed identity. If using a **user-assigned** managed identity, the Azure Blueprints service principal doesn't get and doesn't need owner rights on the subscription.
 
-Atama Portal üzerinden yapıldığında haklar otomatik olarak verilir. Ancak, atama REST API aracılığıyla yapılabiliyorsanız, hakların ayrı bir API çağrısıyla yapılması gerekir. Azure Blueprint AppID `f71766dc-90d9-4b7d-bd9d-4499c4331c3f`, ancak hizmet sorumlusu kiracıya göre değişir. Hizmet sorumlusunu almak için [Azure Active Directory Graph API](../../../active-directory/develop/active-directory-graph-api.md) ve REST uç nokta [servicesorumlularını](/graph/api/resources/serviceprincipal) kullanın. Daha sonra Azure 'a [Portal](../../../role-based-access-control/role-assignments-portal.md), [azure CLI](../../../role-based-access-control/role-assignments-cli.md), [Azure PowerShell](../../../role-based-access-control/role-assignments-powershell.md), [REST API](../../../role-based-access-control/role-assignments-rest.md)veya [Kaynak Yöneticisi şablonu](../../../role-based-access-control/role-assignments-template.md)aracılığıyla _sahip_ rolünü verin.
+The rights are granted automatically if the assignment is done through the portal. However, if the assignment is done through the REST API, granting the rights needs to be done with a separate API call. The Azure Blueprint AppId is `f71766dc-90d9-4b7d-bd9d-4499c4331c3f`, but the service principal varies by tenant. Use [Azure Active Directory Graph API](../../../active-directory/develop/active-directory-graph-api.md) and REST endpoint [servicePrincipals](/graph/api/resources/serviceprincipal) to get the service principal. Then, grant the Azure Blueprints the _Owner_ role through the [Portal](../../../role-based-access-control/role-assignments-portal.md), [Azure CLI](../../../role-based-access-control/role-assignments-cli.md), [Azure PowerShell](../../../role-based-access-control/role-assignments-powershell.md), [REST API](../../../role-based-access-control/role-assignments-rest.md), or a [Resource Manager template](../../../role-based-access-control/role-assignments-template.md).
 
-Planlar hizmeti kaynakları doğrudan dağıtmaz.
+The Blueprints service doesn't directly deploy the resources.
 
-## <a name="the-blueprint-assignment-object-is-created"></a>Şema atama nesnesi oluşturuldu
+## <a name="the-blueprint-assignment-object-is-created"></a>The blueprint assignment object is created
 
-Bir Kullanıcı, Grup veya hizmet sorumlusu bir aboneliğe şeması atar. Atama nesnesi, şema 'in atandığı abonelik düzeyinde bulunur. Dağıtım tarafından oluşturulan kaynaklar, dağıtım varlığının bağlamında yapılmaz.
+A user, group, or service principal assigns a blueprint to a subscription. The assignment object exists at the subscription level where the blueprint was assigned. Resources created by the deployment aren't done in context of the deploying entity.
 
-Şema atamasını oluştururken, [yönetilen kimliğin](../../../active-directory/managed-identities-azure-resources/overview.md) türü seçilidir. Varsayılan ayar, **sistem tarafından atanan** yönetilen bir kimliktir. **Kullanıcı tarafından atanan** yönetilen kimlik seçilebilir. **Kullanıcı tarafından atanan** bir yönetilen kimlik kullanılırken, şema atama oluşturulmadan önce tanımlanmalı ve izinler verilmelidir. Hem [Owner](../../../role-based-access-control/built-in-roles.md#owner) hem de [Blueprint işleci](../../../role-based-access-control/built-in-roles.md#blueprint-operator) yerleşik rollerinin, **Kullanıcı tarafından atanan** yönetilen kimlik kullanan bir atama oluşturmak için gerekli `blueprintAssignment/write` izni vardır.
+While creating the blueprint assignment, the type of [managed identity](../../../active-directory/managed-identities-azure-resources/overview.md) is selected. The default is a **system-assigned** managed identity. A **user-assigned** managed identity can be chosen. When using a **user-assigned** managed identity, it must be defined and granted permissions before the blueprint assignment is created. Both the [Owner](../../../role-based-access-control/built-in-roles.md#owner) and [Blueprint Operator](../../../role-based-access-control/built-in-roles.md#blueprint-operator) built-in roles have the necessary `blueprintAssignment/write` permission to create an assignment that uses a **user-assigned** managed identity.
 
-## <a name="optional---blueprints-creates-system-assigned-managed-identity"></a>İsteğe bağlı-planlar sistem tarafından atanan yönetilen kimlik oluşturur
+## <a name="optional---blueprints-creates-system-assigned-managed-identity"></a>Optional - Blueprints creates system-assigned managed identity
 
-Atama sırasında [sistem tarafından atanan yönetilen kimlik](../../../active-directory/managed-identities-azure-resources/overview.md) seçildiğinde, planlar kimliği oluşturur ve yönetilen kimliğe [sahip](../../../role-based-access-control/built-in-roles.md#owner) rolü verir. Varolan bir [atama yükseltilirse](../how-to/update-existing-assignments.md), planlar önceden oluşturulmuş yönetilen kimliği kullanır.
+When [system-assigned managed identity](../../../active-directory/managed-identities-azure-resources/overview.md) is selected during assignment, Blueprints creates the identity and grants the managed identity the [owner](../../../role-based-access-control/built-in-roles.md#owner) role. If an [existing assignment is upgraded](../how-to/update-existing-assignments.md), Blueprints uses the previously created managed identity.
 
-Şema atamasıyla ilgili yönetilen kimlik, şema içinde tanımlanan kaynakları dağıtmak veya yeniden dağıtmak için kullanılır. Bu tasarım, atamaları yanlışlıkla kesintiye uğramasını önler.
-Bu tasarım Ayrıca, Blueprint 'ten dağıtılan her bir kaynağın güvenliğini denetleyerek [kaynak kilitleme](./resource-locking.md) özelliğini destekler.
+The managed identity related to the blueprint assignment is used to deploy or redeploy the resources defined in the blueprint. This design avoids assignments inadvertently interfering with each other.
+This design also supports the [resource locking](./resource-locking.md) feature by controlling the security of each deployed resource from the blueprint.
 
-## <a name="the-managed-identity-deploys-blueprint-artifacts"></a>Yönetilen kimlik, şema yapıtları dağıtır
+## <a name="the-managed-identity-deploys-blueprint-artifacts"></a>The managed identity deploys blueprint artifacts
 
-Yönetilen kimlik daha sonra, şema içindeki yapıların Kaynak Yöneticisi dağıtımlarını tanımlanan [sıralama düzeninde](./sequencing-order.md)tetikler. Diğer yapıtlara bağımlı yapıtlar doğru sırada dağıtıldığından emin olmak için sıra ayarlanabilir.
+The managed identity then triggers the Resource Manager deployments of the artifacts within the blueprint in the defined [sequencing order](./sequencing-order.md). The order can be adjusted to ensure artifacts dependent on other artifacts are deployed in the correct order.
 
-Bir dağıtım tarafından erişim hatası genellikle yönetilen kimliğe verilen erişim düzeyinin sonucudur. Planlar hizmeti, **sistem tarafından atanan** yönetilen kimliğin güvenlik yaşam döngüsünü yönetir. Bununla birlikte, Kullanıcı **tarafından atanan** yönetilen kimliğin haklarının ve yaşam döngüsünün yönetilmesi Kullanıcı tarafından sorumludur.
+An access failure by a deployment is often the result of the level of access granted to the managed identity. The Blueprints service manages the security lifecycle of the **system-assigned** managed identity. However, the user is responsible for managing the rights and lifecycle of a **user-assigned** managed identity.
 
-## <a name="blueprint-service-and-system-assigned-managed-identity-rights-are-revoked"></a>Blueprint hizmeti ve sistem tarafından atanan yönetilen kimlik hakları iptal edilir
+## <a name="blueprint-service-and-system-assigned-managed-identity-rights-are-revoked"></a>Blueprint service and system-assigned managed identity rights are revoked
 
-Dağıtımlar tamamlandıktan sonra, planlar **sistem tarafından atanan** yönetilen kimliğin haklarını abonelikten iptal eder. Ardından, planlar hizmeti aboneliğin haklarını iptal eder. Haklar kaldırma, planların bir abonelikte kalıcı bir sahip olmasını önler.
+Once the deployments are completed, Blueprints revokes the rights of the **system-assigned** managed identity from the subscription. Then, the Blueprints service revokes its rights from the subscription. Rights removal prevents Blueprints from becoming a permanent owner on a subscription.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

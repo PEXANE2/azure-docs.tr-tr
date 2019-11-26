@@ -1,6 +1,6 @@
 ---
-title: Azure haritalar 'da kümeleme noktası verileri | Microsoft Docs
-description: Web SDK 'da nokta verileri kümesi oluşturma
+title: Clustering point data in Azure Maps | Microsoft Docs
+description: How to cluster point data in the Web SDK
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,20 +9,24 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 5f51c1166364a3470a1cc943e66d429c32cdc49b
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 4a583f77aac036028fd75d3c05af805031f08ebd
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839484"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74480553"
 ---
-# <a name="clustering-point-data"></a>Kümeleme noktası verileri
+# <a name="clustering-point-data"></a>Clustering point data
 
-Haritadaki çok sayıda veri noktasını görselleştirirken, eşleme bozulur ve kullanımı zor olur. Nokta verisi Kümelemesi, bu kullanıcı deneyimini geliştirmek için kullanılabilir. Kümeleme noktası verileri, birbirine yakın olan nokta verisini birleştirme ve bunları haritada tek bir kümelenmiş veri noktası olarak temsil etme işlemidir. Kullanıcı haritada yakınlaştırdıktan sonra, kümeler kendi bireysel veri noktalarıyla kesilir.
+When visualizing many data points on the map, points overlap each other, the map looks cluttered and it becomes difficult to see and use. Clustering of point data can be used to improve this user experience. Clustering point data is the process of combining point data that are near each other and representing them on the map as a single clustered data point. As the user zooms into the map, the clusters break apart into their individual data points.
 
-## <a name="enabling-clustering-on-a-data-source"></a>Veri kaynağında kümeleme etkinleştiriliyor
+<br/>
 
-Küme, `DataSource` `cluster` seçeneği doğru olarak ayarlanarak sınıfında kolayca etkinleştirilebilir. Ayrıca, bir kümede birleştirilecek olan yakın noktaları seçmek için piksel yarıçapı, `clusterRadius` kullanılarak ayarlanabilir ve `clusterMaxZoom` seçeneği kullanılarak kümeleme mantığının devre dışı bırakılması için bir yakınlaştırma düzeyi belirtilebilir. Veri kaynağında kümelemenin nasıl etkinleştirileceği hakkında bir örnek aşağıda verilmiştir.
+<iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Clustering-point-data-in-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
+
+## <a name="enabling-clustering-on-a-data-source"></a>Enabling clustering on a data source
+
+Clustering can easily be enabled on the `DataSource` class by setting the `cluster` option to true. Additionally, the pixel radius to select nearby points to combine into a cluster can be set using the `clusterRadius` and a zoom level can be specified at which to disable the clustering logic using the `clusterMaxZoom` option. Here is an example of how to enable clustering in a data source.
 
 ```javascript
 //Create a data source and enable clustering.
@@ -40,105 +44,105 @@ var datasource = new atlas.source.DataSource(null, {
 ```
 
 > [!TIP]
-> İki veri noktası arka planda yakınsa, kullanıcının ne kadar yakın yakınlaştırılmadığına bakılmaksızın kümenin hiçbir şekilde hiçbir şekilde ayrılamamaları mümkündür. Bunu çözmek için, küme mantığını devre dışı `clusterMaxZoom` bırakmak ve yalnızca her şeyi göstermek için yakınlaştırma düzeyinde belirten veri kaynağı seçeneğini ayarlayabilirsiniz.
+> If two data points are close together on the ground, it is possible the cluster will never break apart, no matter how close the user zooms in. To address this, you can set the `clusterMaxZoom` option of the data source which specifies at the zoom level to disable the clustering logic and simply display everything.
 
-Sınıfı `DataSource` , kümeleme ile ilgili aşağıdaki yöntemlere de sahiptir:
+The `DataSource` class also has the following methods related to clustering:
 
-| Yöntem | Dönüş türü | Açıklama |
+| Yöntem | Return type | Açıklama |
 |--------|-------------|-------------|
-| getClusterChildren (Clusterıd: Number) | Promise&lt;dizi&lt;özelliğigeometrisi&lt;, herhangi&gt; bir şekil\|&gt;&gt; | Sonraki yakınlaştırma düzeyinde verilen kümenin alt öğelerini alır. Bu alt öğeler şekil ve alt kümelerin bir birleşimi olabilir. Alt kümeler, ClusteredProperties ile eşleşen özelliklerle özellik olacaktır. |
-| getClusterExpansionZoom (Clusterıd: Number) | Promise&lt;numarası&gt; | Kümenin genişlemekte veya parçalanmasına başlayacağı yakınlaştırma düzeyini hesaplar. |
-| Getclusteryaprakları (Clusterıd: Number, limit: Number, kayması: Number) | Promise&lt;dizi&lt;özelliğigeometrisi&lt;, herhangi&gt; bir şekil\|&gt;&gt; | Kümedeki tüm noktaları alır. ' İ `limit` , noktaların bir alt kümesini döndürecek şekilde ayarlayın ve ' ı `offset` noktaları üzerinden kullanın. |
+| getClusterChildren(clusterId: number) | Promise&lt;Array&lt;Feature&lt;Geometry, any&gt; \| Shape&gt;&gt; | Retrieves the children of the given cluster on the next zoom level. These children may be a combination of shapes and subclusters. The subclusters will be features with properties matching ClusteredProperties. |
+| getClusterExpansionZoom(clusterId: number) | Promise&lt;number&gt; | Calculates a zoom level at which the cluster will start expanding or break apart. |
+| getClusterLeaves(clusterId: number, limit: number, offset: number) | Promise&lt;Array&lt;Feature&lt;Geometry, any&gt; \| Shape&gt;&gt; | Retrieves all points in a cluster. Set the `limit` to return a subset of the points, and use the `offset` to page through the points. |
 
-## <a name="display-clusters-using-a-bubble-layer"></a>Balon bir katman kullanarak kümeleri görüntüleme
+## <a name="display-clusters-using-a-bubble-layer"></a>Display clusters using a bubble layer
 
-Kabarcık katmanı, yarıçapı kolayca ölçeklendirebilmeniz ve bir ifade kullanarak kümedeki noktaların sayısına göre renkleri değiştirebilmeniz için, kümelenmiş noktaları işlemek için harika bir yoldur. Bir kabarcık katmanı kullanarak kümeler görüntülenirken, kümelenmemiş veri noktalarını işlemek için ayrı bir katman da kullanmanız gerekir. Ayrıca, kabarcıkların üst kısmında kümenin boyutunu görüntüleyebilmek de iyi bir hale gelir. Bu davranışa ulaşmak için, metin ve simge içeren bir sembol katmanı kullanılabilir. 
-
-<br/>
-
-<iframe height="500" style="width: 100%;" scrolling="no" title="Temel kabarcık katmanı Kümelemesi" src="//codepen.io/azuremaps/embed/qvzRZY/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>Codepen</a>'da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/qvzRZY/'>temel balon katmanı kümelemesine</a> bakın.
-</iframe>
-
-## <a name="display-clusters-using-a-symbol-layer"></a>Sembol katmanı kullanarak kümeleri görüntüleme
-
-Sembol katmanını kullanarak nokta verilerini görselleştirirken, varsayılan olarak, temizleyici bir deneyim oluşturmak için birbirleriyle örtüşen sembolleri otomatik olarak gizler, ancak haritadaki veri noktalarının yoğunluğunu görmek isterseniz bu işlem istenen deneyim olmayabilir. `true` Sembol katmanları `iconOptions` özelliğinin seçeneği bu deneyimi devre dışı bırakmak için ayarlandığında, ancak tüm simgelerin görüntülenmesine neden olur. `allowOverlap` Kümeleme kullanmak, iyi bir temiz Kullanıcı deneyimi oluştururken tüm verilerin yoğunluğunu görmenizi sağlar. Bu örnekte, kümeleri ve bireysel veri noktalarını göstermek için özel semboller kullanılacaktır.
+A bubble layer is a great way to render clustered points as you can easily scale the radius and change the color them based on the number of points in the cluster by using an expression. When displaying clusters using a bubble layer, you should also use a separate layer for rendering unclustered data points. It is often nice to also be able to display the size of the cluster on top of the bubbles. A symbol layer with text and no icon can be used to achieve this behavior. 
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Kümelenmiş sembol katmanı" src="//codepen.io/azuremaps/embed/Wmqpzz/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>Codepen</a>üzerinde Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından kullanılan kalem <a href='https://codepen.io/azuremaps/pen/Wmqpzz/'>kümelenmiş sembol katmanını</a> görüntüleyin.
+<iframe height="500" style="width: 100%;" scrolling="no" title="Basic bubble layer clustering" src="//codepen.io/azuremaps/embed/qvzRZY/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+See the Pen <a href='https://codepen.io/azuremaps/pen/qvzRZY/'>Basic bubble layer clustering</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="clustering-and-the-heat-maps-layer"></a>Kümeleme ve ısı haritaları katmanı
+## <a name="display-clusters-using-a-symbol-layer"></a>Display clusters using a symbol layer
 
-Isı haritaları haritadaki verilerin yoğunluğunu görüntülemenin harika bir yoludur. Bu görselleştirme, kendi başına çok sayıda veri noktasını işleyebilir, ancak veri noktaları kümelenmişse ve küme boyutu ısı haritasının ağırlığı olarak kullanılıyorsa daha da fazla veri işleyebilir. Bunu başarmak için ısı haritası katmanının `['get', 'point_count']` seçeneğiniolarakayarlayın.`weight` Küme yarıçapı küçük olduğunda, ısı haritası kümelenmemiş veri noktalarını kullanarak bir ısı haritası ile neredeyse özdeş olur ancak çok daha iyi işlem yapar. Ancak, küme yarıçapı ne kadar küçükse, ısı haritası daha doğru olur ancak daha az performans avantajı vardır.
+When visualizing the point data using the Symbol layer, by default it will automatically hide symbols that overlap each other to create a cleaner experience, however this may not be the desired experience if you want to see the density of data points on the map. Setting the `allowOverlap` option of the Symbol layers `iconOptions` property to `true` disables this experience but will result in all the symbols being displayed. Using clustering allows you to see the density of all the data while creating a nice clean user experience. In this sample, custom symbols will be used to represent clusters and individual data points.
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Küme ağırlıklı ısı haritası" src="//codepen.io/azuremaps/embed/VRJrgO/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>Codepen</a>'da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/VRJrgO/'>kümesi ağırlıklı ısı haritasını</a> inceleyin.
+<iframe height="500" style="width: 100%;" scrolling="no" title="Clustered Symbol layer" src="//codepen.io/azuremaps/embed/Wmqpzz/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+See the Pen <a href='https://codepen.io/azuremaps/pen/Wmqpzz/'>Clustered Symbol layer</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="mouse-events-on-clustered-data-points"></a>Kümelenmiş veri noktalarında fare olayları
+## <a name="clustering-and-the-heat-maps-layer"></a>Clustering and the heat maps layer
 
-Kümelenmiş veri noktaları içeren bir katmanda fare olayları gerçekleştiğinde, kümelenmiş veri noktası olaya GeoJSON Point özellik nesnesi olarak döndürülür. Bu nokta özelliği aşağıdaki özelliklere sahip olacaktır:
+Heat maps are a great way to display the density of data on the map. This visualization can handle a large number of data points on its own, but it can handle even more data if the data points are clustered and the cluster size is used as the weight of the heat map. Set the `weight` option of the heat map layer to `['get', 'point_count']` to achieve this. When the cluster radius is small, the heat map will look nearly identical to a heat map using the unclustered data points but will perform much better. However, the smaller the cluster radius, the more accurate the heat map will be but with less of a performance benefit.
 
-| Özellik adı | Type | Açıklama |
+<br/>
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="Cluster weighted Heat Map" src="//codepen.io/azuremaps/embed/VRJrgO/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+See the Pen <a href='https://codepen.io/azuremaps/pen/VRJrgO/'>Cluster weighted Heat Map</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+## <a name="mouse-events-on-clustered-data-points"></a>Mouse events on clustered data points
+
+When mouse events occur on a layer that contain clustered data points, the clustered data point will be returned to the event as a GeoJSON point feature object. This point feature will have the following properties:
+
+| Özellik adı | Tür | Açıklama |
 |---------------|------|-------------|
-| küme | boolean | Özelliğin bir kümeyi temsil ettiğini belirtir. |
-| cluster_id | dize | Küme için, veri kaynağı `getClusterExpansionZoom`, `getClusterChildren`ve `getClusterLeaves` yöntemleriyle kullanılabilecek benzersiz bir kimlik. |
-| point_count | numarası | Kümenin içerdiği noktaların sayısı. |
-| point_count_abbreviated | dize | Long ise `point_count` değeri abbreviates bir dize. (örneğin, 4.000 4K olur) |
+| cluster | boole | Indicates if feature represents a cluster. |
+| cluster_id | string | A unique ID for the cluster that can be used with the DataSource `getClusterExpansionZoom`, `getClusterChildren`, and `getClusterLeaves` methods. |
+| point_count | number | The number of points the cluster contains. |
+| point_count_abbreviated | string | A string that abbreviates the `point_count` value if it is long. (for example, 4,000 becomes 4K) |
 
-Bu örnek, küme noktalarını işleyen bir kabarcık katmanı alır ve bir sonraki yakınlaştırma düzeyi `getClusterExpansionZoom` `DataSource` içinHaritayıtetiklendiğinde,hesapladığınızdaveyakınlaştırdığındabirtıklamaolayıekler.`cluster_id` tıklanan kümelenmiş veri noktasının özelliği. 
-
-<br/>
-
-<iframe height="500" style="width: 100%;" scrolling="no" title="Küme getClusterExpansionZoom" src="//codepen.io/azuremaps/embed/moZWeV/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>Codepen</a>'da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) ile ilgili <a href='https://codepen.io/azuremaps/pen/moZWeV/'>getclusterexpansionzoom kalem kümesine</a> bakın.
-</iframe>
-
-## <a name="display-cluster-area"></a>Küme alanını görüntüle 
-
-Bir kümenin temsil ettiği nokta verileri bir alanın üzerine yayılır. Bu örnekte, fare bir kümenin üzerine geldiğinde, içerdiği tek tek veri noktaları (yaprakları) bir convex kabuk hesaplamak için kullanılır ve alanı göstermek için haritada görüntülenir. Bir kümede yer alan tüm noktaları, `getClusterLeaves` yöntemi kullanılarak veri kaynağından alınabilir. Bir convex kabuk, esnek bant gibi bir dizi noktayı sarmalayan ve `atlas.math.getConvexHull` yöntemi kullanılarak hesaplanabilecek bir çokgen.
+This example takes a bubble layer that renders cluster points and adds a click event that when triggered, calculate, and zoom the map to the next zoom level at which the cluster will break apart using the `getClusterExpansionZoom` method of the `DataSource` class and the `cluster_id` property of the clicked clustered data point. 
 
 <br/>
 
- <iframe height="500" style="width: 100%;" scrolling="no" title="Küme alanı convex kabuk" src="//codepen.io/azuremaps/embed/QoXqWJ/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>Codepen</a>üzerinde Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından <a href='https://codepen.io/azuremaps/pen/QoXqWJ/'>convex kabuk olan kalem kümesi alanı</a> ' na bakın.
+<iframe height="500" style="width: 100%;" scrolling="no" title="Cluster getClusterExpansionZoom" src="//codepen.io/azuremaps/embed/moZWeV/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+See the Pen <a href='https://codepen.io/azuremaps/pen/moZWeV/'>Cluster getClusterExpansionZoom</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="aggregating-data-in-clusters"></a>Kümelerdeki verileri toplama
+## <a name="display-cluster-area"></a>Display cluster area 
 
-Genellikle kümeler, küme içindeki noktaların sayısıyla birlikte bir sembol kullanılarak temsil edilir, ancak bazen küme içindeki tüm noktaların toplam geliri gibi bazı bir ölçüme göre kümelerin stilini daha da özelleştirmek istenebilir. Küme toplamaları ile özel özellikler, bir [toplama ifadesi](data-driven-style-expressions-web-sdk.md#aggregate-expression) hesaplaması kullanılarak oluşturulup doldurulabilir.  Küme toplamaları, `clusterProperties` `DataSource`seçeneğinde tanımlanabilir.
+The point data that a cluster represents is spread over an area. In this sample when the mouse is hovered over a cluster, the individual data points it contains (leaves) will be used to calculate a convex hull and displayed on the map to show the area. All points contained in a cluster can be retrieved from the data source using the `getClusterLeaves` method. A convex hull is a polygon that wraps a set of points like an elastic band and can be calculated using the `atlas.math.getConvexHull` method.
 
-Aşağıdaki örnek, bir kümedeki her bir veri noktasının varlık türü özelliğine dayalı olarak bir sayıyı hesaplamak için bir toplama ifadesi kullanır.
+<br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Küme toplamaları" src="//codepen.io/azuremaps/embed/jgYyRL/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>Codepen</a>'da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) ile ilgili kalem <a href='https://codepen.io/azuremaps/pen/jgYyRL/'>kümesi toplamlarını</a> inceleyin.
+ <iframe height="500" style="width: 100%;" scrolling="no" title="Cluster area convex hull" src="//codepen.io/azuremaps/embed/QoXqWJ/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+See the Pen <a href='https://codepen.io/azuremaps/pen/QoXqWJ/'>Cluster area convex hull</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+## <a name="aggregating-data-in-clusters"></a>Aggregating data in clusters
+
+Often clusters are represented using a symbol with the number of points that are within the cluster, however sometimes it is desirable to further customize the style of clusters based on some metric, like the total revenue of all points within a cluster. With cluster aggregates custom properties can be created and populated using an [aggregate expression](data-driven-style-expressions-web-sdk.md#aggregate-expression) calculation.  Cluster aggregates can be defined in `clusterProperties` option of the `DataSource`.
+
+The following sample uses an aggregate expression to calculate a count based on the entity type property of each data point in a cluster.
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="Cluster aggregates" src="//codepen.io/azuremaps/embed/jgYyRL/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+See the Pen <a href='https://codepen.io/azuremaps/pen/jgYyRL/'>Cluster aggregates</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede kullanılan sınıflar ve yöntemler hakkında daha fazla bilgi edinin:
+Learn more about the classes and methods used in this article:
 
 > [!div class="nextstepaction"]
-> [DataSource sınıfı](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest)
+> [DataSource class](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [DataSourceOptions nesnesi](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.datasourceoptions?view=azure-iot-typescript-latest)
+> [DataSourceOptions object](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.datasourceoptions?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [Atlas. Math ad alanı](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.math?view=azure-iot-typescript-latest)
+> [atlas.math namespace](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.math?view=azure-iot-typescript-latest)
 
-Uygulamanıza işlevsellik eklemek için bkz. kod örnekleri:
-
-> [!div class="nextstepaction"]
-> [Kabarcık katmanı ekleme](map-add-bubble-layer.md)
+See code examples to add functionality to your app:
 
 > [!div class="nextstepaction"]
-> [Sembol katmanı ekleme](map-add-pin.md)
+> [Add a bubble layer](map-add-bubble-layer.md)
 
 > [!div class="nextstepaction"]
-> [Isı haritası katmanı ekleme](map-add-heat-map-layer.md)
+> [Add a symbol layer](map-add-pin.md)
+
+> [!div class="nextstepaction"]
+> [Add a heat map layer](map-add-heat-map-layer.md)

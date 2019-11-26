@@ -1,143 +1,138 @@
 ---
-title: Azure Container Instances güvenlik konuları
-description: Azure Container Instances için güvenli görüntü ve gizli dizileri ve herhangi bir kapsayıcı platformu için genel güvenlik konularını korumanıza yönelik öneriler
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
+title: Security for container instances
+description: Recommendations to secure images and secrets for Azure Container Instances, and general security considerations for any container platform
 ms.topic: article
 ms.date: 04/29/2019
-ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 618d3a901698e46760d970f6d4fbc4157c5d2ea3
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: b25cb4178ba211ff819ba512c9820165e0efbbf1
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325916"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74481695"
 ---
-# <a name="security-considerations-for-azure-container-instances"></a>Azure Container Instances için güvenlik konuları
+# <a name="security-considerations-for-azure-container-instances"></a>Security considerations for Azure Container Instances
 
-Bu makalede, kapsayıcı uygulamalarını çalıştırmak için Azure Container Instances kullanmaya yönelik güvenlik konuları açıklanır. Konu başlıkları şunlardır:
+This article introduces security considerations for using Azure Container Instances to run container apps. Konu başlıkları şunlardır:
 
 > [!div class="checklist"]
-> * Azure Container Instances için görüntü ve gizli dizileri yönetmeye yönelik **güvenlik önerileri**
-> * Kapsayıcı platformu için kapsayıcı ekosisteminin her türlü kapsayıcı platformu için **dikkat edilmesi gerekenler**
+> * **Security recommendations** for managing images and secrets for Azure Container Instances
+> * **Considerations for the container ecosystem**  throughout the container lifecycle, for any container platform
 
-## <a name="security-recommendations-for-azure-container-instances"></a>Azure Container Instances için güvenlik önerileri
+## <a name="security-recommendations-for-azure-container-instances"></a>Security recommendations for Azure Container Instances
 
-### <a name="use-a-private-registry"></a>Özel kayıt defteri kullan
+### <a name="use-a-private-registry"></a>Use a private registry
 
-Kapsayıcı, bir veya daha fazla depoda depolanan görüntülerden oluşturulur. Bu depolar, [Docker Hub](https://hub.docker.com)veya özel bir kayıt defteri gibi genel bir kayıt defterine ait olabilir. Özel bir kayıt defteri örneği olarak şirket içinde veya sanal özel bulutta kullanılabilen [Docker Trusted Registry](https://docs.docker.com/datacenter/dtr/2.0/) gösterilebilir. Bulut tabanlı özel kapsayıcı kayıt defteri hizmetlerini de [Azure Container Registry](../container-registry/container-registry-intro.md)de kullanabilirsiniz. 
+Kapsayıcı, bir veya daha fazla depoda depolanan görüntülerden oluşturulur. These repositories can belong to a public registry, like [Docker Hub](https://hub.docker.com), or to a private registry. Özel bir kayıt defteri örneği olarak şirket içinde veya sanal özel bulutta kullanılabilen [Docker Trusted Registry](https://docs.docker.com/datacenter/dtr/2.0/) gösterilebilir. You can also use cloud-based private container registry services, including [Azure Container Registry](../container-registry/container-registry-intro.md). 
 
-Genel olarak kullanılabilir bir kapsayıcı görüntüsü güvenliği garanti etmez. Kapsayıcı görüntüleri birden çok yazılım katmanından oluşur ve her yazılım katmanında güvenlik açıkları olabilir. Saldırılara yönelik tehditleri azaltmaya yardımcı olmak için, Azure Container Registry veya Docker güvenilen kayıt defteri gibi özel bir kayıt defterinden görüntü depolamanız ve almanız gerekir. Azure Container Registry yönetilen özel bir kayıt defteri sağlamaya ek olarak, temel kimlik doğrulama akışları için Azure Active Directory aracılığıyla [hizmet sorumlusu tabanlı kimlik doğrulamasını](../container-registry/container-registry-authentication.md) destekler. Bu kimlik doğrulaması, salt okuma (çekme), yazma (gönderme) ve sahip izinleri için rol tabanlı erişimi içerir.
+A publicly available container image does not guarantee security. Container images consist of multiple software layers, and each software layer might have vulnerabilities. To help reduce the threat of attacks, you should store and retrieve images from a private registry, such as Azure Container Registry or Docker Trusted Registry. In addition to providing a managed private registry, Azure Container Registry supports [service principal-based authentication](../container-registry/container-registry-authentication.md) through Azure Active Directory for basic authentication flows. This authentication includes role-based access for read-only (pull), write (push), and owner permissions.
 
-### <a name="monitor-and-scan-container-images"></a>Kapsayıcı görüntülerini izleme ve tarama
+### <a name="monitor-and-scan-container-images"></a>Monitor and scan container images
 
-[Twistlock](https://azuremarketplace.microsoft.com/marketplace/apps/twistlock.twistlock?tab=Overview) ve [deniz mavisi güvenlik](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) gibi güvenlik Izleme ve tarama çözümleri Azure Marketi aracılığıyla kullanılabilir. Bunları özel bir kayıt defterinde kapsayıcı görüntülerini taramak ve olası güvenlik açıklarını belirlemek için kullanabilirsiniz. Farklı çözümlerin sağladığı tarama derinliğini anlamak önemlidir. 
+Security monitoring and scanning solutions such as [Twistlock](https://azuremarketplace.microsoft.com/marketplace/apps/twistlock.twistlock?tab=Overview) and [Aqua Security](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) are available through the Azure Marketplace. You can use them to scan container images in a private registry and identify potential vulnerabilities. It’s important to understand the depth of scanning that the different solutions provide. 
 
-### <a name="protect-credentials"></a>Kimlik bilgilerini koruma
+### <a name="protect-credentials"></a>Protect credentials
 
-Kapsayıcılar, çeşitli kümeler ve Azure bölgelerine yayılabilir. Bu nedenle, oturum açma işlemleri veya parola veya belirteçler gibi API erişimi için gereken kimlik bilgilerini güvence altına almalısınız. Yalnızca ayrıcalıklı kullanıcıların, aktarımda ve geri kalanında bu kapsayıcılara erişebildiğinden emin olun. Tüm kimlik bilgisi gizli dizileri envanterini çıkarın ve geliştiricilerin kapsayıcı platformları için tasarlanan, gelişen gizli dizi yönetim araçlarını kullanmasını gerektirir.  Çözümünüz şifreli veritabanları, aktarım sırasında gizli veriler için TLS şifreleme ve en düşük ayrıcalıklı [rol tabanlı erişim denetimi](../role-based-access-control/overview.md)içerdiğinden emin olun. [Azure Key Vault](../key-vault/key-vault-secure-your-key-vault.md) , Kapsayıcılı uygulamalar için şifreleme anahtarlarını ve gizli dizileri (sertifikalar, bağlantı dizeleri ve parolalar gibi) korumalarını sağlayan bir bulut hizmetidir. Bu veriler hassas ve iş açısından kritik olduğundan, yalnızca yetkili uygulamaların ve kullanıcıların erişebilmesi için anahtar kasalarınıza güvenli bir şekilde erişin.
+Containers can spread across several clusters and Azure regions. So, you must secure credentials required for logins or API access, such as passwords or tokens. Ensure that only privileged users can access those containers in transit and at rest. Inventory all credential secrets, and then require developers to use emerging secrets-management tools that are designed for container platforms.  Make sure that your solution includes encrypted databases, TLS encryption for secrets data in transit, and least-privilege [role-based access control](../role-based-access-control/overview.md). [Azure Key Vault](../key-vault/key-vault-secure-your-key-vault.md) is a cloud service that safeguards encryption keys and secrets (such as certificates, connection strings, and passwords) for containerized applications. Because this data is sensitive and business critical, secure access to your key vaults so that only authorized applications and users can access them.
 
-## <a name="considerations-for-the-container-ecosystem"></a>Kapsayıcı ekosistemi ile ilgili konular
+## <a name="considerations-for-the-container-ecosystem"></a>Considerations for the container ecosystem
 
-Uygun ve iyi şekilde uygulanan aşağıdaki güvenlik önlemleri, kapsayıcı ekosisteminizi güvenli hale getirmenize ve korumanıza yardımcı olabilir. Bu ölçüler, üretim dağıtımı aracılığıyla geliştirme aşamasından ve kapsayıcı yöneticileri, ana bilgisayarlar ve platformlar arasında, kapsayıcı yaşam döngüsü boyunca geçerlidir. 
+The following security measures, implemented well and managed effectively, can help you secure and protect your container ecosystem. These measures apply throughout the container lifecycle, from development through production deployment, and to a range of container orchestrators, hosts, and platforms. 
 
-### <a name="use-vulnerability-management-as-part-of-your-container-development-lifecycle"></a>Kapsayıcı geliştirme yaşam döngüsünün bir parçası olarak güvenlik açığı yönetimi 'ni kullanın 
+### <a name="use-vulnerability-management-as-part-of-your-container-development-lifecycle"></a>Use vulnerability management as part of your container development lifecycle 
 
-Kapsayıcı geliştirme yaşam döngüsü boyunca geçerli güvenlik açığı yönetimini kullanarak, daha ciddi bir sorun haline gelmeden önce, güvenlik sorunlarını belirleyip çöztireceğiniz gürültü 'yi geliştirir. 
+By using effective vulnerability management throughout the container development lifecycle, you improve the odds that you identify and resolve security concerns before they become a more serious problem. 
 
-### <a name="scan-for-vulnerabilities"></a>Güvenlik açıklarını Tara 
+### <a name="scan-for-vulnerabilities"></a>Scan for vulnerabilities 
 
-Her zaman yeni güvenlik açıkları bulunur, bu nedenle güvenlik açıklarını taramak ve tanımlamak sürekli bir işlemdir. Kapsayıcı yaşam döngüsü boyunca güvenlik açığı taramasını dahil edin:
+New vulnerabilities are discovered all the time, so scanning for and identifying vulnerabilities is a continuous process. Incorporate vulnerability scanning throughout the container lifecycle:
 
-* Geliştirme işlem hattınızda son bir denetim olarak, görüntüleri ortak veya özel bir kayıt defterine göndermeden önce kapsayıcılar üzerinde bir güvenlik açığı taraması gerçekleştirmeniz gerekir. 
-* Geliştirme sırasında bir şekilde kaçırılmış olan ve kapsayıcı görüntülerinde kullanılan kodda mevcut olabilecek yeni keşfedilen güvenlik açıklarını gidermeye yönelik tüm kusurlar belirlemek için kayıt defterindeki kapsayıcı görüntülerini taramaya devam edin.  
+* As a final check in your development pipeline, you should perform a vulnerability scan on containers before pushing the images to a public or private registry. 
+* Continue to scan container images in the registry both to identify any flaws that were somehow missed during development and to address any newly discovered vulnerabilities that might exist in the code used in the container images.  
 
-### <a name="map-image-vulnerabilities-to-running-containers"></a>Çalışan kapsayıcılarla harita görüntüsü güvenlik açıkları 
+### <a name="map-image-vulnerabilities-to-running-containers"></a>Map image vulnerabilities to running containers 
 
-Kapsayıcıları çalıştırmak için kapsayıcı görüntülerinde tanımlanan güvenlik açıklarını eşleştirmenin bir yolu olması gerekir, bu nedenle güvenlik sorunları azaltılabilir veya çözülebilir.  
+You need to have a means of mapping vulnerabilities identified in container images to running containers, so security issues can be mitigated or resolved.  
 
-### <a name="ensure-that-only-approved-images-are-used-in-your-environment"></a>Ortamınızda yalnızca onaylanan görüntülerin kullanıldığından emin olun 
+### <a name="ensure-that-only-approved-images-are-used-in-your-environment"></a>Ensure that only approved images are used in your environment 
 
-Bir kapsayıcı ekosisteminde, bilinmeyen kapsayıcılara da izin verilmeden yeterli sayıda değişiklik ve volajyer vardır. Yalnızca onaylanan kapsayıcı görüntülerine izin verin. İçin, onaylanmamış kapsayıcı görüntülerinin kullanımını izlemek ve bunları engellemek için araçlar ve süreçler vardır. 
+There’s enough change and volatility in a container ecosystem without allowing unknown containers as well. Allow only approved container images. Have tools and processes in place to monitor for and prevent the use of unapproved container images. 
 
-Saldırı yüzeyini azaltmanın etkili bir yolu ve geliştiricilerin kritik güvenlik hataları yapmasını önlemek, kapsayıcı görüntülerinin akışını geliştirme ortamınıza göre denetlemedir. Örneğin, olası saldırılara karşı yüzeyi en aza indirmek için, tercihen bir temel görüntü olarak tek bir Linux dağıtımını tasdik (Ubuntu yerine alp veya CoreOS) olarak düşünebilirsiniz. 
+An effective way of reducing the attack surface and preventing developers from making critical security mistakes is to control the flow of container images into your development environment. For example, you might sanction a single Linux distribution as a base image, preferably one that is lean (Alpine or CoreOS rather than Ubuntu), to minimize the surface for potential attacks. 
 
-Görüntü imzalama veya parmak izi, kapsayıcıların bütünlüğünü doğrulamanızı sağlayan bir gözetim zinciri sağlayabilir. Örneğin, Azure Container Registry Docker 'ın [içerik güven](https://docs.docker.com/engine/security/trust/content_trust) modelini destekler, bu da görüntü yayımcılarının bir kayıt defterine gönderilen görüntüleri imzalamasını ve görüntü tüketicilerini yalnızca imzalı görüntüleri çekmesini sağlar.
+Image signing or fingerprinting can provide a chain of custody that enables you to verify the integrity of the containers. For example, Azure Container Registry supports Docker's [content trust](https://docs.docker.com/engine/security/trust/content_trust) model, which allows image publishers to sign images that are pushed to a registry, and image consumers to pull only signed images.
 
-### <a name="permit-only-approved-registries"></a>Yalnızca onaylanan kayıt defterlerine izin ver 
+### <a name="permit-only-approved-registries"></a>Permit only approved registries 
 
-Ortamınızın yalnızca onaylanmış görüntüleri kullandığından emin olmanın bir uzantısı, yalnızca onaylanan kapsayıcı kayıt defterlerinin kullanılmasına izin versağlamaktır. Onaylanan kapsayıcı kayıt defterlerinin kullanımını zorunlu kılmak, bilinmeyen güvenlik açıklarına veya güvenlik sorunlarından sorumlu olma olasılığını sınırlayarak riske maruz kalmayı azaltır. 
+An extension of ensuring that your environment uses only approved images is to permit only the use of approved container registries. Requiring the use of approved container registries reduces your exposure to risk by limiting the potential for the introduction of unknown vulnerabilities or security issues. 
 
-### <a name="ensure-the-integrity-of-images-throughout-the-lifecycle"></a>Yaşam döngüsü boyunca görüntülerin bütünlüğünden emin olun 
+### <a name="ensure-the-integrity-of-images-throughout-the-lifecycle"></a>Ensure the integrity of images throughout the lifecycle 
 
-Kapsayıcı yaşam döngüsü boyunca güvenlik yönetiminin bir parçası, kayıt defterindeki kapsayıcı görüntülerinin bütünlüğünden ve bunlar tarafından değiştirildikleri veya üretimde dağıtıldığı şekilde sağlamaktır. 
+Part of managing security throughout the container lifecycle is to ensure the integrity of the container images in the registry and as they are altered or deployed into production. 
 
-* Küçük ve güvenlik açıklarına sahip görüntülerin bir üretim ortamında çalıştırılmasına izin verilmemelidir. İdeal olarak, üretimde dağıtılan tüm görüntülerin, bir seçimi birkaç kez erişilebilen özel bir kayıt defterine kaydedilmesi gerekir. Etkili bir şekilde yönetilebilmeleri için üretim görüntülerinin sayısını küçük tutun.
+* Images with vulnerabilities, even minor, should not be allowed to run in a production environment. Ideally, all images deployed in production should be saved in a private registry accessible to a select few. Keep the number of production images small to ensure that they can be managed effectively.
 
-* Genel kullanıma açık bir kapsayıcı görüntüsünden yazılımın kaynağını belirlemek zor olduğundan, katmanın kaynağı bilgisini sağlamak için kaynaktan görüntü oluşturun. Kendi oluşturdukları bir kapsayıcı görüntüsünde bir güvenlik açığı olduğunda müşteriler çözüme daha hızlı ulaşabilir. Ortak bir görüntüyle, müşterilerin bu görüntüyü onarmak için ortak bir görüntünün kökünü bulması veya yayımcıdan başka bir güvenli görüntü alması gerekir. 
+* Because it’s hard to pinpoint the origin of software from a publicly available container image, build images from the source to ensure knowledge of the origin of the layer. Kendi oluşturdukları bir kapsayıcı görüntüsünde bir güvenlik açığı olduğunda müşteriler çözüme daha hızlı ulaşabilir. With a public image, customers would need to find the root of a public image to fix it or get another secure image from the publisher. 
 
-* Üretimde dağıtılan ve tamamen taranan bir görüntünün, uygulamanın kullanım ömrü için güncel olması garanti edilmez. Görüntünün önceden bilinmeyen veya üretim dağıtımından sonra sunulan katmanlarında güvenlik açıkları bildirilebilir. 
+* A thoroughly scanned image deployed in production is not guaranteed to be up-to-date for the lifetime of the application. Görüntünün önceden bilinmeyen veya üretim dağıtımından sonra sunulan katmanlarında güvenlik açıkları bildirilebilir. 
 
-  Güncel olmayan veya bir süredir güncelleştirilmemiş resimleri belirlemek için üretimde dağıtılan görüntüleri düzenli olarak denetleyin. Kapalı kalma süresi olmadan kapsayıcı görüntülerini güncelleştirmek için mavi yeşil dağıtım yöntemleri ve sıralı yükseltme mekanizmaları kullanabilirsiniz. Önceki bölümde açıklanan araçları kullanarak görüntüleri tarayabilirsiniz. 
+  Periodically audit images deployed in production to identify images that are out of date or have not been updated in a while. You might use blue-green deployment methodologies and rolling upgrade mechanisms to update container images without downtime. You can scan images by using tools described in the preceding section. 
 
-* Güvenli görüntüler oluşturmak ve bunları özel kayıt defterinize göndermek için tümleşik güvenlik taramasıyla sürekli tümleştirme (CI) işlem hattı kullanın. CI çözümüne yerleşik güvenlik açığı taraması, tüm sınamaları geçen görüntülerin üretim iş yüklerinin dağıtıldığı özel kayıt defterine gönderilmesini sağlar. 
+* Use a continuous integration (CI) pipeline with integrated security scanning to build secure images and push them to your private registry. CI çözümüne yerleşik güvenlik açığı taraması, tüm sınamaları geçen görüntülerin üretim iş yüklerinin dağıtıldığı özel kayıt defterine gönderilmesini sağlar. 
 
-  CI ardışık düzen hatası, güvenlik açığı bulunan görüntülerin üretim iş yükü dağıtımları için kullanılan özel kayıt defterine itilmemesini sağlar. Ayrıca, önemli sayıda görüntü varsa görüntü güvenliği taramasını otomatikleştirir. Aksi durumda, görüntüleri güvenlik açıkları için el ile denetlemek çok zor olabileceği gibi hata riskini de artırır. 
+  A CI pipeline failure ensures that vulnerable images are not pushed to the private registry that’s used for production workload deployments. It also automates image security scanning if there’s a significant number of images. Aksi durumda, görüntüleri güvenlik açıkları için el ile denetlemek çok zor olabileceği gibi hata riskini de artırır. 
 
-### <a name="enforce-least-privileges-in-runtime"></a>Çalışma zamanında en az ayrıcalıkları zorla 
+### <a name="enforce-least-privileges-in-runtime"></a>Enforce least privileges in runtime 
 
-En az ayrıcalık kavramı, kapsayıcılar için de geçerli olan temel bir en iyi güvenlik uygulamasıdır. Bir güvenlik açığından yararlandığında, genellikle güvenliği aşılan uygulama veya işlemden birine eşit olan saldırgan erişimi ve ayrıcalıkları verir. Kapsayıcının, işin tamamlanması için gereken en düşük ayrıcalıklarla ve erişimlerle çalışmasını sağlamak, riske maruz kalmayı azaltır. 
+The concept of least privileges is a basic security best practice that also applies to containers. When a vulnerability is exploited, it generally gives the attacker access and privileges equal to those of the compromised application or process. Ensuring that containers operate with the lowest privileges and access required to get the job done reduces your exposure to risk. 
 
-### <a name="reduce-the-container-attack-surface-by-removing-unneeded-privileges"></a>Gereksiz ayrıcalıkları kaldırarak kapsayıcı saldırısı yüzeyini azaltma 
+### <a name="reduce-the-container-attack-surface-by-removing-unneeded-privileges"></a>Reduce the container attack surface by removing unneeded privileges 
 
-Ayrıca, kapsayıcı çalışma zamanından kullanılmayan veya gereksiz süreçler veya ayrıcalıklar kaldırarak olası saldırı yüzeyini en aza indirebilirsiniz. Ayrıcalıklı kapsayıcılar kök olarak çalışır. Kötü amaçlı bir kullanıcı veya iş yükü ayrıcalıklı bir kapsayıcıda çıkar, kapsayıcı o sistemde kök olarak çalıştırılır.
+You can also minimize the potential attack surface by removing any unused or unnecessary processes or privileges from the container runtime. Privileged containers run as root. If a malicious user or workload escapes in a privileged container, the container will then run as root on that system.
 
-### <a name="whitelist-files-and-executables-that-the-container-is-allowed-to-access-or-run"></a>Kapsayıcının erişimine veya çalıştırmasına izin verilen dosya ve yürütülebilir dosyaları beyaz listeye ekleme 
+### <a name="whitelist-files-and-executables-that-the-container-is-allowed-to-access-or-run"></a>Whitelist files and executables that the container is allowed to access or run 
 
-Değişken sayısının azaltılması veya bilinmeyenler, kararlı ve güvenilir bir ortamı korumanıza yardımcı olur. Kapsayıcıları yalnızca önceden onaylanmış veya beyaz listelenmiş dosyalara erişebilmeleri veya çalıştırmasına izin verecek şekilde sınırlandırma, risk düzeyini sınırlayan kanıtlanmış bir yöntemdir.  
+Reducing the number of variables or unknowns helps you maintain a stable, reliable environment. Limiting containers so they can access or run only preapproved or whitelisted files and executables is a proven method of limiting exposure to risk.  
 
-Başlangıçtan itibaren bir beyaz listeyi yönetmek çok daha kolay. Beyaz liste, uygulamanın düzgün çalışması için hangi dosya ve yürütülebilir dosyaların gerekli olduğunu öğrenecek şekilde denetim ve yönetilebilirlik ölçümü sağlar. 
+It’s a lot easier to manage a whitelist when it’s implemented from the beginning. A whitelist provides a measure of control and manageability as you learn what files and executables are required for the application to function correctly. 
 
-Beyaz liste yalnızca saldırı yüzeyini azaltmaz, ancak aynı zamanda anomali için bir taban çizgisi sağlayabilir ve "gürültülü komşu" ve kapsayıcı ayırıcı senaryolarının kullanım örneklerinin oluşmasını önler. 
+A whitelist not only reduces the attack surface but can also provide a baseline for anomalies and prevent the use cases of the "noisy neighbor" and container breakout scenarios. 
 
-### <a name="enforce-network-segmentation-on-running-containers"></a>Çalışan kapsayıcılar üzerinde ağ segmentlemesini zorla  
+### <a name="enforce-network-segmentation-on-running-containers"></a>Enforce network segmentation on running containers  
 
-Bir alt ağdaki kapsayıcıları başka bir alt ağdaki güvenlik risklerine karşı korumaya yardımcı olmak için ağ kesimlemesini (veya nano kesimlemeye) veya çalışan kapsayıcılar arasında ayırmayı koruyun. Ağ segmentlemesini sürdürmek, Ayrıca, uyumluluk mantarihlerini karşılamak için gereken sektörlerdeki kapsayıcıları kullanmak için de gerekli olabilir.  
+To help protect containers in one subnet from security risks in another subnet, maintain network segmentation (or nano-segmentation) or segregation between running containers. Maintaining network segmentation may also be necessary for using containers in industries that are required to meet compliance mandates.  
 
-Örneğin, partner aracı [deniz mavisi](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) , nano kesimlemeye yönelik otomatik bir yaklaşım sağlar. Deniz mavisi, çalışma zamanında kapsayıcı ağ etkinliklerini izler. Diğer kapsayıcılardan, hizmetlerden, IP adreslerinden ve genel İnternet 'e giden tüm gelen ve giden ağ bağlantılarını tanımlar. Nano-segmentleme, izlenen trafiğe göre otomatik olarak oluşturulur. 
+For example, the partner tool [Aqua](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) provides an automated approach for nano-segmentation. Aqua monitors container network activities in runtime. It identifies all inbound and outbound network connections to/from other containers, services, IP addresses, and the public internet. Nano-segmentation is automatically created based on monitored traffic. 
 
-### <a name="monitor-container-activity-and-user-access"></a>Kapsayıcı etkinliğini ve Kullanıcı erişimini izleme 
+### <a name="monitor-container-activity-and-user-access"></a>Monitor container activity and user access 
 
-Her türlü BT ortamında olduğu gibi, tüm şüpheli veya kötü amaçlı etkinlikleri hızlı bir şekilde belirlemek için, kapsayıcı ekosisteminize düzenli olarak etkinlik ve Kullanıcı erişimi izlemeniz gerekir. Azure, aşağıdakiler dahil olmak üzere kapsayıcı izleme çözümleri sağlar:
+As with any IT environment, you should consistently monitor activity and user access to your container ecosystem to quickly identify any suspicious or malicious activity. Azure provides container monitoring solutions including:
 
-* Azure Kubernetes Service (AKS) üzerinde barındırılan Kubernetes ortamlarına dağıtılan iş yüklerinizin performansını izlemek için [kapsayıcılar Için Azure izleyici](../azure-monitor/insights/container-insights-overview.md) . Kapsayıcılar için Azure İzleyici denetleyicileri, düğümleri ve Kubernetes ölçümler API aracılığıyla kullanılabilir olan kapsayıcıları bellekten toplanması ve işlemci ölçümleri performans görünürlük sağlar. 
+* [Azure Monitor for containers](../azure-monitor/insights/container-insights-overview.md) to monitor the performance of your workloads deployed to Kubernetes environments hosted on Azure Kubernetes Service (AKS). Azure Monitor for containers gives you performance visibility by collecting memory and processor metrics from controllers, nodes, and containers that are available in Kubernetes through the Metrics API. 
 
-* [Azure Kapsayıcı izleme çözümü](../azure-monitor/insights/containers.md) , diğer Docker ve Windows kapsayıcı konaklarının tek bir konumda görüntülemenize ve yönetilmesine yardımcı olur. Örneğin:
+* The [Azure Container Monitoring solution](../azure-monitor/insights/containers.md) helps you view and manage other Docker and Windows container hosts in a single location. Örnek:
 
-  * Kapsayıcılarla kullanılan komutları gösteren ayrıntılı denetim bilgilerini görüntüleyin. 
-  * Docker veya Windows konaklarını uzaktan görüntülemek zorunda kalmadan merkezi günlükleri görüntüleyip arayarak kapsayıcılarla ilgili sorunları giderin.  
-  * Gürültülü olabilecek ve bir konakta fazla kaynak tüketen kapsayıcılar bulun.
-  * Kapsayıcılar için merkezi CPU, bellek, depolama ve ağ kullanımını ve performans bilgilerini görüntüleyin.  
+  * View detailed audit information that shows commands used with containers. 
+  * Troubleshoot containers by viewing and searching centralized logs without having to remotely view Docker or Windows hosts.  
+  * Find containers that may be noisy and consuming excess resources on a host.
+  * View centralized CPU, memory, storage, and network usage and performance information for containers.  
 
-  Çözüm, Docker Sısınma, DC/OS, yönetilmeyen Kubernetes, Service Fabric ve Red Hat OpenShift gibi kapsayıcı düzenleyicilerinin kullanılmasını destekler. 
+  The solution supports container orchestrators including Docker Swarm, DC/OS, unmanaged Kubernetes, Service Fabric, and Red Hat OpenShift. 
 
-### <a name="monitor-container-resource-activity"></a>Kapsayıcı kaynak etkinliğini izleme 
+### <a name="monitor-container-resource-activity"></a>Monitor container resource activity 
 
-Dosyalar, ağ ve kapsayıcılarınızın erişebileceği diğer kaynaklar gibi kaynak etkinliğinizi izleyin. İzleme kaynak etkinliği ve tüketimi, hem performans izleme hem de güvenlik önlemi olarak faydalıdır. 
+Monitor your resource activity, like files, network, and other resources that your containers access. Monitoring resource activity and consumption is useful both for performance monitoring and as a security measure. 
 
-[Azure izleyici](../azure-monitor/overview.md) , ölçümler, etkinlik günlükleri ve tanılama günlükleri koleksiyonuna Izin vererek Azure hizmetleri için çekirdek izlemeye olanak tanır. Örneğin, etkinlik günlüğü size yeni kaynakların ne zaman oluşturulduğunu veya değiştirildiğini bildirir. 
+[Azure Monitor](../azure-monitor/overview.md) enables core monitoring for Azure services by allowing the collection of metrics, activity logs, and diagnostic logs. Örneğin, etkinlik günlüğü size yeni kaynakların ne zaman oluşturulduğunu veya değiştirildiğini bildirir. 
 
-Farklı kaynaklar için ve hatta bir sanal makinenin içindeki işletim sistemi için bile performans istatistikleri sağlayan ölçümler kullanılabilir. Azure portalında gezginlerden biriyle bu verileri görüntüleyebilir ve bu ölçümlere dayalı uyarılar oluşturabilirsiniz. Azure Izleyici en hızlı ölçüm işlem hattını (5 dakika ila 1 dakika) sağlar; bu nedenle, zaman açısından kritik uyarılar ve bildirimler için onu kullanmanız gerekir. 
+Farklı kaynaklar için ve hatta bir sanal makinenin içindeki işletim sistemi için bile performans istatistikleri sağlayan ölçümler kullanılabilir. Azure portalında gezginlerden biriyle bu verileri görüntüleyebilir ve bu ölçümlere dayalı uyarılar oluşturabilirsiniz. Azure Monitor provides the fastest metrics pipeline (5 minutes down to 1 minute), so you should use it for time-critical alerts and notifications. 
 
-### <a name="log-all-container-administrative-user-access-for-auditing"></a>Denetim için tüm kapsayıcı Yönetici Kullanıcı erişimini günlüğe kaydet 
+### <a name="log-all-container-administrative-user-access-for-auditing"></a>Log all container administrative user access for auditing 
 
-Kapsayıcı ekosisteminize, kapsayıcı kayıt defterine ve kapsayıcı görüntülerine yönetim erişiminin doğru bir denetim izini saklayın. Bu Günlükler, denetim amaçlarıyla gerekli olabilir ve herhangi bir güvenlik olayından sonra Forli kanıt olarak yararlı olacaktır. Bu amaçla elde etmek için [Azure Kapsayıcı izleme çözümünü](../azure-monitor/insights/containers.md) kullanabilirsiniz. 
+Maintain an accurate audit trail of administrative access to your container ecosystem, container registry, and container images. These logs might be necessary for auditing purposes and will be useful as forensic evidence after any security incident. You can use the [Azure Container Monitoring solution](../azure-monitor/insights/containers.md) to achieve this purpose. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Twistlock](https://www.twistlock.com/solutions/microsoft-azure-container-security/) ve [deniz mavisi güvenlik](https://www.aquasec.com/solutions/azure-container-security/)çözümleriyle kapsayıcı güvenlik açıklarını yönetme hakkında daha fazla bilgi edinin.
+* Learn more about managing container vulnerabilities with solutions from [Twistlock](https://www.twistlock.com/solutions/microsoft-azure-container-security/) and [Aqua Security](https://www.aquasec.com/solutions/azure-container-security/).
 
-* [Azure 'da kapsayıcı güvenliği](https://azure.microsoft.com/resources/container-security-in-microsoft-azure/)hakkında daha fazla bilgi edinin.
+* Learn more about [container security in Azure](https://azure.microsoft.com/resources/container-security-in-microsoft-azure/).

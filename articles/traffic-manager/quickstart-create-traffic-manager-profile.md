@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: uygulamalar için bir profil oluşturma-Azure portal-Azure Traffic Manager'
+title: Quickstart:Create a profile for HA of applications - Azure portal - Azure Traffic Manager
 description: Bu hızlı başlangıç makalesinde yüksek oranda kullanılabilir web uygulaması oluşturmak için bir Traffic Manager profili oluşturma adımlarını anlatılmaktadır.
 services: traffic-manager
 author: asudbring
@@ -12,138 +12,138 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: allensu
-ms.openlocfilehash: b6a015c7462f082d5114a51d83cfacb0c550b026
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: b2163b76dc3a301359cf3474789c5b473f9e4552
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74032707"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483663"
 ---
-# <a name="quickstart-create-a-traffic-manager-profile-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak Traffic Manager profili oluşturma
+# <a name="quickstart-create-a-traffic-manager-profile-using-the-azure-portal"></a>Quickstart: Create a Traffic Manager profile using the Azure portal
 
-Bu hızlı başlangıçta, Web uygulamanız için yüksek kullanılabilirlik sunan bir Traffic Manager profilinin nasıl oluşturulacağı açıklanmaktadır.
+This quickstart describes how to create a Traffic Manager profile that delivers high availability for your web application.
 
-Bu hızlı başlangıçta, bir Web uygulamasının iki örneği hakkında bilgi edineceksiniz. Bunların her biri farklı bir Azure bölgesinde çalışmaktadır. [Uç nokta önceliğine](traffic-manager-routing-methods.md#priority)göre bir Traffic Manager profili oluşturacaksınız. Profil, Kullanıcı trafiğini Web uygulamasını çalıştıran birincil siteye yönlendirir. Traffic Manager Web uygulamasını sürekli izler. Birincil site kullanılamıyorsa, yedekleme sitesine otomatik yük devretme sağlar.
+In this quickstart, you'll read about two instances of a web application. Each of them is running in a different Azure region. You'll create a Traffic Manager profile based on [endpoint priority](traffic-manager-routing-methods.md#priority-traffic-routing-method). The profile directs user traffic to the primary site running the web application. Traffic Manager continuously monitors the web application. If the primary site is unavailable, it provides automatic failover to the backup site.
 
 Azure aboneliğiniz yoksa şimdi [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+## <a name="sign-in-to-azure"></a>Azure'da oturum açın
 
-[Azure portalında](https://portal.azure.com) oturum açın.
+[Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu hızlı başlangıçta iki farklı Azure bölgesinde (*Doğu ABD* ve *Batı Avrupa*) dağıtılan bir Web uygulamasının iki örneğine ihtiyacınız olacaktır. Her biri, Traffic Manager için birincil ve yük devretme uç noktaları olarak görev yapar.
+For this quickstart, you'll need two instances of a web application deployed in two different Azure regions (*East US* and *West Europe*). Each will serve as primary and failover endpoints for Traffic Manager.
 
-1. Ekranın sol üst kısmında **web** > **Web uygulaması** > **kaynak oluştur** ' u seçin.
+1. On the upper-left side of the screen, select **Create a resource** > **Web** > **Web App**.
 
-1. **Web uygulaması oluştur**' da, **temel bilgiler** sekmesinde aşağıdaki değerleri yazın veya seçin:
+1. In **Create a Web App**, type or select the following values in the **Basics** tab:
 
-   - **Abonelik** > **kaynak grubu**: **Yeni oluştur** ' u seçin ve **myResourceGroupTM1**yazın.
-   - **Örnek ayrıntıları** > **adı**: tür *myWebAppEastUS*.
-   - **Örnek ayrıntıları** **Yayımla** > : **kodu**seçin.
-   - **Örnek ayrıntıları** > **çalışma zamanı yığını**: **ASP.net v 4.7** seçin
-   - **Örnek ayrıntıları** > **Işletim sistemi**: **Windows**' u seçin.
-   - **Örnek ayrıntıları** > **bölgesi**: **Doğu ABD**seçin.
-   - **App Service plan** > **Windows planı (Doğu ABD)** : **Yeni oluştur** ' u seçin ve ardından **myAppServicePlanEastUS** yazın.
-   - **App Service Plan** > **SKU ve boyut**: **Standart S1**' i seçin.
+   - **Subscription** > **Resource Group**: Select **Create new** and then type **myResourceGroupTM1**.
+   - **Instance Details** > **Name**: Type *myWebAppEastUS*.
+   - **Instance Details** > **Publish**: Select **Code**.
+   - **Instance Details** > **Runtime stack**: Select **ASP.NET V4.7**
+   - **Instance Details** > **Operating System**: Select **Windows**.
+   - **Instance Details** > **Region**:  Select **East US**.
+   - **App Service Plan** > **Windows Plan (East US)** : Select **Create new** and then type **myAppServicePlanEastUS**
+   - **App Service Plan** > **Sku and size**: Select **Standard S1**.
    
-3. **İzleme** sekmesini seçin veya **İleri: izleme**' yi seçin.  **İzleme**altında, **Application Insights** > **Application Insights** **Hayır**olarak ayarlayın.
+3. Select the **Monitoring** tab, or select **Next:Monitoring**.  Under **Monitoring**, set **Application Insights** > **Enable Application Insights** to **No**.
 
-4. **Gözden geçir ve oluştur** seçeneğini belirleyin
+4. Select **Review and create**
 
-5. Ayarları gözden geçirin ve ardından **Oluştur**' a tıklayın.  Web uygulaması başarılı bir şekilde dağıttığında, varsayılan bir Web sitesi oluşturur.
+5. Review the settings, and then click **Create**.  When the Web App successfully deploys, it creates a default web site.
 
-6. *MyWebAppWestEurope*adlı Ikinci bir Web uygulaması oluşturmak için adımları Izleyin. **kaynak grubu** adı *myResourceGroupTM2*, bir **bölge** *Batı Avrupa*, **myAppServicePlanWestEurope** **App Service planı** adı ve diğer tüm ayarlar *myWebAppEastUS*ile aynı.
+6. Follow the steps to create a second Web App named *myWebAppWestEurope*, with a **Resource Group** name of *myResourceGroupTM2*, a **Region** of *West Europe*, a **App Service Plan** name of **myAppServicePlanWestEurope**, and all the other settings the same as *myWebAppEastUS*.
 
 ## <a name="create-a-traffic-manager-profile"></a>Traffic Manager profili oluşturma
 
-Uç nokta önceliğine göre Kullanıcı trafiğini yönlendiren bir Traffic Manager profili oluşturun.
+Create a Traffic Manager profile that directs user traffic based on endpoint priority.
 
-1. Ekranın sol üst kısmında, **kaynak oluştur** > **ağ** > **Traffic Manager profil**' i seçin.
-2. **Oluşturma Traffic Manager profilinde**, bu ayarları girin veya seçin:
+1. On the upper-left side of the screen, select **Create a resource** > **Networking** > **Traffic Manager profile**.
+2. In the **Create Traffic Manager profile**, enter, or select these settings:
 
     | Ayar | Değer |
     | --------| ----- |
-    | Ad | Traffic Manager profiliniz için benzersiz bir ad girin.|
-    | Yönlendirme yöntemi | **Öncelik**' i seçin.|
-    | Abonelik | Traffic Manager profilinin uygulanmasını istediğiniz aboneliği seçin. |
-    | Kaynak grubu | *MyResourceGroupTM1*öğesini seçin.|
-    | Konum |Bu ayar, kaynak grubunun konumunu ifade eder. Genel olarak dağıtılacak Traffic Manager profili üzerinde hiçbir etkisi yoktur.|
+    | Adı | Enter a unique name for your Traffic Manager profile.|
+    | Yönlendirme yöntemi | Select **Priority**.|
+    | Abonelik | Select the subscription you want the traffic manager profile applied to. |
+    | Kaynak grubu | Select *myResourceGroupTM1*.|
+    | Konum |This setting refers to the location of the resource group. It has no effect on the Traffic Manager profile that will be deployed globally.|
 
 3. **Oluştur**'u seçin.
 
 ## <a name="add-traffic-manager-endpoints"></a>Traffic Manager uç noktalarını ekleme
 
-Tüm kullanıcı trafiğini yönlendirmek için birincil uç nokta olarak *Doğu ABD* bölgesindeki web sitesini ekleyin. *Batı Avrupa* Web sitesini yük devretme uç noktası olarak ekleyin. Birincil uç nokta kullanılamadığında, trafik otomatik olarak yük devretme uç noktasına yönlendirir.
+Tüm kullanıcı trafiğini yönlendirmek için birincil uç nokta olarak *Doğu ABD* bölgesindeki web sitesini ekleyin. Add the website in *West Europe* as a failover endpoint. When the primary endpoint is unavailable, traffic automatically routes to the failover endpoint.
 
-1. Portalın arama çubuğunda, önceki bölümde oluşturduğunuz Traffic Manager profili adını girin.
-2. Arama sonuçlarından profili seçin.
-3. **Traffic Manager profili**' nde, **Ayarlar** bölümünde **uç noktalar**' ı seçin ve ardından **Ekle**' yi seçin.
-4. Bu ayarları girin veya seçin:
+1. In the portal's search bar, enter the Traffic Manager profile name that you created in the preceding section.
+2. Select the profile from the search results.
+3. In **Traffic Manager profile**, in the **Settings** section, select **Endpoints**, and then select **Add**.
+4. Enter, or select, these settings:
 
     | Ayar | Değer |
     | ------- | ------|
-    | Tür | **Azure uç noktası**' nı seçin. |
-    | Ad | *Myprimaryendpoint*girin. |
-    | Hedef kaynak türü | **App Service**seçin. |
-    | Hedef kaynak |  > **bir App Service** seçin **Doğu ABD**seçin. |
-    | Öncelik | **1**'i seçin. Tüm trafik sağlıklı olduğunda bu uç noktaya gider. |
+    | Tür | Select **Azure endpoint**. |
+    | Adı | Enter *myPrimaryEndpoint*. |
+    | Hedef kaynak türü | Select **App Service**. |
+    | Hedef kaynak | Select **Choose an app service** > **East US**. |
+    | Öncelik | **1**'i seçin. All traffic goes to this endpoint when it's healthy. |
 
-    ![Traffic Manager profilinize bir uç nokta eklediğiniz ekran görüntüsü.](./media/quickstart-create-traffic-manager-profile/add-traffic-manager-endpoint.png)
+    ![Screenshot of where you add an endpoint to your Traffic Manager profile.](./media/quickstart-create-traffic-manager-profile/add-traffic-manager-endpoint.png)
 
 5. **Tamam**’ı seçin.
-6. İkinci Azure bölgenize yönelik bir yük devretme uç noktası oluşturmak için bu ayarlarla 3 ve 4 numaralı adımları yineleyin:
+6. To create a failover endpoint for your second Azure region, repeat steps 3 and 4 with these settings:
 
     | Ayar | Değer |
     | ------- | ------|
-    | Tür | **Azure uç noktası**' nı seçin. |
-    | Ad | *Myfailoverendpoint*girin. |
-    | Hedef kaynak türü | **App Service**seçin. |
-    | Hedef kaynak |  > **bir App Service** seçin **Batı Avrupa**seçin. |
-    | Öncelik | **2**öğesini seçin. Birincil uç nokta sağlıksız ise tüm trafik bu yük devretme uç noktasına gider. |
+    | Tür | Select **Azure endpoint**. |
+    | Adı | Enter *myFailoverEndpoint*. |
+    | Hedef kaynak türü | Select **App Service**. |
+    | Hedef kaynak | Select **Choose an app service** > **West Europe**. |
+    | Öncelik | Select **2**. All traffic goes to this failover endpoint if the primary endpoint is unhealthy. |
 
 7. **Tamam**’ı seçin.
 
-İki uç nokta eklemeyi tamamladığınızda, bunlar **Traffic Manager profilinde**görüntülenirler. İzleme durumlarının şimdi **çevrimiçi** olduğuna dikkat edin.
+When you're done adding the two endpoints, they're displayed in **Traffic Manager profile**. Notice that their monitoring status is **Online** now.
 
 ## <a name="test-traffic-manager-profile"></a>Traffic Manager profilini test etme
 
-Bu bölümde, Traffic Manager profilinizin etki alanı adını kontrol edeceksiniz. Ayrıca birincil uç noktayı kullanılamaz olarak yapılandıracaksınız. Son olarak, Web uygulamasının hala kullanılabilir olduğunu görmeniz gerekir. Bunun nedeni, trafiği yük devretme uç noktasına gönderiyor Traffic Manager.
+In this section, you'll check the domain name of your Traffic Manager profile. You'll also configure the primary endpoint to be unavailable. Finally, you get to see that the web app is still available. It's because Traffic Manager sends the traffic to the failover endpoint.
 
-### <a name="check-the-dns-name"></a>DNS adını denetleyin
+### <a name="check-the-dns-name"></a>Check the DNS name
 
 1. Portalın arama çubuğunda önceki bölümde oluşturduğunuz **Traffic Manager profili** adını arayın.
-2. Traffic Manager profilini seçin. **Genel bakış** görüntülenir.
+2. Select the traffic manager profile. The **Overview** appears.
 3. **Traffic Manager profili** penceresinde yeni oluşturduğunuz Traffic Manager profilinin DNS adı görüntülenir.
   
-   ![Traffic Manager DNS adınızın konumunun ekran görüntüsü](./media/quickstart-create-traffic-manager-profile/traffic-manager-dns-name.png)
+   ![Screenshot of the location of your Traffic Manager DNS name](./media/quickstart-create-traffic-manager-profile/traffic-manager-dns-name.png)
 
 ### <a name="view-traffic-manager-in-action"></a>Traffic Manager'ın nasıl çalıştığını görün
 
-1. Web tarayıcısında, Web uygulamanızın varsayılan Web sitesini görüntülemek için Traffic Manager profilinizin DNS adını girin.
+1. In a web browser, enter the DNS name of your Traffic Manager profile to view your Web App's default website.
 
     > [!NOTE]
-    > Bu hızlı başlangıç senaryosunda, tüm istekler birincil uç noktaya yönlendirir. **Öncelik 1**olarak ayarlanır.
+    > In this quickstart scenario, all requests route to the primary endpoint. It is set to **Priority 1**.
 
-    ![Traffic Manager profilinin kullanılabilirliğini onaylamak için Web sayfasının ekran görüntüsü](./media/quickstart-create-traffic-manager-profile/traffic-manager-test.png)
+    ![Screenshot of the webpage to confirm availability of Traffic Manager profile](./media/quickstart-create-traffic-manager-profile/traffic-manager-test.png)
 
-2. Traffic Manager yük devretmeyi görüntülemek için birincil sitenizi devre dışı bırakın:
-    1. Traffic Manager profili sayfasında, **genel bakış** bölümünden **Myprimaryendpoint**' i seçin.
-    2. *Myprimaryendpoint*Içinde, **devre dışı** > **Kaydet**' i seçin.
-    3. **Myprimaryendpoint**öğesini kapatın. Durumun şimdi **devre dışı bırakıldığını** unutmayın.
-3. Web sitesini yeni bir Web tarayıcısı oturumunda görüntülemek için, önceki adımda Traffic Manager profilinizin DNS adını kopyalayın.
-4. Web uygulamasının hala kullanılabilir olduğunu doğrulayın.
+2. To view Traffic Manager failover in action, disable your primary site:
+    1. In the Traffic Manager Profile page, from the **Overview** section, select **myPrimaryEndpoint**.
+    2. In *myPrimaryEndpoint*, select **Disabled** > **Save**.
+    3. Close **myPrimaryEndpoint**. Notice that the status is **Disabled** now.
+3. Copy the DNS name of your Traffic Manager Profile from the preceding step to view the website in a new web browser session.
+4. Verify that the web app is still available.
 
-Birincil uç nokta kullanılamıyor, bu nedenle yük devretme uç noktasına yönlendirilmiştiniz.
+The primary endpoint isn't available, so you were routed to the failover endpoint.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-İşiniz bittiğinde, kaynak gruplarını, Web uygulamalarını ve tüm ilgili kaynakları silin. Bunu yapmak için, panonuzdaki her bir öğeyi seçin ve her sayfanın üst kısmında **Sil** ' i seçin.
+When you're done, delete the resource groups, web applications, and all related resources. To do so, select each individual item from your dashboard and select **Delete** at the top of each page.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta bir Traffic Manager profili oluşturdunuz. Yüksek kullanılabilirliğe sahip Web uygulamaları için Kullanıcı trafiğini yönlendirme olanağı sağlar. Yönlendirme trafiği hakkında daha fazla bilgi edinmek için Traffic Manager öğreticilerine geçin.
+In this quickstart, you created a Traffic Manager profile. It allows you to direct user traffic for high-availability web applications. To learn more about routing traffic, continue to the Traffic Manager tutorials.
 
 > [!div class="nextstepaction"]
 > [Traffic Manager öğreticileri](tutorial-traffic-manager-improve-website-response.md)

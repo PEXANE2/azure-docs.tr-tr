@@ -1,39 +1,34 @@
 ---
-title: Azure Container Instances içinde çalışan kapsayıcılarda komutları yürütme
-description: Azure Container Instances ' de çalışmakta olan bir kapsayıcıda bir komutu nasıl yürütebileceğinizi öğrenin
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
+title: Execute commands in running container instance
+description: Learn how execute a command in a container that's currently running in Azure Container Instances
 ms.topic: article
 ms.date: 03/30/2018
-ms.author: danlep
-ms.openlocfilehash: a8583cf605891631a2bce6914b24525aebd59ea0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 10d0ea0c2dfa60aad64d0ae11532aff24a7ce773
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68325991"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74481572"
 ---
-# <a name="execute-a-command-in-a-running-azure-container-instance"></a>Çalışan bir Azure Container Instance 'da bir komut yürütün
+# <a name="execute-a-command-in-a-running-azure-container-instance"></a>Execute a command in a running Azure container instance
 
-Azure Container Instances, çalışan bir kapsayıcıda bir komutun yürütülmesini destekler. Zaten başlattığınız kapsayıcıda bir komutun çalıştırılması, özellikle uygulama geliştirme ve sorun giderme işlemleri sırasında yararlıdır. Bu özelliğin en yaygın kullanımı, çalışan bir kapsayıcıdaki sorunları ayıklayabilmeniz için etkileşimli bir kabuk başlatma.
+Azure Container Instances supports executing a command in a running container. Running a command in a container you've already started is especially helpful during application development and troubleshooting. The most common use of this feature is to launch an interactive shell so that you can debug issues in a running container.
 
-## <a name="run-a-command-with-azure-cli"></a>Azure CLı ile bir komut çalıştırma
+## <a name="run-a-command-with-azure-cli"></a>Run a command with Azure CLI
 
-[Azure CLI][azure-cli]'de [az Container exec][az-container-exec] ile çalışan bir kapsayıcıda bir komut yürütün:
+Execute a command in a running container with [az container exec][az-container-exec] in the [Azure CLI][azure-cli]:
 
 ```azurecli
 az container exec --resource-group <group-name> --name <container-group-name> --exec-command "<command>"
 ```
 
-Örneğin, bir NGINX kapsayıcısında bash kabuğu başlatmak için:
+For example, to launch a Bash shell in an Nginx container:
 
 ```azurecli
 az container exec --resource-group myResourceGroup --name mynginx --exec-command "/bin/bash"
 ```
 
-Aşağıdaki örnek çıktıda, bash kabuğu çalışan bir Linux kapsayıcısında başlatılır ve içinde `ls` yürütülen bir Terminal sağlanır:
+In the example output below, the Bash shell is launched in a running Linux container, providing a terminal in which `ls` is executed:
 
 ```console
 $ az container exec --resource-group myResourceGroup --name mynginx --exec-command "/bin/bash"
@@ -45,7 +40,7 @@ exit
 Bye.
 ```
 
-Bu örnekte, komut Istemi çalışan bir Nanoserver kapsayıcısında başlatılır:
+In this example, Command Prompt is launched in a running Nanoserver container:
 
 ```console
 $ az container exec --resource-group myResourceGroup --name myiis --exec-command "cmd.exe"
@@ -75,9 +70,9 @@ Bye.
 
 ## <a name="multi-container-groups"></a>Birden çok kapsayıcılı gruplar
 
-[Kapsayıcı grubunuz](container-instances-container-groups.md) , uygulama kapsayıcısı ve günlük arabası gibi birden çok kapsayıcıyla, komutun `--container-name`çalıştırılacağı kapsayıcının adını belirtin.
+If your [container group](container-instances-container-groups.md) has multiple containers, such as an application container and a logging sidecar, specify the name of the container in which to run the command with `--container-name`.
 
-Örneğin, *myngınx* kapsayıcı grubunda iki kapsayıcı, *NGINX-App* ve *günlükçü*vardır. *NGINX-uygulama* kapsayıcısında bir kabuğu başlatmak için:
+For example, in the container group *mynginx* are two containers, *nginx-app* and *logger*. To launch a shell on the *nginx-app* container:
 
 ```azurecli
 az container exec --resource-group myResourceGroup --name mynginx --container-name nginx-app --exec-command "/bin/bash"
@@ -85,11 +80,11 @@ az container exec --resource-group myResourceGroup --name mynginx --container-na
 
 ## <a name="restrictions"></a>Kısıtlamalar
 
-Azure Container Instances Şu anda [az Container exec][az-container-exec]ile tek bir işlem başlatmayı destekler ve komut bağımsız değişkenlerini geçiremezsiniz. Örneğin, `sh -c "echo FOO && echo BAR"` `echo FOO`veya gibi komutları zincirlenemez.
+Azure Container Instances currently supports launching a single process with [az container exec][az-container-exec], and you cannot pass command arguments. For example, you cannot chain commands like in `sh -c "echo FOO && echo BAR"`, or execute `echo FOO`.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Container Instances 'de kapsayıcı ve dağıtım sorunlarını gidermeye yönelik](container-instances-troubleshooting.md)diğer sorun giderme araçları ve yaygın dağıtım sorunları hakkında bilgi edinin.
+Learn about other troubleshooting tools and common deployment issues in [Troubleshoot container and deployment issues in Azure Container Instances](container-instances-troubleshooting.md).
 
 <!-- LINKS - internal -->
 [az-container-create]: /cli/azure/container#az-container-create

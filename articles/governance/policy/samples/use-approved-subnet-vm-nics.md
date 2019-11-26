@@ -1,16 +1,16 @@
 ---
-title: Örnek-VM NIC 'Leri için onaylanmış alt ağ kullanma
-description: Bu örnek ilke tanımı, ağ arabirimlerinin onaylanmış bir alt ağ kullanmasını gerektirir.
+title: Sample - Use approved subnet for VM NICs
+description: This sample policy definition requires that network interfaces use an approved subnet defined in a parameter.
 ms.date: 01/23/2019
 ms.topic: sample
-ms.openlocfilehash: 912dbae5fe22e68604502055fe3c5b369e26e5c3
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: c78b14b49efe663d5693c64d8fd9ac38b6aa2a62
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74069767"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463138"
 ---
-# <a name="sample---use-approved-subnet-for-vm-network-interfaces"></a>Örnek-sanal makine ağ arabirimleri için onaylanmış alt ağ kullan
+# <a name="sample---use-approved-subnet-for-vm-network-interfaces"></a>Sample - Use approved subnet for VM network interfaces
 
 Bu ilke ağ arabirimlerinin onaylı bir alt ağ kullanmasını gerektirir. Onaylanan alt ağın kimliğini belirtirsiniz.
 
@@ -24,7 +24,7 @@ Bu ilke ağ arabirimlerinin onaylı bir alt ağ kullanmasını gerektirir. Onayl
 
 ## <a name="deploy-with-the-portal"></a>Portal ile dağıtma
 
-[![Ilke örneğini Azure 'a dağıtma](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Fvm-creation-in-approved-subnet%2Fazurepolicy.json)
+[![Deploy the Policy sample to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Fvm-creation-in-approved-subnet%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>PowerShell ile dağıtma
 

@@ -1,70 +1,73 @@
 ---
-title: Azure Veri Gezgini veritabanlarını eklemek için izleyici veritabanı özelliğini kullanın
-description: Azure Veri Gezgini veritabanı özelliğini kullanarak veritabanlarının nasıl ekleneceği hakkında bilgi edinin.
+title: Use follower database feature to attach databases in Azure Data Explorer
+description: Learn about how to attach databases in Azure Data Explorer using the follower database feature.
 author: orspod
 ms.author: orspodek
 ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: 2306b6cbdd347e3be9921b196ae06385ef5ca90a
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 61cfcfc41a1d9caeaded475511dd69ebc48756e2
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083186"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74462034"
 ---
-# <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>Azure Veri Gezgini veritabanlarını eklemek için izleyici veritabanını kullanma
+# <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>Use follower database to attach databases in Azure Data Explorer
 
-**İzleyici veritabanı** özelliği, farklı bir kümede bulunan bir veritabanını Azure Veri Gezgini kümenize eklemenize olanak tanır. **İzleyici veritabanı** *salt okuma* modunda iliştirilir, bu da verileri görüntülemeyi ve **öncü veritabanına**alınan verilerde sorgu çalıştırmayı mümkün hale getirir. İzleyici veritabanı, öncü veritabanlarındaki değişiklikleri eşitler. Eşitleme nedeniyle, veri kullanılabilirliğinin birkaç saniye boyunca birkaç dakika veri gecikmesi vardır. Gecikme süresinin uzunluğu, öncü veritabanı meta verilerinin genel boyutuna bağlıdır. Öncü ve izleyici veritabanları verileri getirmek için aynı depolama hesabını kullanır. Depolama, öncü veritabanına aittir. İzleyici veritabanı, verileri almak gerekmeden verileri görüntüler. Ekli veritabanı bir salt okuma veritabanı olduğundan, veritabanındaki veriler, tablolar ve ilkeler [önbelleğe alma ilkesi](#configure-caching-policy), [sorumlular](#manage-principals)ve [izinler](#manage-permissions)dışında değiştirilemez. Ekli veritabanları silinemez. Bunlar, öncü veya izleyici tarafından ayrılmaları gerekir ve bu öğeler silinebilir. 
+The **follower database** feature allows you to attach a database located in a different cluster to your Azure Data Explorer cluster. The **follower database** is attached in *read-only* mode, making it possible to view the data and run queries on the data that was ingested into the **leader database**. The follower database synchronizes changes in the leader databases. Due to the synchronization, there's a data lag of a few seconds to a few minutes in data availability. The length of the time lag depends on the overall size of the leader database metadata. The leader and follower databases use the same storage account to fetch the data. The storage is owned by the leader database. The follower database views the data without needing to ingest it. Since the attached database is a read-only database, the data, tables, and policies in the database can't be modified except for [caching policy](#configure-caching-policy), [principals](#manage-principals), and [permissions](#manage-permissions). Attached databases can't be deleted. They must be detached by the leader or follower and only then they can be deleted. 
 
-İzleme özelliğini kullanarak bir veritabanını farklı bir kümeye eklemek, kuruluşlar ve takımlar arasında veri paylaşmak için altyapı olarak kullanılır. Bu özellik, üretim ortamının üretim dışı kullanım çalışmalarından korunmasını sağlamak için işlem kaynaklarını ayırt etmek için yararlıdır. İzleme, Azure Veri Gezgini kümesinin maliyetini verilerde sorgular çalıştıran tarafla ilişkilendirmek için de kullanılabilir.
+Attaching a database to a different cluster using the follower capability is used as the infrastructure to share data between organizations and teams. The feature is useful to segregate compute resources to protect a production environment from non-production use cases. Follower can also be used to associate the cost of Azure Data Explorer cluster to the party that runs queries on the data.
 
-## <a name="which-databases-are-followed"></a>Hangi veritabanları izlensin?
+## <a name="which-databases-are-followed"></a>Which databases are followed?
 
-* Bir küme bir veritabanını, birkaç veritabanını veya öncü bir kümenin tüm veritabanlarını izleyebilir. 
-* Tek bir küme, birden çok öncü kümeden veritabanlarını izleyebilir. 
-* Bir küme, hem izleyici veritabanlarını hem de öncü veritabanlarını içerebilir
+* A cluster can follow one database, several databases, or all databases of a leader cluster. 
+* A single cluster can follow databases from multiple leader clusters. 
+* A cluster can contain both follower databases and leader databases
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-1. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
-1. Öncü ve izleme için [küme ve DB oluşturun](/azure/data-explorer/create-cluster-database-portal) .
-1. Alım [bölümünde ele](/azure/data-explorer/ingest-data-overview)alınan çeşitli yöntemlerden birini kullanarak [verileri](/azure/data-explorer/ingest-sample-data) öncü veritabanına alma.
+1. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+1. [Create cluster and DB](/azure/data-explorer/create-cluster-database-portal) for the leader and follower.
+1. [Ingest data](/azure/data-explorer/ingest-sample-data) to leader database using one of various methods discussed in [ingestion overview](/azure/data-explorer/ingest-data-overview).
 
 ## <a name="attach-a-database"></a>Veritabanı ekleme
 
-Bir veritabanı eklemek için kullanabileceğiniz çeşitli yöntemler vardır. Bu makalede, veya Azure Resource Manager şablonu kullanarak C# bir veritabanı eklemeyi tartıştık. Bir veritabanı eklemek için, öncü kümede ve izleyici kümesinde izinlerinizin olması gerekir. İzinler hakkında daha fazla bilgi için bkz. [izinleri yönetme](#manage-permissions).
+There are various methods you can use to attach a database. In this article, we discuss attaching a database using C# or an Azure Resource Manager template. To attach a database, you must have permissions on the leader cluster and the follower cluster. For more information about permissions, see [manage permissions](#manage-permissions).
 
-### <a name="attach-a-database-using-c"></a>Kullanarak veritabanı iliştirmeC#
+### <a name="attach-a-database-using-c"></a>Attach a database using C#
 
-**Gerekli nal**
+**Needed NuGets**
 
-* [Microsoft. Azure. Management. kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)uygulamasını yükler.
-* [Kimlik doğrulaması Için Microsoft. Rest. ClientRuntime. Azure. Authentication](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication)'ı yükler.
+* Install [Microsoft.Azure.Management.kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
+* Install [Microsoft.Rest.ClientRuntime.Azure.Authentication for authentication](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication).
 
 
 ```Csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
 var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
 var clientSecret = "xxxxxxxxxxxxxx";//Client secret
-var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
+var leaderSubscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
+var followerSubscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
 
 var serviceCreds = await ApplicationTokenProvider.LoginSilentAsync(tenantId, clientId, clientSecret);
-var resourceManagementClient = new ResourceManagementClient(serviceCreds);
+var resourceManagementClient = new KustoManagementClient(serviceCreds){
+    SubscriptionId = followerSubscriptionId
+};
 
-var leaderResourceGroupName = "testrg";
 var followerResourceGroupName = "followerResouceGroup";
+var leaderResourceGroup = "leaderResouceGroup";
 var leaderClusterName = "leader";
 var followerClusterName = "follower";
 var attachedDatabaseConfigurationName = "adc";
-var databaseName = "db" // Can be specific database name or * for all databases
+var databaseName = "db"; // Can be specific database name or * for all databases
 var defaultPrincipalsModificationKind = "Union"; 
 var location = "North Central US";
 
 AttachedDatabaseConfiguration attachedDatabaseConfigurationProperties = new AttachedDatabaseConfiguration()
 {
-    ClusterResourceId = $"/subscriptions/{subscriptionId}/resourceGroups/{followerResourceGroupName}/providers/Microsoft.Kusto/Clusters/{followerClusterName}",
+    ClusterResourceId = $"/subscriptions/{leaderSubscriptionId}/resourceGroups/{leaderResourceGroup}/providers/Microsoft.Kusto/Clusters/{leaderClusterName}",
     DatabaseName = databaseName,
     DefaultPrincipalsModificationKind = defaultPrincipalsModificationKind,
     Location = location
@@ -73,9 +76,9 @@ AttachedDatabaseConfiguration attachedDatabaseConfigurationProperties = new Atta
 var attachedDatabaseConfigurations = resourceManagementClient.AttachedDatabaseConfigurations.CreateOrUpdate(followerResourceGroupName, followerClusterName, attachedDatabaseConfigurationName, attachedDatabaseConfigurationProperties);
 ```
 
-### <a name="attach-a-database-using-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak veritabanı iliştirme
+### <a name="attach-a-database-using-an-azure-resource-manager-template"></a>Attach a database using an Azure Resource Manager template
 
-Bu bölümde, bir [Azure Resource Manager şablonu](../azure-resource-manager/resource-group-overview.md)kullanarak bir veritabanının nasıl iliştirileyeceğinizi öğrenirsiniz. 
+In this section, you learn how to attach a database by using an [Azure Resource Manager template](../azure-resource-manager/resource-group-overview.md). 
 
 ```json
 {
@@ -158,50 +161,53 @@ Bu bölümde, bir [Azure Resource Manager şablonu](../azure-resource-manager/re
 
 ### <a name="deploy-the-template"></a>Şablonu dağıtma 
 
-[Azure Portal](https://portal.azure.com) veya PowerShell 'i kullanarak Azure Resource Manager şablonu dağıtabilirsiniz.
+You can deploy the Azure Resource Manager template by [using the Azure portal](https://portal.azure.com) or using powershell.
 
-   ![Şablon dağıtımı](media/follower/template-deployment.png)
+   ![template deployment](media/follower/template-deployment.png)
 
 
 |**Ayar**  |**Açıklama**  |
 |---------|---------|
-|İzleyici kümesi adı     |  İzleyici kümesinin adı       |
-|Ekli veritabanı yapılandırması adı    |    Eklenmiş veritabanı yapılandırma nesnesinin adı. Ad, küme düzeyinde benzersiz olmalıdır.     |
-|Veritabanı Adı     |      Takip edilecek veritabanının adı. Tüm öncü veritabanlarını izlemek isterseniz, ' * ' kullanın.   |
-|Öncü küme kaynak KIMLIĞI    |   Öncü kümenin kaynak KIMLIĞI.      |
-|Varsayılan asıl adlar değişiklik türü    |   Varsayılan asıl değişiklik türü. `Union`, `Replace` veya `None`olabilir. Varsayılan asıl değişiklik türü hakkında daha fazla bilgi için bkz. [asıl değişiklik türü denetim komutu](/azure/kusto/management/cluster-follower?branch=master#alter-follower-database-principals-modification-kind).      |
-|Konum   |   Tüm kaynakların konumu. Öncü ve izleyici aynı konumda olmalıdır.       |
+|Follower Cluster Name     |  The name of the follower cluster       |
+|Attached Database Configurations Name    |    The name of the attached database configurations object. The name must be unique at the cluster level.     |
+|Veritabanı Adı     |      The name of the database to be followed. If you want to follow all the leader's databases, use '*'.   |
+|Leader Cluster Resource ID    |   The resource ID of the leader cluster.      |
+|Default Principals Modification Kind    |   The default principal modification kind. Can be `Union`, `Replace` or `None`. For more information about default principal modification kind, see [principal modification kind control command](/azure/kusto/management/cluster-follower?branch=master#alter-follower-database-principals-modification-kind).      |
+|Konum   |   The location of all the resources. The leader and the follower must be in the same location.       |
  
-### <a name="verify-that-the-database-was-successfully-attached"></a>Veritabanının başarıyla eklendiğinden emin olun
+### <a name="verify-that-the-database-was-successfully-attached"></a>Verify that the database was successfully attached
 
-Veritabanının başarıyla eklendiğinden emin olmak için, [Azure Portal](https://portal.azure.com)eklenen veritabanlarınızı bulun. 
+To verify that the database was successfully attached, find your attached databases in the [Azure portal](https://portal.azure.com). 
 
-1. İzleyici kümesine gidin ve **veritabanları** ' nı seçin.
-1. Veritabanı listesinde yeni salt okuma veritabanlarını arayın.
+1. Navigate to the follower cluster and select **Databases**
+1. Search for new Read-only databases in the database list.
 
-    ![Salt okuma izleyici veritabanı](media/follower/read-only-follower-database.png)
+    ![Read-only follower database](media/follower/read-only-follower-database.png)
 
-Alternatif olarak:
+Alternatively:
 
-1. Öncü kümesine gidin ve **veritabanlarını** seçin
-2. İlgili veritabanlarının **başkalarıyla paylaşılan** olarak işaretlendiğinden emin olun > **Evet**
+1. Navigate to the leader cluster and select **Databases**
+2. Check that the relevant databases are marked as **SHARED WITH OTHERS** > **Yes**
 
-    ![Ekli veritabanlarını okuma ve yazma](media/follower/read-write-databases-shared.png)
+    ![Read and write attached databases](media/follower/read-write-databases-shared.png)
 
-## <a name="detach-the-follower-database-using-c"></a>İzleme veritabanını kullanarak ayırmaC# 
+## <a name="detach-the-follower-database-using-c"></a>Detach the follower database using C# 
 
-### <a name="detach-the-attached-follower-database-from-the-follower-cluster"></a>Ekli izleyici veritabanını izleyici kümesinden ayır
+### <a name="detach-the-attached-follower-database-from-the-follower-cluster"></a>Detach the attached follower database from the follower cluster
 
-İzleyici kümesi, ekli herhangi bir veritabanını şu şekilde ayırabilir:
+Follower cluster can detach any attached database as follows:
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
 var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
 var clientSecret = "xxxxxxxxxxxxxx";//Client secret
-var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
+var leaderSubscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
+var followerSubscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
 
 var serviceCreds = await ApplicationTokenProvider.LoginSilentAsync(tenantId, clientId, clientSecret);
-var resourceManagementClient = new ResourceManagementClient(serviceCreds);
+var resourceManagementClient = new KustoManagementClient(serviceCreds){
+    SubscriptionId = followerSubscriptionId
+};
 
 var followerResourceGroupName = "testrg";
 //The cluster and database that are created as part of the prerequisites
@@ -211,18 +217,21 @@ var attachedDatabaseConfigurationsName = "adc";
 resourceManagementClient.AttachedDatabaseConfigurations.Delete(followerResourceGroupName, followerClusterName, attachedDatabaseConfigurationsName);
 ```
 
-### <a name="detach-the-attached-follower-database-from-the-leader-cluster"></a>Ekli izleyici veritabanını öncü kümeden ayır
+### <a name="detach-the-attached-follower-database-from-the-leader-cluster"></a>Detach the attached follower database from the leader cluster
 
-Öncü küme, eklenen herhangi bir veritabanını şu şekilde ayırabilir:
+The leader cluster can detach any attached database as follows:
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
 var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
 var clientSecret = "xxxxxxxxxxxxxx";//Client secret
-var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
+var leaderSubscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
+var followerSubscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
 
 var serviceCreds = await ApplicationTokenProvider.LoginSilentAsync(tenantId, clientId, clientSecret);
-var resourceManagementClient = new ResourceManagementClient(serviceCreds);
+var resourceManagementClient = new KustoManagementClient(serviceCreds){
+    SubscriptionId = leaderSubscriptionId
+};
 
 var leaderResourceGroupName = "testrg";
 var followerResourceGroupName = "followerResouceGroup";
@@ -232,42 +241,42 @@ var followerClusterName = "follower";
 var followerDatabaseDefinition = new FollowerDatabaseDefinition()
     {
         AttachedDatabaseConfigurationName = "adc",
-        ClusterResourceId = $"/subscriptions/{subscriptionId}/resourceGroups/{followerResourceGroupName}/providers/Microsoft.Kusto/Clusters/{followerClusterName}"
+        ClusterResourceId = $"/subscriptions/{followerSubscriptionId}/resourceGroups/{followerResourceGroupName}/providers/Microsoft.Kusto/Clusters/{followerClusterName}"
     };
 
 resourceManagementClient.Clusters.DetachFollowerDatabases(leaderResourceGroupName, leaderClusterName, followerDatabaseDefinition);
 ```
 
-## <a name="manage-principals-permissions-and-caching-policy"></a>Sorumluları, izinleri ve önbelleğe alma ilkesini yönetme
+## <a name="manage-principals-permissions-and-caching-policy"></a>Manage principals, permissions, and caching policy
 
-### <a name="manage-principals"></a>Sorumluları yönetme
+### <a name="manage-principals"></a>Manage principals
 
-Bir veritabanı eklenirken, **varsayılan asıl adlar değişiklik türünü**belirtin. Varsayılan değer, [yetkili sorumlular](/azure/kusto/management/access-control/index#authorization) için öncü veritabanı koleksiyonunu tutuyor
+When attaching a database, specify the **"default principals modification kind"** . The default is keeping the leader database collection of [authorized principals](/azure/kusto/management/access-control/index#authorization)
 
-|**Denetlenmesi** |**Açıklama**  |
+|**Kind** |**Açıklama**  |
 |---------|---------|
-|**Birleşim**     |   Ekli veritabanı sorumluları her zaman özgün veritabanı sorumlularını ek olarak, yeni asıl sorumluları da izleyici veritabanına ekler.      |
-|**Değiştir**   |    Asıl veritabanından asıl öğeler devralınmaz. Eklenen veritabanı için yeni sorumlular oluşturulmalıdır. Birincil devralmayı engellemek için en az bir sorumlunun eklenmesi gerekir.     |
-|**Yok.**   |   Ekli veritabanı sorumluları yalnızca, ek asıl olmayan özgün veritabanının sorumlularını içerir.      |
+|**Union**     |   The attached database principals will always include the original database principals plus additional new principals added to the follower database.      |
+|**Replace**   |    No inheritance of principals from the original database. New principals must be created for the attached database.     |
+|**None**   |   The attached database principals include only the principals of the original database with no additional principals.      |
 
-Yetkili sorumlularını yapılandırmak üzere denetim komutlarını kullanma hakkında daha fazla bilgi için bkz. [bir izleyici kümesini yönetmek Için denetim komutları](/azure/kusto/management/cluster-follower).
+For more information about using control commands to configure the authorized principals, see [Control commands for managing a follower cluster](/azure/kusto/management/cluster-follower).
 
-### <a name="manage-permissions"></a>İzinleri Yönet
+### <a name="manage-permissions"></a>Manage permissions
 
-Salt okunurdur veritabanını yönetme izni tüm veritabanı türleriyle aynıdır. Bkz. [Azure Portal izinleri yönetme](/azure/data-explorer/manage-database-permissions#manage-permissions-in-the-azure-portal).
+Managing read-only database permission is the same as for all database types. See [manage permissions in the Azure portal](/azure/data-explorer/manage-database-permissions#manage-permissions-in-the-azure-portal).
 
-### <a name="configure-caching-policy"></a>Önbelleğe alma ilkesini yapılandırma
+### <a name="configure-caching-policy"></a>Configure caching policy
 
-İzleyici veritabanı yöneticisi, bağlı veritabanının veya barındırma kümesindeki tablolarının herhangi birinin [önbellek ilkesini](/azure/kusto/management/cache-policy) değiştirebilir. Varsayılan değer veritabanı ve tablo düzeyinde önbelleğe alma ilkelerinin öncü veritabanı koleksiyonunu tutuyor. Örneğin, aylık raporlama çalıştırmak için öncü veritabanında 30 günlük önbelleğe alma ilkesine ve sorun giderme için yalnızca son verileri sorgulamak üzere izleyici veritabanında üç günlük önbelleğe alma ilkesine sahip olabilirsiniz. İzleyici veritabanı veya tablosunda önbelleğe alma ilkesini yapılandırmak üzere denetim komutlarını kullanma hakkında daha fazla bilgi için, bkz. [bir izleyici kümesini yönetmek Için denetim komutları](/azure/kusto/management/cluster-follower).
+The follower database administrator can modify the [caching policy](/azure/kusto/management/cache-policy) of the attached database or any of its tables on the hosting cluster. The default is keeping the leader database collection of database and table-level caching policies. You can, for example, have a 30 day caching policy on the leader database for running monthly reporting and a three day caching policy on the follower database to query only the recent data for troubleshooting. For more information about using control commands to configure the caching policy on the follower database or table, see [Control commands for managing a follower cluster](/azure/kusto/management/cluster-follower).
 
 ## <a name="limitations"></a>Sınırlamalar
 
-* İzleme ve öncü kümelerin aynı bölgede olması gerekir.
-* [Akış](/azure/data-explorer/ingest-data-streaming) alımı, izlenebilecek bir veritabanında kullanılamaz.
-* Ayırmayı yapmadan önce farklı bir kümeye bağlı bir veritabanını silemezsiniz.
-* Bir veritabanını kullanımdan çıkarmadan önce farklı bir kümeye eklenmiş bir kümeyi silemezsiniz.
-* Bağlı izleyici veya öncü veritabanı olan bir kümeyi durduramazsınız. 
+* The follower and the leader clusters must be in the same region.
+* [Streaming ingestion](/azure/data-explorer/ingest-data-streaming) can't be used on a database that is being followed.
+* You can't delete a database that is attached to a different cluster before detaching it.
+* You can't delete a cluster that has a database attached to a different cluster before detaching it.
+* You can't stop a cluster that has attached follower or leader database(s). 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* İzleme kümesi yapılandırma hakkında daha fazla bilgi için bkz. [bir izleyici kümesini yönetmek Için denetim komutları](/azure/kusto/management/cluster-follower).
+* For information about follower cluster configuration, see [Control commands for managing a follower cluster](/azure/kusto/management/cluster-follower).

@@ -1,76 +1,76 @@
 ---
-title: Yeni bir Azure ilkesinin etkisini değerlendirin
-description: Azure ortamınıza yeni bir ilke oluştururken izlenecek işlemi anlayın.
+title: Evaluate the impact of a new Azure policy
+description: Understand the process to follow when introducing a new policy definition into your Azure environment.
 ms.date: 09/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: e39183b13d2b3cf8c7527f9372879372b2123648
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 562fa2378356ddc1eac48b6ea5c160ebf655d525
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279419"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463514"
 ---
-# <a name="evaluate-the-impact-of-a-new-azure-policy"></a>Yeni bir Azure ilkesinin etkisini değerlendirin
+# <a name="evaluate-the-impact-of-a-new-azure-policy"></a>Evaluate the impact of a new Azure policy
 
-Azure Ilkesi, Azure kaynaklarınızı iş standartlarına göre yönetmek ve uyumluluk gereksinimlerini karşılamak için güçlü bir araçtır. Kişiler, süreçler veya işlem hatları kaynakları oluştururken veya güncelleştirdiklerinde, Azure Ilkesi isteği inceler. İlke tanımı efekti [append](./effects.md#deny) veya [Deployifnotexists](./effects.md#deployifnotexists)olduğunda, ilke isteği değiştirir veya buna ekler. İlke tanımı efekti [Denetim](./effects.md#audit) veya [Auditınotexists](./effects.md#auditifnotexists)olduğunda, ilke bir etkinlik günlüğü girişinin oluşturulmasına neden olur. İlke tanımı etkin [olduğunda, ilke, isteğin](./effects.md#deny)oluşturulmasını veya değişiklik işlemini engeller.
+Azure Policy is a powerful tool for managing your Azure resources to business standards and to meet compliance needs. When people, processes, or pipelines create or update resources, Azure Policy reviews the request. When the policy definition effect is [Append](./effects.md#deny) or [DeployIfNotExists](./effects.md#deployifnotexists), Policy alters the request or adds to it. When the policy definition effect is [Audit](./effects.md#audit) or [AuditIfNotExists](./effects.md#auditifnotexists), Policy causes an Activity log entry to be created. And when the policy definition effect is [Deny](./effects.md#deny), Policy stops the creation or alteration of the request.
 
-Bu sonuçlar, ilkenin doğru şekilde tanımlandığını bildiğiniz durumlarda tam olarak istenen şekilde yapılır. Bununla birlikte, yeni bir ilkenin, çalışmayı değiştirmesine veya engellemeye izin vermeden önce beklendiği gibi çalıştığını doğrulamak önemlidir. Doğrulama yalnızca amaçlanan kaynakların uyumsuz olarak belirlendiğinden ve sonuçlarda yanlış bir şekilde ( _yanlış pozitif_olarak bilinirdi) emin olunması gerekir.
+These outcomes are exactly as desired when you know the policy is defined correctly. However, it's important to validate a new policy works as intended before allowing it to change or block work. The validation must ensure only the intended resources are determined to be non-compliant and no compliant resources are incorrectly included (known as a _false positive_) in the results.
 
-Yeni bir ilke tanımını doğrulamak için önerilen yaklaşım aşağıdaki adımları takip eden bir yaklaşımdır:
+The recommended approach to validating a new policy definition is by following these steps:
 
-- İlkenize sıkı bir şekilde tanımlama
-- Mevcut kaynaklarınızı denetleyin
-- Yeni veya güncelleştirilmiş kaynak isteklerini denetleme
-- İlkenizi kaynaklara dağıtma
+- Tightly define your policy
+- Audit your existing resources
+- Audit new or updated resource requests
+- Deploy your policy to resources
 - Sürekli izleme
 
-## <a name="tightly-define-your-policy"></a>İlkenize sıkı bir şekilde tanımlama
+## <a name="tightly-define-your-policy"></a>Tightly define your policy
 
-İş ilkesinin bir ilke tanımı olarak nasıl uygulandığını ve diğer Azure hizmetleriyle Azure kaynakları arasındaki ilişkiyi anlamak önemlidir. Bu adım, [Gereksinimleri tanımlayarak](../tutorials/create-custom-policy-definition.md#identify-requirements) ve [kaynak özellikleri belirlenirken](../tutorials/create-custom-policy-definition.md#determine-resource-properties)gerçekleştirilir.
-Ancak, iş ilkenizin dar tanımıyla daha fazla bilgi almak da önemlidir. İlke durumlarınızın "tüm sanal makineler..." olması gerekir mi? HDInsight veya AKS gibi VM 'Leri kullanan diğer Azure hizmetleriyle ilgili ne olacak? Bir ilke tanımlarken, bu ilkenin diğer hizmetler tarafından kullanılan kaynakları nasıl etkilediğini dikkate almalısınız.
+It's important to understand how the business policy is implemented as a policy definition and the relationship of Azure resources with other Azure services. This step is accomplished by [identifying the requirements](../tutorials/create-custom-policy-definition.md#identify-requirements) and [determining the resource properties](../tutorials/create-custom-policy-definition.md#determine-resource-properties).
+But it's also important to see beyond the narrow definition of your business policy. Does your policy state for example "All Virtual Machines must..."? What about other Azure services that make use of VMs, such as HDInsight or AKS? When defining a policy, we must consider how this policy impacts resources that are used by other services.
 
-Bu nedenle, ilke tanımlarınız sıkı bir şekilde tanımlanmalıdır ve kaynaklara ve mümkün olduğunca uyumluluk için değerlendirmeniz gereken özelliklere odaklanmalıdır.
+For this reason, your policy definitions should be as tightly defined and focused on the resources and the properties you need to evaluate for compliance as possible.
 
-## <a name="audit-existing-resources"></a>Mevcut kaynakları denetleme
+## <a name="audit-existing-resources"></a>Audit existing resources
 
-Yeni veya güncelleştirilmiş kaynakları yeni ilke tanımınızda yönetmeyi aramadan önce, bir test kaynak grubu gibi var olan kaynakların sınırlı bir alt kümesini nasıl değerlendirdiği hakkında daha iyi bir seçenektir. Tetiklemenin veya etkinlik günlüğü girişlerinin oluşturulmasını engellemek için ilke atamasındaki [zorlama modunu](./assignment-structure.md#enforcement-mode)
-_devre dışı_ (donotenzorlamalı) kullanın. [](./effects.md)
+Before looking to manage new or updated resources with your new policy definition, it's best to see how it evaluates a limited subset of existing resources, such as a test resource group. Use the [enforcement mode](./assignment-structure.md#enforcement-mode)
+_Disabled_ (DoNotEnforce) on your policy assignment to prevent the [effect](./effects.md) from triggering or activity log entries from being created.
 
-Bu adım, iş akışını etkilemeden mevcut kaynaklardaki yeni ilkenin uyumluluk sonuçlarını değerlendirmek için bir şans sağlar. Uyumlu olmayan bir kaynağın uyumsuz (_yanlış pozitif_) olarak işaretlenip işaretlenmediğini ve uyumlu olmadığını düşündüğünüz tüm kaynakların doğru şekilde işaretlendiğinden emin olun.
-Kaynakların ilk alt kümesi beklendiği gibi doğrulandıktan sonra, tüm mevcut kaynaklarla değerlendirmeyi yavaş genişletin.
+This step gives you a chance to evaluate the compliance results of the new policy on existing resources without impacting work flow. Check that no compliant resources are marked as non-compliant (_false positive_) and that all the resources you expect to be non-compliant are marked correctly.
+After the initial subset of resources validates as expected, slowly expand the evaluation to all existing resources.
 
-Mevcut kaynakları bu şekilde değerlendirmek, yeni ilkenin tam uygulanmasıyla uyumlu olmayan kaynakları düzeltmeye yönelik bir fırsat de sağlar. Bu temizleme el ile veya ilke tanımı efekti _Deployifnotexists_ise bir [Düzeltme görevi](../how-to/remediate-resources.md) aracılığıyla yapılabilir.
+Evaluating existing resources in this way also provides an opportunity to remediate non-compliant resources before full implementation of the new policy. This cleanup can be done manually or through a [remediation task](../how-to/remediate-resources.md) if the policy definition effect is _DeployIfNotExists_.
 
-## <a name="audit-new-or-updated-resources"></a>Yeni veya güncelleştirilmiş kaynakları denetleme
+## <a name="audit-new-or-updated-resources"></a>Audit new or updated resources
 
-Yeni ilke tanımınızın, mevcut kaynaklar üzerinde doğru şekilde raporlanmasını doğrulandıktan sonra, kaynakların oluşturulma veya güncelleştirilme zamanı sırasında ilkenin etkisini göz atalım. İlke tanımı efekt parametrelemeyi destekliyorsa, [Denetim](./effects.md#audit)' i kullanın. Bu yapılandırma, yeni ilke tanımının mevcut iş veya istekleri etkilemeden uyumsuz bir kaynak için Azure etkinlik günlüğünde bir girişi tetikleyip tetiklenmediğini görmek için kaynakların oluşturulmasını ve güncelleştirilmesini izlemenizi sağlar.
+Once you've validated your new policy definition is reporting correctly on existing resources, it's time to look at the impact of the policy when resources get created or updated. If the policy definition supports effect parameterization, use [Audit](./effects.md#audit). This configuration allows you to monitor the creation and updating of resources to see if the new policy definition triggers an entry in Azure Activity log for a resource that is non-compliant without impacting existing work or requests.
 
-_Denetim_ efektinin beklendiğinde doğru tetiklendiğini görmek için, her iki güncelleştirme de ilke tanımınızda eşleşen yeni kaynaklar oluşturmanız önerilir. _Denetim_ efektini tetikleyen yeni ilke tanımından etkilenmemesi gereken kaynak istekleri için bir gevdekte olun.
-Bu etkilenen kaynaklar, bir _Hatalı pozitif_ sonuç örneğidir ve tam uygulamadan önce ilke tanımında düzeltilmelidir.
+It's recommended to both update and create new resources that match your policy definition to see that the _Audit_ effect is correctly being triggered when expected. Be on the lookout for resource requests that shouldn't be impacted by the new policy definition that trigger the _Audit_ effect.
+These impacted resources are another example of _false positives_ and must be fixed in the policy definition before full implementation.
 
-Bu testin bu aşamasında ilke tanımı değiştirilirse, var olan kaynakların denetimi ile birlikte doğrulama işleminin başlaması önerilir. Yeni veya güncelleştirilmiş kaynaklardaki _Hatalı pozitif_ bir değer için ilke tanımında yapılan değişikliğin, var olan kaynakları üzerinde de etkisi olabilir.
+In the event the policy definition is changed at this stage of testing, it's recommended to begin the validation process over with the auditing of existing resources. A change to the policy definition for a _false positive_ on new or updated resources is likely to also have an impact on existing resources.
 
-## <a name="deploy-your-policy-to-resources"></a>İlkenizi kaynaklara dağıtma
+## <a name="deploy-your-policy-to-resources"></a>Deploy your policy to resources
 
-Yeni ilke tanımınızın doğrulanmasını hem var olan kaynaklarla hem de yeni veya güncelleştirilmiş kaynak istekleriyle tamamladıktan sonra, ilkeyi uygulama işlemine başlarsınız. Yeni ilke tanımı için, ilk olarak kaynak grubu gibi tüm kaynakların bir alt kümesine, ilke atamasını oluşturmanız önerilir. İlk dağıtımı doğruladıktan sonra, ilke kapsamını abonelikler ve yönetim grupları gibi daha geniş ve daha geniş düzeyler olarak genişletin. Bu genişleme, atama kaldırılarak ve yeni ilke tanımınızda kapsanacak kaynakların tam kapsamına atanana kadar hedef kapsamlardan yeni bir tane oluşturularak elde edilir.
+After completing validation of your new policy definition with both existing resources and new or updated resource requests, you begin the process of implementing the policy. It's recommended to create the policy assignment for the new policy definition to a subset of all resources first, such as a resource group. After validating initial deployment, extend the scope of the policy to broader and broader levels, such as subscriptions and management groups. This expansion is achieved by removing the assignment and creating a new one at the target scopes until it's assigned to the full scope of resources intended to be covered by your new policy definition.
 
-Dağıtım sırasında, yeni ilke tanımınızdan muaf tutulması gereken kaynaklar bulunursa, bunları aşağıdaki yollarla ele alır:
+During rollout, if resources are located that should be exempt from your new policy definition, address them in one of the following ways:
 
-- İstenmeyen etkileri azaltmak için ilke tanımını daha açık olacak şekilde güncelleştirin
-- İlke atamasının kapsamını değiştirme (yeni bir atamayı kaldırarak ve oluşturarak)
-- Kaynak grubunu ilke atamasının dışlama listesine ekleyin
+- Update the policy definition to be more explicit to reduce unintended impact
+- Change the scope of the policy assignment (by removing and creating a new assignment)
+- Add the group of resources to the exclusion list for the policy assignment
 
-Kapsamda herhangi bir değişiklik olmadığından emin olmak için kapsamdaki tüm değişiklikler (düzey veya Dışlamalar) tam olarak doğrulanıp, güvenlik ve uyumluluk kuruluşlarıyla birlikte verilmelidir.
+Any changes to the scope (level or exclusions) should be fully validated and communicated with your security and compliance organizations to ensure there are no gaps in coverage.
 
-## <a name="monitor-your-policy-and-compliance"></a>İlkenizi ve uyumluluğunu izleyin
+## <a name="monitor-your-policy-and-compliance"></a>Monitor your policy and compliance
 
-İlke tanımınızı uygulamak ve atamak son adım değildir. Kaynakların [Uyumluluk](../how-to/get-compliance-data.md) düzeyini yeni ilke tanımınıza sürekli olarak izleyin ve uyumlu olmayan cihazlar tanımlandığında Ilgili [Azure izleyici uyarılarını ve bildirimlerini](../../../azure-monitor/platform/alerts-overview.md) ayarlayın. İlke tanımının iş ilkesi ve uyumluluk ihtiyaçlarını karşıladığını doğrulamak için, ilke tanımını ve ilgili atamaları zamanlanan bir şekilde değerlendirmek de önerilir. Artık gerekmiyorsa ilkelerin kaldırılması gerekir. Ayrıca, temel alınan Azure kaynakları geliştikçe ve yeni özellikler ve yetenekler eklerken ilkelerin zaman zaman güncel olarak güncelleştirilmesi gerekir.
+Implementing and assigning your policy definition isn't the final step. Continuously monitor the [compliance](../how-to/get-compliance-data.md) level of resources to your new policy definition and setup appropriate [Azure Monitor alerts and notifications](../../../azure-monitor/platform/alerts-overview.md) for when non-compliant devices are identified. It's also recommended to evaluate the policy definition and related assignments on a scheduled basis to validate the policy definition is meeting business policy and compliance needs. Policies should be removed if no longer needed. Policies also need updating from time to time as the underlying Azure resources evolve and add new properties and capabilities.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [İlke tanımı yapısı](./definition-structure.md)hakkında bilgi edinin.
-- [İlke atama yapısı](./assignment-structure.md)hakkında bilgi edinin.
-- [Program aracılığıyla ilkelerin nasıl oluşturulduğunu](../how-to/programmatically-create.md)anlayın.
-- [Uyumluluk verilerini nasıl alabileceğinizi](../how-to/get-compliance-data.md)öğrenin.
-- [Uyumlu olmayan kaynakları nasıl düzelteceğinizi](../how-to/remediate-resources.md)öğrenin.
-- [Kaynakları Azure Yönetim gruplarıyla düzenleme](../../management-groups/overview.md)ile yönetim grubunun ne olduğunu inceleyin.
+- Learn about the [policy definition structure](./definition-structure.md).
+- Learn about the [policy assignment structure](./assignment-structure.md).
+- Understand how to [programmatically create policies](../how-to/programmatically-create.md).
+- Learn how to [get compliance data](../how-to/get-compliance-data.md).
+- Learn how to [remediate non-compliant resources](../how-to/remediate-resources.md).
+- Review what a management group is with [Organize your resources with Azure management groups](../../management-groups/overview.md).

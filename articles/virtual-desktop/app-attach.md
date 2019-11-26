@@ -1,59 +1,59 @@
 ---
-title: Windows sanal masaüstü MALTı uygulama iliştirme-Azure
-description: Windows sanal masaüstü için MSIX uygulama iliştirme 'yi ayarlama.
+title: Windows Virtual Desktop MSIX app attach - Azure
+description: How to set up MSIX app attach for Windows Virtual Desktop.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: helohr
-ms.openlocfilehash: b6c56bbe86f2c81421a39ee85e06dec447382833
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: c5d6c671890f5e036d3f4cce6e880230c01048ed
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74288717"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483824"
 ---
-# <a name="set-up-msix-app-attach"></a>MSIX uygulama iliştirme 'yi ayarlama
+# <a name="set-up-msix-app-attach"></a>MSIX uygulama iliştirmeyi ayarlama
 
 > [!IMPORTANT]
-> MSIX uygulama iliştirme Şu anda genel önizlemededir.
+> MSIX app attach is currently in public preview.
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Bu konu başlığı altında, bir Windows sanal masaüstü ortamında MSIX uygulama iliştirme 'yi ayarlama işleminde size yol gösterilir.
+This topic will walk you through how to set up MSIX app attach in a Windows Virtual Desktop environment.
 
 ## <a name="requirements"></a>Gereksinimler
 
-Başlamadan önce, MSIX uygulama iliştirme 'yi yapılandırmak için gerekenler şunlardır:
+Before you get started, here's what you need to configure MSIX app attach:
 
-- MSIX uygulama iliştirme API 'Leri desteğiyle Windows 10 sürümünü edinmek için Windows Insider portalına erişim.
-- Çalışan bir Windows sanal masaüstü dağıtımı. Bilgi için bkz. [Windows sanal masaüstü 'nde kiracı oluşturma](tenant-setup-azure-active-directory.md).
-- MSIX paketleme aracı
-- Windows sanal masaüstü dağıtımınızda MSIX paketinin depolanacağı bir ağ paylaşımıdır
+- Access to the Windows Insider portal to obtain the version of Windows 10 with support for the MSIX app attach APIs.
+- A functioning Windows Virtual Desktop deployment. For information, see [Create a tenant in Windows Virtual Desktop](tenant-setup-azure-active-directory.md).
+- The MSIX packaging tool
+- A network share in your Windows Virtual Desktop deployment where the MSIX package will be stored
 
-## <a name="get-the-os-image"></a>İşletim sistemi görüntüsünü al
+## <a name="get-the-os-image"></a>Get the OS image
 
-İlk olarak, MSIX uygulaması için kullanacağınız işletim sistemi görüntüsünü almanız gerekir. İşletim sistemi görüntüsünü almak için:
+First, you need to get the OS image you'll use for the MSIX app. To get the OS image:
 
-1. [Windows Insider portalını](https://www.microsoft.com/software-download/windowsinsiderpreviewadvanced?wa=wsignin1.0) açın ve oturum açın.
+1. Open the [Windows Insider portal](https://www.microsoft.com/software-download/windowsinsiderpreviewadvanced?wa=wsignin1.0) and sign in.
 
      >[!NOTE]
-     >Windows Insider portalına erişmek için Windows Insider programının üyesi olmanız gerekir. Windows Insider programı hakkında daha fazla bilgi edinmek için [Windows Insider belgelerimize](https://docs.microsoft.com/windows-insider/at-home/)göz atın.
+     >You must be member of the Windows Insider program to access the Windows Insider portal. To learn more about the Windows Insider program, check out our [Windows Insider documentation](https://docs.microsoft.com/windows-insider/at-home/).
 
-2. **Seç sürümü** bölümüne gidin ve **Windows 10 Insider PREVIEW Enterprise (hızlı) – derleme xxxxx**' i seçin.
+2. Scroll down to the **Select edition** section and select **Windows 10 Insider Preview Enterprise (FAST) – Build XXXXX**.
 
-3. **Onayla**' yı seçin, ardından kullanmak istediğiniz dili seçin ve sonra yeniden **Onayla** ' yı seçin.
+3. Select **Confirm**, then select the language you wish to use, and then select **Confirm** again.
     
      >[!NOTE]
-     >Şu anda, özelliği ile test edilen tek dil Ingilizce 'dir. Diğer dilleri seçebilirsiniz, ancak tasarlanan gibi görünmeyebilir.
+     >At the moment, English is the only language that has been tested with the feature. You can select other languages, but they may not display as intended.
     
-4. İndirme bağlantısı oluşturulduğunda, **64 bit indirmeyi** seçin ve yerel sabit diskinize kaydedin.
+4. When the download link is generated, select the **64-bit Download** and save it to your local hard disk.
 
-## <a name="prepare-the-vhd-image-for-azure"></a>Azure için VHD görüntüsünü hazırlama 
+## <a name="prepare-the-vhd-image-for-azure"></a>Prepare the VHD image for Azure 
 
-Başlamadan önce, bir ana VHD görüntüsü oluşturmanız gerekir. Ana VHD görüntünüzü henüz oluşturmadıysanız, [ana VHD görüntüsünü hazırla ve özelleştirme](set-up-customize-master-image.md) bölümüne gidin ve yönergeleri izleyin. 
+Before you get started, you'll need to create a master VHD image. If you haven't created your master VHD image yet, go to [Prepare and customize a master VHD image](set-up-customize-master-image.md) and follow the instructions there. 
 
-Ana VHD görüntünüzü oluşturduktan sonra, MSIX uygulama iliştirme uygulamaları için otomatik güncelleştirmeleri devre dışı bırakmanız gerekir. Otomatik güncelleştirmeleri devre dışı bırakmak için, yükseltilmiş bir komut isteminde aşağıdaki komutları çalıştırmanız gerekir:
+After you've created your master VHD image, you must disable automatic updates for MSIX app attach applications. To disable automatic updates, you'll need to run the following commands in an elevated command prompt:
 
 ```cmd
 rem Disable Store auto update:
@@ -73,144 +73,144 @@ rem Disable Windows Update:
 sc config wuauserv start=disabled
 ```
 
-Ardından, Azure için VM VHD 'yi hazırlayın ve elde edilen VHD diskini Azure 'a yükleyin. Daha fazla bilgi için bkz. [ana VHD görüntüsünü hazırlama ve özelleştirme](set-up-customize-master-image.md).
+Next, prepare the VM VHD for Azure and upload the resulting VHD disk to Azure. To learn more, see [Prepare and customize a master VHD image](set-up-customize-master-image.md).
 
-VHD 'yi Azure 'a yükledikten sonra [Azure Marketi öğreticisini kullanarak bir konak havuzu oluşturma](create-host-pools-azure-marketplace.md) bölümünde yer alan yönergeleri izleyerek bu yeni görüntüye dayalı bir konak havuzu oluşturun.
+Once you've uploaded the VHD to Azure, create a host pool that's based on this new image by following the instructions in the [Create a host pool by using the Azure Marketplace](create-host-pools-azure-marketplace.md) tutorial.
 
-## <a name="prepare-the-application-for-msix-app-attach"></a>Uygulamayı MALTı uygulama iliştirme için hazırlama 
+## <a name="prepare-the-application-for-msix-app-attach"></a>Prepare the application for MSIX app attach 
 
-Zaten bir MSIX paketiniz varsa [Windows sanal masaüstü altyapısını yapılandırma](#configure-windows-virtual-desktop-infrastructure)bölümüne atlayın. Eski uygulamaları test etmek istiyorsanız, eski uygulamayı bir MSIX paketine dönüştürmek için [BIR sanal makinede bulunan bir masaüstü yükleyicisinden msix paketi oluşturma](https://docs.microsoft.com/windows/msix/packaging-tool/create-app-package-msi-vm) bölümündeki yönergeleri izleyin.
+If you already have an MSIX package, skip ahead to [Configure Windows Virtual Desktop infrastructure](#configure-windows-virtual-desktop-infrastructure). If you want to test legacy applications, follow the instructions in [Create an MSIX package from a desktop installer on a VM](https://docs.microsoft.com/windows/msix/packaging-tool/create-app-package-msi-vm) to convert the legacy application to an MSIX package.
 
-## <a name="generate-a-vhd-or-vhdx-package-for-msix"></a>MSIX için bir VHD veya VHDX paketi oluşturma
+## <a name="generate-a-vhd-or-vhdx-package-for-msix"></a>Generate a VHD or VHDX package for MSIX
 
-Paketler, performansı iyileştirmek için VHD veya VHDX biçimindedir. MSIX, VHD veya VHDX paketlerinin düzgün şekilde çalışmasını gerektirir.
+Packages are in VHD or VHDX format to optimize performance. MSIX requires VHD or VHDX packages to work properly.
 
-MSIX için bir VHD veya VHDX paketi oluşturmak için:
+To generate a VHD or VHDX package for MSIX:
 
-1. [Msıxmgr aracını indirin](https://aka.ms/msixmgr) ve. zip klasörünü bir oturum ana bilgisayar VM 'si içindeki bir klasöre kaydedin.
+1. [Download the msixmgr tool](https://aka.ms/msixmgr) and save the .zip folder to a folder within a session host VM.
 
-2. Msıxmgr Tool. zip klasörünü sıkıştırmayı açın.
+2. Unzip the msixmgr tool .zip folder.
 
-3. Kaynak MDıX paketini, msıxmgr aracının sıkıştırkonunkından aynı klasöre yerleştirin.
+3. Put the source MSIX package into the same folder where you unzipped the msixmgr tool.
 
-4. Bir VHD oluşturmak için PowerShell 'de aşağıdaki cmdlet 'i çalıştırın:
+4. Run the following cmdlet in PowerShell to create a VHD:
 
     ```powershell
     New-VHD -SizeBytes <size>MB -Path c:\temp\<name>.vhd -Dynamic -Confirm:$false
     ```
 
     >[!NOTE]
-    >VHD boyutunun genişletilmiş MALTıYı tutabilecek kadar büyük olduğundan emin olun. *
+    >Make sure the size of VHD is large enough to hold the expanded MSIX.*
 
-5. Yeni oluşturulan VHD 'YI bağlamak için aşağıdaki cmdlet 'i çalıştırın:
+5. Run the following cmdlet to mount the newly created VHD:
 
     ```powershell
     $vhdObject = Mount-VHD c:\temp\<name>.vhd -Passthru
     ```
 
-6. VHD 'YI başlatmak için bu cmdlet 'i çalıştırın:
+6. Run this cmdlet to initialize the VHD:
 
     ```powershell
     $disk = Initialize-Disk -Passthru -Number $vhdObject.Number
     ```
 
-7. Yeni bir bölüm oluşturmak için bu cmdlet 'i çalıştırın:
+7. Run this cmdlet to create a new partition:
 
     ```powershell
     $partition = New-Partition -AssignDriveLetter -UseMaximumSize -DiskNumber $disk.Number
     ```
 
-8. Bölümü biçimlendirmek için bu cmdlet 'i çalıştırın:
+8. Run this cmdlet to format the partition:
 
     ```powershell
     Format-Volume -FileSystem NTFS -Confirm:$false -DriveLetter $partition.DriveLetter -Force
     ```
 
-9. Bağlı VHD üzerinde bir üst klasör oluşturun. Bu adım, MALTıLıK uygulama iliştirme bir üst klasör gerektirdiğinden zorunludur. Üst klasörü dilediğiniz gibi adlandırabilirsiniz.
+9. Create a parent folder on the mounted VHD. This step is mandatory as the MSIX app attach requires a parent folder. You can name the parent folder whatever you like.
 
-### <a name="expand-msix"></a>MALTıYı Genişlet
+### <a name="expand-msix"></a>Expand MSIX
 
-Bundan sonra, bu görüntüyü genişleterek MSIX 'yi "genişletmeniz" gerekir. MSIX görüntüsünün paketini açmak için:
+After that, you'll need to "expand" the MSIX image by unpacking it. To unpack the MSIX image:
 
-1. Yönetici olarak bir komut istemi açın ve msixmgr aracını indirdiğiniz ve sıkıştırkından geri yüklediğiniz klasöre gidin.
+1. Open a command prompt as Administrator and navigate to the folder where you downloaded and unzipped the msixmgr tool.
 
-2. Oluşturduğunuz ve önceki bölümde bağladığınız VHD 'de MSIX 'yi açmak için aşağıdaki cmdlet 'i çalıştırın.
+2. Run the following cmdlet to unpack the MSIX into the VHD you created and mounted in the previous section.
 
     ```powershell
     msixmgr.exe -Unpack -packagePath <package>.msix -destination "f:\<name of folder you created earlier>" -applyacls
     ```
 
-    Aşağıdaki ileti, paketten sonra görünmelidir:
+    The following message should appear once unpacking is done:
 
     `Successfully unpacked and applied ACLs for package: <package name>.msix`
 
     >[!NOTE]
-    > Ağınız içinde Iş için Microsoft Store (veya eğitim) veya internet 'e bağlı olmayan cihazlarda paketler kullanıyorsanız, paket lisanslarını mağazadan edinmeniz ve uygulamayı başarılı bir şekilde çalıştırmak için yüklemeniz gerekir. Bkz. [paketleri çevrimdışı kullanma](#use-packages-offline).
+    > If using packages from the Microsoft Store for Business (or Education) within your network, or on devices that are not connected to the internet, you will need to obtain the package licenses from the Store and install them to run the app successfully. See [Use packages offline](#use-packages-offline).
 
-3. Bağlı VHD 'ye gidin ve uygulama klasörünü açın ve paket içeriğinin mevcut olduğunu doğrulayın.
+3. Navigate to the mounted VHD and open the app folder and confirm package content is present.
 
-4. VHD 'YI çıkarın.
+4. Unmount the VHD.
 
-## <a name="configure-windows-virtual-desktop-infrastructure"></a>Windows sanal masaüstü altyapısını yapılandırma
+## <a name="configure-windows-virtual-desktop-infrastructure"></a>Configure Windows Virtual Desktop infrastructure
 
-Tasarıma göre, VHD 'Ler salt okuma modunda eklendiği için, tek bir MSIX genişletilmiş paket (önceki bölümde oluşturduğunuz VHD) birden çok oturum ana makinesi arasında paylaşılabilir.
+By design, a single MSIX expanded package (the VHD you created in the previous section) can be shared between multiple session host VMs as the VHDs are attached in read-only mode.
 
-Başlamadan önce, ağ paylaşımınızın bu gereksinimleri karşıladığından emin olun:
+Before you start, make sure your network share meets these requirements:
 
-- Paylaşımda SMB uyumlu.
-- Oturum Ana bilgisayar havuzunun parçası olan sanal makinelerin, paylaşımda NTFS izinleri vardır.
+- The share is SMB compatible.
+- The VMs that are part of the session host pool have NTFS permissions to the share.
 
-### <a name="set-up-an-msix-app-attach-share"></a>MALTı uygulama iliştirme paylaşma ayarlama 
+### <a name="set-up-an-msix-app-attach-share"></a>Set up an MSIX app attach share 
 
-Windows sanal masaüstü ortamınızda bir ağ paylaşma oluşturun ve paketi buraya taşıyın.
+In your Windows Virtual Desktop environment, create a network share and move the package there.
 
 >[!NOTE]
-> MSIX ağ paylaşımları oluşturmak için en iyi yöntem, ağ paylaşımını NTFS salt okuma izinleriyle ayarlamaya yöneliktir.
+> The best practice for creating MSIX network shares is to set up the network share with NTFS read-only permissions.
 
-## <a name="install-certificates"></a>Sertifikaları yükler
+## <a name="install-certificates"></a>Install certificates
 
-Uygulamanız ortak güvenilir olmayan ya da kendinden imzalı bir sertifika kullanıyorsa, bunu nasıl yükleyeceksiniz:
+If your app uses a certificate that isn't public-trusted or was self-signed, here's how to install it:
 
-1. Pakete sağ tıklayın ve **Özellikler**' i seçin.
-2. Görüntülenen pencerede **dijital imzalar** sekmesini seçin. Aşağıdaki görüntüde gösterildiği gibi sekmedeki listede yalnızca bir öğe olmalıdır. Öğeyi vurgulamak için bu öğeyi seçin ve ardından * * de öğesini seçin.
-3. Dijital sinyal ayrıntıları penceresi göründüğünde **genel** sekmesini seçin ve ardından **sertifikayı yükler**' i seçin.
-4. Yükleyici açıldığında, depolama konumunuz olarak **yerel makine** ' yi seçin ve ardından **İleri**' yi seçin.
-5. Yükleyici, uygulamanın cihazınızda değişiklik yapmasına izin vermek isteyip istemediğinizi isterse, **Evet**' i seçin.
-6. **Tüm sertifikaları aşağıdaki depolama alanına yerleştir**' i seçin ve ardından da **Araştır**' ı seçin.
-7. Sertifika deposu Seç penceresi göründüğünde, **Güvenilen Kişiler**' i seçin ve ardından **Tamam**' ı seçin.
+1. Right-click the package and select **Properties**.
+2. In the window that appears, select the **Digital signatures** tab. There should be only one item in the list on the tab, as shown in the following image. Select that item to highlight the item, then select **De
+3. When the digital signal details window appears, select the **General** tab, then select **Install certificate**.
+4. When the installer opens, select **local machine** as your storage location, then select **Next**.
+5. If the installer asks you if you want to allow the app to make changes to your device, select **Yes**.
+6. Select **Place all certificates in the following store**, then select **Browse**.
+7. When the select certificate store window appears, select **Trusted people**, then select **OK**.
 8. **Son**’u seçin.
 
-## <a name="prepare-powershell-scripts-for-msix-app-attach"></a>MSIX uygulama iliştirme için PowerShell betikleri hazırlama
+## <a name="prepare-powershell-scripts-for-msix-app-attach"></a>Prepare PowerShell scripts for MSIX app attach
 
-MSIX uygulama iliştirme, aşağıdaki sırayla gerçekleştirilmesi gereken dört farklı aşamaya sahiptir:
+MSIX app attach has four distinct phases that must be performed in the following order:
 
 1. Stage
-2. Kaydolma
-3. Kaydını silmek
-4. Gerçekleştirilen
+2. Kaydol
+3. Deregister
+4. Destage
 
-Her aşama bir PowerShell betiği oluşturur. Her aşama için örnek betikler [burada](https://github.com/Azure/RDS-Templates/tree/master/msix-app-attach)bulunabilir.
+Each phase creates a PowerShell script. Sample scripts for each phase are available [here](https://github.com/Azure/RDS-Templates/tree/master/msix-app-attach).
 
-### <a name="stage-the-powershell-script"></a>PowerShell betiğini hazırlama
+### <a name="stage-the-powershell-script"></a>Stage the PowerShell script
 
-PowerShell betiklerini güncelleştirmeden önce, VHD 'deki birimin birim GUID 'sine sahip olduğunuzdan emin olun. Birim GUID 'sini almak için:
+Before you update the PowerShell scripts, make sure you have the volume GUID of the volume in the VHD. To get the volume GUID:
 
-1.  VHD 'nin betiği çalıştıracağınız VM 'nin içinde bulunduğu ağ payını açın.
+1.  Open the network share where the VHD is located inside the VM where you'll run the script.
 
-2.  VHD 'ye sağ tıklayın ve **bağla**' yı seçin. Bu, VHD 'yi bir sürücü harfine bağlayacaktır.
+2.  Right-click the VHD and select **Mount**. This will mount the VHD to a drive letter.
 
-3.  VHD 'yi takduktan sonra **Dosya Gezgini** penceresi açılır. Üst klasörü yakala ve **\$parentFolder** değişkenini Güncelleştir
+3.  After you mount the VHD, the **File Explorer** window will open. Capture the parent folder and update the **\$parentFolder** variable
 
     >[!NOTE]
-    >Üst klasör görmüyorsanız, MSIX 'nin doğru genişletilmediği anlamına gelir. Önceki bölümü yineleyin ve yeniden deneyin.
+    >If you don't see a parent folder, that means the MSIX wasn't expanded properly. Redo the previous section and try again.
 
-4.  Üst klasörü açın. Doğru şekilde genişletilmişse, paketiyle aynı ada sahip bir klasör görürsünüz. **\$PackageName** değişkenini bu klasörün adıyla eşleşecek şekilde güncelleştirin.
+4.  Open the parent folder. If correctly expanded, you'll see a folder with the same name as the package. Update the **\$packageName** variable to match the name of this folder.
 
     Örneğin, `VSCodeUserSetup-x64-1.38.1_1.38.1.0_x64__8wekyb3d8bbwe`.
 
-5.  Bir komut istemi açın ve **mountvol**yazın. Bu komut, birimlerin ve GUID 'Lerinin bir listesini görüntüler. 2\. adımda sürücü harfinin VHD 'nizi bağladığınız sürücüyle eşleşen birimin GUID 'sini kopyalayın.
+5.  Open a command prompt and enter **mountvol**. This command will display a list of volumes and their GUIDs. Copy the GUID of the volume where the drive letter matches the drive you mounted your VHD to in step 2.
 
-    Örneğin, mountvol komutuna yönelik bu örnek çıktıda, VHD 'nizi C sürücüsüne bağladıysanız, `C:\`yukarıdaki değeri kopyalamak isteyeceksiniz:
+    For example, in this example output for the mountvol command, if you mounted your VHD to Drive C, you'll want to copy the value above `C:\`:
 
     ```cmd
     Possible values for VolumeName along with current mount points are:
@@ -227,9 +227,9 @@ PowerShell betiklerini güncelleştirmeden önce, VHD 'deki birimin birim GUID '
     ```
 
 
-6.  **\$VolumeGuid** değişkenini yeni kopyaladığınız birim GUID 'si ile güncelleştirin.
+6.  Update the **\$volumeGuid** variable with the volume GUID you just copied.
 
-7. Bir yönetici PowerShell istemi açın ve aşağıdaki PowerShell betiğini ortamınıza uygulanan değişkenlerle güncelleştirin.
+7. Open an Admin PowerShell prompt and update the following PowerShell script with the variables that apply to your environment.
 
     ```powershell
     #MSIX app attach staging sample
@@ -321,9 +321,9 @@ PowerShell betiklerini güncelleştirmeden önce, VHD 'deki birimin birim GUID '
     #endregion
     ```
 
-### <a name="register-powershell-script"></a>PowerShell betiğini Kaydet
+### <a name="register-powershell-script"></a>Register PowerShell script
 
-Kayıt betiğini çalıştırmak için aşağıdaki PowerShell cmdlet 'lerini ortamınıza uygulanan değerlerle birlikte yer tutucu değerleriyle birlikte çalıştırın.
+To run the register script, run the following PowerShell cmdlets with the placeholder values replaced with values that apply to your environment.
 
 ```powershell
 #MSIX app attach registration sample
@@ -343,9 +343,9 @@ Add-AppxPackage -Path \$path -DisableDevelopmentMode -Register
 #endregion
 ```
 
-### <a name="deregister-powershell-script"></a>PowerShell betiğini kaydını kaldırma
+### <a name="deregister-powershell-script"></a>Deregister PowerShell script
 
-Bu komut dosyası için, **\$PackageName** yer tutucusunu, Sınadığınızı paketin adıyla değiştirin.
+For this script, replace the placeholder for **\$packageName** with the name of the package you're testing.
 
 ```powershell
 #MSIX app attach deregistration sample
@@ -363,9 +363,9 @@ Remove-AppxPackage -PreserveRoamableApplicationData $packageName
 #endregion
 ```
 
-### <a name="destage-powershell-script"></a>PowerShell betiği önbellekten taşıma
+### <a name="destage-powershell-script"></a>Destage PowerShell script
 
-Bu komut dosyası için, **\$PackageName** yer tutucusunu, Sınadığınızı paketin adıyla değiştirin.
+For this script, replace the placeholder for **\$packageName** with the name of the package you're testing.
 
 ```powershell
 #MSIX app attach de staging sample
@@ -389,30 +389,30 @@ rmdir $packageName -Force -Verbose
 #endregion
 ```
 
-## <a name="set-up-simulation-scripts-for-the-msix-app-attach-agent"></a>MSIX uygulama iliştirme Aracısı için benzetim betikleri ayarlama
+## <a name="set-up-simulation-scripts-for-the-msix-app-attach-agent"></a>Set up simulation scripts for the MSIX app attach agent
 
-Betikleri oluşturduktan sonra kullanıcılar el ile çalıştırabilir veya başlatma, oturum açma, oturum kapatma ve kapatma betikleri olarak otomatik olarak çalışacak şekilde ayarlayabilir. Bu tür betikler hakkında daha fazla bilgi edinmek için bkz. [Grup ilkesi için saralma, kapatma, oturum açma ve oturum kapatma betikleri kullanma](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn789196(v=ws.11)).
+After you create the scripts, users can manually run them or set them up to run automatically as startup, logon, logoff, and shutdown scripts. To learn more about these types of scripts, see [Using startup, shutdown, logon, and logoff scripts in Group Policy](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn789196(v=ws.11)).
 
-Bu otomatik betiklerin her biri, uygulama komut dosyalarının bir aşamasını çalıştırır:
+Each of these automatic scripts runs one phase of the app attach scripts:
 
-- Başlangıç betiği, aşama betiğini çalıştırır.
-- Oturum açma betiği, kayıt betiğini çalıştırır.
-- Oturumu kapatma betiği, kaydı kaldırma betiğini çalıştırır.
-- Kapatılma betiği, taşıma betiğini çalıştırır.
+- The startup script runs the stage script.
+- The logon script runs the register script.
+- The logoff script runs the deregister script.
+- The shutdown script runs the destage script.
 
-## <a name="use-packages-offline"></a>Paketleri çevrimdışı kullanma
+## <a name="use-packages-offline"></a>Use packages offline
 
-[İş için Microsoft Store](https://businessstore.microsoft.com/) veya ağınıza veya internet 'e bağlı olmayan cihazlarda [eğitim Microsoft Store](https://educationstore.microsoft.com/) kullanıyorsanız, uygulamayı başarılı bir şekilde çalıştırmak için Microsoft Store paket lisanslarını almanız ve cihazınıza yüklemeniz gerekir. Cihazınız çevrimiçiyse ve Iş için Microsoft Store bağlanabildiğinizde, gerekli lisanslar otomatik olarak indirilmelidir, ancak çevrimdışı çalışıyorsanız, lisansları el ile ayarlamanız gerekir. 
+If you're using packages from the [Microsoft Store for Business](https://businessstore.microsoft.com/) or the [Microsoft Store for Education](https://educationstore.microsoft.com/) within your network or on devices that aren't connected to the internet, you need to get the package licenses from the Microsoft Store and install them on your device to successfully run the app. If your device is online and can connect to the Microsoft Store for Business, the required licenses should download automatically, but if you're offline, you'll need to set up the licenses manually. 
 
-Lisans dosyalarını yüklemek için, WMI Köprüsü sağlayıcısında MDM_EnterpriseModernAppManagement_StoreLicenses02_01 sınıfını çağıran bir PowerShell betiği kullanmanız gerekir.  
+To install the license files, you'll need to use a PowerShell script that calls the MDM_EnterpriseModernAppManagement_StoreLicenses02_01 class in the WMI Bridge Provider.  
 
-Lisansları çevrimdışı kullanım için ayarlama: 
+Here's how to set up the licenses for offline use: 
 
-1. Iş için Microsoft Store uygulama paketini, lisansları ve gerekli çerçeveleri indirin. Kodlanmış ve kodlanmamış lisans dosyalarının her ikisi de gereklidir. Ayrıntılı indirme yönergeleri [burada](https://docs.microsoft.com/microsoft-store/distribute-offline-apps#download-an-offline-licensed-app)bulunabilir.
-2. 3\. adım için komut dosyasında aşağıdaki değişkenleri güncelleştirin:
-      1. `$contentID`, kodlanmamış lisans dosyasından (. xml) ContentID değeridir. Lisans dosyasını dilediğiniz bir metin düzenleyicisinde açabilirsiniz.
-      2. `$licenseBlob`, kodlanmış lisans dosyasında (. bin), lisans blobu için tüm dizedir. Kodlanmış lisans dosyasını dilediğiniz bir metin düzenleyicisinde açabilirsiniz. 
-3. Yönetici PowerShell isteminden aşağıdaki betiği çalıştırın. Lisans yükleme işlemini gerçekleştirmek için iyi bir yer, bir yönetici isteminden çalıştırılması gereken [hazırlama betiğinin](#stage-the-powershell-script) sonunda yer alan bir yerdir.
+1. Download the app package, licenses, and required frameworks from the Microsoft Store for Business. You need both the encoded and unencoded license files. Detailed download instructions can be found [here](https://docs.microsoft.com/microsoft-store/distribute-offline-apps#download-an-offline-licensed-app).
+2. Update the following variables in the script for step 3:
+      1. `$contentID` is the ContentID value from the Unencoded license file (.xml). You can open the license file in a text editor of your choice.
+      2. `$licenseBlob` is the entire string for the license blob in the Encoded license file (.bin). You can open the encoded license file in a text editor of your choice. 
+3. Run the following script from an Admin PowerShell prompt. A good place to perform license installation is at the end of the [staging script](#stage-the-powershell-script) that also needs to be run from an Admin prompt.
 
 ```powershell
 $namespaceName = "root\cimv2\mdm\dmmap"
@@ -450,6 +450,6 @@ catch [Exception]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu özellik şu anda desteklenmemektedir, ancak [Windows sanal masaüstü techcommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)'de topluluğa soru sorabilirsiniz.
+This feature isn't currently supported, but you can ask questions to the community at the [Windows Virtual Desktop TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop).
 
-Windows sanal masaüstü [Geri Bildirim Hub 'ında](https://aka.ms/MRSFeedbackHub)Windows sanal masaüstü geri bildirimini de bırakabilir veya msix uygulama ve paketleme aracı hakkında geri bildirim ' i, [maltıya Ekle geri bildirim](https://aka.ms/msixappattachfeedback) hub 'ında ve [msix paketleme aracı geri bildirim hub 'ında](https://aka.ms/msixtoolfeedback)da bırakabilirsiniz.
+You can also leave feedback for Windows Virtual Desktop at the [Windows Virtual Desktop feedback hub](https://aka.ms/MRSFeedbackHub), or leave feedback for the MSIX app and packaging tool at the [MSIX app attach feedback hub](https://aka.ms/msixappattachfeedback) and the [MSIX packaging tool feedback hub](https://aka.ms/msixtoolfeedback).

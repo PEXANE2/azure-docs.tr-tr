@@ -1,6 +1,6 @@
 ---
-title: Kullanıcıları oturum açan Web uygulaması (üretime geçme)-Microsoft Identity platform
-description: Kullanıcılara oturum açan bir Web uygulaması oluşturmayı öğrenin (üretime geçin)
+title: Web app that signs in users (move to production) - Microsoft identity platform
+description: Learn how to build a web app that signs in users (move to production)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,38 +15,46 @@ ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd6717c132d32d54c16e7678695a09e35181a057
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: efcc7ed4f80d0e3e9750d19ff95d010052a08b87
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086543"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74481879"
 ---
-# <a name="web-app-that-signs-in-users---move-to-production"></a>Kullanıcılara oturum açan Web uygulaması-üretime geçme
+# <a name="web-app-that-signs-in-users-move-to-production"></a>Web app that signs in users: Move to production
 
-Artık, Web API 'Lerini çağırmak için bir belirteç edinmeyi öğrenmiş olduğunuza göre, bunu üretime taşımayı öğrenin.
+Now that you know how to get a token to call web APIs, learn how to move it to production.
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-### <a name="calling-web-apis-scenario"></a>Web API 'Leri çağırma senaryosu
+### <a name="scenario-for-calling-web-apis"></a>Scenario for calling web APIs
 
-Web uygulamanız kullanıcılar oturum açtığında, oturum açmış kullanıcılar adına Web API 'Leri çağırabilir. Web API 'Lerinden Web API 'Leri çağırmak aşağıdaki senaryonun nesnesidir:
+After your web app signs in users, it can call web APIs on behalf of the signed-in users. Calling web APIs from the web app is the object of the following scenario:
 
 > [!div class="nextstepaction"]
 > [Web API'lerini çağıran web uygulaması](scenario-web-app-call-api-overview.md)
 
-### <a name="deep-dive---aspnet-core-web-app-tutorial"></a>Derin derinlemesine bakış-ASP.NET Core Web uygulaması öğreticisi
+### <a name="deep-dive-aspnet-core-web-app-tutorial"></a>Deep dive: ASP.NET Core web app tutorial
 
-ASP.NET Core öğreticisi ile oturum açma kullanıcılarının diğer yolları hakkında bilgi edinin: [MS-Identity-aspnetcore-WebApp-öğreticisi](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial). Bu örnek, ' deki hesaplara oturum açma ekleme dahil olmak üzere, bir Web uygulaması için üretime hazırlı kod içeren aşamalı bir öğreticidir:
+Learn about other ways to sign in users with this ASP.NET Core tutorial: 
 
-- Kuruluşunuz,
-- birden çok kuruluş,
-- iş veya okul hesapları ya da kişisel Microsoft hesabı,
-- [Azure AD B2C](https://aka.ms/aadb2c),
-- ya da ulusal bulutlarda.
+> [!div class="nextstepaction"]
+> [Enable your web apps to sign in users and call APIs with the Microsoft identity platform for developers](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) 
 
-### <a name="sample-code---java-web-app"></a>Örnek kod-Java Web uygulaması
+This progressive tutorial has production-ready code for a web app, including how to add sign-in with accounts in:
 
-GitHub 'daki örnekten Java Web uygulaması hakkında daha fazla bilgi edinin: [Kullanıcılara Microsoft Identity platformu ve çağrıları ile oturum açan bir Java Web uygulaması Microsoft Graph](https://github.com/Azure-Samples/ms-identity-java-webapp)
+- Your organization
+- Multiple organizations
+- Work or school accounts, or personal Microsoft accounts
+- [Azure AD B2C](https://aka.ms/aadb2c)
+- National clouds
+
+### <a name="sample-code-java-web-app"></a>Sample code: Java web app
+
+Learn more about the Java web app from this sample on GitHub: 
+
+> [!div class="nextstepaction"]
+> [A Java Web application that signs in users with the Microsoft identity platform and calls Microsoft Graph](https://github.com/Azure-Samples/ms-identity-java-webapp)

@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı başlangıç: uygulamalar için bir profil oluşturma-Azure CLı-Azure Traffic Manager'
-description: Bu hızlı başlangıç makalesinde, yüksek oranda kullanılabilir bir Web uygulaması oluşturmak için bir Traffic Manager profili oluşturma açıklanmaktadır.
+title: Quickstart:Create a profile for HA of applications - Azure CLI - Azure Traffic Manager
+description: This quickstart article describes how to create a Traffic Manager profile to build a highly available web application.
 services: traffic-manager
 author: asudbring
 mnager: twooley
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: allensu
-ms.openlocfilehash: 8b8880e10f9b920a2ec077d4cc4c2239e6ea7438
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: b724a3e469c5dd8f7b4c4f30adef00c58c5c47c5
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034213"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483908"
 ---
-# <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak yüksek oranda kullanılabilir bir Web uygulaması için Traffic Manager profili oluşturma
+# <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-cli"></a>Quickstart: Create a Traffic Manager profile for a highly available web application using Azure CLI
 
-Bu hızlı başlangıçta, Web uygulamanız için yüksek kullanılabilirlik sunan bir Traffic Manager profilinin nasıl oluşturulacağı açıklanmaktadır.
+This quickstart describes how to create a Traffic Manager profile that delivers high availability for your web application.
 
-Bu hızlı başlangıçta, bir Web uygulamasının iki örneğini oluşturacaksınız. Bunların her biri farklı bir Azure bölgesinde çalışmaktadır. [Uç nokta önceliğine](traffic-manager-routing-methods.md#priority)göre bir Traffic Manager profili oluşturacaksınız. Profil, Kullanıcı trafiğini Web uygulamasını çalıştıran birincil siteye yönlendirir. Traffic Manager Web uygulamasını sürekli izler. Birincil site kullanılamıyorsa, yedekleme sitesine otomatik yük devretme sağlar.
+In this quickstart, you'll create two instances of a web application. Each of them is running in a different Azure region. You'll create a Traffic Manager profile based on [endpoint priority](traffic-manager-routing-methods.md#priority-traffic-routing-method). The profile directs user traffic to the primary site running the web application. Traffic Manager continuously monitors the web application. If the primary site is unavailable, it provides automatic failover to the backup site.
 
 Azure aboneliğiniz yoksa şimdi [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -46,9 +46,9 @@ Aşağıdaki örnek *eastus* konumunda *myResourceGroup* adlı bir kaynak grubu 
 
 ## <a name="create-a-traffic-manager-profile"></a>Traffic Manager profili oluşturma
 
-Kullanıcı trafiğini uç nokta önceliğine göre yönlendiren [az Network Traffic-Manager profili oluşturma](https://docs.microsoft.com/cli/azure/network/traffic-manager/profile?view=azure-cli-latest#az-network-traffic-manager-profile-create) ' yı kullanarak bir Traffic Manager profili oluşturun.
+Create a Traffic Manager profile using [az network traffic-manager profile create](https://docs.microsoft.com/cli/azure/network/traffic-manager/profile?view=azure-cli-latest#az-network-traffic-manager-profile-create) that directs user traffic based on endpoint priority.
 
-Aşağıdaki örnekte, **< profile_name >** benzersiz bir Traffic Manager profili adıyla değiştirin.
+In the following example, replace **<profile_name>** with a unique Traffic Manager profile name.
 
 ```azurecli-interactive
 
@@ -64,14 +64,14 @@ az network traffic-manager profile create \
 
 ```
 
-## <a name="create-web-apps"></a>Web uygulamaları oluşturma
+## <a name="create-web-apps"></a>Create web apps
 
-Bu hızlı başlangıçta iki farklı Azure bölgesinde (*Doğu ABD* ve *Batı Avrupa*) dağıtılan bir Web uygulamasının iki örneğine ihtiyacınız olacaktır. Her biri, Traffic Manager için birincil ve yük devretme uç noktaları olarak görev yapar.
+For this quickstart, you'll need two instances of a web application deployed in two different Azure regions (*East US* and *West Europe*). Each will serve as primary and failover endpoints for Traffic Manager.
 
-### <a name="create-web-app-service-plans"></a>Web App Service planları oluşturma
-İki farklı Azure bölgesinde dağıtacağınız Web uygulamasının iki örneği için [az appservice plan Create](https://docs.microsoft.com/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) komutunu kullanarak Web App Service planları oluşturun.
+### <a name="create-web-app-service-plans"></a>Create web app service plans
+Create web app service plans using [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) for the two instances of the web application that you will deploy in two different Azure regions.
 
-Aşağıdaki örnekte, **< appspname_eastus >** ve **< appspname_westeurope >** benzersiz bir App Service plan adıyla değiştirin
+In the following example, replace **<appspname_eastus>** and **<appspname_westeurope>** with a unique App Service Plan Name
 
 ```azurecli-interactive
 
@@ -88,10 +88,10 @@ az appservice plan create \
     --sku S1
 
 ```
-### <a name="create-a-web-app-in-the-app-service-plan"></a>App Service planında bir Web uygulaması oluşturma
-*Doğu ABD* ve Azure bölgelerindeki *Batı Avrupa* App Service planlarında [az WebApp Create](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) kullanarak Web uygulaması için iki örnek oluşturun.
+### <a name="create-a-web-app-in-the-app-service-plan"></a>Create a web app in the app service plan
+Create two instances the web application using [az webapp create](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) in the App Service plans in the *East US* and *West Europe* Azure regions.
 
-Aşağıdaki örnekte, **< app1name_eastus >** ve **< app2name_westeurope** > benzersiz bir uygulama adıyla değiştirin ve **<** appspname_eastus > ve **<** appspname_westeurope >, önceki bölümde App Service planlarını oluşturmak için kullanılan adla değiştirin.
+In the following example, replace **<app1name_eastus>** and **<app2name_westeurope>** with a unique App Name, and replace **<appspname_eastus>** and **<appspname_westeurope>** with the name used to create the App Service plans in the previous section.
 
 ```azurecli-interactive
 
@@ -108,16 +108,16 @@ az webapp create \
 ```
 
 ## <a name="add-traffic-manager-endpoints"></a>Traffic Manager uç noktalarını ekleme
-Aşağıdaki şekilde, [az Network Traffic-Manager uç noktası oluştur ' a](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create) Traffic Manager profile kullanarak iki Web Apps uç nokta Traffic Manager olarak ekleyin:
+Add the two Web Apps as Traffic Manager endpoints using [az network traffic-manager endpoint create](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create) to the Traffic Manager profile as follows:
 
-- Web uygulaması kimliğini belirleme ve *Doğu ABD* Azure bölgesinde bulunan Web uygulamasını, tüm Kullanıcı trafiğini yönlendirmek için birincil uç nokta olarak ekleyin. 
-- Web uygulaması kimliğini kesin ve *Batı Avrupa* Azure bölgesinde bulunan Web uygulamasını yük devretme uç noktası olarak ekleyin. 
+- Determine the Web App id and add the Web App located in the *East US* Azure region as the primary endpoint to route all the user traffic. 
+- Determinet the Web App id and add the Web App located in the *West Europe* Azure region as the failover endpoint. 
 
-Birincil uç nokta kullanılamadığında, trafik otomatik olarak yük devretme uç noktasına yönlendirir.
+When the primary endpoint is unavailable, traffic automatically routes to the failover endpoint.
 
-Aşağıdaki örnekte, **< app1name_eastus >** ve **< app2name_westeurope** > önceki bölümde yer alan her bir bölge için oluşturulan uygulama adlarıyla değiştirin, **<** appspname_eastus > ve **<** appspname_westeurope > önceki bölümde App Service planlarını oluşturmak için kullanılan adla değiştirin ve **<** profile_name > önceki bölümde kullanılan profil adıyla değiştirin. 
+In the following example, replace **<app1name_eastus>** and **<app2name_westeurope>** with the App Names created for each region in the previous section, replace **<appspname_eastus>** and **<appspname_westeurope>** with the name used to create the App Service plans in the previous section, and replace **<profile_name>** with the profile name used in the previous section. 
 
-**Doğu ABD uç noktası**
+**East US endpoint**
 
 ```azurecli-interactive
 
@@ -127,7 +127,7 @@ az webapp show \
     --query id
 
 ```
-Uç noktayı eklemek için çıktıda görünen kimliği ve aşağıdaki komutta kullanın:
+Make note of id displayed in output and use in the following command to add the endpoint:
 
 ```azurecli-interactive
 
@@ -141,7 +141,7 @@ az network traffic-manager endpoint create \
     --endpoint-status Enabled
 ```
 
-**Batı Avrupa uç noktası**
+**West Europe endpoint**
 
 ```azurecli-interactive
 
@@ -151,7 +151,7 @@ az webapp show \
     --query id
 
 ```
-Uç noktayı eklemek için çıktıda görünen kimliği ve aşağıdaki komutta kullanın:
+Make note of id displayed in output and use in the following command to add the endpoint:
 
 ```azurecli-interactive
 
@@ -166,15 +166,15 @@ az network traffic-manager endpoint create \
 
 ```
 
-## <a name="test-your-traffic-manager-profile"></a>Traffic Manager profilinizi test etme
+## <a name="test-your-traffic-manager-profile"></a>Test your Traffic Manager profile
 
-Bu bölümde, Traffic Manager profilinizin etki alanı adını kontrol edeceksiniz. Ayrıca birincil uç noktayı kullanılamaz olarak yapılandıracaksınız. Son olarak, Web uygulamasının hala kullanılabilir olduğunu görmeniz gerekir. Bunun nedeni, trafiği yük devretme uç noktasına gönderiyor Traffic Manager.
+In this section, you'll check the domain name of your Traffic Manager profile. You'll also configure the primary endpoint to be unavailable. Finally, you get to see that the web app is still available. It's because Traffic Manager sends the traffic to the failover endpoint.
 
-Aşağıdaki örnekte, **< app1name_eastus >** ve **< app2name_westeurope** > önceki bölümde yer alan her bir bölge için oluşturulan uygulama adlarıyla değiştirin, **<** appspname_eastus > ve **<** appspname_westeurope > önceki bölümde App Service planlarını oluşturmak için kullanılan adla değiştirin ve **<** profile_name > önceki bölümde kullanılan profil adıyla değiştirin.
+In the following example, replace **<app1name_eastus>** and **<app2name_westeurope>** with the App Names created for each region in the previous section, replace **<appspname_eastus>** and **<appspname_westeurope>** with the name used to create the App Service plans in the previous section, and replace **<profile_name>** with the profile name used in the previous section.
 
 ### <a name="determine-the-dns-name"></a>DNS adını belirleme
 
-[Az Network Traffic-Manager profile Show](https://docs.microsoft.com/cli/azure/network/traffic-manager/profile?view=azure-cli-latest#az-network-traffic-manager-profile-show)kullanılarak TRAFFIC Manager profilinin DNS adını saptayın.
+Determine the DNS name of the Traffic Manager profile using [az network traffic-manager profile show](https://docs.microsoft.com/cli/azure/network/traffic-manager/profile?view=azure-cli-latest#az-network-traffic-manager-profile-show).
 
 ```azurecli-interactive
 
@@ -185,14 +185,14 @@ az network traffic-manager profile show \
 
 ```
 
-**Relativednsname** değerini kopyalayın. Traffic Manager profilinizin DNS adı *http://<* relativednsname *>. trafficmanager. net*' dir. 
+Copy the **RelativeDnsName** value. The DNS name of your Traffic Manager profile is *http://<* relativednsname *>.trafficmanager.net*. 
 
 ### <a name="view-traffic-manager-in-action"></a>Traffic Manager'ın nasıl çalıştığını görün
-1. Web tarayıcısında, Web uygulamanızın varsayılan Web sitesini görüntülemek için Traffic Manager profilinizin DNS adını (*http://<* relativednsname *>. trafficmanager. net*) girin.
+1. In a web browser, enter the DNS name of your Traffic Manager profile (*http://<* relativednsname *>.trafficmanager.net*) to view your Web App's default website.
 
     > [!NOTE]
-    > Bu hızlı başlangıç senaryosunda, tüm istekler birincil uç noktaya yönlendirir. **Öncelik 1**olarak ayarlanır.
-2. Traffic Manager yük devretmeyi eylemde görüntülemek için [az Network Traffic-Manager Endpoint Update](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update)kullanarak birincil sitenizi devre dışı bırakın.
+    > In this quickstart scenario, all requests route to the primary endpoint. It is set to **Priority 1**.
+2. To view Traffic Manager failover in action, disable your primary site using [az network traffic-manager endpoint update](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update).
 
    ```azurecli-interactive
 
@@ -205,12 +205,12 @@ az network traffic-manager profile show \
     
    ```
 
-3. Web sitesini yeni bir Web tarayıcısı oturumunda görüntülemek için Traffic Manager profilinizin DNS adını (*http://<* relativednsname *>. trafficmanager. net*) kopyalayın.
-4. Web uygulamasının hala kullanılabilir olduğunu doğrulayın.
+3. Copy the DNS name of your Traffic Manager profile (*http://<* relativednsname *>.trafficmanager.net*) to view the website in a new web browser session.
+4. Verify that the web app is still available.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-İşiniz bittiğinde, [az Group Delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete)kullanarak kaynak gruplarını, Web uygulamalarını ve tüm ilgili kaynakları silin.
+When you're done, delete the resource groups, web applications, and all related resources using [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete).
 
 ```azurepowershell-interactive
 
@@ -221,7 +221,7 @@ az group delete \
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, Web uygulamanız için yüksek kullanılabilirlik sağlayan bir Traffic Manager profili oluşturdunuz. Yönlendirme trafiği hakkında daha fazla bilgi edinmek için Traffic Manager öğreticilerine geçin.
+In this quickstart, you created a Traffic Manager profile that provides high availability for your web application. To learn more about routing traffic, continue to the Traffic Manager tutorials.
 
 > [!div class="nextstepaction"]
 > [Traffic Manager öğreticileri](tutorial-traffic-manager-improve-website-response.md)

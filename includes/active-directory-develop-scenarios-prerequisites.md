@@ -14,18 +14,18 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: c2769282a2e9afda22d2e03c653b0f62b05b98bc
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: e52433cfae1e889f07818f582fc3aef0752932ea
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188552"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74482498"
 ---
-Bu makalede okumadan önce aşağıdaki kavramlarını tanımanız veya bu makaleleri okuyun:
+Before reading this article, you should be familiar with the following concepts:
 
-- [Microsoft Identity platformuna genel bakış](../articles/active-directory/develop/v2-overview.md)
+- [Microsoft identity platform overview](../articles/active-directory/develop/v2-overview.md)
 - [Kimlik doğrulaması temel bilgileri](../articles/active-directory/develop/authentication-scenarios.md)
-- [İzleyiciler](../articles/active-directory/develop/v2-supported-account-types.md)
-- [Uygulama ve hizmet sorumluları](../articles/active-directory/develop/app-objects-and-service-principals.md)
-- [İzinler ve onay](../articles/active-directory/develop/v2-permissions-and-consent.md)
-- [Kimlik belirteçlerini](../articles/active-directory/develop/id-tokens.md) ve [erişim belirteçleri](../articles/active-directory/develop/access-tokens.md)
+- [Audiences](../articles/active-directory/develop/v2-supported-account-types.md)
+- [Application and service principals](../articles/active-directory/develop/app-objects-and-service-principals.md)
+- [Permissions and consent](../articles/active-directory/develop/v2-permissions-and-consent.md)
+- [ID tokens](../articles/active-directory/develop/id-tokens.md) and [access tokens](../articles/active-directory/develop/access-tokens.md)

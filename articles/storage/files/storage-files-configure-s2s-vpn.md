@@ -1,117 +1,117 @@
 ---
-title: Azure dosyaları ile kullanmak için siteden siteye (S2S) VPN yapılandırma | Microsoft Docs
-description: Azure dosyaları ile kullanılmak üzere siteden siteye (S2S) VPN yapılandırma
+title: Configure a Site-to-Site (S2S) VPN for use with Azure Files | Microsoft Docs
+description: How to configure a Site-to-Site (S2S) VPN for use with Azure Files
 author: roygara
 ms.service: storage
 ms.topic: overview
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 36f85b0906b67c5bee61b9e22101f7a0d117878a
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 7762366f68bee2cd8c44e81bb22366c504ff1a73
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73141762"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74484430"
 ---
-# <a name="configure-a-site-to-site-vpn-for-use-with-azure-files"></a>Azure dosyaları ile kullanmak için siteden siteye VPN yapılandırma
-Azure dosya paylaşımlarınızı şirket içi ağınızdan SMB üzerinden bağlamak için, 445 numaralı bağlantı noktasını açmadan, siteden siteye (S2S) VPN bağlantısı kullanabilirsiniz. Azure [VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md)kullanarak sıteden siteye VPN kurabilirsiniz. Bu bir Azure kaynağı, VPN hizmetleri sunar ve depolama hesapları veya diğer Azure kaynaklarıyla birlikte bir kaynak grubunda dağıtılır.
+# <a name="configure-a-site-to-site-vpn-for-use-with-azure-files"></a>Configure a Site-to-Site VPN for use with Azure Files
+You can use a Site-to-Site (S2S) VPN connection to mount your Azure file shares over SMB from your on-premises network, without opening up port 445. You can set up a Site-to-Site VPN using [Azure VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md), which is an Azure resource offering VPN services, and is deployed in a resource group alongside storage accounts or other Azure resources.
 
-![Bir Azure VPN ağ geçidinin, bir Azure dosya paylaşımından bir S2S VPN kullanarak şirket içi bir siteye bağlanan bir topoloji grafiği](media/storage-files-configure-s2s-vpn/s2s-topology.png)
+![A topology chart illustrating the topology of an Azure VPN gateway connecting an Azure file share to an on-premises site using a S2S VPN](media/storage-files-configure-s2s-vpn/s2s-topology.png)
 
-Azure dosyaları için kullanılabilir ağ seçenekleri hakkında ayrıntılı bir tartışmaya devam etmeden önce [Azure dosyaları ağ genel bakış ' ı](storage-files-networking-overview.md) okumanızı kesinlikle öneririz.
+We strongly recommend that you read [Azure Files networking overview](storage-files-networking-overview.md) before continuing with this how to article for a complete discussion of the networking options available for Azure Files.
 
-Makalesinde, Azure dosya paylaşımlarını doğrudan şirket içinde bağlamak için siteden siteye VPN yapılandırma adımları ayrıntılı olarak açıklanır. Bir siteden siteye VPN üzerinden Azure Dosya Eşitleme eşitleme trafiğini yönlendirmek istiyorsanız, lütfen [Azure dosya eşitleme proxy ve güvenlik duvarı ayarlarını yapılandırma](storage-sync-files-firewall-and-proxy.md)konusuna bakın.
+The article details the steps to configure a Site-to-Site VPN to mount Azure file shares directly on-premises. If you're looking to route sync traffic for Azure File Sync over a Site-to-Site VPN, please see [configuring Azure File Sync proxy and firewall settings](storage-sync-files-firewall-and-proxy.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
-- Şirket içinde bağlamak istediğiniz bir Azure dosya paylaşımıdır. Siteden siteye VPN ile bir [Standart](storage-how-to-create-file-share.md) veya [Premium Azure dosya paylaşımından](storage-how-to-create-premium-fileshare.md) birini kullanabilirsiniz.
+- An Azure file share you would like to mount on-premises. You may use either a [standard](storage-how-to-create-file-share.md) or a [premium Azure file share](storage-how-to-create-premium-fileshare.md) with your Site-to-Site VPN.
 
-- Şirket içi veri merkezinizde Azure VPN Gateway ile uyumlu bir ağ gereci veya sunucusu. Azure dosyaları, şirket içi ağ gerecinden bağımsız olarak seçilmiş ancak Azure VPN Gateway [Sınanan cihazların bir listesini](../../vpn-gateway/vpn-gateway-about-vpn-devices.md)tutar. Farklı ağ gereçleri farklı özellikler, performans özellikleri ve yönetim işlevleri sunar. bu nedenle, bir ağ gereci seçerken bunları göz önünde bulundurun.
+- A network appliance or server in your on-premises datacenter that is compatible with Azure VPN Gateway. Azure Files is agnostic of the on-premises network appliance chosen but Azure VPN Gateway maintains a [list of tested devices](../../vpn-gateway/vpn-gateway-about-vpn-devices.md). Different network appliances offer different features, performance characteristics, and management functionalities, so consider these when selecting a network appliance.
 
-    Mevcut bir ağ gereciniz yoksa, Windows Server, şirket içi ağ gereci olarak kullanılabilecek bir yerleşik sunucu rolü, Yönlendirme ve uzaktan erişim (RRAS) içerir. Windows Server 'da yönlendirme ve uzaktan erişim yapılandırma hakkında daha fazla bilgi edinmek için bkz. [RAS ağ geçidi](https://docs.microsoft.com/windows-server/remote/remote-access/ras-gateway/ras-gateway).
+    If you do not have an existing network appliance, Windows Server contains a built-in Server Role, Routing and Remote Access (RRAS), which may be used as the on-premises network appliance. To learn more about how to configure Routing and Remote Access in Windows Server, see [RAS Gateway](https://docs.microsoft.com/windows-server/remote/remote-access/ras-gateway/ras-gateway).
 
-## <a name="add-storage-account-to-vnet"></a>Depolama hesabını VNet 'e Ekle
-Azure portal, şirket içinde bağlamak istediğiniz Azure dosya paylaşımının bulunduğu depolama hesabına gidin. Depolama hesabının içindekiler tablosunda **güvenlik duvarları ve sanal ağlar** girişini seçin. Oluşturduğunuz sırada depolama hesabınıza bir sanal ağ eklemediğiniz takdirde, ortaya çıkan bölmenin **tüm ağların** seçtiği radyo **erişimine izin ver** düğmesine sahip olması gerekir.
+## <a name="add-storage-account-to-vnet"></a>Add storage account to VNet
+In the Azure portal, navigate to the storage account containing the Azure file share you would like to mount on-premises. In the table of contents for the storage account, select the **Firewalls and virtual networks** entry. Unless you added a virtual network to your storage account when you created it, the resulting pane should have the **Allow access from** radio button for **All networks** selected.
 
-Depolama hesabınızı istenen sanal ağa eklemek için **Seçili ağlar**' ı seçin. **Sanal ağlar** alt başlığının altında, istenen duruma bağlı olarak **+ var olan sanal ağı ekle** veya **+ Yeni sanal ağ ekle** ' ye tıklayın. Yeni bir sanal ağ oluşturmak yeni bir Azure kaynağının oluşturulmasına neden olur. Yeni veya mevcut VNet kaynağının depolama hesabı ile aynı kaynak grubunda veya abonelikte olması gerekmez, ancak depolama hesabı ile aynı bölgede, VNet 'iniz dağıttığınız kaynak grubu ve aboneliğin aynı bölgede olması gerekir  VPN Gateway ' e dağıtın. 
+To add your storage account to the desired virtual network, select **Selected networks**. Under the **Virtual networks** subheading, click either **+ Add existing virtual network** or **+Add new virtual network** depending on the desired state. Creating a new virtual network will result in a new Azure resource being created. The new or existing VNet resource does not need to be in the same resource group or subscription as the storage account, however it must be in the same region as the storage account and the resource group and subscription you deploy your VNet into must match the one you will deploy your VPN Gateway into. 
 
-![Depolama hesabına var olan veya yeni bir sanal ağ ekleme seçeneği sunan Azure portal ekran görüntüsü](media/storage-files-configure-s2s-vpn/add-vnet-1.png)
+![Screenshot of the Azure portal giving the option to add an existing or new virtual network to the storage account](media/storage-files-configure-s2s-vpn/add-vnet-1.png)
 
-Var olan sanal ağı eklerseniz, bu sanal ağın depolama hesabının ekleneceği bir veya daha fazla alt ağını seçmeniz istenir. Yeni bir sanal ağ seçerseniz, sanal ağın oluşturulmasının bir parçası olarak bir alt ağ oluşturacak ve daha sonra sanal ağ için elde edilen Azure kaynağı aracılığıyla daha fazla eklenebilir.
+If you add existing virtual network, you will be asked to select one or more subnets of that virtual network which the storage account should be added to. If you select a new virtual network, you will create a subnet as part of the creation of the virtual network, and you can add more later through the resulting Azure resource for the virtual network.
 
-Daha önce aboneliğinize bir depolama hesabı eklemediyseniz, Microsoft. Storage hizmeti uç noktasının sanal ağa eklenmesi gerekir. Bu işlem biraz zaman alabilir ve bu işlem tamamlanana kadar, bu depolama hesabı içindeki Azure dosya paylaşımlarına VPN bağlantısı ile birlikte erişemeyeceksiniz. 
+If you have not added a storage account to your subscription before, the Microsoft.Storage service endpoint will need to be added to the virtual network. This may take some time, and until this operation has completed, you will not be able to access the Azure file shares within that storage account, including via the VPN connection. 
 
-## <a name="deploy-an-azure-vpn-gateway"></a>Azure VPN Gateway dağıtma
-Azure portal içindekiler tablosunda **Yeni kaynak oluştur** ' u seçin ve *sanal ağ geçidi*için arama yapın. Sanal ağ geçidinizin, önceki adımda dağıttığınız sanal ağ ile aynı abonelikte, Azure bölgesinde ve kaynak grubunda olmalıdır (sanal ağ çekildiğinde kaynak grubunun otomatik olarak seçili olduğunu unutmayın). 
+## <a name="deploy-an-azure-vpn-gateway"></a>Deploy an Azure VPN Gateway
+In the table of contents for the Azure portal, select **Create a new resource** and search for *Virtual network gateway*. Your virtual network gateway must be in the same subscription, Azure region, and resource group as the virtual network you deployed in the previous step (note that resource group is automatically selected when the virtual network is picked). 
 
-Azure VPN Gateway dağıtma amacıyla, aşağıdaki alanları doldurmanız gerekir:
+For the purposes of deploying an Azure VPN Gateway, you must populate the following fields:
 
-- **Ad**: VPN Gateway için Azure kaynağının adı. Bu ad, yönetilebilmeniz için yararlı bulduğunuz herhangi bir ad olabilir.
-- **Bölge**: VPN Gateway dağıtılacağı bölge.
-- **Ağ geçidi türü**: sıteden siteye VPN dağıtmak amacıyla **VPN**'yi seçmeniz gerekir.
-- **VPN türü**: VPN cihazınıza bağlı olarak, *yönlendirme tabanlı** veya **ilke tabanlı** seçeneklerinden birini belirleyebilirsiniz. Rota tabanlı VPN 'Ler Ikev2 'yi destekler, ilke tabanlı VPN 'Ler yalnızca IKEv1 'yi destekler. İki tür VPN ağ geçidi hakkında daha fazla bilgi edinmek için bkz. [ilke tabanlı ve rota tabanlı VPN ağ geçitleri hakkında](../../vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md#about)
-- **SKU**: SKU, Izin verilen siteden siteye tünel SAYıSıNı ve VPN 'nin istenen performansını denetler. Kullanım durumu için uygun SKU 'YU seçmek için [ağ GEÇIDI SKU](../../vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku) listesine başvurun. VPN Gateway SKU 'SU daha sonra gerekirse değiştirilebilir.
-- **Sanal ağ**: önceki adımda oluşturduğunuz sanal ağ.
-- **Genel IP adresi**: internet 'e sunulacak VPN Gateway IP adresi. Büyük olasılıkla, yeni bir IP adresi oluşturmanız gerekecektir, ancak uygunsa mevcut bir kullanılmayan IP adresini de kullanabilirsiniz. Yeni bir IP adresi **oluşturmayı**seçerseniz, VPN Gateway aynı kaynak grubunda Azure kaynağı yeni bir IP adresi oluşturulur ve **genel IP adresi adı** yeni oluşturulan IP adresinin adı olacaktır. **Mevcut olanı kullan**' ı seçerseniz, mevcut kullanılmayan IP adresini seçmeniz gerekir.
-- **Etkin-etkin modu etkinleştir**: yalnızca etkin-etkin ağ geçidi yapılandırması oluşturuyorsanız **etkin** ' i seçin, aksi halde **devre dışı** bırakın. Etkin-etkin mod hakkında daha fazla bilgi edinmek için bkz. [yüksek oranda kullanılabilir şirket içi ve VNET 'Ten VNET 'e bağlantı](../../vpn-gateway/vpn-gateway-highlyavailable.md).
-- **BGP ASN 'Yi yapılandırma**: yalnızca yapılandırmanızın bu ayarı gerektirmesi durumunda **etkin** ' i seçin. Bu ayar hakkında daha fazla bilgi edinmek için bkz. [Azure VPN Gateway Ile BGP hakkında](../../vpn-gateway/vpn-gateway-bgp-overview.md).
+- **Name**: The name of the Azure resource for the VPN Gateway. This name may be any name you find useful for your management.
+- **Region**: The region into which the VPN Gateway will be deployed.
+- **Gateway type**: For the purpose of deploying a Site-to-Site VPN, you must select **VPN**.
+- **VPN type**: You may choose either *Route-based** or **Policy-based** depending on your VPN device. Route-based VPNs support IKEv2, while policy-based VPNs only support IKEv1. To learn more about the two types of VPN gateways, see [About policy-based and route-based VPN gateways](../../vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md#about)
+- **SKU**: The SKU controls the number of allowed Site-to-Site tunnels and desired performance of the VPN. To select the appropriate SKU for your use case, consult the [Gateway SKU](../../vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku) listing. The SKU of the VPN Gateway may be changed later if necessary.
+- **Virtual network**: The virtual network you created in the previous step.
+- **Public IP address**: The IP address of VPN Gateway that will be exposed to the internet. Likely, you will need to create a new IP address, however you may also use an existing unused IP address if that is appropriate. If you select to **Create new**, a new IP address Azure resource will be created in the same resource group as the VPN Gateway and the  **Public IP address name** will be the name of the newly created IP address. If you select **Use existing**, you must select the existing unused IP address.
+- **Enable active-active mode**: Only select **Enabled** if you are creating an active-active gateway configuration, otherwise leave **Disabled** selected. To learn more about active-active mode, see [Highly available cross-premises and VNet-to-VNet connectivity](../../vpn-gateway/vpn-gateway-highlyavailable.md).
+- **Configure BGP ASN**: Only select **Enabled** if your configuration specifically requires this setting. To learn more about this setting, see [About BGP with Azure VPN Gateway](../../vpn-gateway/vpn-gateway-bgp-overview.md).
 
-VPN Gateway oluşturmak için **gözden geçir + oluştur** ' u seçin. VPN Gateway, tam olarak oluşturulması ve dağıtılması 45 dakika sürebilir.
+Select **Review + create** to create the VPN Gateway. A VPN Gateway may take up to 45 minutes to fully create and deploy.
 
-### <a name="create-a-local-network-gateway-for-your-on-premises-gateway"></a>Şirket içi ağ geçidiniz için yerel ağ geçidi oluşturma 
-Yerel ağ geçidi, şirket içi ağ gerecinizi temsil eden bir Azure kaynağıdır. Azure portal içindekiler tablosunda **Yeni kaynak oluştur** ' u seçin ve *yerel ağ geçidi*için arama yapın. Yerel ağ geçidi, depolama hesabınız, sanal ağınız ve VPN Gateway birlikte dağıtılacak bir Azure kaynağıdır, ancak depolama hesabı ile aynı kaynak grubunda veya abonelikte olması gerekmez. 
+### <a name="create-a-local-network-gateway-for-your-on-premises-gateway"></a>Create a local network gateway for your on-premises gateway 
+A local network gateway is an Azure resource that represents your on-premises network appliance. In the table of contents for the Azure portal, select **Create a new resource** and search for *local network gateway*. The local network gateway is an Azure resource that will be deployed alongside your storage account, virtual network, and VPN Gateway, but does not need to be in the same resource group or subscription as the storage account. 
 
-Yerel ağ geçidi kaynağını dağıtmak amacıyla, aşağıdaki alanları doldurmanız gerekir:
+For the purposes of deploying the local network gateway resource, you must populate the following fields:
 
-- **Ad**: yerel ağ geçidi için Azure kaynağının adı. Bu ad, yönetilebilmeniz için yararlı bulduğunuz herhangi bir ad olabilir.
-- **IP adresi**: şirket içi yerel ağ geçidinizin genel IP adresi.
-- **Adres alanı**: Bu yerel ağ geçidinin temsil ettiği ağ için adres aralıkları. Birden çok adres alanı aralığı ekleyebilirsiniz, ancak burada belirttiğiniz aralıkların, bağlanmak istediğiniz diğer ağların aralıklarıyla çakışmadığından emin olun. 
-- **BGP ayarlarını yapılandırma**: yalnızca yapılandırma için bu ayar gerekiyorsa BGP ayarlarını yapılandırın. Bu ayar hakkında daha fazla bilgi edinmek için bkz. [Azure VPN Gateway Ile BGP hakkında](../../vpn-gateway/vpn-gateway-bgp-overview.md).
-- **Abonelik**: istenen abonelik. Bunun VPN Gateway veya depolama hesabı için kullanılan abonelikle eşleşmesi gerekmez.
-- **Kaynak grubu**: istenen kaynak grubu. Bunun VPN Gateway veya depolama hesabı için kullanılan kaynak grubuyla eşleşmesi gerekmez.
-- **Konum**: yerel ağ geçidi kaynağının oluşturulacağı Azure bölgesi. Bu, VPN Gateway ve depolama hesabı için seçtiğiniz bölgeyle eşleşmelidir.
+- **Name**: The name of the Azure resource for the local network gateway. This name may be any name you find useful for your management.
+- **IP address**: The public IP address of your local gateway on-premises.
+- **Address space**: The address ranges for the network this local network gateway represents. You can add multiple address space ranges, but make sure that the ranges you specify here do not overlap with ranges of other networks that you want to connect to. 
+- **Configure BGP settings**: Only configure BGP settings if your configuration requires this setting. To learn more about this setting, see [About BGP with Azure VPN Gateway](../../vpn-gateway/vpn-gateway-bgp-overview.md).
+- **Subscription**: The desired subscription. This does not need to match the subscription used for the VPN Gateway or the storage account.
+- **Resource group**: The desired resource group. This does not need to match the resource group used for the VPN Gateway or the storage account.
+- **Location**: The Azure Region the local network gateway resource should be created in. This should match the region you selected for the VPN Gateway and the storage account.
 
-Yerel ağ geçidi kaynağını oluşturmak için **Oluştur** ' u seçin.  
+Select **Create** to create the local network gateway resource.  
 
-## <a name="configure-on-premises-network-appliance"></a>Şirket içi ağ gerecini yapılandırma
-Şirket içi ağ gerecinizi yapılandırmanın belirli adımları, kuruluşunuzun seçtiği ağ gerecine bağlı olarak değişir. Kuruluşunuzun seçtiği cihaza bağlı olarak, [Sınanan cihazların listesi](../../vpn-gateway/vpn-gateway-about-vpn-devices.md) , Azure VPN Gateway ile yapılandırma için cihaz satıcınızın yönergelerine giden bir bağlantıya sahip olabilir.
+## <a name="configure-on-premises-network-appliance"></a>Configure on-premises network appliance
+The specific steps to configure your on-premises network appliance depend based on the network appliance your organization has selected. Depending on the device your organization has chosen, the [list of tested devices](../../vpn-gateway/vpn-gateway-about-vpn-devices.md) may have a link out to your device vendor's instructions for configuring with Azure VPN Gateway.
 
-## <a name="create-private-endpoint-preview"></a>Özel uç nokta oluştur (Önizleme)
-Depolama hesabınız için özel bir uç nokta oluşturulması, depolama hesabınıza sanal Ağınızın IP adresi alanında bir IP adresi sağlar. Bu özel IP adresini kullanarak Azure dosya paylaşımınızı Şirket içinden bağladığınızda, VPN yüklemesi tarafından belirlenen yönlendirme kuralları, VPN üzerinden depolama hesabına bağlama isteğinizi yönlendirir. 
+## <a name="create-private-endpoint-preview"></a>Create private endpoint (preview)
+Creating a private endpoint for your storage account gives your storage account an IP address within the IP address space of your virtual network. When you mount your Azure file share from on-premises using this private IP address, the routing rules autodefined by the VPN installation will route your mount request to the storage account via the VPN. 
 
-Depolama hesabı dikey penceresinde, yeni bir özel uç nokta oluşturmak için sol taraftaki içindekiler tablosunda ve **+ Özel uç noktada** **Özel uç nokta bağlantıları** ' nı seçin. Ortaya çıkan sihirbazda, tamamlanacak birden çok sayfa vardır:
+In the storage account blade, select **Private endpoint connections** in the left-hand table of contents and **+ Private endpoint** to create a new private endpoint. The resulting wizard has multiple pages to complete:
 
-![Özel uç nokta oluştur bölümünün temel bilgiler bölümünün ekran görüntüsü](media/storage-files-configure-s2s-vpn/create-private-endpoint-1.png)
+![A screenshot of the Basics section of the create private endpoint section](media/storage-files-configure-s2s-vpn/create-private-endpoint-1.png)
 
-**Temel bilgiler** sekmesinde, Özel uç noktanız için istenen kaynak grubunu, adı ve bölgeyi seçin. Bunlar istediğiniz gibi olabilir, ancak, içinde özel uç nokta oluşturmak istediğiniz sanal ağ ile aynı bölgede özel uç nokta oluşturmanız gerekir.
+On the **Basics** tab, select the desired resource group, name, and region for your private endpoint. These can be whatever you want, they don't have to match the storage account in anyway, although you must create the private endpoint in the same region as the virtual network you wish to create the private endpoint in.
 
-**Kaynak** sekmesinde, **Dizinimde bir Azure kaynağına bağlanmak**için radyo düğmesini seçin. **Kaynak**türü altında, kaynak türü için **Microsoft. Storage/storageaccounts** ' ı seçin. **Kaynak** alanı, bağlanmak istediğiniz Azure dosya paylaşımının bulunduğu depolama hesabıdır. Azure dosyaları için olduğundan, hedef alt kaynak **Dosya**.
+On the **Resource** tab, select the radio button for **Connect to an Azure resource in my directory**. Under **Resource type**, select **Microsoft.Storage/storageAccounts** for the resource type. The **Resource** field is the storage account with the Azure file share you wish to connect to. Target sub-resource is **file**, since this is for Azure Files.
 
-**Yapılandırma** sekmesi, Özel uç noktanızı eklemek istediğiniz belirli sanal ağı ve alt ağı seçmenize olanak sağlar. Yukarıda oluşturduğunuz sanal ağı seçin. Hizmet uç noktanızı eklemiş olduğunuz alt ağdan farklı bir alt ağ seçmelisiniz.
+The **Configuration** tab allows you to select the specific virtual network and subnet you would like to add your private endpoint to. Select the virtual network you created above. You must select a distinct subnet from the subnet you added your service endpoint to above.
 
-**Yapılandırma** sekmesi ayrıca özel bir DNS bölgesi ayarlamanıza olanak sağlar. Bu gerekli değildir, ancak Azure dosya paylaşımının bağlanması için IP adresi olan bir UNC yolu yerine kolay bir UNC yolu (`\\mystorageaccount.privatelink.file.core.windows.net\myshare`gibi) kullanmanıza olanak tanır. Bu, sanal ağınız içindeki kendi DNS sunucularınız ile de yapılabilir.
+The **Configuration** tab also allows you to set up a private DNS zone. This is not required, but allows you to use a friendly UNC path (such as `\\mystorageaccount.privatelink.file.core.windows.net\myshare`) instead of a UNC path with an IP address to mount the Azure file share. This may also be done with your own DNS servers within your virtual network.
 
-Özel uç noktayı oluşturmak için **gözden geçir + oluştur** ' a tıklayın. Özel uç nokta oluşturulduktan sonra, iki yeni kaynak görürsünüz: özel bir uç nokta kaynağı ve eşleştirilmiş bir sanal ağ arabirimi. Sanal ağ arabirim kaynağı, depolama hesabının adanmış özel IP 'si olur. 
+Click **Review + create** to create the private endpoint. Once the private endpoint has been created, you will see two new resources: a private endpoint resource and a paired virtual network interface. The virtual network interface resource will have the dedicated private IP of the storage account. 
 
-## <a name="create-the-site-to-site-connection"></a>Siteden siteye bağlantı oluşturma
-Bir S2S VPN dağıtımını gerçekleştirmek için, şirket içi ağ gereciniz (yerel ağ geçidi kaynağıyla gösterilir) ve VPN Gateway arasında bir bağlantı oluşturmanız gerekir. Bunu yapmak için yukarıda oluşturduğunuz VPN Gateway gidin. VPN Gateway içindekiler tablosunda **Bağlantılar**' ı seçin ve **Ekle**' ye tıklayın. Elde edilen **bağlantı ekle** bölmesi aşağıdaki alanları gerektirir:
+## <a name="create-the-site-to-site-connection"></a>Create the Site-to-Site connection
+To complete the deployment of a S2S VPN, you must create a connection between your on-premises network appliance (represented by the local network gateway resource) and the VPN Gateway. To do this, navigate to the VPN Gateway you created above. In the table of contents for the VPN Gateway, select **Connections**, and click **Add**. The resulting **Add connection** pane requires the following fields:
 
-- **Ad**: bağlantının adı. Bir VPN Gateway birden çok bağlantıyı barındırabileceğinden, bu bağlantıyı ayırt edecek yönetimi için bir ad seçin.
-- **Bağlantı türü**: Bu bir S2S bağlantısı olduğundan, açılan listeden **siteden siteye (IPSec)** öğesini seçin.
-- **Sanal ağ geçidi**: Bu alan, bağlantıyı yaptığınız VPN Gateway için otomatik olarak seçilir ve değiştirilemez.
-- **Yerel ağ geçidi**: bu, VPN Gateway bağlamak istediğiniz yerel ağ geçidindir. Sonuç seçim bölmesi, yukarıda oluşturduğunuz yerel ağ geçidinin adına sahip olmalıdır.
-- **Paylaşılan anahtar (PSK)** : bağlantı için şifreleme oluşturmak için kullanılan harflerin ve sayıların karışımı. Aynı paylaşılan anahtarın hem sanal ağ hem de yerel ağ geçitlerinde kullanılması gerekir. Ağ Geçidi cihazınız bir sunmazsa, buradan bir tane oluşturabilir ve bunu cihazınıza sağlayabilirsiniz.
+- **Name**: The name of the connection. A VPN Gateway can host multiple connections, so pick a name helpful for your management that will distinguish this particular connection.
+- **Connection type**: Since this a S2S connection, select **Site-to-site (IPSec)** in the drop-down list.
+- **Virtual network gateway**: This field is auto-selected to the VPN Gateway you're making the connection to and can't be changed.
+- **Local network gateway**: This is the local network gateway you want to connect to your VPN Gateway. The resulting selection pane should have the name of the local network gateway you created above.
+- **Shared key (PSK)** : A mixture of letters and numbers, used to establish encryption for the connection. The same shared key must be used in both the virtual network and local network gateways. If your gateway device doesn't provide one, you can make one up here and provide it to your device.
 
-Bağlantıyı oluşturmak için **Tamam ' ı** seçin. **Bağlantılar** sayfası aracılığıyla bağlantının başarıyla yapıldığını doğrulayabilirsiniz.
+Select **OK** to create the connection. You can verify the connection has been made successfully through the **Connections** page.
 
-## <a name="mount-azure-file-share"></a>Azure dosya paylaşımından bağlama 
-S2S VPN 'yi yapılandırmanın son adımı, Azure dosyaları için çalıştığını doğrulamakdır. Bunu, Azure dosya paylaşımınızı tercih ettiğiniz işletim sistemi ile şirket içi olarak bağlayarak yapabilirsiniz. İşletim sistemine göre bağlama için şu yönergelere bakın:
+## <a name="mount-azure-file-share"></a>Mount Azure file share 
+The final step in configuring a S2S VPN is verifying that it works for Azure Files. You can do this by mounting your Azure file share on-premises with your preferred OS. See the instructions to mount by OS here:
 
 - [Windows](storage-how-to-use-files-windows.md)
 - [macOS](storage-how-to-use-files-mac.md)
 - [Linux](storage-how-to-use-files-linux.md)
 
 ## <a name="see-also"></a>Ayrıca bkz.
-- [Azure dosyaları ağlarına genel bakış](storage-files-networking-overview.md)
-- [Linux üzerinde Azure dosyaları ile kullanım için Noktadan siteye (P2S) VPN yapılandırma](storage-files-configure-p2s-vpn-windows.md)
-- [Linux üzerinde Azure dosyaları ile kullanım için Noktadan siteye (P2S) VPN yapılandırma](storage-files-configure-p2s-vpn-linux.md)
+- [Azure Files networking overview](storage-files-networking-overview.md)
+- [Configure a Point-to-Site (P2S) VPN on Windows for use with Azure Files](storage-files-configure-p2s-vpn-windows.md)
+- [Configure a Point-to-Site (P2S) VPN on Linux for use with Azure Files](storage-files-configure-p2s-vpn-linux.md)

@@ -1,6 +1,6 @@
 ---
 title: Sanal çekirdek modeline genel bakış
-description: Sanal çekirdek satın alma modeli, işlem ve depolama kaynaklarını bağımsız olarak ölçeklendirmenize, şirket içi performansı eşleşmenize ve fiyatı iyileştirmenize olanak tanır.
+description: The vCore purchasing model lets you independently scale compute and storage resources, match on-premises performance, and optimize price.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -8,176 +8,176 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 11/04/2019
-ms.openlocfilehash: 1bdd14841fc1c537046ee8dc3d0d6dc63b88ea25
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.date: 11/25/2019
+ms.openlocfilehash: 94728f2e4be6a16d048b4ff97bedefd5e32957ed
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196525"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74481284"
 ---
 # <a name="vcore-model-overview"></a>Sanal çekirdek modeline genel bakış
 
-Sanal çekirdek (vCore) modeli çeşitli avantajlar sağlar:
+The virtual core (vCore) model provides several benefits:
 
-- Daha yüksek işlem, bellek, GÇ ve depolama sınırları.
-- İş yükünün işlem ve bellek gereksinimlerini daha iyi eşleştirmek için donanım oluşturma üzerinde denetim.
-- [Azure hibrit avantajı (AHB)](sql-database-azure-hybrid-benefit.md) ve [ayrılmış örnek (RI)](sql-database-reserved-capacity.md)için fiyatlandırma iskontoları.
-- İşlem gücüne yönelik donanım ayrıntılarında daha büyük saydamlık; Şirket içi dağıtımlardan geçiş planlamayı kolaylaştırır.
+- Higher compute, memory, IO, and storage limits.
+- Control over the hardware generation to better match compute and memory requirements of the workload.
+- Pricing discounts for [Azure Hybrid Benefit (AHB)](sql-database-azure-hybrid-benefit.md) and [Reserved Instance (RI)](sql-database-reserved-capacity.md).
+- Greater transparency in the hardware details that power the compute; facilitates planning for migrations from on-premises deployments.
 
 ## <a name="service-tiers"></a>Hizmet katmanları
 
-Sanal çekirdek modelindeki hizmet katmanı seçenekleri Genel Amaçlı, İş Açısından Kritik ve Hyperscale içerir. Hizmet katmanı genellikle depolama mimarisini, boşluk ve GÇ sınırlarını ve kullanılabilirlik ve olağanüstü durum kurtarma ile ilgili iş sürekliliği seçeneklerini tanımlar.
+Service tier options in the vCore model include General Purpose, Business Critical, and Hyperscale. The service tier generally defines the storage architecture, space and IO limits, and business continuity options related to availability and disaster recovery.
 
-||**Genel amaçlı**|**İş açısından kritik**|**Hiper ölçekli**|
+||**Genel amaçlı**|**Business critical**|**Hyperscale**|
 |---|---|---|---|
-|Şunlar için en iyisidir:|Birçok iş yükü. Bütçeye dayalı, dengeli ve ölçeklenebilir işlem ve depolama seçenekleri sunar. |, Birkaç yalıtılmış çoğaltma kullanarak ve en yüksek g/ç performansı sunan iş uygulamalarına en yüksek esnekliği sağlar.|Yüksek düzeyde ölçeklenebilir depolama ve okuma ölçeği gereksinimlerine sahip iş yüklerinin çoğu.  , Birden fazla yalıtılmış veritabanı çoğaltmasının yapılandırılmasına izin vererek daha yüksek esnekliği hatalara olanak sağlar. |
-|Depolama|Uzak depolamayı kullanır.<br/>**Tek veritabanı ve elastik havuz sağlanan işlem**:<br/>5 GB – 4 TB<br/>**Sunucusuz işlem**:<br/>5 GB-3 TB<br/>**Yönetilen örnek**: 32 GB-8 TB |Yerel SSD depolama kullanır.<br/>**Tek veritabanı ve elastik havuz sağlanan işlem**:<br/>5 GB – 8 TB<br/>**Yönetilen örnek**:<br/>32 GB-4 TB |Gerektiğinde depolamanın esnek otomatik büyümesi. 100 TB 'a kadar depolamayı destekler. Yerel ara havuz önbelleği ve yerel veri depolaması için yerel SSD depolama kullanır. Son uzun süreli veri deposu olarak Azure uzak depolama kullanır. |
-|G/ç verimlilik (yaklaşık)|**Tek veritabanı ve elastik havuz**: 500 IOPS, vCore başına en fazla 40000 IOPS.<br/>**Yönetilen örnek**: [dosyanın boyutuna](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)bağlıdır.|en fazla 320.000 IOPS 'ye kadar vCore başına 5000 ıOPS|Hiper ölçek, birden çok düzeyde önbelleğe alma özelliği olan çok katmanlı bir mimaridir. Etkin IOPS iş yüküne bağlı olacaktır.|
-|Kullanılabilirlik|1 çoğaltma, okuma ölçeğinde çoğaltmalar yok|3 çoğaltma, 1 [okuma ölçeği çoğaltma](sql-database-read-scale-out.md),<br/>bölge yedekli yüksek kullanılabilirlik (HA)|1 okuma-yazma çoğaltması, artı 0-4 [okuma ölçekli çoğaltmalar](sql-database-read-scale-out.md)|
-|Yedeklemeler|[Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 gün (varsayılan olarak 7 gün)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 gün (varsayılan olarak 7 gün)|Azure uzak depolama 'da anlık görüntü tabanlı yedeklemeler. Geri yükleme bu anlık görüntüleri hızlı kurtarma için kullanır. Yedeklemeler anında gerçekleşir ve işlem g/ç performansını etkilemez. Geri yükleme işlemleri hızlıdır ve veri boyutu (saatler veya günler yerine dakikalar içinde).|
-|Bellek içi|Desteklenmiyor|Destekleniyor|Desteklenmiyor|
+|Şunlar için en iyisidir:|Most business workloads. Offers budget-oriented, balanced, and scalable compute and storage options. |Offers business applications the highest resilience to failures by using several isolated replicas, and provides the highest I/O performance per database replica.|Most business workloads with highly scalable storage and read-scale requirements.  Offers higher resilience to failures by allowing configuration of more than one isolated database replica. |
+|Depolama|Uses remote storage.<br/>**Single database and elastic pool provisioned compute**:<br/>5 GB – 4 TB<br/>**Serverless compute**:<br/>5 GB - 3 TB<br/>**Managed instance**: 32 GB - 8 TB |Uses local SSD storage.<br/>**Single database and elastic pool provisioned compute**:<br/>5 GB – 4 TB<br/>**Managed instance**:<br/>32 GB - 4 TB |Flexible autogrow of storage as needed. Supports up to 100 TB of storage. Uses local SSD storage for local buffer-pool cache and local data storage. Uses Azure remote storage as final long-term data store. |
+|I/O throughput (approximate)|**Single database and elastic pool**: 500 IOPS per vCore up to 40000 maximum IOPS.<br/>**Managed instance**: Depends on [size of file](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes).|5000 IOPS per vCore up to 320,000 maximum IOPS|Hyperscale is a multi-tiered architecture with caching at multiple levels. Effective IOPs will depend on the workload.|
+|Erişilebilirlik|1 replica, no read-scale replicas|3 replicas, 1 [read-scale replica](sql-database-read-scale-out.md),<br/>zone-redundant high availability (HA)|1 read-write replica, plus 0-4 [read-scale replicas](sql-database-read-scale-out.md)|
+|Yedeklemeler|[Read-access geo-redundant storage (RA-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 days (7 days by default)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 days (7 days by default)|Snapshot-based backups in Azure remote storage. Restores use these snapshots for fast recovery. Backups are instantaneous and don't impact compute I/O performance. Restores are fast and aren't a size-of-data operation (taking minutes rather than hours or days).|
+|Bellek içi|Desteklenmiyor|Desteklenen|Desteklenmiyor|
 |||
 
 
 ### <a name="choosing-a-service-tier"></a>Hizmet katmanı seçme
 
-Belirli bir iş yükünüz için bir hizmet katmanı seçme hakkında bilgi için aşağıdaki makalelere bakın:
+For information on selecting a service tier for your particular workload, see the following articles:
 
-- [Genel amaçlı hizmet katmanını seçme](sql-database-service-tier-general-purpose.md#when-to-choose-this-service-tier)
-- [İş Açısından Kritik hizmet katmanını seçme](sql-database-service-tier-business-critical.md#when-to-choose-this-service-tier)
-- [Hiper ölçek hizmet katmanını seçme](sql-database-service-tier-hyperscale.md#who-should-consider-the-hyperscale-service-tier)
+- [When to choose the General purpose service tier](sql-database-service-tier-general-purpose.md#when-to-choose-this-service-tier)
+- [When to choose the Business Critical service tier](sql-database-service-tier-business-critical.md#when-to-choose-this-service-tier)
+- [When to choose the Hyperscale service tier](sql-database-service-tier-hyperscale.md#who-should-consider-the-hyperscale-service-tier)
 
 
-## <a name="compute-tiers"></a>İşlem katmanları
+## <a name="compute-tiers"></a>Compute tiers
 
-Sanal çekirdek modelindeki işlem katmanı seçenekleri sağlanan ve sunucusuz işlem katmanlarını içerir.
+Compute tier options in the vCore model include the provisioned and serverless compute tiers.
 
 
 ### <a name="provisioned-compute"></a>Sağlanan işlem
 
-Sağlanan işlem katmanı, iş yükü etkinliğinden bağımsız olarak sürekli olarak sağlanan belirli bir işlem kaynakları ve bir saatlik sabit fiyata sağlanan işlem miktarına göre faturalandırılır.
+The provisioned compute tier provides a specific amount of compute resources that are continuously provisioned independent of workload activity, and bills for the amount of compute provisioned at a fixed price per hour.
 
 
 ### <a name="serverless-compute"></a>Sunucusuz işlem
 
-[Sunucusuz işlem katmanı](sql-database-serverless.md) , işlem kaynaklarını iş yükü etkinliğine göre otomatik olarak ölçeklendirir ve saniye başına kullanılan işlem miktarına göre faturalandırılır.
+The [serverless compute tier](sql-database-serverless.md) auto-scales compute resources based on workload activity, and bills for the amount of compute used per second.
 
 
 
-## <a name="hardware-generations"></a>Donanım nesilleri
+## <a name="hardware-generations"></a>Hardware generations
 
-VCore modelindeki donanım oluşturma seçenekleri arasında gen 4/5, M serisi (Önizleme) ve Fsv2-Series (Önizleme) bulunur. Donanım oluşturma genellikle işlem ve bellek sınırlarını ve iş yükünün performansını etkileyen diğer özellikleri tanımlar.
+Hardware generation options in the vCore model include Gen 4/5, M-series (preview), and Fsv2-series (preview). The hardware generation generally defines the compute and memory limits and other characteristics that impact the performance of the workload.
 
-### <a name="gen4gen5"></a>4\. nesil/5. nesil
+### <a name="gen4gen5"></a>Gen4/Gen5
 
-- 4\. nesil/5. nesil donanımı, dengeli işlem ve bellek kaynakları sağlar ve Fsv2 serisi veya d serisi tarafından sağlanan daha yüksek bellek, daha yüksek sanal çekirdek veya daha hızlı tek bir sanal çekirdek gereksinimlerine sahip olmayan veritabanı iş yükleri için uygundur.
+- Gen4/Gen5 hardware provides balanced compute and memory resources, and is suitable for most database workloads that do not have higher memory, higher vCore, or faster single vCore requirements as provided by Fsv2-series or M-series.
 
-4\. nesil/5. nesil kullanılabildiği bölgelerde, bkz. [4. nesil/5. nesil kullanılabilirliği](#gen4gen5-1).
+For regions where Gen4/Gen5 is available, see [Gen4/Gen5 availability](#gen4gen5-1).
 
-### <a name="fsv2-seriespreview"></a>Fsv2 serisi (Önizleme)
+### <a name="fsv2-seriespreview"></a>Fsv2-series (preview)
 
-- Fsv2-Series, en düşük CPU gecikme süresi ve yüksek hızda yoğun iş yükleri sağlayan, işlem için iyileştirilmiş bir donanım seçeneğidir.
-- Fsv2 serisi, iş yüküne bağlı olarak, 5. nesil 'den vCore başına daha fazla CPU performansı sunabilir ve 72 vCore boyutu 5. nesil üzerindeki 80 sanal çekirdekten daha az maliyet sağlamak için daha fazla CPU performansı sağlayabilir. 
-- Fsv2, Diğer donanımlardan sanal çekirdek başına daha az bellek ve tempdb sağlar, bu sınırlara duyarlı iş yükleri bunun yerine 5. nesil veya d serisini düşünmek isteyebilir.  
+- Fsv2-series is a compute optimized hardware option delivering low CPU latency and high clock speed for the most CPU demanding workloads.
+- Depending on the workload, Fsv2-series can deliver more CPU performance per vCore than Gen5, and the 72 vCore size can provide more CPU performance for less cost than 80 vCores on Gen5. 
+- Fsv2 provides less memory and tempdb per vCore than other hardware so workloads sensitive to those limits may want to consider Gen5 or M-series instead.  
 
-Fsv2-Series 'in kullanılabildiği bölgeler için bkz. [Fsv2 serisi kullanılabilirliği](#fsv2-series).
-
-
-### <a name="m-seriespreview"></a>A serisi (Önizleme)
-
-- D serisi, 5. nesil tarafından sağlanenden daha fazla bellek ve daha fazla işlem sınırı gerektiren iş yükleri için bellek için iyileştirilmiş bir donanım seçeneğidir.
-- A serisi, vCore başına 29 GB ve 128 sanal çekirdek sağlar. bu da, 5. nesil ile 8X arasındaki bellek sınırını neredeyse 4 TB 'a yükseltir.
-
-Bir abonelik ve bölge için, e serisi donanım etkinleştirmek üzere bir destek isteği açık olmalıdır. Destek talebi onaylanırsa, e serisi seçme ve sağlama deneyimi diğer donanım oluşumları için aynı düzeni izler. D serisi kullanılabilir olan bölgelerde, bkz. [d serisi kullanılabilirlik](#m-series).
+For regions where Fsv2-series is available, see [Fsv2-series availability](#fsv2-series).
 
 
-### <a name="compute-and-memory-specifications"></a>İşlem ve bellek belirtimleri
+### <a name="m-seriespreview"></a>M-series (preview)
+
+- M-series is a memory optimized hardware option for workloads demanding more memory and higher compute limits than provided by Gen5.
+- M-series provides 29 GB per vCore and 128 vCores, which increases the memory limit relative to Gen5 by 8x to nearly 4 TB.
+
+To enable M-series hardware for a subscription and region, a support request must be open. If the support request is approved, then the selection and provisioning experience of M-series follows the same pattern as for other hardware generations. For regions where M-series is available, see [M-series availability](#m-series).
 
 
-|Donanım oluşturma  |İşlem  |Bellek  |
+### <a name="compute-and-memory-specifications"></a>Compute and memory specifications
+
+
+|Hardware generation  |İşlem  |Hafıza  |
 |:---------|:---------|:---------|
-|4\. nesil     |-Intel E5-2673 v3 (Haswell) 2,4 GHz işlemcileri<br>-En fazla 24 sanal çekirdek sağlama (1 sanal çekirdek = 1 fiziksel çekirdek)  |-Sanal çekirdek başına 7 GB<br>-168 GB 'a kadar sağlama|
-|Gen5     |**Sağlanan işlem**<br>-Intel E5-2673 v4 (çok Iyi) 2,3 GHz işlemcileri<br>-En fazla 80 sanal çekirdek sağlama (1 sanal çekirdek = 1 hiper iş parçacığı)<br><br>**Sunucusuz işlem**<br>-Intel E5-2673 v4 (çok Iyi) 2,3 GHz işlemcileri<br>-16 sanal çekirdeğe kadar otomatik ölçeklendirme (1 sanal çekirdek = 1 hiper iş parçacığı)|**Sağlanan işlem**<br>-vCore başına 5,1 GB<br>-408 GB 'a kadar sağlama<br><br>**Sunucusuz işlem**<br>-VCore başına 24 GB 'a kadar otomatik ölçeklendirme<br>-En fazla 48 GB 'a kadar otomatik ölçeklendirme|
-|Fsv2-serisi     |-Intel Xeon Platinum 8168 (ufuk Gölü) işlemcileri<br>-Sürekli olarak 3,4 GHz 'nin tüm Core Turbo saat hızına ve en fazla 3,7 GHz bir adet tek çekirdekli Turbo saat hızına sahiptir.<br>-Sağlama 72 sanal çekirdekler (1 sanal çekirdek = 1 hiper iş parçacığı)|-vCore başına 1,9 GB<br>-Sağlama 136 GB|
-|M serisi     |-Intel Xeon E7-8890 v3 2,5 GHz işlemcileri<br>-Sağlama 128 sanal çekirdekler (1 sanal çekirdek = 1 hiper iş parçacığı)|-vCore başına 29 GB<br>-Sağlama 3,7 TB|
+|Gen4     |- Intel E5-2673 v3 (Haswell) 2.4 GHz processors<br>- Provision up to 24 vCores (1 vCore = 1 physical core)  |- 7 GB per vCore<br>- Provision up to 168 GB|
+|Gen5     |**Provisioned compute**<br>- Intel E5-2673 v4 (Broadwell) 2.3 GHz processors<br>- Provision up to 80 vCores (1 vCore = 1 hyper-thread)<br><br>**Serverless compute**<br>- Intel E5-2673 v4 (Broadwell) 2.3 GHz processors<br>- Auto-scale up to 16 vCores (1 vCore = 1 hyper-thread)|**Provisioned compute**<br>- 5.1 GB per vCore<br>- Provision up to 408 GB<br><br>**Serverless compute**<br>- Auto-scale up to 24 GB per vCore<br>- Auto-scale up to 48 GB max|
+|Fsv2-serisi     |- Intel Xeon Platinum 8168 (SkyLake) processors<br>- Featuring a sustained all core turbo clock speed of 3.4 GHz and a maximum single core turbo clock speed of 3.7 GHz.<br>- Provision 72 vCores (1 vCore = 1 hyper-thread)|- 1.9 GB per vCore<br>- Provision 136 GB|
+|M serisi     |- Intel Xeon E7-8890 v3 2.5 GHz processors<br>- Provision 128 vCores (1 vCore = 1 hyper-thread)|- 29 GB per vCore<br>- Provision 3.7 TB|
 
 
-Kaynak limitleri hakkında daha fazla bilgi için bkz. [tek veritabanları (sanal çekirdek) Için kaynak limitleri](sql-database-vcore-resource-limits-single-databases.md)veya [elastik havuzlar (Vcore) için kaynak sınırları](sql-database-vcore-resource-limits-elastic-pools.md).
+For more information on resource limits, see [Resource limits for single databases (vCore)](sql-database-vcore-resource-limits-single-databases.md), or [Resource limits for elastic pools (vCore)](sql-database-vcore-resource-limits-elastic-pools.md).
 
-### <a name="selecting-a-hardware-generation"></a>Donanım oluşturma seçme
+### <a name="selecting-a-hardware-generation"></a>Selecting a hardware generation
 
-Azure portal, bir SQL veritabanı veya havuzu için oluşturma sırasında donanım oluşturmayı seçebilir veya var olan bir SQL veritabanının veya havuzunun donanım oluşturma işlevini değiştirebilirsiniz.
+In the Azure portal, you can select the hardware generation for a SQL database or pool at the time of creation, or you can change the hardware generation of an existing SQL database or pool.
 
-**Bir SQL veritabanı veya havuzu oluştururken bir donanım oluşturma seçmek için**
+**To select a hardware generation when creating a SQL database or pool**
 
-Ayrıntılı bilgi için bkz. [SQL veritabanı oluşturma](sql-database-single-database-get-started.md).
+For detailed information, see [Create a SQL database](sql-database-single-database-get-started.md).
 
-**Temel bilgiler** sekmesinde, **işlem + depolama** bölümünde **Veritabanını yapılandır** bağlantısını seçin ve ardından **yapılandırma bağlantısını değiştir** ' i seçin:
+On the **Basics** tab, select the **Configure database** link in the **Compute + storage** section, and then select the **Change configuration** link:
 
   ![veritabanı yapılandırma](media/sql-database-service-tiers-vcore/configure-sql-database.png)
 
-İstediğiniz donanım üretimini seçin:
+Select the desired hardware generation:
 
-  ![donanım seçin](media/sql-database-service-tiers-vcore/select-hardware.png)
+  ![select hardware](media/sql-database-service-tiers-vcore/select-hardware.png)
 
 
-**Mevcut bir SQL veritabanının veya havuzunun donanım oluşturmayı değiştirmek için**
+**To change the hardware generation of an existing SQL database or pool**
 
-Bir veritabanı için genel bakış sayfasında, **fiyatlandırma katmanı** bağlantısını seçin:
+For a database, on the Overview page, select the **Pricing tier** link:
 
-  ![donanımı değiştirme](media/sql-database-service-tiers-vcore/change-hardware.png)
+  ![change hardware](media/sql-database-service-tiers-vcore/change-hardware.png)
 
-Bir havuz için genel bakış sayfasında **Yapılandır**' ı seçin.
+For a pool, on the Overview page, select **Configure**.
 
-Yapılandırmayı değiştirmek için adımları izleyin ve önceki adımlarda açıklandığı gibi donanım üretimini seçin.
+Follow the steps to change configuration, and select the hardware generation as described in the previous steps.
 
-### <a name="hardware-availability"></a>Donanım kullanılabilirliği
+### <a name="hardware-availability"></a>Hardware availability
 
-#### <a name="gen4gen5-1"></a>4. nesil/5. nesil
+#### <a name="gen4gen5-1"></a> Gen4/Gen5
 
-Yeni 4. nesil veritabanları artık Avustralya Doğu veya Brezilya Güney bölgelerinde desteklenmez. 
+New Gen4 databases are no longer supported in the Australia East or Brazil South regions. 
 
-5\. nesil, dünya çapındaki birçok bölgede kullanılabilir.
+Gen5 is available in most regions worldwide.
 
 #### <a name="fsv2-series"></a>Fsv2-serisi
 
-Fsv2 serisi şu bölgelerde kullanılabilir: Avustralya Orta, Avustralya Orta 2, Avustralya Doğu, Avustralya Güneydoğu, Brezilya Güney, Kanada Orta, Doğu Asya, Doğu ABD, Fransa Orta, Hindistan Orta, Hindistan Batı, Kore Orta, Kore Güney, Kuzey Avrupa, Güney Afrika Kuzey, Güneydoğu Asya, UK Güney, UK Batı, Batı Avrupa, Batı ABD 2.
+Fsv2-series is available in the following regions: Australia Central, Australia Central 2, Australia East, Australia Southeast, Brazil South, Canada Central, East Asia, East Us, France Central, India Central, India West, Korea Central, Korea South, North Europe, South Africa North, Southeast Asia, UK South, UK West, West Europe, West Us 2.
 
 
 #### <a name="m-series"></a>M serisi
 
-A serisi şu bölgelerde kullanılabilir: Doğu ABD, Kuzey Avrupa, Batı Avrupa, Batı ABD 2.
-Ayrıca, ek bölgelerde da sınırlı kullanılabilirlik olabilir. Burada listelenenden farklı bir bölge isteyebilirsiniz, ancak farklı bir bölgede yerine getirilmesi mümkün olmayabilir.
+M-series is available in the following regions: East US, North Europe, West Europe, West US 2.
+M-series may also have limited availability in additional regions. You can request a different region than listed here, but fulfillment in a different region may not be possible.
 
-Bir abonelikte d serisi kullanılabilirliği etkinleştirmek için [Yeni bir destek isteği](#create-a-support-request-to-enable-m-series)kaydederek erişim istenmesi gerekir.
+To enable M-series availability in a subscription, access must be requested by [filing a new support request](#create-a-support-request-to-enable-m-series).
 
 
-##### <a name="create-a-support-request-to-enable-m-series"></a>D serisini etkinleştirmek için bir destek isteği oluşturun: 
+##### <a name="create-a-support-request-to-enable-m-series"></a>Create a support request to enable M-series: 
 
-1. Portalda **Yardım + Destek** ' i seçin.
+1. Select **Help + support** in the portal.
 2. **Yeni destek isteği**’ni seçin.
 
-**Temel bilgiler** sayfasında, aşağıdakileri sağlayın:
+On the **Basics** page, provide the following:
 
-1. **Sorun türü**için **hizmet ve abonelik sınırları (kotalar)** öğesini seçin.
-2. **Abonelik** Için = e serisi etkinleştirmek üzere aboneliği seçin.
-3. **Kota türü**için **SQL veritabanı**' nı seçin.
-4. **Ayrıntılar** sayfasına gitmek için **İleri ' yi** seçin.
+1. For **Issue type**, select **Service and subscription limits (quotas)** .
+2. For **Subscription** = select the subscription to enable M-series.
+3. For **Quota type**, select **SQL database**.
+4. Select **Next** to go to the **Details** page.
 
-**Ayrıntılar** sayfasında, aşağıdakileri sağlayın:
+On the **Details** page, provide the following:
 
-5. **Sorun ayrıntıları** bölümünde, **ayrıntıları sağla** bağlantısını seçin. 
-6. **SQL veritabanı kota türü** Için, **ı serisi**seçin.
-7. **Bölge**Için, e serisi etkinleştirmek üzere bölgeyi seçin.
-    D serisi kullanılabilir olan bölgelerde, bkz. [d serisi kullanılabilirlik](#m-series).
+5. In the **PROBLEM DETAILS** section select the **Provide details** link. 
+6. For **SQL Database quota type** select **M-series**.
+7. For **Region**, select the region to enable M-series.
+    For regions where M-series is available, see [M-series availability](#m-series).
 
-Onaylanan destek istekleri genellikle 5 iş günü içinde yerine getirilir.
+Approved support requests are typically fulfilled within 5 business days.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bir SQL veritabanı oluşturmak için, bkz. [Azure Portal kullanarak SQL veritabanı oluşturma](sql-database-single-database-get-started.md).
-- Tek veritabanları için kullanılabilen belirli işlem boyutları ve depolama boyutu seçimleri için bkz. [tek veritabanları Için SQL veritabanı sanal çekirdek tabanlı kaynak sınırları](sql-database-vcore-resource-limits-single-databases.md).
-- Elastik havuzlara yönelik belirli işlem boyutları ve depolama boyutu seçimleri için bkz. [elastik havuzlar Için SQL veritabanı sanal çekirdek tabanlı kaynak sınırları](sql-database-vcore-resource-limits-elastic-pools.md).
-- Fiyatlandırma ayrıntıları için bkz. [Azure SQL Veritabanı fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/sql-database/single/).
+- To create a SQL database, see [Creating a SQL database using the Azure portal](sql-database-single-database-get-started.md).
+- For the specific compute sizes and storage size choices available for single databases, see [SQL Database vCore-based resource limits for single databases](sql-database-vcore-resource-limits-single-databases.md).
+- For the specific compute sizes and storage size choices available for elastic pools, see [SQL Database vCore-based resource limits for elastic pools](sql-database-vcore-resource-limits-elastic-pools.md).
+- For pricing details, see the [Azure SQL Database pricing page](https://azure.microsoft.com/pricing/details/sql-database/single/).

@@ -1,78 +1,79 @@
 ---
 title: Sorun giderme
-description: Azure SQL veri ambarı sorunlarını giderme.
+description: Troubleshooting Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 7/29/2019
+ms.date: 11/25/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 2aa7926286be277c7ad0aa7054b4bd6fceb8229f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b2a9a7b0b759f5853d83a4b1999887414fd5f430
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685407"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483215"
 ---
-# <a name="troubleshooting-azure-sql-data-warehouse"></a>Azure SQL veri ambarı sorunlarını giderme
-Bu makalede, yaygın sorun giderme sorusu listelenmektedir.
+# <a name="troubleshooting-azure-sql-data-warehouse"></a>Troubleshooting Azure SQL Data Warehouse
+This article lists common troubleshooting question.
 
-## <a name="connecting"></a>Bağlanmada
+## <a name="connecting"></a>Connecting
 | Sorun                                                        | Çözünürlük                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| 'NT AUTHORITY\ANONYMOUS LOGON' kullanıcısı için oturum açma başarısız oldu. (Microsoft SQL Server, hata: 18456) | Bu hata, bir AAD kullanıcısı ana veritabanına bağlanmaya çalıştığında ancak ana veritabanında bir kullanıcıya sahip olmadığında oluşur.  Bu sorunu düzeltmek için, bağlantı zamanında bağlanmak istediğiniz SQL Veri Ambarı’nı belirtin veya kullanıcıyı ana veritabanına ekleyin.  Daha fazla bilgi için [güvenlik genel bakış][Security overview] makalesine bakın. |
-| Sunucu sorumlusu "MyUserName" geçerli güvenlik bağlamında "asıl" veritabanına erişemiyor. Kullanıcının varsayılan veritabanı açılamıyor. Oturum açılamadı. 'MyUserName' kullanıcısı için oturum açma başarısız oldu. (Microsoft SQL Server, hata: 916) | Bu hata, bir AAD kullanıcısı ana veritabanına bağlanmaya çalıştığında ancak ana veritabanında bir kullanıcıya sahip olmadığında oluşur.  Bu sorunu düzeltmek için, bağlantı zamanında bağlanmak istediğiniz SQL Veri Ambarı’nı belirtin veya kullanıcıyı ana veritabanına ekleyin.  Daha fazla bilgi için [güvenlik genel bakış][Security overview] makalesine bakın. |
-| CTAıP hatası                                                  | Bu hata, SQL Server ana veritabanında bir oturum oluşturulduğunda, ancak SQL veri ambarı veritabanında olmadığında ortaya çıkabilir.  Bu hatayla karşılaşırsanız, [güvenlik genel bakış][Security overview] makalesine göz atın.  Bu makalede, ana bilgisayarda bir oturum açma ve Kullanıcı oluşturma ve ardından SQL veri ambarı veritabanında bir Kullanıcı oluşturma işlemleri açıklanmaktadır. |
-| Güvenlik duvarı tarafından engellendi                                          | Azure SQL veritabanları, yalnızca bilinen IP adreslerinin bir veritabanına erişimi olduğundan emin olmak için sunucu ve veritabanı düzeyi güvenlik duvarları tarafından korunur. Güvenlik duvarları varsayılan olarak güvenli hale gelir. Bu, bağlanmadan önce açıkça etkinleştirmeniz ve IP adresi veya adres aralığı yapmanız gerekir.  Güvenlik duvarınızı erişim için yapılandırmak üzere, [sağlama yönergelerindeki][Provisioning instructions] [istemci IP 'niz için sunucu güvenlik duvarı erişimini yapılandırma][Configure server firewall access for your client IP] bölümündeki adımları izleyin. |
-| Araçla veya sürücüyle bağlantı yapılamaz                           | SQL veri ambarı, [SMS][SSMS]'Yi, [Visual Studio için SSDT][SSDT for Visual Studio]'yi veya verilerinizi sorgulamak için [sqlcmd][sqlcmd] kullanılmasını önerir. Sürücüler hakkında daha fazla bilgi ve SQL veri ambarı 'na bağlanma hakkında daha fazla bilgi için bkz. [Azure SQL veri ambarı Için sürücüler][Drivers for Azure SQL Data Warehouse] ve [Azure SQL veri ambarı makalelerine bağlanma][Connect to Azure SQL Data Warehouse] . |
+| 'NT AUTHORITY\ANONYMOUS LOGON' kullanıcısı için oturum açma başarısız oldu. (Microsoft SQL Server, Error: 18456) | Bu hata bir AAD kullanıcısı ana veritabanına bağlanmaya çalıştığında, ancak asıl veritabanında kullanıcı olmadığında meydana gelir.  Bu sorunu düzeltmek için, bağlantı zamanında bağlanmak istediğiniz SQL Veri Ambarı’nı belirtin veya kullanıcıyı ana veritabanına ekleyin.  See [Security overview][Security overview] article for more details. |
+| Sunucu sorumlusu "MyUserName" geçerli güvenlik bağlamında "asıl" veritabanına erişemiyor. Kullanıcının varsayılan veritabanı açılamıyor. Oturum açılamadı. 'MyUserName' kullanıcısı için oturum açma başarısız oldu. (Microsoft SQL Server, Error: 916) | Bu hata bir AAD kullanıcısı ana veritabanına bağlanmaya çalıştığında, ancak asıl veritabanında kullanıcı olmadığında meydana gelir.  Bu sorunu düzeltmek için, bağlantı zamanında bağlanmak istediğiniz SQL Veri Ambarı’nı belirtin veya kullanıcıyı ana veritabanına ekleyin.  See [Security overview][Security overview] article for more details. |
+| CTAIP error                                                  | This error can occur when a login has been created on the SQL server master database, but not in the SQL Data Warehouse database.  If you encounter this error, take a look at the [Security overview][Security overview] article.  This article explains how to create a login and user on master, and then how to create a user in the SQL Data Warehouse database. |
+| Blocked by Firewall                                          | Azure SQL databases are protected by server and database level firewalls to ensure only known IP addresses have access to a database. The firewalls are secure by default, which means that you must explicitly enable and IP address or range of addresses before you can connect.  To configure your firewall for access, follow the steps in [Configure server firewall access for your client IP][Configure server firewall access for your client IP] in the [Provisioning instructions][Provisioning instructions]. |
+| Cannot connect with tool or driver                           | SQL Data Warehouse recommends using [SSMS][SSMS], [SSDT for Visual Studio][SSDT for Visual Studio], or [sqlcmd][sqlcmd] to query your data. For more information on drivers and connecting to SQL Data Warehouse, see [Drivers for Azure SQL Data Warehouse][Drivers for Azure SQL Data Warehouse] and [Connect to Azure SQL Data Warehouse][Connect to Azure SQL Data Warehouse] articles. |
 
 ## <a name="tools"></a>Araçlar
 | Sorun                                                        | Çözünürlük                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Visual Studio Nesne Gezgini 'nde AAD kullanıcıları eksik           | Bu bilinen bir sorundur.  Geçici bir çözüm olarak, [sys. database_principals][sys.database_principals]içindeki kullanıcıları görüntüleyin.  SQL veri ambarı ile Azure Active Directory kullanma hakkında daha fazla bilgi edinmek için bkz. [Azure SQL veri ambarı 'Nda kimlik doğrulama][Authentication to Azure SQL Data Warehouse] . |
-| El ile betik oluşturma, betik Sihirbazı 'nı kullanma veya SSMS aracılığıyla bağlanma yavaş, yanıt vermiyor veya hata üretmiyor | Ana veritabanında kullanıcıların oluşturulduğundan emin olun. Komut dosyası seçeneklerinde Ayrıca, Engine sürümünün "Microsoft Azure SQL Veri Ambarı Edition" olarak ayarlandığından ve altyapı türünün "Microsoft Azure SQL Veritabanı" olduğundan emin olun. |
-| SSMS 'de betik oluşturma başarısız oluyor                               | "Bağımlı nesneler için betik oluştur" seçeneği "true" olarak ayarlandıysa SQL veri ambarı için betik oluşturma işlemi başarısız olur. Geçici bir çözüm olarak, kullanıcıların Araçlar-> Seçenekler-> SQL Server Nesne Gezgini-> bağımlı seçenekler için betik oluştur ve yanlış olarak ayarla seçeneğine el ile gitmesi gerekir |
+| Visual Studio object explorer is missing AAD users           | Bu bilinen bir sorundur.  As a workaround, view the users in [sys.database_principals][sys.database_principals].  See [Authentication to Azure SQL Data Warehouse][Authentication to Azure SQL Data Warehouse] to learn more about using Azure Active Directory with SQL Data Warehouse. |
+| Manual scripting, using the scripting wizard, or connecting via SSMS is slow, not responding, or producing errors | Ensure that users have been created in the master database. In scripting options, also make sure that the engine edition is set as “Microsoft Azure SQL Data Warehouse Edition” and engine type is “Microsoft Azure SQL Database”. |
+| Generate scripts fails in SSMS                               | Generating a script for SQL Data Warehouse fails if the option "Generate script for dependent objects" option is set to "True." As a workaround, users must manually go to Tools -> Options ->SQL Server Object Explorer -> Generate script for dependent options and set to false |
 
 ## <a name="performance"></a>Performans
 | Sorun                                                        | Çözünürlük                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Sorgu performansı sorunlarını giderme                            | Belirli bir sorgu sorunlarını gidermeye çalışıyorsanız, [sorgularınızı nasıl izleyebileceğiniz hakkında bilgi edinmeye][Learning how to monitor your queries]başlayın. |
-| Kötü sorgu performansı ve planları genellikle eksik istatistiklerin bir sonucudur | Düşük performansın en yaygın nedeni, tablolarınızdaki istatistiklerin olmamasıdır.  İstatistiklerin nasıl oluşturulacağı ve performanstan ne kadar önemli olduğunu gösteren Ayrıntılar için bkz. [tablo Istatistiklerini koruma][Statistics] . |
-| Sıraya alınan düşük eşzamanlılık/sorgu sayısı                             | Bellek ayırmayı eşzamanlılık ile dengelemeye anlamak için [Iş yükü yönetimini][Workload management] anlamak önemlidir. |
-| En iyi yöntemleri uygulama                              | Sorgu performansını artırmak için en iyi başlangıç [SQL veri ambarı en iyi yöntemler][SQL Data Warehouse best practices] makaleleridir. |
-| Ölçeklendirmeyle performansı artırma                      | Bazen, performansı iyileştirmeye yönelik çözüm, [SQL veri Ambarınızı ölçeklendirerek][Scaling your SQL Data Warehouse]sorgularınıza daha fazla işlem gücü eklemektir. |
-| Yetersiz Dizin kalitesinin sonucu olarak sorgu performansı yetersiz     | Bazı süreler sorguları, [düşük columnstore dizin kalitesi][Poor columnstore index quality]nedeniyle yavaşlayabilir.  Daha fazla bilgi ve [bölüm kalitesini artırmak için dizinleri yeniden oluşturma][Rebuild indexes to improve segment quality]hakkında daha fazla bilgi için bu makaleye bakın. |
+| Query performance troubleshooting                            | If you are trying to troubleshoot a particular query, start with [Learning how to monitor your queries][Learning how to monitor your queries]. |
+| TempDB space issues | [Monitor TempDB](sql-data-warehouse-manage-monitor.md#monitor-tempdb) space usage.  Common causes for running out of TempDB space are:<br>- Not enough resources allocated to the query causing data to spill to TempDB.  See [Workload management](resource-classes-for-workload-management.md) <br>- Statistics are missing or out of date causing excessive data movement.  See [Maintaining table statistics][Statistics] for details on how to create statistics<br>- TempDB space is allocated per service level.  [Scaling your SQL Data Warehouse][Scaling your SQL Data Warehouse] to a higher DWU setting allocates more TempDB space.|
+| Poor query performance and plans often is a result of missing statistics | The most common cause of poor performance is lack of statistics on your tables.  See [Maintaining table statistics][Statistics] for details on how to create statistics and why they are critical to your performance. |
+| Low concurrency / queries queued                             | Understanding [Workload management][Workload management] is important in order to understand how to balance memory allocation with concurrency. |
+| How to implement best practices                              | The best place to start to learn ways to improve query performance is [SQL Data Warehouse best practices][SQL Data Warehouse best practices] article. |
+| How to improve performance with scaling                      | Sometimes the solution to improving performance is to simply add more compute power to your queries by [Scaling your SQL Data Warehouse][Scaling your SQL Data Warehouse]. |
+| Poor query performance as a result of poor index quality     | Some times queries can slow down because of [Poor columnstore index quality][Poor columnstore index quality].  See this article for more information and how to [Rebuild indexes to improve segment quality][Rebuild indexes to improve segment quality]. |
 
-## <a name="system-management"></a>Sistem Yönetimi
+## <a name="system-management"></a>System management
 | Sorun                                                        | Çözünürlük                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Msg 40847: sunucu, izin verilen veritabanı Işlem birimi kotasını (45000) aşacağından işlem gerçekleştirilemedi. | Oluşturmaya çalıştığınız veritabanının [DWU][DWU] değerini azaltın ya da [bir kota artışı isteyin][request a quota increase]. |
-| Alan kullanımını araştırma                              | Sisteminizin alan kullanımını anlamak için bkz. [Tablo boyutları][Table sizes] . |
-| Tabloları yönetmeyle ilgili yardım                                    | Tablolarınızı yönetme hakkında yardım almak için [tabloya genel bakış][Overview] makalesine bakın.  Bu makale ayrıca [tablo veri türleri][Data types], tablo [dağıtma][Distribute], tablo [dizini oluşturma][Index] [, tablo][Partition]istatistikleri ve [geçici tabloları][Temporary] [koruma][Statistics] gibi daha ayrıntılı konulara bağlantılar içerir. |
-| Saydam veri şifrelemesi (TDE) ilerleme çubuğu Azure portal güncelleştirilmiyor | TDE [PowerShell](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption)ile durumunu görüntüleyebilirsiniz. |
+| Msg 40847: Could not perform the operation because server would exceed the allowed Database Transaction Unit quota of 45000. | Either reduce the [DWU][DWU] of the database you are trying to create or [request a quota increase][request a quota increase]. |
+| Investigating space utilization                              | See [Table sizes][Table sizes] to understand the space utilization of your system. |
+| Help with managing tables                                    | See the [Table overview][Overview] article for help with managing your tables.  This article also includes links into more detailed topics like [Table data types][Data types], [Distributing a table][Distribute], [Indexing a table][Index],  [Partitioning a table][Partition], [Maintaining table statistics][Statistics] and [Temporary tables][Temporary]. |
+| Transparent data encryption (TDE) progress bar is not updating in the Azure portal | You can view the state of TDE via [powershell](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption). |
 
 
-## <a name="differences-from-sql-database"></a>SQL veritabanı farklılıkları
+## <a name="differences-from-sql-database"></a>Differences from SQL Database
 | Sorun                                 | Çözünürlük                                                   |
 | :------------------------------------ | :----------------------------------------------------------- |
-| Desteklenmeyen SQL veritabanı özellikleri     | [Desteklenmeyen tablo özelliklerine][Unsupported table features]bakın. |
-| Desteklenmeyen SQL veritabanı veri türleri   | [Desteklenmeyen veri türlerine][Unsupported data types]bakın.        |
-| SILME ve GÜNCELLEŞTIRME sınırlamaları         | [Desteklenmeyen güncelleştirme ve silme sözdizimini çözmek için][Using CTAS to work around unsupported UPDATE and DELETE syntax]bkz. [geçici çözümleri güncelleştirme][UPDATE workarounds], [geçici çözümleri silme][DELETE workarounds] ve CTAS kullanma. |
-| MERGE deyimleri desteklenmiyor      | Bkz. [birleştirme geçici çözümleri][MERGE workarounds].                  |
-| Saklı yordam sınırlamaları          | Saklı yordamların bazı sınırlamalarını anlamak için [saklı yordam sınırlamaları][Stored procedure limitations] bölümüne bakın. |
-| UDF 'ler SELECT deyimlerini desteklemez | Bu, UDF 'lerimizin geçerli bir sınırlamasıdır.  Destekliyoruz sözdizimi için bkz. [oluşturma işlevi][CREATE FUNCTION] . |
+| Unsupported SQL Database features     | See [Unsupported table features][Unsupported table features]. |
+| Unsupported SQL Database data types   | See [Unsupported data types][Unsupported data types].        |
+| DELETE and UPDATE limitations         | See [UPDATE workarounds][UPDATE workarounds], [DELETE workarounds][DELETE workarounds] and [Using CTAS to work around unsupported UPDATE and DELETE syntax][Using CTAS to work around unsupported UPDATE and DELETE syntax]. |
+| MERGE statement is not supported      | See [MERGE workarounds][MERGE workarounds].                  |
+| Stored procedure limitations          | See [Stored procedure limitations][Stored procedure limitations] to understand some of the limitations of stored procedures. |
+| UDFs do not support SELECT statements | This is a current limitation of our UDFs.  See [CREATE FUNCTION][CREATE FUNCTION] for the syntax we support. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Sorununuzla ilgili çözüm bulma konusunda daha fazla yardım için, deneyebileceğiniz bazı diğer kaynaklar aşağıda verilmiştir.
+For more help in finding solution to your issue, here are some other resources you can try.
 
 * [Bloglar]
 * [Özellik istekleri]
 * [Videolar]
-* [KEDI ekibi blogları]
+* [CAT team blogs]
 * [Destek bileti oluşturma]
 * [MSDN forumu]
 * [Stack Overflow forumu]
@@ -122,7 +123,7 @@ Sorununuzla ilgili çözüm bulma konusunda daha fazla yardım için, deneyebile
 
 <!--Other Web references-->
 [Bloglar]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
-[KEDI ekibi blogları]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
+[CAT team blogs]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
 [Özellik istekleri]: https://feedback.azure.com/forums/307516-sql-data-warehouse
 [MSDN forumu]: https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse
 [Stack Overflow forumu]: https://stackoverflow.com/questions/tagged/azure-sqldw

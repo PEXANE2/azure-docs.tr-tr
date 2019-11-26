@@ -1,16 +1,16 @@
 ---
-title: Örnek-Izin verilen ExpressRoute bant genişliği
-description: Bu örnek ilke tanımı, ExpressRoute 'un belirtilen bir bant genişlikleri kümesini kullanmasını gerektirir.
+title: Sample - Allowed ExpressRoute bandwidth
+description: This sample policy definition requires that ExpressRoute use a specified set of bandwidths defined in a parameter.
 ms.date: 01/23/2019
 ms.topic: sample
-ms.openlocfilehash: 20841b5476c50fb98d6b2d4a59f351525e1ecc9e
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: b7c60879b62020a0864eb2da3a29e1bfe57215c0
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072087"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463749"
 ---
-# <a name="sample---allowed-expressroute-bandwidth"></a>Örnek-Izin verilen ExpressRoute bant genişliği
+# <a name="sample---allowed-expressroute-bandwidth"></a>Sample - Allowed ExpressRoute bandwidth
 
 Bu ilke için ExpressRoute'un belirli bir bant genişliği kümesini kullanması gerekir. ExpressRoute için belirtilebilen bir SKU dizisi belirtirsiniz.
 
@@ -24,7 +24,7 @@ Bu ilke için ExpressRoute'un belirli bir bant genişliği kümesini kullanması
 
 ## <a name="deploy-with-the-portal"></a>Portal ile dağıtma
 
-[![Ilke örneğini Azure 'a dağıtma](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Fexpress-route-bandwidthInMbps%2Fazurepolicy.json)
+[![Deploy the Policy sample to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Fexpress-route-bandwidthInMbps%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>PowerShell ile dağıtma
 

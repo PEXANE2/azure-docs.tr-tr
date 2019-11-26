@@ -1,187 +1,152 @@
 ---
-title: Ölçüm uyarılarının Azure Izleyici 'de nasıl çalıştığını anlayın.
-description: Ölçüm uyarıları ile yapabileceklerinize ve bunların Azure Izleyici 'de nasıl çalışabileceklerini bir genel bakış alın.
-author: snehithm
-ms.author: snmuvva
-ms.date: 9/18/2018
+title: Understand how metric alerts work in Azure Monitor.
+description: Get an overview of what you can do with metric alerts and how they work in Azure Monitor.
+author: rboucher
+ms.author: robb
+ms.date: 11/18/2019
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: 4dd95d32bad76a610b88a4362e7887efdfaf6af0
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: b92b4233b6ecd8743f98f7f0dd13e07ad4c76c81
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972055"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74484247"
 ---
-# <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Ölçüm uyarılarının Azure Izleyici 'de nasıl çalıştığını anlama
+# <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Understand how metric alerts work in Azure Monitor
 
-Azure Izleyici 'de ölçüm uyarıları, çok boyutlu ölçümlerin üzerine çalışır. Bu ölçümler, [Platform ölçümleri](alerts-metric-near-real-time.md#metrics-and-dimensions-supported), [özel ölçümler](../../azure-monitor/platform/metrics-custom-overview.md), [Azure izleyici 'deki popüler Günlükler ölçüm](../../azure-monitor/platform/alerts-metric-logs.md) ve Application Insights ölçümlerine dönüştürülebilir. Ölçüm uyarıları, bir veya daha fazla ölçüm zaman serisinde koşulların doğru olup olmadığını denetlemek için düzenli aralıklarla değerlendirilir ve değerlendirmelere uyulduğunda bildirim alın. Ölçüm uyarıları durum bilgisi olur, diğer bir deyişle, yalnızca durum değiştiğinde bildirimleri gönderir.
+Metric alerts in Azure Monitor work on top of multi-dimensional metrics. These metrics could be [platform metrics](alerts-metric-near-real-time.md#metrics-and-dimensions-supported), [custom metrics](../../azure-monitor/platform/metrics-custom-overview.md), [popular logs from Azure Monitor converted to metrics](../../azure-monitor/platform/alerts-metric-logs.md) and Application Insights metrics. Metric alerts evaluate at regular intervals to check if conditions on one or more metric time-series are true and notify you when the evaluations are met. Metric alerts are stateful, that is, they only send out notifications when the state changes.
 
-## <a name="how-do-metric-alerts-work"></a>Ölçüm uyarıları nasıl çalışır?
+## <a name="how-do-metric-alerts-work"></a>How do metric alerts work?
 
-İzlenecek hedef kaynak, ölçüm adı, koşul türü (statik veya dinamik) ve koşul (bir operatör ve eşik/duyarlılık) ve uyarı kuralı tetiklendiğinde tetiklenecek bir eylem grubu belirterek bir ölçüm uyarı kuralı tanımlayabilirsiniz. Koşul türleri eşiklerin belirlendiği şekilde etkiler. [Dinamik eşikler durum türü ve duyarlılık seçenekleri hakkında daha fazla bilgi edinin](alerts-dynamic-thresholds.md).
+You can define a metric alert rule by specifying a target resource to be monitored, metric name, condition type (static or dynamic), and the condition (an operator and a threshold/sensitivity) and an action group to be triggered when the alert rule fires. Condition types affect the way thresholds are determined. [Learn more about Dynamic Thresholds condition type and sensitivity options](alerts-dynamic-thresholds.md).
 
-### <a name="alert-rule-with-static-condition-type"></a>Statik koşul türü ile uyarı kuralı
+### <a name="alert-rule-with-static-condition-type"></a>Alert rule with static condition type
 
-Şu şekilde basit bir statik eşik ölçümü uyarı kuralı oluşturduğunuzu varsayalım:
+Let's say you have created a simple static threshold metric alert rule as follows:
 
-- Hedef kaynak (izlemek istediğiniz Azure kaynağı): myVM
-- Ölçüt CPU yüzdesi
-- Koşul türü: Statik
-- Zaman toplama (ham ölçüm değerleri üzerinden çalıştırılan Istatistik. Desteklenen süre toplamaları en az, en fazla, ortalama, toplam, sayı): Average
-- Nokta (ölçüm değerlerinin denetlenme geri arama penceresi): Son 5 dakika boyunca
-- Sıklık (koşulların karşılandığını ölçüm uyarısının denetlediği sıklık): 1 dk
-- İşlecinde Büyüktür
-- Eşiği 70
+- Target Resource (the Azure resource you want to monitor): myVM
+- Metric: Percentage CPU
+- Condition Type: Static
+- Time Aggregation (Statistic that is run over raw metric values. Supported time aggregations are Min, Max, Avg, Total, Count): Average
+- Period (The look back window over which metric values are checked): Over the last 5 mins
+- Frequency (The frequency with which the metric alert checks if the conditions are met): 1 min
+- Operator: Greater Than
+- Threshold: 70
 
-Uyarı kuralının oluşturulduğu zamandan itibaren izleyici 1 dakikada bir çalışır ve son 5 dakika boyunca ölçüm değerlerine bakar ve bu değerlerin ortalamasının 70 ' ı aşıp aşmadığını denetler. Koşul karşılanıyorsa, son 5 dakika boyunca ortalama yüzde CPU 70 değerini aşarsa, uyarı kuralı etkinleştirilmiş bir bildirimi tetikler. Uyarı kuralıyla ilişkili eylem grubunda bir e-posta veya Web kancası eylemi yapılandırdıysanız her ikisinde de etkinleştirilmiş bir bildirim alırsınız.
+From the time the alert rule is created, the monitor runs every 1 min and looks at metric values for the last 5 minutes and checks if the average of those values exceeds 70. If the condition is met that is, the average Percentage CPU for the last 5 minutes exceeds 70, the alert rule fires an activated notification. If you have configured an email or a web hook action in the action group associated with the alert rule, you will receive an activated notification on both.
 
-Tek bir kuralda birden çok koşul kullanırken, "and" kuralı koşulları ile birlikte kullanılır.  Diğer bir deyişle, uyarı, uyarı içindeki tüm koşullar doğru olarak değerlendirilir ve koşullardan biri artık doğru olmadığında çözümlendiğinde ateşlenir. Ve bu tür bir uyarı örneği "% 90 ' den yüksek CPU ve" kuyruk uzunluğu 300 öğeden fazla olduğunda "uyarı verebilir. 
+When you are using multiple conditions in one rule, the rule "ands" the conditions together.  That is, the alert fires when all the conditions in the alert evaluate as true and resolve when one of the conditions is no longer true. And example of this type of alert would be alert when "CPU higher than 90%" and "queue length is over 300 items". 
 
-### <a name="alert-rule-with-dynamic-condition-type"></a>Dinamik koşul türü ile uyarı kuralı
+### <a name="alert-rule-with-dynamic-condition-type"></a>Alert rule with dynamic condition type
 
-Aşağıdaki gibi basit bir dinamik eşikler ölçüm uyarısı kuralı oluşturduğunuzu varsayalım:
+Let's say you have created a simple Dynamic Thresholds metric alert rule as follows:
 
-- Hedef kaynak (izlemek istediğiniz Azure kaynağı): myVM
-- Ölçüt CPU yüzdesi
-- Koşul türü: Dinamik
-- Zaman toplama (ham ölçüm değerleri üzerinden çalıştırılan Istatistik. Desteklenen süre toplamaları en az, en fazla, ortalama, toplam, sayı): Average
-- Nokta (ölçüm değerlerinin denetlenme geri arama penceresi): Son 5 dakika boyunca
-- Sıklık (koşulların karşılandığını ölçüm uyarısının denetlediği sıklık): 1 dk
-- İşlecinde Büyüktür
-- Karşı Orta
-- Dönemleri geri ara: 4
-- Ihlal sayısı: 4
+- Target Resource (the Azure resource you want to monitor): myVM
+- Metric: Percentage CPU
+- Condition Type: Dynamic
+- Time Aggregation (Statistic that is run over raw metric values. Supported time aggregations are Min, Max, Avg, Total, Count): Average
+- Period (The look back window over which metric values are checked): Over the last 5 mins
+- Frequency (The frequency with which the metric alert checks if the conditions are met): 1 min
+- Operator: Greater Than
+- Sensitivity: Medium
+- Look Back Periods: 4
+- Number of Violations: 4
 
-Uyarı kuralı oluşturulduktan sonra dinamik eşikler makine öğrenimi algoritması, mevcut geçmiş verileri alır, ölçüm serisi davranış düzenine en uygun eşiği hesaplar ve bunu yapmak için yeni verilere göre sürekli olarak öğrenirsiniz eşik daha doğru.
+Once the alert rule is created, the Dynamic Thresholds machine learning algorithm will acquire historical data that is available, calculate threshold that best fits the metric series behavior pattern and will continuously learn based on new data to make the threshold more accurate.
 
-Uyarı kuralının oluşturulduğu zamandan itibaren izleyici, her 1 dakikada bir çalışır ve 5 dakikalık bir dönemdeki ölçüm değerlerine bakar ve 4 dönem içindeki dönem değerlerinin ortalamasının beklenen eşiği aşıp aşmadığını denetler. Koşul karşılanıyorsa, son 20 dakikada ortalama yüzde CPU (dört 5 dakikalık dönem), beklenen davranışdan dört kez eşit oranda dağıtılır, uyarı kuralı etkinleştirilmiş bir bildirim tetikler. Uyarı kuralıyla ilişkili eylem grubunda bir e-posta veya Web kancası eylemi yapılandırdıysanız her ikisinde de etkinleştirilmiş bir bildirim alırsınız.
+From the time the alert rule is created, the monitor runs every 1 min and looks at metric values in the last 20 minutes grouped into 5 minutes periods and checks if the average of the period values in each of the 4 periods exceeds the expected threshold. If the condition is met that is, the average Percentage CPU in the last 20 minutes (four 5 minutes periods) deviated from expected behavior four times, the alert rule fires an activated notification. If you have configured an email or a web hook action in the action group associated with the alert rule, you will receive an activated notification on both.
 
-### <a name="view-and-resolution-of-fired-alerts"></a>Tetiklenen uyarıları görüntüleme ve çözümleme
+### <a name="view-and-resolution-of-fired-alerts"></a>View and resolution of fired alerts
 
-Yukarıdaki uyarı kuralları tetikme örnekleri, **tüm uyarılar** dikey penceresindeki Azure Portal de görüntülenebilir.
+The above examples of alert rules firing can also be viewed in the Azure portal in the **All Alerts** blade.
 
-"MyVM" üzerindeki kullanım, sonraki denetimlerde eşiğin üzerinde olmaya devam eder, bu durum, koşullar çözümlenene kadar uyarı kuralının yeniden başlatılmadığını düşünelim.
+Say the usage on "myVM" continues being above the threshold in subsequent checks, the alert rule will not fire again until the conditions are resolved.
 
-Bir süre sonra, "myVM" üzerindeki kullanım normal duruma gelir (eşiğin altına gider). Uyarı kuralı, çözümlenmiş bir bildirim göndermek için koşulu iki kez daha izler. Uyarı kuralı, kapatma koşulları durumunda paraziti azaltmak için uyarı koşulu üç ardışık dönem için karşılanmazsa çözümlenmiş/devre dışı bırakılmış bir ileti gönderir.
+After some time, the usage on "myVM" comes back down to normal (goes below the threshold). The alert rule monitors the condition for two more times, to send out a resolved notification. The alert rule sends out a resolved/deactivated message when the alert condition is not met for three consecutive periods to reduce noise in case of flapping conditions.
 
-Çözümlenen bildirim Web kancaları veya e-posta aracılığıyla gönderildiği için, Azure portal içindeki uyarı örneğinin durumu (izleyici durumu olarak adlandırılır) de çözüldü olarak ayarlanır.
+As the resolved notification is sent out via web hooks or email, the status of the alert instance (called monitor state) in Azure portal is also set to resolved.
 
-### <a name="using-dimensions"></a>Boyutları kullanma
+### <a name="using-dimensions"></a>Using dimensions
 
-Azure Izleyici 'de ölçüm uyarıları, tek bir kuralla birden çok boyut değer birleşimlerinin izlenmesini de destekler. Bir örneğin yardımıyla birden çok boyut bileşimini nasıl kullanabilecediğinizi anlayalim.
+Metric alerts in Azure Monitor also support monitoring multiple dimensions value combinations with one rule. Let's understand why you might use multiple dimension combinations with the help of an example.
 
-Web siteniz için bir App Service planınız olduğunu varsayalım. Web sitenizi/uygulamanızı çalıştıran birden çok örnekte CPU kullanımını izlemek istiyorsunuz. Bunu aşağıdaki gibi bir ölçüm uyarı kuralı kullanarak yapabilirsiniz:
+Say you have an App Service plan for your website. You want to monitor CPU usage on multiple instances running your web site/app. You can do that using a metric alert rule as follows:
 
-- Hedef kaynak: myAppServicePlan
-- Ölçüt CPU yüzdesi
-- Koşul türü: Statik
+- Target resource: myAppServicePlan
+- Metric: Percentage CPU
+- Condition Type: Static
 - Boyutlar
-  - Örnek = InstanceName1, InstanceName2
-- Zaman toplama: Average
-- Dönemini Son 5 dakika boyunca
-- Lemiyor 1 dk
-- İşlecinde GreaterThan
-- Eşiği 70
+  - Instance = InstanceName1, InstanceName2
+- Time Aggregation: Average
+- Period: Over the last 5 mins
+- Frequency: 1 min
+- Operator: GreaterThan
+- Threshold: 70
 
-Daha önce olduğu gibi, bu kural son 5 dakika boyunca ortalama CPU kullanımının% 70 ' ü aşarsa izleyicilerini izler. Ancak, aynı kuralla, Web sitenizi çalıştıran iki örneği izleyebilirsiniz. Her örnek ayrı ayrı izlenir ve bildirimleri tek tek alırsınız.
+Like before, this rule monitors if the average CPU usage for the last 5 minutes exceeds 70%. However, with the same rule you can monitor two instances running your website. Each instance will get monitored individually and you will get notifications individually.
 
-Büyük ölçüde talep gösteren bir Web uygulamanız olduğunu ve daha fazla örnek eklemeniz gerektiğini varsayalım. Yukarıdaki kural hala yalnızca iki örneği izler. Ancak, aşağıdaki gibi bir kural oluşturabilirsiniz:
+Say you have a web app that is seeing massive demand and you will need to add more instances. The above rule still monitors just two instances. However, you can create a rule as follows:
 
-- Hedef kaynak: myAppServicePlan
-- Ölçüt CPU yüzdesi
-- Koşul türü: Statik
+- Target resource: myAppServicePlan
+- Metric: Percentage CPU
+- Condition Type: Static
 - Boyutlar
-  - Örnek = *
-- Zaman toplama: Average
-- Dönemini Son 5 dakika boyunca
-- Lemiyor 1 dk
-- İşlecinde GreaterThan
-- Eşiği 70
+  - Instance = *
+- Time Aggregation: Average
+- Period: Over the last 5 mins
+- Frequency: 1 min
+- Operator: GreaterThan
+- Threshold: 70
 
-Bu kural örneğin tüm değerlerini otomatik olarak izler, örn. burada, ölçüm uyarı kuralınızı değiştirmeye gerek kalmadan örneklerinizi izleyebilirsiniz.
+This rule will automatically monitor all values for the instance i.e you can monitor your instances as they come up without needing to modify your metric alert rule again.
 
-Birden çok boyut izlenirken, dinamik eşik uyarıları kuralı her seferinde yüzlerce ölçüm serisi için özel eşikler oluşturabilir. Dinamik eşikler, yönetim ve uyarı kurallarının yönetimine ve oluşturulmasına göre daha az uyarı kuralına sahip olur ve yönetimi ve önemli zaman tasarrufu sağlar.
+When monitoring multiple dimensions, Dynamic Thresholds alerts rule can create tailored thresholds for hundreds of metric series at a time. Dynamic Thresholds results in fewer alert rules to manage and significant time saving on management and creation of alerts rules.
 
-Birçok örneğe sahip bir Web uygulamanız olduğunu ve en uygun eşiğin ne olduğunu bilmemenizi varsayalım. Yukarıdaki kurallar her zaman% 70 eşiğini kullanır. Ancak, aşağıdaki gibi bir kural oluşturabilirsiniz:
+Say you have a web app with many instances and you don't know what the most suitable threshold is. The above rules will always use threshold of 70%. However, you can create a rule as follows:
 
-- Hedef kaynak: myAppServicePlan
-- Ölçüt CPU yüzdesi
-- Koşul türü: Dinamik
+- Target resource: myAppServicePlan
+- Metric: Percentage CPU
+- Condition Type: Dynamic
 - Boyutlar
-  - Örnek = *
-- Zaman toplama: Average
-- Dönemini Son 5 dakika boyunca
-- Lemiyor 1 dk
-- İşlecinde GreaterThan
-- Karşı Orta
-- Dönemleri geri ara: 1.
-- Ihlal sayısı: 1.
+  - Instance = *
+- Time Aggregation: Average
+- Period: Over the last 5 mins
+- Frequency: 1 min
+- Operator: GreaterThan
+- Sensitivity: Medium
+- Look Back Periods: 1
+- Number of Violations: 1
 
-Bu kural, son 5 dakika boyunca ortalama CPU kullanımının her örnek için beklenen davranışı aşarsa izler. Aynı kural, ölçüm uyarı kuralınızı yeniden değiştirmeye gerek kalmadan, örnekleri takip ettikleri şekilde izleyebilirsiniz. Her örnek, ölçüm serisi davranış düzenine uyan bir eşik alır ve eşiği daha doğru hale getirmek için yeni verilere göre sürekli olarak değişecektir. Daha önce olduğu gibi, her örnek ayrı ayrı izlenir ve bildirimleri ayrı ayrı alırsınız.
+This rule monitors if the average CPU usage for the last 5 minutes exceeds the expected behavior for each instance. The same rule you can monitor instances as they come up without needing to modify your metric alert rule again. Each instance will get a threshold that fits the metric series behavior pattern and will continuously change based on new data to make the threshold more accurate. Like before, each instance will be monitored individually and you will get notifications individually.
 
-Geri arama sürelerini ve ihlallerin sayısını artırmak, uyarıların yalnızca önemli bir sapma tanımınızda uyarı vermesi için de izin verebilir. [Dinamik eşikler gelişmiş seçenekleri hakkında daha fazla bilgi edinin](alerts-dynamic-thresholds.md#what-do-the-advanced-settings-in-dynamic-thresholds-mean).
+Increasing look-back periods and number of violations can also allow filtering alerts to only alert on your definition of a significant deviation. [Learn more about Dynamic Thresholds advanced options](alerts-dynamic-thresholds.md#what-do-the-advanced-settings-in-dynamic-thresholds-mean).
 
-## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>Azure Izleyici 'de ölçüm uyarılarını kullanarak ölçeğe göre izleme
+## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>Monitoring at scale using metric alerts in Azure Monitor
 
-Şimdiye kadar, tek bir Azure kaynağıyla ilgili bir veya daha fazla ölçüm zaman serisini izlemek için tek bir ölçüm uyarısının nasıl kullanılabileceğini gördünüz. Birçok kez, aynı uyarı kuralının birçok kaynağa uygulanmasını isteyebilirsiniz. Azure Izleyici, tek bir ölçüm uyarısı kuralıyla birden fazla kaynağın izlenmesini de destekler. Bu özellik şu anda yalnızca sanal makinelerde destekleniyor. Ayrıca tek bir ölçüm uyarısı, kaynakları tek bir Azure bölgesinde izleyebilir.
+So far, you have seen how a single metric alert could be used to monitor one or many metric time-series related to a single Azure resource. Many times, you might want the same alert rule applied to many resources. Azure Monitor also supports monitoring multiple resources with one metric alert rule. This feature is currently supported only on virtual machines. Also, a single metric alert can monitor resources in one Azure region.
 
-Tek bir ölçüm uyarısı tarafından izlemenin kapsamını üç şekilde belirtebilirsiniz:
+You can specify the scope of monitoring by a single metric alert in one of three ways:
 
-- bir abonelik içindeki bir Azure bölgesindeki sanal makinelerin listesi olarak
-- bir abonelikteki bir veya daha fazla kaynak grubunda bulunan tüm sanal makineler (bir Azure bölgesinde)
-- bir abonelikteki tüm sanal makineler (bir Azure bölgesinde)
+- as a list of virtual machines in one Azure region within a subscription
+- all virtual machines (in one Azure region) in one or more resource groups in a subscription
+- all virtual machines (in one Azure region) in one subscription
 
-Birden çok kaynağı izleyen ölçüm uyarısı kuralları oluşturmak, tek bir kaynağı izleyen [başka bir ölçüm uyarısı oluşturmak](alerts-metric.md) gibidir. Yalnızca fark, izlemek istediğiniz tüm kaynakları seçecekti. Ayrıca, bu kuralları [Azure Resource Manager şablonları](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-metric-alert-that-monitors-multiple-resources)aracılığıyla da oluşturabilirsiniz. Her bir sanal makine için bireysel bildirimler alacaksınız.
+Creating metric alert rules that monitor multiple resources is like [creating any other metric alert](alerts-metric.md) that monitors a single resource. Only difference is that you would select all the resources you want to monitor. You can also create these rules through [Azure Resource Manager templates](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-metric-alert-that-monitors-multiple-resources). You will receive individual notifications for each virtual machine.
 
-## <a name="typical-latency"></a>Tipik gecikme süresi
+## <a name="typical-latency"></a>Typical latency
 
-Ölçüm uyarıları için genellikle uyarı kuralı sıklığını 1 dak olarak ayarlarsanız 5 dakika boyunca bildirim alacaksınız. Bildirim sistemleri için ağır yük durumunda daha uzun bir gecikme görebilirsiniz.
+For metric alerts, typically you will get notified in under 5 minutes if you set the alert rule frequency to be 1 min. In cases of heavy load for notification systems, you might see a longer latency.
 
-## <a name="supported-resource-types-for-metric-alerts"></a>Ölçüm uyarıları için desteklenen kaynak türleri
+## <a name="supported-resource-types-for-metric-alerts"></a>Supported resource types for metric alerts
 
-Desteklenen kaynak türlerinin tam listesini bu [makalede](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)bulabilirsiniz.
+You can find the full list of supported resource types in this [article](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported).
 
-Günümüzde klasik ölçüm uyarıları kullanıyorsanız ve ölçüm uyarılarının kullanmakta olduğunuz tüm kaynak türlerini destekledikleri takdirde, aşağıdaki tabloda, klasik ölçüm uyarıları tarafından desteklenen kaynak türleri ve bu değerler, günümüzde ölçüm uyarıları tarafından destekleniyorlarsa gösterilmektedir.
-
-|Klasik ölçüm uyarıları tarafından desteklenen kaynak türü | Ölçüm uyarıları tarafından destekleniyor |
-|-------------------------------------------------|----------------------------|
-| Microsoft.ApiManagement/service | Evet |
-| Microsoft.Batch/batchAccounts| Evet|
-|Microsoft. Cache/redsıs| Evet |
-|Microsoft. ClassicCompute/virtualMachines | Hayır |
-|Microsoft. ClassicCompute/domainNames/yuvalar/roller | Hayır|
-|Microsoft.CognitiveServices/accounts | Hayır |
-|Microsoft.Compute/virtualMachines | Evet|
-|Microsoft.Compute/virtualMachineScaleSets| Evet|
-|Microsoft. ClassicStorage/storageAccounts| Hayır |
-|Microsoft. DataFactory/DataFactory | Evet|
-|Microsoft. Dbformyısql/sunucuları| Evet|
-|Microsoft. DBforPostgreSQL/sunucuları| Evet|
-|Microsoft.Devices/ıothubs | Hayır|
-|Microsoft. DocumentDB/databaseAccounts| Evet|
-|Microsoft.EventHub/namespaces | Evet|
-|Microsoft.Logic/workflows | Evet|
-|Microsoft.Network/loadBalancers |Evet|
-|Microsoft.Network/publicIPAddresses| Evet|
-|Microsoft.Network/applicationGateways| Evet|
-|Microsoft. Network/Expressroutedevreleri| Evet|
-|Microsoft.Network/trafficManagerProfiles | Evet|
-|Microsoft.Search/searchServices | Evet|
-|Microsoft.ServiceBus/namespaces| Evet |
-|Microsoft.Storage/storageAccounts | Evet|
-|Microsoft. StreamAnalytics/streamingjobs| Evet|
-|Microsoft. Timeseriesınsights/ortamlar | Evet|
-|Microsoft. Web/sunucu grupları | Evet |
-|Microsoft. Web/siteler (işlevler hariç) | Evet|
-|Microsoft. Web/hostingEnvironments/multiRolePools | Hayır|
-|Microsoft. Web/hostingEnvironments/workerPools| Hayır |
-|Microsoft. SQL/sunucuları | Hayır |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure 'da ölçüm uyarılarını oluşturma, görüntüleme ve yönetme hakkında bilgi edinin](alerts-metric.md)
-- [Azure Resource Manager şablonlarını kullanarak ölçüm uyarılarını dağıtmayı öğrenin](../../azure-monitor/platform/alerts-metric-create-templates.md)
-- [Eylem grupları hakkında daha fazla bilgi edinin](action-groups.md)
-- [Dinamik eşikler durum türü hakkında daha fazla bilgi edinin](alerts-dynamic-thresholds.md)
+- [Learn how to create, view, and manage metric alerts in Azure](alerts-metric.md)
+- [Learn how to deploy metric alerts using Azure Resource Manager templates](../../azure-monitor/platform/alerts-metric-create-templates.md)
+- [Learn more about action groups](action-groups.md)
+- [Learn more about Dynamic Thresholds condition type](alerts-dynamic-thresholds.md)

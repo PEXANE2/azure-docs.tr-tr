@@ -1,14 +1,14 @@
 ---
 title: 'Tutorial: Create a custom policy definition'
 description: In this tutorial, you craft a custom policy definition for Azure Policy to enforce custom business rules on your Azure resources.
-ms.date: 11/21/2019
+ms.date: 11/25/2019
 ms.topic: tutorial
-ms.openlocfilehash: d93f1acb383782de055983ec9ec33ce5576619d1
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: e30d47ed6e01c4fd8ff061398b1045f9446e466a
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327420"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483973"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Tutorial: Create a custom policy definition
 
@@ -52,7 +52,7 @@ Based on the business requirement, the Azure resource to audit with Azure Policy
 
 There are many ways to determine the properties for an Azure resource. We'll look at each for this tutorial:
 
-- Azure Policy extension for VS Code
+- VS Code için Azure İlkesi uzantısı
 - Resource Manager şablonları
   - Export existing resource
   - Creation experience
@@ -163,7 +163,7 @@ We've identified the resource property, but we need to map that property to an [
 
 There are a few ways to determine the aliases for an Azure resource. We'll look at each for this tutorial:
 
-- Azure Policy extension for VS Code
+- VS Code için Azure İlkesi uzantısı
 - Azure CLI
 - Azure PowerShell
 - Azure Kaynak Grafiği
@@ -450,6 +450,16 @@ With all three parts of the policy defined, here is our completed definition:
 ```
 
 The completed definition can be used to create a new policy. Portal and each SDK (Azure CLI, Azure PowerShell, and REST API) accept the definition in different ways, so review the commands for each to validate correct usage. Then assign it, using the parameterized effect, to appropriate resources to manage the security of your storage accounts.
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+If you're done working with resources from this tutorial, use the following steps to delete any of the assignments or definitions created above:
+
+1. Select **Definitions** (or **Assignments** if you're trying to delete an assignment) under **Authoring** in the left side of the Azure Policy page.
+
+1. Kaldırmak istediğiniz yeni girişim veya tanımını (ya da atamayı) arayın.
+
+1. Satıra sağ tıklayın ya da tanımın (veya atamanın) sonundaki üç noktayı seçip **Tanımı sil** (veya **Atamayı sil**) öğesini seçin.
 
 ## <a name="review"></a>Gözden Geçir
 

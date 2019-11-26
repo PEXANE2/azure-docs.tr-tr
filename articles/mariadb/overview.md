@@ -1,77 +1,73 @@
 ---
-title: MariaDB için Azure veritabanı ilişkisel veritabanı hizmetine genel bakış
-description: MySQL Community Edition 'ı temel alan Microsoft bulutundaki bir ilişkisel veritabanı hizmeti olan MariaDB hizmeti için Azure veritabanı hakkında bilgi edinin.
+title: MariaDB için Azure Veritabanı ilişkisel veritabanı hizmetine genel bakış
+description: Learn about the Azure Database for MariaDB service, a relational database service in the Microsoft cloud based on the MySQL community edition.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: overview
 ms.custom: mvc
-ms.date: 08/13/2019
-ms.openlocfilehash: 46ba972c489326157cbdea19a1363a30e18f72b8
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.date: 11/25/2019
+ms.openlocfilehash: aed2e090a1e3a6a4c80f70ba25da9a903a6192c1
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177971"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74484147"
 ---
-# <a name="what-is-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı nedir?
+# <a name="what-is-azure-database-for-mariadb"></a>MariaDB için Azure Veritabanı nedir?
 
-MariaDB için Azure veritabanı, Microsoft bulutundaki bir ilişkisel veritabanı hizmetidir. MariaDB için Azure veritabanı, [MariaDB Community Edition](https://mariadb.org/download/) 'ı (GPLv2 lisansı altında bulunur) veritabanı altyapısı, sürüm 10,2 ve 10,3 temel alır.
+MariaDB için Azure Veritabanı, Microsoft bulutunda sunulan bir ilişkisel veritabanı hizmetidir. Azure Database for MariaDB is based on the [MariaDB community edition](https://mariadb.org/download/) (available under the GPLv2 license) database engine, version 10.2 and 10.3.
 
-MariaDB için Azure veritabanı şunları sağlar:
+MariaDB için Azure Veritabanı şunları sağlar:
 
 - Ek ücret ödemeden yerleşik yüksek kullanılabilirlik.
-- Kapsamlı Kullandıkça Öde fiyatlandırması kullanılarak öngörülebilir performans.
-- Saniyeler içinde gerektiği şekilde ölçeklendirin.
-- Bekleyen ve hareketli hassas verilerin güvenli koruması.
-- Otomatik yedeklemeler ve zaman içindeki süre-geri yükleme 35 güne kadar.
+- Kapsamlı kullandıkça öde fiyatlandırması kullanılarak öngörülebilir performans.
+- Saniyeler içinde gerektiği gibi ölçeklendirin.
+- Bekleyen ve hareket halindeki hassas verileri korumaya yönelik güvenlik.
+- Otomatik yedeklemeler ve 35 güne kadar belirli bir noktaya geri yükleme.
 - Kurumsal düzeyde güvenlik ve uyumluluk.
 
-Bu yetenekler neredeyse hiçbir yönetim gerektirmez. Bunlar ek bir ücret ödemeden sağlanırlar. MariaDB için Azure veritabanı, uygulamanızı hızlı bir şekilde geliştirmenize ve pazara yönelik zamandan hızlandırmanıza yardımcı olabilir. Sanal makineleri ve altyapıyı yönetmek için değerli zaman ve kaynak ayırmanız gerekmez. Ayrıca, seçtiğiniz açık kaynaklı araçları ve platformu kullanarak uygulamanızı geliştirmeye devam edebilirsiniz. Yeni beceriler öğrenmeksizin iş taleplerinizin hızını ve verimliliğini sunun.
+Bu özelliklerin yönetilmesine neredeyse hiç gerek yoktur. Bu özellikler ücretsiz sunulur. MariaDB için Azure Veritabanı, uygulamanızı hızla geliştirmenize ve pazara ulaşma sürenizi kısaltmanıza yardımcı olabilir. Değerli vaktinizi ve kaynaklarınızı sanal makine ve altyapı yönetimine ayırmanıza gerek yoktur. Ayrıca dilediğiniz açık kaynak araçlarını ve platformu kullanarak uygulamanızı geliştirmeye devam edebilirsiniz. Yeni beceri edinmeye gerek kalmadan işletmenizin ihtiyaç duyduğu hız ve verimlilikle çalışın.
 
-Performans, ölçeklenebilirlik ve yönetilebilirlik dahil olmak üzere MariaDB için Azure veritabanı 'nda temel kavramlar ve özellikler hakkında bilgi edinmek için şu hızlı başlangıçlara bakın:
+Performans, ölçeklenebilirlik ve yönetilebilirlik dahil olmak üzere MariaDB için Azure Veritabanı'nın temel kavramları ve özellikleri hakkında daha fazla bilgi edinmek için şu hızlı başlangıçlara bakın:
 
-- [Azure portal kullanarak MariaDB sunucusu için Azure veritabanı oluşturma](quickstart-create-mariadb-server-database-using-azure-portal.md)
-- [Azure CLı kullanarak MariaDB sunucusu için Azure veritabanı oluşturma](quickstart-create-mariadb-server-database-using-azure-cli.md)
+- [Azure portalı kullanarak MariaDB için Azure Veritabanı sunucusu oluşturma](quickstart-create-mariadb-server-database-using-azure-portal.md)
+- [Azure CLI kullanarak MariaDB için Azure Veritabanı sunucusu oluşturma](quickstart-create-mariadb-server-database-using-azure-cli.md)
 
 <!--
 For a set of Azure CLI samples, see:
 - [Azure CLI samples for Azure Database for MariaDB](sample-scripts-azure-cli.md) 
 -->
 
-## <a name="adjust-performance-and-scale-within-seconds"></a>Performansı ayarlama ve saniyeler içinde ölçeklendirme
+## <a name="adjust-performance-and-scale-within-seconds"></a>Saniyeler içinde performansı ve ölçeği ayarlama
 
-MariaDB için Azure veritabanı hizmeti birçok hizmet katmanı sunar: temel, Genel Amaçlı ve bellek için Iyileştirilmiş. Her katman hafif ve ağır veritabanı iş yüklerini desteklemeye yönelik farklı performans ve yetenekler sunar. İlk uygulamanızı bir ay birkaç ABD Doları için küçük bir veritabanında oluşturabilir ve sonra ölçeklendirmeyi çözümünüzün ihtiyaçlarını karşılayacak şekilde ayarlayabilirsiniz. Dinamik ölçeklenebilirlik, veritabanınızın hızla değişen kaynak gereksinimlerine şeffaf bir şekilde yanıt vermesini sağlar. Yalnızca ihtiyacınız olan kaynaklar için ve yalnızca ihtiyacınız olduğunda ödeme yaparsınız. Ayrıntılar için bkz. [fiyatlandırma katmanları](concepts-pricing-tiers.md) .
+The Azure Database for MariaDB service offers several service tiers: Basic, General Purpose, and Memory Optimized. Her katman, hafiften ağıra kadar tüm iş yüklerini desteklemek üzere farklı performans ve özellikler getirir. İlk uygulamanızı aylık birkaç dolar ücretle küçük bir veritabanı üzerinde oluşturabilir ve sonra çözümünüzün gereksinimlerine göre ölçeği ayarlayabilirsiniz. Dinamik ölçeklendirebilirlik, veritabanınızın hızla değişen kaynak gereksinimlerine saydam bir şekilde yanıt verebilmesine yardımcı olur. Yalnızca ihtiyacınız olan kaynaklar için ve yalnızca bunlara ihtiyacınız olduğunda ödeme yaparsınız. See [Pricing tiers](concepts-pricing-tiers.md) for details.
 
-## <a name="monitoring-and-alerting"></a>İzleme ve uyarma
+## <a name="monitoring-and-alerting"></a>İzleme ve uyarı
 
-Ne zaman ölçekleneceğine veya azaltılamayacağına nasıl karar verirsiniz? MariaDB için Azure veritabanı 'nın yerleşik performans izleme ve uyarı özelliklerini, sanal çekirdekler tabanlı performans derecelendirmeleriyle birlikte kullanabilirsiniz. Bu araçları kullanarak, geçerli veya tahmini performans gereksinimlerinize göre sanal çekirdekleri ölçeklendirmenin etkisini hızla değerlendirebilirsiniz. Ayrıntılar için bkz. [Uyarılar](howto-alert-metric.md) .
+Ölçeğin ne zaman artırılacağına veya azaltılacağına nasıl karar verirsiniz? MariaDB için Azure Veritabanı'nın yerleşik performans izleme ve uyarı özelliklerini, sanal çekirdekleri temel alan performans değerlendirmeleriyle birlikte kullanabilirsiniz. Bu araçları kullanarak geçerli veya projeye özgü performans ihtiyaçlarınıza göre sanal çekirdeklerin ölçeğini büyütme veya küçültme işlemlerinin etkisini hızla değerlendirebilirsiniz. Ayrıntılar için bkz. [Uyarılar](howto-alert-metric.md).
 
-## <a name="keep-your-app-and-business-running"></a>Uygulamanızı ve işinizi çalışır durumda tutun
+## <a name="keep-your-app-and-business-running"></a>Uygulamanızın ve işinizin hiç kesintiye uğramamasını sağlayın
 
-Azure 'un sektörde önde gelen% 99,99 kullanılabilirlik SLA 'Sı, Microsoft tarafından yönetilen küresel bir veri merkezi ağı ile desteklenmektedir. Ağ, uygulamanızı 24/7 çalıştırmaya devam etmenize yardımcı olur. MariaDB için Azure veritabanı 'nda yerleşik güvenlik, hataya dayanıklılık ve veri koruması avantajlarından yararlanabilirsiniz. MariaDB için Azure veritabanı ile, bir sunucuyu daha önceki bir duruma 35 gün kadar geri kurtarmak için belirli bir noktaya geri yükleme kullanabilirsiniz.
+Azure's industry-leading 99.99% availability SLA is powered by a global network of Microsoft-managed datacenters. Ağ, uygulamanızın 7/24 çalışmasına yardımcı olur. MariaDB için Azure Veritabanı'ndaki yerleşik güvenlik, hataya dayanıklılık ve veri koruma özelliklerinden faydalanabilirsiniz. MariaDB için Azure Veritabanı ile, sunucuyu daha önceki bir durumuna (35 güne kadar) döndürüp kurtarmak için belirli bir noktaya geri yükleme işlemini gerçekleştirebilirsiniz.
 
-## <a name="secure-your-data"></a>Verilerinizin güvenliğini sağlama
+## <a name="secure-your-data"></a>Verilerinizi güvenli hale getirin
 
-Azure veritabanı Hizmetleri, MariaDB için Azure veritabanı 'nın sahip olduğu bir gelenek veri güvenliği içerir. MariaDB için Azure veritabanı, erişimi sınırlayan, bekleyen ve hareketli verileri koruyan ve etkinliği izlemenize yardımcı olan özellikler sunar. Azure 'un Platform güvenliği hakkında bilgi edinmek için [Azure Güven Merkezi](https://www.microsoft.com/en-us/trustcenter/security) ziyaret edin.
-
-MariaDB hizmeti için Azure veritabanı, bekleyen verilerin depolama şifrelemesi için FIPS 140-2 tarafından doğrulanan şifreleme modülünü kullanır. Yedeklemeler de dahil olmak üzere veriler, sorgular çalıştırılırken oluşturulan geçici dosyalar hariç olmak üzere diskte şifrelenir. Hizmet, Azure depolama şifrelemesi 'ne dahil olan AES 256 bit şifre kullanır. Anahtarlar sistem tarafından yönetilmektedir. Depolama şifrelemesi her zaman açıktır ve devre dışı bırakılamaz.
-
-Varsayılan olarak, MariaDB için Azure veritabanı hizmeti, ağ üzerinden hareket halindeki veriler için [SSL bağlantısı güvenliği](./concepts-ssl-connection-security.md) gerektirecek şekilde yapılandırılmıştır. Veritabanı sunucunuz ile istemci uygulamalarınız arasında SSL bağlantılarını zorunlu tutma, sunucu ile uygulamanız arasındaki veri akışını şifreleyerek "ortadaki adam" saldırılarına karşı korunmaya yardımcı olur. İsteğe bağlı olarak, istemci uygulamanız SSL bağlantısını desteklemiyorsa, veritabanı hizmetinize bağlanmak için SSL gereksinimini devre dışı bırakabilirsiniz.
+Azure veritabanı hizmetlerinin sahip olduğu veri güvenliği anlayışı, MariaDB için Azure Veritabanı'nda da devam etmektedir. MariaDB için Azure Veritabanı bekleyen ve hareket halindeki verileri koruyan, erişimi sınırlandıran ve etkinliği izlemenize yardımcı olan özellikler sunmaktadır. Azure'ın platform güvenliği hakkında bilgi edinmek için [Azure Güven Merkezi](https://www.microsoft.com/trustcenter/security)'ni ziyaret edin. For more information about Azure Database for MySQL security features, see the [security overview](concepts-security.md).
 
 ## <a name="contacts"></a>Kişiler
 
-MariaDB için Azure veritabanı ile çalışmak üzere sahip olduğunuz herhangi bir soruyu veya önerisi, [MariaDB ekibine yönelik Azure veritabanı](mailto:AskAzureDBforMariaDB@service.microsoft.com) 'na (teknik destek diğer adı değil) gönderebilirsiniz.
+MariaDB için Azure Veritabanı’yla çalışma hakkındaki sorularınızı veya önerilerinizi [MariaDB için Azure Veritabanı Ekibine](mailto:AskAzureDBforMariaDB@service.microsoft.com) (teknik destek diğer adı değildir) gönderebilirsiniz.
 
-Aşağıdaki iletişim noktalarını da kullanabilirsiniz:
-- Azure desteği ile iletişim kurmak için Azure portal [bir destek isteği açın](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) .
-- Hesabınızla ilgili bir sorunu onarmak için Azure portal [bir destek isteği açın](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) .
-- Geri bildirim sağlamak veya yeni özellikler istemek için [Azure geri bildirim forumlarında](https://feedback.azure.com/forums/915439-azure-database-for-mariadb)bir giriş oluşturun.
+Ayrıca aşağıdaki iletişim noktalarını da kullanabilirsiniz:
+- Azure Desteğine başvurmak için Azure portalda [bir destek isteği açın](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+- Hesabınızla ilgili bir sorun gidermek için Azure portalda bir [destek isteği açın](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+- Görüş bildirmek veya yeni özellik isteği göndermek için [Azure Geri Bildirim Forumlarında](https://feedback.azure.com/forums/915439-azure-database-for-mariadb) bir giriş oluşturun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-MariaDB için Azure veritabanı 'na giriş okudığınıza göre şu şekilde hazırsınız:
+MariaDB için Azure Veritabanı hakkında giriş bilgilerini incelediğinize göre şu adımlar için hazırsınız:
 - Maliyet karşılaştırmaları ve hesaplayıcıları için [fiyatlandırma](https://azure.microsoft.com/pricing/details/mariadb/) sayfasına bakın. 
-- [İlk sunucunuzu oluşturarak](quickstart-create-mariadb-server-database-using-azure-portal.md)başlayın.
+- [İlk sunucunuzu oluşturarak](quickstart-create-mariadb-server-database-using-azure-portal.md) başlayın.
 
 <!--- - Build your first app using your preferred language: [Python](./connect-python.md) | [Node.JS](./connect-nodejs.md) | [Java](./connect-java.md) | [Ruby](./connect-ruby.md) | [PHP](./connect-php.md) | [.NET (C#)](./connect-csharp.md) | [Go](./connect-go.md) --->

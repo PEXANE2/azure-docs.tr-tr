@@ -1,6 +1,6 @@
 ---
 title: Güvenlik Genel Bilgileri
-description: Bulut ve şirket içi SQL Server arasındaki farklılıklar dahil olmak üzere Azure SQL veritabanı ve SQL Server güvenliği hakkında bilgi edinin.
+description: Learn about Azure SQL Database and SQL Server security, including the differences between the cloud and SQL Server on-premises.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,151 +11,147 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 ms.date: 05/14/2019
-ms.openlocfilehash: d952229ab327440771db6cc5ac64db2256491179
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b318d4b5076ff24612d5b5ce0ba619f0b38ac280
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823247"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483843"
 ---
-# <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL veritabanı güvenlik özelliklerine genel bakış
+# <a name="an-overview-of-azure-sql-database-security-capabilities"></a>An overview of Azure SQL Database security capabilities
 
-Bu makalede, Azure SQL veritabanı 'nı kullanarak bir uygulamanın veri katmanını güvenli hale getirmenin temelleri özetlenmektedir. Açıklanan güvenlik stratejisi aşağıdaki resimde gösterildiği gibi katmanlı derinlemesine savunma yaklaşımını takip eder ve dışarıdan şu şekilde gider:
+This article outlines the basics of securing the data tier of an application using Azure SQL Database. The security strategy described follows the layered defense-in-depth approach as shown in the picture below, and moves from the outside in:
 
-![SQL-Security-Layer. png](media/sql-database-security-overview/sql-security-layer.png)
+![sql-security-layer.png](media/sql-database-security-overview/sql-security-layer.png)
 
 ## <a name="network-security"></a>Ağ güvenliği
 
-Microsoft Azure SQL Veritabanı, bulut ve kurumsal uygulamalar için bir ilişkisel veritabanı hizmeti sağlar. Güvenlik duvarları, müşteri verilerini korumaya yardımcı olmak için, IP adresine veya Azure sanal ağ trafiği kaynağına dayalı olarak erişim izni verilene kadar veritabanı sunucusuna ağ erişimini engeller.
+Microsoft Azure SQL Database provides a relational database service for cloud and enterprise applications. To help protect customer data, firewalls prevent network access to the database server until access is explicitly granted based on IP address or Azure Virtual network traffic origin.
 
-### <a name="ip-firewall-rules"></a>IP güvenlik duvarı kuralları
+### <a name="ip-firewall-rules"></a>IP firewall rules
 
-IP güvenlik duvarı kuralları, her isteğin kaynak IP adresine göre veritabanlarına erişim izni verir. Daha fazla bilgi için bkz. [Azure SQL veritabanı ve SQL veri ambarı güvenlik duvarı kurallarına genel bakış](sql-database-firewall-configure.md).
+IP firewall rules grant access to databases based on the originating IP address of each request. For more information, see [Overview of Azure SQL Database and SQL Data Warehouse firewall rules](sql-database-firewall-configure.md).
 
 ### <a name="virtual-network-firewall-rules"></a>Sanal ağ güvenlik duvarı kuralları
 
-[Sanal ağ hizmeti uç noktaları](../virtual-network/virtual-network-service-endpoints-overview.md) , sanal ağ bağlantınızı Azure omurgası üzerinden genişlettirecektir ve trafiğin kaynaklandığı sanal ağ alt ağını belirlemek IÇIN Azure SQL veritabanı 'nı etkinleştirin. Trafiğin Azure SQL veritabanına ulaşmasını sağlamak için, ağ güvenlik grupları aracılığıyla giden trafiğe izin vermek üzere SQL [hizmeti etiketlerini](../virtual-network/security-overview.md) kullanın.
+[Virtual network service endpoints](../virtual-network/virtual-network-service-endpoints-overview.md) extend your virtual network connectivity over the Azure backbone and enable Azure SQL Database to identify the virtual network subnet that traffic originates from. To allow traffic to reach Azure SQL Database, use the SQL [service tags](../virtual-network/security-overview.md) to allow outbound traffic through Network Security Groups.
 
-[Sanal ağ kuralları](sql-database-vnet-service-endpoint-rule-overview.md) , Azure SQL veritabanı 'nın yalnızca bir sanal ağ içindeki seçili alt ağlardan gönderilen iletişimleri kabul etmesine olanak tanır.
+[Virtual network rules](sql-database-vnet-service-endpoint-rule-overview.md) enable Azure SQL Database to only accept communications that are sent from selected subnets inside a virtual network.
 
 > [!NOTE]
-> Güvenlik Duvarı kurallarıyla erişimi denetlemek **yönetilen bir örnek** *için uygulanmaz.* Gereken ağ yapılandırması hakkında daha fazla bilgi için bkz. [yönetilen örneğe bağlanma](sql-database-managed-instance-connect-app.md)
+> Controlling access with firewall rules does *not* apply to **a managed instance**. For more information about the networking configuration needed, see [connecting to a managed instance](sql-database-managed-instance-connect-app.md)
 
 ## <a name="access-management"></a>Erişim yönetimi
 
 > [!IMPORTANT]
-> Azure 'daki veritabanlarını ve veritabanı sunucularını yönetmek, Portal Kullanıcı hesabınızın rol atamaları tarafından denetlenir. Bu makale hakkında daha fazla bilgi için, bkz. [Azure Portal rol tabanlı erişim denetimi](../role-based-access-control/overview.md).
+> Managing databases and database servers within Azure is controlled by your portal user account's role assignments. For more information on this article, see [Role-based access control in Azure portal](../role-based-access-control/overview.md).
 
 ### <a name="authentication"></a>Kimlik Doğrulaması
 
-Kimlik doğrulama, kullanıcının talep ettikleri kim olduğunu kanıtlama işlemidir. Azure SQL veritabanı iki tür kimlik doğrulamasını destekler:
+Authentication is the process of proving the user is who they claim to be. Azure SQL Database supports two types of authentication:
 
-- **SQL kimlik doğrulaması**:
+- **SQL authentication**:
 
-    SQL veritabanı kimlik doğrulaması, [Azure SQL veritabanı](sql-database-technical-overview.md) 'na bağlanırken Kullanıcı adı ve parola kullanarak bir kullanıcının kimlik doğrulamasını ifade eder. Veritabanı için veritabanı sunucu oluşturma sırasında, bir Kullanıcı adı ve parolayla "Sunucu Yöneticisi" oturum açması belirtilmelidir. Bu kimlik bilgilerini kullanarak bir "Sunucu Yöneticisi" veritabanı sahibi olarak veritabanı sunucusundaki herhangi bir veritabanında kimlik doğrulaması yapabilir. Bundan sonra, ek SQL oturum açmaları ve kullanıcılar, kullanıcıların Kullanıcı adı ve parola kullanarak bağlanmasına olanak tanıyan Sunucu Yöneticisi tarafından oluşturulabilir.
+    SQL database authentication refers to the authentication of a user when connecting to [Azure SQL Database](sql-database-technical-overview.md) using username and password. During the database server creation for the database, a "Server admin" login with a username and password must be specified. Using these credentials, a “server admin” can authenticate to any database on that database server as the database owner. After that, additional SQL logins and users can be created by the server admin, which enable users to connect using username and password.
 
-- **Azure Active Directory kimlik doğrulaması**:
+- **Azure Active Directory authentication**:
 
-    Azure Active Directory kimlik doğrulaması, [Azure SQL veritabanı](sql-database-technical-overview.md) ve [SQL veri ambarı](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 'Na Azure ACTIVE DIRECTORY kimlik (Azure AD) kullanarak bağlanma mekanizmasıdır. Azure AD kimlik doğrulaması, yöneticilerin, diğer Microsoft hizmetleriyle birlikte veritabanı kullanıcılarının kimliklerini ve izinlerini tek bir merkezi konumda merkezi olarak yönetmesine olanak tanır. Bu, parola depolamanın en az düzeyde bir kısmını içerir ve merkezi parola döndürme ilkelerini sunar.
+    Azure Active Directory authentication is a mechanism of connecting to [Azure SQL Database](sql-database-technical-overview.md) and [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) by using identities in Azure Active Directory (Azure AD). Azure AD authentication allows administrators to centrally manage the identities and permissions of database users along with other Microsoft services in one central location. This includes the minimization of password storage and enables centralized password rotation policies.
 
-     SQL veritabanı ile Azure AD kimlik doğrulamasını kullanmak için **Active Directory Yöneticisi** olarak adlandırılan bir sunucu yöneticisi oluşturulmalıdır. Daha fazla bilgi için bkz. [Azure Active Directory kimlik doğrulaması kullanarak SQL veritabanı 'Na bağlanma](sql-database-aad-authentication.md). Azure AD kimlik doğrulaması hem yönetilen hem de Federasyon hesaplarını destekler. Federasyon hesapları, Azure AD ile federe bir müşteri etki alanı için Windows kullanıcılarını ve gruplarını destekler.
+     A server admin called the **Active Directory administrator** must be created to use Azure AD authentication with SQL Database. For more information, see [Connecting to SQL Database By Using Azure Active Directory Authentication](sql-database-aad-authentication.md). Azure AD authentication supports both managed and federated accounts. The federated accounts support Windows users and groups for a customer domain federated with Azure AD.
 
-    Kullanılabilir ek Azure AD kimlik doğrulama seçenekleri [Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md) ve [koşullu erişim](sql-database-conditional-access.md)dahil [SQL Server Management Studio bağlantılar için evrensel kimlik doğrulaması Active Directory](sql-database-ssms-mfa-authentication.md) .
+    Additional Azure AD authentication options available are [Active Directory Universal Authentication for SQL Server Management Studio](sql-database-ssms-mfa-authentication.md) connections including [Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md) and [Conditional Access](sql-database-conditional-access.md).
 
 > [!IMPORTANT]
-> Azure 'daki veritabanlarını ve sunucuları yönetmek, Portal Kullanıcı hesabınızın rol atamaları tarafından denetlenir. Bu makale hakkında daha fazla bilgi için, bkz. [Azure Portal rol tabanlı erişim denetimi](../role-based-access-control/overview.md). Güvenlik Duvarı kurallarıyla erişimi denetlemek **yönetilen bir örnek** *için uygulanmaz.* Gereken ağ yapılandırması hakkında daha fazla bilgi için lütfen [yönetilen bir örneğe bağlanma](sql-database-managed-instance-connect-app.md) hakkında aşağıdaki makaleye bakın.
+> Managing databases and servers within Azure is controlled by your portal user account's role assignments. For more information on this article, see [Role-based access control in Azure portal](../role-based-access-control/overview.md). Controlling access with firewall rules does *not* apply to **a managed instance**. Please see the following article on [connecting to a managed instance](sql-database-managed-instance-connect-app.md) for more information about the networking configuration needed.
 
 ## <a name="authorization"></a>Yetkilendirme
 
-Yetkilendirme, bir Azure SQL veritabanı içindeki bir kullanıcıya atanan izinleri ifade eder ve kullanıcının ne yapmasına izin verileceğini belirler. İzinler, [veritabanı rollerine](/sql/relational-databases/security/authentication-access/database-level-roles) Kullanıcı hesapları eklenerek ve bu rollere veritabanı düzeyi izinleri atanarak veya kullanıcıya belirli [nesne düzeyi izinleri](/sql/relational-databases/security/permissions-database-engine)verilerek denetlenir. Daha fazla bilgi için bkz. [oturum açma ve kullanıcılar](sql-database-manage-logins.md)
+Authorization refers to the permissions assigned to a user within an Azure SQL Database, and determines what the user is allowed to do. Permissions are controlled by adding user accounts to [database roles](/sql/relational-databases/security/authentication-access/database-level-roles) and assigning database-level permissions to those roles or by granting the user certain [object-level permissions](/sql/relational-databases/security/permissions-database-engine). For more information, see [Logins and users](sql-database-manage-logins.md)
 
-En iyi uygulama olarak, gerektiğinde özel roller oluşturun. Kullanıcıları, iş işlevlerini yapmak için gereken en düşük ayrıcalıklara sahip olan role ekleyin. İzinleri doğrudan kullanıcılara atamayın. Sunucu Yöneticisi hesabı, kapsamlı izinlere sahip ve yalnızca yönetim görevleri olan birkaç kullanıcıya verilmesi gereken yerleşik db_owner rolünün bir üyesidir. Azure SQL veritabanı uygulamaları için, çağrılan modülün Yürütme bağlamını belirtmek için [execute as](/sql/t-sql/statements/execute-as-clause-transact-sql) kullanın veya sınırlı Izinlerle [uygulama rollerini](/sql/relational-databases/security/authentication-access/application-roles) kullanın. Bu uygulama, veritabanına bağlanan uygulamanın uygulama için gereken en düşük ayrıcalıklara sahip olmasını sağlar. Bu en iyi uygulamaları takip etmek, görevlerin ayrılmasını de çok daha da fazla.
+As a best practice, create custom roles when needed. Add users to the role with the least privileges required to do their job function. Do not assign permissions directly to users. The server admin account is a member of the built-in db_owner role, which has extensive permissions and should only be granted to few users with administrative duties. For Azure SQL Database applications, use the [EXECUTE AS](/sql/t-sql/statements/execute-as-clause-transact-sql) to specify the execution context of the called module or use [Application Roles](/sql/relational-databases/security/authentication-access/application-roles) with limited permissions. This practice ensures that the application that connects to the database has the least privileges needed by the application. Following these best practices also fosters separation of duties.
 
-### <a name="row-level-security"></a>Satır düzeyi güvenlik
+### <a name="row-level-security"></a>Satır düzeyinde güvenlik
 
-Satır düzeyi güvenlik, müşterilerin bir veritabanı tablosundaki satırlara erişimi, sorguyu yürüten kullanıcının özelliklerine göre denetlemesini sağlar (örneğin, Grup üyeliği veya yürütme bağlamı). Satır düzeyi güvenlik, özel etiket tabanlı güvenlik kavramlarını uygulamak için de kullanılabilir. Daha fazla bilgi için bkz. [Satır düzeyi güvenlik](/sql/relational-databases/security/row-level-security).
+Row-Level Security enables customers to control access to rows in a database table based on the characteristics of the user executing a query (for example, group membership or execution context). Row-Level Security can also be used to implement custom Label-based security concepts. Daha fazla bilgi için bkz. [Satır düzeyi güvenlik](/sql/relational-databases/security/row-level-security).
 
-![Azure-Database-RLS. png](media/sql-database-security-overview/azure-database-rls.png)
+![azure-database-rls.png](media/sql-database-security-overview/azure-database-rls.png)
 
 ## <a name="threat-protection"></a>Tehdit koruması
 
-SQL veritabanı, denetim ve tehdit algılama özellikleri sağlayarak müşteri verilerinin güvenliğini sağlar.
+SQL Database secures customer data by providing auditing and threat detection capabilities.
 
-### <a name="sql-auditing-in-azure-monitor-logs-and-event-hubs"></a>Azure Izleyici günlüklerinde ve Event Hubs SQL denetimi
+### <a name="sql-auditing-in-azure-monitor-logs-and-event-hubs"></a>SQL auditing in Azure Monitor logs and Event Hubs
 
-SQL veritabanı denetimi, veritabanı etkinliklerini izler ve müşterilerin sahip olduğu bir Azure depolama hesabındaki bir denetim günlüğüne veritabanı olaylarını kaydederek güvenlik standartlarıyla uyumluluğu sürdürmenize yardımcı olur. Denetim, kullanıcıların devam eden veritabanı etkinliklerini izlemelerine ve olası tehditleri ve şüpheli kötüye kullanımı ve güvenlik ihlallerini belirlemek üzere geçmiş etkinliğini çözümleyip araştırmalarını sağlar. Daha fazla bilgi için bkz. [SQL veritabanı denetimini](sql-database-auditing.md)kullanmaya başlama.  
+SQL Database auditing tracks database activities and helps to maintain compliance with security standards by recording database events to an audit log in a customer-owned Azure storage account. Auditing allows users to monitor ongoing database activities, as well as analyze and investigate historical activity to identify potential threats or suspected abuse and security violations. For more information, see Get started with [SQL Database Auditing](sql-database-auditing.md).  
 
 ### <a name="advanced-threat-protection"></a>Gelişmiş Tehdit Koruması
 
-Gelişmiş tehdit koruması SQL Server günlüklerinizi çözümleyerek, olağan dışı davranışları ve veritabanlarına erişme veya açıktan yararlanmaya yönelik olabilecek zararlı girişimleri tespit etmek SQL ekleme, olası veri girişi ve deneme yanılma saldırıları gibi şüpheli etkinlikler için uyarılar oluşturulur ve erişim desenlerine yönelik olarak ayrıcalık yürüyen istekleri ve ihlal edilen kimlik bilgileri kullanımını yakalayın. Uyarılar, şüpheli etkinliklerin ayrıntılarının sağlandığı ve tehdidi hafifletmek için eylemlerle birlikte daha fazla araştırma önerileri sunan [Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/)' nden görüntülenir. Gelişmiş tehdit koruması, sunucu başına ek bir ücret karşılığında etkinleştirilebilir. Daha fazla bilgi için bkz. [SQL veritabanı Gelişmiş tehdit koruması ile çalışmaya başlama](sql-database-threat-detection.md).
+Advanced Threat Protection is analyzing your SQL Server logs to detect unusual behavior and potentially harmful attempts to access or exploit databases. Alerts are created for suspicious activities such as SQL injection, potential data infiltration, and brute force attacks or for anomalies in access patterns to catch privilege escalations and breached credentials use. Alerts are viewed from the  [Azure Security Center](https://azure.microsoft.com/services/security-center/), where the details of the suspicious activities are provided and recommendations for further investigation given along with actions to mitigate the threat. Advanced Threat Protection can be enabled per server for an additional fee. For more information, see [Get started with SQL Database Advanced Threat Protection](sql-database-threat-detection.md).
 
-![Azure-Database-TD. jpg](media/sql-database-security-overview/azure-database-td.jpg)
+![azure-database-td.jpg](media/sql-database-security-overview/azure-database-td.jpg)
 
-## <a name="information-protection-and-encryption"></a>Bilgi koruması ve şifreleme
+## <a name="information-protection-and-encryption"></a>Information protection and encryption
 
-### <a name="transport-layer-security-tls-encryption-in-transit"></a>Aktarım Katmanı Güvenliği TLS (iletim içi şifreleme)
+### <a name="transport-layer-security-tls-encryption-in-transit"></a>Transport Layer Security TLS (Encryption-in-transit)
 
-SQL veritabanı, [Aktarım Katmanı Güvenliği](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server)ile hareket halindeki verileri şifreleyerek müşteri verilerinin güvenliğini sağlar.
+SQL Database secures customer data by encrypting data in motion with [Transport Layer Security](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server).
 
-SQL Server tüm bağlantılar için her zaman şifreleme (SSL/TLS) uygular. Bu, bağlantı dizesinde **şifreleme** veya **TrustServerCertificate** ayarından bağımsız olarak, tüm verilerin istemci ve sunucu arasında "geçişte" şifrelendiğinden emin olmanızı sağlar.
+Sql Server enforces encryption (SSL/TLS) at all times for all connections. This ensures all data is encrypted "in transit" between the client and server irrespective of the setting of **Encrypt** or **TrustServerCertificate** in the connection string.
 
-En iyi uygulama olarak, uygulamanızın bağlantı dizesinde şifreli bir bağlantı _**belirtmeniz ve sunucu**_ sertifikasına güvenmesini öneririz. Bu, uygulamanızı sunucu sertifikasını doğrulamaya zorlar ve böylece uygulamanızın ortadaki tür saldırılarına karşı savunmasız kalmasına engel olur.
+As a best practice, recommend that in your application's connection string you specify an encrypted connection and _**not**_ trust the server certificate. This forces your application to verify the server certificate and thus prevents your application from being vulnerable to man in the middle type attacks.
 
-Örneğin, ADO.NET sürücüsünü kullanırken bu, **encrypt = true** ve **TrustServerCertificate = false**aracılığıyla gerçekleştirilir. Bağlantı dizenizi Azure portal elde ediyorsanız, doğru ayarlara sahip olur.
+For example when using the ADO.NET driver this is accomplished via  **Encrypt=True** and **TrustServerCertificate=False**. If you obtain your connection string from the Azure portal, it will have the correct settings.
 
 > [!IMPORTANT]
-> Bazı Microsoft dışı sürücülerin, çalışması için varsayılan olarak TLS veya daha eski bir TLS (< 1.2) sürümünü kullanabileceğini unutmayın. Bu durumda SQL Server veritabanınıza bağlanmanızı sağlar. Ancak, özellikle hassas verileri depoluiyorsanız, bu tür sürücülere ve uygulamanın SQL veritabanına bağlanmasına izin vermenin güvenlik risklerini değerlendirmenizi öneririz. 
+> Note that some non-Microsoft drivers may not use TLS by default or rely on an older version of TLS (<1.2) in order to function. In this case SQL Server still allows you to connect to your database. However, we recommend that you evaluate the security risks of allowing such drivers and application to connect to SQL Database, especially if you store sensitive data. 
 >
-> TLS ve bağlantı hakkında daha fazla bilgi için bkz. [TLS konuları](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity)
+> For further information about TLS and connectivity, see [TLS considerations](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity)
 
-### <a name="transparent-data-encryption-encryption-at-rest"></a>Saydam Veri Şifrelemesi (bekleyen şifreleme)
+### <a name="transparent-data-encryption-encryption-at-rest"></a>Transparent Data Encryption (Encryption-at-rest)
 
-[Azure SQL veritabanı için saydam veri şifrelemesi (TDE)](transparent-data-encryption-azure-sql.md) , bekleyen verilerin ham dosyalara veya yedeklemelere izinsiz veya çevrimdışı erişimden korunmasına yardımcı olmak için bir güvenlik katmanı ekler. Yaygın senaryolar, veri merkezi hırsızlık veya disk sürücüleri ve yedekleme bantları gibi donanım veya ortamların güvenli bir şekilde çıkarılması içerir. TDE, uygulama geliştiricilerinin mevcut uygulamalarda herhangi bir değişiklik yapmasını gerektirmeyen bir AES şifreleme algoritması kullanarak tüm veritabanını şifreler.
+[Transparent Data Encryption (TDE) for Azure SQL Database](transparent-data-encryption-azure-sql.md) adds a layer of security to help protect data at rest from unauthorized or offline access to raw files or backups. Common scenarios include datacenter theft or unsecured disposal of hardware or media such as disk drives and backup tapes. TDE encrypts the entire database using an AES encryption algorithm, which doesn’t require application developers to make any changes to existing applications.
 
-Azure 'da, yeni oluşturulan tüm SQL veritabanları varsayılan olarak şifrelenir ve veritabanı şifreleme anahtarı yerleşik bir sunucu sertifikası tarafından korunur.  Sertifika bakımı ve döndürme, hizmet tarafından yönetilir ve kullanıcıdan giriş gerektirmez. Şifreleme anahtarlarının denetimini almayı tercih eden müşteriler [Azure Key Vault](../key-vault/key-vault-secure-your-key-vault.md)anahtarlarını yönetebilir.
+In Azure, all newly created SQL databases are encrypted by default and the database encryption key is protected by a built-in server certificate.  Certificate maintenance and rotation are managed by the service and requires no input from the user. Customers who prefer to take control of the encryption keys can manage the keys in [Azure Key Vault](../key-vault/key-vault-secure-your-key-vault.md).
 
-### <a name="key-management-with-azure-key-vault"></a>Azure Key Vault ile anahtar yönetimi
+### <a name="key-management-with-azure-key-vault"></a>Key management with Azure Key Vault
 
-[Kendi anahtarını getir](transparent-data-encryption-byok-azure-sql.md) (byok) [Saydam veri şifrelemesi](/sql/relational-databases/security/encryption/transparent-data-encryption) (tde) desteği, müşterilerin Azure 'un bulut tabanlı dış anahtar yönetim sistemini [Azure Key Vault](../key-vault/key-vault-secure-your-key-vault.md)kullanarak anahtar yönetiminin ve döndürmenin sahipliğini almasına olanak tanır. Veritabanının anahtar kasasına erişimi iptal edildiğinde, bir veritabanının şifresi çözülemez ve belleğe okunamaz. Azure Key Vault, merkezi bir temel yönetim platformu sağlar, sıkı izlenen donanım güvenlik modüllerini (HSM 'ler) kullanır ve güvenlik uyumluluk gereksinimlerini karşılamaya yardımcı olmak için anahtar ve veri yönetimi arasında görev ayrımı sağlar.
+[Bring Your Own Key](transparent-data-encryption-byok-azure-sql.md) (BYOK) support for [Transparent Data Encryption](/sql/relational-databases/security/encryption/transparent-data-encryption) (TDE) allows customers to take ownership of key management and rotation using [Azure Key Vault](../key-vault/key-vault-secure-your-key-vault.md), Azure’s cloud-based external key management system. If the database's access to the key vault is revoked, a database cannot be decrypted and read into memory. Azure Key Vault provides a central key management platform, leverages tightly monitored hardware security modules (HSMs), and enables separation of duties between management of keys and data to help meet security compliance requirements.
 
-### <a name="always-encrypted-encryption-in-use"></a>Always Encrypted (kullanımda olan şifreleme)
+### <a name="always-encrypted-encryption-in-use"></a>Always Encrypted (Encryption-in-use)
 
-![Azure-Database-AE. png](media/sql-database-security-overview/azure-database-ae.png)
+![azure-database-ae.png](media/sql-database-security-overview/azure-database-ae.png)
 
-[Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) , belirli veritabanı sütunlarında depolanan hassas verileri erişimden korumak için tasarlanmış bir özelliktir (örneğin, kredi kartı numaraları, ulusal kimlik numaraları veya tek _yapmanız gereken_ veriler). Bu, veritabanı yöneticilerini veya yönetim görevlerini gerçekleştirmek üzere veritabanına erişim yetkisi olan diğer ayrıcalıklı kullanıcıları içerir, ancak şifrelenmiş sütunlardaki belirli verilere erişmesi gereken iş gerektirmez. Veriler her zaman şifrelenir. Bu, şifrelenmiş verilerin yalnızca şifreleme anahtarına erişimi olan istemci uygulamaları tarafından işlenmek üzere şifresinin çözülmesi anlamına gelir.  Şifreleme anahtarı hiçbir şekilde SQL 'e gösterilmez ve [Windows sertifika deposunda](sql-database-always-encrypted.md) veya [Azure Key Vault](sql-database-always-encrypted-azure-key-vault.md)depolanabilir.
+[Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) is a feature designed to protect sensitive data stored in specific database columns from access (for example, credit card numbers, national identification numbers, or data on a _need to know_ basis). This includes database administrators or other privileged users who are authorized to access the database to perform management tasks, but have no business need to access the particular data in the encrypted columns. The data is always encrypted, which means the encrypted data is decrypted only for processing by client applications with access to the encryption key.  The encryption key is never exposed to SQL and can be stored either in the [Windows Certificate Store](sql-database-always-encrypted.md) or in [Azure Key Vault](sql-database-always-encrypted-azure-key-vault.md).
 
 ### <a name="dynamic-data-masking"></a>Dinamik veri maskeleme
 
-![Azure-Database-DDM. png](media/sql-database-security-overview/azure-database-ddm.png)
+![azure-database-ddm.png](media/sql-database-security-overview/azure-database-ddm.png)
 
-SQL veritabanı dinamik veri maskeleme, hassas veri pozlamasını ayrıcalıklı olmayan kullanıcılarla maskeleyerek kısıtlar. Dinamik veri maskeleme, Azure SQL veritabanı 'nda potansiyel olarak hassas verileri otomatik olarak bulur ve uygulama katmanında en az etkiyle bu alanları maskelemek için eylem yapılabilir öneriler sağlar. Bu özellik, hassas verileri belirlenen veritabanı alanlarına yapılan sorgunun sonuç kümesinde karartır ancak veritabanındaki veriler değişmez. Daha fazla bilgi için bkz. [SQL veritabanı dinamik veri maskeleme 'yi kullanmaya başlama](sql-database-dynamic-data-masking-get-started.md).
+SQL Database dynamic data masking limits sensitive data exposure by masking it to non-privileged users. Dynamic data masking automatically discovers potentially sensitive data in Azure SQL Database and provides actionable recommendations to mask these fields, with minimal impact on the application layer. Bu özellik, hassas verileri belirlenen veritabanı alanlarına yapılan sorgunun sonuç kümesinde karartır ancak veritabanındaki veriler değişmez. For more information, see [Get started with SQL Database dynamic data masking](sql-database-dynamic-data-masking-get-started.md).
 
 ## <a name="security-management"></a>Güvenlik yönetimi
 
 ### <a name="vulnerability-assessment"></a>Güvenlik açığı değerlendirmesi
 
-[Güvenlik açığı değerlendirmesi](sql-vulnerability-assessment.md) , genel veritabanı güvenliğini önceden iyileştirmek amacıyla hedefe yönelik olası veritabanı güvenlik açıklarını keşfettirecek, izleyebilen ve düzeltmeye yardımcı olabilecek bir hizmeti kolayca yapılandırabilir. Güvenlik açığı değerlendirmesi (VA), gelişmiş SQL güvenlik özelliklerine yönelik Birleşik bir paket olan gelişmiş veri güvenliği (ADS) sunumunun bir parçasıdır. Güvenlik açığı değerlendirmesi, merkezi SQL ADS portalı aracılığıyla erişilebilir ve yönetilebilir.
+[Vulnerability assessment](sql-vulnerability-assessment.md) is an easy to configure service that can discover, track, and help remediate potential database vulnerabilities with the goal to proactively improve overall database security. Vulnerability assessment (VA) is part of the advanced data security (ADS) offering, which is a unified package for advanced SQL security capabilities. Vulnerability assessment can be accessed and managed via the central SQL ADS portal.
 
 ### <a name="data-discovery--classification"></a>Veri bulma ve sınıflandırma
 
-Veri bulma & sınıflandırması (Şu anda önizlemede), veritabanınızdaki hassas verileri bulmak, sınıflandırmak, etiketlemek ve korumak için Azure SQL veritabanı 'nda yerleşik olarak bulunan gelişmiş özellikleri sağlar. En önemli verilerinizi bulma ve sınıflandırma (iş/finans, Sağlık Hizmetleri, kişisel veriler vb.), kurumsal bilgi koruma ortamınızda bir özetleme rolü oynayabilir. Bu, için altyapı işlevi görebilir:
+Data discovery & classification (currently in preview) provides advanced capabilities built into Azure SQL Database for discovering, classifying, labeling, and protecting the sensitive data in your databases. Discovering and classifying your utmost sensitive data (business/financial, healthcare, personal data, etc.) can play a pivotal role in your organizational Information protection stature. It can serve as infrastructure for:
 
-- Hassas verilere yönelik anormal erişimlerde izleme (denetim) ve uyarı verme gibi çeşitli güvenlik senaryoları.
-- Son derece hassas veriler içeren veritabanlarının güvenliğine erişimi ve güvenliğini sağlamlaştırma.
-- Veri gizliliği standartları ve mevzuat uyumluluk gereksinimlerini karşılamanıza yardımcı olma.
+- Various security scenarios, such as monitoring (auditing) and alerting on anomalous access to sensitive data.
+- Controlling access to, and hardening the security of, databases containing highly sensitive data.
+- Helping meet data privacy standards and regulatory compliance requirements.
 
-Daha fazla bilgi için bkz. [veri bulma ile çalışmaya başlama & sınıflandırma](sql-database-data-discovery-and-classification.md).
+For more information, see [Get started with data discovery & classification](sql-database-data-discovery-and-classification.md).
 
 ### <a name="compliance"></a>Uyumluluk
 
-Uygulamanızın çeşitli güvenlik gereksinimlerini karşılamasına yardımcı olabilecek yukarıdaki özelliklere ve işlevlere ek olarak, Azure SQL veritabanı normal denetim özelliklerine de katılır ve bir dizi uyumluluk standartlarına karşı sertifikalandırilmiştir. Daha fazla bilgi için SQL veritabanı uyumluluk sertifikalarının en güncel listesini bulabileceğiniz [Microsoft Azure Güven Merkezi](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) ' ne bakın.
-
-### <a name="feature-restrictions"></a>Özellik kısıtlamaları
-
-Özellik kısıtlamaları, SQL ekleme işleminin başarılı olduğu durumlarda bile, bazı SQL ekleme biçimlerinin veritabanı hakkında bilgi sızdırmasını önlemeye yardımcı olur. Daha fazla bilgi için bkz. [Azure SQL veritabanı özellik kısıtlamaları](sql-database-feature-restrictions.md).
+In addition to the above features and functionality that can help your application meet various security requirements, Azure SQL Database also participates in regular audits, and has been certified against a number of compliance standards. For more information, see the [Microsoft Azure Trust Center](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) where you can find the most current list of SQL Database compliance certifications.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - SQL Veritabanındaki erişim denetimi özelliklerinin kullanımı hakkında ayrıntılı bilgi için bkz. [Erişim denetimi](sql-database-control-access.md).
-- Veritabanı denetimi ile ilgili bir tartışma için bkz. [SQL veritabanı denetimi](sql-database-auditing.md).
-- Tehdit algılama hakkında bir tartışma için bkz. [SQL veritabanı tehdit algılama](sql-database-threat-detection.md).
+- For a discussion of database auditing, see [SQL Database auditing](sql-database-auditing.md).
+- For a discussion of threat detection, see [SQL Database threat detection](sql-database-threat-detection.md).

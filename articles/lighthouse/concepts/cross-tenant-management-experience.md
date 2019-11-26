@@ -1,138 +1,138 @@
 ---
 title: Kiracılar arası yönetim deneyimleri
-description: Azure Temsilcili kaynak yönetimi, bir çapraz kiracı yönetim deneyimi sunar.
+description: Azure delegated resource management enables a cross-tenant management experience.
 ms.date: 11/7/2019
-ms.topic: overview
-ms.openlocfilehash: 0d04a7a77a3f92cffb185ff829f0d678dac2a9ff
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.topic: conceptual
+ms.openlocfilehash: 2db1cfd7cc8145ff3020bf232021b4f1a63b2ddd
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74131927"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74464039"
 ---
 # <a name="cross-tenant-management-experiences"></a>Kiracılar arası yönetim deneyimleri
 
-Hizmet sağlayıcısı olarak, Azure kaynaklarını, [Azure Portal](https://portal.azure.com)kendi kiracınızda birden fazla müşterinin Azure kaynaklarını [yönetmek için kullanabilirsiniz](../concepts/azure-delegated-resource-management.md) . Birçok görev ve hizmet yönetilen kiracılar genelinde Azure kaynakları için kullanılabilir. Bu makalede, Azure tarafından yetkilendirilen Kaynak yönetiminin etkili olduğu bazı gelişmiş senaryolar açıklanmaktadır.
+As a service provider, you can use [Azure delegated resource management](../concepts/azure-delegated-resource-management.md) to manage Azure resources for multiple customers from within your own tenant in the [Azure portal](https://portal.azure.com). Most tasks and services can be performed on delegated Azure resources across managed tenants. This article describes some of the enhanced scenarios where Azure delegated resource management can be effective.
 
 > [!NOTE]
-> Azure Temsilcili kaynak yönetimi, platformlar arası yönetimi basitleştirmek için birden fazla kiracının bulunduğu bir kuruluşta da kullanılabilir.
+> Azure delegated resource management can also be used within an enterprise which has multiple tenants of its own to simplify cross-tenant administration.
 
-## <a name="understanding-customer-tenants"></a>Müşteri kiracılarını anlama
+## <a name="understanding-customer-tenants"></a>Understanding customer tenants
 
-Azure Active Directory (Azure AD) kiracısı, kuruluşun bir gösterimidir. Bu, bir kuruluşun Azure, Microsoft 365 veya diğer hizmetlere kaydolarak Microsoft ile bir ilişki oluşturduklarında aldığı adanmış bir Azure AD örneğidir. Her Azure AD kiracısı farklı ve diğer Azure AD kiracılarından ayrıdır ve kendi kiracı KIMLIĞINE (bir GUID) sahiptir. Daha fazla bilgi için bkz. [Azure Active Directory nedir?](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)
+An Azure Active Directory (Azure AD) tenant is a representation of an organization. It's a dedicated instance of Azure AD that an organization receives when they create a relationship with Microsoft by signing up for Azure, Microsoft 365, or other services. Each Azure AD tenant is distinct and separate from other Azure AD tenants, and has its own tenant ID (a GUID). For more info, see [What is Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)
 
-Genellikle, bir müşterinin Azure kaynaklarını yönetmek için, hizmet sağlayıcılarının bu müşterinin kiracısıyla ilişkili bir hesabı kullanarak Azure portal oturum açması gerekir ve Kullanıcı hesaplarını oluşturmak ve yönetmek için müşterinin kiracısında bir yönetici gerektirir hizmet sağlayıcı için.
+Typically, in order to manage Azure resources for a customer, service providers would have to sign in to the Azure portal using an account associated with that customer's tenant, requiring an administrator in the customer's tenant to create and manage user accounts for the service provider.
 
-Azure Temsilcili kaynak yönetimi sayesinde, ekleme işlemi, hizmet sağlayıcısının kiracısındaki kullanıcıları, müşteri kiracısında abonelikler, kaynak grupları ve kaynaklara erişebilecek ve yönetebilecek kullanıcıları belirler. Bu kullanıcılar daha sonra kendi kimlik bilgilerini kullanarak Azure portal oturum açabilirler. Azure portal içinde, erişimleri olan tüm müşterilere ait olan kaynakları yönetebilir. Bu işlem, Azure portal [müşteriler](../how-to/view-manage-customers.md) sayfasından veya Azure Portal ya da API 'ler aracılığıyla doğrudan söz konusu müşterinin aboneliği kapsamında çalışarak yapılabilir.
+With Azure delegated resource management, the onboarding process specifies users within the service provider's tenant who will be able to access and manage subscriptions, resource groups, and resources in the customer's tenant. These users can then sign in to the Azure portal using their own credentials. Within the Azure portal, they can manage resources belonging to all customers to which they have access. This can be done by visiting the [My customers](../how-to/view-manage-customers.md) page in the Azure portal, or by working directly within the context of that customer's subscription, either in the Azure portal or via APIs.
 
-Azure Temsilcili kaynak yönetimi, farklı kiracılarda farklı hesaplarda oturum açmaya gerek kalmadan, birden fazla müşteriye ait kaynakların yönetilmesine daha fazla esneklik sağlar. Örneğin, bir hizmet sağlayıcısı, aşağıda gösterildiği gibi farklı sorumluluklara ve erişim düzeylerine sahip üç müşteriye sahip olabilir:
+Azure delegated resource management allows greater flexibility to manage resources for multiple customers without having to sign in to different accounts in different tenants. For example, a service provider may have three customers, with different responsibilities and access levels, as shown here:
 
-![Hizmet sağlayıcısı sorumluluklarını gösteren üç müşteri kiracının](../media/azure-delegated-resource-management-customer-tenants.jpg)
+![Three customer tenants showing service provider responsibilities](../media/azure-delegated-resource-management-customer-tenants.jpg)
 
-Yetkili kullanıcılar, Azure tarafından atanan kaynak yönetimini kullanarak bu kaynaklara erişmek için hizmet sağlayıcının kiracısında oturum açabilirler, burada gösterildiği gibi:
+Using Azure delegated resource management, authorized users can sign in to the service provider’s tenant to access these resources, as shown here:
 
-![Bir hizmet sağlayıcı kiracısıyla yönetilen müşteri kaynakları](../media/azure-delegated-resource-management-service-provider-tenant.jpg)
+![Customer resources managed through one service provider tenant](../media/azure-delegated-resource-management-service-provider-tenant.jpg)
 
-## <a name="apis-and-management-tool-support"></a>API 'Ler ve Yönetim Aracı desteği
+## <a name="apis-and-management-tool-support"></a>APIs and management tool support
 
-Temsilcili kaynaklar üzerinde doğrudan portalda veya API 'Ler ile yönetim araçlarını kullanarak (Azure CLı ve Azure PowerShell) yönetim görevleri gerçekleştirebilirsiniz. Tüm mevcut API 'Ler, işlevsellik çapraz Kiracı Yönetimi için desteklendiği ve Kullanıcı uygun izinlere sahip olduğu sürece, temsilcili kaynaklarla çalışırken kullanılabilir.
+You can perform management tasks on delegated resources either directly in the portal or by using APIs and management tools (such as Azure CLI and Azure PowerShell). All existing APIs can be used when working with delegated resources, as long as the functionality is supported for cross-tenant management and the user has the appropriate permissions.
 
-Ayrıca, Azure Temsilcili kaynak yönetimi görevlerini gerçekleştirmek için API 'Ler sunuyoruz. Daha fazla bilgi için **başvuru** bölümüne bakın.
+We also provide APIs to perform Azure delegated resource management tasks. For more info, see the **Reference** section.
 
-## <a name="enhanced-services-and-scenarios"></a>Geliştirilmiş hizmetler ve senaryolar
+## <a name="enhanced-services-and-scenarios"></a>Enhanced services and scenarios
 
-Birçok görev ve hizmet, yönetilen kiracılar genelinde Temsilcili kaynaklar üzerinde gerçekleştirilebilir. Platformlar arası yönetimin etkili olabilmesi için aşağıdaki önemli senaryolardan bazılarını aşağıda bulabilirsiniz.
+Most tasks and services can be performed on delegated resources across managed tenants. Below are some of the key scenarios where cross-tenant management can be effective.
 
-[Sunucular Için Azure Arc (Önizleme)](https://docs.microsoft.com/azure/azure-arc/servers/overview):
+[Azure Arc for servers (preview)](https://docs.microsoft.com/azure/azure-arc/servers/overview):
 
-- Azure 'daki [Windows Server veya Linux makinelerini](https://docs.microsoft.com/azure/azure-arc/servers/quickstart-onboard-portal) , Azure 'daki abonelik ve/veya kaynak grupları için temsilci olarak bağlayın
-- Azure Ilkesi ve etiketleme gibi Azure yapılarını kullanarak bağlı makineleri yönetme
+- [Connect Windows Server or Linux machines outside Azure](https://docs.microsoft.com/azure/azure-arc/servers/quickstart-onboard-portal) to delegated subscriptions and/or resource groups in Azure
+- Manage connected machines using Azure constructs, such as Azure Policy and tagging
 
-[Azure Otomasyonu](https://docs.microsoft.com/azure/automation/):
+[Azure Automation](https://docs.microsoft.com/azure/automation/):
 
-- Atanan müşteri kaynaklarına erişmek ve bunlarla çalışmak için Otomasyon hesaplarını kullanma
+- Use automation accounts to access and work with delegated customer resources
 
 [Azure Backup](https://docs.microsoft.com/azure/backup/):
 
-- Müşteri kiracılarında müşteri verilerini yedekleme ve geri yükleme
+- Back up and restore customer data in customer tenants
 
-[Azure Kubernetes hizmeti (AKS)](https://docs.microsoft.com//azure/aks/):
+[Azure Kubernetes Service (AKS)](https://docs.microsoft.com//azure/aks/):
 
-- Barındırılan Kubernetes ortamlarını yönetme ve müşteri kiracılarında Kapsayıcılı uygulamaları dağıtma ve yönetme
+- Manage hosted Kubernetes environments and deploy and manage containerized applications within customer tenants
 
-[Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/):
+[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/):
 
-- Tüm aboneliklerdeki uyarıları görüntüleyebilme olanağı sayesinde, temsilci atanmış abonelikler için uyarıları görüntüleme
-- Temsilcili abonelikler için etkinlik günlüğü ayrıntılarını görüntüleme
-- Log Analytics: birden çok Kiracıdaki uzak müşteri çalışma alanlarından verileri sorgulama
-- Web kancaları aracılığıyla hizmet sağlayıcı kiracısındaki Azure Otomasyonu runbook 'ları veya Azure Işlevleri gibi Otomasyonu tetikleyen müşteri kiracılarında uyarı oluşturma
+- View alerts for delegated subscriptions, with the ability to view alerts across all subscriptions
+- View activity log details for delegated subscriptions
+- Log analytics: Query data from remote customer workspaces in multiple tenants
+- Create alerts in customer tenants that trigger automation, such as Azure Automation runbooks or Azure Functions, in the service provider tenant through webhooks
 
-[Azure ilkesi](https://docs.microsoft.com/azure/governance/policy/):
+[Azure Policy](https://docs.microsoft.com/azure/governance/policy/):
 
-- Uyumluluk anlık görüntüleri, atanan abonelikler içindeki atanmış ilkelerin ayrıntılarını gösterir
-- Temsilci atanmış bir abonelik içinde ilke tanımları oluşturma ve düzenleme
-- Atanan abonelik içinde müşteri tanımlı ilke tanımları atama
-- Müşteriler, yazdığı ilkelerin yanı sıra hizmet sağlayıcı tarafından yazılan ilkeleri görür
-- [DeployIfNotExists 'i düzeltebilir veya müşteri kiracısında atamaları değiştirebilirler](../how-to/deploy-policy-remediation.md)
+- Compliance snapshots show details for assigned policies within delegated subscriptions
+- Create and edit policy definitions within a delegated subscription
+- Assign customer-defined policy definitions within the delegated subscription
+- Customers see policies authored by the service provider alongside any policies they've authored themselves
+- Can [remediate deployIfNotExists or modify assignments within the customer tenant](../how-to/deploy-policy-remediation.md)
 
-[Azure Kaynak Grafiği](https://docs.microsoft.com/azure/governance/resource-graph/):
+[Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/):
 
-- Şimdi döndürülen sorgu sonuçlarında kiracı KIMLIĞINI içerir, bu da bir aboneliğin müşteri kiracısına veya hizmet sağlayıcı kiracısına ait olup olmadığını tanımlamanızı sağlar
+- Now includes the tenant ID in returned query results, allowing you to identify whether a subscription belongs to the customer tenant or service provider tenant
 
-[Azure Güvenlik Merkezi](https://docs.microsoft.com/azure/security-center/):
+[Azure Security Center](https://docs.microsoft.com/azure/security-center/):
 
-- Çapraz kiracı görünürlüğü
-  - Güvenlik ilkelerine uyumluluğu izleyin ve tüm kiracıların kaynakları genelinde güvenlik kapsamı sağlayın
-  - Tek bir görünümdeki birden çok müşteri arasında sürekli mevzuat uyumluluk izlemesi
-  - Güvenli puan hesaplaması ile eylem yapılabilir güvenlik önerilerini izleyin, önceliklendirin ve önceliklendirin
-- Çapraz kiracı güvenlik sonrası yönetimi
-  - Güvenlik ilkelerini yönetme
-  - İşlem yapılabilir güvenlik önerileri ile uyumlu olmayan kaynaklar üzerinde işlem gerçekleştirin
-  - Güvenlikle ilgili verileri toplama ve depolama
-- Çapraz kiracı tehdit algılama ve koruma
-  - Kiracıların kaynakları genelinde tehditleri Algıla
-  - Tam zamanında (JıT) VM erişimi gibi gelişmiş tehdit koruması denetimleri uygulayın
-  - Uyarlamalı ağ sağlamlaştırma ile ağ güvenlik grubu yapılandırmasını Harden artırma
-  - Sunucuların yalnızca Uyarlamalı uygulama denetimleriyle birlikte olması gereken uygulamaları ve süreçler çalıştırdığından emin olun
-  - Dosya bütünlüğü Izleme (FIM) ile önemli dosyalarda ve kayıt defteri girdilerindeki değişiklikleri izleme
+- Cross-tenant visibility
+  - Monitor compliance to security policies and ensure security coverage across all tenants’ resources
+  - Continuous regulatory compliance monitoring across multiple customers in a single view
+  - Monitor, triage, and prioritize actionable security recommendations with secure score calculation
+- Cross-tenant security posture management
+  - Manage security policies
+  - Take action on resources that are out of compliance with actionable security recommendations
+  - Collect and store security-related data
+- Cross-tenant threat detection and protection
+  - Detect threats across tenants’ resources
+  - Apply advanced threat protection controls such as just-in-time (JIT) VM access
+  - Harden network security group configuration with Adaptive Network Hardening
+  - Ensure servers are running only the applications and processes they should be with adaptive application controls
+  - Monitor changes to important files and registry entries with File Integrity Monitoring (FIM)
 
 [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/multiple-tenants-service-providers):
 
-- Müşteri kiracılarında Azure Sentinel kaynaklarını yönetme
+- Manage Azure Sentinel resources in customer tenants
 
-[Azure hizmet durumu](https://docs.microsoft.com/azure/service-health/):
+[Azure Service Health](https://docs.microsoft.com/azure/service-health/):
 
-- Azure Kaynak Durumu ile müşteri kaynaklarının sistem durumunu izleme
-- Müşterileriniz tarafından kullanılan Azure hizmetlerinin sistem durumunu izleme
+- Monitor the health of customer resources with Azure Resource Health
+- Track the health of the Azure services used by your customers
 
 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/):
 
-- Müşteri kiracılarında Azure sanal makineler için olağanüstü durum kurtarma seçeneklerini yönetme (VM uzantılarını kopyalamak için RunAs hesaplarını kullanmayacağınızı unutmayın)
+- Manage disaster recovery options for Azure virtual machines in customer tenants (note that you can't use RunAs accounts to copy VM extensions)
 
-[Azure sanal makineleri](https://docs.microsoft.com/azure/virtual-machines/):
+[Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/):
 
-- Müşteri kiracılarında Azure VM 'lerinde dağıtım sonrası yapılandırma ve otomasyon görevleri sağlamak için sanal makine uzantılarını kullanın
-- Müşteri kiracılarında Azure VM 'lerinde sorun gidermek için önyükleme tanılamayı kullanma
-- Müşteri kiracılarında seri konsol ile VM 'Lere erişme
-- Bir VM 'ye uzaktan oturum açma için Azure Active Directory kullanmayacağınızı ve disk şifrelemesi için parolalar, gizlilikler veya şifreleme anahtarları için bir sanal makineyi Key Vault ile tümleştiremiyorum gerektiğini unutmayın
+- Use virtual machine extensions to provide post-deployment configuration and automation tasks on Azure VMs in customer tenants
+- Use boot diagnostics to troubleshoot Azure VMs in customer tenants
+- Access VMs with serial console in customer tenants
+- Note that you can't use Azure Active Directory for remote login to a VM, and you can't integrate a VM with a Key Vault for passwords, secrets or cryptographic keys for disk encryption
 
-[Azure sanal ağı](https://docs.microsoft.com/azure/virtual-network/):
+[Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/):
 
-- Sanal ağlar ve sanal ağ arabirim kartları (vNIC 'ler) ile müşteri kiracılar arasında dağıtın ve yönetin
+- Deploy and manage virtual networks and virtual network interface cards (vNICs) within customer tenants
 
-Destek istekleri:
+Support requests:
 
-- Temsilci atanan kaynaklar için destek isteklerini, Azure portal **Yardım + Destek** dikey penceresinden açın (Temsilcili kapsam için kullanılabilen destek planını seçme)
+- Open support requests for delegated resources from the **Help + support** blade in the Azure portal (selecting the support plan available to the delegated scope)
 
 ## <a name="current-limitations"></a>Geçerli sınırlamalar
-Tüm senaryolarla, lütfen aşağıdaki geçerli sınırlamalara dikkat edin:
+With all scenarios, please be aware of the following current limitations:
 
-- Azure Resource Manager tarafından işlenen istekler, Azure tarafından atanan kaynak yönetimi kullanılarak gerçekleştirilebilir. Bu isteklerin işlem URI 'Leri `https://management.azure.com`başlar. Ancak, kaynak türünün bir örneği tarafından işlenen istekler (örneğin, Anahtar Kasası gizli dizileri erişimi veya depolama veri erişimi), Azure tarafından atanan kaynak yönetimi ile desteklenmez. Bu isteklerin işlem URI 'Leri genellikle örneğiniz için benzersiz olan ve `https://myaccount.blob.core.windows.net` veya `https://mykeyvault.vault.azure.net/`gibi bir adresle başlar. İkincisi ayrıca yönetim işlemleri yerine genellikle veri operasyonlardır. 
-- Rol atamalarının rol tabanlı erişim denetimi (RBAC) [yerleşik rollerini](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)kullanması gerekir. Tüm yerleşik roller Şu anda, sahip veya [Dataactions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) iznine sahip herhangi bir yerleşik rol haricinde Azure tarafından yetkilendirilen kaynak yönetimi ile desteklenmektedir. Kullanıcı erişimi yönetici rolü yalnızca [yönetilen kimliklere rol atama](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)konusunda sınırlı kullanım için desteklenir.  Özel roller ve [Klasik abonelik yöneticisi rolleri](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators) desteklenmez.
-- Şu anda, abonelik Azure Databricks kullanıyorsa, Azure tarafından atanan kaynak yönetimi için abonelik (veya bir abonelik içinde kaynak grubu) ekleyemezsiniz. Benzer şekilde, **Microsoft. ManagedServices** kaynak sağlayıcısı ile ekleme için bir abonelik kaydedilmişse, bu abonelik için şu anda bir Databricks çalışma alanı oluşturamazsınız.
-- Kaynak kilitleri olan Azure tarafından atanan kaynak yönetimi için abonelikler ve kaynak grupları ekleyebilirsiniz, ancak bu kilitler, eylemlerin yönetim kiracısındaki kullanıcılar tarafından gerçekleştirilmesini engellemez. Azure tarafından yönetilen uygulamalar veya Azure şemaları (sistem tarafından atanan reddetme atamaları) tarafından oluşturulanlar gibi sistem tarafından yönetilen kaynakları koruyan [atamaları reddetme](https://docs.microsoft.com/azure/role-based-access-control/deny-assignments) , yönetim kiracısındaki kullanıcıların bu kaynaklara göre davranmasını önler; Bununla birlikte, müşteri kiracısındaki kullanıcılar kendi reddetme atamalarını oluşturamaz (Kullanıcı tarafından atanan reddetme atamaları).
+- Requests handled by Azure Resource Manager can be performed using Azure delegated resource management. The operation URIs for these requests start with `https://management.azure.com`. However, requests that are handled by an instance of a resource type (such as KeyVault secrets access or storage data access) aren’t supported with Azure delegated resource management. The operation URIs for these requests typically start with an address that is unique to your instance, such as `https://myaccount.blob.core.windows.net` or `https://mykeyvault.vault.azure.net/`. The latter also are typically data operations rather than management operations. 
+- Role assignments must use role-based access control (RBAC) [built-in roles](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles). All built-in roles are currently supported with Azure delegated resource management except for Owner or any built-in roles with [DataActions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) permission. The User Access Administrator role is supported only for limited use in [assigning roles to managed identities](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant).  Custom roles and [classic subscription administrator roles](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators) are not supported.
+- Currently, you can’t onboard a subscription (or resource group within a subscription) for Azure delegated resource management if the subscription uses Azure Databricks. Similarly, if a subscription has been registered for onboarding with the **Microsoft.ManagedServices** resource provider, you won’t be able to create a Databricks workspace for that subscription at this time.
+- While you can onboard subscriptions and resource groups for Azure delegated resource management which have resource locks, those locks will not prevent actions from being performed by users in the managing tenant. [Deny assignments](https://docs.microsoft.com/azure/role-based-access-control/deny-assignments) that protect system-managed resources, such as those created by Azure managed applications or Azure Blueprints (system-assigned deny assignments), do prevent users in the managing tenant from acting on those resources; however, at this time users in the customer tenant can’t create their own deny assignments (user-assigned deny assignments).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Müşterilerinizi [Azure Resource Manager şablonları kullanarak](../how-to/onboard-customer.md) veya [Azure Market 'e özel veya genel olarak yönetilen bir hizmet teklifi yayımlayarak](../how-to/publish-managed-services-offers.md), Azure tarafından atanan kaynak yönetimine ekleyin.
-- Azure portal **müşterilerime** giderek [müşterileri görüntüleyin ve yönetin](../how-to/view-manage-customers.md) .
+- Onboard your customers to Azure delegated resource management, either by [using Azure Resource Manager templates](../how-to/onboard-customer.md) or by [publishing a private or public managed services offer to Azure Marketplace](../how-to/publish-managed-services-offers.md).
+- [View and manage customers](../how-to/view-manage-customers.md) by going to **My customers** in the Azure portal.

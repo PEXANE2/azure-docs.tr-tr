@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Depolama Gezgini sürüm notları
-description: Microsoft Azure Depolama Gezgini sürüm notları
+title: Microsoft Azure Storage Explorer release notes
+description: Release notes for Microsoft Azure Storage Explorer
 services: storage
 documentationcenter: na
 author: cawaMS
@@ -14,363 +14,513 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 9e5bdb574439378b91a243d5d36ebddeb8520d49
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 0b2ffc00b6c96f2c31a4b711f618e7b87b6f69e0
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037465"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74482125"
 ---
-# <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure Depolama Gezgini sürüm notları
+# <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure Storage Explorer release notes
 
-Bu makalede, Azure Depolama Gezgini 1.10.0 sürümünün sürüm notları ve önceki sürümlere ait sürüm notları bulunur.
+This article contains the latest release notes for Azure Storage Explorer, as well as release notes for previous versions. 
 
-[Microsoft Azure Depolama Gezgini](./vs-azure-tools-storage-manage-with-storage-explorer.md) Windows, macOS ve Linux'ta Azure depolama verileriyle kolayca çalışmanızı sağlayan bir tek başına uygulamadır.
+[Microsoft Azure Storage Explorer](./vs-azure-tools-storage-manage-with-storage-explorer.md) is a standalone app that enables you to easily work with Azure Storage data on Windows, macOS, and Linux.
 
-## <a name="version-1100"></a>Sürüm 1.10.0
+To download previous versions of Storage Explorer, you can visit the [Releases page](https://github.com/microsoft/AzureStorageExplorer/releases) of our GitHub repo.
+
+## <a name="version-1110"></a>Version 1.11.0
+11/4/2019
+
+### <a name="new"></a>Yeni
+* Operations for Blobs, ADLS Gen2 and Managed Disks use the integrated AzCopy. More specifically, the following operations are done using AzCopy:
+   * Bloblar
+      * Open for editing + Upload
+      * Upload, including drag & drop
+      * İndirin
+      * Copy & paste #1249
+      * Sil
+   * ADLS Gen2 Blobs
+      * Upload, including drag & drop
+      * İndirin
+      * Copy & paste
+      * Delete, including folder delete
+   * Managed Disks (Yönetilen Diskler)
+      * Karşıya Yükleme
+      * İndirin
+      * Copy & paste
+
+   Additionally, several frequently requested features have been added to the integrated AzCopy experience:
+   * Conflict resolutions - you will be prompted during transfers to resolve conflicts. #1455
+   * Upload as page blobs - you can choose whether or not AzCopy uploads .vhd and .vhdx files as page blobs. #1164 and #1601
+   * Configurable AzCopy parameters - Several settings have been added to tune AzCopy's performance and resource usage. See more details below.
+
+* To enable ADLS Gen2 and Blobs multi-protocol access and further enhance ADLS Gen2 experiences, we have added the following features for the ADLS Gen2 accounts:
+   * Search using friendly names to set ACL permissions
+   * View hidden containers, such as $logs and $web
+   * Acquire and break container lease
+   * Acquire and break Blob lease #848
+   * Manage container access policies
+   * Configure Blob access tiers
+   * Copy & Paste Blobs
+
+* In this release, we are previewing 17 additional languages. You can switch to a language of your choice on the settings page under "Application" → "Regional Settings" → "Language (Preview)". We are still working hard on translating additional strings and improving the translation quality. Should you have any feedback regarding a translation, or if you notice a string which is not yet translated, please [open an issue on GitHub](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=%F0%9F%8C%90%20localization&template=bug-report.md&title=).
+* In every release, we try to onboard a few settings to enable fine turning Storage Explorer. In this release, we added settings to further configure AzCopy as well as to hide service nodes:
+   * AzCopy bandwidth limit - helps control how much of the network AzCopy uses. You can find this setting at "Transfers" → "AzCopy" → "Maximum transfer rate". #1099
+   * AzCopy MD5 check - lets you configure if and how strictly AzCopy checks for MD5 hashes on download. You can find this setting at "Transfers" → "AzCopy" → "Check MD5".
+   * AzCopy concurrency and memory buffer size - by default AzCopy will analyze your machine to determine reasonable default values for these settings. But if you run into performance problems, these advanced settings can be used to further tailor how AzCopy runs on your computer. You can find these settings under "Transfers" → "AzCopy". #994
+   * Display and hide service nodes - these settings give you the options to display or hide any of the Azure services that Storage Explorer supports. You can find these settings under the "Services" section. #1877
+
+* When creating a Snapshot of a Managed Disk, a default name is now provided. #1847
+* When attaching with Azure AD, if you attach an ADLS Gen2 Blob container, then "(ADLS Gen2)" will be shown next to the node. #1861
+
+### <a name="fixes"></a>Fixes
+* When copying, uploading, or downloading large Disks, Storage Explorer would sometimes fail to revoke access to the disks involved in the operation. This has been fixed. #2048
+* Table statistics failed when viewing a partition key query. This has been fixed. #1886
+
+### <a name="known-issues"></a>Bilinen Sorunlar
+* Storage Explorer 1.11.0 now requires a DFS endpoint (such as "myaccount.dfs.core.windows.net") to attach to ADLS Gen2 containers. Previous versions of Storage Explorer allowed you to use a blob endpoint. These attachments may no longer work after upgrading to 1.11.0. If you encounter this problem, reattach using the DFS endpoint.
+* Numeric settings are not checked for whether they lie in a valid range.#2140
+* Copying blob containers from one storage account to another in the tree view may fail. We are investigating the issue.#2124
+* The Auto Refresh setting does not yet affect all operations in the Blob Explorer.
+* Managed Disk features are not supported in Azure Stack.
+* If a Disk upload or paste fails and a new Disk was created prior to the failure, Storage Explorer will not delete the Disk for you.
+* Depending on when you cancel a Disk upload or paste, it is possible to leave the new Disk in a corrupted state. If this happens, you either need to delete the new Disk, or manually call the Disk APIs to replace the contents of the Disk such that it is no longer corrupted.
+* When using RBAC, Storage Explorer requires some management layer permissions in order to access your storage resources. See the [troubleshooting guide](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) for more info.
+* Detaching from a resource attached via SAS URI, such as a blob container, may cause an error that prevents other attachments from showing up correctly. To work around this issue, just refresh the group node. See #537 for more information.
+* If you use VS for Mac and have ever created a custom AAD configuration, you may be unable to sign-in. To work around the issue, delete the contents of ~/.IdentityService/AadConfigurations. If doing so does not unblock you, comment on this issue.
+* Azurite has not yet fully implemented all Storage APIs. Because of this, there may be unexpected errors or behavior when using Azurite for development storage.
+* In rare cases, the tree focus may get stuck on Quick Access. To unstick the focus, you can Refresh All.
+* Uploading from your OneDrive folder does not work because of a bug in NodeJS. The bug has been fixed, but not yet integrated into Electron. To work around this issue when uploading to or downloading from a blob container, you can use the experimental AzCopy feature.
+* When targeting Azure Stack, uploading certain files as append blobs may fail.
+* After clicking "Cancel" on a task, it may take a while for that task to cancel. This is because we are using the cancel filter work around described here.
+* If you choose the wrong PIN/Smartcard certificate, then you will need to restart in order to have Storage Explorer forget that decision.
+* Renaming blobs (individually or inside a renamed blob container) does not preserve snapshots. All other properties and metadata for blobs, files, and entities are preserved during a rename.
+* Azure Stack does not support the following features. Attempting to use these features while working with Azure Stack resources may result in unexpected errors.
+   * Dosya paylaşımları
+   * Erişim katmanları
+   * Soft Delete
+   * ADLS Gen2
+   * Managed Disks (Yönetilen Diskler)
+* The Electron shell used by Storage Explorer has trouble with some GPU (graphics processing unit) hardware acceleration. If Storage Explorer is displaying a blank (empty) main window, you can try launching Storage Explorer from the command line and disabling GPU acceleration by adding the `--disable-gpu` switch:
+
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
+
+* Running Storage Explorer on Linux requires certain dependencies to be installed first. Check the Storage Explorer [troubleshooting guide](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) for more information.
+
+## <a name="previous-releases"></a>Previous releases
+
+* [Version 1.10.1](#version-1101)
+* [Version 1.10.0](#version-1100)
+* [Version 1.9.0](#version-190)
+* [Version 1.8.1](#version-181)
+* [Version 1.8.0](#version-180)
+* [Version 1.7.0](#version-170)
+* [Version 1.6.2](#version-162)
+* [Version 1.6.1](#version-161)
+* [Version 1.6.0](#version-160)
+* [Version 1.5.0](#version-150)
+* [Version 1.4.4](#version-144)
+* [Version 1.4.3](#version-143)
+* [Version 1.4.2](#version-142)
+* [Version 1.4.1](#version-141)
+* [Version 1.3.0](#version-130)
+* [Version 1.2.0](#version-120)
+* [Version 1.1.0](#version-110)
+* [Version 1.0.0](#version-100)
+* [Version 0.9.6](#version-096)
+* [Version 0.9.5](#version-095)
+* [Version 0.9.4 and 0.9.3](#version-094-and-093)
+* [Version 0.9.2](#version-092)
+* [Version 0.9.1 and 0.9.0](#version-091-and-090)
+* [Version 0.8.16](#version-0816)
+* [Version 0.8.14](#version-0814)
+* [Version 0.8.13](#version-0813)
+* [Version 0.8.12 and 0.8.11 and 0.8.10](#version-0812-and-0811-and-0810)
+* [Version 0.8.9 and 0.8.8](#version-089-and-088)
+* [Version 0.8.7](#version-087)
+* [Version 0.8.6](#version-086)
+* [Version 0.8.5](#version-085)
+* [Version 0.8.4](#version-084)
+* [Version 0.8.3](#version-083)
+* [Version 0.8.2](#version-082)
+* [Version 0.8.0](#version-080)
+* [Version 0.7.20160509.0](#version-07201605090)
+* [Version 0.7.20160325.0](#version-07201603250)
+* [Version 0.7.20160129.1](#version-07201601291)
+* [Version 0.7.20160105.0](#version-07201601050)
+* [Version 0.7.20151116.0](#version-07201511160)
+
+## <a name="version-1101"></a>Version 1.10.1
+9/19/2019
+
+### <a name="hotfix"></a>Hotfix
+* Some users encountered an error in 1.10.0 while attempting to view their data in their ADLS Gen 1 accounts. This error prevented the explorer panel from rendering properly. This has been fixed. #1853 #1865
+
+### <a name="new"></a>Yeni
+* Storage Explorer now has a dedicated Settings UI. You can access it either from Edit → Settings, or by clicking on the Settings icon (the gear) in the left-hand vertical toolbar. This feature is the first step we're taking towards providing a variety of [user requested settings](https://github.com/microsoft/AzureStorageExplorer/labels/%3Abulb%3A%20setting%20candidate). Starting in this release the following settings are supported:
+  * Tema
+  * Ara sunucu
+  * Logout on exit #6
+  * Enable device code flow sign-in
+  * Auto refresh #1526
+  * Enable AzCopy
+  * AzCopy SAS duration If there are other setttings you would like to see added, please [open an issue on GitHub](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=%3Abulb%3A%20setting%20candidate&template=feature_request.md&title=) describing the setting you want to see.
+* Storage Explorer now supports Managed Disks. Yapabilecekleriniz:
+  * Upload an on-prem VHD to a new Disk
+  * Download a Disk
+  * Copy and paste disks across resource groups and regions
+  * Delete Disks
+  * Create a Snapshot of a Disk The uploading, downloading, and cross-region copying of disks are powered by AzCopy v10.
+* Storage Explorer can now be installed via the Snap store on Linux. When you install via the Snap store, all dependencies are installed for you, including .NET Core! Currently we have verified that Storage Explorer runs well on Ubuntu and CentOS. If you encounter issues installing from the Snap store on other Linux distros, please [open an issue on GitHub](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=snaps&template=bug-report.md&title=). To learn more about installing from the Snap store, see our [getting started guide](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux). #68
+* Two major changes have been made to attach with Azure Active Directory (Azure AD) which are intended to make the feature more useful for ADLS Gen2 users:
+  * You now select the tenant that the resource you are attaching is in. This means that you no longer need to have RBAC access to the resource's subscription.
+  * If you are attaching an ADLS Gen2 Blob Container, you can now attach to a specific path in the container.
+* When managing ACLs for ADLS Gen2 files and folders, Storage Explorer will now show the friendly names for entities in the ACL. #957
+* When adding via OID to an ADLS Gen2 ACL, Storage Explorer will now validate that the OID belongs to a valid entity in your tenant. #1603
+* The keyboard shortcuts for navigating between tabs now use more standard key combinations. #1018
+* Middle clicking on a tab will now close it. #1348
+* If an AzCopy transfer contains skips and no failures, Storage Explorer will now show a warning icon to highlight that skips occured. #1490
+* The integrated AzCopy has been updated to version 10.2.1. Additionally, you can now view the version of AzCopy installed in the About dialog. #1343
+
+### <a name="fixes"></a>Fixes
+* Many users have run into various "cannot read version of undefined" or "cannot read connection of undefined" errors when working with attached Storage Accounts. Although we are still continuing to investigate the root cause of this issue, in 1.10.0 we have improved the error handling around loading attached Storage Accounts. #1626, #985, and #1532
+* It was possible for the explorer tree (left-hand side) to get into a state where focus would jump to the top node repeatedly. This has been fixed. #1596
+* When managing a blob's snapshots, screenreaders would not read the timestamp associated with the snapshot. This has been fixed. #1202
+* Proxy setting on macOS were not being set in time for the authentication process to use them. This has been fixed. #1567
+* If a Storage Account in a sovereign cloud was attached using name and key, AzCopy would not work. This has been fixed. #1544
+* When attaching via a connection string, Storage Explorer will now remove trailing spaces. #1387
+
+### <a name="known-issues"></a>Bilinen Sorunlar
+* The Auto Refresh setting does not yet affect all operations in the Blob Explorer.
+* Managed Disk features are not supported in Azure Stack.
+* If a Disk upload or paste fails and a new Disk was created prior to the failure, Storage Explorer will not delete the Disk for you.
+* Depending on when you cancel a Disk upload or paste, it is possible to leave the new Disk in a corrupted state. If this happens, you either need to delete the new Disk, or manually call the Disk APIs to replace the contents of the Disk such that it is no longer corrupted.
+* Depending on when you cancel a Disk upload or paste, it is possible to leave the new Disk in a corrupted state. If this happens, you either need to delete the new Disk, or manually call the Disk APIs to replace the contents of the Disk such that it is no longer corrupted.
+* When performing a non-AzCopy Blob download, the MD5 for large files is not being verified. This is due to a bug in the Storage SDK. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
+* When using RBAC, Storage Explorer requires some management layer permissions in order to access your storage resources. See the [troubleshooting guide](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) for more info.
+* Detaching from a resource attached via SAS URI, such as a blob container, may cause an error that prevents other attachments from showing up correctly. To work around this issue, just refresh the group node. See #537 for more information.
+* If you use VS for Mac and have ever created a custom AAD configuration, you may be unable to sign-in. To work around the issue, delete the contents of ~/.IdentityService/AadConfigurations. If doing so does not unblock you, comment on this issue.
+* Azurite has not yet fully implemented all Storage APIs. Because of this, there may be unexpected errors or behavior when using Azurite for development storage.
+* In rare cases, the tree focus may get stuck on Quick Access. To unstick the focus, you can Refresh All.
+* Uploading from your OneDrive folder does not work because of a bug in NodeJS. The bug has been fixed, but not yet integrated into Electron. To work around this issue when uploading to or downloading from a blob container, you can use the experimental AzCopy feature.
+* When targeting Azure Stack, uploading certain files as append blobs may fail.
+* After clicking "Cancel" on a task, it may take a while for that task to cancel. This is because we are using the cancel filter work around described here.
+* If you choose the wrong PIN/Smartcard certificate, then you will need to restart in order to have Storage Explorer forget that decision.
+* Renaming blobs (individually or inside a renamed blob container) does not preserve snapshots. All other properties and metadata for blobs, files, and entities are preserved during a rename.
+* Azure Stack does not support the following features. Attempting to use these features while working with Azure Stack resources may result in unexpected errors.
+   * Dosya paylaşımları
+   * Erişim katmanları
+   * Soft Delete
+   * ADLS Gen2
+   * Managed Disks (Yönetilen Diskler)
+* The Electron shell used by Storage Explorer has trouble with some GPU (graphics processing unit) hardware acceleration. If Storage Explorer is displaying a blank (empty) main window, you can try launching Storage Explorer from the command line and disabling GPU acceleration by adding the `--disable-gpu` switch:
+
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
+
+* Running Storage Explorer on Linux requires certain dependencies to be installed first. Check the Storage Explorer [troubleshooting guide](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) for more information.
+
+
+## <a name="version-1100"></a>Version 1.10.0
 9/12/2019
 
-### <a name="download-azure-storage-explorer-1100"></a>Azure Depolama Gezgini 1.10.0 indir
-- [Windows için Azure Depolama Gezgini 1.10.0](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [Mac için Azure Depolama Gezgini 1.10.0](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [Snap deposunda 1.10.0 Azure Depolama Gezgini](https://snapcraft.io/storage-explorer)
-- [Linux için Azure Depolama Gezgini 1.10.0](https://go.microsoft.com/fwlink/?LinkId=722418)
-
 ### <a name="new"></a>Yeni
 
-* Depolama Gezgini artık adanmış bir ayarlar Kullanıcı arabirimine sahiptir. → Ayarlarından ya da sol taraftaki dikey araç çubuğunda Ayarlar simgesine (dişli) tıklayarak erişebilirsiniz. Bu özellik, [Kullanıcı tarafından istenen çeşitli ayarları](https://github.com/microsoft/AzureStorageExplorer/labels/%3Abulb%3A%20setting%20candidate)sağlamamız gereken ilk adımdır. Bu sürümden itibaren, aşağıdaki ayarlar desteklenir:
+* Storage Explorer now has a dedicated Settings UI. You can access it either from Edit → Settings, or by clicking on the Settings icon (the gear) in the left-hand vertical toolbar. This feature is the first step we're taking towards providing a variety of [user requested settings](https://github.com/microsoft/AzureStorageExplorer/labels/%3Abulb%3A%20setting%20candidate). Starting in this release the following settings are supported:
     * Tema
-    * Proxy
-    * Çıkışta oturum kapatma [#6](https://www.github.com/Microsoft/AzureStorageExplorer/issues/6)
-    * Cihaz kod akışı oturum açmayı etkinleştir
-    * Otomatik yenileme [#1526](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1526)
-    * AzCopy 'i etkinleştir
-    * AzCopy SAS süresi
+    * Ara sunucu
+    * Logout on exit [#6](https://www.github.com/Microsoft/AzureStorageExplorer/issues/6)
+    * Enable device code flow sign-in
+    * Auto refresh [#1526](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1526)
+    * Enable AzCopy
+    * AzCopy SAS duration
 
-    Eklemek istediğiniz başka ayarlar varsa, lütfen [görmek istediğiniz ayarı açıklayan GitHub 'da bir sorun açın](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=%3Abulb%3A%20setting%20candidate&template=feature_request.md&title=).
-* Depolama Gezgini artık yönetilen diskleri desteklemektedir. Şunları yapabilirsiniz:
-    * Şirket içi bir VHD 'yi yeni bir diske yükleme
-    * Bir disk indirin
-    * Diskleri kaynak grupları ve bölgeler arasında Kopyala ve Yapıştır
-    * Diskleri silme
-    * Diskin anlık görüntüsünü oluşturma
+    If there are other setttings you would like to see added, please [open an issue on GitHub describing the setting you want to see](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=%3Abulb%3A%20setting%20candidate&template=feature_request.md&title=).
+* Storage Explorer now supports Managed Disks. Yapabilecekleriniz:
+    * Upload an on-prem VHD to a new Disk
+    * Download a Disk
+    * Copy and paste disks across resource groups and regions
+    * Delete Disks
+    * Create a Snapshot of a Disk
 
-    Disklerin karşıya yüklenmesi, indirilmesi ve çapraz bölge kopyalaması, AzCopy ile v10 arasındaki tarafından desteklenmektedir.
-* Depolama Gezgini artık Linux üzerinde Snap Store aracılığıyla yüklenebilirler. Snap Store aracılığıyla yüklediğinizde, .NET Core dahil olmak üzere tüm bağımlılıklar sizin için yüklenir! Şu anda Depolama Gezgini Ubuntu ve CentOS üzerinde iyi çalıştığını doğruladık. Diğer Linux kaldırmalar üzerinde Snap mağazasından yükleme sorunlarıyla karşılaşırsanız lütfen [GitHub 'da bir sorun açın](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=snaps&template=bug-report.md&title=). Snap mağazasından yükleme hakkında daha fazla bilgi edinmek için [Başlarken kılavuzumuza](https://aka.ms/storageexplorer/snapinformation)bakın. [#68](https://www.github.com/Microsoft/AzureStorageExplorer/issues/68)
-* Özelliği ADLS 2. kullanıcılar için daha yararlı hale getirmek amacıyla tasarlanan Azure Active Directory (Azure AD) ile birlikte iliştirilecek iki önemli değişiklik yapılmıştır: * artık iliştirmekte olduğunuz kaynağın bulunduğu kiracıyı seçersiniz. Bu, artık kaynağın aboneliğine RBAC erişiminizin olması gerekmediği anlamına gelir.
-        * Bir ADLS 2. blob kapsayıcısı iliştiriyorsanız, artık kapsayıcıda belirli bir yola iliştirebilirsiniz.
-* ADLS 2. dosya ve klasörler için ACL 'Leri yönetirken, Depolama Gezgini artık ACL 'lerdeki varlıkların kolay adlarını gösterecektir. [#957](https://www.github.com/Microsoft/AzureStorageExplorer/issues/957)
-* Bir ADLS 2. ACL 'sine OID aracılığıyla eklerken, Depolama Gezgini artık OID 'nin kiracınızdaki geçerli bir varlığa ait olduğunu doğrular. [#1603](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1603)
-* Sekmeler arasında gezinmek için klavye kısayolları artık daha standart anahtar bileşimleri kullanıyor. [#1018](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1018)
-* Bir sekmeye ortadaki tıklama, şimdi kapatılacak. [#1348](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1348)
-* AzCopy aktarımı atlanmayı içeriyorsa ve hata içermiyorsa, Depolama Gezgini atlandığını vurgulamak için şimdi bir uyarı simgesi gösterir. [#1490](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1490)
-* Tümleşik AzCopy, 10.2.1 sürümüne güncelleştirilmiştir. Ayrıca, bilgi iletişim kutusunda yüklü AzCopy sürümünü de görüntüleyebilirsiniz. [#1343](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1343)
+    The uploading, downloading, and cross-region copying of disks are powered by AzCopy v10.
+* Storage Explorer can now be installed via the Snap store on Linux. When you install via the Snap store, all dependencies are installed for you, including .NET Core! Currently we have verified that Storage Explorer runs well on Ubuntu and CentOS. If you encounter issues installing from the Snap store on other Linux distros, please [open an issue on GitHub](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=snaps&template=bug-report.md&title=). To learn more about installing from the Snap store, see our [getting started guide](https://aka.ms/storageexplorer/snapinformation). [#68](https://www.github.com/Microsoft/AzureStorageExplorer/issues/68)
+* Two major changes have been made to attach with Azure Active Directory (Azure AD) which are intended to make the feature more useful for ADLS Gen2 users: * You now select the tenant that the resource you are attaching is in. This means that you no longer need to have RBAC access to the resource's subscription.
+        * If you are attaching an ADLS Gen2 Blob Container, you can now attach to a specific path in the container.
+* When managing ACLs for ADLS Gen2 files and folders, Storage Explorer will now show the friendly names for entities in the ACL. [#957](https://www.github.com/Microsoft/AzureStorageExplorer/issues/957)
+* When adding via OID to an ADLS Gen2 ACL, Storage Explorer will now validate that the OID belongs to a valid entity in your tenant. [#1603](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1603)
+* The keyboard shortcuts for navigating between tabs now use more standard key combinations. [#1018](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1018)
+* Middle clicking on a tab will now close it. [#1348](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1348)
+* If an AzCopy transfer contains skips and no failures, Storage Explorer will now show a warning icon to highlight that skips occured. [#1490](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1490)
+* The integrated AzCopy has been updated to version 10.2.1. Additionally, you can now view the version of AzCopy installed in the About dialog. [#1343](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1343)
 
-### <a name="fixes"></a>Düzeltmeleri
+### <a name="fixes"></a>Fixes
 
-* Çok sayıda kullanıcı, ekli depolama hesaplarıyla çalışırken çeşitli "tanımsız sürüm okunamaz" veya "tanımsız" hata bağlantıları okunamaz. Bu sorunun kök nedenini araştırmaya devam ediyoruz, ancak 1.10.0 ' de ekli depolama hesaplarını yükleme sırasında hata işlemeyi geliştirdik. [#1626](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1626), [#985](https://www.github.com/Microsoft/AzureStorageExplorer/issues/985)ve [#1532](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1532)
-* Gezgin ağacı (sol taraf), odağın en üst düğüme sürekli olarak atlayacağı bir duruma ulaşmak için mümkündür. Bu düzeltilmiştir. [#1596](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1596)
-* Bir Blobun anlık görüntülerini yönetirken, ekran okuyucular anlık görüntüyle ilişkili zaman damgasını okumaz. Bu düzeltilmiştir. [#1202](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1202)
-* MacOS üzerindeki proxy ayarı, kimlik doğrulama işleminin bunları kullanabilmesi için zaman içinde ayarlanmıyor. Bu düzeltilmiştir. [#1567](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1567)
-* Bir sogeign bulutundaki bir depolama hesabı adı ve anahtarı kullanarak iliştirilmişse AzCopy çalışmaz. Bu düzeltilmiştir. [#1544](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1544)
-* Bir bağlantı dizesi aracılığıyla eklenirken Depolama Gezgini artık sondaki boşlukları kaldırır. [#1387](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1387)
+* Many users have run into various "cannot read version of undefined" or "cannot read connection of undefined" errors when working with attached Storage Accounts. Although we are still continuing to investigate the root cause of this issue, in 1.10.0 we have improved the error handling around loading attached Storage Accounts. [#1626](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1626), [#985](https://www.github.com/Microsoft/AzureStorageExplorer/issues/985), and [#1532](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1532)
+* It was possible for the explorer tree (left-hand side) to get into a state where focus would jump to the top node repeatedly. This has been fixed. [#1596](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1596)
+* When managing a blob's snapshots, screenreaders would not read the timestamp associated with the snapshot. This has been fixed. [#1202](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1202)
+* Proxy setting on macOS were not being set in time for the authentication process to use them. This has been fixed. [#1567](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1567)
+* If a Storage Account in a sovereign cloud was attached using name and key, AzCopy would not work. This has been fixed. [#1544](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1544)
+* When attaching via a connection string, Storage Explorer will now remove trailing spaces. [#1387](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1387)
 
 ### <a name="known-issues"></a>Bilinen Sorunlar
 
-* Otomatik yenileme ayarı, blob Gezgini 'ndeki tüm işlemleri henüz etkilemez.
-* Yönetilen disk özellikleri Azure Stack desteklenmez.
-* Bir disk karşıya yükleme veya yapıştırma başarısız olursa ve hatadan önce yeni bir disk oluşturulduysa Depolama Gezgini, diski sizin için silmez.
-* Bir disk karşıya yüklemeyi veya yapıştırmayı iptal ettiğinizde, yeni diski bozuk bir durumda bırakmak mümkündür. Bu durumda, yeni diski silmeniz veya disk API 'Lerini el ile arayarak diskin içeriğini artık bozulmayacak şekilde değiştirmeniz gerekir.
-* AzCopy olmayan bir blob indirmesi gerçekleştirirken, büyük dosyalar için MD5 doğrulanmaz. Bunun nedeni, depolama SDK 'sindeki bir hatadır. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
-* RBAC kullanılırken, depolama kaynaklarınıza erişebilmek için Depolama Gezgini bazı yönetim katmanı izinleri gerektirir. Daha fazla bilgi için bkz. [sorun giderme kılavuzu](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) .
-* Bir blob kapsayıcısı gibi SAS URI 'SI aracılığıyla bağlı bir kaynağın ayrılması, diğer eklerin doğru şekilde görüntülenmesini engelleyen bir hataya neden olabilir. Bu sorunu çözmek için yalnızca Grup düğümünü yenileyin. #537 daha fazla bilgi için bkz.
-* Mac için VS kullanın ve özel bir AAD yapılandırmasına hiç olmadığı kadar oluşturdunuz, oturum açma alınamıyor olabilir. Sorunu çözmek için içeriğini silin. ~ /. IdentityService/AadConfigurations. Bunu yapmak sizi engellemez, bu sorunla ilgili yorum yapın.
-* Azurite henüz tam olarak tüm depolama API'leri uygulamadı. Bu nedenle, beklenmeyen hatalar veya olabilir davranışı Azurite geliştirme depolaması için kullanılırken.
-* Nadiren de olsa, ağaç odağı Hızlı erişimi takılabilir. Odağı Ayır için Tümünü Yenile yapabilirsiniz.
-* Nodejs'de bir hata nedeniyle, OneDrive klasöründen karşıya çalışmaz. Hata düzeltildi, ancak henüz Elektron tümleşik. Blob kapsayıcısına yükleme veya indirme sırasında bu sorunu geçici olarak çözmek için deneysel AzCopy özelliğini kullanabilirsiniz.
-* Azure Stack hedeflerken, ekleme blobları gibi belirli dosyaları karşıya yükleme başarısız olabilir.
-* "İptal" görevde tıklandıktan sonra onu iptal etmek bu görev için biraz zaman alabilir. Bunun nedeni, burada açıklanan iptal filtresini kullandığımyız.
-* Yanlış PIN/akıllı kart sertifikası seçeneğini belirlerseniz, depolama Gezgini'nin kararı unutursanız studio'durdurup yeniden başlatmanız gerekir.
-* BLOB'ları (ayrı ayrı veya yeniden adlandırılmış blob kapsayıcının içinde) yeniden adlandırma, anlık görüntüler korumaz. Diğer tüm özellikleri ve meta verileri bloblar, dosyalar ve varlıklar için bir yeniden adlandırma sırasında korunur.
-* Azure Stack aşağıdaki özellikleri desteklemez. Azure Stack ile çalışırken bu özellikleri kullanmak deneyen kaynakları beklenmeyen hatalarına neden olabilir.
+* The Auto Refresh setting does not yet affect all operations in the Blob Explorer.
+* Managed Disk features are not supported in Azure Stack.
+* If a Disk upload or paste fails and a new Disk was created prior to the failure, Storage Explorer will not delete the Disk for you.
+* Depending on when you cancel a Disk upload or paste, it is possible to leave the new Disk in a corrupted state. If this happens, you either need to delete the new Disk, or manually call the Disk APIs to replace the contents of the Disk such that it is no longer corrupted.
+* When performing a non-AzCopy Blob download, the MD5 for large files is not being verified. This is due to a bug in the Storage SDK. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
+* When using RBAC, Storage Explorer requires some management layer permissions in order to access your storage resources. See the [troubleshooting guide](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) for more info.
+* Detaching from a resource attached via SAS URI, such as a blob container, may cause an error that prevents other attachments from showing up correctly. To work around this issue, just refresh the group node. See #537 for more information.
+* If you use VS for Mac and have ever created a custom AAD configuration, you may be unable to sign-in. To work around the issue, delete the contents of ~/.IdentityService/AadConfigurations. If doing so does not unblock you, comment on this issue.
+* Azurite has not yet fully implemented all Storage APIs. Because of this, there may be unexpected errors or behavior when using Azurite for development storage.
+* In rare cases, the tree focus may get stuck on Quick Access. To unstick the focus, you can Refresh All.
+* Uploading from your OneDrive folder does not work because of a bug in NodeJS. The bug has been fixed, but not yet integrated into Electron. To work around this issue when uploading to or downloading from a blob container, you can use the experimental AzCopy feature.
+* When targeting Azure Stack, uploading certain files as append blobs may fail.
+* After clicking "Cancel" on a task, it may take a while for that task to cancel. This is because we are using the cancel filter work around described here.
+* If you choose the wrong PIN/Smartcard certificate, then you will need to restart in order to have Storage Explorer forget that decision.
+* Renaming blobs (individually or inside a renamed blob container) does not preserve snapshots. All other properties and metadata for blobs, files, and entities are preserved during a rename.
+* Azure Stack does not support the following features. Attempting to use these features while working with Azure Stack resources may result in unexpected errors.
    * Dosya paylaşımları
    * Erişim katmanları
-   * Geçici silme
-   * ADLS 2.
-   * Yönetilen Diskler
-* Depolama Gezgini tarafından kullanılan Elektron Kabuk bazı GPU (grafik işlem birimi) Donanım hızlandırmalı sorun vardır. Depolama Gezgini (boş) bir boş ana penceresi görüntüleniyorsa, deneyebileceğiniz Depolama Gezgini komut satırından başlatmak ve ekleyerek GPU hızlandırmasını devre dışı bırakma `--disable-gpu` geçin:
+   * Soft Delete
+   * ADLS Gen2
+   * Managed Disks (Yönetilen Diskler)
+* The Electron shell used by Storage Explorer has trouble with some GPU (graphics processing unit) hardware acceleration. If Storage Explorer is displaying a blank (empty) main window, you can try launching Storage Explorer from the command line and disabling GPU acceleration by adding the `--disable-gpu` switch:
 
     ```
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Linux üzerinde Depolama Gezgini çalıştırmak için öncelikle bazı bağımlılıkların yüklenmesi gerekir. Daha fazla bilgi için Depolama Gezgini [sorun giderme kılavuzuna](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) bakın.
+* Running Storage Explorer on Linux requires certain dependencies to be installed first. Check the Storage Explorer [troubleshooting guide](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) for more information.
 
-## <a name="previous-releases"></a>Önceki sürümler
-
-* [Sürüm 1.9.0](#version-190)
-* [Sürüm 1.8.1](#version-181)
-* [Sürüm 1.8.0](#version-180)
-* [Sürüm 1.7.0](#version-170)
-* [Sürüm 1.6.2](#version-162)
-* [Sürüm 1.6.1](#version-161)
-* [Sürüm 1.6.0](#version-160)
-* [Sürüm 1.5.0](#version-150)
-* [Sürüm 1.4.4](#version-144)
-* [Sürüm 1.4.3](#version-143)
-* [Sürüm 1.4.2](#version-142)
-* [Sürüm 1.4.1](#version-141)
-* [Sürüm 1.3.0](#version-130)
-* [Sürümü 1.2.0](#version-120)
-* [Sürüm 1.1.0](#version-110)
-* [Sürüm 1.0.0](#version-100)
-* [Sürüm 0.9.6](#version-096)
-* [Sürüm 0.9.5](#version-095)
-* [0.9.4 ve 0.9.3 sürümü](#version-094-and-093)
-* [Sürüm 0.9.2](#version-092)
-* [0.9.1 ve 0.9.0 sürümü](#version-091-and-090)
-* [Sürüm 0.8.16](#version-0816)
-* [Sürüm 0.8.14](#version-0814)
-* [Sürüm 0.8.13](#version-0813)
-* [Sürüm 0.8.12 ve 0.8.11 ve 0.8.10](#version-0812-and-0811-and-0810)
-* [Sürüm 0.8.9 ve 0.8.8](#version-089-and-088)
-* [Sürüm 0.8.7](#version-087)
-* [Sürüm 0.8.6](#version-086)
-* [Sürüm 0.8.5](#version-085)
-* [Sürüm 0.8.4](#version-084)
-* [Sürüm 0.8.3](#version-083)
-* [Sürüm 0.8.2](#version-082)
-* [Sürüm 0.8.0](#version-080)
-* [Sürüm 0.7.20160509.0](#version-07201605090)
-* [Sürüm 0.7.20160325.0](#version-07201603250)
-* [Sürüm 0.7.20160129.1](#version-07201601291)
-* [Sürüm 0.7.20160105.0](#version-07201601050)
-* [Sürüm 0.7.20151116.0](#version-07201511160)
-
-
-## <a name="version-190"></a>Sürüm 1.9.0
+## <a name="version-190"></a>Version 1.9.0
 7/1/2019
 
-### <a name="download-azure-storage-explorer-190"></a>Azure Depolama Gezgini 1.9.0 indir
-- [Windows için Azure Depolama Gezgini 1.9.0](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [Mac için Azure Depolama Gezgini 1.9.0](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [Linux için Azure Depolama Gezgini 1.9.0](https://go.microsoft.com/fwlink/?LinkId=722418)
+### <a name="download-azure-storage-explorer-190"></a>Download Azure Storage Explorer 1.9.0
+- [Azure Storage Explorer 1.9.0 for Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Azure Storage Explorer 1.9.0 for Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Azure Storage Explorer 1.9.0 for Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
 
 ### <a name="new"></a>Yeni
 
-* Artık Azure AD (RBAC veya ACL izinleri) aracılığıyla blob kapsayıcıları ekleyebilirsiniz. Bu özellik, kapsayıcılara erişimi olan ancak kapsayıcıların bulunduğu depolama hesaplarına değil kullanıcılara yardımcı olmaya yöneliktir. Bu özellik hakkında daha fazla bilgi için Başlarken kılavuzumuza bakın.
-* Edinme ve kesme kirası artık RBAC ile birlikte çalışır. [#1354](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1354)
-* Erişim ilkelerini yönetme ve genel erişim düzeyini ayarlama artık RBAC ile birlikte çalışır. [#1355](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1355)
-* Blob klasörlerini silme artık RBAC ile çalışır. [#1450](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1450)
-* Blob erişim katmanını değiştirmek artık RBAC ile çalışır. [#1446](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1446)
-* Artık, Hızlı erişimi "yardım" → "Reset" aracılığıyla hızlıca sıfırlayabilirsiniz. [#1327](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1327)
+* You can now attach Blob containers via Azure AD (RBAC or ACL permissions). This feature is intended to help users who have access to containers but not the Storage Accounts that the containers are in. See our Getting Started Guide for more information on this feature.
+* Acquire and break lease now work with RBAC. [#1354](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1354)
+* Managing access policies and setting public access level now work with RBAC. [#1355](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1355)
+* Deleting blob folders now work with RBAC. [#1450](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1450)
+* Changing blob access tier now work with RBAC. [#1446](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1446)
+* You can now quickly reset Quick Access via "Help" → "Reset". [#1327](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1327)
 
 ### <a name="preview-features"></a>Önizleme Özellikleri
 
-* Cihaz kod akışı oturum açma artık önizleme için kullanılabilir. Bunu etkinleştirmek için "Önizleme" → "cihaz kodu akışı oturum açma kullan" bölümüne gidin. Daha güvenilir bir oturum açma formu olduğunu kanıtlayabildiğinden, bu özelliği denemek için boş oturum açma pencereleri ile sorun yaşayan tüm kullanıcıları teşvik ediyoruz.
-* AzCopy ile tümleştirilmiş Depolama Gezgini Şu anda önizleme için kullanılabilir. Bunu etkinleştirmek için "Preview" → "Gelişmiş blob yüklemesi ve Indirilmesi için AzCopy kullanın" bölümüne gidin. AzCopy ile tamamlanan blob aktarımları daha hızlı ve daha iyi performansa sahip olmalıdır.
+* Device code flow sign in is now available to preview. To enable it, go to "Preview" → "Use Device Code Flow Sign-in". We encourage any users who have had issues with blank sign-in windows to try this feature, as it may prove to be a more reliable form of sign-in.
+* Storage Explorer integrated with AzCopy is currently available to preview. To enable it, go to "Preview" → "Use AzCopy for Improved Blob Upload and Download". Blob transfers completed with AzCopy should be faster and more performant.
 
-### <a name="fixes"></a>Düzeltmeleri
+### <a name="fixes"></a>Fixes
 
-* Tek bir hesap için 50 ' den fazla aboneliği yükleyemedik. [#1416](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1416)
-* Doğrudan bağlantı başarısız olduğunda görüntülenen bilgi çubuğunda "oturum aç" düğmesi düzeltildi. [#1358](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1358)
-* MacOS 'ta. App dosyaları karşıya yüklenemedi. [#1119](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1119)
-* "Tümünü yeniden dene" düzeltildi, başarısız bir blob yeniden adlandırma için çalışmıyor. [#992](https://www.github.com/Microsoft/AzureStorageExplorer/issues/992)
-* Blob açılırken "Iptal" düzeltildi. [#1464](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1464)
-* Ürün genelinde birden çok yazım ve araç ipucu sorunu düzeltildi. Bu sorunları bildiren çok teşekkürler! [#1303](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1303), [#1328](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1328), [#1329](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1329), [#1331](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1331), [#1336](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1336), [#1352](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1352), [#1368](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1368), [#1395](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1395)
+* Fixed being unable to load more than 50 subscriptions for one account. [#1416](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1416)
+* Fixed the "Sign in" button not working on the infobar that appears when a direct link fails. [#1358](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1358)
+* Fixed not being to upload .app files on macOS. [#1119](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1119)
+* Fixed "Retry All" not working for a failed blob rename. [#992](https://www.github.com/Microsoft/AzureStorageExplorer/issues/992)
+* Fixed "Cancel" not working while opening a blob. [#1464](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1464)
+* Fixed multiple spelling and tooltip issues throughout the product. Many thanks to all who reported these issues! [#1303](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1303), [#1328](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1328), [#1329](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1329), [#1331](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1331), [#1336](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1336), [#1352](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1352), [#1368](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1368), [#1395](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1395)
 
 ### <a name="known-issues"></a>Bilinen Sorunlar
 
-* AzCopy olmayan bir blob indirmesi gerçekleştirirken, büyük dosyalar için MD5 doğrulanmaz. Bunun nedeni, depolama SDK 'sindeki bir hatadır. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
-* RBAC kullanılırken, depolama kaynaklarınıza erişebilmek için Depolama Gezgini bazı yönetim katmanı izinleri gerektirir. Daha fazla bilgi için bkz. [sorun giderme kılavuzu](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) .
-* Bir proxy 'nin arkasında ADLS 2. Bloblarına erişme girişimi başarısız olabilir.
-* Bir blob kapsayıcısı gibi SAS URI 'SI aracılığıyla bağlı bir kaynağın ayrılması, diğer eklerin doğru şekilde görüntülenmesini engelleyen bir hataya neden olabilir. Bu sorunu çözmek için yalnızca Grup düğümünü yenileyin. #537 daha fazla bilgi için bkz.
-* Mac için VS kullanın ve özel bir AAD yapılandırmasına hiç olmadığı kadar oluşturdunuz, oturum açma alınamıyor olabilir. Sorunu çözmek için içeriğini silin. ~ /. IdentityService/AadConfigurations. Bunu yapmak sizi engellemez, bu sorunla ilgili yorum yapın.
-* Azurite henüz tam olarak tüm depolama API'leri uygulamadı. Bu nedenle, beklenmeyen hatalar veya olabilir davranışı Azurite geliştirme depolaması için kullanılırken.
-* Nadiren de olsa, ağaç odağı Hızlı erişimi takılabilir. Odağı Ayır için Tümünü Yenile yapabilirsiniz.
-* Nodejs'de bir hata nedeniyle, OneDrive klasöründen karşıya çalışmaz. Hata düzeltildi, ancak henüz Elektron tümleşik. Blob kapsayıcısına yükleme veya indirme sırasında bu sorunu geçici olarak çözmek için deneysel AzCopy özelliğini kullanabilirsiniz.
-* Azure Stack hedeflerken, ekleme blobları gibi belirli dosyaları karşıya yükleme başarısız olabilir.
-* "İptal" görevde tıklandıktan sonra onu iptal etmek bu görev için biraz zaman alabilir. Bunun nedeni, burada açıklanan iptal filtresini kullandığımyız.
-* Yanlış PIN/akıllı kart sertifikası seçeneğini belirlerseniz, depolama Gezgini'nin kararı unutursanız studio'durdurup yeniden başlatmanız gerekir.
-* BLOB'ları (ayrı ayrı veya yeniden adlandırılmış blob kapsayıcının içinde) yeniden adlandırma, anlık görüntüler korumaz. Diğer tüm özellikleri ve meta verileri bloblar, dosyalar ve varlıklar için bir yeniden adlandırma sırasında korunur.
-* Azure Stack aşağıdaki özellikleri desteklemez. Azure Stack ile çalışırken bu özellikleri kullanmak deneyen kaynakları beklenmeyen hatalarına neden olabilir.
+* When performing a non-AzCopy Blob download, the MD5 for large files is not being verified. This is due to a bug in the Storage SDK. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
+* When using RBAC, Storage Explorer requires some management layer permissions in order to access your storage resources. See the [troubleshooting guide](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) for more info.
+* Attempting to access ADLS Gen2 Blobs when behind a proxy may fail.
+* Detaching from a resource attached via SAS URI, such as a blob container, may cause an error that prevents other attachments from showing up correctly. To work around this issue, just refresh the group node. See #537 for more information.
+* If you use VS for Mac and have ever created a custom AAD configuration, you may be unable to sign-in. To work around the issue, delete the contents of ~/.IdentityService/AadConfigurations. If doing so does not unblock you, comment on this issue.
+* Azurite has not yet fully implemented all Storage APIs. Because of this, there may be unexpected errors or behavior when using Azurite for development storage.
+* In rare cases, the tree focus may get stuck on Quick Access. To unstick the focus, you can Refresh All.
+* Uploading from your OneDrive folder does not work because of a bug in NodeJS. The bug has been fixed, but not yet integrated into Electron. To work around this issue when uploading to or downloading from a blob container, you can use the experimental AzCopy feature.
+* When targeting Azure Stack, uploading certain files as append blobs may fail.
+* After clicking "Cancel" on a task, it may take a while for that task to cancel. This is because we are using the cancel filter work around described here.
+* If you choose the wrong PIN/Smartcard certificate, then you will need to restart in order to have Storage Explorer forget that decision.
+* Renaming blobs (individually or inside a renamed blob container) does not preserve snapshots. All other properties and metadata for blobs, files, and entities are preserved during a rename.
+* Azure Stack does not support the following features. Attempting to use these features while working with Azure Stack resources may result in unexpected errors.
    * Dosya paylaşımları
    * Erişim katmanları
-   * Geçici silme
-   * ADLS 2.
-* Depolama Gezgini tarafından kullanılan Elektron Kabuk bazı GPU (grafik işlem birimi) Donanım hızlandırmalı sorun vardır. Depolama Gezgini (boş) bir boş ana penceresi görüntüleniyorsa, deneyebileceğiniz Depolama Gezgini komut satırından başlatmak ve ekleyerek GPU hızlandırmasını devre dışı bırakma `--disable-gpu` geçin:
+   * Soft Delete
+   * ADLS Gen2
+* The Electron shell used by Storage Explorer has trouble with some GPU (graphics processing unit) hardware acceleration. If Storage Explorer is displaying a blank (empty) main window, you can try launching Storage Explorer from the command line and disabling GPU acceleration by adding the `--disable-gpu` switch:
 
     ```
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Linux üzerinde Depolama Gezgini çalıştırmak için öncelikle bazı bağımlılıkların yüklenmesi gerekir. Daha fazla bilgi için Depolama Gezgini [sorun giderme kılavuzuna](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) bakın.
+* Running Storage Explorer on Linux requires certain dependencies to be installed first. Check the Storage Explorer [troubleshooting guide](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) for more information.
 
-## <a name="version-181"></a>Sürüm 1.8.1
+## <a name="version-181"></a>Version 1.8.1
 5/13/2019
 
-### <a name="hotfixes"></a>Düzeltmeler
-* Bazı durumlarda, kaynak düzeyinde "daha fazla yükle" seçeneğine tıkladığınızda kaynakların sonraki sayfası döndürülmez. Bu düzeltilmiştir. [#1359](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1359)
-* Windows 'da, AzCopy indirmeleri, tek bir dosya veya klasör indiriliyorsa ve dosya ya da klasörün adı bir Windows yolu için geçersiz bir karakter içeriyorsa başarısız olur. Bu düzeltilmiştir. [#1350](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1350)
-* Son derece ender durumlarda, bir dosya paylaşımının yeniden adlandırılması veya bir dosya paylaşımında yeniden adlandırma gerçekleştirirken, yeniden adlandırma kopyaları başarısız olduysa veya depolama araştırması, kopyaların başarısını Azure ile doğrulayadıysa, o Depolama Gezgini silmek için olası bir durum oluştu. kopya tamamlanmadan önce riinal dosyalar. Bu düzeltilmiştir.
+### <a name="hotfixes"></a>Hotfixes
+* In some cases, clicking "Load more" at the resource level would not return the next page of resources. This has been fixed. [#1359](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1359)
+* On Windows, AzCopy downloads would fail if a single file or folder was being downloaded and the name of the file or folder had a character which was invalid for a Windows path. This has been fixed. [#1350](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1350)
+* In extremely rare cases, while performing a rename of a File Share or a rename in a File Share, if the copies for the rename failed, or if Storage Explore was unable to confirm the success of the copies with Azure, there was the potential for Storage Explorer to delete the original files before the copy had finished. This has been fixed.
 
 ### <a name="new"></a>Yeni
 
-* Tümleşik AzCopy sürümü 10.1.0 sürümüne güncelleştirildi.
-* Ctrl/Cmd + R artık odaklanmış olan düzenleyiciyi yenilemek için kullanılabilir. [#1097](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1097)
-* Azure Stack Storage API sürümü 2017-04-17 olarak değiştirilmiştir.
-* ADLS 2. için erişimi yönet Iletişim kutusu artık maskeyi diğer POSIX izinleri araçlarına benzer bir şekilde eşitlenmiş olarak tutacaktır. Kullanıcı veya grup izinlerinin maskenin sınırlarını aşmasına neden olan bir değişiklik yapıldığında UI da sizi uyarır. [#1253](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1253)
-* AzCopy karşıya yüklemeleri için, MD5 karmasını hesaplamaya ve ayarlamaya yönelik bayrak artık etkinleştirilmiştir. [#1223](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1223)
+* The integrated AzCopy version has been updated to version 10.1.0.
+* Ctrl/Cmd+R can now be used to refresh the currently focused editor. [#1097](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1097)
+* The Azure Stack Storage API version has been changed to 2017-04-17.
+* The Manage Access Dialog for ADLS Gen2 will now keep the Mask in sync in a way similar to other POSIX permissions tools. The UI will also warn you if a change is made that causes the permissions of a user or group to exceed the bounds of the Mask. [#1253](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1253)
+* For AzCopy uploads, the flag to calculate and set the MD5 hash is now enabled. [#1223](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1223)
 
 
 ### <a name="preview-features"></a>Önizleme Özellikleri
 
-* Cihaz kod akışı oturum açma artık önizleme için kullanılabilir. Bunu etkinleştirmek için "Önizleme" → "cihaz kodu akışı oturum açma kullan" bölümüne gidin. Daha güvenilir bir oturum açma formu olduğunu kanıtlayabildiğinden, bu özelliği denemek için boş oturum açma pencereleri ile sorun yaşayan tüm kullanıcıları teşvik ediyoruz.
-* AzCopy ile tümleştirilmiş Depolama Gezgini Şu anda önizleme için kullanılabilir. Bunu etkinleştirmek için "Preview" → "Gelişmiş blob yüklemesi ve Indirilmesi için AzCopy kullanın" bölümüne gidin. AzCopy ile tamamlanan blob aktarımları daha hızlı ve daha iyi performansa sahip olmalıdır.
+* Device code flow sign in is now available to preview. To enable it, go to "Preview" → "Use Device Code Flow Sign-in". We encourage any users who have had issues with blank sign-in windows to try this feature, as it may prove to be a more reliable form of sign-in.
+* Storage Explorer integrated with AzCopy is currently available to preview. To enable it, go to "Preview" → "Use AzCopy for Improved Blob Upload and Download". Blob transfers completed with AzCopy should be faster and more performant.
 
-### <a name="fixes"></a>Düzeltmeleri
+### <a name="fixes"></a>Fixes
 
-* Erişim Ilkeleri iletişim kutusu artık, süresi dolmayan depolama erişim Ilkelerinde sona erme tarihi olarak ayarlanmayacaktır. [#764](https://www.github.com/Microsoft/AzureStorageExplorer/issues/764)
-* Bir SAS oluştururken depolanan erişim Ilkelerinin doğru şekilde kullanıldığından emin olmak için SAS oluştur iletişim kutusunda bazı değişiklikler yapılmıştır. [#1269](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1269)
-* 512 bayt hizalı bir dosyayı bir sayfa Blobuna yüklemeye çalışırken Depolama Gezgini artık daha ilgili bir hata ortaya çıkarır. [#1050](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1050)
-* Bir görünen ad kullanan bir blob kapsayıcısının kopyalanması başarısız olur. Şimdi, blob kapsayıcısının gerçek adı kullanılır. [#1166](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1166)
-* Adında Unicode karakterler bulunan bir ADLS 2. klasörü üzerinde belirli eylemler gerçekleştirmeye çalışılması başarısız olur. Tüm eylemler artık çalışmalıdır. [#980](https://www.github.com/Microsoft/AzureStorageExplorer/issues/980)
+* The Access Policies dialog will no longer set an expiry date on Storage Access Policies that do not have an expiry. [#764](https://www.github.com/Microsoft/AzureStorageExplorer/issues/764)
+* Some changes have been made to the Generate SAS dialog to make sure Stored Access Policies are used correctly when generating a SAS. [#1269](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1269)
+* When attempting to upload a non-512 byte aligned file to a page Blob, Storage Explorer will now expose a more relevant error. [#1050](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1050)
+* Copying a Blob container which utilized a display name would fail. Now, the actual name of the Blob container is used. [#1166](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1166)
+* Attempting to perform certain actions on an ADLS Gen2 folder which had unicode characters in its name would fail. All actions should now work. [#980](https://www.github.com/Microsoft/AzureStorageExplorer/issues/980)
 
 ### <a name="known-issues"></a>Bilinen Sorunlar
 
-* AzCopy olmayan bir blob indirmesi gerçekleştirirken, büyük dosyalar için MD5 doğrulanmaz. Bunun nedeni, depolama SDK 'sindeki bir hatadır. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
-* RBAC kullanılırken, depolama kaynaklarınıza erişebilmek için Depolama Gezgini bazı yönetim katmanı izinleri gerektirir. Daha fazla bilgi için bkz. [sorun giderme kılavuzu](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) .
-* Bir proxy 'nin arkasında ADLS 2. Bloblarına erişme girişimi başarısız olabilir.
-* Bir blob kapsayıcısı gibi SAS URI 'SI aracılığıyla bağlı bir kaynağın ayrılması, diğer eklerin doğru şekilde görüntülenmesini engelleyen bir hataya neden olabilir. Bu sorunu çözmek için yalnızca Grup düğümünü yenileyin. #537 daha fazla bilgi için bkz.
-* Mac için VS kullanın ve özel bir AAD yapılandırmasına hiç olmadığı kadar oluşturdunuz, oturum açma alınamıyor olabilir. Sorunu çözmek için içeriğini silin. ~ /. IdentityService/AadConfigurations. Bunu yapmak sizi engellemez, bu sorunla ilgili yorum yapın.
-* Azurite henüz tam olarak tüm depolama API'leri uygulamadı. Bu nedenle, beklenmeyen hatalar veya olabilir davranışı Azurite geliştirme depolaması için kullanılırken.
-* Nadiren de olsa, ağaç odağı Hızlı erişimi takılabilir. Odağı Ayır için Tümünü Yenile yapabilirsiniz.
-* Nodejs'de bir hata nedeniyle, OneDrive klasöründen karşıya çalışmaz. Hata düzeltildi, ancak henüz Elektron tümleşik. Blob kapsayıcısına yükleme veya indirme sırasında bu sorunu geçici olarak çözmek için deneysel AzCopy özelliğini kullanabilirsiniz.
-* Azure Stack hedeflerken, ekleme blobları gibi belirli dosyaları karşıya yükleme başarısız olabilir.
-* "İptal" görevde tıklandıktan sonra onu iptal etmek bu görev için biraz zaman alabilir. Bunun nedeni, burada açıklanan iptal filtresini kullandığımyız.
-* Yanlış PIN/akıllı kart sertifikası seçeneğini belirlerseniz, depolama Gezgini'nin kararı unutursanız studio'durdurup yeniden başlatmanız gerekir.
-* BLOB'ları (ayrı ayrı veya yeniden adlandırılmış blob kapsayıcının içinde) yeniden adlandırma, anlık görüntüler korumaz. Diğer tüm özellikleri ve meta verileri bloblar, dosyalar ve varlıklar için bir yeniden adlandırma sırasında korunur.
-* Azure Stack aşağıdaki özellikleri desteklemez. Azure Stack ile çalışırken bu özellikleri kullanmak deneyen kaynakları beklenmeyen hatalarına neden olabilir.
+* When performing a non-AzCopy Blob download, the MD5 for large files is not being verified. This is due to a bug in the Storage SDK. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
+* When using RBAC, Storage Explorer requires some management layer permissions in order to access your storage resources. See the [troubleshooting guide](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) for more info.
+* Attempting to access ADLS Gen2 Blobs when behind a proxy may fail.
+* Detaching from a resource attached via SAS URI, such as a blob container, may cause an error that prevents other attachments from showing up correctly. To work around this issue, just refresh the group node. See #537 for more information.
+* If you use VS for Mac and have ever created a custom AAD configuration, you may be unable to sign-in. To work around the issue, delete the contents of ~/.IdentityService/AadConfigurations. If doing so does not unblock you, comment on this issue.
+* Azurite has not yet fully implemented all Storage APIs. Because of this, there may be unexpected errors or behavior when using Azurite for development storage.
+* In rare cases, the tree focus may get stuck on Quick Access. To unstick the focus, you can Refresh All.
+* Uploading from your OneDrive folder does not work because of a bug in NodeJS. The bug has been fixed, but not yet integrated into Electron. To work around this issue when uploading to or downloading from a blob container, you can use the experimental AzCopy feature.
+* When targeting Azure Stack, uploading certain files as append blobs may fail.
+* After clicking "Cancel" on a task, it may take a while for that task to cancel. This is because we are using the cancel filter work around described here.
+* If you choose the wrong PIN/Smartcard certificate, then you will need to restart in order to have Storage Explorer forget that decision.
+* Renaming blobs (individually or inside a renamed blob container) does not preserve snapshots. All other properties and metadata for blobs, files, and entities are preserved during a rename.
+* Azure Stack does not support the following features. Attempting to use these features while working with Azure Stack resources may result in unexpected errors.
    * Dosya paylaşımları
    * Erişim katmanları
-   * Geçici silme
-   * ADLS 2.
-* Depolama Gezgini tarafından kullanılan Elektron Kabuk bazı GPU (grafik işlem birimi) Donanım hızlandırmalı sorun vardır. Depolama Gezgini (boş) bir boş ana penceresi görüntüleniyorsa, deneyebileceğiniz Depolama Gezgini komut satırından başlatmak ve ekleyerek GPU hızlandırmasını devre dışı bırakma `--disable-gpu` geçin:
+   * Soft Delete
+   * ADLS Gen2
+* The Electron shell used by Storage Explorer has trouble with some GPU (graphics processing unit) hardware acceleration. If Storage Explorer is displaying a blank (empty) main window, you can try launching Storage Explorer from the command line and disabling GPU acceleration by adding the `--disable-gpu` switch:
 
     ```
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Linux üzerinde Depolama Gezgini çalıştırmak için öncelikle bazı bağımlılıkların yüklenmesi gerekir. Daha fazla bilgi için Depolama Gezgini [sorun giderme kılavuzuna](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) bakın.
+* Running Storage Explorer on Linux requires certain dependencies to be installed first. Check the Storage Explorer [troubleshooting guide](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) for more information.
 
-## <a name="version-180"></a>Sürüm 1.8.0
+## <a name="version-180"></a>Version 1.8.0
 5/1/2019
 
 ### <a name="new"></a>Yeni
 
-* Tümleşik AzCopy sürümü 10.1.0 sürümüne güncelleştirildi.
-* Ctrl/Cmd + R artık odaklanmış olan düzenleyiciyi yenilemek için kullanılabilir. [#1097](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1097)
-* Azure Stack Storage API sürümü 2017-04-17 olarak değiştirilmiştir.
-* ADLS 2. için erişimi yönet Iletişim kutusu artık maskeyi diğer POSIX izinleri araçlarına benzer bir şekilde eşitlenmiş olarak tutacaktır. Kullanıcı veya grup izinlerinin maskenin sınırlarını aşmasına neden olan bir değişiklik yapıldığında UI da sizi uyarır. [#1253](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1253)
-* AzCopy karşıya yüklemeleri için, MD5 karmasını hesaplamaya ve ayarlamaya yönelik bayrak artık etkinleştirilmiştir. [#1223](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1223)
+* The integrated AzCopy version has been updated to version 10.1.0.
+* Ctrl/Cmd+R can now be used to refresh the currently focused editor. [#1097](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1097)
+* The Azure Stack Storage API version has been changed to 2017-04-17.
+* The Manage Access Dialog for ADLS Gen2 will now keep the Mask in sync in a way similar to other POSIX permissions tools. The UI will also warn you if a change is made that causes the permissions of a user or group to exceed the bounds of the Mask. [#1253](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1253)
+* For AzCopy uploads, the flag to calculate and set the MD5 hash is now enabled. [#1223](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1223)
 
 
 ### <a name="preview-features"></a>Önizleme Özellikleri
 
-* Cihaz kod akışı oturum açma artık önizleme için kullanılabilir. Bunu etkinleştirmek için "Önizleme" → "cihaz kodu akışı oturum açma kullan" bölümüne gidin. Daha güvenilir bir oturum açma formu olduğunu kanıtlayabildiğinden, bu özelliği denemek için boş oturum açma pencereleri ile sorun yaşayan tüm kullanıcıları teşvik ediyoruz.
-* AzCopy ile tümleştirilmiş Depolama Gezgini Şu anda önizleme için kullanılabilir. Bunu etkinleştirmek için "Preview" → "Gelişmiş blob yüklemesi ve Indirilmesi için AzCopy kullanın" bölümüne gidin. AzCopy ile tamamlanan blob aktarımları daha hızlı ve daha iyi performansa sahip olmalıdır.
+* Device code flow sign in is now available to preview. To enable it, go to "Preview" → "Use Device Code Flow Sign-in". We encourage any users who have had issues with blank sign-in windows to try this feature, as it may prove to be a more reliable form of sign-in.
+* Storage Explorer integrated with AzCopy is currently available to preview. To enable it, go to "Preview" → "Use AzCopy for Improved Blob Upload and Download". Blob transfers completed with AzCopy should be faster and more performant.
 
-### <a name="fixes"></a>Düzeltmeleri
+### <a name="fixes"></a>Fixes
 
-* Erişim Ilkeleri iletişim kutusu artık, süresi dolmayan depolama erişim Ilkelerinde sona erme tarihi olarak ayarlanmayacaktır. [#764](https://www.github.com/Microsoft/AzureStorageExplorer/issues/764)
-* Bir SAS oluştururken depolanan erişim Ilkelerinin doğru şekilde kullanıldığından emin olmak için SAS oluştur iletişim kutusunda bazı değişiklikler yapılmıştır. [#1269](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1269)
-* 512 bayt hizalı bir dosyayı bir sayfa Blobuna yüklemeye çalışırken Depolama Gezgini artık daha ilgili bir hata ortaya çıkarır. [#1050](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1050)
-* Bir görünen ad kullanan bir blob kapsayıcısının kopyalanması başarısız olur. Şimdi, blob kapsayıcısının gerçek adı kullanılır. [#1166](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1166)
-* Adında Unicode karakterler bulunan bir ADLS 2. klasörü üzerinde belirli eylemler gerçekleştirmeye çalışılması başarısız olur. Tüm eylemler artık çalışmalıdır. [#980](https://www.github.com/Microsoft/AzureStorageExplorer/issues/980)
+* The Access Policies dialog will no longer set an expiry date on Storage Access Policies that do not have an expiry. [#764](https://www.github.com/Microsoft/AzureStorageExplorer/issues/764)
+* Some changes have been made to the Generate SAS dialog to make sure Stored Access Policies are used correctly when generating a SAS. [#1269](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1269)
+* When attempting to upload a non-512 byte aligned file to a page Blob, Storage Explorer will now expose a more relevant error. [#1050](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1050)
+* Copying a Blob container which utilized a display name would fail. Now, the actual name of the Blob container is used. [#1166](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1166)
+* Attempting to perform certain actions on an ADLS Gen2 folder which had unicode characters in its name would fail. All actions should now work. [#980](https://www.github.com/Microsoft/AzureStorageExplorer/issues/980)
 
 ### <a name="known-issues"></a>Bilinen Sorunlar
 
-* AzCopy olmayan bir blob indirmesi gerçekleştirirken, büyük dosyalar için MD5 doğrulanmaz. Bunun nedeni, depolama SDK 'sindeki bir hatadır. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
-* RBAC kullanılırken, depolama kaynaklarınıza erişebilmek için Depolama Gezgini bazı yönetim katmanı izinleri gerektirir. Daha fazla bilgi için bkz. [sorun giderme kılavuzu](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) .
-* Bir proxy 'nin arkasında ADLS 2. Bloblarına erişme girişimi başarısız olabilir.
-* Bir blob kapsayıcısı gibi SAS URI 'SI aracılığıyla bağlı bir kaynağın ayrılması, diğer eklerin doğru şekilde görüntülenmesini engelleyen bir hataya neden olabilir. Bu sorunu çözmek için yalnızca Grup düğümünü yenileyin. #537 daha fazla bilgi için bkz.
-* Mac için VS kullanın ve özel bir AAD yapılandırmasına hiç olmadığı kadar oluşturdunuz, oturum açma alınamıyor olabilir. Sorunu çözmek için içeriğini silin. ~ /. IdentityService/AadConfigurations. Bunu yapmak sizi engellemez, bu sorunla ilgili yorum yapın.
-* Azurite henüz tam olarak tüm depolama API'leri uygulamadı. Bu nedenle, beklenmeyen hatalar veya olabilir davranışı Azurite geliştirme depolaması için kullanılırken.
-* Nadiren de olsa, ağaç odağı Hızlı erişimi takılabilir. Odağı Ayır için Tümünü Yenile yapabilirsiniz.
-* Nodejs'de bir hata nedeniyle, OneDrive klasöründen karşıya çalışmaz. Hata düzeltildi, ancak henüz Elektron tümleşik. Blob kapsayıcısına yükleme veya indirme sırasında bu sorunu geçici olarak çözmek için deneysel AzCopy özelliğini kullanabilirsiniz.
-* Azure Stack hedeflerken, ekleme blobları gibi belirli dosyaları karşıya yükleme başarısız olabilir.
-* "İptal" görevde tıklandıktan sonra onu iptal etmek bu görev için biraz zaman alabilir. Bunun nedeni, burada açıklanan iptal filtresini kullandığımyız.
-* Yanlış PIN/akıllı kart sertifikası seçeneğini belirlerseniz, depolama Gezgini'nin kararı unutursanız studio'durdurup yeniden başlatmanız gerekir.
-* BLOB'ları (ayrı ayrı veya yeniden adlandırılmış blob kapsayıcının içinde) yeniden adlandırma, anlık görüntüler korumaz. Diğer tüm özellikleri ve meta verileri bloblar, dosyalar ve varlıklar için bir yeniden adlandırma sırasında korunur.
-* Azure Stack aşağıdaki özellikleri desteklemez. Azure Stack ile çalışırken bu özellikleri kullanmak deneyen kaynakları beklenmeyen hatalarına neden olabilir.
+* When performing a non-AzCopy Blob download, the MD5 for large files is not being verified. This is due to a bug in the Storage SDK. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
+* When using RBAC, Storage Explorer requires some management layer permissions in order to access your storage resources. See the [troubleshooting guide](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) for more info.
+* Attempting to access ADLS Gen2 Blobs when behind a proxy may fail.
+* Detaching from a resource attached via SAS URI, such as a blob container, may cause an error that prevents other attachments from showing up correctly. To work around this issue, just refresh the group node. See #537 for more information.
+* If you use VS for Mac and have ever created a custom AAD configuration, you may be unable to sign-in. To work around the issue, delete the contents of ~/.IdentityService/AadConfigurations. If doing so does not unblock you, comment on this issue.
+* Azurite has not yet fully implemented all Storage APIs. Because of this, there may be unexpected errors or behavior when using Azurite for development storage.
+* In rare cases, the tree focus may get stuck on Quick Access. To unstick the focus, you can Refresh All.
+* Uploading from your OneDrive folder does not work because of a bug in NodeJS. The bug has been fixed, but not yet integrated into Electron. To work around this issue when uploading to or downloading from a blob container, you can use the experimental AzCopy feature.
+* When targeting Azure Stack, uploading certain files as append blobs may fail.
+* After clicking "Cancel" on a task, it may take a while for that task to cancel. This is because we are using the cancel filter work around described here.
+* If you choose the wrong PIN/Smartcard certificate, then you will need to restart in order to have Storage Explorer forget that decision.
+* Renaming blobs (individually or inside a renamed blob container) does not preserve snapshots. All other properties and metadata for blobs, files, and entities are preserved during a rename.
+* Azure Stack does not support the following features. Attempting to use these features while working with Azure Stack resources may result in unexpected errors.
    * Dosya paylaşımları
    * Erişim katmanları
-   * Geçici silme
-   * ADLS 2.
-* Depolama Gezgini tarafından kullanılan Elektron Kabuk bazı GPU (grafik işlem birimi) Donanım hızlandırmalı sorun vardır. Depolama Gezgini (boş) bir boş ana penceresi görüntüleniyorsa, deneyebileceğiniz Depolama Gezgini komut satırından başlatmak ve ekleyerek GPU hızlandırmasını devre dışı bırakma `--disable-gpu` geçin:
+   * Soft Delete
+   * ADLS Gen2
+* The Electron shell used by Storage Explorer has trouble with some GPU (graphics processing unit) hardware acceleration. If Storage Explorer is displaying a blank (empty) main window, you can try launching Storage Explorer from the command line and disabling GPU acceleration by adding the `--disable-gpu` switch:
 
     ```
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Linux üzerinde Depolama Gezgini çalıştırmak için öncelikle bazı bağımlılıkların yüklenmesi gerekir. Daha fazla bilgi için Depolama Gezgini [sorun giderme kılavuzuna](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) bakın.
+* Running Storage Explorer on Linux requires certain dependencies to be installed first. Check the Storage Explorer [troubleshooting guide](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) for more information.
 
 ## <a name="version-170"></a>Sürüm 1.7.0
 3/5/2019
 
-### <a name="download-azure-storage-explorer-170"></a>Azure Depolama Gezgini 1.7.0 indir
-- [Windows için Azure Depolama Gezgini 1.7.0](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [Mac için Azure Depolama Gezgini 1.7.0](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [Linux için Azure Depolama Gezgini 1.7.0](https://go.microsoft.com/fwlink/?LinkId=722418)
+### <a name="download-azure-storage-explorer-170"></a>Download Azure Storage Explorer 1.7.0
+- [Azure Storage Explorer 1.7.0 for Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Azure Storage Explorer 1.7.0 for Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Azure Storage Explorer 1.7.0 for Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
 
 ### <a name="new"></a>Yeni
 
-* Artık ADLS 2. kapsayıcısı, dosya veya klasör için erişimi yönetirken sahibi ve sahip grubunu değiştirebilirsiniz.
-* Windows 'da, ürünün içinden Depolama Gezgini güncelleştirmek artık artımlı bir yüklemedir. Bu, daha hızlı bir güncelleştirme deneyimine neden olmalıdır. Temiz yüklemeyi tercih ediyorsanız, [yükleyiciyi](https://azure.microsoft.com/features/storage-explorer/) kendiniz indirip el ile yükleyebilirsiniz. #1089
+* You can now change the owner and owning group when managing access for an ADLS Gen2 container, file, or folder.
+* On Windows, updating Storage Explorer from within the product is now an incremental install. This should result in a faster update experience. If you prefer a clean install, then you can download the [installer](https://azure.microsoft.com/features/storage-explorer/) yourself and then install manually. #1089
 
 ### <a name="preview-features"></a>Önizleme Özellikleri
 
-* Cihaz kod akışı oturum açma artık önizleme için kullanılabilir. Bunu etkinleştirmek için "Önizleme" → "cihaz kodu akışı oturum açma kullan" bölümüne gidin. Daha güvenilir bir oturum açma formu olduğunu kanıtlayabildiğinden, bu özelliği denemek için boş oturum açma pencereleri ile sorun yaşayan tüm kullanıcıları teşvik ediyoruz. #938
-* AzCopy ile tümleştirilmiş Depolama Gezgini Şu anda önizleme için kullanılabilir. Bunu etkinleştirmek için "Preview" → "Gelişmiş blob yüklemesi ve Indirilmesi için AzCopy kullanın" bölümüne gidin. AzCopy ile tamamlanan blob aktarımları daha hızlı ve daha iyi performansa sahip olmalıdır.
+* Device code flow sign in is now available to preview. To enable it, go to "Preview" → "Use Device Code Flow Sign-in". We encourage any users who have had issues with blank sign-in windows to try this feature, as it may prove to be a more reliable form of sign-in. #938
+* Storage Explorer integrated with AzCopy is currently available to preview. To enable it, go to "Preview" → "Use AzCopy for Improved Blob Upload and Download". Blob transfers completed with AzCopy should be faster and more performant.
 
-### <a name="fixes"></a>Düzeltmeleri
+### <a name="fixes"></a>Fixes
 
-* Şimdi, AzCopy özelliği etkinken karşıya yüklemek istediğiniz blob türünü seçebilirsiniz. #1111
-* Daha önce, bir ADLS 2. depolama hesabı için statik Web siteleri etkinleştirdiyseniz ve sonra adı ve anahtarı ile iliştirdiyseniz, Depolama Gezgini hiyerarşik ad alanının etkinleştirildiğini tespit etmez. Bu düzeltilmiştir. #1081
-* Blob düzenleyicisinde, kalan bekletme günlerine veya duruma göre sıralama kesildi. Bu düzeltilmiştir. #1106
-* 1\.5.0 sonra, Depolama Gezgini yeniden adlandırma veya kopyalama & yapıştırma sırasında başarılı bir şekilde bildirilmemesi için artık sunucu tarafı kopyalarının bitmesini beklememiş olmaz. Bu düzeltilmiştir. #976
-* Deneysel AzCopy özelliği kullanılırken, "panoya kopyala" komutuna tıklandıktan sonra kopyalanmış komut her zaman kendi başına çağrılmamalıdır. Şimdi, aktarımı el ile çalıştırmak için gereken tüm komutlar kopyalanacaktır. #1079
-* Daha önce, bir proxy 'nin arkasındaysa ADLS 2. bloblara erişilemez. Bunun nedeni, depolama SDK 'Sı tarafından kullanılan yeni bir ağ kitaplığındaki hatadır. 1\.7.0 içinde, bu sorunu azaltma girişimi yapılmıştır ancak bazı kişiler sorunları görmeye devam edebilir. Gelecekteki bir güncelleştirmede tam bir onarım yayımlanacak. #1090
-* 1\.7.0 ' de, dosyayı Kaydet iletişim kutusu artık dosyayı kaydettiğiniz son konumu doğru şekilde anımsar. #16
-* Özellikler panelinde, bir depolama hesabının SKU katmanı, hesap türü olarak gösteriliyor. Bu düzeltilmiştir. #654
-* Bazen Blobun adını doğru bir şekilde girmiş olsanız bile bir Blobun kiralamasını bölmek imkansız oldu. Bu düzeltilmiştir. #1070
+* You can now choose the blob type you want to upload as when AzCopy is enabled. #1111
+* Previously, if you had enabled static websites for an ADLS Gen2 Storage account and then attached it with name and key, Storage Explorer would not have detected that hierarchical namespace was enabled. This has been fixed. #1081
+* In the blob editor, sorting by either retention days remaining or status was broken. This has been fixed. #1106
+* After 1.5.0, Storage Explorer no longer waited for server side copies to finish before reporting success during a rename or copy & paste. This has been fixed. #976
+* When using the experimental AzCopy feature, the command copied after clicking "Copy command to clipboard" was not always runnable on its own. Now, all commands needed to run the transfer manually will be copied. #1079
+* Previously, ADLS Gen2 blobs were not accessible if you were behind a proxy. This was due to a bug in a new networking library used by the Storage SDK. In 1.7.0, an attempt to mitigate this issue has been made, but some people may continue to see issues. A full fix will be released in a future update. #1090
+* In 1.7.0, the save file dialog now correctly remembers the last location you saved a file to. #16
+* In the properties panel, the SKU tier of a Storage account was being shown as the account's kind. This has been fixed. #654
+* Sometimes, it was impossible to break the lease of a blob, even if you entered the name of the blob correctly. This has been fixed. #1070
 
 ### <a name="known-issues"></a>Bilinen Sorunlar
 
-* RBAC kullanılırken, depolama kaynaklarınıza erişebilmek için Depolama Gezgini bazı yönetim katmanı izinleri gerektirir. Daha fazla bilgi için bkz. [sorun giderme kılavuzu](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) .
-* Bir proxy 'nin arkasında ADLS 2. Bloblarına erişme girişimi başarısız olabilir.
-* Bir blob kapsayıcısı gibi SAS URI 'SI aracılığıyla bağlı bir kaynağın ayrılması, diğer eklerin doğru şekilde görüntülenmesini engelleyen bir hataya neden olabilir. Bu sorunu çözmek için yalnızca Grup düğümünü yenileyin. #537 daha fazla bilgi için bkz.
-* Bir blob kapsayıcısı gibi SAS URI 'SI aracılığıyla bağlı bir kaynağın ayrılması, diğer eklerin doğru şekilde görüntülenmesini engelleyen bir hataya neden olabilir. Bu sorunu çözmek için yalnızca Grup düğümünü yenileyin. Daha fazla bilgi için bkz. #537.
-* Mac için VS kullanın ve özel bir AAD yapılandırmasına hiç olmadığı kadar oluşturdunuz, oturum açma alınamıyor olabilir. Sorunu çözmek için içeriğini silin. ~ /. IdentityService/AadConfigurations. Bunu yapmak sizi engellemez, bu sorunla ilgili yorum yapın.
-* Azurite henüz tam olarak tüm depolama API'leri uygulamadı. Bu nedenle, beklenmeyen hatalar veya olabilir davranışı Azurite geliştirme depolaması için kullanılırken.
-* Nadiren de olsa, ağaç odağı Hızlı erişimi takılabilir. Odağı Ayır için Tümünü Yenile yapabilirsiniz.
-* Nodejs'de bir hata nedeniyle, OneDrive klasöründen karşıya çalışmaz. Hata düzeltildi, ancak henüz Elektron tümleşik. Blob kapsayıcısına yükleme veya indirme sırasında bu sorunu geçici olarak çözmek için deneysel AzCopy özelliğini kullanabilirsiniz.
-* Azure Stack hedeflerken, ekleme blobları gibi belirli dosyaları karşıya yükleme başarısız olabilir.
-* "İptal" görevde tıklandıktan sonra onu iptal etmek bu görev için biraz zaman alabilir. Bunun nedeni, burada açıklanan iptal filtresini kullandığımyız.
-* Yanlış PIN/akıllı kart sertifikası seçeneğini belirlerseniz, depolama Gezgini'nin kararı unutursanız studio'durdurup yeniden başlatmanız gerekir.
-* BLOB'ları (ayrı ayrı veya yeniden adlandırılmış blob kapsayıcının içinde) yeniden adlandırma, anlık görüntüler korumaz. Diğer tüm özellikleri ve meta verileri bloblar, dosyalar ve varlıklar için bir yeniden adlandırma sırasında korunur.
-* Azure Stack aşağıdaki özellikleri desteklemez. Azure Stack ile çalışırken bu özellikleri kullanmak deneyen kaynakları beklenmeyen hatalarına neden olabilir.
+* When using RBAC, Storage Explorer requires some management layer permissions in order to access your storage resources. See the [troubleshooting guide](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) for more info.
+* Attempting to access ADLS Gen2 Blobs when behind a proxy may fail.
+* Detaching from a resource attached via SAS URI, such as a blob container, may cause an error that prevents other attachments from showing up correctly. To work around this issue, just refresh the group node. See #537 for more information.
+* Detaching from a resource attached via SAS URI, such as a blob container, may cause an error that prevents other attachments from showing up correctly. To work around this issue, just refresh the group node. For more information, see #537.
+* If you use VS for Mac and have ever created a custom AAD configuration, you may be unable to sign-in. To work around the issue, delete the contents of ~/.IdentityService/AadConfigurations. If doing so does not unblock you, comment on this issue.
+* Azurite has not yet fully implemented all Storage APIs. Because of this, there may be unexpected errors or behavior when using Azurite for development storage.
+* In rare cases, the tree focus may get stuck on Quick Access. To unstick the focus, you can Refresh All.
+* Uploading from your OneDrive folder does not work because of a bug in NodeJS. The bug has been fixed, but not yet integrated into Electron. To work around this issue when uploading to or downloading from a blob container, you can use the experimental AzCopy feature.
+* When targeting Azure Stack, uploading certain files as append blobs may fail.
+* After clicking "Cancel" on a task, it may take a while for that task to cancel. This is because we are using the cancel filter work around described here.
+* If you choose the wrong PIN/Smartcard certificate, then you will need to restart in order to have Storage Explorer forget that decision.
+* Renaming blobs (individually or inside a renamed blob container) does not preserve snapshots. All other properties and metadata for blobs, files, and entities are preserved during a rename.
+* Azure Stack does not support the following features. Attempting to use these features while working with Azure Stack resources may result in unexpected errors.
    * Dosya paylaşımları
    * Erişim katmanları
-   * Geçici silme
-* Depolama Gezgini tarafından kullanılan Elektron Kabuk bazı GPU (grafik işlem birimi) Donanım hızlandırmalı sorun vardır. Depolama Gezgini (boş) bir boş ana penceresi görüntüleniyorsa, deneyebileceğiniz Depolama Gezgini komut satırından başlatmak ve ekleyerek GPU hızlandırmasını devre dışı bırakma `--disable-gpu` geçin:
+   * Soft Delete
+* The Electron shell used by Storage Explorer has trouble with some GPU (graphics processing unit) hardware acceleration. If Storage Explorer is displaying a blank (empty) main window, you can try launching Storage Explorer from the command line and disabling GPU acceleration by adding the `--disable-gpu` switch:
 
     ```
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Linux kullanıcıları için yüklemeniz gerekecek [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
-* Ubuntu 14.04 kullanıcıları için GCC güncel - bu aşağıdaki komutları çalıştırıp makinenizi yeniden başlatarak yapılabilir emin olmak gerekir:
+* For Linux users, you will need to install [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* For users on Ubuntu 14.04, you will need to ensure GCC is up-to-date - this can be done by running the following commands, and then restarting your machine:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -379,70 +529,70 @@ Bu makalede, Azure Depolama Gezgini 1.10.0 sürümünün sürüm notları ve ön
     sudo apt-get dist-upgrade
     ```
 
-* Ubuntu 17.04 kullanıcıları, GConf yüklemeniz gerekir - bu aşağıdaki komutları çalıştırıp makinenizi yeniden başlatarak yapılabilir:
+* For users on Ubuntu 17.04, you will need to install GConf - this can be done by running the following commands, and then restarting your machine:
 
     ```
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-162"></a>Sürüm 1.6.2
+## <a name="version-162"></a>Version 1.6.2
 1/9/2019
 
-### <a name="hotfixes"></a>Düzeltmeler
-* 1\.6.1 ' de, kullanıcıların her zaman grup olarak eklendiği ObjectID tarafından ADLS 2. ACL 'Lerine eklenen varlıklar. Şimdi, gruplar olarak yalnızca gruplar eklenir ve kurumsal uygulamalar ve hizmet sorumluları gibi varlıklar Kullanıcı olarak eklenir. [#1049](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1049)
-* Bir ADLS 2. depolama hesabının kapsayıcısı yoksa ve ad ve anahtarla iliştirilmişse, Depolama Gezgini depolama hesabının ADLS 2. algılamamalıdır. Bu düzeltilmiştir. [#1048](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1048)
-* 1\.6.0 ' de, kopyalama ve yapıştırma sırasında çakışmalar bir çözüm istemez. Bunun yerine, çakışan kopya yalnızca başarısız olur. Şimdi, ilk çakışmada nasıl çözümlenmek istediğimize sorulur. [#1014](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1014)
-* API sınırlamaları nedeniyle, erişimi Yönet iletişim kutusundaki ObjectIDs 'nin tüm doğrulaması devre dışı bırakıldı. Doğrulama artık yalnızca Kullanıcı UPN 'leri için gerçekleştirilir. [#954](https://www.github.com/Microsoft/AzureStorageExplorer/issues/954)
-* ADLS 2. erişimi Yönet iletişim kutusunda, bir grup için izinler değiştirilemedi. Bu düzeltilmiştir. [#958](https://www.github.com/Microsoft/AzureStorageExplorer/issues/958)
-* ADLS 2. düzenleyicisine sürükle ve bırak yükleme desteği eklendi. [#953](https://www.github.com/Microsoft/AzureStorageExplorer/issues/953)
-* ADLS 2. dosyaları ve klasörleri için Özellikler iletişim kutusunda URL özelliği bazen '/' olarak eksik. Bu düzeltilmiştir. [#960](https://www.github.com/Microsoft/AzureStorageExplorer/issues/960)
-* Bir ADLS 2. kapsayıcısı, dosya veya klasör için geçerli izinleri almak başarısız olursa, hata artık etkinlik günlüğünde bir özellik olarak görüntülenir. [#965](https://www.github.com/Microsoft/AzureStorageExplorer/issues/965)
-* Dosyaları açmak için oluşturulan geçici yol, Windows üzerinde MAX_PATH 'den daha uzun bir yol oluşturma olasılığını azaltmak için kısaltıldı. [#93](https://www.github.com/Microsoft/AzureStorageExplorer/issues/93)
-* Oturum açan kullanıcılar yoksa ve hiçbir kaynak iliştirilmişse Bağlan iletişim kutusu artık doğru şekilde görünür. [#944](https://www.github.com/Microsoft/AzureStorageExplorer/issues/944)
-* 1\.6.0 ' de, HNS olmayan Bloblar ve dosyalar için özellikleri kaydetmek her özelliğin değerini kodlayabilir. Bu, yalnızca ASCII karakter içeren değerlerin gereksiz şekilde kodlamasına neden olur. Artık değerler ASCII olmayan karakterler içeriyorsa kodlanacak. [#986](https://www.github.com/Microsoft/AzureStorageExplorer/issues/986)
-* Bir SAS kullanılıyorsa ve SAS okuma izinlerine sahip değilse, bir klasörü HNS olmayan bir blob kapsayıcısına yüklemek başarısız olur. Bu düzeltilmiştir. [#970](https://www.github.com/Microsoft/AzureStorageExplorer/issues/970)
-* AzCopy aktarımının iptali çalışmadı. Bu düzeltilmiştir. [#943](https://www.github.com/Microsoft/AzureStorageExplorer/issues/943)
-* Klasörün adında boşluklar varsa, AzCopy bir ADLS 2. blob kapsayıcısından bir klasör indirmeye çalışırken başarısız olur. Bu düzeltilmiştir. [#990](https://www.github.com/Microsoft/AzureStorageExplorer/issues/990)
-* CosmosDB Düzenleyicisi 1.6.0 içinde kopuk. Artık düzeltildi. [#950](https://www.github.com/Microsoft/AzureStorageExplorer/issues/950)
+### <a name="hotfixes"></a>Hotfixes
+* In 1.6.1, entities added to ADLS Gen2 ACLs by ObjectId which were not users were always added as groups. Now, only groups are added as groups, and entities such as Enterprise Applications andService Principals are added as users. [#1049](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1049)
+* If an ADLS Gen2 Storage account had no containers and was attached with name and key, then Storage Explorer would not detect that the Storage Account was ADLS Gen2. This has been fixed. [#1048](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1048)
+* In 1.6.0, conflicts during copy and paste would not prompt for a resolution. Instead, the conflicted copy would simply fail. Now, on the first conflict, you will be asked how you would like it to be resolved. [#1014](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1014)
+* Due to API limitations, all validation of ObjectIds in the Manage Access dialog have been disabled. Validation will now only occur for user UPNs. [#954](https://www.github.com/Microsoft/AzureStorageExplorer/issues/954)
+* In the ADLS Gen2 Manage Access dialog, the permissions for a group could not be modified. This has been fixed. [#958](https://www.github.com/Microsoft/AzureStorageExplorer/issues/958)
+* Added drag and drop upload support to the ADLS Gen2 editor. [#953](https://www.github.com/Microsoft/AzureStorageExplorer/issues/953)
+* The URL property in the properties dialog for ADLS Gen2 files and folders was sometimes missing a '/'. This has been fixed. [#960](https://www.github.com/Microsoft/AzureStorageExplorer/issues/960)
+* If getting the current permissions for an ADLS Gen2 container, file, or folder fails, then the error is now propertly displayed in the activity log. [#965](https://www.github.com/Microsoft/AzureStorageExplorer/issues/965)
+* The temporary path created for opening files has been shortened to reduce the chance of creating a path which is longer than MAX_PATH on Windows. [#93](https://www.github.com/Microsoft/AzureStorageExplorer/issues/93)
+* The Connect dialog now correctly appears when there are no signed in users and no resources have been attached. [#944](https://www.github.com/Microsoft/AzureStorageExplorer/issues/944)
+* In 1.6.0, saving properties for non-HNS Blobs and Files would encode the value of every property. This resulted in unnecessary encoding of values which only contained ASCII characters. Now, values will only be encoded if they contain non-ASCII characters. [#986](https://www.github.com/Microsoft/AzureStorageExplorer/issues/986)
+* Uploading a folder to a non-HNS Blob container would fail if a SAS was used and the SAS did not have read permissions. This has been fixed. [#970](https://www.github.com/Microsoft/AzureStorageExplorer/issues/970)
+* Canceling an AzCopy transfer did not work. This has been fixed. [#943](https://www.github.com/Microsoft/AzureStorageExplorer/issues/943)
+* AzCopy would fail when trying to download a folder from an ADLS Gen2 Blob container if the folder had spaces in its name. This has been fixed. [#990](https://www.github.com/Microsoft/AzureStorageExplorer/issues/990)
+* The CosmosDB editor was broken in 1.6.0. It is now fixed. [#950](https://www.github.com/Microsoft/AzureStorageExplorer/issues/950)
         
 ### <a name="new"></a>Yeni
 
-* Artık Depolama Gezgini, [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409)aracılığıyla blob verilerinize erişmek için kullanabilirsiniz. Oturum açtıysanız ve Depolama Gezgini depolama hesabınız için anahtarları alamadıysanız, verilerinizle etkileşim kurarken kimlik doğrulamak için bir OAuth belirteci kullanılır.
-* Depolama Gezgini artık ADLS 2. Storage hesaplarını desteklemektedir. Depolama Gezgini, bir depolama hesabı için hiyerarşik ad alanının etkinleştirildiğini algıladığında, depolama hesabınızın adının yanında "(ADLS 2. Önizleme)" görürsünüz. Depolama Gezgini, oturum açtığınızda hiyerarşik ad alanının etkinleştirilip etkinleştirilmeyeceğini algılayabilir veya depolama hesabınızı ad ve anahtar ile iliştiriyor demektir. ADLS 2. depolama hesapları için Depolama Gezgini şu şekilde kullanabilirsiniz:
-  * Kapsayıcılar oluşturma ve silme
-  * Kapsayıcı özelliklerini ve izinlerini yönetme (sol taraftaki)
-  * Kapsayıcıların içindeki verileri görüntüleme ve gezinme
-  * Yeni Klasörler oluştur
-  * Dosya ve klasörleri karşıya yükleme, indirme, yeniden adlandırma ve silme
-  * Dosya ve klasör özelliklerini ve izinlerini yönetin (sağ taraftaki).
+* You can now use Storage Explorer to access your Blob data via [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409). If you are signed in and Storage Explorer is unable to retrieve the keys for your Storage account, then an OAuth token will be used to authenticate when interacting with your data.
+* Storage Explorer now supports ADLS Gen2 Storage accounts. When Storage Explorer detects that hierarchical namespace is enabled for a Storage account, you will see "(ADLS Gen2 Preview)" next to the name of your Storage account. Storage Explorer is able to detect whether or not hierarchical namespace is enabled when you are signed in, or if you have attached your Storage Account with name and  key. For ADLS Gen2 Storage accounts, you can use Storage Explorer to:
+  * Create and delete containers
+  * Manage container properties and permissions (left-hand side)
+  * View and navigate data inside of containers
+  * Create new folders
+  * Upload, download, rename, and delete files and folders
+  * Manage file and folder properties and permissions (right-hand side).
     
-    Geçici silme ve anlık görüntü gibi diğer tipik blob özellikleri şu anda kullanılamıyor. İzinleri yönetme yalnızca oturum açıldığında kullanılabilir. Ayrıca, bir ADLS 2. depolama hesabında çalışırken, Depolama Gezgini tüm yüklemeler ve indirmeler için AzCopy ve varsa tüm işlemler için ad ve anahtar kimlik bilgilerini kullanır.
-* Güçlü Kullanıcı geri bildirimlerinden sonra, birden fazla blobda kiraları aynı anda bölmek için bir kez daha yeniden kira kullanılabilir.
+    Other typical Blob features, such as Soft Delete, and Snapshots, are not currently available. Managing permissions is also only available when signed in. Additionally, when working in an ADLS Gen2 Storage account, Storage Explorer will use AzCopy for all uploads and downloads and default to using name and key credentials for all operations if available.
+* After strong user feedback, break lease can once again be used to break leases on multiple blobs at once.
 
 ### <a name="known-issues"></a>Bilinen Sorunlar
 
-* Bir ADLS 2. Storage hesabından indirme sırasında, aktarılmakta olan dosyalardan biri zaten mevcutsa AzCopy bazen kilitlenmez. Bu, yaklaşan bir düzeltmede düzeltilecektir.
-* Bir blob kapsayıcısı gibi SAS URI 'SI aracılığıyla bağlı bir kaynağın ayrılması, diğer eklerin doğru şekilde görüntülenmesini engelleyen bir hataya neden olabilir. Bu sorunu çözmek için yalnızca Grup düğümünü yenileyin. Daha fazla bilgi için bkz. #537.
-* Mac için VS kullanın ve özel bir AAD yapılandırmasına hiç olmadığı kadar oluşturdunuz, oturum açma alınamıyor olabilir. Sorunu çözmek için içeriğini silin. ~ /. IdentityService/AadConfigurations. Bunu yapmak sizi engellemez, bu sorunla ilgili yorum yapın.
-* Azurite henüz tam olarak tüm depolama API'leri uygulamadı. Bu nedenle, beklenmeyen hatalar veya olabilir davranışı Azurite geliştirme depolaması için kullanılırken.
-* Nadiren de olsa, ağaç odağı Hızlı erişimi takılabilir. Odağı Ayır için Tümünü Yenile yapabilirsiniz.
-* Nodejs'de bir hata nedeniyle, OneDrive klasöründen karşıya çalışmaz. Hata düzeltildi, ancak henüz Elektron tümleşik. Blob kapsayıcısına yükleme veya indirme sırasında bu sorunu geçici olarak çözmek için deneysel AzCopy özelliğini kullanabilirsiniz.
-* Azure Stack hedeflerken, ekleme blobları gibi belirli dosyaları karşıya yükleme başarısız olabilir.
-* "İptal" görevde tıklandıktan sonra onu iptal etmek bu görev için biraz zaman alabilir. Bunun nedeni, burada açıklanan iptal filtresini kullandığımyız.
-* Yanlış PIN/akıllı kart sertifikası seçeneğini belirlerseniz, depolama Gezgini'nin kararı unutursanız studio'durdurup yeniden başlatmanız gerekir.
-* BLOB'ları (ayrı ayrı veya yeniden adlandırılmış blob kapsayıcının içinde) yeniden adlandırma, anlık görüntüler korumaz. Diğer tüm özellikleri ve meta verileri bloblar, dosyalar ve varlıklar için bir yeniden adlandırma sırasında korunur.
-* Azure Stack aşağıdaki özellikleri desteklemez. Azure Stack ile çalışırken bu özellikleri kullanmak deneyen kaynakları beklenmeyen hatalarına neden olabilir.
+* When downloading from an ADLS Gen2 Storage account, if one of the files being transferred already exists, then AzCopy will sometimes crash. This will be fixed in an upcoming hotfix.
+* Detaching from a resource attached via SAS URI, such as a blob container, may cause an error that prevents other attachments from showing up correctly. To work around this issue, just refresh the group node. For more information, see #537.
+* If you use VS for Mac and have ever created a custom AAD configuration, you may be unable to sign-in. To work around the issue, delete the contents of ~/.IdentityService/AadConfigurations. If doing so does not unblock you, comment on this issue.
+* Azurite has not yet fully implemented all Storage APIs. Because of this, there may be unexpected errors or behavior when using Azurite for development storage.
+* In rare cases, the tree focus may get stuck on Quick Access. To unstick the focus, you can Refresh All.
+* Uploading from your OneDrive folder does not work because of a bug in NodeJS. The bug has been fixed, but not yet integrated into Electron. To work around this issue when uploading to or downloading from a blob container, you can use the experimental AzCopy feature.
+* When targeting Azure Stack, uploading certain files as append blobs may fail.
+* After clicking "Cancel" on a task, it may take a while for that task to cancel. This is because we are using the cancel filter work around described here.
+* If you choose the wrong PIN/Smartcard certificate, then you will need to restart in order to have Storage Explorer forget that decision.
+* Renaming blobs (individually or inside a renamed blob container) does not preserve snapshots. All other properties and metadata for blobs, files, and entities are preserved during a rename.
+* Azure Stack does not support the following features. Attempting to use these features while working with Azure Stack resources may result in unexpected errors.
    * Dosya paylaşımları
    * Erişim katmanları
-   * Geçici silme
-* Depolama Gezgini tarafından kullanılan Elektron Kabuk bazı GPU (grafik işlem birimi) Donanım hızlandırmalı sorun vardır. Depolama Gezgini (boş) bir boş ana penceresi görüntüleniyorsa, deneyebileceğiniz Depolama Gezgini komut satırından başlatmak ve ekleyerek GPU hızlandırmasını devre dışı bırakma `--disable-gpu` geçin:
+   * Soft Delete
+* The Electron shell used by Storage Explorer has trouble with some GPU (graphics processing unit) hardware acceleration. If Storage Explorer is displaying a blank (empty) main window, you can try launching Storage Explorer from the command line and disabling GPU acceleration by adding the `--disable-gpu` switch:
 
     ```
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Linux kullanıcıları için yüklemeniz gerekecek [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
-* Ubuntu 14.04 kullanıcıları için GCC güncel - bu aşağıdaki komutları çalıştırıp makinenizi yeniden başlatarak yapılabilir emin olmak gerekir:
+* For Linux users, you will need to install [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* For users on Ubuntu 14.04, you will need to ensure GCC is up-to-date - this can be done by running the following commands, and then restarting your machine:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -451,67 +601,67 @@ Bu makalede, Azure Depolama Gezgini 1.10.0 sürümünün sürüm notları ve ön
     sudo apt-get dist-upgrade
     ```
 
-* Ubuntu 17.04 kullanıcıları, GConf yüklemeniz gerekir - bu aşağıdaki komutları çalıştırıp makinenizi yeniden başlatarak yapılabilir:
+* For users on Ubuntu 17.04, you will need to install GConf - this can be done by running the following commands, and then restarting your machine:
 
     ```
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-161"></a>Sürüm 1.6.1
+## <a name="version-161"></a>Version 1.6.1
 12/18/2018
 
-### <a name="hotfixes"></a>Düzeltmeler
-* API sınırlamaları nedeniyle, erişimi Yönet iletişim kutusundaki ObjectIDs 'nin tüm doğrulaması devre dışı bırakıldı. Doğrulama artık yalnızca Kullanıcı UPN 'leri için gerçekleştirilir. [#954](https://www.github.com/Microsoft/AzureStorageExplorer/issues/954)
-* ADLS 2. erişimi Yönet iletişim kutusunda, bir grup için izinler değiştirilemedi. Bu düzeltilmiştir. [#958](https://www.github.com/Microsoft/AzureStorageExplorer/issues/958)
-* ADLS 2. düzenleyicisine sürükle ve bırak yükleme desteği eklendi. [#953](https://www.github.com/Microsoft/AzureStorageExplorer/issues/953)
-* ADLS 2. dosyaları ve klasörleri için Özellikler iletişim kutusunda URL özelliği bazen '/' olarak eksik. Bu düzeltilmiştir. [#960](https://www.github.com/Microsoft/AzureStorageExplorer/issues/960)
-* Bir ADLS 2. kapsayıcısı, dosya veya klasör için geçerli izinleri almak başarısız olursa, hata artık etkinlik günlüğünde bir özellik olarak görüntülenir. [#965](https://www.github.com/Microsoft/AzureStorageExplorer/issues/965)
-* Dosyaları açmak için oluşturulan geçici yol, Windows üzerinde MAX_PATH 'den daha uzun bir yol oluşturma olasılığını azaltmak için kısaltıldı. [#93](https://www.github.com/Microsoft/AzureStorageExplorer/issues/93)
-* Oturum açan kullanıcılar yoksa ve hiçbir kaynak iliştirilmişse Bağlan iletişim kutusu artık doğru şekilde görünür. [#944](https://www.github.com/Microsoft/AzureStorageExplorer/issues/944)
-* 1\.6.0 ' de, HNS olmayan Bloblar ve dosyalar için özellikleri kaydetmek her özelliğin değerini kodlayabilir. Bu, yalnızca ASCII karakter içeren değerlerin gereksiz şekilde kodlamasına neden olur. Artık değerler ASCII olmayan karakterler içeriyorsa kodlanacak. [#986](https://www.github.com/Microsoft/AzureStorageExplorer/issues/986)
-* Bir SAS kullanılıyorsa ve SAS okuma izinlerine sahip değilse, bir klasörü HNS olmayan bir blob kapsayıcısına yüklemek başarısız olur. Bu düzeltilmiştir. [#970](https://www.github.com/Microsoft/AzureStorageExplorer/issues/970)
-* AzCopy aktarımının iptali çalışmadı. Bu düzeltilmiştir. [#943](https://www.github.com/Microsoft/AzureStorageExplorer/issues/943)
-* Klasörün adında boşluklar varsa, AzCopy bir ADLS 2. blob kapsayıcısından bir klasör indirmeye çalışırken başarısız olur. Bu düzeltilmiştir. [#990](https://www.github.com/Microsoft/AzureStorageExplorer/issues/990)
-* CosmosDB Düzenleyicisi 1.6.0 içinde kopuk. Artık düzeltildi. [#950](https://www.github.com/Microsoft/AzureStorageExplorer/issues/950)
+### <a name="hotfixes"></a>Hotfixes
+* Due to API limitations, all validation of ObjectIds in the Manage Access dialog have been disabled. Validation will now only occur for user UPNs. [#954](https://www.github.com/Microsoft/AzureStorageExplorer/issues/954)
+* In the ADLS Gen2 Manage Access dialog, the permissions for a group could not be modified. This has been fixed. [#958](https://www.github.com/Microsoft/AzureStorageExplorer/issues/958)
+* Added drag and drop upload support to the ADLS Gen2 editor. [#953](https://www.github.com/Microsoft/AzureStorageExplorer/issues/953)
+* The URL property in the properties dialog for ADLS Gen2 files and folders was sometimes missing a '/'. This has been fixed. [#960](https://www.github.com/Microsoft/AzureStorageExplorer/issues/960)
+* If getting the current permissions for an ADLS Gen2 container, file, or folder fails, then the error is now propertly displayed in the activity log. [#965](https://www.github.com/Microsoft/AzureStorageExplorer/issues/965)
+* The temporary path created for opening files has been shortened to reduce the chance of creating a path which is longer than MAX_PATH on Windows. [#93](https://www.github.com/Microsoft/AzureStorageExplorer/issues/93)
+* The Connect dialog now correctly appears when there are no signed in users and no resources have been attached. [#944](https://www.github.com/Microsoft/AzureStorageExplorer/issues/944)
+* In 1.6.0, saving properties for non-HNS Blobs and Files would encode the value of every property. This resulted in unnecessary encoding of values which only contained ASCII characters. Now, values will only be encoded if they contain non-ASCII characters. [#986](https://www.github.com/Microsoft/AzureStorageExplorer/issues/986)
+* Uploading a folder to a non-HNS Blob container would fail if a SAS was used and the SAS did not have read permissions. This has been fixed. [#970](https://www.github.com/Microsoft/AzureStorageExplorer/issues/970)
+* Canceling an AzCopy transfer did not work. This has been fixed. [#943](https://www.github.com/Microsoft/AzureStorageExplorer/issues/943)
+* AzCopy would fail when trying to download a folder from an ADLS Gen2 Blob container if the folder had spaces in its name. This has been fixed. [#990](https://www.github.com/Microsoft/AzureStorageExplorer/issues/990)
+* The CosmosDB editor was broken in 1.6.0. It is now fixed. [#950](https://www.github.com/Microsoft/AzureStorageExplorer/issues/950)
         
 ### <a name="new"></a>Yeni
 
-* Artık Depolama Gezgini, [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409)aracılığıyla blob verilerinize erişmek için kullanabilirsiniz. Oturum açtıysanız ve Depolama Gezgini depolama hesabınız için anahtarları alamadıysanız, verilerinizle etkileşim kurarken kimlik doğrulamak için bir OAuth belirteci kullanılır.
-* Depolama Gezgini artık ADLS 2. Storage hesaplarını desteklemektedir. Depolama Gezgini, bir depolama hesabı için hiyerarşik ad alanının etkinleştirildiğini algıladığında, depolama hesabınızın adının yanında "(ADLS 2. Önizleme)" görürsünüz. Depolama Gezgini, oturum açtığınızda hiyerarşik ad alanının etkinleştirilip etkinleştirilmeyeceğini algılayabilir veya depolama hesabınızı ad ve anahtar ile iliştiriyor demektir. ADLS 2. depolama hesapları için Depolama Gezgini şu şekilde kullanabilirsiniz:
-  * Kapsayıcılar oluşturma ve silme
-  * Kapsayıcı özelliklerini ve izinlerini yönetme (sol taraftaki)
-  * Kapsayıcıların içindeki verileri görüntüleme ve gezinme
-  * Yeni Klasörler oluştur
-  * Dosya ve klasörleri karşıya yükleme, indirme, yeniden adlandırma ve silme
-  * Dosya ve klasör özelliklerini ve izinlerini yönetin (sağ taraftaki).
+* You can now use Storage Explorer to access your Blob data via [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409). If you are signed in and Storage Explorer is unable to retrieve the keys for your Storage account, then an OAuth token will be used to authenticate when interacting with your data.
+* Storage Explorer now supports ADLS Gen2 Storage accounts. When Storage Explorer detects that hierarchical namespace is enabled for a Storage account, you will see "(ADLS Gen2 Preview)" next to the name of your Storage account. Storage Explorer is able to detect whether or not hierarchical namespace is enabled when you are signed in, or if you have attached your Storage Account with name and  key. For ADLS Gen2 Storage accounts, you can use Storage Explorer to:
+  * Create and delete containers
+  * Manage container properties and permissions (left-hand side)
+  * View and navigate data inside of containers
+  * Create new folders
+  * Upload, download, rename, and delete files and folders
+  * Manage file and folder properties and permissions (right-hand side).
     
-    Geçici silme ve anlık görüntü gibi diğer tipik blob özellikleri şu anda kullanılamıyor. İzinleri yönetme yalnızca oturum açıldığında kullanılabilir. Ayrıca, bir ADLS 2. depolama hesabında çalışırken, Depolama Gezgini tüm yüklemeler ve indirmeler için AzCopy ve varsa tüm işlemler için ad ve anahtar kimlik bilgilerini kullanır.
-* Güçlü Kullanıcı geri bildirimlerinden sonra, birden fazla blobda kiraları aynı anda bölmek için bir kez daha yeniden kira kullanılabilir.
+    Other typical Blob features, such as Soft Delete, and Snapshots, are not currently available. Managing permissions is also only available when signed in. Additionally, when working in an ADLS Gen2 Storage account, Storage Explorer will use AzCopy for all uploads and downloads and default to using name and key credentials for all operations if available.
+* After strong user feedback, break lease can once again be used to break leases on multiple blobs at once.
 
 ### <a name="known-issues"></a>Bilinen Sorunlar
 
-* Bir ADLS 2. Storage hesabından indirme sırasında, aktarılmakta olan dosyalardan biri zaten mevcutsa AzCopy bazen kilitlenmez. Bu, yaklaşan bir düzeltmede düzeltilecektir.
-* Bir blob kapsayıcısı gibi SAS URI 'SI aracılığıyla bağlı bir kaynağın ayrılması, diğer eklerin doğru şekilde görüntülenmesini engelleyen bir hataya neden olabilir. Bu sorunu çözmek için yalnızca Grup düğümünü yenileyin. Daha fazla bilgi için bkz. #537.
-* Mac için VS kullanın ve özel bir AAD yapılandırmasına hiç olmadığı kadar oluşturdunuz, oturum açma alınamıyor olabilir. Sorunu çözmek için içeriğini silin. ~ /. IdentityService/AadConfigurations. Bunu yapmak sizi engellemez, bu sorunla ilgili yorum yapın.
-* Azurite henüz tam olarak tüm depolama API'leri uygulamadı. Bu nedenle, beklenmeyen hatalar veya olabilir davranışı Azurite geliştirme depolaması için kullanılırken.
-* Nadiren de olsa, ağaç odağı Hızlı erişimi takılabilir. Odağı Ayır için Tümünü Yenile yapabilirsiniz.
-* Nodejs'de bir hata nedeniyle, OneDrive klasöründen karşıya çalışmaz. Hata düzeltildi, ancak henüz Elektron tümleşik. Blob kapsayıcısına yükleme veya indirme sırasında bu sorunu geçici olarak çözmek için deneysel AzCopy özelliğini kullanabilirsiniz.
-* Azure Stack hedeflerken, ekleme blobları gibi belirli dosyaları karşıya yükleme başarısız olabilir.
-* "İptal" görevde tıklandıktan sonra onu iptal etmek bu görev için biraz zaman alabilir. Bunun nedeni, burada açıklanan iptal filtresini kullandığımyız.
-* Yanlış PIN/akıllı kart sertifikası seçeneğini belirlerseniz, depolama Gezgini'nin kararı unutursanız studio'durdurup yeniden başlatmanız gerekir.
-* BLOB'ları (ayrı ayrı veya yeniden adlandırılmış blob kapsayıcının içinde) yeniden adlandırma, anlık görüntüler korumaz. Diğer tüm özellikleri ve meta verileri bloblar, dosyalar ve varlıklar için bir yeniden adlandırma sırasında korunur.
-* Azure Stack aşağıdaki özellikleri desteklemez. Azure Stack ile çalışırken bu özellikleri kullanmak deneyen kaynakları beklenmeyen hatalarına neden olabilir.
+* When downloading from an ADLS Gen2 Storage account, if one of the files being transferred already exists, then AzCopy will sometimes crash. This will be fixed in an upcoming hotfix.
+* Detaching from a resource attached via SAS URI, such as a blob container, may cause an error that prevents other attachments from showing up correctly. To work around this issue, just refresh the group node. For more information, see #537.
+* If you use VS for Mac and have ever created a custom AAD configuration, you may be unable to sign-in. To work around the issue, delete the contents of ~/.IdentityService/AadConfigurations. If doing so does not unblock you, comment on this issue.
+* Azurite has not yet fully implemented all Storage APIs. Because of this, there may be unexpected errors or behavior when using Azurite for development storage.
+* In rare cases, the tree focus may get stuck on Quick Access. To unstick the focus, you can Refresh All.
+* Uploading from your OneDrive folder does not work because of a bug in NodeJS. The bug has been fixed, but not yet integrated into Electron. To work around this issue when uploading to or downloading from a blob container, you can use the experimental AzCopy feature.
+* When targeting Azure Stack, uploading certain files as append blobs may fail.
+* After clicking "Cancel" on a task, it may take a while for that task to cancel. This is because we are using the cancel filter work around described here.
+* If you choose the wrong PIN/Smartcard certificate, then you will need to restart in order to have Storage Explorer forget that decision.
+* Renaming blobs (individually or inside a renamed blob container) does not preserve snapshots. All other properties and metadata for blobs, files, and entities are preserved during a rename.
+* Azure Stack does not support the following features. Attempting to use these features while working with Azure Stack resources may result in unexpected errors.
    * Dosya paylaşımları
    * Erişim katmanları
-   * Geçici silme
-* Depolama Gezgini tarafından kullanılan Elektron Kabuk bazı GPU (grafik işlem birimi) Donanım hızlandırmalı sorun vardır. Depolama Gezgini (boş) bir boş ana penceresi görüntüleniyorsa, deneyebileceğiniz Depolama Gezgini komut satırından başlatmak ve ekleyerek GPU hızlandırmasını devre dışı bırakma `--disable-gpu` geçin:
+   * Soft Delete
+* The Electron shell used by Storage Explorer has trouble with some GPU (graphics processing unit) hardware acceleration. If Storage Explorer is displaying a blank (empty) main window, you can try launching Storage Explorer from the command line and disabling GPU acceleration by adding the `--disable-gpu` switch:
 
     ```
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Linux kullanıcıları için yüklemeniz gerekecek [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
-* Ubuntu 14.04 kullanıcıları için GCC güncel - bu aşağıdaki komutları çalıştırıp makinenizi yeniden başlatarak yapılabilir emin olmak gerekir:
+* For Linux users, you will need to install [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* For users on Ubuntu 14.04, you will need to ensure GCC is up-to-date - this can be done by running the following commands, and then restarting your machine:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -520,53 +670,53 @@ Bu makalede, Azure Depolama Gezgini 1.10.0 sürümünün sürüm notları ve ön
     sudo apt-get dist-upgrade
     ```
 
-* Ubuntu 17.04 kullanıcıları, GConf yüklemeniz gerekir - bu aşağıdaki komutları çalıştırıp makinenizi yeniden başlatarak yapılabilir:
+* For users on Ubuntu 17.04, you will need to install GConf - this can be done by running the following commands, and then restarting your machine:
 
     ```
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-160"></a>Sürüm 1.6.0
+## <a name="version-160"></a>Version 1.6.0
 05.12.2018
 
 ### <a name="new"></a>Yeni
 
-* Artık Depolama Gezgini, [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409)aracılığıyla blob verilerinize erişmek için kullanabilirsiniz. Oturum açtıysanız ve Depolama Gezgini depolama hesabınız için anahtarları alamadıysanız, verilerinizle etkileşim kurarken kimlik doğrulamak için bir OAuth belirteci kullanılır.
-* Depolama Gezgini artık ADLS 2. Storage hesaplarını desteklemektedir. Depolama Gezgini, bir depolama hesabı için hiyerarşik ad alanının etkinleştirildiğini algıladığında, depolama hesabınızın adının yanında "(ADLS 2. Önizleme)" görürsünüz. Depolama Gezgini, oturum açtığınızda hiyerarşik ad alanının etkinleştirilip etkinleştirilmeyeceğini algılayabilir veya depolama hesabınızı ad ve anahtar ile iliştiriyor demektir. ADLS 2. depolama hesapları için Depolama Gezgini şu şekilde kullanabilirsiniz:
-  * Kapsayıcılar oluşturma ve silme
-  * Kapsayıcı özelliklerini ve izinlerini yönetme (sol taraftaki)
-  * Kapsayıcıların içindeki verileri görüntüleme ve gezinme
-  * Yeni Klasörler oluştur
-  * Dosya ve klasörleri karşıya yükleme, indirme, yeniden adlandırma ve silme
-  * Dosya ve klasör özelliklerini ve izinlerini yönetin (sağ taraftaki).
+* You can now use Storage Explorer to access your Blob data via [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409). If you are signed in and Storage Explorer is unable to retrieve the keys for your Storage account, then an OAuth token will be used to authenticate when interacting with your data.
+* Storage Explorer now supports ADLS Gen2 Storage accounts. When Storage Explorer detects that hierarchical namespace is enabled for a Storage account, you will see "(ADLS Gen2 Preview)" next to the name of your Storage account. Storage Explorer is able to detect whether or not hierarchical namespace is enabled when you are signed in, or if you have attached your Storage Account with name and  key. For ADLS Gen2 Storage accounts, you can use Storage Explorer to:
+  * Create and delete containers
+  * Manage container properties and permissions (left-hand side)
+  * View and navigate data inside of containers
+  * Create new folders
+  * Upload, download, rename, and delete files and folders
+  * Manage file and folder properties and permissions (right-hand side).
     
-    Geçici silme ve anlık görüntü gibi diğer tipik blob özellikleri şu anda kullanılamıyor. İzinleri yönetme yalnızca oturum açıldığında kullanılabilir. Ayrıca, bir ADLS 2. depolama hesabında çalışırken, Depolama Gezgini tüm yüklemeler ve indirmeler için AzCopy ve varsa tüm işlemler için ad ve anahtar kimlik bilgilerini kullanır.
-* Güçlü Kullanıcı geri bildirimlerinden sonra, birden fazla blobda kiraları aynı anda bölmek için bir kez daha yeniden kira kullanılabilir.
+    Other typical Blob features, such as Soft Delete, and Snapshots, are not currently available. Managing permissions is also only available when signed in. Additionally, when working in an ADLS Gen2 Storage account, Storage Explorer will use AzCopy for all uploads and downloads and default to using name and key credentials for all operations if available.
+* After strong user feedback, break lease can once again be used to break leases on multiple blobs at once.
 
 ### <a name="known-issues"></a>Bilinen Sorunlar
 
-* Bir ADLS 2. Storage hesabından indirme sırasında, aktarılmakta olan dosyalardan biri zaten mevcutsa AzCopy bazen kilitlenmez. Bu, yaklaşan bir düzeltmede düzeltilecektir.
-* Bir blob kapsayıcısı gibi SAS URI 'SI aracılığıyla bağlı bir kaynağın ayrılması, diğer eklerin doğru şekilde görüntülenmesini engelleyen bir hataya neden olabilir. Bu sorunu çözmek için yalnızca Grup düğümünü yenileyin. Daha fazla bilgi için bkz. #537.
-* Mac için VS kullanın ve özel bir AAD yapılandırmasına hiç olmadığı kadar oluşturdunuz, oturum açma alınamıyor olabilir. Sorunu çözmek için içeriğini silin. ~ /. IdentityService/AadConfigurations. Bunu yapmak sizi engellemez, bu sorunla ilgili yorum yapın.
-* Azurite henüz tam olarak tüm depolama API'leri uygulamadı. Bu nedenle, beklenmeyen hatalar veya olabilir davranışı Azurite geliştirme depolaması için kullanılırken.
-* Nadiren de olsa, ağaç odağı Hızlı erişimi takılabilir. Odağı Ayır için Tümünü Yenile yapabilirsiniz.
-* Nodejs'de bir hata nedeniyle, OneDrive klasöründen karşıya çalışmaz. Hata düzeltildi, ancak henüz Elektron tümleşik. Blob kapsayıcısına yükleme veya indirme sırasında bu sorunu geçici olarak çözmek için deneysel AzCopy özelliğini kullanabilirsiniz.
-* Azure Stack hedeflerken, ekleme blobları gibi belirli dosyaları karşıya yükleme başarısız olabilir.
-* "İptal" görevde tıklandıktan sonra onu iptal etmek bu görev için biraz zaman alabilir. Bunun nedeni, burada açıklanan iptal filtresini kullandığımyız.
-* Yanlış PIN/akıllı kart sertifikası seçeneğini belirlerseniz, depolama Gezgini'nin kararı unutursanız studio'durdurup yeniden başlatmanız gerekir.
-* BLOB'ları (ayrı ayrı veya yeniden adlandırılmış blob kapsayıcının içinde) yeniden adlandırma, anlık görüntüler korumaz. Diğer tüm özellikleri ve meta verileri bloblar, dosyalar ve varlıklar için bir yeniden adlandırma sırasında korunur.
-* Azure Stack aşağıdaki özellikleri desteklemez. Azure Stack ile çalışırken bu özellikleri kullanmak deneyen kaynakları beklenmeyen hatalarına neden olabilir.
+* When downloading from an ADLS Gen2 Storage account, if one of the files being transferred already exists, then AzCopy will sometimes crash. This will be fixed in an upcoming hotfix.
+* Detaching from a resource attached via SAS URI, such as a blob container, may cause an error that prevents other attachments from showing up correctly. To work around this issue, just refresh the group node. For more information, see #537.
+* If you use VS for Mac and have ever created a custom AAD configuration, you may be unable to sign-in. To work around the issue, delete the contents of ~/.IdentityService/AadConfigurations. If doing so does not unblock you, comment on this issue.
+* Azurite has not yet fully implemented all Storage APIs. Because of this, there may be unexpected errors or behavior when using Azurite for development storage.
+* In rare cases, the tree focus may get stuck on Quick Access. To unstick the focus, you can Refresh All.
+* Uploading from your OneDrive folder does not work because of a bug in NodeJS. The bug has been fixed, but not yet integrated into Electron. To work around this issue when uploading to or downloading from a blob container, you can use the experimental AzCopy feature.
+* When targeting Azure Stack, uploading certain files as append blobs may fail.
+* After clicking "Cancel" on a task, it may take a while for that task to cancel. This is because we are using the cancel filter work around described here.
+* If you choose the wrong PIN/Smartcard certificate, then you will need to restart in order to have Storage Explorer forget that decision.
+* Renaming blobs (individually or inside a renamed blob container) does not preserve snapshots. All other properties and metadata for blobs, files, and entities are preserved during a rename.
+* Azure Stack does not support the following features. Attempting to use these features while working with Azure Stack resources may result in unexpected errors.
    * Dosya paylaşımları
    * Erişim katmanları
-   * Geçici silme
-* Depolama Gezgini tarafından kullanılan Elektron Kabuk bazı GPU (grafik işlem birimi) Donanım hızlandırmalı sorun vardır. Depolama Gezgini (boş) bir boş ana penceresi görüntüleniyorsa, deneyebileceğiniz Depolama Gezgini komut satırından başlatmak ve ekleyerek GPU hızlandırmasını devre dışı bırakma `--disable-gpu` geçin:
+   * Soft Delete
+* The Electron shell used by Storage Explorer has trouble with some GPU (graphics processing unit) hardware acceleration. If Storage Explorer is displaying a blank (empty) main window, you can try launching Storage Explorer from the command line and disabling GPU acceleration by adding the `--disable-gpu` switch:
 
     ```
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Linux kullanıcıları için yüklemeniz gerekecek [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
-* Ubuntu 14.04 kullanıcıları için GCC güncel - bu aşağıdaki komutları çalıştırıp makinenizi yeniden başlatarak yapılabilir emin olmak gerekir:
+* For Linux users, you will need to install [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* For users on Ubuntu 14.04, you will need to ensure GCC is up-to-date - this can be done by running the following commands, and then restarting your machine:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -575,62 +725,62 @@ Bu makalede, Azure Depolama Gezgini 1.10.0 sürümünün sürüm notları ve ön
     sudo apt-get dist-upgrade
     ```
 
-* Ubuntu 17.04 kullanıcıları, GConf yüklemeniz gerekir - bu aşağıdaki komutları çalıştırıp makinenizi yeniden başlatarak yapılabilir:
+* For users on Ubuntu 17.04, you will need to install GConf - this can be done by running the following commands, and then restarting your machine:
 
     ```
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-150"></a>Sürüm 1.5.0
-29/10/2018
+## <a name="version-150"></a>Version 1.5.0
+10/29/2018
 
 ### <a name="new"></a>Yeni
 
-* Artık [AzCopy v10 (Önizleme)](https://github.com/Azure/azure-storage-azcopy) karşıya yükleme ve indirme Blobları için. Bu özelliği etkinleştirmek için "Deneysel" menüsüne gidin ve "Kullanın AzCopy için geliştirilmiş Blob karşıya yükleme ve indirme"'ye tıklayın. AzCopy, etkin olduğunda, aşağıdaki senaryolarda kullanılır:
-   * Blob kapsayıcıları, araç yoluyla için dosyaların ve klasörlerin karşıya yükleyin veya sürükleyin ve bırakın.
-   * Araç çubuğunda veya bağlam menüsü aracılığıyla ya da dosyaların ve klasörlerin indiriliyor.
+* You can now use [AzCopy v10 (Preview)](https://github.com/Azure/azure-storage-azcopy) for uploading and downloading Blobs. To enable this feature go to the "Experimental" menu and then click "Use AzCopy for Improved Blob Upload and Download". When enabled, AzCopy will be used in the following scenarios:
+   * Upload of folders and files to blob containers, either via the toolbar or drag and drop.
+   * Downloading of folders and files, either via the toolbar or context menu.
 
-* Ayrıca, AzCopy kullanırken:
-   * Panonuza aktarımı yürütmek için kullanılan AzCopy komutunu kopyalayabilirsiniz. Etkinlik günlüğü'nde "AzCopy komutunu Panoya Kopyala" tıklamanız yeterlidir.
-   * Düzenleyici blob karşıya yükledikten sonra el ile yenilemeniz gerekecektir.
-   * Karşıya dosya ekleme bloblarına yükleme desteklenmez ve VHD dosyaları sayfa Blobları olarak karşıya yüklenir ve diğer tüm dosyalar blok blob 'ları olarak karşıya yüklenir.
-   * Karşıya yükleme veya indirme sırasında oluşan hatalar ve çakışmalar, bir karşıya yükleme veya indirme işlemi tamamlanana kadar ortaya çıkmış olur.
+* Additionally, when using AzCopy:
+   * You can copy the AzCopy command used to execute the transfer to your clipboard. Simply click "Copy AzCopy Command to Clipboard" in the activity log.
+   * You will need to refresh the blob editor manually after uploading.
+   * Uploading files to append blobs is not supported, and vhd files will be uploaded as page blobs, and all other files will be uploaded as block blobs.
+   * Errors and conflicts that occur during upload or download will not be surfaced until after an upload or download is finished.
 
-Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte kullanıma sunulacaktır.
-* Depolama Gezgini, artık Elektron 2.0.11 sürümü kullanıyor.
-* Kiraları bozmak artık yalnızca bir blob üzerinde aynı anda gerçekleştirilemez. Ayrıca, kira bozucu blob adını girmek zorunda. Bu değişiklik, özellikle VM 'Ler için bir kirayı yanlışlıkla bozma olasılığını azaltmak üzere yapılmıştır. #394
-* Oturum açma sorunları karşılaşırsanız, kimlik doğrulaması sıfırlama artık deneyebilirsiniz. "Yardım" menüsüne gidin ve bu özellik erişmek için "Sıfırla" seçeneğine tıklayın. #419
+Finally, support for using AzCopy with File Shares will be coming in the future.
+* Storage Explorer is now using Electron version 2.0.11.
+* Breaking leases can now only be performed on one blob at a time. Additionally, you have to enter the name of the blob whose lease you are breaking. This change was made to reduce the likelihood of accidentally breaking a lease, especially for VMs. #394
+* If you ever encounter sign-in issues, you can now try resetting authentication. Go to the "Help" menu and click "Reset" to access this capability. #419
 
-### <a name="fix"></a>Düzelt
+### <a name="fix"></a>Fix
 
-* Güçlü kullanıcı geri bildirim sonra varsayılan öykünücü düğümünü yeniden etkin olmuştur. Bağlan iletişim kutusu aracılığıyla ek öykünücü bağlantıları eklemeye devam edebilirsiniz, ancak uygulamanızı öykünücü varsayılan bağlantı noktalarını kullanacak şekilde yapılandırılmışsa "Öykünücüsü * varsayılan bağlantı noktalarını" düğümünün altında "Yerel ve ekli/depolama hesapları" de kullanabilirsiniz. #669
-* Depolama Gezgini, başında veya sonunda boşluk olan blob meta verileri değerlerini ayarlamak artık olanak tanır. #760
-* "Oturum Aç" düğmesini her zaman aynı Bağlan iletişim sayfalarında etkinleştirildi. Şimdi, uygun olduğunda dışıdır. #761
-* Hızlı erişim öğe eklendiğinde hızlı erişim artık konsolda bir hata oluşturur.
+* After strong user feedback, the default emulator node has been re-enabled. You can still add additional emulator connections via the Connect dialog, but if your emulator is configured to use the default ports you can also use the "Emulator * Default Ports" node under "Local & Attached/Storage Accounts". #669
+* Storage Explorer will no longer let you set blob metadata values which have leading or trailing whitespace. #760
+* The "Sign In" button was always enabled on same pages of the Connect dialog. It is now disabled when appropriate. #761
+* Quick Access will no longer generate an error in the console when no Quick Access items have been added.
 
 ### <a name="known-issues"></a>Bilinen Sorunlar
 
-* Bir blob kapsayıcısı gibi SAS URI 'SI aracılığıyla bağlı bir kaynağın ayrılması, diğer eklerin doğru şekilde görüntülenmesini engelleyen bir hataya neden olabilir. Bu sorunu çözmek için yalnızca Grup düğümünü yenileyin. Daha fazla bilgi için bkz. #537.
-* Mac için VS kullanın ve özel bir AAD yapılandırmasına hiç olmadığı kadar oluşturdunuz, oturum açma alınamıyor olabilir. Sorunu çözmek için içeriğini silin. ~ /. IdentityService/AadConfigurations. Bunu yapmak sizi engellemez, bu sorunla ilgili yorum yapın.
-* Azurite henüz tam olarak tüm depolama API'leri uygulamadı. Bu nedenle, beklenmeyen hatalar veya olabilir davranışı Azurite geliştirme depolaması için kullanılırken.
-* Nadiren de olsa, ağaç odağı Hızlı erişimi takılabilir. Odağı Ayır için Tümünü Yenile yapabilirsiniz.
-* Nodejs'de bir hata nedeniyle, OneDrive klasöründen karşıya çalışmaz. Hata düzeltildi, ancak henüz Elektron tümleşik. Blob kapsayıcısına yükleme veya indirme sırasında bu sorunu geçici olarak çözmek için deneysel AzCopy özelliğini kullanabilirsiniz.
-* Azure Stack hedeflerken, ekleme blobları gibi belirli dosyaları karşıya yükleme başarısız olabilir.
-* "İptal" görevde tıklandıktan sonra onu iptal etmek bu görev için biraz zaman alabilir. Bunun nedeni, burada açıklanan iptal filtresini kullandığımyız.
-* Yanlış PIN/akıllı kart sertifikası seçeneğini belirlerseniz, depolama Gezgini'nin kararı unutursanız studio'durdurup yeniden başlatmanız gerekir.
-* BLOB'ları (ayrı ayrı veya yeniden adlandırılmış blob kapsayıcının içinde) yeniden adlandırma, anlık görüntüler korumaz. Diğer tüm özellikleri ve meta verileri bloblar, dosyalar ve varlıklar için bir yeniden adlandırma sırasında korunur.
-* Azure Stack aşağıdaki özellikleri desteklemez. Azure Stack ile çalışırken bu özellikleri kullanmak deneyen kaynakları beklenmeyen hatalarına neden olabilir.
+* Detaching from a resource attached via SAS URI, such as a blob container, may cause an error that prevents other attachments from showing up correctly. To work around this issue, just refresh the group node. For more information, see #537.
+* If you use VS for Mac and have ever created a custom AAD configuration, you may be unable to sign-in. To work around the issue, delete the contents of ~/.IdentityService/AadConfigurations. If doing so does not unblock you, comment on this issue.
+* Azurite has not yet fully implemented all Storage APIs. Because of this, there may be unexpected errors or behavior when using Azurite for development storage.
+* In rare cases, the tree focus may get stuck on Quick Access. To unstick the focus, you can Refresh All.
+* Uploading from your OneDrive folder does not work because of a bug in NodeJS. The bug has been fixed, but not yet integrated into Electron. To work around this issue when uploading to or downloading from a blob container, you can use the experimental AzCopy feature.
+* When targeting Azure Stack, uploading certain files as append blobs may fail.
+* After clicking "Cancel" on a task, it may take a while for that task to cancel. This is because we are using the cancel filter work around described here.
+* If you choose the wrong PIN/Smartcard certificate, then you will need to restart in order to have Storage Explorer forget that decision.
+* Renaming blobs (individually or inside a renamed blob container) does not preserve snapshots. All other properties and metadata for blobs, files, and entities are preserved during a rename.
+* Azure Stack does not support the following features. Attempting to use these features while working with Azure Stack resources may result in unexpected errors.
    * Dosya paylaşımları
    * Erişim katmanları
-   * Geçici silme
-* Depolama Gezgini tarafından kullanılan Elektron Kabuk bazı GPU (grafik işlem birimi) Donanım hızlandırmalı sorun vardır. Depolama Gezgini (boş) bir boş ana penceresi görüntüleniyorsa, deneyebileceğiniz Depolama Gezgini komut satırından başlatmak ve ekleyerek GPU hızlandırmasını devre dışı bırakma `--disable-gpu` geçin:
+   * Soft Delete
+* The Electron shell used by Storage Explorer has trouble with some GPU (graphics processing unit) hardware acceleration. If Storage Explorer is displaying a blank (empty) main window, you can try launching Storage Explorer from the command line and disabling GPU acceleration by adding the `--disable-gpu` switch:
 
     ```
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Linux kullanıcıları için yüklemeniz gerekecek [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
-* Ubuntu 14.04 kullanıcıları için GCC güncel - bu aşağıdaki komutları çalıştırıp makinenizi yeniden başlatarak yapılabilir emin olmak gerekir:
+* For Linux users, you will need to install [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* For users on Ubuntu 14.04, you will need to ensure GCC is up-to-date - this can be done by running the following commands, and then restarting your machine:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -639,55 +789,55 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte kullan�
     sudo apt-get dist-upgrade
     ```
 
-* Ubuntu 17.04 kullanıcıları, GConf yüklemeniz gerekir - bu aşağıdaki komutları çalıştırıp makinenizi yeniden başlatarak yapılabilir:
+* For users on Ubuntu 17.04, you will need to install GConf - this can be done by running the following commands, and then restarting your machine:
 
     ```
     sudo apt-get install libgconf-2-4
     ```
 
 
-## <a name="version-144"></a>Sürüm 1.4.4
-15/10/2018
+## <a name="version-144"></a>Version 1.4.4
+10/15/2018
 
-### <a name="hotfixes"></a>Düzeltmeler
-* Azure Kaynak yönetimi API 'SI sürümü, Azure ABD kamu kullanıcılarının engellemesini kaldırmak için geri alındı. [#696](https://github.com/Microsoft/AzureStorageExplorer/issues/696)
-* Yüklenirken değer değiştiriciler, Depolama Gezgini tarafından kullanılan GPU miktarını azaltmak için CSS animasyonları artık kullanıyor. [#653](https://github.com/Microsoft/AzureStorageExplorer/issues/653)
+### <a name="hotfixes"></a>Hotfixes
+* The Azure Resource Management API Version has been rolled back to unblock Azure US Government users. [#696](https://github.com/Microsoft/AzureStorageExplorer/issues/696)
+* Loading spinners are now using CSS animations to reduce the amount of GPU used by Storage Explorer. [#653](https://github.com/Microsoft/AzureStorageExplorer/issues/653)
 
 ### <a name="new"></a>Yeni
-* Dış kaynak ekler, örneğin SAS bağlantılarının ve Öykünücüler, önemli ölçüde geliştirilmiştir. Artık şunları yapabilirsiniz:
-   * Görünen ad iliştirmekte olduğunuz kaynak özelleştirin. [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
-   * Farklı bağlantı noktalarını kullanarak birden çok yerel öykünücüleri ekleyin. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
-   * Bağlı kaynaklar, hızlı erişim ekleyin. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* Depolama Gezgini, artık geçici silme destekler. Şunları yapabilirsiniz:
-   * Depolama hesabınız için Blob kapsayıcıları düğümünü sağ tıklayarak bir geçici silme ilkesi yapılandırın.
-   * Görünüm geçici silinen blobları Blob seçerek Düzenleyicisi'nde "etkin ve Silinen blobları" gezinti çubuğunun yanındaki açılır.
-   * Geçici silinen blobları silmeyi geri alma.
+* External resource attachments, such as for SAS connections and emulators, has been significantly improved. Now you can:
+   * Customize the display name of the resource you are attaching. [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
+   * Attach to multiple local emulators using different ports. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
+   * Add attached resources to Quick Access. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
+* Storage Explorer now supports Soft Delete. Yapabilecekleriniz:
+   * Configure a Soft Delete policy by right-clicking on the Blob Containers node for your Storage account.
+   * View soft deleted blobs in the Blob Editor by selecting "Active and deleted blobs" in the dropdown next to the navigation bar.
+   * Undelete soft deleted blobs.
 
-### <a name="fixes"></a>Düzeltmeleri
-* Premium depolama hesabı CORS desteklemediği "CORS ayarlarını yapılandır" eylemi artık Premium depolama hesaplarında kullanılabilir. [#142](https://github.com/Microsoft/AzureStorageExplorer/issues/142)
-* Artık bir SAS bağlı Hizmetleri için paylaşılan erişim imzası özelliği yoktur. [#184](https://github.com/Microsoft/AzureStorageExplorer/issues/184)
-* "Varsayılan erişim katmanını ayarlama" eylemi için hızlı erişim sabitlenmiş kullanılabilir için Blob ve GPV2 depolama hesapları sunulmuştur. [#229](https://github.com/Microsoft/AzureStorageExplorer/issues/229)
-* Bazı durumlarda, Depolama Gezgini, Klasik depolama hesapları gösterecek şekilde başarısız olur. [#323](https://github.com/Microsoft/AzureStorageExplorer/issues/323)
+### <a name="fixes"></a>Fixes
+* The "Configure CORS Settings" action is no longer available on Premium Storage accounts because Premium Storage accounts do not support CORS. [#142](https://github.com/Microsoft/AzureStorageExplorer/issues/142)
+* There is now a Shared Access Signature property for SAS Attached Services. [#184](https://github.com/Microsoft/AzureStorageExplorer/issues/184)
+* The "Set Default Access Tier" action is now available For Blob and GPV2 Storage accounts that have been pinned to Quick Access. [#229](https://github.com/Microsoft/AzureStorageExplorer/issues/229)
+* Sometimes, Storage Explorer would fail to show Classic Storage accounts. [#323](https://github.com/Microsoft/AzureStorageExplorer/issues/323)
 
 ### <a name="known-issues"></a>Bilinen Sorunlar
-* Öykünücüler, Azure Storage öykünücüsü veya Azurite, gibi kullanırken, bunları kendi varsayılan bağlantı noktalarından bağlantıları için dinlemek sahip olması gerekir. Aksi takdirde, Depolama Gezgini bunlara bağlanmak mümkün olmayacaktır.
-* Mac için VS kullanın ve özel bir AAD yapılandırmasına hiç olmadığı kadar oluşturdunuz, oturum açma alınamıyor olabilir. Sorunu çözmek için içeriğini silin. ~ /. IdentityService/AadConfigurations. Bunun yapılması engeli değil, lütfen yorum [bu sorunu](https://github.com/Microsoft/AzureStorageExplorer/issues/97).
-* Azurite henüz tam olarak tüm depolama API'leri uygulamadı. Bu nedenle, beklenmeyen hatalar veya olabilir davranışı Azurite geliştirme depolaması için kullanılırken.
-* Nadiren de olsa, ağaç odağı Hızlı erişimi takılabilir. Odağı Ayır için Tümünü Yenile yapabilirsiniz.
-* Nodejs'de bir hata nedeniyle, OneDrive klasöründen karşıya çalışmaz. Hata düzeltildi, ancak henüz Elektron tümleşik.
-* Azure Stack hedeflerken, ekleme blobları gibi belirli dosyaları karşıya yükleme başarısız olabilir.
-* "İptal" görevde tıklandıktan sonra onu iptal etmek bu görev için biraz zaman alabilir. Bunun nedeni, [burada](https://github.com/Azure/azure-storage-node/issues/317)açıklanan iptal filtresini kullandığımyız.
-* Yanlış PIN/akıllı kart sertifikası seçeneğini belirlerseniz, depolama Gezgini'nin kararı unutursanız studio'durdurup yeniden başlatmanız gerekir.
-* BLOB'ları (ayrı ayrı veya yeniden adlandırılmış blob kapsayıcının içinde) yeniden adlandırma, anlık görüntüler korumaz. Diğer tüm özellikleri ve meta verileri bloblar, dosyalar ve varlıklar için bir yeniden adlandırma sırasında korunur.
-* Azure Stack, şu anda dosya paylaşımlarını desteklemiyor olsa da, dosya paylaşımları düğümündeki bağlı bir Azure Stack depolama hesaplarının altında görünmeye devam eder.
-* Depolama Gezgini tarafından kullanılan Elektron Kabuk bazı GPU (grafik işlem birimi) Donanım hızlandırmalı sorun vardır. Depolama Gezgini (boş) bir boş ana penceresi görüntüleniyorsa, deneyebileceğiniz Depolama Gezgini komut satırından başlatmak ve ekleyerek GPU hızlandırmasını devre dışı bırakma `--disable-gpu` geçin:
+* When using emulators, such as Azure Storage Emulator or Azurite, you will need to have them listen for connections on their default ports. Otherwise, Storage Explorer will not be able to connect to them.
+* If you use VS for Mac and have ever created a custom AAD configuration, you may be unable to sign-in. To work around the issue, delete the contents of ~/.IdentityService/AadConfigurations. If doing so does not unblock you, please comment on [this issue](https://github.com/Microsoft/AzureStorageExplorer/issues/97).
+* Azurite has not yet fully implemented all Storage APIs. Because of this, there may be unexpected errors or behavior when using Azurite for development storage.
+* In rare cases, the tree focus may get stuck on Quick Access. To unstick the focus, you can Refresh All.
+* Uploading from your OneDrive folder does not work because of a bug in NodeJS. The bug has been fixed, but not yet integrated into Electron.
+* When targeting Azure Stack, uploading certain files as append blobs may fail.
+* After clicking "Cancel" on a task, it may take a while for that task to cancel. This is because we are using the cancel filter work around described [here](https://github.com/Azure/azure-storage-node/issues/317).
+* If you choose the wrong PIN/Smartcard certificate, then you will need to restart in order to have Storage Explorer forget that decision.
+* Renaming blobs (individually or inside a renamed blob container) does not preserve snapshots. All other properties and metadata for blobs, files, and entities are preserved during a rename.
+* Although Azure Stack doesn't currently support Files Shares, a File Shares node still appears under an attached Azure Stack storage account.
+* The Electron shell used by Storage Explorer has trouble with some GPU (graphics processing unit) hardware acceleration. If Storage Explorer is displaying a blank (empty) main window, you can try launching Storage Explorer from the command line and disabling GPU acceleration by adding the `--disable-gpu` switch:
 
     ```
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Linux kullanıcıları için yüklemeniz gerekecek [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
-* Ubuntu 14.04 kullanıcıları için GCC güncel - bu aşağıdaki komutları çalıştırıp makinenizi yeniden başlatarak yapılabilir emin olmak gerekir:
+* For Linux users, you will need to install [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* For users on Ubuntu 14.04, you will need to ensure GCC is up-to-date - this can be done by running the following commands, and then restarting your machine:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -696,54 +846,54 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte kullan�
     sudo apt-get dist-upgrade
     ```
 
-* Ubuntu 17.04 kullanıcıları, GConf yüklemeniz gerekir - bu aşağıdaki komutları çalıştırıp makinenizi yeniden başlatarak yapılabilir:
+* For users on Ubuntu 17.04, you will need to install GConf - this can be done by running the following commands, and then restarting your machine:
 
     ```
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-143"></a>Sürüm 1.4.3
-11/10/2018
+## <a name="version-143"></a>Version 1.4.3
+10/11/2018
 
-### <a name="hotfixes"></a>Düzeltmeler
-* Azure Kaynak yönetimi API 'SI sürümü, Azure ABD kamu kullanıcılarının engellemesini kaldırmak için geri alındı. [#696](https://github.com/Microsoft/AzureStorageExplorer/issues/696)
-* Yüklenirken değer değiştiriciler, Depolama Gezgini tarafından kullanılan GPU miktarını azaltmak için CSS animasyonları artık kullanıyor. [#653](https://github.com/Microsoft/AzureStorageExplorer/issues/653)
+### <a name="hotfixes"></a>Hotfixes
+* The Azure Resource Management API Version has been rolled back to unblock Azure US Government users. [#696](https://github.com/Microsoft/AzureStorageExplorer/issues/696)
+* Loading spinners are now using CSS animations to reduce the amount of GPU used by Storage Explorer. [#653](https://github.com/Microsoft/AzureStorageExplorer/issues/653)
 
 ### <a name="new"></a>Yeni
-* Dış kaynak ekler, örneğin SAS bağlantılarının ve Öykünücüler, önemli ölçüde geliştirilmiştir. Artık şunları yapabilirsiniz:
-   * Görünen ad iliştirmekte olduğunuz kaynak özelleştirin. [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
-   * Farklı bağlantı noktalarını kullanarak birden çok yerel öykünücüleri ekleyin. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
-   * Bağlı kaynaklar, hızlı erişim ekleyin. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* Depolama Gezgini, artık geçici silme destekler. Şunları yapabilirsiniz:
-   * Depolama hesabınız için Blob kapsayıcıları düğümünü sağ tıklayarak bir geçici silme ilkesi yapılandırın.
-   * Görünüm geçici silinen blobları Blob seçerek Düzenleyicisi'nde "etkin ve Silinen blobları" gezinti çubuğunun yanındaki açılır.
-   * Geçici silinen blobları silmeyi geri alma.
+* External resource attachments, such as for SAS connections and emulators, has been significantly improved. Now you can:
+   * Customize the display name of the resource you are attaching. [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
+   * Attach to multiple local emulators using different ports. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
+   * Add attached resources to Quick Access. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
+* Storage Explorer now supports Soft Delete. Yapabilecekleriniz:
+   * Configure a Soft Delete policy by right-clicking on the Blob Containers node for your Storage account.
+   * View soft deleted blobs in the Blob Editor by selecting "Active and deleted blobs" in the dropdown next to the navigation bar.
+   * Undelete soft deleted blobs.
 
-### <a name="fixes"></a>Düzeltmeleri
-* Premium depolama hesabı CORS desteklemediği "CORS ayarlarını yapılandır" eylemi artık Premium depolama hesaplarında kullanılabilir. [#142](https://github.com/Microsoft/AzureStorageExplorer/issues/142)
-* Artık bir SAS bağlı Hizmetleri için paylaşılan erişim imzası özelliği yoktur. [#184](https://github.com/Microsoft/AzureStorageExplorer/issues/184)
-* "Varsayılan erişim katmanını ayarlama" eylemi için hızlı erişim sabitlenmiş kullanılabilir için Blob ve GPV2 depolama hesapları sunulmuştur. [#229](https://github.com/Microsoft/AzureStorageExplorer/issues/229)
-* Bazı durumlarda, Depolama Gezgini, Klasik depolama hesapları gösterecek şekilde başarısız olur. [#323](https://github.com/Microsoft/AzureStorageExplorer/issues/323)
+### <a name="fixes"></a>Fixes
+* The "Configure CORS Settings" action is no longer available on Premium Storage accounts because Premium Storage accounts do not support CORS. [#142](https://github.com/Microsoft/AzureStorageExplorer/issues/142)
+* There is now a Shared Access Signature property for SAS Attached Services. [#184](https://github.com/Microsoft/AzureStorageExplorer/issues/184)
+* The "Set Default Access Tier" action is now available For Blob and GPV2 Storage accounts that have been pinned to Quick Access. [#229](https://github.com/Microsoft/AzureStorageExplorer/issues/229)
+* Sometimes, Storage Explorer would fail to show Classic Storage accounts. [#323](https://github.com/Microsoft/AzureStorageExplorer/issues/323)
 
 ### <a name="known-issues"></a>Bilinen Sorunlar
-* Öykünücüler, Azure Storage öykünücüsü veya Azurite, gibi kullanırken, bunları kendi varsayılan bağlantı noktalarından bağlantıları için dinlemek sahip olması gerekir. Aksi takdirde, Depolama Gezgini bunlara bağlanmak mümkün olmayacaktır.
-* Mac için VS kullanın ve özel bir AAD yapılandırmasına hiç olmadığı kadar oluşturdunuz, oturum açma alınamıyor olabilir. Sorunu çözmek için içeriğini silin. ~ /. IdentityService/AadConfigurations. Bunun yapılması engeli değil, lütfen yorum [bu sorunu](https://github.com/Microsoft/AzureStorageExplorer/issues/97).
-* Azurite henüz tam olarak tüm depolama API'leri uygulamadı. Bu nedenle, beklenmeyen hatalar veya olabilir davranışı Azurite geliştirme depolaması için kullanılırken.
-* Nadiren de olsa, ağaç odağı Hızlı erişimi takılabilir. Odağı Ayır için Tümünü Yenile yapabilirsiniz.
-* Nodejs'de bir hata nedeniyle, OneDrive klasöründen karşıya çalışmaz. Hata düzeltildi, ancak henüz Elektron tümleşik.
-* Azure Stack hedeflerken, ekleme blobları gibi belirli dosyaları karşıya yükleme başarısız olabilir.
-* "İptal" görevde tıklandıktan sonra onu iptal etmek bu görev için biraz zaman alabilir. Bunun nedeni, [burada](https://github.com/Azure/azure-storage-node/issues/317)açıklanan iptal filtresini kullandığımyız.
-* Yanlış PIN/akıllı kart sertifikası seçeneğini belirlerseniz, depolama Gezgini'nin kararı unutursanız studio'durdurup yeniden başlatmanız gerekir.
-* BLOB'ları (ayrı ayrı veya yeniden adlandırılmış blob kapsayıcının içinde) yeniden adlandırma, anlık görüntüler korumaz. Diğer tüm özellikleri ve meta verileri bloblar, dosyalar ve varlıklar için bir yeniden adlandırma sırasında korunur.
-* Azure Stack, şu anda dosya paylaşımlarını desteklemiyor olsa da, dosya paylaşımları düğümündeki bağlı bir Azure Stack depolama hesaplarının altında görünmeye devam eder.
-* Depolama Gezgini tarafından kullanılan Elektron Kabuk bazı GPU (grafik işlem birimi) Donanım hızlandırmalı sorun vardır. Depolama Gezgini (boş) bir boş ana penceresi görüntüleniyorsa, deneyebileceğiniz Depolama Gezgini komut satırından başlatmak ve ekleyerek GPU hızlandırmasını devre dışı bırakma `--disable-gpu` geçin:
+* When using emulators, such as Azure Storage Emulator or Azurite, you will need to have them listen for connections on their default ports. Otherwise, Storage Explorer will not be able to connect to them.
+* If you use VS for Mac and have ever created a custom AAD configuration, you may be unable to sign-in. To work around the issue, delete the contents of ~/.IdentityService/AadConfigurations. If doing so does not unblock you, please comment on [this issue](https://github.com/Microsoft/AzureStorageExplorer/issues/97).
+* Azurite has not yet fully implemented all Storage APIs. Because of this, there may be unexpected errors or behavior when using Azurite for development storage.
+* In rare cases, the tree focus may get stuck on Quick Access. To unstick the focus, you can Refresh All.
+* Uploading from your OneDrive folder does not work because of a bug in NodeJS. The bug has been fixed, but not yet integrated into Electron.
+* When targeting Azure Stack, uploading certain files as append blobs may fail.
+* After clicking "Cancel" on a task, it may take a while for that task to cancel. This is because we are using the cancel filter work around described [here](https://github.com/Azure/azure-storage-node/issues/317).
+* If you choose the wrong PIN/Smartcard certificate, then you will need to restart in order to have Storage Explorer forget that decision.
+* Renaming blobs (individually or inside a renamed blob container) does not preserve snapshots. All other properties and metadata for blobs, files, and entities are preserved during a rename.
+* Although Azure Stack doesn't currently support Files Shares, a File Shares node still appears under an attached Azure Stack storage account.
+* The Electron shell used by Storage Explorer has trouble with some GPU (graphics processing unit) hardware acceleration. If Storage Explorer is displaying a blank (empty) main window, you can try launching Storage Explorer from the command line and disabling GPU acceleration by adding the `--disable-gpu` switch:
 
     ```
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Linux kullanıcıları için yüklemeniz gerekecek [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
-* Ubuntu 14.04 kullanıcıları için GCC güncel - bu aşağıdaki komutları çalıştırıp makinenizi yeniden başlatarak yapılabilir emin olmak gerekir:
+* For Linux users, you will need to install [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* For users on Ubuntu 14.04, you will need to ensure GCC is up-to-date - this can be done by running the following commands, and then restarting your machine:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -752,53 +902,53 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte kullan�
     sudo apt-get dist-upgrade
     ```
 
-* Ubuntu 17.04 kullanıcıları, GConf yüklemeniz gerekir - bu aşağıdaki komutları çalıştırıp makinenizi yeniden başlatarak yapılabilir:
+* For users on Ubuntu 17.04, you will need to install GConf - this can be done by running the following commands, and then restarting your machine:
 
     ```
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-142"></a>Sürüm 1.4.2
-24/09/2018
+## <a name="version-142"></a>Version 1.4.2
+09/24/2018
 
-### <a name="hotfixes"></a>Düzeltmeler
-* Yeni Azure depolama hesabı türleri için destek eklemek üzere Azure Kaynak yönetimi API sürümünü 2018-07-01 olarak güncelleştirin. [#652](https://github.com/Microsoft/AzureStorageExplorer/issues/652)
+### <a name="hotfixes"></a>Hotfixes
+* Update Azure Resource Management API Version to 2018-07-01 to add support for new Azure Storage Account kinds. [#652](https://github.com/Microsoft/AzureStorageExplorer/issues/652)
 
 ### <a name="new"></a>Yeni
-* Dış kaynak ekler, örneğin SAS bağlantılarının ve Öykünücüler, önemli ölçüde geliştirilmiştir. Artık şunları yapabilirsiniz:
-   * Görünen ad iliştirmekte olduğunuz kaynak özelleştirin. [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
-   * Farklı bağlantı noktalarını kullanarak birden çok yerel öykünücüleri ekleyin. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
-   * Bağlı kaynaklar, hızlı erişim ekleyin. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* Depolama Gezgini, artık geçici silme destekler. Şunları yapabilirsiniz:
-   * Depolama hesabınız için Blob kapsayıcıları düğümünü sağ tıklayarak bir geçici silme ilkesi yapılandırın.
-   * Görünüm geçici silinen blobları Blob seçerek Düzenleyicisi'nde "etkin ve Silinen blobları" gezinti çubuğunun yanındaki açılır.
-   * Geçici silinen blobları silmeyi geri alma.
+* External resource attachments, such as for SAS connections and emulators, has been significantly improved. Now you can:
+   * Customize the display name of the resource you are attaching. [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
+   * Attach to multiple local emulators using different ports. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
+   * Add attached resources to Quick Access. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
+* Storage Explorer now supports Soft Delete. Yapabilecekleriniz:
+   * Configure a Soft Delete policy by right-clicking on the Blob Containers node for your Storage account.
+   * View soft deleted blobs in the Blob Editor by selecting "Active and deleted blobs" in the dropdown next to the navigation bar.
+   * Undelete soft deleted blobs.
 
-### <a name="fixes"></a>Düzeltmeleri
-* Premium depolama hesabı CORS desteklemediği "CORS ayarlarını yapılandır" eylemi artık Premium depolama hesaplarında kullanılabilir. [#142](https://github.com/Microsoft/AzureStorageExplorer/issues/142)
-* Artık bir SAS bağlı Hizmetleri için paylaşılan erişim imzası özelliği yoktur. [#184](https://github.com/Microsoft/AzureStorageExplorer/issues/184)
-* "Varsayılan erişim katmanını ayarlama" eylemi için hızlı erişim sabitlenmiş kullanılabilir için Blob ve GPV2 depolama hesapları sunulmuştur. [#229](https://github.com/Microsoft/AzureStorageExplorer/issues/229)
-* Bazı durumlarda, Depolama Gezgini, Klasik depolama hesapları gösterecek şekilde başarısız olur. [#323](https://github.com/Microsoft/AzureStorageExplorer/issues/323)
+### <a name="fixes"></a>Fixes
+* The "Configure CORS Settings" action is no longer available on Premium Storage accounts because Premium Storage accounts do not support CORS. [#142](https://github.com/Microsoft/AzureStorageExplorer/issues/142)
+* There is now a Shared Access Signature property for SAS Attached Services. [#184](https://github.com/Microsoft/AzureStorageExplorer/issues/184)
+* The "Set Default Access Tier" action is now available For Blob and GPV2 Storage accounts that have been pinned to Quick Access. [#229](https://github.com/Microsoft/AzureStorageExplorer/issues/229)
+* Sometimes, Storage Explorer would fail to show Classic Storage accounts. [#323](https://github.com/Microsoft/AzureStorageExplorer/issues/323)
 
 ### <a name="known-issues"></a>Bilinen Sorunlar
-* Öykünücüler, Azure Storage öykünücüsü veya Azurite, gibi kullanırken, bunları kendi varsayılan bağlantı noktalarından bağlantıları için dinlemek sahip olması gerekir. Aksi takdirde, Depolama Gezgini bunlara bağlanmak mümkün olmayacaktır.
-* Mac için VS kullanın ve özel bir AAD yapılandırmasına hiç olmadığı kadar oluşturdunuz, oturum açma alınamıyor olabilir. Sorunu çözmek için içeriğini silin. ~ /. IdentityService/AadConfigurations. Bunun yapılması engeli değil, lütfen yorum [bu sorunu](https://github.com/Microsoft/AzureStorageExplorer/issues/97).
-* Azurite henüz tam olarak tüm depolama API'leri uygulamadı. Bu nedenle, beklenmeyen hatalar veya olabilir davranışı Azurite geliştirme depolaması için kullanılırken.
-* Nadiren de olsa, ağaç odağı Hızlı erişimi takılabilir. Odağı Ayır için Tümünü Yenile yapabilirsiniz.
-* Nodejs'de bir hata nedeniyle, OneDrive klasöründen karşıya çalışmaz. Hata düzeltildi, ancak henüz Elektron tümleşik.
-* Azure Stack hedeflerken, ekleme blobları gibi belirli dosyaları karşıya yükleme başarısız olabilir.
-* "İptal" görevde tıklandıktan sonra onu iptal etmek bu görev için biraz zaman alabilir. Bunun nedeni, [burada](https://github.com/Azure/azure-storage-node/issues/317)açıklanan iptal filtresini kullandığımyız.
-* Yanlış PIN/akıllı kart sertifikası seçeneğini belirlerseniz, depolama Gezgini'nin kararı unutursanız studio'durdurup yeniden başlatmanız gerekir.
-* BLOB'ları (ayrı ayrı veya yeniden adlandırılmış blob kapsayıcının içinde) yeniden adlandırma, anlık görüntüler korumaz. Diğer tüm özellikleri ve meta verileri bloblar, dosyalar ve varlıklar için bir yeniden adlandırma sırasında korunur.
-* Azure Stack, şu anda dosya paylaşımlarını desteklemiyor olsa da, dosya paylaşımları düğümündeki bağlı bir Azure Stack depolama hesaplarının altında görünmeye devam eder.
-* Depolama Gezgini tarafından kullanılan Elektron Kabuk bazı GPU (grafik işlem birimi) Donanım hızlandırmalı sorun vardır. Depolama Gezgini (boş) bir boş ana penceresi görüntüleniyorsa, deneyebileceğiniz Depolama Gezgini komut satırından başlatmak ve ekleyerek GPU hızlandırmasını devre dışı bırakma `--disable-gpu` geçin:
+* When using emulators, such as Azure Storage Emulator or Azurite, you will need to have them listen for connections on their default ports. Otherwise, Storage Explorer will not be able to connect to them.
+* If you use VS for Mac and have ever created a custom AAD configuration, you may be unable to sign-in. To work around the issue, delete the contents of ~/.IdentityService/AadConfigurations. If doing so does not unblock you, please comment on [this issue](https://github.com/Microsoft/AzureStorageExplorer/issues/97).
+* Azurite has not yet fully implemented all Storage APIs. Because of this, there may be unexpected errors or behavior when using Azurite for development storage.
+* In rare cases, the tree focus may get stuck on Quick Access. To unstick the focus, you can Refresh All.
+* Uploading from your OneDrive folder does not work because of a bug in NodeJS. The bug has been fixed, but not yet integrated into Electron.
+* When targeting Azure Stack, uploading certain files as append blobs may fail.
+* After clicking "Cancel" on a task, it may take a while for that task to cancel. This is because we are using the cancel filter work around described [here](https://github.com/Azure/azure-storage-node/issues/317).
+* If you choose the wrong PIN/Smartcard certificate, then you will need to restart in order to have Storage Explorer forget that decision.
+* Renaming blobs (individually or inside a renamed blob container) does not preserve snapshots. All other properties and metadata for blobs, files, and entities are preserved during a rename.
+* Although Azure Stack doesn't currently support Files Shares, a File Shares node still appears under an attached Azure Stack storage account.
+* The Electron shell used by Storage Explorer has trouble with some GPU (graphics processing unit) hardware acceleration. If Storage Explorer is displaying a blank (empty) main window, you can try launching Storage Explorer from the command line and disabling GPU acceleration by adding the `--disable-gpu` switch:
 
     ```
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Linux kullanıcıları için yüklemeniz gerekecek [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
-* Ubuntu 14.04 kullanıcıları için GCC güncel - bu aşağıdaki komutları çalıştırıp makinenizi yeniden başlatarak yapılabilir emin olmak gerekir:
+* For Linux users, you will need to install [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* For users on Ubuntu 14.04, you will need to ensure GCC is up-to-date - this can be done by running the following commands, and then restarting your machine:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -807,58 +957,58 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte kullan�
     sudo apt-get dist-upgrade
     ```
 
-* Ubuntu 17.04 kullanıcıları, GConf yüklemeniz gerekir - bu aşağıdaki komutları çalıştırıp makinenizi yeniden başlatarak yapılabilir:
+* For users on Ubuntu 17.04, you will need to install GConf - this can be done by running the following commands, and then restarting your machine:
 
     ```
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-141"></a>Sürüm 1.4.1
+## <a name="version-141"></a>Version 1.4.1
 08/28/2018
 
-### <a name="hotfixes"></a>Düzeltmeler
-* İlk başlatma sırasında Depolama Gezgini hassas verileri şifrelemek için kullanılan anahtar oluşturamıyor. Bu hızlı erişim kullanılırken sorunlara neden ve kaynaklar ekleme. [#535](https://github.com/Microsoft/AzureStorageExplorer/issues/535)
-* Hesabınız, kendi giriş Kiracı için MFA gerektirmeyen ancak diğer kiracılar için yaptığınız, Depolama Gezgini listesi aboneliklerini veremeyebilir. Şimdi, bu tür bir hesabıyla oturum sonra Depolama Gezgini, kimlik bilgilerinizi yeniden girmeniz ve MFA gerçekleştirmek için sorar. [#74](https://github.com/Microsoft/AzureStorageExplorer/issues/74)
-* Depolama Gezgini, kaynakları Azure Almanya ve Azure ABD kamu ekleyemedi. [#572](https://github.com/Microsoft/AzureStorageExplorer/issues/572)
-* Aynı e-posta adresine sahip iki hesap için azure'da oturum açarsanız, Depolama Gezgini ağaç görünümünde kaynaklarınızı göstermek bazen başarısız olur. [#580](https://github.com/Microsoft/AzureStorageExplorer/issues/580)
-* Daha yavaş Windows makinelerde Karşılama ekranında görünmesini zaman önemli ölçüde bazen sürecektir. [#586](https://github.com/Microsoft/AzureStorageExplorer/issues/586)
-* Vardı ekli hesapları veya hizmetleri bile bağlan iletişim kutusu görünür. [#588](https://github.com/Microsoft/AzureStorageExplorer/issues/588)
+### <a name="hotfixes"></a>Hotfixes
+* On first launch, Storage Explorer was unable to generate the key used to encrypt sensitive data. This would cause issues when using Quick Access and attaching resources. [#535](https://github.com/Microsoft/AzureStorageExplorer/issues/535)
+* If your account did not require MFA for its home tenant, but did for some other tenants, Storage Explorer would be unable to list subscriptions. Now, after signing in with such an account, Storage Explorer will ask you to reenter your credentials and perform MFA. [#74](https://github.com/Microsoft/AzureStorageExplorer/issues/74)
+* Storage Explorer was unable to attach resources from Azure Germany and Azure US Government. [#572](https://github.com/Microsoft/AzureStorageExplorer/issues/572)
+* If you signed in to two accounts that had the same email address, Storage Explorer would sometimes fail to show your resources in the tree view. [#580](https://github.com/Microsoft/AzureStorageExplorer/issues/580)
+* On slower Windows machines, the splash screen would sometimes take a significant amount of time to appear. [#586](https://github.com/Microsoft/AzureStorageExplorer/issues/586)
+* The connect dialog would appear even if there were attached accounts or services. [#588](https://github.com/Microsoft/AzureStorageExplorer/issues/588)
 
 ### <a name="new"></a>Yeni
-* Dış kaynak ekler, örneğin SAS bağlantılarının ve Öykünücüler, önemli ölçüde geliştirilmiştir. Artık şunları yapabilirsiniz:
-   * Görünen ad iliştirmekte olduğunuz kaynak özelleştirin. [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
-   * Farklı bağlantı noktalarını kullanarak birden çok yerel öykünücüleri ekleyin. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
-   * Bağlı kaynaklar, hızlı erişim ekleyin. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* Depolama Gezgini, artık geçici silme destekler. Şunları yapabilirsiniz:
-   * Depolama hesabınız için Blob kapsayıcıları düğümünü sağ tıklayarak bir geçici silme ilkesi yapılandırın.
-   * Görünüm geçici silinen blobları Blob seçerek Düzenleyicisi'nde "etkin ve Silinen blobları" gezinti çubuğunun yanındaki açılır.
-   * Geçici silinen blobları silmeyi geri alma.
+* External resource attachments, such as for SAS connections and emulators, has been significantly improved. Now you can:
+   * Customize the display name of the resource you are attaching. [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
+   * Attach to multiple local emulators using different ports. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
+   * Add attached resources to Quick Access. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
+* Storage Explorer now supports Soft Delete. Yapabilecekleriniz:
+   * Configure a Soft Delete policy by right-clicking on the Blob Containers node for your Storage account.
+   * View soft deleted blobs in the Blob Editor by selecting "Active and deleted blobs" in the dropdown next to the navigation bar.
+   * Undelete soft deleted blobs.
 
-### <a name="fixes"></a>Düzeltmeleri
-* Premium depolama hesabı CORS desteklemediği "CORS ayarlarını yapılandır" eylemi artık Premium depolama hesaplarında kullanılabilir. [#142](https://github.com/Microsoft/AzureStorageExplorer/issues/142)
-* Artık bir SAS bağlı Hizmetleri için paylaşılan erişim imzası özelliği yoktur. [#184](https://github.com/Microsoft/AzureStorageExplorer/issues/184)
-* "Varsayılan erişim katmanını ayarlama" eylemi için hızlı erişim sabitlenmiş kullanılabilir için Blob ve GPV2 depolama hesapları sunulmuştur. [#229](https://github.com/Microsoft/AzureStorageExplorer/issues/229)
-* Bazı durumlarda, Depolama Gezgini, Klasik depolama hesapları gösterecek şekilde başarısız olur. [#323](https://github.com/Microsoft/AzureStorageExplorer/issues/323)
+### <a name="fixes"></a>Fixes
+* The "Configure CORS Settings" action is no longer available on Premium Storage accounts because Premium Storage accounts do not support CORS. [#142](https://github.com/Microsoft/AzureStorageExplorer/issues/142)
+* There is now a Shared Access Signature property for SAS Attached Services. [#184](https://github.com/Microsoft/AzureStorageExplorer/issues/184)
+* The "Set Default Access Tier" action is now available For Blob and GPV2 Storage accounts that have been pinned to Quick Access. [#229](https://github.com/Microsoft/AzureStorageExplorer/issues/229)
+* Sometimes, Storage Explorer would fail to show Classic Storage accounts. [#323](https://github.com/Microsoft/AzureStorageExplorer/issues/323)
 
 ### <a name="known-issues"></a>Bilinen Sorunlar
-* Öykünücüler, Azure Storage öykünücüsü veya Azurite, gibi kullanırken, bunları kendi varsayılan bağlantı noktalarından bağlantıları için dinlemek sahip olması gerekir. Aksi takdirde, Depolama Gezgini bunlara bağlanmak mümkün olmayacaktır.
-* Mac için VS kullanın ve özel bir AAD yapılandırmasına hiç olmadığı kadar oluşturdunuz, oturum açma alınamıyor olabilir. Sorunu çözmek için içeriğini silin. ~ /. IdentityService/AadConfigurations. Bunun yapılması engeli değil, lütfen yorum [bu sorunu](https://github.com/Microsoft/AzureStorageExplorer/issues/97).
-* Azurite henüz tam olarak tüm depolama API'leri uygulamadı. Bu nedenle, beklenmeyen hatalar veya olabilir davranışı Azurite geliştirme depolaması için kullanılırken.
-* Nadiren de olsa, ağaç odağı Hızlı erişimi takılabilir. Odağı Ayır için Tümünü Yenile yapabilirsiniz.
-* Nodejs'de bir hata nedeniyle, OneDrive klasöründen karşıya çalışmaz. Hata düzeltildi, ancak henüz Elektron tümleşik.
-* Azure Stack hedeflerken, ekleme blobları gibi belirli dosyaları karşıya yükleme başarısız olabilir.
-* "İptal" görevde tıklandıktan sonra onu iptal etmek bu görev için biraz zaman alabilir. Bunun nedeni, [burada](https://github.com/Azure/azure-storage-node/issues/317)açıklanan iptal filtresini kullandığımyız.
-* Yanlış PIN/akıllı kart sertifikası seçeneğini belirlerseniz, depolama Gezgini'nin kararı unutursanız studio'durdurup yeniden başlatmanız gerekir.
-* BLOB'ları (ayrı ayrı veya yeniden adlandırılmış blob kapsayıcının içinde) yeniden adlandırma, anlık görüntüler korumaz. Diğer tüm özellikleri ve meta verileri bloblar, dosyalar ve varlıklar için bir yeniden adlandırma sırasında korunur.
-* Azure Stack, şu anda dosya paylaşımlarını desteklemiyor olsa da, dosya paylaşımları düğümündeki bağlı bir Azure Stack depolama hesaplarının altında görünmeye devam eder.
-* Depolama Gezgini tarafından kullanılan Elektron Kabuk bazı GPU (grafik işlem birimi) Donanım hızlandırmalı sorun vardır. Depolama Gezgini (boş) bir boş ana penceresi görüntüleniyorsa, deneyebileceğiniz Depolama Gezgini komut satırından başlatmak ve ekleyerek GPU hızlandırmasını devre dışı bırakma `--disable-gpu` geçin:
+* When using emulators, such as Azure Storage Emulator or Azurite, you will need to have them listen for connections on their default ports. Otherwise, Storage Explorer will not be able to connect to them.
+* If you use VS for Mac and have ever created a custom AAD configuration, you may be unable to sign-in. To work around the issue, delete the contents of ~/.IdentityService/AadConfigurations. If doing so does not unblock you, please comment on [this issue](https://github.com/Microsoft/AzureStorageExplorer/issues/97).
+* Azurite has not yet fully implemented all Storage APIs. Because of this, there may be unexpected errors or behavior when using Azurite for development storage.
+* In rare cases, the tree focus may get stuck on Quick Access. To unstick the focus, you can Refresh All.
+* Uploading from your OneDrive folder does not work because of a bug in NodeJS. The bug has been fixed, but not yet integrated into Electron.
+* When targeting Azure Stack, uploading certain files as append blobs may fail.
+* After clicking "Cancel" on a task, it may take a while for that task to cancel. This is because we are using the cancel filter work around described [here](https://github.com/Azure/azure-storage-node/issues/317).
+* If you choose the wrong PIN/Smartcard certificate, then you will need to restart in order to have Storage Explorer forget that decision.
+* Renaming blobs (individually or inside a renamed blob container) does not preserve snapshots. All other properties and metadata for blobs, files, and entities are preserved during a rename.
+* Although Azure Stack doesn't currently support Files Shares, a File Shares node still appears under an attached Azure Stack storage account.
+* The Electron shell used by Storage Explorer has trouble with some GPU (graphics processing unit) hardware acceleration. If Storage Explorer is displaying a blank (empty) main window, you can try launching Storage Explorer from the command line and disabling GPU acceleration by adding the `--disable-gpu` switch:
 
     ```
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Linux kullanıcıları için yüklemeniz gerekecek [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
-* Ubuntu 14.04 kullanıcıları için GCC güncel - bu aşağıdaki komutları çalıştırıp makinenizi yeniden başlatarak yapılabilir emin olmak gerekir:
+* For Linux users, you will need to install [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* For users on Ubuntu 14.04, you will need to ensure GCC is up-to-date - this can be done by running the following commands, and then restarting your machine:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -867,55 +1017,55 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte kullan�
     sudo apt-get dist-upgrade
     ```
 
-* Ubuntu 17.04 kullanıcıları, GConf yüklemeniz gerekir - bu aşağıdaki komutları çalıştırıp makinenizi yeniden başlatarak yapılabilir:
+* For users on Ubuntu 17.04, you will need to install GConf - this can be done by running the following commands, and then restarting your machine:
 
     ```
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-130"></a>Sürüm 1.3.0
+## <a name="version-130"></a>Version 1.3.0
 07/09/2018
 
 ### <a name="new"></a>Yeni
-* Statik Web siteleri tarafından kullanılan $web kapsayıcılarını erişmesini artık desteklenmektedir. Bu, bir kolayca karşıya yüklemek ve dosya ve klasörleri, Web sitesinin kullandığı yönetmek sağlar. [#223](https://github.com/Microsoft/AzureStorageExplorer/issues/223)
-* MacOS uygulama çubuğunda düzenlenirse. Değişiklikler, bir dosya menüsü, bazı kısayol önemli değişiklikler ve uygulama menüsü altında birkaç yeni komutlar içerir. [#99](https://github.com/Microsoft/AzureStorageExplorer/issues/99)
-* Azure ABD devlet kurumları için oturum açmak için yetkili uç noktası değiştirildi. https://login.microsoftonline.us/
-* Larınızdaki Bir ekran okuyucu etkin olduğunda, klavye gezintisi artık sağ taraftaki öğeleri görüntülemek için kullanılan tablolarla birlikte çalışıyor. Satırları ve sütunları, bir öğe için bağlam menüsünü açın ve Shift veya çoklu seçim için denetlemek için bağlam menüsünü anahtarı varsayılan eylemleri çağırmak için Enter gezinmek için ok tuşlarını kullanabilirsiniz. [#103](https://github.com/Microsoft/AzureStorageExplorer/issues/103)
+* Accessing the $web containers used by Static Websites is now supported. This allows you to easily upload and manage files and folders used by your website. [#223](https://github.com/Microsoft/AzureStorageExplorer/issues/223)
+* The app bar on macOS has been reorganized. Changes include a File menu, some shortcut key changes, and several new commands under the app menu. [#99](https://github.com/Microsoft/AzureStorageExplorer/issues/99)
+* The authority endpoint for signing in to Azure US Government has been changed to https://login.microsoftonline.us/
+* Accessibility: When a screen reader is active, keyboard navigation now works with the tables used for displaying items on the right-hand side. You can use the arrow keys to navigate rows and columns, Enter to invoke default actions, the context menu key to open up the context menu for an item, and Shift or Control to multiselect. [#103](https://github.com/Microsoft/AzureStorageExplorer/issues/103)
 
-### <a name="fixes"></a>Düzeltmeleri
-*  Bazı makinelerde alt işlemleri başlatmak için uzun gerçekleştirdiğimizden. Bu, bir "zamanında başlatmak alt işlemi başarısız oldu" hatası görüntülenir. Başlatmak bir alt işlem için ayrılan süre daha artık 90 saniye için 20'den çıkarılmıştır. Yine de bu sorundan etkilenen, bağlantılı GitHub sorunu değerlendirin. [#281](https://github.com/Microsoft/AzureStorageExplorer/issues/281)
-* Okuma izinlerine sahip değil bir SAS kullanırken, büyük blob yüklemek mümkün değildi. Bu senaryoda çalışmak için karşıya yükleme için mantıksal değiştirildi. [#305](https://github.com/Microsoft/AzureStorageExplorer/issues/305)
-* Genel erişim düzeyi ayarı tüm erişim ilkeleri, bir kapsayıcı kaldırır ve bunun tersi de geçerlidir. Artık, genel erişim düzeyi ve erişim ilkeleri iki ya da ayarlarken korunur. [#197](https://github.com/Microsoft/AzureStorageExplorer/issues/197)
-* Özellikler iletişim kutusunda "AccessTierChangeTime" kesildi. Bu düzeltilmiştir. [#145](https://github.com/Microsoft/AzureStorageExplorer/issues/145)
-* "Microsoft Azure Depolama Gezgini-" ön eki yeni dizin oluştur iletişim kutusundan eksik. Bu düzeltilmiştir. [#299](https://github.com/Microsoft/AzureStorageExplorer/issues/299)
-* Larınızdaki VoiceOver kullanılırken varlık Ekle iletişim kutusunun gezinmek zordur. İyileştirmeler yapılmıştır. [#206](https://github.com/Microsoft/AzureStorageExplorer/issues/206)
-* Larınızdaki Eylemler ve Özellikler bölmesi için daraltma/genişletme düğmesinin arka plan rengi, Yüksek Karşıtlık siyah temadaki benzer UI denetimleriyle tutarsız. Renk değiştirildi. [#123](https://github.com/Microsoft/AzureStorageExplorer/issues/123)
-* Larınızdaki Yüksek Karşıtlık siyah temada, Özellikler iletişim kutusundaki ' X ' düğmesi için odak stili görünür değildi. Bu düzeltilmiştir. [#243](https://github.com/Microsoft/AzureStorageExplorer/issues/243)
-* Larınızdaki Eylemler ve Özellikler sekmelerinde, bir alt par ekran okuyucu deneyimiyle sonuçlanan birkaç Aria değeri eksikti. Eksik aria değerleri şimdi ekledik. [#316](https://github.com/Microsoft/AzureStorageExplorer/issues/316)
-* Larınızdaki Sol taraftaki daraltılmış ağaç düğümlerine yanlış bir değer yanlış değeri verilmedi. Bu düzeltilmiştir. [#352](https://github.com/Microsoft/AzureStorageExplorer/issues/352)
+### <a name="fixes"></a>Fixes
+*  On some machines, child processes were taking a long time to start. When this would happen, a "child process failed to start in a timely manner" error would appear. The time allotted for a child process to start has now been increased from 20 to 90 seconds. If you are still affected by this issue, please comment on the linked GitHub issue. [#281](https://github.com/Microsoft/AzureStorageExplorer/issues/281)
+* When using a SAS that did not have read permissions, it was not possible to upload a large blob. The logic for upload has been modified to work in this scenario. [#305](https://github.com/Microsoft/AzureStorageExplorer/issues/305)
+* Setting the public access level for a container would remove all access policies, and vice versa. Now, public access level and access policies are preserved when setting either of the two. [#197](https://github.com/Microsoft/AzureStorageExplorer/issues/197)
+* "AccessTierChangeTime" was truncated in the Properties dialog. This has been fixed. [#145](https://github.com/Microsoft/AzureStorageExplorer/issues/145)
+* The "Microsoft Azure Storage Explorer -" prefix was missing from the Create New Directory dialog. This has been fixed. [#299](https://github.com/Microsoft/AzureStorageExplorer/issues/299)
+* Accessibility: The Add Entity dialog was difficult to navigate when using VoiceOver. Improvements have been made. [#206](https://github.com/Microsoft/AzureStorageExplorer/issues/206)
+* Accessibility: The background color of the collapse/expand button for the Actions and Properties pane was inconsistent with similar UI controls in High Contrast Black theme. The color has been changed. [#123](https://github.com/Microsoft/AzureStorageExplorer/issues/123)
+* Accessibility: In High Contrast Black theme, the focus styling for the 'X' button in the Properties dialog was not visible. This has been fixed. [#243](https://github.com/Microsoft/AzureStorageExplorer/issues/243)
+* Accessibility: The Actions and Properties tabs were missing several aria values which resulted in a subpar screen reader experience. The missing aria values have now been added. [#316](https://github.com/Microsoft/AzureStorageExplorer/issues/316)
+* Accessibility: Collapsed tree nodes on the left hand side were not being given an aria-expanded value of false. This has been fixed. [#352](https://github.com/Microsoft/AzureStorageExplorer/issues/352)
 
 ### <a name="known-issues"></a>Bilinen Sorunlar
-* Bir blob kapsayıcısı gibi SAS URI 'SI aracılığıyla bağlı bir kaynağın ayrılması, diğer eklerin doğru şekilde görüntülenmesini engelleyen bir hataya neden olabilir. Bu sorunu çözmek için yalnızca Grup düğümünü yenileyin. Bkz: [bu sorunu](https://github.com/Microsoft/AzureStorageExplorer/issues/537) daha fazla bilgi için.
-* Mac için VS kullanın ve özel bir AAD yapılandırmasına hiç olmadığı kadar oluşturdunuz, oturum açma alınamıyor olabilir. Sorunu çözmek için içeriğini silin. ~ /. IdentityService/AadConfigurations. Bunun yapılması engeli değil, lütfen yorum [bu sorunu](https://github.com/Microsoft/AzureStorageExplorer/issues/97).
-* Azurite henüz tam olarak tüm depolama API'leri uygulamadı. Bu nedenle, beklenmeyen hatalar veya olabilir davranışı Azurite geliştirme depolaması için kullanılırken.
-* Nadiren de olsa, ağaç odağı Hızlı erişimi takılabilir. Odağı Ayır için Tümünü Yenile yapabilirsiniz.
-* Nodejs'de bir hata nedeniyle, OneDrive klasöründen karşıya çalışmaz. Hata düzeltildi, ancak henüz Elektron tümleşik.
-* Azure Stack hedeflerken, ekleme blobları gibi belirli dosyaları karşıya yükleme başarısız olabilir.
-* "İptal" görevde tıklandıktan sonra onu iptal etmek bu görev için biraz zaman alabilir. Bunun nedeni, [burada](https://github.com/Azure/azure-storage-node/issues/317)açıklanan iptal filtresini kullandığımyız.
-* Yanlış PIN/akıllı kart sertifikası seçeneğini belirlerseniz, depolama Gezgini'nin kararı unutursanız studio'durdurup yeniden başlatmanız gerekir.
-* BLOB'ları (ayrı ayrı veya yeniden adlandırılmış blob kapsayıcının içinde) yeniden adlandırma, anlık görüntüler korumaz. Diğer tüm özellikleri ve meta verileri bloblar, dosyalar ve varlıklar için bir yeniden adlandırma sırasında korunur.
-* Azure Stack aşağıdaki özellikleri desteklemez ve Azure Stack ile çalışırken kullanılmaya çalışılırsa, beklenmeyen hatalarına neden olabilir:
+* Detaching from a resource attached via SAS URI, such as a blob container, may cause an error that prevents other attachments from showing up correctly. To work around this issue, just refresh the group node. See [this issue](https://github.com/Microsoft/AzureStorageExplorer/issues/537) for more information.
+* If you use VS for Mac and have ever created a custom AAD configuration, you may be unable to sign-in. To work around the issue, delete the contents of ~/.IdentityService/AadConfigurations. If doing so does not unblock you, please comment on [this issue](https://github.com/Microsoft/AzureStorageExplorer/issues/97).
+* Azurite has not yet fully implemented all Storage APIs. Because of this, there may be unexpected errors or behavior when using Azurite for development storage.
+* In rare cases, the tree focus may get stuck on Quick Access. To unstick the focus, you can Refresh All.
+* Uploading from your OneDrive folder does not work because of a bug in NodeJS. The bug has been fixed, but not yet integrated into Electron.
+* When targeting Azure Stack, uploading certain files as append blobs may fail.
+* After clicking "Cancel" on a task, it may take a while for that task to cancel. This is because we are using the cancel filter work around described [here](https://github.com/Azure/azure-storage-node/issues/317).
+* If you choose the wrong PIN/Smartcard certificate, then you will need to restart in order to have Storage Explorer forget that decision.
+* Renaming blobs (individually or inside a renamed blob container) does not preserve snapshots. All other properties and metadata for blobs, files, and entities are preserved during a rename.
+* Azure Stack does not support the following features, and attempting to use them while working with Azure Stack may result in unexpected errors:
    * Dosya paylaşımları
    * Erişim katmanları
-   * Geçici silme
-* Depolama Gezgini tarafından kullanılan Elektron Kabuk bazı GPU (grafik işlem birimi) Donanım hızlandırmalı sorun vardır. Depolama Gezgini (boş) bir boş ana penceresi görüntüleniyorsa, deneyebileceğiniz Depolama Gezgini komut satırından başlatmak ve ekleyerek GPU hızlandırmasını devre dışı bırakma `--disable-gpu` geçin:
+   * Soft Delete
+* The Electron shell used by Storage Explorer has trouble with some GPU (graphics processing unit) hardware acceleration. If Storage Explorer is displaying a blank (empty) main window, you can try launching Storage Explorer from the command line and disabling GPU acceleration by adding the `--disable-gpu` switch:
 
     ```
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Linux kullanıcıları için yüklemeniz gerekecek [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
-* Ubuntu 14.04 kullanıcıları için GCC güncel - bu aşağıdaki komutları çalıştırıp makinenizi yeniden başlatarak yapılabilir emin olmak gerekir:
+* For Linux users, you will need to install [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* For users on Ubuntu 14.04, you will need to ensure GCC is up-to-date - this can be done by running the following commands, and then restarting your machine:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -924,55 +1074,55 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte kullan�
     sudo apt-get dist-upgrade
     ```
 
-* Ubuntu 17.04 kullanıcıları, GConf yüklemeniz gerekir - bu aşağıdaki komutları çalıştırıp makinenizi yeniden başlatarak yapılabilir:
+* For users on Ubuntu 17.04, you will need to install GConf - this can be done by running the following commands, and then restarting your machine:
 
     ```
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-120"></a>Sürümü 1.2.0
+## <a name="version-120"></a>Version 1.2.0
 06/12/2018
 
 ### <a name="new"></a>Yeni
-* Depolama Gezgini yalnızca kiracılarınızın bir alt kümesinden aboneliklerinizi başarısız olursa, ardından başarıyla yüklenen tüm abonelikleri özellikle başarısız olan kiracılar için bir hata iletisi ile birlikte gösterilir. [#159](https://github.com/Microsoft/AzureStorageExplorer/issues/159)
-* Bir güncelleştirme kullanılabilir olduğunda Windows üzerinde artık "Güncelleştirme üzerinde Kapat" seçebilirsiniz. Bu seçenek seçilir, Depolama Gezgini kapattıktan sonra güncelleştirme yükleyicisi çalışır. [#21](https://github.com/Microsoft/AzureStorageExplorer/issues/21)
-* Geri yükleme anlık görüntü bir dosya paylaşımı anlık görüntüsü görüntülerken için dosya paylaşımı Düzenleyicisi bağlam menüsü eklendi. [#131](https://github.com/Microsoft/AzureStorageExplorer/issues/131)
-* Sırayı Temizle düğmesi artık her zaman etkindir. [#135](https://github.com/Microsoft/AzureStorageExplorer/issues/135)
-* Azure Stack'e ADFS oturum açma desteği yeniden etkinleştirildi olmuştur. Azure Stack 1804 veya üzeri bir sürüm gereklidir. [#150](https://github.com/Microsoft/AzureStorageExplorer/issues/150)
+* If Storage Explorer fails to load subscriptions from only a subset of your tenants, then any successfully loaded subscriptions will be shown along with an error message specifically for the tenants that failed. [#159](https://github.com/Microsoft/AzureStorageExplorer/issues/159)
+* On Windows, when an update is available, you can now choose to "Update on Close". When this option is picked, the installer for the update will run after you close Storage Explorer. [#21](https://github.com/Microsoft/AzureStorageExplorer/issues/21)
+* Restore Snapshot has been added to the context menu of the file share editor when viewing a file share snapshot.[#131](https://github.com/Microsoft/AzureStorageExplorer/issues/131)
+* The Clear Queue button is now always enabled.[#135](https://github.com/Microsoft/AzureStorageExplorer/issues/135)
+* Support for signing in to ADFS Azure Stack has been re-enabled. Azure Stack version 1804 or greater is required. [#150](https://github.com/Microsoft/AzureStorageExplorer/issues/150)
 
-### <a name="fixes"></a>Düzeltmeleri
-* Bir önek aynı depolama hesabındaki başka bir dosya paylaşımı adı olan bir dosya paylaşımı için anlık görüntüleri görüntülerse, bir dosya paylaşımı için anlık görüntüleri de listelenir. Bu sorun düzeltilmiştir. [#255](https://github.com/Microsoft/AzureStorageExplorer/issues/255)
-* Bir dosyayı dosya paylaşım anlık görüntüsünden geri yükleme, SAS bağlı olduğunda, bir hataya neden olur. Bu sorun düzeltilmiştir. [#211](https://github.com/Microsoft/AzureStorageExplorer/issues/211)
-* Temel blob ve tek bir anlık görüntü seçilmedi, bir blobun anlık görüntülerini görüntülerken, anlık görüntü yükseltme eylemi etkinleştirildi. Tek bir anlık görüntü seçtiyseniz eylemi artık yalnızca etkindir. [#230](https://github.com/Microsoft/AzureStorageExplorer/issues/230)
-* (Örneğin, bir blob yükleme) tek bir iş başlatıldı ve daha sonra başarısız oldu, aynı türde başka bir iş başlatıldı kadar otomatik olarak yeniden. Tüm işleri yeniden deneme artık otomatik, bağımsız olarak kaç tane işin kuyruğa alınmış.
-* Düzenleyiciler için yeni GPV2 içinde oluşturulan blob kapsayıcıları açılır ve Blob Depolama hesaplarına erişim katmanı sütun yok. Bu sorun düzeltilmiştir. [#109](https://github.com/Microsoft/AzureStorageExplorer/issues/109)
-* Bir depolama hesabı, bir erişim katmanı sütunu bazen gösterilmeyebiliyor veya blob kapsayıcısı SAS eklendi. Sütun şimdi her zaman gösterilir, ancak erişim katmanını ayarlanmadı ise boş bir değere sahip. [#160](https://github.com/Microsoft/AzureStorageExplorer/issues/160)
-* Karşıya yüklenen yeni blok blobun erişim katmanını ayarlama devre dışı bırakıldı. Bu sorun düzeltilmiştir. [#171](https://github.com/Microsoft/AzureStorageExplorer/issues/171)
-* Klavyeyi kullanarak "Sekmesini açık tutun" düğmesini çağrıldı, klavye odağına kaybolur. Şimdi, odağı açık tutulduğunda sekmenin taşınır. [#163](https://github.com/Microsoft/AzureStorageExplorer/issues/163)
-* Sorgu Oluşturucusu sorgu için VoiceOver kullanılabilir geçerli işleç açıklamasını vererek değil. Artık daha açıklayıcı olduğundan. [#207](https://github.com/Microsoft/AzureStorageExplorer/issues/207)
-* Çeşitli düzenleyiciler için sayfalandırma bağlantıları açıklayıcı değil. Daha açıklayıcı olması için değiştirildi. [#205](https://github.com/Microsoft/AzureStorageExplorer/issues/205)
-* Varlık Ekle iletişim kutusunda VoiceOver hangi sütunun bir input öğesi parçası olan Duyurusu değil. Geçerli sütunun adı, Açıklama öğesinin artık dahildir. [#206](https://github.com/Microsoft/AzureStorageExplorer/issues/206)
-* Radyo düğmeleri ve onay kutularını odaklama sırasında görünür bir kenarlığa sahip değil. Bu sorun düzeltilmiştir. [#237](https://github.com/Microsoft/AzureStorageExplorer/issues/237)
+### <a name="fixes"></a>Fixes
+* If you viewed snapshots for a file share whose name was a prefix of another file share in the same storage account, then the snapshots for the other file share would also be listed. This issue has been fixed. [#255](https://github.com/Microsoft/AzureStorageExplorer/issues/255)
+* When attached via SAS, restoring a file from a file share snapshot would result in an error. This issue has been fixed. [#211](https://github.com/Microsoft/AzureStorageExplorer/issues/211)
+* When viewing snapshots for a blob, the Promote Snapshot action was enabled when the base blob and a single snapshot were selected. The action is now only enabled if a single snapshot is selected. [#230](https://github.com/Microsoft/AzureStorageExplorer/issues/230)
+* If a single job (such as downloading a blob) was started and later failed, it would not automatically retry until you started another job of the same type. All jobs should now auto retry, regardless of how many jobs you have queued.
+* Editors opened for newly created blob containers in GPV2 and Blob Storage accounts did not have an Access Tier column. This issue has been fixed. [#109](https://github.com/Microsoft/AzureStorageExplorer/issues/109)
+* An Access Tier column would sometimes not appear when a Storage account or blob container was attached via SAS. The column will now always be shown, but with an empty value if there is no Access Tier set. [#160](https://github.com/Microsoft/AzureStorageExplorer/issues/160)
+* Setting the Access Tier of a newly uploaded block blob was disabled. This issue has been fixed. [#171](https://github.com/Microsoft/AzureStorageExplorer/issues/171)
+* If the "Keep Tab Open" button was invoked using keyboard, then keyboard focus would be lost. Now, the focus will move onto the tab that was kept open. [#163](https://github.com/Microsoft/AzureStorageExplorer/issues/163)
+* For a query in the Query Builder, VoiceOver was not giving a usable description of the current operator. It is now more descriptive. [#207](https://github.com/Microsoft/AzureStorageExplorer/issues/207)
+* The pagination links for the various editors were not descriptive. They have been changed to be more descriptive. [#205](https://github.com/Microsoft/AzureStorageExplorer/issues/205)
+* In the Add Entity dialog, VoiceOver was not announcing what column an input element was part of. The name of the current column is now included in the description of the element. [#206](https://github.com/Microsoft/AzureStorageExplorer/issues/206)
+* Radio buttons and checkboxes did not have a visible border when focused. This issue has been fixed. [#237](https://github.com/Microsoft/AzureStorageExplorer/issues/237)
 
 ### <a name="known-issues"></a>Bilinen Sorunlar
-* Öykünücüler, Azure Storage öykünücüsü veya Azurite, gibi kullanırken, bunları kendi varsayılan bağlantı noktalarından bağlantıları için dinlemek sahip olması gerekir. Aksi takdirde, Depolama Gezgini bunlara bağlanmak mümkün olmayacaktır.
-* Mac için VS kullanın ve özel bir AAD yapılandırmasına hiç olmadığı kadar oluşturdunuz, oturum açma alınamıyor olabilir. Sorunu çözmek için içeriğini silin. ~ /. IdentityService/AadConfigurations. Bunun yapılması engeli değil, lütfen yorum [bu sorunu](https://github.com/Microsoft/AzureStorageExplorer/issues/97).
-* Azurite henüz tam olarak tüm depolama API'leri uygulamadı. Bu nedenle, beklenmeyen hatalar veya olabilir davranışı Azurite geliştirme depolaması için kullanılırken.
-* Nadiren de olsa, ağaç odağı Hızlı erişimi takılabilir. Odağı Ayır için Tümünü Yenile yapabilirsiniz.
-* Nodejs'de bir hata nedeniyle, OneDrive klasöründen karşıya çalışmaz. Hata düzeltildi, ancak henüz Elektron tümleşik.
-* Azure Stack hedeflerken, ekleme blobları gibi belirli dosyaları karşıya yükleme başarısız olabilir.
-* "İptal" görevde tıklandıktan sonra onu iptal etmek bu görev için biraz zaman alabilir. Bunun nedeni, [burada](https://github.com/Azure/azure-storage-node/issues/317)açıklanan iptal filtresini kullandığımyız.
-* Yanlış PIN/akıllı kart sertifikası seçeneğini belirlerseniz, depolama Gezgini'nin kararı unutursanız studio'durdurup yeniden başlatmanız gerekir.
-* BLOB'ları (ayrı ayrı veya yeniden adlandırılmış blob kapsayıcının içinde) yeniden adlandırma, anlık görüntüler korumaz. Diğer tüm özellikleri ve meta verileri bloblar, dosyalar ve varlıklar için bir yeniden adlandırma sırasında korunur.
-* Azure Stack, şu anda dosya paylaşımlarını desteklemiyor olsa da, dosya paylaşımları düğümündeki bağlı bir Azure Stack depolama hesaplarının altında görünmeye devam eder.
-* Depolama Gezgini tarafından kullanılan Elektron Kabuk bazı GPU (grafik işlem birimi) Donanım hızlandırmalı sorun vardır. Depolama Gezgini (boş) bir boş ana penceresi görüntüleniyorsa, deneyebileceğiniz Depolama Gezgini komut satırından başlatmak ve ekleyerek GPU hızlandırmasını devre dışı bırakma `--disable-gpu` geçin:
+* When using emulators, such as Azure Storage Emulator or Azurite, you will need to have them listen for connections on their default ports. Otherwise, Storage Explorer will not be able to connect to them.
+* If you use VS for Mac and have ever created a custom AAD configuration, you may be unable to sign-in. To work around the issue, delete the contents of ~/.IdentityService/AadConfigurations. If doing so does not unblock you, please comment on [this issue](https://github.com/Microsoft/AzureStorageExplorer/issues/97).
+* Azurite has not yet fully implemented all Storage APIs. Because of this, there may be unexpected errors or behavior when using Azurite for development storage.
+* In rare cases, the tree focus may get stuck on Quick Access. To unstick the focus, you can Refresh All.
+* Uploading from your OneDrive folder does not work because of a bug in NodeJS. The bug has been fixed, but not yet integrated into Electron.
+* When targeting Azure Stack, uploading certain files as append blobs may fail.
+* After clicking "Cancel" on a task, it may take a while for that task to cancel. This is because we are using the cancel filter work around described [here](https://github.com/Azure/azure-storage-node/issues/317).
+* If you choose the wrong PIN/Smartcard certificate, then you will need to restart in order to have Storage Explorer forget that decision.
+* Renaming blobs (individually or inside a renamed blob container) does not preserve snapshots. All other properties and metadata for blobs, files, and entities are preserved during a rename.
+* Although Azure Stack doesn't currently support Files Shares, a File Shares node still appears under an attached Azure Stack storage account.
+* The Electron shell used by Storage Explorer has trouble with some GPU (graphics processing unit) hardware acceleration. If Storage Explorer is displaying a blank (empty) main window, you can try launching Storage Explorer from the command line and disabling GPU acceleration by adding the `--disable-gpu` switch:
 
     ```
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Linux kullanıcıları için yüklemeniz gerekecek [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
-* Ubuntu 14.04 kullanıcıları için GCC güncel - bu aşağıdaki komutları çalıştırıp makinenizi yeniden başlatarak yapılabilir emin olmak gerekir:
+* For Linux users, you will need to install [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* For users on Ubuntu 14.04, you will need to ensure GCC is up-to-date - this can be done by running the following commands, and then restarting your machine:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -981,52 +1131,52 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte kullan�
     sudo apt-get dist-upgrade
     ```
 
-* Ubuntu 17.04 kullanıcıları, GConf yüklemeniz gerekir - bu aşağıdaki komutları çalıştırıp makinenizi yeniden başlatarak yapılabilir:
+* For users on Ubuntu 17.04, you will need to install GConf - this can be done by running the following commands, and then restarting your machine:
 
     ```
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-110"></a>Sürüm 1.1.0
-09/05/2018
+## <a name="version-110"></a>Version 1.1.0
+05/09/2018
 
 ### <a name="new"></a>Yeni
-* Depolama Gezgini, artık Azurite kullanımını destekler. Not: varsayılan geliştirme uç noktalarına ' belirtebilseydik Azurite için bağlantıdır.
-* Depolama Gezgini, artık yalnızca Blob ve GPV2 depolama hesapları için erişim katmanları destekler. Erişim katmanları hakkında daha fazla bilgi [burada](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers).
-* Başlangıç zamanı, artık bir SAS oluşturulurken gereklidir.
+* Storage Explorer now supports the use of Azurite. Note: the connection to Azurite is hardcoded to the default development endpoints.
+* Storage Explorer now supports Access Tiers for Blob Only and GPV2 Storage Accounts. Learn more about Access Tiers [here](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers).
+* A start time is no longer required when generating a SAS.
 
-### <a name="fixes"></a>Düzeltmeleri
-* ABD kamu hesaplar için abonelikleri almaya kesildi. Bu sorun düzeltilmiştir. [#61](https://github.com/Microsoft/AzureStorageExplorer/issues/61)
-* Süre sonu için erişim ilkeleri doğru şekilde kaydedilmedi. Bu sorun düzeltilmiştir. [#50](https://github.com/Microsoft/AzureStorageExplorer/issues/50)
-* Bir öğe için bir SAS URL'si bir kapsayıcıda oluştururken, öğenin adını URL'ye eklenen değil. Bu sorun düzeltilmiştir. [#44](https://github.com/Microsoft/AzureStorageExplorer/issues/44)
-* Bir SAS oluştururken, daha önce olan bitiş kez bazen varsayılan değer olacaktır. Bu, son başlangıç ve bitiş saati varsayılan değerleri kullanılan Depolama Gezgini'ni kullanarak nedeniyle oluştu. Şimdi SAS iletişim kutusu her açışlarında, varsayılan değerleri yeni bir dizi oluşturulur. [#35](https://github.com/Microsoft/AzureStorageExplorer/issues/35)
-* Depolama hesapları arasında kopyalama yapılırken, 24 saatlik bir SAS oluşturulur. 24 saatten fazla kopyayı görüşmelerin Süren, kopyalama başarısız olur. Biz, süresi dolmuş bir SAS nedeniyle başarısız olan bir kopyasını olasılığını azaltmak için SAS ait son 1 hafta artırdık. [#62](https://github.com/Microsoft/AzureStorageExplorer/issues/62)
-* Bazı etkinlikler için 'İptal "'i tıklatarak her zaman çalışmaz. Bu sorun düzeltilmiştir. [#125](https://github.com/Microsoft/AzureStorageExplorer/issues/125)
-* Bazı etkinlikler için aktarım hızı yanlıştı. Bu sorun düzeltilmiştir. [#124](https://github.com/Microsoft/AzureStorageExplorer/issues/124)
-* Görünüm menüsünde "Geri" yazımını yanlıştı. Bunu şimdi doğru yazıldığından. [#71](https://github.com/Microsoft/AzureStorageExplorer/issues/71)
-* Windows Installer'ın son sayfa, "İleri" düğmesi vardı. "Son" düğmesini değiştirildi. [#70](https://github.com/Microsoft/AzureStorageExplorer/issues/70)
-* Sekme odağı, HC siyah tema kullanırken kutularındaki düğmeler için görünür değil. Artık görünür durumda. [#64](https://github.com/Microsoft/AzureStorageExplorer/issues/64)
-* "Otomatik Çözümle" büyük/küçük harf eylemleri etkinlik günlüğünde için yanlış. Artık doğru mu? [#51](https://github.com/Microsoft/AzureStorageExplorer/issues/51)
-* Varlığın tablodan silinirken bir hata simgesi onaylanmasını isteyen bir iletişim kutusu görüntülenir. İletişim kutusu, bir uyarı simgesi artık kullanır. [#148](https://github.com/Microsoft/AzureStorageExplorer/issues/148)
+### <a name="fixes"></a>Fixes
+* Retrieving of subscriptions for US Government accounts was broken. This issue has been fixed. [#61](https://github.com/Microsoft/AzureStorageExplorer/issues/61)
+* The expiry time for access policies was not correctly being saved. This issue has been fixed. [#50](https://github.com/Microsoft/AzureStorageExplorer/issues/50)
+* When generating a SAS URL for an item in a container, the name of the item was not being appended to the URL. This issue has been fixed. [#44](https://github.com/Microsoft/AzureStorageExplorer/issues/44)
+* When creating a SAS, expiry times that are in the past would sometimes be the default value. This was due to Storage Explorer using the last used start and expiry time as default values. Now, every time you open the SAS dialog, a new set of default values is generated. [#35](https://github.com/Microsoft/AzureStorageExplorer/issues/35)
+* When copying between Storage Accounts, a 24-hour SAS is generated. If the copy lasted more than 24 hours, then the copy would fail. We've increased the SAS's to last 1 week to reduce the chance of a copy failing due to an expired SAS. [#62](https://github.com/Microsoft/AzureStorageExplorer/issues/62)
+* For some activities clicking on "Cancel" would not always work. This issue has been fixed. [#125](https://github.com/Microsoft/AzureStorageExplorer/issues/125)
+* For some activities the transfer speed was wrong. This issue has been fixed. [#124](https://github.com/Microsoft/AzureStorageExplorer/issues/124)
+* The spelling of "Previous" in the View menu was wrong. It is now properly spelled. [#71](https://github.com/Microsoft/AzureStorageExplorer/issues/71)
+* The final page of the Windows installer had a "Next" button. It has been changed to a "Finish" button. [#70](https://github.com/Microsoft/AzureStorageExplorer/issues/70)
+* Tab focus was not visible for buttons in dialogs when using the HC Black theme. It is now visible.[#64](https://github.com/Microsoft/AzureStorageExplorer/issues/64)
+* The casing of "Auto-Resolve" for actions in the activity log was wrong. It is now correct. [#51](https://github.com/Microsoft/AzureStorageExplorer/issues/51)
+* When deleting an entity from a table, the dialog asking you for confirmation displayed an error icon. The dialog now uses a warning icon. [#148](https://github.com/Microsoft/AzureStorageExplorer/issues/148)
 
 ### <a name="known-issues"></a>Bilinen Sorunlar
-* Mac için VS kullanın ve özel bir AAD yapılandırmasına hiç olmadığı kadar oluşturdunuz, oturum açma alınamıyor olabilir. Sorunu çözmek için içeriğini silin. ~ /. IdentityService/AadConfigurations. Bunun yapılması engeli değil, lütfen yorum [bu sorunu](https://github.com/Microsoft/AzureStorageExplorer/issues/97).
-* Azurite henüz tam olarak tüm depolama API'leri uygulamadı. Bu nedenle, beklenmeyen hatalar veya olabilir davranışı Azurite geliştirme depolaması için kullanılırken.
-* Nadiren de olsa, ağaç odağı Hızlı erişimi takılabilir. Odağı Ayır için Tümünü Yenile yapabilirsiniz.
-* Nodejs'de bir hata nedeniyle, OneDrive klasöründen karşıya çalışmaz. Hata düzeltildi, ancak henüz Elektron tümleşik.
-* Azure Stack hedeflerken, ekleme blobları gibi belirli dosyaları karşıya yükleme başarısız olabilir.
-* "İptal" görevde tıklandıktan sonra onu iptal etmek bu görev için biraz zaman alabilir. Bunun nedeni, [burada](https://github.com/Azure/azure-storage-node/issues/317)açıklanan iptal filtresini kullandığımyız.
-* Yanlış PIN/akıllı kart sertifikası seçeneğini belirlerseniz, depolama Gezgini'nin kararı unutursanız studio'durdurup yeniden başlatmanız gerekir.
-* BLOB'ları (ayrı ayrı veya yeniden adlandırılmış blob kapsayıcının içinde) yeniden adlandırma, anlık görüntüler korumaz. Diğer tüm özellikleri ve meta verileri bloblar, dosyalar ve varlıklar için bir yeniden adlandırma sırasında korunur.
-* Azure Stack, şu anda dosya paylaşımlarını desteklemiyor olsa da, dosya paylaşımları düğümündeki bağlı bir Azure Stack depolama hesaplarının altında görünmeye devam eder.
-* Depolama Gezgini tarafından kullanılan Elektron Kabuk bazı GPU (grafik işlem birimi) Donanım hızlandırmalı sorun vardır. Depolama Gezgini (boş) bir boş ana penceresi görüntüleniyorsa, deneyebileceğiniz Depolama Gezgini komut satırından başlatmak ve ekleyerek GPU hızlandırmasını devre dışı bırakma `--disable-gpu` geçin:
+* If you use VS for Mac and have ever created a custom AAD configuration, you may be unable to sign-in. To work around the issue, delete the contents of ~/.IdentityService/AadConfigurations. If doing so does not unblock you, please comment on [this issue](https://github.com/Microsoft/AzureStorageExplorer/issues/97).
+* Azurite has not yet fully implemented all Storage APIs. Because of this, there may be unexpected errors or behavior when using Azurite for development storage.
+* In rare cases, the tree focus may get stuck on Quick Access. To unstick the focus, you can Refresh All.
+* Uploading from your OneDrive folder does not work because of a bug in NodeJS. The bug has been fixed, but not yet integrated into Electron.
+* When targeting Azure Stack, uploading certain files as append blobs may fail.
+* After clicking "Cancel" on a task, it may take a while for that task to cancel. This is because we are using the cancel filter work around described [here](https://github.com/Azure/azure-storage-node/issues/317).
+* If you choose the wrong PIN/Smartcard certificate, then you will need to restart in order to have Storage Explorer forget that decision.
+* Renaming blobs (individually or inside a renamed blob container) does not preserve snapshots. All other properties and metadata for blobs, files, and entities are preserved during a rename.
+* Although Azure Stack doesn't currently support Files Shares, a File Shares node still appears under an attached Azure Stack storage account.
+* The Electron shell used by Storage Explorer has trouble with some GPU (graphics processing unit) hardware acceleration. If Storage Explorer is displaying a blank (empty) main window, you can try launching Storage Explorer from the command line and disabling GPU acceleration by adding the `--disable-gpu` switch:
 
     ```
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Linux kullanıcıları için yüklemeniz gerekecek [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
-* Ubuntu 14.04 kullanıcıları için GCC güncel - bu aşağıdaki komutları çalıştırıp makinenizi yeniden başlatarak yapılabilir emin olmak gerekir:
+* For Linux users, you will need to install [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* For users on Ubuntu 14.04, you will need to ensure GCC is up-to-date - this can be done by running the following commands, and then restarting your machine:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -1035,64 +1185,64 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte kullan�
     sudo apt-get dist-upgrade
     ```
 
-* Ubuntu 17.04 kullanıcıları, GConf yüklemeniz gerekir - bu aşağıdaki komutları çalıştırıp makinenizi yeniden başlatarak yapılabilir:
+* For users on Ubuntu 17.04, you will need to install GConf - this can be done by running the following commands, and then restarting your machine:
 
     ```
     sudo apt-get install libgconf-2-4
     ```
 
 
-## <a name="version-100"></a>Sürüm 1.0.0
-16/04/2018
+## <a name="version-100"></a>Version 1.0.0
+04/16/2018
 
 ### <a name="new"></a>Yeni
-* Depolama Gezgini, Visual Studio 2017 aynı hesap deposu kullanmak izin veren gelişmiş kimlik doğrulama. Bu özelliği kullanmak için yeniden oturum açma, hesaplarınıza ve filtrelenmiş aboneliklerinizi yeniden ayarlamak gerekir.
-* AAD tarafından desteklenen Azure Stack hesapları için 'Hedef Azure Stack' etkinleştirildiğinde Depolama Gezgini'ni Azure Stack aboneliklerini artık alır. Artık bir özel oturum açma ortamı oluşturmak gerekir.
-* Bazı kısayollar, daha hızlı bir gezinti olanağı eklendi. Bunlar, çeşitli paneller geçiş ve düzenleyicileri arasında taşımayı içerir. Görünüm menüsü daha fazla ayrıntı için bkz.
-* Depolama Gezgini geri bildirim, artık Github'da bulunur. Sola veya giderek için alt geri bildirim düğmesini tıklatarak sorunları sayfamızı size ulaşabildiğimizden [ https://github.com/Microsoft/AzureStorageExplorer/issues ](https://github.com/Microsoft/AzureStorageExplorer/issues). Önerilerde bulunmak, ilgili sorunları bildirmek, soru veya diğer türde bir geri bildirim bırakmak çekinmeyin.
-* SSL sertifikası bir sorunla karşılaşırsanız çalıştırıyorsanız ve soruna neden olan bir sertifika bulamadı, artık Depolama Gezgini ile komut satırından başlatabilirsiniz `--ignore-certificate-errors` bayrağı. Depolama Gezgini ile bu bayrağı başlatıldığında SSL sertifika hataları göz ardı eder.
-* Artık bir blob ve dosya öğeleri için bağlam menüsünden 'İndir' seçeneği yoktur.
-* Geliştirilmiş erişilebilirlik ve ekran okuyucu desteği. Erişilebilirlik özelliklerini kullanan olup bizim [erişilebilirlik belgeleri](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-accessibility) daha fazla bilgi için.
-* Depolama Gezgini'ni Elektron 1.8.3 artık kullanır.
+* Enhanced authentication that allows Storage Explorer to use the same account store as Visual Studio 2017. To use this feature, you will need to re-login to your accounts and re-set your filtered subscriptions.
+* For Azure Stack accounts backed by AAD, Storage Explorer will now retrieve Azure Stack subscriptions when 'Target Azure Stack' is enabled. You no longer need to create a custom login environment.
+* Several shortcuts were added to enable faster navigation. These include toggling various panels and moving between editors. See the View menu for more details.
+* Storage Explorer feedback now lives on GitHub. You can reach our issues page by clicking the Feedback button in the bottom left or by going to [https://github.com/Microsoft/AzureStorageExplorer/issues](https://github.com/Microsoft/AzureStorageExplorer/issues). Feel free to make suggestions, report issues, ask questions, or leave any other form of feedback.
+* If you are running into SSL Certificate issues and are unable to find the offending certificate, you can now launch Storage Explorer from the command line with the `--ignore-certificate-errors` flag. When launched with this flag, Storage Explorer will ignore SSL certificate errors.
+* There is now a 'Download' option in the context menu for blob and file items.
+* Improved accessibility and screen reader support. If you rely on accessibility features, see our [accessibility documentation](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-accessibility) for more information.
+* Storage Explorer now uses Electron 1.8.3
 
 ### <a name="breaking-changes"></a>Hataya Neden Olan Değişiklikler
-* Depolama Gezgini için yeni bir kimlik doğrulama kitaplığı geçti. Kitaplığı geçiş işleminin bir parçası olarak yeniden oturum açma, hesaplarınıza ve filtrelenmiş aboneliklerinizi yeniden ayarlayın gerekir
-* Hassas verileri şifrelemek için kullanılan yöntem değişti. Bu yeniden eklenmesi gerek kalmadan, hızlı erişim öğelerden bazıları neden olabilir ve/veya bazı iliştirilmesi gerek kalmadan kaynaklara bağlı.
+* Storage Explorer has switched to a new authentication library. As part of the switch to the library, you will need to re-login to your accounts and re-set your filtered subscriptions
+* The method used to encrypt sensitive data has changed. This may result in some of your Quick Access items needing to be re-added and/or some of you attached resources needing to be reattached.
 
-### <a name="fixes"></a>Düzeltmeleri
-* Proxy arkasında bazı kullanıcılar grubu blob karşıya yüklemeleri veya indirmeleri 'bir çözümlenemiyor tarafından' kesintiye gerekir. hata iletisi. Bu sorun düzeltilmiştir.
-* Oturum açma 'Oturum açma' satırına tıklayarak doğrudan bir bağlantı kullanarak boş bir iletişim kutusu sorar sırada gerekiyorsa. Bu sorun düzeltilmiştir.
-* Depolama Gezgini, bir GPU işlem kilitlenmesi nedeniyle başlatılamıyor ise, Linux'ta, artık kullanmak için bir uyarıyla kilitlenme gönderilerek '--gpu devre dışı bırak ' geçiş ve Depolama Gezgini'ni etkin anahtar ile otomatik olarak yeniden başlatın.
-* Geçersiz erişim ilkeleri, erişim ilkeleri iletişim kimliği sabit. Geçersiz erişim ilkesi kimlikleri artık özetlenen kırmızı daha fazla görünürlük.
-* Etkinlik günlüğü, bazen bir etkinlik farklı bölümleri arasındaki boşluk geniş alanlar olması gerekir. Bu sorun düzeltilmiştir.
-* Tablo Sorgu Düzenleyicisi'nde, bir zaman damgası yan tümcesi geçersiz bir durumda kaldı ve ardından başka bir yan tümcesi değiştirmeye çalıştınız Düzenleyicisi dondurma. Başka bir yan tümcesinde bir değişiklik algıladığında Düzenleyicisi artık zaman damgası yan tümcesi son geçerli durumuna geri yükler.
-* Ağaç görünümünde arama sorgunuzda yazarken duraklatılmışsa, aramayı başlatmak ve odak metin kutusundan çalınırsa. Şimdi, 'Enter' tuşuna basarak veya başlangıç arama düğmesine tıklayarak arama açıkça başlatmanız gerekir.
-* 'Paylaşılan erişim imzası Al' komutunu bazen bir dosya paylaşımı bir dosyaya sağ tıklayıp devre dışı. Bu sorun düzeltilmiştir.
-* Arama sırasında kaynak ağaç düğümü odaklanılan filtrenin gerekirse değil kaynak ağacına sekme ve kaynak ağaç gezinmek için ok tuşlarını kullanın. Odaklanmış kaynak ağaç düğümü gizli ise, artık kaynak ağacında ilk düğümü otomatik olarak odaklanmış.
-* Ek bir ayırıcı bazen Düzenleyici araç çubuğunda görünür olur. Bu sorun düzeltilmiştir.
-* İçerik haritası metin kutusu bazen taşma oluşturursunuz. Bu sorun düzeltilmiştir.
-* Blob ve dosya paylaşımı düzenleyicileri sürekli olarak bazen aynı anda çok sayıda dosya karşıya yüklenirken yeniler. Bu sorun düzeltilmiştir.
-* 'Klasör İstatistikleri' özelliği, dosya paylaşımı anlık görüntüleri yönetim görünümünde herhangi bir amacı vardı. Şimdi devre dışı.
-* Linux üzerinde Dosya menüsünü görülmedi. Bu sorun düzeltilmiştir.
-* Bir klasörü varsayılan olarak bir dosya paylaşımına karşıya yüklenirken klasörünün içeriği karşıya yüklendi. Şimdi, eşleşen bir dosya paylaşımı klasörüne klasörünün içeriği karşıya yüklemek için varsayılan davranışı geldi.
-* Birkaç iletişim kutusu düğmeleri sıralama ters. Bu sorun düzeltilmiştir.
-* Çeşitli güvenlik düzeltmeleri ilgili.
+### <a name="fixes"></a>Fixes
+* Some users behind proxies would have group blob uploads or downloads interrupted by an 'Unable to resolve' error message. This issue has been fixed.
+* If sign-in was needed while using a direct link, clicking on the 'Sign-In' prompt would pop up a blank dialog. This issue has been fixed.
+* On Linux, if Storage Explorer is unable to launch because of a GPU process crash, you will now be informed of the crash, told to use the '--disable-gpu' switch, and Storage Explorer will then automatically restart with the switch enabled.
+* Invalid access policies were hard to identity in the Access Policies dialog. Invalid access policy IDs are now outlined in red for more visibility.
+* The activity log would sometimes have large areas of whitespace between the different parts of an activity. This issue has been fixed.
+* In the table query editor, if you left a timestamp clause in an invalid state and then attempted to modify another clause, the editor would freeze. The editor will now restore the timestamp clause to its last valid state when a change in another clause is detected.
+* If you paused while typing in your search query in the tree view, the search would begin and focus would be stolen from the text box. Now, you must explicitly start searching by pressing the 'Enter' key, or by clicking on the start search button.
+* The 'Get Shared Access Signature' command would sometimes be disabled when right clicking on a file in a File Share. This issue has been fixed.
+* If the resource tree node with focus was filtered out during search, you could not tab into the resource tree and use the arrow keys to navigate the resource tree. Now, if the focused resource tree node is hidden, the first node in the resource tree will be automatically focused.
+* An extra separator would sometimes be visible in the editor toolbar. This issue has been fixed.
+* The breadcrumb text box would sometimes overflow. This issue has been fixed.
+* The Blob and File Share editors would sometimes constantly refresh when uploading many files at once. This issue has been fixed.
+* The 'Folder Statistics' feature had no purpose in the File Share Snapshots Management view. It has now been disabled.
+* On Linux, the File menu did not appear. This issue has been fixed.
+* When uploading a folder to a File Share, by default, only the contents of the folder were uploaded. Now, the default behavior is to upload the contents of the folder into a matching folder in the File Share.
+* The ordering of buttons in several dialogs had been reversed. This issue has been fixed.
+* Various security related fixes.
 
 ### <a name="known-issues"></a>Bilinen Sorunlar
-* Nadiren de olsa, ağaç odağı Hızlı erişimi takılabilir. Odağı Ayır için Tümünü Yenile yapabilirsiniz.
-* Azure Stack hedeflerken, ekleme blobları gibi belirli dosyaları karşıya yükleme başarısız olabilir.
-* "İptal" görevde tıklandıktan sonra onu iptal etmek bu görev için biraz zaman alabilir. Bunun nedeni, burada açıklanan iptal filtresini kullandığımyız.
-* Yanlış PIN/akıllı kart sertifikası seçeneğini belirlerseniz, depolama Gezgini'nin kararı unutursanız studio'durdurup yeniden başlatmanız gerekir.
-* BLOB'ları (ayrı ayrı veya yeniden adlandırılmış blob kapsayıcının içinde) yeniden adlandırma, anlık görüntüler korumaz. Diğer tüm özellikleri ve meta verileri bloblar, dosyalar ve varlıklar için bir yeniden adlandırma sırasında korunur.
-* Azure Stack, şu anda dosya paylaşımlarını desteklemiyor olsa da, dosya paylaşımları düğümündeki bağlı bir Azure Stack depolama hesaplarının altında görünmeye devam eder.
-* Depolama Gezgini tarafından kullanılan Elektron Kabuk bazı GPU (grafik işlem birimi) Donanım hızlandırmalı sorun vardır. Depolama Gezgini (boş) bir boş ana penceresi görüntüleniyorsa, deneyebileceğiniz Depolama Gezgini komut satırından başlatmak ve ekleyerek GPU hızlandırmasını devre dışı bırakma `--disable-gpu` geçin:
+* In rare cases, the tree focus may get stuck on Quick Access. To unstick the focus, you can Refresh All.
+* When targeting Azure Stack, uploading certain files as append blobs may fail.
+* After clicking "Cancel" on a task, it may take a while for that task to cancel. This is because we are using the cancel filter work around described here.
+* If you choose the wrong PIN/Smartcard certificate, then you will need to restart in order to have Storage Explorer forget that decision.
+* Renaming blobs (individually or inside a renamed blob container) does not preserve snapshots. All other properties and metadata for blobs, files, and entities are preserved during a rename.
+* Although Azure Stack doesn't currently support Files Shares, a File Shares node still appears under an attached Azure Stack storage account.
+* The Electron shell used by Storage Explorer has trouble with some GPU (graphics processing unit) hardware acceleration. If Storage Explorer is displaying a blank (empty) main window, you can try launching Storage Explorer from the command line and disabling GPU acceleration by adding the `--disable-gpu` switch:
 
     ```
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Linux kullanıcıları için yüklemeniz gerekecek [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
-* Ubuntu 14.04 kullanıcıları için GCC güncel - bu aşağıdaki komutları çalıştırıp makinenizi yeniden başlatarak yapılabilir emin olmak gerekir:
+* For Linux users, you will need to install [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* For users on Ubuntu 14.04, you will need to ensure GCC is up-to-date - this can be done by running the following commands, and then restarting your machine:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -1101,34 +1251,34 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte kullan�
     sudo apt-get dist-upgrade
     ```
 
-* Ubuntu 17.04 kullanıcıları, GConf yüklemeniz gerekir - bu aşağıdaki komutları çalıştırıp makinenizi yeniden başlatarak yapılabilir:
+* For users on Ubuntu 17.04, you will need to install GConf - this can be done by running the following commands, and then restarting your machine:
 
     ```
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-096"></a>Sürüm 0.9.6
+## <a name="version-096"></a>Version 0.9.6
 02/28/2018
 
-### <a name="fixes"></a>Düzeltmeleri
-* Bir sorun, beklenen blobları/dosya Düzenleyicisi'nde listelenen engelledi. Bu sorun düzeltilmiştir.
-* Hatalı öğeleri görüntülemek için anlık görüntü görünümleri arasında geçişi kaynaklanan bir sorun. Bu sorun düzeltilmiştir.
+### <a name="fixes"></a>Fixes
+* An issue prevented expected blobs/files from being listed in the editor. This issue has been fixed.
+* An issue caused switching between snapshot views to display items incorrectly. This issue has been fixed.
 
 ### <a name="known-issues"></a>Bilinen Sorunlar
-* Depolama Gezgini, ADFS hesaplarını desteklemez.
-* Azure Stack hedeflerken, ekleme blobları gibi belirli dosyaları karşıya yükleme başarısız olabilir.
-* "İptal" görevde tıklandıktan sonra onu iptal etmek bu görev için biraz zaman alabilir. Bunun nedeni, [burada](https://github.com/Azure/azure-storage-node/issues/317)açıklanan iptal filtresini kullandığımyız.
-* Yanlış PIN/akıllı kart sertifikası seçeneğini belirlerseniz, depolama Gezgini'nin kararı unutursanız studio'durdurup yeniden başlatmanız gerekir.
-* Hesap Ayarları panelinde abonelikleri filtrelemek için kimlik bilgilerini yeniden girmeniz gerektiğini gösterebilir.
-* BLOB'ları (ayrı ayrı veya yeniden adlandırılmış blob kapsayıcının içinde) yeniden adlandırma, anlık görüntüler korumaz. Diğer tüm özellikleri ve meta verileri bloblar, dosyalar ve varlıklar için bir yeniden adlandırma sırasında korunur.
-* Azure Stack, şu anda dosya paylaşımlarını desteklemiyor olsa da, dosya paylaşımları düğümündeki bağlı bir Azure Stack depolama hesaplarının altında görünmeye devam eder.
-* Depolama Gezgini tarafından kullanılan Elektron Kabuk bazı GPU (grafik işlem birimi) Donanım hızlandırmalı sorun vardır. Depolama Gezgini (boş) bir boş ana penceresi görüntüleniyorsa, deneyebileceğiniz Depolama Gezgini komut satırından başlatmak ve ekleyerek GPU hızlandırmasını devre dışı bırakma `--disable-gpu` geçin:
+* Storage Explorer does not support ADFS accounts.
+* When targeting Azure Stack, uploading certain files as append blobs may fail.
+* After clicking "Cancel" on a task, it may take a while for that task to cancel. This is because we are using the cancel filter work around described [here](https://github.com/Azure/azure-storage-node/issues/317).
+* If you choose the wrong PIN/Smartcard certificate, then you will need to restart in order to have Storage Explorer forget that decision.
+* The account settings panel may show that you need to reenter credentials to filter subscriptions.
+* Renaming blobs (individually or inside a renamed blob container) does not preserve snapshots. All other properties and metadata for blobs, files, and entities are preserved during a rename.
+* Although Azure Stack doesn't currently support Files Shares, a File Shares node still appears under an attached Azure Stack storage account.
+* The Electron shell used by Storage Explorer has trouble with some GPU (graphics processing unit) hardware acceleration. If Storage Explorer is displaying a blank (empty) main window, you can try launching Storage Explorer from the command line and disabling GPU acceleration by adding the `--disable-gpu` switch:
 
     ```
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Ubuntu 14.04 kullanıcıları için GCC güncel - bu aşağıdaki komutları çalıştırıp makinenizi yeniden başlatarak yapılabilir emin olmak gerekir:
+* For users on Ubuntu 14.04, you will need to ensure GCC is up-to-date - this can be done by running the following commands, and then restarting your machine:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -1137,47 +1287,47 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte kullan�
     sudo apt-get dist-upgrade
     ```
 
-* Ubuntu 17.04 kullanıcıları, GConf yüklemeniz gerekir - bu aşağıdaki komutları çalıştırıp makinenizi yeniden başlatarak yapılabilir:
+* For users on Ubuntu 17.04, you will need to install GConf - this can be done by running the following commands, and then restarting your machine:
 
     ```
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-095"></a>Sürüm 0.9.5
+## <a name="version-095"></a>Version 0.9.5
 02/06/2018
 
 ### <a name="new"></a>Yeni
 
-* Dosya Paylaşımı anlık görüntüleri için destek:
-    * Oluşturup, dosya paylaşımları için anlık görüntüleri yönetin.
-    * Keşif yaparken görünümleri, dosya paylaşımlarının anlık görüntüler arasında kolayca geçiş yapabilirsiniz.
-    * Dosyalarınızı önceki sürümlerini geri yükleyin.
-* Azure Data Lake Store için Önizleme desteği:
-    * Birden çok hesabındaki ADLS kaynaklarınızı bağlanın.
-    * Bağlanmak ve ADLS kaynaklarında ADL URI'lerini kullanarak paylaşın.
-    * Temel dosya/klasör işlemleri yinelemeli olarak gerçekleştirin.
-    * Hızlı erişim için PIN tek tek klasörler.
-    * Klasör istatistikleri görüntüler.
+* Support for File Shares snapshots:
+    * Create and manage snapshots for your File Shares.
+    * Easily switch views between snapshots of your File Shares as you explore.
+    * Restore previous versions of your files.
+* Preview support for Azure Data Lake Store:
+    * Connect to your ADLS resources across multiple accounts.
+    * Connect to and share ADLS resources using ADL URIs.
+    * Perform basic file/folder operations recursively.
+    * Pin individual folders to Quick Access.
+    * Display folder statistics.
 
-### <a name="fixes"></a>Düzeltmeleri
-* Başlangıç performans geliştirmeleri.
-* Çeşitli hata düzeltmeleri.
+### <a name="fixes"></a>Fixes
+* Startup performance improvements.
+* Various bug fixes.
 
 ### <a name="known-issues"></a>Bilinen Sorunlar
-* Depolama Gezgini, ADFS hesaplarını desteklemez.
-* Azure Stack hedeflerken, ekleme blobları gibi belirli dosyaları karşıya yükleme başarısız olabilir.
-* "İptal" görevde tıklandıktan sonra onu iptal etmek bu görev için biraz zaman alabilir. Bunun nedeni, burada açıklanan iptal filtresini kullandığımyız.
-* Yanlış PIN/akıllı kart sertifikası seçeneğini belirlerseniz, depolama Gezgini'nin kararı unutursanız studio'durdurup yeniden başlatmanız gerekir.
-* Hesap Ayarları panelinde abonelikleri filtrelemek için kimlik bilgilerini yeniden girmeniz gerektiğini gösterebilir.
-* BLOB'ları (ayrı ayrı veya yeniden adlandırılmış blob kapsayıcının içinde) yeniden adlandırma, anlık görüntüler korumaz. Diğer tüm özellikleri ve meta verileri bloblar, dosyalar ve varlıklar için bir yeniden adlandırma sırasında korunur.
-* Azure Stack, şu anda dosya paylaşımlarını desteklemiyor olsa da, dosya paylaşımları düğümündeki bağlı bir Azure Stack depolama hesaplarının altında görünmeye devam eder.
-* Depolama Gezgini tarafından kullanılan Elektron Kabuk bazı GPU (grafik işlem birimi) Donanım hızlandırmalı sorun vardır. Depolama Gezgini (boş) bir boş ana penceresi görüntüleniyorsa, deneyebileceğiniz Depolama Gezgini komut satırından başlatmak ve ekleyerek GPU hızlandırmasını devre dışı bırakma `--disable-gpu` geçin:
+* Storage Explorer does not support ADFS accounts.
+* When targeting Azure Stack, uploading certain files as append blobs may fail.
+* After clicking "Cancel" on a task, it may take a while for that task to cancel. This is because we are using the cancel filter work around described here.
+* If you choose the wrong PIN/Smartcard certificate, then you will need to restart in order to have Storage Explorer forget that decision.
+* The account settings panel may show that you need to reenter credentials to filter subscriptions.
+* Renaming blobs (individually or inside a renamed blob container) does not preserve snapshots. All other properties and metadata for blobs, files, and entities are preserved during a rename.
+* Although Azure Stack doesn't currently support Files Shares, a File Shares node still appears under an attached Azure Stack storage account.
+* The Electron shell used by Storage Explorer has trouble with some GPU (graphics processing unit) hardware acceleration. If Storage Explorer is displaying a blank (empty) main window, you can try launching Storage Explorer from the command line and disabling GPU acceleration by adding the `--disable-gpu` switch:
 
     ```
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Ubuntu 14.04 kullanıcıları için GCC güncel - bu aşağıdaki komutları çalıştırıp makinenizi yeniden başlatarak yapılabilir emin olmak gerekir:
+* For users on Ubuntu 14.04, you will need to ensure GCC is up-to-date - this can be done by running the following commands, and then restarting your machine:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -1186,45 +1336,45 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte kullan�
     sudo apt-get dist-upgrade
     ```
 
-* Ubuntu 17.04 kullanıcıları, GConf yüklemeniz gerekir - bu aşağıdaki komutları çalıştırıp makinenizi yeniden başlatarak yapılabilir:
+* For users on Ubuntu 17.04, you will need to install GConf - this can be done by running the following commands, and then restarting your machine:
 
     ```
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-094-and-093"></a>0\.9.4 ve 0.9.3 sürümü
-21/01/2018
+## <a name="version-094-and-093"></a>Version 0.9.4 and 0.9.3
+01/21/2018
 
 ### <a name="new"></a>Yeni
-* Mevcut Depolama Gezgini pencereniz ne zaman yeniden kullanılan olacaktır:
-    * Depolama Gezgini'nde oluşturulan doğrudan bağlantılar açılıyor.
-    * Depolama Gezgini, portaldan açılıyor.
-    * Depolama Gezgini (çok yakında) Azure depolama VS Code uzantı açılıyor.
-* Depolama Gezgini içinde yeni Depolama Gezgini pencereden açtığınız özelliği eklendi.
-    * Windows için bir dosya menüsü altında ve bağlam menüsünde görev çubuğunun 'Yeni pencere' seçeneği yoktur.
-    * Mac için bir uygulama menüsü altındaki 'Yeni pencere' seçeneği yoktur.
+* Your existing Storage Explorer window will be re-used when:
+    * Opening direct links generated in Storage Explorer.
+    * Opening Storage Explorer from portal.
+    * Opening Storage Explorer from Azure Storage VS Code extension (coming soon).
+* Added ability to open a new Storage Explorer window from within Storage Explorer.
+    * For Windows, there is a 'New Window' option under File Menu and in the context menu of the task bar.
+    * For Mac, there is a 'New Window' option under App Menu.
 
-### <a name="fixes"></a>Düzeltmeleri
-* Bir güvenlik sorunu düzeltildi. En yakın zamanda 0.9.4 yükseltin.
-* Eski etkinlikler uygun şekilde temizlendi değil. Bu, uzun çalışan işleri performansı etkilenir. Bunlar artık doğru şekilde temizlenir.
-* Çok sayıda dosya ve dizinleri içeren Eylemler, bazen dondurmak Depolama Gezgini'ni neden olur. Azure dosya paylaşımları için istekleri artık sistem kaynak kullanımını sınırlamak için kısıtlanmış.
+### <a name="fixes"></a>Fixes
+* Fixed a security issue. Please upgrade to 0.9.4 at your earliest convenience.
+* Old activities were not appropriately being cleaned up. This affected the performance of long running jobs. They are now being cleaned up correctly.
+* Actions involving large numbers of files and directories would occasionally cause Storage Explorer to freeze. Requests to Azure for File Shares are now throttled to limit system resource use.
 
 ### <a name="known-issues"></a>Bilinen Sorunlar
-* Depolama Gezgini, ADFS hesaplarını desteklemez.
-* Kısayol tuşları "Görünümü Gezgini" ve "Görünümü hesap yönetimi" Ctrl olmalıdır / Cmd + SHIFT + E ve Ctrl / Cmd + Shift + A sırasıyla.
-* Azure Stack hedeflerken, ekleme blobları gibi belirli dosyaları karşıya yükleme başarısız olabilir.
-* "İptal" görevde tıklandıktan sonra onu iptal etmek bu görev için biraz zaman alabilir. Bunun nedeni, burada açıklanan iptal filtresini kullandığımyız.
-* Yanlış PIN/akıllı kart sertifikası seçeneğini belirlerseniz, depolama Gezgini'nin kararı unutursanız studio'durdurup yeniden başlatmanız gerekir.
-* Hesap Ayarları panelinde abonelikleri filtrelemek için kimlik bilgilerini yeniden girmeniz gerektiğini gösterebilir.
-* BLOB'ları (ayrı ayrı veya yeniden adlandırılmış blob kapsayıcının içinde) yeniden adlandırma, anlık görüntüler korumaz. Diğer tüm özellikleri ve meta verileri bloblar, dosyalar ve varlıklar için bir yeniden adlandırma sırasında korunur.
-* Azure Stack, şu anda dosya paylaşımlarını desteklemiyor olsa da, dosya paylaşımları düğümündeki bağlı bir Azure Stack depolama hesaplarının altında görünmeye devam eder.
-* Depolama Gezgini tarafından kullanılan Elektron Kabuk bazı GPU (grafik işlem birimi) Donanım hızlandırmalı sorun vardır. Depolama Gezgini (boş) bir boş ana penceresi görüntüleniyorsa, deneyebileceğiniz Depolama Gezgini komut satırından başlatmak ve ekleyerek GPU hızlandırmasını devre dışı bırakma `--disable-gpu` geçin:
+* Storage Explorer does not support ADFS accounts.
+* Shortcut keys for "View Explorer" and "View Account Management" should be Ctrl/Cmd+Shift+E and Ctrl/Cmd+Shift+A respectively.
+* When targeting Azure Stack, uploading certain files as append blobs may fail.
+* After clicking "Cancel" on a task, it may take a while for that task to cancel. This is because we are using the cancel filter work around described here.
+* If you choose the wrong PIN/Smartcard certificate, then you will need to restart in order to have Storage Explorer forget that decision.
+* The account settings panel may show that you need to reenter credentials to filter subscriptions.
+* Renaming blobs (individually or inside a renamed blob container) does not preserve snapshots. All other properties and metadata for blobs, files, and entities are preserved during a rename.
+* Although Azure Stack doesn't currently support Files Shares, a File Shares node still appears under an attached Azure Stack storage account.
+* The Electron shell used by Storage Explorer has trouble with some GPU (graphics processing unit) hardware acceleration. If Storage Explorer is displaying a blank (empty) main window, you can try launching Storage Explorer from the command line and disabling GPU acceleration by adding the `--disable-gpu` switch:
 
     ```
     ./StorageExplorer --disable-gpu
     ```
 
-* Ubuntu 14.04 kullanıcıları için GCC güncel - bu aşağıdaki komutları çalıştırıp makinenizi yeniden başlatarak yapılabilir emin olmak gerekir:
+* For users on Ubuntu 14.04, you will need to ensure GCC is up-to-date - this can be done by running the following commands, and then restarting your machine:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -1233,62 +1383,62 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte kullan�
     sudo apt-get dist-upgrade
     ```
 
-* Ubuntu 17.04 kullanıcıları, GConf yüklemeniz gerekir - bu aşağıdaki komutları çalıştırıp makinenizi yeniden başlatarak yapılabilir:
+* For users on Ubuntu 17.04, you will need to install GConf - this can be done by running the following commands, and then restarting your machine:
 
     ```
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-092"></a>Sürüm 0.9.2
+## <a name="version-092"></a>Version 0.9.2
 11/01/2017
 
-### <a name="hotfixes"></a>Düzeltmeler
-* Beklenmeyen veri değişikliklerini Edm.DateTime değerlerini yerel saat dilimi bağlı olarak tablo varlıkları düzenlerken mümkün. Düzenleyicisi bir düz metin kutusu Edm.DateTime değerleri üzerinde kesin, tutarlı denetim vererek olarak kullanır.
-* Bir grup adı ve anahtarı ile eklendiğinde blobları karşıya yükleme/indirme başlatılmayacaktır. Bu sorun düzeltilmiştir.
-* Daha önce Depolama Gezgini yalnızca eski hesap varsa sağlamalarını ister veya daha fazla hesabın aboneliklerini seçilmiştir. Hesabı tamamen filtrelendi bile Depolama Gezgini, artık ister.
-* Azure ABD kamu uç noktaları etki alanı yanlış. Düzeltilmiştir.
-* Bazen hesaplarını yönetme panosunda Uygula düğmesini tıklatın bırakmak zordu. Bu artık gerçekleşmelidir.
+### <a name="hotfixes"></a>Hotfixes
+* Unexpected data changes were possible when editing Edm.DateTime values for table entities depending on the local time zone. The editor now uses a plain text box, giving precise, consistent control over Edm.DateTime values.
+* Uploading/downloading a group of blobs when attached with name and key would not start. This issue has been fixed.
+* Previously Storage Explorer would only prompt you to reauthenticate a stale account if one or more of the account's subscriptions was selected. Now Storage Explorer will prompt you even if the account is fully filtered out.
+* The endpoints domain for Azure US Government was wrong. It has been fixed.
+* The apply button on the Manage Accounts panel was sometimes hard to click. This should no longer happen.
 
 ### <a name="new"></a>Yeni
-* Azure Cosmos DB için Önizleme desteği:
-    * [Çevrimiçi belgeleri](./cosmos-db/storage-explorer.md)
-    * Veritabanları ve Koleksiyonlar oluşturun
+* Preview support for Azure Cosmos DB:
+    * [Online Documentation](./cosmos-db/storage-explorer.md)
+    * Create databases and collections
     * Verileri denetleme
-    * Sorgu, oluşturma veya belgeler silme
-    * Saklı yordamlar, kullanıcı tanımlı işlevler ve tetikleyiciler güncelleştir
-    * Bağlanmak ve veritabanlarınızı yönetmek için bağlantı dizelerini kullanma
-* Birçok küçük blobu karşıya yükleme/indirme performansı geliştirildi.
-* Blobu karşıya yükleme grubu veya blob indirme grubundaki başarısızlık varsa "Tümünü yeniden deneyin" eylemi eklendi.
-* Ağ bağlantısı kaybedildi algılarsa, Depolama Gezgini artık yineleme sırasında blob karşıya yükleme/indirme duraklatılır. Ağ bağlantısı yeniden kurulmuş silindikten sonra yineleme sonra sürdürebilirsiniz.
-* "Tümünü Kapat", "Kapat diğerleri" ve bağlam menüsünden "Kapat" sekmeler özelliği eklendi.
-* Depolama Gezgini, artık yerel iletişim kutuları ve yerel bağlam menüleri kullanır.
-* Depolama Gezgini artık daha erişilebilir. Geliştirmeler şunlardır:
-    * Geliştirilmiş ekran okuyucu desteği, NVDA üzerinde Windows ve Mac üzerinde VoiceOver
-    * Geliştirilmiş Yüksek karşıtlık teması oluşturma
-    * Sekme ve klavye klavye odağı giderir
+    * Query, create, or delete documents
+    * Update stored procedures, user-defined functions, or triggers
+    * Use connection strings to connect to and manage your databases
+* Improved the performance of uploading/downloading many small blobs.
+* Added a "Retry All" action if there are failures in a blob upload group or blob download group.
+* Storage Explorer will now pause iteration during blob upload/download if it detects your network connection has been lost. You can then resume iteration once the network connection has been re-established.
+* Added the ability to "Close All", "Close Others", and "Close" tabs via context menu.
+* Storage Explorer now uses native dialogs and native context menus.
+* Storage Explorer is now more accessible. Improvements include:
+    * Improved screen reader support, for NVDA on Windows, and for VoiceOver on Mac
+    * Improved high contrast theming
+    * Keyboard tabbing and keyboard focus fixes
 
-### <a name="fixes"></a>Düzeltmeleri
-* Açın veya geçersiz bir Windows dosya adına sahip bir blobu indirmek denediyseniz, işlem başarısız olur. Depolama Gezgini, artık bir blob adı geçersiz tümüyse ve, kodlayamadığı veya blob atlamak isteyip istemediğinizi sorar. Depolama Gezgini, bir dosya adı kodlanması ve size sorun görünüp görünmeyeceğini de algılar, karşıya yüklemeden önce çözmek istiyor.
-* BLOB karşıya yükleme sırasında hedef blob kapsayıcısı için düzenleyici bazen düzgün yenilenmemesi. Bu sorun düzeltilmiştir.
-* Bağlantı dizelerini ve SAS URI'ın çeşitli forms desteği gerileyen. Size, tüm bilinen sorunları giderdikten ancak başka bir sorunla karşılaşırsanız lütfen geri bildirim gönderin.
-* Güncelleştirme bildirimi 0.9.0 bazı kullanıcılar için kesildi. Bu sorun düzeltilmiştir ve bunlar için hatadan etkilenen, Depolama Gezgini en son sürümünü el ile karşıdan yükleyebileceğiniz [burada](https://azure.microsoft.com/features/storage-explorer/).
+### <a name="fixes"></a>Fixes
+* If you tried to open or download a blob with an invalid Windows file name, the operation would fail. Storage Explorer will now detect if a blob name is invalid and ask if you would like to either encode it or skip the blob. Storage Explorer will also detect if a file name appears to be encoded and ask you if want to decode it before uploading.
+* During blob upload, the editor for the target blob container would sometimes not properly refresh. This issue has been fixed.
+* The support for several forms of connection strings and SAS URIs regressed. We have addressed all known issues, but please send feedback if you encounter further issues.
+* The update notification was broken for some users in 0.9.0. This issue has been fixed, and for those affected by the bug, you can manually download the latest version of Storage Explorer [here](https://azure.microsoft.com/features/storage-explorer/).
 
 ### <a name="known-issues"></a>Bilinen Sorunlar
-* Depolama Gezgini, ADFS hesaplarını desteklemez.
-* Kısayol tuşları "Görünümü Gezgini" ve "Görünümü hesap yönetimi" Ctrl olmalıdır / Cmd + SHIFT + E ve Ctrl / Cmd + Shift + A sırasıyla.
-* Azure Stack hedeflerken, ekleme blobları gibi belirli dosyaları karşıya yükleme başarısız olabilir.
-* "İptal" görevde tıklandıktan sonra onu iptal etmek bu görev için biraz zaman alabilir. Bunun nedeni, burada açıklanan iptal filtresini kullandığımyız.
-* Yanlış PIN/akıllı kart sertifikası seçeneğini belirlerseniz, depolama Gezgini'nin kararı unutursanız studio'durdurup yeniden başlatmanız gerekir.
-* Hesap Ayarları panelinde abonelikleri filtrelemek için kimlik bilgilerini yeniden girmeniz gerektiğini gösterebilir.
-* BLOB'ları (ayrı ayrı veya yeniden adlandırılmış blob kapsayıcının içinde) yeniden adlandırma, anlık görüntüler korumaz. Diğer tüm özellikleri ve meta verileri bloblar, dosyalar ve varlıklar için bir yeniden adlandırma sırasında korunur.
-* Azure Stack, şu anda dosya paylaşımlarını desteklemiyor olsa da, dosya paylaşımları düğümündeki bağlı bir Azure Stack depolama hesaplarının altında görünmeye devam eder.
-* Depolama Gezgini tarafından kullanılan Elektron Kabuk bazı GPU (grafik işlem birimi) Donanım hızlandırmalı sorun vardır. Depolama Gezgini (boş) bir boş ana penceresi görüntüleniyorsa, deneyebileceğiniz Depolama Gezgini komut satırından başlatmak ve ekleyerek GPU hızlandırmasını devre dışı bırakma `--disable-gpu` geçin:
+* Storage Explorer does not support ADFS accounts.
+* Shortcut keys for "View Explorer" and "View Account Management" should be Ctrl/Cmd+Shift+E and Ctrl/Cmd+Shift+A respectively.
+* When targeting Azure Stack, uploading certain files as append blobs may fail.
+* After clicking "Cancel" on a task, it may take a while for that task to cancel. This is because we are using the cancel filter work around described here.
+* If you choose the wrong PIN/Smartcard certificate, then you will need to restart in order to have Storage Explorer forget that decision.
+* The account settings panel may show that you need to reenter credentials to filter subscriptions.
+* Renaming blobs (individually or inside a renamed blob container) does not preserve snapshots. All other properties and metadata for blobs, files, and entities are preserved during a rename.
+* Although Azure Stack doesn't currently support Files Shares, a File Shares node still appears under an attached Azure Stack storage account.
+* The Electron shell used by Storage Explorer has trouble with some GPU (graphics processing unit) hardware acceleration. If Storage Explorer is displaying a blank (empty) main window, you can try launching Storage Explorer from the command line and disabling GPU acceleration by adding the `--disable-gpu` switch:
 
     ```
     ./StorageExplorer --disable-gpu
     ```
 
-* Ubuntu 14.04 kullanıcıları için GCC güncel - bu aşağıdaki komutları çalıştırıp makinenizi yeniden başlatarak yapılabilir emin olmak gerekir:
+* For users on Ubuntu 14.04, you will need to ensure GCC is up-to-date - this can be done by running the following commands, and then restarting your machine:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -1297,54 +1447,54 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte kullan�
     sudo apt-get dist-upgrade
     ```
 
-* Ubuntu 17.04 kullanıcıları, GConf yüklemeniz gerekir - bu aşağıdaki komutları çalıştırıp makinenizi yeniden başlatarak yapılabilir:
+* For users on Ubuntu 17.04, you will need to install GConf - this can be done by running the following commands, and then restarting your machine:
 
     ```
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-091-and-090"></a>0\.9.1 ve 0.9.0 sürümü
+## <a name="version-091-and-090"></a>Version 0.9.1 and 0.9.0
 10/20/2017
 ### <a name="new"></a>Yeni
-* Azure Cosmos DB için Önizleme desteği:
-    * [Çevrimiçi belgeleri](./cosmos-db/storage-explorer.md)
-    * Veritabanları ve Koleksiyonlar oluşturun
+* Preview support for Azure Cosmos DB:
+    * [Online Documentation](./cosmos-db/storage-explorer.md)
+    * Create databases and collections
     * Verileri denetleme
-    * Sorgu, oluşturma veya belgeler silme
-    * Saklı yordamlar, kullanıcı tanımlı işlevler ve tetikleyiciler güncelleştir
-    * Bağlanmak ve veritabanlarınızı yönetmek için bağlantı dizelerini kullanma
-* Birçok küçük blobu karşıya yükleme/indirme performansı geliştirildi.
-* Blobu karşıya yükleme grubu veya blob indirme grubundaki başarısızlık varsa "Tümünü yeniden deneyin" eylemi eklendi.
-* Ağ bağlantısı kaybedildi algılarsa, Depolama Gezgini artık yineleme sırasında blob karşıya yükleme/indirme duraklatılır. Ağ bağlantısı yeniden kurulmuş silindikten sonra yineleme sonra sürdürebilirsiniz.
-* "Tümünü Kapat", "Kapat diğerleri" ve bağlam menüsünden "Kapat" sekmeler özelliği eklendi.
-* Depolama Gezgini, artık yerel iletişim kutuları ve yerel bağlam menüleri kullanır.
-* Depolama Gezgini artık daha erişilebilir. Geliştirmeler şunlardır:
-    * Geliştirilmiş ekran okuyucu desteği, NVDA üzerinde Windows ve Mac üzerinde VoiceOver
-    * Geliştirilmiş Yüksek karşıtlık teması oluşturma
-    * Sekme ve klavye klavye odağı giderir
+    * Query, create, or delete documents
+    * Update stored procedures, user-defined functions, or triggers
+    * Use connection strings to connect to and manage your databases
+* Improved the performance of uploading/downloading many small blobs.
+* Added a "Retry All" action if there are failures in a blob upload group or blob download group.
+* Storage Explorer will now pause iteration during blob upload/download if it detects your network connection has been lost. You can then resume iteration once the network connection has been re-established.
+* Added the ability to "Close All", "Close Others", and "Close" tabs via context menu.
+* Storage Explorer now uses native dialogs and native context menus.
+* Storage Explorer is now more accessible. Improvements include:
+    * Improved screen reader support, for NVDA on Windows, and for VoiceOver on Mac
+    * Improved high contrast theming
+    * Keyboard tabbing and keyboard focus fixes
 
-### <a name="fixes"></a>Düzeltmeleri
-* Açın veya geçersiz bir Windows dosya adına sahip bir blobu indirmek denediyseniz, işlem başarısız olur. Depolama Gezgini, artık bir blob adı geçersiz tümüyse ve, kodlayamadığı veya blob atlamak isteyip istemediğinizi sorar. Depolama Gezgini, bir dosya adı kodlanması ve size sorun görünüp görünmeyeceğini de algılar, karşıya yüklemeden önce çözmek istiyor.
-* BLOB karşıya yükleme sırasında hedef blob kapsayıcısı için düzenleyici bazen düzgün yenilenmemesi. Bu sorun düzeltilmiştir.
-* Bağlantı dizelerini ve SAS URI'ın çeşitli forms desteği gerileyen. Size, tüm bilinen sorunları giderdikten ancak başka bir sorunla karşılaşırsanız lütfen geri bildirim gönderin.
-* Güncelleştirme bildirimi 0.9.0 bazı kullanıcılar için kesildi. Bu sorun düzeltilmiştir ve bunlar için hatadan etkilenen, Depolama Gezgini en son sürümünü el ile karşıdan yükleyebileceğiniz [burada](https://azure.microsoft.com/features/storage-explorer/)
+### <a name="fixes"></a>Fixes
+* If you tried to open or download a blob with an invalid Windows file name, the operation would fail. Storage Explorer will now detect if a blob name is invalid and ask if you would like to either encode it or skip the blob. Storage Explorer will also detect if a file name appears to be encoded and ask you if want to decode it before uploading.
+* During blob upload, the editor for the target blob container would sometimes not properly refresh. This issue has been fixed.
+* The support for several forms of connection strings and SAS URIs regressed. We have addressed all known issues, but please send feedback if you encounter further issues.
+* The update notification was broken for some users in 0.9.0. This issue has been fixed, and for those affected by the bug, you can manually download the latest version of Storage Explorer [here](https://azure.microsoft.com/features/storage-explorer/)
 
 ### <a name="known-issues"></a>Bilinen Sorunlar
-* Depolama Gezgini, ADFS hesaplarını desteklemez.
-* Kısayol tuşları "Görünümü Gezgini" ve "Görünümü hesap yönetimi" Ctrl olmalıdır / Cmd + SHIFT + E ve Ctrl / Cmd + Shift + A sırasıyla.
-* Azure Stack hedeflerken, ekleme blobları gibi belirli dosyaları karşıya yükleme başarısız olabilir.
-* "İptal" görevde tıklandıktan sonra onu iptal etmek bu görev için biraz zaman alabilir. Bunun nedeni, burada açıklanan iptal filtresini kullandığımyız.
-* Yanlış PIN/akıllı kart sertifikası seçeneğini belirlerseniz, depolama Gezgini'nin kararı unutursanız studio'durdurup yeniden başlatmanız gerekir.
-* Hesap Ayarları panelinde abonelikleri filtrelemek için kimlik bilgilerini yeniden girmeniz gerektiğini gösterebilir.
-* BLOB'ları (ayrı ayrı veya yeniden adlandırılmış blob kapsayıcının içinde) yeniden adlandırma, anlık görüntüler korumaz. Diğer tüm özellikleri ve meta verileri bloblar, dosyalar ve varlıklar için bir yeniden adlandırma sırasında korunur.
-* Azure Stack, şu anda dosya paylaşımlarını desteklemiyor olsa da, dosya paylaşımları düğümündeki bağlı bir Azure Stack depolama hesaplarının altında görünmeye devam eder.
-* Depolama Gezgini tarafından kullanılan Elektron Kabuk bazı GPU (grafik işlem birimi) Donanım hızlandırmalı sorun vardır. Depolama Gezgini (boş) bir boş ana penceresi görüntüleniyorsa, deneyebileceğiniz Depolama Gezgini komut satırından başlatmak ve ekleyerek GPU hızlandırmasını devre dışı bırakma `--disable-gpu` geçin:
+* Storage Explorer does not support ADFS accounts.
+* Shortcut keys for "View Explorer" and "View Account Management" should be Ctrl/Cmd+Shift+E and Ctrl/Cmd+Shift+A respectively.
+* When targeting Azure Stack, uploading certain files as append blobs may fail.
+* After clicking "Cancel" on a task, it may take a while for that task to cancel. This is because we are using the cancel filter work around described here.
+* If you choose the wrong PIN/Smartcard certificate, then you will need to restart in order to have Storage Explorer forget that decision.
+* The account settings panel may show that you need to reenter credentials to filter subscriptions.
+* Renaming blobs (individually or inside a renamed blob container) does not preserve snapshots. All other properties and metadata for blobs, files, and entities are preserved during a rename.
+* Although Azure Stack doesn't currently support Files Shares, a File Shares node still appears under an attached Azure Stack storage account.
+* The Electron shell used by Storage Explorer has trouble with some GPU (graphics processing unit) hardware acceleration. If Storage Explorer is displaying a blank (empty) main window, you can try launching Storage Explorer from the command line and disabling GPU acceleration by adding the `--disable-gpu` switch:
 
     ```
     ./StorageExplorer --disable-gpu
     ```
 
-* Ubuntu 14.04 kullanıcıları için GCC güncel - bu aşağıdaki komutları çalıştırıp makinenizi yeniden başlatarak yapılabilir emin olmak gerekir:
+* For users on Ubuntu 14.04, you will need to ensure GCC is up-to-date - this can be done by running the following commands, and then restarting your machine:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -1353,38 +1503,38 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte kullan�
     sudo apt-get dist-upgrade
     ```
 
-* Ubuntu 17.04 kullanıcıları, GConf yüklemeniz gerekir - bu aşağıdaki komutları çalıştırıp makinenizi yeniden başlatarak yapılabilir:
+* For users on Ubuntu 17.04, you will need to install GConf - this can be done by running the following commands, and then restarting your machine:
 
     ```
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-0816"></a>Sürüm 0.8.16
+## <a name="version-0816"></a>Version 0.8.16
 8/21/2017
 
 ### <a name="new"></a>Yeni
-* Bir blob açtığınızda, Depolama Gezgini, bir değişiklik algılanırsa indirilen dosyayı karşıya yüklemeyi ister
-* Gelişmiş Azure Stack oturum açma deneyimi
-* Karşıya yükleme/birçok küçük dosyaları aynı anda indirme performansı geliştirildi
+* When you open a blob, Storage Explorer will prompt you to upload the downloaded file if a change is detected
+* Enhanced Azure Stack sign-in experience
+* Improved the performance of uploading/downloading many small files at the same time
 
 
-### <a name="fixes"></a>Düzeltmeleri
-* Bazı blob türleri için "bir karşıya yükleme çakışması sırasında değiştirmek" seçerek yeniden başlatılmadan karşıya yükleme bazen sonuçlanır.
-* 0\.8.15 sürümünde yüklemeleri bazen 99 oranında kabin.
-* Belirtmiyor bir dizine seçerseniz, bir dosya paylaşımına dosya yükleme henüz mevcut olduğunda, karşıya yükleme işleminiz başarısız olur.
-* Depolama Gezgini hatalı zaman damgaları için paylaşılan erişim imzalarını ve tablo sorguları oluşturma.
+### <a name="fixes"></a>Fixes
+* For some blob types, choosing to "replace" during an upload conflict would sometimes result in the upload being restarted.
+* In version 0.8.15, uploads would sometimes stall at 99%.
+* When uploading files to a file share, if you chose to upload to a directory which did not yet exist, your upload would fail.
+* Storage Explorer was incorrectly generating time stamps for shared access signatures and table queries.
 
 
 ### <a name="known-issues"></a>Bilinen Sorunlar
-* Bir ad ve anahtar bağlantı dizesini kullanarak şu anda çalışmıyor. Sonraki sürümde düzeltilecektir. O zamana kadar kullandığınız adı ve anahtarı ile ekleyin.
-* İndirme, geçersiz bir Windows dosya adı ile bir dosyayı açmaya çalışırsanız, bir dosya bulunamadı hatası neden olur.
-* "İptal" görevde tıklandıktan sonra onu iptal etmek bu görev için biraz zaman alabilir. Bu, Azure Depolama düğümü kitaplığının bir sınırlamasıdır.
-* Bir blob karşıya yükleme işlemini tamamladıktan sonra karşıya yükleme başlatılan sekmesini yenilenir. Bu, önceki davranışı farklıdır ve ayrıca bulunduğunuz kapsayıcı köküne geri alınması için neden olur.
-* Yanlış PIN/akıllı kart sertifikası seçeneğini belirlerseniz, depolama Gezgini'nin kararı unutursanız studio'durdurup yeniden başlatmanız gerekir.
-* Hesap Ayarları panelinde abonelikleri filtrelemek için kimlik bilgilerini yeniden girmeniz gerektiğini gösterebilir.
-* BLOB'ları (ayrı ayrı veya yeniden adlandırılmış blob kapsayıcının içinde) yeniden adlandırma, anlık görüntüler korumaz. Diğer tüm özellikleri ve meta verileri bloblar, dosyalar ve varlıklar için bir yeniden adlandırma sırasında korunur.
-* Azure Stack, şu anda dosya paylaşımlarını desteklemiyor olsa da, dosya paylaşımları düğümündeki bağlı bir Azure Stack depolama hesaplarının altında görünmeye devam eder.
-* Ubuntu 14.04 kullanıcıları için GCC güncel - bu aşağıdaki komutları çalıştırıp makinenizi yeniden başlatarak yapılabilir emin olmak gerekir:
+* Using a name and key connection string does not currently work. It will be fixed in the next release. Until then you can use attach with name and key.
+* If you try to open a file with an invalid Windows file name, the download will result in a file not found error.
+* After clicking "Cancel" on a task, it may take a while for that task to cancel. This is a limitation of the Azure Storage Node library.
+* After completing a blob upload, the tab which initiated the upload is refreshed. This is a change from previous behavior, and will also cause you to be taken back to the root of the container you are in.
+* If you choose the wrong PIN/Smartcard certificate, then you will need to restart in order to have Storage Explorer forget that decision.
+* The account settings panel may show that you need to reenter credentials to filter subscriptions.
+* Renaming blobs (individually or inside a renamed blob container) does not preserve snapshots. All other properties and metadata for blobs, files, and entities are preserved during a rename.
+* Although Azure Stack doesn't currently support Files Shares, a File Shares node still appears under an attached Azure Stack storage account.
+* For users on Ubuntu 14.04, you will need to ensure GCC is up-to-date - this can be done by running the following commands, and then restarting your machine:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -1393,31 +1543,31 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte kullan�
     sudo apt-get dist-upgrade
     ```
 
-* Ubuntu 17.04 kullanıcıları, GConf yüklemeniz gerekir - bu aşağıdaki komutları çalıştırıp makinenizi yeniden başlatarak yapılabilir:
+* For users on Ubuntu 17.04, you will need to install GConf - this can be done by running the following commands, and then restarting your machine:
 
     ```
     sudo apt-get install libgconf-2-4
     ```
 
-### <a name="version-0814"></a>Sürüm 0.8.14
+### <a name="version-0814"></a>Version 0.8.14
 06/22/2017
 
 ### <a name="new"></a>Yeni
 
-* 1\.7.2 birden fazla kritik güvenlik güncelleştirmelerini yararlanabilmek için güncelleştirilmiş Elektron sürümü
-* Artık hızlı bir şekilde çevrimiçi sorun giderme kılavuzu için Yardım menüsünden erişebilirsiniz
-* Depolama Gezgini sorun giderme [Kılavuzu][2]
-* Azure Stack aboneliğine bağlanma [yönergeleri][3]
+* Updated Electron version to 1.7.2 in order to take advantage of several critical security updates
+* You can now quickly access the online troubleshooting guide from the help menu
+* Storage Explorer Troubleshooting [Guide][2]
+* [Instructions][3] on connecting to an Azure Stack subscription
 
 ### <a name="known-issues"></a>Bilinen Sorunlar
 
-* Düğmeleri silme klasör onay iletişim kutusunda, Linux üzerinde fare tıklama ile kayıt ettirmezseniz. geçici çözüm, Enter tuşunu kullanmaktır
-* Ardından yanlış PIN/akıllı kart sertifikası seçeneğini belirlerseniz kararı unutursanız Depolama Gezgini sahip olmak için yeniden başlatmanız gerekecektir
-* BLOB'ları veya aynı anda yüklenen dosyalar 3'ten fazla gruba sahip hatalarına neden olabilir
-* Abonelikleri Filtrele için kimlik bilgilerini yeniden girmeye gerek Hesap Ayarları panelini Göster
-* BLOB'ları (ayrı ayrı veya yeniden adlandırılmış blob kapsayıcının içinde) yeniden adlandırma, anlık görüntüler korumaz. Diğer tüm özellikleri ve meta verileri bloblar, dosyalar ve varlıklar için bir yeniden adlandırma sırasında korunur.
-* Azure Stack, şu anda dosya paylaşımlarını desteklemiyor olsa da, dosya paylaşımları düğümündeki bağlı bir Azure Stack depolama hesaplarının altında görünmeye devam eder.
-* Ubuntu 14.04 yükleme gcc sürümü güncelleştirildi gerekir veya yükseltilmiş – yükseltme adımları aşağıda verilmiştir:
+* Buttons on the delete folder confirmation dialog don't register with the mouse clicks on Linux. work around is to use the Enter key
+* If you choose the wrong PIN/Smartcard certificate then you will need to restart in order to have Storage Explorer forget the decision
+* Having more than 3 groups of blobs or files uploading at the same time may cause errors
+* The account settings panel may show that you need to reenter credentials in order to filter subscriptions
+* Renaming blobs (individually or inside a renamed blob container) does not preserve snapshots. All other properties and metadata for blobs, files, and entities are preserved during a rename.
+* Although Azure Stack doesn't currently support File Shares, a File Shares node still appears under an attached Azure Stack storage account.
+* Ubuntu 14.04 install needs gcc version updated or upgraded – steps to upgrade are below:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -1426,32 +1576,32 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte kullan�
     sudo apt-get dist-upgrade
     ```
 
-### <a name="version-0813"></a>Sürüm 0.8.13
+### <a name="version-0813"></a>Version 0.8.13
 12.05.2017
 
 #### <a name="new"></a>Yeni
 
-* Depolama Gezgini sorun giderme [Kılavuzu][2]
-* Azure Stack aboneliğine bağlanma [yönergeleri][3]
+* Storage Explorer Troubleshooting [Guide][2]
+* [Instructions][3] on connecting to an Azure Stack subscription
 
-#### <a name="fixes"></a>Düzeltmeleri
+#### <a name="fixes"></a>Fixes
 
-* Düzenle Karşıya dosya yükleme, bellek yetersiz hatası nedeniyle yüksek bir şansına sahipti
-* Düzenle Artık PIN/akıllı kart ile oturum açabilirsiniz
-* Düzenle Portalda aç, artık Azure Çin 21Vianet, Azure Almanya, Azure ABD kamu ve Azure Stack birlikte çalışmaktadır
-* Düzenle Bir klasörü blob kapsayıcısına yüklerken "geçersiz işlem" hatası bazen oluşabilir
-* Düzenle Anlık görüntüleri yönetirken Tümünü Seç seçeneği devre dışı bırakıldı
-* Düzenle Temel Blobun meta verilerinin, anlık görüntülerinin özelliklerini görüntüledikten sonra üzerine yazılabilir
+* Fixed: File upload had a high chance of causing an out of memory error
+* Fixed: You can now sign-in with PIN/Smartcard
+* Fixed: Open in Portal now works with Azure China 21Vianet, Azure Germany, Azure US Government, and Azure Stack
+* Fixed: While uploading a folder to a blob container, an "Illegal operation" error would sometimes occur
+* Fixed: Select all was disabled while managing snapshots
+* Fixed: The metadata of the base blob might get overwritten after viewing the properties of its snapshots
 
 #### <a name="known-issues"></a>Bilinen Sorunlar
 
-* Ardından yanlış PIN/akıllı kart sertifikası seçeneğini belirlerseniz kararı unutursanız Depolama Gezgini sahip olmak için yeniden başlatmanız gerekecektir
-* Yakınlaştırma düzeyi veya uzaklaştırılacağını sırasında kısa bir süre içinde varsayılan düzeyini sıfırlayabilir
-* BLOB'ları veya aynı anda yüklenen dosyalar 3'ten fazla gruba sahip hatalarına neden olabilir
-* Abonelikleri Filtrele için kimlik bilgilerini yeniden girmeye gerek Hesap Ayarları panelini Göster
-* BLOB'ları (ayrı ayrı veya yeniden adlandırılmış blob kapsayıcının içinde) yeniden adlandırma, anlık görüntüler korumaz. Diğer tüm özellikleri ve meta verileri bloblar, dosyalar ve varlıklar için bir yeniden adlandırma sırasında korunur.
-* Azure Stack, şu anda dosya paylaşımlarını desteklemiyor olsa da, dosya paylaşımları düğümündeki bağlı bir Azure Stack depolama hesaplarının altında görünmeye devam eder.
-* Ubuntu 14.04 yükleme gcc sürümü güncelleştirildi gerekir veya yükseltilmiş – yükseltme adımları aşağıda verilmiştir:
+* If you choose the wrong PIN/Smartcard certificate then you will need to restart in order to have Storage Explorer forget the decision
+* While zoomed in or out, the zoom level may momentarily reset to the default level
+* Having more than 3 groups of blobs or files uploading at the same time may cause errors
+* The account settings panel may show that you need to reenter credentials in order to filter subscriptions
+* Renaming blobs (individually or inside a renamed blob container) does not preserve snapshots. All other properties and metadata for blobs, files, and entities are preserved during a rename.
+* Although Azure Stack doesn't currently support Files Shares, a File Shares node still appears under an attached Azure Stack storage account.
+* Ubuntu 14.04 install needs gcc version updated or upgraded – steps to upgrade are below:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -1461,40 +1611,40 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte kullan�
     ```
 
 
-### <a name="version-0812-and-0811-and-0810"></a>Sürüm 0.8.12 ve 0.8.11 ve 0.8.10
+### <a name="version-0812-and-0811-and-0810"></a>Version 0.8.12 and 0.8.11 and 0.8.10
 04/07/2017
 
 #### <a name="new"></a>Yeni
 
-* Güncelleştirme bildiriminden bir güncelleştirme yüklediğinizde, Depolama Gezgini otomatik olarak kapatılacak
-* Yerinde hızlı erişim sık erişilen kaynaklarınızla çalışmak için iyileştirilmiş bir deneyim sağlar.
-* Blob kapsayıcı Düzenleyicisi'nde kiralanmış blob ait hangi sanal makine artık görebilirsiniz
-* Artık sol tarafta Panel'i Daralt
-* Bulma indirme ile aynı zamanda artık çalışır.
-* İstatistikleri, kaynak ya da seçimi boyutunu görmek için Blob kapsayıcısını, dosya paylaşımı ve tablo düzenleyicilerde kullanın.
-* Azure Stack hesabı oturum açma için Azure Active Directory (AAD) tabanlı artık.
-* Arşiv dosyalarını üzerinde 32 MB Premium depolama hesapları için şimdi karşıya yükleyebilirsiniz
-* Geliştirilmiş erişilebilirlik desteği
-* Artık güvenilir Base-64 ekleyebilirsiniz giderek düzenleme - kodlanmış X.509 SSL sertifikaları&gt; SSL sertifikaları -&gt; sertifikaları İçeri Aktar
+* Storage Explorer will now automatically close when you install an update from the update notification
+* In-place quick access provides an enhanced experience for working with your frequently accessed resources
+* In the Blob Container editor, you can now see which virtual machine a leased blob belongs to
+* You can now collapse the left side panel
+* Discovery now runs at the same time as download
+* Use Statistics in the Blob Container, File Share, and Table editors to see the size of your resource or selection
+* You can now sign-in to Azure Active Directory (AAD) based Azure Stack accounts.
+* You can now upload archive files over 32MB to Premium storage accounts
+* Improved accessibility support
+* You can now add trusted Base-64 encoded X.509 SSL certificates by going to Edit -&gt; SSL Certificates -&gt; Import Certificates
 
-#### <a name="fixes"></a>Düzeltmeleri
+#### <a name="fixes"></a>Fixes
 
-* Düzeltildi: bir hesabın kimlik bilgilerini yeniledikten sonra ağaç görünümünde bazen otomatik olarak yeniler değil
-* Düzeltildi: öykünücüsü kuyruklar ve tablolar için SAS oluşturma geçersiz bir URL neden olur
-* Düzeltildi: proxy etkinken premium depolama hesapları artık Genişletilebilir
-* Düzeltildi: Seçili 1 veya 0 hesaplarını olsaydı hesapları Yönetim sayfasında Uygula düğmesi çalışmıyordu
-* Düzeltildi: çakışma çözümlemelerini gerektiren blobları karşıya yükleme - 0.8.11 içinde sabit başarısız olabilir
-* Düzeltildi: geri bildirim gönderme 0.8.12 içinde sabit 0.8.11 içinde-hatalı olan
+* Fixed: after refreshing an account's credentials, the tree view would sometimes not automatically refresh
+* Fixed: generating a SAS for emulator queues and tables would result in an invalid URL
+* Fixed: premium storage accounts can now be expanded while a proxy is enabled
+* Fixed: the apply button on the accounts management page would not work if you had 1 or 0 accounts selected
+* Fixed: uploading blobs that require conflict resolutions may fail - fixed in 0.8.11
+* Fixed: sending feedback was broken in 0.8.11 - fixed in 0.8.12
 
 #### <a name="known-issues"></a>Bilinen Sorunlar
 
-* İçin 0.8.10 yükselttikten sonra tüm kimlik bilgilerinizi yenilemeniz gerekecektir.
-* Veya uzaklaştırılacağını olsa da Yakınlaştırma düzeyini varsayılan düzeyini kısa bir süre içinde sıfırlayabilir.
-* BLOB'ları veya aynı anda yüklenen dosyalar 3'ten fazla gruba sahip hatalarına neden olabilir.
-* Abonelikleri Filtrele için kimlik bilgilerini yeniden girmeye gerek Hesap Ayarları panelini gösterebilir.
-* BLOB'ları (ayrı ayrı veya yeniden adlandırılmış blob kapsayıcının içinde) yeniden adlandırma, anlık görüntüler korumaz. Diğer tüm özellikleri ve meta verileri bloblar, dosyalar ve varlıklar için bir yeniden adlandırma sırasında korunur.
-* Azure Stack, şu anda dosya paylaşımlarını desteklemiyor olsa da, dosya paylaşımları düğümündeki bağlı bir Azure Stack depolama hesaplarının altında görünmeye devam eder.
-* Ubuntu 14.04 yükleme gcc sürümü güncelleştirildi gerekir veya yükseltilmiş – yükseltme adımları aşağıda verilmiştir:
+* After upgrading to 0.8.10, you will need to refresh all of your credentials.
+* While zoomed in or out, the zoom level may momentarily reset to the default level.
+* Having more than 3 groups of blobs or files uploading at the same time may cause errors.
+* The account settings panel may show that you need to reenter credentials in order to filter subscriptions.
+* Renaming blobs (individually or inside a renamed blob container) does not preserve snapshots. All other properties and metadata for blobs, files, and entities are preserved during a rename.
+* Although Azure Stack doesn't currently support Files Shares, a File Shares node still appears under an attached Azure Stack storage account.
+* Ubuntu 14.04 install needs gcc version updated or upgraded – steps to upgrade are below:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -1504,7 +1654,7 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte kullan�
     ```
 
 
-### <a name="version-089-and-088"></a>Sürüm 0.8.9 ve 0.8.8
+### <a name="version-089-and-088"></a>Version 0.8.9 and 0.8.8
 02/23/2017
 
 >[!VIDEO https://www.youtube.com/embed/R6gonK3cYAc?ecver=1]
@@ -1514,189 +1664,189 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte kullan�
 
 #### <a name="new"></a>Yeni
 
-* Depolama Gezgini 0.8.9 güncelleştirmeleri için en son sürümü otomatik olarak indirir.
-* Düzeltme: bir portal kullanarak bir depolama hesabı eklemek için oluşturulan SAS URI'SİNİN bir hataya neden olur.
-* Şimdi, oluşturmak, yönetmek ve blob anlık görüntüleri tanıtın.
-* Artık Azure Çin 21Vianet, Azure Almanya ve Azure ABD kamu hesaplarında oturum açabilirsiniz.
-* Şimdi, yakınlaştırma düzeyini değiştirebilirsiniz. Yakınlaştırma, uzaklaştırma ve yakınlaştırma sıfırlama Görünüm menüsündeki seçenekleri kullanın.
-* Unicode karakterler artık kullanıcı meta verileri BLOB ve dosyalar için desteklenir.
-* Erişilebilirlik geliştirmeleri.
-* Sonraki sürüme ait sürüm notları güncelleştirme bildiriminden görüntülenebilir. Geçerli sürüm notları Yardım menüsünden de görüntüleyebilirsiniz.
+* Storage Explorer 0.8.9 will automatically download the latest version for updates.
+* Hotfix: using a portal generated SAS URI to attach a storage account would result in an error.
+* You can now create, manage, and promote blob snapshots.
+* You can now sign-in to Azure China 21Vianet, Azure Germany, and Azure US Government accounts.
+* You can now change the zoom level. Use the options in the View menu to Zoom In, Zoom Out, and Reset Zoom.
+* Unicode characters are now supported in user metadata for blobs and files.
+* Accessibility improvements.
+* The next version's release notes can be viewed from the update notification. You can also view the current release notes from the Help menu.
 
-#### <a name="fixes"></a>Düzeltmeleri
+#### <a name="fixes"></a>Fixes
 
-* Düzeltildi: sürüm numarası artık doğru şekilde Windows üzerinde Denetim Masası'nda görüntülenir
-* Düzeltildi: arama artık 50.000 düğümlerine sınırlıdır
-* Düzeltildi: hedef dizin zaten mevcut değilse sonsuza kadar hazırladık bir dosya paylaşımına yükleyin
-* Düzeltildi: Geliştirilmiş kararlılık ve uzun indirmelere için
+* Fixed: the version number is now correctly displayed in Control Panel on Windows
+* Fixed: search is no longer limited to 50,000 nodes
+* Fixed: upload to a file share spun forever if the destination directory did not already exist
+* Fixed: improved stability for long uploads and downloads
 
 #### <a name="known-issues"></a>Bilinen Sorunlar
 
-* Veya uzaklaştırılacağını olsa da Yakınlaştırma düzeyini varsayılan düzeyini kısa bir süre içinde sıfırlayabilir.
-* Hızlı erişim, yalnızca abonelik bağlı öğeleri ile çalışır. Yerel veya anahtarı veya SAS belirteci bağlı kaynaklar bu sürümde desteklenmez.
-* Hızlı erişim, bir hedef kaynak, sahip olduğunuz kaç kaynak bağlı olarak gitmek için birkaç saniye sürebilir.
-* BLOB'ları veya aynı anda yüklenen dosyalar 3'ten fazla gruba sahip hatalarına neden olabilir.
+* While zoomed in or out, the zoom level may momentarily reset to the default level.
+* Quick Access only works with subscription based items. Local resources or resources attached via key or SAS token are not supported in this release.
+* It may take Quick Access a few seconds to navigate to the target resource, depending on how many resources you have.
+* Having more than 3 groups of blobs or files uploading at the same time may cause errors.
 
 12/16/2016
-### <a name="version-087"></a>Sürüm 0.8.7
+### <a name="version-087"></a>Version 0.8.7
 
 >[!VIDEO https://www.youtube.com/embed/Me4Y4jxoer8?ecver=1]
 
 #### <a name="new"></a>Yeni
 
-* Bir update, indirme veya kopyalama oturumu başına etkinlikleri penceresinde çakışmalarını nasıl seçebilirsiniz
-* Depolama kaynağı tam yolunu görmek için bir sekmenin üzerine getirin
-* Bir sekmede tıkladığınızda, sol tarafındaki gezinme bölmesinde, konumu ile eşitler
+* You can choose how to resolve conflicts at the beginning of an update, download or copy session in the Activities window
+* Hover over a tab to see the full path of the storage resource
+* When you click on a tab, it synchronizes with its location in the left side navigation pane
 
-#### <a name="fixes"></a>Düzeltmeleri
+#### <a name="fixes"></a>Fixes
 
-* Düzenle Artık Mac üzerinde güvenilir bir uygulama Depolama Gezgini
-* Düzenle Ubuntu 14,04 yeniden destekleniyor
-* Düzenle Bazen abonelikler yüklenirken hesap kullanıcı arabirimi yanıp sönü ekleme
-* Düzenle Bazı durumlarda, sol taraftaki Gezinti bölmesinde tüm depolama kaynakları listelenmemiştir
-* Düzenle Eylem bölmesi bazen boş eylemler gösteriliyor
-* Düzenle Son kapatılan oturumdan pencere boyutu artık korunur
-* Düzenle Bağlam menüsünü kullanarak aynı kaynak için birden çok sekme açabilirsiniz
+* Fixed: Storage Explorer is now a trusted app on Mac
+* Fixed: Ubuntu 14.04 is again supported
+* Fixed: Sometimes the add account UI flashes when loading subscriptions
+* Fixed: Sometimes not all storage resources were listed in the left side navigation pane
+* Fixed: The action pane sometimes displayed empty actions
+* Fixed: The window size from the last closed session is now retained
+* Fixed: You can open multiple tabs for the same resource using the context menu
 
 #### <a name="known-issues"></a>Bilinen Sorunlar
 
-* Hızlı erişim, yalnızca abonelik bağlı öğeleri ile çalışır. Yerel veya anahtarı veya SAS belirteci bağlı kaynaklar bu sürümde desteklenmez.
-* Hızlı erişim, bir hedef kaynak, sahip olduğunuz kaç kaynak bağlı olarak gitmek için birkaç saniye sürebilir
-* BLOB'ları veya aynı anda yüklenen dosyalar 3'ten fazla gruba sahip hatalarına neden olabilir
-* Bundan sonra yaklaşık 50.000 düğümlere - arama arama tanıtıcıları performans etkileniyor olabilir veya işlenmeyen özel durumuna neden olabilir
-* MacOS üzerinde Depolama Gezgini'ni kullanarak ilk kez, anahtar zinciri erişim için kullanıcının izni isteyen birden çok istemler görebilirsiniz. Bu istemi yeniden görünmez şekilde her zaman izin ver seçeneğini öneririz
+* Quick Access only works with subscription based items. Local resources or resources attached via key or SAS token are not supported in this release
+* It may take Quick Access a few seconds to navigate to the target resource, depending on how many resources you have
+* Having more than 3 groups of blobs or files uploading at the same time may cause errors
+* Search handles searching across roughly 50,000 nodes - after this, performance may be impacted or may cause unhandled exception
+* For the first time using the Storage Explorer on macOS, you might see multiple prompts asking for user's permission to access keychain. We suggest you select Always Allow so the prompt won't show up again
 
 11/18/2016
-### <a name="version-086"></a>Sürüm 0.8.6
+### <a name="version-086"></a>Version 0.8.6
 
 #### <a name="new"></a>Yeni
 
-* PIN, kolay gezinme için Hizmetleri hızlı erişim için en sık kullanılan artık
-* Bu gibi durumlarda, birden çok düzenleyicileri şimdi farklı sekmelerde açabilirsiniz. Geçici bir sekmede açmak için tek tıklamayla; kalıcı bir sekmede açmak için çift tıklayın. Kalıcı bir sekme sağlamak için geçici sekmesinde de tıklayabilirsiniz
-* Yaptık gözle görülür bir performans ve kararlılık geliştirmeleri yükler ve hızlı makinelerinde büyük dosyalar için özellikle indirir
-* "Sanal" boş klasörler şimdi blob kapsayıcıları oluşturulabilir
-* Artık arama yapmak için iki seçeneğiniz için sunduğumuz yeni Gelişmiş alt dize arama ile kapsamlı arama yeniden ekledik:
-    * Genel arama - yalnızca arama metin kutusuna bir arama terimi girin
-    * Kapsamlı arama - Büyüteç simgesinin yanında bir düğümü tıklatın ardından bir arama terimi yolun sonuna ekleyin veya sağ tıklayın ve "Arama gelen burada" seçin
-* Çeşitli temalar ekledik: Açık (varsayılan), koyu, Yüksek Karşıtlık siyah ve Yüksek Karşıtlık beyaz. Düzenleme - Git&gt; Tema oluşturma tercihlerinizi değiştirmek için temalar
-* Blob ve dosya özelliklerini değiştirebilirsiniz.
-* Kodlanmış (base64) ve kodlanmamış kuyruk iletilerine artık desteklenmektedir
-* Linux üzerinde bir 64-bit işletim sistemi sunulmuştur gerekli. Bu sürüm için yalnızca 64 bit Ubuntu 16.04.1 destekliyoruz LTS
-* Bizim logosu güncelleştirdik!
+* You can now pin most frequently used services to the Quick Access for easy navigation
+* You can now open multiple editors in different tabs. Single click to open a temporary tab; double click to open a permanent tab. You can also click on the temporary tab to make it a permanent tab
+* We have made noticeable performance and stability improvements for uploads and downloads, especially for large files on fast machines
+* Empty "virtual" folders can now be created in blob containers
+* We have re-introduced scoped search with our new enhanced substring search, so you now have two options for searching:
+    * Global search - just enter a search term into the search textbox
+    * Scoped search - click the magnifying glass icon next to a node, then add a search term to the end of the path, or right-click and select "Search from Here"
+* We have added various themes: Light (default), Dark, High Contrast Black, and High Contrast White. Go to Edit -&gt; Themes to change your theming preference
+* You can modify Blob and file properties
+* We now support encoded (base64) and unencoded queue messages
+* On Linux, a 64-bit OS is now required. For this release we only support 64-bit Ubuntu 16.04.1 LTS
+* We have updated our logo!
 
-#### <a name="fixes"></a>Düzeltmeleri
+#### <a name="fixes"></a>Fixes
 
-* Düzenle Ekran sorunlarını dondurma
-* Düzenle Gelişmiş güvenlik
-* Düzenle Bazen yinelenen ekli hesaplar görünebilir
-* Düzenle Tanımsız içerik türüne sahip bir blob özel durum oluşturabilir
-* Düzenle Sorgu panelinin boş bir tablo üzerinde açılması mümkün değildi
-* Düzenle Aramada hataları değiştirir
-* Düzenle "Daha fazla yükle" seçeneğine tıklandığınızda 50 ' den 100 ' e yüklenen kaynak sayısı arttı
-* Düzenle İlk çalıştırmada, bir hesap oturum açmışsa, artık varsayılan olarak bu hesaba ait tüm abonelikleri seçeceğiz
+* Fixed: Screen freezing problems
+* Fixed: Enhanced security
+* Fixed: Sometimes duplicate attached accounts could appear
+* Fixed: A blob with an undefined content type could generate an exception
+* Fixed: Opening the Query Panel on an empty table was not possible
+* Fixed: Varies bugs in Search
+* Fixed: Increased the number of resources loaded from 50 to 100 when clicking "Load More"
+* Fixed: On first run, if an account is signed into, we now select all subscriptions for that account by default
 
 #### <a name="known-issues"></a>Bilinen Sorunlar
 
-* Depolama Gezgini bu sürümde Ubuntu 14.04 üzerinde çalışmaz.
-* Aynı kaynak için birden fazla sekme açmak için sürekli olarak aynı kaynak tıklamayın. Başka bir kaynaktaki ve geri dönün ve ardından özgün kaynakta, yeniden başka bir sekmede açmak için tıklayın
-* Hızlı erişim, yalnızca abonelik bağlı öğeleri ile çalışır. Yerel veya anahtarı veya SAS belirteci bağlı kaynaklar bu sürümde desteklenmez.
-* Hızlı erişim, bir hedef kaynak, sahip olduğunuz kaç kaynak bağlı olarak gitmek için birkaç saniye sürebilir
-* BLOB'ları veya aynı anda yüklenen dosyalar 3'ten fazla gruba sahip hatalarına neden olabilir
-* Bundan sonra yaklaşık 50.000 düğümlere - arama arama tanıtıcıları performans etkileniyor olabilir veya işlenmeyen özel durumuna neden olabilir
+* This release of the Storage Explorer does not run on Ubuntu 14.04
+* To open multiple tabs for the same resource, do not continuously click on the same resource. Click on another resource and then go back and then click on the original resource to open it again in another tab
+* Quick Access only works with subscription based items. Local resources or resources attached via key or SAS token are not supported in this release
+* It may take Quick Access a few seconds to navigate to the target resource, depending on how many resources you have
+* Having more than 3 groups of blobs or files uploading at the same time may cause errors
+* Search handles searching across roughly 50,000 nodes - after this, performance may be impacted or may cause unhandled exception
 
 10/03/2016
-### <a name="version-085"></a>Sürüm 0.8.5
+### <a name="version-085"></a>Version 0.8.5
 
 #### <a name="new"></a>Yeni
 
-* Artık depolama hesaplarına ve kaynaklarına iliştirmek için Portal tarafından oluşturulan SAS anahtarları kullanabilirsiniz
+* Can now use Portal-generated SAS keys to attach to Storage Accounts and resources
 
-#### <a name="fixes"></a>Düzeltmeleri
+#### <a name="fixes"></a>Fixes
 
-* Düzeltildi: yarış durumu bazen arama sırasında düğümlerin Genişletilebilir olmayan bir duruma neden
-* Düzenle Hesap adı ve anahtarı olan depolama hesaplarına bağlanırken "HTTP kullan" çalışmaz
-* Düzenle SAS anahtarları (özel olarak Portal tarafından oluşturulan) bir "sondaki eğik çizgi" hatası döndürür
-* Düzeltildi: tablo alma sorunları
-    * Bölüm anahtarını ve satır anahtarı bazen ters
-    * "Null" Bölüm anahtarları okunamadı
+* Fixed: race condition during search sometimes caused nodes to become non-expandable
+* Fixed: "Use HTTP" doesn't work when connecting to Storage Accounts with account name and key
+* Fixed: SAS keys (specially Portal-generated ones) return a "trailing slash" error
+* Fixed: table import issues
+    * Sometimes partition key and row key were reversed
+    * Unable to read "null" Partition Keys
 
 #### <a name="known-issues"></a>Bilinen Sorunlar
 
-* Bundan sonra yaklaşık 50.000 düğümlere - arama arama tanıtıcıları performans etkileniyor olabilir
-* Dosyaları genişletin çalışılırken bir hata gösterir şekilde azure Stack dosyaları, şu anda desteklemiyor
+* Search handles searching across roughly 50,000 nodes - after this, performance may be impacted
+* Azure Stack doesn't currently support Files, so trying to expand Files will show an error
 
 09/12/2016
-### <a name="version-084"></a>Sürüm 0.8.4
+### <a name="version-084"></a>Version 0.8.4
 
 >[!VIDEO https://www.youtube.com/embed/cr5tOGyGrIQ?ecver=1]
 
 #### <a name="new"></a>Yeni
 
-* Depolama hesapları, kapsayıcılar, kuyruklar, tablolar veya paylaşım için dosya paylaşımları için doğrudan bağlantılar oluşturmak ve kaynaklarınıza - Windows ve Mac OS kolay erişim desteği
-* Blob kapsayıcıları, tablo, kuyruk, dosya paylaşımları veya arama kutusuna depolama hesaplarından arayın
-* Tablo Sorgu Oluşturucu yan tümcelerinde artık gruplandırabilirsiniz
-* Yeniden adlandırmak ve blob kapsayıcıları, dosya paylaşımları, tablolar, BLOB'lar, blob klasörleri, dosyaları ve dizinlerden SAS-eklenmiş hesapları ve kapsayıcılar içindeki kopyala/yapıştır
-* Kapsayıcıları yeniden adlandırma ve kopyalama blob ve dosya paylaşımları artık özellikleri ve meta verileri koruyun
+* Generate direct links to storage accounts, containers, queues, tables, or file shares for sharing and easy access to your resources - Windows and Mac OS support
+* Search for your blob containers, tables, queues, file shares, or storage accounts from the search box
+* You can now group clauses in the table query builder
+* Rename and copy/paste blob containers, file shares, tables, blobs, blob folders, files and directories from within SAS-attached accounts and containers
+* Renaming and copying blob containers and file shares now preserve properties and metadata
 
-#### <a name="fixes"></a>Düzeltmeleri
+#### <a name="fixes"></a>Fixes
 
-* Düzeltildi: Boole veya ikili özellikleri içerdikleri tablo varlıkları düzenleyemezsiniz
+* Fixed: cannot edit table entities if they contain boolean or binary properties
 
 #### <a name="known-issues"></a>Bilinen Sorunlar
 
-* Bundan sonra yaklaşık 50.000 düğümlere - arama arama tanıtıcıları performans etkileniyor olabilir
+* Search handles searching across roughly 50,000 nodes - after this, performance may be impacted
 
 08/03/2016
-### <a name="version-083"></a>Sürüm 0.8.3
+### <a name="version-083"></a>Version 0.8.3
 
 >[!VIDEO https://www.youtube.com/embed/HeGW-jkSd9Y?ecver=1]
 
 #### <a name="new"></a>Yeni
 
-* Kapsayıcılar, tablolar, dosya paylaşımları yeniden adlandır
-* Sorgu Oluşturucu deneyimi İyileştirildi
-* Kaydetme ve yükleme olanağı sorgular
-* Doğrudan bağlantılar için depolama hesapları veya kapsayıcılar, kuyruklar, tablolar veya dosya paylaşımı ve kaynaklarınızı kolayca erişmek için paylaşımları (salt Windows - macOS desteği çok yakında!)
-* CORS kurallarını yapılandırma ve yönetme olanağı
+* Rename containers, tables, file shares
+* Improved Query builder experience
+* Ability to save and load queries
+* Direct links to storage accounts or containers, queues, tables, or file shares for sharing and easily accessing your resources (Windows-only - macOS support coming soon!)
+* Ability to manage and configure CORS rules
 
-#### <a name="fixes"></a>Düzeltmeleri
+#### <a name="fixes"></a>Fixes
 
-* Düzenle Microsoft hesapları her 8-12 saatte bir yeniden kimlik doğrulaması gerektirir
+* Fixed: Microsoft Accounts require re-authentication every 8-12 hours
 
 #### <a name="known-issues"></a>Bilinen Sorunlar
 
-* Bazen UI dondurulmuş görünebilir - penceresinin ekranı kaplamasını bu sorunu gidermeye yardımcı olur
-* macOS yükleme yükseltilmiş izinler gerektirebilir.
-* Abonelikleri Filtrele için kimlik bilgilerini yeniden girmeye gerek Hesap Ayarları panelini Göster
-* Dosya paylaşımları, blob kapsayıcıları ve tabloları yeniden adlandırma meta verilerini veya dosya paylaşım kotası, genel erişim düzeyi veya erişim ilkeleri gibi kapsayıcı üzerindeki diğer özellikleri korumaz
-* BLOB'ları (ayrı ayrı veya yeniden adlandırılmış blob kapsayıcının içinde) yeniden adlandırma, anlık görüntüler korumaz. Blob, dosya ve varlıkların diğer tüm özellikleri ve meta verileri yeniden adlandırma sırasında korunur
-* Kopyalama veya kaynakları yeniden adlandırma SAS-eklenmiş hesapları içinde çalışmıyor
+* Sometimes the UI might appear frozen - maximizing the window helps resolve this issue
+* macOS install may require elevated permissions
+* Account settings panel may show that you need to reenter credentials in order to filter subscriptions
+* Renaming file shares, blob containers, and tables does not preserve metadata or other properties on the container, such as file share quota, public access level or access policies
+* Renaming blobs (individually or inside a renamed blob container) does not preserve snapshots. All other properties and metadata for blobs, files, and entities are preserved during a rename
+* Copying or renaming resources does not work within SAS-attached accounts
 
 07/07/2016
-### <a name="version-082"></a>Sürüm 0.8.2
+### <a name="version-082"></a>Version 0.8.2
 
 >[!VIDEO https://www.youtube.com/embed/nYgKbRUNYZA?ecver=1]
 
 #### <a name="new"></a>Yeni
 
-* Depolama hesapları, abonelikleri tarafından gruplandırılır; Geliştirme depolama ve anahtarı veya SAS bağlı kaynaklara (yerel ve eklenmiş) düğümünde gösterilir
-* "Azure hesap ayarları" panelindeki hesaplardan oturumu Kapat
-* Etkinleştirin ve oturum açma yönetmek için proxy ayarlarını yapılandırma
-* Oluşturma ve blob kiralama Kes
-* Açık blob kapsayıcıları, kuyruklar, tablolar ve dosyalar tek bir tıklatmayla
+* Storage Accounts are grouped by subscriptions; development storage and resources attached via key or SAS are shown under (Local and Attached) node
+* Sign out from accounts in "Azure Account Settings" panel
+* Configure proxy settings to enable and manage sign-in
+* Create and break blob leases
+* Open blob containers, queues, tables, and files with single-click
 
-#### <a name="fixes"></a>Düzeltmeleri
+#### <a name="fixes"></a>Fixes
 
-* Düzeltildi: .NET veya Java kitaplıkları ile eklenen kuyruk iletileri düzgün base64 kodlaması çözülür değil
-* Düzeltildi: $metrics tablolarını Blob Depolama hesapları için gösterilmez
-* Düzeltildi: tablolar düğümü için yerel (Geliştirme) depolama çalışmıyor
+* Fixed: queue messages inserted with .NET or Java libraries are not properly decoded from base64
+* Fixed: $metrics tables are not shown for Blob Storage accounts
+* Fixed: tables node does not work for local (Development) storage
 
 #### <a name="known-issues"></a>Bilinen Sorunlar
 
-* macOS yükleme yükseltilmiş izinler gerektirebilir.
+* macOS install may require elevated permissions
 
 06/15/2016
-### <a name="version-080"></a>Sürüm 0.8.0
+### <a name="version-080"></a>Version 0.8.0
 
 >[!VIDEO https://www.youtube.com/embed/ycfQhKztSIY?ecver=1]
 
@@ -1706,42 +1856,42 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte kullan�
 
 #### <a name="new"></a>Yeni
 
-* Dosya paylaşım desteği: görüntüleme, karşıya yükleme, indirme, dosyaları ve dizinleri, SAS URI'leriyle kopyalama (oluşturma ve bağlanma)
-* Depolama için SAS URI'leri veya hesap anahtarları ile bağlanmak için kullanıcı deneyimi İyileştirildi
-* Tablo sorgusu sonuçlarını dışarı aktarma
-* Tablo sütunları yeniden sıralamayı ve özelleştirme
-* $Logs blob kapsayıcıları ve $metrics tablolarını depolama hesapları için etkinleştirilmiş ölçümleri ile görüntüleme
-* Geliştirilmiş dışarı aktarma ve alma davranışı, özellik değeri türü artık içerir
+* File share support: viewing, uploading, downloading, copying files and directories, SAS URIs (create and connect)
+* Improved user experience for connecting to Storage with SAS URIs or account keys
+* Export table query results
+* Table column reordering and customization
+* Viewing $logs blob containers and $metrics tables for Storage Accounts with enabled metrics
+* Improved export and import behavior, now includes property value type
 
-#### <a name="fixes"></a>Düzeltmeleri
+#### <a name="fixes"></a>Fixes
 
-* Düzeltildi: yükleme veya indirme büyük BLOB'ları eksik karşıya yükleme/yüklemeler neden olabilir
-* Düzeltildi: düzenleme, ekleme veya bir sayısal dize değeri ("1") sahip bir varlık alma, çift dönüştürür
-* Düzenle Yerel geliştirme ortamındaki Tablo düğümü genişletilemiyor
+* Fixed: uploading or downloading large blobs can result in incomplete uploads/downloads
+* Fixed: editing, adding, or importing an entity with a numeric string value ("1") will convert it to double
+* Fixed: Unable to expand the table node in the local development environment
 
 #### <a name="known-issues"></a>Bilinen Sorunlar
 
-* $metrics tablolarını, Blob Depolama hesapları için görünür değildir.
-* İletileri Base64 kodlama kullanılarak kodlanır, program aracılığıyla eklenen kuyruk iletileri düzgün görüntülenmeyebilir
+* $metrics tables are not visible for Blob Storage accounts
+* Queue messages added programmatically may not be displayed correctly if the messages are encoded using Base64 encoding
 
 05/17/2016
-### <a name="version-07201605090"></a>Sürüm 0.7.20160509.0
+### <a name="version-07201605090"></a>Version 0.7.20160509.0
 
 #### <a name="new"></a>Yeni
 
-* Daha iyi hata işleme için uygulama kilitlenmeleri
+* Better error handling for app crashes
 
-#### <a name="fixes"></a>Düzeltmeleri
+#### <a name="fixes"></a>Fixes
 
-* Oturum açma kimlik bilgileri gerekli olduğunda burada bilgi çubuğu iletileri bazen gösterilmiyorsa hata düzeltildi
+* Fixed bug where InfoBar messages sometimes don't show up when sign-in credentials were required
 
 #### <a name="known-issues"></a>Bilinen Sorunlar
 
-* Takvimleri "1" veya "1,0" gibi bir ındexattributes sayısal değeri olan bir özelliğine sahip bir varlık ekleme, düzenlemeler veya içeri aktarma ve Kullanıcı onu bir `Edm.String`olarak göndermeyi denediğinde, değer istemci API 'sine Edm. Double olarak geri gönderilir
+* Tables: Adding, editing, or importing an entity that has a property with an ambiguously numeric value, such as "1" or "1.0", and the user tries to send it as an `Edm.String`, the value will come back through the client API as an Edm.Double
 
 03/31/2016
 
-### <a name="version-07201603250"></a>Sürüm 0.7.20160325.0
+### <a name="version-07201603250"></a>Version 0.7.20160325.0
 
 >[!VIDEO https://www.youtube.com/embed/imbgBRHX65A?ecver=1]
 
@@ -1749,93 +1899,93 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte kullan�
 
 #### <a name="new"></a>Yeni
 
-* Tablo desteği: görüntüleme, sorgulama, dışarı aktarma, alma ve varlıklar için CRUD işlemleri
-* Kuyruk desteği: görüntüleme, ekleme, dequeueing iletileri
-* Depolama hesapları için SAS URI'leri oluşturuluyor
-* SAS URI'leriyle birlikte depolama hesaplarınızı bağlama
-* Depolama Gezgini'ne güncelleştirme gelecekteki güncelleştirmeleri için bildirimleri
-* Güncelleştirilmiş Görünüm
+* Table support: viewing, querying, export, import, and CRUD operations for entities
+* Queue support: viewing, adding, dequeueing messages
+* Generating SAS URIs for Storage Accounts
+* Connecting to Storage Accounts with SAS URIs
+* Update notifications for future updates to Storage Explorer
+* Updated look and feel
 
-#### <a name="fixes"></a>Düzeltmeleri
+#### <a name="fixes"></a>Fixes
 
-* Performans ve güvenilirlik geliştirmeleri
+* Performance and reliability improvements
 
-### <a name="known-issues-amp-mitigations"></a>Bilinen sorunlar &amp; risk azaltma işlemleri
+### <a name="known-issues-amp-mitigations"></a>Known Issues &amp; Mitigations
 
-* Biz bu soruna sırada AzCopy kullanılmasını öneririz - büyük blob dosyalarını indirilmesini düzgün çalışmıyor
-* Hesap kimlik bilgileri değil alınan ya da giriş klasörü bulunamıyor ya da yazılamaz önbelleğe alınmış
-* Biz ekleme, düzenleme veya "1" veya "1.0" gibi bir muğlak sayısal değerine sahip bir özelliği olan bir varlık alma ve kullanıcı olarak göndermeye çalışırsa bir `Edm.String`, değeri olarak bir Edm.Double API istemcisi üzerinden geri gelir
-* Çok satırlı kayıtları içeren CSV dosyalarını içeri aktarırken, verileri kesilmiş Tasarımlı karıştırılmış veya
+* Download of large blob files does not work correctly - we recommend using AzCopy while we address this issue
+* Account credentials will not be retrieved nor cached if the home folder cannot be found or cannot be written to
+* If we are adding, editing, or importing an entity that has a property with an ambiguously numeric value, such as "1" or "1.0", and the user tries to send it as an `Edm.String`, the value will come back through the client API as an Edm.Double
+* When importing CSV files with multiline records, the data may get chopped or scrambled
 
 02/03/2016
 
-### <a name="version-07201601291"></a>Sürüm 0.7.20160129.1
+### <a name="version-07201601291"></a>Version 0.7.20160129.1
 
-#### <a name="fixes"></a>Düzeltmeleri
+#### <a name="fixes"></a>Fixes
 
-* Karşıya yükleme, indirme ve blobları kopyalama genel performansı geliştirildi
+* Improved overall performance when uploading, downloading and copying blobs
 
 01/14/2016
 
-### <a name="version-07201601050"></a>Sürüm 0.7.20160105.0
+### <a name="version-07201601050"></a>Version 0.7.20160105.0
 
 #### <a name="new"></a>Yeni
 
-* Linux desteği (OSX eşlik özellikleri)
-* BLOB kapsayıcıları ile paylaşılan erişim imzaları (SAS) anahtarı ekleme
-* Azure Çin 21Vianet için depolama hesapları ekleme
-* Özel uç noktaları ile depolama hesapları ekleme
-* Açın ve içeriğini metin ve resim blobları görüntüleyin
-* Blob özelliklerini ve meta verileri görüntüleyin ve düzenleyin
+* Linux support (parity features to OSX)
+* Add blob containers with Shared Access Signatures (SAS) key
+* Add Storage Accounts for Azure China 21Vianet
+* Add Storage Accounts with custom endpoints
+* Open and view the contents text and picture blobs
+* View and edit blob properties and metadata
 
-#### <a name="fixes"></a>Düzeltmeleri
+#### <a name="fixes"></a>Fixes
 
-* Düzeltildi: karşıya yükleme veya indirme çok sayıda BLOB (500 +) bazen beyaz bir ekran uygulamanın neden
-* Düzeltildi: kapsayıcı odaklanmak yeniden ayarlanıncaya kadar blob kapsayıcısı genel erişim düzeyi ayarlarken, yeni değer güncelleştirilmez. Ayrıca, iletişim her zaman "Genel erişim" ve değil gerçek geçerli değeri varsayılandır.
-* Daha iyi genel klavye/erişilebilirlik ve kullanıcı Arabirimi desteği
-* Boşluk ile uzun olduğunda, içerik haritaları geçmişi metni kaydırır
-* Giriş doğrulaması SAS iletişim kutusu destekler
-* Yerel depolama kullanıcı kimlik bilgilerinin süresi dolmuş olsa bile kullanılabilir olmaya devam eder
-* Blob Gezgini sağ tarafta açılan blob kapsayıcı silindiğinde, kapalı
+* Fixed: uploading or download a large number of blobs (500+) may sometimes cause the app to have a white screen
+* Fixed: when setting blob container public access level, the new value is not updated until you re-set the focus on the container. Also, the dialog always defaults to "No public access", and not the actual current value.
+* Better overall keyboard/accessibility and UI support
+* Breadcrumbs history text wraps when it's long with white space
+* SAS dialog supports input validation
+* Local storage continues to be available even if user credentials have expired
+* When an opened blob container is deleted, the blob explorer on the right side is closed
 
 #### <a name="known-issues"></a>Bilinen Sorunlar
 
-* Linux yüklemesi gereken gcc sürümü güncelleştirildi veya yükseltilmiş – yükseltme adımları aşağıda verilmiştir:
+* Linux install needs gcc version updated or upgraded – steps to upgrade are below:
     * `sudo add-apt-repository ppa:ubuntu-toolchain-r/test`
     * `sudo apt-get update`
     * `sudo apt-get upgrade`
     * `sudo apt-get dist-upgrade`
 
 11/18/2015
-### <a name="version-07201511160"></a>Sürüm 0.7.20151116.0
+### <a name="version-07201511160"></a>Version 0.7.20151116.0
 
 #### <a name="new"></a>Yeni
 
-* macOS ve Windows sürümleri
-* Oturum açma, depolama hesaplarınıza görünümü: Kurumsal hesap, Microsoft, 2fa'yı, Account kullanın.
-* Yerel geliştirme deposu (depolama öykünücüsünü kullanma yalnızca Windows)
-* Azure Resource Manager ve klasik kaynak desteği
-* Oluşturma ve bloblar, kuyruklar veya tablolar silme
-* Belirli bloblar, kuyruklar veya tablolar arayın
-* Blob kapsayıcıları içerikleri keşfedin
-* Dizinlerinden gitmek ve görüntülemek
-* Yükleme, indirme ve BLOB'ları ve klasörleri Sil
-* Blob özelliklerini ve meta verileri görüntüleyin ve düzenleyin
-* SAS anahtarları oluşturun
-* Saklı erişim ilkeleri (SAP) oluşturma ve yönetme
-* Ön eke göre BLOB Ara
-* Dosyaları karşıya yükleme veya indirme için sürükleyip bırakabilir 'n sürükleyin
+* macOS, and Windows versions
+* Sign-in to view your Storage Accounts – use your Org Account, Microsoft Account, 2FA, etc.
+* Local development storage (use storage emulator, Windows-only)
+* Azure Resource Manager and Classic resource support
+* Create and delete blobs, queues, or tables
+* Search for specific blobs, queues, or tables
+* Explore the contents of blob containers
+* View and navigate through directories
+* Upload, download, and delete blobs and folders
+* View and edit blob properties and metadata
+* Generate SAS keys
+* Manage and create Stored Access Policies (SAP)
+* Search for blobs by prefix
+* Drag 'n drop files to upload or download
 
 #### <a name="known-issues"></a>Bilinen Sorunlar
 
-* Odağı kapsayıcı üzerindeki yeniden ayarlanıncaya kadar blob kapsayıcısı genel erişim düzeyi ayarlarken, yeni değer güncelleştirilmez
-* Genel erişim düzeyi ayarlamak için iletişim kutusunu açtığınızda, bu her zaman "Genel erişim" varsayılan ve değil gerçek geçerli değer gösterilir
-* İndirilen BLOB'ları yeniden adlandırılamıyor
-* Etkinlik günlüğü girdilerini bazen "devam eden takılıyor" ne zaman bir hata oluşur ve bir hata görüntülenmez belirtin.
-* Bazen kilitleniyor ya da karşıya yükleme veya çok sayıda BLOB indirme çalışırken tamamen beyaz kapatır
-* Bazen bir kopyalama işlemi iptal ediliyor çalışmıyor
-* Geçersiz bir ad girin ve başka farklı kapsayıcı türü altında oluşturmaya devam (kuyruk/blob/tablo) bir kapsayıcı oluşturma sırasında odak yeni türüne ayarlanamaz
-* Yeni klasör oluşturamaz veya klasörü yeniden adlandır
+* When setting blob container public access level, the new value is not updated until you re-set the focus on the container
+* When you open the dialog to set the public access level, it always shows "No public access" as the default, and not the actual current value
+* Cannot rename downloaded blobs
+* Activity log entries will sometimes get "stuck" in an in progress state when an error occurs, and the error is not displayed
+* Sometimes crashes or turns completely white when trying to upload or download a large number of blobs
+* Sometimes canceling a copy operation does not work
+* During creating a container (blob/queue/table), if you input an invalid name and proceed to create another under a different container type you cannot set focus on the new type
+* Can't create new folder or rename folder
 
 
 

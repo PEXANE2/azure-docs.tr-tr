@@ -1,16 +1,16 @@
 ---
-title: Örnek Izin verilen yük dengeleyici SKU 'Ları
-description: Bu örnek ilke tanımı yük dengeleyicileri onaylanan bir SKU kullanmasını gerektirir.
+title: Sample - Allowed load balancer SKUs
+description: This sample policy definition requires that load balancers use an approved SKU defined in a parameter.
 ms.date: 01/23/2019
 ms.topic: sample
-ms.openlocfilehash: f3872ffc2fc75445f4f51573474fc359227b431b
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 3d3425211e44dc87d87a962630dec574a60614e7
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076448"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463480"
 ---
-# <a name="sample---allowed-load-balancer-skus"></a>Örnek Izin verilen yük dengeleyici SKU 'Ları
+# <a name="sample---allowed-load-balancer-skus"></a>Sample - Allowed load balancer SKUs
 
 Bu ilke, yük dengeleyicilerin onaylı bir SKU kullanmasını gerektirir. İzin verilen bir SKU dizisi belirtirsiniz.
 
@@ -24,7 +24,7 @@ Bu ilke, yük dengeleyicilerin onaylı bir SKU kullanmasını gerektirir. İzin 
 
 ## <a name="deploy-with-the-portal"></a>Portal ile dağıtma
 
-[![Ilke örneğini Azure 'a dağıtma](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Fload-balancer-skus%2Fazurepolicy.json)
+[![Deploy the Policy sample to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Fload-balancer-skus%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>PowerShell ile dağıtma
 

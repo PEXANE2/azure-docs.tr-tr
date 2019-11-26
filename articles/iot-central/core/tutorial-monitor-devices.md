@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure IoT Central cihazlarınızı Izleyin'
-description: 'Öğretici: bir operatör olarak, cihazlarınızı izlemek için Azure IoT Central uygulamanızı kullanın.'
+title: 'Tutorial: Monitor your devices in Azure IoT Central'
+description: 'Tutorial: As an operator, use your Azure IoT Central application to monitor your devices.'
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/13/2019
@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: db3a9a6ba51394a0473f64a2ccede97e5283bba1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: a07a822e863c5ff5d695a20c02bd8d295721efda
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74106578"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74480247"
 ---
 # <a name="tutorial-use-azure-iot-central-to-monitor-your-devices"></a>Öğretici: Azure IoT Central kullanarak cihazlarınızı izleme
 
@@ -41,9 +41,9 @@ Başlamadan önce, oluşturucunun Azure IoT Central uygulamasını oluşturmaya 
 
 Azure IoT Central, e-posta iletileri halinde cihazlara ilişkin bildirimler gönderir. Oluşturucu, bağlı bir klima cihazındaki sıcaklık belirli bir eşiği aştığında bildirim gönderecek şekilde bir kural eklemiştir. Oluşturucunun bildirim almayı seçtiği hesaba gönderilen e-postaları kontrol edin.
 
-[Cihazınız için kurallar ve eylemler yapılandırma](tutorial-configure-rules.md) öğreticisinin sonunda aldığınız e-posta iletisini açın. E-postada, **Ayrıntılar** bölümünde **Cihaz adı** ' nın yanındaki cihaza bağlantıyı seçin:
+[Cihazınız için kurallar ve eylemler yapılandırma](tutorial-configure-rules.md) öğreticisinin sonunda aldığınız e-posta iletisini açın. In the email, select the link to the device next to **Device Name** in the **Details** section:
 
-![Uyarı bildirimi e-postası](media/tutorial-monitor-devices/email.png)
+![Alert notification email](media/tutorial-monitor-devices/email.png)
 
 Önceki öğreticilerde oluşturduğunuz **Bağlı Klima-1** sanal cihazının **Cihaz** sayfası tarayıcıda açılır:
 
@@ -57,13 +57,13 @@ Cihaza ilişkin bilgileri görmek için **Pano** görünümünü seçin.
 
 ![Cihaz panosu](media/tutorial-monitor-devices/initial_screen.png)
 
-Panodaki grafik, cihaz sıcaklığının bir çizimini gösterir. Cihaz **özellikleri** kutucuğunda cihaz için geçerli hedef sıcaklığını da görebilirsiniz. Hedef sıcaklığın çok yüksek olmasına karar verdiniz.
+Panodaki grafik, cihaz sıcaklığının bir çizimini gösterir. You can also see the current target temperature for the device in the **Device properties** tile. Hedef sıcaklığın çok yüksek olmasına karar verdiniz.
 
 ## <a name="remediate-an-issue"></a>Sorunu düzeltme
 
 Cihazın hedef sıcaklığını değiştirmek için **Ayarlar** sayfasını kullanın:
 
-1. **Ayarlar**'ı seçin. **Sıcaklığı Ayarla**’yı 75 olarak değiştirin. Yeni hedef sıcaklığı cihaza göndermek için **Güncelleştir**’i seçin. Cihaz, ayarlar değişikliğini onayladığında, ayarın durumu **eşitlenmiş**olarak değişir:
+1. **Ayarlar**'ı seçin. **Sıcaklığı Ayarla**’yı 75 olarak değiştirin. Yeni hedef sıcaklığı cihaza göndermek için **Güncelleştir**’i seçin. When the device confirms the settings change, the status of the setting changes to **synced**:
 
     ![Ayarları güncelleştirme](media/tutorial-monitor-devices/change_settings.png)
 

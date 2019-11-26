@@ -1,6 +1,6 @@
 ---
-title: Azure Media Indexer ile medya dosyalarını dizine alma
-description: Azure Media Indexer, medya dosyalarınızın içeriğini aranabilir hale getirmenizi ve kapalı açıklamalı alt yazı ve anahtar sözcükler için tam metin dökümü oluşturmanıza olanak sağlar. Bu konuda Media Indexer nasıl kullanılacağı gösterilmektedir.
+title: Indexing Media Files with Azure Media Indexer
+description: Azure Media Indexer enables you to make content of your media files searchable and to generate a full-text transcript for closed captioning and keywords. This topic shows how to use Media Indexer.
 services: media-services
 documentationcenter: ''
 author: Asolanki
@@ -15,47 +15,42 @@ ms.topic: article
 ms.date: 09/22/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: 0987e15b1619fcd4c1c79f9a61420c092a7da886
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: b72d1483201c9c25a420d3ede0558f10229cf47c
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529195"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74464090"
 ---
-# <a name="indexing-media-files-with-azure-media-indexer"></a>Azure Media Indexer ile medya dosyalarını dizine alma
+# <a name="indexing-media-files-with-azure-media-indexer"></a>Indexing Media Files with Azure Media Indexer
 
 > [!NOTE]
-> [Azure Media Indexer](media-services-index-content.md) medya işlemcisi, 1 Ekim 2020 ' de kullanımdan kaldırılacaktır. [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) , bu eski medya işlemcisinin yerini alır. Daha fazla bilgi için [Azure Media Indexer ve Azure Media Indexer 2 ' den Azure Media Services video Indexer geçiş](migrate-indexer-v1-v2.md)konusuna bakın.
+> The [Azure Media Indexer](media-services-index-content.md) media processor will be retired on October 1st of 2020. [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) replaces this legacy media processor. For more information, see [Migrate from Azure Media Indexer and Azure Media Indexer 2 to Azure Media Services Video Indexer](migrate-indexer-v1-v2.md).
 
-Azure Media Indexer, medya dosyalarınızın içeriğini aranabilir hale getirmenizi ve kapalı açıklamalı alt yazı ve anahtar sözcükler için tam metin dökümü oluşturmanıza olanak sağlar. Tek bir medya dosyasını işleyebileceğiniz gibi, birden çok medya dosyasını toplu olarak da işleyebilirsiniz.  
+Azure Media Indexer enables you to make content of your media files searchable and to generate a full-text transcript for closed captioning and keywords. Tek bir medya dosyasını işleyebileceğiniz gibi, birden çok medya dosyasını toplu olarak da işleyebilirsiniz.  
 
-İçerik dizin oluştururken, temiz konuşma içeren medya dosyalarını (arka plan müziği, gürültü, efekt veya mikrofon hisleri olmadan) kullandığınızdan emin olun. Uygun içeriğe örnek olarak şunlar verilebilir: kayıtlı toplantılar, seminerler veya sunular. Şu içerikler dizin oluşturmak için uygun olmayabilir: Filmler, TV programları, karışık ses ve ses efektleriyle herhangi bir şey, arka plan gürültüsü olan kötü kaydedilmiş içerik (hisler).
+When indexing content, make sure to use media files that have clear speech (without background music, noise, effects, or microphone hiss). Some examples of appropriate content are: recorded meetings, lectures, or presentations. The following content might not be suitable for indexing: movies, TV shows, anything with mixed audio and sound effects, poorly recorded content with background noise (hiss).
 
-Bir dizin oluşturma işi aşağıdaki çıktıları oluşturabilir:
+An indexing job can generate the following outputs:
 
-* Şu biçimlerdeki kapalı açıklamalı altyazı dosyaları: **SAMI**, **Ttml**ve **WEBVTT**.
+* Closed caption files in the following formats: **TTML**, and **WebVTT**.
   
-    Kapalı açıklamalı altyazı dosyaları, kaynak videodaki konuşmanın ne kadar tanındığını temel alarak bir dizin oluşturma işine işaret eden, recognizme adlı bir etiket içerir.  Kullanılabilirlik için çıkış dosyalarını ekran için, tanınan bir değer kullanabilirsiniz. Düşük puan, ses kalitesi nedeniyle yetersiz dizin oluşturma sonuçları anlamına gelir.
-* Anahtar sözcük dosyası (XML).
-* SQL Server ile kullanmak için ses dizin oluşturma blob dosyası (AıB).
-  
-    Daha fazla bilgi için bkz. [Azure Media Indexer ve SQL Server AIB dosyalarını kullanma](https://azure.microsoft.com/blog/2014/11/03/using-aib-files-with-azure-media-indexer-and-sql-server/).
+    Closed caption files include a tag called Recognizability, which scores an indexing job based on how recognizable the speech in the source video is.  You can use the value of Recognizability to screen output files for usability. A low score would mean poor indexing results due to audio quality.
+* Keyword file (XML).
 
-Bu makalede, **bir varlığı dizine** eklemek ve **birden çok dosyayı indekslemek**için dizin oluşturma işlerinin nasıl oluşturulacağı gösterilmektedir.
+This article shows how to create indexing jobs to **Index an asset** and **Index multiple files**.
 
-En son Azure Media Indexer güncelleştirmeleri için bkz. [Media Services Bloglar](#preset).
+## <a name="using-configuration-and-manifest-files-for-indexing-tasks"></a>Using configuration and manifest files for indexing tasks
+You can specify more details for your indexing tasks by using a task configuration. For example, you can specify which metadata to use for your media file. This metadata is used by the language engine to expand its vocabulary, and greatly improves the speech recognition accuracy.  You are also able to specify your desired output files.
 
-## <a name="using-configuration-and-manifest-files-for-indexing-tasks"></a>Dizinleme görevleri için yapılandırma ve bildirim dosyalarını kullanma
-Bir görev yapılandırması kullanarak, dizin oluşturma görevleriniz için daha fazla ayrıntı belirtebilirsiniz. Örneğin, medya dosyanız için hangi meta verileri kullanacağınızı belirtebilirsiniz. Bu meta veriler, dil motoru tarafından sözlüğünü genişletmek için kullanılır ve konuşma tanıma doğruluğunu büyük ölçüde geliştirir.  İstediğiniz çıkış dosyalarınızı da belirtebilirsiniz.
+You can also process multiple media files at once by using a manifest file.
 
-Ayrıca, bir bildirim dosyası kullanarak birden çok medya dosyasını aynı anda işleyebilirsiniz.
+For more information, see [Task Preset for Azure Media Indexer](https://msdn.microsoft.com/library/dn783454.aspx).
 
-Daha fazla bilgi için bkz. [Azure Media Indexer Için görev önayar](https://msdn.microsoft.com/library/dn783454.aspx).
+## <a name="index-an-asset"></a>Index an asset
+The following method uploads a media file as an asset and creates a job to index the asset.
 
-## <a name="index-an-asset"></a>Varlık dizini oluşturma
-Aşağıdaki yöntem bir ortam dosyasını varlık olarak yükler ve varlığı dizine eklemek için bir iş oluşturur.
-
-Hiçbir yapılandırma dosyası belirtilmemişse, medya dosyasının tüm varsayılan ayarlarla dizini oluşturulur.
+If no configuration file is specified, the media file is indexed with all default settings.
 
 ```csharp
     static bool RunIndexingJob(string inputMediaFilePath, string outputFolder, string configurationFile = "")
@@ -147,24 +142,23 @@ Hiçbir yapılandırma dosyası belirtilmemişse, medya dosyasının tüm varsay
 ```
 
 <!-- __ -->
-### <a id="output_files"></a>Çıkış dosyaları
-Varsayılan olarak, bir dizin oluşturma işi aşağıdaki çıkış dosyalarını oluşturur. Dosyalar ilk çıkış varlığı içinde depolanır.
+### <a id="output_files"></a>Output files
+By default, an indexing job generates the following output files. The files are stored in the first output asset.
 
-Birden fazla giriş medyası dosyası olduğunda, Dizin Oluşturucu, ' JobResult. txt ' adlı iş çıktıları için bir bildirim dosyası oluşturur. Her giriş medya dosyası için, elde edilen AıB, SAMI, TTML, WebVTT ve anahtar sözcük dosyaları ardışık olarak numaralandırılır ve "alias" kullanılarak adlandırılmaktadır.
+When there is more than one input media file, Indexer generates a manifest file for the job outputs, named ‘JobResult.txt’. For each input media file, the resulting TTML, WebVTT, and keyword files are sequentially numbered and named using the "Alias."
 
 | Dosya adı | Açıklama |
 | --- | --- |
-| **Inputfilename. AIB** |Ses dizin oluşturma blob dosyası. <br/><br/> Ses dizin oluşturma Blobu (AıB) dosyası, tam metin araması kullanılarak Microsoft SQL Server 'da aranabilecek bir ikili dosyadır.  AıB dosyası basit açıklamalı alt yazı dosyalarından daha güçlüdür, çünkü her sözcük için alternatifler içerdiğinden, daha zengin bir arama deneyimine olanak sağlar. <br/> <br/>Microsoft SQL Server 2008 veya sonraki bir sürümünü çalıştıran bir makinede SQL eklentisinin Dizin oluşturucuyu yüklemeyi gerektirir. Microsoft SQL Server tam metin araması kullanarak AıB araması, WAMı tarafından oluşturulan kapalı açıklamalı altyazı dosyalarını aramadan daha doğru arama sonuçları sağlar. Bunun nedeni, AıB 'nin sese benzer kelime alternatifleri içermesine karşın kapalı açıklamalı altyazı dosyalarının her ses segmenti için en yüksek güvenilirlikli kelimeyi içermesinin nedeni. Konuşulan sözcükleri aramak en önemli öneme sahip ise, AıB 'nin Microsoft SQL Server ile birlikte kullanılması önerilir. <br/><br/>Ayrıca, yalnızca kapalı açıklamalı altyazı ve anahtar sözcük dosyalarını temel alan videoyu dizinlemek için Apache Lucene/Solr gibi diğer arama altyapılarını kullanmak da mümkündür, ancak bu, daha az doğru arama sonuçlarına neden olur. |
-| **Inputfilename. SMI**<br/>**Inputfilename. ttml**<br/>**Inputfilename. VTT** |SAMI, TTML ve WebVTT biçimlerinde kapalı açıklamalı altyazı (CC) dosyaları.<br/><br/>Ses ve video dosyalarını işitme engelli kişiler için erişilebilir hale getirmek için kullanılabilirler.<br/><br/>Kapalı açıklamalı altyazı dosyaları, kaynak videodaki konuşmanın ne kadar tanındığını temel alarak bir dizin oluşturma işi gösteren <b>Recognizbilme</b> adlı bir etiket içerir.  Kullanılabilirlik için çıkış dosyalarını ekran için, <b>tanınan</b> bir değer kullanabilirsiniz. Düşük puan, ses kalitesi nedeniyle yetersiz dizin oluşturma sonuçları anlamına gelir. |
-| **Inputfilename. kW. xml <br/>InputFileName. INFO** |Anahtar sözcük ve bilgi dosyaları. <br/><br/>Anahtar sözcük dosyası, sıklık ve konum bilgileri ile konuşma içeriğinden ayıklanan anahtar sözcükleri içeren bir XML dosyasıdır. <br/><br/>Bilgi dosyası, tanınan her terim hakkında ayrıntılı bilgiler içeren bir düz metin dosyasıdır. İlk satır özeldir ve recognizme Puanını içerir. Sonraki her satır, şu verilerin sekmeyle ayrılmış bir listesidir: başlangıç zamanı, bitiş zamanı, sözcük/tümcecik, güven. Süreler saniye cinsinden verilir ve güven 0-1 ' dan bir sayı olarak verilir. <br/><br/>Örnek satır: "1,20 1,45 Word 0,67" <br/><br/>Bu dosyalar, konuşma analizlerini gerçekleştirmek için veya Bing, Google ya da Microsoft SharePoint gibi arama altyapılarına açık hale getirmek veya daha fazla ilgili reklamları sunmak için kullanılması gibi çeşitli amaçlarla kullanılabilir. |
-| **JobResult. txt** |Çıkış bildirimi, yalnızca birden çok dosya dizinlenirken bulunur ve aşağıdaki bilgileri içerir:<br/><br/><table border="1"><tr><th>Giriş</th><th>Diğer ad</th><th>Ortam uzunluğu</th><th>Hata</th></tr><tr><td>a. mp4</td><td>Media_1</td><td>300</td><td>0</td></tr><tr><td>b. mp4</td><td>Media_2</td><td>0</td><td>3000</td></tr><tr><td>c. mp4</td><td>Media_3</td><td>600</td><td>0</td></tr></table><br/> |
+| **InputFileName.ttml**<br/>**InputFileName.vtt** |Closed Caption (CC) files in TTML and WebVTT formats.<br/><br/>They can be used to make audio and video files accessible to people with hearing disability.<br/><br/>Closed Caption files include a tag called <b>Recognizability</b> which scores an indexing job based on how recognizable the speech in the source video is.  You can use the value of <b>Recognizability</b> to screen output files for usability. A low score would mean poor indexing results due to audio quality. |
+| **InputFileName.kw.xml<br/>InputFileName.info** |Keyword and info files. <br/><br/>Keyword file is an XML file that contains keywords extracted from the speech content, with frequency and offset information. <br/><br/>Info file is a plain-text file that contains granular information about each term recognized. The first line is special and contains the Recognizability score. Each subsequent line is a tab-separated list of the following data: start time, end time, word/phrase, confidence. The times are given in seconds and the confidence is given as a number from 0-1. <br/><br/>Example line: "1.20    1.45    word    0.67" <br/><br/>These files can be used for a number of purposes, such as, to perform speech analytics, or exposed to search engines such as Bing, Google or Microsoft SharePoint to make the media files more discoverable, or even used to deliver more relevant ads. |
+| **JobResult.txt** |Output manifest, present only when indexing multiple files, containing the following information:<br/><br/><table border="1"><tr><th>InputFile</th><th>Diğer ad</th><th>MediaLength</th><th>Hata</th></tr><tr><td>a.mp4</td><td>Media_1</td><td>300</td><td>0</td></tr><tr><td>b.mp4</td><td>Media_2</td><td>0</td><td>3000</td></tr><tr><td>c.mp4</td><td>Media_3</td><td>600</td><td>0</td></tr></table><br/> |
 
-Tüm giriş medyası dosyaları başarıyla dizinlenmezse, dizin oluşturma işi 4000 hata koduyla başarısız olur. Daha fazla bilgi için bkz. [hata kodları](#error_codes).
+If not all input media files are indexed successfully, the indexing job fails with error code 4000. For more information, see [Error codes](#error_codes).
 
-## <a name="index-multiple-files"></a>Birden çok dosya dizini oluştur
-Aşağıdaki yöntem, birden çok medya dosyasını bir varlık olarak yükler ve bir toplu işteki tüm bu dosyaları dizine almak için bir iş oluşturur.
+## <a name="index-multiple-files"></a>Index multiple files
+The following method uploads multiple media files as an asset, and creates a job to index all these files in a batch.
 
-". Lst" uzantısına sahip bir bildirim dosyası oluşturulup varlığa karşıya yüklenir. Bildirim dosyası tüm varlık dosyalarının listesini içerir. Daha fazla bilgi için bkz. [Azure Media Indexer Için görev önayar](https://msdn.microsoft.com/library/dn783454.aspx).
+A manifest file with the ".lst" extension is created and uploading into the asset. The manifest file contains the list of all the asset files. For more information, see [Task Preset for Azure Media Indexer](https://msdn.microsoft.com/library/dn783454.aspx).
 
 ```csharp
     static bool RunBatchIndexingJob(string[] inputMediaFiles, string outputFolder)
@@ -241,38 +235,38 @@ Aşağıdaki yöntem, birden çok medya dosyasını bir varlık olarak yükler v
     }
 ```
 
-### <a name="partially-succeeded-job"></a>Kısmen başarılı Iş
-Tüm giriş medyası dosyaları başarıyla dizinlenmez, dizin oluşturma işi 4000 hata koduyla başarısız olur. Daha fazla bilgi için bkz. [hata kodları](#error_codes).
+### <a name="partially-succeeded-job"></a>Partially Succeeded Job
+If not all input media files are indexed successfully, the indexing job will fail with error code 4000. For more information, see [Error codes](#error_codes).
 
-Aynı çıkışlar (başarılı işler olarak) oluşturulur. Hata sütunu değerlerine göre hangi giriş dosyalarının başarısız olduğunu öğrenmek için çıkış bildirimi dosyasına başvurabilirsiniz. Başarısız olan giriş dosyaları için, elde edilen AıB, SAMI, TTML, WebVTT ve anahtar sözcük dosyaları oluşturulmaz.
+The same outputs (as succeeded jobs) are generated. You can refer to the output manifest file to find out which input files are failed, according to the Error column values. For input files that failed, the resulting TTML, WebVTT, and keyword files will NOT be generated.
 
-### <a id="preset"></a>Azure Media Indexer için görev önayarı
-Azure Media Indexer işleme, görevin yanı sıra isteğe bağlı bir görev ön ayarı sağlayarak özelleştirilebilir.  Bu yapılandırma XML biçimi aşağıda açıklanmıştır.
+### <a id="preset"></a> Task Preset for Azure Media Indexer
+The processing from Azure Media Indexer can be customized by providing an optional task preset alongside the task.  The following describes the format of this configuration xml.
 
 | Adı | Gerektirme | Açıklama |
 | --- | --- | --- |
-| **girişinin** |yanlış |Dizin eklemek istediğiniz varlık dosyaları.</p><p>Azure Media Indexer, şu medya dosyası biçimlerini destekler: MP4, WMV, MP3, M4A, WMA, AAC, WAV.</p><p>Dosya adlarını **giriş** öğesinin **ad** veya **liste** özniteliğinde (aşağıda gösterildiği gibi) belirtebilirsiniz. Hangi varlık dosyasının dizine alınmayı belirtmezseniz, birincil dosya çekilir. Birincil varlık dosyası ayarlanmamışsa, giriş varlığının ilk dosyası dizine alınır.</p><p>Varlık dosya adını açıkça belirtmek için şunu yapın:<br/>`<input name="TestFile.wmv">`<br/><br/>Aynı zamanda birden çok varlık dosyasını aynı anda dizinde (en fazla 10 dosya). Bunu yapmak için:<br/><br/><ol class="ordered"><li><p>Bir metin dosyası (bildirim dosyası) oluşturun ve bir. lst uzantısı verin. </p></li><li><p>Bu bildirim dosyasına giriş varlığınızın tüm varlık dosya adlarının listesini ekleyin. </p></li><li><p>Bildirim dosyasını varlığa ekleyin (karşıya yükleyin).  </p></li><li><p>Girişin liste özniteliğinde bildirim dosyasının adını belirtin.<br/>`<input list="input.lst">`</li></ol><br/><br/>Note: bildirim dosyasına 10 ' dan fazla dosya eklerseniz, dizin oluşturma işi 2006 hata koduyla başarısız olur. |
-| **veriyi** |yanlış |Sözlük uyarlama için kullanılan belirtilen varlık dosyalarının meta verileri.  Uygun isimler gibi standart olmayan sözlük sözcüklerini tanımak için dizin oluşturucunun hazırlanması yararlı olur.<br/>`<metadata key="..." value="..."/>` <br/><br/>Önceden tanımlanmış **anahtarlar**için **değerler** sağlayabilirsiniz. Şu anda aşağıdaki anahtarlar desteklenir:<br/><br/>"title" ve "Description"-iş için dil modelinin ince ayar ve konuşma tanıma doğruluğunu iyileştirecek sözlük uyarlaması için kullanılır.  Temel Internet değerleri, dizin oluşturma göreviniz süresince iç sözlüğü genişletmek için içeriği kullanarak bağlamsal olarak ilgili metin belgelerini bulmak için arama yapar.<br/>`<metadata key="title" value="[Title of the media file]" />`<br/>`<metadata key="description" value="[Description of the media file] />"` |
-| **özelliklerinde** <br/><br/> Sürüm 1,2 ' ye eklenmiştir. Şu anda desteklenen tek özellik konuşma tanıma ("ASR") ' dir. |yanlış |Konuşma tanıma özelliği aşağıdaki ayarlar anahtarlarına sahiptir:<table><tr><th><p>Anahtar</p></th>        <th><p>Açıklama</p></th><th><p>Örnek değer</p></th></tr><tr><td><p>Dil</p></td><td><p>Çoklu ortam dosyasında tanınmak için doğal dil.</p></td><td><p>İngilizce, Ispanyolca</p></td></tr><tr><td><p>CaptionFormats</p></td><td><p>istenen çıkış resim yazısı biçimlerinin noktalı virgülle ayrılmış listesi (varsa)</p></td><td><p>ttml; Laponca; WEBVTT</p></td></tr><tr><td><p>Generateaıb</p></td><td><p>Bir AıB dosyasının gerekip gerekmediğini belirten bir Boole bayrağı (SQL Server ve müşteri Dizin Oluşturucu IFilter ile kullanım için).  Daha fazla bilgi için bkz. <a href="https://azure.microsoft.com/blog/2014/11/03/using-aib-files-with-azure-media-indexer-and-sql-server/">Azure Media Indexer ve SQL Server AIB dosyalarını kullanma</a>.</p></td><td><p>Değeri Yanlýþ</p></td></tr><tr><td><p>GenerateKeywords</p></td><td><p>Anahtar sözcüğünün XML dosyası gerekip gerekmediğini belirten bir Boole bayrağı.</p></td><td><p>Değeri Yanlýþ. </p></td></tr><tr><td><p>ForceFullCaption</p></td><td><p>Tam açıklamalı alt yazıların zorlanıp zorlanmayacağını belirten bir Boole bayrağı (güven düzeyinden bağımsız olarak).  </p><p>Varsayılan değer false şeklindedir; bu durumda %50 ' den az güvenilirlik düzeyi olan kelimeler ve deyimler son açıklamalı alt yazı çıktılarından çıkarılır ve üç nokta ("...") ile değiştirilmiştir.  Üç nokta üst yazı kalitesi denetimi ve denetimi için faydalıdır.</p></td><td><p>Değeri Yanlýþ. </p></td></tr></table> |
+| **input** |yanlış |Asset file(s) that you want to index.</p><p>Azure Media Indexer supports the following media file formats: MP4, WMV, MP3, M4A, WMA, AAC, WAV.</p><p>You can specify the file name (s) in the **name** or **list** attribute of the **input** element (as shown below).If you do not specify which asset file to index, the primary file is picked. If no primary asset file is set, the first file in the input asset is indexed.</p><p>To explicitly specify the asset file name, do:<br/>`<input name="TestFile.wmv">`<br/><br/>You can also index multiple asset files at once (up to 10 files). Bunu yapmak için:<br/><br/><ol class="ordered"><li><p>Create a text file (manifest file) and give it an .lst extension. </p></li><li><p>Add a list of all the asset file names in your input asset to this manifest file. </p></li><li><p>Add (upload) the manifest file to the asset.  </p></li><li><p>Specify the name of the manifest file in the input’s list attribute.<br/>`<input list="input.lst">`</li></ol><br/><br/>Note: If you add more than 10 files to the manifest file, the indexing job will fail with the 2006 error code. |
+| **metadata** |yanlış |Metadata for the specified asset file(s) used for Vocabulary Adaptation.  Useful to prepare Indexer to recognize non-standard vocabulary words such as proper nouns.<br/>`<metadata key="..." value="..."/>` <br/><br/>You can supply **values** for predefined **keys**. Currently the following keys are supported:<br/><br/>“title” and “description” - used for vocabulary adaptation to tweak the language model for your job and improve speech recognition accuracy.  The values seed Internet searches to find contextually relevant text documents, using the contents to augment the internal dictionary for the duration of your Indexing task.<br/>`<metadata key="title" value="[Title of the media file]" />`<br/>`<metadata key="description" value="[Description of the media file] />"` |
+| **features** <br/><br/> Added in version 1.2. Currently, the only supported feature is speech recognition ("ASR"). |yanlış |The Speech Recognition feature has the following settings keys:<table><tr><th><p>Anahtar</p></th>        <th><p>Açıklama</p></th><th><p>Örnek değer</p></th></tr><tr><td><p>Dil</p></td><td><p>The natural language to be recognized in the multimedia file.</p></td><td><p>English, Spanish</p></td></tr><tr><td><p>CaptionFormats</p></td><td><p>a semicolon-separated list of the desired output caption formats (if any)</p></td><td><p>ttml;sami;webvtt</p></td></tr><tr><td><p></p></td><td><p> </p></td><td><p>True; False</p></td></tr><tr><td><p>GenerateKeywords</p></td><td><p>A boolean flag specifying whether or not a keyword XML file is required.</p></td><td><p>True; False. </p></td></tr><tr><td><p>ForceFullCaption</p></td><td><p>A boolean flag specifying whether or not to force full captions (regardless of confidence level).  </p><p>Default is false, in which case words and phrases which have a less than 50% confidence level are omitted from the final caption outputs and replaced by ellipses ("...").  The ellipses are useful for caption quality control and auditing.</p></td><td><p>True; False. </p></td></tr></table> |
 
-### <a id="error_codes"></a>Hata kodları
-Bir hata durumunda, Azure Media Indexer aşağıdaki hata kodlarından birini yeniden raporlemelidir:
+### <a id="error_codes"></a>Error codes
+In the case of an error, Azure Media Indexer should report back one of the following error codes:
 
-| Kodlayın | Adı | Olası nedenler |
+| Kodlayın | Adı | Possible Reasons |
 | --- | --- | --- |
-| 2000 |Geçersiz yapılandırma |Geçersiz yapılandırma |
-| 2001 |Geçersiz giriş varlıkları |Eksik giriş varlıkları veya boş varlık. |
-| 2002 |Geçersiz bildirim |Bildirim boş veya bildirim geçersiz öğeler içeriyor. |
-| 2003 |Medya dosyası indirilemedi |Bildirim dosyasında geçersiz URL. |
-| 2004 |Desteklenmeyen protokol |Medya URL 'SI protokolü desteklenmiyor. |
-| 2005 |Desteklenmeyen dosya türü |Giriş medya dosyası türü desteklenmiyor. |
-| 2006 |Çok fazla giriş dosyası |Giriş bildiriminde 10 ' dan fazla dosya vardır. |
-| 3000 |Medya dosyasının kodu çözülemedi |Desteklenmeyen medya codec bileşeni <br/>or<br/> Bozuk medya dosyası <br/>or<br/> Giriş medyasında ses akışı yok. |
-| 4000 |Toplu dizin oluşturma kısmen başarılı oldu |Bazı giriş medya dosyalarından dizin oluşturulamadı. Daha fazla bilgi için bkz. <a href="#output_files">çıkış dosyaları</a>. |
-| other |İç hatalar |Lütfen destek ekibine başvurun. indexer@microsoft.com |
+| 2000 |Invalid configuration |Invalid configuration |
+| 2001 |Invalid input assets |Missing input assets or empty asset. |
+| 2002 |Invalid manifest |Manifest is empty or manifest contains invalid items. |
+| 2003 |Failed to download media file |Invalid URL in manifest file. |
+| 2004 |Unsupported protocol |Protocol of media URL is not supported. |
+| 2005 |Unsupported file type |Input media file type is not supported. |
+| 2006 |Too many input files |There are more than 10 files in the input manifest. |
+| 3000 |Failed to decode media file |Unsupported media codec <br/>or<br/> Corrupted media file <br/>or<br/> No audio stream in input media. |
+| 4000 |Batch indexing partially succeeded |Some of the input media files are failed to be indexed. For more information, see <a href="#output_files">Output files</a>. |
+| other |Internal errors |Please contact support team. indexer@microsoft.com |
 
-## <a id="supported_languages"></a>Desteklenen diller
-Şu anda Ingilizce ve Ispanyolca dilleri desteklenmektedir. Daha fazla bilgi için bkz. [v 1.2 yayın blog gönderisi](https://azure.microsoft.com/blog/2015/04/13/azure-media-indexer-spanish-v1-2/).
+## <a id="supported_languages"></a>Supported Languages
+Currently, the English and Spanish languages are supported.  
 
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -281,9 +275,7 @@ Bir hata durumunda, Azure Media Indexer aşağıdaki hata kodlarından birini ye
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>İlgili bağlantılar
-[Azure Media Services Analytics genel bakışı](media-services-analytics-overview.md)
+[Azure Media Services Analytics Overview](media-services-analytics-overview.md)
 
-[Azure Media Indexer ve SQL Server AıB dosyalarını kullanma](https://azure.microsoft.com/blog/2014/11/03/using-aib-files-with-azure-media-indexer-and-sql-server/)
-
-[Azure Media Indexer 2 Preview ile medya dosyalarını dizine alma](media-services-process-content-with-indexer2.md)
+[Indexing Media Files with Azure Media Indexer 2 Preview](media-services-process-content-with-indexer2.md)
 

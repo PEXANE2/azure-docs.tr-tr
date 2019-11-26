@@ -1,16 +1,16 @@
 ---
-title: Örnek-ağ Izleyicisi olmayan bölgeler için denetim
-description: Bu örnek ilke tanımı, ağ izleyicisinin belirtilen bölge için etkin olup olmadığını denetler
+title: Sample - Audit for regions without Network Watcher
+description: This sample policy definition audits if network watcher is not enabled for a specified region defined in a parameter.
 ms.date: 01/23/2019
 ms.topic: sample
-ms.openlocfilehash: 8d820cfea34eec91c7d4b050d58046b357f2ddd9
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: b7efc9894e3158dcf2f1535e34d31c4abf0c4aa8
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74070002"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463282"
 ---
-# <a name="sample---audit-if-network-watcher-is-not-enabled-for-region"></a>Örnek-ağ izleyicisinin bölge için etkin olup olmadığını denetleyin
+# <a name="sample---audit-if-network-watcher-is-not-enabled-for-region"></a>Sample - Audit if Network Watcher is not enabled for region
 
 Bu ilke, belirli bir bölge için Ağ İzleyicisi etkinleştirilmediğinde denetler. Ağ İzleyicisi’nin etkin olup olmadığını denetlemek için bir bölge adı belirtirsiniz.
 
@@ -24,7 +24,7 @@ Bu ilke, belirli bir bölge için Ağ İzleyicisi etkinleştirilmediğinde denet
 
 ## <a name="deploy-with-the-portal"></a>Portal ile dağıtma
 
-[![Ilke örneğini Azure 'a dağıtma](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Faudit-network-watcher-existence%2Fazurepolicy.json)
+[![Deploy the Policy sample to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Faudit-network-watcher-existence%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>PowerShell ile dağıtma
 

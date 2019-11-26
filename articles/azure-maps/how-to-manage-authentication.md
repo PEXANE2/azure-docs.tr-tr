@@ -1,6 +1,6 @@
 ---
-title: Azure haritalar 'da kimlik doğrulamasını yönetme | Microsoft Docs
-description: Azure haritalar 'da kimlik doğrulamasını yönetmek için Azure portal kullanabilirsiniz.
+title: Manage authentication in Azure Maps | Microsoft Docs
+description: You can use the Azure portal to manage authentication in Azure Maps.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 10/24/2019
@@ -8,108 +8,108 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 496edb4f3528daa5bd06193383f0277922e8a93a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 057bd18c50d7074e8a88b8273bec766a306a3776
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73478779"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74484352"
 ---
-# <a name="manage-authentication-in-azure-maps"></a>Azure haritalar 'da kimlik doğrulamasını yönetme
+# <a name="manage-authentication-in-azure-maps"></a>Manage authentication in Azure Maps
 
-Azure haritalar hesabı oluşturduktan sonra, Azure Active Directory (Azure AD) ya da paylaşılan anahtar kimlik doğrulamasını desteklemek için bir istemci KIMLIĞI ve anahtarları oluşturulur.
+After you create an Azure Maps account, a client ID and keys are created to support either Azure Active Directory (Azure AD) or Shared Key authentication.
 
-## <a name="view-authentication-details"></a>Kimlik doğrulama ayrıntılarını görüntüle
+## <a name="view-authentication-details"></a>View authentication details
 
-Kimlik doğrulama ayrıntılarınızı Azure portal görüntüleyebilirsiniz. Hesabınıza gidin ve **Ayarlar** menüsünde **kimlik doğrulaması** ' nı seçin.
+You can view your authentication details on the Azure portal. Go to your account and select **Authentication** on the **Settings** menu.
 
-![Kimlik doğrulaması ayrıntıları](./media/how-to-manage-authentication/how-to-view-auth.png)
+![Authentication details](./media/how-to-manage-authentication/how-to-view-auth.png)
 
- Daha fazla bilgi için bkz. [Azure Maps Ile kimlik doğrulama](https://aka.ms/amauth).
+ To learn more, see [Authentication with Azure Maps](https://aka.ms/amauth).
 
 
-## <a name="set-up-azure-ad-app-registration"></a>Azure AD uygulama kaydını ayarlama
+## <a name="set-up-azure-ad-app-registration"></a>Set up Azure AD app registration
 
-Azure haritalar hesabı oluşturduktan sonra Azure AD kiracınız ile Azure haritalar kaynağı arasında bir bağlantı kurmanız gerekir.
+After you create an Azure Maps account, you need to establish a link between your Azure AD tenant and the Azure Maps resource.
 
-1. Azure AD dikey penceresine gidip bir uygulama kaydı oluşturun. Kayıt için bir ad girin. **Oturum açma URL 'si** kutusunda, Web UYGULAMASıNıN/API 'nin ana sayfasını sağlayın (örneğin, https:\//localhost/). Zaten kayıtlı bir uygulamanız varsa 2. adıma gidin.
+1. Go to the Azure AD blade and create an app registration. Provide a name for the registration. In the **Sign-on URL** box, provide the home page of the web app / API (for example, https:\//localhost/). If you already have a registered app, go to step 2.
 
     ![Uygulama kaydı](./media/how-to-manage-authentication/app-registration.png)
 
-    ![Uygulama kaydı ayrıntıları](./media/how-to-manage-authentication/app-create.png)
+    ![App registration details](./media/how-to-manage-authentication/app-create.png)
 
-2. Azure haritalar 'a temsil edilen API izinleri atamak için, **uygulama kayıtları**altındaki uygulamaya gidin ve ardından **Ayarlar**' ı seçin.  **Gerekli izinler**' i seçin ve ardından **Ekle**' yi seçin. **BIR API seçin**altında **Azure haritaları** ' nı arayıp seçin ve ardından **Seç** düğmesini seçin.
+2. To assign delegated API permissions to Azure Maps, go to the application under **App registrations**, and then select **Settings**.  Select **Required permissions**, and then select **Add**. Search for and select **Azure Maps** under **Select an API**, and then select the **Select** button.
 
-    ![Uygulama API 'SI izinleri](./media/how-to-manage-authentication/app-permissions.png)
+    ![App API permissions](./media/how-to-manage-authentication/app-permissions.png)
 
-3. **Izinleri Seç**altında **Azure Maps 'e eriş**' i seçin ve ardından **Seç** düğmesini seçin.
+3. Under **Select permissions**, select **Access Azure Maps**, and then select the **Select** button.
 
-    ![Uygulama API 'SI izinlerini seçin](./media/how-to-manage-authentication/select-app-permissions.png)
+    ![Select app API permissions](./media/how-to-manage-authentication/select-app-permissions.png)
 
-4. Kimlik doğrulama yönteminize bağlı olarak, a veya b adımını tamamen doldurun.
+4. Complete step a or b, depending on your authentication method.
 
-    1. Uygulamanız Azure Maps web SDK 'Sı ile kullanıcı belirteci kimlik doğrulaması kullanıyorsa, uygulama kayıt ayrıntısı sayfanızın bildirim bölümünde true olarak ayarlayarak `oauthEnableImplicitFlow` etkinleştirin.
+    1. If your application uses user-token authentication with the Azure Maps Web SDK, enable `oauthEnableImplicitFlow` by setting it to true in the Manifest section of your app registration detail page.
     
-       ![Uygulama bildirimi](./media/how-to-manage-authentication/app-manifest.png)
+       ![App manifest](./media/how-to-manage-authentication/app-manifest.png)
 
-    2. Uygulamanız sunucu/uygulama kimlik doğrulaması kullanıyorsa, uygulama kaydı ' nda **anahtarlar** dikey penceresine gidin ve bir parola oluşturun ya da uygulama kaydına bir ortak anahtar sertifikası yükleyin. Bir parola oluşturursanız, **Kaydet**' i seçtikten sonra parolayı daha sonra kopyalayın ve güvenli bir şekilde depolayın. Bu parolayı Azure AD 'den belirteç almak için kullanacaksınız.
+    2. If your application uses server/application authentication, go to the **Keys** blade in app registration and either create a password or upload a public key certificate to the app registration. If you create a password, after you select **Save**, copy the password for later and store it securely. You'll use this password to acquire tokens from Azure AD.
 
-       ![Uygulama anahtarları](./media/how-to-manage-authentication/app-keys.png)
-
-
-## <a name="grant-rbac-to-azure-maps"></a>Azure Maps 'e RBAC verme
-
-Azure haritalar hesabını Azure AD kiracınızla ilişkilendirdikten sonra, bir veya daha fazla Azure Maps erişim denetimi rolüne kullanıcı, Grup veya uygulama atayarak erişim denetimi sağlayabilirsiniz.
-
-1. **Erişim denetimi 'ne (IAM)** gidin, **rol atamaları**' nı seçin ve ardından **rol ataması Ekle**' yi seçin.
-
-    ![RBAC verme](./media/how-to-manage-authentication/how-to-grant-rbac.png)
-
-2. **Rol ataması Ekle** penceresinde, **rol**altında **Azure Maps Tarih okuyucusu (Önizleme)** seçeneğini belirleyin. **Erişim ata**' nın altında **Azure AD Kullanıcı, Grup veya hizmet sorumlusu**' nı seçin. **Seç**' in altında Kullanıcı veya uygulamayı seçin. **Kaydet**’i seçin.
-
-    ![Rol ataması Ekle](./media/how-to-manage-authentication/add-role-assignment.png)
-
-## <a name="view-available-azure-maps-rbac-roles"></a>Kullanılabilir Azure Maps RBAC rollerini görüntüleme
-
-Azure haritalar için kullanılabilen rol tabanlı erişim denetimi (RBAC) rollerini görüntülemek için **erişim denetimi (IAM)** sayfasına gidin, **Roller**' i seçin ve ardından **Azure Maps**ile başlayan roller için arama yapın. Bunlar, erişim izni vermek için kullanabileceğiniz rollerdir.
-
-![Kullanılabilir rolleri görüntüle](./media/how-to-manage-authentication/how-to-view-avail-roles.png)
+       ![App keys](./media/how-to-manage-authentication/app-keys.png)
 
 
-## <a name="view-azure-maps-rbac"></a>Azure haritalar RBAC 'yi görüntüleme
+## <a name="grant-rbac-to-azure-maps"></a>Grant RBAC to Azure Maps
 
-RBAC, ayrıntılı erişim denetimi sağlar.
+After you associate an Azure Maps account with your Azure AD tenant, you can grant access control by assigning a user, group or application to one or more Azure Maps access control roles.
 
-Azure haritalar için RBAC verilmiş kullanıcıları ve uygulamaları görüntülemek için **Access Control (IAM)** sayfasına gidin, **rol atamaları**' nı seçin ve ardından **Azure Maps**'a göre filtreleyin.
+1. Go to **Access control (IAM)** , select **Role assignments**, and then select **Add role assignment**.
 
-![RBAC verilen kullanıcıları ve uygulamaları görüntüleme](./media/how-to-manage-authentication/how-to-view-amrbac.png)
+    ![Grant RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
+
+2. In the **Add role assignment** window, under **Role**, select **Azure Maps Date Reader (Preview)** . Under **Assign access to**, select **Azure AD user, group, or service principal**. Under **Select**, select the user or application. **Kaydet**’i seçin.
+
+    ![Add role assignment](./media/how-to-manage-authentication/add-role-assignment.png)
+
+## <a name="view-available-azure-maps-rbac-roles"></a>View available Azure Maps RBAC roles
+
+To view role-based access control (RBAC) roles that are available for Azure Maps, go to **Access control (IAM)** , select **Roles**, and then search for roles beginning with **Azure Maps**. These are the roles that you can grant access to.
+
+![View available roles](./media/how-to-manage-authentication/how-to-view-avail-roles.png)
 
 
-## <a name="request-tokens-for-azure-maps"></a>Azure haritalar için istek belirteçleri
+## <a name="view-azure-maps-rbac"></a>View Azure Maps RBAC
 
-Uygulamanızı kaydettikten ve Azure Maps ile ilişkilendirdikten sonra, erişim belirteçleri isteyebilirsiniz.
+RBAC provides granular access control.
 
-* Uygulamanız Azure Maps web SDK 'Sı ile kullanıcı belirteci kimlik doğrulamasını kullanıyorsa, HTML sayfanızı Azure Maps istemci KIMLIĞI ve Azure AD uygulama KIMLIĞI ile yapılandırmanız gerekir.
+To view users and apps that have been granted RBAC for Azure Maps, go to **Access Control (IAM)** , select **Role assignments**, and then filter by **Azure Maps**.
 
-* Uygulamanız sunucu/uygulama kimlik doğrulaması kullanıyorsa Azure ad kaynak KIMLIĞI `https://atlas.microsoft.com/`, Azure Maps istemci KIMLIĞI, Azure AD uygulama KIMLIĞI ve Azure AD uygulama kayıt parolası ile Azure AD belirteç uç noktası `https://login.microsoftonline.com` bir belirteç istemeniz gerekir veya Sertifika.
+![View users and apps granted RBAC](./media/how-to-manage-authentication/how-to-view-amrbac.png)
 
-| Azure ortamı   | Azure AD belirteç uç noktası | Azure Kaynak KIMLIĞI |
+
+## <a name="request-tokens-for-azure-maps"></a>Request tokens for Azure Maps
+
+After you register your app and associated it with Azure Maps, you can request access tokens.
+
+* If your application uses user-token authentication with the Azure Maps Web SDK, you need to configure your HTML page with the Azure Maps client ID and the Azure AD app ID.
+
+* If your application uses server/application authentication, you need to request a token from Azure AD token endpoint `https://login.microsoftonline.com` with the Azure AD resource ID `https://atlas.microsoft.com/`, the Azure Maps client ID, the Azure AD app ID, and the Azure AD app registration password or certificate.
+
+| Azure Environment   | Azure AD token endpoint | Azure Resource ID |
 | --------------------|-------------------------|-------------------|
-| Azure genel        | https://login.microsoftonline.com | https://atlas.microsoft.com/ |
-| Azure Kamu    | https://login.microsoftonline.us  | https://atlas.microsoft.com/ | 
+| Azure Public        | https://login.microsoftonline.com | https://atlas.microsoft.com/ |
+| Azure Devlet Kurumları    | https://login.microsoftonline.us  | https://atlas.microsoft.com/ | 
 
-Kullanıcılar ve hizmet sorumluları için Azure AD 'den erişim belirteçleri isteme hakkında daha fazla bilgi için bkz. [Azure AD Için kimlik doğrulama senaryoları](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios).
+For more information about requesting access tokens from Azure AD for users and service principals, see [Authentication scenarios for Azure AD](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios).
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure AD kimlik doğrulaması ve Azure Maps web SDK hakkında daha fazla bilgi edinmek için bkz. [Azure AD ve Azure Maps web SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control).
+To learn more about Azure AD authentication and the Azure Maps Web SDK, see [Azure AD and Azure Maps Web SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control).
 
-Azure haritalar hesabınız için API kullanım ölçümlerini nasıl görebileceğinizi öğrenin:
+Learn how to see the API usage metrics for your Azure Maps account:
 > [!div class="nextstepaction"] 
-> [Kullanım ölçümlerini görüntüle](how-to-view-api-usage.md)
+> [View usage metrics](how-to-view-api-usage.md)
 
-Azure Active Directory (AAD) Azure Maps ile nasıl tümleştirileceğini gösteren örneklerin listesi için bkz.:
+For a list of samples showing how to integrate Azure Active Directory (AAD) with Azure Maps, see:
 
 > [!div class="nextstepaction"]
-> [AAD kimlik doğrulama örnekleri](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)
+> [Azure AD authentication samples](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)

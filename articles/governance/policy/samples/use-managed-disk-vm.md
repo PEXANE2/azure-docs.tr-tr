@@ -1,16 +1,16 @@
 ---
-title: Örnek-yönetilen disk kullanarak VM oluşturma
-description: Bu örnek ilke tanımı, sanal makinelerin yönetilen diskleri kullanmasını gerektirir.
+title: Sample - Create VM using managed disk
+description: This sample policy definition requires that virtual machines and virtual machine scale sets use managed disks.
 ms.date: 01/23/2019
 ms.topic: sample
-ms.openlocfilehash: 0ad21e255e771cd94c6f2eb794e20dc9b67f49d5
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: e849f30c57a6e9776eec561d79cbb263f647b45e
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74069781"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463033"
 ---
-# <a name="sample---create-vm-using-managed-disk"></a>Örnek-yönetilen disk kullanarak VM oluşturma
+# <a name="sample---create-vm-using-managed-disk"></a>Sample - Create VM using managed disk
 
 Sanal makinelerin yönetilen diskler kullanmasını gerektirir.
 
@@ -24,7 +24,7 @@ Sanal makinelerin yönetilen diskler kullanmasını gerektirir.
 
 ## <a name="deploy-with-the-portal"></a>Portal ile dağıtma
 
-[![Ilke örneğini Azure 'a dağıtma](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FCompute%2Fuse-managed-disk-vm%2Fazurepolicy.json)
+[![Deploy the Policy sample to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FCompute%2Fuse-managed-disk-vm%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>PowerShell ile dağıtma
 

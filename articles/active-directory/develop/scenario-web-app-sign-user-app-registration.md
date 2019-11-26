@@ -1,6 +1,6 @@
 ---
-title: Kullanıcılarda oturum açan Web uygulaması (uygulama kaydı)-Microsoft Identity platform
-description: Kullanıcılara oturum açan bir Web uygulaması oluşturma hakkında bilgi edinin (uygulama kaydı)
+title: Web app that signs in users (app registration) - Microsoft identity platform
+description: Learn how to build a web app that signs in users (app registration)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,115 +15,116 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 641f71f6111930b54d0a2bd548f16d3cb0c07189
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 50e4778693e448b9a989d70d3ca8cf91c76ce380
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175269"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74482053"
 ---
-# <a name="web-app-that-signs-in-users---app-registration"></a>Kullanıcılar-uygulama kaydı 'nda oturum açan Web uygulaması
+# <a name="web-app-that-signs-in-users-app-registration"></a>Web app that signs in users: App registration
 
-Bu sayfada, kullanıcıları oturum açan bir Web uygulaması için uygulama kaydı özellikleri açıklanmaktadır.
+This article explains the app registration specifics for a web app that signs in users.
 
-Uygulamanızı kaydetmek için şunu kullanabilirsiniz:
+To register your application, you can use:
 
-- [Web uygulaması hızlı](#register-an-app-using-the-quickstarts) başlangıçlar-uygulama oluşturmaya yönelik harika bir ilk deneyim olmasının yanı sıra Azure Portal Hızlı başlangıçlar, **Bu değişikliği bana yap**adlı bir düğme içerir. Bu düğmeyi, mevcut bir uygulama için bile ihtiyacınız olan özellikleri ayarlamak için kullanabilirsiniz. Bu özelliklerin değerlerini kendi servis talebine uyarlamanız gerekir. Özellikle, uygulamanız için Web API URL 'SI, büyük olasılıkla önerilen varsayılan verilerden farklı olacak ve bu da oturum kapatma URI 'sini etkileyecek.
-- [Uygulamanızı el ile kaydetmek](#register-an-app-using-azure-portal) için Azure Portal
-- PowerShell ve komut satırı araçları
+- The [web app quickstarts](#register-an-app-by-using-the-quickstarts). In addition to being a great first experience with creating an application, quickstarts in the Azure portal contain a button named **Make this change for me**. You can use this button to set the properties you need, even for an existing app. You'll need to adapt the values of these properties to your own case. In particular, the web API URL for your app is probably going to be different from the proposed default, which will also affect the sign-out URI.
+- The Azure portal to [register your application manually](#register-an-app-by-using-the-azure-portal).
+- PowerShell and command-line tools.
 
-## <a name="register-an-app-using-the-quickstarts"></a>Hızlı başlangıçlarını kullanarak bir uygulamayı kaydetme
+## <a name="register-an-app-by-using-the-quickstarts"></a>Register an app by using the quickstarts
 
-Bu bağlantıya gittiğinizde, Web uygulamanızın oluşturulmasını önyükleyebilirsiniz:
+You can use these links to bootstrap the creation of your web application:
 
 - [ASP.NET Core](https://aka.ms/aspnetcore2-1-aad-quickstart-v2)
 - [ASP.NET](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs)
 
-## <a name="register-an-app-using-azure-portal"></a>Azure portal kullanarak bir uygulamayı kaydetme
+## <a name="register-an-app-by-using-the-azure-portal"></a>Register an app by using the Azure portal
 
 > [!NOTE]
-> Uygulamanızın Microsoft Azure genel bulutta veya ulusal ya da bağımsız bulutunda çalışmasına bağlı olarak, kullanılacak Portal farklıdır. Daha fazla bilgi için bkz. [Ulusal bulutlar](./authentication-national-cloud.md#app-registration-endpoints)
+> The portal to use is different depending on whether your application runs in the Microsoft Azure public cloud or in a national or sovereign cloud. For more information, see [National clouds](./authentication-national-cloud.md#app-registration-endpoints).
 
 
-1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın. Alternatif olarak, tercih ettiğiniz Ulusal bulut Azure portal oturum açın.
-1. Hesabınız birden fazla kiracıya erişim veriyorsa, sağ üst köşede hesabınızı seçin ve Portal oturumunuzu istenen Azure AD kiracısı olarak ayarlayın.
-1. Sol taraftaki Gezinti bölmesinde **Azure Active Directory** hizmetini seçin ve sonra **yeni kayıt** > **uygulama kayıtları** seçin.
+1. Sign in to the [Azure portal](https://portal.azure.com) by using either a work or school account, or a personal Microsoft account. Alternatively, sign in to the Azure portal of choice for the national cloud.
+1. If your account gives you access to more than one tenant, select your account in the upper-right corner. Then, set your portal session to the desired Azure Active Directory (Azure AD) tenant.
+1. In the left pane, select the **Azure Active Directory** service, and then select **App registrations** > **New registration**.
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
-4. **Uygulama kaydet** sayfası göründüğünde uygulamanızın kayıt bilgilerini girin:
-   1. uygulamanız için desteklenen hesap türlerini seçin (bkz. [Desteklenen hesap türleri](./v2-supported-account-types.md))
-   1. **Ad** alanına uygulama kullanıcılarına gösterilecek anlamlı bir uygulama adı girin, örneğin `AspNetCore-WebApp`.
-   1. **Yeniden yönlendirme URI 'si**içinde, başarıyla kimlik doğrulamasından sonra döndürülen belirteç yanıtlarını kabul edecek olan uygulama türünü ve URI hedefini ekleyin. Örneğin, `https://localhost:44321/`.  **Kaydol**’u seçin.
-1. **Kimlik doğrulama** menüsünü seçin ve ardından aşağıdaki bilgileri ekleyin:
-   1. **Yanıt URL 'si**' nde, "Web" türünde `https://localhost:44321/signin-oidc` ekleyin.
-   1. **Gelişmiş ayarlar** bölümünde, **oturum kapatma URL 'sini** `https://localhost:44321/signout-oidc`olarak ayarlayın.
-   1. **Örtük izin**' ın altında, **kimlik belirteçlerini**denetleyin.
+1. **Uygulama kaydet** sayfası göründüğünde uygulamanızın kayıt bilgilerini girin:
+   1. Choose the supported account types for your application. (See [Supported account types](./v2-supported-account-types.md).)
+   1. In the **Name** section, enter a meaningful application name that will be displayed to users of the app. For example, enter **AspNetCore-WebApp**.
+   1. For **Redirect URI**, add the type of application and the URI destination that will accept returned token responses after successful authentication. For example, enter **https://localhost:44321** . Then, select **Register**.
+1. Select the **Authentication** menu, and then add the following information:
+   1. For **Reply URL**, add **https://localhost:44321/signin-oidc** of type **Web**.
+   1. In the **Advanced settings** section, set **Logout URL** to **https://localhost:44321/signout-oidc** .
+   1. Under **Implicit grant**, select **ID tokens**.
    1. **Kaydet**’i seçin.
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
-4. **Uygulama kaydet** sayfası göründüğünde uygulamanızın kayıt bilgilerini girin:
-   1. uygulamanız için desteklenen hesap türlerini seçin (bkz. [Desteklenen hesap türleri](./v2-supported-account-types.md))
-   - **Ad** alanına uygulama kullanıcılarına gösterilecek anlamlı bir uygulama adı girin, örneğin `MailApp-openidconnect-v2`.
-   - Yeniden yönlendirme URI 'SI (isteğe bağlı) bölümünde, açılan kutudan **Web** ' i seçin ve aşağıdaki yeniden yönlendirme URI 'lerini girin: `https://localhost:44326/`.
+1. **Uygulama kaydet** sayfası göründüğünde uygulamanızın kayıt bilgilerini girin:
+   1. Choose the supported account types for your application. (See [Supported account types](./v2-supported-account-types.md).)
+   1. In the **Name** section, enter a meaningful application name that will be displayed to users of the app. For example, enter **MailApp-openidconnect-v2**.
+   1. In the **Redirect URI (optional)** section, select **Web** in the combo box and enter the following redirect URI: **https://localhost:44326/** .
 1. Uygulamayı kaydetmek için **Kaydet**'i seçin.
-1. **Kimlik doğrulama** menüsünü seçin ve ardından aşağıdaki bilgileri ekleyin:
-   - **Gelişmiş ayarlar** | **örtük verme** bölümünde, bu örnek, **kimlik belirteçlerini** denetleyerek kullanıcının oturum açması için [örtük verme akışının](v2-oauth2-implicit-grant-flow.md) etkinleştirilmesini gerektirir.
+1. Select the **Authentication** menu. 
+1. In the **Advanced settings** | **Implicit grant** section, select **ID tokens**. This sample requires the [implicit grant flow](v2-oauth2-implicit-grant-flow.md) to be enabled to sign in the user.
 1. **Kaydet**’i seçin.
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-4. **Bir uygulamayı Kaydet sayfası** göründüğünde, uygulama için kolay bir ad girin (örneğin, ' Java-WebApp '), "herhangi bir kurumsal dizin ve kişisel Microsoft hesabında (örn. Skype, Xbox, Outlook.com)" seçeneğini belirleyin ve ' Web uygulaması ' nı seçin. *Uygulama türü*olarak.
-1. Uygulamayı kaydetmek için **Kaydet** ' e tıklayın.
-1. Sol taraftaki menüde **kimlik doğrulaması**' na tıklayın ve *URI 'leri yeniden yönlendir*' in altında "Web" i seçin. İki farklı yeniden yönlendirme URI 'si girmeniz gerekir: bir tane, oturum açma sayfası ve bir grafik sayfası için. Her iki için de aynı ana bilgisayar ve bağlantı noktası numarasını kullanmalı ve ardından oturum açma sayfası için "/msal4jsample/Secure/AAD" ve Kullanıcı bilgileri sayfası için "msal4jsample/Graph/Me" gelmelidir.
- Varsayılan olarak, örnek şunları kullanır:
+1. When the **Register an application page** appears, enter a display name for the application. For example, enter **java-webapp**. 
+1. Select **Accounts in any organizational directory and personal Microsoft Accounts (e.g. Skype, Xbox, Outlook.com)** , and then select **Web app / API** for **Application Type**.
+1. Select **Register** to register the application.
+1. On the left menu, select **Authentication**. Under **Redirect URIs**, select **Web**. 
 
-    - `http://localhost:8080/msal4jsample/secure/aad`.
-    - `http://localhost:8080/msal4jsample/graph/me`
+1. Enter two redirect URIs: one for the sign-in page, and one for the graph page. For both, use the same host and port number, followed by **/msal4jsample/secure/aad** for the sign-in page and **msal4jsample/graph/me** for the user information page.
+ 
+   By default, the sample uses:
 
-    **Gelişmiş ayarlar** bölümünde, **oturum kapatma URL 'sini** `http://localhost:8080/msal4jsample/sign_out`olarak ayarlayın.
+   - **http://localhost:8080/msal4jsample/secure/aad**
+   - **http://localhost:8080/msal4jsample/graph/me**
 
-     **Kaydet**' e tıklayın.
+1. In the **Advanced settings** section, set **Logout URL** to **http://localhost:8080/msal4jsample/sign_out** . Ardından **Kaydet**’i seçin.
 
-1. Menüdeki **gizli dizileri &** seçin ve **istemci gizli** dizileri bölümünde **yeni istemci parolası**' na tıklayın:
+1. Select **Certificates & secrets** from the menu. 
+1. In the **Client secrets** section, select **New client secret**, and then:
 
-    - Bir anahtar açıklaması yazın
-    - **1 yılda**bir anahtar süresi seçin.
-    - **Ekle**' yi seçtiğinizde anahtar değeri görüntülenecektir.
-    - Anahtarın değerini daha sonra kopyalayın. Bu anahtar değeri bir daha görüntülenmez veya başka yollarla alınabilir, bu nedenle Azure portal görünür hale geldiğinde onu kaydedin.
+   1. Enter a key description.
+   1. Select the key duration **In 1 year**.
+   1. **Add (Ekle)** seçeneğini belirleyin.
+   1. When the key value appears, copy it for later. This value will not be displayed again or be retrievable by any other means.
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-4. **Uygulama kaydet** sayfası göründüğünde uygulamanızın kayıt bilgilerini girin:
-   - **Ad** alanına uygulama kullanıcılarına gösterilecek anlamlı bir uygulama adı girin, örneğin `python-webapp`.
-   - **Desteklenen hesap türlerini** **Tüm Kurumsal dizin ve kişisel Microsoft hesaplarında (ör. Skype, Xbox, Outlook.com) hesaplar**olarak değiştirin.
-   - Yeniden yönlendirme URI 'SI (isteğe bağlı) bölümünde, açılan kutudan **Web** ' i seçin ve aşağıdaki yeniden yönlendirme URI 'lerini girin: `http://localhost:5000/getAToken`.
+1. **Uygulama kaydet** sayfası göründüğünde uygulamanızın kayıt bilgilerini girin:
+   1. In the **Name** section, enter a meaningful application name that will be displayed to users of the app. For example, enter **python-webapp**.
+   1. Change **Supported account types** to **Accounts in any organizational directory and personal Microsoft accounts (e.g. Skype, Xbox, Outlook.com)** .
+   1. In the **Redirect URI (optional)** section, select **Web** in the combo  box and enter the following redirect URI: **http://localhost:5000/getAToken** .
 1. Uygulamayı kaydetmek için **Kaydet**'i seçin.
-1. Uygulamaya **genel bakış** sayfasında, **uygulama (istemci) kimlik** değerini bulun ve daha sonra için kaydedin. Bu proje için Visual Studio yapılandırma dosyasını yapılandırmak için gerekli olacaktır.
-1. Uygulamanın genel bakış sayfasından **kimlik doğrulama** bölümünü seçin.
-   - **Gelişmiş ayarlar** bölümünde, **oturum kapatma URL 'sini** `http://localhost:5000/logout` olarak ayarlayın
+1. On the app's **Overview** page, find the **Application (client) ID** value and record it for later. You'll need it to configure the Visual Studio configuration file for this project.
+1. Select the **Authentication** section. In **Advanced settings**, set **Logout URL** to **http://localhost:5000/logout** . Ardından **Kaydet**’i seçin.
+1. On the left menu, select **Certificates & secrets**.
+1. In the **Client Secrets** section, select **New client secret**, and then:
 
-  **Kaydet**’i seçin.
-1. Sol taraftaki menüde **sertifikalar & gizlilikler** ' ı seçin ve **istemci** gizli dizileri bölümünde **yeni istemci parolası** ' na tıklayın:
-
-      - Bir anahtar açıklaması yazın
-      - **1 yılda**bir anahtar süresi seçin.
-      - **Ekle**' ye tıkladığınızda, anahtar değeri görüntülenecektir.
-      - Anahtarın değerini kopyalayın. Buna daha sonra ihtiyacınız olacak.
+   1. Enter a key description.
+   1. Select a key duration of **In 1 year**.
+   1. **Add (Ekle)** seçeneğini belirleyin.
+   1. When the key value appears, copy it. Buna daha sonra ihtiyacınız olacak.
 ---
 
-## <a name="register-an-app-using-powershell"></a>PowerShell kullanarak bir uygulamayı kaydetme
+## <a name="register-an-app-by-using-powershell"></a>Register an app by using PowerShell
 
 > [!NOTE]
-> Şu anda Azure AD PowerShell yalnızca aşağıdaki desteklenen hesap türlerine sahip uygulamalar oluşturuyor:
+> Currently, Azure AD PowerShell creates applications with only the following supported account types:
 >
-> - MyOrg (yalnızca bu kuruluş dizinindeki hesaplar)
-> - AnyOrg (herhangi bir kuruluş dizinindeki hesaplar).
+> - MyOrg (accounts in this organizational directory only)
+> - AnyOrg (accounts in any organizational directory)
 >
-> Kullanıcıları kendi kişisel Microsoft hesaplarıyla (örn. Skype, XBox, Outlook.com) oturum açan bir uygulama oluşturmak istiyorsanız, önce çok kiracılı bir uygulama (desteklenen hesap türleri = hesaplar herhangi bir kuruluş dizininde) oluşturabilir ve sonra değiştirebilirsiniz Azure portal uygulama bildiriminde `signInAudience` özelliği. Bu, ASP.NET Core öğreticinin [1,3](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-3-AnyOrgOrPersonal#step-1-register-the-sample-with-your-azure-ad-tenant) adımındaki Ayrıntılar açıklanmaktadır (ve herhangi bir dilde web uygulamaları için genelleştirilerek bulunabilir).
+> You can create an application that signs in users with their personal Microsoft accounts (for example, Skype, Xbox, or Outlook.com). First, create a multitenant application. Supported account types are accounts in any organizational directory. Then, change the `signInAudience` property in the application manifest from the Azure portal. For more information, see [step 1.3](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-3-AnyOrgOrPersonal#step-1-register-the-sample-with-your-azure-ad-tenant) in the ASP.NET Core tutorial. You can generalize this step to web apps in any language.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Uygulamanın kod yapılandırması](scenario-web-app-sign-user-app-configuration.md)
+> [App's code configuration](scenario-web-app-sign-user-app-configuration.md)

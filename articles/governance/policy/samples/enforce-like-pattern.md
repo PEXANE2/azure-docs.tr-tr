@@ -1,16 +1,16 @@
 ---
-title: Örnek-model gibi zorla
-description: Bu örnek ilke tanımı, kaynakların adlandırma kuralları için benzer bir düzene uymasını gerektirir.
+title: Sample - Enforce like pattern
+description: This sample policy definition requires that resources meet the like pattern defined in a parameter for naming conventions.
 ms.date: 01/23/2019
 ms.topic: sample
-ms.openlocfilehash: 34013753c18ad3b84a29b04fead9ea83aeb03d7b
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: df72db59e0370e82ca9f4aff199498ffdf06d834
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076301"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463602"
 ---
-# <a name="sample---enforce-like-pattern-for-naming-conventions"></a>Örnek-adlandırma kuralları için LIKE deseninin uygulanmasını sağlamak
+# <a name="sample---enforce-like-pattern-for-naming-conventions"></a>Sample - Enforce like pattern for naming conventions
 
 Kaynak adlarının adlandırma kuralları için benzer bir desenle eşleşmesini zorunlu tutun. İzin verilen benzer deseni parametre olarak belirtin.
 
@@ -24,7 +24,7 @@ Kaynak adlarının adlandırma kuralları için benzer bir desenle eşleşmesini
 
 ## <a name="deploy-with-the-portal"></a>Portal ile dağıtma
 
-[![Ilke örneğini Azure 'a dağıtma](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FTextPatterns%2Fenforce-like-pattern%2Fazurepolicy.json)
+[![Deploy the Policy sample to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FTextPatterns%2Fenforce-like-pattern%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>PowerShell ile dağıtma
 

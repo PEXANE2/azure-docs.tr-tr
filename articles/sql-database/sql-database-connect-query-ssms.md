@@ -1,5 +1,5 @@
 ---
-title: 'SSMS: verileri bağlama ve sorgulama'
+title: 'SSMS: Connect and query data'
 description: SQL Server Management Studio (SSMS) kullanarak Azure'da SQL Database'e nasıl bağlanılacağını öğrenin. Ardından, verileri sorgulamak ve düzenlemek için Transact-SQL (T-SQL) deyimleri çalıştırın.
 keywords: sql veritabanına bağlanma,sql server management studio
 services: sql-database
@@ -12,54 +12,54 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 69a6939cdbcc9b2c4e496c8d47aa20c9f6e85d57
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ed33d50da84347f55d355802e7767c8477c30e87
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826946"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74482151"
 ---
-# <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>Hızlı başlangıç: Azure SQL veritabanına bağlanmak ve veritabanını sorgulamak için SQL Server Management Studio kullanma
+# <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>Quickstart: Use SQL Server Management Studio to connect and query an Azure SQL database
 
-Bu hızlı başlangıçta, Azure SQL veritabanına bağlanmak için [SQL Server Management Studio][ssms-install-latest-84g] (SSMS) kullanacaksınız. Ardından, verileri sorgulamak, eklemek, güncelleştirmek ve silmek için Transact-SQL deyimlerini çalıştıracaksınız. SSMS 'yi, Microsoft Windows için SQL Server 'den SQL veritabanı 'na herhangi bir SQL altyapısını yönetmek üzere kullanabilirsiniz.  
+In this quickstart, you'll use [SQL Server Management Studio][ssms-install-latest-84g] (SSMS) to connect to an Azure SQL database. You'll then run Transact-SQL statements to query, insert, update, and delete data. You can use SSMS to manage any SQL infrastructure, from SQL Server to SQL Database for Microsoft Windows.  
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Bir Azure SQL veritabanı. Azure SQL veritabanı 'nda bir veritabanı oluşturmak ve yapılandırmak için bu hızlı başlangıçlardan birini kullanabilirsiniz:
+Bir Azure SQL veritabanı. You can use one of these quickstarts to create and then configure a database in Azure SQL Database:
 
   || Tek veritabanı | Yönetilen örnek |
   |:--- |:--- |:---|
-  | Oluşturma| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
+  | Create| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
   || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Yapılandırma | [Sunucu düzeyi IP güvenlik duvarı kuralı](sql-database-server-level-firewall-rule.md)| [Bir VM 'den bağlantı](sql-database-managed-instance-configure-vm.md)|
-  |||[Siteden bağlantı](sql-database-managed-instance-configure-p2s.md)
-  |Veri yükleme|Hızlı başlangıç başına yüklenen Adventure Works|[Geniş dünyada içeri aktarıcılar geri yükleme](sql-database-managed-instance-get-started-restore.md)
-  |||[GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) 'Dan [bacpac](sql-database-import.md) dosyasından Adventure Works 'ü geri yükleme veya içe aktarma|
+  | Yapılandırma | [Server-level IP firewall rule](sql-database-server-level-firewall-rule.md)| [Connectivity from a VM](sql-database-managed-instance-configure-vm.md)|
+  |||[Connectivity from on-site](sql-database-managed-instance-configure-p2s.md)
+  |Veri yükleme|Adventure Works loaded per quickstart|[Restore Wide World Importers](sql-database-managed-instance-get-started-restore.md)
+  |||Restore or import Adventure Works from [BACPAC](sql-database-import.md) file from [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
 
   > [!IMPORTANT]
-  > Bu makaledeki betikler, Adventure Works veritabanını kullanmak için yazılmıştır. Yönetilen bir örnek ile, Adventure Works veritabanını bir örnek veritabanına aktarmanız veya bu makaledeki betikleri Wide World Importers veritabanını kullanacak şekilde değiştirmeniz gerekir.
+  > The scripts in this article are written to use the Adventure Works database. With a managed instance, you must either import the Adventure Works database into an instance database or modify the scripts in this article to use the Wide World Importers database.
 
 ## <a name="install-the-latest-ssms"></a>En son SSMS’yi yükleyin
 
-Başlamadan önce, en son [SSMS][ssms-install-latest-84g]'yi yüklediğinizden emin olun.
+Before you start, make sure you've installed the latest [SSMS][ssms-install-latest-84g].
 
-## <a name="get-sql-server-connection-information"></a>SQL Server bağlantı bilgilerini al
+## <a name="get-sql-server-connection-information"></a>Get SQL server connection information
 
-Azure SQL veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Yaklaşan yordamlar için tam sunucu adı veya ana bilgisayar adı, veritabanı adı ve oturum açma bilgileri gerekir.
+Get the connection information you need to connect to the Azure SQL database. You'll need the fully qualified server name or host name, database name, and login information for the upcoming procedures.
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
-2. **SQL veritabanları** veya **SQL yönetilen örnekler** sayfasına gidin.
+2. Navigate to the **SQL databases**  or **SQL managed instances** page.
 
-3. **Genel bakış** sayfasında, tek bir veritabanı için **sunucu adı** ' nın yanında tam sunucu adını veya yönetilen örnek Için **ana bilgisayar ' ın** yanındaki tam sunucu adını gözden geçirin. Sunucu adını veya ana bilgisayar adını kopyalamak için üzerine gelin ve **Kopyala** simgesini seçin.
+3. On the **Overview** page, review the fully qualified server name next to **Server name** for a single database or the fully qualified server name next to **Host** for a managed instance. To copy the server name or host name, hover over it and select the **Copy** icon.
 
 ## <a name="connect-to-your-database"></a>Veritabanınıza bağlanın
 
-SMSS 'de Azure SQL veritabanı sunucunuza bağlanın.
+In SMSS, connect to your Azure SQL Database server.
 
 > [!IMPORTANT]
-> Azure SQL veritabanı sunucusu 1433 numaralı bağlantı noktasını dinler. Şirket güvenlik duvarının arkasındaki bir SQL veritabanı sunucusuna bağlanmak için, güvenlik duvarında bu bağlantı noktasının açık olması gerekir.
+> An Azure SQL Database server listens on port 1433. To connect to a SQL Database server from behind a corporate firewall, the firewall must have this port open.
 >
 
 1. SSMS’i açın. **Sunucuya Bağlan** iletişim kutusu görüntülenir.
@@ -68,32 +68,32 @@ SMSS 'de Azure SQL veritabanı sunucunuza bağlanın.
 
    | Ayar      | Önerilen değer    | Açıklama |
    | ------------ | ------------------ | ----------- |
-   | **Sunucu türü** | Veritabanı altyapısı | Gerekli değer. |
-   | **Sunucu adı** | Tam sunucu adı | Şöyle bir şey: **mynewserver20170313.Database.Windows.net**. |
-   | **Kimlik doğrulaması** | SQL Server Kimlik Doğrulaması | Bu öğretici, SQL kimlik doğrulamasını kullanır. |
-   | **Oturum açma** | Sunucu Yöneticisi hesabı kullanıcı KIMLIĞI | Sunucu oluşturmak için kullanılan sunucu yönetici hesabındaki Kullanıcı KIMLIĞI. |
-   | **Parola** | Sunucu Yöneticisi hesap parolası | Sunucu oluşturmak için kullanılan sunucu yönetici hesabındaki parola. |
+   | **Sunucu türü** | Veritabanı altyapısı | Required value. |
+   | **Sunucu adı** | Tam sunucu adı | Something like: **mynewserver20170313.database.windows.net**. |
+   | **Kimlik doğrulaması** | SQL Server Kimlik Doğrulaması | This tutorial uses SQL Authentication. |
+   | **Oturum açma** | Server admin account user ID | The user ID from the server admin account used to create the server. |
+   | **Parola** | Server admin account password | The password from the server admin account used to create the server. |
    ||||
 
    ![sunucuya bağlan](./media/sql-database-connect-query-ssms/connect.png)  
 
-3. **Sunucuya Bağlan** Iletişim kutusunda **seçenekleri** belirleyin. **Veritabanına Bağlan** açılan menüsünde **mysampledatabase**' i seçin.
+3. Select **Options** in the **Connect to Server** dialog box. In the **Connect to database** drop-down menu, select **mySampleDatabase**.If you leave the drop down to default, the connection is made to **master** database.
 
    ![sunucuda veritabanına bağlanma](./media/sql-database-connect-query-ssms/options-connect-to-db.png)  
 
-4. **Bağlan**’ı seçin. Nesne Gezgini penceresi açılır.
+4. **Bağlan**’ı seçin. The Object Explorer window opens.
 
-5. Veritabanının nesnelerini görüntülemek için **veritabanları** ' nı genişletin ve ardından **mysampledatabase**' i genişletin.
+5. To view the database's objects, expand **Databases** and then expand **mySampleDatabase**.
 
-   ![mySampleDatabase nesneleri](./media/sql-database-connect-query-ssms/connected.png)  
+   ![mySampleDatabase objects](./media/sql-database-connect-query-ssms/connected.png)  
 
 ## <a name="query-data"></a>Verileri sorgulama
 
-Kategoriye göre ilk 20 ürünü sorgulamak için bu [Select](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL kodunu çalıştırın.
+Run this [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL code to query for the top 20 products by category.
 
-1. Nesne Gezgini, **Mysampledatabase** ' e sağ tıklayın ve **Yeni sorgu**' yu seçin. Veritabanınıza bağlı yeni bir sorgu penceresi açılır.
+1. In Object Explorer, right-click **mySampleDatabase** and select **New Query**. A new query window connected to your database opens.
 
-2. Sorgu penceresinde bu SQL sorgusunu yapıştırın.
+2. In the query window, paste this SQL query.
 
    ```sql
    SELECT pc.Name as CategoryName, p.name as ProductName
@@ -102,15 +102,15 @@ Kategoriye göre ilk 20 ürünü sorgulamak için bu [Select](https://msdn.micro
    ON pc.productcategoryid = p.productcategoryid;
    ```
 
-3. Araç çubuğunda, `Product` ve `ProductCategory` tablolarından veri almak için **Yürüt** ' ü seçin.
+3. On the toolbar, select **Execute** to retrieve data from the `Product` and `ProductCategory` tables.
 
-    ![Tablo ürününden ve ProductCategory 'tan veri alma sorgusu](./media/sql-database-connect-query-ssms/query2.png)
+    ![query to retrieve data from table Product and ProductCategory](./media/sql-database-connect-query-ssms/query2.png)
 
 ## <a name="insert-data"></a>Veri ekleme
 
-`SalesLT.Product` tablosunda yeni bir ürün oluşturmak için bu [Insert](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL kodunu çalıştırın.
+Run this [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL code to create a new product in the `SalesLT.Product` table.
 
-1. Önceki sorguyu bununla değiştirin.
+1. Replace the previous query with this one.
 
    ```sql
    INSERT INTO [SalesLT].[Product]
@@ -131,26 +131,26 @@ Kategoriye göre ilk 20 ürünü sorgulamak için bu [Select](https://msdn.micro
            ,GETDATE() );
    ```
 
-2. `Product` tablosuna yeni bir satır eklemek için **Yürüt** ' ü seçin. **İletiler** bölmesi **(1 satır etkilendi)** görüntülenir.
+2. Select **Execute**  to insert a new row in the `Product` table. The **Messages** pane displays **(1 row affected)** .
 
-## <a name="view-the-result"></a>Sonucu görüntüleme
+## <a name="view-the-result"></a>View the result
 
-1. Önceki sorguyu bununla değiştirin.
+1. Replace the previous query with this one.
 
    ```sql
    SELECT * FROM [SalesLT].[Product]
    WHERE Name='myNewProduct'
    ```
 
-2. **Yürüt**’ü seçin. Aşağıdaki sonuç görüntülenir.
+2. **Yürüt**’ü seçin. The following result appears.
 
-   ![Ürün tablosu sorgusunun sonucu](./media/sql-database-connect-query-ssms/result.png)
+   ![result of Product table query](./media/sql-database-connect-query-ssms/result.png)
 
 ## <a name="update-data"></a>Verileri güncelleştirme
 
-Yeni ürününüzü değiştirmek için bu [güncelleştirme](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL kodunu çalıştırın.
+Run this [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL code to modify your new product.
 
-1. Önceki sorguyu bununla değiştirin.
+1. Replace the previous query with this one.
 
    ```sql
    UPDATE [SalesLT].[Product]
@@ -158,24 +158,24 @@ Yeni ürününüzü değiştirmek için bu [güncelleştirme](https://msdn.micro
    WHERE Name = 'myNewProduct';
    ```
 
-2. `Product` tablosundaki belirtilen satırı güncelleştirmek için **Yürüt** ' ü seçin. **İletiler** bölmesi **(1 satır etkilendi)** görüntülenir.
+2. Select **Execute** to update the specified row in the `Product` table. The **Messages** pane displays **(1 row affected)** .
 
 ## <a name="delete-data"></a>Verileri silme
 
-Yeni ürününüzü kaldırmak için bu [Delete](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL kodunu çalıştırın.
+Run this [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL code to remove your new product.
 
-1. Önceki sorguyu bununla değiştirin.
+1. Replace the previous query with this one.
 
    ```sql
    DELETE FROM [SalesLT].[Product]
    WHERE Name = 'myNewProduct';
    ```
 
-2. `Product` tablosundaki belirtilen satırı silmek için **Yürüt** ' ü seçin. **İletiler** bölmesi **(1 satır etkilendi)** görüntülenir.
+2. Select **Execute** to delete the specified row in the `Product` table. The **Messages** pane displays **(1 row affected)** .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- SSMS hakkında daha fazla bilgi için bkz. [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx).
+- For information about SSMS, see [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx).
 - Azure portalını kullanarak bağlanmak ve sorgulamak için bkz. [Azure Portal SQL Sorgusu düzenleyicisiyle bağlanma ve sorgulama](sql-database-connect-query-portal.md).
 - Visual Studio Code’u kullanarak bağlanmak ve sorgulamak için bkz. [Visual Studio Code ile bağlanma ve sorgulama](sql-database-connect-query-vscode.md).
 - .NET kullanarak bağlanıp sorgulamak için bkz. [.NET ile bağlanma ve sorgulama](sql-database-connect-query-dotnet.md).
