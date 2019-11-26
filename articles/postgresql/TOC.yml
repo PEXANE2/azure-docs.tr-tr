@@ -175,6 +175,10 @@
   items:
     - name: Tek sunucu
       items:
+        - name: Sunucu yönetme
+          items:
+            - name: Azure portal
+              href: howto-create-manage-server-portal.md
         - name: Kimlik Doğrulaması
           items:
             - name: Kullanıcı oluşturma

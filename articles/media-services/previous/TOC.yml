@@ -266,18 +266,6 @@
           href: media-services-dotnet-long-operations.md
         - name: Bölünmüş MP4 canlı içe alma belirtimi
           href: ../media-services-fmp4-live-ingest-overview.md
-        - name: Başlarken
-          href: media-services-azure-media-clipper-getting-started.md
-        - name: Videoları yükleme
-          href: media-services-azure-media-clipper-load-assets.md
-        - name: Klavye kısayollarını yapılandırma
-          href: media-services-azure-media-clipper-keyboard-shortcuts.md
-        - name: Yerelleştirmeyi yapılandırma
-          href: media-services-azure-media-clipper-localization.md
-        - name: Kırpma işlerini gönderme
-          href: media-services-azure-media-clipper-submit-job.md
-        - name: Azure portal
-          href: media-services-azure-media-clipper-portal.md
     - name: İçerik koruma
       href: media-services-content-protection-overview.md
       items:
