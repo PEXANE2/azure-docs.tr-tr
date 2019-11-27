@@ -15,80 +15,80 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74485491"
 ---
-<a name="azure-resource-manager-virtual-networking-limits"></a>Networking limits - Azure Resource Manager The following limits apply only for networking resources managed through **Azure Resource Manager** per region per subscription. Learn how to [view your current resource usage against your subscription limits](../articles/networking/check-usage-against-limits.md).
+<a name="azure-resource-manager-virtual-networking-limits"></a>Ağ sınırları-Azure Resource Manager aşağıdaki sınırlar yalnızca, her abonelik için bölge başına **Azure Resource Manager** üzerinden yönetilen ağ kaynakları için geçerlidir. [Geçerli kaynak kullanımınızı abonelik sınırlarınıza göre görüntülemeyi](../articles/networking/check-usage-against-limits.md)öğrenin.
 
 > [!NOTE]
-> We recently increased all default limits to their maximum limits. If there's no maximum limit column, the resource doesn't have adjustable limits. If you had these limits increased by support in the past and don't see updated limits in the following tables, [open an online customer support request at no charge](../articles/azure-resource-manager/resource-manager-quota-errors.md)
+> Son zamanlarda tüm varsayılan limitleri en yüksek sınırlara yükseltireceğiz. En fazla limit sütunu yoksa, kaynak, ayarlanabilir sınırlara sahip değildir. Geçmişte desteklenen bu limitlere sahipseniz ve aşağıdaki tablolarda güncelleştirilmiş limitleri görmüyorsanız, [ücretsiz olarak çevrimiçi müşteri destek isteği açın](../articles/azure-resource-manager/resource-manager-quota-errors.md)
 
-| Kaynak | Default/maximum limit | 
+| Kaynak | Varsayılan/en yüksek sınır | 
 | --- | --- |
 | Sanal ağlar |1000 |
 | Sanal ağ başına alt ağ sayısı |3\.000 |
-| Virtual network peerings per virtual network |500 |
-| [Virtual network gateways (VPN Gateways) per virtual network](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku) |30 |
-| DNS servers per virtual network |20 |
-| Private IP addresses per virtual network |65,536 |
-| Private IP addresses per network interface |256 |
-| Private IP addresses per virtual machine |256 |
-| Public IP addresses per network interface |256 |
-| Public IP addresses per virtual machine |256 |
-| Concurrent TCP or UDP flows per NIC of a virtual machine or role instance |500,000 |
-| Network interface cards |65,536 |
-| Ağ Güvenlik Grupları |5\.000 |
+| Sanal ağ başına sanal ağ eşlemeleri |500 |
+| [Sanal ağ başına sanal ağ geçitleri (VPN ağ geçitleri)](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku) |30 |
+| Sanal ağ başına DNS sunucuları |20 |
+| Sanal ağ başına özel IP adresleri |65.536 |
+| Ağ arabirimi başına özel IP adresleri |256 |
+| Sanal makine başına özel IP adresleri |256 |
+| Ağ arabirimi başına genel IP adresleri |256 |
+| Sanal makine başına genel IP adresleri |256 |
+| Bir sanal makinenin veya rol örneğinin her NIC 'ı için eşzamanlı TCP veya UDP akışı |500,000 |
+| Ağ arabirim kartları |65.536 |
+| Ağ Güvenlik Grupları |5,000 |
 | NSG başına NSG kuralları |1000 |
-| IP addresses and ranges specified for source or destination in a security group |4,000 |
+| Bir güvenlik grubundaki kaynak veya hedef için belirtilen IP adresleri ve aralıklar |4,000 |
 | Uygulama güvenliği grupları |3\.000 |
-| Application security groups per IP configuration, per NIC |20 |
-| IP configurations per application security group |4,000 |
-| Application security groups that can be specified within all security rules of a network security group |100 |
-| User-defined route tables |200 |
-| User-defined routes per route table |400 |
-| Point-to-site root certificates per Azure VPN Gateway |20 |
-| Virtual network TAPs |100 |
-| Network interface TAP configurations per virtual network TAP |100 |
+| IP yapılandırması başına uygulama güvenlik grupları, NIC başına |20 |
+| Uygulama güvenlik grubu başına IP yapılandırması |4,000 |
+| Bir ağ güvenlik grubunun tüm güvenlik kuralları dahilinde belirtilenebilir uygulama güvenlik grupları |100 |
+| Kullanıcı tanımlı yol tabloları |200 |
+| Yol tablosu başına Kullanıcı tanımlı yollar |400 |
+| Azure VPN Gateway başına Noktadan siteye kök sertifika |20 |
+| Sanal ağ dokunmalar |100 |
+| Ağ arabirimi sanal ağ başına yapılandırmalara dokunun |100 |
 
-#### <a name="publicip-address"></a>Public IP address limits
+#### <a name="publicip-address"></a>Genel IP adresi sınırları
 | Kaynak | Varsayılan limit | Üst sınır |
 | --- | --- | --- |
-| Public IP addresses - dynamic | 1,000 for Basic. |Desteğe başvurun. |
-| Public IP addresses - static | 1,000 for Basic. |Desteğe başvurun. |
-| Public IP addresses - static | 1,000 for Standard.|Desteğe başvurun. |
-| Public IP prefix length | /28 | Desteğe başvurun. |
+| Genel IP adresleri-dinamik | Temel için 1.000. |Desteğe başvurun. |
+| Genel IP adresleri-statik | Temel için 1.000. |Desteğe başvurun. |
+| Genel IP adresleri-statik | Standart için 1.000.|Desteğe başvurun. |
+| Genel IP öneki uzunluğu | /28 | Desteğe başvurun. |
 
-#### <a name="load-balancer"></a>Load balancer limits
-Aşağıdaki sınırlar yalnızca abonelik başına bölgeye göre Azure Resource Manager ile yönetilen ağ kaynakları için geçerlidir. Learn how to [view your current resource usage against your subscription limits](../articles/networking/check-usage-against-limits.md).
+#### <a name="load-balancer"></a>Yük dengeleyici sınırları
+Aşağıdaki sınırlar yalnızca abonelik başına bölgeye göre Azure Resource Manager ile yönetilen ağ kaynakları için geçerlidir. [Geçerli kaynak kullanımınızı abonelik sınırlarınıza göre görüntülemeyi](../articles/networking/check-usage-against-limits.md)öğrenin.
 
-| Kaynak | Default/maximum limit |
+| Kaynak | Varsayılan/en yüksek sınır |
 | --- | --- |
 | Yük dengeleyiciler | 1000 | 
-| Rules per resource, Basic | 250 |
-| Rules per resource, Standard | 1,500 | 
-| Rules per IP configuration | 299 |
-| Rules per NIC | 300 |
-| Front-end IP configurations, Basic | 200 |
-| Front-end IP configurations, Standard | 600 |
-| Back-end pool, Basic | 100, single availability set |
-| Back-end pool, Standard | 1,000, single virtual network |
-| Back-end resources per load balancer, Standard<sup>1</sup> | 150 |
-| High-availability ports, Standard | 1 per internal front-end |
+| Kaynak başına kurallar, temel | 250 |
+| Kaynak başına kurallar, standart | 1\.500 | 
+| IP yapılandırması başına kurallar | 299 |
+| NIC başına kurallar | 300 |
+| Ön uç IP yapılandırması, temel | 200 |
+| Ön uç IP yapılandırması, standart | 600 |
+| Arka uç havuzu, temel | 100, tek kullanılabilirlik kümesi |
+| Arka uç havuzu, standart | 1\.000, tek sanal ağ |
+| Yük dengeleyici başına arka uç kaynakları, standart<sup>1</sup> | 150 |
+| Yüksek kullanılabilirlik bağlantı noktaları, standart | Her iç ön uç için 1 |
 
-<sup>1</sup>The limit is up to 150 resources, in any combination of standalone virtual machine resources, availability set resources, and virtual machine scale-set resources.
+<sup>1</sup> Sınır, tek başına sanal makine kaynaklarının, kullanılabilirlik kümesi kaynaklarının ve sanal makine ölçek kümesi kaynaklarının herhangi bir kombinasyonuna göre 150 kaynağa kadar olur.
 
-#### <a name="virtual-networking-limits-classic"></a>The following limits apply only for networking resources managed through the **classic** deployment model per subscription. Learn how to [view your current resource usage against your subscription limits](../articles/networking/check-usage-against-limits.md).
+#### <a name="virtual-networking-limits-classic"></a>Aşağıdaki sınırlar yalnızca abonelik başına **Klasik** dağıtım modeliyle yönetilen ağ kaynakları için geçerlidir. [Geçerli kaynak kullanımınızı abonelik sınırlarınıza göre görüntülemeyi](../articles/networking/check-usage-against-limits.md)öğrenin.
 
 | Kaynak | Varsayılan limit | Üst sınır |
 | --- | --- | --- |
 | Sanal ağlar |100 |100 |
 | Yerel ağ siteleri |20 |50 |
-| DNS servers per virtual network |20 |20 |
-| Private IP addresses per virtual network |4,096 |4,096 |
-| Concurrent TCP or UDP flows per NIC of a virtual machine or role instance |500,000, up to 1,000,000 for two or more NICs. |500,000, up to 1,000,000 for two or more NICs. |
-| Network Security Groups (NSGs) |200 |200 |
+| Sanal ağ başına DNS sunucuları |20 |20 |
+| Sanal ağ başına özel IP adresleri |4\.096 |4\.096 |
+| Bir sanal makinenin veya rol örneğinin her NIC 'ı için eşzamanlı TCP veya UDP akışı |500.000, iki veya daha fazla NIC için 1.000.000 ' e kadar. |500.000, iki veya daha fazla NIC için 1.000.000 ' e kadar. |
+| Ağ güvenlik grupları (NSG 'ler) |200 |200 |
 | NSG başına NSG kuralları |1000 |1000 |
-| User-defined route tables |200 |200 |
-| User-defined routes per route table |400 |400 |
+| Kullanıcı tanımlı yol tabloları |200 |200 |
+| Yol tablosu başına Kullanıcı tanımlı yollar |400 |400 |
 | Genel IP adresleri (dinamik) |500 |500 |
 | Ayrılmış genel IP adresleri |500 |500 |
 | Dağıtım başına genel VIP |5 |Desteğe başvurun |
-| Private VIP (internal load balancing) per deployment |1 |1 |
-| Endpoint access control lists (ACLs) |50 |50 |
+| Dağıtım başına özel VIP (İç Yük Dengeleme) |1 |1 |
+| Uç nokta erişim denetim listeleri (ACL 'Ler) |50 |50 |

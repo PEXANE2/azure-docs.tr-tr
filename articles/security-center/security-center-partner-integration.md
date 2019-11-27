@@ -24,30 +24,30 @@ ms.locfileid: "74479382"
 Bu belge Azure Güvenlik Merkezi'ne bağlanmış olan güvenlik çözümlerini yönetmenize ve yenilerini eklemenize yardımcı olur.
 
 > [!NOTE]
-> A subset of security solutions has been retired on July 31st, 2019. For more information and alternative services, see [Retirement of Security Center features (July 2019)](security-center-features-retirement-july2019.md#menu_solutions).
+> Güvenlik çözümlerinin bir alt kümesi 31 Temmuz 2019 tarihinde kullanımdan kaldırılmıştır. Daha fazla bilgi ve diğer hizmetler için bkz. [Güvenlik Merkezi özelliklerini devre dışı bırakma (2019 Temmuz)](security-center-features-retirement-july2019.md#menu_solutions).
 
 ## <a name="integrated-azure-security-solutions"></a>Tümleşik Azure güvenlik çözümleri
 Güvenlik Merkezi, Azure'daki tümleşik güvenlik çözümlerini etkinleştirmeyi kolaylaştırır. Avantajlara şunlar dahildir:
 
-- **Basitleştirilmiş dağıtım**: Güvenlik Merkezi, tümleşik iş ortağı çözümlerinin kolay bir şekilde sağlanmasını mümkün kılar. For solutions like antimalware and vulnerability assessment, Security Center can provision the agent on your virtual machines. For firewall appliances, Security Center can take care of much of the network configuration required.
+- **Basitleştirilmiş dağıtım**: Güvenlik Merkezi, tümleşik iş ortağı çözümlerinin kolay bir şekilde sağlanmasını mümkün kılar. Güvenlik Merkezi, kötü amaçlı yazılımdan koruma ve güvenlik açığı değerlendirmesi gibi çözümler için sanal makinelerinizde aracıyı temin edebilir. Güvenlik Duvarı gereçlerinde, Güvenlik Merkezi için gereken ağ yapılandırmasının büyük bir bölümü olabilir.
 - **Tümleşik algılamalar**: İş ortağı çözümlerinden gelen güvenlik olayları otomatik olarak toplanır, birleştirilir ve Güvenlik Merkezi uyarıları ve olaylarının bir parçası olarak görüntülenir. Gelişmiş tehdit algılama özellikleri sağlanması amacıyla, bu olaylar diğer kaynaklardan alınan algılamalarla da birleştirilir.
 - **Birleşik sistem durumu izleme ve yönetim**: Müşteriler tüm iş ortağı çözümlerini bir bakışta izlemek için tümleşik sistem durumu olaylarını kullanabilir. İş ortağı çözümü kullanarak gelişmiş kuruluma kolayca erişim olanağıyla temel yapılandırma seçeneği sunulur.
 
-Currently, integrated security solutions include vulnerability assessment by [Qualys](https://www.qualys.com/public-cloud/#azure) and [Rapid7](https://www.rapid7.com/products/insightvm/) and Microsoft Application Gateway Web application firewall.
+Şu anda, tümleşik güvenlik çözümleri [Qualys](https://www.qualys.com/public-cloud/#azure) ve [Rapid7](https://www.rapid7.com/products/insightvm/) ve Microsoft Application Gateway Web uygulaması güvenlik duvarı tarafından güvenlik açığı değerlendirmesi içerir.
 
 > [!NOTE]
-> Security Center does not install the Microsoft Monitoring Agent on partner virtual appliances because most security vendors prohibit external agents running on their appliances.
+> Güvenlik Merkezi, çoğu güvenlik satıcısı, gereçlerinde çalışan dış aracıları yasakladığından, iş ortağı sanal gereçlerine Microsoft Monitoring Agent yüklemez.
 >
 >
 
 ## <a name="how-security-solutions-are-integrated"></a>Güvenlik çözümlerinin tümleştirilme şekli
-Güvenlik Merkezinden dağıtılan Azure güvenlik çözümleri otomatik olarak bağlanır. You can also connect other security data sources, including computers running on-premises or in other clouds.
+Güvenlik Merkezinden dağıtılan Azure güvenlik çözümleri otomatik olarak bağlanır. Ayrıca, şirket içinde veya diğer bulutlarda çalışan bilgisayarlar da dahil olmak üzere diğer güvenlik veri kaynaklarını da bağlayabilirsiniz.
 
 ![İş ortağı çözümlerini tümleştirme](./media/security-center-partner-integration/security-center-partner-integration-fig8.png)
 
 ## <a name="manage-integrated-azure-security-solutions-and-other-data-sources"></a>Tümleşik Azure güvenlik çözümlerini ve diğer veri kaynaklarını yönetme
 
-1. [Azure Portal](https://azure.microsoft.com/features/azure-portal/)’ında oturum açın.
+1. [Azure portalında](https://azure.microsoft.com/features/azure-portal/) oturum açın.
 
 2. **Microsoft Azure** menüsünde **Güvenlik Merkezi**’ni seçin. **Güvenlik Merkezi - Genel Bakış** açılır.
 
@@ -55,45 +55,45 @@ Güvenlik Merkezinden dağıtılan Azure güvenlik çözümleri otomatik olarak 
 
    ![Güvenlik Merkezine Genel Bakış](./media/security-center-partner-integration/overview.png)
 
-In **Security solutions**, you can see the health of integrated Azure security solutions and run basic management tasks.
+**Güvenlik çözümlerinde**, tümleşik Azure güvenlik çözümlerinin durumunu görebilir ve temel yönetim görevlerini çalıştırabilirsiniz.
 
 ### <a name="connected-solutions"></a>Bağlantılı çözümler
 
-The **Connected solutions** section includes security solutions that are currently connected to Security Center. It also shows the health status of each solution.  
+**Bağlı çözümler** bölümü, güvenlik merkezi 'ne bağlı olan güvenlik çözümlerini içerir. Ayrıca, her çözümün sistem durumunu gösterir.  
 
 ![Bağlantılı çözümler](./media/security-center-partner-integration/security-center-partner-integration-fig4.png)
 
-The status of a partner solution can be:
+İş ortağı çözümünün durumu şu olabilir:
 
-* Healthy (green) - no health issues.
-* Unhealthy (red) - there's a health issue that requires immediate attention.
-* Health issues (orange) - the solution has stopped reporting its health.
-* Not reported (gray) - the solution hasn't reported anything yet and no health data is available. A solution's status may be unreported if it was connected recently and is still deploying.
+* Sağlıklı (yeşil)-sistem durumu sorunu yok.
+* Sağlıksız (kırmızı)-hemen ilgilenilmesi gereken bir sistem durumu sorunu var.
+* Sağlık sorunları (turuncu)-çözüm, sistem durumunu raporlamayı durdurdu.
+* Bildirilmedi (gri)-çözüm henüz bir şey bildirmedi ve sistem durumu verisi yok. Bir çözümün durumu, yakın zamanda bağlandıysa ve hala dağıtılarak bildirilmeyebilir.
 
 > [!NOTE]
-> If health status data is not available, Security Center shows the date and time of the last event received to indicate whether the solution is reporting or not. If no health data is available and no alerts were received within the last 14 days, Security Center indicates that the solution is unhealthy or not reporting.
+> Sağlık durumu verileri yoksa, Güvenlik Merkezi, çözümün raporlama yapılıp yapılmayacağını göstermek için alınan son olayın tarih ve saatini gösterir. Bir sistem durumu verisi yoksa ve son 14 gün içinde hiçbir uyarı alınmıyorsa, Güvenlik Merkezi, çözümün sağlıksız olduğunu veya bildirilmediğini belirtir.
 >
 >
 
-1. Select **VIEW** for additional information and options such as:
+1. Ek bilgi ve seçenekler için **Görünüm** ' ü seçin:
 
-   - **Solution console**. Opens the management experience for this solution.
-   - **Link VM**. Opens the Link Applications page. Burada, kaynakları iş ortağı çözümüne bağlayabilirsiniz.
-   - **Delete solution**.
-   - **Configure**.
+   - **Çözüm konsolu**. Bu çözüm için yönetim deneyimini açar.
+   - **VM 'Yi bağlayın**. Uygulamaları bağla sayfasını açar. Burada, kaynakları iş ortağı çözümüne bağlayabilirsiniz.
+   - **Çözümü silin**.
+   - Öğesini **yapılandırın**.
 
    ![İş ortağı çözümü ayrıntısı](./media/security-center-partner-solutions/partner-solutions-detail.png)
 
 ### <a name="discovered-solutions"></a>Bulunan çözümler
 
-Security Center automatically discovers security solutions running in Azure but not connected to Security Center and displays the solutions in the **Discovered solutions** section. These  solutions include Azure solutions, like [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection), and partner solutions.
+Güvenlik Merkezi, Azure 'da çalışan ancak güvenlik merkezi 'ne bağlı olmayan güvenlik çözümlerini otomatik olarak bulur ve **bulunan çözümler** bölümünde çözümleri görüntüler. Bu çözümler [Azure AD kimlik koruması](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)ve iş ortağı çözümleri gibi Azure çözümlerini içerir.
 
 > [!NOTE]
-> Güvenlik Merkezi’nin Standart katmanı, bulunan çözümler özelliği için abonelik düzeyinde gereklidir. See [Pricing](security-center-pricing.md) to learn more about the pricing tiers.
+> Güvenlik Merkezi’nin Standart katmanı, bulunan çözümler özelliği için abonelik düzeyinde gereklidir. Fiyatlandırma katmanları hakkında daha fazla bilgi için bkz. [fiyatlandırma](security-center-pricing.md) .
 >
 >
 
-Select **CONNECT** under a solution to integrate with Security Center and be notified of security alerts.
+Güvenlik Merkezi ile tümleştirilecek ve güvenlik uyarıları hakkında bildirim almak için bir çözüm altında **Bağlan** ' ı seçin.
 
 ### <a name="add-data-sources"></a>Veri kaynağı ekleme
 
@@ -101,51 +101,51 @@ Select **CONNECT** under a solution to integrate with Security Center and be not
 
 ![Veri kaynakları](./media/security-center-partner-integration/security-center-partner-integration-fig7.png)
 
-## <a name="exporting-data-to-a-siem"></a>Exporting data to a SIEM
+## <a name="exporting-data-to-a-siem"></a>Verileri SıEM 'ye aktarma
 
 > [!NOTE]
-> For details of a simpler method (currently in preview) for exporting data to a SIEM, see [Export security alerts and recommendations (Preview)](continuous-export.md). The new method does not use Activity Log as an intermediator and allows direct export from Security Center to Event Hubs (and then on to your SIEM), it also supports the export of Security Recommendations.
+> Bir SıEM 'e veri aktarmak için daha basit bir yöntemin (Şu anda önizleme aşamasında) ayrıntıları için bkz. [güvenlik uyarılarını ve önerilerini dışarı aktarma (Önizleme)](continuous-export.md). Yeni yöntem, etkinlik günlüğünü bir intermediator olarak kullanmaz ve Güvenlik Merkezi 'nden Event Hubs (ve sonra SıEM 'nize) doğrudan dışarı aktarmaya izin verir. Ayrıca güvenlik önerilerini dışarı aktarmayı da destekler.
 
 
-You can configure your SIEMs or other monitoring tools to receive Azure Security Center events.
+Sıems veya diğer izleme araçlarınızı Azure Güvenlik Merkezi olaylarını alacak şekilde yapılandırabilirsiniz.
 
-All events from Azure Security Center are published to Azure Monitor's Azure [Activity log](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md). Azure Monitor uses [a consolidated pipeline](../azure-monitor/platform/stream-monitoring-data-event-hubs.md) to  stream the data to an Event Hub where it can then be pulled into your monitoring tool.
+Azure Güvenlik Merkezi 'ndeki tüm olaylar Azure Izleyici 'nin Azure [etkinlik günlüğüne](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)yayımlanır. Azure Izleyici, verileri daha sonra izleme aracınızdan çektiği bir olay hub 'ına akışa almak için [birleştirilmiş bir işlem hattı](../azure-monitor/platform/stream-monitoring-data-event-hubs.md) kullanır.
 
-The next sections describe how you can configure data to be streamed to an event hub. The steps assume that you already have Azure Security Center configured in your Azure subscription.
+Sonraki bölümlerde, verileri bir olay hub 'ına akışa almak üzere nasıl yapılandırabileceğiniz açıklanır. Adımlarda Azure aboneliğinizde zaten Azure Güvenlik Merkezi 'nin yapılandırıldığı varsayılır.
 
 ### <a name="high-level-overview"></a>Yüksek düzey genel bakış
 
-![High-Level overview](media/security-center-export-data-to-siem/overview.png)
+![Üst düzey genel bakış](media/security-center-export-data-to-siem/overview.png)
 
-### <a name="what-is-the-azure-security-data-exposed-to-siem"></a>What is the Azure security data exposed to SIEM?
+### <a name="what-is-the-azure-security-data-exposed-to-siem"></a>SıEM 'ye sunulan Azure Güvenlik verileri nedir?
 
-In this version, we expose the [security alerts.](../security-center/security-center-managing-and-responding-alerts.md) In upcoming releases, we will enrich the data set with security recommendations.
+Bu sürümde, [güvenlik uyarılarını](../security-center/security-center-managing-and-responding-alerts.md) kullanıma sunduk. Yaklaşan sürümlerde, veri kümesini güvenlik önerileri ile Zenginleştireceğiz.
 
-### <a name="how-to-set-up-the-pipeline"></a>How to set up the pipeline
+### <a name="how-to-set-up-the-pipeline"></a>İşlem hattını ayarlama
 
 #### <a name="create-an-event-hub"></a>Olay Hub'ı oluşturma
 
-Before you begin, [create an Event Hubs namespace](../event-hubs/event-hubs-create.md) - the destination for all your monitoring data.
+Başlamadan önce, tüm izleme verilerinizin hedefi [olan bir Event Hubs ad alanı oluşturun](../event-hubs/event-hubs-create.md) .
 
-#### <a name="stream-the-azure-activity-log-to-event-hubs"></a>Stream the Azure Activity Log to Event Hubs
+#### <a name="stream-the-azure-activity-log-to-event-hubs"></a>Azure etkinlik günlüğünü Event Hubs akışa almak
 
-See the following article [stream activity log to Event Hubs](../azure-monitor/platform/activity-logs-stream-event-hubs.md)
+Event Hubs için aşağıdaki makaleye [Akış etkinlik günlüğüne](../azure-monitor/platform/activity-logs-stream-event-hubs.md) bakın
 
-#### <a name="install-a-partner-siem-connector"></a>Install a partner SIEM connector 
+#### <a name="install-a-partner-siem-connector"></a>İş ortağı SıEM bağlayıcısını yükler 
 
-Routing your monitoring data to an Event Hub with Azure Monitor enables you to easily integrate with partner SIEM and monitoring tools.
+İzleme verilerinizi Azure Izleyici ile bir olay hub 'ına yönlendirme, iş ortağı SıEM ve izleme araçlarıyla kolayca tümleştirmenize olanak sağlar.
 
-See the following article for the list of [supported SIEMs](../azure-monitor/platform/resource-logs-stream-event-hubs.md#what-you-can-do-with-resource-logs-sent-to-an-event-hub)
+[Desteklenen Sıems](../azure-monitor/platform/resource-logs-stream-event-hubs.md#what-you-can-do-with-resource-logs-sent-to-an-event-hub) listesi için aşağıdaki makaleye bakın
 
-### <a name="example-for-querying-data"></a>Example for Querying data 
+### <a name="example-for-querying-data"></a>Veri sorgulama örneği 
 
-Here are some Splunk queries you can use to pull alert data:
+Uyarı verilerini çekmek için kullanabileceğiniz bazı splunk sorguları aşağıda verilmiştir:
 
-| **Description of Query** | **Sorgu** |
+| **Sorgunun açıklaması** | **Sorgu** |
 |----|----|
-| All Alerts| index=main Microsoft.Security/locations/alerts|
-| Summarize count of operations by their name| index=main sourcetype="amal:security" \| table operationName \| stats count by operationName|
-| Get Alerts info: Time, Name, State, ID, and Subscription | index=main Microsoft.Security/locations/alerts \| table \_time, properties.eventName, State, properties.operationId, am_subscriptionId |
+| Tüm uyarılar| index = ana Microsoft. güvenlik/konumlar/uyarılar|
+| İşlem sayısını adlarıyla özetleme| index = Main SourceType = "Amal: güvenlik" \| tablo operationName \| istatistik sayısı, operationName|
+| Uyarı bilgilerini al: saat, ad, durum, KIMLIK ve abonelik | index = ana Microsoft. Security/Locations/Alerts \| tablo \_zaman, Özellikler. eventName, eyalet, Özellikler. operationId, am_subscriptionId |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

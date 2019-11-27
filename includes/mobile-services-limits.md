@@ -13,16 +13,16 @@ ms.locfileid: "74224506"
 ---
 | Katman | Ücretsiz | Temel | Standart |
 | --- | --- | --- | --- |
-| API çağrıları |500,000 |1.5 million per unit |15 million per unit |
-| Active devices |500 |İş çalışma zamanında |İş çalışma zamanında |
-| Ölçeklendirme |Yok |Up to 6 units |Sınırsız birim |
-| Anında iletme bildirimleri |Azure Notification Hubs Free tier included, up to 1 million pushes |Notification Hubs Basic tier included, up to 10 million pushes |Notification Hubs Standard tier included, up to 10 million pushes |
-| Real-time messaging/<br/>Web Yuvaları |Sınırlı |350 per mobile service |İş çalışma zamanında |
+| API çağrıları |500,000 |birim başına 1.500.000 |birim başına 15.000.000 |
+| Etkin cihazlar |500 |Sınırsız |Sınırsız |
+| Ölçek |Yok |6 birime kadar |Sınırsız birim |
+| Anında iletme bildirimleri |Azure Notification Hubs ücretsiz katman dahil, 1.000.000 'e kadar gönderim |Notification Hubs temel katman dahil, en fazla 10.000.000 gönderim |Notification Hubs Standart katman dahil, 10.000.000 'e kadar gönderim |
+| Gerçek zamanlı mesajlaşma/<br/>Web Yuvaları |Sınırlı |Mobil hizmet başına 350 |Sınırsız |
 | Çevrimdışı eşitlemeler |Sınırlı |Var |Var |
 | Zamanlanan işler |Sınırlı |Var |Var |
-| Azure SQL Database (required) <br/>Standard rates apply for additional capacity |20 MB included |20 MB included |20 MB included |
-| İşlemci kapasitesi |60 minutes per day |İş çalışma zamanında |İş çalışma zamanında |
-| Giden veri aktarımı |165 MB per day (daily rollover) |Var |Var |
+| Azure SQL veritabanı (gerekli) <br/>Ek kapasite için standart ücretler uygulanır |20 MB dahil |20 MB dahil |20 MB dahil |
+| İşlemci kapasitesi |60 dakika/gün |Sınırsız |Sınırsız |
+| Giden veri aktarımı |165 MB/gün (günlük geçiş) |Var |Var |
 
-For more information on limits and pricing, see [Azure Mobile Services pricing](https://azure.microsoft.com/pricing/details/mobile-services/). 
+Sınırlamalar ve fiyatlandırma hakkında daha fazla bilgi için bkz. [Azure Mobile Services fiyatlandırması](https://azure.microsoft.com/pricing/details/mobile-services/). 
 

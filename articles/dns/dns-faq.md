@@ -1,6 +1,6 @@
 ---
-title: FAQ - Azure DNS
-description: In this article, learn about frequently asked questions about Azure DNS
+title: SSS-Azure DNS
+description: Bu makalede Azure DNS hakkında sık sorulan sorular hakkında bilgi edinin
 services: dns
 author: asudbring
 ms.service: dns
@@ -14,193 +14,193 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74212021"
 ---
-# <a name="azure-dns-faq"></a>Azure DNS FAQ
+# <a name="azure-dns-faq"></a>Azure DNS SSS
 
-## <a name="about-azure-dns"></a>About Azure DNS
+## <a name="about-azure-dns"></a>Azure DNS hakkında
 
 ### <a name="what-is-azure-dns"></a>Azure DNS nedir?
 
-The Domain Name System (DNS) translates, or resolves, a website or service name to its IP address. Azure DNS is a hosting service for DNS domains. It provides name resolution by using Microsoft Azure infrastructure. Etki alanlarınızı Azure'da barındırarak DNS kayıtlarınızı diğer Azure hizmetlerinde kullandığınız kimlik bilgileri, API’ler, araçlar ve faturalarla yönetebilirsiniz.
+Etki alanı adı sistemi (DNS), bir Web sitesi veya hizmet adını IP adresine çevirir veya çözümler. Azure DNS, DNS etki alanları için bir barındırma hizmetidir. Microsoft Azure altyapısını kullanarak ad çözümlemesi sağlar. Etki alanlarınızı Azure'da barındırarak DNS kayıtlarınızı diğer Azure hizmetlerinde kullandığınız kimlik bilgileri, API’ler, araçlar ve faturalarla yönetebilirsiniz.
 
-DNS domains in Azure DNS are hosted on the Azure global network of DNS name servers. This system uses Anycast networking so that each DNS query is answered by the closest available DNS server. Azure DNS provides fast performance and high availability for your domain.
+Azure DNS 'daki DNS etki alanları, DNS ad sunucularının Azure küresel ağında barındırılır. Bu sistem, her DNS sorgusunun kullanılabilir en yakın DNS sunucusu tarafından yanıtlanabilmesi için tek noktaya yayın ağını kullanır. Azure DNS, etki alanınız için hızlı performans ve yüksek kullanılabilirlik sağlar.
 
-Azure DNS is based on Azure Resource Manager. Azure DNS benefits from Resource Manager features such as role-based access control, audit logs, and resource locking. You can manage domains and records via the Azure portal, Azure PowerShell cmdlets, and the cross-platform Azure CLI. Applications that require automatic DNS management can integrate with the service via the REST API and SDKs.
+Azure DNS Azure Resource Manager tabanlıdır. Rol tabanlı erişim denetimi, denetim günlükleri ve kaynak kilitleme gibi Kaynak Yöneticisi özelliklerden Azure DNS avantajları. Azure portal, Azure PowerShell cmdlet 'leri ve platformlar arası Azure CLı aracılığıyla etki alanlarını ve kayıtları yönetebilirsiniz. Otomatik DNS yönetimi gerektiren uygulamalar, REST API ve SDK 'lar aracılığıyla hizmetle tümleştirilebilir.
 
-### <a name="how-much-does-azure-dns-cost"></a>How much does Azure DNS cost?
+### <a name="how-much-does-azure-dns-cost"></a>Azure DNS maliyeti ne kadar sürer?
 
-The Azure DNS billing model is based on the number of DNS zones hosted in Azure DNS. It's also based on the number of DNS queries they receive. Discounts are provided based on usage.
+Azure DNS faturalandırma modeli, Azure DNS barındırılan DNS bölgelerinin sayısını temel alır. Ayrıca, aldıkları DNS sorgularının sayısını temel alır. İndirimler kullanım temel alınarak sağlanır.
 
-For more information, see the [Azure DNS pricing page](https://azure.microsoft.com/pricing/details/dns/).
+Daha fazla bilgi için [Azure DNS fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/dns/)bakın.
 
 ### <a name="what-is-the-sla-for-azure-dns"></a>Azure DNS için hani SLA sunulur?
 
-Azure guarantees that valid DNS requests receive a response from at least one Azure DNS name server 100% of the time.
+Azure, geçerli DNS isteklerinin en az bir Azure DNS ad sunucusundan %100 yanıt alacağını garanti eder.
 
-For more information, see the [Azure DNS SLA page](https://azure.microsoft.com/support/legal/sla/dns).
+Daha fazla bilgi için [Azure DNS SLA sayfasına](https://azure.microsoft.com/support/legal/sla/dns)bakın.
 
 ### <a name="what-is-a-dns-zone-is-it-the-same-as-a-dns-domain"></a>DNS bölgesi nedir? DNS etki alanıyla aynı şey midir? 
 
-A domain is a unique name in the domain name system. Örneğin: contoso.com.
+Etki alanı, etki alanı adı sisteminde benzersiz bir addır. Örneğin: contoso.com.
 
-DNS bölgesi, belirli bir etki alanının DNS kayıtlarını barındırmak için kullanılır. For example, the domain contoso.com might contain several DNS records. The records might include mail.contoso.com for a mail server and www\.contoso.com for a website. These records are hosted in the DNS zone contoso.com.
+DNS bölgesi, belirli bir etki alanının DNS kayıtlarını barındırmak için kullanılır. Örneğin, contoso.com etki alanı birkaç DNS kaydı içerebilir. Kayıtlar bir posta sunucusu için mail.contoso.com ve bir Web sitesi için www\.contoso.com içerebilir. Bu kayıtlar, DNS bölgesi contoso.com içinde barındırılır.
 
-A domain name is *just a name*. A DNS zone is a data resource that contains the DNS records for a domain name. Azure DNS’yi kullanarak bir DNS bölgesi barındırabilir ve Azure'da bir etki alanının DNS kayıtlarını yönetebilirsiniz. It also provides DNS name servers to answer DNS queries from the Internet.
+Bir etki alanı adı *yalnızca bir addır*. DNS bölgesi, bir etki alanı adı için DNS kayıtlarını içeren bir veri kaynağıdır. Azure DNS’yi kullanarak bir DNS bölgesi barındırabilir ve Azure'da bir etki alanının DNS kayıtlarını yönetebilirsiniz. Ayrıca, DNS sorgularını Internet 'ten yanıtlamak için DNS ad sunucuları sağlar.
 
-### <a name="do-i-need-to-buy-a-dns-domain-name-to-use-azure-dns"></a>Do I need to buy a DNS domain name to use Azure DNS? 
+### <a name="do-i-need-to-buy-a-dns-domain-name-to-use-azure-dns"></a>Azure DNS kullanmak için bir DNS etki alanı adı satın almam gerekiyor mu? 
 
 Olmayabilir.
 
-You don't need to buy a domain to host a DNS zone in Azure DNS. Bir etki alanı adına sahip olmadan, istediğiniz zaman DNS bölgesi oluşturabilirsiniz. DNS queries for this zone resolve only if they're directed to the Azure DNS name servers assigned to the zone.
+Azure DNS bir DNS bölgesini barındırmak için bir etki alanı satın almanız gerekmez. Bir etki alanı adına sahip olmadan, istediğiniz zaman DNS bölgesi oluşturabilirsiniz. Bu bölge için DNS sorguları yalnızca bölgeye atanan Azure DNS ad sunucularına yönlendirildikleri takdirde çözümlenir.
 
-To link your DNS zone into the global DNS hierarchy, you must buy the domain name. Then, DNS queries from anywhere in the world find your DNS zone and answer with your DNS records.
+DNS diliminizi küresel DNS hiyerarşisine bağlamak için etki alanı adını satın almalısınız. Ardından, dünyanın herhangi bir yerinden DNS sorguları DNS bölgenizi ve DNS kayıtlarınız ile yanıtını bulur.
 
-## <a name="azure-dns-features"></a>Azure DNS features
+## <a name="azure-dns-features"></a>Azure DNS özellikleri
 
-### <a name="are-there-any-restrictions-when-using-alias-records-for-a-domain-name-apex-with-traffic-manager"></a>Are there any restrictions when using alias records for a domain name apex with Traffic Manager?
+### <a name="are-there-any-restrictions-when-using-alias-records-for-a-domain-name-apex-with-traffic-manager"></a>Traffic Manager etki alanı adı için diğer ad kayıtlarını kullanırken herhangi bir kısıtlama var mı?
 
-Evet. You must use static public IP addresses with Azure Traffic Manager. Configure the **External endpoint** target by using a static IP address. 
+Evet. Azure Traffic Manager ile statik genel IP adresleri kullanmanız gerekir. **Dış uç nokta** hedefini STATIK bir IP adresi kullanarak yapılandırın. 
 
-### <a name="does-azure-dns-support-dns-based-traffic-routing-or-endpoint-failover"></a>Does Azure DNS support DNS-based traffic routing or endpoint failover?
+### <a name="does-azure-dns-support-dns-based-traffic-routing-or-endpoint-failover"></a>Azure DNS DNS tabanlı trafik yönlendirmesi veya uç nokta yük devretmesini destekler mi?
 
-DNS-based traffic routing and endpoint failover are provided by Traffic Manager. Traffic Manager is a separate Azure service that can be used with Azure DNS. For more information, see the [Traffic Manager overview](../traffic-manager/traffic-manager-overview.md).
+DNS tabanlı trafik yönlendirme ve uç nokta yük devretmesi Traffic Manager tarafından sağlanır. Traffic Manager, Azure DNS birlikte kullanılabilen ayrı bir Azure hizmetidir. Daha fazla bilgi için [Traffic Manager genel bakış](../traffic-manager/traffic-manager-overview.md)bölümüne bakın.
 
-Azure DNS only supports hosting static DNS domains, where each DNS query for a given DNS record always receives the same DNS response.
+Azure DNS, belirli bir DNS kaydı için her DNS sorgusunun her zaman aynı DNS yanıtını aldığı statik DNS etki alanlarını barındırmayı destekler.
 
-### <a name="does-azure-dns-support-domain-name-registration"></a>Does Azure DNS support domain name registration?
+### <a name="does-azure-dns-support-domain-name-registration"></a>Azure DNS etki alanı adı kaydını destekliyor mu?
 
-Hayır. Azure DNS doesn't currently support the option to buy domain names. To buy domains, you must use a third-party domain name registrar. The registrar typically charges a small annual fee. The domains then can be hosted in Azure DNS for management of DNS records. Daha fazla bilgi için bkz. [Bir etki alanını Azure DNS'ye devretme](dns-domain-delegation.md).
+Hayır. Azure DNS, şu anda etki alanı adlarını satın alma seçeneğini desteklemez. Etki alanları satın almak için bir üçüncü taraf etki alanı adı kaydedici kullanmanız gerekir. Kaydedici genellikle küçük bir yıllık ücreti ücretlendirir. Etki alanları, DNS kayıtlarının yönetimi için Azure DNS bölümünde barındırılabilir. Daha fazla bilgi için bkz. [Bir etki alanını Azure DNS'ye devretme](dns-domain-delegation.md).
 
-The feature to buy domain names is tracked in the Azure backlog. Use the feedback site to [register your support for this feature](https://feedback.azure.com/forums/217313-networking/suggestions/4996615-azure-should-be-its-own-domain-registrar).
+Etki alanı adları satın alma özelliği Azure biriktirme listesinde izlenir. [Bu özellik için destek kaydetmek](https://feedback.azure.com/forums/217313-networking/suggestions/4996615-azure-should-be-its-own-domain-registrar)üzere geri bildirim sitesini kullanın.
 
-### <a name="does-azure-dns-support-dnssec"></a>Does Azure DNS support DNSSEC?
+### <a name="does-azure-dns-support-dnssec"></a>Azure DNS DNSSEC 'yi destekliyor mu?
 
-Hayır. Azure DNS doesn't currently support the Domain Name System Security Extensions (DNSSEC).
+Hayır. Azure DNS şu anda etki alanı adı sistemi güvenlik uzantıları (DNSSEC) desteklememektedir.
 
-The DNSSEC feature is tracked in the Azure DNS backlog. Use the feedback site to [register your support for this feature](https://feedback.azure.com/forums/217313-networking/suggestions/13284393-azure-dns-needs-dnssec-support).
+DNSSEC özelliği Azure DNS biriktirme listesinde izlenir. [Bu özellik için destek kaydetmek](https://feedback.azure.com/forums/217313-networking/suggestions/13284393-azure-dns-needs-dnssec-support)üzere geri bildirim sitesini kullanın.
 
-### <a name="does-azure-dns-support-zone-transfers-axfrixfr"></a>Does Azure DNS support zone transfers (AXFR/IXFR)?
+### <a name="does-azure-dns-support-zone-transfers-axfrixfr"></a>Azure DNS, bölge aktarımlarını (AXFR/ıXFR) destekler mi?
 
-Hayır. Azure DNS doesn't currently support zone transfers. DNS zones can be [imported into Azure DNS by using the Azure CLI](dns-import-export.md). DNS records are managed via the [Azure DNS management portal](dns-operations-recordsets-portal.md), [REST API](https://docs.microsoft.com/powershell/module/az.dns), [SDK](dns-sdk.md), [PowerShell cmdlets](dns-operations-recordsets.md), or the [CLI tool](dns-operations-recordsets-cli.md).
+Hayır. Azure DNS şu anda bölge aktarımlarını desteklememektedir. DNS bölgeleri [, Azure CLI kullanılarak Azure DNS içine aktarılabilir](dns-import-export.md). DNS kayıtları, [Azure DNS yönetim portalı](dns-operations-recordsets-portal.md), [REST API](https://docs.microsoft.com/powershell/module/az.dns), [SDK](dns-sdk.md), [PowerShell cmdlet 'leri](dns-operations-recordsets.md)veya [CLI aracı](dns-operations-recordsets-cli.md)aracılığıyla yönetilir.
 
-The zone transfer feature is tracked in the Azure DNS backlog. Use the feedback site to [register your support for this feature](https://feedback.azure.com/forums/217313-networking/suggestions/12925503-extend-azure-dns-to-support-zone-transfers-so-it-c).
+Bölge aktarımı özelliği Azure DNS biriktirme listesinde izlenir. [Bu özellik için destek kaydetmek](https://feedback.azure.com/forums/217313-networking/suggestions/12925503-extend-azure-dns-to-support-zone-transfers-so-it-c)üzere geri bildirim sitesini kullanın.
 
-### <a name="does-azure-dns-support-url-redirects"></a>Does Azure DNS support URL redirects?
+### <a name="does-azure-dns-support-url-redirects"></a>Azure DNS destek URL 'SI yeniden yönlendirmeleri mi?
 
-Hayır. URL redirect services aren't a DNS service. They work at the HTTP level rather than the DNS level. Some DNS providers bundle a URL redirect service as part of their overall offering. This service isn't currently supported by Azure DNS.
+Hayır. URL yeniden yönlendirme hizmetleri bir DNS hizmeti değil. DNS düzeyi yerine HTTP düzeyinde çalışır. Bazı DNS sağlayıcıları bir URL yeniden yönlendirme hizmetini genel sunumunun bir parçası olarak paketleyip. Bu hizmet şu anda Azure DNS tarafından desteklenmiyor.
 
-The URL redirect feature is tracked in the Azure DNS backlog. Use the feedback site to [register your support for this feature](https://feedback.azure.com/forums/217313-networking/suggestions/10109736-provide-a-301-permanent-redirect-service-for-ape).
+URL yeniden yönlendirme özelliği Azure DNS biriktirme listesinde izlenir. [Bu özellik için destek kaydetmek](https://feedback.azure.com/forums/217313-networking/suggestions/10109736-provide-a-301-permanent-redirect-service-for-ape)üzere geri bildirim sitesini kullanın.
 
-### <a name="does-azure-dns-support-the-extended-ascii-encoding-8-bit-set-for-txt-record-sets"></a>Does Azure DNS support the extended ASCII encoding (8-bit) set for TXT record sets?
+### <a name="does-azure-dns-support-the-extended-ascii-encoding-8-bit-set-for-txt-record-sets"></a>Azure DNS, TXT kayıt kümeleri için genişletilmiş ASCII kodlaması (8 bit) kümesini destekler mi?
 
-Evet. Azure DNS supports the extended ASCII encoding set for TXT record sets. But you must use the latest version of the Azure REST APIs, SDKs, PowerShell, and the CLI. Versions older than October 1, 2017, or SDK 2.1 don't support the extended ASCII set. 
+Evet. Azure DNS, TXT kayıt kümeleri için genişletilmiş ASCII kodlama kümesini destekler. Ancak Azure REST API 'lerinin, SDK 'ların, PowerShell 'in ve CLı 'nin en son sürümünü kullanmanız gerekir. 1 Ekim 2017 veya SDK 2,1 ' den eski sürümlerde genişletilmiş ASCII kümesi desteklenmez. 
 
-For example, you might provide a string as the value for a TXT record that has the extended ASCII character \128. An example is "abcd\128efgh." Azure DNS uses the byte value of this character, which is 128, in internal representation. At the time of DNS resolution, this byte value is returned in the response. Also note that "abc" and "\097\098\099" are interchangeable as far as resolution is concerned. 
+Örneğin, genişletilmiş ASCII karakteri \ 128 olan bir TXT kaydı değeri olarak bir dize sağlayabilirsiniz. Örnek, "abcd\128efgh." şeklindedir. Azure DNS, bu karakterin iç temsilinde 128 olan byte değerini kullanır. DNS çözümlemesi sırasında, yanıtta bu bayt değeri döndürülür. Ayrıca, "abc" ve "\ 097 \ 098 \ 099" ' nin çözüm açısından çok farklı şekilde değiştirilebilecek olduğunu unutmayın. 
 
-We follow [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt) zone file master format escape rules for TXT records. For example, `\` now actually escapes everything per the RFC. If you specify `A\B` as the TXT record value, it's represented and resolved as just `AB`. If you really want the TXT record to have `A\B` at resolution, you need to escape the `\` again. As an example, specify `A\\B`.
+TXT kayıtları için [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt) bölge dosyası ana biçim kaçış kurallarını izliyoruz. Örneğin, `\` artık RFC başına her şeyi gerçekten iptal eder. TXT kayıt değeri olarak `A\B` belirtirseniz, yalnızca `AB`olarak temsil edilir ve çözümlenir. TXT kaydının çözümlenme `A\B` olmasını gerçekten istiyorsanız, `\` yeniden atlamanız gerekir. Örnek olarak, `A\\B`belirtin.
 
-This support currently isn't available for TXT records created from the Azure portal.
+Bu destek şu anda Azure portal oluşturulan TXT kayıtları için kullanılamaz.
 
 ## <a name="alias-records"></a>Diğer ad kayıtları
 
-### <a name="what-are-some-scenarios-where-alias-records-are-useful"></a>What are some scenarios where alias records are useful?
+### <a name="what-are-some-scenarios-where-alias-records-are-useful"></a>Diğer ad kayıtlarının yararlı olduğu bazı senaryolar nelerdir?
 
-See the scenarios section in the [Azure DNS alias records overview](dns-alias.md).
+[Azure DNS diğer ad kayıtlarına genel bakış](dns-alias.md)bölümünde senaryolar bölümüne bakın.
 
-### <a name="what-record-types-are-supported-for-alias-record-sets"></a>What record types are supported for alias record sets?
+### <a name="what-record-types-are-supported-for-alias-record-sets"></a>Diğer ad kayıt kümeleri için hangi kayıt türleri desteklenir?
 
-Alias record sets are supported for the following record types in an Azure DNS zone:
+Diğer ad kayıt kümeleri Azure DNS bölgesindeki aşağıdaki kayıt türleri için desteklenir:
  
 - A 
 - AAAA
 - CNAME 
 
-### <a name="what-resources-are-supported-as-targets-for-alias-record-sets"></a>What resources are supported as targets for alias record sets?
+### <a name="what-resources-are-supported-as-targets-for-alias-record-sets"></a>Diğer ad kayıt kümeleri için hedef olarak hangi kaynaklar desteklenir?
 
-- **Point to a public IP resource from a DNS A/AAAA record set.** You can create an A/AAAA record set and make it an alias record set to point to a public IP resource.
-- **Point to a Traffic Manager profile from a DNS A/AAAA/CNAME record set.** You can point to the CNAME of a Traffic Manager profile from a DNS CNAME record set. An example is contoso.trafficmanager.net. Now, you also can point to a Traffic Manager profile that has external endpoints from an A or AAAA record set in your DNS zone.
-- **Point to an Azure Content Delivery Network (CDN) endpoint**. This is useful when you create static websites using Azure storage and Azure CDN.
-- **Point to another DNS record set within the same zone.** Alias records can reference to other record sets of the same type. Örneğin, bir DNS CNAME kayıt kümesinin aynı türdeki başka bir CNAME kayıt kümesine diğer ad olmasını sağlayabilirsiniz. This arrangement is useful if you want some record sets to be aliases and some non-aliases.
+- **DNS A/AAAA kayıt kümesinden ortak bir IP kaynağını işaret edin.** A/AAAA kayıt kümesi oluşturabilir ve bunu bir genel IP kaynağını işaret etmek üzere bir diğer ad kayıt kümesi yapabilirsiniz.
+- **DNS A/AAAA/CNAME kayıt kümesinden bir Traffic Manager profile işaret edin.** Bir DNS CNAME kayıt kümesinden bir Traffic Manager profilinin CNAME ' i işaret edebilirsiniz. Örnek olarak contoso.trafficmanager.net. Artık, DNS bölgeniz içindeki bir veya AAAA kayıt kümesinden dış uç noktaları olan bir Traffic Manager profile de işaret edebilirsiniz.
+- **Azure Content Delivery Network (CDN) uç noktasını Işaret edin**. Bu, Azure depolama ve Azure CDN kullanarak statik Web siteleri oluşturduğunuzda yararlı olur.
+- **Aynı bölge içindeki başka bir DNS kayıt kümesine işaret edin.** Diğer ad kayıtları aynı türdeki diğer kayıt kümelerine başvurabilir. Örneğin, bir DNS CNAME kayıt kümesinin aynı türdeki başka bir CNAME kayıt kümesine diğer ad olmasını sağlayabilirsiniz. Bu düzenleme, bazı kayıt kümelerinin diğer adlar ve diğer ad olmayan adlar olmasını istiyorsanız yararlıdır.
 
-### <a name="can-i-create-and-update-alias-records-from-the-azure-portal"></a>Can I create and update alias records from the Azure portal?
+### <a name="can-i-create-and-update-alias-records-from-the-azure-portal"></a>Azure portal diğer ad kayıtlarını oluşturabilir ve güncelleştirebilir miyim?
 
-Evet. You can create or manage alias records in the Azure portal along with the Azure REST APIs, PowerShell, the CLI, and SDKs.
+Evet. Azure REST API 'Leri, PowerShell, CLı ve SDK 'Lar ile birlikte Azure portal diğer ad kayıtlarını oluşturabilir veya yönetebilirsiniz.
 
-### <a name="will-alias-records-help-to-make-sure-my-dns-record-set-is-deleted-when-the-underlying-public-ip-is-deleted"></a>Will alias records help to make sure my DNS record set is deleted when the underlying public IP is deleted?
+### <a name="will-alias-records-help-to-make-sure-my-dns-record-set-is-deleted-when-the-underlying-public-ip-is-deleted"></a>Diğer ad, temel alınan genel IP silindiğinde DNS kayıt ayarlamış min silinip silinmediğinden emin olmak için yardımcı olur mu?
 
-Evet. This feature is one of the core capabilities of alias records. It helps you avoid potential outages for users of your application.
+Evet. Bu özellik diğer ad kayıtlarının temel özelliklerinden biridir. Uygulamanızın kullanıcıları için olası kesintilerden kaçınmanıza yardımcı olur.
 
-### <a name="will-alias-records-help-to-make-sure-my-dns-record-set-is-updated-to-the-correct-ip-address-when-the-underlying-public-ip-address-changes"></a>Will alias records help to make sure my DNS record set is updated to the correct IP address when the underlying public IP address changes?
+### <a name="will-alias-records-help-to-make-sure-my-dns-record-set-is-updated-to-the-correct-ip-address-when-the-underlying-public-ip-address-changes"></a>Diğer ad, temel alınan genel IP adresi değiştiğinde DNS kayıt ayarlamış min doğru IP adresine güncelleştirildiğinden emin olmak için yardımcı olur mu?
 
-Evet. This feature is one of the core capabilities of alias records. It helps you avoid potential outages or security risks for your application.
+Evet. Bu özellik diğer ad kayıtlarının temel özelliklerinden biridir. Uygulamanız için olası kesintileri veya güvenlik risklerini önlemenize yardımcı olur.
 
-### <a name="are-there-any-restrictions-when-using-alias-record-sets-for-a-or-aaaa-records-to-point-to-traffic-manager"></a>Are there any restrictions when using alias record sets for A or AAAA records to point to Traffic Manager?
+### <a name="are-there-any-restrictions-when-using-alias-record-sets-for-a-or-aaaa-records-to-point-to-traffic-manager"></a>Bir veya AAAA kaydı için diğer ad kayıt kümelerini Traffic Manager işaret etmek üzere kullanırken herhangi bir kısıtlama var mı?
 
-Evet. To point to a Traffic Manager profile as an alias from an A or AAAA record set, the Traffic Manager profile must use only external endpoints. When you create the external endpoints in Traffic Manager, provide the actual IP addresses of the endpoints.
+Evet. Bir Traffic Manager profilini bir veya AAAA kayıt kümesinden diğer ad olarak göstermek için, Traffic Manager profilinin yalnızca dış uç noktaları kullanması gerekir. Traffic Manager dış uç noktaları oluşturduğunuzda, uç noktaların gerçek IP adreslerini belirtin.
 
-### <a name="is-there-an-additional-charge-to-use-alias-records"></a>Is there an additional charge to use alias records?
+### <a name="is-there-an-additional-charge-to-use-alias-records"></a>Diğer ad kayıtlarını kullanmak için ek bir ücret var mı?
 
-Alias records are a qualification on a valid DNS record set. There's no additional billing for alias records.
+Diğer ad kayıtları, geçerli bir DNS kayıt kümesindeki nitedir. Diğer ad kayıtları için ek faturalandırma yoktur.
 
-## <a name="use-azure-dns"></a>Use Azure DNS
+## <a name="use-azure-dns"></a>Azure DNS kullan
 
-### <a name="can-i-co-host-a-domain-by-using-azure-dns-and-another-dns-provider"></a>Can I co-host a domain by using Azure DNS and another DNS provider?
+### <a name="can-i-co-host-a-domain-by-using-azure-dns-and-another-dns-provider"></a>Azure DNS ve başka bir DNS sağlayıcısı kullanarak bir etki alanını birlikte barındırabilirsiniz miyim?
 
-Evet. Azure DNS supports co-hosting domains with other DNS services.
+Evet. Azure DNS, diğer DNS hizmetleriyle birlikte barındırma etki alanlarını destekler.
 
-To set up co-hosting, modify the NS records for the domain to point to the name servers of both providers. The name server (NS) records control which providers receive DNS queries for the domain. You can modify these NS records in Azure DNS, in the other provider, and in the parent zone. The parent zone is typically configured via the domain name registrar. For more information on DNS delegation, see [DNS domain delegation](dns-domain-delegation.md).
+Ortak barındırma ayarlamak için, etki alanı için NS kayıtlarını her iki sağlayıcının ad sunucularına işaret etmek üzere değiştirin. Ad sunucusu (NS) kayıtları, hangi sağlayıcıların etki alanı için DNS sorguları alacağını denetler. Bu NS kayıtlarını, diğer sağlayıcıda ve üst bölgede Azure DNS değiştirebilirsiniz. Üst bölge genellikle etki alanı adı kaydedicisi aracılığıyla yapılandırılır. DNS temsili hakkında daha fazla bilgi için bkz. [DNS etki alanı temsili](dns-domain-delegation.md).
 
-Also, make sure that the DNS records for the domain are in sync between both DNS providers. Azure DNS doesn't currently support DNS zone transfers. DNS records must be synchronized by using either the [Azure DNS management portal](dns-operations-recordsets-portal.md), [REST API](https://docs.microsoft.com/powershell/module/az.dns), [SDK](dns-sdk.md), [PowerShell cmdlets](dns-operations-recordsets.md), or the [CLI tool](dns-operations-recordsets-cli.md).
+Ayrıca, etki alanı için DNS kayıtlarının her iki DNS sağlayıcısı arasında eşitlenmiş olduğundan emin olun. Azure DNS, DNS bölge aktarımlarını desteklememektedir. DNS kayıtları, [Azure DNS yönetim portalı](dns-operations-recordsets-portal.md), [REST API](https://docs.microsoft.com/powershell/module/az.dns), [SDK](dns-sdk.md), [PowerShell cmdlet 'leri](dns-operations-recordsets.md)ya da [CLI aracı](dns-operations-recordsets-cli.md)kullanılarak eşitlenmelidir.
 
-### <a name="do-i-have-to-delegate-my-domain-to-all-four-azure-dns-name-servers"></a>Do I have to delegate my domain to all four Azure DNS name servers?
+### <a name="do-i-have-to-delegate-my-domain-to-all-four-azure-dns-name-servers"></a>Etki alanım 'ı dört Azure DNS ad sunucusuna temsilcmem gerekir mi?
 
-Evet. Azure DNS assigns four name servers to each DNS zone. This arrangement is for fault isolation and increased resilience. To qualify for the Azure DNS SLA, delegate your domain to all four name servers.
+Evet. Azure DNS her DNS bölgesine dört ad sunucusu atar. Bu düzenleme hata yalıtımı ve artan esnekliği içindir. Azure DNS SLA 'sını nitelemek için, etki alanınızı dört ad sunucusuna atayın.
 
-### <a name="what-are-the-usage-limits-for-azure-dns"></a>What are the usage limits for Azure DNS?
+### <a name="what-are-the-usage-limits-for-azure-dns"></a>Azure DNS kullanım sınırları nelerdir?
 
-The following default limits apply when you use Azure DNS.
+Azure DNS kullandığınızda aşağıdaki varsayılan sınırlar geçerlidir.
 
 [!INCLUDE [dns-limits](../../includes/dns-limits.md)]
 
-### <a name="can-i-move-an-azure-dns-zone-between-resource-groups-or-between-subscriptions"></a>Can I move an Azure DNS zone between resource groups or between subscriptions?
+### <a name="can-i-move-an-azure-dns-zone-between-resource-groups-or-between-subscriptions"></a>Azure DNS bölgeyi kaynak grupları veya abonelikler arasında taşıyabilir miyim?
 
-Evet. DNS zones can be moved between resource groups or between subscriptions.
+Evet. DNS bölgeleri, kaynak grupları veya abonelikler arasında taşınabilir.
 
-There's no effect on DNS queries when you move a DNS zone. The name servers assigned to the zone stay the same. DNS queries are processed as normal throughout.
+DNS bölgesini taşırken DNS sorguları üzerinde hiçbir etkisi yoktur. Bölgeye atanan ad sunucuları aynı kalır. DNS sorguları, boyunca normal olarak işlenir.
 
-For more information and instructions on how to move DNS zones, see [Move resources to a new resource group or subscription](../azure-resource-manager/resource-group-move-resources.md).
+DNS bölgelerini taşıma hakkında daha fazla bilgi ve yönergeler için bkz. [kaynakları yeni bir kaynak grubuna veya aboneliğe taşıma](../azure-resource-manager/resource-group-move-resources.md).
 
-### <a name="how-long-does-it-take-for-dns-changes-to-take-effect"></a>How long does it take for DNS changes to take effect?
+### <a name="how-long-does-it-take-for-dns-changes-to-take-effect"></a>DNS değişikliklerinin etkili olması için ne kadar sürer?
 
-New DNS zones and DNS records typically appear in the Azure DNS name servers quickly. The timing is a few seconds.
+Yeni DNS bölgeleri ve DNS kayıtları genellikle Azure DNS ad sunucularında hızlı bir şekilde görünür. Zamanlama birkaç saniyedir.
 
-Changes to existing DNS records can take a little longer. They typically appear in the Azure DNS name servers within 60 seconds. DNS caching by DNS clients and DNS recursive resolvers outside of Azure DNS also can affect timing. To control this cache duration, use the Time-To-Live (TTL) property of each record set.
+Mevcut DNS kayıtlarında yapılan değişiklikler biraz daha uzun sürebilir. Genellikle 60 saniye içinde Azure DNS ad sunucularında görünürler. DNS istemcileri ve Azure DNS dışındaki DNS özyinelemeli çözümleyiciler tarafından önbelleğe alma, zamanlamayı etkileyebilir. Bu önbellek süresini denetlemek için, her bir kayıt kümesinin yaşam süresi (TTL) özelliğini kullanın.
 
-### <a name="how-can-i-protect-my-dns-zones-against-accidental-deletion"></a>How can I protect my DNS zones against accidental deletion?
+### <a name="how-can-i-protect-my-dns-zones-against-accidental-deletion"></a>DNS bölgelerinizi yanlışlıkla silinmeye karşı nasıl koruyabilirim?
 
-Azure DNS is managed by using Azure Resource Manager. Azure DNS benefits from the access control features that Azure Resource Manager provides. Role-based access control controls which users have read or write access to DNS zones and record sets. Resource locks prevent accidental modification or deletion of DNS zones and record sets.
+Azure DNS, Azure Resource Manager kullanılarak yönetilir. Azure Resource Manager sağladığı erişim denetimi özelliklerinden faydaların Azure DNS. Rol tabanlı erişim denetimi, hangi kullanıcıların DNS bölgelerine ve kayıt kümelerine okuma veya yazma erişimi olduğunu denetler. Kaynak kilitleri, DNS bölgelerinin ve kayıt kümelerinin yanlışlıkla değiştirilmesini veya silinmesini engeller.
 
-For more information, see [Protect DNS zones and records](dns-protect-zones-recordsets.md).
+Daha fazla bilgi için bkz. [DNS bölgelerini ve kayıtlarını koruma](dns-protect-zones-recordsets.md).
 
-### <a name="how-do-i-set-up-spf-records-in-azure-dns"></a>How do I set up SPF records in Azure DNS?
+### <a name="how-do-i-set-up-spf-records-in-azure-dns"></a>Nasıl yaparım? SPF kayıtlarını Azure DNS ayarlamak mı istiyorsunuz?
 
 [!INCLUDE [dns-spf-include](../../includes/dns-spf-include.md)]
 
-### <a name="do-azure-dns-name-servers-resolve-over-ipv6"></a>Do Azure DNS name servers resolve over IPv6? 
+### <a name="do-azure-dns-name-servers-resolve-over-ipv6"></a>Azure DNS ad sunucuları IPv6 üzerinden çözümlensin mi? 
 
-Evet. Azure DNS name servers are dual stack. Dual stack means they have IPv4 and IPv6 addresses. To find the IPv6 address for the Azure DNS name servers assigned to your DNS zone, use a tool such as nslookup. `nslookup -q=aaaa <Azure DNS Nameserver>` bunun bir örneğidir.
+Evet. Azure DNS ad sunucuları ikili yığınlardır. İkili yığın, IPv4 ve IPv6 adreslerine sahip oldukları anlamına gelir. DNS bölgenize atanan Azure DNS ad sunucularının IPv6 adresini bulmak için, nslookup gibi bir araç kullanın. `nslookup -q=aaaa <Azure DNS Nameserver>` bunun bir örneğidir.
 
-### <a name="how-do-i-set-up-an-idn-in-azure-dns"></a>How do I set up an IDN in Azure DNS?
+### <a name="how-do-i-set-up-an-idn-in-azure-dns"></a>Azure DNS bir ıDN mi Nasıl yaparım??
 
-Internationalized domain names (IDNs) encode each DNS name by using [punycode](https://en.wikipedia.org/wiki/Punycode). DNS queries are made by using these punycode-encoded names.
+Uluslararası etki alanı adları (IDNs), her DNS adını [punıcode](https://en.wikipedia.org/wiki/Punycode)kullanarak kodlar. DNS sorguları, bu zayıf kod kodlu adlar kullanılarak yapılır.
 
-To configure IDNs in Azure DNS, convert the zone name or record set name to punycode. Azure DNS doesn't currently support built-in conversion to or from punycode.
+Azure DNS ' de IDNs 'yi yapılandırmak için bölge adı veya kayıt kümesi adını punıcode olarak dönüştürün. Azure DNS, atlama kodundan veya bu koddan yerleşik dönüştürmeyi desteklemez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Learn more about Azure DNS](dns-overview.md).
+- [Azure DNS hakkında daha fazla bilgi edinin](dns-overview.md).
 
-- [Learn more about how to use Azure DNS for private domains](private-dns-overview.md).
+- [Özel etki alanları için Azure DNS kullanma hakkında daha fazla bilgi edinin](private-dns-overview.md).
 
-- [Learn more about DNS zones and records](dns-zones-records.md).
+- [DNS bölgeleri ve kayıtları hakkında daha fazla bilgi edinin](dns-zones-records.md).
 
-- [Get started with Azure DNS](dns-getstarted-portal.md).
+- [Azure DNS kullanmaya başlayın](dns-getstarted-portal.md).

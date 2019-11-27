@@ -1,6 +1,6 @@
 ---
-title: Azure Table storage bindings for Azure Functions
-description: Understand how to use Azure Table storage bindings in Azure Functions.
+title: Azure Işlevleri için Azure Tablo depolama bağlamaları
+description: Azure Işlevleri 'nde Azure Tablo depolama bağlamalarını nasıl kullanacağınızı anlayın.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 09/03/2018
@@ -12,49 +12,49 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74230987"
 ---
-# <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Table storage bindings for Azure Functions
+# <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Işlevleri için Azure Tablo depolama bağlamaları
 
-This article explains how to work with Azure Table storage bindings in Azure Functions. Azure Functions supports input and output bindings for Azure Table storage.
+Bu makalede Azure Işlevleri 'nde Azure Tablo depolama bağlamalarıyla nasıl çalışılacağı açıklanmaktadır. Azure Işlevleri, Azure Tablo depolaması için giriş ve çıkış bağlamalarını destekler.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-1x"></a>Packages - Functions 1.x
+## <a name="packages---functions-1x"></a>Paketler - 1.x işlevleri
 
-The Table storage bindings are provided in the [Microsoft.Azure.WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet package, version 2.x. Source code for the package is in the [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Table) GitHub repository.
+Tablo depolama bağlamaları [Microsoft. Azure. WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet paketi, sürüm 2. x ' de verilmiştir. Paketin kaynak kodu, [Azure-WebJobs-SDK](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Table) GitHub deposundadır.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
 [!INCLUDE [functions-storage-sdk-version](../../includes/functions-storage-sdk-version.md)]
 
-## <a name="packages---functions-2x"></a>Packages - Functions 2.x
+## <a name="packages---functions-2x"></a>Paketler - 2.x işlevleri
 
-The Table storage bindings are provided in the [Microsoft.Azure.WebJobs.Extensions.Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet package, version 3.x. Source code for the package is in the [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Tables) GitHub repository.
+Tablo depolama bağlamaları [Microsoft. Azure. WebJobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet paketi, sürüm 3. x içinde verilmiştir. Paketin kaynak kodu, [Azure-WebJobs-SDK](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Tables) GitHub deposundadır.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
-## <a name="input"></a>Girdi
+## <a name="input"></a>Giriş
 
-Use the Azure Table storage input binding to read a table in an Azure Storage account.
+Azure depolama hesabındaki bir tabloyu okumak için Azure Tablo depolama girişi bağlamasını kullanın.
 
-## <a name="input---example"></a>Input - example
+## <a name="input---example"></a>Giriş-örnek
 
-See the language-specific example:
+Dile özgü örneğe bakın:
 
-* [C# read one entity](#input---c-example---one-entity)
-* [C# bind to IQueryable](#input---c-example---iqueryable)
-* [C# bind to CloudTable](#input---c-example---cloudtable)
-* [C# script read one entity](#input---c-script-example---one-entity)
-* [C# script bind to IQueryable](#input---c-script-example---iqueryable)
-* [C# script bind to CloudTable](#input---c-script-example---cloudtable)
+* [C#bir varlığı oku](#input---c-example---one-entity)
+* [C#IQueryable 'a bağla](#input---c-example---iqueryable)
+* [C#CloudTable 'a bağlama](#input---c-example---cloudtable)
+* [C#bir varlık okuma betiği](#input---c-script-example---one-entity)
+* [C#IQueryable 'a betik bağlama](#input---c-script-example---iqueryable)
+* [C#CloudTable 'a betik bağlama](#input---c-script-example---cloudtable)
 * [F#](#input---f-example)
 * [JavaScript](#input---javascript-example)
 * [Java](#input---java-example)
 
-### <a name="input---c-example---one-entity"></a>Input - C# example - one entity
+### <a name="input---c-example---one-entity"></a>Giriş- C# örnek-bir varlık
 
-The following example shows a [C# function](functions-dotnet-class-library.md) that reads a single table row. 
+Aşağıdaki örnek, tek bir tablo satırını okuyan bir [ C# işlevi](functions-dotnet-class-library.md) gösterir. 
 
-The row key value "{queueTrigger}" indicates that the row key comes from the queue message string.
+"{QueueTrigger}" satır anahtarı değeri, satır anahtarının kuyruk ileti dizesinden geldiğini gösterir.
 
 ```csharp
 public class TableStorage
@@ -77,9 +77,9 @@ public class TableStorage
 }
 ```
 
-### <a name="input---c-example---iqueryable"></a>Input - C# example - IQueryable
+### <a name="input---c-example---iqueryable"></a>Giriş- C# örnek-IQueryable
 
-The following example shows a [C# function](functions-dotnet-class-library.md) that reads multiple table rows. Note that the `MyPoco` class derives from `TableEntity`.
+Aşağıdaki örnek, birden çok tablo satırını okuyan bir [ C# işlevi](functions-dotnet-class-library.md) gösterir. `MyPoco` sınıfının `TableEntity`türediğini unutmayın.
 
 ```csharp
 public class TableStorage
@@ -103,9 +103,9 @@ public class TableStorage
 }
 ```
 
-### <a name="input---c-example---cloudtable"></a>Input - C# example - CloudTable
+### <a name="input---c-example---cloudtable"></a>Input- C# example-cloudtable
 
-`IQueryable` isn't supported in the [Functions v2 runtime](functions-versions.md). An alternative is to use a `CloudTable` method parameter to read the table by using the Azure Storage SDK. Here's an example of a 2.x function that queries an Azure Functions log table:
+`IQueryable`, [Functions v2 çalışma zamanında](functions-versions.md)desteklenmez. Alternatif olarak, Azure depolama SDK 'sını kullanarak tabloyu okumak için `CloudTable` yöntemi parametresi kullanılır. Aşağıda, bir Azure Işlevleri günlük tablosunu sorgulayan 2. x işlevine bir örnek verilmiştir:
 
 ```csharp
 using Microsoft.Azure.WebJobs;
@@ -151,15 +151,15 @@ namespace FunctionAppCloudTable2
 }
 ```
 
-For more information about how to use CloudTable, see [Get started with Azure Table storage](../cosmos-db/table-storage-how-to-use-dotnet.md).
+CloudTable 'ın nasıl kullanılacağı hakkında daha fazla bilgi için bkz. [Azure Tablo Depolamayı kullanmaya başlama](../cosmos-db/table-storage-how-to-use-dotnet.md).
 
-If you try to bind to `CloudTable` and get an error message, make sure that you have a reference to [the correct Storage SDK version](#azure-storage-sdk-version-in-functions-1x).
+`CloudTable` bağlamaya ve bir hata mesajı almaya çalışırsanız, [doğru depolama SDK sürümüne](#azure-storage-sdk-version-in-functions-1x)başvurunuz olduğundan emin olun.
 
-### <a name="input---c-script-example---one-entity"></a>Input - C# script example - one entity
+### <a name="input---c-script-example---one-entity"></a>Giriş C# betiği örneği-bir varlık
 
-The following example shows a table input binding in a *function.json* file and [C# script](functions-reference-csharp.md) code that uses the binding. The function uses a queue trigger to read a single table row. 
+Aşağıdaki örnek, bir *function. JSON* dosyası ve [ C# ](functions-reference-csharp.md) bağlamayı kullanan betik kodu içindeki tablo girişi bağlamasını gösterir. İşlevi, tek bir tablo satırını okumak için bir kuyruk tetikleyicisi kullanır. 
 
-The *function.json* file specifies a `partitionKey` and a `rowKey`. The `rowKey` value "{queueTrigger}" indicates that the row key comes from the queue message string.
+*Function. JSON* dosyası bir `partitionKey` ve bir `rowKey`belirtir. "{QueueTrigger}" `rowKey` değeri, satır anahtarının kuyruk ileti dizesinden geldiğini gösterir.
 
 ```json
 {
@@ -185,9 +185,9 @@ The *function.json* file specifies a `partitionKey` and a `rowKey`. The `rowKey`
 }
 ```
 
-The [configuration](#input---configuration) section explains these properties.
+[Yapılandırma](#input---configuration) bölümünde bu özellikler açıklanmaktadır.
 
-Here's the C# script code:
+C# betik kodunu şu şekildedir:
 
 ```csharp
 public static void Run(string myQueueItem, Person personEntity, ILogger log)
@@ -204,11 +204,11 @@ public class Person
 }
 ```
 
-### <a name="input---c-script-example---iqueryable"></a>Input - C# script example - IQueryable
+### <a name="input---c-script-example---iqueryable"></a>Giriş C# betiği örneği-IQueryable
 
-The following example shows a table input binding in a *function.json* file and [C# script](functions-reference-csharp.md) code that uses the binding. The function reads entities for a partition key that is specified in a queue message.
+Aşağıdaki örnek, bir *function. JSON* dosyası ve [ C# ](functions-reference-csharp.md) bağlamayı kullanan betik kodu içindeki tablo girişi bağlamasını gösterir. İşlevi, bir kuyruk iletisinde belirtilen bölüm anahtarı için varlıkları okur.
 
-Here's the *function.json* file:
+İşte *function. JSON* dosyası:
 
 ```json
 {
@@ -232,9 +232,9 @@ Here's the *function.json* file:
 }
 ```
 
-The [configuration](#input---configuration) section explains these properties.
+[Yapılandırma](#input---configuration) bölümünde bu özellikler açıklanmaktadır.
 
-The C# script code adds a reference to the Azure Storage SDK so that the entity type can derive from `TableEntity`:
+C# Betik kodu, varlık türünün `TableEntity`Türetibilmesi Için Azure depolama SDK 'sına bir başvuru ekler:
 
 ```csharp
 #r "Microsoft.WindowsAzure.Storage"
@@ -256,9 +256,9 @@ public class Person : TableEntity
 }
 ```
 
-### <a name="input---c-script-example---cloudtable"></a>Input - C# script example - CloudTable
+### <a name="input---c-script-example---cloudtable"></a>Giriş C# betiği örneği-cloudtable
 
-`IQueryable` isn't supported in the [Functions v2 runtime](functions-versions.md). An alternative is to use a `CloudTable` method parameter to read the table by using the Azure Storage SDK. Here's an example of a 2.x function that queries an Azure Functions log table:
+`IQueryable`, [Functions v2 çalışma zamanında](functions-versions.md)desteklenmez. Alternatif olarak, Azure depolama SDK 'sını kullanarak tabloyu okumak için `CloudTable` yöntemi parametresi kullanılır. Aşağıda, bir Azure Işlevleri günlük tablosunu sorgulayan 2. x işlevine bir örnek verilmiştir:
 
 ```json
 {
@@ -315,15 +315,15 @@ public class LogEntity : TableEntity
 }
 ```
 
-For more information about how to use CloudTable, see [Get started with Azure Table storage](../cosmos-db/table-storage-how-to-use-dotnet.md).
+CloudTable 'ın nasıl kullanılacağı hakkında daha fazla bilgi için bkz. [Azure Tablo Depolamayı kullanmaya başlama](../cosmos-db/table-storage-how-to-use-dotnet.md).
 
-If you try to bind to `CloudTable` and get an error message, make sure that you have a reference to [the correct Storage SDK version](#azure-storage-sdk-version-in-functions-1x).
+`CloudTable` bağlamaya ve bir hata mesajı almaya çalışırsanız, [doğru depolama SDK sürümüne](#azure-storage-sdk-version-in-functions-1x)başvurunuz olduğundan emin olun.
 
-### <a name="input---f-example"></a>Input - F# example
+### <a name="input---f-example"></a>Giriş- F# örnek
 
-The following example shows a table input binding in a *function.json* file and [F# script](functions-reference-fsharp.md) code that uses the binding. The function uses a queue trigger to read a single table row. 
+Aşağıdaki örnek, bir *function. JSON* dosyası ve [ F# ](functions-reference-fsharp.md) bağlamayı kullanan betik kodu içindeki tablo girişi bağlamasını gösterir. İşlevi, tek bir tablo satırını okumak için bir kuyruk tetikleyicisi kullanır. 
 
-The *function.json* file specifies a `partitionKey` and a `rowKey`. The `rowKey` value "{queueTrigger}" indicates that the row key comes from the queue message string.
+*Function. JSON* dosyası bir `partitionKey` ve bir `rowKey`belirtir. "{QueueTrigger}" `rowKey` değeri, satır anahtarının kuyruk ileti dizesinden geldiğini gösterir.
 
 ```json
 {
@@ -349,9 +349,9 @@ The *function.json* file specifies a `partitionKey` and a `rowKey`. The `rowKey`
 }
 ```
 
-The [configuration](#input---configuration) section explains these properties.
+[Yapılandırma](#input---configuration) bölümünde bu özellikler açıklanmaktadır.
 
-Here's the F# code:
+İşte F# kod:
 
 ```fsharp
 [<CLIMutable>]
@@ -366,11 +366,11 @@ let Run(myQueueItem: string, personEntity: Person) =
     log.LogInformation(sprintf "Name in Person entity: %s" personEntity.Name)
 ```
 
-### <a name="input---javascript-example"></a>Input - JavaScript example
+### <a name="input---javascript-example"></a>Input-JavaScript örneği
 
-The following example shows a  table input binding in a *function.json* file and [JavaScript code](functions-reference-node.md) that uses the binding. The function uses a queue trigger to read a single table row. 
+Aşağıdaki örnek, bir *function. JSON* dosyası ve bağlamayı kullanan [JavaScript kodundaki](functions-reference-node.md) tablo girişi bağlamasını gösterir. İşlevi, tek bir tablo satırını okumak için bir kuyruk tetikleyicisi kullanır. 
 
-The *function.json* file specifies a `partitionKey` and a `rowKey`. The `rowKey` value "{queueTrigger}" indicates that the row key comes from the queue message string.
+*Function. JSON* dosyası bir `partitionKey` ve bir `rowKey`belirtir. "{QueueTrigger}" `rowKey` değeri, satır anahtarının kuyruk ileti dizesinden geldiğini gösterir.
 
 ```json
 {
@@ -396,9 +396,9 @@ The *function.json* file specifies a `partitionKey` and a `rowKey`. The `rowKey`
 }
 ```
 
-The [configuration](#input---configuration) section explains these properties.
+[Yapılandırma](#input---configuration) bölümünde bu özellikler açıklanmaktadır.
 
-Here's the JavaScript code:
+JavaScript kod aşağıdaki gibidir:
 
 ```javascript
 module.exports = function (context, myQueueItem) {
@@ -408,9 +408,9 @@ module.exports = function (context, myQueueItem) {
 };
 ```
 
-### <a name="input---java-example"></a>Input - Java example
+### <a name="input---java-example"></a>Input-Java örneği
 
-The following example shows an HTTP triggered function which returns the total count of the items in a specified partition in Table storage.
+Aşağıdaki örnek, tablo depolamada belirtilen bir bölümdeki öğelerin toplam sayısını döndüren HTTP ile tetiklenen bir işlev gösterir.
 
 ```java
 @FunctionName("getallcount")
@@ -427,13 +427,13 @@ public int run(
 ```
 
 
-## <a name="input---attributes"></a>Input - attributes
+## <a name="input---attributes"></a>Giriş - öznitelikleri
  
-In [C# class libraries](functions-dotnet-class-library.md), use the following attributes to configure a table input binding:
+[ C# Sınıf kitaplıkları](functions-dotnet-class-library.md)' nda, bir tablo girişi bağlamasını yapılandırmak için aşağıdaki öznitelikleri kullanın:
 
 * [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Tables/TableAttribute.cs)
 
-  The attribute's constructor takes the table name, partition key, and row key. It can be used on an out parameter or on the return value of the function, as shown in the following example:
+  Özniteliğin Oluşturucusu tablo adını, Bölüm anahtarını ve satır anahtarını alır. Aşağıdaki örnekte gösterildiği gibi, bir out parametresi veya işlevin dönüş değeri üzerinde kullanılabilir:
 
   ```csharp
   [FunctionName("TableInput")]
@@ -446,7 +446,7 @@ In [C# class libraries](functions-dotnet-class-library.md), use the following at
   }
   ```
 
-  You can set the `Connection` property to specify the storage account to use, as shown in the following example:
+  Aşağıdaki örnekte gösterildiği gibi, kullanılacak depolama hesabını belirtmek için `Connection` özelliğini ayarlayabilirsiniz:
 
   ```csharp
   [FunctionName("TableInput")]
@@ -459,11 +459,11 @@ In [C# class libraries](functions-dotnet-class-library.md), use the following at
   }
   ```
 
-  For a complete example, see Input - C# example.
+  Tam bir örnek için bkz. giriş- C# örnek.
 
 * [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs)
 
-  Provides another way to specify the storage account to use. The constructor takes the name of an app setting that contains a storage connection string. The attribute can be applied at the parameter, method, or class level. The following example shows class level and method level:
+  Kullanılacak depolama hesabını belirtmek için başka bir yol sağlar. Oluşturucu, depolama bağlantı dizesi içeren bir uygulama ayarının adını alır. Öznitelik parametre, yöntemi veya sınıf düzeyinde uygulanabilir. Aşağıdaki örnek, sınıf ve yöntem düzeyindeki gösterir:
 
   ```csharp
   [StorageAccount("ClassLevelStorageAppSetting")]
@@ -477,74 +477,74 @@ In [C# class libraries](functions-dotnet-class-library.md), use the following at
   }
   ```
 
-The storage account to use is determined in the following order:
+Kullanılacak depolama hesabı aşağıdaki sırayla belirlenir:
 
-* The `Table` attribute's `Connection` property.
-* The `StorageAccount` attribute applied to the same parameter as the `Table` attribute.
-* The `StorageAccount` attribute applied to the function.
-* The `StorageAccount` attribute applied to the class.
-* The default storage account for the function app ("AzureWebJobsStorage" app setting).
+* `Table` özniteliğin `Connection` özelliği.
+* `StorageAccount` özniteliği `Table` özniteliğiyle aynı parametreye uygulandı.
+* İşleve uygulanan `StorageAccount` özniteliği.
+* Sınıfına uygulanan `StorageAccount` özniteliği.
+* İşlev uygulaması için varsayılan depolama hesabı ("AzureWebJobsStorage" uygulama ayarı).
 
-## <a name="input---java-annotations"></a>Input - Java annotations
+## <a name="input---java-annotations"></a>Giriş-Java ek açıklamaları
 
-In the [Java functions runtime library](/java/api/overview/azure/functions/runtime), use the `@TableInput` annotation on parameters whose value would come from Table storage.  This annotation can be used with native Java types, POJOs, or nullable values using Optional\<T>. 
+[Java işlevleri çalışma zamanı kitaplığı](/java/api/overview/azure/functions/runtime)'nda, değeri tablo depolamadan gelen parametrelerde `@TableInput` ek açıklamasını kullanın.  Bu ek açıklama, Isteğe bağlı\<T > kullanılarak yerel Java türleri, POJOs veya null yapılabilir değerler ile kullanılabilir. 
 
-## <a name="input---configuration"></a>Input - configuration
+## <a name="input---configuration"></a>Giriş - yapılandırma
 
-The following table explains the binding configuration properties that you set in the *function.json* file and the `Table` attribute.
+Aşağıdaki tabloda, *function. JSON* dosyasında ve `Table` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
 
-|function.json property | Attribute property |Açıklama|
+|Function.JSON özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-|**type** | Yok | Must be set to `table`. This property is set automatically when you create the binding in the Azure portal.|
-|**direction** | Yok | Must be set to `in`. This property is set automatically when you create the binding in the Azure portal. |
-|**name** | Yok | The name of the variable that represents the table or entity in function code. | 
-|**tableName** | **TableName** | The name of the table.| 
-|**partitionKey** | **PartitionKey** |İsteğe bağlı. The partition key of the table entity to read. See the [usage](#input---usage) section for guidance on how to use this property.| 
-|**rowKey** |**RowKey** | İsteğe bağlı. The row key of the table entity to read. See the [usage](#input---usage) section for guidance on how to use this property.| 
-|**take** |**Take** | İsteğe bağlı. The maximum number of entities to read in JavaScript. See the [usage](#input---usage) section for guidance on how to use this property.| 
-|**filter** |**Filter** | İsteğe bağlı. An OData filter expression for table input in JavaScript. See the [usage](#input---usage) section for guidance on how to use this property.| 
-|**connection** |**Connection** | The name of an app setting that contains the Storage connection string to use for this binding. If the app setting name begins with "AzureWebJobs", you can specify only the remainder of the name here. For example, if you set `connection` to "MyStorage", the Functions runtime looks for an app setting that is named "AzureWebJobsMyStorage." If you leave `connection` empty, the Functions runtime uses the default Storage connection string in the app setting that is named `AzureWebJobsStorage`.|
+|**type** | Yok | `table`olarak ayarlanmalıdır. Azure portal bağlama oluşturduğunuzda bu özellik otomatik olarak ayarlanır.|
+|**direction** | Yok | `in`olarak ayarlanmalıdır. Azure portal bağlama oluşturduğunuzda bu özellik otomatik olarak ayarlanır. |
+|**ada** | Yok | İşlev kodundaki tabloyu veya varlığı temsil eden değişkenin adı. | 
+|**tableName** | **TableName** | Tablonun adı.| 
+|**partitionKey** | **PartitionKey** |İsteğe bağlı. Okunacak tablo varlığının bölüm anahtarı. Bu özelliğin nasıl kullanılacağına ilişkin yönergeler için [kullanım](#input---usage) bölümüne bakın.| 
+|**rowKey** |**RowKey** | İsteğe bağlı. Okunacak tablo varlığının satır anahtarı. Bu özelliğin nasıl kullanılacağına ilişkin yönergeler için [kullanım](#input---usage) bölümüne bakın.| 
+|**almanız** |**Almanız** | İsteğe bağlı. JavaScript 'te okunacak en fazla varlık sayısı. Bu özelliğin nasıl kullanılacağına ilişkin yönergeler için [kullanım](#input---usage) bölümüne bakın.| 
+|**filtreyle** |**Filtreyle** | İsteğe bağlı. JavaScript 'te tablo girişi için bir OData filtre ifadesi. Bu özelliğin nasıl kullanılacağına ilişkin yönergeler için [kullanım](#input---usage) bölümüne bakın.| 
+|**bağlanma** |**Bağlanma** | Bu bağlama için kullanılacak depolama bağlantı dizesini içeren bir uygulama ayarının adı. Uygulama ayarı adı "AzureWebJobs" ile başlıyorsa, burada yalnızca adının geri kalanını belirtebilirsiniz. Örneğin, `connection` "MyStorage" olarak ayarlarsanız, Işlevler çalışma zamanı "AzureWebJobsMyStorage" adlı bir uygulama ayarı arar. `connection` boş bırakırsanız, Işlevler çalışma zamanı `AzureWebJobsStorage`adlı uygulama ayarında varsayılan depolama bağlantı dizesini kullanır.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="input---usage"></a>Input - usage
+## <a name="input---usage"></a>Giriş - kullanım
 
-The Table storage input binding supports the following scenarios:
+Tablo depolama girişi bağlama, aşağıdaki senaryoları destekler:
 
-* **Read one row in C# or C# script**
+* **Bir satırı C# veya C# betiği okuyun**
 
-  Set `partitionKey` and `rowKey`. Access the table data by using a method parameter `T <paramName>`. In C# script, `paramName` is the value specified in the `name` property of *function.json*. `T` is typically a type that implements `ITableEntity` or derives from `TableEntity`. The `filter` and `take` properties are not used in this scenario. 
+  `partitionKey` ve `rowKey`ayarlayın. `T <paramName>`yöntem parametresi kullanarak tablo verilerine erişin. Betik C# ' de, `paramName` *function. json*' nin `name` özelliğinde belirtilen değerdir. `T` genellikle `ITableEntity` uygulayan veya `TableEntity`türeten bir türdür. `filter` ve `take` özellikleri bu senaryoda kullanılmaz. 
 
-* **Read one or more rows in C# or C# script**
+* **Veya C# C# betikteki bir veya daha fazla satırı okuyun**
 
-  Access the table data by using a method parameter `IQueryable<T> <paramName>`. In C# script, `paramName` is the value specified in the `name` property of *function.json*. `T` must be a type that implements `ITableEntity` or derives from `TableEntity`. You can use `IQueryable` methods to do any filtering required. The `partitionKey`, `rowKey`, `filter`, and `take` properties are not used in this scenario.  
+  `IQueryable<T> <paramName>`yöntem parametresi kullanarak tablo verilerine erişin. Betik C# ' de, `paramName` *function. json*' nin `name` özelliğinde belirtilen değerdir. `T`, `ITableEntity` uygulayan veya `TableEntity`türeten bir tür olmalıdır. Gerekli filtreleme yapmak için `IQueryable` yöntemlerini kullanabilirsiniz. `partitionKey`, `rowKey`, `filter`ve `take` özellikleri bu senaryoda kullanılmaz.  
 
   > [!NOTE]
-  > `IQueryable` isn't supported in the [Functions v2 runtime](functions-versions.md). An alternative is to [use a CloudTable paramName method parameter](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) to read the table by using the Azure Storage SDK. If you try to bind to `CloudTable` and get an error message, make sure that you have a reference to [the correct Storage SDK version](#azure-storage-sdk-version-in-functions-1x).
+  > `IQueryable`, [Functions v2 çalışma zamanında](functions-versions.md)desteklenmez. Alternatif olarak, Azure depolama SDK 'sını kullanarak tabloyu okumak için [CloudTable paramName yöntemi parametresi kullanılır](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) . `CloudTable` bağlamaya ve bir hata mesajı almaya çalışırsanız, [doğru depolama SDK sürümüne](#azure-storage-sdk-version-in-functions-1x)başvurunuz olduğundan emin olun.
 
-* **Read one or more rows in JavaScript**
+* **JavaScript 'te bir veya daha fazla satırı okuma**
 
-  Set the `filter` and `take` properties. Don't set `partitionKey` or `rowKey`. Access the input table entity (or entities) using `context.bindings.<BINDING_NAME>`. The deserialized objects have `RowKey` and `PartitionKey` properties.
+  `filter` ve `take` özelliklerini ayarlayın. `partitionKey` veya `rowKey`ayarlama. `context.bindings.<BINDING_NAME>`kullanarak giriş tablosu varlığına (veya varlıklara) erişin. Seri durumdan çıkarılan nesneler `RowKey` ve `PartitionKey` özelliklere sahiptir.
 
 ## <a name="output"></a>Çıktı
 
-Use an Azure Table storage output binding to write entities to a table in an Azure Storage account.
+Azure depolama hesabındaki bir tabloya varlıklar yazmak için bir Azure Tablo depolama çıkış bağlaması kullanın.
 
 > [!NOTE]
-> This output binding does not support updating existing entities. Use the `TableOperation.Replace` operation [from the Azure Storage SDK](https://docs.microsoft.com/azure/cosmos-db/tutorial-develop-table-dotnet#delete-an-entity) to update an existing entity.   
+> Bu çıkış bağlaması mevcut varlıkların güncelleştirilmesini desteklemiyor. Mevcut bir varlığı güncelleştirmek için [Azure depolama SDK 'sının](https://docs.microsoft.com/azure/cosmos-db/tutorial-develop-table-dotnet#delete-an-entity) `TableOperation.Replace` işlemini kullanın.   
 
-## <a name="output---example"></a>Output - example
+## <a name="output---example"></a>Çıkış - örnek
 
-See the language-specific example:
+Dile özgü örneğe bakın:
 
 * [C#](#output---c-example)
-* [C# script (.csx)](#output---c-script-example)
+* [C#betik (. CSX)](#output---c-script-example)
 * [F#](#output---f-example)
 * [JavaScript](#output---javascript-example)
 
-### <a name="output---c-example"></a>Output - C# example
+### <a name="output---c-example"></a>Çıkış - C# örneği
 
-The following example shows a [C# function](functions-dotnet-class-library.md) that uses an HTTP trigger to write a single table row. 
+Aşağıdaki örnek, tek bir tablo satırı yazmak için http tetikleyicisi kullanan bir [ C# işlevi](functions-dotnet-class-library.md) gösterir. 
 
 ```csharp
 public class TableStorage
@@ -566,11 +566,11 @@ public class TableStorage
 }
 ```
 
-### <a name="output---c-script-example"></a>Output - C# script example
+### <a name="output---c-script-example"></a>Çıkış - C# betiği örneği
 
-The following example shows a table output binding in a *function.json* file and [C# script](functions-reference-csharp.md) code that uses the binding. The function writes multiple table entities.
+Aşağıdaki örnek, bir *function. JSON* dosyası ve [ C# ](functions-reference-csharp.md) bağlamayı kullanan betik kodu içindeki bir tablo çıkış bağlamasını gösterir. İşlev birden çok tablo varlığı yazar.
 
-Here's the *function.json* file:
+İşte *function. JSON* dosyası:
 
 ```json
 {
@@ -592,9 +592,9 @@ Here's the *function.json* file:
 }
 ```
 
-The [configuration](#output---configuration) section explains these properties.
+[Yapılandırma](#output---configuration) bölümünde bu özellikler açıklanmaktadır.
 
-Here's the C# script code:
+C# betik kodunu şu şekildedir:
 
 ```csharp
 public static void Run(string input, ICollector<Person> tableBinding, ILogger log)
@@ -621,11 +621,11 @@ public class Person
 
 ```
 
-### <a name="output---f-example"></a>Output - F# example
+### <a name="output---f-example"></a>Çıkış - F# örneği
 
-The following example shows a table output binding in a *function.json* file and [F# script](functions-reference-fsharp.md) code that uses the binding. The function writes multiple table entities.
+Aşağıdaki örnek, bir *function. JSON* dosyası ve [ F# ](functions-reference-fsharp.md) bağlamayı kullanan betik kodu içindeki bir tablo çıkış bağlamasını gösterir. İşlev birden çok tablo varlığı yazar.
 
-Here's the *function.json* file:
+İşte *function. JSON* dosyası:
 
 ```json
 {
@@ -647,9 +647,9 @@ Here's the *function.json* file:
 }
 ```
 
-The [configuration](#output---configuration) section explains these properties.
+[Yapılandırma](#output---configuration) bölümünde bu özellikler açıklanmaktadır.
 
-Here's the F# code:
+İşte F# kod:
 
 ```fsharp
 [<CLIMutable>]
@@ -668,11 +668,11 @@ let Run(input: string, tableBinding: ICollector<Person>, log: ILogger) =
               Name = "Name" + i.ToString() })
 ```
 
-### <a name="output---javascript-example"></a>Output - JavaScript example
+### <a name="output---javascript-example"></a>Çıkış - JavaScript örneği
 
-The following example shows a  table output binding in a *function.json* file and a [JavaScript function](functions-reference-node.md) that uses the binding. The function writes multiple table entities.
+Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir tablo çıkış bağlamasını ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir. İşlev birden çok tablo varlığı yazar.
 
-Here's the *function.json* file:
+İşte *function. JSON* dosyası:
 
 ```json
 {
@@ -694,9 +694,9 @@ Here's the *function.json* file:
 }
 ```
 
-The [configuration](#output---configuration) section explains these properties.
+[Yapılandırma](#output---configuration) bölümünde bu özellikler açıklanmaktadır.
 
-Here's the JavaScript code:
+JavaScript kod aşağıdaki gibidir:
 
 ```javascript
 module.exports = function (context) {
@@ -715,11 +715,11 @@ module.exports = function (context) {
 };
 ```
 
-## <a name="output---attributes"></a>Output - attributes
+## <a name="output---attributes"></a>Çıkış - öznitelikleri
 
-In [C# class libraries](functions-dotnet-class-library.md), use the [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Tables/TableAttribute.cs).
+[ C# Sınıf kitaplıkları](functions-dotnet-class-library.md)' nda [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Tables/TableAttribute.cs)' u kullanın.
 
-The attribute's constructor takes the table name. It can be used on an `out` parameter or on the return value of the function, as shown in the following example:
+Özniteliğin Oluşturucusu tablo adını alır. Aşağıdaki örnekte gösterildiği gibi, bir `out` parametresinde veya işlevin dönüş değerinde kullanılabilir:
 
 ```csharp
 [FunctionName("TableOutput")]
@@ -732,7 +732,7 @@ public static MyPoco TableOutput(
 }
 ```
 
-You can set the `Connection` property to specify the storage account to use, as shown in the following example:
+Aşağıdaki örnekte gösterildiği gibi, kullanılacak depolama hesabını belirtmek için `Connection` özelliğini ayarlayabilirsiniz:
 
 ```csharp
 [FunctionName("TableOutput")]
@@ -745,53 +745,53 @@ public static MyPoco TableOutput(
 }
 ```
 
-For a complete example, see [Output - C# example](#output---c-example).
+Tam bir örnek için bkz. [Çıkış- C# örnek](#output---c-example).
 
-You can use the `StorageAccount` attribute to specify the storage account at class, method, or parameter level. For more information, see [Input - attributes](#input---attributes).
+Sınıf, yöntem veya parametre düzeyinde depolama hesabını belirtmek için `StorageAccount` özniteliğini kullanabilirsiniz. Daha fazla bilgi için bkz. [giriş-öznitelikler](#input---attributes).
 
-## <a name="output---configuration"></a>Output - configuration
+## <a name="output---configuration"></a>Çıkış - yapılandırma
 
-The following table explains the binding configuration properties that you set in the *function.json* file and the `Table` attribute.
+Aşağıdaki tabloda, *function. JSON* dosyasında ve `Table` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
 
-|function.json property | Attribute property |Açıklama|
+|Function.JSON özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-|**type** | Yok | Must be set to `table`. This property is set automatically when you create the binding in the Azure portal.|
-|**direction** | Yok | Must be set to `out`. This property is set automatically when you create the binding in the Azure portal. |
-|**name** | Yok | The variable name used in function code that represents the table or entity. Set to `$return` to reference the function return value.| 
-|**tableName** |**TableName** | The name of the table.| 
-|**partitionKey** |**PartitionKey** | The partition key of the table entity to write. See the [usage section](#output---usage) for guidance on how to use this property.| 
-|**rowKey** |**RowKey** | The row key of the table entity to write. See the [usage section](#output---usage) for guidance on how to use this property.| 
-|**connection** |**Connection** | The name of an app setting that contains the Storage connection string to use for this binding. If the app setting name begins with "AzureWebJobs", you can specify only the remainder of the name here. For example, if you set `connection` to "MyStorage", the Functions runtime looks for an app setting that is named "AzureWebJobsMyStorage." If you leave `connection` empty, the Functions runtime uses the default Storage connection string in the app setting that is named `AzureWebJobsStorage`.|
+|**type** | Yok | `table`olarak ayarlanmalıdır. Azure portal bağlama oluşturduğunuzda bu özellik otomatik olarak ayarlanır.|
+|**direction** | Yok | `out`olarak ayarlanmalıdır. Azure portal bağlama oluşturduğunuzda bu özellik otomatik olarak ayarlanır. |
+|**ada** | Yok | Tablo veya varlığı temsil eden işlev kodunda kullanılan değişken adı. İşlev dönüş değerine başvurmak için `$return` olarak ayarlayın.| 
+|**tableName** |**TableName** | Tablonun adı.| 
+|**partitionKey** |**PartitionKey** | Yazılacak tablo varlığının bölüm anahtarı. Bu özelliğin nasıl kullanılacağına ilişkin yönergeler için [kullanım bölümüne](#output---usage) bakın.| 
+|**rowKey** |**RowKey** | Yazılacak tablo varlığının satır anahtarı. Bu özelliğin nasıl kullanılacağına ilişkin yönergeler için [kullanım bölümüne](#output---usage) bakın.| 
+|**bağlanma** |**Bağlanma** | Bu bağlama için kullanılacak depolama bağlantı dizesini içeren bir uygulama ayarının adı. Uygulama ayarı adı "AzureWebJobs" ile başlıyorsa, burada yalnızca adının geri kalanını belirtebilirsiniz. Örneğin, `connection` "MyStorage" olarak ayarlarsanız, Işlevler çalışma zamanı "AzureWebJobsMyStorage" adlı bir uygulama ayarı arar. `connection` boş bırakırsanız, Işlevler çalışma zamanı `AzureWebJobsStorage`adlı uygulama ayarında varsayılan depolama bağlantı dizesini kullanır.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="output---usage"></a>Output - usage
+## <a name="output---usage"></a>Çıkış - kullanım
 
-The Table storage output binding supports the following scenarios:
+Tablo depolama çıkış bağlaması aşağıdaki senaryoları destekler:
 
-* **Write one row in any language**
+* **Herhangi bir dilde bir satır yazın**
 
-  In C# and C# script, access the output table entity by using a method parameter such as `out T paramName` or the function return value. In C# script, `paramName` is the value specified in the `name` property of *function.json*. `T` can be any serializable type if the partition key and row key are provided by the *function.json* file or the `Table` attribute. Otherwise, `T` must be a type that includes `PartitionKey` and `RowKey` properties. In this scenario, `T` typically implements `ITableEntity` or derives from `TableEntity`, but it doesn't have to.
+  C# Ve C# komut dosyasında, `out T paramName` veya işlev dönüş değeri gibi bir yöntem parametresi kullanarak çıkış tablosu varlığına erişin. Betik C# ' de, `paramName` *function. json*' nin `name` özelliğinde belirtilen değerdir. bölüm anahtarı ve satır anahtarı *function. JSON* dosyası ya da `Table` özniteliği tarafından sağlanmışsa, `T` serileştirilebilir herhangi bir tür olabilir. Aksi takdirde, `T` `PartitionKey` ve `RowKey` özellikleri içeren bir tür olmalıdır. Bu senaryoda, `T` genellikle `ITableEntity` uygular veya `TableEntity`türetilir, ancak bunu yapmak zorunda değildir.
 
-* **Write one or more rows in C# or C# script**
+* **C# Veya C# betiğe bir veya daha fazla satır yazın**
 
-  In C# and C# script, access the output table entity by using a method parameter `ICollector<T> paramName` or `IAsyncCollector<T> paramName`. In C# script, `paramName` is the value specified in the `name` property of *function.json*. `T` specifies the schema of the entities you want to add. Typically, `T` derives from `TableEntity` or implements `ITableEntity`, but it doesn't have to. The partition key and row key values in *function.json* or the `Table` attribute constructor are not used in this scenario.
+  C# Ve C# komut dosyasında, bir yöntem parametresi `ICollector<T> paramName` veya `IAsyncCollector<T> paramName`kullanarak çıkış tablosu varlığına erişin. Betik C# ' de, `paramName` *function. json*' nin `name` özelliğinde belirtilen değerdir. `T` eklemek istediğiniz varlıkların şemasını belirtir. Genellikle, `T` `TableEntity` türetilir veya `ITableEntity`uygular, ancak bunu yapmak zorunda değildir. *Function. JSON* veya `Table` öznitelik oluşturucusunda bölüm anahtarı ve satır anahtarı değerleri bu senaryoda kullanılmıyor.
 
-  An alternative is to use a `CloudTable` method parameter to write to the table by using the Azure Storage SDK. If you try to bind to `CloudTable` and get an error message, make sure that you have a reference to [the correct Storage SDK version](#azure-storage-sdk-version-in-functions-1x). For an example of code that binds to `CloudTable`, see the input binding examples for [C#](#input---c-example---cloudtable) or [C# script](#input---c-script-example---cloudtable) earlier in this article.
+  Alternatif olarak, Azure depolama SDK 'sını kullanarak tabloya yazmak için `CloudTable` yöntemi parametresi kullanılır. `CloudTable` bağlamaya ve bir hata mesajı almaya çalışırsanız, [doğru depolama SDK sürümüne](#azure-storage-sdk-version-in-functions-1x)başvurunuz olduğundan emin olun. `CloudTable`bağlanan kodun bir örneği için, bu makalenin önceki kısımlarında yer alan giriş bağlama örneklerine [C#](#input---c-example---cloudtable) veya [ C# betiğine](#input---c-script-example---cloudtable) bakın.
 
-* **Write one or more rows in JavaScript**
+* **JavaScript 'te bir veya daha fazla satır yazma**
 
-  In JavaScript functions, access the table output using `context.bindings.<BINDING_NAME>`.
+  JavaScript işlevlerinde `context.bindings.<BINDING_NAME>`kullanarak tablo çıktısına erişin.
 
-## <a name="exceptions-and-return-codes"></a>Exceptions and return codes
+## <a name="exceptions-and-return-codes"></a>Özel durumlar ve dönüş kodları
 
-| Binding | Başvuru |
+| Bağlama | Başvuru |
 |---|---|
-| Tablo | [Table Error Codes](https://docs.microsoft.com/rest/api/storageservices/fileservices/table-service-error-codes) |
-| Blob, Table, Queue | [Storage Error Codes](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
-| Blob, Table, Queue | [Sorun giderme](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
+| Tablo | [Tablo hata kodları](https://docs.microsoft.com/rest/api/storageservices/fileservices/table-service-error-codes) |
+| Blob, tablo, kuyruk | [Depolama hatası kodları](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
+| Blob, tablo, kuyruk | [Sorun giderme](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Learn more about Azure functions triggers and bindings](functions-triggers-bindings.md)
+> [Azure işlevleri Tetikleyicileri ve bağlamaları hakkında daha fazla bilgi edinin](functions-triggers-bindings.md)

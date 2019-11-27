@@ -28,7 +28,7 @@ Cosmos DB, Microsoft 'un genel olarak dağıtılmış çok modelli veritabanı h
 
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-[Node.js](https://nodejs.org/) v0.10.29 sürümü veya sonraki bir sürüm.
+[Node.js](https://nodejs.org/) v0.10.29 veya sonraki bir sürümü.
 
 ## <a name="create-a-cosmos-account"></a>Cosmos hesabı oluşturma
 

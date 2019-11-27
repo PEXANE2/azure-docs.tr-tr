@@ -1,6 +1,6 @@
 ---
-title: Data Warehouse Units (DWUs) in Azure Synapse Analytics (formerly SQL DW)
-description: Recommendations on choosing the ideal number of data warehouse units (DWUs) to optimize price and performance, and how to change the number of units.
+title: Azure SYNAPSE Analytics 'te (eski adıyla SQL DW) veri ambarı birimleri (DWU)
+description: Fiyat ve performansı iyileştirmek için ideal sayıda veri ambarı birimi (DWU) seçmeye ve birim sayısını değiştirmeye yönelik öneriler.
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
@@ -18,33 +18,33 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74420486"
 ---
-# <a name="data-warehouse-units-dwus"></a>Data Warehouse Units (DWUs)
+# <a name="data-warehouse-units-dwus"></a>Veri ambarı birimleri (DWU 'Lar)
 
-Recommendations on choosing the ideal number of data warehouse units (DWUs) to optimize price and performance, and how to change the number of units.
+Fiyat ve performansı iyileştirmek için ideal sayıda veri ambarı birimi (DWU) seçmeye ve birim sayısını değiştirmeye yönelik öneriler.
 
-## <a name="what-are-data-warehouse-units"></a>What are Data Warehouse Units
+## <a name="what-are-data-warehouse-units"></a>Veri ambarı birimleri nedir?
 
-A [SQL pool](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse) represents a collection of analytic resources that are being provisioned when using [SQL Analytics](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse). Analytic resources are defined as a combination of CPU, memory and IO. These three resources are bundled into units of compute scale called Data Warehouse Units (DWUs). A DWU represents an abstract, normalized measure of compute resources and performance. A change to your service level alters the number of DWUs that are available to the system, which in turn adjusts the performance, and the cost, of your system.
+[SQL havuzu](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse) , [SQL Analytics](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse)kullanılırken sağlanmakta olan analitik kaynakların koleksiyonunu temsil eder. Analitik kaynaklar CPU, bellek ve GÇ birleşimi olarak tanımlanır. Bu üç kaynak, veri ambarı birimleri (DWU) adlı bilgi işlem ölçeği birimlerine paketlenmiştir. Bir DWU, işlem kaynaklarının ve performansının soyut, normalleştirilmiş bir ölçüsünü temsil eder. Hizmet düzeyinizdeki değişiklik, sistem tarafından kullanılabilen DWU sayısını değiştirir ve bu da sisteminizin performansını ve maliyetini ayarlar.
 
-For higher performance, you can increase the number of data warehouse units. For less performance, reduce data warehouse units. Storage and compute costs are billed separately, so changing data warehouse units does not affect storage costs.
+Daha yüksek performans için, veri ambarı birimlerinin sayısını artırabilirsiniz. Daha az performans için veri ambarı birimlerini azaltın. Depolama ve işlem maliyetleri ayrı olarak faturalandırılır, bu nedenle veri ambarı birimlerinin değiştirilmesi depolama maliyetlerini etkilemez.
 
-Performance for data warehouse units is based on these workload metrics:
+Veri ambarı birimlerinin performansı, bu iş yükü ölçümlerine dayalıdır:
 
-- How fast a standard data warehousing query can scan a large number of rows and then perform a complex aggregation. This operation is I/O and CPU intensive.
-- How fast the data warehouse can ingest data from Azure Storage Blobs or Azure Data Lake. This operation is network and CPU intensive.
-- How fast the [`CREATE TABLE AS SELECT`](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) T-SQL command can copy a table. This operation involves reading data from storage, distributing it across the nodes of the appliance and writing to storage again. This operation is CPU, IO, and network intensive.
+- Standart veri ambarı sorgusunun ne kadar hızlı bir şekilde çok sayıda satır tarayabilmesi ve ardından karmaşık bir toplama işlemi gerçekleştirebilmesi. Bu işlem g/ç ve CPU yoğun.
+- Veri ambarının Azure depolama Bloblarından veya Azure Data Lake veri alma hızını en kısa şekilde öğrenin. Bu işlem ağ ve CPU yoğun.
+- [`CREATE TABLE AS SELECT`](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) t-sql komutunun bir tabloyu ne kadar hızlı kopyalayabilirler. Bu işlem, depolama alanından veri okumayı, gerecin düğümlerine dağıtmayı ve depolama alanına yeniden yazmayı içerir. Bu işlem CPU, GÇ ve ağ yoğunluğu.
 
-Increasing DWUs:
+DWUs 'yi artırma:
 
-- Linearly changes performance of the system for scans, aggregations, and CTAS statements
-- Increases the number of readers and writers for PolyBase load operations
-- Increases the maximum number of concurrent queries and concurrency slots.
+- , Taramalar, Toplamalar ve CTAS deyimleri için sistemin performansını yeniden değiştirir
+- PolyBase yük işlemleri için okuyucu ve yazıcı sayısını artırır
+- En fazla eşzamanlı sorgu ve eşzamanlılık yuvası sayısını artırır.
 
-## <a name="service-level-objective"></a>Service Level Objective
+## <a name="service-level-objective"></a>Hizmet düzeyi hedefi
 
-The Service Level Objective (SLO) is the scalability setting that determines the cost and performance level of your data warehouse. The service levels for Gen2 SQL pool are measured in data warehouse units (DWU), for example DW2000c.
+Hizmet düzeyi hedefi (SLO), veri ambarınızın maliyet ve performans düzeyini belirleyen ölçeklenebilirlik ayarıdır. Gen2 SQL havuzu için hizmet düzeyleri, veri ambarı birimleri (DWU) ile ölçülür (örneğin, DW2000c).
 
-In T-SQL, the SERVICE_OBJECTIVE setting determines the service level for your SQL pool.
+T-SQL ' de SERVICE_OBJECTIVE ayarı, SQL havuzunuzun hizmet düzeyini belirler.
 
 ```sql
 CREATE DATABASE mySQLDW
@@ -56,37 +56,37 @@ CREATE DATABASE mySQLDW
 
 ## <a name="capacity-limits"></a>Kapasite sınırları
 
-Each SQL server (for example, myserver.database.windows.net) has a [Database Transaction Unit (DTU)](../sql-database/sql-database-what-is-a-dtu.md) quota that allows a specific number of data warehouse units. For more information, see the [workload management capacity limits](sql-data-warehouse-service-capacity-limits.md#workload-management).
+Her SQL Server (örneğin, myserver.database.windows.net), belirli sayıda veri ambarı birimine izin veren bir [veritabanı Işlem birimi (DTU)](../sql-database/sql-database-what-is-a-dtu.md) kotasına sahiptir. Daha fazla bilgi için bkz. [iş yükü yönetim kapasitesi sınırları](sql-data-warehouse-service-capacity-limits.md#workload-management).
 
-## <a name="how-many-data-warehouse-units-do-i-need"></a>How many data warehouse units do I need
+## <a name="how-many-data-warehouse-units-do-i-need"></a>Kaç veri ambarı birimine ihtiyacım var?
 
-The ideal number of data warehouse units depends very much on your workload and the amount of data you have loaded into the system.
+İdeal veri ambarı birimi sayısı, iş yükünüze ve sisteme yüklediğiniz veri miktarına çok fazla bağlıdır.
 
-Steps for finding the best DWU for your workload:
+İş yükünüz için en iyi DWU bulma adımları:
 
-1. Begin by selecting a smaller DWU.
-2. Monitor your application performance as you test data loads into the system, observing the number of DWUs selected compared to the performance you observe.
-3. Identify any additional requirements for periodic periods of peak activity. Workloads that show significant peaks and troughs in activity may need to be scaled frequently.
+1. Daha küçük bir DWU seçerek başlayın.
+2. Veri yüklerini sisteme test ettiğiniz için uygulama performansınızı izleyin ve seçilen DWU sayısını gözlemlediğiniz performansa göre gözlemleyin.
+3. Dönemsel etkinlik dönemlerine yönelik tüm ek gereksinimleri belirler. Etkinliğin önemli ve Troughs bir şekilde gösterilmesi için iş yüklerinin sık ölçeklendirilmesi gerekebilir.
 
-SQL Analytics is a scale-out system that can provision vast amounts of compute and query sizeable quantities of data. To see its true capabilities for scaling, especially at larger DWUs, we recommend scaling the data set as you scale to ensure that you have enough data to feed the CPUs. For scale testing, we recommend using at least 1 TB.
+SQL Analytics, büyük miktarlarda işlem ve sorgu boyutlandırılabilir veri miktarları sağlayabilen bir genişleme sistemidir. Özellikle de daha büyük DWU 'Larda ölçeklendirmeye yönelik doğru özellikleri görmek için, CPU 'Ları akışa almak için yeterli veriniz olduğundan emin olmak üzere ölçeği ölçeklendirirken veri kümesini ölçeklendirmeniz önerilir. Ölçek testi için en az 1 TB kullanmanızı öneririz.
 
 > [!NOTE]
 >
-> Query performance only increases with more parallelization if the work can be split between compute nodes. If you find that scaling is not changing your performance, you may need to tune your table design and/or your queries. For query tuning guidance, see [Manage user queries](sql-data-warehouse-overview-manage-user-queries.md).
+> Sorgu performansı yalnızca, işin işlem düğümleri arasında bölüneceği durumlarda daha fazla paralelleştirme ile artar. Ölçeklendirmenin performansınızı değiştirmediğinden, tablo tasarımınızı ve/veya sorgularınızı ayarlamanız gerekebilir. Sorgu ayarlama Kılavuzu için bkz. [Kullanıcı sorgularını yönetme](sql-data-warehouse-overview-manage-user-queries.md).
 
 ## <a name="permissions"></a>İzinler
 
-Changing the data warehouse units requires the permissions described in [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql).
+Veri ambarı birimlerinin değiştirilmesi, [alter database](/sql/t-sql/statements/alter-database-transact-sql)bölümünde açıklanan izinleri gerektirir.
 
-Built-in roles for Azure resources such as SQL DB Contributor and SQL Server Contributor can change DWU settings.
+SQL DB katılımcısı ve SQL Server katılımcısı gibi Azure kaynakları için yerleşik roller DWU ayarlarını değiştirebilir.
 
-## <a name="view-current-dwu-settings"></a>View current DWU settings
+## <a name="view-current-dwu-settings"></a>Geçerli DWU ayarlarını görüntüle
 
-To view the current DWU setting:
+Geçerli DWU ayarını görüntülemek için:
 
-1. Open SQL Server Object Explorer in Visual Studio.
-2. Connect to the master database associated with the logical SQL Database server.
-3. Select from the sys.database_service_objectives dynamic management view. Örnek aşağıda verilmiştir:
+1. Visual Studio 'da SQL Server Nesne Gezgini açın.
+2. Mantıksal SQL veritabanı sunucusuyla ilişkili ana veritabanına bağlanın.
+3. Sys. database_service_objectives dinamik yönetim görünümünden seçin. Örnek aşağıda verilmiştir:
 
 ```sql
 SELECT  db.name [Database]
@@ -97,38 +97,38 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 ;
 ```
 
-## <a name="change-data-warehouse-units"></a>Change data warehouse units
+## <a name="change-data-warehouse-units"></a>Veri ambarı birimlerini değiştirme
 
 ### <a name="azure-portal"></a>Azure portalı
 
-To change DWUs:
+DWUs 'yi değiştirmek için:
 
-1. Open the [Azure portal](https://portal.azure.com), open your database, and click **Scale**.
+1. [Azure Portal](https://portal.azure.com)açın, veritabanınızı açın ve **Ölçek**' e tıklayın.
 
-2. Under **Scale**, move the slider left or right to change the DWU setting.
+2. **Ölçek**altında, DWU ayarını değiştirmek için kaydırıcıyı sola veya sağa taşıyın.
 
-3. **Kaydet** düğmesine tıklayın. Bir onay iletisi görüntülenir. Onaylamak için **evet**’e, iptal etmek için **hayır**’a tıklayın.
+3. **Save (Kaydet)** düğmesine tıklayın. Bir onay iletisi görüntülenir. Onaylamak için **evet**’e, iptal etmek için **hayır**’a tıklayın.
 
 ### <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-To change the DWUs, use the [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) PowerShell cmdlet. The following example sets the service level objective to DW1000c for the database MySQLDW that is hosted on server MyServer.
+DWU 'ları değiştirmek için [set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) PowerShell cmdlet 'ini kullanın. Aşağıdaki örnek, sunucu sunucum üzerinde barındırılan MySQLDW veritabanı için hizmet düzeyi hedefini DW1000c olarak ayarlar.
 
 ```Powershell
 Set-AzSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServiceObjectiveName "DW1000c"
 ```
 
-For more information, see [PowerShell cmdlets for SQL Data Warehouse](sql-data-warehouse-reference-powershell-cmdlets.md)
+Daha fazla bilgi için bkz. [SQL veri ambarı Için PowerShell cmdlet 'leri](sql-data-warehouse-reference-powershell-cmdlets.md)
 
 ### <a name="t-sql"></a>T-SQL
 
-With T-SQL you can view the current DWU settings, change the settings, and check the progress.
+T-SQL ile geçerli DWU ayarlarını görüntüleyebilir, ayarları değiştirebilir ve ilerleme durumunu kontrol edebilirsiniz.
 
-To change the DWUs:
+DWUs 'yi değiştirmek için:
 
-1. Connect to the master database associated with your logical SQL Database server.
-2. Use the [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql) TSQL statement. The following example sets the service level objective to DW1000c for the database MySQLDW.
+1. Mantıksal SQL veritabanı sunucunuz ile ilişkili ana veritabanına bağlanın.
+2. [Alter database](/sql/t-sql/statements/alter-database-transact-sql) TSQL deyimini kullanın. Aşağıdaki örnek, hizmet düzeyi hedefini MySQLDW veritabanı için DW1000c olarak ayarlar.
 
 ```Sql
 ALTER DATABASE MySQLDW
@@ -138,7 +138,7 @@ MODIFY (SERVICE_OBJECTIVE = 'DW1000c')
 
 ### <a name="rest-apis"></a>REST API'leri
 
-To change the DWUs, use the [Create or Update Database](/rest/api/sql/databases/createorupdate) REST API. The following example sets the service level objective to DW1000c for the database MySQLDW, which is hosted on server MyServer. The server is in an Azure resource group named ResourceGroup1.
+DWU 'ları değiştirmek için [Create veya Update Database](/rest/api/sql/databases/createorupdate) REST API kullanın. Aşağıdaki örnek, sunucu sunucum üzerinde barındırılan MySQLDW veritabanı için hizmet düzeyi hedefini DW1000c olarak ayarlar. Sunucu, ResourceGroup1 adlı bir Azure Kaynak grubunda bulunur.
 
 ```
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}?api-version=2014-04-01-preview HTTP/1.1
@@ -151,21 +151,21 @@ Content-Type: application/json; charset=UTF-8
 }
 ```
 
-For more REST API examples, see [REST APIs for SQL Data Warehouse](sql-data-warehouse-manage-compute-rest-api.md).
+Daha fazla REST API örnek için bkz. [SQL veri ambarı Için REST API 'leri](sql-data-warehouse-manage-compute-rest-api.md).
 
-## <a name="check-status-of-dwu-changes"></a>Check status of DWU changes
+## <a name="check-status-of-dwu-changes"></a>DWU değişikliklerinin durumunu denetle
 
-DWU changes may take several minutes to complete. If you are scaling automatically, consider implementing logic to ensure that certain operations have been completed before proceeding with another action.
+DWU değişikliklerinin tamamlanması birkaç dakika sürebilir. Otomatik olarak ölçeklendirmeye devam ediyorsanız, başka bir eyleme geçmeden önce belirli işlemlerin tamamlandığından emin olmak için mantığı uygulamayı düşünün.
 
-Checking the database state through various endpoints allows you to correctly implement automation. The portal provides notification upon completion of an operation and the databases current state but does not allow for programmatic checking of state.
+Veritabanı durumunun çeşitli uç noktalarla denetlenmesi, Otomasyonu doğru bir şekilde uygulamanıza olanak tanır. Portal bir işlemin tamamlanmasını ve veritabanlarının geçerli durumunu tamamladıktan sonra durum denetimi için izin vermez.
 
-You cannot check the database state for scale-out operations with the Azure portal.
+Azure portal genişleme işlemleri için veritabanı durumunu kontrol edebilirsiniz.
 
-To check the status of DWU changes:
+DWU değişikliklerinin durumunu denetlemek için:
 
-1. Connect to the master database associated with your logical SQL Database server.
+1. Mantıksal SQL veritabanı sunucunuz ile ilişkili ana veritabanına bağlanın.
 
-1. Submit the following query to check database state.
+1. Veritabanı durumunu denetlemek için aşağıdaki sorguyu gönder.
 
     ```sql
     SELECT    *
@@ -173,7 +173,7 @@ To check the status of DWU changes:
     ;
     ```
     
-1. Submit the following query to check status of operation
+1. İşlemin durumunu denetlemek için aşağıdaki sorguyu gönder
 
     ```sql
     SELECT    *
@@ -183,15 +183,15 @@ To check the status of DWU changes:
     ;
     ```
     
-This DMV returns information about various management operations on your SQL pool such as the operation and the state of the operation, which is either IN_PROGRESS or COMPLETED.
+Bu DMV, SQL havuzunuzdaki işlem ve işlem durumu gibi IN_PROGRESS ya da tamamlanmış olan çeşitli yönetim işlemleri hakkında bilgi döndürür.
 
-## <a name="the-scaling-workflow"></a>The scaling workflow
+## <a name="the-scaling-workflow"></a>Ölçeklendirme iş akışı
 
-When you start a scale operation, the system first kills all open sessions, rolling back any open transactions to ensure a consistent state. For scale operations, scaling only occurs after this transactional rollback has completed.  
+Bir ölçeklendirme işlemi başlattığınızda, sistem ilk olarak tüm açık oturumları ve tüm açık işlemleri geri alarak, tutarlı bir durum olmasını sağlar. Ölçeklendirme işlemleri için ölçekleme yalnızca bu işlem geri alma işlemi tamamlandıktan sonra oluşur.  
 
-- For a scale-up operation, the system detaches all compute nodes, provisions the additional compute nodes, and then reattaches to the storage layer.
-- For a scale-down operation, the system detaches all compute nodes and then reattaches only the needed nodes to the storage layer.
+- Genişleme işlemi için, sistem tüm işlem düğümlerini ayırır, ek işlem düğümlerini sağlar ve ardından depolama katmanına yeniden ekler.
+- Bir ölçek azaltma işlemi için, sistem tüm işlem düğümlerini ayırır ve depolama katmanına yalnızca gerekli düğümleri yeniden ekler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-To learn more about managing performance, see [Resource classes for workload management](resource-classes-for-workload-management.md) and [Memory and concurrency limits](memory-concurrency-limits.md).
+Performansı yönetme hakkında daha fazla bilgi edinmek için bkz. [iş yükü yönetimi Için kaynak sınıfları](resource-classes-for-workload-management.md) ve [bellek ve eşzamanlılık sınırları](memory-concurrency-limits.md).

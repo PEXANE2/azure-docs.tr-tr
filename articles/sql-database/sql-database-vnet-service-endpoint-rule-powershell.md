@@ -1,6 +1,6 @@
 ---
-title: PowerShell for VNet endpoints and rules for single and pooled databases
-description: Provides PowerShell scripts to create and manage Virtual Service endpoints for your Azure SQL Database and SQL Data Warehouse.
+title: Tek ve havuza alınmış veritabanlarının VNet uç noktaları ve kuralları için PowerShell
+description: Azure SQL veritabanınız ve SQL veri ambarınız için sanal hizmet uç noktaları oluşturmak ve yönetmek üzere PowerShell betikleri sağlar.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -18,65 +18,65 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74422498"
 ---
-# <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>PowerShell:  Create a Virtual Service endpoint and VNet rule for SQL
+# <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>PowerShell: SQL için sanal hizmet uç noktası ve VNet kuralı oluşturma
 
-*Virtual network rules* are one firewall security feature that controls whether the database server for your single databases and elastic pool in Azure [SQL Database](sql-database-technical-overview.md) or for your databases in [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) accepts communications that are sent from particular subnets in virtual networks.
+*Sanal ağ kuralları* , tek veritabanlarınıza yönelik veritabanı sunucusunun ve Azure [SQL veritabanı](sql-database-technical-overview.md) 'ndaki elastik havuzunuzun ve [SQL veri ambarı](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 'ndaki veritabanlarınızın iletişim kabul edip etmediğini denetleyen bir güvenlik duvarı güvenlik özelliğidir Bu, sanal ağlardaki belirli alt ağlardan gönderilir.
 
 > [!IMPORTANT]
-> This article applies to Azure SQL server, and to both SQL Database and SQL Data Warehouse databases that are created on the Azure SQL server. Kolaylık açısından, hem SQL Veritabanı hem de SQL Veri Ambarı için SQL Veritabanı terimi kullanılmaktadır. This article does *not* apply to a **managed instance** deployment in Azure SQL Database because it does not have a service endpoint associated with it.
+> Bu makale Azure SQL Server ve Azure SQL Server 'da oluşturulan SQL veritabanı ve SQL veri ambarı veritabanları için geçerlidir. Kolaylık açısından, hem SQL Veritabanı hem de SQL Veri Ambarı için SQL Veritabanı terimi kullanılmaktadır. Bu makale, kendisiyle ilişkili bir hizmet uç noktası olmadığından Azure SQL veritabanı 'nda **yönetilen bir örnek** dağıtımı *için uygulanmıyor.*
 
-This article provides and explains a PowerShell script that takes the following actions:
+Bu makalede, aşağıdaki eylemleri alan bir PowerShell betiği sağlanmıştır ve açıklanmaktadır:
 
-1. Creates a Microsoft Azure *Virtual Service endpoint* on your subnet.
-2. Adds the endpoint to the firewall of your Azure SQL Database server, to create a *virtual network rule*.
+1. Alt ağınızda Microsoft Azure *sanal hizmet uç noktası* oluşturur.
+2. Bir *sanal ağ kuralı*oluşturmak için uç NOKTAYı Azure SQL veritabanı sunucunuzun güvenlik duvarına ekler.
 
-Your motivations for creating a rule are explained in: [Virtual Service endpoints for Azure SQL Database][sql-db-vnet-service-endpoint-rule-overview-735r].
+Bir kural oluşturmaya yönelik motive, şu şekilde açıklanmıştır: [Azure SQL veritabanı Için sanal hizmet uç noktaları][sql-db-vnet-service-endpoint-rule-overview-735r].
 
 > [!TIP]
-> If all you need is to assess or add the Virtual Service endpoint *type name* for SQL Database to your subnet, you can skip ahead to our more [direct PowerShell script](#a-verify-subnet-is-endpoint-ps-100).
+> Tüm ihtiyacınız varsa, SQL veritabanı için sanal hizmet uç noktası *türü adını* , alt ağınız için değerlendirmek veya eklemek istiyorsanız, daha [doğrudan PowerShell betiğimize](#a-verify-subnet-is-endpoint-ps-100)atlayabilirsiniz.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> The PowerShell Azure Resource Manager module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. For these cmdlets, see [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). The arguments for the commands in the Az module and in the AzureRm modules are substantially identical.
+> PowerShell Azure Resource Manager modülü Azure SQL veritabanı tarafından hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. Bu cmdlet 'ler için bkz. [Azurerd. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır.
 
-## <a name="major-cmdlets"></a>Major cmdlets
+## <a name="major-cmdlets"></a>Ana cmdlet 'ler
 
-This article emphasizes the **New-AzSqlServerVirtualNetworkRule** cmdlet that adds the subnet endpoint to the access control list (ACL) of your Azure SQL Database server, thereby creating a rule.
+Bu makale, alt ağ uç noktasını Azure SQL veritabanı sunucunuzun erişim denetim listesine (ACL) ekleyen **New-AzSqlServerVirtualNetworkRule** cmdlet 'ini vurgular, böylece bir kural oluşturur.
 
-The following list shows the sequence of other *major* cmdlets that you must run to prepare for your call to **New-AzSqlServerVirtualNetworkRule**. In this article, these calls occur in [script 3 "Virtual network rule"](#a-script-30):
+Aşağıdaki listede, **New-AzSqlServerVirtualNetworkRule**çağrınıza hazırlanmanız için çalıştırmanız gereken diğer *ana* cmdlet 'lerin sırası gösterilmektedir. Bu makalede, [komut dosyası 3 "sanal ağ kuralı"](#a-script-30)içinde bu çağrılar oluşur:
 
-1. [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig): Creates a subnet object.
-2. [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork): Creates your virtual network, giving it the subnet.
-3. [Set-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/Set-azVirtualNetworkSubnetConfig): Assigns a Virtual Service endpoint to your subnet.
-4. [Set-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/Set-azVirtualNetwork): Persists updates made to your virtual network.
-5. [New-AzSqlServerVirtualNetworkRule](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlservervirtualnetworkrule): After your subnet is an endpoint, adds your subnet as a virtual network rule, into the ACL of your Azure SQL Database server.
-   - This cmdlet Offers the parameter **-IgnoreMissingVNetServiceEndpoint**, starting in Azure RM PowerShell Module version 5.1.1.
+1. [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig): bir alt ağ nesnesi oluşturur.
+2. [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork): Sanal ağınızı, alt ağ vererek oluşturur.
+3. [Set-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/Set-azVirtualNetworkSubnetConfig): alt ağınız Için bir sanal hizmet uç noktası atar.
+4. [Set-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/Set-azVirtualNetwork): sanal ağınızda yapılan güncelleştirmeler devam ettirir.
+5. [New-AzSqlServerVirtualNetworkRule](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlservervirtualnetworkrule): alt ağınız bir uç nokta olduktan sonra, alt ağınızı bir sanal ağ kuralı olarak Azure SQL VERITABANı sunucunuzun ACL 'sine ekler.
+   - Bu cmdlet, Azure RM PowerShell modülü sürüm 5.1.1 'dan başlayarak **-ıgnoremissingvnetserviceendpoint**parametresini sunar.
 
-## <a name="prerequisites-for-running-powershell"></a>Prerequisites for running PowerShell
+## <a name="prerequisites-for-running-powershell"></a>PowerShell çalıştırmaya yönelik önkoşullar
 
-- You can already log in to Azure, such as through the [Azure portal][http-azure-portal-link-ref-477t].
-- You can already run PowerShell scripts.
+- [Azure Portal][http-azure-portal-link-ref-477t]gibi Azure 'da zaten oturum açabilirsiniz.
+- PowerShell betiklerini zaten çalıştırabilirsiniz.
 
 > [!NOTE]
-> Please ensure that service endpoints are turned on for the VNet/Subnet that you want to add to your Server otherwise creation of the VNet Firewall Rule will fail.
+> Lütfen sunucunuza eklemek istediğiniz VNet/alt ağ için hizmet uç noktalarının açık olduğundan emin olun, aksi takdirde VNet güvenlik duvarı kuralının oluşturulması başarısız olur.
 
-## <a name="one-script-divided-into-four-chunks"></a>One script divided into four chunks
+## <a name="one-script-divided-into-four-chunks"></a>Dört Öbekle bölünmüş bir betik
 
-Our demonstration PowerShell script is divided into a sequence of smaller scripts. The division eases learning and provides flexibility. The scripts must be run in their indicated sequence. If you do not have time now to run the scripts, our actual test output is displayed after script 4.
+Tanıtım PowerShell betiğimiz, daha küçük betikler dizisine bölünmüştür. Bölüm öğrenimi kolaylaştırır ve esneklik sağlar. Betikler, belirtilen sıralamadaki çalıştırılmalıdır. Artık betikleri çalıştırmak için zaman yoksa, gerçek test çıktımız komut dosyası 4 ' ün ardından görüntülenir.
 
 <a name="a-script-10" />
 
-### <a name="script-1-variables"></a>Script 1: Variables
+### <a name="script-1-variables"></a>Betik 1: değişkenler
 
-This first PowerShell script assigns values to variables. The subsequent scripts depend on these variables.
+Bu ilk PowerShell betiği, değişkenlere değerler atar. Sonraki betikler bu değişkenlere bağımlıdır.
 
 > [!IMPORTANT]
-> Before you run this script, you can edit the values, if you like. For example, if you already have a resource group, you might want to edit your resource group name as the assigned value.
+> Bu betiği çalıştırmadan önce, isterseniz değerleri düzenleyebilirsiniz. Örneğin, zaten bir kaynak grubunuz varsa, kaynak grubu adınızı atanan değer olarak düzenlemek isteyebilirsiniz.
 >
-> Your subscription name should be edited into the script.
+> Abonelik adınız betikte düzenlenmelidir.
 
-### <a name="powershell-script-1-source-code"></a>PowerShell script 1 source code
+### <a name="powershell-script-1-source-code"></a>PowerShell betiği 1 kaynak kodu
 
 ```powershell
 ######### Script 1 ########################################
@@ -115,14 +115,14 @@ Write-Host 'Completed script 1, the "Variables".';
 
 <a name="a-script-20" />
 
-### <a name="script-2-prerequisites"></a>Script 2: Prerequisites
+### <a name="script-2-prerequisites"></a>Betik 2: Önkoşullar
 
-This script prepares for the next script, where the endpoint action is. This script creates for you the following listed items, but only if they do not already exist. You can skip script 2 if you are sure these items already exist:
+Bu betik, uç nokta eyleminin olduğu sonraki betiği hazırlar. Bu betik, yalnızca henüz yoksa, aşağıdaki listelenen öğeler için oluşturulur. Bu öğelerin zaten mevcut olduğundan eminseniz, betik 2 ' i atlayabilirsiniz:
 
 - Azure kaynak grubu
-- Azure SQL Database server
+- Azure SQL veritabanı sunucusu
 
-### <a name="powershell-script-2-source-code"></a>PowerShell script 2 source code
+### <a name="powershell-script-2-source-code"></a>PowerShell betiği 2 kaynak kodu
 
 ```powershell
 ######### Script 2 ########################################
@@ -205,11 +205,11 @@ Write-Host 'Completed script 2, the "Prerequisites".';
 
 <a name="a-script-30" />
 
-## <a name="script-3-create-an-endpoint-and-a-rule"></a>Script 3: Create an endpoint and a rule
+## <a name="script-3-create-an-endpoint-and-a-rule"></a>Betik 3: uç nokta ve kural oluşturma
 
-This script creates a virtual network with a subnet. Then the script assigns the **Microsoft.Sql** endpoint type to your subnet. Finally the script adds your subnet to the access control list (ACL) of your SQL Database server, thereby creating a rule.
+Bu betik, bir alt ağa sahip bir sanal ağ oluşturur. Sonra betik, **Microsoft. SQL** uç noktası türünü alt ağa atar. Son olarak, betik, alt ağını SQL veritabanı sunucunuzun erişim denetim listesine (ACL) ekler ve böylece bir kural oluşturur.
 
-### <a name="powershell-script-3-source-code"></a>PowerShell script 3 source code
+### <a name="powershell-script-3-source-code"></a>PowerShell betiği 3 kaynak kodu
 
 ```powershell
 ######### Script 3 ########################################
@@ -291,16 +291,16 @@ Write-Host 'Completed script 3, the "Virtual-Network-Rule".';
 
 <a name="a-script-40" />
 
-## <a name="script-4-clean-up"></a>Script 4: Clean-up
+## <a name="script-4-clean-up"></a>Betik 4: Temizleme
 
-This final script deletes the resources that the previous scripts created for the demonstration. However, the script asks for confirmation before it deletes the following:
+Bu son betik, önceki betiklerin tanıtım için oluşturduğu kaynakları siler. Ancak, komut dosyası aşağıdakileri silmeden önce onay ister:
 
-- Azure SQL Database server
+- Azure SQL veritabanı sunucusu
 - Azure Kaynak Grubu
 
-You can run script 4 any time after script 1 completes.
+Betik 1 tamamlandıktan sonra istediğiniz zaman betiği 4 ' ü çalıştırabilirsiniz.
 
-### <a name="powershell-script-4-source-code"></a>PowerShell script 4 source code
+### <a name="powershell-script-4-source-code"></a>PowerShell betiği 4 kaynak kodu
 
 ```powershell
 ######### Script 4 ########################################
@@ -372,31 +372,31 @@ Write-Host 'Completed script 4, the "Clean-Up".';
 
 <a name="a-verify-subnet-is-endpoint-ps-100" />
 
-## <a name="verify-your-subnet-is-an-endpoint"></a>Verify your subnet is an endpoint
+## <a name="verify-your-subnet-is-an-endpoint"></a>Alt ağınızın bir uç nokta olduğunu doğrulama
 
-You might have a subnet that was already assigned the **Microsoft.Sql** type name, meaning it is already a Virtual Service endpoint. You could use the [Azure portal][http-azure-portal-link-ref-477t] to create a virtual network rule from the endpoint.
+Zaten bir sanal hizmet uç noktası olduğu anlamına gelen, **Microsoft. SQL** tür adı atanmış bir alt ağa sahip olabilirsiniz. Uç noktadan bir sanal ağ kuralı oluşturmak için [Azure Portal][http-azure-portal-link-ref-477t] kullanabilirsiniz.
 
-Or, you might be unsure whether your subnet has the **Microsoft.Sql** type name. You can run the following PowerShell script to take these actions:
+Ya da alt ağınızın **Microsoft. SQL** tür adına sahip olup olmadığından emin olabilirsiniz. Bu işlemleri gerçekleştirmek için aşağıdaki PowerShell betiğini çalıştırabilirsiniz:
 
-1. Ascertain whether your subnet has the **Microsoft.Sql** type name.
-2. Optionally, assign the type name if it is absent.
-    - The script asks you to *confirm*, before it applies the absent type name.
+1. Alt ağınızın **Microsoft. SQL** tür adına sahip olup olmadığını yokerin.
+2. İsteğe bağlı olarak, varsa tür adını atayın.
+    - Komut dosyası, eksik tür adını uygulamadan önce *onaylamanızı*ister.
 
-### <a name="phases-of-the-script"></a>Phases of the script
+### <a name="phases-of-the-script"></a>Betiğin aşamaları
 
-Here are the phases of the PowerShell script:
+PowerShell betiğinin aşamaları aşağıda verilmiştir:
 
-1. LOG into to your Azure account, needed only once per PS session.  Assign variables.
-2. Search for your virtual network, and then for your subnet.
-3. Is your subnet tagged as **Microsoft.Sql** endpoint server type?
-4. Add a Virtual Service endpoint of type name **Microsoft.Sql**, on your subnet.
+1. Her PS oturumunda yalnızca bir kez gerekli olan Azure hesabınızda oturum açın.  Değişkenler atayın.
+2. Sanal ağınızı ve ardından alt ağınız için arama yapın.
+3. Alt ağınız **Microsoft. SQL** Endpoint Server türü olarak etiketlendi mu?
+4. Alt ağınız üzerinde **Microsoft. SQL**ad türünde bir sanal hizmet uç noktası ekleyin.
 
 > [!IMPORTANT]
-> Before you run this script, you must edit the values assigned to the $-variables, near the top of the script.
+> Bu betiği çalıştırmadan önce, komut dosyasının en üstüne yakın olan $-Variables atanan değerleri düzenlemeniz gerekir.
 
-### <a name="direct-powershell-source-code"></a>Direct PowerShell source code
+### <a name="direct-powershell-source-code"></a>Doğrudan PowerShell kaynak kodu
 
-This PowerShell script does not update anything, unless you respond yes if is asks you for confirmation. The script can add the type name **Microsoft.Sql** to your subnet. But the script tries the add only if your subnet lacks the type name.
+Bu PowerShell betiği, sizden onay isterse, yanıt vermediğiniz takdirde hiçbir şeyi güncelleştirmez. Betik, **Microsoft. SQL** tür adını alt ağa ekleyebilir. Ancak, alt ağınız tür adı yoksa, komut dosyası eklemeyi dener.
 
 ```powershell
 ### 1. LOG into to your Azure account, needed only once per PS session.  Assign variables.

@@ -112,11 +112,11 @@ ssh userName@masterFQDN –A –p 22 
 
 Daha fazla bilgi için bkz. [Azure Container Service kümesine bağlanma](../../container-service/kubernetes/container-service-connect.md).
 
-### <a name="my-dns-name-resolution-isnt-working-on-windows-what-should-i-do"></a>DNS ad çözümlemem Windows’da çalışmıyor. Ne yapmalıyım?
+### <a name="my-dns-name-resolution-isnt-working-on-windows-what-should-i-do"></a>DNS ad çözümlemem Windows’da çalışmıyor. Ne yapmam gerekir?
 
 Düzeltmeler hala etkin bir şekilde kullanıma hazır olan Windows üzerinde bazı bilinen DNS sorunları vardır. Ortamınızın bundan faydalanabilir olması için lütfen en güncel ACS-Engine ve Windows sürümünü ( [KB4074588](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4074588) ve [KB4089848](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4089848) yüklü) kullandığınızdan emin olun. Aksi takdirde lütfen azaltma adımları için aşağıdaki tabloya bakın:
 
-| DNS Belirtisi | Geçici çözüm  |
+| DNS Belirtisi | Geçici Çözüm  |
 |-------------|-------------|
 |İş yükü kapsayıcısı kararsız olduğunda ve çöktüğünde ağ ad alanı temizlenir | Etkilenen hizmetleri yeniden dağıtın |
 | Hizmet VIP erişimi bozuk | Her zaman bir normal (ayrılıklı olmayan) bir podun çalıştırılmasını sağlamak için bir [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) yapılandırın |

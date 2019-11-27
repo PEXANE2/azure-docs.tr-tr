@@ -1,6 +1,6 @@
 ---
-title: Troubleshooting degraded status on Azure Traffic Manager
-description: How to troubleshoot Traffic Manager profiles when it shows as degraded status.
+title: Azure Traffic Manager 'da azaltılmış durum sorunlarını giderme
+description: Düşürülmüş durum olarak görüntülendiğinde Traffic Manager profillerinin sorunlarını giderme.
 services: traffic-manager
 documentationcenter: ''
 author: asudbring
@@ -19,36 +19,36 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227711"
 ---
-# <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Troubleshooting degraded state on Azure Traffic Manager
+# <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Azure Traffic Manager 'da azaltılmış durum sorunlarını giderme
 
-This article describes how to troubleshoot an Azure Traffic Manager profile that is showing a degraded status. As a first step in troubleshooting a Azure Traffic Manager degraded state is to enable diagnostic logging.  Refer to [Enable diagnostic logs](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-diagnostic-logs) for more information. For this scenario, consider that you have configured a Traffic Manager profile pointing to some of your cloudapp.net hosted services. If the health of your Traffic Manager displays a **Degraded** status, then the status of one or more endpoints may be **Degraded**:
+Bu makalede, düzeyi düşürülmüş bir durumu gösteren bir Azure Traffic Manager profilinde nasıl sorun giderileceği açıklanır. Azure Traffic Manager indirgenme durumunun giderilmesi için ilk bir adım olarak, tanılama günlüğünü etkinleştirmektir.  Daha fazla bilgi için [tanılama günlüklerini etkinleştirme](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-diagnostic-logs) bölümüne bakın. Bu senaryo için cloudapp.net tarafından barındırılan hizmetlerden bazılarını işaret eden bir Traffic Manager profili yapılandırdığınıza dikkat edin. Traffic Manager sistem durumu **düşürülmüş** bir durum görüntülüyorsa, bir veya daha fazla uç noktanın durumu **azaltılabilir**olabilir:
 
-![degraded endpoint status](./media/traffic-manager-troubleshooting-degraded/traffic-manager-degradedifonedegraded.png)
+![düşürülmüş uç nokta durumu](./media/traffic-manager-troubleshooting-degraded/traffic-manager-degradedifonedegraded.png)
 
-If the health of your Traffic Manager displays an **Inactive** status, then both end points may be **Disabled**:
+Traffic Manager sistem durumu **etkin olmayan** bir durum görüntülüyorsa, her iki uç noktası da **devre dışı**bırakılabilir:
 
-![Inactive Traffic Manager status](./media/traffic-manager-troubleshooting-degraded/traffic-manager-inactive.png)
+![Etkin olmayan Traffic Manager durumu](./media/traffic-manager-troubleshooting-degraded/traffic-manager-inactive.png)
 
-## <a name="understanding-traffic-manager-probes"></a>Understanding Traffic Manager probes
+## <a name="understanding-traffic-manager-probes"></a>Traffic Manager araştırmalarını anlama
 
-* Traffic Manager considers an endpoint to be ONLINE only when the probe receives an HTTP 200 response back from the probe path. If you application returns any other HTTP response code you should add that response code to [Expected status code ranges](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring) of your Traffic Manager profile.
-* A 30x redirect response is treated as failure unless you have specified this as a valid response code in [Expected status code ranges](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring) of your Traffic Manager profile. Traffic Manager does not probe the redirection target.
-* For HTTPs probes, certificate errors are ignored.
-* The actual content of the probe path doesn't matter, as long as a 200 is returned. Probing a URL to some static content like "/favicon.ico" is a common technique. Dynamic content, like the ASP pages, may not always return 200, even when the application is healthy.
-* A best practice is to set the probe path to something that has enough logic to determine that the site is up or down. In the previous example, by setting the path to "/favicon.ico", you are only testing that w3wp.exe is responding. This probe may not indicate that your web application is healthy. A better option would be to set a path to a something such as "/Probe.aspx" that has logic to determine the health of the site. For example, you could use performance counters to CPU utilization or measure the number of failed requests. Or you could attempt to access database resources or session state to make sure that the web application is working.
-* If all endpoints in a profile are degraded, then Traffic Manager treats all endpoints as healthy and routes traffic to all endpoints. This behavior ensures that problems with the probing mechanism do not result in a complete outage of your service.
+* Traffic Manager, yalnızca araştırma bir HTTP 200 yanıtını araştırma yolundan geri aldığında bir uç noktanın ÇEVRIMIÇI olduğunu varsayar. Uygulamanız başka bir HTTP yanıt kodu döndürürse, bu yanıt kodunu Traffic Manager profilinizin [beklenen durum kodu aralıklarına](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring) eklemeniz gerekir.
+* Bu işlemi Traffic Manager profilinizin [beklenen durum kodu aralıklarında](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring) geçerli bir yanıt kodu olarak belirtmediğiniz sürece, 30 kata yeniden yönlendirme yanıtı hata olarak değerlendirilir. Traffic Manager yeniden yönlendirme hedefini araştırmaz.
+* HTTPs araştırmaları için Sertifika hataları yok sayılır.
+* Bir 200 döndürüldüğünde, araştırma yolunun gerçek içeriği ne kadar büyük değildir. "/Ayrıcalıklı icon.exe" gibi bazı statik içeriklere bir URL 'YI yoklama yaygın bir tekniktir. ASP sayfaları gibi dinamik içerik, uygulama sağlıklı olsa bile her zaman 200 döndürmeyebilir.
+* En iyi uygulama, araştırma yolunu, sitenin yukarı veya aşağı olduğunu anlamak için yeterli mantığa sahip bir şeye ayarlamaya yönelik bir uygulamadır. Önceki örnekte, yolu "/ayrıcalıklı icon.exe" olarak ayarlayarak yalnızca W3wp. exe ' nin yanıt verdiğini test edersiniz. Bu araştırma Web uygulamanızın sağlıklı olduğunu göstermeyebilir. Daha iyi bir seçenek, sitenin sistem durumunu belirleme mantığı olan "/Probe.aspx" gibi bir şey için bir yol ayarlamak olacaktır. Örneğin, performans sayaçlarını CPU kullanımı için kullanabilir veya başarısız isteklerin sayısını ölçebilir. Ya da Web uygulamasının çalıştığından emin olmak için veritabanı kaynaklarına veya oturum durumuna erişmeyi deneyebilirsiniz.
+* Bir profildeki tüm uç noktalar düşerse, Traffic Manager tüm uç noktaları sağlıklı olarak değerlendirir ve trafiği tüm uç noktalara yönlendirir. Bu davranış, araştırma mekanizmasıyla ilgili sorunların hizmetinizin tamamen kesintiye neden olmamasını sağlar.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-To troubleshoot a probe failure, you need a tool that shows the HTTP status code return from the probe URL. There are many tools available that show you the raw HTTP response.
+Bir araştırma hatasıyla ilgili sorunları gidermek için, araştırma URL 'sinden döndürülen HTTP durum kodunu gösteren bir araca ihtiyacınız vardır. Ham HTTP yanıtını gösteren birçok araç mevcuttur.
 
 * [Fiddler](https://www.telerik.com/fiddler)
-* [curl](https://curl.haxx.se/)
+* [kıvr](https://curl.haxx.se/)
 * [wget](http://gnuwin32.sourceforge.net/packages/wget.htm)
 
-Also, you can use the Network tab of the F12 Debugging Tools in Internet Explorer to view the HTTP responses.
+Ayrıca, HTTP yanıtlarını görüntülemek için Internet Explorer 'daki F12 hata ayıklama araçlarının ağ sekmesini de kullanabilirsiniz.
 
-For this example we want to see the response from our probe URL: http:\//watestsdp2008r2.cloudapp.net:80/Probe. The following PowerShell example illustrates the problem.
+Bu örnekte, araştırma URL 'imizden gelen yanıtı görmek istiyoruz: http:\//watestsdp2008r2.cloudapp.net:80/Probe. Aşağıdaki PowerShell örneğinde sorun gösterilmektedir.
 
 ```powershell
 Invoke-WebRequest 'http://watestsdp2008r2.cloudapp.net/Probe' -MaximumRedirection 0 -ErrorAction SilentlyContinue | Select-Object StatusCode,StatusDescription
@@ -60,9 +60,9 @@ Invoke-WebRequest 'http://watestsdp2008r2.cloudapp.net/Probe' -MaximumRedirectio
     ---------- -----------------
            301 Moved Permanently
 
-Notice that we received a redirect response. As stated previously, any StatusCode other than 200 is considered a failure. Traffic Manager changes the endpoint status to Offline. To resolve the problem, check the website configuration to ensure that the proper StatusCode can be returned from the probe path. Reconfigure the Traffic Manager probe to point to a path that returns a 200.
+Yeniden yönlendirme yanıtı aldığınızı fark edin. Daha önce belirtildiği gibi, 200 dışındaki tüm StatusCode bir hata olarak değerlendirilir. Traffic Manager uç nokta durumunu çevrimdışı olarak değiştirir. Sorunu çözmek için, araştırma yolundan doğru StatusCode 'nin döndürüldüğünden emin olmak için Web sitesi yapılandırmasını denetleyin. Traffic Manager araştırmasını, 200 döndüren bir yolu işaret edecek şekilde yeniden yapılandırın.
 
-If your probe is using the HTTPS protocol, you may need to disable certificate checking to avoid SSL/TLS errors during your test. The following PowerShell statements disable certificate validation for the current PowerShell session:
+Araştırmanız HTTPS protokolünü kullanıyorsa, testiniz sırasında SSL/TLS hatalarından kaçınmak için sertifika denetimini devre dışı bırakmanız gerekebilir. Aşağıdaki PowerShell deyimleri geçerli PowerShell oturumu için sertifika doğrulamayı devre dışı bırakır:
 
 ```powershell
 add-type @"
@@ -81,9 +81,9 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-[About Traffic Manager traffic routing methods](traffic-manager-routing-methods.md)
+[Traffic Manager trafik yönlendirme yöntemleri hakkında](traffic-manager-routing-methods.md)
 
-[What is Traffic Manager](traffic-manager-overview.md)
+[Traffic Manager nedir?](traffic-manager-overview.md)
 
 [Cloud Services](https://go.microsoft.com/fwlink/?LinkId=314074)
 
@@ -91,6 +91,6 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
 
 [Traffic Manager üzerindeki işlemler (REST API Başvurusu)](https://go.microsoft.com/fwlink/?LinkId=313584)
 
-[Azure Traffic Manager Cmdlets][1]
+[Azure Traffic Manager cmdlet 'Leri][1]
 
 [1]: https://docs.microsoft.com/powershell/module/az.trafficmanager

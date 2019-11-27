@@ -1,5 +1,5 @@
 ---
-title: Create an Azure internal Load Balancer by using PowerShell
+title: PowerShell kullanarak bir Azure iç yük dengeleyici oluşturma
 titleSuffix: Azure Load Balancer
 description: Azure PowerShell modülünü Azure Resource Manager ile birlikte kullanarak iç yük dengeleyici oluşturmayı öğrenin
 services: load-balancer
@@ -23,7 +23,7 @@ ms.locfileid: "74225380"
 # <a name="create-an-internal-load-balancer-by-using-the-azure-powershell-module"></a>Azure PowerShell modülünü kullanarak iç yük dengeleyici oluşturma
 
 > [!div class="op_single_selector"]
-> * [Azure portalda](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)
+> * [Azure Portal](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)
 > * [PowerShell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)
 > * [Azure CLI](../load-balancer/load-balancer-get-started-ilb-arm-cli.md)
 > * [Şablon](../load-balancer/load-balancer-get-started-ilb-arm-template.md)
@@ -251,7 +251,7 @@ Sanal makine oluşturulduktan sonra ağ arabirimini ekleyin.
 
 ### <a name="step-1-store-the-load-balancer-resource"></a>1\. Adım: Yük dengeleyici kaynağını depolayın
 
-Yük dengeleyici kaynağını bir değişkene depolayın (henüz yapmadıysanız). We're using the variable name **$lb**. For the attribute values in the script, use the names for the load balancer resources that were created in the previous steps.
+Yük dengeleyici kaynağını bir değişkene depolayın (henüz yapmadıysanız). **$Lb**değişken adını kullanıyoruz. Betikteki öznitelik değerleri için, önceki adımlarda oluşturulan yük dengeleyici kaynaklarının adlarını kullanın.
 
 ```azurepowershell-interactive
 $lb = Get-AzLoadBalancer –name NRP-LB -resourcegroupname NRP-RG
@@ -319,7 +319,7 @@ $slb | Set-AzLoadBalancer
 
 ## <a name="remove-an-existing-load-balancer"></a>Var olan yük dengeleyiciyi kaldırma
 
-`Remove-AzLoadBalancer` komutunu kullanarak **NRP-RG** kaynak grubundaki **NRP-LB** yük dengeleyiciyi silin:
+**komutunu kullanarak**NRP-RG**kaynak grubundaki**NRP-LB`Remove-AzLoadBalancer` yük dengeleyiciyi silin:
 
 ```azurepowershell-interactive
 Remove-AzLoadBalancer -Name NRP-LB -ResourceGroupName NRP-RG

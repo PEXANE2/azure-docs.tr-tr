@@ -1,6 +1,6 @@
 ---
-title: Develop Azure Functions using Visual Studio
-description: Learn how to develop and test Azure Functions by using Azure Functions Tools for Visual Studio 2019.
+title: Visual Studio kullanarak Azure Işlevleri geliştirme
+description: Visual Studio 2019 için Azure Işlevleri araçlarını kullanarak Azure Işlevleri geliştirmeyi ve test yapmayı öğrenin.
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/21/2019
@@ -11,110 +11,110 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74230653"
 ---
-# <a name="develop-azure-functions-using-visual-studio"></a>Develop Azure Functions using Visual Studio  
+# <a name="develop-azure-functions-using-visual-studio"></a>Visual Studio kullanarak Azure Işlevleri geliştirme  
 
-Visual Studio lets you develop, test, and deploy C# class library functions to Azure. If this experience is your first with Azure Functions, you can learn more at [An introduction to Azure Functions](functions-overview.md).
+Visual Studio, Azure 'Da sınıf kitaplığı işlevleri geliştirmenize, C# test etmenize ve dağıtmanıza olanak sağlar. Azure Işlevleri ile ilk kez bu deneyim varsa, [Azure işlevleri 'ne giriş](functions-overview.md)konusunda daha fazla bilgi edinebilirsiniz.
 
-Visual Studio provides the following benefits when develop your functions: 
+Visual Studio, işlevlerinizi geliştirirken aşağıdaki avantajları sağlar: 
 
-* Edit, build, and run functions on your local development computer. 
-* Publish your Azure Functions project directly to Azure, and create Azure resources as needed. 
-* Use C# attributes to declare function bindings directly in the C# code.
-* Develop and deploy pre-compiled C# functions. Pre-complied functions provide a better cold-start performance than C# script-based functions. 
-* Code your functions in C# while having all of the benefits of Visual Studio development. 
+* Yerel geliştirme bilgisayarınızda işlevleri düzenleyin, derleyin ve çalıştırın. 
+* Azure Işlevleri projenizi doğrudan Azure 'da yayımlayın ve gerektiğinde Azure kaynakları oluşturun. 
+* İşlev C# bağlamalarını doğrudan C# kodda bildirmek için öznitelikleri kullanın.
+* Önceden derlenmiş C# işlevler geliştirin ve dağıtın. Önceden karmaşıklu işlevler, C# komut dosyası tabanlı işlevlerden daha iyi bir soğuk başlama performansı sağlar. 
+* Visual Studio geliştirmenin avantajlarından C# yararlanmak için işlevlerinizi ' de kodlayın. 
 
-This article provides details about how to use Visual Studio to develop C# class library functions and publish them to Azure. Before you read this article, you should complete the [Functions quickstart for Visual Studio](functions-create-your-first-function-visual-studio.md). 
+Bu makalede, Visual Studio kullanarak sınıf kitaplığı işlevleri geliştirmeye C# ve bunları Azure 'da yayımlamaya ilişkin ayrıntılar sağlanmaktadır. Bu makaleyi okuduktan sonra [Visual Studio için hızlı başlangıç işlevleri](functions-create-your-first-function-visual-studio.md)' ni tamamlamalısınız. 
 
-Unless otherwise noted, procedures and examples shown are for Visual Studio 2019. 
+Aksi belirtilmediği takdirde, yordamlar ve örnekler Visual Studio 2019 içindir. 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Azure Functions Tools is included in the Azure development workload of Visual Studio starting with Visual Studio 2017. Make sure you include the **Azure development** workload in your Visual Studio installation.
+Azure Işlevleri araçları, Visual Studio 'nun Azure geliştirme iş yüküne Visual Studio 2017 ile başlayarak dahildir. **Azure geliştirme** Iş yükünü Visual Studio yüklemenize eklediğinizden emin olun.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-Other resources that you need, such as an Azure Storage account, are created in your subscription during the publishing process.
+Azure depolama hesabı gibi ihtiyacınız olan diğer kaynaklar, yayımlama işlemi sırasında aboneliğinizde oluşturulur.
 
 > [!NOTE]
-> In Visual Studio 2017, the Azure development workload installs the Azure Functions Tools as a separate extension. When you update your Visual Studio 2017, also make sure that you are using the [most recent version](#check-your-tools-version) of the Azure Functions tools. The following sections show you how to check and (if needed) update your Azure Functions Tools extension in Visual Studio 2017. 
+> Visual Studio 2017 ' de Azure geliştirme iş yükü, Azure Işlevleri araçlarını ayrı bir uzantı olarak yüklüyor. Visual Studio 2017 ' yi güncelleştirdiğinizde Azure Işlevleri araçlarının [en son sürümünü](#check-your-tools-version) kullandığınızdan da emin olun. Aşağıdaki bölümlerde, Visual Studio 2017 ' de Azure Işlevleri araçları uzantınızı nasıl denetleyen ve (gerekirse) güncelleştiren gösterilmektedir. 
 >
-> Please skip these section when using Visual Studio 2019.
+> Visual Studio 2019 kullanırken lütfen bu bölümü atlayın.
 
-### <a name="check-your-tools-version"></a>Check your tools version in Visual Studio 2017
+### <a name="check-your-tools-version"></a>Visual Studio 2017 ' de Araçlar sürümünüzü denetleyin
 
-1. From the **Tools** menu, choose **Extensions and Updates**. Expand **Installed** > **Tools** and choose **Azure Functions and Web Jobs Tools**.
+1. **Araçlar** menüsünde **Uzantılar ve güncelleştirmeler**' i seçin. **Yüklü** > **araçları** ' nı genişletin ve **Azure işlevleri ve Web işleri Araçları '** nı seçin.
 
-    ![Verify the Functions tools version](./media/functions-develop-vs/functions-vstools-check-functions-tools.png)
+    ![Işlevler araçları sürümünü doğrulama](./media/functions-develop-vs/functions-vstools-check-functions-tools.png)
 
-1. Note the installed **Version**. You can compare this version with the latest version listed [in the release notes](https://github.com/Azure/Azure-Functions/blob/master/VS-AzureTools-ReleaseNotes.md). 
+1. Yüklü **sürümü**göz önünde edin. Bu sürümü sürüm [notlarında](https://github.com/Azure/Azure-Functions/blob/master/VS-AzureTools-ReleaseNotes.md)listelenen en son sürümle karşılaştırabilirsiniz. 
 
-1. If your version is older, update your tools in Visual Studio as shown in the following section.
+1. Sürümünüzün eski ise, Visual Studio Araçları aşağıdaki bölümde gösterildiği gibi güncelleştirin.
 
-### <a name="update-your-tools-in-visual-studio-2017"></a>Update your tools in Visual Studio 2017
+### <a name="update-your-tools-in-visual-studio-2017"></a>Visual Studio 2017 ' de araçlarınızı güncelleştirme
 
-1. In the **Extensions and Updates** dialog, expand **Updates** > **Visual Studio Marketplace**, choose **Azure Functions and Web Jobs Tools** and select **Update**.
+1. **Uzantılar ve güncelleştirmeler** Iletişim kutusunda **güncelleştirmeler** > **Visual Studio Market**' ni genişletin, **Azure işlevleri ve Web işleri araçları** ' nı seçin ve **Güncelleştir**' i seçin.
 
-    ![Update the Functions tools version](./media/functions-develop-vs/functions-vstools-update-functions-tools.png)   
+    ![Işlevler araçları sürümünü güncelleştirme](./media/functions-develop-vs/functions-vstools-update-functions-tools.png)   
 
-1. After the tools update is downloaded, close Visual Studio to trigger the tools update using the VSIX installer.
+1. Araçları güncelleştirme yüklendikten sonra Visual Studio Araçları VSIX Yükleyicisi'ni kullanarak güncelleştirme tetikleyiciye kapatın.
 
-1. In the installer, choose **OK** to start and then **Modify** to update the tools. 
+1. Yükleyicide başlamak için **Tamam** ' ı seçin ve ardından araçları güncelleştirmek için **değiştirin** . 
 
-1. After the update is complete, choose **Close** and restart Visual Studio.
+1. Güncelleştirme tamamlandıktan sonra, **Kapat** ' ı seçin ve Visual Studio 'yu yeniden başlatın.
 
 > [!NOTE]  
-In Visual Studio 2019 and later, the Azure Functions tools extension is updated as part of Visual Studio.  
+Visual Studio 2019 ve üzeri sürümlerde Azure Işlevleri araçları uzantısı, Visual Studio 'nun bir parçası olarak güncelleştirilir.  
 
 ## <a name="create-an-azure-functions-project"></a>Azure İşlevleri projesi oluşturma
 
 [!INCLUDE [Create a project using the Azure Functions](../../includes/functions-vstools-create.md)]
 
-The project template creates a C# project, installs the `Microsoft.NET.Sdk.Functions` NuGet package, and sets the target framework. The new project has the following files:
+Proje şablonu bir C# proje oluşturur, `Microsoft.NET.Sdk.Functions` NuGet paketini yüklerse ve hedef Framework 'ü ayarlar. Yeni proje aşağıdaki dosyalara sahiptir:
 
-* **host.json**: Lets you configure the Functions host. These settings apply both when running locally and in Azure. For more information, see [host.json reference](functions-host-json.md).
+* **Host. JSON**: işlevler konağını yapılandırmanızı sağlar. Bu ayarlar, hem yerel olarak hem de Azure 'da çalışırken geçerlidir. Daha fazla bilgi için bkz. [Host. JSON başvurusu](functions-host-json.md).
 
-* **local.settings.json**: Maintains settings used when running functions locally. These settings aren't used when running in Azure. For more information, see [Local settings file](#local-settings-file).
+* **Local. Settings. JSON**: işlevleri yerel olarak çalıştırırken kullanılan ayarları tutar. Bu ayarlar, Azure 'da çalışırken kullanılmaz. Daha fazla bilgi için bkz. [yerel ayarlar dosyası](#local-settings-file).
 
     >[!IMPORTANT]
-    >Because the local.settings.json file can contain secrets, you must excluded it from your project source control. The **Copy to Output Directory** setting for this file should always be **Copy if newer**. 
+    >Local. Settings. JSON dosyası gizli dizileri içerebildiğinden, bunu proje kaynak denetiinizden dışmalısınız. Bu dosya için **Çıkış Dizinine Kopyala** ayarı, **daha yeniyse**her zaman kopya olmalıdır. 
 
-For more information, see [Functions class library project](functions-dotnet-class-library.md#functions-class-library-project).
+Daha fazla bilgi için bkz. [işlevler sınıf kitaplığı projesi](functions-dotnet-class-library.md#functions-class-library-project).
 
 [!INCLUDE [functions-local-settings-file](../../includes/functions-local-settings-file.md)]
 
-Settings in local.settings.json aren't uploaded automatically when you publish the project. To make sure that these settings also exist in your function app in Azure, you must upload them after you publish your project. To learn more, see [Function app settings](#function-app-settings).
+Projeyi yayımladığınızda yerel. Settings. JSON ayarları otomatik olarak karşıya yüklenemez. Bu ayarların Azure 'daki işlev uygulamanızda da mevcut olduğundan emin olmak için, projenizi yayımladıktan sonra bunları karşıya yüklemeniz gerekir. Daha fazla bilgi için bkz. [işlev uygulaması ayarları](#function-app-settings).
 
-Values in **ConnectionStrings** are never published.
+**ConnectionString** içindeki değerler hiçbir şekilde yayımlanmaz.
 
-The function app settings values can also be read in your code as environment variables. For more information, see [Environment variables](functions-dotnet-class-library.md#environment-variables).
+İşlev uygulaması ayarları değerleri, kodunuzda ortam değişkenleri olarak da okunabilir. Daha fazla bilgi için bkz. [ortam değişkenleri](functions-dotnet-class-library.md#environment-variables).
 
-## <a name="configure-the-project-for-local-development"></a>Configure the project for local development
+## <a name="configure-the-project-for-local-development"></a>Projeyi yerel geliştirme için yapılandırma
 
-The Functions runtime uses an Azure Storage account internally. For all trigger types other than HTTP and webhooks, you must set the **Values.AzureWebJobsStorage** key to a valid Azure Storage account connection string. Your function app can also use the [Azure storage emulator](../storage/common/storage-use-emulator.md) for the **AzureWebJobsStorage** connection setting that is required by the project. To use the emulator, set the value of **AzureWebJobsStorage** to `UseDevelopmentStorage=true`. Change this setting to an actual storage account connection string before deployment.
+Işlevler çalışma zamanı, dahili olarak bir Azure depolama hesabı kullanır. HTTP ve Web kancaları dışındaki tüm tetikleyici türleri için **values. AzureWebJobsStorage** anahtarını geçerli bir Azure depolama hesabı bağlantı dizesine ayarlamanız gerekir. İşlev uygulamanız, proje için gerekli olan **AzureWebJobsStorage** bağlantı ayarı için [Azure Storage öykünücüsü](../storage/common/storage-use-emulator.md) 'nü de kullanabilir. Öykünücüyü kullanmak için **AzureWebJobsStorage** değerini `UseDevelopmentStorage=true`olarak ayarlayın. Dağıtımdan önce bu ayarı gerçek bir depolama hesabı bağlantı dizesiyle değiştirin.
 
-To set the storage account connection string:
+Depolama hesabı bağlantı dizesini ayarlamak için:
 
-1. In Visual Studio, open **Cloud Explorer**, expand **Storage Account** > **Your Storage Account**, then in the **Properties** tab copy the **Primary Connection String** value.
+1. Visual Studio 'da **Cloud Explorer**'ı açın, depolama **hesabı > depolama hesabı '** nı **genişletin, ardından** **Özellikler** sekmesinde **birincil bağlantı dizesi** değerini kopyalayın.
 
-2. In your project, open the local.settings.json file and set the value of the **AzureWebJobsStorage** key to the connection string you copied.
+2. Projenizde, Local. Settings. json dosyasını açın ve **AzureWebJobsStorage** anahtarının değerini kopyaladığınız bağlantı dizesine ayarlayın.
 
-3. Repeat the previous step to add unique keys to the **Values** array for any other connections required by your functions. 
+3. İşlevlerinizin gerektirdiği diğer tüm bağlantılar için **Values** dizisine benzersiz anahtarlar eklemek için önceki adımı tekrarlayın. 
 
-## <a name="add-a-function-to-your-project"></a>Add a function to your project
+## <a name="add-a-function-to-your-project"></a>Projenize bir işlev ekleyin
 
-In C# class library functions, the bindings used by the function are defined by applying attributes in the code. When you create your function triggers from the provided templates, the trigger attributes are applied for you. 
+C# Sınıf kitaplığı işlevlerinde, işlev tarafından kullanılan bağlamalar koddaki öznitelikler uygulanarak tanımlanır. İşlev tetiklerinizi, belirtilen şablonlardan oluşturduğunuzda, tetikleyici öznitelikleri sizin için uygulanır. 
 
-1. **Çözüm Gezgini**’nde, proje düğümünüze sağ tıklayın ve **Yeni** > **Öğe Ekle**’yi seçin. Select **Azure Function**, type a **Name** for the class, and click **Add**.
+1. **Çözüm Gezgini**’nde, proje düğümünüze sağ tıklayın ve **Yeni** > **Öğe Ekle**’yi seçin. **Azure işlevi**' ni seçin, sınıf Için bir **ad** yazın ve **Ekle**' ye tıklayın.
 
-2. Choose your trigger, set the binding properties, and click **Create**. The following example shows the settings when creating a Queue storage triggered function. 
+2. Tetikleyiciyi seçin, bağlama özelliklerini ayarlayın ve **Oluştur**' a tıklayın. Aşağıdaki örnek, kuyruk depolama tarafından tetiklenen bir işlev oluşturulurken ayarları gösterir. 
 
-    ![Create a queue triggered function](./media/functions-develop-vs/functions-vstools-create-queuetrigger.png)
+    ![Kuyruğa geçirilmiş bir işlev oluşturma](./media/functions-develop-vs/functions-vstools-create-queuetrigger.png)
 
-    This trigger example uses a connection string with a key named **QueueStorage**. This connection string setting must be defined in the [local.settings.json file](functions-run-local.md#local-settings-file).
+    Bu tetikleyici örneği, **Queuesstorage**adlı bir anahtarla bağlantı dizesi kullanır. Bu bağlantı dizesi ayarı [yerel. Settings. json dosyasında](functions-run-local.md#local-settings-file)tanımlanmalıdır.
 
-3. Examine the newly added class. You see a static **Run** method, that is attributed with the **FunctionName** attribute. This attribute indicates that the method is the entry point for the function.
+3. Yeni eklenen sınıfı inceleyin. **Fonksiyonadı** özniteliğiyle nitelendirilen bir statik **Run** yöntemi görürsünüz. Bu öznitelik, yönteminin işlevin giriş noktası olduğunu gösterir.
 
-    For example, the following C# class represents a basic Queue storage triggered function:
+    Örneğin, aşağıdaki C# sınıf temel bir sıra depolama tetiklenen işlevi temsil eder:
 
     ```csharp
     using System;
@@ -136,21 +136,21 @@ In C# class library functions, the bindings used by the function are defined by 
     }
     ```
 
-    A binding-specific attribute is applied to each binding parameter supplied to the entry point method. The attribute takes the binding information as parameters. In the previous example, the first parameter has a **QueueTrigger** attribute applied, indicating queue triggered function. The queue name and connection string setting name are passed as parameters to the **QueueTrigger** attribute. For more information, see [Azure Queue storage bindings for Azure Functions](functions-bindings-storage-queue.md#trigger---c-example).
+    Giriş noktası yöntemine sağlanan her bağlama parametresine bağlamaya özgü bir öznitelik uygulanır. Öznitelik, bağlama bilgilerini parametre olarak alır. Önceki örnekte, ilk parametrenin bir **Queuetrigger** özniteliği uygulanmış ve Queue tetiklenen işlevi olduğunu gösterir. Sıra adı ve bağlantı dizesi ayarı adı, **Queuetrigger** özniteliğine parametre olarak geçirilir. Daha fazla bilgi için bkz. [Azure Için Azure kuyruk depolama bağlamaları işlevleri](functions-bindings-storage-queue.md#trigger---c-example).
 
-You can use the above procedure to add more functions to your function app project. Each function in the project can have a different trigger, but a function must have exactly one trigger. For more information, see [Azure Functions triggers and bindings concepts](functions-triggers-bindings.md).
+İşlev uygulaması projenize daha fazla işlev eklemek için yukarıdaki yordamı kullanabilirsiniz. Projedeki her bir işlev farklı bir tetikleyicisine sahip olabilir, ancak bir işlevin tam olarak bir tetikleyicisi olmalıdır. Daha fazla bilgi için bkz. [Azure işlevleri Tetikleyicileri ve bağlamaları kavramları](functions-triggers-bindings.md).
 
 ## <a name="add-bindings"></a>Bağlama ekleme
 
-As with triggers, input and output bindings are added to your function as binding attributes. Add bindings to a function as follows:
+Tetikleyiciler 'de olduğu gibi, giriş ve çıkış bağlamaları işlevinizde bağlama öznitelikleri olarak eklenir. Bir işleve şu şekilde bağlama ekleyin:
 
-1. Make sure you've [configured the project for local development](#configure-the-project-for-local-development).
+1. [Projeyi yerel geliştirme için yapılandırdığınızdan](#configure-the-project-for-local-development)emin olun.
 
-2. Add the appropriate NuGet extension package for the specific binding. For more information, see [Local C# development using Visual Studio](./functions-bindings-register.md#local-csharp) in the Triggers and Bindings article. The binding-specific NuGet package requirements are found in the reference article for the binding. For example, find package requirements for the Event Hubs trigger in the [Event Hubs binding reference article](functions-bindings-event-hubs.md).
+2. Belirli bağlama için uygun NuGet uzantı paketini ekleyin. Daha fazla bilgi için Tetikleyiciler ve bağlamalar makalesindeki [Visual Studio 'yu kullanarak C# yerel geliştirme](./functions-bindings-register.md#local-csharp) bölümüne bakın. Bağlamaya özgü NuGet paketi gereksinimleri, bağlamanın başvuru makalesinde bulunur. Örneğin, [Event Hubs bağlama başvurusu makalesindeki](functions-bindings-event-hubs.md)Event Hubs tetikleyicisinin paket gereksinimlerini bulun.
 
-3. If there are app settings that the binding needs, add them to the **Values** collection in the [local setting file](functions-run-local.md#local-settings-file). These values are used when the function runs locally. When the function runs in the function app in Azure, the [function app settings](#function-app-settings) are used.
+3. Bağlamanın ihtiyacı olan uygulama ayarları varsa, bunları [yerel ayar dosyasındaki](functions-run-local.md#local-settings-file) **değerler** koleksiyonuna ekleyin. Bu değerler, işlev yerel olarak çalıştırıldığında kullanılır. İşlev, Azure 'daki işlev uygulamasında çalıştırıldığında, [işlev uygulama ayarları](#function-app-settings) kullanılır.
 
-4. Add the appropriate binding attribute to the method signature. In the following example, a queue message triggers the function, and the output binding creates a new queue message with the same text in a different queue.
+4. Yöntem imzasına uygun bağlama özniteliğini ekleyin. Aşağıdaki örnekte, bir kuyruk iletisi işlevi tetikler ve çıkış bağlaması farklı bir kuyrukta aynı metne sahip yeni bir kuyruk iletisi oluşturur.
 
     ```csharp
     public static class SimpleExampleWithOutput
@@ -166,7 +166,7 @@ As with triggers, input and output bindings are added to your function as bindin
         }
     }
     ```
-   The connection to Queue storage is obtained from the `AzureWebJobsStorage` setting. For more information, see the reference article for the specific binding. 
+   Kuyruk depolama bağlantısı `AzureWebJobsStorage` ayarından elde edilir. Daha fazla bilgi için, belirli bağlama yönelik başvuru makalesine bakın. 
 
 [!INCLUDE [Supported triggers and bindings](../../includes/functions-bindings.md)]
 
@@ -176,60 +176,60 @@ Azure İşlevleri Temel Araçları, Azure İşlevleri projenizi yerel geliştirm
 
 İşlevinizi test etmek için F5’e basın. İstenirse Visual Studio'dan gelen Azure İşlevleri Temel (CLI) araçlarını indirme ve yükleme isteğini kabul edin. Aracın HTTP isteklerini işleyebilmesi için bir güvenlik duvarı özel durumu etkinleştirmeniz de gerekebilir.
 
-With the project running, you can test your code as you would test deployed function. For more information, see [Strategies for testing your code in Azure Functions](functions-test-a-function.md). When running in debug mode, breakpoints are hit in Visual Studio as expected. 
+Çalıştıran proje ile kodunuzu test dağıtılan işlev olarak test edebilirsiniz. Daha fazla bilgi için bkz. [Azure işlevlerinde kodunuzu test etme stratejileri](functions-test-a-function.md). Hata ayıklama modunda çalışırken, kesme noktaları, Visual Studio 'Nun beklendiği şekilde isabet ediyor. 
 
 <!---
 For an example of how to test a queue triggered function, see the [queue triggered function quickstart tutorial](functions-create-storage-queue-triggered-function.md#test-the-function).  
 -->
 
-To learn more about using the Azure Functions Core Tools, see [Code and test Azure functions locally](functions-run-local.md).
+Azure Functions Core Tools kullanma hakkında daha fazla bilgi edinmek için bkz. [Azure işlevlerini yerel olarak test](functions-run-local.md)etme.
 
-## <a name="publish-to-azure"></a>Azure’da Yayımlama
+## <a name="publish-to-azure"></a>Azure'a Yayımlama
 
-When publishing from Visual Studio, one of two deployment methods are used:
+Visual Studio 'dan yayımlarken, iki dağıtım yönteminden biri kullanılır:
 
-* [Web Deploy](functions-deployment-technologies.md#web-deploy-msdeploy): packages and deploys Windows apps to any IIS server.
-* [Zip Deploy with Run-From-Package enabled](functions-deployment-technologies.md#zip-deploy): recommended for Azure Functions deployments.
+* [Web dağıtımı](functions-deployment-technologies.md#web-deploy-msdeploy): Windows uygulamalarını paketler ve HERHANGI bir IIS sunucusuna dağıtır.
+* [Paket Çalıştır etkin olan ZIP dağıtımı](functions-deployment-technologies.md#zip-deploy): Azure işlevleri dağıtımları için önerilir.
 
-Use the following steps to publish your project to a function app in Azure.
+Projenizi Azure 'da bir işlev uygulamasına yayımlamak için aşağıdaki adımları kullanın.
 
 [!INCLUDE [Publish the project to Azure](../../includes/functions-vstools-publish.md)]
 
 ## <a name="function-app-settings"></a>İşlev uygulaması ayarları
 
-Any settings you added in the local.settings.json must be also added to the function app in Azure. These settings aren't uploaded automatically when you publish the project.
+Yerel. Settings. JSON içine eklediğiniz tüm ayarlar ayrıca Azure 'daki işlev uygulamasına eklenmelidir. Projeyi yayımladığınızda bu ayarlar otomatik olarak karşıya yüklenemez.
 
-The easiest way to upload the required settings to your function app in Azure is to use the **Manage Application Settings...** link that is displayed after you successfully publish your project.
+Gerekli ayarları Azure 'daki işlev uygulamanıza yüklemenin en kolay yolu, projenizi başarıyla yayımladıktan sonra görüntülenen **uygulama ayarlarını yönet...** bağlantısını kullanmaktır.
 
 ![](./media/functions-develop-vs/functions-vstools-app-settings.png)
 
-This displays the **Application Settings** dialog for the function app, where you can add new application settings or modify existing ones.
+Bu, yeni uygulama ayarları ekleyebileceğiniz veya var olanları değiştirebileceğiniz işlev uygulaması için **uygulama ayarları** iletişim kutusunu görüntüler.
 
 ![](./media/functions-develop-vs/functions-vstools-app-settings2.png)
 
-**Local** represents a setting value in the local.settings.json file, and **Remote** is the current setting in the function app in Azure.  Choose **Add setting** to create a new app setting. Use the **Insert value from Local** link to copy a setting value to the **Remote** field. Pending changes are written to the local settings file and the function app when you select **OK**.
+**Local** , yerel. Settings. JSON dosyasındaki bir ayar değerini temsil eder ve **uzak** , Azure 'daki işlev uygulamasındaki geçerli ayardır.  Yeni bir uygulama ayarı oluşturmak için **Ayar ekle** ' yi seçin. Bir ayar değerini **uzak** alana kopyalamak için **Yerel bağlantıdan Ekle değerini** kullanın. Bekleyen değişiklikler, **Tamam**' ı seçtiğinizde yerel ayarlar dosyasına ve işlev uygulamasına yazılır.
 
 > [!NOTE]
-> By default, the local.settings.json file is not checked into source control. This means that when you clone a local Functions project from source control, the project doesn't have a local.settings.json file. In this case, you need to manually create the local.settings.json file in the project root so that the **Application Settings** dialog works as expected. 
+> Varsayılan olarak, Local. Settings. JSON dosyası kaynak denetimine iade edilmez. Bu, kaynak denetiminden yerel bir Işlevler projesi kopyaladığınızda, projenin bir Local. Settings. JSON dosyasına sahip olmadığı anlamına gelir. Bu durumda, **uygulama ayarları** iletişim kutusunun beklendiği gibi çalışması için, proje kökünde yerel. Settings. json dosyasını el ile oluşturmanız gerekir. 
 
-You can also manage application settings in one of these other ways:
+Ayrıca, uygulama ayarlarını şu diğer yollarla da yönetebilirsiniz:
 
-* [Using the Azure portal](functions-how-to-use-azure-function-app-settings.md#settings).
-* [Using the `--publish-local-settings` publish option in the Azure Functions Core Tools](functions-run-local.md#publish).
-* [Using the Azure CLI](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set).
+* [Azure Portal kullanma](functions-how-to-use-azure-function-app-settings.md#settings).
+* [Azure Functions Core Tools `--publish-local-settings` Publish seçeneğini kullanma](functions-run-local.md#publish).
+* [Azure CLI 'Yı kullanma](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set).
 
-## <a name="monitoring-functions"></a>Monitoring functions
+## <a name="monitoring-functions"></a>İzleme işlevleri
 
-The recommended way to monitor the execution of your functions is by integrating your function app with Azure Application Insights. When you create a function app in the Azure portal, this integration is done for you by default. However, when you create your function app during Visual Studio publishing, the integration in your function app in Azure isn't done.
+İşlevlerinizin yürütülmesini izlemek için önerilen yol, işlev uygulamanızı Azure Application Insights ile tümleştirerek yapılır. Azure portal bir işlev uygulaması oluşturduğunuzda, bu tümleştirme varsayılan olarak sizin için yapılır. Ancak, Visual Studio yayımlama sırasında işlev uygulamanızı oluşturduğunuzda, Azure 'daki işlev uygulamanızda tümleştirme yapılmaz.
 
-To enable Application Insights for your function app:
+İşlev uygulamanız için Application Insights etkinleştirmek için:
 
 [!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
 
-To learn more, see [Monitor Azure Functions](functions-monitoring.md).
+Daha fazla bilgi için bkz. [Azure Işlevlerini izleme](functions-monitoring.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-To learn more about the Azure Functions Core Tools, see [Code and test Azure functions locally](functions-run-local.md).
+Azure Functions Core Tools hakkında daha fazla bilgi edinmek için bkz. [Azure işlevlerine yerel olarak kod ve test](functions-run-local.md)etme.
 
-To learn more about developing functions as .NET class libraries, see [Azure Functions C# developer reference](functions-dotnet-class-library.md). This article also links to examples of how to use attributes to declare the various types of bindings supported by Azure Functions.    
+.NET sınıf kitaplıkları olarak işlevleri geliştirme hakkında daha fazla bilgi için bkz. [Azure C# işlevleri geliştirici başvurusu](functions-dotnet-class-library.md). Bu makale ayrıca, Azure Işlevleri tarafından desteklenen çeşitli tür bağlamaları bildirmek üzere özniteliklerin nasıl kullanılacağına dair örneklere bağlantı sağlar.    

@@ -1,7 +1,7 @@
 ---
 title: Azure’da giden bağlantılar
 titleSuffix: Azure Load Balancer
-description: This article explains how Azure enables VMs to communicate with public internet services.
+description: Bu makalede, Azure 'un ortak internet hizmetleriyle iletişim kurması için VM 'nin nasıl çalıştığı açıklanır.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -22,80 +22,80 @@ ms.locfileid: "74225292"
 ---
 # <a name="outbound-connections-in-azure"></a>Azure’da giden bağlantılar
 
-Azure provides outbound connectivity for customer deployments through several different mechanisms. This article describes what the scenarios are, when they apply, how they work, and how to manage them.
+Azure birçok farklı mekanizma aracılığıyla müşteri dağıtımları için giden bağlantı sağlar. Bu makalede senaryoların ne olduğu, ne zaman uygulandığı, nasıl çalıştığı ve nasıl yönetileceği açıklanmaktadır.
 
 >[!NOTE] 
->This article covers Resource Manager deployments only. Review [Outbound connections (Classic)](load-balancer-outbound-connections-classic.md) for all Classic deployment scenarios in Azure.
+>Bu makalede yalnızca Kaynak Yöneticisi dağıtımları ele alınmaktadır. Azure 'daki tüm klasik dağıtım senaryoları için [giden bağlantıları (klasik)](load-balancer-outbound-connections-classic.md) gözden geçirin.
 
-A deployment in Azure can communicate with endpoints outside Azure in the public IP address space. When an instance initiates an outbound flow to a destination in the public IP address space, Azure dynamically maps the private IP address to a public IP address. After this mapping is created, return traffic for this outbound originated flow can also reach the private IP address where the flow originated.
+Azure 'daki bir dağıtım, genel IP adresi alanında Azure dışındaki uç noktalarla iletişim kurabilir. Bir örnek, genel IP adresi alanındaki bir hedefe giden akışı başlattığında, Azure özel IP adresini dinamik olarak genel bir IP adresiyle eşleştirir. Bu eşleme oluşturulduktan sonra, bu çıkış kaynaklı akış için geri dönüş trafiği akışın kaynaklandığı özel IP adresine de ulaşabilir.
 
-Azure uses source network address translation (SNAT) to perform this function. When multiple private IP addresses are masquerading behind a single public IP address, Azure uses [port address translation (PAT)](#pat) to masquerade private IP addresses. Ephemeral ports are used for PAT and are [preallocated](#preallocatedports) based on pool size.
+Azure, bu işlevi gerçekleştirmek için kaynak ağ adresi çevirisini (SNAT) kullanır. Birden çok özel IP adresi tek bir genel IP adresinin arkasında olduğunda, Azure özel IP adreslerine maske eklemek için [bağlantı noktası adres çevirisini (Pat)](#pat) kullanır. Kısa ömürlü bağlantı noktaları, PAT için kullanılır ve havuz boyutuna bağlı olarak [önceden ayrılır](#preallocatedports) .
 
-There are multiple [outbound scenarios](#scenarios). You can combine these scenarios as needed. Review them carefully to understand the capabilities, constraints, and patterns as they apply to your deployment model and application scenario. Review guidance for [managing these scenarios](#snatexhaust).
+Birden çok [giden senaryo](#scenarios)vardır. Bu senaryoları gerektiğinde birleştirebilirsiniz. Özellikleri, kısıtlamaları ve desenleri, dağıtım modeliniz ve Uygulama senaryonuz için uygun olarak anlamak üzere dikkatlice gözden geçirin. [Bu senaryoları yönetme](#snatexhaust)kılavuzunu gözden geçirin.
 
 >[!IMPORTANT] 
->Standard Load Balancer and Standard Public IP introduce new abilities and different behaviors to outbound connectivity.  They are not the same as Basic SKUs.  If you want outbound connectivity when working with Standard SKUs, you must explicitly define it either with Standard Public IP addresses or Standard public Load Balancer.  This includes creating outbound connectivity when using an internal Standard Load Balancer.  We recommend you always use outbound rules on a Standard public Load Balancer.  [Scenario 3](#defaultsnat) is not available with Standard SKU.  That means when an internal Standard Load Balancer is used, you need to take steps to create outbound connectivity for the VMs in the backend pool if outbound connectivity is desired.  In the context of outbound connectivity, a single standalone VM, all the VM's in an Availability Set, all the instances in a VMSS behave as a group. This means, if a single VM in an Availability Set is associated with a Standard SKU, all VM instances within this Availability Set now behave by the same rules as if they are associated with Standard SKU, even if an individual instance is not directly associated with it.  Carefully review this entire document to understand the overall concepts, review [Standard Load Balancer](load-balancer-standard-overview.md) for differences between SKUs, and review [outbound rules](load-balancer-outbound-rules-overview.md).  Using outbound rules allows you fine grained control over all aspects of outbound connectivity.
+>Standart Load Balancer ve standart genel IP, giden bağlantıya yeni yetenekler ve farklı davranışlar getirir.  Bunlar temel SKU 'Lar ile aynı değildir.  Standart SKU 'Lar ile çalışırken giden bağlantı isterseniz, standart genel IP adresleriyle veya standart ortak Load Balancer açıkça tanımlamanız gerekir.  Bu, dahili bir Standart Load Balancer kullanırken giden bağlantı oluşturmayı içerir.  Her zaman standart bir genel Load Balancer giden kuralları kullanmanızı öneririz.  [3. senaryo](#defaultsnat) standart SKU ile kullanılamaz.  Bu, bir iç Standart Load Balancer kullanıldığında, giden bağlantı istenirse arka uç havuzundaki VM 'Ler için giden bağlantı oluşturmak üzere gerekli adımları uygulamanız gerekir.  Giden bağlantı bağlamında, tek bir tek başına VM, tüm VM 'ler bir kullanılabilirlik kümesinde, bir VMSS içindeki tüm örnekler bir grup olarak davranır. Bu, bir kullanılabilirlik kümesindeki tek bir VM standart SKU ile ilişkili ise, bu kullanılabilirlik kümesindeki tüm sanal makine örnekleri, tek bir örnek doğrudan ilişkili olmasa bile standart SKU ile ilişkilendirildikleri kurallarla aynı kurallara göre davranır.  Genel kavramları anlamak için tüm belgeyi dikkatle gözden geçirin, SKU 'Lar arasındaki farklılıklar için [Standart Load Balancer](load-balancer-standard-overview.md) gözden geçirin ve [giden kuralları](load-balancer-outbound-rules-overview.md)gözden geçirin.  Giden kuralları kullanmak, giden bağlantıların tüm yönleri üzerinde ayrıntılı denetim sağlar.
 
-## <a name="scenarios"></a>Scenario overview
+## <a name="scenarios"></a>Senaryoya genel bakış
 
-Azure Load Balancer and related resources are explicitly defined when you're using [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).  Azure currently provides three different methods to achieve outbound connectivity for Azure Resource Manager resources. 
+Azure Load Balancer ve ilgili kaynaklar [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)kullanırken açıkça tanımlanır.  Azure Şu anda Azure Resource Manager kaynaklarına giden bağlantı sağlamak için üç farklı yöntem sunmaktadır. 
 
-| SKUs | Senaryo | Yöntem | IP protocols | Açıklama |
+| SKU | Senaryo | Yöntem | IP protokolleri | Açıklama |
 | --- | --- | --- | --- | --- |
-| Standard, Basic | [1. VM with Public IP address (with or without Load Balancer)](#ilpip) | SNAT, port masquerading not used | TCP, UDP, ICMP, ESP | Azure uses the public IP assigned to the IP configuration of the instance's NIC. The instance has all ephemeral ports available. When using Standard Load Balancer, you should use [outbound rules](load-balancer-outbound-rules-overview.md) to explicitly define outbound connectivity |
-| Standard, Basic | [2. Public Load Balancer associated with a VM (no Public IP address on the instance)](#lb) | SNAT with port masquerading (PAT) using the Load Balancer frontends | TCP, UDP |Azure shares the public IP address of the public Load Balancer frontends with multiple private IP addresses. Azure uses ephemeral ports of the frontends to PAT. |
-| none or Basic | [3. Standalone VM (no Load Balancer, no Public IP address)](#defaultsnat) | SNAT with port masquerading (PAT) | TCP, UDP | Azure automatically designates a public IP address for SNAT, shares this public IP address with multiple private IP addresses of the availability set, and uses ephemeral ports of this public IP address. This scenario is a fallback for the preceding scenarios. We don't recommend it if you need visibility and control. |
+| Standart, temel | [1. genel IP adresine sahip VM (Load Balancer ile veya olmayan)](#ilpip) | SNAT, bağlantı noktası aşağı olarak kullanılmıyor | TCP, UDP, ıCMP, ESP | Azure, örneğin NIC 'in IP yapılandırmasına atanan genel IP 'yi kullanır. Örnekte, tüm kısa ömürlü bağlantı noktaları kullanılabilir. Standart Load Balancer kullanırken, giden bağlantıyı açıkça tanımlamak için [giden kurallarını](load-balancer-outbound-rules-overview.md) kullanmanız gerekir |
+| Standart, temel | [2. bir VM ile ilişkili ortak Load Balancer (örnekte genel IP adresi yok)](#lb) | Load Balancer ön uçları kullanarak bağlantı noktası geçici olarak (PAT) SNAT | TCP, UDP |Azure, genel Load Balancer ön uçlarının genel IP adresini birden çok özel IP adresi ile paylaşır. Azure, ön uçların kısa ömürlü bağlantı noktalarını kullanır. |
+| hiçbiri veya temel | [3. tek başına VM (Load Balancer yok, genel IP adresi yok)](#defaultsnat) | Bağlantı noktası geçici olarak SNAT (PAT) | TCP, UDP | Azure, SNAT için bir genel IP adresi otomatik olarak atar, bu genel IP adresini kullanılabilirlik kümesinin birden çok özel IP adresi ile paylaşır ve bu genel IP adresinin kısa ömürlü bağlantı noktalarını kullanır. Bu senaryo, önceki senaryolar için bir geri dönüş olur. Görünürlük ve denetime ihtiyacınız varsa bunu önermiyoruz. |
 
-If you don't want a VM to communicate with endpoints outside Azure in public IP address space, you can use network security groups (NSGs) to block access as needed. The section [Preventing outbound connectivity](#preventoutbound) discusses NSGs in more detail. Guidance on designing, implementing, and managing a virtual network without any outbound access is outside the scope of this article.
+Bir VM 'nin genel IP adresi alanında Azure dışındaki uç noktalarla iletişim kurmasını istemiyorsanız, erişimi gerektiği şekilde engellemek için ağ güvenlik grupları (NSG 'ler) kullanabilirsiniz. [Giden bağlantının önlenmesi](#preventoutbound) bölümünde NSG 'ler daha ayrıntılı şekilde anlatılmaktadır. Bir sanal ağın herhangi bir giden erişimi olmadan tasarlanması, uygulanması ve yönetilmesi ile ilgili yönergeler bu makalenin kapsamı dışındadır.
 
-### <a name="ilpip"></a>Scenario 1: VM with Public IP address
+### <a name="ilpip"></a>Senaryo 1: ortak IP adresine sahip VM
 
-In this scenario, the VM has a Public IP assigned to it. As far as outbound connections are concerned, it doesn't matter whether the VM is load balanced or not. This scenario takes precedence over the others. When a Public IP address is used, the VM uses the Public IP address for all outbound flows.  
+Bu senaryoda, sanal makineye atanmış bir genel IP vardır. Giden bağlantılar söz konusu olduğunda, VM 'nin yük dengeli olup olmadığı önemi yoktur. Bu senaryo diğerlerine göre önceliklidir. Ortak bir IP adresi kullanıldığında, VM tüm giden akışlar için genel IP adresini kullanır.  
 
-A public IP assigned to a VM is a 1:1 relationship (rather than 1: many) and implemented as a stateless 1:1 NAT.  Port masquerading (PAT) is not used, and the VM has all ephemeral ports available for use.
+Bir VM 'ye atanan genel IP, 1:1 ilişkidir (1: çok) ve durum bilgisiz 1:1 NAT olarak uygulanır.  Bağlantı noktası (PAT) kullanılmaz ve VM 'nin kullanılabilir tüm kısa ömürlü bağlantı noktaları kullanılabilir.
 
-If your application initiates many outbound flows and you experience SNAT port exhaustion, consider assigning a [Public IP address to mitigate SNAT constraints](#assignilpip). Review [Managing SNAT exhaustion](#snatexhaust) in its entirety.
+Uygulamanız birçok giden akışı başlatırsa ve SNAT bağlantı noktası tükenmesi ile karşılaşırsanız, [SNAT kısıtlamalarını azaltmak Için genel BIR IP adresi](#assignilpip)atamayı göz önünde bulundurun. [SNAT tükenmesi yönetimini](#snatexhaust) tamamen inceleyin.
 
-### <a name="lb"></a>Scenario 2: Load-balanced VM without a Public IP address
+### <a name="lb"></a>Senaryo 2: genel IP adresi olmayan yük dengeli VM
 
-In this scenario, the VM is part of a public Load Balancer backend pool. The VM does not have a public IP address assigned to it. The Load Balancer resource must be configured with a load balancer rule to create a link between the public IP frontend with the backend pool.
+Bu senaryoda, VM ortak Load Balancer arka uç havuzunun bir parçasıdır. SANAL makineye atanmış bir genel IP adresi yok. Load Balancer kaynak, arka uç havuzuyla genel IP ön ucu arasında bağlantı oluşturmak için bir yük dengeleyici kuralıyla yapılandırılmalıdır.
 
-If you do not complete this rule configuration, the behavior is as described in the scenario for [Standalone VM with no Public IP](#defaultsnat). It is not necessary for the rule to have a working listener in the backend pool for the health probe to succeed.
+Bu kural yapılandırmasını tamamlamayın, davranış [genel IP olmadan tek BAŞıNA VM](#defaultsnat)için senaryoda açıklanacaktır. Durum araştırmasının başarılı olması için kuralın arka uç havuzunda çalışma dinleyicisi olması gerekmez.
 
-When the load-balanced VM creates an outbound flow, Azure translates the private source IP address of the outbound flow to the public IP address of the public Load Balancer frontend. Azure uses SNAT to perform this function. Azure also uses [PAT](#pat) to masquerade multiple private IP addresses behind a public IP address. 
+Yük dengeli VM bir giden akış oluşturduğunda, Azure giden akışın özel kaynak IP adresini genel Load Balancer ön ucu genel IP adresine çevirir. Azure, bu işlevi gerçekleştirmek için SNAT 'yi kullanır. Azure, genel bir IP adresinin arkasında birden çok özel IP adresini geçici olarak çözmek için [Pat](#pat) 'yi de kullanır. 
 
-Ephemeral ports of the load balancer's public IP address frontend are used to distinguish individual flows originated by the VM. SNAT dynamically uses [preallocated ephemeral ports](#preallocatedports) when outbound flows are created. In this context, the ephemeral ports used for SNAT are called SNAT ports.
+Yük dengeleyicinin genel IP adresi ön ucu için kısa ömürlü bağlantı noktaları, VM 'nin kaynaklandığı bireysel akışları ayırt etmek için kullanılır. SNAT, giden akışlar oluşturulduğunda, [önceden ayrılmış kısa ömürlü bağlantı noktalarını](#preallocatedports) dinamik olarak kullanır. Bu bağlamda, SNAT için kullanılan kısa ömürlü bağlantı noktaları SNAT bağlantı noktaları olarak adlandırılır.
 
-SNAT ports are pre-allocated as described in the [Understanding SNAT and PAT](#snat) section. They're a finite resource that can be exhausted. It's important to understand how they are [consumed](#pat). To understand how to design for this consumption and mitigate as necessary, review [Managing SNAT exhaustion](#snatexhaust).
+SNAT bağlantı noktaları, [SNAT ve Pat 'ı anlama](#snat) bölümünde açıklandığı gibi önceden ayrılır. Bu, tükenebilir sınırlı bir kaynaktır. Bunların [nasıl kullanıldığını anlamak önemlidir.](#pat) Bu tüketim için nasıl tasarlanacağını ve gerekirse etkisini anlamak için, [SNAT tükenmesi yönetimini](#snatexhaust)gözden geçirin.
 
-When [multiple public IP addresses are associated with Load Balancer Basic](load-balancer-multivip-overview.md), any of these public IP addresses are a candidate for outbound flows, and one is selected at random.  
+[Birden çok genel IP adresi Load Balancer temel ile ilişkilendirildiğinde](load-balancer-multivip-overview.md), bu genel IP adreslerinden herhangi biri giden akışlar için aday olur ve rastgele bir seçilir.  
 
-To monitor the health of outbound connections with Load Balancer Basic, you can use [Azure Monitor logs for Load Balancer](load-balancer-monitor-log.md) and [alert event logs](load-balancer-monitor-log.md#alert-event-log) to monitor for SNAT port exhaustion messages.
+Load Balancer temel ile giden bağlantıların sistem durumunu izlemek için, Load Balancer ve [Uyarı olay günlüklerinin](load-balancer-monitor-log.md#alert-event-log) [Azure IZLEYICI günlüklerini](load-balancer-monitor-log.md) kullanarak SNAT bağlantı noktası Tükenme iletilerini izleyebilirsiniz.
 
-### <a name="defaultsnat"></a>Scenario 3: Standalone VM without a Public IP address
+### <a name="defaultsnat"></a>Senaryo 3: genel IP adresi olmayan tek başına VM
 
-In this scenario, the VM is not part of a public Load Balancer pool (and not part of an internal Standard Load Balancer pool) and does not have a Public IP address assigned to it. When the VM creates an outbound flow, Azure translates the private source IP address of the outbound flow to a public source IP address. The public IP address used for this outbound flow is not configurable and does not count against the subscription's public IP resource limit. This public IP address does not belong to you and cannot be reserved. If you redeploy the VM or Availability Set or virtual machine scale set, this public IP address will be released and a new public IP address requested. Do not use this scenario for whitelisting IP addresses. Instead, use one of the other two scenarios where you explicitly declare the outbound scenario and the public IP address to be used for outbound connectivity.
+Bu senaryoda, VM ortak bir Load Balancer havuzunun parçası değildir (bir iç Standart Load Balancer havuzunun parçası değildir) ve kendisine atanmış bir genel IP adresi yoktur. VM bir giden akış oluşturduğunda, Azure giden akışın özel kaynak IP adresini ortak kaynak IP adresine çevirir. Bu giden akış için kullanılan genel IP adresi yapılandırılamaz ve aboneliğin genel IP kaynak sınırına göre sayılmaz. Bu genel IP adresi size ait değil ve ayrılamaz. VM 'yi veya kullanılabilirlik kümesini veya sanal makine ölçek kümesini yeniden dağıtıyorsanız, bu genel IP adresi yayımlanır ve yeni bir genel IP adresi istenir. IP adreslerini beyaz listeye almak için bu senaryoyu kullanmayın. Bunun yerine, çıkış senaryosunu ve giden bağlantı için kullanılacak genel IP adresini açıkça bildirdiğiniz diğer iki senaryonun birini kullanın.
 
 >[!IMPORTANT] 
->This scenario also applies when __only__ an internal Basic Load Balancer is attached. Scenario 3 is __not available__ when an internal Standard Load Balancer is attached to a VM.  You must explicitly create [scenario 1](#ilpip) or [scenario 2](#lb) in addition to using an internal Standard Load Balancer.
+>Bu senaryo __yalnızca__ bir iç temel Load Balancer eklendiğinde de geçerlidir. Bir VM 'ye dahili Standart Load Balancer eklendiğinde Senaryo 3 __kullanılamaz__ .  Dahili bir Standart Load Balancer kullanmaya ek olarak [Senaryo 1](#ilpip) veya [Senaryo 2](#lb) ' i açıkça oluşturmanız gerekir.
 
-Azure uses SNAT with port masquerading ([PAT](#pat)) to perform this function. This scenario is similar to [scenario 2](#lb), except there is no control over the IP address used. This is a fallback scenario for when scenarios 1 and 2 do not exist. We don't recommend this scenario if you want control over the outbound address. If outbound connections are a critical part of your application, you should choose another scenario.
+Azure, bu işlevi gerçekleştirmek için bağlantı noktası geçici ([Pat](#pat)) ile SNAT 'yi kullanır. Bu senaryo, kullanılan IP adresi üzerinde denetim olmaması dışında [Senaryo 2](#lb)' ye benzer. Bu senaryo 1 ve 2 ' nin bulunmadığı durumlarda için bir geri dönüş senaryosudur. Giden adres üzerinde denetim istiyorsanız bu senaryoyu önermiyoruz. Giden bağlantılar uygulamanızın önemli bir parçasıysa, başka bir senaryo seçmeniz gerekir.
 
-SNAT ports are preallocated as described in the [Understanding SNAT and PAT](#snat) section.  The number of VMs sharing an Availability Set determines which preallocation tier applies.  A standalone VM without an Availability Set is effectively a pool of 1 for the purposes of determining preallocation (1024 SNAT ports). SNAT ports are a finite resource that can be exhausted. It's important to understand how they are [consumed](#pat). To understand how to design for this consumption and mitigate as necessary, review [Managing SNAT exhaustion](#snatexhaust).
+SNAT bağlantı noktaları, [SNAT ve Pat 'ı anlama](#snat) bölümünde açıklandığı gibi önceden ayrılır.  Bir kullanılabilirlik kümesini paylaşan VM 'lerin sayısı, hangi ön ayırma katmanının uygulanacağını belirler.  Kullanılabilirlik kümesi olmayan tek başına VM, ön ayırmayı belirleme (1024 SNAT bağlantı noktası) amaçları için etkin bir şekilde 1 havuzu olur. SNAT bağlantı noktaları, tükenebilir sınırlı bir kaynaktır. Bunların [nasıl kullanıldığını anlamak önemlidir.](#pat) Bu tüketim için nasıl tasarlanacağını ve gerekirse etkisini anlamak için, [SNAT tükenmesi yönetimini](#snatexhaust)gözden geçirin.
 
-### <a name="combinations"></a>Multiple, combined scenarios
+### <a name="combinations"></a>Çoklu, Birleşik senaryolar
 
-You can combine the scenarios described in the preceding sections to achieve a particular outcome. When multiple scenarios are present, an order of precedence applies: [scenario 1](#ilpip) takes precedence over [scenario 2](#lb) and [3](#defaultsnat). [Scenario 2](#lb) overrides [scenario 3](#defaultsnat).
+Belirli bir sonuca ulaşmak için yukarıdaki bölümlerde açıklanan senaryoları birleştirebilirsiniz. Birden çok senaryo mevcut olduğunda, bir öncelik sırası geçerlidir: [Senaryo 1](#ilpip) [Senaryo 2](#lb) ve [3](#defaultsnat)' ten önceliklidir. [Senaryo 2](#lb) geçersiz kılmaları [Senaryo 3](#defaultsnat).
 
-An example is an Azure Resource Manager deployment where the application relies heavily on outbound connections to a limited number of destinations but also receives inbound flows over a Load Balancer frontend. In this case, you can combine scenarios 1 and 2 for relief. For additional patterns, review [Managing SNAT exhaustion](#snatexhaust).
+Bir örnek, uygulamanın sınırlı sayıda hedefe giden bağlantıları yoğun bir şekilde kullandığı ancak aynı zamanda gelen akışları bir Load Balancer ön uç üzerinden aldığından Azure Resource Manager bir dağıtımdır. Bu durumda, yardım için 1 ve 2 senaryolarını birleştirebilirsiniz. Ek desenler için, [SNAT tükenmesi yönetimini](#snatexhaust)gözden geçirin.
 
-### <a name="multife"></a> Multiple frontends for outbound flows
+### <a name="multife"></a>Giden akışlar için birden çok ön uç
 
 #### <a name="standard-load-balancer"></a>Standart Load Balancer
 
-Standard Load Balancer uses all candidates for outbound flows at the same time when [multiple (public) IP frontends](load-balancer-multivip-overview.md) is present. Each frontend multiplies the number of available preallocated SNAT ports if a load balancing rule is enabled for outbound connections.
+Standart Load Balancer, [birden çok (genel) IP ön uçları](load-balancer-multivip-overview.md) mevcut olduğunda giden akışlar için tüm adayları aynı anda kullanır. Giden bağlantılar için bir yük dengeleme kuralı etkinleştirildiyse, her ön uç, kullanılabilir önceden ayrılmış SNAT bağlantı noktalarının sayısını çarpar.
 
-You can choose to suppress a frontend IP address from being used for outbound connections with a new load balancing rule option:
+Yeni bir yük dengeleme kuralı seçeneği ile giden bağlantılar için bir ön uç IP adresinin kullanılmasını Önle seçeneğini belirleyebilirsiniz:
 
 ```json    
       "loadBalancingRules": [
@@ -105,164 +105,164 @@ You can choose to suppress a frontend IP address from being used for outbound co
       ]
 ```
 
-Normally, the `disableOutboundSnat` option defaults to _false_ and signifies that this rule programs outbound SNAT for the associated VMs in the backend pool of the load balancing rule. The `disableOutboundSnat` can be changed to _true_ to prevent Load Balancer from using the associated frontend IP address for outbound connections for the VMs in the backend pool of this load balancing rule.  And you can also still designate a specific IP address for outbound flows as described in [Multiple, combined scenarios](#combinations) as well.
+Normal olarak, `disableOutboundSnat` seçeneği varsayılan olarak _false_ olur ve bu kuralın, Yük Dengeleme kuralının arka uç havuzundaki Ilişkili VM 'ler IÇIN giden SNAT programları olduğunu belirtir. Load Balancer, bu yük dengeleme kuralının arka uç havuzundaki VM 'Ler için giden bağlantılar için ilgili ön uç IP adresini kullanmalarını engellemek üzere `disableOutboundSnat` _true_ olarak değiştirilebilir.  Ayrıca, dış akışlar için de belirli bir IP adresini aynı zamanda [birden çok, Birleşik senaryolarda](#combinations) da açıklandığı gibi atayabilirsiniz.
 
-#### <a name="load-balancer-basic"></a>Load Balancer Basic
+#### <a name="load-balancer-basic"></a>Load Balancer temel
 
-Load Balancer Basic chooses a single frontend to be used for outbound flows when [multiple (public) IP frontends](load-balancer-multivip-overview.md) are candidates for outbound flows. This selection is not configurable, and you should consider the selection algorithm to be random. You can designate a specific IP address for outbound flows as described in [Multiple, combined scenarios](#combinations).
+Load Balancer temel, dış akışlar için [birden çok (genel) IP ön uçları](load-balancer-multivip-overview.md) aday olduğunda giden akışlar için kullanılacak tek bir ön uç seçer. Bu seçim yapılandırılamaz ve seçim algoritmasını rastgele olacak şekilde göz önünde bulundurmanız gerekir. Giden akışlar için belirli bir IP adresini [birden çok, Birleşik senaryolar](#combinations)bölümünde açıklandığı gibi belirtebilirsiniz.
 
-### <a name="az"></a> Availability Zones
+### <a name="az"></a>Kullanılabilirlik Alanları
 
-When using [Standard Load Balancer with Availability Zones](load-balancer-standard-availability-zones.md), zone-redundant frontends can provide zone-redundant outbound SNAT connections and SNAT programming survives zone failure.  When zonal frontends are used, outbound SNAT connections share fate with the zone they belong to.
+[Kullanılabilirlik alanları ile standart Load Balancer](load-balancer-standard-availability-zones.md)kullanırken, bölgesel olarak yedekli ön uçlar, bölgesel olarak YEDEKLI giden SNAT BAĞLANTıLARı ve SNAT programlama içi bölge hatası verebilir.  ZGen ön uçları kullanıldığında, giden SNAT bağlantıları Fate, ait oldukları bölge ile paylaşılır.
 
-## <a name="snat"></a>Understanding SNAT and PAT
+## <a name="snat"></a>SNAT ve PAT 'yi anlama
 
-### <a name="pat"></a>Port masquerading SNAT (PAT)
+### <a name="pat"></a>Bağlantı noktası, SNAT (PAT)
 
-When a public Load Balancer resource is associated with VM instances, each outbound connection source is rewritten. The source is rewritten from the virtual network private IP address space to the frontend Public IP address of the load balancer. In the public IP address space, the 5-tuple of the flow (source IP address, source port, IP transport protocol, destination IP address, destination port) must be unique.  Port masquerading SNAT can be used with either TCP or UDP IP protocols.
+Ortak bir Load Balancer kaynağı VM örnekleriyle ilişkilendirildiğinde, her giden bağlantı kaynağı yeniden yazılır. Kaynak, sanal ağ özel IP adresi alanından yük dengeleyicinin ön uç genel IP adresine yeniden yazılır. Genel IP adresi alanında, akışın 5 demet (kaynak IP adresi, kaynak bağlantı noktası, IP Aktarım Protokolü, hedef IP adresi, hedef bağlantı noktası) benzersiz olmalıdır.  Bağlantı noktası, TCP veya UDP IP protokolleriyle birlikte kullanılabilir.
 
-Ephemeral ports (SNAT ports) are used to achieve this after rewriting the private source IP address, because multiple flows originate from a single public IP address. The port masquerading SNAT algorithm allocates SNAT ports differently for UDP versus TCP.
+Çok sayıda akış tek bir genel IP adresinden kaynaklandığından, bu, özel kaynak IP adresini yeniden yazdıktan sonra bunu gerçekleştirmek için kısa ömürlü bağlantı noktaları (SNAT bağlantı noktaları) kullanılır. Geçici bağlantı noktası, SNAT bağlantı noktalarını UDP ve TCP 'ye karşı farklı şekilde ayırır.
 
-#### <a name="tcp"></a>TCP SNAT Ports
+#### <a name="tcp"></a>TCP SNAT bağlantı noktaları
 
-One SNAT port is consumed per flow to a single destination IP address, port. For multiple TCP flows to the same destination IP address, port, and protocol, each TCP flow consumes a single SNAT port. This ensures that the flows are unique when they originate from the same public IP address and go to the same destination IP address, port, and protocol. 
+Tek bir hedef IP adresine, bağlantı noktasına akış başına bir SNAT bağlantı noktası kullanılır. Aynı hedef IP adresine, bağlantı noktasına ve protokolüne birden çok TCP akışı için, her TCP akışı tek bir SNAT bağlantı noktası kullanır. Bu, akışların aynı ortak IP adresinden kaynaklandıklarında benzersiz olmasını sağlar ve aynı hedef IP adresine, bağlantı noktasına ve protokolüne gider. 
 
-Multiple flows, each to a different destination IP address, port, and protocol, share a single SNAT port. The destination IP address, port, and protocol make flows unique without the need for additional source ports to distinguish flows in the public IP address space.
+Her biri farklı bir hedef IP adresi, bağlantı noktası ve protokole birden çok akış, tek bir SNAT bağlantı noktasını paylaşır. Hedef IP adresi, bağlantı noktası ve protokol, genel IP adres alanındaki akışları ayırt etmek için ek kaynak bağlantı noktalarına gerek olmadan akış yapar.
 
-#### <a name="udp"></a> UDP SNAT Ports
+#### <a name="udp"></a>UDP SNAT bağlantı noktaları
 
-UDP SNAT ports are managed by a different algorithm than TCP SNAT ports.  Load Balancer uses an algorithm known as "port-restricted cone NAT" for UDP.  One SNAT port is consumed for each flow, irrespective of destination IP address, port.
+UDP SNAT bağlantı noktaları, TCP SNAT bağlantı noktalarından farklı bir algoritma tarafından yönetilir.  Load Balancer, UDP için "bağlantı noktası kısıtlanmış koni NAT" olarak bilinen bir algoritma kullanır.  Hedef IP adresi, bağlantı noktasından bağımsız olarak her akış için bir SNAT bağlantı noktası kullanılır.
 
-#### <a name="snat-port-reuse"></a>SNAT port reuse
+#### <a name="snat-port-reuse"></a>SNAT bağlantı noktası yeniden kullanımı
 
-Once a port has been released, the port is available for reuse as needed.  You can think of SNAT ports as a sequence from lowest to highest available for a given scenario, and the first available SNAT port is used for new connections. 
+Bağlantı noktası yayımlandıktan sonra, bağlantı noktası gerektiğinde yeniden kullanılabilir.  SNAT bağlantı noktalarını, belirli bir senaryo için en düşük ve en yüksek olan kullanılabilir bir sıra olarak düşünebilirsiniz ve yeni bağlantılar için kullanılabilir ilk SNAT bağlantı noktası kullanılır. 
  
-#### <a name="exhaustion"></a>Exhaustion
+#### <a name="exhaustion"></a>Tüken
 
-When SNAT port resources are exhausted, outbound flows fail until existing flows release SNAT ports. Load Balancer reclaims SNAT ports when the flow closes and uses a [4-minute idle timeout](#idletimeout) for reclaiming SNAT ports from idle flows.
+SNAT bağlantı noktası kaynakları tükendiğinde, mevcut akışlar SNAT bağlantı noktalarını yayınlana kadar giden akışlar başarısız olur. Flow kapandığında geri kazanır SNAT bağlantı noktalarını Load Balancer ve boştaki akışlardan geri kazanma SNAT bağlantı noktaları için [4 dakikalık bir boşta kalma zaman aşımı süresi](#idletimeout) kullanır.
 
-UDP SNAT ports generally exhaust much faster than TCP SNAT ports due to the difference in algorithm used. You must design and scale test with this difference in mind.
+UDP SNAT bağlantı noktaları, kullanılan algoritmadaki fark nedeniyle TCP SNAT bağlantı noktalarından genellikle çok daha hızlı tükeiyor. Testi bu fark göz önüne alarak tasarlamanızı ve ölçeklendirmeniz gerekir.
 
-For patterns to mitigate conditions that commonly lead to SNAT port exhaustion, review the [Managing SNAT](#snatexhaust) section.
+Genellikle SNAT bağlantı noktası tükenmesi ' ne yol açabilecek koşulları azaltmak için, SNAT 'yi [yönetme](#snatexhaust) bölümünü gözden geçirin.
 
-### <a name="preallocatedports"></a>Ephemeral port preallocation for port masquerading SNAT (PAT)
+### <a name="preallocatedports"></a>Bağlantı noktası için geçici bağlantı noktası önayırması (PAT)
 
-Azure uses an algorithm to determine the number of preallocated SNAT ports available based on the size of the backend pool when using port masquerading SNAT ([PAT](#pat)). SNAT ports are ephemeral ports available for a particular public IP source address.
+Azure, bağlantı noktası geçici olarak ([Pat](#pat)) kullanılırken arka uç havuzunun boyutuna bağlı olarak kullanılabilir önceden ayrılmış SNAT bağlantı noktalarının sayısını belirlemede bir algoritma kullanır. SNAT bağlantı noktaları, belirli bir genel IP kaynak adresi için kullanılabilir kısa ömürlü bağlantı noktalarıdır.
 
-The same number of SNAT ports are preallocated for UDP and TCP respectively and consumed independently per IP transport protocol.  However, the SNAT port usage is different depending on whether the flow is UDP or TCP.
+Aynı sayıda SNAT bağlantı noktası, sırasıyla UDP ve TCP için önceden ayrılır ve IP Aktarım Protokolü başına bağımsız olarak kullanılır.  Ancak, SNAT bağlantı noktası kullanımı, akışın UDP veya TCP olmasına bağlı olarak farklılık belirtir.
 
 >[!IMPORTANT]
->Standard SKU SNAT programming is per IP transport protocol and derived from the load balancing rule.  If only a TCP load balancing rule exists, SNAT is only available for TCP. If you have only a TCP load balancing rule and need outbound SNAT for UDP, create a UDP load balancing rule from the same frontend to the same backend pool.  This will trigger SNAT programming for UDP.  A working rule or health probe is not required.  Basic SKU SNAT always programs SNAT for both IP transport protocol, irrespective of the transport protocol specified in the load balancing rule.
+>Standart SKU SNAT programlama, IP Aktarım Protokolü başına ve yük dengeleme kuralından türetilir.  Yalnızca bir TCP Yük Dengeleme kuralı varsa, SNAT yalnızca TCP için kullanılabilir. Yalnızca bir TCP Yük Dengeleme kuralınız varsa ve UDP için giden SNAT gerekiyorsa, aynı ön uçta aynı arka uç havuzuna bir UDP Yük Dengeleme kuralı oluşturun.  Bu, UDP için SNAT programlamayı tetikler.  Çalışma kuralı veya sistem durumu araştırması gerekli değildir.  Yük Dengeleme kuralında belirtilen Aktarım Protokolü ne olursa olsun, temel SKU SNAT her zaman her iki IP Aktarım Protokolü için SNAT.
 
-Azure preallocates SNAT ports to the IP configuration of the NIC of each VM. When an IP configuration is added to the pool, the SNAT ports are preallocated for this IP configuration based on the backend pool size. When outbound flows are created, [PAT](#pat) dynamically consumes (up to the preallocated limit) and releases these ports when the flow closes or [idle timeouts](#idletimeout) happen.
+Azure, SNAT bağlantı noktalarını her VM 'nin NIC 'sinin IP yapılandırmasına önceden ayırır. Havuza bir IP yapılandırması eklendiğinde, bu IP yapılandırması için, arka uç havuz boyutuna bağlı olarak SNAT bağlantı noktaları önceden ayrılır. Giden akışlar oluşturulduğunda, [Pat](#pat) dinamik olarak (önceden ayrılan sınıra kadar) kullanır ve akış kapandığında veya [boşta kalma zaman aşımları](#idletimeout) olduğunda bu bağlantı noktalarını yayınlar.
 
-The following table shows the SNAT port preallocations for tiers of backend pool sizes:
+Aşağıdaki tabloda, arka uç havuz boyutlarının katmanları için SNAT bağlantı noktası ön ayırmaları gösterilmektedir:
 
-| Pool size (VM instances) | Preallocated SNAT ports per IP configuration|
+| Havuz boyutu (VM örnekleri) | IP yapılandırması başına önceden ayrılmış SNAT bağlantı noktaları|
 | --- | --- |
 | 1-50 | 1,024 |
 | 51-100 | 512 |
 | 101-200 | 256 |
 | 201-400 | 128 |
 | 401-800 | 64 |
-| 801-1,000 | 32 |
+| 801-1000 | 32 |
 
 >[!NOTE]
-> When using Standard Load Balancer with [multiple frontends](load-balancer-multivip-overview.md), each frontend IP address multiplies the number of available SNAT ports in the previous table. For example, a backend pool of 50 VM's with 2 load balancing rules, each with a separate frontend IP address, will use 2048 (2x 1024) SNAT ports per IP configuration. See details for [multiple frontends](#multife).
+> [Birden çok](load-balancer-multivip-overview.md)ön uç içeren standart Load Balancer kullanırken, her bir ön uç IP adresi önceki tabloda kullanılabilir SNAT bağlantı noktalarının sayısını çarpar. Örneğin, her biri ayrı bir ön uç IP adresi olan 2 Yük Dengeleme kuralıyla 50 VM 'nin bir arka uç havuzu, IP yapılandırması başına 2048 (2x 1024) SNAT bağlantı noktasını kullanır. Bkz. [birden çok ön uç](#multife)için ayrıntılar.
 
-Remember that the number of SNAT ports available does not translate directly to number of flows. A single SNAT port can be reused for multiple unique destinations. Ports are consumed only if it's necessary to make flows unique. For design and mitigation guidance, refer to the section about [how to manage this exhaustible resource](#snatexhaust) and the section that describes [PAT](#pat).
+Kullanılabilir SNAT bağlantı noktası sayısının, akış sayısına doğrudan çevrilemez olduğunu unutmayın. Tek bir SNAT bağlantı noktası, birden çok benzersiz hedef için yeniden kullanılabilir. Bağlantı noktaları yalnızca akışları benzersiz hale getirmek için gerekliyse kullanılır. Tasarım ve azaltma Kılavuzu için, [Bu tüketilme kaynağını yönetme](#snatexhaust) ve [Pat](#pat)'yi açıklayan bölüm hakkında bölümüne bakın.
 
-Changing the size of your backend pool might affect some of your established flows. If the backend pool size increases and transitions into the next tier, half of your preallocated SNAT ports are reclaimed during the transition to the next larger backend pool tier. Flows that are associated with a reclaimed SNAT port will time out and must be reestablished. If a new flow is attempted, the flow will succeed immediately as long as preallocated ports are available.
+Arka uç havuzunuzun boyutunu değiştirmek, sağlanan akışlarınızdan bazılarını etkileyebilir. Arka uç havuzu boyutu bir sonraki katmana artıyorsa ve geçiş yaptığında, önceden ayrılan SNAT bağlantı noktalarınızın yarısı sonraki daha büyük arka uç havuz katmanına geçiş sırasında geri kazanılır. Geri kazanılan bir SNAT bağlantı noktasıyla ilişkili akışlar zaman aşımına uğrar ve yeniden oluşturulmalıdır. Yeni bir akış deneniyorsa, önceden ayrılan bağlantı noktaları kullanılabildiği sürece akış hemen başarılı olur.
 
-If the backend pool size decreases and transitions into a lower tier, the number of available SNAT ports increases. In this case, existing allocated SNAT ports and their respective flows are not affected.
+Arka uç havuzu boyutu düşürüyorsa ve daha düşük bir katmana geçerse, kullanılabilir SNAT bağlantı noktalarının sayısı artar. Bu durumda, ayrılmış olan SNAT bağlantı noktaları ve ilgili akışları etkilenmez.
 
-SNAT ports allocations are IP transport protocol specific (TCP and UDP are maintained separately) and are released under the following conditions:
+SNAT bağlantı noktaları ayırmaları, IP aktarım protokolüne özgüdür (TCP ve UDP ayrı tutulur) ve aşağıdaki koşullarda yayımlanır:
 
-### <a name="tcp-snat-port-release"></a>TCP SNAT port release
+### <a name="tcp-snat-port-release"></a>TCP SNAT bağlantı noktası sürümü
 
-- If either server/client sends FINACK, SNAT port will be released after 240 seconds.
-- If a RST is seen, SNAT port will be released after 15 seconds.
-- If idle timeout has been reached, port is released.
+- Sunucu/istemci FINACK gönderirse, SNAT bağlantı noktası 240 saniye sonra serbest bırakılır.
+- Bir RST görülüyorsa, SNAT bağlantı noktası 15 saniye sonra serbest bırakılır.
+- Boşta kalma zaman aşımına ulaşıldığında, bağlantı noktası serbest bırakılır.
 
-### <a name="udp-snat-port-release"></a>UDP SNAT port release
+### <a name="udp-snat-port-release"></a>UDP SNAT bağlantı noktası sürümü
 
-- If idle timeout has been reached, port is released.
+- Boşta kalma zaman aşımına ulaşıldığında, bağlantı noktası serbest bırakılır.
 
-## <a name="problemsolving"></a> Problem solving 
+## <a name="problemsolving"></a>Sorun çözme 
 
-This section is intended to help mitigate SNAT exhaustion and that can occur with outbound connections in Azure.
+Bu bölüm, SNAT tükenmesi azaltmaya ve Azure 'daki giden bağlantılarla meydana getirmenize yardımcı olmaya yöneliktir.
 
-### <a name="snatexhaust"></a> Managing SNAT (PAT) port exhaustion
-[Ephemeral ports](#preallocatedports) used for [PAT](#pat) are an exhaustible resource, as described in [Standalone VM without a Public IP address](#defaultsnat) and [Load-balanced VM without a Public IP address](#lb).
+### <a name="snatexhaust"></a>SNAT (PAT) bağlantı noktası tükenmesi yönetimi
+[Pat](#pat) Için kullanılan [kısa ömürlü bağlantı noktaları](#preallocatedports) , genel IP [adresi olmayan tek BAŞıNA VM](#defaultsnat) 'de ve [genel IP adresi olmayan yük dengeli VM](#lb)'de açıklandığı gibi, tüketilmeyen bir kaynaktır.
 
-If you know that you're initiating many outbound TCP or UDP connections to the same destination IP address and port, and you observe failing outbound connections or are advised by support that you're exhausting SNAT ports (preallocated [ephemeral ports](#preallocatedports) used by [PAT](#pat)), you have several general mitigation options. Review these options and decide what is available and best for your scenario. It's possible that one or more can help manage this scenario.
+Aynı hedef IP adresine ve bağlantı noktasına giden çok sayıda giden TCP veya UDP bağlantısı başlattığdığınızı ve başarısız olmuş bağlantıları gözlemlebildiğinizi veya SNAT bağlantı noktalarını ( [Pat](#pat)tarafından kullanılan önceden ayrılan [kısa ömürlü bağlantı noktaları](#preallocatedports) ) tüketmenin bir şekilde önerdiğini biliyorsanız, çeşitli genel risk azaltma seçenekleriniz vardır. Bu seçenekleri gözden geçirin ve senaryonuz için nelerin kullanılabilir ve en iyisi olduğuna karar verin. Bir veya daha fazla bu senaryonun yönetilmesine yardımcı olabilir.
 
-If you are having trouble understanding the outbound connection behavior, you can use IP stack statistics (netstat). Or it can be helpful to observe connection behaviors by using packet captures. You can perform these packet captures in the guest OS of your instance or use [Network Watcher for packet capture](../network-watcher/network-watcher-packet-capture-manage-portal.md).
+Giden bağlantı davranışını anlamakta sorun yaşıyorsanız, IP yığın istatistiklerini (netstat) kullanabilirsiniz. Ya da paket yakalamaları kullanılarak bağlantı davranışlarını gözlemlemek faydalı olabilir. Bu paket yakalamalarını örneğinizin Konuk işletim sisteminde gerçekleştirebilir veya [paket yakalama Için Ağ İzleyicisi](../network-watcher/network-watcher-packet-capture-manage-portal.md)kullanabilirsiniz.
 
-#### <a name="connectionreuse"></a>Modify the application to reuse connections 
-You can reduce demand for ephemeral ports that are used for SNAT by reusing connections in your application. This is especially true for protocols like HTTP/1.1, where connection reuse is the default. And other protocols that use HTTP as their transport (for example, REST) can benefit in turn. 
+#### <a name="connectionreuse"></a>Bağlantıyı yeniden kullanmak için uygulamayı değiştirme 
+Uygulamanızdaki bağlantıları yeniden kullandığınızda, SNAT için kullanılan kısa ömürlü bağlantı noktaları için talebi azaltabilirsiniz. Bu, özellikle HTTP/1.1 gibi protokoller için geçerlidir; burada bağlantı yeniden kullanım varsayılandır. Ve taşıma olarak HTTP kullanan diğer protokoller (örneğin, REST) sırasıyla faydalanabilir. 
 
-Reuse is always better than individual, atomic TCP connections for each request. Reuse results in more performant, very efficient TCP transactions.
+Her istek için bireysel, atomik TCP bağlantılarından yeniden kullanım her zaman daha iyidir. Sonuçları daha performanslı, çok verimli bir TCP işlemi ile yeniden kullanın.
 
-#### <a name="connection pooling"></a>Modify the application to use connection pooling
-You can employ a connection pooling scheme in your application, where requests are internally distributed across a fixed set of connections (each reusing where possible). This scheme constrains the number of ephemeral ports in use and creates a more predictable environment. This scheme can also increase the throughput of requests by allowing multiple simultaneous operations when a single connection is blocking on the reply of an operation.  
+#### <a name="connection pooling"></a>Uygulamayı bağlantı havuzunu kullanacak şekilde değiştirme
+Uygulamanızda, isteklerin dahili bir bağlantı kümesi arasında dahili olarak dağıtıldığı (mümkün olduğunda yeniden kullanıldığı) bir bağlantı havuzu oluşturabilirsiniz. Bu düzen, kullanımda olan kısa ömürlü bağlantı noktalarının sayısını kısıtlar ve daha öngörülebilir bir ortam oluşturur. Bu düzen, bir işlem yanıtında tek bir bağlantı yapıldığında birden çok eş zamanlı işleme izin vererek isteklerin verimini de artırabilir.  
 
-Connection pooling might already exist within the framework that you're using to develop your application or the configuration settings for your application. You can combine connection pooling with connection reuse. Your multiple requests then consume a fixed, predictable number of ports to the same destination IP address and port. The requests also benefit from efficient use of TCP transactions reducing latency and resource utilization. UDP transactions can also benefit, because managing the number of UDP flows can in turn avoid exhaust conditions and manage the SNAT port utilization.
+Bağlantı havuzu, uygulamanızı geliştirmek için kullandığınız çerçeve içinde veya uygulamanızın yapılandırma ayarlarını zaten içerebilir. Bağlantı havuzunu bağlantı yeniden kullanımı ile birleştirebilirsiniz. Birden çok istekleriniz daha sonra aynı hedef IP adresi ve bağlantı noktası için sabit, öngörülebilir bir bağlantı noktası sayısı kullanır. İstekler, gecikme ve kaynak kullanımını azaltan TCP işlemlerinin verimli kullanımından de yararlanır. UDP işlemleri de yararlı olabilir, çünkü UDP akışlarının sayısını yönetmek, koşulları tüketmekten kaçınmak ve SNAT bağlantı noktası kullanımını yönetmektir.
 
-#### <a name="retry logic"></a>Modify the application to use less aggressive retry logic
-When [preallocated ephemeral ports](#preallocatedports) used for [PAT](#pat) are exhausted or application failures occur, aggressive or brute force retries without decay and backoff logic cause exhaustion to occur or persist. You can reduce demand for ephemeral ports by using a less aggressive retry logic. 
+#### <a name="retry logic"></a>Uygulamayı daha az agresif yeniden deneme mantığını kullanacak şekilde değiştirin
+[Pat](#pat) için kullanılan [kısa ömürlü bağlantı noktaları](#preallocatedports) tükendiğinde ya da uygulama hatalarından oluşması durumunda, Decay ve geri dönüş mantığı olmadan, agresif veya deneme yanılma denemesi kesintileri meydana gelir veya kalıcı hale getirme. Daha az bir agresif yeniden deneme mantığı kullanarak, kısa ömürlü bağlantı noktaları için talebi azaltabilirsiniz. 
 
-Ephemeral ports have a 4-minute idle timeout (not adjustable). If the retries are too aggressive, the exhaustion has no opportunity to clear up on its own. Therefore, considering how--and how often--your application retries transactions is a critical part of the design.
+Kısa ömürlü bağlantı noktalarında 4 dakikalık boşta kalma zaman aşımı (ayarlanamaz) vardır. Yeniden denemeler çok ısrarlı ise, tükenmenin kendi kendine temizleme olanağı yoktur. Bu nedenle, uygulamanızın yeniden deneme işlemleri, tasarımın kritik bir parçasıdır.
 
-#### <a name="assignilpip"></a>Assign a Public IP to each VM
-Assigning a Public IP address changes your scenario to [Public IP to a VM](#ilpip). All ephemeral ports of the public IP that are used for each VM are available to the VM. (As opposed to scenarios where ephemeral ports of a public IP are shared with all the VMs associated with the respective backend pool.) There are trade-offs to consider, such as the additional cost of public IP addresses and the potential impact of whitelisting a large number of individual IP addresses.
+#### <a name="assignilpip"></a>Her VM 'ye genel IP atama
+Genel IP adresi atamak, senaryonuzu [BIR VM 'ye genel IP](#ilpip)'ye dönüştürür. Her VM için kullanılan genel IP 'nin tüm kısa ömürlü bağlantı noktaları, sanal makine için kullanılabilir. (Genel bir IP 'nin kısa ömürlü bağlantı noktaları, ilgili arka uç havuzuyla ilişkili tüm VM 'Ler ile paylaşıldığından senaryolar aksine.) Genel IP adreslerinin ek maliyeti ve çok sayıda ayrı IP adresini daha beyaz listeleyen olası etkileri gibi göz önünde bulundurmanız gereken bir denge vardır.
 
 >[!NOTE] 
->This option is not available for web worker roles.
+>Bu seçenek Web çalışanı rolleri için kullanılamaz.
 
-#### <a name="multifesnat"></a>Use multiple frontends
+#### <a name="multifesnat"></a>Birden çok ön uç kullan
 
-When using public Standard Load Balancer, you assign [multiple frontend IP addresses for outbound connections](#multife) and [multiply the number of SNAT ports available](#preallocatedports).  Create a frontend IP configuration, rule, and backend pool to trigger the programming of SNAT to the public IP of the frontend.  The rule does not need to function and a health probe does not need to succeed.  If you do use multiple frontends for inbound as well (rather than just for outbound), you should use custom health probes well to ensure reliability.
+Ortak Standart Load Balancer kullanırken, [giden bağlantılar için birden çok ön uç IP adresi](#multife) atar ve [mevcut SNAT bağlantı noktası sayısını çarpın](#preallocatedports).  SNAT 'nin, ön uç 'nin genel IP 'si için bir ön uç IP yapılandırması, kuralı ve arka uç havuzu oluşturun.  Kuralın çalışması gerekmez ve sistem durumu araştırmasının başarılı olması gerekmez.  Gelen (yalnızca giden) için birden çok ön uç kullanırsanız, güvenilirliği sağlamak için özel sistem durumu araştırmalarını de kullanmanız gerekir.
 
 >[!NOTE]
->In most cases, exhaustion of SNAT ports is a sign of bad design.  Make sure you understand why you are exhausting ports before using more frontends to add SNAT ports.  You may be masking a problem which can lead to failure later.
+>Çoğu durumda, SNAT bağlantı noktalarının tükenmesi hatalı tasarımın bir imzadır.  SNAT bağlantı noktalarını eklemek için daha fazla ön ek kullanarak bağlantı noktalarını neden tüketdiğinizi anladığınızdan emin olun.  Daha sonra hataya neden olabilecek bir sorunu maskeleyerek bir sorun olabilir.
 
-#### <a name="scaleout"></a>Scale out
+#### <a name="scaleout"></a>Ölçeği genişletme
 
-[Preallocated ports](#preallocatedports) are assigned based on the backend pool size and grouped into tiers to minimize disruption when some of the ports have to be reallocated to accommodate the next larger backend pool size tier.  You may have an option to increase the intensity of SNAT port utilization for a given frontend by scaling your backend pool to the maximum size for a given tier.  This requires for the application to scale out efficiently.
+[Önceden ayrılmış bağlantı noktaları](#preallocatedports) , arka uç havuzu boyutu temel alınarak atanır ve bir sonraki daha büyük arka uç havuzu boyut katmanına uyum sağlamak için bağlantı noktalarından bazılarının yeniden ayrılması gerektiğinde kesintiyi en aza indirmek için katmanlara gruplanırlar.  Arka uç havuzunuzu belirli bir katman için en büyük boyuta ölçeklendirerek, belirli bir ön uç için SNAT bağlantı noktası kullanımının yoğunluğunu artırma seçeneğiniz olabilir.  Bu, uygulamanın etkili bir şekilde ölçeğini gerektirir.
 
-For example, two virtual machines in the backend pool would have 1024 SNAT ports available per IP configuration, allowing a total of 2048 SNAT ports for the deployment.  If the deployment were to be increased to 50 virtual machines, even though the number of preallocated ports remains constant per virtual machine, a total of 51,200 (50 x 1024) SNAT ports can be used by the deployment.  If you wish to scale out your deployment, check the number of [preallocated ports](#preallocatedports) per tier to make sure you shape your scale out to the maximum for the respective tier.  In the preceding example, if you had chosen to scale out to 51 instead of 50 instances, you would progress to the next tier and end up with fewer SNAT ports per VM as well as in total.
+Örneğin, arka uç havuzundaki iki sanal makinede, IP yapılandırması başına 1024 SNAT bağlantı noktası bulunabilir ve dağıtım için toplam 2048 SNAT bağlantı noktasına izin verilir.  Dağıtımın 50 sanal makinelere yükselymiş olması halinde, önceden ayrılan bağlantı noktalarının sayısı sanal makine başına sabit kalırsa bile, dağıtım tarafından toplam 51.200 (50 x 1024) SNAT bağlantı noktası kullanılabilir.  Dağıtımınızın ölçeğini genişletmek istiyorsanız katman başına [önceden ayrılmış bağlantı noktası](#preallocatedports) sayısını denetleyerek ilgili katman için en yüksek ölçeğe göre şekillerinizi şekillendirdiğinizden emin olun.  Yukarıdaki örnekte, 50 örnek yerine 51 ' e ölçeklendirmeye seçtiyseniz, bir sonraki katmana ilerleyerek VM başına daha az SNAT bağlantı noktası ve toplam olarak da sona erdir olur.
 
-If you scale out to the next larger backend pool size tier, there is potential for some of your outbound connections to time out if allocated ports have to be reallocated.  If you are only using some of your SNAT ports, scaling out across the next larger backend pool size is inconsequential.  Half the existing ports will be reallocated each time you move to the next backend pool tier.  If you don't want this to take place, you need to shape your deployment to the tier size.  Or make sure your application can detect and retry as necessary.  TCP keepalives can assist in detect when SNAT ports no longer function due to being reallocated.
+Bir sonraki daha büyük arka uç havuzu boyut katmanına ölçeklendirirseniz, ayrılan bağlantı noktalarının yeniden ayrılması durumunda giden bağlantılarınızın bazılarının zaman aşımına uğrar.  Yalnızca SNAT bağlantı noktalarından bazılarını kullanıyorsanız, sonraki daha büyük arka uç havuzu boyutunun ölçeğini ölçeklendirilmeye hazır değildir.  Sonraki arka uç havuz katmanına her geçtiğinizde, mevcut bağlantı noktalarının yarısı yeniden tahsis edilir.  Bunun gerçekleşmesini istemiyorsanız, dağıtımınızı katman boyutuna şekillendirmeniz gerekir.  Ya da uygulamanızın gerektiği şekilde algılayıp yeniden denenebildiğini doğrulayın.  TCP keepcanlı tutma, SNAT bağlantı noktalarının yeniden ayrılması nedeniyle artık işlev olmadığını algılamaya yardımcı olabilir.
 
-### <a name="idletimeout"></a>Use keepalives to reset the outbound idle timeout
+### <a name="idletimeout"></a>Giden boşta kalma zaman aşımını sıfırlamak için keepcanlı tutmayı kullanın
 
-Outbound connections have a 4-minute idle timeout. This timeout is not adjustable. However, you can use transport (for example, TCP keepalives) or application-layer keepalives to refresh an idle flow and reset this idle timeout if necessary.  
+Giden bağlantılarda 4 dakikalık bir boşta kalma zaman aşımı vardır. Bu zaman aşımı ayarlanamaz. Bununla birlikte, boş bir akışı yenilemek ve gerekirse bu boşta kalma zaman aşımını sıfırlamak için taşıma (örneğin, TCP keepcanlı tutma) veya uygulama katmanı keepcanlı tutma kullanabilirsiniz.  
 
-When using TCP keepalives, it is sufficient to enable them on one side of the connection. For example, it is sufficient to enable them on the server side only to reset the idle timer of the flow and it is not necessary for both sides to initiated TCP keepalives.  Similar concepts exist for application layer, including database client-server configurations.  Check the server side for what options exist for application specific keepalives.
+TCP keepcanlı hale geldiğinde, bağlantının tek tarafında etkinleştirilmesi yeterlidir. Örneğin, bunları sunucu tarafında etkinleştirmek yeterlidir ve akışın boşta kalma zamanlayıcısını sıfırlayın ve her iki taraf da her iki tarafın da TCP keepcanlı hale getirilir olması gerekmez.  Veritabanı istemci-sunucu yapılandırmalarına dahil olmak üzere uygulama katmanı için benzer kavramlar vardır.  Uygulamaya özgü keepcanlı tutma için hangi seçeneklerin mevcut olduğunu kontrol edin.
 
-## <a name="discoveroutbound"></a>Discovering the public IP that a VM uses
-There are many ways to determine the public source IP address of an outbound connection. OpenDNS provides a service that can show you the public IP address of your VM. 
+## <a name="discoveroutbound"></a>Bir VM 'nin kullandığı genel IP 'yi keşfetme
+Giden bir bağlantının genel kaynak IP adresini belirlemenin birçok yolu vardır. OpenDNS, sanal makinenizin genel IP adresini gösterebilmeniz için bir hizmet sağlar. 
 
-By using the nslookup command, you can send a DNS query for the name myip.opendns.com to the OpenDNS resolver. The service returns the source IP address that was used to send the query. When you run the following query from your VM, the response is the public IP used for that VM:
+Nslookup komutunu kullanarak, myip.opendns.com adı için OpenDNS çözümleyiciye bir DNS sorgusu gönderebilirsiniz. Hizmet, sorguyu göndermek için kullanılan kaynak IP adresini döndürür. Aşağıdaki sorguyu sanal makinenizde çalıştırdığınızda, yanıt o VM için kullanılan genel IP 'dir:
 
     nslookup myip.opendns.com resolver1.opendns.com
 
-## <a name="preventoutbound"></a>Preventing outbound connectivity
-Sometimes it's undesirable for a VM to be allowed to create an outbound flow. Or there might be a requirement to manage which destinations can be reached with outbound flows, or which destinations can begin inbound flows. In this case, you can use [network security groups](../virtual-network/security-overview.md) to manage the destinations that the VM can reach. You can also use NSGs to manage which public destination can initiate inbound flows.
+## <a name="preventoutbound"></a>Giden bağlantıyı önlemek
+Bazen bir VM 'nin giden akış oluşturmasına izin verilmesi istenmeyen bir hale gelir. Ya da giden akışlarla hangi hedeflere ulaşılamayabileceğini veya hangi hedeflerin gelen akışlara başlayabileceğini yönetmek için bir gereksinim olabilir. Bu durumda, VM 'nin ulaşabileceği hedefleri yönetmek için [ağ güvenlik gruplarını](../virtual-network/security-overview.md) kullanabilirsiniz. Ayrıca, NSG 'leri kullanarak hangi ortak hedefin gelen akışları başlatabileceğini yönetebilirsiniz.
 
-When you apply an NSG to a load-balanced VM, pay attention to the [service tags](../virtual-network/security-overview.md#service-tags) and [default security rules](../virtual-network/security-overview.md#default-security-rules). You must ensure that the VM can receive health probe requests from Azure Load Balancer. 
+Yük dengeli bir VM 'ye NSG uyguladığınızda, [hizmet etiketlerine](../virtual-network/security-overview.md#service-tags) ve [varsayılan güvenlik kurallarına](../virtual-network/security-overview.md#default-security-rules)dikkat edin. VM 'nin Azure Load Balancer durum araştırma isteklerini alabilmeniz gerekir. 
 
-If an NSG blocks health probe requests from the AZURE_LOADBALANCER default tag, your VM health probe fails and the VM is marked down. Load Balancer stops sending new flows to that VM.
+Bir NSG AZURE_LOADBALANCER varsayılan etiketten durum araştırma isteklerini engelliyorsa, sanal makine sistem durumu araştırmanız başarısız olur ve VM aşağı işaretlenir. Load Balancer, bu VM 'ye yeni akış göndermeyi durduruyor.
 
 ## <a name="limitations"></a>Sınırlamalar
-- DisableOutboundSnat is not available as an option when configuring a load balancing rule in the portal.  Use REST, template, or client tools instead.
-- Web Worker Roles without a VNet and other Microsoft platform services can be accessible when only an internal Standard Load Balancer is used due to a side effect from how pre-VNet services and other platform services function. Do not rely on this side effect as the respective service itself or the underlying platform may change without notice. You must always assume you need to create outbound connectivity explicitly if desired when using an internal Standard Load Balancer only. The [default SNAT](#defaultsnat) scenario 3 described in this article is not available.
+- DisableOutboundSnat, portalda bir yük dengeleme kuralı yapılandırılırken bir seçenek olarak kullanılamaz.  Bunun yerine REST, şablon veya istemci araçları kullanın.
+- VNet ve diğer Microsoft Platformu Hizmetleri olmayan Web çalışanı rolleri, ön VNet Hizmetleri ve diğer platform hizmetleri işlevinin yan etkisi nedeniyle yalnızca bir iç Standart Load Balancer kullanıldığında erişilebilir. İlgili hizmetin kendisi veya temel alınan platform hiçbir bildirimde bulunmaksızın değişmeksizin, bu yan etkiye güvenmeyin. Yalnızca dahili Standart Load Balancer kullandığınızda istenirse, açıkça giden bağlantı oluşturmanız gerektiğini varsaymanız gerekir. Bu makalede açıklanan [varsayılan SNAT](#defaultsnat) senaryosu 3 kullanılabilir değildir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Standart Yük Dengeleyici](load-balancer-standard-overview.md) hakkında daha fazla bilgi edinin.
-- Learn more about [outbound rules](load-balancer-outbound-rules-overview.md) for Standard public Load Balancer.
-- Learn more about [Load Balancer](load-balancer-overview.md).
-- Learn more about [network security groups](../virtual-network/security-overview.md).
-- Learn about some of the other key [networking capabilities](../networking/networking-overview.md) in Azure.
+- Standart genel Load Balancer [giden kuralları](load-balancer-outbound-rules-overview.md) hakkında daha fazla bilgi edinin.
+- [Load Balancer](load-balancer-overview.md)hakkında daha fazla bilgi edinin.
+- [Ağ güvenlik grupları](../virtual-network/security-overview.md)hakkında daha fazla bilgi edinin.
+- Azure 'daki diğer bazı anahtar [ağ özellikleri](../networking/networking-overview.md) hakkında bilgi edinin.

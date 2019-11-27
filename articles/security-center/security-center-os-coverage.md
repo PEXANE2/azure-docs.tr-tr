@@ -110,7 +110,7 @@ Aşağıdaki Azure PaaS kaynakları, Azure Güvenlik Merkezi tarafından destekl
 * Redis
 * Data Lake Analytics
 * Data Lake Store
-* Key Vault
+* Key vault
 
 Yukarıdaki PaaS kaynakları listesinin desteklenen özellikleri hakkında daha fazla bilgi edinmek için bkz. [PaaS hizmetleri tarafından desteklenen özellikler](security-center-services.md#paas-services).
 

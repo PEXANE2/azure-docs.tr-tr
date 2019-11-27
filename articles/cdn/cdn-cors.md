@@ -25,7 +25,7 @@ ms.locfileid: "74278124"
 ## <a name="what-is-cors"></a>CORS nedir?
 CORS (Cross-Origin kaynak paylaşımı), bir etki alanı altında çalışan bir Web uygulamasının başka bir etki alanındaki kaynaklara erişmesine olanak tanıyan bir HTTP özelliğidir. Siteler arası komut dosyası saldırıları olasılığını azaltmak için, tüm modern web tarayıcıları [aynı kaynak ilkesi](https://www.w3.org/Security/wiki/Same_Origin_Policy)olarak bilinen bir güvenlik kısıtlaması uygular.  Bu, bir Web sayfasının farklı bir etki alanındaki API 'Leri aramasını engeller.  CORS, farklı bir kaynaktan API 'Leri çağırmak için bir kaynağa (kaynak etki alanı) izin vermek için güvenli bir yol sağlar.
 
-## <a name="how-it-works"></a>Nasıl çalışır?
+## <a name="how-it-works"></a>Nasıl çalışır
 İki tür CORS isteği, *basit istekler* ve *karmaşık istekler vardır.*
 
 ### <a name="for-simple-requests"></a>Basit istekler için:

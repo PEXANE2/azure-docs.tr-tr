@@ -1,6 +1,6 @@
 ---
-title: Manage DNS zones in Azure DNS - Azure portal | Microsoft Docs
-description: You can manage DNS zones using the Azure portal. This article describes how to update, delete and create DNS zones on Azure DNS
+title: Azure DNS Azure portal DNS bölgelerini yönetme | Microsoft Docs
+description: Azure portal kullanarak DNS bölgelerini yönetebilirsiniz. Bu makalede, Azure DNS üzerinde DNS bölgelerini güncelleştirme, silme ve oluşturma işlemlerinin nasıl yapılacağı açıklanmaktadır
 services: dns
 documentationcenter: na
 author: asudbring
@@ -19,7 +19,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74211906"
 ---
-# <a name="how-to-manage-dns-zones-in-the-azure-portal"></a>How to manage DNS Zones in the Azure portal
+# <a name="how-to-manage-dns-zones-in-the-azure-portal"></a>Azure portal DNS Bölgeleri Yönetme
 
 > [!div class="op_single_selector"]
 > * [Portal](dns-operations-dnszones-portal.md)
@@ -27,12 +27,12 @@ ms.locfileid: "74211906"
 > * [Azure klasik CLI](dns-operations-dnszones-cli-nodejs.md)
 > * [Azure CLI](dns-operations-dnszones-cli.md)
 
-This article shows you how to manage your DNS zones by using the Azure portal. You can also manage your DNS zones using the cross-platform [Azure CLI](dns-operations-dnszones-cli.md) or the Azure [PowerShell](dns-operations-dnszones.md).
+Bu makalede, Azure portal kullanarak DNS bölgelerinizi nasıl yöneteceğiniz gösterilmektedir. DNS bölgelerinizi, platformlar arası [Azure CLI](dns-operations-dnszones-cli.md) veya Azure [PowerShell](dns-operations-dnszones.md)kullanarak da yönetebilirsiniz.
 
 ## <a name="create-a-dns-zone"></a>DNS bölgesi oluşturma
 
 1. Azure portalında oturum açın
-2. On the Hub menu, navigate to **Create a resource > Networking > DNS zone** to open the **Create DNS zone** blade.
+2. Hub menüsünde, **DNS bölgesi oluştur** dikey penceresini açmak Için **kaynak oluştur > ağ > DNS bölgesi** ' ne gidin.
 
     ![DNS bölgesi](./media/dns-operations-dnszones-portal/openzone650.png)
 
@@ -51,14 +51,14 @@ This article shows you how to manage your DNS zones by using the Azure portal. Y
 
 ## <a name="list-dns-zones"></a>DNS bölgelerini listeleme
 
-In the Azure portal, navigate to **More services** > **Networking** > **DNS zones**. Each DNS zone is its own resource, and information such as number of record-sets and name servers are viewable from this view. The column **NAME SERVERS** is not in the default view. To add it, click **Columns**, select **Name servers**, and then click **Done**.
+Azure portal **daha fazla hizmet** > **ağ** > **DNS bölgeleri**' ne gidin. Her DNS bölgesi kendi kaynağıdır ve kayıt kümesi ve ad sunucularının sayısı gibi bilgiler bu görünümden görüntülenebilir. Sütun **adı sunucuları** varsayılan görünümde değil. Eklemek için, **sütunlar**' a tıklayın, **ad sunucuları**' nı seçin ve **bitti**' ye tıklayın.
 
-![listing DNS zones](./media/dns-operations-dnszones-portal/listzones.png)
+![DNS bölgelerini listeleme](./media/dns-operations-dnszones-portal/listzones.png)
 
 ## <a name="delete-a-dns-zone"></a>DNS bölgesini silme
 
-Navigate to a DNS zone in the portal. On the **DNS zone** blade, click **Delete zone**. You are then prompted to confirm you are wanting to delete the DNS zone. Deleting a DNS zone also deletes all records that are contained in the zone.
+Portalda bir DNS bölgesine gidin. **DNS bölgesi** dikey penceresinde **bölgeyi Sil**' e tıklayın. Daha sonra, DNS bölgesini silmek istediğinizi onaylamanız istenir. DNS bölgesini silme, bölgede bulunan tüm kayıtları da siler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Learn how to work with your DNS Zone and records by visiting [Get started with Azure DNS using the Azure portal](dns-getstarted-portal.md).
+[Azure Portal kullanarak Azure DNS kullanmaya başlama](dns-getstarted-portal.md)' yı zıyaret ederek DNS bölgeniz ve kayıtlarıyla nasıl çalışacağınızı öğrenin.
