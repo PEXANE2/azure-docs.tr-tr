@@ -12,34 +12,34 @@ ms.locfileid: "74277513"
 ---
 # <a name="quickstart-create-and-share-a-notebook"></a>Hızlı Başlangıç: Oluşturma ve bir not defteri paylaşın
 
-1. Git [Azure not defterleri](https://notebooks.azure.com) ve oturum açın. (Ayrıntılar için bkz [hızlı başlangıç - Azure not defterleri için oturum açma](quickstart-sign-in-azure-notebooks.md)).
+1. [Azure Notebooks](https://notebooks.azure.com) gidin ve oturum açın. (Ayrıntılar için bkz. [hızlı başlangıç-Azure Notebooks Için oturum açma](quickstart-sign-in-azure-notebooks.md)).
 
-1. Genel profil sayfanızdan seçin **Projelerim** sayfanın üstündeki:
+1. Ortak profil sayfanızda sayfanın en üstündeki **Projelerim** ' nı seçin:
 
     ![Projeleri bağlantımı tarayıcı penceresinin üst kısmındaki](media/quickstarts/my-projects-link.png)
 
-1. Üzerinde **Projelerim** sayfasında **+ yeni proje** (klavye kısayolu: n); yalnızca olarak görüntülenebilir **+** tarayıcı penceresini darsa:
+1. **Projelerim** sayfasında **+ Yeni proje** ' yi seçin (klavye kısayolu: n); düğme yalnızca tarayıcı penceresi dar ise **+** olarak görünebilir:
 
     ![Projelerim sayfasında yeni proje komutu](media/quickstarts/new-project-command.png)
 
-1. İçinde **yeni proje oluştur** görünen açılan girin veya aşağıdaki bilgileri ayarlayın ve ardından **Oluştur**:
+1. Görüntülenen **Yeni proje oluştur** açılır penceresinde aşağıdaki ayrıntıları girin veya ayarlayın, sonra **Oluştur**' u seçin.
 
-   - **Proje adı**: Hello World python'da
-   - **Proje kimliği**: hello-world-python
-   - **Genel proje**: (Seçili)
-   - **Bir Benioku.MD oluşturma**: (Seçili)
+   - **Proje adı**: Python 'da Merhaba Dünya
+   - **Proje kimliği**: Merhaba-Dünya-Python
+   - **Ortak proje**: (işaretsiz)
+   - **README.MD oluşturma**: (işaretsiz)
 
      ![Yeni Proje açılır penceresi ile doldurulmuş ayrıntıları](media/quickstarts/new-project-popup.png)
 
-1. Birkaç dakika sonra Azure not defterleri yeni projeye gider. Bir not defteri seçerek projeye ekleyin. **+ yeni** açılan (yalnızca görünen **+** ), sonra seçerek **not defteri**:
+1. Birkaç dakika sonra Azure not defterleri yeni projeye gider. **+ Yeni** açılan listesini (yalnızca **+** olarak görünebilir) seçip **Not defteri**' ni seçerek projeye bir not defteri ekleyin:
 
     [![](media/quickstarts/empty-project-new-notebook-button.png "A new, empty project and add notebook command")](media/quickstarts/empty-project-new-notebook-button.png#lightbox)
 
-1. İçinde **Yeni Not Defteri Oluştur** görünen açılan bir dosya adı gibi not defteri için girin *HelloWorldInPython.ipynb* ( *.ipynb* IronPython (Jupyter) not defteri anlamına gelir. ) seçip **Python 3.6** dil (olarak da adlandırılan *çekirdek*):
+1. Görüntülenen **Yeni Not Defteri Oluştur** açılır penceresinde, Not defteriniz Için *Helloworldinpython. ipynb* ( *. ipynb* ) gibi bir dosya adı girin ve dil için **Python 3,6** ' i ( *çekirdek*olarak da anılır) seçin:
 
     ![Yeni Not Defteri Oluştur açılan menüsü](media/quickstarts/new-notebook-popup.png)
 
-1. Seçin **yeni** ardından projenizin dosya listesinde görünür not defteri oluşturmayı tamamlamak için:
+1. Not defterini oluşturmak için **Yeni** ' yi seçin ve daha sonra projenizin dosya listesinde görünür:
 
     ![Projenin dosya listesinde görünen yeni not defteri](media/quickstarts/new-notebook-created.png)
 
@@ -49,7 +49,7 @@ ms.locfileid: "74277513"
 
     ![Azure not defterleri yeni bir not defteri görünümü](media/quickstarts/create-notebook-first-open.png)
 
-1. Varsayılan olarak, Not defterini bir boş kodu hücreyi vardır. Hücre değiştirir **Markdown**, hücresi türü açılan listeyi kullanarak **Markdown**:
+1. Varsayılan olarak, Not defterini bir boş kodu hücreyi vardır. Hücre türünü **Markaşağı**olarak değiştirmek Için, **markaçýlan**' i seçmek için hücre türü açılır öğesini kullanın:
 
     ![Yeni bir not defterinde hücresi türü değiştirme](media/quickstarts/create-notebook-cell-type.png)
 
@@ -59,7 +59,7 @@ ms.locfileid: "74277513"
     # Hello World in Python
     ```
 
-1. Markdown düzenlediğiniz çünkü metin "#" ile bir üstbilgi görünür. Markdown HTML'e işlenecek seçin **çalıştırma** düğmesi. Azure not defterleri sonra otomatik olarak oluşturur Yeni bir kod hücresi daha sonra:
+1. Markdown düzenlediğiniz çünkü metin "#" ile bir üstbilgi görünür. Markı 'yi HTML olarak işlemek için **Çalıştır** düğmesini seçin. Azure not defterleri sonra otomatik olarak oluşturur Yeni bir kod hücresi daha sonra:
 
     ![Bir hücreyi ve işlenmiş Markdown Çalıştır düğmesi](media/quickstarts/run-cell-markdown-render.png)
 
@@ -73,7 +73,7 @@ ms.locfileid: "74277513"
     print(msg)
     ```
 
-1. Seçin **çalıştırma** (klavye kısayolu: SHIFT + Enter) kodu çalıştırmak için. Bir hücrede aşağıdaki metne benzer başarılı bir çıktı görmeniz gerekir:
+1. Kodu çalıştırmak için **Çalıştır** ' ı (klavye kısayolu: Shift + Enter) seçin. Bir hücrede aşağıdaki metne benzer başarılı bir çıktı görmeniz gerekir:
 
     ```output
     Hello, Azure Notebooks! Today is Thursday, 15 November, 2018
@@ -87,13 +87,13 @@ ms.locfileid: "74277513"
 
 ## <a name="share-the-notebook"></a>Not defterini paylaşın
 
-Dizüstü bilgisayarınızı paylaşmak için gerekirse proje sayfasına geçin, not defteri dosyasını sağ tıklayın, **bağlantıyı Kopyala** (klavye kısayolu: y), bu bağlantıyı uygun bir iletisine yapıştırın (e-posta, anlık ileti, vs.).
+Not defterinizi paylaşmak için, gerekirse proje sayfasına dönün, Not Defteri dosyasına sağ tıklayın, **Bağlantıyı Kopyala** (klavye kısayolu: y) seçeneğini belirleyin ve bu bağlantıyı uygun bir iletiye yapıştırın (e-posta, anlık ileti, vb.).
 
-De kullanabilirsiniz proje sayfasında **paylaşımı** bağlantısını almak, bağlantı ile bir e-posta iletisi oluşturun veya HTML ve Markdown elde etmek için menü ekleme kodu:
+Proje sayfasında, bir bağlantı almak, bağlantıyla birlikte bir e-posta iletisi oluşturmak veya HTML ve Markaşağı ekleme kodunu almak için **paylaşma** menüsünü de kullanabilirsiniz:
 
 ![Proje paylaşımı komutu](media/quickstarts/share-project-command.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Öğretici: bir çalışma doğrusal regresyon yapmak için Jupyter not defteri oluşturma](tutorial-create-run-jupyter-notebook.md)
+> [Öğretici: doğrusal regresyon yapmak için bir Jupyter Not defteri çalıştırma](tutorial-create-run-jupyter-notebook.md)

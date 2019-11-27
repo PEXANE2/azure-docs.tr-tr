@@ -1,6 +1,6 @@
 ---
-title: Location condition in Azure Active Directory Conditional Access
-description: Learn how to use the location condition to control access to your cloud apps based on a user's network location.
+title: Koşullu erişim Azure Active Directory konum koşulu
+description: Bir kullanıcının ağ konumuna bağlı olarak, bulut uygulamalarınıza erişimi denetlemek için konum koşulunu nasıl kullanacağınızı öğrenin.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -19,134 +19,134 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74380291"
 ---
-# <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>What is the location condition in Azure Active Directory Conditional Access? 
+# <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Koşullu erişim Azure Active Directory konum koşulu nedir? 
 
-With [Azure Active Directory (Azure AD) Conditional Access](../active-directory-conditional-access-azure-portal.md), you can control how authorized users can access your cloud apps. The location condition of a Conditional Access policy enables you to tie access controls settings to the network locations of your users.
+[Azure Active Directory (Azure AD) koşullu erişimi](../active-directory-conditional-access-azure-portal.md)sayesinde, yetkili kullanıcıların bulut uygulamalarınıza nasıl erişebileceğini denetleyebilirsiniz. Koşullu erişim ilkesinin konum koşulu, erişim denetimleri ayarlarını kullanıcılarınızın ağ konumlarına bağlamamanızı sağlar.
 
-This article provides you with the information you need to configure the location condition.
+Bu makale, konum koşulunu yapılandırmak için ihtiyacınız olan bilgileri sağlar.
 
 ## <a name="locations"></a>Konumlar
 
-Azure AD enables single sign-on to devices, apps, and services from anywhere on the public internet. With the location condition, you can control access to your cloud apps based on the network location of a user. Common use cases for the location condition are:
+Azure AD, cihazlar, uygulamalar ve hizmetler için genel İnternet 'te herhangi bir yerden çoklu oturum açma imkanı sağlar. Konum koşulu ile, bir kullanıcının ağ konumuna bağlı olarak bulut uygulamalarınıza erişimi kontrol edebilirsiniz. Konum koşulunun yaygın kullanım örnekleri şunlardır:
 
-- Requiring multi-factor authentication for users accessing a service when they are off the corporate network.
-- Blocking access for users accessing a service from specific countries or regions.
+- Şirket ağı kapalıyken bir hizmete erişen kullanıcılar için Multi-Factor Authentication gerektirme.
+- Belirli ülkelerden veya bölgelerden bir hizmete erişen kullanıcılar için erişimi engelleme.
 
-A location is a label for a network location that either represents a named location or multi-factor authentication Trusted IPs.
+Konum, adlandırılmış bir konumu veya Multi-Factor Authentication güvenilen IP 'Leri temsil eden bir ağ konumunun etikettir.
 
-## <a name="named-locations"></a>Named locations
+## <a name="named-locations"></a>Adlandırılmış konumlar
 
-With named locations, you can create logical groupings of IP address ranges or countries and regions.
+Adlandırılmış konumlarla, IP adresi aralıkları veya ülkeler ve bölgeler için mantıksal gruplandırmaları oluşturabilirsiniz.
 
-You can access your named locations in the **Manage** section of the Conditional Access page.
+Koşullu erişim sayfasının **Yönet** bölümünde, adlandırılmış konumlarınıza erişebilirsiniz.
 
-![Named locations in Conditional Access](./media/location-condition/02.png)
+![Koşullu erişimde adlandırılmış konumlar](./media/location-condition/02.png)
 
-A named location has the following components:
+Adlandırılmış bir konum aşağıdaki bileşenlere sahiptir:
 
-![Create a new named location](./media/location-condition/42.png)
+![Yeni bir adlandırılmış konum oluştur](./media/location-condition/42.png)
 
-- **Name** - The display name of a named location.
-- **IP ranges** - One or more IPv4 address ranges in CIDR format. Specifying an IPv6 address range is not supported.
+- **Ad** -adlandırılmış konumun görünen adı.
+- **IP aralıkları** -CIDR biçimindeki bir veya daha fazla IPv4 adresi aralığı. IPv6 adres aralığı belirtilmesi desteklenmez.
 
    > [!NOTE]
-   > IPv6 address ranges cannot currently be included in a named location. This means IPv6 ranges cannot be excluded from a Conditional Access policy.
+   > IPv6 adres aralıkları Şu anda adlandırılmış bir konuma dahil edilemez. Bu, IPv6 aralıklarının koşullu erişim ilkesinden dışlanmadığı anlamına gelir.
 
-- **Mark as trusted location** - A flag you can set for a named location to indicate a trusted location. Typically, trusted locations are network areas that are controlled by your IT department. In addition to Conditional Access, trusted named locations are also used by Azure Identity Protection and Azure AD security reports to reduce [false positives](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations-1).
-- **Countries/Regions** - This option enables you to select one or more country or region to define a named location.
-- **Include unknown areas** - Some IP addresses are not mapped to a specific country or region. This option allows you to choose if these IP addresses should be included in the named location. Use this setting when the policy using the named location should apply to unknown locations.
+- **Güvenilen konum olarak işaretle** -güvenilen bir konum göstermek için adlandırılmış bir konum için ayarlayabileceğiniz bayrak. Genellikle, güvenilen konumlar BT departmanınız tarafından denetlenen ağ alanlarıdır. Koşullu erişime ek olarak, güvenilir adlandırılmış konumlar da Azure kimlik koruması ve Azure AD güvenlik raporları tarafından [Hatalı pozitif](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations-1)sonuçları azaltmak için kullanılır.
+- **Ülkeler/bölgeler** -Bu seçenek, adlandırılmış bir konum tanımlamak için bir veya daha fazla ülke veya bölge seçmenizi sağlar.
+- **Bilinmeyen bölgeleri dahil et** -bazı IP adresleri belirli bir ülkeye veya bölgeye eşlenmedi. Bu seçenek, bu IP adreslerinin adlandırılmış konuma dahil edilip edilmeyeceğini seçmenizi sağlar. Adlandırılmış konumu kullanan ilke bilinmeyen konumlara uygulanacaksa bu ayarı kullanın.
 
-The number of named locations you can configure is constrained by the size of the related object in Azure AD. You can configure locations based on of the following limitations:
+Yapılandırabileceğiniz adlandırılmış konumların sayısı, Azure AD 'de ilgili nesnenin boyutuyla sınırlıdır. Aşağıdaki sınırlamalara göre konumları yapılandırabilirsiniz:
 
-- One named location with up to 1200 IP ranges.
-- A maximum of 90 named locations with one IP range assigned to each of them.
+- En fazla 1200 IP aralığına sahip bir adlandırılmış konum.
+- Her birine bir IP aralığı atanmış en fazla 90 adlandırılmış konum.
 
-Conditional Access policy applies to IPv4 and IPv6 traffic. Currently named locations do not allow IPv6 ranges to be configured. This limitation causes the following situations:
+Koşullu erişim ilkesi, IPv4 ve IPv6 trafiği için geçerlidir. Şu anda adlandırılmış konumlar IPv6 aralıklarının yapılandırılmasına izin vermez. Bu sınırlama aşağıdaki durumlara neden olur:
 
-- Conditional Access policy cannot be targeted to specific IPv6 ranges
-- Conditional Access policy cannot exclude specific IPV6 ranges
+- Koşullu erişim ilkesi belirli IPv6 aralıklarına hedeflenemez
+- Koşullu erişim ilkesi belirli ıPV6 aralıklarını dışlayamazsınız
 
-If a policy is configured to apply to “Any location”, it will apply to IPv4 and IPv6 traffic. Named locations configured for specified countries and regions only support IPv4 addresses. IPv6 traffic is only included if the option to “include unknown areas” selected.
+Bir ilke "herhangi bir konum" için uygulanmak üzere yapılandırılmışsa, bu, IPv4 ve IPv6 trafiği için de geçerlidir. Belirtilen ülkeler ve bölgeler için yapılandırılmış adlandırılmış konumlar yalnızca IPv4 adreslerini destekler. IPv6 trafiği yalnızca "bilinmeyen alan Ekle" seçeneği belirlenmişse dahil edilir.
 
 ## <a name="trusted-ips"></a>Güvenilen IP'ler
 
-You can also configure IP address ranges representing your organization's local intranet in the [multi-factor authentication service settings](https://account.activedirectory.windowsazure.com/usermanagement/mfasettings.aspx). This feature enables you to configure up to 50 IP address ranges. The IP address ranges are in CIDR format. For more information, see [Trusted IPs](../authentication/howto-mfa-mfasettings.md#trusted-ips).  
+Ayrıca, [Multi-Factor Authentication hizmeti ayarlarındaki](https://account.activedirectory.windowsazure.com/usermanagement/mfasettings.aspx)kuruluşunuzun yerel intranetinizi temsıl eden IP adresi aralıklarını yapılandırabilirsiniz. Bu özellik, en fazla 50 IP adresi aralığı yapılandırmanızı sağlar. IP adresi aralıkları CıDR biçimindedir. Daha fazla bilgi için bkz. [Güvenilen IP 'ler](../authentication/howto-mfa-mfasettings.md#trusted-ips).  
 
-If you have Trusted IPs configured, they show up as **MFA Trusted IPS** in the list of locations for the location condition.
+Güvenilen IP 'Ler yapılandırdıysanız, konum koşulunun Konum listesinde **MFA güvenilir IP 'leri** olarak gösterilir.
 
-### <a name="skipping-multi-factor-authentication"></a>Skipping multi-factor authentication
+### <a name="skipping-multi-factor-authentication"></a>Multi-Factor Authentication atlanıyor
 
-On the multi-factor authentication service settings page, you can identify corporate intranet users by selecting  **Skip multi-factor authentication for requests from federated users on my intranet**. This setting indicates that the inside corporate network claim, which is issued by AD FS, should be trusted and used to identify the user as being on the corporate network. For more information, see [Enable the Trusted IPs feature by using Conditional Access](../authentication/howto-mfa-mfasettings.md#enable-the-trusted-ips-feature-by-using-conditional-access).
+Multi-Factor Authentication hizmet ayarları sayfasında, intranetteki şirket içi **kullanıcılardan gelen istekler için Multi-Factor Authentication 'ı atla**' yı seçerek kurumsal intranet kullanıcılarını belirleyebilirsiniz. Bu ayar, AD FS tarafından verilen şirket içi ağ talebinin güvenilen ve Kullanıcı tarafından şirket ağı üzerinde olduğunu belirlemek için kullanılması gerektiğini belirtir. Daha fazla bilgi için bkz. [koşullu erişim kullanarak güvenilir IP 'ler özelliğini etkinleştirme](../authentication/howto-mfa-mfasettings.md#enable-the-trusted-ips-feature-by-using-conditional-access).
 
-After checking this option, including the named location **MFA Trusted IPS** will apply to any policies with this option selected.
+Bu seçeneği denetledikten sonra, **MFA güvenilir IP 'leri** de dahil olmak üzere bu seçenek belirlenmiş olan her ilke için geçerlidir.
 
-For mobile and desktop applications, which have long lived session lifetimes, Conditional Access is periodically reevaluated. The default is once an hour. When the inside corporate network claim is only issued at the time of the initial authentication, Azure AD may not have a list of trusted IP ranges. In this case, it is more difficult to determine if the user is still on the corporate network:
+Uzun süreli oturum yaşam süreleri olan mobil ve masaüstü uygulamalarında, koşullu erişim düzenli aralıklarla yeniden değerlendirilecektir. Varsayılan değer bir saattir. Şirket içi ağ talebi yalnızca ilk kimlik doğrulama sırasında verildiğinde, Azure AD 'nin güvenilir IP aralıkları listesi olmayabilir. Bu durumda, kullanıcının hala şirket ağında olup olmadığını belirlemek daha zordur:
 
-1. Check if the user’s IP address is in one of the trusted IP ranges.
-2. Check whether the first three octets of the user’s IP address match the first three octets of the IP address of the initial authentication. The IP address is compared with the initial authentication when the inside corporate network claim was originally issued and the user location was validated.
+1. Kullanıcının IP adresinin güvenilir IP aralıklarından birinde olup olmadığını denetleyin.
+2. Kullanıcının IP adresinin ilk üç sekizlinin ilk kimlik doğrulamanın IP adresinin ilk üç sekizlisi ile eşleşip eşleşmediğini denetleyin. Şirket içi ağ talebi ilk yayımlandığında ve Kullanıcı konumu doğrulandığında, IP adresi ilk kimlik doğrulamasıyla karşılaştırılır.
 
-If both steps fail, a user is considered to be no longer on a trusted IP.
+Her iki adım da başarısız olursa, kullanıcının artık güvenilen bir IP 'de olmaması kabul edilir.
 
-## <a name="location-condition-configuration"></a>Location condition configuration
+## <a name="location-condition-configuration"></a>Konum koşulu yapılandırması
 
-When you configure the location condition, you have the option to distinguish between:
+Konum koşulunu yapılandırırken şunları ayırt etme seçeneğiniz vardır:
 
-- Any location
-- All trusted locations
-- Selected locations
+- Herhangi bir konum
+- Tüm güvenilen konumlar
+- Seçili konumlar
 
-![Location condition configuration](./media/location-condition/01.png)
+![Konum koşulu yapılandırması](./media/location-condition/01.png)
 
-### <a name="any-location"></a>Any location
+### <a name="any-location"></a>Herhangi bir konum
 
-By default, selecting **Any location** causes a policy to be applied to all IP addresses, which means any address on the Internet. This setting is not limited to IP addresses you have configured as named location. When you select **Any location**, you can still exclude specific locations from a policy. For example, you can apply a policy to all locations except trusted locations to set the scope to all locations, except the corporate network.
+Varsayılan olarak, **herhangi bir konumun** seçilmesi bir ILKENIN tüm IP adreslerine uygulanmasına neden olur, bu da Internet 'teki herhangi bir adres anlamına gelir. Bu ayar, adlandırılmış konum olarak yapılandırdığınız IP adresleriyle sınırlı değildir. **Herhangi bir konum**seçtiğinizde, hala belirli konumları bir ilkeden dışlayabilirsiniz. Örneğin, şirket ağı dışında, kapsamı tüm konumlara ayarlamak için güvenilen konumlar hariç tüm konumlara bir ilke uygulayabilirsiniz.
 
-### <a name="all-trusted-locations"></a>All trusted locations
+### <a name="all-trusted-locations"></a>Tüm güvenilen konumlar
 
-This option applies to:
+Bu seçenek şu şekilde geçerlidir:
 
-- All locations that have been marked as trusted location
-- **MFA Trusted IPS** (if configured)
+- Güvenilen konum olarak işaretlenen tüm konumlar
+- **MFA güvenilir IP 'leri** (yapılandırıldıysa)
 
-### <a name="selected-locations"></a>Selected locations
+### <a name="selected-locations"></a>Seçili konumlar
 
-With this option, you can select one or more named locations. For a policy with this setting to apply, a user needs to connect from any of the selected locations. When you click **Select** the named network selection control that shows the list of named networks opens. The list also shows if the network location has been marked as trusted. The named location called **MFA Trusted IPs** is used to include the IP settings that can be configured in the multi-factor authentication service setting page.
+Bu seçenekle, bir veya daha fazla adlandırılmış konum seçebilirsiniz. Bu ayarın uygulanacağı bir ilke için, bir kullanıcının seçili konumlardan herhangi birinden bağlanması gerekir. ' A tıkladığınızda, adlandırılmış ağların listesini gösteren adlandırılmış ağ seçimi denetimini **Seç** ' e tıklayın. Liste ayrıca ağ konumunun güvenilir olarak işaretlenip işaretlenmediğini gösterir. **MFA güvenilir IP 'ler** adlı adlandırılmış konum, Multi-Factor Authentication hizmet ayarı sayfasında yapılandırılabilecek IP ayarlarını eklemek için kullanılır.
 
 ## <a name="what-you-should-know"></a>Bilmeniz gerekenler
 
-### <a name="when-is-a-location-evaluated"></a>When is a location evaluated?
+### <a name="when-is-a-location-evaluated"></a>Bir konum ne zaman değerlendirilir?
 
-Conditional Access policies are evaluated when:
+Koşullu erişim ilkeleri şu durumlarda değerlendirilir:
 
-- A user initially signs in to a web app, mobile or desktop application.
-- A mobile or desktop application that uses modern authentication, uses a refresh token to acquire a new access token. By default this check is once an hour.
+- Kullanıcı başlangıçta bir Web uygulaması, mobil veya masaüstü uygulamasında oturum açar.
+- Modern kimlik doğrulaması kullanan bir mobil veya masaüstü uygulaması, yeni bir erişim belirteci almak için yenileme belirteci kullanır. Varsayılan olarak, bu denetim bir saattir.
 
-This check means for mobile and desktop applications using modern authentication, a change in location would be detected within an hour of changing the network location. For mobile and desktop applications that don’t use modern authentication, the policy is applied on each token request. The frequency of the request can vary based on the application. Similarly, for web applications, the policy is applied at initial sign-in and is good for the lifetime of the session at the web application. Due to differences in session lifetimes across applications, the time between policy evaluation will also vary. Each time the application requests a new sign-in token, the  policy is applied.
+Bu denetim, modern kimlik doğrulaması kullanan mobil ve Masaüstü uygulamaları için, ağ konumunun değiştirilmesi için bir saat içinde konum değişikliği tespit edilebilir. Modern kimlik doğrulaması kullanmayan mobil ve Masaüstü uygulamaları için her bir belirteç isteğine ilke uygulanır. İsteğin sıklığı uygulamaya göre farklılık gösterebilir. Benzer şekilde, Web uygulamaları için ilke ilk oturum açma sırasında uygulanır ve Web uygulamasındaki oturumun kullanım ömrü boyunca iyidir. Uygulamalar arasındaki oturum yaşam sürelerinin farklılığı nedeniyle, ilke değerlendirmesi arasındaki süre de farklılık gösterecektir. Uygulama yeni bir oturum açma belirteci istediğinde, ilke uygulanır.
 
-By default, Azure AD issues a token on an hourly basis. After moving off the corporate network, within an hour the policy is enforced for applications using modern authentication.
+Varsayılan olarak, Azure AD, saatlik olarak bir belirteç yayınlar. Şirket ağını kapattıktan sonra, bir saat içinde ilke modern kimlik doğrulaması kullanan uygulamalar için zorlanır.
 
-### <a name="user-ip-address"></a>User IP address
+### <a name="user-ip-address"></a>Kullanıcı IP adresi
 
-The IP address that is used in policy evaluation is the public IP address of the user. For devices on a private network, this IP address is not the client IP of the user’s device on the intranet, it is the address used by the network to connect to the public internet.
+İlke değerlendirmesinde kullanılan IP adresi, kullanıcının genel IP adresidir. Özel bir ağdaki cihazlar için, bu IP adresi intranetteki Kullanıcı cihazının istemci IP 'si değildir, ağ tarafından genel İnternet 'e bağlanmak için kullanılan adrestir.
 
 > [!WARNING]
-> If your device has only an IPv6 address, configuring the location condition is not supported.
+> Cihazınızın yalnızca bir IPv6 adresi varsa, konum koşulunu yapılandırmak desteklenmez.
 
-### <a name="bulk-uploading-and-downloading-of-named-locations"></a>Bulk uploading and downloading of named locations
+### <a name="bulk-uploading-and-downloading-of-named-locations"></a>Adlandırılmış konumların toplu karşıya yüklenmesi ve indirilmesi
 
-When you create or update named locations, for bulk updates, you can upload or download a CSV file with the IP ranges. An upload replaces the IP ranges in the list with those from the file. Each row of the file contains one IP Address range in CIDR format.
+Adlandırılmış konumları oluştururken veya güncelleştirdiğinizde, toplu güncelleştirmeler için IP aralıklarıyla bir CSV dosyasını karşıya yükleyebilir veya indirebilirsiniz. Karşıya yükleme, listedeki IP aralıklarını, dosyadaki dosyalarla değiştirir. Dosyanın her satırı CıDR biçiminde bir IP adresi aralığı içerir.
 
-### <a name="cloud-proxies-and-vpns"></a>Cloud proxies and VPNs
+### <a name="cloud-proxies-and-vpns"></a>Bulut proxy 'leri ve VPN 'Ler
 
-When you use a cloud hosted proxy or VPN solution, the IP address Azure AD uses while evaluating a policy is the IP address of the proxy. The X-Forwarded-For (XFF) header that contains the user’s public IP address is not used because there is no validation that it comes from a trusted source, so would present a method for faking an IP address.
+Bir bulut barındırılan proxy veya VPN çözümü kullandığınızda, bir ilkeyi değerlendirirken Azure AD 'nin kullandığı IP adresi, proxy 'nin IP adresidir. Kullanıcının genel IP adresini içeren X-Iletilmiş-for (XFF) üst bilgisi kullanılmıyor çünkü güvenilen bir kaynaktan geldiğini belirten bir doğrulama olmadığından, bir IP adresi için bir yöntem sunar.
 
-When a cloud proxy is in place, a policy that is used to require a domain joined device can be used, or the inside corpnet claim from AD FS.
+Bir bulut proxy 'si olduğunda, etki alanına katılmış bir cihaz istemek için kullanılan bir ilke veya AD FS ' den gelen Corpnet talebi kullanılabilir.
 
-### <a name="api-support-and-powershell"></a>API support and PowerShell
+### <a name="api-support-and-powershell"></a>API desteği ve PowerShell
 
-API and PowerShell is not yet supported for named locations, or for Conditional Access policies.
+API ve PowerShell, adlandırılmış konumlar veya koşullu erişim ilkeleri için henüz desteklenmiyor.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- If you want to know how to configure a Conditional Access policy, see [Require MFA for specific apps with Azure Active Directory Conditional Access](app-based-mfa.md).
-- If you are ready to configure Conditional Access policies for your environment, see the [best practices for Conditional Access in Azure Active Directory](best-practices.md).
+- Koşullu erişim ilkesini nasıl yapılandıracağınızı öğrenmek isterseniz bkz. [koşullu erişim Azure Active Directory belirli uygulamalar IÇIN MFA gerektirme](app-based-mfa.md).
+- Ortamınız için koşullu erişim ilkelerini yapılandırmaya hazırsanız, [Azure Active Directory Koşullu erişim için en iyi yöntemlere](best-practices.md)bakın.

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/25/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5721879ee78a694c90e607d15f30f99394e49fc
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: f757819e16db9908e80c5e7350c082dbf1573677
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74183605"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547241"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-rest-api-calls"></a>REST API çağrılarını kullanarak bir sanal makine ölçek kümesindeki Azure kaynakları için Yönetilen kimlikler yapılandırma
 
@@ -33,9 +33,9 @@ Bu makalede, Azure Resource Manager REST uç noktasına çağrı yapmak için K�
 - Azure sanal makine ölçek kümesi üzerinde sistem tarafından atanan yönetilen kimliği etkinleştirme ve devre dışı bırakma
 - Azure sanal makine ölçek kümesine Kullanıcı tarafından atanan yönetilen kimlik ekleme ve kaldırma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- Azure kaynakları için yönetilen kimliklerle bilmiyorsanız kullanıma [genel bakış bölümünde](overview.md). **Gözden geçirmeyi unutmayın [sistem tarafından atanan ve kullanıcı tarafından atanan bir yönetilen kimlik arasındaki farkı](overview.md#how-does-it-work)** .
+- Azure kaynakları için Yönetilen kimlikler hakkında bilginiz varsa [genel bakış bölümüne](overview.md)bakın. **[Sistem tarafından atanan ve Kullanıcı tarafından atanan yönetilen kimlik arasındaki farkı](overview.md#how-does-the-managed-identities-for-azure-resources-work)gözden geçirdiğinizden emin**olun.
 - Henüz bir Azure hesabınız yoksa, devam etmeden önce [ücretsiz bir hesaba kaydolun](https://azure.microsoft.com/free/).
 - Bu makaledeki yönetim işlemlerini gerçekleştirmek için, hesabınız aşağıdaki Azure rol tabanlı erişim denetimi atamalarına ihtiyaç duyuyor:
 
@@ -92,8 +92,8 @@ Sistem tarafından atanan yönetilen kimlik etkin bir sanal makine ölçek küme
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
-   |*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
+   |*İçerik türü*     | Gerekli. `application/json` olarak ayarlayın.        |
+   |*Yetkilendirme*     | Gerekli. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
 
    **İstek gövdesi**
 
@@ -187,8 +187,8 @@ Mevcut bir sanal makine ölçek kümesi üzerinde sistem tarafından atanan yön
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
-   |*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
+   |*İçerik türü*     | Gerekli. `application/json` olarak ayarlayın.        |
+   |*Yetkilendirme*     | Gerekli. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
 
    **İstek gövdesi**
 
@@ -220,8 +220,8 @@ Mevcut bir sanal makine ölçek kümesi üzerinde sistem tarafından atanan yön
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
-   |*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. |
+   |*İçerik türü*     | Gerekli. `application/json` olarak ayarlayın.        |
+   |*Yetkilendirme*     | Gerekli. Geçerli bir `Bearer` erişim belirtecine ayarlayın. |
  
    **İstek gövdesi**
 
@@ -254,8 +254,8 @@ Mevcut bir sanal makine ölçek kümesi üzerinde sistem tarafından atanan yön
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
-   |*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
+   |*İçerik türü*     | Gerekli. `application/json` olarak ayarlayın.        |
+   |*Yetkilendirme*     | Gerekli. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
 
    **İstek gövdesi**
 
@@ -298,8 +298,8 @@ Var olan bir sanal makine ölçek kümesinde sistem tarafından atanan bir kimli
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
-   |*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
+   |*İçerik türü*     | Gerekli. `application/json` olarak ayarlayın.        |
+   |*Yetkilendirme*     | Gerekli. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
 
    **İstek gövdesi**
 
@@ -355,8 +355,8 @@ Bu bölümde, Azure Resource Manager REST uç noktasına çağrı yapmak için K
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
-   |*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
+   |*İçerik türü*     | Gerekli. `application/json` olarak ayarlayın.        |
+   |*Yetkilendirme*     | Gerekli. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
 
    **İstek gövdesi**
 
@@ -442,8 +442,8 @@ Bu bölümde, Azure Resource Manager REST uç noktasına çağrı yapmak için K
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
-   |*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. |
+   |*İçerik türü*     | Gerekli. `application/json` olarak ayarlayın.        |
+   |*Yetkilendirme*     | Gerekli. Geçerli bir `Bearer` erişim belirtecine ayarlayın. |
  
    **İstek gövdesi**
 
@@ -537,7 +537,7 @@ Bu bölümde, Azure Resource Manager REST uç noktasına çağrı yapmak için K
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. |   
+   |*Yetkilendirme*     | Gerekli. Geçerli bir `Bearer` erişim belirtecine ayarlayın. |   
  
 
 4. Sanal makine ölçek kümesine atanan kullanıcı veya sistem tarafından atanan yönetilen kimliğiniz yoksa, sanal makineye ilk Kullanıcı tarafından atanan yönetilen kimliği atamak için Azure Resource Manager REST uç noktasını çağırmak üzere aşağıdaki KıVRıMLı komutunu kullanın ölçek kümesi.  Sanal makine ölçek kümesine atanan bir kullanıcı veya sistem tarafından atanan yönetilen Kimliğiniz varsa, bir sanal makine ölçek kümesine birden çok kullanıcı tarafından atanan yönetilen kimlik ekleme işlemini gösteren 5. adıma atlayın ve ayrıca sistem tarafından atanan yönetilen IDENTITY.
@@ -558,8 +558,8 @@ Bu bölümde, Azure Resource Manager REST uç noktasına çağrı yapmak için K
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
-   |*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
+   |*İçerik türü*     | Gerekli. `application/json` olarak ayarlayın.        |
+   |*Yetkilendirme*     | Gerekli. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
 
    **İstek gövdesi**
 
@@ -590,8 +590,8 @@ Bu bölümde, Azure Resource Manager REST uç noktasına çağrı yapmak için K
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
-   |*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
+   |*İçerik türü*     | Gerekli. `application/json` olarak ayarlayın.        |
+   |*Yetkilendirme*     | Gerekli. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
 
    **İstek gövdesi**
 
@@ -626,8 +626,8 @@ Bu bölümde, Azure Resource Manager REST uç noktasına çağrı yapmak için K
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
-   |*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
+   |*İçerik türü*     | Gerekli. `application/json` olarak ayarlayın.        |
+   |*Yetkilendirme*     | Gerekli. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
 
    **İstek gövdesi**
 
@@ -665,8 +665,8 @@ Bu bölümde, Azure Resource Manager REST uç noktasına çağrı yapmak için K
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
-   |*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
+   |*İçerik türü*     | Gerekli. `application/json` olarak ayarlayın.        |
+   |*Yetkilendirme*     | Gerekli. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
 
    **İstek gövdesi**
 
@@ -704,7 +704,7 @@ Bu bölümde, Azure Resource Manager REST uç noktasına çağrı yapmak için K
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. |
+   |*Yetkilendirme*     | Gerekli. Geçerli bir `Bearer` erişim belirtecine ayarlayın. |
    
    VM 'ye atanmış Yönetilen kimlikler varsa, bu değerler `identity` değerindeki yanıtta listelenir. 
     
@@ -726,8 +726,8 @@ Bu bölümde, Azure Resource Manager REST uç noktasına çağrı yapmak için K
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
-   |*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
+   |*İçerik türü*     | Gerekli. `application/json` olarak ayarlayın.        |
+   |*Yetkilendirme*     | Gerekli. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
 
    **İstek gövdesi**
 
@@ -758,8 +758,8 @@ Bu bölümde, Azure Resource Manager REST uç noktasına çağrı yapmak için K
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
-   |*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
+   |*İçerik türü*     | Gerekli. `application/json` olarak ayarlayın.        |
+   |*Yetkilendirme*     | Gerekli. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
 
    **İstek gövdesi**
 
@@ -788,8 +788,8 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 
 |İstek üst bilgisi  |Açıklama  |
 |---------|---------|
-|*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
-|*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
+|*İçerik türü*     | Gerekli. `application/json` olarak ayarlayın.        |
+|*Yetkilendirme*     | Gerekli. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
 
 **İstek gövdesi**
 
@@ -815,8 +815,8 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 
 |İstek üst bilgisi  |Açıklama  |
 |---------|---------|
-|*Content-Type*     | Gereklidir. `application/json` olarak ayarlayın.        |
-|*Yetkilendirme*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
+|*İçerik türü*     | Gerekli. `application/json` olarak ayarlayın.        |
+|*Yetkilendirme*     | Gerekli. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
 
 **İstek gövdesi**
 

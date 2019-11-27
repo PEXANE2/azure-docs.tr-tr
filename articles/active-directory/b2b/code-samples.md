@@ -26,7 +26,7 @@ ms.locfileid: "74273104"
 
 1. .CSV dosyasını hazırlayın. Yeni bir CSV dosyası oluşturun ve invitations.csv olarak adlandırın. Bu örnekte dosya, C:\data konumuna kaydedilir ve şu bilgileri içerir:
   
-   Ad                  |  InvitedUserEmailAddress
+   Name                  |  InvitedUserEmailAddress
    --------------------- | --------------------------
    Gmail B2B Davetlisi     | b2binvitee@gmail.com
    Outlook B2B davetlisi   | b2binvitee@outlook.com

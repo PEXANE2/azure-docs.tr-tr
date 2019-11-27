@@ -1,5 +1,5 @@
 ---
-title: Tutorial`:` Use a managed identity to access Azure Key Vault - Windows - Azure AD
+title: Eğitim`:` Azure Key Vault erişmek için yönetilen kimlik kullanma-Windows-Azure AD
 description: Windows VM üzerinde bir sistem tarafından atanmış yönetilen kimlik kullanarak Azure Key Vault’a erişme işleminde size yol gösteren bir öğretici.
 services: active-directory
 documentationcenter: ''
@@ -41,7 +41,7 @@ Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
 ## <a name="grant-your-vm-access-to-a-secret-stored-in-a-key-vault"></a>VM'nize Key Vault'ta depolanan Gizli Diziye erişim verme 
  
-Azure kaynakları için yönetilen kimlikler kullanıldığında kodunuz Azure AD kimlik doğrulamasını destekleyen kaynaklarda kimlik doğrulaması yapmak için erişim belirteçleri alabilir.  However, not all Azure services support Azure AD authentication. To use managed identities for Azure resources with those services, store the service credentials in Azure Key Vault, and use the VM's managed identity to access Key Vault to retrieve the credentials. 
+Azure kaynakları için yönetilen kimlikler kullanıldığında kodunuz Azure AD kimlik doğrulamasını destekleyen kaynaklarda kimlik doğrulaması yapmak için erişim belirteçleri alabilir.  Bununla birlikte, tüm Azure hizmetleri Azure AD kimlik doğrulamasını desteklemez. Bu hizmetlerle Azure kaynakları için yönetilen kimlikleri kullanmak için, hizmet kimlik bilgilerini Azure Key Vault depolayın ve VM 'nin yönetilen kimliğini kullanarak kimlik bilgilerini almak için Key Vault erişin. 
 
 İlk olarak, Key Vault'u oluşturmalı ve VM'mize Key Vault üzerinde sistem tarafından atanan yönetilen kimlik erişimi vermeliyiz.   
 
@@ -50,7 +50,7 @@ Azure kaynakları için yönetilen kimlikler kullanıldığında kodunuz Azure A
 3. Key Vault'u daha önce oluşturduğunuz VM'yle aynı aboneliğe ve kaynak grubuna yerleştirin. 
 4. **Erişim ilkeleri**’ni seçin ve **Yeni ekle**'ye tıklayın. 
 5. Şablondan yapılandır'da **Gizli Dizi Yönetimi**'ni seçin. 
-6. **Sorumlu Seç**'i seçin ve arama alanına daha önce oluşturduğunuz VM'nin adını girin.  Select the VM in the result list and click **Select**. 
+6. **Sorumlu Seç**'i seçin ve arama alanına daha önce oluşturduğunuz VM'nin adını girin.  Sonuç listesinde VM 'yi seçin ve **Seç**' e tıklayın. 
 7. Yeni erişim ilkesini ekleme işlemini tamamlamak için **Tamam**'a tıklayın ve erişim ilkesi seçimini bitirmek için de **Tamam**'a tıklayın. 
 8. Key Vault oluşturmayı tamamlamak için **Oluştur**'a tıklayın. 
 
@@ -62,7 +62,7 @@ Ardından, Key Vault'a bir gizli dizi ekleyin; böylelikle VM'nizde çalıştır
 1. **Tüm Kaynaklar**'ı seçin, sonra da oluşturduğunuz Key Vault'u bulun ve seçin. 
 2. **Gizli Diziler**'i seçin ve **Ekle**'ye tıklayın. 
 3. **Karşıya yükleme seçenekleri**'nden **El ile** seçeneğini belirtin. 
-4. Gizli dizi için bir ad ve değer girin.  The value can be anything you want. 
+4. Gizli dizi için bir ad ve değer girin.  Değer, istediğiniz herhangi bir şey olabilir. 
 5. Etkinleştirme tarihi ile sona erme tarihini boş bırakın ve **Etkin** seçeneğini **Evet** değerinde bırakın. 
 6. Gizli diziyi oluşturmak için **Oluştur**'a tıklayın. 
  
@@ -95,7 +95,7 @@ PowerShell 4.3.1 veya üstünü yüklemediyseniz, [en son sürümü indirip yük
     $KeyVaultToken = $content.access_token 
     ```
     
-    Son olarak, PowerShell’in Invoke-WebRequest komutunu kullanarak Authorization üst bilgisindeki erişim belirtecini geçirerek Key Vault'ta daha önce oluşturmuş olduğunuz gizli bilgiyi alın.  You’ll need the URL of your Key Vault, which is in the **Essentials** section of the **Overview** page of the Key Vault.  
+    Son olarak, PowerShell’in Invoke-WebRequest komutunu kullanarak Authorization üst bilgisindeki erişim belirtecini geçirerek Key Vault'ta daha önce oluşturmuş olduğunuz gizli bilgiyi alın.  Key Vault **genel bakış** sayfasının **temel** bileşenler bölümünde bulunan Key Vault URL 'sine ihtiyacınız vardır.  
     
     ```powershell
     (Invoke-WebRequest -Uri https://<your-key-vault-URL>/secrets/<secret-name>?api-version=2016-10-01 -Method GET -Headers @{Authorization="Bearer $KeyVaultToken"}).content 

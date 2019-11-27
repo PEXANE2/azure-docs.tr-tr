@@ -58,7 +58,7 @@ Media Services v3 ile içerik kodlama ve paketleme, Videoları isteğe bağlı o
 
 [Azure Media Services v3 Istemci SDK 'ları](media-services-apis-overview.md#sdks)ile geliştirmeye başlayın.
 
-### <a name="quickstarts"></a>Hızlı Başlangıçlar  
+### <a name="quickstarts"></a>Hızlı girişler  
 
 Hızlı başlangıçlarda yeni müşterilerin Media Services hızla deneyebilmesinin temel gün 1 yönergeleri gösterilir.
 

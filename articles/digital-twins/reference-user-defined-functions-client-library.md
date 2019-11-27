@@ -1,6 +1,6 @@
 ---
-title: User-defined functions client library reference - Azure Digital Twins | Microsoft Docs
-description: Azure Digital Twins user-defined functions client library reference documentation.
+title: Kullanıcı tanımlı işlevler istemci kitaplığı başvurusu-Azure dijital TWINS | Microsoft Docs
+description: Azure dijital TWINS Kullanıcı tanımlı işlevler istemci kitaplığı başvuru belgeleri.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -16,250 +16,250 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383238"
 ---
-# <a name="user-defined-functions-client-library-reference"></a>User-defined functions client library reference
+# <a name="user-defined-functions-client-library-reference"></a>Kullanıcı tanımlı işlevler istemci kitaplığı başvurusu
 
-This document provides reference information for the Azure Digital Twins user-defined functions client library.
+Bu belge, Azure Digital TWINS Kullanıcı tanımlı işlevler istemci kitaplığı için başvuru bilgileri sağlar.
 
-## <a name="helper-methods"></a>Helper methods
+## <a name="helper-methods"></a>Yardımcı yöntemler
 
-The client library defines helper methods for commonly used operations.
+İstemci kitaplığı, yaygın olarak kullanılan işlemler için yardımcı yöntemleri tanımlar.
 
-### <a name="getspacemetadataid--space"></a>getSpaceMetadata(id) ⇒ `space`
+### <a name="getspacemetadataid--space"></a>getSpaceMetadata (kimlik) ⇒ `space`
 
-Given a space identifier, this function retrieves the space from the graph.
+Alan tanımlayıcısı verildiğinde, bu işlev grafikten alanı alır.
 
-**Kind**: global function
-
-| Parametre  | Tür                | Açıklama  |
-| ---------- | ------------------- | ------------ |
-| *id*  | `guid` | Space identifier |
-
-### <a name="getsensormetadataid--sensor"></a>getSensorMetadata(id) ⇒ `sensor`
-
-Given a sensor identifier, this function retrieves the sensor from the graph.
-
-**Kind**: global function
+**Tür**: genel işlev
 
 | Parametre  | Tür                | Açıklama  |
 | ---------- | ------------------- | ------------ |
-| *id*  | `guid` | Sensor identifier |
+| *numarasını*  | `guid` | Boşluk tanımlayıcısı |
 
-### <a name="getdevicemetadataid--device"></a>getDeviceMetadata(id) ⇒ `device`
+### <a name="getsensormetadataid--sensor"></a>getSensorMetadata (kimlik) ⇒ `sensor`
 
-Given a device identifier, this function retrieves the device from the graph.
+Bir algılayıcı tanımlayıcısı verildiğinde, bu işlev algılayıcıyı grafikten alır.
 
-**Kind**: global function
+**Tür**: genel işlev
+
+| Parametre  | Tür                | Açıklama  |
+| ---------- | ------------------- | ------------ |
+| *numarasını*  | `guid` | Algılayıcı tanımlayıcısı |
+
+### <a name="getdevicemetadataid--device"></a>getDeviceMetadata (kimlik) ⇒ `device`
+
+Bir cihaz tanımlayıcısı verildiğinde, bu işlev cihazı grafikten alır.
+
+**Tür**: genel işlev
 
 | Parametre  | Tür                | Açıklama  |
 | ------ | ------------------- | ------------ |
-| *id* | `guid` | Device identifier |
+| *numarasını* | `guid` | Cihaz tanımlayıcısı |
 
-### <a name="getsensorvaluesensorid-datatype--value"></a>getSensorValue(sensorId, dataType) ⇒ `value`
+### <a name="getsensorvaluesensorid-datatype--value"></a>getSensorValue (Sensorıd, dataType) ⇒ `value`
 
-Given a sensor identifier and its data type, this function retrieves the current value for that sensor.
+Bu işlev, bir algılayıcı tanımlayıcısı ve veri türü verildiğinde, bu algılayıcı için geçerli değeri alır.
 
-**Kind**: global function
-
-| Parametre  | Tür                | Açıklama  |
-| ------ | ------------------- | ------------ |
-| *sensorId*  | `guid` | Sensor identifier |
-| *dataType*  | `string` | Sensor data type |
-
-### <a name="getspacevaluespaceid-valuename--value"></a>getSpaceValue(spaceId, valueName) ⇒ `value`
-
-Given a space identifier and the value name, this function retrieves the current value for that space property.
-
-**Kind**: global function
+**Tür**: genel işlev
 
 | Parametre  | Tür                | Açıklama  |
 | ------ | ------------------- | ------------ |
-| *spaceId*  | `guid` | Space identifier |
-| *valueName* | `string` | Space property name |
+| *Sensorıd*  | `guid` | Algılayıcı tanımlayıcısı |
+| *x*  | `string` | Algılayıcı veri türü |
 
-### <a name="getsensorhistoryvaluessensorid-datatype--value"></a>getSensorHistoryValues(sensorId, dataType) ⇒ `value[]`
+### <a name="getspacevaluespaceid-valuename--value"></a>getSpaceValue (Spaceıd, valueName) ⇒ `value`
 
-Given a sensor identifier and its data type, this function retrieves the historical values for that sensor.
+Bir alan tanımlayıcısı ve değer adı verildiğinde, bu işlev o alan özelliği için geçerli değeri alır.
 
-**Kind**: global function
-
-| Parametre  | Tür                | Açıklama  |
-| ------ | ------------------- | ------------ |
-| *sensorId* | `guid` | Sensor identifier |
-| *dataType* | `string` | Sensor data type |
-
-### <a name="getspacehistoryvaluesspaceid-datatype--value"></a>getSpaceHistoryValues(spaceId, dataType) ⇒ `value[]`
-
-Given a space identifier and the value name, this function retrieves the historical values for that property on the space.
-
-**Kind**: global function
+**Tür**: genel işlev
 
 | Parametre  | Tür                | Açıklama  |
 | ------ | ------------------- | ------------ |
-| *spaceId* | `guid` | Space identifier |
-| *valueName* | `string` | Space property name |
+| *Spaceıd*  | `guid` | Boşluk tanımlayıcısı |
+| *valueName* | `string` | Boşluk özelliği adı |
 
-### <a name="getspacechildspacesspaceid--space"></a>getSpaceChildSpaces(spaceId) ⇒ `space[]`
+### <a name="getsensorhistoryvaluessensorid-datatype--value"></a>Getsensorgeçmişini değerleri (Sensorıd, dataType) ⇒ `value[]`
 
-Given a space identifier, this function retrieves the child spaces for that parent space.
+Bu işlev, bir algılayıcı tanımlayıcısı ve veri türü verildiğinde, bu algılayıcı için geçmiş değerleri alır.
 
-**Kind**: global function
-
-| Parametre  | Tür                | Açıklama  |
-| ------ | ------------------- | ------------ |
-| *spaceId* | `guid` | Space identifier |
-
-### <a name="getspacechildsensorsspaceid--sensor"></a>getSpaceChildSensors(spaceId) ⇒ `sensor[]`
-
-Given a space identifier, this function retrieves the child sensors for that parent space.
-
-**Kind**: global function
+**Tür**: genel işlev
 
 | Parametre  | Tür                | Açıklama  |
 | ------ | ------------------- | ------------ |
-| *spaceId* | `guid` | Space identifier |
+| *Sensorıd* | `guid` | Algılayıcı tanımlayıcısı |
+| *x* | `string` | Algılayıcı veri türü |
 
-### <a name="getspacechilddevicesspaceid--device"></a>getSpaceChildDevices(spaceId) ⇒ `device[]`
+### <a name="getspacehistoryvaluesspaceid-datatype--value"></a>Getspaceıvalues değeri (Spaceıd, dataType) ⇒ `value[]`
 
-Given a space identifier, this function retrieves the child devices for that parent space.
+Alan tanımlayıcısı ve değer adı verildiğinde, bu işlev alandaki bu özelliğin geçmiş değerlerini alır.
 
-**Kind**: global function
-
-| Parametre  | Tür                | Açıklama  |
-| ------ | ------------------- | ------------ |
-| *spaceId* | `guid` | Space identifier |
-
-### <a name="getdevicechildsensorsdeviceid--sensor"></a>getDeviceChildSensors(deviceId) ⇒ `sensor[]`
-
-Given a device identifier, this function retrieves the child sensors for that parent device.
-
-**Kind**: global function
+**Tür**: genel işlev
 
 | Parametre  | Tür                | Açıklama  |
 | ------ | ------------------- | ------------ |
-| *deviceId* | `guid` | Device identifier |
+| *Spaceıd* | `guid` | Boşluk tanımlayıcısı |
+| *valueName* | `string` | Boşluk özelliği adı |
 
-### <a name="getspaceparentspacechildspaceid--space"></a>getSpaceParentSpace(childSpaceId) ⇒ `space`
+### <a name="getspacechildspacesspaceid--space"></a>getSpaceChildSpaces (Spaceıd) ⇒ `space[]`
 
-Given a space identifier, this function retrieves its parent space.
+Bir alan tanımlayıcısı verildiğinde, bu işlev bu üst alanın alt alanlarını alır.
 
-**Kind**: global function
-
-| Parametre  | Tür                | Açıklama  |
-| ------ | ------------------- | ------------ |
-| *childSpaceId* | `guid` | Space identifier |
-
-### <a name="getsensorparentspacechildsensorid--space"></a>getSensorParentSpace(childSensorId) ⇒ `space`
-
-Given a sensor identifier, this function retrieves its parent space.
-
-**Kind**: global function
+**Tür**: genel işlev
 
 | Parametre  | Tür                | Açıklama  |
 | ------ | ------------------- | ------------ |
-| *childSensorId* | `guid` | Sensor identifier |
+| *Spaceıd* | `guid` | Boşluk tanımlayıcısı |
 
-### <a name="getdeviceparentspacechilddeviceid--space"></a>getDeviceParentSpace(childDeviceId) ⇒ `space`
+### <a name="getspacechildsensorsspaceid--sensor"></a>Getspacechildsensörleri (Spaceıd) ⇒ `sensor[]`
 
-Given a device identifier, this function retrieves its parent space.
+Bir alan tanımlayıcısı verildiğinde, bu işlev ilgili üst alana ait alt algılayıcılar alır.
 
-**Kind**: global function
-
-| Parametre  | Tür                | Açıklama  |
-| ------ | ------------------- | ------------ |
-| *childDeviceId* | `guid` | Device identifier |
-
-### <a name="getsensorparentdevicechildsensorid--space"></a>getSensorParentDevice(childSensorId) ⇒ `space`
-
-Given a sensor identifier, this function retrieves its parent device.
-
-**Kind**: global function
+**Tür**: genel işlev
 
 | Parametre  | Tür                | Açıklama  |
 | ------ | ------------------- | ------------ |
-| *childSensorId* | `guid` | Sensor identifier |
+| *Spaceıd* | `guid` | Boşluk tanımlayıcısı |
 
-### <a name="getspaceextendedpropertyspaceid-propertyname--extendedproperty"></a>getSpaceExtendedProperty(spaceId, propertyName) ⇒ `extendedProperty`
+### <a name="getspacechilddevicesspaceid--device"></a>getSpaceChildDevices (Spaceıd) ⇒ `device[]`
 
-Given a space identifier, this function retrieves the property and its value from the space.
+Bir alan tanımlayıcısı verildiğinde, bu işlev bu üst alanın alt cihazlarını alır.
 
-**Kind**: global function
-
-| Parametre  | Tür                | Açıklama  |
-| ------ | ------------------- | ------------ |
-| *spaceId* | `guid` | Space identifier |
-| *propertyName* | `string` | Space property name |
-
-### <a name="getsensorextendedpropertysensorid-propertyname--extendedproperty"></a>getSensorExtendedProperty(sensorId, propertyName) ⇒ `extendedProperty`
-
-Given a sensor identifier, this function retrieves the property and its value from the sensor.
-
-**Kind**: global function
+**Tür**: genel işlev
 
 | Parametre  | Tür                | Açıklama  |
 | ------ | ------------------- | ------------ |
-| *sensorId* | `guid` | Sensor identifier |
-| *propertyName* | `string` | Sensor property name |
+| *Spaceıd* | `guid` | Boşluk tanımlayıcısı |
 
-### <a name="getdeviceextendedpropertydeviceid-propertyname--extendedproperty"></a>getDeviceExtendedProperty(deviceId, propertyName) ⇒ `extendedProperty`
+### <a name="getdevicechildsensorsdeviceid--sensor"></a>Getdevicechildalgılayıcılar (DeviceID) ⇒ `sensor[]`
 
-Given a device identifier, this function retrieves the property and its value from the device.
+Bir cihaz tanımlayıcısı verildiğinde, bu işlev ilgili üst cihaz için alt algılayıcılar alır.
 
-**Kind**: global function
-
-| Parametre  | Tür                | Açıklama  |
-| ------ | ------------------- | ------------ |
-| *deviceId* | `guid` | Device identifier |
-| *propertyName* | `string` | Device property name |
-
-### <a name="setsensorvaluesensorid-datatype-value"></a>setSensorValue(sensorId, dataType, value)
-
-This function sets a value on the sensor object with the given data type.
-
-**Kind**: global function
+**Tür**: genel işlev
 
 | Parametre  | Tür                | Açıklama  |
 | ------ | ------------------- | ------------ |
-| *sensorId* | `guid` | Sensor identifier |
-| *dataType*  | `string` | Sensor data type |
+| *DeviceID* | `guid` | Cihaz tanımlayıcısı |
+
+### <a name="getspaceparentspacechildspaceid--space"></a>getSpaceParentSpace (Childspaceıd) ⇒ `space`
+
+Bir alan tanımlayıcısı verildiğinde, bu işlev üst alanını alır.
+
+**Tür**: genel işlev
+
+| Parametre  | Tür                | Açıklama  |
+| ------ | ------------------- | ------------ |
+| *Childspaceıd* | `guid` | Boşluk tanımlayıcısı |
+
+### <a name="getsensorparentspacechildsensorid--space"></a>getSensorParentSpace (Childsensorıd) ⇒ `space`
+
+Bir algılayıcı tanımlayıcısı verildiğinde, bu işlev üst alanını alır.
+
+**Tür**: genel işlev
+
+| Parametre  | Tür                | Açıklama  |
+| ------ | ------------------- | ------------ |
+| *Childsensorıd* | `guid` | Algılayıcı tanımlayıcısı |
+
+### <a name="getdeviceparentspacechilddeviceid--space"></a>getDeviceParentSpace (Childdeviceıd) ⇒ `space`
+
+Bir cihaz tanımlayıcısı verildiğinde, bu işlev üst alanını alır.
+
+**Tür**: genel işlev
+
+| Parametre  | Tür                | Açıklama  |
+| ------ | ------------------- | ------------ |
+| *Childdeviceıd* | `guid` | Cihaz tanımlayıcısı |
+
+### <a name="getsensorparentdevicechildsensorid--space"></a>getSensorParentDevice (Childsensorıd) ⇒ `space`
+
+Bir algılayıcı tanımlayıcısı verildiğinde, bu işlev üst cihazını alır.
+
+**Tür**: genel işlev
+
+| Parametre  | Tür                | Açıklama  |
+| ------ | ------------------- | ------------ |
+| *Childsensorıd* | `guid` | Algılayıcı tanımlayıcısı |
+
+### <a name="getspaceextendedpropertyspaceid-propertyname--extendedproperty"></a>getSpaceExtendedProperty (Spaceıd, propertyName) ⇒ `extendedProperty`
+
+Bir alan tanımlayıcısı verildiğinde, bu işlev özelliği ve değerini alandan alır.
+
+**Tür**: genel işlev
+
+| Parametre  | Tür                | Açıklama  |
+| ------ | ------------------- | ------------ |
+| *Spaceıd* | `guid` | Boşluk tanımlayıcısı |
+| *Başlaması* | `string` | Boşluk özelliği adı |
+
+### <a name="getsensorextendedpropertysensorid-propertyname--extendedproperty"></a>getSensorExtendedProperty (Sensorıd, propertyName) ⇒ `extendedProperty`
+
+Bir algılayıcı tanımlayıcısı verildiğinde, bu işlev özelliği ve onun değerini sensörden alır.
+
+**Tür**: genel işlev
+
+| Parametre  | Tür                | Açıklama  |
+| ------ | ------------------- | ------------ |
+| *Sensorıd* | `guid` | Algılayıcı tanımlayıcısı |
+| *Başlaması* | `string` | Algılayıcı özelliği adı |
+
+### <a name="getdeviceextendedpropertydeviceid-propertyname--extendedproperty"></a>getDeviceExtendedProperty (DeviceID, propertyName) ⇒ `extendedProperty`
+
+Bir cihaz tanımlayıcısı verildiğinde, bu işlev özelliği ve değerini cihazdan alır.
+
+**Tür**: genel işlev
+
+| Parametre  | Tür                | Açıklama  |
+| ------ | ------------------- | ------------ |
+| *DeviceID* | `guid` | Cihaz tanımlayıcısı |
+| *Başlaması* | `string` | Cihaz özelliği adı |
+
+### <a name="setsensorvaluesensorid-datatype-value"></a>setSensorValue (Sensorıd, dataType, değer)
+
+Bu işlev, algılayıcı nesnesinde verilen veri türüne sahip bir değer ayarlar.
+
+**Tür**: genel işlev
+
+| Parametre  | Tür                | Açıklama  |
+| ------ | ------------------- | ------------ |
+| *Sensorıd* | `guid` | Algılayıcı tanımlayıcısı |
+| *x*  | `string` | Algılayıcı veri türü |
 | *value*  | `string` | Değer |
 
-### <a name="setspacevaluespaceid-datatype-value"></a>setSpaceValue(spaceId, dataType, value)
+### <a name="setspacevaluespaceid-datatype-value"></a>setSpaceValue (Spaceıd, dataType, value)
 
-This function sets a value on the space object with the given data type.
+Bu işlev, alan nesnesinde verilen veri türüne sahip bir değer ayarlar.
 
-**Kind**: global function
+**Tür**: genel işlev
 
 | Parametre  | Tür                | Açıklama  |
 | ------ | ------------------- | ------------ |
-| *spaceId* | `guid` | Space identifier |
-| *dataType* | `string` | Veri türü |
+| *Spaceıd* | `guid` | Boşluk tanımlayıcısı |
+| *x* | `string` | Veri türü |
 | *value* | `string` | Değer |
 
-### <a name="logmessage"></a>log(message)
+### <a name="logmessage"></a>günlük (ileti)
 
-This function logs the following message within the user-defined function.
+Bu işlev, Kullanıcı tanımlı işlev içinde aşağıdaki iletiyi günlüğe kaydeder.
 
-**Kind**: global function
-
-| Parametre  | Tür                | Açıklama  |
-| ------ | ------------------- | ------------ |
-| *message* | `string` | Message to be logged |
-
-### <a name="sendnotificationtopologyobjectid-topologyobjecttype-payload"></a>sendNotification(topologyObjectId, topologyObjectType, payload)
-
-This function sends a custom notification out to be dispatched.
-
-**Kind**: global function
+**Tür**: genel işlev
 
 | Parametre  | Tür                | Açıklama  |
 | ------ | ------------------- | ------------ |
-| *topologyObjectId*  | `guid` | Graph object identifier. Examples are space, sensor, and device ID.|
-| *topologyObjectType*  | `string` | Examples are sensor and device.|
-| *payload*  | `string` | The JSON payload to be sent with the notification. |
+| *İleti* | `string` | Günlüğe kaydedilecek ileti |
 
-## <a name="return-types"></a>Return types
+### <a name="sendnotificationtopologyobjectid-topologyobjecttype-payload"></a>sendNotification (Topologyobjectıd, topologyObjectType, yük)
 
-The response models returned from client reference helper methods are described below.
+Bu işlev, dağıtılması için özel bir bildirim gönderir.
+
+**Tür**: genel işlev
+
+| Parametre  | Tür                | Açıklama  |
+| ------ | ------------------- | ------------ |
+| *Topologyobjectıd*  | `guid` | Grafik nesnesi tanımlayıcısı. Örnek olarak boşluk, algılayıcı ve cihaz KIMLIĞI verilebilir.|
+| *topologyObjectType*  | `string` | Örnek algılayıcı ve cihazlardır.|
+| *te*  | `string` | Bildirimle gönderilecek JSON yükü. |
+
+## <a name="return-types"></a>Dönüş türleri
+
+İstemci başvuru Yardımcısı yöntemlerinden döndürülen yanıt modelleri aşağıda açıklanmaktadır.
 
 ### <a name="space"></a>Uzay
 
@@ -274,51 +274,51 @@ The response models returned from client reference helper methods are described 
 }
 ```
 
-### <a name="space-methods"></a>Space methods
+### <a name="space-methods"></a>Boşluk yöntemleri
 
-#### <a name="parent--space"></a>Parent() ⇒ `space`
+#### <a name="parent--space"></a>Parent () ⇒ `space`
 
-This function returns the parent space of the current space.
+Bu işlev, geçerli alanın üst alanını döndürür.
 
-#### <a name="childsensors--sensor"></a>ChildSensors() ⇒ `sensor[]`
+#### <a name="childsensors--sensor"></a>Childsensörler () ⇒ `sensor[]`
 
-This function returns the child sensors of the current space.
+Bu işlev, geçerli alanın alt sensörleri döndürür.
 
-#### <a name="childdevices--device"></a>ChildDevices() ⇒ `device[]`
+#### <a name="childdevices--device"></a>ChildDevices () ⇒ `device[]`
 
-This function returns the child devices of the current space.
+Bu işlev, geçerli alanın alt cihazlarını döndürür.
 
-#### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty(propertyName) ⇒ `extendedProperty`
+#### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty (propertyName) ⇒ `extendedProperty`
 
-This function returns the extended property and its value for the current space.
-
-| Parametre  | Tür                | Açıklama  |
-| ------ | ------------------- | ------------ |
-| *propertyName* | `string` | Name of the extended property |
-
-#### <a name="valuevaluename--value"></a>Value(valueName) ⇒ `value`
-
-This function returns the value of the current space.
+Bu işlev, geçerli alanın genişletilmiş özelliğini ve değerini döndürür.
 
 | Parametre  | Tür                | Açıklama  |
 | ------ | ------------------- | ------------ |
-| *valueName* | `string` | Name of the value |
+| *Başlaması* | `string` | Genişletilmiş özelliğin adı |
 
-#### <a name="historyvaluename--value"></a>History(valueName) ⇒ `value[]`
+#### <a name="valuevaluename--value"></a>Değer (valueName) ⇒ `value`
 
-This function returns the historical values of the current space.
-
-| Parametre  | Tür                | Açıklama  |
-| ------ | ------------------- | ------------ |
-| *valueName* | `string` | Name of the value |
-
-#### <a name="notifypayload"></a>Notify(payload)
-
-This function sends a notification with the specified payload.
+Bu işlev, geçerli alanın değerini döndürür.
 
 | Parametre  | Tür                | Açıklama  |
 | ------ | ------------------- | ------------ |
-| *payload* | `string` | JSON payload to include in the notification |
+| *valueName* | `string` | Değerin adı |
+
+#### <a name="historyvaluename--value"></a>Geçmiş (valueName) ⇒ `value[]`
+
+Bu işlev, geçerli alanın geçmiş değerlerini döndürür.
+
+| Parametre  | Tür                | Açıklama  |
+| ------ | ------------------- | ------------ |
+| *valueName* | `string` | Değerin adı |
+
+#### <a name="notifypayload"></a>Bildir (yük)
+
+Bu işlev, belirtilen yük ile bir bildirim gönderir.
+
+| Parametre  | Tür                | Açıklama  |
+| ------ | ------------------- | ------------ |
+| *te* | `string` | Bildirime dahil edilecek JSON yükü |
 
 ### <a name="device"></a>Cihaz
 
@@ -340,31 +340,31 @@ This function sends a notification with the specified payload.
 
 ### <a name="device-methods"></a>Cihaz yöntemleri
 
-#### <a name="parent--space"></a>Parent() ⇒ `space`
+#### <a name="parent--space"></a>Parent () ⇒ `space`
 
-This function returns the parent space of the current device.
+Bu işlev, geçerli cihazın üst alanını döndürür.
 
-#### <a name="childsensors--sensor"></a>ChildSensors() ⇒ `sensor[]`
+#### <a name="childsensors--sensor"></a>Childsensörler () ⇒ `sensor[]`
 
-This function returns the child sensors of the current device.
+Bu işlev, geçerli cihazın alt sensörleri döndürür.
 
-#### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty(propertyName) ⇒ `extendedProperty`
+#### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty (propertyName) ⇒ `extendedProperty`
 
-This function returns the extended property and its value for the current device.
-
-| Parametre  | Tür                | Açıklama  |
-| ------ | ------------------- | ------------ |
-| *propertyName* | `string` | Name of the extended property |
-
-#### <a name="notifypayload"></a>Notify(payload)
-
-This function sends a notification with the specified payload.
+Bu işlev, geçerli cihaz için Genişletilmiş özelliği ve değerini döndürür.
 
 | Parametre  | Tür                | Açıklama  |
 | ------ | ------------------- | ------------ |
-| *payload* | `string` | JSON payload to include in the notification |
+| *Başlaması* | `string` | Genişletilmiş özelliğin adı |
 
-### <a name="sensor"></a>Sensor
+#### <a name="notifypayload"></a>Bildir (yük)
+
+Bu işlev, belirtilen yük ile bir bildirim gönderir.
+
+| Parametre  | Tür                | Açıklama  |
+| ------ | ------------------- | ------------ |
+| *te* | `string` | Bildirime dahil edilecek JSON yükü |
+
+### <a name="sensor"></a>Algılayıcısı
 
 ```JSON
 {
@@ -386,39 +386,39 @@ This function sends a notification with the specified payload.
 }
 ```
 
-### <a name="sensor-methods"></a>Sensor methods
+### <a name="sensor-methods"></a>Algılayıcı yöntemleri
 
-#### <a name="space--space"></a>Space() ⇒ `space`
+#### <a name="space--space"></a>Boşluk () ⇒ `space`
 
-This function returns the parent space of the current sensor.
+Bu işlev, geçerli algılayıcının üst alanını döndürür.
 
-#### <a name="device--device"></a>Device() ⇒ `device`
+#### <a name="device--device"></a>Cihaz () ⇒ `device`
 
-This function returns the parent device of the current sensor.
+Bu işlev, geçerli algılayıcının ana cihazını döndürür.
 
-#### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty(propertyName) ⇒ `extendedProperty`
+#### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty (propertyName) ⇒ `extendedProperty`
 
-This function returns the extended property and its value for the current sensor.
-
-| Parametre  | Tür                | Açıklama  |
-| ------ | ------------------- | ------------ |
-| *propertyName* | `string` | Name of the extended property |
-
-#### <a name="value--value"></a>Value() ⇒ `value`
-
-This function returns the value of the current sensor.
-
-#### <a name="history--value"></a>History() ⇒ `value[]`
-
-This function returns the historical values of the current sensor.
-
-#### <a name="notifypayload"></a>Notify(payload)
-
-This function sends a notification with the specified payload.
+Bu işlev, geçerli algılayıcı için Genişletilmiş özelliği ve değerini döndürür.
 
 | Parametre  | Tür                | Açıklama  |
 | ------ | ------------------- | ------------ |
-| *payload* | `string` | JSON payload to include in the notification |
+| *Başlaması* | `string` | Genişletilmiş özelliğin adı |
+
+#### <a name="value--value"></a>Değer () ⇒ `value`
+
+Bu işlev, geçerli algılayıcının değerini döndürür.
+
+#### <a name="history--value"></a>History () ⇒ `value[]`
+
+Bu işlev, geçerli algılayıcının geçmiş değerlerini döndürür.
+
+#### <a name="notifypayload"></a>Bildir (yük)
+
+Bu işlev, belirtilen yük ile bir bildirim gönderir.
+
+| Parametre  | Tür                | Açıklama  |
+| ------ | ------------------- | ------------ |
+| *te* | `string` | Bildirime dahil edilecek JSON yükü |
 
 ### <a name="value"></a>Değer
 
@@ -430,7 +430,7 @@ This function sends a notification with the specified payload.
 }
 ```
 
-### <a name="extended-property"></a>Extended property
+### <a name="extended-property"></a>Genişletilmiş özellik
 
 ```JSON
 {
@@ -441,8 +441,8 @@ This function sends a notification with the specified payload.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Learn about [Azure Digital Twins user-defined functions](./concepts-user-defined-functions.md).
+- [Azure dijital TWINS Kullanıcı tanımlı işlevleri](./concepts-user-defined-functions.md)hakkında bilgi edinin.
 
-- Learn [how to create user-defined functions](./how-to-user-defined-functions.md).
+- [Kullanıcı tanımlı işlevler oluşturmayı](./how-to-user-defined-functions.md)öğrenin.
 
-- Learn [how to debug user-defined functions](./how-to-diagnose-user-defined-functions.md).
+- [Kullanıcı tanımlı işlevlerde hata ayıklamayı](./how-to-diagnose-user-defined-functions.md)öğrenin.

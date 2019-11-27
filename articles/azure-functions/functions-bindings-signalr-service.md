@@ -1,6 +1,6 @@
 ---
-title: Azure Functions SignalR Service bindings
-description: Understand how to use SignalR Service bindings with Azure Functions.
+title: Azure Işlevleri SignalR hizmeti bağlamaları
+description: Azure Işlevleri ile SignalR hizmeti bağlamalarını nasıl kullanacağınızı anlayın.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/28/2019
@@ -14,20 +14,20 @@ ms.locfileid: "74231013"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Azure İşlevleri için SignalR Service bağlamaları
 
-This article explains how to authenticate and send real-time messages to clients connected to [Azure SignalR Service](https://azure.microsoft.com/services/signalr-service/) by using SignalR Service bindings in Azure Functions. Azure Functions supports input and output bindings for SignalR Service.
+Bu makalede, Azure Işlevleri 'nde SignalR hizmeti bağlamaları kullanılarak [Azure SignalR hizmetine](https://azure.microsoft.com/services/signalr-service/) bağlı istemcilere nasıl kimlik doğrulaması yapılacağını ve gerçek zamanlı iletilerin gönderilmesi açıklanmaktadır. Azure Işlevleri, SignalR hizmeti için giriş ve çıkış bağlamalarını destekler.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-2x"></a>Packages - Functions 2.x
+## <a name="packages---functions-2x"></a>Paketler - 2.x işlevleri
 
-The SignalR Service bindings are provided in the [Microsoft.Azure.WebJobs.Extensions.SignalRService](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SignalRService) NuGet package, version 1.*. Source code for the package is in the [azure-functions-signalrservice-extension](https://github.com/Azure/azure-functions-signalrservice-extension) GitHub repository.
+SignalR hizmeti bağlamaları [Microsoft. Azure. WebJobs. Extensions. SignalRService](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SignalRService) NuGet paketi, sürüm 1. * içinde verilmiştir. Paketin kaynak kodu, [Azure-Functions-signalrservice-Extension](https://github.com/Azure/azure-functions-signalrservice-extension) GitHub deposunda bulunur.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2-manual-portal.md)]
 
 
-### <a name="java-annotations"></a>Java annotations
+### <a name="java-annotations"></a>Java ek açıklamaları
 
-To use the SignalR Service annotations in Java functions, you need to add a dependency to the *azure-functions-java-library-signalr* artifact (version 1.0 or higher) to your pom.xml.
+Java işlevlerinde SignalR hizmeti ek açıklamalarını kullanmak için, POM. xml dosyanıza *Azure-Functions-Java-Library-SignalR* yapıtı (sürüm 1,0 veya üzeri) bir bağımlılık eklemeniz gerekir.
 
 ```xml
 <dependency>
@@ -38,27 +38,27 @@ To use the SignalR Service annotations in Java functions, you need to add a depe
 ```
 
 > [!NOTE]
-> To use the SignalR Service bindings in Java, make sure you are using version 2.4.419 or higher of the Azure Functions Core Tools (host version 2.0.12332).
+> Java 'da SignalR hizmeti bağlamalarını kullanmak için Azure Functions Core Tools (ana bilgisayar sürümü 2.0.12332) sürüm 2.4.419 veya üstünü kullandığınızdan emin olun.
 
-## <a name="using-signalr-service-with-azure-functions"></a>Using SignalR Service with Azure Functions
+## <a name="using-signalr-service-with-azure-functions"></a>Azure Işlevleri ile SignalR hizmetini kullanma
 
-For details on how to configure and use SignalR Service and Azure Functions together, refer to [Azure Functions development and configuration with Azure SignalR Service](../azure-signalr/signalr-concept-serverless-development-config.md).
+SignalR hizmetini ve Azure Işlevlerini birlikte yapılandırma ve kullanma hakkında ayrıntılı bilgi için Azure [SignalR hizmeti Ile Azure işlevleri geliştirme ve yapılandırma](../azure-signalr/signalr-concept-serverless-development-config.md)konusuna bakın.
 
-## <a name="signalr-connection-info-input-binding"></a>SignalR connection info input binding
+## <a name="signalr-connection-info-input-binding"></a>SignalR bağlantı bilgileri giriş bağlama
 
-Before a client can connect to Azure SignalR Service, it must retrieve the service endpoint URL and a valid access token. The *SignalRConnectionInfo* input binding produces the SignalR Service endpoint URL and a valid token that are used to connect to the service. Because the token is time-limited and can be used to authenticate a specific user to a connection, you should not cache the token or share it between clients. An HTTP trigger using this binding can be used by clients to retrieve the connection information.
+Bir istemcinin Azure SignalR hizmetine bağlanabilmesi için, hizmet uç noktası URL 'sini ve geçerli bir erişim belirtecini alması gerekir. *Signalrconnectionınfo* giriş bağlaması, SignalR hizmeti uç noktası URL 'sini ve hizmete bağlanmak için kullanılan geçerli bir belirteci üretir. Belirteç zaman sınırlı olduğundan ve belirli bir kullanıcının kimlik doğrulaması için kullanılabilir olduğundan, belirteci önbelleğe almalısınız veya istemciler arasında paylaşamazsınız. Bu bağlamayı kullanan bir HTTP tetikleyicisi, istemciler tarafından bağlantı bilgilerini almak için kullanılabilir.
 
-See the language-specific example:
+Dile özgü örneğe bakın:
 
-* [2.x C#](#2x-c-input-examples)
-* [2.x JavaScript](#2x-javascript-input-examples)
-* [2.x Java](#2x-java-input-examples)
+* [2.xC#](#2x-c-input-examples)
+* [2. x JavaScript](#2x-javascript-input-examples)
+* [2. x Java](#2x-java-input-examples)
 
-For more information on how this binding is used to create a "negotiate" function that can be consumed by a SignalR client SDK, see the [Azure Functions development and configuration article](../azure-signalr/signalr-concept-serverless-development-config.md) in the SignalR Service concepts documentation.
+Bu bağlamanın bir SignalR istemci SDK 'Sı tarafından tüketilen bir "Negotiate" işlevi oluşturmak için nasıl kullanıldığı hakkında daha fazla bilgi için, SignalR hizmeti kavramları belgelerindeki [Azure işlevleri geliştirme ve yapılandırma makalesine](../azure-signalr/signalr-concept-serverless-development-config.md) bakın.
 
-### <a name="2x-c-input-examples"></a>2.x C# input examples
+### <a name="2x-c-input-examples"></a>2. x C# giriş örnekleri
 
-The following example shows a [C# function](functions-dotnet-class-library.md) that acquires SignalR connection information using the input binding and returns it over HTTP.
+Aşağıdaki örnek, giriş bağlamasını kullanarak SignalR bağlantı bilgilerini alan ve http üzerinden döndüren bir [ C# işlevi](functions-dotnet-class-library.md) gösterir.
 
 ```cs
 [FunctionName("negotiate")]
@@ -70,11 +70,11 @@ public static SignalRConnectionInfo Negotiate(
 }
 ```
 
-#### <a name="authenticated-tokens"></a>Authenticated tokens
+#### <a name="authenticated-tokens"></a>Kimliği doğrulanmış belirteçler
 
-If the function is triggered by an authenticated client, you can add a user ID claim to the generated token. You can easily add authentication to a function app using [App Service Authentication](../app-service/overview-authentication-authorization.md).
+İşlev kimliği doğrulanmış bir istemci tarafından tetikleniyorsa, oluşturulan belirtece bir kullanıcı KIMLIĞI talebi ekleyebilirsiniz. [App Service kimlik doğrulaması](../app-service/overview-authentication-authorization.md)kullanarak bir işlev uygulamasına kolayca kimlik doğrulaması ekleyebilirsiniz.
 
-App Service Authentication sets HTTP headers named `x-ms-client-principal-id` and `x-ms-client-principal-name` that contain the authenticated user's client principal ID and name, respectively. You can set the `UserId` property of the binding to the value from either header using a [binding expression](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` or `{headers.x-ms-client-principal-name}`. 
+App Service kimlik doğrulaması, sırasıyla kimliği doğrulanmış kullanıcının istemci asıl KIMLIĞINI ve adını içeren `x-ms-client-principal-id` ve `x-ms-client-principal-name` adlı HTTP üstbilgilerini ayarlar. Bağlama [ifadesi](./functions-bindings-expressions-patterns.md)kullanarak, bağlamanın `UserId` özelliğini herhangi bir başlıktaki değere ayarlayabilirsiniz: `{headers.x-ms-client-principal-id}` veya `{headers.x-ms-client-principal-name}`. 
 
 ```cs
 [FunctionName("negotiate")]
@@ -89,13 +89,13 @@ public static SignalRConnectionInfo Negotiate(
 }
 ```
 
-### <a name="2x-javascript-input-examples"></a>2.x JavaScript input examples
+### <a name="2x-javascript-input-examples"></a>2. x JavaScript girişi örnekleri
 
-The following example shows a SignalR connection info input binding in a *function.json* file and a [JavaScript function](functions-reference-node.md) that uses the binding to return the connection information.
+Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir SignalR bağlantı bilgileri giriş bağlamasını ve bağlantı bilgilerini döndürmek için bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir.
 
-Here's binding data in the *function.json* file:
+İşte, *function. JSON* dosyasındaki veri bağlama:
 
-Example function.json:
+Örnek Function. JSON:
 
 ```json
 {
@@ -107,7 +107,7 @@ Example function.json:
 }
 ```
 
-Here's the JavaScript code:
+JavaScript kod aşağıdaki gibidir:
 
 ```javascript
 module.exports = async function (context, req, connectionInfo) {
@@ -115,13 +115,13 @@ module.exports = async function (context, req, connectionInfo) {
 };
 ```
 
-#### <a name="authenticated-tokens"></a>Authenticated tokens
+#### <a name="authenticated-tokens"></a>Kimliği doğrulanmış belirteçler
 
-If the function is triggered by an authenticated client, you can add a user ID claim to the generated token. You can easily add authentication to a function app using [App Service Authentication](../app-service/overview-authentication-authorization.md).
+İşlev kimliği doğrulanmış bir istemci tarafından tetikleniyorsa, oluşturulan belirtece bir kullanıcı KIMLIĞI talebi ekleyebilirsiniz. [App Service kimlik doğrulaması](../app-service/overview-authentication-authorization.md)kullanarak bir işlev uygulamasına kolayca kimlik doğrulaması ekleyebilirsiniz.
 
-App Service Authentication sets HTTP headers named `x-ms-client-principal-id` and `x-ms-client-principal-name` that contain the authenticated user's client principal ID and name, respectively. You can set the `userId` property of the binding to the value from either header using a [binding expression](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` or `{headers.x-ms-client-principal-name}`. 
+App Service kimlik doğrulaması, sırasıyla kimliği doğrulanmış kullanıcının istemci asıl KIMLIĞINI ve adını içeren `x-ms-client-principal-id` ve `x-ms-client-principal-name` adlı HTTP üstbilgilerini ayarlar. Bağlama [ifadesi](./functions-bindings-expressions-patterns.md)kullanarak, bağlamanın `userId` özelliğini herhangi bir başlıktaki değere ayarlayabilirsiniz: `{headers.x-ms-client-principal-id}` veya `{headers.x-ms-client-principal-name}`. 
 
-Example function.json:
+Örnek Function. JSON:
 
 ```json
 {
@@ -134,7 +134,7 @@ Example function.json:
 }
 ```
 
-Here's the JavaScript code:
+JavaScript kod aşağıdaki gibidir:
 
 ```javascript
 module.exports = async function (context, req, connectionInfo) {
@@ -144,9 +144,9 @@ module.exports = async function (context, req, connectionInfo) {
 };
 ```
 
-### <a name="2x-java-input-examples"></a>2.x Java input examples
+### <a name="2x-java-input-examples"></a>2. x Java giriş örnekleri
 
-The following example shows a [Java function](functions-reference-java.md) that acquires SignalR connection information using the input binding and returns it over HTTP.
+Aşağıdaki örnek, giriş bağlamayı kullanarak SignalR bağlantı bilgilerini alan ve HTTP üzerinden döndüren bir [Java işlevini](functions-reference-java.md) gösterir.
 
 ```java
 @FunctionName("negotiate")
@@ -162,11 +162,11 @@ public SignalRConnectionInfo negotiate(
 }
 ```
 
-#### <a name="authenticated-tokens"></a>Authenticated tokens
+#### <a name="authenticated-tokens"></a>Kimliği doğrulanmış belirteçler
 
-If the function is triggered by an authenticated client, you can add a user ID claim to the generated token. You can easily add authentication to a function app using [App Service Authentication](../app-service/overview-authentication-authorization.md).
+İşlev kimliği doğrulanmış bir istemci tarafından tetikleniyorsa, oluşturulan belirtece bir kullanıcı KIMLIĞI talebi ekleyebilirsiniz. [App Service kimlik doğrulaması](../app-service/overview-authentication-authorization.md)kullanarak bir işlev uygulamasına kolayca kimlik doğrulaması ekleyebilirsiniz.
 
-App Service Authentication sets HTTP headers named `x-ms-client-principal-id` and `x-ms-client-principal-name` that contain the authenticated user's client principal ID and name, respectively. You can set the `UserId` property of the binding to the value from either header using a [binding expression](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` or `{headers.x-ms-client-principal-name}`.
+App Service kimlik doğrulaması, sırasıyla kimliği doğrulanmış kullanıcının istemci asıl KIMLIĞINI ve adını içeren `x-ms-client-principal-id` ve `x-ms-client-principal-name` adlı HTTP üstbilgilerini ayarlar. Bağlama [ifadesi](./functions-bindings-expressions-patterns.md)kullanarak, bağlamanın `UserId` özelliğini herhangi bir başlıktaki değere ayarlayabilirsiniz: `{headers.x-ms-client-principal-id}` veya `{headers.x-ms-client-principal-name}`.
 
 ```java
 @FunctionName("negotiate")
@@ -183,23 +183,23 @@ public SignalRConnectionInfo negotiate(
 }
 ```
 
-## <a name="signalr-output-binding"></a>SignalR output binding
+## <a name="signalr-output-binding"></a>SignalR çıkış bağlama
 
-Use the *SignalR* output binding to send one or more messages using Azure SignalR Service. You can broadcast a message to all connected clients, or you can broadcast it only to connected clients that have been authenticated to a given user.
+Azure SignalR hizmetini kullanarak bir veya daha fazla ileti göndermek için *SignalR* çıkış bağlamasını kullanın. Tüm bağlı istemcilere bir ileti yayınlayabilirsiniz veya yalnızca belirli bir kullanıcıya kimliği doğrulanmış bağlı istemcilere yayınlayabilirsiniz.
 
-You can also use it to manage the groups that a user belongs to.
+Ayrıca, bir kullanıcının ait olduğu grupları yönetmek için de kullanabilirsiniz.
 
-See the language-specific example:
+Dile özgü örneğe bakın:
 
-* [2.x C#](#2x-c-send-message-output-examples)
-* [2.x JavaScript](#2x-javascript-send-message-output-examples)
-* [2.x Java](#2x-java-send-message-output-examples)
+* [2.xC#](#2x-c-send-message-output-examples)
+* [2. x JavaScript](#2x-javascript-send-message-output-examples)
+* [2. x Java](#2x-java-send-message-output-examples)
 
-### <a name="2x-c-send-message-output-examples"></a>2.x C# send message output examples
+### <a name="2x-c-send-message-output-examples"></a>2. x C# ileti gönderme çıkışı örnekleri
 
-#### <a name="broadcast-to-all-clients"></a>Broadcast to all clients
+#### <a name="broadcast-to-all-clients"></a>Tüm istemcilere yayınla
 
-The following example shows a [C# function](functions-dotnet-class-library.md) that sends a message using the output binding to all connected clients. The `Target` is the name of the method to be invoked on each client. The `Arguments` property is an array of zero or more objects to be passed to the client method.
+Aşağıdaki örnek, tüm bağlı istemcilere çıkış bağlamayı kullanarak bir ileti gönderen bir [ C# işlevi](functions-dotnet-class-library.md) gösterir. `Target`, her istemcide çağrılacak yöntemin adıdır. `Arguments` özelliği, istemci metoduna geçirilecek sıfır veya daha fazla nesne dizisidir.
 
 ```cs
 [FunctionName("SendMessage")]
@@ -216,9 +216,9 @@ public static Task SendMessage(
 }
 ```
 
-#### <a name="send-to-a-user"></a>Send to a user
+#### <a name="send-to-a-user"></a>Kullanıcıya gönder
 
-You can send a message only to connections that have been authenticated to a user by setting the `UserId` property of the SignalR message.
+SignalR iletisinin `UserId` özelliğini ayarlayarak, yalnızca bir kullanıcıya kimliği doğrulanmış bağlantılara ileti gönderebilirsiniz.
 
 ```cs
 [FunctionName("SendMessage")]
@@ -237,9 +237,9 @@ public static Task SendMessage(
 }
 ```
 
-#### <a name="send-to-a-group"></a>Send to a group
+#### <a name="send-to-a-group"></a>Bir gruba gönder
 
-You can send a message only to connections that have been added to a group by setting the `GroupName` property of the SignalR message.
+SignalR iletisinin `GroupName` özelliğini ayarlayarak yalnızca bir gruba eklenmiş bağlantılara ileti gönderebilirsiniz.
 
 ```cs
 [FunctionName("SendMessage")]
@@ -258,13 +258,13 @@ public static Task SendMessage(
 }
 ```
 
-### <a name="2x-c-group-management-output-examples"></a>2.x C# group management output examples
+### <a name="2x-c-group-management-output-examples"></a>2. x C# Grup yönetimi çıkış örnekleri
 
-SignalR Service allows users to be added to groups. Messages can then be sent to a group. You can use the `SignalRGroupAction` class with the `SignalR` output binding to manage a user's group membership.
+SignalR hizmeti kullanıcıların gruplara eklenmesine izin verir. İletiler daha sonra bir gruba gönderilebilir. Bir kullanıcının grup üyeliğini yönetmek için `SignalRGroupAction` sınıfını `SignalR` çıkış bağlamasıyla birlikte kullanabilirsiniz.
 
-#### <a name="add-user-to-a-group"></a>Add user to a group
+#### <a name="add-user-to-a-group"></a>Gruba kullanıcı ekleme
 
-The following example adds a user to a group.
+Aşağıdaki örnek bir gruba bir kullanıcı ekler.
 
 ```csharp
 [FunctionName("addToGroup")]
@@ -285,9 +285,9 @@ public static Task AddToGroup(
 }
 ```
 
-#### <a name="remove-user-from-a-group"></a>Remove user from a group
+#### <a name="remove-user-from-a-group"></a>Kullanıcıyı bir gruptan Kaldır
 
-The following example removes a user from a group.
+Aşağıdaki örnek bir kullanıcıyı bir gruptan kaldırır.
 
 ```csharp
 [FunctionName("removeFromGroup")]
@@ -309,17 +309,17 @@ public static Task RemoveFromGroup(
 ```
 
 > [!NOTE]
-> In order to get the `ClaimsPrincipal` correctly bound, you must have configured the authentication settings in Azure Functions.
+> `ClaimsPrincipal` doğru bir şekilde bağlanmasını sağlamak için Azure Işlevleri 'nde kimlik doğrulama ayarlarını yapılandırmış olmanız gerekir.
 
-### <a name="2x-javascript-send-message-output-examples"></a>2.x JavaScript send message output examples
+### <a name="2x-javascript-send-message-output-examples"></a>2. x JavaScript ileti çıkış örnekleri gönder
 
-#### <a name="broadcast-to-all-clients"></a>Broadcast to all clients
+#### <a name="broadcast-to-all-clients"></a>Tüm istemcilere yayınla
 
-The following example shows a SignalR output binding in a *function.json* file and a [JavaScript function](functions-reference-node.md) that uses the binding to send a message with Azure SignalR Service. Set the output binding to an array of one or more SignalR messages. A SignalR message consists of a `target` property that specifies the name of the method to invoke on each client, and an `arguments` property that is an array of objects to pass to the client method as arguments.
+Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir SignalR çıkış bağlamasını ve Azure SignalR hizmeti ile ileti göndermek için bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir. Çıkış bağlamayı bir veya daha fazla SignalR iletisi dizisine ayarlayın. Bir SignalR iletisi, her istemcide çağrılacak yöntemin adını belirten bir `target` özelliğinden oluşur ve istemci metoduna bağımsız değişken olarak geçirilecek bir nesne dizisi olan bir `arguments` özelliğidir.
 
-Here's binding data in the *function.json* file:
+İşte, *function. JSON* dosyasındaki veri bağlama:
 
-Example function.json:
+Örnek Function. JSON:
 
 ```json
 {
@@ -331,7 +331,7 @@ Example function.json:
 }
 ```
 
-Here's the JavaScript code:
+JavaScript kod aşağıdaki gibidir:
 
 ```javascript
 module.exports = async function (context, req) {
@@ -342,11 +342,11 @@ module.exports = async function (context, req) {
 };
 ```
 
-#### <a name="send-to-a-user"></a>Send to a user
+#### <a name="send-to-a-user"></a>Kullanıcıya gönder
 
-You can send a message only to connections that have been authenticated to a user by setting the `userId` property of the SignalR message.
+SignalR iletisinin `userId` özelliğini ayarlayarak, yalnızca bir kullanıcıya kimliği doğrulanmış bağlantılara ileti gönderebilirsiniz.
 
-*function.json* stays the same. Here's the JavaScript code:
+*function. JSON* aynı kalır. JavaScript kod aşağıdaki gibidir:
 
 ```javascript
 module.exports = async function (context, req) {
@@ -359,11 +359,11 @@ module.exports = async function (context, req) {
 };
 ```
 
-#### <a name="send-to-a-group"></a>Send to a group
+#### <a name="send-to-a-group"></a>Bir gruba gönder
 
-You can send a message only to connections that have been added to a group by setting the `groupName` property of the SignalR message.
+SignalR iletisinin `groupName` özelliğini ayarlayarak yalnızca bir gruba eklenmiş bağlantılara ileti gönderebilirsiniz.
 
-*function.json* stays the same. Here's the JavaScript code:
+*function. JSON* aynı kalır. JavaScript kod aşağıdaki gibidir:
 
 ```javascript
 module.exports = async function (context, req) {
@@ -376,15 +376,15 @@ module.exports = async function (context, req) {
 };
 ```
 
-### <a name="2x-javascript-group-management-output-examples"></a>2.x JavaScript group management output examples
+### <a name="2x-javascript-group-management-output-examples"></a>2. x JavaScript Grup yönetimi çıkış örnekleri
 
-SignalR Service allows users to be added to groups. Messages can then be sent to a group. You can use the `SignalR` output binding to manage a user's group membership.
+SignalR hizmeti kullanıcıların gruplara eklenmesine izin verir. İletiler daha sonra bir gruba gönderilebilir. Kullanıcının grup üyeliğini yönetmek için `SignalR` çıkış bağlamayı kullanabilirsiniz.
 
-#### <a name="add-user-to-a-group"></a>Add user to a group
+#### <a name="add-user-to-a-group"></a>Gruba kullanıcı ekleme
 
-The following example adds a user to a group.
+Aşağıdaki örnek bir gruba bir kullanıcı ekler.
 
-*function.json*
+*function. JSON*
 
 ```json
 {
@@ -415,7 +415,7 @@ The following example adds a user to a group.
 }
 ```
 
-*index.js*
+*index. js*
 
 ```javascript
 module.exports = async function (context, req) {
@@ -427,11 +427,11 @@ module.exports = async function (context, req) {
 };
 ```
 
-#### <a name="remove-user-from-a-group"></a>Remove user from a group
+#### <a name="remove-user-from-a-group"></a>Kullanıcıyı bir gruptan Kaldır
 
-The following example removes a user from a group.
+Aşağıdaki örnek bir kullanıcıyı bir gruptan kaldırır.
 
-*function.json*
+*function. JSON*
 
 ```json
 {
@@ -462,7 +462,7 @@ The following example removes a user from a group.
 }
 ```
 
-*index.js*
+*index. js*
 
 ```javascript
 module.exports = async function (context, req) {
@@ -474,11 +474,11 @@ module.exports = async function (context, req) {
 };
 ```
 
-### <a name="2x-java-send-message-output-examples"></a>2.x Java send message output examples
+### <a name="2x-java-send-message-output-examples"></a>2. x Java ileti gönderme çıkışı örnekleri
 
-#### <a name="broadcast-to-all-clients"></a>Broadcast to all clients
+#### <a name="broadcast-to-all-clients"></a>Tüm istemcilere yayınla
 
-The following example shows a [Java function](functions-reference-java.md) that sends a message using the output binding to all connected clients. The `target` is the name of the method to be invoked on each client. The `arguments` property is an array of zero or more objects to be passed to the client method.
+Aşağıdaki örnekte, tüm bağlı istemcilere çıkış bağlamayı kullanarak bir ileti gönderen bir [Java işlevi](functions-reference-java.md) gösterilmektedir. `target`, her istemcide çağrılacak yöntemin adıdır. `arguments` özelliği, istemci metoduna geçirilecek sıfır veya daha fazla nesne dizisidir.
 
 ```java
 @FunctionName("sendMessage")
@@ -496,9 +496,9 @@ public SignalRMessage sendMessage(
 }
 ```
 
-#### <a name="send-to-a-user"></a>Send to a user
+#### <a name="send-to-a-user"></a>Kullanıcıya gönder
 
-You can send a message only to connections that have been authenticated to a user by setting the `userId` property of the SignalR message.
+SignalR iletisinin `userId` özelliğini ayarlayarak, yalnızca bir kullanıcıya kimliği doğrulanmış bağlantılara ileti gönderebilirsiniz.
 
 ```java
 @FunctionName("sendMessage")
@@ -517,9 +517,9 @@ public SignalRMessage sendMessage(
 }
 ```
 
-#### <a name="send-to-a-group"></a>Send to a group
+#### <a name="send-to-a-group"></a>Bir gruba gönder
 
-You can send a message only to connections that have been added to a group by setting the `groupName` property of the SignalR message.
+SignalR iletisinin `groupName` özelliğini ayarlayarak yalnızca bir gruba eklenmiş bağlantılara ileti gönderebilirsiniz.
 
 ```java
 @FunctionName("sendMessage")
@@ -538,13 +538,13 @@ public SignalRMessage sendMessage(
 }
 ```
 
-### <a name="2x-java-group-management-output-examples"></a>2.x Java group management output examples
+### <a name="2x-java-group-management-output-examples"></a>2. x Java Grup yönetimi çıkış örnekleri
 
-SignalR Service allows users to be added to groups. Messages can then be sent to a group. You can use the `SignalRGroupAction` class with the `SignalROutput` output binding to manage a user's group membership.
+SignalR hizmeti kullanıcıların gruplara eklenmesine izin verir. İletiler daha sonra bir gruba gönderilebilir. Bir kullanıcının grup üyeliğini yönetmek için `SignalRGroupAction` sınıfını `SignalROutput` çıkış bağlamasıyla birlikte kullanabilirsiniz.
 
-#### <a name="add-user-to-a-group"></a>Add user to a group
+#### <a name="add-user-to-a-group"></a>Gruba kullanıcı ekleme
 
-The following example adds a user to a group.
+Aşağıdaki örnek bir gruba bir kullanıcı ekler.
 
 ```java
 @FunctionName("addToGroup")
@@ -564,9 +564,9 @@ public SignalRGroupAction addToGroup(
 }
 ```
 
-#### <a name="remove-user-from-a-group"></a>Remove user from a group
+#### <a name="remove-user-from-a-group"></a>Kullanıcıyı bir gruptan Kaldır
 
-The following example removes a user from a group.
+Aşağıdaki örnek bir kullanıcıyı bir gruptan kaldırır.
 
 ```java
 @FunctionName("removeFromGroup")
@@ -588,37 +588,37 @@ public SignalRGroupAction removeFromGroup(
 
 ## <a name="configuration"></a>Yapılandırma
 
-### <a name="signalrconnectioninfo"></a>SignalRConnectionInfo
+### <a name="signalrconnectioninfo"></a>Signalrconnectionınfo
 
-The following table explains the binding configuration properties that you set in the *function.json* file and the `SignalRConnectionInfo` attribute.
+Aşağıdaki tabloda, *function. JSON* dosyasında ve `SignalRConnectionInfo` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
 
-|function.json property | Attribute property |Açıklama|
+|Function.JSON özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-|**type**|| Must be set to `signalRConnectionInfo`.|
-|**direction**|| Must be set to `in`.|
-|**name**|| Variable name used in function code for connection info object. |
-|**hubName**|**HubName**| This value must be set to the name of the SignalR hub for which the connection information is generated.|
-|**userId**|**UserId**| Optional: The value of the user identifier claim to be set in the access key token. |
-|**connectionStringSetting**|**ConnectionStringSetting**| The name of the app setting that contains the SignalR Service connection string (defaults to "AzureSignalRConnectionString") |
+|**type**|| `signalRConnectionInfo`olarak ayarlanmalıdır.|
+|**direction**|| `in`olarak ayarlanmalıdır.|
+|**ada**|| Bağlantı bilgisi nesnesi için işlev kodunda kullanılan değişken adı. |
+|**hubName**|**HubName**| Bu değer, bağlantı bilgilerinin oluşturulduğu SignalR hub 'ının adına ayarlanmalıdır.|
+|**UserID**|**UserID**| İsteğe bağlı: erişim anahtarı belirtecinde ayarlanacak Kullanıcı tanımlayıcı talebinin değeri. |
+|**connectionStringSetting**|**ConnectionStringSetting**| SignalR hizmeti bağlantı dizesini içeren uygulama ayarının adı (varsayılan olarak "AzureSignalRConnectionString" olarak belirlenmiştir) |
 
 ### <a name="signalr"></a>SignalR
 
-The following table explains the binding configuration properties that you set in the *function.json* file and the `SignalR` attribute.
+Aşağıdaki tabloda, *function. JSON* dosyasında ve `SignalR` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
 
-|function.json property | Attribute property |Açıklama|
+|Function.JSON özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-|**type**|| Must be set to `signalR`.|
-|**direction**|| Must be set to `out`.|
-|**name**|| Variable name used in function code for connection info object. |
-|**hubName**|**HubName**| This value must be set to the name of the SignalR hub for which the connection information is generated.|
-|**connectionStringSetting**|**ConnectionStringSetting**| The name of the app setting that contains the SignalR Service connection string (defaults to "AzureSignalRConnectionString") |
+|**type**|| `signalR`olarak ayarlanmalıdır.|
+|**direction**|| `out`olarak ayarlanmalıdır.|
+|**ada**|| Bağlantı bilgisi nesnesi için işlev kodunda kullanılan değişken adı. |
+|**hubName**|**HubName**| Bu değer, bağlantı bilgilerinin oluşturulduğu SignalR hub 'ının adına ayarlanmalıdır.|
+|**connectionStringSetting**|**ConnectionStringSetting**| SignalR hizmeti bağlantı dizesini içeren uygulama ayarının adı (varsayılan olarak "AzureSignalRConnectionString" olarak belirlenmiştir) |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Learn more about Azure functions triggers and bindings](functions-triggers-bindings.md)
+> [Azure işlevleri Tetikleyicileri ve bağlamaları hakkında daha fazla bilgi edinin](functions-triggers-bindings.md)
 
 > [!div class="nextstepaction"]
 > [Azure SignalR Hizmeti ile Azure İşlevleri geliştirme ve yapılandırma](../azure-signalr/signalr-concept-serverless-development-config.md)

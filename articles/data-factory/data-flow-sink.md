@@ -1,6 +1,6 @@
 ---
-title: Set up a sink transformation in the mapping data flow feature
-description: Learn how to set up a sink transformation in the mapping data flow.
+title: Veri akışı eşleme özelliğinde bir havuz dönüştürmesi ayarlama
+description: Eşleme veri akışında bir havuz dönüştürmeyi ayarlamayı öğrenin.
 author: kromerm
 ms.author: makromer
 manager: anandsub
@@ -15,105 +15,105 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74217919"
 ---
-# <a name="sink-transformation-for-a-data-flow"></a>Sink transformation for a data flow
+# <a name="sink-transformation-for-a-data-flow"></a>Veri akışı için havuz dönüştürme
 
-After you transform your data flow, you can sink the data into a destination dataset. In the sink transformation, choose a dataset definition for the destination output data. You can have as many sink transformations as your data flow requires.
+Veri akışınızı dönüştürdükten sonra, verileri bir hedef veri kümesine havuza alabilirsiniz. Havuz dönüşümünde, hedef çıktı verileri için bir veri kümesi tanımı seçin. Veri akışınız için gereken sayıda havuz dönüşümlerine sahip olabilirsiniz.
 
-To account for schema drift and changes in incoming data, sink the output data to a folder without a defined schema in the output dataset. You can also account for column changes in your sources by selecting **Allow schema drift** in the source. Then automap all fields in the sink.
+Gelen verilerdeki şema kayması ve değişiklikler için, çıkış verilerini çıktı veri kümesinde tanımlı bir şema olmadan bir klasöre havuza alma. Ayrıca, kaynakta **şema Için Izin ver** ' i seçerek kaynaklarınızda sütun değişikliklerini hesaba ekleyebilirsiniz. Ardından, havuzdaki tüm alanları yeniden belirleyin.
 
-![Options on the Sink tab, including the Auto Map option](media/data-flow/sink1.png "sink 1")
+![Otomatik eşleme seçeneği dahil olmak üzere havuz sekmesindeki seçenekler](media/data-flow/sink1.png "Havuz 1")
 
-To sink all incoming fields, turn on **Auto Map**. To choose the fields to sink to the destination, or to change the names of the fields at the destination, turn off **Auto Map**. Then open the **Mapping** tab to map output fields.
+Tüm gelen alanları havuza almak için **Otomatik eşlemeyi**açın. Hedefe havuza eklenecek alanları seçmek veya hedefteki alanların adlarını değiştirmek için **Otomatik eşlemeyi**devre dışı bırakın. Ardından, çıkış alanlarını eşlemek için **eşleme** sekmesini açın.
 
-![Options on the Mapping tab](media/data-flow/sink2.png "sink 2")
+![Eşleme sekmesindeki seçenekler](media/data-flow/sink2.png "Havuz 2")
 
 ## <a name="output"></a>Çıktı 
-For Azure Blob storage or Data Lake Storage sink types, output the transformed data into a folder. Spark generates partitioned output data files based on the partitioning scheme that the sink transformation uses. 
+Azure Blob depolama veya Data Lake Storage havuz türleri için, dönüştürülmüş verileri bir klasöre çıktı. Spark, havuz dönüşümünün kullandığı bölümleme şemasına göre bölümlenmiş çıkış veri dosyaları oluşturur. 
 
-You can set the partitioning scheme from the **Optimize** tab. If you want Data Factory to merge your output into a single file, select **Single partition**. If you wish to maintain or create partitioned folders, use **Key partitioning** and set the keys you wish to use for partitioned folder structures.
+**En iyileştirme** sekmesinden bölümleme şemasını ayarlayabilirsiniz. Çıktlarınızı tek bir dosyada birleştirmek Data Factory istiyorsanız **tek bölüm**' ü seçin. Bölümlenmiş klasörleri sürdürmek veya oluşturmak isterseniz, **anahtar bölümleme** kullanın ve bölümlenmiş klasör yapıları için kullanmak istediğiniz anahtarları ayarlayın.
 
-![Options on the Optimize tab](media/data-flow/opt001.png "sink options")
+![En Iyileştirme sekmesindeki seçenekler](media/data-flow/opt001.png "havuz seçenekleri")
 
-## <a name="field-mapping"></a>Field mapping
-On the **Mapping** tab of your sink transformation, you can map the incoming columns on the left to the destinations on the right. When you sink data flows to files, Data Factory will always write new files to a folder. When you map to a database dataset, you will choose database table operation options to insert, update, upsert, or delete.
+## <a name="field-mapping"></a>Alan eşleme
+Havuz dönüşümünüzün **eşleme** sekmesinde, sol taraftaki gelen sütunları sağ taraftaki hedeflere eşleyebilirsiniz. Veri akışlarını dosyalara havuza aldığınızda Data Factory her zaman bir klasöre yeni dosyalar yazar. Bir veritabanı veri kümesine eşlediğinizde, eklemek, güncelleştirmek, kaldırmak veya silmek için veritabanı tablosu işlem seçeneklerini tercih edersiniz.
 
-![The Mapping tab](media/data-flow/sink2.png "Sinks")
+![Eşleme sekmesi](media/data-flow/sink2.png "Yapma")
 
-In the mapping table, you can multiselect to link multiple columns, delink multiple columns, or map multiple rows to the same column name.
+Eşleme tablosunda birden çok sütunu bağlamak, birden çok sütunu bağlamak veya birden çok satırı aynı sütun adına eşlemek için çoklu seçim yapabilirsiniz.
 
-To always map the incoming set of fields to a target as they are and to fully accept flexible schema definitions, select **Allow schema drift**.
+Gelen alan kümesini her zaman bir hedefle eşlemek ve esnek şema tanımlarını tam kabul etmek için, **şema Drçıkmasına Izin ver**' i seçin.
 
-![The Mapping tab, showing fields mapped to columns in the dataset](media/data-flow/multi1.png "multiple options")
+![Veri kümesindeki sütunlarla eşlenen alanları gösteren eşleme sekmesi](media/data-flow/multi1.png "birden çok seçenek")
 
-To reset your column mappings, select **Re-map**.
+Sütun eşlemelerinizi sıfırlamak için **yeniden eşle**' yi seçin.
 
-![The Sink tab](media/data-flow/sink1.png "Sink One")
+![Havuz sekmesi](media/data-flow/sink1.png "Bir havuz")
 
-Select **Validate schema** to fail the sink if the schema changes.
+Şema değişirse havuzun başarısız olması için **Şemayı doğrula** ' yı seçin.
 
-Select **Clear the folder** to truncate the contents of the sink folder before writing the destination files in that target folder.
+Hedef klasördeki hedef dosyaları yazmadan önce havuz klasörünün içeriğini kesmek için **klasörü temizle** ' yi seçin.
 
-## <a name="fixed-mapping-vs-rule-based-mapping"></a>Fixed mapping vs. rule-based mapping
-When you turn off auto-mapping, you will have the option to add either column-based mapping (fixed mapping) or rule-based mapping. Rule-based mapping will allow you to write expressions with pattern matching while fixed mapping will map logical and physical column names.
+## <a name="fixed-mapping-vs-rule-based-mapping"></a>Sabit eşleme ve kural tabanlı eşleme karşılaştırması
+Otomatik eşlemeyi devre dışı bırakırsanız, sütun tabanlı eşleme (Sabit eşleme) veya kural tabanlı eşleme ekleme seçeneğine sahip olursunuz. Kural tabanlı eşleme, sabit eşleme mantıksal ve fiziksel sütun adlarını eşleyebileceğiniz sırada eşleşen ifadeler yazmanıza izin verir.
 
-![Rule-based Mapping](media/data-flow/rules4.png "Rule-based mapping")
+![Kural tabanlı eşleme](media/data-flow/rules4.png "Kural tabanlı eşleme")
 
-When you choose rule-based mapping, you are instructing ADF to evaluate your matching expression to match incoming pattern rules and define the outgoing field names. You may add any combination of both field and rule-based mappings. Field names are then generated at runtime by ADF based on incoming metadata from the source. You can view the names of the generated fields during debug and using the data preview pane.
+Kural tabanlı eşleme ' yi seçtiğinizde, gelen model kurallarını eşleştirmek ve giden alan adlarını tanımlamak için eşleşen ifadenizi değerlendirmek üzere ADF 'yi öğreneceksiniz. Hem alan hem de kural tabanlı eşlemelerin birleşimini ekleyebilirsiniz. Daha sonra alan adları, kaynaktan gelen meta veriler temelinde ADF tarafından çalışma zamanında oluşturulur. Oluşturulan alanların adlarını hata ayıklama sırasında ve veri önizleme bölmesini kullanarak görüntüleyebilirsiniz.
 
-Details on pattern matching are at [Column Pattern documentation](concepts-data-flow-column-pattern.md).
+Model eşleştirme ayrıntıları, [sütun deseninin belgelerinde](concepts-data-flow-column-pattern.md)yer alır.
 
-You can also enter regular expression patterns when using rule based matching by expanding the row and entering a regular expression next to "Name Matches:".
+Ayrıca, satırı genişleterek ve "ad eşleşmeleri:" nın yanına bir normal ifade girerek kural tabanlı eşleştirmeyi kullanırken normal ifade desenleri de girebilirsiniz.
 
-![Regex Mapping](media/data-flow/scdt1g4.png "Regex mapping")
+![Regex eşleme](media/data-flow/scdt1g4.png "Regex eşleme")
 
-A very basic common example for a rule-based mapping vs. fixed mapping is the case where you want to map all incoming fields to the same name in your target. In the case of fixed mappings, you would list each individual column in the table. For rule-based mapping, you would have a single rule that maps all fields using ```true()``` to the same incoming field name represented by ```$$```.
+Kural tabanlı eşleme ve sabit eşleme ile ilgili temel yaygın bir örnek, tüm gelen alanları Hedefinizdeki aynı ada eşlemek istediğiniz durumdur. Sabit eşlemeler söz konusu olduğunda, tablodaki her sütunu ayrı ayrı listeleyin. Kural tabanlı eşleme için, ```true()``` kullanan tüm alanları ```$$```temsil eden aynı gelen alan adına eşleyen tek bir kuralınız olur.
 
-### <a name="sink-association-with-dataset"></a>Sink association with dataset
+### <a name="sink-association-with-dataset"></a>Veri kümesiyle havuz ilişkilendirmesi
 
-The dataset that you select for your sink may or may not have a schema defined in the dataset definition. If it does not have a defined schema, then you must allow schema drift. When you defined a fixed mapping, the logical-to-physical name mapping will persist in the sink transformation. If you change the schema definition of the dataset, then you will potentially break your sink mapping. To avoid this, use rule-based mapping. Rule-based mappings are generalized, meaning that schema changes on your dataset will not break the mapping.
+Havuzunuzu seçtiğiniz veri kümesi, veri kümesi tanımında tanımlanmış bir şemaya sahip olabilir veya olmayabilir. Tanımlı bir şemaya sahip değilse, şema DRA izin vermeniz gerekir. Sabit bir eşleme tanımladığınızda, mantıksal-fiziksel ad eşlemesi havuz dönüşümünde kalır. Veri kümesinin şema tanımını değiştirirseniz, havuz eşlemenizi büyük olasılıkla bozacaksınız. Bunu önlemek için kural tabanlı eşleme kullanın. Kural tabanlı eşlemeler genelleştirilir, yani veri kümenizdeki şema değişikliklerinin eşlemeyi bozmayacak anlamına gelir.
 
-## <a name="file-name-options"></a>File name options
+## <a name="file-name-options"></a>Dosya adı seçenekleri
 
-Set up file naming: 
+Dosya adlandırmayı ayarlama: 
 
-   * **Default**: Allow Spark to name files based on PART defaults.
-   * **Pattern**: Enter a pattern for your output files. For example, **loans[n]** will create loans1.csv, loans2.csv, and so on.
-   * **Per partition**: Enter one file name per partition.
-   * **As data in column**: Set the output file to the value of a column.
-   * **Output to a single file**: With this option, ADF will combine the partitioned output files into a single named file. To use this option, your dataset should resolve to a folder name. Also, please be aware that this merge operation can possibly fail based upon node size.
-
-> [!NOTE]
-> File operations start only when you're running the Execute Data Flow activity. They don't start in Data Flow Debug mode.
-
-## <a name="database-options"></a>Database options
-
-Choose database settings:
-
-![The Settings tab, showing SQL sink options](media/data-flow/alter-row2.png "SQL Options")
-
-* **Update method**: The default is to allow inserts. Clear **Allow insert** if you want to stop inserting new rows from your source. To update, upsert, or delete rows, first add an alter-row transformation to tag rows for those actions. 
-* **Recreate table**: Drop or create your target table before the data flow finishes.
-* **Truncate table**: Remove all rows from your target table before the data flow finishes.
-* **Batch size**: Enter a number to bucket writes into chunks. Use this option for large data loads. 
-* **Enable staging**: Use PolyBase when you load Azure Data Warehouse as your sink dataset.
-* **Pre and Post SQL scripts**: Enter multi-line SQL scripts that will execute before (pre-processing) and after (post-processing) data is written to your Sink database
-
-![pre and post SQL processing scripts](media/data-flow/prepost1.png "SQL processing scripts")
+   * **Varsayılan**: Spark 'ın bölüm varsayılanlarına göre dosya adına erişmesine izin verin.
+   * **Model**: çıkış dosyalarınız için bir model girin. Örneğin, **[n] kredileri** , loans1. csv, loans2. csv, vb. oluşturacaktır.
+   * **Bölüm başına**: bölüm başına bir dosya adı girin.
+   * **Sütunda veri olarak**: çıkış dosyasını bir sütunun değeri olarak ayarlayın.
+   * **Tek bir dosyaya çıkış**: Bu seçenekle ADF bölümlenmiş çıkış dosyalarını tek bir adlandırılmış dosyada birleştirir. Bu seçeneği kullanmak için, veri kümeniz bir klasör adına çözümlenmelidir. Ayrıca, bu birleştirme işleminin düğüm boyutuna bağlı olarak başarısız olabileceğini lütfen unutmayın.
 
 > [!NOTE]
-> In Data Flow, you can direct Data Factory to create a new table definition in your target database. To create the table definition, set a dataset in the sink transformation that has a new table name. In the SQL dataset, below the table name, select **Edit** and enter a new table name. Then, in the sink transformation, turn on **Allow schema drift**. Set **Import schema** to **None**.
+> Dosya işlemleri yalnızca veri akışını Yürüt etkinliğini çalıştırdığınızda başlar. Veri akışı hata ayıklama modunda başlamamazlar.
 
-![SQL dataset settings, showing where to edit the table name](media/data-flow/dataset2.png "SQL Schema")
+## <a name="database-options"></a>Veritabanı seçenekleri
+
+Veritabanı ayarlarını seçin:
+
+![SQL havuzu seçeneklerini gösteren ayarlar sekmesi](media/data-flow/alter-row2.png "SQL seçenekleri")
+
+* **Güncelleştirme yöntemi**: varsayılan değer ekleme için izin verilir. Kaynağınızdan yeni satırlar eklemeyi durdurmak istiyorsanız **eklemeye Izin ver** ' i temizleyin. Satırları güncelleştirmek, kaldırmak veya silmek için önce bu eylemler için satırları etiketlemek üzere bir alter-Row dönüşümü ekleyin. 
+* **Tablo yeniden**oluşturma: veri akışı tamamlanmadan önce hedef tablonuzu bırakın veya oluşturun.
+* **Tablo kes**: veri akışı tamamlanmadan önce hedef tablonuzdaki tüm satırları kaldırın.
+* **Yığın boyutu**: demetini parçalara yazmalar için bir sayı girin. Büyük veri yükleri için bu seçeneği kullanın. 
+* **Hazırlamayı etkinleştir**: Azure veri ambarı 'nı havuz veri kümeniz olarak yüklediğinizde PolyBase kullanın.
+* **SQL betiklerini ön ve sonrası**: (ön işleme) ve sonra (işlem sonrası) verileri havuz veritabanınıza yazıldıktan sonra yürütülecek çok satırlı SQL betikleri girin
+
+![SQL işleme betikleri ön ve sonrası](media/data-flow/prepost1.png "SQL işleme betikleri")
 
 > [!NOTE]
-> When you update or delete rows in your database sink, you must set the key column. This setting allows the alter-row transformation to determine the unique row in the data movement library (DML).
+> Veri akışı ' nda, hedef veritabanınızda yeni bir tablo tanımı oluşturmak için Data Factory yönlendirebilirsiniz. Tablo tanımını oluşturmak için, havuz dönüşümünde yeni bir tablo adına sahip bir veri kümesi ayarlayın. SQL veri kümesinde tablo adının altında **Düzenle** ' yi seçin ve yeni bir tablo adı girin. Ardından, havuz dönüşümünde, **şema Drçıkmasına Izin ver**' i açın. **Içeri aktarma şemasını** **none**olarak ayarlayın.
 
-### <a name="cosmosdb-specific-settings"></a>CosmosDB specific settings
+![Tablo adının nerede düzenleneceğini gösteren SQL veri kümesi ayarları](media/data-flow/dataset2.png "SQL şeması")
 
-When landing data in CosmosDB, you will need to consider these additional options:
+> [!NOTE]
+> Veritabanı havuzinizdeki satırları güncelleştirdiğinizde veya sildiğinizde, anahtar sütununu ayarlamanız gerekir. Bu ayar alter-Row dönüşümünün veri taşıma kitaplığındaki (DML) benzersiz satırı belirlemesine izin verir.
 
-* Partition Key: This is a required field. Enter a string that represents the partition key for your collection. Örnek: ```/movies/title```
-* Throughput: Set an optional value for the number of RUs you'd like to apply to your CosmosDB collection for each execution of this data flow. Minimum is 400.
+### <a name="cosmosdb-specific-settings"></a>CosmosDB 'ye özgü ayarlar
+
+CosmosDB 'de giriş verileri olduğunda, bu ek seçenekleri göz önünde bulundurmanız gerekir:
+
+* Bölüm anahtarı: Bu gerekli bir alandır. Koleksiyonunuz için bölüm anahtarını temsil eden bir dize girin. Örnek: ```/movies/title```
+* Aktarım hızı: Bu veri akışının her yürütmesi için CosmosDB koleksiyonunuza uygulamak istediğiniz ru sayısı için isteğe bağlı bir değer ayarlayın. Minimum değer 400 ' dir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Now that you've created your data flow, add a [Data Flow activity to your pipeline](concepts-data-flow-overview.md).
+Veri akışınızı oluşturduğunuza göre, işlem [hattınızı bir veri akışı etkinliği](concepts-data-flow-overview.md)ekleyin.

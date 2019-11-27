@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub Device Provisioning Service - Device concepts
-description: Describes device reprovisioning concepts for the Azure IoT Hub Device Provisioning Service
+title: Azure IoT Hub cihaz sağlama hizmeti-cihaz kavramları
+description: Azure IoT Hub cihaz sağlama hizmeti için cihaz yeniden sağlama kavramlarını açıklar
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/04/2019
@@ -14,79 +14,79 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74228835"
 ---
-# <a name="iot-hub-device-reprovisioning-concepts"></a>IoT Hub Device reprovisioning concepts
+# <a name="iot-hub-device-reprovisioning-concepts"></a>Cihaz yeniden sağlama kavramlarını IoT Hub
 
-During the lifecycle of an IoT solution, it's common to move devices between IoT hubs. The reasons for this move may include the following scenarios:
+IoT çözümünün yaşam döngüsü boyunca Cihazları IoT Hub 'ları arasında taşımak yaygın bir çözümdür. Bu taşımanın nedenleri aşağıdaki senaryolara dahil olabilir:
 
-* **Geolocation / GeoLatency**: As a device moves between locations, network latency is improved by having the device migrated to a closer IoT hub.
+* **Coğrafi konum/tsıklık**: bir cihaz konumlar arasında taşındığında, cihazın daha yakın bir IoT Hub 'ına geçirilmesi halinde ağ gecikmesi geliştirilmiştir.
 
-* **Multi-tenancy**: A device may be used within the same IoT solution and reassigned to a new customer, or customer site. This new customer may be serviced using a different IoT hub.
+* **Çoklu kiracı**: bir cihaz aynı IoT çözümünde kullanılabilir ve yeni bir müşteriye veya müşteri sitesine yeniden atanabilir. Bu yeni müşteri farklı bir IoT Hub 'ı kullanılarak hizmet verebilir.
 
-* **Solution change**: A device could be moved into a new or updated IoT solution. This reassignment may require the device to communicate with a new IoT hub that's connected to other back-end components.
+* **Çözüm değişikliği**: bir cihaz yeni veya güncelleştirilmiş bir IoT çözümüne taşınabilir. Bu yeniden atama, cihazın diğer arka uç bileşenlerine bağlı yeni bir IoT Hub 'ı ile iletişim kurmasını gerektirebilir.
 
-* **Quarantine**: Similar to a solution change. A device that's malfunctioning, compromised, or out-of-date may be reassigned to an IoT hub that can only update and get back in compliance. Once the device is functioning properly, it's then migrated back to its main hub.
+* **Karantina**: bir çözüm değişikliğine benzer. Hatalı çalışan, tehlikeye girmiş veya güncel olmayan bir cihaz yalnızca güncelleştirme ve uyumluluk için geri alma olabilecek bir IoT Hub 'ına yeniden atanabilir. Cihaz düzgün şekilde çalıştıktan sonra ana hub 'ına geri geçirilir.
 
-Reprovisioning support within the Device Provisioning Service addresses these needs. Devices can be automatically reassigned to new IoT hubs based on the reprovisioning policy that's configured on the device's enrollment entry.
+Cihaz sağlama hizmeti içindeki yeniden sağlama desteği bu ihtiyaçları ele alınmaktadır. Cihazlar, cihazın kayıt girişinde yapılandırılan yeniden sağlama ilkesine bağlı olarak yeni IoT Hub 'larına otomatik olarak atanabilir.
 
-## <a name="device-state-data"></a>Device state data
+## <a name="device-state-data"></a>Cihaz durumu verileri
 
-Device state data is composed of the [device twin](../iot-hub/iot-hub-devguide-device-twins.md) and device capabilities. This data is stored in the Device Provisioning Service instance and the IoT hub that a device is assigned to.
+Cihaz durumu verileri [cihaz ikizi](../iot-hub/iot-hub-devguide-device-twins.md) ve cihaz yetilerinden oluşur. Bu veriler cihaz sağlama Hizmeti örneğinde ve bir cihazın atandığı IoT Hub 'ında depolanır.
 
-![Provisioning with the Device Provisioning Service](./media/concepts-device-reprovisioning/dps-provisioning.png)
+![Cihaz sağlama hizmeti ile sağlama](./media/concepts-device-reprovisioning/dps-provisioning.png)
 
-When a device is initially provisioned with a Device Provisioning Service instance, the following steps are done:
+Bir cihaz başlangıçta bir cihaz sağlama hizmeti örneğiyle sağlandığında, aşağıdaki adımlar gerçekleştirilir:
 
-1. The device sends a provisioning request to a Device Provisioning Service instance. The service instance authenticates the device identity based on an enrollment entry, and creates the initial configuration of the device state data. The service instance assigns the device to an IoT hub based on the enrollment configuration and returns that IoT hub assignment to the device.
+1. Cihaz, cihaz sağlama hizmeti örneğine bir sağlama isteği gönderir. Hizmet örneği, bir kayıt girişine göre cihaz kimliğini doğrular ve cihaz durumu verilerinin başlangıç yapılandırmasını oluşturur. Hizmet örneği, cihazı kayıt yapılandırmasına bağlı olarak bir IoT Hub 'ına atar ve bu IoT Hub atamasını cihaza döndürür.
 
-2. The provisioning service instance gives a copy of any initial device state data to the assigned IoT hub. The device connects to the assigned IoT hub and begins operations.
+2. Sağlama hizmeti örneği, atanan IoT Hub 'ına ilk cihaz durumu verilerinin bir kopyasını verir. Cihaz, atanan IoT Hub 'ına bağlanır ve işlemleri başlatır.
 
-Over time, the device state data on the IoT hub may be updated by [device operations](../iot-hub/iot-hub-devguide-device-twins.md#device-operations) and [back-end operations](../iot-hub/iot-hub-devguide-device-twins.md#back-end-operations). The initial device state information stored in the Device Provisioning Service instance stays untouched. This untouched device state data is the initial configuration.
+Zamanla, IoT Hub 'daki cihaz durumu verileri [cihaz işlemleri](../iot-hub/iot-hub-devguide-device-twins.md#device-operations) ve [arka uç işlemleri](../iot-hub/iot-hub-devguide-device-twins.md#back-end-operations)tarafından güncelleştirilemeyebilir. Cihaz sağlama Hizmeti örneğinde depolanan ilk cihaz durumu bilgileri dokunulmadan kalır. Bu dokunulmamış cihaz durumu verileri ilk yapılandırmadır.
 
-![Provisioning with the Device Provisioning Service](./media/concepts-device-reprovisioning/dps-provisioning-2.png)
+![Cihaz sağlama hizmeti ile sağlama](./media/concepts-device-reprovisioning/dps-provisioning-2.png)
 
-Depending on the scenario, as a device moves between IoT hubs, it may also be necessary to migrate device state updated on the previous IoT hub over to the new IoT hub. This migration is supported by reprovisioning policies in the Device Provisioning Service.
+Senaryoya bağlı olarak, bir cihaz IoT Hub 'ları arasında taşınırsa, önceki IoT Hub 'ında güncelleştirilmiş cihaz durumunun yeni IoT Hub 'ına geçirilmesi de gerekebilir. Bu geçiş, cihaz sağlama hizmetindeki yeniden sağlama ilkeleri tarafından desteklenir.
 
-## <a name="reprovisioning-policies"></a>Reprovisioning policies
+## <a name="reprovisioning-policies"></a>İlkeleri yeniden sağlama
 
-Depending on the scenario, a device usually sends a request to a provisioning service instance on reboot. It also supports a method to manually trigger provisioning on demand. The reprovisioning policy on an enrollment entry determines how the device provisioning service instance handles these provisioning requests. The policy also determines whether device state data should be migrated during reprovisioning. The same policies are available for individual enrollments and enrollment groups:
+Senaryoya bağlı olarak, bir cihaz genellikle yeniden başlatma sırasında bir sağlama hizmeti örneğine bir istek gönderir. Ayrıca, isteğe bağlı olarak sağlamayı el ile tetiklemek için bir yöntemi destekler. Kayıt girişinde yeniden sağlama ilkesi, cihaz sağlama hizmeti örneğinin bu sağlama isteklerini nasıl işlediğini belirler. İlke Ayrıca cihaz durumu verilerinin yeniden sağlama sırasında geçirilmesi gerekip gerekmediğini de belirler. Aynı ilkeler, bireysel kayıtlar ve kayıt grupları için kullanılabilir:
 
-* **Re-provision and migrate data**: This policy is the default for new enrollment entries. This policy takes action when devices associated with the enrollment entry submit a new request (1). Depending on the enrollment entry configuration, the device may be reassigned to another IoT hub. If the device is changing IoT hubs, the device registration with the initial IoT hub will be removed. The updated device state information from that initial IoT hub will be migrated over to the new IoT hub (2). During migration, the device's status will be reported as **Assigning**.
+* **Verileri yeniden sağlayın ve geçirin**: Bu ilke, yeni kayıt girişleri için varsayılandır. Bu ilke, kayıt girdisiyle ilişkili cihazlar yeni bir istek (1) gönderdiğinde işlem gerçekleştirir. Kayıt girişi yapılandırmasına bağlı olarak, cihaz başka bir IoT Hub 'ına yeniden atanabilir. Cihaz IoT Hub 'larını değiştirirse, ilk IoT Hub 'ına sahip cihaz kaydı kaldırılır. Bu ilk IoT Hub 'ından güncelleştirilmiş cihaz durumu bilgileri, yeni IoT Hub 'ına (2) geçirilecek. Geçiş sırasında cihazın durumu **atama**olarak bildirilir.
 
-    ![Provisioning with the Device Provisioning Service](./media/concepts-device-reprovisioning/dps-reprovisioning-migrate.png)
+    ![Cihaz sağlama hizmeti ile sağlama](./media/concepts-device-reprovisioning/dps-reprovisioning-migrate.png)
 
-* **Re-provision and reset to initial config**: This policy takes action when devices associated with the enrollment entry submit a new provisioning request (1). Depending on the enrollment entry configuration, the device may be reassigned to another IoT hub. If the device is changing IoT hubs, the device registration with the initial IoT hub will be removed. The initial configuration data that the provisioning service instance received when the device was provisioned is provided to the new IoT hub (2). During migration, the device's status will be reported as **Assigning**.
+* **İlk yapılandırmaya yeniden sağlama ve sıfırlama**: Bu ilke, kayıt girdisiyle ilişkili cihazlar yeni sağlama isteği (1) gönderdiğinde işlem gerçekleştirir. Kayıt girişi yapılandırmasına bağlı olarak, cihaz başka bir IoT Hub 'ına yeniden atanabilir. Cihaz IoT Hub 'larını değiştirirse, ilk IoT Hub 'ına sahip cihaz kaydı kaldırılır. Cihaz sağlandıysa sağlama hizmeti örneğinin aldığı ilk yapılandırma verileri yeni IoT Hub 'ına (2) sağlanır. Geçiş sırasında cihazın durumu **atama**olarak bildirilir.
 
-    This policy is often used for a factory reset without changing IoT hubs.
+    Bu ilke genellikle IoT Hub 'larını değiştirmeden fabrika sıfırlaması için kullanılır.
 
-    ![Provisioning with the Device Provisioning Service](./media/concepts-device-reprovisioning/dps-reprovisioning-reset.png)
+    ![Cihaz sağlama hizmeti ile sağlama](./media/concepts-device-reprovisioning/dps-reprovisioning-reset.png)
 
-* **Never re-provision**: The device is never reassigned to a different hub. This policy is provided for managing backwards compatibility.
+* **Hiçbir şekilde yeniden sağlama**: cihaz, farklı bir hub 'a hiçbir şekilde yeniden atanmaz. Bu ilke geriye dönük uyumluluğu yönetmek için sağlanır.
 
-### <a name="managing-backwards-compatibility"></a>Managing backwards compatibility
+### <a name="managing-backwards-compatibility"></a>Geriye dönük uyumluluğu yönetme
 
-Before September 2018, device assignments to IoT hubs had a sticky behavior. When a device went back through the provisioning process, it would only be assigned back to the same IoT hub.
+2018 Eylül 'den önce IoT Hub 'larına yönelik cihaz atamalarının yapışkan bir davranışı vardı. Bir cihaz sağlama sürecinden geri döndüğünüzde, yalnızca aynı IoT Hub 'ına atanır.
 
-For solutions that have taken a dependency on this behavior, the provisioning service includes backwards compatibility. This behavior is presently maintained for devices according to the following criteria:
+Bu davranışa bağımlılık yapmış olan çözümler için, sağlama hizmeti geriye dönük uyumluluk içerir. Bu davranış aşağıdaki ölçütlere göre şu anda cihazlarda korunur:
 
-1. The devices connect with an API version before the availability of native reprovisioning support in the Device Provisioning Service. Refer to the API table below.
+1. Cihazlar, cihaz sağlama hizmeti 'nde yerel yeniden sağlama desteğinin kullanılabilirliğine başlamadan önce bir API sürümü ile bağlanır. Aşağıdaki API tablosuna bakın.
 
-2. The enrollment entry for the devices doesn't have a reprovisioning policy set on them.
+2. Cihazlara yönelik kayıt girişinde, bunlar üzerinde ayarlanmış bir yeniden sağlama ilkesi yoktur.
 
-This compatibility makes sure that previously deployed devices experience the same behavior that's present during initial testing. To preserve the previous behavior, don't save a reprovisioning policy to these enrollments. If a reprovisioning policy is set, the reprovisioning policy takes precedence over the behavior. By allowing the reprovisioning policy to take precedence, customers can update device behavior without having to reimage the device.
+Bu uyumluluk, önceden dağıtılan cihazların ilk test sırasında mevcut olan aynı davranışı deneymesinden emin olur. Önceki davranışı korumak için, bu kayıtları yeniden sağlama ilkesini kaydetme. Yeniden sağlama ilkesi ayarlandıysa, yeniden sağlama ilkesi davranışına göre önceliklidir. Yeniden sağlama ilkesinin öncelikli olmasına izin vererek, müşteriler cihazı yeniden görüntüye gerek kalmadan cihaz davranışını güncelleştirebilir.
 
-The following flow chart helps to show when the behavior is present:
+Aşağıdaki akış şeması, davranışın ne zaman mevcut olduğunu göstermeye yardımcı olur:
 
-![backwards compatibility flow chart](./media/concepts-device-reprovisioning/reprovisioning-compatibility-flow.png)
+![geriye dönük uyumluluk akış grafiği](./media/concepts-device-reprovisioning/reprovisioning-compatibility-flow.png)
 
-The following table shows the API versions before the availability of native reprovisioning support in the Device Provisioning Service:
+Aşağıdaki tabloda, cihaz sağlama hizmeti 'nde yerel yeniden sağlama desteğinin kullanılabilirliğine ait API sürümleri gösterilmektedir:
 
 | REST API | C SDK | Python SDK |  Node SDK | Java SDK | .NET SDK |
 | -------- | ----- | ---------- | --------- | -------- | -------- |
-| [2018-04-01 and earlier](/rest/api/iot-dps/createorupdateindividualenrollment/createorupdateindividualenrollment#uri-parameters) | [1.2.8 and earlier](https://github.com/Azure/azure-iot-sdk-c/blob/master/version.txt) | [1.4.2 and earlier](https://github.com/Azure/azure-iot-sdk-python/blob/0a549f21f7f4fc24bc036c1d2d5614e9544a9667/device/iothub_client_python/src/iothub_client_python.cpp#L53) | [1.7.3 or earlier](https://github.com/Azure/azure-iot-sdk-node/blob/074c1ac135aebb520d401b942acfad2d58fdc07f/common/core/package.json#L3) | [1.13.0 or earlier](https://github.com/Azure/azure-iot-sdk-java/blob/794c128000358b8ed1c4cecfbf21734dd6824de9/device/iot-device-client/pom.xml#L7) | [1.1.0 or earlier](https://github.com/Azure/azure-iot-sdk-csharp/blob/9f7269f4f61cff3536708cf3dc412a7316ed6236/provisioning/device/src/Microsoft.Azure.Devices.Provisioning.Client.csproj#L20)
+| [2018-04-01 ve öncesi](/rest/api/iot-dps/createorupdateindividualenrollment/createorupdateindividualenrollment#uri-parameters) | [1.2.8 ve önceki sürümler](https://github.com/Azure/azure-iot-sdk-c/blob/master/version.txt) | [1.4.2 ve önceki sürümler](https://github.com/Azure/azure-iot-sdk-python/blob/0a549f21f7f4fc24bc036c1d2d5614e9544a9667/device/iothub_client_python/src/iothub_client_python.cpp#L53) | [1.7.3 veya önceki sürümler](https://github.com/Azure/azure-iot-sdk-node/blob/074c1ac135aebb520d401b942acfad2d58fdc07f/common/core/package.json#L3) | [1.13.0 veya önceki sürümler](https://github.com/Azure/azure-iot-sdk-java/blob/794c128000358b8ed1c4cecfbf21734dd6824de9/device/iot-device-client/pom.xml#L7) | [1.1.0 veya önceki sürümler](https://github.com/Azure/azure-iot-sdk-csharp/blob/9f7269f4f61cff3536708cf3dc412a7316ed6236/provisioning/device/src/Microsoft.Azure.Devices.Provisioning.Client.csproj#L20)
 
 > [!NOTE]
-> These values and links are likely to change. This is only a placeholder attempt to determine where the versions can be determined by a customer and what the expected versions will be.
+> Bu değerler ve bağlantıların değiştirilmesi olasıdır. Bu yalnızca, sürümlerin bir müşteri tarafından belirlenebileceği ve beklenen sürümlerin ne olacağı hakkında karar vermek için bir yer tutucu girişimdir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [How to reprovision devices](how-to-reprovision.md)
+* [Cihazları yeniden sağlama](how-to-reprovision.md)

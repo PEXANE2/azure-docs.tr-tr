@@ -69,9 +69,9 @@ POST işlemi, ölçüm tabanlı tüm uyarılar için aşağıdaki JSON yükünü
 ```
 
 
-| Alan | Mandatory | Düzeltilen değer kümesi | Notlar |
+| Alan | Zorunlu | Düzeltilen değer kümesi | Notlar |
 |:--- |:--- |:--- |:--- |
-| durum |E |Etkinleştirildi, çözümlendi |Ayarladığınız koşullara göre uyarının durumu. |
+| status |E |Etkinleştirildi, çözümlendi |Ayarladığınız koşullara göre uyarının durumu. |
 | context |E | |Uyarı bağlamı. |
 | timestamp |E | |Uyarının tetiklendiği zaman. |
 | id |E | |Her uyarı kuralının benzersiz bir KIMLIĞI vardır. |
@@ -93,7 +93,7 @@ POST işlemi, ölçüm tabanlı tüm uyarılar için aşağıdaki JSON yükünü
 | resourceId |E | |Etkilenen kaynağın kaynak KIMLIĞI. |
 | resourceRegion |E | |Etkilenen kaynağın bölgesi veya konumu. |
 | Portal bağlantısı |E | |Portal kaynağı özet sayfasına doğrudan bağlantı. |
-| properties |N |İsteğe Bağlı |Olayla ilgili ayrıntıları içeren bir anahtar/değer çiftleri kümesi. Örneğin, `Dictionary<String, String>`. Özellikler alanı isteğe bağlıdır. Özel bir kullanıcı arabirimi veya mantıksal uygulama tabanlı iş akışında, kullanıcılar yük aracılığıyla geçirilebilecek anahtar/değer çiftleri girebilir. Özel özellikleri Web kancasına geri almanın alternatif bir yolu, Web kancası URI 'sinin kendisi (sorgu parametreleri olarak) aracılığıyla yapılır. |
+| properties |N |İsteğe bağlı |Olayla ilgili ayrıntıları içeren bir anahtar/değer çiftleri kümesi. Örneğin, `Dictionary<String, String>`. Özellikler alanı isteğe bağlıdır. Özel bir kullanıcı arabirimi veya mantıksal uygulama tabanlı iş akışında, kullanıcılar yük aracılığıyla geçirilebilecek anahtar/değer çiftleri girebilir. Özel özellikleri Web kancasına geri almanın alternatif bir yolu, Web kancası URI 'sinin kendisi (sorgu parametreleri olarak) aracılığıyla yapılır. |
 
 > [!NOTE]
 > **Properties** alanını yalnızca [Azure Izleyici REST API 'leri](https://msdn.microsoft.com/library/azure/dn933805.aspx)kullanarak ayarlayabilirsiniz.

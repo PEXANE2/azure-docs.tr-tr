@@ -45,6 +45,6 @@ Uygulama yönergeleri için bkz. [UserType eşitlemesini etkinleştirme](../hybr
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Karma kuruluşlar için B2B işbirliği Azure Active Directory](hybrid-organizations.md)
-- [GRANT B2B kullanıcıları Azure AD'de, şirket içi uygulamalarınıza erişim](hybrid-cloud-to-on-premises.md)
+- [Şirket içi uygulamalarınıza Azure AD erişimi için B2B kullanıcıları verme](hybrid-cloud-to-on-premises.md)
 - Azure AD Connect genel bir bakış için bkz. Şirket [içi dizinlerinizi Azure Active Directory Ile tümleştirme](../hybrid/whatis-hybrid-identity.md).
 

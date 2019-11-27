@@ -25,7 +25,7 @@ ms.locfileid: "74275545"
 ---
 # <a name="how-to-open-the-firewall-ports-required-for-an-application-proxy-application"></a>Bir uygulama proxy'si uygulaması için gereken güvenlik duvarı bağlantı noktaları açma
 
-Gerekli bağlantı noktaları ve her bağlantı noktası işlevi tam listesini görmek için Önkoşullar bölümüne bakın. [uygulama proxy'si belgeleri](application-proxy-add-on-premises-application.md). Uygulama proxy'si yalnızca giden bağlantı noktaları kullandığına dikkat edin.
+Gerekli bağlantı noktalarının ve her bağlantı noktasının işlevinin tam listesini görmek için, [uygulama proxy 'si belgelerinin](application-proxy-add-on-premises-application.md)Önkoşullar bölümüne bakın. Uygulama proxy'si yalnızca giden bağlantı noktaları kullandığına dikkat edin.
 
 Ayrıca, şirket içi ağınızdan [bağlayıcı bağlantı noktaları test aracını](https://aadap-portcheck.connectorporttest.msappproxy.net/) açarak gerekli tüm bağlantı noktalarının açık olup olmadığını kontrol edebilirsiniz. Daha fazla yeşil onay işaretleri koyacağız büyük dayanıklılık anlamına gelir. 
 
@@ -40,4 +40,4 @@ Aracı size doğru sonuçları emin olmak için emin olun:
 -   Herhangi bir proxy veya güvenlik duvarları, bağlayıcıya geçerli de bu sayfaya uygulandığından emin olun. Bu, Internet Explorer 'da &gt; **Internet seçenekleri** -&gt; **Bağlantılar** -&gt; **LAN ayarları** **' -giderek** yapılabilir. Bu sayfada, alanın "Kullanımı bir Proxy sunucusu için bilgisayarınızı LAN" görürsünüz. Bu kutuyu seçin ve "Address" alanına proxy adresi yerleştirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Azure AD uygulama ara sunucusu bağlayıcıları anlama](application-proxy-connectors.md)
+[Azure AD Uygulama Ara Sunucusu bağlayıcılarını anlama](application-proxy-connectors.md)

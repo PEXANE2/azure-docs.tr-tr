@@ -65,7 +65,7 @@ Uygulamanıza uygulama yapılandırma deposu eklemenin en kolay yolu, Microsoft 
 | .NET Core ve ASP.NET Core | .NET Core için uygulama yapılandırma sağlayıcısı |
 | .NET Framework ve ASP.NET | .NET için uygulama yapılandırma Oluşturucusu |
 | Java Spring | Yay bulutu için uygulama yapılandırma istemcisi |
-| Diğerleri | Uygulama yapılandırma REST API |
+| Diğer | Uygulama yapılandırma REST API |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

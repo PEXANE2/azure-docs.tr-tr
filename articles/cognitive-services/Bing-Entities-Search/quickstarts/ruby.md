@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Send a search request to the REST API using Ruby - Bing Entity Search'
+title: 'Hızlı başlangıç: Ruby-Bing Varlık Arama kullanarak REST API bir arama isteği gönderme'
 titleSuffix: Azure Cognitive Services
-description: Use this quickstart to send a request to the Bing Entity Search REST API using Ruby, and receive a JSON response.
+description: Bing Varlık Arama REST API Ruby kullanarak bir istek göndermek ve bir JSON yanıtı almak için bu hızlı başlangıcı kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -19,19 +19,19 @@ ms.locfileid: "74323547"
 ---
 # <a name="quickstart-for-bing-entity-search-api-with-ruby"></a>Hızlı başlangıç: Ruby ile Bing Varlık Arama API'si
 
-Use this quickstart to make your first call to the Bing Entity Search API and view the JSON response. This simple Ruby application sends a news search query to the API, and displays the response. The source code for this application is available on [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingEntitySearchv7.rb).
+Bing Varlık Arama API'si ilk çağrısını yapmak ve JSON yanıtını görüntülemek için bu hızlı başlangıcı kullanın. Bu basit Ruby uygulaması, API 'ye bir haber arama sorgusu gönderir ve yanıtı görüntüler. Bu uygulamanın kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingEntitySearchv7.rb)' da kullanılabilir.
 
 Bu uygulama, Ruby ile yazılmış olmakla birlikte API, çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* [Ruby 2.4](https://www.ruby-lang.org/en/downloads/) or later.
+* [Ruby 2,4](https://www.ruby-lang.org/en/downloads/) veya üzeri.
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-the-application"></a>Uygulamayı oluşturma ve başlatma
 
-1. In your favorite IDE or code editor, create a news Ruby file and import the following packages.
+1. En sevdiğiniz IDE veya kod düzenleyicide, bir haber Ruby dosyası oluşturun ve aşağıdaki paketleri içeri aktarın.
 
     ```ruby
     require 'net/https'
@@ -39,7 +39,7 @@ Bu uygulama, Ruby ile yazılmış olmakla birlikte API, çoğu programlama diliy
     require 'json'
     ```
 
-2. Create variables for your API endpoint, News search URL, your subscription key, and a search query.
+2. API uç noktanız, haber arama URL 'niz, abonelik anahtarınız ve bir arama sorgusuyla ilgili değişkenler oluşturun.
     
     ```ruby
     host = 'https://api.cognitive.microsoft.com'
@@ -51,21 +51,21 @@ Bu uygulama, Ruby ile yazılmış olmakla birlikte API, çoğu programlama diliy
 
 ## <a name="format-and-make-an-api-request"></a>API isteğini biçimlendirme ve API isteğinde bulunma
 
-1. Create the parameters string for your request by appending your market variable to the `?mkt=` parameter. Encode your query and append it to the `&q=` parameter. Combine your API host, path, and the parameters for your request, and cast them as a URI object.
+1. Market değişkeninizi `?mkt=` parametresine ekleyerek isteğiniz için parametreler dizesi oluşturun. Sorgunuzu kodlayın ve `&q=` parametresine ekleyin. API konağını, yolunu ve isteğinizi ve parametreleri bir URI nesnesi olarak atayın.
 
     ```ruby
     params = '?mkt=' + mkt + '&q=' + CGI.escape(query)
     uri = URI (host + path + params)
     ```
 
-2. Use the variables from the last step to create the request. Add your subscription key to the `Ocp-Apim-Subscription-Key` header.
+2. İsteği oluşturmak için son adımdaki değişkenleri kullanın. Abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgisine ekleyin.
 
     ```ruby
     request = Net::HTTP::Get.new(uri)
     request['Ocp-Apim-Subscription-Key'] = subscriptionKey
     ```
 
-3. Send the request, and print the response
+3. İsteği gönder ve yanıtı Yazdır
 
     ```ruby
     response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
@@ -75,7 +75,7 @@ Bu uygulama, Ruby ile yazılmış olmakla birlikte API, çoğu programlama diliy
     puts JSON::pretty_generate (JSON (response.body))
     ```
 
-## <a name="example-json-response"></a>Example JSON response
+## <a name="example-json-response"></a>Örnek JSON yanıtı
 
 Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde döndürülür: 
 
@@ -143,7 +143,7 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Build a single-page web app](../tutorial-bing-entities-search-single-page-app.md)
+> [Tek sayfalı Web uygulaması oluşturma](../tutorial-bing-entities-search-single-page-app.md)
 
-* [What is the Bing Entity Search API](../search-the-web.md)
-* [Bing Entity Search API Reference](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)
+* [Bing Varlık Arama API'si nedir?](../search-the-web.md)
+* [Bing Varlık Arama API'si Başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)

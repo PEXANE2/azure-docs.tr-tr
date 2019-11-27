@@ -28,7 +28,7 @@ Bu hızlı başlangıçta, Swift veya amaç-C ' d e [Azure uzamsal bağlayıcıl
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıcı tamamlamak için aşağıdakileri yaptığınızdan emin olun:
 
@@ -91,7 +91,7 @@ Bir sonraki adım, uygulamayı hesap tanımlayıcıyı ve hesap anahtarınızı 
 
 # <a name="swifttabopenproject-swift"></a>[Swift](#tab/openproject-swift)
 
-Açık `iOS/Swift/SampleSwift/ViewControllers/BaseViewController.swift`.
+`iOS/Swift/SampleSwift/ViewControllers/BaseViewController.swift`açın.
 
 `spatialAnchorsAccountKey` alanını bulun ve `Set me` hesap anahtarıyla değiştirin.
 
@@ -99,7 +99,7 @@ Açık `iOS/Swift/SampleSwift/ViewControllers/BaseViewController.swift`.
 
 # <a name="objective-ctabopenproject-objc"></a>[Objective-C](#tab/openproject-objc)
 
-Açık `iOS/Objective-C/SampleObjC/BaseViewController.m`.
+`iOS/Objective-C/SampleObjC/BaseViewController.m`açın.
 
 `SpatialAnchorsAccountKey` alanını bulun ve `Set me` hesap anahtarıyla değiştirin.
 

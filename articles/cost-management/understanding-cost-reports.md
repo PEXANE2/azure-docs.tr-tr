@@ -1,6 +1,6 @@
 ---
-title: Understanding Cloudyn cost management reports in Azure | Microsoft Docs
-description: This article helps you understand Cloudyn cost management reports basic structure and functions.
+title: Anlama Cloudyn maliyet Yönetimi raporlarını azure'da | Microsoft Docs
+description: Bu makalede, Cloudyn maliyet yönetim raporları temel yapısını ve işlevlerini anlamanıza yardımcı olur.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -17,191 +17,191 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74229776"
 ---
-# <a name="understanding-cloudyn-cost-management-reports"></a>Understanding Cloudyn cost management reports
+# <a name="understanding-cloudyn-cost-management-reports"></a>Maliyet Yönetimi raporlarını anlama Cloudyn
 
-This article helps you understand Cloudyn cost management reports basic structure and functions. Most Cloudyn reports are intuitive and have a uniform look and feel. After you read this article, are ready to use all the cost management reports. Many standard features are available throughout the various reports, allowing you to navigate the reports with ease. Reports are customizable, and you can select from several options to calculate and display results.
+Bu makalede, Cloudyn maliyet yönetim raporları temel yapısını ve işlevlerini anlamanıza yardımcı olur. Cloudyn raporların çoğu, sezgisel ve Tekdüzen bir görünümüne sahip. Bu makaleyi okuduktan sonra maliyet Yönetimi raporlarını kullanmak hazır olursunuz. Birçok standart özellikler raporları kolayca gezinmenizi sağlayan çeşitli raporlar boyunca kullanılabilir. Raporları özelleştirilebilir ve hesaplamak ve sonuçları görüntülemek için çeşitli seçenekler arasından seçim yapabilirsiniz.
 
-## <a name="report-fields-and-options"></a>Report fields and options
+## <a name="report-fields-and-options"></a>Rapor alanlar ve Seçenekler
 
-Here's a look at an example of the Cost Over Time report. Most Cloudyn reports have a similar layout.
+Zaman içinde Maliyet raporu örneği göz aşağıda verilmiştir. Çoğu Cloudyn raporlarında benzer bir düzeni vardır.
 
-![Example of the Cost Over Time report with numbered areas corresponding to descriptions](./media/understanding-cost-reports/sample-report.png)
+![Zaman içinde Maliyet raporu açıklamaları için karşılık gelen numaralı alanları örneği](./media/understanding-cost-reports/sample-report.png)
 
-Each numbered area in the preceding image is described in detail in the following information:
+Bir önceki resimde her numaralı alan aşağıdaki bilgileri ayrıntılı açıklanmıştır:
 
-1. **Date Range**
+1. **Tarih aralığı**
 
-    Use the Date Range list to define a report time interval using a preset or custom.
-2. **Saved Filter**
+    Hazır veya özel kullanarak bir raporun zaman aralığını tanımlamak için tarih aralığını listeyi kullanın.
+2. **Filtre kaydedildi**
 
-    Use the Saved Filter list to save the current groups and filters that are applied to the report. Saved filters are available across cost and performance reports, including:
+    Kaydedilmiş filtre listesi, rapora uygulanan filtreleri ve geçerli gruplar kaydetmek için kullanın. Kayıtlı filtreler gibi maliyet ve performans raporları kullanılabilir:
 
-      - Cost Analysis
-      - Allocation
+      - Maliyet analizi
+      - ayırma
       - Varlık Yönetimi
       - İyileştirme
 
-   Type a filter name and the click **Save**.
+   Bir filtre adı yazın ve **Kaydet**' e tıklayın.
 
 3. **Etiketler**
 
-    Use the Tags area to group by tag categories. Tags listed in the menu are Azure department or cost center tags or they are Cloudyn's cost entity and subscription tags. Select tags to filter results. You can also type a tag name (keyword) to filter results.
+    Grup etiketlerini alana etiketi kategorilere göre kullanın. Menüde listelenen etiketler Azure kullanımında bölümünüzün veya maliyet merkezi etiketleri veya Cloudyn'ın maliyet varlığı ve abonelik etiketler. Sonuçları filtrelemek için etiketler seçin. Sonuçları filtrelemek için bir etiket adı (anahtar) de yazabilirsiniz.
 
-    ![Example of a list of tags to filter results by](./media/understanding-cost-reports/select-options.png)
+    ![Sonuçları filtrelemek için Etiketler listesi örneği](./media/understanding-cost-reports/select-options.png)
 
-    Click **Add** to add a new filter.
+    Yeni bir filtre eklemek için **Ekle** ' ye tıklayın.
 
-    ![Add filter box showing options and conditions to filter by](./media/understanding-cost-reports/add-filter.png)
+    ![Seçenekler ve koşullara göre filtrelemek için gösteren filtre Kutusu Ekle](./media/understanding-cost-reports/add-filter.png)
 
-    Tag grouping or filtering does not relate to Azure resources or resource group tags.
+    Gruplandırma ve süzme etiket, Azure kaynaklarını veya kaynak grubu etiketleri ilişkili değil.
 
-    Cost allocation tag grouping and filtering are available in the **Groups** menu option.
+    Maliyet ayırma etiketi gruplama ve filtreleme, **gruplar** menü seçeneğinde kullanılabilir.
 
-4. **Groups in reports**
+4. **Raporlardaki gruplar**
 
-    Use groups in Cost Analysis reports to show standard, itemized categories from billing data in your report.  However, groups in Cost Allocation reports show view tag-based categories. Tag-based categories are defined in the cost allocation model and standard itemized categories from billing data.
+    Grupları kullanma maliyet analizi raporları, standart, gösterilecek dökümü raporunuzdaki faturalama öğesinden kategoriler.  Bununla birlikte, maliyet ayırma raporları show gruplarında etiket tabanlı kategorilerini görüntüleyin. Etiket tabanlı kategoriler, maliyet dağıtma modeli ve faturalama verileri standart dökümü kategorilerden tanımlanır.
 
-    ![First example list of tags that you can group by](./media/understanding-cost-reports/groups-tags01.png)
+    ![Etiketlere göre gruplandırabilirsiniz ilk örnek listesi](./media/understanding-cost-reports/groups-tags01.png)
 
-    ![Second example list of tags that you can group by](./media/understanding-cost-reports/groups-tags02.png)
+    ![Etiketlere göre gruplandırabilirsiniz ikinci örnek listesi](./media/understanding-cost-reports/groups-tags02.png)
 
-    In Cost Allocation Reports, groups in tag-based group categories might include:
+    Maliyet ayırma raporlarında etiketi tabanlı Grup kategorilerde grupları şunlar olabilir:
       - Etiketler
-      - resource group tags
-      - Cloudyn cost entity tags
-      - Subscription tag categories for cost allocation purposes
+      - kaynak grubu etiketleri
+      - Cloudyn varlık etiketleri maliyeti
+      - Maliyet ayırmayı amaçlar için abonelik etiketi kategorileri
 
-   Examples might include:
+   Örnek verilebilir:
    - Maliyet merkezi
    - Bölüm
    - Uygulama
    - Ortam
-   - Cost code
+   - Maliyet kodu
 
-     Here's a list of built-in groups available in reports:
+     Raporlarda kullanılabilir yerleşik gruplar listesi aşağıdadır:
 
-     - **Cost Type**
-     - Select a cost type or multiple cost types, or select all. Cost types include:
-       - One-Time Fee
+     - **Maliyet türü**
+     - Maliyet türü veya birden çok maliyet türü seçin veya tümünü seçin. Maliyet türleri şunlardır:
+       - Tek seferlik bir ücret
        - Destek
-       - Usage Cost
-     - **Customer**
-       - Select a specific customer, multiple customers, or select all customers.
-     - **Account Name**
-       - The account or subscription name. In Azure, it is the name of the Azure subscription.
-     - **Account No**
-       - Select an account, multiple accounts, or all accounts. In Azure, it is the Azure subscription’s GUID.
-     - **Parent Account**
-       - Select the parent account, multiple accounts, or select all.
+       - Kullanım ücreti
+     - **Müşterisi**
+       - Belirli bir müşteri, birden çok müşteriyi veya tüm müşterileri seçin.
+     - **Hesap adı**
+       - Hesabı veya aboneliği adı. Azure'da, Azure aboneliğinin adıdır.
+     - **Hesap No**
+       - Bir hesap, birden çok hesabı veya tüm hesapları seçin. Azure'da, bu Azure aboneliğinin GUID değeridir.
+     - **Ana hesap**
+       - Ana hesap, birden çok hesabı veya Seç'i seçin.
      - **Hizmet**
-       - Select a service, multiple services, or select all services.
+       - Bir hizmet birden çok hizmeti seçin veya tüm hizmetleri seçin.
      - **Sağlayıcı**
-       - The cloud provider where assets and expenses are associated.
+       - Varlıklar ve masrafları ilişkili olduğu bulut sağlayıcısı.
      - **Bölge**
-       - Region where the resource is hosted.
-     - **Availability Zone**
-       - AWS isolated locations within a region.
+       - Kaynak barındırıldığı bölge.
+     - **Kullanılabilirlik alanı**
+       - Bir bölge içinde yalıtılmış AWS konumları.
      - **Kaynak Türü**
-       - The type of resource in use.
-     - **Sub-Type**
-       - Select the sub-type.
+       - Kaynak Kullanım türü.
+     - **Alt tür**
+       - Alt türü seçin.
      - **İşlem**
-       - Select the operation or **Show all**.
-     - **Price Model**
-       - All Upfront
-       - No Upfront
-       - Partial Upfront
+       - İşlemi seçin veya **Tümünü gösterin**.
+     - **Fiyat modeli**
+       - Tüm ön maliyet
+       - Ön maliyet yok
+       - Kısmi ön maliyet
        - İsteğe Bağlı
-       - Rezervasyon
-       - Spot
-     - **Charge Type**
-       - Select Negative or Positive charge type or both.
-     - **Tenancy**
-       - Whether a machine is running as a dedicated machine.
-     - **Usage Type**
-       - Usage type can be one-time fees or recurring fees.
+       - Ayırma
+       - Nokta
+     - **Ücret türü**
+       - Negatif veya pozitif farkı türü veya her ikisini de seçin.
+     - **Mimari**
+       - Olup bir makine adanmış bir makinede çalışıyorsa.
+     - **Kullanım türü**
+       - Kullanım türü, tek seferlik ücretler veya yinelenen ücretlerini olabilir.
 
-5. **Filters**
+5. **Yorsa**
 
-    Use single or multi-select filters to set ranges to selected values. To set a filter, click **Add** and then select filter categories and values.
+    Aralıkları seçili değerlere ayarlamak için tek veya çoklu seçim filtrelerini kullanın. Filtre ayarlamak için **Ekle** ' ye tıklayın ve kategorileri ve değerleri filtrele ' yi seçin.
 
-6. **Cost Model**
+6. **Maliyet modeli**
 
-    Use Cost Model to select a cost model that you previously created with Cost Allocation 360. You might have multiple Cloudyn cost models, depending on your cost allocation requirements. Some of your organizational teams might have cost allocation requirements that differ from others. Each team can have their own dedicated cost model.
+    Maliyet modeli ile 360 maliyet, daha önce oluşturduğunuz bir maliyet modeli seçmek için kullanın. Birden çok Cloudyn maliyet modelleri, maliyet ayırma gereksinimlerinize bağlı olarak olabilir. Kuruluş takımlarınızın bazıları diğerlerinden farklı ayırma gereksinimlerini maliyet. Her ekip kendi özel bir maliyet modeli olabilir.
 
-    For information about creating a cost allocation model definition, see [Use custom tags to allocate costs](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs).
+    Maliyet ayırma modeli tanımı oluşturma hakkında daha fazla bilgi için bkz. [özel etiketleri kullanarak maliyet ayırma](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs).
 
-7. **Amortization**
+7. **Ödeme**
 
-    Use Amortization in Cost Allocation reports to view non-usage based service fees or one-time payable costs and spread their cost over time evenly during their lifespan. Examples of one-time fees might include:
-    - Annual support fees
-    - Annual security components fees
-    - Reserved instances purchase fees
-    - Some Azure Marketplace items.
+    Maliyet ayırmayı raporlarda kullanmak itfa kullanım dışı görüntülemek için hizmet ücretlerini veya tek seferlik borç maliyetleri ve bunların kullanım ömrü boyunca eşit olarak zaman içinde maliyetlerine yayılabilir. Tek seferlik ücretler örnekleri içerebilir:
+    - Yıllık destek ücretleri
+    - Yıllık güvenlik bileşenleri ücretleri
+    - Ayrılmış örnekler satın alma ücreti
+    - Bazı Azure Market öğesi.
 
-   Under Amortization, select **Amortized cost** or **Actual Cost**.
+   İtfası altında, **itfası maliyeti** veya **gerçek maliyet**' i seçin.
 
-8. **Resolution**
+8. **Çözünürlüğüne**
 
-    Use Resolution to select the time resolution within the selected date range. Your time resolution determines how units are displayed in the report and can be:
+    Çözümleme zamanı çözünürlüğü seçili tarih aralığı içinde seçmek için kullanın. Birimleri nasıl bir raporda görüntülenen ve olabilir, zaman çözünürlüğünü belirler:
     - Günlük
     - Haftalık
     - Aylık
-    - Quarterly
+    - Üç Aylık
     - Yıllık
 
-9. **Allocation rules**
+9. **Ayırma kuralları**
 
-    Use Allocation Rules to apply or disable the cost allocation cost recalculation. You can enable or disable the cost allocation recalculation for billing data. The recalculation applies to the selected categories in the report. It allows you to assess the cost allocation recalculation impact against raw billing data.
+    Ayırma kurallarını uygulamak veya maliyet ayırma Maliyeti yeniden hesaplama devre dışı bırakmak için kullanın. Etkinleştirmek veya faturalama verileri için maliyet ayırmayı yeniden hesaplama devre dışı bırakabilirsiniz. Rapordaki seçili kategorilerdeki yeniden hesaplama uygular. Fatura ham verilere karşı maliyet ayırma yeniden hesaplama etkisini değerlendirmenize olanak tanır.
 
-10. **Uncategorized**
+10. **Kategorilere ayrılmamış**
 
-    Use Uncategorized to include or exclude uncategorized costs in the report.
+    Kategorilere ayrılmamış dahil etmek veya rapordaki Kategorilere ayrılmamış maliyetleri hariç tutmak için kullanın.
 
-11. **Show/hide fields**
+11. **Alanları göster/gizle**
 
-    The Show/hide option does not have any effect in reports.
+    Gösterme/gizleme seçeneğini raporlarında hiçbir etkisi yok.
 
-12. **Display formats**
+12. **Görüntüleme biçimleri**
 
-    Use Display formats to select various graph or table views.
+    Görüntü biçimlerini çeşitli graph'i ya da tablo görünümleri seçmek için kullanın.
 
-    ![Symbols of display formats that you can select](./media/understanding-cost-reports/display-formats.png)
+    ![Görüntü biçimlerinin seçebileceğiniz semboller](./media/understanding-cost-reports/display-formats.png)
 
-13. **Multi-color**
+13. **Çoklu renk**
 
-    Use Multi-color to set the color of charts in your report.
+    Çok renkli raporunuzda grafikleri rengini ayarlamak için kullanın.
 
 14. **Eylemler**
 
-    Use Actions to save, export, or schedule the report.
+    Eylemleri Kaydet, dışarı aktarma veya raporu zamanladığınız kullanın.
 
 15. **İlke**
 
-    Although not pictured, some reports include a projected cost calculation policy. In those reports, the **Consolidated** policy shows recommendations for all accounts and subscriptions under the current entity such as Microsoft enrollment or AWS payer. The **Standalone** policy shows recommendations for one account or subscription as if no other subscriptions exist. The policy that you select varies on the optimization strategy used by your organization. Cost projections are based on the last 30 days of usage.
+    Resimli değil olsa da, bazı raporlar öngörülen maliyet hesaplaması ilke içerir. Bu raporlarda, **birleştirilmiş** ilke Microsoft kaydı veya AWS yükümlüsü gibi geçerli varlık kapsamındaki tüm hesaplar ve abonelikler için öneriler gösterir. **Tek başına** ilkesi, başka bir abonelik yoksa, bir hesap veya aboneliğin önerilerini gösterir. Kuruluşunuz tarafından kullanılan en iyi duruma getirme stratejisinin temel seçtiğiniz ilke değişir. Maliyet tahminleri üzerinde son 30 gün kullanımı temel alır.
 
-## <a name="save-and-schedule-reports"></a>Save and schedule reports
+## <a name="save-and-schedule-reports"></a>Kaydet ve raporları zamanlama
 
-After you create a report, you can save it for future use. Saved reports are available in **My Tools** > **My Reports**. If you make changes to an existing report and save it, the report is saved as a new version. Or, you can save it as a new report.
+Bir rapor oluşturduktan sonra gelecekte kullanılmak üzere kaydedebilirsiniz. Kaydedilen raporlar **araçlarım** > **Raporlarım**kullanılabilir. Mevcut bir rapora değişiklikleri yapın ve kaydedin, rapor yeni bir sürüm olarak kaydedilir. Veya yeni bir rapor olarak kaydedin.
 
-### <a name="save-a-report-to-the-cloudyn-portal"></a>Save a report to the Cloudyn portal
+### <a name="save-a-report-to-the-cloudyn-portal"></a>Cloudyn portalında rapor kaydetme
 
-While viewing any report, click **Actions** and then select **Save to my reports**. Name the report and then either add a your own URL or use the automatically created URL. You can optionally **Share** the report publicly with others in your organization or you can share it to your entity. If you do not share the report, it remains a personal report and that only you can view. Save the report.
+Herhangi bir raporu görüntülerken, **Eylemler** ' e tıklayın ve ardından **raporlarıma kaydet**' i seçin. Rapor adı ve ekleyin ya da sonra bir kendi URL ya da otomatik olarak oluşturulan URL'yi kullanın. İsteğe bağlı olarak, raporu kuruluşunuzdaki diğer kullanıcılarla **paylaşabilir** veya varlığınızla paylaşabilirsiniz. Rapor paylaşmıyorsa, kişisel rapor kalır ve yalnızca görüntüleyebilir. Raporu kaydedin.
 
 
-### <a name="save-a-report-to-cloud-provider-storage"></a>Save a report to cloud provider storage
+### <a name="save-a-report-to-cloud-provider-storage"></a>Bulut sağlayıcısı depolama için rapor kaydetme
 
-In order to save a report to your cloud service provider, you must have already configured a storage account. While viewing any report, click **Actions** and then select **Schedule report**. Name the report and then either add a your own URL or use the automatically created URL. Select **Save to storage** and then select the storage account or add a new one. Enter a prefix that gets appended to the report file name. Select a CSV or JSON file format and then save the report.
+Bulut hizmet sağlayıcınız bir raporu kaydetmek için zaten bir depolama hesabı yapılandırmış olmanız gerekir. Herhangi bir raporu görüntülerken, **Eylemler** ' i ve ardından **rapor zamanla**' yı seçin. Rapor adı ve ekleyin ya da sonra bir kendi URL ya da otomatik olarak oluşturulan URL'yi kullanın. **Depolama alanına kaydet** ' i seçin ve ardından Depolama hesabını seçin veya yeni bir tane ekleyin. Raporu dosya adına eklenmiş bir ön eki girin. Bir CSV veya JSON dosya biçimi seçin ve sonra raporu kaydedin.
 
-### <a name="schedule-a-report"></a>Schedule a report
+### <a name="schedule-a-report"></a>Bir raporu zamanlama
 
-You can run reports at scheduled intervals and you can sent them to a recipient list or cloud service provider storage account. While viewing any report, click **Actions** and then select **Schedule report**. You can send the report by email and save to a storage account. Under **Schedule**, select the interval (daily, weekly or monthly). For weekly and monthly, select the day or dates to deliver and select the time. Zamanlanmış raporu kaydedin. If you select the Excel report format, the report is sent as an attachment. When you select email content format, report results that are displayed in chart format are delivered as a graph.
+Zamanlanan aralıklarda raporlar çalıştırabilir ve gönderdiğiniz bunları bir alıcı listesi veya Bulut hizmeti sağlayıcısı depolama hesabı için. Herhangi bir raporu görüntülerken, **Eylemler** ' i ve ardından **rapor zamanla**' yı seçin. Raporun e-posta ile gönderin ve bir depolama hesabına kaydedin. **Zamanlama**bölümünde aralığı (günlük, haftalık veya aylık) seçin. Haftalık ve aylık için gün veya tarih sunun ve saatini seçin'i seçin. Zamanlanmış raporu kaydedin. Excel rapor biçimini seçerseniz rapor ek olarak gönderilir. İçerik e-posta biçimini seçtiğinizde, grafik biçiminde gösterilen rapor sonuçlarını grafik olarak sunulur.
 
-### <a name="export-a-report-as-a-csv-file"></a>Export a report as a CSV file
+### <a name="export-a-report-as-a-csv-file"></a>Bir raporu CSV dosyası olarak dışarı aktarın.
 
-While viewing any report, click **Actions** and then select **Export all report data**. A pop-up window appears and a CSV file is downloaded.
+Herhangi bir raporu görüntülerken, **Eylemler** ' i ve ardından **tüm rapor verilerini dışarı aktar**' ı seçin. Bir açılır pencere görünür ve bir CSV dosyası indirilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Learn about the reports that are included in Cloudyn at [Use Cloudyn reports](use-reports.md).
-- Learn about how to use reports to create [dashboards](dashboards.md).
+- Cloudyn ' de bulunan ve [Cloudyn raporlarını kullanan](use-reports.md)raporlar hakkında bilgi edinin.
+- [Panolar](dashboards.md)oluşturmak için raporların nasıl kullanılacağı hakkında bilgi edinin.

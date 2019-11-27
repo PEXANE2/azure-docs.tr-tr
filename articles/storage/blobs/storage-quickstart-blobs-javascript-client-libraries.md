@@ -34,7 +34,7 @@ Azure portalına geri dönün depolama hesabınızı seçin. Yeni bir CORS kural
 
 Aşağıdaki tabloda her bir CORS ayarı açıklanmakta ve kuralı tanımlamak için kullanılan değerler anlatılmaktadır.
 
-|Ayar  |Değer  | Açıklama |
+|Ayar  |Value  | Açıklama |
 |---------|---------|---------|
 | İzin verilen çıkış noktaları | * | Kabul edilebilir çıkış noktaları olarak etki alanları kümesinin virgülle ayrılmış bir listesini kabul eder. Değerin `*` olarak ayarlanması, depolama hesabına tüm etki alanlarının erişmesine izin verir. |
 | İzin verilen fiiller     | silme, alma, başlık, birleştirme, yayınlama, seçenekler ve yerleştirme | Depolama hesabına göre yürütülmesine izin verilen HTTP fiillerini listeler. Bu hızlı başlangıçta tüm kullanılabilir seçenekleri işaretleyin. |
@@ -76,9 +76,9 @@ az storage account generate-sas
 ```
 Her parametreden sonraki değer serisini biraz şifreli bulabilirsiniz. Bu parametre değerleri, kendi ilgili izninin ilk harfinden alınır. Aşağıdaki tabloda değerlerin nereden geldiği açıklanmıştır: 
 
-| Parametre        | Değer   | Açıklama  |
+| Parametre        | Value   | Açıklama  |
 |------------------|---------|---------|
-| *izinleri*    | racwdl  | Bu SAS *read*, *append*, *create*, *write*, *delete* ve *list* özelliklerine izin verir. |
+| *permissions*    | racwdl  | Bu SAS *read*, *append*, *create*, *write*, *delete* ve *list* özelliklerine izin verir. |
 | *resource-types* | sco     | SAS’den etkilenen kaynaklar *service*, *container* ve *object* kaynaklarıdır. |
 | *services*       | b       | SAS’den etkilenen hizmet *blob* hizmetidir. |
 

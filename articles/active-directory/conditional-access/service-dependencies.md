@@ -1,6 +1,6 @@
 ---
-title: Conditional Access service dependencies - Azure Active Directory
-description: Learn how conditions are used in Azure Active Directory Conditional Access to trigger a policy.
+title: Koşullu erişim hizmeti bağımlılıkları-Azure Active Directory
+description: İlke tetiklemek üzere koşullu erişim Azure Active Directory koşulların nasıl kullanıldığını öğrenin.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -18,49 +18,49 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74380021"
 ---
-# <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>What are service dependencies in Azure Active Directory Conditional Access? 
+# <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Koşullu erişim Azure Active Directory hizmet bağımlılıkları nelerdir? 
 
-With Conditional Access policies, you can specify access requirements to websites and services. For example, your access requirements can include requiring multi-factor authentication (MFA) or [managed devices](require-managed-devices.md). 
+Koşullu erişim ilkeleriyle, Web siteleri ve hizmetleri için erişim gereksinimlerini belirtebilirsiniz. Örneğin, erişim gereksinimleriniz Multi-Factor Authentication (MFA) veya [yönetilen cihazlar](require-managed-devices.md)gerektiriyor olabilir. 
 
-When you access a site or service directly, the impact of a related policy is typically easy to assess. For example, if you have a policy that requires MFA for SharePoint Online configured, MFA is enforced for each sign-in to the SharePoint web portal. However, it is not always straight-forward to assess the impact of a policy because there are cloud apps with dependencies to other cloud apps. For example, Microsoft Teams can provide access to resources in SharePoint Online. So, when you access Microsoft Teams in our current scenario, you are also subject to the SharePoint MFA policy.   
+Bir siteye veya hizmete doğrudan eriştiğinizde, ilgili bir ilkenin etkisinden değerlendirmek genellikle kolaydır. Örneğin, SharePoint Online için MFA gerektiren bir ilkenize sahipseniz, MFA SharePoint Web portalındaki her oturum için zorlanır. Ancak, diğer bulut uygulamalarına yönelik bağımlılıklara sahip bulut uygulamaları olduğundan, bir ilkenin etkisini değerlendirmek her zaman düz bir şekilde ileri doğru kalmaz. Örneğin, Microsoft ekipleri SharePoint Online 'daki kaynaklara erişim sağlayabilir. Bu nedenle, geçerli senaryolarımızda Microsoft ekiplerine eriştiğinizde, SharePoint MFA ilkesine de tabidir.   
 
 ## <a name="policy-enforcement"></a>İlke zorlama 
 
-If you have a service dependency configured, the policy may be applied using early-bound or late-bound enforcement. 
+Yapılandırılmış bir hizmet bağımlılığı varsa, ilke erken veya geç bağlantılı zorlama kullanılarak uygulanabilir. 
 
-- **Early-bound policy enforcement** means a user must satisfy the dependent service policy before accessing the calling app. For example, a user must satisfy SharePoint policy before signing into MS Teams. 
-- **Late-bound policy enforcement** occurs after the user signs into the calling app. Enforcement is deferred to when calling app requests, a token for the downstream service. Examples include MS Teams accessing Planner and Office.com accessing SharePoint. 
+- **Erken bağlı ilke zorlaması** , bir kullanıcının çağıran uygulamaya erişmeden önce bağımlı hizmet ilkesini karşılaması gerektiği anlamına gelir. Örneğin, bir kullanıcının MS ekiplerinde oturum açmadan önce SharePoint ilkesini karşılaması gerekir. 
+- **Geç bağlantılı ilke zorlaması** , Kullanıcı çağıran uygulamada oturum açtıktan sonra oluşur. Uygulama istekleri çağrılırken, aşağı akış hizmeti için bir belirteç olan zorlaması ertelenir. Örnek olarak, Planner ve Office.com 'e erişen MS ekipleri bulunur. 
 
-The diagram below illustrates MS Teams service dependencies. Solid arrows indicate early-bound enforcement the dashed arrow for Planner indicates late-bound enforcement. 
+Aşağıdaki diyagramda MS takımlar hizmet bağımlılıklarını gösterilmektedir. Kalın oklar erken bağlantılı zorlamayı belirtir Planner için kesik çizgili ok, geç bağlantılı uygulamayı gösterir. 
 
-![MS Teams service dependencies](./media/service-dependencies/01.png)
+![MS ekipleri hizmet bağımlılıkları](./media/service-dependencies/01.png)
 
-As a best practice, you should set common policies across related apps and services whenever possible. Having a consistent security posture provides you with the best user experience. For example, setting a common policy across Exchange Online, SharePoint Online, Microsoft Teams, and Skype for business significantly reduces unexpected prompts that may arise from different policies being applied to downstream services. 
+En iyi uygulama olarak, mümkün olan her durumda ortak ilkeleri ilgili uygulamalar ve hizmetler arasında ayarlamanız gerekir. Tutarlı bir güvenlik duruşunu size en iyi kullanıcı deneyimini sağlar. Örneğin, Exchange Online, SharePoint Online, Microsoft ekipleri ve Skype Kurumsal genelinde ortak bir ilke ayarlamak, akış içi hizmetlere uygulanan farklı ilkelerden kaynaklanan beklenmeyen istekleri önemli ölçüde azaltır. 
 
-The below table lists additional service dependencies, where the client apps must satisfy  
+Aşağıdaki tabloda, istemci uygulamalarının karşılaması gereken ek hizmet bağımlılıkları listelenmektedir  
 
-| Client apps         | Downstream service                          | Enforcement |
+| İstemci uygulamaları         | Aşağı akış hizmeti                          | İşlemlerini |
 | :--                 | :--                                         | ---         | 
-| Azure Data Lake     | Microsoft Azure Management (portal and API) | Early-bound |
-| Microsoft Classroom | Değiştirin                                    | Early-bound |
-|                     | SharePoint                                  | Early-bound |
-| Microsoft Teams     | Değiştirin                                    | Early-bound |
-|                     | MS Planner                                  | Late-bound  |
-|                     | SharePoint                                  | Early-bound |
-|                     | Skype Kurumsal Çevrimiçi Sürüm                   | Early-bound |
-| Office Portal       | Değiştirin                                    | Late-bound  |
-|                     | SharePoint                                  | Late-bound  |
-| Outlook groups      | Değiştirin                                    | Early-bound |
-|                     | SharePoint                                  | Early-bound |
-| PowerApp’ler           | Microsoft Azure Management (portal and API) | Early-bound |
-|                     | Windows Azure Active Directory              | Early-bound |
-| Project             | Dynamics CRM                                | Early-bound |
-| Skype Kurumsal  | Değiştirin                                    | Early-bound |
-| Visual Studio       | Microsoft Azure Management (portal and API) | Early-bound |
-| Microsoft Forms     | Değiştirin                                    | Early-bound |
-|                     | SharePoint                                  | Early-bound |
-| Microsoft To-Do     | Değiştirin                                    | Early-bound |
+| Azure Data Lake     | Microsoft Azure yönetimi (portal ve API) | Erken bağlantılı |
+| Microsoft sınıf | Exchange                                    | Erken bağlantılı |
+|                     | SharePoint                                  | Erken bağlantılı |
+| Microsoft Teams     | Exchange                                    | Erken bağlantılı |
+|                     | MS planlayıcısı                                  | Geç bağlantılı  |
+|                     | SharePoint                                  | Erken bağlantılı |
+|                     | Skype Kurumsal Çevrimiçi Sürüm                   | Erken bağlantılı |
+| Office portalı       | Exchange                                    | Geç bağlantılı  |
+|                     | SharePoint                                  | Geç bağlantılı  |
+| Outlook grupları      | Exchange                                    | Erken bağlantılı |
+|                     | SharePoint                                  | Erken bağlantılı |
+| PowerApps           | Microsoft Azure yönetimi (portal ve API) | Erken bağlantılı |
+|                     | Windows Azure Active Directory              | Erken bağlantılı |
+| Project             | Dynamics CRM                                | Erken bağlantılı |
+| Skype Kurumsal  | Exchange                                    | Erken bağlantılı |
+| Visual Studio       | Microsoft Azure yönetimi (portal ve API) | Erken bağlantılı |
+| Microsoft Forms     | Exchange                                    | Erken bağlantılı |
+|                     | SharePoint                                  | Erken bağlantılı |
+| Microsoft To-Do     | Exchange                                    | Erken bağlantılı |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-To learn how to implement Conditional Access in your environment, see [Plan your Conditional Access deployment in Azure Active Directory](plan-conditional-access.md).
+Ortamınızda Koşullu erişimin nasıl uygulanacağını öğrenmek için, bkz. [Azure Active Directory Koşullu erişim dağıtımınızı planlayın](plan-conditional-access.md).

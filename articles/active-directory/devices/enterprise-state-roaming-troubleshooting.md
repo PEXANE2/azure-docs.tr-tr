@@ -1,6 +1,6 @@
 ---
-title: Troubleshoot Enterprise State Roaming in Azure Active Directory
-description: Provides answers to some questions IT administrators might have about settings and app data sync.
+title: Azure Active Directory Enterprise State Roaming sorunlarını giderme
+description: Yöneticilerin ayarlar ve uygulama verilerinin eşitlenmesi hakkında sahip olabileceği bazı soruların yanıtlarını sağlar.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -18,164 +18,164 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74379754"
 ---
-# <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Troubleshooting Enterprise State Roaming settings in Azure Active Directory
+# <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Azure Active Directory Enterprise State Roaming ayarları sorunlarını giderme
 
-This topic provides information on how to troubleshoot and diagnose issues with Enterprise State Roaming, and provides a list of known issues.
+Bu konu, Enterprise State Roaming sorunları giderme ve tanılama hakkında bilgi sağlar ve bilinen sorunların bir listesini sağlar.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="preliminary-steps-for-troubleshooting"></a>Preliminary steps for troubleshooting 
+## <a name="preliminary-steps-for-troubleshooting"></a>Sorun giderme için ön adımlar 
 
-Before you start troubleshooting, verify that the user and device have been configured properly, and that all the requirements of Enterprise State Roaming are met by the device and the user. 
+Sorun gidermeye başlamadan önce, Kullanıcı ve cihazın düzgün şekilde yapılandırıldığını ve tüm Enterprise State Roaming gereksinimlerinin cihaz ve Kullanıcı tarafından karşılandığını doğrulayın. 
 
-1. Windows 10, with the latest updates, and a minimum Version 1511 (OS Build 10586 or later) is installed on the device. 
-1. The device is Azure AD joined or hybrid Azure AD joined. For more information, see [how to get a device under the control of Azure AD](overview.md).
-1. Ensure that **Enterprise State Roaming** is enabled for the tenant in Azure AD as described in [To enable Enterprise State Roaming](enterprise-state-roaming-enable.md). You can enable roaming for all users or for only a selected group of users.
-1. The user must already be assigned an Azure Active Directory Premium license.  
-1. The device must be restarted and the user must sign in again to access Enterprise State Roaming features.
+1. Windows 10, en son güncelleştirmelerle ve en düşük sürüm 1511 (OS Build 10586 veya üzeri) cihazda yüklü. 
+1. Cihaz Azure AD 'ye katılmış veya hibrit Azure AD 'ye katılmış. Daha fazla bilgi için bkz. [Azure AD 'nin denetimi altında cihaz alma](overview.md).
+1. Azure AD 'de kiracı için **Enterprise State Roaming** [Enterprise State Roaming etkinleştirme](enterprise-state-roaming-enable.md)bölümünde açıklandığı gibi etkinleştirildiğinden emin olun. Tüm kullanıcılar için veya yalnızca seçili bir Kullanıcı grubu için dolaşımı etkinleştirebilirsiniz.
+1. Kullanıcıya zaten bir Azure Active Directory Premium lisansı atanmış olmalıdır.  
+1. Cihazın yeniden başlatılması ve kullanıcının Enterprise State Roaming özelliklere erişmek için yeniden oturum açması gerekir.
 
-## <a name="information-to-include-when-you-need-help"></a>Information to include when you need help
-If you cannot solve your issue with the guidance below, you can contact our support engineers. When you contact them, include the following information:
+## <a name="information-to-include-when-you-need-help"></a>Yardıma ihtiyacınız olduğunda dahil edilecek bilgiler
+Aşağıdaki kılavuzdan sorununuzu çözemezseniz destek mühendislerimize başvurabilirsiniz. Bunlara iletişim kuradığınızda, aşağıdaki bilgileri ekleyin:
 
-* **General description of the error**: Are there error messages seen by the user? If there was no error message, describe the unexpected behavior you noticed, in detail. What features are enabled for sync and what is the user expecting to sync? Are multiple features not syncing or is it isolated to one?
-* **Users affected** – Is sync working/failing for one user or multiple users? How many devices are involved per user? Are all of them not syncing or are some of them syncing and some not syncing?
-* **Information about the user** – What identity is the user using to sign in to the device? How is the user signing in to the device? Are they part of a selected security group allowed to sync? 
-* **Information about the device** – Is this device Azure AD-joined or domain-joined? What build is the device on? What are the most recent updates?
-* **Date / Time / Timezone** – What was the precise date and time you saw the error (include the timezone)?
+* **Hatanın genel açıklaması**: Kullanıcı tarafından görülen hata iletileri var mı? Hata iletisi yoksa, fark ettiğiniz beklenmedik davranışı ayrıntılı olarak tanıtın. Eşitleme için hangi özellikler etkinleştirilmiştir ve kullanıcının eşitlenmesi bekleniyor mu? Birden çok özellik eşitlenmiyor veya bir tane ile yalıtılmış mi?
+* **Etkilenen kullanıcılar** – bir kullanıcı veya birden çok kullanıcı için eşitleme çalışıyor/başarısız mi? Kullanıcı başına kaç cihaz katıldı? Bunların tümü eşitlenmiyor veya bir kısmı eşitlenmiyor ve bazıları eşitlenmiyor mu?
+* **Kullanıcı hakkında bilgiler** – cihazda oturum açmak için kullanıcının hangi kimlik olduğunu kullanıyor? Kullanıcı cihazda nasıl oturum açılıyor? Seçili bir güvenlik grubunun eşitlemesine izin veriliyor mu? 
+* **Cihaz hakkında bilgi** – bu CIHAZ Azure AD 'ye katılmış veya etki alanına katılmış mi? Cihaz hangi yapıda? En son güncelleştirmeler nelerdir?
+* **Tarih/saat/saat dilimi** – hatayı gördüğünüz kesin tarih ve saat (saat dilimini dahil)?
 
-Including this information helps us solve your problem as quickly as possible.
+Bu bilgilerin dahil edilmesi, sorununuzu olabildiğince çabuk çözmemize yardımcı olur.
 
 ## <a name="troubleshooting-and-diagnosing-issues"></a>Sorunları tanılama ve giderme
-This section gives suggestions on how to troubleshoot and diagnose problems related to Enterprise State Roaming.
+Bu bölüm Enterprise State Roaming ilgili sorunları gidermeye ve tanılamaya yönelik öneriler sağlar.
 
-## <a name="verify-sync-and-the-sync-your-settings-settings-page"></a>Verify sync, and the “Sync your settings” settings page 
+## <a name="verify-sync-and-the-sync-your-settings-settings-page"></a>Eşitlemeyi doğrulama ve "ayarlarınızı eşitleme" ayarları sayfası 
 
-1. After joining your Windows 10 PC to a domain that is configured to allow Enterprise State Roaming, sign on with your work account. Go to **Settings** > **Accounts** > **Sync Your Settings** and confirm that sync and the individual settings are on, and that the top of the settings page indicates that you are syncing with your work account. Confirm the same account is also used as your login account in **Settings** > **Accounts** > **Your Info**. 
-1. Verify that sync works across multiple machines by making some changes on the original machine, such as moving the taskbar to the right or top side of the screen. Watch the change propagate to the second machine within five minutes. 
+1. Windows 10 PC 'nizi Enterprise State Roaming izin verecek şekilde yapılandırılmış bir etki alanına katıldıktan sonra iş hesabınızla oturum açın. **Ayarlar >  > ** **hesaplar** ' a gidin, **Ayarlarınızı eşitleyin** ve eşitlemenin ve bireysel ayarların açık olduğunu ve Ayarlar sayfasının en üstündeki iş hesabınızla eşitlediğiniz olduğunu doğrulayın. Ayrıca, **ayarlarda** ** > hesap** ** > oturum**açma hesabınız olarak aynı hesabın kullanıldığını onaylayın. 
+1. Görev çubuğunu ekranın sağ veya üst tarafına taşıma gibi bazı değişiklikler yaparak, eşitlemenin birden çok makine arasında çalıştığını doğrulayın. İkinci makineye beş dakika içinde yayan değişikliği izleyin. 
 
-   * Locking and unlocking the screen (Win + L) can help trigger a sync.
-   * You must be signing in with the same account on both PCs for sync to work – as Enterprise State Roaming is tied to the user account and not the machine account.
+   * Ekranı kilitlemek ve kilidini açmak (Win + L), eşitlemenin tetiklenmesine yardımcı olabilir.
+   * Eşitleme için her iki bilgisayarda da aynı hesapla oturum açmış olmanız gerekir; Enterprise State Roaming, makine hesabına değil Kullanıcı hesabına bağlıdır.
 
-**Potential issue**: If the controls in the **Settings** page are not available, and you see the message “Some Windows features are only available if you are using a Microsoft account or work account.” This issue might arise for devices that are set up to be domain-joined and registered to Azure AD, but the device has not yet successfully authenticated to Azure AD. A possible cause is that the device policy must be applied, but this application happens asynchronously, and could be delayed by a few hours. 
+**Olası sorun**: **Ayarlar** sayfasındaki denetimler kullanılamıyorsa ve "bazı Windows özellikleri yalnızca bir Microsoft hesabı veya iş hesabı kullanıyorsanız kullanılabilir" iletisini görürseniz. Bu sorun, etki alanına katılmış ve Azure AD 'ye kayıtlı olacak şekilde ayarlanmış cihazlarda, ancak cihazın Azure AD 'ye başarıyla kimlik doğrulaması yapılmamış olabilir. Olası bir neden cihaz ilkesinin uygulanması gerekir, ancak bu uygulama zaman uyumsuz olarak gerçekleşir ve birkaç saat geciktirilebilir. 
 
-### <a name="verify-the-device-registration-status"></a>Verify the device registration status
+### <a name="verify-the-device-registration-status"></a>Cihaz kayıt durumunu doğrulama
 
-Enterprise State Roaming requires the device to be registered with Azure AD. Although not specific to Enterprise State Roaming, following the instructions below can help confirm that the Windows 10 Client is registered, and confirm thumbprint, Azure AD settings URL, NGC status, and other information.
+Enterprise State Roaming, cihazın Azure AD 'ye kaydedilmesini gerektirir. Enterprise State Roaming özgü olmamakla birlikte, aşağıdaki yönergeleri izleyerek Windows 10 Istemcisinin kaydedildiğini ve parmak izini, Azure AD ayarları URL 'sini, NGC durumunu ve diğer bilgileri onaylamanız yardımcı olabilir.
 
-1. Open the command prompt unelevated. To do this in Windows, open the Run launcher (Win + R) and type “cmd” to open.
-1. Once the command prompt is open, type “*dsregcmd.exe /status*”.
-1. For expected output, the **AzureAdJoined** field value should be “YES”, **WamDefaultSet** field value should be “YES”, and the **WamDefaultGUID** field value should be a GUID with “(AzureAd)” at the end.
+1. Yükseltbırakılmamış komut istemi ' ni açın. Bunu Windows 'ta yapmak için, çalıştırma başlatıcısı 'nı (Win + R) açın ve açmak için "cmd" yazın.
+1. Komut istemi açıldıktan sonra, "*dsregcmd. exe/status*" yazın.
+1. Beklenen çıkış için, **Azureadkatılmış** alan DEĞERI "Yes" olmalıdır, **Wamdefaultset** alan değeri "Yes" olmalıdır ve **wamdefaultguid** alan değeri sonunda "(AZUREAD)" ile bir GUID olmalıdır.
 
-**Potential issue**: **WamDefaultSet** and **AzureAdJoined** both have “NO” in the field value, the device was domain-joined and registered with Azure AD, and the device does not sync. If it is showing this, the device may need to wait for policy to be applied or the authentication for the device failed when connecting to Azure AD. The user may have to wait a few hours for the policy to be applied. Other troubleshooting steps may include retrying auto-registration by signing out and back in, or launching the task in Task Scheduler. In some cases, running “*dsregcmd.exe /leave*” in an elevated command prompt window, rebooting, and trying registration again may help with this issue.
+**Olası sorun**: **wamdefaultset** ve **azureadkatılmış** her ikisi de alan değerinde "Hayır", CIHAZıN etki alanına katılmış ve Azure AD 'ye kayıtlı olduğu ve cihaz eşitlenmediği için. Bunu gösteriyorsa cihazın, ilkenin uygulanmasını beklemesi veya Azure AD 'ye bağlanılırken cihazın kimlik doğrulaması başarısız olması gerekebilir. Kullanıcının ilkenin uygulanması için birkaç saat beklemeniz gerekebilir. Diğer sorun giderme adımları, oturum kapatarak ve geri yükleyerek otomatik kayıt yeniden denenmesini veya Görev Zamanlayıcı içinde görevin başlatılmasını içerebilir. Bazı durumlarda, yükseltilmiş bir komut istemi penceresinde "*dsregcmd. exe/Leave*" komutunu çalıştırın, yeniden başlatma ve kayıt yeniden deneniyor bu sorunla ilgili yardımcı olabilir.
 
-**Potential issue**: The field for **SettingsUrl** is empty and the device does not sync. The user may have last logged in to the device before Enterprise State Roaming was enabled in the Azure Active Directory Portal. Restart the device and have the user login. Optionally, in the portal, try having the IT Admin navigate to **Azure Active Directory** > **Devices** > **Enterprise State Roaming** disable and re-enable **Users may sync settings and app data across devices**. Once re-enabled, restart the device and have the user login. If this does not resolve the issue, **SettingsUrl** may be empty in the case of a bad device certificate. In this case, running “*dsregcmd.exe /leave*” in an elevated command prompt window, rebooting, and trying registration again may help with this issue.
+**Olası sorun**: **settingsurl** alanı boş ve cihaz eşitlenmedi. Azure Active Directory portalında Enterprise State Roaming etkinleştirilmeden önce Kullanıcı cihazda en son oturum açmış olabilir. Cihazı yeniden başlatın ve kullanıcının oturum açmasını sağlayabilirsiniz. İsteğe bağlı olarak, portalda BT yöneticisinin **Azure Active Directory** > **cihazlara** gitmesini > **Enterprise State Roaming** devre dışı bırakma ve yeniden etkinleştirme, **kullanıcıların ayarları ve uygulama verilerini cihazlar arasında eşitlemesine izin verebilir**. Yeniden etkinleştirildikten sonra, cihazı yeniden başlatın ve kullanıcının oturum açmasını sağlayabilirsiniz. Bu sorunu çözmezse, geçersiz bir cihaz sertifikası durumunda **Settingsurl** boş olabilir. Bu durumda, yükseltilmiş bir komut istemi penceresinde "*dsregcmd. exe/Leave*" çalıştırmak, yeniden başlatmak ve kayıt yeniden denemek bu sorunla ilgili yardımcı olabilir.
 
-## <a name="enterprise-state-roaming-and-multi-factor-authentication"></a>Enterprise State Roaming and Multi-Factor Authentication 
+## <a name="enterprise-state-roaming-and-multi-factor-authentication"></a>Enterprise State Roaming ve Multi-Factor Authentication 
 
-Under certain conditions, Enterprise State Roaming can fail to sync data if Azure Multi-Factor Authentication is configured. For additional details on these symptoms, see the support document [KB3193683](https://support.microsoft.com/kb/3193683). 
+Bazı koşullar altında, Enterprise State Roaming Azure Multi-Factor Authentication yapılandırılmışsa verileri eşitleyemeyebilir. Bu belirtilerle ilgili daha fazla bilgi için bkz. destek belgesi [KB3193683](https://support.microsoft.com/kb/3193683). 
 
-**Potential issue**: If your device is configured to require Multi-Factor Authentication on the Azure Active Directory portal, you may fail to sync settings while signing in to a Windows 10 device using a password. This type of Multi-Factor Authentication configuration is intended to protect an Azure administrator account. Admin users may still be able to sync by signing in to their Windows 10 devices with their Microsoft Passport for Work PIN or by completing Multi-Factor Authentication while accessing other Azure services like Office 365.
+**Olası sorun**: cihazınız Azure Active Directory portalında Multi-Factor Authentication gerektirecek şekilde yapılandırıldıysa, parolayı kullanarak bir Windows 10 cihazında oturum açarken ayarları eşitleyemeyebilirsiniz. Bu tür Multi-Factor Authentication yapılandırma, bir Azure yönetici hesabını korumak için tasarlanmıştır. Yönetici kullanıcılar Windows 10 cihazlarında İş için Microsoft Passport PIN 'i ile oturum açarak veya Office 365 gibi diğer Azure hizmetlerine erişirken Multi-Factor Authentication tamamlayarak eşitleme yapabilir.
 
-**Potential issue**: Sync can fail if the admin configures the Active Directory Federation Services Multi-Factor Authentication Conditional Access policy and the access token on the device expires. Ensure that you sign in and sign out using the Microsoft Passport for Work PIN or complete Multi-Factor Authentication while accessing other Azure services like Office 365.
+**Olası sorun**: yönetici Active Directory Federasyon Hizmetleri (AD FS) Multi-Factor Authentication koşullu erişim ilkesi ve cihazdaki erişim belirtecinin süresi dolarsa eşitleme başarısız olabilir. Office 365 gibi diğer Azure hizmetlerine erişirken İş için Microsoft Passport PIN 'ı kullanarak oturum açıp oturumunuzu kapatıp açmanız ve Multi-Factor Authentication tamamlantığınızdan emin olun.
 
-### <a name="event-viewer"></a>Event Viewer
+### <a name="event-viewer"></a>Olay Görüntüleyicisi
 
-For advanced troubleshooting, Event Viewer can be used to find specific errors. These are documented in the table below. The events can be found under Event Viewer > Applications and Services Logs > **Microsoft** > **Windows** > **SettingSync-Azure** and for identity-related issues with sync **Microsoft** > **Windows** > **AAD**.
+Gelişmiş sorun giderme için Olay Görüntüleyicisi belirli hataları bulmak için kullanılabilir. Bunlar aşağıdaki tabloda belgelenmiştir. Olaylar Olay Görüntüleyicisi > uygulama ve hizmet günlükleri > **microsoft** > **Windows** > **settingsync-Azure** ' a ve eşitleme **Microsoft** > **Windows** > **AAD**ile ilgili kimlik sorunları için bulunabilir.
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 
-### <a name="sync-does-not-work-on-devices-that-have-apps-side-loaded-using-mdm-software"></a>Sync does not work on devices that have apps side-loaded using MDM software
+### <a name="sync-does-not-work-on-devices-that-have-apps-side-loaded-using-mdm-software"></a>Eşitleme, uygulamaların MDM yazılımını kullanarak dışarıdan yüklendiği cihazlarda çalışmaz
 
-Affects devices running the Windows 10 Anniversary Update (Version 1607). In Event Viewer under the SettingSync-Azure logs, the Event ID 6013 with error 80070259 is frequently seen.
+Windows 10 yıldönümü Güncelleştirmesi (sürüm 1607) çalıştıran cihazları etkiler. SettingSync-Azure Günlükleri altındaki Olay Görüntüleyicisi, 6013 80070259 hatasını içeren olay KIMLIĞI sıklıkla görülür.
 
 **Önerilen eylem**  
-Make sure the Windows 10 v1607 client has the August 23, 2016 Cumulative Update ([KB3176934](https://support.microsoft.com/kb/3176934) OS Build 14393.82). 
+Windows 10 v1607 istemcisinde 23 Ağustos 2016 tarihli toplu güncelleştirme ([KB3176934](https://support.microsoft.com/kb/3176934) OS Build 14393,82) olduğundan emin olun. 
 
 ---
 
-### <a name="internet-explorer-favorites-do-not-sync"></a>Internet Explorer Favorites do not sync
+### <a name="internet-explorer-favorites-do-not-sync"></a>Internet Explorer sık kullanılanları eşitleme
 
-Affects devices running the Windows 10 November Update (Version 1511).
+Windows 10 Kasım Güncelleştirmesi (sürüm 1511) çalıştıran cihazları etkiler.
 
 **Önerilen eylem**  
-Make sure the Windows 10 v1511 client has the July 2016 Cumulative Update ([KB3172985](https://support.microsoft.com/kb/3172985) OS Build 10586.494).
+Windows 10 v1511 istemcisinin Temmuz 2016 toplu güncelleştirmesine ([KB3172985](https://support.microsoft.com/kb/3172985) OS Build 10586,494) sahip olduğundan emin olun.
 
 ---
 
-### <a name="theme-is-not-syncing-as-well-as-data-protected-with-windows-information-protection"></a>Theme is not syncing, as well as data protected with Windows Information Protection 
+### <a name="theme-is-not-syncing-as-well-as-data-protected-with-windows-information-protection"></a>Tema eşitlenmiyor ve Windows Information Protection ile korunan veriler 
 
-To prevent data leakage, data that is protected with [Windows Information Protection](https://technet.microsoft.com/itpro/windows/keep-secure/protect-enterprise-data-using-wip) will not sync through Enterprise State Roaming for devices using the Windows 10 Anniversary Update.
+Veri sızıntısını engellemek için [windows Information Protection](https://technet.microsoft.com/itpro/windows/keep-secure/protect-enterprise-data-using-wip) ile korunan veriler, Windows 10 yıldönümü güncelleştirmesi kullanılarak cihazların Enterprise State Roaming üzerinden eşitlenmez.
 
 **Önerilen eylem**  
-Hiçbiri. Future updates to Windows may resolve this issue.
+Yok. Windows için gelecekteki güncelleştirmeler bu sorunu çözebilir.
 
 ---
 
-### <a name="date-time-and-region-settings-do-not-sync-on-domain-joined-device"></a>Date, Time, and Region settings do not sync on domain-joined device 
+### <a name="date-time-and-region-settings-do-not-sync-on-domain-joined-device"></a>Tarih, saat ve bölge ayarları, etki alanına katılmış cihazda eşitlenmedi 
   
-Devices that are domain-joined will not experience sync for the setting Date, Time, and Region: automatic time. Using automatic time may override the other Date, Time, and Region settings and cause those settings not to sync. 
+Etki alanına katılmış cihazlar, tarih, saat ve bölge ayarları için eşitleme deneyimmeyecektir: otomatik saat. Otomatik saatin kullanılması diğer tarih, saat ve bölge ayarlarını geçersiz kılabilir ve bu ayarların eşitlenmemesine neden olabilir. 
 
 **Önerilen eylem**  
-Hiçbiri. 
+Yok. 
 
 ---
 
-### <a name="uac-prompts-when-syncing-passwords"></a>UAC Prompts when syncing passwords
+### <a name="uac-prompts-when-syncing-passwords"></a>Parolaları eşitlerken UAC Istemleri
 
-Affects devices running the Windows 10 November Update (Version 1511) with a wireless NIC that is configured to sync passwords.
+Windows 10 Kasım Güncelleştirmesi (sürüm 1511) çalıştıran cihazları, parolaları eşitlemek üzere yapılandırılmış bir kablosuz NIC ile etkiler.
 
 **Önerilen eylem**  
-Make sure the Windows 10 v1511 client has the Cumulative Update ([KB3140743](https://support.microsoft.com/kb/3140743) OS Build 10586.494).
+Windows 10 v1511 istemcisinin toplu güncelleştirme ([KB3140743](https://support.microsoft.com/kb/3140743) OS Build 10586,494) içerdiğinden emin olun.
 
 ---
 
-### <a name="sync-does-not-work-on-devices-that-use-smart-card-for-login"></a>Sync does not work on devices that use smart card for login
+### <a name="sync-does-not-work-on-devices-that-use-smart-card-for-login"></a>Eşitleme, oturum açma için akıllı kart kullanan cihazlarda çalışmıyor
 
-If you attempt to sign in to your Windows device using a smart card or virtual smart card, settings sync will stop working.     
+Windows cihazınızda bir akıllı kart veya sanal akıllı kart kullanarak oturum açmaya çalışırsanız, ayarlar eşitlemesi çalışmayı durdurur.     
 
 **Önerilen eylem**  
-Hiçbiri. Future updates to Windows may resolve this issue.
+Yok. Windows için gelecekteki güncelleştirmeler bu sorunu çözebilir.
 
 ---
 
-### <a name="domain-joined-device-is-not-syncing-after-leaving-corporate-network"></a>Domain-joined device is not syncing after leaving corporate network     
+### <a name="domain-joined-device-is-not-syncing-after-leaving-corporate-network"></a>Şirket ağından ayrıldıktan sonra etki alanına katılmış cihaz eşitlenmiyor     
 
-Domain-joined devices registered to Azure AD may experience sync failure if the device is off-site for extended periods of time, and domain authentication can't complete.
+Azure AD 'ye kayıtlı etki alanına katılmış cihazlar, cihaz uzun süreler boyunca yerinde değilse ve etki alanı kimlik doğrulaması tamamlanmazsa eşitleme hatası yaşayabilir.
 
 **Önerilen eylem**  
-Connect the device to a corporate network so that sync can resume.
+Eşitlemenin sürdürülabilmesi için cihazı bir kurumsal ağa bağlayın.
 
 ---
 
-### <a name="azure-ad-joined-device-is-not-syncing-and-the-user-has-a-mixed-case-user-principal-name"></a>Azure AD Joined device is not syncing and the user has a mixed case User Principal Name.
+### <a name="azure-ad-joined-device-is-not-syncing-and-the-user-has-a-mixed-case-user-principal-name"></a>Azure AD 'ye katılmış cihaz eşitlenmiyor ve kullanıcının karma bir örnek Kullanıcı asıl adı vardır.
 
-If the user has a mixed case UPN (e.g. UserName instead of username) and the user is on an Azure AD Joined device which has upgraded from Windows 10 Build 10586 to 14393, the user's device may fail to sync. 
+Kullanıcının karma bir Case UPN 'si varsa (Kullanıcı adı yerine Kullanıcı adı) ve Kullanıcı Windows 10 Build 10586 ' den 14393 ' e yükseltilmiş bir Azure AD 'ye katılmış cihazdaysa, kullanıcının cihazı eşitlenemeyebilir. 
 
 **Önerilen eylem**  
-The user will need to unjoin and rejoin the device to the cloud. To do this, login as the Local Administrator user and unjoin the device by going to **Settings** > **System** > **About** and select "Manage or disconnect from work or school". Clean up the files below, and then Azure AD Join the device again in **Settings** > **System** > **About** and selecting "Connect to Work or School". Continue to join the device to Azure Active Directory and complete the flow.
+Kullanıcının cihaza katılmayacak ve buluta yeniden katılması gerekir. Bunu yapmak için, yerel yönetici kullanıcı olarak oturum açın ve **ayarlar** > **sistem** ** > ve** "iş veya okul bağlantısını Yönet veya bağlantıyı kes" seçeneğini belirleyin. Aşağıdaki dosyaları temizleyin ve ardından Azure AD ' > **sistem** > **Ayarlar** **' da "** iş veya okula Bağlan" ı seçerek cihazı yeniden birleştirin. Azure Active Directory cihaza katılmayı ve akışı tamamlamayı sürdürün.
 
-In the cleanup step, cleanup the following files:
-- Settings.dat in `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\Settings\`
-- All the files under the folder `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\AC\TokenBroker\Account`
+Temizleme adımında, aşağıdaki dosyaları temizleyin:
+- `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\Settings\` 'de Settings. dat
+- Klasör altındaki tüm dosyalar `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\AC\TokenBroker\Account`
 
 ---
 
-### <a name="event-id-6065-80070533-this-user-cant-sign-in-because-this-account-is-currently-disabled"></a>Event ID 6065: 80070533 This user can’t sign in because this account is currently disabled  
+### <a name="event-id-6065-80070533-this-user-cant-sign-in-because-this-account-is-currently-disabled"></a>Olay KIMLIĞI 6065:80070533 bu hesap şu anda devre dışı olduğundan bu kullanıcı oturum açamıyor  
 
-In Event Viewer under the SettingSync/Debug logs, this error can be seen when the user's credentials have expired. In addition, it can occur when the tenant did not automatically have AzureRMS provisioned. 
+SettingSync/Debug Günlükleri altındaki Olay Görüntüleyicisi, kullanıcının kimlik bilgilerinin kullanım zamanı dolduğunda bu hata görülebilir. Buna ek olarak, kiracı AzureRMS tarafından otomatik olarak sağlanmamışsa meydana gelebilir. 
 
 **Önerilen eylem**  
-In the first case, have the user update their credentials and login to the device with the new credentials. To solve the AzureRMS issue, proceed with the steps listed in [KB3193791](https://support.microsoft.com/kb/3193791). 
+İlk durumda, kullanıcının kimlik bilgilerini güncelleştirmesini ve yeni kimlik bilgileriyle cihazda oturum açmasını sağlayabilirsiniz. AzureRMS sorununu gidermek için, [KB3193791](https://support.microsoft.com/kb/3193791)' de listelenen adımlara ilerleyin. 
 
 ---
 
-### <a name="event-id-1098-error-0xcaa5001c-token-broker-operation-failed"></a>Event ID 1098: Error: 0xCAA5001C Token broker operation failed  
+### <a name="event-id-1098-error-0xcaa5001c-token-broker-operation-failed"></a>Olay KIMLIĞI 1098: hata: 0Xcaa500 1C belirteç Aracısı işlemi başarısız oldu  
 
-In Event Viewer under the AAD/Operational logs, this error may be seen with Event 1104: AAD Cloud AP plugin call Get token returned error: 0xC000005F. This issue occurs if there are missing permissions or ownership attributes.  
+AAD/Işletimsel Günlükleri altındaki Olay Görüntüleyicisi, bu hata olay 1104: AAD Cloud AP eklenti çağrısı Get Token hatası döndürdü: 0xC000005F. Bu sorun, izin veya sahiplik özniteliklerinin eksik olması durumunda oluşur.  
 
 **Önerilen eylem**  
-Proceed with the steps listed [KB3196528](https://support.microsoft.com/kb/3196528).  
+[KB3196528](https://support.microsoft.com/kb/3196528)listelenen adımlarla devam edin.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-For an overview, see [enterprise state roaming overview](enterprise-state-roaming-overview.md).
+Genel bakış için bkz. [kuruluş durumu dolaşımına genel bakış](enterprise-state-roaming-overview.md).

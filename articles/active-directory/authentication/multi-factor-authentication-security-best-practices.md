@@ -1,6 +1,6 @@
 ---
-title: Security guidance for Azure Multi-Factor Authentication - Azure Active Directory
-description: This document provides guidance around using Azure MFA with Azure accounts
+title: Azure Multi-Factor Authentication için güvenlik kılavuzu-Azure Active Directory
+description: Bu belgede Azure MFA ile Azure hesaplarının kullanılmasıyla ilgili rehberlik sunulmaktadır
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -18,102 +18,102 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74208442"
 ---
-# <a name="security-guidance-for-using-azure-multi-factor-authentication-with-azure-ad-accounts"></a>Security guidance for using Azure Multi-Factor Authentication with Azure AD accounts
+# <a name="security-guidance-for-using-azure-multi-factor-authentication-with-azure-ad-accounts"></a>Azure AD hesaplarıyla Azure Multi-Factor Authentication kullanmaya yönelik güvenlik kılavuzu
 
-Two-step verification is the preferred choice for most organizations that want to enhance their authentication process. Azure Multi-Factor Authentication (MFA) helps companies meet their security and compliance requirements while providing a simple sign-in experience for their users. This article covers some tips that you should consider when planning for the adoption of Azure MFA.
+İki aşamalı doğrulama, kimlik doğrulama sürecini geliştirmek isteyen birçok kuruluş için tercih edilen seçenektir. Azure Multi-Factor Authentication (MFA), şirketlerin kullanıcıları için basit bir oturum açma deneyimi sağlarken bunların güvenlik ve uyumluluk gereksinimlerini karşılamasına yardımcı olur. Bu makalede, Azure MFA benimseme için planlama yaparken göz önünde bulundurmanız gereken bazı ipuçları ele alınmaktadır.
 
-## <a name="deploy-azure-mfa-in-the-cloud"></a>Deploy Azure MFA in the cloud
+## <a name="deploy-azure-mfa-in-the-cloud"></a>Bulutta Azure MFA 'yı dağıtma
 
-There are two ways to [enable Azure MFA for all your users](howto-mfa-getstarted.md).
+[Tüm kullanıcılarınız Için Azure MFA 'yı etkinleştirmenin](howto-mfa-getstarted.md)iki yolu vardır.
 
-* Buy licenses for each user (Either Azure MFA, Azure AD Premium, or Enterprise Mobility + Security)
-* Create a Multi-Factor Auth Provider and pay per-user or per-authentication
+* Her Kullanıcı için lisans satın alın (Azure MFA, Azure AD Premium veya Enterprise Mobility + Security)
+* Multi-Factor auth sağlayıcısı oluşturun ve Kullanıcı başına veya kimlik doğrulama başına ödeme yapın
 
-### <a name="licenses"></a>Licenses
+### <a name="licenses"></a>Lisanslarının
 
-![Apply licenses to users, enable, notify](./media/multi-factor-authentication-security-best-practices/ems.png)
+![Lisansları kullanıcılara uygulama, etkinleştirme, bildirme](./media/multi-factor-authentication-security-best-practices/ems.png)
 
-If you have Azure AD Premium or Enterprise Mobility + Security licenses, you already have Azure MFA. Your organization doesn't need anything additional to extend the two-step verification capability to all users. You only need to assign a license to a user, and then you can turn on MFA.
+Azure AD Premium veya Enterprise Mobility + Security lisanslarınız varsa, zaten Azure MFA 'ya sahipsiniz. Kuruluşunuzun iki adımlı doğrulama özelliğini tüm kullanıcılara genişletmek için ek bir şey gerekmez. Yalnızca bir kullanıcıya lisans atamanız gerekir ve ardından MFA 'yı açabilirsiniz.
 
-When setting up Multi-Factor Authentication, consider the following tips:
+Multi-Factor Authentication ayarlarken aşağıdaki ipuçlarını göz önünde bulundurun:
 
-* Do not create a per-authentication Multi-Factor Auth Provider. If you do, you could end up paying for verification requests from users that already have licenses.
-* If you don't have enough licenses for all your users, you can create a per-user Multi-Factor Auth Provider to cover the rest of your organization. 
-* Azure AD Connect is only required if you are synchronizing your on-premises Active Directory environment with an Azure AD directory. If you use an Azure AD directory that is not synchronized with an on-premises instance of Active Directory, you do not need Azure AD Connect.
+* Kimlik doğrulama Multi-Factor auth sağlayıcısı oluşturmayın. Bunu yaparsanız, zaten lisanslarına sahip olan kullanıcılardan gelen doğrulama istekleri için ödeme yapabilirsiniz.
+* Tüm kullanıcılarınız için yeterli lisans yoksa, kuruluşunuzun geri kalanını karşılamak için Kullanıcı başına Multi-Factor auth sağlayıcısı oluşturabilirsiniz. 
+* Azure AD Connect yalnızca şirket içi Active Directory ortamınızı bir Azure AD diziniyle eşitliyorsanız gereklidir. Active Directory Şirket içi bir örneğiyle eşitlenmemiş bir Azure AD dizini kullanıyorsanız, Azure AD Connect gerekmez.
 
-### <a name="multi-factor-auth-provider"></a>Multi-Factor Auth Provider
+### <a name="multi-factor-auth-provider"></a>Multi-Factor auth sağlayıcısı
 
-![Multi-Factor Authentication Provider](./media/multi-factor-authentication-security-best-practices/authprovider.png)
+![Multi-Factor Authentication sağlayıcı](./media/multi-factor-authentication-security-best-practices/authprovider.png)
 
-If you don't have licenses that include Azure MFA, then you can [create an MFA Auth Provider](concept-mfa-authprovider.md).
+Azure MFA içeren lisansınız yoksa, [BIR MFA kimlik doğrulama sağlayıcısı oluşturabilirsiniz](concept-mfa-authprovider.md).
 
-When creating the Auth Provider, you need to select a directory and consider the following details:
+Kimlik doğrulama sağlayıcısını oluştururken bir dizin seçmeniz ve aşağıdaki ayrıntıları göz önünde bulundurmanız gerekir:
 
-* You do not need an Azure AD directory to create a Multi-Factor Auth Provider, but you get more functionality with one. The following features are enabled when you associate the Auth Provider with an Azure AD directory:
-  * Extend two-step verification to all your users
-  * Offer your global administrators additional features, such as the management portal, custom greetings, and reports.
-* If you synchronize your on-premises Active Directory environment with an Azure AD directory, you need DirSync or Azure AD Sync. If you use an Azure AD directory that is not synchronized with an on-premises instance of Active Directory, you do not need DirSync or Azure AD Sync.
-* Choose the consumption model that best suits your business. Once you select the usage model, you can’t change it. The two models are:
-  * Per authentication: charges you for each verification. Use this model if you want two-step verification for anyone that accesses a certain app, not for specific users.
-  * Per enabled user: charges you for each user that you enable for Azure MFA. Use this model if you have some users with Azure AD Premium or Enterprise Mobility Suite licenses, and some without.
+* Multi-Factor auth sağlayıcısı oluşturmak için bir Azure AD dizini gerekmez, ancak bir tane ile daha fazla işlevsellik alırsınız. Kimlik doğrulama sağlayıcısını bir Azure AD diziniyle ilişkilendirdiğinizde aşağıdaki Özellikler etkinleştirilir:
+  * İki aşamalı doğrulamayı tüm kullanıcılarınıza genişletme
+  * Yönetim Portalı, özel Tebrikler ve raporlar gibi genel yöneticilerinize ek özellikler sunun.
+* Şirket içi Active Directory ortamınızı bir Azure AD diziniyle eşitlerseniz DirSync veya Azure AD Eşitleme gerekir. Active Directory Şirket içi bir örneğiyle eşitlenmemiş bir Azure AD dizini kullanıyorsanız, DirSync veya Azure AD Eşitleme gerekmez.
+* İşletmenize en uygun tüketim modelini seçin. Kullanım modelini seçtiğinizde, bunu değiştiremezsiniz. İki model şunlardır:
+  * Kimlik doğrulaması başına: her doğrulama için sizi ücretlendirir. Belirli kullanıcılar için değil, belirli bir uygulamaya erişen herkes için iki aşamalı doğrulama istiyorsanız bu modeli kullanın.
+  * Etkin Kullanıcı başına: Azure MFA için etkinleştirdiğiniz her bir kullanıcı için sizi ücretlendirir. Azure AD Premium veya Enterprise Mobility Suite lisanslarına sahip bazı kullanıcılarınız varsa ve bazıları olmadan bu modeli kullanın.
 
 ### <a name="supportability"></a>Desteklenebilirlik
 
-Since most users are accustomed to using only passwords to authenticate, it is important that your company brings awareness to all users regarding this process. This awareness can reduce the likelihood that users call your help desk for minor issues related to MFA. However, there are some scenarios where temporarily disabling MFA is necessary. Use the following guidelines to understand how to handle those scenarios:
+Çoğu Kullanıcı, kimlik doğrulamak için yalnızca parolaları kullanmaya alışkın olduğundan, şirketiniz bu işlemle ilgili tüm kullanıcılara bir tanıma getirdiğinden önemlidir. Bu tanıma, kullanıcıların MFA ile ilgili küçük sorunlar için yardım masasına çağrı olasılığını azaltabilir. Ancak, MFA 'nın geçici olarak devre dışı bırakılması gerektiği bazı senaryolar vardır. Bu senaryoların nasıl işleneceğini anlamak için aşağıdaki yönergeleri kullanın:
 
-* Train your technical support staff to handle scenarios where the user can't sign in because the mobile app or phone is not receiving a notification or phone call. Technical support can [enable a one-time bypass](howto-mfa-mfasettings.md#one-time-bypass) to allow a user to authenticate a single time by "bypassing" two-step verification. The bypass is temporary and expires after a specified number of seconds.
-* Consider the [Trusted IPs capability](howto-mfa-mfasettings.md#trusted-ips) in Azure MFA as a way to minimize two-step verification. With this feature, administrators of a managed or federated tenant can bypass two-step verification for users that are signing in from the company’s local intranet. The features are available for Azure AD tenants that have Azure AD Premium, Enterprise Mobility Suite, or Azure Multi-Factor Authentication licenses.
+* Mobil uygulama veya telefon bir bildirim veya telefon araması almadığı için, kullanıcının oturum açması gereken senaryoları işlemek üzere teknik destek personelinize eğitme. Teknik destek, bir kullanıcının iki aşamalı doğrulamayı "atlayarak" bir kez kimlik doğrulamasına izin vermek için [tek seferlik bir geçişe olanak](howto-mfa-mfasettings.md#one-time-bypass) tanıyabilir. Atlama geçicidir ve belirtilen sayıda saniye sonra süresi dolar.
+* İki aşamalı doğrulamayı en aza indirmenin bir yolu olarak Azure MFA 'da [güvenilir IP 'ler özelliğini](howto-mfa-mfasettings.md#trusted-ips) göz önünde bulundurun. Bu özellik ile, yönetilen veya federal bir kiracının yöneticileri şirketin yerel intranetinden oturum açan kullanıcılar için iki aşamalı doğrulamayı atlayabilir. Özellikler Azure AD Premium, Enterprise Mobility Suite veya Azure Multi-Factor Authentication lisanslarına sahip Azure AD kiracılarında kullanılabilir.
 
-## <a name="best-practices-for-an-on-premises-deployment"></a>Best Practices for an on-premises deployment
+## <a name="best-practices-for-an-on-premises-deployment"></a>Şirket içi dağıtım için en iyi uygulamalar
 
-If your company decided to leverage its own infrastructure to enable MFA, then you need to [deploy an Azure Multi-Factor Authentication Server on-premises](howto-mfaserver-deploy.md). The MFA Server components are shown in the following diagram:
+Şirketiniz MFA 'yı etkinleştirmek için kendi altyapısını kullanmaya karar verdiyseniz, Şirket [içi bir Azure Multi-Factor Authentication sunucusu dağıtmanız](howto-mfaserver-deploy.md)gerekir. MFA sunucusu bileşenleri aşağıdaki diyagramda gösterilmiştir:
 
-![The default MFA Server components](./media/multi-factor-authentication-security-best-practices/server.png) \*Not installed by default \**Installed but not enabled by default
+Varsayılan MFA sunucusu bileşenleri](./media/multi-factor-authentication-security-best-practices/server.png) \*varsayılan olarak yüklenmeyen \** yüklü değil, varsayılan olarak etkinleştirilmemiştir ![
 
-Azure Multi-Factor Authentication Server can secure cloud resources and on-premises resources by using federation. You must have AD FS and have it federated with your Azure AD tenant.
-When setting up Multi-Factor Authentication Server, consider the following details:
+Azure Multi-Factor Authentication Sunucusu, Federasyon kullanarak bulut kaynaklarını ve şirket içi kaynakları güvenlik altına alabilir. AD FS sahip olmanız ve Azure AD kiracınızla Federasyon oluşturmanız gerekir.
+Multi-Factor Authentication Sunucusu ayarlarken aşağıdaki ayrıntıları göz önünde bulundurun:
 
-* If you are securing Azure AD resources using Active Directory Federation Services (AD FS), then the first verification step is performed on-premises using AD FS. İkinci adım, talebin onaylanmasıyla şirket içinde gerçekleştirilir.
-* You don't have to install the Azure Multi-Factor Authentication Server your AD FS federation server. However, the Multi-Factor Authentication Adapter for AD FS must be installed on a Windows Server 2012 R2 running AD FS. You can install the server on a different computer, as long as it is a supported version, and install the AD FS adapter separately on your AD FS federation server. 
-* The Multi-Factor Authentication AD FS Adapter installation wizard creates a security group called PhoneFactor Admins in your Active Directory, and then adds your AD FS service account to this group. Etki alanı denetleyicinizde PhoneFactor Admins grubunun oluşturulduğunu ve AD FS hizmet hesabının bu gruba üye olduğunu doğrulayın. Gerekirse, AD FS hizmeti hesabınızı etki alanı denetleyicinizde PhoneFactor Admins grubuna el ile ekleyin.
+* Active Directory Federasyon Hizmetleri (AD FS) (AD FS) kullanarak Azure AD kaynaklarını güvenli hale getirirken, ilk doğrulama adımı şirket içinde AD FS kullanılarak gerçekleştirilir. İkinci adım, talebin onaylanmasıyla şirket içinde gerçekleştirilir.
+* AD FS Federasyon sunucunuza Azure Multi-Factor Authentication Sunucusu yüklemenize gerek yoktur. Ancak, AD FS için Multi-Factor Authentication bağdaştırıcısının AD FS çalıştıran bir Windows Server 2012 R2 üzerine yüklenmesi gerekir. Sunucuyu desteklenen bir sürüm olduğu sürece farklı bir bilgisayara yükleyebilirsiniz ve AD FS bağdaştırıcıyı AD FS Federasyon sunucunuza ayrı olarak yüklersiniz. 
+* Multi-Factor Authentication AD FS bağdaştırıcısı yükleme Sihirbazı, Active Directory PhoneFactor Admins adlı bir güvenlik grubu oluşturur ve ardından AD FS hizmet hesabınızı bu gruba ekler. Etki alanı denetleyicinizde PhoneFactor Admins grubunun oluşturulduğunu ve AD FS hizmet hesabının bu gruba üye olduğunu doğrulayın. Gerekirse, AD FS hizmeti hesabınızı etki alanı denetleyicinizde PhoneFactor Admins grubuna el ile ekleyin.
 
 ### <a name="user-portal"></a>Kullanıcı Portalı
 
-The user portal allows self-service capabilities and provides a full set of user administration capabilities. It runs in an Internet Information Server (IIS) web site. Use the following guidelines to configure this component:
+Kullanıcı Portalı, self servis özelliklerine izin verir ve tam bir kullanıcı yönetimi özellikleri kümesi sağlar. Internet Information Server (IIS) Web sitesinde çalışır. Bu bileşeni yapılandırmak için aşağıdaki yönergeleri kullanın:
 
-* Use IIS 6 or greater
-* Install and register ASP.NET v2.0.507207
-* Ensure that this server can be deployed in a perimeter network
+* IIS 6 veya üstünü kullanın
+* ASP.NET v 2.0.507207 'i yükleyip kaydetme
+* Bu sunucunun bir çevre ağında dağıtılabildiğinden emin olun
 
-### <a name="app-passwords"></a>App Passwords
+### <a name="app-passwords"></a>Uygulama parolaları
 
-If your organization is federated for SSO with Azure AD and you are going to be using Azure MFA, then be aware of the following details:
+Kuruluşunuz Azure AD ile SSO için federe ise ve Azure MFA 'yı kullanacaksanız, aşağıdaki ayrıntıları göz önünde bulundurun:
 
-* The app password is verified by Azure AD and therefore bypasses federation. Federation is only used when setting up app passwords.
-* For federated (SSO) users, passwords are stored in the organizational ID. If the user leaves the company, that info has to flow to organizational ID using DirSync. Account disable/deletion may take up to three hours to sync, which delays disable/deletion of app passwords in Azure AD.
+* Uygulama parolası Azure AD tarafından doğrulanır ve bu nedenle Federasyonu atlar. Federasyon yalnızca uygulama parolaları ayarlanırken kullanılır.
+* Federasyon (SSO) kullanıcıları için, parolalar kuruluş KIMLIĞINDE depolanır. Kullanıcı şirketten ayrılırsa, bu bilgi DirSync kullanarak kuruluş KIMLIĞINE akacaktır. Hesabın devre dışı bırakılması/silinmesi üç saate kadar zaman alabilir. Bu, Azure AD 'de uygulama parolalarının devre dışı bırakılması/silinmesi gecikmeyebilir.
 * Şirket için İstemci Erişimi Denetimi ayarları Uygulama Parolası tarafından onaylanmaz.
-* No on-premises authentication logging/auditing capability is available for app passwords.
-* Certain advanced architectural designs may require using a combination of organizational username and passwords and app passwords when using two-step verification with clients, depending on where they authenticate. For clients that authenticate against an on-premises infrastructure, you would use an organizational username and password. For clients that authenticate against Azure AD, you would use the app password.
-* By default, users cannot create app passwords. If you need to allow users to create app passwords, select the **Allow users to create app passwords to sign into non-browser applications** option.
+* Uygulama parolaları için şirket içi kimlik doğrulama günlüğü/Denetim yeteneği kullanılamaz.
+* Bazı gelişmiş mimari tasarımları, kimlik doğrulamalarına bağlı olarak istemcilerle iki aşamalı doğrulamayı kullanırken kurumsal Kullanıcı adı ve parolaların ve uygulama parolalarının bir birleşimini kullanmanızı gerektirebilir. Şirket içi altyapıya karşı kimlik doğrulaması yapan istemciler için bir kuruluş Kullanıcı adı ve parolası kullanırsınız. Azure AD kimlik doğrulaması yapan istemciler için uygulama parolasını kullanırsınız.
+* Varsayılan olarak, kullanıcılar uygulama parolaları oluşturamaz. Kullanıcıların uygulama parolaları oluşturmalarına izin vermeniz gerekiyorsa, **kullanıcıların tarayıcı olmayan uygulamalarda oturum açmak için uygulama parolaları oluşturmasına Izin ver** seçeneğini belirleyin.
 
-## <a name="additional-considerations"></a>Additional Considerations
+## <a name="additional-considerations"></a>Ek konular
 
-Use this list for additional considerations and guidance for each component that is deployed on-premises:
+Şirket içinde dağıtılan her bir bileşene ilişkin ek konular ve yönergeler için bu listeyi kullanın:
 
 * Azure Multi-Factor Authentication’ı [Active Directory Federasyon Hizmetleri](multi-factor-authentication-get-started-adfs.md) ile ayarlayın.
 * [RADIUS Kimlik Doğrulaması](howto-mfaserver-dir-radius.md) ile Azure MFA Sunucusu’nu kurun ve yapılandırın.
-* Set up and configure the Azure MFA Server with [IIS Authentication](howto-mfaserver-iis.md).
-* Set up and configure the Azure MFA Server with [Windows Authentication](howto-mfaserver-windows.md).
-* Set up and configure the Azure MFA Server with [LDAP Authentication](howto-mfaserver-dir-ldap.md).
-* Set up and configure the Azure MFA Server with [Remote Desktop Gateway and Azure Multi-Factor Authentication Server using RADIUS](howto-mfaserver-nps-rdg.md).
-* Set up and configure synchronization between the Azure MFA Server and [Windows Server Active Directory](howto-mfaserver-dir-ad.md).
+* Azure MFA sunucusunu [IIS kimlik doğrulamasıyla](howto-mfaserver-iis.md)ayarlayın ve yapılandırın.
+* Azure MFA sunucusunu [Windows kimlik doğrulamasıyla](howto-mfaserver-windows.md)ayarlayın ve yapılandırın.
+* Azure MFA sunucusunu [LDAP kimlik doğrulamasıyla](howto-mfaserver-dir-ldap.md)ayarlayın ve yapılandırın.
+* RADIUS kullanarak Azure MFA sunucusunu [Uzak Masaüstü Ağ Geçidi ve azure Multi-Factor Authentication sunucusu](howto-mfaserver-nps-rdg.md)ayarlayın ve yapılandırın.
+* Azure MFA sunucusu ile [Windows Server Active Directory](howto-mfaserver-dir-ad.md)arasında eşitleme ayarlayın ve yapılandırın.
 * [Azure Multi-Factor Authentication Sunucusu Mobil Uygulama Web Hizmeti’ni dağıtın](howto-mfaserver-deploy-mobileapp.md).
-* [Advanced VPN Configuration with Azure Multi-Factor Authentication](howto-mfaserver-nps-vpn.md) for Cisco ASA, Citrix Netscaler, and Juniper/Pulse Secure VPN appliances using LDAP or RADIUS.
+* Cisco ASA, Citrix NetScaler ve Juniper/Pulse Secure VPN gereçlerinin LDAP veya RADIUS kullanılarak [GELIŞMIŞ vpn Multi-Factor Authentication yapılandırması](howto-mfaserver-nps-vpn.md) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-While this article highlights some best practices for Azure MFA, there are other resources that you can also use while planning your MFA deployment. The list below has some key articles that can assist you during this process:
+Bu makalede, Azure MFA için bazı en iyi yöntemler vurgularken, MFA dağıtımınızı planlarken de kullanabileceğiniz başka kaynaklar vardır. Aşağıdaki listede, bu işlem sırasında size yardımcı olabilecek bazı önemli makaleler bulunur:
 
-* [Reports in Azure Multi-Factor Authentication](howto-mfa-reporting.md)
-* [The two-step verification registration experience](../user-help/multi-factor-authentication-end-user-first-time.md)
-* [Azure Multi-Factor Authentication FAQ](multi-factor-authentication-faq.md)
+* [Azure Multi-Factor Authentication raporları](howto-mfa-reporting.md)
+* [İki adımlı doğrulama kayıt deneyimi](../user-help/multi-factor-authentication-end-user-first-time.md)
+* [Azure Multi-Factor Authentication SSS](multi-factor-authentication-faq.md)

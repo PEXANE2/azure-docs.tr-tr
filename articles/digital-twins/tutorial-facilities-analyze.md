@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Analyze events in Time Series Insights - Azure Digital Twins| Microsoft Docs'
-description: Learn how to visualize and analyze events from your Azure Digital Twins spaces, with Azure Time Series Insights, by using the steps in this tutorial.
+title: 'Öğretici: Time Series Insights olayları çözümleme-Azure dijital TWINS | Microsoft Docs'
+description: Bu öğreticideki adımları kullanarak, Azure dijital TWINS boşluklarınızın Azure Time Series Insights ile olayları görselleştirmeyi ve çözümlemeyi öğrenin.
 services: digital-twins
 ms.author: alinast
 author: alinamstanciu
@@ -16,79 +16,79 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383053"
 ---
-# <a name="tutorial-visualize-and-analyze-events-from-azure-digital-twins-by-using-time-series-insights"></a>Tutorial: Visualize and analyze events from Azure Digital Twins by using Time Series Insights
+# <a name="tutorial-visualize-and-analyze-events-from-azure-digital-twins-by-using-time-series-insights"></a>Öğretici: Time Series Insights kullanarak Azure dijital TWINS 'deki olayları görselleştirin ve çözümleyin
 
-After you deploy your Azure Digital Twins instance, provision your spaces, and implement a custom function to monitor specific conditions, you can visualize the events and data coming from your spaces to look for trends and anomalies.
+Azure dijital TWINS örneğinizi dağıttıktan ve belirli koşulları izlemek için özel bir işlev uyguladıktan sonra, eğilimleri ve anormallikleri aramak için, boşluklardan gelen olayları ve verileri görselleştirebilirsiniz.
 
-In [the first tutorial](tutorial-facilities-setup.md), you configured the spatial graph of an imaginary building, with a room that contains sensors for motion, carbon dioxide, and temperature. [İkinci öğreticide](tutorial-facilities-udf.md) grafınızı ve bir kullanıcı tanımlı işlev sağladınız. The function monitors these sensor values and triggers notifications for the right conditions. That is, the room is empty, and the temperature and carbon dioxide levels are normal.
+[İlk öğreticide](tutorial-facilities-setup.md), bir sanal binasının uzamsal grafiğini, hareket, karbon ve sıcaklık algılayıcıları içeren bir odada yapılandırmış olursunuz. [İkinci öğreticide](tutorial-facilities-udf.md) grafınızı ve bir kullanıcı tanımlı işlev sağladınız. İşlevi bu algılayıcı değerlerini izler ve doğru koşullara ilişkin bildirimleri tetikler. Diğer bir deyişle, oda boştur ve sıcaklık ve karbon dioksit düzeyleri normaldir.
 
-This tutorial shows you how you can integrate the notifications and data coming from your Azure Digital Twins setup with Azure Time Series Insights. You can then visualize your sensor values over time. You can look for trends such as which room is getting the most use and which are the busiest times of the day. You can also detect anomalies such as which rooms feel stuffier and hotter, or whether an area in your building is sending consistently high temperature values, indicating faulty air conditioning.
+Bu öğretici, Azure dijital TWINS kurulumundan gelen bildirimleri ve verileri Azure Time Series Insights ile nasıl tümleştirebileceğinizi gösterir. Daha sonra sensör değerlerini zaman içinde görselleştirebilirsiniz. En fazla kullanımı elde eden ve günün en yoğun zamanlarında yer alan eğilimler için arama yapabilirsiniz. Ayrıca, hangi odaların stuffier ve hotetmesinin yanı sıra binadaki bir alanın, hatalı hava düzeyi olduğunu belirten sürekli yüksek sıcaklık değerleri gönderip göndermediğini de tespit edebilirsiniz.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Stream data by using Azure Event Hubs.
-> * Analyze with Time Series Insights.
+> * Azure Event Hubs kullanarak veri akışı yapın.
+> * Time Series Insights ile çözümleyin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide Azure Digital Twins kurulumunu [yapılandırmış](tutorial-facilities-setup.md) ve [sağlamış](tutorial-facilities-udf.md) olduğunuz kabul edilmektedir. Devam etmeden önce aşağıdakilere sahip olduğunuzdan emin olun:
 
 - Bir [Azure hesabı](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Çalışan bir Digital Twins örneği.
 - Çalışma makinenize indirilmiş ve ayıklanmış [Digital Twins C# örnekleri](https://github.com/Azure-Samples/digital-twins-samples-csharp).
-- [.NET Core SDK version 2.1.403 or later](https://www.microsoft.com/net/download) on your development machine to run the sample. Run `dotnet --version` to verify that the right version is installed.
+- Örneği çalıştırmak için geliştirme makinenizde [sürüm 2.1.403 veya sonraki bir sürümü .NET Core SDK](https://www.microsoft.com/net/download) . Doğru sürümün yüklendiğini doğrulamak için `dotnet --version` çalıştırın.
 
 > [!TIP]
-> Use a unique Digital Twins instance name if you're provisioning a new instance.
+> Yeni bir örnek sağlıyorsanız benzersiz bir dijital TWINS örnek adı kullanın.
 
-## <a name="stream-data-by-using-event-hubs"></a>Stream data by using Event Hubs
+## <a name="stream-data-by-using-event-hubs"></a>Event Hubs kullanarak veri akışı
 
-You can use the [Event Hubs](../event-hubs/event-hubs-about.md) service to create a pipeline to stream your data. This section shows you how to create your event hub as the connector between your Azure Digital Twins and Time Series Insights instances.
+Verilerinizi akışa almak üzere bir işlem hattı oluşturmak için [Event Hubs](../event-hubs/event-hubs-about.md) hizmetini kullanabilirsiniz. Bu bölümde, Azure dijital TWINS ve Time Series Insights örnekleri arasında bağlayıcı olarak olay hub 'ınızı nasıl oluşturacağınız gösterilmektedir.
 
 ### <a name="create-an-event-hub"></a>Olay hub’ı oluşturma
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com)’da oturum açın.
 
 1. Sol bölmede **Kaynak oluştur**'u seçin.
 
 1. **Event Hubs** araması yapın ve sonuçlardan seçin. **Oluştur**'u seçin.
 
-    [![Create an Event Hubs Namespace](./media/tutorial-facilities-analyze/create-event-hubs.png)](./media/tutorial-facilities-analyze/create-event-hubs.png#lightbox)
+    [![Event Hubs ad alanı oluşturma](./media/tutorial-facilities-analyze/create-event-hubs.png)](./media/tutorial-facilities-analyze/create-event-hubs.png#lightbox)
 
-1. Enter a **Name** for your Event Hubs namespace. Choose **Standard** for **Pricing tier**, your **Subscription**, the **Resource group** that you used for your Digital Twins instance, and the **Location**. **Oluştur**'u seçin.
+1. Event Hubs ad alanınız için bir **ad** girin. **Fiyatlandırma katmanı**, **aboneliğiniz**, dijital TWINS örneğiniz için kullandığınız **kaynak grubu** ve **konum**için **Standart** ' ı seçin. **Oluştur**'u seçin.
 
-1. In the Event Hubs namespace deployment, select the **Overview** pane, then select **Go to resource**.
+1. Event Hubs ad alanı dağıtımı ' nda **genel bakış** bölmesini seçin, sonra **Kaynağa Git**' i seçin.
 
-    [![Event Hubs namespace after deployment](./media/tutorial-facilities-analyze/open-event-hub-ns.png)](./media/tutorial-facilities-analyze/open-event-hub-ns.png#lightbox)
+    [Dağıtımdan sonra Event Hubs ad alanını ![](./media/tutorial-facilities-analyze/open-event-hub-ns.png)](./media/tutorial-facilities-analyze/open-event-hub-ns.png#lightbox)
 
-1. In the Event Hubs namespace **Overview** pane, select the **Event Hub** button at the top.
-    [![Event Hub button](./media/tutorial-facilities-analyze/create-event-hub.png)](./media/tutorial-facilities-analyze/create-event-hub.png#lightbox)
+1. Event Hubs ad alanına **genel bakış** bölmesinde, üstteki **Olay Hub** 'ı düğmesini seçin.
+    [![Olay Hub 'ı düğmesi](./media/tutorial-facilities-analyze/create-event-hub.png)](./media/tutorial-facilities-analyze/create-event-hub.png#lightbox)
 
-1. Enter a **Name** for your event hub, and select **Create**.
+1. Olay Hub 'ınız için bir **ad** girin ve **Oluştur**' u seçin.
 
-   After the event hub is deployed, it appears in the **Event Hubs** pane of the Event Hubs namespace with an **Active** status. Select this event hub to open its **Overview** pane.
+   Olay Hub 'ı dağıtıldıktan sonra, **etkin** durumdaki Event Hubs ad alanının **Event Hubs** bölmesinde görünür. **Genel bakış** bölmesini açmak için bu olay hub 'ını seçin.
 
-1. Select the **Consumer group** button at the top, and enter a name such as **tsievents** for the consumer group. **Oluştur**'u seçin.
+1. Üstteki **Tüketici grubu** düğmesini seçin ve Tüketici grubu için **tsıevents** gibi bir ad girin. **Oluştur**'u seçin.
 
-    [![Event Hub consumer group](./media/tutorial-facilities-analyze/event-hub-consumer-group.png)](./media/tutorial-facilities-analyze/event-hub-consumer-group.png#lightbox)
+    [Olay Hub 'ı Tüketici grubu ![](./media/tutorial-facilities-analyze/event-hub-consumer-group.png)](./media/tutorial-facilities-analyze/event-hub-consumer-group.png#lightbox)
 
-   After the consumer group is created, it appears in the list at the bottom of the event hub's **Overview** pane.
+   Tüketici grubu oluşturulduktan sonra, Olay Hub 'ının **genel bakış** bölmesinin altındaki listede görüntülenir.
 
-1. Open the **Shared access policies** pane for your event hub, and select the **Add** button. Enter **ManageSend** as the policy name, make sure all the check boxes are selected, and select **Create**.
+1. Olay Hub 'ınız için **paylaşılan erişim ilkeleri** bölmesini açın ve **Ekle** düğmesini seçin. İlke adı olarak **ManageSend** girin, tüm onay kutularının seçili olduğundan emin olun ve **Oluştur**' u seçin.
 
-    [![Event Hub connection strings](./media/tutorial-facilities-analyze/event-hub-connection-strings.png)](./media/tutorial-facilities-analyze/event-hub-connection-strings.png#lightbox)
+    [![Olay Hub 'ı bağlantı dizeleri](./media/tutorial-facilities-analyze/event-hub-connection-strings.png)](./media/tutorial-facilities-analyze/event-hub-connection-strings.png#lightbox)
 
     > [!TIP]
-    > Verify that you are creating an SAS Policy for your event hub instance rather than your namespace.
+    > Ad alanınız yerine olay hub örneğiniz için bir SAS Ilkesi oluşturmadiğinizi doğrulayın.
 
-1. Oluşturduğunuz **ManageSend** ilkesini açın ve **Bağlantı dizesi--birincil anahtar** ile **Bağlantı dizesi--ikincil anahtar** değerlerini geçici bir dosyaya kopyalayın. You'll need these values to create an endpoint for the event hub in the next section.
+1. Oluşturduğunuz **ManageSend** ilkesini açın ve **Bağlantı dizesi--birincil anahtar** ile **Bağlantı dizesi--ikincil anahtar** değerlerini geçici bir dosyaya kopyalayın. Sonraki bölümde Olay Hub 'ı için bir uç nokta oluşturmak üzere bu değerlere ihtiyacınız olacak.
 
-### <a name="create-an-endpoint-for-the-event-hub"></a>Create an endpoint for the event hub
+### <a name="create-an-endpoint-for-the-event-hub"></a>Olay Hub 'ı için bir uç nokta oluşturma
 
-1. In the command window, make sure you're in the **occupancy-quickstart\src** folder of the Azure Digital Twins sample.
+1. Komut penceresinde, Azure Digital TWINS örneğinin **Occupancy-quickstart\src** klasöründe olduğunuzdan emin olun.
 
-1. Open the file **actions\createEndpoints.yaml** in your editor. İçeriğini aşağıdakilerle değiştirin:
+1. **Actions\createEndpoints.YAML** dosyasını Düzenleyicinizde açın. İçeriğini aşağıdakilerle değiştirin:
 
     ```yaml
     - type: EventHub
@@ -108,22 +108,22 @@ You can use the [Event Hubs](../event-hubs/event-hubs-about.md) service to creat
       path: Name_of_your_Event_Hub
     ```
 
-1. Replace the placeholders `Primary_connection_string_for_your_event_hub` with the value of **Connection string--primary key** for the event hub. Make sure the format of this connection string is as follows:
+1. Yer tutucuları `Primary_connection_string_for_your_event_hub`, Olay Hub 'ı için **birincil anahtar olan bağlantı dizesinin** değeri ile değiştirin. Bu bağlantı dizesinin biçiminin aşağıdaki gibi olduğundan emin olun:
 
    ```ConnectionString
    Endpoint=sb://nameOfYourEventHubNamespace.servicebus.windows.net/;SharedAccessKeyName=ManageSend;SharedAccessKey=yourShareAccessKey1GUID;EntityPath=nameOfYourEventHub
    ```
 
-1. Replace the placeholders `Secondary_connection_string_for_your_event_hub` with the value of **Connection string--secondary key** for the event hub. Make sure the format of this connection string is as follows: 
+1. Yer tutucuları `Secondary_connection_string_for_your_event_hub`, Olay Hub 'ı için **İkincil anahtar olan bağlantı dizesinin** değeri ile değiştirin. Bu bağlantı dizesinin biçiminin aşağıdaki gibi olduğundan emin olun: 
 
    ```ConnectionString
    Endpoint=sb://nameOfYourEventHubNamespace.servicebus.windows.net/;SharedAccessKeyName=ManageSend;SharedAccessKey=yourShareAccessKey2GUID;EntityPath=nameOfYourEventHub
    ```
 
-1. Replace the placeholders `Name_of_your_Event_Hub` with the name of your Event Hub.
+1. Yer tutucuları `Name_of_your_Event_Hub`, Olay Hub 'ınızın adıyla değiştirin.
 
     > [!IMPORTANT]
-    > Değerleri girerken tırnak işaretlerini dahil etmeyin. Make sure there's at least one space character after the colons in the YAML file. You can also validate your YAML file contents by using any online YAML validator, such as [this tool](https://onlineyamltools.com/validate-yaml).
+    > Değerleri girerken tırnak işaretlerini dahil etmeyin. YAML dosyasındaki iki nokta üst üsteden sonra en az bir boşluk karakteri olduğundan emin olun. [Bu araç](https://onlineyamltools.com/validate-yaml)gibi herhangi bir çevrimiçi YAML doğrulayıcısı kullanarak YAML dosya içeriklerinizi da doğrulayabilirsiniz.
 
 1. Dosyayı kaydedin ve kapatın. Komut penceresinde aşağıdaki komutu çalıştırın ve istendiğinde Azure hesabınızda oturum açın.
 
@@ -131,56 +131,56 @@ You can use the [Event Hubs](../event-hubs/event-hubs-about.md) service to creat
     dotnet run CreateEndpoints
     ```
 
-   It creates two endpoints for your event hub.
+   Olay Hub 'ınız için iki uç nokta oluşturur.
 
-   [![Endpoints for Event Hubs](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png)](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png#lightbox)
+   [Event Hubs için ![uç noktaları](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png)](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png#lightbox)
 
 ## <a name="analyze-with-time-series-insights"></a>Time Series Insights ile analiz gerçekleştirme
 
-1. In the left pane of the [Azure portal](https://portal.azure.com), select **Create a resource**. 
+1. [Azure Portal](https://portal.azure.com)sol bölmesinde **kaynak oluştur**' u seçin. 
 
-1. Search for and select a **Time Series Insights** General Availability (GA) resource. **Oluştur**'u seçin.
+1. **Time Series Insights** genel KULLANıLABILIRLIK (GA) kaynağını arayın ve seçin. **Oluştur**'u seçin.
 
-1. Time Series Insights örneğiniz için bir **Ad** girin ve **Abonelik** girişinizi seçin. Select the **Resource group** that you used for your Digital Twins instance, and your **Location**. Select **Next: Event Source** button or the **Event Source** tab.
+1. Time Series Insights örneğiniz için bir **Ad** girin ve **Abonelik** girişinizi seçin. Dijital TWINS örneğiniz için kullandığınız **kaynak grubunu** ve **konumunuzu**seçin. **İleri ' yi seçin: olay kaynağı** düğmesi veya **olay kaynağı** sekmesi.
 
-    [![Selections for creating a Time Series Insights instance](./media/tutorial-facilities-analyze/create-tsi.png)](./media/tutorial-facilities-analyze/create-tsi.png#lightbox)
+    [Time Series Insights örneği oluşturmak için ![seçimleri](./media/tutorial-facilities-analyze/create-tsi.png)](./media/tutorial-facilities-analyze/create-tsi.png#lightbox)
 
-1. In the **Event Source** tab, enter a **Name**, select **Event Hub** as the **Source type**, and make sure the other values are selected correctly. Select **ManageSend** for **Event Hub access policy name**, and then select the consumer group that you created in the previous section for **Event Hub consumer group**. **İncele ve oluştur**’u seçin.
+1. **Olay kaynağı** sekmesinde, bir **ad**girin, **kaynak türü**olarak **Olay Hub** 'ı seçin ve diğer değerlerin doğru seçildiğinden emin olun. **Olay Hub 'ı erişim ilkesi adı**için **ManageSend** ' ı seçin ve ardından **Olay Hub 'ı Tüketici grubu**için önceki bölümde oluşturduğunuz tüketici grubunu seçin. **İncele ve oluştur**’u seçin.
 
-    [![Selections for creating an event source](./media/tutorial-facilities-analyze/tsi-event-source.png)](./media/tutorial-facilities-analyze/tsi-event-source.png#lightbox)
+    [Olay kaynağı oluşturmak için ![seçimleri](./media/tutorial-facilities-analyze/tsi-event-source.png)](./media/tutorial-facilities-analyze/tsi-event-source.png#lightbox)
 
-1. In the **Review + Create** pane, review the information you entered, and select **Create**.
+1. **Gözden geçir + oluştur** bölmesinde, girdiğiniz bilgileri gözden geçirin ve **Oluştur**' u seçin.
 
-1. In the deployment pane, select the Time Series Insights resource you just created. It opens the **Overview** pane for your Time Series Insights environment.
+1. Dağıtım bölmesinde, az önce oluşturduğunuz Time Series Insights kaynağını seçin. Time Series Insights ortamınız için **genel bakış** bölmesini açar.
 
-1. Select the **Go to Environment** button at the top. If you get a data access warning, open the **Data Access Policies** pane for your Time Series Insights instance, select **Add**, select **Contributor** as the role, and select the appropriate user.
+1. Üstteki **ortama git** düğmesini seçin. Veri erişim uyarısı alırsanız, Time Series Insights örneğiniz için **veri erişim ilkeleri** bölmesini açın, **Ekle**' yi seçin, rol olarak **katkıda bulunan** ' i seçin ve uygun kullanıcıyı seçin.
 
-1. The **Go to Environment** button opens the [Time Series Insights explorer](../time-series-insights/time-series-insights-explorer.md). If it doesn't show any events, simulate device events by browsing to the **device-connectivity** project of your Digital Twins sample, and running `dotnet run`.
+1. **Ortama git** düğmesi [Time Series Insights Gezginini](../time-series-insights/time-series-insights-explorer.md)açar. Herhangi bir olayı göstermez, dijital TWINS örnekinizdeki **cihaz bağlantısı** projesine göz atarak cihaz olaylarının benzetimini yapın ve `dotnet run`çalıştırın.
 
-1. After a few simulated events are generated, go back to the Time Series Insights explorer, and select the refresh button at the top. You should see analytical charts being created for your simulated sensor data. 
+1. Birkaç benzetimli olay oluşturulduktan sonra, Time Series Insights Explorer 'a geri dönün ve üstteki Yenile düğmesini seçin. Sanal algılayıcı verileriniz için oluşturulan analitik grafikleri görmeniz gerekir. 
 
-    [![Chart in the Time Series Insights explorer](./media/tutorial-facilities-analyze/tsi-explorer.png)](./media/tutorial-facilities-analyze/tsi-explorer.png#lightbox)
+    [Time Series Insights Gezgininde grafik ![](./media/tutorial-facilities-analyze/tsi-explorer.png)](./media/tutorial-facilities-analyze/tsi-explorer.png#lightbox)
 
-1. In the Time Series Insights explorer, you can then generate charts and heatmaps for different events and data from your rooms, sensors, and other resources. On the left side, use the **MEASURE** and **SPLIT BY** drop-down boxes to create your own visualizations. 
+1. Time Series Insights Gezgini 'nde, odalarınızdan, sensörlerden ve diğer kaynaklardaki farklı olaylar ve veriler için grafikler ve heyomaps oluşturabilirsiniz. Sol tarafta, kendi görselleştirmelerinizi oluşturmak için **Ölçü** **ve aşağı** açılan kutuları kullanın. 
 
-   For example, select **Events** for **MEASURE** and **DigitalTwins-SensorHardwareId** for **SPLIT BY**, to generate a heatmap for each of your sensors. The heatmap will be similar to the following image:
+   Örneğin, sensörlerinizin her biri için bir ısı haritasını oluşturmak için **Ölçü** ve **digitaltwıns-sensorhardwareıd** **için** **olayları** seçin. Isı haritasını aşağıdaki görüntüye benzer olacaktır:
 
-   [![Heatmap in the Time Series Insights explorer](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png)](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png#lightbox)
+   [Time Series Insights Gezgininde ![heatmap](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png)](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png#lightbox)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-If you want to stop exploring Azure Digital Twins beyond this point, feel free to delete resources created in this tutorial:
+Bu noktanın ötesinde Azure dijital TWINS 'in araştırmalarını durdurmak istiyorsanız bu öğreticide oluşturulan kaynakları silebilirsiniz:
 
-1. From the left menu in the [Azure portal](https://portal.azure.com), select **All resources**, select your Digital Twins resource group, and then select **Delete**.
+1. [Azure Portal](https://portal.azure.com)sol menüden **tüm kaynaklar**' ı seçin, dijital TWINS kaynak grubunuzu seçin ve **Sil**' i seçin.
 
     > [!TIP]
-    > If you experienced trouble deleting your Digital Twins instance, a service update has been rolled out with the fix. Please retry deleting your instance.
+    > Dijital İkizlerini örneğinizin silme sorun olduysa, bir hizmet güncelleştirmesi düzeltme alındı. Örneğiniz silme yeniden deneyin.
 
-2. If necessary, delete the sample applications on your work machine.
+2. Gerekirse, iş makinenizdeki örnek uygulamaları silin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Go to the next article to learn more about spatial intelligence graphs and object models in Azure Digital Twins.
+Azure dijital TWINS 'te uzamsal zeka grafikleri ve nesne modelleri hakkında daha fazla bilgi edinmek için sonraki makaleye gidin.
 
 > [!div class="nextstepaction"]
 > [Digital Twins nesne modellerini ve uzamsal zeka grafını anlama](concepts-objectmodel-spatialgraph.md)

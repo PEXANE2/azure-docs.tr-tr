@@ -1,6 +1,6 @@
 ---
-title: How to create user-defined functions - in Azure Digital Twins | Microsoft Docs
-description: How to create user-defined functions, matchers, and role assignments in Azure Digital Twins.
+title: Kullanıcı tanımlı işlevler oluşturma-Azure dijital TWINS 'te | Microsoft Docs
+description: Azure dijital TWINS 'de Kullanıcı tanımlı işlevler, eşleştiriciler ve rol atamaları oluşturma.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -16,41 +16,41 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383306"
 ---
-# <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>How to create user-defined functions in Azure Digital Twins
+# <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>Azure dijital TWINS 'de Kullanıcı tanımlı işlevler oluşturma
 
-[User-defined functions](./concepts-user-defined-functions.md) enable users to configure custom logic to be executed from incoming telemetry messages and spatial graph metadata. Users can also send events to predefined [endpoints](./how-to-egress-endpoints.md).
+[Kullanıcı tanımlı işlevler](./concepts-user-defined-functions.md) , kullanıcıların gelen telemetri iletilerinden ve uzamsal grafik meta verilerinden yürütülmesi için özel mantık yapılandırmasına olanak sağlar. Kullanıcılar ayrıca, önceden tanımlı [uç noktalara](./how-to-egress-endpoints.md)olay gönderebilir.
 
-This guide walks through an example demonstrating how to detect and alert on any reading that exceeds a certain temperature from received temperature events.
+Bu kılavuzda, alınan sıcaklık olaylarından belirli bir sıcaklığın aşıldığı herhangi bir okumayı nasıl tespit ve uyaracağınızı gösteren bir örnek gösterilmektedir.
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
-## <a name="client-library-reference"></a>Client library reference
+## <a name="client-library-reference"></a>İstemci kitaplığı başvurusu
 
-Functions available as helper methods in the user-defined functions runtime are listed in the [client library reference](./reference-user-defined-functions-client-library.md) document.
+Kullanıcı tanımlı işlevler çalışma zamanında yardımcı yöntemler olarak kullanılabilen işlevler, [istemci kitaplığı başvuru](./reference-user-defined-functions-client-library.md) belgesinde listelenir.
 
-## <a name="create-a-matcher"></a>Create a matcher
+## <a name="create-a-matcher"></a>Bir eşleştirici oluşturma
 
-Matchers are graph objects that determine what user-defined functions run for a given telemetry message.
+Eşleştiriciler, belirli bir telemetri iletisi için hangi kullanıcı tanımlı işlevlerin çalıştırılacağını tespit eden grafik nesneleridir.
 
-- Valid matcher condition comparisons:
+- Geçerli Eşleştiricisi koşul karşılaştırmaları:
 
   - `Equals`
   - `NotEquals`
   - `Contains`
 
-- Valid matcher condition targets:
+- Geçerli Eşleştiricisi koşul hedefleri:
 
   - `Sensor`
   - `SensorDevice`
   - `SensorSpace`
 
-The following example matcher evaluates to true on any sensor telemetry event with `"Temperature"` as its data type value. You can create multiple matchers on a user-defined function by making an authenticated HTTP POST request to:
+Aşağıdaki örnek Eşleştiricisi, veri türü değeri olarak `"Temperature"` tüm algılayıcı telemetri olaylarından doğru olarak değerlendirilir. Kimliği doğrulanmış bir HTTP POST isteği yaparak, Kullanıcı tanımlı bir işlevde birden fazla eşleşme oluşturabilirsiniz:
 
 ```URL
 YOUR_MANAGEMENT_API_URL/matchers
 ```
 
-With JSON body:
+JSON gövdesi ile:
 
 ```JSON
 {
@@ -71,21 +71,21 @@ With JSON body:
 
 | Değer | Şununla değiştir |
 | --- | --- |
-| YOUR_SPACE_IDENTIFIER | Which server region your instance is hosted on |
+| YOUR_SPACE_IDENTIFIER | Örneğiniz üzerinde barındırılıyorsa hangi sunucu bölge |
 
 ## <a name="create-a-user-defined-function"></a>Kullanıcı tanımlı işlev oluşturma
 
-Creating a user-defined function involves making a multipart HTTP request to the Azure Digital Twins Management APIs.
+Kullanıcı tanımlı bir işlev oluşturmak, Azure Digital TWINS yönetim API 'Lerine çok parçalı bir HTTP isteği yapmayı içerir.
 
 [!INCLUDE [Digital Twins multipart requests](../../includes/digital-twins-multipart.md)]
 
-After the matchers are created, upload the function snippet with the following authenticated multipart HTTP POST request to:
+Eşleştiriciler oluşturulduktan sonra, aşağıdaki kimliği doğrulanmış çok parçalı HTTP POST isteğiyle işlev parçacığını karşıya yükleyin:
 
 ```URL
 YOUR_MANAGEMENT_API_URL/userdefinedfunctions
 ```
 
-Use the following body:
+Aşağıdaki gövdesini kullanın:
 
 ```plaintext
 --USER_DEFINED_BOUNDARY
@@ -111,22 +111,22 @@ function process(telemetry, executionContext) {
 
 | Değer | Şununla değiştir |
 | --- | --- |
-| USER_DEFINED_BOUNDARY | A multipart content boundary name |
-| YOUR_SPACE_IDENTIFIER | The space identifier  |
-| YOUR_MATCHER_IDENTIFIER | The ID of the matcher you want to use |
+| USER_DEFINED_BOUNDARY | Çok parçalı bir içerik sınır adı |
+| YOUR_SPACE_IDENTIFIER | Alan tanımlayıcısı  |
+| YOUR_MATCHER_IDENTIFIER | Kullanmak istediğiniz eşleştirici KIMLIĞI |
 
-1. Verify that the headers include: `Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`.
-1. Verify that the body is multipart:
+1. Üstbilgilerin şunları içerdiğini doğrulayın: `Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`.
+1. Gövdenin çok parçalı olduğunu doğrulayın:
 
-   - The first part contains the required user-defined function metadata.
-   - The second part contains the JavaScript compute logic.
+   - İlk bölüm, gerekli Kullanıcı tanımlı işlev meta verilerini içerir.
+   - İkinci bölüm JavaScript işlem mantığını içerir.
 
-1. In the **USER_DEFINED_BOUNDARY** section, replace the **spaceId** (`YOUR_SPACE_IDENTIFIER`) and **matchers** (`YOUR_MATCHER_IDENTIFIER`)  values.
-1. Verify that the JavaScript user-defined function is supplied as `Content-Type: text/javascript`.
+1. **USER_DEFINED_BOUNDARY** bölümünde, **spaceıd** (`YOUR_SPACE_IDENTIFIER`) ve **Matchers** (`YOUR_MATCHER_IDENTIFIER`) değerlerini değiştirin.
+1. JavaScript Kullanıcı tanımlı işlevinin `Content-Type: text/javascript`olarak verildiğini doğrulayın.
 
-### <a name="example-functions"></a>Example functions
+### <a name="example-functions"></a>Örnek işlevler
 
-Set the sensor telemetry reading directly for the sensor with data type **Temperature**, which is `sensor.DataType`:
+Algılayıcı telemetrisini, `sensor.DataType`veri türü **sıcaklık**ile doğrudan algılayıcı için okuma olarak ayarlayın:
 
 ```JavaScript
 function process(telemetry, executionContext) {
@@ -142,7 +142,7 @@ function process(telemetry, executionContext) {
 }
 ```
 
-The **telemetry** parameter exposes the **SensorId** and **Message** attributes, corresponding to a message sent by a sensor. The **executionContext** parameter exposes the following attributes:
+**Telemetri** parametresi, bir algılayıcı tarafından gönderilen iletiye karşılık gelen **sensorıd** ve **ileti** özniteliklerini gösterir. **ExecutionContext** parametresi aşağıdaki öznitelikleri kullanıma sunar:
 
 ```csharp
 var executionContext = new UdfExecutionContext
@@ -154,7 +154,7 @@ var executionContext = new UdfExecutionContext
 };
 ```
 
-In the next example, we log a message if the sensor telemetry reading surpasses a predefined threshold. If your diagnostic settings are enabled on the Azure Digital Twins instance, logs from user-defined functions are also forwarded:
+Sonraki örnekte, algılayıcı telemetri okuma işi önceden tanımlanmış bir eşiği geçerse bir ileti günlüğe kaydedilir. Azure dijital TWINS örneğinde tanılama ayarlarınız etkinleştirilmişse, Kullanıcı tanımlı işlevlerden alınan Günlükler de iletilir:
 
 ```JavaScript
 function process(telemetry, executionContext) {
@@ -169,7 +169,7 @@ function process(telemetry, executionContext) {
 }
 ```
 
-The following code triggers a notification if the temperature level rises above the predefined constant:
+Aşağıdaki kod, sıcaklık düzeyi önceden tanımlanmış sabitin üzerine yükselse bir bildirimi tetikler:
 
 ```JavaScript
 function process(telemetry, executionContext) {
@@ -193,22 +193,22 @@ function process(telemetry, executionContext) {
 }
 ```
 
-For a more complex user-defined function code sample, see the [Occupancy quickstart](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availability.js).
+Daha karmaşık bir Kullanıcı tanımlı işlev kodu örneği için bkz. [doluluk hızlı](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availability.js)başlangıcı.
 
-## <a name="create-a-role-assignment"></a>Create a role assignment
+## <a name="create-a-role-assignment"></a>Rol ataması oluşturma
 
-Create a role assignment for the user-defined function to run under. If no role assignment exists for the user-defined function, it won't have the proper permissions to interact with the Management API or have access to perform actions on graph objects. Actions that a user-defined function may perform are specified and defined via role-based access control within the Azure Digital Twins Management APIs. For example, user-defined functions can be limited in scope by specifying certain roles or certain access control paths. For more information, see the [Role-based access control](./security-role-based-access-control.md) documentation.
+Kullanıcı tanımlı işlevin altında çalışacağı bir rol ataması oluşturun. Kullanıcı tanımlı işlev için herhangi bir rol ataması yoksa, yönetim API 'SI ile etkileşim kurmak için gerekli izinlere sahip olmaz veya grafik nesnelerinde eylem gerçekleştirmeye yönelik erişime sahip olmaz. Kullanıcı tanımlı bir işlevin gerçekleştirebileceği eylemler, Azure Digital TWINS yönetim API 'Leri içinde rol tabanlı erişim denetimi aracılığıyla belirtilir ve tanımlanır. Örneğin, Kullanıcı tanımlı işlevler belirli roller veya belirli erişim denetimi yolları belirtilerek kapsamda sınırlandırılabilir. Daha fazla bilgi için bkz. [rol tabanlı erişim denetimi](./security-role-based-access-control.md) belgeleri.
 
-1. [Query the System API](./security-create-manage-role-assignments.md#retrieve-all-roles) for all roles to get the role ID you want to assign to your user-defined function. Do so by making an authenticated HTTP GET request to:
+1. Kullanıcı tanımlı işlevinizde atamak istediğiniz rol KIMLIĞINI almak için tüm roller için [SISTEM API 'Sini sorgulayın](./security-create-manage-role-assignments.md#retrieve-all-roles) . Şunları yapmak için kimliği doğrulanmış bir HTTP GET isteği yaparak:
 
     ```URL
     YOUR_MANAGEMENT_API_URL/system/roles
     ```
-   Keep the desired role ID. It will be passed as the JSON body attribute **roleId** (`YOUR_DESIRED_ROLE_IDENTIFIER`) below.
+   İstenen rol KIMLIĞINI koruyun. Aşağıdaki JSON gövde özniteliği **rol kimliği** (`YOUR_DESIRED_ROLE_IDENTIFIER`) olarak geçirilir.
 
-1. **objectId** (`YOUR_USER_DEFINED_FUNCTION_ID`) will be the user-defined function ID that was created earlier.
-1. Find the value of **path** (`YOUR_ACCESS_CONTROL_PATH`) by querying your spaces with `fullpath`.
-1. Copy the returned `spacePaths` value. You'll use that below. Make an authenticated HTTP GET request to:
+1. **ObjectID** (`YOUR_USER_DEFINED_FUNCTION_ID`), daha önce oluşturulmuş Kullanıcı TANıMLı işlev kimliği olacaktır.
+1. `fullpath`ile alanları sorgulayarak **yolun** (`YOUR_ACCESS_CONTROL_PATH`) değerini bulun.
+1. Döndürülen `spacePaths` değerini kopyalayın. Bunu aşağıda kullanacaksınız. Kimliği doğrulanmış bir HTTP GET isteği oluşturmak için:
 
     ```URL
     YOUR_MANAGEMENT_API_URL/spaces?name=YOUR_SPACE_NAME&includes=fullpath
@@ -216,14 +216,14 @@ Create a role assignment for the user-defined function to run under. If no role 
 
     | Değer | Şununla değiştir |
     | --- | --- |
-    | YOUR_SPACE_NAME | The name of the space you wish to use |
+    | YOUR_SPACE_NAME | Kullanmak istediğiniz alanın adı |
 
-1. Paste the returned `spacePaths` value into **path** to create a user-defined function role assignment by making an authenticated HTTP POST request to:
+1. Kimliği doğrulanmış bir HTTP POST isteği yaparak Kullanıcı tanımlı bir işlev rolü ataması oluşturmak için döndürülen `spacePaths` değerini **yola** yapıştırın:
 
     ```URL
     YOUR_MANAGEMENT_API_URL/roleassignments
     ```
-    With JSON body:
+    JSON gövdesi ile:
 
     ```JSON
     {
@@ -236,26 +236,26 @@ Create a role assignment for the user-defined function to run under. If no role 
 
     | Değer | Şununla değiştir |
     | --- | --- |
-    | YOUR_DESIRED_ROLE_IDENTIFIER | The identifier for the desired role |
-    | YOUR_USER_DEFINED_FUNCTION_ID | The ID for the user-defined function you want to use |
-    | YOUR_USER_DEFINED_FUNCTION_TYPE_ID | The ID specifying the user-defined function type (`UserDefinedFunctionId`) |
-    | YOUR_ACCESS_CONTROL_PATH | The access control path |
+    | YOUR_DESIRED_ROLE_IDENTIFIER | İstenen rolün tanımlayıcısı |
+    | YOUR_USER_DEFINED_FUNCTION_ID | Kullanmak istediğiniz kullanıcı tanımlı işlevin KIMLIĞI |
+    | YOUR_USER_DEFINED_FUNCTION_TYPE_ID | Kullanıcı tanımlı işlev türünü belirten KIMLIK (`UserDefinedFunctionId`) |
+    | YOUR_ACCESS_CONTROL_PATH | Erişim denetimi yolu |
 
 >[!TIP]
-> Read the article [How to create and manage role assignments](./security-create-manage-role-assignments.md) for more information about user-defined function Management API operations and endpoints.
+> Kullanıcı tanımlı işlev yönetimi API işlemleri ve uç noktaları hakkında daha fazla bilgi için [rol atamaları oluşturma ve yönetme](./security-create-manage-role-assignments.md) makalesini okuyun.
 
-## <a name="send-telemetry-to-be-processed"></a>Send telemetry to be processed
+## <a name="send-telemetry-to-be-processed"></a>İşlenmek üzere telemetri gönder
 
-The sensor defined in the spatial intelligence graph sends telemetry. In turn, the telemetry triggers the execution of the user-defined function that was uploaded. The data processor picks up the telemetry. Then an execution plan is created for the invocation of the user-defined function.
+Uzamsal zeka grafiğinde tanımlanan algılayıcı telemetri gönderir. Buna karşılık telemetri, yüklenen Kullanıcı tanımlı işlevin yürütülmesini tetikler. Veri işlemcisi Telemetriyi seçer. Ardından, Kullanıcı tanımlı işlevin çağrılması için bir yürütme planı oluşturulur.
 
-1. Retrieve the matchers for the sensor the reading was generated from.
-1. Depending on what matchers were evaluated successfully, retrieve the associated user-defined functions.
-1. Execute each user-defined function.
+1. Okumayı oluşturan algılayıcı için eşleştiriciler alın.
+1. Hangi eşleştiriciler başarıyla değerlendirildiğine bağlı olarak, ilişkili kullanıcı tanımlı işlevleri alın.
+1. Kullanıcı tanımlı her işlevi yürütün.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Learn how to [create Azure Digital Twins endpoints](./how-to-egress-endpoints.md) to send events to.
+- Olayları göndermek için [Azure dijital TWINS uç noktaları oluşturmayı](./how-to-egress-endpoints.md) öğrenin.
 
-- For more details about routing in Azure Digital Twins, read [Routing events and messages](./concepts-events-routing.md).
+- Azure dijital TWINS 'de yönlendirme hakkında daha fazla bilgi için [yönlendirme olayları ve iletilerini](./concepts-events-routing.md)okuyun.
 
-- Review the [client library reference documentation](./reference-user-defined-functions-client-library.md).
+- [İstemci kitaplığı başvuru belgelerini](./reference-user-defined-functions-client-library.md)gözden geçirin.

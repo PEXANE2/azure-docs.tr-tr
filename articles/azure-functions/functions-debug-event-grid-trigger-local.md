@@ -1,6 +1,6 @@
 ---
-title: Azure Functions Event Grid local debugging
-description: Learn to locally debug Azure functions triggered by an Event Grid event
+title: Yerel hata ayıklama Event Grid Azure Işlevleri
+description: Event Grid bir olay tarafından tetiklenen Azure işlevlerini yerel olarak hata ayıklamanın nasıl yapılacağını öğrenin
 author: craigshoemaker
 ms.topic: reference
 ms.date: 10/18/2018
@@ -12,100 +12,100 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227078"
 ---
-# <a name="azure-function-event-grid-trigger-local-debugging"></a>Azure Function Event Grid Trigger Local Debugging
+# <a name="azure-function-event-grid-trigger-local-debugging"></a>Azure Işlevi Event Grid yerel hata ayıklamayı Tetikle
 
-This article demonstrates how to debug a local function that handles an Azure Event Grid event raised by a storage account. 
+Bu makalede, bir depolama hesabı tarafından oluşturulan Azure Event Grid olayını işleyen yerel bir işlevde hata ayıklama işlemi gösterilmektedir. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- Create or use an existing function app
-- Create or use an existing storage account
-- Download [ngrok](https://ngrok.com/) to allow Azure to call your local function
+- Mevcut bir işlev uygulaması oluşturma veya kullanma
+- Var olan bir depolama hesabı oluşturun veya kullanın
+- Azure 'un yerel işlevinizi aramasını sağlamak için [ngrok](https://ngrok.com/) indirin
 
 ## <a name="create-a-new-function"></a>Yeni bir işlev oluşturma
 
-Open your function app in Visual Studio and, right-click on the project name in the Solution Explorer and click **Add > New Azure Function**.
+İşlev uygulamanızı Visual Studio 'da açın ve Çözüm Gezgini proje adına sağ tıklayın ve **> yeni Azure Işlevi Ekle**' ye tıklayın.
 
-In the *New Azure Function* window, select **Event Grid trigger** and click **OK**.
+*Yeni Azure işlevi* penceresinde, **Event Grid tetikleyicisi** ' ni seçin ve **Tamam**' ı tıklatın.
 
 ![Yeni işlev oluşturma](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-add-function.png)
 
-Once the function is created, open the code file and copy the URL commented out at the top of the file. This location is used when configuring the Event Grid trigger.
+İşlev oluşturulduktan sonra, kod dosyasını açın ve dosyanın en üstünde açıklamalı URL 'YI kopyalayın. Event Grid tetikleyicisi yapılandırılırken bu konum kullanılır.
 
-![Copy location](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-copy-location.png)
+![Konumu Kopyala](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-copy-location.png)
 
-Then, set a breakpoint on the line that begins with `log.LogInformation`.
+Sonra, `log.LogInformation`ile başlayan satırda bir kesme noktası ayarlayın.
 
-![Set breakpoint](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-set-breakpoint.png)
+![Kesme noktası ayarla](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-set-breakpoint.png)
 
 
-Next, **press F5** to start a debugging session.
+Sonra, bir hata ayıklama oturumu başlatmak için **F5 tuşuna basın** .
 
-## <a name="allow-azure-to-call-your-local-function"></a>Allow Azure to call your local function
+## <a name="allow-azure-to-call-your-local-function"></a>Azure 'un yerel işlevinizi aramasını sağlar
 
-To break into a function being debugged on your machine, you must enable a way for Azure to communicate with your local function from the cloud.
+Makinenizde hata ayıklamakta olan bir işleve bölmek için, Azure 'un buluttan yerel işleviniz ile iletişim kurması için bir yol etkinleştirmeniz gerekir.
 
-The [ngrok](https://ngrok.com/) utility provides a way for Azure to call the function running on your machine. Start *ngrok* using the following command:
+[Ngrok](https://ngrok.com/) yardımcı programı, Azure 'un makinenizde çalışan işlevi çağırması için bir yol sağlar. Aşağıdaki komutu kullanarak *ngrok* öğesini başlatın:
 
 ```bash
 ngrok http -host-header=localhost 7071
 ```
-As the utility is set up, the command window should look similar to the following screenshot:
+Yardımcı program ayarlandığı için komut penceresi aşağıdaki ekran görüntüsüne benzer görünmelidir:
 
-![Start ngrok](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-ngrok.png)
+![Ngrok 'yi Başlat](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-ngrok.png)
 
-Copy the **HTTPS** URL generated when *ngrok* is run. This value is used when configuring the event grid event endpoint.
+*Ngrok* çalıştırıldığında oluşturulan **https** URL 'sini kopyalayın. Bu değer, Event Grid olay uç noktası yapılandırılırken kullanılır.
 
-## <a name="add-a-storage-event"></a>Add a storage event
+## <a name="add-a-storage-event"></a>Depolama olayı ekleme
 
-Open the Azure portal and navigate to a storage account and click on the **Events** option.
+Azure portal açın ve bir depolama hesabına gidin ve **Olaylar** seçeneğine tıklayın.
 
-![Add storage account event](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-add-event.png)
+![Depolama hesabı ekleme olayı](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-add-event.png)
 
-In the *Events* window, click on the **Event Subscription** button. In the *Even Subscription* window, click on the *Endpoint Type* dropdown and select **Web Hook**.
+*Olaylar* penceresinde **olay aboneliği** düğmesine tıklayın. *Çift abonelik* penceresinde, *uç nokta türü* açılan listesine tıklayın ve **Web kancası**' yi seçin.
 
-![Select subscription type](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-type.png)
+![Abonelik türünü seçin](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-type.png)
 
-Once the endpoint type is configured, click on **Select an endpoint** to configure the endpoint value.
+Uç nokta türü yapılandırıldıktan sonra uç nokta değerini yapılandırmak için **uç nokta seç** ' e tıklayın.
 
-![Select endpoint type](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-endpoint.png)
+![Uç nokta türünü seçin](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-endpoint.png)
 
-The *Subscriber Endpoint* value is made up from three different values. The prefix is the HTTPS URL generated by *ngrok*. The  remainder of the URL comes from the URL found in the function code file, with the function name added at the end. Starting with the URL from the function code file, the *ngrok* URL replaces `http://localhost:7071` and the function name replaces `{functionname}`.
+*Abone uç noktası* değeri üç farklı değerden oluşur. Ön ek, *ngrok*tarafından oluşturulan https URL 'sidir. URL 'nin geri kalanı işlev kodu dosyasında bulunan URL 'den gelir ve işlev adı sona eklenir. İşlev kodu dosyasındaki URL 'den başlayarak, *ngrok* URL 'si `http://localhost:7071` ve işlev adı `{functionname}`yerini alır.
 
-The following screenshot shows how the final URL should look:
+Aşağıdaki ekran görüntüsünde, son URL 'nin nasıl aranacağı gösterilmektedir:
 
-![Endpoint selection](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-endpoint-selection.png)
+![Uç nokta seçimi](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-endpoint-selection.png)
 
-Once you've entered the appropriate value, click **Confirm Selection**.
+Uygun değeri girdikten sonra **Seçimi Onayla**' ya tıklayın.
 
 > [!IMPORTANT]
-> Every time you start *ngrok*, the HTTPS URL is regenerated and the value changes. Therefore you must create a new Event Subscription each time you expose your function to Azure via *ngrok*.
+> *Ngrok*'yi her BAŞLATTıĞıNıZDA, https URL 'si yeniden oluşturulur ve değer değişir. Bu nedenle, *ngrok*aracılığıyla Işlevinizi Azure 'a her kullanıma sunışınızda yeni bir olay aboneliği oluşturmanız gerekir.
 
 ## <a name="upload-a-file"></a>Dosyayı karşıya yükleme
 
-Now you can upload a file to your storage account to trigger an Event Grid event for your local function to handle. 
+Şimdi, yerel işlevinizin işlemesi için bir Event Grid olayı tetiklemek üzere depolama hesabınıza bir dosya yükleyebilirsiniz. 
 
-Open [Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) and connect to the your storage account. 
+[Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/) açın ve depolama hesabınıza bağlanın. 
 
-- Expand **Blob Containers** 
-- Right-click and select **Create Blob Container**.
-- Name the container **test**
-- Select the *test* container
-- Click the **Upload** button
-- Click **Upload Files**
-- Select a file and upload it to the blob container
+- **BLOB kapsayıcılarını** Genişlet 
+- Sağ tıklayıp **BLOB kapsayıcısı oluştur**' u seçin.
+- Kapsayıcı **testini** adlandırın
+- *Test* kapsayıcısını seçin
+- **Karşıya yükle** düğmesine tıklayın
+- **Dosyaları karşıya yükle** 'ye tıklayın
+- Bir dosya seçin ve BLOB kapsayıcısına yükleyin
 
-## <a name="debug-the-function"></a>Debug the function
+## <a name="debug-the-function"></a>İşlevde hata ayıkla
 
-Once the Event Grid recognizes a new file is uploaded to the storage container, the break point is hit in your local function.
+Event Grid, depolama kapsayıcısına yeni bir dosya yükledikten sonra, yerel işlevinizde kesme noktası isabet edilir.
 
-![Start ngrok](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-breakpoint.png)
+![Ngrok 'yi Başlat](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-breakpoint.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-To clean up the resources created in this article, delete the **test** container in your storage account.
+Bu makalede oluşturulan kaynakları temizlemek için Depolama hesabınızdaki **Test** kapsayıcısını silin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Karşıya yüklenen görüntüleri yeniden boyutlandırmayı Event Grid kullanarak otomatikleştirme](../event-grid/resize-images-on-storage-blob-upload-event.md)
-- [Event Grid trigger for Azure Functions](./functions-bindings-event-grid.md)
+- [Azure Işlevleri için Event Grid tetikleyicisi](./functions-bindings-event-grid.md)

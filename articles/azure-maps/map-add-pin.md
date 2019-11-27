@@ -1,6 +1,6 @@
 ---
-title: Add a Symbol layer to Azure Maps | Microsoft Docs
-description: How to add symbols to the Azure Maps Web SDK.
+title: Azure haritalar 'a bir sembol katmanı ekleme | Microsoft Docs
+description: Azure Maps web SDK 'sına semboller ekleme.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -16,24 +16,24 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74480612"
 ---
-# <a name="add-a-symbol-layer-to-a-map"></a>Add a symbol layer to a map
+# <a name="add-a-symbol-layer-to-a-map"></a>Haritaya sembol katmanı ekleme
 
-A symbol can be connected up to a data source and used to render an icon and/or text at a given point. Symbol layers are rendered using WebGL and can be used to render large collections of points on the map. This layer can render a lot more point data on the map, with good performance, than what is achievable using HTML markers. However, the symbol layer doesn't support traditional CSS and HTML elements for styling.  
+Bir simge, bir veri kaynağına bağlanabilir ve belirli bir noktada bir simge ve/veya metin işlemek için kullanılabilir. Sembol katmanları WebGL kullanılarak işlenir ve haritadaki büyük noktaların koleksiyonunu işlemek için kullanılabilir. Bu katman, haritada çok daha fazla nokta verisini (ulaşılabilir, HTML işaretçileri kullanılarak) iyi bir performansla işleyebilir. Ancak, sembol katmanı stil için geleneksel CSS ve HTML öğelerini desteklemez.  
 
 > [!TIP]
-> Symbol layers by default will render the coordinates of all geometries in a data source. To limit the layer such that it only renders point geometry features set the `filter` property of the layer to `['==', ['geometry-type'], 'Point']` or `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` if you want to include MultiPoint features as well.
+> Sembol katmanları varsayılan olarak, bir veri kaynağındaki tüm geometrilerin koordinatlarını işler. Katmanı yalnızca nokta geometrisi özelliklerinin oluşturduğu şekilde sınırlamak için katmanın `filter` özelliğini `['==', ['geometry-type'], 'Point']` veya `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` de MultiPoint özellikleri eklemek istiyorsanız ayarlayın.
 
-The maps image sprite manager, which is used to load custom images used by the symbol layer supports the following image formats:
+Sembol katmanı tarafından kullanılan özel görüntüleri yüklemek için kullanılan haritalar görüntü Sprite Manager aşağıdaki görüntü biçimlerini destekler:
 
 - JPEG
 - PNG
 - SVG
 - BMP
-- GIF (no animations)
+- GIF (animasyon yok)
 
 ## <a name="add-a-symbol-layer"></a>Sembol katmanı ekleme
 
-To add a symbol layer to the map and render data, a data source first needs to be created and added the map. A symbol layer can then be created and passed in the data source to retrieve the data from. Finally, data needs to be added into the data source so that there is something to be rendered. The following code shows the code that should be added to the map after it has loaded to render a single point on the map using a symbol layer. 
+Haritaya bir sembol katmanı eklemek ve verileri işlemek için önce bir veri kaynağının oluşturulması ve haritanın eklenmesi gerekir. Daha sonra bir sembol katmanı, verileri almak için veri kaynağında oluşturulup geçirilebilir. Son olarak, işlenecek bir şey olması için verilerin veri kaynağına eklenmesi gerekir. Aşağıdaki kod, bir sembol katmanı kullanarak haritada tek bir noktayı işlemek için yüklendikten sonra haritaya eklenmesi gereken kodu gösterir. 
 
 ```javascript
 //Create a data source and add it to the map.
@@ -50,50 +50,50 @@ map.layers.add(layer);
 dataSource.add(new atlas.data.Point([0, 0]));
 ```
 
-There are four different types of point data to that can be added to the map:
+Haritaya eklenebilecek dört farklı türde nokta verisi vardır:
 
-- GeoJSON Point geometry - This object only contains a coordinate of a point and nothing else. The `atlas.data.Point` helper class can be used to easily create these objects.
-- GeoJSON MultiPoint geometry - This object contains the coordinates of multiple points but nothing else. The `atlas.data.MultiPoint` helper class can be used to easily create these objects.
-- GeoJSON Feature - This object consists of any GeoJSON geometry and a set of properties that contain metadata associated to the geometry. The `atlas.data.Feature` helper class can be used to easily create these objects.
-- `atlas.Shape` class is similar to the GeoJSON feature in that it consists of a GeoJSON geometry and a set of properties that contain metadata associated to the geometry. If a GeoJSON object is added to a data source it can easily be rendered in a layer, however, if the coordinates property of that GeoJSON object is updated, the data source and map don't change as there is no mechanism in the JSON object to trigger an update. The shape class provides functions for updating the data it contains, and when a change is made, the data source and map are automatically notified and updated. 
+- GeoJSON nokta geometrisi-bu nesne yalnızca bir noktanın koordinatını içerir ve başka hiçbir şey yapmaz. `atlas.data.Point` yardımcı sınıfı bu nesneleri kolayca oluşturmak için kullanılabilir.
+- GeoJSON MultiPoint geometrisi-bu nesne birden çok noktanın koordinatlarını içerir ancak başka hiçbir şey yapmaz. `atlas.data.MultiPoint` yardımcı sınıfı bu nesneleri kolayca oluşturmak için kullanılabilir.
+- GeoJSON özelliği-bu nesne, tüm GeoJSON geometrisinden ve geometri ile ilişkili meta verileri içeren bir özellik kümesinden oluşur. `atlas.data.Feature` yardımcı sınıfı bu nesneleri kolayca oluşturmak için kullanılabilir.
+- `atlas.Shape` sınıfı, GeoJSON geometrisini ve geometri ile ilişkili meta verileri içeren bir dizi özelliği içerir. Bir veri kaynağına GeoJSON nesnesi eklenirse, bir katmanda kolayca işlenebilir. ancak, bu GeoJSON nesnesinin koordinatlar özelliği güncelleştirilirse, JSON nesnesinde bir güncelleştirmeyi tetiklemek için bir mekanizma olmadığından veri kaynağı ve eşleme değişmez. Şekil sınıfı, içerdiği verileri güncelleştirmek için işlevler sağlar ve bir değişiklik yapıldığında veri kaynağı ve eşleme otomatik olarak bilgilendirilir ve güncelleştirilir. 
 
-The following code sample creates a GeoJSON Point geometry and passes it into the `atlas.Shape` class to make it easy to update. The center of the map is used initially to render a symbol. A click event is added to the map such that when it fires, the coordinates of where the mouse was clicked are used with the shapes `setCoordinates` function that updates the location of the symbol on the map.
-
-<br/>
-
-<iframe height='500' scrolling='no' title='Switch pin location' src='//codepen.io/azuremaps/embed/ZqJjRP/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/azuremaps/pen/ZqJjRP/'>Switch pin location</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) on <a href='https://codepen.io'>CodePen</a>.
-</iframe>
-
-> [!TIP]
-> By default, for performance, symbol layers optimize the rendering of symbols by hiding symbols that overlap. As you zoom in the hidden symbols become visible. To disable this feature and render all symbols at all times, set the `allowOverlap` property of the `iconOptions` options to `true`.
-
-## <a name="add-a-custom-icon-to-a-symbol-layer"></a>Add a custom icon to a symbol layer
-
-Symbol layers are rendered using WebGL. As such all resources, such as icon images, must be loaded into the WebGL context. This sample shows how to add a custom icon to the map resources and then use it to render point data with a custom symbol on the map. The `textField` property of the symbol layer requires an expression to be specified. In this case, we want to render the temperature property but since it's a number, it needs to be converted to a string. Additionally we want to append the "°F" to it. An expression can be used to do this; `['concat', ['to-string', ['get', 'temperature']], '°F']`. 
+Aşağıdaki kod örneği, bir GeoJSON noktası geometrisi oluşturur ve güncelleştirmeyi kolaylaştırmak için `atlas.Shape` sınıfına geçirir. Haritanın merkezi başlangıçta bir sembolü işlemek için kullanılır. Haritada bir tıklama olayı, ne zaman tetiklendiğinde, haritada simgenin konumunu güncelleştiren şekil `setCoordinates` işleviyle birlikte kullanıldığında, bu haritaya bir tıklama olayı eklenir.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Custom Symbol Image Icon' src='//codepen.io/azuremaps/embed/WYWRWZ/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/azuremaps/pen/WYWRWZ/'>Custom Symbol Image Icon</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) on <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='PIN konumunu değiştir' src='//codepen.io/azuremaps/embed/ZqJjRP/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>üzerinde Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) ile kalem <a href='https://codepen.io/azuremaps/pen/ZqJjRP/'>anahtar pin konumuna</a> bakın.
 </iframe>
 
 > [!TIP]
-> The Azure Maps web SDK provides several customizable image templates you can use with the symbol layer. For more infromation, see the [How to use image templates](how-to-use-image-templates-web-sdk.md) document.
+> Varsayılan olarak, performans için sembol katmanları örtüşen sembolleri gizleyerek sembolleri işlemeyi iyileştirir. Gizli sembolleri yakınlaştırdığınızda görünür hale gelir. Bu özelliği devre dışı bırakmak ve tüm sembolleri her zaman işlemek için `iconOptions` seçeneklerinin `allowOverlap` özelliğini `true`olarak ayarlayın.
 
-## <a name="customize-a-symbol-layer"></a>Customize a symbol layer 
+## <a name="add-a-custom-icon-to-a-symbol-layer"></a>Sembol katmanına özel simge ekleme
 
-The symbol layer has many styling options available. Here is a tool to test out these various styling options.
+Sembol katmanları WebGL kullanılarak işlenir. Bu nedenle, simge görüntüleri gibi tüm kaynakların WebGL bağlamına yüklenmesi gerekir. Bu örnek, harita kaynaklarına özel bir simgenin nasıl ekleneceğini ve ardından Haritada özel bir sembol ile nokta verisi işlemek için nasıl kullanılacağını gösterir. Sembol katmanının `textField` özelliği bir ifadenin belirtilmesini gerektirir. Bu durumda, sıcaklık özelliğini işlemek istiyoruz, ancak bir sayı olduğundan, bir dizeye dönüştürülmesi gerekir. Ayrıca buna "°F" eklemek istiyoruz. Bunu yapmak için bir ifade kullanılabilir; `['concat', ['to-string', ['get', 'temperature']], '°F']`. 
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Symbol Layer Options' src='//codepen.io/azuremaps/embed/PxVXje/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/azuremaps/pen/PxVXje/'>Symbol Layer Options</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) on <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Özel sembol resmi simgesi' src='//codepen.io/azuremaps/embed/WYWRWZ/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/WYWRWZ/'>özel sembol görüntüsü simgesine</a> bakın.
 </iframe>
 
 > [!TIP]
-> When you only want to render text with a symbol layer, you can hide the icon by setting the `image` property of the icon options to `'none'`.
+> Azure Haritalar Web SDK 'Sı, sembol katmanıyla birlikte kullanabileceğiniz çeşitli özelleştirilebilir görüntü şablonları sağlar. Daha fazla bilgi için bkz. [görüntü şablonlarını kullanma](how-to-use-image-templates-web-sdk.md) belgesi.
+
+## <a name="customize-a-symbol-layer"></a>Sembol katmanını özelleştirme 
+
+Sembol katmanında birçok stil seçeneği mevcuttur. Bu çeşitli stil seçeneklerini test etmek için bir araç aşağıda verilmiştir.
+
+<br/>
+
+<iframe height='700' scrolling='no' title='Sembol katmanı seçenekleri' src='//codepen.io/azuremaps/embed/PxVXje/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/PxVXje/'>sembol katmanı seçeneklerine</a> bakın.
+</iframe>
+
+> [!TIP]
+> Yalnızca bir sembol katmanıyla metin işlemek istediğinizde, simge seçeneklerinin `image` özelliğini `'none'`olarak ayarlayarak simgeyi gizleyebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Learn more about the classes and methods used in this article:
+Bu makalede kullanılan sınıflar ve yöntemler hakkında daha fazla bilgi edinin:
 
 > [!div class="nextstepaction"]
 > [SymbolLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest)
@@ -107,28 +107,28 @@ Learn more about the classes and methods used in this article:
 > [!div class="nextstepaction"]
 > [TextOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.textoptions?view=azure-iot-typescript-latest)
 
-See the following articles for more code samples to add to your maps:
+Haritalarınıza eklemek için daha fazla kod örneği için aşağıdaki makalelere bakın:
 
 > [!div class="nextstepaction"]
-> [Create a data source](create-data-source-web-sdk.md)
+> [Veri kaynağı oluşturma](create-data-source-web-sdk.md)
 
 > [!div class="nextstepaction"]
-> [Add a popup](map-add-popup.md)
+> [Açılan pencere Ekle](map-add-popup.md)
 
 > [!div class="nextstepaction"]
-> [Use data-driven style expressions](data-driven-style-expressions-web-sdk.md)
+> [Veri tabanlı stil ifadeleri kullanın](data-driven-style-expressions-web-sdk.md)
 
 > [!div class="nextstepaction"]
-> [How to use image templates](how-to-use-image-templates-web-sdk.md)
+> [Görüntü şablonlarını kullanma](how-to-use-image-templates-web-sdk.md)
 
 > [!div class="nextstepaction"]
-> [Add a line layer](map-add-line-layer.md)
+> [Çizgi katmanı Ekle](map-add-line-layer.md)
 
 > [!div class="nextstepaction"]
-> [Add a polygon layer](map-add-shape.md)
+> [Çokgen katmanı Ekle](map-add-shape.md)
 
 > [!div class="nextstepaction"]
-> [Add a bubble layer](map-add-bubble-layer.md)
+> [Kabarcık katmanı ekleme](map-add-bubble-layer.md)
 
 > [!div class="nextstepaction"]
-> [Add HTML Makers](map-add-bubble-layer.md)
+> [HTML üreticileri ekleme](map-add-bubble-layer.md)

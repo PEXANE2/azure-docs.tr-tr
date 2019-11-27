@@ -73,7 +73,7 @@ Connect-AzureAD -TenantDomain "<Tenant_Domain_Name>"
 
 İstendiğinde kimlik bilgilerinizi girin.
 
-## <a name="send-an-invitation"></a>Davet gönderme
+## <a name="send-an-invitation"></a>Davet gönder
 
 1. Test e-posta hesabınıza davetiye göndermek için aşağıdaki PowerShell komutunu çalıştırın ( **"Sanda"** ve **sanda\@fabrikam.com** öğesini, test e-posta hesabınızın adı ve e-posta adresi ile değiştirin): 
 

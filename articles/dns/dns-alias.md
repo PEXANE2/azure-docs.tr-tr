@@ -1,6 +1,6 @@
 ---
-title: Alias records overview - Azure DNS
-description: In this article, learn about support for alias records in Microsoft Azure DNS.
+title: Diğer ad kayıtlarına genel bakış-Azure DNS
+description: Bu makalede, Microsoft Azure DNS 'de diğer ad kayıtları için destek hakkında bilgi edinin.
 services: dns
 author: asudbring
 ms.service: dns
@@ -16,67 +16,67 @@ ms.locfileid: "74212334"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Azure DNS diğer ad kayıtlarına genel bakış
 
-Azure DNS alias records are qualifications on a DNS record set. They can reference other Azure resources from within your DNS zone. For example, you can create an alias record set that references an Azure public IP address instead of an A record. Your alias record set points to an Azure public IP address service instance dynamically. As a result, the alias record set seamlessly updates itself during DNS resolution.
+Azure DNS diğer ad kayıtları, DNS kayıt kümesindeki niteliklerdir. Bunlar, DNS bölgenizin içinden diğer Azure kaynaklarına başvurabilir. Örneğin, bir kayıt yerine bir Azure genel IP adresine başvuran bir diğer ad kayıt kümesi oluşturabilirsiniz. Diğer ad kayıt kümesi, dinamik olarak bir Azure genel IP adresi hizmeti örneğine işaret eder. Sonuç olarak, diğer ad kayıt kümesi DNS çözümlemesi sırasında kendisini sorunsuz bir şekilde günceller.
 
-An alias record set is supported for the following record types in an Azure DNS zone: 
+Bir Azure DNS bölgesindeki aşağıdaki kayıt türleri için bir diğer ad kayıt kümesi desteklenir: 
 
 - A
 - AAAA
 - CNAME
 
 > [!NOTE]
-> If you intend to use an alias record for the A or AAAA record types to point to an [Azure Traffic Manager profile](../traffic-manager/quickstart-create-traffic-manager-profile.md) you must make sure that the Traffic Manager profile has only [external endpoints](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints). You must provide the IPv4 or IPv6 address for external endpoints in Traffic Manager. You can't use fully-qualified domain names (FQDNs) in endpoints. Ideally, use static IP addresses.
+> Bir [Azure Traffic Manager profilini](../traffic-manager/quickstart-create-traffic-manager-profile.md) işaret etmek için A veya aaaa kayıt türleri için bir diğer ad kaydı kullanmayı düşünüyorsanız, Traffic Manager profilinin yalnızca [dış uç noktalara](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints)sahip olduğundan emin olmanız gerekir. Traffic Manager dış uç noktalar için IPv4 veya IPv6 adresi sağlamanız gerekir. Uç noktalarda tam etki alanı adlarını (FQDN) kullanamazsınız. İdeal olarak, statik IP adresleri kullanın.
 
-## <a name="capabilities"></a>Yetenekler
+## <a name="capabilities"></a>Özellikler
 
-- **Point to a public IP resource from a DNS A/AAAA record set.** You can create an A/AAAA record set and make it an alias record set to point to a public IP resource (standard or basic). The DNS record set changes automatically if the public IP address changes or is deleted. Dangling DNS records that point to incorrect IP addresses are avoided.
+- **DNS A/AAAA kayıt kümesinden ortak bir IP kaynağını işaret edin.** A/AAAA kayıt kümesi oluşturabilir ve bunu bir genel IP kaynağını işaret etmek üzere bir diğer ad kaydı kümesi (Standart veya temel) yapabilirsiniz. Genel IP adresi değişirse veya silinirse DNS kayıt kümesi otomatik olarak değişir. Hatalı IP adreslerine işaret eden, salyaze DNS kayıtları kaçınılmaz.
 
-   There is a current limit of 20 alias records sets per resource.
+   Kaynak başına 20 diğer ad kaydı kümesi geçerli bir sınırı vardır.
 
-- **Point to a Traffic Manager profile from a DNS A/AAAA/CNAME record set.** You can create an A/AAAA or CNAME record set and use alias records to point it to a Traffic Manager profile. It's especially useful when you need to route traffic at a zone apex, as traditional CNAME records aren't supported for a zone apex. For example, say your Traffic Manager profile is myprofile.trafficmanager.net and your business DNS zone is contoso.com. You can create an alias record set of type A/AAAA for contoso.com (the zone apex) and point to myprofile.trafficmanager.net.
-- **Point to an Azure Content Delivery Network (CDN) endpoint**. This is useful when you create static websites using Azure storage and Azure CDN.
-- **Point to another DNS record set within the same zone.** Diğer ad kayıtları aynı türdeki diğer kayıt kümelerine başvurabilir. For example, a DNS CNAME record set can be an alias to another CNAME record set. This arrangement is useful if you want some record sets to be aliases and some non-aliases.
+- **DNS A/AAAA/CNAME kayıt kümesinden bir Traffic Manager profile işaret edin.** A/AAAA veya CNAME kayıt kümesi oluşturabilir ve diğer ad kayıtlarını kullanarak bir Traffic Manager profiline işaret edebilirsiniz. Bir bölge tepesinde için geleneksel CNAME kayıtları desteklenmediği için, trafiği bir bölge tepesinde yönlendirmeniz gerektiğinde bu durum özellikle yararlıdır. Örneğin, Traffic Manager profilinizin myprofile.trafficmanager.net olduğunu ve iş DNS bölgenizin contoso.com olduğunu varsayalım. Contoso.com (Zone tepesinde) için A/AAAA türünde bir diğer ad kayıt kümesi oluşturabilir ve myprofile.trafficmanager.net ' ye işaret edebilirsiniz.
+- **Azure Content Delivery Network (CDN) uç noktasını Işaret edin**. Bu, Azure depolama ve Azure CDN kullanarak statik Web siteleri oluşturduğunuzda yararlı olur.
+- **Aynı bölge içindeki başka bir DNS kayıt kümesine işaret edin.** Diğer ad kayıtları aynı türdeki diğer kayıt kümelerine başvurabilir. Örneğin, bir DNS CNAME kayıt kümesi başka bir CNAME kayıt kümesine diğer ad olabilir. Bu düzenleme, bazı kayıt kümelerinin diğer adlar ve diğer ad olmayan adlar olmasını istiyorsanız yararlıdır.
 
 ## <a name="scenarios"></a>Senaryolar
 
-There are a few common scenarios for Alias records.
+Diğer ad kayıtları için birkaç yaygın senaryo vardır.
 
-### <a name="prevent-dangling-dns-records"></a>Prevent dangling DNS records
+### <a name="prevent-dangling-dns-records"></a>Tehlikeden DNS kayıtlarını önleme
 
-A common problem with traditional DNS records is dangling records. For example, DNS records that haven't been updated to reflect changes to IP addresses. The issue occurs especially with A/AAAA or CNAME record types.
+Geleneksel DNS kayıtlarıyla ilgili yaygın bir sorun, kayıt kayıtlardır. Örneğin, IP adreslerinde yapılan değişiklikleri yansıtacak şekilde güncelleştirilmemiş DNS kayıtları. Sorun özellikle bir/AAAA veya CNAME kayıt türleriyle oluşur.
 
-With a traditional DNS zone record, if the target IP or CNAME no longer exists, the DNS record associated with it must be manually updated. In some organizations, a manual update might not happen in time because of process issues or the separation of roles and associated permission levels. For example, a role might have the authority to delete a CNAME or IP address that belongs to an application. But it doesn't have sufficient authority to update the DNS record that points to those targets. A delay in updating the DNS record can potentially cause an outage for the users.
+Geleneksel bir DNS bölgesi kaydıyla, hedef IP veya CNAME artık yoksa, onunla ilişkilendirilen DNS kaydı el ile güncelleştirilmeleri gerekir. Bazı kuruluşlarda, işlem sorunları veya rollerin ve ilişkili izin düzeylerinin ayrımı nedeniyle el ile güncelleştirme zamanında gerçekleşmeyebilir. Örneğin bir rol, bir uygulamaya ait bir CNAME veya IP adresini silme yetkisine sahip olabilir. Ancak, bu hedeflere işaret eden DNS kaydını güncelleştirmek için yeterli yetkisi yok. DNS kaydını güncelleştirmede bir gecikme, kullanıcılar için bir kesinti oluşmasına neden olabilir.
 
-Alias records prevent dangling references by tightly coupling the life cycle of a DNS record with an Azure resource. For example, consider a DNS record that's qualified as an alias record to point to a public IP address or a Traffic Manager profile. If you delete those underlying resources, the DNS alias record becomes an empty record set. It no longer references the deleted resource.
+Diğer ad kayıtları, bir Azure kaynağı ile bir DNS kaydının yaşam döngüsünü sıkı bir şekilde uzatarak tehlikeden başvuruların oluşmasını önler. Örneğin, bir genel IP adresini veya bir Traffic Manager profilini işaret etmek için bir diğer ad kaydı olarak nitelenen bir DNS kaydını göz önünde bulundurun. Bu temel alınan kaynakları silerseniz, DNS diğer ad kaydı boş bir kayıt kümesi haline gelir. Artık silinen kaynağa başvurmuyor.
 
-### <a name="update-dns-record-set-automatically-when-application-ip-addresses-change"></a>Update DNS record-set automatically when application IP addresses change
+### <a name="update-dns-record-set-automatically-when-application-ip-addresses-change"></a>DNS kaydını Güncelleştir-uygulama IP adresleri değiştiğinde otomatik olarak ayarla
 
-This scenario is similar to the previous one. Perhaps an application is moved, or the underlying virtual machine is restarted. An alias record then updates automatically when the IP address changes for the underlying public IP resource. This avoids potential security risks of directing the users to another application that has been assigned the old public IP address.
+Bu senaryo öncekiyle benzerdir. Belki de bir uygulama taşınmış veya temeldeki sanal makine yeniden başlatıldı. Daha sonra bir diğer ad kaydı, temel alınan genel IP kaynağı için IP adresi değiştiğinde otomatik olarak güncelleştirilir. Bu, kullanıcıları eski genel IP adresine atanmış başka bir uygulamaya yönlendiren olası güvenlik risklerini önler.
 
-### <a name="host-load-balanced-applications-at-the-zone-apex"></a>Host load-balanced applications at the zone apex
+### <a name="host-load-balanced-applications-at-the-zone-apex"></a>Tepesinde bölgesindeki yük dengeli uygulamaları barındırın
 
-The DNS protocol prevents the assignment of CNAME records at the zone apex. For example if your domain is contoso.com; you can create CNAME records for somelabel.contoso.com; but you can't create CNAME for contoso.com itself.
-This restriction presents a problem for application owners who have load-balanced applications behind [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md). Since using a Traffic Manager profile requires creation of a CNAME record, it isn't possible to point at the Traffic Manager profile from the zone apex.
+DNS protokolü, CNAME kayıtlarının tepesinde bölgesinde atanmasını engeller. Örneğin, etki alanınız contoso.com ise somelabel.contoso.com için CNAME kayıtları oluşturabilirsiniz; ancak contoso.com kendisi için CNAME oluşturamazsınız.
+Bu kısıtlama, [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md)arkasındaki yük dengeli uygulamalara sahip olan uygulama sahipleri için bir sorun gösterir. Bir Traffic Manager profilinin kullanılması için CNAME kaydı oluşturulması gerektiğinden, bölge tepesinde profil Traffic Manager profiline işaret etmek mümkün değildir.
 
-This problem is solved using alias records. Unlike CNAME records, alias records are created at the zone apex and application owners can use it to point their zone apex record to a Traffic Manager profile that has external endpoints. Application owners point to the same Traffic Manager profile that's used for any other domain within their DNS zone.
+Bu sorun diğer ad kayıtları kullanılarak çözülebilir. CNAME kayıtlarının aksine, diğer ad kayıtları bölge tepesinde kayıtlarını dış uç noktalara sahip bir Traffic Manager profiline işaret etmek için tepesinde ve uygulama sahipleri tarafından kullanılabilir. Uygulama sahipleri, DNS bölgesi içindeki diğer etki alanı için kullanılan Traffic Manager profile işaret noktasıdır.
 
-For example, contoso.com and www\.contoso.com can point to the same Traffic Manager profile. To learn more about using alias records with Azure Traffic Manager profiles, see the Next steps section.
+Örneğin, contoso.com ve www\.contoso.com aynı Traffic Manager profilini işaret edebilir. Azure Traffic Manager profilleriyle diğer ad kayıtlarını kullanma hakkında daha fazla bilgi edinmek için sonraki adımlar bölümüne bakın.
 
-### <a name="point-zone-apex-to-azure-cdn-endpoints"></a>Point zone apex to Azure CDN endpoints
+### <a name="point-zone-apex-to-azure-cdn-endpoints"></a>Azure CDN uç noktalarına nokta dilimi tepesinde
 
-Just like a Traffic Manager profile, you can also use alias records to point your DNS zone apex to Azure CDN endpoints. This is useful when you create static websites using Azure storage and Azure CDN. You can then access the website without prepending "www" to your DNS name.
+Traffic Manager bir profilde olduğu gibi, DNS bölgenizi Azure CDN tepesinde uç noktalarına göstermek için diğer ad kayıtlarını da kullanabilirsiniz. Bu, Azure depolama ve Azure CDN kullanarak statik Web siteleri oluşturduğunuzda yararlı olur. Daha sonra Web sitesine "www" önlemeden DNS adınızı gönderebilirsiniz.
 
-For example, if your static website is named www.contoso.com, your users can access your site using contoso.com without the need to prepend www to the DNS name.
+Örneğin, statik Web siteniz www.contoso.com olarak adlandırılmışsa, kullanıcılarınız www 'i DNS adına eklemek zorunda kalmadan contoso.com kullanarak sitenize erişebilirler.
 
-As described previously, CNAME records aren't supported at the zone apex. So, you can’t use a CNAME record to point contoso.com to your CDN endpoint. Instead, you can use an alias record to point the zone apex to a CDN endpoint directly.
+Daha önce açıklandığı gibi, CNAME kayıtları tepesinde bölgesinde desteklenmez. Bu nedenle, contoso.com 'i CDN uç noktanıza göstermek için bir CNAME kaydı kullanamazsınız. Bunun yerine, bölge tepesinde doğrudan bir CDN uç noktasına göstermek için bir diğer ad kaydı kullanabilirsiniz.
 
 > [!NOTE]
-> Pointing a zone apex to CDN endpoints for Azure CDN from Akamai is currently not supported.
+> Akamai 'dan Azure CDN için bir bölge tepesinde, CDN uç noktalarına işaret ediyor, şu anda desteklenmiyor.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-To learn more about alias records, see the following articles:
+Diğer ad kayıtları hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
-- [Tutorial: Configure an alias record to refer to an Azure public IP address](tutorial-alias-pip.md)
-- [Tutorial: Configure an alias record to support apex domain names with Traffic Manager](tutorial-alias-tm.md)
+- [Öğretici: Azure genel IP adresine başvurmak için bir diğer ad kaydı yapılandırma](tutorial-alias-pip.md)
+- [Öğretici: Traffic Manager ile tepesinde etki alanı adlarını desteklemek için bir diğer ad kaydı yapılandırma](tutorial-alias-tm.md)
 - [DNS SSS](https://docs.microsoft.com/azure/dns/dns-faq#alias-records)

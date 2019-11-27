@@ -1,6 +1,6 @@
 ---
-title: The Conditional Access What If tool - Azure Active Directory
-description: Learn how you can understand the impact of your Conditional Access policies on your environment.
+title: Koşullu erişim What If aracı-Azure Active Directory
+description: Ortamınızdaki koşullu erişim ilkelerinizin etkisini nasıl anlayabileceğinizi öğrenin.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -18,92 +18,92 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74379987"
 ---
-# <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Troubleshoot using the What If tool in Conditional Access
+# <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Koşullu erişimde What If aracını kullanarak sorun giderme
 
-[Conditional Access](../active-directory-conditional-access-azure-portal.md) is a capability of Azure Active Directory (Azure AD) that enables you to control how authorized users access your cloud apps. How do you know what to expect from the Conditional Access policies in your environment? To answer this question, you can use the **Conditional Access What If tool**.
+[Koşullu erişim](../active-directory-conditional-access-azure-portal.md) , yetkili kullanıcıların bulut uygulamalarınıza nasıl erişebileceğini denetlemenize olanak tanıyan Azure Active Directory (Azure AD) özelliğidir. Ortamınızdaki koşullu erişim ilkelerinden ne bekleneceğinizi nasıl anlarsınız? Bu soruyu yanıtlamak için **koşullu erişim What If aracı**' nı kullanabilirsiniz.
 
-This article explains how you can use this tool to test your Conditional Access policies.
+Bu makalede, koşullu erişim ilkelerinizi test etmek için bu aracı nasıl kullanabileceğiniz açıklanır.
 
-## <a name="what-it-is"></a>Tanım
+## <a name="what-it-is"></a>Nedir?
 
-The **Conditional Access What If policy tool** allows you to understand the impact of your Conditional Access policies on your environment. İlkelerinizi test etmek için elle birden fazla oturum açma işlemi gerçekleştirmek yerine, bu aracı kullanarak bir kullanıcının oturum açmasının simülasyonunu yapabilirsiniz. Simülasyon, bu oturum açma işleminin ilkeleriniz üzerindeki etkisini tahmin eder ve bir simülasyon raporu oluşturur. The report does not only list the applied Conditional Access policies but also [classic policies](policy-migration.md#classic-policies) if they exist.    
+**Koşullu erişim What If ilkesi aracı** , ortamınızda koşullu erişim ilkelerinizin etkisini anlamanıza olanak tanır. İlkelerinizi test etmek için elle birden fazla oturum açma işlemi gerçekleştirmek yerine, bu aracı kullanarak bir kullanıcının oturum açmasının simülasyonunu yapabilirsiniz. Simülasyon, bu oturum açma işleminin ilkeleriniz üzerindeki etkisini tahmin eder ve bir simülasyon raporu oluşturur. Rapor yalnızca uygulanan koşullu erişim ilkelerini listelemez, ancak varsa [Klasik ilkeleri](policy-migration.md#classic-policies) de listeler.    
 
-The **What If** tool provides a way to quickly determine the policies that apply to a specific user. You can use the information, for example, if you need to troubleshoot an issue.    
+**What If** Aracı, belirli bir kullanıcı için uygulanan ilkeleri hızlıca belirleyebilmek için bir yol sağlar. Bu bilgileri, örneğin bir sorunu gidermeniz gerekiyorsa kullanabilirsiniz.    
 
-## <a name="how-it-works"></a>Nasıl çalışır
+## <a name="how-it-works"></a>Nasıl çalışır?
 
-In the **Conditional Access What If tool**, you first need to configure the settings of the sign-in scenario you want to simulate. These settings include:
+**Koşullu erişim What If aracında**, önce benzetimini yapmak istediğiniz oturum açma senaryosunun ayarlarını yapılandırmanız gerekir. Bu ayarlar şunlardır:
 
-- The user you want to test 
-- The cloud apps the user would attempt to access
-- The conditions under which access to the configures cloud apps is performed
+- Test etmek istediğiniz Kullanıcı 
+- Kullanıcının erişmeyi deneyeceği bulut uygulamaları
+- Bulut uygulamalarını yapılandıran erişimi olan koşullar gerçekleştiriliyor
      
-As a next step, you can initiate a simulation run that evaluates your settings. Only policies that are enabled are part of an evaluation run.
+Bir sonraki adım olarak, ayarlarınızı değerlendiren bir simülasyon çalıştırması başlatabilirsiniz. Yalnızca etkinleştirilen ilkeler bir değerlendirme çalıştırmasının parçasıdır.
 
-When the evaluation has finished, the tool generates a report of the affected policies.
+Değerlendirme tamamlandığında, araç etkilenen ilkelerin bir raporunu oluşturur.
 
-## <a name="running-the-tool"></a>Running the tool
+## <a name="running-the-tool"></a>Aracı çalıştırma
 
-You can find the **What If** tool on the **[Conditional Access - Policies](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)** page in the Azure portal.
+**What If** aracını, Azure Portal **[koşullu erişim ilkeleri](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)** sayfasında bulabilirsiniz.
 
-To start the tool, in the toolbar on top of the list of policies, click **What If**.
+Aracı başlatmak için, ilke listesinin üstündeki araç çubuğunda **What If**' ye tıklayın.
 
 ![What If](./media/what-if-tool/01.png)
 
-Before you can run an evaluation, you must configure the settings.
+Bir değerlendirmeyi çalıştırmadan önce, ayarları yapılandırmanız gerekir.
 
 ## <a name="settings"></a>Ayarlar
 
-This section provides you with information about the settings of simulation run.
+Bu bölüm, benzetim çalıştırmasının ayarları hakkında bilgi sağlar.
 
 ![What If](./media/what-if-tool/02.png)
 
 ### <a name="user"></a>Kullanıcı
 
-You can only select one user. This is the only required field.
+Yalnızca bir kullanıcı seçebilirsiniz. Bu, tek gerekli alandır.
 
-### <a name="cloud-apps"></a>Cloud apps
+### <a name="cloud-apps"></a>Bulut uygulamaları
 
-The default for this setting is **All cloud apps**. The default setting performs an evaluation of all available policies in your environment. You can narrow down the scope to policies affecting specific cloud apps.
+Bu ayar için varsayılan değer **tüm bulut**uygulamalardır. Varsayılan ayar, ortamınızdaki kullanılabilir tüm ilkelerin değerlendirmesini gerçekleştirir. Belirli bulut uygulamalarını etkileyen ilkeler için kapsamı daraltabilirsiniz.
 
 ### <a name="ip-address"></a>IP adresi
 
-The IP address is a single IPv4 address to mimic the [location condition](location-condition.md). The address represents Internet facing address of the device used by your user to sign in. You can verify the IP address of a device by, for example, navigating to [What is my IP address](https://whatismyipaddress.com).    
+IP adresi, [konum koşulunu](location-condition.md)taklit eden tek bir IPv4 adresidir. Adres, Kullanıcı tarafından oturum açmak için kullanılan cihazın Internet 'e yönelik adresini temsil eder. Bir cihazın IP adresini, örneğin, [IP adresim](https://whatismyipaddress.com)'e giderek doğrulayabilirsiniz.    
 
-### <a name="device-platforms"></a>Device platforms
+### <a name="device-platforms"></a>Cihaz platformları
 
-This setting mimics the [device platforms condition](conditions.md#device-platforms) and represents the equivalent of **All platforms (including unsupported)** . 
+Bu ayar [cihaz platformları koşulunu](conditions.md#device-platforms) taklit eder ve **Tüm platformların (desteklenmeyen dahil)** eşdeğerini temsil eder. 
 
-### <a name="client-apps"></a>Client apps
+### <a name="client-apps"></a>İstemci uygulamaları
 
-This setting mimics the [client apps condition](conditions.md#client-apps).
-By default, this setting causes an evaluation of all policies having **Browser** or **Mobile apps and desktop clients** either individually or both selected. It also detects policies that enforce **Exchange ActiveSync (EAS)** . You can narrow this setting down by selecting:
+Bu ayar, [istemci uygulamaları koşulunu](conditions.md#client-apps)taklit eder.
+Varsayılan olarak, bu ayar **tarayıcı** veya **mobil uygulamalar ve Masaüstü istemcileri** tek tek veya her ikisi de seçili olan tüm ilkelerin değerlendirilmesine neden olur. Ayrıca, **Exchange ActiveSync (EAS)** uygulayan ilkeleri de algılar. Şunları seçerek bu ayarı daraltabilirsiniz:
 
-- **Browser** to evaluate all policies having at least **Browser** selected. 
-- **Mobile apps and desktop clients** to evaluate all policies having at least **Mobile apps and desktop clients** selected. 
+- En az **tarayıcı** seçili olan tüm ilkeleri değerlendirmek için **tarayıcı** . 
+- **Mobil uygulamalar ve Masaüstü istemcileri** , en az **mobil uygulamalara ve Masaüstü istemcilerine** sahip tüm ilkeleri değerlendirmelidir. 
 
-### <a name="sign-in-risk"></a>Sign-in risk
+### <a name="sign-in-risk"></a>Oturum açma riski
 
-This setting mimics the [sign-in risk condition](conditions.md#sign-in-risk).   
+Bu ayar, [oturum açma risk koşulunu](conditions.md#sign-in-risk)taklit eder.   
 
-## <a name="evaluation"></a>Evaluation 
+## <a name="evaluation"></a>Değerlendirmesinin 
 
-You start an evaluation by clicking **What If**. The evaluation result provides you with a report that consists of: 
+**What If**' ye tıklayarak bir değerlendirme başlatabilirsiniz. Değerlendirme sonucu size şunları içeren bir rapor sağlar: 
 
 ![What If](./media/what-if-tool/03.png)
 
-- An indicator whether classic policies exist in your environment
-- Policies that apply to your user
-- Policies that don't apply to your user
+- Ortamınızda klasik ilkelerin var olup olmadığı göstergesi
+- Kullanıcılarınız için uygulanan ilkeler
+- Kullanıcılarınız için uygulanan ilkeler
 
-If [classic policies](policy-migration.md#classic-policies) exist for the selected cloud apps, an indicator is presented to you. By clicking the indicator, you are redirected to the classic policies page. On the classic policies page, you can migrate a classic policy or just disable it. You can return to your evaluation result by closing this page.
+Seçili bulut uygulamaları için [Klasik ilkeler](policy-migration.md#classic-policies) varsa, size bir gösterge sunulur. Göstergeye tıklayarak klasik ilkeler sayfasına yönlendirilirsiniz. Klasik ilkeler sayfasında, klasik bir ilkeyi geçirebilir veya devre dışı bırakabilirsiniz. Bu sayfayı kapatarak değerlendirme sonucuna dönebilirsiniz.
 
-On the list of policies that apply to your selected user, you can also find a list of [grant controls](controls.md#grant-controls) and [session](controls.md#session-controls) controls your user must satisfy.
+Seçtiğiniz kullanıcı için uygulanan ilke listesinde, kullanıcılarınızın karşılaması gereken [Denetim](controls.md#grant-controls) ve [oturum](controls.md#session-controls) denetimleri listesini de bulabilirsiniz.
 
-On the list of policies that don't apply to your user, you can and also find the reasons why these policies don't apply. For each listed policy, the reason represents the first condition that was not satisfied. A possible reason for a policy that is not applied is a disabled policy because they are not further evaluated.   
+Kullanıcılarınız için uygulanamadıkları ilkeler listesinde, bu ilkelerin neden uygulanamadığına ilişkin nedenleri de bulabilirsiniz. Listelenen her ilke için, nedeni karşılanmadı ilk koşulu temsil eder. Uygulanamayan bir ilke için olası bir neden, daha fazla değerlendirilmediğinden devre dışı bırakılmış bir ilkedir.   
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- If you want to know how to configure a Conditional Access policy, see [Require MFA for specific apps with Azure Active Directory Conditional Access](app-based-mfa.md).
-- If you are ready to configure Conditional Access policies for your environment, see the [best practices for Conditional Access in Azure Active Directory](best-practices.md). 
-- if you want to migrate classic policies, see [Migrate classic policies in the Azure portal](policy-migration.md)  
+- Koşullu erişim ilkesini nasıl yapılandıracağınızı öğrenmek isterseniz bkz. [koşullu erişim Azure Active Directory belirli uygulamalar IÇIN MFA gerektirme](app-based-mfa.md).
+- Ortamınız için koşullu erişim ilkelerini yapılandırmaya hazırsanız, [Azure Active Directory Koşullu erişim için en iyi yöntemlere](best-practices.md)bakın. 
+- Klasik ilkeleri geçirmek istiyorsanız, bkz [. Azure Portal klasik Ilkeleri geçirme](policy-migration.md)  

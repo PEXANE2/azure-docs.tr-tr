@@ -28,7 +28,7 @@ Bu hızlı başlangıçta, Java veya C++/Ndk'teki [Azure uzamsal bağlayıcılar
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıcı tamamlamak için aşağıdakileri yaptığınızdan emin olun:
 
@@ -80,7 +80,7 @@ Bir sonraki adım, uygulamayı hesap tanımlayıcıyı ve hesap anahtarınızı 
 
 # <a name="javatabopenproject-java"></a>[Java](#tab/openproject-java)
 
-Açık `Android/Java/app/src/main/java/com/microsoft/sampleandroid/AzureSpatialAnchorsManager.java`.
+`Android/Java/app/src/main/java/com/microsoft/sampleandroid/AzureSpatialAnchorsManager.java`açın.
 
 `SpatialAnchorsAccountKey` alanını bulun ve `Set me` hesap anahtarıyla değiştirin.
 
@@ -88,7 +88,7 @@ Açık `Android/Java/app/src/main/java/com/microsoft/sampleandroid/AzureSpatialA
 
 # <a name="ndktabopenproject-ndk"></a>[NDK](#tab/openproject-ndk)
 
-Açık `Android/NDK/app/src/main/cpp/AzureSpatialAnchorsApplication.cpp`.
+`Android/NDK/app/src/main/cpp/AzureSpatialAnchorsApplication.cpp`açın.
 
 `SpatialAnchorsAccountKey` alanını bulun ve `Set me` hesap anahtarıyla değiştirin.
 

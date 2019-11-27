@@ -7,30 +7,30 @@ ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: de0eb685e212b59705d8d659cbe9627338697e9d
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 593c9ea9c37cc5684e85604340f8aae3d84d9afb
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854518"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546359"
 ---
 # <a name="deploy-azure-file-sync"></a>Azure Dosya Eşitleme’yi dağıtma
-Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server 'ı Azure dosya paylaşımınızın hızlı önbelleğine dönüştürür. SMB, NFS ve FTPS dahil olmak üzere verilerinize yerel olarak erişmek için Windows Server 'da bulunan herhangi bir protokolü kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
+Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server’ı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürür. SMB, NFS ve FTPS dahil olmak üzere verilerinize yerel olarak erişmek için Windows Server 'da bulunan herhangi bir protokolü kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
 
 Bu makalede açıklanan adımları tamamlamadan önce bir [Azure dosyaları dağıtımı Için planlamayı](storage-files-planning.md) ve [bir Azure dosya eşitleme dağıtımı planlamayı](storage-sync-files-planning.md) kesinlikle öneririz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * Azure Dosya Eşitleme dağıtmak istediğiniz bölgedeki bir Azure dosya paylaşımıdır. Daha fazla bilgi için bkz.
     - Azure Dosya Eşitleme için [bölge kullanılabilirliği](storage-sync-files-planning.md#region-availability) .
     - Dosya paylaşımının nasıl oluşturulacağı hakkında adım adım bir açıklama için [dosya paylaşma oluşturun](storage-how-to-create-file-share.md) .
 * Azure Dosya Eşitleme eşitlenecek Windows Server veya Windows Server kümesinin en az bir desteklenen örneği. Desteklenen Windows Server sürümleri hakkında daha fazla bilgi için bkz. [Windows Server Ile birlikte çalışabilirlik](storage-sync-files-planning.md#azure-file-sync-system-requirements-and-interoperability).
-* Az PowerShell modülü, PowerShell 5,1 ya da PowerShell 6 + ile birlikte kullanılabilir. Windows olmayan sistemler dahil olmak üzere desteklenen herhangi bir sistemde Azure Dosya Eşitleme için az PowerShell modülünü kullanabilirsiniz, ancak sunucu kayıt cmdlet 'i her zaman kaydolduğunuz Windows Server örneğinde çalıştırılmalıdır (Bu işlem doğrudan veya PowerShell aracılığıyla yapılabilir) Uzaktan iletişim). Windows Server 2012 R2 'de, en az PowerShell 5,1 kullandığınızı doğrulayabilirsiniz. $PSVersionTable nesnesinin **psversion** özelliğinin değerine bakarak: \*
+* Az PowerShell modülü, PowerShell 5,1 ya da PowerShell 6 + ile birlikte kullanılabilir. Windows olmayan sistemler dahil olmak üzere desteklenen herhangi bir sistemde Azure Dosya Eşitleme için az PowerShell modülünü kullanabilirsiniz, ancak sunucu kayıt cmdlet 'i her zaman kaydolduğunuz Windows Server örneğinde çalıştırılmalıdır (Bu işlem doğrudan veya PowerShell aracılığıyla yapılabilir) Uzaktan iletişim). Windows Server 2012 R2 'de, en az PowerShell 5,1 kullandığınızı doğrulayabilirsiniz. **$PSVersionTable** nesnesinin **psversion** özelliğinin değerine bakarak\*:
 
     ```powershell
     $PSVersionTable.PSVersion
     ```
 
-    PSVersion değeri 5,1 ' den küçükse. , Windows Server 2012 R2 'nin en yeni yüklemelerinde olduğu gibi, [Windows Management Framework (WMF) 5,1](https://www.microsoft.com/download/details.aspx?id=54616)' i indirerek ve yükleyerek kolayca yükseltebilirsiniz. \* Windows Server 2012 R2 için indirmek ve yüklemek üzere uygun paket **Win\*8.1 andw2k12r2-KB\*\*\*\*\*\*-x64. msu**' dir. 
+    PSVersion değeri 5,1 ' den küçükse.\*, Windows Server 2012 R2 'nin en yeni yüklemelerinde olduğu gibi, [Windows Management Framework (WMF) 5,1](https://www.microsoft.com/download/details.aspx?id=54616)' i indirerek ve yükleyerek kolayca yükseltebilirsiniz. Windows Server 2012 R2 için indirmek ve yüklemek üzere uygun paket, **Win 8.1 andw2k12r2-KB\*\*\*\*\*\*\*-x64. msu**. 
 
     PowerShell 6 + desteklenen herhangi bir sistemle birlikte kullanılabilir ve [GitHub sayfası](https://github.com/PowerShell/PowerShell#get-powershell)aracılığıyla indirilebilir. 
 
@@ -45,7 +45,7 @@ Bu makalede açıklanan adımları tamamlamadan önce bir [Azure dosyaları dağ
     > Start-Process -FilePath "ndp48-x86-x64-allos-enu.exe" -ArgumentList "/q /norestart" -Wait
     > ```
 
-* Buradaki yönergeleri izleyerek yüklenebilen az PowerShell modülü: [Azure PowerShell yükleyip yapılandırın](https://docs.microsoft.com/powershell/azure/install-Az-ps).
+* Buradaki yönergeleri izleyerek yüklenebilen az PowerShell modülü: [Azure PowerShell yükleme ve yapılandırma](https://docs.microsoft.com/powershell/azure/install-Az-ps).
      
     > [!Note]  
     > Az. Storagessync modülü artık az PowerShell modülünü yüklediğinizde otomatik olarak yüklenir.
@@ -59,11 +59,11 @@ Azure Dosya Eşitleme ile kullanmayı düşündüğünüz her sunucu için, bir 
 
 1. Sunucu Yöneticisi açın.
 2. **Yerel sunucu**' ya tıklayın:  
-    ![Sunucu Yöneticisi Kullanıcı arabiriminin sol tarafındaki "yerel sunucu"](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-1.PNG)
+    Sunucu Yöneticisi Kullanıcı arabiriminin sol tarafındaki "yerel sunucu" ![](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-1.PNG)
 3. **Özellikler** alt bölmesinde **IE Artırılmış Güvenlik Yapılandırması** bağlantısını seçin.  
-    ![Sunucu Yöneticisi Kullanıcı arabirimindeki "IE artırılmış güvenlik yapılandırması" bölmesi](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-2.PNG)
+    Sunucu Yöneticisi Kullanıcı arabirimindeki "IE artırılmış güvenlik yapılandırması" bölmesini ![](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-2.PNG)
 4. **Internet Explorer Artırılmış Güvenlik Yapılandırması** Iletişim kutusunda **Yöneticiler** ve **Kullanıcılar**için **kapalı** ' yı seçin:  
-    !["Kapalı" seçiliyken Internet Explorer Artırılmış Güvenlik Yapılandırması açılır penceresi](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-3.png)
+    Internet Explorer Artırılmış Güvenlik Yapılandırması açılır penceresini "kapalı" seçiliyken ![](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-3.png)
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 Internet Explorer Artırılmış güvenlik yapılandırmasını devre dışı bırakmak için, yükseltilmiş bir PowerShell oturumundan aşağıdakileri yürütün:
@@ -101,15 +101,15 @@ Bir depolama eşitleme hizmeti dağıtmak için, [Azure Portal](https://portal.a
 
 Açılan bölmeye aşağıdaki bilgileri girin:
 
-- **Ad**: Depolama Eşitleme Hizmeti için benzersiz bir ad (abonelik başına).
-- **Abonelik**: Depolama eşitleme hizmetini oluşturmak istediğiniz abonelik. Kuruluşunuzun yapılandırma stratejisine bağlı olarak, bir veya daha fazla aboneliğe erişiminiz olabilir. Azure aboneliği, her bir bulut hizmeti için (Azure dosyaları gibi) Faturalandırma için en temel kapsayıcıdır.
-- **Kaynak grubu**: Kaynak grubu, depolama hesabı veya depolama eşitleme hizmeti gibi bir Azure kaynakları mantıksal grubudur. Azure Dosya Eşitleme için yeni bir kaynak grubu oluşturabilir veya var olan bir kaynak grubunu kullanabilirsiniz. (Belirli bir proje için HR kaynaklarını veya kaynaklarını gruplama gibi kaynak gruplarını kuruluşunuz için mantıksal olarak yalıtmak üzere kapsayıcı olarak kullanmanızı öneririz.)
-- **Konum**: Azure Dosya Eşitleme dağıtmak istediğiniz bölge. Bu listede yalnızca desteklenen bölgeler bulunur.
+- **Ad**: depolama eşitleme hizmeti için benzersiz bir ad (abonelik başına).
+- **Abonelik**: depolama eşitleme hizmetini oluşturmak istediğiniz abonelik. Kuruluşunuzun yapılandırma stratejisine bağlı olarak, bir veya daha fazla aboneliğe erişiminiz olabilir. Azure aboneliği, her bir bulut hizmeti için (Azure dosyaları gibi) Faturalandırma için en temel kapsayıcıdır.
+- **Kaynak grubu**: bir kaynak grubu, depolama hesabı veya depolama eşitleme hizmeti gibi bir Azure kaynakları mantıksal grubudur. Azure Dosya Eşitleme için yeni bir kaynak grubu oluşturabilir veya var olan bir kaynak grubunu kullanabilirsiniz. (Belirli bir proje için HR kaynaklarını veya kaynaklarını gruplama gibi kaynak gruplarını kuruluşunuz için mantıksal olarak yalıtmak üzere kapsayıcı olarak kullanmanızı öneririz.)
+- **Konum**: Azure dosya eşitleme dağıtmak istediğiniz bölge. Bu listede yalnızca desteklenen bölgeler bulunur.
 
 İşiniz bittiğinde, depolama eşitleme hizmeti 'ni dağıtmak için **Oluştur** ' u seçin.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
-**< Az_Region >** , **< RG_Name >** ve **< my_storage_sync_service >** değerlerini kendi değerlerinizle değiştirin, ardından bir depolama eşitleme hizmeti oluşturmak ve dağıtmak için aşağıdaki Cmds kullanın:
+**< Az_Region >** , **< RG_Name >** **ve < my_storage_sync_service >** kendi değerlerinizle değiştirin, ardından bir depolama eşitleme hizmeti oluşturmak ve dağıtmak için aşağıdaki Cmds kullanın:
 
 ```powershell
 $hostType = (Get-Host).Name
@@ -217,15 +217,15 @@ Windows Server’ı bir Depolama Eşitleme Hizmeti’ne kaydetmek, sunucunuz (ve
 > Sunucu kaydı, depolama eşitleme hizmeti ile Windows Server arasında bir güven ilişkisi oluşturmak için Azure kimlik bilgilerinizi kullanır, ancak bundan sonra sunucu kayıtlı olduğu sürece geçerli olan kendi kimliğini oluşturur ve kullanır geçerli paylaşılan erişim Imza belirteci (Storage SAS) geçerli. Sunucunun kaydı kaldırıldıktan sonra sunucuya yeni bir SAS belirteci verilemez, böylece sunucunun Azure dosya paylaşımınızla erişme özelliği kaldırılarak eşitleme durdurulur.
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
-Sunucu kayıt kullanıcı arabirimi, Azure Dosya Eşitleme aracısının yüklenmesinden sonra otomatik olarak açılmalıdır. Değilse, dosya konumundan el ile açabilirsiniz: C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe. Sunucu kaydı kullanıcı arabirimi açıldığında başlamak için **oturum aç** ' ı seçin.
+Sunucu kayıt kullanıcı arabirimi, Azure Dosya Eşitleme aracısının yüklenmesinden sonra otomatik olarak açılmalıdır. Açılmazsa, şu dosya konumundan kendiniz açabilirsiniz: C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe. Sunucu kaydı kullanıcı arabirimi açıldığında başlamak için **oturum aç** ' ı seçin.
 
 Oturum açtıktan sonra, sizden aşağıdaki bilgiler istenir:
 
 ![Sunucu Kaydı kullanıcı arabiriminin ekran görüntüsü](media/storage-sync-files-deployment-guide/register-server-scubed-1.png)
 
-- **Azure aboneliği**: Depolama eşitleme hizmetini içeren abonelik (bkz. [depolama eşitleme hizmetini dağıtma](#deploy-the-storage-sync-service)). 
-- **Kaynak grubu**: Depolama eşitleme hizmetini içeren kaynak grubu.
-- **Depolama eşitleme hizmeti**: Kaydetmek istediğiniz depolama eşitleme hizmeti 'nin adı.
+- **Azure aboneliği**: depolama eşitleme hizmetini içeren abonelik (bkz. [depolama eşitleme hizmetini dağıtma](#deploy-the-storage-sync-service)). 
+- **Kaynak grubu**: depolama eşitleme hizmeti 'ni içeren kaynak grubu.
+- **Depolama eşitleme hizmeti**: kaydetmek Istediğiniz depolama eşitleme hizmeti 'nin adı.
 
 Uygun bilgileri seçtikten sonra, sunucu kaydını gerçekleştirmek için **Kaydet** ' i seçin. Kayıt işleminin bir parçası olarak bir kez daha oturum açmanız istenir.
 
@@ -239,7 +239,7 @@ $registeredServer = Register-AzStorageSyncServer -ParentObject $storageSync
 ## <a name="create-a-sync-group-and-a-cloud-endpoint"></a>Bir eşitleme grubu ve bir bulut uç noktası oluşturma
 Eşitleme grubu, bir dosya kümesi için eşitleme topolojisini tanımlar. Bir eşitleme grubu içindeki uç noktalar, birbiriyle eşitlenmiş durumda tutulur. Eşitleme grubu, bir Azure dosya paylaşımı ve en az bir sunucu uç noktasını temsil eden bir bulut uç noktası içermelidir. Sunucu uç noktası, kayıtlı bir sunucudaki yolu temsil eder. Bir sunucu birden çok eşitleme grubunda sunucu uç noktalarına sahip olabilir. İstediğiniz eşitleme topolojinizi uygun şekilde açıklamanız için ihtiyacınız olan sayıda eşitleme grubu oluşturabilirsiniz.
 
-Bulut uç noktası, Azure dosya paylaşımının bir işaretçisidir. Tüm sunucu uç noktaları bulut uç noktasıyla eşitlenir ve bu da bulut uç noktası hub 'ı yapar. Azure dosya paylaşımının depolama hesabı, depolama eşitleme hizmeti ile aynı bölgede bulunmalıdır. Azure dosya paylaşımının tamamı eşitlenir ve tek bir özel durum oluşur: Bir NTFS biriminde gizli "sistem birimi bilgileri" klasörüyle karşılaştırılabilen özel bir klasör sağlanacak. Bu dizin "olarak adlandırılır. Systemshareınformation ". Diğer uç noktalarla eşitlenmeyecek önemli eşitleme meta verileri içerir. Kullanma veya silme!
+Bulut uç noktası, Azure dosya paylaşımının bir işaretçisidir. Tüm sunucu uç noktaları bulut uç noktasıyla eşitlenir ve bu da bulut uç noktası hub 'ı yapar. Azure dosya paylaşımının depolama hesabı, depolama eşitleme hizmeti ile aynı bölgede bulunmalıdır. Azure dosya paylaşımının tamamı eşitlenecek, tek bir özel durum: bir NTFS biriminde gizli "sistem birimi bilgileri" klasörüyle karşılaştırılabilen özel bir klasör sağlanacak. Bu dizin "olarak adlandırılır. Systemshareınformation ". Diğer uç noktalarla eşitlenmeyecek önemli eşitleme meta verileri içerir. Kullanma veya silme!
 
 > [!Important]  
 > Eşitleme grubundaki herhangi bir bulut uç noktasında veya sunucu uç noktasında değişiklik yapabilir ve dosyalarınızı eşitleme grubundaki diğer uç noktalarla eşitler. Bulut uç noktasına (Azure dosya paylaşımında) doğrudan değişiklik yaparsanız, önce değişikliklerin Azure Dosya Eşitleme değişiklik algılama işi tarafından bulunması gerekir. Bir değişiklik algılama işi, her 24 saatte bir bulut uç noktası için başlatılır. Daha fazla bilgi için bkz. [Azure dosyaları hakkında sık sorulan sorular](storage-files-faq.md#afs-change-detection).
@@ -251,20 +251,20 @@ Bir eşitleme grubu oluşturmak için, [Azure Portal](https://portal.azure.com/)
 
 Açılan bölmede, bulut uç noktası olan bir eşitleme grubu oluşturmak için aşağıdaki bilgileri girin:
 
-- **Eşitleme grubu adı**: Oluşturulacak eşitleme grubunun adı. Bu ad Depolama Eşitleme Hizmetinde benzersiz olmalıdır, ancak size mantıklı gelen herhangi bir ad olabilir.
-- **Abonelik**: Depolama eşitleme hizmeti 'ni [dağıtırken](#deploy-the-storage-sync-service)depolama eşitleme hizmeti 'ni dağıttığınız abonelik.
-- **Depolama hesabı**: **Depolama hesabı seç**' i seçerseniz, eşitlemek istediğiniz Azure dosya paylaşımının bulunduğu depolama hesabını seçebileceğiniz başka bir bölmesi görüntülenir.
-- **Azure dosya paylaşma**: Eşitlemek istediğiniz Azure dosya paylaşımının adı.
+- **Eşitleme grubu adı**: oluşturulacak eşitleme grubunun adı. Bu ad Depolama Eşitleme Hizmetinde benzersiz olmalıdır, ancak size mantıklı gelen herhangi bir ad olabilir.
+- **Abonelik**: depolama eşitleme hizmeti 'ni [dağıtmak](#deploy-the-storage-sync-service)için depolama eşitleme hizmetini dağıttığınız abonelik.
+- **Depolama hesabı**: **depolama hesabı seç**' i seçerseniz, ile eşitlemek istediğiniz Azure dosya paylaşımının bulunduğu depolama hesabını seçebileceğiniz başka bir bölmesi görüntülenir.
+- **Azure dosya paylaşma**: eşitlemek istediğiniz Azure dosya paylaşımının adı.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
-Eşitleme grubunu oluşturmak için aşağıdaki PowerShell 'i yürütün. Eşitleme grubunun istenen `<my-sync-group>` adıyla değiştirmeyi unutmayın.
+Eşitleme grubunu oluşturmak için aşağıdaki PowerShell 'i yürütün. `<my-sync-group>`, eşitleme grubunun istenen adıyla değiştirmeyi unutmayın.
 
 ```powershell
 $syncGroupName = "<my-sync-group>"
 $syncGroup = New-AzStorageSyncGroup -ParentObject $storageSync -Name $syncGroupName
 ```
 
-Eşitleme grubu başarıyla oluşturulduktan sonra, bulut uç noktanızı oluşturabilirsiniz. `<my-storage-account>` Ve`<my-file-share>` değerlerini beklenen değerlerle değiştirdiğinizden emin olun.
+Eşitleme grubu başarıyla oluşturulduktan sonra, bulut uç noktanızı oluşturabilirsiniz. `<my-storage-account>` ve `<my-file-share>` beklenen değerlerle değiştirdiğinizden emin olun.
 
 ```powershell
 # Get or create a storage account with desired name
@@ -313,15 +313,15 @@ Sunucu uç noktası eklemek için yeni oluşturulan eşitleme grubuna gidin ve *
 
 **Sunucu uç noktası ekle** bölmesinde bir sunucu uç noktası oluşturmak için aşağıdaki bilgileri girin:
 
-- **Kayıtlı sunucu**: Sunucu uç noktasını oluşturmak istediğiniz sunucunun veya kümenin adı.
-- **Yol**: Eşitleme grubunun bir parçası olarak eşitlenecek Windows Server yolu.
-- **Bulut katmanlama**: Bulut katmanlamayı etkinleştirmek veya devre dışı bırakmak için bir anahtar. Bulut katmanlaması sayesinde, sık kullanılmayan veya erişilen dosyalar Azure dosyaları için katmanlı olabilir.
-- **Birim boş alanı**: Sunucu uç noktasının bulunduğu birimde ayrılacak boş alan miktarı. Örneğin, birim boş alanı tek bir sunucu uç noktasına sahip bir birimde% 50 olarak ayarlandıysa, yaklaşık olarak veri miktarı Azure dosyalarına katmanlı olur. Bulut katmanlama özelliğinin etkinleştirilip etkinleştirilmediği bağımsız olarak, Azure dosya paylaşımınızda her zaman eşitleme grubundaki verilerin tamamen bir kopyası bulunur.
+- **Kayıtlı sunucu**: sunucu uç noktasını oluşturmak istediğiniz sunucunun veya kümenin adı.
+- **Yol**: eşitleme grubunun bir parçası olarak eşitlenecek Windows Server yolu.
+- **Bulut katmanlama**: bulut katmanlamayı etkinleştirmek veya devre dışı bırakmak için bir anahtar. Bulut katmanlaması sayesinde, sık kullanılmayan veya erişilen dosyalar Azure dosyaları için katmanlı olabilir.
+- **Birim boş alanı**: sunucu uç noktasının bulunduğu birimde ayrılacak boş alan miktarı. Örneğin, birim boş alanı tek bir sunucu uç noktasına sahip bir birimde %50 olarak ayarlandıysa, yaklaşık olarak veri miktarı Azure dosyalarına katmanlı olur. Bulut katmanlama özelliğinin etkinleştirilip etkinleştirilmediği bağımsız olarak, Azure dosya paylaşımınızda her zaman eşitleme grubundaki verilerin tamamen bir kopyası bulunur.
 
 Sunucu uç noktasını eklemek için **Oluştur**' u seçin. Dosyalarınız artık Azure dosya paylaşımınızda ve Windows Server 'da eşitlenmiş durumda tutulur. 
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
-Sunucu uç noktasını oluşturmak için aşağıdaki PowerShell komutlarını yürütün ve ve `<your-server-endpoint-path>` `<your-volume-free-space>` değerlerini istenen değerlerle değiştirdiğinizden emin olun.
+Sunucu uç noktasını oluşturmak için aşağıdaki PowerShell komutlarını yürütün ve `<your-server-endpoint-path>` ve `<your-volume-free-space>` istenen değerlerle değiştirdiğinizden emin olun.
 
 ```powershell
 $serverEndpointPath = "<your-server-endpoint-path>"
@@ -398,6 +398,45 @@ Tam dosya uygunluk ve erişim denetimi listesi (ACL) korunarak, ilk için Azure 
 - Dosyalarda tam doğruluk korunmaz. Örneğin, dosyalar ACL 'Leri ve zaman damgalarını kaybeder.
 - Eşitleme topolojisi tamamen çalışır duruma gelmeden önce sunucudaki veri değişiklikleri, sunucu uç noktalarında çakışmalara neden olabilir.  
 - Bulut uç noktası oluşturulduktan sonra, Azure Dosya Eşitleme ilk eşitlemeyi başlatmadan önce buluttaki dosyaları algılamaya yönelik bir işlem çalıştırır. Bu işlemi gerçekleştirmek için geçen süre, ağ hızı, kullanılabilir bant genişliği ve dosya ve klasör sayısı gibi çeşitli faktörlere bağlı olarak değişir. Önizleme sürümündeki kaba tahmin için algılama işlemi yaklaşık 10 dosya/sn ile çalıştırılır.  Bu nedenle, ön dengeli dağıtım hızlı çalışıyor olsa bile, verilerin bulutta önceden hazırlanması durumunda, tam olarak çalışan bir sistemi almak için genel süre önemli ölçüde uzun sürebilir.
+
+## <a name="self-service-restore-through-previous-versions-and-vss-volume-shadow-copy-service"></a>Önceki sürümler ve VSS üzerinden self servis geri yükleme (Birim Gölge Kopyası Hizmeti)
+Önceki sürümler, bir dosyanın geri yüklenebilen sürümlerini bir SMB istemcisine sunmak için bir birimin sunucu tarafı VSS anlık görüntülerini kullanmanızı sağlayan bir Windows özelliğidir.
+Bu, genellikle self servis geri yükleme olarak adlandırılan, bir BT yöneticisinden geri yüklemeye bağlı olmak yerine doğrudan bilgi çalışanları için bir güçlü senaryo sağlar.
+
+VSS anlık görüntüleri ve önceki sürümler Azure Dosya Eşitleme bağımsız olarak çalışır. Ancak, bulut katmanlaması uyumlu bir moda ayarlanmalıdır. Birçok Azure Dosya Eşitleme sunucu uç noktası aynı birimde bulunabilir. Bulut katmanlaması kullanmayı planladığınız veya kullandığınız bir sunucu uç noktası olan her birim için aşağıdaki PowerShell çağrısını yapmanız gerekir.
+
+```powershell
+Import-Module ‘<SyncAgentInstallPath>\StorageSync.Management.ServerCmdlets.dll’
+Enable-StorageSyncSelfServiceRestore [-DriveLetter] <string> [[-Force]] 
+```
+
+VSS anlık görüntüleri bir birimin tamamında alınır. Varsayılan olarak, belirli bir birim için en fazla 64 anlık görüntü bulunabilir ve anlık görüntüleri depolamak için yeterli alan yoktur. VSS bunu otomatik olarak işler. Varsayılan anlık görüntü zamanlaması günde iki anlık görüntü alır ve Pazartesi 'den Cuma 'Ya kadar. Bu zamanlama Windows zamanlanmış görevi aracılığıyla yapılandırılabilir. Yukarıdaki PowerShell cmdlet 'i iki şey yapar:
+1. Belirtilen birimdeki Azure dosya eşitlemeleri bulut katmanlaması ' nı, önceki sürümlerle uyumlu olacak şekilde yapılandırır ve bir dosyanın sunucudaki buluta katmanlı olsa bile önceki sürümden geri yüklenebildiğinden emin olur. 
+2. Varsayılan VSS zamanlamasını sunar. Daha sonra daha sonra değiştirmeye karar verebilirsiniz. 
+
+> [!Note]  
+> Dikkat etmeniz gereken iki önemli nokta vardır:
+>- -Zorlama parametresini kullanırsanız ve VSS Şu anda etkinse, geçerli VSS anlık görüntü zamanlamasının üzerine yazar ve varsayılan zamanlamaya göre değiştirilir. Cmdlet 'ini çalıştırmadan önce özel yapılandırmanızı kaydetdiğinizden emin olun.
+> - Bu cmdlet 'i bir küme düğümünde kullanıyorsanız kümedeki diğer tüm düğümlerde de çalıştırmanız gerekir! 
+
+Self Servis geri yükleme uyumluluğun etkin olup olmadığını görmek için aşağıdaki cmdlet 'i çalıştırabilirsiniz.
+
+```powershell
+    Get-StorageSyncSelfServiceRestore [[-Driveletter] <string>]
+```
+
+Sunucu üzerindeki tüm birimleri ve her biri için bulut katmanlama uyumlu gün sayısını listeler. Bu sayı, birim başına olası en yüksek anlık görüntüye ve varsayılan anlık görüntü zamanlamaya göre otomatik olarak hesaplanır. Bu nedenle, varsayılan olarak, bir bilgi çalışanına sunulan tüm önceki sürümler ' den geri yüklemek için kullanılabilir. Varsayılan zamanlamayı daha fazla anlık görüntü alacak şekilde değiştirirseniz de aynı değer geçerlidir.
+Ancak, zamanlamayı, uyumlu günler değerinden daha eski olan birimde kullanılabilir bir anlık görüntüye neden olacak şekilde değiştirirseniz, kullanıcılar geri yüklemek için bu eski anlık görüntüyü (önceki sürüm) kullanamaz.
+
+> [!Note]
+> Self Servis geri yükleme özelliğinin etkinleştirilmesi, Azure depolama tüketiminiz ve faturanızda bir etkiye sahip olabilir. Bu etki, sunucuda şu anda katmanlı olan dosyalarla sınırlıdır. Bu özelliği etkinleştirmek, bulutta bulunan ve önceki sürümler (VSS anlık görüntüsü) girişi aracılığıyla başvurulabilen bir dosya sürümü olmasını sağlar.
+>
+> Özelliği devre dışı bırakırsanız, uyumlu günler penceresi geçirilmeden Azure depolama alanı tüketimi yavaş bir şekilde ret edilir. Bunu hızlandırmanın bir yolu yoktur. 
+
+Birim başına varsayılan en fazla VSS anlık görüntüsü sayısı (64) ve bu işlem için varsayılan zamanlama, bir bilgi çalışanının, biriminizde depolayabileceği VSS anlık görüntülerine göre geri yüklenebildiği en fazla 45 gün içinde sonuçlanır.
+
+En fazla ise. 64 birim başına VSS anlık görüntüsü sizin için doğru ayar değildir, [Bu değeri bir kayıt defteri anahtarı aracılığıyla değiştirebilirsiniz](https://docs.microsoft.com/windows/win32/backup/registry-keys-for-backup-and-restore#maxshadowcopies).
+Yeni sınırın etkin olması için, daha önce etkinleştirildiği her birimde önceki sürüm uyumluluğunu etkinleştirmek üzere cmdlet 'i yeniden çalıştırmanız gerekir. Bu, en fazla birim başına en fazla VSS anlık görüntüsü sayısını hesaba koymak için-zorlama bayrağını kullanın. Bu, yeni hesaplanan gün sayısına neden olur. Bu değişikliğin yalnızca yeni katmanlı dosyalar üzerinde etkili olacağını ve yapmış olabileceğiniz VSS zamanlamasıyla ilgili tüm özelleştirmelerin üzerine yazılmasını lütfen unutmayın.
 
 ## <a name="migrate-a-dfs-replication-dfs-r-deployment-to-azure-file-sync"></a>DFS Çoğaltma (DFS-R) dağıtımını Azure Dosya Eşitleme geçirme
 Bir DFS-R dağıtımını Azure Dosya Eşitleme 'e geçirmek için:

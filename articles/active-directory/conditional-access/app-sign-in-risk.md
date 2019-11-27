@@ -1,6 +1,6 @@
 ---
-title: Use risk detections with Azure Active Directory Conditional Access
-description: In this quickstart, you learn how you can configure an Azure Active Directory (Azure AD) Conditional Access policy to block sign-ins based on session risks.
+title: Koşullu erişim Azure Active Directory risk algılamalarını kullanma
+description: Bu hızlı başlangıçta, oturum risklerine göre oturum açma işlemlerini engellemek için bir Azure Active Directory (Azure AD) koşullu erişim ilkesini nasıl yapılandırabileceğinizi öğreneceksiniz.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -18,11 +18,11 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74381064"
 ---
-# <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>Quickstart: Block access when a session risk is detected with Azure Active Directory Conditional Access  
+# <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>Hızlı başlangıç: koşullu erişim Azure Active Directory bir oturum riski algılandığında erişimi engelleyin  
 
-To keep your environment protected, you might want to block suspicious users from sign-in. [Azure Active Directory (Azure AD) Identity Protection](../active-directory-identityprotection.md) analyzes each sign-in and calculates the likelihood that a sign-in attempt was not performed by the legitimate owner of a user account. The likelihood (low, medium, high) is indicated in form of a calculated value called [sign-in risk levels](conditions.md#sign-in-risk). By setting the sign-in risk condition, you can configure a Conditional Access policy to respond to specific sign-in risk levels.
+Ortamınızı korumalı tutmak için, şüpheli kullanıcıların oturum açmasını engellemek isteyebilirsiniz. [Azure Active Directory (Azure AD) kimlik koruması](../active-directory-identityprotection.md) her oturum açmayı analiz eder ve bir oturum açma girişiminin Kullanıcı hesabının meşru sahibi tarafından gerçekleştirilme olasılığını hesaplar. Bu olasılık (düşük, orta, yüksek), [oturum açma risk düzeyleri](conditions.md#sign-in-risk)adlı bir hesaplanan değer biçiminde belirtilir. Oturum açma riski koşulunu ayarlayarak, belirli oturum açma risk düzeylerine yanıt vermek için bir koşullu erişim ilkesi yapılandırabilirsiniz.
 
-This quickstart shows how to configure a [Conditional Access policy](../active-directory-conditional-access-azure-portal.md) that blocks a sign-in when a configured sign-in risk level has been detected.
+Bu hızlı başlangıçta, yapılandırılmış bir oturum açma risk düzeyi algılandığında oturum açmayı engelleyen bir [koşullu erişim ilkesinin](../active-directory-conditional-access-azure-portal.md) nasıl yapılandırılacağı gösterilmektedir.
 
 ![İlke oluşturma](./media/app-sign-in-risk/1000.png)
 
@@ -32,150 +32,150 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Bu öğreticide senaryoyu tamamlamak için şunlar gereklidir:
 
-- **Access to an Azure AD Premium P2 edition** - While Conditional Access is an Azure AD Premium P1 capability, you need a P2 edition because the scenario in this quickstart requires Identity Protection.
-- **Identity Protection** - The scenario in this quickstart requires Identity Protection to be enabled. If you don't know how to enable Identity Protection, see [Enabling Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md).
-- **Tor Browser** - The [Tor Browser](https://www.torproject.org/projects/torbrowser.html.en) is designed to help you preserve your privacy online. Identity Protection detects a sign-in from a Tor Browser as sign-ins from anonymous IP addresses, which have a medium risk level. For more information, see [Azure Active Directory risk detections](../reports-monitoring/concept-risk-events.md).  
-- **A test account called Alain Charon** - If you don't know how to create a test account, see [Add cloud-based users](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
+- **Azure AD Premium P2 sürümüne erişim** -koşullu erişim Azure AD Premium P1 özelliği olsa da, bu hızlı başlangıçta senaryo kimlik koruması gerektirdiğinden bir P2 sürümü gerekir.
+- **Kimlik koruması** -bu hızlı başlangıçtaki senaryo kimlik korumasının etkinleştirilmesini gerektirir. Kimlik korumasını nasıl etkinleştireceğinizi bilmiyorsanız, bkz. [Azure Active Directory kimlik koruması etkinleştirme](../identity-protection/overview-identity-protection.md).
+- **Tor tarayıcısı** - [Tor tarayıcısı](https://www.torproject.org/projects/torbrowser.html.en) , gizliliğinizi çevrimiçi korumanıza yardımcı olacak şekilde tasarlanmıştır. Kimlik koruması, orta düzeyde risk düzeyine sahip anonim IP adreslerinden oturum açma işlemleri olarak bir Tor tarayıcısından oturum açma işlemlerini algılar. Daha fazla bilgi için bkz. [risk algılamalarını Azure Active Directory](../reports-monitoring/concept-risk-events.md).  
+- **Charon adlı bir sınama hesabı** -bir sınama hesabı oluşturmayı bilmiyorsanız bkz. [bulut tabanlı kullanıcılar ekleme](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
 
-## <a name="test-your-sign-in"></a>Test your sign-in
+## <a name="test-your-sign-in"></a>Oturum açma bilgilerinizi test etme
 
-The goal of this step is to make sure that your test account can access your tenant using the Tor Browser.
+Bu adımın amacı, test hesabınızın Tor tarayıcısını kullanarak kiracınıza erişebildiğinizden emin olmaktır.
 
-**To test your sign-in:**
+**Oturum açma bilgilerinizi test etmek için:**
 
-1. Sign in to your [Azure portal](https://portal.azure.com) as **Alain Charon**.
+1. [Azure Portal](https://portal.azure.com) Için **Charon**olarak oturum açın.
 1. Oturumunuzu kapatın.
 
-## <a name="create-your-conditional-access-policy"></a>Create your Conditional Access policy
+## <a name="create-your-conditional-access-policy"></a>Koşullu erişim ilkenizi oluşturma
 
-The scenario in this quickstart uses a sign-in from a Tor Browser to generate a detected **Sign-ins from anonymous IP addresses** risk detection. The risk level of this risk detection is medium. To respond to this risk detection, you set the sign-in risk condition to medium. In a production environment, you should set the sign-in risk condition either to high or to medium and high.
+Bu hızlı başlangıçtaki senaryo, **anonım IP adreslerinden** gelen bir oturum açma riskini tespit etmek Için bir Tor tarayıcısından oturum açma kullanır. Bu risk algılamada risk düzeyi Orta. Bu risk algılamasına yanıt vermek için oturum açma riski koşulunu orta olarak ayarlarsınız. Bir üretim ortamında, oturum açma risk koşulunu yüksek veya orta ve yüksek olarak ayarlamanız gerekir.
 
-This section shows how to create the required Conditional Access policy. In your policy, set:
+Bu bölüm, gerekli koşullu erişim ilkesinin nasıl oluşturulacağını gösterir. İlkenizde şunları ayarlayın:
 
-| Ayar | Değer |
+| Ayar | Value |
 | --- | --- |
 | Kullanıcılar ve gruplar | Alain Charon  |
-| Cloud apps | All cloud apps |
-| Sign-in risk | Orta |
-| Grant | Block access |
+| Bulut uygulamaları | Tüm bulut uygulamaları |
+| Oturum açma riski | Orta |
+| Semantiği | Erişimi engelle |
 
 ![İlke oluşturma](./media/app-sign-in-risk/130.png)
 
-**To configure your Conditional Access policy:**
+**Koşullu erişim ilkenizi yapılandırmak için:**
 
-1. Sign in to your [Azure portal](https://portal.azure.com) as global administrator, security administrator, or a Conditional Access administrator.
-1. In the Azure portal, on the left navbar, click **Azure Active Directory**.
+1. [Azure Portal](https://portal.azure.com) genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
+1. Azure portal sol gezinti çubuğunda **Azure Active Directory**' e tıklayın.
 
    ![Azure Active Directory](./media/app-sign-in-risk/02.png)
 
-1. On the **Azure Active Directory** page, in the **Security** section, click **Conditional Access**.
+1. **Azure Active Directory** sayfasındaki **güvenlik** bölümünde **koşullu erişim**' e tıklayın.
 
    ![Koşullu Erişim](./media/app-sign-in-risk/03.png)
 
-1. On the **Conditional Access** page, in the toolbar on the top, click **Add**.
+1. **Koşullu erişim** sayfasında, üstteki araç çubuğundan **Ekle**' ye tıklayın.
 
-   ![Adı](./media/app-sign-in-risk/108.png)
+   ![Name](./media/app-sign-in-risk/108.png)
 
-1. On the **New** page, in the **Name** textbox, type **Block access for medium risk level**.
+1. **Yeni** sayfada, **ad** metin kutusuna **Orta riskli düzey için erişimi engelle**yazın.
 
-   ![Adı](./media/app-sign-in-risk/104.png)
+   ![Name](./media/app-sign-in-risk/104.png)
 
-1. In the **Assignment** section, click **Users and groups**.
+1. **Atama** bölümünde **Kullanıcılar ve gruplar**' a tıklayın.
 
    ![Kullanıcılar ve gruplar](./media/app-sign-in-risk/06.png)
 
-1. On the **Users and groups** page:
+1. **Kullanıcılar ve gruplar** sayfasında:
 
    ![Koşullu Erişim](./media/app-sign-in-risk/107.png)
 
-   1. Click **Select users and groups**, and then select **Users and groups**.
+   1. **Kullanıcı ve Grup Seç**' e tıklayın ve ardından **Kullanıcılar ve gruplar**' ı seçin.
    1. **Seç**'e tıklayın.
-   1. On the **Select** page, select **Alain Charon**, and then click **Select**.
-   1. On the **Users and groups** page, click **Done**.
-1. Click **Cloud apps**.
+   1. **Seç** sayfasında, **Charon**' ı seçin ve ardından **Seç**' e tıklayın.
+   1. **Kullanıcılar ve gruplar** sayfasında **bitti**' ye tıklayın.
+1. **Bulut uygulamaları**' na tıklayın.
 
-   ![Cloud apps](./media/app-sign-in-risk/08.png)
+   ![Bulut uygulamaları](./media/app-sign-in-risk/08.png)
 
-1. On the **Cloud apps** page:
+1. **Bulut uygulamaları** sayfasında:
 
    ![Koşullu Erişim](./media/app-sign-in-risk/109.png)
 
-   1. Click **All cloud apps**.
+   1. **Tüm bulut uygulamaları**' na tıklayın.
    1. **Bitti**’ye tıklayın.
-1. Click **Conditions**.
+1. **Koşullar**' a tıklayın.
 
-   ![Access controls](./media/app-sign-in-risk/19.png)
+   ![Erişim denetimleri](./media/app-sign-in-risk/19.png)
 
-1. On the **Conditions** page:
+1. **Koşullar** sayfasında:
 
-   ![Sign-in risk level](./media/app-sign-in-risk/21.png)
+   ![Oturum açma risk düzeyi](./media/app-sign-in-risk/21.png)
 
-   1. Click **Sign-in risk**.
-   1. As **Configure**, click **Yes**.
-   1. As sign-in risk level, select **Medium**.
+   1. **Oturum açma riski**' na tıklayın.
+   1. **Yapılandırma**olarak **Evet**' e tıklayın.
+   1. Oturum açma risk düzeyi olarak **Orta**' yı seçin.
    1. **Seç**'e tıklayın.
-   1. On the **Conditions** page, click **Done**.
-1. In the **Access controls** section, click **Grant**.
+   1. **Koşullar** sayfasında **bitti**' ye tıklayın.
+1. **Erişim denetimleri** bölümünde, **izin ver**' e tıklayın.
 
-   ![Access controls](./media/app-sign-in-risk/10.png)
+   ![Erişim denetimleri](./media/app-sign-in-risk/10.png)
 
-1. On the **Grant** page:
+1. **İzin** sayfasında:
 
    ![Koşullu Erişim](./media/app-sign-in-risk/105.png)
 
-   1. Select **Block access**.
+   1. **Erişimi engelle**' yi seçin.
    1. **Seç**'e tıklayın.
-1. In the **Enable policy** section, click **On**.
+1. **Ilkeyi etkinleştir** bölümünde, **Açık**' a tıklayın.
 
-   ![Enable policy](./media/app-sign-in-risk/18.png)
+   ![İlkeyi etkinleştirme](./media/app-sign-in-risk/18.png)
 
-1. **Oluştur**’a tıklayın.
+1. **Oluştur**'a tıklayın.
 
-## <a name="evaluate-a-simulated-sign-in"></a>Evaluate a simulated sign-in
+## <a name="evaluate-a-simulated-sign-in"></a>Benzetimli bir oturum açmayı değerlendir
 
-Now that you have configured your Conditional Access policy, you probably want to know whether it works as expected. As a first step, use the Conditional Access **what if policy tool** to simulate a sign-in of your test user. Simülasyon, bu oturum açma işleminin ilkeleriniz üzerindeki etkisini tahmin eder ve bir simülasyon raporu oluşturur.  
+Koşullu erişim ilkenizi yapılandırdığınıza göre muhtemelen, beklendiği gibi çalışıp çalışmadığını bilmeniz gerekir. İlk adım olarak, test kullanıcılarınız için bir oturum açma benzetimi yapmak üzere koşullu erişim **ilke aracı** ' nı kullanın. Simülasyon, bu oturum açma işleminin ilkeleriniz üzerindeki etkisini tahmin eder ve bir simülasyon raporu oluşturur.  
 
-When you run the **what if policy tool** for this scenario, the **Block access for medium risk level** should be listed under **Policies that will apply**.
+Bu senaryo için **ilke İlkesi aracını** çalıştırdığınızda, **Orta risk düzeyi erişimini engelle** ayarı **uygulanacak ilkeler**altında listelenmelidir.
 
 ![Kullanıcı](./media/app-sign-in-risk/117.png)
 
-**To evaluate your Conditional Access policy:**
+**Koşullu erişim ilkenizi değerlendirmek için:**
 
-1. On the [Conditional Access - Policies](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) page, in the menu on the top, click **What If**.  
+1. [Koşullu erişim ilkeleri](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) sayfasında, üstteki menüden **What If**' ye tıklayın.  
 
    ![What If](./media/app-sign-in-risk/14.png)
 
-1. Click **User**, select **Alan Charon** on the **Users** page, and then click **Select**.
+1. **Kullanıcı**' ya tıklayın, **Kullanıcılar** sayfasında **alan Charon** ' u seçin ve ardından **Seç**' e tıklayın.
 
    ![Kullanıcı](./media/app-sign-in-risk/116.png)
 
-1. As **Sign-in risk**, select **Medium**.
+1. **Oturum açma riski**olarak **Orta**' yı seçin.
 
    ![Kullanıcı](./media/app-sign-in-risk/119.png)
 
-1. Click **What If**.
+1. **What If**' ye tıklayın.
 
-## <a name="test-your-conditional-access-policy"></a>Test your Conditional Access policy
+## <a name="test-your-conditional-access-policy"></a>Koşullu erişim ilkenizi test etme
 
-In the previous section, you have learned how to evaluate a simulated sign-in. In addition to a simulation, you should also test your Conditional Access policy to make sure that it works as expected.
+Önceki bölümde, benzetimli bir oturum açma değerlendirmesini öğrendiniz. Bir simülasyonu ek olarak, beklenen şekilde çalıştığından emin olmak için koşullu erişim ilkenizi da test etmelisiniz.
 
-To test your policy, try to sign-in to your [Azure portal](https://portal.azure.com) as **Alan Charon** using the Tor Browser. Your sign-in attempt should be blocked by your Conditional Access policy.
+İlkenizi test etmek için, Tor tarayıcısı kullanılırken [Azure Portal](https://portal.azure.com) bir **alan** olarak oturum açmayı deneyin. Oturum açma denemeniz, koşullu erişim ilkeniz tarafından engellenmelidir.
 
-![Çok faktörlü kimlik doğrulama](./media/app-sign-in-risk/118.png)
+![Multi-Factor Authentication](./media/app-sign-in-risk/118.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-When no longer needed, delete the test user, the Tor Browser, and the Conditional Access policy:
+Artık gerekli değilse, test kullanıcısını, Tor tarayıcısını ve koşullu erişim ilkesini silin:
 
-- If you don't know how to delete an Azure AD user, see [Delete users from Azure AD](../fundamentals/add-users-azure-active-directory.md#delete-a-user).
-- To delete your policy, select your policy, and then click **Delete** in the quick access toolbar.
+- Bir Azure AD kullanıcısını nasıl silebileceğinizi bilmiyorsanız bkz. [Azure AD 'de kullanıcıları silme](../fundamentals/add-users-azure-active-directory.md#delete-a-user).
+- İlkenizi silmek için ilkenizi seçin ve sonra hızlı erişim araç çubuğunda **Sil** ' e tıklayın.
 
-   ![Çok faktörlü kimlik doğrulama](./media/app-sign-in-risk/33.png)
+   ![Multi-Factor Authentication](./media/app-sign-in-risk/33.png)
 
-- For instructions to remove the Tor Browser, see [Uninstalling](https://tb-manual.torproject.org/uninstalling/).
+- Tor tarayıcısını kaldırma yönergeleri için bkz. [kaldırma](https://tb-manual.torproject.org/uninstalling/).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Require terms of use to be accepted](require-tou.md)
-> [Require MFA for specific apps](app-based-mfa.md)
+> [Belirli uygulamalar IÇIN MFA gerektirirken](app-based-mfa.md) [kabul edilmesi Için kullanım koşulları gerektir](require-tou.md)
+> 

@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Perform a news search using the SDK for Python - Bing News Search'
+title: "Hızlı başlangıç: Python için SDK 'Yı kullanarak haber araması gerçekleştirme-Bing Haber Arama"
 titleSuffix: Azure Cognitive Services
-description: Use this quickstart to search for news using the Bing News Search SDK for Python, and process the response.
+description: Python için Bing Haber Arama SDK 'yı kullanarak haberleri aramak ve yanıtı işlemek için bu hızlı başlangıcı kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -18,21 +18,21 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74379068"
 ---
-# <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-python"></a>Quickstart: Perform a news search with the Bing News Search SDK for Python
+# <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-python"></a>Hızlı başlangıç: Python için Bing Haber Arama SDK ile bir haber araması gerçekleştirme
 
-Use this quickstart to begin searching for news with the Bing News Search SDK for Python. While Bing News Search has a REST API compatible with most programming languages, the SDK provides an easy way to integrate the service into your applications. The source code for this sample can be found on [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/news_search_samples.py).
+Python için Bing Haber Arama SDK ile haberleri aramaya başlamak için bu hızlı başlangıcı kullanın. Bing Haber Arama birçok programlama dili ile uyumlu bir REST API sahip olsa da SDK, hizmeti uygulamalarınızla tümleştirmenin kolay bir yolunu sunar. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/news_search_samples.py)' da bulunabilir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* [Python](https://www.python.org/) 2.x or 3.x
+* [Python](https://www.python.org/) 2. x veya 3. x
 
-It is recommended to use a [virtual environment](https://docs.python.org/3/tutorial/venv.html) for your python development. You can install and initialize the virtual environment with the [venv module](https://pypi.python.org/pypi/virtualenv). You must install a virtualenv for Python 2.7. You can create a virtual environment with:
+Python geliştirme için [sanal bir ortam](https://docs.python.org/3/tutorial/venv.html) kullanmanız önerilir. [Venv modülü](https://pypi.python.org/pypi/virtualenv)ile sanal ortamı yükleyebilir ve başlatabilirsiniz. Python 2,7 için bir virtualenv yüklemelisiniz. İle sanal bir ortam oluşturabilirsiniz:
 
 ```console
 python -m venv mytestenv
 ```
 
-You can install the Bing News Search SDK dependencies with this command:
+Bing Haber Arama SDK bağımlılıklarını şu komutla yükleyebilirsiniz:
     
 ```console
 python -m pip install azure-cognitiveservices-search-newssearch
@@ -42,7 +42,7 @@ python -m pip install azure-cognitiveservices-search-newssearch
 
 ## <a name="create-and-initialize-the-application"></a>Uygulamayı oluşturma ve başlatma
 
-1. Create a new Python file in your favorite IDE or editor, and import the following libraries. Create a variable for your subscription key, and your search term.
+1. En sevdiğiniz IDE veya düzenleyicide yeni bir Python dosyası oluşturun ve aşağıdaki kitaplıkları içeri aktarın. Abonelik anahtarınız ve arama teriminiz için bir değişken oluşturun.
 
     ```python
     from azure.cognitiveservices.search.newssearch import NewsSearchAPI
@@ -51,7 +51,7 @@ python -m pip install azure-cognitiveservices-search-newssearch
     search_term = "Quantum Computing"
     ```
 
-## <a name="initialize-the-client-and-send-a-request"></a>Initialize the client and send a request
+## <a name="initialize-the-client-and-send-a-request"></a>İstemciyi başlatıp istek gönder
 
 1. `CognitiveServicesCredentials` örneği oluşturun. İstemciyi başlatın:
     
@@ -59,15 +59,15 @@ python -m pip install azure-cognitiveservices-search-newssearch
     client = NewsSearchAPI(CognitiveServicesCredentials(subscription_key))
     ```
 
-2. Send a search query to the News Search API, store the response.
+2. Haber Arama API 'sine bir arama sorgusu gönderin, yanıtı depolayın.
 
     ```python
     news_result = client.news.search(query=search_term, market="en-us", count=10)
     ```
 
-## <a name="parse-the-response"></a>Parse the response
+## <a name="parse-the-response"></a>Yanıtı Ayrıştır
 
-If any search results are found, print the first webpage result:
+Herhangi bir arama sonucu bulunursa, ilk Web sayfası sonucunu Yazdır:
 
 ```python
 if news_result.value:

@@ -46,7 +46,7 @@ Konuşma hizmetini sonraki bölümdeki yönergeleri kullanarak denemeyi öneriri
 > Deneme süreniz, aşağıdaki adımlar tamamlandıktan hemen sonra başlar.
 
 1. Bilişsel [hizmeti 'Ni deneyin](https://azure.microsoft.com/try/cognitive-services/)' e gidin.
-1. Seçin **konuşma API'leri** sekmesi.
+1. **Konuşma API 'leri** sekmesini seçin.
 1. **API anahtarını al**' ı seçin.
 
 Faturalandırma seçimlerinizle karşılaşırsınız. Ücretsiz seçeneğini belirleyin ve ardından kullanıcı sözleşmesini okuyun ve onaylayın. Konuşma hizmetini sınırlı bir süre için denemek üzere kullanabileceğiniz anahtarlarla karşılaşırsınız.
@@ -64,15 +64,15 @@ Microsoft hesabı aldıktan sonra [Azure kaydolma sayfasına](https://azure.micr
 
 Azure hesabınızda bir konuşma hizmeti kaynak (ücretsiz veya Ücretli katman) eklemek için:
 
-1. Oturum [Azure portalında](https://portal.azure.com/) Microsoft hesabınızı kullanarak.
+1. Microsoft hesabı kullanarak [Azure Portal](https://portal.azure.com/) oturum açın.
 
-1. Seçin **kaynak Oluştur** , portalın sol üst köşesindeki. **Kaynak oluştur**' u görmüyorsanız, sol üstteki daraltılan menüyü seçerek her zaman bulabilirsiniz:
+1. Portalın sol üst kısmında **kaynak oluştur** ' u seçin. **Kaynak oluştur**' u görmüyorsanız, sol üstteki daraltılan menüyü seçerek her zaman bulabilirsiniz:
 
    ![daraltılmış gezinti düğmesi](media/index/collapsed-nav.png)
 
 1. **Yeni** pencerede, arama kutusuna "konuşma" YAZıN ve ENTER tuşuna basın.
 
-1. Arama sonuçlarında seçin **konuşma**.
+1. Arama sonuçlarında **konuşma**' yı seçin.
 
    ![Konuşma Arama sonuçları](media/index/speech-search.png)
 
@@ -96,8 +96,8 @@ Bir abonelikten diğerine geçmek için örneğin, ücretsiz deneme süresinin s
 
 ## <a name="about-regions"></a>Bölgeler hakkında
 
-- Uygulamanız kullanıyorsa bir [Speech SDK'sı](speech-sdk.md), bölge kodu gibi sağladığınız `westus`, konuşma yapılandırma oluştururken.
-- Uygulamanızı konuşma hizmetin birini kullanıp kullanmadığını [REST API'leri](rest-apis.md), bölge uç noktası URI'si istekleri yaparken kullandığınız bir parçasıdır.
+- Uygulamanız bir [konuşma SDK 'sı](speech-sdk.md)kullanıyorsa, bir konuşma yapılandırması oluştururken `westus`gibi bölge kodunu sağlarsınız.
+- Uygulamanız konuşma hizmeti 'nin [REST API 'lerinden](rest-apis.md)birini kullanıyorsa bölge, istek yaparken kullandığınız uç nokta URI 'sinin bir parçasıdır.
 - Bir bölgede oluşturulan anahtarları yalnızca bu bölgede geçerlidir. Diğer bölgeler ile kullanılmaya çalışılırsa, kimlik doğrulama hataları neden olur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -105,5 +105,5 @@ Bir abonelikten diğerine geçmek için örneğin, ücretsiz deneme süresinin s
 10 dakikalık başlangıçtan biriyle tamamlamak veya SDK örneklerimizi denetleyin:
 
 > [!div class="nextstepaction"]
-> [Hızlı Başlangıç: C# ' de Konuşma tanıma](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
-> [Speech SDK'sı örnekleri](speech-sdk.md#get-the-samples)
+> [Hızlı başlangıç: C# ](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
+> [konuşma SDK örneklerinde](speech-sdk.md#get-the-samples) konuşmayı tanıma

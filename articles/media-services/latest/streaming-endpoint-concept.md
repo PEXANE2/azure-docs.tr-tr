@@ -47,7 +47,7 @@ Varsayılan akış uç noktası kullanılırken, URL: `{accountname}-{regionname
 
 Türler aşağıdaki tabloda açıklanmıştır:
 
-|Tür|Ölçek birimleri|Açıklama|
+|Type|Ölçek birimleri|Açıklama|
 |--------|--------|--------|  
 |**Standart**|0|Varsayılan akış uç noktası **Standart** bir türdür — `scaleUnits`ayarlanarak Premium türüne değiştirilebilir.|
 |**Premium**|>0|**Premium** Akış uç noktaları, gelişmiş iş yükleri için uygundur ve adanmış ve ölçeklenebilir bant genişliği kapasitesi sağlar. `scaleUnits` (akış birimleri) ayarlayarak bir **Premium** türe geçebilirsiniz. `scaleUnits`, 200 Mbps 'lik artışlarla satın alınabilecek özel çıkış kapasitesi sağlar. **Premium** türü kullanılırken, etkinleştirilen her birim, uygulamaya ek bant genişliği kapasitesi sağlar. |
@@ -64,11 +64,11 @@ SLA bilgileri için bkz. [fiyatlandırma ve SLA](https://azure.microsoft.com/pri
 Aktarım hızı |600 Mbps 'e kadar, bir CDN kullanıldığında çok daha yüksek bir verimlilik sağlar.|akış birimi başına 200 Mbps (SU). , Bir CDN kullanıldığında daha yüksek etkili bir verimlilik sağlayabilir.
 CDN|Azure CDN, üçüncü taraf CDN veya CDN yok.|Azure CDN, üçüncü taraf CDN veya CDN yok.
 Faturalandırma eşit olarak dağıtılır| Günlük|Günlük
-Dinamik şifreleme|Yes|Yes
-Dinamik paketleme|Yes|Yes
+Dinamik şifreleme|Evet|Evet
+Dinamik paketleme|Evet|Evet
 Ölçek|Hedeflenen işleme kadar otomatik olarak ölçeklendirin.|Ek SUs
-IP filtreleme/G20/özel ana bilgisayar <sup>1</sup>|Yes|Yes
-Aşamalı indirme|Yes|Yes
+IP filtreleme/G20/özel ana bilgisayar <sup>1</sup>|Evet|Evet
+Aşamalı indirme|Evet|Evet
 Önerilen kullanım |Akış senaryolarının çoğunluğu için önerilir.|Profesyonel kullanım.
 
 <sup>1</sup> yalnızca CDN uç noktasında etkin olmadığında doğrudan akış uç noktasında kullanılır.<br/>

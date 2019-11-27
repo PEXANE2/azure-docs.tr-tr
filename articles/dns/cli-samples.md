@@ -1,6 +1,6 @@
 ---
-title: Azure CLI samples for DNS - Azure DNS
-description: With this sample, use Azure CLI to create DNS zones and records in Azure DNS.
+title: DNS için Azure CLı örnekleri-Azure DNS
+description: Bu örnekle, Azure DNS ' de DNS bölgeleri ve kayıtları oluşturmak için Azure CLı 'yi kullanın.
 services: dns
 author: asudbring
 ms.service: dns
@@ -14,9 +14,9 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74212492"
 ---
-# <a name="azure-cli-examples-for-azure-dns"></a>Azure CLI examples for Azure DNS
+# <a name="azure-cli-examples-for-azure-dns"></a>Azure DNS için Azure CLı örnekleri
 
-The following table includes links to Azure CLI examples for Azure DNS.
+Aşağıdaki tablo Azure DNS için Azure CLı örneklerine bağlantılar içerir.
 
 | | |
 |-|-|

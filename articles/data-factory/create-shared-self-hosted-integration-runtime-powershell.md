@@ -1,6 +1,6 @@
 ---
-title: Create a shared self-hosted integration runtime with PowerShell
-description: Learn how to create a shared self-hosted integration runtime in Azure Data Factory, so multiple data factories can access the integration runtime.
+title: PowerShell ile paylaşılan bir şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma
+description: Azure Data Factory ' de paylaşılan bir şirket içinde barındırılan tümleştirme çalışma zamanı oluşturmayı öğrenin. böylece, tümleştirme çalışma zamanına birden çok veri fabrikası erişebilir.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -19,55 +19,55 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74218239"
 ---
-# <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Create a shared self-hosted integration runtime in Azure Data Factory
+# <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Azure Data Factory içinde, şirket içinde barındırılan, paylaşılan bir tümleştirme çalışma zamanı oluşturma
 
-This guide shows you how to create a shared self-hosted integration runtime in Azure Data Factory. Then you can use the shared self-hosted integration runtime in another data factory.
+Bu kılavuzda, Azure Data Factory paylaşılan bir şirket içinde barındırılan tümleştirme çalışma zamanının nasıl oluşturulacağı gösterilmektedir. Daha sonra, paylaşılan şirket içinde barındırılan tümleştirme çalışma zamanını başka bir veri fabrikasında kullanabilirsiniz.
 
-## <a name="create-a-shared-self-hosted-ir-using-azure-data-factory-ui"></a>Create a shared self-hosted IR using Azure Data Factory UI
+## <a name="create-a-shared-self-hosted-ir-using-azure-data-factory-ui"></a>Azure Data Factory Kullanıcı arabirimini kullanarak, şirket içinde barındırılan, paylaşılan bir IR oluşturma
 
-To create a shared self-hosted IR using Azure Data Factory UI, you can take following steps:
+Azure Data Factory Kullanıcı arabirimini kullanarak, şirket içinde barındırılan, paylaşılan bir IR oluşturmak için aşağıdaki adımları gerçekleştirebilirsiniz:
 
-1. In the self-hosted IR to be shared, grant permission to the data factory in which you want to create the linked IR.
+1. Paylaşılacak olan şirket içinde barındırılan IR 'de, bağlı IR oluşturmak istediğiniz veri fabrikasına izin verin.
       
-    ![Button for granting permission on the Sharing tab](media/create-self-hosted-integration-runtime/grant-permissions-IR-sharing.png)
+    ![Paylaşım sekmesinde izin verme düğmesi](media/create-self-hosted-integration-runtime/grant-permissions-IR-sharing.png)
       
-    ![Selections for assigning permissions](media/create-self-hosted-integration-runtime/3_rbac_permissions.png)     
+    ![İzinleri atamaya yönelik seçimler](media/create-self-hosted-integration-runtime/3_rbac_permissions.png)     
     
-2. Note the resource ID of the self-hosted IR to be shared.
+2. Paylaşılacak, şirket içinde barındırılan IR 'nin kaynak KIMLIĞINI aklınızda olun.
       
-   ![Location of the resource ID](media/create-self-hosted-integration-runtime/4_ResourceID_self-hostedIR.png)
+   ![Kaynak KIMLIĞININ konumu](media/create-self-hosted-integration-runtime/4_ResourceID_self-hostedIR.png)
     
-3. In the data factory to which the permissions were granted, create a new self-hosted IR (linked) and enter the resource ID.
+3. İzinlerin verildiği veri fabrikasında, yeni bir kendinden konak IR (bağlantılı) oluşturun ve kaynak KIMLIĞINI girin.
       
-   ![Button for creating a linked self-hosted integration runtime](media/create-self-hosted-integration-runtime/6_create-linkedIR_2.png)
+   ![Bağlı bir şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma düğmesi](media/create-self-hosted-integration-runtime/6_create-linkedIR_2.png)
       
-    ![Boxes for name and resource ID](media/create-self-hosted-integration-runtime/6_create-linkedIR_3.png)
+    ![Ad ve kaynak KIMLIĞI için kutular](media/create-self-hosted-integration-runtime/6_create-linkedIR_3.png)
 
-## <a name="create-a-shared-self-hosted-ir-using-azure-powershell"></a>Create a shared self-hosted IR using Azure PowerShell
+## <a name="create-a-shared-self-hosted-ir-using-azure-powershell"></a>Azure PowerShell kullanarak, şirket içinde barındırılan, paylaşılan bir IR oluşturma
 
-To create a shared self-hosted IR using Azure PowerShell, you can take following steps: 
+Azure PowerShell kullanarak, şirket içinde barındırılan paylaşılan bir IR oluşturmak için aşağıdaki adımları gerçekleştirebilirsiniz: 
 1. Veri fabrikası oluşturma. 
 1. Şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma.
-1. Share the self-hosted integration runtime with other data factories.
-1. Create a linked integration runtime.
-1. Revoke the sharing.
+1. Şirket içinde barındırılan tümleştirme çalışma zamanını diğer veri fabrikaları ile paylaşma.
+1. Bağlı bir tümleştirme çalışma zamanı oluşturun.
+1. Paylaşımı iptal edin.
 
-### <a name="prerequisites"></a>Önkoşullar 
+### <a name="prerequisites"></a>Ön koşullar 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Azure aboneliği**. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun. 
+- **Azure aboneliği**. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/). 
 
-- **Azure PowerShell**. Follow the instructions in [Install Azure PowerShell on Windows with PowerShellGet](https://docs.microsoft.com/powershell/azure/install-az-ps). You use PowerShell to run a script to create a self-hosted integration runtime that can be shared with other data factories. 
+- **Azure PowerShell**. [PowerShellGet Ile Windows üzerinde Azure PowerShell Install](https://docs.microsoft.com/powershell/azure/install-az-ps)içindeki yönergeleri izleyin. Diğer veri fabrikaları ile paylaşılabilen şirket içinde barındırılan bir tümleştirme çalışma zamanı oluşturmak için bir betiği çalıştırmak üzere PowerShell 'i kullanırsınız. 
 
 > [!NOTE]  
-> For a list of Azure regions in which Data Factory is currently available, select the regions that interest you on  [Products available by region](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory).
+> Data Factory Şu anda kullanılabildiği Azure bölgelerinin bir listesi için, [bölgeye göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory)hakkında sizi ilgilendiren bölgeleri seçin.
 
 ### <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 
 1. Windows PowerShell Tümleşik Komut Dosyası Ortamı’nı (ISE) başlatın.
 
-1. Create variables. Copy and paste the following script. Replace the variables, such as **SubscriptionName** and **ResourceGroupName**, with actual values: 
+1. Değişken oluşturun. Aşağıdaki betiği kopyalayıp yapıştırın. **SubscriptionName** ve **resourcegroupname**gibi değişkenleri gerçek değerlerle değiştirin: 
 
     ```powershell
     # If input contains a PSH special character, e.g. "$", precede it with the escape character "`" like "`$". 
@@ -88,19 +88,19 @@ To create a shared self-hosted IR using Azure PowerShell, you can take following
     $LinkedIntegrationRuntimeDescription = "[Description for Linked Integration Runtime]"
     ```
 
-1. Sign in and select a subscription. Add the following code to the script to sign in and select your Azure subscription:
+1. Oturum açın ve bir abonelik seçin. Oturum açmak ve Azure aboneliğinizi seçmek için betiğe aşağıdaki kodu ekleyin:
 
     ```powershell
     Connect-AzAccount
     Select-AzSubscription -SubscriptionName $SubscriptionName
     ```
 
-1. Create a resource group and a data factory.
+1. Bir kaynak grubu ve bir veri fabrikası oluşturun.
 
     > [!NOTE]  
-    > Bu adım isteğe bağlıdır. If you already have a data factory, skip this step. 
+    > Bu adım isteğe bağlıdır. Zaten bir veri fabrikanızı varsa, bu adımı atlayın. 
 
-    Create an [Azure resource group](../azure-resource-manager/resource-group-overview.md) by using the [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) command. Kaynak grubu, Azure kaynaklarının grup olarak dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. The following example creates a resource group named `myResourceGroup` in the WestEurope location: 
+    [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) komutunu kullanarak bir [Azure Kaynak grubu](../azure-resource-manager/resource-group-overview.md) oluşturun. Kaynak grubu, Azure kaynaklarının grup olarak dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Aşağıdaki örnek, WestEurope konumunda `myResourceGroup` adlı bir kaynak grubu oluşturur: 
 
     ```powershell
     New-AzResourceGroup -Location $DataFactoryLocation -Name $ResourceGroupName
@@ -117,9 +117,9 @@ To create a shared self-hosted IR using Azure PowerShell, you can take following
 ### <a name="create-a-self-hosted-integration-runtime"></a>Şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma
 
 > [!NOTE]  
-> Bu adım isteğe bağlıdır. If you already have the self-hosted integration runtime that you want to share with other data factories, skip this step.
+> Bu adım isteğe bağlıdır. Diğer veri fabrikaları ile paylaşmak istediğiniz şirket içinde barındırılan tümleştirme çalışma zamanı zaten varsa, bu adımı atlayın.
 
-Run the following command to create a self-hosted integration runtime:
+Şirket içinde barındırılan bir tümleştirme çalışma zamanı oluşturmak için aşağıdaki komutu çalıştırın:
 
 ```powershell
 $SharedIR = Set-AzDataFactoryV2IntegrationRuntime `
@@ -130,9 +130,9 @@ $SharedIR = Set-AzDataFactoryV2IntegrationRuntime `
     -Description $SharedIntegrationRuntimeDescription
 ```
 
-#### <a name="get-the-integration-runtime-authentication-key-and-register-a-node"></a>Get the integration runtime authentication key and register a node
+#### <a name="get-the-integration-runtime-authentication-key-and-register-a-node"></a>Tümleştirme çalışma zamanı kimlik doğrulama anahtarını al ve bir düğümü Kaydet
 
-Run the following command to get the authentication key for the self-hosted integration runtime:
+Şirket içinde barındırılan tümleştirme çalışma zamanının kimlik doğrulama anahtarını almak için aşağıdaki komutu çalıştırın:
 
 ```powershell
 Get-AzDataFactoryV2IntegrationRuntimeKey `
@@ -141,34 +141,34 @@ Get-AzDataFactoryV2IntegrationRuntimeKey `
     -Name $SharedIntegrationRuntimeName
 ```
 
-The response contains the authentication key for this self-hosted integration runtime. You use this key when you register the integration runtime node.
+Yanıt, bu şirket içinde barındırılan tümleştirme çalışma zamanı için kimlik doğrulama anahtarını içerir. Tümleştirme çalışma zamanı düğümünü kaydettiğinizde bu anahtarı kullanırsınız.
 
-#### <a name="install-and-register-the-self-hosted-integration-runtime"></a>Install and register the self-hosted integration runtime
+#### <a name="install-and-register-the-self-hosted-integration-runtime"></a>Şirket içinde barındırılan tümleştirme çalışma zamanını yükleyip kaydetme
 
-1. Download the self-hosted integration runtime installer from [Azure Data Factory Integration Runtime](https://aka.ms/dmg).
+1. Şirket içinde barındırılan tümleştirme çalışma zamanı yükleyicisini [Azure Data Factory Integration Runtime](https://aka.ms/dmg)indirin.
 
-2. Run the installer to install the self-hosted integration on a local computer.
+2. Şirket içinde barındırılan tümleştirmeyi yerel bir bilgisayara yüklemek için yükleyiciyi çalıştırın.
 
-3. Register the new self-hosted integration with the authentication key that you retrieved in a previous step.
+3. Şirket içinde barındırılan yeni tümleştirmeyi, önceki adımda aldığınız kimlik doğrulama anahtarıyla kaydedin.
 
-### <a name="share-the-self-hosted-integration-runtime-with-another-data-factory"></a>Share the self-hosted integration runtime with another data factory
+### <a name="share-the-self-hosted-integration-runtime-with-another-data-factory"></a>Şirket içinde barındırılan tümleştirme çalışma zamanını başka bir veri fabrikası ile paylaşma
 
-#### <a name="create-another-data-factory"></a>Create another data factory
+#### <a name="create-another-data-factory"></a>Başka bir veri fabrikası oluşturma
 
 > [!NOTE]  
-> Bu adım isteğe bağlıdır. If you already have the data factory that you want to share with, skip this step.
+> Bu adım isteğe bağlıdır. Paylaşmak istediğiniz Data Factory zaten varsa, bu adımı atlayın.
 
 ```powershell
 $factory = Set-AzDataFactoryV2 -ResourceGroupName $ResourceGroupName `
     -Location $DataFactoryLocation `
     -Name $LinkedDataFactoryName
 ```
-#### <a name="grant-permission"></a>Grant permission
+#### <a name="grant-permission"></a>İzin ver
 
-Grant permission to the data factory that needs to access the self-hosted integration runtime you created and registered.
+Oluşturduğunuz ve kaydettiğiniz şirket içinde barındırılan tümleştirme çalışma zamanına erişmesi gereken veri fabrikasına izin verin.
 
 > [!IMPORTANT]  
-> Do not skip this step!
+> Bu adımı atlayın!
 
 ```powershell
 New-AzRoleAssignment `
@@ -177,9 +177,9 @@ New-AzRoleAssignment `
     -Scope $SharedIR.Id
 ```
 
-### <a name="create-a-linked-self-hosted-integration-runtime"></a>Create a linked self-hosted integration runtime
+### <a name="create-a-linked-self-hosted-integration-runtime"></a>Bağlı bir şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma
 
-Run the following command to create a linked self-hosted integration runtime:
+Bağlı bir şirket içinde barındırılan tümleştirme çalışma zamanı oluşturmak için aşağıdaki komutu çalıştırın:
 
 ```powershell
 Set-AzDataFactoryV2IntegrationRuntime `
@@ -191,11 +191,11 @@ Set-AzDataFactoryV2IntegrationRuntime `
     -Description $LinkedIntegrationRuntimeDescription
 ```
 
-Now you can use this linked integration runtime in any linked service. The linked integration runtime uses the shared integration runtime to run activities.
+Artık bağlı bir hizmette bu bağlı tümleştirme çalışma zamanını kullanabilirsiniz. Bağlantılı tümleştirme çalışma zamanı, etkinlikleri çalıştırmak için paylaşılan tümleştirme çalışma zamanını kullanır.
 
-### <a name="revoke-integration-runtime-sharing-from-a-data-factory"></a>Revoke integration runtime sharing from a data factory
+### <a name="revoke-integration-runtime-sharing-from-a-data-factory"></a>Veri fabrikasından tümleştirme çalışma zamanı paylaşımını iptal etme
 
-To revoke the access of a data factory from the shared integration runtime, run the following command:
+Paylaşılan tümleştirme çalışma zamanından bir veri fabrikasının erişimini iptal etmek için aşağıdaki komutu çalıştırın:
 
 ```powershell
 Remove-AzRoleAssignment `
@@ -204,7 +204,7 @@ Remove-AzRoleAssignment `
     -Scope $SharedIR.Id
 ```
 
-To remove the existing linked integration runtime, run the following command against the shared integration runtime:
+Mevcut bağlı tümleştirme çalışma zamanını kaldırmak için, paylaşılan tümleştirme çalışma zamanına karşı aşağıdaki komutu çalıştırın:
 
 ```powershell
 Remove-AzDataFactoryV2IntegrationRuntime `
@@ -217,6 +217,6 @@ Remove-AzDataFactoryV2IntegrationRuntime `
 
 ### <a name="next-steps"></a>Sonraki adımlar
 
-- Review [integration runtime concepts in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/concepts-integration-runtime).
+- [Azure Data Factory tümleştirme çalışma zamanı kavramlarını](https://docs.microsoft.com/azure/data-factory/concepts-integration-runtime)gözden geçirin.
 
-- Learn how to [create a self-hosted integration runtime in the Azure portal](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime).
+- [Azure Portal şirket içinde barındırılan tümleştirme çalışma zamanı oluşturmayı](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)öğrenin.

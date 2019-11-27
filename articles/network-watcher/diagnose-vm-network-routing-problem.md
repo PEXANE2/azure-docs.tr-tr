@@ -49,11 +49,11 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 2. **İşlem**'i seçin ve sonra **Windows Server 2016 Datacenter** veya **Ubuntu Server 17.10 VM** seçeneğini belirleyin.
 3. Aşağıdaki bilgileri girin veya seçin, kalan ayarlar için varsayılan değerleri kabul edin ve sonra **Tamam**’ı seçin:
 
-    |Ayar|Değer|
+    |Ayar|Value|
     |---|---|
-    |Ad|myVm|
+    |Name|myVm|
     |Kullanıcı adı| Seçtiğiniz bir kullanıcı adını girin.|
-    |Parola| Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
+    |istemcisiyle yönetilen bir cihaz için)| Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
     |Abonelik| Aboneliğinizi seçin.|
     |Kaynak grubu| **Yeni oluştur**’u seçin ve **myResourceGroup** değerini girin.|
     |Konum| **Doğu ABD**’yi seçin|
@@ -84,7 +84,7 @@ Azure, varsayılan hedeflerin yollarını otomatik olarak oluşturur. Varsayıla
 1. Azure portalında, **Ağ İzleyicisi** altındaki **Sonraki atlama**’yı seçin.
 2. Aboneliğinizi seçin, aşağıdaki değerleri girin veya seçin ve sonra aşağıdaki resimde gösterildiği gibi **Sonraki atlama**’yı seçin:
 
-    |Ayar                  |Değer                                                   |
+    |Ayar                  |Value                                                   |
     |---------                |---------                                               |
     | Kaynak grubu          | myResourceGroup öğesini seçin                                 |
     | Sanal makine         | MyVm öğesini seçin                                            |

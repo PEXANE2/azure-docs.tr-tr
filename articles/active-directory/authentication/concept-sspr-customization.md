@@ -1,6 +1,6 @@
 ---
-title: Customize self-service password reset - Azure Active Directory
-description: Customization options for Azure AD self-service password reset
+title: Self servis parola sıfırlama-Azure Active Directory özelleştirme
+description: Azure AD self servis parola sıfırlama için özelleştirme seçenekleri
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -18,75 +18,75 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74381933"
 ---
-# <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>Customize the Azure AD functionality for self-service password reset
+# <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>Self servis parola sıfırlama için Azure AD işlevselliğini özelleştirme
 
-IT professionals who want to deploy self-service password reset (SSPR) in Azure Active directory (Azure AD) can customize the experience to match their users' needs.
+Azure Active Directory 'de (Azure AD) self servis parola sıfırlama (SSPR) dağıtmak isteyen BT uzmanları, deneyimini kullanıcıların gereksinimleriyle eşleşecek şekilde özelleştirebilir.
 
-## <a name="customize-the-contact-your-administrator-link"></a>Customize the "Contact your administrator" link
+## <a name="customize-the-contact-your-administrator-link"></a>"Yöneticinize başvurun" bağlantısını özelleştirme
 
-Self-service password reset users have a "Contact your administrator" link available to them in the password reset portal. If a user selects this link, it will do one of two things:
+Self servis parola sıfırlama kullanıcıları, parola sıfırlama portalında kendilerine sunulan "yöneticinize başvurun" bağlantısına sahip olabilir. Bir Kullanıcı bu bağlantıyı seçerse, iki işlemlerden birini yapar:
 
-* If left in the default state:
-   * Email is sent to your administrators and asks them to provide assistance in changing the user's password. See the [sample email](#sample-email) below.
-* If customized:
-   * Sends your user to a webpage or email address specified by the administrator for assistance.
+* Varsayılan durumda bırakılırsa:
+   * E-posta, yöneticilerinize gönderilir ve kullanıcının parolasını değiştirme konusunda yardım sağlamasını ister. Aşağıdaki [örnek e-postaya](#sample-email) bakın.
+* Özelleştirildiyse:
+   * Kullanıcıyı, yardım için yönetici tarafından belirtilen bir Web sayfasına veya e-posta adresine gönderir.
 
 > [!TIP]
-> If you customize this, we recommend setting this to something users are already familiar with for support
+> Bunu özelleştirirseniz, bunu, kullanıcıların destek için zaten alışık olduğu bir şey olarak ayarlamamız önerilir
 
 > [!WARNING]
-> If you customize this setting with an email address and account that needs a password reset the user may be unable to ask for assistance.
+> Bu ayarı, parola sıfırlama gerektiren bir e-posta adresi ve hesap ile özelleştirirseniz, Kullanıcı yardım istememeyebilir.
 
-### <a name="sample-email"></a>Sample email
+### <a name="sample-email"></a>Örnek e-posta
 
-![Sample request to reset email sent to Administrator][Contact]
+![Yöneticiye gönderilen e-postayı sıfırlamaya yönelik örnek istek][Contact]
 
-The contact email is sent to the following recipients in the following order:
+İletişim e-postası aşağıdaki alıcılara aşağıdaki sırayla gönderilir:
 
-1. If the **password administrator** role is assigned, administrators with this role are notified.
-2. If no password administrators are assigned, then administrators with the **user administrator** role are notified.
-3. If neither of the previous roles are assigned, then the **global administrators** are notified.
+1. **Parola yönetici** rolü atanmışsa, bu role sahip yöneticiler bilgilendirilir.
+2. Parola Yöneticisi atanmamışsa, **Kullanıcı Yöneticisi** rolüne sahip yöneticilere bildirilir.
+3. Önceki rollerden hiçbiri atanmadıysa, **Genel Yöneticiler** bilgilendirilir.
 
-In all cases, a maximum of 100 recipients are notified.
+Her durumda, en fazla 100 alıcı bilgilendirilir.
 
-To find out more about the different administrator roles and how to assign them, see [Assigning administrator roles in Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md).
+Farklı yönetici rolleri ve bunların nasıl atanacağı hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory yönetici rolleri atama](../users-groups-roles/directory-assign-admin-roles.md).
 
-### <a name="disable-contact-your-administrator-emails"></a>Disable "Contact your administrator" emails
+### <a name="disable-contact-your-administrator-emails"></a>"Yöneticinize başvurun" e-postaları devre dışı bırakın
 
-If your organization does not want to notify administrators about password reset requests, you can enable the following configuration:
+Kuruluşunuz yöneticileri parola sıfırlama istekleri hakkında bilgilendirmek istemiyor, aşağıdaki yapılandırmayı etkinleştirebilirsiniz:
 
-* Enable self-service password reset for all end users. This option is under **Password Reset** > **Properties**. If you don't want users to reset their own passwords, you can scope access to an empty group. *We don't recommend this option.*
-* Customize the helpdesk link to provide a web URL or mailto: address that users can use to get assistance. This option is under **Password Reset** > **Customization** > **Custom helpdesk email or URL**.
+* Tüm son kullanıcılar için self servis parola sıfırlamayı etkinleştirin. Bu seçenek, **parola sıfırlama** > **özellikleri**altındadır. Kullanıcıların kendi parolalarını sıfırlamalarını istemiyorsanız boş bir gruba erişim kapsamını atayabilirsiniz. *Bu seçeneği önermiyoruz.*
+* Kullanıcıların yardım almak için kullanabileceği bir Web URL 'SI veya mailto: adresi sağlamak için yardım masası bağlantısını özelleştirin. Bu seçenek, **parola sıfırlama** > **Özelleştirme** > **özel yardım masası e-posta veya URL 'si**altındadır.
 
-## <a name="customize-the-ad-fs-sign-in-page-for-sspr"></a>Customize the AD FS sign-in page for SSPR
+## <a name="customize-the-ad-fs-sign-in-page-for-sspr"></a>SSPR için AD FS oturum açma sayfasını özelleştirme
 
-Active Directory Federation Services (AD FS) administrators can add a link to their sign-in page by using the guidance found in the [Add sign-in page description](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/add-sign-in-page-description) article.
+Active Directory Federasyon Hizmetleri (AD FS) (AD FS) yöneticileri, oturum açma sayfası [açıklaması ekle](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/add-sign-in-page-description) makalesinde bulunan Kılavuzu kullanarak oturum açma sayfasına bir bağlantı ekleyebilir.
 
-To add a link to the AD FS sign-in page, use the following command on your AD FS server. Users can use this page to enter the SSPR workflow.
+AD FS oturum açma sayfasına bağlantı eklemek için AD FS sunucunuzda aşağıdaki komutu kullanın. Kullanıcılar bu sayfayı kullanarak SSPR iş akışını girebilirler.
 
 ``` powershell
 Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href='https://passwordreset.microsoftonline.com' target='_blank'>Can’t access your account?</A></p>"
 ```
 
-## <a name="customize-the-sign-in-page-and-access-panel-look-and-feel"></a>Customize the sign-in page and access panel look and feel
+## <a name="customize-the-sign-in-page-and-access-panel-look-and-feel"></a>Oturum açma sayfası ve erişim paneli görünüm görünümünü özelleştirme
 
-You can customize the sign-in page. You can add a logo that appears along with the image that fits your company branding.
+Oturum açma sayfasını özelleştirebilirsiniz. Şirket markasına uyan görüntüyle birlikte görünen bir logo ekleyebilirsiniz.
 
-The graphics you choose are shown in the following circumstances:
+Seçtiğiniz grafikler aşağıdaki durumlarda gösterilmektedir:
 
-* After a user enters their username
-* If the user accesses the customized URL:
-   * By passing the `whr` parameter to the password reset page, like `https://login.microsoftonline.com/?whr=contoso.com`
-   * By passing the `username` parameter to the password reset page, like `https://login.microsoftonline.com/?username=admin@contoso.com`
+* Kullanıcı Kullanıcı adını girdikten sonra
+* Kullanıcı özelleştirilmiş URL 'ye eriştiğinde:
+   * `whr` parametresini parola sıfırlama sayfasına geçirerek `https://login.microsoftonline.com/?whr=contoso.com` gibi
+   * `username` parametresini parola sıfırlama sayfasına geçirerek `https://login.microsoftonline.com/?username=admin@contoso.com` gibi
 
-Find details on how to configure company branding in the article [Add company branding to your sign-in page in Azure AD](../fundamentals/customize-branding.md).
+[Azure AD 'de oturum açma sayfanıza Şirket markası ekleme](../fundamentals/customize-branding.md)makalesindeki şirket markasının nasıl yapılandırılacağı hakkında ayrıntılı bilgi edinin.
 
-### <a name="directory-name"></a>Directory name
+### <a name="directory-name"></a>Dizin adı
 
-You can change the directory name attribute under **Azure Active Directory** > **Properties**. You can show a friendly organization name that is seen in the portal and in the automated communications. This option is the most visible in automated emails in the forms that follow:
+**Azure Active Directory** > **özellikleri**altında dizin adı özniteliğini değiştirebilirsiniz. Portalda ve otomatik iletişimde görülen kolay bir kuruluş adı gösterebilirsiniz. Bu seçenek, aşağıdaki formlardaki otomatik e-postalarda en iyi şekilde görülebilir:
 
-* The friendly name in the email, for example “Microsoft on behalf of CONTOSO demo”
-* The subject line in the email, for example “CONTOSO demo account email verification code”
+* E-postadaki kolay ad (örneğin, "CONTOSO tanıtımı adına Microsoft")
+* E-postadaki konu satırı, örneğin "CONTOSO demo hesabı e-posta doğrulama kodu"
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -100,7 +100,7 @@ You can change the directory name attribute under **Azure Active Directory** > *
 * [Parola geri yazma nedir ve neden önemlidir?](howto-sspr-writeback.md)
 * [SSPR’de etkinliği nasıl bildirebilirim?](howto-sspr-reporting.md)
 * [SSPR’deki tüm seçenekler nelerdir ve ne anlama gelir?](concept-sspr-howitworks.md)
-* [I think something is broken. How do I troubleshoot SSPR?](active-directory-passwords-troubleshoot.md)
+* [Bir şeyin bozuk olduğunu düşünüyorum. SSPR sorunlarını gidermek Nasıl yaparım??](active-directory-passwords-troubleshoot.md)
 * [Başka bir yerde ele alınmayan bir sorum var](active-directory-passwords-faq.md)
 
-[Contact]: ./media/concept-sspr-customization/sspr-contact-admin.png "Contact your administrator for help with resetting your password email example"
+[Contact]: ./media/concept-sspr-customization/sspr-contact-admin.png "Parola e-posta dosyanızı sıfırlamaya yönelik yardım için yöneticinize başvurun"

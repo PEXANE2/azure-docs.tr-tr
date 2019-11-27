@@ -38,13 +38,13 @@ Aşağıdaki listede LUIS uygulamaları için en iyi uygulamaları içerir:
 
 |Yapın|Yapmayın|
 |--|--|
-|[Farklı hedefleri tanımlayın](#do-define-distinct-intents)<br>[Amaçlar 'a tanımlayıcı ekleme](#do-add-descriptors-to-intents) |[Amaçlar için birçok örnek Konuşma ekleme](#dont-add-many-example-utterances-to-intents)<br>[Birkaç veya basit varlık kullanın](#dont-use-few-or-simple-entities) |
-|[Her amaç için çok geneldir ve çok belirli arasında bir tatlı nokta bulmak](#do-find-sweet-spot-for-intents)|[LUIS eğitim platformu olarak kullanın](#dont-use-luis-as-a-training-platform)|
-|[Uygulamanızı sürümleriyle tekrarlayarak oluşturun](#do-build-your-app-iteratively-with-versions)<br>[Model ayrıştırma için varlık oluşturma](#do-build-for-model-decomposition)|[Diğer biçimlere yoksayılıyor aynı biçimde, birçok örnek Konuşma ekleme](#dont-add-many-example-utterances-of-the-same-format-ignoring-other-formats)|
-|[Sonraki yinelemelerde desenler ekleme](#do-add-patterns-in-later-iterations)|[Hedefleri ve varlıkların tanımı karışımı](#dont-mix-the-definition-of-intents-and-entities)|
-|Hiçbiri amacı dışında [tüm amaçlar genelinde utbotlarınızı dengeleyin](#balance-your-utterances-across-all-intents) .<br>[Hedefi hiçbiri için örnek Konuşma ekleme](#do-add-example-utterances-to-none-intent)|[Tüm olası değerlerle tanımlayıcı oluştur](#dont-create-descriptors-with-all-the-possible-values)|
-|[Etkin öğrenme için Öner özelliğinden yararlanın](#do-leverage-the-suggest-feature-for-active-learning)|[Çok fazla desen ekleme](#dont-add-many-patterns)|
-|[Toplu test ile uygulamanızın performansını izleyin](#do-monitor-the-performance-of-your-app)|[Eğitin ve yayımlayın her tek örnek utterance eklendi](#dont-train-and-publish-with-every-single-example-utterance)|
+|[Ayrı amaçlar tanımlayın](#do-define-distinct-intents)<br>[Amaçlar 'a tanımlayıcı ekleme](#do-add-descriptors-to-intents) |[Amaçlar için birçok örnek ekleme](#dont-add-many-example-utterances-to-intents)<br>[Birkaç veya basit varlık kullanın](#dont-use-few-or-simple-entities) |
+|[Her amaç için çok genel ve çok özel arasında bir tatlı noktası bulun](#do-find-sweet-spot-for-intents)|[LUSıS 'yi eğitim platformu olarak kullanma](#dont-use-luis-as-a-training-platform)|
+|[Uygulamanızı sürümleriyle tekrarlayarak oluşturun](#do-build-your-app-iteratively-with-versions)<br>[Model ayrıştırma için varlık oluşturma](#do-build-for-model-decomposition)|[Diğer biçimleri yoksayarak aynı biçimdeki birçok örnek utde ekleyin](#dont-add-many-example-utterances-of-the-same-format-ignoring-other-formats)|
+|[Sonraki yinelemelerde desenler ekleme](#do-add-patterns-in-later-iterations)|[Amaç ve varlıkların tanımını karıştırma](#dont-mix-the-definition-of-intents-and-entities)|
+|Hiçbiri amacı dışında [tüm amaçlar genelinde utbotlarınızı dengeleyin](#balance-your-utterances-across-all-intents) .<br>[Hiçbiri amacına örnek ekleme](#do-add-example-utterances-to-none-intent)|[Tüm olası değerlerle tanımlayıcı oluştur](#dont-create-descriptors-with-all-the-possible-values)|
+|[Etkin öğrenme için öneri özelliğinden yararlanın](#do-leverage-the-suggest-feature-for-active-learning)|[Çok fazla desen ekleme](#dont-add-many-patterns)|
+|[Toplu test ile uygulamanızın performansını izleyin](#do-monitor-the-performance-of-your-app)|[Her tek örnekle eğitim ve yayımlama eklendi](#dont-train-and-publish-with-every-single-example-utterance)|
 
 ## <a name="do-define-distinct-intents"></a>Farklı hedefleri tanımlayın
 Sözlük her hedefi için yalnızca bu amaç için ve farklı bir hedefi ile çakışan olduğundan emin olun. Örneğin, hava yolu fışıkları ve oteller gibi seyahat düzenlemelerini işleyen bir uygulamaya sahip olmak istiyorsanız, bu konu alanlarının farklı amaçlar halinde veya aynı amaca göre, utterance içindeki belirli veriler için varlıklar kullanabilirsiniz.
@@ -141,7 +141,7 @@ Bu amaç, uygulamanızın dışındaki her şeyi gösteren geri dönüş amacın
 
 ## <a name="do-leverage-the-suggest-feature-for-active-learning"></a>Etkin öğrenme için Öner özelliğinden yararlanın
 
-Kullanım [etkin olarak öğrenmeye](luis-how-to-review-endpoint-utterances.md)'s **gözden geçirin, konuşma uç noktası** hedefleri için daha fazla örnek konuşma eklemek yerine düzenli olarak. Uygulamayı sürekli olarak konuşma uç noktası almak için bu listeyi artan ve değiştirme.
+Amaçlar için daha fazla örnek ekleme yerine, [etkin öğrenme](luis-how-to-review-endpoint-utterances.md)'Nin **Gözden geçirme uç noktası araslarını** düzenli olarak kullanın. Uygulamayı sürekli olarak konuşma uç noktası almak için bu listeyi artan ve değiştirme.
 
 ## <a name="do-monitor-the-performance-of-your-app"></a>Uygulamanızın performansını izleyin
 
@@ -175,7 +175,7 @@ Farklı miktarlarını, ikinci sütun kullanan farklı fiiller (satın alma, ayr
 
 Botunuzun sürecek bir hedefi için herhangi bir işlem oluşturun. Varlıklar, bu eylem mümkün kılan parametreleri olarak kullanma. 
 
-Hava yolu fışıklarından kitap oluşturacak bir bot için, bir **muhasebeci** amaç oluşturun. Her Havayolu ya da her hedef için bir hedefi oluşturmayın. Bu parçaları veri kullanan [varlıkları](luis-concept-entity-types.md) ve bunları örnek konuşma işaretleyin. 
+Hava yolu fışıklarından kitap oluşturacak bir bot için, bir **muhasebeci** amaç oluşturun. Her Havayolu ya da her hedef için bir hedefi oluşturmayın. Bu veri parçalarını [varlık](luis-concept-entity-types.md) olarak kullanın ve örnekleri örnek olarak işaretleyin. 
 
 ## <a name="dont-create-descriptors-with-all-the-possible-values"></a>Tüm olası değerlerle tanımlayıcı oluşturma
 
@@ -183,7 +183,7 @@ Tanımlayıcı [tümceciği listelerinde](luis-concept-feature.md) birkaç örne
 
 ## <a name="dont-add-many-patterns"></a>Birçok desen ekleme
 
-Ekleme çok fazla [desenleri](luis-concept-patterns.md). LUIS, daha az sayıda örnek ile hızlı bir şekilde öğrenmek için tasarlanmıştır. Sistem gereksiz yere aşırı yükleme yapmaz.
+Çok fazla [desen](luis-concept-patterns.md)eklemeyin. LUIS, daha az sayıda örnek ile hızlı bir şekilde öğrenmek için tasarlanmıştır. Sistem gereksiz yere aşırı yükleme yapmaz.
 
 ## <a name="dont-train-and-publish-with-every-single-example-utterance"></a>Yoksa, eğitmek ve her tek örnek utterance ile yayımlama
 
@@ -191,4 +191,4 @@ Ekleme çok fazla [desenleri](luis-concept-patterns.md). LUIS, daha az sayıda �
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Bilgi edinmek için nasıl [uygulamanızı planlama](luis-how-plan-your-app.md) LUIS uygulamanızda.
+* Uygulamanızı LUSıS uygulamanızda nasıl [planlayacağınızı](luis-how-plan-your-app.md) öğrenin.

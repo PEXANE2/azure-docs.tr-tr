@@ -1,6 +1,6 @@
 ---
-title: How to provision devices for multitenancy in Azure IoT Hub Device Provisioning Service
-description: How to provision devices for multitenancy with your device provisioning service instance
+title: Azure IoT Hub cihaz sağlama hizmeti 'nde çok kiracılı cihazları sağlama
+description: Cihaz sağlama hizmeti örneğiniz ile çok kiracılı cihazları sağlama
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/10/2019
@@ -14,23 +14,23 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74228784"
 ---
-# <a name="how-to-provision-for-multitenancy"></a>How to provision for multitenancy 
+# <a name="how-to-provision-for-multitenancy"></a>Çoklu kiracı için sağlama 
 
-The allocation policies defined by the provisioning service support a variety of allocation scenarios. Two common scenarios are:
+Sağlama hizmeti tarafından tanımlanan ayırma ilkeleri çeşitli ayırma senaryolarını destekler. İki yaygın senaryo şunlardır:
 
-* **Geolocation / GeoLatency**: As a device moves between locations, network latency is improved by having the device provisioned to the IoT hub closest to each location. In this scenario, a group of IoT hubs, which span across regions, are selected for enrollments. The **Lowest latency** allocation policy is selected for these enrollments. This policy causes the Device Provisioning Service to evaluate device latency and determine the closet IoT hub out of the group of IoT hubs. 
+* **Coğrafi konum/tsıklık**: bir cihaz konumlar arasında taşındıkça, cihazın her bir konuma en yakın IoT Hub 'ına sağlanması halinde ağ gecikmesi geliştirilmiştir. Bu senaryoda, bölgeler arasında yayılan bir IoT Hub grubu kayıtları için seçilidir. Bu kayıtlar için **En düşük gecikme süresi** ayırma ilkesi seçilidir. Bu ilke, cihaz sağlama hizmeti 'nin cihaz gecikmesini değerlendirmesini ve IoT Hub 'ından IoT Hub 'ı grubunu belirlemesine neden olur. 
 
-* **Multi-tenancy**: Devices used within an IoT solution may need to be assigned to a specific IoT hub or group of IoT hubs. The solution may require all devices for a particular tenant to communicate with a specific group of IoT hubs. In some cases, a tenant may own IoT hubs and require devices to be assigned to their IoT hubs.
+* **Çok kiracılı**: IoT çözümünde kullanılan cihazların belirli bir IoT Hub 'ına veya IoT Hub grubuna atanması gerekebilir. Çözüm, belirli bir kiracının belirli bir IoT Hub grubuyla iletişim kurması için tüm cihazların gerekli olabilir. Bazı durumlarda, bir kiracı IoT Hub 'larına sahip olabilir ve cihazların IoT Hub 'larına atanmasını gerektirebilir.
 
-It is common to combine these two scenarios. For example, a multitenant IoT solution will commonly assign tenant devices using a group of IoT hubs that are scattered across regions. These tenant devices can be assigned to the IoT hub in that group, which has the lowest latency based on geographic location.
+Bu iki senaryoyu birleştirmek yaygındır. Örneğin, çok kiracılı bir IoT çözümü, bölgeler arasında dağılmış olan bir IoT Hub 'ı grubunu kullanarak genellikle kiracı cihazları atar. Bu kiracı cihazları bu gruptaki IoT Hub 'ına atanabilir ve bu, coğrafi konuma göre en düşük gecikme süresine sahiptir.
 
-This article uses a simulated device sample from the [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) to demonstrate how to provision devices in a multitenant scenario across regions. You will perform the following steps in this article:
+Bu makalede, bölgeler arasında çok kiracılı bir senaryoda cihazların nasıl sağlanacağını göstermek için [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) 'sından sanal bir cihaz örneği kullanılmaktadır. Bu makalede aşağıdaki adımları gerçekleştirirsiniz:
 
-* Use the Azure CLI to create two regional IoT hubs (**West US** and **East US**)
-* Create a multitenant enrollment
-* Use the Azure CLI to create two regional Linux VMs to act as devices in the same regions (**West US** and **East US**)
-* Set up the development environment for the Azure IoT C SDK on both Linux VMs
-* Simulate the devices to see that they are provisioned for the same tenant in the closest region.
+* İki bölgesel IoT Hub 'ı (**Batı ABD** ve **Doğu ABD**) oluşturmak için Azure CLI 'yi kullanma
+* Çok kiracılı bir kayıt oluştur
+* Aynı bölgelerde (**Batı ABD** ve **Doğu ABD**) cihaz olarak davranacak iki bölgesel Linux VM oluşturmak için Azure CLI 'yi kullanın
+* Her iki Linux sanal makinesi üzerinde Azure IoT C SDK 'Sı için geliştirme ortamını ayarlama
+* En yakın bölgede aynı kiracı için sağlandığını görmek için cihazların benzetimini yapın.
 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -38,102 +38,102 @@ This article uses a simulated device sample from the [Azure IoT C SDK](https://g
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Completion of the [Set up IoT Hub Device Provisioning Service with the Azure portal](./quick-setup-auto-provision.md) quickstart.
+* [IoT Hub cihazı sağlama hizmetini Azure Portal](./quick-setup-auto-provision.md) hızlı başlangıç ile tamamlama.
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 
-## <a name="create-two-regional-iot-hubs"></a>Create two regional IoT hubs
+## <a name="create-two-regional-iot-hubs"></a>İki bölgesel IoT Hub 'ı oluşturma
 
-In this section, you will use the Azure Cloud Shell to create two new regional IoT hubs in the **West US** and **East US** regions for a tenant.
+Bu bölümde, bir kiracının **Batı ABD** ve **Doğu ABD** bölgelerinde iki yeni bölgesel IoT hub 'ı oluşturmak için Azure Cloud Shell kullanacaksınız.
 
 
-1. Use the Azure Cloud Shell to create a resource group with the [az group create](/cli/azure/group#az-group-create) command. Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. 
+1. [Az Group Create](/cli/azure/group#az-group-create) komutuyla bir kaynak grubu oluşturmak için Azure Cloud Shell kullanın. Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. 
 
-    The following example creates a resource group named *contoso-us-resource-group* in the *eastus* region. It is recommended that you use this group for all resources created in this article. This will make clean up easier after you are finished.
+    Aşağıdaki örnek, *eastus* bölgesinde *contoso-US-Resource-Group* adlı bir kaynak grubu oluşturur. Bu makalede oluşturulan tüm kaynaklar için bu grubu kullanmanız önerilir. Bu işlem tamamlandıktan sonra Temizleme işlemi daha kolay hale getirir.
 
     ```azurecli-interactive 
     az group create --name contoso-us-resource-group --location eastus
     ```
 
-2. Use the Azure Cloud Shell to create an IoT hub in the **eastus** region with the [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) command. The IoT hub will be added to the *contoso-us-resource-group*.
+2. [Az IoT Hub Create](/cli/azure/iot/hub#az-iot-hub-create) komutuyla **Eastus** bölgesinde bir IoT hub 'ı oluşturmak için Azure Cloud Shell kullanın. IoT Hub 'ı *contoso-US-Resource-Group*'a eklenecektir.
 
-    The following example creates an IoT hub named *contoso-east-hub* in the *eastus* location. You must use your own unique hub name instead of **contoso-east-hub**.
+    Aşağıdaki örnek *eastus* konumunda *contoso-Doğu-hub* adlı bir IoT Hub 'ı oluşturur. **Contoso-Doğu-hub**yerine kendi benzersiz hub 'ınızın adını kullanmanız gerekir.
 
     ```azurecli-interactive 
     az iot hub create --name contoso-east-hub --resource-group contoso-us-resource-group --location eastus --sku S1
     ```
     
-    This command may take a few minutes to complete.
+    Bu komutun tamamlanması birkaç dakika sürebilir.
 
-3. Use the Azure Cloud Shell to create an IoT hub in the **westus** region with the [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) command. This IoT hub will also be added to the *contoso-us-resource-group*.
+3. [Az IoT Hub Create](/cli/azure/iot/hub#az-iot-hub-create) komutuyla **Westus** bölgesinde bir IoT hub 'ı oluşturmak için Azure Cloud Shell kullanın. Bu IoT Hub 'ı de *contoso-US-Resource-Group*' a eklenecektir.
 
-    The following example creates an IoT hub named *contoso-west-hub* in the *westus* location. You must use your own unique hub name instead of **contoso-west-hub**.
+    Aşağıdaki örnek *westus* konumunda *contoso-Batı-hub* adlı bir IoT Hub 'ı oluşturur. **Contoso-Batı-hub**yerine kendi benzersiz hub 'ınızın adını kullanmanız gerekir.
 
     ```azurecli-interactive 
     az iot hub create --name contoso-west-hub --resource-group contoso-us-resource-group --location westus --sku S1
     ```
 
-    This command may take a few minutes to complete.
+    Bu komutun tamamlanması birkaç dakika sürebilir.
 
 
 
-## <a name="create-the-multitenant-enrollment"></a>Create the multitenant enrollment
+## <a name="create-the-multitenant-enrollment"></a>Çoklu kiracı kaydını oluşturma
 
-In this section, you will create a new enrollment group for the tenant devices.  
+Bu bölümde, kiracı cihazları için yeni bir kayıt grubu oluşturacaksınız.  
 
-For simplicity, this article uses [Symmetric key attestation](concepts-symmetric-key-attestation.md) with the enrollment. For a more secure solution, consider using [X.509 certificate attestation](concepts-security.md#x509-certificates) with a chain of trust.
+Kolaylık olması için, bu makale kayıt ile [simetrik anahtar kanıtlama](concepts-symmetric-key-attestation.md) kullanır. Daha güvenli bir çözüm için, bir güven zinciri ile [X. 509.440 sertifika kanıtlama](concepts-security.md#x509-certificates) kullanmayı göz önünde bulundurun.
 
-1. Sign in to the [Azure portal](https://portal.azure.com), and open your Device Provisioning Service instance.
+1. [Azure Portal](https://portal.azure.com)oturum açın ve cihaz sağlama hizmeti örneğinizi açın.
 
-2. Select the **Manage enrollments** tab, and then click the **Add enrollment group** button at the top of the page. 
+2. Kayıtları **Yönet** sekmesini seçin ve ardından sayfanın en üstündeki **kayıt grubu Ekle** düğmesine tıklayın. 
 
-3. On **Add Enrollment Group**, enter the following information, and click the **Save** button.
+3. **Kayıt grubu Ekle**sayfasında, aşağıdaki bilgileri girin ve **Kaydet** düğmesine tıklayın.
 
-    **Group name**: Enter **contoso-us-devices**.
+    **Grup adı**: **contoso-US-Devices**girin.
 
-    **Attestation Type**: Select **Symmetric Key**.
+    **Kanıtlama türü**: **simetrik anahtar**seçin.
 
-    **Auto Generate Keys**: This checkbox should already be checked.
+    **Anahtarları otomatik oluştur**: Bu onay kutusu zaten denetlenmelidir.
 
-    **Select how you want to assign devices to hubs**: Select **Lowest latency**.
+    **Cihazları hub 'lara nasıl atamak Istediğinizi seçin**: **En düşük gecikme süresini**seçin.
 
-    ![Add multitenant enrollment group for symmetric key attestation](./media/how-to-provision-multitenant/create-multitenant-enrollment.png)
-
-
-4. On **Add Enrollment Group**, click **Link a new IoT hub** to link both of your regional hubs.
-
-    **Subscription**: If you have multiple subscriptions, choose the subscription where you created the regional IoT hubs.
-
-    **IoT hub**: Select one of the regional hubs you created.
-
-    **Access Policy**: Choose **iothubowner**.
-
-    ![Link the regional IoT hubs with the provisioning service](./media/how-to-provision-multitenant/link-regional-hubs.png)
+    ![Simetrik anahtar kanıtlama için çok kiracılı kayıt grubu ekleme](./media/how-to-provision-multitenant/create-multitenant-enrollment.png)
 
 
-5. Once both regional IoT hubs have been linked, you must select them for the enrollment group and click **Save** to create the regional IoT hub group for the enrollment.
+4. **Kayıt grubu Ekle**' de, her iki bölgesel hub 'ınızı bağlamak için **Yeni bir IoT Hub 'ına bağla** ' ya tıklayın.
 
-    ![Create the regional hub group for the enrollment](./media/how-to-provision-multitenant/enrollment-regional-hub-group.png)
+    **Abonelik**: birden çok aboneliğiniz varsa, bölgesel IoT Hub 'larını oluşturduğunuz aboneliği seçin.
+
+    **IoT Hub**: oluşturduğunuz bölgesel hub 'lardan birini seçin.
+
+    **Erişim ilkesi**: **ıothubowner**öğesini seçin.
+
+    ![Bölgesel IoT Hub 'larını sağlama hizmeti ile bağlama](./media/how-to-provision-multitenant/link-regional-hubs.png)
 
 
-6. After saving the enrollment, reopen it and make a note of the **Primary Key**. You must save the enrollment first to have the keys generated. This key will be used to generate unique device keys for both simulated devices later.
+5. Her iki bölgesel IoT Hub bağlantısı kurulduktan sonra kayıt grubu için bunları seçmeniz ve kayıt için bölgesel IoT Hub grubunu oluşturmak üzere **Kaydet** ' e tıklamanız gerekir.
+
+    ![Kayıt için bölgesel hub grubunu oluşturma](./media/how-to-provision-multitenant/enrollment-regional-hub-group.png)
 
 
-## <a name="create-regional-linux-vms"></a>Create regional Linux VMs
+6. Kayıt kaydedildikten sonra yeniden açın ve **birincil anahtarı**bir yere getirin. Anahtarların oluşturulması için önce kaydı kaydetmelisiniz. Bu anahtar, daha sonra sanal cihazlar için benzersiz cihaz anahtarları oluşturmak üzere kullanılacaktır.
 
-In this section, you will create two regional Linux virtual machines (VMs). These VMs will run a device simulation sample from each region to demonstrate device provisioning for tenant devices from both regions.
 
-To make clean-up easier, these VMs will be added to the same resource group that contains the IoT hubs that were created, *contoso-us-resource-group*. However, the VMs will run in separate regions (**West US** and **East US**).
+## <a name="create-regional-linux-vms"></a>Bölgesel Linux VM 'Leri oluşturma
 
-1. In the Azure Cloud Shell, execute the following command to create an **East US** region VM after making the following parameter changes in the command:
+Bu bölümde, iki bölgesel Linux sanal makinesi (VM) oluşturacaksınız. Bu VM 'Ler, her iki bölgeden de kiracı cihazları için cihaz sağlamayı göstermek üzere her bir bölgeden bir cihaz benzetimi örneği çalıştırır.
 
-    **--name**: Enter a unique name for your **East US** regional device VM. 
+Temizlemeyi kolaylaştırmak için, bu VM 'Ler oluşturulan IoT Hub 'larını içeren aynı kaynak grubuna eklenir, *contoso-US-Resource-Group*. Ancak, VM 'Ler ayrı bölgelerde (**Batı ABD** ve **Doğu ABD**) çalışır.
 
-    **--admin-username**: Use your own admin user name.
+1. Azure Cloud Shell, komutta aşağıdaki parametre değişikliklerini yaptıktan sonra bir **Doğu ABD** Bölgesi sanal makinesi oluşturmak için aşağıdaki komutu yürütün:
 
-    **--admin-password**: Use your own admin password.
+    **--Name**: **Doğu ABD** bölgesel cihaz VM 'niz için benzersiz bir ad girin. 
+
+    **--admin-username**: kendi yönetici kullanıcı adınızı kullanın.
+
+    **--Admin-Password**: kendi yönetici parolanızı kullanın.
 
     ```azurecli-interactive
     az vm create \
@@ -146,15 +146,15 @@ To make clean-up easier, these VMs will be added to the same resource group that
     --authentication-type password
     ```
 
-    This command will take a few minutes to complete. Once the command has completed, make a note of the **publicIpAddress** value for your East US region VM.
+    Bu komutun tamamlanması birkaç dakika sürer. Komut tamamlandıktan sonra, Doğu ABD bölgesi sanal makinenizin **Publicıpaddress** değerini unutmayın.
 
-1. In the Azure Cloud Shell, execute the command to create a **West US** region VM after making the following parameter changes in the command:
+1. Azure Cloud Shell komutta aşağıdaki parametre değişikliklerini yaptıktan sonra bir **Batı ABD** Bölgesi sanal makinesi oluşturmak için komutunu yürütün:
 
-    **--name**: Enter a unique name for your **West US** regional device VM. 
+    **--Name**: **Batı ABD** bölgesel cihaz VM 'niz için benzersiz bir ad girin. 
 
-    **--admin-username**: Use your own admin user name.
+    **--admin-username**: kendi yönetici kullanıcı adınızı kullanın.
 
-    **--admin-password**: Use your own admin password.
+    **--Admin-Password**: kendi yönetici parolanızı kullanın.
 
     ```azurecli-interactive
     az vm create \
@@ -167,11 +167,11 @@ To make clean-up easier, these VMs will be added to the same resource group that
     --authentication-type password
     ```
 
-    This command will take a few minutes to complete. Once the command has completed, make a note of the **publicIpAddress** value for your West US region VM.
+    Bu komutun tamamlanması birkaç dakika sürer. Komut tamamlandıktan sonra, Batı ABD bölgesi sanal makinenizin **Publicıpaddress** değerini unutmayın.
 
-1. Open two command-line shells. Connect to one of the regional VMs in each shell using SSH. 
+1. İki komut satırı kabuklarını açın. SSH kullanarak her kabukta bölgesel VM 'lerden birine bağlanın. 
 
-    Pass your admin username, and the public IP address you noted for the VM as parameters to SSH. Enter the admin password when prompted.
+    Yönetici Kullanıcı adınızı ve VM için not ettiğiniz genel IP adresini SSH 'e parametre olarak geçirin. İstendiğinde yönetici parolasını girin.
 
     ```bash
     ssh contosoadmin@1.2.3.4
@@ -187,12 +187,12 @@ To make clean-up easier, these VMs will be added to the same resource group that
 
 
 
-## <a name="prepare-the-azure-iot-c-sdk-development-environment"></a>Prepare the Azure IoT C SDK development environment
+## <a name="prepare-the-azure-iot-c-sdk-development-environment"></a>Azure IoT C SDK geliştirme ortamını hazırlama
 
-In this section, you will clone the Azure IoT C SDK on each VM. The SDK contains a sample that will simulate a tenant's device provisioning from each region.
+Bu bölümde, her VM 'de Azure IoT C SDK 'sını kopyalayacaksınız. SDK, her bölgeden kiracının cihaz sağlama benzetimi yapılacak bir örnek içerir.
 
 
-1. For each VM, install **Cmake**, **g++** , **gcc**, and [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) using the following commands:
+1. Her VM için aşağıdaki komutları kullanarak **CMake**, **g + +** , **GCC**ve [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) ' i yüklemelisiniz:
 
     ```bash
     sudo apt-get update
@@ -200,7 +200,7 @@ In this section, you will clone the Azure IoT C SDK on each VM. The SDK contains
     ```
 
 
-1. Clone the [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) on both VMs.
+1. [Azure IoT C SDK 'sını](https://github.com/Azure/azure-iot-sdk-c) her iki VM 'de klonlayın.
 
     ```bash
     cd ~/
@@ -209,14 +209,14 @@ In this section, you will clone the Azure IoT C SDK on each VM. The SDK contains
 
     Bu işlemin tamamlanması için birkaç dakika beklemeniz gerekebilir.
 
-1. For both VMs, create a new **cmake** folder inside the repository and change to that folder.
+1. Her iki VM için de depo içinde yeni bir **CMake** klasörü oluşturun ve bu klasöre geçin.
 
     ```bash
     mkdir ~/azure-iot-sdk-c/cmake
     cd ~/azure-iot-sdk-c/cmake
     ```
 
-1. For both VMs, run the following command, which builds a version of the SDK specific to your development client platform. 
+1. Her iki VM için de, geliştirme istemci platformunuza özgü bir SDK sürümü oluşturan aşağıdaki komutu çalıştırın. 
 
     ```bash
     cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
@@ -244,21 +244,21 @@ In this section, you will clone the Azure IoT C SDK on each VM. The SDK contains
     ```    
 
 
-## <a name="derive-unique-device-keys"></a>Derive unique device keys
+## <a name="derive-unique-device-keys"></a>Benzersiz cihaz anahtarları türet
 
-When using symmetric key attestation with group enrollments, you don't use the enrollment group keys directly. Instead you create a unique derived key for each device and mentioned in [Group Enrollments with symmetric keys](concepts-symmetric-key-attestation.md#group-enrollments).
+Grup kayıtları ile simetrik anahtar kanıtlama kullanırken, kayıt grubu anahtarlarını doğrudan kullanamazsınız. Bunun yerine, her bir cihaz için benzersiz bir türetilmiş anahtar oluşturup, [Grup kayıtları simetrik anahtarlar ile](concepts-symmetric-key-attestation.md#group-enrollments)bahsedilir.
 
-To generate the device key, use the group master key to compute an [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) of the unique registration ID for the device and convert the result into Base64 format.
+Cihaz anahtarı oluşturmak için, cihaz için benzersiz kayıt KIMLIĞI için [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) hesaplamak ve sonucu base64 biçimine dönüştürmek için Grup ana anahtarını kullanın.
 
-Do not include your group master key in your device code.
+Grup ana anahtarınızı cihaz kodunuza eklemeyin.
 
-Use the Bash shell example to create a derived device key for each device using **openssl**.
+**OpenSSL**kullanarak her bir cihaz için türetilmiş bir cihaz anahtarı oluşturmak Için Bash Shell örneğini kullanın.
 
-- Replace the value for **KEY** with the **Primary Key** you noted earlier for your enrollment.
+- **Anahtar** değerini kaydınız için önceden not ettiğiniz **birincil anahtarla** değiştirin.
 
-- Replace the value for **REG_ID** with your own unique registration ID for each device. Use lowercase alphanumeric and dash ('-') characters to define both IDs.
+- **REG_ID** değerini her cihaz için kendi BENZERSIZ kayıt Kimliğiniz ile değiştirin. Her iki kimliği de tanımlamak için küçük harf alfasayısal ve tire ('-') karakterlerini kullanın.
 
-Example device key generation for *contoso-simdevice-east*:
+*Contoso-simdevice-Doğu*için örnek cihaz anahtarı oluşturma:
 
 ```bash
 KEY=rLuyBPpIJ+hOre2SFIP9Ajvdty3j0EwSP/WvTVH9eZAw5HpDuEmf13nziHy5RRXmuTy84FCLpOnhhBPASSbHYg==
@@ -272,7 +272,7 @@ echo -n $REG_ID | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | ba
 p3w2DQr9WqEGBLUSlFi1jPQ7UWQL4siAGy75HFTFbf8=
 ```
 
-Example device key generation for *contoso-simdevice-west*:
+*Contoso-simdevice-Batı*için örnek cihaz anahtarı oluşturma:
 
 ```bash
 KEY=rLuyBPpIJ+hOre2SFIP9Ajvdty3j0EwSP/WvTVH9eZAw5HpDuEmf13nziHy5RRXmuTy84FCLpOnhhBPASSbHYg==
@@ -287,23 +287,23 @@ J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=
 ```
 
 
-The tenant devices will each use their derived device key and unique registration ID to perform symmetric key attestation with the enrollment group during provisioning to the tenant IoT hubs.
+Kiracı cihazların her biri, kiracı IoT Hub 'larına sağlama sırasında kayıt grubuyla simetrik anahtar kanıtlama gerçekleştirmek için kendi türetilmiş Cihaz anahtarını ve benzersiz kayıt KIMLIKLERINI kullanır.
 
 
 
 
-## <a name="simulate-the-devices-from-each-region"></a>Simulate the devices from each region
+## <a name="simulate-the-devices-from-each-region"></a>Her bölgeden cihazların benzetimini yapın
 
 
-In this section, you will update a provisioning sample in the Azure IoT C SDK for both of the regional VMs. 
+Bu bölümde, Azure IoT C SDK 'sında her iki bölgesel VM için de bir sağlama örneği güncelleşirsiniz. 
 
-The sample code simulates a device boot sequence that sends the provisioning request to your Device Provisioning Service instance. The boot sequence will cause the device to be recognized and assigned to the IoT hub that is closest based on latency.
+Örnek kod, cihaz sağlama hizmeti örneğinize sağlama isteği gönderen bir cihaz önyükleme sırasının benzetimini yapar. Önyükleme sırası, cihazın, gecikme süresine göre en yakın IoT Hub 'ına tanınmasına ve atanmasına neden olur.
 
 1. Azure Portal'da Cihaz Sağlama hizmetiniz için **Genel Bakış** sekmesini seçin ve **_Kimlik Kapsamı_** değerini not alın.
 
     ![Portal dikey penceresinden Cihaz Sağlama Hizmeti uç noktası bilgilerini ayıklama](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
-1. Open **~/azure-iot-sdk-c/provisioning\_client/samples/prov\_dev\_client\_sample/prov\_dev\_client\_sample.c** for editing on both VMs.
+1. Her iki VM 'de düzenlemede, **/azure-iot-sdk-c/provisioning\_Client/Samples/prov\_dev\_client\_Sample/prov\_dev\_client\_örnek. c** ' i açın.
 
     ```bash
     vi ~/azure-iot-sdk-c/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c
@@ -315,9 +315,9 @@ The sample code simulates a device boot sequence that sends the provisioning req
     static const char* id_scope = "0ne00002193";
     ```
 
-1. Aynı dosyada `main()` işlevinin tanımını bulun. Make sure the `hsm_type` variable is set to `SECURE_DEVICE_TYPE_SYMMETRIC_KEY` as shown below to match the enrollment group attestation method. 
+1. Aynı dosyada `main()` işlevinin tanımını bulun. Kayıt grubu kanıtlama yöntemiyle eşleştirmek için `hsm_type` değişkeninin aşağıda gösterildiği gibi `SECURE_DEVICE_TYPE_SYMMETRIC_KEY` ayarlandığından emin olun. 
 
-    Save your changes to the files on both VMs.
+    Her iki VM 'de bulunan dosyalarınıza yaptığınız değişiklikleri kaydedin.
 
     ```c
     SECURE_DEVICE_TYPE hsm_type;
@@ -326,44 +326,44 @@ The sample code simulates a device boot sequence that sends the provisioning req
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-1. On both VMs, find the call to `prov_dev_set_symmetric_key_info()` in **prov\_dev\_client\_sample.c** which is commented out.
+1. Her iki VM 'de de, açıklama eklenen **prov\_dev\_client\_Sample. c** ' de `prov_dev_set_symmetric_key_info()` çağrısını bulun.
 
     ```c
     // Set the symmetric key if using they auth type
     //prov_dev_set_symmetric_key_info("<symm_registration_id>", "<symmetric_Key>");
     ```
 
-    Uncomment the function calls, and replace the placeholder values (including the angle brackets) with the unique registration IDs and derived device keys for each device. The keys shown below are for example purposes only. Use the keys you generated earlier.
+    İşlev çağrılarının açıklamasını kaldırın ve yer tutucu değerlerini (açılı ayraçlar dahil) her bir cihaz için benzersiz kayıt kimlikleri ve türetilmiş cihaz anahtarları ile değiştirin. Aşağıda gösterilen anahtarlar yalnızca örnek amaçlıdır. Daha önce oluşturduğunuz anahtarları kullanın.
 
-    East US:
+    Doğu ABD:
     ```c
     // Set the symmetric key if using they auth type
     prov_dev_set_symmetric_key_info("contoso-simdevice-east", "p3w2DQr9WqEGBLUSlFi1jPQ7UWQL4siAGy75HFTFbf8=");
     ```
 
-    West US:
+    Batı ABD:
     ```c
     // Set the symmetric key if using they auth type
     prov_dev_set_symmetric_key_info("contoso-simdevice-west", "J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=");
     ```
 
-    Save the files.
+    Dosyaları kaydedin.
 
-1. On both VMs, navigate to the sample folder shown below, and build the sample.
+1. Her iki VM 'de, aşağıda gösterilen örnek klasöre gidin ve örneği derleyin.
 
     ```bash
     cd ~/azure-iot-sdk-c/cmake/provisioning_client/samples/prov_dev_client_sample/
     cmake --build . --target prov_dev_client_sample --config Debug
     ```
 
-1. Once the build succeeds, run **prov\_dev\_client\_sample.exe** on both VMs to simulate a tenant device from each region. Notice that each device is allocated to the tenant IoT hub closest to the simulated device's regions.
+1. Oluşturma işlemi başarılı olduktan sonra her bir bölgeden bir kiracı cihazının benzetimini yapmak için her iki VM 'de **\_dev\_client\_örnek. exe** ' yi çalıştırın. Her cihazın, sanal cihazın bölgelerine en yakın kiracı IoT Hub 'ına ayrıldığına dikkat edin.
 
-    Run the simulation:
+    Simülasyonu çalıştırın:
     ```bash
     ~/azure-iot-sdk-c/cmake/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample
     ```
 
-    Example output from the East US VM:
+    Doğu ABD VM 'den örnek çıkış:
 
     ```bash
     contosoadmin@ContosoSimDeviceEast:~/azure-iot-sdk-c/cmake/provisioning_client/samples/prov_dev_client_sample$ ./prov_dev_client_sample
@@ -380,7 +380,7 @@ The sample code simulates a device boot sequence that sends the provisioning req
 
     ```
 
-    Example output from the West US VM:
+    Batı ABD VM 'den örnek çıkış:
     ```bash
     contosoadmin@ContosoSimDeviceWest:~/azure-iot-sdk-c/cmake/provisioning_client/samples/prov_dev_client_sample$ ./prov_dev_client_sample
     Provisioning API Version: 1.2.9
@@ -399,19 +399,19 @@ The sample code simulates a device boot sequence that sends the provisioning req
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-If you plan to continue working with resources created in this article, you can leave them. If you do not plan to continue using the resource, use the following steps to delete all resources created by this article to avoid unnecessary charges.
+Bu makalede oluşturulan kaynaklarla çalışmaya devam etmeyi planlıyorsanız, bunları bırakabilirsiniz. Kaynağı kullanmaya devam etmeyi planlamıyorsanız, gereksiz ücretlerden kaçınmak için bu makale tarafından oluşturulan tüm kaynakları silmek için aşağıdaki adımları kullanın.
 
-The steps here assume you created all resources in this article as instructed in the same resource group named **contoso-us-resource-group**.
+Buradaki adımlarda, bu makaledeki tüm kaynakları **contoso-US-Resource-Group**adlı aynı kaynak grubunda belirtildiği şekilde oluşturduğunuz varsayılır.
 
 > [!IMPORTANT]
 > Silinen kaynak grupları geri alınamaz. Kaynak grubu ve içindeki tüm kaynaklar kalıcı olarak silinir. Yanlış kaynak grubunu veya kaynakları yanlışlıkla silmediğinizden emin olun. IoT Hub'ı tutmak istediğiniz kaynakların bulunduğu mevcut bir kaynak grubunda oluşturduysanız kaynak grubunu silmek yerine IoT Hub kaynağını silin.
 >
 
-To delete the resource group by name:
+Kaynak grubunu ada göre silmek için:
 
 1. [Azure portalında](https://portal.azure.com) oturum açın ve **Kaynak grupları**’na tıklayın.
 
-2. In the **Filter by name...** textbox, type the name of the resource group containing your resources, **contoso-us-resource-group**. 
+2. **Ada göre filtrele...** metin kutusuna kaynaklarınızı içeren kaynak grubunun adını yazın, **contoso-US-Resource-Group**. 
 
 3. Sonuç listesinde kaynak grubunuzun sağ tarafında **...** ve sonra **Kaynak grubunu sil**'e tıklayın.
 
@@ -419,8 +419,8 @@ To delete the resource group by name:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- To learn more Reprovisioning, see [IoT Hub Device reprovisioning concepts](concepts-device-reprovision.md) 
-- To learn more Deprovisioning, see [How to deprovision devices that were previously auto-provisioned](how-to-unprovision-devices.md) 
+- Daha fazla yeniden sağlama hakkında daha fazla bilgi için bkz. [cihaz yeniden sağlama kavramlarını IoT Hub](concepts-device-reprovision.md) 
+- Daha fazla sağlama sağlamayı öğrenmek için bkz. [daha önce otomatik olarak sağlanan cihazların sağlamasını kaldırma](how-to-unprovision-devices.md) 
 
 
 

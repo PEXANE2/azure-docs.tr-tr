@@ -14,29 +14,29 @@ ms.locfileid: "74277393"
 
 Birçok Jupyter not defterleri, özellikle veri bilimi için kullanılan not defterleri, lifeblood verilerdir. Azure not defterleri ile kolayca çeşitli kaynaklardan projesine içeri aktarın ve sonra bu verilerden bir not defterlerini kullanabilirsiniz. Daha sonra başka bir yerde kullanmak için indirebilirsiniz projesinde depolanan verileri üretme not defterleri de olabilir.
 
-**Veri** içinde çalışan bir not defteri menü ayrıca sağlar **karşıya** ve **indirme** projeleri içindeki dosyaların yanı sıra geçici dosyalar için geçerli çalışan komutları Not Defteri oturumu.
+Çalışan bir not defteri içindeki **veri** menüsü Ayrıca, aynı zamanda projedeki dosyalarla ve geçerli not defteri oturumunun geçici dosyalarına çalışan **karşıya yükleme** ve **indirme** komutları sağlar.
 
 Kod içinde bir not defteri çeşitli veri kaynaklarından doğrudan erişmek için bir proje içinde dosyaları dahil olmak üzere de kullanabilirsiniz. Rasgele verileri bir kod hücresine komutlarını kullanarak da erişebilirsiniz. Bu tür veriler, Not Defteri oturumunda değişkenlerinde depolandığından, özellikle proje dosyalarını oluşturmak için kod kullanmadığınız sürece projede kaydedilmez.
 
-Bir çalışan Not Defteri içinde kendi veri kodla çalışma yaşadı en iyi: Bu amaç için başvurmak [verilerinize Azure not defterleri örnek not defterinde alma](https://notebooks.azure.com/Microsoft/projects/samples/html/Getting%20to%20your%20Data%20in%20Azure%20Notebooks.ipynb).
+Veriler üzerinde kodla çalışma, çalışan bir not defteri içinde en iyi deneyimdir: Bu amaçla, [Azure Notebooks örnek not defterinde verilerinize alma](https://notebooks.azure.com/Microsoft/projects/samples/html/Getting%20to%20your%20Data%20in%20Azure%20Notebooks.ipynb)bölümüne bakın.
 
 Bu makalenin geri kalanında proje düzeyi dosya işlemleri hakkında ayrıntılar sağlar.
 
 ## <a name="import-data"></a>Veri içeri aktarma
 
-Proje panosunu kullanarak çalışan bir not defteri içinde veya bir projeye dosya getirebilirsiniz **veri** menü veya gibi bir komutun `curl`.
+Dosya **menüsünü veya** `curl`gibi bir komutu kullanarak proje panosundan veya çalışan bir not defteri içinden bir projeye dosyaları taşıyabilirsiniz.
 
 ### <a name="import-files-from-the-project-dashboard"></a>Proje Panosu dosyalarından içeri aktarma
 
 1. Proje dosyalarını içeri aktarmak istediğiniz klasöre gidin.
 
-1. Seçin **karşıya** komutu, sonra da **URL'den** veya **bilgisayardan** ve gerekli bilgileri içeri aktarmak istediğiniz verilerin proje:
+1. **Karşıya yükle** komutunu, **URL 'den** veya **bilgisayardan** ve içeri aktarmak istediğiniz veriler için gerekli ayrıntıları Project ' e seçin:
 
-   - **URL'den**: kaynak adresi girerek **dosya URL'si** alan ve projenizde not defterine atamak için dosya adı **dosya adı** alan. Ardından **+ Dosya Ekle** URL karşıya yükleme listesine eklenecek. Herhangi bir ek URL için işlemi tekrarlayın ve sonra seçin **Bitti**.
+   - **URL 'den**: dosya **URL 'si** alanına kaynak adresini ve **dosya adı** alanında projenizdeki not defterine atanacak dosya adını girin. Ardından, URL 'YI karşıya yükle listesine eklemek için **+ Dosya Ekle** ' yi seçin. İşlemi ek URL 'Ler için tekrarlayın, sonra **bitti**' yi seçin.
 
      ![URL açılır penceresinden karşıya yükleme](media/quickstarts/upload-from-url-popup.png)
 
-   - **Bilgisayardan**: sürükleyin ve açılan dosyaları açılır ya da seçin **dosya seçin**, ardından gözatın ve içeri aktarmak istediğiniz veri dosyaları seçin. Bırakın veya kod dosyasını açın ve verileri ayrıştırmak için not defterinde olduğu için herhangi bir sayıda herhangi bir türü ve biçim dosyalarını seçin.
+   - **Bilgisayardan**: dosyaları açılan pencereye sürükleyip bırakın veya **dosyaları seç**' i seçin ve ardından içeri aktarmak istediğiniz veri dosyalarını seçin. Bırakın veya kod dosyasını açın ve verileri ayrıştırmak için not defterinde olduğu için herhangi bir sayıda herhangi bir türü ve biçim dosyalarını seçin.
 
      ![Bilgisayar açılır penceresinden karşıya yükleme](media/quickstarts/upload-from-computer-popup.png)
 
@@ -44,29 +44,29 @@ Proje panosunu kullanarak çalışan bir not defteri içinde veya bir projeye do
 
 ### <a name="import-files-from-the-file-menu-in-a-notebook"></a>Dosyaları bir not defterinde Dosya menüsünden içeri aktarma
 
-1. Çalışan bir not defteri içinde seçin **dosya** > **karşıya** komutu:
+1. Çalışan bir not defteri içinde **dosya** > **karşıya yükle** komutunu seçin:
 
     ![Karşıya yükleme komutu içinde bir not defteri dosyası](media/file-menu-upload.png)
 
-1. Açılan iletişim kutusuna gidin ve karşıya yüklemek istediğiniz dosyaları seçin. Herhangi bir sayıda tüm dosya türlerini seçebilirsiniz. Seçin **açık** işiniz bittiğinde.
+1. Açılan iletişim kutusuna gidin ve karşıya yüklemek istediğiniz dosyaları seçin. Herhangi bir sayıda tüm dosya türlerini seçebilirsiniz. Bittiğinde **Aç** ' ı seçin.
 
-1. İçinde **karşıya yükleme durumu** görüntülenirse, seçin açılan bir **hedef klasör** aşağı açılan listeden:
+1. Görüntülenen **karşıya yükleme durumu** açılan penceresinde, açılan listeden bir **hedef klasör** seçin:
 
-    - Oturum klasörü ( *~/* ): dosyaları geçerli not defteri oturuma yükler ancak projedeki dosyaları oluşturmaz. Oturum klasör proje klasörüne eşdüzeyde, ancak oturumu sona erdikten sonra kalmıyor. Kod, oturum dosyalara erişmek için göreli yolu içeren dosya adlarını önek *... /* .
+    - Oturum klasörü ( *~/* ): dosyaları geçerli not defteri oturumuna yükler ancak projede dosya oluşturmaz. Oturum klasör proje klasörüne eşdüzeyde, ancak oturumu sona erdikten sonra kalmıyor. Koddaki oturum dosyalarına erişmek için, dosya adlarını göreli yol ile önek yapın *. /* .
 
-        Oturum klasörü kullanılarak deneme için yararlıdır ve proje olabilir veya uzun vadeli temelinde gerekmeyebilir dosyalarla karışıklığı ortadan kaldırır. Çakışmalarına neden olmadan ve dosyaları yeniden adlandırmak gerek kalmadan proje dosyalarında aynı adlara sahip oturum klasöre dosyalar da karşıya yükleyebilirsiniz. Örneğin, bir sürümü deyin sahip *data.csv* projede zaten, ancak istediğiniz farklı bir sürümü ile denemeler *data.csv*. Oturum klasöre dosya yükleyerek karşıya yüklenen dosya verileri kullanarak not defterini çalıştırabilirsiniz (kod kullanarak kendisine başvuran *.. /Data.csv*) yerine projenin dosya verileri.
+        Oturum klasörü kullanılarak deneme için yararlıdır ve proje olabilir veya uzun vadeli temelinde gerekmeyebilir dosyalarla karışıklığı ortadan kaldırır. Çakışmalarına neden olmadan ve dosyaları yeniden adlandırmak gerek kalmadan proje dosyalarında aynı adlara sahip oturum klasöre dosyalar da karşıya yükleyebilirsiniz. Örneğin, projede zaten bir *Data. csv* sürümüne sahip olduğunu, ancak farklı bir *Data. csv*sürümüyle denemek istediğinizi varsayalım. Dosyayı oturum klasörüne karşıya yükleyerek, karşıya yüklenen dosyadaki verileri kullanarak not defterini çalıştırabilirsiniz (kullanarak kodda bulunan *... /DATAEM CSV*), proje dosyasındaki veriler yerine.
 
-    - Proje klasörü ( */project*): dosyaları karşıya yükler, burada olabilir projeye kodda göreli yol adları kullanılarak erişilir. Bir dosyayı bu klasöre yüklemek proje panosundaki bir dosyayı karşıya yüklemeyi aynıdır. Dosyanın projeyle kaydedilir ve daha sonraki oturumlarda kullanılabilir.
+    - Proje klasörü ( */Project*): kodda göreli yol adları kullanılarak erişilebilecekleri projeye dosya yükler. Bir dosyayı bu klasöre yüklemek proje panosundaki bir dosyayı karşıya yüklemeyi aynıdır. Dosyanın projeyle kaydedilir ve daha sonraki oturumlarda kullanılabilir.
 
         Zaten projede var olan bir aynı ada sahip bir dosyayı karşıya yüklemeyi denerseniz, başarısız karşıya yükleniyor. Bir dosyanın üzerine yazmak için üzerine yazma seçeneğini sunar Yeni Proje panosunu dosyasından bunun yerine, yükleyin.
 
-1. Seçin **Başlat karşıya** tıklayarak işlemi tamamlar.
+1. İşlemi gerçekleştirmek için **karşıya yüklemeyi Başlat** ' ı seçin.
 
 ### <a name="create-or-import-files-using-commands"></a>Oluşturma veya içeri aktarma komutlarını kullanarak dosyaları
 
-Hem proje hem de oturum klasörlerdeki dosyaları oluşturmak için bir Python kodu hücreyi veya bir terminal içinde komutlarını kullanabilirsiniz. Örneğin, komutları gibi `curl` ve `wget` dosyaları doğrudan Internet'ten indirin.
+Hem proje hem de oturum klasörlerdeki dosyaları oluşturmak için bir Python kodu hücreyi veya bir terminal içinde komutlarını kullanabilirsiniz. Örneğin, `curl` ve `wget` gibi komutlar doğrudan Internet 'ten dosya indirir.
 
-Terminalde dosyaları indirmek için seçin **Terminal** proje Panosu üzerinde komutunu ve ardından uygun komutları girin:
+Terminaldeki dosyaları indirmek için, proje panosunda **Terminal** komutunu seçin ve ardından uygun komutları girin:
 
 ```bash
 curl https://raw.githubusercontent.com/petroleum101/figures/db46e7f48b8aab67a0dfe31696f6071fb7a84f1e/oil_price/oil_price.csv -o oil_price.csv
@@ -74,13 +74,13 @@ curl https://raw.githubusercontent.com/petroleum101/figures/db46e7f48b8aab67a0df
 wget https://raw.githubusercontent.com/petroleum101/figures/db46e7f48b8aab67a0dfe31696f6071fb7a84f1e/oil_price/oil_price.csv -o oil_price.csv
 ```
 
-Bir Python kodu hücreyi bir not defteri kullanırken, komutlara önek `!`.
+Bir not defterinde Python kod hücresi kullanırken, `!`komutları ön ekine ekleyin.
 
-Böylece gibi bir hedef dosya adı belirtmek için varsayılan klasör proje klasördür *oil_price.csv* projede dosyası oluşturur. Oturumu dosyası oluşturmak için adıyla önek *... /* olarak *... /oil_price.csv*.
+Proje klasörü varsayılan klasördür, bu nedenle *oil_price. csv* gibi bir hedef dosya adının belirtilmesi projede dosyayı oluşturur. Bir oturum dosyası oluşturmak için adı ile önek yapın *..*  *... /oil_price. csv*.
 
 ### <a name="create-files-in-code"></a>Kod içinde dosyaları oluşturma
 
-Pandas gibi bir dosyaya oluşturan kodu kullanırken `write_csv` işlevi, yol adları her zaman proje klasörüyle. Kullanarak *... /* not defterini durdurulamaz ve atılır oturumu dosyası oluşturur.
+Pandas `write_csv` işlevi gibi bir dosya oluşturan kodu kullanırken, yol adları her zaman proje klasörüne görelidir. Kullanılarak *... /* Not defteri durdurulduğunda ve kapatıldığında atılan bir oturum dosyası oluşturur.
 
 ## <a name="export-files"></a>Dosyaları dışarı aktarma
 
@@ -88,28 +88,28 @@ Proje panosunu veya içinden veri aktarabilirsiniz bir not defteri.
 
 ## <a name="export-files-from-the-project-dashboard"></a>Proje Panosu dosyalarından dışarı aktarma
 
-Proje Panosu üzerinde bir dosyaya sağ tıklayıp **indirme**:
+Proje panosunda, bir dosyaya sağ tıklayın ve **İndir**' i seçin:
 
 ![Proje öğesi bağlam menüsü komutu indirin](media/download-command.png)
 
-Ayrıca bir dosya seçin ve kullanmak **indirme** komut (klavye kısayolu: d) Panoda:
+Ayrıca bir dosya seçebilir ve panoda **İndir** komutunu (klavye kısayolu: d) kullanabilirsiniz:
 
 ![Proje Panosu üzerinde araç çubuğu komutuna indirin](media/download-command-toolbar.png)
 
 ## <a name="export-files-from-the-data-menu-in-a-notebook"></a>Bir not defteri veri menüsünden dosyalarını Dışarı Aktar
 
-1. Seçin **dosya** > **indirme** menü komutu:
+1. **Dosya** > **İndir** menü komutunu seçin:
 
     ![Veri yükleme komutu içinde bir not defteri](media/file-menu-download.png)
 
-1. Açılan oturumda klasörleri gösteren görüntülenir; *proje* klasörü proje dosyalarını içerir:
+1. Oturumdaki klasörleri gösteren bir açılan pencere görüntülenir; Proje *klasörü proje* dosyalarını içerir:
 
     ![Veri yükleme komut dosyaları ve klasörleri seçin açılan menüsü](media/file-menu-download-popup.png)
 
-1. İndirin ve ardından istediğiniz klasörleri ve dosyaları sol tarafındaki kutuları işaretleyin **indirme seçili**.
+1. İndirmek istediğiniz dosya ve klasörlerin solundaki kutuları seçin ve ardından **Seçileni indir**' i seçin.
 
-1. Tek bir not defteri hazırlar *.zip* , ardından olarak normal şekilde kaydedin seçili dosyalarını içeren dosya tarayıcınızdan yapın. Not defteri oluşturur bir *.zip* tek bir dosyayı indirdiğinizde dosya.
+1. Not defteri, seçili dosyaları içeren tek bir *. zip* dosyası hazırlar ve bu dosya daha sonra tarayıcınızdan yaptığınız şekilde kaydedilir. Tek bir dosyayı indirdiğinizde bile not defteri bir *. zip* dosyası oluşturur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Bir not defteri bulut verilerine erişim](access-data-resources-jupyter-notebooks.md)
+- [Bir not defterinde bulut verilerine erişme](access-data-resources-jupyter-notebooks.md)

@@ -12,11 +12,11 @@ ms.locfileid: "74484020"
 ---
 # <a name="what-is-azure-policy"></a>Azure İlkesi nedir?
 
-Governance validates that your organization can achieve its goals through effective and efficient use of IT. It meets this need by creating clarity between business goals and IT projects.
+İdare, kuruluşunuzun amaçlarını etkili ve verimli bir şekılde kullanarak sağlayacağını doğrular. Bu, iş hedefleri ve BT projeleri arasında netlik oluşturarak bu gereksinimi karşılayan.
 
-Şirketiniz asla çözülmeyecek gibi görünen önemli sayıda BT sorunlarıyla mi karşılaşıyor? İyi bir BT yönetimine sorunların yönetilmesine ve önlenmesine yardımcı olma amacıyla girişimlerinizi planlama ve önceliklerinizi stratejik düzeyde belirleme dahildir. This strategic need is where Azure Policy comes in.
+Şirketiniz asla çözülmeyecek gibi görünen önemli sayıda BT sorunlarıyla mi karşılaşıyor? İyi bir BT yönetimine sorunların yönetilmesine ve önlenmesine yardımcı olma amacıyla girişimlerinizi planlama ve önceliklerinizi stratejik düzeyde belirleme dahildir. Stratejik bu gereksinim, Azure İlkesi burada devreye girer.
 
-Azure İlkesi, ilkelerinizi oluşturmak, atamak ve yönetmek için kullandığınız bir Azure hizmetidir. Bu ilkeler, kaynaklarınız üzerinden farklı kuralları ve eylemleri uygulatarak kaynaklarınızın kurumsal standartlarınız ve hizmet düzeyi sözleşmelerinizle uyumlu kalmasını sağlar. Azure Policy meets this need by evaluating your resources for non-compliance with assigned policies. Örneğin, ortamınızda yalnızca belirli SKU boyutuna sahip sanal makinelere izin veren bir ilkeniz olabilir. Once this policy is implemented, new and existing resources are evaluated for compliance. With the right type of policy, existing resources can be brought into compliance. Later in this documentation, we'll go over more details on how to create and implement policies with Azure Policy.
+Azure İlkesi, ilkelerinizi oluşturmak, atamak ve yönetmek için kullandığınız bir Azure hizmetidir. Bu ilkeler, kaynaklarınız üzerinden farklı kuralları ve eylemleri uygulatarak kaynaklarınızın kurumsal standartlarınız ve hizmet düzeyi sözleşmelerinizle uyumlu kalmasını sağlar. Azure İlkesi, uyumsuzluk atanan ilkelerle kaynaklarınızı değerlendirerek bu gereksinimini karşılar. Örneğin, ortamınızda yalnızca belirli SKU boyutuna sahip sanal makinelere izin veren bir ilkeniz olabilir. Bu ilke uygulandıktan sonra yeni ve mevcut kaynakları uyumluluk için değerlendirilir. Doğru ilke türü ile var olan kaynakları uyumlu hale getirilebilir. Bu belgede daha sonra oluşturun ve Azure İlkesi ile ilkeleri uygulama hakkında daha fazla ayrıntıyı gideceğiz.
 
 > [!IMPORTANT]
 > Azure İlkesi’nin uyumluluk değerlendirmesi artık fiyatlandırma katmanından bağımsız olarak tüm atamalara sağlanır. Atamalarınız uyumluluk verilerini göstermezse, lütfen aboneliğin Microsoft.PolicyInsights kaynak sağlayıcısı ile kaydolduğundan emin olun.
@@ -25,7 +25,7 @@ Azure İlkesi, ilkelerinizi oluşturmak, atamak ve yönetmek için kullandığı
 
 ## <a name="how-is-it-different-from-rbac"></a>RBAC ile farkları nelerdir?
 
-There are a few key differences between Azure Policy and role-based access control (RBAC). RBAC farklı kapsamlardaki kullanıcı eylemlerine odaklanır. You might be added to the contributor role for a resource group, allowing you to make changes to that resource group. Azure Policy focuses on resource properties during deployment and for already existing resources. Azure Policy controls properties such as the types or locations of resources. Unlike RBAC, Azure Policy is a default allow and explicit deny system.
+Azure Ilkesi ve rol tabanlı erişim denetimi (RBAC) arasında bazı önemli farklılıklar vardır. RBAC farklı kapsamlardaki kullanıcı eylemlerine odaklanır. Bir kaynak grubu için katkıda bulunan rolüne kaynak grubunda değişiklik yapmanıza olanak sağlayan eklenmiş olabilir. Azure Ilkesi, dağıtım sırasında ve zaten var olan kaynaklar için kaynak özelliklerine odaklanır. Azure Ilkesi, kaynakların türleri veya konumları gibi özellikleri denetler. RBAC 'den farklı olarak Azure Ilkesi, varsayılan bir izin verme ve açık reddetme sistemidir.
 
 ### <a name="rbac-permissions-in-azure-policy"></a>Azure İlkesi'ndeki RBAC İzinleri
 
@@ -34,37 +34,37 @@ Azure İlkesi iki Kaynak Sağlayıcısı’nda işlemler olarak bilinen bazı iz
 - [Microsoft.Authorization](../../role-based-access-control/resource-provider-operations.md#microsoftauthorization)
 - [Microsoft.PolicyInsights](../../role-based-access-control/resource-provider-operations.md#microsoftpolicyinsights)
 
-Birçok Yerleşik rol Azure İlkesi kaynaklarına izin verir. The **Resource Policy Contributor** role includes most Azure Policy operations. **Owner** has full rights. Both **Contributor** and **Reader** can use all read Azure Policy operations, but **Contributor** can also trigger remediation.
+Birçok Yerleşik rol Azure İlkesi kaynaklarına izin verir. **Kaynak Ilkesi katılımcısı** rolü çoğu Azure ilke işlemini içerir. **Sahibinin** tam hakları vardır. **Katkıda bulunan** ve **Reader** tüm Azure ilkesi Işlemlerini kullanabilir, ancak **katkıda bulunan** düzeltme de tetiklenebilir.
 
 Yerleşik rollerin hiçbirinde gerekli izinler yoksa [özel rol](../../role-based-access-control/custom-roles.md) oluşturun.
 
 ## <a name="policy-definition"></a>İlke tanımı
 
-Azure İlkesi'nde bir ilke oluşturmak ve uygulamak için önce ilke tanımını oluşturmanız gerekir. Every policy definition has conditions under which it's enforced. And, it has a defined effect that takes place if the conditions are met.
+Azure İlkesi'nde bir ilke oluşturmak ve uygulamak için önce ilke tanımını oluşturmanız gerekir. Her ilke tanımında, ilkelerin uygulandığı koşullar vardır. Ve bu Koşullar karşılanıyorsa, gerçekleşir, tanımlı bir etkisi.
 
-In Azure Policy, we offer several built-in policies that are available by default. Örnek:
+Azure İlkesi'nde, varsayılan olarak kullanılabilen çeşitli yerleşik ilkeler sunuyoruz. Örneğin:
 
-- **Allowed Storage Account SKUs**: Determines if a storage account being deployed is within a set of SKU sizes. Its effect is to deny all storage accounts that don't adhere to the set of defined SKU sizes.
-- **Allowed Resource Type**: Defines the resource types that you can deploy. Its effect is to deny all resources that aren't part of this defined list.
-- **Allowed Locations**: Restricts the available locations for new resources. Sahip olduğu eylem ise coğrafi uyumluluk gereksinimlerinizi uygulamaktır.
-- **Allowed Virtual Machine SKUs**: Specifies a set of virtual machine SKUs that you can deploy.
-- **Add a tag to resources**: Applies a required tag and its default value if it's not specified by the deploy request.
-- **Enforce tag and its value**: Enforces a required tag and its value to a resource.
-- **Not allowed resource types**: Prevents a list of resource types from being deployed.
+- **Izin verilen depolama hesabı SKU 'ları**: dağıtılan bir depolama HESABıNıN bir SKU boyutları kümesi içinde olup olmadığını belirler. Etkisini tanımlı SKU boyutları kümesine bağlı olmayan tüm depolama hesapları engellemektir.
+- **Izin verilen kaynak türü**: dağıtabileceğiniz kaynak türlerini tanımlar. Bu tanımlı listenin bir parçası olmayan tüm kaynakları reddetmektir kendi etkisidir.
+- **Izin verilen konumlar**: yeni kaynaklar için kullanılabilir konumları kısıtlar. Sahip olduğu eylem ise coğrafi uyumluluk gereksinimlerinizi uygulamaktır.
+- **Izin verilen sanal makine SKU 'ları**: dağıtabileceğiniz bir sanal makine SKU 'su kümesi belirtir.
+- **Kaynaklara bir etiket ekleyin**: dağıtım isteği tarafından belirtilmemişse gerekli bir etiketi ve varsayılan değerini uygular.
+- **Etiketi ve değerini zorla**: gerekli bir etiketi ve değerini bir kaynağa zorlar.
+- **İzin verilmeyen kaynak türleri**: bir kaynak türleri listesinin dağıtılmasını engeller.
 
-To implement these policy definitions (both built-in and custom definitions), you'll need to assign them. Bu ilkelerden herhangi birini Azure portalı, PowerShell veya Azure CLI üzerinden atayabilirsiniz.
+Bu ilke tanımları (yerleşik ve özel tanımları) uygulamak için onları atamanız gerekir. Bu ilkelerden herhangi birini Azure portalı, PowerShell veya Azure CLI üzerinden atayabilirsiniz.
 
-Policy evaluation happens with several different actions, such as policy assignment or policy updates. For a complete list, see [Policy evaluation triggers](./how-to/get-compliance-data.md#evaluation-triggers).
+İlke atama veya ilke güncelleştirmeleri gibi çeşitli farklı eylemler ile ilke değerlendirmesi gerçekleşir. Tüm liste için bkz. [ilke değerlendirme Tetikleyicileri](./how-to/get-compliance-data.md#evaluation-triggers).
 
 İlke tanımlarının yapıları hakkında daha fazla bilgi edinmek için [İlke Tanımı Yapısı](./concepts/definition-structure.md) adlı makaleye göz atın.
 
 ## <a name="policy-assignment"></a>İlke ataması
 
-İlke ataması, belirli bir kapsamda gerçekleşmesi için atanmış bir ilke tanımıdır. Bu kapsamın dahilinde [yönetim gruplarından](../management-groups/overview.md) kaynak gruplarına kadar birçok grup bulunabilir. *Kapsam*, ilke tanımının atandığı tüm kaynak gruplarını, abonelikleri veya yönetim gruplarını ifade eder. İlke atamaları, tüm alt kaynaklar tarafından devralınır. This design means that a policy applied to a resource group is also applied to resources in that resource group. Ancak, dilerseniz bir alt kapsamı ilke atamasından dışlayabilirsiniz.
+İlke ataması, belirli bir kapsamda gerçekleşmesi için atanmış bir ilke tanımıdır. Bu kapsamın dahilinde [yönetim gruplarından](../management-groups/overview.md) kaynak gruplarına kadar birçok grup bulunabilir. *Kapsam*, ilke tanımının atandığı tüm kaynak gruplarını, abonelikleri veya yönetim gruplarını ifade eder. İlke atamaları, tüm alt kaynaklar tarafından devralınır. Bu tasarım, kaynak grubundaki kaynaklar için bir kaynak grubuna uygulanan bir ilke de geçerli anlamına gelir. Ancak, dilerseniz bir alt kapsamı ilke atamasından dışlayabilirsiniz.
 
-Örneğin abonelik kapsamında, ağ kaynaklarının oluşturulmasını önleyen bir ilke atayabilirsiniz. You could exclude a resource group in that subscription that is intended for networking infrastructure. You then grant access to this networking resource group to users that you trust with creating networking resources.
+Örneğin abonelik kapsamında, ağ kaynaklarının oluşturulmasını önleyen bir ilke atayabilirsiniz. Bu abonelikte ağ alt yapısı için hedeflenen bir kaynak grubu hariç. Ağ kaynaklarını oluşturma konusunda güvendiğiniz kullanıcılara bu ağ kaynak grubuna erişim verin.
 
-In another example, you might want to assign a resource type allow list policy at the management group level. Daha sonra bir alt yönetim grubunda veya doğrudan aboneliklerde daha esnek bir ilke (daha fazla kaynak türüne izin veren) atayın. Ancak ilke, açık bir reddetme sistemi olduğundan bu örnek çalışmaz. Bunun yerine, alt yönetim grubunu veya aboneliğini yönetim grubu düzeyinde ilke atamasının dışında bırakmanız gerekir. Daha sonra alt yönetim grubunda veya abonelik düzeyinde daha esnek ilkeyi atayın. If any policy results in a resource getting denied, then the only way to allow the resource is to modify the denying policy.
+Başka bir örnekte, yönetim grubu düzeyinde liste ilkesine izin ver kaynak türü atamak isteyebilirsiniz. Daha sonra bir alt yönetim grubunda veya doğrudan aboneliklerde daha esnek bir ilke (daha fazla kaynak türüne izin veren) atayın. Ancak ilke, açık bir reddetme sistemi olduğundan bu örnek çalışmaz. Bunun yerine, alt yönetim grubunu veya aboneliğini yönetim grubu düzeyinde ilke atamasının dışında bırakmanız gerekir. Daha sonra alt yönetim grubunda veya abonelik düzeyinde daha esnek ilkeyi atayın. Herhangi bir ilke bir kaynağın reddedilmesiyle sonuçlanırsa kaynağa izin vermenin tek yolu reddetme ilkesinin olduğu.
 
 Portaldan ilke tanımlarını ve atamalarını ayarlama hakkında daha fazla bilgi için bkz. [Azure ortamınızdaki uyumlu olmayan kaynakları tanımlamak için bir ilke ataması oluşturma](assign-policy-portal.md). [PowerShell](assign-policy-powershell.md) ve [Azure CLI](assign-policy-azurecli.md) adımları da mevcuttur.
 
@@ -72,32 +72,32 @@ Portaldan ilke tanımlarını ve atamalarını ayarlama hakkında daha fazla bil
 
 İlke parametreleri, oluşturmanız gereken ilke tanımlarının sayısını azaltarak ilke yönetiminizi basitleştirmeye yardımcı olur. İlke tanımı oluştururken parametreleri belirleyerek bunları daha genel hale getirebilirsiniz. Daha sonra bu ilke tanımını farklı senaryolar için kullanabilirsiniz. Bu işlemi, ilke tanımlarının atamasını yaparken farklı değerler girerek gerçekleştirebilirsiniz. Örneğin, abonelik için bir konum kümesi belirtme.
 
-Parameters are defined when creating a policy definition. When a parameter is defined, it's given a name and optionally given a value. Örneğin, *konum* başlıklı bir ilke için parametre tanımlayabilirsiniz. Daha sonra, ilkenin atamasını yaparken *EastUS* veya *WestUS* gibi farklı değerler verebilirsiniz.
+Parametreler, bir ilke tanımı oluşturulurken tanımlanır. Tanımlanan parametreye bir ad ve isteğe bağlı olarak verilen bir değer. Örneğin, *konum* başlıklı bir ilke için parametre tanımlayabilirsiniz. Daha sonra, ilkenin atamasını yaparken *EastUS* veya *WestUS* gibi farklı değerler verebilirsiniz.
 
-For more information about policy parameters, see [Definition structure - Parameters](./concepts/definition-structure.md#parameters).
+İlke parametreleri hakkında daha fazla bilgi için bkz. [tanım yapısı-parametreler](./concepts/definition-structure.md#parameters).
 
 ## <a name="initiative-definition"></a>Girişim tanımı
 
 Girişim tanımı, tekil kapsamlı bir hedefi gerçekleştirmek üzere belirlenmiş ilke tanımlarının bir koleksiyonudur. Girişim tanımları, ilke tanımlarının yönetimini ve atanmasını basitleştirir. İlke kümelerini gruplandırıp tek bir öğe haline getirerek basitleştirirler. Örneğin, Azure Güvenlik Merkezinizdeki tüm kullanılabilir güvenlik önerilerini izlemeyi hedefleyen **Azure Güvenlik Merkezi'nde İzlemeyi Etkinleştirme** başlıklı bir girişim oluşturabilirsiniz.
 
 > [!NOTE]
-> The SDK, such as Azure CLI and Azure PowerShell, use properties and parameters named **PolicySet** to refer to initiatives.
+> Azure CLı ve Azure PowerShell gibi SDK, girişimlere başvurmak için **Policyset** adlı özellikleri ve parametreleri kullanır.
 
 Bu girişimin altında sahip olabileceğiniz ilke tanımlarından bazıları şunlardır:
 
 - **Güvenlik Merkezi’ndeki şifrelenmemiş SQL Veritabanı’nı izleme** – Şifrelenmemiş SQL veritabanlarını ve sunucuları izlemek için.
-- **Monitor OS vulnerabilities in Security Center** – For monitoring servers that don't satisfy the configured baseline.
+- **Güvenlik Merkezi 'nde işletim sistemi güvenlik açıklarını** izleme – yapılandırılmış temeli karşılamayan sunucuları izleme.
 - **Güvenlik Merkezi’ndeki eksik Endpoint Protection’ı izleme** – Yüklü bir bitiş noktası koruma aracısı olmadan sunucuları izlemek için.
 
 ## <a name="initiative-assignment"></a>Girişim ataması
 
 İlke ataması gibi, girişim ataması da belirli bir kapsama atanmış olan girişim tanımıdır. Girişim atamaları, her kapsam için birkaç girişim tanımları yapma ihtiyacını azaltır. Bu kapsamın dahilinde de yönetim gruplarından kaynak gruplarına kadar birçok grup bulunabilir.
 
-Each initiative is assignable to different scopes. One initiative can be assigned to both **subscriptionA** and **subscriptionB**.
+Her girişim farklı kapsamlara atanabilir. Bir girişim hem **Subscriptiona** hem de **subscriptionb**öğesine atanabilir.
 
 ## <a name="initiative-parameters"></a>Girişim parametreleri
 
-İlke parametreleri gibi, girişim parametreleri de fazlalıkları azaltarak girişim yönetiminin basitleştirilmesine yardımcı olur. Initiative parameters are parameters being used by the policy definitions within the initiative.
+İlke parametreleri gibi, girişim parametreleri de fazlalıkları azaltarak girişim yönetiminin basitleştirilmesine yardımcı olur. Girişim parametreleri, girişim dahilindeki ilke tanımları tarafından kullanılan parametrelerdir.
 
 Örneğin **initiativeC** adına her biri farklı bir parametre türü bekleyen **policyA** ve **policyB** ilke tanımlarına sahip olan bir girişim tanımına sahip olduğunuzu düşünelim:
 
@@ -109,34 +109,34 @@ Each initiative is assignable to different scopes. One initiative can be assigne
 Bu senaryoda **initiativeC** için girişim parametreleri tanımlanırken üç seçeneğiniz vardır:
 
 - Bu girişim dahilinde ilke tanımlarının parametrelerini kullanın: Bu örnekte, *allowedLocations* ve *allowedSingleLocation*, **initiativeC** için girişim parametreleri olur.
-- Bu girişim tanımındaki ilke tanımlarının parametrelerine değerler sağlayın. In this example, you can provide a list of locations to **policyA's parameter – allowedLocations** and **policyB's parameter – allowedSingleLocation**. Bu girişimin atamasını yaparken değerleri de sağlayabilirsiniz.
+- Bu girişim tanımındaki ilke tanımlarının parametrelerine değerler sağlayın. Bu örnekte, **Policya 'ın parametresi – allowedLocations** ve **policyb 'Nin parametresi – allowedsinglelocation**için konumların bir listesini sağlayabilirsiniz. Bu girişimin atamasını yaparken değerleri de sağlayabilirsiniz.
 - Bu girişimin atamasını yaparken kullanılabilecek bir *değer* seçenekleri listesi sağlayın. Bu girişimi atadığınızda, girişim dahilindeki ilke tanımlarından alınan parametreler yalnızca bu sağlanan listedeki değerleri alabilir.
 
-When creating value options in an initiative definition, you're unable to input a different value during the initiative assignment because it's not part of the list.
+Bir girişim tanımındaki değer seçenekleri oluştururken, listenin bir parçası olmadığı için girişim ataması sırasında farklı bir değer giriş alamıyoruz.
 
-## <a name="maximum-count-of-azure-policy-objects"></a>Maximum count of Azure Policy objects
+## <a name="maximum-count-of-azure-policy-objects"></a>Maksimum Azure Ilke nesnesi sayısı
 
 [!INCLUDE [policy-limits](../../../includes/azure-policy-limits.md)]
 
 ## <a name="recommendations-for-managing-policies"></a>İlkeleri yönetme ile ilgili öneriler
 
-Here are a few pointers and tips to keep in mind:
+İşaretçiler ve göz önünde bulundurmanız gereken birkaç şunlardır:
 
-- Start with an audit effect instead of a deny effect to track impact of your policy definition on the resources in your environment. If you have scripts already in place to autoscale your applications, setting a deny effect may hinder such automation tasks already in place.
+- Ortamınızdaki kaynaklar üzerindeki etkisini, ilke tanımı izlemek için reddetme etkisinin yerine bir denetim etkisiyle başlayın. Otomatik olarak ölçeklendirmek için komut dosyaları zaten varsa, reddetme etkisi ayarlamak, uygulamalarınıza gibi otomasyon görevleri zaten yerinde aksatabilir.
 
-- Consider organizational hierarchies when creating definitions and assignments. We recommend creating definitions at higher levels such as the management group or subscription level. Then, create the assignment at the next child level. If you create a definition at a management group, the assignment can be scoped down to a subscription or resource group within that management group.
+- Tanımları ve atamaları oluştururken kuruluş hiyerarşilerini göz önünde bulundurun. Yönetim grubu gibi üst düzey veya abonelik düzeyinde tanımları oluşturmanızı öneririz. Ardından, sonraki alt düzeyde atama oluşturun. Bir yönetim grubu tanımı oluşturursanız, bir abonelik veya kaynak grubu, yönetim grubu içinde aşağı atama sınırlayabilirsiniz.
 
-- We recommend creating and assigning initiative definitions even for a single policy definition.
-  For example, you have policy definition *policyDefA* and create it under initiative definition *initiativeDefC*. If you create another policy definition later for *policyDefB* with goals similar to *policyDefA*, you can add it under *initiativeDefC* and track them together.
+- Oluşturma ve hatta tek bir ilke tanımı için girişim tanımları atama öneririz.
+  Örneğin, ilke tanımı *policyDefA* ve bunu girişim tanımı *initiativeDefC*altında oluşturabilirsiniz. *Policydefb* için daha sonra *policyDefA*benzeri hedefleri olan bir Ilke tanımı oluşturursanız, *initiativeDefC* altına ekleyebilir ve bunları birlikte izleyebilirsiniz.
 
-- Once you've created an initiative assignment, policy definitions added to the initiative also become part of that initiatives assignments.
+- Girişim ataması oluşturduktan sonra eklenen girişime ilke tanımları da bu girişim atamaları bir parçası haline gelir.
 
-- When an initiative assignment is evaluated, all policies within the initiative are also evaluated.
-  If you need to evaluate a policy individually, it's better to not include it in an initiative.
+- Girişim ataması değerlendirildiğinde, girişim dahilindeki tüm ilkeleri ayrıca değerlendirilir.
+  Ayrı ayrı bir ilke değerlendirmeniz gerekiyorsa, içinde bir girişim içermeyecek şekilde daha iyidir.
 
-## <a name="video-overview"></a>Video overview
+## <a name="video-overview"></a>Videoya genel bakış
 
-Aşağıdaki Azure İlkesi genel bakış videosu Build 2018 etkinliğinde kaydedilmiştir. For slides or video download, visit [Govern your Azure environment through Azure Policy](https://channel9.msdn.com/events/Build/2018/THR2030) on Channel 9.
+Aşağıdaki Azure İlkesi genel bakış videosu Build 2018 etkinliğinde kaydedilmiştir. Slaytlar veya video indirme için, Kanal 9 ' da [Azure ilkesi aracılığıyla Azure ortamınızı](https://channel9.msdn.com/events/Build/2018/THR2030) yönetme makalesini ziyaret edin.
 
 > [!VIDEO https://www.youtube.com/embed/dxMaYF2GB7o]
 
@@ -144,6 +144,6 @@ Aşağıdaki Azure İlkesi genel bakış videosu Build 2018 etkinliğinde kayded
 
 Artık Azure İlkesi ve bazı önemli kavramlar ile ilgili bir genel bakışa sahipsiniz, önerdiğimiz diğer adımları aşağıda bulabilirsiniz:
 
-- [Assign a policy definition using the portal](./assign-policy-portal.md).
-- [Assign a policy definition using the Azure CLI](./assign-policy-azurecli.md).
-- [Assign a policy definition using PowerShell](./assign-policy-powershell.md).
+- [Portalı kullanarak bir ilke tanımı atayın](./assign-policy-portal.md).
+- [Azure CLI kullanarak bir ilke tanımı atayın](./assign-policy-azurecli.md).
+- [PowerShell kullanarak bir ilke tanımı atayın](./assign-policy-powershell.md).

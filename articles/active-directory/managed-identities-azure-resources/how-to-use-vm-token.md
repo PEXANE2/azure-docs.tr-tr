@@ -1,6 +1,6 @@
 ---
-title: Use managed identities on a virtual machine to acquire access token - Azure AD
-description: Step by step instructions and examples for using managed identities for Azure resources on a virtual machines to acquire an OAuth access token.
+title: Erişim belirteci almak için bir sanal makinede Yönetilen kimlikler kullanma-Azure AD
+description: Bir OAuth erişim belirteci almak için bir sanal makinelerde Azure kaynakları için yönetilen kimliklerin kullanılmasına yönelik adım adım yönergeler ve örnekler.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,56 +15,56 @@ ms.workload: identity
 ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d14debff8baf4bdeb808b32e64b389ad0f9e2f38
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 443f1eb1576f2d6eb28d0de16f37e37912b707b9
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232208"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547348"
 ---
-# <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>How to use managed identities for Azure resources on an Azure VM to acquire an access token 
+# <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Erişim belirteci almak için bir Azure VM 'de Azure kaynakları için Yönetilen kimlikler kullanma 
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]  
 
-Managed identities for Azure resources provides Azure services with an automatically managed identity in Azure Active Directory. You can use this identity to authenticate to any service that supports Azure AD authentication, without having credentials in your code. 
+Azure kaynakları için Yönetilen kimlikler, Azure Active Directory ' de otomatik olarak yönetilen bir kimlikle Azure hizmetleri sağlar. Bu kimliği, kodunuzda kimlik bilgileri olmadan Azure AD kimlik doğrulamasını destekleyen herhangi bir hizmette kimlik doğrulaması yapmak için kullanabilirsiniz. 
 
-This article provides various code and script examples for token acquisition, as well as guidance on important topics such as handling token expiration and HTTP errors. 
+Bu makalede, belirteç alımı için çeşitli kod ve betik örnekleri ve ayrıca belirteç süre sonu ve HTTP hatalarını işleme gibi önemli konularda rehberlik sağlanır. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-If you plan to use the Azure PowerShell examples in this article, be sure to install the latest version of [Azure PowerShell](/powershell/azure/install-az-ps).
+Bu makaledeki Azure PowerShell örnekleri kullanmayı planlıyorsanız, [Azure PowerShell](/powershell/azure/install-az-ps)en son sürümünü yüklediğinizden emin olun.
 
 
 > [!IMPORTANT]
-> - All sample code/script in this article assumes the client is running on a virtual machine with managed identities for Azure resources. Use the virtual machine "Connect" feature in the Azure portal, to remotely connect to your VM. For details on enabling managed identities for Azure resources on a VM, see [Configure managed identities for Azure resources on a VM using the Azure portal](qs-configure-portal-windows-vm.md), or one of the variant articles (using PowerShell, CLI, a template, or an Azure SDK). 
+> - Bu makaledeki tüm örnek kod/betik, istemcinin Azure kaynakları için yönetilen kimliklere sahip bir sanal makinede çalıştığını varsayar. VM 'nize uzaktan bağlanmak için Azure portal sanal makine "Bağlan" özelliğini kullanın. Bir VM 'de Azure kaynakları için yönetilen kimlikleri etkinleştirme hakkında daha fazla bilgi için bkz. Azure portal veya varyant makalelerinden birini [kullanarak BIR VM 'de Azure kaynakları için yönetilen kimlikleri yapılandırma](qs-configure-portal-windows-vm.md)(POWERSHELL, CLI, bir şablon veya BIR Azure SDK kullanarak). 
 
 > [!IMPORTANT]
-> - The security boundary of managed identities for Azure resources, is the resource it's being used on. All code/scripts running on a virtual machine can request and retrieve tokens for any managed identities available on it. 
+> - Azure kaynakları için yönetilen kimliklerin güvenlik sınırı, kullanıldığı kaynaktır. Bir sanal makinede çalışan tüm kod/betikler, üzerinde kullanılabilir olan tüm yönetilen kimlikler için belirteçleri isteyebilir ve alabilir. 
 
 ## <a name="overview"></a>Genel Bakış
 
-A client application can request managed identities for Azure resources [app-only access token](../develop/developer-glossary.md#access-token) for accessing a given resource. The token is [based on the managed identities for Azure resources service principal](overview.md#how-does-it-work). As such, there is no need for the client to register itself to obtain an access token under its own service principal. The token is suitable for use as a bearer token in [service-to-service calls requiring client credentials](../develop/v1-oauth2-client-creds-grant-flow.md).
+Bir istemci uygulaması, belirli bir kaynağa erişmek için yalnızca Azure kaynakları için Yönetilen kimlikler, [yalnızca uygulama erişim belirteci](../develop/developer-glossary.md#access-token) isteyebilir. Belirteç, [Azure kaynakları hizmet sorumlusu için yönetilen kimliklere dayalıdır](overview.md#how-does-the-managed-identities-for-azure-resources-work). Bu nedenle, istemcinin kendi hizmet sorumlusu altında erişim belirteci almak için kendisini kaydetmesi gerekmez. Belirteç, [istemci kimlik bilgileri gerektiren hizmetten hizmete çağrılar](../develop/v1-oauth2-client-creds-grant-flow.md)için bir taşıyıcı belirteci olarak kullanım için uygundur.
 
 |  |  |
 | -------------- | -------------------- |
-| [Get a token using HTTP](#get-a-token-using-http) | Protocol details for managed identities for Azure resources token endpoint |
-| [Get a token using the Microsoft.Azure.Services.AppAuthentication library for .NET](#get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net) | Example of using the Microsoft.Azure.Services.AppAuthentication library from a .NET client
-| [Get a token using C#](#get-a-token-using-c) | Example of using managed identities for Azure resources REST endpoint from a C# client |
-| [Get a token using Java](#get-a-token-using-java) | Example of using managed identities for Azure resources REST endpoint from a Java client |
-| [Get a token using Go](#get-a-token-using-go) | Example of using managed identities for Azure resources REST endpoint from a Go client |
-| [Get a token using Azure PowerShell](#get-a-token-using-azure-powershell) | Example of using managed identities for Azure resources REST endpoint from a PowerShell client |
-| [Get a token using CURL](#get-a-token-using-curl) | Example of using managed identities for Azure resources REST endpoint from a Bash/CURL client |
-| Handling token caching | Guidance for handling expired access tokens |
-| [Hata işleme](#error-handling) | Guidance for handling HTTP errors returned from the managed identities for Azure resources token endpoint |
-| [Resource IDs for Azure services](#resource-ids-for-azure-services) | Where to get resource IDs for supported Azure services |
+| [HTTP kullanarak belirteç al](#get-a-token-using-http) | Azure kaynakları belirteç uç noktası için Yönetilen kimlikler protokol ayrıntıları |
+| [.NET için Microsoft. Azure. Services. AppAuthentication kitaplığını kullanarak bir belirteç alın](#get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net) | .NET istemcisinden Microsoft. Azure. Services. AppAuthentication kitaplığını kullanma örneği
+| [Kullanarak belirteç alC#](#get-a-token-using-c) | C# İstemciden Azure kaynakları REST uç noktası için Yönetilen kimlikler kullanma örneği |
+| [Java kullanarak belirteç edinme](#get-a-token-using-java) | Java istemcisinden Azure kaynakları REST uç noktası için Yönetilen kimlikler kullanma örneği |
+| [Go kullanarak belirteç alın](#get-a-token-using-go) | Bir go istemcisinden Azure kaynakları REST uç noktası için Yönetilen kimlikler kullanma örneği |
+| [Azure PowerShell kullanarak belirteç alın](#get-a-token-using-azure-powershell) | PowerShell istemcisinden Azure kaynakları REST uç noktası için Yönetilen kimlikler kullanma örneği |
+| [KıVRıMLı kullanarak belirteç alın](#get-a-token-using-curl) | Bir bash/KıVRıMLı istemciden Azure kaynakları REST uç noktası için Yönetilen kimlikler kullanma örneği |
+| Belirteç önbelleğe alma işleme | Süre dolma erişim belirteçlerini işlemeye yönelik kılavuz |
+| [Hata işleme](#error-handling) | Azure kaynakları belirteç uç noktası için yönetilen kimliklerden döndürülen HTTP hatalarını işlemeye yönelik kılavuz |
+| [Azure hizmetleri için kaynak kimlikleri](#resource-ids-for-azure-services) | Desteklenen Azure hizmetleri için kaynak kimliklerinin nereden alınacağı |
 
-## <a name="get-a-token-using-http"></a>Get a token using HTTP 
+## <a name="get-a-token-using-http"></a>HTTP kullanarak belirteç al 
 
-The fundamental interface for acquiring an access token is based on REST, making it accessible to any client application running on the VM that can make HTTP REST calls. This is similar to the Azure AD programming model, except the client uses an endpoint on the virtual machine (vs an Azure AD endpoint).
+Erişim belirteci almak için temel arabirim, geri kalanı temel alarak, VM üzerinde çalışan ve HTTP REST çağrısı yapan tüm istemci uygulamaları için erişilebilir hale getirir. Bu, istemci sanal makinede bir uç nokta (Azure AD uç noktası) kullandığından Azure AD programlama modeline benzer.
 
-Sample request using the Azure Instance Metadata Service (IMDS) endpoint *(recommended)* :
+Azure Instance Metadata Service (ıMDS) uç noktasını kullanan örnek istek *(önerilir)* :
 
 ```
 GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' HTTP/1.1 Metadata: true
@@ -72,16 +72,16 @@ GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-0
 
 | Öğe | Açıklama |
 | ------- | ----------- |
-| `GET` | The HTTP verb, indicating you want to retrieve data from the endpoint. In this case, an OAuth access token. | 
-| `http://169.254.169.254/metadata/identity/oauth2/token` | The managed identities for Azure resources endpoint for the Instance Metadata Service. |
-| `api-version`  | A query string parameter, indicating the API version for the IMDS endpoint. Please use API version `2018-02-01` or greater. |
-| `resource` | A query string parameter, indicating the App ID URI of the target resource. It also appears in the `aud` (audience) claim of the issued token. This example requests a token to access Azure Resource Manager, which has an App ID URI of https://management.azure.com/. |
-| `Metadata` | An HTTP request header field, required by managed identities for Azure resources as a mitigation against Server Side Request Forgery (SSRF) attack. This value must be set to "true", in all lower case. |
-| `object_id` | (Optional) A query string parameter, indicating the object_id of the managed identity you would like the token for. Required, if your VM has multiple user-assigned managed identities.|
-| `client_id` | (Optional) A query string parameter, indicating the client_id of the managed identity you would like the token for. Required, if your VM has multiple user-assigned managed identities.|
-| `mi_res_id` | (Optional) A query string parameter, indicating the mi_res_id (Azure Resource ID) of the managed identity you would like the token for. Required, if your VM has multiple user-assigned managed identities. |
+| `GET` | Uç noktadan veri almak istediğinizi gösteren HTTP fiili. Bu durumda, bir OAuth erişim belirteci. | 
+| `http://169.254.169.254/metadata/identity/oauth2/token` | Instance Metadata Service için Azure kaynakları için Yönetilen kimlikler uç noktası. |
+| `api-version`  | IMDS uç noktası için API sürümünü gösteren bir sorgu dizesi parametresi. Lütfen API sürümü `2018-02-01` veya üstünü kullanın. |
+| `resource` | Hedef kaynağın uygulama KIMLIĞI URI 'sini gösteren bir sorgu dizesi parametresi. Ayrıca, verilen belirtecin `aud` (hedef kitle) talebinde de görüntülenir. Bu örnek, https://management.azure.com/uygulama KIMLIĞI URI 'SI olan Azure Resource Manager erişmek için bir belirteç ister. |
+| `Metadata` | Sunucu tarafı Isteği forgery (SSRF) saldırılarına karşı risk azaltma olarak Azure kaynakları için Yönetilen kimlikler için gereken bir HTTP istek üst bilgisi alanı. Bu değer, tüm küçük durumlarda "true" olarak ayarlanmalıdır. |
+| `object_id` | Seçim Belirteci istediğiniz yönetilen kimliğin object_id belirten bir sorgu dizesi parametresi. SANAL makinenizde birden çok kullanıcı tarafından atanan yönetilen kimlik varsa, gereklidir.|
+| `client_id` | Seçim Belirteci istediğiniz yönetilen kimliğin client_id belirten bir sorgu dizesi parametresi. SANAL makinenizde birden çok kullanıcı tarafından atanan yönetilen kimlik varsa, gereklidir.|
+| `mi_res_id` | Seçim Belirteci istediğiniz yönetilen kimliğin mi_res_id (Azure Kaynak KIMLIĞI) belirten bir sorgu dizesi parametresi. SANAL makinenizde birden çok kullanıcı tarafından atanan yönetilen kimlik varsa, gereklidir. |
 
-Sample request using the managed identities for Azure resources VM Extension Endpoint *(planned for deprecation in January 2019)* :
+Azure kaynakları için yönetilen kimlikleri kullanan örnek istek VM Uzantısı uç noktası *(2019 Ocak 'ta kullanımdan kaldırma için planlanmış)* :
 
 ```http
 GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.com%2F HTTP/1.1
@@ -90,14 +90,14 @@ Metadata: true
 
 | Öğe | Açıklama |
 | ------- | ----------- |
-| `GET` | The HTTP verb, indicating you want to retrieve data from the endpoint. In this case, an OAuth access token. | 
-| `http://localhost:50342/oauth2/token` | The managed identities for Azure resources endpoint, where 50342 is the default port and is configurable. |
-| `resource` | A query string parameter, indicating the App ID URI of the target resource. It also appears in the `aud` (audience) claim of the issued token. This example requests a token to access Azure Resource Manager, which has an App ID URI of https://management.azure.com/. |
-| `Metadata` | An HTTP request header field, required by managed identities for Azure resources as a mitigation against Server Side Request Forgery (SSRF) attack. This value must be set to "true", in all lower case.|
-| `object_id` | (Optional) A query string parameter, indicating the object_id of the managed identity you would like the token for. Required, if your VM has multiple user-assigned managed identities.|
-| `client_id` | (Optional) A query string parameter, indicating the client_id of the managed identity you would like the token for. Required, if your VM has multiple user-assigned managed identities.|
+| `GET` | Uç noktadan veri almak istediğinizi gösteren HTTP fiili. Bu durumda, bir OAuth erişim belirteci. | 
+| `http://localhost:50342/oauth2/token` | Azure kaynakları için Yönetilen kimlikler uç noktası, burada 50342 varsayılan bağlantı noktasıdır ve yapılandırılabilir. |
+| `resource` | Hedef kaynağın uygulama KIMLIĞI URI 'sini gösteren bir sorgu dizesi parametresi. Ayrıca, verilen belirtecin `aud` (hedef kitle) talebinde de görüntülenir. Bu örnek, https://management.azure.com/uygulama KIMLIĞI URI 'SI olan Azure Resource Manager erişmek için bir belirteç ister. |
+| `Metadata` | Sunucu tarafı Isteği forgery (SSRF) saldırılarına karşı risk azaltma olarak Azure kaynakları için Yönetilen kimlikler için gereken bir HTTP istek üst bilgisi alanı. Bu değer, tüm küçük durumlarda "true" olarak ayarlanmalıdır.|
+| `object_id` | Seçim Belirteci istediğiniz yönetilen kimliğin object_id belirten bir sorgu dizesi parametresi. SANAL makinenizde birden çok kullanıcı tarafından atanan yönetilen kimlik varsa, gereklidir.|
+| `client_id` | Seçim Belirteci istediğiniz yönetilen kimliğin client_id belirten bir sorgu dizesi parametresi. SANAL makinenizde birden çok kullanıcı tarafından atanan yönetilen kimlik varsa, gereklidir.|
 
-Sample response:
+Örnek yanıt:
 
 ```json
 HTTP/1.1 200 OK
@@ -115,21 +115,21 @@ Content-Type: application/json
 
 | Öğe | Açıklama |
 | ------- | ----------- |
-| `access_token` | The requested access token. When calling a secured REST API, the token is embedded in the `Authorization` request header field as a "bearer" token, allowing the API to authenticate the caller. | 
-| `refresh_token` | Not used by managed identities for Azure resources. |
-| `expires_in` | The number of seconds the access token continues to be valid, before expiring, from time of issuance. Time of issuance can be found in the token's `iat` claim. |
-| `expires_on` | The timespan when the access token expires. The date is represented as the number of seconds from "1970-01-01T0:0:0Z UTC"  (corresponds to the token's `exp` claim). |
-| `not_before` | The timespan when the access token takes effect, and can be accepted. The date is represented as the number of seconds from "1970-01-01T0:0:0Z UTC" (corresponds to the token's `nbf` claim). |
-| `resource` | The resource the access token was requested for, which matches the `resource` query string parameter of the request. |
-| `token_type` | The type of token, which is a "Bearer" access token, which means the resource can give access to the bearer of this token. |
+| `access_token` | İstenen erişim belirteci. Güvenli bir REST API çağrılırken, belirteç, `Authorization` istek üst bilgisi alanına bir "taşıyıcı" belirteci olarak katıştırılır ve bu da API 'nin çağıranın kimliğini doğrulamasına izin verir. | 
+| `refresh_token` | Azure kaynakları için Yönetilen kimlikler tarafından kullanılmıyor. |
+| `expires_in` | Erişim belirtecinin, verme zamanından önce geçerli olmaya devam etmesi için geçmesi gereken saniye sayısı. Verme zamanı belirtecinin `iat` talebinde bulunabilir. |
+| `expires_on` | Erişim belirtecinin süresi dolduğu zaman aralığı. Tarih, "1970-01-01T0:0: 0Z UTC" (belirtecin `exp` talebine karşılık gelir) saniye sayısı olarak gösterilir. |
+| `not_before` | Erişim belirteci yürürlüğe girer ve kabul edilebilir. Tarih, "1970-01-01T0:0: 0Z UTC" (belirtecin `nbf` talebine karşılık gelir) saniye sayısı olarak gösterilir. |
+| `resource` | İsteğin `resource` sorgu dizesi parametresiyle eşleşen erişim belirtecinin istendiği kaynak. |
+| `token_type` | "Taşıyıcı" erişim belirteci olan belirtecin türü, bu, kaynağın bu belirtecin taşıyıcının erişim izni verebileceği anlamına gelir. |
 
-## <a name="get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net"></a>Get a token using the Microsoft.Azure.Services.AppAuthentication library for .NET
+## <a name="get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net"></a>.NET için Microsoft. Azure. Services. AppAuthentication kitaplığını kullanarak bir belirteç alın
 
-For .NET applications and functions, the simplest way to work with managed identities for Azure resources is through the Microsoft.Azure.Services.AppAuthentication package. This library will also allow you to test your code locally on your development machine, using your user account from Visual Studio, the [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest), or Active Directory Integrated Authentication. For more on local development options with this library, see the [Microsoft.Azure.Services.AppAuthentication reference](/azure/key-vault/service-to-service-authentication). This section shows you how to get started with the library in your code.
+.NET uygulamaları ve işlevleri için, Azure kaynakları için Yönetilen kimlikler ile çalışmanın en kolay yolu Microsoft. Azure. Services. AppAuthentication paketidir. Bu kitaplık Ayrıca, Visual Studio, [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)veya Active Directory tümleşik kimlik doğrulaması için kullanıcı hesabınızı kullanarak kodunuzu geliştirme makinenizde yerel olarak sınamanızı sağlar. Bu kitaplıkla ilgili yerel geliştirme seçenekleri hakkında daha fazla bilgi için [Microsoft. Azure. Services. AppAuthentication başvurusuna](/azure/key-vault/service-to-service-authentication)bakın. Bu bölümde, kodunuzda kitaplığı kullanmaya nasıl başlacağınız gösterilmektedir.
 
-1. Add references to the [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) and [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet packages to your application.
+1. Uygulamanıza [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) ve [Microsoft. Azure. keykasa](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet paketlerine başvurular ekleyin.
 
-2.  Add the following code to your application:
+2.  Uygulamanıza aşağıdaki kodu ekleyin:
 
     ```csharp
     using Microsoft.Azure.Services.AppAuthentication;
@@ -141,9 +141,9 @@ For .NET applications and functions, the simplest way to work with managed ident
     var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
     ```
     
-To learn more about Microsoft.Azure.Services.AppAuthentication and the operations it exposes, see the [Microsoft.Azure.Services.AppAuthentication reference](/azure/key-vault/service-to-service-authentication) and the [App Service and KeyVault with managed identities for Azure resources .NET sample](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet).
+Microsoft. Azure. Services. AppAuthentication ve sunduğu işlemler hakkında daha fazla bilgi edinmek için bkz. [Azure kaynakları için Yönetilen kimlikler .net örneği Ile](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet) [Microsoft. Azure. Services. appauthentication başvurusu](/azure/key-vault/service-to-service-authentication) ve App Service ve keykasası.
 
-## <a name="get-a-token-using-c"></a>Get a token using C#
+## <a name="get-a-token-using-c"></a>Kullanarak belirteç alC#
 
 ```csharp
 using System;
@@ -176,9 +176,9 @@ catch (Exception e)
 
 ```
 
-## <a name="get-a-token-using-java"></a>Get a token using Java
+## <a name="get-a-token-using-java"></a>Java kullanarak belirteç edinme
 
-Use this [JSON library](https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core/2.9.4) to retrieve a token using Java.
+Java kullanarak bir belirteç almak için bu [JSON kitaplığını](https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core/2.9.4) kullanın.
 
 ```Java
 import java.io.*;
@@ -220,7 +220,7 @@ class GetMSIToken {
 }
 ```
 
-## <a name="get-a-token-using-go"></a>Get a token using Go
+## <a name="get-a-token-using-go"></a>Go kullanarak belirteç alın
 
 ```
 package main
@@ -298,18 +298,18 @@ func main() {
 }
 ```
 
-## <a name="get-a-token-using-azure-powershell"></a>Get a token using Azure PowerShell
+## <a name="get-a-token-using-azure-powershell"></a>Azure PowerShell kullanarak belirteç alın
 
-The following example demonstrates how to use the managed identities for Azure resources REST endpoint from a PowerShell client to:
+Aşağıdaki örnek, bir PowerShell istemcisinden Azure kaynakları REST uç noktası için yönetilen kimliklerin nasıl kullanılacağını gösterir:
 
-1. Acquire an access token.
-2. Use the access token to call an Azure Resource Manager REST API and get information about the VM. Be sure to substitute your subscription ID, resource group name, and virtual machine name for `<SUBSCRIPTION-ID>`, `<RESOURCE-GROUP>`, and `<VM-NAME>`, respectively.
+1. Erişim belirteci alın.
+2. Bir Azure Resource Manager REST API çağırmak ve VM hakkında bilgi almak için erişim belirtecini kullanın. Sırasıyla `<SUBSCRIPTION-ID>`, `<RESOURCE-GROUP>`ve `<VM-NAME>`için abonelik KIMLIĞINIZI, kaynak grubu adını ve sanal makine adını değiştirdiğinizden emin olun.
 
 ```azurepowershell
 Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -Headers @{Metadata="true"}
 ```
 
-Example on how to parse the access token from the response:
+Yanıttan erişim belirtecini ayrıştırmaya ilişkin örnek:
 ```azurepowershell
 # Get an access token for managed identities for Azure resources
 $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' `
@@ -325,14 +325,14 @@ echo $vmInfoRest
 
 ```
 
-## <a name="get-a-token-using-curl"></a>Get a token using CURL
+## <a name="get-a-token-using-curl"></a>KıVRıMLı kullanarak belirteç alın
 
 ```bash
 curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -H Metadata:true -s
 ```
 
 
-Example on how to parse the access token from the response:
+Yanıttan erişim belirtecini ayrıştırmaya ilişkin örnek:
 
 ```bash
 response=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -H Metadata:true -s)
@@ -340,69 +340,69 @@ access_token=$(echo $response | python -c 'import sys, json; print (json.load(sy
 echo The managed identities for Azure resources access token is $access_token
 ```
 
-## <a name="token-caching"></a>Token caching
+## <a name="token-caching"></a>Belirteç önbelleğe alma
 
-While the managed identities for Azure resources subsystem being used (IMDS/managed identities for Azure resources VM Extension) does cache tokens, we also recommend to implement token caching in your code. As a result, you should prepare for scenarios where the resource indicates that the token is expired. 
+Kullanılmakta olan Azure kaynakları alt sistemi için Yönetilen kimlikler (Azure kaynakları VM uzantısı için ıDS/Yönetilen kimlikler) önbellek belirteçleri yapar, ayrıca kodunuzda belirteç önbelleğe alma işlemini de uygulamanızı öneririz. Sonuç olarak, kaynağın belirtecin dolduğunu gösterdiği senaryolar için hazırlanmalısınız. 
 
-On-the-wire calls to Azure AD result only when:
-- cache miss occurs due to no token in the managed identities for Azure resources subsystem cache
-- the cached token is expired
+Yalnızca şu durumlarda Azure AD 'ye yönelik hat üzeri aramalar:
+- Azure kaynakları alt sistemi önbelleği için yönetilen kimliklerden belirteç olmaması nedeniyle önbellek isabetsizliği meydana geldi
+- önbelleğe alınan belirtecin geçerliliği zaman aşımına uğradı
 
 ## <a name="error-handling"></a>Hata işleme
 
-The managed identities for Azure resources endpoint signals errors via the status code field of the HTTP response message header, as either 4xx or 5xx errors:
+Azure kaynakları için Yönetilen kimlikler uç noktası, HTTP yanıt iletisi üstbilgisinin durum kodu alanı aracılığıyla 4xx veya 5xx hatası olarak hata verir:
 
-| Status Code | Error Reason | How To Handle |
+| Durum kodu | Hata nedeni | Nasıl Idare edilecek |
 | ----------- | ------------ | ------------- |
-| 404 Not found. | IMDS endpoint is updating. | Retry with Expontential Backoff. See guidance below. |
-| 429 Too many requests. |  IMDS Throttle limit reached. | Retry with Exponential Backoff. See guidance below. |
-| 4xx Error in request. | One or more of the request parameters was incorrect. | Do not retry.  Examine the error details for more information.  4xx errors are design-time errors.|
-| 5xx Transient error from service. | The managed identities for Azure resources sub-system or Azure Active Directory returned a transient error. | It is safe to retry after waiting for at least 1 second.  If you retry too quickly or too often, IMDS and/or Azure AD may return a rate limit error (429).|
-| timeout | IMDS endpoint is updating. | Retry with Expontential Backoff. See guidance below. |
+| 404 bulunamadı. | IDS uç noktası güncelleştiriliyor. | Expontential geri alma ile yeniden deneyin. Aşağıdaki rehbere bakın. |
+| 429 çok fazla istek. |  IDS kısıtlama sınırına ulaşıldı. | Üstel geri alma ile yeniden deneyin. Aşağıdaki rehbere bakın. |
+| istekte 4xx hatası. | İstek parametrelerinden biri veya daha fazlası hatalıydı. | Yeniden denemeyin.  Daha fazla bilgi için hata ayrıntılarını inceleyin.  4 xx hata tasarım zamanı hatalardır.|
+| 5xx hizmetten geçici bir hata. | Azure kaynakları için Yönetilen kimlikler alt sistem veya Azure Active Directory geçici bir hata döndürdü. | En az 1 saniye bekledikten sonra yeniden denemek güvenlidir.  Çok hızlı veya çok sık yeniden deneme yaparsanız, ıDS ve/veya Azure AD bir hız sınırı hatası döndürebilir (429).|
+| timeout | IDS uç noktası güncelleştiriliyor. | Expontential geri alma ile yeniden deneyin. Aşağıdaki rehbere bakın. |
 
-If an error occurs, the corresponding HTTP response body contains JSON with the error details:
+Bir hata oluşursa, karşılık gelen HTTP yanıt gövdesi hata ayrıntılarına sahip JSON içerir:
 
 | Öğe | Açıklama |
 | ------- | ----------- |
-| error   | Error identifier. |
-| error_description | Verbose description of error. **Error descriptions can change at any time. Do not write code that branches based on values in the error description.**|
+| error   | Hata tanımlayıcısı. |
+| error_description | Hatanın ayrıntılı açıklaması. **Hata açıklamaları herhangi bir zamanda değişebilir. Hata açıklamasındaki değerlere göre dalların kodunu yazma.**|
 
-### <a name="http-response-reference"></a>HTTP response reference
+### <a name="http-response-reference"></a>HTTP yanıt başvurusu
 
-This section documents the possible error responses. A "200 OK" status is a successful response, and the access token is contained in the response body JSON, in the access_token element.
+Bu bölüm olası hata yanıtlarını belgeler. Bir "200 OK" durumu başarılı bir yanıt ve erişim belirteci access_token öğesinde JSON yanıt gövdesi içinde yer alır.
 
-| Durum kodu | Hata | Error Description | Çözüm |
+| Durum kodu | Hata | Hata açıklaması | Çözüm |
 | ----------- | ----- | ----------------- | -------- |
-| 400 Bad Request | invalid_resource | AADSTS50001: The application named *\<URI\>* was not found in the tenant named *\<TENANT-ID\>* . This can happen if the application has not been installed by the administrator of the tenant or consented to by any user in the tenant. You might have sent your authentication request to the wrong tenant.\ | (Linux only) |
-| 400 Bad Request | bad_request_102 | Required metadata header not specified | Either the `Metadata` request header field is missing from your request, or is formatted incorrectly. The value must be specified as `true`, in all lower case. See the "Sample request" in the preceding REST section for an example.|
-| 401 Unauthorized | unknown_source | Unknown Source *\<URI\>* | Verify that your HTTP GET request URI is formatted correctly. The `scheme:host/resource-path` portion must be specified as `http://localhost:50342/oauth2/token`. See the "Sample request" in the preceding REST section for an example.|
-|           | invalid_request | The request is missing a required parameter, includes an invalid parameter value, includes a parameter more than once, or is otherwise malformed. |  |
-|           | unauthorized_client | The client is not authorized to request an access token using this method. | Caused by a request that didn’t use local loopback to call the extension, or on a VM that doesn’t have managed identities for Azure resources configured correctly. See [Configure managed identities for Azure resources on a VM using the Azure portal](qs-configure-portal-windows-vm.md) if you need assistance with VM configuration. |
-|           | access_denied | The resource owner or authorization server denied the request. |  |
-|           | unsupported_response_type | The authorization server does not support obtaining an access token using this method. |  |
-|           | invalid_scope | The requested scope is invalid, unknown, or malformed. |  |
-| 500 Internal server error | unknown | Failed to retrieve token from the Active directory. For details see logs in *\<file path\>* | Verify that managed identities for Azure resources has been enabled on the VM. See [Configure managed identities for Azure resources on a VM using the Azure portal](qs-configure-portal-windows-vm.md) if you need assistance with VM configuration.<br><br>Also verify that your HTTP GET request URI is formatted correctly, particularly the resource URI specified in the query string. See the "Sample request" in the preceding REST section for an example, or [Azure services that support Azure AD authentication](services-support-msi.md) for a list of services and their respective resource IDs.
+| 400 Hatalı Istek | invalid_resource | AADSTS50001: *\<urı\>* adlı uygulama *\<Kiracı kimliği\>* adlı kiracıda bulunamadı. Bu durum, uygulama kiracının Yöneticisi tarafından yüklenmediyse veya kiracının kiracısındaki herhangi bir kullanıcı tarafından ' a onaylı olması durumunda gerçekleşebilir. Kimlik doğrulama isteğinizi yanlış kiracıya göndermiş olabilirsiniz. \ | (Yalnızca Linux) |
+| 400 Hatalı Istek | bad_request_102 | Gerekli meta veri üst bilgisi belirtilmedi | İsteğiniz için `Metadata` istek üst bilgisi alanı eksik veya yanlış biçimlendirilmiş. Değerin her küçük durumda `true`olarak belirtilmesi gerekir. Bir örnek için önceki REST bölümünde "örnek istek" başlığına bakın.|
+| 401 Yetkisiz | unknown_source | Bilinmeyen kaynak *\<URI\>* | HTTP GET istek URI 'nizin doğru biçimlendirildiğinden emin olun. `scheme:host/resource-path` bölümü `http://localhost:50342/oauth2/token`olarak belirtilmelidir. Bir örnek için önceki REST bölümünde "örnek istek" başlığına bakın.|
+|           | invalid_request | İstekte gerekli bir parametre eksik, geçersiz bir parametre değeri içeriyor, birden fazla parametre içeriyor veya başka şekilde hatalı biçimlendirilmiş. |  |
+|           | unauthorized_client | İstemci bu yöntemi kullanarak bir erişim belirteci isteme yetkisine sahip değil. | Uzantıyı çağırmak için yerel geri döngüyü kullanmayan bir istek veya Azure kaynakları için doğru şekilde yapılandırılmış bir yönetilen kimliği olmayan bir VM 'de neden oldu. VM yapılandırması için yardıma ihtiyacınız varsa [Azure Portal kullanarak VM 'de Azure kaynakları için yönetilen kimlikleri yapılandırma](qs-configure-portal-windows-vm.md) konusuna bakın. |
+|           | access_denied | Kaynak sahibi veya yetkilendirme sunucusu isteği reddetti. |  |
+|           | unsupported_response_type | Yetkilendirme sunucusu, bu yöntemi kullanarak bir erişim belirteci edinmeyi desteklemez. |  |
+|           | invalid_scope | İstenen kapsam geçersiz, bilinmiyor veya hatalı biçimlendirilmiş. |  |
+| 500 iç sunucu hatası | bilinmeyen | Active Directory 'den belirteç alınamadı. Ayrıntılar için *\<dosya yolundaki* günlüklere bakın\> | Azure kaynakları için yönetilen kimliklerin VM 'de etkinleştirildiğini doğrulayın. VM yapılandırması için yardıma ihtiyacınız varsa [Azure Portal kullanarak VM 'de Azure kaynakları için yönetilen kimlikleri yapılandırma](qs-configure-portal-windows-vm.md) konusuna bakın.<br><br>Ayrıca, HTTP GET istek URI 'nizin, özellikle de sorgu dizesinde belirtilen kaynak URI 'sinin doğru biçimlendirildiğinden emin olun. Örneğin önceki REST bölümünde yer alan "örnek isteği" veya hizmetlerin bir listesi ve bunların ilgili kaynak kimlikleri için [Azure AD kimlik doğrulamasını destekleyen Azure hizmetleri](services-support-msi.md) bölümüne bakın.
 
-## <a name="retry-guidance"></a>Retry guidance 
+## <a name="retry-guidance"></a>Yeniden deneme Kılavuzu 
 
-It is recommended to retry if you receive a 404, 429, or 5xx error code (see [Error handling](#error-handling) above).
+404, 429 veya 5xx hata kodu alırsanız yeniden denemeniz önerilir (bkz. Yukarıdaki [hata işleme](#error-handling) ).
 
-Throttling limits apply to the number of calls made to the IMDS endpoint. When the throttling threshold is exceeded, IMDS endpoint limits any further requests while the throttle is in effect. During this period, the IMDS endpoint will return the HTTP status code 429 ("Too many requests"), and the requests fail. 
+Azaltma sınırları, ıMDS uç noktasına yapılan çağrıların sayısı için geçerlidir. Daraltma eşiği aşıldığında, azaltma etkin durumdayken ıDS uç noktası diğer istekleri sınırlandırır. Bu süre boyunca, ıMDS uç noktası 429 ("çok fazla istek") HTTP durum kodunu döndürür ve istekler başarısız olur. 
 
-For retry, we recommend the following strategy: 
+Yeniden denemek için aşağıdaki stratejiyi öneririz: 
 
 | **Yeniden deneme stratejisi** | **Ayarlar** | **Değerler** | **Nasıl çalışır?** |
 | --- | --- | --- | --- |
 |ExponentialBackoff |Yeniden deneme sayısı<br />En düşük geri alma<br />En yüksek geri alma<br />Delta geri alma<br />İlk hızlı yeniden deneme |5<br />0 sn<br />60 sn<br />2 sn<br />yanlış |Deneme 1 - 0 sn gecikme<br />Deneme 2 - yaklaşık 2 sn gecikme<br />Deneme 3 - yaklaşık 6 sn gecikme<br />Deneme 4 - yaklaşık 14 sn gecikme<br />Deneme 5 - yaklaşık 30 sn gecikme |
 
-## <a name="resource-ids-for-azure-services"></a>Resource IDs for Azure services
+## <a name="resource-ids-for-azure-services"></a>Azure hizmetleri için kaynak kimlikleri
 
-See [Azure services that support Azure AD authentication](services-support-msi.md) for a list of resources that support Azure AD and have been tested with managed identities for Azure resources, and their respective resource IDs.
+Azure AD [kimlik doğrulamasını](services-support-msi.md) destekleyen ve Azure kaynakları için Yönetilen kimlikler ve bunlara karşılık gelen kaynak kimlikleri ile test edilmiş bir kaynak listesi için bkz. Azure hizmetleri.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- To enable managed identities for Azure resources on an Azure VM, see [Configure managed identities for Azure resources on a VM using the Azure portal](qs-configure-portal-windows-vm.md).
+- Azure VM 'de Azure kaynakları için yönetilen kimlikleri etkinleştirmek üzere, [Azure Portal kullanarak BIR VM 'de Azure kaynakları için yönetilen kimlikleri yapılandırma](qs-configure-portal-windows-vm.md)konusuna bakın.
 
 
 

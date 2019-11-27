@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Azure Active Directory integration with New Relic | Microsoft Docs'
-description: Learn how to configure single sign-on between Azure Active Directory and New Relic.
+title: 'Öğretici: yeni relik ile tümleştirme Azure Active Directory | Microsoft Docs'
+description: Azure Active Directory ve yeni relik arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -22,223 +22,223 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74233527"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-new-relic"></a>Tutorial: Azure Active Directory integration with New Relic
+# <a name="tutorial-azure-active-directory-integration-with-new-relic"></a>Öğretici: yeni relik ile Azure Active Directory tümleştirme
 
-In this tutorial, you learn how to integrate New Relic with Azure Active Directory (Azure AD).
-Integrating New Relic with Azure AD provides you with the following benefits:
+Bu öğreticide, Azure Active Directory (Azure AD) ile yeni bir relik tümleştirmeyi nasıl tümleştirileceğini öğreneceksiniz.
+Yeni relik 'i Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 
-* You can control in Azure AD who has access to New Relic.
-* You can enable your users to be automatically signed-in to New Relic (Single Sign-On) with their Azure AD accounts.
-* You can manage your accounts in one central location - the Azure portal.
+* Azure AD 'de yeni relik erişimine erişimi olan denetim yapabilirsiniz.
+* Kullanıcılarınızın Azure AD hesaplarıyla yeni bir relik (çoklu oturum açma) ile otomatik olarak oturum açmasını sağlayabilirsiniz.
+* Hesaplarınız bir merkezi konumda - Azure portalında yönetebilir.
 
-If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-To configure Azure AD integration with New Relic, you need the following items:
+Azure AD tümleştirmesini yeni relik ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
-* An Azure AD subscription. If you don't have an Azure AD environment, you can get one-month trial [here](https://azure.microsoft.com/pricing/free-trial/)
-* New Relic single sign-on enabled subscription
+* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü edinebilirsiniz
+* Yeni relik çoklu oturum açma etkin abonelik
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-In this tutorial, you configure and test Azure AD single sign-on in a test environment.
+Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
 
-* New Relic supports **SP** initiated SSO
+* Yeni relik, **SP** tarafından başlatılan SSO 'yu destekler
 
-## <a name="adding-new-relic-from-the-gallery"></a>Adding New Relic from the gallery
+## <a name="adding-new-relic-from-the-gallery"></a>Galeriden yeni relik ekleme
 
-To configure the integration of New Relic into Azure AD, you need to add New Relic from the gallery to your list of managed SaaS apps.
+Yeni relik 'in Azure AD 'ye tümleştirilmesini yapılandırmak için, Galeriden yönetilen SaaS uygulamaları listenize yeni bir relik eklemeniz gerekir.
 
-**To add New Relic from the gallery, perform the following steps:**
+**Galeriden yeni relik eklemek için aşağıdaki adımları uygulayın:**
 
-1. In the **[Azure portal](https://portal.azure.com)** , on the left navigation panel, click **Azure Active Directory** icon.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
 
-    ![The Azure Active Directory button](common/select-azuread.png)
+    ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. Navigate to **Enterprise Applications** and then select the **All Applications** option.
+2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
 
-    ![The Enterprise applications blade](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-3. To add new application, click **New application** button on the top of dialog.
+3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
 
-    ![The New application button](common/add-new-app.png)
+    ![Yeni Uygulama düğmesi](common/add-new-app.png)
 
-4. In the search box, type **New Relic**, select **New Relic** from result panel then click **Add** button to add the application.
+4. Arama kutusuna **Yeni relik**yazın, sonuç panelinden **Yeni relik** ' i seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
-     ![New Relic in the results list](common/search-new-app.png)
+     ![Sonuç listesinde yeni relik](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Configure and test Azure AD single sign-on
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
 
-In this section, you configure and test Azure AD single sign-on with New Relic based on a test user called **Britta Simon**.
-For single sign-on to work, a link relationship between an Azure AD user and the related user in New Relic needs to be established.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre yeni relik ile yapılandırıp test edersiniz.
+Çoklu oturum açma için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasındaki bağlantı ilişkisinin yeni relik olarak oluşturulması gerekir.
 
-To configure and test Azure AD single sign-on with New Relic, you need to complete the following building blocks:
+Azure AD çoklu oturum açma 'yı yeni relik ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
-1. **[Configure Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)** - to enable your users to use this feature.
-2. **[Configure New Relic Single Sign-On](#configure-new-relic-single-sign-on)** - to configure the Single Sign-On settings on application side.
-3. **[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
-4. **[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
-5. **[Create New Relic test user](#create-new-relic-test-user)** - to have a counterpart of Britta Simon in New Relic that is linked to the Azure AD representation of user.
-6. **[Test single sign-on](#test-single-sign-on)** - to verify whether the configuration works.
+1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
+2. **[Yeni relik çoklu oturum açmayı yapılandırma](#configure-new-relic-single-sign-on)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
+5. **[Yeni relik test kullanıcısı oluşturun](#create-new-relic-test-user)** -kullanıcının Azure AD gösterimine bağlı yeni bir relik halinde Britta Simon 'a sahip olmak için.
+6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
 
-### <a name="configure-azure-ad-single-sign-on"></a>Configure Azure AD single sign-on
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırın
 
-In this section, you enable Azure AD single sign-on in the Azure portal.
+Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
 
-To configure Azure AD single sign-on with New Relic, perform the following steps:
+Azure AD çoklu oturum açmayı yeni relik ile yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. In the [Azure portal](https://portal.azure.com/), on the **New Relic** application integration page, select **Single sign-on**.
+1. [Azure Portal](https://portal.azure.com/), **Yeni relik** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
 
-    ![Configure single sign-on link](common/select-sso.png)
+    ![Çoklu oturum açma bağlantısı yapılandırma](common/select-sso.png)
 
-2. On the **Select a Single sign-on method** dialog, select **SAML/WS-Fed** mode to enable single sign-on.
+2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
 
-    ![Single sign-on select mode](common/select-saml-option.png)
+    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. On the **Set up Single Sign-On with SAML** page, click **Edit** icon to open **Basic SAML Configuration** dialog.
+3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
-    ![Edit Basic SAML Configuration](common/edit-urls.png)
+    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. On the **Basic SAML Configuration** section, perform the following steps:
+4. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![New Relic Domain and URLs single sign-on information](common/sp-identifier.png)
+    ![Yeni relik etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/sp-identifier.png)
 
-    a. In the **Sign on URL** text box, type a URL using the following pattern: `https://rpm.newrelic.com/accounts/{acc_id}/sso/saml/login` - Be sure to substitute your own New Relic Account ID.
+    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://rpm.newrelic.com/accounts/{acc_id}/sso/saml/login`-kendi yeni relik hesap kimliğinizi değiştirdiğinizden emin olun.
 
-    b. In the **Identifier (Entity ID)** text box, type a URL: `rpm.newrelic.com`
+    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusuna bir URL yazın: `rpm.newrelic.com`
 
-5. On the **Set up Single Sign-On with SAML** page, in the **SAML Signing Certificate** section, click **Download** to download the **Certificate (Base64)** from the given options as per your requirement and save it on your computer.
+5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
-    ![The Certificate download link](common/certificatebase64.png)
+    ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-6. On the **Set up New Relic** section, copy the appropriate URL(s) as per your requirement.
+6. **Yeni relik ayarla** bölümünde uygun URL 'leri gereksiniminize göre kopyalayın.
 
-    ![Copy configuration URLs](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-    a. Login URL
+    a. Oturum Açma URL'si:
 
-    b. Azure Ad Identifier
+    b. Azure AD tanımlayıcısı
 
-    c. Logout URL
+    c. Oturum Kapatma URL'si
 
-### <a name="configure-new-relic-single-sign-on"></a>Configure New Relic Single Sign-On
+### <a name="configure-new-relic-single-sign-on"></a>Yeni relik çoklu oturum açmayı Yapılandır
 
-1. In a different web browser window, sign on to your **New Relic** company site as administrator.
+1. Farklı bir Web tarayıcısı penceresinde, **Yeni relik** şirket sitenizde yönetici olarak oturum açın.
 
-2. In the menu on the top, click **Account Settings**.
+2. Üstteki menüde **Hesap ayarları**' na tıklayın.
    
-    ![Account Settings](./media/new-relic-tutorial/ic797036.png "Account Settings")
+    ![Hesap ayarları](./media/new-relic-tutorial/ic797036.png "Hesap ayarları")
 
-3. Click the **Security and authentication** tab, and then click the **Single sign on** tab.
+3. **Güvenlik ve kimlik doğrulama** sekmesine tıklayın ve ardından **Çoklu oturum açma** sekmesine tıklayın.
    
-    ![Single Sign-On](./media/new-relic-tutorial/ic797037.png "Single Sign-On")
+    ![Çoklu oturum açma](./media/new-relic-tutorial/ic797037.png "Çoklu oturum açma")
 
-4. On the SAML dialog page, perform the following steps:
+4. SAML iletişim sayfasında, aşağıdaki adımları uygulayın:
    
     ![SAML](./media/new-relic-tutorial/ic797038.png "SAML")
    
-    a. Click **Choose File** to upload your downloaded Azure Active Directory certificate.
+    a. İndirilen Azure Active Directory sertifikanızı karşıya yüklemek için **Dosya Seç** ' e tıklayın.
 
-    b. In the **Remote login URL** textbox,  paste the value of **Login URL**, which you have copied from Azure portal.
+    b. **Uzaktan oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
    
-    c. In the **Logout landing URL** textbox, paste the value of **Logout URL**, which you have copied from Azure portal.
+    c. **Oturum kapatma giriş URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum kapatma URL 'si**değerini yapıştırın.
 
-    d. Click **Save my changes**.
+    d. **Değişikliklerimi kaydet**' e tıklayın.
 
-### <a name="create-an-azure-ad-test-user"></a>Create an Azure AD test user 
+### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma 
 
-The objective of this section is to create a test user in the Azure portal called Britta Simon.
+Bu bölümün amacı, Britta Simon adlı Azure portalında bir test kullanıcısı oluşturmaktır.
 
-1. In the Azure portal, in the left pane, select **Azure Active Directory**, select **Users**, and then select **All users**.
+1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 
-    ![The "Users and groups" and "All users" links](common/users.png)
+    !["Kullanıcılar ve Gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
 
-2. Select **New user** at the top of the screen.
+2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 
-    ![New user Button](common/new-user.png)
+    ![Yeni Kullanıcı düğmesi](common/new-user.png)
 
-3. In the User properties, perform the following steps.
+3. Kullanıcı özellikleri, aşağıdaki adımları gerçekleştirin.
 
-    ![The User dialog box](common/user-properties.png)
+    ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. In the **Name** field enter **BrittaSimon**.
+    a. **Ad** alanına **Brittasıon**girin.
   
-    b. In the **User name** field type **brittasimon\@yourcompanydomain.extension**  
+    b. **Kullanıcı adı** alanında **brittasıon\@yourşirketnotlarıetki alanı. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
-    c. Select **Show password** check box, and then write down the value that's displayed in the Password box.
+    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Assign the Azure AD test user
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
-In this section, you enable Britta Simon to use Azure single sign-on by granting access to New Relic.
+Bu bölümde, yeni relik 'e erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
 
-1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **New Relic**.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **Yeni relik**' i seçin.
 
-    ![Enterprise applications blade](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. In the applications list, select **New Relic**.
+2. Uygulamalar listesinde, **Yeni relik**' i seçin.
 
-    ![The New Relic link in the Applications list](common/all-applications.png)
+    ![Uygulamalar listesindeki yeni relik bağlantısı](common/all-applications.png)
 
-3. In the menu on the left, select **Users and groups**.
+3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
 
-    ![The "Users and groups" link](common/users-groups-blade.png)
+    !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. Click the **Add user** button, then select **Users and groups** in the **Add Assignment** dialog.
+4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
-    ![The Add Assignment pane](common/add-assign-user.png)
+    ![Atama Ekle bölmesi](common/add-assign-user.png)
 
-5. In the **Users and groups** dialog select **Britta Simon** in the Users list, then click the **Select** button at the bottom of the screen.
+5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-6. If you are expecting any role value in the SAML assertion then in the **Select Role** dialog select the appropriate role for the user from the list, then click the **Select** button at the bottom of the screen.
+6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-7. In the **Add Assignment** dialog click the **Assign** button.
+7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-### <a name="create-new-relic-test-user"></a>Create New Relic test user
+### <a name="create-new-relic-test-user"></a>Yeni relik test kullanıcısı oluştur
 
-In order to enable Azure Active Directory users to log in to New Relic, they must be provisioned into New Relic. In the case of New Relic, provisioning is a manual task.
+Azure Active Directory kullanıcıların yeni bir rehirde oturum açmasını sağlamak için bunların yeni relik 'e sağlanması gerekir. Yeni relik durumunda sağlama, el ile gerçekleştirilen bir görevdir.
 
-**To provision a user account to New Relic, perform the following steps:**
+**Yeni relik 'e bir kullanıcı hesabı sağlamak için aşağıdaki adımları gerçekleştirin:**
 
-1. Log in to your **New Relic** company site as administrator.
+1. **Yeni relik** şirket sitenizde yönetici olarak oturum açın.
 
-2. In the menu on the top, click **Account Settings**.
+2. Üstteki menüde **Hesap ayarları**' na tıklayın.
    
-    ![Account Settings](./media/new-relic-tutorial/ic797040.png "Account Settings")
+    ![Hesap ayarları](./media/new-relic-tutorial/ic797040.png "Hesap ayarları")
 
-3. In the **Account** pane on the left side, click **Summary**, and then click **Add user**.
+3. Sol taraftaki **Hesap** bölmesinde, **Özet**' e ve ardından **Kullanıcı Ekle**' ye tıklayın.
    
-    ![Account Settings](./media/new-relic-tutorial/ic797041.png "Account Settings")
+    ![Hesap ayarları](./media/new-relic-tutorial/ic797041.png "Hesap ayarları")
 
-4. On the **Active users** dialog, perform the following steps:
+4. **Etkin kullanıcılar** iletişim kutusunda aşağıdaki adımları gerçekleştirin:
    
-    ![Active Users](./media/new-relic-tutorial/ic797042.png "Etkin Kullanıcılar")
+    ![Etkin kullanıcılar](./media/new-relic-tutorial/ic797042.png "Etkin Kullanıcılar")
    
-    a. In the **Email** textbox, type the email address of a valid Azure Active Directory user you want to provision.
+    a. **E-posta** metin kutusuna, sağlamak istediğiniz geçerli bir Azure Active Directory kullanıcısının e-posta adresini yazın.
 
-    b. As **Role** select **User**.
+    b. **Rol** olarak **Kullanıcı**' yı seçin.
 
-    c. Click **Add this user**.
+    c. **Bu kullanıcıyı Ekle**' ye tıklayın.
 
 >[!NOTE]
->You can use any other New Relic user account creation tools or APIs provided by New Relic to provision Azure AD user accounts.
+>Azure AD Kullanıcı hesapları sağlamak için yeni relik tarafından sunulan başka bir yeni relik Kullanıcı hesabı oluşturma aracını veya API 'Leri de kullanabilirsiniz.
 > 
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 
-In this section, you test your Azure AD single sign-on configuration using the Access Panel.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
 
-When you click the New Relic tile in the Access Panel, you should be automatically signed in to the New Relic for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde yeni yeniden ayarla kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız yeni relik için otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

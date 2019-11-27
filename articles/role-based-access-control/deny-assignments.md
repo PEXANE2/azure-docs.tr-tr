@@ -1,6 +1,6 @@
 ---
-title: Understand deny assignments for Azure resources | Microsoft Docs
-description: Learn about deny assignments in role-based access control (RBAC) for Azure resources.
+title: Azure kaynakları için atamaları reddetme ' yı anlama | Microsoft Docs
+description: Azure kaynakları için rol tabanlı erişim denetimi 'nde (RBAC) atamaları reddetme hakkında bilgi edinin.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -22,57 +22,57 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74479368"
 ---
-# <a name="understand-deny-assignments-for-azure-resources"></a>Understand deny assignments for Azure resources
+# <a name="understand-deny-assignments-for-azure-resources"></a>Azure kaynakları için reddedilen atamaları anlama
 
-Similar to a role assignment, a *deny assignment* attaches a set of deny actions to a user, group, or service principal at a particular scope for the purpose of denying access. Deny assignments block users from performing specific Azure resource actions even if a role assignment grants them access.
+Bir rol atamasına benzer şekilde, *reddetme atama* , erişimi reddetmek amacıyla belirli bir kapsamdaki bir Kullanıcı, Grup veya hizmet sorumlusu için bir reddetme eylemleri kümesi iliştirir. Bir rol ataması erişime izin verirse, atamaları Reddet, kullanıcıların belirli Azure Kaynak eylemlerini gerçekleştirmesini engeller.
 
-This article describes how deny assignments are defined.
+Bu makalede, reddetme atamalarının nasıl tanımlandığı açıklanır.
 
-## <a name="how-deny-assignments-are-created"></a>How deny assignments are created
+## <a name="how-deny-assignments-are-created"></a>Reddetme atamaları nasıl oluşturulur
 
-Deny assignments are created and managed by Azure to protect resources. Azure Blueprints and Azure managed apps use deny assignments to protect system-managed resources. Azure Blueprints and Azure managed apps are the only way that deny assignments can be created. You can't directly create your own deny assignments.  For more information, see [Protect new resources with Azure Blueprints resource locks](../governance/blueprints/tutorials/protect-new-resources.md).
+Reddetme atamaları, kaynakları korumak için Azure tarafından oluşturulur ve yönetilir. Azure şemaları ve Azure yönetilen uygulamalar, sistem tarafından yönetilen kaynakları korumak için reddetme atamalarını kullanır. Azure şemaları ve Azure yönetilen uygulamalar, atamaları reddetme için tek yoldur. Kendi reddetme atamalarınızı doğrudan oluşturamazsınız.  Daha fazla bilgi için bkz. [Azure şemaları kaynak kilitleri ile yeni kaynakları koruma](../governance/blueprints/tutorials/protect-new-resources.md).
 
 > [!NOTE]
-> You can't directly create your own deny assignments.
+> Kendi reddetme atamalarınızı doğrudan oluşturamazsınız.
 
-## <a name="compare-role-assignments-and-deny-assignments"></a>Compare role assignments and deny assignments
+## <a name="compare-role-assignments-and-deny-assignments"></a>Rol atamalarını karşılaştırma ve atamaları reddetme
 
-Deny assignments follow a similar pattern as role assignments, but also have some differences.
+Atamaları Reddet, benzer bir kalıbı rol atamaları olarak izler, ancak bazı farklılıklar da vardır.
 
-| Özellik | Rol ataması | Deny assignment |
+| Özellik | Rol ataması | Atamayı Reddet |
 | --- | --- | --- |
 | Erişim verme | :heavy_check_mark: |  |
 | Erişimi engelleme |  | :heavy_check_mark: |
-| Can be directly created | :heavy_check_mark: |  |
-| Apply at a scope | :heavy_check_mark: | :heavy_check_mark: |
-| Exclude principals |  | :heavy_check_mark: |
-| Prevent inheritance to child scopes |  | :heavy_check_mark: |
-| Apply to [classic subscription administrator](rbac-and-directory-admin-roles.md) assignments |  | :heavy_check_mark: |
+| Doğrudan oluşturulabilir | :heavy_check_mark: |  |
+| Bir kapsamda Uygula | :heavy_check_mark: | :heavy_check_mark: |
+| Sorumluları hariç tut |  | :heavy_check_mark: |
+| Alt kapsamlar devralınmasını engelle |  | :heavy_check_mark: |
+| [Klasik abonelik Yöneticisi](rbac-and-directory-admin-roles.md) atamalarına Uygula |  | :heavy_check_mark: |
 
-## <a name="deny-assignment-properties"></a>Deny assignment properties
+## <a name="deny-assignment-properties"></a>Atama özelliklerini Reddet
 
- A deny assignment has the following properties:
+ Reddetme atama aşağıdaki özelliklere sahiptir:
 
 > [!div class="mx-tableFixed"]
-> | Özellik | Gereklidir | Tür | Açıklama |
+> | Özellik | Gerekli | Type | Açıklama |
 > | --- | --- | --- | --- |
-> | `DenyAssignmentName` | Yes | Dize | The display name of the deny assignment. Names must be unique for a given scope. |
-> | `Description` | Hayır | Dize | The description of the deny assignment. |
-> | `Permissions.Actions` | At least one Actions or one DataActions | String[] | An array of strings that specify the management operations to which the deny assignment blocks access. |
-> | `Permissions.NotActions` | Hayır | String[] | An array of strings that specify the management operations to exclude from the deny assignment. |
-> | `Permissions.DataActions` | At least one Actions or one DataActions | String[] | An array of strings that specify the data operations to which the deny assignment blocks access. |
-> | `Permissions.NotDataActions` | Hayır | String[] | An array of strings that specify the data operations to exclude from the deny assignment. |
-> | `Scope` | Hayır | Dize | A string that specifies the scope that the deny assignment applies to. |
-> | `DoNotApplyToChildScopes` | Hayır | Boole | Specifies whether the deny assignment applies to child scopes. Default value is false. |
-> | `Principals[i].Id` | Yes | String[] | An array of Azure AD principal object IDs (user, group, service principal, or managed identity) to which the deny assignment applies. Set to an empty GUID `00000000-0000-0000-0000-000000000000` to represent all principals. |
-> | `Principals[i].Type` | Hayır | String[] | An array of object types represented by Principals[i].Id. Set to `SystemDefined` to represent all principals. |
-> | `ExcludePrincipals[i].Id` | Hayır | String[] | An array of Azure AD principal object IDs (user, group, service principal, or managed identity) to which the deny assignment does not apply. |
-> | `ExcludePrincipals[i].Type` | Hayır | String[] | An array of object types represented by ExcludePrincipals[i].Id. |
-> | `IsSystemProtected` | Hayır | Boole | Specifies whether this deny assignment was created by Azure and cannot be edited or deleted. Currently, all deny assignments are system protected. |
+> | `DenyAssignmentName` | Evet | Dize | Reddetme atamasının görünen adı. Adlar, belirli bir kapsam için benzersiz olmalıdır. |
+> | `Description` | Hayır | Dize | Reddetme atamasının açıklaması. |
+> | `Permissions.Actions` | En az bir eylem veya bir veri eylemi | String[] | Reddetme atamasının erişimi engellediği yönetim işlemlerini belirten dizeler dizisi. |
+> | `Permissions.NotActions` | Hayır | String[] | Reddetme atamasından dışlanacak yönetim işlemlerini belirten dizeler dizisi. |
+> | `Permissions.DataActions` | En az bir eylem veya bir veri eylemi | String[] | Reddetme atamasının erişimi engellediği veri işlemlerini belirten dizeler dizisi. |
+> | `Permissions.NotDataActions` | Hayır | String[] | Reddetme atamasından çıkarılacak veri işlemlerini belirten dizeler dizisi. |
+> | `Scope` | Hayır | Dize | Reddetme atamasının geçerli olduğu kapsamı belirten bir dize. |
+> | `DoNotApplyToChildScopes` | Hayır | Boole değeri | Reddetme atamasının alt kapsamlar için geçerli olup olmadığını belirtir. Varsayılan değer false 'dur. |
+> | `Principals[i].Id` | Evet | String[] | Reddetme atamasının uygulandığı Azure AD Principal nesne kimliklerinin (Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimlik) bir dizisi. Tüm sorumluları temsil etmek için `00000000-0000-0000-0000-000000000000` boş bir GUID olarak ayarlayın. |
+> | `Principals[i].Type` | Hayır | String[] | Sorumlular tarafından temsil edilen nesne türleri dizisi [i]. ID. tüm sorumlularını temsil etmek için `SystemDefined` olarak ayarlayın. |
+> | `ExcludePrincipals[i].Id` | Hayır | String[] | Reddetme atamasının uygulanmadığından, Azure AD sorumlusu nesne kimliklerinin (Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimlik) bir dizisi. |
+> | `ExcludePrincipals[i].Type` | Hayır | String[] | Excludesorumlularını [i]. ID tarafından temsil edilen nesne türleri dizisi. |
+> | `IsSystemProtected` | Hayır | Boole değeri | Bu reddetme atamasının Azure tarafından oluşturulup oluşturulmayacağını veya silinemeyeceğini belirtir. Şu anda tüm reddetme atamaları sistem korumalıdır. |
 
-## <a name="the-all-principals-principal"></a>The All Principals principal
+## <a name="the-all-principals-principal"></a>Tüm asıl adlar
 
-To support deny assignments, a system-defined principal named *All Principals* has been introduced. This principal represents all users, groups, service principals, and managed identities in an Azure AD directory. If the principal ID is a zero GUID `00000000-0000-0000-0000-000000000000` and the principal type is `SystemDefined`, the principal represents all principals. In Azure PowerShell output, All Principals looks like the following:
+Reddedilen atamaları desteklemek için, *Tüm sorumlular* adlı sistem tanımlı bir sorumlu tanıtılmıştır. Bu sorumlu, bir Azure AD dizinindeki tüm kullanıcıları, grupları, hizmet sorumlularını ve yönetilen kimlikleri temsil eder. Asıl KIMLIK `00000000-0000-0000-0000-000000000000` sıfır bir GUID ise ve asıl tür `SystemDefined`, sorumlu ise tüm sorumluları temsil eder. Azure PowerShell çıktısında, tüm sorumlular aşağıdaki gibi görünür:
 
 ```azurepowershell
 Principals              : {
@@ -82,12 +82,12 @@ Principals              : {
                           }
 ```
 
-All Principals can be combined with `ExcludePrincipals` to deny all principals except some users. All Principals has the following constraints:
+Tüm sorumlular, bazı kullanıcılar hariç tüm sorumluları reddetmek için `ExcludePrincipals` ile birleştirilebilir. Tüm sorumlular aşağıdaki kısıtlamalara sahiptir:
 
-- Can be used only in `Principals` and cannot be used in `ExcludePrincipals`.
-- `Principals[i].Type` must be set to `SystemDefined`.
+- Yalnızca `Principals` için kullanılabilir ve `ExcludePrincipals`kullanılamaz.
+- `Principals[i].Type` `SystemDefined`olarak ayarlanmalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [List deny assignments for Azure resources using the Azure portal](deny-assignments-portal.md)
-* [Understand role definitions for Azure resources](role-definitions.md)
+* [Azure portal kullanarak Azure kaynakları için atamaları reddetme listesi](deny-assignments-portal.md)
+* [Azure kaynakları için rol tanımlarını anlama](role-definitions.md)

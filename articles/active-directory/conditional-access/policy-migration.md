@@ -1,6 +1,6 @@
 ---
-title: Migrate Conditional Access policies - Azure Active Directory
-description: Learn what you need to know to migrate classic policies in the Azure portal.
+title: Koşullu erişim ilkelerini geçirme-Azure Active Directory
+description: Azure portal klasik ilkeleri geçirmek için bilmeniz gerekenler hakkında bilgi edinin.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -18,119 +18,119 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74380549"
 ---
-# <a name="what-is-a-policy-migration-in-azure-active-directory-conditional-access"></a>What is a policy migration in Azure Active Directory Conditional Access? 
+# <a name="what-is-a-policy-migration-in-azure-active-directory-conditional-access"></a>Azure Active Directory Koşullu erişim ' de ilke geçişi nedir? 
 
-[Conditional Access](../active-directory-conditional-access-azure-portal.md) is a capability of Azure Active directory (Azure AD) that enables you to control how authorized users access your cloud apps. While the purpose is still the same, the release of the new Azure portal has introduced significant improvements to how Conditional Access works.
+[Koşullu erişim](../active-directory-conditional-access-azure-portal.md) , Azure Active Directory 'Nin (Azure AD), yetkili kullanıcıların bulut uygulamalarınıza nasıl erişebileceğini denetlemenize olanak tanıyan bir özelliktir. Amaç hala aynı olsa da, yeni Azure portal sürümü Koşullu erişimin nasıl çalıştığına ilişkin önemli iyileştirmeler getirmiştir.
 
-Consider migrating the policies you have not created in the Azure portal because:
+Azure portal oluşturduğunuz ilkeleri şu nedenle geçirmeyi düşünün:
 
-- You can now address scenarios you could not handle before.
-- You can reduce the number of policies you have to manage by consolidating them.   
-- You can manage all your Conditional Access policies in one central location.
-- The Azure classic portal will be retired.   
+- Artık, daha önce işleyemeyen senaryolara adres ekleyebilirsiniz.
+- Bunları birleştirerek yönetmeniz gereken ilke sayısını azaltabilirsiniz.   
+- Tüm koşullu erişim ilkelerinizi tek bir merkezi konumda yönetebilirsiniz.
+- Klasik Azure portalı kullanımdan kaldırılacak.   
 
-This article explains what you need to know to migrate your existing Conditional Access policies to the new framework.
+Bu makalede, mevcut koşullu erişim ilkelerinizi yeni çerçeveye geçirmek için bilmeniz gerekenler açıklanmaktadır.
  
-## <a name="classic-policies"></a>Classic policies
+## <a name="classic-policies"></a>Klasik ilkeler
 
-In the [Azure portal](https://portal.azure.com), the [Conditional Access - Policies](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) page is your entry point to your Conditional Access policies. However, in your environment, you might also have Conditional Access policies you have not created using this page. These policies are known as *classic policies*. Classic policies are Conditional Access policies, you have created in:
+[Azure Portal](https://portal.azure.com) [koşullu erişim Ilkeleri](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) sayfası, koşullu erişim ilkeleriniz için giriş noktasıdır. Ancak ortamınızda, bu sayfayı kullanarak, sizin oluşturduğunuz koşullu erişim ilkelerine da sahip olabilirsiniz. Bu ilkeler *Klasik ilkeler*olarak bilinir. Klasik ilkeler, içinde oluşturduğunuz koşullu erişim ilkelerdir:
 
-- The Azure classic portal
-- The Intune classic portal
-- The Intune App Protection portal
+- Klasik Azure portalı
+- Klasik Intune portalı
+- Intune Uygulama Koruması portalı
 
-On the **Conditional Access** page, you can access your classic policies by clicking [**Classic policies (preview)** ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/ClassicPolicies) in the **Manage** section. 
+**Koşullu erişim** sayfasında, **Yönet** bölümünde [**Klasik ilkeler (Önizleme)** ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/ClassicPolicies) seçeneğine tıklayarak klasik ilkelerinize erişebilirsiniz. 
 
 ![Azure Active Directory](./media/policy-migration/71.png)
 
-The **Classic policies** view provides you with an option to:
+**Klasik ilkeler** görünümü şunları yapmak için bir seçenek sunar:
 
-- Filter your classic policies.
+- Klasik ilkelerinize filtre uygulayın.
  
    ![Azure Active Directory](./media/policy-migration/72.png)
 
-- Disable classic policies.
+- Klasik ilkeleri devre dışı bırakın.
 
    ![Azure Active Directory](./media/policy-migration/73.png)
    
-- Review the settings of a classic policy (and to disable it).
+- Klasik bir ilkenin ayarlarını gözden geçirin (ve devre dışı bırakmak için).
 
    ![Azure Active Directory](./media/policy-migration/74.png)
 
-If you have disabled a classic policy, you can't revert this step anymore. This is why you can modify the group membership in a classic policy using the **Details** view. 
+Klasik bir ilkeyi devre dışı bırakırsanız, bu adımı artık döndüremezsiniz. Bu nedenle, **Ayrıntılar** görünümünü kullanarak klasik bir ilkede grup üyeliğini değiştirebilirsiniz. 
 
 ![Azure Active Directory](./media/policy-migration/75.png)
 
-By either changing the selected groups or by excluding specific groups, you can test the effect of a disabled classic policy for a few test users before disabling the policy for all included users and groups. 
+Seçilen grupları değiştirerek veya belirli grupları dışlayarak, tüm dahil edilen kullanıcılar ve gruplar için ilkeyi devre dışı bırakmadan önce, devre dışı bırakılmış bir klasik ilkenin etkisini birkaç test kullanıcısı için test edebilirsiniz. 
 
-## <a name="azure-ad-conditional-access-policies"></a>Azure AD Conditional Access policies
+## <a name="azure-ad-conditional-access-policies"></a>Azure AD koşullu erişim ilkeleri
 
-With Conditional Access in the Azure portal, you can manage all your policies in one central location. Because the implementation of how Conditional Access has changed, you should familiarize yourself with the basic concepts before migrating your classic policies.
+Azure portal koşullu erişimle, tüm ilkelerinizi tek bir merkezi konumda yönetebilirsiniz. Koşullu erişimin nasıl değiştiği konusunda, klasik ilkelerinizi geçirmeden önce temel kavramları öğrenmeniz gerekir.
 
 Bkz.
 
-- [What is Conditional Access in Azure Active Directory](../active-directory-conditional-access-azure-portal.md) to learn about the basic concepts and the terminology.
-- [Best practices for Conditional Access in Azure Active Directory](best-practices.md) to get some guidance on deploying Conditional Access in your organization.
-- [Require MFA for specific apps with Azure Active Directory Conditional Access](app-based-mfa.md) to familiarize yourself with the user interface in the Azure portal.
+- Temel kavramlar ve terminoloji hakkında bilgi edinmek için [Azure Active Directory Koşullu erişim nedir?](../active-directory-conditional-access-azure-portal.md) .
+- Kuruluşunuzda koşullu erişim dağıtımı hakkında bazı yönergeler almak için [Azure Active Directory ' de koşullu erişim Için en iyi yöntemler](best-practices.md) .
+- [Azure Active Directory Koşullu erişimi olan belirli uygulamalar IÇIN MFA](app-based-mfa.md) 'yı, Azure Portal Kullanıcı arabirimine tanımak üzere isteyin.
  
 ## <a name="migration-considerations"></a>Geçiş sırasında dikkat edilmesi gerekenler
 
-In this article, Azure AD Conditional Access policies are also referred to as *new policies*.
-Your classic policies continue to work side by side with your new policies until you disable or delete them. 
+Bu makalede, Azure AD koşullu erişim ilkelerine *yeni ilkeler*de denir.
+Klasik ilkelerinizde, siz devre dışı bırakana kadar yeni ilkeleriniz ile yan yana çalışmaya devam edersiniz. 
 
-The following aspects are important in the context of a policy consolidation:
+Aşağıdaki yönleri bir ilke birleştirme bağlamında önemlidir:
 
-- While classic policies are tied to a specific cloud app, you can select as many cloud apps as you need to in a new policy.
-- Controls of a classic policy and a new policy for a cloud app require all controls (*AND*) to be fulfilled. 
-- In a new policy, you can:
-   - Combine multiple conditions if required by your scenario. 
-   - Select several grant requirements as access control and combine them with a logical *OR* (require one of the selected controls) or with a logical *AND* (require all of the selected controls).
+- Klasik ilkeler belirli bir bulut uygulamasına bağlı olsa da, yeni bir ilkede gereken sayıda bulut uygulaması seçebilirsiniz.
+- Klasik bir ilkenin denetimleri ve bir bulut uygulaması için yeni bir ilke, tüm denetimlerin (*ve*) yerine getirilmesi gerekir. 
+- Yeni bir ilkede şunları yapabilirsiniz:
+   - Senaryonuz için gerekliyse birden çok koşulu birleştirin. 
+   - Erişim denetimi olarak birkaç verme gereksinimi seçin ve bunları mantıksal *veya* (seçili denetimlerden birini gerektir) ya da mantıksal *ve* (seçili denetimlerin tümünü gerektir) ile birleştirin.
 
    ![Azure Active Directory](./media/policy-migration/25.png)
 
-### <a name="office-365-exchange-online"></a>Office 365 Exchange online
+### <a name="office-365-exchange-online"></a>Office 365 Exchange Online
 
-If you want to migrate classic policies for **Office 365 Exchange online** that include **Exchange Active Sync** as client apps condition, you might not be able to consolidate them into one new policy. 
+İstemci uygulamaları gibi **Exchange Active Sync** içeren **Office 365 Exchange Online** için klasik ilkeleri geçirmek istiyorsanız, bunları yeni bir ilkede birleştirmeyebilirsiniz. 
 
-This is, for example, the case if you want to support all client app types. In a new policy that has **Exchange Active Sync** as client apps condition, you can't select other client apps.
+Bu, örneğin, tüm istemci uygulama türlerini desteklemek istiyorsanız, bu durumda olur. İstemci uygulamaları olarak **Exchange Active Sync** olan yeni bir ilkede, diğer istemci uygulamalarını seçemezsiniz.
 
 ![Azure Active Directory](./media/policy-migration/64.png)
 
-A consolidation into one new policy is also not possible if your classic policies contain several conditions. A new policy that has **Exchange Active Sync** as client apps condition configured does not support other conditions:   
+Klasik ilkeleriniz çeşitli koşullar içeriyorsa, tek bir yeni ilkeye birleştirme de mümkün değildir. İstemci uygulamaları tarafından yapılandırılan **Exchange Active Sync** olan yeni bir ilke diğer koşulları desteklemez:   
 
 ![Azure Active Directory](./media/policy-migration/08.png)
 
-If you have a new policy that has **Exchange Active Sync** as client apps condition configured, you need to make sure that all other conditions are not configured. 
+İstemci uygulamaları koşulu yapılandırılmış **Exchange Active Sync** olan yeni bir ilkeniz varsa, diğer tüm koşulların yapılandırılmadığından emin olmanız gerekir. 
 
 ![Azure Active Directory](./media/policy-migration/16.png)
  
-[App-based](technical-reference.md#approved-client-app-requirement) classic policies for Office 365 Exchange Online that include **Exchange Active Sync** as client apps condition allow **supported** and **unsupported** [device platforms](technical-reference.md#device-platform-condition). While you can't configure individual device platforms in a related new policy, you can limit the support to [supported device platforms](technical-reference.md#device-platform-condition) only. 
+İstemci uygulamaları koşulu olarak **Exchange Active Sync** içeren Office 365 Exchange Online için [uygulama tabanlı](technical-reference.md#approved-client-app-requirement) klasik ilkeler **desteklenen** ve **Desteklenmeyen** [cihaz platformlarına](technical-reference.md#device-platform-condition)izin verir. İlişkili yeni ilkede ayrı cihaz platformları yapılandıramamanıza karşın, desteği yalnızca [desteklenen cihaz platformlarıyla](technical-reference.md#device-platform-condition) sınırlayabilirsiniz. 
 
 ![Azure Active Directory](./media/policy-migration/65.png)
 
-You can consolidate multiple classic policies that include **Exchange Active Sync** as client apps condition if they have:
+Şunları içeriyorsa, istemci uygulamaları olarak **Exchange Active Sync** içeren birden fazla klasik ilkeyi birleştirebilirsiniz:
 
-- Only **Exchange Active Sync** as condition 
-- Several requirements for granting access configured
+- Yalnızca koşul olarak **Exchange Active Sync** 
+- Erişim vermek için çeşitli gereksinimler
 
-One common scenario is the consolidation of:
+Yaygın olarak kullanılan bir senaryo şu şekilde birleştirilir:
 
-- A device-based classic policy from the Azure classic portal 
-- An app-based classic policy in the Intune app protection portal 
+- Klasik Azure portalından cihaz tabanlı klasik bir ilke 
+- Intune uygulama koruma portalında uygulama tabanlı klasik bir ilke 
  
-In this case, you can consolidate your classic policies into one new policy that has both requirements selected.
+Bu durumda, klasik ilkelerinizi her iki gereksinimin de seçildiği yeni bir ilkede birleştirebilirsiniz.
 
 ![Azure Active Directory](./media/policy-migration/62.png)
 
-### <a name="device-platforms"></a>Device platforms
+### <a name="device-platforms"></a>Cihaz platformları
 
-Classic policies with [app-based controls](technical-reference.md#approved-client-app-requirement) are pre-configured with iOS and Android as the [device platform condition](technical-reference.md#device-platform-condition). 
+[Uygulama tabanlı denetimlerle](technical-reference.md#approved-client-app-requirement) klasik ilkeler, [Cihaz platformu koşulu](technical-reference.md#device-platform-condition)olarak iOS ve Android ile önceden yapılandırılmıştır. 
 
-In a new policy, you need to select the [device platforms](technical-reference.md#device-platform-condition) you want to support individually.
+Yeni bir ilkede, desteklemek istediğiniz [cihaz platformlarını](technical-reference.md#device-platform-condition) tek tek seçmeniz gerekir.
 
 ![Azure Active Directory](./media/policy-migration/41.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- If you want to know how to configure a Conditional Access policy, see [Require MFA for specific apps with Azure Active Directory Conditional Access](app-based-mfa.md).
-- If you are ready to configure Conditional Access policies for your environment, see the [best practices for Conditional Access in Azure Active Directory](best-practices.md). 
+- Koşullu erişim ilkesini nasıl yapılandıracağınızı öğrenmek isterseniz bkz. [koşullu erişim Azure Active Directory belirli uygulamalar IÇIN MFA gerektirme](app-based-mfa.md).
+- Ortamınız için koşullu erişim ilkelerini yapılandırmaya hazırsanız, [Azure Active Directory Koşullu erişim için en iyi yöntemlere](best-practices.md)bakın. 

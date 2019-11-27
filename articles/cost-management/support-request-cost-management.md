@@ -1,6 +1,6 @@
 ---
-title: Create a support request for Cloudyn in Azure | Microsoft Docs
-description: This article walks you through the steps needed to create a support request for Cloudyn.
+title: Cloudyn Azure için bir destek isteği oluşturun. | Microsoft Docs
+description: Bu makalede, Cloudyn için bir destek isteği oluşturmak için gereken adımlar anlatılmaktadır.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -17,35 +17,35 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74229894"
 ---
-# <a name="create-a-support-request-for-cloudyn"></a>Create a support request for Cloudyn
+# <a name="create-a-support-request-for-cloudyn"></a>Cloudyn için bir destek isteği oluşturun
 
-You can open a support request if you can't find the information you're looking for. Or, if you suspect a problem is a service disruption or bug. When you open a support ticket, make sure that open it for a single problem. Do so helps to quickly route the reported issue.
+Aradığınız bilgileri bulamazsanız, bir destek isteği açabilirsiniz. Veya, bir hizmet kesintisi ya da hataya bir sorun olduğundan şüpheleniyorsanız. Bir destek bileti açtığınızda, için tek bir sorun açın emin olun. Bildirilen sorunu hızlıca yönlendirmek için bunu yardımcı olur musunuz.
 
-## <a name="open-a-support-ticket"></a>Destek bileti açma
+## <a name="open-a-support-ticket"></a>Bir destek bileti açın
 
-1. Sign in to the Azure portal (https://portal.azure.com).
-2. On the top navigation bar, click **Help**.
-3. In the **Help** menu, click **Help + support**.
-4. In the Help + support menu under Support, click **New support request**.
-5. In the Basics area under Issue type, select **Billing**.
-6. Under Subscription, choose any listed subscription. The subscription that you choose isn't used for issue routing.
-7. Under Support plan, select your Azure Support Plan and then click **Next**.  
-8. In the Problem area, select a **Severity** level to help determine response time.
-9. In **Problem type** select **Cloudyn Legacy**, and then select a **Category**.
-10. In the **Title** box, enter a title that describes your request.
-11. In the **Details** box, type additional information.
-12. For **When did the problem start?** , select an approximate date and time for and then click **Next**.  
-14. In the **Contact information** area, select your preferred contact method and provide your contact information, then click **Create**.  
+1. Azure portal oturum açın (https://portal.azure.com).
+2. Üst gezinti çubuğunda **Yardım**' a tıklayın.
+3. **Yardım** menüsünde **Yardım ve destek**' e tıklayın.
+4. Destek bölümündeki yardım + destek menüsünde **Yeni destek isteği**' ne tıklayın.
+5. Sorun türü altındaki temel bilgiler alanında **faturalandırma**' i seçin.
+6. Abonelik altında listelenen herhangi bir abonelik seçin. Seçtiğiniz abonelik sorunu yönlendirmek için kullanılmaz.
+7. Destek planı altında Azure destek planınızı seçin ve ardından **İleri**' ye tıklayın.  
+8. Sorun alanında, yanıt süresini belirlemede yardımcı olması için bir **önem** düzeyi seçin.
+9. **Sorun türü** ' nde **Cloudyn Legacy**' i seçin ve ardından bir **Kategori**seçin.
+10. **Başlık** kutusuna isteğinizi açıklayan bir başlık girin.
+11. **Ayrıntılar** kutusunda ek bilgi yazın.
+12. **Sorun ne zaman başladı?** , için yaklaşık bir tarih ve saat seçin ve ardından **İleri**' ye tıklayın.  
+14. **Kişi bilgileri** alanında, tercih ettiğiniz iletişim yönteminizi seçin ve iletişim bilgilerinizi girip **Oluştur**' a tıklayın.  
 
-When the support ticket is created, it is added to the support queue. Response time varies, based on the Support Plan and Severity (business impact) of the issue. For more information, see [Support scope and responsiveness](https://azure.microsoft.com/support/plans/response/).
+Destek bileti oluştururken bu destek kuyruğa eklenir. Yanıt süresi, destek planı ve sorunun önem derecesi (iş üzerinde etki) göre değişir. Daha fazla bilgi için bkz. [Destek kapsamı ve yanıt hızı](https://azure.microsoft.com/support/plans/response/).
 
-If you want to create a billing support ticket for Cost Management, under **Problem type**, select **Azure Cost Management**.
+Maliyet yönetimi için bir faturalandırma destek bileti oluşturmak istiyorsanız, **sorun türü**altında **Azure maliyet yönetimi**' ni seçin.
 
-To check the status of an incident that you've filed, see [All support requests](../azure-supportability/how-to-create-azure-support-request.md#all-support-requests).
+Dosyalanan bir olayın durumunu denetlemek için [tüm destek istekleri](../azure-supportability/how-to-create-azure-support-request.md#all-support-requests)' ne bakın.
 
-If you're a legacy Cloudyn user without an Azure account, you can open a support request at https://support.microsoft.com/oas/default.aspx?prid=16451.
+Azure hesabı olmayan eski bir Cloudyn kullanıcısı kullanıyorsanız, https://support.microsoft.com/oas/default.aspx?prid=16451bir destek isteği açabilirsiniz.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- To learn more about Cloudyn, continue to the [Review usage and costs](tutorial-review-usage.md) tutorial for Cloudyn.
+- Cloudyn hakkında daha fazla bilgi edinmek için Cloudyn için [kullanımı ve maliyetleri gözden geçirme](tutorial-review-usage.md) öğreticisine geçin.

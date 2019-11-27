@@ -1,5 +1,5 @@
 ---
-title: Authenticating and securing users - Azure Active Directory
+title: Kullanıcıların kimliğini doğrulama ve güvenliğini sağlama-Azure Active Directory
 description: Azure AD yöneticisi olarak son kullanıcıya fazla yansıtmadan kullanıcı kimlik doğrulamasını nasıl koruyabilirim?
 services: active-directory
 ms.service: active-directory
@@ -22,7 +22,7 @@ ms.locfileid: "74381097"
 
 Her gün çalınan parolalar ve gizliliği tehlikeye giren kimliklerle ilgili yeni haberler görüyoruz. Parolaya ek olarak ikinci bir adımın eklenmesi, kuruluşunuzun güvenliğini anında artıran yöntemlerden biridir. Microsoft Azure Active Directory (Azure AD), ek kimlik doğrulama yöntemleri ile yöneticilerin kuruluşlarının ve kullanıcılarının güvenliğini korumasına yardımcı olmak için Azure Multi-Factor Authentication (Azure MFA) ve Azure AD self servis parola sıfırlama (SSPR) gibi özellikler sunmaktadır.
 
-There are many scenarios that include: signing in to an application, resetting their password, enabling Windows Hello, and others, your users may be asked to provide additional verification that they are who they say they are.
+Şunları içeren birçok senaryo vardır: bir uygulamada oturum açmak, parolasını sıfırlamak, Windows Hello 'yu etkinleştirmek ve diğerleri, kullanıcılarınızın söyledikleri kim olduğunu belirten ek doğrulama sağlamaları istenebilir.
 
 Ek doğrulama adımları aşağıdaki gibi kimlik doğrulama yöntemleri olabilir:
 

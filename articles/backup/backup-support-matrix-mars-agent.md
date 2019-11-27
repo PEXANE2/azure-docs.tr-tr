@@ -69,7 +69,7 @@ Yukarıda listelenen tüm URL ve IP adreslerine erişim, bağlantı noktası 443
 
 ### <a name="throttling-support"></a>Daraltma desteği
 
-**Özelliği** | **Ayrıntılar**
+**Özellik** | **Ayrıntılar**
 --- | ---
 Bant genişliği denetimi | Destekleniyor. MARS aracısında, bant genişliğini ayarlamak için **Özellikleri Değiştir** ' i kullanın.
 Ağ azaltma | Windows Server 2008 R2, Windows Server 2008 SP2 veya Windows 7 çalıştıran yedeklenen makinelerde kullanılamaz.

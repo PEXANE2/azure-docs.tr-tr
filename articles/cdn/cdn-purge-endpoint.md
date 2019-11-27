@@ -1,6 +1,6 @@
 ---
-title: Bir Azure CDN uç noktasını temizleme | Microsoft Docs
-description: Bir Azure CDN uç noktasından tüm önbelleğe alınan içeriği temizlemek öğrenin.
+title: Azure CDN uç noktasını Temizleme | Microsoft Docs
+description: Azure CDN uç noktasından tüm önbelleğe alınmış içeriği temizlemeyi öğrenin.
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -14,66 +14,66 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2019
 ms.author: magattus
-ms.openlocfilehash: ff877810cb32d22cffd2af79880b6223c41d7d73
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 1bfbc1b730811e1111a08a957db3a747f90fb587
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593520"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546209"
 ---
-# <a name="purge-an-azure-cdn-endpoint"></a>Bir Azure CDN uç noktasını temizleme
+# <a name="purge-an-azure-cdn-endpoint"></a>Azure CDN uç noktasını Temizleme
 ## <a name="overview"></a>Genel Bakış
-Azure CDN kenar düğümlerine, varlığın yaşam süresi (TTL) dolmadan varlıklar önbelleğe alır.  Bir istemci uç düğümden varlık istediğinde varlığın TTL süresi dolduğunda, kenar düğümüne istemci isteğe hizmet vermek için varlığı yeni güncelleştirilmiş bir kopyasını alır ve depolama önbelleği yenileyin.
+Azure CDN Edge düğümleri, varlığın yaşam süresi (TTL) sona erene kadar varlıkları önbelleğe alacak.  Varlığın TTL 'SI dolduktan sonra, bir istemci kenar düğümünden varlık istediğinde, uç düğüm, istemci isteğine yönelik yeni bir güncelleştirilmiş kopyasını alır ve mağaza önbelleği yeniler.
 
-Kullanıcılarınızın her zaman en son kopyasını varlıklarınızı Al emin olmak için en iyi her güncelleştirme için varlıklarınızı sürümüdür ve bunları yeni URL olarak yayımlayın.  CDN hemen sonraki istemci istekleri için yeni varlıkları alır.  Bazen tüm kenar düğümlerinden önbelleğe alınmış içeriği temizlemek ve bunları tüm yeni güncelleştirilmiş varlıkları almak için zorlamak isteyebilirsiniz.  Bu, web uygulamanıza veya hızlı bir şekilde yanlış bilgiler içeren güncelleştirme varlıklarına güncelleştirmeleri nedeniyle olabilir.
+Kullanıcılarınızın her zaman varlıklarınızın en son kopyasını elde ettiğinizden emin olmak için en iyi yöntem, varlıklarınızın her bir güncelleştirme için sürüm oluşturup yeni URL 'Ler olarak yayınlanmasına yöneliktir.  CDN, sonraki istemci istekleri için yeni varlıkları hemen alacaktır.  Bazen önbelleğe alınmış içeriği tüm kenar düğümlerinden temizlemek ve bunları yeni güncelleştirilmiş varlıkları almaya zorlamak isteyebilirsiniz.  Bunun nedeni, Web uygulamanızdaki güncelleştirmeler veya hatalı bilgiler içeren varlıkları hızlıca güncelleştirmeniz olabilir.
 
 > [!TIP]
-> Temizleme, CDN uç sunucularda önbelleğe alınmış içeriği yalnızca temizler olduğunu unutmayın.  Proxy sunucusu veya yerel tarayıcı önbellekler gibi tüm aşağı akış önbellekleri önbelleğe alınmış bir dosyanın kopyasını hala tutabilir.  Bir dosyanın yaşam süresi ayarladığınızda unutmamak önemlidir.  Dosyanın en son sürümü her güncelleştirdiğinizde tarafından benzersiz bir ad verin ya da yararlanarak istemek için bir aşağı akış istemci zorlayabilirsiniz [sorgu dizesini önbelleğe alma](cdn-query-string.md).  
+> Temizleme 'nin yalnızca CDN Edge sunucularındaki önbelleğe alınmış içeriği temizlemesinin unutmayın.  Proxy sunucuları ve yerel tarayıcı önbellekleri gibi herhangi bir aşağı akış önbelleği, dosyanın önbelleğe alınmış bir kopyasını hala tutabilir.  Bir dosyanın yaşam zamanını ayarladığınızda bunu unutmamanız önemlidir.  Bir aşağı akış istemcisini, her güncelleştirdiğinizde benzersiz bir ad vererek veya [sorgu dizesi önbelleğe alma](cdn-query-string.md)özelliğinden yararlanarak, dosyanızın en son sürümünü isteyecek şekilde zorlayabilirsiniz.  
 > 
 > 
 
-Bu öğreticide, bir uç nokta tüm kenar düğümlerinden varlıkları temizleme aracılığıyla açıklanmaktadır.
+Bu öğreticide, bir uç noktanın tüm kenar düğümlerinden varlıkları Temizleme işlemi adım adım gösterilmektedir.
 
 ## <a name="walkthrough"></a>Kılavuz
-1. İçinde [Azure portalı](https://portal.azure.com), temizlemek istediğiniz uç noktayı içeren CDN profiline göz atın.
-2. CDN profili dikey penceresinden Temizle düğmesine tıklayın.
+1. [Azure portalında](https://portal.azure.com), temizlemek istediğiniz uç NOKTAYı içeren CDN profiline gidin.
+2. CDN profili dikey penceresinde, temizle düğmesine tıklayın.
    
     ![CDN profili dikey penceresi](./media/cdn-purge-endpoint/cdn-profile-blade.png)
    
     Temizleme dikey penceresi açılır.
    
-    ![CDN temizleme dikey penceresi](./media/cdn-purge-endpoint/cdn-purge-blade.png)
-3. Temizleme dikey penceresinde, URL açılır listeden temizlemek istediğiniz hizmeti adresi seçin.
+    ![CDN Temizleme dikey penceresi](./media/cdn-purge-endpoint/cdn-purge-blade.png)
+3. Temizleme dikey penceresinde, URL açılır listesinden temizlemek istediğiniz hizmet adresini seçin.
    
-    ![Form Temizle](./media/cdn-purge-endpoint/cdn-purge-form.png)
+    ![Formu Temizle](./media/cdn-purge-endpoint/cdn-purge-form.png)
    
    > [!NOTE]
-   > Tıklayarak temizleme dikey penceresine alabilirsiniz **Temizleme** CDN uç noktası dikey penceresinde düğmesi.  Bu durumda, **URL** alan, belirli bir uç nokta hizmet adresiyle önceden doldurulmuş olacaktır.
+   > Ayrıca, CDN uç noktası dikey penceresindeki **Temizle** düğmesine tıklayarak Temizleme dikey penceresine da ulaşabilirsiniz.  Bu durumda, **URL** alanı söz konusu uç noktanın hizmet adresi ile önceden doldurulur.
    > 
    > 
-4. Kenar düğümlerinden temizlemek istediğiniz hangi varlıkları seçin.  Tüm varlıkları silmek isterseniz tıklayın **Tümünü Temizle** onay kutusu.  Aksi takdirde her varlık, temizlemek istediğiniz yolu yazın **yolu** metin. Yolu aşağıdaki biçimleri desteklenir.
-    1. **Tek URL Temizleme**: Tek bir varlık ile veya olmadan dosya uzantısı, örneğin, tam bir URL belirterek Temizleme`/pictures/strasbourg.png`; `/pictures/strasbourg`
-    2. **Joker Temizleme**: Yıldız işareti (\*) joker karakter olarak kullanılabilir. Tüm klasörleri, alt klasörler ve dosyaları bir uç nokta altında Temizleme `/*` tüm alt klasörleri ve klasör belirterek belirli bir klasör altındaki dosyalar ardında yer alan yolu ya da Temizleme `/*`, örneğin,`/pictures/*`.  Unutmayın. Bu joker temizleme Azure CDN from Akamai tarafından şu anda desteklenmiyor. 
-    3. **Kök etki alanı Temizleme**: Kök yolda "/" ile uç nokta temizleme.
+4. Kenar düğümlerinden hangi varlıkları temizlemek istediğinizi seçin.  Tüm varlıkları temizlemek istiyorsanız **Tümünü Temizle** onay kutusuna tıklayın.  Aksi takdirde, **yol** metin kutusuna temizlemek istediğiniz her varlığın yolunu yazın. Aşağıdaki biçimler yolunda desteklenir.
+    1. **Tek URL Temizleme**: dosya uzantısıyla veya olmadan tam URL 'yi belirterek tek bir varlığı temizleyin; örneğin,`/pictures/strasbourg.png`; `/pictures/strasbourg`
+    2. **Joker karakter Temizleme**: yıldız işareti (\*) joker karakter olarak kullanılabilir. Bir uç nokta altındaki tüm klasörleri, alt klasörleri ve dosyaları yoldaki `/*` ve ardından `/*`, ör.`/pictures/*`içeren klasörü belirterek belirli bir klasör altındaki tüm alt klasörleri ve dosyaları temizleyin.  Joker karakter Temizleme 'nin şu anda Akamai 'tan Azure CDN desteklenmediğini unutmayın. 
+    3. **Kök etki alanı temizleme**: yoldaki bitiş noktasının kökünü "/" ile temizleyin.
    
    > [!TIP]
-   > Yolları için temizleme belirtilmelidir ve aşağıdaki uyan bir göreli URL olmalıdır [normal ifade](/dotnet/standard/base-types/regular-expression-language-quick-reference). **Tümünü Temizle** ve **joker Temizleme** desteklenmeyen **akamai'den Azure CDN** şu anda.
-   > > Tek URL temizleme `@"^\/(?>(?:[a-zA-Z0-9-_.%=\(\)\u0020]+\/?)*)$";`  
+   > Temizleme için yolların belirtilmesi gerekir ve aşağıdaki [normal ifadeye](/dotnet/standard/base-types/regular-expression-language-quick-reference)uyan GÖRELI bir URL olmalıdır. **Akamai 'dan Azure CDN** tarafından desteklenmeyen, **Tümünü Temizle** ve **joker karakter Temizleme** işlemi şu anda desteklenmiyor.
+   > > Tek URL Temizleme `@"^\/(?>(?:[a-zA-Z0-9-_.%=\(\)\u0020]+\/?)*)$";`  
    > > Sorgu dizesi `@"^(?:\?[-\@_a-zA-Z0-9\/%:;=!,.\+'&\(\)\u0020]*)?$";`  
-   > > Joker Temizleme `@"^\/(?:[a-zA-Z0-9-_.%=\(\)\u0020]+\/)*\*$";`. 
+   > > Joker karakter Temizleme `@"^\/(?:[a-zA-Z0-9-_.%=\(\)\u0020]+\/)*\*$";`. 
    > 
-   > Daha fazla **yolu** metin kutuları, birden çok varlık listesini oluşturmanıza izin vermek için metin girdikten sonra görünür.  Üç nokta (…) düğmesine tıklayarak listeden varlıkları silebilirsiniz.
+   > Birden fazla varlık listesi oluşturmanıza olanak tanımak için metin girdikten sonra daha fazla **yol** metin kutuları görüntülenecektir.  Üç nokta (...) düğmesine tıklayarak varlıkları listeden silebilirsiniz.
    > 
-5. Tıklayın **Temizleme** düğmesi.
+5. **Temizle** düğmesine tıklayın.
    
     ![Temizle düğmesi](./media/cdn-purge-endpoint/cdn-purge-button.png)
 
 > [!IMPORTANT]
-> Temizleme istekleri Al ile işlemek için yaklaşık 2 dakika **Microsoft Azure CDN'den** ve **verizon'dan Azure CDN** (standart ve premium) ve yaklaşık 10 saniye ile **Azure CDN akamai'den**.  Azure CDN, 50 eş zamanlı istekleri belirli bir zamanda profil düzeyinde temizleme sınırı vardır. 
+> Temizleme isteklerinin, **Microsoft 'tan Azure CDN**, yaklaşık 2 dakika **Azure CDN** (Standart ve Premium) ve **Akamai 'den Azure CDN**yaklaşık 10 saniye içinde işlenmesi yaklaşık 10 dakika sürer.  Azure CDN, profil düzeyinde belirli bir zamanda 50 eşzamanlı temizleme isteği sınırı vardır. 
 > 
 > 
 
 ## <a name="see-also"></a>Ayrıca bkz.
 * [Azure CDN uç noktasında varlıkları önceden yükleme](cdn-preload-endpoint.md)
-* [Azure CDN REST API Başvurusu - temizlemek veya bir uç nokta önceden yükleme](/rest/api/cdn/endpoints)
+* [Azure CDN REST API başvurusu-bir uç noktayı Temizleme veya önceden yükleme](/rest/api/cdn/endpoints)
 

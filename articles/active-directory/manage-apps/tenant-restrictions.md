@@ -30,7 +30,7 @@ Bu zorluk Azure Active Directory (Azure AD) çözümü, kiracı kısıtlamaları
 
 Kiracı kısıtlamalarıyla kuruluşlar, kullanıcılarının erişmelerine izin verilen kiracılar listesini belirtebilir. Ardından Azure AD, yalnızca bu izin verilen kiracılar erişim verir.
 
-Bu makale, Office 365 için kiracı kısıtlamalarına odaklanır, ancak özelliği çoklu oturum açma için Azure AD ile modern kimlik doğrulama protokolleri kullanan tüm SaaS bulut uygulamaları ile birlikte çalışmalıdır. Office 365 tarafından kullanılan kiracıda farklı bir Azure AD ile uygulamaları Kiracı SaaS kullanırsanız, gerekli tüm kiracılar için izin verilen emin olun. SaaS bulut uygulamaları hakkında daha fazla bilgi için bkz: [Active Directory Marketi](https://azure.microsoft.com/marketplace/active-directory/).
+Bu makale, Office 365 için kiracı kısıtlamalarına odaklanır, ancak özelliği çoklu oturum açma için Azure AD ile modern kimlik doğrulama protokolleri kullanan tüm SaaS bulut uygulamaları ile birlikte çalışmalıdır. Office 365 tarafından kullanılan kiracıda farklı bir Azure AD ile uygulamaları Kiracı SaaS kullanırsanız, gerekli tüm kiracılar için izin verilen emin olun. SaaS bulut uygulamaları hakkında daha fazla bilgi için bkz. [market Active Directory](https://azure.microsoft.com/marketplace/active-directory/).
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
@@ -42,7 +42,7 @@ Genel çözümü aşağıdaki bileşenlerden oluşur:
 
 3. **İstemci yazılımı**: kiracı kısıtlamalarını desteklemek için, istemci yazılımlarının belirteçleri doğrudan Azure AD 'den istemesi gerekir, bu sayede proxy altyapısının trafiği ele geçirebilir. Tarayıcı tabanlı Office 365 uygulamaları, modern kimlik doğrulaması kullanan Office istemcileri gibi (OAuth 2,0 gibi) Şu anda kiracı kısıtlamalarını desteklemektedir.
 
-4. **Modern kimlik doğrulaması**: bulut Hizmetleri, kiracı kısıtlamalarını kullanmak ve izin verilmeyen tüm kiracılara erişimi engellemek için modern kimlik doğrulaması kullanmalıdır. Office 365 Bulut Hizmetleri 'ni, modern kimlik doğrulama protokollerini varsayılan olarak kullanacak şekilde yapılandırmanız gerekir. Office 365 modern kimlik doğrulaması desteğini en son bilgiler için okuma [güncelleştirilmiş Office 365 modern kimlik doğrulaması](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/).
+4. **Modern kimlik doğrulaması**: bulut Hizmetleri, kiracı kısıtlamalarını kullanmak ve izin verilmeyen tüm kiracılara erişimi engellemek için modern kimlik doğrulaması kullanmalıdır. Office 365 Bulut Hizmetleri 'ni, modern kimlik doğrulama protokollerini varsayılan olarak kullanacak şekilde yapılandırmanız gerekir. Modern kimlik doğrulaması için Office 365 desteğiyle ilgili en son bilgiler için, [Güncelleştirilmiş Office 365 modern kimlik doğrulaması](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)makalesini okuyun.
 
 Aşağıdaki diyagram, üst düzey trafik akışını gösterir. Kiracı kısıtlamaları, Office 365 bulut hizmetlerine değil, yalnızca Azure AD trafiği için SSL incelemesi gerektirir. Azure AD kimlik doğrulaması için trafik hacmi, Exchange Online ve SharePoint Online gibi SaaS uygulamalarına Trafik biriminden çok daha düşük olduğundan bu ayrım önemlidir.
 
@@ -70,16 +70,16 @@ Proxy altyapınız aracılığıyla kiracı kısıtlamalarını etkinleştirmek 
 
 #### <a name="configuration"></a>Yapılandırma
 
-Login.microsoftonline.com, login.microsoft.com ve login.windows.net gelen istek için her iki HTTP üst bilgileri ekleyin: *kiracılar için kısıtlama erişim* ve *kısıtlama erişim bağlam*.
+Login.microsoftonline.com, login.microsoft.com ve login.windows.net için gelen her istek için iki HTTP üst bilgisi ekleyin: *Restrict-Access-to-kiracılar* ve *Restrict-Access-Context*.
 
 Üst bilgileri, aşağıdaki öğeleri içermelidir:
 
-- *Kısıtla-erişim-kiracılar*için, kullanıcıların erişimine izin vermek istediğiniz kiracılar için virgülle ayrılmış bir liste olan \<izin verilen kiracı listesi\>değerini kullanın. Bir kiracı ile kaydedilen herhangi bir etki alanı, bu listedeki Kiracı tanımlamak için kullanılabilir. Örneğin, hem Contoso ve Fabrikam kiracıları için erişime izin vermek için ad/değer çifti şuna benzer: `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com`
+- *Kısıtla-erişim-kiracılar*için, kullanıcıların erişimine izin vermek istediğiniz kiracılar için virgülle ayrılmış bir liste olan \<izin verilen kiracı listesi\>değerini kullanın. Bir kiracı ile kaydedilen herhangi bir etki alanı, bu listedeki Kiracı tanımlamak için kullanılabilir. Örneğin, hem contoso hem de fabrikam kiracılarına erişime izin vermek için ad/değer çifti şöyle görünür: `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com`
 
 - *Restrict-Access-Context*için, kiracı kısıtlamalarını hangi kiracının ayarlamasında olduğunu bildirmek üzere tek BIR dizin kimliği değeri kullanın. Örneğin, contoso 'yu kiracı kısıtlamaları ilkesini belirten kiracı olarak bildirmek için ad/değer çifti şöyle görünür: `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d`  
 
 > [!TIP]
-> Dizin KIMLIĞINIZI [Azure Active Directory portalında](https://aad.portal.azure.com/)bulabilirsiniz. Bir yönetici olarak oturum açın, select **Azure Active Directory**, ardından **özellikleri**.
+> Dizin KIMLIĞINIZI [Azure Active Directory portalında](https://aad.portal.azure.com/)bulabilirsiniz. Yönetici olarak oturum açın, **Azure Active Directory**' yi seçin ve ardından **Özellikler**' i seçin.
 
 Kullanıcıların, kendi HTTP üst bilgisini onaylanmamış kiracılar ile eklemesini engellemek için, gelen istekte zaten varsa, proxy 'nin *Restrict-to-to-to----kiracılar* üst bilgisini değiştirmesini gerekir.
 
@@ -108,9 +108,9 @@ Kısıtlanmış erişim bağlamı kiracısı olarak belirtilen kiracının Yöne
 Azure portalında diğer raporları gibi raporunuzun kapsamını belirtmek için filtreleri kullanabilirsiniz. Belirli bir zaman aralığı, Kullanıcı, uygulama, istemci veya durum üzerinde filtre uygulayabilirsiniz. **Sütunlar** düğmesini seçerseniz, verileri aşağıdaki alanların herhangi bir birleşimiyle görüntülemeyi seçebilirsiniz:
 
 - **Kullanıcısını**
-- **Uygulama**
-- **Durumu**
-- **Tarih**
+- **Uygulamanızı**
+- **Durum**
+- **Güncel**
 - **Tarih (UTC)** (UTC Eşgüdümlü Evrensel Saat)
 - **MFA auth yöntemi** (çok faktörlü kimlik doğrulama yöntemi)
 - **MFA auth ayrıntısı** (çok faktörlü kimlik doğrulama ayrıntısı)
@@ -128,13 +128,13 @@ Office 365 uygulamaları, kiracı kısıtlamalarını tam olarak desteklemek iç
 1. Kullanılan istemci modern kimlik doğrulamasını destekler.
 2. Modern kimlik doğrulaması, bulut hizmeti için varsayılan kimlik doğrulama protokolü olarak etkinleştirilir.
 
-Başvurmak [güncelleştirilmiş Office 365 modern kimlik doğrulaması](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/) hangi Office istemcileri şu anda modern kimlik doğrulaması desteği en yeni bilgileri. Bu sayfa ayrıca modern kimlik doğrulaması belirli Exchange Online ve Skype Kurumsal çevrimiçi kiracılar için etkinleştirme yönergeleri için bağlantıları içerir. SharePoint Online, varsayılan olarak modern kimlik doğrulamaya zaten izin tanıyor.
+Office istemcilerinin Şu anda modern kimlik doğrulamasını desteklediği en son bilgiler için bkz. [güncelleştirilmiş office 365 modern kimlik doğrulaması](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/) . Bu sayfa ayrıca modern kimlik doğrulaması belirli Exchange Online ve Skype Kurumsal çevrimiçi kiracılar için etkinleştirme yönergeleri için bağlantıları içerir. SharePoint Online, varsayılan olarak modern kimlik doğrulamaya zaten izin tanıyor.
 
 Office 365 tarayıcı tabanlı uygulamalar (Office portalı, Yammer, SharePoint siteleri, Web 'de Outlook ve daha fazlası) Şu anda kiracı kısıtlamalarını desteklemektedir. Kalın istemciler (Outlook, Skype Kurumsal, Word, Excel, PowerPoint ve daha fazlası) yalnızca modern kimlik doğrulaması kullanırken kiracı kısıtlamalarını zorlayabilir.  
 
 Modern kimlik doğrulamasını destekleyen Outlook ve Skype Kurumsal istemcileri, modern kimlik doğrulamasının etkinleştirilmediği, kiracı kısıtlamalarını etkin bir şekilde atlayarak eski protokollerde hala eski protokolleri kullanabiliyor olabilir. Kiracı kısıtlamaları, kimlik doğrulaması sırasında login.microsoftonline.com, login.microsoft.com veya login.windows.net ile iletişim kurduklarında eski protokolleri kullanan uygulamaları engelleyebilirler.
 
-Windows için Outlook, müşterileri, son kullanıcıların profillerini için onaylanmamış e-posta hesapları eklemesini engelleyen kısıtlamalar uygulamak seçebilir. Örneğin, [varsayılan olmayan Exchange hesapları ekleme engelle](https://gpsearch.azurewebsites.net/default.aspx?ref=1) Grup İlkesi ayarı.
+Windows için Outlook, müşterileri, son kullanıcıların profillerini için onaylanmamış e-posta hesapları eklemesini engelleyen kısıtlamalar uygulamak seçebilir. Örneğin, [varsayılan olmayan Exchange hesaplarını eklemeyi engelle](https://gpsearch.azurewebsites.net/default.aspx?ref=1) Grup İlkesi ayarını inceleyin.
 
 ## <a name="testing"></a>Test Etme
 
@@ -144,15 +144,15 @@ Kiracı kısıtlamalarını tüm kuruluşunuz için uygulamadan önce denemek is
 
 Fiddler yakalamak ve HTTP/HTTPS trafiğini, HTTP üst bilgilerini ekleme dahil olmak üzere değiştirmek için kullanılan proxy hata ayıklama ücretsiz bir web tarayıcısı uygulamasıdır. Fiddler 'i kiracı kısıtlamalarını test etmek üzere yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. [Fiddler'ı yükleyip](https://www.telerik.com/fiddler).
+1. [Fiddler 'ı indirip yükleyin](https://www.telerik.com/fiddler).
 
-2. Başına HTTPS trafiği şifresini çözmek için fiddler'ı yapılandırma [Fiddler'ın Yardım belgeleri](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS).
+2. Fiddler 'i, [Fiddler 'in yardım belgeleri](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS)başına https trafiğinin şifresini çözmek için yapılandırın.
 
-3. Eklemek için fiddler'ı yapılandırma *kiracılar için kısıtlama erişim* ve *kısıtlama erişim bağlam* üstbilgileri özel kuralları kullanarak:
+3. Fiddler 'i, özel kurallar kullanarak *Restrict-to-kiracılar* ve *Restrict-Access-Context* üstbilgilerini ekleyecek şekilde yapılandırın:
 
-   1. Fiddler'ı Web hata ayıklayıcısı Aracı'nda seçin **kuralları** menü ve select **kuralları Özelleştir...** CustomRules dosyayı açmak için.
+   1. Fiddler Web hata ayıklayıcı aracında, **kurallar** menüsünü seçin ve **kuralları Özelleştir...** seçeneğini belirleyin. CustomRules dosyayı açmak için.
 
-   2. `OnBeforeRequest` işlevinin başına aşağıdaki satırları ekleyin. \<kiracı etki alanı\>, kiracınızla birlikte kaydedilmiş bir etki alanıyla değiştirin (örneğin, `contoso.onmicrosoft.com`). Değiştirin \<dizin kimliği\> , kiracınızın Azure AD GUID tanımlayıcısı.
+   2. `OnBeforeRequest` işlevinin başına aşağıdaki satırları ekleyin. \<kiracı etki alanı\>, kiracınızla birlikte kaydedilmiş bir etki alanıyla değiştirin (örneğin, `contoso.onmicrosoft.com`). \<dizin KIMLIĞI\>, kiracınızın Azure AD GUID tanımlayıcısı ile değiştirin.
 
       ```JScript.NET
       if (
@@ -172,7 +172,7 @@ Fiddler yakalamak ve HTTP/HTTPS trafiğini, HTTP üst bilgilerini ekleme dahil o
 
 4. CustomRules dosyasını kaydedip kapatın.
 
-Fiddler'ı yapılandırdıktan sonra şuraya giderek trafiği yakalayabilirsiniz **dosya** menü ve seçerek **trafik yakalama**.
+Fiddler 'ı yapılandırdıktan sonra, **Dosya** menüsüne gidip **trafiği yakala**' yı seçerek trafiği yakalayabilirsiniz.
 
 ### <a name="staged-rollout-of-proxy-settings"></a>Ara sunucu ayarlarını aşamalı dağıtımı
 
@@ -185,5 +185,5 @@ Belirli Ayrıntılar için proxy sunucusu belgelerinize bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Hakkında bilgi edinin [güncelleştirilmiş Office 365 modern kimlik doğrulaması](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)
-- Gözden geçirme [Office 365 URL'leri ve IP adresi aralıkları](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)
+- [Güncelleştirilmiş Office 365 modern kimlik doğrulaması](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/) hakkında bilgi edinin
+- [Office 365 URL 'lerini ve IP adresi aralıklarını](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) gözden geçirin

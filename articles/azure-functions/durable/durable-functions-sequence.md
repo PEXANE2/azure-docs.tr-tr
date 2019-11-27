@@ -1,6 +1,6 @@
 ---
-title: Function chaining in Durable Functions - Azure
-description: Learn how to run a Durable Functions sample that executes a sequence of functions.
+title: Dayanıklı İşlevler-Azure 'da işlev zinciri oluşturma
+description: İşlev sırasını yürüten bir Dayanıklı İşlevler örneğini çalıştırmayı öğrenin.
 author: cgillum
 ms.topic: conceptual
 ms.date: 12/07/2018
@@ -12,102 +12,102 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231333"
 ---
-# <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Function chaining in Durable Functions - Hello sequence sample
+# <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Dayanıklı İşlevler-Merhaba dizisi örneğinde işlev zinciri oluşturma
 
-Function chaining refers to the pattern of executing a sequence of functions in a particular order. Often the output of one function needs to be applied to the input of another function. This article describes the chaining sequence that you create when you complete the Durable Functions quickstart ([C#](durable-functions-create-first-csharp.md) or [JavaScript](quickstart-js-vscode.md)). For more information about Durable Functions, see [Durable Functions overview](durable-functions-overview.md).
+İşlev zinciri, belirli bir sırada işlev dizisini yürütme düzenine başvurur. Genellikle bir işlevin çıktısının başka bir işlevin girişine uygulanması gerekir. Bu makalede, Dayanıklı İşlevler hızlı başlangıcı 'ni ([C#](durable-functions-create-first-csharp.md) veya [JavaScript](quickstart-js-vscode.md)) tamamladığınızda oluşturduğunuz zincirleme dizisi açıklanmaktadır. Dayanıklı İşlevler hakkında daha fazla bilgi için bkz. [dayanıklı işlevler genel bakış](durable-functions-overview.md).
 
 [!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
-## <a name="the-functions"></a>The functions
+## <a name="the-functions"></a>İşlevler
 
-This article explains the following functions in the sample app:
+Bu makalede örnek uygulamada aşağıdaki işlevler açıklanmaktadır:
 
-* `E1_HelloSequence`: An orchestrator function that calls `E1_SayHello` multiple times in a sequence. It stores the outputs from the `E1_SayHello` calls and records the results.
-* `E1_SayHello`: An activity function that prepends a string with "Hello".
+* `E1_HelloSequence`: bir dizide birden çok kez `E1_SayHello` çağıran bir Orchestrator işlevi. `E1_SayHello` çağrılarındaki çıktıları depolar ve sonuçları kaydeder.
+* `E1_SayHello`: "Hello" ile bir dizeyi eklenen bir etkinlik işlevi.
 
-The following sections explain the configuration and code that is used for C# scripting and JavaScript. The code for Visual Studio development is shown at the end of the article.
+Aşağıdaki bölümlerde, komut dosyası ve JavaScript için C# kullanılan yapılandırma ve kod açıklanmaktadır. Visual Studio geliştirme kodu makalenin sonunda gösterilmektedir.
 
 > [!NOTE]
-> JavaScript Durable Functions are available for the Functions 2.0 runtime only.
+> JavaScript Dayanıklı İşlevler yalnızca Işlevler 2,0 çalışma zamanı için kullanılabilir.
 
 ## <a name="e1_hellosequence"></a>E1_HelloSequence
 
-### <a name="functionjson-file"></a>function.json file
+### <a name="functionjson-file"></a>function. JSON dosyası
 
-If you use Visual Studio Code or the Azure portal for development, here's the content of the *function.json* file for the orchestrator function. Most orchestrator *function.json* files look almost exactly like this.
+Geliştirme için Visual Studio Code veya Azure portal kullanıyorsanız, Orchestrator işlevinin *function. JSON* dosyasının içeriği aşağıda verilmiştir. Çoğu Orchestrator *işlevi. JSON* dosyası neredeyse tam olarak bu şekilde görünür.
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E1_HelloSequence/function.json)]
 
-The important thing is the `orchestrationTrigger` binding type. All orchestrator functions must use this trigger type.
+Önemli şey `orchestrationTrigger` bağlama türüdür. Tüm Orchestrator işlevlerinin bu tetikleyici türünü kullanması gerekir.
 
 > [!WARNING]
-> To abide by the "no I/O" rule of orchestrator functions, don't use any input or output bindings when using the `orchestrationTrigger` trigger binding.  If other input or output bindings are needed, they should instead be used in the context of `activityTrigger` functions, which are called by the orchestrator. For more information, see the [orchestrator function code constraints](durable-functions-code-constraints.md) article.
+> Orchestrator işlevlerinin "g/ç" kuralına göre ABIDE 'ye `orchestrationTrigger` tetikleyici bağlamayı kullanırken herhangi bir giriş veya çıkış bağlaması kullanmayın.  Diğer giriş veya çıkış bağlamaları gerekliyse, bunun yerine Orchestrator tarafından çağrılan `activityTrigger` işlevleri bağlamında kullanılması gerekir. Daha fazla bilgi için bkz. [Orchestrator işlev kodu kısıtlamaları](durable-functions-code-constraints.md) makalesi.
 
-### <a name="c-script-visual-studio-code-and-azure-portal-sample-code"></a>C# script (Visual Studio Code and Azure portal sample code)
+### <a name="c-script-visual-studio-code-and-azure-portal-sample-code"></a>C#betik (Visual Studio Code ve Azure portal örnek kod)
 
-Here is the source code:
+Kaynak kodu aşağıda verilmiştir:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E1_HelloSequence/run.csx)]
 
-All C# orchestration functions must have a parameter of type `DurableOrchestrationContext`, which exists in the `Microsoft.Azure.WebJobs.Extensions.DurableTask` assembly. If you're using C# script, the assembly can be referenced using the `#r` notation. This context object lets you call other *activity* functions and pass input parameters using its `CallActivityAsync` method.
+Tüm C# düzenleme işlevleri, `Microsoft.Azure.WebJobs.Extensions.DurableTask` derlemesinde bulunan `DurableOrchestrationContext`türünde bir parametreye sahip olmalıdır. Betiği kullanıyorsanız C# , derlemeye `#r` gösterimi kullanılarak başvurulabilir. Bu bağlam nesnesi diğer *etkinlik* işlevlerini çağırmanıza ve `CallActivityAsync` yöntemini kullanarak giriş parametrelerini geçirmeye olanak tanır.
 
-The code calls `E1_SayHello` three times in sequence with different parameter values. The return value of each call is added to the `outputs` list, which is returned at the end of the function.
+Kod, farklı parametre değerleri ile sırayla üç kez `E1_SayHello` çağırır. Her çağrının dönüş değeri, işlevin sonunda döndürülen `outputs` listesine eklenir.
 
 ### <a name="javascript"></a>Javascript
 
-Here is the source code:
+Kaynak kodu aşağıda verilmiştir:
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E1_HelloSequence/index.js)]
 
-All JavaScript orchestration functions must include the [`durable-functions` module](https://www.npmjs.com/package/durable-functions). It's a library that enables you to write Durable Functions in JavaScript. There are three significant differences between an orchestration function and other JavaScript functions:
+Tüm JavaScript düzenleme işlevleri [`durable-functions` modülünü](https://www.npmjs.com/package/durable-functions)içermelidir. JavaScript içinde Dayanıklı İşlevler yazmanızı sağlayan bir kitaplıktır. Bir Orchestration işlevi ve diğer JavaScript işlevleri arasında üç önemli fark vardır:
 
-1. The function is a [generator function.](https://docs.microsoft.com/scripting/javascript/advanced/iterators-and-generators-javascript)
-2. The function is wrapped in a call to the `durable-functions` module's `orchestrator` method (here `df`).
-3. The function must be synchronous. Because the 'orchestrator' method handles calling 'context.done', the function should simply 'return'.
+1. İşlev bir [Oluşturucu işlevidir.](https://docs.microsoft.com/scripting/javascript/advanced/iterators-and-generators-javascript)
+2. İşlev, `durable-functions` modülünün `orchestrator` yöntemine (`df`) bir çağrıda paketlenir.
+3. İşlevin zaman uyumlu olması gerekir. ' Orchestrator ' yöntemi ' Context. Done ' çağrılmasını işletiğinden, işlev yalnızca ' Return ' olmalıdır.
 
-The `context` object contains a `df` object lets you call other *activity* functions and pass input parameters using its `callActivity` method. The code calls `E1_SayHello` three times in sequence with different parameter values, using `yield` to indicate the execution should wait on the async activity function calls to be returned. The return value of each call is added to the `outputs` list, which is returned at the end of the function.
+`context` `df` nesnesi, diğer *etkinlik* işlevlerini çağırmanıza ve `callActivity` metodunu kullanarak giriş parametrelerini geçirmeye olanak tanır. Kod, farklı parametre değerleriyle sırayla `E1_SayHello` çağırır, yürütmenin zaman uyumsuz etkinlik işlev çağrılarının döndürülecek şekilde beklemesi gerektiğini belirtmek için `yield` kullanarak. Her çağrının dönüş değeri, işlevin sonunda döndürülen `outputs` listesine eklenir.
 
 ## <a name="e1_sayhello"></a>E1_SayHello
 
-### <a name="functionjson-file"></a>function.json file
+### <a name="functionjson-file"></a>function. JSON dosyası
 
-The *function.json* file for the activity function `E1_SayHello` is similar to that of `E1_HelloSequence` except that it uses an `activityTrigger` binding type instead of an `orchestrationTrigger` binding type.
+`E1_SayHello` Activity işlevi için *function. JSON* dosyası, `orchestrationTrigger` bağlama türü yerine `activityTrigger` bağlama türü kullanması dışında `E1_HelloSequence` benzerdir.
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E1_SayHello/function.json)]
 
 > [!NOTE]
-> Any function called by an orchestration function must use the `activityTrigger` binding.
+> Bir Orchestration işlevi tarafından çağrılan tüm işlevleri `activityTrigger` bağlamasını kullanmalıdır.
 
-The implementation of `E1_SayHello` is a relatively trivial string formatting operation.
+`E1_SayHello` uygulanması görece basit bir dize biçimlendirme işlemidir.
 
 ### <a name="c"></a>C#
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E1_SayHello/run.csx)]
 
-This function has a parameter of type `DurableActivityContext`, which it uses to get the input that was passed to it by the orchestrator function's call to `CallActivityAsync<T>`.
+Bu işlevin, Orchestrator işlevinin `CallActivityAsync<T>`çağrısı tarafından kendisine geçirilen girişi almak için kullandığı `DurableActivityContext`türünde bir parametresi vardır.
 
 ### <a name="javascript"></a>JavaScript
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E1_SayHello/index.js)]
 
-Unlike a JavaScript orchestration function, an activity function needs no special setup. The input passed to it by the orchestrator function is located on the `context.bindings` object under the name of the `activityTrigger` binding - in this case, `context.bindings.name`. The binding name can be set as a parameter of the exported function and accessed directly, which is what the sample code does.
+JavaScript Orchestration işlevinin aksine, etkinlik işlevinin özel bir kurulum yapması gerekmez. Orchestrator işlevi tarafından kendisine geçirilen giriş, bu örnekte `context.bindings.name``activityTrigger` bağlamanın adı altında `context.bindings` nesnesi üzerinde bulunur. Bağlama adı, içe aktarılmış işlevin parametresi olarak ayarlanabilir ve doğrudan erişilebilen, örnek kodun yaptığı şeydir.
 
 ## <a name="run-the-sample"></a>Örneği çalıştırma
 
-To execute the `E1_HelloSequence` orchestration, send the following HTTP POST request.
+`E1_HelloSequence` Orchestration 'u yürütmek için aşağıdaki HTTP POST isteğini gönderin.
 
 ```
 POST http://{host}/orchestrators/E1_HelloSequence
 ```
 
 > [!NOTE]
-> The previous HTTP snippet assumes there is an entry in the `host.json` file which removes the default `api/` prefix from all HTTP trigger functions URLs. You can find the markup for this configuration in the `host.json` file in the samples.
+> Önceki HTTP kod parçacığında, tüm HTTP tetikleyici işlevleri URL 'Lerinden varsayılan `api/` önekini kaldıran `host.json` dosyasında bir giriş olduğunu varsaymaktadır. Bu yapılandırmanın işaretlemesini, örneklerdeki `host.json` dosyasında bulabilirsiniz.
 
-For example, if you're running the sample in a function app named "myfunctionapp", replace "{host}" with "myfunctionapp.azurewebsites.net".
+Örneğin, örneği "myfunctionapp" adlı bir işlev uygulamasında çalıştırıyorsanız, "{Host}" ifadesini "myfunctionapp.azurewebsites.net" ile değiştirin.
 
-The result is an HTTP 202 response, like this (trimmed for brevity):
+Sonuç, şöyle bir HTTP 202 yanıt olur (breçekimi için kırpılmış):
 
 ```
 HTTP/1.1 202 Accepted
@@ -118,13 +118,13 @@ Location: http://{host}/runtime/webhooks/durabletask/instances/96924899c16d43b08
 (...trimmed...)
 ```
 
-At this point, the orchestration is queued up and begins to run immediately. The URL in the `Location` header can be used to check the status of the execution.
+Bu noktada düzenleme sıraya alınır ve hemen çalışmaya başlar. `Location` üstbilgisindeki URL, yürütmenin durumunu denetlemek için kullanılabilir.
 
 ```
 GET http://{host}/runtime/webhooks/durabletask/instances/96924899c16d43b08a536de376ac786b?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
 ```
 
-The result is the status of the orchestration. It runs and completes quickly, so you see it in the *Completed* state with a response that looks like this (trimmed for brevity):
+Sonuç, düzenleme durumudur. Daha çabuk çalışır ve tamamlanır, bu sayede *tamamlandı* durumunda şuna benzer bir Yanıt ile görürsünüz (breçekimi için kırpılmış):
 
 ```
 HTTP/1.1 200 OK
@@ -134,22 +134,22 @@ Content-Type: application/json; charset=utf-8
 {"runtimeStatus":"Completed","input":null,"output":["Hello Tokyo!","Hello Seattle!","Hello London!"],"createdTime":"2017-06-29T05:24:57Z","lastUpdatedTime":"2017-06-29T05:24:59Z"}
 ```
 
-As you can see, the `runtimeStatus` of the instance is *Completed* and the `output` contains the JSON-serialized result of the orchestrator function execution.
+Gördüğünüz gibi, örnek `runtimeStatus` *tamamlanır* ve `output` Orchestrator IşLEVI yürütmenin JSON tarafından serileştirilmiş sonucunu içerir.
 
 > [!NOTE]
-> The HTTP POST endpoint that started the orchestrator function is implemented in the sample app as an HTTP trigger function named "HttpStart". You can implement similar starter logic for other trigger types, like `queueTrigger`, `eventHubTrigger`, or `timerTrigger`.
+> Orchestrator işlevini Başlatan HTTP POST uç noktası, örnek uygulamada "HttpStart" adlı bir HTTP tetikleyici işlevi olarak uygulanır. `queueTrigger`, `eventHubTrigger`veya `timerTrigger`gibi diğer tetikleyici türleri için de benzer başlangıç mantığı uygulayabilirsiniz.
 
-Look at the function execution logs. The `E1_HelloSequence` function started and completed multiple times due to the replay behavior described in the [orchestration reliability](durable-functions-orchestrations.md#reliability) topic. On the other hand, there were only three executions of `E1_SayHello` since those function executions do not get replayed.
+İşlev yürütme günlüklerine bakın. `E1_HelloSequence` işlevi, [düzenleme güvenilirliği](durable-functions-orchestrations.md#reliability) konusunda açıklanan yeniden yürütme davranışı nedeniyle birden çok kez başlatıldı ve tamamlandı. Diğer taraftan, bu işlev yürütmelerinin yeniden yürütülmediğinden yalnızca üç yürütme `E1_SayHello` vardı.
 
-## <a name="visual-studio-sample-code"></a>Visual Studio sample code
+## <a name="visual-studio-sample-code"></a>Visual Studio örnek kodu
 
-Here is the orchestration as a single C# file in a Visual Studio project:
+Visual Studio projesindeki tek C# bir dosya olarak Orchestration aşağıda verilmiştir:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-This sample has demonstrated a simple function-chaining orchestration. The next sample shows how to implement the fan-out/fan-in pattern.
+Bu örnek, basit bir işlev zincirleme düzenlemesi göstermiştir. Sonraki örnek, fan/fan deseninin nasıl uygulanacağını gösterir.
 
 > [!div class="nextstepaction"]
-> [Run the Fan-out/fan-in sample](durable-functions-cloud-backup.md)
+> [Fan/fan örneğini çalıştırın](durable-functions-cloud-backup.md)

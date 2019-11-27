@@ -1,6 +1,6 @@
 ---
-title: Get started with combined registration - Azure Active Directory
-description: Enable combined Azure AD Multi-Factor Authentication and self-service password reset registration (preview)
+title: Birleşik kayıt ile çalışmaya başlama-Azure Active Directory
+description: Birleşik Azure AD Multi-Factor Authentication ve self servis parola sıfırlama kaydını etkinleştirme (Önizleme)
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -18,85 +18,85 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74381311"
 ---
-# <a name="enable-combined-security-information-registration-preview"></a>Enable combined security information registration (preview)
+# <a name="enable-combined-security-information-registration-preview"></a>Birleşik güvenlik bilgileri kaydını etkinleştir (Önizleme)
 
-Before enabling the new experience, review the article [Combined security information registration (preview)](concept-registration-mfa-sspr-combined.md) to ensure you understand the functionality and effects of this feature.
+Yeni deneyimi etkinleştirmeden önce, bu özelliğin işlevselliğini ve etkilerini anladığınızdan emin olmak için [Birleşik güvenlik bilgileri kaydı (Önizleme)](concept-registration-mfa-sspr-combined.md) makalesini inceleyin.
 
-![Combined security information registration enhanced experience](media/howto-registration-mfa-sspr-combined/combined-security-info-more-required.png)
+![Birleşik güvenlik bilgileri kaydı gelişmiş deneyimi](media/howto-registration-mfa-sspr-combined/combined-security-info-more-required.png)
 
 |     |
 | --- |
-| Combined security information registration for Azure Multi-Factor Authentication and Azure Active Directory (Azure AD) self-service password reset is a public preview feature of Azure AD. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
+| Azure Multi-Factor Authentication ve Azure Active Directory (Azure AD) self servis parola sıfırlama için Birleşik güvenlik bilgileri kaydı, Azure AD 'nin genel önizleme özelliğidir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
 |     |
 
 > [!NOTE]
-> Organizations who enabled the previous preview for registering and managing security info should complete the steps below to enable the enhanced preview experience. For organizations who do not make the switch, on October 8, 2019, Microsoft will switch users of the previous preview for registering and managing security info to the enhanced experience. 
+> Güvenlik bilgilerini kaydetmek ve yönetmek için önceki önizlemeyi etkinleştiren kuruluşların, gelişmiş önizleme deneyimini etkinleştirmek için aşağıdaki adımları tamamlaması gerekir. 8 Ekim 2019 ' de, Microsoft, anahtarı kullanmayan kuruluşlar için güvenlik bilgilerini gelişmiş deneyimle kaydetmek ve yönetmek üzere önceki önizlemenin kullanıcılarına geçiş yapar. 
 > 
-> If you have not enabled any version of the preview your organization will not be impacted.
+> Önizlemenin herhangi bir sürümünü etkinleştirmediyseniz kuruluşunuzun etkilenmemesi gerekir.
 
 ## <a name="enable-combined-registration"></a>Birleşik kaydı etkinleştirme
 
-Complete these steps to enable combined registration:
+Birleşik kaydı etkinleştirmek için şu adımları uygulayın:
 
-1. Sign in to the Azure portal as a user administrator or global administrator.
-2. Go to **Azure Active Directory** > **User settings** > **Manage settings for access panel preview features**.
-3. Under **Users can use preview features for registering and managing security info - refresh**, choose to enable for a **Selected** group of users or for **All** users.
+1. Azure portal bir Kullanıcı Yöneticisi veya genel yönetici olarak oturum açın.
+2. **Azure Active Directory** > **Kullanıcı ayarları** ' na gidin > **erişim paneli Önizleme özellikleri ayarlarını yönetin**.
+3. Kullanıcılar ' ın altında, **güvenlik bilgilerini kaydetmek ve yönetmek için Önizleme özelliklerini kullanabilir-Yenile**, **Seçili** bir Kullanıcı grubu için veya **Tüm** kullanıcılar için Etkinleştir ' i seçin.
 
-   ![Enable the combined security info preview experience for All users](media/howto-registration-mfa-sspr-combined/combined-security-info-enable.png)
+   ![Tüm kullanıcılar için Birleşik güvenlik bilgileri önizleme deneyimini etkinleştir](media/howto-registration-mfa-sspr-combined/combined-security-info-enable.png)
 
 > [!IMPORTANT]
-> Starting in March 2019, the phone call options won't be available to Multi-Factor Authentication and SSPR users in free/trial Azure AD tenants. SMS messages are not affected by this change. The phone call options will still be available to users in paid Azure AD tenants.
+> 2019 Mart 'tan itibaren telefon araması seçenekleri ücretsiz/deneme Azure AD kiracılarında Multi-Factor Authentication ve SSPR kullanıcıları için kullanılamaz. SMS iletileri bu değişiklikten etkilenmez. Telefon araması seçenekleri, ücretli Azure AD kiracılarındaki kullanıcılar tarafından kullanılabilir olmaya devam edecektir.
 
 > [!NOTE]
-> After you enable combined registration, users who register or confirm their phone number or mobile app through the new experience can use them for Multi-Factor Authentication and SSPR, if those methods are enabled in the Multi-Factor Authentication and SSPR policies. If you then disable this experience, users who go to the previous SSPR registration page at `https://aka.ms/ssprsetup` will be required to perform multi-factor authentication before they can access the page.
+> Birleşik kayıt etkinleştirildikten sonra, bu yöntemler Multi-Factor Authentication ve SSPR 'de etkinleştirilmişse telefon numaralarını veya mobil uygulamayı yeni deneyim aracılığıyla kaydeden veya onaylayan kullanıcılar bunları Multi-Factor Authentication ve SSPR için kullanabilir. Elerindeki. Daha sonra bu deneyimi devre dışı bırakırsanız, `https://aka.ms/ssprsetup` önceki SSPR kayıt sayfasına gittikleri kullanıcıların sayfaya erişebilmeleri için çok faktörlü kimlik doğrulaması gerçekleştirmesi gerekecektir.
 
-If you have configured the Site to Zone Assignment List in Internet Explorer, the following sites have to be in the same zone:
+Internet Explorer 'da siteden bölge atama listesini yapılandırdıysanız, aşağıdaki sitelerin aynı bölgede olması gerekir:
 
 * [https://login.microsoftonline.com](https://login.microsoftonline.com)
 * [https://mysignins.microsoft.com](https://mysignins.microsoft.com)
 * [https://account.activedirectory.windowsazure.com](https://account.activedirectory.windowsazure.com)
 
-## <a name="conditional-access-policies-for-combined-registration"></a>Conditional Access policies for combined registration
+## <a name="conditional-access-policies-for-combined-registration"></a>Birleşik kayıt için koşullu erişim ilkeleri
 
-Securing when and how users register for Azure Multi-Factor Authentication and self-service password reset is now possible with user actions in Conditional Access policy. This preview feature is available to organizations who have enabled the [combined registration preview](../authentication/concept-registration-mfa-sspr-combined.md). This functionality may be enabled in organizations where they want users to register for Azure Multi-Factor Authentication and SSPR from a central location such as a trusted network location during HR onboarding. For more information about creating trusted locations in Conditional Access, see the article [What is the location condition in Azure Active Directory Conditional Access?](../conditional-access/location-condition.md#named-locations)
+Kullanıcıların Azure Multi-Factor Authentication ve self servis parola sıfırlaması için ne zaman ve nasıl kaydoldığına ilişkin güvenlik, koşullu erişim ilkesindeki Kullanıcı eylemleri ile mümkün değildir. Bu önizleme özelliği, [birleştirilmiş kayıt önizlemesini](../authentication/concept-registration-mfa-sspr-combined.md)etkinleştirmiş kuruluşlar tarafından kullanılabilir. Bu işlev, kullanıcıların Azure Multi-Factor Authentication ve SSPR 'ye, HR ekleme sırasında güvenilen ağ konumu gibi merkezi bir konumdan kaydolmaları istedikleri kuruluşlarda etkinleştirilebilir. Koşullu erişimde güvenilen konumlar oluşturma hakkında daha fazla bilgi için [Azure Active Directory Koşullu erişim bölümünde konum koşulunun ne olduğuna](../conditional-access/location-condition.md#named-locations) bakın.
 
-### <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>Create a policy to require registration from a trusted location
+### <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>Güvenilen bir konumdan kayıt gerektirecek bir ilke oluşturun
 
-The following policy applies to all selected users, who attempt to register using the combined registration experience, and blocks access unless they are connecting from a location marked as trusted network.
+Aşağıdaki ilke, birleştirilmiş kayıt deneyimini kullanarak kaydolmayı deneyen ve güvenilen ağ olarak işaretlenen bir konumdan bağlanmadıkları sürece erişimi engelleyen tüm seçili kullanıcılar için geçerlidir.
 
-![Create a CA policy to control security info registration](media/howto-registration-mfa-sspr-combined/conditional-access-register-security-info.png)
+![Güvenlik bilgileri kaydını denetlemek için bir CA ilkesi oluşturma](media/howto-registration-mfa-sspr-combined/conditional-access-register-security-info.png)
 
-1. In the **Azure portal**, browse to **Azure Active Directory** > **Conditional Access**
+1. **Azure Portal**, **koşullu erişim** > **Azure Active Directory** gidin
 1. **Yeni ilke**'yi seçin
-1. In Name, Enter a Name for this policy. For example, **Combined Security Info Registration on Trusted Networks**
-1. Under **Assignments**, click **Users and groups**, and select the users and groups you want this policy to apply to
+1. Ad alanına bu ilke için bir ad girin. Örneğin, **güvenilir ağlarda Birleşik güvenlik bilgileri kaydı**
+1. **Atamalar**' ın altında, **Kullanıcılar ve gruplar**' a tıklayın ve bu ilkenin uygulanmasını istediğiniz kullanıcıları ve grupları seçin
 
    > [!WARNING]
-   > Users must be enabled for the [combined registration preview](../authentication/howto-registration-mfa-sspr-combined.md).
+   > [Birleşik kayıt önizlemesi](../authentication/howto-registration-mfa-sspr-combined.md)için kullanıcıların etkinleştirilmiş olması gerekir.
 
-1. Under **Cloud apps or actions**, select **User actions**, check **Register security information (preview)**
-1. Under **Conditions** > **Locations**
-   1. Configure **Yes**
-   1. Include **Any location**
-   1. Exclude **All trusted locations**
-   1. Click **Done** on the Locations blade
-   1. Click **Done** on the Conditions blade
-1. Under **Access controls** > **Grant**
-   1. Click **Block access**
-   1. Then click **Select**
-1. Set **Enable policy** to **On**
-1. Then click **Create**
+1. **Bulut uygulamaları veya eylemler**altında **Kullanıcı eylemleri**' ni seçin, **güvenlik bilgilerini kaydet (Önizleme)** bölümüne bakın
+1. **Koşullar** > **konumlar** altında
+   1. **Evet** yapılandırma
+   1. **Herhangi bir konum** Ekle
+   1. **Tüm güvenilen konumları** Dışla
+   1. Konumlar dikey penceresinde **bitti** ' ye tıklayın
+   1. Koşullar dikey penceresinde **bitti** ' ye tıklayın
+1. **Erişim denetimleri** > **izin ver** ' in altında
+   1. **Erişimi engelle** 'ye tıklayın
+   1. Sonra **Seç** ' e tıklayın.
+1. **Ilkeyi** **Açık** olarak ayarla
+1. Sonra **Oluştur** ' a tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Force users to re-register authentication methods](howto-mfa-userdevicesettings.md#manage-authentication-methods)
+[Kullanıcıları kimlik doğrulama yöntemlerini yeniden kaydetmeye zorla](howto-mfa-userdevicesettings.md#manage-authentication-methods)
 
-[Available methods for Multi-Factor Authentication and SSPR](concept-authentication-methods.md)
+[Multi-Factor Authentication ve SSPR için kullanılabilir Yöntemler](concept-authentication-methods.md)
 
-[Configure self-service password reset](howto-sspr-deployment.md)
+[Self servis parola sıfırlamayı yapılandırma](howto-sspr-deployment.md)
 
-[Configure Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
+[Azure Multi-Factor Authentication yapılandırma](howto-mfa-getstarted.md)
 
-[Troubleshooting combined security info registration](howto-registration-mfa-sspr-combined-troubleshoot.md)
+[Birleşik güvenlik bilgileri kaydı sorunlarını giderme](howto-registration-mfa-sspr-combined-troubleshoot.md)
 
-[What is the location condition in Azure Active Directory Conditional Access?](../conditional-access/location-condition.md)
+[Koşullu erişim Azure Active Directory konum koşulu nedir?](../conditional-access/location-condition.md)

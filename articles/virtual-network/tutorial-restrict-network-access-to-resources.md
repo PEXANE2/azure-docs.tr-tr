@@ -49,9 +49,9 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 2. **Ağ**’ı ve sonra **Sanal ağ**’ı seçin.
 3. Aşağıdaki bilgileri girin veya seçin ve sonra **Oluştur**’u seçin:
 
-   |Ayar|Değer|
+   |Ayar|Value|
    |----|----|
-   |Ad| myVirtualNetwork |
+   |Name| myVirtualNetwork |
    |Adres alanı| 10.0.0.0/16|
    |Abonelik| Aboneliğinizi seçme|
    |Kaynak grubu | **Yeni oluştur**’u seçin ve *myResourceGroup* değerini girin.|
@@ -75,9 +75,9 @@ Hizmet uç noktaları her hizmet ve her alt ağ için etkinleştirilir. Alt ağ 
 
 3. **Alt ağ ekle** altında aşağıdaki bilgileri seçin veya girin ve sonra **Tamam**’ı seçin:
 
-    |Ayar|Değer|
+    |Ayar|Value|
     |----|----|
-    |Ad| Özel |
+    |Name| Özel |
     |Adres aralığı| 10.0.1.0/24|
     |Hizmet uç noktaları| **Hizmetler** altında **Microsoft.Storage** öğesini seçin|
 
@@ -92,9 +92,9 @@ Varsayılan olarak, alt ağdaki tüm VM'ler tüm kaynaklarla iletişim kurabilir
 2. **Ağ**'ı ve sonra **Ağ güvenlik grubu**’nu seçin.
 3. **Ağ güvenlik grubu oluşturun** altında aşağıdaki bilgileri girin veya seçin ve sonra **Oluştur**’u seçin:
 
-    |Ayar|Değer|
+    |Ayar|Value|
     |----|----|
-    |Ad| myNsgPrivate |
+    |Name| myNsgPrivate |
     |Abonelik| Aboneliğinizi seçme|
     |Kaynak grubu | **Mevcut olanı kullan**’ı seçin ve *myResourceGroup* seçeneğini belirleyin.|
     |Konum| **Doğu ABD**’yi seçin |
@@ -104,46 +104,46 @@ Varsayılan olarak, alt ağdaki tüm VM'ler tüm kaynaklarla iletişim kurabilir
 6. **+ Ekle** öğesini seçin.
 7. Azure Depolama hizmetine giden iletişime izin veren bir kural oluşturun. Aşağıdaki bilgileri girin veya seçin ve ardından **Ekle** seçeneğini belirleyin:
 
-    |Ayar|Değer|
+    |Ayar|Value|
     |----|----|
     |Kaynak| **VirtualNetwork** öğesini seçin |
-    |Kaynak bağlantı noktası aralıkları| * |
+    |Source port ranges| * |
     |Hedef | **Hizmet Etiketi**’ni seçin|
     |Hedef hizmet etiketi | **Depolama**’yı seçin|
     |Hedef bağlantı noktası aralıkları| * |
-    |Protokol|Herhangi biri|
-    |Eylem|İzin Ver|
+    |Protokol|Any|
+    |Eylem|Allow|
     |Öncelik|100|
-    |Ad|İzin Ver-Depolama-Tümü|
+    |Name|İzin Ver-Depolama-Tümü|
 
 8. İnternet bağlantısını reddeden başka bir giden güvenlik kuralı oluşturun. Bu kural, giden İnternet iletişimine izin veren tüm ağ güvenlik gruplarında varsayılan kuralı geçersiz kılar. Aşağıdaki değerleri kullanarak 5-7 arasındaki adımları tekrar tamamlayın:
 
-    |Ayar|Değer|
+    |Ayar|Value|
     |----|----|
     |Kaynak| **VirtualNetwork** öğesini seçin |
-    |Kaynak bağlantı noktası aralıkları| * |
+    |Source port ranges| * |
     |Hedef | **Hizmet Etiketi**’ni seçin|
     |Hedef hizmet etiketi| **İnternet**’i seçin|
     |Hedef bağlantı noktası aralıkları| * |
-    |Protokol|Herhangi biri|
-    |Eylem|Deny|
+    |Protokol|Any|
+    |Eylem|Reddet|
     |Öncelik|110|
-    |Ad|Deny-Internet-All|
+    |Name|Deny-Internet-All|
 
 9. **AYARLAR** altında **Gelen güvenlik kuralları**’nı seçin.
 10. **+ Ekle** öğesini seçin.
 11. Herhangi bir yerden alt ağa yönelik Uzak Masaüstü Protokolü (RDP) trafiğine izin veren bir gelen güvenlik kuralı oluşturun. Kural, internetten gelen tüm trafiği engelleyen bir varsayılan güvenlik kuralını geçersiz kılar. Daha sonraki bir adımda bağlantının test edilebilmesi için uzak masaüstü bağlantılarına izin verilir. **AYARLAR** bölümünde **Gelen güvenlik kuralları**'nı seçin, **+Ekle** seçeneğini belirleyip aşağıdaki değerleri girin ve ardından **Ekle**'yi seçin:
 
-    |Ayar|Değer|
+    |Ayar|Value|
     |----|----|
-    |Kaynak| Herhangi biri |
-    |Kaynak bağlantı noktası aralıkları| * |
+    |Kaynak| Any |
+    |Source port ranges| * |
     |Hedef | **VirtualNetwork** öğesini seçin|
     |Hedef bağlantı noktası aralıkları| 3389 |
-    |Protokol|Herhangi biri|
-    |Eylem|İzin Ver|
+    |Protokol|Any|
+    |Eylem|Allow|
     |Öncelik|120|
-    |Ad|İzin Ver-RDP-Tümü|
+    |Name|İzin Ver-RDP-Tümü|
 
 12. **AYARLAR** altında **Alt ağlar**’ı seçin.
 13. **+ İlişkilendir**’i seçin
@@ -160,9 +160,9 @@ Hizmet uç noktaları için etkinleştirilmiş Azure hizmetleri aracılığıyla
 2. **Depolama**’yı ve sonra **Depolama hesabı - blob, dosya, tablo, kuyruk** öğesini seçin.
 3. Aşağıdaki bilgileri girin veya seçin, kalan varsayılan değerleri kabul edin ve sonra **Oluştur**’u seçin:
 
-    |Ayar|Değer|
+    |Ayar|Value|
     |----|----|
-    |Ad| Yalnızca sayı ve küçük harfler kullanarak tüm Azure konumlarında benzersiz olan 3-24 karakter uzunluğunda bir ad girin.|
+    |Name| Yalnızca sayı ve küçük harfler kullanarak tüm Azure konumlarında benzersiz olan 3-24 karakter uzunluğunda bir ad girin.|
     |Hesap türü|StorageV2 (genel amaçlı v2)|
     |Konum| **Doğu ABD**’yi seçin |
     |Çoğaltma| Yerel olarak yedekli depolama (LRS)|
@@ -189,7 +189,7 @@ Varsayılan olarak, depolama hesapları İnternet de dahil olmak üzere herhangi
 3. **+Var olan sanal ağı ekle**'yi seçin.
 4. **Ağ ekle** altında aşağıdaki değerleri ve sonra **Ekle**’yi seçin:
 
-    |Ayar|Değer|
+    |Ayar|Value|
     |----|----|
     |Abonelik| Aboneliğinizi seçin.|
     |Sanal ağlar|**Sanal ağlar** altında **myVirtualNetwork** öğesini seçin|
@@ -215,11 +215,11 @@ Bir depolama hesabına ağ erişimini test etmek için her alt ağa bir VM dağ�
 2. **İşlem**'i seçin ve sonra da **Windows Server 2016 Datacenter**'ı seçin.
 3. Aşağıdaki bilgileri girin veya seçin ve ardından **Tamam** seçeneğini belirleyin:
 
-   |Ayar|Değer|
+   |Ayar|Value|
    |----|----|
-   |Ad| myVmPublic|
+   |Name| myVmPublic|
    |Kullanıcı adı|Seçtiğiniz bir kullanıcı adını girin.|
-   |Parola| Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
+   |istemcisiyle yönetilen bir cihaz için)| Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
    |Abonelik| Aboneliğinizi seçin.|
    |Kaynak grubu| **Mevcut olanı kullan**’ı seçin ve **myResourceGroup** seçeneğini belirleyin.|
    |Konum| **Doğu ABD**’yi seçin.|

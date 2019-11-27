@@ -24,7 +24,7 @@ Kullanıcıların uygulama izinlerini kabul etme şeklini nasıl yapılandıraca
 
 Uygulamalara yönelik yarışmaya yönelik daha fazla bilgi için bkz. [Azure Active Directory izin çerçevesi](../develop/consent-framework.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Yönetici onayı verme, genel yönetici, uygulama Yöneticisi veya bulut uygulama Yöneticisi olarak oturum açmanızı gerektirir.
 
@@ -55,7 +55,7 @@ Bir uygulamayı kaydederken yönetici onayı vermek için:
 1. [Azure portalında](https://portal.azure.com) genel yönetici olarak oturum açın.
 2. **Uygulama kayıtları** dikey penceresine gidin.
 3. Onay için uygulamayı seçin.
-4. Seçin **API izinleri**.
+4. **API izinleri**' ni seçin.
 5. **Yönetici Izni ver**' e tıklayın.
 
 

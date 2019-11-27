@@ -32,7 +32,7 @@ Media Services v3 ön ayarlarını kullanarak içeriğinizi analiz etmek için b
 
 Media Services Şu anda aşağıdaki yerleşik çözümleyici önayarlarını desteklemektedir:  
 
-|**Önceden tanımlı ayar adı**|**Senaryo**|**Ayrıntılar**|
+|**Önceden ayarlanmış ad**|**Senaryo**|**Ayrıntılar**|
 |---|---|---|
 |[Audioanaliz Zerönayar](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Ses çözümleme|Önayar, konuşma dökümü dahil olmak üzere, önceden tanımlanmış bir AI tabanlı analiz işlemleri kümesi uygular. Şu anda önayar, tek bir dilde konuşmayı içeren tek bir ses izlemeli içeriği işlemeyi destekler. Girişte ses yükünün dilini ' Language Tag-Region ' BCP-47 biçimini kullanarak belirtebilirsiniz. Desteklenen diller Ingilizce (' en-US ' ve ' en-GB '), Ispanyolca (' es-ES ' ve ' es-MX '), Fransızca (' fr-FR '), Italyanca (' It-IT '), Japonca (' ja-JP '), Portekizce (' PT-BR '), Çince (' zh-CN '), Almanca (' de-DE '), Arapça (' ar-EG ' ve ' ar-SY '), Rusça (' ru-RU '), Hintçe (' Hi-IN ') ve Korece (' ko-KR ').<br/><br/> Dil belirtilmezse veya null olarak ayarlanırsa, otomatik dil algılama algılanan ilk dili seçer ve dosya süresince seçili dile devam eder. Otomatik dil algılama özelliği şu anda Ingilizce, Çince, Fransızca, Almanca, Italyanca, Japonca, Ispanyolca, Rusça ve Portekizce desteklemektedir. İlk dil algılandıktan sonra diller arasında dinamik geçiş yapmayı desteklemez. Otomatik dil algılama özelliği, açık bir konuşma sayesinde ses kayıtları ile en iyi şekilde işe yarar. Otomatik dil algılama dili bulamazsa, geri bulma işlemi Ingilizce 'ye döner.|
 |[Videoanaliz Zerönayar](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset)|Ses ve video çözümleme|Hem ses hem de videodan Öngörüler (zengin meta veriler) ayıklar ve bir JSON biçim dosyası verir. Video dosyasını işlerken yalnızca ses öngörülerini ayıklamak isteyip istemediğinizi belirtebilirsiniz. Daha fazla bilgi için bkz. [video çözümleme](analyze-videos-tutorial-with-api.md).|
@@ -66,7 +66,7 @@ Media Services Şu anda aşağıdaki yerleşik çözümleyici önayarlarını de
 |Ad|Açıklama|
 |---|---|
 |id|Satır KIMLIĞI.|
-|text|Dökümü.|
+|metin|Dökümü.|
 |language|Döküm dili. Her satırın farklı bir dile sahip olduğu yazılı betiği desteklemeye yöneliktir.|
 |örnekler|Bu satırın göründüğü zaman aralıklarının listesi. Örnek TRANSCRIPT ise, yalnızca 1 örneğe sahip olur.|
 
@@ -104,7 +104,7 @@ Media Services Şu anda aşağıdaki yerleşik çözümleyici önayarlarını de
 |Ad|Açıklama|
 |---|---|
 |id|OCR satır KIMLIĞI.|
-|text|OCR metni.|
+|metin|OCR metni.|
 |likli|Tanıma güvenilirliği.|
 |language|OCR dili.|
 |örnekler|Bu OCR 'nin göründüğü zaman aralıklarının listesi (aynı OCR birden çok kez görünebilir).|
@@ -154,7 +154,7 @@ Media Services Şu anda aşağıdaki yerleşik çözümleyici önayarlarını de
 |Knownpersonıd|İç KIMLIK (bilinen bir kişiyse).|
 |Referenceıd|Bing KIMLIĞI (bir Bing ünlüğise).|
 |referenceType|Şu anda yalnızca Bing.|
-|başlık|Başlık (örneğin, "Microsoft 'un CEO 'SU").|
+|title|Başlık (örneğin, "Microsoft 'un CEO 'SU").|
 |ImageUrl|Bir ünlüğlık ise resim URL 'SI.|
 |örnekler|Yüzün verilen zaman aralığında göründüğü örnekler. Her örneğin bir thumbnailsId de vardır. |
 
@@ -355,7 +355,7 @@ Sentiments, sentimentType alanı tarafından toplanır (pozitif/nötr/negatif). 
 |Ad|Açıklama|
 |---|---|
 |id|Anahtar sözcük KIMLIĞI.|
-|text|Anahtar sözcük metni.|
+|metin|Anahtar sözcük metni.|
 |likli|Anahtar sözcüğünün tanıma güvenilirliği.|
 |language|Anahtar sözcük dili (çevrildiğinde).|
 |örnekler|Bu anahtar sözcüğünün göründüğü zaman aralıklarının listesi (bir anahtar sözcük birden çok kez görünebilir).|

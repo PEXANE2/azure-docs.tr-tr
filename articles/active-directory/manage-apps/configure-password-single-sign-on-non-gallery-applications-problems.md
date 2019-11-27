@@ -42,7 +42,7 @@ Genel olarak, otomatik oturum açma alanı yakalama işe yaramazsa, el ile seçe
 
 Parola tabanlı SSO 'yu otomatik oturum açma alanı yakalamayı kullanarak yapılandırmak için şu adımları izleyin:
 
-1. [Azure portalı](https://portal.azure.com/) açın. Genel yönetici veya ortak yönetici olarak oturum açın.
+1. [Azure portalını](https://portal.azure.com/) açın. Genel yönetici veya ortak yönetici olarak oturum açın.
 
 2. Sol taraftaki Gezinti bölmesinde, **tüm hizmetler** ' i seçerek Azure ad uzantısını açın.
 
@@ -75,7 +75,7 @@ Uzantıyı yüklemek için, bu makalenin [erişim paneli tarayıcı uzantısın�
 
 El ile oturum açma alanı yakalamayı kullanarak bir uygulama için parola tabanlı SSO yapılandırmak için aşağıdaki adımları izleyin:
 
-1. [Azure portalı](https://portal.azure.com/) açın. Genel yönetici veya ortak yönetici olarak oturum açın.
+1. [Azure portalını](https://portal.azure.com/) açın. Genel yönetici veya ortak yönetici olarak oturum açın.
 
 2. Sol taraftaki Gezinti bölmesinde, **tüm hizmetler** ' i seçerek Azure ad uzantısını açın.
 
@@ -252,4 +252,4 @@ Aşağıdaki bilgiler, her bildirim öğesinin ne anlama geldiğini açıklar ve
     Örnek: ```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'https://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'https://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Uygulama Ara sunucusu ile uygulamalarınıza çoklu oturum açma sağlayın](application-proxy-configure-single-sign-on-with-kcd.md)
+[Uygulama proxy 'Si ile uygulamalarınıza çoklu oturum açma sağlama](application-proxy-configure-single-sign-on-with-kcd.md)

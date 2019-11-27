@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Azure Active Directory integration with Mozy Enterprise | Microsoft Docs'
-description: Learn how to configure single sign-on between Azure Active Directory and Mozy Enterprise.
+title: 'Öğretici: Mozy Kurumsal ile tümleştirme Azure Active Directory | Microsoft Docs'
+description: Azure Active Directory ve Mozy Enterprise arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -22,235 +22,235 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74233504"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-mozy-enterprise"></a>Tutorial: Azure Active Directory integration with Mozy Enterprise
+# <a name="tutorial-azure-active-directory-integration-with-mozy-enterprise"></a>Öğretici: Mozy Enterprise ile Azure Active Directory tümleştirme
 
-In this tutorial, you learn how to integrate Mozy Enterprise with Azure Active Directory (Azure AD).
-Integrating Mozy Enterprise with Azure AD provides you with the following benefits:
+Bu öğreticide, Mozy Enterprise 'ı Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
+Mozy Enterprise 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 
-* You can control in Azure AD who has access to Mozy Enterprise.
-* You can enable your users to be automatically signed-in to Mozy Enterprise (Single Sign-On) with their Azure AD accounts.
-* You can manage your accounts in one central location - the Azure portal.
+* Azure AD 'de Mozy Enterprise 'a erişimi olan denetim yapabilirsiniz.
+* Kullanıcılarınızın Azure AD hesaplarıyla Mozy Enterprise (çoklu oturum açma) ile otomatik olarak oturum açmasını sağlayabilirsiniz.
+* Hesaplarınız bir merkezi konumda - Azure portalında yönetebilir.
 
-If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-To configure Azure AD integration with Mozy Enterprise, you need the following items:
+Azure AD tümleştirmesini Mozy Enterprise ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
-* An Azure AD subscription. If you don't have an Azure AD environment, you can get one-month trial [here](https://azure.microsoft.com/pricing/free-trial/)
-* Mozy Enterprise single sign-on enabled subscription
+* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü edinebilirsiniz
+* Mozy Enterprise çoklu oturum açma etkin aboneliği
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-In this tutorial, you configure and test Azure AD single sign-on in a test environment.
+Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
 
-* Mozy Enterprise supports **SP** initiated SSO
+* Mozy Enterprise, **SP** tarafından başlatılan SSO 'yu destekler
 
-## <a name="adding-mozy-enterprise-from-the-gallery"></a>Adding Mozy Enterprise from the gallery
+## <a name="adding-mozy-enterprise-from-the-gallery"></a>Galeriden Mozy Enterprise ekleme
 
-To configure the integration of Mozy Enterprise into Azure AD, you need to add Mozy Enterprise from the gallery to your list of managed SaaS apps.
+Mozy Enterprise 'ın Azure AD ile tümleştirilmesini yapılandırmak için Galeri 'den yönetilen SaaS uygulamaları listenize Mozy Enterprise eklemeniz gerekir.
 
-**To add Mozy Enterprise from the gallery, perform the following steps:**
+**Galeriden Mozy Enterprise eklemek için aşağıdaki adımları uygulayın:**
 
-1. In the **[Azure portal](https://portal.azure.com)** , on the left navigation panel, click **Azure Active Directory** icon.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
 
-    ![The Azure Active Directory button](common/select-azuread.png)
+    ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. Navigate to **Enterprise Applications** and then select the **All Applications** option.
+2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
 
-    ![The Enterprise applications blade](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-3. To add new application, click **New application** button on the top of dialog.
+3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
 
-    ![The New application button](common/add-new-app.png)
+    ![Yeni Uygulama düğmesi](common/add-new-app.png)
 
-4. In the search box, type **Mozy Enterprise**, select **Mozy Enterprise** from result panel then click **Add** button to add the application.
+4. Arama kutusuna **Mozy Enterprise**yazın, sonuç panelinden **Mozy Enterprise** ' u seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
 
-     ![Mozy Enterprise in the results list](common/search-new-app.png)
+     ![Sonuç listesinde Mozy kurumsal](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Configure and test Azure AD single sign-on
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
 
-In this section, you configure and test Azure AD single sign-on with Mozy Enterprise based on a test user called **Britta Simon**.
-For single sign-on to work, a link relationship between an Azure AD user and the related user in Mozy Enterprise needs to be established.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre Mozy Enterprise ile yapılandırıp test edersiniz.
+Çoklu oturum açma 'nın çalışması için, bir Azure AD kullanıcısı ve Mozy kurumsal içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
-To configure and test Azure AD single sign-on with Mozy Enterprise, you need to complete the following building blocks:
+Azure AD çoklu oturum açmayı Mozy Enterprise ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
-1. **[Configure Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)** - to enable your users to use this feature.
-2. **[Configure Mozy Enterprise Single Sign-On](#configure-mozy-enterprise-single-sign-on)** - to configure the Single Sign-On settings on application side.
-3. **[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
-4. **[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
-5. **[Create Mozy Enterprise test user](#create-mozy-enterprise-test-user)** - to have a counterpart of Britta Simon in Mozy Enterprise that is linked to the Azure AD representation of user.
-6. **[Test single sign-on](#test-single-sign-on)** - to verify whether the configuration works.
+1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
+2. , Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Mozy Enterprise çoklu oturum açmayı yapılandırın](#configure-mozy-enterprise-single-sign-on)** .
+3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
+5. **[Mozy kurumsal test kullanıcısı oluşturun](#create-mozy-enterprise-test-user)** -Mozy Enterprise 'Ta kullanıcının Azure AD gösterimine bağlanmış Britta Simon 'un bir karşılığı vardır.
+6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
 
-### <a name="configure-azure-ad-single-sign-on"></a>Configure Azure AD single sign-on
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırın
 
-In this section, you enable Azure AD single sign-on in the Azure portal.
+Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
 
-To configure Azure AD single sign-on with Mozy Enterprise, perform the following steps:
+Azure AD çoklu oturum açmayı Mozy Enterprise ile birlikte yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. In the [Azure portal](https://portal.azure.com/), on the **Mozy Enterprise** application integration page, select **Single sign-on**.
+1. [Azure Portal](https://portal.azure.com/), **Mozy kurumsal** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
 
-    ![Configure single sign-on link](common/select-sso.png)
+    ![Çoklu oturum açma bağlantısı yapılandırma](common/select-sso.png)
 
-2. On the **Select a Single sign-on method** dialog, select **SAML/WS-Fed** mode to enable single sign-on.
+2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
 
-    ![Single sign-on select mode](common/select-saml-option.png)
+    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. On the **Set up Single Sign-On with SAML** page, click **Edit** icon to open **Basic SAML Configuration** dialog.
+3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
-    ![Edit Basic SAML Configuration](common/edit-urls.png)
+    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. On the **Basic SAML Configuration** section, perform the following steps:
+4. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![Mozy Enterprise Domain and URLs single sign-on information](common/sp-signonurl.png)
+    ![Mozy kurumsal etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/sp-signonurl.png)
 
-    In the **Sign-on URL** text box, type a URL using the following pattern:  `https://<tenantname>.Mozyenterprise.com`
+    **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://<tenantname>.Mozyenterprise.com`
 
     > [!NOTE]
-    > The value is not real. Update the value with the actual Sign-On URL. Contact [Mozy Enterprise Client support team](https://support.mozy.com/) to get the value. You can also refer to the patterns shown in the **Basic SAML Configuration** section in the Azure portal.
+    > Değer gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Değeri almak için [Mozy Kurumsal istemci destek ekibine](https://support.mozy.com/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. On the **Set up Single Sign-On with SAML** page, in the **SAML Signing Certificate** section, click **Download** to download the **Certificate (Base64)** from the given options as per your requirement and save it on your computer.
+5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
-    ![The Certificate download link](common/certificatebase64.png)
+    ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-6. On the **Set up Mozy Enterprise** section, copy the appropriate URL(s) as per your requirement.
+6. **Mozy Enterprise 'ı ayarlama** bölümünde uygun URL 'leri gereksiniminize göre kopyalayın.
 
-    ![Copy configuration URLs](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-    a. Login URL
+    a. Oturum Açma URL'si:
 
-    b. Azure AD Identifier
+    b. Azure AD Tanımlayıcısı
 
-    c. Logout URL
+    c. Oturum Kapatma URL'si
 
-### <a name="configure-mozy-enterprise-single-sign-on"></a>Configure Mozy Enterprise Single Sign-On
+### <a name="configure-mozy-enterprise-single-sign-on"></a>Mozy Enterprise çoklu oturum açmayı yapılandırma
 
-1. In a different web browser window, log into your Mozy Enterprise company site as an administrator.
+1. Farklı bir Web tarayıcısı penceresinde, Mozy Kurumsal Şirket sitenizde yönetici olarak oturum açın.
 
-2. In the **Configuration** section, click **Authentication Policy**.
+2. **Yapılandırma** bölümünde **kimlik doğrulama ilkesi**' ne tıklayın.
    
-    ![Authentication policy](./media/mozy-enterprise-tutorial/ic777314.png "Authentication policy")
+    ![Kimlik doğrulama ilkesi](./media/mozy-enterprise-tutorial/ic777314.png "Kimlik doğrulama ilkesi")
 
-3. On the **Authentication Policy** section, perform the following steps:
+3. **Kimlik doğrulama ilkesi** bölümünde aşağıdaki adımları uygulayın:
    
-    ![Authentication policy](./media/mozy-enterprise-tutorial/ic777315.png "Authentication policy")
+    ![Kimlik doğrulama ilkesi](./media/mozy-enterprise-tutorial/ic777315.png "Kimlik doğrulama ilkesi")
    
-    a. Select **Directory Service** as **Provider**.
+    a. **Sağlayıcı**olarak **Dizin hizmeti** seçin.
    
-    b. Select **Use LDAP Push**.
+    b. **LDAP Push kullan**' ı seçin.
    
-    c. Click the **SAML Authentication** tab.
+    c. **SAML kimlik doğrulaması** sekmesine tıklayın.
    
-    d. Paste **Login URL**, which you have copied from the Azure portal into the **Authentication URL** textbox.
+    d. Azure portal, **kimlik doğrulama URL 'si** metin kutusuna kopyaladığınız **oturum açma URL 'sini**yapıştırın.
    
-    e. Paste **Azure AD Identifier**, which you have copied from the Azure portal into the **SAML Endpoint** textbox.
+    e. Azure portal 'den **SAML uç noktası** metin kutusuna KOPYALADıĞıNıZ **Azure ad tanımlayıcısını**yapıştırın.
    
-    f. Open your downloaded base-64 encoded certificate in notepad, copy the content of it into your clipboard, and then paste the entire Certificate into **SAML Certificate** textbox.
+    f. İndirilen Base-64 kodlu sertifikanızı Not defteri 'nde açın, içeriğini panonuza kopyalayın ve ardından tüm sertifikayı **SAML sertifikası** metin kutusuna yapıştırın.
    
-    g. Select **Enable SSO for Admins to log in with their network credentials**.
+    g. **Yöneticilerin ağ kimlik bilgileriyle oturum açmasını sağlamak IÇIN SSO 'Yu etkinleştir '** i seçin.
    
-    h. Click **Save Changes**.
+    h. **Değişiklikleri Kaydet**' e tıklayın.
 
-### <a name="create-an-azure-ad-test-user"></a>Create an Azure AD test user 
+### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma 
 
-The objective of this section is to create a test user in the Azure portal called Britta Simon.
+Bu bölümün amacı, Britta Simon adlı Azure portalında bir test kullanıcısı oluşturmaktır.
 
-1. In the Azure portal, in the left pane, select **Azure Active Directory**, select **Users**, and then select **All users**.
+1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 
-    ![The "Users and groups" and "All users" links](common/users.png)
+    !["Kullanıcılar ve Gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
 
-2. Select **New user** at the top of the screen.
+2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 
-    ![New user Button](common/new-user.png)
+    ![Yeni Kullanıcı düğmesi](common/new-user.png)
 
-3. In the User properties, perform the following steps.
+3. Kullanıcı özellikleri, aşağıdaki adımları gerçekleştirin.
 
-    ![The User dialog box](common/user-properties.png)
+    ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. In the **Name** field enter **BrittaSimon**.
+    a. **Ad** alanına **Brittasıon**girin.
   
-    b. In the **User name** field type **brittasimon\@yourcompanydomain.extension**  
+    b. **Kullanıcı adı** alanında **brittasıon\@yourşirketnotlarıetki alanı. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
-    c. Select **Show password** check box, and then write down the value that's displayed in the Password box.
+    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Assign the Azure AD test user
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
-In this section, you enable Britta Simon to use Azure single sign-on by granting access to Mozy Enterprise.
+Bu bölümde, Mozy Enterprise 'a erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon özelliğini etkinleştirirsiniz.
 
-1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **Mozy Enterprise**.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **Mozy Enterprise**' u seçin.
 
-    ![Enterprise applications blade](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. In the applications list, select **Mozy Enterprise**.
+2. Uygulamalar listesinde, **Mozy Enterprise**' ı seçin.
 
-    ![The Mozy Enterprise link in the Applications list](common/all-applications.png)
+    ![Uygulamalar listesindeki Mozy kurumsal bağlantısı](common/all-applications.png)
 
-3. In the menu on the left, select **Users and groups**.
+3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
 
-    ![The "Users and groups" link](common/users-groups-blade.png)
+    !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. Click the **Add user** button, then select **Users and groups** in the **Add Assignment** dialog.
+4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
-    ![The Add Assignment pane](common/add-assign-user.png)
+    ![Atama Ekle bölmesi](common/add-assign-user.png)
 
-5. In the **Users and groups** dialog select **Britta Simon** in the Users list, then click the **Select** button at the bottom of the screen.
+5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-6. If you are expecting any role value in the SAML assertion then in the **Select Role** dialog select the appropriate role for the user from the list, then click the **Select** button at the bottom of the screen.
+6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-7. In the **Add Assignment** dialog click the **Assign** button.
+7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-### <a name="create-mozy-enterprise-test-user"></a>Create Mozy Enterprise test user
+### <a name="create-mozy-enterprise-test-user"></a>Mozy kurumsal test kullanıcısı oluştur
 
-In order to enable Azure AD users to log into Mozy Enterprise, they must be provisioned into Mozy Enterprise. In the case of Mozy Enterprise, provisioning is a manual task.
+Azure AD kullanıcılarının Mozy Enterprise 'ta oturum açmasını sağlamak için, Mozy Enterprise 'a sağlanması gerekir. Mozy Enterprise söz konusu olduğunda, sağlama el ile gerçekleştirilen bir görevdir.
 
 >[!NOTE]
->You can use any other Mozy Enterprise user account creation tools or APIs provided by Mozy Enterprise to provision Azure AD user accounts.
+>Azure AD Kullanıcı hesapları sağlamak için Mozy Enterprise tarafından sunulan diğer herhangi bir Mozy kurumsal Kullanıcı hesabı oluşturma aracını veya API 'Leri kullanabilirsiniz.
 
-**To provision a user accounts, perform the following steps:**
+**Bir kullanıcı hesabı sağlamak için aşağıdaki adımları gerçekleştirin:**
 
-1. Log in to your **Mozy Enterprise** tenant.
+1. **Mozy kurumsal** kiracınızda oturum açın.
 
-2. Click **Users**, and then click **Add New User**.
+2. **Kullanıcılar**' a ve ardından **Yeni Kullanıcı Ekle**' ye tıklayın.
    
     ![Kullanıcılar](./media/mozy-enterprise-tutorial/ic777317.png "Kullanıcılar")
    
     >[!NOTE]
-    >The **Add New User** option is only displayed only if **Mozy** is selected as the provider under **Authentication policy**. If SAML Authentication is configured, then the users are added automatically on their first login through Single sign on.
+    >**Yeni Kullanıcı Ekle** seçeneği yalnızca, **kimlik doğrulama ilkesi**altında sağlayıcı olarak **Mozy** seçilirse görüntülenir. SAML kimlik doğrulaması yapılandırıldıysa, kullanıcılar çoklu oturum açma yoluyla ilk oturum açma bilgilerini otomatik olarak eklenir.
     
-3. On the new user dialog, perform the following steps:
+3. Yeni Kullanıcı iletişim kutusunda aşağıdaki adımları gerçekleştirin:
    
-    ![Add Users](./media/mozy-enterprise-tutorial/ic777318.png "Add Users")
+    ![Kullanıcı Ekle](./media/mozy-enterprise-tutorial/ic777318.png "Kullanıcı Ekle")
    
-    a. From the **Choose a Group** list, select a group.
+    a. **Grup Seç** listesinden bir grup seçin.
    
-    b. From the **What type of user** list, select a type.
+    b. **Ne tür Kullanıcı** listesinden bir tür seçin.
    
-    c. In the **Username** textbox, type the name of the Azure AD user.
+    c. **Kullanıcı adı** metin kutusuna Azure AD kullanıcısının adını yazın.
    
-    d. In the **Email** textbox, type the email address of the Azure AD user.
+    d. **E-posta** metin kutusuna Azure AD kullanıcısının e-posta adresini yazın.
    
-    e. Select **Send user instruction email**.
+    e. **Kullanıcı yönergesi e-postası gönder**' i seçin.
    
-    f. Click **Add User(s)** .
+    f. **Kullanıcı Ekle**' ye tıklayın.
 
      >[!NOTE]
-     > After creating the user, an email will be sent to the Azure AD user that includes a link to confirm the account before it becomes active.
+     > Kullanıcı oluşturulduktan sonra, Azure AD kullanıcısına, hesabı etkin hale gelmeden önce onaylanacak bir bağlantı içeren bir e-posta gönderilir.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 
-In this section, you test your Azure AD single sign-on configuration using the Access Panel.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
 
-When you click the Mozy Enterprise tile in the Access Panel, you should be automatically signed in to the Mozy Enterprise for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde Mozy Enterprise kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Mozy kuruluşunda otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

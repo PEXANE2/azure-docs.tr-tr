@@ -1,6 +1,6 @@
 ---
-title: Update an existing assignment from the portal
-description: Learn about the mechanism for updating an existing blueprint assignment from the portal in Azure Blueprints.
+title: Portaldan mevcut bir atamayı güncelleştirme
+description: Azure 'da portaldan mevcut bir şema atamasını güncelleştirme mekanizması hakkında bilgi edinin.
 ms.date: 11/21/2019
 ms.topic: conceptual
 ms.openlocfilehash: b4cf03d88103b85bc00dbd815816ead2740f2093
@@ -10,58 +10,58 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74406389"
 ---
-# <a name="how-to-update-an-existing-blueprint-assignment"></a>How to update an existing blueprint assignment
+# <a name="how-to-update-an-existing-blueprint-assignment"></a>Mevcut bir şema atamasını güncelleştirme
 
-When a blueprint is assigned, the assignment can be updated. There are several reasons for updating an existing assignment, including:
+Bir şema atandığında, atama güncelleştirilebilen olabilir. Mevcut bir atamayı güncelleştirmek için aşağıdakiler de dahil olmak üzere çeşitli nedenler vardır:
 
-- Add or remove [resource locking](../concepts/resource-locking.md)
-- Change the value of [dynamic parameters](../concepts/parameters.md#dynamic-parameters)
-- Upgrade the assignment to a newer **Published** version of the blueprint
+- [Kaynak kilitlemeyi](../concepts/resource-locking.md) ekleme veya kaldırma
+- [Dinamik parametrelerin](../concepts/parameters.md#dynamic-parameters) değerini değiştirme
+- Atamayı, şema 'in daha yeni **yayımlanmış** bir sürümüne yükseltin
 
-## <a name="updating-assignments"></a>Updating assignments
+## <a name="updating-assignments"></a>Atamalar güncelleştiriliyor
 
-1. Select **All services** in the left pane. Search for and select **Blueprints**.
+1. Sol bölmedeki **tüm hizmetler** ' i seçin. **Şemaları**arayın ve seçin.
 
-1. Select **Assigned blueprints** from the page on the left.
+1. Soldaki sayfadan **atanan** şemalar ' ı seçin.
 
-1. In the list of blueprints, left-click the blueprint assignment. Then click the **Update assignment** button OR right-click the blueprint assignment and select **Update assignment**.
+1. Planlar listesinde, BLUEPRINT atamasını sol tıklatın. Ardından, **atamayı Güncelleştir** DÜĞMESINE tıklayın veya BLUEPRINT atamasını sağ tıklayıp **atamayı Güncelleştir**' i seçin.
 
-   ![Update an existing blueprint assignment](../media/update-existing-assignments/update-assignment.png)
+   ![Mevcut bir şema atamasını güncelleştirme](../media/update-existing-assignments/update-assignment.png)
 
-1. The **Assign blueprint** page will load pre-filled with all values from the original assignment.
-   You can change the **blueprint definition version**, the **Lock Assignment** state, and any of the dynamic parameters that exist on the blueprint definition. Click **Assign** when done making changes.
+1. **Şema ata** sayfası, orijinal atamadan tüm değerlerle önceden doldurulmuş olarak yüklenir.
+   **Şema tanım sürümünü**, **kilit atama** durumunu ve şema tanımında bulunan dinamik parametrelerden herhangi birini değiştirebilirsiniz. Değişiklik yapıldığında **ata** ' ya tıklayın.
 
-1. On the updated assignment details page, see the new status. In this example, we added **Locking** to the assignment.
+1. Güncelleştirilmiş atama ayrıntıları sayfasında, yeni durum ' a bakın. Bu örnekte, atamaya **kilitleme** ekledik.
 
-   ![Updated an existing blueprint assignment - lock mode changed](../media/update-existing-assignments/updated-assignment.png)
+   ![Mevcut bir şema ataması güncelleştirildi-kilit modu değişti](../media/update-existing-assignments/updated-assignment.png)
 
-1. Explore details about other **Assignment operations** using the drop-down. The table of **Managed resources** updates by selected assignment operation.
+1. Açılan eklentiyi kullanarak diğer **atama işlemleriyle** ilgili ayrıntıları keşfedebilirsiniz. **Yönetilen kaynakların** tablosu seçili atama işlemine göre güncelleştirilir.
 
-   ![Assignment operations of a blueprint assignment](../media/update-existing-assignments/assignment-operations.png)
+   ![Şema atamasının atama işlemleri](../media/update-existing-assignments/assignment-operations.png)
 
-## <a name="rules-for-updating-assignments"></a>Rules for updating assignments
+## <a name="rules-for-updating-assignments"></a>Atamaları güncelleştirme kuralları
 
-The deployment of the updated assignments follows a few important rules. These rules determine what happens to already deployed resources. The requested change and the type of artifact resource being deployed or updated determine which actions are taken.
+Güncelleştirilmiş atamaların dağıtımı, bazı önemli kurallara uyar. Bu kurallar, zaten dağıtılmış kaynaklara ne olduğunu belirlemek için belirlenir. Dağıtılan veya güncellenen yapıt kaynağının istenen değişikliği ve türü, hangi eylemlerin alınacağını tespit edilir.
 
 - Rol Atamaları
-  - If the role or the role assignee (user, group, or app) changes, a new role assignment is created. Role assignments previously deployed are left in place.
+  - Rol ya da rol atanan (Kullanıcı, Grup veya uygulama) değişirse yeni bir rol ataması oluşturulur. Daha önce dağıtılan rol atamaları yerinde kalır.
 - İlke Atamaları
-  - If the parameters of the policy assignment are changed, the existing assignment is updated.
-  - If the definition of the policy assignment is changed, a new policy assignment is created.
-    Policy assignments previously deployed are left in place.
-  - If the policy assignment artifact is removed from the blueprint, deployed policy assignments are left in place.
+  - İlke atamasının parametreleri değiştirilirse, mevcut atama güncellenir.
+  - İlke atamasının tanımı değiştirilirse yeni bir ilke ataması oluşturulur.
+    Daha önce dağıtılan ilke atamaları yerinde kalır.
+  - İlke atama yapıtı Blueprint 'ten kaldırılırsa, dağıtılan ilke atamaları yerinde kalır.
 - Azure Resource Manager şablonları
-  - The template is processed through Resource Manager as a **PUT**. As each resource type handles this action differently, review the documentation for each included resource to determine the impact of this action when run by Blueprints.
+  - Şablon, Kaynak Yöneticisi aracılığıyla bir **PUT**olarak işlenir. Her kaynak türü bu eylemi farklı şekilde işlediğinde, bu eylemin, planlar tarafından çalıştırıldığında etkisini öğrenmek için dahil edilen her kaynak için belgeleri gözden geçirin.
 
-## <a name="possible-errors-on-updating-assignments"></a>Possible errors on updating assignments
+## <a name="possible-errors-on-updating-assignments"></a>Atamaları güncelleştirmede olası hatalar
 
-When updating assignments, it's possible to make changes that break when executed. An example is changing the location of a resource group after it has already been deployed. Any change that are supported by [Azure Resource Manager](../../../azure-resource-manager/resource-group-overview.md) can be made, but any change that would result in an error through Azure Resource Manager will also result in the failure of the assignment.
+Atamaları güncelleştirirken, yürütüldüğünde kesen değişiklikler yapmak mümkündür. Bir örnek, daha önce dağıtıldıktan sonra kaynak grubunun konumunu değiştiriyor. [Azure Resource Manager](../../../azure-resource-manager/resource-group-overview.md) tarafından desteklenen herhangi bir değişiklik yapılabilir, ancak Azure Resource Manager üzerinden bir hatayla sonuçlanarak yapılan herhangi bir değişiklik atamanın başarısızlığının oluşmasına neden olur.
 
-There's no limit on how many times an assignment can be updated. If an error occurs, determine the error and make another update to the assignment.  Example error scenarios:
+Atamanın kaç kez güncelleştirilemeyebilir. Bir hata oluşursa, hatayı saptayın ve atamanın başka bir güncelleştirmesini yapın.  Örnek hata senaryoları:
 
-- A bad parameter
-- An already existing object
-- A change not supported by Azure Resource Manager
+- Hatalı parametre
+- Zaten varolan bir nesne
+- Azure Resource Manager tarafından desteklenmeyen bir değişiklik
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

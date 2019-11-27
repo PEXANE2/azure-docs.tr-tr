@@ -24,7 +24,7 @@ ms.locfileid: "74185519"
 
 Bu makalede, Microsoft Azure içinde iç içe bir sanallaştırma ortamının nasıl oluşturulacağı gösterilmektedir. böylece, sorun giderme amacıyla Hyper-V konağında (kurtarma VM) sorun sanal makinesinin diski bağlayabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Sorun sanal makinesini bağlamak için, kurtarma VM 'sinin aşağıdaki önkoşulları karşılaması gerekir:
 
@@ -107,7 +107,7 @@ Sorun sanal makinesini bağlamak için, kurtarma VM 'sinin aşağıdaki önkoşu
     ![diski bağlama hakkındaki görüntü](media/troubleshoot-vm-by-use-nested-virtualization/mount-disk.png)  
 
 
-15. Seçin **Uygula**ve ardından **Tamam**.
+15. **Uygula**’yı ve sonra **Tamam**’ı seçin.
 
 16. VM 'ye çift tıklayın ve ardından başlatın.
 

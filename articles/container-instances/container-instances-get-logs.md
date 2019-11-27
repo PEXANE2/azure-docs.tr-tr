@@ -1,6 +1,6 @@
 ---
-title: Get container instance logs & events
-description: Learn how to debug with container logs and events with Azure Container Instances
+title: Olayları & kapsayıcı örneği günlüklerini al
+description: Azure Container Instances ile kapsayıcı günlükleri ve olayları ile hata ayıklamayı öğrenin
 ms.topic: article
 ms.date: 03/21/2019
 ms.custom: mvc
@@ -11,15 +11,15 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74481755"
 ---
-# <a name="retrieve-container-logs-and-events-in-azure-container-instances"></a>Retrieve container logs and events in Azure Container Instances
+# <a name="retrieve-container-logs-and-events-in-azure-container-instances"></a>Azure Container Instances kapsayıcı günlüklerini ve olayları alma
 
-When you have a misbehaving container, start by viewing its logs with [az container logs][az-container-logs], and streaming its standard out and standard error with [az container attach][az-container-attach].
+Hatalı bir Kapsayıcınız olduğunda, [az Container logs][az-container-logs]ile günlüklerini görüntüleyerek başlayın ve standart çıkış ve standart hatayı [az Container Attach][az-container-attach]ile akışa koyun.
 
 ## <a name="view-logs"></a>Günlükleri görüntüleme
 
-To view logs from your application code within a container, you can use the [az container logs][az-container-logs] command.
+Uygulama kodunuzdaki günlükleri bir kapsayıcı içinde görüntülemek için [az Container logs][az-container-logs] komutunu kullanabilirsiniz.
 
-The following is log output from the example task-based container in [Run a containerized task in ACI](container-instances-restart-policy.md), after having fed it an invalid URL to process:
+Aşağıda, işlem için geçersiz bir URL besledikten sonra [ACI 'de kapsayıcılı bir görevi çalıştırma](container-instances-restart-policy.md)bölümündeki örnek görev tabanlı kapsayıcının günlük çıktısı verilmiştir:
 
 ```console
 $ az container logs --resource-group myResourceGroup --name mycontainer
@@ -45,9 +45,9 @@ urllib.error.HTTPError: HTTP Error 404: Not Found
 
 ## <a name="attach-output-streams"></a>Çıkış akışları ekleme
 
-The [az container attach][az-container-attach] command provides diagnostic information during container startup. Once the container has started, it streams STDOUT and STDERR to your local console.
+[Az Container Attach][az-container-attach] komutu, kapsayıcı başlatma sırasında tanılama bilgileri sağlar. Kapsayıcı başlatıldıktan sonra STDOUT ve STDERR 'i yerel konsolunuza akışlar.
 
-For example, here is output from the task-based container in [Run a containerized task in ACI](container-instances-restart-policy.md), after having supplied a valid URL of a large text file to process:
+Örneğin, daha sonra işlemek üzere büyük bir metin dosyasının geçerli bir URL 'SI sağlamadıktan sonra [ACI 'de kapsayıcılı bir görevi çalıştırma](container-instances-restart-policy.md)bölümünde görev tabanlı kapsayıcının çıktısı aşağıda verilmiştir:
 
 ```console
 $ az container attach --resource-group myResourceGroup --name mycontainer
@@ -74,15 +74,15 @@ Start streaming logs:
  ('is', 8195)]
 ```
 
-## <a name="get-diagnostic-events"></a>Get diagnostic events
+## <a name="get-diagnostic-events"></a>Tanılama olaylarını al
 
-If your container fails to deploy successfully, you need to review the diagnostic information provided by the Azure Container Instances resource provider. To view the events for your container, run the [az container show][az-container-show] command:
+Kapsayıcınız başarıyla dağıtılamazsa Azure Container Instances kaynak sağlayıcısı tarafından sunulan tanılama bilgilerini gözden geçirmeniz gerekir. Kapsayıcının olaylarını görüntülemek için [az Container Show] [az-Container-Show] komutunu çalıştırın:
 
 ```azurecli-interactive
 az container show --resource-group myResourceGroup --name mycontainer
 ```
 
-The output includes the core properties of your container, along with deployment events (shown here truncated):
+Çıktı, kapsayıcının temel özelliklerini, dağıtım olayları ile birlikte (burada kesilmiş olarak gösterilir) içerir:
 
 ```JSON
 {
@@ -143,7 +143,7 @@ The output includes the core properties of your container, along with deployment
 }
 ```
 ## <a name="next-steps"></a>Sonraki adımlar
-Learn how to [troubleshoot common container and deployment issues](container-instances-troubleshooting.md) for Azure Container Instances.
+Azure Container Instances için [yaygın kapsayıcı ve dağıtım sorunlarını giderme](container-instances-troubleshooting.md) hakkında bilgi edinin.
 
 <!-- LINKS - Internal -->
 [az-container-attach]: /cli/azure/container#az-container-attach

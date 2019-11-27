@@ -69,6 +69,6 @@ Gruptaki tek bağlayıcılar devre dışı bırakılırsa, büyük olasılıkla 
 Bu sorunu araştırmaya ilişkin ayrıntılar için bkz. belge sorunlarını giderme bilgileri.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Azure AD uygulama ara sunucusu bağlayıcıları anlama](application-proxy-connectors.md)
+[Azure AD Uygulama Ara Sunucusu bağlayıcılarını anlama](application-proxy-connectors.md)
 
 

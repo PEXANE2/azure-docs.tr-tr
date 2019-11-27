@@ -34,7 +34,7 @@ Bu öğreticide, bir Windows sanal makinesi (VM) için sistem tarafından atanan
 > * VM kimliğine Azure AD Graph erişimi verme 
 > * VM kimliğini kullanarak erişim belirteci alma ve Azure AD Graph çağrısı yapmak için kullanma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 

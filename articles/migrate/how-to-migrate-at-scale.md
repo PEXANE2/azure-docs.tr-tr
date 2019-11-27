@@ -25,7 +25,7 @@ Site Recovery betikler, GitHub 'da [Azure PowerShell örnekleri](https://github.
 
 ## <a name="how-does-it-work"></a>Nasıl çalışır?
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 Başlamadan önce aşağıdaki adımları gerçekleştirmeniz gerekir:
 - Azure aboneliğinizde Site Recovery kasasının oluşturulduğundan emin olun
 - Yapılandırma sunucusu ve Işlem sunucusunun kaynak ortamda yüklü olduğundan ve kasasının ortamı keşfedebildiğinden emin olun

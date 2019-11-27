@@ -1,6 +1,6 @@
 ---
-title: Manage connections in Azure Functions
-description: Learn how to avoid performance problems in Azure Functions by using static connection clients.
+title: Azure Işlevlerinde bağlantıları yönetme
+description: Statik bağlantı istemcileri kullanarak Azure Işlevlerinde performans sorunlarından kaçınmaya nasıl engel olabileceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 02/25/2018
 ms.openlocfilehash: 872ad9a1b8f0a7da6fe410e68f08469ac11045a5
@@ -10,36 +10,36 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74226491"
 ---
-# <a name="manage-connections-in-azure-functions"></a>Manage connections in Azure Functions
+# <a name="manage-connections-in-azure-functions"></a>Azure Işlevlerinde bağlantıları yönetme
 
-Functions in a function app share resources. Among those shared resources are connections: HTTP connections, database connections, and connections to services such as Azure Storage. When many functions are running concurrently, it's possible to run out of available connections. This article explains how to code your functions to avoid using more connections than they need.
+Bir işlev uygulamasındaki işlevler kaynakları paylaşır. Bu paylaşılan kaynaklar arasında bağlantılar: HTTP bağlantıları, veritabanı bağlantıları ve Azure depolama gibi hizmetlere bağlantılar. Aynı anda çok sayıda işlev çalıştığında, kullanılabilir bağlantıların tükenme olasılığı vardır. Bu makalede, işlevlerinizin, gerekenden daha fazla bağlantı kullanmaktan kaçınmak için nasıl kodleneceği açıklanır.
 
-## <a name="connection-limit"></a>Connection limit
+## <a name="connection-limit"></a>Bağlantı sınırı
 
-The number of available connections is limited partly because a function app runs in a [sandbox environment](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox). One of the restrictions that the sandbox imposes on your code is a limit on the number of outbound connections, which is currently 600 active (1,200 total) connections per instance. When you reach this limit, the functions runtime writes the following message to the logs: `Host thresholds exceeded: Connections`. For more information, see the [Functions service limits](functions-scale.md#service-limits).
+Bir işlev uygulaması bir [korumalı alan ortamında](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)çalıştığından, kullanılabilir bağlantı sayısı kısmen sınırlıdır. Korumalı alanın kodunuzda hangi kısıtlamalardan biri, örnek başına 600 etkin (1.200 toplam) bağlantı olan giden bağlantı sayısı için bir sınırlamadır. Bu sınıra ulaştığınızda, işlevler çalışma zamanı şu iletiyi günlüklere Yazar: `Host thresholds exceeded: Connections`. Daha fazla bilgi için bkz. [işlevler hizmet limitleri](functions-scale.md#service-limits).
 
-This limit is per instance. When the [scale controller adds function app instances](functions-scale.md#how-the-consumption-and-premium-plans-work) to handle more requests, each instance has an independent connection limit. That means there's no global connection limit, and you can have much more than 600 active connections across all active instances.
+Bu sınır örnek başına. Ölçek denetleyicisi daha fazla isteği işlemek için [işlev uygulama örnekleri eklerse](functions-scale.md#how-the-consumption-and-premium-plans-work) , her örneğin bağımsız bir bağlantı sınırı vardır. Bu, genel bağlantı sınırı olmadığı anlamına gelir ve tüm etkin örneklerde 600 ' den çok etkin bağlantınız olabilir.
 
-When troubleshooting, make sure that you have enabled Application Insights for your function app. Application Insights lets you view metrics for your function apps like executions. For more information, see [View telemetry in Application Insights](functions-monitoring.md#view-telemetry-in-application-insights).  
+Sorun giderirken, işlev uygulamanız için Application Insights etkinleştirdiğinizden emin olun. Application Insights, yürütme gibi işlev uygulamalarınız için ölçümleri görüntülemenize olanak sağlar. Daha fazla bilgi için bkz. [Application Insights Telemetriyi görüntüleme](functions-monitoring.md#view-telemetry-in-application-insights).  
 
-## <a name="static-clients"></a>Static clients
+## <a name="static-clients"></a>Statik istemciler
 
-To avoid holding more connections than necessary, reuse client instances rather than creating new ones with each function invocation. We recommend reusing client connections for any language that you might write your function in. For example, .NET clients like the [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx), [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
-), and Azure Storage clients can manage connections if you use a single, static client.
+Gerekenden daha fazla bağlantı tutmaya kaçınmak için, her bir işlev çağrısında yeni bir tane oluşturmak yerine istemci örneklerini yeniden kullanın. İşlevinizi yazmak isteyebileceğiniz herhangi bir dil için istemci bağlantılarını yeniden kullanmanızı öneririz. Örneğin, [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx), [Documentclient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
+)ve Azure Storage istemcileri gibi .NET istemcileri, tek bir statik istemci kullanırsanız bağlantıları yönetebilir.
 
-Here are some guidelines to follow when you're using a service-specific client in an Azure Functions application:
+Azure Işlevleri uygulamasında hizmete özel bir istemci kullanırken izlenecek bazı yönergeler aşağıda verilmiştir:
 
-- *Do not* create a new client with every function invocation.
-- *Do* create a single, static client that every function invocation can use.
-- *Consider* creating a single, static client in a shared helper class if different functions use the same service.
+- Her işlev çağrısında yeni bir *istemci oluşturmayın.*
+- Her işlev çağrısının kullanabileceği tek bir statik *istemci oluşturun.*
+- Farklı işlevler aynı hizmeti kullanıyorsa, paylaşılan bir yardımcı sınıfta tek bir statik istemci oluşturmayı *düşünün* .
 
-## <a name="client-code-examples"></a>Client code examples
+## <a name="client-code-examples"></a>İstemci kodu örnekleri
 
-This section demonstrates best practices for creating and using clients from your function code.
+Bu bölümde, işlev kodunuzda istemcileri oluşturmak ve kullanmak için en iyi yöntemler gösterilmektedir.
 
-### <a name="httpclient-example-c"></a>HttpClient example (C#)
+### <a name="httpclient-example-c"></a>HttpClient örneği (C#)
 
-Here's an example of C# function code that creates a static [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) instance:
+Statik bir [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) örneği C# oluşturan işlev kodu örneği aşağıda verilmiştir:
 
 ```cs
 // Create a single, static HttpClient
@@ -52,19 +52,19 @@ public static async Task Run(string input)
 }
 ```
 
-A common question about [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) in .NET is "Should I dispose of my client?" In general, you dispose of objects that implement `IDisposable` when you're done using them. But you don't dispose of a static client because you aren't done using it when the function ends. You want the static client to live for the duration of your application.
+.NET 'teki [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) hakkında sık sorulan sorular "İstemcimin atılmalıdır mi?" Genel olarak, bunları kullanarak işiniz bittiğinde `IDisposable` uygulayan nesneleri atıyorsunuz. Ancak, işlev sona erdiğinde bu işlemi yapmadığınızda, bir statik istemciyi atmayın. Statik istemcinin uygulamanızın süresini gerçek zamanlı olarak istiyor.
 
-### <a name="http-agent-examples-javascript"></a>HTTP agent examples (JavaScript)
+### <a name="http-agent-examples-javascript"></a>HTTP Aracısı örnekleri (JavaScript)
 
-Because it provides better connection management options, you should use the native [`http.agent`](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_class_http_agent) class instead of non-native methods, such as the `node-fetch` module. Connection parameters are configured through options on the `http.agent` class. For detailed options available with the HTTP agent, see [new Agent(\[options\])](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_new_agent_options).
+Daha iyi bağlantı yönetimi seçenekleri sağladığından, `node-fetch` modülü gibi yerel olmayan yöntemler yerine yerel [`http.agent`](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_class_http_agent) sınıfını kullanmanız gerekir. Bağlantı parametreleri `http.agent` sınıfında seçenekler aracılığıyla yapılandırılır. HTTP aracısında kullanılabilen ayrıntılı seçenekler için bkz. [Yeni Aracı (\[seçenekleri\])](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_new_agent_options).
 
-The global `http.globalAgent` class used by `http.request()` has all of these values set to their respective defaults. The recommended way to configure connection limits in Functions is to set a maximum number globally. The following example sets the maximum number of sockets for the function app:
+`http.request()` tarafından kullanılan genel `http.globalAgent` sınıfı, bu değerlerin tümünü kendi varsayılanlarına ayarlanmış olarak belirler. Işlevlerde bağlantı sınırlarını yapılandırmak için önerilen yöntem, genel olarak en yüksek sayıyı ayarlayamaktır. Aşağıdaki örnek, işlev uygulaması için maksimum yuva sayısını ayarlar:
 
 ```js
 http.globalAgent.maxSockets = 200;
 ```
 
- The following example creates a new HTTP request with a custom HTTP agent only for that request:
+ Aşağıdaki örnek yalnızca bu istek için özel bir HTTP aracısına sahip yeni bir HTTP isteği oluşturur:
 
 ```js
 var http = require('http');
@@ -74,10 +74,10 @@ options.agent = httpAgent;
 http.request(options, onResponseCallback);
 ```
 
-### <a name="documentclient-code-example-c"></a>DocumentClient code example (C#)
+### <a name="documentclient-code-example-c"></a>DocumentClient kod örneği (C#)
 
-[DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
-) connects to an Azure Cosmos DB instance. The Azure Cosmos DB documentation recommends that you [use a singleton Azure Cosmos DB client for the lifetime of your application](https://docs.microsoft.com/azure/cosmos-db/performance-tips#sdk-usage). The following example shows one pattern for doing that in a function:
+[Documentclient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
+) bir Azure Cosmos DB örneğine bağlanır. Azure Cosmos DB belge, [Uygulamanızın ömrü boyunca tek bir Azure Cosmos db istemci kullanmanızı](https://docs.microsoft.com/azure/cosmos-db/performance-tips#sdk-usage)önerir. Aşağıdaki örnek, bir işlevinde bunu yapmak için bir model gösterir:
 
 ```cs
 #r "Microsoft.Azure.Documents.Client"
@@ -105,8 +105,8 @@ public static async Task Run(string input)
 }
 ```
 
-### <a name="cosmosclient-code-example-javascript"></a>CosmosClient code example (JavaScript)
-[CosmosClient](/javascript/api/@azure/cosmos/cosmosclient) connects to an Azure Cosmos DB instance. The Azure Cosmos DB documentation recommends that you [use a singleton Azure Cosmos DB client for the lifetime of your application](../cosmos-db/performance-tips.md#sdk-usage). The following example shows one pattern for doing that in a function:
+### <a name="cosmosclient-code-example-javascript"></a>CosmosClient kodu örneği (JavaScript)
+[CosmosClient](/javascript/api/@azure/cosmos/cosmosclient) bir Azure Cosmos DB örneğine bağlanır. Azure Cosmos DB belge, [Uygulamanızın ömrü boyunca tek bir Azure Cosmos db istemci kullanmanızı](../cosmos-db/performance-tips.md#sdk-usage)önerir. Aşağıdaki örnek, bir işlevinde bunu yapmak için bir model gösterir:
 
 ```javascript
 const cosmos = require('@azure/cosmos');
@@ -124,16 +124,16 @@ module.exports = async function (context) {
 }
 ```
 
-## <a name="sqlclient-connections"></a>SqlClient connections
+## <a name="sqlclient-connections"></a>SqlClient bağlantıları
 
-Your function code can use the .NET Framework Data Provider for SQL Server ([SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx)) to make connections to a SQL relational database. This is also the underlying provider for data frameworks that rely on ADO.NET, such as [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx). Unlike [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) and [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
-) connections, ADO.NET implements connection pooling by default. But because you can still run out of connections, you should optimize connections to the database. For more information, see [SQL Server Connection Pooling (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling).
+İşlev kodunuz, bir SQL ilişkisel veritabanına bağlantı kurmak için SQL Server ([SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx)) için .NET Framework veri sağlayıcısı kullanabilir. Bu aynı zamanda, [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx)gibi ADO.NET kullanan veri çerçeveleri için temel sağlayıcıdır. [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) ve [documentclient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
+) bağlantılarından farklı olarak, ADO.NET varsayılan olarak bağlantı havuzu uygular. Ancak hala bağlantı dışında çalışmaya devam edebilirsiniz. Daha fazla bilgi için bkz. [SQL Server bağlantı havuzu (ADO.net)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling).
 
 > [!TIP]
-> Some data frameworks, such as Entity Framework, typically get connection strings from the **ConnectionStrings** section of a configuration file. In this case, you must explicitly add SQL database connection strings to the **Connection strings** collection of your function app settings and in the [local.settings.json file](functions-run-local.md#local-settings-file) in your local project. If you're creating an instance of [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) in your function code, you should store the connection string value in **Application settings** with your other connections.
+> Entity Framework gibi bazı veri çerçeveleri, genellikle bir yapılandırma dosyasının **connectionStrings** bölümünden bağlantı dizelerini alır. Bu durumda, işlev uygulaması ayarlarınızın **bağlantı dizeleri** koleksiyonuna ve yerel projenizde [yerel. Settings. json dosyasında](functions-run-local.md#local-settings-file) SQL veritabanı bağlantı dizelerini açıkça eklemeniz gerekir. İşlev kodunuzda [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) 'ın bir örneğini oluşturuyorsanız, bağlantı dizesi değerini diğer Bağlantılarınızdaki **uygulama ayarlarında** depolamanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-For more information about why we recommend static clients, see [Improper instantiation antipattern](https://docs.microsoft.com/azure/architecture/antipatterns/improper-instantiation/).
+Statik istemcileri neden önerdiğimiz hakkında daha fazla bilgi için bkz. [Hatalı örnek oluşturma kötü modeli](https://docs.microsoft.com/azure/architecture/antipatterns/improper-instantiation/).
 
-For more Azure Functions performance tips, see [Optimize the performance and reliability of Azure Functions](functions-best-practices.md).
+Daha fazla Azure Işlevleri performans ipucu için bkz. [Azure işlevlerinin performansını ve güvenilirliğini iyileştirme](functions-best-practices.md).

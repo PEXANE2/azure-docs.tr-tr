@@ -32,7 +32,7 @@ Bu öğreticide, Azure Data Lake Store'a erişmek amacıyla, Windows sanal makin
 > * Azure Data Lake Store'a VM'niz için erişim verme
 > * VM kimliğini kullanarak erişim belirteci alma ve Azure Data Lake Store'a erişmek için bunu kullanma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 

@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Azure Active Directory integration with UserVoice | Microsoft Docs'
-description: Learn how to configure single sign-on between Azure Active Directory and UserVoice.
+title: 'Öğretici: UserVoice ile tümleştirme Azure Active Directory | Microsoft Docs'
+description: Azure Active Directory ile UserVoice arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -22,234 +22,234 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74232015"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-uservoice"></a>Tutorial: Azure Active Directory integration with UserVoice
+# <a name="tutorial-azure-active-directory-integration-with-uservoice"></a>Öğretici: UserVoice ile Azure Active Directory tümleştirme
 
-In this tutorial, you learn how to integrate UserVoice with Azure Active Directory (Azure AD).
-Integrating UserVoice with Azure AD provides you with the following benefits:
+Bu öğreticide UserVoice 'ı Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
+UserVoice 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 
-* You can control in Azure AD who has access to UserVoice.
-* You can enable your users to be automatically signed-in to UserVoice (Single Sign-On) with their Azure AD accounts.
-* You can manage your accounts in one central location - the Azure portal.
+* UserVoice 'a erişimi olan Azure AD 'de denetim yapabilirsiniz.
+* Kullanıcılarınızın Azure AD hesaplarıyla UserVoice (çoklu oturum açma) ile otomatik olarak oturum açmasını sağlayabilirsiniz.
+* Hesaplarınız bir merkezi konumda - Azure portalında yönetebilir.
 
-If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-To configure Azure AD integration with UserVoice, you need the following items:
+Azure AD tümleştirmesini UserVoice ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* An Azure AD subscription. If you don't have an Azure AD environment, you can get a [free account](https://azure.microsoft.com/free/)
-* UserVoice single sign-on enabled subscription
+* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) alabilirsiniz
+* UserVoice çoklu oturum açma etkin aboneliği
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-In this tutorial, you configure and test Azure AD single sign-on in a test environment.
+Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
 
-* UserVoice supports **SP** initiated SSO
+* UserVoice, **SP** tarafından başlatılan SSO 'yu destekler
 
-## <a name="adding-uservoice-from-the-gallery"></a>Adding UserVoice from the gallery
+## <a name="adding-uservoice-from-the-gallery"></a>Galeriden UserVoice ekleme
 
-To configure the integration of UserVoice into Azure AD, you need to add UserVoice from the gallery to your list of managed SaaS apps.
+UserVoice 'ın Azure AD 'ye tümleştirilmesini yapılandırmak için Galeri 'den yönetilen SaaS uygulamaları listenize UserVoice eklemeniz gerekir.
 
-**To add UserVoice from the gallery, perform the following steps:**
+**Galeriden UserVoice eklemek için aşağıdaki adımları uygulayın:**
 
-1. In the **[Azure portal](https://portal.azure.com)** , on the left navigation panel, click **Azure Active Directory** icon.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
 
-    ![The Azure Active Directory button](common/select-azuread.png)
+    ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. Navigate to **Enterprise Applications** and then select the **All Applications** option.
+2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
 
-    ![The Enterprise applications blade](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-3. To add new application, click **New application** button on the top of dialog.
+3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
 
-    ![The New application button](common/add-new-app.png)
+    ![Yeni Uygulama düğmesi](common/add-new-app.png)
 
-4. In the search box, type **UserVoice**, select **UserVoice** from result panel then click **Add** button to add the application.
+4. Arama kutusuna **UserVoice**yazın, sonuç panelinden **UserVoice** ' ı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
-     ![UserVoice in the results list](common/search-new-app.png)
+     ![Sonuç listesinde UserVoice](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Configure and test Azure AD single sign-on
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
 
-In this section, you configure and test Azure AD single sign-on with UserVoice based on a test user called **Britta Simon**.
-For single sign-on to work, a link relationship between an Azure AD user and the related user in UserVoice needs to be established.
+Bu bölümde, Azure AD çoklu oturum açma 'yı, **Britta Simon**adlı bir test kullanıcısına göre UserVoice ile yapılandırıp test edersiniz.
+Çoklu oturum açma için, bir Azure AD kullanıcısı ve UserVoice 'daki ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
-To configure and test Azure AD single sign-on with UserVoice, you need to complete the following building blocks:
+Azure AD çoklu oturum açmayı UserVoice ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
-1. **[Configure Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)** - to enable your users to use this feature.
-2. **[Configure UserVoice Single Sign-On](#configure-uservoice-single-sign-on)** - to configure the Single Sign-On settings on application side.
-3. **[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
-4. **[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
-5. **[Create UserVoice test user](#create-uservoice-test-user)** - to have a counterpart of Britta Simon in UserVoice that is linked to the Azure AD representation of user.
-6. **[Test single sign-on](#test-single-sign-on)** - to verify whether the configuration works.
+1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
+2. **[UserVoice çoklu oturum açmayı yapılandırma](#configure-uservoice-single-sign-on)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
+5. UserVoice 'ın, kullanıcının Azure AD gösterimine bağlı olan, UserVoice 'ta Britta Simon 'a sahip olması için **[UserVoice test kullanıcısı oluşturun](#create-uservoice-test-user)** .
+6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
 
-### <a name="configure-azure-ad-single-sign-on"></a>Configure Azure AD single sign-on
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırın
 
-In this section, you enable Azure AD single sign-on in the Azure portal.
+Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
 
-To configure Azure AD single sign-on with UserVoice, perform the following steps:
+Azure AD çoklu oturum açmayı UserVoice ile yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. In the [Azure portal](https://portal.azure.com/), on the **UserVoice** application integration page, select **Single sign-on**.
+1. [Azure Portal](https://portal.azure.com/), **UserVoice** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
 
-    ![Configure single sign-on link](common/select-sso.png)
+    ![Çoklu oturum açma bağlantısı yapılandırma](common/select-sso.png)
 
-2. On the **Select a Single sign-on method** dialog, select **SAML/WS-Fed** mode to enable single sign-on.
+2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
 
-    ![Single sign-on select mode](common/select-saml-option.png)
+    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. On the **Set up Single Sign-On with SAML** page, click **Edit** icon to open **Basic SAML Configuration** dialog.
+3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
-    ![Edit Basic SAML Configuration](common/edit-urls.png)
+    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. On the **Basic SAML Configuration** section, perform the following steps:
+4. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![UserVoice Domain and URLs single sign-on information](common/sp-identifier.png)
+    ![UserVoice etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/sp-identifier.png)
 
-    a. In the **Sign on URL** text box, type a URL using the following pattern: `https://<tenantname>.UserVoice.com`
+    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://<tenantname>.UserVoice.com`
 
-    b. In the **Identifier (Entity ID)** text box, type a URL using the following pattern: `https://<tenantname>.UserVoice.com`
+    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://<tenantname>.UserVoice.com`
 
     > [!NOTE]
-    > These values are not real. Update these values with the actual Sign on URL and Identifier. Contact [UserVoice Client support team](https://www.uservoice.com/) to get these values. You can also refer to the patterns shown in the **Basic SAML Configuration** section in the Azure portal.
+    > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [UserVoice istemci desteği ekibine](https://www.uservoice.com/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. In the **SAML Signing Certificate** section, click **Edit** button to open **SAML Signing Certificate** dialog.
+5. **SAML Imzalama sertifikası** bölümünde, **SAML imzalama sertifikası** Iletişim kutusunu açmak için **Düzenle** düğmesine tıklayın.
 
-    ![Edit SAML Signing Certificate](common/edit-certificate.png)
+    ![SAML Imzalama sertifikasını Düzenle](common/edit-certificate.png)
 
-6. In the **SAML Signing Certificate** section, copy the **Thumbprint** and save it on your computer.
+6. **SAML Imzalama sertifikası** bölümünde, **parmak izini** kopyalayın ve bilgisayarınıza kaydedin.
 
-    ![Copy Thumbprint value](common/copy-thumbprint.png)
+    ![Parmak Izi değerini Kopyala](common/copy-thumbprint.png)
 
-7. On the **Set up UserVoice** section, copy the appropriate URL(s) as per your requirement.
+7. **UserVoice ayarla** bölümünde uygun URL 'leri gereksiniminize göre kopyalayın.
 
-    ![Copy configuration URLs](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-    a. Login URL
+    a. Oturum Açma URL'si:
 
-    b. Azure AD Identifier
+    b. Azure AD Tanımlayıcısı
 
-    c. Logout URL
+    c. Oturum Kapatma URL'si
 
-### <a name="configure-uservoice-single-sign-on"></a>Configure UserVoice Single Sign-On
+### <a name="configure-uservoice-single-sign-on"></a>UserVoice çoklu oturum açmayı yapılandırma
 
-1. In a different web browser window, sign in to your UserVoice company site as an administrator.
+1. Farklı bir Web tarayıcısı penceresinde UserVoice şirket sitenizde yönetici olarak oturum açın.
 
-2. In the toolbar on the top, click **Settings**, and then select **Web portal** from the menu.
+2. Üstteki araç çubuğunda, **Ayarlar**' a tıklayın ve ardından menüden **Web portalı** ' nı seçin.
    
-    ![Settings Section On App Side](./media/uservoice-tutorial/ic777519.png "Ayarlar")
+    ![Uygulama tarafındaki ayarlar bölümü](./media/uservoice-tutorial/ic777519.png "Ayarlar")
 
-3. On the **Web portal** tab, in the **User authentication** section, click **Edit** to open the **Edit User Authentication** dialog page.
+3. **Web portalı** sekmesindeki **Kullanıcı kimlik doğrulaması** bölümünde **Düzenle** ' ye tıklayarak **Kullanıcı kimlik doğrulamasını Düzenle** iletişim kutusunu açın.
    
-    ![Web portal Tab](./media/uservoice-tutorial/ic777520.png "Web portal")
+    ![Web portalı sekmesi](./media/uservoice-tutorial/ic777520.png "Web portalı")
 
-4. On the **Edit User Authentication** dialog page, perform the following steps:
+4. **Kullanıcı kimlik doğrulamasını Düzenle** iletişim sayfasında, aşağıdaki adımları gerçekleştirin:
    
-    ![Edit user authentication](./media/uservoice-tutorial/ic777521.png "Edit user authentication")
+    ![Kullanıcı kimlik doğrulamasını Düzenle](./media/uservoice-tutorial/ic777521.png "Kullanıcı kimlik doğrulamasını Düzenle")
    
-    a. Click **Single Sign-On (SSO)** .
+    a. **Çoklu oturum açma (SSO)** seçeneğine tıklayın.
  
-    b. Paste the **Login URL** value, which you have copied from the Azure portal into the **SSO Remote Sign-In** textbox.
+    b. Azure portal kopyaladığınız **oturum açma URL 'si** değerini **SSO uzaktan oturum açma** metin kutusuna yapıştırın.
 
-    c. Paste the **Logout URL** value, which you have copied from the Azure portal into the **SSO Remote Sign-Out textbox**.
+    c. Azure portal, **SSO uzaktan oturum kapatma metin kutusuna**KOPYALADıĞıNıZ **Logout URL** değerini yapıştırın.
  
-    d. Paste the **Thumbprint** value , which you have copied from Azure portal  into the **Current certificate SHA1 fingerprint** textbox.
+    d. Azure portal 'tan kopyaladığınız **parmak izi** değerini **geçerli sertifika SHA1 parmak izi** metin kutusuna yapıştırın.
     
-    e. Click **Save authentication settings**.
+    e. **Kimlik doğrulama ayarlarını kaydet**' e tıklayın.
 
-### <a name="create-an-azure-ad-test-user"></a>Create an Azure AD test user 
+### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma 
 
-The objective of this section is to create a test user in the Azure portal called Britta Simon.
+Bu bölümün amacı, Britta Simon adlı Azure portalında bir test kullanıcısı oluşturmaktır.
 
-1. In the Azure portal, in the left pane, select **Azure Active Directory**, select **Users**, and then select **All users**.
+1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 
-    ![The "Users and groups" and "All users" links](common/users.png)
+    !["Kullanıcılar ve Gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
 
-2. Select **New user** at the top of the screen.
+2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 
-    ![New user Button](common/new-user.png)
+    ![Yeni Kullanıcı düğmesi](common/new-user.png)
 
-3. In the User properties, perform the following steps.
+3. Kullanıcı özellikleri, aşağıdaki adımları gerçekleştirin.
 
-    ![The User dialog box](common/user-properties.png)
+    ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. In the **Name** field enter **BrittaSimon**.
+    a. **Ad** alanına **Brittasıon**girin.
   
-    b. In the **User name** field type brittasimon@yourcompanydomain.extension. Örneğin, BrittaSimon@contoso.com
+    b. **Kullanıcı adı** alanına brittasimon@yourcompanydomain.extensionyazın. Örneğin, BrittaSimon@contoso.com
 
-    c. Select **Show password** check box, and then write down the value that's displayed in the Password box.
+    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Assign the Azure AD test user
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
-In this section, you enable Britta Simon to use Azure single sign-on by granting access to UserVoice.
+Bu bölümde, UserVoice 'a erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
 
-1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **UserVoice**.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **UserVoice**' u seçin.
 
-    ![Enterprise applications blade](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. In the applications list, select **UserVoice**.
+2. Uygulamalar listesinde **UserVoice**' ı seçin.
 
-    ![The UserVoice link in the Applications list](common/all-applications.png)
+    ![Uygulamalar listesindeki UserVoice bağlantısı](common/all-applications.png)
 
-3. In the menu on the left, select **Users and groups**.
+3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
 
-    ![The "Users and groups" link](common/users-groups-blade.png)
+    !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. Click the **Add user** button, then select **Users and groups** in the **Add Assignment** dialog.
+4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
-    ![The Add Assignment pane](common/add-assign-user.png)
+    ![Atama Ekle bölmesi](common/add-assign-user.png)
 
-5. In the **Users and groups** dialog select **Britta Simon** in the Users list, then click the **Select** button at the bottom of the screen.
+5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-6. If you are expecting any role value in the SAML assertion then in the **Select Role** dialog select the appropriate role for the user from the list, then click the **Select** button at the bottom of the screen.
+6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-7. In the **Add Assignment** dialog click the **Assign** button.
+7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-### <a name="create-uservoice-test-user"></a>Create UserVoice test user
+### <a name="create-uservoice-test-user"></a>UserVoice test kullanıcısı oluştur
 
-To enable Azure AD users to sign in to UserVoice, they must be provisioned into UserVoice. In the case of UserVoice, provisioning is a manual task.
+Azure AD kullanıcılarının UserVoice 'da oturum açmasını sağlamak için bunların UserVoice 'a sağlanması gerekir. UserVoice durumunda, sağlama işlemi el ile gerçekleştirilen bir görevdir.
 
-### <a name="to-provision-a-user-account-perform-the-following-steps"></a>To provision a user account, perform the following steps:
+### <a name="to-provision-a-user-account-perform-the-following-steps"></a>Bir kullanıcı hesabı sağlamak için aşağıdaki adımları gerçekleştirin:
 
-1. Sign in to your **UserVoice** tenant.
+1. **UserVoice** kiracınızda oturum açın.
 
-2. Go to **Settings**.
+2. **Ayarlar**' a gidin.
    
     ![Ayarlar](./media/uservoice-tutorial/ic777811.png "Ayarlar")
 
-3. Click **General**.
+3. **Genel**' e tıklayın.
 
-4. Click **Agents and permissions**.
+4. **Aracılar ve izinler**' e tıklayın.
    
-    ![Agents and permissions](./media/uservoice-tutorial/ic777812.png "Agents and permissions")
+    ![Aracılar ve izinler](./media/uservoice-tutorial/ic777812.png "Aracılar ve izinler")
 
-5. Click **Add admins**.
+5. **Yönetici Ekle**' ye tıklayın.
    
-    ![Add admins](./media/uservoice-tutorial/ic777813.png "Add admins")
+    ![Yönetici Ekle](./media/uservoice-tutorial/ic777813.png "Yönetici Ekle")
 
-6. On the **Invite admins** dialog, perform the following steps:
+6. **Yöneticileri davet et** iletişim kutusunda aşağıdaki adımları gerçekleştirin:
    
-    ![Invite admins](./media/uservoice-tutorial/ic777814.png "Invite admins")
+    ![Yöneticileri davet et](./media/uservoice-tutorial/ic777814.png "Yöneticileri davet et")
    
-    a. In the Emails textbox, type the email address of the account you want to provision, and then click **Add**.
+    a. E-postalar metin kutusunda, sağlamak istediğiniz hesabın e-posta adresini yazın ve ardından **Ekle**' ye tıklayın.
    
-    b. Click **Invite**.
+    b. **Davet et**' e tıklayın.
 
 > [!NOTE]
-> You can use any other UserVoice user account creation tools or APIs provided by UserVoice to provision Azure AD user accounts.
+> Azure AD Kullanıcı hesapları sağlamak için UserVoice tarafından sunulan diğer UserVoice Kullanıcı hesabı oluşturma araçlarını veya API 'Leri kullanabilirsiniz.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 
-In this section, you test your Azure AD single sign-on configuration using the Access Panel.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
 
-When you click the UserVoice tile in the Access Panel, you should be automatically signed in to the UserVoice for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde UserVoice kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız UserVoice 'ta otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -1,6 +1,6 @@
 ---
-title: Handle Azure Functions bindings errors
-description: Learn to handle Azure Functions binding errors
+title: Azure Işlevleri bağlama hatalarını işleme
+description: Azure Işlevleri bağlama hatalarını işleme hakkında bilgi edinin
 author: craigshoemaker
 ms.topic: reference
 ms.date: 09/12/2019
@@ -12,8 +12,8 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227287"
 ---
-# <a name="handle-azure-functions-binding-errors"></a>Handle Azure Functions binding errors
+# <a name="handle-azure-functions-binding-errors"></a>Azure Işlevleri bağlama hatalarını işleme
 
 [!INCLUDE [bindings errors intro](../../includes/functions-bindings-errors-intro.md)]
 
-For information on errors returned by services supported by Functions, see the [Binding error codes](functions-bindings-error-pages.md#binding-error-codes) section of the [Azure Functions error handling](functions-bindings-error-pages.md) overview article.  
+Işlevler tarafından desteklenen hizmetler tarafından döndürülen hatalar hakkında bilgi için, [Azure işlevleri hata işleme](functions-bindings-error-pages.md) genel bakış makalesinin [bağlama hata kodları](functions-bindings-error-pages.md#binding-error-codes) bölümüne bakın.  

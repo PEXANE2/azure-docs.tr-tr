@@ -1,6 +1,6 @@
 ---
-title: Fan-out/fan-in scenarios in Durable Functions - Azure
-description: Learn how to implement a fan-out-fan-in scenario in the Durable Functions extension for Azure Functions.
+title: Dayanıklı İşlevler-Azure 'da fan-çıkış/fan senaryoları
+description: Azure Işlevleri için Dayanıklı İşlevler uzantısında bir fanı-Out senaryosu uygulamayı öğrenin.
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
@@ -11,9 +11,9 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74232990"
 ---
-# <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Fan-out/fan-in scenario in Durable Functions - Cloud backup example
+# <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Dayanıklı İşlevler-bulut yedekleme örneğinde fan-çıkış/fan senaryosu
 
-*Fan-out/fan-in* refers to the pattern of executing multiple functions concurrently and then performing some aggregation on the results. This article explains a sample that uses [Durable Functions](durable-functions-overview.md) to implement a fan-in/fan-out scenario. The sample is a durable function that backs up all or some of an app's site content into Azure Storage.
+*Fanı-Out/fanı* , birden fazla işlevi aynı anda yürütmenin ve sonra sonuçlar üzerinde bazı toplamalar gerçekleştiren bir düzene başvurur. Bu makalede, bir fan/fan senaryosu uygulamak için [dayanıklı işlevler](durable-functions-overview.md) kullanan bir örnek açıklanmaktadır. Örnek, bir uygulamanın tüm site içeriğini Azure depolama 'ya yedekleyen dayanıklı bir işlevdir.
 
 [!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
@@ -21,100 +21,100 @@ ms.locfileid: "74232990"
 
 ## <a name="scenario-overview"></a>Senaryoya genel bakış
 
-In this sample, the functions upload all files under a specified directory recursively into blob storage. They also count the total number of bytes that were uploaded.
+Bu örnekte, işlevler belirtilen bir dizin altındaki tüm dosyaları yinelemeli olarak BLOB depolama alanına yükler. Ayrıca, karşıya yüklenen toplam bayt sayısını da sayar.
 
-It's possible to write a single function that takes care of everything. The main problem you would run into is **scalability**. A single function execution can only run on a single VM, so the throughput will be limited by the throughput of that single VM. Another problem is **reliability**. If there's a failure midway through, or if the entire process takes more than 5 minutes, the backup could fail in a partially completed state. It would then need to be restarted.
+Her şeyi ele alan tek bir işlev yazmak mümkündür. Çalıştırmak istediğiniz ana sorun **ölçeklenebilirlik**. Tek bir işlev yürütmesi yalnızca tek bir VM üzerinde çalışabilir, bu yüzden üretilen iş bu tek VM 'nin verimlilik ile sınırlandırılır. Başka bir sorun **güvenilir**. Hata geçişli bir hata oluşursa veya işlemin tamamı 5 dakikadan fazla sürerse, yedekleme kısmen tamamlanmış durumda başarısız olabilir. Daha sonra yeniden başlatılması gerekir.
 
-A more robust approach would be to write two regular functions: one would enumerate the files and add the file names to a queue, and another would read from the queue and upload the files to blob storage. This approach is better in terms of throughput and reliability, but it requires you to provision and manage a queue. More importantly, significant complexity is introduced in terms of **state management** and **coordination** if you want to do anything more, like report the total number of bytes uploaded.
+Daha sağlam bir yaklaşım, iki normal işlev yazmak olacaktır: biri, dosyaları numaralandırırın ve dosya adlarını bir kuyruğa ekleyecek ve başka bir şekilde kuyruktan yazacak ve dosyaları blob depolamaya yükleyecek. Bu yaklaşım verimlilik ve güvenilirlik açısından daha iyidir, ancak bir kuyruğu sağlamanızı ve yönetmenizi gerektirir. Daha önemlisi, **durum yönetimi** ve **koordinasyonuna** göre daha da fazla bir işlem yapmak istiyorsanız, karşıya yüklenen toplam bayt sayısını raporla gibi önemli karmaşıklıklar sunulmuştur.
 
-A Durable Functions approach gives you all of the mentioned benefits with very low overhead.
+Dayanıklı İşlevler bir yaklaşım, tüm bahsedilen avantajları çok düşük ek yük ile sunar.
 
-## <a name="the-functions"></a>The functions
+## <a name="the-functions"></a>İşlevler
 
-This article explains the following functions in the sample app:
+Bu makalede örnek uygulamada aşağıdaki işlevler açıklanmaktadır:
 
 * `E2_BackupSiteContent`
 * `E2_GetFileList`
 * `E2_CopyFileToBlob`
 
-The following sections explain the configuration and code that is used for C# scripting. The code for Visual Studio development is shown at the end of the article.
+Aşağıdaki bölümlerde, komut dosyası oluşturma için C# kullanılan yapılandırma ve kod açıklanmaktadır. Visual Studio geliştirme kodu makalenin sonunda gösterilmektedir.
 
-## <a name="the-cloud-backup-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>The cloud backup orchestration (Visual Studio Code and Azure portal sample code)
+## <a name="the-cloud-backup-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>Bulut yedekleme düzenlemesi (Visual Studio Code ve Azure portal örnek kodu)
 
-The `E2_BackupSiteContent` function uses the standard *function.json* for orchestrator functions.
+`E2_BackupSiteContent` işlevi Orchestrator işlevleri için standart *function. JSON* ' i kullanır.
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E2_BackupSiteContent/function.json)]
 
-Here is the code that implements the orchestrator function:
+Orchestrator işlevini uygulayan kod aşağıda verilmiştir:
 
 ### <a name="c"></a>C#
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_BackupSiteContent/run.csx)]
 
-### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
+### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_BackupSiteContent/index.js)]
 
-This orchestrator function essentially does the following:
+Bu Orchestrator işlevi temelde şunları yapar:
 
-1. Takes a `rootDirectory` value as an input parameter.
-2. Calls a function to get a recursive list of files under `rootDirectory`.
-3. Makes multiple parallel function calls to upload each file into Azure Blob Storage.
-4. Waits for all uploads to complete.
-5. Returns the sum total bytes that were uploaded to Azure Blob Storage.
+1. Bir `rootDirectory` değerini giriş parametresi olarak alır.
+2. `rootDirectory`altındaki dosyaların özyinelemeli listesini almak için bir işlev çağırır.
+3. Her bir dosyayı Azure Blob depolama alanına yüklemek için birden çok paralel işlev çağrısı yapar.
+4. Tüm karşıya yüklemelerinin tamamlanmasını bekler.
+5. Azure Blob depolamaya karşıya yüklenen toplam bayt sayısını döndürür.
 
-Notice the `await Task.WhenAll(tasks);` (C#) and `yield context.df.Task.all(tasks);` (JavaScript) lines. All the individual calls to the `E2_CopyFileToBlob` function were *not* awaited, which allows them to run in parallel. When we pass this array of tasks to `Task.WhenAll` (C#) or `context.df.Task.all` (JavaScript), we get back a task that won't complete *until all the copy operations have completed*. If you're familiar with the Task Parallel Library (TPL) in .NET or [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) in JavaScript, then this is not new to you. The difference is that these tasks could be running on multiple VMs concurrently, and the Durable Functions extension ensures that the end-to-end execution is resilient to process recycling.
+`await Task.WhenAll(tasks);` (C#) ve `yield context.df.Task.all(tasks);` (JavaScript) satırlarına dikkat edin. `E2_CopyFileToBlob` işlevine yapılan tüm çağrılar *beklenmez* , bu da paralel çalışmasına izin verir. Bu görev dizisini `Task.WhenAll` (C#) veya `context.df.Task.all` (JavaScript) öğesine geçirdiğimiz zaman, *tüm kopyalama işlemleri tamamlanana kadar*tamamlanmamış bir görevi geri alırız. .NET veya JavaScript 'te [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) görev paralel KITAPLıĞı (TPL) hakkında bilginiz varsa, bu sizin için yeni değildir. Fark, bu görevlerin eşzamanlı olarak birden çok VM üzerinde çalışabilmesidir ve Dayanıklı İşlevler uzantısı uçtan uca yürütmenin geri dönüşüm işleminin işlenmesine dayanıklı olmasını sağlar.
 
 > [!NOTE]
-> Although tasks are conceptually similar to JavaScript promises, orchestrator functions should use `context.df.Task.all` and `context.df.Task.any` instead of `Promise.all` and `Promise.race` to manage task parallelization.
+> Görevler kavramsal olarak JavaScript 'e benzer olsa da, Orchestrator işlevlerinin görev paralel hale getirme yönetimi için `Promise.all` ve `Promise.race` yerine `context.df.Task.all` ve `context.df.Task.any` kullanması gerekir.
 
-After awaiting from `Task.WhenAll` (or yielding from `context.df.Task.all`), we know that all function calls have completed and have returned values back to us. Each call to `E2_CopyFileToBlob` returns the number of bytes uploaded, so calculating the sum total byte count is a matter of adding all those return values together.
+`Task.WhenAll` 'tan (veya `context.df.Task.all`) çalıştıktan sonra, tüm işlev çağrılarının tamamlandığını ve bize değer döndürmüş olduğunu biliyoruz. `E2_CopyFileToBlob` yapılan her bir çağrı, karşıya yüklenen bayt sayısını döndürür, bu nedenle toplam bayt sayısını hesaplamak, bu dönüş değerlerinin tümünü birlikte eklemenin bir önemi olur.
 
-## <a name="helper-activity-functions"></a>Helper activity functions
+## <a name="helper-activity-functions"></a>Yardımcı etkinlik işlevleri
 
-The helper activity functions, as with other samples, are just regular functions that use the `activityTrigger` trigger binding. For example, the *function.json* file for `E2_GetFileList` looks like the following:
+Yardımcı etkinlik işlevleri, diğer örneklerde olduğu gibi, yalnızca `activityTrigger` tetikleyici bağlamayı kullanan normal işlevlerdir. Örneğin, `E2_GetFileList` için *function. JSON* dosyası aşağıdaki gibi görünür:
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E2_GetFileList/function.json)]
 
-And here is the implementation:
+Uygulama şu şekildedir:
 
 ### <a name="c"></a>C#
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_GetFileList/run.csx)]
 
-### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
+### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_GetFileList/index.js)]
 
-The JavaScript implementation of `E2_GetFileList` uses the `readdirp` module to recursively read the directory structure.
+`E2_GetFileList` JavaScript uygulanması, dizin yapısını yinelemeli olarak okumak için `readdirp` modülünü kullanır.
 
 > [!NOTE]
-> You might be wondering why you couldn't just put this code directly into the orchestrator function. You could, but this would break one of the fundamental rules of orchestrator functions, which is that they should never do I/O, including local file system access.
+> Bu kodu neden henüz Orchestrator işlevine koyacağınızı merak ediyor olabilirsiniz. Ancak bu, Orchestrator işlevlerinin temel kurallarından birini bozacağından, yerel dosya sistemi erişimi de dahil olmak üzere hiç g/ç yapmam gerekir.
 
-The *function.json* file for `E2_CopyFileToBlob` is similarly simple:
+`E2_CopyFileToBlob` için *function. JSON* dosyası benzer bir işlemdir:
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E2_CopyFileToBlob/function.json)]
 
-The C# implementation is also straightforward. It happens to use some advanced features of Azure Functions bindings (that is, the use of the `Binder` parameter), but you don't need to worry about those details for the purpose of this walkthrough.
+C# Uygulama da basit bir işlemdir. Azure Işlevleri bağlamalarının bazı gelişmiş özelliklerini (yani `Binder` parametresinin kullanımı) kullanır, ancak bu izlenecek yol için bu ayrıntılar konusunda endişelenmeniz gerekmez.
 
 ### <a name="c"></a>C#
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_CopyFileToBlob/run.csx)]
 
-### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
+### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
 
-The JavaScript implementation does not have access to the `Binder` feature of Azure Functions, so the [Azure Storage SDK for Node](https://github.com/Azure/azure-storage-node) takes its place.
+JavaScript uygulamasının Azure Işlevlerinin `Binder` özelliğine erişimi yoktur, bu nedenle [düğüm Için Azure depolama SDK 'sının](https://github.com/Azure/azure-storage-node) yerini alır.
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_CopyFileToBlob/index.js)]
 
-The implementation loads the file from disk and asynchronously streams the contents into a blob of the same name in the "backups" container. The return value is the number of bytes copied to storage, that is then used by the orchestrator function to compute the aggregate sum.
+Uygulama, dosyayı diskten yükler ve içeriği zaman uyumsuz olarak "yedeklemeler" kapsayıcısında aynı ada sahip bir bloba akıtır. Dönüş değeri, depolamaya kopyalanmış baytların sayısıdır, daha sonra Orchestrator işlevi tarafından toplam toplamı hesaplamak için kullanılır.
 
 > [!NOTE]
-> This is a perfect example of moving I/O operations into an `activityTrigger` function. Not only can the work be distributed across many different VMs, but you also get the benefits of checkpointing the progress. If the host process gets terminated for any reason, you know which uploads have already completed.
+> Bu, g/ç işlemlerini `activityTrigger` işleve taşımaya yönelik kusursuz bir örnektir. İş yalnızca birçok farklı VM 'ye dağıtılmayabilir, ancak ilerlemeyi işaret eden bir şekilde gösterme avantajlarına da ulaşabilirsiniz. Ana bilgisayar işlemi herhangi bir nedenle sonlandırılırsa, hangi karşıya yüklemelerinin zaten tamamlandığını bilirsiniz.
 
 ## <a name="run-the-sample"></a>Örneği çalıştırma
 
-You can start the orchestration by sending the following HTTP POST request.
+Aşağıdaki HTTP POST isteğini göndererek düzenleme işlemini başlatabilirsiniz.
 
 ```
 POST http://{host}/orchestrators/E2_BackupSiteContent
@@ -125,9 +125,9 @@ Content-Length: 20
 ```
 
 > [!NOTE]
-> The `HttpStart` function that you are invoking only works with JSON-formatted content. For this reason, the `Content-Type: application/json` header is required and the directory path is encoded as a JSON string. Moreover, HTTP snippet assumes there is an entry in the `host.json` file which removes the default `api/` prefix from all HTTP trigger functions URLs. You can find the markup for this configuration in the `host.json` file in the samples.
+> Çağırdığınız `HttpStart` işlevi yalnızca JSON biçimli içerikle çalışır. Bu nedenle `Content-Type: application/json` üst bilgisi gereklidir ve dizin yolu bir JSON dizesi olarak kodlanır. Ayrıca, HTTP kod parçacığı, `host.json` dosyasında, tüm HTTP tetikleyici işlevleri URL 'Lerinden varsayılan `api/` önekini kaldıran bir giriş olduğunu varsayar. Bu yapılandırmanın işaretlemesini, örneklerdeki `host.json` dosyasında bulabilirsiniz.
 
-This HTTP request triggers the `E2_BackupSiteContent` orchestrator and passes the string `D:\home\LogFiles` as a parameter. The response provides a link to get the status of the backup operation:
+Bu HTTP isteği `E2_BackupSiteContent` Orchestrator 'ı tetikler ve dize `D:\home\LogFiles` bir parametre olarak geçirir. Yanıt, yedekleme işleminin durumunu almak için bir bağlantı sağlar:
 
 ```
 HTTP/1.1 202 Accepted
@@ -138,7 +138,7 @@ Location: http://{host}/runtime/webhooks/durabletask/instances/b4e9bdcc435d460f8
 (...trimmed...)
 ```
 
-Depending on how many log files you have in your function app, this operation could take several minutes to complete. You can get the latest status by querying the URL in the `Location` header of the previous HTTP 202 response.
+İşlev uygulamanızda kaç günlük dosyasına sahip olduğunuza bağlı olarak, bu işlemin tamamlanması birkaç dakika sürebilir. Önceki HTTP 202 yanıtının `Location` üstbilgisindeki URL 'YI sorgulayarak en son durumu alabilirsiniz.
 
 ```
 GET http://{host}/runtime/webhooks/durabletask/instances/b4e9bdcc435d460f8dc008115ff0a8a9?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
@@ -153,7 +153,7 @@ Location: http://{host}/runtime/webhooks/durabletask/instances/b4e9bdcc435d460f8
 {"runtimeStatus":"Running","input":"D:\\home\\LogFiles","output":null,"createdTime":"2019-06-29T18:50:55Z","lastUpdatedTime":"2019-06-29T18:51:16Z"}
 ```
 
-In this case, the function is still running. You are able to see the input that was saved into the orchestrator state and the last updated time. You can continue to use the `Location` header values to poll for completion. When the status is "Completed", you see an HTTP response value similar to the following:
+Bu durumda, işlev hala çalışıyor olur. Orchestrator durumuna kaydedilen girişi ve son güncelleme saatini görebilirsiniz. Tamamlamayı yoklamak için `Location` üst bilgi değerlerini kullanmaya devam edebilirsiniz. Durum "tamamlandı" olduğunda aşağıdakine benzer bir HTTP yanıt değeri görürsünüz:
 
 ```
 HTTP/1.1 200 OK
@@ -163,20 +163,20 @@ Content-Type: application/json; charset=utf-8
 {"runtimeStatus":"Completed","input":"D:\\home\\LogFiles","output":452071,"createdTime":"2019-06-29T18:50:55Z","lastUpdatedTime":"2019-06-29T18:51:26Z"}
 ```
 
-Now you can see that the orchestration is complete and approximately how much time it took to complete. You also see a value for the `output` field, which indicates that around 450 KB of logs were uploaded.
+Şimdi Orchestration 'un tamamlandığını ve tamamlanması için ne kadar zaman tamamlandığını görebilirsiniz. Ayrıca, `output` alanı için bir değer görürsünüz. Bu, 450 KB 'lık günlüklerin karşıya yüklendiğini gösterir.
 
-## <a name="visual-studio-sample-code"></a>Visual Studio sample code
+## <a name="visual-studio-sample-code"></a>Visual Studio örnek kodu
 
-Here is the orchestration as a single C# file in a Visual Studio project:
+Visual Studio projesindeki tek C# bir dosya olarak Orchestration aşağıda verilmiştir:
 
 > [!NOTE]
-> You will need to install the `Microsoft.Azure.WebJobs.Extensions.Storage` NuGet package to run the sample code below.
+> Aşağıdaki örnek kodu çalıştırmak için `Microsoft.Azure.WebJobs.Extensions.Storage` NuGet paketini yüklemeniz gerekir.
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/BackupSiteContent.cs)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-This sample has shown how to implement the fan-out/fan-in pattern. The next sample shows how to implement the monitor pattern using [durable timers](durable-functions-timers.md).
+Bu örnek, fan/fan deseninin nasıl uygulanacağını göstermiştir. Sonraki örnek, [dayanıklı zamanlayıcılar](durable-functions-timers.md)kullanılarak izleyici deseninin nasıl uygulanacağını gösterir.
 
 > [!div class="nextstepaction"]
-> [Run the monitor sample](durable-functions-monitor.md)
+> [İzleme örneğini çalıştırma](durable-functions-monitor.md)

@@ -1,5 +1,5 @@
 ---
-title: Plan hybrid Azure Active Directory join - Azure Active Directory
+title: Karma Azure Active Directory katılmayı planlayın-Azure Active Directory
 description: Hibrit Azure Active Directory'ye katılmış cihazları elle nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 ms.service: active-directory
@@ -18,106 +18,106 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74379313"
 ---
-# <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>How To: Plan your hybrid Azure Active Directory join implementation
+# <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Nasıl yapılır: karma Azure Active Directory JOIN Uygulamanızı planlayın
 
-In a similar way to a user, a device is another core identity you want to protect and use it to protect your resources at any time and from any location. You can accomplish this goal by bringing and managing device identities in Azure AD using one of the following methods:
+Bir kullanıcıya benzer bir şekilde, bir cihaz korumak istediğiniz başka bir temel kimliktir ve kaynakları dilediğiniz zaman ve herhangi bir konumdan korumak için kullanabilirsiniz. Aşağıdaki yöntemlerden birini kullanarak, Azure AD 'de cihaz kimliklerini taşıyarak ve yöneterek bu hedefi gerçekleştirebilirsiniz:
 
 - Azure AD'ye katılım
 - Hibrit Azure AD'ye katılım
 - Azure AD kaydı
 
-Cihazlarınızı Azure AD'ye taşıyarak, çoklu oturum açma (SSO) özelliği sayesinde bulut ve şirket içi kaynaklarınız genelinde kullanıcılarınızın üretkenliğini en üst düzeye çıkarırsınız. At the same time, you can secure access to your cloud and on-premises resources with [Conditional Access](../active-directory-conditional-access-azure-portal.md).
+Cihazlarınızı Azure AD'ye taşıyarak, çoklu oturum açma (SSO) özelliği sayesinde bulut ve şirket içi kaynaklarınız genelinde kullanıcılarınızın üretkenliğini en üst düzeye çıkarırsınız. Aynı zamanda bulut ve şirket içi kaynaklarınız için [koşullu erişimle](../active-directory-conditional-access-azure-portal.md)erişimi güvenli hale getirebilirsiniz.
 
-If you have an on-premises Active Directory (AD) environment and you want to join your AD domain-joined computers to Azure AD, you can accomplish this by doing hybrid Azure AD join. This article provides you with the related steps to implement a hybrid Azure AD join in your environment. 
+Şirket içi Active Directory (AD) ortamınız varsa ve AD alanına katılmış bilgisayarlarınızı Azure AD 'ye eklemek istiyorsanız, karma Azure AD katılımı yaparak bunu yapabilirsiniz. Bu makalede, ortamınızda karma Azure AD katılımı uygulamak için ilgili adımlar sağlanmaktadır. 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-This article assumes that you are familiar with the [Introduction to device identity management in Azure Active Directory](../device-management-introduction.md).
+Bu makalede, [Azure Active Directory ' deki cihaz kimliği yönetimine giriş](../device-management-introduction.md)hakkında bilgi sahibi olduğunuz varsayılır.
 
 > [!NOTE]
-> The minimum required domain controller version for Windows 10 hybrid Azure AD join is Windows Server 2008 R2.
+> Windows 10 karma Azure AD JOIN için gereken en düşük etki alanı denetleyicisi sürümü Windows Server 2008 R2 'dir.
 
 ## <a name="plan-your-implementation"></a>Uygulamanızı planlama
 
-To plan your hybrid Azure AD implementation, you should familiarize yourself with:
+Hibrit Azure AD uygulamanızı planlamak için şunu öğrenmeniz gerekir:
 
 |   |   |
 | --- | --- |
-| ![İşaretli][1] | Review supported devices |
-| ![İşaretli][1] | Review things you should know |
-| ![İşaretli][1] | Review controlled validation of hybrid Azure AD join |
-| ![İşaretli][1] | Select your scenario based on your identity infrastructure |
-| ![İşaretli][1] | Review on-premises AD UPN support for hybrid Azure AD join |
+| ![Onay][1] | Desteklenen cihazları gözden geçir |
+| ![Onay][1] | Bilmeniz gereken işlemleri gözden geçirin |
+| ![Onay][1] | Karma Azure AD JOIN 'in denetimli doğrulamasını gözden geçirin |
+| ![Onay][1] | Kimlik altyapınıza göre senaryonuzu seçin |
+| ![Onay][1] | Karma Azure AD katılımı için şirket içi AD UPN desteğini gözden geçirin |
 
-## <a name="review-supported-devices"></a>Review supported devices
+## <a name="review-supported-devices"></a>Desteklenen cihazları gözden geçir
 
-Hybrid Azure AD join supports a broad range of Windows devices. Because the configuration for devices running older versions of Windows requires additional or different steps, the supported devices are grouped into two categories:
+Karma Azure AD katılımı, çok çeşitli Windows cihazlarını destekler. Windows 'un eski sürümlerini çalıştıran cihazların Yapılandırması ek veya farklı adımlar gerektirdiğinden, desteklenen cihazlar iki kategoride gruplandırılır:
 
-### <a name="windows-current-devices"></a>Windows current devices
+### <a name="windows-current-devices"></a>Windows geçerli cihazlar
 
 - Windows 10
 - Windows Server 2016
 - Windows Server 2019
 
-For devices running the Windows desktop operating system, supported version are listed in this article [Windows 10 release information](https://docs.microsoft.com/windows/release-information/). As a best practice, Microsoft recommends you upgrade to the latest version of Windows 10.
+Windows masaüstü işletim sistemi çalıştıran cihazlarda desteklenen sürüm, [Windows 10 sürüm bilgileri](https://docs.microsoft.com/windows/release-information/)makalesinde listelenmiştir. En iyi uygulama olarak Microsoft, en son Windows 10 sürümüne yükseltmenizi önerir.
 
-### <a name="windows-down-level-devices"></a>Windows down-level devices
+### <a name="windows-down-level-devices"></a>Windows alt düzey cihazlar
 
 - Windows 8.1
-- Windows 7. For support information on Windows 7, see [Support for Windows 7 is ending](https://www.microsoft.com/microsoft-365/windows/end-of-windows-7-support).
+- Windows 7. Windows 7 ile ilgili destek bilgileri için bkz. [Windows 7 Için destek sonlandırılıyor](https://www.microsoft.com/microsoft-365/windows/end-of-windows-7-support).
 - Windows Server 2012 R2
 - Windows Server 2012
-- Windows Server 2008 R2. For support information on Windows Server 2008 and 2008 R2, see [Prepare for Windows Server 2008 end of support](https://www.microsoft.com/cloud-platform/windows-server-2008).
+- Windows Server 2008 R2. Windows Server 2008 ve 2008 R2 hakkında Destek bilgileri için bkz. [Windows Server Için hazırlanma 2008 destek sonu](https://www.microsoft.com/cloud-platform/windows-server-2008).
 
-As a first planning step, you should review your environment and determine whether you need to support Windows down-level devices.
+İlk planlama adımı olarak, ortamınızı gözden geçirmeniz ve Windows alt düzey cihazlarını desteklemeniz gerekip gerekmediğini belirlemeniz gerekir.
 
-## <a name="review-things-you-should-know"></a>Review things you should know
+## <a name="review-things-you-should-know"></a>Bilmeniz gereken işlemleri gözden geçirin
 
-Hybrid Azure AD join is currently not supported if your environment consists of a single AD forest synchronizing identity data to more than one Azure AD tenant.
+Ortamınız tek bir AD ormanından oluşuyorsa, kimlik verilerini birden çok Azure AD kiracısıyla eşitlerken karma Azure AD katılımı Şu anda desteklenmiyor.
 
-If your environment uses virtual desktop infrastructure (VDI), see [Device identity and desktop virtualization](https://docs.microsoft.com/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure).
+Ortamınız sanal masaüstü altyapısı (VDı) kullanıyorsa, bkz. [cihaz kimliği ve Masaüstü Sanallaştırması](https://docs.microsoft.com/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure).
 
-Hybrid Azure AD join is supported for FIPS-compliant TPM 2.0 and not supported for TPM 1.2. If your devices have FIPS-compliant TPM 1.2, you must disable them before proceeding with Hybrid Azure AD join. Microsoft does not provide any tools for disabling FIPS mode for TPMs as it is dependent on the TPM manufacturer. Please contact your hardware OEM for support. Starting from WIndows 10 1903 release, TPMs 1.2 are not used for hybrid Azure AD join and devices with those TPMs will be considered as if they don't have a TPM.
+Karma Azure AD katılımı, FIPS uyumlu TPM 2,0 için desteklenir ve TPM 1,2 için desteklenmez. Cihazlarınızda FIPS uyumlu TPM 1,2 varsa, hibrit Azure AD JOIN ile devam etmeden önce bunları devre dışı bırakmanız gerekir. Microsoft, TPM üreticisine bağlı olduğundan, TPMs için FIPS modunu devre dışı bırakmaya yönelik herhangi bir araç sağlamaz. Destek için lütfen donanımınızın OEM 'nize başvurun. WIndows 10 1903 sürümünden itibaren, TPMs 1,2 karma Azure AD katılımı için kullanılmaz ve bu TPMs 'Leri içeren cihazlar TPM 'ye sahip olmadıkları sürece kabul edilir.
 
-Hybrid Azure AD join is not supported for Windows Server running the Domain Controller (DC) role.
+Karma Azure AD katılımı, etki alanı denetleyicisi (DC) rolünü çalıştıran Windows Server için desteklenmez.
 
-Hybrid Azure AD join is not supported on Windows down-level devices when using credential roaming or user profile roaming or mandatory profile.
+Karma Azure AD katılımı, kimlik bilgisi dolaşımı veya Kullanıcı profili dolaşımı veya zorunlu profili kullanılırken Windows alt düzey cihazlarda desteklenmez.
 
-If you are relying on the System Preparation Tool (Sysprep) and if you are using a **pre-Windows 10 1809** image for installation, make sure that image is not from a device that is already registered with Azure AD as Hybrid Azure AD join.
+Sistem Hazırlama Aracı 'nı (Sysprep) kullanıyorsanız ve yükleme için **Windows 10 1809 öncesi** bir görüntü kullanıyorsanız, görüntünün Azure AD 'ye karma Azure AD katılımı olarak zaten kayıtlı olan bir cihazdan olmadığından emin olun.
 
-If you are relying on a Virtual Machine (VM) snapshot to create additional VMs, make sure that snapshot is not from a VM that is already registered with Azure AD as Hybrid Azure AD join.
+Ek VM 'Ler oluşturmak için bir sanal makine (VM) anlık görüntüsüne güvenmek istiyorsanız, anlık görüntünün Azure AD 'ye karma Azure AD katılımı olarak zaten kayıtlı olan bir VM 'den olmadığından emin olun.
 
-If your Windows 10 domain joined devices are [Azure AD registered](overview.md#getting-devices-in-azure-ad) to your tenant, it could lead to a dual state of Hybrid Azure AD joined and Azure AD registered device. We recommend upgrading to Windows 10 1803 (with KB4489894 applied) or above to automatically address this scenario. In pre-1803 releases, you will need to remove the Azure AD registered state manually before enabling Hybrid Azure AD join. In 1803 and above releases, the following changes have been made to avoid this dual state:
+Windows 10 etki alanına katılmış cihazlarınız, kiracınıza [kayıtlı Azure AD](overview.md#getting-devices-in-azure-ad) Ise, karma Azure AD 'ye katılmış ve Azure AD 'ye kayıtlı cihazın iki durumuna yol açabilir. Bu senaryoyu otomatik olarak çözmek için Windows 10 1803 ' e (KB4489894 uygulanmış olan) veya üstüne yükseltmeniz önerilir. 1803 öncesi sürümlerde, hibrit Azure AD JOIN 'i etkinleştirmeden önce Azure AD kayıtlı durumunu el ile kaldırmanız gerekecektir. 1803 ve üzeri sürümlerde, bu iki durumdan kaçınmak için aşağıdaki değişiklikler yapılmıştır:
 
-- Any existing Azure AD registered state would be automatically removed <i>after the device is Hybrid Azure AD joined</i>.
-- You can prevent your domain joined device from being Azure AD registered by adding this registry key - HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin"=dword:00000001.
-- In Windows 10 1803, if you have Windows Hello for Business configured, the user needs to re-setup Windows Hello for Business after the dual state clean up.This issue has been addressed with KB4512509
+- <i>Cihaz hibrit Azure AD 'ye katılmış olduktan sonra</i>mevcut Azure AD kayıtlı durumu otomatik olarak kaldırılır.
+- Bu kayıt defteri anahtarını ekleyerek, etki alanına katılmış cihazın Azure AD 'ye kaydedilmesini engelleyebilirsiniz-Hklm\software\policies\microsoft\windows\workplacejoın, "Blockaadworkplacejoın" = DWORD: 00000001.
+- Windows 10 1803 ' de, Iş için Windows Hello yapılandırılmışsa, ikili durum temizleme sonrasında kullanıcının Iş için Windows Hello 'Yu yeniden kurulumu gerekir. Bu sorun KB4512509 ile giderilmiştir
 
 > [!NOTE]
-> The Azure AD registered device will not be automatically removed if it is managed by Intune.
+> Azure AD kayıtlı cihaz, Intune tarafından yönetiliyorsa otomatik olarak kaldırılmaz.
 
-## <a name="review-controlled-validation-of-hybrid-azure-ad-join"></a>Review controlled validation of hybrid Azure AD join
+## <a name="review-controlled-validation-of-hybrid-azure-ad-join"></a>Karma Azure AD JOIN 'in denetimli doğrulamasını gözden geçirin
 
-When all of the pre-requisites are in place, Windows devices will automatically register as devices in your Azure AD tenant. The state of these device identities in Azure AD is referred as hybrid Azure AD join. More information about the concepts covered in this article can be found in the article [Introduction to device identity management in Azure Active Directory](overview.md).
+Tüm önkoşulların yerine Windows cihazları otomatik olarak Azure AD kiracınızda cihaz olarak kaydedilir. Azure AD 'deki bu cihaz kimliklerinin durumu karma Azure AD katılımı olarak adlandırılır. Bu makalede ele alınan kavramlar hakkında daha fazla bilgi [Azure Active Directory içinde cihaz kimliği yönetimine giriş](overview.md)makalesinde bulabilirsiniz.
 
-Organizations may want to do a controlled validation of hybrid Azure AD join before enabling it across their entire organization all at once. Review the article [controlled validation of hybrid Azure AD join](hybrid-azuread-join-control.md) to understand how to accomplish it.
+Kuruluşlar, karma Azure AD JOIN 'in tüm kuruluşları genelinde tek seferde etkinleştirmeden önce denetimli bir doğrulama yapmak isteyebilir. Nasıl yapılacağını anlamak için [hibrit Azure AD JOIN 'in denetlenen doğrulaması](hybrid-azuread-join-control.md) makalesini gözden geçirin.
 
-## <a name="select-your-scenario-based-on-your-identity-infrastructure"></a>Select your scenario based on your identity infrastructure
+## <a name="select-your-scenario-based-on-your-identity-infrastructure"></a>Kimlik altyapınıza göre senaryonuzu seçin
 
-Hybrid Azure AD join works with both, managed and federated environments depending on whether the UPN is routable or non-routable. See bottom of the page for table on supported scenarios.  
+Karma Azure AD katılımı, UPN 'nin yönlendirilebilir veya yönlendirilemeyen olmasına bağlı olarak hem yönetilen hem de Federasyon ortamları ile birlikte kullanılabilir. Desteklenen senaryolarda tablo için sayfanın alt bölümüne bakın.  
 
-### <a name="managed-environment"></a>Managed environment
+### <a name="managed-environment"></a>Yönetilen ortam
 
-A managed environment can be deployed either through [Password Hash Sync (PHS)](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-phs) or [Pass Through Authentication (PTA)](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta) with [Seamless Single Sign On](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso).
+Yönetilen bir ortam, [kesintisiz çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)Ile [Parola karması eşitlemesi (PHS)](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-phs) veya [doğrudan kimlik doğrulama (PTA)](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta) aracılığıyla dağıtılabilir.
 
-These scenarios don't require you to configure a federation server for authentication.
+Bu senaryolar, kimlik doğrulaması için bir federasyon sunucusu yapılandırmanızı gerektirmez.
 
-### <a name="federated-environment"></a>Federated environment
+### <a name="federated-environment"></a>Federasyon ortamı
 
-A federated environment should have an identity provider that supports the following requirements. If you have a federated environment using Active Directory Federation Services (AD FS), then the below requirements are already supported.
+Federasyon ortamında, aşağıdaki gereksinimleri destekleyen bir kimlik sağlayıcısı olmalıdır. Active Directory Federasyon Hizmetleri (AD FS) (AD FS) kullanan bir Federasyon ortamınız varsa, aşağıdaki gereksinimler zaten desteklenmektedir.
 
-- **WIAORMULTIAUTHN claim:** This claim is required to do hybrid Azure AD join for Windows down-level devices.
-- **WS-Trust protocol:** This protocol is required to authenticate Windows current hybrid Azure AD joined devices with Azure AD. When you're using AD FS, you need to enable the following WS-Trust endpoints: `/adfs/services/trust/2005/windowstransport`  
+- **Wiaormultiauthn talebi:** Bu talep, Windows alt düzey cihazlara yönelik karma Azure AD katılımı yapmak için gereklidir.
+- **WS-Trust protokolü:** Bu protokol, Azure AD ile Windows geçerli karma Azure AD 'ye katılmış cihazların kimliğini doğrulamak için gereklidir. AD FS kullanırken, aşağıdaki WS-Trust uç noktalarını etkinleştirmeniz gerekir: `/adfs/services/trust/2005/windowstransport`  
 `/adfs/services/trust/13/windowstransport`  
   `/adfs/services/trust/2005/usernamemixed` 
   `/adfs/services/trust/13/usernamemixed`
@@ -125,39 +125,39 @@ A federated environment should have an identity provider that supports the follo
   `/adfs/services/trust/13/certificatemixed` 
 
 > [!WARNING] 
-> Both **adfs/services/trust/2005/windowstransport** or **adfs/services/trust/13/windowstransport** should be enabled as intranet facing endpoints only and must NOT be exposed as extranet facing endpoints through the Web Application Proxy. To learn more on how to disable WS-Trust Windows endpoints, see [Disable WS-Trust Windows endpoints on the proxy](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). You can see what endpoints are enabled through the AD FS management console under **Service** > **Endpoints**.
+> Hem **ADFS/Service/Trust/2005/windowstransport** ya da **ADFS/Services/Trust/13/windowstransport** , yalnızca intranet 'e yönelik uç noktalar olarak etkinleştirilmelidir ve Web uygulaması ara sunucusu aracılığıyla extranet 'e yönelik uç noktalar olarak gösterilmemelidir. WS-Trust Windows uç noktalarını devre dışı bırakma hakkında daha fazla bilgi için, bkz. [proxy 'de WS-Trust Windows uç noktalarını devre dışı bırakma](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). **Hizmet** > **uç noktaları**altında AD FS Yönetim Konsolu aracılığıyla hangi uç noktaların etkinleştirildiğini görebilirsiniz.
 
 > [!NOTE]
-> Azure AD does not support smartcards or certificates in managed domains.
+> Azure AD, yönetilen etki alanlarında akıllı kartlar veya sertifikaları desteklemez.
 
-1\.1.819.0 sürümünden itibaren Azure AD Connect hibrit Azure AD'ye katılımı yapılandırmak için bir sihirbaz sağlar. Sihirbaz, yapılandırma işlemini önemli ölçüde basitleştirebilmenizi sağlar. If installing the required version of Azure AD Connect is not an option for you, see [how to manually configure device registration](hybrid-azuread-join-manual.md). 
+1\.1.819.0 sürümünden itibaren Azure AD Connect hibrit Azure AD'ye katılımı yapılandırmak için bir sihirbaz sağlar. Sihirbaz, yapılandırma işlemini önemli ölçüde basitleştirebilmenizi sağlar. Gerekli Azure AD Connect sürümünün yüklenmesi sizin için bir seçenek değilse, bkz. [cihaz kaydını el ile yapılandırma](hybrid-azuread-join-manual.md). 
 
-Based on the scenario that matches your identity infrastructure, see:
+Kimlik altyapınızla eşleşen senaryoya bağlı olarak, bkz:
 
-- [Configure hybrid Azure Active Directory join for federated environment](hybrid-azuread-join-federated-domains.md)
-- [Configure hybrid Azure Active Directory join for managed environment](hybrid-azuread-join-managed-domains.md)
+- [Federasyon ortamına yönelik karma Azure Active Directory birleştirmesini yapılandırma](hybrid-azuread-join-federated-domains.md)
+- [Yönetilen ortam için karma Azure Active Directory birleştirmesini yapılandırma](hybrid-azuread-join-managed-domains.md)
 
-## <a name="review-on-premises-ad-upn-support-for-hybrid-azure-ad-join"></a>Review on-premises AD UPN support for Hybrid Azure AD join
+## <a name="review-on-premises-ad-upn-support-for-hybrid-azure-ad-join"></a>Karma Azure AD katılımı için şirket içi AD UPN desteğini gözden geçirin
 
-Sometimes, your on-premises AD UPNs could be different from your Azure AD UPNs. In such cases, Windows 10 Hybrid Azure AD join provides limited support for on-premises AD UPNs based on the [authentication method](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn), domain type and Windows 10 version. There are two types of on-premises AD UPNs that can exist in your environment:
+Bazen, şirket içi AD UPN 'niz Azure AD UPN 'inizden farklı olabilir. Bu gibi durumlarda, Windows 10 hibrit Azure AD katılımı, [kimlik doğrulama yöntemine](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn), etki alanı türüne ve Windows 10 sürümüne bağlı olarak ŞIRKET Içi ad UPN 'leri için sınırlı destek sağlar. Ortamınızda mevcut olabilir iki tür şirket içi AD UPN vardır:
 
-- Routable UPN: A routable UPN has a valid verified domain, that is registered with a domain registrar. For example, if contoso.com is the primary domain in Azure AD, contoso.org is the primary domain in on-premises AD owned by Contoso and [verified in Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)
-- Non-routable UPN: A non-routable UPN does not have a verified domain. It is applicable only within your organization's private network. For example, if contoso.com is the primary domain in Azure AD, contoso.local is the primary domain in on-premises AD but is not a verifiable domain in the internet and only used within Contoso's network.
+- Yönlendirilebilir UPN: yönlendirilebilir bir UPN, bir etki alanı kaydedicisinde kayıtlı geçerli bir doğrulanmış etki alanı içerir. Örneğin, contoso.com, Azure AD 'deki birincil etki alanı ise, contoso.org, şirket içi AD 'de contoso 'ya ait olan ve [Azure AD 'de doğrulanan](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain) birincil etki alanıdır.
+- Yönlendirilebilir olmayan UPN: yönlendirilemeyen bir UPN 'de doğrulanmış bir etki alanı yoktur. Yalnızca kuruluşunuzun özel ağı dahilinde geçerlidir. Örneğin, contoso.com, Azure AD 'deki birincil etki alanı ise, contoso. Local şirket içi AD 'deki birincil etki alanıdır, ancak internet 'te doğrulanabilir bir etki alanı değildir ve yalnızca contoso ağı içinde kullanılır.
 
-The table below provides details on support for these on-premises AD UPNs in Windows 10 Hybrid Azure AD join
+Aşağıdaki tabloda, Windows 10 karma Azure AD 'ye yönelik bu şirket içi AD UPN 'leri için destek ayrıntıları verilmiştir
 
-| Type of on-premises AD UPN | Etki alanı türü | Windows 10 version | Açıklama |
+| Şirket içi AD UPN türü | Etki alanı türü | Windows 10 sürümü | Açıklama |
 | ----- | ----- | ----- | ----- |
-| Routable | Federated | From 1703 release | Generally available |
-| Non-routable | Federated | From 1803 release | Generally available |
-| Routable | Yönetilen | From 1803 release | Generally available, Azure AD SSPR on Windows lockscreen is not supported |
-| Non-routable | Yönetilen | Desteklenmiyor | |
+| Lemez | Federasyon | 1703 sürümünden | Genel kullanıma sunuldu |
+| Yönlendirilemeyen | Federasyon | 1803 sürümünden | Genel kullanıma sunuldu |
+| Lemez | Yönetilen | 1803 sürümünden | Genel olarak kullanılabilir, Windows kilit ekranı üzerinde Azure AD SSPR desteklenmez |
+| Yönlendirilemeyen | Yönetilen | Desteklenmez | |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Configure hybrid Azure Active Directory join for federated environment](hybrid-azuread-join-federated-domains.md)
-> [Configure hybrid Azure Active Directory join for managed environment](hybrid-azuread-join-managed-domains.md)
+> [Federasyon ortamına yönelik karma Azure Active Directory katılmayı yapılandırın](hybrid-azuread-join-federated-domains.md)
+> [yönetilen ortama yönelik karma Azure Active Directory birleştirmesini yapılandırın](hybrid-azuread-join-managed-domains.md)
 
 <!--Image references-->
 [1]: ./media/hybrid-azuread-join-plan/12.png

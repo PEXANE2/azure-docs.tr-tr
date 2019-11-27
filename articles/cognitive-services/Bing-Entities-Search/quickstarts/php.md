@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Send a search request to the REST API using PHP - Bing Entity Search'
+title: "Hızlı başlangıç: PHP 'yi kullanarak REST API bir arama isteği gönderme Bing Varlık Arama"
 titleSuffix: Azure Cognitive Services
-description: Use this quickstart to send a request to the Bing Entity Search REST API using PHP, and receive a JSON response.
+description: Bu hızlı başlangıcı, PHP kullanarak Bing Varlık Arama REST API isteği göndermek ve bir JSON yanıtı almak için kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -17,11 +17,11 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74323595"
 ---
-# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-php"></a>Quickstart: Send a search request to the Bing Entity Search REST API using PHP
+# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-php"></a>Hızlı başlangıç: PHP kullanarak Bing Varlık Arama REST API bir arama isteği gönderme
 
-Use this quickstart to make your first call to the Bing Entity Search API and view the JSON response. This simple PHP application sends a news search query to the API, and displays the response. 
+Bing Varlık Arama API'si ilk çağrısını yapmak ve JSON yanıtını görüntülemek için bu hızlı başlangıcı kullanın. Bu basit PHP uygulaması, API 'ye bir haber arama sorgusu gönderir ve yanıtı görüntüler. 
 
-While this application is written in PHP, the API is a RESTful Web service compatible with most programming languages.
+Bu uygulama PHP 'de yazıldığı sırada API, çoğu programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -31,7 +31,7 @@ While this application is written in PHP, the API is a RESTful Web service compa
 
 ## <a name="search-entities"></a>Varlık arama
 
-Bu uygulamayı çalıştırmak için aşağıdaki adımları izleyin.
+Bu uygulamayı çalıştırmak için şu adımları izleyin.
 
 1. Sık kullandığınız IDE ile yeni bir PHP projesi oluşturun.
 2. Aşağıda sağlanan kodu ekleyin.
@@ -150,7 +150,7 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Build a single-page web app](../tutorial-bing-entities-search-single-page-app.md)
+> [Tek sayfalı Web uygulaması oluşturma](../tutorial-bing-entities-search-single-page-app.md)
 
-* [What is the Bing Entity Search API?](../overview.md )
-* [Bing Entity Search API Reference](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)
+* [Bing Varlık Arama API'si nedir?](../overview.md )
+* [Bing Varlık Arama API'si Başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)

@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Perform a news search using the SDK for Node.js - Bing News Search'
+title: "Hızlı başlangıç: node. js için SDK 'Yı kullanarak bir haber araması gerçekleştirme-Bing Haber Arama"
 titleSuffix: Azure Cognitive Services
-description: Use this quickstart to search for news using the Bing News Search SDK for Node.js, and process the response.
+description: Node. js için Bing Haber Arama SDK 'sını kullanarak haberleri aramak ve yanıtı işlemek için bu hızlı başlangıcı kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -18,24 +18,24 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383895"
 ---
-# <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-nodejs"></a>Quickstart: Perform a news search with the Bing News Search SDK for Node.js
+# <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-nodejs"></a>Hızlı başlangıç: node. js için Bing Haber Arama SDK ile bir haber araması gerçekleştirme
 
-Use this quickstart to begin searching for news with the Bing News Search SDK for Node.js. While Bing News Search has a REST API compatible with most programming languages, the SDK provides an easy way to integrate the service into your applications. The source code for this sample can be found on [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/newsSearch.js).
+Node. js için Bing Haber Arama SDK 'Sı ile haberleri aramaya başlamak için bu hızlı başlangıcı kullanın. Bing Haber Arama birçok programlama dili ile uyumlu bir REST API sahip olsa da SDK, hizmeti uygulamalarınızla tümleştirmenin kolay bir yolunu sunar. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/newsSearch.js)' da bulunabilir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 * [Node.js](https://nodejs.org/en/)
 
-To set up a console application using the Bing News Search SDK:
-1. Run `npm install ms-rest-azure` in your development environment.
-2. Run `npm install azure-cognitiveservices-newssearch` in your development environment.
+Bing Haber Arama SDK kullanarak bir konsol uygulaması ayarlamak için:
+1. Geliştirme ortamınızda `npm install ms-rest-azure` çalıştırın.
+2. Geliştirme ortamınızda `npm install azure-cognitiveservices-newssearch` çalıştırın.
 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-the-application"></a>Uygulamayı oluşturma ve başlatma
 
-1. `CognitiveServicesCredentials` nesnesinin bir örneğini oluşturun. Create variables for your subscription key, and a search term.
+1. `CognitiveServicesCredentials` nesnesinin bir örneğini oluşturun. Abonelik anahtarınız ve bir arama terimi için değişkenler oluşturun.
 
     ```javascript
     const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
@@ -43,16 +43,16 @@ To set up a console application using the Bing News Search SDK:
     let search_term = 'Winter Olympics'
     ```
 
-2. instantiate the client:
+2. istemcinin örneğini oluşturma:
     
     ```javascript
     const NewsSearchAPIClient = require('azure-cognitiveservices-newssearch');
     let client = new NewsSearchAPIClient(credentials);
     ```
 
-## <a name="send-a-search-query"></a>Send a search query
+## <a name="send-a-search-query"></a>Arama sorgusu gönder
 
-1. Use the client to search with a query term, in this case "Winter Olympics":
+1. Bir sorgu terimiyle aramak için istemcisini kullanın, bu durumda "Kış Olimpiyatları":
     
     ```javascript
     client.newsOperations.search(search_term).then((result) => {

@@ -1,6 +1,6 @@
 ---
-title: Create Durable Functions using the Azure portal
-description: Learn how to install the Durable Functions extension for Azure Functions for portal development.
+title: Azure portal kullanarak Dayanıklı İşlevler oluşturun
+description: Portal geliştirme için Azure Işlevleri Dayanıklı İşlevler uzantısını yüklemeyi öğrenin.
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.reviewer: azfuncdf
@@ -11,36 +11,36 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231474"
 ---
-# <a name="create-durable-functions-using-the-azure-portal"></a>Create Durable Functions using the Azure portal
+# <a name="create-durable-functions-using-the-azure-portal"></a>Azure portal kullanarak Dayanıklı İşlevler oluşturun
 
-The [Durable Functions](durable-functions-overview.md) extension for Azure Functions is provided in the NuGet package [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask). This extension must be installed in your function app. This article shows how to install this package so that you can develop durable functions in the Azure portal.
+Azure Işlevleri için [dayanıklı işlevler](durable-functions-overview.md) uzantısı, [Microsoft. Azure. WebJobs. Extensions. durabletask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask)NuGet paketinde sunulmaktadır. Bu uzantının işlev uygulamanızda yüklü olması gerekir. Bu makalede, Azure portal dayanıklı işlevler geliştirebilmeniz için bu paketin nasıl yükleneceği gösterilmektedir.
 
 > [!NOTE]
 > 
-> * If you are developing durable functions in C#, you should instead consider [Visual Studio 2019 development](durable-functions-create-first-csharp.md).
-> * If you are developing durable functions in JavaScript, you should instead consider [Visual Studio Code development](./quickstart-js-vscode.md).
+> * ' De C#dayanıklı işlevler geliştiriyorsanız, bunun yerine [Visual Studio 2019 geliştirmeyi](durable-functions-create-first-csharp.md)göz önünde bulundurmanız gerekir.
+> * JavaScript 'te dayanıklı işlevler geliştiriyorsanız bunun yerine [Visual Studio Code geliştirmeyi](./quickstart-js-vscode.md)göz önünde bulundurmanız gerekir.
 
 ## <a name="create-a-function-app"></a>İşlev uygulaması oluşturma
 
-You must have a function app to host the execution of any function. A function app lets you group your functions as a logic unit for easier management, deployment, and sharing of resources. You can create a .NET or JavaScript app.
+Herhangi bir işlevin yürütülmesini barındırmak için bir işlev uygulamasına sahip olmanız gerekir. İşlev uygulaması, kaynakların daha kolay yönetilmesi, dağıtılması ve paylaşılması için işlevlerinizi bir mantıksal birim olarak gruplandırmanıza olanak tanır. .NET veya JavaScript uygulaması oluşturabilirsiniz.
 
 [!INCLUDE [Create function app Azure portal](../../../includes/functions-create-function-app-portal.md)]
 
-By default, the function app created uses version 2.x of the Azure Functions runtime. The Durable Functions extension works on both versions 1.x and 2.x of the Azure Functions runtime in C#, and version 2.x in JavaScript. However, templates are only available when targeting version 2.x of the runtime regardless of the chosen language.
+Oluşturulan işlev uygulaması, varsayılan olarak Azure Işlevleri çalışma zamanının 2. x sürümünü kullanır. Dayanıklı İşlevler uzantısı, içindeki C#Azure işlevleri çalışma zamanının 1. x ve 2. x sürümlerinde ve JavaScript 'te sürüm 2. x üzerinde çalışır. Ancak, şablonlar yalnızca seçili dilden bağımsız olarak çalışma zamanının 2. x 'i hedeflenirken kullanılabilir.
 
-## <a name="install-the-durable-functions-npm-package-javascript-only"></a>Install the durable-functions npm package (JavaScript only)
+## <a name="install-the-durable-functions-npm-package-javascript-only"></a>Dayanıklı işlevler NPM paketini (yalnızca JavaScript) yükler
 
-If you are creating JavaScript Durable Functions, you will need to install the [`durable-functions` npm package](https://www.npmjs.com/package/durable-functions).
+JavaScript Dayanıklı İşlevler oluşturuyorsanız, [`durable-functions` NPM paketini](https://www.npmjs.com/package/durable-functions)yüklemeniz gerekecektir.
 
-1. Select your function app's name, followed by **Platform Features**, then **Advanced tools (Kudu)** .
+1. İşlev uygulamanızın adını, ardından **platform özelliklerini**ve **Gelişmiş Araçlar 'ı (kudu)** seçin.
 
-   ![Functions platform features choose Kudu](./media/durable-functions-create-portal/function-app-platform-features-choose-kudu.png)
+   ![İşlevler platform özellikleri kudu seçme](./media/durable-functions-create-portal/function-app-platform-features-choose-kudu.png)
 
-2. Inside the Kudu console, select **Debug console** then **CMD**.
+2. Kudu konsolunun içinde **Hata Ayıkla Konsolu** sonra **cmd**' yi seçin.
 
-   ![Kudu debug console](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
+   ![Kudu hata ayıklama konsolu](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
 
-3. Your function app's file directory structure should display. `site/wwwroot` klasörüne gidin. From there, you can upload a `package.json` file by dragging and dropping it into the file directory window. A sample `package.json` is below:
+3. İşlev uygulamanızın dosya dizini yapısı görüntülenmelidir. `site/wwwroot` klasörüne gidin. Buradan dosya dizini penceresine sürükleyip bırakarak bir `package.json` dosyasını karşıya yükleyebilirsiniz. Örnek bir `package.json` aşağıda verilmiştir:
 
     ```json
     {
@@ -50,15 +50,15 @@ If you are creating JavaScript Durable Functions, you will need to install the [
     }
     ```
 
-   ![Kudu upload package.json](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
+   ![Kudu yükleme paketi. JSON](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
 
-4. Once your `package.json` is uploaded, run the `npm install` command from the Kudu Remote Execution Console.
+4. `package.json` karşıya yüklendikten sonra, kudu uzaktan yürütme konsolundan `npm install` komutunu çalıştırın.
 
-   ![Kudu run npm install](./media/durable-functions-create-portal/kudu-npm-install.png)
+   ![Kudu çalıştırma NPM yüklemesi](./media/durable-functions-create-portal/kudu-npm-install.png)
 
-## <a name="create-an-orchestrator-function"></a>Create an orchestrator function
+## <a name="create-an-orchestrator-function"></a>Orchestrator işlevi oluşturma
 
-1. İşlev uygulamanızı genişletin ve **İşlevler**'in yanındaki **+** düğmesine tıklayın. Bu, işlev uygulamanızdaki ilk işlevse **Portalda**'yı ve ardından **Devam**'ı seçin. Aksi takdirde üçüncü adıma geçin.
+1. İşlev uygulamanızı genişletin ve **İşlevler+'in yanındaki**  düğmesine tıklayın. Bu, işlev uygulamanızdaki ilk işlevse **Portalda**'yı ve ardından **Devam**'ı seçin. Aksi takdirde üçüncü adıma geçin.
 
    ![Azure portalındaki İşlevler hızlı başlangıç sayfası](./media/durable-functions-create-portal/function-app-quickstart-choose-portal.png)
 
@@ -66,29 +66,29 @@ If you are creating JavaScript Durable Functions, you will need to install the [
 
     ![İşlevler hızlı başlangıcı diğer şablonlar](./media/durable-functions-create-portal/add-first-function.png)
 
-1. In the search field, type `durable` and then choose the  **Durable Functions HTTP starter** template.
+1. Arama alanına `durable` yazın ve ardından **DAYANıKLı işlevler http başlangıç** şablonunu seçin.
 
-1. When prompted, select **Install** to install the Azure DurableTask extension any dependencies in the function app. You only need to install the extension once for a give function app. Yükleme başarılı olduktan sonra **Devam**'ı seçin.
+1. İstendiğinde, Azure DurableTask uzantısını işlev uygulamasına herhangi bir bağımlılığı **yüklemek için,** ' ı seçin. Bir verme işlevi uygulaması için uzantıyı yalnızca bir kez yüklemeniz gerekir. Yükleme başarılı olduktan sonra **Devam**'ı seçin.
 
     ![Bağlama uzantılarını yükleme](./media/durable-functions-create-portal/install-durabletask-extension.png)
 
-1. After the installation completes, name the new function `HttpStart` and choose **Create**. The function created is used to start the orchestration.
+1. Yükleme tamamlandıktan sonra, yeni işlevi `HttpStart` adlandırın ve **Oluştur**' u seçin. Oluşturulan işlev Düzenleme başlatmak için kullanılır.
 
-1. Create another function in the function app, this time by using the **Durable Functions Orchestrator** template. Name your new orchestration function `HelloSequence`.
+1. İşlev uygulamasında, bu kez **dayanıklı işlevler Orchestrator** şablonunu kullanarak başka bir işlev oluşturun. Yeni düzenleme işlevinizi `HelloSequence`olarak adlandırın.
 
-1. Create a third function named `Hello` by using the **Durable Functions Activity** template.
+1. **Dayanıklı işlevler etkinlik** şablonunu kullanarak `Hello` adlı üçüncü bir işlev oluşturun.
 
-## <a name="test-the-durable-function-orchestration"></a>Test the durable function orchestration
+## <a name="test-the-durable-function-orchestration"></a>Dayanıklı işlev düzenlemesini test etme
 
-1. Go back to the **HttpStart** function, choose **</> Get function URL** and **Copy** the URL. You use this URL to start the **HelloSequence** function.
+1. **Httpstart** işlevine geri dönün **</> Işlev URL 'sini al** ' ı seçin ve URL 'yi **kopyalayın** . **Merhaba sıra** işlevini başlatmak IÇIN bu URL 'yi kullanın.
 
-1. Use an HTTP tool like Postman or cURL to send a POST request to the URL that you copied. The following example is a cURL command that sends a POST request to the durable function:
+1. Kopyaladığınız URL 'ye bir POST isteği göndermek için Postman veya kıvrık gibi bir HTTP aracını kullanın. Aşağıdaki örnek, dayanıklı işleve POST isteği gönderen bir kıvrımlı komuttur:
 
     ```bash
     curl -X POST https://{your-function-app-name}.azurewebsites.net/api/orchestrators/HelloSequence
     ```
 
-    In this example, `{your-function-app-name}` is the domain that is the name of your function app. The response message contains a set of URI endpoints that you can use to monitor and manage the execution, which looks like the following example:
+    Bu örnekte, `{your-function-app-name}` işlev uygulamanızın adı olan etki alanıdır. Yanıt iletisi, yürütmeyi izlemek ve yönetmek için kullanabileceğiniz bir dizi URI uç noktası içerir ve aşağıdaki örnekte olduğu gibi görünür:
 
     ```json
     {  
@@ -100,7 +100,7 @@ If you are creating JavaScript Durable Functions, you will need to install the [
     }
     ```
 
-1. Call the `statusQueryGetUri` endpoint URI and you see the current status of the durable function, which might look like this example:
+1. `statusQueryGetUri` uç noktası URI 'sini çağırın ve dayanıklı işlevin geçerli durumunu görürsünüz ve bu örnek aşağıdaki gibi görünebilir:
 
     ```json
         {
@@ -112,7 +112,7 @@ If you are creating JavaScript Durable Functions, you will need to install the [
         }
     ```
 
-1. Continue calling the `statusQueryGetUri` endpoint until the status changes to **Completed**, and you see a response like the following example:
+1. Durum **tamamlanana**kadar `statusQueryGetUri` uç noktasını çağırmaya devam edin ve aşağıdaki örnekte olduğu gibi bir yanıt görürsünüz:
 
     ```json
     {
@@ -128,9 +128,9 @@ If you are creating JavaScript Durable Functions, you will need to install the [
         }
     ```
 
-Your first durable function is now up and running in Azure.
+İlk dayanıklı işleviniz artık Azure 'da çalışıyor ve çalışıyor.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Learn about common durable function patterns](durable-functions-overview.md#application-patterns)
+> [Ortak dayanıklı işlev desenleri hakkında bilgi edinin](durable-functions-overview.md#application-patterns)

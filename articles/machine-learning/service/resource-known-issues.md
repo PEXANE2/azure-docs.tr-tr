@@ -46,7 +46,7 @@ Aşağıdaki görüntüde nasıl yapılacağı gösterilmektedir: ![visulize-Dat
 
 ## <a name="sdk-installation-issues"></a>SDK yükleme sorunları
 
-**Hata iletisi: 'PyYAML' kaldırılamıyor**
+**Hata iletisi: ' PyYAML ' kaldırılamıyor**
 
 Python için Azure Machine Learning SDK: PyYAML olan yüklü distutils proje. Bu nedenle, kısmi bir kaldırma işlemi varsa, hangi dosyaların kendisine ait olduğunu doğru bir şekilde belirleyemedik. Bu hatayı yoksayma sırasında SDK'sı yüklemeye devam etmek için kullanın:
 
@@ -74,9 +74,9 @@ Web hizmeti dağıtılırken hata oluşturma görüntüsü. Geçici çözüm ola
 
 `['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`gözlemlerseniz, dağıtımınızda kullanılan VM 'Ler için SKU 'YU daha fazla belleğe sahip olan bir şekilde değiştirin.
 
-## <a name="fpgas"></a>FPGA'lar
+## <a name="fpgas"></a>FPGA
 
-İstenen ve FPGA kotası için onaylanmış kadar FPGA modellerde dağıtmayı mümkün olmayacaktır. Erişim istemek için kota istek formunu doldurun: https://aka.ms/aml-real-time-ai
+İstenen ve FPGA kotası için onaylanmış kadar FPGA modellerde dağıtmayı mümkün olmayacaktır. Erişim istemek için kota isteği formunu doldurun: https://aka.ms/aml-real-time-ai
 
 ## <a name="automated-machine-learning"></a>Otomatik makine öğrenimi
 
@@ -112,7 +112,7 @@ Databricks ve Azure Machine Learning sorunları.
 
 ### <a name="failure-when-installing-packages"></a>Paketler yüklenirken hata oluştu
 
-Azure Machine Learning SDK yüklemesi, daha fazla paket yüklendiğinde Azure Databricks başarısız olur. Gibi bazı paketler `psutil`, çakışmaları neden olabilir. Yükleme hatalarını önlemek için, kitaplık sürümünü dondurarak paketleri yükleme. Bu sorun, Azure Machine Learning SDK 'Sı değil Databricks ile ilgilidir. Bu sorunla diğer kitaplıklarla de karşılaşabilirsiniz. Örnek:
+Azure Machine Learning SDK yüklemesi, daha fazla paket yüklendiğinde Azure Databricks başarısız olur. `psutil`gibi bazı paketler çakışmalara neden olabilir. Yükleme hatalarını önlemek için, kitaplık sürümünü dondurarak paketleri yükleme. Bu sorun, Azure Machine Learning SDK 'Sı değil Databricks ile ilgilidir. Bu sorunla diğer kitaplıklarla de karşılaşabilirsiniz. Örnek:
 
 ```python
 psutil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
@@ -178,7 +178,7 @@ Bu eylemlerden bazıları, çalışma alanınızın __Etkinlikler__ alanında g�
 
 ## <a name="resource-quotas"></a>Kaynak kotaları
 
-Hakkında bilgi edinin [kaynak kotaları](how-to-manage-quotas.md) Azure Machine Learning'i kullanmaya çalışırken hatalarla karşılaşabilirsiniz.
+Azure Machine Learning çalışırken karşılaşabileceğiniz [kaynak kotaları](how-to-manage-quotas.md) hakkında bilgi edinin.
 
 ## <a name="authentication-errors"></a>Kimlik Doğrulama hataları
 

@@ -1,6 +1,6 @@
 ---
-title: How to manage assignments with PowerShell
-description: Learn how to manage blueprint assignments with the official Azure Blueprints PowerShell module, Az.Blueprint.
+title: PowerShell ile atamaları yönetme
+description: Resmi Azure şemaları PowerShell modülü az. şema ile şema atamalarını yönetmeyi öğrenin.
 ms.date: 09/30/2019
 ms.topic: conceptual
 ms.openlocfilehash: 00824ceed2e86683a86b172e529ba88704dbb050
@@ -10,26 +10,26 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74210311"
 ---
-# <a name="how-to-manage-assignments-with-powershell"></a>How to manage assignments with PowerShell
+# <a name="how-to-manage-assignments-with-powershell"></a>PowerShell ile atamaları yönetme
 
-A blueprint assignment can be managed using the **Az.Blueprint** Azure PowerShell module. The module supports fetching, creating, updating, and removing assignments. The module can also fetch details on existing blueprint definitions. This article covers how to install the module and start using it.
+Şema atama **az. şema** Azure PowerShell modülü kullanılarak yönetilebilir. Modül, atamaları getirmeyi, oluşturmayı, güncelleştirmeyi ve kaldırmayı destekler. Modül, var olan şema tanımlarında ayrıntılar da getirebilir. Bu makalede, modülün nasıl yükleneceği ve nasıl kullanılacağı ele alınmaktadır.
 
-## <a name="add-the-azblueprint-module"></a>Add the Az.Blueprint module
+## <a name="add-the-azblueprint-module"></a>Az. Blueprint modülünü ekleyin
 
-To enable Azure PowerShell to manage blueprint assignments, the module must be added. This module can be used with locally installed PowerShell, with [Azure Cloud Shell](https://shell.azure.com), or with the [Azure PowerShell Docker image](https://hub.docker.com/r/azuresdk/azure-powershell/).
+Şema atamalarını yönetmek için Azure PowerShell etkinleştirmek üzere modülün eklenmesi gerekir. Bu modül, [Azure Cloud Shell](https://shell.azure.com)ile veya [Azure PowerShell Docker görüntüsüyle](https://hub.docker.com/r/azuresdk/azure-powershell/)yerel olarak yüklü PowerShell ile kullanılabilir.
 
 ### <a name="base-requirements"></a>Temel gereksinimler
 
-The Azure Blueprints module requires the following software:
+Azure şemaları modülü için aşağıdaki yazılımlar gereklidir:
 
-- Azure PowerShell 1.5.0 or higher. Henüz yüklenmiş değilse, [bu yönergeleri](/powershell/azure/install-az-ps) izleyin.
+- Azure PowerShell 1.5.0 veya üzeri. Henüz yüklenmiş değilse, [bu yönergeleri](/powershell/azure/install-az-ps) izleyin.
 - PowerShellGet 2.0.1 veya üzeri. Henüz yüklenmiş ve güncellenmiş değilse, [bu yönergeleri](/powershell/scripting/gallery/installing-psget) izleyin.
 
-### <a name="install-the-module"></a>Install the module
+### <a name="install-the-module"></a>Modülü yükler
 
-The Blueprints module for PowerShell is **Az.Blueprint**.
+PowerShell için planlar modülü **az. Blueprint**olur.
 
-1. From an **administrative** PowerShell prompt, run the following command:
+1. Bir **Yönetim** PowerShell isteminde aşağıdaki komutu çalıştırın:
 
    ```azurepowershell-interactive
    # Install the Blueprints module from PowerShell Gallery
@@ -37,21 +37,21 @@ The Blueprints module for PowerShell is **Az.Blueprint**.
    ```
 
    > [!NOTE]
-   > If **Az.Accounts** is already installed, it may be necessary to use `-AllowClobber` to force the installation.
+   > **Az. Accounts** zaten yüklüyse, yüklemeyi zorlamak için `-AllowClobber` kullanılması gerekebilir.
 
-1. Validate that the module has been imported and is the correct version (0.2.6):
+1. Modülün içeri aktarıldığını ve doğru sürüm (0.2.6) olduğunu doğrulayın:
 
    ```azurepowershell-interactive
    # Get a list of commands for the imported Az.Blueprint module
    Get-Command -Module 'Az.Blueprint' -CommandType 'Cmdlet'
    ```
 
-## <a name="get-blueprint-definitions"></a>Get blueprint definitions
+## <a name="get-blueprint-definitions"></a>Şema tanımlarını al
 
-The first step to working with an assignment is often getting a reference to a blueprint definition.
-The `Get-AzBlueprint` cmdlet gets one or more blueprint definitions. The cmdlet can get blueprint definitions from a management group with `-ManagementGroupId {mgId}` or a subscription with `-SubscriptionId {subId}`. The **Name** parameter gets a blueprint definition, but must be used with **ManagementGroupId** or **SubscriptionId**. **Version** can be used with **Name** to be more explicit about which blueprint definition is returned. Instead of **Version**, the switch `-LatestPublished` grabs the most recently published version.
+Atama ile çalışmanın ilk adımı, genellikle bir şema tanımına başvuru almaktır.
+`Get-AzBlueprint` cmdlet 'i bir veya daha fazla şema tanımı alır. Cmdlet 'i, bir yönetim grubundan `-ManagementGroupId {mgId}` veya `-SubscriptionId {subId}`abonelikle bir abonelik için şema tanımları alabilir. **Name** parametresi bir şema tanımı alır, ancak **ManagementGroupId** veya **SubscriptionID**ile birlikte kullanılmalıdır. **Sürüm** , **ad** ile birlikte kullanılabilir ve bu, hangi şema tanımının döndürüldüğünden daha açık olacaktır. **Sürüm**yerine, anahtar en son yayımlanan sürümü `-LatestPublished`.
 
-The following example uses `Get-AzBlueprint` to get all versions of a blueprint definition named '101-blueprints-definition-subscription' from a specific subscription represented as `{subId}`:
+Aşağıdaki örnek, `{subId}`olarak temsil edilen belirli bir abonelikten ' 101-planlar-Definition-Subscription ' adlı bir şema tanımının tüm sürümlerini almak için `Get-AzBlueprint` kullanır:
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -63,7 +63,7 @@ $blueprints = Get-AzBlueprint -SubscriptionId '{subId}' -Name '101-blueprints-de
 $blueprints
 ```
 
-The example output for a blueprint definition with multiple versions looks like this:
+Birden çok sürümü olan bir şema tanımının örnek çıktısı şuna benzer:
 
 ```output
 Name                 : 101-blueprints-definition-subscription
@@ -78,7 +78,7 @@ Parameters           : {storageAccount_storageAccountType, storageAccount_locati
 ResourceGroups       : ResourceGroup
 ```
 
-The [blueprint parameters](../concepts/parameters.md#blueprint-parameters) on the blueprint definition can be expanded to provide more information.
+Şema tanımındaki [şema parametreleri](../concepts/parameters.md#blueprint-parameters) daha fazla bilgi sağlamak için genişletilebilir.
 
 ```azurepowershell-interactive
 $blueprints.Parameters
@@ -93,11 +93,11 @@ allowedlocations_listOfAllowedLocations                Microsoft.Azure.Commands.
 [Usergrouporapplicationname]:Reader_RoleAssignmentName Microsoft.Azure.Commands.Blueprint.Models.PSParameterDefinition
 ```
 
-## <a name="get-blueprint-assignments"></a>Get blueprint assignments
+## <a name="get-blueprint-assignments"></a>Şema atamalarını al
 
-If the blueprint assignment already exists, you can get a reference to it with the `Get-AzBlueprintAssignment` cmdlet. The cmdlet takes **SubscriptionId** and **Name** as optional parameters. If **SubscriptionId** isn't specified, the current subscription context is used.
+Şema ataması zaten mevcutsa, `Get-AzBlueprintAssignment` cmdlet 'ini kullanarak buna bir başvuru alabilirsiniz. Cmdlet 'i, **SubscriptionID** ve **adı** isteğe bağlı parametreler olarak alır. **SubscriptionID** belirtilmemişse, geçerli abonelik bağlamı kullanılır.
 
-The following example uses `Get-AzBlueprintAssignment` to get a single blueprint assignment named 'Assignment-lock-resource-groups' from a specific subscription represented as `{subId}`:
+Aşağıdaki örnek, `{subId}`olarak temsil edilen belirli bir aboneliğin ' atama-kilitleme-kaynak-grupları ' adlı tek bir şema atamasını almak için `Get-AzBlueprintAssignment` kullanır:
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -109,7 +109,7 @@ $blueprintAssignment = Get-AzBlueprintAssignment -SubscriptionId '{subId}' -Name
 $blueprintAssignment
 ```
 
-The example output for a blueprint assignment looks like this:
+Bir şema atamasının örnek çıktısı şöyle görünür:
 
 ```output
 Name              : Assignment-lock-resource-groups
@@ -123,52 +123,52 @@ Parameters        :
 ResourceGroups    : ResourceGroup
 ```
 
-## <a name="create-blueprint-assignments"></a>Create blueprint assignments
+## <a name="create-blueprint-assignments"></a>Şema atamaları oluşturma
 
-If the blueprint assignment doesn't exist yet, you can create it with the `New-AzBlueprintAssignment` cmdlet. This cmdlet uses the following parameters:
+Şema ataması henüz yoksa `New-AzBlueprintAssignment` cmdlet 'ini kullanarak oluşturabilirsiniz. Bu cmdlet şu parametreleri kullanır:
 
-- **Name** [required]
-  - Specifies the name of the blueprint assignment
-  - Must be unique and not already exist in **SubscriptionId**
-- **Blueprint** [required]
-  - Specifies the blueprint definition to assign
-  - Use `Get-AzBlueprint` to get the reference object
-- **Location** [required]
-  - Specifies the region for the system-assigned managed identity and subscription deployment object to be created in
-- **Subscription** (optional)
-  - Specifies the subscription the assignment is deployed to
-  - If not provided, defaults to the current subscription context
-- **Lock** (optional)
-  - Defines the [blueprint resource locking](../concepts/resource-locking.md) to use for deployed resources
-  - Supported options: _None_, _AllResourcesReadOnly_, _AllResourcesDoNotDelete_
-  - If not provided, defaults to _None_
-- **SystemAssignedIdentity** (optional)
-  - Select to create a system-assigned managed identity for the assignment and to deploy the resources
-  - Default for the "identity" parameter set
-  - Can't be used with **UserAssignedIdentity**
-- **UserAssignedIdentity** (optional)
-  - Specifies the user-assigned managed identity to use for the assignment and to deploy the resources
-  - Part of the "identity" parameter set
-  - Can't be used with **SystemAssignedIdentity**
-- **Parameter** (optional)
-  - A [hash table](/powershell/module/microsoft.powershell.core/about/about_hash_tables) of key/value pairs for setting [dynamic parameters](../concepts/parameters.md#dynamic-parameters) on the blueprint assignment
-  - Default for a dynamic parameter is the **defaultValue** in the definition
-  - If a parameter isn't provided and has no **defaultValue**, the parameter isn't optional
+- **Ad** [gerekli]
+  - Şema atamasının adını belirtir
+  - Benzersiz olmalı ve **abonelik kimliği** zaten mevcut değil
+- **Blueprint** [gerekli]
+  - Atanacak şema tanımını belirtir
+  - Başvuru nesnesini almak için `Get-AzBlueprint` kullanın
+- **Konum** [gerekli]
+  - Sistem tarafından atanan yönetilen kimlik ve abonelik dağıtım nesnesinin oluşturulacağı bölgeyi belirtir
+- **Abonelik** (isteğe bağlı)
+  - Atamanın dağıtıldığı aboneliği belirtir
+  - Sağlanmazsa, varsayılan olarak geçerli abonelik bağlamına
+- **Kilitle** (isteğe bağlı)
+  - Dağıtılan kaynaklar için kullanılacak [şema kaynak kilitlemeyi](../concepts/resource-locking.md) tanımlar
+  - Desteklenen seçenekler: _none_, _allresourcesreadonly_, _allresourcesdonotdelete_
+  - Sağlanmazsa varsayılan değer _none_ olur
+- **Systemassignedıdentity** (isteğe bağlı)
+  - Atama için sistem tarafından atanan yönetilen kimlik oluşturmak ve kaynakları dağıtmak için seçin
+  - "Identity" parametre kümesi için varsayılan
+  - **Useratandıdentity** ile kullanılamaz
+- **Useratandıdentity** (isteğe bağlı)
+  - Atama ve kaynakları dağıtma için kullanılacak kullanıcı tarafından atanan yönetilen kimliği belirtir
+  - "Identity" parametre kümesinin bir parçası
+  - **Systemassignedıdentity** ile kullanılamaz
+- **Parametre** (isteğe bağlı)
+  - Şema atamasında [dinamik parametreleri](../concepts/parameters.md#dynamic-parameters) ayarlamak için anahtar/değer çiftlerinin [karma tablosu](/powershell/module/microsoft.powershell.core/about/about_hash_tables)
+  - Bir dinamik parametre için varsayılan değer, tanımdaki **DefaultValue** 'dir
+  - Bir parametre sağlanmazsa ve **DefaultValue**yoksa, parametre isteğe bağlı değildir
 
     > [!NOTE]
-    > **Parameter** doesn't support secureStrings.
+    > **Parametre** securestrings 'i desteklemiyor.
 
-- **ResourceGroupParameter** (optional)
-  - A [hash table](/powershell/module/microsoft.powershell.core/about/about_hash_tables) of resource group artifacts
-  - Each resource group artifact placeholder has key/value pairs for dynamically setting **Name** and **Location** on that resource group artifact
-  - If a resource group parameter isn't provided and has no **defaultValue**, the resource group parameter isn't optional
-- **AssignmentFile** (optional)
-  - The path to a JSON file representation of a blueprint assignment
-  - This parameter is part of a PowerShell parameter set that only includes **Name**, **Blueprint**, and **SubscriptionId**, plus the common parameters.
+- **Resourcegroupparameter** (isteğe bağlı)
+  - Kaynak grubu yapıtlarının [karma tablosu](/powershell/module/microsoft.powershell.core/about/about_hash_tables)
+  - Her kaynak grubu yapıt yer tutucusu, bu kaynak grubu yapıtı üzerinde dinamik ayar **adı** ve **konumu** için anahtar/değer çiftlerine sahiptir
+  - Bir kaynak grubu parametresi sağlanmazsa ve **DefaultValue**yoksa, kaynak grubu parametresi isteğe bağlı değildir
+- **Atamadosyası** (isteğe bağlı)
+  - Bir şema atamasının JSON dosyası gösteriminin yolu
+  - Bu parametre, yalnızca **Name**, **Blueprint**ve **SubscriptionID**ve ortak parametreleri içeren bir PowerShell parametre kümesinin bir parçasıdır.
 
-### <a name="example-1-provide-parameters"></a>Example 1: Provide parameters
+### <a name="example-1-provide-parameters"></a>Örnek 1: parametre sağlama
 
-The following example creates a new assignment of version '1.1' of the 'my-blueprint' blueprint definition fetched with `Get-AzBlueprint`, sets the managed identity and assignment object location to 'westus2', locks the resources with _AllResourcesReadOnly_, and sets the hash tables for both **Parameter** and **ResourceGroupParameter** on specific subscription represented as `{subId}`:
+Aşağıdaki örnek, `Get-AzBlueprint`ile getirilen ' My-şema ' şema tanımının ' 1,1 ' sürümünün yeni bir atamasını oluşturur, yönetilen kimliği ve atama nesnesi konumunu ' westus2 ' olarak ayarlar, kaynakları _allresourcesreadonly_ile kilitler ve `{subId}`olarak temsil edilen belirli bir abonelikte hem **parametre** hem de **resourcegroupparameter** için karma tabloları ayarlar:
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -189,7 +189,7 @@ $bpAssignment = New-AzBlueprintAssignment -Name 'my-blueprint-assignment' -Bluep
     -Parameter $bpParameters -ResourceGroupParameter $bpRGParameters
 ```
 
-The example output for creating a blueprint assignment looks like this:
+Bir şema ataması oluşturmak için örnek çıktı şöyle görünür:
 
 ```output
 Name              : my-blueprint-assignment
@@ -203,10 +203,10 @@ Parameters        : {storageAccount_storageAccountType}
 ResourceGroups    : ResourceGroup
 ```
 
-### <a name="example-2-use-a-json-assignment-definition-file"></a>Example 2: Use a JSON assignment definition file
+### <a name="example-2-use-a-json-assignment-definition-file"></a>Örnek 2: JSON atama tanım dosyası kullanma
 
-The following example creates nearly the same assignment as [Example 1](#example-1-provide-parameters).
-Instead of passing parameters to the cmdlet, the example shows use of a JSON assignment definition file and the **AssignmentFile** parameter. Additionally, the **excludedPrincipals** property is configured as part of **locks**. There isn't a PowerShell parameter for **excludedPrincipals** and the property can only be configured by setting it through the JSON assignment definition file.
+Aşağıdaki örnekte, [Örnek 1](#example-1-provide-parameters)ile neredeyse aynı atama oluşturulur.
+Cmdlet 'e parametre geçirmek yerine, örnek bir JSON atama tanımı dosyası ve **Atamadosyası** parametresinin kullanımını gösterir. Ayrıca, **Excludedsorumlularını** özelliği **kilitlerin**bir parçası olarak yapılandırılır. **Excludedsorumlularını** Için bir PowerShell parametresi yoktur ve ÖZELLIK yalnızca JSON atama tanımı dosyası aracılığıyla ayarlanarak yapılandırılabilir.
 
 ```json
 {
@@ -247,50 +247,50 @@ $bpAssignment = New-AzBlueprintAssignment -Name 'my-blueprint-assignment' -Subsc
     -AssignmentFile '.\assignment.json'
 ```
 
-## <a name="update-blueprint-assignments"></a>Update blueprint assignments
+## <a name="update-blueprint-assignments"></a>Şema atamalarını Güncelleştir
 
-Sometimes it's necessary to update a blueprint assignment that has already been created. The `Set-AzBlueprintAssignment` cmdlet handles this action. The cmdlet takes most of the same parameters that the `New-AzBlueprintAssignment` cmdlet does, allowing anything that was set on the assignment to be updated. The exceptions are the _Name_, _Blueprint_, and _SubscriptionId_. Only the values provided are updated.
+Bazen zaten oluşturulmuş bir şema atamasının güncelleştirilmesi gerekir. `Set-AzBlueprintAssignment` cmdlet 'i bu eylemi işler. Cmdlet 'i `New-AzBlueprintAssignment` cmdlet 'inin en fazla parametre alır, bu da atamada ayarlanan her şeyin güncelleştirilmesine izin verir. Özel durumlar _ad_, _Blueprint_ve _SubscriptionID_' dir. Yalnızca belirtilen değerler güncellenir.
 
-To understand what happens when updating a blueprint assignment, see [rules for updating assignments](./update-existing-assignments.md#rules-for-updating-assignments).
+Bir şema atamasını güncelleştirirken ne olduğunu anlamak için bkz. [atamaları güncelleştirme kuralları](./update-existing-assignments.md#rules-for-updating-assignments).
 
-- **Name** [required]
-  - Specifies the name of the blueprint assignment to update
-  - Used to locate the assignment to update, not to change the assignment
-- **Blueprint** [required]
-  - Specifies the blueprint definition of the blueprint assignment
-  - Use `Get-AzBlueprint` to get the reference object
-  - Used to locate the assignment to update, not to change the assignment
-- **Location** (optional)
-  - Specifies the region for the system-assigned managed identity and subscription deployment object to be created in
-- **Subscription** (optional)
-  - Specifies the subscription the assignment is deployed to
-  - If not provided, defaults to the current subscription context
-  - Used to locate the assignment to update, not to change the assignment
-- **Lock** (optional)
-  - Defines the [blueprint resource locking](../concepts/resource-locking.md) to use for deployed resources
-  - Supported options: _None_, _AllResourcesReadOnly_, _AllResourcesDoNotDelete_
-- **SystemAssignedIdentity** (optional)
-  - Select to create a system-assigned managed identity for the assignment and to deploy the resources
-  - Default for the "identity" parameter set
-  - Can't be used with **UserAssignedIdentity**
-- **UserAssignedIdentity** (optional)
-  - Specifies the user-assigned managed identity to use for the assignment and to deploy the resources
-  - Part of the "identity" parameter set
-  - Can't be used with **SystemAssignedIdentity**
-- **Parameter** (optional)
-  - A [hash table](/powershell/module/microsoft.powershell.core/about/about_hash_tables) of key/value pairs for setting [dynamic parameters](../concepts/parameters.md#dynamic-parameters) on the blueprint assignment
-  - Default for a dynamic parameter is the **defaultValue** in the definition
-  - If a parameter isn't provided and has no **defaultValue**, the parameter isn't optional
+- **Ad** [gerekli]
+  - Güncelleştirilecek BLUEPRINT atamasının adını belirtir
+  - Güncelleştirme atamasını bulmak için kullanılır, atamayı değiştirmez
+- **Blueprint** [gerekli]
+  - Şema atamasının şema tanımını belirtir
+  - Başvuru nesnesini almak için `Get-AzBlueprint` kullanın
+  - Güncelleştirme atamasını bulmak için kullanılır, atamayı değiştirmez
+- **Konum** (isteğe bağlı)
+  - Sistem tarafından atanan yönetilen kimlik ve abonelik dağıtım nesnesinin oluşturulacağı bölgeyi belirtir
+- **Abonelik** (isteğe bağlı)
+  - Atamanın dağıtıldığı aboneliği belirtir
+  - Sağlanmazsa, varsayılan olarak geçerli abonelik bağlamına
+  - Güncelleştirme atamasını bulmak için kullanılır, atamayı değiştirmez
+- **Kilitle** (isteğe bağlı)
+  - Dağıtılan kaynaklar için kullanılacak [şema kaynak kilitlemeyi](../concepts/resource-locking.md) tanımlar
+  - Desteklenen seçenekler: _none_, _allresourcesreadonly_, _allresourcesdonotdelete_
+- **Systemassignedıdentity** (isteğe bağlı)
+  - Atama için sistem tarafından atanan yönetilen kimlik oluşturmak ve kaynakları dağıtmak için seçin
+  - "Identity" parametre kümesi için varsayılan
+  - **Useratandıdentity** ile kullanılamaz
+- **Useratandıdentity** (isteğe bağlı)
+  - Atama ve kaynakları dağıtma için kullanılacak kullanıcı tarafından atanan yönetilen kimliği belirtir
+  - "Identity" parametre kümesinin bir parçası
+  - **Systemassignedıdentity** ile kullanılamaz
+- **Parametre** (isteğe bağlı)
+  - Şema atamasında [dinamik parametreleri](../concepts/parameters.md#dynamic-parameters) ayarlamak için anahtar/değer çiftlerinin [karma tablosu](/powershell/module/microsoft.powershell.core/about/about_hash_tables)
+  - Bir dinamik parametre için varsayılan değer, tanımdaki **DefaultValue** 'dir
+  - Bir parametre sağlanmazsa ve **DefaultValue**yoksa, parametre isteğe bağlı değildir
 
     > [!NOTE]
-    > **Parameter** doesn't support secureStrings.
+    > **Parametre** securestrings 'i desteklemiyor.
 
-- **ResourceGroupParameter** (optional)
-  - A [hash table](/powershell/module/microsoft.powershell.core/about/about_hash_tables) of resource group artifacts
-  - Each resource group artifact placeholder has key/value pairs for dynamically setting **Name** and **Location** on that resource group artifact
-  - If a resource group parameter isn't provided and has no **defaultValue**, the resource group parameter isn't optional
+- **Resourcegroupparameter** (isteğe bağlı)
+  - Kaynak grubu yapıtlarının [karma tablosu](/powershell/module/microsoft.powershell.core/about/about_hash_tables)
+  - Her kaynak grubu yapıt yer tutucusu, bu kaynak grubu yapıtı üzerinde dinamik ayar **adı** ve **konumu** için anahtar/değer çiftlerine sahiptir
+  - Bir kaynak grubu parametresi sağlanmazsa ve **DefaultValue**yoksa, kaynak grubu parametresi isteğe bağlı değildir
 
-The following example updates the assignment of version '1.1' of the 'my-blueprint' blueprint definition fetched with `Get-AzBlueprint` by changing the lock mode:
+Aşağıdaki örnek, kilit modunu değiştirerek `Get-AzBlueprint` ile getirilen ' My-şema ' şema tanımının ' 1,1 ' sürümünün atamasını güncelleştirir:
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -303,7 +303,7 @@ $bpAssignment = Set-AzBlueprintAssignment -Name 'my-blueprint-assignment' -Bluep
     -SubscriptionId '{subId}' -Lock AllResourcesDoNotDelete
 ```
 
-The example output for creating a blueprint assignment looks like this:
+Bir şema ataması oluşturmak için örnek çıktı şöyle görünür:
 
 ```output
 Name              : my-blueprint-assignment
@@ -317,11 +317,11 @@ Parameters        : {storageAccount_storageAccountType}
 ResourceGroups    : ResourceGroup
 ```
 
-## <a name="remove-blueprint-assignments"></a>Remove blueprint assignments
+## <a name="remove-blueprint-assignments"></a>Şema atamalarını kaldır
 
-When it's time for a blueprint assignment to be removed, the `Remove-AzBlueprintAssignment` cmdlet handles this action. The cmdlet takes either **Name** or **InputObject** to specify which blueprint assignment to remove. **SubscriptionId** is _required_ and must be provided in all cases.
+Şema atamasının kaldırılması sırasında, `Remove-AzBlueprintAssignment` cmdlet 'i bu eylemi işler. Cmdlet 'i hangi şema atamasının kaldırılacağını belirtmek için **Name** ya da **InputObject** değerini alır. **SubscriptionID** _gereklidir_ ve her durumda belirtilmelidir.
 
-The following example fetches an existing blueprint assignment with `Get-AzBlueprintAssignment` and then removes it from the specific subscription represented as `{subId}`:
+Aşağıdaki örnek, `Get-AzBlueprintAssignment` var olan bir şema atamasını getirir ve sonra `{subId}`olarak temsil edilen belirli bir abonelikten kaldırır:
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -333,9 +333,9 @@ $blueprintAssignment = Get-AzBlueprintAssignment -Name 'Assignment-lock-resource
 Remove-AzBlueprintAssignment -InputObject $blueprintAssignment -SubscriptionId '{subId}'
 ```
 
-## <a name="end-to-end-code-example"></a>End-to-end code example
+## <a name="end-to-end-code-example"></a>Uçtan uca kod örneği
 
-Bringing all the steps together, the following example gets the blueprint definition, then creates, updates, and removes a blueprint assignment in the specific subscription represented as `{subId}`:
+Tüm adımları bir araya getiren aşağıdaki örnek şema tanımını alır, ardından `{subId}`olarak temsil edilen belirli abonelikte bir şema atamasını oluşturur, güncelleştirir ve kaldırır:
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell

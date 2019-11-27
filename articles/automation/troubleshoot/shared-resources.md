@@ -1,6 +1,6 @@
 ---
-title: Troubleshoot errors with Azure Automation shared resources
-description: Learn how to troubleshoot issues with Azure Automation shared resources
+title: Azure Otomasyonu paylaşılan kaynaklarıyla ilgili sorunları giderme
+description: Azure Otomasyonu paylaşılan kaynaklarıyla ilgili sorunları nasıl giderebileceğinizi öğrenin
 services: automation
 author: bobbytreed
 ms.author: robreed
@@ -15,35 +15,35 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231527"
 ---
-# <a name="troubleshoot-errors-with-shared-resources"></a>Troubleshoot errors with shared resources
+# <a name="troubleshoot-errors-with-shared-resources"></a>Paylaşılan kaynaklarla ilgili sorunları giderme
 
-This article discusses solutions to resolve issues that you may run across when using the shared resources in Azure Automation.
+Bu makalede, Azure Otomasyonu 'nda paylaşılan kaynakları kullanırken üzerinde çalıştırabileceğiniz sorunları gidermeye yönelik çözümler ele alınmaktadır.
 
-## <a name="modules"></a>Modüller
+## <a name="modules"></a>Modules
 
-### <a name="module-stuck-importing"></a>Scenario: A Module is stuck importing
+### <a name="module-stuck-importing"></a>Senaryo: bir modül içeri aktarılıyor
 
 #### <a name="issue"></a>Sorun
 
-A module is stuck in the **Importing** state when you import or update your modules in Azure automation.
+Modüllerinizi Azure Otomasyonu 'nda içeri aktardığınızda veya güncelleştirdiğinizde modül **Içeri aktarma** durumunda takılmış olur.
 
 #### <a name="cause"></a>Nedeni
 
-Importing PowerShell modules is a complex multi-step process. This process introduces the possibility of a module not importing correctly. If this issue occurs, the module you're importing can be stuck in a transient state. To learn more about this process, see [Importing a PowerShell Module](/powershell/scripting/developer/module/importing-a-powershell-module#the-importing-process).
+PowerShell modüllerini içeri aktarmak karmaşık bir çok adımlı işlemdir. Bu işlem, bir modülün doğru bir şekilde içe aktarılmamasının olasılığını tanıtır. Bu sorun oluşursa, içeri aktardığınız modül geçici bir durumda kalmış olabilir. Bu işlem hakkında daha fazla bilgi edinmek için bkz. [PowerShell modülünü Içeri aktarma](/powershell/scripting/developer/module/importing-a-powershell-module#the-importing-process).
 
-#### <a name="resolution"></a>Çözünürlük
+#### <a name="resolution"></a>Çözüm
 
-To resolve this issue, you must remove the module that is stuck in the **Importing** state by using the [Remove-AzureRmAutomationModule](/powershell/module/azurerm.automation/remove-azurermautomationmodule) cmdlet. You can then retry importing the module.
+Bu sorunu çözmek için, [Remove-AzureRmAutomationModule](/powershell/module/azurerm.automation/remove-azurermautomationmodule) cmdlet 'Ini kullanarak **içeri aktarma** durumunda kalmış olan modülü kaldırmanız gerekir. Daha sonra modülün içeri aktarılmasını yeniden deneyebilirsiniz.
 
 ```azurepowershell-interactive
 Remove-AzureRmAutomationModule -Name ModuleName -ResourceGroupName ExampleResourceGroup -AutomationAccountName ExampleAutomationAccount -Force
 ```
 
-### <a name="update-azure-modules-importing"></a>Scenario: AzureRM modules are stuck importing after trying to update them
+### <a name="update-azure-modules-importing"></a>Senaryo: Azurerd modülleri, güncelleştirilmeye çalıştıktan sonra içeri aktarılmaya takıldı
 
 #### <a name="issue"></a>Sorun
 
-A banner with the following message stays in your account after trying to update your AzureRM modules:
+Azurere modüllerinizi güncelleştirmeden sonra aşağıdaki iletinin bulunduğu bir başlık hesabınızda kalır:
 
 ```error
 Azure modules are being updated
@@ -51,53 +51,53 @@ Azure modules are being updated
 
 #### <a name="cause"></a>Nedeni
 
-There is a known issue with updating the AzureRM modules in an Automation Account that is in a resource group with a numeric name that starts with 0.
+Azurerd modüllerini, 0 ile başlayan sayısal bir ada sahip bir kaynak grubundaki bir Otomasyon hesabında güncelleştiren bilinen bir sorun vardır.
 
-#### <a name="resolution"></a>Çözünürlük
+#### <a name="resolution"></a>Çözüm
 
-To update your Azure modules in your Automation Account, it must be in a resource group that has an alphanumeric name. Resource groups with numeric names starting with 0 are unable to update AzureRM modules at this time.
+Otomasyon hesabınızda Azure modüllerinizi güncelleştirmek için, alfasayısal bir ada sahip bir kaynak grubunda olması gerekir. 0 ile başlayan sayısal adlara sahip kaynak grupları Şu anda Azurere modüllerini güncelleştiremiyor.
 
-### <a name="module-fails-to-import"></a>Scenario: Module fails to import or cmdlets can't be executed after importing
-
-#### <a name="issue"></a>Sorun
-
-A module fails to import or imports successfully, but no cmdlets are extracted.
-
-#### <a name="cause"></a>Nedeni
-
-Some common reasons that a module might not successfully import to Azure Automation are:
-
-* The structure doesn't match the structure that Automation needs it to be in.
-* The module depends on another module that hasn't been deployed to your Automation account.
-* The module is missing its dependencies in the folder.
-* The `New-AzureRmAutomationModule` cmdlet is being used to upload the module, and you haven't given the full storage path or haven't loaded the module by using a publicly accessible URL.
-
-#### <a name="resolution"></a>Çözünürlük
-
-Any of the following solutions fix the problem:
-
-* Make sure that the module follows the following format: ModuleName.Zip **->** ModuleName or Version Number **->** (ModuleName.psm1, ModuleName.psd1)
-* Open the .psd1 file and see if the module has any dependencies. If it does, upload these modules to the Automation account.
-* Make sure that any referenced .dlls are present in the module folder.
-
-### <a name="all-modules-suspended"></a>Scenario: Update-AzureModule.ps1 suspends when updating modules
+### <a name="module-fails-to-import"></a>Senaryo: modül içeri aktarılmazsa veya cmdlet 'ler içeri aktarıldıktan sonra yürütülemez
 
 #### <a name="issue"></a>Sorun
 
-When using the [Update-AzureModule.ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AzureModule.ps1) runbook to update your Azure modules the module update the update process gets suspended.
+Modül başarıyla içeri veya dışarı aktaramazsa, ancak hiçbir cmdlet ayıklanamaz.
 
 #### <a name="cause"></a>Nedeni
 
-The default setting to determine how many modules get updated simultaneously is 10 when using the `Update-AzureModule.ps1` script. The update process is prone to errors when too many modules are being updated at the same time.
+Modülün Azure Otomasyonu 'na başarıyla aktarılamayan bazı yaygın nedenler şunlardır:
 
-#### <a name="resolution"></a>Çözünürlük
+* Yapı, otomasyonun içinde olması gereken yapıyla eşleşmez.
+* Modül, Otomasyon hesabınıza dağıtılmamış başka bir modüle bağımlıdır.
+* Modülün içindeki bağımlılıkları eksik.
+* `New-AzureRmAutomationModule` cmdlet 'i modülünü karşıya yüklemek için kullanılır ve tam depolama yolu verilmemiş ya da genel olarak erişilebilen bir URL kullanarak modülü yüklemediniz.
 
-It's not common that all the AzureRM modules are required in the same Automation account. It's recommended to only import the AzureRM modules that you need.
+#### <a name="resolution"></a>Çözüm
+
+Aşağıdaki çözümlerden herhangi biri sorunu çözer:
+
+* Modülün şu biçime uyduğundan emin olun: ModuleName. zip **->** ModuleName veya sürüm numarası **->** (ModuleName. psm1, ModuleName. psd1)
+* . Psd1 dosyasını açın ve modülün herhangi bir bağımlılığı olup olmadığını görün. Varsa, bu modülleri Otomasyon hesabına yükleyin.
+* Başvurulan tüm. dll dosyalarının modül klasöründe bulunduğundan emin olun.
+
+### <a name="all-modules-suspended"></a>Senaryo: modüller güncelleştirilirken Update-AzureModule. ps1 askıya alınır
+
+#### <a name="issue"></a>Sorun
+
+Azure modüllerinizi güncelleştirmek için [Update-AzureModule. ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AzureModule.ps1) runbook 'unu kullanırken, güncelleştirme işlemi askıya alınır.
+
+#### <a name="cause"></a>Nedeni
+
+`Update-AzureModule.ps1` betiği kullanılırken aynı anda kaç modülün güncelleştirildiğini belirleme için varsayılan ayar 10 ' dur. Aynı anda çok fazla modül güncelleştirilirken güncelleştirme işlemi hatalara açıktır.
+
+#### <a name="resolution"></a>Çözüm
+
+Tüm Azurerd modüllerinin aynı Otomasyon hesabında gerekli olduğu yaygın değildir. Yalnızca ihtiyaç duyduğunuz Azurermmodules içeri aktarılması önerilir.
 
 > [!NOTE]
-> Avoid importing the **AzureRM** module. Importing the **AzureRM** modules causes all **AzureRM.\*** modules to be imported, this is not recommened.
+> **Azurerd** modülünü içeri aktarmaktan kaçının. **Azurere** modüllerini içeri aktarmak tüm **azurere.\*** modüllerinin içeri aktarılmasına neden olur, bu recommened değildir.
 
-If the update process suspends, you need to add the `SimultaneousModuleImportJobCount` parameter to the `Update-AzureModules.ps1` script and provide a lower value than the default that is 10. It's recommended if you implement this logic, to start with a value of 3 or 5. `SimultaneousModuleImportJobCount` is a parameter of the `Update-AutomationAzureModulesForAccount` system runbook that is used to update Azure modules. This change makes the process run longer, but has a better chance of completing. The following example shows the parameter and where to put it in the runbook:
+Güncelleştirme işlemi askıya alıyorsa, `SimultaneousModuleImportJobCount` parametresini `Update-AzureModules.ps1` betiğine eklemeniz ve 10 ' dan daha düşük bir değer sağlamanız gerekir. 3 veya 5 değeriyle başlamak için bu mantığı uygulamanız önerilir. `SimultaneousModuleImportJobCount`, Azure modüllerini güncelleştirmek için kullanılan `Update-AutomationAzureModulesForAccount` sistem runbook 'unun bir parametresidir. Bu değişiklik işlemin daha uzun süre çalışmasını sağlar, ancak tamamlanması daha iyi bir şansa sahiptir. Aşağıdaki örnek, parametresini ve Runbook 'a nereye yerleştirileceğini gösterir:
 
  ```powershell
          $Body = @"
@@ -116,13 +116,13 @@ If the update process suspends, you need to add the `SimultaneousModuleImportJob
 "@
 ```
 
-## <a name="run-as-accounts"></a>Run As accounts
+## <a name="run-as-accounts"></a>Farklı Çalıştır hesapları
 
-### <a name="unable-create-update"></a>Scenario: You're unable to create or update a Run As account
+### <a name="unable-create-update"></a>Senaryo: bir farklı çalıştır hesabı oluşturamaz veya güncelleştiremezsiniz
 
 #### <a name="issue"></a>Sorun
 
-When you try to create or update a Run As account, you receive an error similar to the following error message:
+Farklı Çalıştır hesabı oluşturmaya veya güncelleştirmeye çalıştığınızda aşağıdaki hata iletisine benzer bir hata alırsınız:
 
 ```error
 You do not have permissions to create…
@@ -130,19 +130,19 @@ You do not have permissions to create…
 
 #### <a name="cause"></a>Nedeni
 
-You don't have the permissions that you need to create or update the Run As account or the resource is locked at a resource group level.
+Farklı Çalıştır hesabını oluşturmak veya güncelleştirmek için gerekli izinlere sahip değilsiniz veya kaynak bir kaynak grubu düzeyinde kilitli.
 
-#### <a name="resolution"></a>Çözünürlük
+#### <a name="resolution"></a>Çözüm
 
-To create or update a Run As account, you must have appropriate permissions to the various resources used by the Run As account. To learn about the permissions needed to create or update a Run As account, see [Run As account permissions](../manage-runas-account.md#permissions).
+Farklı Çalıştır hesabı oluşturmak veya güncelleştirmek için, farklı çalıştır hesabı tarafından kullanılan çeşitli kaynaklara uygun izinlere sahip olmanız gerekir. Farklı Çalıştır hesabı oluşturmak veya güncelleştirmek için gerekli izinler hakkında bilgi edinmek için, bkz. [Farklı Çalıştır hesabı izinleri](../manage-runas-account.md#permissions).
 
-If the issue is because of a lock, verify that the lock is ok to remove it. Then navigate to the resource that is locked, right-click the lock and choose **Delete** to remove the lock.
+Sorun bir kilit nedeniyle varsa, kilidi kaldırmak için kilidin tamam olduğunu doğrulayın. Ardından kilitli olan kaynağa gidin ve kilidi kaldırmak için Kilitle ' yi sağ tıklatın ve **Sil** ' i seçin.
 
-### <a name="iphelper"></a>Scenario: You receive the error "Unable to find an entry point named 'GetPerAdapterInfo' in DLL 'iplpapi.dll'" when executing a runbook.
+### <a name="iphelper"></a>Senaryo: bir runbook yürütürken "' iplpapı. dll ' DLL dosyasında ' Getperadapterınfo ' adlı bir giriş noktası bulunamadı" hatasını alıyorsunuz.
 
 #### <a name="issue"></a>Sorun
 
-When executing a runbook you receive the following exception:
+Bir runbook yürütürken aşağıdaki özel durumu alırsınız:
 
 ```error
 Unable to find an entry point named 'GetPerAdapterInfo' in DLL 'iplpapi.dll'
@@ -150,11 +150,11 @@ Unable to find an entry point named 'GetPerAdapterInfo' in DLL 'iplpapi.dll'
 
 #### <a name="cause"></a>Nedeni
 
-This error is most likely caused by an incorrectly configured [Run As Account](../manage-runas-account.md).
+Bu hata büyük olasılıkla yanlış yapılandırılmış bir [Farklı Çalıştır hesabı](../manage-runas-account.md)nedeniyle oluşur.
 
-#### <a name="resolution"></a>Çözünürlük
+#### <a name="resolution"></a>Çözüm
 
-Make sure your [Run As Account](../manage-runas-account.md) is properly configured. Once it is configured correctly, ensure you have the proper code in your runbook to authenticate with Azure. The following example shows a snippet of code to authenticate to Azure in a runbook using a Run As Account.
+[Farklı Çalıştır hesabınızın](../manage-runas-account.md) doğru yapılandırıldığından emin olun. Doğru yapılandırıldıktan sonra, Azure ile kimlik doğrulamak için Runbook 'inizdeki uygun koda sahip olduğunuzdan emin olun. Aşağıdaki örnekte, bir farklı çalıştır hesabı kullanarak bir runbook 'ta Azure 'da kimlik doğrulaması yapmak için bir kod parçacığı gösterilmektedir.
 
 ```powershell
 $connection = Get-AutomationConnection -Name AzureRunAsConnection
@@ -164,8 +164,8 @@ Connect-AzureRmAccount -ServicePrincipal -Tenant $connection.TenantID `
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-If you didn't see your problem or are unable to solve your issue, visit one of the following channels for more support:
+Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek için aşağıdaki kanallardan birini ziyaret edin:
 
 * [Azure Forumları](https://azure.microsoft.com/support/forums/) aracılığıyla Azure uzmanlarından yanıtlar alın
 * [@AzureSupport](https://twitter.com/azuresupport) hesabı ile bağlantı kurun. Bu resmi Microsoft Azure hesabı, müşteri deneyimini geliştirmek için Azure topluluğunu doğru kaynaklara ulaştırır: yanıtlar, destek ve uzmanlar.
-* If you need more help, you can file an Azure support incident. Go to the [Azure support site](https://azure.microsoft.com/support/options/) and select **Get Support**.
+* Daha fazla yardıma ihtiyacınız varsa, bir Azure destek olayı dosyası gönderebilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve **Destek Al**' ı seçin.

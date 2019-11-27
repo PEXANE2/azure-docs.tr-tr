@@ -37,9 +37,9 @@ Bu hızlı başlangıç için bir web uygulamasının farklı Azure bölgelerind
 1. Ekranın sol üst tarafından **Kaynak oluştur** > **Web** > **Web Uygulaması** > **Oluştur**'u seçin.
 2. **Web Uygulaması** sayfasında aşağıdaki bilgileri girdikten veya seçtikten sonra değer belirtilmeyen yerler için varsayılan ayarları kabul edin:
 
-     | Ayar         | Değer     |
+     | Ayar         | Value     |
      | ---              | ---  |
-     | Ad           | Web uygulamanız için benzersiz bir ad girin  |
+     | Name           | Web uygulamanız için benzersiz bir ad girin  |
      | Kaynak grubu          | **Yeni**'yi seçin ve *myResourceGroupFD1* yazın. |
      | Uygulama hizmeti planı/Konumu         | **Yeni**'yi seçin.  App Service planına *myAppServicePlanEastUS* yazın ve **Tamam**'ı seçin. 
      |      Konum  |   Doğu ABD        |
@@ -49,9 +49,9 @@ Bu hızlı başlangıç için bir web uygulamasının farklı Azure bölgelerind
 4. Web Uygulaması başarıyla dağıtıldığında varsayılan bir web sitesi oluşturulur.
 5. 1-3 arası adımları tekrarlayarak aşağıdaki ayarlarla farklı bir Azure bölgesinde ikinci bir web sitesi oluşturun:
 
-     | Ayar         | Değer     |
+     | Ayar         | Value     |
      | ---              | ---  |
-     | Ad           | Web Uygulamanız için benzersiz bir ad girin  |
+     | Name           | Web Uygulamanız için benzersiz bir ad girin  |
      | Kaynak grubu          | **Yeni**'yi seçin ve *myResourceGroupFD2* yazın. |
      | Uygulama hizmeti planı/Konumu         | **Yeni**'yi seçin.  App Service planına *myAppServicePlanWestEurope* yazın ve **Tamam**'ı seçin. 
      |      Konum  |   Batı Avrupa      |
@@ -59,7 +59,7 @@ Bu hızlı başlangıç için bir web uygulamasının farklı Azure bölgelerind
 
 
 ## <a name="create-a-front-door-for-your-application"></a>Uygulamanız için Front Door oluşturma
-### <a name="a-add-a-frontend-host-for-front-door"></a>A. Front Door için ön uç ana bilgisayar adı ekleme
+### <a name="a-add-a-frontend-host-for-front-door"></a>BİR. Front Door için ön uç ana bilgisayar adı ekleme
 Kullanıcı trafiğini iki arka uç arasındaki en düşük gecikme süresine göre yönlendiren bir Front Door yapılandırması oluşturun.
 
 1. Ekranın sol üst kenarından **Kaynak oluştur** > **Ağ** > **Front Door** > **Oluştur**’u seçin.

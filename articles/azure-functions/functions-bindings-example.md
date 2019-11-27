@@ -1,6 +1,6 @@
 ---
-title: Azure Functions trigger and binding example
-description: Learn to configure Azure Function bindings
+title: Azure Işlevleri tetikleme ve bağlama örneği
+description: Azure Işlev bağlamalarını yapılandırmayı öğrenin
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2019
@@ -12,13 +12,13 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227237"
 ---
-# <a name="azure-functions-trigger-and-binding-example"></a>Azure Functions trigger and binding example
+# <a name="azure-functions-trigger-and-binding-example"></a>Azure Işlevleri tetikleme ve bağlama örneği
 
-This article demonstrates how to configure a [trigger and bindings](./functions-triggers-bindings.md) in an Azure Function.
+Bu makalede bir Azure Işlevinde [tetikleyici ve bağlamaların](./functions-triggers-bindings.md) nasıl yapılandırılacağı gösterilir.
 
-Suppose you want to write a new row to Azure Table storage whenever a new message appears in Azure Queue storage. This scenario can be implemented using an Azure Queue storage trigger and an Azure Table storage output binding. 
+Azure kuyruk depolamada yeni bir ileti göründüğünde Azure Tablo depolama alanına yeni bir satır yazmak istediğinizi varsayalım. Bu senaryo, bir Azure kuyruk depolama tetikleyicisi ve bir Azure Tablo depolama çıkış bağlaması kullanılarak uygulanabilir. 
 
-Here's a *function.json* file for this scenario. 
+Bu senaryo için bir *function. JSON* dosyası aşağıda verilmiştir. 
 
 ```json
 {
@@ -41,18 +41,18 @@ Here's a *function.json* file for this scenario.
 }
 ```
 
-The first element in the `bindings` array is the Queue storage trigger. The `type` and `direction` properties identify the trigger. The `name` property identifies the function parameter that receives the queue message content. The name of the queue to monitor is in `queueName`, and the connection string is in the app setting identified by `connection`.
+`bindings` dizideki ilk öğe kuyruk depolama tetikleyicisinin bir öğesidir. `type` ve `direction` özellikleri tetikleyiciyi belirler. `name` özelliği, kuyruk iletisi içeriğini alan işlev parametresini tanımlar. İzlenecek sıranın adı `queueName`, bağlantı dizesi ise `connection`tarafından tanımlanan uygulama ayarıdır.
 
-The second element in the `bindings` array is the Azure Table Storage output binding. The `type` and `direction` properties identify the binding. The `name` property specifies how the function provides the new table row, in this case by using the function return value. The name of the table is in `tableName`, and the connection string is in the app setting identified by `connection`.
+`bindings` dizisindeki ikinci öğe, Azure Tablo depolama çıkış bağlamadır. `type` ve `direction` özellikleri bağlamayı belirler. `name` özelliği, işlevin yeni tablo satırını nasıl sağladığını belirtir, bu durumda işlev dönüş değeri ' ni kullanarak. Tablonun adı `tableName`, bağlantı dizesi ise `connection`tarafından tanımlanan uygulama ayarıdır.
 
-To view and edit the contents of *function.json* in the Azure portal, click the **Advanced editor** option on the **Integrate** tab of your function.
+Azure portal *function. JSON* içeriğini görüntülemek ve düzenlemek için Işlevinizin **tümleştirin** sekmesinde **Gelişmiş Düzenleyici** seçeneğine tıklayın.
 
 > [!NOTE]
-> The value of `connection` is the name of an app setting that contains the connection string, not the connection string itself. Bindings use connection strings stored in app settings to enforce the best practice that *function.json* does not contain service secrets.
+> `connection` değeri bağlantı dizesinin kendisini değil bağlantı dizesini içeren bir uygulama ayarının adıdır. Bağlamalar, *function. JSON* ' ın hizmet gizli dizileri içermediğinden en iyi uygulamayı zorlamak için uygulama ayarlarında depolanan bağlantı dizelerini kullanır.
 
-## <a name="c-script-example"></a>C# script example
+## <a name="c-script-example"></a>C#betik örneği
 
-Here's C# script code that works with this trigger and binding. Notice that the name of the parameter that provides the queue message content is `order`; this name is required because the `name` property value in *function.json* is `order` 
+Bu tetikleyici C# ve bağlama ile birlikte çalışarak betik kodu aşağıda verilmiştir. Kuyruk iletisi içeriğini sağlayan parametre adının `order`olduğunu unutmayın. *function. JSON* içindeki `name` özellik değeri `order` olduğundan bu ad gereklidir 
 
 ```cs
 #r "Newtonsoft.Json"
@@ -80,9 +80,9 @@ public class Person
 }
 ```
 
-## <a name="javascript-example"></a>JavaScript example
+## <a name="javascript-example"></a>JavaScript örneği
 
-The same *function.json* file can be used with a JavaScript function:
+Aynı *function. JSON* dosyası bir JavaScript işleviyle birlikte kullanılabilir:
 
 ```javascript
 // From an incoming queue message that is a JSON object, add fields and write to Table Storage
@@ -100,9 +100,9 @@ function generateRandomId() {
 }
 ```
 
-## <a name="class-library-example"></a>Class library example
+## <a name="class-library-example"></a>Sınıf kitaplığı örneği
 
-In a class library, the same trigger and binding information &mdash; queue and table names, storage accounts, function parameters for input and output &mdash; is provided by attributes instead of a function.json file. Bir örneği aşağıda verilmiştir:
+Bir sınıf kitaplığında, aynı tetikleyici ve bağlama bilgileri &mdash; kuyruk ve tablo adları, depolama hesapları, giriş ve çıkış &mdash; işlev parametreleri, bir Function. JSON dosyası yerine öznitelikler tarafından sağlanır. Bir örneği aşağıda verilmiştir:
 
 ```csharp
 public static class QueueTriggerTableOutput
@@ -130,9 +130,9 @@ public class Person
 }
 ```
 
-You now have a working function that is triggered by an Azure Queue and outputs data to Azure Table storage.
+Artık bir Azure kuyruğu tarafından tetiklenen ve Azure Tablo depolama alanına veri çıktısı veren bir çalışma işleviniz var.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure Functions binding expression patterns](./functions-bindings-expressions-patterns.md)
+> [Azure Işlevleri bağlama ifadesi desenleri](./functions-bindings-expressions-patterns.md)

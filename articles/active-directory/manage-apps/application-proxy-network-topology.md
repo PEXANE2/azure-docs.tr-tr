@@ -102,9 +102,9 @@ Trafik, ayrılmış bir bağlantı üzerinden akan çünkü gecikme gizliliğini
 
 Bu makalenin odak bağlayıcı yerleştirme olsa da, daha iyi gecikme özelliklerini elde etmek için uygulamaya yerleşimini de değiştirebilirsiniz.
 
-Giderek, kuruluşların kendi ağları barındırılan ortamlara taşınıyor. Bu uygulamalarını aynı zamanda, Kurumsal ağın parçası olan barındırılan bir ortamda yerleştirin ve etki alanı içinde devam etmelerini sağlar. Bu durumda, önceki bölümlerde ele desenleri, yeni uygulama konumuna uygulanabilir. Bu seçeneği değerlendirmeyi planlamaktadır olup [Azure AD Domain Services](../../active-directory-domain-services/overview.md).
+Giderek, kuruluşların kendi ağları barındırılan ortamlara taşınıyor. Bu uygulamalarını aynı zamanda, Kurumsal ağın parçası olan barındırılan bir ortamda yerleştirin ve etki alanı içinde devam etmelerini sağlar. Bu durumda, önceki bölümlerde ele desenleri, yeni uygulama konumuna uygulanabilir. Bu seçeneği düşünüyorsanız, bkz. [Azure AD Domain Services](../../active-directory-domain-services/overview.md).
 
-Ayrıca, bağlayıcılarınızı kullanarak düzenleme göz önünde bulundurun [bağlayıcı grupları](application-proxy-connector-groups.md) farklı konumlara ve ağları olan hedef uygulamalar için.
+Ayrıca, farklı konumlarda ve ağlarda bulunan uygulamaları hedeflemek için [bağlayıcı gruplarını](application-proxy-connector-groups.md) kullanarak bağlayıcılarınızı düzenlemeyi göz önünde bulundurun.
 
 ## <a name="common-use-cases"></a>Genel kullanım örnekleri
 
@@ -112,15 +112,15 @@ Bu bölümde, bazı yaygın senaryolar üzerinden inceleyeceğiz. Varsayımında
 
 Bu senaryolar için her bağlantı bir "durak" arayın ve bunları daha kolay tartışmak için sayı:
 
-- **1 atlama**: kullanıcıya uygulama proxy'si hizmeti
-- **2 atlama**: uygulama ara Sunucusu hizmetine uygulama Proxy Bağlayıcısı
-- **3 atlama**: Hedef uygulama için uygulama Proxy Bağlayıcısı 
+- **Atlama 1**: kullanıcının uygulama proxy 'si hizmeti
+- **Atlama 2**: uygulama proxy 'Si hizmetine uygulama proxy 'si Bağlayıcısı
+- **Atlama 3**: hedef uygulamaya uygulama proxy Bağlayıcısı 
 
 ### <a name="use-case-1"></a>Kullanım örneği 1
 
-**Senaryo:** kullanıcılarla aynı bölgede bir kuruluşun ağındaki ABD uygulamasıdır. Herhangi bir ExpressRoute veya VPN kurumsal ağ ve Azure veri merkezi arasında yok.
+**Senaryo:** Uygulama, ABD 'deki bir kuruluşun ağında, aynı bölgedeki kullanıcılarla birlikte bulunur. Herhangi bir ExpressRoute veya VPN kurumsal ağ ve Azure veri merkezi arasında yok.
 
-**Öneri:** önceki bölümde açıklanan izleyin düzeni, 1. İçin gecikme süresini kısaltmak, ExpressRoute kullanılarak gerekirse göz önünde bulundurun.
+**Öneri:** Önceki bölümde açıklanan 1. kalıbı izleyin. İçin gecikme süresini kısaltmak, ExpressRoute kullanılarak gerekirse göz önünde bulundurun.
 
 Bu basit bir desendir. Atlama 3, bağlayıcı uygulama yakın yerleştirerek iyileştirin. Bağlayıcı genellikle görebilmesi KCD işlemleri gerçekleştirmek için bir veri merkezine ve uygulama ile birlikte yüklenir ayrıca doğal bir seçim olmasıdır.
 
@@ -128,9 +128,9 @@ Bu basit bir desendir. Atlama 3, bağlayıcı uygulama yakın yerleştirerek iyi
 
 ### <a name="use-case-2"></a>Kullanım örneği 2
 
-**Senaryo:** ABD'deki, bir kuruluşun ağındaki dünya çapında yayılmış kullanıcılarla uygulamasıdır. Herhangi bir ExpressRoute veya VPN kurumsal ağ ve Azure veri merkezi arasında yok.
+**Senaryo:** Uygulama, ABD 'deki bir kuruluşun ağında, kullanıcıların küresel olarak yayılmaktadır. Herhangi bir ExpressRoute veya VPN kurumsal ağ ve Azure veri merkezi arasında yok.
 
-**Öneri:** önceki bölümde açıklanan izleyin düzeni, 1.
+**Öneri:** Önceki bölümde açıklanan 1. kalıbı izleyin.
 
 Yeniden yaygın atlama 3, en iyi duruma getirme Bağlayıcısı'nı uygulama yakın yerleştirdiğiniz modelidir. Atlama 3 tümü aynı bölge içinde ise genellikle pahalı değil. Ancak, dünya genelinde kullanıcılar uygulama ara Sunucusu örneğinde ABD erişmeniz gerekir çünkü atlama 1 kullanıcının olduğu bağlı olarak, daha pahalı olabilir. Bu, herhangi bir proxy çözümüne genel dağılmış kullanıcılar ile ilgili benzer özelliklere sahip olduğunu hatalarının ayıklanabileceğini belirtmekte yarar.
 
@@ -138,9 +138,9 @@ Yeniden yaygın atlama 3, en iyi duruma getirme Bağlayıcısı'nı uygulama yak
 
 ### <a name="use-case-3"></a>Kullanım örneği 3
 
-**Senaryo:** ABD'deki bir kuruluşun ağındaki uygulamasıdır. Microsoft eşlemesi ile ExpressRoute, Azure ve şirket ağı arasında yok.
+**Senaryo:** Uygulama, ABD 'deki bir kuruluşun ağında. Microsoft eşlemesi ile ExpressRoute, Azure ve şirket ağı arasında yok.
 
-**Öneri:** desenleri 1 ve 2 ' nin önceki bölümde açıklanan izleyin.
+**Öneri:** Önceki bölümde açıklanan 1. ve 2. desenleri izleyin.
 
 İlk olarak, bağlayıcı olabildiğince uygulamaya mümkün olduğunca yakın yerleştirin. Ardından, sistem otomatik olarak 2 atlama için Expressroute'u kullanır.
 
@@ -150,9 +150,9 @@ Microsoft eşleme ExpressRoute bağlantı kullanıyorsanız, proxy ve bağlayıc
 
 ### <a name="use-case-4"></a>Kullanım örneği 4
 
-**Senaryo:** ABD'deki bir kuruluşun ağındaki uygulamasıdır. ExpressRoute özel eşlemesi, Azure ve şirket ağı arasında yok.
+**Senaryo:** Uygulama, ABD 'deki bir kuruluşun ağında. ExpressRoute özel eşlemesi, Azure ve şirket ağı arasında yok.
 
-**Öneri:** izleyin düzeni 3, önceki bölümde açıklanan.
+**Öneri:** Önceki bölümde açıklanan 3. kalıbı izleyin.
 
 Azure veri merkezine ExpressRoute özel eşlemesi üzerinden şirket ağına bağlı Bağlayıcısı'nı koyun.
 
@@ -162,9 +162,9 @@ Bağlayıcısı Azure veri merkezinde yerleştirilebilir. Bağlayıcı görebilm
 
 ### <a name="use-case-5"></a>Kullanım örneği 5
 
-**Senaryo:** bir kuruluşun ağındaki uygulama ara sunucusu örneği ve kullanıcıların çoğu ABD'deki AB uygulamasıdır.
+**Senaryo:** Uygulama, uygulama proxy 'Si örneği ve ABD 'deki çoğu kullanıcı ile AB 'deki bir kuruluşun ağında bulunur.
 
-**Öneri:** uygulamayı yakın Bağlayıcısı'nı koyun. Uygulama Ara sunucusu örneği aynı bölgede olması erişen ABD kullanıcı için atlama 1 çok pahalı değil. Atlama 3 optimize edilmiştir. Atlama 2 iyileştirmek için ExpressRoute kullanmayı düşünün.
+**Öneri:** Bağlayıcıyı uygulamanın yanına yerleştirin. Uygulama Ara sunucusu örneği aynı bölgede olması erişen ABD kullanıcı için atlama 1 çok pahalı değil. Atlama 3 optimize edilmiştir. Atlama 2 iyileştirmek için ExpressRoute kullanmayı düşünün.
 
 ![Diyagram, Avrupa 'daki ABD, bağlayıcı ve uygulamadaki kullanıcıları ve proxy 'yi gösterir](./media/application-proxy-network-topology/application-proxy-pattern5b.png)
 
@@ -174,7 +174,7 @@ Ayrıca, bu durumda bir değişken kullanarak göz önünde bulundurun. Sonra b�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Uygulama Ara sunucusunu etkinleştirme](application-proxy-add-on-premises-application.md)
+- [Uygulama proxy 'Sini etkinleştir](application-proxy-add-on-premises-application.md)
 - [Çoklu oturum açmayı etkinleştirme](application-proxy-configure-single-sign-on-with-kcd.md)
 - [Koşullu erişimi etkinleştir](application-proxy-integrate-with-sharepoint-server.md)
-- [Uygulama Ara sunucusu ile ilgili sorunları giderme](application-proxy-troubleshoot.md)
+- [Uygulama proxy 'Si ile karşılaştığınız sorunları giderme](application-proxy-troubleshoot.md)

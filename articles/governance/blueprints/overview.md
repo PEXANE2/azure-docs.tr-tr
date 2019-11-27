@@ -1,6 +1,6 @@
 ---
 title: Azure Blueprints’e genel bakış
-description: Understand how the Azure Blueprints service enables you to create, define, and deploy artifacts in your Azure environment.
+description: Azure şemaları hizmetinin Azure ortamınızda yapıt oluşturmanıza, tanımlamanıza ve dağıtmanıza nasıl olanak sağladığını anlayın.
 ms.date: 11/21/2019
 ms.topic: overview
 ms.openlocfilehash: 07d84d658d88e977cd73176861e5c5e080c02857
@@ -42,7 +42,7 @@ Resource Manager şablonu ile şema arasında seçim yapmanıza gerek yoktur. He
 
 Şema içine bir ilkenin dahil edilmesi, şema ataması sırasında doğru desenin veya tasarımın oluşturulmasını da sağlar. Bu ilke şemanın amacıyla uyumluluk sağlamak için ortamda yalnızca onaylanan veya beklenen değişikliklerin yapılmasını garanti eder.
 
-A policy can be included as one of many _artifacts_ in a blueprint definition. Şemalar ayrıca ilkeler ve girişimlerle parametrelerin kullanılmasını da destekler.
+Bir ilke, şema tanımındaki birçok _yapıtlardan_ biri olarak eklenebilir. Şemalar ayrıca ilkeler ve girişimlerle parametrelerin kullanılmasını da destekler.
 
 ## <a name="blueprint-definition"></a>Şema tanımı
 
@@ -51,13 +51,13 @@ A policy can be included as one of many _artifacts_ in a blueprint definition. �
 |Kaynak  | Hiyerarşi seçenekleri| Açıklama  |
 |---------|---------|---------|
 |Kaynak Grupları | Abonelik | Şema içindeki diğer yapıtlar tarafından kullanılacak yeni bir kaynak grubu oluşturur.  Bu yer tutucu kaynak grupları, kaynakları tam olarak istediğiniz yapıda düzenlemenizi sağlar ve dahil olan ilke ve rol ataması yapıtlarına ek olarak Azure Resource Manager şablonları için kapsam sınırlayıcı olarak görev yapar. |
-|Azure Resource Manager şablonu | Abonelik, Kaynak Grubu | Templates, including nested and linked templates, are used to compose complex environments. Örnek ortamlar: SharePoint grubu, Azure Otomasyonu Durum Yapılandırması veya Log Analytics çalışma alanı. |
-|İlke Ataması | Abonelik, Kaynak Grubu | Bir ilkenin veya girişimin, şemanın atanmış olduğu aboneliğe atanmasını sağlar. The policy or initiative must be within the scope of the blueprint definition location. İlke veya girişimde parametre varsa bu parametreler şema oluşturma veya şema ataması sırasında atanır. |
+|Azure Resource Manager şablonu | Abonelik, Kaynak Grubu | İç içe ve bağlı şablonlar dahil olmak üzere şablonlar, karmaşık ortamları oluşturmak için kullanılır. Örnek ortamlar: SharePoint grubu, Azure Otomasyonu Durum Yapılandırması veya Log Analytics çalışma alanı. |
+|İlke Ataması | Abonelik, Kaynak Grubu | Bir ilkenin veya girişimin, şemanın atanmış olduğu aboneliğe atanmasını sağlar. İlke veya girişim, şema tanım konumunun kapsamında olmalıdır. İlke veya girişimde parametre varsa bu parametreler şema oluşturma veya şema ataması sırasında atanır. |
 |Rol Ataması | Abonelik, Kaynak Grubu | Kaynaklarınıza her zaman doğru kişilerin doğru şekilde erişmesini sağlamak için var olan bir kullanıcıyı veya grubu yerleşik role ekleyin. Rol atamaları aboneliğin tamamı için tanımlanabilir veya şemada bulunan belirli bir kaynak grubuna yerleştirilebilir. |
 
-### <a name="blueprint-definition-locations"></a>Blueprint definition locations
+### <a name="blueprint-definition-locations"></a>Şema tanımı konumlarını şeması
 
-Şema tanımı oluştururken şemanın kaydedileceği yeri de tanımlarsınız. Blueprints can be saved to a [management group](../management-groups/overview.md) or subscription that you have **Contributor** access to. If the location is a management group, the blueprint is available to assign to any child subscription of that management group.
+Şema tanımı oluştururken şemanın kaydedileceği yeri de tanımlarsınız. Planlar, **katkıda** bulunan erişimi olan bir [yönetim grubuna](../management-groups/overview.md) veya aboneliğe kaydedilebilir. Konum bir yönetim grubumu ise, bu yönetim grubunun herhangi bir alt aboneliğine atamak için şema kullanılabilir.
 
 ### <a name="blueprint-parameters"></a>Şema parametreleri
 
@@ -72,12 +72,12 @@ Daha fazla bilgi için bkz. [şema parametreleri](./concepts/parameters.md).
 
 ### <a name="blueprint-publishing"></a>Şema yayımlama
 
-Şema ilk oluşturulduğunda **Taslak** modunda olur. Atanmaya hazır olduğunda **Yayımlandı** durumuna alınması gerekir. Yayımlamak için bir **Sürüm** dizesi (harfler, sayılar ve kısa çizgiler, maksimum 20 karakter) ve isteğe bağlı **Değişiklik notları** tanımlanması gerekir. **Sürüm** değeri şemada daha sonra yapılacak değişikliklerin tanımlanmasını sağlar ve her sürümün ayrıca atanmasını mümkün hale getirir. Sürüm oluşturma aynı zamanda aynı şemanın farklı **Sürümlerinin** aynı aboneliğe atanabileceği anlamına da gelir. When additional changes are made to the blueprint, the **Published**
-**Version** still exists, as do the **Unpublished changes**. Değişiklikler tamamlandıktan sonra güncelleştirilen şema yeni ve benzersiz bir **Sürüm** değeriyle **Yayımlanır** ve atamaya hazır hale gelir.
+Şema ilk oluşturulduğunda **Taslak** modunda olur. Atanmaya hazır olduğunda **Yayımlandı** durumuna alınması gerekir. Yayımlamak için bir **Sürüm** dizesi (harfler, sayılar ve kısa çizgiler, maksimum 20 karakter) ve isteğe bağlı **Değişiklik notları** tanımlanması gerekir. **Sürüm** değeri şemada daha sonra yapılacak değişikliklerin tanımlanmasını sağlar ve her sürümün ayrıca atanmasını mümkün hale getirir. Sürüm oluşturma aynı zamanda aynı şemanın farklı **Sürümlerinin** aynı aboneliğe atanabileceği anlamına da gelir. Şema üzerinde ek değişiklikler yapıldığında, **yayımlanmamış değişiklikler**olduğu gibi **yayımlanan**
+**sürümü** hala mevcuttur. Değişiklikler tamamlandıktan sonra güncelleştirilen şema yeni ve benzersiz bir **Sürüm** değeriyle **Yayımlanır** ve atamaya hazır hale gelir.
 
 ## <a name="blueprint-assignment"></a>Şema ataması
 
-Each **Published** **Version** of a blueprint can be assigned (with a max name length of 90 characters) to an existing subscription. Portalda varsayılan olarak en son **Yayımlanmış** olan şema **Sürümü** kullanılır. Yapıt parametreleri (veya şema parametreleri) varsa atama işlemi sırasında ilgili parametreler tanımlanır.
+Bir şema 'in **yayımlanan** her **sürümü** var olan bir aboneliğe atanabilir (en fazla 90 karakter uzunluğunda bir ad olabilir). Portalda varsayılan olarak en son **Yayımlanmış** olan şema **Sürümü** kullanılır. Yapıt parametreleri (veya şema parametreleri) varsa atama işlemi sırasında ilgili parametreler tanımlanır.
 
 ## <a name="permissions-in-azure-blueprints"></a>Azure Blueprints'te izinler
 
@@ -94,7 +94,7 @@ Each **Published** **Version** of a blueprint can be assigned (with a max name l
 - `Microsoft.Blueprint/blueprints/versions/delete`
 
 > [!NOTE]
-> The blueprint definition permissions must be granted or inherited on the management group or subscription scope where it is saved.
+> Şema tanımı izinleri, kaydedildiği veya yönetim grubu ya da abonelik kapsamında kaydedildiği yere devralınmalıdır.
 
 Bir şemayı atamak veya atamasını kaldırmak için hesabınız şu izinlere sahip olmalıdır:
 
@@ -104,39 +104,39 @@ Bir şemayı atamak veya atamasını kaldırmak için hesabınız şu izinlere s
 > [!NOTE]
 > Şema atamaları abonelikte oluşturulduğundan şema atama ve atamasını kaldırma izinlerinin abonelik kapsamında verilmesi veya abonelik kapsamında devralınması gerekir.
 
-The following built-in roles are available:
+Aşağıdaki yerleşik roller kullanılabilir:
 
-|RBAC Role | Açıklama |
+|RBAC rolü | Açıklama |
 |-|-|
-|[Sahip](../../role-based-access-control/built-in-roles.md#owner) | In addition to other permissions, includes all Azure Blueprint related permissions. |
-|[Katılımcı](../../role-based-access-control/built-in-roles.md#contributor) | In addition to other permissions, can create and delete blueprint definitions, but doesn't have blueprint assignment permissions. |
-|[Blueprint Contributor](../../role-based-access-control/built-in-roles.md#blueprint-contributor) | Can manage blueprint definitions, but not assign them. |
-|[Blueprint Operator](../../role-based-access-control/built-in-roles.md#blueprint-operator) | Can assign existing published blueprints, but can't create new blueprint definitions. Blueprint assignment only works if the assignment is done with a user-assigned managed identity. |
+|[Sahip](../../role-based-access-control/built-in-roles.md#owner) | Diğer izinlerin yanı sıra, tüm Azure Blueprint ilgili izinleri içerir. |
+|[Katılımcı](../../role-based-access-control/built-in-roles.md#contributor) | Diğer izinlerin yanı sıra, şema tanımları oluşturup silebilir, ancak şema atama izinlerine sahip değildir. |
+|[Blueprint Katılımcısı](../../role-based-access-control/built-in-roles.md#blueprint-contributor) | Şema tanımlarını yönetebilir, ancak atamazsınız. |
+|[Blueprint Işleci](../../role-based-access-control/built-in-roles.md#blueprint-operator) | Varolan yayımlanmış şemaları atayabilir, ancak yeni şema tanımları oluşturamaz. Blueprint ataması, yalnızca atama Kullanıcı tarafından atanan yönetilen kimlikle yapıldığında işe yarar. |
 
 Bu yerleşik roller güvenlik gereksinimlerinize uygun değilse [özel rol](../../role-based-access-control/custom-roles.md) oluşturabilirsiniz.
 
 > [!NOTE]
-> If using a system-assigned managed identity, the service principal for Azure Blueprints requires the **Owner** role on the assigned subscription in order to enable deployment. Portalı kullanıyorsanız bu rol dağıtım için otomatik olarak verilir ve iptal edilir. REST API kullanıyorsanız bu rolün el ile verilmesi gerekir ancak dağıtım tamamlandıktan sonra iptal işlemi otomatik olarak gerçekleştirilir. If using a user-assigned managed identity, only the user creating the blueprint assignment needs the `Microsoft.Blueprint/blueprintAssignments/write` permission, which is included in both the **Owner** and **Blueprint Operator** built-in roles.
+> Sistem tarafından atanan yönetilen kimlik kullanılıyorsa, Azure şemaları için hizmet sorumlusu, dağıtımı etkinleştirmek için atanan abonelikte **sahip** rolünü gerektirir. Portalı kullanıyorsanız bu rol dağıtım için otomatik olarak verilir ve iptal edilir. REST API kullanıyorsanız bu rolün el ile verilmesi gerekir ancak dağıtım tamamlandıktan sonra iptal işlemi otomatik olarak gerçekleştirilir. Kullanıcı tarafından atanan yönetilen kimlik kullanılıyorsa, yalnızca şema atamasını oluşturan kullanıcının hem **sahip** hem de şema **operatörü** yerleşik rollerinde bulunan `Microsoft.Blueprint/blueprintAssignments/write` izni vardır.
 
-## <a name="naming-limits"></a>Naming limits
+## <a name="naming-limits"></a>Adlandırma sınırları
 
-The following limitations exist for certain fields:
+Belirli alanlar için aşağıdaki sınırlamalar mevcuttur:
 
-|Nesne|Alan|Allowed Characters|En çok, Uzunluk|
+|Nesne|Alan|İzin verilen karakterler|En çok, Uzunluk|
 |-|-|-|-|
-|Blueprint|Adı|letters, numbers, hyphens, and periods|48|
-|Blueprint|Sürüm|letters, numbers, hyphens, and periods|20|
-|Şema ataması|Adı|letters, numbers, hyphens, and periods|90|
-|Blueprint artifact|Adı|letters, numbers, hyphens, and periods|48|
+|Şema|Name|harfler, rakamlar, tireler ve noktalar|48|
+|Şema|Sürüm|harfler, rakamlar, tireler ve noktalar|20|
+|Şema ataması|Name|harfler, rakamlar, tireler ve noktalar|90|
+|Blueprint yapıtı|Name|harfler, rakamlar, tireler ve noktalar|48|
 
-## <a name="video-overview"></a>Video overview
+## <a name="video-overview"></a>Videoya genel bakış
 
-The following overview of Azure Blueprints is from Azure Fridays. For video download, visit [Azure Fridays - An overview of Azure Blueprints](https://channel9.msdn.com/Shows/Azure-Friday/An-overview-of-Azure-Blueprints) on Channel 9.
+Azure 'a yönelik olarak aşağıdaki genel bakış Azure Fridays. Video indirme için, Channel 9 ' da Azure 'a [yönelik bir genel bakış olan Azure Fridays](https://channel9.msdn.com/Shows/Azure-Friday/An-overview-of-Azure-Blueprints) adresini ziyaret edin.
 
 > [!VIDEO https://www.youtube.com/embed/cQ9D-d6KkMY]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Create a blueprint - Portal](./create-blueprint-portal.md).
-- [Create a blueprint - PowerShell](./create-blueprint-powershell.md).
-- [Create a blueprint - REST API](./create-blueprint-rest-api.md).
+- [Bir şema-Portal oluşturun](./create-blueprint-portal.md).
+- [Bir şema-PowerShell oluşturun](./create-blueprint-powershell.md).
+- [Şema-REST API oluşturun](./create-blueprint-rest-api.md).

@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Protect new resources with locks'
-description: In this tutorial, you use the Azure Blueprints resource locks options Read Only and Do Not Delete to protect newly deployed resources.
+title: 'Öğretici: kilitlerle yeni kaynakları koruma'
+description: Bu öğreticide, Azure şemaları kaynak kilitleri seçeneklerini salt okunurdur ve yeni dağıtılan kaynakları korumak için silmeyin.
 ms.date: 11/21/2019
 ms.topic: tutorial
 ms.openlocfilehash: ee57ff0c08f4fb8aa710dd2fa4dcef664484973d
@@ -10,53 +10,53 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74327454"
 ---
-# <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Tutorial: Protect new resources with Azure Blueprints resource locks
+# <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Öğretici: Azure şemaları kaynak kilitleri ile yeni kaynakları koruma
 
-With Azure Blueprints [resource locks](../concepts/resource-locking.md), you can protect newly deployed resources from being tampered with, even by an account with the _Owner_ role. You can add this protection in the blueprint definitions of resources created by a Resource Manager template artifact.
+Azure şemaları [kaynak kilitleri](../concepts/resource-locking.md)ile, yeni dağıtılan _kaynakların, sahip rolü olan_ bir hesap tarafından bile üzerinde oynanarak korunmasını sağlayabilirsiniz. Bu korumayı, bir kaynak yöneticisi şablonu yapıtı tarafından oluşturulan kaynakların şema tanımlarına ekleyebilirsiniz.
 
-In this tutorial, you'll complete these steps:
+Bu öğreticide, aşağıdaki adımları tamamlayacaksınız:
 
 > [!div class="checklist"]
-> - Create a blueprint definition
-> - Mark your blueprint definition as **Published**
-> - Assign your blueprint definition to an existing subscription
-> - Inspect the new resource group
-> - Unassign the blueprint to remove the locks
+> - Şema tanımı oluşturma
+> - Şema tanımınızı **yayımlandı** olarak işaretleyin
+> - Şema tanımınızı mevcut bir aboneliğe atama
+> - Yeni kaynak grubunu İncele
+> - Kilitleri kaldırmak için şema atamasını kaldırma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun.
 
-## <a name="create-a-blueprint-definition"></a>Create a blueprint definition
+## <a name="create-a-blueprint-definition"></a>Şema tanımı oluşturma
 
-First, create the blueprint definition.
+İlk olarak, şema tanımını oluşturun.
 
-1. Select **All services** in the left pane. Search for and select **Blueprints**.
+1. Sol bölmedeki **tüm hizmetler** ' i seçin. **Şemaları**arayın ve seçin.
 
-1. On the **Getting started** page on the left, select **Create** under **Create a blueprint**.
+1. Soldaki **Başlarken** sayfasında, şema **Oluştur**altında **Oluştur** ' u seçin.
 
-1. Find the **Blank Blueprint** blueprint sample at the top of the page. Select **Start with blank blueprint**.
+1. Sayfanın üst kısmındaki **boş BLUEPRINT** şema örneğini bulun. **Boş şema ile Başlat**' ı seçin.
 
-1. Enter this information on the **Basics** tab:
+1. **Temel** bilgiler sekmesinde bu bilgileri girin:
 
-   - **Blueprint name**: Provide a name for your copy of the blueprint sample. For this tutorial, we'll use the name **locked-storageaccount**.
-   - **Blueprint description**: Add a description for the blueprint definition. Use **For testing blueprint resource locking on deployed resources**.
-   - **Definition location**: Select the ellipsis button (...) and then select the management group or subscription to save your blueprint definition to.
+   - **Şema adı**: şema örneğinin kopyasına bir ad verin. Bu öğreticide, **kilitli-storageaccount**adını kullanacağız.
+   - **Şema açıklaması**: şema tanımı için bir açıklama ekleyin. **Dağıtılan kaynaklarda şema kaynak kilitlemeyi test etmek için**kullanın.
+   - **Tanım konumu**: üç nokta düğmesini (...) seçin ve ardından şema tanımınızı kaydetmek için yönetim grubunu veya aboneliği seçin.
 
-1. Select the **Artifacts** tab at the top of the page, or select **Next: Artifacts** at the bottom of the page.
+1. Sayfanın üst kısmındaki **yapıtlar** sekmesini seçin veya sayfanın altındaki **yapıtlar** ' ı seçin.
 
-1. Add a resource group at the subscription level:
-   1. Select the **Add artifact** row under **Subscription**.
-   1. Select **Resource Group** under **Artifact type**.
-   1. Set the **Artifact display name** to **RGtoLock**.
-   1. Leave the **Resource Group Name** and **Location** boxes blank, but make sure the check box is selected on each property to make them **dynamic parameters**.
-   1. Select **Add** to add the artifact to the blueprint.
+1. Abonelik düzeyinde bir kaynak grubu ekleyin:
+   1. **Abonelik**altında **yapıt Ekle** satırını seçin.
+   1. **Yapıt türü**altında **kaynak grubu** ' nu seçin.
+   1. **Yapıt görünen adını** **rgtolock**olarak ayarlayın.
+   1. **Kaynak grubu adını** ve **konum** kutularını boş bırakın, ancak her bir özellikte onay kutusunun seçili olduğundan emin olun ve **dinamik parametreleri**yapın.
+   1. Yapıtı şemasını Blueprint öğesine eklemek için **Ekle** ' yi seçin.
 
-1. Add a template under the resource group:
-   1. Select the **Add artifact** row under the **RGtoLock** entry.
-   1. Select **Azure Resource Manager template** under **Artifact type**, set **Artifact display name** to **StorageAccount**, and leave **Description** blank.
-   1. On the **Template** tab, paste the following Resource Manager template into the editor box.
-      After you paste in the template, select **Add** to add the artifact to the blueprint.
+1. Kaynak grubunun altına bir şablon ekleyin:
+   1. **Rgtolock** girişinin altındaki **yapıt Ekle** satırını seçin.
+   1. **Yapıt türü**altında **Azure Resource Manager şablonu** ' nu seçin, **yapıt görünen adını** **storageaccount**olarak ayarlayın ve **açıklamayı** boş bırakın.
+   1. **Şablon** sekmesinde, aşağıdaki kaynak yöneticisi şablonunu düzenleyici kutusuna yapıştırın.
+      Şablonu yapıştırdıktan sonra, yapıtı şemasını Blueprint 'e eklemek için **Ekle** ' yi seçin.
 
    ```json
    {
@@ -100,132 +100,132 @@ First, create the blueprint definition.
    }
    ```
 
-1. Select **Save Draft** at the bottom of the page.
+1. Sayfanın alt kısmındaki **Taslağı kaydet** ' i seçin.
 
-This step creates the blueprint definition in the selected management group or subscription.
+Bu adım, seçilen yönetim grubunda veya abonelikte şema tanımını oluşturur.
 
-After the **Saving blueprint definition succeeded** portal notification appears, go to the next step.
+Şema **tanımını kaydetme başarılı oldu** Portal bildirimi göründüğünde bir sonraki adıma gidin.
 
-## <a name="publish-the-blueprint-definition"></a>Publish the blueprint definition
+## <a name="publish-the-blueprint-definition"></a>Şema tanımını yayımlama
 
-Your blueprint definition has now been created in your environment. It's created in **Draft** mode and must be published before it can be assigned and deployed.
+Şema tanımınız artık ortamınızda oluşturulmuştur. **Taslak** modunda oluşturulur ve atanmadan ve dağıtılmadan önce yayımlanmaları gerekir.
 
-1. Select **All services** in the left pane. Search for and select **Blueprints**.
+1. Sol bölmedeki **tüm hizmetler** ' i seçin. **Şemaları**arayın ve seçin.
 
-1. Select the **Blueprint definitions** page on the left. Use the filters to find the **locked-storageaccount** blueprint definition, and then select it.
+1. Sol taraftaki **Blueprint tanımları** sayfasını seçin. **Kilitli-storageaccount** şeması tanımını bulmak için filtreleri kullanın ve ardından seçin.
 
-1. Select **Publish blueprint** at the top of the page. In the new pane on the right, enter **1.0** as the **Version**. This property is useful if you make a change later. Enter **Change notes**, such as **First version published for locking blueprint deployed resources**. Then select **Publish** at the bottom of the page.
+1. Sayfanın üst kısmındaki şemayı **Yayımla** ' yı seçin. Sağdaki yeni bölmede **Sürüm**olarak **1,0** girin. Daha sonra bir değişiklik yaparsanız bu özellik faydalıdır. **Şeması dağıtılan kaynakları kilitlemek için yayımlanan ilk sürüm**gibi **değişiklik notlarını**girin. Ardından sayfanın alt kısmında **Yayımla** ' yı seçin.
 
-This step makes it possible to assign the blueprint to a subscription. After the blueprint definition is published, you can still make changes. If you make changes, you need to publish the definition with a new version value to track differences between versions of the same blueprint definition.
+Bu adım, şema 'in bir aboneliğe atanmasını olanaklı kılar. Şema tanımı yayımlandıktan sonra yine de değişiklik yapabilirsiniz. Değişiklik yaparsanız, aynı şema tanımının sürümleri arasındaki farkları izlemek için tanımı yeni bir sürüm değeriyle yayımlamanız gerekir.
 
-After the **Publishing blueprint definition succeeded** portal notification appears, go to the next step.
+Şema **tanımını yayımlama başarılı oldu** Portal bildirimi göründüğünde bir sonraki adıma gidin.
 
-## <a name="assign-the-blueprint-definition"></a>Assign the blueprint definition
+## <a name="assign-the-blueprint-definition"></a>Şema tanımını atama
 
-After the blueprint definition is published, you can assign it to a subscription within the management group where you saved it. In this step, you provide parameters to make each deployment of the blueprint definition unique.
+Şema tanımı yayımlandıktan sonra, bunu kaydettiğiniz yönetim grubu içindeki bir aboneliğe atayabilirsiniz. Bu adımda, şema tanımının her bir dağıtımını benzersiz hale getirmek için parametreler sağlarsınız.
 
-1. Select **All services** in the left pane. Search for and select **Blueprints**.
+1. Sol bölmedeki **tüm hizmetler** ' i seçin. **Şemaları**arayın ve seçin.
 
-1. Select the **Blueprint definitions** page on the left. Use the filters to find the **locked-storageaccount** blueprint definition, and then select it.
+1. Sol taraftaki **Blueprint tanımları** sayfasını seçin. **Kilitli-storageaccount** şeması tanımını bulmak için filtreleri kullanın ve ardından seçin.
 
-1. Select **Assign blueprint** at the top of the blueprint definition page.
+1. Şema tanım sayfasının en üstünde şema **ata** ' yı seçin.
 
-1. Provide the parameter values for the blueprint assignment:
+1. Şema atamasının parametre değerlerini sağlayın:
 
    - **Temel Bilgiler**
 
-     - **Subscriptions**: Select one or more of the subscriptions that are in the management group where you saved your blueprint definition. If you select more than one subscription, an assignment will be created for each subscription, using the parameters you enter.
-     - **Assignment name**: The name is pre-populated based on the name of the blueprint definition. We want this assignment to represent locking the new resource group, so change the assignment name to **assignment-locked-storageaccount-TestingBPLocks**.
-     - **Location**: Select a region in which to create the managed identity. Azure Blueprint bu yönetilen kimliği kullanarak tüm yapıtları atanmış şemaya dağıtır. Daha fazla bilgi için bkz. [Azure kaynakları için yönetilen kimlikler](../../../active-directory/managed-identities-azure-resources/overview.md).
-       For this tutorial, select **East US 2**.
-     - **Blueprint definition version**: Select the published version **1.0** of the blueprint definition.
+     - **Abonelikler**: şema tanımınızı kaydettiğiniz yönetim grubunda olan bir veya daha fazla abonelik seçin. Birden fazla abonelik seçerseniz, girdiğiniz parametreleri kullanarak her bir abonelik için bir atama oluşturulacaktır.
+     - **Atama adı**: ad, şema tanımının adına göre önceden doldurulur. Bu atamanın yeni kaynak grubunu kilitlemeyi göstermesini istiyoruz, bu nedenle atama adını **atama-kilitli-storageaccount-Testingbpkilitler**olarak değiştirin.
+     - **Konum**: yönetilen kimliğin oluşturulacağı bölgeyi seçin. Azure Blueprint bu yönetilen kimliği kullanarak tüm yapıtları atanmış şemaya dağıtır. Daha fazla bilgi için bkz. [Azure kaynakları için yönetilen kimlikler](../../../active-directory/managed-identities-azure-resources/overview.md).
+       Bu öğretici için **Doğu ABD 2**' yi seçin.
+     - Şema **tanımı sürümü**: şema tanımının yayınlanan **1,0** sürümünü seçin.
 
-   - **Lock Assignment**
+   - **Kilit ataması**
 
-     Select the **Read Only** blueprint lock mode. Daha fazla bilgi için bkz. [şema kaynağı kilitleme](../concepts/resource-locking.md).
+     **Salt okuma** şeması kilit modunu seçin. Daha fazla bilgi için bkz. [şema kaynağı kilitleme](../concepts/resource-locking.md).
 
-   - **Managed Identity**
+   - **Yönetilen kimlik**
 
-     Use the default option: **System assigned**. For more information, see [managed identities](../../../active-directory/managed-identities-azure-resources/overview.md).
+     Varsayılan seçeneği kullanın: **sistem atandı**. Daha fazla bilgi için bkz. [Yönetilen kimlikler](../../../active-directory/managed-identities-azure-resources/overview.md).
 
-   - **Artifact parameters**
+   - **Yapıt parametreleri**
 
-     The parameters defined in this section apply to the artifact under which they're defined. These parameters are [dynamic parameters](../concepts/parameters.md#dynamic-parameters) because they're defined during the assignment of the blueprint. For each artifact, set the parameter value to what you see in the **Value** column.
+     Bu bölümde tanımlanan parametreler, tanımlandıkları yapıt için geçerlidir. Şema atama sırasında tanımlandıklarından, bu parametreler [dinamik parametrelerdir](../concepts/parameters.md#dynamic-parameters) . Her yapıt için, parametre değerini değer sütununda gördüğünüz **değere** ayarlayın.
 
-     |Artifact name|Artifact type|Parametre adı|Değer|Açıklama|
+     |Yapıt adı|Yapıt türü|Parametre adı|Değer|Açıklama|
      |-|-|-|-|-|
-     |RGtoLock resource group|Kaynak grubu|Adı|TestingBPLocks|Defines the name of the new resource group to apply blueprint locks to.|
-     |RGtoLock resource group|Kaynak grubu|Konum|Batı ABD 2|Defines the location of the new resource group to apply blueprint locks to.|
-     |StorageAccount|Resource Manager şablonu|storageAccountType (StorageAccount)|Standard_GRS|The storage SKU. The default value is _Standard_LRS_.|
+     |RGtoLock kaynak grubu|Kaynak grubu|Ad|Testingbpkilitleri|Şema kilitlerinin uygulanacağı yeni kaynak grubunun adını tanımlar.|
+     |RGtoLock kaynak grubu|Kaynak grubu|Konum|Batı ABD 2|Şema kilitlerini uygulamak için yeni kaynak grubunun konumunu tanımlar.|
+     |StorageAccount|Resource Manager şablonu|storageAccountType (StorageAccount)|Standard_GRS|Depolama SKU 'SU. Varsayılan değer _Standard_LRS_.|
 
-1. After you've entered all parameters, select **Assign** at the bottom of the page.
+1. Tüm parametreleri girdikten sonra sayfanın alt kısmındaki **ata** ' yı seçin.
 
-This step deploys the defined resources and configures the selected **Lock Assignment**. It can take up to 30 minutes to apply blueprint locks.
+Bu adım, tanımlı kaynakları dağıtır ve seçili **kilit atamasını**yapılandırır. Şema kilitlerinin uygulanması 30 dakika kadar sürebilir.
 
-After the **Assigning blueprint definition succeeded** portal notification appears, go to the next step.
+Şema **tanımı başarılı oldu** Portal bildirimi seçildikten sonra, bir sonraki adıma gidin.
 
-## <a name="inspect-resources-deployed-by-the-assignment"></a>Inspect resources deployed by the assignment
+## <a name="inspect-resources-deployed-by-the-assignment"></a>Atama tarafından dağıtılan kaynakları İncele
 
-The assignment creates the resource group _TestingBPLocks_ and the storage account deployed by the Resource Manager template artifact. The new resource group and the selected lock state are shown on the assignment details page.
+Atama, _Testingbpkilitler_ kaynak grubunu ve Kaynak Yöneticisi şablonu yapıtı tarafından dağıtılan depolama hesabını oluşturur. Yeni kaynak grubu ve seçilen kilit durumu atama ayrıntıları sayfasında gösterilir.
 
-1. Select **All services** in the left pane. Search for and select **Blueprints**.
+1. Sol bölmedeki **tüm hizmetler** ' i seçin. **Şemaları**arayın ve seçin.
 
-1. Select the **Assigned blueprints** page on the left. Use the filters to find the **assignment-locked-storageaccount-TestingBPLocks** blueprint assignment, and then select it.
+1. Sol taraftaki **atanan** şemalar sayfasını seçin. **Atama-kilitli-storageaccount-Testingbpkilitleri** şeması atamasını bulmak için filtreleri kullanın ve ardından seçin.
 
-   From this page, we can see that the assignment succeeded and that the resources were deployed with the new blueprint lock state. If the assignment is updated, the **Assignment operation** drop-down shows details about the deployment of each definition version. You can select the resource group to open the property page.
+   Bu sayfadan, atamanın başarılı olduğunu ve kaynakların yeni şema kilit durumuyla dağıtıldığını görebiliriz. Atama güncelleştirilirse, **atama işlemi** açılır listesi her tanım sürümünün dağıtımıyla ilgili ayrıntıları gösterir. Özellik sayfasını açmak için kaynak grubunu seçebilirsiniz.
 
-1. Select the **TestingBPLocks** resource group.
+1. **Testingbpkilitler** kaynak grubunu seçin.
 
-1. Select the **Access control (IAM)** page on the left. Then select the **Role assignments** tab.
+1. Sol taraftaki **erişim denetimi (IAM)** sayfasını seçin. Ardından **rol atamaları** sekmesini seçin.
 
-   Here we see that the _assignment-locked-storageaccount-TestingBPLocks_ blueprint assignment has the _Owner_ role. It has this role because this role was used to deploy and lock the resource group.
+   Burada, _atama-kilitleme-storageaccount-testingbpkilitleri_ şema atamasının _Owner_ rolüne sahip olduğunu görüyoruz. Bu rol, kaynak grubunu dağıtmak ve kilitlemek için kullanıldığından bu rolü içeriyor.
 
-1. Select the **Deny assignments** tab.
+1. **Atamaları Reddet** sekmesini seçin.
 
-   The blueprint assignment created a [deny assignment](../../../role-based-access-control/deny-assignments.md) on the deployed resource group to enforce the **Read Only** blueprint lock mode. The deny assignment prevents someone with appropriate rights on the **Role assignments** tab from taking specific actions. The deny assignment affects _All principals_.
+   Şema ataması, **salt okuma** şeması kilit modunu zorlamak için dağıtılan kaynak grubunda bir [reddetme ataması](../../../role-based-access-control/deny-assignments.md) oluşturdu. Reddetme ataması, **rol atamaları** sekmesinde uygun haklara sahip birinin belirli eylemleri almasını engeller. Reddetme ataması _tüm sorumluları_etkiler.
 
-   For information about excluding a principal from a deny assignment, see [blueprints resource locking](../concepts/resource-locking.md#exclude-a-principal-from-a-deny-assignment).
+   Bir sorumluyu reddetme atamasından dışlamak hakkında bilgi için bkz. [kaynak kilitlemeyi planlar](../concepts/resource-locking.md#exclude-a-principal-from-a-deny-assignment).
 
-1. Select the deny assignment, and then select the **Denied Permissions** page on the left.
+1. Reddetme atamasını seçin ve ardından sol taraftaki **Reddedilenler izinleri** sayfasını seçin.
 
-   The deny assignment is preventing all operations with the **\*** and **Action** configuration, but it allows read access by excluding **\*/read** via **NotActions**.
+   Reddetme ataması **\*** ve **eylem** yapılandırmasıyla tüm Işlemleri engellemektedir, ancak **NotActions**aracılığıyla **\*/Read** 'i dışlayarak okuma erişimine izin verir.
 
-1. In the Azure portal breadcrumb, select **TestingBPLocks - Access control (IAM)** . Then select the **Overview** page on the left and then the **Delete resource group** button. Enter the name **TestingBPLocks** to confirm the delete and then select **Delete** at the bottom of the pane.
+1. Azure portal içerik haritasında **Testingbpkilitler-Access Control (IAM)** öğesini seçin. Ardından sol taraftaki **genel bakış** sayfasını ve ardından **kaynak grubunu sil** düğmesini seçin. Silmeyi onaylamak için **Testingbpkilitleri** adını girin ve ardından bölmenin altındaki **Sil** ' i seçin.
 
-   The portal notification **Delete resource group TestingBPLocks failed** appears. The error states that although your account has permission to delete the resource group, access is denied by the blueprint assignment. Remember that we selected the **Read Only** blueprint lock mode during blueprint assignment. The blueprint lock prevents an account with permission, even _Owner_, from deleting the resource. Daha fazla bilgi için bkz. [şema kaynağı kilitleme](../concepts/resource-locking.md).
+   Portal bildirim **silme kaynak grubu Testingbpkilitleri başarısız oldu** . Hata, hesabınız kaynak grubunu silme iznine sahip olsa da, erişim şeması atama tarafından reddedilir. Şema atama sırasında **yalnızca okuma** şeması kilit modunu seçtiğinizi unutmayın. Şema Lock, izin olan bir hesabın, hatta _sahibi_, kaynağın silinmesini engeller. Daha fazla bilgi için bkz. [şema kaynağı kilitleme](../concepts/resource-locking.md).
 
-These steps show that our deployed resources are now protected with blueprint locks that prevent unwanted deletion, even from an account that has permission to delete the resources.
+Bu adımlarda, dağıtılmış kaynaklarımızın, kaynakları silme izni olan bir hesaptan bile, istenmeyen silme işlemini önleyen şema kilitleri ile korunduğu gösterilmektedir.
 
-## <a name="unassign-the-blueprint"></a>Unassign the blueprint
+## <a name="unassign-the-blueprint"></a>Şema atamasını kaldırma
 
-The last step is to remove the assignment of the blueprint definition. Removing the assignment doesn't remove the associated artifacts.
+Son adım, şema tanımının atamasını kaldırdır. Atamanın kaldırılması ilişkili yapıtları kaldırmaz.
 
-1. Select **All services** in the left pane. Search for and select **Blueprints**.
+1. Sol bölmedeki **tüm hizmetler** ' i seçin. **Şemaları**arayın ve seçin.
 
-1. Select the **Assigned blueprints** page on the left. Use the filters to find the **assignment-locked-storageaccount-TestingBPLocks** blueprint assignment, and then select it.
+1. Sol taraftaki **atanan** şemalar sayfasını seçin. **Atama-kilitli-storageaccount-Testingbpkilitleri** şeması atamasını bulmak için filtreleri kullanın ve ardından seçin.
 
-1. Select **Unassign blueprint** at the top of the page. Read the warning in the confirmation dialog box, and then select **OK**.
+1. Sayfanın üst kısmında **şema atamasını Kaldır** ' ı seçin. Onay iletişim kutusunda uyarıyı okuyun ve ardından **Tamam**' ı seçin.
 
-   When the blueprint assignment is removed, the blueprint locks are also removed. The resources can once again be deleted by an account with appropriate permissions.
+   Şema ataması kaldırıldığında, BLUEPRINT kilitleri da kaldırılır. Kaynaklar bir kez daha uygun izinlere sahip bir hesap tarafından silinebilir.
 
-1. Select **Resource groups** from the Azure menu, and then select **TestingBPLocks**.
+1. Azure menüsünden **kaynak grupları** ' nı seçin ve ardından **Testingbpkilitleri**' nı seçin.
 
-1. Select the **Access control (IAM)** page on the left and then select the **Role assignments** tab.
+1. Sol taraftaki **erişim denetimi (IAM)** sayfasını seçin ve ardından **rol atamaları** sekmesini seçin.
 
-The security for the resource group shows that the blueprint assignment no longer has _Owner_ access.
+Kaynak grubunun güvenliği, şema atamasının artık _sahip_ erişimine sahip olmadığını gösterir.
 
-After the **Removing blueprint assignment succeeded** portal notification appears, go to the next step.
+Şema **atamasını kaldırma başarılı oldu** Portal bildirimi görüntülendikten sonra bir sonraki adıma gidin.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-When you're finished with this tutorial, delete these resources:
+Bu öğreticiyi tamamladığınızda, şu kaynakları silin:
 
-- Resource group _TestingBPLocks_
-- Blueprint definition _locked-storageaccount_
+- Kaynak grubu _Testingbpkilitleri_
+- Blueprint Definition _kilitlendi-storageaccount_
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-In this tutorial, you've learned how to protect new resources deployed with Azure Blueprints. To learn more about Azure Blueprints, continue to the blueprint lifecycle article.
+Bu öğreticide, Azure şemaları ile dağıtılan yeni kaynakları nasıl koruyabileceğinizi öğrendiniz. Azure şemaları hakkında daha fazla bilgi edinmek için şema yaşam döngüsü makalesine ilerleyin.
 
 > [!div class="nextstepaction"]
-> [Learn about the blueprint lifecycle](../concepts/lifecycle.md)
+> [Şema yaşam döngüsü hakkında bilgi edinin](../concepts/lifecycle.md)

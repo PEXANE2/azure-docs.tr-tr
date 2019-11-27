@@ -62,7 +62,7 @@ afdverify alt etki alanı ile bir CNAME kaydı oluşturmak için:
 
 3. Özel etki alanınız için bir CNAME kaydı girişi oluşturun ve alanları (alan adları değişebilir) aşağıdaki tabloda gösterildiği gibi tamamlayın:
 
-    | Kaynak                    | Tür  | Hedef                     |
+    | Kaynak                    | Type  | Hedef                     |
     |---------------------------|-------|---------------------------------|
     | afdverify.www.contoso.com | CNAME | afdverify.contoso.azurefd.net |
 
@@ -139,7 +139,7 @@ afdverify alt etki alanının Front Door'unuza başarıyla eşlendiğini doğrul
 
 3. Özel etki alanınız için bir CNAME kaydı girişi oluşturun ve alanları (alan adları değişebilir) aşağıdaki tabloda gösterildiği gibi tamamlayın:
 
-    | Kaynak          | Tür  | Hedef           |
+    | Kaynak          | Type  | Hedef           |
     |-----------------|-------|-----------------------|
     | < www. contoso. com > | CNAME | contoso.azurefd.net |
 

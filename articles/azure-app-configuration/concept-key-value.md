@@ -86,7 +86,7 @@ Her anahtar değeri, anahtarı ve `null`olabilecek bir etiket tarafından benzer
 
 Ayrıca aşağıdaki etiket düzenlerini de dahil edebilirsiniz:
 
-| Etiket | |
+| Etiketle | |
 |---|---|
 | `label` atlanmış veya `label=*` | `null` içeren herhangi bir etiketle eşleşir |
 | `label=%00` | `null` etiketiyle eşleşir |

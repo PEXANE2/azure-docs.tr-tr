@@ -1,6 +1,6 @@
 ---
-title: Moving data to Avere vFXT for Azure
-description: How to add data to a new storage volume for use with the Avere vFXT for Azure
+title: Azure için verileri avere vFXT 'ye taşıma
+description: Azure için avere vFXT ile kullanılmak üzere yeni bir depolama birimine veri ekleme
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
@@ -13,63 +13,63 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74480585"
 ---
-# <a name="moving-data-to-the-vfxt-cluster---parallel-data-ingest"></a>Moving data to the vFXT cluster - Parallel data ingest
+# <a name="moving-data-to-the-vfxt-cluster---parallel-data-ingest"></a>Verileri vFXT kümesine taşıma-Parallel Data ınest
 
-After you've created a new vFXT cluster, your first task might be to move data onto its new storage volume. However, if your usual method of moving data is issuing a simple copy command from one client, you will likely see a slow copy performance. Single-threaded copying is not a good option for copying data to the Avere vFXT cluster's backend storage.
+Yeni bir vFXT kümesi oluşturduktan sonra ilk göreviniz verileri yeni depolama birimine taşımak olabilir. Ancak, veri taşıma yöntemi bir istemciden basit bir kopyalama komutu yayınlıyorsa, büyük olasılıkla bir kopya performansı görürsünüz. Tek iş parçacıklı kopyalama, verileri avere vFXT kümesinin arka uç depolamasına kopyalamak için iyi bir seçenek değildir.
 
-Because the Avere vFXT cluster is a scalable multi-client cache, the fastest and most efficient way to copy data to it is with multiple clients. This technique parallelizes ingestion of the files and objects.
+Avere vFXT kümesi ölçeklenebilir bir çoklu istemci önbelleği olduğundan, verileri buna kopyalamanın en hızlı ve en verimli yolu birden çok istemcidir. Bu teknik, dosyaların ve nesnelerin giriş alımını paralelleştirme.
 
-![Diagram showing multi-client, multi-threaded data movement: At the top left, an icon for on-premises hardware storage has multiple arrows coming from it. The arrows point to four client machines. From each client machine three arrows point toward the Avere vFXT. From the Avere vFXT, multiple arrows point to Blob storage.](media/avere-vfxt-parallel-ingest.png)
+![Çoklu istemci, çok iş parçacıklı veri hareketini gösteren diyagram: sol üst tarafta, şirket içi donanım depolamada bir simgenin bundan sonra gelen birden çok oku vardır. Oklar dört istemci makineye işaret noktasıdır. Her bir istemci makineden üç ok avere vFXT 'ye doğru işaret. Avere vFXT 'den birden çok ok, blob Storage ' a işaret noktasıdır.](media/avere-vfxt-parallel-ingest.png)
 
-The ``cp`` or ``copy`` commands that are commonly used to using to transfer data from one storage system to another are single-threaded processes that copy only one file at a time. This means that the file server is ingesting only one file at a time - which is a waste of the cluster’s resources.
+Verileri bir depolama sisteminden diğerine aktarmak için yaygın olarak kullanılan ``cp`` veya ``copy`` komutları, tek seferde yalnızca bir dosyayı kopyalamak için tek iş parçacıklı işlemlerdir. Bu, dosya sunucusunun tek seferde yalnızca bir dosya olduğu anlamına gelir. Bu, kümenin kaynakları için bir atık olur.
 
-This article explains strategies for creating a multi-client, multi-threaded file copying system to move data to the Avere vFXT cluster. It explains file transfer concepts and decision points that can be used for efficient data copying using multiple clients and simple copy commands.
+Bu makalede, verileri avere vFXT kümesine taşımak için çok istemci, çok iş parçacıklı dosya kopyalama sistemi oluşturma stratejileri açıklanmaktadır. Birden çok istemci ve basit kopyalama komutları kullanılarak etkili veri kopyalama için kullanılabilen dosya aktarımı kavramlarını ve karar noktalarını açıklar.
 
-It also explains some utilities that can help. The ``msrsync`` utility can be used to partially automate the process of dividing a dataset into buckets and using ``rsync`` commands. The ``parallelcp`` script is another utility that reads the source directory and issues copy commands automatically. Also, the ``rsync`` tool can be used in two phases to provide a quicker copy that still provides data consistency.
+Ayrıca yardımcı olabilecek bazı yardımcı programları da açıklar. ``msrsync`` yardımcı programı, bir veri kümesini demetlere bölme ve ``rsync`` komutlarını kullanma sürecini kısmen otomatikleştirebilmek için kullanılabilir. ``parallelcp`` betiği, kaynak dizini okuyan ve komutları otomatik olarak kopyalama ile ilgili başka bir yardımcı programdır. Ayrıca, ``rsync`` Aracı, hala veri tutarlılığı sağlayan daha hızlı bir kopya sağlamak için iki aşamada kullanılabilir.
 
-Click the link to jump to a section:
+Bir bölüme gitmek için bağlantıya tıklayın:
 
-* [Manual copy example](#manual-copy-example) - A thorough explanation using copy commands
-* [Two-phase rsync example](#use-a-two-phase-rsync-process)
-* [Partially automated (msrsync) example](#use-the-msrsync-utility)
-* [Parallel copy example](#use-the-parallel-copy-script)
+* [El ile kopyalama örneği](#manual-copy-example) -Copy komutları kullanılarak kapsamlı bir açıklama
+* [İki aşamalı rsync örneği](#use-a-two-phase-rsync-process)
+* [Kısmen otomatikleştirilen (msrsync) örneği](#use-the-msrsync-utility)
+* [Paralel kopya örneği](#use-the-parallel-copy-script)
 
-## <a name="data-ingestor-vm-template"></a>Data ingestor VM template
+## <a name="data-ingestor-vm-template"></a>Veri alma VM şablonu
 
-A Resource Manager template is available on GitHub to automatically create a VM with the parallel data ingestion tools mentioned in this article.
+GitHub üzerinde, bu makalede bahsedilen paralel veri alma araçlarıyla otomatik olarak bir VM oluşturmak için bir Kaynak Yöneticisi şablonu kullanılabilir.
 
-![diagram showing multiple arrows each from blob storage, hardware storage, and Azure file sources. The arrows point to a "data ingestor vm" and from there, multiple arrows point to the Avere vFXT](media/avere-vfxt-ingestor-vm.png)
+![BLOB depolama, donanım depolama ve Azure dosya kaynaklarından her biri birden çok ok gösteren diyagram. Oklar bir "veri alma sanal makinesini" işaret ettikten sonra, avere vFXT 'ye işaret eden birden çok ok](media/avere-vfxt-ingestor-vm.png)
 
-The data ingestor VM is part of a tutorial where the newly created VM mounts the Avere vFXT cluster and downloads its bootstrap script from the cluster. Read [Bootstrap a data ingestor VM](https://github.com/Azure/Avere/blob/master/docs/data_ingestor.md) for details.
+Veri alma sanal makinesi, yeni oluşturulan VM 'nin avere vFXT kümesini takar ve önyükleme betiğini kümeden indirdiği bir öğreticinin parçasıdır. Ayrıntılar için [veri alımı Sanal](https://github.com/Azure/Avere/blob/master/docs/data_ingestor.md) makinesini okuyun.
 
-## <a name="strategic-planning"></a>Strategic planning
+## <a name="strategic-planning"></a>Stratejik planlama
 
-When building a strategy to copy data in parallel, you should understand the tradeoffs in file size, file count, and directory depth.
+Verileri paralel olarak kopyalamak için bir strateji oluştururken dosya boyutu, dosya sayısı ve Dizin derinliği içindeki avantajları anlamanız gerekir.
 
-* When files are small, the metric of interest is files per second.
-* When files are large (10MiBi or greater), the metric of interest is bytes per second.
+* Dosyalar küçük olduğunda, ilgilendiğiniz ölçüm, saniye başına dosya olur.
+* Dosyalar büyükse (10 MIBI veya üzeri), ilgilendiğiniz ölçüm bayt/saniye olur.
 
-Each copy process has a throughput rate and a files-transferred rate, which can be measured by timing the length of the copy command and factoring the file size and file count. Explaining how to measure the rates is outside the scope of this document, but it is imperative to understand whether you’ll be dealing with small or large files.
+Her kopyalama işleminin bir işleme hızı ve dosya-aktarım hızı vardır ve bu, kopyalama komutunun uzunluğu ve dosya boyutu ile dosya sayısı düzenleme ile ölçülebilir. Hızların nasıl ölçülmesi, bu belgenin kapsamı dışındadır, ancak küçük veya büyük dosyalarla ilgilenip işlenmeyeceğinizi anlamak için önemlidir.
 
-## <a name="manual-copy-example"></a>Manual copy example
+## <a name="manual-copy-example"></a>El ile kopyalama örneği
 
-You can manually create a multi-threaded copy on a client by running more than one copy command at once in the background against predefined sets of files or paths.
+Önceden tanımlanmış dosya veya yol kümelerine yönelik olarak, arka planda birden fazla kopyalama komutu çalıştırarak, bir istemcide çok iş parçacıklı bir kopyayı el ile oluşturabilirsiniz.
 
-The Linux/UNIX ``cp`` command includes the argument ``-p`` to preserve ownership and mtime metadata. Adding this argument to the commands below is optional. (Adding the argument increases the number of filesystem calls sent from the client to the destination filesystem for metadata modification.)
+Linux/UNIX ``cp`` komutu, sahiplik ve mtime meta verilerini korumak için ``-p`` bağımsız değişkenini içerir. Bu bağımsız değişkeni aşağıdaki komutlara eklemek isteğe bağlıdır. (Bağımsız değişkeni eklemek, meta veri değişikliği için istemciden hedef FileSystem 'a gönderilen dosya sistemi çağrılarının sayısını artırır.)
 
-This simple example copies two files in parallel:
+Bu basit örnek, paralel olarak iki dosya kopyalar:
 
 ```bash
 cp /mnt/source/file1 /mnt/destination1/ & cp /mnt/source/file2 /mnt/destination1/ &
 ```
 
-After issuing this command, the `jobs` command will show that two threads are running.
+Bu komutu verdikten sonra, `jobs` komutu iki iş parçacığının çalıştığını gösterir.
 
-### <a name="predictable-filename-structure"></a>Predictable filename structure
+### <a name="predictable-filename-structure"></a>Öngörülebilir dosya adı yapısı
 
-If your filenames are predictable, you can use expressions to create parallel copy threads.
+Dosya adları tahmin edilebilir ise, paralel kopyalama iş parçacıkları oluşturmak için ifadeleri kullanabilirsiniz.
 
-For example, if your directory contains 1000 files that are numbered sequentially from `0001` to `1000`, you can use the following expressions to create ten parallel threads that each copy 100 files:
+Örneğin, dizininiz `1000``0001` sıralı olarak numaralandırılmış 1000 dosya içeriyorsa, her bir kopyalanan 100 dosyasını izleyen on paralel iş parçacığı oluşturmak için aşağıdaki ifadeleri kullanabilirsiniz:
 
 ```bash
 cp /mnt/source/file0* /mnt/destination1/ & \
@@ -84,11 +84,11 @@ cp /mnt/source/file8* /mnt/destination1/ & \
 cp /mnt/source/file9* /mnt/destination1/
 ```
 
-### <a name="unknown-filename-structure"></a>Unknown filename structure
+### <a name="unknown-filename-structure"></a>Bilinmeyen dosya adı yapısı
 
-If your file-naming structure is not predictable, you can group files by directory names.
+Dosya adlandırma yapınız tahmin edilebilir değilse, dosyaları dizin adlarına göre gruplandırabilirsiniz.
 
-This example collects entire directories to send to ``cp`` commands run as background tasks:
+Bu örnek, arka plan görevleri olarak çalıştırılan ``cp`` komutlarına göndermek için tüm dizinleri toplar:
 
 ```bash
 /root
@@ -100,7 +100,7 @@ This example collects entire directories to send to ``cp`` commands run as backg
 |-/dir1d
 ```
 
-After the files are collected, you can run parallel copy commands to recursively copy the subdirectories and all of their contents:
+Dosyalar toplandıktan sonra, alt dizinleri ve tüm içeriğini yinelemeli olarak kopyalamak için paralel kopyalama komutlarını çalıştırabilirsiniz:
 
 ```bash
 cp /mnt/source/* /mnt/destination/
@@ -111,11 +111,11 @@ cp -R /mnt/source/dir1/dir1c /mnt/destination/dir1/ & # this command copies dir1
 cp -R /mnt/source/dir1/dir1d /mnt/destination/dir1/ &
 ```
 
-### <a name="when-to-add-mount-points"></a>When to add mount points
+### <a name="when-to-add-mount-points"></a>Bağlama noktaları ne zaman eklenir
 
-After you have enough parallel threads going against a single destination filesystem mount point, there will be a point where adding more threads does not give more throughput. (Throughput will be measured in files/second or bytes/second, depending on your type of data.) Or worse, over-threading can sometimes cause a throughput degradation.
+Tek bir hedef dosya sistemi bağlama noktasına karşı çok sayıda paralel iş parçacığına sahip olduktan sonra, daha fazla iş parçacığı eklemenin daha fazla verimlilik vermediği bir nokta olacaktır. (Aktarım hızı, veri türlerine bağlı olarak dosya/saniye veya bayt/saniye cinsinden ölçülecektir.) Ya da daha kötüleşiyor, iş parçacığı, bazen üretilen iş azalmasına neden olabilir.
 
-When this happens, you can add client-side mount points to other vFXT cluster IP addresses, using the same remote filesystem mount path:
+Bu durumda, aynı uzak dosya sistemi bağlama yolunu kullanarak diğer vFXT kümesi IP adreslerine istemci tarafı bağlama noktaları ekleyebilirsiniz:
 
 ```bash
 10.1.0.100:/nfs on /mnt/sourcetype nfs (rw,vers=3,proto=tcp,addr=10.1.0.100)
@@ -124,9 +124,9 @@ When this happens, you can add client-side mount points to other vFXT cluster IP
 10.1.1.103:/nfs on /mnt/destination3type nfs (rw,vers=3,proto=tcp,addr=10.1.1.103)
 ```
 
-Adding client-side mount points lets you fork off additional copy commands to the additional `/mnt/destination[1-3]` mount points, achieving further parallelism.
+İstemci tarafı bağlama noktaları eklemek, ek `/mnt/destination[1-3]` bağlama noktalarına daha fazla paralellik elde etmenizi sağlar.
 
-For example, if your files are very large, you might define the copy commands to use distinct destination paths, sending out more commands in parallel from the client performing the copy.
+Örneğin, dosyalarınız çok büyükse, farklı hedef yolları kullanmak için kopyalama komutlarını tanımlayabilir ve kopyayı gerçekleştiren istemciden paralel olarak daha fazla komut gönderebilirsiniz.
 
 ```bash
 cp /mnt/source/file0* /mnt/destination1/ & \
@@ -140,11 +140,11 @@ cp /mnt/source/file7* /mnt/destination2/ & \
 cp /mnt/source/file8* /mnt/destination3/ & \
 ```
 
-In the example above, all three destination mount points are being targeted by the client file copy processes.
+Yukarıdaki örnekte, üç hedef bağlama noktası, istemci dosyası kopyalama işlemlerine yöneliktir.
 
-### <a name="when-to-add-clients"></a>When to add clients
+### <a name="when-to-add-clients"></a>İstemcilerin ne zaman ekleneceği
 
-Lastly, when you have reached the client's capabilities, adding more copy threads or additional mount points will not yield any additional files/sec or bytes/sec increases. In that situation, you can deploy another client with the same set of mount points that will be running its own sets of file copy processes.
+Son olarak, istemcinin özelliklerine ulaştınız, daha fazla kopyalama iş parçacığı veya ek bağlama noktası eklenmesi ek dosya/sn veya bayt/sn artışı vermez. Bu durumda, kendi dosya kopyalama işlemi kümelerini çalıştıran aynı bağlama noktaları kümesiyle başka bir istemciyi dağıtabilirsiniz.
 
 Örnek:
 
@@ -166,11 +166,11 @@ Client4: cp -R /mnt/source/dir2/dir2d /mnt/destination/dir2/ &
 Client4: cp -R /mnt/source/dir3/dir3d /mnt/destination/dir3/ &
 ```
 
-### <a name="create-file-manifests"></a>Create file manifests
+### <a name="create-file-manifests"></a>Dosya bildirimleri oluşturma
 
-After understanding the approaches above (multiple copy-threads per destination, multiple destinations per client, multiple clients per network-accessible source filesystem), consider this recommendation: Build file manifests and then use them with copy commands across multiple clients.
+Yukarıdaki yaklaşımlar anlaşıldıktan sonra (hedef başına birden çok kopya iş parçacığı, istemci başına birden çok hedef, ağ erişimli kaynak dosya başına birden çok istemci), şu öneriyi göz önünde bulundurun: dosya bildirimleri oluşturun ve sonra bunları kopyayla birlikte kullanın birden çok istemci arasındaki komutlar.
 
-This scenario uses the UNIX ``find`` command to create manifests of files or directories:
+Bu senaryo, dosya veya dizinlerin bildirimlerini oluşturmak için UNIX ``find`` komutunu kullanır:
 
 ```bash
 user@build:/mnt/source > find . -mindepth 4 -maxdepth 4 -type d
@@ -185,9 +185,9 @@ user@build:/mnt/source > find . -mindepth 4 -maxdepth 4 -type d
 ./atj5b55c53be6-02/support/trace/rolling
 ```
 
-Redirect this result to a file: `find . -mindepth 4 -maxdepth 4 -type d > /tmp/foo`
+Bu sonucu bir dosyaya yeniden yönlendir: `find . -mindepth 4 -maxdepth 4 -type d > /tmp/foo`
 
-Then you can iterate through the manifest, using BASH commands to count files and determine the sizes of the subdirectories:
+Ardından, dosyaları saymak ve alt dizinlerin boyutlarını belirleyebilmek için BASH komutlarını kullanarak bildirimde yineleyebilirsiniz.
 
 ```bash
 ben@xlcycl1:/sps/internal/atj5b5ab44b7f > for i in $(cat /tmp/foo); do echo " `find ${i} |wc -l` `du -sh ${i}`"; done
@@ -226,76 +226,76 @@ ben@xlcycl1:/sps/internal/atj5b5ab44b7f > for i in $(cat /tmp/foo); do echo " `f
 33     2.8G    ./atj5b5ab44b7f-03/support/trace/rolling
 ```
 
-Lastly, you must craft the actual file copy commands to the clients.
+Son olarak, gerçek dosya kopyalama komutlarını istemcilere kopyalamanız gerekir.
 
-If you have four clients, use this command:
+Dört istemciniz varsa, şu komutu kullanın:
 
 ```bash
 for i in 1 2 3 4 ; do sed -n ${i}~4p /tmp/foo > /tmp/client${i}; done
 ```
 
-If you have five clients, use something like this:
+Beş istemciniz varsa, şöyle bir şey kullanın:
 
 ```bash
 for i in 1 2 3 4 5; do sed -n ${i}~5p /tmp/foo > /tmp/client${i}; done
 ```
 
-And for six.... Extrapolate as needed.
+Ve altı.... Gerektiğinde extrapogeç.
 
 ```bash
 for i in 1 2 3 4 5 6; do sed -n ${i}~6p /tmp/foo > /tmp/client${i}; done
 ```
 
-You will get *N* resulting files, one for each of your *N* clients that has the path names to the level-four directories obtained as part of the output from the `find` command.
+`find` komutundan çıktının bir parçası olarak elde edilen düzey dört dizine ait yol adlarına sahip *n istemcilerinden her* biri için bir tane olmak üzere *n* sonuç dosyası alacaksınız.
 
-Use each file to build the copy command:
+Kopyalama komutunu oluşturmak için her dosyayı kullanın:
 
 ```bash
 for i in 1 2 3 4 5 6; do for j in $(cat /tmp/client${i}); do echo "cp -p -R /mnt/source/${j} /mnt/destination/${j}" >> /tmp/client${i}_copy_commands ; done; done
 ```
 
-The above will give you *N* files, each with a copy command per line, that can be run as a BASH script on the client.
+Yukarıdaki, her biri her satırda bir kopyalama komutu olan *N* dosya sağlayacak ve bu, istemcide Bash betiği olarak çalıştırılabilirler.
 
-The goal is to run multiple threads of these scripts concurrently per client in parallel on multiple clients.
+Amaç, birden çok istemcide paralel olarak bu betiklerin birden çok iş parçacığını her istemci için aynı anda çalıştırmaktır.
 
-## <a name="use-a-two-phase-rsync-process"></a>Use a two-phase rsync process
+## <a name="use-a-two-phase-rsync-process"></a>İki aşamalı bir rsync işlemi kullanın
 
-The standard ``rsync`` utility does not work well for populating cloud storage through the Avere vFXT for Azure system because it generates a large number of file create and rename operations to guarantee data integrity. However, you can safely use the ``--inplace`` option with ``rsync`` to skip the more careful copying procedure if you follow that with a second run that checks file integrity.
+Standart ``rsync`` yardımcı programı, veri bütünlüğünü güvence altına almak için çok sayıda dosya oluşturma ve yeniden adlandırma işlemi oluşturduğundan Azure System için avere vFXT aracılığıyla bulut depolamayı doldurmak için iyi çalışmaz. Ancak, dosya bütünlüğünü denetleyen ikinci bir çalıştırma ile izlerseniz daha dikkatli kopyalama yordamını atlamak için ``rsync`` ile ``--inplace`` seçeneğini güvenle kullanabilirsiniz.
 
-A standard ``rsync`` copy operation creates a temporary file and fills it with data. If the data transfer completes successfully, the temporary file is renamed to the original filename. This method guarantees consistency even if the files are accessed during copy. But this method generates more write operations, which slows file movement through the cache.
+Standart bir ``rsync`` kopyalama işlemi geçici bir dosya oluşturur ve verileri veriyle doldurur. Veri aktarımı başarıyla tamamlanırsa, geçici dosya özgün dosya adı olarak yeniden adlandırılır. Bu yöntem, kopyalama sırasında dosyalara erişilmesi durumunda bile tutarlılığı güvence altına alır. Ancak bu yöntem, önbellekten dosya hareketini yavaşlatan daha fazla yazma işlemi oluşturur.
 
-The option ``--inplace`` writes the new file directly in its final location. Files are not guaranteed to be consistent during transfer, but that is not important if you are priming a storage system for use later.
+``--inplace`` seçeneği yeni dosyayı doğrudan son konumuna yazar. Dosyaların aktarım sırasında tutarlı olması garanti edilmez, ancak daha sonra kullanmak üzere bir depolama sistemini kullandıysanız bu önemli değildir.
 
-The second ``rsync`` operation serves as a consistency check on the first operation. Because the files have already been copied, the second phase is a quick scan to ensure that the files on the destination match the files on the source. If any files don't match, they are recopied.
+İkinci ``rsync`` işlem, ilk işlemde bir tutarlılık denetimi görevi görür. Dosyalar zaten kopyalandığı için ikinci aşama, hedefteki dosyaların kaynaktaki dosyalarla eşleştiğinden emin olmak için hızlı bir taradır. Herhangi bir dosya eşleşmezse, bunlar yeniden kopyalanır.
 
-You can issue both phases together in one command:
+Her iki aşamayı de tek bir komutta verebilirsiniz:
 
 ```bash
 rsync -azh --inplace <source> <destination> && rsync -azh <source> <destination>
 ```
 
-This method is a simple and time-effective method for datasets up to the number of files the internal directory manager can handle. (This is typically 200 million files for a 3-node cluster, 500 million files for a six-node cluster, and so on.)
+Bu yöntem, iç dizin yöneticisinin işleyebileceği dosya sayısına kadar veri kümelerinde basit ve zaman etkin bir yöntemdir. (Bu genellikle 3 düğümlü bir küme için 200.000.000 dosya, altı düğümlü bir küme için 500.000.000 dosyaları vb.)
 
-## <a name="use-the-msrsync-utility"></a>Use the msrsync utility
+## <a name="use-the-msrsync-utility"></a>Msrsync yardımcı programını kullanma
 
-The ``msrsync`` tool also can be used to move data to a backend core filer for the Avere cluster. This tool is designed to optimize bandwidth usage by running multiple parallel ``rsync`` processes. It is available from GitHub at <https://github.com/jbd/msrsync>.
+``msrsync`` Aracı, verileri avere kümesi için bir arka uç çekirdeği altına taşımak üzere de kullanılabilir. Bu araç birden çok paralel ``rsync`` işlemi çalıştırarak bant genişliği kullanımını iyileştirmek için tasarlanmıştır. <https://github.com/jbd/msrsync>'de GitHub 'dan kullanılabilir.
 
-``msrsync`` breaks up the source directory into separate “buckets” and then runs individual ``rsync`` processes on each bucket.
+``msrsync``, kaynak dizinini ayrı "demetlere" ayırır ve sonra her bir Bucket üzerinde bireysel ``rsync`` süreçlerini çalıştırır.
 
-Preliminary testing using a four-core VM showed best efficiency when using 64 processes. Use the ``msrsync`` option ``-p`` to set the number of processes to 64.
+Dört çekirdekli bir VM kullanan ön test, 64 işlemleri kullanırken en iyi verimliliği gösteriyordu. İşlem sayısını 64 olarak ayarlamak için ``-p`` ``msrsync`` seçeneğini kullanın.
 
-You also can use the ``--inplace`` argument with ``msrsync`` commands. If you use this option, consider running a second command (as with [rsync](#use-a-two-phase-rsync-process), described above) to ensure data integrity.
+``msrsync`` komutlarla ``--inplace`` bağımsız değişkenini de kullanabilirsiniz. Bu seçeneği kullanırsanız, veri bütünlüğünü sağlamak için ikinci bir komut (yukarıda açıklanan [rsync](#use-a-two-phase-rsync-process)ile olduğu gibi) çalıştırmayı göz önünde bulundurun.
 
-``msrsync`` can only write to and from local volumes. The source and destination must be accessible as local mounts in the cluster’s virtual network.
+``msrsync``, yerel birimlerden yalnızca ve bu birimlere yazabilir. Kaynak ve hedef, kümenin sanal ağındaki yerel başlatmalar olarak erişilebilir olmalıdır.
 
-To use ``msrsync`` to populate an Azure cloud volume with an Avere cluster, follow these instructions:
+Bir Azure bulut birimini bir avere kümesiyle doldurmak üzere ``msrsync`` kullanmak için şu yönergeleri izleyin:
 
-1. Install ``msrsync`` and its prerequisites (rsync and Python 2.6 or later)
-1. Determine the total number of files and directories to be copied.
+1. ``msrsync`` ve önkoşullarını (rsync ve Python 2,6 veya üzeri) yükleyip
+1. Kopyalanacak toplam dosya ve dizin sayısını belirleme.
 
-   For example, use the Avere utility ``prime.py`` with arguments ```prime.py --directory /path/to/some/directory``` (available by downloading url <https://github.com/Azure/Avere/blob/master/src/clientapps/dataingestor/prime.py>).
+   Örneğin, avere yardımcı programını ``prime.py`` bağımsız değişkenlerle ```prime.py --directory /path/to/some/directory``` kullanın (URL <https://github.com/Azure/Avere/blob/master/src/clientapps/dataingestor/prime.py>indirerek kullanılabilir).
 
-   If not using ``prime.py``, you can calculate the number of items with the GNU ``find`` tool as follows:
+   ``prime.py``kullanmıyorsanız, GNU ``find`` aracıyla birlikte öğe sayısını aşağıdaki şekilde hesaplayabilirsiniz:
 
    ```bash
    find <path> -type f |wc -l         # (counts files)
@@ -303,29 +303,29 @@ To use ``msrsync`` to populate an Azure cloud volume with an Avere cluster, foll
    find <path> |wc -l                 # (counts both)
    ```
 
-1. Divide the number of items by 64 to determine the number of items per process. Use this number with the ``-f`` option to set the size of the buckets when you run the command.
+1. İşlem başına öğe sayısını öğrenmek için öğe sayısını 64 göre bölün. Komutu çalıştırdığınızda demetlerin boyutunu ayarlamak için bu sayıyı ``-f`` seçeneğiyle kullanın.
 
-1. Issue the ``msrsync`` command to copy files:
+1. Dosyaları kopyalamak için ``msrsync`` komutunu verme:
 
    ```bash
    msrsync -P --stats -p 64 -f <ITEMS_DIV_64> --rsync "-ahv" <SOURCE_PATH> <DESTINATION_PATH>
    ```
 
-   If using ``--inplace``, add a second execution without the option to check that the data is correctly copied:
+   ``--inplace``kullanıyorsanız, verilerin doğru şekilde kopyalanıp kopyalanmayacağını denetlemek için seçeneği olmadan ikinci bir yürütme ekleyin:
 
    ```bash
    msrsync -P --stats -p 64 -f <ITEMS_DIV_64> --rsync "-ahv --inplace" <SOURCE_PATH> <DESTINATION_PATH> && msrsync -P --stats -p 64 -f <ITEMS_DIV_64> --rsync "-ahv" <SOURCE_PATH> <DESTINATION_PATH>
    ```
 
-   For example, this command is designed to move 11,000 files in 64 processes from /test/source-repository to /mnt/vfxt/repository:
+   Örneğin, bu komut, 11.000 64 dosyalarını/test/source-Repository 'den/mnt/vfxt/Repository dizinine taşımak için tasarlanmıştır:
 
    ``msrsync -P --stats -p 64 -f 170 --rsync "-ahv --inplace" /test/source-repository/ /mnt/vfxt/repository && msrsync -P --stats -p 64 -f 170 --rsync "-ahv --inplace" /test/source-repository/ /mnt/vfxt/repository``
 
-## <a name="use-the-parallel-copy-script"></a>Use the parallel copy script
+## <a name="use-the-parallel-copy-script"></a>Paralel kopya betiğini kullanın
 
-The ``parallelcp`` script also can be useful for moving data to your vFXT cluster's backend storage.
+``parallelcp`` betiği, verileri vFXT kümenizin arka uç depolamasına taşımak için de yararlı olabilir.
 
-The script below will add the executable `parallelcp`. (This script is designed for Ubuntu; if using another distribution, you must install ``parallel`` separately.)
+Aşağıdaki komut dosyası yürütülebilir `parallelcp`ekler. (Bu betik Ubuntu için tasarlanmıştır; başka bir dağıtım kullanılıyorsa ``parallel`` ayrı olarak yüklemelisiniz.)
 
 ```bash
 sudo touch /usr/bin/parallelcp && sudo chmod 755 /usr/bin/parallelcp && sudo sh -c "/bin/cat >/usr/bin/parallelcp" <<EOM
@@ -377,14 +377,14 @@ find \$SOURCE_DIR -mindepth 1 ! -type d -print0 | sed -z "s/\$SOURCE_DIR\///" | 
 EOM
 ```
 
-### <a name="parallel-copy-example"></a>Parallel copy example
+### <a name="parallel-copy-example"></a>Paralel kopya örneği
 
-This example uses the parallel copy script to compile ``glibc`` using source files from the Avere cluster.
+Bu örnek, avere kümesinden kaynak dosyaları kullanarak ``glibc`` derlemek için paralel kopyalama betiğini kullanır.
 <!-- xxx what is stored where? what is 'the avere cluster mount point'? xxx -->
 
-The source files are stored on the Avere cluster mount point, and the object files are stored on the local hard drive.
+Kaynak dosyalar avere kümesi bağlama noktasında depolanır ve nesne dosyaları yerel sabit sürücüde depolanır.
 
-This script uses parallel copy script above. The option ``-j`` is used with ``parallelcp`` and ``make`` to gain parallelization.
+Bu betik, yukarıdaki paralel kopya betiğini kullanır. ``-j`` seçeneği, paralel hale getirme kazanmak için ``parallelcp`` ve ``make`` kullanılır.
 
 ```bash
 sudo apt-get update

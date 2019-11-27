@@ -1,6 +1,6 @@
 ---
-title: Disaster recovery using Azure DNS and Traffic Manager | Microsoft Docs
-description: Overview of the disaster recovery solutions using Azure DNS and Traffic Manager.
+title: Azure DNS ve Traffic Manager kullanarak olağanüstü durum kurtarma | Microsoft Docs
+description: Azure DNS ve Traffic Manager kullanarak olağanüstü durum kurtarma çözümlerine genel bakış.
 services: dns
 documentationcenter: na
 author: KumudD
@@ -24,88 +24,88 @@ ms.locfileid: "74483529"
 ---
 # <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>Azure DNS ve Traffic Manager kullanarak olağanüstü durum kurtarma
 
-Disaster recovery focuses on recovering from a severe loss of application functionality. In order to choose a disaster recovery solution, business and technology owners must first determine the level of functionality that is required during a disaster, such as - unavailable, partially available via reduced functionality, or delayed availability, or fully available.
-Most enterprise customers are choosing a multi-region architecture for resiliency against an application or infrastructure level failover. Customers can choose several approaches in the quest to achieve failover and high availability via redundant architecture. Here are some of the popular approaches:
+Olağanüstü durum kurtarma, uygulama işlevselliğinin önemli bir kaybından kurtarılmasına odaklanır. Bir olağanüstü durum kurtarma çözümü seçmek için, iş ve teknoloji sahipleri öncelikle, bir olağanüstü durum (örneğin, azaltılmış işlevsellik veya gecikmeli kullanılabilirlik aracılığıyla kısmen kullanılabilir) veya tam kullanılabilir.
+Çoğu kurumsal müşteri, uygulama veya altyapı düzeyinde yük devretmeye karşı dayanıklılık için çok bölgeli bir mimari seçmektir. Müşteriler, ek mimari aracılığıyla yük devretme ve yüksek kullanılabilirlik elde etmek için, bu mühendisde çeşitli yaklaşımlar seçebilirler. Popüler yaklaşımlardan bazıları şunlardır:
 
-- **Active-passive with cold standby**: In this failover solution, the VMs and other appliances that are running in the standby region are not active until there is a need for failover. However, the production environment is replicated in the form of backups, VM images, or Resource Manager templates, to a different region. This failover mechanism is cost-effective but takes a longer time to undertake a complete failover.
+- **Etkin-edilgen soğuk bekleme**: Bu yük devretme çözümünde, yük devretme için gerekli olana kadar VM 'ler ve bekleme bölgesinde çalışan diğer gereçler etkin değildir. Ancak, üretim ortamı yedekler, VM görüntüleri veya Kaynak Yöneticisi şablonları şeklinde farklı bir bölgeye çoğaltılır. Bu yük devretme mekanizması düşük maliyetli, ancak tam yük devretme işleminin daha uzun sürmesine neden olur.
  
-    ![Active/Passive with cold standby](./media/disaster-recovery-dns-traffic-manager/active-passive-with-cold-standby.png)
+    ![Soğuk bekleme ile etkin/Pasif](./media/disaster-recovery-dns-traffic-manager/active-passive-with-cold-standby.png)
     
-    *Figure - Active/Passive with cold standby disaster recovery configuration*
+    *Şekil-soğuk bekleme olağanüstü durum kurtarma yapılandırması ile etkin/Pasif*
 
-- **Active/Passive with pilot light**: In this failover solution, the standby environment is set up with a minimal configuration. The setup has only the necessary services running to support only a minimal and critical set of applications. In its native form, this scenario can only execute minimal functionality but can scale up and spawn additional services to take bulk of the production load if a failover occurs.
+- **Etkin/Pasif ve pilot ışığı**: Bu yük devretme çözümünde, bekleme ortamı en düşük yapılandırmayla ayarlanır. Kurulum yalnızca en az ve kritik bir uygulama kümesini desteklemek için çalışan gerekli hizmetleri içerir. Bu senaryo, yerel biçiminde yalnızca minimum işlevleri yürütebilir ancak yük devretme gerçekleşirse üretim yükünü toplu olarak almak için ek hizmetler oluşturabilir ve oluşturabilir.
     
-    ![Active/Passive with pilot light](./media/disaster-recovery-dns-traffic-manager/active-passive-with-pilot-light.png)
+    ![Pilot hafif etkin/Pasif](./media/disaster-recovery-dns-traffic-manager/active-passive-with-pilot-light.png)
     
-    *Figure: Active/Passive with pilot light disaster recovery configuration*
+    *Şekil: pilot hafif olağanüstü durum kurtarma yapılandırması ile etkin/Pasif*
 
-- **Active/Passive with warm standby**: In this failover solution, the standby region is pre-warmed and is ready to take the base load, auto scaling is turned on, and all the instances are up and running. This solution is not scaled to take the full production load but is functional, and all services are up and running. This solution is an augmented version of the pilot light approach.
+- **Etkin/Pasif Ile etkin/Pasif**: Bu yük devretme çözümünde, bekleme bölgesi önceden çarpımış olur ve temel yükü almaya hazır, otomatik ölçeklendirme açıktır ve tüm örnekler çalışır durumda olur. Bu çözüm, tam üretim yükünü alacak, ancak işlevsel ve tüm hizmetler çalışır duruma sahip olmak için ölçeklendirilmez. Bu çözüm, pilot ışığı yaklaşımının genişletilmiş bir sürümüdür.
     
-    ![Active/Passive with warm standby](./media/disaster-recovery-dns-traffic-manager/active-passive-with-warm-standby.png)
+    ![Yarı etkin bekleme ile etkin/Pasif](./media/disaster-recovery-dns-traffic-manager/active-passive-with-warm-standby.png)
     
-    *Figure: Active/Passive with warm standby disaster recovery configuration*
+    *Şekil: etkin/Pasif olağanüstü durum kurtarma yapılandırması*
     
-To learn more about failover and high availability, see [Disaster Recovery for Azure Applications](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications).
+Yük devretme ve yüksek kullanılabilirlik hakkında daha fazla bilgi edinmek için bkz. [Azure uygulamaları Için olağanüstü durum kurtarma](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications).
 
 
-## <a name="planning-your-disaster-recovery-architecture"></a>Planning your disaster recovery architecture
+## <a name="planning-your-disaster-recovery-architecture"></a>Olağanüstü durum kurtarma mimarinizi planlama
 
-There are two technical aspects towards setting up your disaster recovery architecture:
--  Using a deployment mechanism to replicate instances, data, and configurations between primary and standby environments. This type of disaster recovery can be done natively via Azure Site-Recovery via Microsoft Azure partner appliances/services like Veritas or NetApp. 
-- Developing a solution to divert network/web traffic from the primary site to the standby site. This type of disaster recovery can be achieved via Azure DNS, Azure Traffic Manager(DNS), or third-party global load balancers.
+Olağanüstü durum kurtarma mimarinizi ayarlamanın iki teknik yönü vardır:
+-  Birincil ve bekleme ortamları arasında örnekleri, verileri ve konfigürasyonları çoğaltmak için bir dağıtım mekanizması kullanma. Bu tür olağanüstü durum kurtarma, Azure Site Recovery aracılığıyla, VERITAS veya NetApp gibi Microsoft Azure iş ortağı gereçlerine göre yerel olarak yapılabilir. 
+- Birincil siteden bekleme sitesine ağ/web trafiği için bir çözüm geliştirme. Bu tür olağanüstü durum kurtarma Azure DNS, Azure Traffic Manager (DNS) veya üçüncü taraf küresel yük dengeleyiciler aracılığıyla elde edilebilir.
 
-This article is limited to approaches via Network and Web traffic redirection. For instructions to set up Azure Site Recovery, see [Azure Site Recovery Documentation](https://docs.microsoft.com/azure/site-recovery/).
-DNS is one of the most efficient mechanisms to divert network traffic because DNS is often global and external to the data center and is insulated from any regional or availability zone (AZ) level failures. One can use a DNS-based failover mechanism and in Azure, two DNS services can accomplish the same in some fashion - Azure DNS (authoritative DNS) and Azure Traffic Manager (DNS-based smart traffic routing). 
+Bu makale ağ ve web trafiği yeniden yönlendirme aracılığıyla yaklaşımlar ile sınırlıdır. Azure Site Recovery ayarlama yönergeleri için bkz. [Azure Site Recovery belgeleri](https://docs.microsoft.com/azure/site-recovery/).
+DNS genellikle genel ve veri merkezine ait olduğundan ve bölge veya kullanılabilirlik bölgesi (AZ) düzeyindeki hatalardan ayrı olduğundan, ağ trafiğini incelemek için en verimli mekanizmalardan biridir. Bunlardan biri DNS tabanlı yük devretme mekanizmasını kullanabilir ve Azure 'da iki DNS hizmeti, bazı moda Azure DNS (yetkili DNS) ve Azure Traffic Manager (DNS tabanlı akıllı trafik yönlendirme) ile aynı işlemi gerçekleştirebilir. 
 
-It is important to understand few concepts in DNS that are extensively used to discuss the solutions provided in this article:
-- **DNS A Record** – A Records are pointers that point a domain to an IPv4 address. 
-- **CNAME or Canonical name** - This record type is used to point to another DNS record. CNAME doesn’t respond with an IP address but rather the pointer to the record that contains the IP address. 
-- **Weighted Routing** – one can choose to associate a weight to service endpoints and then distribute the traffic based on the assigned weights. This routing method is one of the four traffic routing mechanisms available within Traffic Manager. For more information, see [Weighted routing method](../traffic-manager/traffic-manager-routing-methods.md#weighted).
-- **Priority Routing** – Priority routing is based on health checks of endpoints. By default, Azure Traffic manager sends all traffic to the highest priority endpoint, and upon a failure or disaster, Traffic Manager routes the traffic to the secondary endpoint. For more information, see [Priority routing method](../traffic-manager/traffic-manager-routing-methods.md#priority-traffic-routing-method).
+Bu makalede sunulan çözümleri tartışmak için yaygın olarak kullanılan DNS 'in bazı kavramlarını anlamak önemlidir:
+- **DNS A kaydı** – bir kayıt, bir etki alanını IPv4 adresine işaret eden işaretçilerdir. 
+- **CNAME veya kurallı ad** -bu kayıt türü, başka bir DNS kaydına işaret etmek için kullanılır. CNAME bir IP adresi ile yanıt vermez, bunun yerine IP adresini içeren kayda yönelik işaretçi. 
+- **Ağırlıklı yönlendirme** – bir ağırlığı hizmet uç noktalarına ilişkilendirmeyi ve ardından, atanan ağırlıklara göre trafiği dağıtmayı seçebilir. Bu yönlendirme yöntemi, Traffic Manager içinde kullanılabilen dört trafik yönlendirme mekanizmalarından biridir. Daha fazla bilgi için bkz. [ağırlıklı yönlendirme yöntemi](../traffic-manager/traffic-manager-routing-methods.md#weighted).
+- **Öncelik yönlendirme** – öncelikli yönlendirme, uç noktaların durum denetimlerini temel alır. Varsayılan olarak, Azure Traffic Manager tüm trafiği en yüksek öncelikli uç noktaya gönderir ve bir hata ya da olağanüstü durum Traffic Manager, trafiği ikincil uç noktaya yönlendirir. Daha fazla bilgi için bkz. [Öncelik yönlendirme yöntemi](../traffic-manager/traffic-manager-routing-methods.md#priority-traffic-routing-method).
 
-## <a name="manual-failover-using-azure-dns"></a>Manual failover using Azure DNS
-The Azure DNS manual failover solution for disaster recovery uses the standard DNS mechanism to failover to the backup site. The manual option via Azure DNS works best when used in conjunction with the cold standby or the pilot light approach. 
+## <a name="manual-failover-using-azure-dns"></a>Azure DNS kullanarak el ile yük devretme
+Olağanüstü durum kurtarma için Azure DNS el ile yük devretme çözümü, yedekleme sitesine yük devretmek için standart DNS mekanizmasını kullanır. Azure DNS aracılığıyla el ile seçeneği, soğuk bekleme veya pilot ışığı yaklaşımıyla birlikte kullanıldığında en iyi şekilde çalışmaktadır. 
 
-![Manual failover using Azure DNS](./media/disaster-recovery-dns-traffic-manager/manual-failover-using-dns.png)
+![Azure DNS kullanarak el ile yük devretme](./media/disaster-recovery-dns-traffic-manager/manual-failover-using-dns.png)
 
-*Figure - Manual failover using Azure DNS*
+*Şekil-Azure DNS kullanarak el Ile yük devretme*
 
-The assumptions made for the solution are:
-- Both primary and secondary endpoints have static IPs that don’t change often. Say for the primary site the IP is 100.168.124.44 and the IP for the secondary site is 100.168.124.43.
-- An Azure DNS zone exists for both the primary and secondary site. Say for the primary site the endpoint is prod.contoso.com and for the backup site is dr.contoso.com. A DNS record for the main application known as www\.contoso.com also exists.   
-- The TTL is at or below the RTO SLA set in the organization. For example, if an enterprise sets the RTO of the application disaster response to be 60 mins, then the TTL should be less than 60 mins, preferably the lower the better. 
-  You can set up Azure DNS for manual failover as follows:
+Çözüm için yapılan varsayımlar şunlardır:
+- Birincil ve ikincil uç noktalarında, genellikle değişmeyen statik IP 'Ler vardır. Birincil site için IP 'nin 100.168.124.44 ve ikincil sitenin IP 'si 100.168.124.43.
+- Birincil ve ikincil site için bir Azure DNS bölgesi bulunur. Birincil site için bitiş noktası prod.contoso.com ve yedekleme sitesi için dr.contoso.com. Www\.contoso.com olarak bilinen ana uygulama için bir DNS kaydı da mevcuttur.   
+- TTL, kuruluşta ayarlanan RTO SLA 'nın altında veya altında. Örneğin, bir kuruluş uygulama olağanüstü durum yanıtının RTO 'ı 60 dakika olarak ayarladığında, TTL en az 60 dakika olmalıdır, tercihen daha iyi olur. 
+  El ile yük devretme için Azure DNS aşağıdaki gibi ayarlayabilirsiniz:
 - DNS bölgesi oluşturma
-- Create DNS zone records
-- Update CNAME record
+- DNS bölge kayıtları oluşturma
+- CNAME kaydını Güncelleştir
 
-### <a name="step-1-create-a-dns"></a>Step 1: Create a DNS
-Create a DNS zone (for example, www\.contoso.com) as shown below:
+### <a name="step-1-create-a-dns"></a>1\. Adım: DNS oluşturma
+Aşağıda gösterildiği gibi bir DNS bölgesi (örneğin, www\.contoso.com) oluşturun:
 
-![Create a DNS zone in Azure](./media/disaster-recovery-dns-traffic-manager/create-dns-zone.png)
+![Azure 'da bir DNS bölgesi oluşturma](./media/disaster-recovery-dns-traffic-manager/create-dns-zone.png)
 
-*Figure - Create a DNS zone in Azure*
+*Şekil-Azure 'da bir DNS bölgesi oluşturma*
 
-### <a name="step-2-create-dns-zone-records"></a>Step 2: Create DNS zone records
+### <a name="step-2-create-dns-zone-records"></a>2\. Adım: DNS bölge kayıtları oluşturma
 
-Within this zone create three records (for example - www\.contoso.com, prod.contoso.com and dr.consoto.com) as show below.
+Bu bölge içinde, aşağıda gösterildiği gibi üç kayıt (örneğin, www\.contoso.com, prod.contoso.com ve dr.consoto.com) oluşturun.
 
-![Create DNS zone records](./media/disaster-recovery-dns-traffic-manager/create-dns-zone-records.png)
+![DNS bölge kayıtları oluşturma](./media/disaster-recovery-dns-traffic-manager/create-dns-zone-records.png)
 
-*Figure - Create DNS zone records in Azure*
+*Şekil-Azure 'da DNS bölge kayıtları oluşturma*
 
-In this scenario, site, www\.contoso.com has a TTL of 30 mins, which is well below the stated RTO, and is pointing to the production site prod.contoso.com. This configuration is during normal business operations. The TTL of prod.contoso.com and dr.contoso.com has been set to 300 seconds or 5 mins. You can use an Azure monitoring service such as Azure Monitor or Azure App Insights, or, any partner monitoring solutions such as Dynatrace, You can even use home grown solutions that can monitor or detect application or virtual infrastructure level failures.
+Bu senaryoda, www\.contoso.com, 30 dakikalık bir TTL 'e sahiptir ve bu, belirtilen RTO 'ın altında iyi bir değer olan ve prod.contoso.com üretim sitesini işaret ediyor. Bu yapılandırma normal iş işlemleri sırasında yapılır. Prod.contoso.com ve dr.contoso.com TTL değeri 300 saniye veya 5 dakika olarak ayarlanmıştır. Azure Izleyici veya Azure Application Insights gibi bir Azure izleme hizmeti ya da dynaTrace gibi herhangi bir iş ortağı izleme çözümü kullanarak, uygulama veya sanal altyapı düzeyindeki sorunları izleyebildiği veya algılayan ev büyüme çözümlerini de kullanabilirsiniz.
 
-### <a name="step-3-update-the-cname-record"></a>Step 3: Update the CNAME record
+### <a name="step-3-update-the-cname-record"></a>3\. Adım: CNAME kaydını güncelleştirme
 
-Once failure is detected, change the record value to point to dr.contoso.com as shown below:
+Hata algılandıktan sonra, aşağıda gösterildiği gibi, kayıt değerini dr.contoso.com işaret etmek üzere değiştirin:
        
-![Update CNAME record](./media/disaster-recovery-dns-traffic-manager/update-cname-record.png)
+![CNAME kaydını Güncelleştir](./media/disaster-recovery-dns-traffic-manager/update-cname-record.png)
 
-*Figure - Update the CNAME record in Azure*
+*Şekil-Azure 'da CNAME kaydını güncelleştirme*
 
-Within 30 minutes, during which most resolvers will refresh the cached zone file, any query to www\.contoso.com will be redirected to dr.contoso.com.
-You can also run the following Azure CLI command to change the CNAME value:
+30 dakika içinde, çoğu çözümleyiciler önbelleğe alınmış bölge dosyasını yenilediğinde, www\.contoso.com 'e yönelik herhangi bir sorgu dr.contoso.com 'e yeniden yönlendirilir.
+CNAME değerini değiştirmek için aşağıdaki Azure CLı komutunu da çalıştırabilirsiniz:
  ```azurecli
    az network dns record-set cname set-record \
    --resource-group 123 \
@@ -113,63 +113,63 @@ You can also run the following Azure CLI command to change the CNAME value:
    --record-set-name www \
    --cname dr.contoso.com
 ```
-This step can be executed manually or via automation. It can be done manually via the console or by the Azure CLI. The Azure SDK and API can be used to automate the CNAME update so that no manual intervention is required. Automation can be built via Azure functions or within a third-party monitoring application or even from on- premises.
+Bu adım el ile veya Otomasyon aracılığıyla çalıştırılabilir. Konsol veya Azure CLı aracılığıyla el ile yapılabilir. Azure SDK ve API, el ile müdahale gerekmeden CNAME güncelleştirmesini otomatikleştirmek için kullanılabilir. Otomasyon, Azure işlevleri aracılığıyla veya bir üçüncü taraf izleme uygulamasında veya Şirket içinden bile oluşturulabilir.
 
-### <a name="how-manual-failover-works-using-azure-dns"></a>How manual failover works using Azure DNS
-Since the DNS server is outside the failover or disaster zone, it is insulated against any downtime. This enables user to architect a simple failover scenario that is cost effective and will work all the time assuming that the operator has network connectivity during disaster and can make the flip. If the solution is scripted, then one must ensure that the server or service running the script should be insulated against the problem affecting the production environment. Also, keep in mind the low TTL that was set against the zone so that no resolver around the world keeps the endpoint cached for long and customers can access the site within the RTO. For a cold standby and pilot light, since some prewarming and other administrative activity may be required – one should also give enough time before making the flip.
+### <a name="how-manual-failover-works-using-azure-dns"></a>Azure DNS kullanarak el ile yük devretme nasıl kullanılır
+DNS sunucusu yük devretme veya olağanüstü durum bölgesinin dışında olduğundan, herhangi bir kesinti kesintiye karşı yalıtılmış olur. Bu, kullanıcının uygun maliyetli olan basit bir yük devretme senaryosunu mimarmasına olanak sağlar ve işlecin olağanüstü durum sırasında ağ bağlantısına sahip olduğunu ve ters çevirmeyi yapıp yapacağını kabul eden tüm zamanı işler. Çözüm komut dosyasıyla karşılaşırsanız, bunlardan biri, betiği çalıştıran sunucu veya hizmetin, üretim ortamını etkileyen soruna karşı yalıtılmış olmasını sağlamalıdır. Ayrıca, dünyanın her yerindeki bir çözümleyici bitiş noktasının uzun süre önbelleğe alınmasını ve müşterilerin RTO içindeki siteye erişmesini sağlamak için bölgeye göre ayarlanan düşük TTL 'yi aklınızda bulundurun. Bir soğuk bekleme ve pilot ışığı için, bir veya daha fazla yönetim etkinliği gerekli olabileceğinden, tek yapmanız gereken bir süre sonra da geçiş yapmadan önce yeterli zaman vermelidir.
 
-## <a name="automatic-failover-using-azure-traffic-manager"></a>Automatic failover using Azure Traffic Manager
-When you have complex architectures and multiple sets of resources capable of performing the same function, you can configure Azure Traffic Manager (based on DNS) to check the health of your resources and route the traffic from the non-healthy resource to the healthy resource. In the following example, both the primary region and the secondary region have a full deployment. This deployment includes the cloud services and a synchronized database. 
+## <a name="automatic-failover-using-azure-traffic-manager"></a>Azure Traffic Manager kullanarak otomatik yük devretme
+Karmaşık mimarilerin ve aynı işlevi gerçekleştirebilen birden çok kaynak kümesi olduğunda, kaynaklarınızın sistem durumunu denetlemek ve trafiği sağlıklı olmayan kaynaktan sağlıklı şekilde yönlendirmek için Azure Traffic Manager (DNS tabanlı) yapılandırabilirsiniz. Kaynak. Aşağıdaki örnekte, hem birincil bölgenin hem de ikincil bölgenin tam dağıtımı vardır. Bu dağıtım, bulut hizmetlerini ve eşitlenmiş bir veritabanını içerir. 
 
-![Automatic failover using Azure Traffic Manager](./media/disaster-recovery-dns-traffic-manager/automatic-failover-using-traffic-manager.png)
+![Azure Traffic Manager kullanarak otomatik yük devretme](./media/disaster-recovery-dns-traffic-manager/automatic-failover-using-traffic-manager.png)
 
-*Figure - Automatic failover using Azure Traffic Manager*
+*Şekil-Azure Traffic Manager kullanarak otomatik yük devretme*
 
-However, only the primary region is actively handling network requests from the users. The secondary region becomes active only when the primary region experiences a service disruption. In that case, all new network requests route to the secondary region. Since the backup of the database is near instantaneous, both the load balancers have IPs that can be health checked, and the instances are always up and running, this topology provides an option for going in for a low RTO and failover without any manual intervention. The secondary failover region must be ready to go-live immediately after failure of the primary region.
-This scenario is ideal for the use of Azure Traffic Manager that has inbuilt probes for various types of health checks including http / https and TCP. Azure Traffic manager also has a rule engine that can be configured to failover when a failure occurs as described below. Let’s consider the following solution using Traffic Manager:
-- Customer has the Region #1 endpoint known as prod.contoso.com with a static IP as 100.168.124.44 and a Region #2 endpoint known as dr.contoso.com with a static IP as 100.168.124.43. 
--   Each of these environments is fronted via a public facing property like a load balancer. The load balancer can be configured to have a DNS-based endpoint or a fully qualified domain name (FQDN) as shown above.
--   All the instances in Region 2 are in near real-time replication with Region 1. Furthermore, the machine images are up-to-date, and all software/configuration data is patched and are in line with Region 1.  
--   Autoscaling is preconfigured in advance. 
+Ancak, yalnızca birincil bölge, kullanıcılardan gelen ağ isteklerini etkin bir şekilde işliyor. İkincil bölge yalnızca birincil bölge bir hizmet kesintisi yaşıyorsa etkin hale gelir. Bu durumda, tüm yeni ağ istekleri ikincil bölgeye yönlendirir. Veritabanının yedeklemesi anlık bir yerde olduğundan, her iki yük dengeleyicinin sistem durumu denetimli bir IP 'si vardır ve örnekler her zaman çalışır durumda olur ve bu topoloji, el ile müdahale olmadan düşük RTO ve yük devretme için bir seçenek sunar. Birincil bölgenin hatasından sonra, ikincil yük devretme bölgesinin hemen ardından etkin olması gerekir.
+Bu senaryo, http/https ve TCP gibi çeşitli türlerde sistem durumu denetimleri için yerleşik yoklamalar içeren Azure Traffic Manager kullanımı için idealdir. Azure Traffic Manager 'da Ayrıca, aşağıda açıklandığı gibi bir hata oluştuğunda yük devretmek üzere yapılandırılabilecek bir kural altyapısı vardır. Traffic Manager kullanarak aşağıdaki çözümü ele alalım:
+- Müşteri, prod.contoso.com olarak bilinen ve statik IP 'si 100.168.124.44 olarak bilinen bir #2 bölge #1 uç noktası olan bölgeye sahiptir. 
+-   Bu ortamların her biri, yük dengeleyici gibi genel kullanıma yönelik bir özellik aracılığıyla alınmıştır. Yük dengeleyici, yukarıda gösterildiği gibi, DNS tabanlı bir uç noktaya veya tam etki alanı adına (FQDN) sahip olacak şekilde yapılandırılabilir.
+-   Bölge 2 ' deki tüm örnekler, bölge 1 ' de neredeyse gerçek zamanlı çoğaltmada bulunur. Ayrıca, makine görüntüleri güncel olur ve tüm yazılım/yapılandırma verileri düzeltme eki uygulanır ve bölge 1 ' de yer alan bir satır içinde bulunur.  
+-   Otomatik ölçeklendirme önceden yapılandırılmıştır. 
 
-The steps taken to configure the failover with Azure Traffic Manager are as follows:
-1. Create a new Azure Traffic Manager profile
-2. Create endpoints within the Traffic Manager profile
-3. Set up health check and failover configuration
+Azure Traffic Manager ile yük devretmeyi yapılandırmak için uygulanan adımlar şunlardır:
+1. Yeni bir Azure Traffic Manager profili oluşturma
+2. Traffic Manager profili içinde uç noktalar oluşturma
+3. Sistem durumu denetimi ve yük devretme yapılandırmasını ayarlama
 
-### <a name="step-1-create-a-new-azure-traffic-manager-profile"></a>Step 1: Create a new Azure Traffic Manager profile
-Create a new Azure Traffic manager profile with the name contoso123 and select the Routing method as Priority. If you have a pre-existing resource group that you want to associate with, then you can select an existing resource group, otherwise, create a new resource group.
+### <a name="step-1-create-a-new-azure-traffic-manager-profile"></a>1\. Adım: yeni bir Azure Traffic Manager profili oluşturma
+Contoso123 adlı yeni bir Azure Traffic Manager profili oluşturun ve yönlendirme yöntemini öncelik olarak seçin. İlişkilendirmek istediğiniz önceden var olan bir kaynak grubunuz varsa, var olan bir kaynak grubunu seçebilirsiniz, aksi takdirde yeni bir kaynak grubu oluşturabilirsiniz.
 
-![Create Traffic Manager profile](./media/disaster-recovery-dns-traffic-manager/create-traffic-manager-profile.png)
+![Traffic Manager profili oluşturma](./media/disaster-recovery-dns-traffic-manager/create-traffic-manager-profile.png)
 
-*Figure - Create a Traffic Manager profile*
+*Şekil-Traffic Manager profili oluşturma*
 
-### <a name="step-2-create-endpoints-within-the-traffic-manager-profile"></a>Step 2: Create endpoints within the Traffic Manager profile
+### <a name="step-2-create-endpoints-within-the-traffic-manager-profile"></a>2\. Adım: Traffic Manager profili içinde uç noktalar oluşturma
 
-In this step, you create endpoints that point to the production and disaster recovery sites. Here, choose the **Type** as an external endpoint, but if the resource is hosted in Azure, then you can choose **Azure endpoint** as well. If you choose **Azure endpoint**, then select a **Target resource** that is either an **App Service** or a **Public IP** that is allocated by Azure. The priority is set as **1** since it is the primary service for Region 1.
-Similarly, create the disaster recovery endpoint within Traffic Manager as well.
+Bu adımda, üretim ve olağanüstü durum kurtarma sitelerine işaret eden uç noktalar oluşturursunuz. Burada, bir dış uç nokta olarak **türü** seçin, ancak kaynak Azure 'Da barındırılıyorsa **Azure uç noktası** ' nı da seçebilirsiniz. **Azure uç noktası**' nı seçerseniz, Azure tarafından ayrılan **App SERVICE** veya **genel IP** olan bir **hedef kaynak** seçin. Öncelik 1, bölge 1 ' in birincil hizmeti olduğundan **1** olarak ayarlanır.
+Benzer şekilde, Traffic Manager de olağanüstü durum kurtarma uç noktası oluşturun.
 
-![Create disaster recovery endpoints](./media/disaster-recovery-dns-traffic-manager/create-disaster-recovery-endpoint.png)
+![Olağanüstü durum kurtarma uç noktaları oluşturma](./media/disaster-recovery-dns-traffic-manager/create-disaster-recovery-endpoint.png)
 
-*Figure - Create disaster recovery endpoints*
+*Şekil-olağanüstü durum kurtarma uç noktaları oluşturma*
 
-### <a name="step-3-set-up-health-check-and-failover-configuration"></a>Step 3: Set up health check and failover configuration
+### <a name="step-3-set-up-health-check-and-failover-configuration"></a>3\. Adım: sistem durumu denetimi ve yük devretme yapılandırmasını ayarlama
 
-In this step, you set the DNS TTL to 10 seconds, which is honored by most internet-facing recursive resolvers. This configuration means that no DNS resolver will cache the information for more than 10 seconds. For the endpoint monitor settings, the path is current set at / or root, but you can customize the endpoint settings to evaluate a path, for example, prod.contoso.com/index. The example below shows the **https** as the probing protocol. However, you can choose **http** or **tcp** as well. The choice of protocol depends upon the end application. The probing interval is set to 10 seconds, which enables fast probing, and the retry is set to 3. As a result, Traffic Manager will failover to the second endpoint if three consecutive intervals register a failure. The following formula defines the total time for an automated failover: Time for failover = TTL + Retry * Probing interval And in this case, the value is 10 + 3 * 10 = 40 seconds (Max).
-If the Retry is set to 1 and TTL is set to 10 secs, then the time for failover 10 + 1 * 10 = 20 seconds. Set the Retry to a value greater than **1** to eliminate chances of failovers due to false positives or any minor network blips. 
+Bu adımda, DNS TTL 'sini, internet 'e yönelik özyinelemeli çözümleyicilerleyenler tarafından kabul edilecek şekilde 10 saniye olarak ayarlarsınız. Bu yapılandırma, hiçbir DNS Çözümleyicisinin 10 saniyeden uzun süre içinde bilgi önbelleğe alacağını belirtir. Uç nokta izleyici ayarları için, yol/veya root geçerli kümesidir, ancak bir yolu değerlendirmek için uç nokta ayarlarını özelleştirebilirsiniz, örneğin, prod.contoso.com/index. Aşağıdaki örnekte, yoklama protokolü olarak **https** gösterilmektedir. Ancak, **http** veya **TCP** de seçebilirsiniz. Protokol seçimi, son uygulamaya bağlıdır. Yoklama aralığı, hızlı yoklama sağlayan 10 saniye olarak ayarlanır ve yeniden deneme 3 olarak ayarlanır. Sonuç olarak, üç ardışık Aralık bir hata kaydetmede Traffic Manager ikinci uç noktaya devreder. Aşağıdaki formül otomatik yük devretme için toplam süreyi tanımlar: yük devretme için süre = TTL + yeniden dene * yoklama aralığı ve bu durumda, değer 10 + 3 * 10 = 40 saniye (max) olur.
+Yeniden deneme 1 olarak ayarlanmışsa ve TTL 10 saniye olarak ayarlanırsa, yük devretme 10 + 1 * 10 = 20 saniye için zaman. Hatalı pozitif sonuçlar veya herhangi bir küçük ağ hüşileri nedeniyle yük devretme olasılığını ortadan kaldırmak için yeniden denemeyi **1** ' den büyük bir değere ayarlayın. 
 
 
-![Set up health check](./media/disaster-recovery-dns-traffic-manager/set-up-health-check.png)
+![Sistem durumu denetimini ayarlama](./media/disaster-recovery-dns-traffic-manager/set-up-health-check.png)
 
-*Figure - Set up health check and failover configuration*
+*Şekil-sistem durumu denetimi ve yük devretme yapılandırmasını ayarlama*
 
-### <a name="how-automatic-failover-works-using-traffic-manager"></a>How automatic failover works using Traffic Manager
+### <a name="how-automatic-failover-works-using-traffic-manager"></a>Otomatik yük devretme Traffic Manager kullanarak nasıl kullanılır
 
-During a disaster, the primary endpoint gets probed and the status changes to **degraded** and the disaster recovery site remains **Online**. By default, Traffic Manager sends all traffic to the primary (highest-priority) endpoint. If the primary endpoint appears degraded, Traffic Manager routes the traffic to the second endpoint as long as it remains healthy. One has the option to configure more endpoints within Traffic Manager that can serve as additional failover endpoints, or, as load balancers sharing the load between endpoints.
+Bir olağanüstü durum sırasında, birincil uç nokta denetlenir ve durum **düşürülmüş** olarak değişir ve olağanüstü durum kurtarma sitesi **çevrimiçi**kalır. Varsayılan olarak, Traffic Manager tüm trafiği birincil (en yüksek öncelikli) uç noktaya gönderir. Birincil uç nokta düzeyi düşürülmüş görünüyorsa, Traffic Manager sağlıklı kaldığı sürece trafiği ikinci uç noktaya yönlendirir. Biri, ek yük devretme uç noktaları olarak kullanılabilecek Traffic Manager içinde daha fazla uç nokta yapılandırma seçeneğine sahiptir veya yük dengeleyiciler uç noktalar arasında paylaşımı paylaşıyor.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Learn more about [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md).
-- Learn more about [Azure DNS](../dns/dns-overview.md).
+- [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md)hakkında daha fazla bilgi edinin.
+- [Azure DNS](../dns/dns-overview.md)hakkında daha fazla bilgi edinin.
 
 
 

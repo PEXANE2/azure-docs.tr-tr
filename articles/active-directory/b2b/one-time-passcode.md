@@ -73,7 +73,7 @@ Kabul etme eyleminin etkili olması birkaç dakika sürebilir. Bundan sonra, yal
 1.  [Azure Portal](https://portal.azure.com/) Azure AD Genel Yöneticisi olarak oturum açın.
 2.  Gezinti bölmesinde **Azure Active Directory**' yi seçin.
 3.  **Yönet**altında **Kuruluş ilişkileri**' ni seçin.
-4.  Seçin **ayarları**.
+4.  **Ayarlar**' ı seçin.
 5.  **Konuklar Için tek seferlik geçiş kodunu etkinleştir (Önizleme)** altında **Evet**' i seçin.
  
 ### <a name="to-opt-in-using-powershell"></a>PowerShell 'i kullanmayı kabul etmek için
@@ -140,7 +140,7 @@ Geri çevirme eyleminin etkili olması birkaç dakika sürebilir. Önizlemeyi ka
 1.  [Azure Portal](https://portal.azure.com/) Azure AD Genel Yöneticisi olarak oturum açın.
 2.  Gezinti bölmesinde **Azure Active Directory**' yi seçin.
 3.  **Yönet**altında **Kuruluş ilişkileri**' ni seçin.
-4.  Seçin **ayarları**.
+4.  **Ayarlar**' ı seçin.
 5.  **Konuklar Için tek seferlik geçiş kodunu etkinleştir (Önizleme)** altında **Hayır**' ı seçin.
 
 ### <a name="to-turn-off-the-preview-using-powershell"></a>PowerShell 'i kullanarak önizlemeyi devre dışı bırakmak için

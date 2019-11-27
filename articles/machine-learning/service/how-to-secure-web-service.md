@@ -58,8 +58,8 @@ Zaten bir etki alanı adınız yoksa, bir *etki alanı adı kaydedicisinde*bir t
 
 SSL sertifikası almanın pek çok yolu vardır (dijital sertifika). En yaygın olarak, bir *sertifika yetkilisinden* (CA) bir sertifika satın alımdır. Sertifikayı nereden alacağınız bağımsız olarak, aşağıdaki dosyalar gereklidir:
 
-* A **sertifika**. Sertifika, tam sertifika zincirini içermelidir ve "pek-Encoded" olmalıdır.
-* A **anahtar**. Anahtar Ayrıca pek kodlu olmalıdır.
+* Bir **sertifika**. Sertifika, tam sertifika zincirini içermelidir ve "pek-Encoded" olmalıdır.
+* Bir **anahtar**. Anahtar Ayrıca pek kodlu olmalıdır.
 
 Bir sertifika istediğinizde, Web hizmeti için kullanmayı planladığınız adresin FQDN 'sini sağlamanız gerekir (örneğin, www\.contoso.com). Sertifikaya atılabilecek adres ve istemcilerin kullandığı adres, Web hizmetinin kimliğini doğrulamak için karşılaştırılır. Bu adresler eşleşmezse istemci bir hata iletisi alır.
 

@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Search for videos using the SDK for Node.js - Bing Video Search'
+title: "Hızlı başlangıç: node. js için SDK 'Yı kullanarak videoları arama-Bing Video Arama"
 titleSuffix: Azure Cognitive Services
-description: Use this quickstart to send video search requests using the Bing Video Search SDK for Node.js
+description: Node. js için Bing Video Arama SDK 'sını kullanarak video arama istekleri göndermek için bu hızlı başlangıcı kullanın
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -17,39 +17,39 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383732"
 ---
-# <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-nodejs"></a>Quickstart: Perform a video search with the Bing Video Search SDK for Node.js
+# <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-nodejs"></a>Hızlı başlangıç: node. js için Bing Video Arama SDK ile video araması gerçekleştirme
 
-Use this quickstart to begin searching for news with the Bing Video Search SDK for Node.js. While Bing Video Search has a REST API compatible with most programming languages, the SDK provides an easy way to integrate the service into your applications. The source code for this sample can be found on [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/videoSearch.js). It contains more annotations and features.
+Node. js için Bing Video Arama SDK 'Sı ile haberleri aramaya başlamak için bu hızlı başlangıcı kullanın. Bing Video Arama birçok programlama dili ile uyumlu bir REST API sahip olsa da SDK, hizmeti uygulamalarınızla tümleştirmenin kolay bir yolunu sunar. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/videoSearch.js)' da bulunabilir. Daha fazla ek açıklama ve özellik içerir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [Node.js](https://www.nodejs.org/)
 
-To set up a console application using the Bing Video Search SDK:
-* Run `npm install ms-rest-azure` in your development environment.
-* Run `npm install azure-cognitiveservices-videosearch` in your development environment.
+Bing Video Arama SDK kullanarak bir konsol uygulaması ayarlamak için:
+* Geliştirme ortamınızda `npm install ms-rest-azure` çalıştırın.
+* Geliştirme ortamınızda `npm install azure-cognitiveservices-videosearch` çalıştırın.
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](../../../../includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-the-application"></a>Uygulamayı oluşturma ve başlatma
 
-1. Create a new JavaScript file in your favorite IDE or editor, and add a `require()` statement for the Bing Video Search SDK, and `CognitiveServicesCredentials` module. Create a variable for your subscription key. 
+1. En sevdiğiniz IDE veya düzenleyicide yeni bir JavaScript dosyası oluşturun ve Bing Video Arama SDK ve `CognitiveServicesCredentials` modülü için `require()` bir ifade ekleyin. Abonelik anahtarınız için bir değişken oluşturun. 
     
     ```javascript
     const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
     const VideoSearchAPIClient = require('azure-cognitiveservices-videosearch');
     ```
 
-2. Create an instance of `CognitiveServicesCredentials` with your key. Then use it to create an instance of the video search client.
+2. Anahtarınızla `CognitiveServicesCredentials` bir örnek oluşturun. Daha sonra video arama istemcisinin bir örneğini oluşturmak için bunu kullanın.
 
     ```javascript
     let credentials = new CognitiveServicesCredentials('YOUR-ACCESS-KEY');
     let client = new VideoSearchAPIClient(credentials);
     ```
 
-## <a name="send-the-search-request"></a>Send the search request
+## <a name="send-the-search-request"></a>Arama isteğini gönder
 
-1. Use `client.videosOperations.search()` to send a search request to the Bing Video Search API. When the search results are returned, use `.then()` to log the result.
+1. Bing Video Arama API'si bir arama isteği göndermek için `client.videosOperations.search()` kullanın. Arama sonuçları döndürüldüğünde, sonucu günlüğe kaydetmek için `.then()` kullanın.
     
     ```javascript
     client.videosOperations.search('Interstellar Trailer').then((result) => {
@@ -62,9 +62,9 @@ To set up a console application using the Bing Video Search SDK:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Create a single page web app](../tutorial-bing-video-search-single-page-app.md)
+> [Tek sayfalı Web uygulaması oluşturma](../tutorial-bing-video-search-single-page-app.md)
 
 ## <a name="see-also"></a>Ayrıca bkz. 
 
-* [What is the Bing Video Search API?](../overview.md)
+* [Bing Video Arama API'si nedir?](../overview.md)
 * [Bilişsel Hizmetler .NET SDK örnekleri](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)

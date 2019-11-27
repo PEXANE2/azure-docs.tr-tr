@@ -34,15 +34,15 @@ Tüm uygulamalar için bir bağlayıcı grubu olarak atanır. Ardından gruplar�
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bağlayıcılarınızı grubuna emin olmak sahip [yüklü birden fazla bağlayıcıyı](application-proxy-add-on-premises-application.md). Yeni bir bağlayıcı yükleme sırasında otomatik olarak katılır **varsayılan** bağlayıcı grubu.
+Bağlayıcılarınızı gruplandırmak için [birden çok bağlayıcı yüklediğinizden](application-proxy-add-on-premises-application.md)emin olmanız gerekir. Yeni bir bağlayıcı yüklediğinizde, otomatik olarak **varsayılan** bağlayıcı grubuna katılır.
 
 ## <a name="create-connector-groups"></a>Bağlayıcı grupları oluşturma
 
 İstediğiniz sayıda bağlayıcı grubu oluşturmak için aşağıdaki adımları kullanın.
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
-1. Seçin **Azure Active Directory** > **kurumsal uygulamalar** > **uygulama proxy'si**.
-1. Seçin **yeni bağlayıcı grubu**. Yeni bağlayıcı grubu dikey penceresi görüntülenir.
+1. **Azure Active Directory** **Kurumsal uygulamaları** > **uygulama proxy 'si** > seçin.
+1. **Yeni bağlayıcı grubu**' nu seçin. Yeni bağlayıcı grubu dikey penceresi görüntülenir.
 
    ![Yeni bir bağlayıcı grubu seçmek için ekranı gösterir](./media/application-proxy-connector-groups/new-group.png)
 
@@ -53,9 +53,9 @@ Bağlayıcılarınızı grubuna emin olmak sahip [yüklü birden fazla bağlayı
 
 Uygulama proxy'si ile yayımladığınız her uygulama için bu adımları kullanın. Bir bağlayıcı grubu uygulamaya ilk yayımlamak ya da istediğiniz zaman atamasını değiştirmek için aşağıdaki adımları kullanabilirsiniz atayabilirsiniz.
 
-1. Management panosunda dizininizin **kurumsal uygulamalar** > **tüm uygulamaları** > için bir bağlayıcı grubu atamak istediğiniz uygulamayı > **Uygulama proxy'si**.
-1. Kullanma **bağlayıcı grubu** açılan menüsüne uygulamanın kullanmasını istediğiniz grubu seçin.
-1. Seçin **Kaydet** değişikliği uygulamak için.
+1. Dizininizin Yönetim panosundan **Kurumsal uygulamalar** > **tüm uygulamalar** ' a bir bağlayıcı grubuna atamak Istediğiniz uygulamayı > > **uygulama ara sunucusu**' nu seçin.
+1. Uygulamanın kullanmasını istediğiniz grubu seçmek için **bağlayıcı grubu** açılır menüsünü kullanın.
+1. Değişikliği uygulamak için **Kaydet** ' i seçin.
 
 ## <a name="use-cases-for-connector-groups"></a>Bağlayıcı grupları için kullanım örnekleri
 
@@ -128,5 +128,5 @@ Aşağıdaki örnekte, iki veri merkezleri, A ve B ile hizmet her site iki bağl
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure AD uygulama ara sunucusu bağlayıcıları anlama](application-proxy-connectors.md)
+* [Azure AD Uygulama Ara Sunucusu bağlayıcılarını anlama](application-proxy-connectors.md)
 * [Çoklu oturum açmayı etkinleştirme](what-is-single-sign-on.md)

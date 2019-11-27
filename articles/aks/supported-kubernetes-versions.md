@@ -1,6 +1,6 @@
 ---
-title: Supported Kubernetes versions in Azure Kubernetes Service
-description: Understand the Kubernetes version support policy and lifecycle of clusters in Azure Kubernetes Service (AKS)
+title: Azure Kubernetes hizmetinde desteklenen Kubernetes sürümleri
+description: Azure Kubernetes Service 'teki (AKS) Kubernetes sürüm destek ilkesini ve kümelerin yaşam döngüsünü anlayın
 services: container-service
 author: sauryadas
 ms.service: container-service
@@ -14,15 +14,15 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74484042"
 ---
-# <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Supported Kubernetes versions in Azure Kubernetes Service (AKS)
+# <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde desteklenen Kubernetes sürümleri
 
-Kubernetes topluluğu, küçük sürümleri yaklaşık üç ayda bir yayınlamaktadır. Bu yayınlar yeni özellikler ve geliştirmeler içerir. Düzeltme eki yayınları daha sıktır (bazen haftalık) ve yalnızca bir küçük sürümdeki kritik hata düzeltmelerine yöneliktir. These patch releases include fixes for security vulnerabilities or major bugs impacting a large number of customers and products running in production based on Kubernetes.
+Kubernetes topluluğu, küçük sürümleri yaklaşık üç ayda bir yayınlamaktadır. Bu yayınlar yeni özellikler ve geliştirmeler içerir. Düzeltme eki yayınları daha sıktır (bazen haftalık) ve yalnızca bir küçük sürümdeki kritik hata düzeltmelerine yöneliktir. Bu düzeltme eki sürümleri, Kubernetes temelinde üretimde çalışan çok sayıda müşteriyi ve ürünü etkileyen güvenlik açıklarına veya önemli hatalara yönelik düzeltmeler içerir.
 
-AKS aims to certify and release new Kubernetes versions within 30 days of an upstream release, subject to the stability of the release.
+Bir yukarı akış sürümünün 30 gün içinde yeni Kubernetes sürümlerini onaylamak ve serbest bırakmak, yayının kararlılığını ele almak için AKS aks.
 
-## <a name="kubernetes-versions"></a>Kubernetes versions
+## <a name="kubernetes-versions"></a>Kubernetes sürümleri
 
-Kubernetes uses the standard [Semantic Versioning](https://semver.org/) versioning scheme. This means that each version of Kubernetes follows this numbering scheme:
+Kubernetes, standart [anlamsal sürüm](https://semver.org/) oluşturma düzenini kullanır. Bu, her bir Kubernetes sürümünün bu numaralandırma düzenini izlediği anlamına gelir:
 
 ```
 [major].[minor].[patch]
@@ -32,37 +32,37 @@ Example:
   1.12.15
 ```
 
-Each number in the version indicates general compatibility with the previous version:
+Sürümdeki her bir sayı, önceki sürümle genel uyumluluğu gösterir:
 
-* Major versions change when incompatible API changes or backwards compatibility may be broken.
-* Minor versions change when functionality changes are made that are backwards compatible to the other minor releases.
-* Patch versions change when backwards-compatible bug fixes are made.
+* Büyük sürümler uyumsuz API değişiklikleri veya geriye dönük uyumluluk bozuk olduğunda değişir.
+* Küçük sürümler, diğer küçük yayınlar ile geriye doğru uyumlu olan işlevsellik değişiklikleri yapıldığında değişir.
+* Geriye dönük olarak uyumlu hata düzeltmeleri yapıldığında düzeltme eki sürümleri değişir.
 
-In general, users should endeavor to run the latest patch release of the minor version they are running, for example if your production cluster is on *1.12.14* and *1.12.15* is the latest available patch version available for the *1.12* series, you should upgrade to *1.12.15* as soon as you are able to ensure your cluster is fully patched and supported.
+Genel olarak, kullanıcılar çalıştırdıkları ikincil sürümün en son düzeltme eki sürümünü çalıştırmak için Endeavor gerekir. Örneğin, üretim kümeniz *1.12.14* üzerinde ise ve *1.12.15* *1,12* serisi için kullanılabilen en son düzeltme eki sürümündedir, kümenizin tamamen düzeltme eki uygulanmış ve desteklenmiş olduğundan emin olmak için *1.12.15* sürümüne yükseltmeniz gerekir.
 
-## <a name="kubernetes-version-support-policy"></a>Kubernetes version support policy
+## <a name="kubernetes-version-support-policy"></a>Kubernetes sürüm desteği ilkesi
 
 > [!NOTE]
-> Starting December 9th, 2019 AKS will move to supporting latest (N) - 2 versions of Kubernetes. This change is to conform to the upstream window of support for Kubernetes versions and ensure the latest and most secure versions are being used. To learn more read the [announcement here](https://azure.microsoft.com/updates/azure-kubernetes-service-will-be-retiring-support-for-kubernetes-versions-1-11-and-1-12/).
+> 9 Aralık 2019 ' den itibaren, Kubernetes 'in en son (N)-2 sürümlerini desteklemeye geçiş yapılır. Bu değişiklik, Kubernetes sürümleri için destek yukarı akış penceresine uymak ve en son ve en güvenli sürümlerin kullanıldığından emin olmak içindir. Daha fazla bilgi edinmek için [burada duyuruyu](https://azure.microsoft.com/updates/azure-kubernetes-service-will-be-retiring-support-for-kubernetes-versions-1-11-and-1-12/)okuyun.
 
 AKS, Kubernetes’in dört küçük sürümünü destekler:
 
-* The current minor version that is released in AKS (N)
+* AKS içinde Yayınlanan geçerli ikincil sürüm (N)
 * Önceki üç küçük sürüm. Desteklenen her küçük sürüm, ayrıca iki kararlı düzeltme eki de destekler.
 
-This is known as "N-3" - (N (Latest release) - 3 (minor versions)).
+Bu "N-3" (N (en son sürüm)-3 (alt sürümler)) olarak bilinir.
 
-For example, if AKS introduces *1.13.a* today, support is provided for the following versions:
+Örneğin, AKS *1.13.* bugün, aşağıdaki sürümler için destek sağlanır:
 
-New minor version    |    Supported Version List
+Yeni ikincil sürüm    |    Desteklenen sürüm listesi
 -----------------    |    ----------------------
-1.13.a               |    1.12.a, 1.12.b, 1.11.a, 1.11.b, 1.10.a, 1.10.b
+1.13. a               |    1.12. a, 1.12. b, 1.11. a, 1.11. b, 1,10. a, 1,10. b
 
-Where ".a" and ".b" are representative patch versions."a" from 1.13.a can be different from 1.12.a. For example, 1.13.9 and 1.12.8.
+Burada ". a" ve ". b", temsilci düzeltme eki sürümleridir. " "from 1.13. a, 1.12. a öğesinden farklı olabilir. Örneğin, 1.13.9 ve 1.12.8.
 
-For details on communications regarding version changes and expectations, see "Communications" below.
+Sürüm değişiklikleri ve beklentileri hakkındaki iletişimlerle ilgili ayrıntılar için aşağıdaki "Iletişimler" bölümüne bakın.
 
-When a new minor version is introduced, the oldest minor version and patch releases supported are deprecated and removed. For example if the current supported version list is:
+Yeni bir alt sürüm ortaya çıkarıldığında, desteklenen en eski ikincil sürüm ve düzeltme eki sürümleri kullanım dışıdır ve kaldırılır. Örneğin, geçerli desteklenen sürüm listesi şu ise:
 
 ```
 1.12.a
@@ -75,13 +75,13 @@ When a new minor version is introduced, the oldest minor version and patch relea
 1.9.b
 ```
 
-And AKS releases 1.13. *, this means that the 1.9.* versions (all 1.9 versions) will be removed and out of support.
+Ve AKS yayınları 1,13. *Bu, 1,9 anlamına gelir.* sürümler (tüm 1,9 sürümler) kaldırılır ve destek dışı bırakılır.
 
 > [!NOTE]
-> Please note, that if customers are running an unsupported Kubernetes version, they will be asked to upgrade when requesting support for the cluster. Clusters running unsupported Kubernetes releases are not covered by the [AKS support policies](https://docs.microsoft.com/azure/aks/support-policies).
+> Müşteriler desteklenmeyen bir Kubernetes sürümü çalıştırıyorsa, bu, küme için destek istendiğinde yükseltmeniz istenir. Desteklenmeyen Kubernetes yayınları çalıştıran kümeler [aks destek ilkeleri](https://docs.microsoft.com/azure/aks/support-policies)kapsamında değildir.
 
 
-In addition to the above on minor versions, AKS supports the two latest *patch** releases of a given minor version. For example, given the following supported versions:
+AKS, yukarıdaki küçük sürümlere ek olarak, belirli bir alt sürümün en son *Düzeltme Eki** sürümlerini destekler. Örneğin, aşağıdaki desteklenen sürümler verildiğinde:
 
 ```
 Current Supported Version List
@@ -89,7 +89,7 @@ Current Supported Version List
 1.12.1, 1.12.2, 1.11.4, 1.11.5
 ```
 
-If upstream Kubernetes released 1.12.3 and 1.11.6 and AKS releases those patch versions, the oldest patch versions are deprecated and removed, and the supported version list becomes:
+Yukarı akış Kubernetes 1.12.3 ve 1.11.6 ve AKS Bu düzeltme eki sürümlerini yayımlarsa, en eski düzeltme eki sürümleri kullanım dışıdır ve kaldırılır ve desteklenen sürüm listesi şu şekilde olur:
 
 ```
 New Supported Version List
@@ -98,56 +98,56 @@ New Supported Version List
 ```
 
 > [!NOTE]
-> Customers should not pin cluster creation, CI or other automated jobs to specific patch releases. 
+> Müşteriler küme oluşturmayı, CI 'yi veya diğer otomatikleştirilmiş işleri Belirli bir düzeltme eki yayınlarına sabitleyemez. 
 
 ### <a name="communications"></a>Haberleşme
 
-* For new **minor** versions of Kubernetes
-  * All users are notified publicly of the new version and what version will be removed.
-  * When a new patch version is released, the oldest patch release is removed at the same time.
-  * Customers have **60 days** from the public notification date to upgrade to a supported minor version release.
-* For new **patch** versions of Kubernetes
-  * All users are notified of the new patch version being released and to upgrade to the latest patch release.
-  * Users have **30 days** to upgrade to a newer, supported patch release. Users have **30 days** to upgrade to a supported patch release before the oldest is removed.
+* Kubernetes 'in yeni **İkincil** sürümleri için
+  * Tüm kullanıcılar, yeni sürümden ve hangi sürümün kaldırılabileceği herkese açık bir şekilde bildirilir.
+  * Yeni bir yama sürümü yayınlandığında, en eski düzeltme eki sürümü aynı anda kaldırılır.
+  * Müşterilerin, desteklenen bir alt sürüm sürümüne yükseltmek için genel bildirim tarihinden itibaren **60 gün** vardır.
+* Kubernetes 'in yeni **Düzeltme Eki** sürümleri için
+  * Tüm kullanıcılara, yayımlanmakta olan yeni yama sürümü bildirilir ve en son düzeltme eki sürümüne yükseltilir.
+  * Kullanıcıların daha yeni, desteklenen bir yama sürümüne yükseltilmesi **30 gün** daha vardır. Kullanıcıların, en eski kaldırılmadan önce desteklenen bir yama sürümüne yükseltilmesi **30 gün** daha vardır.
 
-AKS defines "released" as general availability, enabled in all SLO / Quality of Service measurements and available in all regions.
+AKS, tüm SLO/kalite ölçümlerine ve tüm bölgelerde kullanılabilir olan genel kullanılabilirlik olarak "yayınlanan" tanımlar.
 
 > [!NOTE]
-> Customers are notified of Kubernetes version releases and deprecations, when a minor version is deprecated/removed users are given 60 days to upgrade to a supported release. In the case of patch releases, customers are given 30 days to upgrade to a supported release.
+> Kubernetes sürüm yayınları ve kullanım dışı bırakmaları, küçük bir sürümün kullanım dışı bırakıldığına/kaldırıldığına yönelik olarak, desteklenen bir sürüme yükseltmek için 60 gün verildiğinde müşteriler tarafından bilgilendirilir. Yama sürümleri söz konusu olduğunda, müşterilere desteklenen bir sürüme yükseltmek için 30 gün verilir.
 
-#### <a name="notification-channels-for-aks-changes"></a>Notification channels for AKS changes
+#### <a name="notification-channels-for-aks-changes"></a>AKS değişiklikleri için bildirim kanalları
 
-AKS releases a weekly service update which summarizes new Kubernetes versions, service changes, and component updates that have been released on the service on [github](https://github.com/Azure/AKS/releases).
+AKS, [GitHub](https://github.com/Azure/AKS/releases)'da hizmette yayınlanan yeni Kubernetes sürümlerini, hizmet değişikliklerini ve bileşen güncelleştirmelerini özetleyen haftalık bir hizmet güncelleştirmesini yayınlar.
 
-These changes are rolled to all customers as part of regular maintenance that is offered as part of the managed service, some require explicit upgrades while others require no action.
+Bu değişiklikler, yönetilen hizmetin bir parçası olarak sunulan düzenli bakımın bir parçası olarak tüm müşterilere alınır, bazıları herhangi bir işlem gerektirirken açık yükseltmeler gerektirir.
 
-Notifications are also sent via:
+Bildirimler ile de gönderilir:
 
-* [AKS Release notes](https://aka.ms/aks/releasenotes)
+* [AKS sürüm notları](https://aka.ms/aks/releasenotes)
 * Azure portalı bildirimleri
-* [Azure update channel][azure-update-channel]
+* [Azure güncelleştirme kanalı][azure-update-channel]
 
-### <a name="policy-exceptions"></a>Policy Exceptions
+### <a name="policy-exceptions"></a>İlke özel durumları
 
-AKS reserves the right to add or remove new/existing versions that have been identified to have one or more critical production impacting bugs or security issues without advance notice.
+AKS, hata veya güvenlik sorunlarını önceden etkilemeden bir veya daha fazla kritik üretime sahip olmak için tanımlanmış yeni/mevcut sürümlerini ekleme veya kaldırma hakkını saklı tutar.
 
-Specific patch releases may be skipped, or rollout accelerated depending on the severity of the bug or security issue.
+Hatanın veya güvenlik sorununun önem derecesine bağlı olarak belirli düzeltme eki sürümleri atlanabilir veya dağıtım hızlandırılır.
 
-### <a name="azure-portal-and-cli-default-versions"></a>Azure portal and CLI default versions
+### <a name="azure-portal-and-cli-default-versions"></a>Azure portal ve CLı varsayılan sürümleri
 
-When you deploy an AKS cluster in the portal or with the Azure CLI, the cluster is always set to the N-1 minor version and latest patch. For example, if AKS supports *1.13.a*, *1.12.a* + *1.12.b*, *1.11.a* + *1.11.b*, *1.10.a* + *1.10b*, the default version for new clusters is *1.12.b*.
+Portal 'da veya Azure CLı ile bir AKS kümesi dağıttığınızda, küme her zaman N-1 alt sürümüne ve en son düzeltme ekine ayarlanır. Örneğin, AKS *1.13. a*, *1.12. a* + *1.12. b*, *1.11. a* + *1.11. b*, *1,10.* a + *1,10 b*, yeni kümeler için varsayılan sürüm *1.12. b*' dir.
 
-AKS defaults to N-1 (minor.latestPatch, eg 1.12.b) to provide customers a known, stable and patched version by default.
+AKS, müşterilere varsayılan olarak bilinen, kararlı ve düzeltme eki uygulanmış bir sürüm sağlamak için N-1 (Minor. latestPatch, EG 1.12. b) değerini alır.
 
-## <a name="list-currently-supported-versions"></a>List currently supported versions
+## <a name="list-currently-supported-versions"></a>Şu anda desteklenen sürümleri Listele
 
-To find out what versions are currently available for your subscription and region, use the [az aks get-versions][az-aks-get-versions] command. The following example lists the available Kubernetes versions for the *EastUS* region:
+Aboneliğiniz ve bölgeniz için şu anda hangi sürümlerin kullanılabildiğini öğrenmek için [az aks get-versions][az-aks-get-versions] komutunu kullanın. Aşağıdaki örnek *EastUS* bölgesi Için kullanılabilir Kubernetes sürümlerini listeler:
 
 ```azurecli-interactive
 az aks get-versions --location eastus --output table
 ```
 
-The output is similar to the following example, which shows that Kubernetes version *1.14.6* is the most recent version available:
+Çıktı aşağıdaki örneğe benzer. Bu, Kubernetes sürüm *1.14.6* 'in kullanılabilir en son sürüm olduğunu gösterir:
 
 ```
 KubernetesVersion    Upgrades
@@ -166,34 +166,34 @@ KubernetesVersion    Upgrades
 
 ## <a name="faq"></a>SSS
 
-**What happens when a customer upgrades a Kubernetes cluster with a minor version that is not supported?**
+**Bir müşteri bir Kubernetes kümesini desteklenmeyen küçük bir sürümle yükseltdiğinde ne olur?**
 
-If you are on the *n-4* version, you are outside of support and will be asked to upgrade. If your upgrade from version n-4 to n-3 succeeds, you are now within our support policies. Örnek:
+*N-4* sürümdaysanız, destek dışında olursunuz ve yükseltmeniz istenir. N-4 sürümünden n-3 ' e yükseltme başarılı olursa, şimdi destek ilkeleriniz dahilinde olursunuz. Örneğin:
 
-- If the supported AKS versions are *1.13.a*, *1.12.b* + *1.12.c*, *1.11.d* + *1.11.e*, and *1.10.f* + *1.10.g* and you are on *1.9.h* or *1.9.i*, you are outside of support.
-- If the upgrade from *1.9.h* or *1.9.i* to *1.10.f* or *1.10.g* succeeds, you are back in the within our support policies.
+- Desteklenen AKS sürümleri *1.13. a*, *1.12. b* + *1.12. c*, *1.11. d* + *1.11. e*, ve *1,10. f* + *1,10. g* , 1.9. *h* veya 1.9. *i*.
+- *1.9. h* veya *1.9. i* 'den *1,10. f* ya da *1,10. g* ile yükseltme başarılı olursa, destek ilkilerimizin içinden geri dönebilirsiniz.
 
-Upgrades to versions older than *n-4* are not supported. In such cases, we recommend customers create new AKS clusters and redeploy their workloads.
+*N-4* ' ten eski sürümlere yükseltmeler desteklenmez. Bu gibi durumlarda, müşterilerin yeni AKS kümeleri oluşturup iş yüklerini yeniden dağıtmanıza önerilir.
 
-**What does 'Out of Support' mean**
+**' Destek dışı ' anlamına gelir**
 
-'Outside of Support' means that the version you are running is outside of the supported versions list, and you will be asked to upgrade the cluster to a supported version when requesting support. Additionally, AKS does not make any runtime or other guarantees for clusters outside of the supported versions list.
+' Destek dışında ', çalıştırdığınız sürümün desteklenen sürümler listesinin dışında olduğu anlamına gelir ve destek istemek için kümeyi desteklenen bir sürüme yükseltmeniz istenir. Ayrıca, AKS, desteklenen sürümler listesinin dışındaki kümeler için herhangi bir çalışma zamanı veya başka bir garanti yapmaz.
 
-**What happens when a customer scales a Kubernetes cluster with a minor version that is not supported?**
+**Bir müşteri bir Kubernetes kümesini desteklenmeyen küçük bir sürümle ölçeklendiğinde ne olur?**
 
-For minor versions not supported by AKS, scaling in or out continues to work without any issues.
+AKS tarafından desteklenmeyen alt sürümler için, ölçekleme veya küçültme herhangi bir sorun olmadan çalışmaya devam eder.
 
-**Can a customer stay on a Kubernetes version forever?**
+**Bir müşteri, bir Kubernetes sürümünde sonsuza kadar kalabilir mi?**
 
-Evet. However, if the cluster is not on one of the versions supported by AKS, the cluster is out of the AKS support policies. Azure does not automatically upgrade your cluster or delete it.
+Evet. Ancak, küme AKS tarafından desteklenen sürümlerden birinde değilse, küme AKS destek ilkelerinden çıkar. Azure, kümenizi otomatik olarak yükseltmez veya silmez.
 
-**What version does the master support if the agent cluster is not in one of the supported AKS versions?**
+**Aracı kümesi desteklenen AKS sürümlerinden birinde değilse, ana destek hangi sürümü destekler?**
 
-The master is automatically updated to the latest supported version.
+Ana, desteklenen en son sürüme otomatik olarak güncelleştirilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-For information on how to upgrade your cluster, see [Upgrade an Azure Kubernetes Service (AKS) cluster][aks-upgrade].
+Kümenizi yükseltme hakkında daha fazla bilgi için bkz. [Azure Kubernetes Service (AKS) kümesini yükseltme][aks-upgrade].
 
 <!-- LINKS - External -->
 [aks-engine]: https://github.com/Azure/aks-engine

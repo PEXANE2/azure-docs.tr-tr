@@ -1,5 +1,5 @@
 ---
-title: Tutorial`:` Use a managed identity to access Azure Data Lake Store - Linux - Azure AD
+title: Eğitim`:` Azure Data Lake Store erişmek için yönetilen kimlik kullanma-Linux-Azure AD
 description: Linux VM sistem tarafından atanan yönetilen kimliğini kullanarak Azure Data Lake Store'a erişme işlemini gösteren öğretici.
 services: active-directory
 documentationcenter: ''
@@ -26,7 +26,7 @@ ms.locfileid: "74224279"
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-This tutorial shows you how to use a system-assigned managed identity for a Linux virtual machine (VM) to access Azure Data Lake Store. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz: 
+Bu öğreticide, Azure Data Lake Store erişmek için bir Linux sanal makinesi (VM) için sistem tarafından atanan yönetilen kimliğin nasıl kullanılacağı gösterilmektedir. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz: 
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -34,7 +34,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Azure Data Lake Store'a VM'niz için erişim verme.
 > * Azure Data Lake Store'a erişmek için VM'nin sistem tarafından atanan yönetilen kimliğini kullanarak bir erişim belirteci alın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
@@ -71,7 +71,7 @@ Bu adımları tamamlamak bir SSH istemciniz olmalıdır. Windows kullanıyorsan�
 
 1. Portalda Linux VM'nizi bulun. **Genel Bakış**'ta **Bağlan**'ı seçin.  
 2. Tercih ettiğiniz SSH istemcisini kullanarak VM'ye bağlanın. 
-3. Terminal penceresinde, Data Lake Store dosya sisteminin erişim belirtecini almak için cURL'yi kullanarak yerel Azure kaynakları için yönetilen kimlikler uç noktasına bir istek gönderin. The resource identifier for Data Lake Store is `https://datalake.azure.net/`.  Kaynak tanımlayıcısına sondaki eğik çizgiyi eklemek önemlidir.
+3. Terminal penceresinde, Data Lake Store dosya sisteminin erişim belirtecini almak için cURL'yi kullanarak yerel Azure kaynakları için yönetilen kimlikler uç noktasına bir istek gönderin. Data Lake Store için kaynak tanımlayıcısı `https://datalake.azure.net/`.  Kaynak tanımlayıcısına sondaki eğik çizgiyi eklemek önemlidir.
     
    ```bash
    curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatalake.azure.net%2F' -H Metadata:true   

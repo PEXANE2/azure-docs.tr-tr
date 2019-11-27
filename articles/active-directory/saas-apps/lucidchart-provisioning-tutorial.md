@@ -75,7 +75,7 @@ Bu bölümde, Azure AD 'nizi LucidChart 'in Kullanıcı hesabı sağlama API 'si
 
 7. **Bildirim e-postası** alanında sağlama hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve "bir hata oluştuğunda e-posta bildirimi gönder" onay kutusunu işaretleyin.
 
-8. **Kaydet**’e tıklayın.
+8. **Save (Kaydet)** düğmesine tıklayın.
 
 9. Eşlemeler bölümünde **Azure Active Directory Kullanıcıları Lucidchart olarak eşitler**' ı seçin.
 
@@ -83,11 +83,11 @@ Bu bölümde, Azure AD 'nizi LucidChart 'in Kullanıcı hesabı sağlama API 'si
 
 11. LucidChart için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin
 
-12. **Kaydet**’e tıklayın.
+12. **Save (Kaydet)** düğmesine tıklayın.
 
 Bu işlem, kullanıcılar ve Gruplar bölümünde LucidChart 'e atanan tüm Kullanıcı ve/veya grupların ilk eşitlemesini başlatır. İlk eşitleme hizmeti çalışıyor sürece yaklaşık 40 dakikada oluşan sonraki eşitlemeler uzun sürer. İlerleme durumunu izlemek ve sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan etkinlik günlüklerinin sağlanması için bağlantıları izlemek üzere **eşitleme ayrıntıları** bölümünü kullanabilirsiniz.
 
-Azure AD günlüklerini sağlama okuma hakkında daha fazla bilgi için bkz. [hesabı otomatik kullanıcı hazırlama raporlama](../manage-apps/check-status-user-account-provisioning.md).
+Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6b4ae076ba08af5514caa09a2e8027a1cbc909dc
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: df7d0fde05c974ef4cec739236a3ac0aebd63ecc
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793670"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534547"
 ---
 # <a name="import-data-wizard-for-azure-cognitive-search"></a>Azure Bilişsel Arama için veri içeri aktarma Sihirbazı
 
@@ -43,7 +43,7 @@ Bilinen sınırlamalar aşağıdaki gibi özetlenir:
 
 + Sihirbaz yinelemeyi veya yeniden kullanmayı desteklemez. Sihirbaz aracılığıyla geçen her geçişte yeni bir dizin, beceri ve Dizin Oluşturucu yapılandırması oluşturulur. Yalnızca veri kaynakları kalıcı hale getirilir ve sihirbaz içinde yeniden kullanılabilir. Diğer nesneleri düzenlemek veya iyileştirmek için, yapıları almak ve değiştirmek için REST API 'Lerini veya .NET SDK 'sını kullanmanız gerekir.
 
-+ Kaynak içerik, aynı abonelik kapsamındaki bir hizmette desteklenen bir Azure veri kaynağında bulunmalıdır.
++ Kaynak içeriğin desteklenen bir Azure veri kaynağında bulunması gerekir.
 
 + Örnekleme, kaynak verilerinin bir alt kümesi üzerinde. Büyük veri kaynakları için sihirbazın alanları kaçırmak mümkündür. Örnekleme yetersizse şemayı genişletmeniz veya çıkarılan veri türlerini düzeltmeniz gerekebilir.
 
@@ -55,7 +55,7 @@ Bilinen sınırlamalar aşağıdaki gibi özetlenir:
 
 ## <a name="data-source-input"></a>Veri kaynağı girişi
 
-**Veri Içeri aktarma** Sihirbazı, Azure bilişsel arama Dizin oluşturucular tarafından sunulan iç mantığı kullanarak bir dış veri kaynağına bağlanır. Bu, kaynağı örneklemek, meta verileri okumak, içeriği içerik ve yapıyı okumak için belgeleri çözmek ve içeriği seri hale getirmek için Azure Bilişsel Arama sonraki içeri aktarma için JSON olarak.
+**Veri Içeri aktarma** Sihirbazı, Azure bilişsel arama Dizin oluşturucular tarafından sunulan iç mantığı kullanarak bir dış veri kaynağına bağlanır. Bu, kaynağı örneklemek, meta verileri okumak, belgeleri okumak için belgeleri çözmek ve içeriği JSON olarak seri hale getirmek için Azure bilişsel arama ' a bir sonraki içeri aktarma IŞLEMI için JSON olarak serileştirilir.
 
 Yalnızca tek bir tablo, veritabanı görünümü veya eşdeğer veri yapısından içeri aktarabilirsiniz; ancak yapı hiyerarşik veya iç içe geçmiş alt yapılar içerebilir. Daha fazla bilgi için bkz. [karmaşık türleri Modelme](search-howto-complex-data-types.md).
 
@@ -105,7 +105,7 @@ Sihirbaz, giriş veri kaynağından elde edilen belgelerle doldurulacak tamamlan
 
 1. Veri türü gelen veriler için uygun mu? Azure Bilişsel Arama, [varlık veri modeli (EDM) veri türlerini](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)destekler. Azure SQL verileri için eşdeğer değerleri oluşturan [eşleme grafiği](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#TypeMapping) vardır. Daha fazla arka plan için bkz. [alan eşlemeleri ve dönüştürmeleri](search-indexer-field-mappings.md).
 
-1. *Anahtar*olarak kullanılabilecek bir alanınız var mı? Bu alan Edm. String olmalı ve bir belgeyi benzersiz şekilde tanımlamalıdır. İlişkisel veriler için bir birincil anahtarla eşlenmiş olabilir. Blob 'lar için `metadata-storage-path` olabilir. Alan değerleri boşluk veya tire içeriyorsa, bu karakterlerin doğrulama denetimini bastırmak için, **Dizin Oluşturucu oluştur** adımında, **Gelişmiş Seçenekler**altında **Base-64 kodlama anahtarı** seçeneğini ayarlamanız gerekir.
+1. *Anahtar*olarak kullanılabilecek bir alanınız var mı? Bu alan Edm. String olmalı ve bir belgeyi benzersiz şekilde tanımlamalıdır. İlişkisel veriler için bir birincil anahtarla eşlenmiş olabilir. Blob 'lar için `metadata-storage-path`olabilir. Alan değerleri boşluk veya tire içeriyorsa, bu karakterlerin doğrulama denetimini bastırmak için, **Dizin Oluşturucu oluştur** adımında, **Gelişmiş Seçenekler**altında **Base-64 kodlama anahtarı** seçeneğini ayarlamanız gerekir.
 
 1. Bu alanın bir dizinde nasıl kullanıldığını belirleme özniteliklerini belirleyin. 
 

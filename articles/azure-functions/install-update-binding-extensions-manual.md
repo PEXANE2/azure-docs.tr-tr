@@ -1,6 +1,6 @@
 ---
-title: Manually install or update Azure Functions binding extensions
-description: Learn how to install or update Azure Functions binding extensions for deployed function apps.
+title: Azure Işlevleri bağlama uzantılarını el ile yükler veya güncelleştirir
+description: Dağıtılan işlev uygulamaları için Azure Işlevleri bağlama uzantılarını yüklemeyi veya güncelleştirmeyi öğrenin.
 ms.topic: reference
 ms.date: 09/26/2018
 ms.openlocfilehash: 49e8e2ce7eb0267d5a4e6fc0f5566dffaed82661
@@ -10,37 +10,37 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74226517"
 ---
-# <a name="manually-install-or-update-azure-functions-binding-extensions-from-the-portal"></a>Manually install or update Azure Functions binding extensions from the portal
+# <a name="manually-install-or-update-azure-functions-binding-extensions-from-the-portal"></a>Portaldan Azure Işlevleri bağlama uzantılarını el ile yüklemeyi veya güncelleştirmeyi güncelleştirme
 
-The Azure Functions version 2.x runtime uses binding extensions to implement code for triggers and bindings. Binding extensions are provided in NuGet packages. To register an extension, you essentially install a package. When developing functions, the way that you install binding extensions depends on the development environment. For more information, see [Register binding extensions](./functions-bindings-register.md) in the triggers and bindings article.
+Azure Işlevleri sürüm 2. x çalışma zamanı, Tetikleyiciler ve bağlamalar için kod uygulamak üzere bağlama uzantıları kullanır. Bağlama uzantıları NuGet paketlerinde sağlanır. Bir uzantıyı kaydetmek için aslında bir paket yüklersiniz. İşlevleri geliştirirken, bağlama uzantılarını yüklediğiniz yol geliştirme ortamına bağlıdır. Daha fazla bilgi için bkz. Tetikleyiciler ve bağlamalar için [bağlama uzantılarını kaydetme](./functions-bindings-register.md) makalesi.
 
-Sometimes you need to manually install or update your binding extensions in the Azure portal. For example, you may need to update a registered binding to a newer version. You may also need to register a supported binding that can't be installed in the **Integrate** tab in the portal.
+Bazen Azure portal bağlama uzantılarınızı el ile yüklemeniz veya güncelleştirmeniz gerekir. Örneğin, kayıtlı bir bağlamayı daha yeni bir sürüme güncelleştirmeniz gerekebilir. Ayrıca, portaldaki **tümleştir** sekmesine yüklenebilen desteklenen bir bağlamayı kaydetmeniz gerekebilir.
 
-## <a name="install-a-binding-extension"></a>Install a binding extension
+## <a name="install-a-binding-extension"></a>Bağlama uzantısı yükler
 
-Use the following steps to manually install or update extensions from the portal.
+Uzantıları portala el ile yüklemek veya güncelleştirmek için aşağıdaki adımları kullanın.
 
-1. In the [Azure portal](https://portal.azure.com), locate your function app and select it. Choose the **Overview** tab and select **Stop**.  Stopping the function app unlocks files so that changes can be made.
+1. [Azure Portal](https://portal.azure.com), işlev uygulamanızı bulun ve seçin. **Genel bakış** sekmesini seçin ve **Durdur**' u seçin.  İşlev uygulamasının durdurulması, değişikliklerin yapılabilmesi için dosyaların kilidini açar.
 
-1. Choose the **Platform features** tab and under **Development tools** select **Advanced Tools (Kudu)** . THe Kudu endpoint (`https://<APP_NAME>.scm.azurewebsites.net/`) is opened in a new window.
+1. **Platform özellikleri** sekmesini seçin ve **geliştirme araçları** altında **Gelişmiş araçlar (kudu)** öğesini seçin. Kudu uç noktası (`https://<APP_NAME>.scm.azurewebsites.net/`) yeni bir pencerede açılır.
 
-1. In the Kudu window, select **Debug console** > **CMD**.  
+1. Kudu penceresinde **hata ayıklama konsolu** > **cmd**' yi seçin.  
 
-1. In the command window, navigate to `D:\home\site\wwwroot` and choose the delete icon next to `bin` to delete the folder. Select **OK** to confirm the deletion.
+1. Komut penceresinde, `D:\home\site\wwwroot` gidin ve klasörü silmek için `bin` ' nin yanındaki Sil simgesini seçin. Silmeyi onaylamak için **Tamam ' ı** seçin.
 
-1. Choose the edit icon next to the `extensions.csproj` file, which defines the binding extensions for the function app. The project file is opened in the online editor.
+1. İşlev uygulaması için bağlama uzantılarını tanımlayan `extensions.csproj` dosyasının yanındaki Düzenle simgesini seçin. Proje dosyası çevrimiçi düzenleyicide açılır.
 
-1. Make the required additions and updates of **PackageReference** items in the **ItemGroup**, then select **Save**. The current list of supported package versions can be found in the [What packages do I need?](https://github.com/Azure/azure-functions-host/wiki/Updating-your-function-app-extensions#what-nuget-packages-do-i-need) wiki article. All three Azure Storage bindings require the Microsoft.Azure.WebJobs.Extensions.Storage package.
+1. **ItemGroup**Içinde, **packagereference** öğelerinin gerekli eklemelerini ve güncelleştirmelerini yapıp **Kaydet**' i seçin. Desteklenen paket sürümlerinin geçerli listesi, [hangi paketlere](https://github.com/Azure/azure-functions-host/wiki/Updating-your-function-app-extensions#what-nuget-packages-do-i-need) ihtiyacım var? wiki makalesinde bulunabilir. Üç Azure depolama bağlaması da Microsoft. Azure. WebJobs. Extensions. Storage paketini gerektirir.
 
-1. From the `wwwroot` folder, run the following command to rebuild the referenced assemblies in the `bin` folder.
+1. `wwwroot` klasöründen, başvurulan derlemeleri `bin` klasöründe yeniden derlemek için aşağıdaki komutu çalıştırın.
 
     ```cmd
     dotnet build extensions.csproj -o bin --no-incremental --packages D:\home\.nuget
     ```
 
-1. Back in the **Overview** tab in the portal, choose **Start** to restart the function app.
+1. Portalda **genel bakış** sekmesine döndüğünüzde, işlev uygulamasını yeniden başlatmak için **Başlat** ' ı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Learn more about Azure functions triggers and bindings](functions-triggers-bindings.md)
+> [Azure işlevleri Tetikleyicileri ve bağlamaları hakkında daha fazla bilgi edinin](functions-triggers-bindings.md)

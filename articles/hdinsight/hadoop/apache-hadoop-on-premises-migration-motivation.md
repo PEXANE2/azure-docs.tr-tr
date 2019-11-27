@@ -39,7 +39,7 @@ Azure HDInsight, Hadoop bileşenlerinin bulut dağıtımıdır. Azure HDInsight,
 
 - **Yönetilen donanım ve yapılandırma** -bir HDInsight kümesiyle fiziksel donanım veya altyapıyla uğraşmanız gerekmez. Kümenin yapılandırmasını belirtmeniz yeterlidir ve Azure tarafından ayarlanır.
 
-- **Kolayca ölçeklenebilir** -HDInsight, iş yüklerini [ölçek](../hdinsight-administer-use-portal-linux.md) yukarı veya aşağı ölçeklendirmenizi sağlar. Azure, veri işleme işlerini kesintiye uğramadan veri yeniden dağıtımı ve iş yükü yeniden dengelemesinden yararlanır.
+- **Kolayca ölçeklenebilir** -HDInsight, iş yüklerini yukarı veya aşağı [ölçeklendirmenizi](../hdinsight-administer-use-portal-linux.md) sağlar. Azure, veri işleme işlerini kesintiye uğramadan veri yeniden dağıtımı ve iş yükü yeniden dengelemesinden yararlanır.
 
 - **Genel kullanılabilirlik** -HDInsight, diğer büyük veri analizi sunumından daha fazla [bölgede](https://azure.microsoft.com/regions/services/) kullanılabilir. Azure HDInsight ayrıca temel bağımsız bölgelerde kurumsal ihtiyaçlarınızı karşılamanıza olanak sağlayan Azure Kamu, Çin ve Almanya’da da kullanılabilir.
 
@@ -61,7 +61,7 @@ Azure HDInsight, Hadoop bileşenlerinin bulut dağıtımıdır. Azure HDInsight,
     - Azure Blob Depolama
     - Azure Data Lake Storage Gen2
     - Azure Cosmos DB
-    - Azure SQL Veritabanı
+    - Azure SQL Database
     - Azure Analysis Services
 
 - Kendi **kendini onaran süreçler ve bileşenleri** -HDInsight, kendi izleme altyapısını kullanarak altyapıyı ve açık kaynaklı bileşenleri sürekli olarak denetler. Ayrıca, açık kaynaklı bileşenlerin ve düğümlerin kullanım dışı kalması gibi kritik sorunları otomatik olarak kurtarır. Herhangi bir OSS bileşeni başarısız olursa, bu durumda uyarılar ambarı 'nda tetiklenir.
@@ -132,7 +132,7 @@ Bu bölümde hakkında önemli bilgiler toplamaya yardımcı olacak şablon anke
 |Komut dosyaları|Kabuk, Python||
 |**Konu**: **veri**|||
 |Veri kaynakları|Düz dosyalar, JSON, Kafka, RDBMS||
-|Verileri düzenleme|Oozie iş akışları, Airflow||
+|Veri düzenleme|Oozie iş akışları, Airflow||
 |Bellek aramaları|Apache Ignite, Redsıs||
 |Veri hedefleri|, RDBMS, Kafka, MPP ||
 |**Konu**: **meta veriler**|||
@@ -147,7 +147,7 @@ Bu bölümde hakkında önemli bilgiler toplamaya yardımcı olacak şablon anke
 |Veri büyüme oranı|yıl başına %10||
 |Küme düğümlerinin büyüme oranı|yıl başına %5
 |**Konu**: **küme kullanımı**|||
-|Ortalama CPU yüzdesi kullanıldı|%60||
+|Ortalama CPU yüzdesi kullanıldı|60%||
 |Kullanılan ortalama bellek yüzdesi|%75||
 |Kullanılan disk alanı|%75||
 |Kullanılan ortalama ağ yüzdesi|%25

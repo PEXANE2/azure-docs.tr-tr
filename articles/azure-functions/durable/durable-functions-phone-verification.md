@@ -1,6 +1,6 @@
 ---
-title: Human interaction and timeouts in Durable Functions - Azure
-description: Learn how to handle human interaction and timeouts in the Durable Functions extension for Azure Functions.
+title: Dayanıklı İşlevler-Azure 'da insan etkileşimi ve zaman aşımları
+description: Azure Işlevleri için Dayanıklı İşlevler uzantısında insan etkileşimini ve zaman aşımlarını nasıl işleyeceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
@@ -11,11 +11,11 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74232819"
 ---
-# <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Human interaction in Durable Functions - Phone verification sample
+# <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Dayanıklı İşlevler-telefon doğrulama örneğindeki insan etkileşimi
 
-This sample demonstrates how to build a [Durable Functions](durable-functions-overview.md) orchestration that involves human interaction. Whenever a real person is involved in an automated process, the process must be able to send notifications to the person and receive responses asynchronously. It must also allow for the possibility that the person is unavailable. (This last part is where timeouts become important.)
+Bu örnek, insan etkileşimini içeren [dayanıklı işlevler](durable-functions-overview.md) bir düzenleme oluşturmayı gösterir. Her gerçek kişi otomatik bir işleme dahil olduğunda, işlem kişiye bildirim gönderebilmeli ve yanıtları zaman uyumsuz olarak alamaz. Ayrıca, kişinin kullanılamama olasılığa izin vermelidir. (Bu son bölüm, zaman aşımlarının önemli hale geldiği yerdir.)
 
-This sample implements an SMS-based phone verification system. These types of flows are often used when verifying a customer's phone number or for multi-factor authentication (MFA). It is a powerful example because the entire implementation is done using a couple small functions. No external data store, such as a database, is required.
+Bu örnek SMS tabanlı bir telefon doğrulama sistemi uygular. Bu akış türleri genellikle müşterinin telefon numarası doğrulanırken veya Multi-Factor Authentication (MFA) için kullanılır. Uygulamanın tamamı birkaç küçük işlev kullanılarak yapıldığından, bu güçlü bir örnektir. Veritabanı gibi dış veri deposu gerekli değildir.
 
 [!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
@@ -23,77 +23,77 @@ This sample implements an SMS-based phone verification system. These types of fl
 
 ## <a name="scenario-overview"></a>Senaryoya genel bakış
 
-Phone verification is used to verify that end users of your application are not spammers and that they are who they say they are. Multi-factor authentication is a common use case for protecting user accounts from hackers. The challenge with implementing your own phone verification is that it requires a **stateful interaction** with a human being. An end user is typically provided some code (for example, a 4-digit number) and must respond **in a reasonable amount of time**.
+Telefon doğrulaması, uygulamanızın son kullanıcılarının istenmeyen posta olmaması ve bunları söyledikleri kim olduğunu doğrulamak için kullanılır. Multi-Factor Authentication, Kullanıcı hesaplarını korsanlardan korumak için kullanılan yaygın bir kullanım durumdur. Kendi telefon doğrulamanızı uygulamayla ilgili zorluk, insanla ilgili **durum bilgisi** olan bir etkileşim gerektirmesidir. Son Kullanıcı genellikle bazı kodları (örneğin, 4 basamaklı bir sayı) ve **makul bir süre içinde**yanıt vermelidir.
 
-Ordinary Azure Functions are stateless (as are many other cloud endpoints on other platforms), so these types of interactions involve explicitly managing state externally in a database or some other persistent store. In addition, the interaction must be broken up into multiple functions that can be coordinated together. For example, you need at least one function for deciding on a code, persisting it somewhere, and sending it to the user's phone. Additionally, you need at least one other function to receive a response from the user and somehow map it back to the original function call in order to do the code validation. A timeout is also an important aspect to ensure security. It can get fairly complex quickly.
+Sıradan Azure Işlevleri durum bilgisi yoktur (diğer platformlarda birçok diğer bulut uç noktası olduğu gibi), bu tür etkileşimler bu şekilde bir veritabanında veya diğer kalıcı depolardaki durumu açıkça yönetme ile ilgilidir. Ayrıca, etkileşim birlikte koordine edilebilir birden çok işleve bölünmelidir. Örneğin, bir kod üzerinde seçim yapmak, bir yere kalıcı hale getirme ve kullanıcının telefonuna gönderilmesi için en az bir işleve ihtiyacınız vardır. Ayrıca, kullanıcıdan yanıt almak için en az bir diğer işleve ihtiyacınız vardır ve kod doğrulamasını yapmak için onu özgün işlev çağrısına geri eşleyin. Bir zaman aşımı, güvenliğin güvence altına almak için de önemli bir yönüdür. Hızlıca karmaşık olabilir.
 
-The complexity of this scenario is greatly reduced when you use Durable Functions. As you will see in this sample, an orchestrator function can manage the stateful interaction easily and without involving any external data stores. Because orchestrator functions are *durable*, these interactive flows are also highly reliable.
+Dayanıklı İşlevler kullandığınızda bu senaryonun karmaşıklığı büyük ölçüde azalır. Bu örnekte göreceğiniz gibi, bir Orchestrator işlevi, herhangi bir dış veri deposu eklemeden, durum bilgisi olan etkileşimi kolayca yönetebilir. Orchestrator işlevleri *dayanıklı*olduğundan, bu etkileşimli akışlar da son derece güvenilirdir.
 
-## <a name="configuring-twilio-integration"></a>Configuring Twilio integration
+## <a name="configuring-twilio-integration"></a>Twilio tümleştirmesini yapılandırma
 
 [!INCLUDE [functions-twilio-integration](../../../includes/functions-twilio-integration.md)]
 
-## <a name="the-functions"></a>The functions
+## <a name="the-functions"></a>İşlevler
 
-This article walks through the following functions in the sample app:
+Bu makalede örnek uygulamada aşağıdaki işlevler gösterilmektedir:
 
 * **E4_SmsPhoneVerification**
 * **E4_SendSmsChallenge**
 
-The following sections explain the configuration and code that is used for C# scripting and JavaScript. The code for Visual Studio development is shown at the end of the article.
+Aşağıdaki bölümlerde, komut dosyası ve JavaScript için C# kullanılan yapılandırma ve kod açıklanmaktadır. Visual Studio geliştirme kodu makalenin sonunda gösterilmektedir.
 
-## <a name="the-sms-verification-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>The SMS verification orchestration (Visual Studio Code and Azure portal sample code)
+## <a name="the-sms-verification-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>SMS doğrulama düzenlemesi (Visual Studio Code ve Azure portal örnek kodu)
 
-The **E4_SmsPhoneVerification** function uses the standard *function.json* for orchestrator functions.
+**E4_SmsPhoneVerification** işlevi Orchestrator işlevleri için standart *function. JSON* ' i kullanır.
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E4_SmsPhoneVerification/function.json)]
 
-Here is the code that implements the function:
+İşlevi uygulayan kod aşağıda verilmiştir:
 
-### <a name="c-script"></a>C# Script
+### <a name="c-script"></a>C#SCRIPT
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E4_SmsPhoneVerification/run.csx)]
 
-### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
+### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SmsPhoneVerification/index.js)]
 
-Once started, this orchestrator function does the following:
+Bu Orchestrator işlevi başlatıldıktan sonra şunları yapar:
 
-1. Gets a phone number to which it will *send* the SMS notification.
-2. Calls **E4_SendSmsChallenge** to send an SMS message to the user and returns back the expected 4-digit challenge code.
-3. Creates a durable timer that triggers 90 seconds from the current time.
-4. In parallel with the timer, waits for an **SmsChallengeResponse** event from the user.
+1. SMS bildirimini *gönderecek* telefon numarasını alır.
+2. Kullanıcıya SMS iletisi göndermek için **E4_SendSmsChallenge** çağırır ve beklenen 4 basamaklı sınama kodunu geri döndürür.
+3. Geçerli zamandan 90 saniye tetikleyen dayanıklı bir zamanlayıcı oluşturur.
+4. Zamanlayıcı ile paralel olarak, kullanıcıdan **Smschallengeresbir** olay bekler.
 
-The user receives an SMS message with a four-digit code. They have 90 seconds to send that same 4-digit code back to the orchestrator function instance to complete the verification process. If they submit the wrong code, they get an additional three tries to get it right (within the same 90-second window).
+Kullanıcı dört basamaklı kod içeren bir SMS mesajı alır. Doğrulama işlemini gerçekleştirmek için aynı 4 basamaklı kodun Orchestrator işlev örneğine geri gönderilmesi 90 saniye sürer. Yanlış kodu gönderiyorlarsa, bu iki adım daha (aynı 90-ikinci pencere içinde) daha fazla üç denemeye sahip olur.
 
 > [!NOTE]
-> It may not be obvious at first, but this orchestrator function is completely deterministic. It is deterministic because the `CurrentUtcDateTime` (.NET) and `currentUtcDateTime` (JavaScript) properties are used to calculate the timer expiration time, and these properties return the same value on every replay at this point in the orchestrator code. This behavior is important to ensure that the same `winner` results from every repeated call to `Task.WhenAny` (.NET) or `context.df.Task.any` (JavaScript).
+> İlk başta açık olmayabilir, ancak bu Orchestrator işlevi tamamen belirleyici olur. `CurrentUtcDateTime` (.NET) ve `currentUtcDateTime` (JavaScript) özelliklerinin Zamanlayıcı süre sonu süresini hesaplamak için kullanıldığı ve bu özelliklerin Orchestrator kodundaki bu noktada her yeniden yürütmeye aynı değeri döndürdüğü için belirleyici vardır. Bu davranış, yinelenen `winner` `Task.WhenAny` (.NET) veya `context.df.Task.any` (JavaScript) ' e yapılan her çağrıdan elde olduğundan emin olmak için önemlidir.
 
 > [!WARNING]
-> It's important to [cancel timers](durable-functions-timers.md) if you no longer need them to expire, as in the example above when a challenge response is accepted.
+> Sınama yanıtı kabul edildiğinde Yukarıdaki örnekte olduğu gibi, artık kullanım süreleri dolana kadar gerekmiyorsa, [zamanlayıcıları iptal etmeniz](durable-functions-timers.md) önemlidir.
 
-## <a name="send-the-sms-message"></a>Send the SMS message
+## <a name="send-the-sms-message"></a>SMS iletisini gönder
 
-The **E4_SendSmsChallenge** function uses the Twilio binding to send the SMS message with the 4-digit code to the end user. The *function.json* is defined as follows:
+**E4_SendSmsChallenge** IşLEVI, SMS iletisini son kullanıcıya 4 basamaklı kodla göndermek için Twilio bağlamasını kullanır. *Function. JSON* aşağıdaki gibi tanımlanır:
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E4_SendSmsChallenge/function.json)]
 
-And here is the code that generates the 4-digit challenge code and sends the SMS message:
+4 basamaklı zorluk kodu üreten ve SMS iletisini gönderen kod aşağıda verilmiştir:
 
-### <a name="c-script"></a>C# Script
+### <a name="c-script"></a>C#SCRIPT
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E4_SendSmsChallenge/run.csx)]
 
-### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
+### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SendSmsChallenge/index.js)]
 
-This **E4_SendSmsChallenge** function only gets called once, even if the process crashes or gets replayed. This is good because you don't want the end user getting multiple SMS messages. The `challengeCode` return value is automatically persisted, so the orchestrator function always knows what the correct code is.
+Bu **E4_SendSmsChallenge** işlev, işlem kilitlense veya yeniden yürütülmüş olsa bile yalnızca bir kez çağırılır. Son kullanıcının birden çok SMS iletisi almak istemediğinizde bu iyidir. `challengeCode` dönüş değeri otomatik olarak kalıcı hale getirilir, bu nedenle Orchestrator işlevi her zaman doğru kodun ne olduğunu bilir.
 
 ## <a name="run-the-sample"></a>Örneği çalıştırma
 
-Using the HTTP-triggered functions included in the sample, you can start the orchestration by sending the following HTTP POST request:
+Örneğe dahil edilen HTTP ile tetiklenen işlevleri kullanarak, aşağıdaki HTTP POST isteğini göndererek düzenleme işlemini başlatabilirsiniz:
 
 ```
 POST http://{host}/orchestrators/E4_SmsPhoneVerification
@@ -112,9 +112,9 @@ Location: http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea
 {"id":"741c65651d4c40cea29acdd5bb47baf1","statusQueryGetUri":"http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea29acdd5bb47baf1?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}","sendEventPostUri":"http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea29acdd5bb47baf1/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}","terminatePostUri":"http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea29acdd5bb47baf1/terminate?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}"}
 ```
 
-The orchestrator function receives the supplied phone number and immediately sends it an SMS message with a randomly generated 4-digit verification code &mdash; for example, *2168*. The function then waits 90 seconds for a response.
+Orchestrator işlevi, sağlanan telefon numarasını alır ve hemen rastgele oluşturulmuş 4 basamaklı bir doğrulama kodu içeren bir SMS iletisi gönderir &mdash; Örneğin, *2168*. Bu işlev, yanıt için 90 saniye bekler.
 
-To reply with the code, you can use [`RaiseEventAsync` (.NET) or `raiseEvent` (JavaScript)](durable-functions-instance-management.md) inside another function or invoke the **sendEventUrl** HTTP POST webhook referenced in the 202 response above, replacing `{eventName}` with the name of the event, `SmsChallengeResponse`:
+Kodla yanıt vermek için, başka bir işlevin içinde [`RaiseEventAsync` (.net) veya `raiseEvent` (JavaScript)](durable-functions-instance-management.md) kullanabilir veya yukarıdaki 202 yanıtında başvurulan **sendEventUrl** http post Web kancasını çağırabilir, `{eventName}` olayın adıyla değiştirerek `SmsChallengeResponse`:
 
 ```
 POST http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea29acdd5bb47baf1/raiseEvent/SmsChallengeResponse?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
@@ -124,7 +124,7 @@ Content-Type: application/json
 2168
 ```
 
-If you send this before the timer expires, the orchestration completes and the `output` field is set to `true`, indicating a successful verification.
+Bunu zamanlayıcı süresi dolmadan önce gönderirseniz, düzenleme tamamlanır ve `output` alanı, başarılı bir doğrulama olduğunu belirten `true`olarak ayarlanır.
 
 ```
 GET http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea29acdd5bb47baf1?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
@@ -138,7 +138,7 @@ Content-Type: application/json; charset=utf-8
 {"runtimeStatus":"Completed","input":"+1425XXXXXXX","output":true,"createdTime":"2017-06-29T19:10:49Z","lastUpdatedTime":"2017-06-29T19:12:23Z"}
 ```
 
-If you let the timer expire, or if you enter the wrong code four times, you can query for the status and see a `false` orchestration function output, indicating that phone verification failed.
+Süreölçerin süresi sona ersin veya yanlış kodu dört kez girerseniz, durumu sorgulayabilir ve telefon doğrulamasının başarısız olduğunu belirten bir `false` düzenleme işlevi çıkışı görebilirsiniz.
 
 ```
 HTTP/1.1 200 OK
@@ -148,18 +148,18 @@ Content-Length: 145
 {"runtimeStatus":"Completed","input":"+1425XXXXXXX","output":false,"createdTime":"2017-06-29T19:20:49Z","lastUpdatedTime":"2017-06-29T19:22:23Z"}
 ```
 
-## <a name="visual-studio-sample-code"></a>Visual Studio sample code
+## <a name="visual-studio-sample-code"></a>Visual Studio örnek kodu
 
-Here is the orchestration as a single C# file in a Visual Studio project:
+Visual Studio projesindeki tek C# bir dosya olarak Orchestration aşağıda verilmiştir:
 
 > [!NOTE]
-> You will need to install the `Microsoft.Azure.WebJobs.Extensions.Twilio` Nuget package to run the sample code below.
+> Aşağıdaki örnek kodu çalıştırmak için `Microsoft.Azure.WebJobs.Extensions.Twilio` NuGet paketini yüklemeniz gerekir.
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/PhoneVerification.cs)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-This sample has demonstrated some of the advanced capabilities of Durable Functions, notably `WaitForExternalEvent` and `CreateTimer` APIs. You've seen how these can be combined with `Task.WaitAny` to implement a reliable timeout system, which is often useful for interacting with real people. You can learn more about how to use Durable Functions by reading a series of articles that offer in-depth coverage of specific topics.
+Bu örnekte Dayanıklı İşlevler, özellikle `WaitForExternalEvent` ve `CreateTimer` API 'lerinin bazı gelişmiş özellikleri gösterilmiştir. Bunların güvenilir bir zaman aşımı sistemi uygulamak için `Task.WaitAny` ile nasıl birleştirilebileceği gördünüz. Bu, genellikle gerçek kişilerle etkileşim kurmak için kullanışlıdır. Belirli konuların ayrıntılı kapsamını sunan bir dizi makaleyi okuyarak Dayanıklı İşlevler kullanma hakkında daha fazla bilgi edinebilirsiniz.
 
 > [!div class="nextstepaction"]
-> [Go to the first article in the series](durable-functions-bindings.md)
+> [Serideki ilk makaleye git](durable-functions-bindings.md)

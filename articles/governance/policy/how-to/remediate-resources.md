@@ -26,7 +26,7 @@ Azure Ilkesi, her atama için yönetilen bir kimlik oluşturur, ancak yönetilen
 
 ## <a name="configure-policy-definition"></a>İlke tanımı'nı yapılandırma
 
-İlk adım, dahil edilen şablonunuzun içeriğini başarılı bir şekilde dağıtmak için, **dağıtım** ve ilke tanımında **yapılan ihtiyaçları karşılayan** rolleri tanımlamaktır. Altında **ayrıntıları** özelliği eklemek bir **roleDefinitionIds** özelliği. Bu özellik, ortamınızdaki eşleşen dizeler dizisidir. Tam bir örnek için, [Deployifnotexists örneğine](../concepts/effects.md#deployifnotexists-example) veya [değiştirme örneklerine](../concepts/effects.md#modify-examples)bakın.
+İlk adım, dahil edilen şablonunuzun içeriğini başarılı bir şekilde dağıtmak için, **dağıtım** ve ilke tanımında **yapılan ihtiyaçları karşılayan** rolleri tanımlamaktır. **Ayrıntılar** özelliği altında, bir **roledefinitionıds** özelliği ekleyin. Bu özellik, ortamınızdaki eşleşen dizeler dizisidir. Tam bir örnek için, [Deployifnotexists örneğine](../concepts/effects.md#deployifnotexists-example) veya [değiştirme örneklerine](../concepts/effects.md#modify-examples)bakın.
 
 ```json
 "details": {
@@ -57,7 +57,7 @@ Portalı kullanarak bir atama oluştururken, Azure Ilkesi yönetilen kimliği ol
 
 ### <a name="create-managed-identity-with-powershell"></a>PowerShell ile yönetilen kimlik oluşturma
 
-İlke ataması sırasında yönetilen bir kimlik oluşturmak için **konumu** tanımlanmalıdır ve **Assignıdentity** kullanılır. Aşağıdaki örnek, yerleşik ilke tanımı alır **dağıtmak, SQL veritabanı saydam veri şifrelemesi**, hedef kaynak grubu ayarlar ve ardından ataması oluşturulur.
+İlke ataması sırasında yönetilen bir kimlik oluşturmak için, **konumun** tanımlanması ve **atamadan kimlik** kullanılması gerekir. Aşağıdaki örnek, **SQL veritabanı saydam veri şifrelemesi dağıtma**, hedef kaynak grubunu ayarlayan ve sonra atamayı oluşturan yerleşik ilke tanımını alır.
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -72,7 +72,7 @@ $resourceGroup = Get-AzResourceGroup -Name 'MyResourceGroup'
 $assignment = New-AzPolicyAssignment -Name 'sqlDbTDE' -DisplayName 'Deploy SQL DB transparent data encryption' -Scope $resourceGroup.ResourceId -PolicyDefinition $policyDef -Location 'westus' -AssignIdentity
 ```
 
-`$assignment` Değişkeni artık yönetilen kimlikle birlikte bir ilke ataması oluştururken, döndürülen değerlerin standart asıl kimliği içeriyor. Aracılığıyla erişilebilir `$assignment.Identity.PrincipalId`.
+`$assignment` değişkeni, bir ilke ataması oluştururken döndürülen standart değerlerle birlikte, yönetilen kimliğin asıl KIMLIĞINI de içerir. `$assignment.Identity.PrincipalId`aracılığıyla erişilebilir.
 
 ### <a name="grant-defined-roles-with-powershell"></a>PowerShell ile rol verme tanımlanan
 
@@ -93,7 +93,7 @@ if ($roleDefinitionIds.Count -gt 0)
 
 ### <a name="grant-defined-roles-through-portal"></a>Portal üzerinden rolleri verme tanımlanan
 
-Portalı kullanarak tanımlanmış rollere atamanın yönetilen kimlik vermek için iki yolu vardır **erişim denetimi (IAM)** veya ilke veya girişim ataması düzenleme ve tıklatarak **Kaydet**.
+**Erişim denetimi (IAM)** kullanarak veya ilkeyi veya girişim atamasını düzenleyerek ve **Kaydet**' e tıklayarak, bir atamanın yönetilen kimliğine portalı kullanarak tanımlanmış rolleri vermenin iki yolu vardır.
 
 Rol atama için yönetilen kimlik eklemek için aşağıdaki adımları izleyin:
 
@@ -103,57 +103,57 @@ Rol atama için yönetilen kimlik eklemek için aşağıdaki adımları izleyin:
 
 1. Yönetilen bir kimliğe sahip ataması bulun ve adına tıklayın.
 
-1. Bulma **atama kimliği** düzenleme sayfası özelliği. Atama kimliği gibi bir şey olacaktır:
+1. Düzenleme sayfasında **atama kimliği** özelliğini bulun. Atama kimliği gibi bir şey olacaktır:
 
    ```output
    /subscriptions/{subscriptionId}/resourceGroups/PolicyTarget/providers/Microsoft.Authorization/policyAssignments/2802056bfc094dfb95d4d7a5
    ```
 
-   Yönetilen kimlik adı olduğundan ataması kaynak kimliği son bölümüdür `2802056bfc094dfb95d4d7a5` Bu örnekte. Atama kaynak kimliği. Bu bölümü kopyalayın
+   Yönetilen kimliğin adı, atama kaynak KIMLIĞININ bu örnekteki `2802056bfc094dfb95d4d7a5` son bölümüdür. Atama kaynak kimliği. Bu bölümü kopyalayın
 
 1. Kaynak veya el ile eklenen rol tanımı gereken kaynakları üst kapsayıcının (kaynak grubu, abonelik, yönetim grubu) gidin.
 
-1. Tıklayın **erişim denetimi (IAM)** tıklayın ve bağlantı Kaynaklar sayfasında **+ rol ataması Ekle** erişim denetimi sayfanın üstünde.
+1. Kaynaklar sayfasındaki **erişim denetimi (IAM)** bağlantısına tıklayın ve erişim denetimi sayfasının en üstünde **+ rol ataması Ekle** ' ye tıklayın.
 
-1. Eşleşen uygun rolü seçin bir **roleDefinitionIds** ilke tanımından.
-   Bırakın **erişim Ata** 'Azure AD kullanıcı, Grup veya uygulama' varsayılan olarak ayarla. İçinde **seçin** kutusuna yapıştırın veya önceden bulunan ataması kaynak kimliği bölümünü yazın. Arama tamamlandığında, kimliği'ni seçin ve aynı ada sahip nesneye tıklayın **Kaydet**.
+1. İlke tanımındaki bir **Roledefinitionıds** ile eşleşen uygun rolü seçin.
+   ' Azure AD Kullanıcı, Grup veya uygulama ' için varsayılan değer olarak ayarlanan **ata erişimini** bırak. **Seç** kutusunda, daha önce bulunan atama kaynağı kimliğinin bölümünü yapıştırın veya yazın. Arama tamamlandığında, KIMLIK ' i seçmek için aynı ada sahip nesneye tıklayın ve **Kaydet**' e tıklayın.
 
 ## <a name="create-a-remediation-task"></a>Düzeltme görev oluşturma
 
 ### <a name="create-a-remediation-task-through-portal"></a>Portal aracılığıyla düzeltme görevi oluşturma
 
-Değerlendirme sırasında, **Deployifnotexists** veya **değişiklik** efektlerine sahip ilke ataması uyumlu olmayan kaynaklar olup olmadığını belirler. Uyumlu olmayan kaynakları bulunduğunda ayrıntıları sağlanır **düzeltme** sayfası. Uyumlu olmayan kaynakları olan ilkeleri listesinde birlikte tetiklemeye yönelik seçeneği olan bir **düzeltme görev**. Bu seçenek, **Deployifnotexists** şablonundan veya **değiştirme** işlemlerinden bir dağıtım oluşturur.
+Değerlendirme sırasında, **Deployifnotexists** veya **değişiklik** efektlerine sahip ilke ataması uyumlu olmayan kaynaklar olup olmadığını belirler. Uyumlu olmayan kaynaklar bulunduğunda, Ayrıntılar **Düzeltme** sayfasında sağlanır. Uyumlu olmayan kaynaklara sahip ilkelerin listesi ile birlikte bir **Düzeltme görevi**tetikleme seçeneği vardır. Bu seçenek, **Deployifnotexists** şablonundan veya **değiştirme** işlemlerinden bir dağıtım oluşturur.
 
-Oluşturmak için bir **düzeltme görev**, şu adımları izleyin:
+Bir **Düzeltme görevi**oluşturmak için aşağıdaki adımları izleyin:
 
 1. Azure portalında **Tüm hizmetler**’e tıkladıktan sonra **İlke**'yi arayıp seçerek Azure İlkesi hizmetini başlatın.
 
    ![Tüm hizmetlerde Ilke ara](../media/remediate-resources/search-policy.png)
 
-1. Seçin **düzeltme** Azure İlkesi sayfasının sol tarafındaki.
+1. Azure Ilkesi sayfasının sol tarafındaki **Düzeltme** ' yi seçin.
 
    ![Ilke sayfasında düzeltme ' yi seçin](../media/remediate-resources/select-remediation.png)
 
-1. Tüm **Deployifnotexists** ve uyumlu olmayan kaynaklarla ilke atamalarını **değiştirme** , sekme ve veri tablosunu düzeltme **ilkelerine** dahildir. Bir ilkeyle uyumlu olmayan kaynakları tıklayın. **Yeni bir düzeltme görev** sayfası açılır.
+1. Tüm **Deployifnotexists** ve uyumlu olmayan kaynaklarla ilke atamalarını **değiştirme** , sekme ve veri tablosunu düzeltme **ilkelerine** dahildir. Bir ilkeyle uyumlu olmayan kaynakları tıklayın. **Yeni düzeltme görev** sayfası açılır.
 
    > [!NOTE]
-   > Açmak için alternatif bir yolu **düzeltme görev** sayfasıdır bulup ilkeden tıklayarak **Uyumluluk** sayfasında'a tıklayın **düzeltme Görevi Oluştur** düğmesi.
+   > **Düzeltme görevi** sayfasını açmak için alternatif bir yol, **Uyumluluk** sayfasında Ilkeyi bulup tıklattıktan sonra **Düzeltme görevi oluştur** düğmesine tıklamanız gerekir.
 
-1. Üzerinde **yeni bir düzeltme görev** sayfasında, kaynakları kullanarak düzeltmek için filtre **kapsam** alt kaynakları burada ilkenin atandığı seçmek için üç nokta simgesini (aşağı ayrı kaynak dahil nesneler). Ayrıca, **konumları** daha da fazla filtrelemek için kaynakları açılır. Yalnızca kaynak tabloda listelenen düzeltilebilir.
+1. **Yeni düzeltme görevi** sayfasında, ilkenin atandığı alt kaynakları (tek tek kaynak nesneleri dahil) seçmek için **kapsam** üç noktayı kullanarak düzeltmek üzere kaynakları filtreleyin. Ayrıca, kaynakları daha fazla filtrelemek için **konumlar açılan konumlarını** kullanın. Yalnızca kaynak tabloda listelenen düzeltilebilir.
 
    ![Düzelt-hangi kaynakların düzeltileceği seçin](../media/remediate-resources/select-resources.png)
 
-1. Kaynakları tıklayarak filtrelendi sonra düzeltme görevi Başlat **düzelt**. İlke uyumluluk sayfası açılacak **düzeltme görevleri** görevleri ilerleme durumunu göstermek için sekmesinde.
+1. Kaynaklar filtrelendikten sonra düzeltme görevini başlatmak için **Düzelt**'e tıklayın. İlke uyumluluk sayfası, görev ilerleme durumunun durumunu göstermek için **Düzeltme görevleri** sekmesine açılır.
 
    ![Düzeltme görevlerinin ilerlemesini düzelt](../media/remediate-resources/task-progress.png)
 
-1. Tıklayarak **düzeltme görev** İlkesi uyumluluk sayfasından ilerleme durumu hakkında ayrıntılı bilgi edinmek için. Görev için kullanılan filtreleme düzeltilen kaynakların listesini birlikte gösterilir.
+1. İlerleme hakkındaki ayrıntıları almak için ilke uyumluluğu sayfasından **Düzeltme görevi** ' ne tıklayın. Görev için kullanılan filtreleme düzeltilen kaynakların listesini birlikte gösterilir.
 
-1. Gelen **düzeltme görev** sayfasında, ya da düzeltme görevin dağıtım görüntülemek için bir kaynak veya kaynak üzerinde sağ tıklayın. Satırın sonunda tıklayarak **ilgili olaylar** gibi bir hata iletisi ayrıntılarını görmek için.
+1. Düzeltme **görevi** sayfasında, düzeltme görevinin dağıtımını ya da kaynağını görüntülemek için bir kaynağa sağ tıklayın. Bir hata iletisi gibi ayrıntıları görmek için satırın sonunda **ilgili olaylar** ' a tıklayın.
 
    ![Düzeltme - kaynak görev bağlam menüsü](../media/remediate-resources/resource-task-context-menu.png)
 
-Dağıtılan kaynakları aracılığıyla bir **düzeltme görev** eklenir **dağıtılan kaynakların** uyumluluk İlkesi sayfasının bir sekmesinde.
+Bir **Düzeltme görevi** aracılığıyla dağıtılan kaynaklar, ilke uyumluluğu sayfasındaki **dağıtılan kaynaklar** sekmesine eklenir.
 
 ### <a name="create-a-remediation-task-through-azure-cli"></a>Azure CLı aracılığıyla bir düzeltme görevi oluşturma
 

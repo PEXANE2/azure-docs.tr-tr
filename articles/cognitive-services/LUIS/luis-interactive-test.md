@@ -1,7 +1,7 @@
 ---
-title: Test app in LUIS portal
+title: LUIS Portalı'nda test uygulama
 titleSuffix: Azure Cognitive Services
-description: Use Language Understanding (LUIS) to continuously work on your application to refine it and improve its language understanding.
+description: Language Understanding (LUIS), uygulamanızı geliştirebilirsiniz ve kendi dil anlama geliştirmek için sürekli olarak çalışmak için kullanın.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -18,9 +18,9 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74221773"
 ---
-# <a name="test-your-luis-app-in-the-luis-portal"></a>Test your LUIS app in the LUIS portal
+# <a name="test-your-luis-app-in-the-luis-portal"></a>Lusıs uygulamanızı Lua portalında test etme
 
-[Testing](luis-concept-test.md) an app is an iterative process. After training your LUIS app, test it with sample utterances to see if the intents and entities are recognized correctly. If they're not, make updates to the LUIS app, train, and test again. 
+Bir uygulamayı [test etmek](luis-concept-test.md) , yinelemeli bir işlemdir. LUIS uygulamanızı eğitim sonra bu amaç ve varlıkları doğru tanınır olmadığını görmek için örnek Konuşma ile test edin. Değilseniz, güncelleştirmeleri LUIS uygulaması, eğitin ve test için yeniden yapın. 
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
@@ -30,77 +30,77 @@ ms.locfileid: "74221773"
 <a name="access-the-test-page"></a>
 <a name="luis-interactive-testing"></a>
 
-## <a name="train-before-testing"></a>Train before testing
+## <a name="train-before-testing"></a>Sınamadan önce eğitme
 
-In order to test against the most recent version of the active app, select **Train** from the top menu, before testing. 
+Etkin uygulamanın en son sürümüne karşı test etmek için, test etmeden önce üstteki menüden **eğitme** ' yi seçin. 
 
-## <a name="test-an-utterance"></a>Test an utterance
+## <a name="test-an-utterance"></a>Bir utterance test
 
-The test utterance should not be exactly the same as any example utterances in the app. The test utterance should include word choice, phrase length, and entity usage you expect for a user. 
+Test utterine, uygulamadaki herhangi bir örnek ile tam olarak aynı olmamalıdır. Test utterine, bir kullanıcı için beklediğinizi kelime seçimi, tümcecik uzunluğu ve varlık kullanımını içermelidir. 
 
-1. Access your app by selecting its name on the **My Apps** page. 
+1. **Uygulamalarım** sayfasında adını seçerek uygulamanıza erişin. 
 
-1. To access the **Test** slide-out panel, select **Test** in your application's top panel.
+1. **Test** slayt paneli paneline erişmek için uygulamanızın üst panelinde **Test** ' i seçin.
 
     > [!div class="mx-imgBorder"]
-    > ![Train & Test App page](./media/luis-how-to-interactive-test/test.png)
+    > & test uygulaması sayfası](./media/luis-how-to-interactive-test/test.png) ![eğitme
 
-1. Enter an utterance in the text box and select Enter. You can type as many test utterances as you want in the **Test**, but only one utterance at a time.
+1. Bir utterance metin kutusuna girin ve Enter tuşuna basın. **Testte**istediğiniz sayıda test ututlik yazabilirsiniz, ancak aynı anda yalnızca bir tane ile bir tane yazın.
 
-1. The utterance, its top intent, and score are added to the list of utterances under the text box.
+1. Utterance, üst amacını ve score konuşma metin kutusunun altında listesine eklenir.
 
-    ![Interactive testing identifies the wrong intent](./media/luis-how-to-interactive-test/test-weather-1.png)
+    ![Etkileşimli sınama yanlış amacını tanımlar](./media/luis-how-to-interactive-test/test-weather-1.png)
 
-## <a name="inspect-score"></a>Inspect score
+## <a name="inspect-score"></a>Puan inceleyin
 
-You inspect details of the test result in the **Inspect** panel. 
+**İnceleme** panelinde test sonucunun ayrıntılarını inceleyebilirsiniz. 
  
-1. With the **Test** slide-out panel open, select **Inspect** for an utterance you want to compare. 
+1. **Test** slayt paneli açıkken, karşılaştırmak istediğiniz bir utterlik için **İncele** ' yi seçin. 
 
-    ![Select Inspect button to see more details about the test results](./media/luis-how-to-interactive-test/inspect.png)
+    ![Test sonuçlarıyla ilgili daha fazla ayrıntı görmek için Inceleme düğmesini seçin](./media/luis-how-to-interactive-test/inspect.png)
 
-1. The **Inspection** panel appears. The panel includes the top scoring intent as well as any identified entities. The panel shows the result of the selected utterance.
+1. **İnceleme** paneli görüntülenir. Panelin amacını ve bunun yanı sıra tanımlanan herhangi bir varlık Puanlama üst içerir. Paneli, seçilen utterance sonucunu gösterir.
 
-    ![The panel includes the top scoring intent as well as any identified entities. The panel shows the result of the selected utterance.](./media/luis-how-to-interactive-test/inspect-panel.png)
+    ![Panelin amacını ve bunun yanı sıra tanımlanan herhangi bir varlık Puanlama üst içerir. Paneli, seçilen utterance sonucunu gösterir.](./media/luis-how-to-interactive-test/inspect-panel.png)
 
-## <a name="correct-top-scoring-intent"></a>Correct top scoring intent
+## <a name="correct-top-scoring-intent"></a>Doğru üst hedefi Puanlama
 
-1. If the top scoring intent is incorrect, select the **Edit** button.
+1. En üst Puanlama hedefi yanlış ise **Düzenle** düğmesini seçin.
 
-1.  In the drop-down list, select the correct intent for the utterance.
+1.  Aşağı açılan listesinde, doğru utterance hedefini seçin.
 
-    ![Select correct intent](./media/luis-how-to-interactive-test/intent-select.png)
+    ![Doğru hedefini seçin](./media/luis-how-to-interactive-test/intent-select.png)
 
-## <a name="view-sentiment-results"></a>View sentiment results
+## <a name="view-sentiment-results"></a>Yaklaşım sonuçlarını görüntüle
 
-If **Sentiment analysis** is configured on the **[Publish](luis-how-to-publish-app.md#enable-sentiment-analysis)** page, the test results include the sentiment found in the utterance. 
+**[Yayımlama](luis-how-to-publish-app.md#enable-sentiment-analysis)** sayfasında yaklaşım **Analizi** yapılandırılırsa, test sonuçları, utde bulunan yaklaşımı içerir. 
 
-![Image of Test pane with sentiment analysis](./media/luis-how-to-interactive-test/sentiment.png)
+![Test Bölmesi ile ilgili yaklaşım analizi görüntüsü](./media/luis-how-to-interactive-test/sentiment.png)
 
-## <a name="correct-matched-patterns-intent"></a>Correct matched pattern's intent
+## <a name="correct-matched-patterns-intent"></a>Eşleşen desenin amacı düzeltin
 
-If you are using [Patterns](luis-concept-patterns.md) and the utterance matched a pattern, but the wrong intent was predicted, select the **Edit** link by the pattern, then select the correct intent.
+[Desenler](luis-concept-patterns.md) kullanıyorsanız ve söyleyeni bir desenle eşleşirse, ancak yanlış amaç tahmin edildiğinde, deseni **Düzenle** bağlantısını seçin ve ardından doğru amacı seçin.
 
-## <a name="compare-with-published-version"></a>Compare with published version
+## <a name="compare-with-published-version"></a>Yayımlanan sürümle karşılaştır
 
-You can test the active version of your app with the published [endpoint](luis-glossary.md#endpoint) version. In the **Inspect** panel, select **Compare with published**. Any testing against the published model is deducted from your Azure subscription quota balance. 
+Yayınlanan [uç nokta](luis-glossary.md#endpoint) sürümüyle uygulamanızın etkin sürümünü test edebilirsiniz. **İnceleme** panelinde, **yayımlandı ile karşılaştır**' ı seçin. Yayımlanan modele yönelik test, Azure abonelik kotası bakiyeden çıkarılır. 
 
-![Compare with published](./media/luis-how-to-interactive-test/inspect-panel-compare.png)
+![Yayımlanan Karşılaştır](./media/luis-how-to-interactive-test/inspect-panel-compare.png)
 
-## <a name="view-endpoint-json-in-test-panel"></a>View endpoint JSON in test panel
-You can view the endpoint JSON returned for the comparison by selecting the **Show JSON view**.
+## <a name="view-endpoint-json-in-test-panel"></a>Uç nokta JSON test panelinde görüntüleyin
+Karşılaştırma için döndürülen JSON bitiş noktasını göster ' i seçerek **JSON görünümünü göster**' i seçebilirsiniz.
 
-![Published JSON response](./media/luis-how-to-interactive-test/inspect-panel-compare-json.png)
+![Yayımlanan bir JSON yanıtı](./media/luis-how-to-interactive-test/inspect-panel-compare-json.png)
 
 <!--Service name is 'Bing Spell Check v7 API' in the portal-->
-## <a name="additional-settings-in-test-panel"></a>Additional settings in test panel
+## <a name="additional-settings-in-test-panel"></a>Test panelinde ek ayarlar
 
-### <a name="luis-endpoint"></a>LUIS endpoint
+### <a name="luis-endpoint"></a>LUIS uç noktası
 
-If you have several LUIS endpoints, use the **Additional Settings** link on the Test's Published pane to change the endpoint used for testing. If you are not sure which endpoint to use, select the default **Starter_Key**. 
+Birkaç LUO uç noktanız varsa, test için kullanılan uç noktayı değiştirmek için testin yayımlanan bölmesindeki **ek ayarlar** bağlantısını kullanın. Hangi uç noktanın kullanılacağı konusunda emin değilseniz, varsayılan **Starter_Key**seçin. 
 
 > [!div class="mx-imgBorder"]
-> ![Test panel with Additional Settings link highlighted](media/luis-how-to-interactive-test/additional-settings-v3-settings.png)
+> Ek ayarlar bağlantısı vurgulanmış şekilde test paneli ![](media/luis-how-to-interactive-test/additional-settings-v3-settings.png)
 
 <!--
 ###  View Bing Spell Check corrections in test panel
@@ -136,11 +136,11 @@ Use the following procedure to include the [Bing Spell Check v7](https://azure.m
 -->
 
 ## <a name="batch-testing"></a>Toplu işe testi
-See batch testing [concepts](luis-concept-batch-test.md) and learn [how to](luis-how-to-batch-test.md) test a batch of utterances.
+Toplu iş testi [kavramlarını](luis-concept-batch-test.md) görün ve toplu iş türlerini [nasıl](luis-how-to-batch-test.md) test leyeceğinizi öğrenin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-If testing indicates that your LUIS app doesn't recognize the correct intents and entities, you can work to improve your LUIS app's accuracy by labeling more utterances or adding features. 
+Test LUIS uygulamanızı doğru amaç ve varlıkları tanımıyor gösteriyorsa, daha fazla konuşma etiketleme ya da özellikler ekleyerek LUIS uygulamanızın doğruluğunu artırmak için çalışabilir. 
 
-* [Label suggested utterances with LUIS](luis-how-to-review-endpoint-utterances.md) 
-* [Use features to improve your LUIS app's performance](luis-how-to-add-features.md) 
+* [LUSıS ile önerilen bir şekilde etiketleme](luis-how-to-review-endpoint-utterances.md) 
+* [LUSıS uygulamanızın performansını artırmak için özellikleri kullanın](luis-how-to-add-features.md) 

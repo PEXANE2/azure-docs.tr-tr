@@ -1,6 +1,6 @@
 ---
-title: Fivetran quickstart
-description: Get started quickly with Fivetran and Azure SQL Data Warehouse.
+title: Fivetran hızlı başlangıç
+description: Fivetran ve Azure SQL veri ambarı ile hızlıca çalışmaya başlayın.
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
@@ -18,36 +18,36 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74229101"
 ---
-# <a name="get-started-quickly-with-fivetran-and-sql-data-warehouse"></a>Get started quickly with Fivetran and SQL Data Warehouse
+# <a name="get-started-quickly-with-fivetran-and-sql-data-warehouse"></a>Fivetran ve SQL veri ambarı ile hızlıca çalışmaya başlayın
 
-This quickstart describes how to set up a new Fivetran user to work with Azure SQL Data Warehouse. The article assumes that you have an existing instance of SQL Data Warehouse.
+Bu hızlı başlangıçta, yeni bir Fivetran kullanıcısının Azure SQL veri ambarı ile çalışmaya nasıl ayarlanacağı açıklanır. Makalesinde SQL veri ambarı 'nın var olan bir örneğine sahip olduğunuz varsayılmaktadır.
 
-## <a name="set-up-a-connection"></a>Set up a connection
+## <a name="set-up-a-connection"></a>Bağlantı kurma
 
-1. Find the fully qualified server name and database name that you use to connect to SQL Data Warehouse.
+1. SQL Data Warehouse 'a bağlanmak için kullandığınız tam sunucu adını ve veritabanı adını bulun.
     
-    If you need help finding this information, see [Connect to Azure SQL Data Warehouse](sql-data-warehouse-connect-overview.md).
+    Bu bilgileri bulmak için yardıma ihtiyacınız varsa bkz. [Azure SQL veri ambarı 'Na bağlanma](sql-data-warehouse-connect-overview.md).
 
-2. In the setup wizard, choose whether to connect your database directly or by using an SSH tunnel.
+2. Kurulum sihirbazında, veritabanınıza doğrudan veya bir SSH tüneli kullanarak bağlanıp bağlanmayacağını seçin.
 
-   If you choose to connect directly to your database, you must create a firewall rule to allow access. This method is the simplest and most secure method.
+   Doğrudan veritabanınıza bağlanmayı seçerseniz, erişime izin vermek için bir güvenlik duvarı kuralı oluşturmanız gerekir. Bu yöntem, en basit ve en güvenli yöntemdir.
 
-   If you choose to connect by using an SSH tunnel, Fivetran connects to a separate server on your network. The server provides an SSH tunnel to your database. You must use this method if your database is in an inaccessible subnet on a virtual network.
+   Bir SSH tüneli kullanarak bağlanmayı seçerseniz, Fivetran, ağınızdaki ayrı bir sunucuya bağlanır. Sunucu, veritabanınıza bir SSH tüneli sağlar. Veritabanınız bir sanal ağ üzerinde erişilemeyen bir alt ağdaysa bu yöntemi kullanmanız gerekir.
 
-3. Add the IP address **52.0.2.4** to your server-level firewall to allow incoming connections to your SQL Data Warehouse instance from Fivetran.
+3. Fivetran 'dan SQL veri ambarı örneğinize gelen bağlantılara izin vermek için **52.0.2.4** IP adresini sunucu düzeyi güvenlik duvarınıza ekleyin.
 
-   For more information, see [Create a server-level firewall rule](create-data-warehouse-portal.md#create-a-server-level-firewall-rule).
+   Daha fazla bilgi için bkz. [sunucu düzeyinde güvenlik duvarı kuralı oluşturma](create-data-warehouse-portal.md#create-a-server-level-firewall-rule).
 
-## <a name="set-up-user-credentials"></a>Set up user credentials
+## <a name="set-up-user-credentials"></a>Kullanıcı kimlik bilgilerini ayarlama
 
-1. Connect to your Azure SQL Data Warehouse by using SQL Server Management Studio or the tool that you prefer. Sign in as a server admin user. Then, run the following SQL commands to create a user for Fivetran:
-    - In the master database: 
+1. SQL Server Management Studio veya tercih ettiğiniz aracı kullanarak Azure SQL veri ambarınıza bağlanın. Sunucu Yöneticisi kullanıcısı olarak oturum açın. Ardından, aşağıdaki SQL komutlarını çalıştırarak Fivetran için bir kullanıcı oluşturun:
+    - Ana veritabanında: 
     
       ```
       CREATE LOGIN fivetran WITH PASSWORD = '<password>'; 
       ```
 
-    - In SQL Data Warehouse database:
+    - SQL veri ambarı veritabanında:
 
       ```
       CREATE USER fivetran_user_without_login without login;
@@ -55,31 +55,31 @@ This quickstart describes how to set up a new Fivetran user to work with Azure S
       GRANT IMPERSONATE on USER::fivetran_user_without_login to fivetran;
       ```
 
-2. Grant the Fivetran user the following permissions to your warehouse:
+2. Fivetran kullanıcısına ambarınıza aşağıdaki izinleri verin:
 
     ```
     GRANT CONTROL to fivetran;
     ```
 
-    CONTROL permission is required to create database-scoped credentials that are used when a user loads files from Azure Blob storage by using PolyBase.
+    Kullanıcı, PolyBase kullanarak Azure Blob depolamadan dosya yüklediğinde kullanılan veritabanı kapsamlı kimlik bilgileri oluşturmak için DENETIM izni gereklidir.
 
-3. Add a suitable resource class to the Fivetran user. The resource class you use depends on the memory that's required to create a columnstore index. For example, integrations with products like Marketo and Salesforce require a higher resource class because of the large number of columns and the larger volume of data the products use. A higher resource class requires more memory to create columnstore indexes.
+3. Fivetran kullanıcısına uygun bir kaynak sınıfı ekleyin. Kullandığınız kaynak sınıfı, bir columnstore dizini oluşturmak için gereken belleğe bağlıdır. Örneğin, Marketo ve Salesforce gibi ürünlerle tümleştirmeler, çok sayıda sütun ve ürünlerin kullanacağı daha büyük veri hacmi nedeniyle daha yüksek bir kaynak sınıfı gerektirir. Daha yüksek bir kaynak sınıfı, columnstore dizinleri oluşturmak için daha fazla bellek gerektirir.
 
-    We recommend that you use static resource classes. You can start with the `staticrc20` resource class. The `staticrc20` resource class allocates 200 MB for each user, regardless of the performance level you use. If columnstore indexing fails at the initial resource class level, increase the resource class.
+    Statik kaynak sınıfları kullanmanızı öneririz. `staticrc20` kaynak sınıfıyla başlayabilirsiniz. `staticrc20` kaynak sınıfı, kullandığınız performans düzeyinden bağımsız olarak her kullanıcı için 200 MB ayırır. Columnstore dizin oluşturma ilk kaynak sınıfı düzeyinde başarısız olursa, kaynak sınıfını arttırın.
 
     ```
     EXEC sp_addrolemember '<resource_class_name>', 'fivetran';
     ```
 
-    For more information, read about [memory and concurrency limits](memory-concurrency-limits.md) and [resource classes](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md#ways-to-allocate-more-memory).
+    Daha fazla bilgi için [bellek ve eşzamanlılık sınırları](memory-concurrency-limits.md) ve [kaynak sınıfları](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md#ways-to-allocate-more-memory)hakkında bilgi edinin.
 
 
-## <a name="sign-in-to-fivetran"></a>Sign in to Fivetran
+## <a name="sign-in-to-fivetran"></a>Fivetran 'da oturum açın
 
-To sign in to Fivetran, enter the credentials that you use to access SQL Data Warehouse: 
+Fivetran 'da oturum açmak için SQL veri ambarı 'na erişmek üzere kullandığınız kimlik bilgilerini girin: 
 
-* Host (your server name).
-* Port.
+* Ana bilgisayar (sunucunuzun adı).
+* Bağ.
 * Veritabanı.
-* User (the user name should be **fivetran\@_server_name_** where *server_name* is part of your Azure host URI: ***server_name*.database.windows.net**).
-* Password.
+* Kullanıcı ( *SERVER_NAME* Azure ana bilgisayar URI 'nizin bir parçası olduğu için, Kullanıcı adı **fivetran\@_server_name_**  olmalıdır: ***SERVER_NAME *. Database. Windows. net**).
+* Parolayı.

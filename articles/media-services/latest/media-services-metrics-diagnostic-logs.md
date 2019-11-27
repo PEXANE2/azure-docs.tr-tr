@@ -62,7 +62,7 @@ Aşağıdaki Media Services [akış uç noktası](https://docs.microsoft.com/res
 
 |Ölçüm adı|Görünen ad|Açıklama|
 |---|---|---|
-|İstekler|İstekler|Akış uç noktası tarafından hizmet verilen toplam HTTP isteği sayısını sağlar.|
+|İstekleri|İstekleri|Akış uç noktası tarafından hizmet verilen toplam HTTP isteği sayısını sağlar.|
 |Çıkış|Çıkış|Çıkış baytlarının toplam sayısı. Örneğin, akış uç noktası tarafından akan baytlar.|
 |Başarı E2e|Başarılı uçtan uca gecikme süresi|Akış uç noktasının, yanıtın son baytı gönderilirken isteği aldığı zaman süresi.|
 

@@ -25,7 +25,7 @@ Lusıs uygulamanız, bir istemci uygulamasına söylenişi tahminleri (örneğin
 
 Bu hızlı başlangıçta, bir uygulamayı dağıtmayı öğreneceksiniz. Bir tahmin uç noktası kaynağı oluşturur, uygulamayı uygulamaya atayabilir, uygulamayı eğitme ve uygulamayı yayımlayabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bir [Azure aboneliği](https://azure.microsoft.com/free)alın.
 * [Önceki Portal Hızlı](get-started-portal-build-app.md) başlangıcını tamamlayıp [uygulamayı indirip içeri aktarın](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/in-portal/build-portal-app.json).
@@ -69,7 +69,7 @@ LUHER yeni kaynak oluşturduğunuzda, kaynağı LUO uygulamasına atamanız gere
 
     ![LUSıS tahmin kaynağını eklemek için tahmin kaynağı Ekle ' yi seçin.](./media/get-started-portal-deploy-app/azure-resources-add-prediction-resource.png)
 
-1. Kiracınızı, aboneliğinizi ve kaynak adınızı seçin. Seçin **atama kaynak**.
+1. Kiracınızı, aboneliğinizi ve kaynak adınızı seçin. **Kaynak ata**' yı seçin.
 
    ![Uygulamanıza bir kaynak atayın](./media/get-started-portal-deploy-app/assign-resource.png)
 

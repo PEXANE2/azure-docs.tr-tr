@@ -18,11 +18,11 @@ Azure not defterleri, güçlü, işbirliğine dayalı alanı içinde kullanıcı
 
 Kullanıcı Kimliğinizi, projeleri ve Not Defterleri paylaşmak için kullandığınız URL'leri bir parçasıdır. Aşağıdaki listede, farklı bir URL desenleri açıklar:
 
-- `https://notebooks.azure.com/<user_id>`: Profil sayfanızı.
-- `https://notebooks.azure.com/<user_id>/projects`: Uygulamanızın proje. Tüm projeler görürsünüz; diğer kullanıcılar yalnızca ortak projelerinizi bakın.
-- `https://notebooks.azure.com/<user_id>/projects/<project_id>`: Proje dosyaları.
-- `https://notebooks.azure.com/<user_id>/projects/<project_id>/clones`: Belirli proje kopyalar.
-- `https://notebooks.azure.com/<user_id>/projects/<project_id>/html/<notebook>.ipynb`: Belirli bir not defteri veya dosya HTML önizlemesi.
+- `https://notebooks.azure.com/<user_id>`: profil sayfanız.
+- `https://notebooks.azure.com/<user_id>/projects`: projeleriniz. Tüm projeler görürsünüz; diğer kullanıcılar yalnızca ortak projelerinizi bakın.
+- `https://notebooks.azure.com/<user_id>/projects/<project_id>`: proje dosyaları.
+- `https://notebooks.azure.com/<user_id>/projects/<project_id>/clones`: Belirli projelerin klonları.
+- `https://notebooks.azure.com/<user_id>/projects/<project_id>/html/<notebook>.ipynb`: belirli bir not defteri veya dosyanın HTML önizlemesi.
 
 ## <a name="your-user-id"></a>Kullanıcı Kimliğiniz
 
@@ -30,7 +30,7 @@ Azure not defterlerine ilk kez oturum açtığınızda, hesabınızı otomatik o
 
 ![Azure not defterleri açarken bir kullanıcı kimliği oluşturmak için istemleri](media/accounts/create-user-id.png)
 
-A **yapılandırma kullanıcı kimliği** komutu, geçici kullanıcı adının yanında da görünür:
+**Kullanıcı kimliğini Yapılandır** komutu ayrıca geçici kullanıcı adının yanında görünür:
 
 ![Geçici bir kimliği kullanılırken görüntülenen bir kullanıcı kimliği komutu yapılandırın](media/accounts/configure-user-id-command.png)
 
@@ -43,20 +43,20 @@ Bir kullanıcı KIMLIĞI, dört ve altı harfli, sayı ve kısa çizgi arasında
 
 ## <a name="your-profile"></a>Profilinizi
 
-Profilinizi, URL'de herkes tarafından izlenen bilgi oluşan `https://notebooks.azure.com/<user_id>`. Profil sayfanızı Ayrıca, son kullanılan projeler ve tüm yıldızlı projelerin gösterir.
+Profiliniz, `https://notebooks.azure.com/<user_id>`URL 'sindeki herkese açık olarak görüntülenebilir bilgilerden oluşur. Profil sayfanızı Ayrıca, son kullanılan projeler ve tüm yıldızlı projelerin gösterir.
 
-Profilinizi düzenlemek için **profil bilgilerini Düzenle** Profil sayfanızdaki komutu. Profilinizi bölümleri aşağıdaki gibidir:
+Profilinizi düzenlemek için profil sayfanızdaki **profil bilgilerini düzenle** komutunu kullanın. Profilinizi bölümleri aşağıdaki gibidir:
 
 | Section | İçindekiler |
 | --- | --- |
 | Profil fotoğrafı | Profil sayfanızdan gösterildiği bir görüntüsü. |
-| Hesap Bilgisi | Görünen ad, kullanıcı kimliği ve ortak bir e-posta hesabı. E-posta hesabı buraya farklı olabilir ve diğer kullanıcıların sizinle iletişim kurmak için bir ortalama sağlar [hesabı](azure-notebooks-user-account.md) Azure not defterlerine kendisini imzalamak için kullanın. |
+| Hesap Bilgisi | Görünen ad, kullanıcı kimliği ve ortak bir e-posta hesabı. Buradaki e-posta hesabı, diğer kullanıcılara sizinle iletişim kurmak için bir anlamı sağlar ve Azure Notebooks oturum açmak için kullandığınız [hesaptan](azure-notebooks-user-account.md) farklı olabilir. |
 | Profil Bilgileri | Konumunuz, şirket, iş unvanı, web sitesi ve kendiniz kısa bir açıklaması. |
 | Sosyal profilleri | GItHub, Twitter ve Facebook kimlikleri, bunları paylaşmak istiyorsanız. |
-| Gizlilik Ayarları | İki komutları sağlar:<ul><li>**Profilim dışarı**: oluşturur ve indirir bir *.zip* Azure not defterleri kaydeder, fotoğraf, profil bilgileri ve güvenlik günlükleri gibi profilinizdeki tüm bilgileri içeren dosya.</li><li>**Hesabım Sil**: Azure not defterlerinde depolanan tüm kişisel bilgilerinizi kalıcı olarak siler.</li></ul> |
-| Site özelliklerini etkinleştirme | Azure not defterleri davranışı yönleri denetlemenizi sağlar:<ul><li>**Birleşik not defterleri için ön uç**: daha hızlı not defteri başlatma ve daha iyi kalıcılığını etkinleştirir.</li><li>**JupyterLab içinde varsayılan olarak çalıştığı**: varsayılan olarak, Azure not defterleri çoğu kullanıcı için uygun olan basit bir kullanıcı arabirimi sağlar. JupyterLab deneyimli kullanıcılar için daha zengin ancak daha karmaşık bir arabirim sağlar.</li><li>**VNext Web sitesi**: Bu belgede gösterilen Modernleştirilmiş web düzeni sağlar.</li></ul> |
+| Gizlilik Ayarları | İki komutları sağlar:<ul><li>**Profilimi dışarı aktar**: fotoğraflarınızın, profil bilgilerinizin ve güvenlik günlüklerinin dahil Azure Notebooks kaydettiği tüm bilgileri içeren bir *. zip* dosyası oluşturur ve indirir.</li><li>**Hesabımı Sil**: Azure Notebooks depolanan tüm kişisel bilgilerinizi kalıcı olarak siler.</li></ul> |
+| Site özelliklerini etkinleştirme | Azure not defterleri davranışı yönleri denetlemenizi sağlar:<ul><li>**Not defterleri Için Birleşik ön uç**: daha hızlı ve daha iyi kalıcılık sağlar.</li><li>**Varsayılan olarak JupyterLab 'Da Çalıştır**: varsayılan olarak, Azure Notebooks çoğu kullanıcı için uygun olan basit bir kullanıcı arabirimi sağlar. JupyterLab deneyimli kullanıcılar için daha zengin ancak daha karmaşık bir arabirim sağlar.</li><li>**VNext Web sitesi**: Bu belgede gösterilen, modernlanmış Web yerleşimini etkin hale sunar.</li></ul> |
 
 ## <a name="next-steps"></a>Sonraki adımlar  
 
 > [!div class="nextstepaction"]
-> [Öğretici: bir çalışma doğrusal regresyon yapmak için Jupyter not defteri oluşturma](tutorial-create-run-jupyter-notebook.md)
+> [Öğretici: doğrusal regresyon yapmak için bir Jupyter Not defteri çalıştırma](tutorial-create-run-jupyter-notebook.md)

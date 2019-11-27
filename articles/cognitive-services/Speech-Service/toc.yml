@@ -374,8 +374,6 @@
               href: rest-speech-to-text.md
             - name: Metin okuma REST API'si
               href: rest-text-to-speech.md
-            - name: Web Kancaları REST API'si
-              href: webhooks.md
         - name: Swagger belgeleri
           href: swagger-documentation.md
 - name: Konuşma SDK'sı

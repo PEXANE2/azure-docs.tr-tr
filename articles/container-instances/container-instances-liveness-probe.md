@@ -1,6 +1,6 @@
 ---
-title: Set up liveness probe on container instance
-description: Learn how to configure liveness probes to restart unhealthy containers in Azure Container Instances
+title: Kapsayıcı örneği üzerinde lizleştirme araştırması ayarlama
+description: Azure Container Instances ' de uygun olmayan kapsayıcıları yeniden başlatmak için Lida araştırmaların nasıl yapılandırılacağını öğrenin
 ms.topic: article
 ms.date: 06/08/2018
 ms.openlocfilehash: 96d98d18a3f0ac666fb2c057216f7844b176d177
@@ -12,15 +12,15 @@ ms.locfileid: "74481680"
 ---
 # <a name="configure-liveness-probes"></a>Canlılık yoklaması yapılandırma
 
-Containerized applications may run for extended periods of time, resulting in broken states that may need to be repaired by restarting the container. Azure Container Instances supports liveness probes so that you can configure your containers within your container group to restart if critical functionality is not working. The liveness probe behaves like a [Kubernetes liveness probe](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/).
+Kapsayıcılı uygulamalar uzun süre çalışabilir, bu da kapsayıcıyı yeniden başlatarak onarılması gerekebilecek hatalı durumlara neden olabilir. Azure Container Instances, kapsayıcı grubunuzdaki Kapsayıcılarınızı, kritik işlevler çalışmıyorsa yeniden başlatılacak şekilde yapılandırabileceğiniz şekilde, lilik araştırmalarını destekler. Limek araştırması bir [Kubernetes araştırması](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/)gibi davranır.
 
-This article explains how to deploy a container group that includes a liveness probe, demonstrating the automatic restart of a simulated unhealthy container.
+Bu makalede, sanal sağlıksız bir kapsayıcının otomatik olarak yeniden başlatılmasını gösteren, limize Me araştırması içeren bir kapsayıcı grubunun nasıl dağıtılacağı açıklanır.
 
-Azure Container Instances also supports [readiness probes](container-instances-readiness-probe.md), which you can configure to ensure that traffic reaches a container only when it's ready for it.
+Azure Container Instances Ayrıca, trafiğin yalnızca kendisine hazır olduğu zaman bir kapsayıcıya ulaşmasını sağlamak için yapılandırabileceğiniz [hazırlık araştırmalarını](container-instances-readiness-probe.md)destekler.
 
-## <a name="yaml-deployment"></a>YAML deployment
+## <a name="yaml-deployment"></a>YAML dağıtımı
 
-Create a `liveness-probe.yaml` file with the following snippet. This file defines a container group that consists of an NGNIX container that eventually becomes unhealthy.
+Aşağıdaki kod parçacığında `liveness-probe.yaml` bir dosya oluşturun. Bu dosya, sonunda sağlıksız hale gelen NGNX kapsayıcısından oluşan bir kapsayıcı grubunu tanımlar.
 
 ```yaml
 apiVersion: 2018-10-01
@@ -52,53 +52,53 @@ tags: null
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-Run the following command to deploy this container group with the above YAML configuration:
+Yukarıdaki YAML yapılandırmasıyla Bu kapsayıcı grubunu dağıtmak için aşağıdaki komutu çalıştırın:
 
 ```azurecli-interactive
 az container create --resource-group myResourceGroup --name livenesstest -f liveness-probe.yaml
 ```
 
-### <a name="start-command"></a>Start command
+### <a name="start-command"></a>Başlat komutu
 
-The deployment defines a starting command to be run when the container first starts running, defined by the `command` property, which accepts an array of strings. In this example, it will start a bash session and create a file called `healthy` within the `/tmp` directory by passing this command:
+Dağıtım, kapsayıcı ilk kez çalışmaya başladığında çalıştırılacak başlangıç komutunu tanımlar, bu, bir dizi dizeyi kabul eden `command` özelliği tarafından tanımlanır. Bu örnekte, bir bash oturumu başlatacak ve bu komutu geçirerek `/tmp` dizininde `healthy` adlı bir dosya oluşturacaktır:
 
 ```bash
 /bin/sh -c "touch /tmp/healthy; sleep 30; rm -rf /tmp/healthy; sleep 600"
 ```
 
- It will then sleep for 30 seconds before deleting the file, then enters a 10-minute sleep.
+ Daha sonra dosyayı silmeden önce 30 saniye sürer ve ardından 10 dakikalık bir uyku moduna girer.
 
-### <a name="liveness-command"></a>Liveness command
+### <a name="liveness-command"></a>Lida komutu
 
-This deployment defines a `livenessProbe` that supports an `exec` liveness command that acts as the liveness check. If this command exits with a non-zero value, the container will be killed and restarted, signaling the `healthy` file could not be found. If this command exits successfully with exit code 0, no action will be taken.
+Bu dağıtım, lietler denetimi görevi gören bir `exec` lietler komutunu destekleyen bir `livenessProbe` tanımlar. Bu komut sıfır olmayan bir değerle çıkış alıyorsa, kapsayıcı sonlandırılır ve yeniden başlatılır, `healthy` dosyası bulunamadı. Bu komut, çıkış kodu 0 ile başarılı bir şekilde çıkılırken hiçbir işlem yapılmaz.
 
-The `periodSeconds` property designates the liveness command should execute every 5 seconds.
+`periodSeconds` özelliği, uygun komutu her 5 saniyede bir yürütebilmelidir.
 
-## <a name="verify-liveness-output"></a>Verify liveness output
+## <a name="verify-liveness-output"></a>Libir çıktıyı doğrula
 
-Within the first 30 seconds, the `healthy` file created by the start command exists. When the liveness command checks for the `healthy` file's existence, the status code returns a zero, signaling success, so no restarting occurs.
+İlk 30 saniye içinde, start komutu tarafından oluşturulan `healthy` dosya vardır. Liki komutu `healthy` dosyanın varlığını denetlediğinde, durum kodu sıfır döndürür ve başarılı olarak sinyal verir, böylece yeniden başlatma gerçekleşmez.
 
-After 30 seconds, the `cat /tmp/healthy` will begin to fail, causing unhealthy and killing events to occur.
+30 saniye sonra, `cat /tmp/healthy` başarısız olur, sağlıksız ve olayları sonlandırma olayları oluşmasına neden olur.
 
-These events can be viewed from the Azure portal or Azure CLI.
+Bu olaylar Azure portal veya Azure CLı 'dan görüntülenebilir.
 
-![Portal unhealthy event][portal-unhealthy]
+![Portalın sağlıksız olayı][portal-unhealthy]
 
-By viewing the events in the Azure portal, events of type `Unhealthy` will be triggered upon the liveness command failing. The subsequent event will be of type `Killing`, signifying a container deletion so a restart can begin. The restart count for the container increments each time this event  occurs.
+Azure portal olayları görüntüleyerek, `Unhealthy` türündeki olaylar, uygun olmayan komut başarısız olduğunda tetiklenecektir. Sonraki olay `Killing`türünde olacaktır ve bir yeniden başlatmanın başlaması için bir kapsayıcı silmeyi belirtir. Bu olay gerçekleştiğinde kapsayıcının yeniden başlatma sayısı artar.
 
-Restarts are completed in-place so resources like public IP addresses and node-specific contents will be preserved.
+Yeniden başlatmalar, genel IP adresleri ve düğüme özgü içerikler gibi kaynakların korunabilmesi için yerinde tamamlanır.
 
-![Portal restart counter][portal-restart]
+![Portal yeniden başlatma sayacı][portal-restart]
 
-If the liveness probe continuously fails and triggers too many restarts, your container will enter an exponential back off delay.
+Destekleneme araştırması sürekli olarak başarısız olur ve çok fazla yeniden başlatma tetiklerse, Kapsayıcınız bir üstel geri dönme gecikmesi girer.
 
-## <a name="liveness-probes-and-restart-policies"></a>Liveness probes and restart policies
+## <a name="liveness-probes-and-restart-policies"></a>Lizleştirme araştırmaları ve yeniden başlatma ilkeleri
 
-Restart policies supersede the restart behavior triggered by liveness probes. For example, if you set a `restartPolicy = Never` *and* a liveness probe, the container group will not restart because of a failed liveness check. The container group will instead adhere to the container group's restart policy of `Never`.
+Yeniden başlatma ilkeleri, lilezleştirme araştırmaları tarafından tetiklenen yeniden başlatma davranışının yerini alır Örneğin, bir `restartPolicy = Never` *ve* bir lizleştirme araştırması ayarlarsanız, başarısız bir denetim nedeniyle kapsayıcı grubu yeniden başlatmaz. Kapsayıcı grubu bunun yerine kapsayıcı grubunun `Never`yeniden başlatma ilkesine bağlı olacaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Task-based scenarios may require a liveness probe to enable automatic restarts if a pre-requisite function is not working properly. For more information about running task-based containers, see [Run containerized tasks in Azure Container Instances](container-instances-restart-policy.md).
+Önkoşul olmayan bir işlev düzgün çalışmıyorsa, görev tabanlı senaryolar otomatik yeniden başlatmaları etkinleştirmek için bir araştırma gerektirebilir. Görev tabanlı kapsayıcılar çalıştırma hakkında daha fazla bilgi için, bkz. [Azure Container Instances Kapsayıcılı görevleri çalıştırma](container-instances-restart-policy.md).
 
 <!-- IMAGES -->
 [portal-unhealthy]: ./media/container-instances-liveness-probe/unhealthy-killing.png

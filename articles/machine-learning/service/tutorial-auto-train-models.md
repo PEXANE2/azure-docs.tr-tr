@@ -1,7 +1,7 @@
 ---
-title: 'Regression tutorial: Automated ML'
+title: 'Regresyon öğreticisi: otomatik ML'
 titleSuffix: Azure Machine Learning
-description: In this tutorial, you learn how to generate a machine learning model by using automated machine learning. Azure Machine Learning can perform data preprocessing, algorithm selection, and hyperparameter selection in an automated way for you.
+description: Bu öğreticide, otomatik makine öğrenimi kullanarak makine öğrenimi modeli oluşturmayı öğreneceksiniz. Azure Machine Learning, veri ön işleme, algoritma seçimi ve hiper parametre seçimini sizin için otomatik bir şekilde gerçekleştirebilir.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -17,32 +17,32 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74483547"
 ---
-# <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Tutorial: Use automated machine learning to predict taxi fares
+# <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Öğretici: taksi Fares 'yi tahmin etmek için otomatik makine öğrenimi kullanma
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In this tutorial, you use automated machine learning in Azure Machine Learning to create a regression model to predict NYC taxi fare prices. This process accepts training data and configuration settings, and automatically iterates through combinations of different feature normalization/standardization methods, models, and hyperparameter settings to arrive at the best model.
+Bu öğreticide, NYC TAXI tarifeli havayolu fiyatlarını tahmin etmek üzere bir gerileme modeli oluşturmak için Azure Machine Learning ' de otomatik makine öğrenimini kullanırsınız. Bu işlem, eğitim verilerini ve yapılandırma ayarlarını kabul eder ve en iyi modele ulaşmak için farklı özellik normalleştirme/standartlaştırma yöntemlerinin, modellerinin ve hiper parametre ayarlarının birleşimleri aracılığıyla otomatik olarak yinelenir.
 
-![Flow diagram](./media/tutorial-auto-train-models/flow2.png)
+![Akış diyagramı](./media/tutorial-auto-train-models/flow2.png)
 
-In this tutorial you learn the following tasks:
+Bu öğreticide aşağıdaki görevleri öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Download, transform, and clean data using Azure Open Datasets
-> * Train an automated machine learning regression model
-> * Calculate model accuracy
+> * Azure açık veri kümelerini kullanarak verileri indirme, dönüştürme ve Temizleme
+> * Otomatik makine öğrenimi regresyon modelini eğitme
+> * Model doğruluğunu hesapla
 
-If you don’t have an Azure subscription, create a free account before you begin. Try the [free or paid version](https://aka.ms/AMLFree) of Azure Machine Learning today.
+Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. Azure Machine Learning [ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Complete the [setup tutorial](tutorial-1st-experiment-sdk-setup.md) if you don't already have an Azure Machine Learning workspace or notebook virtual machine.
-* After you complete the setup tutorial, open the **tutorials/regression-automated-ml.ipynb** notebook using the same notebook server.
+* Zaten bir Azure Machine Learning çalışma alanınız veya Not defteri sanal makineniz yoksa [Kurulum öğreticisini](tutorial-1st-experiment-sdk-setup.md) doldurun.
+* Kurulum öğreticisini tamamladıktan sonra, aynı not defteri sunucusunu kullanarak **öğreticiler/Regression-Automated-ml. ipynb** Not defterini açın.
 
-This tutorial is also available on [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) if you wish to run it in your own [local environment](how-to-configure-environment.md#local). Run `pip install azureml-sdk[automl] azureml-opendatasets azureml-widgets` to get the required packages.
+Bu öğretici, kendi [Yerel ortamınızda](how-to-configure-environment.md#local)çalıştırmak istiyorsanız [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 'da da kullanılabilir. Gerekli paketleri almak için `pip install azureml-sdk[automl] azureml-opendatasets azureml-widgets` çalıştırın.
 
-## <a name="download-and-prepare-data"></a>Download and prepare data
+## <a name="download-and-prepare-data"></a>Verileri indirme ve hazırlama
 
-Import the necessary packages. The Open Datasets package contains a class representing each data source (`NycTlcGreen` for example) to easily filter date parameters before downloading.
+Gerekli paketleri içeri aktarın. Açık veri kümeleri paketi, indirilmeden önce tarih parametrelerini kolayca filtrelemek için her bir veri kaynağını temsil eden bir sınıf içerir (örneğin`NycTlcGreen`).
 
 ```python
 from azureml.opendatasets import NycTlcGreen
@@ -51,9 +51,9 @@ from datetime import datetime
 from dateutil.relativedelta import relativedelta
 ```
 
-Begin by creating a dataframe to hold the taxi data. When working in a non-Spark environment, Open Datasets only allows downloading one month of data at a time with certain classes to avoid `MemoryError` with large datasets.
+Taxı verilerini tutmak için bir veri çerçevesi oluşturarak başlayın. Spark olmayan bir ortamda çalışırken, açık veri kümeleri, büyük veri kümeleriyle `MemoryError` önlemek için belirli sınıflarla tek seferde bir aydan verilerin indirilmesini sağlar.
 
-To download taxi data, iteratively fetch one month at a time, and before appending it to `green_taxi_df` randomly sample 2,000 records from each month to avoid bloating the dataframe. Then preview the data.
+Taxı verilerini indirmek için, bir kerede bir ay sonra bir kez ve veri çerçevesini bloktan kaçınmak için her aydan rastgele örnek 2.000 kayıtları `green_taxi_df`. Sonra verileri önizleyin.
 
 
 ```python
@@ -70,7 +70,7 @@ green_taxi_df.head(10)
 ```
 
 <div>
-<style scoped> .dataframe tbody tr th:only-of-type { vertical-align: middle; }
+<style scoped>. dataframe tbody tr TH: yalnızca-of-type {Vertical-ALIGN: Middle;}
 
     .dataframe tbody tr th {
         vertical-align: top;
@@ -84,27 +84,27 @@ green_taxi_df.head(10)
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>vendorID</th>
+      <th>Konağında VendorID</th>
       <th>lpepPickupDatetime</th>
       <th>lpepDropoffDatetime</th>
       <th>passengerCount</th>
-      <th>tripDistance</th>
-      <th>puLocationId</th>
-      <th>doLocationId</th>
-      <th>pickupLongitude</th>
-      <th>pickupLatitude</th>
-      <th>dropoffLongitude</th>
+      <th>Üçlü mesafe</th>
+      <th>Pulocationıd</th>
+      <th>Dolocationıd</th>
+      <th>Pickupboylam</th>
+      <th>Pickupenlem</th>
+      <th>Açılan Boylam</th>
       <th>...</th>
       <th>paymentType</th>
       <th>fareAmount</th>
-      <th>extra</th>
-      <th>mtaTax</th>
+      <th>ına</th>
+      <th>Mtavergisi</th>
       <th>improvementSurcharge</th>
       <th>tipAmount</th>
       <th>tollsAmount</th>
-      <th>ehailFee</th>
+      <th>Ehailücret</th>
       <th>totalAmount</th>
-      <th>tripType</th>
+      <th>Üçlü tür</th>
     </tr>
   </thead>
   <tbody>
@@ -114,22 +114,22 @@ green_taxi_df.head(10)
       <td>2015-01-11 05:34:44</td>
       <td>2015-01-11 05:45:03</td>
       <td>3</td>
-      <td>4.84</td>
-      <td>Hiçbiri</td>
-      <td>Hiçbiri</td>
-      <td>-73.88</td>
-      <td>40.84</td>
-      <td>-73.94</td>
+      <td>4,84</td>
+      <td>Yok.</td>
+      <td>Yok.</td>
+      <td>-73,88</td>
+      <td>40,84</td>
+      <td>-73,94</td>
       <td>...</td>
       <td>2</td>
-      <td>15.00</td>
+      <td>15,00</td>
       <td>0.50</td>
       <td>0.50</td>
-      <td>0.3</td>
+      <td>0,3</td>
       <td>0.00</td>
       <td>0.00</td>
-      <td>nan</td>
-      <td>16.30</td>
+      <td>nBir</td>
+      <td>16,30</td>
       <td>1.00</td>
     </tr>
     <tr>
@@ -137,23 +137,23 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>2015-01-20 16:26:29</td>
       <td>2015-01-20 16:30:26</td>
-      <td>1</td>
+      <td>1\.</td>
       <td>0.69</td>
-      <td>Hiçbiri</td>
-      <td>Hiçbiri</td>
-      <td>-73.96</td>
-      <td>40.81</td>
-      <td>-73.96</td>
+      <td>Yok.</td>
+      <td>Yok.</td>
+      <td>-73,96</td>
+      <td>40,81</td>
+      <td>-73,96</td>
       <td>...</td>
       <td>2</td>
       <td>4.50</td>
       <td>1.00</td>
       <td>0.50</td>
-      <td>0.3</td>
+      <td>0,3</td>
       <td>0.00</td>
       <td>0.00</td>
-      <td>nan</td>
-      <td>6.30</td>
+      <td>nBir</td>
+      <td>6,30</td>
       <td>1.00</td>
     </tr>
     <tr>
@@ -161,23 +161,23 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>2015-01-01 05:58:10</td>
       <td>2015-01-01 06:00:55</td>
-      <td>1</td>
-      <td>0.45</td>
-      <td>Hiçbiri</td>
-      <td>Hiçbiri</td>
-      <td>-73.92</td>
-      <td>40.76</td>
-      <td>-73.91</td>
+      <td>1\.</td>
+      <td>0,45</td>
+      <td>Yok.</td>
+      <td>Yok.</td>
+      <td>-73,92</td>
+      <td>40,76</td>
+      <td>-73,91</td>
       <td>...</td>
       <td>2</td>
-      <td>4.00</td>
+      <td>4,00</td>
       <td>0.00</td>
       <td>0.50</td>
-      <td>0.3</td>
+      <td>0,3</td>
       <td>0.00</td>
       <td>0.00</td>
-      <td>nan</td>
-      <td>4.80</td>
+      <td>nBir</td>
+      <td>4,80</td>
       <td>1.00</td>
     </tr>
     <tr>
@@ -185,119 +185,119 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>2015-01-17 02:20:50</td>
       <td>2015-01-17 02:41:38</td>
-      <td>1</td>
+      <td>1\.</td>
       <td>0.00</td>
-      <td>Hiçbiri</td>
-      <td>Hiçbiri</td>
-      <td>-73.81</td>
-      <td>40.70</td>
-      <td>-73.82</td>
+      <td>Yok.</td>
+      <td>Yok.</td>
+      <td>-73,81</td>
+      <td>40,70</td>
+      <td>-73,82</td>
       <td>...</td>
       <td>2</td>
-      <td>12.50</td>
+      <td>12,50</td>
       <td>0.50</td>
       <td>0.50</td>
-      <td>0.3</td>
+      <td>0,3</td>
       <td>0.00</td>
       <td>0.00</td>
-      <td>nan</td>
-      <td>13.80</td>
+      <td>nBir</td>
+      <td>13,80</td>
       <td>1.00</td>
     </tr>
     <tr>
       <th>1269627</th>
-      <td>1</td>
+      <td>1\.</td>
       <td>2015-01-01 05:04:10</td>
       <td>2015-01-01 05:06:23</td>
-      <td>1</td>
+      <td>1\.</td>
       <td>0.50</td>
-      <td>Hiçbiri</td>
-      <td>Hiçbiri</td>
-      <td>-73.92</td>
-      <td>40.76</td>
-      <td>-73.92</td>
+      <td>Yok.</td>
+      <td>Yok.</td>
+      <td>-73,92</td>
+      <td>40,76</td>
+      <td>-73,92</td>
       <td>...</td>
       <td>2</td>
-      <td>4.00</td>
+      <td>4,00</td>
       <td>0.50</td>
       <td>0.50</td>
       <td>0</td>
       <td>0.00</td>
       <td>0.00</td>
-      <td>nan</td>
+      <td>nBir</td>
       <td>5.00</td>
       <td>1.00</td>
     </tr>
     <tr>
       <th>811755</th>
-      <td>1</td>
+      <td>1\.</td>
       <td>2015-01-04 19:57:51</td>
       <td>2015-01-04 20:05:45</td>
       <td>2</td>
-      <td>1.10</td>
-      <td>Hiçbiri</td>
-      <td>Hiçbiri</td>
-      <td>-73.96</td>
-      <td>40.72</td>
-      <td>-73.95</td>
+      <td>1,10</td>
+      <td>Yok.</td>
+      <td>Yok.</td>
+      <td>-73,96</td>
+      <td>40,72</td>
+      <td>-73,95</td>
       <td>...</td>
       <td>2</td>
-      <td>6.50</td>
+      <td>6,50</td>
       <td>0.50</td>
       <td>0.50</td>
-      <td>0.3</td>
+      <td>0,3</td>
       <td>0.00</td>
       <td>0.00</td>
-      <td>nan</td>
-      <td>7.80</td>
+      <td>nBir</td>
+      <td>7,80</td>
       <td>1.00</td>
     </tr>
     <tr>
       <th>737281</th>
-      <td>1</td>
+      <td>1\.</td>
       <td>2015-01-03 12:27:31</td>
       <td>2015-01-03 12:33:52</td>
-      <td>1</td>
-      <td>0.90</td>
-      <td>Hiçbiri</td>
-      <td>Hiçbiri</td>
-      <td>-73.88</td>
-      <td>40.76</td>
-      <td>-73.87</td>
+      <td>1\.</td>
+      <td>0,90</td>
+      <td>Yok.</td>
+      <td>Yok.</td>
+      <td>-73,88</td>
+      <td>40,76</td>
+      <td>-73,87</td>
       <td>...</td>
       <td>2</td>
-      <td>6,00</td>
+      <td>6.00</td>
       <td>0.00</td>
       <td>0.50</td>
-      <td>0.3</td>
+      <td>0,3</td>
       <td>0.00</td>
       <td>0.00</td>
-      <td>nan</td>
-      <td>6.80</td>
+      <td>nBir</td>
+      <td>6,80</td>
       <td>1.00</td>
     </tr>
     <tr>
       <th>113951</th>
-      <td>1</td>
+      <td>1\.</td>
       <td>2015-01-09 23:25:51</td>
       <td>2015-01-09 23:39:52</td>
-      <td>1</td>
-      <td>3.30</td>
-      <td>Hiçbiri</td>
-      <td>Hiçbiri</td>
-      <td>-73.96</td>
-      <td>40.72</td>
-      <td>-73.91</td>
+      <td>1\.</td>
+      <td>3,30</td>
+      <td>Yok.</td>
+      <td>Yok.</td>
+      <td>-73,96</td>
+      <td>40,72</td>
+      <td>-73,91</td>
       <td>...</td>
       <td>2</td>
-      <td>12.50</td>
+      <td>12,50</td>
       <td>0.50</td>
       <td>0.50</td>
-      <td>0.3</td>
+      <td>0,3</td>
       <td>0.00</td>
       <td>0.00</td>
-      <td>nan</td>
-      <td>13.80</td>
+      <td>nBir</td>
+      <td>13,80</td>
       <td>1.00</td>
     </tr>
     <tr>
@@ -305,23 +305,23 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>2015-01-11 17:15:14</td>
       <td>2015-01-11 17:22:57</td>
-      <td>1</td>
-      <td>1.19</td>
-      <td>Hiçbiri</td>
-      <td>Hiçbiri</td>
-      <td>-73.94</td>
-      <td>40.71</td>
-      <td>-73.95</td>
+      <td>1\.</td>
+      <td>1,19</td>
+      <td>Yok.</td>
+      <td>Yok.</td>
+      <td>-73,94</td>
+      <td>40,71</td>
+      <td>-73,95</td>
       <td>...</td>
-      <td>1</td>
-      <td>7.00</td>
+      <td>1\.</td>
+      <td>7,00</td>
       <td>0.00</td>
       <td>0.50</td>
-      <td>0.3</td>
+      <td>0,3</td>
       <td>1,75</td>
       <td>0.00</td>
-      <td>nan</td>
-      <td>9.55</td>
+      <td>nBir</td>
+      <td>9,55</td>
       <td>1.00</td>
     </tr>
     <tr>
@@ -329,32 +329,32 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>2015-01-22 23:16:33</td>
       <td>2015-01-22 23:20:13</td>
-      <td>1</td>
-      <td>0.65</td>
-      <td>Hiçbiri</td>
-      <td>Hiçbiri</td>
-      <td>-73.94</td>
-      <td>40.71</td>
-      <td>-73.94</td>
+      <td>1\.</td>
+      <td>0,65</td>
+      <td>Yok.</td>
+      <td>Yok.</td>
+      <td>-73,94</td>
+      <td>40,71</td>
+      <td>-73,94</td>
       <td>...</td>
       <td>2</td>
       <td>5.00</td>
       <td>0.50</td>
       <td>0.50</td>
-      <td>0.3</td>
+      <td>0,3</td>
       <td>0.00</td>
       <td>0.00</td>
-      <td>nan</td>
-      <td>6.30</td>
+      <td>nBir</td>
+      <td>6,30</td>
       <td>1.00</td>
     </tr>
   </tbody>
 </table>
-<p>10 rows × 23 columns</p>
+<p>10 satır × 23 sütun</p>
 </div>
 
 
-Now that the initial data is loaded, define a function to create various time-based features from the pickup datetime field. This will create new fields for the month number, day of month, day of week, and hour of day, and will allow the model to factor in time-based seasonality. Use the `apply()` function on the dataframe to iteratively apply the `build_time_features()` function to each row in the taxi data.
+Artık ilk veriler yüklendikten sonra, toplama tarih/saati alanından çeşitli zamana dayalı özellikler oluşturmak için bir işlev tanımlayın. Bu işlem, ay numarası, ay günü, haftanın günü ve günün saati için yeni alanlar oluşturur ve modelin zaman tabanlı mevsimsellik açısından çarpaya izin verir. `build_time_features()` işlevini TAXI verilerinde her satıra tekrarlayarak uygulamak için veri çerçevesindeki `apply()` işlevini kullanın.
 
 ```python
 def build_time_features(vector):
@@ -371,7 +371,7 @@ green_taxi_df.head(10)
 ```
 
 <div>
-<style scoped> .dataframe tbody tr th:only-of-type { vertical-align: middle; }
+<style scoped>. dataframe tbody tr TH: yalnızca-of-type {Vertical-ALIGN: Middle;}
 
     .dataframe tbody tr th {
         vertical-align: top;
@@ -385,23 +385,23 @@ green_taxi_df.head(10)
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>vendorID</th>
+      <th>Konağında VendorID</th>
       <th>lpepPickupDatetime</th>
       <th>lpepDropoffDatetime</th>
       <th>passengerCount</th>
-      <th>tripDistance</th>
-      <th>puLocationId</th>
-      <th>doLocationId</th>
-      <th>pickupLongitude</th>
-      <th>pickupLatitude</th>
-      <th>dropoffLongitude</th>
+      <th>Üçlü mesafe</th>
+      <th>Pulocationıd</th>
+      <th>Dolocationıd</th>
+      <th>Pickupboylam</th>
+      <th>Pickupenlem</th>
+      <th>Açılan Boylam</th>
       <th>...</th>
       <th>improvementSurcharge</th>
       <th>tipAmount</th>
       <th>tollsAmount</th>
-      <th>ehailFee</th>
+      <th>Ehailücret</th>
       <th>totalAmount</th>
-      <th>tripType</th>
+      <th>Üçlü tür</th>
       <th>month_num</th>
       <th>day_of_month</th>
       <th>day_of_week</th>
@@ -415,20 +415,20 @@ green_taxi_df.head(10)
       <td>2015-01-11 05:34:44</td>
       <td>2015-01-11 05:45:03</td>
       <td>3</td>
-      <td>4.84</td>
-      <td>Hiçbiri</td>
-      <td>Hiçbiri</td>
-      <td>-73.88</td>
-      <td>40.84</td>
-      <td>-73.94</td>
+      <td>4,84</td>
+      <td>Yok.</td>
+      <td>Yok.</td>
+      <td>-73,88</td>
+      <td>40,84</td>
+      <td>-73,94</td>
       <td>...</td>
-      <td>0.3</td>
+      <td>0,3</td>
       <td>0.00</td>
       <td>0.00</td>
-      <td>nan</td>
-      <td>16.30</td>
+      <td>nBir</td>
+      <td>16,30</td>
       <td>1.00</td>
-      <td>1</td>
+      <td>1\.</td>
       <td>11</td>
       <td>6</td>
       <td>5</td>
@@ -438,23 +438,23 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>2015-01-20 16:26:29</td>
       <td>2015-01-20 16:30:26</td>
-      <td>1</td>
+      <td>1\.</td>
       <td>0.69</td>
-      <td>Hiçbiri</td>
-      <td>Hiçbiri</td>
-      <td>-73.96</td>
-      <td>40.81</td>
-      <td>-73.96</td>
+      <td>Yok.</td>
+      <td>Yok.</td>
+      <td>-73,96</td>
+      <td>40,81</td>
+      <td>-73,96</td>
       <td>...</td>
-      <td>0.3</td>
+      <td>0,3</td>
       <td>0.00</td>
       <td>0.00</td>
-      <td>nan</td>
-      <td>6.30</td>
+      <td>nBir</td>
+      <td>6,30</td>
       <td>1.00</td>
-      <td>1</td>
+      <td>1\.</td>
       <td>20</td>
-      <td>1</td>
+      <td>1\.</td>
       <td>16</td>
     </tr>
     <tr>
@@ -462,22 +462,22 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>2015-01-01 05:58:10</td>
       <td>2015-01-01 06:00:55</td>
-      <td>1</td>
-      <td>0.45</td>
-      <td>Hiçbiri</td>
-      <td>Hiçbiri</td>
-      <td>-73.92</td>
-      <td>40.76</td>
-      <td>-73.91</td>
+      <td>1\.</td>
+      <td>0,45</td>
+      <td>Yok.</td>
+      <td>Yok.</td>
+      <td>-73,92</td>
+      <td>40,76</td>
+      <td>-73,91</td>
       <td>...</td>
-      <td>0.3</td>
+      <td>0,3</td>
       <td>0.00</td>
       <td>0.00</td>
-      <td>nan</td>
-      <td>4.80</td>
+      <td>nBir</td>
+      <td>4,80</td>
       <td>1.00</td>
-      <td>1</td>
-      <td>1</td>
+      <td>1\.</td>
+      <td>1\.</td>
       <td>3</td>
       <td>5</td>
     </tr>
@@ -486,117 +486,117 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>2015-01-17 02:20:50</td>
       <td>2015-01-17 02:41:38</td>
-      <td>1</td>
+      <td>1\.</td>
       <td>0.00</td>
-      <td>Hiçbiri</td>
-      <td>Hiçbiri</td>
-      <td>-73.81</td>
-      <td>40.70</td>
-      <td>-73.82</td>
+      <td>Yok.</td>
+      <td>Yok.</td>
+      <td>-73,81</td>
+      <td>40,70</td>
+      <td>-73,82</td>
       <td>...</td>
-      <td>0.3</td>
+      <td>0,3</td>
       <td>0.00</td>
       <td>0.00</td>
-      <td>nan</td>
-      <td>13.80</td>
+      <td>nBir</td>
+      <td>13,80</td>
       <td>1.00</td>
-      <td>1</td>
+      <td>1\.</td>
       <td>17</td>
       <td>5</td>
       <td>2</td>
     </tr>
     <tr>
       <th>1269627</th>
-      <td>1</td>
+      <td>1\.</td>
       <td>2015-01-01 05:04:10</td>
       <td>2015-01-01 05:06:23</td>
-      <td>1</td>
+      <td>1\.</td>
       <td>0.50</td>
-      <td>Hiçbiri</td>
-      <td>Hiçbiri</td>
-      <td>-73.92</td>
-      <td>40.76</td>
-      <td>-73.92</td>
+      <td>Yok.</td>
+      <td>Yok.</td>
+      <td>-73,92</td>
+      <td>40,76</td>
+      <td>-73,92</td>
       <td>...</td>
       <td>0</td>
       <td>0.00</td>
       <td>0.00</td>
-      <td>nan</td>
+      <td>nBir</td>
       <td>5.00</td>
       <td>1.00</td>
-      <td>1</td>
-      <td>1</td>
+      <td>1\.</td>
+      <td>1\.</td>
       <td>3</td>
       <td>5</td>
     </tr>
     <tr>
       <th>811755</th>
-      <td>1</td>
+      <td>1\.</td>
       <td>2015-01-04 19:57:51</td>
       <td>2015-01-04 20:05:45</td>
       <td>2</td>
-      <td>1.10</td>
-      <td>Hiçbiri</td>
-      <td>Hiçbiri</td>
-      <td>-73.96</td>
-      <td>40.72</td>
-      <td>-73.95</td>
+      <td>1,10</td>
+      <td>Yok.</td>
+      <td>Yok.</td>
+      <td>-73,96</td>
+      <td>40,72</td>
+      <td>-73,95</td>
       <td>...</td>
-      <td>0.3</td>
+      <td>0,3</td>
       <td>0.00</td>
       <td>0.00</td>
-      <td>nan</td>
-      <td>7.80</td>
+      <td>nBir</td>
+      <td>7,80</td>
       <td>1.00</td>
-      <td>1</td>
+      <td>1\.</td>
       <td>4</td>
       <td>6</td>
       <td>19</td>
     </tr>
     <tr>
       <th>737281</th>
-      <td>1</td>
+      <td>1\.</td>
       <td>2015-01-03 12:27:31</td>
       <td>2015-01-03 12:33:52</td>
-      <td>1</td>
-      <td>0.90</td>
-      <td>Hiçbiri</td>
-      <td>Hiçbiri</td>
-      <td>-73.88</td>
-      <td>40.76</td>
-      <td>-73.87</td>
+      <td>1\.</td>
+      <td>0,90</td>
+      <td>Yok.</td>
+      <td>Yok.</td>
+      <td>-73,88</td>
+      <td>40,76</td>
+      <td>-73,87</td>
       <td>...</td>
-      <td>0.3</td>
+      <td>0,3</td>
       <td>0.00</td>
       <td>0.00</td>
-      <td>nan</td>
-      <td>6.80</td>
+      <td>nBir</td>
+      <td>6,80</td>
       <td>1.00</td>
-      <td>1</td>
+      <td>1\.</td>
       <td>3</td>
       <td>5</td>
       <td>12</td>
     </tr>
     <tr>
       <th>113951</th>
-      <td>1</td>
+      <td>1\.</td>
       <td>2015-01-09 23:25:51</td>
       <td>2015-01-09 23:39:52</td>
-      <td>1</td>
-      <td>3.30</td>
-      <td>Hiçbiri</td>
-      <td>Hiçbiri</td>
-      <td>-73.96</td>
-      <td>40.72</td>
-      <td>-73.91</td>
+      <td>1\.</td>
+      <td>3,30</td>
+      <td>Yok.</td>
+      <td>Yok.</td>
+      <td>-73,96</td>
+      <td>40,72</td>
+      <td>-73,91</td>
       <td>...</td>
-      <td>0.3</td>
+      <td>0,3</td>
       <td>0.00</td>
       <td>0.00</td>
-      <td>nan</td>
-      <td>13.80</td>
+      <td>nBir</td>
+      <td>13,80</td>
       <td>1.00</td>
-      <td>1</td>
+      <td>1\.</td>
       <td>9</td>
       <td>4</td>
       <td>23</td>
@@ -606,21 +606,21 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>2015-01-11 17:15:14</td>
       <td>2015-01-11 17:22:57</td>
-      <td>1</td>
-      <td>1.19</td>
-      <td>Hiçbiri</td>
-      <td>Hiçbiri</td>
-      <td>-73.94</td>
-      <td>40.71</td>
-      <td>-73.95</td>
+      <td>1\.</td>
+      <td>1,19</td>
+      <td>Yok.</td>
+      <td>Yok.</td>
+      <td>-73,94</td>
+      <td>40,71</td>
+      <td>-73,95</td>
       <td>...</td>
-      <td>0.3</td>
+      <td>0,3</td>
       <td>1,75</td>
       <td>0.00</td>
-      <td>nan</td>
-      <td>9.55</td>
+      <td>nBir</td>
+      <td>9,55</td>
       <td>1.00</td>
-      <td>1</td>
+      <td>1\.</td>
       <td>11</td>
       <td>6</td>
       <td>17</td>
@@ -630,31 +630,31 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>2015-01-22 23:16:33</td>
       <td>2015-01-22 23:20:13</td>
-      <td>1</td>
-      <td>0.65</td>
-      <td>Hiçbiri</td>
-      <td>Hiçbiri</td>
-      <td>-73.94</td>
-      <td>40.71</td>
-      <td>-73.94</td>
+      <td>1\.</td>
+      <td>0,65</td>
+      <td>Yok.</td>
+      <td>Yok.</td>
+      <td>-73,94</td>
+      <td>40,71</td>
+      <td>-73,94</td>
       <td>...</td>
-      <td>0.3</td>
+      <td>0,3</td>
       <td>0.00</td>
       <td>0.00</td>
-      <td>nan</td>
-      <td>6.30</td>
+      <td>nBir</td>
+      <td>6,30</td>
       <td>1.00</td>
-      <td>1</td>
+      <td>1\.</td>
       <td>22</td>
       <td>3</td>
       <td>23</td>
     </tr>
   </tbody>
 </table>
-<p>10 rows × 27 columns</p>
+<p>10 satır × 27 sütun</p>
 </div>
 
-Remove some of the columns that you won't need for training or additional feature building.
+Eğitim veya ek özellik oluşturma için ihtiyaç duymayabilmeniz gereken bazı sütunları kaldırın.
 
 ```python
 columns_to_remove = ["lpepPickupDatetime", "lpepDropoffDatetime", "puLocationId", "doLocationId", "extra", "mtaTax",
@@ -667,16 +667,16 @@ for col in columns_to_remove:
 green_taxi_df.head(5)
 ```
 
-### <a name="cleanse-data"></a>Cleanse data
+### <a name="cleanse-data"></a>Verilerini temizlemek
 
-Run the `describe()` function on the new dataframe to see summary statistics for each field.
+Her bir alanın Özet istatistiklerini görmek için yeni veri çerçevesinde `describe()` işlevini çalıştırın.
 
 ```python
 green_taxi_df.describe()
 ```
 
 <div>
-<style scoped> .dataframe tbody tr th:only-of-type { vertical-align: middle; }
+<style scoped>. dataframe tbody tr TH: yalnızca-of-type {Vertical-ALIGN: Middle;}
 
     .dataframe tbody tr th {
         vertical-align: top;
@@ -690,13 +690,13 @@ green_taxi_df.describe()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>vendorID</th>
+      <th>Konağında VendorID</th>
       <th>passengerCount</th>
-      <th>tripDistance</th>
-      <th>pickupLongitude</th>
-      <th>pickupLatitude</th>
-      <th>dropoffLongitude</th>
-      <th>dropoffLatitude</th>
+      <th>Üçlü mesafe</th>
+      <th>Pickupboylam</th>
+      <th>Pickupenlem</th>
+      <th>Açılan Boylam</th>
+      <th>Açılan Enlem</th>
       <th>totalAmount</th>
       <th>month_num</th>
       <th>day_of_month</th>
@@ -707,59 +707,59 @@ green_taxi_df.describe()
   <tbody>
     <tr>
       <th>count</th>
-      <td>48000.00</td>
-      <td>48000.00</td>
-      <td>48000.00</td>
-      <td>48000.00</td>
-      <td>48000.00</td>
-      <td>48000.00</td>
-      <td>48000.00</td>
-      <td>48000.00</td>
-      <td>48000.00</td>
-      <td>48000.00</td>
-      <td>48000.00</td>
-      <td>48000.00</td>
+      <td>48000,00</td>
+      <td>48000,00</td>
+      <td>48000,00</td>
+      <td>48000,00</td>
+      <td>48000,00</td>
+      <td>48000,00</td>
+      <td>48000,00</td>
+      <td>48000,00</td>
+      <td>48000,00</td>
+      <td>48000,00</td>
+      <td>48000,00</td>
+      <td>48000,00</td>
     </tr>
     <tr>
-      <th>mean</th>
-      <td>1.78</td>
-      <td>1.37</td>
-      <td>2.87</td>
-      <td>-73.83</td>
-      <td>40.69</td>
-      <td>-73.84</td>
-      <td>40.70</td>
-      <td>14.75</td>
-      <td>6.50</td>
-      <td>15.13</td>
-      <td>3.27</td>
-      <td>13.52</td>
+      <th>Ortalama</th>
+      <td>1,78</td>
+      <td>1,37</td>
+      <td>2,87</td>
+      <td>-73,83</td>
+      <td>40,69</td>
+      <td>-73,84</td>
+      <td>40,70</td>
+      <td>14,75</td>
+      <td>6,50</td>
+      <td>15,13</td>
+      <td>3,27</td>
+      <td>13,52</td>
     </tr>
     <tr>
-      <th>std</th>
+      <th>STD</th>
       <td>0.41</td>
-      <td>1.04</td>
-      <td>2.93</td>
-      <td>2.76</td>
-      <td>1.52</td>
+      <td>1,04</td>
+      <td>2,93</td>
+      <td>2,76</td>
+      <td>1,52</td>
       <td>2.61</td>
-      <td>1.44</td>
-      <td>12.08</td>
+      <td>1,44</td>
+      <td>12,08</td>
       <td>3.45</td>
-      <td>8.45</td>
-      <td>1.95</td>
-      <td>6.83</td>
+      <td>8,45</td>
+      <td>1,95</td>
+      <td>6,83</td>
     </tr>
     <tr>
       <th>dk</th>
       <td>1.00</td>
       <td>0.00</td>
       <td>0.00</td>
-      <td>-74.66</td>
+      <td>-74,66</td>
       <td>0.00</td>
-      <td>-74.66</td>
+      <td>-74,66</td>
       <td>0.00</td>
-      <td>-300.00</td>
+      <td>-300,00</td>
       <td>1.00</td>
       <td>1.00</td>
       <td>0.00</td>
@@ -769,74 +769,74 @@ green_taxi_df.describe()
       <th>%25</th>
       <td>2.00</td>
       <td>1.00</td>
-      <td>1.06</td>
-      <td>-73.96</td>
-      <td>40.70</td>
-      <td>-73.97</td>
-      <td>40.70</td>
-      <td>7.80</td>
+      <td>1,06</td>
+      <td>-73,96</td>
+      <td>40,70</td>
+      <td>-73,97</td>
+      <td>40,70</td>
+      <td>7,80</td>
       <td>3.75</td>
       <td>8,00</td>
       <td>2.00</td>
-      <td>9.00</td>
+      <td>9,00</td>
     </tr>
     <tr>
-      <th>%50</th>
+      <th>50%</th>
       <td>2.00</td>
       <td>1.00</td>
-      <td>1.90</td>
-      <td>-73.94</td>
-      <td>40.75</td>
-      <td>-73.94</td>
-      <td>40.75</td>
-      <td>11.30</td>
-      <td>6.50</td>
-      <td>15.00</td>
+      <td>1,90</td>
+      <td>-73,94</td>
+      <td>40,75</td>
+      <td>-73,94</td>
+      <td>40,75</td>
+      <td>11,30</td>
+      <td>6,50</td>
+      <td>15,00</td>
       <td>3.00</td>
-      <td>15.00</td>
+      <td>15,00</td>
     </tr>
     <tr>
-      <th>75%</th>
+      <th>%75</th>
       <td>2.00</td>
       <td>1.00</td>
-      <td>3.60</td>
-      <td>-73.92</td>
-      <td>40.80</td>
-      <td>-73.91</td>
-      <td>40.79</td>
-      <td>17.80</td>
-      <td>9.25</td>
-      <td>22.00</td>
+      <td>3,60</td>
+      <td>-73,92</td>
+      <td>40,80</td>
+      <td>-73,91</td>
+      <td>40,79</td>
+      <td>17,80</td>
+      <td>9,25</td>
+      <td>22,00</td>
       <td>5.00</td>
-      <td>19.00</td>
+      <td>19,00</td>
     </tr>
     <tr>
-      <th>max</th>
+      <th>Biçimlendir</th>
       <td>2.00</td>
-      <td>9.00</td>
-      <td>97.57</td>
+      <td>9,00</td>
+      <td>97,57</td>
       <td>0.00</td>
-      <td>41.93</td>
+      <td>41,93</td>
       <td>0.00</td>
-      <td>41.94</td>
-      <td>450.00</td>
-      <td>12.00</td>
-      <td>30.00</td>
-      <td>6,00</td>
-      <td>23.00</td>
+      <td>41,94</td>
+      <td>450,00</td>
+      <td>12,00</td>
+      <td>30,00</td>
+      <td>6.00</td>
+      <td>23,00</td>
     </tr>
   </tbody>
 </table>
 </div>
 
 
-From the summary statistics, you see that there are several fields that have outliers or values that will reduce model accuracy. First filter the lat/long fields to be within the bounds of the Manhattan area. This will filter out longer taxi trips or trips that are outliers in respect to their relationship with other features.
+Özet istatistiklerinde, mantıksal veya daha fazla alan içeren birkaç alanın, model doğruluğunu azaltacak şekilde olduğunu görürsünüz. İlk olarak, Manhattan alanının sınırları dahilinde olacak şekilde Enlem/Long alanlarını filtreleyin. Bu, diğer özelliklerle ilişkisine göre, daha uzun bir süre içinde daha fazla vergilenme veya gezilerin filtreleneceği.
 
-Additionally filter the `tripDistance` field to be greater than zero but less than 31 miles (the haversine distance between the two lat/long pairs). This eliminates long outlier trips that have inconsistent trip cost.
+Ek olarak, `tripDistance` alanı sıfırdan büyük ancak 31 milden küçük (iki Lat/Long çifti arasındaki haversinüsü uzaklığı) olarak filtreleyin. Bu, tutarsız seyahat maliyeti olan uzun süreli döngüleri ortadan kaldırır.
 
-Lastly, the `totalAmount` field has negative values for the taxi fares, which don't make sense in the context of our model, and the `passengerCount` field has bad data with the minimum values being zero.
+Son olarak, `totalAmount` alanı taksi Fares için negatif değerler içerir ve bu, modelimizin bağlamında mantıklı değildir ve `passengerCount` alanı minimum değerleri sıfır olan hatalı verilere sahiptir.
 
-Filter out these anomalies using query functions, and then remove the last few columns unnecessary for training.
+Sorgu işlevlerini kullanarak bu anomali filtreleme yapın ve ardından eğitim için gereksiz son sütunu kaldırın.
 
 
 ```python
@@ -850,7 +850,7 @@ for col in columns_to_remove_for_training:
     final_df.pop(col)
 ```
 
-Call `describe()` again on the data to ensure cleansing worked as expected. You now have a prepared and cleansed set of taxi, holiday, and weather data to use for machine learning model training.
+Temizleşildiği gibi çalıştığından emin olmak için verileri yeniden `describe()` çağırın. Artık makine öğrenimi model eğitimi için kullanılacak, hazırlanmış ve yeniden hazırlanan bir TAXI, tatil ve hava durumu verisi ayarlamış olursunuz.
 
 ```python
 final_df.describe()
@@ -858,18 +858,18 @@ final_df.describe()
 
 ## <a name="configure-workspace"></a>Çalışma alanını yapılandırma
 
-Mevcut çalışma alanından bir çalışma alanı nesnesi oluşturun. A [Workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) is a class that accepts your Azure subscription and resource information. It also creates a cloud resource to monitor and track your model runs. `Workspace.from_config()` reads the file **config.json** and loads the authentication details into an object named `ws`. Bu öğreticideki kodun kalanında `ws` kullanılır.
+Mevcut çalışma alanından bir çalışma alanı nesnesi oluşturun. [Çalışma alanı](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) , Azure aboneliğinizi ve kaynak bilgilerinizi kabul eden bir sınıftır. Ayrıca, modelinizi izlemek ve izlemek için bir bulut kaynağı oluşturur. `Workspace.from_config()`, **config. JSON** dosyasını okur ve kimlik doğrulama ayrıntılarını `ws`adlı bir nesneye yükler. Bu öğreticideki kodun kalanında `ws` kullanılır.
 
 ```python
 from azureml.core.workspace import Workspace
 ws = Workspace.from_config()
 ```
 
-## <a name="split-the-data-into-train-and-test-sets"></a>Split the data into train and test sets
+## <a name="split-the-data-into-train-and-test-sets"></a>Verileri eğitme ve test kümelerine Böl
 
-Split the data into training and test sets by using the `train_test_split` function in the `scikit-learn` library. This function segregates the data into the x (**features**) data set for model training and the y (**values to predict**) data set for testing.
+`scikit-learn` kitaplığındaki `train_test_split` işlevini kullanarak verileri eğitim ve test kümelerine ayırın. Bu işlev, model eğitimi için verileri x (**Özellikler**) veri kümesine ayırır ve test için y (**tahmin edilecek değerler**) veri kümesini gösterir.
 
-The `test_size` parameter determines the percentage of data to allocate to testing. The `random_state` parameter sets a seed to the random generator, so that your train-test splits are deterministic.
+`test_size` parametresi, teste ayrılacak verilerin yüzdesini belirler. `random_state` parametresi, tren test bölünmeleri belirleyici olacak şekilde rastgele oluşturucuya bir çekirdek ayarlar.
 
 ```python
 from sklearn.model_selection import train_test_split
@@ -880,29 +880,29 @@ x_df = final_df
 x_train, x_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, random_state=223)
 ```
 
-The purpose of this step is to have data points to test the finished model that haven't been used to train the model, in order to measure true accuracy.
+Bu adımın amacı, doğru doğruluğu ölçmek için modeli eğmekte kullanılmamış olan tamamlanmış modeli test etmek için veri noktalarına sahip değildir.
 
-In other words, a well-trained model should be able to accurately make predictions from data it hasn't already seen. You now have data prepared for auto-training a machine learning model.
+Diğer bir deyişle, iyi eğitilen bir modelin zaten görmemiş verilerden tahmine dayalı hale getirme yapabilmesi gerekir. Artık, bir makine öğrenimi modeline otomatik eğitim için hazırlanan veriler vardır.
 
-## <a name="automatically-train-a-model"></a>Automatically train a model
+## <a name="automatically-train-a-model"></a>Otomatik olarak bir modeli eğitme
 
-To automatically train a model, take the following steps:
-1. Define settings for the experiment run. Attach your training data to the configuration, and modify settings that control the training process.
-1. Submit the experiment for model tuning. After submitting the experiment, the process iterates through different machine learning algorithms and hyperparameter settings, adhering to your defined constraints. It chooses the best-fit model by optimizing an accuracy metric.
+Bir modeli otomatik olarak eğitmek için aşağıdaki adımları uygulayın:
+1. Deneme çalıştırmasının ayarlarını tanımlayın. Eğitim verilerinizi yapılandırmaya ekleyin ve eğitim sürecini denetleyen ayarları değiştirin.
+1. Model ayarlama için denemeyi gönder. Deneme gönderdikten sonra işlem, farklı makine öğrenimi algoritmalarını ve hiper parametre ayarlarını kullanarak, tanımlı kısıtlamalarınız için uygun şekilde yinelenir. Doğruluk ölçüsünü en iyi duruma getirerek en uygun modeli seçer.
 
-### <a name="define-training-settings"></a>Define training settings
+### <a name="define-training-settings"></a>Eğitim ayarlarını tanımlama
 
-Define the experiment parameter and model settings for training. View the full list of [settings](how-to-configure-auto-train.md). Submitting the experiment with these default settings will take approximately 5-20 min, but if you want a shorter run time, reduce the `experiment_timeout_minutes` parameter.
+Eğitim için deneme parametresi ve model ayarlarını tanımlayın. [Ayarların](how-to-configure-auto-train.md)tam listesini görüntüleyin. Denemeyi bu varsayılan ayarlarla göndermek yaklaşık 5-20 dakika sürer, ancak daha kısa bir çalışma süresi istiyorsanız `experiment_timeout_minutes` parametresini küçültün.
 
 |Özellik| Bu öğreticideki değer |Açıklama|
 |----|----|---|
-|**iteration_timeout_minutes**|2|Time limit in minutes for each iteration. Reduce this value to decrease total runtime.|
-|**experiment_timeout_minutes**|20|Maximum amount of time in minutes that all iterations combined can take before the experiment terminates.|
-|**enable_early_stopping**|Doğru|Flag to enble early termination if the score is not improving in the short term.|
-|**primary_metric**| spearman_correlation | İyileştirmek istediğiniz ölçüm. The best-fit model will be chosen based on this metric.|
-|**featurization**| auto | By using **auto**, the experiment can preprocess the input data (handling missing data, converting text to numeric, etc.)|
-|**verbosity**| logging.INFO | Controls the level of logging.|
-|**n_cross_validations**|5|Number of cross-validation splits to perform when validation data is not specified.|
+|**iteration_timeout_minutes**|2|Her yineleme için dakika cinsinden zaman sınırı. Toplam çalışma zamanını azaltmak için bu değeri küçültün.|
+|**experiment_timeout_minutes**|20|Deneme sona ermeden önce tüm yinelemelerin birleştirilebilmesi için geçmesi gereken en uzun süre.|
+|**enable_early_stopping**|True|Puan, kısa vadede iyileştirilmediğinden erken sonlandırma için bayrak.|
+|**primary_metric**| spearman_correlation | İyileştirmek istediğiniz ölçüm. En uygun model bu ölçüme göre seçilecek.|
+|**korturlama**| Otomatik | **Otomatik**, deneme kullanarak giriş verilerini önceden işleyebilir (eksik verileri işleme, metni sayısal olarak dönüştürme vb.)|
+|**ayrıntı**| logging.INFO | Günlüğe kaydetme düzeyini denetler.|
+|**n_cross_validations**|5|Doğrulama verileri belirtilmediğinde gerçekleştirilecek çapraz doğrulama bölme sayısı.|
 
 ```python
 import logging
@@ -918,7 +918,7 @@ automl_settings = {
 }
 ```
 
-Use your defined training settings as a `**kwargs` parameter to an `AutoMLConfig` object. Additionally, specify your training data and the type of model, which is `regression` in this case.
+Tanımlı eğitim ayarlarınızı bir `AutoMLConfig` nesnesine `**kwargs` parametresi olarak kullanın. Ayrıca, eğitim verilerinizi ve model türünü belirtin, bu durumda `regression`.
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -931,13 +931,13 @@ automl_config = AutoMLConfig(task='regression',
 ```
 
 > [!NOTE]
-> Automated machine learning pre-processing steps (feature normalization, handling missing data, converting text to numeric, etc.) become part of the underlying model. When using the model for predictions, the same pre-processing steps applied during training are applied to your input data automatically.
+> Otomatik makine öğrenimi ön işleme adımları (özellik normalleştirme, eksik verileri işleme, metni sayısal olarak dönüştürme, vb.) temel modelin bir parçası haline gelir. Tahmin için model kullanılırken, eğitim sırasında uygulanan aynı ön işleme adımları, giriş verilerinize otomatik olarak uygulanır.
 
-### <a name="train-the-automatic-regression-model"></a>Train the automatic regression model
+### <a name="train-the-automatic-regression-model"></a>Otomatik bir regresyon modeli eğitme
 
-Create an experiment object in your workspace. An experiment acts as a container for your individual runs. Pass the defined `automl_config` object to the experiment, and set the output to `True` to view progress during the run.
+Çalışma alanınızda bir deneme nesnesi oluşturun. Deneme, bireysel çalışmalarınız için bir kapsayıcı olarak davranır. Tanımlanan `automl_config` nesnesini denemenize geçirin ve çalıştırma sırasında ilerlemeyi görüntülemek için çıktıyı `True` olarak ayarlayın.
 
-After starting the experiment, the output shown updates live as the experiment runs. For each iteration, you see the model type, the run duration, and the training accuracy. The field `BEST` tracks the best running training score based on your metric type.
+Denemeyi başlattıktan sonra, bu gösterilen çıkış, deney olarak canlı güncelleştirmeler çalışır. Her yineleme için model türünü, çalışma süresini ve eğitim doğruluğunu görürsünüz. Alan `BEST` ölçüm türünüz temelinde en iyi çalışan eğitim puanı ' nı izler.
 
 ```python
 from azureml.core.experiment import Experiment
@@ -986,19 +986,19 @@ local_run = experiment.submit(automl_config, show_output=True)
 
 ## <a name="explore-the-results"></a>Sonuçları inceleme
 
-Explore the results of automatic training with a [Jupyter widget](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py). The widget allows you to see a graph and table of all individual run iterations, along with training accuracy metrics and metadata. Additionally, you can filter on different accuracy metrics than your primary metric with the dropdown selector.
+[Jupyıter pencere öğesiyle](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)otomatik eğitime ilişkin sonuçları keşfet. Pencere öğesi, eğitim doğruluğu ölçümleri ve meta verileri ile birlikte tüm bireysel çalıştırma yinelemelerini bir grafik ve tablo görmenizi sağlar. Ayrıca, açılan seçiciyle, birincil ölçümünüzün farklı doğruluk ölçümlerine filtre uygulayabilirsiniz.
 
 ```python
 from azureml.widgets import RunDetails
 RunDetails(local_run).show()
 ```
 
-![Jupyter widget run details](./media/tutorial-auto-train-models/automl-dash-output.png)
-![Jupyter widget plot](./media/tutorial-auto-train-models/automl-chart-output.png)
+Jupyıter pencere öğesi ![](./media/tutorial-auto-train-models/automl-dash-output.png)
+jupi pencere öğesi çizimi ![](./media/tutorial-auto-train-models/automl-chart-output.png)
 
-### <a name="retrieve-the-best-model"></a>Retrieve the best model
+### <a name="retrieve-the-best-model"></a>En iyi modeli alma
 
-Select the best model from your iterations. The `get_output` function returns the best run and the fitted model for the last fit invocation. By using the overloads on `get_output`, you can retrieve the best run and fitted model for any logged metric or a particular iteration.
+Yinelemeinizden en iyi modeli seçin. `get_output` işlevi en iyi çalışmayı ve en son çağrıya yönelik olarak bulunan modeli döndürür. `get_output`üzerindeki aşırı yüklemeleri kullanarak, herhangi bir günlüğe kaydedilmiş ölçüm veya belirli bir yineleme için en iyi çalışma ve bağlı modeli alabilirsiniz.
 
 ```python
 best_run, fitted_model = local_run.get_output()
@@ -1006,16 +1006,16 @@ print(best_run)
 print(fitted_model)
 ```
 
-### <a name="test-the-best-model-accuracy"></a>Test the best model accuracy
+### <a name="test-the-best-model-accuracy"></a>En iyi modeli doğruluk testi
 
-Use the best model to run predictions on the test data set to predict taxi fares. The function `predict` uses the best model and predicts the values of y, **trip cost**, from the `x_test` data set. Print the first 10 predicted cost values from `y_predict`.
+Taksi Fares 'yi tahmin etmek için test verileri kümesindeki tahminleri çalıştırmak için en iyi modeli kullanın. İşlevi `predict` en iyi modeli kullanır ve `x_test` veri kümesinden y, **seyahat maliyeti**değerlerini tahmin eder. İlk 10 tahmini maliyet değerini `y_predict`yazdır.
 
 ```python
 y_predict = fitted_model.predict(x_test.values)
 print(y_predict[:10])
 ```
 
-Calculate the `root mean squared error` of the results. Convert the `y_test` dataframe to a list to compare to the predicted values. The function `mean_squared_error` takes two arrays of values and calculates the average squared error between them. Taking the square root of the result gives an error in the same units as the y variable, **cost**. It indicates roughly how far the taxi fare predictions are from the actual fares.
+Sonuçların `root mean squared error` hesaplayın. Tahmin edilen değerlerle karşılaştırmak için `y_test` veri çerçevesini bir listeye dönüştürün. İşlevi `mean_squared_error` iki dizi değer alır ve aralarındaki ortalama kare içinde hata sayısını hesaplar. Sonucun kare kökünü almak, y **değişkeni ile aynı**birimlerde bir hata verir. EPI tarifeli havayolu tahminlerinin gerçek farlarından ne kadar olduğunu kabaca gösterir.
 
 ```python
 from sklearn.metrics import mean_squared_error
@@ -1026,7 +1026,7 @@ rmse = sqrt(mean_squared_error(y_actual, y_predict))
 rmse
 ```
 
-Run the following code to calculate mean absolute percent error (MAPE) by using the full `y_actual` and `y_predict` data sets. This metric calculates an absolute difference between each predicted and actual value and sums all the differences. Then it expresses that sum as a percent of the total of the actual values.
+Tam `y_actual` ve `y_predict` veri kümelerini kullanarak ortalama mutlak yüzde hatası (MAPE) hesaplamak için aşağıdaki kodu çalıştırın. Bu ölçüm, tahmin edilen ve gerçek değerler arasındaki mutlak bir farkı hesaplar ve tüm farkları toplar. Ardından, bu toplamı gerçek değerlerin toplamının yüzdesi olarak ifade eder.
 
 ```python
 sum_actuals = sum_errors = 0
@@ -1054,36 +1054,36 @@ print(1 - mean_abs_percent_error)
     0.8564613239394718
 
 
-From the two prediction accuracy metrics, you see that the model is fairly good at predicting taxi fares from the data set's features, typically within +- $4.00, and approximately 15% error.
+İki tahmin doğruluk ölçümlerinde, modelin, veri kümesinin özelliklerinden, genellikle +-$4,00 ' de ve yaklaşık %15 ' te vergilenme Fareli tahminlerinde oldukça iyi olduğunu görürsünüz.
 
-The traditional machine learning model development process is highly resource-intensive, and requires significant domain knowledge and time investment to run and compare the results of dozens of models. Using automated machine learning is a great way to rapidly test many different models for your scenario.
+Geleneksel makine öğrenme modeli geliştirme sürecinde yüksek kaynak kullanımı yoğun ve çalıştırmak ve modelleri onlarca sonuçları karşılaştırmak için önemli bir etki alanı bilgilerini ve saat yatırım gerektirir. Otomatik makine öğrenimi kullanmak, senaryonuza yönelik birçok farklı modeli hızlıca test etmenin harika bir yoludur.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Do not complete this section if you plan on running other Azure Machine Learning tutorials.
+Diğer Azure Machine Learning öğreticileri çalıştırmayı planlıyorsanız, bu bölümü tamamlamayın.
 
-### <a name="stop-the-notebook-vm"></a>Stop the Notebook VM
+### <a name="stop-the-notebook-vm"></a>Not defteri VM 'sini durdur
 
 [!INCLUDE [aml-stop-server](../../../includes/aml-stop-server.md)]
 
-### <a name="delete-everything"></a>Delete everything
+### <a name="delete-everything"></a>Her şeyi sil
 
-If you don't plan to use the resources you created, delete them, so you don't incur any charges.
+Oluşturduğunuz kaynakları kullanmayı planlamıyorsanız, herhangi bir ücret ödemezsiniz.
 
 1. Azure portalının en sol tarafındaki **Kaynak gruplarını** seçin.
 1. Listeden oluşturduğunuz kaynak grubunu seçin.
 1. **Kaynak grubunu sil**'i seçin.
-1. Enter the resource group name. Ardından **Sil**’i seçin.
+1. Kaynak grubu adını girin. Ardından **Sil**’i seçin.
 
-You can also keep the resource group but delete a single workspace. Display the workspace properties and select **Delete**.
+Ayrıca, kaynak grubunu koruyabilir ancak tek bir çalışma alanını silebilirsiniz. Çalışma alanı özelliklerini görüntüleyin ve **Sil**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-In this automated machine learning tutorial, you did the following tasks:
+Bu otomatik makine öğrenimi öğreticisinde aşağıdaki görevleri yaptınız:
 
 > [!div class="checklist"]
-> * Configured a workspace and prepared data for an experiment.
-> * Trained by using an automated regression model locally with custom parameters.
-> * Explored and reviewed training results.
+> * Bir deneme için çalışma alanı ve hazırlanan veriler yapılandırıldı.
+> * Özel parametrelerle yerel olarak otomatik regresyon modeli kullanılarak eğitilen.
+> * Araştırılan ve gözden geçirilmiş eğitim sonuçları.
 
-[Deploy your model](tutorial-deploy-models-with-aml.md) with Azure Machine Learning.
+[Modelinizi](tutorial-deploy-models-with-aml.md) Azure Machine Learning ile dağıtın.

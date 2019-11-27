@@ -14,51 +14,51 @@ ms.locfileid: "74277421"
 
 Bu öğreticide basit bir doğrusal regresyon gösteren tam bir Jupyter not defteri oluşturmak için Azure not defterleri kullanma işleminde size yol gösterir. Bu öğretici sırasında Jupyter not defteri farklı hücreleri oluşturma, hücre çalıştıran ve bir slayt gösterisi olarak not defterini sunma içeren kullanıcı Arabirimi tanıyın.
 
-Tamamlanan not defterini bulunabilir [GitHub - Azure not defterleri örnekleri](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps). Bu öğreticide, ancak yeni bir proje ve boş bir not defteri ile başlar adım adım oluşturma deneyimi.
+Tamamlanan Not defteri [GitHub-Azure Notebooks örnekleri](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps)üzerinde bulunabilir. Bu öğreticide, ancak yeni bir proje ve boş bir not defteri ile başlar adım adım oluşturma deneyimi.
 
 ## <a name="create-the-project"></a>Proje oluşturma
 
-1. Git [Azure not defterleri](https://notebooks.azure.com) ve oturum açın. (Ayrıntılar için bkz [hızlı başlangıç - Azure not defterleri için oturum açma](quickstart-sign-in-azure-notebooks.md)).
+1. [Azure Notebooks](https://notebooks.azure.com) gidin ve oturum açın. (Ayrıntılar için bkz. [hızlı başlangıç-Azure Notebooks Için oturum açma](quickstart-sign-in-azure-notebooks.md)).
 
-1. Genel profil sayfanızdan seçin **Projelerim** sayfanın üstündeki:
+1. Ortak profil sayfanızda sayfanın en üstündeki **Projelerim** ' nı seçin:
 
     ![Projeleri bağlantımı tarayıcı penceresinin üst kısmındaki](media/quickstarts/my-projects-link.png)
 
-1. Üzerinde **Projelerim** sayfasında **+ yeni proje** (klavye kısayolu: n); yalnızca olarak görüntülenebilir **+** tarayıcı penceresini darsa:
+1. **Projelerim** sayfasında **+ Yeni proje** ' yi seçin (klavye kısayolu: n); düğme yalnızca tarayıcı penceresi dar ise **+** olarak görünebilir:
 
     ![Projelerim sayfasında yeni proje komutu](media/quickstarts/new-project-command.png)
 
-1. İçinde **yeni proje oluştur** görünen açılan girin veya aşağıdaki bilgileri ayarlayın ve ardından **Oluştur**:
+1. Görüntülenen **Yeni proje oluştur** açılır penceresinde aşağıdaki ayrıntıları girin veya ayarlayın, sonra **Oluştur**' u seçin.
 
-    - **Proje adı**: doğrusal regresyon örnek - Cricket cıvıltılarını
-    - **Proje kimliği**: gerileme örnek doğrusal
-    - **Genel proje**: (Seçili)
-    - **Bir Benioku.MD oluşturma**: (Seçili)
+    - **Proje adı**: doğrusal regresyon örneği-Cricket CHIRP 'leri
+    - **Proje kimliği**: doğrusal-regresyon-örnek
+    - **Ortak proje**: (işaretsiz)
+    - **README.MD oluşturma**: (işaretsiz)
 
 1. Birkaç dakika sonra Azure not defterleri yeni projeye gider.
 
 ## <a name="create-the-data-file"></a>Veri dosyası oluşturma
 
-Adlı projenize bir dosyadan veri Not Defteri oluşturduğunuz doğrusal regresyon modelinin çizer *cricket_chirps.csv*. Bu dosyayı [GitHub-Azure Notebooks örneklerinden](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps)kopyalayarak veya doğrudan verileri girerek oluşturabilirsiniz. Aşağıdaki bölümlerde, her iki yaklaşım açıklanmaktadır.
+Not defterinde oluşturduğunuz doğrusal regresyon modeli, projenizdeki *cricket_chirps. csv*adlı bir dosyadan veri çizer. Bu dosyayı [GitHub-Azure Notebooks örneklerinden](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps)kopyalayarak veya doğrudan verileri girerek oluşturabilirsiniz. Aşağıdaki bölümlerde, her iki yaklaşım açıklanmaktadır.
 
 ### <a name="upload-the-data-file"></a>Veri dosyasını karşıya yükle
 
-1. Azure not defterlerinde, proje Panoda seçin **karşıya** > **URL'den**
-1. Açılan pencerede aşağıdaki URL'yi girin **dosya URL'si** ve *cricket_chirps.csv* içinde **dosya adı**, ardından **Bitti**.
+1. Azure Notebooks içindeki proje panonuzda, **URL 'den** > **karşıya yükle** ' yi seçin.
+1. Açılan pencerede, **dosya URL 'sine** aşağıdaki URL 'yi girin ve **dosya adı**'nda *. csv dosyasını cricket_chirps* **bitti**' yi seçin.
 
     ```url
     https://raw.githubusercontent.com/Microsoft/AzureNotebooks/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps/cricket_chirps.csv
     ```
 
-1. *Cricket_chirps.csv* dosya artık projenizin dosya listesinde görünmelidir:
+1. *Cricket_chirps. csv* dosyası artık projenizin dosya listesinde görünmelidir:
 
     ![Yeni proje dosya listesinde gösteren CSV dosyası oluşturuldu](media/tutorial/csv-file-in-project.png)
 
 ### <a name="create-a-file-from-scratch"></a>Sıfırdan bir dosya oluşturun
 
-1. Azure not defterlerinde, proje Panoda seçin **+ yeni** > **boş dosya**
-1. Bir alan projenin dosya listesinde görünür. ENTER *cricket_chirps.csv* ve Enter tuşuna basın.
-1. Sağ *cricket_chirps.csv* seçip **dosya Düzenle**.
+1. Azure Notebooks içindeki proje panonuzda **+ yeni** > **boş dosya** ' yı seçin
+1. Bir alan projenin dosya listesinde görünür. *Cricket_chirps. csv* yazın ve ENTER tuşuna basın.
+1. *Cricket_chirps. csv* dosyasına sağ tıklayın ve **dosyayı Düzenle**' yi seçin.
 1. Görüntülenen Düzenleyicisi'nde aşağıdaki verileri girin:
 
     ```csv
@@ -80,13 +80,13 @@ Adlı projenize bir dosyadan veri Not Defteri oluşturduğunuz doğrusal regresy
     14.4,76.3
     ```
 
-1. Seçin **dosyayı Kaydet** proje Panosu'na geri dönün ve dosyayı kaydedin.
+1. Dosyayı kaydetmek ve Proje panosuna dönmek için **dosyayı kaydet** ' i seçin.
 
 ## <a name="install-project-level-packages"></a>Proje düzeyi paketleri yükleme
 
-Bir not defteri komutları gibi her zaman kullanabilirsiniz `!pip install` gerekli paketleri yüklemek için bir kod hücresi içinde. Ancak, not defterinin kod hücreleri çalıştırın ve önemli ölçüde uzun sürebilir her zaman bu tür komutlar çalıştırılır. Bu nedenle, bunun yerine kullanarak proje düzeyinde paketleri yükleyebileceğiniz bir `requirements.txt` dosya.
+Bir not defteri içinde, gerekli paketleri yüklemek için bir kod hücresinde `!pip install` gibi komutları dilediğiniz zaman kullanabilirsiniz. Ancak, not defterinin kod hücreleri çalıştırın ve önemli ölçüde uzun sürebilir her zaman bu tür komutlar çalıştırılır. Bu nedenle, `requirements.txt` bir dosya kullanarak paketleri proje düzeyine yükleyebilirsiniz.
 
-1. Açıklanan işlemi kullanın [sıfırdan bir dosya oluşturun](#create-a-file-from-scratch) adlı bir dosya oluşturmak için `requirements.txt` aşağıdaki içeriklerle:
+1. Aşağıdaki içeriklerle `requirements.txt` adlı bir dosya oluşturmak için [sıfırdan bir dosya oluşturma](#create-a-file-from-scratch) bölümünde açıklanan süreci kullanın:
 
     ```text
     matplotlib==3.0.0
@@ -95,13 +95,13 @@ Bir not defteri komutları gibi her zaman kullanabilirsiniz `!pip install` gerek
     scikit-learn==0.20.0
     ```
 
-    Da karşıya bir `requirements.txt` dosya çubuğunda açıklandığı tercih ederseniz, yerel bilgisayarınızdan [veri dosyasını karşıya](#upload-the-data-file).
+    Ayrıca, [veri dosyasını karşıya yükleme](#upload-the-data-file)konusunda açıklandığı gibi, dilerseniz yerel bilgisayarınızdan bir `requirements.txt` dosyasını karşıya yükleyebilirsiniz.
 
-1. Proje Panosu üzerinde seçin **proje ayarları**.
-1. Görünen açılır seçin **ortam** sekmesine ve ardından seçin **+ Ekle**.
-1. İlk açılır denetimin (işlem) altında **ortamı Kurulumu adımları**, seçin **Requirements.txt**.
-1. (Dosya adı) İkinci açılan denetiminde seçin *requirements.txt* (oluşturduğunuz dosyası).
-1. (Python sürümü) Üçüncü açılan denetiminde seçin **Python sürüm 3. 6**.
+1. Proje panosunda **proje ayarları**' nı seçin.
+1. Görüntülenen açılan pencerede **ortam** sekmesini seçin ve **+ Ekle**' yi seçin.
+1. **Ortam kurulum adımları**altındaki ilk açılan denetimde (işlem), **requirements. txt**' yi seçin.
+1. İkinci açılan denetimde (dosya adı), *requirements. txt* (oluşturduğunuz dosya) öğesini seçin.
+1. Üçüncü açılan denetimde (Python sürümü), **Python sürüm 3,6**' yı seçin.
 1. **Kaydet**’i seçin.
 
 ![Proje ayarları ortam sekmesi requirements.txt dosyasını belirtme](media/tutorial/tutorial-requirements-txt.png)
@@ -112,17 +112,17 @@ Bu kurulum adımı ile yerinde projedeki çalıştırılmaya herhangi bir dizüs
 
 Hazır veri dosyası ve proje ortam kümesi ile artık oluşturabilir ve not defterini açın.
 
-1. Proje Panosu üzerinde seçin **+ yeni** > **not defteri**.
-1. Açılan pencerede girin *doğrusal regresyon örnek - Cricket Chirps.ipynb* için **öğe adı**, seçin **Python 3.6** dili, ardından **yeni**.
+1. Proje panosunda **+ yeni** > **Not defteri**' ni seçin.
+1. Açılan pencerede, *Doğrusal regresyon örneği-Cricket CHIRP 'leri. ipynb* **öğesini**girin, dil için **Python 3,6** ' i seçin ve ardından **Yeni**' yi seçin.
 1. Yeni Not Defteri dosya listesinde göründükten sonra not defterini başlayacak şekilde seçin. Otomatik olarak yeni bir tarayıcı sekmesi açılır.
-1. Sahip olduğunuz için bir *requirements.txt* dosya ortamı ayarlarınızda göreceğiniz ileti "kapsayıcınızı tamamlanması beklenirken hazırlanıyor." Seçebileceğiniz **Tamam** iletiyi kapatın ve not defterinde; çalışmaya devam etmek için ortamı tamamen ayarlanana kadar kod hücreleri ancak çalıştıramazsınız.
+1. Ortam ayarlarında bir *requirements. txt* dosyanız olduğundan, "kapsayıcının hazırlanmasını tamamlaması bekleniyor" iletisini görürsünüz. İletiyi kapatmak için **Tamam** ' ı seçebilirsiniz ve not defterinde çalışmaya devam edebilirsiniz; Ancak, ortam tamamen ayarlanana kadar kod hücrelerini çalıştıramazsınız.
 1. Bir tek boş kodu hücreyi Jupyter arabirimle not defteri varsayılan olarak açılır.
 
     [Azure Notebooks yeni bir not defterinin Ilk görünümünü ![](media/tutorial/tutorial-new-notebook.png)](media/tutorial/tutorial-new-notebook.png#lightbox)
 
 ## <a name="tour-the-notebook-interface"></a>Not Defteri arabirimi turuna katılın
 
-Çalışan not defteri ile kod ve Markdown hücreleri hücrelere çalıştırın ve not defteri yönetebilirsiniz ekleyebilirsiniz. İlk olarak, ancak bu arabirimi tanımak için birkaç dakikanızı ayırıp değer olur. Tüm belgeler için seçin **yardımcı** > **not defteri yardımcı** menü komutu.
+Çalışan not defteri ile kod ve Markdown hücreleri hücrelere çalıştırın ve not defteri yönetebilirsiniz ekleyebilirsiniz. İlk olarak, ancak bu arabirimi tanımak için birkaç dakikanızı ayırıp değer olur. Tam belgeler için **yardım** > **Not defteri yardım** menüsü komutunu seçin.
 
 Pencerenin üst kısmında, aşağıdaki öğeleri görürsünüz:
 
@@ -131,12 +131,12 @@ Pencerenin üst kısmında, aşağıdaki öğeleri görürsünüz:
 Not Defteri ile çalışmak için komutları (C) A menüsü.
 (D) sık kullanılan işlemler için kısayollar bir araç çubuğu.
 (E) hücre içeren düzenleme tuvalini.
-(F) not defterini güvenilir olup göstergesi (varsayılan değer **güvenilir**).
+(F) Not defterinin güvenilir olup olmadığı göstergesi (varsayılan **güvenilir değil**).
 (G) not defteri etkinliği göstergesini birlikte çalıştırmak için kullanılan çekirdek.
 
 [Jupyıter arabiriminin birincil kullanıcı arabirimi alanı ![](media/tutorial/tutorial-notebook-ui.png)](media/tutorial/tutorial-notebook-ui.png#lightbox)
 
-Jupyter, birincil kullanıcı Arabirimi öğeleri yerleşik turu sağlar. Seçerek Turu Başlat **yardımcı** > **kullanıcı arabirimi Turu** komut ve açılan pencereler tıklayarak.
+Jupyter, birincil kullanıcı Arabirimi öğeleri yerleşik turu sağlar. **Yardım** > **Kullanıcı arabirimi turu** komutunu seçerek ve açılır pencerelere tıklayarak Turu başlatın.
 
 Menü komutları gruplarını aşağıdaki gibidir:
 
@@ -146,23 +146,23 @@ Menü komutları gruplarını aşağıdaki gibidir:
 | Düzenle | Kesme, kopyalama ve hücre yapıştırın, bulmak ve değerleri değiştirmek için tipik komutları hücre ekleri Yönet ve görüntüleri ekleyin.  |
 | Görünüm | Jupyter kullanıcı Arabiriminin farklı bölümlerini görünürlüğünü denetleme komutları. |
 | Ekle | Geçerli hücreyi altına veya üstüne yeni bir hücre Ekle komutları. Sıklıkla bir not defteri oluştururken bu komutları kullanın. |
-| Hücre | Çeşitli **çalıştırma** komutları bir veya daha fazla hücre farklı bileşimlerde çalıştırın. **Hücresi türü** komutları bir hücre arasında tür değiştirme **kod**, **Markdown**, ve **ham NBConvert** (düz metin). **Geçerli çıkışları** ve **tüm çıkışları** komutlarını denetlemek nasıl çalışma kodu çıktısı görüntülenir ve tüm çıkış temizlemek için bir komut içerir. |
-| Çekirdek | Nasıl kod Çekirdeği'nde ile birlikte çalıştırıldığı yönetecek komutlar **değişiklik çekirdek** dil veya not defteri çalıştırmak için kullanılan Python sürümünü değiştirmek için. |
-| Veriler | Karşıya yüklemek ve proje veya oturumu dosyaları indirmek için komutlar içerir. Bkz: [proje veri dosyalarıyla çalışma](work-with-project-data-files.md) |
-| Pencere öğeleri | Yönetecek komutlar [Jupyter pencere öğeleri](https://ipywidgets.readthedocs.io/en/stable/examples/Widget%20Basics.html), eşleme ve çizim görselleştirme için ek özellikler sağlar.|
+| Hücre | Çeşitli **çalıştırma** komutları farklı birleşimlerde bir veya daha fazla hücre çalıştırır. **Hücre türü** komutları, **kod**, **markın**ve **Ham nbconvert** (düz metin) arasındaki bir hücrenin türünü değiştirir. **Geçerli çıkışlar** ve **tüm çıktılar** komutları çalıştırma kodu çıkışının nasıl gösterileceğini denetler ve tüm çıktıyı temizlemek için bir komut içerir. |
+| Çekirdek | Kodun çekirdekte nasıl çalıştırıldığını yönetmek için komutlar ve Not defterini çalıştırmak için kullanılan dili veya Python sürümünü değiştirmek için **çekirdeği değiştirme** . |
+| Veriler | Karşıya yüklemek ve proje veya oturumu dosyaları indirmek için komutlar içerir. Bkz. [proje veri dosyalarıyla çalışma](work-with-project-data-files.md) |
+| Pencere Öğeleri | Görselleştirme, eşleme ve çizim için ek yetenekler sağlayan [Jupyter pencere](https://ipywidgets.readthedocs.io/en/stable/examples/Widget%20Basics.html)öğelerini yönetmeye yönelik komutlar.|
 | Yardım | Yardım ve belgeler için Jupyter arabirimi sağlayan komutlar içerir. |
 
-Araç çubuğundaki komutların çoğu eşdeğer menü komutları vardır. Bir özel durum **Enter/Düzenle YÜKSELMEYE slayt gösterisi**, üzerinde ele [paylaşımı ve mevcut not defterleri](present-jupyter-notebooks-slideshow.md).
+Araç çubuğundaki komutların çoğu eşdeğer menü komutları vardır. Tek bir istisna, [paylaşma ve sunma ile](present-jupyter-notebooks-slideshow.md)ilgili olarak açıklanan **Slayt gösterisini yazın/düzenleyin**.
 
 Not Defteri olarak bölümlerde doldurmak gibi birkaç aşağıdaki komutlardan birini kullanın.
 
 ## <a name="create-a-markdown-cell"></a>Bir Markdown hücre oluşturma
 
-1. Not Defteri tuval üzerinde gösterilen ilk boş hücreye tıklayın. Varsayılan olarak, bir hücre olduğunda bir **kod** tasarlanmış seçili çekirdek için çalıştırılabilir kod içerecek şekilde anlamına gelir türü (Python, R veya F#). Geçerli türü açılan araç çubuğunda bulunan tür gösterilmektedir:
+1. Not Defteri tuval üzerinde gösterilen ilk boş hücreye tıklayın. Varsayılan olarak, bir hücre bir **kod** türüdür, yani seçili çekirdek için çalıştırılabilir kod içerecek şekilde tasarlanmıştır (Python, R veya F#). Geçerli türü açılan araç çubuğunda bulunan tür gösterilmektedir:
 
     ![Hücre türü araç çubuğu açılır](media/tutorial/tutorial-cell-type-drop-down.png)
 
-1. Hücre türe çeviremezsiniz **Markdown** açılır araç çubuğunu kullanarak; bunun yerine, kullanın **hücre** > **hücresi türü**  >   **Markdown** menü komutu:
+1. Araç çubuğu açılır menüsü kullanılarak hücre türünü **Markaşağı** olarak değiştirin; Alternatif olarak **, > ** **hücre türünü** > **markaşağı** menü komutunu kullanın:
 
     ![Hücre türü menü komutu](media/tutorial/tutorial-cell-type-menu.png)
 
@@ -187,7 +187,7 @@ Not Defteri olarak bölümlerde doldurmak gibi birkaç aşağıdaki komutlardan 
     When you run a code cell, Jupyter executes the code; when you run a Markdown cell, Jupyter renders all the formatting into text that's suitable for presentation.
     ```
 
-1. Markdown HTML'e tarayıcısı işlemek için seçin **çalıştırmak** komut araç veya kullanın **hücre** > **çalıştırma hücreleri** komutu. Biçimlendirme ve bağlantıları için Markdown kod, bir tarayıcıda beklediğiniz gibi artık görünür.
+1. Özet 'i tarayıcı için HTML olarak göstermek için, araç çubuğunda **Çalıştır** komutunu seçin ya da **hücreleri Çalıştır** komutunu > **hücresini** kullanın. Biçimlendirme ve bağlantıları için Markdown kod, bir tarayıcıda beklediğiniz gibi artık görünür.
 
 1. Son hücreye not defterinde çalıştırdığınızda, Jupyter çalıştırdığınız bir altında yeni bir hücre otomatik olarak oluşturur. Daha fazla Markdown bu hücreye aşağıdaki Markdown ile bu bölümdeki adımları tekrarlayarak yerleştirin:
 
@@ -209,7 +209,7 @@ Not Defteri olarak bölümlerde doldurmak gibi birkaç aşağıdaki komutlardan 
 
 Önceki Markdown hücre açıklandığı gibi komutları doğrudan not defterinde içerebilir. Paketleri yüklemek için curl veya veri veya başka bir şey almak için wget çalıştırma komutlarını kullanabilirsiniz. Jupyter not defterleri, etkili bir şekilde ile çalışmak için tam Linux komut alacak şekilde bir Linux sanal makine içinde çalıştırın.
 
-1. Kullandığınız sonra görüntülenen kod hücresine aşağıdaki komutları girin **çalıştırma** önceki Markdown hücreyi. Yeni bir hücre görmüyorsanız oluşturmak **Ekle** > **hücre aşağıda Ekle** veya **+** araç çubuğunda.
+1. Önceki Markaşağı hücresinde **Çalıştır** kullanıldıktan sonra görünen kod hücresinde aşağıdaki komutları girin. Yeni bir hücre görmüyorsanız, **ekleme** ** > Ekle** ' yi kullanarak bir tane oluşturun veya araç çubuğundaki **+** düğmesini kullanın.
 
     ```bash
     !pip install numpy
@@ -218,21 +218,21 @@ Not Defteri olarak bölümlerde doldurmak gibi birkaç aşağıdaki komutlardan 
     !pip install sklearn
     ```
 
-1. Hücre çalıştırmadan önce yeni bir hücreyle oluşturma **+** araç çubuğunda düğme için Markdown ayarlayabilir ve aşağıdaki açıklama girin:
+1. Hücreyi çalıştırmadan önce, araç çubuğunda **+** düğmesiyle yeni bir hücre oluşturun, markaşağı olarak ayarlayın ve aşağıdaki açıklamayı girin:
 
     ```markdown
     Note that when you run a code block that contains install commands, and also those with `import` statements, it make take the notebooks a little time to complete the task. To the left of the code block you see `In [*]` to indicate that execution is happening. The Notebook's kernel on the upper right also shows a filled-in circle to indicate "busy."
     ```
 
-1. Seçin **hücre** > **tümünü Çalıştır** tüm hücreleri not defteri çalıştırmak için komutu. Markdown hücreleri HTML olarak işlemenizi ve komut çekirdek çalıştırın ve çekirdek göstergesi, Markdown'da açıklandığı gözlemleyin dikkat edin:
+1. Not defterindeki tüm hücreleri çalıştırmak için **Tümünü Çalıştır** komutunu > **hücreyi** seçin. Markdown hücreleri HTML olarak işlemenizi ve komut çekirdek çalıştırın ve çekirdek göstergesi, Markdown'da açıklandığı gözlemleyin dikkat edin:
 
     ![Not Defteri çekirdeğin meşgul göstergesi](media/tutorial/tutorial-kernel-busy.png)
 
-1. Ayrıca tüm biraz zaman alır `pip install` komutları çalıştırmak için ve proje ortamında bu paketler zaten yüklü olduğundan (ve onlar da Azure not defterlerinde varsayılan olarak dahil edildiği için), okuma, "gereksinimi çok sayıda ileti gördüğünüz zaten memnun." Bu çıkış olabilir görsel olarak dikkat dağıtıcı, böylece seçin, (tek tıklama kullanarak) satış, ardından kullanmak **hücre** > **hücre çıkışları** > **geçiş**çıkış gizlemek için. Ayrıca **Temizle** çıkış tamamen kaldırmak için aynı alt komut.
+1. Ayrıca, tüm `pip install` komutlarının çalışması için çok zaman alır ve bu paketleri proje ortamına zaten yüklediklerinden (ve varsayılan olarak Azure Notebooks de dahil olduklarından), "gereksinim zaten memnun. " Bu çıkışın hepsi görsel açıdan dikkat çekici olabilir, bu nedenle satışı (tek bir tıklama kullanarak) **seçin ve sonra** çıktıyı **gizlemek Için** > **hücre çıktılarının** > hücresini kullanın. Çıktıyı tamamen kaldırmak için aynı alt menüdeki **clear** komutunu da kullanabilirsiniz.
 
-    **Geçiş** komutu yalnızca en son çıktı hücreden gizler; hücre yeniden çalıştırırsanız, çıkış ekranı yeniden görünür.
+    **Iki durumlu** komut yalnızca hücreden en son çıktıyı gizler; hücreyi yeniden çalıştırırsanız, çıkış yeniden görüntülenir.
 
-1. Paketler proje ortamında yüklü olmadığından, açıklama `! pip install` komutları kullanarak `#`; bu şekilde, not defterine eğitim malzemesi olarak kalır ancak çalıştırmak için hiçbir zaman kesintiye uğramaz ve gereksiz çıkış üretmesi olmaz. Bu durumda, Not Defteri açıklamalı komutları tutma de not defterinin bağımlılıkları gösterir.
+1. Paketler proje ortamında yüklendiği için, `#`kullanarak `! pip install` komutları not edin; Bu şekilde, bu şekilde, eğitim malzemeleri olarak not defterinde kalabilirler, ancak çalıştırmak için zaman kalmaz ve gereksiz çıkış oluşturmaz. Bu durumda, Not Defteri açıklamalı komutları tutma de not defterinin bağımlılıkları gösterir.
 
     ```bash
     # !pip install numpy
@@ -247,7 +247,7 @@ Not defterini geri kalanı doldurmak için sonraki Markdown ve kod hücreleri bi
 
 Her bir hücresinde oluşturduktan sonra not defteri çalıştırmak için bekleyebilirsiniz olsa da, her bir hücresinde oluşturduğunuz farklı çalıştır ilginçtir. Tüm hücreleri çıktıyı gösterir; hata iletisi göremiyorum, hücre normalde çalıştırdığınız varsayılır.
 
-Önceki hücrelerde çalıştırılan kod her kodu hücreyi bağlıdır ve bir hücre çalışacak şekilde yayımlarsanız, daha sonra hücre hataya neden. Bir hücreyi çalıştırılacak unuttuysanız bulursanız, kullanmayı deneyin **hücre** > **tüm yukarıda çalıştırma** geçerli hücreyi çalıştırmadan önce.
+Önceki hücrelerde çalıştırılan kod her kodu hücreyi bağlıdır ve bir hücre çalışacak şekilde yayımlarsanız, daha sonra hücre hataya neden. Bir hücreyi çalıştırmayı unutmuş olduğunu fark ederseniz, geçerli hücreyi çalıştırmadan önce **Yukarıdaki tümünü çalıştır** > **hücresini** kullanmayı deneyin.
 
 (Bu, büyük olasılıkla olacak!) beklenmeyen sonuçlara görürseniz, her bir hücresinde "Code" veya "Markdown" için gerektiği şekilde ayarlandığından emin olun. Örneğin, "Geçersiz söz dizimi" hata kod hücresine Markdown girdikten sonra genellikle oluşur.
 
@@ -259,7 +259,7 @@ Her bir hücresinde oluşturduktan sonra not defteri çalıştırmak için bekle
     In this example we're using numpy, pandas, and matplotlib. Data is in the file cricket_chirps.csv. Because this file is in the same project as this present Notebook, we can just load it using a relative pathname.
     ```
 
-1. Kodu hücreyi; çalıştırdığınızda, çıktı olarak İçindekiler gösterir. Çıkış açıklama satırı yaparak çıkış gizleyebilirsiniz `print` deyimi.
+1. Kodu hücreyi; çalıştırdığınızda, çıktı olarak İçindekiler gösterir. `print` bildirimine açıklama ekleyerek çıktıyı gizleyebilirsiniz.
 
     ```python
     import numpy as np
@@ -300,7 +300,7 @@ Her bir hücresinde oluşturduktan sonra not defteri çalıştırmak için bekle
     The regressor's `fit` method here creates the line, which algebraically is of the form `y = x*b1 + b0`, where b1 is the coefficient or slope of the line (which you can get to through `regressor.coef_`), and b0 is the intercept of the line at x=0 (which you can get to through `regressor.intercept_`).
     ```
 
-1. Kodu hücreyi; çalıştırdığınızda, bu hücreyi çıktıyı gösterir `LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None,normalize=False)`.
+1. Kod hücresi; çalıştırıldığında, bu hücrede çıktıyı gösterir `LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None,normalize=False)`.
 
     ```python
     from sklearn.linear_model import LinearRegression
@@ -321,7 +321,7 @@ Her bir hücresinde oluşturduktan sonra not defteri çalıştırmak için bekle
     In the code, the `y_test` matrix (from when we split the set) contains the real observations. `y_pred` assigned here contains the predictions for the same `X_test` inputs. It's not expected that the test or training points exactly fit the regression; the regression is trying to find the model that we can use to make predictions with new observations of the independent variables.
     ```
 
-1. Kodu hücreyi; çalıştırdığınızda, bu hücreyi Sonuçlardan memnun gösterir `[79.49588055 75.98873911 77.87719989 80.03544077 75.17939878]`.
+1. Kod hücresi; çalıştırıldığında, bu hücrede `[79.49588055 75.98873911 77.87719989 80.03544077 75.17939878]`gibi sonuçlar gösterilmektedir.
 
     ```python
     y_pred = regressor.predict(X_test)
@@ -383,21 +383,21 @@ Tüm Not doldurmak için önceki bölümdeki adımları uyguladıktan sonra hem 
 
 Tüm dizüstü bilgisayar'ı şimdi yeniden çalıştırmayı deneyin:
 
-1. Çekirdek kişinin oturum verilerini temizleyin ve tüm çıkış seçerek hücre **çekirdek** > **çıkışı Temizle & yeniden başlatma**. Bu komut, her zaman yalnızca kod hücreler arasındaki garip bağımlılıkları oluşturmadınız emin olmak için bir not defteri tamamladıktan sonra çalıştırmak için iyi bir örnektir.
+1. **Çekirdek** > **yeniden başlatma & çıktıyı temizle**' ye tıklayarak tüm çekirdeğin oturum verilerini ve tüm hücre çıkışlarını temizleyin. Bu komut, her zaman yalnızca kod hücreler arasındaki garip bağımlılıkları oluşturmadınız emin olmak için bir not defteri tamamladıktan sonra çalıştırmak için iyi bir örnektir.
 
-1. Not Defteri kullanarak yeniden **hücre** > **tümünü Çalıştır**. Kod çalışırken çekirdek göstergesi doldurulur dikkat edin.
+1. **Tümünü çalıştırmak** > **hücreyi** kullanarak not defterini yeniden çalıştırın. Kod çalışırken çekirdek göstergesi doldurulur dikkat edin.
 
-    Aksi takdirde takılı ya da çok uzun süre çalışan herhangi bir kod varsa, kullanarak çekirdek durdurabilirsiniz **çekirdek** > **kesme** komutu.
+    Çok uzun süre çalışan veya başka bir şekilde takılmış bir kodunuz varsa, çekirdek > **kesme** komutunu **kullanarak çekirdeği durdurabilirsiniz** .
 
 1. Sonuçları incelemek için Not defterini kaydırın. (Yeniden çizimi görüntülenmezse, söz konusu hücrenin yeniden çalıştırın.)
 
 ## <a name="save-halt-and-close-the-notebook"></a>Not defterini kapatmak kaydedin ve durdurma
 
-Bir not defteri düzenlediğiniz sırada geçerli durumuyla kaydedebilirsiniz **dosya** > **kaydetme ve denetim noktası** komut veya kaydetme araç çubuğunda. "Denetim noktası" oturumu sırasında herhangi bir zamanda döndürebilirsiniz bir anlık görüntü oluşturur. Kontrol noktaları, bir dizi Deneysel değişikliği yapmanızı sağlar ve bu değişiklikleri işe yaramazsa, yalnızca bir denetim noktası kullanmaya geri dönebilirsiniz **dosya** > **kontrol noktasına geri** komutu. Ek hücre ve açıklama satırı çalıştırmak istemediğiniz herhangi bir kod oluşturmak için alternatif yaklaşım, Her iki şekilde çalışır.
+Bir not defterini düzenlemekte olduğunuz sırada, bu **dosyanın** geçerli durumunu > **Kaydet ve denetim noktası** komutuyla veya araç çubuğundaki Kaydet düğmesiyle kaydedebilirsiniz. "Denetim noktası" oturumu sırasında herhangi bir zamanda döndürebilirsiniz bir anlık görüntü oluşturur. Kontrol noktaları, bir dizi deneysel değişiklik yapmanıza izin verir ve bu değişiklikler işe alınmazda, **dosyayı** kullanarak bir kontrol noktasına dönebilir > , **denetim noktası komutuna dönün** . Ek hücre ve açıklama satırı çalıştırmak istemediğiniz herhangi bir kod oluşturmak için alternatif yaklaşım, Her iki şekilde çalışır.
 
-De kullanabilirsiniz **dosya** > **kopyalanmasına** projenizde yeni bir dosyaya not defterinin geçerli durumunun bir kopyasını yapmak için herhangi bir zamanda komutu. Bu kopyayı otomatik olarak yeni bir tarayıcı sekmesinde açılır.
+Ayrıca, Not defteri 'nin geçerli durumunun **bir kopyasını projenizde** yeni bir dosyaya oluşturmak için Istediğiniz zaman **dosyayı** da > de kullanabilirsiniz. Bu kopyayı otomatik olarak yeni bir tarayıcı sekmesinde açılır.
 
-Bir not defteri ile işiniz bittiğinde kullanın **dosya** > **Kapat ve durdurmak** not defterini kapatır ve onu çalıştıran çekirdek kapatan komutu. Azure not defterleri kapanır tarayıcı sekmesinde otomatik olarak.
+Bir not defteri ile işiniz bittiğinde, > **Kapat ve Durdur** komutunu kullanın ve **Bu, Not** defterini kapatır ve çalıştıran çekirdeği kapatır. Azure not defterleri kapanır tarayıcı sekmesinde otomatik olarak.
 
 ## <a name="debug-notebooks-using-visual-studio-code"></a>Not defterlerini kullanarak Visual Studio Code hata ayıklama
 
@@ -411,14 +411,14 @@ Ayrıca bkz. jupi Not defterleri için Visual Studio Code ek özellikler için [
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Örnek Not Defterleri keşfedin](azure-notebooks-samples.md)
+- [Örnek not defterlerini keşfet](azure-notebooks-samples.md)
 
 Nasıl yapılır makaleleri:
 
-- [Oluşturma ve projeleri kopyalama](create-clone-jupyter-notebooks.md)
-- [Yapılandırma ve projeleri yönetme](configure-manage-azure-notebooks-projects.md)
-- [İçinde bir not defteri paketleri yükleme](install-packages-jupyter-notebook.md)
-- [Mevcut bir slayt gösterisi](present-jupyter-notebooks-slideshow.md)
-- [Veri dosyaları ile çalışma](work-with-project-data-files.md)
-- [Veri kaynaklarına erişim](access-data-resources-jupyter-notebooks.md)
+- [Projeleri oluşturma ve kopyalama](create-clone-jupyter-notebooks.md)
+- [Projeleri yapılandırma ve yönetme](configure-manage-azure-notebooks-projects.md)
+- [Bir not defteri içinden paket yükler](install-packages-jupyter-notebook.md)
+- [Bir slayt gösterisi sunun](present-jupyter-notebooks-slideshow.md)
+- [Veri dosyalarıyla çalışma](work-with-project-data-files.md)
+- [Veri kaynaklarına erişin](access-data-resources-jupyter-notebooks.md)
 - [Azure Machine Learning kullan](use-machine-learning-services-jupyter-notebooks.md)

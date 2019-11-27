@@ -1,6 +1,6 @@
 ---
-title: Configure password writeback for SSPR - Azure Active Directory
-description: Use Azure AD and Azure AD Connect to writeback passwords to an on-premises directory
+title: SSPR için parola geri yazmayı Yapılandırma-Azure Active Directory
+description: Azure AD 'yi ve Azure AD Connect kullanarak bir şirket içi dizine parolaları geri yazma
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -18,9 +18,9 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74381149"
 ---
-# <a name="how-to-configure-password-writeback"></a>How-to: Configure password writeback
+# <a name="how-to-configure-password-writeback"></a>Nasıl yapılır: parola geri yazmayı yapılandırma
 
-The following steps assume you have already configured Azure AD Connect in your environment by using the [Express](../hybrid/how-to-connect-install-express.md) or [Custom](../hybrid/how-to-connect-install-custom.md) settings.
+Aşağıdaki adımlarda, [hızlı](../hybrid/how-to-connect-install-express.md) veya [özel](../hybrid/how-to-connect-install-custom.md) ayarları kullanarak ortamınızda Azure AD Connect zaten yapılandırmış olduğunuz varsayılır.
 
 1. Parola geri yazma özelliğini yapılandırmak ve etkinleştirmek için Azure AD Connect sunucunuzda oturum açın ve **Azure AD Connect** yapılandırma sihirbazını başlatın.
 2. **Hoş Geldiniz** sayfasında, **Yapılandır**’ı seçin.
@@ -28,81 +28,81 @@ The following steps assume you have already configured Azure AD Connect in your 
 4. **Azure AD'ye bağlan** sayfasına bir genel yöneticinin kimlik bilgilerini girin ve **İleri**'yi seçin.
 5. **Dizinleri bağla** ve **Etki Alanı/OU** filtreleme sayfalarında **İleri**'yi seçin.
 6. **İsteğe bağlı özellikler** sayfasında **Parola geri yazma** özelliğinin yanındaki kutuyu işaretleyin ve **İleri**'yi seçin.
-   ![Enable password writeback in Azure AD Connect][Writeback]
+   ![Azure AD Connect parola geri yazmayı etkinleştirme][Writeback]
 7. **Yapılandırma için hazır** sayfasında **Yapılandır**'ı seçin ve işlemin tamamlanmasını bekleyin.
 8. Yapılandırma tamamlandığında **Çıkış**'ı seçin.
 
-For common troubleshooting tasks related to password writeback, see the section [Troubleshoot password writeback](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) in our troubleshooting article.
+Parola geri yazma ile ilgili yaygın sorun giderme görevlerinde, sorun giderme makalesindeki [parola geri yazma sorunlarını giderme](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) bölümüne bakın.
 
 > [!WARNING]
-> Password writeback will stop working for customers who are using Azure AD Connect versions 1.0.8641.0 and older when the [Azure Access Control service (ACS) is retired on November 7th, 2018](../develop/active-directory-acs-migration.md). Azure AD Connect versions 1.0.8641.0 and older will no longer allow password writeback at that time because they depend on ACS for that functionality.
+> Parola geri yazma işlemi, [Azure Access Control hizmeti (ACS) 7 kasım 2018 tarihinde devre dışı bırakıldığında,](../develop/active-directory-acs-migration.md)Azure AD Connect sürümlerini kullanan müşteriler için çalışmayı durdurur. Azure AD Connect sürümleri, bu işlev için ACS 'ye bağlı olduğundan, 1.0.8641.0 ve üzeri sürümler artık parola geri yazmaya izin vermez.
 >
-> To avoid a disruption in service, upgrade from a previous version of Azure AD Connect to a newer version, see the article [Azure AD Connect: Upgrade from a previous version to the latest](../hybrid/how-to-upgrade-previous-version.md)
+> Bir hizmette kesintiye uğramamak için, önceki bir Azure AD Connect sürümünden daha yeni bir sürüme yükseltme yapın Azure AD Connect şu makaleye bakın [: önceki bir sürümden en son sürüme yükseltme](../hybrid/how-to-upgrade-previous-version.md)
 >
 
-## <a name="licensing-requirements-for-password-writeback"></a>Licensing requirements for password writeback
+## <a name="licensing-requirements-for-password-writeback"></a>Parola geri yazma için lisans gereksinimleri
 
-**Self-Service Password Reset/Change/Unlock with on-premises writeback is a premium feature of Azure AD**. For more information about licensing, see the [Azure Active Directory pricing site](https://azure.microsoft.com/pricing/details/active-directory/).
+**Şirket içi geri yazma Ile self servis parola sıfırlama/değiştirme/kilit açma, Azure AD 'nin Premium bir özelliğidir**. Lisanslama hakkında daha fazla bilgi için [Azure Active Directory fiyatlandırma sitesine](https://azure.microsoft.com/pricing/details/active-directory/)bakın.
 
-To use password writeback, you must have one of the following licenses assigned on your tenant:
+Parola geri yazma özelliğini kullanmak için kiracınızda aşağıdaki lisanslardan birine atanmış olmanız gerekir:
 
 * Azure AD Premium P1
 * Azure AD Premium P2
-* Enterprise Mobility + Security E3 or A3
-* Enterprise Mobility + Security E5 or A5
-* Microsoft 365 E3 or A3
-* Microsoft 365 E5 or A5
+* Enterprise Mobility + Security E3 veya a3
+* Enterprise Mobility + Security E5 veya a5
+* Microsoft 365 E3 veya a3
+* Microsoft 365 E5 veya a5
 * Microsoft 365 F1
 * Microsoft 365 İş
 
 > [!WARNING]
-> Standalone Office 365 licensing plans *don't support "Self-Service Password Reset/Change/Unlock with on-premises writeback"* and require that you have one of the preceding plans for this functionality to work.
+> Tek başına Office 365 lisans planları, *"Şirket içi geri yazma Ile self servis parola sıfırlama/değiştirme/kilit açma" desteği vermez* ve bu işlevin çalışması için önceki planlardan birine sahip olmanızı gerektirir.
 >
 
-## <a name="active-directory-permissions-and-on-premises-password-complexity-policies"></a>Active Directory permissions and on-premises password complexity policies 
+## <a name="active-directory-permissions-and-on-premises-password-complexity-policies"></a>Active Directory izinleri ve şirket içi parola karmaşıklığı ilkeleri 
 
-The account specified in the Azure AD Connect utility must have the following items set if you want to be in scope for SSPR:
+SSPR kapsamında olmak istiyorsanız, Azure AD Connect yardımcı programında belirtilen hesabın aşağıdaki öğeler ayarlanmış olması gerekir:
 
 * **Parola sıfırlama** 
 * **Parola değiştirme** 
-* **Write permissions** on `lockoutTime`
-* **Write permissions** on `pwdLastSet`
-* **Extended rights** on either:
-   * The root object of *each domain* in that forest
-   * The user organizational units (OUs) you want to be in scope for SSPR
+* `lockoutTime` **yazma izinleri**
+* `pwdLastSet` **yazma izinleri**
+* Her birinde **genişletilmiş haklar** :
+   * Bu ormandaki *her etki alanının* kök nesnesi
+   * SSPR için kapsamda olmasını istediğiniz kullanıcı kuruluş birimleri (OU)
 
-If you're not sure what account the described account refers to, open the Azure Active Directory Connect configuration UI and select the **View current configuration** option. The account that you need to add permission to is listed under **Synchronized Directories**.
+Açıklanan hesabın başvurduğu hesaba emin değilseniz, Azure Active Directory Connect yapılandırma kullanıcı arabirimini açın ve **geçerli yapılandırmayı görüntüle** seçeneğini belirleyin. İzin eklemeniz gereken hesap, **eşitlenmiş dizinler**altında listelenmiştir.
 
-If you set these permissions, the MA service account for each forest can manage passwords on behalf of the user accounts within that forest. 
+Bu izinleri ayarlarsanız, her orman için MA hizmet hesabı, bu ormandaki Kullanıcı hesapları adına parolaları yönetebilir. 
 
 > [!IMPORTANT]
-> If you neglect to assign these permissions, then, even though writeback appears to be configured correctly, users will encounter errors when they attempt to manage their on-premises passwords from the cloud.
+> Bu izinleri atamayı düşünüyorsanız, geri yazma doğru şekilde yapılandırılmış gibi görünse de, kullanıcılar şirket içi parolalarını buluttan yönetmeye çalıştıklarında hatalar ile karşılaşacaktır.
 >
 
 > [!NOTE]
-> It might take up to an hour or more for these permissions to replicate to all the objects in your directory.
+> Bu izinlerin dizininizdeki tüm nesnelere çoğaltılması bir saat veya daha fazla sürebilir.
 >
 
-To set up the appropriate permissions for password writeback to occur, complete the following steps:
+Parola geri yazma işleminin gerçekleşmesi için uygun izinleri ayarlamak için aşağıdaki adımları izleyin:
 
-1. Open Active Directory Users and Computers with an account that has the appropriate domain administration permissions.
-2. From the **View** menu, make sure **Advanced features** is turned on.
-3. In the left panel, right-click the object that represents the root of the domain and select **Properties** > **Security** > **Advanced**.
-4. From the **Permissions** tab, select **Add**.
-5. Pick the account that permissions are being applied to (from the Azure AD Connect setup).
-6. In the **Applies to** drop-down list, select **Descendant User objects**.
-7. Under **Permissions**, select the boxes for the following options:
+1. Active Directory Kullanıcıları ve bilgisayarları, uygun etki alanı yönetim izinlerine sahip bir hesapla açın.
+2. **Görünüm** menüsünde **Gelişmiş Özellikler** ' in açık olduğundan emin olun.
+3. Sol bölmede, etki alanının kökünü temsil eden nesneye sağ tıklayın ve **özellikler** > **güvenlik** > **Gelişmiş**' i seçin.
+4. **İzinler** sekmesinde **Ekle**' yi seçin.
+5. İzinlerin uygulandığı hesabı seçin (Azure AD Connect kurulumundan).
+6. **Uygulanacak** öğe açılır listesinde, alt **Kullanıcı nesneleri**' ni seçin.
+7. **İzinler**altında, aşağıdaki seçenekler için kutuları seçin:
     * **Parola değiştirme**
     * **Parola sıfırlama**
-8. Under **Properties**, select the boxes for the following options:
-    * **Write lockoutTime**
-    * **Write pwdLastSet**
-9. Select **Apply/OK** to apply the changes and exit any open dialog boxes.
+8. **Özellikler**altında, aşağıdaki seçenekler için kutuları seçin:
+    * **Yazma lockoutTime**
+    * **PwdLastSet yazma**
+9. Değişiklikleri uygulamak ve açık iletişim kutularından çıkmak için **Uygula/Tamam** ' ı seçin.
 
-Since the source of authority is on premises, the password complexity policies apply from the same connected data source. Make sure you've changed the existing group policies for "Minimum password age". The group policy shouldn't be set to 1, which means password should be at least a day old before it can be updated. You need make sure it's set to 0. These settings can be found in `gpmc.msc` under **Computer Configuration > Policies > Windows Settings > Security Settings > Account Policies**. Run `gpupdate /force` to ensure that the change takes effect. 
+Yetkilinin kaynağı şirket içinde olduğundan, parola karmaşıklığı ilkeleri aynı bağlı veri kaynağından geçerlidir. "Minimum parola yaşı" için mevcut grup ilkelerini değiştirdiğinizden emin olun. Grup İlkesi 1 olarak ayarlanmamalıdır, bu, bir parolanın güncelleştirilebilmesi için en az bir gün daha eski olması gerektiği anlamına gelir. 0 olarak ayarlandığından emin olmanız gerekir. Bu ayarlar, **Windows ayarları > güvenlik ayarları > hesap ilkeleri > bilgisayar yapılandırması > ilkeleri**altındaki `gpmc.msc` bulunabilir. Değişikliğin geçerli olduğundan emin olmak için `gpupdate /force` çalıştırın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[What is password writeback?](concept-sspr-writeback.md)
+[Parola geri yazma nedir?](concept-sspr-writeback.md)
 
-[Writeback]: ./media/howto-sspr-writeback/enablepasswordwriteback.png "Enable password writeback in Azure AD Connect"
+[Writeback]: ./media/howto-sspr-writeback/enablepasswordwriteback.png "Azure AD Connect parola geri yazmayı etkinleştirme"

@@ -1,6 +1,6 @@
 ---
-title: Android certificate-based authentication - Azure Active Directory
-description: Learn about the supported scenarios and the requirements for configuring certificate-based authentication in solutions with Android devices
+title: Android sertifika tabanlı kimlik doğrulaması-Azure Active Directory
+description: Android cihazlarıyla çözümlerinde desteklenen senaryolar ve sertifika tabanlı kimlik doğrulaması yapılandırma gereksinimleri hakkında bilgi edinin
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -18,66 +18,66 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74381981"
 ---
-# <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Azure Active Directory certificate-based authentication on Android
+# <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Android 'de sertifika tabanlı kimlik doğrulamayı Azure Active Directory
 
-Android devices can use certificate-based authentication (CBA) to authenticate to Azure Active Directory using a client certificate on their device when connecting to:
+Android cihazlar, bağlantısı sırasında cihazlarındaki istemci sertifikası kullanarak Azure Active Directory kimlik doğrulaması yapmak için sertifika tabanlı kimlik doğrulaması (CBA) kullanabilir:
 
-* Office mobile applications such as Microsoft Outlook and Microsoft Word
-* Exchange ActiveSync (EAS) clients
+* Microsoft Outlook ve Microsoft Word gibi Office mobil uygulamaları
+* Exchange ActiveSync (EAS) istemcileri
 
-Configuring this feature eliminates the need to enter a username and password combination into certain mail and Microsoft Office applications on your mobile device.
+Bu özelliği yapılandırmak, mobil cihazınızda belirli e-posta ve Microsoft Office uygulamalarına bir Kullanıcı adı ve parola birleşimi girme gereksinimini ortadan kaldırır.
 
-This topic provides you with the requirements and the supported scenarios for configuring CBA on an iOS(Android) device for users of tenants in Office 365 Enterprise, Business, Education, US Government, China, and Germany plans.
+Bu konu, Office 365 Kurumsal, Iş, eğitim, ABD Kamu, Çin ve Almanya planlarındaki kiracılar kullanıcılarına yönelik bir iOS (Android) cihazında CBA 'yı yapılandırmaya yönelik gereksinimler ve desteklenen senaryolar sağlar.
 
-This feature is available in preview in Office 365 US Government Defense and Federal plans.
+Bu özellik, Office 365 ABD kamu savunması ve Federal planlarında önizlemede sunulmaktadır.
 
-## <a name="microsoft-mobile-applications-support"></a>Microsoft mobile applications support
+## <a name="microsoft-mobile-applications-support"></a>Microsoft mobil uygulamalar desteği
 
 | Uygulamalar | Destek |
 | --- | --- |
-| Azure Information Protection app |![Check mark signifying support for this application][1] |
-| Intune Company Portal |![Check mark signifying support for this application][1] |
-| Microsoft Teams |![Check mark signifying support for this application][1] |
-| OneNote |![Check mark signifying support for this application][1] |
-| OneDrive |![Check mark signifying support for this application][1] |
-| Outlook |![Check mark signifying support for this application][1] |
-| Power BI |![Check mark signifying support for this application][1] |
-| Skype Kurumsal |![Check mark signifying support for this application][1] |
-| Word / Excel / PowerPoint |![Check mark signifying support for this application][1] |
-| Yammer |![Check mark signifying support for this application][1] |
+| Azure Information Protection uygulaması |![Bu uygulama için desteği belirtir onay işareti][1] |
+| Intune Şirket Portalı |![Bu uygulama için desteği belirtir onay işareti][1] |
+| Microsoft Teams |![Bu uygulama için desteği belirtir onay işareti][1] |
+| OneNote |![Bu uygulama için desteği belirtir onay işareti][1] |
+| OneDrive |![Bu uygulama için desteği belirtir onay işareti][1] |
+| Outlook |![Bu uygulama için desteği belirtir onay işareti][1] |
+| Power BI |![Bu uygulama için desteği belirtir onay işareti][1] |
+| Skype Kurumsal |![Bu uygulama için desteği belirtir onay işareti][1] |
+| Word/Excel/PowerPoint |![Bu uygulama için desteği belirtir onay işareti][1] |
+| Yammer |![Bu uygulama için desteği belirtir onay işareti][1] |
 
-### <a name="implementation-requirements"></a>Implementation requirements
+### <a name="implementation-requirements"></a>Uygulama gereksinimleri
 
-The device OS version must be Android 5.0 (Lollipop) and above.
+Cihazın işletim sistemi sürümü, Android 5,0 (Lollipop) ve üzeri olmalıdır.
 
-A federation server must be configured.
+Federasyon sunucusunun yapılandırılması gerekir.
 
-For Azure Active Directory to revoke a client certificate, the ADFS token must have the following claims:
+İstemci sertifikasını iptal etmek için Azure Active Directory için, ADFS belirtecinin aşağıdaki talepleri olması gerekir:
 
-* `http://schemas.microsoft.com/ws/2008/06/identity/claims/<serialnumber>` (The serial number of the client certificate)
-* `http://schemas.microsoft.com/2012/12/certificatecontext/field/<issuer>` (The string for the issuer of the client certificate)
+* `http://schemas.microsoft.com/ws/2008/06/identity/claims/<serialnumber>` (istemci sertifikasının seri numarası)
+* `http://schemas.microsoft.com/2012/12/certificatecontext/field/<issuer>` (istemci sertifikasını veren için dize)
 
-Azure Active Directory adds these claims to the refresh token if they are available in the ADFS token (or any other SAML token). When the refresh token needs to be validated, this information is used to check the revocation.
+Azure Active Directory, bu talepleri ADFS belirtecinde (veya başka bir SAML belirteci) varsa yenileme belirtecine ekler. Yenileme belirtecinin doğrulanması gerektiğinde, bu bilgiler iptali denetlemek için kullanılır.
 
-As a best practice, you should update your organization's ADFS error pages with the following information:
+En iyi uygulama olarak, kuruluşunuzun ADFS hata sayfalarını aşağıdaki bilgilerle güncelleştirmeniz gerekir:
 
-* The requirement for installing the Microsoft Authenticator on Android.
-* Instructions on how to get a user certificate.
+* Android 'e Microsoft Authenticator yükleme gereksinimi.
+* Kullanıcı sertifikası alma yönergeleri.
 
-For more information, see [Customizing the AD FS Sign-in Pages](https://technet.microsoft.com/library/dn280950.aspx).
+Daha fazla bilgi için bkz. [AD FS oturum açma sayfalarını özelleştirme](https://technet.microsoft.com/library/dn280950.aspx).
 
-Some Office apps (with modern authentication enabled) send ‘*prompt=login*’ to Azure AD in their request. By default, Azure AD translates ‘*prompt=login*’ in the request to ADFS as ‘*wauth=usernamepassworduri*’ (asks ADFS to do U/P Auth) and ‘*wfresh=0*’ (asks ADFS to ignore SSO state and do a fresh authentication). If you want to enable certificate-based authentication for these apps, you need to modify the default Azure AD behavior. Set the ‘*PromptLoginBehavior*’ in your federated domain settings to ‘*Disabled*‘.
-You can use the [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) cmdlet to perform this task:
+Bazı Office uygulamaları (modern kimlik doğrulaması etkinleştirilmiş), istekleri için Azure AD 'ye '*Prompt = Login*' gönderin. Varsayılan olarak, Azure AD '*wauth = usernamepassworduri*' olarak ADFS 'e istekte bulunan '*Prompt = Login*' değerini çevirir (ADFS 'Nin U/P kimlik doğrulamasını yapması ister) ve '*wyeni = 0*' (ADFS 'in SSO durumunu yok saymasını ve yeni bir kimlik doğrulaması yapması istenir). Bu uygulamalar için sertifika tabanlı kimlik doğrulamasını etkinleştirmek istiyorsanız, varsayılan Azure AD davranışını değiştirmeniz gerekir. Federal etki alanı ayarlarınızda '*Promptloginbehavior*' ayarını '*Disabled*' olarak ayarlayın.
+Bu görevi gerçekleştirmek için [Msoldomainfederationsettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) cmdlet 'ini kullanabilirsiniz:
 
 `Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled`
 
-## <a name="exchange-activesync-clients-support"></a>Exchange ActiveSync clients support
+## <a name="exchange-activesync-clients-support"></a>Exchange ActiveSync istemcileri desteği
 
-Certain Exchange ActiveSync applications on Android 5.0 (Lollipop) or later are supported. To determine if your email application does support this feature, contact your application developer.
+Android 5,0 (Lollipop) veya sonraki sürümlerde belirli Exchange ActiveSync uygulamaları desteklenir. E-posta uygulamanızın bu özelliği desteklediğini öğrenmek için uygulama geliştiricinize başvurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-If you want to configure certificate-based authentication in your environment, see [Get started with certificate-based authentication on Android](active-directory-certificate-based-authentication-get-started.md) for instructions.
+Ortamınızda sertifika tabanlı kimlik doğrulaması yapılandırmak istiyorsanız, yönergeler için bkz. [Android 'de sertifika tabanlı kimlik doğrulamayı kullanmaya başlama](active-directory-certificate-based-authentication-get-started.md) .
 
 <!--Image references-->
 [1]: ./media/active-directory-certificate-based-authentication-android/ic195031.png

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 3c70d2086fc5866b07c31966343397f8ccc809be
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: a732e80549747f7c683a73bf0f16c40d48decea6
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73846740"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546340"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure Dosya Eşitleme dağıtımı planlama
 Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server’ı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürür. SMB, NFS ve FTPS dahil olmak üzere verilerinize yerel olarak erişmek için Windows Server 'da bulunan herhangi bir protokolü kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
@@ -145,7 +145,7 @@ Sonuçları CSV 'de göstermek için:
 | ethumbs.db$ | Küçük resimler için geçici dosya |
 | ~$\*.\* | Office geçici dosyası |
 | \*. tmp | Geçici dosya |
-| \*.laccdb | DB kilitleme dosyasına erişin|
+| \*. laccdb | DB kilitleme dosyasına erişin|
 | 635D02A9D91C401B97884B82B3BCDAEA.* | İç eşitleme dosyası|
 | Sistem birimi bilgilerini \\ | Birime özgü klasör |
 | $RECYCLE. BÖLME| Klasör |
@@ -227,7 +227,7 @@ Virüsten koruma çözümleri gibi, yedekleme çözümleri katmanlı dosyaların
 > Çıplak (BMR) geri yükleme beklenmeyen sonuçlara neden olabilir ve şu anda desteklenmemektedir.
 
 > [!Note]  
-> VSS anlık görüntüleri (önceki sürümler dahil), bulut katmanlaması etkinleştirilmiş birimlerde şu anda desteklenmemektedir. Bulut katmanlaması etkinleştirilmişse, bir dosyayı yedekten geri yüklemek için Azure dosya paylaşımının anlık görüntülerini kullanın.
+> Azure dosya eşitleme Aracısı sürüm 9 ' da, VSS anlık görüntüleri (önceki sürümler dahil), artık bulut katmanlaması etkinleştirilmiş birimlerde desteklenmektedir. Ancak, PowerShell aracılığıyla önceki sürüm uyumluluğunu etkinleştirmeniz gerekir. [Nasıl olduğunu öğrenin](storage-files-deployment-guide.md).
 
 ### <a name="encryption-solutions"></a>Şifreleme çözümleri
 Şifreleme çözümleri için destek, nasıl uygulandığına bağlıdır. Azure Dosya Eşitleme ile birlikte çalışmak bilinmektedir:

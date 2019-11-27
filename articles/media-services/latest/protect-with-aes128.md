@@ -57,7 +57,7 @@ Bu öğretici şunların nasıl yapıldığını gösterir:
 
 * [İçerik korumaya genel bakış](content-protection-overview.md) makalesini gözden geçirin.
 * Visual Studio Code veya Visual Studio 'Yu yükler.
-* [Bir Media Services hesabı oluşturma](create-account-cli-quickstart.md).
+* [Media Services hesabı oluşturun](create-account-cli-quickstart.md).
 * API ['leri](access-api-cli-how-to.md)kullanarak Media Services API 'leri kullanmak için gereken kimlik bilgilerini alın.
 
 ## <a name="download-code"></a>Kodu indirin
